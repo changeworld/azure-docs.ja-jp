@@ -2,20 +2,20 @@
 title: ローカライズ文字列 ID - Azure Active Directory B2C |Microsoft Docs
 description: Azure Active Directory B2C のカスタム ポリシーに api.signuporsignin の ID を持つコンテンツ定義の ID を指定します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c6cabcc89e66e9fbf153f2931bfe8b9b70c5f426
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 41a72013f1538b0a857c76bc949a7109e1cd54b4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682705"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66510922"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -33,7 +33,7 @@ ms.locfileid: "64682705"
 | **logonIdentifier_email** | 電子メール アドレス |
 | **requiredField_email** | メール アドレスを入力してください |
 | **invalid_email** | 有効な電子メール アドレスを入力してください |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&’' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
 | **local_intro_username** | 自分のユーザー名でサインイン |
 | **logonIdentifier_username** | ユーザー名 |
 | **requiredField_username** | ユーザー名を入力してください |

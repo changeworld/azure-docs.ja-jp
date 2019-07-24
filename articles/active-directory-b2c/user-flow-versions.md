@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のユーザー フロー バージョン | Microsoft Docs
 description: Azure Active Directory B2C で使用できるユーザー フローのバージョンについて説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af44658b42e9132ea89aadcbff29bdba1c13f46d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ed57a9fa3b041961ce220e8f10d9aed5e7bef60e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689653"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66511921"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フロー バージョン
 
@@ -32,16 +32,16 @@ Azure Active Directory (Azure AD) B2C のユーザー フローは、ユーザ�
 | --------- | ----------- | ----------- |
 | パスワード リセット | はい | ユーザーが電子メールを確認してから新しいパスワードを選択できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>トークンの互換性の設定</li><li>[パスワードの複雑さの要件](active-directory-b2c-reference-password-complexity.md)</li></ul> |
 | プロファイル編集 | はい | ユーザーがユーザー属性を構成することを許可します。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li></ul> |
-| リソース所有者 | いいえ  | ローカル アカウントを持つユーザーがネイティブ アプリケーションで直接ログインできるようにします (ブラウザーは必要ありません)。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li></ul> |
-| サインイン | いいえ  | ユーザーが自分のアカウントにサインインできるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>サインインのブロック</li><li>パスワードの強制的なリセット</li><li>サインインしたままにする (KMSI)</ul><br>このユーザー フローではユーザー インターフェイスをカスタマイズできません。 |
-| サインアップ | いいえ  | ユーザーがアカウントを作成できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[パスワードの複雑さの要件](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| リソース所有者 | いいえ | ローカル アカウントを持つユーザーがネイティブ アプリケーションで直接ログインできるようにします (ブラウザーは必要ありません)。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li></ul> |
+| サインイン | いいえ | ユーザーが自分のアカウントにサインインできるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>サインインのブロック</li><li>パスワードの強制的なリセット</li><li>サインインしたままにする (KMSI)</ul><br>このユーザー フローではユーザー インターフェイスをカスタマイズできません。 |
+| サインアップ | いいえ | ユーザーがアカウントを作成できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[パスワードの複雑さの要件](active-directory-b2c-reference-password-complexity.md)</li></ul> |
 | サインアップとサインイン | はい | ユーザーがアカウントを作成したり、アカウントにサインインしたりすることができるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[パスワードの複雑さの要件](active-directory-b2c-reference-password-complexity.md)</li></ul>|
 
 ## <a name="v2"></a>V2
 
 | ユーザー フロー | 推奨 | 説明 |
 | --------- | ----------- | ----------- |
-| パスワードのリセット v2 | いいえ  | ユーザーが電子メールを確認してから新しいパスワードを選択できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>トークンの互換性の設定</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| サインイン v2 | いいえ  | ユーザーが自分のアカウントにサインインできるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[年齢制限](basic-age-gating.md)</li><li>サインイン ページのカスタマイズ</li></ul> |
-| サインアップ v2 | いいえ  | ユーザーがアカウントを作成できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](active-directory-b2c-reference-password-complexity.md)</li></ul> |
-| サインアップとサインイン v2 | いいえ  | ユーザーがアカウントを作成したり、アカウントにサインインしたりすることができるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| パスワードのリセット v2 | いいえ | ユーザーが電子メールを確認してから新しいパスワードを選択できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>トークンの互換性の設定</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| サインイン v2 | いいえ | ユーザーが自分のアカウントにサインインできるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[年齢制限](basic-age-gating.md)</li><li>サインイン ページのカスタマイズ</li></ul> |
+| サインアップ v2 | いいえ | ユーザーがアカウントを作成できるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[トークンの有効期間](active-directory-b2c-reference-tokens.md)</li><li>トークンの互換性の設定</li><li>セッションの動作</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| サインアップとサインイン v2 | いいえ | ユーザーがアカウントを作成したり、アカウントにサインインしたりすることができるようにします。 このユーザー フローを使用すると、以下を構成できます。 <ul><li>[多要素認証](active-directory-b2c-reference-mfa.md)</li><li>[年齢制限](basic-age-gating.md)</li><li>[パスワードの複雑さの要件](active-directory-b2c-reference-password-complexity.md)</li></ul> |

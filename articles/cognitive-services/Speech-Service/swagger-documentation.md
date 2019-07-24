@@ -7,31 +7,31 @@ author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 04/12/2019
+ms.topic: reference
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 29fcbd058651c428b488f5ce1c767105cb7921a6
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: f6420ea8918816f7356e567ec48cb0f7456065e0
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59580989"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604762"
 ---
 # <a name="swagger-documentation"></a>Swagger ドキュメント
 
-Speech Services では、データのインポート、モデルの作成、モデルの精度のテスト、カスタム エンドポイントの作成、文字起こしのキューへのバッチ配置、およびサブスクリプションの管理に使用されるいくつかの REST API を操作するための Swagger 仕様を提供しています。 Custom Speech ポータルを介して利用できる操作のほとんどは、これらの API を使用してプログラムによって実行できます。 
+Speech Services では、データのインポート、モデルの作成、モデルの精度のテスト、カスタム エンドポイントの作成、文字起こしのキューへのバッチ配置、およびサブスクリプションの管理に使用されるいくつかの REST API を操作するための Swagger 仕様を提供しています。 Custom Speech ポータルを介して利用できる操作のほとんどは、これらの API を使用してプログラムによって実行できます。
 
 > [!NOTE]
 > 音声変換とテキスト読み上げの両方の操作がサポートされており、REST API として利用可能で、Swagger 仕様に記載されています。
 
 ## <a name="generating-code-from-the-swagger-specification"></a>Swagger 仕様からコードを生成する
 
-[Swager 仕様](https://cris.ai/swagger/ui/index)には、さまざまなパスをすばやくテストできるオプションが用意されています。 ただし、すべてのパスのコードを生成し、今後のソリューションの基盤にできる呼び出しの 1 つのライブラリを作成することが望ましい場合があります。 Python ライブラリを生成するプロセスを見てみましょう。
+[Swagger 仕様](https://cris.ai/swagger/ui/index)には、さまざまなパスをすばやくテストできるオプションが用意されています。 ただし、すべてのパスのコードを生成し、今後のソリューションの基盤にできる呼び出しの 1 つのライブラリを作成することが望ましい場合があります。 Python ライブラリを生成するプロセスを見てみましょう。
 
 ご利用の Speech Service サブスクリプションと同じリージョンに Swagger を設定する必要があります。 Azure portal 内のご利用の Speech Service リソースの下でご利用のリージョンを確認できます。 サポートされているリージョンの完全な一覧については、[リージョン](regions.md)に関するページをご覧ください。
 
-1. https://editor.swagger.io に移動します
-2. **[File]\(ファイル\)**、**[Import]\(インポート\)** の順にクリックします
+1. [https://resources.azure.com](https://editor.swagger.io ) に移動します
+2. **[File]\(ファイル\)** 、 **[Import]\(インポート\)** の順にクリックします
 3. ご利用の Speech Service サブスクリプションのリージョンを含む Swagger URL を入力します `https://<your-region>.cris.ai/docs/v2.0/swagger`
 4. **[Generate Client]\(クライアントの生成\)** をクリックし、[Python] を選択します
 5. クライアント ライブラリを保存する

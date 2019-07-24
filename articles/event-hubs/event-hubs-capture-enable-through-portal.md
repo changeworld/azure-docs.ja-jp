@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: shvija
 ms.openlocfilehash: 9108c52529319288fba48dbad3c6f8aa6cb5f725
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850753"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60822515"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
 
@@ -32,7 +32,7 @@ Azure [Event Hubs Capture][capture-overview] を使用すると、[Azure Blob St
 
 ## <a name="capture-data-to-an-azure-storage-account"></a>Azure ストレージ アカウントへのデータのキャプチャ  
 
-Capture は、イベント ハブを作成するときに、**[イベント ハブの作成]** ポータル画面の **[オン]** ボタンをクリックすることによって有効にできます。 その後、**[Capture Provider]\(キャプチャ プロバイダー\)** ボックスの **[Azure Storage]** をクリックして、ストレージ アカウントとコンテナーを指定します。 Event Hubs Capture ではストレージによるサービス間サービス認証が使用されるため、ストレージ接続文字列を指定する必要はありません。 リソース ピッカーにより、ストレージ アカウントのリソース URI が自動的に選択されます。 Azure Resource Manager を使用している場合は、この URI を文字列として明示的に指定する必要があります。
+Capture は、イベント ハブを作成するときに、 **[イベント ハブの作成]** ポータル画面の **[オン]** ボタンをクリックすることによって有効にできます。 その後、 **[Capture Provider]\(キャプチャ プロバイダー\)** ボックスの **[Azure Storage]** をクリックして、ストレージ アカウントとコンテナーを指定します。 Event Hubs Capture ではストレージによるサービス間サービス認証が使用されるため、ストレージ接続文字列を指定する必要はありません。 リソース ピッカーにより、ストレージ アカウントのリソース URI が自動的に選択されます。 Azure Resource Manager を使用している場合は、この URI を文字列として明示的に指定する必要があります。
 
 既定の時間ウィンドウは 5 分です。 最小値は 1、最大値は 15 です。 **サイズ** ウィンドウの範囲は 10 ～ 500 MB です。
 
@@ -57,7 +57,7 @@ Azure Data Lake Store にデータをキャプチャするには、次の手順�
 ### <a name="create-an-event-hub"></a>イベント ハブの作成
 
 1. イベント ハブは、先ほど作成した Azure Data Lake Store と同じ Azure サブスクリプションに存在する必要がある点に注意してください。 **[イベント ハブの作成]** ポータル ページの **[Capture]\(キャプチャ\)** の **[オン]** ボタンをクリックしてイベント ハブを作成します。 
-2. **[イベント ハブの作成]** ポータル ページで、**[Capture Provider]\(キャプチャ プロバイダー\)** ボックスの **[Azure Data Lake Store]** を選択します。
+2. **[イベント ハブの作成]** ポータル ページで、 **[Capture Provider]\(キャプチャ プロバイダー\)** ボックスの **[Azure Data Lake Store]** を選択します。
 3. **[Data Lake Store の選択]** で、先ほど作成した Data Lake Store アカウントを指定し、作成したデータ フォルダーのパスを **[Data Lake Path]\(Data Lake のパス\)** フィールドに入力します。
 
     ![Data Lake Storage アカウントの選択][3]

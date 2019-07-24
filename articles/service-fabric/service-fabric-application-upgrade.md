@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: e2b407733bcab7bc854e8e3703e53eb474f3425b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663691"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615058"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric アプリケーションのアップグレード
 Service Fabric アプリケーションは、サービスのコレクションです。 アップグレードの際、Service Fabric は新しい [アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md) を以前のバージョンと比較し、アプリケーション内でアップグレードの必要があるサービスを決定します。 Service Fabric は、サービス マニフェスト内のバージョン番号を、以前のバージョンのバージョン番号と比較します。 サービスが変更されていない場合は、そのサービスはアップグレードされません。

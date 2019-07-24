@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 31357fa313cfa31c0f8a90c0f7722f627e4394d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62106169"
 ---
 # <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Azure Logic Apps を使用して Trello の監視と管理を行う
 
@@ -52,12 +52,12 @@ Trello アカウントから応答を取得し、その出力を他のアクシ�
 
    または
 
-   既存のロジック アプリの場合、アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+   既存のロジック アプリの場合、アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
    検索ボックスに、フィルターとして「trello」と入力します。 
    アクションの一覧で、目的のアクションを選択します。
 
    ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
-   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
+   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
 1. Trello へのサインインを求められたら、ロジック アプリのアクセスを承認し、サインインします。
 

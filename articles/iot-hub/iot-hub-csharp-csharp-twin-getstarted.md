@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: robinsh
 ms.openlocfilehash: 9d5d5bdc569fec1df20c7729285cc462d5af4ffb
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873231"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>デバイス ツインの概要 (.NET/.NET)
@@ -56,7 +56,7 @@ ms.locfileid: "65873231"
    
     ![New Visual C# Windows Classic Desktop project](./media/iot-hub-csharp-csharp-twin-getstarted/createnetapp.png)
 
-2. ソリューション エクスプローラーで **AddTagsAndQuery** プロジェクトを右クリックし、**[NuGet パッケージの管理...]** をクリックします。
+2. ソリューション エクスプローラーで **AddTagsAndQuery** プロジェクトを右クリックし、 **[NuGet パッケージの管理...]** をクリックします。
 
 3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices** を検索します。 **[インストール]** を選択して、**Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
    
@@ -120,9 +120,9 @@ ms.locfileid: "65873231"
     Console.ReadLine();
     ```
 
-8. ソリューション エクスプローラーで、**[スタートアップ プロジェクトの設定...]** を開き、**AddTagsAndQuery** プロジェクトの **[アクション]** が **[開始]** になっていることを確認します。 ソリューションをビルドします。
+8. ソリューション エクスプローラーで、 **[スタートアップ プロジェクトの設定...]** を開き、**AddTagsAndQuery** プロジェクトの **[アクション]** が **[開始]** になっていることを確認します。 ソリューションをビルドします。
 
-9. **AddTagsAndQuery** プロジェクトを右クリックし、**[デバッグ]** を選択してから、**[新しいインスタンスを開始]** を選択して、このアプリケーションを実行します。 **Redmond43** にあるすべてのデバイスを照会するクエリの結果には、1 件のデバイスが表示され、携帯ネットワークを使用するデバイスに絞り込んだ結果には 0 件のデバイスが表示されます。
+9. **AddTagsAndQuery** プロジェクトを右クリックし、 **[デバッグ]** を選択してから、 **[新しいインスタンスを開始]** を選択して、このアプリケーションを実行します。 **Redmond43** にあるすべてのデバイスを照会するクエリの結果には、1 件のデバイスが表示され、携帯ネットワークを使用するデバイスに絞り込んだ結果には 0 件のデバイスが表示されます。
    
     ![ウィンドウに表示されたクエリの結果](./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png)
 
@@ -136,7 +136,7 @@ ms.locfileid: "65873231"
    
     ![New Visual C# Windows Classic device app](./media/iot-hub-csharp-csharp-twin-getstarted/createdeviceapp.png)
     
-2. ソリューション エクスプローラーで **ReportConnectivity** プロジェクトを右クリックし、**[NuGet パッケージの管理...]** をクリックします。
+2. ソリューション エクスプローラーで **ReportConnectivity** プロジェクトを右クリックし、 **[NuGet パッケージの管理...]** をクリックします。
 
 3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索します。 **[インストール]** を選択して、**Microsoft.Azure.Devices.Client** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet パッケージへの参照とその依存関係が追加されます。
    
@@ -224,9 +224,9 @@ ms.locfileid: "65873231"
     Console.ReadLine();
     ```
 
-9. ソリューション エクスプローラーで、**[スタートアップ プロジェクトの設定...]** を開き、**ReportConnectivity** プロジェクトの **[アクション]** が **[開始]** になっていることを確認します。 ソリューションをビルドします。
+9. ソリューション エクスプローラーで、 **[スタートアップ プロジェクトの設定...]** を開き、**ReportConnectivity** プロジェクトの **[アクション]** が **[開始]** になっていることを確認します。 ソリューションをビルドします。
 
-10. **ReportConnectivity** プロジェクトを右クリックし、**[デバッグ]** を選択してから、**[新しいインスタンスを開始]** を選択して、このアプリケーションを実行します。 ツインの情報を取得し、次に接続性が*報告対象プロパティ*として送信される様子が見られます。
+10. **ReportConnectivity** プロジェクトを右クリックし、 **[デバッグ]** を選択してから、 **[新しいインスタンスを開始]** を選択して、このアプリケーションを実行します。 ツインの情報を取得し、次に接続性が*報告対象プロパティ*として送信される様子が見られます。
    
     ![デバイス アプリを実行して接続性を報告](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
        

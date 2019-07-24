@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0b8139f11f937ddae30e25f4153e35287289a4d1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 112d3b18df8205aac173eafb8f8e30ed6c32e048
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233947"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249089"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -26,9 +26,9 @@ Azure Data Lake Storage Gen2 では、Azure のロールベースのアクセス
 
 RBAC では、ロールの割り当てを使用して、"*セキュリティ プリンシパル*" にアクセス許可のセットが効果的に適用されます。 "*セキュリティ プリンシパル*" は、Azure リソースへのアクセスを要求している、Azure Active Directory (AD) で定義されたユーザー、グループ、サービス プリンシパル、またはマネージド ID を表すオブジェクトです。
 
-通常、それらの Azure リソースは、最上位のリソースに制約されます (例: Azure ストレージ アカウント)。 Azure Storage およびその結果の Azure Data Lake Storage Gen2 の場合、このメカニズムは、ファイル システムのリソースに拡張されています。
+通常、それらの Azure リソースは、最上位のリソースに制約されます (例: Azure ストレージ アカウント)。 Azure Storage およびその結果の Azure Data Lake Storage Gen2 の場合、このメカニズムは、コンテナー (ファイル システム) のリソースに拡張されています。
 
-ストレージ アカウントのスコープでセキュリティ プリンシパルにロールを割り当てる方法については、「[Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
+お使いのストレージ アカウントのスコープでセキュリティ プリンシパルにロールを割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>ファイルおよびディレクトリ レベルのアクセス制御リストでのロール割り当ての影響
 
@@ -49,11 +49,11 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 ## <a name="access-control-lists-on-files-and-directories"></a>ファイルとディレクトリのアクセス制御リスト
 
-セキュリティ プリンシパルをファイルおよびディレクトリに対するアクセス レベルと関連付けることができます。 これらの関連付けは、"*アクセス制御リスト (ACL)*" でキャプチャされます。 ストレージ アカウント内の各ファイルおよびディレクトリは、アクセス制御リストを持っています。
+セキュリティ プリンシパルをファイルおよびディレクトリに対するアクセス レベルと関連付けることができます。 これらの関連付けは、"*アクセス制御リスト (ACL)* " でキャプチャされます。 ストレージ アカウント内の各ファイルおよびディレクトリは、アクセス制御リストを持っています。
 
 ストレージ アカウント レベルでセキュリティ プリンシパルにロールを割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルに、特定のファイルおよびディレクトリに対する昇格されたアクセス権を付与することができます。
 
-アクセス制御リストを使って、ロール割り当てによって許可されるレベルより低いアクセスのレベルを提供することはできません。 たとえば、[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)ロールをセキュリティ プリンシパルに割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルによるディレクトリへの書き込みを禁止することはできません。
+アクセス制御リストを使って、ロール割り当てによって許可されるレベルより低いアクセスのレベルを提供することはできません。 たとえば、[ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)ロールをセキュリティ プリンシパルに割り当てた場合、アクセス制御リストを使って、そのセキュリティ プリンシパルによるディレクトリへの書き込みを禁止することはできません。
 
 ### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>アクセス制御リストを使ってファイルおよびディレクトリ レベルのアクセス許可を設定する
 
@@ -77,8 +77,6 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 
 アクセス ACL と既定の ACL はどちらも同じ構造です。
 
-アクセス ACL と既定の ACL はどちらも同じ構造です。
-
 > [!NOTE]
 > 親の既定の ACL を変更しても、既存の子項目のアクセス ACL または既定の ACL には影響しません。
 
@@ -91,6 +89,9 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 | **読み取り (R)** | ファイルの内容を読み取ることができる | ディレクトリの内容を一覧表示するには、**読み取り**と**実行**が必要です。 |
 | **書き込み (W)** | ファイルへの書き込みまたは追加を実行できる | ディレクトリに子項目を作成するには、**書き込み**と**実行**が必要です。 |
 | **実行 (X)** | Data Lake Storage Gen2 のコンテキストでは、何も意味しない | ディレクトリの子項目をスキャンするために必要です。 |
+
+> [!NOTE]
+> (RBAC は使用せず) ACL のみを使用してアクセス許可を付与するときに、ファイルにサービス プリンシパルの読み取りまたは書き込みアクセスを付与するには、ファイル システムおよびそのファイルにつながるフォルダー階層の各フォルダーにそのサービス プリンシパルの**実行**のアクセス許可を付与する必要があります。
 
 #### <a name="short-forms-for-permissions"></a>アクセス許可の短い形式
 
@@ -311,8 +312,10 @@ ACL で割り当て済みのプリンシパルとして常に Azure AD セキュ
 
 アプリ登録に対応するサービス プリンシパルの OID を取得するには、`az ad sp show` コマンドを使用し、 パラメーターとしてアプリケーション ID を指定します。 アプリ ID が 18218b12-1895-43e9-ad80-6e8fc1ea88ce のアプリ登録に対応するサービス プリンシパルの OID を取得する例を次に示します。 Azure CLI で、次のコマンドを実行します。
 
-`az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
-<<OID will be displayed>>`
+```
+$ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
+<<OID will be displayed>>
+```
 
 サービス プリンシパルの正しい OID を取得したら、Storage Explorer で **[アクセスの管理]** ページに移動して OID を追加し、その OID に対する適切なアクセス許可を割り当てます。 その後、必ず **[保存]** を選択してください。
 

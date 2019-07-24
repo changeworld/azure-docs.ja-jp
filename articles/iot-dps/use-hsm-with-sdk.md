@@ -10,11 +10,11 @@ services: iot-dps
 manager: arjmands
 ms.custom: mvc
 ms.openlocfilehash: af59ccc6d14dce49d06e178aac3ecafc29bd982c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61248132"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>C 言語用 Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
 
@@ -96,7 +96,7 @@ cmake -Ddps_auth_type=tpm_simulator ..
     ctest -C "debug" -V
     ```
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 - Windows で SDK をビルドするには、次の手順に従ってプロジェクト ファイルを生成します。
   - "開発者コマンド プロンプト for VS2015" を開きます。
   - リポジトリのルートで次の CMake コマンドを実行します。
@@ -149,8 +149,8 @@ TPM を使用する場合は、「[シミュレートされたデバイスを作
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
       ```
 2. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
-   - X **.** 509 個別登録: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Individual Enrollments]\(個々の登録\)** タブの上部にある **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X**.**509** を選択し、ブレードの指示に従ってリーフ証明書をアップロードします。 作業が完了したら、**[保存]** をクリックします。 
-   - X **.** 509 グループ登録: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Group Enrollments]\(グループ登録\)** タブを選択して、上部の **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X**.**509** を選択し、グループ名と証明書名を入力してから、ブレードの指示に従って CA/中間証明機関の証明書をアップロードします。 作業が完了したら、**[保存]** をクリックします。 
+   - X **.** 509 個別登録: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Individual Enrollments]\(個々の登録\)** タブの上部にある **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X**.**509** を選択し、ブレードの指示に従ってリーフ証明書をアップロードします。 作業が完了したら、 **[保存]** をクリックします。 
+   - X **.** 509 グループ登録: プロビジョニング サービスの概要ブレードで **[Manage enrollments]\(登録の管理\)** を選択します。 **[Group Enrollments]\(グループ登録\)** タブを選択して、上部の **[追加]** ボタンをクリックします。 ID 構成証明の "*メカニズム*" として **X**.**509** を選択し、グループ名と証明書名を入力してから、ブレードの指示に従って CA/中間証明機関の証明書をアップロードします。 作業が完了したら、 **[保存]** をクリックします。 
 
 ## <a name="enable-authentication-for-devices-using-a-custom-attestation-mechanism-optional"></a>カスタム構成証明メカニズムを使用してデバイスの認証を有効にする (省略可)
 

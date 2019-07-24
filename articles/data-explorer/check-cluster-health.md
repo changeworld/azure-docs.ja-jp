@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: a280d8869a3790444a97c38f792a3d9eeb6bde1d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794663"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60861320"
 ---
 # <a name="check-the-health-of-an-azure-data-explorer-cluster"></a>Azure のデータ エクスプ ローラー クラスターの正常性を確認する
 
@@ -34,7 +34,7 @@ Azure のデータ エクスプ ローラー クラスターの正常性に影�
 
     ![クラスターの Keep Alive メトリック](media/check-cluster-health/portal-metrics.png)
 
-1. グラフに他のメトリックを追加することができます。 グラフを選択し、**[メトリックの追加]** を選択します。 別のメトリックを選択します。この例では **CPU** が表示されます。
+1. グラフに他のメトリックを追加することができます。 グラフを選択し、 **[メトリックの追加]** を選択します。 別のメトリックを選択します。この例では **CPU** が表示されます。
 
     ![メトリックを追加する](media/check-cluster-health/add-metric.png)
 

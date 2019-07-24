@@ -2,19 +2,19 @@
 title: よく寄せられる質問 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Custom Translator についてよく寄せられる質問とその回答を紹介します。
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: d3e3d12e572c939fb2ddd5bc671aede434ca7d8a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 00921eeb9f966ed62d1a2d7605419432a9fa50f5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760326"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443400"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 

@@ -10,10 +10,10 @@ ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 392699182859a090c13304f63d28a78b95a65ec7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65024019"
 ---
 # <a name="search-explorer-for-querying-data-in-azure-search"></a>Azure Search でデータを問い合わせるための Search エクスプローラー 
@@ -70,7 +70,7 @@ ms.locfileid: "65024019"
 
 ### <a name="example-4---restrict-fields-in-search-results"></a>例 4 - 検索結果のフィールドを制限する
 
-**Search エクスプローラー**で出力を読みやすくするために、**$select** を追加して、明示的に指定されたフィールドに結果を制限します。 検索文字列と **$count=true** を維持するには、引数の前に **&** を付けます。 
+**Search エクスプローラー**で出力を読みやすくするために、 **$select** を追加して、明示的に指定されたフィールドに結果を制限します。 検索文字列と **$count=true** を維持するには、引数の前に **&** を付けます。 
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true
@@ -82,7 +82,7 @@ ms.locfileid: "65024019"
 
 ### <a name="example-5---return-next-batch-of-results"></a>例 5 - 結果の次のバッチを返す
 
-Azure Search は、検索順位に基づいて上位 50 の一致を返します。 一致するドキュメントの次のセットを取得するには、「**$top=100,&$skip=50**」を追加して、結果セットを 100 個のドキュメントに増やし (既定値は 50、最大は 1,000)、最初の 50 個のドキュメントをスキップします。 順位付けされた結果を取得するには、クエリ語句や式など、検索条件を指定する必要があることを思い出してください。 取得する検索結果が低位になるほど検索スコアが減少することに注目してください。
+Azure Search は、検索順位に基づいて上位 50 の一致を返します。 一致するドキュメントの次のセットを取得するには、「 **$top=100,&$skip=50**」を追加して、結果セットを 100 個のドキュメントに増やし (既定値は 50、最大は 1,000)、最初の 50 個のドキュメントをスキップします。 順位付けされた結果を取得するには、クエリ語句や式など、検索条件を指定する必要があることを思い出してください。 取得する検索結果が低位になるほど検索スコアが減少することに注目してください。
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100,&$skip=50
@@ -112,7 +112,7 @@ Azure Search は、検索順位に基づいて上位 50 の一致を返します
 
 1. [Azure portal](https://portal.azure.com) でダッシュボードから検索サービス ページを開くか、サービスの一覧で[ご自分のサービスを見つけ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)ます。
 
-2. サービスの概要ページで、**[Search エクスプローラー]** をクリックします。
+2. サービスの概要ページで、 **[Search エクスプローラー]** をクリックします。
 
    ![ポータルの [Search エクスプローラー] コマンド](./media/search-explorer/search-explorer-cmd2.png "ポータルの [Search エクスプローラー] コマンド")
 
@@ -122,7 +122,7 @@ Azure Search は、検索順位に基づいて上位 50 の一致を返します
 
 4. 必要に応じて、API バージョンを設定します。 既定では現在一般提供されている API バージョンが選択されますが、使用したい構文がバージョン固有である場合はプレビューまたは以前の API を選択できます。
 
-5. インデックスと API バージョンを選択したら、検索語句または完全修飾クエリ式を検索バーに入力し、**[検索]** をクリックして実行します。
+5. インデックスと API バージョンを選択したら、検索語句または完全修飾クエリ式を検索バーに入力し、 **[検索]** をクリックして実行します。
 
    ![検索語句の入力と [検索] のクリック](./media/search-explorer/search-explorer-query-string-example.png "検索語句の入力と [検索] のクリック")
 

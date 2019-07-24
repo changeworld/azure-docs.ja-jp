@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: f5ec5a64f1de39cd0d196242fb1a93669dbab15d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 913140a51603429e003f04f860bca9b4ddb1c214
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681846"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704880"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -90,6 +90,14 @@ Azure Backup では、 **[バックアップ ジョブ]** ポータルに、手�
 
 6. **[バックアップの停止]** を選択する
 
+>
+> [!NOTE]
+データ削除オプションの詳細については、次の FAQ を参照してください。 <br/>
+* [自動保護されたインスタンスからデータベースを削除した場合、バックアップはどうなりますか?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)<br/>
+* [自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>
+>
+
 
 ## <a name="resume-protection-for-a-sql-database"></a>SQL Database での保護の再開
 
@@ -137,7 +145,7 @@ SQL Database の保護を再開するには:
 
 VM のワークロード拡張が何らかの理由で影響を受けることがあります。 そのような場合、VM 上でトリガーされるすべての操作が失敗するようになります。 そこで、場合によっては、VM で拡張を再登録する必要があります。 **再登録**操作によって、操作を続行させるために、VM にワークロード バックアップ拡張が再インストールされます。  <br>
 
-このオプションは慎重に使用することをお勧めします。正常な拡張の VM 上でこの操作がトリガーされると、拡張が再起動します。 その結果、進行中のジョブがすべて失敗することがあります。 再登録操作をトリガーする前に、[こちらの兆候](backup-sql-server-azure-troubleshoot.md#symptoms)がないか確認してください。
+このオプションは慎重に使用することをお勧めします。正常な拡張の VM 上でこの操作がトリガーされると、拡張が再起動します。 その結果、進行中のジョブがすべて失敗することがあります。 再登録操作をトリガーする前に、[こちらの兆候](backup-sql-server-azure-troubleshoot.md#re-registration-failures)がないか確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,7 +3,7 @@ title: Azure App Service を使用して Xamarin iOS アプリにプッシュ通
 description: Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を送信する方法について説明します
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
@@ -12,18 +12,22 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/12/2016
-ms.author: crdun
-ms.openlocfilehash: 32a8c36d223e2b0c12f5d82ec748af66ae841b01
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 9edd5e755b4a42fe881a0863bb284039299ec713
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819024"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446264"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Xamarin iOS アプリへのプッシュ通知の追加
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-ios-get-started-push) を今すぐチェックしてください。
+>
 
 ## <a name="overview"></a>概要
 
@@ -142,12 +146,12 @@ ms.locfileid: "42819024"
 
 ## <a name="test"></a>アプリケーションでプッシュ通知をテストする
 
-1. **[実行]** を押してプロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
+1. **[実行]** を押してプロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。 **[OK]** をクリックして、プッシュ通知を受け入れます。
 
    > [!NOTE]
    > アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。 これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-2. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
+2. アプリケーションで、タスクを入力し、プラス ( **+** ) アイコンをクリックします。
 3. 通知が受信されたことを確認し、 **[OK]** をクリックして通知を破棄します。
 4. 手順 2. を繰り返してすぐにアプリケーションを閉じたら、通知が表示されることを確認します。
 

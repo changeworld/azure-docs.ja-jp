@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 12/11/2017
+ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 15152196e45265985c8abb409523982bd4c5d427
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2cb99cfe765e1d3444f362e591812f5088c78c0e
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697420"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393151"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Apache Hadoop サンドボックス (仮想マシンのエミュレーター) の概要
 
@@ -24,35 +24,32 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 * [Oracle VirtualBox](https://www.virtualbox.org/). [こちら](https://www.virtualbox.org/wiki/Downloads)からダウンロードしてインストールします。
 
 
-
 ## <a name="download-and-install-the-virtual-machine"></a>仮想マシンのダウンロードとインストール
-1. [Hortonworks のダウンロード ページ](https://hortonworks.com/downloads/#sandbox)に移動します。
+1. [Cloudera のダウンロード](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)を参照します。
 
-2. **[VIRTUALBOX 用ダウンロード]** をクリックして、最新の Hortonworks Sandbox を VM にダウンロードします。 ダウンロードが始まる前に、Hortonworks に登録するように求められます。 ダウンロードは、ネットワーク速度に応じて 1 ～ 2 時間かかります。
+2. **[Choose Installation Type]** の下の **[VIRTUALBOX]** をクリックして、最新の Hortonworks サンドボックスを VM にダウンロードします。 サインインするか、または製品への関心についてのフォームを完了します。
 
-    ![Link image for download Hortonworks Sandbox for VirtualBox](./media/apache-hadoop-emulator-get-started/download-sandbox.png)
-3. 同じ Web ページで、**[Import on Virtual Box (仮想ボックスにインポート)]** リンクをクリックして、仮想マシン用のインストール手順が記載された PDF をダウンロードします。
+1. **[HDP SANDBOX (LATEST)]** ボタンをクリックしてダウンロードを開始します。
 
-古い HDP バージョンのサンドボックスをダウンロードするには、アーカイブを展開します。
+サンドボックスの設定に関する手順については、[サンドボックスの展開およびインストール ガイド](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/)を参照してください。
 
-![Hortonworks Sandbox のアーカイブ](./media/apache-hadoop-emulator-get-started/hortonworks-sandbox-archive.png)
-
+古い HDP バージョンのサンドボックスをダウンロードするには、 **[Older Versions]** の下のリンクを参照してください。
 
 ## <a name="start-the-virtual-machine"></a>仮想マシンの開始
 
 1. Oracle VM VirtualBox を開きます。
 2. **[ファイル]** メニューの **[Import Appliance (アプライアンスのインストール)]** をクリックしHortonworks Sandbox イメージを指定します。
-1. Hortonworks Sandbox を選択し、**[Start (開始)]**、**[Normal Start (通常の方法で開始)]** の順にクリックします。 仮想マシンのブート プロセスが終了すると、ログインに関する手順が表示されます。
+1. Hortonworks Sandbox を選択し、 **[Start (開始)]** 、 **[Normal Start (通常の方法で開始)]** の順にクリックします。 仮想マシンのブート プロセスが終了すると、ログインに関する手順が表示されます。
 
     ![[Normal Start (通常の方法で開始)]](./media/apache-hadoop-emulator-get-started/normal-start.png)
 2. Web ブラウザーを開き、表示された URL に移動します (通常は `http://127.0.0.1:8888`)。
 
 ## <a name="set-sandbox-passwords"></a>サンドボックスのパスワードの設定
 
-1. Hortonworks Sandbox のページの **[get started (開始)]** 手順で、**[View Advanced Options (詳細設定の表示)]** をクリックします。 SSH を使用してサンドボックスにログインするには、このページの情報を使用します。 提供された名前とパスワードを使用してください。
+1. Hortonworks Sandbox のページの **[get started (開始)]** 手順で、 **[View Advanced Options (詳細設定の表示)]** をクリックします。 SSH を使用してサンドボックスにログインするには、このページの情報を使用します。 提供された名前とパスワードを使用してください。
 
    > [!NOTE]
-   > SSH クライアントがインストールされていない場合は、**http://localhost:4200/** の仮想マシンから提供される Web ベースの SSH を使用することができます。
+   > SSH クライアントがインストールされていない場合は、 **http://localhost:4200/** の仮想マシンから提供される Web ベースの SSH を使用することができます。
 
     SSH を使用して初めて接続する際に、ルート アカウントのパスワードを変更するように求められます。 SSH を使用してログインするときに使用する新しいパスワードを入力します。
 

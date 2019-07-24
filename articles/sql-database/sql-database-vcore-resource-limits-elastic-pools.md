@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 05/23/2019
-ms.openlocfilehash: 98bd70d9f6eb70cb7848dfa74e19c78e55a34991
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 06/26/2019
+ms.openlocfilehash: 4e63e1e477ce82221e5121815b609326cc2c1112
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240356"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447182"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>仮想コアベースの購入モデルを使用したエラスティック プールに対するリソース制限
 
@@ -37,6 +37,9 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>General Purpose サービス レベル:ストレージ サイズとコンピューティング サイズ
 
+> [!IMPORTANT]
+> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
+
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>General Purpose サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 1)
 
 |コンピューティング サイズ|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
@@ -52,7 +55,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |TempDB のサイズ (GB)|32|64|96|128|160|192|
 |ストレージの種類|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
-|ターゲットの IOPS (64 KB)|500|1,000|1500|2000|2500|3000|
+|ターゲットの IOPS (64 KB)|500|1000|1500|2000|2500|3000|
 |ログのレート制限 (MBps)|4.6875|9.375|14.0625|18.75|23.4375|28.125|
 |プールあたりの最大同時実行ワーカー (要求) 数 * |210|420|630|840|1050|1260|
 |プールあたりの最大同時ログイン数* |210|420|630|840|1050|1260|
@@ -108,7 +111,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |TempDB のサイズ (GB)|64|128|192|256|320|384|384|
 |ストレージの種類|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|Premium (リモート) ストレージ|
 |IO 待機時間 (概算)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|5 ～ 7 ミリ秒 (書き込み)<br>5 ～ 10 ミリ秒 (読み取り)|
-|ターゲットの IOPS (64 KB)|1,000|2000|3000|4000|5000|6000|7000|
+|ターゲットの IOPS (64 KB)|1000|2000|3000|4000|5000|6000|7000|
 |ログのレート制限 (MBps)|4.6875|9.375|14.0625|18.75|23.4375|28.125|32.8125|
 |プールあたりの最大同時実行ワーカー (要求) 数 *|210|420|630|840|1050|1260|1470|
 |プールあたりの最大同時ログイン (要求) 数*|210|420|630|840|1050|1260|1470|
@@ -149,6 +152,9 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 \* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。 たとえば、エラスティック プールが Gen5 を使用し、データベースあたりの最大仮想コア数が 2 の場合、最大同時ワーカー数は 200 です。  データベースあたりの最大仮想コアが 0.5 の場合、Gen 5 では仮想コアあたりの最大同時ワーカー数が 100 なので、最大同時ワーカー数は 50 です。  その他にもデータベースあたりの最大仮想コア数設定が 1 仮想コア以下である場合は、最大同時ワーカー数が同様に再スケールされます。
 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Business Critical サービス レベル:ストレージ サイズとコンピューティング サイズ
+
+> [!IMPORTANT]
+> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Business Critical サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 1)
 

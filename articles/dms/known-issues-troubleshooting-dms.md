@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 05/09/2019
-ms.openlocfilehash: 7b470c20397aac456d34d5e3b877c7d4126d8279
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.date: 05/22/2019
+ms.openlocfilehash: 5a7c6c4553f46e8a7308995e05d6c06c0eb10f27
+ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65465112"
+ms.lasthandoff: 05/22/2019
+ms.locfileid: "66002206"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Azure Database Migration Service の一般的な問題やエラーのトラブルシューティング
 
@@ -28,7 +28,7 @@ Azure Database Migration Service プロジェクトに新しいアクティビ�
 
 | 原因         | 解決策 |
 | ------------- | ------------- |
-| この問題は、Azure Database Migration Service インスタンスが、同時に実行される進行中のタスクの最大容量に達したときに発生します。 新しいアクティビティはどれも、容量が利用可能になるまでキューに入れられます。 | Data Migration Service インスタンスに、プロジェクトをまたぐ実行中のアクティビティがあることを確認します。 実行のためのキューに自動的に追加される新しいアクティビティの作成を続行することができます。 既存の実行中のアクティビティのいずれかが完了するとすぐに、キュー内にある次のアクティビティの実行が開始され、状態が自動的に実行状態に変わります。 キューに入れられたアクティビティの移行を開始するために、追加の操作を行う必要はありません。<br> |
+| この問題は、Azure Database Migration Service インスタンスが、同時に実行される進行中のタスクの最大容量に達したときに発生します。 新しいアクティビティはどれも、容量が利用可能になるまでキューに入れられます。 | Data Migration Service インスタンスに、プロジェクトをまたぐ実行中のアクティビティがあることを確認します。 実行のためのキューに自動的に追加される新しいアクティビティの作成を続行することができます。 既存の実行中のアクティビティのいずれかが完了するとすぐに、キュー内にある次のアクティビティの実行が開始され、状態が自動的に実行状態に変わります。 キューに入れられたアクティビティの移行を開始するために、追加の操作を行う必要はありません。<br><br> |
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>移行のために選択されたデータベースの最大数
 
@@ -44,13 +44,13 @@ Azure SQL Database または Azure SQL Database マネージド インスタン�
 
 Azure Database Migration Service を使用して MySQL から Azure Database for MySQL に移行すると、移行アクティビティが次のエラーで失敗します。
 
-* **エラー**: エラー:Database migration error - Task 'TaskID' was suspended due to [n] successive recovery failures. (データベースの移行エラー - タスク 'TaskID' は、[n] 回連続で回復に失敗したため中断されました。)
+* **エラー**: Database migration error - Task 'TaskID' was suspended due to [n] successive recovery failures. (データベースの移行エラー - タスク 'TaskID' は、[n] 回連続で回復に失敗したため中断されました。)
 
 | 原因         | 解決策 |
 | ------------- | ------------- |
-| このエラーは、移行を実行しているユーザーに ReplicationAdmin ロール、または REPLICATION CLIENT、REPLICATION REPLICA、SUPER (MySQL 5.6.6 より前のバージョン) の特権がない場合に発生することがあります。<br> <br><br><br> <br> <br> <br> <br> <br> <br> | ユーザー アカウントの[前提条件の特権](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites)が Azure MySQL インスタンスで正確に構成されていることを確認してください。 たとえば、必要な特権を持つ "migrateuser" という名前のユーザーを作成するには、次の手順に従います。<br>1.CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2. grant all privileges on db_name.* to 'migrateuser'@'%' identified by 'secret'; // 他のデータベースにもアクセス権を付与するには、この手順を繰り返します <br>3. grant replication slave on *.* to 'migrateuser'@'%' identified by 'secret';<br>4. grant replication client on *.* to 'migrateuser'@'%' identified by 'secret';<br>5. flush privileges; |
+| このエラーは、移行を行っているユーザーに ReplicationAdmin ロール、または REPLICATION CLIENT、REPLICATION REPLICA、SUPER (MySQL 5.6.6 より前のバージョン) の特権がない場合に発生することがあります。<br><br><br><br><br><br><br><br><br><br><br><br><br> | ユーザー アカウントの[前提条件の特権](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites)が Azure Database for MySQL インスタンスで正確に構成されていることを確認してください。 たとえば、必要な特権を持つ "migrateuser" という名前のユーザーを作成するには、次の手順に従います。<br>1.CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2."secret" で特定された "migrateuser'@'%'" に、db_name.* のすべての権限を付与します; //他のデータベースにもアクセス権を付与するには、この手順を繰り返します <br>手順 3. *.* でレプリケーション スレーブを付与します to 'migrateuser'@'%' identified by 'secret';<br>4. *.* でレプリケーション クライアントを付与します to 'migrateuser'@'%' identified by 'secret';<br>5.権限をフラッシュします |
 
-## <a name="error-when-attempting-to-stop-the-azure-database-migration-service-instance"></a>Azure Database Migration Service インスタンスを停止しようとしたときのエラー
+## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Azure Database Migration Service を停止しようとしたときのエラー
 
 Azure Database Migration Service インスタンスを停止すると、次のエラーが表示されます。
 
@@ -60,7 +60,7 @@ Azure Database Migration Service インスタンスを停止すると、次の�
 | ------------- | ------------- |
 | このエラーは、停止しようとしているサービス インスタンスに、まだ実行中のアクティビティや移行プロジェクト内に存在するアクティビティが含まれている場合に表示されます。 <br><br><br><br><br><br> | 停止しようとしている Azure Database Migration Service のインスタンスには実行中のアクティビティがないようにしてください。 また、サービスを停止する前に、アクティビティまたはプロジェクトを削除することもできます。 次の手順では、実行中のすべてのタスクを削除することでプロジェクトを削除し、移行サービス インスタンスをクリーンアップする方法を示します。<br>1.Install-Module -Name AzureRM.DataMigration <br>2.Login-AzureRmAccount <br>手順 3.Select-AzureRmSubscription -SubscriptionName "<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask |
 
-## <a name="error-restoring-database-while-migrating-from-sql-server-to-an-azure-sql-database-managed-instance"></a>SQL Server から Azure SQL Database マネージド インスタンスへの移行中のデータベースの復元エラー
+## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>SQL から Azure SQL DB マネージド インスタンスに移行中のデータベース復元エラー
 
 SQL Server から Azure SQL Database マネージド インスタンスへのオンライン移行を実行すると、一括移行に失敗し、次のエラーが表示されます。
 
@@ -68,7 +68,7 @@ SQL Server から Azure SQL Database マネージド インスタンスへのオ
 
 | 原因         | 解決策    |
 | ------------- | ------------- |
-| このエラーは、SQL Server から Azure SQL Database マネージド インスタンスへのオンライン移行に使用されているアプリケーション プリンシパルに、サブスクリプションに対する共同作成アクセス許可がないことを示しています。 現在、マネージド インスタンスを使用した特定の API 呼び出しでは、復元操作のために、サブスクリプションに対するこのアクセス許可が必要です。 <br><br><br><br><br><br><br><br><br><br> | エラー メッセージから取得できる `-ObjectId` を指定して `Get-AzureADServicePrincipal` PowerShell コマンドレットを使用すると、使用されているアプリケーション ID の表示名が表示されます。<br><br> このアプリケーションに対するアクセス許可を確認し、それがサブスクリプション レベルで[共同作成者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)を持っていることを確認してください。 <br><br> Azure Database Migration Service のエンジニアリング チームは、サブスクリプションの現在の共同作成者ロールから必要とされるアクセスを制限するように取り組んでいます。 共同作成者ロールの使用を許可しないビジネス要件がある場合は、Azure サポートに追加の支援を要請してください。 |
+| このエラーは、SQL Server から Azure SQL Database マネージド インスタンスへのオンライン移行に使用されているアプリケーション プリンシパルに、サブスクリプションに対する共同作成アクセス許可がないことを示しています。 現在、マネージド インスタンスを使用した特定の API 呼び出しでは、復元操作のために、サブスクリプションに対するこのアクセス許可が必要です。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | エラー メッセージから取得できる `-ObjectId` を指定して `Get-AzureADServicePrincipal` PowerShell コマンドレットを使用すると、使用されているアプリケーション ID の表示名が表示されます。<br><br> このアプリケーションに対するアクセス許可を確認し、それがサブスクリプション レベルで[共同作成者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)を持っていることを確認してください。 <br><br> Azure Database Migration Service のエンジニアリング チームは、サブスクリプションの現在の共同作成者ロールから必要とされるアクセスを制限するように取り組んでいます。 共同作成者ロールの使用を許可しないビジネス要件がある場合は、Azure サポートに追加の支援を要請してください。 |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Azure Database Migration Service に関連付けられた NIC を削除するときのエラー
 
@@ -78,7 +78,7 @@ Azure Database Migration Service に関連付けられたネットワーク イ�
 
 | 原因         | 解決策    |
 | ------------- | ------------- |
-| この問題は、Azure Database Migration Service インスタンスがまだ存在し、NIC を使用している可能性がある場合に発生します。 <br><br><br><br><br><br> | この NIC を削除するには、DMS サービス インスタンスを削除すると、サービスで使用されている NIC が自動的に削除されます。<br><br> **重要**:削除対象の Azure Database Migration Service インスタンスに実行中のアクティビティがないことを確認してください。<br><br> Azure Database Migration Service インスタンスに関連付けられているすべてのプロジェクトとアクティビティが削除された後に、サービス インスタンスを削除できます。 サービス インスタンスによって使用されている NIC は、サービスの削除の一環として自動的に削除されます。 |
+| この問題は、Azure Database Migration Service インスタンスがまだ存在し、NIC を使用している可能性がある場合に発生します。 <br><br><br><br><br><br><br><br> | この NIC を削除するには、DMS サービス インスタンスを削除すると、サービスで使用されている NIC が自動的に削除されます。<br><br> **重要**:削除対象の Azure Database Migration Service インスタンスに実行中のアクティビティがないことを確認してください。<br><br> Azure Database Migration Service インスタンスに関連付けられているすべてのプロジェクトとアクティビティが削除された後に、サービス インスタンスを削除できます。 サービス インスタンスによって使用されている NIC は、サービスの削除の一環として自動的に削除されます。 |
 
 ## <a name="connection-error-when-using-expressroute"></a>ExpressRoute の使用時の接続エラー
 
@@ -86,27 +86,37 @@ Azure Database Migration Service プロジェクト ウィザードでソース�
 
 | 原因         | 解決策    |
 | ------------- | ------------- |
-| [ExpressRoute](https://azure.microsoft.com/services/expressroute/) を使用している場合、Azure Database Migration Service では、そのサービスに関連付けられた仮想ネットワーク サブネット上に次の 3 つのサービス エンドポイントをプロビジョニングする[必要があります](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)。<br> -- サービス バス エンドポイント<br> -- ストレージ エンドポイント<br> -- ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)<br><br><br><br> | ソースと Azure Database Migration Service の間の ExpressRoute 接続に必要なサービス エンドポイントを[有効](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)にします。 <br><br><br><br><br><br><br><br> |
+| [ExpressRoute](https://azure.microsoft.com/services/expressroute/) を使用している場合、Azure Database Migration Service では、そのサービスに関連付けられた仮想ネットワーク サブネット上に次の 3 つのサービス エンドポイントをプロビジョニングする[必要があります](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)。<br> -- サービス バス エンドポイント<br> -- ストレージ エンドポイント<br> -- ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)<br><br><br><br><br> | ソースと Azure Database Migration Service の間の ExpressRoute 接続に必要なサービス エンドポイントを[有効](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online)にします。 <br><br><br><br><br><br><br><br> |
 
-## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-database-for-mysql"></a>MySQL データベースを Azure Database for MySQL に移行するときのタイムアウト エラー
+## <a name="timeout-error-when-migrating-a-mysql-database-to-azure-mysql"></a>MySQL データベースを Azure MySQL に移行するときのタイムアウト エラー
 
 Azure Database Migration Service を介して MySQL データベースを Azure Database for MySQL インスタンスに移行すると、次のタイムアウト エラーが発生して、移行が失敗します。
 
-    * **エラー**: エラー:Database migration error - Failed to load file - Failed to start load process for file 'n' (データベースの移行エラー - ファイルを読み込めませんでした - ファイル 'n' の読み込みプロセスを開始できませんでした) RetCode: SQL_ERROR SqlState:HY000 NativeError: 1205 メッセージ: [MySQL][ODBC Driver][mysqld] Lock wait timeout exceeded; try restarting transaction (ロック待機のタイムアウトを超えました。トランザクションを再開してみてください)
+* **エラー**: Database migration error - Failed to load file - Failed to start load process for file 'n' (データベースの移行エラー - ファイルを読み込めませんでした - ファイル 'n' の読み込みプロセスを開始できませんでした) RetCode: SQL_ERROR SqlState:HY000 NativeError: 1205 メッセージ: [MySQL][ODBC Driver][mysqld] Lock wait timeout exceeded; try restarting transaction (ロック待機のタイムアウトを超えました。トランザクションを再開してみてください)
 
 | 原因         | 解決策    |
 | ------------- | ------------- |
-| このエラーは、移行中のロック待機がタイムアウトしたため、移行が失敗したときに発生します。<br><br> | サーバー パラメーター **'innodb_lock_wait_timeout'** の値を大きくすることを検討してください。 最大許容値は 1073741824 です。 |
+| このエラーは、移行中のロック待機がタイムアウトしたため、移行が失敗したときに発生します。 | サーバー パラメーター **'innodb_lock_wait_timeout'** の値を大きくすることを検討してください。 最大許容値は 1073741824 です。 |
+
+## <a name="error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance"></a>動的ポートまたは名前付きインスタンスを使用しているときのソース SQL Server への接続エラー
+
+Azure Database Migration Service を、名前付きインスタンスまたは動的ポートで実行される SQL Server ソースに接続しようとすると、次のエラーで接続が失敗します。
+
+* **エラー**: -1 - SQL 接続できませんでした。 SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 インスタンス名が正しいこと、および SQL Server がリモート接続を許可するように構成されていることを確認してください。 (プロバイダー:SQL ネットワーク インターフェイス。エラー: 26 - 指定されたサーバーまたはインスタンスの位置を特定しているときにエラーが発生しました)
+
+| 原因         | 解決策    |
+| ------------- | ------------- |
+| この問題は、Azure Database Migration Service が接続しようとしているソース SQL Server インスタンスで、動的ポートまたは名前付きインスタンスが使用されているときに発生します。 SQL Server Browser サービスでは、名前付きインスタンスに対する着信接続に対して、または動的ポートが使用されているときに、UDP ポート 1434 がリッスンされます。 動的ポートは、SQL Server サービスを再起動するたびに変わる可能性があります。 ネットワーク構成を介してインスタンスに割り当てられている動的ポートは、SQL Server 構成マネージャーで確認できます。<br><br><br> |Azure Database Migration Service が UDP ポート 1434 でソース SQL Server Browser サービスに接続できること、また、必要に応じて、動的に割り当てられた TCP ポート経由で SQL Server インスタンスに接続できることを確認します。 |
 
 ## <a name="additional-known-issues"></a>その他の既知の問題
 
-* [Azure SQL DB へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [Azure DB for MySQL へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+* [Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
+* [Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
+* [Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="next-steps"></a>次の手順
 
-* [Azure Database Migration Service PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)
-* [Azure portal を使用して Azure Database for MySQL のサーバー パラメーターを構成する方法](https://docs.microsoft.com/azure/mysql/howto-server-parameters)
-* [Azure Database Migration Service を使用するための前提条件の概要](https://docs.microsoft.com/azure/dms/pre-reqs)
-* [Azure Database Migration Service の使用に関する FAQ](https://docs.microsoft.com/azure/dms/faq)
+* [Azure Database Migration Service PowerShell](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration) に関する記事を確認する。
+* 「[Azure portal を使用して Azure Database for MySQL のサーバー パラメーターを構成する方法](https://docs.microsoft.com/azure/mysql/howto-server-parameters)」を確認する。
+* 「[Azure Database Migration Service を使用するための前提条件の概要](https://docs.microsoft.com/azure/dms/pre-reqs)」を確認する。
+* 「[Azure Database Migration Service の使用に関する FAQ](https://docs.microsoft.com/azure/dms/faq)」を確認する。

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 ms.openlocfilehash: 0c4702dada17e759d89c33be99b3155f4b15ad9e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60328886"
 ---
 # <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>Windows Virtual Desktop プレビューの負荷分散方法を構成する
 

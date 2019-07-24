@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371368"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60358033"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 * オンプレミスのディレクトリ内のデータが正しい形式になっていること。
 * [簡単設定を使って Azure AD Connect](../hybrid/how-to-connect-install-express.md) が構成されていること。
 
-正常に動作させるには、電話番号の形式が "*+<国コード> <電話番号>*" (例: +1 4255551234) になっている必要があります。
+正常に動作させるには、電話番号の形式が " *+<国コード> <電話番号>* " (例: +1 4255551234) になっている必要があります。
 
 > [!NOTE]
 > 国番号と電話番号の間にスペースを入れる必要があります。
@@ -121,7 +121,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 始めるには、[Azure AD バージョン 2 PowerShell モジュールをダウンロードしてインストールする](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0)必要があります。 インストールした後、次の手順を使って各フィールドを構成できます。
 
-Install-Module をサポートする PowerShell の最新バージョンから簡単にインストールするには、次のコマンドを実行します  (最初の行では、モジュールが既にインストールされているかどうかを確認しています)。
+Install-Module をサポートする PowerShell の最新バージョンから簡単にインストールするには、次のコマンドを実行します (最初の行では、モジュールが既にインストールされているかどうかを確認しています)。
 
 ```PowerShell
 Get-Module AzureADPreview

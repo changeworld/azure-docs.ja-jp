@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/20/2019
+ms.date: 05/31/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7062e9d829242a62dfa4f661c21ce6c56b0db69c
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 0a9939155d92897019dc1ad5651d249cda11b993
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924538"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476953"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を取り付ける
 
@@ -70,7 +70,7 @@ ms.locfileid: "64924538"
 1. 平坦で水平な場所に箱を置きます。
 2. 箱と梱包材を調べて、つぶれ、切断、水害などの明らかな損傷がないか確認します。 箱または梱包材がひどく破損している場合は、箱を開けないでください。 Microsoft サポートに問い合わせて、デバイスが正常に使用できる状態にあるかどうかを評価してください。
 3. 箱を開梱します。 開梱後、次の内容物を確認してください。
-    - 単一エンクロージャの Edge デバイス 1 台
+    - 単一エンクロージャの Data Box Edge デバイス 1 台
     - 電源コード 2 本
     - レール キット アセンブリ 1 組
     - 安全、環境、規制に関する情報を記載した小冊子 1 冊
@@ -100,7 +100,7 @@ ms.locfileid: "64924538"
 1. A7 Dell ReadyRails II スライディング レール アセンブリ 2 個
 2. フック & ループ ストラップ 2 本
 
-![レール キットの中身の確認](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
+    ![レール キットの中身の確認](./media/data-box-edge-deploy-install/identify-rail-kit-contents.png)
 
 ### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>ツールレス タイプのレールの付け外し (四角穴タイプまたは丸穴タイプのラックの場合)
 
@@ -112,7 +112,7 @@ ms.locfileid: "64924538"
 3. 後方のレール末端部をラックに取り付けます。末端部がラックの垂直フランジに完全に収まり、カチッという音を立ててラッチが掛かったら成功です。 前面の末端部パーツについても、ここまでの手順を繰り返し、ラックの垂直フランジに取り付けます。
 4. レールを取り外すときは、末端部パーツ中央にあるラッチ解放ボタンを引き、レールを 1 本ずつ取り外します。
 
-![ツールレス タイプのレールの付け外し](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
+    ![ツールレス タイプのレールの付け外し](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>ツールが必要なタイプのレールの付け外し (スレッド ホール タイプのラックの場合)
 
@@ -124,7 +124,7 @@ ms.locfileid: "64924538"
 3. 左右のマウンティング レールを、ラック前面の垂直フランジにねじで取り付けます (ねじは 2 本ずつ使用します)。
 4. 左右のバック ブラケットをスライドさせて、ラック後部の垂直フランジに合わせ、ねじを 2 本ずつ使って固定します。
 
-![ツールが必要なタイプのレールの付け外し](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![ツールが必要なタイプのレールの付け外し](./media/data-box-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>ラックへのシステムの取り付け
 
@@ -133,7 +133,7 @@ ms.locfileid: "64924538"
 3. ロック レバーのカチッという音が聞こえるまで、システムを奥に押し込みます。
 4. 左右のレールのスライドリリース ロック ボタンを押し、システムをラックに収納します。
 
-![ラックへのシステムの取り付け](./media/data-box-edge-deploy-install/installing-system-rack.png)
+    ![ラックへのシステムの取り付け](./media/data-box-edge-deploy-install/installing-system-rack.png)
 
 ### <a name="remove-the-system-from-the-rack"></a>ラックからのシステムの取り外し
 
@@ -141,7 +141,7 @@ ms.locfileid: "64924538"
 2. 各レバーを上に回転させ、ロック解除の位置まで動かします。
 3. システムの左右をしっかりと持ち、システム左右の突起が J 形の穴の前方に来るように引っ張ります。 システムを持ち上げてラックから取り外し、水平な場所に置きます。
 
-![ラックからのシステムの取り外し](./media/data-box-edge-deploy-install/removing-system-rack.png)
+    ![ラックからのシステムの取り外し](./media/data-box-edge-deploy-install/removing-system-rack.png)
 
 ### <a name="engage-and-release-the-slam-latch"></a>スラム ラッチの掛け外し
 
@@ -152,7 +152,7 @@ ms.locfileid: "64924538"
 2. ラッチは、システムをラックに押し入れると自動で掛かり、ラッチを持って引き上げると外れます。
 3. ラックに収納した状態での出荷や、不安定な環境での利用に備えてシステムを固定するときは、各ラッチの下にあるハード取り付けねじを探し、それぞれのねじを #2 プラス ドライバーで締めます。
 
-![スラム ラッチの掛け外し](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
+    ![スラム ラッチの掛け外し](./media/data-box-edge-deploy-install/engaging-releasing-slam-latch.png)
 
 ### <a name="route-the-cables"></a>ケーブルの整理
 
@@ -164,16 +164,16 @@ ms.locfileid: "64924538"
 3. システムの左右それぞれの CMA 外部ブラケットに設けてある穴にフック & ループ ストラップを通し、ケーブルの束を固定します。
 
 
-![ケーブルの整理](./media/data-box-edge-deploy-install/routing-cables.png)
+    ![ケーブルの整理](./media/data-box-edge-deploy-install/routing-cables.png)
 
 ## <a name="cable-the-device"></a>デバイスをケーブル接続する
 
-以降の手順では、Edge デバイスの電源とネットワークのケーブルを接続する方法を説明します。
+以降の手順では、Data Box Edge デバイスの電源とネットワークのケーブルを接続する方法を説明します。
 
 デバイスのケーブル接続を開始する前に、次の前提条件を満たす必要があります。
 
-- 開梱してラックに取り付けた状態の Edge 物理デバイス。
-- 電源コード 2 本。 
+- 開梱してラックに取り付けた状態の Data Box Edge 物理デバイス。
+- 電源コード 2 本。
 - 管理インターフェイスに接続するための 1-GbE RJ-45 ネットワーク ケーブルを 1 本以上。 デバイスには、管理用とデータ用に 1 つずつ、2 つの 1-GbE ネットワーク インターフェイスがあります。
 - 構成するデータ ネットワーク インターフェイスのそれぞれに対して、25-GbE SFP+ 銅線ケーブル 1 本。 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 2、ポート 3、ポート 4、ポート 5、またはポート 6) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。  
 - 2 つの配電ユニットへのアクセス (推奨)。
@@ -181,34 +181,46 @@ ms.locfileid: "64924538"
 > [!NOTE]
 > - データ ネットワーク インターフェイスを 1 つだけ接続する場合は、Azure へのデータ送信には、ポート 3、ポート 4、ポート 5、ポート 6 などの 25/10 GbE ネットワーク インターフェイスを使用することをお勧めします。 
 > - 最善のパフォーマンスを実現し、大量のデータを処理するには、すべてのデータ ポートを接続することを検討してください。
-> - Edge デバイスは、データ ソース サーバーからデータを取り込むことができるように、データセンター ネットワークに接続する必要があります。
+> - Data Box Edge デバイスは、データ ソース サーバーからデータを取り込むことができるように、データセンター ネットワークに接続する必要があります。
 
-Edge デバイスは 8 つの NVMe SSD を搭載しています。 前面パネルには状態 LED と電源ボタンもあります。 デバイスの背面側には、冗長電源ユニット (PSU) が搭載されています。 デバイスには、次の 6 つのネットワーク インターフェイスがあります。
+Data Box Edge デバイスで:
 
-- 1 Gbps インターフェイス (2 つ)
-- 10 Gbps インターフェイスとしても使える 25 Gbps インターフェイス (4 つ)
-- ベースボード管理コントローラー (BMC) 
+- フロント パネルには、ディスク ドライブと電源ボタンがあります。
 
-デバイスのバックプレーンにあるさまざまなデータ ポートを確認してください。
- 
-  ![ケーブル接続されたデバイスのバックプレーン](./media/data-box-edge-deploy-install/backplane-cabled.png)
+    - デバイスの前面には 10 個のディスク スロットがあります。
+    - スロット 0 には、オペレーティング システム ディスクとして使用される 240 GB の SATA ドライブがあります。 スロット 1 は空で、スロット 2 から 9 は、データ ディスクとして使用される NVMe SSD です。
+- バック プレーンには、冗長電源ユニット (PSU) が搭載されています。
+- バック プレーンには、次の 6 つのネットワーク インターフェイスがあります。
 
-デバイスには、上の 6 つのポートに対応するネットワーク カードが 2 種類あります。 
+    - 1 Gbps インターフェイス (2 つ)。
+    - 10 Gbps インターフェイスとしても使える 25 Gbps インターフェイス (4 つ)
+    - ベースボード管理コントローラー (BMC)
 
- - QLogic FastLinQ 41264
- - QLogic FastLinQ 41262
+- バック プレーンには、これらの 6 つのポートに対応する次の 2 つのネットワーク カードがあります。
+
+    - QLogic FastLinQ 41264
+    - QLogic FastLinQ 41262
 
 ここに挙げたネットワーク カードがサポートしているケーブル、スイッチ、トランシーバーの一覧については、「[Cavium FastlinQ 41000 Series Interoperability Matrix (Cavium FastlinQ 41000 シリーズの相互運用性マトリックス)](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)」を参照してください。
  
 以下の手順に従って、デバイスの電源とネットワークのケーブルを接続します。
 
-1. エンクロージャのそれぞれの PSU に電源コードを接続します。 高可用性を確保するには、両方の PSU を取り付けて、異なる電源に接続します。
+1. お使いのデバイスのバックプレーンにあるさまざまなポートを確認してください。
 
-2. ラックの配電ユニット (PDU) に電源コードを接続します。 2 つの PSU が別の電源を使用していることを確認します。
+    ![ケーブル接続されたデバイスのバックプレーン](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
-3. 1 GbE ネットワーク インターフェイスのポート 1 を、物理デバイスの構成に使用するコンピューターに接続します。 ポート 1 は管理専用のインターフェイスです。
+2. デバイス前面にあるディスク スロットと電源ボタンを確認します。
 
-4. ポート 2、ポート 3、ポート 4、ポート 5、ポート 6 のうちの 1 つ以上をデータセンター ネットワーク/インターネットに接続します。 ポート 2 を接続する場合は、RJ-45 ネットワーク ケーブルを使用します。 10/25 GbE ネットワーク インターフェイスの場合は、SFP+ 銅線ケーブルを使用します。  
+    ![デバイスのフロント プレーン](./media/data-box-edge-deploy-install/device-front-plane-labeled-1.png)
+
+3. エンクロージャのそれぞれの PSU に電源コードを接続します。 高可用性を確保するには、両方の PSU を取り付けて、異なる電源に接続します。
+4. ラックの配電ユニット (PDU) に電源コードを接続します。 2 つの PSU が別の電源を使用していることを確認します。
+5. 電源ボタンを押してデバイスを有効にします。
+6. 1 GbE ネットワーク インターフェイスのポート 1 を、物理デバイスの構成に使用するコンピューターに接続します。 ポート 1 は管理専用のインターフェイスです。
+7. ポート 2、ポート 3、ポート 4、ポート 5、ポート 6 のうちの 1 つ以上をデータセンター ネットワーク/インターネットに接続します。
+
+    - ポート 2 を接続する場合は、RJ-45 ネットワーク ケーブルを使用します。
+    - 10/25 GbE ネットワーク インターフェイスの場合は、SFP+ 銅線ケーブルを使用します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -223,5 +235,3 @@ Edge デバイスは 8 つの NVMe SSD を搭載しています。 前面パネ�
 
 > [!div class="nextstepaction"]
 > [Data Box Edge を接続して設定する](./data-box-edge-deploy-connect-setup-activate.md)
-
-

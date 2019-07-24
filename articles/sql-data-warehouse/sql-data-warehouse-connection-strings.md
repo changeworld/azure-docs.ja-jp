@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 8f7843714395664b98383c32911de40ca064779e
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873627"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の接続文字列
-[ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP]、[JDBC][JDBC] などの各種アプリケーション プロトコルを使用して、SQL Data Warehouse に接続できます。 各プロトコルの接続文字列の例を以下に示します。  接続文字列は、Azure ポータルを使用してビルドすることもできます。  Azure Portal を使用して接続文字列をビルドするには、データベースのブレードに移動して、*[要点]* の下にある *[データベース接続文字列の表示]* をクリックします。
+[ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP]、[JDBC][JDBC] などの各種アプリケーション プロトコルを使用して、SQL Data Warehouse に接続できます。 各プロトコルの接続文字列の例を以下に示します。  接続文字列は、Azure ポータルを使用してビルドすることもできます。  Azure Portal を使用して接続文字列をビルドするには、データベースのブレードに移動して、 *[要点]* の下にある *[データベース接続文字列の表示]* をクリックします。
 
 ## <a name="sample-adonet-connection-string"></a>ADO.NET 接続文字列の例
 ```csharp

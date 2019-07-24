@@ -10,12 +10,12 @@ ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
 ms.date: 02/08/2019
-ms.openlocfilehash: ce46a6b8d4e2bc57625f9202349718dfbaedc660
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 31246f44be5645715c5c7041d0cf9bcff9c0fa52
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995686"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303299"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>チュートリアル:C&#x23; と ADO.NET を使用して Azure SQL Database 内の単一データベースでリレーショナル データベースを設計する
 
@@ -33,7 +33,7 @@ Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサ�
 
 ## <a name="prerequisites"></a>前提条件
 
-[Visual Studio 2017](https://www.visualstudio.com/downloads/) のインストール
+[Visual Studio 2019](https://www.visualstudio.com/downloads/) 以降のインストール。
 
 ## <a name="create-a-blank-single-database"></a>空の単一データベースを作成する
 
@@ -42,11 +42,11 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
 空の単一データベースを作成するには、次の手順に従います。
 
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
-2. **[新規]** ページで、[Azure Marketplace] セクションで **[データベース]** を、**[おすすめ]** セクションで **[SQL Database]** をクリックします。
+2. **[新規]** ページで、[Azure Marketplace] セクションで **[データベース]** を、 **[おすすめ]** セクションで **[SQL Database]** をクリックします。
 
    ![空のデータベースを作成](./media/sql-database-design-first-database/create-empty-database.png)
 
-3. 前の画像で示されているように、**[SQL Database]** のフォームに次の情報を入力します。
+3. 前の画像で示されているように、 **[SQL Database]** のフォームに次の情報を入力します。
 
     | Setting       | 推奨値 | 説明 |
     | ------------ | ------------------ | ------------------------------------------------- |
@@ -55,7 +55,7 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
     | **リソース グループ** | *yourResourceGroup* | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
     | **[ソースの選択]** | 空のデータベース | 空のデータベースを作成するように指定します。 |
 
-4. **[サーバー]** をクリックして既存のデータベース サーバーを使用するか、新しいデータベース サーバーを作成して構成します。 既存のサーバーを選択するか、**[新しいサーバーの作成]** をクリックして **[新しいサーバー]** フォームに次の情報を入力します。
+4. **[サーバー]** をクリックして既存のデータベース サーバーを使用するか、新しいデータベース サーバーを作成して構成します。 既存のサーバーを選択するか、 **[新しいサーバーの作成]** をクリックして **[新しいサーバー]** フォームに次の情報を入力します。
 
     | Setting       | 推奨値 | 説明 |
     | ------------ | ------------------ | ------------------------------------------------- |
@@ -69,11 +69,11 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
 5. **[選択]** をクリックします。
 6. **[価格レベル]** をクリックして、サービス レベル、DTU または仮想コア数、およびストレージの容量を指定します。 DTU または仮想コア数とストレージに関して、サービス レベルごとに利用できるオプションを確認してください。
 
-    サービス レベル、DTU または仮想コアの数、およびストレージの容量を選択したら、**[適用]** をクリックします。
+    サービス レベル、DTU または仮想コアの数、およびストレージの容量を選択したら、 **[適用]** をクリックします。
 
 7. 空のデータベースの**照合順序**を入力します (このチュートリアルでは既定値を使用)。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
 
-8. これで **SQL Database** フォームの入力が完了したので、**[作成]** をクリックして、単一データベースをプロビジョニングします。 この手順には数分かかることがあります。
+8. これで **SQL Database** フォームの入力が完了したので、 **[作成]** をクリックして、単一データベースをプロビジョニングします。 この手順には数分かかることがあります。
 
 9. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
 
@@ -100,7 +100,7 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 
 5. **[Save]** をクリックします。 SQL Database サーバー上のポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルの IP ファイアウォール規則が作成されます。
 
-6. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
+6. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
 
 これで IP アドレスが IP ファイアウォールを通過できるようになりました。 SQL Server Management Studio やその他の任意のツールを使用して、単一データベースに接続できます。 必ず、お客様が先ほど作成したサーバー管理者アカウントを使用してください。
 

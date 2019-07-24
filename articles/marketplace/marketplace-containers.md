@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
 ms.openlocfilehash: 41a09be36262ff09c383b8ccb64a94230a11d3f1
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64937926"
 ---
 # <a name="containers-offer-publishing-guide"></a>Containers のオファー発行ガイド

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 895b5cfb121347f9400d1aa315fef05d9088c55c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 41a583a77f85bb1524112fa20d9098e18bc4f431
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366473"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60587940"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition の要素
 この記事では、CreateUiDefinition でサポートされるすべての要素のスキーマとプロパティについて説明します。 
@@ -43,11 +43,11 @@ ms.locfileid: "46366473"
 | name | はい | 要素の特定のインスタンスを参照するための内部的な識別子。 要素名が最もよく使用されるのは `outputs` で、指定した要素の出力値がテンプレートのパラメーターにマッピングされます。 これを使って要素の出力値を別の要素の `defaultValue` にバインドすることもできます。 |
 | type | はい | レンダリングする要素の UI コントロール。 サポートされる型の一覧については、「[要素](#elements)」を参照してください。 |
 | label | はい | 要素の表示テキスト。 要素の種類によっては複数のラベルが含まれるため、この値は複数の文字列を含んだオブジェクトになる場合があります。 |
-| defaultValue | いいえ  | 要素の既定値。 要素の種類によっては複合的な既定値がサポートされるため、この値はオブジェクトになる場合があります。 |
-| toolTip | いいえ  | 要素のヒントに表示するテキスト。 `label` と同様、要素によっては複数のヒント文字列がサポートされます。 マークダウン構文を使ってインライン リンクを埋め込むことができます。
-| constraints | いいえ  | 要素の検証動作をカスタマイズする目的で使う 1 つまたは複数のプロパティ。 constraints でサポートされるプロパティは要素の種類によって異なります。 要素の種類によっては検証動作のカスタマイズがサポートされていません。その場合、constraints プロパティは存在しません。 |
-| options | いいえ  | 要素の動作をカスタマイズする補足的なプロパティ。 `constraints` と同様、サポートされるプロパティは要素の種類によって異なります。 |
-| visible | いいえ  | 要素が表示されるかどうかを示します。 `true` の場合、要素と該当する子要素が表示されます。 既定値は `true` です。 このプロパティの値を動的に制御するには[論理関数](create-uidefinition-functions.md#logical-functions)を使います。
+| defaultValue | いいえ | 要素の既定値。 要素の種類によっては複合的な既定値がサポートされるため、この値はオブジェクトになる場合があります。 |
+| toolTip | いいえ | 要素のヒントに表示するテキスト。 `label` と同様、要素によっては複数のヒント文字列がサポートされます。 マークダウン構文を使ってインライン リンクを埋め込むことができます。
+| constraints | いいえ | 要素の検証動作をカスタマイズする目的で使う 1 つまたは複数のプロパティ。 constraints でサポートされるプロパティは要素の種類によって異なります。 要素の種類によっては検証動作のカスタマイズがサポートされていません。その場合、constraints プロパティは存在しません。 |
+| options | いいえ | 要素の動作をカスタマイズする補足的なプロパティ。 `constraints` と同様、サポートされるプロパティは要素の種類によって異なります。 |
+| visible | いいえ | 要素が表示されるかどうかを示します。 `true` の場合、要素と該当する子要素が表示されます。 既定値は `true` です。 このプロパティの値を動的に制御するには[論理関数](create-uidefinition-functions.md#logical-functions)を使います。
 
 ## <a name="elements"></a>要素
 

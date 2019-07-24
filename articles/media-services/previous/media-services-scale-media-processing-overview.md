@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 25b2eb05a612b18eab1fbf790b119edbe9c4d8d2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64707399"
 ---
 # <a name="scaling-media-processing-overview"></a>メディア処理のスケール設定の概要 
@@ -33,9 +33,9 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 |RU の種類|シナリオ|[7 分間の 1080p ビデオ](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)に関するサンプル結果|
 |---|---|---|
-| **S1**|シングル ビットレート エンコード。 <br/>解像度が SD 以下であり、時間的制約がなく、低コストなファイル。|"H264 Single Bitrate SD 16x9" を使用したシングル ビットレート SD 解像度 MP4 ファイルへのエンコードは 7 分程度かかります。|
-| **S2**|シングル ビットレート エンコードと複数ビットレート エンコード。<br/>通常は SD と HD 両方のエンコードに使用されます。|"H264 Single Bitrate 720p" プリセットでのエンコードは約 6 分かかります。<br/><br/>"H264 Single Bitrate 720p" プリセットでのエンコードは約 12 分かかります。|
-| **S3**|シングル ビットレート エンコードと複数ビットレート エンコード。<br/>解像度がフル HD および 4K であるビデオ。 時間に依存しない高速ターンアラウンド エンコード。|"H264 Single Bitrate 1080p" プリセットでのエンコードは約 3 分かかります。<br/><br/>"H264 Single Bitrate 1080p" プリセットでのエンコードは約 8 分かかります。|
+| **S1**|シングル ビットレート エンコード。 <br/>解像度が SD 以下であり、時間的制約がなく、低コストなファイル。|"H264 Single Bitrate SD 16x9" を使用したシングル ビットレート SD 解像度 MP4 ファイルへのエンコードには約 7 分かかります。|
+| **S2**|シングル ビットレート エンコードと複数ビットレート エンコード。<br/>通常は SD と HD 両方のエンコードに使用されます。|"H264 Single Bitrate 720p" プリセットでのエンコードには約 6 分かかります。<br/><br/>"H264 Single Bitrate 720p" プリセットでのエンコードには約 12 分かかります。|
+| **S3**|シングル ビットレート エンコードと複数ビットレート エンコード。<br/>解像度がフル HD および 4K であるビデオ。 時間に依存しない高速ターンアラウンド エンコード。|"H264 Single Bitrate 1080p" プリセットでのエンコードには約 3 分かかります。<br/><br/>"H264 Single Bitrate 1080p" プリセットでのエンコードには約 8 分かかります。|
 
 ## <a name="considerations"></a>考慮事項
 > [!IMPORTANT]

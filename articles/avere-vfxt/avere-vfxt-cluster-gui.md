@@ -4,14 +4,14 @@ description: vFXT クラスターとブラウザー ベースの Avere Control P
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 06/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 830be92d37f304598cca05c3ac80973158c38a59
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856843"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439986"
 ---
 # <a name="access-the-vfxt-cluster"></a>vFXT クラスターへのアクセス
 
@@ -27,9 +27,11 @@ vFXT クラスターはプライベート仮想ネットワーク内にあるた
 
 接続する前に、クラスター コントローラーの作成時に使用した SSH 公開キーと秘密キーのペアがローカル コンピューターにインストールされていることを確認します。 ヘルプが必要な場合は、[Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) または [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) の SSH キーのドキュメントをお読みください。 (パブリック キーの代わりにパスワードを使用した場合は、接続するときにパスワードの入力を求められます。) 
 
-## <a name="ssh-tunnel-with-a-linux-host"></a>Linux ホストを使用する SSH トンネル
+## <a name="create-an-ssh-tunnel"></a>SSH トンネルを作成する 
 
-Linux ベースのクライアントを使用する場合は、SSH トンネリング コマンドを次の形式で使用します。 
+SSH トンネルは、Linux ベースまたは Windows 10 クライアント システムのコマンド ラインから作成できます。 
+
+SSH トンネリング コマンドを次の形式で使用します。 
 
 ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
 
@@ -43,28 +45,6 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
 SSH 公開キーを使用してクラスターを作成し、一致するキーがクライアント システムにインストールされている場合、認証は自動的に行われます。 パスワードを使用した場合は、それを入力するよう求められます。
 
-## <a name="ssh-tunnel-with-a-windows-host"></a>Windows ホストを使用する SSH トンネル
-
-この例では、一般的な Windows ベースの ターミナル ユーティリティである PuTTY を使用します。
-
-PuTTY の **[ホスト名]** フィールドにクラスター コントローラーのユーザー名とその IP アドレスを、"*自分のユーザー名*\@*コントローラーのパブリック IP*" という形式で入力します。
-
-例: ``azureuser@203.0.113.51``
-
-**[構成]** パネルで次の手順を行います。
-
-1. 左側にある **[接続]** > **[SSH]** を展開します。 
-1. **[Tunnels]\(トンネル\)** をクリックします。 
-1. ソース ポート (8443 など) を入力します。 
-1. 宛先については、vFXT クラスターの管理 IP アドレスとポート 443 を入力します。 
-   例: ``203.0.113.51:443``
-1. **[追加]** をクリックします。
-1. **[開く]** をクリックします。
-
-![トンネルを追加するためにクリックする場所が署名された Putty アプリケーションのスクリーンショット](media/avere-vfxt-ptty-numbered.png)
-
-SSH 公開キーを使用してクラスターを作成し、一致するキーがクライアント システムにインストールされている場合、認証は自動的に行われます。 パスワードを使用した場合は、それを入力するよう求められます。
-
 ## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>ブラウザーで Avere Control Panel に接続する
 
 この手順では、Web ブラウザーを使用して、vFXT クラスター上で実行されている構成ユーティリティに接続します。
@@ -75,7 +55,7 @@ SSH 公開キーを使用してクラスターを作成し、一致するキー�
 
 * VPN または ExpressRoute を使用してクラスターにアクセスする場合は、ブラウザーでクラスター管理 IP アドレスに移動します。 例: ``https://203.0.113.51``
 
-ブラウザーによっては、**[Advanced]\(詳細設定\)** をクリックして、そのページへのアクセスが安全であることを確認する必要があります。
+ブラウザーによっては、 **[Advanced]\(詳細設定\)** をクリックして、そのページへのアクセスが安全であることを確認する必要があります。
 
 クラスターの作成時に指定した、ユーザー名 `admin` と管理パスワードを入力します。
 

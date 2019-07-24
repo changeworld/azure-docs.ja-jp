@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 97d33bfcc8251b10ba121b7fb013800904450563
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: e2e91dc91cf0fbe6827808785a4c3cc25b06542b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30197131"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67180995"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -40,4 +40,4 @@ ms.locfileid: "30197131"
     * クライアント証明書の場合:
 
       * 秘密キーを作成する際は、長さを 4096 として指定します。
-      * 証明書を作成する際は、*-extensions* パラメーターに *usr_cert* を指定します。
+      * 証明書を作成する際は、 *-extensions* パラメーターに *usr_cert* を指定します。

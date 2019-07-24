@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 73a3d426e9040525b0c631db273e59c49a6a9eb0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1bfd1b5b4b7febd98499e338fcb62e339867aef4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705889"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66244711"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs の企業向け参照アーキテクチャ
 この記事では、企業内の Azure DevTest Labs に基づくソリューションをデプロイするための参照アーキテクチャを提供します。 含まれる内容は次のとおりです。
@@ -34,7 +34,7 @@ ms.locfileid: "64705889"
 
 - **Azure Active Directory (Azure AD)** :DevTest Labs では、[ID 管理用の Azure AD サービス](../active-directory/fundamentals/active-directory-whatis.md)を使用します。 DevTest ラボに基づく環境へのアクセスをユーザーに許可する場合は、次の 2 つの重要な側面を考慮します。
     - **リソース管理**:リソースを管理 (仮想マシンの作成、環境の作成、成果物の開始、停止、再起動、削除、適用など) するための Azure portal へのアクセス権を付与します。 Azure でのリソース管理には、ロールベースのアクセス制御 (RBAC) を使用します。 ユーザーにロールを割り当て、リソースとアクセス レベルのアクセス許可を設定します。
-    - **仮想マシン (ネットワーク レベル)** :既定の構成では、仮想マシンにはローカル管理者アカウントが使用されます。 使用できるドメイン ([Azure AD Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)、オンプレミスのドメイン、またはクラウドベースのドメイン) がある場合は、マシンをドメインに参加させることができます。 これでユーザーは自分のドメイン ベースの ID を使用して VM に接続できるようになります。
+    - **仮想マシン (ネットワーク レベル)** :既定の構成では、仮想マシンにはローカル管理者アカウントが使用されます。 使用できるドメイン ([Azure AD Domain Services](../active-directory-domain-services/overview.md)、オンプレミスのドメイン、またはクラウドベースのドメイン) がある場合は、マシンをドメインに参加させることができます。 これでユーザーは自分のドメイン ベースの ID を使用して VM に接続できるようになります。
 - **オンプレミスの接続**:このアーキテクチャ図では、[ExpressRoute](../expressroute/expressroute-introduction.md) が使用されています。 ただし、[サイト間 VPN](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md) を使用することもできます。 ExpressRoute は DevTest Labs に必須ではありませんが、企業ではよく使用されています。 ExpressRoute は、企業リソースにアクセスする必要がある場合にのみ必要です。 一般的なシナリオを次に示します。
     - まだクラウドに移行できないオンプレミスのデータがある。
     - ラボの仮想マシンをオンプレミスのドメインに参加させたい。

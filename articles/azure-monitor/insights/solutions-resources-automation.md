@@ -15,11 +15,11 @@ ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1c9b13f44dae068597cb82a0aa803283ad5e67bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763608"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62110363"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]
@@ -247,7 +247,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 
 
-## <a name="variables"></a>variables
+## <a name="variables"></a>変数
 [Azure Automation 変数](../../automation/automation-variables.md)のタイプは **Microsoft.Automation/automationAccounts/variables** であり、次のような構造をしています。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。
 
     {
@@ -281,10 +281,10 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 | データ型 | 説明 | 例 | 結果 |
 |:--|:--|:--|:--|
-| 文字列   | 値を 2 組の引用符で囲みます。  | "\"Hello world\"" | "Hello world" |
+| string   | 値を 2 組の引用符で囲みます。  | "\"Hello world\"" | "Hello world" |
 | numeric  | 数値を 1 組の引用符で囲みます。| "64" | 64 |
-| ブール値  | 引用符で囲まれた **true** または **false**。  この値は小文字にする必要があることに注意してください。 | "true" | true |
-| Datetime | シリアル化された日付の値。<br>PowerShell の ConvertTo-Json コマンドレットを使って、特定の日付に対するこの値を生成できます。<br>例: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| boolean  | 引用符で囲まれた **true** または **false**。  この値は小文字にする必要があることに注意してください。 | "true" | true |
+| datetime | シリアル化された日付の値。<br>PowerShell の ConvertTo-Json コマンドレットを使って、特定の日付に対するこの値を生成できます。<br>例: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>モジュール
 Runbook で使用する[グローバル モジュール](../../automation/automation-integration-modules.md)は Automation アカウントで常に利用可能であるため、管理ソリューションで定義する必要はありません。  ただし、Runbook で使用する他のモジュールのリソースを含める必要があります。

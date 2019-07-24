@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
 ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205748"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor での Windows および Linux のパフォーマンス データ ソース
@@ -58,14 +58,14 @@ Windows のパフォーマンス カウンターの場合、パフォーマン�
 
 収集する新しい Linux パフォーマンス カウンターを追加するには、次の手順を実行します。
 
-1. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。  各 Linux エージェントでこのファイルを手動で変更する場合、*[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスをオフにして、以下のガイダンスに従います。
+1. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。  各 Linux エージェントでこのファイルを手動で変更する場合、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスをオフにして、以下のガイダンスに従います。
 2. *<オブジェクト (インスタンス)>\<カウンター>* の形式で、テキスト ボックスにカウンターの名前を入力します。  入力を開始すると、入力内容に一致する一般的なカウンターの一覧が表示されます。  一覧からカウンターを選択するか、または独自の名前を入力することができます。  
 3. **+** をクリックするか、または **Enter** キーを押して、オブジェクトのその他のカウンターの一覧にカウンターを追加します。
 4. オブジェクトのすべてのカウンターは、同じ **[サンプルの間隔]** を使用します。  既定値は 10 秒です。  収集されたパフォーマンス データのストレージ要件を削減したい場合は、1,800 秒 (30 分) を上限としてこの値を増やしてください。
 5. カウンターの追加を完了したら、画面の上部にある **[保存]** ボタンをクリックして、構成を保存します。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>構成ファイルで Linux のパフォーマンス カウンターを構成する
-Azure Portal を使用して Linux のパフォーマンス カウンターを構成する代わりに、Linux エージェントで構成ファイルを編集することもできます。  収集するパフォーマンス メトリックは、**/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** の構成によって制御されます。
+Azure Portal を使用して Linux のパフォーマンス カウンターを構成する代わりに、Linux エージェントで構成ファイルを編集することもできます。  収集するパフォーマンス メトリックは、 **/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** の構成によって制御されます。
 
 収集するパフォーマンス メトリックの各オブジェクト (カテゴリ) は、構成ファイルの中で単一の `<source>` 要素として定義する必要があります。 次の構文形式に従って記述してください。
 
@@ -96,8 +96,8 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 | 論理ディスク | % Free Space |
 | 論理ディスク | % Used Inodes |
 | 論理ディスク | % Used Space |
-| 論理ディスク | Disk Read Bytes/sec  |
-| 論理ディスク | Disk Reads/sec  |
+| 論理ディスク | Disk Read Bytes/sec |
+| 論理ディスク | Disk Reads/sec |
 | 論理ディスク | Disk Transfers/sec |
 | 論理ディスク | Disk Write Bytes/sec |
 | 論理ディスク | Disk Writes/sec |
@@ -195,7 +195,7 @@ Azure Monitor は、カウンターがインストールされているすべて
 | CounterValue |カウンターの数値。 |
 | InstanceName |イベント インスタンスの名前。  インスタンスがない場合は空白です。 |
 | ObjectName |パフォーマンス オブジェクトの名前 |
-| SourceSystem |データが収集されたエージェントの種類。 <br><br>OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント  <br>  AzureStorage – Azure Diagnostics |
+| SourceSystem |データが収集されたエージェントの種類。 <br><br>OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure Diagnostics |
 | TimeGenerated |データがサンプリングされた日付と時刻。 |
 
 ## <a name="sizing-estimates"></a>サイズ見積もり

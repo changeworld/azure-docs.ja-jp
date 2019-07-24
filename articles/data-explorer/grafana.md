@@ -6,17 +6,23 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 6/30/2019
+ms.openlocfilehash: 0f148a97b25afb9135223ff92afb898d4734c586
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048318"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537798"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Grafana で Azure Data Explorer のデータを視覚化する
 
 Grafana は、データのクエリを実行して視覚化し、視覚化に基づいてダッシュボードを作成して共有できる分析プラットフォームです。 Grafana には、Azure Data Explorer に接続してそのデータを視覚化できる、Azure Data Explorer "*プラグイン*" が用意されています。 この記事では、Azure Data Explorer を Grafana のデータ ソースとして設定し、サンプル クラスターのデータを視覚化する方法について説明します。
+
+次のビデオを使用することで、Grafana の Azure Data Explorer プラグインを使って、Azure Data Explorer を Grafana 用のデータ ソースとして設定してから、データを視覚化する方法を学習できます。 
+
+> [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
+
+または、以下の記事で詳しく説明されているように、[データ ソースを構成](#configure-the-data-source)し、[データを視覚化](#visualize-data)することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -91,7 +97,7 @@ Azure Data Explorer を Grafana のデータ ソースとして構成するに�
 
 ### <a name="add-the-service-principal-to-the-viewers-role"></a>サービス プリンシパルを閲覧者ロールに追加する
 
-サービス プリンシパルを作成したら、Azure Data Explorer データベースの "*閲覧者*" ロールに追加します。 この作業は、Azure portal の **[アクセス許可]** で実行することも、**[クエリ]** で管理コマンドを使用して実行することもできます。
+サービス プリンシパルを作成したら、Azure Data Explorer データベースの "*閲覧者*" ロールに追加します。 この作業は、Azure portal の **[アクセス許可]** で実行することも、 **[クエリ]** で管理コマンドを使用して実行することもできます。
 
 #### <a name="azure-portal---permissions"></a>Azure portal - [アクセス許可]
 
@@ -101,15 +107,15 @@ Azure Data Explorer を Grafana のデータ ソースとして構成するに�
 
     ![データベースの選択](media/grafana/select-database.png)
 
-1. **[アクセス許可]** を選択し、**[追加]** を選択します。
+1. **[アクセス許可]** を選択し、 **[追加]** を選択します。
 
     ![データベースのアクセス許可](media/grafana/database-permissions.png)
 
-1. **[Add database permissions]\(データベース アクセス許可の追加\)** で、**[閲覧者]** ロールを選択し、**[Select principals]\(プリンシパルの選択\)** を選択します。
+1. **[Add database permissions]\(データベース アクセス許可の追加\)** で、 **[閲覧者]** ロールを選択し、 **[Select principals]\(プリンシパルの選択\)** を選択します。
 
     ![データベースのアクセス許可を追加する](media/grafana/add-permission.png)
 
-1. 作成したサービス プリンシパルを検索します (この例では、プリンシパル **mb-grafana** が表示されています)。 プリンシパルを選択し、**[選択]** を選択します。
+1. 作成したサービス プリンシパルを検索します (この例では、プリンシパル **mb-grafana** が表示されています)。 プリンシパルを選択し、 **[選択]** を選択します。
 
     ![Azure portal でアクセス許可を管理する](media/grafana/new-principals.png)
 
@@ -119,7 +125,7 @@ Azure Data Explorer を Grafana のデータ ソースとして構成するに�
 
 #### <a name="management-command---query"></a>管理コマンド - [クエリ]
 
-1. Azure portal で、Azure Data Explorer クラスターに移動し、**[クエリ]** を選択します。
+1. Azure portal で、Azure Data Explorer クラスターに移動し、 **[クエリ]** を選択します。
 
     ![Query](media/grafana/query.png)
 
@@ -137,7 +143,7 @@ Azure Data Explorer を Grafana のデータ ソースとして構成するに�
 
 "*閲覧者*" ロールに割り当てられたサービス プリンシパルを使用して、Grafana のインスタンスでプロパティを指定し、Azure Data Explorer への接続をテストします。
 
-1. Grafana で、左側のメニューの歯車アイコンを選択し、**[Data Sources]\(データ ソース\)** を選択します。
+1. Grafana で、左側のメニューの歯車アイコンを選択し、 **[Data Sources]\(データ ソース\)** を選択します。
 
     ![データ ソース](media/grafana/data-sources.png)
 
@@ -167,7 +173,7 @@ Azure Data Explorer を Grafana のデータ ソースとして構成するに�
 
 Azure Data Explorer を Grafana のデータ ソースとして構成したら、データを視覚化します。 ここでは基本的な例を紹介しますが、できることはほかにも多数あります。 サンプル データ セットに対して実行する他のクエリの例については、「[Azure データ エクスプローラーのクエリを記述する](write-queries.md)」を参照することをお勧めします。
 
-1. Grafana で、左側のメニューのプラス アイコンを選択し、**[Dashboard]\(ダッシュボード\)** を選択します。
+1. Grafana で、左側のメニューのプラス アイコンを選択し、 **[Dashboard]\(ダッシュボード\)** を選択します。
 
     ![ダッシュボードの作成](media/grafana/create-dashboard.png)
 
@@ -175,7 +181,7 @@ Azure Data Explorer を Grafana のデータ ソースとして構成したら�
 
     ![グラフの追加](media/grafana/add-graph.png)
 
-1. グラフ パネルで、**[Panel Title]\(パネル タイトル\)**、**[Edit]\(編集\)** の順に選択します。
+1. グラフ パネルで、 **[Panel Title]\(パネル タイトル\)** 、 **[Edit]\(編集\)** の順に選択します。
 
     ![パネルの編集](media/grafana/edit-panel.png)
 
@@ -183,7 +189,7 @@ Azure Data Explorer を Grafana のデータ ソースとして構成したら�
 
     ![データ ソースの選択](media/grafana/select-data-source.png)
 
-1. クエリ ウィンドウで、次のクエリをコピーし、**[Run]\(実行\)** を選択します。 このクエリは、サンプル データ セットのイベント数を日単位でバケット処理します。
+1. クエリ ウィンドウで、次のクエリをコピーし、 **[Run]\(実行\)** を選択します。 このクエリは、サンプル データ セットのイベント数を日単位でバケット処理します。
 
     ```kusto
     StormEvents
@@ -192,7 +198,7 @@ Azure Data Explorer を Grafana のデータ ソースとして構成したら�
 
     ![Run query](media/grafana/run-query.png)
 
-1. グラフは既定で過去 6 時間のデータを対象としているため、グラフには結果が表示されません。 上部のメニューで、**[Last 6 hours]\(過去 6 時間\)** を選択します。
+1. グラフは既定で過去 6 時間のデータを対象としているため、グラフには結果が表示されません。 上部のメニューで、 **[Last 6 hours]\(過去 6 時間\)** を選択します。
 
     ![過去 6 時間](media/grafana/last-six-hours.png)
 
@@ -208,6 +214,6 @@ Azure Data Explorer を Grafana のデータ ソースとして構成したら�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Data Explorer のクエリを記述する](write-queries.md)
+* [Azure Data Explorer のクエリを記述する](write-queries.md)
 
-[チュートリアル: Power BI で Azure Data Explorer のデータを視覚化する](visualize-power-bi.md)
+* [チュートリアル: Power BI で Azure Data Explorer のデータを視覚化する](visualize-power-bi.md)

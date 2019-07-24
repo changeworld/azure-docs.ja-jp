@@ -9,11 +9,11 @@ ms.date: 03/02/2018
 ms.author: mandia
 ms.custom: include file
 ms.openlocfilehash: 11280e1678f52ede928cb2a85ea83add222e15fa
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149223"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181438"
 ---
 1. [Azure Portal](https://portal.azure.com) で、空のロジック アプリを作成します。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "66149223"
    > [!NOTE]
    > すべてのロジック アプリ ワークフローが、トリガーによって開始する必要があります。 アクションを選択できるのは、使用しているロジック ワークフローが既にトリガーによって開始されているときだけです。 
 
-4. 以前に接続を作成していない場合は、**[サインイン]** を選択し、メッセージが表示されたら GitHub の資格情報を入力します。  
+4. 以前に接続を作成していない場合は、 **[サインイン]** を選択し、メッセージが表示されたら GitHub の資格情報を入力します。  
 
    ![GitHub の資格情報でサインイン](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
 

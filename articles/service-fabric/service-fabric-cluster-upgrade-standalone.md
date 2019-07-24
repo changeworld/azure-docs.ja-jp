@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
 ms.openlocfilehash: 1d96a2e81917af5e80bb847ea25610ccb71ad70f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661499"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60711058"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Service Fabric スタンドアロン クラスターのアップグレードと更新
 
@@ -48,9 +48,9 @@ Microsoft からのリリース時に自動ファブリック アップグレー
 
 
 ## <a name="next-steps"></a>次の手順
-*  [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
-*  [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
-*  [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
+* [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
+* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
+* [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

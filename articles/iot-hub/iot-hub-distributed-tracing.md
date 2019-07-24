@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
 ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501378"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60400856"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -50,17 +50,17 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 1. [Azure portal](https://portal.azure.com/) で、IoT Hub に移動します。
 
-1. IoT Hub の左側のウィンドウで、下にスクロールして **[監視]** セクションを表示し、**[診断設定]** をクリックします。
+1. IoT Hub の左側のウィンドウで、下にスクロールして **[監視]** セクションを表示し、 **[診断設定]** をクリックします。
 
-1. 診断設定が有効になっていない場合は、**[診断を有効にする]** をクリックします。 診断設定が既に有効になっている場合、**[診断設定の追加]** をクリックします。
+1. 診断設定が有効になっていない場合は、 **[診断を有効にする]** をクリックします。 診断設定が既に有効になっている場合、 **[診断設定の追加]** をクリックします。
 
 1. **[名前]** フィールドに、新しい診断設定の名前を入力します。 たとえば、**DistributedTracingSettings** などです。
 
 1. ログの送信先を決定するために、次のオプションを 1 つ以上選択します。
 
-    - **[ストレージ アカウントへのアーカイブ]**:ログ情報を格納するようにストレージ アカウントを構成します。
-    - **[イベント ハブへのストリーム]**:ログ情報を格納するようにイベント ハブを構成します。
-    - **[Log Analytics への送信]**:ログ情報を格納するようにログ分析ワークスペースを構成します。
+    - **[ストレージ アカウントへのアーカイブ]** :ログ情報を格納するようにストレージ アカウントを構成します。
+    - **[イベント ハブへのストリーム]** :ログ情報を格納するようにイベント ハブを構成します。
+    - **[Log Analytics への送信]** :ログ情報を格納するようにログ分析ワークスペースを構成します。
 
 1. **[ログ]** セクションで、ログ情報が必要な操作を選択します。
 
@@ -187,11 +187,11 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 
 ### <a name="update-using-the-portal"></a>ポータルを使用して更新する
 
-1. [Azure portal](https://portal.azure.com/) でご使用の IoT Hub に移動し、**[IoT デバイス]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) でご使用の IoT Hub に移動し、 **[IoT デバイス]** をクリックします。
 
 1. ご使用のデバイスをクリックします。
 
-1. **[Enable distributed tracing (preview)]\(分散トレース (プレビュー) を有効にする\)** を探し、**[有効にする]** を選択します。
+1. **[Enable distributed tracing (preview)]\(分散トレース (プレビュー) を有効にする\)** を探し、 **[有効にする]** を選択します。
 
     ![Azure portal で分散トレースを有効にする](./media/iot-hub-distributed-tracing/azure-portal.png)
 
@@ -199,7 +199,7 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 
 1. **[Save]** をクリックします。
 
-1. しばらく待ってから、**[更新]** をクリックします。デバイスによって正常に認識されると、チェックマークの付いた同期アイコンが表示されます。
+1. しばらく待ってから、 **[更新]** をクリックします。デバイスによって正常に認識されると、チェックマークの付いた同期アイコンが表示されます。
 
 1. テレメトリ メッセージ アプリのコンソール ウィンドウに戻ります。 アプリケーション プロパティの `tracestate` で送信されるメッセージを確認できます。
 
@@ -213,11 +213,11 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 
 1. VS Code を開き、[IoT Hub 接続文字列を設定](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites)します。
 
-1. デバイスを展開し、**[Distributed Tracing Setting (Preview)]\(分散トレース設定 (プレビュー)\)** を探します。 その下で、サブ ノードの **[Update Distributed Tracing Setting (Preview)]\(分散トレース設定 (プレビュー) の更新\)** をクリックします。
+1. デバイスを展開し、 **[Distributed Tracing Setting (Preview)]\(分散トレース設定 (プレビュー)\)** を探します。 その下で、サブ ノードの **[Update Distributed Tracing Setting (Preview)]\(分散トレース設定 (プレビュー) の更新\)** をクリックします。
 
     ![Azure IoT Hub Toolkit で分散トレースを有効にする](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
-1. ポップアップ ウィンドウで、**[有効]** を選択し、Enter キーを押してサンプリング レートとして 100 を確定します。
+1. ポップアップ ウィンドウで、 **[有効]** を選択し、Enter キーを押してサンプリング レートとして 100 を確定します。
 
     ![サンプリング モードを更新する](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 

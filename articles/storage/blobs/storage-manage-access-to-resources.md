@@ -9,10 +9,10 @@ ms.date: 04/30/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: e0f93b0a95a228b26fae266129aea4b595b05e0f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148347"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名読み取りアクセスを管理する
@@ -43,7 +43,7 @@ Azure Blob Storage のコンテナーとその BLOB に対する匿名のパブ�
 [Azure portal](https://portal.azure.com) から、1 つまたは複数のコンテナーのパブリック アクセス レベルを更新することができます。
 
 1. Azure Portal のストレージ アカウントに移動します。
-1. メニュー ブレードの **[Blob service]** で、**[BLOB]** を選択します。
+1. メニュー ブレードの **[Blob service]** で、 **[BLOB]** を選択します。
 1. パブリック アクセス レベルを設定するコンテナーを選択します。
 1. **[アクセス レベルの変更]** ボタンを使用して、パブリック アクセスの設定を表示します。
 1. **[パブリック アクセス レベル]** ドロップダウンから目的のパブリック アクセス レベルを選択し、[OK] ボタンをクリックして選択したコンテナーに変更を適用します。

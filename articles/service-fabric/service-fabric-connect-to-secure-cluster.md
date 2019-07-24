@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2019
 ms.author: aljo
-ms.openlocfilehash: 42c8fa15c6b1e7c98ae47180bec5cc61236a7c44
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 703830778edb73781a263ae4d92529f7f79a0eb2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666530"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66306850"
 ---
 # <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 
@@ -41,7 +41,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 .pfx ファイルがパスワードで保護されていない場合は、最後のパラメーターとして -passin pass: を使用します。
 
-クライアント証明書を pem ファイルとして指定するには、`--pem` 引数でファイル パスを指定します。 例: 
+クライアント証明書を pem ファイルとして指定するには、`--pem` 引数でファイル パスを指定します。 例:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -55,7 +55,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-テスト クラスターまたは開発クラスターのセキュリティ保護に使用される証明書では、証明書の検証が失敗することがあります。 証明書の検証をバイパスするには、`--no-verify` オプションを指定します。 例: 
+テスト クラスターまたは開発クラスターのセキュリティ保護に使用される証明書では、証明書の検証が失敗することがあります。 証明書の検証をバイパスするには、`--no-verify` オプションを指定します。 例:
 
 > [!WARNING]
 > 運用環境の Service Fabric クラスターに接続するときに `no-verify` オプションを使用しないでください。
@@ -64,7 +64,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./cli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-さらに、信頼された CA 証明書のディレクトリ、または個々の証明書へのパスを指定することもできます。 これらのパスを指定するには、`--ca` 引数を使用します。 例: 
+さらに、信頼された CA 証明書のディレクトリ、または個々の証明書へのパスを指定することもできます。 これらのパスを指定するには、`--ca` 引数を使用します。 例:
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
@@ -355,7 +355,7 @@ AAD でセキュリティ保護されているクラスターに接続するに�
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-自動的に、AAD を使用したログインを求められます。
+自動的に、AAD へのサインインを求められます。
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>セキュリティで保護されたクラスターにクライアント証明書を使用して接続する
 

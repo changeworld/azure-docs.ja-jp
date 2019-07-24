@@ -16,17 +16,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 463f5c2d03cd96089342aa9b22ef85ebc05aa909
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436729"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60438132"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Azure portal におけるリスクのフラグ付きユーザー レポート
 
 Azure Active Directory (Azure AD) は、ユーザー アカウントに関連する疑わしい動作を検出します。 検出された動作ごとに、"[リスク イベント](concept-risk-events.md)" と呼ばれるレコードが作成されます。
 
-セキュリティ レポートには、[Azure portal](https://portal.azure.com) から **[Azure Active Directory]** ブレードを選択し、**[セキュリティ]** セクションに移動することでアクセスできます。 
+セキュリティ レポートには、[Azure portal](https://portal.azure.com) から **[Azure Active Directory]** ブレードを選択し、 **[セキュリティ]** セクションに移動することでアクセスできます。 
 
 検出されたリスク イベントは、以下のものの計算に使用されます。
 

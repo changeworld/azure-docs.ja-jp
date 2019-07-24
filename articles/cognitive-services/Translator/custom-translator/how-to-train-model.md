@@ -2,19 +2,19 @@
 title: モデルをトレーニングする - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: モデルのトレーニングは、翻訳モデルを構築するときに重要な手順です。 トレーニングは、そのトレーニング用に選択したドキュメントに基づいて行われます。
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2045041a9ee4872e4510e5ee0deba258b0342557
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 8804285bf419bce5ca85cc5070cd47ce9a87392a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437290"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447956"
 ---
 # <a name="train-a-model"></a>モデルをトレーニングする
 

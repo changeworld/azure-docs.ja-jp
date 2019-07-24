@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 8f63c62cd23fef5565628793379afd8bcc9f447b
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 49b2bdd1780caa4ae04efbc979e2ea33e2c13c4c
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510157"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147230"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
 
@@ -171,7 +171,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractUpdate",
-    "status": "Submitted"
+    "status": "Submitted",
     "additionalInformation": { }
 }
 ```
@@ -201,7 +201,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractUpdate",
-    "status": "Failure"
+    "status": "Failure",
     "additionalInformation": {
         "errorCode": 4000,
         "errorMessage": "Contract cannot be provisioned on connection."
@@ -287,7 +287,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractActionUpdate",
-    "status": "Committed"
+    "status": "Committed",
     "additionalInformation": { }
 }
 ```
@@ -301,7 +301,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractActionUpdate",
-    "status": "Failure"
+    "status": "Failure",
     "additionalInformation": {
         "errorCode": 4000,
         "errorMessage": "Contract action cannot be provisioned on connection."
@@ -368,7 +368,7 @@ Service Bus トピックは、Blockchain Workbench で発生するイベント�
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Logic Apps による Service Bus メッセージの使用
 
 1. Azure Portal で新しい **Azure Logic App** を作成します。
-2. ポータルで Azure Logic App を開くときに、トリガーの選択を求めるメッセージが表示されます。 検索ボックスに「**Service Bus**」と入力し、Service Bus との対話の種類に適したトリガーを選択します。 たとえば、**[Service Bus -- メッセージがトピック サブスクリプションに着信したとき (オート コンプリート)]** です。
+2. ポータルで Azure Logic App を開くときに、トリガーの選択を求めるメッセージが表示されます。 検索ボックスに「**Service Bus**」と入力し、Service Bus との対話の種類に適したトリガーを選択します。 たとえば、 **[Service Bus -- メッセージがトピック サブスクリプションに着信したとき (オート コンプリート)]** です。
 3. ワークフロー デザイナーが表示されたら、Service Bus の接続情報を指定します。
 4. サブスクリプションを選択し、**workbench-external** のトピックを指定します。
 5. このトリガーからのメッセージを利用するアプリケーションのロジックを開発します。
@@ -415,7 +415,7 @@ Azure Blockchain Workbench からの *BlockMessage* の例:
 ``` json
 {
     "block": {
-        "blockId": 123
+        "blockId": 123,
         "blockNumber": 1738312,
         "blockHash": "0x03a39411e25e25b47d0ec6433b73b488554a4a5f6b1a253e0ac8a200d13fffff",
         "previousBlockHash": null,
@@ -423,14 +423,14 @@ Azure Blockchain Workbench からの *BlockMessage* の例:
     },
     "transactions": [
         {
-            "transactionId": 234
+            "transactionId": 234,
             "transactionHash": "0xa4d9c95b581f299e41b8cc193dd742ef5a1d3a4ddf97bd11b80d123fec27ffff",
             "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
             "to": null,
             "provisioningStatus": 1
         },
         {
-            "transactionId": 235
+            "transactionId": 235,
             "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
             "from": "0xadd97e1e595916e29ea94fda894941574000ffff",
             "to": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff",
@@ -715,7 +715,7 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
     "applicationName": "AssetTransfer",
     "applicationDisplayName": "Asset Transfer",
     "applicationVersion": “1.0”,
-    "applicationDefinitionLocation": "http://url"
+    "applicationDefinitionLocation": "http://url",
     "contractCodes": [
         {
             "id": 23,
@@ -805,7 +805,7 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
                 }
             ]
         }
-    ]
+    ],
     "connectionId": [ ],
     "messageSchemaVersion": "1.0.0",
     "messageName": "EventMessage",
@@ -817,7 +817,7 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
                     "Name": "BuyerAccepted",
                     "Transitions": [
                         {
-                            "DisplayName": "Accept"
+                            "DisplayName": "Accept",
                             "AllowedRoles": [ ],
                             "AllowedInstanceRoles": [ "InstanceOwner" ],
                             "Function": "Accept",

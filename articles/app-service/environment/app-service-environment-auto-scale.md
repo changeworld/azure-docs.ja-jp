@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 29a639142395c43fea06c1d6d18909b3c9f33b86
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270027"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65955968"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自動スケールと App Service Environment v1
 
@@ -63,7 +63,7 @@ App Service 環境の自動スケールの説明は、シナリオを通して�
 この記事では、自動スケールを設定するときに必要なすべての考慮事項を説明します。 この記事では、App Service Environment でホストされている App Service 環境の自動スケールを考慮に入れる場合に必要なあらゆるやり取りについて説明します。
 
 ### <a name="scenario-introduction"></a>シナリオの概要
-Frank は企業の sysadmin です。彼は管理を担当しているワークロードの一部を App Service 環境に移行しました。
+Frank 氏は企業の sysadmin です。彼は管理するワークロードの一部を App Service 環境に移行しました。
 
 App Service 環境は、次のように手動で拡張するように構成されています。
 
@@ -76,7 +76,7 @@ App Service 環境は、次のように手動で拡張するように構成さ�
 
 QA および開発用の App Service プランは、手動スケールに構成されます。 この運用環境の App Service プランは、負荷とトラフィックの変動に対処するために自動スケールに設定されます。
 
-Frank は、アプリケーションに関する知識がきわめて豊富です。 このアプリケーションは従業員がオフィスにいる間に使用する基幹業務 (LOB) アプリケーションであることから、負荷がピークとなる時間帯は 9:00 AM ～ 6:00 PM であることがわかっています。 その後、ユーザーがその日の業務を終了すると、使用率は低下します。 アプリにはユーザーがリモートからモバイル デバイスまたは自宅の PC を使ってアクセスできるので、ピーク時間外にも負荷は発生します。 運用環境の App Service プランは、次のルールを使用して CPU 使用率に基づき自動スケールを行うように構成済みです。
+Frank は、アプリケーションに関する知識がきわめて豊富です。 このアプリケーションは従業員がオフィスにいる間に使用する基幹業務 (LOB) アプリケーションであることから、負荷がピークとなる時間帯は 9:00 AM から 6:00 PM であることがわかっています。 その後、ユーザーがその日の業務を終了すると、使用率は低下します。 アプリにはユーザーがリモートからモバイル デバイスまたは自宅の PC を使ってアクセスできるので、ピーク時間外にも負荷は発生します。 運用環境の App Service プランは、次のルールを使用して CPU 使用率に基づき自動スケールを行うように構成済みです。
 
 ![Specific settings for LOB app.][asp-scale]
 

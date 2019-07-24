@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d158e1869cb85752b9b24e76d5227a2f7167bfcf
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 2871a4a0efaa40d20148ede7f0402a0dd874126c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569469"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65957300"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps アカウントを管理する
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="delete-an-account"></a>アカウントの削除
 
-Azure Portal からアカウントを削除できます。 [アカウントの概要] ページに移動し、**[削除]** を選択します。
+Azure Portal からアカウントを削除できます。 [アカウントの概要] ページに移動し、 **[削除]** を選択します。
 
 ![ポータルでアカウントを削除する](./media/how-to-manage-account-keys/account-delete-portal.png)
 
@@ -43,10 +43,14 @@ Azure Portal からアカウントを削除できます。 [アカウントの�
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure Maps アカウントの価格レベルを管理する方法について確認します。
-    > [!div class="nextstepaction"] 
-    > [価格レベルを管理する](./how-to-manage-pricing-tier.md)
+Azure Maps による認証の設定:
+> [!div class="nextstepaction"]
+> [認証を管理する](how-to-manage-authentication.md)
 
-* Azure Maps アカウントにおける API 使用状況のメトリックを表示する方法について確認します。
-    > [!div class="nextstepaction"] 
-    > [使用状況メトリックを表示する](./how-to-view-api-usage.md)
+Azure Maps アカウントの価格レベルを管理する方法について確認します。
+> [!div class="nextstepaction"] 
+> [価格レベルを管理する](how-to-manage-pricing-tier.md)
+
+Azure Maps アカウントにおける API 使用状況のメトリックを表示する方法について確認します。
+> [!div class="nextstepaction"] 
+> [使用状況メトリックを表示する](how-to-view-api-usage.md)

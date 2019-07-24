@@ -10,12 +10,12 @@ ms.date: 05/21/2019
 ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
-ms.openlocfilehash: 5b3475f35ac958432d319eafe6e3392e155d9ff4
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: 6a4f7f5671562679a245d97ad8491764657cbb34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002113"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66242462"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure 仮想マシン用の拡張メトリックを追加する
 
@@ -28,7 +28,7 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 - 使用状況に応じてサイズを調整し、コストを管理します。
 - Cloudyn からコスト効率のよいサイズ設定の最適化に関する推奨事項を取得します。
 
-たとえば、Azure VM の CPU 使用率とメモリ使用率を監視することができます。 Azure VM のメトリックは、_[Host] Percentage CPU_ および _[Guest] Memory percentage_ に対応します。
+たとえば、Azure VM の CPU 使用率とメモリ使用率を監視することができます。 Azure VM のメトリックは、_Percentage CPU_ および _\Memory\% Committed Bytes In Use_ に対応します。
 
 > [!NOTE]
 > 拡張メトリック データの収集は、Azure のゲスト レベルの監視でのみサポートされます。 Cloudyn は、Azure Monitor ログの VM 拡張機能と互換性がありません。
@@ -36,7 +36,7 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>拡張メトリックが有効になっているかどうかを確認する
 
 1. Azure Portal ( https://portal.azure.com ) にサインインします。
-2. **[仮想マシン]** で VM を選んでから、**[監視]** で **[メトリック]** を選びます。 使用可能なメトリックの一覧が表示されます。
+2. **[仮想マシン]** で VM を選んでから、 **[監視]** で **[メトリック]** を選びます。 使用可能なメトリックの一覧が表示されます。
 3. メトリックをいくつか選ぶと、グラフにそれらのデータが表示されます。  
     ![メトリックの例: ホストの CPU 使用率](./media/azure-vm-extended-metrics/metric01.png)
 
@@ -44,7 +44,7 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Azure Portal で拡張メトリックを有効にする
 
-標準的なメトリックは、ホスト コンピューターのメトリックです。 _[Host] Percentage CPU_ メトリックは 1 つの例です。 ゲスト VM にも基本的なメトリックがあり、それらは拡張メトリックとも呼ばれます。 拡張メトリックの例としては、_[Guest] Memory percentage_ や _[Guest] Memory available_ などがあります。
+標準的なメトリックは、ホスト コンピューターのメトリックです。 _Percentage CPU_ メトリックは 1 つの例です。 ゲスト VM にも基本的なメトリックがあり、それらは拡張メトリックとも呼ばれます。 拡張メトリックの例には、 _\Memory\% Committed Bytes In Use_ や _\Memory\Available Bytes_ があります。
 
 拡張メトリックを有効にするのは簡単です。 VM ごとに、ゲスト レベルの監視を有効にします。 ゲスト レベルの監視を有効にすると、Azure Diagnostics エージェントが VM にインストールされます。 既定では、拡張メトリックの基本セットが追加されます。 以降のプロセスは、クラシック VM と通常の VM、および Windows VM と Linux VM で同じです。
 
@@ -54,11 +54,11 @@ Azure と Linux のゲスト レベルの監視では、どちらもストレー
 
 1. **[仮想マシン]** で、VM の一覧を表示して、VM を選びます。
 2. **[監視]** で **[診断設定]** を選択します。
-3. [診断設定] ページで、**[ゲスト レベルの監視を有効にする]** をクリックします。  
+3. [診断設定] ページで、 **[ゲスト レベルの監視を有効にする]** をクリックします。  
     ![[概要] ページでゲスト レベルの監視を有効にする](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. 数分で、VM に Azure Diagnostics エージェントがインストールされます。 メトリックの基本セットが追加されます。 ページを更新します。 追加されたパフォーマンス カウンターが [概要] タブに表示されます。
 5. [監視] で **[メトリック]** を選びます。
-6. In the metrics chart under **[メトリック名前空間]** の	メトリックのグラフで、**[ゲスト (クラシック)]** を選択します。
+6. In the metrics chart under **[メトリック名前空間]** の	メトリックのグラフで、 **[ゲスト (クラシック)]** を選択します。
 7. メトリックの一覧で、ゲスト VM で使用できるすべてのパフォーマンス カウンターを確認できます。  
     ![拡張メトリックの例の一覧](./media/azure-vm-extended-metrics/extended-metrics.png)
 
@@ -80,7 +80,7 @@ Azure PowerShell スクリプトを使って、VM のメトリックを有効に
 
 ## <a name="view-azure-performance-metrics"></a>Azure のパフォーマンス メトリックを表示する
 
-Cloudyn ポータルで Azure インスタンスのパフォーマンス メトリックを表示するには、**[Assets]\(アセット\)** > **[Compute]\(コンピューティング\)** > **[Instance Explorer]\(インスタンス エクスプローラー\)** に移動します。 VM インスタンスの一覧でインスタンスを展開し、詳細を表示するリソースを展開します。
+Cloudyn ポータルで Azure インスタンスのパフォーマンス メトリックを表示するには、 **[Assets]\(アセット\)**  >  **[Compute]\(コンピューティング\)**  >  **[Instance Explorer]\(インスタンス エクスプローラー\)** に移動します。 VM インスタンスの一覧でインスタンスを展開し、詳細を表示するリソースを展開します。
 
 ![インスタンス エクスプローラーに表示される情報の例](./media/azure-vm-extended-metrics/instance-explorer.png)
 

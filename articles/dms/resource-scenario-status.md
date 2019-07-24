@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/04/2019
-ms.openlocfilehash: f25bc9bc3a958b2fa97ae4d5ab3715b602110393
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4159b2e7af83030f46d5aca150ef99a1380e711f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915477"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61473010"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 Azure Database Migration Service は、オフライン (1 回限り) とオンライン (継続的同期) 両方のさまざまな移行シナリオ (ソース/ターゲットのペア) をサポートするように設計されています。 Azure Database Migration Service が対応するシナリオの範囲は、徐々に広がっています。 定期的に新しいシナリオが追加されています。 この記事では、Azure Database Migration Service で現在サポートされている移行シナリオと、各シナリオの状態 (プライベート プレビュー、パブリック プレビュー、または一般提供) を示します。
@@ -39,7 +39,7 @@ Azure Database Migration Service によってサポートされる移行シナ�
 ### <a name="offline-one-time-migration-support"></a>オフライン (1 回限り) の移行のサポート
 次の表では、オフライン移行に対する Azure Database Migration Service のサポートを示します。
 
-| ターゲット  | ソース | サポート | Status |
+| ターゲット  | source | サポート | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | 一般公開 |
 |   | RDS SQL |  |  |
@@ -58,7 +58,7 @@ Azure Database Migration Service によってサポートされる移行シナ�
 ### <a name="online-continuous-sync-migration-support"></a>オンライン (継続的同期) の移行のサポート
 次の表では、オンライン移行に対する Azure Database Migration Service のサポートを示します。
 
-| ターゲット  | ソース | サポート | Status |
+| ターゲット  | source | サポート | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | 一般公開 |
 |   | RDS SQL | ✔ | 一般公開 |

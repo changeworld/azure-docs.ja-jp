@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 56a66c3eb1dad93fad3ad1572989dc0c0aa14632
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326530"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60622767"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>PowerShell を使用してラボのストレージ アカウントに VHD ファイルをアップロードします
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Azure DevTest Labs では、VHD ファイルを使用してカスタム イメージを作成でき、そのイメージを使用して仮想マシンをプロビジョニングできます。 次の手順は、PowerShell を使用して、VHD ファイルをラボのストレージ アカウントにアップロードする方法を示しています。 VHD ファイルをアップロードしたら、[「次のステップ」セクション](#next-steps)の記事に従って、アップロードした VHD ファイルからカスタム イメージを作成できます。 Azure のディスクと VHD について詳しくは、「[マネージド ディスクの概要](../virtual-machines/linux/managed-disks-overview.md)」をご覧ください。
+Azure DevTest Labs では、VHD ファイルを使用してカスタム イメージを作成でき、そのイメージを使用して仮想マシンをプロビジョニングできます。 次の手順は、PowerShell を使用して、VHD ファイルをラボのストレージ アカウントにアップロードする方法を示しています。 VHD ファイルをアップロードしたら、[「次のステップ」セクション](#next-steps)の記事に従って、アップロードした VHD ファイルからカスタム イメージを作成できます。 Azure のディスクと VHD の詳細については、「[マネージド ディスクの概要](../virtual-machines/linux/managed-disks-overview.md)」を参照してください。
 
 ## <a name="step-by-step-instructions"></a>詳細な手順
 
@@ -39,13 +39,13 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
 1. ラボのブレードで、 **[構成]** を選択します。 
 
-1. ラボの **[構成]** ブレードで、**[カスタム イメージ (VHD)]** を選択します。
+1. ラボの **[構成]** ブレードで、 **[カスタム イメージ (VHD)]** を選択します。
 
-1. **[カスタム イメージ]** ブレードで、**[+追加]** を選択します。 
+1. **[カスタム イメージ]** ブレードで、 **[+追加]** を選択します。 
 
-1. **[カスタム イメージ]** ブレードで、**[VHD]** を選択します。
+1. **[カスタム イメージ]** ブレードで、 **[VHD]** を選択します。
 
-1. **[VHD]** ブレードで、**[Upload a VHD file using PowerShell (PowerShell を使用して VHD ファイルをアップロードする)]** を選択します。
+1. **[VHD]** ブレードで、 **[Upload a VHD file using PowerShell (PowerShell を使用して VHD ファイルをアップロードする)]** を選択します。
 
     ![PowerShell を使用した VHD のアップロード](./media/devtest-lab-upload-vhd-using-powershell/upload-image-using-psh.png)
 

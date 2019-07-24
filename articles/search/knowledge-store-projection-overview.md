@@ -1,5 +1,5 @@
 ---
-title: ナレッジ ストアでのプロジェクションの操作 - Azure Search
+title: ナレッジ ストアでのプロジェクションの操作 (プレビュー) - Azure Search
 description: 検索以外のシナリオで使用するために AI のインデックス作成パイプラインから強化されたデータを保存して整形します
 manager: eladz
 author: vkurpad
@@ -10,18 +10,22 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
 ms.custom: seomay2019
-ms.openlocfilehash: 3ab5ffafd1b20eb0e3e453d3e730840baf9233e1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: f1c7278909557dc92f86c5dfc1f190fddf33f607
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027679"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65540820"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>ナレッジ ストアでのプロジェクションの操作
 
+> [!Note]
+> ナレッジ ストアはプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で .NET SDK のサポートはありません。
+>
+
 Azure Search を使用すると、インデックス作成の一環として AI 認知技術とカスタム技術を介してコンテンツを強化することができます。 強化によってドキュメントに構造が追加され、検索がより効果的になります。 多くの場合、強化されたドキュメントは、ナレッジ マイニングなど、検索以外のシナリオに役立ちます。
 
-[ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md) のコンポーネントであるプロジェクションは、ナレッジ マイニングの目的で物理ストレージに保存できる強化されたドキュメントのビューです。 プロジェクションを使用すると、Power BI などのツールで追加の作業なしでデータを読み取ることができるように、関係を維持しながら、ニーズに合った形状にデータを "射影" できます。 
+[ナレッジ ストア](knowledge-store-concept-intro.md)のコンポーネントであるプロジェクションは、ナレッジ マイニングの目的で物理ストレージに保存できる強化されたドキュメントのビューです。 プロジェクションを使用すると、Power BI などのツールで追加の作業なしでデータを読み取ることができるように、関係を維持しながら、ニーズに合った形状にデータを "射影" できます。 
 
 プロジェクションは、Azure Table ストレージの行と列に格納されたデータ、または Azure Blob ストレージに格納された JSON オブジェクトを使用して表形式にすることができます。 データが強化されると、データの複数のプロジェクションを定義できます。 これは、個々のユース ケースで同じデータを異なる方法で整形する場合に便利です。 
 

@@ -9,11 +9,11 @@ ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867577"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478574"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export サービス: よく寄せられる質問 
 以下では、Azure Import/Export サービスを使用してデータを Azure Storage に転送するときによくある質問と、それに対する回答を示します。 質問と回答は次の各カテゴリに分類されます。
@@ -97,7 +97,7 @@ FedEx、DHL、UPS などの既知の運送業者や、米国郵政公社を利�
 
 要件は、特定の Azure データセンターの制限事項によって異なります。
 - セキュリティ上の理由から、小包に Microsoft データセンターの入荷 ID 番号を記載することを求めるサイトがいくつかあります。 ドライブまたはディスクをデータセンターに発送する前に、Azure DataBox Operations (adbops@microsoft.com) に連絡してこの番号を入手してください。 この番号がない場合、パッケージは受け取り拒否されます。
-- インドのデータセンターでは、入門許可証を入手するために、ドライバーの個人情報 (政府 ID カード番号または証明番号  (PAN、AADHAR、DL など)、名前、連絡先、車のナンバーなど) が必要になります。 配送遅延が発生しないように、これらの要件について運送業者に知らせてください。
+- インドのデータセンターでは、入門許可証を入手するために、ドライバーの個人情報 (政府 ID カード番号または証明番号 (PAN、AADHAR、DL など)、名前、連絡先、車のナンバーなど) が必要になります。 配送遅延が発生しないように、これらの要件について運送業者に知らせてください。
 
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>ジョブの作成時に、ストレージ アカウントの場所とは異なる場所が送付先住所として提供されました。 どうすればよいですか。

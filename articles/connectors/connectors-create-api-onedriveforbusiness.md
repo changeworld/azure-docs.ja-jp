@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 63cb02c52b5def12675ccca4f2cd292a8ad4bb66
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 87a162338cc67a3f2d2fc425bbcbefe2976661e5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295644"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62104920"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>OneDrive for Business コネクタの使用
 OneDrive for Business に接続してファイルを管理します。 ファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。

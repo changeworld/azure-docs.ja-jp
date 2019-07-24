@@ -3,19 +3,19 @@ title: チュートリアル:テキストの翻訳、音声合成、分析を行
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Azure Cognitive Services を使用してテキストの翻訳、感情分析、翻訳済みテキストの音声合成を行う Flask ベースの Web アプリを作成します。 重点的に取り上げるのは、目的のアプリケーションを実現する Python コードと Flask ルートです。 アプリを制御する JavaScript については詳しく取り上げませんが、ご自身で詳細に調べることができるようすべてのファイルを提供しています。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 69e6797e91fc645e3bd3e3b300cea6852a662214
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: cef747e82e7d039952bec73e822f28eab2adaa97
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59007406"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434890"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
 
@@ -106,7 +106,7 @@ Flask Web アプリを作成する前に、プロジェクトの作業ディレ�
    | プラットフォーム | シェル | command |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
-   |  Windows | Bash | `source venv/Scripts/activate` |
+   | Windows | Bash | `source venv/Scripts/activate` |
    | | コマンド ライン | `venv\Scripts\activate.bat` |
    | | PowerShell | `venv\Scripts\Activate.ps1` |
 

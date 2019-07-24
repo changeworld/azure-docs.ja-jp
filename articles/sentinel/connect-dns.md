@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 6429568b33ece3ed4f26614e55e8c3069dd65d71
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204403"
 ---
 # <a name="connect-your-domain-name-server"></a>ドメイン ネーム サーバーへの接続
@@ -42,16 +42,16 @@ DNS マシンにエージェントをインストールすることで、DNS 接
 
 ## <a name="connect-your-dns-appliance"></a>DNS アプライアンスの接続
 
-1. Azure Sentinel portal で、**[Data connectors]\(データ コネクタ\)** を選択し、**[DNS]** タイルを選択します。
+1. Azure Sentinel portal で、 **[Data connectors]\(データ コネクタ\)** を選択し、 **[DNS]** タイルを選択します。
 1. DNS マシンが Azure にある場合は、次の手順を実行します。
     1. **[Download & install agent for Windows virtual machines]\(Windows 仮想マシン用エージェントのダウンロードとインストール\)** をクリックします。
     1. **[仮想マシン]** 一覧で、Azure Sentinel にストリーミングする DNS マシンを選択します。 これが Windows VM であることを確認します。
-    1. 開いているその VM のウィンドウで、**[接続]** をクリックします。  
+    1. 開いているその VM のウィンドウで、 **[接続]** をクリックします。  
     1. **[DNS connector]\(DNS コネクタ\)** ウィンドウで **[有効化]** をクリックします。 
 
 2. DNS マシンが Azure VM ではない場合は、次の手順を実行します。
     1. **[Download & install agent for Windows non-Azure machines]\(Azure 以外の Windows マシン用エージェントのダウンロードとインストール\)** をクリックします。
-    1. **[ダイレクト エージェント]** ウィンドウで、**[Download Windows agent (64 bit)]\(Windows エージェントのダウンロード (64 ビット)\)** または **[Download Windows agent (32 bit)]\(Windows エージェントのダウンロード (32 ビット)\)** を選択します。
+    1. **[ダイレクト エージェント]** ウィンドウで、 **[Download Windows agent (64 bit)]\(Windows エージェントのダウンロード (64 ビット)\)** または **[Download Windows agent (32 bit)]\(Windows エージェントのダウンロード (32 ビット)\)** を選択します。
     1. DNS マシンにエージェントをインストールします。 **ワークスペース ID**、**主キー**、**2 次キー**をコピーし、インストール中に入力を要求されたらこれらを使用します。
 
 3. Log Analytics で DNS ログに関連するスキーマを使用するために、**DnsEvents** を検索します。

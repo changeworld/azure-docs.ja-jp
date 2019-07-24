@@ -8,11 +8,11 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791802"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62118689"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -30,7 +30,7 @@ Windows 2016 のイメージと CentOS のイメージがあります。  [Azure
 
 プール構成の例については、[Azure CLI でのレンダリングのチュートリアル](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)をご覧ください。  Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
 
-| Publisher | プラン | SKU | Version |
+| Publisher | プラン | SKU | バージョン |
 |---------|---------|---------|--------|
 | batch (バッチ) | rendering-centos73 | rendering | latest |
 | batch (バッチ) | rendering-windows2016 | rendering | latest |
@@ -62,7 +62,7 @@ Azure portal または Batch Explorer を使用してアプリケーションを
 
 レンダリング タスクのコマンドラインを作成できるようにするには、レンダリング アプリケーションの実行可能ファイルのインストール場所を指定する必要があります。  Azure Marketplace の VM イメージにシステム環境変数が作成されており、これを実際のパスを指定する代わりに使用できます。  これらの環境変数は、[Batch の標準の環境変数](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables)に加えてタスクごとに作成されます。
 
-|アプリケーション|アプリケーション実行可能ファイル|環境変数|
+|Application|アプリケーション実行可能ファイル|環境変数|
 |---------|---------|---------|
 |Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
 |Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|

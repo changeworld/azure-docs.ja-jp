@@ -10,19 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: bbf9c162cd52dc94ee820c8597f36f7cbfeace5a
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: a453e82f47bb9eed25c8d5caf986bc854085e8ac
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630757"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061218"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
-
-[Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 [要求の自動的なインストルメント化、依存関係の追跡、パフォーマンス カウンターの収集](auto-collect-dependencies.md#java)、[パフォーマンスの問題と例外の診断](../../azure-monitor/app/detect-triage-diagnose.md)、ユーザーがアプリで行っていることを追跡するための[コードの作成][api]に使用します。 
+[Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 [要求の自動的なインストルメント化、依存関係の追跡、パフォーマンス カウンターの収集](auto-collect-dependencies.md#java)、パフォーマンスの問題と例外の診断、ユーザーがアプリで行っていることを追跡するための[コードの作成][api]に使用します。 
 
 ![概要サンプル データのスクリーンショット](./media/java-get-started/overview-graphs.png)
 
@@ -172,7 +171,7 @@ Application Insights SDK は、次の順序でキーを探します。
 ```
 
 ## <a name="4-add-an-http-filter"></a>4.HTTP フィルターを追加する
-最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします  (単に最小限の API が必要な場合はこの手順を行う必要はありません)。
+最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします (単に最小限の API が必要な場合はこの手順を行う必要はありません)。
 
 ### <a name="spring-boot-applications"></a>Spring Boot アプリケーション
 Application Insights の `WebRequestTrackingFilter` を Configuration クラスに登録します。
@@ -303,7 +302,7 @@ Application Insights パッケージを含めるように、*-servlet.xml で次
 ## <a name="6-view-your-telemetry-in-application-insights"></a>6.Application Insights でのテレメトリを表示する
 [Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
-HTTP 要求データが概要ブレードに表示されます  (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
+HTTP 要求データが概要ブレードに表示されます (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
 ![概要サンプル データのスクリーンショット](./media/java-get-started/overview-graphs.png)
 
@@ -380,7 +379,7 @@ Application Insights Java SDK では、[W3C 分散トレース](https://w3c.gith
 送信 SDK の構成は、[AI-Agent.xml](java-agent.md) ファイル内で定義されます。
 
 ## <a name="performance-counters"></a>パフォーマンス カウンター
-**[調査]**、**[メトリック]** の順に開くと、一連のパフォーマンス カウンターが表示されます。
+**[調査]** 、 **[メトリック]** の順に開くと、一連のパフォーマンス カウンターが表示されます。
 
 ![プロセス プライベート バイトが選択されているメトリック ペインのスクリーンショット](./media/java-get-started/011-perf-counters.png)
 
@@ -487,7 +486,6 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 * [Unix パフォーマンス カウンターを監視する](java-collectd.md)
 * [Web ページに監視機能](javascript.md)を追加して、ページの読み込み時間、AJAX 呼び出し、ブラウザーの例外を監視する
 * [カスタム テレメトリ](../../azure-monitor/app/api-custom-events-metrics.md)を書き込んで、ブラウザーまたはサーバーでの使用状況を追跡する
-* システムを監視するために、[ダッシュボード](../../azure-monitor/app/app-insights-dashboards.md)を作成して重要なグラフをまとめる
 * [Analytics](../../azure-monitor/app/analytics.md) を使用して、アプリからのテレメトリに対して強力なクエリを実行する
 * 詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」を参照してください。
 

@@ -5,16 +5,16 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 06/19/2019
 ms.author: rogarana
-ms.openlocfilehash: 26251ebd3c83f6cd44203e1d3cc5f1b523a0d8d9
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 80d871bdc17c3f93e113b08201d6c53f29bfeff0
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237787"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295614"
 ---
-# <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>SMB を使用して Azure Files への Azure Active Directory 認証を有効にする (プレビュー)
+# <a name="enable-azure-active-directory-domain-service-authentication-over-smb-for-azure-files-preview"></a>SMB を使用して Azure Files への Azure Active Directory ドメイン サービス認証を有効にする (プレビュー)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 SMB を使用した Azure Files への Azure AD 認証の概要については、[SMB を使用した Azure Files への Azure Active Directory 認証 (プレビュー) の概要](storage-files-active-directory-overview.md)に関する記事を参照してください。
@@ -143,15 +143,14 @@ Azure AD の資格情報を使用して Azure Files のリソースにアクセ�
   "IsCustom": true,
   "Description": "Allows for read, write and delete access to Azure File Share over SMB",
   "Actions": [
-    "*"
-  ],
-  "NotActions": [
-    "Microsoft.Authorization/*/Delete",
-        "Microsoft.Authorization/*/Write",
-        "Microsoft.Authorization/elevateAccess/Action"
+    "Microsoft.Storage/storageAccounts/fileServices/*"
   ],
   "DataActions": [
-    "*"
+    "Microsoft.Storage/storageAccounts/fileServices/*"
+  ],
+  "NotDataActions": [
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action",
+    "Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actassuperuser/action"
   ],
   "AssignableScopes": [
         "/subscriptions/<Subscription-ID>"
@@ -169,10 +168,10 @@ Azure AD の資格情報を使用して Azure Files のリソースにアクセ�
   "IsCustom": true,
   "Description": "Allows for read access to Azure File Share over SMB",
   "Actions": [
-    "*/read"
+    "Microsoft.Storage/storageAccounts/fileServices/*/read"
   ],
   "DataActions": [
-    "*/read"
+    "Microsoft.Storage/storageAccounts/fileServices/*/read"
   ],
   "AssignableScopes": [
         "/subscriptions/<Subscription-ID>"

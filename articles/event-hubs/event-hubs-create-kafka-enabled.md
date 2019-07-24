@@ -12,11 +12,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
 ms.openlocfilehash: 125da95349fce0e75b44b5619baba28d34a74be1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000492"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60822477"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>Apache Kafka 対応イベント ハブの作成
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     ![名前空間の作成](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
-4. 名前空間が作成されたら、**[設定]** タブで **[共有アクセス ポリシー]** をクリックして接続文字列を取得します。
+4. 名前空間が作成されたら、 **[設定]** タブで **[共有アクセス ポリシー]** をクリックして接続文字列を取得します。
 
     ![[共有アクセス ポリシー] をクリックする](./media/event-hubs-create/create-event-hub7.png)
 

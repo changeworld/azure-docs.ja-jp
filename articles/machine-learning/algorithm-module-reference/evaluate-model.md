@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/06/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 40a8247c22da1f7a057e222565ffb2ec4c6b7fb3
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027717"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
@@ -53,7 +53,7 @@ ms.locfileid: "65027717"
 
 1. [Score Model (モデルのスコア付け)](score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
 2. テスト データを含むデータの分割モジュールの出力を、**Evaluate Model (モデルの評価)** の右側の入力に接続します。
-2. **Evaluate Model (モデルの評価)** モジュールをクリックして、**[Run selected]\(選択項目の実行\)** を選択して評価スコアを生成します。
+2. **Evaluate Model (モデルの評価)** モジュールをクリックして、 **[Run selected]\(選択項目の実行\)** を選択して評価スコアを生成します。
 
 ## <a name="compare-scores-from-two-models"></a>2 つのモデルのスコアを比較する
 
@@ -63,7 +63,7 @@ ms.locfileid: "65027717"
 
 1. [Score Model (モデルのスコア付け)](score-model.md) の **Scored dataset (スコア付けされたデータセット)** 出力を **Evaluate Model (モデルの評価)** の入力に接続します。 
 2. 2 つ目のモデルのモデルのスコア付けモジュールの出力を **Evaluate Model (モデルの評価)** の右側の入力に接続します。
-3. **Evaluate Model (モデルの評価)** を右クリックして、**[Run selected]\(選択項目の実行\)** を選択して評価スコアを生成します。
+3. **Evaluate Model (モデルの評価)** を右クリックして、 **[Run selected]\(選択項目の実行\)** を選択して評価スコアを生成します。
 
 ## <a name="results"></a>結果
 

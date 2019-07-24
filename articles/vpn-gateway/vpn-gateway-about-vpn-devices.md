@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 07/05/2019
 ms.author: yushwang
-ms.openlocfilehash: 30558300036974a765765fe0eb0181e2a8dc73ca
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 8301594f63efaa5c6484a4dfd640aafa96cf15a0
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508359"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666257"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -31,10 +31,6 @@ VPN ゲートウェイを使用する Site-to-Site (S2S) クロスプレミス V
 
 ## <a name="devicetable"></a>検証済みの VPN デバイスとデバイス構成ガイド
 
-> [!NOTE]
-> サイト間接続を構成するときには、VPN デバイスに公開 IPv4 IP アドレスが必要です。
->
-
 Microsoft では、デバイス ベンダーと協力して一連の標準的な VPN デバイスを検証しました。 以下の一覧に含まれているデバイス ファミリ内のすべてのデバイスは、VPN ゲートウェイで動作します。 構成する VPN Gateway ソリューションの VPN の種類 (PolicyBased または RouteBased) については、[VPN ゲートウェイの設定](vpn-gateway-about-vpn-gateway-settings.md#vpntype)に関するページを参照してください。
 
 VPN デバイスを構成するには、適切なデバイス ファミリに対応するリンクを参照してください。 構成方法へのリンクは、入手できる範囲で記載しています。 VPN デバイスのサポートについては、デバイスの製造元に問い合わせてください。
@@ -48,6 +44,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Check Point |セキュリティ ゲートウェイ |R80.10 |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4 以降 (IKEv2*) |サポートされています |[構成ガイド*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |PolicyBased:IOS 15.1<br>RouteBased:IOS 15.2 |サポートされています |サポートされています |
+| Cisco | CSR | RouteBased:IOS-XE 16.10 | | [構成スクリプト](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased:IOS 15.0<br>RouteBased*:IOS 15.1 |サポートされています |サポートされています |
 | Cisco |Meraki |該当なし |互換性なし |互換性なし |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 以上 |[構成ガイド](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |互換性なし |
@@ -65,8 +62,10 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | ShareTech | Next Generation UTM (NU シリーズ) | 9.0.1.3 | 互換性なし | [構成ガイド](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ シリーズ、NSA シリーズ<br>SuperMassive シリーズ<br>E-class NSA シリーズ |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |互換性なし |[構成ガイド](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen Firewall | XG v17 | | [構成ガイド](https://community.sophos.com/kb/127546)<br><br>[構成ガイド - 複数 SA](https://community.sophos.com/kb/en-us/133154) |
+| Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM1.1.5/VpnPlusServer-1.2.0 |  | [構成ガイド](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [BGP over IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI over IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
 | WatchGuard |All |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
+| Zyxel |ZyWALL USG シリーズ<br>ZyWALL ATP シリーズ<br>ZyWALL VPN シリーズ | ZLD v4.32 以降 | | [VTI over IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2648/)<br>[BGP over IKEv2/IPsec](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]
 >
@@ -141,7 +140,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>手順 3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
 | SA の有効期間 (時間)            |3,600 秒  |27,000 秒                                |
 | SA の有効期間 (バイト)           |102,400,000 KB | -                                           |
-| Perfect Forward Secrecy (PFS) |いいえ              |[RouteBased QM SA プラン](#RouteBasedOffers) |
+| Perfect Forward Secrecy (PFS) |いいえ             |[RouteBased QM SA プラン](#RouteBasedOffers) |
 | Dead Peer Detection (DPD)     |サポートされていません  |サポートされています                                    |
 
 

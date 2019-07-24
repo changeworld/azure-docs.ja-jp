@@ -6,16 +6,16 @@ author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: supportability
+ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: ddae39b7a2c76b5bb3f7caff1c0d5a8165c9d93a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 2d7f56b65db09232af4fe7e198675ea0cfd64a25
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873827"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595488"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>接続の問題のトラブルシューティング
 
@@ -31,7 +31,7 @@ ms.locfileid: "65873827"
 
 ## <a name="check-service-availability"></a>サービスが使えることを確認する
 
-このサービスが利用できるかどうかを確認します。 Azure portal で、接続しようとしている SQL Data Warehouse に移動します。 左側 TOC パネルで、**[問題の診断と解決]** をクリックします。
+このサービスが利用できるかどうかを確認します。 Azure portal で、接続しようとしている SQL Data Warehouse に移動します。 左側 TOC パネルで、 **[問題の診断と解決]** をクリックします。
 
 ![[リソース正常性] の選択](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
@@ -57,7 +57,7 @@ SQL データ ウェアハウスが一時停止しているか、スケーリン
 
 ## <a name="check-your-firewall-settings"></a>ファイアウォール設定を確認する
 
-SQL Data Warehouse の通信は、ポート 1433 で行われます。   企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。 ファイアウォール構成の詳細は[こちら](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json#manage-ip-firewall-rules-using-the-azure-portal)にあります。
+SQL Data Warehouse の通信は、ポート 1433 で行われます。   企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。 ファイアウォール構成の詳細は[こちら](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-the-azure-portal)にあります。
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>VNet/サービス エンドポイント設定を確認する
 

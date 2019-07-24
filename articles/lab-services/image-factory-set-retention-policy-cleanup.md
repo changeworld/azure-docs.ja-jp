@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60622578"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタム イメージ ファクトリを作成する
 この記事では、保持ポリシーの設定、ファクトリのクリーンアップ、および組織内の他のすべての DevTest Labs からの古いイメージの回収を取り上げます。 
@@ -69,7 +69,7 @@ ms.locfileid: "59490741"
 ## <a name="summary"></a>まとめ
 これで、必要に応じてカスタム イメージを生成してラボに配布できる実行中イメージ ファクトリが用意されました。 この時点では、イメージを正しく設定し、ターゲット ラボを特定するだけです。 前の記事で説明したように、自身の **Configuration** フォルダーに置かれている **Labs.json** ファイルは、ターゲット ラボのそれぞれで使用可能にする必要のあるイメージを指定します。 組織に他の DevTest Labs を追加するときに、新しいラボに対して Labs.json 内のエントリを追加する必要があるだけです。
 
-ファクトリへの新しいイメージの追加も簡単です。 ファクトリに新しいイメージを含めるときに、[Azure portal](https://portal.azure.com) を開き、ファクトリ DevTest Labs に移動し、VM を追加するボタンを選択し、必要なマーケットプレースのイメージおよびアーティファクトを選択します。 **[作成]** ボタンを選択して新しい VM を作成する代わりに、**[Azure Resource Manager テンプレートの表示]** を選択し、リポジトリの **GoldenImages** フォルダー内の任意の場所に .json ファイルとしてテンプレートを保存します。 次回、イメージ ファクトリを実行するときに、カスタム イメージが作成されます。
+ファクトリへの新しいイメージの追加も簡単です。 ファクトリに新しいイメージを含めるときに、[Azure portal](https://portal.azure.com) を開き、ファクトリ DevTest Labs に移動し、VM を追加するボタンを選択し、必要なマーケットプレースのイメージおよびアーティファクトを選択します。 **[作成]** ボタンを選択して新しい VM を作成する代わりに、 **[Azure Resource Manager テンプレートの表示]** を選択し、リポジトリの **GoldenImages** フォルダー内の任意の場所に .json ファイルとしてテンプレートを保存します。 次回、イメージ ファクトリを実行するときに、カスタム イメージが作成されます。
 
 
 ## <a name="next-steps"></a>次の手順

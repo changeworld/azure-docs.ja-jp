@@ -2,24 +2,24 @@
 title: Contoso Retail データを Azure SQL Data Warehouse に読み込む | Microsoft Docs
 description: PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Azure SQL Data Warehouse に読み込みます。
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: load-data
 ms.date: 04/17/2018
-ms.author: cakarst
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5cf4ac0e0950e7b6ab6345476501931a9cb46b27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b96b65b7dd38900fccb8d5d3a9133f37ee93949f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996940"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595519"
 ---
 # <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Contoso Retail データを Azure SQL Data Warehouse に読み込む
 
-PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Azure SQL Data Warehouse に読み込みます。 完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)例を実行します。
+このチュートリアルでは、PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail データの 2 つのテーブルを Azure SQL Data Warehouse に読み込む方法を説明します。 
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -28,15 +28,15 @@ PolyBase コマンドと T-SQL コマンドを使用して、Contoso Retail デ�
 3. 読み込みの完了後、最適化を実行する。
 
 ## <a name="before-you-begin"></a>開始する前に
-このチュートリアルを実行するには、SQL Data Warehouse データベースを既に持つ Azure アカウントが必要です。 アカウントがない場合は、「[SQL Data Warehouse の作成][Create a SQL Data Warehouse]」をご覧ください。
+このチュートリアルを実行するには、SQL Data Warehouse を既に持つ Azure アカウントが必要です。 データ ウェアハウスがプロビジョニングされていない場合は、[SQL Data Warehouse の作成とサーバーレベルのファイアウォール規則の設定][Create a SQL Data Warehouse]に関する記事を参照してください。
 
 ## <a name="1-configure-the-data-source"></a>1.データ ソースの構成
-PolyBase では T-SQL 外部オブジェクトを使用して、外部データの場所と属性を定義します。 外部オブジェクトの定義は、SQL Data Warehouse に格納されます。 データ自体は外部に保存されます。
+PolyBase では T-SQL 外部オブジェクトを使用して、外部データの場所と属性を定義します。 外部オブジェクトの定義は、SQL Data Warehouse に格納されます。 データは外部に保存されます。
 
 ### <a name="11-create-a-credential"></a>1.1. 資格情報を作成する
 **この手順をスキップ** してください。 パブリック データにはだれでもアクセスできるため、セキュリティで保護されたアクセスは必要ありません。
 
-**この手順をスキップしないでください** 。 資格情報を使用してデータにアクセスするには、次のスクリプトを使用してデータベース スコープの資格情報を作成し、データ ソースの場所を定義するときに、その資格情報を使用します。
+独自のデータを読み込むためにこのチュートリアルをテンプレートとして使用している場合は、**この手順をスキップしないでください**。 資格情報を使用してデータにアクセスするには、次のスクリプトを使用してデータベース スコープの資格情報を作成し、データ ソースの場所を定義するときに、その資格情報を使用します。
 
 ```sql
 -- A: Create a master key.
@@ -71,10 +71,8 @@ WITH (
 );
 ```
 
-スキップして手順 2. に進みます。
-
 ### <a name="12-create-the-external-data-source"></a>1.2. 外部データ ソースを作成する
-この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使って、データの場所とデータ型を格納します。 
+この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使用して、データの場所とデータ型を格納します。 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
@@ -91,7 +89,7 @@ WITH
 > 
 
 ## <a name="2-configure-data-format"></a>2.データ形式の構成
-データは Azure Blob Storage 内のテキスト ファイルに格納され、各フィールドは区切り記号で区切られます。 この [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] コマンドを実行して、テキスト ファイル内のデータ形式を指定します。 Contoso データは圧縮されず、パイプで区切られます。
+データは Azure Blob Storage 内のテキスト ファイルに格納され、各フィールドは区切り記号で区切られます。 SSMS で、次の [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] コマンドを実行して、テキスト ファイル内のデータ形式を指定します。 Contoso データは圧縮されず、パイプで区切られます。
 
 ```sql
 CREATE EXTERNAL FILE FORMAT TextFileFormat 
@@ -106,7 +104,7 @@ WITH
 ``` 
 
 ## <a name="3-create-the-external-tables"></a>手順 3.外部テーブルの作成
-データ ソースとファイル形式を指定したら、外部テーブルを作成できます。 
+データ ソースとファイル形式を指定したので、外部テーブルを作成する準備ができました。 
 
 ### <a name="31-create-a-schema-for-the-data"></a>3.1. データのスキーマを作成する
 データベースの Contoso データを格納する場所を作成するには、スキーマを作成します。
@@ -117,12 +115,11 @@ GO
 ```
 
 ### <a name="32-create-the-external-tables"></a>3.2. 外部テーブルを作成する
-このスクリプトを実行して、DimProduct 外部テーブルと FactOnlineSales 外部テーブルを作成します。 ここでは列名とデータ型を定義し、Azure Blob Storage ファイルの場所と形式にバインドします。 定義は SQL Data Warehouse に格納されますが、データはまだ Azure Storage BLOB にあります。
+次のスクリプトを実行して、DimProduct と FactOnlineSales 外部テーブルを作成します。 ここでは、列名とデータ型を定義し、それらを Azure Blob Storage ファイルの場所と形式にバインドするだけです。 定義は SQL Data Warehouse に格納されますが、データはまだ Azure Storage BLOB にあります。
 
 **LOCATION** パラメーターは、Azure Storage BLOB のルート フォルダーの下にあるフォルダーです。 各テーブルは、別のフォルダーにあります。
 
 ```sql
-
 --DimProduct
 CREATE EXTERNAL TABLE [asb].DimProduct (
     [ProductKey] [int] NOT NULL,
@@ -205,7 +202,7 @@ WITH
 ```
 
 ## <a name="4-load-the-data"></a>4.データを読み込む
-外部データにはさまざまな方法でアクセスできます。  外部テーブルのデータに直接クエリを実行できます。また、データを新しいデータベース テーブルに読み込んだり、外部データを既存のデータベース テーブルに追加したりできます。  
+外部データにはさまざまな方法でアクセスできます。  外部テーブルから直接データをクエリできます。また、そのデータをデータ ウェアハウスの新しいテーブルに読み込んだり、外部データを既存のデータ ウェアハウス テーブルに追加したりできます。  
 
 ### <a name="41-create-a-new-schema"></a>4.1. 新しいスキーマを作成する
 CTAS により、データを含む新しいテーブルが作成されます。  最初に、contoso データのスキーマを作成します。
@@ -216,7 +213,7 @@ GO
 ```
 
 ### <a name="42-load-the-data-into-new-tables"></a>4.2. データを新しいテーブルに読み込む
-Azure Blob Storage からデータを読み込み、データベース内のテーブルに保存するには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使います。 CTAS での読み込みには、作成したばかりの厳密に型指定されたテーブルを使います。データを新しいテーブルに読み込むには、テーブルごとに 1 つの [CTAS][CTAS] ステートメントを使います。 
+Azure Blob Storage からデータ ウェアハウス テーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL) ステートメントを使用します。CTAS による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。新しいテーブルにデータを読み込む場合は、テーブルごとに 1 つの CTAS ステートメントを使用してください。][CREATE TABLE AS SELECT (Transact-SQL)] statement. Loading with CTAS leverages the strongly typed external tables you've created. To load the data into new tables, use one [CTAS][CTAS] 
  
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 
@@ -267,7 +264,7 @@ ORDER BY
 ```
 
 ## <a name="5-optimize-columnstore-compression"></a>5.列ストア圧縮の最適化
-既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これにはさまざまな理由があります。 詳しくは、「[列ストア インデックスの管理][manage columnstore indexes]」をご覧ください。
+既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 読み込みの完了時、一部のデータ行が、列ストアに圧縮されない可能性があります。  これが発生する理由はさまざまです。 詳しくは、[列ストア インデックスの管理][manage columnstore indexes]に関するページをご覧ください。
 
 読み込み後のクエリのパフォーマンスと列ストア圧縮を最適化するには、列ストア インデックスですべての行が強制的に圧縮されるようにテーブルを再構築します。 
 
@@ -279,10 +276,10 @@ ALTER INDEX ALL ON [cso].[DimProduct]               REBUILD;
 ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 ```
 
-列ストア インデックスの保守について詳しくは、「[列ストア インデックスの管理][manage columnstore indexes]」をご覧ください。
+列ストア インデックスの保守の詳細については、 [列ストア インデックスの管理][manage columnstore indexes] に関する記事をご覧ください。
 
 ## <a name="6-optimize-statistics"></a>6.統計の最適化
-読み込みの直後に単一列の統計を作成することをお勧めします。 統計には選択肢がいくつかあります。 たとえば、すべての列に対して単一列の統計を作成する場合は、すべての統計の再構築に時間がかかる場合があります。 クエリ述語に含まれない列があることがわかっている場合は、その列に対する統計の作成はスキップできます。
+読み込みの直後に単一列の統計を作成することをお勧めします。 クエリ述語に含まれない列があることがわかっている場合は、その列に対する統計の作成はスキップできます。 すべての列に対して単一列の統計を作成する場合は、すべての統計の再構築に時間がかかる場合があります。 
 
 すべてのテーブルのすべての列で単一列の統計を作成する場合は、[統計に関する記事][statistics]のストアド プロシージャのコード サンプル `prc_sqldw_create_stats` を使うことができます。
 
@@ -333,7 +330,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ## <a name="achievement-unlocked"></a>結果
 パブリック データが Azure SQL Data Warehouse に正常に読み込まれました。 すばらしい結果です。
 
-次のようなクエリを使用すると、テーブルに対するクエリ実行を開始できます。
+これで、テーブルのクエリを開始して、データを探索することができます。 ブランドごとの売上合計を調べるには、次のクエリを実行します。
 
 ```sql
 SELECT  SUM(f.[SalesAmount]) AS [sales_by_brand_amount]
@@ -344,7 +341,9 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>次の手順
-Contoso Retail Data Warehouse データを完全に読み込むには、スクリプトを使います。開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要に関する記事][SQL Data Warehouse development overview]をご覧ください。
+完全なデータ セットを読み込むには、Microsoft SQL Server のサンプル リポジトリから[完全な Contoso Retail Data Warehouse を読み込む](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)例を実行します。
+
+開発に関するその他のヒントについては、「 [SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][SQL Data Warehouse development overview]」をご覧ください。
 
 <!--Image references-->
 

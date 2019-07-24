@@ -1,7 +1,7 @@
 ---
 title: 回帰価格を予測し、アルゴリズムを比較する
 titleSuffix: Azure Machine Learning service
-description: このビジュアル インターフェイス サンプルの実験では、自動車の価格を予測する 2 つの回帰モデルのパフォーマンスを比較する方法を示します。 このプロセスには、Automobile price data (Raw) データセットに対するモデルのトレーニング、テスト、評価が含まれます。
+description: この記事では、コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。 技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,23 @@ ms.topic: article
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/02/2019
-ms.openlocfilehash: 2a4a9e74fa7f56b67f0f4a64f6619db1c5c69a2c
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 05/10/2019
+ms.openlocfilehash: aa0a1fc2acdc9687030040c23cdb1781e9529169
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442136"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605685"
 ---
 # <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>サンプル 2 - 回帰:価格を予測し、アルゴリズムを比較する
 
-このビジュアル インターフェイス サンプルの実験では、自動車の価格を予測する 2 つの回帰モデルのパフォーマンスを比較する方法を示します。 このプロセスには、**Automobile price data (Raw)** データセットを使用したモデルのトレーニング、テスト、評価が含まれます。
+コードを 1 行も書くことなく、ビジュアル インターフェイスを使用して、複雑な機械学習実験を構築する方法について説明します。 このサンプルでは、技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較します。 ご自身で機械学習の問題に取り組むことができるように、ここではこの実験で行われた選択の理論的な根拠を提示します。
+
+機械学習を始めたばかりの場合は、基本的な回帰の実験については、この実験の[基本的なバージョン](ui-sample-regression-predict-automobile-price-basic.md)の記事を参照してください。
+
+この実験の完成したグラフを次に示します。
+
+[![実験のグラフ](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,10 +35,6 @@ ms.locfileid: "65442136"
 
     ![実験を開く](media/ui-sample-regression-predict-automobile-price-compare-algorithms/open-sample2.png)
 
-## <a name="related-sample"></a>関連サンプル
-
-[サンプル 1 - 回帰:自動車価格予測 (基本)](ui-sample-regression-predict-automobile-price-basic.md) では、この実験と同じ問題を解決しますが、回帰モデルを 1 つしか使用しない、より単純な実験を示しています。 回帰の基本的なサンプルをお探しの場合は、そちらを参照してください。
-
 ## <a name="experiment-summary"></a>実験の概要
 
 次の手順を使用して実験を構築します。
@@ -41,11 +43,6 @@ ms.locfileid: "65442136"
 1. データを前処理する。
 1. モデルをトレーニングする。
 1. モデルをテスト、評価、比較する。
-
-この実験の完全なグラフを次に示します。
-
-[![実験のグラフ](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png#lightbox)
-
 
 ## <a name="get-the-data"></a>データを取得する
 
@@ -99,3 +96,4 @@ ms.locfileid: "65442136"
 - [サンプル 3 - 分類:信用リスクを予測する](ui-sample-classification-predict-credit-risk-basic.md)
 - [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [サンプル 5 - 分類:顧客離れを予測する](ui-sample-classification-predict-churn.md)
+- [サンプル 6 - 分類:フライトの遅延を予測する](ui-sample-classification-predict-flight-delay.md)

@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: kfollis
 ms.author: kfollis
-ms.date: 03/22/2019
+ms.date: 05/24/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: bff6fe697912bca0bc55501a74a01a92b1330521
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: de04b461d8e2d2dce9a88052a86fbe5d163fafec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449850"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66244197"
 ---
 # <a name="azure-portal-overview"></a>Azure Portal の概要
 
@@ -23,6 +23,8 @@ ms.locfileid: "58449850"
 ## <a name="what-is-the-azure-portal"></a>Azure portal とは
 
 Azure portal は、コマンドライン ツールに代えて使用できる、Web ベースの統合コンソールです。 Azure portal では、グラフィカル ユーザー インターフェイスを使用して、Azure サブスクリプションを管理できます。 単純な Web アプリから複雑なクラウドへのデプロイまで、あらゆるものを構築、管理、監視したり、リソースを整理して表示するカスタム ダッシュ ボードを作成したり、最適なエクスペリエンスを提供するアクセシビリティ オプションを構成したりすることができます。
+
+Azure portal は、回復性と継続的な可用性を実現するよう設計されています。 すべての Azure データセンターにプレゼンスがあることで、個々のデータセンターの障害に対する回復性を確保し、ユーザーの近くにあることでネットワークの速度低下を回避します。 Azure portal は、継続的に更新され、メンテナンス アクティビティのためのダウンタイムを必要としません。
 
 ## <a name="azure-home"></a>Azure ホーム
 
@@ -66,7 +68,6 @@ Azure portal のサイド バーとページ ヘッダーは、常に存在す�
 
 > [!TIP]
 > リソース、サービス、またはドキュメントを検索する最も簡単な方法は、グローバル ヘッダーの*検索*を使用することです。 前のページに戻るには、階層リンクを使用します。
->
 >
 
 ## <a name="next-steps"></a>次の手順

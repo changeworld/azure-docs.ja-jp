@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: magoedte
 ms.openlocfilehash: 6890c71ac7c265d46cc77751786fea4d0b228588
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66129697"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181568"
 ---
 ### <a name="troubleshoot-azure-diagnostics"></a>Azure Diagnostics のトラブルシューティング
 
@@ -19,7 +19,7 @@ ms.locfileid: "66129697"
 
 リソース プロバイダーを登録するには、Azure Portal で次の手順を実行します。
 
-1.  左側のナビゲーション ウィンドウで、*[サブスクリプション]* をクリックします。
+1.  左側のナビゲーション ウィンドウで、 *[サブスクリプション]* をクリックします。
 2.  エラー メッセージで示されたサブスクリプションを選択します。
 3.  *[リソース プロバイダー]* をクリックします。
 4.  *Microsoft.insights* プロバイダーを探します。

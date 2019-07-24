@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0b6bdc884107a522c81d100c0a05018cbc9d0a70
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136185"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718272"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
 
 この記事では、Azure App Service の Web アプリのためにドメインまたは SSL 証明書を構成するときに発生する可能性がある、一般的な問題の一覧を示します。 これらの問題の考えられる原因と解決策についても説明します。
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN のフォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックしてください。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN のフォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックしてください。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -97,7 +97,7 @@ Azure Portal から [Azure App Service 証明書](./web-sites-purchase-ssl-web-s
 
     1. [Azure Portal](https://portal.azure.com) にサインインします。
     2. **[App Service 証明書]** に移動して、証明書を選択します。
-    3. **[証明書の構成]** > **[手順 2: 確認]** > **[ドメインの検証]** と選択します。 この手順により、問題を解決するため、Azure の証明書プロバイダーに電子メールの通知が送信されます。
+    3. **[証明書の構成]**  >  **[手順 2: 確認]**  >  **[ドメインの検証]** と選択します。 この手順により、問題を解決するため、Azure の証明書プロバイダーに電子メールの通知が送信されます。
 
 ## <a name="custom-domain-problems"></a>カスタム ドメインに関する問題
 
@@ -198,7 +198,7 @@ Azure App Service は 8 時間ごとにバックグラウンド ジョブを実�
 証明書の同期を強制することができます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 **[App Service 証明書]** を選択し、次に目的の証明書を選択します。
-2. **[キー更新と同期]** を選択してから、**[同期]** を選択します。同期が完了するまでしばらく時間がかかります。 
+2. **[キー更新と同期]** を選択してから、 **[同期]** を選択します。同期が完了するまでしばらく時間がかかります。 
 3. 同期が完了すると、次の通知が表示されます。"最新の証明書ですべてのリソースが正常に更新されました。"
 
 ### <a name="domain-verification-is-not-working"></a>ドメインの確認が機能していない 
@@ -212,7 +212,7 @@ TXT レコードを追加して、手動でドメインを確認します。
 1.  使用中のドメイン名をホストしているドメイン ネーム サービス (DNS) プロバイダーに移動します。
 2.  Azure Portal に表示されるドメイン トークンの値を使用しているドメインの TXT レコードを追加します。 
 
-DNS 伝達が実行されるのを数分待ってから、**[最新の情報に更新]** ボタンを選択して確認をトリガーします。 
+DNS 伝達が実行されるのを数分待ってから、 **[最新の情報に更新]** ボタンを選択して確認をトリガーします。 
 
 別の方法として、HTML Web ページによる方法を使用して、手動でドメインを確認することができます。 この方法を使用すると、証明機関は、証明書が発行されるドメインの所有権を確認できます。
 
@@ -325,7 +325,6 @@ App Service Web Apps がない場合でも、ドメインを管理できます�
 
 **カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service 環境 v1 から V2 に移動できますか**
 
-はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/resource-group-move-resources.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
-)に関するページを参照してください。
+はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/resource-group-move-resources.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/move-limitations/app-service-move-limitations.md)に関するページを参照してください。
 
 Web アプリを移動した後、カスタム ドメイン設定内のドメインのホスト名バインディングは同じままになります。 ホスト名バインディングを構成するための追加の手順は必要ありません。

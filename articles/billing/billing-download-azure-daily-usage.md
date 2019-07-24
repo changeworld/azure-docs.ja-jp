@@ -1,26 +1,23 @@
 ---
-title: Azure の使用量と料金の表示とダウンロード | Microsoft Docs
+title: Azure の使用状況と料金の表示とダウンロード
 description: Azure の毎日の使用量と料金をダウンロードまたは表示する方法について説明します。
 keywords: 使用量の請求,利用料金,使用量のダウンロード,使用量の表示,Azure 請求書, Azure 使用量
-services: billing
-documentationcenter: ''
-author: genlin
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 7d2d7be562eaaa7dd21e63735f5697ffe5a62f8a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648848"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491442"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Azure の使用量と料金の表示とダウンロード
 
@@ -28,7 +25,7 @@ EA のお客様である場合や [Microsoft 顧客契約](#check-your-access-to
 
 Azure 使用状況情報を取得するアクセス許可を持つのは、特定のロール (アカウント管理者やエンタープライズ管理者など) だけです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
 
-[Microsoft 顧客契約](#check-your-access-to-a-microsoft-customer-agreement)を結んでいる場合、Azure の使用量と料金を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 Microsoft Customer Agreement の課金ロールの詳細については、「[課金プロファイルのロールとタスク](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
+[Microsoft 顧客契約](#check-your-access-to-a-microsoft-customer-agreement)を結んでいる場合、Azure の使用量と料金を表示するには、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 Microsoft 顧客契約の課金ロールの詳細については、「[課金プロファイルのロールとタスク](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)」を参照してください。
 
 ## <a name="download-usage-from-the-account-center-csv"></a>アカウント センターから使用状況をダウンロードする (.csv)
 
@@ -77,8 +74,8 @@ Microsoft 顧客契約を結んでいる場合は、自分の請求プロファ�
 ### <a name="download-usage-for-billed-charges"></a>課金された料金の使用量のダウンロード
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[コストの管理と請求]** で検索します。
-3. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
+2. "*コスト管理 + 請求*" を検索します。
+3. 課金プロファイルを選択します。 アクセス方法によっては、最初に請求先アカウントを選択することが必要な場合があります。
 4. **[請求書]** を選択します。
 5. 請求書グリッドで、ダウンロードする使用量に対応する請求書の行を探します。
 6. 行の末尾にある省略記号 (`...`) をクリックします。
@@ -94,9 +91,9 @@ Microsoft 顧客契約を結んでいる場合は、自分の請求プロファ�
 現在の請求期間について、当月の累計使用量をダウンロードすることもできます。 これらの料金はまだ請求されていません。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[コストの管理と請求]** で検索します。
+2. "*コスト管理 + 請求*" を検索します。
 3. 課金プロファイルを選択します。 お持ちのアクセス権によっては、最初に請求先アカウントを選択することが必要な場合があります。
-4. **[概要]** ブレードで、月度累計請求金額の下にあるダウンロード リンクを見つけます。
+4. **[概要]** 領域で、月度累計請求金額の下にあるダウンロード リンクを見つけます。
 5. **[Azure の利用状況と請求金額]** を選択します。
 
     ![概要からのダウンロードを示すスクリーンショット](./media/billing-download-azure-usage/open-usage.png)
@@ -104,9 +101,9 @@ Microsoft 顧客契約を結んでいる場合は、自分の請求プロファ�
 ## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次の手順
 

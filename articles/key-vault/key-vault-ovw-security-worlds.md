@@ -7,10 +7,10 @@ ms.author: mbaldwin
 manager: barbkess
 ms.date: 07/03/2017
 ms.openlocfilehash: d75ce953f73912428ee88fe2e19a138799f979fa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64704707"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault セキュリティ ワールドと地理的境界
@@ -40,7 +40,7 @@ Azure Key Vault はマルチ テナント サービスであり、Azure の場�
 >[!NOTE]
 >例外として、米国防総省東部と米国防総省中部には、独自のセキュリティ ワールドがあります。 
 
-同様に、**[ヨーロッパ]** タブでは、北ヨーロッパと西ヨーロッパの両方がヨーロッパ リージョンにマップしています。 **[アジア太平洋]** タブも同様です。
+同様に、 **[ヨーロッパ]** タブでは、北ヨーロッパと西ヨーロッパの両方がヨーロッパ リージョンにマップしています。 **[アジア太平洋]** タブも同様です。
 
 
 

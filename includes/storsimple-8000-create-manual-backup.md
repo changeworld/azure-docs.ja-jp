@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66118311"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181250"
 ---
 #### <a name="to-create-a-manual-backup"></a>手動でバックアップを作成するには
 
-1. StorSimple デバイス マネージャー サービスに移動し、**[デバイス]** をクリックします。 表形式のデバイス一覧で、デバイスを選択します。 **[設定]、[管理]、[バックアップ ポリシー]** の順に移動します。
+1. StorSimple デバイス マネージャー サービスに移動し、 **[デバイス]** をクリックします。 表形式のデバイス一覧で、デバイスを選択します。 **[設定]、[管理]、[バックアップ ポリシー]** の順に移動します。
 
 2. **[バックアップ ポリシー]** ブレードに、バックアップするボリュームのポリシーを含むすべてのバックアップ ポリシーが表形式で表示されています。 バックアップするボリュームに関連付けられたポリシーを選択し、右クリックしてコンテキスト メニューを呼び出します。 ドロップダウン リストから **[今すぐバックアップ]** を選択します。
 

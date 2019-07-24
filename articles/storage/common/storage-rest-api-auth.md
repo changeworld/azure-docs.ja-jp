@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 19272e93739d98962ab6818e1c2626ac9e0ac6d9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66306658"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Azure Storage REST API の使用
 
@@ -24,7 +24,7 @@ ms.locfileid: "65204437"
 
 このアプリケーションは、ストレージ アカウントの BLOB ストレージ内のコンテナーを一覧表示します。 この記事のコードを試すには、次のものが必要です。 
 
-* 次のワークロードを指定して [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) をインストールします。
+* 次のワークロードを指定して [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) をインストールします。
     - Azure の開発
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -51,7 +51,7 @@ REST は *Representational State Transfer* の頭文字です。 具体的な定
 
 基本的には、REST とは、API を呼び出すとき、または API を呼び出すことができるようにするときに、利用できるアーキテクチャです。 両側で行われていること、および REST 呼び出しを送受信するときに使われている他のソフトウェアからは、独立しています。 Mac、Windows、Linux、Android の携帯電話やタブレット、iPhone、iPod、Web サイトで動作するアプリケーションを作成でき、すべてのプラットフォームで同じ REST API を使うことができます。 REST API を呼び出すときは、データを受け渡すことができます。 REST API では、どのようなプラットフォームから呼び出されたかということは大事ではありません。重要なのは、要求で渡される情報と、応答で提供されるデータです。
 
-REST の使い方の知識は、役に立つスキルです。 Azure 製品チームは、新しい機能を頻繁にリリースします。 多くの場合、新しい機能は、REST インターフェイスを使ってアクセスすることはできますが、**すべての**ストレージ クライアント ライブラリまたは UI (Azure Portal など) で公開されるようにはまだなっていません。 常に最新かつ最高の機能を使いたい場合は、REST を学習する必要があります。 また、独自のライブラリを作成して Azure Storage を操作したい場合や、SDK またはストレージ クライアント ライブラリがないプログラミング言語で Azure Storage にアクセスしたい場合は、REST API を使うことができます。
+REST の使い方の知識は、役に立つスキルです。 Azure 製品チームは、新しい機能を頻繁にリリースします。 多くの場合、新機能は、REST インターフェイスからアクセスできます。 しかし、それらの機能が**どの**ストレージ クライアント ライブラリまたは (Azure portal などの) UI にも表示されない場合があります。 常に最新かつ最高の機能を使いたい場合は、REST を学習する必要があります。 また、独自のライブラリを作成して Azure Storage を操作したい場合や、SDK またはストレージ クライアント ライブラリがないプログラミング言語で Azure Storage にアクセスしたい場合は、REST API を使うことができます。
 
 ## <a name="about-the-sample-application"></a>サンプル アプリケーションについて
 
@@ -61,11 +61,11 @@ REST の使い方の知識は、役に立つスキルです。 Azure 製品チ�
 
 ## <a name="rest-api-reference-list-containers-api"></a>REST API リファレンス: List Containers API
 
-次のセクションのコードで要求や応答の一部のフィールドの基になっているものを理解できるように、[ListContainers](/rest/api/storageservices/List-Containers2) 操作の REST API リファレンスのページを見ておきます。
+REST API リファレンスの [ListContainers](/rest/api/storageservices/List-Containers2) 操作のページを参照してください。 この情報は、いくつかのフィールドが要求および応答のどこから来ているのかを理解する助けとなります。
 
 **要求メソッド**: GET。 この動詞は、要求オブジェクトのプロパティとして指定する HTTP メソッドです。 この動詞の他の値としては、呼び出す API に応じて HEAD、PUT、DELETE などがあります。
 
-**要求 URI**: https://myaccount.blob.core.windows.net/?comp=list  これは、Blob Storage アカウント エンドポイント `http://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
+**要求 URI**: https://myaccount.blob.core.windows.net/?comp=list   これは、Blob Storage アカウント エンドポイント `http://myaccount.blob.core.windows.net` とリソース文字列 `/?comp=list` から作成されています。
 
 [URI パラメーター](/rest/api/storageservices/List-Containers2#uri-parameters): ListContainers を呼び出すときに使うことができる追加のクエリ パラメーターがあります。 そのうちの 2 つは、呼び出しの *timeout* (タイムアウト、秒単位) と、フィルター処理に使われる *prefix* (プレフィックス) です。
 
@@ -77,21 +77,21 @@ REST の使い方の知識は、役に立つスキルです。 Azure 製品チ�
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[要求ヘッダー](/rest/api/storageservices/List-Containers2#request-headers)**:** このセクションには、必須および省略可能な要求ヘッダーの一覧が示されています。 必須のヘッダーは、*Authorization* ヘッダー、*x-ms-date* (要求の UTC 時刻を含みます)、*x-ms-version* (使う REST API のバージョンを指定します) の 3 つです。 ヘッダーに *x-ms-client-request-id* を含めるかどうかは自由です。このフィールドには任意の値を設定できます。ログが有効になっていると、この値がストレージ分析ログに書き込まれます。
+[要求ヘッダー](/rest/api/storageservices/List-Containers2#request-headers) **:** このセクションには、必須および省略可能な要求ヘッダーの一覧が示されています。 必須のヘッダーは、*Authorization* ヘッダー、*x-ms-date* (要求の UTC 時刻を含みます)、*x-ms-version* (使う REST API のバージョンを指定します) の 3 つです。 ヘッダーに *x-ms-client-request-id* を含めるかどうかは自由です。このフィールドには任意の値を設定できます。ログが有効になっていると、この値がストレージ分析ログに書き込まれます。
 
-[要求本文](/rest/api/storageservices/List-Containers2#request-body)**:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+[要求本文](/rest/api/storageservices/List-Containers2#request-body) **:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
 
-[応答の状態コード](/rest/api/storageservices/List-Containers2#status-code)**:** 知っておく必要があるすべての状態コードについて説明されています。 この例では、HTTP 状態コード 200 は正常です。 HTTP 状態コードの完全な一覧については、「[Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」(状態コードの定義) をご覧ください。 ストレージ REST API に固有のエラー コードについては、「[REST API の一般的なエラー コード](/rest/api/storageservices/common-rest-api-error-codes)」をご覧ください。
+[応答の状態コード](/rest/api/storageservices/List-Containers2#status-code) **:** 知っておく必要があるすべての状態コードについて説明されています。 この例では、HTTP 状態コード 200 は正常です。 HTTP 状態コードの完全な一覧については、「[Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」(状態コードの定義) をご覧ください。 ストレージ REST API に固有のエラー コードについては、「[REST API の一般的なエラー コード](/rest/api/storageservices/common-rest-api-error-codes)」をご覧ください。
 
-[応答ヘッダー](/rest/api/storageservices/List-Containers2#response-headers)**:** "*コンテンツ タイプ*"、*x-ms-request-id* (渡した要求 ID、ある場合)、*x-ms-version* (使われた Blob service のバージョンを示します)、*Date* (UTC、要求が行われた日時を示します) などがあります。
+[応答ヘッダー](/rest/api/storageservices/List-Containers2#response-headers) **:** *コンテンツ タイプ*、*x-ms-request-id* (渡した要求 ID)、*x-ms-version* (使われた Blob service のバージョン)、*Date* (UTC、要求が行われた日時) などがあります。
 
 [応答本文](/rest/api/storageservices/List-Containers2#response-body):このフィールドは、要求されたデータを提供する XML 構造体です。 この例では、応答はコンテナーのリストとそのプロパティです。
 
 ## <a name="creating-the-rest-request"></a>REST 要求の作成
 
-始める前にいくつか注意事項があります。セキュリティのため、運用環境で実行するときは HTTP ではなく HTTPS を使う必要があります。 ただし、この演習では、要求と応答のデータを見ることができるように、HTTP を使う必要があります。 実際の REST 呼び出しで要求と応答の情報を表示するには、[Fiddler](https://www.telerik.com/fiddler) または同様のアプリケーションをダウンロードできます。 Visual Studio のソリューションでは、ストレージ アカウントの名前とキーはクラスにハードコーディングされており、ListContainersAsyncREST メソッドは、REST 要求のさまざまなコンポーネントの作成に使われるメソッドにストレージ アカウントの名前とキーを渡します。 実際のアプリケーションでは、ストレージ アカウントの名前とキーは、構成ファイルまたは環境変数に格納されているか、または Azure Key Vault から取得します。
+始める前にいくつか注意事項があります。セキュリティのため、運用環境で実行するときは HTTP ではなく HTTPS を使う必要があります。 ただし、この演習では、要求と応答のデータを見ることができるように、HTTP を使う必要があります。 実際の REST 呼び出しで要求と応答の情報を表示するには、[Fiddler](https://www.telerik.com/fiddler) または同様のアプリケーションをダウンロードできます。 Visual Studio ソリューションでは、ストレージ アカウント名とキーはクラスにハードコーディングされています。 ListContainersAsyncREST メソッドは、REST 要求のさまざまなコンポーネントの作成に使われるメソッドにストレージ アカウントの名前とキーを渡します。 実際のアプリケーションでは、ストレージ アカウントの名前とキーは、構成ファイルまたは環境変数に格納されているか、または Azure Key Vault から取得します。
 
-このサンプル プロジェクトでは、Authorization ヘッダーを作成するためのコードは別のクラスになっており、クラス全体をコピーして独自のソリューションに追加し、"そのまま" 使うことができます。 Authorization ヘッダーのコードは、Azure Storage に対するほとんどの REST API 呼び出しで機能します。
+サンプル プロジェクトでは、Authorization ヘッダーを作成するコードは、別のクラスにあります。 これは、クラス全体を自分のソリューションに追加して "そのまま" 使用するためです。 Authorization ヘッダーのコードは、Azure Storage に対するほとんどの REST API 呼び出しで機能します。
 
 HttpRequestMessage オブジェクトである要求を作成するには、Program.cs の ListContainersAsyncREST を使います。 要求を作成する手順は次のとおりです。 
 
@@ -278,7 +278,7 @@ Content-Length: 1511
 Authorization="SharedKey <storage account name>:<signature>"  
 ```
 
-signature フィールドはハッシュ ベースのメッセージ認証コード (HMAC) であり、要求から作成され、SHA256 アルゴリズムを使って計算された後、Base64 エンコードを使ってエンコードされます。 よろしいでしょうか  (頑張ってください、"*正規化*" という言葉さえまだ耳にしていないのですから)。
+signature フィールドはハッシュ ベースのメッセージ認証コード (HMAC) であり、要求から作成され、SHA256 アルゴリズムを使って計算された後、Base64 エンコードを使ってエンコードされます。 よろしいでしょうか (頑張ってください、"*正規化*" という言葉さえまだ耳にしていないのですから)。
 
 次のコード スニペットは、共有キー シグネチャ文字列の形式を示しています。
 
@@ -301,7 +301,7 @@ StringToSign = VERB + "\n" +
 
 これらのフィールドの大部分はほとんど使われません。 Blob Storage の場合、VERB、md5、コンテンツの長さ、正規化されたヘッダー、および正規化されたリソースを指定します。 それ以外は空白のままでかまいません (ただし、空白であることがわかるように、`\n` を入れておきます)。
 
-CanonicalizedHeaders および CanonicalizedResource とは何でしょうか。 よい質問です。 実際、正規化 (canonicalized) とはどのような意味でしょうか。 Microsoft Word では、canonicalized は単語として認識すらされません。 [Wikipedia での正規化の説明](https://en.wikipedia.org/wiki/Canonicalization)は次のようなものです。"*コンピューター サイエンスでは、正規化 (canonicalization、standardization、normalization など) とは、複数の方法で表現できるデータを 1 つの "標準的な" つまり正規の形式に変換する処理のことです。*" つまり、項目のリスト (正規化されたヘッダーの場合のヘッダーなど) を取得して、必要な形式に標準化することです。 基本的に、Microsoft で決定されている形式に一致させる必要があります。
+CanonicalizedHeaders および CanonicalizedResource とは何でしょうか。 よい質問です。 実際、正規化 (canonicalized) とはどのような意味でしょうか。 Microsoft Word では、canonicalized は単語として認識すらされません。 [Wikipedia での正規化の説明](https://en.wikipedia.org/wiki/Canonicalization)は次のようなものです。"*コンピューター サイエンスでは、正規化 (canonicalization、standardization、normalization など) とは、複数の方法で表現できるデータを 1 つの "標準的な" つまり正規の形式に変換する処理のことです。* " つまり、項目のリスト (正規化されたヘッダーの場合のヘッダーなど) を取得して、必要な形式に標準化することです。 基本的に、Microsoft で決定されている形式に一致させる必要があります。
 
 それでは 2 つの正規化されたフィールドについて説明します。これらは Authorization ヘッダーを作成するために必要なものです。
 
@@ -358,7 +358,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
 /contosorest/\ncomp:list
 ```
 
-クエリ パラメーターがある場合は、それも含まれます。 次に示すコードでは、追加のクエリ パラメーターと、複数の値を持つクエリ パラメーターも処理しています。 ここではすべての REST API で動作するコードを作成しているので、ListContainers メソッドでは必要ないものも含めて、可能性のあるすべての場合に対応しています。
+クエリ パラメーターがある場合は、この例にはそれらのパラメーターも含まれます。 次に示すコードでは、追加のクエリ パラメーターと、複数の値を持つクエリ パラメーターも処理しています。 このコードは、すべての REST API で動作するように構築していることに注意してください。 ListContainers メソッドでそれらすべてを必要としない場合も、すべての可能性を含めています。
 
 ```csharp 
 private static string GetCanonicalizedResource(Uri address, string storageAccountName)
@@ -414,7 +414,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 }
 ```
 
-このコードを実行したときの結果の MessageSignature は次のようになります。
+このコードを実行したときの結果の MessageSignature は次の例のようになります。
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
@@ -428,11 +428,11 @@ SharedKey contosorest:Ms5sfwkA8nqTRw7Uury4MPHqM6Rj2nfgbYNvUKOa67w=
 
 Authorization ヘッダーは、応答を送信する前に要求ヘッダーに配置される最後のヘッダーです。
 
-ストレージ サービス REST API の呼び出しに使われる要求の作成に使うことができるクラスとして、知っておく必要のあるすべてのこととコードが含まれます。
+これには、ストレージ サービス REST API を呼び出す要求の作成に使うことができるクラスを組み立てるために必要なものがすべて含まれます。
 
 ## <a name="how-about-another-example"></a>別の例 
 
-コンテナー *container-1* の ListBlobs を呼び出すようにコードを変更する方法を見てみましょう。 これはコンテナーを一覧表示するコードとほぼ同じであり、唯一の違いは URI と応答を解析する方法です。 
+コンテナー *container-1* の ListBlobs を呼び出すようにコードを変更する方法を見てみましょう。 このコードは、コンテナーを一覧表示するコードとほぼ同じであり、唯一の違いは URI と応答を解析する方法です。 
 
 [ListBlobs](/rest/api/storageservices/List-Blobs) のリファレンス ドキュメントを見ると、メソッドが *GET* であり、RequestURI は次のようなものであることがわかります。
 
@@ -564,7 +564,7 @@ Content-Length: 1135
 
 ## <a name="summary"></a>まとめ
 
-この記事では、Blob Storage REST API に対して要求を行って、コンテナーの一覧またはコンテナー内の BLOB の一覧を取得する方法を学習しました。 また、REST API 呼び出しの承認シグネチャを作成する方法、それを REST 要求で使う方法、および応答を調べる方法についても学習しました。
+この記事では、Blob storage の REST API に要求を行う方法について説明しました。 この要求を使用すると、コンテナーの一覧またはコンテナー内の BLOB の一覧を取得できます。 REST API 呼び出しの承認シグネチャを作成する方法、およびそれを REST 要求で使う方法について学習しました。 最後に、その応答を調べる方法を学習しました。
 
 ## <a name="next-steps"></a>次の手順
 

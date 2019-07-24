@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
 ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992343"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60773939"
 ---
 # <a name="exclude-disks-from-replication"></a>レプリケーションからディスクを除外する
 この記事では、ディスクをレプリケーションから除外する方法について説明します。 除外することにより、レプリケーションによる帯域幅の消費や、このようなディスクによって使用されるターゲット側のリソースを最適化できます。
@@ -22,7 +22,7 @@ ms.locfileid: "57992343"
 
 **機能** | **VMware から Azure** | **Hyper-V から Azure** | **Azure から Azure**| **Hyper-V から Hyper-V** 
 --|--|--|--|--
-ディスクの除外 | はい | はい | いいえ  | いいえ 
+ディスクの除外 | はい | はい | いいえ | いいえ
 
 ## <a name="why-exclude-disks-from-replication"></a>レプリケーションからディスクを除外する理由
 レプリケーションからディスクを除外する必要性は、多くの場合、次の理由から生じます。
@@ -43,7 +43,7 @@ ms.locfileid: "57992343"
 2. tempdb 用のディスクをレプリケーションから除外します。
 
 ## <a name="how-to-exclude-disks"></a>ディスクを除外する方法
-Azure Site Recovery ポータルで[レプリケーションを有効にする](site-recovery-hyper-v-site-to-azure.md)ためのワークフローに従って、仮想マシンを保護します。 ワークフローの 4 番目の手順で、**[DISK TO REPLICATE (レプリケートするディスク)]** 列を使用して、レプリケーションから除外するディスクを指定します。 既定では、すべてのディスクがレプリケーションの対象として選択されます。 レプリケーションから除外するディスクのチェック ボックスをオフにし、手順に従ってレプリケーションを有効にします。
+Azure Site Recovery ポータルで[レプリケーションを有効にする](site-recovery-hyper-v-site-to-azure.md)ためのワークフローに従って、仮想マシンを保護します。 ワークフローの 4 番目の手順で、 **[DISK TO REPLICATE (レプリケートするディスク)]** 列を使用して、レプリケーションから除外するディスクを指定します。 既定では、すべてのディスクがレプリケーションの対象として選択されます。 レプリケーションから除外するディスクのチェック ボックスをオフにし、手順に従ってレプリケーションを有効にします。
 
 ![レプリケーションから除外するディスクを指定し、Hyper-V から Azure へのフェールバックのためのレプリケーションを有効にする](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)
 

@@ -3,18 +3,18 @@ title: クイック スタート - C# で Bing Local Business Search API にク�
 titleSuffix: Azure Cognitive Services
 description: この記事を使って、C# での Bing Local Business Search API の使用を開始します。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 91ff4c8e6f8487a2b0e5849f881e0cdb9c10385f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.topic: quickstart
+ms.date: 04/26/2019
+ms.author: rosh
+ms.openlocfilehash: 3b75d89720212149711c8aad9985267d72b8cecd
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763802"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592780"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>クイック スタート:C# で Bing Local Business Search API にクエリを送信する
 
@@ -24,7 +24,7 @@ ms.locfileid: "57763802"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
+* [Visual Studio 2019](https://www.visualstudio.com/downloads/) のいずれかのエディション。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Bing Search API を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。

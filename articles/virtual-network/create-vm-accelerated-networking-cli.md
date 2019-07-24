@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 8ea17e5615c0256c084b0745a392fb49f8873f99
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1e5513b28c1ae64fc8c87bb7a949596feab4623e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805365"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65873416"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Linux 仮想マシンの作成
 
@@ -75,7 +75,7 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 
 ## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Azure 高速ネットワークが有効な Linux VM を作成する
 ## <a name="portal-creation"></a>ポータルの作成
-この記事では、高速ネットワークを使用した仮想マシンを、Azure CLI を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure Portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで仮想マシンを作成するときは、**[仮想マシンの作成]** ブレードで **[ネットワーク]** タブを選択します。このタブには、**[高速ネットワーク]** のオプションがあります。  [サポートされるオペレーティングシステム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択している場合、このオプションは自動的に [オン] になります。  そうでない場合は、高速ネットワークに対して [オフ] オプションが選択され、有効にならない理由がユーザーに示されます。   
+この記事では、高速ネットワークを使用した仮想マシンを、Azure CLI を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure Portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで仮想マシンを作成するときは、 **[仮想マシンの作成]** ブレードで **[ネットワーク]** タブを選択します。このタブには、 **[高速ネットワーク]** のオプションがあります。  [サポートされるオペレーティングシステム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択している場合、このオプションは自動的に [オン] になります。  そうでない場合は、高速ネットワークに対して [オフ] オプションが選択され、有効にならない理由がユーザーに示されます。   
 
 * *注:* ポータルからは、サポートされているオペレーティング システムのみを有効にできます。  カスタム イメージを使用しているときに、そのイメージで高速ネットワークがサポートされている場合は、CLI または Powershell を使用して VM を作成してください。 
 
@@ -224,6 +224,10 @@ vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
 VM の高速ネットワークが有効になりました。
+
+## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>仮想関数の動的バインディングと失効を処理する 
+アプリケーションは、VM で公開されている合成 NIC 経由で実行する必要があります。 VF NIC 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする**すべての**パケットが受信されることはありません。
+アプリケーションを合成 NIC 経由で実行すると、該当のアプリケーションを宛先とする**すべての**パケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に引き続き実行されます。 合成 NIC にバインドされているアプリケーションは、**高速ネットワーク**を利用するすべてのアプリケーションにとって**必須**の要件です。
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>既存の VM 上で高速ネットワークを有効にする
 高速ネットワークを有効にしないで VM を作成した場合は、既存の VM に対してこの機能を有効にすることができです。  VM は、上記で説明した次の前提条件を満たすことによって、高速ネットワークをサポートしている必要があります。

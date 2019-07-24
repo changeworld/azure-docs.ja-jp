@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: d700588f-2d8a-4c92-93eb-e1e6e250e760
 ms.date: 07/08/2016
-ms.openlocfilehash: e25f4e633b8cf9030bb0ce395f093f630db59f38
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8db0dbadd944007ff953f9ea69695bf988ffebb7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121115"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60996330"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack が適用された Azure Logic Apps で B2B エンタープライズ統合用の XML を検証する
 
@@ -29,13 +29,13 @@ B2B のシナリオでは多くの場合、契約の対象となるパートナ�
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1.png)
 
-3. **[XML の検証]** アクションを追加するには、**[アクションの追加]** を選択します。
+3. **[XML の検証]** アクションを追加するには、 **[アクションの追加]** を選択します。
 
 4. 検索ボックスに「*xml*」と入力し、すべてのアクションから使用するアクションだけを抽出します。 **[XML の検証]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-2.png)
 
-5. 検証する XML コンテンツを指定するには、**[コンテンツ]** を選択します。
+5. 検証する XML コンテンツを指定するには、 **[コンテンツ]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-1-5.png)
 
@@ -43,7 +43,7 @@ B2B のシナリオでは多くの場合、契約の対象となるパートナ�
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-3.png)
 
-7. 前の *[コンテンツ]* で入力した内容を検証するためのスキーマを指定するには、**[スキーマ名]** を選択します。
+7. 前の *[コンテンツ]* で入力した内容を検証するためのスキーマを指定するには、 **[スキーマ名]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-xml-validation/xml-4.png)
 

@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: a0678dc42d8c22c8dcc20137cf70f81a1eb4f61c
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496080"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473687"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
@@ -42,15 +42,6 @@ PIM の基本的な機能は、重要なリソースについて、"だれが、
 - 継続してユーザーにロールが必要であることを確認するために**アクセス レビュー**を実施する
 - 社内監査または外部監査に使用する**監査履歴**をダウンロードする
 
-## <a name="prerequisites"></a>前提条件
-
-PIM を使用するには、次のいずれかの有料ライセンスまたは試用版ライセンスが必要です。 詳細については、「[Azure Active Directory とは](../fundamentals/active-directory-whatis.md)」を参照してください。
-
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5
-
-ユーザーのライセンスについては、「[PIM を使用するためのライセンスの要件](subscription-requirements.md)」を参照してください。
-
 ## <a name="terminology"></a>用語集
 
 PIM とそのドキュメントについてより深く理解するためには、次の用語をご確認いただく必要があります。
@@ -71,7 +62,7 @@ PIM とそのドキュメントについてより深く理解するためには�
 
 ## <a name="what-does-pim-look-like"></a>実際の PIM の画面
 
-PIM を設定すると、左側のナビゲーション メニューに **[タスク]**、**[管理]**、**[アクティビティ]** の各オプションが表示されます。 お客様は管理者として、**Azure AD ロール**と **Azure リソース** ロールのどちらかを選択することになります。 管理するロールの種類を選択すると、そのロールの種類に関して同様のオプション一式が表示されます。
+PIM を設定すると、左側のナビゲーション メニューに **[タスク]** 、 **[管理]** 、 **[アクティビティ]** の各オプションが表示されます。 お客様は管理者として、**Azure AD ロール**と **Azure リソース** ロールのどちらかを選択することになります。 管理するロールの種類を選択すると、そのロールの種類に関して同様のオプション一式が表示されます。
 
 ![Azure portal における PIM のスクリーンショット](./media/pim-configure/pim-overview.png)
 
@@ -87,23 +78,29 @@ Azure リソースのロールについては、サブスクリプション管�
 
 PIM は、次のシナリオをサポートしています。
 
-**特権ロール管理者として、次の操作を実行できます。**
+**特権ロール管理者として:**
 
 - 特定のロールの承認を有効化する
 - 要求を承認するユーザーまたはグループ (あるいは両方) を指定する
 - すべての特権ロールの要求と承認の履歴を表示する
 
-**承認者として、次の操作を実行できます。**
+**承認者として:**
 
 - 保留中の承認 (要求) を表示する
 - ロールの昇格の要求を承認または拒否する (単独および一括)
 - 自分の承認/却下の理由を説明する 
 
-**有資格のロール ユーザーとして、次の操作を実行できます。**
+**有資格のロール ユーザーとして:**
 
 - 承認が必要なロールのアクティブ化を要求する
 - アクティブ化要求の状態を表示する
 - アクティブ化が承認された場合に Azure AD でタスクを完了する
+
+## <a name="license-requirements"></a>ライセンスの要件
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
+
+ユーザーのライセンスについては、「[PIM を使用するためのライセンスの要件](subscription-requirements.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,7 +3,7 @@ title: Azure Mobile Apps を使用した iOS での認証の追加
 description: Azure Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて iOS アプリのユーザーを認証する方法について説明します。
 services: app-service\mobile
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: crdun
-ms.openlocfilehash: 8c1c52790065015977add7e32a06063057b24dad
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 88e278ced5cbddb132cdc2f760864df119762088
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445910"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449132"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>iOS アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-users) を今すぐチェックしてください。
+>
 
 このチュートリアルでは、サポートされている ID プロバイダーを使用して、 [iOS クイック スタート] プロジェクトに認証を追加します。 最初に、このチュートリアルの基になっている [iOS クイック スタート] チュートリアルを完了しておく必要があります。
 
@@ -212,8 +216,8 @@ Xcode で、 **[Run]** をクリックしてアプリケーションを開始し
 
 5. *[実行]* をクリックしてアプリを起動したら、ログインします。 ログインが成功すると、Todo リストを表示して更新できます。
 
-App Service の認証では、Apple の Inter-App Communication が使用されます。  このトピックの詳細については、[Apple のドキュメント][2]
-<!-- URLs. -->を参照してください。
+App Service の認証では、Apple の Inter-App Communication が使用されます。  このトピックの詳細については、[Apple のドキュメント][2]を参照してください。
+<!-- URLs. -->
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html

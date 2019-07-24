@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 09755922da78a3e856c491c01ce9f34f50063d71
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000727"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65606505"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -33,11 +33,11 @@ ms.locfileid: "60000727"
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="enable-service-map"></a>Service Map を有効にする
-1. Azure portal で、**[+リソースの作成]** をクリックします。
+1. Azure portal で、 **[+リソースの作成]** をクリックします。
 2. 検索バーに「**Service Map**」と入力し、**Enter** キーを押します。
 3. マーケットプレースの検索結果ページで、一覧から **[Service Map]** を選択します。<br><br> ![Azure Marketplace の検索結果から Service Map ソリューションを選択する](./media/service-map/marketplace-search-results.png)<br>
-4. **Service Map** の概要ウィンドウで、ソリューションの詳細を確認してから、**[作成]** をクリックして Log Analytics ワークスペースへのオンボード プロセスを開始します。<br><br> ![Service Map ソリューションにオンボード](./media/service-map/service-map-onboard.png)します。
-5. **[Configure a solution]**(ソリューションの構成) ウィンドウで、Log Analytics ワークスペースの既存のものを選択するか、新しいものを作成します。  新しいワークスペースを作成する方法の詳細については、「[Azure Portal で Log Analytics ワークスペースを作成する](../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 必要な情報を指定したら、**[作成]** をクリックします。  
+4. **Service Map** の概要ウィンドウで、ソリューションの詳細を確認してから、 **[作成]** をクリックして Log Analytics ワークスペースへのオンボード プロセスを開始します。<br><br> ![Service Map ソリューションにオンボード](./media/service-map/service-map-onboard.png)します。
+5. **[Configure a solution]** (ソリューションの構成) ウィンドウで、Log Analytics ワークスペースの既存のものを選択するか、新しいものを作成します。  新しいワークスペースを作成する方法の詳細については、「[Azure Portal で Log Analytics ワークスペースを作成する](../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。 必要な情報を指定したら、 **[作成]** をクリックします。  
 
 情報が検証され、ソリューションがデプロイされている間、メニューの **[通知]** でその進行状況を追跡することができます。 
 
@@ -89,11 +89,11 @@ Service Map は、システム更新評価の使用を強化します。他の�
 ![マシン グループ](media/service-map/machine-group.png)
 
 ### <a name="creating-a-machine-group"></a>マシン グループの作成
-グループを作成するには、[マシン] の一覧で 1 つまたは複数のマシンを選択し、**[グループに追加]** をクリックします。
+グループを作成するには、[マシン] の一覧で 1 つまたは複数のマシンを選択し、 **[グループに追加]** をクリックします。
 
 ![グループの作成](media/service-map/machine-groups-create.png)
 
-ここで、**[新規作成]** を選択すると、グループに名前を付けることができます。
+ここで、 **[新規作成]** を選択すると、グループに名前を付けることができます。
 
 ![グループの名前付け](media/service-map/machine-groups-name.png)
 
@@ -126,10 +126,10 @@ Service Map は、システム更新評価の使用を強化します。他の�
 ![マシン グループのフィルター処理されたプロセス](media/service-map/machine-groups-filtered.png)
  
 ### <a name="adding-machines-to-a-group"></a>グループへのマシンの追加
-既存のグループにマシンを追加するには、追加したいマシンの横にあるチェック ボックスをオンにし、**[グループに追加]** をクリックします。  次に、マシンの追加先となるグループを選択します。
+既存のグループにマシンを追加するには、追加したいマシンの横にあるチェック ボックスをオンにし、 **[グループに追加]** をクリックします。  次に、マシンの追加先となるグループを選択します。
  
 ### <a name="removing-machines-from-a-group"></a>グループからのマシンの削除
-[グループ] の一覧でグループ名を展開し、マシン グループ内のマシンを一覧表示します。  次に、削除したいマシンの横にある省略記号メニューをクリックし、**[削除]** を選択します。
+[グループ] の一覧でグループ名を展開し、マシン グループ内のマシンを一覧表示します。  次に、削除したいマシンの横にある省略記号メニューをクリックし、 **[削除]** を選択します。
 
 ![グループからのマシンの削除](media/service-map/machine-groups-remove.png)
 
@@ -165,7 +165,7 @@ Service Map マップでは、プロセスとコンピューターの失敗し�
 
 ![クライアント グループ](media/service-map/client-groups.png)
 
-クライアント グループ内のサーバーの IP アドレスを表示するには、グループを選択します。 グループの内容が、**[Client Group Properties]\(クライアント グループのプロパティ\)** ウィンドウに一覧表示されます。
+クライアント グループ内のサーバーの IP アドレスを表示するには、グループを選択します。 グループの内容が、 **[Client Group Properties]\(クライアント グループのプロパティ\)** ウィンドウに一覧表示されます。
 
 ![クライアント グループのプロパティ](media/service-map/client-group-properties.png)
 
@@ -204,7 +204,7 @@ Service Map マップを見ている間、マシンとプロセスを選択し�
 ![[Process Summary]\(プロセスの概要\) ウィンドウ](media/service-map/process-summary.png)
 
 ## <a name="alerts-integration"></a>アラートの統合
-Service Map は Azure アラートと統合されて、選択された時間範囲中に、選択されたサーバーで発生したアラートを表示します。 進行中のアラートがある場合はサーバーにアイコンが表示され、**[Machine Alerts]\(マシンのアラート\)** ウィンドウにアラートが一覧表示されます。
+Service Map は Azure アラートと統合されて、選択された時間範囲中に、選択されたサーバーで発生したアラートを表示します。 進行中のアラートがある場合はサーバーにアイコンが表示され、 **[Machine Alerts]\(マシンのアラート\)** ウィンドウにアラートが一覧表示されます。
 
 ![[Machine Alerts]\(マシンのアラート\) ウィンドウ](media/service-map/machine-alerts.png)
 
@@ -224,9 +224,9 @@ Service Map と IT Service Management Connector との統合は、両方のソ�
 
 ![[Machine Service Desk]\(マシン サービス デスク\) ウィンドウ](media/service-map/service-desk.png)
 
-接続されている ITSM ソリューション内の項目を開くには、**[作業項目の表示]** をクリックします。
+接続されている ITSM ソリューション内の項目を開くには、 **[作業項目の表示]** をクリックします。
 
-ログ検索で項目の詳細を表示するには、**[ログ検索で表示]** をクリックします。
+ログ検索で項目の詳細を表示するには、 **[ログ検索で表示]** をクリックします。
 接続メトリックは、Log Analytics 内の 2 つの新しいテーブルに書き込まれます 
 
 ## <a name="change-tracking-integration"></a>Change Tracking との統合
@@ -236,7 +236,7 @@ Service Map と Change Tracking との統合は、両方のソリューション
 
 ![[Machine Change Tracking]\(マシン変更の追跡\) ウィンドウ](media/service-map/change-tracking.png)
 
-次の図は、**[Show in Log Analytics]\(Log Analytics で表示\)** を選択すると表示される ConfigurationChange イベントの詳細なビューです。
+次の図は、 **[Show in Log Analytics]\(Log Analytics で表示\)** を選択すると表示される ConfigurationChange イベントの詳細なビューです。
 
 ![ConfigurationChange イベント](media/service-map/configuration-change-event-01.png)
 
@@ -348,7 +348,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 | プロパティ | 説明 |
 |:--|:--|
-| `RemoteCountry` |RemoteIp をホストしている国の名前。  例: *United States* |
+| `RemoteCountry` |RemoteIp をホストしている国や地域の名前。  例: *United States* |
 | `RemoteLatitude` |地理的位置情報の緯度。  例: *47.68* |
 | `RemoteLongitude` |地理的位置情報の経度。  例: *-122.12* |
 

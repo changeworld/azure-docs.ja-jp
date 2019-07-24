@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877886"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60196618"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Azure Data Catalog に Azure Data Lake Storage Gen1 のデータを登録する
 この記事では、Azure Data Lake Storage Gen1 と Azure Data Catalog を統合し、データを Data Catalog と統合することで組織内で検出できるようにする方法について説明します。 データのカタログ化の詳細については、「 [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md)」を参照してください。 Data Catalog を使用できるシナリオを理解するには、「 [Azure Data Catalog の一般的なシナリオ](../data-catalog/data-catalog-common-scenarios.md)」を参照してください。
@@ -44,7 +44,7 @@ ms.locfileid: "58877886"
 1. [ようこそ] ページで、 **[サインイン]** をクリックし、資格情報を入力します。
 
     ![[ようこそ] 画面](./media/data-lake-store-with-data-catalog/welcome.screen.png "[ようこそ] 画面")
-1. [データ ソースの選択] ページで、**[Azure Data Lake Store]** を選択してから **[次へ]** をクリックします。
+1. [データ ソースの選択] ページで、 **[Azure Data Lake Store]** を選択してから **[次へ]** をクリックします。
 
     ![データ ソースの選択](./media/data-lake-store-with-data-catalog/select-source.png "データ ソースの選択")
 1. 次のページで、Data Catalog に登録する Data Lake Storage Gen1 アカウントの名前を指定します。 その他のオプションは既定値のままにし、 **[接続]** をクリックします。

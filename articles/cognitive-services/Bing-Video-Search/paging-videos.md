@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 0af36fa68b2d801eed52e6f081b040fb56929c91
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 12549bb53a21dd657f51a4a02460ddc82c47bef8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101314"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66386386"
 ---
 # <a name="paging-through-video-search-results"></a>動画検索結果のページング
 
@@ -26,7 +26,7 @@ Bing Video Search API は、クエリに対して見つかったすべての検�
 
 ## <a name="total-estimated-matches"></a>推定一致数の合計
 
-見つかった検索結果の推定数を取得するには、JSON 応答の [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) フィールドを使用します。   
+見つかった検索結果の推定数を取得するには、JSON 応答の [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-totalestimatedmatches) フィールドを使用します。   
   
 ```json  
 {
@@ -39,7 +39,7 @@ Bing Video Search API は、クエリに対して見つかったすべての検�
   
 ## <a name="paging-through-videos"></a>動画のページング
 
-利用可能な動画をページングするには、要求の送信時にクエリ パラメーターとして [count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count) と [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) を使用します。  
+利用可能な動画をページングするには、要求の送信時にクエリ パラメーターとして [count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count) と [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) を使用します。  
   
 
 |パラメーター  |説明  |
@@ -57,7 +57,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```  
 
-[count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count) に既定値を使用する場合、次の例のように、`offset` クエリ パラメーターのみを指定する必要があります。  
+[count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#count) に既定値を使用する場合、次の例のように、`offset` クエリ パラメーターのみを指定する必要があります。  
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
@@ -67,7 +67,7 @@ Host: api.cognitive.microsoft.com
 
 一度に 35 個の動画をページングする場合は、最初の要求で `offset` クエリ パラメーターを 0 に設定し、後続の要求ごとに `offset` を 35 ずつ増やします。 ただし、一部の動画結果が次の応答と前の応答で重複する場合があります。 たとえば、応答内の最初の 2 つの動画が、前の応答の最後の 2 つの動画と同じである場合があります。
 
-重複する結果を排除するには、`Videos` オブジェクトの [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-nextoffset) フィールドを使用します。
+重複する結果を排除するには、`Videos` オブジェクトの [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos-nextoffset) フィールドを使用します。
 
 たとえば、一度に 30 個の動画をページングする場合は、最初の要求で `count` を 30 に、`offset` を 0 に設定できます。 次の要求で、`offset` クエリ パラメーターを `nextOffset` 値に設定します。
 

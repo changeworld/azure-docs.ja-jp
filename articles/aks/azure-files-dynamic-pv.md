@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 43f3a55bc820a232ccebc3a940faa86f9eb730f7
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9771c110e277d67bee329fe62434b18a01189476
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338265"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "65072217"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files を含む永続ボリュームを動的に作成して使用する
 
@@ -28,7 +28,7 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 ## <a name="create-a-storage-class"></a>ストレージ クラスの作成
 
-ストレージ クラスを使用して、Azure ファイル共有を作成する方法を定義します。 ストレージ アカウントは、ストレージ クラスと共に使用して Azure ファイル共有を保持するために、*_MC* リソース グループ内に自動的に作成されます。 *skuName* には、次のいずれかの [Azure Storage の冗長性][storage-skus]を選択します。
+ストレージ クラスを使用して、Azure ファイル共有を作成する方法を定義します。 ストレージ アカウントは、ストレージ クラスと共に使用して Azure ファイル共有を保持するために、 *_MC* リソース グループ内に自動的に作成されます。 *skuName* には、次のいずれかの [Azure Storage の冗長性][storage-skus]を選択します。
 
 * *Standard_LRS* - 標準のローカル冗長ストレージ (LRS)
 * *Standard_GRS* - 標準の geo 冗長ストレージ (GRS)
@@ -136,7 +136,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 ## <a name="use-the-persistent-volume"></a>永続ボリュームの使用
 
-次の YAML は、永続ボリューム要求 *azurefile* を使って、*/mnt/azure* パスに Azure ファイル共有をマウントするポッドを作成します。
+次の YAML は、永続ボリューム要求 *azurefile* を使って、 */mnt/azure* パスに Azure ファイル共有をマウントするポッドを作成します。 Windows Server コンテナー (AKS では現在プレビュー段階) の場合、 *'D:'* などの Windows パス規則を使用して、*mountPath* を指定します。
 
 `azure-pvc-files.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 *claimName* が最後の手順で作成したPVC と一致していることを確認します。
 

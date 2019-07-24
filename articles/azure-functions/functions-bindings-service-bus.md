@@ -4,7 +4,7 @@ description: Azure Functions で Azure Service Bus トリガーとバインド�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: azure-functions
@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: e1cd7d9e135f5e3196f02237076c5c8069048fb0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 46e6858376fa70b4b57b6106f8292b842f206d01
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501044"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480228"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -330,7 +330,7 @@ Service Bus トリガーには、いくつかの[メタデータ プロパティ
 |`CorrelationId`|`string`|関連付け ID。|
 
 > [!NOTE]
-> 現時点では、トリガーは、セッションを使用していないキューおよびサブスクリプションでのみ機能します。 この機能に関連する今後の更新については、[この機能の項目](https://github.com/Azure/azure-functions-host/issues/563)を追跡してください。 
+> 現在、セッションで有効になっているキューやサブスクリプションで動作する Service Bus トリガーはプレビュー段階です。 これに関連した今後の更新については、[この項目](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458)を追跡してください。 
 
 この記事の前半でこれらのプロパティを使用している[コード例](#trigger---example)を参照してください。
 

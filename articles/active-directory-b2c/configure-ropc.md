@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C でリソース所有者のパスワード資格情報フローを構成する | Microsoft Docs
 description: Azure AD B2C でリソース所有者のパスワード資格情報フローを構成する方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da7fe9310f50d2d2a3c247a410db204903d3412b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2e590e4765f4795123e219f8da4b3e62bc79ca30
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715887"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66511354"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー を構成する
 
@@ -38,12 +38,12 @@ Azure Active Directory (Azure AD) B2C では、次のオプションがサポー
 
 1. Azure AD B2C テナントの全体管理者として、Azure portal にサインインします。
 2. Azure AD B2C テナントに切り替えるには、ポータルの右上隅で B2C ディレクトリを選択します。
-3. **[User Flows]** をクリックし、**[新しいユーザー フロー]** を選択します。
-4. **[すべて]** タブをクリックして、**[ROPC を使用してサインイン]** を選択します。
+3. **[User Flows]** をクリックし、 **[新しいユーザー フロー]** を選択します。
+4. **[すべて]** タブをクリックして、 **[ROPC を使用してサインイン]** を選択します。
 5. *ROPC_Auth* など、ユーザー フローの名前を入力します。
 6. **[アプリケーション要求]** の **[さらに表示する]** をクリックします。
 7. [表示名]、[メール アドレス]、[ID プロバイダー] など、アプリケーションに必要なアプリケーション要求を選択します。
-8. **[OK]** を選択し、**[作成]** を選択します。
+8. **[OK]** を選択し、 **[作成]** を選択します。
 9. **[ユーザー フローを実行します]** をクリックします。
 
    次の例のようなエンドポイントが表示されます。
@@ -53,10 +53,10 @@ Azure Active Directory (Azure AD) B2C では、次のオプションがサポー
 
 ## <a name="register-an-application"></a>アプリケーションを登録する
 
-1. B2C の設定で、**[アプリケーション]** を選択し、**[追加]** を選択します。
+1. B2C の設定で、 **[アプリケーション]** を選択し、 **[追加]** を選択します。
 2. *ROPC_Auth_app* などのアプリケーションの名前を入力します。
 3. **[Web App/Web API]\(Web アプリ/Web API\)** に対して **[いいえ]** を選択し、次に **[Native client]\(ネイティブ クライアント\)** に対して **[はい]** を選択します。
-4. その他のすべての値はそのままにして、**[作成]** を選択します。
+4. その他のすべての値はそのままにして、 **[作成]** を選択します。
 5. 新しいアプリケーションを選択し、後で使用するためにアプリケーション ID をメモします。
 
 ## <a name="test-the-user-flow"></a>ユーザー フローをテストする
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) B2C では、次のオプションがサポー
 
 | キー | 値 |
 | --- | ----- |
-| ユーザー名 | leadiocl@outlook.com |
+| username | leadiocl@outlook.com |
 | password | Passxword1 |
 | grant_type | password |
 | scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |

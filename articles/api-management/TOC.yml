@@ -121,6 +121,8 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: 開発者エクスペリエンスをカスタマイズする
       items:
+        - name: 新しい開発者ポータルへのアクセスとカスタマイズ
+          href: api-management-howto-developer-portal.md
         - name: ページのコンテンツとレイアウトを変更する
           href: api-management-modify-content-layout.md
         - name: テンプレートを使用してシステム ページをカスタマイズする
@@ -243,3 +245,5 @@
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'
     - name: API 実装ガイダンス
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+    - name: '"ホスト名の更新の失敗" エラーに関するトラブルシューティング'
+      href: api-management-troubleshoot-cannot-add-custom-domain.md

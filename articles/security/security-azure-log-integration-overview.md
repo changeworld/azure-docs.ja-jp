@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/14/2019
+ms.date: 05/28/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: c644d81b647fc1151b10a94fb636e3eeaba1ce5c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 65e256b476c1e459ae937d9f6cbb43e0020fd9fe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66298125"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Azure Log Integration の概要
 
 >[!IMPORTANT]
-> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
+> Azure ログ統合機能は、2019 年 6 月 15 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
 
 Azure Log Integration は、お使いのオンプレミスのセキュリティ情報イベント管理 (SIEM) システムと Azure ログを統合するタスクを簡素化するために、利用できるようになりました。
 
@@ -66,7 +66,7 @@ Azure ログ統合は、ArcSight、QRadar、および Splunk をサポートし�
 > [!NOTE]
 > Azure Log Integration は無料のソリューションですが、ログ ファイル情報の保存に関連する Azure ストレージのコストが発生します。
 
-サポートが必要な場合は[サポート リクエスト](../azure-supportability/how-to-create-azure-support-request.md)を作成できます。 サービスとして、**[Log Integration]** を選択します。
+サポートが必要な場合は[サポート リクエスト](../azure-supportability/how-to-create-azure-support-request.md)を作成できます。 サービスとして、 **[Log Integration]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

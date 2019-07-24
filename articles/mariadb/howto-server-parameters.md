@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615950"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60922522"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバー パラメーターを構成する方法
 
@@ -26,7 +26,7 @@ Azure Database for MariaDB では、いくつかのサーバー パラメータ�
 ![列挙ドロップ ダウン](./media/howto-server-parameters/3-toggle_parameter.png)
 4. **[保存]** をクリックして変更を保存します。
 ![変更の保存または破棄](./media/howto-server-parameters/4-save_parameters.png)
-5. パラメーターの新しい値を保存した場合は、**[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
+5. パラメーターの新しい値を保存した場合は、 **[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
 ![すべて既定値にリセット](./media/howto-server-parameters/5-reset_parameters.png)
 
 ## <a name="list-of-configurable-server-parameters"></a>構成可能なサーバー パラメーターの一覧

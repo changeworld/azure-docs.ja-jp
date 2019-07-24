@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 4ac98516c1a326e1ede09bbb9660113ffd0642a0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027831"
 ---
 # <a name="import-from-azure-blob-storage-module"></a>"Azure Blob Storage からのインポート" モジュール
@@ -43,9 +43,9 @@ Blob Storage からのインポートでは、**ブロック BLOB** 形式が使
 
 2. **[データ ソース]** に **[Azure Blob Storage]** を選択します。
 
-3. 情報がパブリック データ ソースとして提供されていることがわかっている場合は、**[認証の種類]** で **[パブリック (SAS URL)]** を選択します。 SAS URL は、パブリック アクセス用の期限付きの URL で、Azure ストレージ ユーティリティを使用して生成できます。
+3. 情報がパブリック データ ソースとして提供されていることがわかっている場合は、 **[認証の種類]** で **[パブリック (SAS URL)]** を選択します。 SAS URL は、パブリック アクセス用の期限付きの URL で、Azure ストレージ ユーティリティを使用して生成できます。
 
-    それ以外の場合は、**[アカウント]** を選択します。
+    それ以外の場合は、 **[アカウント]** を選択します。
 
 4. SAS URL を使用してアクセスできる**パブリック** BLOB にデータが存在する場合、ダウンロードと認証に必要な情報はすべて URL 文字列に含まれているため、それ以外の資格情報は必要ありません。
 
@@ -67,7 +67,7 @@ Blob Storage からのインポートでは、**ブロック BLOB** 形式が使
 
     たとえば、**mymldata** という名前のアカウントのコンテナー **trainingdata** に **data01.csv** という名前のファイルをアップロードした場合、ファイルの完全 URL は `http://mymldata.blob.core.windows.net/trainingdata/data01.txt` になります。
 
-    そのため、**[コンテナー、ディレクトリ、BLOB のパス]** フィールドには、「`trainingdata/data01.csv`」と入力することになります。
+    そのため、 **[コンテナー、ディレクトリ、BLOB のパス]** フィールドには、「`trainingdata/data01.csv`」と入力することになります。
 
     複数のファイルをインポートする場合、ワイルドカード文字 `*` (アスタリスク) または `?` (疑問符) を使用できます。
 

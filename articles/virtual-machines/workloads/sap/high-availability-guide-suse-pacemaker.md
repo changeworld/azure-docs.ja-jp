@@ -4,7 +4,7 @@ description: Azure の SUSE Linux Enterprise Server に Pacemaker をセット�
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 9a23f13947c4c7a77460ff389861e1dcc1de3c7f
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 46044c061cca24714d1a951e28cf01ca29f14a7e
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65992119"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707203"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -176,7 +176,7 @@ o- / ...........................................................................
 
 最後の手順で作成した iSCSI デバイスにクラスターから接続します。
 以下のコマンドは、作成する新しいクラスターの各ノード上で実行します。
-次の各手順の先頭には、**[A]** - 全ノードが該当、**[1]** - ノード 1 のみ該当、**[2]** - ノード 2 のみ該当、のいずれかが付いています。
+次の各手順の先頭には、 **[A]** - 全ノードが該当、 **[1]** - ノード 1 のみ該当、 **[2]** - ノード 2 のみ該当、のいずれかが付いています。
 
 1. **[A]** iSCSI デバイスに接続します
 
@@ -314,7 +314,7 @@ o- / ...........................................................................
 
 ## <a name="cluster-installation"></a>クラスターのインストール
 
-次の各手順の先頭には、**[A]** - 全ノードが該当、**[1]** - ノード 1 のみ該当、**[2]** - ノード 2 のみ該当、のいずれかが付いています。
+次の各手順の先頭には、 **[A]** - 全ノードが該当、 **[1]** - ノード 1 のみ該当、 **[2]** - ノード 2 のみ該当、のいずれかが付いています。
 
 1. **[A]** SLES を更新します
 
@@ -448,7 +448,7 @@ o- / ...........................................................................
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   値が無いか、異なる場合は、次の太字の内容をファイルに追加します。 トークンを 30000 に変更してメモリ保持メンテナンスを可能にします。 詳しくは、[Linux の場合はこちらの記事][virtual-machines-linux-maintenance]、[Windows の場合はこちらの記事][virtual-machines-windows-maintenance]をご覧ください。 また、必ずパラメーター mcastaddr を削除してください。
+   値が無いか、異なる場合は、次の太字の内容をファイルに追加します。 トークンを 30000 に変更してメモリ保持メンテナンスを可能にします。 詳細については、[Linux のこの記事][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance] を参照してください。 また、必ずパラメーター mcastaddr を削除してください。
 
    <pre><code>[...]
      <b>token:          30000

@@ -7,13 +7,13 @@ ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.openlocfilehash: fe913f057d00fd18b1b163f124d9dd0b83abf0de
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.date: 06/10/2019
+ms.openlocfilehash: 50a1e0a6bfa6fe33f432548a4a0b485134a60c72
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67055344"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -82,7 +82,7 @@ IoT Hub エンドポイントはすべて [TLS](https://tools.ietf.org/html/rfc5
 
 追加できるエンドポイントの数の制限については、「[クォータと調整](iot-hub-devguide-quotas-throttling.md)」をご覧ください。
 
-REST API の [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用して、エンドポイントの正常性状態を取得できます。 ルーティングによるメッセージの待機時間に関する [IoT Hub メトリック](iot-hub-metrics.md)を使用して、エンドポイントの正常性が停止または異常の場合にエラーを特定し、デバッグすることをお勧めします。
+REST API の [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用して、エンドポイントの正常性状態を取得できます。 エンドポイントの正常性が停止または異常である場合は、エンドポイントがこれらの状態にあるときは待機時間が長くなることが予測されるため、ルーティング メッセージ待機時間に関連した [IoT Hub メトリック](iot-hub-metrics.md)を使用してエラーを識別およびデバッグすることをお勧めします。
 
 |正常性状態|説明|
 |---|---|

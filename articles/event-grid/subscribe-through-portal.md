@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: spelluru
 ms.openlocfilehash: b54bc52a2feaf4646d801265ddb273c2c86158ee
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477908"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60823517"
 ---
 # <a name="subscribe-to-events-through-portal"></a>ポータルを使用したイベントのサブスクライブ
 
@@ -34,11 +34,11 @@ ms.locfileid: "54477908"
 
    ![[サブスクリプションの追加]](./media/subscribe-through-portal/add-subscription.png)
 
-1. 作成するサブスクリプションの種類を選択します。 たとえば、ご使用の Azure サブスクリプションのイベントにサブスクライブするには、**[Azure サブスクリプション]** とターゲット サブスクリプションを選択します。
+1. 作成するサブスクリプションの種類を選択します。 たとえば、ご使用の Azure サブスクリプションのイベントにサブスクライブするには、 **[Azure サブスクリプション]** とターゲット サブスクリプションを選択します。
 
    ![Azure サブスクリプションの選択](./media/subscribe-through-portal/azure-subscription.png)
 
-1. このイベント ソースのすべてのイベントの種類にサブスクライブするには、**[すべてのイベントの種類を購読します]** をオンのままにします。 それ以外の場合は、このサブスクリプションのイベントの種類を選択します。
+1. このイベント ソースのすべてのイベントの種類にサブスクライブするには、 **[すべてのイベントの種類を購読します]** をオンのままにします。 それ以外の場合は、このサブスクリプションのイベントの種類を選択します。
 
    ![イベントの種類の選択](./media/subscribe-through-portal/select-event-types.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "54477908"
 
    ![サブスクリプションの詳細の指定](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. 配信不能レタリングを有効にして、再試行ポリシーをカスタマイズするには、**[追加の機能]** を選択します。
+1. 配信不能レタリングを有効にして、再試行ポリシーをカスタマイズするには、 **[追加の機能]** を選択します。
 
    ![追加機能を選択する](./media/subscribe-through-portal/select-additional-features.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "54477908"
 
    ![配信不能レタリングと再試行を有効にする](./media/subscribe-through-portal/set-deadletter-retry.png)
 
-1. 完了したら、**[作成]** を選択します。
+1. 完了したら、 **[作成]** を選択します。
 
 ## <a name="create-subscription-on-resource"></a>リソースでのサブスクリプションの作成
 

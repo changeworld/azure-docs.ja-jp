@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 46c387ab175bfd3613e00be8e7b3a899aa025a7f
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: ab1327b42a76a6e76183d84cb1750cce8b85228f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149284"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65604281"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights:よく寄せられる質問
 
@@ -89,7 +89,7 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 お使いのアプリケーションに適切な SDK については、「 [リリース ノート](release-notes.md) 」をご覧ください。
 
 ## <a name="update"></a>自分のプロジェクトがデータを送信する Azure のリソースを変更するにはどうすればいいですか?
-ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、**[Application Insights の更新]** を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
+ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、 **[Application Insights の更新]** を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
 
 ## <a name="what-is-status-monitor"></a>Status Monitor とは何ですか?
 
@@ -132,7 +132,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 
 ASP.NET の場合は[こちら](api-filtering-sampling.md)、Java の場合は[こちら](java-filter-telemetry.md)で詳細を確認してください。
 
-## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>市区町村や国などの geo ロケーション データはどのように計算されますか?
+## <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>市区町村や国や地域などの geo ロケーション データはどのように計算されますか?
 
 Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) を使用しています。
 

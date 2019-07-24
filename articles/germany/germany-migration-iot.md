@@ -10,11 +10,11 @@ ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: ccb837001a4ef69ac6145e2f93bb9eb4766120f0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492133"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60686161"
 ---
 # <a name="migrate-iot-resources-to-global-azure"></a>IoT リソースをグローバル Azure に移行する
 
@@ -86,7 +86,7 @@ IoT Hub では、ネイティブで複製はサポートされていません。
 
 ### <a name="step-2-migrate-device-identities"></a>手順 2:デバイス ID を移行する
 
-デバイス ID を移行するには: 
+デバイス ID を移行するには:
 
 1. Azure Germany のソース テナントでは、[ExportDevices](../iot-hub/iot-hub-bulk-identity-mgmt.md) Resource Manager API を使用して、すべてのデバイス ID、デバイス ツイン、およびモジュール ツイン (キーを含む) をストレージ コンテナーにエクスポートすることができます。 Azure Germany でもグローバル Azure でもストレージ コンテナーを使用できます。 生成された共有アクセス署名 URI に十分なアクセス許可が含まれていることを確認します。 
 1. [ImportDevices](../iot-hub/iot-hub-bulk-identity-mgmt.md) Resource Manager API を実行して、ストレージ コンテナーから、グローバル Azure 内の複製された IoT ハブにすべてのデバイス ID をインポートします。

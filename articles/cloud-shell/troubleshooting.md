@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905513"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60199461"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
@@ -31,56 +31,56 @@ Azure Cloud Shell に関する問題のトラブルシューティングを行�
 
 ### <a name="early-timeouts-in-firefox"></a>FireFox での早期タイムアウト
 
-- **[詳細]**:Cloud Shell は開いている WebSocket を使ってお使いのブラウザーに入力/出力を渡します。 FireFox には WebSocket を途中で閉じることができる事前設定されたポリシーがあり、Cloud Shell の早期タイムアウトの原因になります。
+- **[詳細]** :Cloud Shell は開いている WebSocket を使ってお使いのブラウザーに入力/出力を渡します。 FireFox には WebSocket を途中で閉じることができる事前設定されたポリシーがあり、Cloud Shell の早期タイムアウトの原因になります。
 - **解決方法**:FireFox を開き、URL で "about:config" に移動します。 "network.websocket.timeout.ping.request" を検索し、値を 0 から 10 に変更します。
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>ロック ダウンされたネットワーク環境で Cloud Shell を無効にする
 
-- **[詳細]**:管理者によっては、ユーザーが Cloud Shell にアクセスできないようにしたほうが望ましいと判断する場合があります。 Cloud Shell では、`ux.console.azure.com` ドメインへのアクセスが使用されますが、このアクセスは拒否される場合があり、その場合は、Cloud Shell のエントリ ポイントへのアクセスがすべて停止されます (portal.azure.com、shell.azure.com、Visual Studio Code Azure Account 拡張機能、および docs.microsoft.com を含む)。
+- **[詳細]** :管理者によっては、ユーザーが Cloud Shell にアクセスできないようにしたほうが望ましいと判断する場合があります。 Cloud Shell では、`ux.console.azure.com` ドメインへのアクセスが使用されますが、このアクセスは拒否される場合があり、その場合は、Cloud Shell のエントリ ポイントへのアクセスがすべて停止されます (portal.azure.com、shell.azure.com、Visual Studio Code Azure Account 拡張機能、および docs.microsoft.com を含む)。
 - **解決方法**:環境のネットワーク設定を通じて、`ux.console.azure.com` へのアクセスを制限します。 Cloud Shell アイコンはその後も portal.azure.com に表示されますが、サービスに正常に接続することはできなくなります。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>ストレージ ダイアログ - エラー: 403 RequestDisallowedByPolicy
 
-- **[詳細]**:Cloud Shell からストレージ アカウントを作成するときに、管理者によって配置された Azure ポリシーが原因で作成が失敗します。エラー メッセージには以下が含まれます。`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **[詳細]** :Cloud Shell からストレージ アカウントを作成するときに、管理者によって配置された Azure ポリシーが原因で作成が失敗します。エラー メッセージには以下が含まれます。`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **解決方法**:Azure 管理者に連絡して、ストレージの作成を拒否している Azure ポリシーを削除または更新してもらいます。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>ストレージ ダイアログ - エラー: 400 DisallowedOperation
 
-- **[詳細]**:Azure Active Directory サブスクリプションを使うと、ストレージを作成できません。
+- **[詳細]** :Azure Active Directory サブスクリプションを使うと、ストレージを作成できません。
 - **解決方法**:ストレージ リソースを作成できる Azure サブスクリプションを使ってください。 Azure AD サブスクリプションでは、Azure のリソースを作成できません。
 
 ### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>ターミナル出力 - エラー: Failed to connect terminal: websocket cannot be established. (ターミナルに接続できませんでした: WebSocket を確立できません。) Press `Enter` to reconnect. (再接続するには Enter キーを押してください。)
-- **[詳細]**:Cloud Shell では、Cloud Shell インフラストラクチャへの WebSocket 接続を確立できる必要があります。
+- **[詳細]** :Cloud Shell では、Cloud Shell インフラストラクチャへの WebSocket 接続を確立できる必要があります。
 - **解決方法**:HTTPS 要求および WebSocket 要求の *.console.azure.com のドメインへの送信を有効にするようにネットワーク設定を構成していることを確認します。
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>TLS 1.2 を使用したサポートのための Cloud Shell 接続の設定
- - **[詳細]**:Cloud Shell への接続用の TLS のバージョンを定義するには、ブラウザー固有の設定を行う必要があります。
+ - **[詳細]** :Cloud Shell への接続用の TLS のバージョンを定義するには、ブラウザー固有の設定を行う必要があります。
  - **解決方法**:ブラウザーのセキュリティ設定に移動して、[TLS 1.2 の使用] の横にあるチェック ボックスをオンにします。
 
 ## <a name="bash-troubleshooting"></a>Bash のトラブルシューティング
 
 ### <a name="cannot-run-the-docker-daemon"></a>Docker デーモンを実行できない
 
-- **[詳細]**:Cloud Shell では、コンテナーを利用してシェル環境をホストするため、デーモンを実行することが許可されていません。
+- **[詳細]** :Cloud Shell では、コンテナーを利用してシェル環境をホストするため、デーモンを実行することが許可されていません。
 - **解決方法**:既定でインストールされている [Docker マシン](https://docs.docker.com/machine/overview/)を利用して、リモート Docker ホストから Docker コンテナーを管理します。
 
 ## <a name="powershell-troubleshooting"></a>PowerShell のトラブルシューティング
 
 ### <a name="gui-applications-are-not-supported"></a>GUI アプリケーションがサポートされていない
 
-- **[詳細]**:ユーザーが GUI アプリケーションを起動しても、プロンプトが返りません。 たとえば、2 要素認証が有効なプライベート GitHub リポジトリを複製すると、2 要素認証を完了するためのダイアログ ボックスが表示されます。
+- **[詳細]** :ユーザーが GUI アプリケーションを起動しても、プロンプトが返りません。 たとえば、2 要素認証が有効なプライベート GitHub リポジトリを複製すると、2 要素認証を完了するためのダイアログ ボックスが表示されます。
 - **解決方法**:シェルをいったん閉じて、再び開きます。
 
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Azure VM のリモート管理のトラブルシューティング
 > [!NOTE]
 > Azure VM には、一般に公開されている IP アドレスが必要です。
 
-- **[詳細]**:WinRM に対する Windows ファイアウォールの既定の設定のため、次のようなエラー メッセージが表示されることがあります。`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
+- **[詳細]** :WinRM に対する Windows ファイアウォールの既定の設定のため、次のようなエラー メッセージが表示されることがあります。`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
 - **解決方法**:`Enable-AzVMPSRemoting` を実行して、ターゲット コンピューター上での PowerShell リモート処理のすべての側面を有効にします。
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` によって Azure ドライブで結果が更新されない
 
-- **[詳細]**:既定では、ユーザー エクスペリエンスを確保する最適化のために、`dir` の結果が Azure ドライブにキャッシュされます。
+- **[詳細]** :既定では、ユーザー エクスペリエンスを確保する最適化のために、`dir` の結果が Azure ドライブにキャッシュされます。
 - **解決方法**:Azure リソースを作成、更新、または削除した後に、`dir -force` を実行して Azure ドライブで結果を更新します。
 
 ## <a name="general-limitations"></a>一般的な制限事項

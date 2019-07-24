@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: b-juche
 ms.openlocfilehash: fd8e380ad68b86b9ffd0f1e40efde8bdadfb19c5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711825"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>サブネットを Azure NetApp Files に委任する 

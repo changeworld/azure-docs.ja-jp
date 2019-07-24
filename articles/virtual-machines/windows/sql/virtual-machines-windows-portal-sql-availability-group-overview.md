@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.openlocfilehash: b9977965dc076ec36aa90680a1732b6640b1e41a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861844"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60325807"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Always On 可用性グループの概要 #
 
@@ -38,9 +38,9 @@ Azure Virtual Machines での可用性グループの重要な違いは、Azure 
 
 |  | Windows Server のバージョン | SQL Server のバージョン | SQL Server のエディション | WSFC クォーラムの構成 | マルチリージョンの DR | マルチサブネットのサポート | 既存の AD のサポート | マルチゾーン同一リージョンの DR | Dist-AG サポート (AD ドメインなし) | Dist-AG サポート (クラスターなし) |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| [SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Ent | クラウド監視 | いいえ  | 可能  | はい | はい | いいえ  | いいえ  |
-| [クイック スタート テンプレート](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Ent | クラウド監視 | いいえ  | 可能  | はい | はい | いいえ  | いいえ  |
-| [Portal テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Ent | ファイル共有 | いいえ  | いいえ  | いいえ  | いいえ  | いいえ  | いいえ  |
+| [SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Ent | クラウド監視 | いいえ | 可能 | はい | はい | いいえ | いいえ |
+| [クイック スタート テンプレート](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Ent | クラウド監視 | いいえ | 可能 | はい | はい | いいえ | いいえ |
+| [Portal テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Ent | ファイル共有 | いいえ | いいえ | いいえ | いいえ | いいえ | いいえ |
 | [手動](virtual-machines-windows-portal-sql-availability-group-prereq.md) | All | All | All | All | はい | はい | はい | はい | はい | はい |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
 

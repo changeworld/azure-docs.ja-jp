@@ -3,20 +3,20 @@ title: コンテナーを構成する - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: Computer Vision で、テキスト認識コンテナーのさまざまな設定を構成します。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
+ms.date: 06/19/2019
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 42c08864c6908e92a7ecea336f8b1bd0606760db
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4613b576b444059d448cf1094284f2a68e6c31a8
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678685"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67275142"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>テキスト認識 Docker コンテナーを構成する
 
@@ -53,7 +53,7 @@ ms.locfileid: "59678685"
 
 |必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -81,8 +81,8 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 |省略可能| Name | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|禁止| `Input` | String | Computer Vision コンテナーでは、これは使用されません。|
-|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|禁止| `Input` | string | Computer Vision コンテナーでは、これは使用されません。|
+|省略可能| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
@@ -93,7 +93,7 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 次の表に示したように、エンドポイント URI には、忘れずに `vision/v1.0` ルーティングを追加してください。 
 
-{_<引数名>_} はお客様独自の値に置き換えてください。
+{ _<引数名>_ } はお客様独自の値に置き換えてください。
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|

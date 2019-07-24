@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
-ms.date: 04/02/2019
+ms.topic: quickstart
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 62187ddbe587a81038f8424b079e3c0c313d1ae2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d64f59b6b4439d79d64ee92cf23676ab1275c45a
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58887087"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602997"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>クイック スタート:Node.js を使用してテキスト読み上げ音声の一覧を取得する
 
@@ -39,7 +39,7 @@ ms.locfileid: "58887087"
 // Requires request and request-promise for HTTP requests
 // e.g. npm install request request-promise
 const rp = require('request-promise');
-// Requires fs to write the list of languagesto a file
+// Requires fs to write the list of languages to a file
 const fs = require('fs');
 ```
 

@@ -4,7 +4,7 @@ description: 仮想マシン拡張機能を使用して、Linux 仮想マシン�
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2019
+ms.date: 07/01/2019
 ms.author: roiyz
-ms.openlocfilehash: 538eb492829c8ad171d1d27b51405725f53f352a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7d8192a3b6ff732481a4d48f6e188b4bb3989cda
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853224"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705931"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Linux 用の Azure Monitor 仮想マシン拡張機能
 
@@ -47,17 +47,34 @@ Log Analytics Agent 拡張機能は、次の Linux ディストリビューシ�
 | Red Hat Enterprise Linux Server | 6 (x86/x64) および 7 (x64) |
 | Debian GNU/Linux | 8 および 9 (x86/x64) |
 | Ubuntu | 14.04 LTS (x86/x64)、16.04 LTS (x86/x64)、および 18.04 LTS (x64) |
-| SUSE Linux Enterprise Server | 12 (x64) |
+| SUSE Linux Enterprise Server | 12 (x64) および 15 (x64) |
 
 >[!NOTE]
->1.x より前のバージョンの OpenSSL はどのプラットフォームでもサポートされていません。x86_64 プラットフォーム (64 ビット) でサポートされているバージョンは 1.10 のみです。  
+>1\.x より前のバージョンの OpenSSL はどのプラットフォームでもサポートされていません。x86_64 プラットフォーム (64 ビット) でサポートされているバージョンは 1.10 のみです。  
 >
+
+### <a name="agent-prerequisites"></a>エージェントの前提条件
+
+次の表には、エージェントがインストールされるサポートされている Linux ディストリビューションに必要なパッケージが明記されています。
+
+|必須パッケージ |説明 |最小バージョン |
+|-----------------|------------|----------------|
+|Glibc |    GNU C ライブラリ | 2.5-12 
+|Openssl    | OpenSSL ライブラリ | 1.0.x または 1.1.x |
+|Curl | cURL Web クライアント | 7.15.5 |
+|Python-ctypes | | 
+|PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) | | 
+
+>[!NOTE]
+>syslog メッセージを収集するには、rsyslog または syslog-ng が必要となります。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、rsyslog デーモンをインストールし、sysklog を置き換えるように構成する必要があります。
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
 次の表は、Azure Monitor VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
 
 | Azure Monitor Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
+| 1.11.9 | [1.11.0-7](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-7) |
+| 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
@@ -116,7 +133,7 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 |
+| EnableAdfsAuthentication | 値/例 |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |

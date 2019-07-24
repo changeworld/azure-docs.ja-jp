@@ -12,11 +12,11 @@ ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
 ms.openlocfilehash: 44ff2a5b723c086604acf39e9f975deb53759ae1
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648111"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60752047"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Azure AI Gallery からの製品内ユーザー データの表示と削除
 
@@ -36,7 +36,7 @@ Azure AI Gallery の Web サイト UI を使用して公開した項目を表示
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>AI Gallery Catalog API を使用してデータを表示する
 
- https://catalog.cortanaanalytics.com/entities からアクセスでき、AI Gallery Catalog API を使用して収集されたデータをプログラムで表示することができます。 データを表示するには、作成者 ID が必要です。 Catalog API を使用して一覧にないエンティティを表示するには、アクセス トークンが必要です。
+https://catalog.cortanaanalytics.com/entities からアクセスでき、AI Gallery Catalog API を使用して収集されたデータをプログラムで表示することができます。 データを表示するには、作成者 ID が必要です。 Catalog API を使用して一覧にないエンティティを表示するには、アクセス トークンが必要です。
 
 Catalog の応答は JSON 形式で返されます。
 
@@ -59,7 +59,7 @@ Catalog API を使用して一覧にないエンティティを表示するに�
 2.  右上隅にあるプロファイル画像をクリックします。次に、アカウント名をクリックして、プロファイル ページを読み込みます。
 3.  F12 キーを押して、ブラウザーの開発者ツール ウィンドウを開き、[ネットワーク] タブを選択してページを更新します。 
 4. フィルター テキスト ボックスに *catalog* という文字列を入力して、要求をフィルター処理します。
-5.  URL `https://catalog.cortanaanalytics.com/entities` への要求で、GET 要求を見つけて、*[ヘッダー]* タブを選択します。*[要求ヘッダー]* セクションまで下にスクロールします。
+5.  URL `https://catalog.cortanaanalytics.com/entities` への要求で、GET 要求を見つけて、 *[ヘッダー]* タブを選択します。 *[要求ヘッダー]* セクションまで下にスクロールします。
 6.  ヘッダー `DataLabAccessToken` の下に英数字トークンがあります。 データの安全を維持するため、このトークンは共有しないでください。
 
 ### <a name="view-user-information"></a>ユーザー情報を表示する
@@ -84,7 +84,7 @@ Catalog API には、[AI Gallery Web サイト](https://gallery.azure.ai/)で直
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
-例: 
+例:
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
 

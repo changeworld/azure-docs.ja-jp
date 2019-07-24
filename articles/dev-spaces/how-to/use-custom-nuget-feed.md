@@ -9,13 +9,13 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: カスタム NuGet フィードを使用して、Azure Dev Space 内の NuGet パッケージにアクセスし、使用します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-manager: ghogen
-ms.openlocfilehash: 1a000e378a9b8ecfb09d778fd6444e3f24b3df7b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+manager: gwallace
+ms.openlocfilehash: ca1fee76dfe280322a39fad56b9f85ebe1a92d3b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772468"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704031"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Azure Dev Space でのカスタム NuGet フィードの使用
 

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095162"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60362790"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>StorSimple デバイスの CHAP の構成
 
@@ -118,7 +118,7 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Windows ホスト サーバーで双方向認証を構成するには
 
 1. Windows ホスト サーバーで、iSCSI イニシエーターを開始します。
-2. **[iSCSI イニシエーターのプロパティ]** ウィンドウで、**[構成]** タブをクリックします。
+2. **[iSCSI イニシエーターのプロパティ]** ウィンドウで、 **[構成]** タブをクリックします。
 3. **[CHAP]** をクリックします。
 4. **[iSCSI イニシエーターの相互 CHAP シークレット]** ダイアログ ボックスで、次の手順を実行します。
    
@@ -128,7 +128,7 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
        ![[iSCSI イニシエーターの相互 CHAP シークレット]](./media/storsimple-configure-chap/IC740949.png)
 5. **[ターゲット]** タブをクリックします。
 6. **[接続]** をクリックします。 
-7. **[ターゲットへの接続]** ダイアログ ボックスで、**[詳細設定]** をクリックします。
+7. **[ターゲットへの接続]** ダイアログ ボックスで、 **[詳細設定]** をクリックします。
 8. **[詳細プロパティ]** ダイアログ ボックスで、次の手順を実行します。
    
    1. **[CHAP ログオンを有効にする]** チェック ボックスをオンにします。
@@ -143,11 +143,11 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
 
 ## <a name="additional-considerations"></a>追加の考慮事項
 
-**クイック接続** 機能は、CHAP が有効になっている接続をサポートしません。 CHAP を有効にした場合、**[ターゲット]** タブで利用できる **[接続]** ボタンを使用して、ターゲットに接続できることを確認します。
+**クイック接続** 機能は、CHAP が有効になっている接続をサポートしません。 CHAP を有効にした場合、 **[ターゲット]** タブで利用できる **[接続]** ボタンを使用して、ターゲットに接続できることを確認します。
 
 ![Connect to target](./media/storsimple-configure-chap/IC740947.png)
 
-表示される **[ターゲットへの接続]** ダイアログ ボックスで、**[この接続をお気に入りのターゲットの一覧に追加する]** チェック ボックスをオンにします。 このように選択すると、コンピューターを再起動するたびに、iSCSI のお気に入りのターゲットへの接続の復元が試行されます。
+表示される **[ターゲットへの接続]** ダイアログ ボックスで、 **[この接続をお気に入りのターゲットの一覧に追加する]** チェック ボックスをオンにします。 このように選択すると、コンピューターを再起動するたびに、iSCSI のお気に入りのターゲットへの接続の復元が試行されます。
 
 ## <a name="errors-during-configuration"></a>構成中のエラー
 
@@ -163,7 +163,7 @@ CHAP の構成が正しくない場合、 **"認証エラー"** というエラ�
 3. **[詳細]** をクリックします。
    
     ![iSCSI initiator properties favorite targets](./media/storsimple-configure-chap/IC740951.png)
-4. **[お気に入りのターゲットの詳細]** ダイアログ ボックスで、**[認証]** フィールドのエントリを確認します。 正常に構成されている場合、" **CHAP**" と表示されます。
+4. **[お気に入りのターゲットの詳細]** ダイアログ ボックスで、 **[認証]** フィールドのエントリを確認します。 正常に構成されている場合、" **CHAP**" と表示されます。
    
     ![Favorite target details](./media/storsimple-configure-chap/IC740952.png)
 

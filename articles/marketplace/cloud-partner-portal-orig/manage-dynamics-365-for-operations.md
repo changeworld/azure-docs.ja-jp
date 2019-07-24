@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: a9ada25641e2a56beb9083b145a507c8fd41a46f
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64935102"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Cloud パートナー ポータルから Dynamics 365 for Operations オファーを作成する方法
@@ -118,7 +118,7 @@ CAR (カスタマイズ分析レポート) をここにアップロードしま�
 
 ### <a name="marketing-artifacts"></a>マーケティングの成果物
 
-1. 次に **[ロゴ]**、**[スクリーンショット]** をアップロードします。 \*\*アップロードごとのサイズにご注意ください。また、すべての画像は PNG 形式である必要があります。
+1. 次に **[ロゴ]** 、 **[スクリーンショット]** をアップロードします。 \*\*アップロードごとのサイズにご注意ください。また、すべての画像は PNG 形式である必要があります。
 2. **[デモ ビデオ]** - \"[+新規]\" をクリックします。 ソリューションのデモ ビデオをアップロードします (YouTube またはビデオのリンクのみ)\*\*。 ビデオをステージングに表示するには、指定されたサイズのサムネイル動画をアップロードする必要があります。
 3. **[ドキュメント]** - ソリューションに関連する任意のドキュメントをアップロードし、ドキュメントの名前を忘れずに入力します。
 

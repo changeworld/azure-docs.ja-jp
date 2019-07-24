@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 05/22/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.custom: seodec18
-ms.openlocfilehash: 7320f5cd8d012973139adb099785cddae123f775
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 2b0bb94be2ba8ea983cda8fd015d05fcd532f2bc
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949609"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66226081"
 ---
 # <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>チュートリアル: Azure CDN を使用し、静的な Web サイトに対して SSL を使ってカスタム ドメインを有効にする
 
@@ -38,15 +38,27 @@ ms.locfileid: "65949609"
 
 ## <a name="create-a-cdn-endpoint-on-the-static-website-endpoint"></a>静的な Web サイト エンドポイントで CDN エンドポイントを作成する
 
-1. Web ブラウザーで [Azure ポータル](https://portal.azure.com/)を開きます。 
-1. ストレージ アカウントを見つけて、アカウントの概要を表示します。
+1. Azure portal で自分のストレージ アカウントを探して、アカウントの概要を表示します。
 1. **[Blob service]** メニューで **[Azure CDN]** を選択して、Azure CDN を構成します。
-1. **[新しいエンドポイント]** セクションで、フィールドに入力して新しい CDN エンドポイントを作成します。
-1. エンドポイント名 (*mystaticwebsiteCDN* など) を入力します。
-1. CDN エンドポイントのホスト名として、Web サイトのドメインを入力します。
-1. 配信元のホスト名については、静的な Web サイト エンドポイントを入力します。 静的な Web サイト エンドポイントを見つけるには、ストレージ アカウントの **[静的な Web サイト]** セクションに移動して、エンドポイントをコピーします (先頭の https:// は削除します)
-1. ブラウザーで *mywebsitecdn.azureedge.net* に移動して、CDN エンドポイントをテストします。
-1. さらに、確認のために **[新規エンドポイント]** の下の設定の配信元に移動し、配信元のタイプが *[カスタムの配信元]* に設定され、 *[配信元のホスト名]* に静的な Web サイト エンドポイント名が表示されていることを確認します。
+1. **[CDN のプロファイル]** セクションで、新規または既存の CDN プロファイルを指定します。 詳細については、「[クイック スタート: Azure CDN プロファイルとエンドポイントの作成](../../cdn/cdn-create-new-endpoint.md)」を参照してください。
+1. CDN エンドポイントの価格レベルを指定します。 このチュートリアルでは、"**Standard Akamai**" 価格レベルを使用します。これは通常、数分以内にすばやく伝達されるからです。 その他の価格レベルは伝達に時間がかかることがありますが、別の利点もあります。 詳細については、「[Azure CDN 製品の機能を比較する](../../cdn/cdn-features.md)」を参照してください。
+1. **[CDN エンドポイント名]** フィールドに、CDN エンドポイントの名前を指定します。 CDN エンドポイントは Azure 全体で一意である必要があります。
+1. **[配信元のホスト名]** フィールドに、静的な Web サイト エンドポイントを指定します。 静的な Web サイト エンドポイントを見つけるには、ストレージ アカウントの **[静的な Web サイト]** 設定に移動します。 プライマリ エンドポイントをコピーし、CDN 構成に貼り付けます。プロトコル識別子 ("HTTPS" *など*) は削除します。
+
+    次の図に、エンドポイント構成の例を示します。
+
+    ![サンプルの CDN エンドポイント構成を示すスクリーンショット](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
+
+1. CDN エンドポイントを作成し、伝達を待機します。
+1. CDN エンドポイントが正しく構成されていることを確認するには、エンドポイントをクリックして設定に移動します。 ストレージ アカウントの CDN の概要からエンドポイントのホスト名を探し、次の図に示すように、エンドポイントに移動します。 CDN エンドポイントの形式は、`https://staticwebsitesamples.azureedge.net` のようになります。
+
+    ![CDN エンドポイントの概要を示すスクリーンショット](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
+
+    CDN エンドポイントの伝達が完了した後、CDN エンドポイントに移動すると、静的な Web サイトに以前アップロードした index.html ファイルの内容が表示されます。
+
+1. CDN エンドポイントの配信元の設定を確認するには、CDN エンドポイントの **[設定]** セクションにある **[配信元]** に移動します。 **[配信元の種類]** フィールドが *[カスタムの配信元]* に設定され、 **[配信元のホスト名]** フィールドに静的な Web サイト エンドポイントが表示されていることを確認できます。
+
+    ![CDN エンドポイントの配信元の設定を示すスクリーンショット](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
 
 ## <a name="enable-custom-domain-and-ssl"></a>カスタム ドメインと SSL を有効にする
 
@@ -54,17 +66,19 @@ ms.locfileid: "65949609"
 
     ![www サブドメインの CNAME レコードを指定する](media/storage-blob-static-website-custom-domain/subdomain-cname-record.png)
 
-1. Azure ポータルで、新しく作成されたエンドポイントをクリックし、カスタム ドメインと SSL 証明書を構成します。
+1. Azure portal で、CDN エンドポイントの設定を表示します。 **[設定]** の **[カスタム ドメイン]** に移動して、カスタム ドメインと SSL 証明書を構成します。
 1. **[カスタム ドメインの追加]** を選択し、ドメイン名を入力してから **[追加]** をクリックします。
-1. 新しく作成されたカスタム ドメインのマッピングを選択し、SSL 証明書をプロビジョニングします。
-1. **[カスタム ドメイン HTTPS]** を **[オン]** に設定します。 **[CDN マネージド]** を選択し、Azure CDN で SSL 証明書を管理するようにします。 **[Save]** をクリックします。
-1. Web サイトの URL にアクセスして、Web サイトをテストします。
+1. 新しいカスタム ドメインのマッピングを選択し、SSL 証明書をプロビジョニングします。
+1. **[カスタム ドメイン HTTPS]** を **[オン]** に設定し、 **[保存]** をクリックします。 カスタム ドメインの構成には数時間かかる場合があります。 ポータルでは、次の図に示すように進行状況が表示されます。
+
+    ![カスタム ドメイン構成の進行状況を示すスクリーンショット](media/storage-blob-static-website-custom-domain/configure-custom-domain-https.png)
+
+1. カスタム ドメインの URL にアクセスして、静的な Web サイトのカスタム ドメインへのマッピングをテストします。
+
+カスタム ドメインの HTTPS の有効化の詳細については、「[チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する](../../cdn/cdn-custom-ssl.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルの第 2 部では、静的な Web サイト用に Azure CDN で SSL を使用してカスタム ドメインを構成する方法について説明しました。
 
-次は以下のリンクに従って、Azure Storage での静的な Web サイト ホスティングの詳細を確認します。
-
-> [!div class="nextstepaction"]
-> [静的な Web サイトに関する詳細](storage-blob-static-website.md)
+Azure CDN の構成と使用方法の詳細については、[Azure CDN の概要](../../cdn/cdn-overview.md)に関するページを参照してください。

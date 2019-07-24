@@ -13,11 +13,11 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: bb493fc0a9d3a9173ef4faf17b3cdd4e3781a557
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526165"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60331028"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Database での拡張イベント向けリング バッファー ターゲット コード
 
@@ -30,7 +30,7 @@ ms.locfileid: "59526165"
 1. 表示させるデータでテーブルを作成する。
 2. 既存の拡張イベントのセッション (つまり **sqlserver.sql_statement_starting**) を作成する。
    
-   * イベントは、次の特定の Update 文字列を含む SQL ステートメントに限定される: **statement LIKE ’%UPDATE tabEmployee%’**。
+   * イベントは、次の特定の Update 文字列を含む SQL ステートメントに限定される: **statement LIKE ’%UPDATE tabEmployee%’** 。
    * イベントの出力をリング バッファー タイプのターゲット (つまり **package0.ring_buffer**) に送信するよう選択できる。
 3. イベント セッションを開始する。
 4. 単純な SQL UPDATE ステートメントをいくつか発行する。
@@ -55,7 +55,7 @@ ms.locfileid: "59526165"
 
 ## <a name="code-sample"></a>サンプル コード
 
-わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。 異なる点は、手順 5. の FROM 句で使用されるいくつかの動的管理ビュー (DMV) の名前の中に「_database」というノード名があることです。 例: 
+わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。 異なる点は、手順 5. の FROM 句で使用されるいくつかの動的管理ビュー (DMV) の名前の中に「_database」というノード名があることです。 例:
 
 * sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets

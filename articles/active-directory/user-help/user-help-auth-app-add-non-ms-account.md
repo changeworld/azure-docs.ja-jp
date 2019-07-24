@@ -13,11 +13,11 @@ ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6f94ba30c06fc6975ab212c895cecefe5d383fa
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453649"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60473908"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Microsoft 以外のアカウントを追加する
 2 要素検証のために Microsoft Authenticator アプリに、Google、Facebook、GitHub などの、Microsoft 以外のアカウントを追加します。 Microsoft Authenticator アプリは、2 要素認証を使用する任意のアプリ、および時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
@@ -39,19 +39,19 @@ ms.locfileid: "56453649"
 
 ### <a name="turn-on-two-factor-verification"></a>2 要素検証を有効にする
 
-1. ご利用のコンピューターで、 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome に移動し、**[始める]** を選択してから本人確認を行います。
+1. ご利用のコンピューターで、 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome に移動し、 **[始める]** を選択してから本人確認を行います。
 
 2. ページの手順に従って、個人用の Google アカウントに対して 2 段階認証を有効にします。
 
 ### <a name="add-your-google-account-to-the-app"></a>Google アカウントをアプリに追加する
 
-1. コンピューターの Google ページで、**[Set up alternative second step]\(代替の 2 番目のステップを設定する\)** セクションに移動し、**[Authenticator アプリ]** セクションから **[設定]** を選びます。
+1. コンピューターの Google ページで、 **[Set up alternative second step]\(代替の 2 番目のステップを設定する\)** セクションに移動し、 **[Authenticator アプリ]** セクションから **[設定]** を選びます。
 
 2. **[Get codes from the Authenticator app]\(Authenticator アプリからコードを入手\)** ページで、ご利用の電話の種類に基づいて **[Android]** または **[iPhone]** を選択してから **[次へ]** を選びます。
 
     アカウントを自動的に Microsoft Authenticator アプリに関連付けるために使用できる QR コードが表示されます。 このウィンドウは閉じないでください。
 
-3. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、**[他のアカウント (Google、Facebook など)]** を選びます。
+3. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[他のアカウント (Google、Facebook など)]** を選びます。
 
 4. デバイスのカメラを使用して、コンピューターの **[Set up Authenticator]\(Authenticator の設定\)** ページから QR コードをスキャンします。
 
@@ -62,9 +62,9 @@ ms.locfileid: "56453649"
 
     セキュリティ強化のため、他のユーザーによってコードが複数回使用されないように、確認コードは 30 秒ごとに変更されます。
 
-6. コンピューターの **[Set up Authenticator]\(Authenticator の設定\)** ページで **[次へ]** を選択し、Google アカウント用にアプリで提供された 6 桁の確認コードを入力してから、**[確認]** を選びます。
+6. コンピューターの **[Set up Authenticator]\(Authenticator の設定\)** ページで **[次へ]** を選択し、Google アカウント用にアプリで提供された 6 桁の確認コードを入力してから、 **[確認]** を選びます。
 
-7. アカウントが確認されたら、**[完了]** を選択して、**[Set up Authenticator]\(Authenticator の設定\)** ページを閉じることができます。
+7. アカウントが確認されたら、 **[完了]** を選択して、 **[Set up Authenticator]\(Authenticator の設定\)** ページを閉じることができます。
 
     >[!NOTE]
     >2 要素検証と Google アカウントの詳細については、「[2 段階認証プロセスを有効にする](https://support.google.com/accounts/answer/185839)」と「[2 段階認証プロセスの詳細](https://www.google.com/landing/2step/help.html)」を参照してください。
@@ -74,11 +74,11 @@ ms.locfileid: "56453649"
 
 ### <a name="turn-on-two-factor-verification"></a>2 要素検証を有効にする
 
-1. ご利用のコンピューターで、Facebook を開き、右上隅にあるドロップダウン メニューを選択してから、**[設定]** > **[セキュリティとログイン]** の順に移動します。
+1. ご利用のコンピューターで、Facebook を開き、右上隅にあるドロップダウン メニューを選択してから、 **[設定]**  >  **[セキュリティとログイン]** の順に移動します。
 
     **[セキュリティとログイン]** ページが表示されます。
 
-2. **[2 要素認証]** セクションの **[Use two-factor authentication]\(2 要素認証を使用\)** オプションまで下に移動し、**[編集]** を選択します。
+2. **[2 要素認証]** セクションの **[Use two-factor authentication]\(2 要素認証を使用\)** オプションまで下に移動し、 **[編集]** を選択します。
 
     **[2 要素認証]** ページが表示されます。
 
@@ -86,11 +86,11 @@ ms.locfileid: "56453649"
 
 ### <a name="add-your-facebook-account-to-the-app"></a>Facebook アカウントをアプリに追加する
 
-1. ご利用のコンピューターの Facebook ページで、**[バックアップを追加]** セクションに移動し、**[Authentication アプリ]** 領域から **[セットアップ]** を選択します。
+1. ご利用のコンピューターの Facebook ページで、 **[バックアップを追加]** セクションに移動し、 **[Authentication アプリ]** 領域から **[セットアップ]** を選択します。
 
     アカウントを自動的に Microsoft Authenticator アプリに関連付けるために使用できる QR コードが表示されます。 このウィンドウは閉じないでください。
 
-2. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、**[他のアカウント (Google、Facebook など)]** を選びます。
+2. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[他のアカウント (Google、Facebook など)]** を選びます。
 
 3. デバイスのカメラを使用して、コンピューターの **[2 要素認証]** ページから QR コードをスキャンします。
 
@@ -117,27 +117,27 @@ ms.locfileid: "56453649"
 
     **[2 要素認証]** ページが表示されます。
 
-2. **[個人設定]** サイドバーの **[セキュリティ]** を選択し、**[2 要素認証]** 領域から **[Enable two-factor authentication]\(2 要素認証を有効にする\)** を選びます。
+2. **[個人設定]** サイドバーの **[セキュリティ]** を選択し、 **[2 要素認証]** 領域から **[Enable two-factor authentication]\(2 要素認証を有効にする\)** を選びます。
 
 ### <a name="add-your-github-account-to-the-app"></a>GitHub アカウントをアプリに追加する
 
-1. ご利用のコンピューターの **[2 要素認証]** ページで、**[Set up using an app]\(アプリを使用して設定\)** を選択します。
+1. ご利用のコンピューターの **[2 要素認証]** ページで、 **[Set up using an app]\(アプリを使用して設定\)** を選択します。
 
-2. アクセスできなくなった場合にアカウントを復元できるように回復用コードを保存してから、**[次へ]** を選択します。 
+2. アクセスできなくなった場合にアカウントを復元できるように回復用コードを保存してから、 **[次へ]** を選択します。 
 
     コードは、デバイスにダウンロードするか、印刷するか、パスワード マネージャー ツールにコピーすることで保存できます。
 
-3. **[2 要素認証]** ページで、**[Set up using an app]\(アプリを使用して設定\)** を選択します。
+3. **[2 要素認証]** ページで、 **[Set up using an app]\(アプリを使用して設定\)** を選択します。
 
     ページが変わり、QR コードが表示されます。 このページは閉じないでください。
 
-4. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、**[他のアカウント (Google、Facebook など)]** を選びます。その後、ページの上部にあるテキストから **[enter this text code]\(このテキスト コードを入力\)** を選択します。
+4. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[他のアカウント (Google、Facebook など)]** を選びます。その後、ページの上部にあるテキストから **[enter this text code]\(このテキスト コードを入力\)** を選択します。
 
     Microsoft Authenticator アプリでは QR コードをスキャンできないため、手動でコードを入力する必要があります。
 
 5. **[アカウント名]** (GitHub など) を入力し、手順 4 の **[秘密鍵]** を入力してから **[完了]** を選択します。
 
-4. コンピューターの **[2 要素認証]** ページで、GitHub アカウント用にアプリで提供された 6 桁の確認コードを入力してから、**[有効にする]** を選択します。
+4. コンピューターの **[2 要素認証]** ページで、GitHub アカウント用にアプリで提供された 6 桁の確認コードを入力してから、 **[有効にする]** を選択します。
 
     アプリの **[アカウント]** ページに、アカウント名と 6 桁の確認コードが表示されます。 セキュリティ強化のため、他のユーザーによってコードが複数回使用されないように、確認コードは 30 秒ごとに変更されます。
 
@@ -149,9 +149,9 @@ ms.locfileid: "56453649"
 
 ### <a name="turn-on-two-factor-verification"></a>2 要素検証を有効にする
 
-1. ご利用のコンピューターで、Amazon を開き、**[Account & Lists]\(アカウントとリスト\)** ドロップダウン メニューを選択し、**[自分のアカウント]** を選びます。
+1. ご利用のコンピューターで、Amazon を開き、 **[Account & Lists]\(アカウントとリスト\)** ドロップダウン メニューを選択し、 **[自分のアカウント]** を選びます。
 
-2. **[Login & security]\(ログインとセキュリティ\)** を選択し、Amazon アカウントにサインインしてから、**[セキュリティの詳細設定]** 領域で **[編集]** を選びます。
+2. **[Login & security]\(ログインとセキュリティ\)** を選択し、Amazon アカウントにサインインしてから、 **[セキュリティの詳細設定]** 領域で **[編集]** を選びます。
 
     **[セキュリティの詳細設定]** ページが表示されます。
 
@@ -161,7 +161,7 @@ ms.locfileid: "56453649"
 
     ページが変わり、QR コードが表示されます。 このページは閉じないでください。
 
-5. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、**[他のアカウント (Google、Facebook など)]** を選びます。
+5. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[他のアカウント (Google、Facebook など)]** を選びます。
 
 6. デバイスのカメラを使用して、コンピューターの **[Choose how you'll receive codes]\(コードの受信方法の選択\)** ページから QR コードをスキャンします。
 
@@ -172,13 +172,13 @@ ms.locfileid: "56453649"
 
     セキュリティ強化のため、他のユーザーによってコードが複数回使用されないように、確認コードは 30 秒ごとに変更されます。
 
-6. コンピューターの **[Choose how you'll receive codes]\(コードの受信方法の選択\)** ページで、Amazon アカウント用にアプリで提供された 6 桁の確認コードを入力してから、**[Verify code and continue]\(コードを確認して続行\)** を選びます。
+6. コンピューターの **[Choose how you'll receive codes]\(コードの受信方法の選択\)** ページで、Amazon アカウント用にアプリで提供された 6 桁の確認コードを入力してから、 **[Verify code and continue]\(コードを確認して続行\)** を選びます。
 
-7. テキスト メッセージなどのバックアップの確認方法の追加を含め、残りのサインイン プロセスを完了してから、**[コードの送信]** を選択します。
+7. テキスト メッセージなどのバックアップの確認方法の追加を含め、残りのサインイン プロセスを完了してから、 **[コードの送信]** を選択します。
 
-8. コンピューターの **[Add a backup verification method]\(バックアップの確認方法の追加\)** ページで、Amazon アカウントのバックアップの確認方法で提供された 6 桁の確認コードを入力してから、**[Verify code and continue]\(コードを確認して続行\)** を選びます。
+8. コンピューターの **[Add a backup verification method]\(バックアップの確認方法の追加\)** ページで、Amazon アカウントのバックアップの確認方法で提供された 6 桁の確認コードを入力してから、 **[Verify code and continue]\(コードを確認して続行\)** を選びます。
 
-9. [まもなく完了します] ページで、ご利用のコンピューターを信頼済みデバイスにするかどうかを決定してから、**[了解しました。2 段階認証を有効にしてください]** を選択します。
+9. [まもなく完了します] ページで、ご利用のコンピューターを信頼済みデバイスにするかどうかを決定してから、 **[了解しました。2 段階認証を有効にしてください]** を選択します。
 
     **[セキュリティの詳細設定]** ページが表示され、更新した 2 要素検証の詳細が示されます。
 

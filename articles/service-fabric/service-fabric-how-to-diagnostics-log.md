@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/27/2018
 ms.author: srrengar
 ms.openlocfilehash: d1b3dc25dd9bda9d7f9d9152c2a94cea8321f5cf
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660853"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60482609"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric アプリケーションにログ記録を追加する
 
@@ -175,7 +175,7 @@ ASP.NET Core のログ記録 ([Microsoft.Extensions.Logging NuGet パッケー�
 ## <a name="next-steps"></a>次の手順
 
 - [Service Fabric での監視アプリケーション](service-fabric-diagnostics-event-generation-app.md)の詳細を確認する。
-- [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) および [Windows Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)でのログ記録について確認する。
+- [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) および [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) でのログ記録について確認する。
 
 
 

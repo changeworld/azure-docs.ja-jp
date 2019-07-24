@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 37d4c295fe8a89a8b32364f42e8fb4c5a4caf777
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120398"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181698"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Azure Portal を使用して更新プログラムをインストールするには
 
-1. StorSimple デバイス マネージャーに移動し、**[デバイス]** を選択します。 サービスに接続されているデバイスの一覧から、更新するデバイスを選択してクリックします。 
+1. StorSimple デバイス マネージャーに移動し、 **[デバイス]** を選択します。 サービスに接続されているデバイスの一覧から、更新するデバイスを選択してクリックします。 
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate1m.png) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "66120398"
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate2m.png)  
 
-3. ソフトウェアの更新プログラムが利用可能な場合は、メッセージが表示されます。 更新プログラムを確認するには、**[スキャン]** をクリックします。
+3. ソフトウェアの更新プログラムが利用可能な場合は、メッセージが表示されます。 更新プログラムを確認するには、 **[スキャン]** をクリックします。
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate3m.png)
 
@@ -29,7 +29,7 @@ ms.locfileid: "66120398"
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate5m.png)
 
-4. 更新プログラムのスキャンが完了したら、**[更新プログラムのダウンロード]** をクリックします。 
+4. 更新プログラムのスキャンが完了したら、 **[更新プログラムのダウンロード]** をクリックします。 
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate6m.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "66120398"
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate13m.png)
 
-8.  インストール ジョブが正常に完了したら、**[デバイスの更新プログラム]** ブレードの **[ジョブの表示]** リンクをクリックして、インストールを監視します。 
+8.  インストール ジョブが正常に完了したら、 **[デバイスの更新プログラム]** ブレードの **[ジョブの表示]** リンクをクリックして、インストールを監視します。 
 
     ![デバイスの更新](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate15m.png)
 

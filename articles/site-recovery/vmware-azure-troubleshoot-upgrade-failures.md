@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 02/05/2019
 ms.author: v-doglov
 ms.openlocfilehash: fc50be2a960784895947f3f154a0251f41716fc7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117304"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60565703"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery プロバイダーのアップグレード エラーのトラブルシューティング
 
@@ -28,7 +28,7 @@ Microsoft Azure Site Recovery Provider (DRA) をアップグレードすると�
 
 1. Microsoft Azure Site Recovery 統合セットアップをダウンロードします。
    1. 「[Azure Site Recovery のサービスの更新情報](service-updates-how-to.md##links-to-currently-supported-update-rollups)」記事の「現在サポートされている更新プログラム ロールアップへのリンク」セクションで、アップグレードするプロバイダーを選択します。
-   2. ロールアップ ページで、**[Update information]\(情報の更新\)** セクションを探し、Microsoft Azure Site Recovery 統合セットアップの更新プログラムのロールアップをダウンロードします。
+   2. ロールアップ ページで、 **[Update information]\(情報の更新\)** セクションを探し、Microsoft Azure Site Recovery 統合セットアップの更新プログラムのロールアップをダウンロードします。
 
 2. コマンド プロンプトを開き、統合セットアップ ファイルをダウンロードしたフォルダーに移動します。 「MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;抽出したファイルのフォルダー パス&gt;」というコマンドを使用して、ダウンロードからセットアップ ファイルを抽出します。
     
@@ -52,7 +52,7 @@ Microsoft Azure Site Recovery Provider (DRA) をアップグレードすると�
 1. `Build_Version` キーの値を調べます。 最新バージョンに設定されている場合は、バージョン番号を下げます。 たとえば、最新バージョンが 9.22.\* で、`Build_Version` キーがその値に設定されている場合は、9.21.\* に下げます。
 1. 最新の Microsoft Azure Site Recovery 統合セットアップをダウンロードします。
    1. 「[Azure Site Recovery のサービスの更新情報](service-updates-how-to.md##links-to-currently-supported-update-rollups)」記事の「現在サポートされている更新プログラム ロールアップへのリンク」セクションで、アップグレードするプロバイダーを選択します。
-   2. ロールアップ ページで、**[Update information]\(情報の更新\)** セクションを探し、Microsoft Azure Site Recovery 統合セットアップの更新プログラムのロールアップをダウンロードします。
+   2. ロールアップ ページで、 **[Update information]\(情報の更新\)** セクションを探し、Microsoft Azure Site Recovery 統合セットアップの更新プログラムのロールアップをダウンロードします。
 1. コマンド プロンプトを開き、統合セットアップ ファイルをダウンロードしたフォルダーに移動し、コマンド「MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;抽出したファイルのフォルダー パス&gt;」を使用してダウンロードからセットアップ ファイルを抽出します。
 
     コマンドの例:

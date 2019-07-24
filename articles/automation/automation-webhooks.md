@@ -4,17 +4,17 @@ description: HTTP 呼び出しから Azure Automation の Runbook を開始す�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 153bb0304102906f7be64ae55dd0e0f6bb8d7146
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6e0e0cdfd5bdda125ed38173df56e0fb7a84f71a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224894"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477925"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
 
@@ -30,7 +30,7 @@ ms.locfileid: "58224894"
 
 次のテーブルは、Webhook 用に構成する必要があるプロパティについて説明しています。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--- |:--- |
 | Name |Webhook に使用する任意の名前を指定できます。これはクライアントには公開されません。 これはユーザーが Azure Automation の Runbook を識別する場合にのみ使用されます。 <br> ベスト プラクティスとして、webhook を使用するクライアントに関連した名前を webhook に付ける必要があります。 |
 | URL |Webhook の URL は、クライアントが Webhook にリンクされた Runbook を開始するために HTTP POST で呼び出す一意のアドレスです。 これは、Webhook を作成するときに自動的に生成されます。 カスタム URL を指定することはできません。 <br> <br> この URL には、追加の認証なしで、サードパーティ製システムによる Runbook 呼び出しを可能にするためのセキュリティ トークンが含まれています。 その理由で、これはパスワードと同じように扱う必要があります。 セキュリティ上の理由から、Webhook の作成時に Azure ポータルで表示できるのは URL だけです。 将来の使用に備えて、URL を安全な場所にメモしてください。 |
@@ -90,8 +90,8 @@ Runbook 内にロジックを含め、$WebhookData パラメーターの **Webho
 次の手順を使用して、Runbook にリンクされた新しい Webhook を Azure ポータルに作成します。
 
 1. Azure portal の **[Runbook] ページ**から、webhook がその詳細ページの表示を開始する Runbook をクリックします。 Runbook の **[状態]** が **[発行済み]** を確認します。
-2. ページの上部にある **Webhook** をクリックして、**[Webhook の追加]** ページを開きます。
-3. **[新しい Webhook の作成]** をクリックして、**[webhook の作成] ページ**を開きます。
+2. ページの上部にある **Webhook** をクリックして、 **[Webhook の追加]** ページを開きます。
+3. **[新しい Webhook の作成]** をクリックして、 **[webhook の作成] ページ**を開きます。
 4. Webhook の**名前**、**有効期限**、およびそれを有効にする必要があるかどうかを指定します。 これらのプロパティの詳細については、「 [Webhook の詳細](#details-of-a-webhook) 」を参照してください。
 5. コピー アイコンをクリックし、Ctrl + C キーを押して Webhook の URL をコピーします。 次に、それを安全な場所に記録します。 **Webhook を作成したら、再度 URL を取得することはできません。**
 
@@ -129,11 +129,11 @@ Runbook ジョブの完了時期と Webhook からの完了状態は、クライ
 
 Webhook が作成された時点での有効期間は 1 年です。 その日時が過ぎると、Webhook は自動的に期限切れになります。 有効期限が切れた Webhook は再アクティブ化できず、削除して作成しなおす必要があります。 Webhook が有効期限に達していない場合は延長できます。
 
-Webhook を延長するには、その Webhook を含む Runbook に移動します。 **[リソース]** で **[Webhooks]** を選択します。 延長する Webhook をクリックすると、**[Webhook]** ページが開きます。  新しい有効期限の日付と時刻を選択して、**[保存]** をクリックします。
+Webhook を延長するには、その Webhook を含む Runbook に移動します。 **[リソース]** で **[Webhooks]** を選択します。 延長する Webhook をクリックすると、 **[Webhook]** ページが開きます。  新しい有効期限の日付と時刻を選択して、 **[保存]** をクリックします。
 
 ## <a name="sample-runbook"></a>サンプル Runbook
 
-次の例の Runbook では、webhook データを受け入れ、要求本文で指定された仮想マシンを起動します。 この Runbook をテストするには、Automation アカウントの **Runbook** で、**[+ Runbook の追加]** をクリックします。 Runbook を作成する方法がわからない場合は、[Runbook の作成](automation-quickstart-create-runbook.md)に関する記事をご覧ください。
+次の例の Runbook では、webhook データを受け入れ、要求本文で指定された仮想マシンを起動します。 この Runbook をテストするには、Automation アカウントの **Runbook** で、 **[+ Runbook の追加]** をクリックします。 Runbook を作成する方法がわからない場合は、[Runbook の作成](automation-quickstart-create-runbook.md)に関する記事をご覧ください。
 
 ```powershell
 param

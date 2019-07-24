@@ -11,11 +11,11 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 26791aecb2ca57b31358d3385d07230c73c84904
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903865"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61474421"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Gen2 キャッシュを監視する方法
 Gen2 ストレージ アーキテクチャでは、Gen2 データ ウェアハウス用に設計された NVMe ベースの SSD に搭載されているキャッシュ内で、最も頻繁に照会される列ストア セグメントを自動的に階層化します。 キャッシュに常駐しているセグメントをクエリが取得すると、より優れたパフォーマンスが実現します。 この記事では、ワークロードが Gen2 キャッシュを最適に活用しているかどうかを判断することで、パフォーマンスが遅いクエリを監視し、トラブルシューティングする方法について説明します。  
@@ -24,9 +24,9 @@ Azure Monitor を使用すれば、Gen2 キャッシュ メトリックを表示
 
 ![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
 
-メトリック ボタンを選択し、データ ウェアハウスの **[サブスクリプション]**、**[リソース]**、**[グループ]**、**[リソースの種類]**、**[リソース名]** を記入します。
+メトリック ボタンを選択し、データ ウェアハウスの **[サブスクリプション]** 、 **[リソース]** 、 **[グループ]** 、 **[リソースの種類]** 、 **[リソース名]** を記入します。
 
-Gen2 キャッシュをトラブルシューティングするための主要なメトリックは、**[キャッシュ ヒット率]** と **[キャッシュ使用率]** です。 次の 2 つのメトリックを表示するように、Azure メトリック グラフを構成します。
+Gen2 キャッシュをトラブルシューティングするための主要なメトリックは、 **[キャッシュ ヒット率]** と **[キャッシュ使用率]** です。 次の 2 つのメトリックを表示するように、Azure メトリック グラフを構成します。
 
 ![キャッシュ メトリック](./media/sql-data-warehouse-cache-portal/cache_1.png)
 

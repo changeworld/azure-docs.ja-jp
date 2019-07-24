@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
 ms.openlocfilehash: d5a4b3a07854c2664de7ec60f3677b666798a9bd
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145406"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181465"
 ---
 ### <a name="standard-and-neural-voices"></a>標準およびニューラル音声
 
@@ -19,21 +19,21 @@ ms.locfileid: "66145406"
 |--------|----------|-----------------|---------------|
 | オーストラリア東部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
 | カナダ中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
-| 米国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
-| 東アジア | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 米国中部 | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ |
+| 東アジア | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ |
 | 米国東部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
-| 米国東部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
-| フランス中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 米国東部 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ |
+| フランス中部 | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ |
 | インド中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
-| 東日本 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
-| 韓国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
-| 米国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
-| 北ヨーロッパ | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 東日本 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ |
+| 韓国中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ |
+| 米国中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ |
+| 北ヨーロッパ | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ |
 | 米国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
 | 東南アジア | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
 | 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
 | 西ヨーロッパ | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
-| 米国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ  |
+| 米国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | はい | いいえ |
 | 米国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | はい | はい |
 
 ### <a name="custom-voices"></a>カスタム音声

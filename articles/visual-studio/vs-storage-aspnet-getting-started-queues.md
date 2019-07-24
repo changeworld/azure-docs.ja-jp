@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
 ms.openlocfilehash: 3f3a649308449a8ba4e1dbaebd4db4afbf731c5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105762"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62110487"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 
@@ -46,11 +46,11 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 
     ![ASP.NET MVC アプリケーションへのコントローラーの追加](./media/vs-storage-aspnet-getting-started-queues/add-controller-menu.png)
 
-1. **[スキャフォールディングの追加]** ダイアログ ボックスで **[MVC 5 コントローラー - 空]** を選択し、**[追加]** を選択します。
+1. **[スキャフォールディングの追加]** ダイアログ ボックスで **[MVC 5 コントローラー - 空]** を選択し、 **[追加]** を選択します。
 
     ![MVC コントローラーの種類を指定する](./media/vs-storage-aspnet-getting-started-queues/add-controller.png)
 
-1. **[コントローラーの追加]** ダイアログで、コントローラーに *QueuesController* という名前を付けて、**[追加]** を選択します。
+1. **[コントローラーの追加]** ダイアログで、コントローラーに *QueuesController* という名前を付けて、 **[追加]** を選択します。
 
     ![MVC コントローラー指定](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
 
@@ -83,7 +83,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     }
     ```
 
-1. **CreateQueue** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **CreateQueue** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -113,9 +113,9 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     ViewBag.QueueName = queue.Name;
     ```
 
-1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、 **[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**CreateQueue**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**CreateQueue**」と入力し、 **[追加]** を選択します。
 
 1. `CreateQueue.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -129,7 +129,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     Creation of @ViewBag.QueueName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 
@@ -164,7 +164,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     }
     ```
  
-1. **AddMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **AddMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -202,9 +202,9 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     ViewBag.Message = message.AsString;
     ```
 
-1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、 **[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**AddMessage**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**AddMessage**」と入力し、 **[追加]** を選択します。
 
 1. `AddMessage.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -218,7 +218,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     The message '@ViewBag.Message' was added to the queue '@ViewBag.QueueName'.
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 
@@ -253,7 +253,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     }
     ```
  
-1. **PeekMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **PeekMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -285,9 +285,9 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     ViewBag.Message = (message != null ? message.AsString : "");
     ```
 
-1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、 **[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**PeekMessage**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**PeekMessage**」と入力し、 **[追加]** を選択します。
 
 1. `PeekMessage.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -304,7 +304,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     </table>    
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 
@@ -337,7 +337,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     }
     ```
  
-1. **ReadMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **ReadMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -376,9 +376,9 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     ViewBag.Message = message.AsString;
     ```
  
-1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、 **[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**ReadMessage**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**ReadMessage**」と入力し、 **[追加]** を選択します。
 
 1. `ReadMessage.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -395,7 +395,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     </table>
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 
@@ -428,7 +428,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     }
     ```
  
-1. **ReadMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **ReadMessage** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -466,9 +466,9 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     ViewBag.Length = nMessages;
     ```
  
-1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、 **[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**GetQueueLength**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**GetQueueLength**」と入力し、 **[追加]** を選択します。
 
 1. `GetQueueLengthMessage.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -482,7 +482,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     The queue '@ViewBag.QueueName' has a length of (number of messages): @ViewBag.Length
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 
@@ -515,7 +515,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     }
     ```
  
-1. **DeleteQueue** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **DeleteQueue** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -546,9 +546,9 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     ViewBag.QueueName = queue.Name;
     ```
  
-1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
+1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、 **[キュー]** を右クリックし、コンテキスト メニューで **[追加] > [ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**DeleteQueue**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**DeleteQueue**」と入力し、 **[追加]** を選択します。
 
 1. `DeleteQueue.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -562,7 +562,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     @ViewBag.QueueName deleted.
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 

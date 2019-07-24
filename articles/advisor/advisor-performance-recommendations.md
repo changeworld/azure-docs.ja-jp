@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 8fdae1e12e56dcbcb56941726b0c089ad59b8fc8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920444"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66254648"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -94,11 +94,27 @@ Azure Advisor は、サーバー上での過去 7 日間にわたる書き込み
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Azure MySQL、Azure PostgreSQL、または Azure MariaDB サーバーをより上位の SKU にスケーリングして接続の制約を回避する
 データベース サーバーへの新しい接続ごとに、一定のメモリが占有されます。 メモリの [上限](https://docs.microsoft.com/azure/postgresql/concepts-limits)が原因でサーバーへの接続がエラーになっている場合は、データベース サーバーのパフォーマンスが低下します。 Azure Advisor は、多くの接続エラーを伴う実行中のサーバーを特定して、コンピューティング処理をスケールアップするかメモリ最適化された SKU を使用して、コアごとのコンピューティング処理数を増やすことで、サーバーの接続制限を引き上げてお使いのサーバーにより多くのメモリを提供するよう勧告します。
 
+## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>キャッシュやアプリケーションのパフォーマンスを向上させるためにキャッシュを別のサイズまたは SKU にスケーリングする
+
+キャッシュ インスタンスは、メモリ不足、サーバー負荷、ネットワーク帯域幅などが高い状態で実行されていないときにパフォーマンスが最大になります。これらの状態が発生すると、無応答になったり、データが失われたり、使用できなくなったりする場合があります。 Advisor は、これらの状態にあるキャッシュ インスタンスを識別し、メモリ不足、サーバー負荷、ネットワーク帯域幅などを削減するためのベスト プラクティスの適用か、あるいは別のサイズまたは容量の大きな SKU へのスケーリングのどちらかを推奨します。
+
+## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>トラフィックが存在するリージョンを Azure Cosmos DB アカウントに追加する
+
+Advisor は、現在構成されていないリージョンからのトラフィックが存在する Azure Cosmos DB アカウントを検出し、そのリージョンを追加することを推奨します。 これにより、そのリージョンから来る要求の待ち時間が改善されると共に、リージョン障害が発生した場合の可用性が確保されます。 [Azure Cosmos DB でのグローバルなデータの分散](https://aka.ms/cosmos/globaldistribution)の詳細を確認してください。
+
+## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>顧客の含めるパスまたは除外するパスを使用して Azure Cosmos DB インデックス作成ポリシーを構成する
+
+Azure Advisor は、既定のインデックス作成ポリシーを使用しているが、ワークロード パターンに基づいてカスタム インデックス作成ポリシーの利点が得られる可能性がある Cosmos DB コンテナーを識別します。 既定のインデックス作成ポリシーはすべてのプロパティのインデックスを作成しますが、クエリ フィルターで使用される明示的な含めるパスまたは除外するパスと共にカスタム インデックス作成ポリシーを使用すると、インデックス作成のために消費される RU やストレージが削減される場合があります。 [インデックス ポリシーの変更](https://aka.ms/cosmosdb/modify-index-policy)の詳細を確認してください。
+
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB クエリ ページ サイズ (MaxItemCount) を -1 に構成する 
+
+Azure Advisor は、100 のクエリ ページ サイズを使用している Azure Cosmos DB コンテナーを識別し、より高速なスキャンのために -1 のページ サイズを使用することを推奨します。 [最大項目数](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)の詳細を確認してください。
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
 
-2.  Advisor ダッシュボードで、**[パフォーマンス]** タブをクリックします。
+2.  Advisor ダッシュボードで、 **[パフォーマンス]** タブをクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

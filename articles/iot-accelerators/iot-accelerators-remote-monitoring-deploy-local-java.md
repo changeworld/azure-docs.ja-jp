@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2b55fea69fe1affb6cab5d360f1e8355c3bb720d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66015437"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - IntelliJ
@@ -94,7 +94,7 @@ git submodule foreach git pull origin master
      また、このスクリプトは、プレフィックス **PCS** を持つ一連の環境変数をローカル コンピューターに追加します。 これらの環境変数では、リモート監視で Azure Key Vault リソースから読み取れるようにするための詳細が提供されます。 リモート監視では、この Key Vault リソースからその構成値が読み取られます。
 
      > [!TIP]
-     > また、このスクリプトは、完了すると、**\<実際のホーム フォルダー\>\\.pcs\\\<ソリューション名\>.env** という名前のファイルに環境変数を保存します。 これらは、将来のソリューション アクセラレータのデプロイに使用できます。 **docker-compose** を実行すると、ローカル コンピューターに設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
+     > また、このスクリプトは、完了すると、 **\<実際のホーム フォルダー\>\\.pcs\\\<ソリューション名\>.env** という名前のファイルに環境変数を保存します。 これらは、将来のソリューション アクセラレータのデプロイに使用できます。 **docker-compose** を実行すると、ローカル コンピューターに設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
 
 1. コマンドライン環境を終了します。
 
@@ -169,7 +169,7 @@ git submodule foreach git pull origin master
 
 #### <a name="create-compound-configuration"></a>複合構成を作成する
 
-1. すべてのサービスを実行するには、**[Add new Configuration]\(新しい構成の追加\) > [Compound]\(複合\)** の順に選択します
+1. すべてのサービスを実行するには、 **[Add new Configuration]\(新しい構成の追加\) > [Compound]\(複合\)** の順に選択します
 1. **[Name]\(名前\)** を入力し、**sbt タスクを追加**します
 1. **[Apply]\(適用\) > [OK]** の順にクリックして選択内容を保存します。
 
@@ -196,7 +196,7 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 1. [Azure Portal](https://portal.azure.com) に移動します。
 1. ソリューション用に作成された**リソース グループ**に移動します。 このリソース グループの名前は、**start.cmd** スクリプトを実行したときにソリューション用に選択した名前です。
 1. リソースの一覧で **[Stream Analytics ジョブ]** をクリックします。
-1. Stream Analytics ジョブの **[概要]** ページで、**[開始]** ボタンをクリックします。 次に、**[開始]** をクリックしてジョブをすぐに開始します。
+1. Stream Analytics ジョブの **[概要]** ページで、 **[開始]** ボタンをクリックします。 次に、 **[開始]** をクリックしてジョブをすぐに開始します。
 
 ### <a name="run-the-web-ui"></a>Web UI を実行する
 

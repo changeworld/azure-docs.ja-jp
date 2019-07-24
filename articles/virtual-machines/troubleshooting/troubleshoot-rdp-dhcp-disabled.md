@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652282"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60362290"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>DHCP クライアント サービスが無効になっているために Azure 仮想マシンに RDP で接続できない
 
@@ -184,7 +184,7 @@ DHCP クライアント サービスが VM で実行されていません。
 
 1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。 接続したディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
-3.  管理者特権でのコマンド プロンプト インスタンス (**[管理者として実行]**) を開きます。 次に、以下のスクリプトを実行します。 このスクリプトでは、接続された OS ディスクに割り当てられたドライブ文字が **F** であるものと想定しています。お使いの VM の適切な値に文字を置き換えてください。
+3.  管理者特権でのコマンド プロンプト インスタンス ( **[管理者として実行]** ) を開きます。 次に、以下のスクリプトを実行します。 このスクリプトでは、接続された OS ディスクに割り当てられたドライブ文字が **F** であるものと想定しています。お使いの VM の適切な値に文字を置き換えてください。
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM

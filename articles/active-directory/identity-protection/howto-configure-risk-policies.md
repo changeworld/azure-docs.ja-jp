@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cc6f822f20da55488c559c081129c3f177367123
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699035"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108971"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>方法:Azure Active Directory Identity Protection (更新版) でのリスク ポリシーの構成
 
@@ -206,7 +206,7 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 
 - 多数の誤検知を生成する可能性があるユーザー (開発者、セキュリティ アナリスト) を除外します。
 
-- 初期のポリシー展開中、またはエンド ユーザーに表示されるチャレンジを最小限に抑える必要がある場合は、**[高]** しきい値を使用します。
+- 初期のポリシー展開中、またはエンド ユーザーに表示されるチャレンジを最小限に抑える必要がある場合は、 **[高]** しきい値を使用します。
 
 - 組織のセキュリティを強化する必要がある場合は、**低**しきい値を使用します。 **低** しきい値を選択すると、追加のユーザー サインイン チャレンジが導入されますが、セキュリティは強化されます。
 

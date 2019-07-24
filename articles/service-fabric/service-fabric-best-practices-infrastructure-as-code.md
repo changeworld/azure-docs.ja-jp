@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2dfe1493c6611fb69a417895aaa1028ad5881b9c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66159926"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66237429"
 ---
 # <a name="infrastructure-as-code"></a>コードとしてのインフラストラクチャ
 
@@ -95,6 +95,47 @@ for root, dirs, files in os.walk(self.microservices_app_package_path):
         microservices_sfpkg.write(os.path.join(root, file), os.path.join(root_folder, file))
 
 microservices_sfpkg.close()
+```
+
+## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure Virtual Machine オペレーティング システムの自動アップグレード構成 
+仮想マシンのアップグレードは、ユーザーによって開始される操作です。Azure Service Fabric クラスター ホストの更新プログラム管理には、[仮想マシン スケール セットによる自動オペレーティング システム アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)を使用することをお勧めします。パッチ オーケストレーション アプリケーションを Azure で使用することはできますが、Azure で POA をホストするオーバーヘッドのために、一般的には POA よりも仮想マシン オペレーティング システム自動アップグレードが選ばれるので、POA は Azure の外部でホストする場合の代替ソリューションです。 以下は、自動 OS アップグレードを有効にするための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
+
+```json
+"upgradePolicy": {
+   "mode": "Automatic",
+   "automaticOSUpgradePolicy": {
+        "enableAutomaticOSUpgrade": true,
+        "disableAutomaticRollback": false
+    }
+},
+```
+Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとに 1 つずつロールアウトされます。 Service Fabric で OS 自動アップグレードを利用するには、クラスターが、Silver 以上の耐久性レベルを使用するように構成されている必要があります。
+
+次のレジストリ キーが false に設定されていることを確認して、調整されていない更新を Windows ホスト マシンが開始しないようにします。HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
+
+以下は、WindowsUpdate レジストリ キーを false に設定するための、コンピューティング仮想マシン スケール セット Resource Manager テンプレートのプロパティです。
+```json
+"osProfile": {
+        "computerNamePrefix": "{vmss-name}",
+        "adminUsername": "{your-username}",
+        "secrets": [],
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": false
+        }
+      },
+```
+
+## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Azure Service Fabric クラスターのアップグレード構成
+以下は、自動アップグレードを有効にするための、Service Fabric クラスター Resource Manager テンプレートのプロパティです。
+```json
+"upgradeMode": "Automatic",
+```
+クラスターを手動でアップグレードするには、cab/deb 配布をクラスター仮想マシンにダウンロードして、次の PowerShell を実行します。
+```powershell
+Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
+Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
+Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 ```
 
 ## <a name="next-steps"></a>次の手順

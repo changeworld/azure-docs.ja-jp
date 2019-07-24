@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: f34504dddaa21cc162476d1fdb462e7be5c48629
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 06b69da7f7435ce8a1e32150b7abe161ebdf527c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877305"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606504"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Speech SDK のオーディオ入力ストリーム API について
 
@@ -59,7 +59,7 @@ Speech SDK の**オーディオ入力ストリーム** API では、マイクま
    };
   ```
 
-- オーディオ形式と入力ストリームに基づいてオーディオ構成を作成します。 認識エンジンを作成するときは、通常の音声構成とオーディオ入力構成の両方を渡します。 例: 
+- オーディオ形式と入力ストリームに基づいてオーディオ構成を作成します。 認識エンジンを作成するときは、通常の音声構成とオーディオ入力構成の両方を渡します。 例:
 
   ```
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);

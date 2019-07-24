@@ -15,12 +15,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.author: victorh
-ms.openlocfilehash: b3a4abf4d0f408cdb49020d831b50d943c3467dd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 10f115b64f0bd3f7e557da2bedbf3327d0ef483d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205045"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62122305"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Application Gateway と Azure Security Center の統合の概要
 
@@ -28,7 +28,7 @@ Application Gateway と Security Center を使用して Web アプリケーシ�
 
 ## <a name="overview"></a>概要
 
-Application Gateway WAF は、Web アプリケーションの悪用や脆弱性を防ぐための Security Center における推奨事項です。 WAF で保護されていない Web 対応のリソースは、重大度の高い推奨事項として Security Center に表示されます。 Web アプリケーション ファイアウォールに関する推奨事項は、**[概要]** ページの **[アプリケーション]** に表示されます。
+Application Gateway WAF は、Web アプリケーションの悪用や脆弱性を防ぐための Security Center における推奨事項です。 WAF で保護されていない Web 対応のリソースは、重大度の高い推奨事項として Security Center に表示されます。 Web アプリケーション ファイアウォールに関する推奨事項は、 **[概要]** ページの **[アプリケーション]** に表示されます。
 
 ![Security Center との統合][1]
 
@@ -36,19 +36,19 @@ Web アプリケーション ファイアウォールに関連したいずれか
 
 ## <a name="add-a-web-application-firewall-to-an-existing-resource"></a>既存のリソースに Web アプリケーション ファイアウォールを追加する
 
-**[すべてのサービス]** > **[セキュリティ + ID]** > **[Security Center]** に移動し、**[Security Center - 概要]** の **[アプリケーション]** をクリックします。 **[Security Center - アプリケーション]** のテーブルには、Security Center がサブスクリプションで検出したアプリケーションの一覧が含まれています。
+**[すべてのサービス]**  >  **[セキュリティ + ID]**  >  **[Security Center]** に移動し、 **[Security Center - 概要]** の **[アプリケーション]** をクリックします。 **[Security Center - アプリケーション]** のテーブルには、Security Center がサブスクリプションで検出したアプリケーションの一覧が含まれています。
 
 ![Web アプリケーション][3]
 
-重大な問題を含む Web アプリケーションをクリックすると、**[アプリケーションのセキュリティ正常性]** ページが表示されます。 次の図では、Web アプリケーションが Web アプリケーション ファイアウォールによって保護されていません。 
+重大な問題を含む Web アプリケーションをクリックすると、 **[アプリケーションのセキュリティ正常性]** ページが表示されます。 次の図では、Web アプリケーションが Web アプリケーション ファイアウォールによって保護されていません。 
 
 ![保護されていない Web リソース][2]
 
-**[推奨事項]** の下にある **[Web アプリケーション ファイアウォールを追加する]** をクリックして、**[Add a Web Application Firewall] (Web アプリケーション ファイアウォールの追加)** ページを開きます。
+**[推奨事項]** の下にある **[Web アプリケーション ファイアウォールを追加する]** をクリックして、 **[Add a Web Application Firewall] (Web アプリケーション ファイアウォールの追加)** ページを開きます。
 
-既存の Application Gateway がない場合や、新しい Application Gateway を作成する場合は、**[新規作成]** をクリックし、**[Create a new Web Application Firewall] (新しい Web アプリケーション ファイアウォールの作成)** の **[Microsoft - Application Gateway]** をクリックします。 これにより、Application Gateway を作成する手順が表示されます。 ここで、Web アプリケーションが保護対象のリソースとして追加され、Security Center はこのリソースが Web アプリケーション ファイアウォールによって保護されていることを追跡します。 これにより、リソースがバックエンド プールのメンバーとして追加されることはありません。
+既存の Application Gateway がない場合や、新しい Application Gateway を作成する場合は、 **[新規作成]** をクリックし、 **[Create a new Web Application Firewall] (新しい Web アプリケーション ファイアウォールの作成)** の **[Microsoft - Application Gateway]** をクリックします。 これにより、Application Gateway を作成する手順が表示されます。 ここで、Web アプリケーションが保護対象のリソースとして追加され、Security Center はこのリソースが Web アプリケーション ファイアウォールによって保護されていることを追跡します。 これにより、リソースがバックエンド プールのメンバーとして追加されることはありません。
 
-既存の Application Gateway がある場合は、**[既存のソリューションの使用]** で選択できます。
+既存の Application Gateway がある場合は、 **[既存のソリューションの使用]** で選択できます。
 
 ![Web アプリケーション ファイアウォールの追加ページ][4]
 
@@ -56,11 +56,11 @@ Security Center を使用して Application Gateway に Web アプリケーシ�
 
 ## <a name="add-a-resource-to-an-existing-web-application-firewall"></a>既存の Web アプリケーション ファイアウォールにリソースを追加する
 
-**[すべてのサービス]** > **[セキュリティ + ID]** > **[Security Center]** に移動し、**[Security Center - 概要]** の **[パートナー ソリューション]** をクリックします。 Security Center 対応の既存の Application Gateway が **[パートナー ソリューション]** ページに表示されます。
+**[すべてのサービス]**  >  **[セキュリティ + ID]**  >  **[Security Center]** に移動し、 **[Security Center - 概要]** の **[パートナー ソリューション]** をクリックします。 Security Center 対応の既存の Application Gateway が **[パートナー ソリューション]** ページに表示されます。
 
 ![パートナー ソリューション][7]
 
-**[アプリをリンク]** をクリックして、**[アプリケーションのリンク]** を開きます。ここには、既存のアプリケーションを選択するためのオプションが表示されます。 保護するアプリケーションを選択し、**[OK]** をクリックします。 これにより、Application Gateway のバックエンド プールに Web アプリケーションが追加されることはありません。 Security Center で追跡できるように、リソースが保護対象のリソースとして設定されます。 このリソースをバックエンド プール メンバーとして追加するには、これを Application Gateway で実行する必要があります。現在のページから **[ソリューション コンソール]** をクリックすると、Web アプリケーションをバックエンド プールに追加できる Application Gateway リソースを表示できます。
+**[アプリをリンク]** をクリックして、 **[アプリケーションのリンク]** を開きます。ここには、既存のアプリケーションを選択するためのオプションが表示されます。 保護するアプリケーションを選択し、 **[OK]** をクリックします。 これにより、Application Gateway のバックエンド プールに Web アプリケーションが追加されることはありません。 Security Center で追跡できるように、リソースが保護対象のリソースとして設定されます。 このリソースをバックエンド プール メンバーとして追加するには、これを Application Gateway で実行する必要があります。現在のページから **[ソリューション コンソール]** をクリックすると、Web アプリケーションをバックエンド プールに追加できる Application Gateway リソースを表示できます。
 
 ![パートナー ソリューションのアプリケーション][6]
 
@@ -72,7 +72,7 @@ Security Center は、保護対象のリソースとして Application Gateway �
 
 ## <a name="security-alerts"></a>セキュリティ アラート
 
-Security Center の **[検出]** > **[セキュリティ アラート]** に移動します。  ここには、Application Gateway の WAF アラートが表示されます。 アラートは、WAF ルールによって分類されます。
+Security Center の **[検出]**  >  **[セキュリティ アラート]** に移動します。  ここには、Application Gateway の WAF アラートが表示されます。 アラートは、WAF ルールによって分類されます。
 
 ![セキュリティ アラート][8]
 

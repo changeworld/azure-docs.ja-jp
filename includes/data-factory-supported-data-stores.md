@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/19/2018
 ms.author: jingwang
 ms.openlocfilehash: 0c381cc6e2e2957c946207491c666667821184ad
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66122580"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181641"
 ---
 | Category | データ ストア | ソースとしてサポート | シンクとしてサポート |
 |:--- |:--- |:--- |:--- |
@@ -19,7 +19,7 @@ ms.locfileid: "66122580"
 | &nbsp; |[Azure SQL Database](../articles/data-factory/v1/data-factory-azure-sql-connector.md) |✓ |✓ |
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/v1/data-factory-azure-sql-data-warehouse-connector.md) |✓ |✓ |
 | &nbsp; |[Azure Search インデックス](../articles/data-factory/v1/data-factory-azure-search-connector.md) | |✓ |
-| &nbsp; |[Azure Table Storage](../articles/data-factory/v1/data-factory-azure-table-connector.md) |✓ |✓  |
+| &nbsp; |[Azure Table Storage](../articles/data-factory/v1/data-factory-azure-table-connector.md) |✓ |✓ |
 | **データベース** |[Amazon Redshift](../articles/data-factory/v1/data-factory-amazon-redshift-connector.md) |✓ | |
 | &nbsp; |[DB2](../articles/data-factory/v1/data-factory-onprem-db2-connector.md)* |✓ | |
 | &nbsp; |[MySQL](../articles/data-factory/v1/data-factory-onprem-mysql-connector.md)* |✓ | |

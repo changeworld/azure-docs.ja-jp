@@ -2,19 +2,19 @@
 title: システムのテスト結果とデプロイを確認する - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: トレーニングが成功したら、システムのテストを確認し、トレーニング結果を分析します。 トレーニング結果に満足したら、トレーニング済みモデルのデプロイを要求します。
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: ccd31a0e8b91bc95ac364fe5bc0ec0ecdfaa4618
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: ec15851ae7ff59a752fbf0d823d87aa6e68f10e9
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438616"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442476"
 ---
 # <a name="view-system-test-results"></a>システムのテスト結果の表示
 
@@ -86,14 +86,14 @@ ms.locfileid: "58438616"
 
 デプロイの設定を更新するには:
 
-1.  プロジェクトを選択し、**[モデル]** タブに移動します。
+1.  プロジェクトを選択し、 **[モデル]** タブに移動します。
 
-2. 正常にデプロイされたモデルには、**[更新]** ボタンが表示されます。
+2. 正常にデプロイされたモデルには、 **[更新]** ボタンが表示されます。
 
     ![モデルをデプロイする](media/how-to/how-to-update-undeploy-model.png)
 
 3.  **[Update]\(更新\)** を選択します。
-4.  モデルをデプロイまたはデプロイ解除するリージョンの **[Deployed]\(デプロイ対象\)** または **[Undeployed]\(デプロイ解除対象\)** を選択して、**[Save]\(保存\)** をクリックします。
+4.  モデルをデプロイまたはデプロイ解除するリージョンの **[Deployed]\(デプロイ対象\)** または **[Undeployed]\(デプロイ解除対象\)** を選択して、 **[Save]\(保存\)** をクリックします。
 
     ![モデルをデプロイする](media/how-to/how-to-undeploy-model.png)
 

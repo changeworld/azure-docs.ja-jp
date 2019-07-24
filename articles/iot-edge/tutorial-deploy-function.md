@@ -4,23 +4,24 @@ description: このチュートリアルでは、Azure 関数を IoT Edge モジ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2694d0f22acfb34c07220ad0145b933457961931
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2c2a2659b6b9c77b36001af1602c904e7d200b56
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575931"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433043"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル: Azure 関数を IoT Edge モジュールとして展開する
 
-Azure Functions を使用して、ビジネス ロジックを実装するコードを Azure IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされた IoT Edge デバイス上のセンサー データをフィルター処理する Azure 関数の作成と展開について段階的に説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。     
+Azure Functions を使用して、ビジネス ロジックを実装するコードを Azure IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされた IoT Edge デバイス上のセンサー データをフィルター処理する Azure 関数の作成と展開について段階的に説明します。 [Windows](quickstart.md) または [Linux](quickstart-linux.md) のシミュレートされたデバイスに Azure IoT Edge をデプロイするクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+>
 > * Visual Studio Code を使用して、Azure 関数を作成する。
 > * VS Code と Docker を使用して Docker イメージを作成し、コンテナー レジストリに発行する。
 > * コンテナー レジストリから IoT Edge デバイスにモジュールを配置する。
@@ -40,7 +41,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、前のチュートリアル「[Linux のデバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)」を確認して、Linux コンテナー開発の開発環境を設定する必要があります。 そのチュートリアルを完了すると、次の前提条件が満たされます。 
+このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux のデバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 このチュートリアルを完了すると、次の前提条件が満たされます。 
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
@@ -87,9 +88,9 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 
-現在、Visual Studio Code は、Linux AMD64 デバイスと Linux ARM32v7 デバイス用の C モジュールを開発できます。 ソリューションごとにターゲットのアーキテクチャを選択する必要があります。これは、アーキテクチャの種類によって、コンテナーのビルド方法と実行方法が異なるからです。 既定値は Linux AMD64 です。 
+現在、Visual Studio Code では、Linux AMD64 および Linux ARM32v7 デバイス用の C モジュールを開発できます。 ソリューションごとにターゲットとするアーキテクチャを選択する必要があります。これは、アーキテクチャの種類によって、コンテナーのビルド方法と実行方法が異なるためです。 既定値は Linux AMD64 です。 
 
-1. コマンド パレットを開き、次の項目を検索します。「**Azure IoT Edge:Set Default Target Platform for Edge Solution (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)** 」。または、ウィンドウの下部にあるサイド バーで、ショートカット アイコンを選択します。 
+1. コマンド パレットを開き、次を検索します: 「**Azure IoT Edge: Set Default Target Platform for Edge Solution (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)** 」。または、ウィンドウの下部にあるサイド バーで、ショートカット アイコンを選択します。 
 
 2. コマンド パレットで、オプションの一覧からターゲット アーキテクチャを選択します。 このチュートリアルでは、Ubuntu 仮想マシンを IoT Edge デバイスとして使用するため、既定値の **amd64** のままにします。 
 
@@ -136,14 +137,14 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
                    if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
                    {
-                       // Send the message to the output as the temperature value is greater than the threashold.
+                       // Send the message to the output as the temperature value is greater than the threshold.
                        var filteredMessage = new Message(messageBytes);
                        // Copy the properties of the original message into the new Message object.
                        foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
                        {filteredMessage.Properties.Add(prop.Key, prop.Value);}
                        // Add a new property to the message to indicate it is an alert.
                        filteredMessage.Properties.Add("MessageType", "Alert");
-                       // Send the message.       
+                       // Send the message.
                        await output.AddAsync(filteredMessage);
                        logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
                    }
@@ -160,12 +161,12 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
        class Machine
        {
            public double temperature {get; set;}
-           public double pressure {get; set;}         
+           public double pressure {get; set;}
        }
        class Ambient
        {
            public double temperature {get; set;}
-           public int humidity {get; set;}         
+           public int humidity {get; set;}
        }
    }
    ```
@@ -176,17 +177,17 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
 前のセクションでは、IoT Edge ソリューションを作成し、**CSharpFunction** にコードを追加しました。これにより、報告されるマシンの温度が許容可能なしきい値を下回っている場合のメッセージがフィルターで除外されます。 次は、ソリューションをコンテナー イメージとしてビルドして、それをコンテナー レジストリにプッシュする必要があります。
 
-このセクションでは、コンテナー レジストリの資格情報を 2 回指定します。 1 回目では、開発用マシンからローカルにサインインして、Visual Studio Code がイメージをレジストリにプッシュできるようにします。 2 回目は IoT Edge ソリューションの **.env** ファイル内で行います。これにより、レジストリからイメージを取得するアクセス許可が IoT Edge デバイスに与えられます。 
+このセクションでは、Visual Studio Code からレジストリにイメージをプッシュできるように、お使いの開発用マシンからローカルでサインインして、2 回目にはコンテナー レジストリの資格情報を指定します (最初は IoT Edge ソリューションの **.env**  ファイル内にありました)
 
 1. **[表示]**  >  **[ターミナル]** を選択して、VS Code 統合ターミナルを開きます。 
 
 2. 統合ターミナルで次のコマンドを入力して、コンテナー レジストリにサインインします。 前に Azure Container Registry からコピーしたユーザー名とログイン サーバーを使用します。
-     
+
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
     ```
 
-    パスワードの入力を求めるメッセージが表示されたら、コンテナー レジストリのパスワードを貼り付けて **Enter** キーを押します。
+    パスワードの入力を求めるメッセージが表示されたら、コンテナー レジストリのパスワード (ターミナル ウィンドウには表示されません) を貼り付けて **Enter** キーを押します。
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>
@@ -222,12 +223,11 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
-コマンド パレットで **Azure IoT Hub: Start Monitoring D2C Message** を実行することで、IoT ハブに届くすべてのメッセージを確認できます。
+コマンド パレットで **Azure IoT Hub: Start Monitoring Built-in Event Endpoint** を実行することによって、IoT ハブに届くすべてのメッセージを確認できます。
 
-また、特定のデバイスから IoT Hub に届くすべてのメッセージが表示されるよう、ビューをフィルター処理することもできます。 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションのデバイスを右クリックして、**Start Monitoring D2C Messages** を選択します。
+また、特定のデバイスから IoT Hub に届くすべてのメッセージが表示されるよう、ビューをフィルター処理することもできます。 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション内でデバイスを右クリックして、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 
-メッセージの監視を停止するには、コマンド パレットで **Azure IoT Hub: Stop monitoring D2C message** コマンドを実行します。 
-
+メッセージの監視を停止するには、コマンド パレットで **Azure IoT Hub: Stop Monitoring Built-in Event Endpoint** コマンドを実行します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -245,4 +245,3 @@ Azure Functions を使用して IoT Edge モジュールを開発するには、
 
 > [!div class="nextstepaction"]
 > [Azure Stream Analytics でフローティング ウィンドウを使用して平均値を見つける](tutorial-deploy-stream-analytics.md)
-

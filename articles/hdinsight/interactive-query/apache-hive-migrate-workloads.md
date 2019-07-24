@@ -1,19 +1,18 @@
 ---
 title: Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 description: HDInsight 3.6 上の Apache Hive のワークロードを HDInsight 4.0 に移行する方法について説明します。
-services: hdinsight
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
+author: msft-tacox
+ms.author: tacox
 ms.reviewer: jasonh
-ms.topic: howto
-ms.date: 04/15/2019
-ms.openlocfilehash: 958a3249fd2e8af9faeb827f07efc21c8184a100
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.topic: conceptual
+ms.date: 04/24/2019
+ms.openlocfilehash: c1809885c930c4d22dff3f30d6e874aacf0b540e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006983"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672554"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -30,8 +29,8 @@ ms.locfileid: "60006983"
 
 Hive の利点の 1 つは、外部データベース (Hive Metastore と呼ばれます) にメタデータをエクスポートする機能です。 **Hive Metastore** は、テーブル ストレージの場所、列名、テーブルのインデックス情報を含む、テーブルの統計情報の格納を担当します。 メタストア データベース スキーマは、Hive のバージョンによって異なります。 HDInsight 4.0 と互換になるように HDInsight 3.6 Hive Metastore をアップグレードするには、次の操作を行います。
 
-1. 外部メタストアの新しいコピーを作成します。 HDInsight 3.6 と HDInsight 4.0 には異なるメタストア スキーマが必要で、1 つのメタストアを共有することはできません。
-1. メタストアの新しいコピーを a) 既存の HDInsight 4.0 クラスターまたは b) 初めて作成しているクラスターにアタッチします。 HDInsight クラスターへの外部メタストアのアタッチについて詳しくは、「[Azure HDInsight での外部メタデータ ストアの使用](../hdinsight-use-external-metadata-stores.md)」をご覧ください。 Metastore がアタッチされると、4.0 と互換性のあるメタストアに自動的に変換されます。
+1. 外部メタストアの新しいコピーを作成します。 HDInsight 3.6 と HDInsight 4.0 には異なるメタストア スキーマが必要で、1 つのメタストアを共有することはできません。 HDInsight クラスターへの外部メタストアのアタッチについて詳しくは、「[Azure HDInsight での外部メタデータ ストアの使用](../hdinsight-use-external-metadata-stores.md)」をご覧ください。 
+2. 実行のノードの種類として "ヘッド ノード" を使用して、HDI 3.6 クラスターに対してスクリプト アクションを起動します。 [https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh](https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh ) の URI を、"Bash スクリプト URI" とマークされたテキスト ボックスに貼り付けます。"引数" とマークされたテキストボックスに、**コピーした** Hive metastore のサーバー名、データベース、ユーザー名、およびパスワードをスペース区切りで入力します。 サーバー名を指定するときに ".database.windows.net" を含めないでください。
 
 > [!Warning]
 > HDInsight 3.6 のメタデータ スキーマを HDInsight 4.0 のスキーマに変換するアップグレードを元に戻すことはできません。
@@ -99,6 +98,8 @@ HDInsight 4.0 では、Hive CLI は BeeLine に置き換えられています。
 HDInsight 3.6 では、Hive サーバーと対話するための GUI クライアントは Ambari Hive ビューです。 HDInsight 4.0 では、Hive ビューが Hortonworks Data Analytics Studio (DAS) に置き換えられます。 DAS では、HDInsight クラスターは標準で付属せず、公式にサポートされているパッケージではありません。 ただし、次のようにして DAS をクラスターにインストールできます。
 
 実行のノードの種類として "ヘッド ノード" を使用して、ご利用のクラスターに対してスクリプト アクションを起動します。 次の URI を、"Bash スクリプト URI" とマークされたテキスト ボックスに貼り付けます: https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
+
+https://<clustername>.azurehdinsight.net/das/ という URL を使用して Data Analytics Studio を起動できます
 
 
 

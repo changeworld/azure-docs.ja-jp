@@ -3,19 +3,19 @@ title: Translator Text API の Translate メソッド
 titleSuffix: Azure Cognitive Services
 description: Translator Text API の Translate メソッドを使用します。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 593cd83dab6e0cd93cdd1aedac278f4d94a27cc5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: swmachan
+ms.openlocfilehash: e63670504dedf426829778e154b2d5c2b69d98a0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722426"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435064"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -54,7 +54,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td><em>省略可能なパラメーター</em>。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、<a href="../customization.md">Custom Translator</a> でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール プロジェクトからこのパラメーターにカテゴリ ID を追加します。 既定値は <code>general</code> です。</td>
+    <td><em>省略可能なパラメーター</em>。<br/>翻訳のカテゴリ (ドメイン) を指定する文字列。 このパラメーターは、<a href="../customization.md">Custom Translator</a> でビルドしたカスタマイズされたシステムから翻訳を取得するために使用します。 デプロイ済みのカスタマイズされたシステムを使用するには、カスタム翻訳ツール <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">プロジェクトの詳細</a>からこのパラメーターにカテゴリ ID を追加します。 既定値は <code>general</code> です。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -213,7 +213,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   </tr>
   <tr>
     <td>429</td>
-    <td>呼び出し元からの要求が多すぎます。</td>
+    <td>クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。</td>
   </tr>
   <tr>
     <td>500</td>
@@ -401,7 +401,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
   </tr>
 </table> 
 
-例: 
+例:
 
 # <a name="curltabcurl"></a>[curl](#tab/curl)
 

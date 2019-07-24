@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 188f5c6cfbb4650ad1ff767955d064f8e0c3cb70
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002648"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60756758"
 ---
 # <a name="monitor-your-azure-data-box-edge"></a>Azure Data Box Edge を監視する
 

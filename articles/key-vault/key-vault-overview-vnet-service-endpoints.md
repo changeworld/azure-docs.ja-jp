@@ -8,12 +8,12 @@ manager: barbkess
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: d003e851dcfa77b18a67450946a71e4a13ce495c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 45499dac3cc50e2b6e79f9ebcb1bc3e7b4330beb
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700971"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165851"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -53,7 +53,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 > 構成に関する次の制限事項に注意してください。
 > * 最大で 127 個の仮想ネットワーク規則と 127 個の IPv4 ルールを指定できます。 
 > * "/31" や "/32" のプレフィックス サイズを使用する小さいアドレス範囲はサポートされていません。 これらの範囲を構成するには、個別の IP アドレス ルールを使用します。
-> * IP ネットワーク ルールは、パブリック IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 (RFC 1918 で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、**10.**、**172.16-31**、および **192.168.** で始まるアドレスが含まれます。 
+> * IP ネットワーク ルールは、パブリック IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 (RFC 1918 で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、**10.** 、**172.16-31**、および **192.168.** で始まるアドレスが含まれます。 
 > * 現時点でサポートされているのは、IPv4 アドレスのみです。
 
 ## <a name="trusted-services"></a>信頼できるサービス
@@ -68,11 +68,12 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Azure Backup|[Azure Backup](../backup/backup-introduction-to-azure-backup.md) を使用して、Azure 仮想マシンのバックアップ中に関連するキーとシークレットのバックアップと復元を許可する。|
 |Exchange Online と SharePoint Online|[カスタマー キー](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697)を使用する Azure Storage サービス暗号化のためにカスタマー キーへのアクセスを許可する。|
 |Azure Information Protection|[Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) のテナント キーへのアクセスを許可する。|
-|Azure App Service|[Key Vault を介して Azure Web アプリ証明書をデプロイする](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)。|
+|Azure App Service|[Key Vault を介して Azure Web アプリ証明書をデプロイする](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
 |Azure SQL Database|[Azure SQL Database と Data Warehouse のに対する Transparent Data Encryption での Bring Your Own Key のサポート](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
 |Azure Storage|[Azure Key Vault で顧客が管理するキーを Storage Service Encryption に使用する](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|顧客が管理するキーによる [Azure Data Lake Store 内のデータの暗号化](../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービス](../azure-databricks/what-is-azure-databricks.md)|
+|Azure API Management|[MSI を使用してキー コンテナーからカスタムドメイン用の証明書をデプロイする](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
 
 
 

@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 07/01/2019
 ms.author: magoedte
-ms.openlocfilehash: b410dab40d5434a6f23950a9f151e50240ace63b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 583845b2ea63efd42f382c9c150de650f34bafed
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64916378"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514114"
 ---
-# <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Azure Log Analytics エージェントを使用してログ データを収集する
+# <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してログ データを収集する
 
 Azure Log Analytics エージェント (旧称 Microsoft Monitoring Agent (MMA) または OMS Linux エージェント) は、オンプレミスのマシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) によって監視されるコンピューター、および任意のクラウドの仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、Azure Monitor にアタッチし、さまざまなソースから収集したログ データを、Log Analytics ワークスペースや、さらには任意の固有ログや、監視ソリューションで定義されているメトリックに格納します。 
 
@@ -34,11 +34,11 @@ Azure Log Analytics エージェント (旧称 Microsoft Monitoring Agent (MMA) 
 
 Linux および Windows 用エージェントは、Azure Monitor サービスに TCP ポート 443 経由で通信します。マシンがファイアウォールまたはプロキシ サーバーを経て接続し、インターネット経由で通信する場合は、必須のネットワーク構成を理解するために以下の要件を確認します。 インターネットに接続するネットワーク上のコンピューターが IT セキュリティ ポリシーで許可されていない場合、[Log Analytics ゲートウェイ](gateway.md)を設定し、エージェントをゲートウェイ経由で Azure Monitor ログに接続するように構成できます。 エージェントは構成情報を受信し、ワークスペースで有効にしたデータ収集ルールおよび監視ソリューションに従って収集されたデータを送信できます。 
 
-System Center Operations Manager 2012 R2 またはそれ以降でコンピューターを監視する場合は、Azure Monitor サービスでマルチホーミングして、[Operations Manager](../../azure-monitor/platform/om-agents.md) によってデータを収集し、サービスに転送し、引き続き監視できます。 Linux コンピューターでは、エージェントには Windows エージェントのような正常性サービス コンポーネントは含まれておらず、代わりに管理サーバーで情報を収集して処理します。 Linux コンピューターは異なる方法によって Operations Manager で監視されるため、Windows エージェント管理システムがするように、構成を受信したり、データを直接収集したり、管理グループを介して転送したりしません。 そのため、このシナリオは、Operations Manager に報告する Linux コンピューターではサポートされません。  
+System Center Operations Manager 2012 R2 またはそれ以降でコンピューターを監視する場合は、Azure Monitor サービスでマルチホーミングして、[Operations Manager](../../azure-monitor/platform/om-agents.md) によってデータを収集し、サービスに転送し、引き続き監視できます。 Linux コンピューターでは、エージェントには Windows エージェントのような正常性サービス コンポーネントは含まれておらず、代わりに管理サーバーで情報を収集して処理します。 Linux コンピューターは異なる方法によって Operations Manager で監視されるため、Windows エージェント管理システムがするように、構成を受信したり、データを直接収集したり、管理グループを介して転送したりしません。 そのため、Operations Manager に報告する Linux コンピューターではこのシナリオはサポートされません。2 段階で Log Analytics ワークスペースと [Operations Manager 管理グループに報告する](../platform/agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)ように、Linux コンピューターを構成する必要があります。
 
 Windows エージェントは最大 4 つの Log Analytics ワークスペースに報告できますが、Linux エージェントは単一のワークスペースへの報告のみをサポートします。  
 
-Linux および Windows 用エージェントは、Azure Monitor に接続するためだけでなく、Azure Automation もサポートして、Hybrid Runbook ワーカー ロールや、[Change Tracking](../../automation/change-tracking.md)および[Update Management](../../automation/automation-update-management.md)などの他のサービスもホストします。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
+Linux および Windows 用エージェントは、Azure Monitor に接続するためだけでなく、Azure Automation もサポートされており、Hybrid Runbook ワーカー ロールや、[Change Tracking](../../automation/change-tracking.md)、[Update Management](../../automation/automation-update-management.md)、[Azure Security Center](../../security-center/security-center-intro.md) などの他のサービスがホストされます。 Hybrid Runbook Worker ロールの詳細については、[Azure Automation の Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) に関する記事を参照してください。  
 
 ## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
@@ -59,7 +59,8 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 * AMI の新しいバージョンはサポートされません。  
 * 既定で SSL 1.x を実行するバージョンのみが、サポートされます。
 
-現在サポートされていないディストリビューションまたはバージョンを使用しており、サポート モデルに準拠していない場合、Microsoft サポートは、支援機能にフォークされたエージェント バージョンを提供していることを認識したうえで、このレポジトリをフォークすることをお勧めします。
+>[!NOTE]
+>現在サポートされていないディストリビューションまたはバージョンを使用しており、サポート モデルに準拠していない場合、Microsoft サポートは、支援機能にフォークされたエージェント バージョンを提供していることを認識したうえで、このレポジトリをフォークすることをお勧めします。
 
 * Amazon Linux 2017.09 (x64)
 * CentOS Linux 6 (x86/x64) および 7 (x64)  
@@ -67,11 +68,26 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 * Red Hat Enterprise Linux Server 6 (x86/x64) および 7 (x64)
 * Debian GNU/Linux 8 および 9 (x86/x64)
 * Ubuntu 14.04 LTS (x86/x64)、16.04 LTS (x86/x64)、および 18.04 LTS (x64)
-* SUSE Linux Enterprise Server 12 (x64)
+* SUSE Linux Enterprise Server 12 (x64) および 15 (x64)
 
 >[!NOTE]
 >OpenSSL 1.1.0 は x86_x64 プラットフォーム (64-bit) 上のみでサポートされ、1.x より前の OpenSSL は、どのプラットフォーム上でもサポートされません。
 >
+
+### <a name="agent-prerequisites"></a>エージェントの前提条件
+
+次の表には、エージェントがインストールされるサポートされている Linux ディストリビューションに必要なパッケージが明記されています。
+
+|必須パッケージ |説明 |最小バージョン |
+|-----------------|------------|----------------|
+|Glibc |    GNU C ライブラリ | 2.5-12 
+|Openssl    | OpenSSL ライブラリ | 1.0.x または 1.1.x |
+|Curl | cURL Web クライアント | 7.15.5 |
+|Python-ctypes | | 
+|PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) | | 
+
+>[!NOTE]
+>syslog メッセージを収集するには、rsyslog または syslog-ng が必要となります。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、rsyslog デーモンをインストールし、sysklog を置き換えるように構成する必要があります。
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
 Azure Monitor ログに転送中のデータのセキュリティを確保するには、エージェントを、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するように構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
@@ -115,7 +131,7 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 ## <a name="install-and-configure-agent"></a>エージェントをインストールして構成する 
 Azure Monitor ログを直接、Azure サブスクリプションまたはハイブリッド環境内のマシンに接続することは、要件に応じてさまざまな方法を使用して実現できます。 次の表は、どの方法が組織で最も効果的であるかを判断できるように、各方法について説明しています。
 
-|ソース | Method | 説明|
+|source | Method | 説明|
 |-------|-------------|-------------|
 |Azure VM| - Azure CLI または Azure Resource Manager テンプレートを使用する [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能<br>- [Azure portal から手動で](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Azure Monitor ワークスペースに登録されます。|
 | ハイブリッド Windows コンピューター|- [手動インストール](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Azure Stack を使用する Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |コマンド ラインから、または Azure Automation DSC や [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications) などの自動化された方法を使用して、Microsoft Monitoring エージェントをインストールします。データセンターに Microsoft Azure Stack が配置されている場合は、Azure Resource Manager テンプレートも使用できます。| 

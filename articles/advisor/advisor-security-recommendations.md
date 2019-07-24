@@ -13,11 +13,11 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: kasparks
 ms.openlocfilehash: 290af605525d552e73c5f3a7a961593689326946
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494325"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60467682"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Advisor を使用してリソースのセキュリティを向上させる
 
@@ -31,7 +31,7 @@ Security Center は、Azure リソースのセキュリティを高度に視覚�
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
 
-2.  Advisor ダッシュボードで、**[セキュリティ]** タブをクリックします。
+2.  Advisor ダッシュボードで、 **[セキュリティ]** タブをクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

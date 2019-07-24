@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure PowerShell を使用し�
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/28/2018
+ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 94858a147dc0383376a54bc94685d855d37e12d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1093c75e5552fea875f81d2860deb0d61405022
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991190"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707952"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM を作成および管理する
 
@@ -95,7 +95,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-**[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 VM 用に作成したユーザー名とパスワードを入力し、**[OK]** をクリックします。
+**[Windows セキュリティ]** ウィンドウで、 **[その他]** 、 **[別のアカウントを使用する]** の順に選択します。 VM 用に作成したユーザー名とパスワードを入力し、 **[OK]** をクリックします。
 
 ## <a name="understand-marketplace-images"></a>Marketplace のイメージについて
 
@@ -181,12 +181,12 @@ VM のサイズにより、CPU、GPU、メモリなど、VM で利用できる�
 
 次の表は、ユース ケース別にサイズを分類したものです。  
 
-| type                     | 一般的なサイズ           |    説明       |
+| Type                     | 一般的なサイズ           |    説明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [汎用](sizes-general.md)         |B、Dsv3、Dv3、DSv2、Dv2、Av2、DC| CPU とメモリのバランスがとれています。 開発/テスト環境や、小中規模のアプリケーションとデータ ソリューションに最適です。  |
-| [コンピューティングの最適化](sizes-compute.md)   | Fsv2、Fs、F             | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
-| [メモリの最適化](sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、Dv2  | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
-| [ストレージの最適化](sizes-storage.md)      | Ls                | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
+| [コンピューティングの最適化](sizes-compute.md)   | Fsv2          | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
+| [メモリの最適化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
+| [ストレージの最適化](sizes-storage.md)      | Lsv2、Ls              | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
 | [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 負荷の高いグラフィック処理やビデオ編集に特化した VM です。       |
 | [高性能](sizes-hpc.md) | H        | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 |
 

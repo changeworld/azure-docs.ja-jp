@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103538"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61280673"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Azure Site Recovery エージェントに関する問題のトラブルシューティング
 
@@ -26,14 +26,14 @@ ms.locfileid: "58103538"
 
  Azure Site Recovery は、保護の有効化ジョブの一部として、仮想マシンに拡張機能をインストールします。 以下のいずれかの状況によって、保護をトリガーできず、ジョブが失敗する場合があります。 次のトラブルシューティング手順を完了してから、必要な操作を再試行してください。
 
-**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3:[Site Recovery 拡張機能の更新または読み込みに失敗した](#the-site-recovery-extension-fails-to-update-or-load)**  
 
 エラー メッセージ:「Previous site recovery extension operation is taking more time than expected. (前の Site Recovery 機能拡張の操作に想定以上に時間がかかっています。)」<br>
 エラー コード:"150066"<br>
 
-**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3:[Site Recovery 拡張機能の状態が正しくない](#the-site-recovery-extension-fails-to-update-or-load)**  
 
@@ -45,7 +45,7 @@ ms.locfileid: "58103538"
 このエラーは、仮想マシンの Azure ゲスト エージェントが準備完了状態にない場合に発生することがあります。
 [Azure Portal](https://portal.azure.com/) で Azure ゲスト エージェントの状態を調べられます。 保護しようとしている仮想マシンに移動し、[VM]、[設定]、[プロパティ]、[エージェントの状態] と移動して状態を調べます。 ほとんどの場合、エージェントの状態は、仮想マシンの再起動後に準備完了になります。 ただし、再起動が不可能な場合や、再起動後も問題に直面している場合は、次のトラブルシューティング手順を完了してください。
 
-**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
 **原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
@@ -62,7 +62,7 @@ ms.locfileid: "58103538"
 VM エージェントが破損しているまたはサービスが停止している可能性があります。 VM エージェントを再インストールすることで最新バージョンを入手できます。 その際に、サービスとの通信も再開されます。
 
 1. VM サービス (services.msc) で "Windows Azure ゲスト エージェント サービス" が実行されているかどうかを確認します。 "Windows Azure ゲスト エージェント サービス" の再起動を試みます。    
-2. コントロール パネルの [サービス] に Windows Azure ゲスト エージェント サービスが表示されない場合は、**[プログラムと機能]** に移動し、Windows ゲスト エージェント サービスがインストールされているかどうかを確認してください。
+2. コントロール パネルの [サービス] に Windows Azure ゲスト エージェント サービスが表示されない場合は、 **[プログラムと機能]** に移動し、Windows ゲスト エージェント サービスがインストールされているかどうかを確認してください。
 4. Windows Azure ゲスト エージェント サービスが **[プログラムと機能]** に表示される場合は、Windows ゲスト エージェントをアンインストールします。
 5. [最新バージョンのエージェント MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。 インストールを実行するには、管理者権限が必要です。
 6. [サービス] に Windows Azure ゲスト エージェント サービスが表示されることを確認します。

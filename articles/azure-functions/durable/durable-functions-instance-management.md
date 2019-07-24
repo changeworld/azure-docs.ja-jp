@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ee96bc5e17051ab37be34eecbb8e4fe35599cd5d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547316"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60730771"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure における Durable Functions でのインスタンスの管理
 
@@ -86,11 +86,11 @@ module.exports = async function(context, input) {
 
 [Azure Functions Core Tools](../functions-run-local.md) の `durable start-new` コマンドを使用して、インスタンスを直接開始することもできます。 使用できるパラメーターは次のとおりです。
 
-* **`function-name` (必須)**: 開始する関数の名前。
-* **`input` (省略可能)**: 関数への入力 (インラインまたは JSON ファイル経由のどちらか)。 ファイルの場合は、`@` でファイルへのパスにプレフィックスを追加します (例: `@path/to/file.json`)。
-* **`id` (省略可能)**: オーケストレーション インスタンスの ID。 このパラメーターを指定しないと、コマンドではランダムな GUID が使用されます。
-* **`connection-string-setting` (省略可能)**: 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、AzureWebJobsStorage です。
-* **`task-hub-name` (省略可能)**: 使用する Durable Functions タスク ハブの名前。 既定では、DurableFunctionsHub です。 [host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用してこれを設定することもできます。
+* **`function-name` (必須)** : 開始する関数の名前。
+* **`input` (省略可能)** : 関数への入力 (インラインまたは JSON ファイル経由のどちらか)。 ファイルの場合は、`@` でファイルへのパスにプレフィックスを追加します (例: `@path/to/file.json`)。
+* **`id` (省略可能)** : オーケストレーション インスタンスの ID。 このパラメーターを指定しないと、コマンドではランダムな GUID が使用されます。
+* **`connection-string-setting` (省略可能)** : 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、AzureWebJobsStorage です。
+* **`task-hub-name` (省略可能)** : 使用する Durable Functions タスク ハブの名前。 既定では、DurableFunctionsHub です。 [host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用してこれを設定することもできます。
 
 > [!NOTE]
 > Core Tools のコマンドでは、関数アプリのルート ディレクトリから実行されることが想定されています。 `connection-string-setting` および `task-hub-name` パラメーターを明示的に指定した場合、任意のディレクトリからコマンドを実行できます。 関数アプリのホストが実行されていなくても、これらのコマンドを実行できますが、ホストが実行されていない場合、一部の効果を観察できないことがあります。 たとえば、`start-new` コマンドではターゲットのタスク ハブに開始メッセージがエンキューされますが、メッセージを処理できる関数アプリのホスト プロセスが実行されていない限り、オーケストレーションは実際に実行されません。
@@ -109,9 +109,9 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 これは、パラメーターとして `instanceId` (必須)、`showHistory` (省略可能)、`showHistoryOutput` (省略可能)、および `showInput` (省略可能、.NET のみ) を取ります。
 
-* **`showHistory`**:`true` に設定すると、応答に実行履歴が含まれます。
-* **`showHistoryOutput`**:`true` に設定すると、実行履歴にアクティビティ出力が含まれます。
-* **`showInput`**:`false` にすると、応答に関数の入力が含まれます。 既定値は `true` です。 (.NET のみ)
+* **`showHistory`** :`true` に設定すると、応答に実行履歴が含まれます。
+* **`showHistoryOutput`** :`true` に設定すると、実行履歴にアクティビティ出力が含まれます。
+* **`showInput`** :`false` にすると、応答に関数の入力が含まれます。 既定値は `true` です。 (.NET のみ)
 
 このメソッドは次のプロパティを持つ JSON オブジェクトを返します。
 
@@ -163,11 +163,11 @@ module.exports = async function(context, instanceId) {
 
 [Azure Functions Core Tools](../functions-run-local.md) の `durable get-runtime-status` コマンドを使用して、オーケストレーション インスタンスの状態を直接取得することもできます。 使用できるパラメーターは次のとおりです。
 
-* **`id` (必須)**: オーケストレーション インスタンスの ID。
-* **`show-input` (省略可能)**: `true` に設定すると、応答に関数の入力が含まれます。 既定値は `false` です。
-* **`show-output` (省略可能)**: `true` に設定すると、応答に関数の出力が含まれます。 既定値は `false` です。
-* **`connection-string-setting` (省略可能)**: 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
-* **`task-hub-name` (省略可能)**: 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
+* **`id` (必須)** : オーケストレーション インスタンスの ID。
+* **`show-input` (省略可能)** : `true` に設定すると、応答に関数の入力が含まれます。 既定値は `false` です。
+* **`show-output` (省略可能)** : `true` に設定すると、応答に関数の出力が含まれます。 既定値は `false` です。
+* **`connection-string-setting` (省略可能)** : 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
+* **`task-hub-name` (省略可能)** : 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
 
 次のコマンドでは、0ab8c55a66644d68a3a8b220b12d209c というオーケストレーション インスタンス ID を持つインスタンスの状態 (入力と出力を含む) が取得されます。 関数アプリのルート ディレクトリから `func` コマンドを実行することが想定されています。
 
@@ -177,9 +177,9 @@ func durable get-runtime-status --id 0ab8c55a66644d68a3a8b220b12d209c --show-inp
 
 `durable get-history` コマンドを使用して、オーケストレーション インスタンスの履歴を取得できます。 使用できるパラメーターは次のとおりです。
 
-* **`id` (必須)**: オーケストレーション インスタンスの ID。
-* **`connection-string-setting` (省略可能)**: 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
-* **`task-hub-name` (省略可能)**: 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、host.json で durableTask:HubName を使用して設定することもできます。
+* **`id` (必須)** : オーケストレーション インスタンスの ID。
+* **`connection-string-setting` (省略可能)** : 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
+* **`task-hub-name` (省略可能)** : 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、host.json で durableTask:HubName を使用して設定することもできます。
 
 ```bash
 func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
@@ -227,10 +227,10 @@ module.exports = async function(context, req) {
 
 [Azure Functions Core Tools](../functions-run-local.md) の `durable get-instances` コマンドを使用して、インスタンスのクエリを直接実行することもできます。 使用できるパラメーターは次のとおりです。
 
-* **`top` (省略可能)**: このコマンドは、ページングをサポートします。 このパラメーターは、要求ごとに取得されるインスタンス数に対応します。 既定値は 10 です。
-* **`continuation-token` (省略可能)**: 取得するインスタンスのページまたはセクションを示すトークン。 `get-instances` を実行するたびに、次の一連のインスタンスにトークンが返されます。
-* **`connection-string-setting` (省略可能)**: 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
-* **`task-hub-name` (省略可能)**: 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
+* **`top` (省略可能)** : このコマンドは、ページングをサポートします。 このパラメーターは、要求ごとに取得されるインスタンス数に対応します。 既定値は 10 です。
+* **`continuation-token` (省略可能)** : 取得するインスタンスのページまたはセクションを示すトークン。 `get-instances` を実行するたびに、次の一連のインスタンスにトークンが返されます。
+* **`connection-string-setting` (省略可能)** : 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
+* **`task-hub-name` (省略可能)** : 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
 
 ```bash
 func durable get-instances
@@ -294,13 +294,13 @@ module.exports = async function(context, req) {
 
 Azure Functions Core Tools では、`durable get-instances` コマンドでフィルターを使用することもできます。 前述の `top`、`continuation-token`、`connection-string-setting`、`task-hub-name` パラメーターに加えて、3 つのフィルター パラメーター (`created-after`、`created-before`、`runtime-status`) を使用できます。
 
-* **`created-after` (省略可能)**: この日付/時刻 (UTC) の後に作成されたインスタンスを取得します。 ISO 8601 形式の日時が受け入れられます。
-* **`created-before` (省略可能)**: この日付/時刻 (UTC) の前に作成されたインスタンスを取得します。 ISO 8601 形式の日時が受け入れられます。
-* **`runtime-status` (省略可能)**: 特定の状態 (たとえば、実行中または完了) のインスタンスを取得します。 複数の (スペースで区切られた) 状態を指定できます。
-* **`top` (省略可能)**: 要求ごとに取得されるインスタンスの数。 既定値は 10 です。
-* **`continuation-token` (省略可能)**: 取得するインスタンスのページまたはセクションを示すトークン。 `get-instances` を実行するたびに、次の一連のインスタンスにトークンが返されます。
-* **`connection-string-setting` (省略可能)**: 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
-* **`task-hub-name` (省略可能)**: 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
+* **`created-after` (省略可能)** : この日付/時刻 (UTC) の後に作成されたインスタンスを取得します。 ISO 8601 形式の日時が受け入れられます。
+* **`created-before` (省略可能)** : この日付/時刻 (UTC) の前に作成されたインスタンスを取得します。 ISO 8601 形式の日時が受け入れられます。
+* **`runtime-status` (省略可能)** : 特定の状態 (たとえば、実行中または完了) のインスタンスを取得します。 複数の (スペースで区切られた) 状態を指定できます。
+* **`top` (省略可能)** : 要求ごとに取得されるインスタンスの数。 既定値は 10 です。
+* **`continuation-token` (省略可能)** : 取得するインスタンスのページまたはセクションを示すトークン。 `get-instances` を実行するたびに、次の一連のインスタンスにトークンが返されます。
+* **`connection-string-setting` (省略可能)** : 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
+* **`task-hub-name` (省略可能)** : 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
 
 フィルター (`created-after`、`created-before`、`runtime-status`) を何も指定しないと、コマンドでは、実行状態や作成時刻に関係なく、単に `top` インスタンスが取得されます。
 
@@ -347,10 +347,10 @@ module.exports = async function(context, instanceId) {
 
 [Azure Functions Core Tools](../functions-run-local.md) の `durable terminate` コマンドを使用して、オーケストレーション インスタンスを直接終了することもできます。 使用できるパラメーターは次のとおりです。
 
-* **`id` (必須)**: 終了するオーケストレーション インスタンスの ID。
-* **`reason` (省略可能)**: 終了の理由。
-* **`connection-string-setting` (省略可能)**: 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
-* **`task-hub-name` (省略可能)**: 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
+* **`id` (必須)** : 終了するオーケストレーション インスタンスの ID。
+* **`reason` (省略可能)** : 終了の理由。
+* **`connection-string-setting` (省略可能)** : 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
+* **`task-hub-name` (省略可能)** : 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
 
 次のコマンドでは、ID が 0ab8c55a66644d68a3a8b220b12d209c のオーケストレーション インスタンスを終了します。
 
@@ -403,11 +403,11 @@ module.exports = async function(context, instanceId) {
 
 [Azure Functions Core Tools](../functions-run-local.md) の `durable raise-event` コマンドを使用して、オーケストレーション インスタンスに対するイベントを直接発生させることもできます。 使用できるパラメーターは次のとおりです。
 
-* **`id` (必須)**: オーケストレーション インスタンスの ID。
-* **`event-name` (省略可能)**: 発生させるイベントの名前。 既定では、 `$"Event_{RandomGUID}"`です。
-* **`event-data` (省略可能)**: オーケストレーション インスタンスに送信するデータ。 これは JSON ファイルへのパスにするか、コマンド ラインでデータを直接指定することができます。
-* **`connection-string-setting` (省略可能)**: 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
-* **`task-hub-name` (省略可能)**: 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
+* **`id` (必須)** : オーケストレーション インスタンスの ID。
+* **`event-name` (省略可能)** : 発生させるイベントの名前。 既定では、 `$"Event_{RandomGUID}"`です。
+* **`event-data` (省略可能)** : オーケストレーション インスタンスに送信するデータ。 これは JSON ファイルへのパスにするか、コマンド ラインでデータを直接指定することができます。
+* **`connection-string-setting` (省略可能)** : 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
+* **`task-hub-name` (省略可能)** : 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
 
 ```bash
 func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEvent --event-data @eventdata.json
@@ -575,10 +575,10 @@ module.exports = async function(context, instanceId) {
 
 [Azure Functions Core Tools](../functions-run-local.md) の `durable rewind` コマンドを使用して、オーケストレーション インスタンスを直巻き戻すこともできます。 使用できるパラメーターは次のとおりです。
 
-* **`id` (必須)**: オーケストレーション インスタンスの ID。
-* **`reason` (省略可能)**: オーケストレーション インスタンスを巻き戻す理由。
-* **`connection-string-setting` (省略可能)**: 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
-* **`task-hub-name` (省略可能)**: 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
+* **`id` (必須)** : オーケストレーション インスタンスの ID。
+* **`reason` (省略可能)** : オーケストレーション インスタンスを巻き戻す理由。
+* **`connection-string-setting` (省略可能)** : 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
+* **`task-hub-name` (省略可能)** : 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
 
 ```bash
 func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator failed and needs to be revived."
@@ -628,11 +628,11 @@ public static Task Run(
 
 [Azure Functions Core Tools](../functions-run-local.md) の `durable purge-history` コマンドを使用して、オーケストレーション インスタンスの履歴を消去することもできます。 前のセクションの 2 つ目の C# の例と同様に、指定した時間間隔中に作成されたすべてのオーケストレーション インスタンスの履歴が消去されます。 さらに、実行状態によって消去されるインスタンスをフィルター処理できます。 コマンドにはいくつかのパラメーターがあります。
 
-* **`created-after` (省略可能)**: この日付/時刻 (UTC) の後に作成されたインスタンスの履歴を消去します。 ISO 8601 形式の日時が受け入れられます。
-* **`created-before` (省略可能)**: この日付/時刻 (UTC) の前に作成されたインスタンスの履歴を消去します。 ISO 8601 形式の日時が受け入れられます。
-* **`runtime-status` (省略可能)**: 特定の状態 (たとえば、実行中または完了) のインスタンスの履歴を消去します。 複数の (スペースで区切られた) 状態を指定できます。
-* **`connection-string-setting` (省略可能)**: 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
-* **`task-hub-name` (省略可能)**: 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
+* **`created-after` (省略可能)** : この日付/時刻 (UTC) の後に作成されたインスタンスの履歴を消去します。 ISO 8601 形式の日時が受け入れられます。
+* **`created-before` (省略可能)** : この日付/時刻 (UTC) の前に作成されたインスタンスの履歴を消去します。 ISO 8601 形式の日時が受け入れられます。
+* **`runtime-status` (省略可能)** : 特定の状態 (たとえば、実行中または完了) のインスタンスの履歴を消去します。 複数の (スペースで区切られた) 状態を指定できます。
+* **`connection-string-setting` (省略可能)** : 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
+* **`task-hub-name` (省略可能)** : 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
 
 次のコマンドでは、2018 年 11 月 14 日午後 7 時 35 分 (UTC) より前に作成されたすべての失敗したインスタンスの履歴が削除されます。
 
@@ -644,8 +644,8 @@ func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runti
 
 [Azure Functions Core Tools](../functions-run-local.md) の `durable delete-task-hub` コマンドを使用して、特定のタスク ハブに関連付けられているすべてのストレージ成果物を削除できます。 これには、Azure ストレージのテーブル、キュー、BLOB が含まれます。 コマンドには 2 つのパラメーターがあります。
 
-* **`connection-string-setting` (省略可能)**: 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
-* **`task-hub-name` (省略可能)**: 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
+* **`connection-string-setting` (省略可能)** : 使用するストレージ接続文字列を含むアプリケーション設定の名前。 既定では、 `AzureWebJobsStorage`です。
+* **`task-hub-name` (省略可能)** : 使用する Durable Functions タスク ハブの名前。 既定では、 `DurableFunctionsHub`です。 これは、[host.json](durable-functions-bindings.md#host-json) で durableTask:HubName を使用して設定することもできます。
 
 次のコマンドでは、`UserTest` タスク ハブに関連付けられている Azure ストレージ データがすべて削除されます。
 

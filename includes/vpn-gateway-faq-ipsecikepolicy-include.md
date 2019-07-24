@@ -9,11 +9,11 @@ ms.date: 12/14/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151067"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67180998"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>カスタム IPsec/IKE ポリシーはすべての Azure VPN Gateway SKU でサポートされていますか。
 カスタム IPsec/IKE ポリシーは、Azure の **VpnGw1、VpnGw2、VpnGw3、Standard** および **HighPerformance** VPN ゲートウェイでサポートされています。 **Basic** SKU はサポート**されていません**。
@@ -21,7 +21,7 @@ ms.locfileid: "66151067"
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>1 つの接続に対してポリシーはいくつ指定できますか。
 ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ***だけです。
 
-### <a name="can-i-specify-a-partial-policy-on-a-connection-for-example-only-ike-algorithms-but-not-ipsec"></a>接続に対してポリシーを部分的に指定することはできますか  (IKE アルゴリズムのみ指定し、IPsec は指定しないなど)。
+### <a name="can-i-specify-a-partial-policy-on-a-connection-for-example-only-ike-algorithms-but-not-ipsec"></a>接続に対してポリシーを部分的に指定することはできますか (IKE アルゴリズムのみ指定し、IPsec は指定しないなど)。
 いいえ。IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
 
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>カスタム ポリシーでサポートされるアルゴリズムとキーの強度を教えてください。

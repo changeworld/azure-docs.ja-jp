@@ -1,34 +1,34 @@
 ---
-title: Azure Data Box ポータル管理ガイド | Microsoft Docs
-description: Azure portal を使用して Azure Data Box を管理する方法について説明します。
+title: Azure portal を使用して Azure Data Box、Azure Data Box Heavy を管理する | Microsoft Docs
+description: Azure portal を使用して Azure Data Box および Azure Data Box Heavy を管理する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
-ms.date: 04/15/2019
+ms.topic: article
+ms.date: 05/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 483e1e0f6a472132446b20a161d012e69d83c4ac
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 5ece12e117db7b334bce8edfd49a5a622e46e13c
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607111"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66427725"
 ---
-# <a name="use-the-azure-portal-to-administer-your-data-box"></a>Azure portal を使用して Data Box を管理する
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure portal を使用して Azure Data Box および Azure Data Box Heavy を管理する
 
-この記事では、Data Box で実行できる一部の複雑なワークフローと管理タスクについて説明します。 Data Box の管理は、Azure portal またはローカル Web UI から行うことができます。 
+この記事は Azure Data Box と Azure Data Box Heavy の両方に該当します。 この記事では、Azure Data Box デバイスで実行できる一部の複雑なワークフローと管理タスクについて説明します。 Data Box デバイスの管理は、Azure portal またはローカル Web UI から行うことができます。
 
-この記事では、Azure portal を使用して実行できるタスクについて説明します。 Azure portal を使用して、注文を管理したり、Data Box を管理したり、完了まで注文の状態を追跡したりします。
+この記事では、Azure portal を使用して実行できるタスクについて説明します。 Azure portal を使用して、注文を管理したり、Data Box デバイスを管理したり、完了まで注文の状態を追跡したりします。
 
 
 ## <a name="cancel-an-order"></a>注文のキャンセル
 
-発注後、さまざまな理由から注文をキャンセルしなければならないことがあります。 キャンセルできるのは、処理される前の注文だけです。 注文が処理されて Data Box が準備された後は、注文をキャンセルできません。 
+発注後、さまざまな理由から注文をキャンセルしなければならないことがあります。 キャンセルできるのは、処理される前の注文だけです。 注文が処理されて Data Box デバイスが準備された後は、注文をキャンセルできません。
 
 注文をキャンセルするには、次の手順を実行します。
 
-1.  **[概要] > [キャンセル]** に移動します。 
+1.  **[概要] > [キャンセル]** に移動します。
 
     ![注文のキャンセル 1](media/data-box-portal-admin/cancel-order1.png)
 
@@ -36,11 +36,11 @@ ms.locfileid: "59607111"
 
     ![注文のキャンセル 2](media/data-box-portal-admin/cancel-order2.png)
 
-3.  注文のキャンセル後、ポータルで注文の状態が更新され、**取り消し済み**として表示されます。 
+3.  注文のキャンセル後、ポータルで注文の状態が更新され、**取り消し済み**として表示されます。
 
 ## <a name="clone-an-order"></a>注文の複製
 
-特定の状況では複製機能が役立ちます。 たとえば、ユーザーが Data Box を使って何らかのデータを転送済みだとします。 その後、生成されるデータが増えていくと、それを Azure に転送するために別の Data Box が必要になります。 このようなケースでは、同じ注文をそのまま複製することができます。
+特定の状況では複製機能が役立ちます。 たとえば、ユーザーが Data Box を使って何らかのデータを転送済みだとします。 その後、生成されるデータが増えていくと、それを Azure に転送するために別の Data Box デバイスが必要になります。 このようなケースでは、同じ注文をそのまま複製することができます。
 
 注文を複製するには、次の手順を実行します。
 
@@ -48,7 +48,7 @@ ms.locfileid: "59607111"
 
     ![注文の複製 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  注文の詳細はすべてそのままの状態で維持されます。 複製された注文は、元の名前の最後に "*-Clone*" を追加した名前になります。 プライバシー情報を確認済みであることへの同意として、チェック ボックスをオンにします。 **Create** をクリックしてください。
+2.  注文の詳細はすべてそのままの状態で維持されます。 複製された注文は、元の名前の最後に " *-Clone*" を追加した名前になります。 プライバシー情報を確認済みであることへの同意として、チェック ボックスをオンにします。 **Create** をクリックしてください。
 
 複製は数分で作成され、ポータルに新しい注文が反映されます。
 
@@ -61,7 +61,7 @@ ms.locfileid: "59607111"
 
 1. **[すべてのリソース]** に移動します。 目的の注文を検索します。
 
-2. 削除する注文をクリックし、**[概要]** に移動します。 コマンド バーの **[削除]** をクリックします。
+2. 削除する注文をクリックし、 **[概要]** に移動します。 コマンド バーの **[削除]** をクリックします。
 
     ![Data Box 注文の削除 1](media/data-box-portal-admin/delete-order1.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "59607111"
 
 ## <a name="download-shipping-label"></a>配送先住所ラベルのダウンロード
 
-Data Box の E インク表示が動作しておらず、返送ラベルが表示されない場合は、配送先住所ラベルをダウンロードしなければならないことがあります。 
+Data Box の E インク表示が動作しておらず、返送ラベルが表示されない場合は、配送先住所ラベルをダウンロードしなければならないことがあります。 Data Box Heavy には電子インク ディスプレイがないので、このワークフローは Data Box Heavy には適用されません。
 
 配送先住所ラベルをダウンロードするには、次の手順を実行します。
 
@@ -116,11 +116,11 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 
 注文履歴をダウンロードするには、次の手順を実行します。
 
-1. Data Box の注文で、**[概要]** に移動します。 注文が完了していることを確認します。 注文が完了し、デバイスのクリーンアップが完了している場合は、**[注文の詳細]** に移動します。 **[注文履歴のダウンロード]** オプションが使用可能になっています。
+1. Data Box の注文で、 **[概要]** に移動します。 注文が完了していることを確認します。 注文が完了し、デバイスのクリーンアップが完了している場合は、 **[注文の詳細]** に移動します。 **[注文履歴のダウンロード]** オプションが使用可能になっています。
 
     ![注文履歴のダウンロード](media/data-box-portal-admin/download-order-history-1.png)
 
-2. **[注文履歴のダウンロード]** をクリックします。 ダウンロードした履歴には、運送業者の追跡ログの記録が含まれています。 このログの一番下までスクロールすると、次の項目へのリンクが表示されます。
+2. **[注文履歴のダウンロード]** をクリックします。 ダウンロードした履歴には、運送業者の追跡ログの記録が含まれています。 Data Box Heavy 上の 2 つのノードに対応する 2 セットのログがあります。 このログの一番下までスクロールすると、次の項目へのリンクが表示されます。
     
    - **コピー ログ** - Data Box から Azure Storage アカウントへのデータのコピー中にエラーが出力されたファイルのリストが含まれています。
    - **監査ログ** - Data Box が Azure データセンターの外部にあるときの Data Box の電源投入と共有へのアクセスに関する情報が含まれています。
@@ -215,4 +215,4 @@ Data Box の注文が完了すると、デバイス ディスク上のデータ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Data Box の問題のトラブルシューティング](data-box-faq.md)に関するページを参照してください。
+- [Data Box および Data Box Heavy の問題のトラブルシューティング](data-box-troubleshoot.md)に関するページを参照してください。

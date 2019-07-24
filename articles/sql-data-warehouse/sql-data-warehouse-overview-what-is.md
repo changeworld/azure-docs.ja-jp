@@ -1,28 +1,29 @@
 ---
 title: Azure SQL Data Warehouse の概要 | Microsoft Docs
-description: エンタープライズ クラスの分散データベースであり、ペタバイト単位の量までリレーショナル データと非リレーショナル データを処理できます。 業界初のクラウド データ ウェアハウスであり、数秒で拡大、縮小、および一時停止できます。
+description: ペタバイト単位の量のリレーショナル データと非リレーショナル データを処理可能なエンタープライズクラスの分散型データベース。 これは、数秒で拡大、縮小、および一時停止する機能を持つ業界初のクラウド データ ウェアハウスです。
 services: sql-data-warehouse
-author: happynicolle
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
-ms.author: nicw
+ms.date: 05/30/2019
+ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 29296d703e59cb234177349ca477c3fdab74ee61
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+mscustom: sqlfreshmay19
+ms.openlocfilehash: a9126e9023091dd8c3df71f2aa2558a01227a8be
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790849"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428035"
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の概要
 
-SQL Data Warehouse は、超並列処理 (MPP) を利用して、ペタバイト単位のデータに対して複雑なクエリを短時間で実行するクラウドベースのエンタープライズ データ ウェアハウス (EDW) です。 ビッグ データ ソリューションの主要コンポーネントとして SQL Data Warehouse を使用してください。 簡単な [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) T-SQL クエリを使用して SQL Data Warehouse にビッグ データをインポートしてから、MPP の機能を利用してハイ パフォーマンスの分析を実行します。 統合と分析を進めると、企業が洞察時に信頼できる 1 つの真実がデータ ウェアハウスに構築されます。  
-
+SQL Data Warehouse は、超並列処理 (MPP) を使用してペタバイト単位のデータに複雑なクエリを短時間で実行する、クラウドベースのエンタープライズ データ ウェアハウス (EDW) です。 ビッグ データ ソリューションの主要コンポーネントとして SQL Data Warehouse を使用してください。 簡単な [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) T-SQL クエリを使用して SQL Data Warehouse にビッグ データをインポートしてから、MPP の機能を利用してハイ パフォーマンスの分析を実行します。 統合と分析を進めると、企業が洞察時に信頼できる 1 つの真実がデータ ウェアハウスに構築されます。  
 
 ## <a name="key-component-of-big-data-solution"></a>ビッグ データ ソリューションの主要コンポーネント
+
 SQL Data Warehouse は、クラウドのエンドツーエンドなビッグ データ ソリューションの主要コンポーネントです。
 
 ![データ ウェアハウス ソリューション](media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png) 
@@ -33,25 +34,27 @@ SQL Data Warehouse はカラム型ストレージを使用してリレーショ�
 
 分析結果は世界中のレポート データベースやアプリケーションに移動できます。 また、ビジネスの分析に洞察を加え、適切な情報に基づいた決断を下すことができるようになります。
 
-
 ## <a name="next-steps"></a>次の手順
-SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][create a SQL Data Warehouse]し、[サンプル データを読み込む][load sample data]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
 
-* [顧客の成功事例]
-* [ブログ]
-* [機能に関する要求]
-* [ビデオ]
-* [Customer Advisory Team のブログ]
-* [サポート チケットを作成する]
-* [MSDN フォーラム]
-* [Stack Overflow フォーラム]
-* [Twitter]
+- [Azure SQL Data Warehouse アーキテクチャ](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)を確認する
+- 迅速に [SQL Data Warehouse を作成する][create a SQL Data Warehouse]
+- [サンプル データを読み込む][load sample data]
+- [ビデオ](/azure/sql-data-warehouse/sql-data-warehouse-videos)を確認する
+
+または、次の SQL Data Warehouse リソースも確認できます。  
+* [ブログ]を検索する
+* [機能要求]を送信する
+* [Customer Advisory Team のブログ]を検索する
+* [サポート チケットを作成]
+* [MSDN フォーラム]を検索する
+* [Stack Overflow フォーラム]を検索する
+
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
 
 <!--Article references-->
-[サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md
+[サポート チケットを作成]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [load sample data]: ./sql-data-warehouse-load-sample-databases.md
 [create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
 [Migration documentation]: ./sql-data-warehouse-overview-migrate.md
@@ -63,14 +66,13 @@ SQL Data Warehouse の概要については学習したので、次はすばや�
 <!--MSDN references-->
 
 <!--Other Web references-->
-[顧客の成功事例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
+[機能要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
 [Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
-[ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

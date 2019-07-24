@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 06/25/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94b35f0530dacfadb799f1d44d7a9eb666def6c9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 735c3db14963c1f3cfe700a97dee9fedb70e29f5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65892005"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441124"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する (プレビュー)
+
+|     |
+| --- |
+| Google フェデレーションは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
+|     |
 
 Google とのフェデレーションを設定することで、招待されたユーザーが Microsoft アカウント (MSA) または Azure AD アカウントを作成することなく、独自の Google アカウントを使用して共有アプリおよびリソースにサインインできるようにできます。  
 > [!NOTE]
@@ -37,15 +42,15 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 ## <a name="step-1-configure-a-google-developer-project"></a>手順 1:Google 開発者プロジェクトを構成する
 最初に、Google Developers Console で新しいプロジェクトを作成して、Azure AD に後で追加するクライアント ID とクライアント シークレットを取得します。 
 1. https://console.developers.google.com で Google API に移動し、Google アカウントでサインインします。 共有のチーム Google アカウントを使用することをお勧めします。
-2. 新しいプロジェクトを作成します。ダッシュボードで **[プロジェクトを作成]**、**[作成]** の順に選択します。 [新しいプロジェクト] ページで、**[プロジェクト名]** に入力を行ってから **[作成]** を選択します。
+2. 新しいプロジェクトを作成します。ダッシュボードで **[プロジェクトを作成]** 、 **[作成]** の順に選択します。 [新しいプロジェクト] ページで、 **[プロジェクト名]** に入力を行ってから **[作成]** を選択します。
    
    ![Google の [New project] ページを示すスクリーンショット](media/google-federation/google-new-project.png)
 
-3. 新しいプロジェクトがプロジェクト メニューで選択されていることを確認します。 次に、左上隅にあるメニューを開いて、**[API とサービス]** > **[認証情報]** の順に選択します。
+3. 新しいプロジェクトがプロジェクト メニューで選択されていることを確認します。 次に、左上隅にあるメニューを開いて、 **[API とサービス]**  >  **[認証情報]** の順に選択します。
 
    ![Google の [API credentials] オプションを示すスクリーンショット](media/google-federation/google-api.png)
  
-4. **[OAuth consent screen]\(OAuth 同意画面\)** タブを選択して、**[Application name]\(アプリケーション名\)** を入力します。 (他の設定はそのままにします)。
+4. **[OAuth consent screen]\(OAuth 同意画面\)** タブを選択して、 **[Application name]\(アプリケーション名\)** を入力します。 (他の設定はそのままにします)。
 
    ![Google の [OAuth consent] 画面を示すスクリーンショット](media/google-federation/google-oauth-consent-screen.png)
 
@@ -55,16 +60,16 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 
 6. **[保存]** を選択します。
 
-7. **[認証情報]** タブを選択します。**[認証情報を作成]** メニューで、**[OAuth クライアント ID]** を選択します。
+7. **[認証情報]** タブを選択します。 **[認証情報を作成]** メニューで、 **[OAuth クライアント ID]** を選択します。
 
    ![Google の [APIs create credentials] オプションを示すスクリーンショット](media/google-federation/google-api-credentials.png)
 
-8. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択し、**[承認済みのリダイレクト URI]** で次の URI を入力します。
+8. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択し、 **[承認済みのリダイレクト URI]** で次の URI を入力します。
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(`<directory id>` は自分のディレクトリ ID に置き換えます)
    
      > [!NOTE]
-     > ディレクトリ ID を見つけるには、 https://portal.azure.com に移動します。**[Azure Active Directory]** で **[プロパティ]** を選択して、**ディレクトリ ID** をコピーします。
+     > ディレクトリ ID を見つけるには、 https://portal.azure.com に移動します。 **[Azure Active Directory]** で **[プロパティ]** を選択して、**ディレクトリ ID** をコピーします。
 
    ![[Authorized redirect URIs] セクションを示すスクリーンショット](media/google-federation/google-create-oauth-client-id.png)
 
@@ -76,9 +81,9 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 次に、Google クライアント ID とクライアント シークレットを設定します。Azure AD ポータルで入力するか、または PowerShell を使用します。 Gmail アドレスを使って自分自身を招待したうえで、招待した Google アカウントを使って招待を利用してみて、Google フェデレーション構成をテストするようにしてください。 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Azure AD ポータルで Google フェデレーションを構成するには 
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 左ウィンドウで、**[Azure Active Directory]** を選択します。 
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。 左ウィンドウで、 **[Azure Active Directory]** を選択します。 
 2. **[組織の関係]** を選択します。
-3. **[ID プロバイダー]** を選択し、**[Google]** ボタンをクリックします。
+3. **[ID プロバイダー]** を選択し、 **[Google]** ボタンをクリックします。
 4. 名前を入力します。 次に、先ほど取得したクライアント ID とクライアント シークレットを入力します。 **[保存]** を選択します。 
 
    ![[Add Google identity provider] ページを示すスクリーンショット](media/google-federation/google-identity-provider.png)
@@ -98,10 +103,10 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 Google フェデレーション セットアップは削除できます。 これを行うと、招待を既に利用している Google ゲスト ユーザーはサインインできなくなります。しかし、ディレクトリからこれらのユーザーを削除して招待し直すことで、もう一度リソースへのアクセス権を付与できます。 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Azure AD ポータルで Google フェデレーションを削除するには: 
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 左ウィンドウで、**[Azure Active Directory]** を選択します。 
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。 左ウィンドウで、 **[Azure Active Directory]** を選択します。 
 2. **[組織の関係]** を選択します。
 3. **[Identity Providers]** を選択します。
-4. **[Google]** 行で、コンテキスト メニュー (**...**) を選択してから **[Delete]** を選択します。 
+4. **[Google]** 行で、コンテキスト メニュー ( **...** ) を選択してから **[Delete]** を選択します。 
    
    ![ソーシャル ID プロバイダーの [Delete] オプションを示すスクリーンショット](media/google-federation/google-social-identity-providers.png)
 

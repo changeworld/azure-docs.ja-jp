@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009006"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62112359"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの日時値の操作
 
@@ -153,7 +153,7 @@ Event
 
 ## <a name="related-functions"></a>関連する関数
 
-| Category | 関数 |
+| Category | Function |
 |:---|:---|
 | データ型の変換 | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
 | ビン サイズへの値を四捨五入 | [bin](/azure/kusto/query/binfunction) |

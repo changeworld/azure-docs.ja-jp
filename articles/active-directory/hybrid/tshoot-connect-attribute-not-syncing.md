@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a639b14c9313179816f6376aa0c5642a645ea344
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180827"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60455967"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Azure AD Connect で同期していない属性のトラブルシューティング
 
@@ -57,7 +57,7 @@ ms.locfileid: "56180827"
 
   ![Synchronization Service Manager を起動する](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/startmenu.png)
 
-* **Synchronization Service Manager** で、**[メタバース検索]**、**[Scope by Object Type]\(オブジェクトの種類でスコープ\)** の順に選択し、属性を使用してオブジェクトを選び、**[検索]** ボタンをクリックします。
+* **Synchronization Service Manager** で、 **[メタバース検索]** 、 **[Scope by Object Type]\(オブジェクトの種類でスコープ\)** の順に選択し、属性を使用してオブジェクトを選び、 **[検索]** ボタンをクリックします。
 
   ![メタバース検索](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvsearch.png)
 
@@ -65,11 +65,11 @@ ms.locfileid: "56180827"
 
   ![メタバース オブジェクトのコネクタ](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/mvattributes.png)
 
-* **[Active Directory コネクタ]** をダブルクリックし、**[コネクタ スペース]** 属性を表示します。 以下のダイアログで **[プレビュー]** ボタンをクリックし、**[Generate Preview]\(プレビューの生成\)** ボタンをクリックします。
+* **[Active Directory コネクタ]** をダブルクリックし、 **[コネクタ スペース]** 属性を表示します。 以下のダイアログで **[プレビュー]** ボタンをクリックし、 **[Generate Preview]\(プレビューの生成\)** ボタンをクリックします。
 
   ![コネクタ スペースの属性](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/csattributes.png)
 
-* ここで、**[インポート属性フロー]** をクリックします。これにより、**Active Directory コネクタ スペース**から**メタバース**への属性のフローが表示されます。 **[同期規則]** 列には、その属性に関係する**同期規則**が表示されます。 **[データ ソース]** 列には、**コネクタ スペース**からの属性が表示されます。 **[メタバース属性]** 列には、**メタバース**の属性が表示されます。 ここで同期していない属性を見つけることができます。 ここで属性が見つからない場合、これはマップされておらず、新しいカスタム**同期規則**を作成して、属性をマップする必要があります。
+* ここで、 **[インポート属性フロー]** をクリックします。これにより、**Active Directory コネクタ スペース**から**メタバース**への属性のフローが表示されます。 **[同期規則]** 列には、その属性に関係する**同期規則**が表示されます。 **[データ ソース]** 列には、**コネクタ スペース**からの属性が表示されます。 **[メタバース属性]** 列には、**メタバース**の属性が表示されます。 ここで同期していない属性を見つけることができます。 ここで属性が見つからない場合、これはマップされておらず、新しいカスタム**同期規則**を作成して、属性をマップする必要があります。
 
   ![コネクタ スペースの属性](media/tshoot-connect-attribute-not-syncing/tshoot-connect-attribute-not-syncing/cstomvattributeflow.png)
 

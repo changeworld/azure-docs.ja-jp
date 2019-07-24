@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 04/16/2019
+ms.topic: quickstart
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 42ca0c116521b7493c587271422fa760f2376533
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bb33e829853e1f9a975d29c7a80298b9033f0748
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65767228"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249643"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>クイック スタート:cURL を使用してナレッジ ベースから回答を取得する
 
@@ -32,7 +32,7 @@ ms.locfileid: "65767228"
 
 ## <a name="use-production-endpoint-with-curl"></a>cURL を使って運用エンドポイントを使用する
 
-ナレッジ ベースが発行されると、**[発行]** ページに、回答を生成するための HTTP 要求の設定が表示されます。 **[CURL]** タブに、[CURL](https://www.getpostman.com) コマンドライン ツールからの回答の生成に必要な設定が表示されます。
+ナレッジ ベースが発行されると、 **[発行]** ページに、回答を生成するための HTTP 要求の設定が表示されます。 **[CURL]** タブに、[CURL](https://www.getpostman.com) コマンドライン ツールからの回答の生成に必要な設定が表示されます。
 
 [![結果を発行する](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 

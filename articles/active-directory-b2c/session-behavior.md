@@ -2,20 +2,20 @@
 title: セッションの動作を構成する - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でセッションの動作を構成します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7bfa34f44ca8ba53b89e4218303a7cd77cd0add9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 3167a63be46e0d777fbec0c6a3301684fb7636bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700986"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66512561"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でセッションの動作を構成する
 
@@ -34,7 +34,7 @@ Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](
     - 既定値 = 1,440 分。
     - 最小値 (この値を含む) = 15 分。
     - 最大値 (この値を含む) = 1,440 分。
-- **[Web アプリのセッション タイムアウト]** - このスイッチが **[絶対]** に設定されている場合は、**[Web アプリのセッションの有効期間 (分)]** によって指定されている期間が経過すると、ユーザーは強制的に再び認証を求められます。 このスイッチを **[ローリング]** (既定値) に設定すると、ユーザーが Web アプリケーションでアクティブな状態を継続している限り、そのユーザーのサインインは継続されます。
+- **[Web アプリのセッション タイムアウト]** - このスイッチが **[絶対]** に設定されている場合は、 **[Web アプリのセッションの有効期間 (分)]** によって指定されている期間が経過すると、ユーザーは強制的に再び認証を求められます。 このスイッチを **[ローリング]** (既定値) に設定すると、ユーザーが Web アプリケーションでアクティブな状態を継続している限り、そのユーザーのサインインは継続されます。
 - **[シングル サインオン構成]** - B2C テナントで複数のアプリケーションやユーザー フローを運用している場合は、**シングル サインオン構成**プロパティを使用して、それらの間でのユーザーの操作を管理できます。 以下のいずれかのプロパティを設定することができます。
     - **[テナント]** - この設定が既定値です。 この設定を使用すると、B2C テナント内の複数のアプリケーションとユーザー フローで同じユーザー セッションを共有できます。 たとえば、ユーザーがあるアプリケーションにサインインすると、そのユーザーは別のアプリケーション Contoso Pharmacy にもシームレスにサインインしてアクセスできます。
     - **[アプリケーション]** - この設定により、ユーザー セッションをあるアプリケーションに対して、他のアプリケーションとは独立に排他的に維持できます。 たとえば、あるユーザーが既に Contoso Shopping にサインインしている場合でも、そのユーザーが同じ B2C テナント上の別のアプリケーションである Contoso Pharmacy に (同じ資格情報で) サインインするようにできます。 
@@ -50,11 +50,11 @@ Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いの Azure AD B2C テナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[ユーザー フロー (ポリシー)]** を選択します。
 5. あらかじめ作成しておいたユーザー フローを開きます。 
 6. **[プロパティ]** を選択します。
-7. **[Web アプリのセッションの有効期間 (分)]**、**[Web アプリのセッション タイムアウト]**、**[シングル サインオン構成]**、**[ログアウト要求に ID トークンが必要]** を必要に応じて構成します。
+7. **[Web アプリのセッションの有効期間 (分)]** 、 **[Web アプリのセッション タイムアウト]** 、 **[シングル サインオン構成]** 、 **[ログアウト要求に ID トークンが必要]** を必要に応じて構成します。
 
     ![セッションの動作を構成する](./media/session-behavior/session-behavior.png)
     

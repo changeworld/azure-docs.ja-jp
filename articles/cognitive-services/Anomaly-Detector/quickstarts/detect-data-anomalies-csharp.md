@@ -1,20 +1,21 @@
 ---
-title: クイック スタート:Anomaly Detector REST API および C# を使用して時系列データ内の異常を検出する | Microsoft Docs
+title: クイック スタート:Anomaly Detector REST API および C# を使用して時系列データ内の異常を検出する
+titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: ffa42eb2247d163dd6a146ffb26c1f8cc5cf6d82
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1b3ed38e7ce8738a0e92775915e894c6e0bbd52a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922533"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721549"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>クイック スタート:Anomaly Detector REST API および C# を使用して時系列データ内の異常を検出する 
 
@@ -29,12 +30,14 @@ ms.locfileid: "64922533"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) の任意のエディション。
-- [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - Visual Studio に Newtonsoft.Json を NuGet パッケージとしてインストールするには、次の手順に従います。
-        1. **Solution Manager** を右クリックします
-        2. **[NuGet パッケージの管理]**
-        3. `Newtonsoft.Json` を探して、パッケージをインストールします
+- [Visual Studio 2017 またはそれ以降](https://visualstudio.microsoft.com/downloads/)の任意のエディション。
+
+- NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。 Visual Studio に Newtonsoft.Json を NuGet パッケージとしてインストールするには、次の手順に従います。
+    
+    1. **ソリューション エクスプローラー**で､プロジェクトを右クリックします｡
+    2. **[NuGet パッケージの管理]** を選択します。
+    3. *Newtonsoft.json* を探してパッケージをインストールします。
+
 - Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 - 時系列データ ポイントを含む JSON ファイル。 このクイック スタートのサンプル データは、[GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json) にあります。

@@ -2,7 +2,7 @@
 title: Azure Mobile App (Android) のオフライン同期の有効化
 description: App Service Mobile Apps を使用して、Android アプリケーションのオフライン データをキャッシュおよび同期する方法について説明します。
 documentationcenter: android
-author: conceptdev
+author: elamalani
 manager: crdun
 services: app-service\mobile
 ms.assetid: 32a8a079-9b3c-4faf-8588-ccff02097224
@@ -11,17 +11,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: a20c79acce8c9dc9051651a0473fd07b8e62f5de
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 3fe5b176d864fd4cdd1ff49d8c064495663aa3b0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960347"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443580"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Android モバイル アプリのオフライン同期の有効化
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-offline-data) を今すぐチェックしてください。
+>
 
 ## <a name="overview"></a>概要
 このチュートリアルでは、Android 向け Azure Mobile Apps のオフライン同期機能について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、&mdash;データの表示、追加、変更など、&mdash;モバイル アプリとやり取りできます。 変更は、ローカル データベースに格納されます。 デバイスが再びオンラインになると、これらの変更がリモート バックエンドと同期されます。
@@ -86,7 +90,7 @@ Azure Mobile Apps を初めて使用する場合は、チュートリアル「 [
 2. *ToDo* 項目をいくつか追加するか、一部の項目を完了済みとしてマークします。 デバイスまたはシミュレーターを終了して (またはアプリケーションを強制的に閉じて)、再起動します。 変更はローカルの SQLite ストアに保持されているため、変更がデバイスに保存されたことを確認します。
 3. *SQL Server Management Studio* などの SQL ツール、または *Fiddler* や *Postman* などの REST クライアントを使用して、Azure *TodoItem* テーブルの内容を表示します。 新しい項目が、サーバーと*同期されていない*ことを確認します。
    
-       + Node.js バックエンドの場合は、[Azure Portal](https://portal.azure.com/)に移動し、Mobile App バックエンドで **[簡易テーブル]** > **、[TodoItem]** をクリックして、`TodoItem` テーブルの内容を表示します。
+       + Node.js バックエンドの場合は、[Azure Portal](https://portal.azure.com/)に移動し、Mobile App バックエンドで **[簡易テーブル]**  >  **、[TodoItem]** をクリックして、`TodoItem` テーブルの内容を表示します。
        + .NET バックエンドの場合は、*SQL Server Management Studio* などの SQL ツール、または *Fiddler* や *Postman* などの REST クライアントを使用して、テーブルの内容を表示します。
 4. デバイスまたはシミュレーターの WiFi を有効にします。 次に **[更新]** ボタンを押します。
 5. Azure ポータルで、もう一度 TodoItem のデータを参照します。 新しく変更した TodoItems が表示されます。

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
-ms.author: v-jamebr
-ms.openlocfilehash: c0580b75544a9613bc8caf2faaac11ba1ba6708e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: chackdan
+ms.openlocfilehash: 4a5a67133d52a0cdc0cc082ab85c1cc791c13ad5
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667142"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876560"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux クラスター上の証明書とセキュリティ
 
@@ -35,7 +35,7 @@ Linux クラスターの場合、Service Fabric が証明書として受け付�
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>アプリケーション マニフェストで参照される証明書
 
-[**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) 要素や [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) 要素を使用してアプリケーション マニフェスト内に指定された証明書は、*/var/lib/sfcerts* ディレクトリに置かれている必要があります。 アプリケーション マニフェスト内で証明書を指定するために使用される要素はパス属性を取らないため、証明書は既定のディレクトリに置かれる必要があります。 これらの要素は、オプションの **X509StoreName** 属性を取ります。 既定値は "My" です。これは、Linux ノード上の */var/lib/sfcerts* ディレクトリを指します。 その他の値は、Linux クラスター上では定義されません。 Linux クラスター上で実行されるアプリについては、**X509StoreName** 属性を省略することをお勧めします。 
+[**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) 要素や [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) 要素を使用してアプリケーション マニフェスト内に指定された証明書は、 */var/lib/sfcerts* ディレクトリに置かれている必要があります。 アプリケーション マニフェスト内で証明書を指定するために使用される要素はパス属性を取らないため、証明書は既定のディレクトリに置かれる必要があります。 これらの要素は、オプションの **X509StoreName** 属性を取ります。 既定値は "My" です。これは、Linux ノード上の */var/lib/sfcerts* ディレクトリを指します。 その他の値は、Linux クラスター上では定義されません。 Linux クラスター上で実行されるアプリについては、**X509StoreName** 属性を省略することをお勧めします。 
 
 ## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>構成パッケージ (Settings.xml) で参照される証明書
 
@@ -53,7 +53,7 @@ Linux クラスターの場合、Service Fabric が証明書として受け付�
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-Linux 上で実行されるサービスの場合、**LocalMachine**/**My** は、証明書の既定の場所 (*/var/lib/sfcerts* ディレクトリ) を指します。 Linux の場合、**CertificateStoreLocation** と **CertificateStoreName** のその他の組み合わせは定義されません。 
+Linux 上で実行されるサービスの場合、**LocalMachine**/**My** は、証明書の既定の場所 ( */var/lib/sfcerts* ディレクトリ) を指します。 Linux の場合、**CertificateStoreLocation** と **CertificateStoreName** のその他の組み合わせは定義されません。 
 
 **CertificateStoreLocation** パラメーターには、常に **LocalMachine** を指定します。 **CertificateStoreName** パラメーターは既定で "My" に設定されるため、指定する必要はありません。 **X509** 参照では、証明書ファイルがクラスター ノード上の */var/lib/sfcerts* ディレクトリに置かれている必要があります。  
 
@@ -76,7 +76,7 @@ Linux 上で実行されるサービスの場合、**LocalMachine**/**My** は�
 
 Java SDK では、**SecurityCredentialsType** に **X509_2** を指定することができます。 これは、`SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) の `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) タイプに対応します。 
 
-**X509_2** 参照では、パスのパラメーターを指定するので、*/var/lib/sfcerts* 以外のディレクトリにある証明書を特定することができます。  次の XML は、証明書の場所を指定するためのパラメーターを示したものです。 
+**X509_2** 参照では、パスのパラメーターを指定するので、 */var/lib/sfcerts* 以外のディレクトリにある証明書を特定することができます。  次の XML は、証明書の場所を指定するためのパラメーターを示したものです。 
 
 ```xml
      <Parameter Name="SecurityCredentialsType" Value="X509_2" />

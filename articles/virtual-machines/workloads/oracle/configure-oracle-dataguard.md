@@ -4,7 +4,7 @@ description: Oracle Data Guard をすばやく作成し、Azure 環境で実行�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c98e59cd0e547381d6b173b3a4b91c3a3e27b3a8
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 4329ce7fb74c61a601a37646a398c46940e22ffa
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731123"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707510"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle Data Guard を実装する 
 
@@ -502,7 +502,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>myVM1 (プライマリ) での Data Guard ブローカーの構成
 
-Data Guard Manager を起動し、SYS とパスワードを使用してログインします  (OS 認証を使用しないでください)。次の手順を実行します。
+Data Guard Manager を起動し、SYS とパスワードを使用してログインします (OS 認証を使用しないでください)。次の手順を実行します。
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1

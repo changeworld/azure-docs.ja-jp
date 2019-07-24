@@ -3,26 +3,27 @@ title: トラブルシューティング - QnAMaker
 titlesuffix: Azure Cognitive Services
 description: QnA Maker は、ユーザーの Azure アカウントでホストされるコンポーネントで構成されます。 デバッグを行うには、ユーザーは QnA Maker Azure リソースを操作するか、QnA Maker サポート チームに設定に関する追加情報を提供する必要がある場合があります。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/14/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6a84ecff04381b6dcc9706105df92ecc96dc8b1c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5b65a121e895b4855c7c69d2b67e7055c88ddd08
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882092"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466059"
 ---
 # <a name="troubleshooting-tips-to-support-the-qna-maker-service-and-runtime"></a>QnA Maker のサービスとランタイムをサポートするためのトラブルシューティングのヒント
 QnA Maker は、ユーザーの Azure アカウントでホストされるコンポーネントで構成されます。 デバッグを行うには、ユーザーは QnA Maker Azure リソースを操作するか、QnA Maker サポート チームに設定に関する追加情報を提供する必要がある場合があります。
 
 ## <a name="how-to-get-latest-qnamaker-runtime-updates"></a>QnA Maker ランタイムの最新の更新プログラムを取得する方法
-QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成する](./set-up-qnamaker-service-azure.md)ときにデプロイされる Azure App Service の一部です。 ランタイムの更新は定期的に行われます。 最新の更新プログラムを QnA Maker の設定に適用するには、App Service を再起動する必要があります。
+QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成する](./set-up-qnamaker-service-azure.md)ときにデプロイされる Azure App Service の一部です。 ランタイムの更新は定期的に行われます。 QnA Maker App Service は、2019 年 4 月のサイト拡張リリース (バージョン 5+) 以降、自動更新モードです。 これは、アップグレード中のダウンタイムがゼロになるように既に設計されています。 https://www.qnamaker.ai/UserSettings で現在のバージョンを確認できます。 ご使用のバージョンがバージョン 5.x よりも古い場合、最新の更新プログラムを QnAMaker の設定に適用するために、App Service を再起動する必要があります。
+
 1. [Azure portal](https://portal.azure.com) で QnA Maker サービス (リソース グループ) に移動します。
 
     ![QnA Maker Azure リソース グループ](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
@@ -36,7 +37,7 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
     ![QnA Maker App Service の再起動](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
 ## <a name="how-to-get-the-qnamaker-service-hostname"></a>QnA Maker サービスのホスト名を取得する方法
-QnA Maker サービスのホスト名は、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 ホスト名は、 https://*{ホスト名}*.azurewebsites.net という形式の URL です。
+QnA Maker サービスのホスト名は、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 ホスト名は、 https:// *{ホスト名}* .azurewebsites.net という形式の URL です。
     
 1. [Azure portal](https://portal.azure.com) で QnA Maker サービス (リソース グループ) に移動します。
 

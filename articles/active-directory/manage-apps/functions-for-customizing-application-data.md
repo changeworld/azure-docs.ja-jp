@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1994169891d5256436ac4de741339c865bb268
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 12b75c2df7d11b0e90c5dccc3bc2aae4e0fb0c1e
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65824641"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204486"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -29,7 +29,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 * 式全体は、関数の形式で定義する必要があります。名前の後にかっこで囲んだ引数を続けます。 <br>
   *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
-* 各関数内で他の関数を入れ子にすることができます。 例:  <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* 各関数内で他の関数を入れ子にすることができます。 例: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * 関数には、次の 3 つの異なる種類の引数を渡すことができます。
   
   1. 属性。角かっこで囲む必要があります。 例: [attributeName]
@@ -40,7 +40,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 ## <a name="list-of-functions"></a>関数の一覧
 [Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
 
-- - -
+---
 ### <a name="append"></a>Append
 **関数:**<br> Append(source, suffix)
 
@@ -50,10 +50,10 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
+| **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
+| **suffix** |必須 |string |source 値の末尾に追加する文字列。 |
 
-- - -
+---
 ### <a name="formatdatetime"></a>FormatDateTime
 **関数:**<br> FormatDateTime(source, inputFormat, outputFormat)
 
@@ -63,11 +63,11 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
-| **outputFormat** |必須 |String |出力日付の形式。 |
+| **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
+| **inputFormat** |必須 |string |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
+| **outputFormat** |必須 |string |出力日付の形式。 |
 
-- - -
+---
 ### <a name="join"></a>結合
 **関数:**<br> Join(separator, source1, source2, …)
 
@@ -79,10 +79,10 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **separator** |必須 |String |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
-| **source1  … sourceN** |必須、回数は可変 |String |結合する文字列値。 |
+| **separator** |必須 |string |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
+| **source1  … sourceN** |必須、回数は可変 |string |結合する文字列値。 |
 
-- - -
+---
 ### <a name="mid"></a>Mid
 **関数:**<br> Mid(source, start, length)
 
@@ -92,11 +92,11 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |通常、属性の名前。 |
+| **source セクション** |必須 |string |通常、属性の名前。 |
 | **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
 | **length** |必須 |integer |部分文字列の長さ。 length が **source** 文字列の外で終わる場合は、**start** インデックスから **source** 文字列の末尾までの部分文字列を返します。 |
 
-- - -
+---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
 **関数:**<br> NormalizeDiacritics(source)
 
@@ -106,11 +106,11 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String | 通常は、名または姓の属性です。 |
+| **source セクション** |必須 |string | 通常は、名または姓の属性です。 |
 
-- - -
+---
 ### <a name="not"></a>Not
-**関数:**<br>  Not(source)
+**関数:**<br> Not(source)
 
 **説明:**<br> **source** のブール値を反転します。 **source** 値が "*True*" の場合は "*False*" を返します。 "False" の場合は "*True*" を返します。
 
@@ -120,12 +120,12 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 | --- | --- | --- | --- |
 | **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
-- - -
+---
 ### <a name="replace"></a>Replace
 **関数:**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **説明:**<br>
- 文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
+文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
 
 * **oldValue** と **replacementValue** が指定された場合:
   
@@ -145,15 +145,15 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
-| **regexPattern** |省略可能 |String |**source**に含まれる置換前の値の正規表現パターン。 または、replacementPropertyName を使用するときは、置換プロパティから値を抽出するパターン。 |
-| **regexGroupName** |省略可能 |String |**regexPattern**内のグループの名前。 ReplacementPropertyName を使用した場合にのみ、置換プロパティから replacementValue としてこのグループの値を抽出します。 |
-| **replacementValue** |省略可能 |String |古い値を置き換える新しい値。 |
-| **replacementAttributeName** |省略可能 |String |source に値を指定しないときに、置換値に使用する属性の名前。 |
-| **template** |省略可能。 |String |**template** 値が指定されている場合は、template 内の **oldValue** を検索し、source 値で置換します。 |
+| **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
+| **oldValue** |省略可能 |string |**source** または **template** に含まれる置換前の値。 |
+| **regexPattern** |省略可能 |string |**source**に含まれる置換前の値の正規表現パターン。 または、replacementPropertyName を使用するときは、置換プロパティから値を抽出するパターン。 |
+| **regexGroupName** |省略可能 |string |**regexPattern**内のグループの名前。 ReplacementPropertyName を使用した場合にのみ、置換プロパティから replacementValue としてこのグループの値を抽出します。 |
+| **replacementValue** |省略可能 |string |古い値を置き換える新しい値。 |
+| **replacementAttributeName** |省略可能 |string |source に値を指定しないときに、置換値に使用する属性の名前。 |
+| **template** |省略可能。 |string |**template** 値が指定されている場合は、template 内の **oldValue** を検索し、source 値で置換します。 |
 
-- - -
+---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
 **関数:**<br> SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, …)
 
@@ -161,17 +161,17 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 > [!NOTE]
 >1. これは最上位の関数であり、入れ子にはできません。
->2. この関数は、エントリの作成に使用されることだけを目的としたものです。 属性で使用するときは、**[Apply Mapping]\(マッピングの適用\)** プロパティを **[オブジェクトの作成中のみ]** に設定します。
+>2. この関数は、エントリの作成に使用されることだけを目的としたものです。 属性で使用するときは、 **[Apply Mapping]\(マッピングの適用\)** プロパティを **[オブジェクトの作成中のみ]** に設定します。
 
 
 **パラメーター:**<br> 
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |String | 評価する一意値生成ルールの一覧。 |
+| **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |string | 評価する一意値生成ルールの一覧。 |
 
 
-- - -
+---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **関数:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
@@ -181,9 +181,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |必須 |String |**[appRoleAssignments]** オブジェクト |
+| **[appRoleAssignments]** |必須 |string |**[appRoleAssignments]** オブジェクト |
 
-- - -
+---
 ### <a name="split"></a>Split
 **関数:**<br> Split(source, delimiter)
 
@@ -193,12 +193,12 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |**source** 値。 |
-| **delimiter** |必須 |String |文字列の分割に使用される文字を指定します (例: ",") |
+| **source セクション** |必須 |string |**source** 値。 |
+| **delimiter** |必須 |string |文字列の分割に使用される文字を指定します (例: ",") |
 
-- - -
+---
 ### <a name="stripspaces"></a>StripSpaces
-**関数:**<br>  StripSpaces(source)
+**関数:**<br> StripSpaces(source)
 
 **説明:**<br> source 文字列からすべての空白文字 (" ") を削除します。
 
@@ -206,9 +206,9 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |**source セクション セクション** 値。 |
+| **source セクション** |必須 |string |**source セクション セクション** 値。 |
 
-- - -
+---
 ### <a name="switch"></a>Switch
 **関数:**<br> Switch(source, defaultValue, key1, value1, key2, value2, …)
 
@@ -218,12 +218,12 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |**Source** 値。 |
-| **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
-| **key** |必須 |String |**source** 値と比較する **key**。 |
-| **値** |必須 |String |key と一致する **source** の置換値。 |
+| **source セクション** |必須 |string |**Source** 値。 |
+| **defaultValue** |省略可能 |string |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
+| **key** |必須 |string |**source** 値と比較する **key**。 |
+| **値** |必須 |string |key と一致する **source** の置換値。 |
 
-- - -
+---
 ### <a name="tolower"></a>ToLower
 **関数:**<br> ToLower(source, culture)
 
@@ -233,10 +233,10 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
+| **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
+| **culture** |省略可能 |string |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
 
-- - -
+---
 ### <a name="toupper"></a>ToUpper
 **関数:**<br> ToUpper(source, culture)
 
@@ -246,8 +246,8 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 | Name | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **culture** |省略可能 |String |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
+| **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
+| **culture** |省略可能 |string |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
 
 ## <a name="examples"></a>例
 ### <a name="strip-known-domain-name"></a>既知のドメイン名をストリップする

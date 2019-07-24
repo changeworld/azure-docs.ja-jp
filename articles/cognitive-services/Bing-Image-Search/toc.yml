@@ -55,7 +55,8 @@
     - name: 画像のページング
       href: paging-images.md
     - name: サムネイルのサイズ変更とトリミング
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: v5 から v7 へのアップグレード
       href: bing-image-upgrade-guide-v5-to-v7.md
 - name: 概念

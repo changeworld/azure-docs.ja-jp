@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
 ms.openlocfilehash: bd660a2b6ffb96478c3170cc7013ff22518b758f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64702206"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio によりインテリジェントなルーティングとカナリア リリースを使用する
@@ -193,7 +193,7 @@ kubectl apply -f kubernetes/step-2-update-voting-analytics-to-1.1.yaml --namespa
 deployment.apps/voting-analytics-1-1 created
 ```
 
-前の手順で取得した Istio イングレス ゲートウェイの IP アドレスを使用して、サンプルの AKS 投票アプリをブラウザーで再び開きます。
+前の手ステップで取得した Istio イングレス ゲートウェイの IP アドレスを使用して、サンプルの AKS 投票アプリをブラウザーで再び開きます。
 
 ブラウザーでは次に示す 2 つのビューが交互に表示されます。 単一のラベル セレクター (`app: voting-analytics`) だけを使用して `voting-analytics` コンポーネントに対して Kubernetes [サービス][kubernetes-service]を使用しているため、Kubernetes では、セレクターと一致するポッド間のラウンドロビンという既定の動作が使用されています。 ここでは、`voting-analytics` ポッドの `1.0` と `1.1` の両方になります。
 

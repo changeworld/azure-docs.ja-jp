@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: d285461aef1e56dfd08a162e51ada0340d6eeae4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108278"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62095423"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Azure Security Center で Disk Encryption を適用する
 お使いの Windows または Linux VM ディスクが Azure Disk Encryption を使用して暗号化されていない場合、Azure Security Center により、ディスク暗号化を適用することが推奨されます。 Disk Encryption を使用すると、Windows および Linux IaaS VM ディスクを暗号化できます。  VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。
@@ -32,7 +32,7 @@ Disk Encryption では、Windows の業界標準である [BitLocker](https://te
 >
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-1. **[推奨事項]** ブレードで、**[ディスク暗号化の適用]** を選択します。
+1. **[推奨事項]** ブレードで、 **[ディスク暗号化の適用]** を選択します。
 2. **[ディスク暗号化の適用]** ブレードに、Disk Encryption が推奨される VM の一覧が表示されます。
 3. 手順に従って、これらの VM に暗号化を適用します。
 

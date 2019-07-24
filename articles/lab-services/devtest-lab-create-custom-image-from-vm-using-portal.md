@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 07f3b60b9218f74bb3a778daa27f31687c4538b2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550090"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60868501"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>VM からカスタム イメージを作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "57550090"
  
 1. **[仮想マシン]** ウィンドウで、カスタム イメージを作成する VM を選択します。
 
-1. VM の管理ウィンドウで、**[カスタム イメージの作成 (VHD)]** を選択します。
+1. VM の管理ウィンドウで、 **[カスタム イメージの作成 (VHD)]** を選択します。
 
     ![カスタム イメージのメニュー項目の作成](./media/devtest-lab-create-template/create-custom-image.png)
 

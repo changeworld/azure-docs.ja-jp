@@ -18,18 +18,18 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 485f79f79c52067e89fa0a606e76a533c312fb84
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 85a32244a9aff9319343fd7d3961941973aa9d9a
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545091"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482247"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の許可](https://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、*"デーモン"* または *"サービス アカウント"* と呼ばれます。
+RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の許可](https://tools.ietf.org/html/rfc6749#section-4.4)は、*2 本足の OAuth* とも呼ばれ、アプリケーションの ID を使用した Web ホストのリソースへのアクセスに使用できます。 この種類の許可は、バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 これらのアプリケーションは、 *"デーモン"* または *"サービス アカウント"* と呼ばれます。
 
 OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (Confidential クライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。 高いレベルの保証では、Microsoft ID プラットフォームにより、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。
 
@@ -42,7 +42,7 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 
 全体的なクライアント資格情報フローは、次の図のようになります。 それぞれの手順については、この記事で後述します。
 
-![クライアントの資格情報フロー](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
+![クライアント資格情報フローを示す図](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
 
 ## <a name="get-direct-authorization"></a>直接承認を取得する
 
@@ -77,7 +77,7 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>アプリケーション登録ポータルでアクセス許可を要求する
 
 1. 新しい[アプリの登録 (プレビュー) エクスペリエンス](quickstart-register-app.md)によって、アプリを登録し、作成します。
-2. アプリの登録 (プレビュー) エクスペリエンスで、アプリケーションに移動します。 トークンを要求するには少なくとも 1 つのクライアント シークレットが必要なため、**[証明書とシークレット]** セクションに移動し、**新しいクライアント シークレット**を追加します。
+2. アプリの登録 (プレビュー) エクスペリエンスで、アプリケーションに移動します。 トークンを要求するには少なくとも 1 つのクライアント シークレットが必要なため、 **[証明書とシークレット]** セクションに移動し、**新しいクライアント シークレット**を追加します。
 3. **[API のアクセス許可]** セクションを見つけて、アプリに必要な **[アプリケーションのアクセス許可]** を追加します。
 4. アプリの登録を**保存**します。
 
@@ -92,7 +92,7 @@ ACL を使用する代わりに、API を使用してアプリケーションの
 組織の管理者にアクセス許可を要求する準備ができたら、Microsoft ID プラットフォームの*管理者の同意エンドポイント*にユーザーをリダイレクトできます。
 
 > [!TIP]
-> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -154,7 +154,7 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 アプリケーションに必要な承認を獲得後、API のアクセス トークンの取得を開始します。 クライアント資格情報の許可を使用してトークンを取得するには、次のように `/token` Microsoft ID プラットフォーム エンドポイントに POST 要求を送信します。
 
 > [!TIP]
-> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> を必ず置き換えてください)。 (最良の結果を得るには、ご自身のアプリ ID を使用してください。チュートリアル アプリケーションでは有用なアクセス許可は要求されません。)[![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース:共有シークレットを使ったアクセス トークン要求
 

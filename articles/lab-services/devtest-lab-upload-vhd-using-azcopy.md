@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 8cd778762bebf4a9dda3688292ac0a3674e446e1
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330853"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60634992"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>AzCopy を使用してラボのストレージ アカウントに VHD ファイルをアップロードする
 
@@ -45,13 +45,13 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
 1. ラボのブレードで、 **[構成]** を選択します。 
 
-1. ラボの **[構成]** ブレードで、**[カスタム イメージ (VHD)]** を選択します。
+1. ラボの **[構成]** ブレードで、 **[カスタム イメージ (VHD)]** を選択します。
 
-1. **[カスタム イメージ]** ブレードで、**[+追加]** を選択します。 
+1. **[カスタム イメージ]** ブレードで、 **[+追加]** を選択します。 
 
-1. **[カスタム イメージ]** ブレードで、**[VHD]** を選択します。
+1. **[カスタム イメージ]** ブレードで、 **[VHD]** を選択します。
 
-1. **[VHD]** ブレードで、**[Upload a VHD file using PowerShell (PowerShell を使用して VHD ファイルをアップロードする)]** を選択します。
+1. **[VHD]** ブレードで、 **[Upload a VHD file using PowerShell (PowerShell を使用して VHD ファイルをアップロードする)]** を選択します。
 
     ![PowerShell を使用した VHD のアップロード](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
 

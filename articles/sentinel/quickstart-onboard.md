@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 05/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0061fb7946e4c35f855d1a409cb9bc210c73641a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: c9f2f011acb9d815202aa6c6a38ed364ffb0f9cd
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228317"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619645"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Azure Sentinel プレビューをオンボードする
 
@@ -41,7 +42,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 - Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-create-workspace.md)方法をご確認ください
 
 -  Azure Sentinel を有効にするには、Azure Sentinel ワークスペースが存在するサブスクリプションへの共同作成者のアクセス許可が必要です。 
-- Azure Sentinel を使用するには、ワークスペースが属しているリソース グループに対する共同作成者または閲覧者のいずれかのアクセス許可が必要です。
+- Azure Sentinel を使用するには、ワークスペースが属しているリソース グループに対する共同作成者または閲覧者のいずれかのアクセス許可が必要です
 - 特定のデータ ソースに接続するには、追加のアクセス許可が必要になる可能性があります
  
 ## Azure Sentinel を有効にする <a name="enable"></a>
@@ -70,7 +71,7 @@ Azure Sentinel でサービスとアプリへの接続を確立するには、�
  
 1. **[データ収集]** をクリックします。
 2. 接続できるデータ ソースごとにタイルがあります。<br>
-たとえば、**[Azure Active Directory]** をクリックします。 このデータ ソースを接続する場合は、Azure AD から Azure Sentinel にすべてのログをストリーミングします。 サインイン ログや監査ログなど、取得するログの種類を選択できます。 <br>
+たとえば、 **[Azure Active Directory]** をクリックします。 このデータ ソースを接続する場合は、Azure AD から Azure Sentinel にすべてのログをストリーミングします。 サインイン ログや監査ログなど、取得するログの種類を選択できます。 <br>
 Azure Sentinel の下部には、各コネクタにインストールする必要のあるダッシュボードに関する推奨事項が示されているため、データ全体の興味深い分析をすぐに得ることができます。 <br> インストール手順を実行するか、[関連する接続のガイドを参照](connect-data-sources.md)して詳細をご確認ください。 データ コネクタについては、「[Microsoft サービスの接続](connect-data-sources.md)」をご覧ください。
 
 データ ソースが接続されると、データは Azure Sentinel にストリーミングされ、操作を開始できます。 [組み込みのダッシュボード](quickstart-get-visibility.md)でログを表示し、Log Analytics でクエリをビルドして[データを調査](tutorial-investigate-cases.md)できます。

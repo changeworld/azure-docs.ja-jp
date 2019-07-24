@@ -11,11 +11,11 @@ ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c198b329f07c5c7459f25165b2dc0a3bfa032276
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672851"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60382139"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD の UserPrincipalName の設定
 
@@ -25,7 +25,7 @@ UserPrincipalName 属性には、該当するユーザー アカウントの Azu
 ## <a name="upn-terminology"></a>UPN の用語
 この記事では、次の用語を使用します。
 
-|用語|説明|
+|期間|説明|
 |-----|-----|
 |初期ドメイン|Azure AD テナントの既定のドメイン (onmicrosoft.com)。 たとえば、contoso.onmicrosoft.com です。|
 |Microsoft Online Email Routing Address (MOERA)|MOERA は、Azure AD の MailNickName 属性と Azure AD の初期ドメインから &lt;MailNickName&gt;&#64;&lt;initial domain&gt; として、Azure AD によって計算されます。|
@@ -52,7 +52,7 @@ Azure AD では、ユーザーにサインインを許可するために UPN が
 
 代替ログイン ID を使用すると、ユーザーがメールなどの UPN 以外の属性でサインイン可能になるサインイン エクスペリエンスを構成できます。
 
-Azure AD Connect を使用している場合、Azure AD との間で代替ログイン ID を有効にするための特別な構成手順は不要です。 代替 ID は、ウィザードから直接構成することができます。 ユーザーの Azure AD サインイン構成は、[同期] セクションに表示されます。**[ユーザー プリンシパル名]** ボックスの一覧で、代替ログイン ID の属性を選択してください。
+Azure AD Connect を使用している場合、Azure AD との間で代替ログイン ID を有効にするための特別な構成手順は不要です。 代替 ID は、ウィザードから直接構成することができます。 ユーザーの Azure AD サインイン構成は、[同期] セクションに表示されます。 **[ユーザー プリンシパル名]** ボックスの一覧で、代替ログイン ID の属性を選択してください。
 
 ![未検証のドメイン](./media/plan-connect-userprincipalname/altloginid.png)  
 

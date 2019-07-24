@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 601f3bf05388406c8f96a7351f7fb3aa4de2650a
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389321"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60588797"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool 機能の概要
 
@@ -28,7 +28,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 > [!NOTE]
 >Threat Modeling Tool はよく更新されるため、このガイドを頻繁にチェックして最新の機能と改善点をご確認ください。
 
-空白のページを開くには、**[Create A Model]\(モデルの作成\)** を選択します。
+空白のページを開くには、 **[Create A Model]\(モデルの作成\)** を選択します。
 
 ![空白のページ](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
@@ -119,7 +119,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 ### <a name="open-a-model"></a>モデルを開く
 
-**[Open A Model]\(モデルを開く\)** にポインターを置くと、**[Open From This Computer]\(このコンピューターから開く\)** と **[Open From OneDrive]\(OneDrive から開く\)** という 2 つのオプションが表示されます。 最初のオプションでは、**[File Open]\(ファイルを開く\)** 画面が表示されます。 2 番目のオプションでは、OneDrive のサインイン プロセスが実行されます。 認証が成功すると、フォルダーとファイルを選択できます。
+**[Open A Model]\(モデルを開く\)** にポインターを置くと、 **[Open From This Computer]\(このコンピューターから開く\)** と **[Open From OneDrive]\(OneDrive から開く\)** という 2 つのオプションが表示されます。 最初のオプションでは、 **[File Open]\(ファイルを開く\)** 画面が表示されます。 2 番目のオプションでは、OneDrive のサインイン プロセスが実行されます。 認証が成功すると、フォルダーとファイルを選択できます。
 
 ![モデルを開く](./media/azure-security-threat-modeling-tool-feature-overview/openmodel.png)
 
@@ -147,11 +147,11 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 2 つの方法で要素を接続することができます。
 
 - **ドラッグ アンド ドロップ**: 目的のデータ フローをグリッドにドラッグし、両端を適切な要素に接続します。
-- **Shift キーを押しながらクリック**: 1 つ目の要素 (データの送信) をクリックし、Shift キーを押しながら 2 つ目の要素 (データの受信) をクリックします。 右クリックし、**[接続]** を選択します。 双方向データ フローを使用している場合、順番は重要ではありません。
+- **Shift キーを押しながらクリック**: 1 つ目の要素 (データの送信) をクリックし、Shift キーを押しながら 2 つ目の要素 (データの受信) をクリックします。 右クリックし、 **[接続]** を選択します。 双方向データ フローを使用している場合、順番は重要ではありません。
 
 ### <a name="properties"></a>Properties
 
- ステンシル上で変更できるプロパティを表示するには、ステンシルを選択します。それに応じて情報が設定されます。 以下の例は、**[データベース]** ステンシルをダイアグラムにドラッグする前後を示しています。
+ ステンシル上で変更できるプロパティを表示するには、ステンシルを選択します。それに応じて情報が設定されます。 以下の例は、 **[データベース]** ステンシルをダイアグラムにドラッグする前後を示しています。
 
 #### <a name="before"></a>実装する前
 
@@ -169,7 +169,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 ### <a name="notes"></a>メモ
 
-ダイアグラムにメモを追加するには、**[メッセージ]** タブから **[メモ]** タブに切り替えます。
+ダイアグラムにメモを追加するには、 **[メッセージ]** タブから **[メモ]** タブに切り替えます。
 
 ## <a name="analysis-view"></a>分析ビュー
 
@@ -199,9 +199,9 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 ![脅威のプロパティ](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)
 
-## <a name="reports"></a>レポート
+## <a name="reports"></a>Reports
 
-優先度の変更と、生成された各脅威の状態の更新が終わったら、ファイルを保存したり、レポートを印刷したりすることができます。 **[レポート]** > **[Create Full Report]\(フル レポートの作成\)** の順に移動します。 レポートに名前を付けると、次の図のような内容が表示されます。
+優先度の変更と、生成された各脅威の状態の更新が終わったら、ファイルを保存したり、レポートを印刷したりすることができます。 **[レポート]**  >  **[Create Full Report]\(フル レポートの作成\)** の順に移動します。 レポートに名前を付けると、次の図のような内容が表示されます。
 
 ![レポート](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 

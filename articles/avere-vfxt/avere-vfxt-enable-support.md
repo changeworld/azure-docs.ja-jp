@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: fe096b2e2a75cc89e3ce5ef905d8e4c347cc153a
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992466"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60409836"
 ---
 # <a name="enable-support-uploads"></a>サポートのアップロードを有効にする
 
@@ -19,7 +19,7 @@ Avere vFXT for Azure では、ご利用のクラスターに関するサポー�
 
 ## <a name="steps-to-enable-uploads"></a>アップロードを有効にする手順
 
-サポートをアクティブ化するには、Avere コントロール パネルから次の手順に従います  (Avere コントロール パネルを開く方法については、「[Access the vFXT cluster](avere-vfxt-cluster-gui.md)」 (vFXT クラスターにアクセスする) をお読みください)。
+サポートをアクティブ化するには、Avere コントロール パネルから次の手順に従います (Avere コントロール パネルを開く方法については、「[Access the vFXT cluster](avere-vfxt-cluster-gui.md)」 (vFXT クラスターにアクセスする) をお読みください)。
 
 1. 上部にある **[設定]** タブに移動します。
 1. 左側にある **[サポート]** リンクをクリックし、プライバシー ポリシーに同意します。
@@ -29,7 +29,7 @@ Avere vFXT for Azure では、ご利用のクラスターに関するサポー�
 1. **[顧客情報]** の左側にある三角形をクリックして、セクションを展開します。
 1. **[Validate upload information]\(アップロード情報の検証\)** ボタンをクリックします。
 1. **[Unique Cluster Name]\(一意のクラスター名\)** でクラスターのサポート名を設定します。この名前でサポート スタッフがクラスターを一意に識別できるようにしてください。
-1. **[Statistics Monitoring]\(統計の監視\)**、**[General Information Upload]\(全般情報のアップロード\)**、および **[Crash Information Upload]\(クラッシュ情報のアップロード\)** の各チェック ボックスをオンにします。
+1. **[Statistics Monitoring]\(統計の監視\)** 、 **[General Information Upload]\(全般情報のアップロード\)** 、および **[Crash Information Upload]\(クラッシュ情報のアップロード\)** の各チェック ボックスをオンにします。
 1. **[送信]** をクリックします。
 
    ![サポートの設定ページの完了した [顧客情報] セクションを含むスクリーンショット](media/avere-vfxt-support-info.png)

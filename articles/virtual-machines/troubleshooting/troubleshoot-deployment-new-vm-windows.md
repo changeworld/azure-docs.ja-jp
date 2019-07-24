@@ -4,7 +4,7 @@ description: Azure で新しい Windows 仮想マシンを作成するときに�
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: JiangChen79
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.assetid: afc6c1a4-2769-41f6-bbf9-76f9f23bcdf4
@@ -16,12 +16,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f18fbabe52c9170cde70900933ce96a3a6400c7
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6bdf0816e40e34b184da0340a8dbaffbcd7657e8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984343"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710454"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure で新しい Windows VM を作成するときのデプロイに関する問題のトラブルシューティング
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -76,7 +76,7 @@ VM デプロイに関するその他の問題や質問については、「[Trou
 * VM サイズを小さくして要求を再試行します。
 * 要求した VM のサイズを変更できない場合は、次の手順を実行します。
   * 可用性セットのすべての VM を停止します。
-    **[リソース グループ]** > *対象のリソース グループ* > **[リソース]** > *対象の可用性セット* > **[Virtual Machines]** > *対象の仮想マシン* > **[停止]** の順にクリックします。
+    **[リソース グループ]**  > *対象のリソース グループ* >  **[リソース]**  > *対象の可用性セット* >  **[Virtual Machines]**  > *対象の仮想マシン* >  **[停止]** の順にクリックします。
   * すべての VM が停止したら、目的のサイズで新しい VM を作成します。
   * 新しい VM を起動してから、停止している各 VM を選択し、 **[起動]** をクリックします。
 

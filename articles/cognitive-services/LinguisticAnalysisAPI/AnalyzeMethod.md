@@ -12,11 +12,11 @@ ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431140"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61401188"
 ---
 # <a name="analyze-method"></a>Analyze メソッド
 
@@ -26,7 +26,7 @@ ms.locfileid: "57431140"
 **analyze** REST API は、特定の自然言語入力を分析するために使用されます。
 入力内の[文とトークン](Sentences-and-Tokens.md)の検出、[品詞のタグ](POS-tagging.md)の検出、または[構成素ツリー](Constituency-Parsing.md)の検出のみが行われる場合もあります。
 関連するアナライザーを選択することで、必要な結果を指定できます。
-利用可能なすべてのアナライザー一覧については、**[analyzers](AnalyzersMethod.md)** のページを参照してください。
+利用可能なすべてのアナライザー一覧については、 **[analyzers](AnalyzersMethod.md)** のページを参照してください。
 
 入力文字列の言語を指定する必要がある点に注意してください。
 
@@ -38,7 +38,7 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>要求パラメーター
 
-Name | type | 必須 | 説明
+Name | Type | 必須 | 説明
 -----|-------|----------|------------
 **language**    | string | はい | 分析に使用する 2 文字の ISO 言語コード。 たとえば、英語は "en" です。
 **analyzerIds** | string のリスト | はい | 適用するアナライザーの GUID リスト。 詳細については、Analyzers に関するドキュメントを参照してください。
@@ -52,8 +52,8 @@ Name | type | 必須 | 説明
 
 Name | Type | 説明
 -----|------|--------------
-analyzerId | 文字列 | 指定したアナライザーの GUID
-result | オブジェクト | アナライザーの結果
+analyzerId | string | 指定したアナライザーの GUID
+result | object | アナライザーの結果
 
 結果の種類は入力アナライザーの種類によって変わることに注意してください。
 
@@ -67,8 +67,8 @@ result[x].Len | int | 各文の文字数 |
 result[x].Tokens | トークン オブジェクトのリスト | 文内に指定されたトークンの境界 |
 result[x].Tokens[y].Offset | int | トークンの開始文字オフセット |
 result[x].Tokens[y].Len | int | 各トークンの文字数 |
-result[x].Tokens[y].RawToken | 文字列 | 正規化前のそのトークン内の文字 |
-result[x].Tokens[y].NormalizedToken | 文字列 | 文字の正規化された形式。[解析ツリー](Constituency-Parsing.md)に問題なく使用できます。たとえば、開始のかっこ文字 '(' は '-LRB-' になります。 |
+result[x].Tokens[y].RawToken | string | 正規化前のそのトークン内の文字 |
+result[x].Tokens[y].NormalizedToken | string | 文字の正規化された形式。[解析ツリー](Constituency-Parsing.md)に問題なく使用できます。たとえば、開始のかっこ文字 '(' は '-LRB-' になります。 |
 
 入力例: `This is a test. Hello.'
 JSON の応答例:

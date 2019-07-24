@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
 ms.openlocfilehash: 1e4efa5e06525194bfdc7d1932fcfec5ec9f8c6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60607382"
 ---
 # <a name="moderate-images-from-the-api-console"></a>API コンソールで画像をモデレートする
 
 Azure Content Moderator の [Image Moderation API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) を使用して、画像コンテンツのスキャンとレビューのモデレーション ワークフローを開始します。 モデレーション ジョブは、不適切な表現がないかコンテンツをスキャンし、コンテンツをカスタム ブラックリストと共有ブラックリストに対して比較します。
 
 ## <a name="use-the-api-console"></a>API コンソールを使用する
-オンライン コンソールで API を試すには、サブスクリプション キーが必要です。 これは、**[設定]** タブの **[Ocp-Apim-Subscription-Key]** ボックス内にあります。 詳細については、[概要](overview.md)に関するページを参照してください。
+オンライン コンソールで API を試すには、サブスクリプション キーが必要です。 これは、 **[設定]** タブの **[Ocp-Apim-Subscription-Key]** ボックス内にあります。 詳細については、[概要](overview.md)に関するページを参照してください。
 
 1. [[Image Moderation API reference]\(Image Moderation API リファレンス\)](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c)に移動します。
 
@@ -40,7 +40,7 @@ Azure Content Moderator の [Image Moderation API](https://westus.dev.cognitive.
 
 4. **[要求本文]** ボックスで、既定のサンプル画像を使用するか、スキャンする画像を指定します。 画像そのものをバイナリ ビット データとして送信するか、画像の公的にアクセス可能な URL を指定します。 
 
-   この例では、**[要求本文]** ボックスに指定されたパスを使用し、**[送信]** を選択します。 
+   この例では、 **[要求本文]** ボックスに指定されたパスを使用し、 **[送信]** を選択します。 
 
    ![試用版: [Image - Evaluate]\(Image - Evaluate\) コンソールの [要求本文]](images/try-image-api-2.PNG)
 
@@ -58,7 +58,7 @@ Azure Content Moderator の [Image Moderation API](https://westus.dev.cognitive.
 
 Image Moderation API を使用して、画像で顔を検索します。 このオプションが役立つのは、プライバシーに関する問題があり、特定の顔がプラットフォームに掲載されないようにする場合です。 
 
-1. [[Image Moderation API reference]\(Image Moderation API リファレンス\)](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) の左側のメニューで、**[イメージ]** の下にある **[Find Faces]\(顔を検出\)** を選択します。 
+1. [[Image Moderation API reference]\(Image Moderation API リファレンス\)](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) の左側のメニューで、 **[イメージ]** の下にある **[Find Faces]\(顔を検出\)** を選択します。 
 
    **[Image - Find Faces]\(Image - Find Faces\)** ページが開きます。
 
@@ -82,7 +82,7 @@ Image Moderation API を使用して、画像で顔を検索します。 この�
 
 Content Moderator OCR 機能を使用して、画像内のテキストを検出できます。
 
-1. [[Image Moderation API reference]\(Image Moderation API リファレンス\)](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) の左側のメニューで、**[イメージ]** の下にある **[OCR]** を選択します。 
+1. [[Image Moderation API reference]\(Image Moderation API リファレンス\)](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66c) の左側のメニューで、 **[イメージ]** の下にある **[OCR]** を選択します。 
 
    **[Image - OCR]\(Image - OCR\)** ページが開きます。
 

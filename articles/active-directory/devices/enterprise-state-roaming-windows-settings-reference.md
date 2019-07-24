@@ -2,27 +2,21 @@
 title: Windows 10 ローミング設定リファレンス | Microsoft Docs
 description: Windows 10 でローミングまたはバックアップされる全設定の一覧です。
 services: active-directory
-keywords: Enterprise State Roaming, Windows クラウド
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/30/2019
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9489228b6ba81ae8d09e0f6880634532d0c836c6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521076"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481804"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
 以下に示したのは、Windows 10 でローミングまたはバックアップされる全設定の一覧です。 
@@ -32,10 +26,10 @@ ms.locfileid: "58521076"
 
 | アカウントの種類と操作 | デスクトップ | モバイル |
 | --- | --- | --- |
-| Azure Active Directory: 同期 |はい |いいえ  |
-| Azure Active Directory: バックアップ/復元 |いいえ  |いいえ  |
+| Azure Active Directory: 同期 |はい |いいえ |
+| Azure Active Directory: バックアップ/復元 |いいえ |いいえ |
 | Microsoft アカウント: 同期 |はい |はい |
-| Microsoft アカウント: バックアップ/復元 |いいえ  |はい |
+| Microsoft アカウント: バックアップ/復元 |いいえ |はい |
 
 ## <a name="what-is-backup"></a>バックアップとは
 一般に Windows の設定は既定で同期されますが、デバイスにインストールされているアプリケーションの一覧など、バックアップにのみ対応している設定もあります。 バックアップはモバイル デバイス向けのみで、Enterprise State Roaming ユーザーは現在使用できません。 バックアップには Microsoft アカウントが使用され、OneDrive に設定とアプリケーション データが保存されます。 ユーザーが設定アプリを使ってデバイス上の同期を無効にした場合、通常であれば同期されるアプリケーション データがバックアップのみになります。 バックアップ データは、新しいデバイスの初回実行時に復元操作を通じてのみアクセスできます。 バックアップは、デバイスの設定で無効にできるほか、ユーザーの OneDrive アカウントを通じて管理したり削除したりすることができます。
@@ -67,7 +61,7 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 「設定」の「グループ」列に "内部" と書かれている設定とアプリは、アプリ本体の同期機能から無効にするか、モバイル デバイス管理 (MDM) またはグループ ポリシーの設定を使いデバイス全体の同期を無効にすることによってのみ無効にすることができます。
 所属グループの記載がない設定は、ローミングも同期もされない設定です。
 
-| 設定 | デスクトップ | モバイル | グループ |
+| 設定 | デスクトップ | モバイル | Group |
 | --- | --- | --- | --- |
 | **アカウント**: アカウントの画像 |sync |X |テーマ |
 | **アカウント**: その他のアカウントの設定 |X |X | |
@@ -184,4 +178,3 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 ## <a name="next-steps"></a>次の手順
 
 概要については、「[Enterprise State Roaming の概要](enterprise-state-roaming-overview.md)」を参照してください。
-

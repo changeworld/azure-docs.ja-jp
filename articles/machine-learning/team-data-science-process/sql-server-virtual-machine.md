@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b3b4e0886f561cc66e2c02e4ea354c86b34453c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6adc5dfa740d440e78bf2f276447c4585503d7c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904186"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65606477"
 ---
 # <a name="heading"></a>
 このドキュメントでは、Azure の SQL Server VM に保存されたデータを探索し、データの特徴を生成する方法について説明します。 これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。
@@ -87,7 +87,7 @@ SQL Server のデータ ストアの探索に使用できるいくつかのサ�
 * 記号は、私たちが地球の北半球か南半球、東半球か西半球、それぞれどちらにいるかを示します。
 * 100 の位が 0 でなければ、それは経度を使用していることを示します。緯度ではありません。
 * 10 の位は、最大で約 1,000 キロメートル単位で位置を示します。 これは、私たちがどの大陸または海洋にいるかに関する役立つ情報になります。
-* 1 の位 (1 つの 10 進数の角度) は、最大 111 キロメートル (60 海里、約 69 マイル) 単位で位置を示します。 これは、私たちが大まかにどの大きい州または国にいるかを示します。
+* 1 の位 (1 つの 10 進数の角度) は、最大 111 キロメートル (60 海里、約 69 マイル) 単位で位置を示します。 これは、私たちがいる州または国や地域の大まかな大きさを示します。
 * 小数第 1 位は最大 11.1 km: になります。この位で、大都市と隣接する大都市の位置を識別できます。
 * 小数第 2 位は、最大 1.1 km に値します。ある村と隣接する村を識別できます。
 * 小数第 3 位は、最大 110 m に値します。大規模な農地または施設の構内を識別できます。

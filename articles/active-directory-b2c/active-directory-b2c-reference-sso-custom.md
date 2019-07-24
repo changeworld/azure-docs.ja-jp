@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のカスタム ポリシーを使用したシングル サインオン セッション管理 | Microsoft Docs
 description: Azure AD B2C でカスタム ポリシーを使用して SSO セッションを管理する方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c5e23f88b805f2d294a42c6e3e75a1ad63d3cc53
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 246e00418c784ee463170d78543e4a9aae3d7da8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726777"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66509049"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのシングル サインオン管理
 

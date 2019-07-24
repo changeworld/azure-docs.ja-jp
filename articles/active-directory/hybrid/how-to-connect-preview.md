@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173336"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60347806"
 ---
 # <a name="more-details-about-features-in-preview"></a>プレビュー段階の機能の詳細
 このトピックでは、現在プレビュー段階の機能を使用する方法について説明します。

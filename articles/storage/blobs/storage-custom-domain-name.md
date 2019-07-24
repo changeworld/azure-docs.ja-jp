@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 4f6776a5f15cf391f3a65aceb6e9e783d87a2078
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: c0fb3551b14a2239f26c54f639b90400277fab25
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148926"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501935"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Azure Storage アカウントのカスタム ドメイン名の構成
 
@@ -34,10 +34,10 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 
 | リソースの種類 | 既定の URL | カスタム ドメイン URL |
 | --- | --- | --- |
-| ストレージ アカウント | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
-| Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| ルート コンテナー | http://mystorageaccount.blob.core.windows.net/myblob または http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob または http://www.contoso.com/$root/myblob |
-| Web |  http://mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] または http://mystorageaccount.[zone].web.core.windows.net/[indexdoc] または http://mystorageaccount.[zone].web.core.windows.net/$web または http://mystorageaccount.[zone].web.core.windows.net/ | http://www.contoso.com/$web または http://www.contoso.com/ または http://www.contoso.com/$web/[indexdoc] または http://www.contoso.com/[indexdoc] |
+| ストレージ アカウント | http:\//mystorageaccount.blob.core.windows.net | http:\//www.contoso.com |
+| Blob |http:\//mystorageaccount.blob.core.windows.net/mycontainer/myblob | http:\//www.contoso.com/mycontainer/myblob |
+| ルート コンテナー | http:\//mystorageaccount.blob.core.windows.net/myblob または http:\//mystorageaccount.blob.core.windows.net/$root/myblob | http:\//www.contoso.com/myblob または http:\//www.contoso.com/$root/myblob |
+| Web |  http:\//mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] または http:\//mystorageaccount.[zone].web.core.windows.net/[indexdoc] または http:\//mystorageaccount.[zone].web.core.windows.net/$web または http:\//mystorageaccount.[zone].web.core.windows.net/ | http:\//www.contoso.com/$web または http:\//www.contoso.com/ または http:\//www.contoso.com/$web/[indexdoc] または http:\//www.contoso.com/[indexdoc] |
 
 > [!NOTE]  
 > 以下のセクションに示すように、Blob service エンドポイントの例はすべて、Web サービス エンドポイントにも適用されます。
@@ -77,7 +77,7 @@ Azure DNS を使用して、Azure BLOB のカスタム DNS 名を構成できま
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-1. メニュー ウィンドウの **[Blob service]** で、**[カスタム ドメイン]** を選択します。  
+1. メニュー ウィンドウの **[Blob service]** で、 **[カスタム ドメイン]** を選択します。  
    **[カスタム ドメイン]** ウィンドウが開きます。
 
 1. ドメイン レジストラーの Web サイトにサインインし、DNS の管理ページに移動します。  
@@ -92,19 +92,19 @@ Azure DNS を使用して、Azure BLOB のカスタム DNS 名を構成できま
 1. **[カスタム ドメイン]** ウィンドウのテキスト ボックスに、サブドメインを含むカスタム ドメインの名前を入力します。  
    たとえば、ドメインが *contoso.com* でサブドメイン 別名が *www* の場合、「**www\.contoso.com**」と入力します。 サブドメインが *photos* の場合、「**photos.contoso.com**」と入力します。
 
-1. カスタム ドメインを登録するには、**[保存]** を選択します。  
+1. カスタム ドメインを登録するには、 **[保存]** を選択します。  
    正常に登録された場合は、portal からストレージ アカウントが正常に更新されたことが通知されます。
 
 DNS を介して新しい CNAME レコードが反映されると、ユーザーは、適切なアクセス許可があれば、カスタム ドメインを使用して BLOB データを表示できます。
 
 ## <a name="register-a-custom-domain-by-using-the-asverify-subdomain"></a>*asverify* サブドメインを使用したカスタム ドメインの登録
-カスタム ドメインが現在、ダウンタイムが発生しないことが SLA で要求されているアプリケーションをサポートしている場合は、このセクションの手順を使用して、カスタム ドメインを登録します。 *asverify.\<subdomain>.\<customdomain>* から *asverify.\<storageaccount>.blob.core.windows.net* を指す CNAME を作成すると、ドメインを Azure に事前登録できます。 次に、*\<subdomain>.\<customdomain>* から *\<storageaccount>.blob.core.windows.net* を指す、もう 1 つの CNAME を作成します。これにより、カスタム ドメインへのトラフィックが BLOB エンドポイントに転送されます。
+カスタム ドメインが現在、ダウンタイムが発生しないことが SLA で要求されているアプリケーションをサポートしている場合は、このセクションの手順を使用して、カスタム ドメインを登録します。 *asverify.\<subdomain>.\<customdomain>* から *asverify.\<storageaccount>.blob.core.windows.net* を指す CNAME を作成すると、ドメインを Azure に事前登録できます。 次に、 *\<subdomain>.\<customdomain>* から *\<storageaccount>.blob.core.windows.net* を指す、もう 1 つの CNAME を作成します。これにより、カスタム ドメインへのトラフィックが BLOB エンドポイントに転送されます。
 
 *asverify* サブドメインは、Azure で認識される特殊なサブドメインです。 自分のサブドメインの前に *asverify* を付けると、ドメインの DNS レコードを変更する必要なく、カスタム ドメインを Azure に認識させることができます。 ドメインの DNS レコードを変更すると、ダウンタイムが発生することなく、ドメインが BLOB エンドポイントにマッピングされます。
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-1. メニュー ウィンドウの **[Blob service]** で、**[カスタム ドメイン]** を選択します。  
+1. メニュー ウィンドウの **[Blob service]** で、 **[カスタム ドメイン]** を選択します。  
    **[カスタム ドメイン]** ウィンドウが開きます。
 
 1. DNS プロバイダーの Web サイトにサインインし、DNS の管理ページに移動します。  
@@ -121,7 +121,7 @@ DNS を介して新しい CNAME レコードが反映されると、ユーザー
 
 1. **[Use indirect CNAME validation]\(間接 CNAME 検証を使用する\)** チェックボックスをオンにします。
 
-1. カスタム ドメインを登録するには、**[保存]** を選択します。  
+1. カスタム ドメインを登録するには、 **[保存]** を選択します。  
    正常に登録された場合は、portal からストレージ アカウントが正常に更新されたことが通知されます。 カスタム ドメインは Azure によって検証されていますが、ドメインへのトラフィックは、まだストレージ アカウントにルーティングされません。
 
 1. DNS プロバイダーの Web サイトに戻り、サブドメインを Blob service エンドポイントにマッピングする別の CNAME レコードを作成します。  
@@ -147,7 +147,7 @@ BLOB ストレージ エンドポイントのカスタム ドメインを登録�
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-1. メニュー ウィンドウの **[Blob service]** で、**[カスタム ドメイン]** を選択します。  
+1. メニュー ウィンドウの **[Blob service]** で、 **[カスタム ドメイン]** を選択します。  
    **[カスタム ドメイン]** ウィンドウが開きます。
 
 1. カスタム ドメイン名を含むテキスト ボックスの内容を消去します。

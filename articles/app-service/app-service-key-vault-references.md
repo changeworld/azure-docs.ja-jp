@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f086850ecc2f15c41ab89db34b16d6d2e4a229cb
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: e7a049c8def0a5014aeb8a0e7a16aaa8def28009
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956227"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705696"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service と Azure Functions の Key Vault 参照を使用する (プレビュー)
 
@@ -37,7 +37,9 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
    > [!NOTE] 
    > Key Vault 参照では現在のところ、システム割り当てのマネージド ID のみをサポートしています。 ユーザー割り当て ID は使用できません。
 
-1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `appliationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
+1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
+
+    キー コンテナーのアプリケーション ID へのアクセス許可は 1 回限りの操作であり、すべての Azure サブスクリプションで同じです。 これを使用して、必要な数だけ証明書をデプロイできます。 
 
 ## <a name="reference-syntax"></a>参照構文
 
@@ -46,7 +48,7 @@ Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`
 > [!div class="mx-tdBreakAll"]
 > | 参照文字列                                                            | 説明                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | **SecretUri** は、バージョン (例: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931) を含む、Key Vault におけるシークレットのフル データプレーン URI になります。  |
+> | SecretUri=_secretUri_                                                       | **SecretUri** は、バージョン (例: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931 ) を含む、Key Vault におけるシークレットのフル データプレーン URI になります。  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** は Key Vault リソースの名前になります。 **SecretName** はターゲット シークレットの名前になります。 **SecretVersion** は使用するシークレットのバージョンになります。 |
 
 > [!NOTE] 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: 819f6ee4ab079361279a567bceeb74c33fe14186
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662008"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60952389"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Azure Monitor ログを使用したパフォーマンスの監視
 
@@ -82,9 +82,9 @@ Log Analytics エージェントを追加したら、Log Analytics ポータル�
 
 3. **[詳細設定]** をクリックします。
 
-4. **[データ]** をクリックし、**[Windows パフォーマンス カウンター] または [Linux パフォーマンス カウンター]** をクリックします。 選択して有効にできる既定のカウンターの一覧があり、収集の間隔を設定することもできます。 収集する[追加のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を追加することもできます。 正しい形式については、この[記事](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)を参照してください。
+4. **[データ]** をクリックし、 **[Windows パフォーマンス カウンター] または [Linux パフォーマンス カウンター]** をクリックします。 選択して有効にできる既定のカウンターの一覧があり、収集の間隔を設定することもできます。 収集する[追加のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を追加することもできます。 正しい形式については、この[記事](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)を参照してください。
 
-5. **[保存]** をクリックし、**[OK]** をクリックします。
+5. **[保存]** をクリックし、 **[OK]** をクリックします。
 
 6. [詳細設定] ブレードを閉じます。
 

@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
 ms.openlocfilehash: 9c505262030e5b5aa13b8d221cf1e39c4a9c7833
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090765"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60751123"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でモデルをデバッグする
 

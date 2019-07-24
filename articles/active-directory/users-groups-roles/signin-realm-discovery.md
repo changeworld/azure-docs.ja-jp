@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f21b592f31790daa9cc4eeb217ea6e2987fc38
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: db627359b75aa0ea19e30a8d22bcacaa3409cb4a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920518"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66418155"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory サインイン ページのホーム領域検出
 
@@ -32,19 +32,19 @@ Microsoft では、新しい認証方法用の領域を確保し、使いやす�
 
 この動作の他の利点として、エラー メッセージの強化が挙げられます。 ここでは、Azure Active Directory ユーザーのみをサポートするアプリケーションにサインインする場合に表示されるエラー メッセージの改善例をいくつか示します。
 
-1. ユーザー名が間違って入力されたか、ユーザー名が Azure AD にまだ同期されていない場合: 
+- ユーザー名が間違って入力されたか、ユーザー名が Azure AD にまだ同期されていない場合:
   
     ![ユーザー名が間違って入力されたか、ユーザー名が見つかりません](./media/signin-realm-discovery/typo-username.png)
   
-2. ドメイン名が間違って入力された場合: 
+- ドメイン名が間違って入力された場合:
   
     ![ドメイン名が間違って入力されたか、ドメイン名が見つかりません](./media/signin-realm-discovery/typo-domain.png)
   
-3. ユーザーが既知のコンシューマー ドメインを使用してサインインを試みた場合: 
+- ユーザーが既知のコンシューマー ドメインを使用してサインインを試みた場合:
   
     ![既知のコンシューマー ドメインでサインインしています](./media/signin-realm-discovery/consumer-domain.png)
   
-4. パスワードは間違って入力されているが、ユーザー名は正確である場合:   
+- パスワードは間違って入力されているが、ユーザー名は正確である場合:  
   
     ![パスワードは間違って入力されているが、ユーザー名は正確です](./media/signin-realm-discovery/incorrect-password.png)
   

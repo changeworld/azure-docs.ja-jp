@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: ba7d412e9bfc29a53cd0aa47a926f60580b45490
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66237652"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
@@ -148,7 +148,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 1. リソース グループが存在しない場合は、新しいリソース グループを作成します。
 
-   * 既存のリソース グループがない場合は、**New-AzResourceGroup** コマンドで新しいリソース グループを作成します。 使用するリソース グループの名前と場所を指定します。 例: 
+   * 既存のリソース グループがない場合は、**New-AzResourceGroup** コマンドで新しいリソース グループを作成します。 使用するリソース グループの名前と場所を指定します。 例:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"

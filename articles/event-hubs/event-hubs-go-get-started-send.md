@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
 ms.openlocfilehash: 823ebc985c77785f8b48d12d5919dbbd1b2b1459
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682391"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60821685"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-go"></a>Go を使用して Event Hubs との間でイベントを送受信する
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -38,7 +38,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 ### <a name="install-go-package"></a>Go パッケージをインストールする
 
-`go get` または `dep` を使用して、Event Hubs 用の Go パッケージを取得します。 例: 
+`go get` または `dep` を使用して、Event Hubs 用の Go パッケージを取得します。 例:
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go

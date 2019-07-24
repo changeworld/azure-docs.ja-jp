@@ -13,14 +13,14 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a4757be00a3633f56aed52dd7af22923e49b0b62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102385"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60475672"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>認証アプリを使用するようにセキュリティ情報 (プレビュー) を設定する
-次の手順に従って、2 要素認証とパスワードのリセット メソッドを追加できます。 これを初回に設定したら、**[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
+次の手順に従って、2 要素認証とパスワードのリセット メソッドを追加できます。 これを初回に設定したら、 **[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
 
 職場または学校アカウントにサインイン後すぐにこれを設定するように求められた場合、[サインイン ページ プロンプトからセキュリティ情報を設定する](security-info-setup-signin.md)方法に関する記事の詳細な手順を参照してください。
 
@@ -38,32 +38,32 @@ ms.locfileid: "58102385"
 
     ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
 
-2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから **[セキュリティ情報]** を選択した後、**[セキュリティ情報]** ページで **[メソッドの追加]** を選択します。
+2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから **[セキュリティ情報]** を選択した後、 **[セキュリティ情報]** ページで **[メソッドの追加]** を選択します。
 
     ![[メソッドの追加] オプションが強調表示されている [セキュリティ情報] ページ](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. **[メソッドの追加]** ページで、ドロップダウン リストから **[Authenticator アプリ]** を選択して、**[追加]** を選択します。
+3. **[メソッドの追加]** ページで、ドロップダウン リストから **[Authenticator アプリ]** を選択して、 **[追加]** を選択します。
 
     ![Authenticator アプリが選択されている [メソッドの追加] ボックス](media/security-info/securityinfo-myprofile-addauthapp.png)
 
-4. **[Start by getting the app]\(アプリを取得して起動\)** ページで、**[今すぐダウンロード]** を選択し、Microsoft Authenticator アプリをダウンロードしてモバイル デバイスにインストールし、**[次へ]** を選択します。
+4. **[Start by getting the app]\(アプリを取得して起動\)** ページで、 **[今すぐダウンロード]** を選択し、Microsoft Authenticator アプリをダウンロードしてモバイル デバイスにインストールし、 **[次へ]** を選択します。
 
     アプリをダウンロードして、インストールする方法の詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」を参照してください。
 
     ![[Start by getting the app]\(アプリを取得して起動\) ページ](media/security-info/securityinfo-myprofile-getauthapp.png)
 
    > [!Note]
-   > Microsoft Authenticator アプリ以外の認証アプリを使用する場合は、**[別の認証アプリを使用します]** リンクを選択します。
+   > Microsoft Authenticator アプリ以外の認証アプリを使用する場合は、 **[別の認証アプリを使用します]** リンクを選択します。
    > 
-   > 組織で、認証アプリのほかに別の方法を選択できる場合は、**[I want to set up a different method]\(別の方法を設定します\)** リンクを選択できます。
+   > 組織で、認証アプリのほかに別の方法を選択できる場合は、 **[I want to set up a different method]\(別の方法を設定します\)** リンクを選択できます。
 
-5. モバイル デバイスでの Microsoft Authenticator アプリの設定中に、**[アカウントのセットアップ]** ページに留まります。
+5. モバイル デバイスでの Microsoft Authenticator アプリの設定中に、 **[アカウントのセットアップ]** ページに留まります。
 
     ![認証アプリのセットアップ ページ](media/security-info/securityinfo-myprofile-setupauthapp.png)
 
-6. Microsoft Authenticator アプリを開き、通知を許可するように選択し (メッセージが表示された場合)、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、**[職場または学校アカウント]** を選択します。
+6. Microsoft Authenticator アプリを開き、通知を許可するように選択し (メッセージが表示された場合)、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[職場または学校アカウント]** を選択します。
 
-7. **[アカウントのセットアップ]** ページに戻り、**[次へ]** を選択します。
+7. **[アカウントのセットアップ]** ページに戻り、 **[次へ]** を選択します。
 
     **[QR コードをスキャンします]** ページが表示されます。
 
@@ -71,22 +71,22 @@ ms.locfileid: "58102385"
 
 6. 手順 6 で職場または学校アカウントを作成した後に、モバイル デバイスに表示された、提供されたコードを Microsoft Authenticator アプリの QR コード リーダーでスキャンします。
 
-    認証アプリによって、ユーザーからの追加情報を必要とせずに、職場または学校アカウントが正常に追加されるはずです。 ただし、QR コード リーダーで、コードを読み取れない場合は、**[QR コードをスキャンできませんか?]** リンクを選択し、コードと URL を Microsoft Authenticator アプリに手動で入力します。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
+    認証アプリによって、ユーザーからの追加情報を必要とせずに、職場または学校アカウントが正常に追加されるはずです。 ただし、QR コード リーダーで、コードを読み取れない場合は、 **[QR コードをスキャンできませんか?]** リンクを選択し、コードと URL を Microsoft Authenticator アプリに手動で入力します。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
 
-7. **[QR コードをスキャンします]** ページで、**[次へ]** を選択します。
+7. **[QR コードをスキャンします]** ページで、 **[次へ]** を選択します。
 
     モバイル デバイスの Microsoft Authenticator アプリに、アカウントをテストするための通知が送信されます。
 
     ![認証アプリでアカウントをテストする](media/security-info/securityinfo-myprofile-tryitauthapp.png)
 
-8. Microsoft Authenticator アプリで通知を承認し、**[次へ]** を選択します。
+8. Microsoft Authenticator アプリで通知を承認し、 **[次へ]** を選択します。
 
      ![アプリとアカウントの接続の成功通知](media/security-info/securityinfo-myprofile-successauthapp.png)
 
      2 段階認証またはパスワード リセットを使用するときに、既定で Microsoft Authenticator アプリを使用して本人確認をするようにセキュリティ情報が更新されます。
 
 ## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>セキュリティ情報メソッドから認証アプリを削除する
-セキュリティ情報メソッドとして認証 アプリを使用しなくなった場合は、**[セキュリティ情報]** ページから削除できます。 これは、Microsoft Authenticator アプリだけでなく、すべての認証アプリに対して機能します。 アプリの削除後、モバイル デバイスの認証アプリに移動し、アカウントを削除する必要があります。
+セキュリティ情報メソッドとして認証 アプリを使用しなくなった場合は、 **[セキュリティ情報]** ページから削除できます。 これは、Microsoft Authenticator アプリだけでなく、すべての認証アプリに対して機能します。 アプリの削除後、モバイル デバイスの認証アプリに移動し、アカウントを削除する必要があります。
 
 >[!Important]
 >認証アプリを誤って削除した場合、元に戻す方法はありません。 この記事の[認証アプリのセットアップ](#set-up-the-microsoft-authenticator-app-from-the-security-info-page)のセクションの手順に従って、認証アプリを再度追加する必要があります。
@@ -97,22 +97,22 @@ ms.locfileid: "58102385"
 
     ![セキュリティ情報から認証アプリを削除するリンク](media/security-info/securityinfo-myprofile-deleteauthapp.png)
 
-2. 確認ボックスから、**[はい]** を選択して、認証アプリを削除します。 認証アプリを削除すると、セキュリティ情報から削除され、**[セキュリティ情報]** ページから消去されます。 認証アプリが、既定の方法である場合、既定値は、別の使用可能な方法に変更されます。
+2. 確認ボックスから、 **[はい]** を選択して、認証アプリを削除します。 認証アプリを削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。 認証アプリが、既定の方法である場合、既定値は、別の使用可能な方法に変更されます。
 
-3. モバイル デバイスの認証アプリを開き、**[アカウントの編集]** を選択し、認証アプリから職場または学校アカウントを削除します。
+3. モバイル デバイスの認証アプリを開き、 **[アカウントの編集]** を選択し、認証アプリから職場または学校アカウントを削除します。
 
     アカウントは 2 要素検証およびパスワード リセット要求用の認証アプリから完全に削除されます。
 
 ## <a name="change-your-default-security-info-method"></a>既定のセキュリティ情報メソッドを変更する
-2 要素検証を使用して職場または学校アカウントにサインインする場合、またはパスワード リセット要求に、認証アプリを既定の方法として使用する場合は、**[セキュリティ情報]** ページから設定できます。
+2 要素検証を使用して職場または学校アカウントにサインインする場合、またはパスワード リセット要求に、認証アプリを既定の方法として使用する場合は、 **[セキュリティ情報]** ページから設定できます。
 
 ### <a name="to-change-your-default-security-info-method"></a>既定のセキュリティ情報メソッドを変更するには
 
-1. **[セキュリティ情報]** ページで、**[Default sign-in method]\(既定のサインイン方法\)** 情報の横の **[変更]** リンクを選択します。
+1. **[セキュリティ情報]** ページで、 **[Default sign-in method]\(既定のサインイン方法\)** 情報の横の **[変更]** リンクを選択します。
 
     ![既定のサインイン方法の変更リンク](media/security-info/securityinfo-myprofile-changedefaultauthapp.png)
 
-2. 使用可能な方法のドロップダウン リストから、**[Microsoft Authenticator - notification]\(Microsoft Authenticator - 通知\)** を選択します。 Microsoft Authenticator アプリを使用していない場合は、**[Authenticator app or hardware token]\(認証アプリまたはハードウェア トークン\)** オプションを選択します。
+2. 使用可能な方法のドロップダウン リストから、 **[Microsoft Authenticator - notification]\(Microsoft Authenticator - 通知\)** を選択します。 Microsoft Authenticator アプリを使用していない場合は、 **[Authenticator app or hardware token]\(認証アプリまたはハードウェア トークン\)** オプションを選択します。
 
     ![既定のサインインの方法を選択する](media/security-info/securityinfo-myprofile-defaultauthapp.png)
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4415759530985710c8376709db9955ba98066160
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 00b1b58a39724951f2d5e4e688df8eb178654bbb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527012"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65952845"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Team Data Science Process でのプロジェクト リーダーのタスク
 
@@ -58,12 +58,12 @@ ms.locfileid: "59527012"
 ## <a name="1-create-a-project-repository-r5"></a>1.プロジェクト リポジトリ (R5) を作成します。
 
 - グループの Azure DevOps Services (*https://\<Azure DevOps Services 名\>.visualstudio.com*) にログインします。 
-- **[最近使ったプロジェクトとチーム]** にある、**[参照]** をクリックします。 ポップアップ表示されるウィンドウに、Azure DevOps Services 上のすべてのプロジェクトが一覧表示されます。 
+- **[最近使ったプロジェクトとチーム]** にある、 **[参照]** をクリックします。 ポップアップ表示されるウィンドウに、Azure DevOps Services 上のすべてのプロジェクトが一覧表示されます。 
 
     ![2](./media/project-lead-tasks/project-leads-2-create-project-repo.png)
 
-- プロジェクト リポジトリを作成するプロジェクト名をクリックします。 この例では、**[MyTeam]** をクリックします。 
-- 次に、**[移動]** をクリックして **MyTeam** プロジェクトのホーム ページに移動します。
+- プロジェクト リポジトリを作成するプロジェクト名をクリックします。 この例では、 **[MyTeam]** をクリックします。 
+- 次に、 **[移動]** をクリックして **MyTeam** プロジェクトのホーム ページに移動します。
 
     ![3](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "59527012"
 
     ![4](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
 
-- 左上隅にある下向きの矢印をクリックして、**[新しいリポジトリ]** を選択します。 
+- 左上隅にある下向きの矢印をクリックして、 **[新しいリポジトリ]** を選択します。 
     
     ![5](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "59527012"
 
     ![6](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
 
-- ***DSProject1*** プロジェクトの Git リポジトリを作成するには、**[作成]** をクリックします。
+- ***DSProject1*** プロジェクトの Git リポジトリを作成するには、 **[作成]** をクリックします。
 
 
 ## <a name="2-seed-the-dsproject1-project-repository"></a>2.DSProject1 プロジェクト リポジトリをシードします。
@@ -100,7 +100,7 @@ ms.locfileid: "59527012"
 ローカル コンピューターにディレクトリを作成します。
 
 - Windows の場合、*C:\GitRepos\MyTeamCommon* です 
-- Linux の場合、*$home/GitRepos/MyTeamCommon* です
+- Linux の場合、 *$home/GitRepos/MyTeamCommon* です
 
 そのディレクトリを変更します。 次に、次のコマンドを実行して、プロジェクト テンプレート リポジトリをローカル コンピューターに複製します。 
 
@@ -185,7 +185,7 @@ ms.locfileid: "59527012"
 
 ### <a name="add-contents-of-dsproject1-in-d5-to-r5-on-your-group-azure-devops-services"></a>D5 内の DSProject1 の内容をグループの Azure DevOps Services 上の R5 に追加する
 
-ここで、**_DSProject1_** の内容をグループの Azure DevOps Services 上のプロジェクト内の _R5_ リポジトリにプッシュする必要があります。 
+ここで、 **_DSProject1_** の内容をグループの Azure DevOps Services 上のプロジェクト内の _R5_ リポジトリにプッシュする必要があります。 
 
 
 - ディレクトリを **D5** に変更します。 

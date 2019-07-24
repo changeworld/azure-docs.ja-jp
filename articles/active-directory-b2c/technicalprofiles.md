@@ -2,20 +2,20 @@
 title: TechnicalProfiles | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの TechnicalProfiles 要素を指定します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da769093794a559e4b856f7ae4f211c3900632c6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f712634c83fa290ab24d5e8437a82d5f93af0b7f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64711053"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66512279"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -109,7 +109,7 @@ ms.locfileid: "64711053"
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Name | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`WsFed`、`WsTrust`、`Proprietary`、`session management`、`self-asserted`、または `None`。 |
-| Handler | いいえ  | プロトコル名が `Proprietary` に設定されている場合は、Azure AD B2C がプロトコル ハンドラーを決定するために使用するアセンブリの完全修飾名を指定します。 |
+| Handler | いいえ | プロトコル名が `Proprietary` に設定されている場合は、Azure AD B2C がプロトコル ハンドラーを決定するために使用するアセンブリの完全修飾名を指定します。 |
 
 ### <a name="metadata"></a>Metadata
 
@@ -141,7 +141,7 @@ ms.locfileid: "64711053"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Id | いいえ  | ポリシー ファイル内の他の要素から参照される特定のキー ペアの一意の識別子。 |
+| Id | いいえ | ポリシー ファイル内の他の要素から参照される特定のキー ペアの一意の識別子。 |
 | StorageReferenceId | はい | ポリシー ファイル内の他の要素から参照されるストレージ キー コンテナーの識別子。 |
 
 ### <a name="inputclaimstransformations"></a>InputClaimsTransformations
@@ -175,8 +175,8 @@ ms.locfileid: "64711053"
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
-| DefaultValue | いいえ  | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
-| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
+| DefaultValue | いいえ | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
+| PartnerClaimType | いいえ | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ### <a name="persistedclaims"></a>PersistedClaims
 
@@ -193,8 +193,8 @@ ms.locfileid: "64711053"
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
-| DefaultValue | いいえ  | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
-| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
+| DefaultValue | いいえ | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
+| PartnerClaimType | いいえ | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ### <a name="outputclaims"></a>OutputClaims
 
@@ -211,9 +211,9 @@ ms.locfileid: "64711053"
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
-| DefaultValue | いいえ  | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
-|AlwaysUseDefaultValue |いいえ  |既定値の使用を強制します。  |
-| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
+| DefaultValue | いいえ | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
+|AlwaysUseDefaultValue |いいえ |既定値の使用を強制します。  |
+| PartnerClaimType | いいえ | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ### <a name="outputclaimstransformations"></a>OutputClaimsTransformations
 

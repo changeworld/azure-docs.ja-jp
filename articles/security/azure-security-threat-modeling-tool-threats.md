@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: fd7c5fd929163dc7fcd22fbb045dee0fe3070394
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359036"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60611553"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft Threat Modeling Tool の脅威
 
@@ -48,4 +48,4 @@ Threat Modeling Tool を使用すると、以下のような特定の質問に�
 
 ## <a name="next-steps"></a>次の手順
 
-「**[Threat Modeling Tool Mitigations](./azure-security-threat-modeling-tool-mitigations.md)**」(Threat Modeling Tool の軽減策) に進み、これらの脅威 Azure で軽減する方法について学びます。
+「 **[Threat Modeling Tool Mitigations](./azure-security-threat-modeling-tool-mitigations.md)** 」(Threat Modeling Tool の軽減策) に進み、これらの脅威 Azure で軽減する方法について学びます。

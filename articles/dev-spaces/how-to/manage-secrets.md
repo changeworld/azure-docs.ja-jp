@@ -9,22 +9,22 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 9fe29e8717c76c353f3e95d4693011f3925c4e1b
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 900529d54a26729d9d0fb949d9217d5e2d618254
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790709"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515288"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Azure Dev Space を操作する場合のシークレットを管理する方法
 
 サービスで、データベースやその他のセキュリティ保護された Azure サービスなどの特定のパスワード、接続文字列、およびその他のシークレットが必要になることがあります。 構成ファイルにこれらのシークレットの値を設定して、コードで環境変数としてそれらを使用できるようにすることができます。  これらは、シークレットのセキュリティを損なわないように注意して扱う必要があります。
 
-Azure Dev Spaces では、シークレットを格納するための 2 つの推奨されるオプションが用意されています。values.dev.yaml ファイル内と azds.yaml にインラインで直接格納する方法です。 values.yaml にシークレットを格納することはお勧めしません。
- 
+Azure Dev Spaces では、Azure Dev Spaces クライアント ツールによって生成された Helm チャートにシークレットを格納するための 2 つの推奨されるオプションが用意されています。values.dev.yaml ファイル内と azds.yaml にインラインで直接格納する方法です。 values.yaml にシークレットを格納することはお勧めしません。 この記事で定義されているクライアント ツールで生成された Helm チャートに対する 2 つの方法以外では、自身の Helm チャートを作成すれば、Helm チャートを直接使用して、シークレットを管理および格納できます。
+
 ## <a name="method-1-valuesdevyaml"></a>方法 1: values.dev.yaml
 1. Azure Dev Spaces 用に有効にされているプロジェクトで VS Code を開きます。
-2. 既存の _values.yaml_ と同じフォルダーに、_values.dev.yaml_ という名前のファイルを追加し、次の例のように秘密鍵と値を定義します。
+2. 既存の _azds.yaml_ と同じフォルダーに、_values.dev.yaml_ という名前のファイルを追加し、次の例のように秘密鍵と値を定義します。
 
     ```yaml
     secrets:
@@ -34,12 +34,13 @@ Azure Dev Spaces では、シークレットを格納するための 2 つの推
         key: "secretkeyhere"
     ```
      
-3. Azure Dev Spaces に新しい _values.dev.yaml_ ファイルを使用するように伝えるために _azds.yaml_ を更新します。 これを行うには、configurations.develop.container セクションにこの構成を追加します。
+3. _azds.yaml_ は、_values.dev.yaml_ ファイルが存在する場合はそれを既に参照しています。 別のファイル名が好みの場合は、install.values セクションを更新します。
 
     ```yaml
-           container:
-             values:
-             - "charts/webfrontend/values.dev.yaml"
+    install:
+      values:
+      - values.dev.yaml?
+      - secrets.dev.yaml?
     ```
  
 4. 次の例のように、環境変数としてこれらのシークレットを参照するようにサービス コードを変更します。
@@ -76,17 +77,17 @@ Azure Dev Spaces では、シークレットを格納するための 2 つの推
           set:
             secrets:
               redis:
-                port: "$REDIS_PORT_DEV"
-                host: "$REDIS_HOST_DEV"
-                key: "$REDIS_KEY_DEV"
+                port: "$REDIS_PORT"
+                host: "$REDIS_HOST"
+                key: "$REDIS_KEY"
     ```
      
-2.  _azds.yaml_ ファイルと同じフォルダーに _.env_ ファイルを作成します。 標準の key=value 表記を使用してシークレットを入力します。 _.env_ ファイルをソース管理にコミットしないでください。 (Git ベースのバージョン管理システムでソース管理から除外するには、それを _.gitignore_ ファイルに追加します)。次の例は、_.env_ ファイルを示しています。
+2.  _azds.yaml_ ファイルと同じフォルダーに _.env_ ファイルを作成します。 標準の key=value 表記を使用してシークレットを入力します。 _.env_ ファイルをソース管理にコミットしないでください。 (Git ベースのバージョン管理システムでソース管理から除外するには、それを _.gitignore_ ファイルに追加します)。次の例は、 _.env_ ファイルを示しています。
 
     ```
-    REDIS_PORT_DEV=3333
-    REDIS_HOST_DEV=myredishost
-    REDIS_KEY_DEV=myrediskey
+    REDIS_PORT=3333
+    REDIS_HOST=myredishost
+    REDIS_KEY=myrediskey
     ```
 2.  次の例のように、コードで、これらのシークレットを参照するようにサービス ソース コードを変更します。
 

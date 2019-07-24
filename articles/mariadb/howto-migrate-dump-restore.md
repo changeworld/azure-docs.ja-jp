@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: bcb76fcbba02bf53b48cc462e3dad8f264db02ed
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540445"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60745949"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MariaDB への MariaDB データベースの移行
 この記事では、Azure Database for MariaDB でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
@@ -112,13 +112,13 @@ $ mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p te
 3. **[エクスポート]** リンクをクリックします。 新しいページが表示され、データベースのダンプが表示されます。
 4. [エクスポート] 領域で **[すべて選択]** リンクをクリックして、データベースのテーブルを選択します。 
 5. [SQL options]\(SQL オプション\) 領域で、適切なオプションをクリックします。 
-6. **[名前を付けて保存]** ファイル オプションと、対応する圧縮オプションをクリックし、**[実行]** をクリックします。 ファイルをローカルに保存するよう求めるダイアログ ボックスが表示されます。
+6. **[名前を付けて保存]** ファイル オプションと、対応する圧縮オプションをクリックし、 **[実行]** をクリックします。 ファイルをローカルに保存するよう求めるダイアログ ボックスが表示されます。
 
 ## <a name="import-using-phpmyadmin"></a>PHPMyAdmin を使用したインポート
 データベースのインポート操作は、エクスポートと似ています。 次の操作を実行してください。
 1. phpMyAdmin を開きます。 
-2. phpMyAdmin セットアップ ページで、**[追加]** をクリックして Azure Database for MariaDB サーバーを追加します。 接続の詳細とログイン情報を入力します。
-3. データベースを作成して適切な名前を付けたら、画面の左側でそのデータベースを選択します。 既存のデータベースを再作成するには、データベース名をクリックし、テーブル名の横のすべてのチェック ボックスをオンにします。**[ドロップ]** を選択して既存のテーブルを削除します。 
+2. phpMyAdmin セットアップ ページで、 **[追加]** をクリックして Azure Database for MariaDB サーバーを追加します。 接続の詳細とログイン情報を入力します。
+3. データベースを作成して適切な名前を付けたら、画面の左側でそのデータベースを選択します。 既存のデータベースを再作成するには、データベース名をクリックし、テーブル名の横のすべてのチェック ボックスをオンにします。 **[ドロップ]** を選択して既存のテーブルを削除します。 
 4. **[SQL]** リンクをクリックします。表示されたページで、SQL コマンドを入力したり、SQL ファイルをアップロードしたりできます。 
 5. **参照**ボタンを使用して、データベース ファイルを検索します。 
 6. **[実行]** をクリックすると、バックアップがエクスポートされ、SQL コマンドが実行された後、データベースが再作成されます。

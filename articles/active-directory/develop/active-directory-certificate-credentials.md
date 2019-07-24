@@ -3,8 +3,8 @@ title: Azure AD での証明書資格情報 | Microsoft Docs
 description: この記事では、アプリケーションを認証するための証明書資格情報の登録と使用について説明します
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
-ms.author: celested
+ms.date: 05/21/2019
+ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4ee1ce56723e4a2c9ab80c12456bbc1b66f6d5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed4e7559ff6c3b76bbdf49b538ffebf3ad09cc58
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162800"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66001228"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>アプリケーションを認証するための証明書資格情報
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) では、OAuth 2.0 クライアント資格情
 
 | パラメーター |  解説 |
 | --- | --- |
-| `aud` | Audience:**https://login.microsoftonline.com/*tenant_Id*/oauth2/token** でなければなりません |
+| `aud` | Audience: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** でなければなりません |
 | `exp` | 有効期限: トークンの有効期限が切れる日付。 日時は、UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) からトークンが有効期限切れになるまでの秒数で表されます。|
 | `iss` | 発行者: client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
 | `jti` | GUID: JWT ID |
@@ -98,11 +98,10 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ### <a name="uploading-the-certificate-file"></a>証明書ファイルのアップロード
 
 クライアント アプリケーションの Azure アプリ登録で、以下を実行します。
-1. **[設定] > [キー]** を選択し、**[公開キーのアップロード]** を選択します。 
-2. アップロードする証明書ファイルを選択します。
-3. **[保存]** を選択します。 
-   
-   保存すると、証明書がアップロードされ、サムプリント、開始日、および有効期限の値が表示されます。 
+1. **[証明書とシークレット]** を選択します。 
+2. **[証明書のアップロード]** をクリックし、アップロードする証明書ファイルを選択します。
+3. **[追加]** をクリックします。
+  証明書がアップロードされると、サムプリント、開始日、有効期限の値が表示されます。 
 
 ### <a name="updating-the-application-manifest"></a>アプリケーション マニフェストの更新
 
@@ -114,7 +113,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 また、GUID を指定して、アプリケーション マニフェストでキーを特定する必要もあります (`$keyId`)。
 
 クライアント アプリケーションの Azure アプリ登録で、以下を実行します。
-1. アプリケーション マニフェストを開きます。
+1. **[マニフェスト]** を選択して、アプリケーション マニフェストを開きます。
 2. 次のスキーマを使用して、*keyCredentials* プロパティを新しい証明書情報に置き換えます。
 
    ```

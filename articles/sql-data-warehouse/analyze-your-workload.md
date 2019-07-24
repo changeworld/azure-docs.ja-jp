@@ -1,21 +1,21 @@
 ---
-title: ワークロードの分析 - Azure SQL Data Warehouse | Microsoft Docs
+title: Azure SQL Data Warehouse でワークロードを分析する | Microsoft Docs
 description: Azure SQL Data Warehouse でのワークロードに対するクエリの優先順位付けを分析するための手法。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7b5ca738ef71e25dfe5e71a1983d701bb8868fe5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54652ba573fb2ec2d064b7a85ad5728b73e71db3
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896808"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588751"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の ワークロードの分析 | Microsoft Docs
 
@@ -27,7 +27,7 @@ SQL Data Warehouse には、システム リソースをクエリに割り当て
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>キューに配置されたクエリの検出とその他の DMV
 
-ph x="1" /&gt; DMV を使用すると、コンカレンシー キューで待機中のクエリを特定できます。 コンカレンシー スロットを待機しているクエリは、**中断**状態になります。
+`sys.dm_pdw_exec_requests` DMV を使用すると、コンカレンシー キューで待機中のクエリを特定できます。 コンカレンシー スロットを待機しているクエリは、**中断**状態になります。
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -67,7 +67,7 @@ SQL Data Warehouse には、次の待機の種類があります。
 * **LocalQueriesConcurrencyResourceType**: コンカレンシー スロットのフレームワークの外に配置されたクエリ。 DMV クエリと、 `SELECT @@VERSION` のようなシステム関数は、ローカル クエリの例です。
 * **UserConcurrencyResourceType**: コンカレンシー スロットのフレームワーク内に配置されたクエリ。 エンドユーザー テーブルに対するクエリは、このリソースの種類を使用した例です。
 * **DmsConcurrencyResourceType**: データ移動操作に起因する待機。
-* **BackupConcurrencyResourceType**: この待機は、データベースがバックアップ中であることを示します。 この種類のリソースの最大値は 1 です。 同時に複数のバックアップが要求された場合は、他の要求はキューに配置されます。
+* **BackupConcurrencyResourceType**: この待機は、データベースがバックアップ中であることを示します。 この種類のリソースの最大値は 1 です。 同時に複数のバックアップが要求された場合は、他の要求はキューに配置されます。 一般に、連続したスナップショットでは、最小で 10 分の間を空けることをお勧めします。 
 
 `sys.dm_pdw_waits` DMV を使用すると、要求がどのリソースを待っているのかを調べることができます。
 

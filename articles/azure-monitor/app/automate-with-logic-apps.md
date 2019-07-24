@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: mbullwin
 ms.openlocfilehash: 61215adc2aee5cef3693d119bf0efb36526d748b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855148"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60904831"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 
@@ -32,16 +32,16 @@ ms.locfileid: "57855148"
 
 ### <a name="step-1-create-a-logic-app"></a>手順 1: ロジック アプリを作成します
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. **[リソースの作成]** をクリックし、**[Web + モバイル]**、**[ロジック アプリ]** の順に選択します。
+1. **[リソースの作成]** をクリックし、 **[Web + モバイル]** 、 **[ロジック アプリ]** の順に選択します。
 
     ![新しいロジック アプリのウィンドウ](./media/automate-with-logic-apps/1createlogicapp.png)
 
 ### <a name="step-2-create-a-trigger-for-your-logic-app"></a>手順 2: ロジック アプリのトリガーを作成する
-1. **ロジック アプリ デザイナー** ウィンドウで、**[一般的なトリガーで開始する]** の下の **[繰り返し]** を選択します。
+1. **ロジック アプリ デザイナー** ウィンドウで、 **[一般的なトリガーで開始する]** の下の **[繰り返し]** を選択します。
 
     ![ロジック アプリ デザイナー ウィンドウ](./media/automate-with-logic-apps/2logicappdesigner.png)
 
-1. **[間隔]** ボックスに「**1**」と入力し、**[頻度]** ボックスで **[日]** を選択します。
+1. **[間隔]** ボックスに「**1**」と入力し、 **[頻度]** ボックスで **[日]** を選択します。
 
     ![ロジック アプリ デザイナーの [繰り返し] ウィンドウ](./media/automate-with-logic-apps/3recurrence.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "57855148"
 
 1. **[アクションの選択]** 検索ボックスで、「**Azure Application Insights**」と入力します。
 
-1. **[アクション]** の下で、**[Azure Application Insights - Visualize Analytics クエリ]** をクリックします。
+1. **[アクション]** の下で、 **[Azure Application Insights - Visualize Analytics クエリ]** をクリックします。
 
     ![ロジック アプリ デザイナーの [アクションの選択] ウィンドウ](./media/automate-with-logic-apps/4visualize.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "57855148"
     | evaluate autocluster()
     ```
 
-1. **[グラフの種類]** ボックスで、**[HTML の表]** を選択します。
+1. **[グラフの種類]** ボックスで、 **[HTML の表]** を選択します。
 
     ![Analytics クエリの設定ウィンドウ](./media/automate-with-logic-apps/8query.png)
 
@@ -118,14 +118,14 @@ ms.locfileid: "57855148"
 
     b. **[添付ファイルの内容]** を選択します。
     
-    c. **[Is HTML]\(HTML にする\)** ボックスで、**[はい]** を選択します。
+    c. **[Is HTML]\(HTML にする\)** ボックスで、 **[はい]** を選択します。
 
       ![Office 365 の電子メール設定画面](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>手順 7:ロジック アプリを保存してテストする
 * **[保存]** をクリックして変更を保存します。
 
-トリガーがロジック アプリを実行するまで待機するか、または、**[実行]** をクリックしてすぐにロジック アプリを実行できます。
+トリガーがロジック アプリを実行するまで待機するか、または、 **[実行]** をクリックしてすぐにロジック アプリを実行できます。
 
 ![ロジック アプリの作成画面](./media/automate-with-logic-apps/13save.png)
 

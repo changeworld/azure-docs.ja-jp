@@ -1,42 +1,40 @@
 ---
-title: Azure Dev Spaces と Visual Studio 2017 を使用して AKS 上で .NET Core の開発を行う
+title: Azure Dev Spaces と Visual Studio を使用して AKS 上で .NET Core での開発を行う
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 ms.author: zarhoads
 ms.date: 03/22/2019
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-manager: jeconnoc
+manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 7a85afd3c0a00260112ef2a945b0f5c5a538194e
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: bb23de0dfe2d717ee2e41d69eec211f1fde26687
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65765301"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707196"
 ---
-# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio-2017"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上で .NET Core の開発を行う (Visual Studio 2017)
+# <a name="quickstart-develop-with-net-core-on-kubernetes-with-azure-dev-spaces-visual-studio"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上で .NET Core での開発を行う (Visual Studio)
 
 このガイドでは、以下の方法について説明します。
 
 - Azure でマネージド Kubernetes クラスターを使用して Azure Dev Spaces をセットアップする。
-- Visual Studio 2017 を使用して、コンテナー内のコードを繰り返し開発する。
-- Visual Studio 2017 を使用して、クラスターで実行されるコードをデバッグする。
+- Visual Studio を使用して、コンテナー内のコードを繰り返し開発する。
+- Visual Studio を使用して、クラスターで実行されるコードをデバッグする。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/free)ことができます。
-- Web 開発ワークロードがインストールされている Windows 上の Visual Studio 2017。 インストールしていない場合は、[ここから](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)ダウンロードします。
-- [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) がインストールされていること。
+- Azure 開発ワークロードがインストールされている Windows 上の Visual Studio 2019。 また、Web 開発ワークロードおよび [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) がインストールされた、Windows 上の Visual Studio 2017 も使用できます。 Visual Studio をインストールしていない場合は、[ここ](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)からダウンロードします。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成する
 
-[サポートされているリージョン](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)で AKS クラスターを作成する必要があります。 クラスターを作成するには:
+[サポートされているリージョン][supported-regions]で AKS クラスターを作成する必要があります。 クラスターを作成するには:
 
 1. [Azure ポータル](https://portal.azure.com)
 1. *+ [リソースの作成]、[Kubernetes サービス]* の順に選択します。 
@@ -55,7 +53,7 @@ Azure portal でご自分の AKS クラスターに移動して、 *[Dev Spaces]
 
 ## <a name="create-a-new-aspnet-web-app"></a>新しい ASP.NET Web アプリを作成する
 
-1. Visual Studio 2017 を開きます。
+1. Visual Studio を開きます。
 1. 新しいプロジェクトを作成する。
 1. *[ASP.NET Core Web アプリケーション]* を選択し、プロジェクトに *webfrontend* という名前を付けます。
 1. Click *OK*.
@@ -101,7 +99,7 @@ Completed warmup for project 'webfrontend' in 125 seconds.
 
 ## <a name="update-code"></a>コードの更新
 
-Visual Studio 2017 がまだ開発空間に接続されている場合、停止ボタンをクリックします。 `Controllers/HomeController.cs` の 20 行目を以下に変更します。
+Visual Studio がまだ開発空間に接続されている場合は、停止ボタンをクリックします。 `Controllers/HomeController.cs` の 20 行目を以下に変更します。
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
@@ -113,9 +111,9 @@ Azure Dev Spaces では、コードが編集されるたびに新しいコンテ
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>デバッグ用のブレークポイントを設定して使用する
 
-Visual Studio 2017 がまだ開発空間に接続されている場合、停止ボタンをクリックします。 `Controllers/HomeController.cs` を開いて、20 行目のどこかをクリックし、そこにカーソルを置きます。 ブレークポイントを設定するには、*F9* キーを押すか、 *[デバッグ]* 、 *[ブレークポイントの設定/解除]* の順にクリックします。 開発空間においてデバッグ モードでサービスを開始するには、*F5* キーを押すか、または *[デバッグ]* 、 *[デバッグの開始]* の順にクリックします。
+Visual Studio がまだ開発空間に接続されている場合は、停止ボタンをクリックします。 `Controllers/HomeController.cs` を開いて、20 行目のどこかをクリックし、そこにカーソルを置きます。 ブレークポイントを設定するには、*F9* キーを押すか、 *[デバッグ]* 、 *[ブレークポイントの設定/解除]* の順にクリックします。 開発空間においてデバッグ モードでサービスを開始するには、*F5* キーを押すか、または *[デバッグ]* 、 *[デバッグの開始]* の順にクリックします。
 
-ブラウザーでサービスを開き、メッセージが表示されないことに注目します。 Visual Studio 2017 に戻って、20 行目が強調表示されていることを確認します。 設定したブレークポイントによって、20 行目でサービスが一時停止されました。 サービスを再開するには、*F5* キーを押すか、 *[デバッグ]* 、 *[続行]* の順にクリックします。 ブラウザーに戻って、メッセージが表示されたことに注目します。
+ブラウザーでサービスを開き、メッセージが表示されないことに注目します。 Visual Studio に戻って、20 行目が強調表示されていることを確認します。 設定したブレークポイントによって、20 行目でサービスが一時停止されました。 サービスを再開するには、*F5* キーを押すか、 *[デバッグ]* 、 *[続行]* の順にクリックします。 ブラウザーに戻って、メッセージが表示されたことに注目します。
 
 デバッガーがアタッチされた状態で Kubernetes でサービスを稼働している間、デバッグ情報 (呼び出し履歴、ローカル変数、例外情報など) にフル アクセスできます。
 
@@ -135,3 +133,4 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [複数のコンテナーの操作とチーム開発](multi-service-netcore-visualstudio.md)
 
 [ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
+[supported-regions]: about.md#supported-regions-and-configurations

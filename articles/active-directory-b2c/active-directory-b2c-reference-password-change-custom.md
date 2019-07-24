@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する | Microsoft Docs
 description: ユーザーが Azure Active Directory B2C でカスタム ポリシーを使用してパスワードを変更できるようにする方法を説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d05a5c4fa13b83abd26ee06123028f75a725582
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a49f62b6fc1ea00084266d4c5405f8bf96d034cb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64729457"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66509255"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する
 
@@ -166,9 +166,9 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[Identity Experience Framework]** を選択します。
-5. [カスタム ポリシー] ページで、**[ポリシーのアップロード]** をクリックします。
+5. [カスタム ポリシー] ページで、 **[ポリシーのアップロード]** をクリックします。
 6. **[ポリシーが存在する場合は上書きする]** を選択し、*TrustframeworkExtensions.xml* ファイルを検索して選択します。
 7. **[アップロード]** をクリックします。
 8. その証明書利用者ファイル (*ProfileEditPasswordChange.xml* など) で、手順 5 から 7 を繰り返します。
@@ -176,7 +176,7 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 ### <a name="run-the-policy"></a>ポリシーを実行する
 
 1. 変更したポリシーを開きます。 たとえば、*B2C_1A_profile_edit_password_change* です。
-2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 トークンを表示するには、**[応答 URL]** に `https://jwt.ms` が表示される必要があります。
+2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 トークンを表示するには、 **[応答 URL]** に `https://jwt.ms` が表示される必要があります。
 3. **[今すぐ実行]** をクリックします。 前に作成したアカウントでサインインします。 これで、パスワードを変更することができます。 
 
 ## <a name="next-steps"></a>次の手順

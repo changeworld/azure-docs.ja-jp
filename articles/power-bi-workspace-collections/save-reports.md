@@ -2,18 +2,18 @@
 title: Power BI ワークスペース コレクションでのレポートの保存 | Microsoft Docs
 description: Power BI ワークスペース コレクション内でレポートを保存する方法について説明します。 この操作を正常に実行するには、適切なアクセス許可が必要です。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: b61abee3382697d50b9a18de763c8a4d01e1ccba
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1e23bd22f2b89ef42f4b27f5e4ca2590be7fe5a7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701864"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668898"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでのレポートの保存
 

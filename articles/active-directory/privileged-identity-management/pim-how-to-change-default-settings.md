@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 05/31/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb8944578caf00fac5ca430e411f044a875f6af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2bc7d3ffcb56251825bf5f6d760de647938f1ead
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492279"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66417877"
 ---
 # <a name="configure-azure-ad-role-settings-in-pim"></a>PIM で Azure AD ロールの設定を構成する
 
@@ -72,6 +72,7 @@ ms.locfileid: "59492279"
 * メール アドレスの Microsoft アカウント (一般には @outlook.com ですが、例外もあります) を持つユーザーは、Azure MFA に登録できません。 Microsoft アカウントを持つユーザーにロールを割り当てるには、ユーザーを永続的な管理者にするか、そのロールの MFA を無効化する必要があります。
 * Azure AD および Office365 の高い特権ロールでは、MFA は無効化できません。 これは、こうしたロールを慎重に保護する必要があるために設けられている安全機能です。  
   
+  * Azure Information Protection 管理者
   * 課金管理者
   * クラウド アプリケーション管理者
   * コンプライアンス管理者
@@ -81,7 +82,6 @@ ms.locfileid: "59492279"
   * ディレクトリ ライター
   * Exchange 管理者
   * グローバル管理者
-  * Information Protection 管理者
   * Intune サービス管理者
   * Power BI サービス管理者
   * 特権ロール管理者
@@ -102,15 +102,15 @@ ms.locfileid: "59492279"
 
     承認者を指定**しない**場合は、特権ロール管理者が既定の承認者になります。 特権ロール管理者が、このロールの**すべて**のアクティブ化要求を承認する必要があります。
 
-1. 承認者を指定するには、**[承認者の選択]** をクリックします。
+1. 承認者を指定するには、 **[承認者の選択]** をクリックします。
 
     ![Azure AD ロール - 設定 - 承認を要求する](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. 1 人以上の承認者を選択し、**[選択]** をクリックします。 ユーザーまたはグループを選択することができます。 承認者を 2 人以上にすることをお勧めします。 自己承認は許可されません。
+1. 1 人以上の承認者を選択し、 **[選択]** をクリックします。 ユーザーまたはグループを選択することができます。 承認者を 2 人以上にすることをお勧めします。 自己承認は許可されません。
 
     選択した承認者の一覧に選択内容が表示されます。
 
-1. すべてのロール設定を指定したら、**[保存]** をクリックして変更を保存します。
+1. すべてのロール設定を指定したら、 **[保存]** をクリックして変更を保存します。
 
 
 <!--PLACEHOLDER: Need an explanation of what the temporary Global Administrator setting is for.-->

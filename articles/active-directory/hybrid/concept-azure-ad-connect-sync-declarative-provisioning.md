@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171827"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60246263"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
 このトピックでは、Azure AD Connect の構成モデルについて説明します。 このモデルは宣言型のプロビジョニングと呼ばれ、構成の変更を簡単に実行することができます。 このトピックで説明する多くの内容は高度であるため、ほとんどの顧客シナリオで必要ありません。
@@ -77,7 +77,7 @@ ms.locfileid: "56171827"
 ![Join definition](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
 この図の結合は、上から下へ処理されます。 最初に同期パイプラインが employeeID で一致するものがあるかどうかを確認します。 一致するものがない場合は、2 番目の規則によってアカウント名をオブジェクトの結合に使用できるかどうかが確認されます。 それでも一致するものがない場合は、最後の 3 番目の規則により、ユーザー名を使ってよりあいまいな照合が行われます。
 
-すべての結合規則が評価されても一致するものが 1 つでない場合は、**[説明]** ページの **[リンクの種類]** が使用されます。 このオプションが **[プロビジョニング]** に設定されている場合は、ターゲットの新しいオブジェクトが作成されます。  
+すべての結合規則が評価されても一致するものが 1 つでない場合は、 **[説明]** ページの **[リンクの種類]** が使用されます。 このオプションが **[プロビジョニング]** に設定されている場合は、ターゲットの新しいオブジェクトが作成されます。  
 ![Provision or join](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 オブジェクトには、スコープ内の結合規則を持つ同期規則が 1 つだけ必要です。 結合が定義されている複数の同期規則がある場合、エラーが発生します。 優先順位は、結合の競合の解決には使用されません。 同じ受信/送信方向で属性をフローさせるためには、オブジェクトにスコープ内の結合規則が必要です。 同じオブジェクトに送受信双方向で属性をフローさせる必要がある場合は、結合が設定された受信と送信両方の同期規則が必要です。

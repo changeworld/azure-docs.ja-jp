@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f4bbea8acd447a731cf5c56f9876baf9183735ea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cba57875daf9b570d274ec8c4e9c4146af0dc045
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784995"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65072828"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -65,7 +65,7 @@ Azure Container Instances では、グループにインスタンスの[リソ�
 
 * **最小値**の 1 CPU と 1 GB メモリをコンテナー グループに割り当てます。 グループ内の個々のコンテナー インスタンスは、1 CPU と 1 GB メモリ未満でプロビジョニングできます。 
 
-* コンテナー グループの**最大**リソースについては、デプロイ リージョンの Azure Container Instances の [リソースの可用性][aci-region-availability] に関するページを参照してください。
+* コンテナー グループ内の**最大**リソースについては、デプロイ リージョンでの Azure Container Instances に対する[リソースの可用性][region-availability]に関するページを参照してください。
 
 ## <a name="networking"></a>ネットワーク
 

@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: f94cec7919edc6cf6ebb6618d38b8591feb1278b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d68e7d9ec3b60b93f0050250d7e7d718db7aa5b8
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796088"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488479"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure の管理サービスの概要
 

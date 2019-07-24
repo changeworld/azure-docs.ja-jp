@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287266"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60254062"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor のカスタム メトリック
 
@@ -38,7 +38,7 @@ Azure Monitor にカスタム メトリックを送信するには、メトリ�
 > [!NOTE]  
 > カスタム メトリックを出力するための Azure AD トークンを要求する場合は、トークンの要求対象であるユーザーやリソースが、 https://monitoring.azure.com/ であることを確認してください。 必ず、末尾のスラッシュ (/) を含めるようにしてください。
 
-### <a name="subject"></a>Subject
+### <a name="subject"></a>サブジェクト
 このプロパティは、どの Azure リソース ID についてのカスタム メトリックが報告されるのかを表します。 この情報は、実行される API 呼び出しの URL にエンコードされます。 各 API は、単一の Azure リソースのメトリック値のみを送信できます。
 
 > [!NOTE]  

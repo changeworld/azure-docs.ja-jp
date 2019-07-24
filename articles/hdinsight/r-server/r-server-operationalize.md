@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 916c4fae8eed9451080f92e97743876e89bd25ea
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 36d2ebe00f735089633240914421e2259181e63e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719760"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448980"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
@@ -21,9 +21,9 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight 上の ML サービス クラスター**: 手順については、「[HDInsight の ML サービスの概要](r-server-get-started.md)」を参照してください。
+* HDInsight 上の ML サービス クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[ML サービス]** を選択してください。
 
-* **Secure Shell (SSH) クライアント**: SSH クライアントは、HDInsight クラスターにリモート接続し、そのクラスター上でコマンドを直接実行するために使用されます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* Secure Shell (SSH) クライアント:SSH クライアントは、HDInsight クラスターにリモート接続し、そのクラスター上でコマンドを直接実行するために使用されます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>ML サービス クラスターをワンボックス構成で運用化する
 
@@ -142,21 +142,21 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
 
 次の手順に従って、worker ノードの使用を停止します。
 
-1. クラスターの Ambari コンソールにログインして、**[ホスト]** タブをクリックします。
+1. クラスターの Ambari コンソールにログインして、 **[ホスト]** タブをクリックします。
 
 1. (使用を停止する) worker ノードを選択します。
 
-1. **[アクション]** > **[選択したホスト]** > **[ホスト]** > **[メンテナンス モードの有効化]** の順にクリックします。 たとえば、次の画像では、使用停止の対象として wn3 と wn4 が選択されています。  
+1. **[アクション]**  >  **[選択したホスト]**  >  **[ホスト]**  >  **[メンテナンス モードの有効化]** の順にクリックします。 たとえば、次の画像では、使用停止の対象として wn3 と wn4 が選択されています。  
 
    ![ワーカー ノードの使用停止](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* **[アクション]** > **[選択したホスト]** > **[DataNodes]** の順に選択し、**[使用停止]** をクリックします。
-* **[アクション]** > **[選択したホスト]** > **[NodeManagers]** の順に選択し、**[使用停止]** をクリックします。
-* **[アクション]** > **[選択したホスト]** > **[DataNodes]** の順に選択し、**[停止]** をクリックします。
-* **[アクション]** > **[選択したホスト]** > **[NodeManagers]** の順に選択し、**[停止]** をクリックします。
-* **[アクション]** > **[選択したホスト]** > **[ホスト]** の順に選択し、**[Stop All Components]\(すべてのコンポーネントを停止\)** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[DataNodes]** の順に選択し、 **[使用停止]** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[NodeManagers]** の順に選択し、 **[使用停止]** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[DataNodes]** の順に選択し、 **[停止]** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[NodeManagers]** の順に選択し、 **[停止]** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[ホスト]** の順に選択し、 **[Stop All Components]\(すべてのコンポーネントを停止\)** をクリックします。
 * ワーカー ノードの選択を解除し、ヘッド ノードを選択します。
-* **[アクション]** > **[選択したホスト]** > **[ホスト]** の順に選択し、**[Restart All Components]\(すべてのコンポーネントを再起動\)** をクリックします。
+* **[アクション]**  >  **[選択したホスト]**  >  **[ホスト]** の順に選択し、 **[Restart All Components]\(すべてのコンポーネントを再起動\)** をクリックします。
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>手順 2:使用停止された各ワーカー ノード上でコンピューティング ノードを構成する
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure SQL Data Warehouse の作成と照会 - Azure Portal | Microsoft Docs
+title: クイック スタート:Azure SQL データ ウェアハウスの作成とクエリ - Azure portal | Microsoft Docs
 description: Azure Portal で Azure SQL Data Warehouse を使用してデータ ウェアハウスを作成し、クエリを実行します。
 services: sql-data-warehouse
 author: XiaoyuL-Preview
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: development
-ms.date: 08/02/2018
+ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ee18a78aea67d0270b105f8703259b65c706d2e7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.custom: sqlfreshmay19
+ms.openlocfilehash: 9072caf29be0ebf47207266b7313e989034c3a18
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66169256"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428053"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート:Azure Portal で Azure SQL Data Warehouse を作成し、クエリを実行する
 
@@ -81,7 +82,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 8. **[Apply]** をクリックします。
 
-9. これで SQL Data Warehouse フォームの入力が完了したので、 **[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
+9. [SQL Data Warehouse] フォームの入力が完了したら、 **[作成]** をクリックしてデータベースをプロビジョニングします。 プロビジョニングには数分かかります。
 
     ![[作成] をクリックする](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 
@@ -91,31 +92,30 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 ## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
-SQL Data Warehouse サービスでは、外部のアプリケーションやツールに、サーバーまたはサーバー上のすべてのデータベースへの接続を禁止するファイアウォールが、サーバーレベルで作成されます。 接続できるようにするには、特定の IP アドレスに接続を許可するファイアウォール規則を追加します。 次の手順に従って、クライアントの IP アドレスに対する[サーバーレベルのファイアウォール規則](../sql-database/sql-database-firewall-configure.md)を作成します。 
+SQL Data Warehouse サービスでは、サーバーレベルでファイアウォールが作成されます。 このファイアウォールにより、外部のアプリケーションとツールはサーバーやサーバー上のすべてのデータベースに接続できなくなります。 接続できるようにするには、特定の IP アドレスに接続を許可するファイアウォール規則を追加します。 次の手順に従って、クライアントの IP アドレスに対する[サーバーレベルのファイアウォール規則](../sql-database/sql-database-firewall-configure.md)を作成します。
 
 > [!NOTE]
 > SQL Data Warehouse の通信は、ポート 1433 で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 
-1. デプロイが完了したら、左側のメニューから **[SQL データ ウェアハウス]** をクリックし、 **[SQL データ ウェアハウス]** ページで、**mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20180430.database.windows.net** など) や追加の構成オプションが表示されます。 
+1. デプロイが完了したら、左側のメニューから **[すべてのサービス]** を選択します。 **[データベース]** を選択し、 **[SQL データ ウェアハウス]** の横にある星を選択して、SQL データ ウェアハウスをお気に入りに追加します。
+1. 左側のメニューの **[SQL データ ウェアハウス]** を選択し、 **[SQL データ ウェアハウス]** ページで **mySampleDatabase** をクリックします。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20180430.database.windows.net** など) や追加の構成オプションが表示されます。
+1. この完全修飾サーバー名は、このクイック スタートや他のクイック スタートでお使いのサーバーとそのデータベースへの接続に使用する場合にコピーします。 サーバー設定を開くには、サーバー名をクリックします。
 
-2. この完全修飾サーバー名をコピーします。以降のクイック スタートでサーバーとそのデータベースに接続する際に必要となります。 サーバー設定を開くには、サーバー名をクリックします。
+   ![サーバー名を検索する](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
-   ![サーバー名を検索する](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png) 
+1. **[ファイアウォール設定の表示]** をクリックします。
 
-3. サーバー設定を開くには、 
-4. サーバー名をクリックします。
+   ![サーバー設定](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png)
 
-   ![サーバー設定](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
+1. SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
 
-5. **[ファイアウォール設定の表示]** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。 
+   ![サーバーのファイアウォール規則](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png)
 
-   ![サーバーのファイアウォール規則](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png) 
+1. 現在の IP アドレスをファイアウォール規則に追加するには、ツール バーの **[クライアント IP の追加]** をクリックします。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-4. 現在の IP アドレスをファイアウォール規則に追加するには、ツール バーの **[クライアント IP の追加]** をクリックします。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
+1. **[Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
-5. **[Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
-
-6. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
+1. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
 
 この IP アドレスを使って、SQL Server とそのデータ ウェアハウスに接続できるようになります。 接続するには、SQL Server Management Studio または他の適当なツールを使います。 接続するときは、前に作成した ServerAdmin アカウントを使います。
 
@@ -127,8 +127,8 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. 左側のメニューの **[SQL データ ウェアハウス]** を選択し、 **[SQL データ ウェアハウス]** ページで目的のデータベースをクリックします。 
-3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。  この例の完全修飾名は mynewserver-20180430.database.windows.net です。 
+2. 左側のメニューの **[SQL データ ウェアハウス]** を選択し、 **[SQL データ ウェアハウス]** ページで目的のデータベースをクリックします。
+3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20180430.database.windows.net です。
 
     ![接続情報](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)
 
@@ -145,8 +145,8 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
    | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | 例: **mynewserver-20180430.database.windows.net** |
    | Authentication | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
-   | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
-   | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
+   | ログイン | サーバー管理者アカウント | サーバーの作成時に指定したアカウントです。 |
+   | パスワード | サーバー管理者アカウントのパスワード | サーバーの作成時に指定したパスワードです。 |
    ||||
 
     ![[サーバーへの接続]](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -183,12 +183,12 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-データ ウェアハウス ユニットとデータ ウェアハウスに格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。 
+データ ウェアハウス ユニットとデータ ウェアハウスの格納データに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。
 
 - データをストレージに保持しておく場合は、データ ウェアハウスを使わない間、コンピューティング リソースを一時停止できます。 コンピューティングを一時停止すると、データ ストレージに対してのみ課金されます。 データを使用する準備ができたら、コンピューティングを再開できます。
-- それ以上課金されないようにする場合は、データ ウェアハウスを削除できます。 
+- それ以上課金されないようにする場合は、データ ウェアハウスを削除できます。
 
-必要に応じて、以下の手順でリソースをクリーンアップします。
+不要になったリソースをクリーンアップするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) にログインし、データ ウェアハウスをクリックします。
 
@@ -196,7 +196,7 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 
 2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンをクリックします。 データ ウェアハウスが一時停止されると、 **[再開]** ボタンが表示されます。 コンピューティングを再開するには、 **[再開]** をクリックします。
 
-3. コンピューティング リソースやストレージに課金されないようにデータ ウェアハウスを削除するには、 **[削除]** をクリックします。
+3. コンピューティングやストレージに対する料金が発生しないようにデータ ウェアハウスを削除するには、 **[削除]** をクリックします。
 
 4. 作成した SQL Server を削除するには、前の画像の **mynewserver-20180430.database.windows.net** をクリックして、 **[削除]** をクリックします。 サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
 

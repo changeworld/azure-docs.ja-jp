@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub の IP 接続フィルター | Microsoft Docs
 description: Azure IoT Hub への特定の IP アドレスからの接続をブロックする IP フィルター処理を使用する方法。 個別の IP アドレスまたは一定の範囲の IP アドレスからの接続をブロックできます。
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
-ms.author: rezas
-ms.openlocfilehash: 02059409000ee5b68fbcb8695f580980c95effe6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.author: robinsh
+ms.openlocfilehash: 82b079a7e826d870ed3e156b56921fc347a0fbd8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731716"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445540"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 
@@ -44,7 +44,7 @@ IP フィルター規則を追加する場合は、次の値を求められま�
 
 * **IP フィルター規則名**。最大 128 文字までの一意な英数字文字列である必要があります (大文字と小文字は区別されません)。 ASCII 7 ビット英数字と `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` のみを使用できます。
 
-* IP フィルター規則の **[アクション]** として、**[reject (拒否)]** または **[accept (許可)]** を選択します。
+* IP フィルター規則の **[アクション]** として、 **[reject (拒否)]** または **[accept (許可)]** を選択します。
 
 * 1 つの IPv4 アドレスか、または CIDR 表記法で記述した IP アドレス ブロックを指定します。 たとえば、CIDR 表記 192.168.100.0/22 は、192.168.100.0 ～ 192.168.103.255 までの 1,024 個の IPv4 アドレスを表します。
 
@@ -54,7 +54,7 @@ IP フィルター規則を追加する場合は、次の値を求められま�
 
 ![IP フィルター規則の保存に関する通知](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
 
-IP フィルター規則が最大値の 10 個に達すると、**[追加]** オプションは無効になります。
+IP フィルター規則が最大値の 10 個に達すると、 **[追加]** オプションは無効になります。
 
 既存の規則を編集するには、規則を含む行をダブルクリックします。
 
@@ -66,7 +66,7 @@ IP フィルター規則が最大値の 10 個に達すると、**[追加]** オ
 
 ## <a name="delete-an-ip-filter-rule"></a>IP フィルター規則の削除
 
-IP フィルター規則を削除するには、グリッド内で 1 つまたは複数の規則を選択し、**[削除]** をクリックします。
+IP フィルター規則を削除するには、グリッド内で 1 つまたは複数の規則を選択し、 **[削除]** をクリックします。
 
 ![IoT Hub の IP フィルター規則の削除](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
 
@@ -158,7 +158,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 
 グリッド内の IP フィルター規則の順序を変更するには、行の先頭のドットが縦に 3 つ並んだ部分をクリックし、ドラッグ アンド ドロップします。
 
-新しい IP フィルター規則の順序を保存するには、**[保存]** をクリックします。
+新しい IP フィルター規則の順序を保存するには、 **[保存]** をクリックします。
 
 ![IoT Hub の IP フィルター規則の順序の変更](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
 

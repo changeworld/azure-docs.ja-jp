@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ede412292caf682c3078002d23e1956bd68d1378
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602214"
 ---
 # <a name="review-access-to-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールのアクセスをレビューする
@@ -35,8 +35,8 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. Azure Portal の右上隅に表示されているユーザー名をクリックし、操作するディレクトリを選択します。
-3. **[すべてのサービス]** を選択し、**[フィルター]** ボックスを使用して *Azure AD Privileged Identity Management* を検索します。
-4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** を選択します。 PIM アプリケーションが開きます。
+3. **[すべてのサービス]** を選択し、 **[フィルター]** ボックスを使用して *Azure AD Privileged Identity Management* を検索します。
+4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、 **[作成]** を選択します。 PIM アプリケーションが開きます。
 
 ## <a name="approve-or-deny-access"></a>アクセスの承認または拒否
 アクセスを承認または拒否する場合、このロールをまだ使用するかどうかをレビュー担当者にのみ通知します。 ロールにとどまる場合は **[承認]** を選択します。また、アクセスが不要な場合は **[拒否]** を選択します。 状態は、レビュー担当者が結果が適用した場合にのみ変わります。

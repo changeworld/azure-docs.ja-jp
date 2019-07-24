@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 8c25baa8-b93b-41da-9e6c-15bb7b5c5511
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 67e4bb2d0f308a3f20f0a29ec8b1f2a0d46fc082
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e329c8efd9b0e89f5f5eae41952cda9a45a95969
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204354"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620653"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Azure アクティビティ ログからデータを接続する
 
@@ -32,12 +33,12 @@ ms.locfileid: "65204354"
 
 ## <a name="prerequisites"></a>前提条件
 
-- グローバル理者またはセキュリティ管理者のアクセス許可を持つユーザー
+- グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー
 
 
 ## <a name="connect-to-azure-activity-log"></a>Azure アクティビティ ログに接続する
 
-1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Azure アクティビティ ログ]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Azure アクティビティ ログ]** タイルをクリックします。
 
 2. [Azure アクティビティ ログ] ウィンドウで、Azure Sentinel にストリーミングするサブスクリプションを選択します。 
 

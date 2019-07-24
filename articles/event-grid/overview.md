@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/04/2019
+ms.date: 05/25/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: b262a06bc3d80bd1f8105c6629bbc07e6ccd34eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578409"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077155"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -22,7 +22,7 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 
 フィルターを使用することで、特定のイベントをさまざまなエンドポイントにルーティングしたり、複数のエンドポイントにマルチキャストしたり、イベントを確実に配信したりできます。
 
-現在、Azure Event Grid はすべてのパブリック リージョンで使用できます。 まだ、Azure Germany、Azure China 21Vianet、Azure Government クラウドでは使用できません。
+Azure Event Grid は、すべてのリージョンの複数の障害ドメインに、および可用性ゾーン (それらをサポートするリージョン内の) にネイティブに分散させることによって、可用性を最大化するようにデプロイされます。 現在、Azure Event Grid はすべてのパブリック リージョンで使用できます。 まだ、Azure Germany、Azure China 21Vianet、Azure Government クラウドでは使用できません。
 
 この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。 
 
@@ -56,6 +56,7 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Queue Storage](event-handlers.md#queue-storage)
+* [Service Bus](event-handlers.md#service-bus-queue-preview) (プレビュー)
 * [WebHooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>概念

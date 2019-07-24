@@ -12,11 +12,11 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: cdc37ace4687fe978030f528dcd5cbc87da596f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855939"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60589573"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Scala および Azure 上の Spark を使用したデータ サイエンス
 この記事では、Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 本記事のモデルでは、2 つの一般的な教師あり機械学習タスクに加えて、ロジスティック回帰および線形回帰、ランダム フォレスト、および勾配ブースティング ツリー (GBT) を扱います。
@@ -52,7 +52,7 @@ ms.locfileid: "57855939"
 NYC タクシー営業データの説明と、Spark クラスターで Jupyter Notebook のコードを実行する方法については、「 [Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](spark-overview.md)」の関連するセクションをご覧ください。  
 
 ## <a name="execute-scala-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>Spark クラスターで Jupyter Notebook の Scala コードを実行する
-Jupyter Notebook は Azure ポータルから起動できます。 ダッシュボードで Spark クラスターを見つけてクリックし、クラスターの管理ページにアクセスします。 **[クラスター ダッシュボード]**、**[Jupyter Notebook]** の順にクリックして、Spark クラスターに関連付けられている Notebook を開きます。
+Jupyter Notebook は Azure ポータルから起動できます。 ダッシュボードで Spark クラスターを見つけてクリックし、クラスターの管理ページにアクセスします。 **[クラスター ダッシュボード]** 、 **[Jupyter Notebook]** の順にクリックして、Spark クラスターに関連付けられている Notebook を開きます。
 
 ![クラスター ダッシュボードと Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
@@ -259,8 +259,8 @@ BLOB ストレージにモデルまたはファイルを保存するには、パ
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>ローカル マジックと SQL マジックを使用してデータをプロットする
 既定では、Jupyter Notebook から実行するコード スニペットの出力は、ワーカー ノードで永続化されるセッションのコンテキスト内で使用できます。 計算を実行するたびに乗車データをワーカー ノードに保存する場合や、計算に必要なすべてのデータが Jupyter サーバー ノード (ヘッド ノード) でローカルで使用可能な場合は、 `%%local` マジックを使用して Jupyter サーバー上でコード スニペットを実行できます。
 
-* **SQL マジック** (`%%sql`):  HDInsight Spark カーネルは、SQLContext に対する簡単なインライン HiveQL クエリをサポートしています。 引数 (`-o VARIABLE_NAME`) を指定すると、SQL クエリの出力結果が Pandas データ フレームとして Jupyter サーバー上に永続化されます。 つまり、出力結果をローカルから使用できるようになります。
-* `%%local` **マジック**:  `%%local`Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルに実行します。 通常、`%%local` マジックは、`-o` パラメーターを指定した `%%sql` マジックと組み合わせて使用します。 SQL クエリの出力結果を `-o` パラメーターでローカルに永続化したうえで、`%%local` マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
+* **SQL マジック** (`%%sql`): HDInsight Spark カーネルは、SQLContext に対する簡単なインライン HiveQL クエリをサポートしています。 引数 (`-o VARIABLE_NAME`) を指定すると、SQL クエリの出力結果が Pandas データ フレームとして Jupyter サーバー上に永続化されます。 つまり、出力結果をローカルから使用できるようになります。
+* `%%local` **マジック**: `%%local`Jupyter サーバー (HDInsight クラスターのヘッド ノード) でコードをローカルに実行します。 通常、`%%local` マジックは、`-o` パラメーターを指定した `%%sql` マジックと組み合わせて使用します。 SQL クエリの出力結果を `-o` パラメーターでローカルに永続化したうえで、`%%local` マジックを使用すると、それに続く一連のコード スニペットが、ローカルに永続化されている SQL クエリの出力結果に対してローカルに実行されます。
 
 ### <a name="query-the-data-by-using-sql"></a>SQL を使用してデータを照会する
 このクエリでは、タクシーの営業について、料金、乗客数、チップの金額を取得します。
@@ -542,11 +542,11 @@ Spark ML を使用して、ツリーベースのモデリング関数で使用�
 ### <a name="create-a-logistic-regression-model"></a>ロジスティック回帰モデルを作成する
 次に、Spark ML の `LogisticRegression()` 関数を使用してロジスティック回帰モデルを作成します。 次の一連の手順で、このモデルの構築コードを作成します。
 
-1. **モデルをトレーニングする** 
-2. **モデルを評価する** 
-3. **モデルを保存する** 
-4. **モデルにスコアを付ける** 
-5. **結果をプロットする** 
+1. **モデルをトレーニングする**
+2. **モデルを評価する**
+3. **モデルを保存する**
+4. **モデルにスコアを付ける**
+5. **結果をプロットする**
 
 これらの手順のコードを次に示します。
 

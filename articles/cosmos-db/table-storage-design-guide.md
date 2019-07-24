@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: af155b5adb2e4b45412a8b84818852ed1b1c5e72
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 0812828f8d7c0be38fb03c06f4a10019e2ed153c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966100"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447292"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド:拡張性があり、パフォーマンスに優れたテーブルを設計する
 
@@ -200,12 +200,12 @@ Table service ソリューションでは、読み取り、書き込み、また
 
 | *列名* | *データの種類* |
 | --- | --- |
-| **PartitionKey** (部門名) |String |
-| **RowKey** (従業員 ID) |String |
-| **FirstName** |String |
-| **LastName** |String |
+| **PartitionKey** (部門名) |string |
+| **RowKey** (従業員 ID) |string |
+| **FirstName** |string |
+| **LastName** |string |
 | **Age** |整数 |
-| **EmailAddress** |String |
+| **EmailAddress** |string |
 
 最初の方のセクション「Azure Table の概要」では、クエリの設計に直接影響を与える Azure Table サービスの主な機能の一部について説明します。 ここから、Table service のクエリを設計する際には、次のような一般的なガイドラインが考えられます。 以下の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities](https://msdn.microsoft.com/library/azure/dd179421.aspx)」(エンティティの照会) を参照してください。  
 
@@ -255,7 +255,7 @@ Table service は 1 つのクラスター化インデックス内の **Partition
 Table service によって返されるクエリ結果は、最初に **PartitionKey**、次に **RowKey** に基づいて、昇順に並べ替えられます。
 
 > [!NOTE]
-> Azure DB で Azure Table API によって返されるクエリ結果は、パーティション キーまたは行キーで並べ替えられません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
+> Azure Cosmos DB で Azure Table API によって返されるクエリ結果は、パーティション キーまたは行キーで並べ替えられません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
 
 Azure Storage Table のキーは文字列値であり、数値を正しく並べ替えるには、固定長の値に変換し、ゼロ パディングを施す必要があります。 たとえば、従業員 ID 値を整数値の **RowKey** として使用する場合、従業員 ID を **123** から **00000123** に変換する必要があります。 
 
@@ -653,7 +653,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 ![部署エンティティと従業員エンティティ][16]
 
 #### <a name="solution"></a>解決策
-データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 例:   
+データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 例:  
 
 ![非正規化され、結合された部署エンティティ][17]
 
@@ -723,7 +723,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 逆の日付と時間順でソートする *RowKey* 値を 使用して最も最近追加された **n** を取得します。  
 
 > [!NOTE]
-> Azure DB で Azure Table API によって返されるクエリ結果は、パーティション キーまたは行キーで並べ替えられません。 そのため、このパターンは Azure Cosmos DB ではなく Azure Table Storage に適しています。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
+> Azure Cosmos DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 そのため、このパターンは Azure Cosmos DB ではなく Azure Table Storage に適しています。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
 
 #### <a name="context-and-problem"></a>コンテキストと問題
 よく、最近作成されたエンティティ (従業員が提出した経費請求を日時の新しいものから 10 件など) を取得できることが必要な場合があります。 Table クエリは **$top** クエリ操作をサポートして、最初の *n* 件のエンティティをセットから返します。セットの最終 n 件のエンティティを返す同等のクエリの操作はありません。  

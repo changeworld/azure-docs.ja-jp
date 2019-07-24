@@ -4,17 +4,17 @@ description: この記事では、Azure Automation での Az モジュールの�
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a076c924d57aadfae477a5df0d128aad8e67af60
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c722dc6af2b98adb60045d530bb38de7762027d5
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796278"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477890"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure Automation での Az モジュールのサポート
 
@@ -53,17 +53,17 @@ Runbook に必要な Az モジュールのみをインポートします。 ロ�
 
 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) モジュールは、他の `Az.*` モジュールに対する依存関係です。 そのため、他のすべてのモジュールをインポートする前に、このモジュールを Automation アカウントにインポートする必要があります。
 
-Automation アカウントから、**[共有リソース]** の **[モジュール]** を選択します。 **[ギャラリーの閲覧]** をクリックして、**[ギャラリーの閲覧]** ページを開きます。  検索バーにモジュール名を入力します (`Az.Accounts` など)。 [PowerShell モジュール] ページで、**[インポート]** をクリックしてモジュールを Automation アカウントにインポートします。
+Automation アカウントから、 **[共有リソース]** の **[モジュール]** を選択します。 **[ギャラリーの閲覧]** をクリックして、 **[ギャラリーの閲覧]** ページを開きます。  検索バーにモジュール名を入力します (`Az.Accounts` など)。 [PowerShell モジュール] ページで、 **[インポート]** をクリックしてモジュールを Automation アカウントにインポートします。
 
 ![Automation アカウントからモジュールをインポートする](media/az-modules/import-module.png)
 
-このインポート プロセスは、[PowerShell ギャラリー](https://www.powershellgallery.com)でモジュールを検索して行うこともできます。 モジュールを見つけたら、それを選択し、**[Azure Automation]** タブで **[Deploy to Azure Automation]\(Azure Automation にデプロイ\)** をクリックします。
+このインポート プロセスは、[PowerShell ギャラリー](https://www.powershellgallery.com)でモジュールを検索して行うこともできます。 モジュールを見つけたら、それを選択し、 **[Azure Automation]** タブで **[Deploy to Azure Automation]\(Azure Automation にデプロイ\)** をクリックします。
 
 ![ギャラリーからモジュールを直接インポートする](media/az-modules/import-gallery.png)
 
 ## <a name="test-your-runbooks"></a>Runbook をテストする
 
-`Az` モジュールを Automation アカウントにインポートした後は、代わりに Az モジュールを使用するように Runbook を編集できます。 大部分のコマンドレットは同じ名前ですが、`AzureRM` だけは `Az` に変更されています。 このプロセスに従わないモジュールの一覧については、[例外の一覧](/powershell/azure/migrate-from-azurerm-to-az?view=azps-1.1.0#change-module-imports-and-cmdlet-names)をご覧ください。
+`Az` モジュールを Automation アカウントにインポートした後は、代わりに Az モジュールを使用するように Runbook を編集できます。 大部分のコマンドレットは同じ名前ですが、`AzureRM` だけは `Az` に変更されています。 このプロセスに従わないモジュールの一覧については、[例外の一覧](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)をご覧ください。
 
 新しいコマンドレットを使用するように Runbook を変更する前に、Runbook をテストする方法の 1 つは、Runbook の先頭で `Enable-AzureRMAlias -Scope Process` を使用することです。 Runbook にこれを追加することにより、変更しないで Runbook を実行できます。
 

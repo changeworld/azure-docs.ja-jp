@@ -12,11 +12,11 @@ ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524006"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303900"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の実行:Azure HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
@@ -72,10 +72,10 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 HDInsight クラスターを使用する高度な分析用の Azure 環境は、次の 3 つの手順でセットアップできます。
 
 1. [ストレージ アカウントを作成する](../../storage/common/storage-quickstart-create-account.md):このストレージ アカウントは、Azure Blob Storage にデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータも格納されます。
-2. [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](customize-hadoop-cluster.md):  この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズする際、注意する必要のある 2 つの重要な手順があります。
+2. [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](customize-hadoop-cluster.md): この手順では、全ノードに 64 ビットの Anaconda Python 2.7 がインストールされた HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズする際、注意する必要のある 2 つの重要な手順があります。
    
    * 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。 このストレージ アカウントは、クラスター内で処理されるデータにアクセスします。
-   * クラスターを作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。 **[構成]** タブに移動して、**[リモートを有効にする]** を選択します。 この手順で、リモート ログインに使用するユーザーの資格情報を指定します。
+   * クラスターを作成したら、クラスターのヘッド ノードへのリモート アクセスを有効にします。 **[構成]** タブに移動して、 **[リモートを有効にする]** を選択します。 この手順で、リモート ログインに使用するユーザーの資格情報を指定します。
 3. [Azure Machine Learning ワークスペースを作成する](../studio/create-workspace.md):このワークスペースを使用して、機械学習モデルを構築します。 このタスクは、HDInsight クラスターを使用した初期データの探索とダウンサンプリングの完了後に対処されます。
 
 ## <a name="getdata"></a>公開されているソースからデータを取得する
@@ -88,7 +88,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 ここでは、AzCopy を使用してデータを含むファイルを転送する方法について説明します。 AzCopy をダウンロードしてインストールするには、「[AzCopy コマンド ライン ユーティリティの概要](../../storage/common/storage-use-azcopy.md)」に記載されている手順に従います。
 
-1. コマンド プロンプト ウィンドウで次の AzCopy コマンドを実行します。*\<path_to_data_folder>* を、目的の転送先に置き換えてください。
+1. コマンド プロンプト ウィンドウで次の AzCopy コマンドを実行します。 *\<path_to_data_folder>* を、目的の転送先に置き換えてください。
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 

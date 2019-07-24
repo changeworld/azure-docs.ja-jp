@@ -19,11 +19,11 @@ ms.reviewer: sahandle
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3357cfd5e845346534f263c768b5cf6b6a38ea4e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793987"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60296206"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
 
@@ -53,12 +53,12 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
 1. Azure Portal に管理者として[サインイン](https://portal.azure.com)します。 
 
-2. 左のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。 
+2. 左のナビゲーション ウィンドウで、 **[Active Directory]** をクリックします。 
    
     ![Creating an application](./media/graph-get-started/41.png)
 
 
-3. **[管理]** セクションで、**[プロパティ]** をクリックします。
+3. **[管理]** セクションで、 **[プロパティ]** をクリックします。
 
     ![Creating an application](./media/graph-get-started/42.png)
 
@@ -67,12 +67,12 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
 ## <a name="create-a-new-app-registration"></a>新しいアプリ登録の作成
 
-1. **[Active Directory]** ページの **[管理]** セクションで、**[アプリの登録]** をクリックします。
+1. **[Active Directory]** ページの **[管理]** セクションで、 **[アプリの登録]** をクリックします。
 
     ![Creating an application](./media/graph-get-started/42.png)
 
 
-2. 上部のメニューで、**[新しいアプリケーションの登録]** をクリックします。
+2. 上部のメニューで、 **[新しいアプリケーションの登録]** をクリックします。
    
     ![Creating an application](./media/graph-get-started/43.png)
 
@@ -95,7 +95,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
 ## <a name="grant-your-application-permission-to-use-the-api"></a>API を使用するためのアクセス許可をアプリケーションに付与します。
 
-1. **[設定]** ページで、**[必要なアクセス許可]** をクリックします。
+1. **[設定]** ページで、 **[必要なアクセス許可]** をクリックします。
    
     ![Creating an application](./media/graph-get-started/15.png)
 
@@ -103,27 +103,27 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
    
     ![Creating an application](./media/graph-get-started/16.png)
    
-3. **[API アクセスの追加]** ページで、**[API を選択します]** をクリックします。
+3. **[API アクセスの追加]** ページで、 **[API を選択します]** をクリックします。
    
     ![Creating an application](./media/graph-get-started/17.png)
 
-4. **[API を選択します]** ページで、**[Microsoft Graph]** を選んで、**[選択]** をクリックします。
+4. **[API を選択します]** ページで、 **[Microsoft Graph]** を選んで、 **[選択]** をクリックします。
    
     ![Creating an application](./media/graph-get-started/18.png)
 
-5. **[API アクセスの追加]** ページで、**[アクセス許可を選択します]** をクリックします。
+5. **[API アクセスの追加]** ページで、 **[アクセス許可を選択します]** をクリックします。
    
     ![Creating an application](./media/graph-get-started/19.png)
 
-6. **[アクセスの有効化]** ページで、**[すべての ID リスク イベント情報の読み取り]** をクリックし、**[選択]** をクリックします。
+6. **[アクセスの有効化]** ページで、 **[すべての ID リスク イベント情報の読み取り]** をクリックし、 **[選択]** をクリックします。
    
     ![Creating an application](./media/graph-get-started/20.png)
 
-7. **[API アクセスの追加]** ページで、**[完了]** をクリックします。
+7. **[API アクセスの追加]** ページで、 **[完了]** をクリックします。
    
     ![Creating an application](./media/graph-get-started/21.png)
 
-8. **[必要なアクセス許可]** ページで **[アクセス許可の付与]** をクリックし、**[はい]** をクリックします。
+8. **[必要なアクセス許可]** ページで **[アクセス許可の付与]** をクリックし、 **[はい]** をクリックします。
    
     ![Creating an application](./media/graph-get-started/22.png)
 
@@ -131,7 +131,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
 ## <a name="get-an-access-key"></a>アクセス キーを取得する
 
-1. **[設定]** ページで、**[キー]** をクリックします。
+1. **[設定]** ページで、 **[キー]** をクリックします。
    
     ![Creating an application](./media/graph-get-started/23.png)
 
@@ -141,7 +141,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
     a. **[キーの説明]** テキスト ボックスに、説明を入力します (例: "*AADIP リスク イベント*")。
     
-    b. **[期間]** として、**[1 年]** を選びます。
+    b. **[期間]** として、 **[1 年]** を選びます。
 
     c. **[Save]** をクリックします。
    

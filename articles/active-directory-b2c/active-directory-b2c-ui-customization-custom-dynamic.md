@@ -2,20 +2,20 @@
 title: カスタム ポリシーを使用して Azure Active Directory B2C ユーザー インターフェイス (UI) を動的にカスタマイズする | Microsoft Docs
 description: 実行時に動的に変化する HTML5/CSS コンテンツで複数のブランド エクスペリエンスをサポートします。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c655a1ed7cefcc7af8a22ed1d869b1a2e8b81715
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e1abdfa8bc47f42f7373760370588c0bc41fc1dc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708881"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66507779"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C:カスタム ポリシーを使用して動的コンテンツを含む UI を構成する
 
@@ -66,11 +66,11 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 
 ## <a name="step-1-create-an-aspnet-web-app"></a>手順 1:ASP.NET Web アプリを作成する
 
-1. Visual Studio で、**[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択して、プロジェクトを作成します。
+1. Visual Studio で、 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択して、プロジェクトを作成します。
 
-2. **[新しいプロジェクト]** ウィンドウで、**[Visual C#]** > **[Web]** > **[ASP.NET Core Web アプリケーション (.NET Core)]** の順に選択します。
+2. **[新しいプロジェクト]** ウィンドウで、 **[Visual C#]**  >  **[Web]**  >  **[ASP.NET Core Web アプリケーション (.NET Core)]** の順に選択します。
 
-3. アプリケーションに (*Contoso.AADB2C.UI* などの) 名前を付けて、**[OK]** を選択します。
+3. アプリケーションに (*Contoso.AADB2C.UI* などの) 名前を付けて、 **[OK]** を選択します。
 
     ![新しい Visual Studio プロジェクトを作成する](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project1.png)
 
@@ -87,11 +87,11 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 カスタム HTML5 テンプレートは、Azure AD B2C 組み込み HTML5 テンプレートに基づいています。 [unified.html ファイル](https://login.microsoftonline.com/static/tenant/default/unified.cshtml)をダウンロードするか、テンプレートを[スターター パック](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip)からダウンロードできます。 この HTML5 ファイルを使用して、統合されたサインアップまたはサインイン ページを作成します。
 
 ### <a name="step-22-add-the-mvc-view"></a>手順 2.2:MVC ビューを追加する
-1. Views フォルダーの下の Home フォルダーを右クリックし、**[追加]** > **[新しいアイテム]** の順に選択します。
+1. Views フォルダーの下の Home フォルダーを右クリックし、 **[追加]**  >  **[新しいアイテム]** の順に選択します。
 
     ![MVC の新しいアイテムを追加する](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
 
-2. **[新しいアイテムの追加 - Contoso.AADB2C.UI]** ウィンドウで、**[Web]、[ASP.NET]** の順に選択します。
+2. **[新しいアイテムの追加 - Contoso.AADB2C.UI]** ウィンドウで、 **[Web]、[ASP.NET]** の順に選択します。
 
 3. **[MVC ビュー ページ]** を選択します。
 
@@ -121,7 +121,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 
 ### <a name="step-23-change-the-background-image"></a>手順 2.3:背景イメージを変更する
 
-`ID` の値 *background_background_image* を含む `<img>` 要素を見つけて、`src` の値を **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1**、または任意の背景イメージに置き換えます。
+`ID` の値 *background_background_image* を含む `<img>` 要素を見つけて、`src` の値を **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** 、または任意の背景イメージに置き換えます。
 
 ![ページ背景の変更](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
 
@@ -135,7 +135,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
         return View();
     }
     ```
-    このコードは、メソッドが*ビュー* テンプレート ファイルを使用して、ブラウザーへの応答をレンダリングする必要があることを指定します。 *ビュー* テンプレート ファイルの名前は明示的には指定しないため、MVC では、*/Views/Home* フォルダーの _unified.cshtml_ ビュー ファイルを使用するように既定で設定されます。
+    このコードは、メソッドが*ビュー* テンプレート ファイルを使用して、ブラウザーへの応答をレンダリングする必要があることを指定します。 *ビュー* テンプレート ファイルの名前は明示的には指定しないため、MVC では、 */Views/Home* フォルダーの _unified.cshtml_ ビュー ファイルを使用するように既定で設定されます。
     
     _unified_ メソッドを追加した後のコードは次のようになります。
     
@@ -144,11 +144,11 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 2. Web アプリをデバッグし、_unified_ ページにアクセスできることを確認します (例: `http://localhost:<Port number>/Home/unified`)。
 
 ### <a name="step-25-publish-to-azure"></a>手順 2.5:Azure に発行する
-1. **ソリューション エクスプローラー**で **Contoso.AADB2C.UI** プロジェクトを右クリックしてから、**[発行]** を選択します。
+1. **ソリューション エクスプローラー**で **Contoso.AADB2C.UI** プロジェクトを右クリックしてから、 **[発行]** を選択します。
 
     ![Microsoft Azure App Service への発行](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish1.png)
 
-2. **[Microsoft Azure App Service]** タイルを選択してから、**[発行]** を選択します。
+2. **[Microsoft Azure App Service]** タイルを選択してから、 **[発行]** を選択します。
 
     ![新しい Microsoft Azure App Service の作成](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-publish2.png)
 
@@ -168,11 +168,11 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 5. _unified_ ページの URL をコピーします (例: _https://<app_name>.azurewebsites.net/home/unified_)。
 
 ## <a name="step-3-configure-cors-in-azure-app-service"></a>手順 3:Azure App Service で CORS を構成する
-1. [Azure Portal](https://portal.azure.com/) で、**[App Services]** を選択してから、API アプリの名前を選択します。
+1. [Azure Portal](https://portal.azure.com/) で、 **[App Services]** を選択してから、API アプリの名前を選択します。
 
     ![Azure Portal で API アプリを選択する](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS1.png)
 
-2. **[設定]** セクションの **[API]** セクションで、**[CORS]** を選択します。
+2. **[設定]** セクションの **[API]** セクションで、 **[CORS]** を選択します。
 
     ![CORS 設定の選択](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS2.png)
 
@@ -216,7 +216,7 @@ HTML5 テンプレートを使用する準備はできています。 ただし�
     ![コンテンツ定義](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>手順 6:ポリシーをテナントにアップロードする
-1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、**[Azure AD B2C]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、 **[Azure AD B2C]** を選択します。
 
 2. **[Identity Experience Framework]** を選択します。
 
@@ -229,12 +229,12 @@ HTML5 テンプレートを使用する準備はできています。 ただし�
 6. *TrustFrameworkExtensions.xml* ファイルをアップロードし、検証に合格することを確認します。
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>手順 7:[今すぐ実行] を使用してカスタム ポリシーをテストする
-1. **[Azure AD B2C の設定]** を選択してから、**[Identity Experience Framework]** を選択します。
+1. **[Azure AD B2C の設定]** を選択してから、 **[Identity Experience Framework]** を選択します。
 
     >[!NOTE]
     >[今すぐ実行] を使用するには、テナントに少なくとも 1 つのアプリケーションが事前登録されている必要があります。 アプリケーションを登録する方法については、 Azure AD B2C の[概要](active-directory-b2c-get-started.md)に関する記事または[アプリケーションの登録](active-directory-b2c-app-registration.md)に関する記事を参照してください。
 
-2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、**[今すぐ実行]** を選択します。  
+2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、 **[今すぐ実行]** を選択します。  
     以前に作成した背景でカスタム HTML5 を表示できます。
 
     ![サインアップまたはサインイン ポリシー](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)
@@ -299,7 +299,7 @@ campaignId パラメーターを受け入れるように HomeController `unified
 
 2. *SignUpOrSignIn.xml* ポリシーを Azure AD B2C にアップロードします。
 
-3. アップロードした RP カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、**[今すぐ実行]** を選択します。  
+3. アップロードした RP カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、 **[今すぐ実行]** を選択します。  
     以前に表示されていたものと同じ背景イメージが表示されます。
 
 4. ブラウザーのアドレス バーから URL をコピーします。
@@ -339,7 +339,7 @@ campaignId パラメーターを受け入れるように HomeController `unified
 
 4. *TrustFrameworkExtensions.xml* ポリシーをアップロードし、検証に合格することを確認します。
 
-5. ポリシーのテストを実行し、**[今すぐサインアップ]** を選択して結果を確認します。
+5. ポリシーのテストを実行し、 **[今すぐサインアップ]** を選択して結果を確認します。
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>(省略可能) 完全なポリシー ファイルとコードをダウンロードする
 * [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)が提供されています。

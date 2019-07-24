@@ -15,11 +15,11 @@ ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bc579cd372616563b61e5ba04fe32612f3efb1c7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541249"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60549962"
 ---
 # <a name="persist-job-and-task-output"></a>ジョブとタスク出力を保持する
 
@@ -83,7 +83,7 @@ Batch ソリューションを設計する際は、ジョブとタスクの出�
 
 - **出力の取得**:タスク出力は、プール内のコンピューティング ノードから直接取得するか、タスク出力を保持した場合は Azure Storage や別のデータ ストアから取得することができます。 タスクの出力をコンピューティング ノードから直接取得するには、ファイル名とノード上の出力場所が必要です。 タスク出力を Azure Storage に保持する場合は、Azure Storage SDK を使用して出力ファイルをダウンロードするために、Azure Storage 内のファイルへの完全なパスが必要になります。
 
-- **出力の表示**:Azure portal で Batch のタスクに移動し、**[ノード上のファイル]** を選択すると、目的の出力ファイルだけでなく、タスクに関連するすべてのファイルが表示されます。 繰り返しになりますが、コンピューティング ノード上のファイルは、そのノードが存在し、タスクに設定したファイルのリテンション期間内である場合のみ使用可能です。 Azure Storage に保持したタスク出力を表示するには、Azure Portal を使用するか、[Azure Storage エクスプローラー][storage_explorer]などの Azure Storage クライアント アプリケーションを使用することができます。 Azure Storage 内の出力データを Portal または別のツールで表示するには、ファイルの場所を知っていて、その場所に直接移動できる必要があります。
+- **出力の表示**:Azure portal で Batch のタスクに移動し、 **[ノード上のファイル]** を選択すると、目的の出力ファイルだけでなく、タスクに関連するすべてのファイルが表示されます。 繰り返しになりますが、コンピューティング ノード上のファイルは、そのノードが存在し、タスクに設定したファイルのリテンション期間内である場合のみ使用可能です。 Azure Storage に保持したタスク出力を表示するには、Azure Portal を使用するか、[Azure Storage エクスプローラー][storage_explorer]などの Azure Storage クライアント アプリケーションを使用することができます。 Azure Storage 内の出力データを Portal または別のツールで表示するには、ファイルの場所を知っていて、その場所に直接移動できる必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

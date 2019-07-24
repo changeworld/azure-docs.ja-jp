@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.openlocfilehash: ef948b4dca3d3800a81ac52f3a73beee2558d21c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247230"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60769704"
 ---
 # <a name="building-an-accessible-application"></a>アクセス可能なアプリケーションをビルド
 

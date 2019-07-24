@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2cfb8f922819802834d9833ae614f5bc5b4ff886
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764474"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62125442"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
 
@@ -36,7 +36,7 @@ ms.locfileid: "57764474"
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Python Web ロールと Python worker ロールについて
-Azure には、アプリケーションの実行用として、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] という 3 つのコンピューティング モデルが用意されています。 これら 3 つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)*" を提供します。 クラウド サービス内で、Web ロールは、フロント エンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。worker ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
+Azure には、アプリケーションの実行用として、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] という 3 つのコンピューティング モデルが用意されています。 これら 3 つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)* " を提供します。 クラウド サービス内で、Web ロールは、フロント エンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。worker ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
 
 詳細については、「[クラウド サービスとは]」を参照してください。
 
@@ -48,7 +48,7 @@ Azure には、アプリケーションの実行用として、[Azure App Servic
 > 
 
 ## <a name="project-creation"></a>プロジェクトの作成
-Visual Studio で、**[新しいプロジェクト]** ダイアログ ボックスの **[Python]** から **[Azure クラウド サービス]** を選択します。
+Visual Studio で、 **[新しいプロジェクト]** ダイアログ ボックスの **[Python]** から **[Azure クラウド サービス]** を選択します。
 
 ![[新しいプロジェクト] ダイアログ](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
@@ -308,18 +308,18 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 PTVS (Python Tools for Visual Studio) はエミュレーターでの起動をサポートしていますが、デバッグ操作 (ブレークポイントなど) は機能しません。
 
-Web ロールまたは worker ロールをデバッグするには、対象となるロール プロジェクトをスタートアップ プロジェクトに設定したうえで、デバッグするようにしてください。  複数のスタートアップ プロジェクトを設定することもできます。  ソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** を選択します。
+Web ロールまたは worker ロールをデバッグするには、対象となるロール プロジェクトをスタートアップ プロジェクトに設定したうえで、デバッグするようにしてください。  複数のスタートアップ プロジェクトを設定することもできます。  ソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。
 
 ![ソリューション スタートアップ プロジェクト プロパティ](./media/cloud-services-python-ptvs/startup.png)
 
 ## <a name="publish-to-azure"></a>Azure に発行する
-クラウド サービス プロジェクトを発行するには、対象のクラウド サービス プロジェクトをソリューション内で右クリックし、**[発行]** を選択します。
+クラウド サービス プロジェクトを発行するには、対象のクラウド サービス プロジェクトをソリューション内で右クリックし、 **[発行]** を選択します。
 
 ![Microsoft Azure 発行サインイン](./media/cloud-services-python-ptvs/publish-sign-in.png)
 
 ウィザードに従って操作します。 必要に応じて、リモート デスクトップを有効にします。 リモート デスクトップは、デバッグの必要があるときに便利です。
 
-設定が済んだら、**[発行]** をクリックします。
+設定が済んだら、 **[発行]** をクリックします。
 
 出力ウィンドウにいくつかの進行状況が表示された後、[Microsoft Azure のアクティビティ ログ] ウィンドウが表示されます。
 

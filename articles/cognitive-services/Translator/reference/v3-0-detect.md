@@ -3,19 +3,19 @@ title: Translator Text API の Detect メソッド
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の Detect メソッドを使用します。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: fa618c5c623a631e7a88f8235a0b7b16fcb2bc88
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: swmachan
+ms.openlocfilehash: 6e90626759b3c78d98c8c0f6e32d37c1440385cd
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578659"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357740"
 ---
 # <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
 
@@ -158,7 +158,7 @@ JSON 応答の例を次に示します。
   </tr>
   <tr>
     <td>429</td>
-    <td>呼び出し元からの要求が多すぎます。</td>
+    <td>クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。</td>
   </tr>
   <tr>
     <td>500</td>

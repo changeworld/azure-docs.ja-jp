@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0e600204479bc54a590df6bf1bbcd634eaac7fc
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: b17ef24d753041934f68f3daee950aaa0bec46ba
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65605643"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734742"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>クイック スタート:Azure Active Directory におけるグループの名前付けポリシー
 
@@ -31,17 +31,17 @@ ms.locfileid: "65605643"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal-preview"></a>Azure portal を使用してテナントのグループ名前付けポリシーを構成する (プレビュー)
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>Azure portal を使用してテナントのグループ名前付けポリシーを構成する
 
 1. ユーザー管理者アカウントを使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 1. **[グループ]** を選択し、 **[名前付けポリシー]** を選択して [名前付けポリシー] ページを開きます。
 
-    ![管理センターで [名前付けポリシー] ページを開く](./media/groups-naming-policy/policy-preview.png)
+    ![管理センターで [名前付けポリシー] ページを開く](./media/groups-naming-policy/policy.png)
 
 ### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>プレフィックス/サフィックス名前付けポリシーを表示または編集する
 
 1. **[名前付けポリシー]** ページで、 **[グループの名前付けポリシー]** を選択します。
-1. 名前付けポリシーの一部として適用する属性または文字列を選択することで、現在のプレフィックスまたはサフィックス名前付けポリシーを個別に表示または編集できます。
+1. 名前付けポリシーの一部として強制する属性または文字列を選択することで、現在のプレフィックスまたはサフィックス名前付けポリシーを個別に表示または編集できます。
 1. プレフィックスまたはサフィックスを一覧から削除するには、プレフィックスまたはサフィックスを選択して **[削除]** を選択します。 複数の項目を同時に削除できます。
 1. **[保存]** を選択して、ポリシーへの変更を有効にします。
 
@@ -49,9 +49,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[名前付けポリシー]** ページで、 **[ブロックされている単語]** を選択します。
 
-    ![名前付けポリシーの禁止単語一覧の編集とアップロード](./media/groups-naming-policy/blockedwords-preview.png)
+    ![名前付けポリシーのブロックされている単語の一覧の編集とアップロード](./media/groups-naming-policy/blockedwords.png)
 
-1. **[ダウンロード]** を選択して、カスタム禁止言語の現在の一覧を表示または編集します。
+1. **[ダウンロード]** を選択して、現在のカスタムのブロックされている単語の一覧を表示または編集します。
 1. ファイル アイコンを選択して、カスタム禁止単語の新しい一覧をアップロードします。
 1. **[保存]** を選択して、ポリシーへの変更を有効にします。
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-### <a name="remove-the-naming-policy-using-azure-portal-preview"></a>Azure portal を使用して名前付けポリシーを削除する (プレビュー)
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Azure portal を使用して名前付けポリシーを削除する
 
 1. **[名前付けポリシー]** ページで、 **[ポリシーの削除]** を選択します。
 1. 削除を確定すると、すべてのプレフィックス/サフィックス名前付けポリシーとカスタム禁止単語を含め、名前付けポリシーが削除されます。

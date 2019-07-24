@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: aljo, subramar
-ms.openlocfilehash: ecb7ac4d3359142d3aef247e4b918f517e10c3bb
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.author: subramar
+ms.openlocfilehash: 2dcb678e8350ae0de3317db3682f0e51e27ab6f5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926129"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621930"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
@@ -204,7 +204,7 @@ ms.locfileid: "64926129"
    | --- | --- | --- |
    |優先順位 |2000 | |
    |Name |Custom_Dns  | |
-   |ソース |VirtualNetwork | |
+   |source |VirtualNetwork | |
    |宛先 | VirtualNetwork | |
    |Service | DNS (UDP/53) | |
    |Action | ALLOW  | |

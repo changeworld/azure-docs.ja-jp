@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 758cb47760f4a15e262a4d682089ac7d9fee64e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900507"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60326279"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip Tickets サンプル SaaS アプリを使用する場合の一般的なガイダンス
 
@@ -33,12 +33,12 @@ ms.locfileid: "57900507"
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. **[複製またはダウンロード]** をクリックします。
 3. **[Download zip]** をクリックして、ファイルを保存します。
-4. zip ファイルを右クリックし、**[プロパティ]** を選びます。 zip ファイルの名前は、リポジトリ名に対応します。 (例:  _WingtipTicketsSaaS-DbPerTenant-master.zip_)
+4. zip ファイルを右クリックし、 **[プロパティ]** を選びます。 zip ファイルの名前は、リポジトリ名に対応します。 (例: _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. **[全般]** タブで **[ブロックの解除]** を選択します。
 6. Click **OK**.
 7. ファイルを解凍します。
 
-スクリプトは、*..\\Learning Modules* フォルダーにあります。
+スクリプトは、 *..\\Learning Modules* フォルダーにあります。
 
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Wingtip Tickets PowerShell スクリプトを操作する
@@ -57,7 +57,7 @@ ms.locfileid: "57900507"
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>F5 キーを押してスクリプトを実行する
 
-複数のスクリプトでは *$PSScriptRoot* を使用してフォルダー間を移動します。*$PSScriptRoot* が評価されるのは、**F5** キーを押してスクリプトが実行される場合のみです。  選択項目を強調表示して実行する (**F8** キー) とエラーが発生するため、スクリプトの実行時には **F5** キーを押してください。
+複数のスクリプトでは *$PSScriptRoot* を使用してフォルダー間を移動します。 *$PSScriptRoot* が評価されるのは、**F5** キーを押してスクリプトが実行される場合のみです。  選択項目を強調表示して実行する (**F8** キー) とエラーが発生するため、スクリプトの実行時には **F5** キーを押してください。
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>スクリプトをステップスルーして実装を確認する
 
@@ -66,7 +66,7 @@ ms.locfileid: "57900507"
 PowerShell スクリプトの調査およびステップ実行に関するヒント
 
 - PowerShell ISE で **Demo-** スクリプトを開きます。
-- **F5** キーを使って実行または続行します (*$PSScriptRoot* は選択したスクリプトの実行時に評価されないため、**F8** キーの使用はお勧めできません)。
+- **F5** キーを使って実行または続行します ( *$PSScriptRoot* は選択したスクリプトの実行時に評価されないため、**F8** キーの使用はお勧めできません)。
 - 行をクリックまたは選択して **F9** キーを押し、ブレークポイントを設定します。
 - **F10** キーを使用して、関数またはスクリプトの呼び出しをステップ オーバーします。
 - **F11** キーを使用して、関数またはスクリプトの呼び出しにステップ インします。
@@ -79,7 +79,7 @@ PowerShell スクリプトの調査およびステップ実行に関するヒン
 
 デプロイでは最初に、SQL Database サーバーが接続するテナントとカタログがあります。 サーバーの名前は、データベース テナント パターンに依存します (詳細については以下を参照してください)。 
 
-   - **スタンドアロン アプリケーション:** テナントごとのサーバー (例:  *contosoconcerthall-&lt;ユーザー&gt;* サーバー) および *catalog-sa-&lt;ユーザー&gt;*
+   - **スタンドアロン アプリケーション:** テナントごとのサーバー (例: *contosoconcerthall-&lt;ユーザー&gt;* サーバー) および *catalog-sa-&lt;ユーザー&gt;*
    - **テナントごとのデータベース:** *tenants1-dpt-&lt;ユーザー&gt;* および *catalog-dpt-&lt;ユーザー&gt;* サーバー
    - **マルチテナント データベース:** *tenants1-mt-&lt;ユーザー&gt;* および *catalog-mt-&lt;ユーザー&gt;* サーバー
 
@@ -87,10 +87,10 @@ PowerShell スクリプトの調査およびステップ実行に関するヒン
 
 
 1. *SSMS* を開き、テナントに接続します。 サーバーの名前は、選択したデータベース テナント パターンに依存します (詳細については以下を参照してください)。
-    - **スタンドアロン アプリケーション:** 個々のテナントのサーバー (例:  *contosoconcerthall-&lt;ユーザー&gt;.database.windows.net*) 
+    - **スタンドアロン アプリケーション:** 個々のテナントのサーバー (例: *contosoconcerthall-&lt;ユーザー&gt;.database.windows.net*) 
     - **テナントごとのデータベース:** *tenants1-dpt-&lt;ユーザー&gt;.database.windows.net*
     - **マルチテナント データベース:** *tenants1-mt-&lt;ユーザー&gt;.database.windows.net* 
-2. **[接続]** > **[データベース エンジン...]** をクリックします。
+2. **[接続]**  >  **[データベース エンジン...]** をクリックします。
 
    ![カタログ サーバー](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 

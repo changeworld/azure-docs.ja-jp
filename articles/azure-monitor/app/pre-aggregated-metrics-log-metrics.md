@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 96d4c2c8d6c2dd7722b7377dd7a0ffd42acd3126
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9520cbb9973071bf1c52266d7718837607c1d10f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572521"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66256130"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights のログベースのメトリックと事前に集計されたメトリック
 
@@ -34,7 +34,7 @@ ms.locfileid: "64572521"
 
 ## <a name="pre-aggregated-metrics"></a>事前に集計されたメトリック
 
-ログベースのメトリックに加え、2018 年の秋に、Application Insights チームによってパブリック プレビュー版のメトリックが提供されました。このメトリックは、タイム シリーズ用に最適化された特殊なリポジトリに格納されます。 新しいメトリックは、多くのプロパティを含む個々のイベントとして保持されなくなりました。 代わりに、事前に集計されたタイム シリーズとして格納され、主なディメンションのみが含まれます。 これにより、新しいメトリックはクエリ時に適したものとなります。データはより速く取得され、必要となるコンピューティング能力が減ります。 その結果、[メトリックのディメンションに関するほぼリアルタイムのアラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)や応答性の高い[ダッシュボード](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards)など、新しいシナリオが有効になります。
+ログベースのメトリックに加え、2018 年の秋に、Application Insights チームによってパブリック プレビュー版のメトリックが提供されました。このメトリックは、タイム シリーズ用に最適化された特殊なリポジトリに格納されます。 新しいメトリックは、多くのプロパティを含む個々のイベントとして保持されなくなりました。 代わりに、事前に集計されたタイム シリーズとして格納され、主なディメンションのみが含まれます。 これにより、新しいメトリックはクエリ時に適したものとなります。データはより速く取得され、必要となるコンピューティング能力が減ります。 その結果、[メトリックのディメンションに関するほぼリアルタイムのアラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)や応答性の高い[ダッシュボード](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)など、新しいシナリオが有効になります。
 
 > [!IMPORTANT]
 > Application Insights では、ログベースのメトリックと事前に集計されたメトリックの両方が共存します。 2 つを区別するため、Application Insights UX では、事前に集計されたメトリックを "標準メトリック (プレビュー)" と呼ぶようになり、イベントからの従来のメトリックは "ログベースのメトリック" という名前に変更されました。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: c840764dc978a8dacb3450c0aca5e5d93284b8a6
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260113"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61127543"
 ---
 # <a name="change-the-reserved-unit-type"></a>予約ユニットの種類の変更
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Media Services アカウントは、メディア処理タスクを処理する�
    
     選択した予約ユニットの種類の予約ユニット数を変更するには、画面上部にある **[Media Served Units]\(メディア予約ユニット\)** スライダーを使用します。
    
-    **[占有ユニットの種類]** を変更するには、**[Speed of reserved processing units]\(占有処理ユニットの速度\)** バーをクリックします。 その後、次の必要な価格レベルを選択します。S1、S2、S3。
+    **[占有ユニットの種類]** を変更するには、 **[Speed of reserved processing units]\(占有処理ユニットの速度\)** バーをクリックします。 その後、次の必要な価格レベルを選択します。S1、S2、S3。
    
 3. [保存] ボタンを押して、変更を保存します。
    

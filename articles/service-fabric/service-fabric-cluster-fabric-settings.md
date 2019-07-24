@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/10/2019
 ms.author: aljo
-ms.openlocfilehash: 46c9b37e9bb8613b34dea6705320f5689eeb51d8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: e992aae17f1217803b411a49c5d942efc501fbdc
+ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526539"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65606981"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -41,7 +41,7 @@ ms.locfileid: "59526539"
 |CrlCheckingFlag|uint、既定値は 0x40000000 |動的| アプリケーション/サービス証明書チェーン検証のフラグ。例: CRL checking 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY。0 に設定すると、CRL チェックが無効になります。サポートされている値の一覧については、CertGetCertificateChain に関するページ (https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx) の「dwFlags」を参照してください  |
 |DefaultHttpRequestTimeout |時間 (秒単位)、 既定値は 120 です |動的|timespan を秒単位で指定します。  HTTP アプリケーション ゲートウェイで処理される HTTP 要求の既定の要求タイムアウトを指定します。 |
 |ForwardClientCertificate|ブール値、既定値は FALSE|動的|false に設定すると、リバース プロキシはクライアント証明書を要求しません。true に設定すると、リバース プロキシは SSL ハンドシェイク中にクライアント証明書を要求し、base64 でエンコードされた PEM 書式設定文字列を X-Client-Certificate というヘッダーのサービスに転送します。サービスは、証明書データを検査した後、適切な状態コードで要求に失敗する可能性があります。 この状況で、クライアントが証明書を提示しない場合、リバース プロキシは空のヘッダーを転送し、サービスによって処理されます。 リバース プロキシは透明なレイヤーとして機能します。 詳細については、[クライアント証明書の認証の設定](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy)に関する記事を参照してください。 |
-|GatewayAuthCredentialType |string、既定値は "None" |静的| HTTP アプリケーション ゲートウェイ エンドポイントで使用するセキュリティ資格情報の種類を示します。有効な値は "None/X509 です。 |
+|GatewayAuthCredentialType |string、既定値は "None" |静的| HTTP アプリケーション ゲートウェイ エンドポイントで使用するセキュリティ資格情報の種類を示します。有効な値は None/X509 です。 |
 |GatewayX509CertificateFindType |string、既定値は "FindByThumbprint" |動的| GatewayX509CertificateStoreName で指定されたストア内での証明書の検索方法を示します。サポートされる値:FindByThumbprint、FindBySubjectName。 |
 |GatewayX509CertificateFindValue | string、既定値は "" |動的| HTTP アプリケーション ゲートウェイの証明書の検索に使用する検索フィルター値。 この証明書は HTTPS エンドポイントで構成されます。サービスで必要な場合は、この証明書を使用してアプリケーションの ID を検証することもできます。 FindValue が最初に検索され、これが存在しない場合は、FindValueSecondary が検索されます。 |
 |GatewayX509CertificateFindValueSecondary | string、既定値は "" |動的|HTTP アプリケーション ゲートウェイの証明書の検索に使用する検索フィルター値。 この証明書は HTTPS エンドポイントで構成されます。サービスで必要な場合は、この証明書を使用してアプリケーションの ID を検証することもできます。 FindValue が最初に検索され、これが存在しない場合は、FindValueSecondary が検索されます。|
@@ -50,7 +50,7 @@ ms.locfileid: "59526539"
 |IgnoreCrlOfflineError|ブール値、既定値は TRUE|動的|アプリケーション/サービス証明書の確認で CRL オフライン エラーを無視するかどうか。 |
 |IsEnabled |ブール値、既定値は false |静的| HttpApplicationGateway を有効または無効にします。 HttpApplicationGateway は既定で無効になっています。有効にするには、この構成を設定する必要があります。 |
 |NumberOfParallelOperations | uint、既定値は 5000 |静的|HTTP サーバー キューに送信する読み取りの数。 HttpGateway が対応できる同時要求の数を制御します。 |
-|RemoveServiceResponseHeaders|string、既定値は "Date; Server"|静的|サービス応答がクライアントに転送される前に応答から削除される応答ヘッダーの、セミコロン/コンマ区切りのリスト。 空の文字列に設定されている場合は、サービスから返されたすべてのヘッダーをそのまま渡します。 つまり  データとサーバーを上書きしないでください |
+|RemoveServiceResponseHeaders|string、既定値は "Date; Server"|静的|サービス応答がクライアントに転送される前に応答から削除される応答ヘッダーの、セミコロン/コンマ区切りのリスト。 空の文字列に設定されている場合は、サービスから返されたすべてのヘッダーをそのまま渡します。 つまり データとサーバーを上書きしないでください |
 |ResolveServiceBackoffInterval |時間 (秒単位)、既定値は 5 |動的|timespan を秒単位で指定します。  失敗したサービス解決操作を再試行するまでの既定のバックオフ間隔を指定します。 |
 |SecureOnlyMode|ブール値、既定値は FALSE|動的| SecureOnlyMode: true:リバース プロキシの転送先は、セキュリティで保護されたエンドポイントを公開するサービスだけです。 false:リバース プロキシは、セキュリティで保護された/セキュリティで保護されないエンドポイントに要求を転送できます。 詳細については、[リバース プロキシ エンドポイントの選択ロジック](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints)に関する記事を参照してください。  |
 |ServiceCertificateThumbprints|string、既定値は ""|動的|リバース プロキシが信頼できるリモート証明書のサムプリントのコンマで区切られた一覧。 詳細については、[リバース プロキシのセキュリティで保護された接続](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services)に関する記事を参照してください。 |
@@ -806,7 +806,7 @@ ms.locfileid: "59526539"
 |ContainerNetworkSetup|ブール値、既定値は FALSE| 静的 |コンテナー ネットワークを設定するかどうか。|
 |FabricDataRoot |String | 禁止 |Service Fabric のデータ ルート ディレクトリ。 Azure の場合、既定値は d:\svcfab です。 |
 |FabricLogRoot |String | 禁止 |Service Fabric のログ ルート ディレクトリ。 このディレクトリには、SF のログとトレースが配置されます。 |
-|NodesToBeRemoved|string、既定値は ""| 動的 |構成のアップグレードの一環として削除する必要があるノード  (スタンドアロンのデプロイのみ)。|
+|NodesToBeRemoved|string、既定値は ""| 動的 |構成のアップグレードの一環として削除する必要があるノード (スタンドアロンのデプロイのみ)。|
 |ServiceRunAsAccountName |String | 禁止 |Fabric ホスト サービスを実行するアカウント名。 |
 |SkipContainerNetworkResetOnReboot|ブール値、既定値は FALSE|禁止|再起動時のコンテナー ネットワークのリセットをスキップするかどうか。|
 |SkipFirewallConfiguration |ブール値、既定値は false | 禁止 |ファイアウォールの設定をシステムで設定する必要があるかどうかを指定します。 これは、Windows ファイアウォールを使用する場合のみ適用されます。 サード パーティ製のファイアウォールを使用する場合、システムとアプリケーション用のポートを開く必要があります。 |

@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: a49d30d3058a6cf3ce82d56076f348861ad631ff
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438620"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60585136"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Azure SQL Database でのクエリのパフォーマンスを手動でチューニングする
 

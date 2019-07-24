@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: 5c4e20177c1b334a34f7ce9328dfaa7bd8c66d3d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545737"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60656576"
 ---
 # <a name="using-chef-with-azure"></a>Azure で Chef を使用する
 [Chef](https://www.chef.io) は、Azure 上の仮想マシン インフラストラクチャをコードに変換する強力な自動化プラットフォームです。 Chef は、インフラストラクチャがそのサイズに関係なく、ネットワーク経由で構成、デプロイ、および管理される方法を自動化します。

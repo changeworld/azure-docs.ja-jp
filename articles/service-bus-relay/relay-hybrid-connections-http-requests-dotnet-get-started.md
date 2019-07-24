@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 5bb45ff87f558e1142b68af01147ad55386ee28f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 37227b7d0ea1b3630a3c2ce991a61543e6a1503d
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888061"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66428251"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>.NET での Relay ハイブリッド接続 HTTP 要求の概要
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -67,7 +67,7 @@ Visual Studio で C# コンソール アプリケーションを作成して、R
 1. クライアント アプリケーションを実行します。 クライアント ウィンドウに `hello!` が表示されます。 クライアントは HTTP 要求をサーバーに送信し、サーバーは `hello!` で応答しました。 
 3. ここで、コンソール ウィンドウを閉じるには、両方のコンソール ウィンドウで **Enter** キーを押します。 
 
-これで、エンド ツー エンドのハイブリッド接続アプリケーションを作成できました。
+これで、完全なハイブリッド接続のアプリケーションが作成されました。
 
 ## <a name="next-steps"></a>次の手順
 

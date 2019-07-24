@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475409"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561830"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid の Event Hubs 用のイベント スキーマ
 
@@ -57,30 +57,30 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
-| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
-| data | オブジェクト | Event Hub イベントのデータ。 |
-| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | string | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | イベントの一意識別子。 |
+| data | object | Event Hub イベントのデータ。 |
+| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| fileUrl | 文字列 | キャプチャ ファイルのパス。 |
-| fileType | 文字列 | キャプチャ ファイルのファイルの種類。 |
-| partitionId | 文字列 | シャード ID。 |
+| fileUrl | string | キャプチャ ファイルのパス。 |
+| fileType | string | キャプチャ ファイルのファイルの種類。 |
+| partitionId | string | シャード ID。 |
 | sizeInBytes | integer | ファイル サイズ。 |
 | eventCount | integer | ファイル内のイベントの数。 |
 | firstSequenceNumber | integer | キューの最小のシーケンス番号。 |
 | lastSequenceNumber | integer | キューの最後のシーケンス番号。 |
-| firstEnqueueTime | 文字列 | キューの最初の時間。 |
-| lastEnqueueTime | 文字列 | キューの最後の時間。 |
+| firstEnqueueTime | string | キューの最初の時間。 |
+| lastEnqueueTime | string | キューの最後の時間。 |
 
 ## <a name="next-steps"></a>次の手順
 

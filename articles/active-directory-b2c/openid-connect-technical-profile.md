@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 内のカスタム ポリシーで OpenId Connect 技術プロファイルを定義する |Microsoft Docs
 description: Azure Active Directory B2C 内のカスタム ポリシーで OpenId Connect 技術プロファイルを定義します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9ec323d4596c866da33c4a8ff5499bf2ad92a8bd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6d16415aa5111388ec2d2a1009ff477574ae42c5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710315"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66512907"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenId Connect 技術プロファイルを定義する
 
@@ -76,17 +76,17 @@ Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.n
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | client_id | はい | ID プロバイダーのアプリケーション識別子。 |
-| IdTokenAudience | いいえ  | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
+| IdTokenAudience | いいえ | id_token の対象ユーザー。 指定される場合、Azure AD B2C は、トークンが ID プロバイダーにより返された要求内にあり、そして指定されたものと等しいかどうかをチェックします。 |
 | METADATA | はい | OpenID Connect Discovery 仕様に従ってフォーマットされた JSON 構成ドキュメントをポイントする URL。既知の openid 構成エンドポイントとも呼ばれます。 |
-| ProviderName | いいえ  | ID プロバイダーの名前。 |
-| response_types | いいえ  | OpenID Connect Core 1.0 仕様に準拠した応答の種類。 指定できる値: `id_token`、`code`、または `token`。 |
-| response_mode | いいえ  | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 指定できる値: `query`、`form_post` (既定)、または `fragment`。 |
-| scope | いいえ  | OpenID Connect Core 1.0 の仕様に従って定義される、要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |
-| HttpBinding | いいえ  | アクセス トークンと要求トークンのエンドポイントに予期される HTTP バインド。 指定できる値: `GET` または `POST`。  |
-| ValidTokenIssuerPrefixes | いいえ  | Azure Active Directory などのマルチテナント ID プロバイダーを使用するときに、各テナントにサインインするために使用できるキー。 |
-| UsePolicyInRedirectUri | いいえ  | リダイレクト URI を構築するときにポリシーを使用するかどうかを示します。 ID プロバイダーでアプリケーションを構成するときは、リダイレクト URI を指定する必要があります。 リダイレクト URI は、Azure AD B2C、`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` をポイントします (login.microsoftonline.com は your-tenant-name.b2clogin.com によって変わることがあります)。  `false` を指定した場合は、使用するポリシーごとにリダイレクト URI を追加する必要があります。 (例: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`)。 |
-| MarkAsFailureOnStatusCode5xx | いいえ  | Http 状態コードが 5xx の範囲にある場合、外部サービスへの要求を失敗としてマークする必要があるかどうかを示します。 既定では、 `false`です。 |
-| DiscoverMetadataByTokenIssuer | いいえ  | JWT トークンで発行者を使用して OIDC メタデータを検出する必要があるかどうかを示します。 |
+| ProviderName | いいえ | ID プロバイダーの名前。 |
+| response_types | いいえ | OpenID Connect Core 1.0 仕様に準拠した応答の種類。 指定できる値: `id_token`、`code`、または `token`。 |
+| response_mode | いいえ | Azure AD B2C に結果を返信するために、ID プロバイダーが使用するメソッド。 指定できる値: `query`、`form_post` (既定)、または `fragment`。 |
+| scope | いいえ | OpenID Connect Core 1.0 の仕様に従って定義される、要求の範囲。 たとえば、`openid`、`profile`、`email` などです。 |
+| HttpBinding | いいえ | アクセス トークンと要求トークンのエンドポイントに予期される HTTP バインド。 指定できる値: `GET` または `POST`。  |
+| ValidTokenIssuerPrefixes | いいえ | Azure Active Directory などのマルチテナント ID プロバイダーを使用するときに、各テナントにサインインするために使用できるキー。 |
+| UsePolicyInRedirectUri | いいえ | リダイレクト URI を構築するときにポリシーを使用するかどうかを示します。 ID プロバイダーでアプリケーションを構成するときは、リダイレクト URI を指定する必要があります。 リダイレクト URI は、Azure AD B2C、`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` をポイントします (login.microsoftonline.com は your-tenant-name.b2clogin.com によって変わることがあります)。  `false` を指定した場合は、使用するポリシーごとにリダイレクト URI を追加する必要があります。 (例: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`)。 |
+| MarkAsFailureOnStatusCode5xx | いいえ | Http 状態コードが 5xx の範囲にある場合、外部サービスへの要求を失敗としてマークする必要があるかどうかを示します。 既定では、 `false`です。 |
+| DiscoverMetadataByTokenIssuer | いいえ | JWT トークンで発行者を使用して OIDC メタデータを検出する必要があるかどうかを示します。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

@@ -13,11 +13,11 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: d278fd6ed06b58db052154e632e565de36853e77
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464893"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60331436"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Azure SQL Database との接続に関する一般的な問題のトラブルシューティング
 
@@ -71,7 +71,7 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 ## <a name="troubleshoot-persistent-errors"></a>永続的なエラーのトラブルシューティング
 アプリケーションが Azure SQL Database の接続に引き続き失敗する場合は、一般的に、次のいずれかの問題が考えられます。
 
-* ファイアウォールの構成:  Azure SQL データベースまたはクライアント側のファイアウォールにより、Azure SQL Database への接続がブロックされています。
+* ファイアウォールの構成: Azure SQL データベースまたはクライアント側のファイアウォールにより、Azure SQL Database への接続がブロックされています。
 * クライアント側のネットワークの再構成: 新しい IP アドレス、プロキシ サーバーなど。
 * ユーザー エラー: 接続パラメーター (接続文字列のサーバー名など) の入力間違いなど。
 

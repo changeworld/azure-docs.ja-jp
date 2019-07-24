@@ -11,11 +11,11 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162392"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60381197"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:ADSyncConfig PowerShell リファレンス
 次のドキュメントでは、Azure AD Connect に含まれる ADSyncConfig.psm1 PowerShell モジュールの参照情報を示します。
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
@@ -286,7 +286,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
@@ -453,7 +453,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
@@ -615,7 +615,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
@@ -776,7 +776,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
@@ -897,7 +897,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
@@ -1062,7 +1062,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
@@ -1193,7 +1193,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
@@ -1355,7 +1355,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
@@ -1398,4 +1398,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>共通パラメーター
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。

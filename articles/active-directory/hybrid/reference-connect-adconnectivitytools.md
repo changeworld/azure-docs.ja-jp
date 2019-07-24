@@ -5,17 +5,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40b4be9aca5243b80151afac0ae221f0d44509c5
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650515"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473789"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:ADConnectivityTools PowerShell リファレンス
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="confirm-forestexists"></a>Confirm-ForestExists
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="confirm-functionallevel"></a>Confirm-FunctionalLevel
 
@@ -254,7 +254,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
@@ -344,7 +344,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="confirm-targetsarereachable"></a>Confirm-TargetsAreReachable
 
@@ -413,7 +413,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="confirm-validdomains"></a>Confirm-ValidDomains
 
@@ -513,7 +513,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
@@ -567,7 +567,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="get-domainfqdndata"></a>Get-DomainFQDNData
 
@@ -656,7 +656,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="get-forestfqdn"></a>Get-ForestFQDN
 
@@ -726,7 +726,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="start-connectivityvalidation"></a>Start-ConnectivityValidation
 
@@ -808,7 +808,7 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。
 
 ## <a name="start-networkconnectivitydiagnosistools"></a>Start-NetworkConnectivityDiagnosisTools
 
@@ -962,4 +962,4 @@ Accept wildcard characters: False
 #### <a name="commonparameters"></a>共通パラメーター
 
 このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
-詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216)) を参照してください。
+詳細については、「about_CommonParameters」 (https://go.microsoft.com/fwlink/?LinkID=113216) ) を参照してください。

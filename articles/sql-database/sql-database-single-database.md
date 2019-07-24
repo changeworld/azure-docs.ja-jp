@@ -7,17 +7,17 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 4406789e3f9a10ff814aca0c2fd114de8a2abb69
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572672"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65794385"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースとは
 
@@ -30,7 +30,7 @@ ms.locfileid: "64572672"
 
 ## <a name="dynamic-scalability"></a>動的スケーラビリティ
 
-最初に低い価格/パフォーマンスのサービス レベルで月額の低い小さな単一データベースにアプリをビルドし、後でいつでもソリューションのニーズに合わせて高い価格/パフォーマンスのサービス レベルに手動またはプログラムで[サービス レベルを変更する](sql-database-single-database-scale.md)ことができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+最初のアプリは、サーバーレス (プレビュー) コンピューティング層の小さな単一データベース、またはプロビジョニングされたコンピューティング層の小さなコンピューティング サイズで構築できます。 ソリューションのニーズに合わせて、いつでも[コンピューティング層またはサービス層](sql-database-single-database-scale.md)を手動またはプログラムで変更します。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
 
 ## <a name="single-databases-and-elastic-pools"></a>単一データベースとエラスティック プール
 

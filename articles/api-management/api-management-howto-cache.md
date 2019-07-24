@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577018"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60527432"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>キャッシュを追加して Azure API Management のパフォーマンスを向上させる
 
@@ -57,7 +57,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 4. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
 5. **[GetSpeakers]** を選択します。
 6. 画面の上部の **[デザイン]** タブを選択します。
-7. **[受信処理]** セクションで、**[</>]** アイコンをクリックします。
+7. **[受信処理]** セクションで、 **[</>]** アイコンをクリックします。
 
     ![コード エディター](media/api-management-howto-cache/code-editor.png)
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 05/17/2019
-ms.openlocfilehash: a6a681ace95f9bab3c77e4a0f9982a2281c778b8
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.date: 06/20/2019
+ms.openlocfilehash: 4e28da9ab9502e2dac4fc08452a46841c4e50b66
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966430"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466808"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
@@ -41,7 +41,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 > [!Note]
 > **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
-> 無料アカウントを使用して Azure Databricks クラスターを作成するには、クラスターを作成する前に、プロファイルにアクセスし、サブスクリプションを**従量課金制**に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。
+> 無料アカウントをお持ちの場合は、お使いのプロファイルにアクセスし、サブスクリプションを **[従量課金制]** に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 次に、リージョン内の vCPU について[使用制限を削除し](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)、[クォータの増加を依頼](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)します。 Azure Databricks ワークスペースを作成するときに、 **[Trial (Premium - 14-Days Free DBUs)]\(試用版 (Premium - 14 日間の無料 DBU)\)** の価格レベルを選択し、ワークスペースから 14 日間無料の Premium Azure Databricks DBU にアクセスできるようにします。
      
 ## <a name="prerequisites"></a>前提条件
 
@@ -100,7 +100,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
     |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
-    |**場所**     | **[米国西部 2]** を選択します。  使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。      |
+    |**Location**     | **[米国西部 2]** を選択します。  使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。      |
     |**価格レベル**     |  **[Standard]** を選択します。     |
 
 3. アカウントの作成には数分かかります。 操作の状態を監視するには、上部の進行状況バーを確認します。
@@ -122,8 +122,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 4. 次のフィールドに値を入力し、他のフィールドの既定値はそのまま使用します。
 
     * クラスターの名前を入力します。
-
-    * この記事では、**5.1** ランタイムを使用してクラスターを作成します。
 
     * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスを必ずオンにします。 クラスターが使われていない場合は、クラスターを終了するまでの時間 (分単位) を指定します。
 
@@ -150,6 +148,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    **セッションの構成**
 
    ```scala
+   val appID = "<appID>"
+   val password = "<password>"
+   val fileSystemName = "<file-system-name>"
+   val tenantID = "<tenant-id>"
+
    spark.conf.set("fs.azure.account.auth.type", "OAuth")
    spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
    spark.conf.set("fs.azure.account.oauth2.client.id", "<appID>")
@@ -163,23 +166,29 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    **アカウントの構成**
 
    ```scala
-   spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
-   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<appID>")
-   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<password>")
-   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   val storageAccountName = "<storage-account-name>"
+   val appID = "<app-id>"
+   val password = "<password>"
+   val fileSystemName = "<file-system-name>"
+   val tenantID = "<tenant-id>"
+
+   spark.conf.set("fs.azure.account.auth.type." + storageAccountName + ".dfs.core.windows.net", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type." + storageAccountName + ".dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id." + storageAccountName + ".dfs.core.windows.net", "" + appID + "")
+   spark.conf.set("fs.azure.account.oauth2.client.secret." + storageAccountName + ".dfs.core.windows.net", "" + password + "")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint." + storageAccountName + ".dfs.core.windows.net", "https://login.microsoftonline.com/" + tenantID + "/oauth2/token")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
-   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   dbutils.fs.ls("abfss://" + fileSystemName  + "@" + storageAccountName + ".dfs.core.windows.net/")
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. このコード ブロックでは、`appID`、`password`、`tenant-id`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に置き換えます。
+6. このコード ブロックでは、`<app-id>`、`<password>`、`<tenant-id>`、および `<storage-account-name>` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `<file-system-name>` プレースホルダーの値を、ファイル システムに付けたい名前に置き換えます。
 
-   * `appID` および `password` は、サービス プリンシパルの作成の一環として Active Directory に登録したアプリのものです。
+   * `<app-id>` および `<password>` は、サービス プリンシパルの作成の一環として Active Directory に登録したアプリのものです。
 
-   * `tenant-id` は、自分のサブスクリプションのものです。
+   * `<tenant-id>` は、自分のサブスクリプションのものです。
 
-   * `storage-account-name` は、Azure Data Lake Storage Gen2 ストレージ アカウントの名前です。
+   * `<storage-account-name>` は、Azure Data Lake Storage Gen2 ストレージ アカウントの名前です。
 
 7. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 
@@ -195,7 +204,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 次に、その下の新しいセルに次のコードを入力します。ブラケットで囲まれている値は、前に使用したのと同じ値に置き換えてください。
 
-    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://" + fileSystemName + "@" + storageAccount + ".dfs.core.windows.net/")
 
 セル内で **Shift + Enter** キーを押して、コードを実行します。
 
@@ -206,11 +215,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    ```scala
    val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
    ```
-
-   * `file-system-name` プレースホルダーの値は、Storage Explorer でファイル システムに付けた名前に置き換えます。
-
-   * `storage-account-name` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
-
 2. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 
 3. 次のコードを実行して、データ フレームの内容を表示します。
@@ -357,14 +361,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
        "spark.sql.parquet.writeLegacyFormat",
        "true")
 
-   renamedColumnsDF.write
-       .format("com.databricks.spark.sqldw")
-       .option("url", sqlDwUrlSmall) 
-       .option("dbtable", "SampleTable")
-       .option( "forward_spark_azure_storage_credentials","True")
-       .option("tempdir", tempDir)
-       .mode("overwrite")
-       .save()
+   renamedColumnsDF.write.format("com.databricks.spark.sqldw").option("url", sqlDwUrlSmall).option("dbtable", "SampleTable")       .option( "forward_spark_azure_storage_credentials","True").option("tempdir", tempDir).mode("overwrite").save()
    ```
 
    > [!NOTE]

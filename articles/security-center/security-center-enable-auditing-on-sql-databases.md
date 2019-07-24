@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 1108265101f37433860d0112e4e80aee0002ab5c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111573"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127227"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-databases-in-azure-security-center"></a>Azure Security Center での SQL データベースの監査と脅威検出の有効化
 Azure Security Center では、監査と脅威検出をまだ有効にしていない場合、すべての SQL データベースで監査と脅威検出を有効にすることをお勧めします。 監査と脅威検出によって、規定遵守の維持、データベース アクティビティの理解、およびビジネス上の懸念やセキュリティ違反の疑いを示す差異や異常に対するインサイトが容易になります。
@@ -34,7 +34,7 @@ Azure Security Center では、監査と脅威検出をまだ有効にしてい�
 >
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-1. **[推奨事項]** ブレードで、**[SQL データベースの監査と脅威検出の有効化]** を選択します。  **[SQL データベースの監査と脅威検出の有効化]** ブレードが開きます。
+1. **[推奨事項]** ブレードで、 **[SQL データベースの監査と脅威検出の有効化]** を選択します。  **[SQL データベースの監査と脅威検出の有効化]** ブレードが開きます。
 
    ![SQL データベースの監査の有効化][1]
 2. 監査を有効にする SQL Database を選択します。 **[監査と脅威検出]** ブレードが開きます。

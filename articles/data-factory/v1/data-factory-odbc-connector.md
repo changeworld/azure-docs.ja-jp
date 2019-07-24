@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 83de0046a56788e40b9224823af0411a18dea5eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0db301109da657083d121cc8b986372adcb54171
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66122504"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66389041"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアからデータを移動する
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](data-factory-odbc-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-odbc.md)
 
@@ -69,10 +69,10 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 | --- | --- | --- |
 | type |type プロパティは、次のように設定する必要があります:**OnPremisesOdbc** |はい |
 | connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 <br/><br/>`"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、ゲートウェイ マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。 |はい |
-| credential |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |いいえ  |
+| credential |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |いいえ |
 | authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |はい |
-| userName |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
-| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
+| userName |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ |
+| password |userName に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
 | gatewayName |Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 |はい |
 
 ### <a name="using-basic-authentication"></a>基本認証を使用する

@@ -3,20 +3,20 @@ title: 言語サポート - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: ナレッジ ベースの言語は、ソースから質問と回答を自動的に抽出する QnA Maker の機能、およびユーザー クエリに対して QnA Maker が提供する結果の関連性に影響します。 QnA Maker のナレッジ ベースでサポートされるカルチャと自然言語の一覧。 同じナレッジ ベースに複数の言語を混在させないでください。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 496f7c75e6633089d4ca88a9e3cd7c76ee415780
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a543b17633b99bea63d72f46ba856a8b4593d16a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922405"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67439546"
 ---
 # <a name="language-support-for-qna-maker"></a>QnA Maker の言語サポート
 
@@ -35,7 +35,7 @@ QnA Maker は任意の言語ページでの質問と回答の抽出をサポー�
 
 ## <a name="primary-language-detection"></a>第一言語検出
 
-検出に使用される第一言語は、最初のドキュメントまたは URL が最初のナレッジ ベースに追加されるときに、QnA Maker リソースと、そのリソースに作成されるすべてのナレッジ ベースに設定されます。 言語は変更できません。 
+検出に使用された第一言語は、最初のドキュメントまたは URL が最初のナレッジ ベースに追加されるときに、QnA Maker リソースと、そのリソースで作成されたすべてのナレッジ ベースに対して設定されます。 言語は変更できません。 
 
 複数の言語をサポートする予定があるユーザーは、言語ごとに新しい QnA Maker リソースが必要です。 [言語ベースの QnA Maker ナレッジ ベースを作成](../how-to/language-knowledge-base.md)する方法をご覧ください。  
 

@@ -5,7 +5,7 @@ keywords: ssh 接続が拒否される, ssh エラー, azure ssh, SSH 接続に�
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 81e00c4a3b9490a05667d58952f7bdf8945bacdb
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 190aab1f321aa9014eea95a63d525b394288b03b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446577"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709274"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 この記事は、Linux 仮想マシン (VM) に接続しようとしたときに、Secure Shell (SSH) エラー、SSH 接続エラー、または SSH の拒否により発生する問題を見つけて修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
@@ -58,7 +58,7 @@ ms.locfileid: "58446577"
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 Azure Portal では、ローカル コンピューターへのツールのインストールなしで SSH 構成またはユーザーの資格情報を簡単にリセットできます。
 
-まず Azure portal で VM を選択します。 **[サポート + トラブルシューティング]** セクションまで下へスクロールし、**[パスワードのリセット]** を選択します (次の例を参照)。
+まず Azure portal で VM を選択します。 **[サポート + トラブルシューティング]** セクションまで下へスクロールし、 **[パスワードのリセット]** を選択します (次の例を参照)。
 
 ![Azure Portal で SSH 構成または資格情報をリセットする](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
@@ -66,9 +66,9 @@ Azure Portal では、ローカル コンピューターへのツールのイン
 SSH 構成をリセットするには、上のスクリーンショットのように **[モード]** セクションで `Reset configuration only` を選択してから **[更新]** を選択します。 この操作を完了したら、VM にもう一度アクセスしてみます。
 
 ### <a name="a-idreset-credentials-reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />ユーザーの SSH 資格情報をリセットする
-既存のユーザーの資格情報をリセットするには、上のスクリーンショットのように **[モード]** セクションで `Reset SSH public key` または `Reset password` を選択します。 ユーザー名と、SSH キーまたは新しいパスワードを指定し、**[更新]** を選択します。
+既存のユーザーの資格情報をリセットするには、上のスクリーンショットのように **[モード]** セクションで `Reset SSH public key` または `Reset password` を選択します。 ユーザー名と、SSH キーまたは新しいパスワードを指定し、 **[更新]** を選択します。
 
-このメニューから、VM に対して sudo 特権を持つユーザーを作成することもできます。 新しいユーザー名と、関連付けられているパスワードまたは SSH キーを入力し、**[更新]** を選択します。
+このメニューから、VM に対して sudo 特権を持つユーザーを作成することもできます。 新しいユーザー名と、関連付けられているパスワードまたは SSH キーを入力し、 **[更新]** を選択します。
 
 ### <a name="a-idsecurity-rules-check-security-rules"></a><a id="security-rules" />セキュリティ規則を確認する
 
@@ -234,7 +234,7 @@ Azure 内で VM を別のノードに再デプロイすると、基になるネ�
 >
 
 ### <a name="azure-portal"></a>Azure ポータル
-Azure Portal を使用して VM を再デプロイするには、VM を選択し、**[サポート + トラブルシューティング]** セクションまで下にスクロールします。 次の例のように、**[再デプロイ]** を選択します。
+Azure Portal を使用して VM を再デプロイするには、VM を選択し、 **[サポート + トラブルシューティング]** セクションまで下にスクロールします。 次の例のように、 **[再デプロイ]** を選択します。
 
 ![Azure Portal で VM を再デプロイする](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
@@ -255,8 +255,8 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 ## <a name="vms-created-by-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して作成された VM
 クラシック デプロイ モデルを使用して作成された VM の一般的な SSH 接続エラーを解決するには、次の手順を試してください。 各手順を実行した後、VM に再接続してみてください。
 
-* [Azure Portal](https://portal.azure.com) からリモート アクセスをリセットします。 Azure portal で VM を選択し、**[Reset Remote]\(リモートのリセット\)** を選択します。
-* VM を再起動します。 [Azure portal](https://portal.azure.com) で VM を選択し、**[再起動]** を選択します。
+* [Azure Portal](https://portal.azure.com) からリモート アクセスをリセットします。 Azure portal で VM を選択し、 **[Reset Remote]\(リモートのリセット\)** を選択します。
+* VM を再起動します。 [Azure portal](https://portal.azure.com) で VM を選択し、 **[再起動]** を選択します。
 
 * 仮想マシンを新しい Azure ノードに VM を再デプロイします。 VM の再デプロイ方法については、「[新しい Azure ノードへの仮想マシンの再デプロイ](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
@@ -267,7 +267,7 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
   * *sudo* ユーザー アカウントを作成する
   * SSH 構成をリセットします。
 * プラットフォームの問題の有無について VM のリソースの状態を確認します。<br>
-     VM を選択し、**[設定]** > **[正常性チェック]** まで下にスクロールします。
+     VM を選択し、 **[設定]**  >  **[正常性チェック]** まで下にスクロールします。
 
 ## <a name="additional-resources"></a>その他のリソース
 * 上記の手順を実行しても VM に SSH 接続できない場合は、「[SSH の詳細なトラブルシューティング手順](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照して、問題を解決するための追加の手順を確認します。

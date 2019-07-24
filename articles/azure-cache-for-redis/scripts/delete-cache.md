@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: yegu
 ms.openlocfilehash: d02d3196c2cbc130a2e88061df514b0bf681b1bf
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238013"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60240799"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>Azure Cache for Redis を削除する
 

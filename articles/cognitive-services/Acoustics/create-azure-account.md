@@ -7,15 +7,15 @@ author: ashtat
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 7a7f5f6738b4bc96b6248deb062c7b3f63048148
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: db4f96ff7c355f3582966e4daa945f54a6e5b847
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309675"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616545"
 ---
 # <a name="project-acoustics-azure-batch-account-setup"></a>Project Acoustics の Azure Batch アカウントの設定
 このハウツー記事では、Project Acoustics Unity と Unreal エンジンの統合に使用する Azure Batch アカウントの設定について説明します。
@@ -58,7 +58,7 @@ Project Acoustics には、すべての Azure リージョンではサポート�
 ![リージョン別の Azure Virtual Machines を示すスクリーンショット](media/azure-regions.png) 
 
 ## <a name="upgrading-your-quota"></a>クォータのアップグレード
-Azure Batch アカウントは、アカウント作成時に、20 コンピューティング コアの制限でプロビジョニングされます。 音響ワークロードは、シーン内のプローブ ポイントの数まで多数のノードにまたがって並列化できるため、この制限を増やしてベイク時間を速くすることもできます。 Azure Batch ポータル ページの **[クォータ]** リンクをクリックしてから、**[Request Quota Increase] (クォータの増加を要求する)** をクリックすることによって、クォータの増加を要求できます。
+Azure Batch アカウントは、アカウント作成時に、20 コンピューティング コアの制限でプロビジョニングされます。 音響ワークロードは、シーン内のプローブ ポイントの数まで多数のノードにまたがって並列化できるため、この制限を増やしてベイク時間を速くすることもできます。 Azure Batch ポータル ページの **[クォータ]** リンクをクリックしてから、 **[Request Quota Increase] (クォータの増加を要求する)** をクリックすることによって、クォータの増加を要求できます。
 
 ![Azure [クォータ] ページのスクリーンショット](media/azure-quotas.png)
 

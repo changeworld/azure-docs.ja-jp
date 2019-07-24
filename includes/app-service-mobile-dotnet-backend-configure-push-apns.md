@@ -5,16 +5,16 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 83a0adf98298225b52d3b4fdfa2ca861ebb70bb9
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66140685"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181861"
 ---
-**.NET バックエンド (C#)**:
+**.NET バックエンド (C#)** :
   
-1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.NotificationHubs` を見つけ、**[インストール]** をクリックします。 これにより、バックエンドから通知を送信するために必要な Notification Hubs ライブラリがインストールされます。
-2. バックエンドの Visual Studio プロジェクトで、**[コントローラー]** > **[TodoItemController.cs]** の順に開きます。 ファイルの先頭に、次の `using` ステートメントを追加します。
+1. Visual Studio でサーバー プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.NotificationHubs` を見つけ、 **[インストール]** をクリックします。 これにより、バックエンドから通知を送信するために必要な Notification Hubs ライブラリがインストールされます。
+2. バックエンドの Visual Studio プロジェクトで、 **[コントローラー]**  >  **[TodoItemController.cs]** の順に開きます。 ファイルの先頭に、次の `using` ステートメントを追加します。
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;

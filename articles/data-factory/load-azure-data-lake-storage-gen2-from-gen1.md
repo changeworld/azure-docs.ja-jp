@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 05/13/2019
 ms.author: jingwang
-ms.openlocfilehash: e3a27ab15c72289dd28e31d832b81407a66dc754
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d6e09ec1f070f9ee0f4162524e4bd80d1f81adc3
+ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256789"
+ms.lasthandoff: 05/13/2019
+ms.locfileid: "65560655"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 
@@ -38,7 +38,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
-1. 左側のメニューで、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** の順に選択します。
+1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -46,10 +46,10 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
       
    ![[新しいデータ ファクトリ] ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
  
-    * **名前**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **名前**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、**[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
-    * **バージョン**:**[V2]** を選択します。
+    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+    * **バージョン**: **[V2]** を選択します。
     * **場所**:データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 
 
 3. **作成** を選択します。
@@ -61,23 +61,23 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 ## <a name="load-data-into-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 にデータを読み込む
 
-1. **[Get started]\(開始\)** ページで、**[データのコピー]** タイルを選択してデータのコピー ツールを起動します。 
+1. **[Get started]\(開始\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。 
 
    ![データのコピー ツールのタイル](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-tile.png)
-2. **[プロパティ]** ページで、**[タスク名]** フィールドに「**CopyFromADLSGen1ToGen2**」と指定し、**[次へ]** を選択します。
+2. **[プロパティ]** ページで、 **[タスク名]** フィールドに「**CopyFromADLSGen1ToGen2**」と指定し、 **[次へ]** を選択します。
 
     ![[プロパティ] ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-properties-page.png)
-3. **[ソース データ ストア]** ページで、**[+ 新しい接続の作成]** をクリックします。
+3. **[ソース データ ストア]** ページで、 **[+ 新しい接続の作成]** をクリックします。
 
     ![[ソース データ ストア] ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page.png)
     
-    コネクタ ギャラリーから **[Azure Data Lake Storage Gen1]** を選択し、**[続行]** を選択します。
+    コネクタ ギャラリーから **[Azure Data Lake Storage Gen1]** を選択し、 **[続行]** を選択します。
     
     ![ソース データ ストアの [Azure Data Lake Storage Gen1] ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page-adls-gen1.png)
     
 4. **[Specify Azure Data Lake Storage Gen1 connection]\(Azure Data Lake Storage Gen1 の接続の指定\)** ページで、次の手順を実行します。
-   1. アカウント名に対してお使いの Data Lake Storage Gen1 を選択し、**[テナント]** を指定または確認します。
-   2. **[テスト接続]** をクリックして設定を検証し、**[完了]** を選択します。
+   1. アカウント名に対してお使いの Data Lake Storage Gen1 を選択し、 **[テナント]** を指定または確認します。
+   2. **[テスト接続]** をクリックして設定を検証し、 **[完了]** を選択します。
    3. 新しい接続が作成されたことを確認します。 **[次へ]** を選択します。
    
    > [!IMPORTANT]
@@ -85,7 +85,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
    
    ![Azure Data Lake Storage Gen1 アカウントを指定する](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png)
       
-5. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、コピーするフォルダーとファイルを参照します。 フォルダーまたはファイルを選択し、**[選択]** を選択します。
+5. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、コピーするフォルダーとファイルを参照します。 フォルダーまたはファイルを選択し、 **[選択]** を選択します。
 
     ![入力ファイルまたはフォルダーの選択](./media/load-azure-data-lake-storage-gen2-from-gen1/choose-input-folder.png)
 
@@ -93,24 +93,24 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
     ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
-7. **[配布先データ ストア]** ページで、**[+ 新しい接続の作成]** をクリックし、**[Azure Data Lake Storage Gen2]** を選択して、**[続行]** を選択します。
+7. **[配布先データ ストア]** ページで、 **[+ 新しい接続の作成]** をクリックし、 **[Azure Data Lake Storage Gen2]** を選択して、 **[続行]** を選択します。
 
     ![[Destination data store]\(コピー先データ ストア\) ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-storage-page.png)
 
 8. **[Specify Azure Data Lake Storage Gen2 connection]\(Azure Data Lake Storage Gen2 の接続の指定\)** ページで、次の手順を実行します。
 
    1. [ストレージ アカウント名] ボックスの一覧から目的の Data Lake Storage Gen2 に対応するアカウント名を選択します。
-   2. **[完了]** を選択して、接続を作成します。 次に、**[次へ]** を選択します。
+   2. **[完了]** を選択して、接続を作成します。 次に、 **[次へ]** を選択します。
    
    ![Azure Data Lake Storage Gen2 アカウントを指定する](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 
-9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfromadlsgen1**」と入力し、**[次へ]** を選択します。 ADF は、対応する ADLS Gen2 ファイル システムとサブ フォルダーがない場合には、コピー中に作成します。
+9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfromadlsgen1**」と入力し、 **[次へ]** を選択します。 ADF は、対応する ADLS Gen2 ファイル システムとサブ フォルダーがない場合には、コピー中に作成します。
 
     ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
 
-10. **[設定]** ページで、**[次へ]** を選択して、既定の設定を使用します。
+10. **[設定]** ページで、 **[次へ]** を選択して、既定の設定を使用します。
 
-11. **[サマリー]** ページで設定を確認し、**[次へ]** を選択します。
+11. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
 
     ![概要ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-summary.png)
 12. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプラインを監視します。
@@ -120,7 +120,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
     ![パイプラインの実行を監視する](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-pipeline-runs.png)
 
-14. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、**[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 パイプライン内のアクティビティ (コピー アクティビティ) は 1 つだけなので、エントリは 1 つのみです。 パイプラインの実行ビューに戻るには、上部の **[パイプライン]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。 
+14. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 パイプライン内のアクティビティ (コピー アクティビティ) は 1 つだけなので、エントリは 1 つのみです。 パイプラインの実行ビューに戻るには、上部の **[パイプライン]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。 
 
     ![アクティビティの実行を監視する](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-activity-runs.png)
 
@@ -132,12 +132,47 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
-ファイルベースのデータ ストアから大量のデータをコピーする際には、次のようにすることをお勧めします。
+Azure Data Lake Storage (ADLS) Gen1 から Gen2 からへのアップグレードの評価の概要については、「[ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-upgrade.md)」をご覧ください。 以下のセクションでは、Gen1 から Gen2 へのデータのアップグレードに ADF を使用する場合のベスト プラクティスを示します。
 
-- ファイルをそれぞれ 10 TB から 30 TB のファイルセットに分割する。
-- ソースまたはシンク データストアからのスロットリングを回避するために、大量のコピーの同時実行をトリガーしない。 1 つのコピーの実行を開始してスループットを確認してから、必要に応じて段階的に追加してください。
+### <a name="data-partition-for-historical-data-copy"></a>履歴データ コピーの場合のデータ パーティション
+
+- ADLS Gen1 の合計データ サイズが **30 TB** より小さく、ファイルの数が **100 万個**より少ない場合は、1 回のコピー アクティビティの実行ですべてのデータをコピーできます。
+- それより大きいサイズのデータをコピーする場合、またはバッチでのデータの移行を柔軟に管理し、各バッチを特定のタイミング ウィンドウ内で完了したい場合は、データをパーティションに分割することをお勧めします。その場合、予期しない問題のリスクを軽減することもできます。
+
+エンド ツー エンドのソリューションを確認し、環境内でのコピーのスループットをテストするため、PoC (概念実証) を強くお勧めします。 PoC の主要な手順は次のとおりです。 
+
+1. ADLS Gen1 から ADLS Gen2 に数 TB のデータをコピーする単一のコピー アクティビティを含む 1 つの ADF パイプラインを作成し、コピーのパフォーマンスのベースラインを取得します。最初は [データ統合ユニット (DIU)](copy-activity-performance.md#data-integration-units) を 128 にします。 
+2. ステップ 1 で取得したコピー スループットに基づいて、データ移行全体に必要な推定時間を計算します。 
+3. (省略可能) 制御テーブルを作成し、移行するファイルをパーティションに分割するファイル フィルターを定義します。 ファイルをパーティションに分割する方法は次のとおりです。 
+
+    - フォルダー名またはワイルドカード フィルターを含むフォルダー名によるパーティション分割 (推奨) 
+    - ファイルの最終変更日時によるパーティション分割 
+
+### <a name="network-bandwidth-and-storage-io"></a>ネットワーク帯域幅とストレージ I/O 
+
+データを ADLS Gen1 から読み取って ADLS Gen2 に書き込む ADF コピー ジョブのコンカレンシーを制御でき、移行中に ADLS Gen1 での通常業務の作業に影響が出ないよう、ストレージ I/O の使用量を管理できます。
+
+### <a name="permissions"></a>アクセス許可 
+
+Data factory の場合、[ADLS Gen1 コネクタ](connector-azure-data-lake-store.md)では、サービス プリンシパルとマネージド ID が Azure リソース認証に対してサポートされています。[ADLS Gen2 コネクタ](connector-azure-data-lake-storage.md)では、アカウント キー、サービス プリンシパル、マネージド ID が Azure リソース認証に対してサポートされています。 必要に応じてすべてのファイル/ACL を Data Factory でナビゲートおよびコピーできるようにするには、使用するアカウントに、ファイルのアクセス/読み取り/書き込みおよび ACL の設定 (行うことを選択した場合) を行うことができる十分に高いアクセス許可を付与します。 移行期間中にスーパーユーザー/所有者ロールとして付与することをお勧めします。 
+
+### <a name="preserve-acls-from-data-lake-storage-gen1"></a>Data Lake Storage Gen1 の ACL を保持する
+
+Data Lake Storage Gen1 から Gen2 にアップグレードする際に ACL をデータ ファイルと一緒にレプリケートする必要がある場合は、「[Preserve ACLs from Data Lake Storage Gen1](connector-azure-data-lake-storage.md#preserve-acls-from-data-lake-storage-gen1)」 (Data Lake Storage Gen1 の ACL を保持する) を参照してください。 
+
+### <a name="incremental-copy"></a>増分コピー 
+
+ADLS Gen1 から新規ファイルまたは更新されたファイルのみを読み込むには、いくつかの方法があります。
+
+- 日時でパーティション分割されたフォルダーまたはファイル名により、新しいファイルまたは更新されたファイルを読み込みます (例: /2019/05/13/*)
+- LastModifiedDate で新しいファイルまたは更新されたファイルを読み込みます
+- サード パーティ製ツール/ソリューションで新しいファイルまたは更新されたファイルを識別した後、パラメーターまたはテーブル/ファイルを使用して、ADF パイプラインにファイルまたはフォルダー名を渡します。  
+
+増分読み込みを行う適切な頻度は、ADLS Gen1 内のファイルの合計数と、毎回読み込まれる新しいファイルまたは更新されたファイルのボリュームに依存します。  
 
 ## <a name="next-steps"></a>次の手順
 
-* [コピー アクティビティの概要](copy-activity-overview.md)
-* [Azure Data Lake Storage Gen2 コネクタ](connector-azure-data-lake-storage.md)
+> [!div class="nextstepaction"]
+> [コピー アクティビティの概要](copy-activity-overview.md)
+> [Azure Data Lake Storage Gen1 コネクタ](connector-azure-data-lake-store.md)
+> [Azure Data Lake Storage Gen2 コネクタ](connector-azure-data-lake-storage.md)

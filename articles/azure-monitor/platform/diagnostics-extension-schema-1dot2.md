@@ -10,11 +10,11 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: dae74e730d6e175fa3e447150adce4caecd3d7a3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496490"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60237834"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure Diagnostics 1.2 構成スキーマ
 > [!NOTE]
@@ -112,7 +112,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**DiagnosticInfrastructureLogs**|Azure Diagnostics によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 |**Directories**|ディレクトリ、IIS 失敗アクセス要求ログ、IIS ログのコンテンツの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 |**EtwProviders**|EventSource や ETW マニフェスト ベースのプロバイダーからの ETW イベントの収集を構成します。|  
-|**メトリック**|この要素により、高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。 必須属性: <br /><br /> **resourceId** - これは、Azure Diagnostics のデプロイ先とする仮想マシンのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。|  
+|**メトリック**|この要素により、高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。 必須属性:<br /><br /> **resourceId** - これは、Azure Diagnostics のデプロイ先とする仮想マシンのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、 **[ID]** フィールドの値をコピーします。|  
 |**PerformanceCounters**|パフォーマンス カウンターの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 |**WindowsEventLog**|Windows イベント ログの収集を有効にします。 オプションの属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 
@@ -121,7 +121,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**CrashDumpConfiguration**|必須。 必須属性: <br /><br /> **processName** - Azure Diagnostics でクラッシュ ダンプを収集するプロセスの名前。|  
+|**CrashDumpConfiguration**|必須。 必須属性:<br /><br /> **processName** - Azure Diagnostics でクラッシュ ダンプを収集するプロセスの名前。|  
 |**crashDumpType**|Azure Diagnostics を、小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように構成します。|  
 |**directoryQuotaPercentage**|VM でのクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
 
@@ -139,7 +139,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**DirectoryConfiguration**|必須。 必須属性: <br /><br /> **containerName** - ログ ファイルの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。|  
+|**DirectoryConfiguration**|必須。 必須属性:<br /><br /> **containerName** - ログ ファイルの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。|  
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration 要素  
  **DirectoryConfiguration** には、**Absolute** 要素または **LocalResource** 要素のいずれかを含めることができます。ただし、両方を含めることができません。 次の表で、子要素について説明します。  
@@ -154,8 +154,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|[EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性: <br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
-|**EtwManifestProviderConfiguration**|必須属性: <br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**EtwEventSourceProviderConfiguration**|[EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性:<br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> -                     **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**EtwManifestProviderConfiguration**|必須属性:<br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> -                     **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 要素  
  [EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 次の表で、子要素について説明します。  
@@ -163,7 +163,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |要素名|説明|  
 |------------------|-----------------|  
 |**DefaultEvents**|オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
-|**Event**|必須属性: <br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
+|**Event**|必須属性:<br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
 
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration 要素  
  次の表で、子要素について説明します。  
@@ -171,14 +171,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |要素名|説明|  
 |------------------|-----------------|  
 |**DefaultEvents**|オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
-|**Event**|必須属性: <br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
+|**Event**|必須属性:<br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
 
 ## <a name="metrics-element"></a>Metrics 要素  
  高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 次の表で、子要素について説明します。  
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**MetricAggregation**|必須属性: <br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
+|**MetricAggregation**|必須属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters 要素  
  パフォーマンス カウンターの収集を有効にします。 次の表で、子要素について説明します。  
@@ -192,12 +192,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**annotation**|必須属性: <br /><br /> **displayName** - カウンターの表示名<br /><br /> オプションの属性:<br /><br /> **locale** - カウンター名を表示するときに使用するロケール|  
+|**annotation**|必須属性:<br /><br /> **displayName** - カウンターの表示名<br /><br /> オプションの属性:<br /><br /> **locale** - カウンター名を表示するときに使用するロケール|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog 要素  
  次の表で、子要素について説明します。  
 
 |要素名|説明|  
 |------------------|-----------------|  
-|**DataSource**|収集する Windows イベント ログ。 必須属性: <br /><br /> **name** - 収集する Windows イベントについて説明する XPath クエリ。 例: <br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> すべてのイベントを収集するには、"*" を指定します。|
+|**DataSource**|収集する Windows イベント ログ。 必須属性:<br /><br /> **name** - 収集する Windows イベントについて説明する XPath クエリ。 例:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> すべてのイベントを収集するには、"*" を指定します。|
 

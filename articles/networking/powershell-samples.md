@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/24/2017
-ms.author: georgewallace
-ms.openlocfilehash: 0bca4fb6874bd265f0ae9faeb4219abeb4ffb6d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: gwallace
+ms.openlocfilehash: 38ee43b805f39e1a702033a53eb7bbc13c43aab6
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036597"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875489"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>ネットワークに関する Azure PowerShell のサンプル
 

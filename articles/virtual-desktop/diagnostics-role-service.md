@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 ms.openlocfilehash: 747e177b0fbbfb9049959c3194ee39c3234bba50
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65234022"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>診断機能を使用して問題を特定する
@@ -38,7 +38,7 @@ Windows Virtual Desktop 診断では、1 つの PowerShell コマンドレット
 Get-RdsDiagnosticActivities -TenantName <tenantName>
 ```
 
-他の Windows Virtual Desktop PowerShell コマンドレットと同様に、**-TenantName** パラメーターを使用して、クエリに使用するテナントの名前を指定する必要があります。 テナント名は、ほぼすべての診断アクティビティ クエリに適用できます。
+他の Windows Virtual Desktop PowerShell コマンドレットと同様に、 **-TenantName** パラメーターを使用して、クエリに使用するテナントの名前を指定する必要があります。 テナント名は、ほぼすべての診断アクティビティ クエリに適用できます。
 
 ### <a name="retrieve-detailed-diagnostic-activities"></a>詳細な診断アクティビティを取得する
 

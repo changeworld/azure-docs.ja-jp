@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: f61f8740c9514f6276afb2ee84bcdccdc54c0710
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997903"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61040923"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のサーバーの概念
 この記事では、Azure Database for MariaDB サーバーを操作するための考慮事項とガイドラインを示します。

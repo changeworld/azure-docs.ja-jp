@@ -2,7 +2,7 @@
 title: iOS モバイル アプリでオフライン同期を有効にする | Microsoft Docs
 description: Azure App Service Mobile Apps を使用して、iOS アプリケーション内のオフライン データをキャッシュし、同期する方法について説明します。
 documentationcenter: ios
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: f7ae3e7a33ae7df70214ed171b00cc2accbaccb5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435135"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446372"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>iOS モバイル アプリでオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-offline-data) を今すぐチェックしてください。
+>
 
 ## <a name="overview"></a>概要
 このチュートリアルでは、iOS 向け Azure App Service Mobile Apps 機能を使用したオフライン同期について説明します。 オフライン同期により、エンド ユーザーはネットワークに接続していなくても、モバイル アプリを操作してデータを表示、追加、または変更できます。 変更は、ローカル データベースに格納されます。 デバイスが再びオンラインになると、変更がリモート バックエンドと同期されます。
@@ -42,13 +46,13 @@ Mobile Apps のオフライン データ同期機能を使用すると、エン�
 
 テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。 関連するコードを次に示します。
 
-* **Objective-C**:  **QSTodoService.init** メソッドのコードを次に示します。
+* **Objective-C**: **QSTodoService.init** メソッドのコードを次に示します。
 
    ```objc
    MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
    self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
    ```    
-* **Swift**:  **ToDoTableViewController.viewDidLoad** メソッドのコードを次に示します。
+* **Swift**: **ToDoTableViewController.viewDidLoad** メソッドのコードを次に示します。
 
    ```swift
    let client = MSClient(applicationURLString: "http:// ...") // URI of the Mobile App
@@ -60,7 +64,7 @@ Mobile Apps のオフライン データ同期機能を使用すると、エン�
 
 では、実際の同期操作を実行し、リモート バックエンドからデータを取得してみましょう。
 
-* **Objective-C**:  `syncData` で新しい変更をプッシュしてから **pullData** を呼び出すことで、リモート バックエンドからデータを取得します。 次に、**pullData** メソッドがクエリに一致する新しいデータを取得します。
+* **Objective-C**: `syncData` で新しい変更をプッシュしてから **pullData** を呼び出すことで、リモート バックエンドからデータを取得します。 次に、**pullData** メソッドがクエリに一致する新しいデータを取得します。
 
    ```objc
    -(void)syncData:(QSCompletionBlock)completion
@@ -147,7 +151,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
   * TodoItem:To Do アイテムを格納します。 システム列 **createdAt**、**updatedAt**、および **version** は省略可能なシステム プロパティです。
 
 > [!NOTE]
-> Mobile Apps SDK では、"**``**" で始まる列名を予約しています。 このプレフィックスは、システム列以外のものに使用しないでください。 そうしないと、リモート バックエンドの使用時に列名が変更されます。
+> Mobile Apps SDK では、" **``** " で始まる列名を予約しています。 このプレフィックスは、システム列以外のものに使用しないでください。 そうしないと、リモート バックエンドの使用時に列名が変更されます。
 >
 >
 
@@ -159,12 +163,12 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 ![MS_TableOperations テーブルの属性][defining-core-data-tableoperations-entity]
 
-| Attribute | type |
+| Attribute | Type |
 | --- | --- |
 | id | Integer 64 |
-| itemId | String |
+| itemId | string |
 | properties | Binary Data |
-| table | String |
+| table | string |
 | tableKind | Integer 16 |
 
 
@@ -172,9 +176,9 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
  ![MS_TableOperationErrors テーブルの属性][defining-core-data-tableoperationerrors-entity]
 
-| Attribute | type |
+| Attribute | Type |
 | --- | --- |
-| id |String |
+| id |string |
 | operationId |Integer 64 |
 | properties |Binary Data |
 | tableKind |Integer 16 |
@@ -183,26 +187,26 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
  ![][defining-core-data-tableconfig-entity]
 
-| Attribute | type |
+| Attribute | Type |
 | --- | --- |
-| id |String |
-| key |String |
+| id |string |
+| key |string |
 | keyType |Integer 64 |
-| table |String |
-| value |String |
+| table |string |
+| value |string |
 
 ### <a name="data-table"></a>データ テーブル
 
 **TodoItem**
 
-| Attribute | type | Note |
+| Attribute | Type | Note |
 | --- | --- | --- |
 | id | String、必須のマーク |リモート ストア内のプライマリ キー |
 | complete | Boolean | To Do 項目フィールド |
-| text |String |To Do 項目フィールド |
+| text |string |To Do 項目フィールド |
 | createdAt | Date | (省略可能) **createdAt** システム プロパティにマップします。 |
 | updatedAt | Date | (省略可能) **updatedAt** システム プロパティにマップします。 |
-| version | String | (省略可能) 競合の検出に使用され、バージョンにマップします。 |
+| version | string | (省略可能) 競合の検出に使用され、バージョンにマップします。 |
 
 ## <a name="setup-sync"></a>アプリケーションの同期動作を変更する
 このセクションでは、アプリの起動時または項目を挿入および更新したときに同期しないように、アプリを変更します。 更新操作ボタンが実行されたときにのみ同期します。
@@ -238,18 +242,18 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 1. **QSTodoService.m** のモバイル アプリ URL を無効な URL に変更し、アプリをもう一度実行します。
 
-   **Objective-C**:  QSTodoService.m のコードを次に示します。
+   **Objective-C**: QSTodoService.m のコードを次に示します。
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
-   **Swift**:  ToDoTableViewController.swift のコードを次に示します。
+   **Swift**: ToDoTableViewController.swift のコードを次に示します。
    ```swift
    let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
    ```
 2. To Do 項目をいくつか追加します。 シミュレーターを終了し (またはアプリを強制的に閉じて)、再起動します。 変更内容が保持されていることを確認します。
 
 3. リモートの **TodoItem** テーブルの内容を表示します。
-   * Node.js バックエンドの場合は、[Azure Portal](https://portal.azure.com/) に移動し、モバイル アプリ バックエンドで **[簡易テーブル]** > **、[TodoItem]** をクリックします。  
+   * Node.js バックエンドの場合は、[Azure Portal](https://portal.azure.com/) に移動し、モバイル アプリ バックエンドで **[簡易テーブル]**  >  **、[TodoItem]** をクリックします。  
    * .NET バックエンドの場合は、SQL Server Management Studio などの SQL ツール、または Fiddler や Postman などの REST クライアントを使用します。  
 
 4. 新しい項目がサーバーと同期*されなかった*ことを確認します。

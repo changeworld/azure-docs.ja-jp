@@ -11,11 +11,11 @@ ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779149"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60996599"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -29,7 +29,7 @@ ms.locfileid: "57779149"
 
 再試行ポリシーの種類を次に示します。 
 
-| type | 説明 | 
+| Type | 説明 | 
 |------|-------------| 
 | **既定値** | このポリシーは、"*指数関数的に増加*" する間隔で、最大 4 回の再試行を送信します。間隔の増加係数は 7.5 秒で、下限と上限はそれぞれ 5 秒と 45 秒になります。 | 
 | **指数間隔**  | このポリシーは、指数関数的に増加する範囲から選択されるランダムな間隔を待ち時間として、次の要求を送信します。 | 
@@ -47,7 +47,7 @@ ms.locfileid: "57779149"
 
 2. アクションまたはトリガーの **[設定]** を開きます。
 
-3. アクションまたはトリガーが再試行ポリシーをサポートしている場合、**[再試行ポリシー]** で目的の種類を選択します。 
+3. アクションまたはトリガーが再試行ポリシーをサポートしている場合、 **[再試行ポリシー]** で目的の種類を選択します。 
 
 または、再試行ポリシーをサポートするアクションまたはトリガーの `inputs` セクションで、再試行ポリシーを手動で指定することもできます。 再試行ポリシーを指定しなかった場合は、既定のポリシーが使用されます。
 
@@ -71,19 +71,19 @@ ms.locfileid: "57779149"
 
 *必須*
 
-| 値 | type | 説明 |
+| 値 | Type | 説明 |
 |-------|------|-------------|
-| <*retry-policy-type*> | String | 使用する再試行ポリシーの種類: `default`、`none`、`fixed`、または `exponential` | 
-| <*retry-interval*> | String | 再試行間隔。この値には [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)を使用する必要があります。 既定の最小間隔は `PT5S` で、最大間隔は `PT1D` です。 指数の間隔ポリシーを使用するとき、最小と最大にさまざまな値を指定できます。 | 
+| <*retry-policy-type*> | string | 使用する再試行ポリシーの種類: `default`、`none`、`fixed`、または `exponential` | 
+| <*retry-interval*> | string | 再試行間隔。この値には [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)を使用する必要があります。 既定の最小間隔は `PT5S` で、最大間隔は `PT1D` です。 指数の間隔ポリシーを使用するとき、最小と最大にさまざまな値を指定できます。 | 
 | <*retry-attempts*> | 整数 | 再試行の回数。1 - 90 で指定する必要があります。 | 
 ||||
 
 *省略可能*
 
-| 値 | type | 説明 |
+| 値 | Type | 説明 |
 |-------|------|-------------|
-| <*minimum-interval*> | String | 指数間隔ポリシーに関して、ランダムに選択される間隔の最小値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 | 
-| <*maximum-interval*> | String | 指数間隔ポリシーに関して、ランダムに選択される間隔の最大値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 | 
+| <*minimum-interval*> | string | 指数間隔ポリシーに関して、ランダムに選択される間隔の最小値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 | 
+| <*maximum-interval*> | string | 指数間隔ポリシーに関して、ランダムに選択される間隔の最大値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 | 
 |||| 
 
 以下、各種のポリシーについて説明します。
@@ -223,9 +223,9 @@ ms.locfileid: "57779149"
 
 スコープ単位でエラーをキャッチできるのは便利ですが、失敗したアクションや返されたエラーまたは状態コードを正確に把握するためには、スコープの結果だけでなくコンテキストが必要となります。 `@result()` 式を使用すると、スコープ内のすべてのアクションの結果に関するコンテキストが得られます。
 
-`@result()` 式は、単一のパラメーター (スコープの名前) を受け取り、そのスコープに含まれるアクションの結果をすべて含んだ配列を返します。 これらのアクションのオブジェクトには、アクションの開始時刻、終了時刻、状態、入力、相関 ID、出力など、**\@actions()** オブジェクトと同じ属性を含まれます。 **\@result()** 関数と **runAfter** プロパティを組み合わせるだけで、スコープ内で失敗したすべてのアクションのコンテキストを受け取ることができます。
+`@result()` 式は、単一のパラメーター (スコープの名前) を受け取り、そのスコープに含まれるアクションの結果をすべて含んだ配列を返します。 これらのアクションのオブジェクトには、アクションの開始時刻、終了時刻、状態、入力、相関 ID、出力など、 **\@actions()** オブジェクトと同じ属性を含まれます。 **\@result()** 関数と **runAfter** プロパティを組み合わせるだけで、スコープ内で失敗したすべてのアクションのコンテキストを受け取ることができます。
 
-スコープ内の **Failed** となったアクションごとにアクションを実行し、失敗したアクションに到達するまで結果の配列をフィルター処理するには、**\@result()** を **[[配列のフィルター処理]](../connectors/connectors-native-query.md)** アクションと [**For each**](../logic-apps/logic-apps-control-flow-loops.md) ループと組み合わせて使用します。 抽出した結果の配列を **For each** ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。 
+スコープ内の **Failed** となったアクションごとにアクションを実行し、失敗したアクションに到達するまで結果の配列をフィルター処理するには、 **\@result()** を **[[配列のフィルター処理]](../connectors/connectors-native-query.md)** アクションと [**For each**](../logic-apps/logic-apps-control-flow-loops.md) ループと組み合わせて使用します。 抽出した結果の配列を **For each** ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。 
 
 次の例では、"My_Scope" というスコープ内で失敗したすべてのアクションの応答本文を含む HTTP POST 要求が送信されます (詳細については例の後に記載)。
 
@@ -270,7 +270,7 @@ ms.locfileid: "57779149"
 
 上の例における実際の動作についての詳細は以下のとおりです。
 
-1. "My_Scope" 内のすべてのアクションの結果を取得するために、**[配列のフィルター処理]** アクションには、`@result('My_Scope')` というフィルター式が使用されます
+1. "My_Scope" 内のすべてのアクションの結果を取得するために、 **[配列のフィルター処理]** アクションには、`@result('My_Scope')` というフィルター式が使用されます
 
 2. **[配列のフィルター処理]** の条件は、状態が **Failed** と等しいすべての `@result()` 項目です。 この条件により、"My_Scope" のすべてのアクションの結果を含む配列がフィルター処理され、失敗したアクションの結果のみを抽出した配列が得られます。
 
@@ -322,7 +322,7 @@ ms.locfileid: "57779149"
 ## <a name="azure-diagnostics-and-metrics"></a>Azure Diagnostics とメトリック
 
 ここで取り上げたパターンは、発生したエラーや例外を実行中に処理するうえで、きわめて効果的な方法です。しかし実行そのものとは切り離して、エラーを特定し、対応することもできます。 
-[Azure 診断](../logic-apps/logic-apps-monitor-your-logic-apps.md)を使用すると、ワークフローで発生したあらゆるイベントを、実行とアクションのすべての状態を含めて、簡単に Azure Storage アカウントや Azure Event Hubs で作成されたイベント ハブに送信できます。 
+[Azure Diagnostics](../logic-apps/logic-apps-monitor-your-logic-apps.md) を使用すると、ワークフローで発生したあらゆるイベントを、実行とアクションのすべての状態を含めて、簡単に Azure Storage アカウントや Azure Event Hubs で作成されたイベント ハブに送信できます。 
 
 ログやメトリックを監視したり、それらを好きな監視ツールに発行したりすることによって、実行の状態を評価することができます。 その中の一つの方法として、すべてのイベントを Event Hubs を介して [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) にストリーミングすることが考えられます。 Stream Analytics では、診断ログから得られる異常、平均値、またはエラーに基づいて適宜必要なクエリを記述できます。 Stream Analytics を使用して、キュー、トピック、SQL、Azure Cosmos DB、Power BI などのその他のデータ ソースに情報を送信できます。
 

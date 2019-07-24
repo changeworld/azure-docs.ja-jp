@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
 ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447362"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61457670"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio を使用して音声通話と SMS を実行する方法 (Python)
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -42,21 +42,21 @@ Twilio API は、アプリケーションに音声および SMS 機能を提供�
 Twilio API の主要な側面として、Twilio 動詞と Twilio Markup Language (TwiML) が挙げられます。
 
 ### <a id="Verbs"></a>Twilio 動詞
-API では、Twilio 動詞を使用します。たとえば、**&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
+API では、Twilio 動詞を使用します。たとえば、 **&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
 
 Twilio 動詞の一覧を次に示します。 他の動詞と機能については、 [Twilio Markup Language のドキュメント][twiml]を参照してください。
 
-* **&lt;Dial&gt;**:呼び出し元を別の電話に接続します。
-* **&lt;Gather&gt;**: 電話キーパッドで入力された数字を収集します。
-* **&lt;Hangup&gt;**: 通話を終了します。
-* **&lt;Pause&gt;**:指定された秒数だけ静かに待ちます。
-* **&lt;Play&gt;**:オーディオ ファイルを再生します。
-* **&lt;Queue&gt;**:呼び出し元のキューに追加します。
-* **&lt;Record&gt;**:呼び出し元の声を録音し、声が録音されたファイルの URL を返します。
-* **&lt;Redirect&gt;**:通話または SMS の制御を別の URL に存在する TwiML に転送します。
-* **&lt;Reject&gt;**:Twilio 番号への受信通話を、課金することなく拒否します。
-* **&lt;Say&gt;**:テキストを通話で流れる音声に変換します。
-* **&lt;Sms&gt;**: SMS メッセージを送信します。
+* **&lt;Dial&gt;** :呼び出し元を別の電話に接続します。
+* **&lt;Gather&gt;** : 電話キーパッドで入力された数字を収集します。
+* **&lt;Hangup&gt;** : 通話を終了します。
+* **&lt;Pause&gt;** :指定された秒数だけ静かに待ちます。
+* **&lt;Play&gt;** :オーディオ ファイルを再生します。
+* **&lt;Queue&gt;** :呼び出し元のキューに追加します。
+* **&lt;Record&gt;** :呼び出し元の声を録音し、声が録音されたファイルの URL を返します。
+* **&lt;Redirect&gt;** :通話または SMS の制御を別の URL に存在する TwiML に転送します。
+* **&lt;Reject&gt;** :Twilio 番号への受信通話を、課金することなく拒否します。
+* **&lt;Say&gt;** :テキストを通話で流れる音声に変換します。
+* **&lt;Sms&gt;** : SMS メッセージを送信します。
 
 ### <a id="TwiML"></a>TwiML
 TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで、通話または SMS をどのように処理するかを Twilio に通知します。
@@ -103,7 +103,7 @@ Python 用 Twilio ライブラリを使用するようにアプリケーショ�
    
         $ pip install twilio
 
-    - または -
+    \- または -
 
 * GitHub ([https://github.com/twilio/twilio-python][twilio_python]) から Python 用 Twilio ライブラリをダウンロードして次のようにインストールします。
 
@@ -174,7 +174,7 @@ Python 用 Twilio ライブラリをインストールしたら、Python ファ�
                                      body=message)
 
 ## <a id="howto_provide_twiml_responses"></a>方法:独自の Web サイトから TwiML 応答を返す
-アプリケーションで Twilio API の呼び出しを開始すると、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 前の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています  (TwiML は Twilio で使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。もう 1 つの例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、`<Say>` 要素を格納している `<Response>` 要素が表示されます)。
+アプリケーションで Twilio API の呼び出しを開始すると、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 前の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています (TwiML は Twilio で使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。もう 1 つの例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、`<Say>` 要素を格納している `<Response>` 要素が表示されます)。
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自のサイトを作成できます。 XML 応答を返すサイトは任意の言語で作成できます。このトピックでは、Python を使用して TwiML を作成するとします。
 

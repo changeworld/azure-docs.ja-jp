@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 12/03/2018
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4aaf56a00669dbf7e312e2a6f8787ccc664d1190
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 376be43a57783f537df81f0e97f005e2c46a710e
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023827"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797631"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -486,3 +486,11 @@ print(resp.text)
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
+
+## <a name="consume-the-service-from-power-bi"></a>Power BI からサービスを使用する
+
+Power BI では、予測によって Power BI のデータを拡充できるように、Azure Machine Learning Web サービスの使用がサポートされています。 
+
+Power BI での使用がサポートされている Web サービスを生成するには、Power BI で必要とされる形式をスキーマがサポートしている必要があります。 [Power BI でサポートされているスキーマの作成方法をご確認ください](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi)。
+
+デプロイした Web サービスは、Power BI データフローから使用できます。 [Power BI から Azure Machine Learning Web サービスを使用する方法をご確認ください](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。

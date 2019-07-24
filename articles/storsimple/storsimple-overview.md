@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
-ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.author: timlt
+ms.openlocfilehash: 5a3800cfdf36bdc2e042eec860310a508204ba11
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326928"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876445"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 ## <a name="overview"></a>概要
@@ -29,7 +29,7 @@ StorSimple では、 [ストレージ階層化](#automatic-storage-tiering) を�
 
 ストレージ管理に加えて、StorSimple データ保護機能を使用すると、オンデマンド バックアップやスケジュールされたバックアップを作成して、ローカルやクラウドに格納できるようになります。 バックアップは増分スナップショットの形式で実行されます。これは短時間で作成し、復元できることを意味しています。 クラウド スナップショットはセカンダリ ストレージ システム (テープ バックアップなど) を置き換え、データセンターにデータを復元したり、必要に応じてサイトを交代できるため、非常に重要になります。
 
-![動画アイコン](./media/storsimple-overview/video_icon.png)  この動画を観ると、Microsoft Azure StorSimple を簡単にインストールできます。
+![動画アイコン](./media/storsimple-overview/video_icon.png) この動画を観ると、Microsoft Azure StorSimple を簡単にインストールできます。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/StorSimple-Hybrid-Cloud-Storage-Solution/player]
 
@@ -84,7 +84,7 @@ StorSimple デバイスには、SSD とハード ディスク ドライブ (HDD)
 詳細については、「 [StorSimple のハードウェア コンポーネントと状態](storsimple-8000-monitor-hardware-status.md)」を参照してください。
 
 ## <a name="storsimple-cloud-appliance"></a>StorSimple Cloud Appliance
-StorSimple を使用して、物理的なハイブリッド ストレージ デバイスのアーキテクチャと機能を再現するクラウド アプライアンスを作成できます。 StorSimple Cloud Appliance (StorSimple Virtual Appliance とも言います) は、Azure 仮想マシン内の単一ノードで動作します  (クラウド アプライアンスは、Azure 仮想マシン上にのみ作成できます。 StorSimple デバイスまたはオンプレミス サーバーには作成できません)。
+StorSimple を使用して、物理的なハイブリッド ストレージ デバイスのアーキテクチャと機能を再現するクラウド アプライアンスを作成できます。 StorSimple Cloud Appliance (StorSimple Virtual Appliance とも言います) は、Azure 仮想マシン内の単一ノードで動作します (クラウド アプライアンスは、Azure 仮想マシン上にのみ作成できます。 StorSimple デバイスまたはオンプレミス サーバーには作成できません)。
 
 クラウド アプライアンスには、次の機能があります。
 
@@ -100,7 +100,7 @@ StorSimple Cloud Appliance の詳細については、[Azure での StorSimple C
 Microsoft Azure StorSimple には、データセンターとクラウド ストレージを一元管理できる Web ベースのユーザー インターフェイス (StorSimple デバイス マネージャー サービス) が用意されています。 StorSimple Device Manager サービスを使用して、次のタスクを実行できます。
 
 * StorSimple デバイスのシステム設定を構成する。
-* StorSimple デバイスのセキュリティ設定を構成および管理する 
+* StorSimple デバイスのセキュリティ設定を構成および管理する
 * クラウドの資格情報とプロパティを構成する。
 * サーバー上のボリュームを構成および管理する。
 * ボリューム グループを構成する。

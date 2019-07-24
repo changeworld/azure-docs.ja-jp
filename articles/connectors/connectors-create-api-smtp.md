@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 78b1eb6272fa97ef392e97723454d29cf56bb4bf
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230507"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62106152"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps を使用して SMTP アカウントから電子メールを送信する
 
@@ -44,10 +44,10 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
 
 1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
-1. SMTP アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+1. SMTP アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
 
    ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
-   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]**  を選択します。
 
 1. 検索ボックスに、フィルターとして「smtp」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
@@ -59,8 +59,8 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
    | **SMTP サーバー アドレス** | はい | SMTP サーバーのアドレス | 
    | **ユーザー名** | はい | SMTP アカウントのユーザー名 | 
    | **パスワード** | はい | SMTP アカウントのパスワード | 
-   | **SMTP サーバー ポート** | いいえ  | 使用する SMTP サーバー上の特定のポート | 
-   | **SSL を有効にしますか?** | いいえ  | SSL 暗号化を有効または無効にします。 | 
+   | **SMTP サーバー ポート** | いいえ | 使用する SMTP サーバー上の特定のポート | 
+   | **SSL を有効にしますか?** | いいえ | SSL 暗号化を有効または無効にします。 | 
    |||| 
 
 1. 選択したアクションで必要な詳細を指定します。 

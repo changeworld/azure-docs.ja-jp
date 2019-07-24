@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
 ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010143"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62122994"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Azure Table Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -45,11 +45,11 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
     ![ASP.NET MVC アプリケーションへのコントローラーの追加](./media/vs-storage-aspnet-getting-started-tables/add-controller-menu.png)
 
-1. **[スキャフォールディングの追加]** ダイアログ ボックスで **[MVC 5 コントローラー - 空]** を選択し、**[追加]** を選択します。
+1. **[スキャフォールディングの追加]** ダイアログ ボックスで **[MVC 5 コントローラー - 空]** を選択し、 **[追加]** を選択します。
 
     ![MVC コントローラーの種類を指定する](./media/vs-storage-aspnet-getting-started-tables/add-controller.png)
 
-1. **[コントローラーの追加]** ダイアログで、コントローラーに *TablesController* という名前を付けて、**[追加]** を選択します。
+1. **[コントローラーの追加]** ダイアログで、コントローラーに *TablesController* という名前を付けて、 **[追加]** を選択します。
 
     ![MVC コントローラー指定](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
 
@@ -114,7 +114,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     }
     ```
 
-1. **CreateTable** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **CreateTable** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -147,7 +147,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開して **[テーブル]** を右クリックし、コンテキスト メニューで **[追加]、[ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**CreateTable**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**CreateTable**」と入力し、 **[追加]** を選択します。
 
 1. `CreateTable.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -161,7 +161,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     Creation of @ViewBag.TableName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 
@@ -203,7 +203,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     }
     ```
 
-1. **AddEntity** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **AddEntity** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -250,7 +250,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開して **[テーブル]** を右クリックし、コンテキスト メニューで **[追加]、[ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**AddEntity**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**AddEntity**」と入力し、 **[追加]** を選択します。
 
 1. `AddEntity.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -263,7 +263,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
     Insert of entity into @ViewBag.TableName @(ViewBag.Result == 204 ? "succeeded" : "failed")
     ```
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 
@@ -298,7 +298,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     }
     ```
 
-1. **AddEntities** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **AddEntities** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -354,7 +354,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開して **[テーブル]** を右クリックし、コンテキスト メニューで **[追加]、[ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**AddEntities**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**AddEntities**」と入力し、 **[追加]** を選択します。
 
 1. `AddEntities.cshtml` を開き、次のように変更します。
 
@@ -383,7 +383,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     </table>
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 
@@ -418,7 +418,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     }
     ```
 
-1. **GetSingle** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **GetSingle** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -457,7 +457,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開して **[テーブル]** を右クリックし、コンテキスト メニューで **[追加]、[ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**GetSingle**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**GetSingle**」と入力し、 **[追加]** を選択します。
 
 1. `GetSingle.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -485,7 +485,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     </table>
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 
@@ -518,7 +518,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     }
     ```
 
-1. **GetPartition** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **GetPartition** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -566,7 +566,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開して **[テーブル]** を右クリックし、コンテキスト メニューで **[追加]、[ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**GetPartition**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**GetPartition**」と入力し、 **[追加]** を選択します。
 
 1. `GetPartition.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -595,7 +595,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     </table>
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 
@@ -628,7 +628,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     }
     ```
 
-1. **DeleteEntity** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。(*&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
+1. **DeleteEntity** メソッド内で、ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。 次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得します。( *&lt;storage-account-name>* はアクセスする Azure ストレージ アカウントの名前に変更します)。
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -668,7 +668,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開して **[テーブル]** を右クリックし、コンテキスト メニューで **[追加]、[ビュー]** の順に選択します。
 
-1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**DeleteEntity**」と入力し、**[追加]** を選択します。
+1. **[ビューの追加]** ダイアログ ボックスで、ビューの名前として「**DeleteEntity**」と入力し、 **[追加]** を選択します。
 
 1. `DeleteEntity.cshtml` を開き、次のコード スニペットのように変更します。
 
@@ -695,7 +695,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
     ```
 
-1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
+1. **ソリューション エクスプローラー**で、 **[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
 1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
 

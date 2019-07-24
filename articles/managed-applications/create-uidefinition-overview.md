@@ -1,6 +1,6 @@
 ---
-title: Azure マネージ アプリケーション用の UI 定義の作成を理解する | Microsoft Docs
-description: Azure マネージ アプリケーションに使う UI 定義の作成方法について説明します。
+title: Azure マネージド アプリケーション用の UI 定義の作成を理解する | Microsoft Docs
+description: Azure マネージド アプリケーションに使う UI 定義の作成方法について説明します。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2017
+ms.date: 05/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: 59003e71324f5342cb2b724f670603fd6b67afe4
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 3d0a6d97440404904c041369a4631fdd3fb618b4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305227"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257560"
 ---
-# <a name="create-azure-portal-user-interface-for-your-managed-application"></a>マネージ アプリケーション用の Azure ポータルのユーザー インターフェイスを作成する
-このドキュメントでは、createUiDefinition.json ファイルの主要な概念について説明します。 Azure ポータルは、このファイルを使用して、マネージ アプリケーションを作成するためのユーザー インターフェイスを生成します。
+# <a name="create-azure-portal-user-interface-for-your-managed-application"></a>マネージド アプリケーション用の Azure ポータルのユーザー インターフェイスを作成する
+このドキュメントでは、createUiDefinition.json ファイルの主要な概念について説明します。 Azure ポータルは、このファイルを使用して、マネージド アプリケーションを作成するためのユーザー インターフェイスを生成します。
 
 ```json
 {
@@ -42,11 +42,13 @@ CreateUiDefinition には必ず、次の 3 つのプロパティが存在しま�
 * version
 * parameters
 
-マネージ アプリケーションでは、handler は常に `Microsoft.Compute.MultiVm` とする必要があります。また、サポートされている最新のバージョンは `0.1.2-preview` です。
+マネージド アプリケーションでは、handler は常に `Microsoft.Compute.MultiVm` とする必要があります。また、サポートされている最新のバージョンは `0.1.2-preview` です。
 
-parameters プロパティのスキーマは、指定した handler と version の組み合わせによって異なります。 マネージ アプリケーションでサポートされているプロパティは `basics`、`steps`、`outputs` です。 basics プロパティと steps プロパティには、Azure Portal に表示される "_要素_" (テキスト ボックス、ドロップダウンなど) が指定されます。 outputs プロパティは、指定された要素の出力値を Azure Resource Manager デプロイ テンプレートのパラメーターに対してマッピングする目的で使われます。
+parameters プロパティのスキーマは、指定した handler と version の組み合わせによって異なります。 マネージド アプリケーションでサポートされているプロパティは `basics`、`steps`、`outputs` です。 basics プロパティと steps プロパティには、Azure Portal に表示される "_要素_" (テキスト ボックス、ドロップダウンなど) が指定されます。 outputs プロパティは、指定された要素の出力値を Azure Resource Manager デプロイ テンプレートのパラメーターに対してマッピングする目的で使われます。
 
 `$schema` は、指定することが推奨されますが、必須ではありません。 指定する場合は、`$schema` の URI 内のバージョンと `version` の値とを一致させる必要があります。
+
+JSON エディターを使用して UI 定義を作成するか、または UI 定義サンドボックスを使用して UI 定義を作成およびプレビューすることができます。 このサンドボックスの詳細については、[Azure Managed Applications のポータル インターフェイスのテスト](test-createuidefinition.md)に関するページを参照してください。
 
 ## <a name="basics"></a>基本
 Azure ポータルによってファイルが解析されたときに生成されるウィザードの最初のステップは必ず Basics ステップになります。 Azure Portal は、`basics` に指定された要素を表示することに加え、デプロイに使用するサブスクリプション、リソース グループ、場所をユーザーが選択するための要素を挿入します。 一般に、デプロイ全体にかかわるパラメーター (クラスターの名前、管理者の資格情報など) の入力をユーザーに求めるための要素は、このステップに追加する必要があります。
@@ -59,7 +61,7 @@ basics の後に表示するステップ (0 個以上) は steps プロパティ
 ## <a name="outputs"></a>出力
 `outputs` プロパティは、Azure Portal が `basics` と `steps` の要素を Azure Resource Manager デプロイ テンプレートのパラメーターにマッピングする際に使われます。 このディクショナリのキーはテンプレート パラメーターの名前で、ディクショナリの値は、参照された要素の出力オブジェクトのプロパティです。
 
-マネージ アプリケーションのリソース名を設定するには、`applicationResourceName` という名前の値を outputs プロパティに含める必要があります。 この値を設定しない場合、アプリケーションは名前に GUID を割り当てます。 ユーザーに名前を要求するテキスト ボックスをユーザー インターフェイスに追加できます。
+マネージド アプリケーションのリソース名を設定するには、`applicationResourceName` という名前の値を outputs プロパティに含める必要があります。 この値を設定しない場合は、アプリケーションによって名前に GUID が割り当てられます。 ユーザーに名前を要求するテキスト ボックスをユーザー インターフェイスに追加できます。
 
 ```json
 "outputs": {
@@ -72,7 +74,7 @@ basics の後に表示するステップ (0 個以上) は steps プロパティ
 ```
 
 ## <a name="functions"></a>Functions
-CreateUiDefinition は、Azure Resource Manager のテンプレート関数と似た構文と機能を備えており、要素の入力と出力を操作するための関数のほか、条件文などの機能が用意されています。
+Azure Resource Manager のテンプレート関数と同様に (構文と機能の両方)、CreateUiDefinition には、要素の入力と出力を操作するための関数および条件文などの機能が用意されています。
 
 ## <a name="next-steps"></a>次の手順
 createUiDefinition.json ファイルには、それ自体に単純なスキーマが存在します。 その実際の深さは、すべてのサポートされている要素と関数に由来します。 これらの項目については、次の記事で詳しく説明します。
@@ -80,6 +82,6 @@ createUiDefinition.json ファイルには、それ自体に単純なスキー�
 - [要素](create-uidefinition-elements.md)
 - [関数](create-uidefinition-functions.md)
 
-CreateUiDefinition の現在の JSON スキーマは、https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json から入手できます。
+CreateUiDefinition の現在の JSON スキーマは、 https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json から入手できます。
 
 ユーザー インターフェイス ファイルの例については、[createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json) を参照してください。

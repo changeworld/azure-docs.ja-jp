@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d69bd931f2f8c72fd1e6fc79c16662ea367617d6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802016"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60248191"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory を使用して最近削除されたユーザーを復元または削除する
 ユーザーを削除した後、アカウントは 30 日間、中断状態のままになります。 その 30 日の期間中は、ユーザー アカウントをそのすべてのプロパティと共に復元することができます。 30 日の期間が経過すると、ユーザーは自動的に完全に削除されます。
@@ -45,7 +45,7 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
 ### <a name="to-view-your-restorable-users"></a>復元可能なユーザーを表示するには
 1. 組織のグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. **[Azure Active Directory]**、**[ユーザー]**、**[削除済みのユーザー]** の順に選択します。
+2. **[Azure Active Directory]** 、 **[ユーザー]** 、 **[削除済みのユーザー]** の順に選択します。
 
     復元可能なユーザーの一覧を確認します。
 

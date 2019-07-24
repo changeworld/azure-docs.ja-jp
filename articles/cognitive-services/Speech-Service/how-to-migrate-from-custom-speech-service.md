@@ -12,11 +12,11 @@ ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: 8a2c149faa0ec9d135713a123a33d7c220522496
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496005"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60995642"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Custom Speech Service から Speech Service に移行する
 
@@ -52,7 +52,7 @@ Speech Services ポータルで Speech Services にご自分の既存のリソ�
 
 2. **[Migrate selected subscription]\(選択したサブスクリプションの移行\)** を選択します。
 
-3. テキスト ボックスにサブスクリプション キーを入力し、**[Migrate]\(移行\)** を選択します。
+3. テキスト ボックスにサブスクリプション キーを入力し、 **[Migrate]\(移行\)** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

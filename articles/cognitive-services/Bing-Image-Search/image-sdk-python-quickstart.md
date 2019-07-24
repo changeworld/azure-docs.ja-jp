@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cabf29423123d988b08e002077b4782529e96aa0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 19ee6551edae2e27d7dd8aae9ba6a65e4e738cff
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095638"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341340"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>クイック スタート:Bing Image Search SDK for Python を使用してイメージを検索する
 
@@ -72,7 +72,8 @@ ms.locfileid: "58095638"
 if image_results.value:
     first_image_result = image_results.value[0]
     print("Total number of images returned: {}".format(len(image_results.value)))
-    print("First image thumbnail url: {}".format(first_image_result.thumbnail_url))
+    print("First image thumbnail url: {}".format(
+        first_image_result.thumbnail_url))
     print("First image content url: {}".format(first_image_result.content_url))
 else:
     print("No image results returned!")
@@ -90,4 +91,4 @@ else:
 * [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Azure Cognitive Services SDK の Python サンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
 * [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

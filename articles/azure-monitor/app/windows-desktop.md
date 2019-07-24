@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: mbullwin
-ms.openlocfilehash: 95ff8d1a70325357fee4bc24fd96c1a1c7a73845
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 567163a5d5ce37eeffb5ef2bc6f9adb7c5b027ec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077608"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66255717"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>従来の Windows デスクトップ アプリケーションでの使用状況とパフォーマンスの監視
 
@@ -37,7 +37,7 @@ Application Insights は、オンプレミスや Azure、その他各種クラ�
    
     ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy**に設定されていることを確認します。
 5. [API を使用して](../../azure-monitor/app/api-custom-events-metrics.md) テレメトリを送信します。
-6. アプリケーションを実行し、Azure Portal で作成したリソースのテレメトリを表示します。
+6. アプリケーションを実行し、Azure portal で作成したリソースのテレメトリを表示します。
 
 ## <a name="telemetry"></a>コード例
 ```csharp
@@ -77,7 +77,7 @@ Application Insights は、オンプレミスや Azure、その他各種クラ�
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [ダッシュボードを作成する](../../azure-monitor/app/app-insights-dashboards.md)
+* [ダッシュボードを作成する](../../azure-monitor/app/overview-dashboard.md)
 * [診断検索](../../azure-monitor/app/diagnostic-search.md)
 * [メトリックを探索する](../../azure-monitor/app/metrics-explorer.md)
 * [Analytics クエリを作成する](../../azure-monitor/app/analytics.md)

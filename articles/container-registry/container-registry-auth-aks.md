@@ -7,18 +7,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: 1d7e130d619f580aeb82939e19ea5abf680ff039
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: a541af77daf4136c0056cf9919d69c538d1dc5b6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326478"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754465"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
 Azure Kubernetes Service (AKS) で Azure Container Registry (ACR) を使用する場合は、認証メカニズムを確立する必要があります。 この記事では、この 2 つの Azure サービス間で認証を行う場合に推奨される構成について詳しく説明します。
 
-この記事では、AKS クラスターを既に作成しており、`kubectl` コマンド ライン クライアントを使用してクラスターにアクセスできることを前提としています。 
+これらのいずれかの認証方法のみを構成する必要があります。 最も一般的な手法は、[AKS サービス プリンシパルを使用してアクセス権を付与する](#grant-aks-access-to-acr)ことです。 特定のニーズがある場合、必要に応じて [Kubernetes シークレットを使用してアクセス権を付与する](#access-with-kubernetes-secret)ことができます。
+
+この記事では、AKS クラスターを既に作成しており、`kubectl` コマンド ライン クライアントを使用してクラスターにアクセスできることを前提としています。
 
 ## <a name="grant-aks-access-to-acr"></a>ACR へのアクセス許可を AKS に付与する
 

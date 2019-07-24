@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 17003864c7bcc5f8be6acf17d40ce2039f031313
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 76771a7dfcc323cca6ea52366195c895ee510701
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823241"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165592"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
@@ -90,6 +90,9 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
 
 最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は**名前**プロパティで並べ替えられますが、上位 5 件に制限されます。
 
+> [!NOTE]
+> 既にアクセスできているサブスクリプションからクエリの結果が返されなかった場合、`Search-AzGraph` コマンドレットでは既定コンテキストのサブスクリプションが既定で使用されることに注意してください。 既定のコンテキストの一部であるサブスクリプション ID の一覧を表示するには、この `(Get-AzContext).Account.ExtendedProperties.Subscriptions` を実行します。アクセスできるすべてのサブスクリプション全体を検索する場合は、`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID }` を実行して `Search-AzGraph` コマンドレットの PSDefaultParameterValues を設定できます
+   
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 Resource Graph モジュールを Azure PowerShell 環境から削除する場合は、次のコマンドを使用して行うことができます。

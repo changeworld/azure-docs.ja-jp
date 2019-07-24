@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 7baa5e4c113e6c21c6123ac7c8399533a7dfb358
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65410297"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Azure DevTest Labs での仮想マシン (VM) および 環境の作成の失敗に関するトラブルシューティング
@@ -34,7 +34,7 @@ VM または環境の作成を試みてからしばらくの間、失敗を調�
 ## <a name="activity-logs-for-virtual-machines"></a>仮想マシンのアクティビティ ログ
 
 1. ラボのホーム ページで VM を選択して **[仮想マシン]** ページを起動します。
-2. **[仮想マシン]** ページの左メニューの **[監視]** セクションで、**[アクティビティ ログ]** を選択して、VM に関連付けられているすべてのログを表示します。
+2. **[仮想マシン]** ページの左メニューの **[監視]** セクションで、 **[アクティビティ ログ]** を選択して、VM に関連付けられているすべてのログを表示します。
 3. アクティビティ ログ項目では、失敗した操作を選択します。 通常、失敗した操作は、`Write Virtualmachines` と呼ばれます。
 4. 右ウィンドウで [JSON] タブに切り替えます。ログの JSON ビューで詳細を確認します。
 

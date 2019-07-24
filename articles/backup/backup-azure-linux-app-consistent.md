@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 1/12/2018
 ms.author: anuragm
 ms.openlocfilehash: a81c0b9c87db85771fcecab87c6b9ac88dcbd472
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60641128"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM のアプリケーション整合性バックアップ
 
@@ -84,8 +84,8 @@ VM のバックアップ スナップショットを作成すると、アプリ�
 | IncorrectJSONConfigFile | The **VMSnapshotScriptPluginConfig.json** file is incorrect, so pre-script and post-script cannot run and the backup won't be application-consistent. (VMSnapshotScriptPluginConfig.json ファイルが正しくないため、事前スクリプトと事後スクリプトを実行できません。バックアップのアプリケーション整合性は確保されません。) | [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) からコピーをダウンロードして再度構成してください。 |
 | InsufficientPermissionforPre-Script | For running scripts, "root" user should be the owner of the file and the file should have “700” permissions (that is, only "owner" should have “read”, “write”, and “execute” permissions). (スクリプトを実行するためには、root ユーザーがファイルの所有者であること、またファイルに "700" アクセス許可が設定されていることが必要です。つまり所有者だけが、"読み取り"、"書き込み"、"実行" のアクセス許可を持っている必要があります。) | "root" ユーザーがスクリプト ファイルの "所有者" であること、また所有者にのみ "読み取り"、"書き込み"、"実行" のアクセス許可が付与されていることを確認してください。 |
 | InsufficientPermissionforPost-Script | For running scripts, root user should be the owner of the file and the file should have “700” permissions (that is, only "owner" should have “read”, “write”, and “execute” permissions). (スクリプトを実行するためには、root ユーザーがファイルの所有者であること、またファイルに "700" アクセス許可が設定されていることが必要です。つまり所有者だけが、"読み取り"、"書き込み"、"実行" のアクセス許可を持っている必要があります。) | "root" ユーザーがスクリプト ファイルの "所有者" であること、また所有者にのみ "読み取り"、"書き込み"、"実行" のアクセス許可が付与されていることを確認してください。 |
-| Pre-ScriptTimeout | The execution of the application-consistent backup pre-script timed-out. (アプリケーション整合性バックアップの事前スクリプトの実行がタイムアウトしました。) | スクリプトをチェックし、**/etc/azure** にある **VMSnapshotScriptPluginConfig.json** ファイルでタイムアウト値を増やしてください。 |
-| Post-ScriptTimeout | The execution of the application-consistent backup post-script timed out. (アプリケーション整合性バックアップの事後スクリプトの実行がタイムアウトしました。) | スクリプトをチェックし、**/etc/azure** にある **VMSnapshotScriptPluginConfig.json** ファイルでタイムアウト値を増やしてください。 |
+| Pre-ScriptTimeout | The execution of the application-consistent backup pre-script timed-out. (アプリケーション整合性バックアップの事前スクリプトの実行がタイムアウトしました。) | スクリプトをチェックし、 **/etc/azure** にある **VMSnapshotScriptPluginConfig.json** ファイルでタイムアウト値を増やしてください。 |
+| Post-ScriptTimeout | The execution of the application-consistent backup post-script timed out. (アプリケーション整合性バックアップの事後スクリプトの実行がタイムアウトしました。) | スクリプトをチェックし、 **/etc/azure** にある **VMSnapshotScriptPluginConfig.json** ファイルでタイムアウト値を増やしてください。 |
 
 ## <a name="next-steps"></a>次の手順
 [Recovery Services コンテナーへの VM バックアップの構成](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)

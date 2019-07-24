@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: sdgilley
 ms.author: sgilley
-ms.date: 03/21/2019
+ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53e495a3c2d82738e1008ead84a4124e44435c9a
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 406797203a99df7e805e08ee7589148599eeffce
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864376"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670713"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>クイック スタート:独自のノートブック サーバーを使用して Azure Machine Learning の利用を開始する
 
@@ -25,7 +25,7 @@ ms.locfileid: "65864376"
 
 このクイック スタートの動画バージョンをご覧ください。
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2G9N6]
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
@@ -35,12 +35,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * Azure Machine Learning service ワークスペース
 * ワークスペース構成ファイル ( **.azureml/config.json**)。
 
-「[Create an Azure Machine Learning service workspace (Azure Machine Learning サービスのワークスペースを作成する)](setup-create-workspace.md#portal)」の前提条件をすべて入手してください。
+「[Create an Azure Machine Learning service workspace (Azure Machine Learning サービスのワークスペースを作成する)](setup-create-workspace.md#sdk)」の前提条件をすべて入手してください。
+
 
 
 ## <a name="use-the-workspace"></a>ワークスペースの使用
 
-ワークスペース構成ファイルと同じディレクトリでノートブックを起動するか、スクリプトを作成します。 SDK の基本的な API を使用した次のコードを実行して、実験の実行を追跡します。
+ワークスペース構成ファイルと同じディレクトリ ( **.azureml/config.json**) でノートブックを起動するか、スクリプトを作成します。
+
+### <a name="attach-to-workspace"></a>ワークスペースにアタッチする
+
+このコードでは、ワークスペースにアタッチする構成ファイルから情報を読み取ります。
+
+```
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+### <a name="log-values"></a>ログ値
+
+SDK の基本的な API を使用した次のコードを実行して、実験の実行を追跡します。
 
 1. ワークスペースで実験を作成します。
 1. 1 つの値を実験にログ記録します。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 19a7d6052091f8889a88c61793186b7bf7d9d869
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047026"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60304265"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>成果物を VM に追加する
 VM を作成するとき、既存の成果物をその VM に追加できます。 これらの成果物は、[パブリックの DevTest Labs の Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)または独自の Git リポジトリにあります。 この記事では、Azure portal および Azure PowerShell を使用して成果物を追加する方法について説明します。 
@@ -40,10 +40,10 @@ Azure DevTest Labs "*アーティファクト*" を使用すると、VM のプ�
 1. **[アーティファクトの適用]** を選択します。
 1. **[アーティファクトの適用]** ウィンドウで、VM に追加するアーティファクトを選択します。
 1. **[アーティファクトの追加]** ウィンドウで、必須のパラメーター値を入力します。必要に応じて、省略可能なパラメーターも入力します。  
-1. **[追加]** を選択してアーティファクトを追加し、**[アーティファクトの適用]** ウィンドウに戻ります。
+1. **[追加]** を選択してアーティファクトを追加し、 **[アーティファクトの適用]** ウィンドウに戻ります。
 1. VM に必要なアーティファクトを引き続き追加します。
 1. アーティファクトを追加したら、 [アーティファクトの実行順を変更する](#change-the-order-in-which-artifacts-are-run)ことができます。 [アーティファクトの表示または変更](#view-or-modify-an-artifact)に戻ることもできます。
-1. アーティファクトの追加が完了したら、**[適用]** を選択します。
+1. アーティファクトの追加が完了したら、 **[適用]** を選択します。
 
 ### <a name="change-the-order-in-which-artifacts-are-run"></a>アーティファクトの実行順序の変更
 既定では、アーティファクトのアクションは VM に追加された順序で実行されます。 次の手順では、アーティファクトの実行順序を変更する方法を示しています。
@@ -61,8 +61,8 @@ Azure DevTest Labs "*アーティファクト*" を使用すると、VM のプ�
    
     ![Number of artifacts added to VM](./media/devtest-lab-add-vm-with-artifacts/devtestlab-add-artifacts-blade-selected-artifacts.png)
 1. **[選択されたアーティファクト]** ウィンドウで、表示または編集するアーティファクトを選択します。  
-1. **[アーティファクトの追加]** ウィンドウで必要な変更を行ったら、**[OK]** を選択して **[アーティファクトの追加]** ウィンドウを閉じます。
-1. **[OK]** を選択して、**[選択されたアーティファクト]** ウィドウを閉じます。
+1. **[アーティファクトの追加]** ウィンドウで必要な変更を行ったら、 **[OK]** を選択して **[アーティファクトの追加]** ウィンドウを閉じます。
+1. **[OK]** を選択して、 **[選択されたアーティファクト]** ウィドウを閉じます。
 
 ## <a name="use-powershell"></a>PowerShell の使用
 次のスクリプトでは、指定された成果物を指定された VM に適用します。 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) コマンドは、この操作を実行するコマンドです。  

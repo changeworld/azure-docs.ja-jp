@@ -11,10 +11,10 @@ ms.date: 04/30/2019
 ms.author: kavithaj
 ms.reviewer: rortloff
 ms.openlocfilehash: e756049110f7d4a81950abf6ebbe73edb3e3ca0a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143174"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>SQL Data Warehouse での Transparent Data Encryption (TDE) の概要
@@ -32,7 +32,7 @@ Transparent Data Encryption (TDE) を有効にするには、管理者か dbmana
 ## <a name="enabling-encryption"></a>暗号化の有効化
 SQL Data Warehouse の TDE を有効にするには、次の手順を実行します。
 
-1.  [Azure ポータル](https://portal.azure.com)
+1. [Azure ポータル](https://portal.azure.com)
 2. データベース ブレードで **[設定]** ボタンをクリックします。
 3. **[透過的なデータ暗号化]** オプションを選択します ![][1]
 4. **[ON]** 設定を選択します ![][2]
@@ -42,7 +42,7 @@ SQL Data Warehouse の TDE を有効にするには、次の手順を実行し�
 ## <a name="disabling-encryption"></a>暗号化の無効化
 SQL Data Warehouse の TDE を無効にするには、次の手順を実行します。
 
-1.  [Azure ポータル](https://portal.azure.com)
+1. [Azure ポータル](https://portal.azure.com)
 2. データベース ブレードで **[設定]** ボタンをクリックします。
 3. **[透過的なデータ暗号化]** オプションを選択します ![][1]
 4. **[OFF]** 設定を選択します ![][4]

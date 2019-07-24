@@ -8,15 +8,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a4d636ccb03e36f7c495f3c10c90033d7c3c93c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090340"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66417913"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK:ダウンロードおよびリリース ノート
+
 > [!div class="op_single_selector"]
+>
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
@@ -40,6 +42,11 @@ ms.locfileid: "58090340"
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="v2-builds"></a>v2 のビルド
+
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+* ネットワークの問題などにより、すべてのリースの取得にリースの有効期限の間隔よりも長くかかるシナリオの負荷分散戦略を向上しました。
+  * このシナリオでは、負荷分散アルゴリズムによって、リースが誤って期限切れと見なされ、アクティブな所有者からリースが奪われていました。 その結果、不必要に多くのリースの再調整がトリガーされる可能性があります。
+  * 競合の再試行を回避すると同時に、所有者が変わっていない期限切れのリースを取得し、期限切れのリースの取得を次回の負荷分散のイテレーションを延期することで、この問題は修正されました。
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * オブザーバーの例外の処理が改善されました。
@@ -151,8 +158,8 @@ ms.locfileid: "58090340"
 * GA SDK
 * [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.14.1 以降と互換性があります。
 
-
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
+
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
 
 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。 
@@ -161,8 +168,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| Version | リリース日 | 提供終了日 |
+| バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |
 | [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |
 | [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |
 | [2.2.4](#2.2.4) |2018 年 11 月 29 日 |--- |
@@ -177,10 +185,10 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |
 
-
 ## <a name="faq"></a>FAQ
+
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>関連項目
-Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページをご覧ください。 
 
+Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページをご覧ください。

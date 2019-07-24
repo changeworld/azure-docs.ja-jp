@@ -12,20 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: jingwang
-ms.openlocfilehash: 80ef8870bafa00f3debda99db299018a39d42a82
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 1a8d622aa280794d9a4d6fe7320ddcc21ac044f4
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66245035"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475654"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 から Azure にデータをコピーする
 
-Azure Data Factory では、Office 365 テナント内にある高機能な組織データを Azure へとスケーラブルに取り込み、分析アプリケーションを構築して、それらの貴重なデータ資産に基づくインサイトを抽出することができます。 Privileged Access Management との統合により、Office 365 内の貴重な選別済みデータをセキュリティで保護することができます。  Microsoft Graph データ接続について詳しくは、[こちらのリンク](https://docs.microsoft.com/graph/data-connect-concept-overview)をご覧ください。
+Azure Data Factory は [Microsoft Graph データ接続](https://docs.microsoft.com/graph/data-connect-concept-overview)と統合されており、Office 365 テナント内にある高機能な組織データを Azure へとスケーラブルに取り込み、分析アプリケーションを構築して、それらの貴重なデータ資産に基づくインサイトを抽出することができます。 Privileged Access Management との統合により、Office 365 内の貴重な選別済みデータをセキュリティで保護することができます。  Microsoft Graph データ接続の概要については[こちらのリンク](https://docs.microsoft.com/graph/data-connect-concept-overview)を、ライセンス情報については[こちらのリンク](https://docs.microsoft.com/graph/data-connect-policies#licensing)を参照してください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Office 365 からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
+ADF Office 365 コネクタと Microsoft Graph データ接続を使用すると、アドレス帳の連絡先、予定表イベント、メール メッセージ、ユーザー情報、メールボックスの設定など、Exchange Email 対応のメールボックスからさまざまな種類のデータセットを大量に取り込むことができます。  使用できるデータセットの詳細な一覧については、[こちら](https://docs.microsoft.com/graph/data-connect-datasets)を参照してください。
 
 現在、1 回のコピー操作の中で実行できるのは、**Office 365 から [Azure Blob Storage](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2 への、](connector-azure-data-lake-storage.md)JSON 形式** (setOfObjects 型) でのデータ コピーのみとなっています。 Office 365 を他の種類のデータ ストアに読み込んだり、他の形式で読み込む必要がある場合は、最初のコピー アクティビティを後続のコピー アクティビティに連結して、[サポートされている ADF 変換先ストアに関する記事に記載されている、任意のストアにデータを読み込むことができます ](copy-activity-overview.md#supported-data-stores-and-formats) (「サポートされるデータ ストアと形式」表の "シンクとしてサポート" 列をご覧ください)。
 
@@ -83,7 +84,7 @@ Office 365 のリンクされたサービスでは、次のプロパティがサ
 | servicePrincipalTenantId | Azure AD Web アプリケーションが存在するテナントの情報を指定します。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
 | servicePrincipalKey | アプリケーションのキーを取得します。 Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 | はい |
-| connectVia | データ ストアに接続するために使用される統合ランタイム。  指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ  |
+| connectVia | データ ストアに接続するために使用される統合ランタイム。  指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
 >[!NOTE]
 > **office365TenantId** と **servicePrincipalTenantId** の違いと、対応する指定値:
@@ -120,8 +121,8 @@ Office 365 からのデータ コピーについては、次のプロパティ�
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは **Office365Table** に設定する必要があります。 | はい |
 | tableName | Office 365 から抽出するデータセットの名前です。 抽出に使用できる Office 365 データセットの一覧については、[こちら](https://docs.microsoft.com/graph/data-connect-datasets#datasets)をご覧ください。 | はい |
-| allowedGroups | グループ選択の述語。  このプロパティを使用して、データの取得先のユーザー グループを最大 10 個まで選択します。  グループが指定されていない場合、組織全体のデータが返されます。 | いいえ  |
-| userScopeFilterUri | `allowedGroups` プロパティが指定されていない場合、テナント全体に適用される述語式を使用して、特定の行をフィルター処理して Office 365 から抽出することができます。 述語の形式は、Microsoft Graph API のクエリ形式 (例: `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`) と一致している必要があります。 | いいえ  |
+| allowedGroups | グループ選択の述語。  このプロパティを使用して、データの取得先のユーザー グループを最大 10 個まで選択します。  グループが指定されていない場合、組織全体のデータが返されます。 | いいえ |
+| userScopeFilterUri | `allowedGroups` プロパティが指定されていない場合、テナント全体に適用される述語式を使用して、特定の行をフィルター処理して Office 365 から抽出することができます。 述語の形式は、Microsoft Graph API のクエリ形式 (例: `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`) と一致している必要があります。 | いいえ |
 | dateFilterColumn | DateTime フィルター列の名前。 Office 365 データを抽出する時間範囲を制限するには、このプロパティを使用します。 | はい (データセットに DateTime 列が 1 つ以上ある場合)。 この DateTime フィルターが必要なデータセットの一覧については、[こちら](https://docs.microsoft.com/graph/data-connect-filtering#filtering)を参照してください。 |
 | startTime | フィルター処理する開始 DateTime の値。 | はい (`dateFilterColumn` が指定されている場合) |
 | endTime | フィルター処理する終了 DateTime の値。 | はい (`dateFilterColumn` が指定されている場合) |

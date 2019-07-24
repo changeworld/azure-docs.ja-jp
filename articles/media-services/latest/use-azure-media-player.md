@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 07/10/2018
 ms.author: juliako
-ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 2b828ee10580b5ec0415cd5f364b6250a6498093
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926525"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853663"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player の概要
 
@@ -30,17 +30,17 @@ Microsoft Azure Media Services では、HLS、DASH、スムーズ ストリー�
 
 ### <a name="start-using"></a>使用を開始する
 
-[Azure Media Player のデモ ページ](https://aka.ms/amp)を使用して、Azure Media Services のサンプルや独自のストリームを再生することができます。  
+[Azure Media Player のデモ ページ](https://aka.ms/azuremediaplayer)を使用して、Azure Media Services のサンプルや独自のストリームを再生することができます。  
 
 新しいビデオを再生するには、別の URL を貼り付けて **[Update]\(更新する)** を押します。
 
-さまざまな再生オプション (テクノロジ、言語、暗号化など) を構成するには、**[Advanced Options]\(詳細オプション)** を押します。
+さまざまな再生オプション (テクノロジ、言語、暗号化など) を構成するには、 **[Advanced Options]\(詳細オプション)** を押します。
 
 ![Azure Media Player](./media/azure-media-player/home-page.png)
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>ビデオ ストリームの診断を監視する
 
-[Azure Media Player のデモ ページ](https://aka.ms/amp)を使用して、ビデオ ストリームの診断を監視します。 
+[Azure Media Player のデモ ページ](https://aka.ms/azuremediaplayer)を使用して、ビデオ ストリームの診断を監視します。 
 
 ![Azure Media Player の診断](./media/azure-media-player/diagnostics.png)
 

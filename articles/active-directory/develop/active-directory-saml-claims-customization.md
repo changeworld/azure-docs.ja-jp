@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b137b8cd4e3a2b7a308170904e9b3d09b11137f9
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 636086ce0d055ab8de1d1b95dbbf7e5d96c7d7ef
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231347"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483061"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -33,9 +33,9 @@ ms.locfileid: "65231347"
 
 既定では、Azure AD により、アプリケーションに対して、Azure AD でのユーザーのユーザー名 (別名: ユーザー プリンシパル名) を値に持つ `NameIdentifier` 要求を含む SAML トークンが発行され、ユーザーを一意に識別できます。 また、SAML トークンには、ユーザーの電子メール アドレス、姓名を含むその他の要求も含まれています。
 
-アプリケーションに対して SAML トークンで発行された要求を表示または編集するには、Azure Portal でアプリケーションを開きます。 次に、**[ユーザー属性とクレーム]** セクションを開きます。
+アプリケーションに対して SAML トークンで発行された要求を表示または編集するには、Azure Portal でアプリケーションを開きます。 次に、 **[ユーザー属性とクレーム]** セクションを開きます。
 
-![[ユーザー属性とクレーム] セクション](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
+![Azure portal で [ユーザー属性とクレーム] セクションを開く](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
 
 SAML トークンで発行された要求を編集する必要がある理由は、2 つ考えられます。
 
@@ -100,8 +100,8 @@ NameIDPolicy 属性について詳しくは、「[シングル サインオン�
 
 アプリケーション固有の要求を追加するには:
 
-1. **[ユーザー属性とクレーム]** で、**[新しいクレームの追加]** を選択して **[ユーザー クレームの管理]** ページを開きます。
-1. クレームの **[名前]** を入力します。 値は、SAML 仕様の URI パターンに厳密に従う必要はありません。URI パターンが必要な場合は、**[名前空間]** フィールドに追加することができます。
+1. **[ユーザー属性とクレーム]** で、 **[新しいクレームの追加]** を選択して **[ユーザー クレームの管理]** ページを開きます。
+1. クレームの **[名前]** を入力します。 値は、SAML 仕様の URI パターンに厳密に従う必要はありません。URI パターンが必要な場合は、 **[名前空間]** フィールドに追加することができます。
 1. クレームの値が取得される **[ソース]** を選択します。 ソース属性のドロップダウンからユーザー属性を選択するか、または要求として生成する前にユーザー属性に変換を適用することができます。
 
 ### <a name="application-specific-claims---transformations"></a>アプリケーション固有の要求 - 変換
@@ -114,14 +114,14 @@ NameIDPolicy 属性について詳しくは、「[シングル サインオン�
 | **Join()** | 2 つの属性を結合することで、新しい値を作成します。 必要に応じて、2 つの属性の間に区切り記号を使用できます。 |
 | **ToLower()** | 選択した属性の文字を小文字に変換します。 |
 | **ToUpper()** | 選択した属性の文字を大文字に変換します。 |
-| **Contains()** | 入力が指定した値と一致する場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーのメール アドレスに "@contoso.com" が含まれる場合はメール アドレスを値とする要求を出力し、それ以外の場合はユーザー プリンシパル名を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)*: user.email<br/>*Value*: "@contoso.com"<br/>Parameter 2 (出力): user.email<br/>Parameter 3 (一致しない場合の出力): user.userprincipalname |
-| **EndWith()** | 入力が指定した値で終わっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーの employeeid が "000" で終わっている場合は employeeid を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)*: user.employeeid<br/>*値*: "000"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
-| **StartWith()** | 入力が指定した値で始まっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、country/region が "US" で始まっている場合はユーザーの employeeid を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)*: user.country<br/>*値*: "US"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
+| **Contains()** | 入力が指定した値と一致する場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーのメール アドレスに "@contoso.com" が含まれる場合はメール アドレスを値とする要求を出力し、それ以外の場合はユーザー プリンシパル名を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.email<br/>*Value*: "@contoso.com"<br/>Parameter 2 (出力): user.email<br/>Parameter 3 (一致しない場合の出力): user.userprincipalname |
+| **EndWith()** | 入力が指定した値で終わっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、ユーザーの employeeid が "000" で終わっている場合は employeeid を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.employeeid<br/>*値*: "000"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
+| **StartWith()** | 入力が指定した値で始まっている場合、属性または定数を出力します。 一致しない場合は、別の出力を指定できます。<br/>たとえば、country/region が "US" で始まっている場合はユーザーの employeeid を値とする要求を出力し、それ以外の場合は拡張属性を出力するものとします。 これを行うには、次の値を構成します。<br/>*Parameter 1 (入力)* : user.country<br/>*値*: "US"<br/>Parameter 2 (出力): user.employeeid<br/>Parameter 3 (一致しない場合の出力): user.extensionattribute1 |
 | **Extract() - 一致の後** | 指定した値との一致より後の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon" で、一致する値が "Finance_" の場合、要求の出力は "BSimon" です。 |
 | **Extract() - 一致の前** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "BSimon_US" で、一致する値が "_US" の場合、要求の出力は "BSimon" です。 |
 | **Extract() - 一致の間** | 指定した値との一致より前の部分文字列を返します。<br/>たとえば、入力の値が "Finance_BSimon_US" で、1 番目の一致する値が "Finance_"、2 番目の一致する値が "_US" である場合、要求の出力は "BSimon" です。 |
 | **ExtractAlpha() - プレフィックス** | 文字列のプレフィックスのアルファベット部分を返します。<br/>たとえば、入力の値が "BSimon_123" の場合は、"BSimon" を返します。 |
-| **ExtractAlpha() - サフィックス** | 文字列のサフィックスのアルファベット部分を返します。<br/>たとえば、入力の値が "123_BSimon" の場合は、"BSimon" を返します。 |
+| **ExtractAlpha() - サフィックス** | 文字列のサフィックスのアルファベット部分を返します。<br/>たとえば、入力の値が "123_Simon" の場合は、"Simon" を返します。 |
 | **ExtractNumeric() - プレフィックス** | 文字列のプレフィックスの数字部分を返します。<br/>たとえば、入力の値が "123_BSimon" の場合は、"123" を返します。 |
 | **ExtractNumeric() - サフィックス** | 文字列のサフィックスの数字部分を返します。<br/>たとえば、入力の値が "BSimon_123" の場合は、"123" を返します。 |
 | **IfEmpty()** | 入力が null または空の場合、属性または定数を出力します。<br/>たとえば、特定のユーザーの employeeid が空の場合は、extensionattribute に格納されている属性を出力するものとします。 これを行うには、次の値を構成します。<br/>Parameter 1 (入力): user.employeeid<br/>Parameter 2 (出力): user.extensionattribute1<br/>Parameter 3 (一致しない場合の出力): user.employeeid |

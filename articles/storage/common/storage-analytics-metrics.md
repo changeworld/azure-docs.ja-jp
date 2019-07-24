@@ -9,12 +9,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: f0dfed10190685c1d51822b8bec2b3c80cea7bb2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5fecced844b3580c83fd18d0c14c3a2083f7a4fc
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153937"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165731"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics のメトリック (クラシック)
 
@@ -90,18 +90,27 @@ Storage Analytics では、ストレージ サービスに対する要求に関�
 * **サービス**:受信/送信、空き時間情報、遅延時間、成功のパーセンテージなどのメトリックを収集して、BLOB、テーブル、キュー、ファイルのサービスごとに集計します。
 * **ServiceAndApi**:サービス メトリックに加えて、Azure Storage サービス API のストレージ操作ごとに同じメトリックを収集します。
 
-たとえば、次のコマンドは、既定のストレージ アカウントの BLOB サービスの分単位メトリックを 5 日間に設定されたリテンション期間でオンにします。  
+たとえば、次のコマンドは、ストレージ アカウントの BLOB サービスの分単位メトリックを 5 日間に設定された保持期間でオンにします。 
+
+> [!NOTE]
+> このコマンドは、`Connect-AzAccount` コマンドを使用して Azure サブスクリプションにサインインしていることを想定しています。
 
 ```  
-Set-AzureStorageServiceMetricsProperty -MetricsType Minute   
--ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5  
+$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+
+Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5 -Context $storageAccount.Context
 ```  
+
+* `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
+
+* `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+
+
 
 次のコマンドは、既定のストレージ アカウントの BLOB サービスの現在の時間単位メトリック レベルとリテンション日数を取得します。  
 
 ```  
-Get-AzureStorageServiceMetricsProperty -MetricsType Hour   
--ServiceType Blob  
+Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
 Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、[Azure PowerShell のインストールと構成の方法](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)に関する記事をご覧ください。  
@@ -130,9 +139,9 @@ REST API を使用してストレージ メトリックを構成する方法に�
 ストレージ アカウントを監視するように Storage Analytics メトリックを構成すると、ストレージ アカウントのよく知られたテーブルのセットにメトリックが記録されます。 [Azure Portal](https://portal.azure.com) では、時間単位のメトリックを表示するようにグラフを構成できます。
 
 1. [Azure Portal](https://portal.azure.com) のストレージ アカウントに移動します。
-1. メトリックを表示するサービスの **[メニュー]** ブレードで、**[メトリック (クラシック)]** を選択します。
+1. メトリックを表示するサービスの **[メニュー]** ブレードで、 **[メトリック (クラシック)]** を選択します。
 1. 構成するグラフをクリックします。
-1. **[グラフの編集]** ブレードで、**[時間の範囲]**、**[グラフの種類]**、およびグラフに表示するメトリックを選択します。
+1. **[グラフの編集]** ブレードで、 **[時間の範囲]** 、 **[グラフの種類]** 、およびグラフに表示するメトリックを選択します。
 
 Azure Portal のストレージ アカウント メニュー ブレードの **[監視 (クラシック)]** セクションで、特定のメトリックが特定の値に達したときに通知するメール アラートの送信など、[アラート ルール](#metrics-alerts)を構成できます。
 
@@ -141,7 +150,7 @@ Azure Portal のストレージ アカウント メニュー ブレードの **[
 ||||  
 |-|-|-|  
 |**メトリック**|**テーブル名**|**メモ**|  
-|時間単位のメトリック|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|2013-08-15 より前のバージョンでは、これらのテーブルは以下のように呼ばれていました。<br /><br /> $MetricsTransactionsBlob <br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
+|時間単位のメトリック|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|2013-08-15 より前のバージョンでは、これらのテーブルは以下のように呼ばれていました。<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
 |分単位のメトリック|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Powershell を使用するか、プログラミングによってのみ有効にできます。<br /><br /> ファイル サービスのメトリックは、バージョン 2015-04-05 以降で利用できます。|  
 |容量|$MetricsCapacityBlob|BLOB サービスのみ。|  
 

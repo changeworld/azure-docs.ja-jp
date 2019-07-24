@@ -1,24 +1,17 @@
 ---
 title: Azure リソースが見つからないエラー | Microsoft Docs
 description: リソースが見つからない場合に、エラーを解決する方法について説明します。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: ''
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 176de6f19274dfd8a6cf0335bb4cf16a8baa874b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 9c999a70ffdbed0c954cfc960b5febdaff06e4ae
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525346"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206185"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Azure リソースが見つからないエラーを解決する
 
@@ -68,7 +61,7 @@ Resource Manager はリソースのプロパティを取得する必要があり
 
    ![デプロイ履歴の選択](./media/resource-manager-not-found-errors/select-deployment.png)
 
-2. 履歴からデプロイを選択し、**[イベント]** を選択します。
+2. 履歴からデプロイを選択し、 **[イベント]** を選択します。
 
    ![デプロイ イベントの選択](./media/resource-manager-not-found-errors/select-deployment-events.png)
 

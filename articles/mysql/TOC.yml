@@ -81,18 +81,28 @@
           href: concepts-data-access-and-security-threat-protection.md
         - name: VNet
           href: concepts-data-access-and-security-vnet.md
+        - name: 接続のアーキテクチャ
+          href: concepts-connectivity-architecture.md
     - name: ビジネス継続性
       items:
         - name: 概要
           href: concepts-business-continuity.md
         - name: バックアップと復元
           href: concepts-backup.md
-    - name: 監視
+    - name: 監視と調整
       items:
-        - name: 監視
+        - name: 監視と調整
           href: concepts-monitoring.md
-        - name: サーバー ログ
+        - name: 低速クエリ ログ
           href: concepts-server-logs.md
+        - name: 監査ログ
+          href: concepts-audit-logs.md
+        - name: クエリ ストア
+          href: concepts-query-store.md
+        - name: Query Performance Insight
+          href: concepts-query-performance-insight.md
+        - name: パフォーマンスに関する推奨事項
+          href: concepts-performance-recommendations.md
     - name: 開発
       items:
         - name: ドライバーとツールの互換性
@@ -157,12 +167,22 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
-    - name: サーバー ログへのアクセス
+    - name: ストレージの自動拡張
       items:
         - name: Azure ポータル
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-in-cli.md
+          href: howto-auto-grow-storage-portal.md
+    - name: サーバー ログへのアクセス
+      items:
+        - name: 低速クエリ ログ
+          items:
+            - name: Azure ポータル
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-in-cli.md
+        - name: 監査ログ
+          items:
+            - name: Azure ポータル
+              href: howto-configure-audit-logs-portal.md
     - name: 監視
       items:
         - name: メトリックに基づいたアラートの作成

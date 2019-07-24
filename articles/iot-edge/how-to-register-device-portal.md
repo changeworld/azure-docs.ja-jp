@@ -4,29 +4,29 @@ description: Azure portal を使用して新しい IoT Edge デバイスを登�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/03/2019
+ms.date: 06/03/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6414f694296ce1f5a8b65ccab30cceaf2172dee7
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 16660fbed465cc70f16cde430024f33b8aa4350e
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974898"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66495352"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>Azure portal から新しい Azure IoT Edge デバイスを登録する
 
-Azure IoT Edge で IoT デバイスを使用する前に、それらを IoT ハブに登録する必要があります。 デバイスを登録すると、Edge ワークロード用にデバイスを設定するために使用できる接続文字列を受け取ります。
+Azure IoT Edge で IoT デバイスを使用する前に、それらを IoT ハブに登録する必要があります。 デバイスを登録すると、IoT Edge ワークロード用にデバイスを設定するために使用できる接続文字列を受け取ります。
 
 この記事では、Azure portal を使用して新しい IoT Edge デバイスを登録する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。
+Azure サブスクリプション内の無料の標準 [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 
-## <a name="create-a-device"></a>デバイスの作成
+## <a name="create-a-device"></a>デバイスを作成する
 
 Azure portal で、IoT Edge デバイスは、IoT ハブに接続するがエッジ対応でないデバイスとは別に作成および管理されます。
 
@@ -44,9 +44,9 @@ IoT ハブに接続するすべてのエッジ対応デバイスが、**IoT Edge
 
 デバイスを設定する準備ができたら、物理デバイスを IoT ハブ内でのその ID にリンクする接続文字列が必要です。
 
-1. ポータルの **IoT Edge** ページで、Edge デバイスの一覧からデバイス ID をクリックします。
+1. ポータルの **IoT Edge** ページで、IoT Edge デバイスの一覧からデバイス ID をクリックします。
 2. **[接続文字列 (主キー)]** または **[接続文字列 (セカンダリ キー)]** の値をコピーします。
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure portal でモジュールをデバイスにデプロイ](how-to-deploy-modules-portal.md)する方法を学習します
+[Azure portal でモジュールをデバイスにデプロイ](how-to-deploy-modules-portal.md)する方法を確認します。

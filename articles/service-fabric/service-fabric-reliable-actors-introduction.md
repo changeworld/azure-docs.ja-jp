@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 5a237e23dffed76e6122e17b59c85d20ca7e1baf
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668672"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60727187"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors の概要
 Reliable Actors は、[Virtual Actor](https://research.microsoft.com/en-us/projects/orleans/) パターンに基づく Service Fabric アプリケーション フレームワークです。 Reliable Actors API は、Service Fabric による拡張性と信頼性の保証の上に構築された、シングル スレッドのプログラミング モデルを提供します。

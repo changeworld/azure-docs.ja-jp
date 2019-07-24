@@ -7,14 +7,14 @@ manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: Mario.Hewardt
+ms.author: marioh
 ms.reviewer: mbullwin
-ms.openlocfilehash: 54b79897ee378cda52106fe704e25c50a4325f38
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 2dcf719e6c276c5641dc4c0040d8d7a808eeb3f2
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58631720"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706362"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>スナップショット デバッガーのアップグレード
 
@@ -33,7 +33,7 @@ ms.locfileid: "58631720"
 
    ![3 つのボタンのスクリーンショット。 Application Insights と記載された中央のボタンが選択されている](./media/snapshot-debugger-upgrade/application-insights-button.png)
 
-4. 現在の設定で新しいブレードが開きます。 設定を変更する場合を除き、設定をそのまましておくことができます。 ブレードの下部にある **[適用]** ボタンは、既定では有効になっていません。ボタンをアクティブ化するには、いずれかの設定を切り替える必要があります。 実際の設定を変更する必要はなく、設定を変更した後、すぐに元に戻します。 [Profiler] 設定を切り替えて、**[適用]** を選択することをお勧めします。
+4. 現在の設定で新しいブレードが開きます。 設定を変更する場合を除き、設定をそのまましておくことができます。 ブレードの下部にある **[適用]** ボタンは、既定では有効になっていません。ボタンをアクティブ化するには、いずれかの設定を切り替える必要があります。 実際の設定を変更する必要はなく、設定を変更した後、すぐに元に戻します。 [Profiler] 設定を切り替えて、 **[適用]** を選択することをお勧めします。
 
    ![[適用] ボタンが赤色で強調表示されている Application Insights App Service の構成ページのスクリーンショット](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "58631720"
 
    ![[変更の適用] のスクリーンショット - 右上隅に表示される拡張機能の更新メッセージ](./media/snapshot-debugger-upgrade/updating-extensions.png)
 
-完了すると、**[変更が適用されました]** という通知が表示されます。
+完了すると、 **[変更が適用されました]** という通知が表示されます。
 
    ![変更が適用されたことを示すメッセージのスクリーンショット](./media/snapshot-debugger-upgrade/changes-are-applied.png)
 

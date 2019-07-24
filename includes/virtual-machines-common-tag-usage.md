@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 17778b3edf1845d85302a0bcdf72a1ebc3919cea
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66166073"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181113"
 ---
 ## <a name="viewing-your-tags-in-the-usage-details"></a>使用量の詳細でタグを確認する
 Resource Manager デプロイ モデルで Compute、Network、および Storage リソースに設定したタグは、[課金ポータル](https://account.windowsazure.com/)の使用量の詳細に追加されます。

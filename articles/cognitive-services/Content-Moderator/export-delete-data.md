@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
 ms.openlocfilehash: 1cd70bee22e56e2580b322b93e0f121261d97a94
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758104"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60699197"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>Content Moderator のユーザー データをエクスポートまたは削除する
 

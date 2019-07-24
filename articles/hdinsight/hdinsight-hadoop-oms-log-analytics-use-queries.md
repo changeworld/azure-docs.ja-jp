@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
 ms.openlocfilehash: cbaaed3fff99778bfab1feeacdab02bf8245a85a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64714709"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログでクエリを実行して HDInsight クラスターを監視する
@@ -35,7 +35,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 1. Azure Portal から HDInsight クラスターに関連付けられた Log Analytics ワークスペースを開きます。
 2. **[ログ検索]** タイルを選択します。
-3. 検索ボックスに、Azure Monitor ログを使用するように構成したすべての HDInsight クラスターで使用できるすべてのメトリックを検索する次のクエリを入力して、**[実行]** を選択します。
+3. 検索ボックスに、Azure Monitor ログを使用するように構成したすべての HDInsight クラスターで使用できるすべてのメトリックを検索する次のクエリを入力して、 **[実行]** を選択します。
 
         search *
 
@@ -48,7 +48,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 5. 左側のウィンドウの **[種類]** の下で、詳しく調べたいメトリックを選択して **[適用]** を選択します。 次のスクリーンショットは `metrics_resourcemanager_queue_root_default_CL` 種類を選択した場合を示しています。
 
     > [!NOTE]  
-    > 目的のメトリックが表示されていない場合は、**[[+] 増やす]** ボタンを選択します。 また、**[適用]** ボタンはリストの一番下にあるので、このボタンを表示するには下までスクロールする必要があります。
+    > 目的のメトリックが表示されていない場合は、 **[[+] 増やす]** ボタンを選択します。 また、 **[適用]** ボタンはリストの一番下にあるので、このボタンを表示するには下までスクロールする必要があります。
 
     テキスト ボックスのクエリが、下記のスクリーンショットの赤枠で示された内容に変わっていることを確認してください。
 
@@ -68,7 +68,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 1. Azure Portal から HDInsight クラスターに関連付けられた Log Analytics ワークスペースを開きます。
 2. **[ログ検索]** タイルを選択します。
-3. Azure Monitor ログを使用するように構成したすべての HDInsight クラスターのすべてのエラー メッセージを検索する次のクエリを入力して、**[実行]** を選択します。 
+3. Azure Monitor ログを使用するように構成したすべての HDInsight クラスターのすべてのエラー メッセージを検索する次のクエリを入力して、 **[実行]** を選択します。 
 
          search "Error"
 
@@ -76,8 +76,8 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
     ![すべてのエラーの検索結果](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "すべてのエラーの検索結果")
 
-4. 左側のウィンドウの **[種類]** カテゴリの下で、詳しく調べたいエラーの種類を選択して、**[適用]** を選択します。  選択した種類のエラーのみが表示されるように結果が調整されたことを確認してください。
-5. 左側のウィンドウにあるオプションを使って、このエラーの一覧を詳しく調べることができます。 例: 
+4. 左側のウィンドウの **[種類]** カテゴリの下で、詳しく調べたいエラーの種類を選択して、 **[適用]** を選択します。  選択した種類のエラーのみが表示されるように結果が調整されたことを確認してください。
+5. 左側のウィンドウにあるオプションを使って、このエラーの一覧を詳しく調べることができます。 例:
 
     - 特定のワーカー ノードからのエラー メッセージを表示するには:
 
@@ -97,7 +97,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 1. Azure Portal から HDInsight クラスターに関連付けられた Log Analytics ワークスペースを開きます。
 2. **[ログ検索]** タイルを選択します。
-3. アラートを作成する次のクエリを実行して、**[実行]** を選択します。
+3. アラートを作成する次のクエリを実行して、 **[実行]** を選択します。
 
         metrics_resourcemanager_queue_root_default_CL | where AppsFailed_d > 0
 
@@ -107,16 +107,16 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
     ![クエリを入力してアラートを作成する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "クエリを入力してアラートを作成する")
 
-5. **[ルールの作成]** ウィンドウで、クエリとその他の情報を入力してアラートを作成し、**[アラート ルールの作成]** を選択します。
+5. **[ルールの作成]** ウィンドウで、クエリとその他の情報を入力してアラートを作成し、 **[アラート ルールの作成]** を選択します。
 
     ![クエリを入力してアラートを作成する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "クエリを入力してアラートを作成する")
 
 既存のアラートを編集または削除するには、次の手順を実行します。
 
 1. Azure Portal から Log Analytics ワークスペースを開きます。
-2. 左側のメニューで、**[アラート]** を選択します。
+2. 左側のメニューで、 **[アラート]** を選択します。
 3. 編集または削除するアラートを選択します。
-4. 次のオプションがあります。**[保存]**、**[破棄]**、**[無効化]**、**[削除]** です。
+4. 次のオプションがあります。 **[保存]** 、 **[破棄]** 、 **[無効化]** 、 **[削除]** です。
 
     ![HDInsight Azure Monitor ログ アラートの削除または編集](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 

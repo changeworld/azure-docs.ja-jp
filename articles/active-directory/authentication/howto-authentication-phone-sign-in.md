@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 07/09/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47e8541b82a1cd38f07684508a96b9789df20e92
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 3125de0d1fd784b30c000bb287b457397c0fbebb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370391"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703033"
 ---
-# <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしの電話によるサインイン (パブリック プレビュー)
+# <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしの電話によるサインイン (パブリック プレビュー)
 
 Microsoft Authenticator アプリを使用すると、パスワードを使用せずに Azure AD アカウントにサインインできます。 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) のテクノロジと同様、Microsoft Authenticator は、キーベースの認証を使用して、デバイスに関連付けられていて生体認証または PIN を使用するユーザー資格情報を有効にします。
 
@@ -39,24 +39,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ### <a name="steps-to-enable"></a>有効にする手順
 
-1. Azure Active Directory V2 PowerShell モジュールのパブリック プレビューのリリースを確実に最新バージョンにします。 パブリック プレビューをアンインストールおよび再インストールして最新バージョンにするには、次のコマンドを実行します。
-
-    ```powershell
-    Uninstall-Module -Name AzureADPreview
-    Install-Module -Name AzureADPreview
-    ```
-
-2. Azure AD テナントで認証を受け、Azure AD V2 PowerShell モジュールを使用します。 使用されるアカウントは、セキュリティ管理者またはグローバル管理者のいずれかでなければなりません。
-
-    ```powershell
-    Connect-AzureAD
-    ```
-
-3. Authenticator サインイン ポリシーの作成:
-
-    ```powershell
-    New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
-    ```
+ディレクトリでパスワードなしの認証方法を有効にするには、「[Azure AD に対してパスワードなしのサインインを有効にする](howto-authentication-passwordless-enable.md#enable-new-passwordless-authentication-methods)」の記事の手順に従います。
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>エンド ユーザーは電話によるサインインをどのように有効にするのですか。
 
@@ -76,7 +59,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ### <a name="ad-fs-integration"></a>AD FS の統合
 
-ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[Use your password instead]\(代わりにパスワードを使用する) をクリックする追加の手順を取ることなく、サインイン確認のために ADFS にリダイレクトされることを防ぎます。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 このプロセスの例外として、login_hint が指定されている場合、ユーザーは AD FS に自動転送され、パスワードなしの資格情報を使用するオプションがバイパスされます。
+ユーザーが Microsoft Authenticator のパスワードなしの資格情報を有効にすると、そのユーザーの認証は常に、既定で承認のための通知を送信します。 このロジックは、ハイブリッド テナントのユーザーが、[Use your password instead] (代わりにパスワードを使用する) をクリックする追加の手順を取ることなく、サインイン確認のために ADFS にリダイレクトされることを防ぎます。 このプロセスは、オンプレミスの条件付きアクセス ポリシーとパススルー認証フローもバイパスします。 このプロセスの例外として、login_hint が指定されている場合、ユーザーは AD FS に自動転送され、パスワードなしの資格情報を使用するオプションをバイパスします。
 
 ### <a name="azure-mfa-server"></a>Azure MFA サーバー
 
@@ -88,6 +71,8 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ## <a name="next-steps"></a>次の手順
 
-[デバイス登録の詳細](../devices/overview.md#getting-devices-under-the-control-of-azure-ad)
+[パスワードなしとは](concept-authentication-passwordless.md)
+
+[デバイス登録の詳細](../devices/overview.md#getting-devices-in-azure-ad)
 
 [Azure Multi-Factor Authentication の詳細](../authentication/howto-mfa-getstarted.md)

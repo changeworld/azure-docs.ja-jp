@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496191"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60628575"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL データベースのエクスポート
 
@@ -31,7 +31,7 @@ ms.locfileid: "59496191"
 自分が権限を持つすべての Data Lake Analytics アカウントがサーバー エクスプローラーに表示されます。 データベースをエクスポートするには:
 
 1. サーバー エクスプローラーで、エクスポートするデータベースを含むアカウントを展開します。
-2. データベースを右クリックし、**[エクスポート]** を選択します。 
+2. データベースを右クリックし、 **[エクスポート]** を選択します。 
    
     ![サーバー エクスプローラー - データベースのエクスポート](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
@@ -47,7 +47,7 @@ U-SQL ジョブを実行して、エクスポート アクションを完了し�
 
 ### <a name="step-3-check-the-objects-list-and-other-configurations"></a>手順 3:オブジェクト一覧やその他の構成を確認する
 
-この手順では、選択したオブジェクトを **[エクスポート オブジェクト一覧]** ボックスで確認することができます。 エラーがある場合は、**[前へ]** を選択して前に戻り、エクスポートするオブジェクトを正しく構成します。
+この手順では、選択したオブジェクトを **[エクスポート オブジェクト一覧]** ボックスで確認することができます。 エラーがある場合は、 **[前へ]** を選択して前に戻り、エクスポートするオブジェクトを正しく構成します。
 
 エクスポート ターゲットの他の設定を構成することもできます。 構成の説明を次の表に示します。
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: mbullwin
 ms.openlocfilehash: a6e7e8e01ccb623a3ff340c318c9c238c919cb38
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54027694"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61298586"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>例外数の異常な上昇 (プレビュー)
 
@@ -34,6 +34,6 @@ Application Insights は、アプリケーションでスローされた例外�
 
 ## <a name="how-do-i-fix-it"></a>どのように修正すればよいですか
 通知には、診断プロセスでサポートされる診断情報が含まれています。
-1. **トリアージ**:  通知は、影響を受けるユーザーまたは要求の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
+1. **トリアージ**: 通知は、影響を受けるユーザーまたは要求の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
 2. **範囲**。 問題の影響を受けるのはすべてのトラフィックか、それとも一部の操作だけか。 この情報を通知から取得できます。
 3. **診断**。 検出には、例外がスローされたメソッドと、例外の種類に関する情報が含まれています。 サポート情報にリンクしている関連項目とレポートを使用して、問題の詳細な診断に役立てることもできます。

@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: この記事では、Azure によって、パブリック インターネット サービスとクラウド サービスがどのように通信するかを説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
-ms.author: kumud
-ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.author: allensu
+ms.openlocfilehash: 10af3b4838aae1565bac1d996997c117a74cedbc
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876944"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274667"
 ---
 # <a name="outbound-connections-classic"></a>送信接続 (クラシック)
 
@@ -37,9 +37,9 @@ Azure は送信元ネットワーク アドレス変換 (SNAT) を使用して�
 
 Azure では、送信接続のクラシック デプロイを実現するために、3 つの異なる方法が提供されます。  すべてのクラシック デプロイで、3 つのシナリオすべてを使用できるわけではありません。
 
-| シナリオ | 方法 | IP プロトコル | 説明 | Web worker ロール | IaaS | 
+| シナリオ | Method | IP プロトコル | 説明 | Web worker ロール | IaaS | 
 | --- | --- | --- | --- | --- | --- |
-| [1.インスタンス レベルのパブリック IP アドレスがある VM](#ilpip) | SNAT (ポート マスカレードは不使用) | TCP、UDP、ICMP、ESP | Azure は仮想マシンに割り当てられたパブリック IP アドレスを使います。 インスタンスには、使用可能なすべてのエフェメラル ポートがあります。 | いいえ  | はい |
+| [1.インスタンス レベルのパブリック IP アドレスがある VM](#ilpip) | SNAT (ポート マスカレードは不使用) | TCP、UDP、ICMP、ESP | Azure は仮想マシンに割り当てられたパブリック IP アドレスを使います。 インスタンスには、使用可能なすべてのエフェメラル ポートがあります。 | いいえ | はい |
 | [2. パブリックに負荷分散されたエンドポイント](#publiclbendpoint) | パブリック エンドポイントに対するポート マスカレード (PAT) による SNAT | TCP、UDP | Azure は、複数のプライベート エンドポイントとパブリック IP アドレスのパブリック エンドポイントを共有します。 Azure は、PAT のパブリック エンドポイントのエフェメラル ポートを使います。 | はい | はい |
 | [3.スタンドアロンの VM](#defaultsnat) | ポート マスカレード (PAT) による SNAT | TCP、UDP | Azure は自動的に、SNAT のパブリック IP アドレスを指定し、このパブリック IP アドレスをデプロイ全体で共有して、PAT のパブリック エンドポイント IP アドレスのエフェメラル ポートを使います。 これは、上記のシナリオのフォールバック シナリオです。 可視性と制御が必要は場合は推奨されません。 | はい | はい |
 

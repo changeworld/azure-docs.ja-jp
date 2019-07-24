@@ -3,24 +3,24 @@ title: はじめに - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Translator Text API にサインアップしてサブスクリプション キーを取得する方法について説明します。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: erhopf
+ms.date: 06/04/2019
+ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 6bd7a014e765d32349951d99d3027c90f61f7eb7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e51e6875681618b5f558d5c52ed5a2b14095b079
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726144"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67434960"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Translator Text API にサインアップする方法
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 - アカウントをお持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)を作成して、無料で試すことができます。
 - アカウントはお持ちの場合は、 [サインイン](https://ms.portal.azure.com/)

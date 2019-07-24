@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/06/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 41cdec1d7f1c3932b17da6f9b1de518071f3f542
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027641"
 ---
 # <a name="train-clustering-model"></a>クラスタリング モデルのトレーニング
@@ -40,7 +40,7 @@ ms.locfileid: "65027641"
 
     ラベルが使用可能な場合は、特徴として使用することも、除外することもできます。  
   
-6. トレーニング データを新しいクラスター ラベルとともに出力する場合は、**[Check for Append or Uncheck for Result Only]\(追加をチェックまたは結果のみをチェック解除\)** オプションを選択します。
+6. トレーニング データを新しいクラスター ラベルとともに出力する場合は、 **[Check for Append or Uncheck for Result Only]\(追加をチェックまたは結果のみをチェック解除\)** オプションを選択します。
 
     このオプションの選択を解除すると、クラスターの割り当てだけが出力されます。 
 
@@ -51,9 +51,9 @@ ms.locfileid: "65027641"
 トレーニングの完了後、次の作業を行います。
 
 
-+  データセットの値を表示するには、モジュールを右クリックし、**[Result datasets]\(結果データセット\)** を選択して **[可視化]** をクリックします。
++  データセットの値を表示するには、モジュールを右クリックし、 **[Result datasets]\(結果データセット\)** を選択して **[可視化]** をクリックします。
 
-+ トレーニング済みのモデルを保存して後で再利用できるようにするには、モジュールを右クリックし、**[Trained model]\(トレーニング済みのモデル\)** を選択して **[Save As Trained Model]\(トレーニング済みのモデルとして保存する\)** をクリックします。
++ トレーニング済みのモデルを保存して後で再利用できるようにするには、モジュールを右クリックし、 **[Trained model]\(トレーニング済みのモデル\)** を選択して **[Save As Trained Model]\(トレーニング済みのモデルとして保存する\)** をクリックします。
 
 + モデルからスコアを生成するには、「[クラスターへのデータの割り当て](assign-data-to-clusters.md)」を使用します。
 

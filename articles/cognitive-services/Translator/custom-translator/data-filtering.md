@@ -2,19 +2,19 @@
 title: データのフィルター処理 - カスタム トランスレーター
 titleSuffix: Azure Cognitive Services
 description: カスタム システムのトレーニングに使用するドキュメントを送信すると、トレーニングの準備をするための一連の処理とフィルター処理がそのドキュメントに対して行われます。
-author: v-pawal
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-jansko
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 0871cb7e4dcbe8cf71f35f174137396bde607c54
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a224a30114d03468c5764528e6c7472572a93f1c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916112"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443431"
 ---
 # <a name="data-filtering"></a>データのフィルタリング
 

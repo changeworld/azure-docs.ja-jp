@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 946f7011c51b7c6844e023d03e01e4c2043d2578
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544465"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615651"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Azure Database for MySQL のアプリケーション開発の概要 
 この記事では、開発者が Azure Database for MySQL に接続するためのアプリケーション コードを記述するときに従う必要がある、設計上の考慮事項について説明します。 

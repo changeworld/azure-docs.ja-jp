@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C の Identity Experience Framework スキーマのソーシャル アカウント要求変換の例 | Microsoft Docs
 description: Azure Active Directory B2C の Identity Experience Framework スキーマのソーシャル アカウント要求変換の例。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f6da199beb292f193d97eee309ca40dd74f81f8e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 37fe192e83c946089e2374f24ae10a756134e45a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697715"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66807856"
 ---
 # <a name="social-accounts-claims-transformations"></a>ソーシャル アカウント要求変換
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) B2C では、ソーシャル アカウント I
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-Azure Active Directory の呼び出しで使用できる、ユーザーの alternativeSecurityId プロパティの JSON 表現を作成します。 詳細については、「[AlternativeSecurityId のスキーマ](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType)」を参照してください。
+Azure Active Directory の呼び出しで使用できる、ユーザーの alternativeSecurityId プロパティの JSON 表現を作成します。 詳細については、「[AlternativeSecurityId のスキーマ](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#alternativesecurityid-type)」を参照してください。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: a3d75f09ac21fcdb4862cf8eefff0b5c05fd3369
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 58591302280c67dbd0f69ebe0bc47cf95c8bfc18
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937609"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65956750"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace と AppSource の公開ガイド
 
@@ -30,7 +30,7 @@ ms.locfileid: "64937609"
 
 このガイドには、アプリケーションやサービスをリストに登録する前に理解する必要があるステップに関する、技術情報とビジネス面の情報の両方が含まれています。 このガイドのさまざまなセクションに移動したり、重要なトピックに直接移動したりするには、目次を使用してください。
 
-Azure Marketplace および AppSource に関する質問は、**[Problem Type]\(問題のタイプ\)** > **[Marketplace Onboarding]\(Marketplace オンボーディング\)** からメッセージをお送りください。  Marketplace パブリッシャー オンボーディング チームが喜んでお手伝いします。 
+Azure Marketplace および AppSource に関する質問は、 **[Problem Type]\(問題のタイプ\)**  >  **[Marketplace Onboarding]\(Marketplace オンボーディング\)** からメッセージをお送りください。  Marketplace パブリッシャー オンボーディング チームが喜んでお手伝いします。 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>Marketplace に参加することの利点 
 
@@ -62,7 +62,7 @@ Marketplace に新しく参加することで、パートナーは、Marketplace
 
 *   共同販売: Marketplace を通じた Microsoft との共同販売のプロセスを開始または加速します。 Microsoft チームとの共同販売を推進するプログラムおよびサポートにアクセスします。
 
-Marketplace に[ソリューションを提出](https://azuremarketplace.microsoft.com/sell/signup)したら、オンボーディング チームからの連絡を待ち、パブリッシング プロセスのサポートを受けてください。
+Marketplace に[ソリューションを提出](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)したら、オンボーディング チームからの連絡を待ち、パブリッシング プロセスのサポートを受けてください。  詳細については、[パートナー センター アカウントの作成方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を参照してください。
 
 Microsoft Go-To-Market の特典および Marketplace でビジネスを拡大する方法については、「[Microsoft Go-To-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」をご覧ください。
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:PHP を使ってニュース検索を実行する - Bing News Search REST API
+title: クイック スタート:PHP と Bing News Search REST API を使用してニュース検索を実行する
 titlesuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、PHP を使って Bing News Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e77c7ea6036e92c33c975f8180053a8880db55a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9fd03b433580444c2fc3f956dded6deb1a2be7f1
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090527"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203332"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>クイック スタート:PHP と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -34,7 +34,7 @@ ms.locfileid: "58090527"
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-[Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) は、Bing 検索エンジンからニュースの結果を返します。
+[Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) は、Bing 検索エンジンからニュースの結果を返します。
 
 1. コードのコメントで説明されているように、`php.ini` でセキュリティ保護された HTTP のサポートが有効になっていることを確認します。
 2. 適切な IDE またはエディターで新しい PHP プロジェクトを作成します。

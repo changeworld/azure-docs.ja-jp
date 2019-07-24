@@ -4,17 +4,17 @@ description: この VM 管理ソリューションは、スケジュールに従
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 05/08/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 017c2fd934f35a64f26687f4a58634dda9a821a3
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
+ms.openlocfilehash: 39ba577580424bf8283d64198bb3068b82869c51
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65501971"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476869"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -49,7 +49,7 @@ Start/Stop VM ソリューションには、別の Automation アカウントを
 
 ### <a name="permissions-needed-to-deploy"></a>デプロイに必要なアクセス許可
 
-ユーザーが Start/Stop VMs during off-hours ソリューション をデプロイするために必要な特定のアクセス許可があります。 これらのアクセス許可は、デプロイ時に、事前に作成された Automation アカウントおよび Log Analytics ワークスペースを使用する場合と、新しいものを作成する場合とで異なります。
+ユーザーが Start/Stop VMs during off-hours ソリューション をデプロイするために必要な特定のアクセス許可があります。 これらのアクセス許可は、デプロイ時に、事前に作成された Automation アカウントおよび Log Analytics ワークスペースを使用する場合と、新しいものを作成する場合とで異なります。 サブスクリプションの共同作成者および Azure Active Directory テナントのグローバル管理者の場合、次のアクセス許可を構成する必要はありません。 これらの権限がないか、カスタム ロールを構成する必要がない場合は、以下の必要なアクセス許可をご覧ください。
 
 #### <a name="pre-existing-automation-account-and-log-analytics-account"></a>既存の Automation アカウントと Log Analytics アカウント
 
@@ -71,7 +71,8 @@ Automation アカウントと Log Analytics に対して Start/Stop VMs during o
 | Microsoft.OperationsManagement/solutions/write | リソース グループ |
 | Microsoft.OperationalInsights/workspaces/* | リソース グループ |
 | Microsoft.Insights/diagnosticSettings/write | リソース グループ |
-| Microsoft.Insights/ActionGroups/WriteMicrosoft.Insights/ActionGroups/read | リソース グループ |
+| Microsoft.Insights/ActionGroups/Write | リソース グループ |
+| Microsoft.Insights/ActionGroups/read | リソース グループ |
 | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループ |
 | Microsoft.Resources/deployments/* | リソース グループ |
 
@@ -79,54 +80,34 @@ Automation アカウントと Log Analytics に対して Start/Stop VMs during o
 
 新しい Automation アカウントと Log Analytics ワークスペースに Start/Stop VMs during off-hours ソリューションをデプロイするには、ソリューションをデプロイするユーザーは前のセクションで定義されているアクセス許可と次のアクセス許可を持っている必要があります。
 
-- サブスクリプションの共同管理者 - これは、クラシック実行アカウントを作成するために必要です。
-- **アプリケーション開発者**ロールに属していること。 実行アカウントの構成の詳細については、[実行アカウントを構成するためのアクセス許可](manage-runas-account.md#permissions)に関するページをご覧ください。
+- サブスクリプションの共同管理者 - これは、クラシック実行アカウントの作成にのみ必要です。
+- [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **アプリケーション開発者** ロールに属していること。 実行アカウントの構成の詳細については、[実行アカウントを構成するためのアクセス許可](manage-runas-account.md#permissions)に関するページをご覧ください。
+- サブスクリプションまたは次のアクセス許可の共同作成者。
 
 | アクセス許可 |Scope (スコープ)|
 | --- | --- |
+| Microsoft.Authorization/Operations/read | サブスクリプション|
+| Microsoft.Authorization/permissions/read |サブスクリプション|
 | Microsoft.Authorization/roleAssignments/read | サブスクリプション |
 | Microsoft.Authorization/roleAssignments/write | サブスクリプション |
+| Microsoft.Authorization/roleAssignments/delete | サブスクリプション |
 | Microsoft.Automation/automationAccounts/connections/read | リソース グループ |
 | Microsoft.Automation/automationAccounts/certificates/read | リソース グループ |
 | Microsoft.Automation/automationAccounts/write | リソース グループ |
 | Microsoft.OperationalInsights/workspaces/write | リソース グループ |
 
-### <a name="region-mappings"></a>リージョンのマッピング
-
-Start/Stop VMs during off-hours を有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
-
-サポートするマッピングを次の表に示します。
-
-|**Log Analytics ワークスペース リージョン**|**Azure Automation リージョン**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
-|西ヨーロッパ|西ヨーロッパ|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP および EastUS の Log Analytics ワークスペースと Automation アカウントのマッピングは、同じリージョンどうしのマッピングではありませんが、正しいマッピングです。
-
-<sup>2</sup> 容量の制約により、新しいリソースを作成するときにリージョンを使用できません。 これには、Automation アカウントと Log Analytics ワークスペースが含まれます。 ただし、リージョン内のリンクされた既存のリソースは引き続き動作します。
-
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 Start/Stop VMs during off-hours ソリューションを、ご利用の Automation アカウントに追加し、変数を設定してソリューションをカスタマイズするには、以下の手順を実行します。
 
-1. Automation アカウントから、**[関連リソース]** の **[VM の開始/停止]** を選択します。 この画面では、**[Learn more about and enable the solution]\(ソリューションの詳細と有効化\)** をクリックして確認できます。 VM の起動/停止ソリューションが既にデプロイされている場合は、**[ソリューションを管理する]** をクリックし、一覧から探すことで選択できます。
+1. Automation アカウントから、 **[関連リソース]** の **[VM の開始/停止]** を選択します。 この画面では、 **[Learn more about and enable the solution]\(ソリューションの詳細と有効化\)** をクリックして確認できます。 VM の起動/停止ソリューションが既にデプロイされている場合は、 **[ソリューションを管理する]** をクリックし、一覧から探すことで選択できます。
 
    ![Automation アカウントから有効にする](./media/automation-solution-vm-management/enable-from-automation-account.png)
 
    > [!NOTE]
-   > Azure portal のどこからでも、**[リソースの作成]** をクリックして作成できます。 [Marketplace] ページで、「**Start**」、「**Start/Stop**」などのキーワードを入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 または、ソリューションのフルネームから 1 つ以上のキーワードを入力し、Enter キーを押すこともできます。 検索結果から **Start/Stop VMs during off-hours** を選択します。
+   > Azure portal のどこからでも、 **[リソースの作成]** をクリックして作成できます。 [Marketplace] ページで、「**Start**」、「**Start/Stop**」などのキーワードを入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 または、ソリューションのフルネームから 1 つ以上のキーワードを入力し、Enter キーを押すこともできます。 検索結果から **Start/Stop VMs during off-hours** を選択します。
 
-2. 選択したソリューションの **[Start/Stop VMs during off-hours]** ページで概要を確認し、**[作成]** をクリックします。
+2. 選択したソリューションの **[Start/Stop VMs during off-hours]** ページで概要を確認し、 **[作成]** をクリックします。
 
    ![Azure ポータル](media/automation-solution-vm-management/azure-portal-01.png)
 
@@ -134,27 +115,32 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
    ![VM 管理の [ソリューションの追加] ページ](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-4. **[ソリューションの追加]** ページで、**[ワークスペース]** を選択します。 Automation アカウントと同じ Azure サブスクリプションに関連付けられている Log Analytics ワークスペースを選択します。 ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択します。 **[Log Analytics ワークスペース]** ページで、次の手順を実行します。
+4. **[ソリューションの追加]** ページで、 **[ワークスペース]** を選択します。 Automation アカウントと同じ Azure サブスクリプションに関連付けられている Log Analytics ワークスペースを選択します。 ワークスペースがない場合は、 **[新しいワークスペースの作成]** を選択します。 **[Log Analytics ワークスペース]** ページで、次の手順を実行します。
    - 新しい **Log Analytics ワークスペース**の名前 ("ContosoLAWorkspace" など) を指定します。
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、新しいリソース グループを作成するか、既存のリソース グループを選択できます。
    - **[場所]** を選択します。 現在使用できる場所は、**オーストラリア南東部**、**カナダ中部**、**インド中部**、**米国東部**、**東日本**、**東南アジア**、**英国南部**、**西ヨーロッパ**、および**米国西部 2** のみです。
    - **[価格レベル]** を選択します。 **[GB ごと (スタンドアロン)]** オプションを選択します。 Azure Monitor ログは[価格](https://azure.microsoft.com/pricing/details/log-analytics/)を更新し、GB ごとのレベルが唯一のオプションとなっています。
 
-5. **[Log Analytics ワークスペース]** ページで必要な情報を入力したら、**[作成]** をクリックします。 進行状況はメニューの **[通知]** で追跡できます。完了したら、**[ソリューションの追加]** ページに戻ります。
-6. **[ソリューションの追加]** ページで、**[Automation アカウント]** を選択します。 新しい Log Analytics ワークスペースを作成する場合は、関連付ける新しい Automation アカウントを作成するか、Log Analytics ワークスペースにまだリンクされていない既存の Automation アカウントを選択することができます。 既存の Automation アカウントを選択するか、**[Automation アカウントの作成]** をクリックし、**[Automation アカウントの追加]** ページで、次の情報を入力します。
+   > [!NOTE]
+   > ソリューションを有効にすると、Log Analytics ワークスペースと Automation アカウントをリンクするために特定のリージョンのみがサポートされます。
+   >
+   > サポートされているマッピング ペアの一覧については、[Automation アカウントと Log Analytics ワークスペースのリージョン マッピング](how-to/region-mappings.md)に関する記事をご覧ください。
+
+5. **[Log Analytics ワークスペース]** ページで必要な情報を入力したら、 **[作成]** をクリックします。 進行状況はメニューの **[通知]** で追跡できます。完了したら、 **[ソリューションの追加]** ページに戻ります。
+6. **[ソリューションの追加]** ページで、 **[Automation アカウント]** を選択します。 新しい Log Analytics ワークスペースを作成する場合は、関連付ける新しい Automation アカウントを作成するか、Log Analytics ワークスペースにまだリンクされていない既存の Automation アカウントを選択することができます。 既存の Automation アカウントを選択するか、 **[Automation アカウントの作成]** をクリックし、 **[Automation アカウントの追加]** ページで、次の情報を入力します。
    - **[名前]** フィールドに、Automation アカウントの名前を入力します。
 
      それ以外のオプションはすべて、選択した Log Analytics ワークスペースに基づいて自動的に入力されます。 こうしたオプションは変更できません。 このソリューションに含まれている Runbook は、Azure 実行アカウントが既定の認証方法になります。 **[OK]** をクリックすると、構成オプションが検証され、Automation アカウントが作成されます。 進行状況は、メニューの **[通知]** で追跡できます。
 
-7. 最後に、**[ソリューションの追加]** ページで、**[構成]** を選択します。 **[パラメーター]** ページが表示されます。
+7. 最後に、 **[ソリューションの追加]** ページで、 **[構成]** を選択します。 **[パラメーター]** ページが表示されます。
 
    ![ソリューションの [パラメーター] ページ](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
    ここでは、次の操作が求められます。
    - **ターゲット ResourceGroup 名**を指定します。 この値は、このソリューションで管理する VM を含むリソース グループの名前です。 複数の名前を入力する場合は、それぞれをコンマで区切ってください (値の大文字と小文字は区別されません)。 ワイルドカードを使用して、サブスクリプション内の全リソース グループの VM を対象にすることもできます。 この値は、**External_Start_ResourceGroupNames** 変数と **External_Stop_ResourceGroupNames** 変数に格納されます。
    - **VM 除外リスト (文字列)** を指定します。 この値は、ターゲット リソース グループの 1 つ以上の仮想マシンの名前です。 複数の名前を入力する場合は、それぞれをコンマで区切ってください (値の大文字と小文字は区別されません)。 ワイルドカードの使用がサポートされています。 この値は **External_ExcludeVMNames** 変数に格納されます。
-   - **スケジュール**を選択します。 この値は、ターゲット リソース グループの VM を定期的に起動および停止する日時です。 既定では、スケジュールは今から 30 分後に構成されます。 別のリージョンを選択することはできません。 ソリューションの構成後、スケジュールを特定のタイム ゾーンに構成するには、「[起動および停止スケジュールの変更](#modify-the-startup-and-shutdown-schedules)」を参照してください。
+   - **スケジュール**を選択します。 スケジュールの日付と時刻を選択します。 選択した時間に開始し、毎日繰り返されるスケジュールが作成されます。 別のリージョンを選択することはできません。 ソリューションの構成後、スケジュールを特定のタイム ゾーンに構成するには、「[起動および停止スケジュールの変更](#modify-the-startup-and-shutdown-schedules)」を参照してください。
    - アクション グループから**電子メール通知**を受信するには、既定値の **[はい]** をそのまま使用し、有効なメール アドレスを指定します。 [[いいえ]](../azure-monitor/platform/action-groups.md) を選択したものの、後日、電子メール通知を受信することにした場合は、コンマで区切られた有効なメール アドレスで作成された**アクション グループ**を更新することができます。 また、次のアラート ルールを有効にする必要があります。
 
      - AutoStop_VM_Child
@@ -164,10 +150,10 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
      > [!IMPORTANT]
      > **[Target ResourceGroup Names]\(ターゲット リソース グループ名\)** の既定値は **&ast;** です。 これは、サブスクリプション内のすべての VM が対象です。 ソリューションでサブスクリプション内のすべての VM を対象にするのでない場合は、スケジュールを有効にする前に、この値をリソース グループ名の一覧に更新する必要があります。
 
-8. ソリューションに必要な初期設定を構成したら、**[OK]** をクリックして **[パラメーター]** ページを閉じ、**[作成]** を選択します。 すべての設定が検証された後、ソリューションは、ご利用のサブスクリプションにデプロイされます。 このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。
+8. ソリューションに必要な初期設定を構成したら、 **[OK]** をクリックして **[パラメーター]** ページを閉じ、 **[作成]** を選択します。 すべての設定が検証された後、ソリューションは、ご利用のサブスクリプションにデプロイされます。 このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。
 
 > [!NOTE]
-> Azure Cloud Solution Provider (Azure CSP) サブスクリプションがある場合、デプロイ完了後に、Automation アカウントで、**[共有リソース]** の **[変数]** に移動し、[**External_EnableClassicVMs**](#variables) 変数を **False** に設定してください。 これにより、ソリューションによるクラシック VM リソースの検索が停止します。
+> Azure Cloud Solution Provider (Azure CSP) サブスクリプションがある場合、デプロイ完了後に、Automation アカウントで、 **[共有リソース]** の **[変数]** に移動し、[**External_EnableClassicVMs**](#variables) 変数を **False** に設定してください。 これにより、ソリューションによるクラシック VM リソースの検索が停止します。
 
 ## <a name="scenarios"></a>シナリオ
 
@@ -366,7 +352,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 ## <a name="viewing-the-solution"></a>ソリューションの表示
 
-ソリューションにアクセスするには、ご自身の Automation アカウントに移動し、**[関連リソース]** の **[ワークスペース]** を選択します。 Log Analytics ページで、**[全般]** の **[ソリューション]** を選択します。 **[ソリューション]** ページで、一覧から **Start-Stop-VM[ワークスペース]** ソリューションを選択します。
+ソリューションにアクセスするには、ご自身の Automation アカウントに移動し、 **[関連リソース]** の **[ワークスペース]** を選択します。 Log Analytics ページで、 **[全般]** の **[ソリューション]** を選択します。 **[ソリューション]** ページで、一覧から **Start-Stop-VM[ワークスペース]** ソリューションを選択します。
 
 ソリューションを選択すると、**Start-Stop-VM[ワークスペース]** ソリューション ページが表示されます。 ここでは、**StartStopVM** タイルなど、重要な情報を確認できます。 Log Analytics ワークスペースと同様、このタイルには、そのソリューションに関して開始された Runbook ジョブの数と、正常に終了した Runbook ジョブの数、およびそのグラフが表示されます。
 
@@ -385,7 +371,7 @@ Azure Portal で、[監視]、[アクション グループ] の順に移動し�
 
 ![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/azure-monitor.png)
 
-**[StartStop_VM_Notification]** ページで、**[詳細]** の **[詳細の編集]** をクリックします。 これで、**[電子メール/SMS/プッシュ/音声]** ページが開きます。 メール アドレスを更新し、**[OK]** をクリックして変更を保存します。
+**[StartStop_VM_Notification]** ページで、 **[詳細]** の **[詳細の編集]** をクリックします。 これで、 **[電子メール/SMS/プッシュ/音声]** ページが開きます。 メール アドレスを更新し、 **[OK]** をクリックして変更を保存します。
 
 ![Automation Update Management ソリューション ページ](media/automation-solution-vm-management/change-email.png)
 
@@ -419,7 +405,7 @@ Azure Portal で、[監視]、[アクション グループ] の順に移動し�
 
 1. シャットダウンする VM のリソース グループが、**External_Stop_ResourceGroupNames** 変数に追加されていることを確認します。
 2. VM をシャットダウンする時刻の独自のスケジュールを作成します。
-3. **ScheduledStartStop_Parent** Runbook に移動し、**[スケジュール]** をクリックします。 これにより、前の手順で作成したスケジュールを選択できます。
+3. **ScheduledStartStop_Parent** Runbook に移動し、 **[スケジュール]** をクリックします。 これにより、前の手順で作成したスケジュールを選択できます。
 4. **[パラメーターと実行設定]** を選択し、ACTION パラメーターを "Stop" に設定します。
 5. **[OK]** をクリックして変更を保存します。
 
@@ -433,10 +419,12 @@ Azure Portal で、[監視]、[アクション グループ] の順に移動し�
 
 ソリューションを削除するには、次の手順を実行します。
 
-1. ご自身の Automation アカウントから、左側のページで **[ワークスペース]** を選択します。
+1. Automation アカウントで、 **[関連リソース]** の **[リンクされたワークスペース]** を選択します。
+1. **[ワークスペースに移動]** を選択します。
+1. **[全般]** で **[ソリューション]** を選択します。 
 1. **[ソリューション]** ページで、ソリューション **Start-Stop-VM[ワークスペース]** を選択します。 **VMManagementSolution[ワークスペース]** ページで、メニューから **[削除]** を選択します。<br><br> ![VM 管理ソリューションの削除](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. **[ソリューションの削除]** ウィンドウで、ソリューションを削除するかどうかを確定します。
-1. 情報が検証され、ソリューションが作成されている間、メニューの **[通知]** でその進行状況を追跡することができます。 ソリューションの削除プロセスが開始すると、**[ソリューション]** ページに戻ります。
+1. 情報が検証され、ソリューションが作成されている間、メニューの **[通知]** でその進行状況を追跡することができます。 ソリューションの削除プロセスが開始すると、 **[ソリューション]** ページに戻ります。
 
 Automation アカウントと Log Analytics ワークスペースは、このプロセスの一部として削除されません。 Log Analytics ワークスペースを保持しない場合は、これを手動で削除する必要があります。 これは、Azure Portal から行うことができます。
 

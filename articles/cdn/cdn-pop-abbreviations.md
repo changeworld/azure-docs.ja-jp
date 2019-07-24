@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: 3de7f36228bba4cfc84e17dd056683a1a76df684
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 488f7bc4cb715e9cdb99b7a7c79407b9bbc0d29c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869616"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593594"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN の略称別の POP の場所
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ AKL | オークランド (ニュージーランド) | アジア
 AMA | アムステルダム (オランダ) | ヨーロッパ
 AMB | アムステルダム (オランダ) | ヨーロッパ
 AMS | アムステルダム (オランダ) | ヨーロッパ
-AMA | スウェーデン、ストックホルム | ヨーロッパ
+ARN | スウェーデン、ストックホルム | ヨーロッパ
 ATL | ジョージア州アトランタ (米国) | 北米:米国東海岸
 BAQ | バランキヤ (コロンビア) | ラテン アメリカ
 BLR | バンガロール (インド) | アジア
@@ -149,7 +149,7 @@ TIR | チェンナイ (インド) | アジア
 TKA | 東京 (日本) | アジア
 TKB | 東京 (日本) | アジア
 TOJ | マドリード (スペイン) | ヨーロッパ
-アラブ首長国連邦 | フジャイラ (アラブ首長国連邦) | ヨーロッパ
+UAE | フジャイラ (アラブ首長国連邦) | ヨーロッパ
 UIO | キト (エクアドル) | ラテン アメリカ
 VIE | ウィーン (オーストリア) | ヨーロッパ
 VNY | カリフォルニア州ロサンゼルス (米国) | 北米:米国西海岸

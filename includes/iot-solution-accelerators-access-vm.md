@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8d1f0f6ae3ffc123f1ae8318a6fbce4a9a3024fa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66143389"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814924"
 ---
 ## <a name="access-the-virtual-machine"></a>仮想マシンにアクセスする
 
-次の手順では、Azure Cloud Shell の `az` コマンドを使用します。 必要に応じて、開発用マシンに [Azure CLI 2.0 をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)し、ローカルでコマンドを実行することができます。
+次の手順では、Azure Cloud Shell の Azure CLI を使用します。 必要に応じて、開発用マシンに [Azure CLI をインストール](/cli/azure/install-azure-cli)し、ローカルでコマンドを実行することができます。
 
 次の手順は、**SSH** アクセスを許可するように Azure 仮想マシンを構成する方法を示しています。 ここに示された手順では、ソリューション アクセラレータ用に選択された名前を **contoso-simulation** と想定しています。この値を実際のデプロイの名前に置き換えてください。
 

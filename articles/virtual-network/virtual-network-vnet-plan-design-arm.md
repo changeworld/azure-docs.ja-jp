@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 3843b5022aaf218bf91e25ecf6d9c36bb2db2dee
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575424"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66478594"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 
@@ -77,7 +77,7 @@ Azure のすべてのリソースには名前があります。 名前はスコ�
 - サブネット内の VM ごとに異なるセキュリティ規則を適用する必要がある場合は、VM 内のネットワーク インターフェイスを、1 つまたは複数のアプリケーション セキュリティ グループに関連付けることができます。 セキュリティ規則では、送信元と送信先のどちらか一方または両方のアプリケーション セキュリティ グループを指定できます。 その規則は、アプリケーション セキュリティ グループのメンバーであるネットワーク インターフェイスにのみ適用されます。 詳しくは、[ネットワーク セキュリティ グループ](security-overview.md)および[アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)に関するページをご覧ください。
 - Azure では、各ネットワーク セキュリティ グループ内に複数のセキュリティ規則が既定で作成されます。 既定の規則の 1 つでは、仮想ネットワーク内のすべてのリソース間で、すべてのトラフィックのフローが許可されます。 この動作をオーバーライドするには、ネットワーク セキュリティ グループと、NVA にトラフィックをルーティングするためのカスタム ルーティングの、どちらか一方または両方を使います。 Azure の[既定のセキュリティ規則](security-overview.md#default-security-rules)のすべてと、ネットワーク セキュリティ グループの規則がリソースに適用される方法を、よく理解することをお勧めします。
 
-[NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) または[ネットワーク セキュリティ グループ](virtual-networks-dmz-nsg.md)を使って Azure とインターネットの間に境界ネットワーク (DMZとも知られる) を実装する設計のサンプルを見ることができます。
+[NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) を使用して Azure とインターネットの間に境界ネットワーク (DMZ とも呼ばれます) を実装するためのサンプル設計を表示できます。
 
 ### <a name="traffic-routing"></a>トラフィックのルーティング
 

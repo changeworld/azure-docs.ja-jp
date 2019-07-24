@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/11/2019
 ms.author: juliako
 ms.openlocfilehash: a2171ff8a4354a59ec2f790f9bf38b7a687419ca
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543878"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60322551"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成
 
@@ -49,10 +49,10 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 ### <a name="configure-the-environment"></a>環境の構成 
 
 1. **Postman** を開きます。
-2. 画面の右側で、**[Manage environment]/(環境の管理/)** オプションを選択します。
+2. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
 
     ![環境を管理する](./media/develop-with-postman/postman-import-env.png)
-4. **[Manage environment]/(環境の管理/)** ダイアログで、**[インポート]** をクリックします。
+4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[インポート]** をクリックします。
 2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Azure Media Service v3 Environment.postman_environment.json` ファイルを参照します。
 6. **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境が追加されています。
 

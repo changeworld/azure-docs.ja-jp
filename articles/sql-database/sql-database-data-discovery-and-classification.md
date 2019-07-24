@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/22/2019
 ms.openlocfilehash: e451b7837a1cff4bbeaecd1573dc860524caf4d3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65142651"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL Database および SQL Data Warehouse のデータの検出と分類
@@ -77,7 +77,7 @@ Information Protection ポリシー管理の一環として、カスタム ラ�
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
-2. [Azure SQL Database] ウィンドウの [セキュリティ] で、**[Advanced Data Security]** に移動します。 [Advanced Data Security] をクリックして有効にし、**[データの検出と分類 (プレビュー)]** カードをクリックします。
+2. [Azure SQL Database] ウィンドウの [セキュリティ] で、 **[Advanced Data Security]** に移動します。 [Advanced Data Security] をクリックして有効にし、 **[データの検出と分類 (プレビュー)]** カードをクリックします。
 
    ![データベースのスキャン](./media/sql-data-discovery-and-classification/data_classification.png)
 

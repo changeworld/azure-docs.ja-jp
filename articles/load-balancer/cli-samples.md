@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure CLI のサンプル
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
-ms.author: kumud
-ms.openlocfilehash: b66a61be8995806db60effcaf6c1c92ce6359164
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.author: allensu
+ms.openlocfilehash: 9567dc1425ea74a9f46912532c5b8e4e4afc2fdb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084738"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275689"
 ---
 # <a name="azure-cli-samples-for-load-balancer"></a>Load Balancer 用の Azure CLI サンプル
 

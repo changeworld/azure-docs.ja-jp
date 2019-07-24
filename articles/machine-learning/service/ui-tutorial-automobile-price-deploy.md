@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/06/2019
-ms.openlocfilehash: fe26417c6e3a9f159e884c19d7bd7c9dc7569229
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8512ca2fe01c772d7e4c21a5cb09303b9804899c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787831"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389220"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで機械学習モデルをデプロイする
 
@@ -58,7 +58,7 @@ ms.locfileid: "65787831"
 
 **[Set Up Web Service]\(Web サービスの設定\)** を選択すると、次の動作が行われます。
 
-* トレーニング済みモデルが、1 つの **Trained Model** (トレーニング済みモデル) モジュールに変換されます。 これは、実験キャンバスの左側にあるモジュール パレットに格納されます。 このモジュールは、**[Trained Models]\(トレーニング済みモデル\)** の下に表示されます。
+* トレーニング済みモデルが、1 つの **Trained Model** (トレーニング済みモデル) モジュールに変換されます。 これは、実験キャンバスの左側にあるモジュール パレットに格納されます。 このモジュールは、 **[Trained Models]\(トレーニング済みモデル\)** の下に表示されます。
 * トレーニングに使用したモジュールは削除されます。具体的には次のモジュールが削除されます。
   * モデルのトレーニング
   * データの分割
@@ -72,7 +72,7 @@ ms.locfileid: "65787831"
 
 ![デプロイできるよう準備した後の実験の予測される構成を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-最後にもう一度実験を実行します (**[実行]** を選択します)。 ポップアップ ダイアログ ボックスで、実験を実行するコンピューティング ターゲットを選択します。 モデルがまだ機能していることを確認するには、Score Model (モデルのスコア付け) モジュールの出力を選択し、**[結果の表示]** を選択します。 元のデータが、予測価格 ("Scored Labels" (スコア付けラベル)) と共に表示されます。
+最後にもう一度実験を実行します ( **[実行]** を選択します)。 ポップアップ ダイアログ ボックスで、実験を実行するコンピューティング ターゲットを選択します。 モデルがまだ機能していることを確認するには、Score Model (モデルのスコア付け) モジュールの出力を選択し、 **[結果の表示]** を選択します。 元のデータが、予測価格 ("Scored Labels" (スコア付けラベル)) と共に表示されます。
 
 ## <a name="deploy-the-web-service"></a>Web サービスをデプロイする
 
@@ -107,7 +107,7 @@ Web サービスは、ビジュアル インターフェイスの Web サービ�
 
     ![Web サービスのテスト ページを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)
 
-1. テスト データを入力するか、または自動入力されたサンプル データを使用し、下部にある **[テスト]** を選択します。 テスト要求が Web サービスに送信され、ページに結果が表示されます。
+1. テスト データを入力するか、または自動入力されたサンプル データを使用し、下部にある **[テスト]** を選択します。 テスト要求が Web サービスに送信され、ページに結果が表示されます。 価格値は入力データに対して生成されますが、予測値を生成するためには使用されません。
 
 ## <a name="manage-the-web-service"></a>Web サービスを管理する
 
@@ -137,7 +137,7 @@ REST 呼び出しのサンプルは、Web サービスの詳細ページの **[C
 
 1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。  
 
-1. ワークスペースで、**[モデル]** を選択します。 次に、作成した実験を選択します。
+1. ワークスペースで、 **[モデル]** を選択します。 次に、作成した実験を選択します。
 
     ![Azure portal で実験に移動する方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
 

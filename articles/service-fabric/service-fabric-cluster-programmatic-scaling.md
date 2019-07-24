@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 552c9820cca4380c00e1bf435fdb3d068c0690fb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 128f28d2a8b97feb3d20c34b7468b60c446a78a6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047941"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66306926"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
@@ -29,16 +29,16 @@ Azure で実行される Service Fabric クラスターは仮想マシン スケ
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>資格情報を管理する
-スケーリングを処理するサービスを作成する際に難しいのは、そのサービスが、対話型ログインを行わずに仮想マシン スケール セットのリソースにアクセスできるようにする必要があるということです。 スケーリング サービスが独自の Service Fabric アプリケーションを変更するようであれば、Service Fabric クラスターへのアクセスは簡単です。しかし、スケール セットへのアクセスには資格情報が必要です。 ログインには、[Azure CLI](https://github.com/azure/azure-cli) で作成した[サービス プリンシパル](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)を使用できます。
+スケーリングを処理するサービスを作成する際に難しいのは、そのサービスが、対話型ログインを行わずに仮想マシン スケール セットのリソースにアクセスできるようにする必要があるということです。 スケーリング サービスが独自の Service Fabric アプリケーションを変更するようであれば、Service Fabric クラスターへのアクセスは簡単です。しかし、スケール セットへのアクセスには資格情報が必要です。 サインインには、[Azure CLI](https://github.com/azure/azure-cli) で作成した[サービス プリンシパル](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)を使用できます。
 
 サービス プリンシパルは、次の手順で作成できます。
 
-1. 仮想マシン スケール セットへのアクセス権を持つユーザーとして Azure CLI (`az login`) にログインします。
+1. 仮想マシン スケール セットへのアクセス権を持つユーザーとして Azure CLI (`az login`) にサインインします。
 2. `az ad sp create-for-rbac` でサービス プリンシパルを作成します。
     1. appId (場所によっては "クライアント ID" と呼ばれる)、名前、パスワード、テナントを、後で使用するためにメモしておきます。
     2. サブスクリプション ID も必要になります。これは `az account list` で表示できます。
 
-fluent コンピューティング ライブラリは、次のとおり、これらの資格情報を使用してログインできます (`IAzure` などのコアの fluent Azure タイプは [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) パッケージにあります)。
+fluent コンピューティング ライブラリは、次のとおり、これらの資格情報を使用してサインインできます (`IAzure` などのコアの fluent Azure タイプは [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) パッケージにあります)。
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {

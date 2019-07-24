@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
 ms.openlocfilehash: 40880a2c28ce28a671930ef8837082247e61e24b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495090"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60733132"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API に接続する - Node.js
 
@@ -123,7 +123,7 @@ node index.js
 ## <a name="see-also"></a>関連項目
 
 - [Media Services の概念](concepts-overview.md)
-- [NPM install azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)
+- [NPM インストール azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
 ## <a name="next-steps"></a>次の手順
 

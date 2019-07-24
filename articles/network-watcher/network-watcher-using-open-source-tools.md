@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64936023"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>VM の送受信ネットワーク トラフィックのパターンをオープン ソース ツールで視覚化する
@@ -37,7 +37,7 @@ Azure 内の VM に単純な Web アプリケーションがデプロイされ�
 
 ### <a name="install-capanalysis"></a>CapAnalysis のインストール
 
-CapAnalysis を仮想マシンにインストールするには、公式のインストラクション (https://www.capanalysis.net/ca/how-to-install-capanalysis) を参照してください。
+CapAnalysis を仮想マシンにインストールするには、公式のインストラクション (https://www.capanalysis.net/ca/how-to-install-capanalysis ) を参照してください。
 CapAnalysis にリモートからアクセスするには、新しい受信セキュリティ規則を追加することによって、VM 上のポート 9877 を開放する必要があります。 ネットワーク セキュリティ グループへの規則の作成について詳しくは、「[既存の NSG に規則を作成する](../virtual-network/manage-network-security-group.md#create-a-security-rule)」をご覧ください。 この規則が正しく追加されていれば、`http://<PublicIP>:9877` で CapAnalysis にアクセスできるようになります。
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Azure Network Watcher を使用してパケット キャプチャ セッションを開始する

@@ -14,25 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: 01f6da4f5ad6b618c444949fce8d2b7aa3367e17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bc0fd83bd45e7c5c671b387d124cdddc75244ade
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075767"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64573511"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Azure Security Center でのセキュリティ イベントの監視と処理
 イベント ダッシュ ボードは、時間の経過とともに収集されたセキュリティ イベントの数と、注意を払う必要がある重要なイベントの一覧の概要を示します。  
 
 > [!NOTE]
-> この機能を使用するには、ワークスペースが Log Analytics バージョン 2 を実行していて、Security Center の Standard レベルに存在する必要があります。 Standard レベルの詳細については、Security Center の[価格ページ](security-center-pricing.md)をご覧ください。
->
->
+> セキュリティ イベント ダッシュボードは 2019 年 7 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_events)」を参照してください。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="what-is-a-security-event"></a>セキュリティ イベントとは何ですか。
 Security Center は、Microsoft Monitoring Agent を使用して、さまざまなセキュリティ関連の構成とイベントをマシンから収集し、ワークスペースにこれらのイベントを格納します。 このようなデータの例には、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、および Security Center と統合されたセキュリティ ソリューションからのイベントなどがあります。 またワークスペースには、Microsoft Monitoring Agent によってクラッシュ ダンプ ファイルがコピーされます。
+
+## <a name="requirements"></a>必要条件
+この機能を使用するには、ワークスペースが Log Analytics バージョン 2 を実行していて、Security Center の Standard レベルに存在する必要があります。 Standard レベルの詳細については、Security Center の[価格ページ](security-center-pricing.md)をご覧ください。
 
 ## <a name="events-processed-dashboard"></a>処理されたイベントのダッシュボード
 **イベント** ダッシュボードには、Security Center のメイン メニューまたは Security Center の**概要**ブレードからアクセスします。  
@@ -113,7 +114,7 @@ Security Center でイベント処理を使用するには、ワークスペー�
    ![ダッシュボードの試行][11]
 
 3. **[高度なセキュリティへのオンボード]** で、アップグレードするワークスペースを選択します。
-4. **[価格]** で、**[Standard]** を選択します。
+4. **[価格]** で、 **[Standard]** を選択します。
 5. **[保存]** を選択します。
 
    ![Standard レベルにアップグレードする][12]

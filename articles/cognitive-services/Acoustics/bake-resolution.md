@@ -7,15 +7,15 @@ author: KyleStorck
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: KyleStorck
-ms.openlocfilehash: 7dbf63ba39c5dcdebb363cfc37a45f0216a07497
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: kylsto
+ms.openlocfilehash: ba7c71c666ae8f90d499bfe52303537aeb112a77
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789756"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296712"
 ---
 # <a name="project-acoustics-bake-resolution"></a>Project Acoustics のベイク精度
 この概念的概要では、音響のベイク操作をする際の粗分解能と細分解能の違いについて説明します。 この設定は、ベイク ワークフローのプローブ手順で選択します。

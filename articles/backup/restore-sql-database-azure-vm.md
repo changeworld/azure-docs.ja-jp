@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/22/2019
 ms.author: raynew
-ms.openlocfilehash: 1712e46494796e563c26316b4f45d968872c304f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 856f45f448aa843e9dc04ec3b6a60841cfe33227
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996767"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704858"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 上の SQL Server データベースを復元する
 
@@ -41,6 +41,7 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
     - 指定されたクライアント名のみで接続を開くことができます。
 - すべてのシステム データベース (モデル、マスター、msdb) の場合は、復元をトリガーする前に SQL Server Agent サービスを停止してください。
 - これらのいずれかのデータベースへの接続を奪おうとする可能性があるアプリケーションはすべて閉じます。
+- サーバーで複数のインスタンスが実行している場合、すべてのインスタンスが稼働している必要があり、そうでないと、データベースを復元するための宛先サーバーの一覧にサーバーが表示されないことがあります。
 
 ## <a name="restore-a-database"></a>データベースを復元する
 
@@ -54,8 +55,8 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 
 次のように復元します。
 1. SQL Server VM が登録されているコンテナーを開きます。
-2. コンテナー ダッシュボードで、**[使用状況]** の **[バックアップ項目]** を選択します。
-3. **[バックアップ項目]** で、**[バックアップの管理の種類]** の **[Azure VM 内の SQL]** を選択します。
+2. コンテナー ダッシュボードで、 **[使用状況]** の **[バックアップ項目]** を選択します。
+3. **[バックアップ項目]** で、 **[バックアップの管理の種類]** の **[Azure VM 内の SQL]** を選択します。
 
     ![[SQL in Azure VM]\(Azure VM 内の SQL\) を選択する](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
@@ -84,10 +85,10 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 
 ### <a name="restore-to-an-alternate-location"></a>別の場所に復元する
 
-1. **[復元の構成]** メニューの **[復元先]** で、**[別の場所]** を選択します。
+1. **[復元の構成]** メニューの **[復元先]** で、 **[別の場所]** を選択します。
 2. データベースを復元する先の SQL Server の名前とインスタンスを選択します。
 3. **[復元される DB 名]** ボックスに、ターゲット データベースの名前を入力します。
-4. 該当する場合は、**[選択した SQL インスタンスに既に同じ名前の DB が存在する場合に上書きする]** を選択します。
+4. 該当する場合は、 **[選択した SQL インスタンスに既に同じ名前の DB が存在する場合に上書きする]** を選択します。
 5. **[OK]** を選択します。
 
     ![[復元の構成] メニューの値を指定する](./media/backup-azure-sql-database/restore-configuration-menu.png)
@@ -99,11 +100,11 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 
 ### <a name="restore-and-overwrite"></a>復元および上書き
 
-1. **[復元の構成]** メニューの **[復元先]** で、**[DB の上書き]** > 、**[OK]** の順に選択します。
+1. **[復元の構成]** メニューの **[復元先]** で、 **[DB の上書き]**  > 、 **[OK]** の順に選択します。
 
     ![[DB の上書き] を選択する](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
-2. **[復元ポイントの選択]** で、[特定の時点に復元する](#restore-to-a-specific-point-in-time) **[ログ (特定の時点)]** を選択します。 あるいは、**[完全および差分]** を選択し、[特定の復旧ポイント](#restore-to-a-specific-restore-point)に復元します。
+2. **[復元ポイントの選択]** で、[特定の時点に復元する](#restore-to-a-specific-point-in-time) **[ログ (特定の時点)]** を選択します。 あるいは、 **[完全および差分]** を選択し、[特定の復旧ポイント](#restore-to-a-specific-restore-point)に復元します。
 
     > [!NOTE]
     > 特定の時点への復元は、完全復旧モードと一括ログ復旧モードのデータベースのログ バックアップに対してのみ使用できます。
@@ -123,13 +124,13 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
     ![復元時刻を選択する](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
 
-1. **[詳細な構成]** メニューで、復元後にデータベースを非運用状態のままにする場合は、**[NORECOVERY を使用して復元]** を有効にします。
+1. **[詳細な構成]** メニューで、復元後にデータベースを非運用状態のままにする場合は、 **[NORECOVERY を使用して復元]** を有効にします。
 1. 宛先サーバー上の復元場所を変更する場合は、新しいターゲット パスを入力します。
 1. **[OK]** を選択します。
 
     ![[詳細な構成] メニュー](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 
-1. **[復元]** メニューで、**[復元]** を選択して復元ジョブを開始します。
+1. **[復元]** メニューで、 **[復元]** を選択して復元ジョブを開始します。
 1. **[通知]** 領域で復元の進行状況を追跡します。またはデータベース メニューの **[Restore jobs]\(復元ジョブ\)** を選択して復元の進行状況を追跡します。
 
     ![復元ジョブの進行状況](./media/backup-azure-sql-database/restore-job-notification.png)
@@ -138,20 +139,27 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 
 復元の種類として **[完全および差分]** を選択した場合は、次の操作を行います。
 
-1. 一覧から復旧ポイントを選択し、**[OK]** を選択して復元ポイントの手順を完了します。
+1. 一覧から復旧ポイントを選択し、 **[OK]** を選択して復元ポイントの手順を完了します。
 
     ![完全復旧ポイントを選択する](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
 
-1. **[詳細な構成]** メニューで、復元後にデータベースを非運用状態のままにする場合は、**[NORECOVERY を使用して復元]** を有効にします。
+1. **[詳細な構成]** メニューで、復元後にデータベースを非運用状態のままにする場合は、 **[NORECOVERY を使用して復元]** を有効にします。
 1. 宛先サーバー上の復元場所を変更する場合は、新しいターゲット パスを入力します。
 1. **[OK]** を選択します。
 
     ![[詳細な構成] メニュー](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 
-1. **[復元]** メニューで、**[復元]** を選択して復元ジョブを開始します。
+1. **[復元]** メニューで、 **[復元]** を選択して復元ジョブを開始します。
 1. **[通知]** 領域で復元の進行状況を追跡します。またはデータベース メニューの **[Restore jobs]\(復元ジョブ\)** を選択して復元の進行状況を追跡します。
 
     ![復元ジョブの進行状況](./media/backup-azure-sql-database/restore-job-notification.png)
+
+### <a name="restore-databases-with-large-number-of-files"></a>多数のファイルがあるデータベースを復元する
+
+データベース内のファイルの文字列サイズの合計が[特定の制限](backup-sql-server-azure-troubleshoot.md#size-limit-for-files)より大きい場合、Azure Backup で、データベース ファイルの一覧が、別の PIT コンポーネントに格納されるため、ユーザーは復元操作中にターゲット復元パスを設定できません。 代わりに、ファイルが SQL の既定のパスに復元されます。
+
+  ![大きなファイルがあるデータベースを復元する](./media/backup-azure-sql-database/restore-large-files.jpg)
+
 
 ## <a name="next-steps"></a>次の手順
 

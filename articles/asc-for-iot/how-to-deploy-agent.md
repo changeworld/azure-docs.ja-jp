@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT エージェント (プレビュー) を選択してデプロイする | Microsoft Docs
 description: IoT デバイスに Azure Security Center for IoT セキュリティ エージェントを選択してデプロイする方法について説明します。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 32a9564d-16fd-4b0d-9618-7d78d614ce76
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 5c76cce5a3d9add8a1dcd8acc439a70c4a8655a9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: c549e5ccbda9b364b3e7d20c9572eb777c32299e
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200563"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616828"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT デバイスにセキュリティ エージェントを選択してデプロイする
 
@@ -48,7 +49,7 @@ C ベースのセキュリティ エージェントはメモリ占有領域が�
 | --- | ----------- | --------- |
 | オープン ソース | [GitHub](https://aka.ms/iot-security-github-cs) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 | [GitHub](https://aka.ms/iot-security-github-c) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 |
 | 開発言語    | C | C# |
-| Windows プラットフォームのサポート | いいえ  | はい |
+| Windows プラットフォームのサポート | いいえ | はい |
 | Windows の前提条件 | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Linux プラットフォームのサポート | はい、x64 と x86 | はい、x64 のみ |
 | Linux の前提条件 | libunwind8、libcurl3、uuid ランタイム、auditd audispd プラグイン | libunwind8、libcurl3、uuid ランタイム、auditd、audispd プラグイン、sudo、netstat、iptables |

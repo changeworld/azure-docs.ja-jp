@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: 4b9f007e00d0912687b723bd4f7e747da893948d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998836"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60760462"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
 
@@ -54,21 +54,21 @@ ms.locfileid: "57998836"
 ## <a name="part1"></a>パート 1 - 接続の構成
 1. ブラウザーから [Azure Portal](https://portal.azure.com) に移動します。必要であれば Azure アカウントでサインインします。
 2. **[すべてのリソース]** をクリックして、リソースの一覧から **[仮想ネットワーク ゲートウェイ]** を見つけます。
-3. **[仮想ネットワーク ゲートウェイ]** ページで、**[接続]** をクリックします。
+3. **[仮想ネットワーク ゲートウェイ]** ページで、 **[接続]** をクリックします。
    
     ![[接続] ページ](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "[接続] ページ")<br>
-4. **[接続]** ページで、**[追加]** をクリックします。
+4. **[接続]** ページで、 **[追加]** をクリックします。
    
     ![接続の追加ボタン](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "接続の追加ボタン")<br>
 5. **[接続追加]** ページで、次のフィールドを入力します。
    
    * **[名前]:** 作成している接続先のサイトに付ける名前です。
-   * **[接続の種類]**: **[サイト対サイト (IPsec)]** を選択します。
+   * **[接続の種類]** : **[サイト対サイト (IPsec)]** を選択します。
      
      ![[接続追加] ページ](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "[接続追加] ページ")<br>
 
 ## <a name="part2"></a>パート 2 - ローカル ネットワーク ゲートウェイの追加
-1. **[ローカル ネットワーク ゲートウェイ]**、***[ローカル ネットワーク ゲートウェイを選択する]*** をクリックします。 **[ローカル ネットワーク ゲートウェイの選択]** ページが開きます。
+1. **[ローカル ネットワーク ゲートウェイ]** 、***[ローカル ネットワーク ゲートウェイを選択する]*** をクリックします。 **[ローカル ネットワーク ゲートウェイの選択]** ページが開きます。
    
     ![ローカル ネットワーク ゲートウェイの選択](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "ローカル ネットワーク ゲートウェイの選択")<br>
 2. **[新規作成]** をクリックして **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。

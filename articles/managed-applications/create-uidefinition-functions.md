@@ -14,28 +14,28 @@ ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063796"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60587922"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 関数
 このセクションには、サポートされているすべての CreateUiDefinition 関数の署名が含まれています。
 
-関数を使用するには、角かっこで宣言を囲みます。 例: 
+関数を使用するには、角かっこで宣言を囲みます。 例:
 
 ```json
 "[function()]"
 ```
 
-文字列とその他の関数は、関数のパラメーターとして参照できますが、文字列は一重引用符で囲む必要があります。 例: 
+文字列とその他の関数は、関数のパラメーターとして参照できますが、文字列は一重引用符で囲む必要があります。 例:
 
 ```json
 "[fn1(fn2(), 'foobar')]"
 ```
 
-必要に応じて、ドット演算子を使用して、関数の出力のプロパティを参照できます。 例: 
+必要に応じて、ドット演算子を使用して、関数の出力のプロパティを参照できます。 例:
 
 ```json
 "[func().prop1]"
@@ -526,7 +526,7 @@ ms.locfileid: "54063796"
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>文字列
+### <a name="string"></a>string
 パラメーターが文字列に変換されます。 この関数は、すべての JSON データ型のパラメーターをサポートしています。
 
 次の例は、 `"1"`を返します。

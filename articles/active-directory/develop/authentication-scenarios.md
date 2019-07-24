@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0be7a8b756ee3d1d71b15e10797176e50037a47
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b35d2e21de3da184496da53fdf46d865fdfdf5c7
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540154"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66734481"
 ---
 # <a name="what-is-authentication"></a>認証とは
 
@@ -85,14 +85,11 @@ Microsoft ID プラットフォームでは、**アプリケーション オブ�
 
 このプロビジョニングの流れは次のとおりです。
 
-|   |   |
-|---|---|
-| 1 | テナント B のユーザーがアプリを使用してサインインを試みます |
-| 2 | ユーザーの資格情報が取得および検証されます |
-| 3 | ユーザーが、アプリでテナント B にアクセスすることの同意を求めます |
-| 4 | Microsoft ID プラットフォームが、テナント B にサービス プリンシパルを作成するためのブループリントとして、A のアプリケーション オブジェクトを使用します |
-| 5 | ユーザーが要求されたトークンを受け取ります |
-|   |   |
+1. テナント B のユーザーがアプリでサインインしようとすると、承認エンドポイントがアプリケーションのトークンを要求します。
+1. 認証のためにユーザーの資格情報が取得および検証されます
+1. ユーザーが、アプリがテナント B にアクセスすることの同意を求められます
+1. Microsoft ID プラットフォームが、テナント B にサービス プリンシパルを作成するためのブループリントとして、テナント A のアプリケーション オブジェクトを使用します
+1. ユーザーが要求されたトークンを受け取ります
 
 その他のテナント (C、D など) に必要な回数だけ、このプロセスを繰り返すことができます。 テナント A は、アプリ (アプリケーション オブジェクト) のブループリントを保持します。 アプリが特定の同意である他のすべてのテナントのユーザーと管理者は、アプリケーションが各テナントの対応するサービス プリンシパル オブジェクトによって実行できる操作を引き続き制御します。 詳細については、[Microsoft ID プラットフォームのアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)に関するページを参照してください。
 

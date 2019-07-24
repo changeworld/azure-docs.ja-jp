@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 872837c774368820527b12778b1a7dd4ddc5c7af
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 21bf96866c14615009a17279ff2fdd04bf4116ad
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995525"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490263"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portal に Azure の予約を表示する
 
@@ -32,7 +32,7 @@ Azure に対する予約を表示する方法は、ご利用のサブスクリ�
 所有者または閲覧者として予約を表示するには
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[予約]** で検索します。
+2. **予約**を検索します。
     ![Azure portal の検索を表示しているスクリーンショット](./media/billing-view-reservation/portal-reservation-search.png)  
 3. 一覧には、ご自分が所有者または閲覧者ロールになっている予約がすべて表示されます。 各予約には、最新の既知の使用率のパーセンテージが示されます。  
     ![予約の一覧を表示した例](./media/billing-view-reservation/view-reservations.png)
@@ -49,12 +49,12 @@ Azure に対する予約を表示する方法は、ご利用のサブスクリ�
 Azure portal で予約トランザクションを表示するには
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. **[コストの管理と請求]** で検索します。
+1. "**コスト管理 + 請求**" を検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-view-reservation/portal-cm-billing-search.png)
 
 1. **[予約トランザクション]** を選択します。
-1. 結果をフィルター処理するには、**[期間]**、**[種類]** または **[説明]** を選択します。
+1. 結果をフィルター処理するには、 **[期間]** 、 **[種類]** または **[説明]** を選択します。
 1. **[適用]** を選択します。
 
     ![予約トランザクションの結果を示すスクリーンショット](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
@@ -71,7 +71,7 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 サービス プランの購入:
 
 - [Cosmos DB 予約容量の前払い](../cosmos-db/cosmos-db-reserved-capacity.md)
-- [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
+- [Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 
 ソフトウェア プランの購入:

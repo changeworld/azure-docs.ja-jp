@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 13a8c1ee4b7ca114211f93245d74866e5aa5d52c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067447"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-in-the-azure-portal"></a>Azure portal での Azure Database for PostgreSQL - Single Server ログの構成とアクセス
@@ -28,7 +28,7 @@ Azure portal から [Azure Database for PostgreSQL のログ](concepts-server-lo
 
 2. Azure Database for PostgreSQL サーバーを選択します。
 
-3. サイドバーの **[監視]** セクションの下で、**[サーバー ログ]** を選択します。 
+3. サイドバーの **[監視]** セクションの下で、 **[サーバー ログ]** を選択します。 
 
    ![[サーバー ログ] を選択し、[... ここをクリックしてください] を選択](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
@@ -36,11 +36,11 @@ Azure portal から [Azure Database for PostgreSQL のログ](concepts-server-lo
 
 5. 調整する必要のあるパラメーターを変更します。 このセッションで行ったすべての変更が紫色で強調表示されます。
 
-   パラメーターを変更すると、**[保存]** をクリックできます。 または変更を **[破棄]** することができます。 
+   パラメーターを変更すると、 **[保存]** をクリックできます。 または変更を **[破棄]** することができます。 
 
    ![変更を保存または破棄するパラメーターの長いリスト](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-6. ログのリストに戻るには、**[サーバー パラメーター]** ページの**閉じるボタン** (X のアイコン) をクリックします。
+6. ログのリストに戻るには、 **[サーバー パラメーター]** ページの**閉じるボタン** (X のアイコン) をクリックします。
 
 ## <a name="view-list-and-download-logs"></a>リストの表示とログのダウンロード
 ログ記録が開始されると、使用可能なログのリストを表示したり、[サーバー ログ] ウィンドウで個々のログ ファイルをダウンロードすることができます。 
@@ -49,7 +49,7 @@ Azure portal から [Azure Database for PostgreSQL のログ](concepts-server-lo
 
 2. Azure Database for PostgreSQL サーバーを選択します。
 
-3. サイドバーの **[監視]** セクションの下で、**[サーバー ログ]** を選択します。 ページには、次のようにログ ファイルのリストが表示されます。
+3. サイドバーの **[監視]** セクションの下で、 **[サーバー ログ]** を選択します。 ページには、次のようにログ ファイルのリストが表示されます。
 
    ![サーバー ログ リスト](./media/howto-configure-server-logs-in-portal/4-server-logs-list.png)
 

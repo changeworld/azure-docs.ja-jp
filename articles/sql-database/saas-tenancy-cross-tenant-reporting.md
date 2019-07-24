@@ -13,11 +13,11 @@ ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096029"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61484744"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>分散クエリを使用したテナント間レポート
 
@@ -70,7 +70,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 このパターンをシミュレートするために、'グローバル' ビュー セットがテナント データベースに追加されます。このビューは、グローバルにクエリ実行される各テーブルにテナント ID を与えます。 たとえば、*VenueEvents* ビューは、計算した *VenueId* を *Events* テーブルから与えられた列に追加します。 同様に、*VenueTicketPurchases* と *VenueTickets* ビューは、それぞれのテーブルから与えられた計算済みの *VenueId* 列を追加します。 これらのビューは、*VenueId* 列が存在する場合、クエリを並列化して適切なリモート テナント データベースにそれらをプッシュダウンするために、エラスティック クエリによって使用されます。 これにより返されるデータの量が劇的に減り、クエリがたくさんあってもパフォーマンスが相当上がります。 これらのグローバル ビューはすべてのテナント データベースで事前作成されています。
 
 1. SSMS を開き、[tenants1-&lt;USER&gt; サーバーに接続します](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms)。
-1. **[データベース]** を展開し、_[contosoconcerthall]_ を右クリックして、**[新しいクエリ]** を選択します。
+1. **[データベース]** を展開し、 _[contosoconcerthall]_ を右クリックして、 **[新しいクエリ]** を選択します。
 1. 次のクエリを実行して、シングル テナント テーブルとグローバル ビューの違いを調べます。
 
    ```T-SQL
@@ -91,12 +91,12 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 *Venues* ビューの定義を調べるには:
 
-1. **オブジェクト エクスプローラー**で、**[contosoconcerthall]** > **[ビュー]** の順に展開します。
+1. **オブジェクト エクスプローラー**で、 **[contosoconcerthall]**  >  **[ビュー]** の順に展開します。
 
    ![views](media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. **[dbo.Venues]** を右クリックします。
-3. **[ビューをスクリプト化]** > **[新規作成]** > **[新しいクエリ エディター ウィンドウ]** の順に選択します。
+3. **[ビューをスクリプト化]**  >  **[新規作成]**  >  **[新しいクエリ エディター ウィンドウ]** の順に選択します。
 
 他の *Venue* ビューをスクリプト化し、*VenueId* の追加方法を確認します。
 
@@ -152,7 +152,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 1. SSMS で ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReportingQueries.sql* を開きます。
 2. **adhocreporting** データベースに接続していることを確認します。
-3. **[クエリ]** メニューを選択し、**[実際の実行プランを含める]** をクリックします。
+3. **[クエリ]** メニューを選択し、 **[実際の実行プランを含める]** をクリックします。
 4. *[Which venues are currently registered?]* クエリを強調表示し、**F5** を押します。
 
    クエリは会場一覧全体を返します。すべてのテナントにクエリを実行し、各テナントからデータを返すことがいかに簡単かわかります。

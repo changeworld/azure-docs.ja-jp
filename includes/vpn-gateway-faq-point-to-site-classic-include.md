@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0c0ad6ea5a687d066c78533b45a7f531561661bf
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66157656"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181042"
 ---
 この FAQ は、クラシック デプロイ モデルを使用した P2S 接続に適用されます。
 
@@ -55,7 +55,7 @@ ms.locfileid: "66157656"
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-for-the-same-virtual-network"></a>サイト間接続とポイント対サイト接続の構成を同一仮想ネットワークに共存させることはできますか。
 
-はい。 ゲートウェイの VPN の種類が RouteBased の場合は、どちらのソリューションも機能します。 クラシック デプロイ モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、**-VpnType PolicyBased** コマンドレットを使用するゲートウェイでは、ポイント対サイト接続はサポートされません。
+はい。 ゲートウェイの VPN の種類が RouteBased の場合は、どちらのソリューションも機能します。 クラシック デプロイ モデルの場合は、動的ゲートウェイが必要です。 静的ルーティング VPN ゲートウェイと、 **-VpnType PolicyBased** コマンドレットを使用するゲートウェイでは、ポイント対サイト接続はサポートされません。
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 

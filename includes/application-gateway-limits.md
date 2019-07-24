@@ -2,16 +2,16 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 3/26/2019
+ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 5ad1339c04444bcb4cc550be26e239e65227d2ce
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 592e1973344b231693077f8286a41dfd67a8d188
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58494669"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66689111"
 ---
-| Resource | 既定の制限 | Note |
+| Resource | 既定/上限 | Note |
 | --- | --- | --- |
 | Azure Application Gateway |サブスクリプションあたり 1,000 | |
 | フロントエンド IP 構成 |2 |パブリック 1、プライベート 1 |
@@ -23,6 +23,7 @@ ms.locfileid: "58494669"
 | バックエンドの HTTP 設定 |100<sup>1</sup> | |
 | ゲートウェイあたりのインスタンスの数 |32 | |
 | SSL 証明書の数 |100<sup>1</sup> |HTTP リスナーあたり 1 |
+| 最大 SSL 証明書サイズ |V1 SKU - 10 KB<br>V2 SKU - 25 KB| |
 | 認証証明書 |100 | |
 | 信頼されたルート証明書 |100 | |
 | 最小要求タイムアウト |1 秒 | |
@@ -36,5 +37,6 @@ ms.locfileid: "58494669"
 | 最大ファイル アップロード サイズ (標準) |2 GB | |
 | 最大ファイル アップロード サイズ (WAF) |中規模の WAF ゲートウェイ - 100 MB<br>大規模の WAF ゲートウェイ - 500 MB| |
 | WAF の本文サイズの制限 (ファイルがない場合)|128 KB||
+|WAF カスタム規則の最大数|100||
 
 <sup>1</sup> WAF 対応 SKU の場合は、最適なパフォーマンスを確保するためにリソース数を 40 に制限することをお勧めします。

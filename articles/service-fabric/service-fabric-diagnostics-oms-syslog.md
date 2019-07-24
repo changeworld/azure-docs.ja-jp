@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 402e3dfe018c94ef068caf918b38aaad00064a49
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62118388"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 内の Service Fabric Linux クラスター イベント
 
@@ -29,13 +29,13 @@ Service Fabric では、クラスター内の重要なアクティビティを�
 
 ## <a name="introduction"></a>はじめに
 
-6.4 リリースでは、Service Fabric プラットフォーム イベントを Linux クラスター用の Syslog に送信するための SyslogConsumer が導入されました。 有効にすると、イベントは自動的に Syslog に送信されます。これは、Log Analytics エージェントで収集および送信できます。
+6\.4 リリースでは、Service Fabric プラットフォーム イベントを Linux クラスター用の Syslog に送信するための SyslogConsumer が導入されました。 有効にすると、イベントは自動的に Syslog に送信されます。これは、Log Analytics エージェントで収集および送信できます。
 
 各 Syslog イベントには 4 つのコンポーネントがあります
 * Facility
 * ID
 * Message
-* severity
+* Severity
 
 SyslogConsumer では、Facility `Local0` を使用すると、すべてのプラットフォーム イベントが書き込まれます。 構成を変更することで任意の有効な Facility に更新できます。使用される ID は `ServiceFabric` です。 Message フィールドには JSON でシリアル化されたイベント全体が含まれているため、さまざまなツールからクエリを実行したり使用したりすることができます。 
 

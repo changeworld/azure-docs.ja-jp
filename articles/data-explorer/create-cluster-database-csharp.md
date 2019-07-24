@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:C# を使用して Azure Data Explorer クラスターとデータベースを作成する
+title: C# を使用して Azure Data Explorer クラスターとデータベースを作成する
 description: C# を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: 719aba498c08617b42d248d3c677499f8eb3e4b2
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: e51551d4ce8061122fce52b05e68e102b71c27a8
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65900830"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494605"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>C# を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "65900830"
 > * [Python](create-cluster-database-python.md)
 >  
 
-Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 このクイック スタートでは、C# を使用して、クラスターとデータベースを 1 つずつ作成します。
+Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 この記事では、C# を使用して、クラスターとデータベースを 1 つずつ作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -112,7 +112,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-* 他のクイック スタートやチュートリアルを行う場合は、作成したリソースをそのままにします。
+* 他の記事に進む場合は、作成したリソースをそのままにします。
 * リソースをクリーンアップするには、クラスターを削除します。 クラスターを削除するときに、その中に含まれるデータベースもすべて削除されます。 クラスターを削除するには次のコマンドを使います。
 
     ```C#-interactive
@@ -121,5 +121,4 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む](net-standard-ingest-data.md)
+* [Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む](net-standard-ingest-data.md)

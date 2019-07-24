@@ -2,18 +2,18 @@
 title: Azure Backup の FAQ
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.author: raynew
-ms.openlocfilehash: 479edc11604670189b0accba67aa8f345f6260cd
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.date: 07/07/2019
+ms.author: dacurwin
+ms.openlocfilehash: a8b0e8b6c7c9e42764b1f3b2af9ed408f4501cc1
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551381"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622390"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
@@ -51,37 +51,6 @@ ms.locfileid: "65551381"
 - Azure ファイル フォルダーのバックアップに使用されるエージェントについては、この [FAQ](backup-azure-file-folder-backup-faq.md) をご覧ください。
 
 
-## <a name="vmware-and-hyper-v-backup"></a>VMware および Hyper-V のバックアップ
-
-### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>VMware vCenter サーバーを Azure にバックアップできますか。
-はい。 Azure Backup Server を使用して、VMware vCenter Server および ESXi ホストを Azure にバックアップできます。
-
-- サポートされるバージョンについて詳しくは、[こちら](backup-mabs-protection-matrix.md)をご覧ください。
-- VMware サーバーをバックアップするには、[この手順](backup-azure-backup-server-vmware.md)に従ってください。
-
-### <a name="do-i-need-a-separate-license-to-recover-an-full-on-premises-vmwarehyper-v-cluster"></a>オンプレミス VMware/Hyper-V クラスター全体を復旧するには、個別のライセンスが必要ですか。
-VMware/Hyper-V を保護するために個別のライセンスは必要ありません。
-
-- System Center のお客様は、System Center Data Protection Manager (DPM) を使用して VMware VM を保護できます。
-- System Center のお客様でない場合、VMware VM を保護するには、Azure Backup Server (従量課金制) を使用できます。
-
-## <a name="dpm-and-azure-backup-server-backup"></a>DPM および Azure Backup Server のバックアップ
-
-### <a name="which-dpm-versions-are-supported"></a>どの DPM バージョンがサポートされていますか。
-サポートされている DPM バージョンの概要を示す[サポート マトリックス](backup-azure-dpm-introduction.md#prerequisites-and-limitations)をご覧ください。 最新の DPM 更新プログラムをインストールした DPM サーバー上で、[最新バージョン](https://aka.ms/azurebackup_agent)の Azure Backup エージェントを実行することをお勧めします。
-
-### <a name="can-i-register-the-server-to-multiple-vaults"></a>サーバーを複数のコンテナーに登録することはできますか。
-いいえ。 DPM サーバーまたは Azure Backup Server は 1 つのコンテナーにしか登録できません。
-
-### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Azure Backup Server を使用して、物理サーバーのベア メタル回復 (BMR) バックアップを作成できますか。 <br/>
-はい。
-
-### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>DPM を使用して Azure Stack でアプリをバックアップすることはできますか。
-いいえ。 Azure Backup を使用して Azure Stack を保護することはできますが、Azure Backup では DPM を使用した Azure Stack でのアプリのバックアップをサポートしていません。
-
-### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>ファイルとフォルダーを保護するために Azure Backup エージェントをインストールしてある場合、System Center DPM をインストールしてオンプレミスのワークロードを Azure にバックアップすることはできますか。
-はい。 ただし、最初に DPM をセットアップしてから、Azure Backup エージェントをインストールする必要があります。  この順序でコンポーネントをインストールすることで、Azure Backup エージェントが DPM と連携するようになります。 DPM をインストールする前にエージェントをインストールする方法は推奨されておらず、サポートもされていません。
-
 ## <a name="general-backup"></a>一般的なバックアップ
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>バックアップのスケジュール設定に制限はありますか。
@@ -118,7 +87,7 @@ Azure VM Linux のバックアップについては、Azure Backup は [Azure �
 次のサイズ制限が適用されます。
 
 OS/マシン | データ ソースのサイズ制限
---- | --- 
+--- | ---
 Windows 8 以降 | 54,400 GB
 Windows 7 |1,700 GB
 Windows Server 2012 またはそれ以降 | 54,400 GB
@@ -182,8 +151,8 @@ Azure Backup のストレージ アーキテクチャを使用すると、高速
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>作成できる回復ポイント数に制限はありますか。
 保護されているインスタンスごとに作成できる復旧ポイントは最大 9,999 個です。 保護されたインスタンスとは、Azure へのバックアップを行うコンピューター、サーバー (物理または仮想)、またはワークロードです。
 
-- 詳細については、[バックアップと保有期間](./backup-introduction-to-azure-backup.md#backup-and-retention)を参照してください。
-- [保護されたインスタンス](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)を参照してください。
+- 詳細については、[バックアップと保有期間](./backup-overview.md#backup-and-retention)を参照してください。
+
 
 ### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>Azure にバックアップされたデータを回復できる回数に制限はありますか。
 Azure Backup からの回復の数に制限はありません。

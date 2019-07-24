@@ -4,15 +4,15 @@ description: Windows Virtual Desktop プレビューのセッション ホスト
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 7687abf5fc4af0eea9fa6aa210cfd6734cec2b36
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 3b98db361a8ec888eb8bf9e1bf3658a7e38111c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410584"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620410"
 ---
 # <a name="automatically-scale-session-hosts"></a>セッション ホストを自動的にスケーリングする
 
@@ -75,7 +75,7 @@ Azure に多くの Windows Virtual Desktop プレビューをデプロイする�
     たとえば、**Set-Variable -Name KeyPath -Scope Global -Value "c:\\scaling-HostPool1"** などです
 5. **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行します。 入力を求められたら、ホスト プール (ホスト プールは **config.xml** で指定されます) のクエリを実行するためのアクセス許可を持つ Windows Virtual Desktop 資格情報を入力します。
     - 別のサービス プリンシパルまたは標準アカウントを使用する場合は、アカウントごとに 1 回ずつ **New-StoredCredential -KeyPath \$KeyPath** コマンドレットを実行して、ローカルに格納された資格情報を作成します。
-6. **Get-StoredCredentials -List** を実行して、資格情報が正常に作成されたことを確認します。
+6. **Get-StoredCredential -List** を実行して、資格情報が正常に作成されたことを確認します。
 
 ### <a name="configure-the-configxml-file"></a>config.xml ファイルの構成
 
@@ -106,13 +106,13 @@ Azure に多くの Windows Virtual Desktop プレビューをデプロイする�
 構成 .xml ファイルを構成した後、一定の間隔で basicScaler.ps1 ファイルを実行するようにタスク スケジューラを構成する必要があります。
 
 1. **タスク スケジューラ**を起動します。
-2. **[タスク スケジューラ]** ウィンドウで、**[タスクの作成]** を選択します
-3. **[タスクの作成]** ダイアログで、**[全般]** タブを選択し、**[名前]** (たとえば、"Dynamic RDSH") を入力して、**[ユーザーがログオンしているかどうかにかかわらず実行する]** と **[最上位の特権で実行する]** を選択します。
-4. **[トリガー]** タブに移動し、**[新規]** を選択します
-5. **[新しいトリガー]** ダイアログの **[詳細設定]** で、**[繰り返し間隔]** をオンにし、適切な期間と継続時間 (たとえば、**[15 分]** または **[無期限]**) を選択します。
+2. **[タスク スケジューラ]** ウィンドウで、 **[タスクの作成]** を選択します
+3. **[タスクの作成]** ダイアログで、 **[全般]** タブを選択し、 **[名前]** (たとえば、"Dynamic RDSH") を入力して、 **[ユーザーがログオンしているかどうかにかかわらず実行する]** と **[最上位の特権で実行する]** を選択します。
+4. **[トリガー]** タブに移動し、 **[新規]** を選択します
+5. **[新しいトリガー]** ダイアログの **[詳細設定]** で、 **[繰り返し間隔]** をオンにし、適切な期間と継続時間 (たとえば、 **[15 分]** または **[無期限]** ) を選択します。
 6. **[アクション]** タブと **[新規]** を選択します
 7. **[新しいアクション]** ダイアログで、**powershell.exe** を **[プログラム/スクリプト]** フィールドに入力し、**C:\\scaling\\RDSScaler.ps1** を **[引数の追加 (オプション)]** フィールドに入力します。
-8. **[条件]** タブと **[設定]** タブに移動し、**[OK]** を選択してそれぞれの既定の設定を受け入れます。
+8. **[条件]** タブと **[設定]** タブに移動し、 **[OK]** を選択してそれぞれの既定の設定を受け入れます。
 9. スケーリング スクリプトの実行を計画している管理アカウントのパスワードを入力します。
 
 ## <a name="how-the-scaling-script-works"></a>スケーリング スクリプトのしくみ

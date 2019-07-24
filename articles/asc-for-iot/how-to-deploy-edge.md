@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT Edge モジュールをデプロイする | Microsoft Docs
 description: IoT Edge に Azure Security Center for IoT セキュリティ エージェントをデプロイする方法について説明します。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 32a9564d-16fd-4b0d-9618-7d78d614ce76
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 5d56c878eab92a7152bc0b248cab5c2ebf7e6dde
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 49ed4c6515f8fb63c3331b05e1bb29b13985e6b3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198412"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618320"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge デバイスにセキュリティ モジュールをデプロイする
 
@@ -57,13 +58,13 @@ ms.locfileid: "65198412"
 
 1. Azure portal から **[Marketplace]** を開きます。
 
-1. **[モ ノのインターネット]** を選択し、**[Azure Security Center for IoT]** を検索して選択します。
+1. **[モ ノのインターネット]** を選択し、 **[Azure Security Center for IoT]** を検索して選択します。
 
    ![Azure Security Center for IoT を選択します](media/howto/edge-onboarding-8.png)
 
 1. **[作成]** をクリックして、デプロイを構成します。 
 
-1. ご使用の IoT Hub のAzure **サブスクリプション**を選択してから、ご使用の **IoT Hub** を選択します。<br>単一のデバイスをターゲットにするには **[デバイスへのデプロイ]** を選択し、複数のデバイスをターゲットにするには **[大規模にデプロイする]** を選択します。その後、**[作成]** をクリックします。 大規模デプロイの詳細については、[デプロイ方法](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor)に関する記事を参照してください。 
+1. ご使用の IoT Hub のAzure **サブスクリプション**を選択してから、ご使用の **IoT Hub** を選択します。<br>単一のデバイスをターゲットにするには **[デバイスへのデプロイ]** を選択し、複数のデバイスをターゲットにするには **[大規模にデプロイする]** を選択します。その後、 **[作成]** をクリックします。 大規模デプロイの詳細については、[デプロイ方法](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor)に関する記事を参照してください。 
 
     >[!Note] 
     >**[大規模にデプロイする]** を選択した場合は、以下の手順にある **[モジュールの追加]** タブに進む前にデバイス名と詳細を追加してください。     
@@ -72,7 +73,7 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
 
 #### <a name="step-1-add-modules"></a>手順 1:モジュールを追加する
 
-1. **[モジュールの追加]** タブの **[デプロイ モジュール]** 領域で、**[AzureSecurityCenterforIoT]** をクリックします。 
+1. **[モジュールの追加]** タブの **[デプロイ モジュール]** 領域で、 **[AzureSecurityCenterforIoT]** をクリックします。 
    
 1. **名前**を **azureiotsecurity** に変更します。
 1. **[イメージの URI]** を **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3** に変更します。
@@ -104,7 +105,7 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
       ```
 
 1. **[Save]** をクリックします。
-1. タブの一番下までスクロールし、**[Edge ランタイムの詳細設定を構成する]** を選択します。
+1. タブの一番下までスクロールし、 **[Edge ランタイムの詳細設定を構成する]** を選択します。
    
    >[!Note]
    > IoT Edge ハブの AMQP 通信は**無効にしない**でください。
@@ -136,13 +137,13 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
 
 #### <a name="step-2-specify-routes"></a>手順 2:ルートを指定する 
 
-1. **[ルートの指定]** タブで、**ASCForIoTToIoTHub** ルートを **"FROM /messages/modules/azureiotsecurity/\* INTO $upstream"** に設定し、**[次へ]** をクリックします。
+1. **[ルートの指定]** タブで、**ASCForIoTToIoTHub** ルートを **"FROM /messages/modules/azureiotsecurity/\* INTO $upstream"** に設定し、 **[次へ]** をクリックします。
 
    ![ルートを指定する](media/howto/edge-onboarding-9.png)
 
 #### <a name="step-3-review-deployment"></a>手順 3:デプロイを確認する
 
-1. **[デプロイの確認]** タブでデプロイ情報を確認し、**[送信]** を選択してデプロイを完了します。
+1. **[デプロイの確認]** タブでデプロイ情報を確認し、 **[送信]** を選択してデプロイを完了します。
 
 ## <a name="diagnostic-steps"></a>診断手順
 
@@ -158,7 +159,7 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
    
    | Name | イメージ |
    | --- | --- |
-   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
+   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
    | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    

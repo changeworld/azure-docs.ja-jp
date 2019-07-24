@@ -14,11 +14,11 @@ ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272386"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60773810"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Azure DevTest Labs を使用する一般的なシナリオ
 DevTest Labs は企業のニーズに応じてさまざまな要件を満たすように構成できます。  この記事では、一般的なシナリオについて説明します。 各シナリオでは、DevTest Labs を使用するメリットと、これらのシナリオの実装に使用するリソースについて説明します。  

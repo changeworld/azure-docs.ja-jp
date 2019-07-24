@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 2a9214b918883e493ebe5c93fc7f56e7ce9c77ec
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234496"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60652215"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>ロールのリサイクルを引き起こす一般的な問題
 この記事では、デプロイメントに伴う問題の一般的な原因と問題解決に役立つトラブルシューティングのヒントを紹介します。 アプリケーションに存在する問題の兆候として、ロール インスタンスが起動に失敗したり、初期化、ビジー、停止という状態を繰り返したりすることが挙げられます。
@@ -59,7 +59,7 @@ Azure は 64 ビット環境です。 そのため、32 ビット ターゲッ�
   Azure Tools for Microsoft Visual Studio をアプリケーションの開発に使用している場合、この値は、プロパティ ページを使用して設定できます。
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>エクスポートした証明書に秘密キーが含まれていない
-Web ロールを SSL で実行する場合は、エクスポートした管理証明書に秘密キーが含まれていることを確認してください。 *Windows 証明書マネージャー*を使用して証明書をエクスポートする場合は必ず、**[Export the private key (秘密キーをエクスポートします)]** オプションに **[はい]** を選択してください。 証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
+Web ロールを SSL で実行する場合は、エクスポートした管理証明書に秘密キーが含まれていることを確認してください。 *Windows 証明書マネージャー*を使用して証明書をエクスポートする場合は必ず、 **[Export the private key (秘密キーをエクスポートします)]** オプションに **[はい]** を選択してください。 証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
 
 ## <a name="next-steps"></a>次の手順
 クラウド サービスの他の [トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) を参照します。

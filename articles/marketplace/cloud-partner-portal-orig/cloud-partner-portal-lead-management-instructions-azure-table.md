@@ -2,45 +2,59 @@
 title: Azure テーブル | Azure Marketplace
 description: Azure テーブル用にリード管理を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: af582e51875f84503116f4ec7131464d51e54a99
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 08f9d794822dfd7879efc7c4813ecc46f92f6a45
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935838"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147895"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Azure テーブルでの潜在顧客管理の手順
 
 この記事では、潜在顧客を格納するために Azure テーブルを構成する方法について説明します。 Azure テーブルを使用して、顧客情報を保存およびカスタマイズできます。
 
-## <a name="to-configure-azure-table"></a>Azure テーブルを構成するには
 
-1.  Azure アカウントを持っていない場合は、[無料試用版アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)ことができます。
+## <a name="how-to-configure-azure-table"></a>Azure テーブルを構成する方法
 
-2.  Azure アカウントがアクティブになった後、[Azure portal](https://portal.azure.com) にサインインします。
-3.  Azure portal でストレージ アカウントを作成します。 次の画面キャプチャでは、ストレージ アカウントを作成する方法を示します。 ストレージの価格について詳しくは、[ストレージの価格](https://azure.microsoft.com/pricing/details/storage/)に関する記事をご覧ください。
+1. Azure アカウントを持っていない場合は、[無料試用版アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)ことができます。
+2. Azure アカウントがアクティブになった後、[Azure portal](https://portal.azure.com) にサインインします。
+3. Azure portal 上で、次の手順を使用してストレージ アカウントを作成します。  
+    1. 左側のメニュー バーにある **[+ リソースの作成]** を選択します。  **[新規]** ウィンドウ (ブレード) が、右側に表示されます。
+    2. **[新規]** ウィンドウで **[ストレージ]** を選択します。  **[おすすめ]** 一覧が右側に表示されます。
+    3. **[ストレージ アカウント]** を選択して、アカウントの作成を開始します。  「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)」の記事にある手順に従ってください。
 
     ![Azure ストレージ アカウントを作成する手順](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
-4.  キーのストレージ アカウント接続文字列をコピーし、Cloud パートナー ポータルの **[ストレージ アカウント接続文字列]** フィールドに貼り付けます。 `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` は接続文字列の例です。
-    
-    ![Azure ストレージ キー](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
+    ストレージ アカウントについて詳しくは、[クイック スタートのチュートリアル](https://docs.microsoft.com/azure/storage/)に関するページをご覧ください。  ストレージの価格について詳しくは、[ストレージの価格](https://azure.microsoft.com/pricing/details/storage/)に関する記事をご覧ください。
 
-[Azure のストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/)またはその他任意のツールを使用して、ストレージ テーブル内のデータを表示できます。 Azure テーブルのデータをエクスポートすることもできます
-。
+4. ストレージ アカウントがプロビジョニングされるまで待機します。通常は数分かかる処理です。  その後、 **[リソースをすべて表示する]** を選択するか、または Azure portal の左側のナビゲーション メニューバーから **[すべてのリソース]** を選択して、Azure portal の **[ホーム]** ページからお使いのストレージ アカウントへアクセスします。
 
-## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>**(省略可能)** Azure テーブルで Microsoft Flow を使用する
+    ![Azure ストレージ アカウントにアクセスする](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
+
+5. お使いのストレージ アカウントのウィンドウから、キーに対するストレージ アカウント接続文字列をコピーして、Cloud パートナー ポータル上の **[ストレージ アカウント接続文字列]** フィールドに貼り付けます。 接続文字列の例を次に示します。
+
+```sql
+DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
+```
+
+  ![Azure ストレージ キー](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
+
+[Azure のストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/)またはその他の同様のツールを使用して、ストレージ テーブル内のデータを表示できます。 Azure テーブルからデータをエクスポートすることもできます。
+
+
+## <a name="use-microsoft-flow-with-an-azure-table-optional"></a>Azure テーブルに Microsoft Flow を使用する *(省略可能)* 
 
 [Microsoft Flow](https://docs.microsoft.com/flow/) を使用すると、Azure テーブルに潜在顧客が追加されるたびに通知を自動化できます。 アカウントを持っていない場合は、[無料アカウントにサインアップ](https://flow.microsoft.com/)できます。
 
+
 ### <a name="lead-notification-example"></a>潜在顧客の通知の例
 
-この例を、Azure テーブルに新しい潜在顧客が追加されたら電子メール通知を自動的に送信する単純なフローを作成するためのガイドとして使用してください。 この例では、テーブル ストレージが更新された場合は、1 時間ごとに潜在顧客情報を送信するための繰り返しを設定します。
+この例は、Azure テーブルに新しい潜在顧客が追加されたら電子メール通知を自動的に送信する、基本のフローを作成するためのガイドとして使用してください。 この例では、テーブル ストレージが更新された場合は、1 時間ごとに潜在顧客情報を送信するための繰り返しを設定します。
 
 1. Microsoft Flow アカウントにサインインします。
 2. 左側のナビゲーション バーで、 **[マイ フロー]** を選択します。
@@ -83,7 +97,7 @@ ms.locfileid: "64935838"
 
      ![Azure テーブル名のカスタム値を選択する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **[Filter query] (フィルター クエリ)** – このフィールドをクリックすると、ポップアップ ウィンドウに [過去の時間を取得] アイコンが表示されます。 **[Past time] (過去の時間)** を選択して、これをクエリのフィルター処理のタイムスタンプとして使用します。 あるいは、そのフィールドに関数 `gt datetime'@{body('Get_past_time')}'` を貼り付けることができます。
+   - **[フィルター クエリ]** – このフィールドをクリックすると、ポップアップ ウィンドウに **[過去の時間を取得]** アイコンが表示されます。 **[Past time] (過去の時間)** を選択して、これをクエリのフィルター処理のタイムスタンプとして使用します。 あるいは、そのフィールドに次の関数を貼り付けてもかまいません。CreatedTime `Timestamp gt datetime'@{body('Get_past_time')}'` 
 
      ![フィルター クエリ関数を設定する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
@@ -114,20 +128,23 @@ ms.locfileid: "64935838"
 
     - **[宛先]** - この通知を受信するすべてのユーザーの電子メール アドレスを入力します。
     - **[件名]** – 電子メールの件名を指定します。 例: 新しい潜在顧客
-    - **本文**: 各電子メールに含めるテキストを追加し (省略可能)、潜在顧客情報を挿入するための関数として body `('Get_entities')?['value']` を貼り付けます。
+    - **本文**: 各電子メールに含めるテキストを追加し (省略可能)、潜在顧客情報を挿入するための関数として body `body('Get_entities')?['value']` を貼り付けます。
 
       >[!NOTE] 
       >この電子メールの本文に追加の静的または動的データ ポイントを挿入できます。
 
-       ![潜在顧客の通知の電子メールを設定する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
+      ![潜在顧客の通知の電子メールを設定する](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-emailbody-fx.png)
 
 13. **[保存]** を選択してフローを保存します。 Microsoft Flow は、フローにエラーがないかどうか自動的にテストします。 エラーがない場合は、保存された後、フローが実行を開始します。
 
 次の画面キャプチャは、最終的なフローがどのようになるかの例を示しています。
 
- ![最終的なフローのシーケンス](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+[![最終的なフローのシーケンス](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
 
-### <a name="managing-your-flow"></a>フローの管理
+(*拡大するには画像をクリックしてください。* )
+
+
+### <a name="manage-your-flow"></a>フローを管理する
 
 実行された後のフローの管理は簡単です。  そのフローを完全に制御できます。 たとえば、停止、編集、実行履歴の表示、分析の取得などが可能です。 次の画面キャプチャは、フローを管理するために使用できるオプションを示しています。 
 
@@ -138,6 +155,7 @@ ms.locfileid: "64935838"
 潜在顧客の電子メール通知を何も受信していない場合、それは Azure テーブルに新しい潜在顧客が追加されていないことを示しています。 フローに何かエラーがある場合は、次の画面キャプチャにある例のような電子メールを受信します。
 
  ![フローのエラーの電子メール通知](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-failure-note.png)
+
 
 ## <a name="next-steps"></a>次の手順
 

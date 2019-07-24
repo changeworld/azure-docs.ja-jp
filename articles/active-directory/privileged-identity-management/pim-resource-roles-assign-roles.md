@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 610aeec9e4c40d0aad0c28f02697e2cf01edbe4a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59494001"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60438693"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールを割り当てる
 
@@ -65,11 +65,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
     ![[新しい割り当て] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-1. 割り当てるロールをクリックし、**[選択]** をクリックします。
+1. 割り当てるロールをクリックし、 **[選択]** をクリックします。
 
     [メンバーまたはグループの選択] ウィンドウが開きます。
 
-1. ロールに割り当てるメンバーまたはグループをクリックし、**[選択]** をクリックします。
+1. ロールに割り当てるメンバーまたはグループをクリックし、 **[選択]** をクリックします。
 
     ![[メンバーまたはグループの選択] ウィンドウ](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
     - **[アクティブ]** 割り当ての場合、ロールを使用するために何らかのアクションを実行することをメンバーに要求しません。 アクティブ割り当てされたメンバーは、ロールによって提供される特権を常に所有します。
 
-1. 割り当てを永続的 (永続的に対象または永続的に割り当て済み) にする必要がある場合は、**[Permanently]\(永続的\)** チェック ボックスをオンにします。
+1. 割り当てを永続的 (永続的に対象または永続的に割り当て済み) にする必要がある場合は、 **[Permanently]\(永続的\)** チェック ボックスをオンにします。
 
     ロールの設定によっては、チェック ボックスが表示されない場合や、変更できない場合があります。
 
@@ -93,11 +93,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、
 
     ![メンバー シップ設定 - 日付と時刻](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
 
-1. 終了したら、**[完了]** をクリックします。
+1. 終了したら、 **[完了]** をクリックします。
 
     ![新しい割り当て - 追加](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
-1. 新しいロールの割り当てを作成するには、**[追加]** をクリックします。 状態の通知が表示されます。
+1. 新しいロールの割り当てを作成するには、 **[追加]** をクリックします。 状態の通知が表示されます。
 
     ![新しい割り当て - 通知](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 

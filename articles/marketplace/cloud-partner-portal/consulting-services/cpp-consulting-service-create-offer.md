@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pabutler
 ms.openlocfilehash: 09b9dce8e30ed3ba5ad0bac58929cd2c6d71793c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64942830"
 ---
 # <a name="create-a-consulting-offer"></a>コンサルティング オファーを作成する

@@ -10,39 +10,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 420ba9d74532095c2d028fef8f549d532e5dfa05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698282"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65522202"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Azure Monitor for VMs (プレビュー) についてよく寄せられる質問
 この Microsoft FAQ では、Azure Monitor for VMs についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>既存のワークスペースにオンボードすることはできますか?
-仮想マシンが Log Analytics ワークスペースに既に接続されている場合、ワークスペースが[こちら](vminsights-onboard.md#prerequisites)に記載されたサポートされているリージョンのいずれかにあれば、VM 用 Azure Monitor にオンボードするときにそのワークスペースを引き続き使用できます。
+仮想マシンが Log Analytics ワークスペースに既に接続されている場合、ワークスペースが[こちら](vminsights-enable-overview.md#prerequisites)に記載されたサポートされているリージョンのいずれかにあれば、VM 用 Azure Monitor にオンボードするときにそのワークスペースを引き続き使用できます。
 
 オンボード時に、ワークスペースのパフォーマンス カウンターが構成され、Azure Monitor for VMs で表示および分析するために、ワークスペースにデータを報告するすべての VM で この情報の収集が開始されます。  これにより、選択したワークスペースに接続されているすべての VM のパフォーマンス データを確認できます。  正常性機能とマップ機能は、オンボードの対象として指定した VM に対してのみ有効になります。
 
-有効化されるパフォーマンス カウンターの詳細については、[オンボード](vminsights-onboard.md)に関する記事をご覧ください。
+どのパフォーマンス カウンターが有効化されるかについて詳しい情報は、[有効化の概要](vminsights-enable-overview.md#performance-counters-enabled)に関する記事をご覧ください。
 
 ## <a name="can-i-onboard-to-a-new-workspace"></a>新しいワークスペースにオンボードすることはできますか? 
-現在、VM が既存の Log Analytics ワークスペースに接続されていない場合は、データを保存するために新しいワークスペースを作成する必要があります。  Azure portal を使用して Azure Monitor for VMs で単一の Azure VM を構成すると、新しい既定のワークスペースが自動的に作成されます。
+現在、VM が既存の Log Analytics ワークスペースに接続されていない場合は、データを保存するために新しいワークスペースを作成する必要があります。 Azure portal を使用して Azure Monitor for VMs で単一の Azure VM を構成すると、新しい既定のワークスペースが自動的に作成されます。
 
-スクリプトベースの方法を使用する場合は、[オンボード](vminsights-onboard.md)に関する記事に手順が記載されています。 
+スクリプト ベースのメソッドを使用する場合、これらの手順は「[Enable Azure Monitor for VMs (preview) using Azure PowerShell or Resource Manager template (Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効化する)](vminsights-enable-at-scale-powershell.md)」の記事に説明されています。 
 
 ## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>VM が既に既存のワークスペースに報告している場合はどうすればよいですか?
 仮想マシンから既にデータを収集している場合、既存の Log Analytics ワークスペースにデータを報告するように仮想マシンを構成済みである可能性があります。  そのワークスペースがサポートされているリージョンのいずれかにあれば、その既存のワークスペースに対して Azure Monitor for VMs を有効にすることができます。  既に使用しているワークスペースがサポートされているリージョンにない場合、現時点では Azure Monitor for VMs にオンボードすることはできません。  Microsoft では、その他のリージョンのサポートに積極的に取り組んでいます。
 
 >[!NOTE]
->Azure Monitor for VMs へのオンボードを選択したかどうかに関係なく、ワークスペースのパフォーマンス カウンターが構成されます。これらは、ワークスペースに報告するすべての VM に影響を及ぼします。 ワークスペースのパフォーマンス カウンターの構成の詳細については、こちらの[ドキュメント](../../azure-monitor/platform/data-sources-performance-counters.md)をご覧ください。 VM 用 Azure Monitor 用に構成されるカウンターについては、[オンボードに関するドキュメント](vminsights-onboard.md#performance-counters-enabled)をご覧ください。  
+>Azure Monitor for VMs へのオンボードを選択したかどうかに関係なく、ワークスペースのパフォーマンス カウンターが構成されます。これらは、ワークスペースに報告するすべての VM に影響を及ぼします。 ワークスペースのパフォーマンス カウンターの構成の詳細については、こちらの[ドキュメント](../../azure-monitor/platform/data-sources-performance-counters.md)をご覧ください。 Azure Monitor for VMs 用に構成されるカウンターについては、[Azure Monitor for VMs の有効化](vminsights-enable-overview.md#performance-counters-enabled)に関する記事を参照してください。  
 
 ## <a name="why-did-my-vm-fail-to-onboard"></a>VM のオンボードに失敗したのはなぜですか?
 Azure portal から Azure VM をオンボードすると、次の手順が実行されます。
 
 * 既定の Log Analytics ワークスペースが作成されます (該当するオプションが選択されている場合)。
-* 選択したワークスペースのパフォーマンス カウンターが構成されます。 この手順が失敗すると、一部のパフォーマンス グラフやテーブルに、オンボードした VM のデータが表示されません。 これを修正するには、[こちら](vminsights-onboard.md#enable-with-powershell)に記載された PowerShell スクリプトを実行します。
+* 選択したワークスペースのパフォーマンス カウンターが構成されます。 この手順が失敗すると、一部のパフォーマンス グラフやテーブルに、オンボードした VM のデータが表示されません。 これを修正するには、[こちら](vminsights-enable-at-scale-powershell.md#enable-performance-counters)に記載された PowerShell スクリプトを実行します。
 * Log Analytics エージェントが必要と判断されると、VM 拡張機能を使用して Azure VM にインストールされます。  
 * Azure Monitor for VMs Map Dependency エージェントが必要と判断されると、拡張機能を使用して Azure VM にインストールされます。  
 * 必要に応じて、正常性機能をサポートする Azure Monitor コンポーネントが構成され、正常性データを報告するように VM が構成されます。
@@ -89,7 +89,7 @@ Windows VM を対象とする正常性基準のしきい値は変更できませ
 各正常性基準に対して定義されているアラート ルールは、Azure portal には表示されません。 [Workload Monitor API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) でのみ、正常性アラート ルールを有効または無効にすることができます。 また、正常性アラート用の [Azure Monitor アクション グループ](../../azure-monitor/platform/action-groups.md)を Azure portal 内で割り当てることはできません。 正常性アラートが発生するたびにトリガーされるアクション グループを構成するには、通知設定 API を使用する必要があります。 現在、VM に対して発生したすべての*正常性アラート*によって同じアクション グループがトリガーされるように、VM に対してアクション グループを割り当てることができます。 従来の Azure アラートとは異なり、正常性アラート ルールごとに個別のアクション グループが存在するという概念はありません。 さらに、正常性アラートがトリガーされたときに、電子メールまたは SMS 通知を提供するように構成されたアクション グループのみがサポートされます。 
 
 ## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>パフォーマンス グラフに VM のデータが表示されません
-ディスク テーブルまたは一部のパフォーマンス グラフにパフォーマンス データが表示されない場合、ワークスペースでパフォーマンス カウンターが構成されていない可能性があります。 これを解決するには、こちらの [PowerShell スクリプト](vminsights-onboard.md#enable-with-powershell)を実行してください。
+ディスク テーブルまたは一部のパフォーマンス グラフにパフォーマンス データが表示されない場合、ワークスペースでパフォーマンス カウンターが構成されていない可能性があります。 これを解決するには、こちらの [PowerShell スクリプト](vminsights-enable-at-scale-powershell.md#enable-with-powershell)を実行してください。
 
 ## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Azure Monitor for VMs のマップ機能は Service Map とどのように異なるのですか?
 Azure Monitor for VMs のマップ機能は Service Map に基づいていますが、次の点が異なります。
@@ -135,7 +135,7 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 ## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Log Analytics の無料プランを利用している場合、機能の制限はありますか?
 *無料*の価格レベルを使った Log Analytics ワークスペースで Azure Monitor を構成した場合、Azure Monitor for VMs Map 機能では、ワークスペースに接続できるマシンが 5 つに制限されます。 無料のワークスペースに VM が 5 つ接続されている場合、いずれかの VM を切断した後に新しい VM を接続すると、新しい VM は監視されず、マップ ページにも反映されません。  
 
-この条件下では、VM を開いて左側のウィンドウから **[Insights (プレビュー)]** を選択すると、機能が既に VM にインストール済みであっても、**[今すぐ試す]** オプションが表示されます。  ただし、その VM が Azure Monitor for VMs にオンボードされていない場合には、オプションは表示されません。 
+この条件下では、VM を開いて左側のウィンドウから **[Insights (プレビュー)]** を選択すると、機能が既に VM にインストール済みであっても、 **[今すぐ試す]** オプションが表示されます。  ただし、その VM が Azure Monitor for VMs にオンボードされていない場合には、オプションは表示されません。 
 
 ## <a name="next-steps"></a>次の手順
-仮想マシンの監視を有効にするための要件と方法を理解するため、「[Azure Monitor for VM の配布準備をする](vminsights-onboard.md)」を確認します。
+仮想マシンの監視を有効にするための要件と方法を理解するために、[Azure Monitor for VMs の有効化](vminsights-enable-overview.md)に関する記事を確認してください。

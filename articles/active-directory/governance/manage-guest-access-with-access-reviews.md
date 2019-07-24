@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 967fbf460175dee303d26074426a1f90e4353407
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 7c896356b67de185c55396e98aa6bb2e61dd004d
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576498"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66472902"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
@@ -31,20 +31,17 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 ゲスト ユーザーに適切なアクセス権を確保することも簡単にできます。 ゲスト自身または意思決定者に対し、アクセス レビューに参加してゲストのアクセス権を再確認 (証明) するよう求めることができます。 レビュー担当者は、Azure AD からの提案に基づいて、各ユーザーの継続的なアクセスのニーズを評価することができます。 アクセス レビューが完了したら、変更を加え、不要になったアクセス権をゲストから削除することができます。
 
 > [!NOTE]
-> このドキュメントでは、ゲスト ユーザーのアクセス レビューについて重点的に説明します。 ゲストに限らず全ユーザーのアクセス権をレビューする必要がある場合は、[アクセス レビューでユーザー アクセスを管理する方法](manage-user-access-with-access-reviews.md)に関するページを参照してください。 グローバル管理者などの管理者ロールのユーザーのメンバーシップを確認する場合は、[Azure AD Privileged Identity Management でアクセス レビューを開始する方法](../privileged-identity-management/pim-how-to-start-security-review.md)に関するページを参照してください。 
->
->
+> このドキュメントでは、ゲスト ユーザーのアクセス レビューについて重点的に説明します。 ゲストに限らず全ユーザーのアクセス権をレビューする必要がある場合は、[アクセス レビューでユーザー アクセスを管理する方法](manage-user-access-with-access-reviews.md)に関するページを参照してください。 グローバル管理者などの管理者ロールのユーザーのメンバーシップを確認する場合は、[Azure AD Privileged Identity Management でアクセス レビューを開始する方法](../privileged-identity-management/pim-how-to-start-security-review.md)に関するページを参照してください。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
+- Azure AD Premium P2
 
-アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「 [Azure Active Directory のエディション](../fundamentals/active-directory-whatis.md)」をご覧ください。 この機能 (レビューの作成、レビューへの入力、自分のアクセスの確認などを含む) を操作する各ユーザーにはライセンスが必要です。 
-
-ゲスト ユーザーに各自のアクセスのレビューを求めることもできます。 自分自身の組織のユーザーの 1 人に割り当てる有料の Azure AD Premium P2 ライセンスごとに、B2B を使用して、外部ユーザー無料利用分に従って最大 5 人までのゲスト ユーザーを招待できます。 これらのゲスト ユーザーも Azure AD Premium P2 の機能を使用できます。 詳細については、[Azure AD B2B コラボレーションのライセンス](../b2b/licensing-guidance.md)に関するページを参照してください。
+詳細については、[ライセンスが必要なユーザー](access-reviews-overview.md#which-users-must-have-licenses)に関する記事をご覧ください。
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>ゲストのアクセス レビューの作成と実行
 
-まず、全体管理者またはユーザー管理者として[アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動し、組織がアクセス レビューを使用できる状態であることを確認します。
+まず、全体管理者またはユーザー管理者として [[Identity Governance] ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動し、組織がアクセス レビューを使用できる状態であることを確認します。
 
 ゲスト ユーザーのレビューに関して、Azure AD はいくつかのシナリオに対応しています。
 

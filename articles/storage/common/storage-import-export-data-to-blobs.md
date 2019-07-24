@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 82672136d6f9af50a3d91da2044f6e0ced4b44a6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 72a91fefc26e9c0b6d5a91223119815c4fcb9551
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409374"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808589"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -58,7 +58,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 6.  ディスクを準備するには、次のコマンドを実行します。 **データ サイズによっては、数時間から数日かかることがあります。** 
 
     ```
-    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /sk:<Storage account key> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite 
+    ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite 
     ```
     ジャーナル ファイルは、ツールを実行したフォルダーと同じフォルダーに作成されます。 *.xml* ファイル (ツールを実行するフォルダー) と *drive-manifest.xml* ファイル (データが保存されているフォルダー) の 2 つのファイルも作成されます。
     
@@ -68,12 +68,13 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     |---------|---------|
     |/j:     |ジャーナル ファイルの名前 (拡張子は .jrn)。 ジャーナル ファイルはドライブごとに 1 つ生成されます。 ジャーナル ファイル名としてディスクのシリアル番号を使用することをお勧めします。         |
     |/id:     |セッション ID。 コマンドの各インスタンスに一意のセッション番号を使用します。      |
-    |/sk:     |Azure Storage アカウント キー。         |
     |/t:     |送付するディスクのドライブ文字。 例: ドライブ `D`。         |
     |/bk:     |ドライブの BitLocker キー。 `manage-bde -protectors -get D:` の出力からの数値パスワードです      |
     |/srcdir:     |送付するディスクのドライブ文字の末尾に `:\` を付けます。 たとえば、「 `D:\` 」のように入力します。         |
     |/dstdir:     |Azure Storage 内の保存先コンテナーの名前。         |
+    |/blobtype:     |このオプションは、データをインポートする BLOB の種類を指定します。 これは、ブロック BLOB の場合は `BlockBlob` で、ページ BLOB の場合は `PagaBlob` です。         |
     |/skipwrite:     |コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定するオプション。          |
+    |/enablecontentmd5:     |有効にすると、このオプションにより、MD5 が計算されて、各 BLOB で `Content-md5` プロパティとして設定されます。 このオプションは、データが Azure にアップロードされた後に、`Content-md5` フィールドを使用する場合にのみ使用してください。 <br> このオプションはデータ整合性チェック (既定で実行) には影響しません。 この設定により、クラウドにデータをアップロードするためにかかる時間が長くなります。          |
 7. 送付する必要があるディスクごとに前の手順を繰り返します。 コマンド行の実行ごとに、指定された名前のジャーナル ファイルが作成されます。
     
     > [!IMPORTANT]
@@ -83,7 +84,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
 次の手順を実行して、Azure portal でインポート ジョブを作成します。
 
-1. https://portal.azure.com/ にログオンします。
+1. [https://portal.azure.com/](https://portal.azure.com/ ) にログオンします。
 2. **[すべてのサービス] > [ストレージ] > [インポート/エクスポート ジョブ]** の順に移動します。 
     
     ![インポート/エクスポートへの移動](./media/storage-import-export-data-to-blobs/import-to-blob1.png)

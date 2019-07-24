@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 08/17/2018
 ms.author: diberry
 ms.openlocfilehash: a65b075e89180441eecfb420130bfd1e47b277a5
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66123572"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181482"
 ---
 チャットボットや他のクライアント アプリケーションで LUIS の予測を受け取るには、アプリをエンドポイントに公開する必要があります。 
 
@@ -23,7 +23,7 @@ ms.locfileid: "66123572"
 
     ![LUIS の右上のメニューにあるエンドポイントへの公開ボタン](./media/cognitive-services-luis/publish-button.png)
 
-2. **[Production]\(運用\)** スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
+2. **[Production]\(運用\)** スロットを選択し、 **[Publish]\(公開\)** ボタンを選択します。
 
     ![LUIS のエンドポイントへの公開](./media/cognitive-services-luis/publish-this-app-popup.png)
 
@@ -31,6 +31,6 @@ ms.locfileid: "66123572"
 
     ![LUIS のエンドポイントへの公開](./media/cognitive-services-luis/publish-to-endpoint-success.png)
 
-4. 緑色のステータス バーの **[endpoints]\(エンドポイント\)** リンクを選択して、**[Keys and endpoints]\(キーとエンドポイント\)** ページに進みます。 エンドポイント URL は下部に一覧表示されます。
+4. 緑色のステータス バーの **[endpoints]\(エンドポイント\)** リンクを選択して、 **[Keys and endpoints]\(キーとエンドポイント\)** ページに進みます。 エンドポイント URL は下部に一覧表示されます。
 
     <!-- TBD: add image -->

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b15ae30151b22509a78b9a39d258991363a05e5b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079666"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295418"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-search"></a>Azure Search で検索トラフィックの分析を実装する
 検索トラフィックの分析は、検索サービスのフィードバック ループの実装パターンです。 このパターンでは、必要なデータと、Application Insights を使用してデータを収集する方法を示します。Application Insights は、複数のプラットフォームでサービスを監視する業界最先端のサービスです。
@@ -79,7 +79,7 @@ Azure Search サービスの[ポータル](https://portal.azure.com) ページ�
 
     // This sample uses the Azure Search .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
 
-    var client = new SearchIndexClient(<ServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
+    var client = new SearchIndexClient(<SearchServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
     var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
     var response = await client.Documents.SearchWithHttpMessagesAsync(searchText: searchText, searchParameters: parameters, customHeaders: headers);
     IEnumerable<string> headerValues;
@@ -94,11 +94,11 @@ Azure Search サービスの[ポータル](https://portal.azure.com) ページ�
     request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
     var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
-**手順 3:検索イベントをログに記録する**: 
+**手順 3:検索イベントをログに記録する**:
 
 ユーザーによって検索要求が発行されるたびに、Application Insights のカスタム イベントで次のスキーマを使用して、検索要求を検索イベントとしてログに記録します。
 
-**ServiceName**: (文字列) 検索サービス名 **SearchId**: (GUID) 検索クエリの一意の識別子 (検索応答で提供) **IndexName**: (文字列) 照会する検索サービス インデックス **QueryTerms**: (文字列) ユーザーが入力した検索語句 **ResultCount**: (int) 返されたドキュメントの数 (検索応答で提供) **ScoringProfile**: (文字列) 使用するスコアリング プロファイルの名前 (存在する場合)。
+**SearchServiceName**: (文字列) 検索サービス名 **SearchId**: (GUID) 検索クエリの一意の識別子 (検索応答で提供) **IndexName**: (文字列) 照会する検索サービス インデックス **QueryTerms**: (文字列) ユーザーが入力した検索語句 **ResultCount**: (int) 返されたドキュメントの数 (検索応答で提供) **ScoringProfile**: (文字列) 使用するスコアリング プロファイルの名前 (存在する場合)。
 
 > [!NOTE]
 > 検索クエリに $count=true を追加して、ユーザーによって生成されたクエリのカウントを要求します。 詳細については、[こちら](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)をご覧ください。
@@ -131,7 +131,7 @@ Azure Search サービスの[ポータル](https://portal.azure.com) ページ�
     ScoringProfile: <scoring profile used>
     });
 
-**手順 4:クリック イベントをログに記録する**: 
+**手順 4:クリック イベントをログに記録する**:
 
 ユーザーがドキュメントをクリックするたびに、それをシグナルとして、検索分析用にログに記録する必要があります。 Application Insights のカスタム イベントで次のスキーマを使用して、これらのイベントをログに記録します。
 
@@ -166,13 +166,13 @@ Azure Search サービスの[ポータル](https://portal.azure.com) ページ�
 
 ログ データを分析できるように、Azure Search には監視用 [Power BI コンテンツ パック](https://app.powerbi.com/getdata/services/azure-search)が用意されています。 コンテンツ パックでは、検索トラフィックの分析用にキャプチャされた追加データの分析に役立つ定義済みのグラフとテーブルが追加されます。 詳しくは、[コンテンツ パックのヘルプ ページ](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/)をご覧ください。 
 
-1. Azure Search ダッシュボードの左側のナビゲーション ウィンドウで、**[設定]** の **[検索トラフィックの分析]** をクリックします。
+1. Azure Search ダッシュボードの左側のナビゲーション ウィンドウで、 **[設定]** の **[検索トラフィックの分析]** をクリックします。
 
-2. **[検索トラフィックの分析]** ページのステップ 3 で、**[Get Power BI Desktop]\(Power BI Desktop の取得\)** をクリックして Power BI をインストールします。
+2. **[検索トラフィックの分析]** ページのステップ 3 で、 **[Get Power BI Desktop]\(Power BI Desktop の取得\)** をクリックして Power BI をインストールします。
 
    ![Power BI レポートを取得する](./media/search-traffic-analytics/get-use-power-bi.png "Power BI レポートを取得する")
 
-2. 同じページで、**[PowerBI レポートのダウンロード]** をクリックします。
+2. 同じページで、 **[PowerBI レポートのダウンロード]** をクリックします。
 
 3. Power BI Desktop でレポートが開かれ、Application Insights に接続するよう求められます。 この情報は、Azure portal の Application Insights リソースに関するページで見つかります。
 

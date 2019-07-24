@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: 8fe0bf9c8827b7248195f89377176fd834845e32
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663674"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615165"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのアップグレード チュートリアル
 > [!div class="op_single_selector"]
@@ -37,13 +37,13 @@ Azure Service Fabric では、変更されたサービスのみをアップグ�
 
 ![Context menu for a Service Fabric application][image1]
 
-**[発行]** を選択してポップアップが表示されたら、**[ターゲット プロファイル]** を **PublishProfiles\Local.xml** に設定します。 **[発行]** をクリックする前に、ウィンドウを次のように設定します。
+**[発行]** を選択してポップアップが表示されたら、 **[ターゲット プロファイル]** を **PublishProfiles\Local.xml** に設定します。 **[発行]** をクリックする前に、ウィンドウを次のように設定します。
 
 ![Publishing a Service Fabric application][image2]
 
 これで、ダイアログ ボックスの **[発行]** をクリックできるようになりました。 [クラスターおよびアプリケーションを表示する Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)を使用できます。 Visual Objects アプリケーションには、ブラウザーのアドレス バーに「[http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/)」と入力すると移動できる Web サービスがあります。  画面上を動く 10 個のフローティング ビジュアル オブジェクトが表示されます。
 
-**注:**`Cloud.xml` プロファイル (Azure Service Fabric) にデプロイする場合、アプリケーションは **http://{ServiceFabricName}.{Region}.cloudapp.azure.com:8081/visualobjects/** で使用できます。 ロード バランサーで `8081/TCP` が構成されていることを確認してください (ロード バランサーは Service Fabric インスタンスと同じリソース グループで検索します)。
+**注:** `Cloud.xml` プロファイル (Azure Service Fabric) にデプロイする場合、アプリケーションは **http://{ServiceFabricName}.{Region}.cloudapp.azure.com:8081/visualobjects/** で使用できます。 ロード バランサーで `8081/TCP` が構成されていることを確認してください (ロード バランサーは Service Fabric インスタンスと同じリソース グループで検索します)。
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>手順 2:ビジュアル オブジェクト サンプルの更新
 手順 1. でデプロイされたバージョンでは、ビジュアル オブジェクトが回転しないことに気付くかもしれません。 アプリケーションをアップグレードして、ビジュアル オブジェクトも回転させてみましょう。

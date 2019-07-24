@@ -15,17 +15,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e5cad797b633d43bcc9ead657a60fca8aa6679bb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 425f4d9dbd6478af834bee6c88d0f13bdaa45b16
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090722"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273690"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs における可用性と一貫性
 
 ## <a name="overview"></a>概要
-Azure Event Hubs は[パーティション分割モデル](event-hubs-features.md#partitions)を使用して、単一のイベント ハブで可用性と並列処理を向上させます。 たとえば、イベント ハブに 4 つのパーティションがあり、そのうちの 1 つが、負荷分散操作によってあるサーバーから別のサーバーに移動されても、残りの 3 つのパーティションで送受信ができます。 また、パーティションが増えると、より多くのリーダーがデータを同時に処理できるため、合計スループットが向上します。 分散システムでのパーティション分割と順序付けの意味合いを理解することは、ソリューション設計の重要な側面です。
+Azure Event Hubs は[パーティション分割モデル](event-hubs-scalability.md#partitions)を使用して、単一のイベント ハブで可用性と並列処理を向上させます。 たとえば、イベント ハブに 4 つのパーティションがあり、そのうちの 1 つが、負荷分散操作によってあるサーバーから別のサーバーに移動されても、残りの 3 つのパーティションで送受信ができます。 また、パーティションが増えると、より多くのリーダーがデータを同時に処理できるため、合計スループットが向上します。 分散システムでのパーティション分割と順序付けの意味合いを理解することは、ソリューション設計の重要な側面です。
 
 順序付けと可用性のトレードオフを理解するには、[CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)をご覧ください。これはブリュワーの定理とも呼ばれています。 この定理によると、一貫性、可用性、パーティション トレランスの中からの選択が考察されています。 ネットワークごとにパーティション分割されたシステムの場合、常に一貫性と可用性のトレードオフがあることが示されています。
 
@@ -38,7 +38,7 @@ Azure Event Hubs は[パーティション分割モデル](event-hubs-features.m
 Event Hubs は、パーティション分割されたデータ モデルの上に構築されます。 Event Hub のパーティションの数はセットアップ時に構成できますが、後でこの値を変更することはできません。 Event Hubs でパーティションを使用する必要があるため、アプリケーションの可用性と一貫性について決定を行う必要があります。
 
 ## <a name="availability"></a>可用性
-Event Hubs の使用を開始する最も簡単な方法は、既定の動作を使用することです。 新しい **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** オブジェクトを作成し、**[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** メソッドを使用すると、イベントはイベント ハブのパーティション間に自動的に分散されます。 この動作により、アップ タイムを最大にすることができます。
+Event Hubs の使用を開始する最も簡単な方法は、既定の動作を使用することです。 新しい **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** オブジェクトを作成し、 **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** メソッドを使用すると、イベントはイベント ハブのパーティション間に自動的に分散されます。 この動作により、アップ タイムを最大にすることができます。
 
 最大のアップ タイムを必要とするユース ケースでは、このモデルが適しています。
 

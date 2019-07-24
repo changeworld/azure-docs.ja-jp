@@ -39,14 +39,22 @@
   items:
     - name: Azure PowerShell を使用したデプロイ
       href: deploy-ps.md
+    - name: Azure CLI を使用したデプロイ
+      href: deploy-cli.md
     - name: テンプレートを使用したデプロイ
       href: deploy-template.md
+    - name: 複数のパブリック IP を使用したデプロイ
+      href: deploy-multi-public-ip-powershell.md
+    - name: Availability Zones を使用したデプロイ
+      href: deploy-availability-zone-powershell.md
     - name: Load Balancer との統合
       href: integrate-lb.md
+    - name: SQL FQDN を使用したアプリケーション規則
+      href: sql-fqdn-filtering.md
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/network
+      href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET

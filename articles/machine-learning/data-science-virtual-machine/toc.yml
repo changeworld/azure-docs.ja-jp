@@ -65,10 +65,7 @@
 - name: リソース
   items:
     - name: R 開発者ガイド
-      href: /azure/architecture/data-guide/technology-choices/r-developers-guide
-      maintainContext: true
-    - name: ブログ
-      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
+      href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
     - name: MSDN フォーラム
       href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
     - name: スタック オーバーフロー

@@ -9,10 +9,10 @@ ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65506970"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
@@ -188,7 +188,7 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 - 0:レプリケーション中。 データベース ファイルはターゲット フォルダーにレプリケートされています。
 - 1:リハイドレート中。 データベースは読み取り専用のサーバー インスタンスにリハイドレートされています。
-- 2.完了。 同期操作は正常に完了しました。
+- 2\.完了。 同期操作は正常に完了しました。
 - 3:失敗。 同期操作は失敗しました。
 - 4:終了処理中。 同期操作は完了しましたが、クリーンアップ手順を実行中です。
 
@@ -199,7 +199,7 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 ### <a name="to-use-the-code-sample"></a>サンプル コードを使用するには
 
 1.  リポジトリを複製またはダウンロードします。 RestApiSample ソリューションを開きます。
-2.  「**client.BaseAddress = …**」の行を探し 、ご利用の[ベース URL](#base-url) を指定します。
+2.  「**client.BaseAddress = …** 」の行を探し 、ご利用の[ベース URL](#base-url) を指定します。
 
 このコード例では、[サービス プリンシパル](#service-principal)の認証を使用しています。
 
@@ -207,7 +207,7 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 Azure AS でサービス プリンシパルを設定し、必要なアクセス許可を割り当てる方法については、[Azure Portal でサービス プリンシパルを作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページと「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。 これらの手順を完了したら、追加で次の手順を実行します。
 
-1.  コード サンプル内で「**string authority = …**」を見つけたら、「**common**」をご所属の組織のテナント ID に置き換えます。
+1.  コード サンプル内で「**string authority = …** 」を見つけたら、「**common**」をご所属の組織のテナント ID に置き換えます。
 2.  コメント化およびコメントの解除を行って、ClientCredential クラスで cred オブジェクトをインスタンス化します。 \<App ID> と \<App Key> の値が安全な方法でアクセスされていることを確認します。または、サービス プリンシパルの証明書ベース認証を使用します。
 3.  サンプルを実行します。
 

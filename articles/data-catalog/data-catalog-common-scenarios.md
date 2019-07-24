@@ -9,11 +9,11 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: e95cc64b9086a6fb4c5e2d42521a5fd3f44244ba
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010808"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61003958"
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Azure Data Catalog の一般的なシナリオ
 この記事では、Azure Data Catalog を使用して組織が既存のデータ ソースからさらなる価値を得ることができる一般的なシナリオを紹介します。

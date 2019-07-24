@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 0dd8d7c1e004472d230337b72d55ac7ced905b41
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 965d1ace2afdad21a069193b508fc2b10fdf4700
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490930"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64697228"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
@@ -47,17 +47,17 @@ Azure Monitor が[新しいタイプのメトリック アラート](../../azure
 |Microsoft.Devices/IotHubs    | 該当なし     |[IoT Hub メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs)
 |Microsoft.Devices/provisioningServices    | はい     |[DPS メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftdevicesprovisioningservices)
 |Microsoft.EventHub/namespaces     |  はい      |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
-|Microsoft.KeyVault/vaults| いいえ  | [資格情報コンテナー](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
+|Microsoft.KeyVault/vaults| いいえ | [資格情報コンテナー](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows     |     該当なし    |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
-|Microsoft.Network/applicationGateways     |    該当なし     | [Application Gateway](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkapplicationgateways) |
-|Microsoft.Network/dnsZones | 該当なし| [DNS ゾーン数](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
+|Microsoft.Network/applicationGateways     |    該当なし     | [アプリケーション ゲートウェイ](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/dnsZones | 該当なし| [DNS Zones](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft.Network/expressRouteCircuits | 該当なし |  [Express Route 回線](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkexpressroutecircuits) |
-|Microsoft.Network/loadBalancers (Standard SKU に対してのみ)| はい| [ロード バランサー](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
+|Microsoft.Network/loadBalancers (Standard SKU に対してのみ)| はい| [Load Balancers](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) |
 |Microsoft.Network/publicipaddresses     |  該当なし       |[パブリック IP アドレス](../../azure-monitor/platform/metrics-supported.md#microsoftnetworkpublicipaddresses)|
 |Microsoft.Network/trafficManagerProfiles | はい | [Traffic Manager プロファイル](../../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft.OperationalInsights/workspaces| はい|[Log Analytics ワークスペース](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)|
 |Microsoft.PowerBIDedicated/capacities | 該当なし | [Capacities](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
-|Microsoft.Search/searchServices     |   該当なし      |[Search サービス](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
+|Microsoft.Search/searchServices     |   該当なし      |[検索サービス](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  はい       |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
 |Microsoft.Storage/storageAccounts     |    はい     | [ストレージ アカウント](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services     |     はい    | [Blob service](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)、[ファイル サービス](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices)、[Queue サービス](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)、および [Table service](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
@@ -68,6 +68,10 @@ Azure Monitor が[新しいタイプのメトリック アラート](../../azure
 
 
 ## <a name="payload-schema"></a>ペイロード スキーマ
+
+> [!NOTE]
+> [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)を使用することもできます。このスキーマの利点は、Azure Monitor のすべてのアラート サービスの垣根を越えて、拡張可能かつ一元化された単一のアラート ペイロードによって Webhook の統合を実現できることです。 [共通アラート スキーマの定義については、こちらを参照してください。](https://aka.ms/commonAlertSchemaDefinitions)
+
 
 適切に構成された[アクション グループ](../../azure-monitor/platform/action-groups.md)が使用されている場合、POST 操作には、すべての新しいメトリック アラートに対する以下の JSON ペイロードとスキーマが含まれます。
 

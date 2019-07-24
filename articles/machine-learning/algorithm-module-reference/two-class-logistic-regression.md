@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: aacaf6c64ef77d0e694f97e3675060eca33794ed
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027773"
 ---
 # <a name="two-class-logistic-regression-module"></a>2 クラスのロジスティック回帰モジュール
@@ -41,7 +41,7 @@ ms.locfileid: "65027773"
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **[Single Parameter]\(単一パラメーター\)**: モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
+    -   **[Single Parameter]\(単一パラメーター\)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
   
 3.  **[Optimization tolerance]\(最適化の許容範囲\)** に、モデルを最適化する際に使用するしきい値を指定します。 指定したしきい値をイテレーション間の改善が下回った場合に、アルゴリズムは解に収束したと見なされ、トレーニングが終了します。  
   
@@ -81,7 +81,7 @@ ms.locfileid: "65027773"
 
 トレーニングの完了後:
 
-+ モデルのパラメーターとトレーニングから学習された特徴の重みを確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックし、**[Visualize]\(可視化\)** を選択します。   
++ モデルのパラメーターとトレーニングから学習された特徴の重みを確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックし、 **[Visualize]\(可視化\)** を選択します。   
   
 + 新しいデータについての予測を行うために、トレーニング済みのモデルと新しいデータを[モデルのスコア付け](./score-model.md)モジュールの入力として使用します。 
 

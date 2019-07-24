@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881445"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60877824"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 でのエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "58881445"
 
 * **Azure Active Directory "ネイティブ" アプリケーションを作成します**。 「[End-user authentication with Data Lake Storage Gen1 using Azure Active Directory (Azure Active Directory を使用した Data Lake Storage Gen1 でのエンドユーザー認証)](data-lake-store-end-user-authenticate-using-active-directory.md)」のステップを完了している必要があります。
 
-* **[cURL](https://curl.haxx.se/)**。 この記事では、cURL を使用して、Data Lake Storage Gen1 アカウントに対して REST API 呼び出しを行う方法を説明します。
+* **[cURL](https://curl.haxx.se/)** 。 この記事では、cURL を使用して、Data Lake Storage Gen1 アカウントに対して REST API 呼び出しを行う方法を説明します。
 
 ## <a name="end-user-authentication"></a>エンドユーザー認証
 エンドユーザー認証は、ユーザーに Azure AD 経由でアプリケーションにログインしてもらう場合に推奨する方法です。 アプリケーションはログインしたユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーはアプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。

@@ -159,6 +159,8 @@
           href: iot-hub-devguide-glossary.md
     - name: セキュリティ
       items:
+        - name: Recommendations
+          href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: 徹底的なセキュリティ
           href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
         - name: セキュリティのベスト プラクティス
@@ -347,7 +349,7 @@
               href: iot-hub-visual-studio-cloud-device-messaging.md
             - name: Power BI でのデータ視覚化
               href: iot-hub-live-data-visualization-in-power-bi.md
-            - name: Web Apps でのデータ視覚化
+            - name: Web アプリでのデータ視覚化
               href: iot-hub-live-data-visualization-in-web-apps.md
             - name: Azure Machine Learning を使用した天気予報
               href: iot-hub-weather-forecast-machine-learning.md
@@ -419,9 +421,9 @@
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT デバイス SDK
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
@@ -438,7 +440,7 @@
     - name: iOS プラットフォーム用 Azure IoT サンプル
       href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: IoT デバイス カタログ向けの Azure 認定
-      href: 'https://catalog.azurazureiotsolutionseiotsuite.com/'
+      href: 'https://catalog.azureiotsolutions.com/'
     - name: Azure IoT デベロッパー センター
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: 顧客データ要求

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: c6f947ad6f2f8dba2df17132243eb6d918539c14
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 5dda2eafe86d037faab6284c2af0d8026c194d11
+ms.sourcegitcommit: d73c46af1465c7fd879b5a97ddc45c38ec3f5c0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678430"
+ms.lasthandoff: 05/20/2019
+ms.locfileid: "65921148"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure リソースの RBAC のトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "59678430"
 
 ## <a name="problems-with-rbac-role-assignments"></a>RBAC ロールの割り当てに関する問題
 
-- **[追加]** > **[ロール割り当ての追加]** オプションが無効になっているため、または "オブジェクト ID のクライアントは、アクションの実行を承認されていません" というアクセス許可エラーが発生するために、Azure portal の **[アクセス制御 (IAM)]** でロールの割り当てを追加できない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/write` のアクセス許可を持っている[所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)などのロールを割り当てられているユーザーで、現在サインインしていることを確認してください。
+- **[追加]**  >  **[ロール割り当ての追加]** オプションが無効になっているため、または "オブジェクト ID のクライアントは、アクションの実行を承認されていません" というアクセス許可エラーが発生するために、Azure portal の **[アクセス制御 (IAM)]** でロールの割り当てを追加できない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/write` のアクセス許可を持っている[所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)などのロールを割り当てられているユーザーで、現在サインインしていることを確認してください。
 - エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、代わりにロールをグループに割り当てて、ロールの割り当て数を減らしてみます。 Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。
 
 ## <a name="problems-with-custom-roles"></a>カスタム ロールに関する問題
@@ -36,14 +36,14 @@ ms.locfileid: "59678430"
 - カスタム ロールを作成する方法の手順が必要な場合は、[Azure PowerShell](tutorial-custom-role-powershell.md) または [Azure CLI](tutorial-custom-role-cli.md) を使用するカスタム ロールのチュートリアルをご覧ください。
 - 既存のカスタム ロールを更新できない場合は、現在サインインしているユーザーに `Microsoft.Authorization/roleDefinition/write` アクセス許可を持つロール ([所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など) が割り当てられていることを確認します。
 - カスタム ロールを削除することができず、エラー メッセージ "ロールを参照している既存のロールの割り当てがあります (コード: RoleDefinitionHasAssignments)" が表示される場合は、カスタム ロールを使用しているロールの割り当てがまだ存在します。 それらのロール割り当てを削除してから、もう一度カスタム ロールを削除してみてください。
-- エラー メッセージ "ロールの定義の制限を超えました。 ロールの定義をこれ以上作成することはできません (コード: RoleDefinitionLimitExceeded)" が、新しいカスタム ロールを作成しようとすると表示される場合は、使用されていないすべてのカスタム ロールを削除します。 Azure では、テナントあたり最大 **2,000** 個のカスタム ロールをサポートします。
+- エラー メッセージ "ロールの定義の制限を超えました。 ロールの定義をこれ以上作成することはできません (コード: RoleDefinitionLimitExceeded)" が、新しいカスタム ロールを作成しようとすると表示される場合は、使用されていないすべてのカスタム ロールを削除します。 Azure では、テナントあたり最大 **5,000** 個のカスタム ロールをサポートします (Azure Government、Azure Germany、Azure China 21Vianet などの特殊なクラウドの場合、カスタム ロールの上限は 2,000 個です)。
 - カスタム ロールを更新しようとすると、"このクライアントには、範囲 '/subscriptions/{subscriptionid}' に対してアクション 'Microsoft.Authorization/roleDefinitions/write' を実行する権限がありますが、リンクされているサブスクリプションが見つかりません" のようなエラーが発生する場合は、テナントで 1 つまたは[複数の割り当て可能な範囲](role-definitions.md#assignablescopes)が削除さているかどうかを確認してください。 スコープが削除された場合は、現時点で使用可能なセルフ サービス ソリューションがないため、サポート チケットを作成します。
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>サブスクリプションがテナントをまたいで移動される際に RBAC を復旧します
 
 - サブスクリプションを別の Azure AD テナントに譲渡する方法の手順が必要な場合は、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)」を参照してください。
 - 別の Azure AD テナントにサブスクリプションを譲渡する場合、すべてのロールの割り当てがソース Azure AD テナントから完全に削除され、ターゲット Azure AD テナントに移行されることはありません。 ターゲット テナントでロールの割り当てを再作成する必要があります。 また、Azure リソースのマネージド ID を手動で再作成する必要もあります。 詳細については、[マネージド ID に関する FAQ と既知の問題](../active-directory/managed-identities-azure-resources/known-issues.md)に関するページを参照してください。
-- Azure AD グローバル管理者であり、テナント間で移動された後のサブスクリプションにアクセスできない場合は、**[Azure リソースのアクセス管理]** トグルを使用して、一時的に[アクセス権を昇格](elevate-access-global-admin.md)させて、サブスクリプションにアクセスします。
+- Azure AD グローバル管理者であり、テナント間で移動された後のサブスクリプションにアクセスできない場合は、 **[Azure リソースのアクセス管理]** トグルを使用して、一時的に[アクセス権を昇格](elevate-access-global-admin.md)させて、サブスクリプションにアクセスします。
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>サービス管理者または共同管理者に関する問題
 
@@ -124,7 +124,7 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 
 ![Function App のアクセスなし](./media/troubleshooting/functionapps-noaccess.png)
 
-閲覧者は、**[プラットフォーム機能]** タブをクリックし、**[すべての設定]** をクリックすることで、関数アプリ (Web アプリに類似) に関連する一部の設定を表示できます。ただし、これらの設定を変更することはできません。
+閲覧者は、 **[プラットフォーム機能]** タブをクリックし、 **[すべての設定]** をクリックすることで、関数アプリ (Web アプリに類似) に関連する一部の設定を表示できます。ただし、これらの設定を変更することはできません。
 
 ## <a name="next-steps"></a>次の手順
 * [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)

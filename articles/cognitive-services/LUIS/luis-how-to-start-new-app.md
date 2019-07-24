@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 9d650a17ddfac6461341e50c4693e4522d9628b3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b8b0cebf4ba47f875caacfcfbf89b84551b41333
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148194"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341853"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>LUIS ポータルでの新しい LUIS アプリの作成
 LUIS アプリを作成するにはいくつかの方法があります。 [LUIS](https://www.luis.ai) ポータル内または LUIS オーサリング[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) を使用して LUIS アプリを作成できます。
@@ -42,7 +42,7 @@ LUIS ポータルでは、新しいアプリをいくつかの方法で作成で
 
 ## <a name="create-new-app-in-luis"></a>LUIS で新しいアプリを作成する
 
-1. **[マイ アプリ]** ページで、**[新しいアプリの作成]** を選択します。
+1. **[マイ アプリ]** ページで、 **[新しいアプリの作成]** を選択します。
 
     ![LUIS アプリの一覧](./media/luis-create-new-app/apps-list.png)
 
@@ -51,21 +51,21 @@ LUIS ポータルでは、新しいアプリをいくつかの方法で作成で
 
     ![[新しいアプリの作成] ダイアログ ボックス](./media/luis-create-new-app/create-app.png)
 
-3. アプリケーションのカルチャを選択 (TravelAgent アプリの場合は、英語を選択) し、**[完了]** を選択します。 
+3. アプリケーションのカルチャを選択 (TravelAgent アプリの場合は、英語を選択) し、 **[完了]** を選択します。 
 
     > [!NOTE]
     > カルチャは、アプリケーションを作成した後に変更できません。 
 
 ## <a name="import-an-app-from-file"></a>ファイルからアプリをインポートする
 
-1. **[マイ アプリ]** ページで、**[Import new app]\(新しいアプリのインポート\)** を選択します。
-1. ポップアップ ダイアログで有効なアプリ JSON ファイルを選択し、**[完了]** を選択します。
+1. **[マイ アプリ]** ページで、 **[Import new app]\(新しいアプリのインポート\)** を選択します。
+1. ポップアップ ダイアログで有効なアプリ JSON ファイルを選択し、 **[完了]** を選択します。
 
 ### <a name="import-errors"></a>インポート エラー
 
 次のエラーが発生する可能性があります。 
 
-* その名前のアプリは既に存在します。 アプリを再インポートし、**オプション名**を新しい名前に設定します。 
+* その名前のアプリは既に存在します。 これを修正するには、アプリを再インポートし、**オプション名**を新しい名前に設定します。 
 
 ## <a name="export-app-for-backup"></a>バックアップ用にアプリをエクスポートする
 
@@ -79,7 +79,7 @@ LUIS ポータルでは、新しいアプリをいくつかの方法で作成で
 1. **[Export as container]\(コンテナーとしてエクスポートする\)** を選択して、エクスポートする公開スロット (実稼働またはステージ) を選択します。
 1. [LUIS コンテナー](luis-container-howto.md)でこのファイルを使用します。 
 
-    LUIS コンテナーで使用するモデルとして、トレーニング済みではあるものの、まだ発行されていないモデルをエクスポートしたい場合は、**[バージョン]** ページに移動してそこからエクスポートしてください。 
+    LUIS コンテナーで使用するモデルとして、トレーニング済みではあるものの、まだ発行されていないモデルをエクスポートしたい場合は、 **[バージョン]** ページに移動してそこからエクスポートしてください。 
 
 ## <a name="delete-app"></a>アプリの削除
 

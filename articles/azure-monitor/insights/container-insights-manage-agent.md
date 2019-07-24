@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
 ms.openlocfilehash: e1d47be159d4721aed4b055a51acf675688b855e
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65071792"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>コンテナーに対する Azure Monitor エージェントを管理する方法
@@ -61,7 +61,7 @@ ms.locfileid: "65071792"
     docker-cimprov 1.0.0.31
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>コンテナーの環境変数コレクションを無効にする方法
-コンテナーに対する Azure Monitor は、ポッドで実行されているコンテナーから環境変数を収集し、**[コンテナー]** ビューで選択したコンテナーのプロパティ ウィンドウに表示します。 この動作を制御するには、AKS クラスターのデプロイ中、またはデプロイ後に環境変数 *AZMON_COLLECT_ENV* を設定して、特定のコンテナーのコレクションを無効にします。 この機能は、エージェント バージョン ciprod11292018 以降で使用できます。  
+コンテナーに対する Azure Monitor は、ポッドで実行されているコンテナーから環境変数を収集し、 **[コンテナー]** ビューで選択したコンテナーのプロパティ ウィンドウに表示します。 この動作を制御するには、AKS クラスターのデプロイ中、またはデプロイ後に環境変数 *AZMON_COLLECT_ENV* を設定して、特定のコンテナーのコレクションを無効にします。 この機能は、エージェント バージョン ciprod11292018 以降で使用できます。  
 
 新規または既存のコンテナーの環境変数のコレクションを無効にするには、Kubernetes デプロイ yaml 構成ファイルで変数 **AZMON_COLLECT_ENV** を値 **False** に設定します。   
 

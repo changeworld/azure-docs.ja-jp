@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 03/12/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3121c7e4b1b1adfb079368aa86c272e9ea473ead
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 907d12464156f551930098f6bd6a6a24596307cb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855216"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479923"
 ---
 # <a name="about-site-recovery"></a>Site Recovery について
 
@@ -56,7 +56,7 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 
 **サポートされています** | **詳細**
 --- | ---
-**レプリケーション シナリオ** | Azure VM を 1 つの Azure リージョンから別のリージョンにレプリケートします。<br/><br/>  オンプレミスの VMware VM、Hyper-V VM、物理サーバー (Windows および Linux)、Azure Stack VM を Azure にレプリケートします。<br/><br/> オンプレミスの VMware VM、System Center VMM で管理されている HYPER-V VM、および物理サーバーを、セカンダリ サイトにレプリケートします。
+**レプリケーション シナリオ** | Azure VM を 1 つの Azure リージョンから別のリージョンにレプリケートします。<br/><br/>  オンプレミスの VMware VM、Hyper-V VM、物理サーバー (Windows および Linux)、Azure Stack VM を Azure にレプリケートします。<br/><br/> <br/><br/> AWS Windows インスタンスを Azure にレプリケートします。<br/><br/> オンプレミスの VMware VM、System Center VMM で管理されている HYPER-V VM、および物理サーバーを、セカンダリ サイトにレプリケートします。
 **リージョン** | Site Recovery の[サポートされているリージョン](https://azure.microsoft.com/regions/services/)を確認してください。 |
 **レプリケートされたマシン** | [Azure VM](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) レプリケーション、[オンプレミスの VMware VM と物理サーバー](vmware-physical-azure-support-matrix.md#replicated-machines)、および[オンプレミスの Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) のレプリケーション要件を確認してください。
 **ワークロード** | レプリケーションがサポートされているマシンで実行されている任意のワークロードをレプリケートできます。 さらに、Site Recovery チームは、[いくつかのアプリ](site-recovery-workload.md#workload-summary)に対してアプリに固有のテストを行っています。

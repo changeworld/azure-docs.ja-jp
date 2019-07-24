@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744843"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60400645"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -51,12 +51,12 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 
 システム プロパティは、メッセージのコンテンツとソースを特定するのに役立ちます。 
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| contentType | 文字列 | ユーザーはメッセージのコンテンツの種類を指定します。 メッセージ本文に基づいてクエリを実行するには、この値を application/json に設定する必要があります。 |
-| contentEncoding | 文字列 | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
-| iothub-connection-device-id | 文字列 | この値は IoT Hub によって設定され、デバイスの ID を示します。 クエリを実行するには、`$connectionDeviceId` を使用します。 |
-| iothub-enqueuedtime | 文字列 | この値は IoT Hub によって設定されます。この値によって、メッセージがエンキューされた実際の時刻が UTC で表されます。 クエリを実行するには、`enqueuedTime` を使用します。 |
+| contentType | string | ユーザーはメッセージのコンテンツの種類を指定します。 メッセージ本文に基づいてクエリを実行するには、この値を application/json に設定する必要があります。 |
+| contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
+| iothub-connection-device-id | string | この値は IoT Hub によって設定され、デバイスの ID を示します。 クエリを実行するには、`$connectionDeviceId` を使用します。 |
+| iothub-enqueuedtime | string | この値は IoT Hub によって設定されます。この値によって、メッセージがエンキューされた実際の時刻が UTC で表されます。 クエリを実行するには、`enqueuedTime` を使用します。 |
 
 [IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 **contentType**、**contentEncoding**、**enqueuedTime** に加えて、**connectionDeviceId** と **connectionModuleId** に対してもクエリを実行できます。
 
@@ -66,7 +66,7 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 
 ### <a name="query-expressions"></a>クエリ式
 
-メッセージ システム プロパティに基づくクエリには、前に `$` 記号を付ける必要があります。 アプリケーション プロパティに基づくクエリは、それらの名前を使用してアクセスされるので、前に `$` 記号を付ける必要がありません。 アプリケーション プロパティ名の先頭に `$` がある場合は、IoT Hub によってそのアプリケーション プロパティ名がシステム プロパティ内で検索されますが、見つからないため、アプリケーション プロパティ内が検索されることになります。 例:  
+メッセージ システム プロパティに基づくクエリには、前に `$` 記号を付ける必要があります。 アプリケーション プロパティに基づくクエリは、それらの名前を使用してアクセスされるので、前に `$` 記号を付ける必要がありません。 アプリケーション プロパティ名の先頭に `$` がある場合は、IoT Hub によってそのアプリケーション プロパティ名がシステム プロパティ内で検索されますが、見つからないため、アプリケーション プロパティ内が検索されることになります。 例: 
 
 システム プロパティ contentEncoding に基づいてクエリを実行するには 
 

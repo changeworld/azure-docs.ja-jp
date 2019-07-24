@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 06/06/2019
 ms.author: alinast
-ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 478fe1859dd9067e8097df0384657793602c1378
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994827"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071456"
 ---
 # <a name="egress-and-endpoints"></a>エグレスとエンドポイント
 
@@ -47,11 +47,11 @@ Azure Digital Twins の*エンドポイント*は、ユーザーの Azure サブ
 }
 ```
 
-| Attribute | type | 説明 |
+| Attribute | Type | 説明 |
 | --- | --- | --- |
 | id | string | イベントの一意識別子。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
-| data | オブジェクト | リソース プロバイダーに固有のイベント データ。 |
+| data | object | リソース プロバイダーに固有のイベント データ。 |
 | eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
 | dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |

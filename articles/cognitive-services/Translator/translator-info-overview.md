@@ -3,22 +3,22 @@ title: Translator Text API とは - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Translator Text API をアプリケーション、Web サイト、ツール、またはその他のソリューションに統合して、多言語ユーザー エクスペリエンスを提供できます。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 02/21/2019
-ms.author: erhopf
+ms.date: 06/04/2019
+ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 79f0474950cf1f48f3552b1ae843a29b5d8dbb24
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8cdd52963f89041ea97b018fd3756c925308e641
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883374"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443274"
 ---
-# <a name="what-is-translator-text-api"></a>Translator Text API とは
+# <a name="what-is-the-translator-text-api"></a>Translator Text API とは
 
 Translator Text API は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 [60 か国語](languages.md)を超える多言語のユーザー エクスペリエンスを追加し、使用しているハードウェア プラットフォームやオペレーティング システムにかかわらず、テキストからテキストへの言語翻訳を実行できます。
 

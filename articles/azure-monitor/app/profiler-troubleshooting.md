@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6b57ffbd3cb2b31da3fc2882e941f9788d83fea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495398"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341672"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -25,9 +25,9 @@ ms.locfileid: "59495398"
 
 ### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>Profiler の実行中にアプリケーションへの要求がある場合しか、プロファイルがアップロードされない
 
-Azure Application Insights Profiler では、1 時間ごとに 2 分間だけプロファイリング データが収集されます。 また、**[Application Insights Profiler の構成]** ウィンドウで **[今すぐプロファイル]** ボタンを選択したときにも、データが収集されます。 ただし、プロファイリング データがアップロードされるのは、Profiler の実行中に発生した要求に添付できる場合のみです。 
+Azure Application Insights Profiler では、1 時間ごとに 2 分間だけプロファイリング データが収集されます。 また、 **[Application Insights Profiler の構成]** ウィンドウで **[今すぐプロファイル]** ボタンを選択したときにも、データが収集されます。 ただし、プロファイリング データがアップロードされるのは、Profiler の実行中に発生した要求に添付できる場合のみです。 
 
-Profiler では、トレース メッセージとカスタム イベントが Application Insights リソースに書き込まれます。 これらのイベントを使用して、Profiler がどのように実行されているかを確認できます。 Profiler が実行されていてトレースがキャプチャされているはずなのに、**[パフォーマンス]** ウィンドウに表示されない場合は、Profiler の実行状態を確認できます。
+Profiler では、トレース メッセージとカスタム イベントが Application Insights リソースに書き込まれます。 これらのイベントを使用して、Profiler がどのように実行されているかを確認できます。 Profiler が実行されていてトレースがキャプチャされているはずなのに、 **[パフォーマンス]** ウィンドウに表示されない場合は、Profiler の実行状態を確認できます。
 
 1. Profiler から Application Insights リソースに送信されたトレース メッセージとカスタム イベントを検索します。 次の検索文字列を使用すると、関連するデータを検索することができます。
 
@@ -88,13 +88,13 @@ Profiler を正常に動作させるためには:
 
       ![profiler-webjob-log]
 
-Profiler が動作していない理由がわからない場合は、ログをダウンロードし、チームに送信して支援を受けることができます。 
+Profiler が動作していない理由がわからない場合は、ログをダウンロードし、チームに送信して支援を受けることができます (serviceprofilerhelp@microsoft.com)。 
     
 ### <a name="manual-installation"></a>手動のインストール
 
 Profiler を構成すると、Web アプリの設定に対して更新が行われます。 環境で必要な場合は、更新プログラムを手動で適用できます。 1 つの例として、アプリケーションが PowerApps 用の Web Apps 環境で実行されている場合があります。 更新を手動で適用するには:
 
-1. **[Web App Control] \(Web アプリ コントロール)** ウィンドウで、**[設定]** を開きます。
+1. **[Web App Control] \(Web アプリ コントロール)** ウィンドウで、 **[設定]** を開きます。
 
 1. **.NET Framework バージョン**を **v4.6** に設定します。
 
@@ -127,7 +127,7 @@ Profiler が有効になっている Web Apps リソースに Web アプリを�
 
 ### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>Application Insights Profiler が実行されているかどうかを確認するにはどうすればよいですか。
 
-Profiler は、Web アプリ内の継続的な WebJob として実行されます。 Web アプリのリソースは、[Azure Portal](https://portal.azure.com) で開くことができます。 **[WebJobs]** ウィンドウで、**ApplicationInsightsProfiler** の状態を確認してください。 実行されていない場合は、**[ログ]** を開いて詳細情報を入手します。
+Profiler は、Web アプリ内の継続的な WebJob として実行されます。 Web アプリのリソースは、[Azure Portal](https://portal.azure.com) で開くことができます。 **[WebJobs]** ウィンドウで、**ApplicationInsightsProfiler** の状態を確認してください。 実行されていない場合は、 **[ログ]** を開いて詳細情報を入手します。
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Profiler と Azure Diagnostics に関する問題のトラブルシューティング
 

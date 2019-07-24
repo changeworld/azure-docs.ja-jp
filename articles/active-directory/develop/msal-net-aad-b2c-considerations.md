@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c26a5007c2dcaa5d41be46f685f0f259866ca2c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 8240a487bdb01cdbe9017ddc7cb95ce4fc0e1503
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544072"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052367"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる
 
@@ -78,7 +78,7 @@ AuthenticationResult ar = await application .AcquireToken(scopes, parentWindow)
 を以下に置き換えます。
 
 - `policy` は前の文字列の 1 つです (たとえば `PolicySignUpSignIn`)。
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` は特定のポリシーのアカウントを検索するメソッドです。 例: 
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` は特定のポリシーのアカウントを検索するメソッドです。 例:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -129,7 +129,7 @@ ROPC フローについて詳しくは、こちらの[ドキュメント](v2-oau
 - ユーザーがシングル サインオンできない。
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Azure AD B2C で ROPC フローを構成する
-お使いの Azure AD B2C テナントで、新しいユーザー フローを作成し、**[ROPC を使用してサインイン]** を選択します。 これにより、テナントの ROPC ポリシーが有効になります。 詳しくは、[リソース所有者のパスワード資格情報フローの構成](/azure/active-directory-b2c/configure-ropc)に関する記事をご覧ください。
+お使いの Azure AD B2C テナントで、新しいユーザー フローを作成し、 **[ROPC を使用してサインイン]** を選択します。 これにより、テナントの ROPC ポリシーが有効になります。 詳しくは、[リソース所有者のパスワード資格情報フローの構成](/azure/active-directory-b2c/configure-ropc)に関する記事をご覧ください。
 
 `IPublicClientApplication` には次のメソッドが含まれています。
 ```csharp
@@ -177,7 +177,7 @@ MSAL.Net では[トークン キャッシュ](/dotnet/api/microsoft.identity.cli
 または、[B2C カスタム ポリシー](https://aka.ms/ief)を使用している場合は、`tid` 要求を使用できます。これにより、アプリケーションに追加の要求を返す機能が提供されます。 詳しくは、[要求の変換](/azure/active-directory-b2c/claims-transformation-technical-profile)に関する記事をご覧ください
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"トークンの応答にありません" の軽減策
-1 つのオプションは、優先されるユーザー名として "name" 要求を使用することです。 プロセスは、この [B2C ドキュメント](/azure/active-directory-b2c/active-directory-b2c-reference-policies#frequently-asked-questions)で説明されています。"[要求を返す] 列で、プロファイル編集エクスペリエンスの成功後にアプリケーションに戻される承認トークンで返される要求を選択します。 たとえば、[表示名] および [郵便番号] を選択します。"
+1 つのオプションは、優先されるユーザー名として "name" 要求を使用することです。 プロセスは、この [B2C ドキュメント](../../active-directory-b2c/active-directory-b2c-reference-policies.md)で説明されています。"[要求を返す] 列で、プロファイル編集エクスペリエンスの成功後にアプリケーションに戻される承認トークンで返される要求を選択します。 たとえば、[表示名] および [郵便番号] を選択します。"
 
 ## <a name="next-steps"></a>次の手順 
 

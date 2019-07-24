@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893625"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60199160"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 アプリの<a name="train-your-app"></a>
@@ -43,7 +43,7 @@ ms.locfileid: "58893625"
 
 ## <a name="inspect-score"></a>スコアの検査
 
-テスト結果の詳細は、**[検査]** パネルで調べることができます。 
+テスト結果の詳細は、 **[検査]** パネルで調べることができます。 
  
 1. スライド式の **[Test]\(テスト\)** パネルを開いた状態で、比較する発話の **[検査]** を選択します。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "58893625"
 
 ## <a name="correct-top-scoring-intent"></a>上位スコアの意図の修正
 
-1. 上部スコアの意図が間違っている場合は、**[編集]** をクリックします。
+1. 上部スコアの意図が間違っている場合は、 **[編集]** をクリックします。
 
 2.  ドロップダウン リストで、発話の正しい意図を選択します。
 
@@ -73,12 +73,12 @@ ms.locfileid: "58893625"
 
 ## <a name="compare-with-published-version"></a>公開されたバージョンとの比較
 
-公開された[エンドポイント](luis-glossary.md#endpoint) バージョンでアプリのアクティブなバージョンをテストできます。 **[検査]** パネルで、**[Compare with published]\(公開済みのものと比較\)** を選択します。 公開されたモデルに対するテストは、お使いの Azure サブスクリプションのクォータ残量から差し引かれます。 
+公開された[エンドポイント](luis-glossary.md#endpoint) バージョンでアプリのアクティブなバージョンをテストできます。 **[検査]** パネルで、 **[Compare with published]\(公開済みのものと比較\)** を選択します。 公開されたモデルに対するテストは、お使いの Azure サブスクリプションのクォータ残量から差し引かれます。 
 
 ![公開済みとの比較](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>テスト パネルでのエンドポイント JSON の表示
-比較のために返されたエンドポイント JSON を表示するには、**[Show JSON view]\(JSON ビューの表示\)** を選択します。
+比較のために返されたエンドポイント JSON を表示するには、 **[Show JSON view]\(JSON ビューの表示\)** を選択します。
 
 ![公開された JSON 応答](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
@@ -103,9 +103,9 @@ LUIS エンドポイントが複数ある場合は、テストの [公開済み]
 
 1. **[Test]\(テスト\)** ウィンドウで、発話を入力します。 発話が予測されるときに、入力した発話の下で **[[検査]](#inspect-score)** を選択します。 
 
-2. **[検査]** パネルが開いたら、**[[Compare with published]\(公開済みのものと比較\)](#compare-with-published-version)** を選択します。 
+2. **[検査]** パネルが開いたら、 **[[Compare with published]\(公開済みのものと比較\)](#compare-with-published-version)** を選択します。 
 
-3. **[公開済み]** パネルが開いたら、**[[追加設定]](#additional-settings-in-test-panel)** を選択します。
+3. **[公開済み]** パネルが開いたら、 **[[追加設定]](#additional-settings-in-test-panel)** を選択します。
 
 4. ポップアップ ダイアログで、ご自身の **Bing Spell Check** サービス キーを入力します。 
     ![Bing Spell Check サービス キーの入力](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)

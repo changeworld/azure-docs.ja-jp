@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure AD デバイス管理のドキュメント
+title: Azure AD デバイス ID のドキュメント
 metadata:
   document_id: null
-  title: Azure Active Directory デバイス管理のドキュメント - チュートリアル、概念、リファレンス | Microsoft Docs
-  description: Azure Active Directory のデバイス管理を構成してテストする方法について説明します。
+  title: Azure Active Directory デバイス ID 管理のドキュメント - チュートリアル、概念、リファレンス | Microsoft Docs
+  description: Azure AD でデバイス ID を構成して管理する方法について説明します。
   services: active-directory
   ms.subservice: devices
   author: MicrosoftGuyJFlo
@@ -16,7 +16,7 @@ metadata:
   ms.date: 08/14/2018
   ms.author: joflore
 abstract:
-  description: ユーザーは、デバイスを通して企業の資産にアクセスしています。 IT 管理者は、企業の資産を保護するために、これらのデバイスを管理します。 管理することによって、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを確信できます。<br>デバイス管理は、デバイスに基づく条件付きアクセスの基礎でもあります。 デバイスに基づく条件付きアクセスにより、環境内のリソースへのアクセスは、確実に、管理対象デバイスでのみ可能となります。
+  description: ユーザーは、Azure AD のデバイスを通して企業の資産にアクセスしています。 IT 管理者は、企業の資産を保護するために、Azure AD でこれらのデバイス ID を管理します。 管理することによって、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを確信できます。<br>デバイス ID 管理は、デバイスに基づく条件付きアクセスの基礎でもあります。 デバイスに基づく条件付きアクセスにより、環境内のリソースへのアクセスは、確実に、マネージド デバイスでのみ可能となります。
 sections:
   - title: ステップバイステップのチュートリアル
     items:

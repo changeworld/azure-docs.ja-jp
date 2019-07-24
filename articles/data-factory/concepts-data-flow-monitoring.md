@@ -8,11 +8,11 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.openlocfilehash: 90aa6261aebb9d1f7da89c101854bad8061dd6ff
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737860"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61269050"
 ---
 # <a name="monitor-data-flows"></a>データ フローの監視
 

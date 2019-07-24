@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C でカスタム ポリシーを使用して SSO とトークンのカスタマイズを管理する | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーを使用して SSO とトークンのカスタマイズを管理する方法を説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2033d37a4a847380003fb95243138082df804bbf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f3621b176e4bbfdfbd171339d6d01a1f91ed0ae7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703380"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66509296"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SSO とトークンのカスタマイズを管理する
 

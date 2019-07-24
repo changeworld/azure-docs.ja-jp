@@ -4,7 +4,7 @@ description: Azure Virtual Machines に単一インスタンスの SAP HANA を�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 5091932989849943f00cb71f72378dd17af23a4a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 914da98359d11ff25709164d6301737404b3b011
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001373"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707662"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>クイック スタート:Azure Virtual Machines への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -94,7 +94,7 @@ SAP NetWeaver または S/4HANA アプリケーション レイヤーに関し�
 ## <a name="manual-installation-of-sap-hana"></a>SAP HANA の手動インストール
 
 > [!IMPORTANT]
-> 選択した OS が、使用する特定の VM の種類で SAP HANA に対して SAP から認定されていることを確認してください。 SAP HANA 認定 VM の種類と、それらの VM の種類に対応する OS リリースの一覧は、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページに記載されています。 表示されている VM の種類をクリックすると、特定の VM の種類に対して SAP HANA でサポートされている OS のリリースの一覧が表示され、詳細を確認できます。 このドキュメントの例では、M シリーズの VM で SAP HANA がサポートしていない SUSE Linux Enterprise Server (SLES) OS リリースが使用されています。
+> 選択した OS が、使用している特定の VM の種類の SAP HANA に対して認定されていることを確認してください。 SAP HANA 認定 VM の種類と、それらの VM の種類に対応する OS リリースの一覧は、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページに記載されています。 表示されている VM の種類をクリックすると、特定の VM の種類に対して SAP HANA でサポートされている OS のリリースの一覧が表示され、詳細を確認できます。 このドキュメントの例では、M シリーズの VM で SAP HANA がサポートしていない SUSE Linux Enterprise Server (SLES) OS リリースが使用されています。
 >
 
 このガイドでは、Azure VM に SAP HANA を手動でインストールする方法を 2 とおり説明します。
@@ -220,7 +220,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 
 ゲスト OS として Linux を実行する Azure VM にディスクをアタッチする方法については、「[Linux VM へのディスクの追加](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-Azure Premium SSD を使用すると、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にします。 その他のボリューム (つまりディスク) では、キャッシュ モードを **ReadOnly** に設定します。
+Azure Premium SSD をし王すると、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にします。 その他のボリューム (つまりディスク) では、キャッシュ モードを **ReadOnly** に設定します。
 
 VM の作成に使用する JSON のサンプル テンプレートを検索するには、[Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates)に関するページをご覧ください。
 vm-simple-sles テンプレートは、基本的なテンプレートです。 追加 100 GB のデータ ディスクを使用する記憶域セクションが含まれています。 このテンプレートをベースとして使用します。 テンプレートは特定の構成に適用できます。

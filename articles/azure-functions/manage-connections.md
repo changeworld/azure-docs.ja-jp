@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 4e9bd4e9ea467446c2814cdb8956a40b1503b027
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 69425129d5f049254a60032283ddc6ca2ab84d5c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784927"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65872694"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 
@@ -21,9 +21,9 @@ ms.locfileid: "59784927"
 
 ## <a name="connection-limit"></a>接続の制限
 
-使用できる接続の数が制限される理由の 1 つは、関数アプリが[サンドボックス環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)で実行されるためです。 サンドボックスがコードに課す制限の 1 つは、インスタンスあたりの[接続数の上限 (現在、アクティブな接続数は 600、合計接続数は 1,200)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) です。 この制限に達すると、関数ランタイムは `Host thresholds exceeded: Connections` というメッセージでログを作成します。
+使用できる接続の数が制限される理由の 1 つは、関数アプリが[サンドボックス環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)で実行されるためです。 サンドボックスがコードに課す制限の 1 つに、送信接続数の制限があります。現在は、インスタンスあたり 600 アクティブ (合計 1,200) 接続です。 この制限に達すると、関数ランタイムによって `Host thresholds exceeded: Connections` というメッセージがログに出力されます。 詳細については、[Functions のサービスの制限](functions-scale.md#service-limits)に関する記事を参照してください。
 
-この制限はインスタンスごとに適用されます。  より多くの要求を処理するために、[スケール コントローラーによって関数アプリ インスタンスが追加](functions-scale.md#how-the-consumption-and-premium-plans-work)されると、インスタンスごとに接続の制限が適用されます。 つまり、接続のグローバルな制限はないので、すべてのアクティブ インスタンスでアクティブな接続の数が 600 をはるかに超える可能性があります。
+この制限はインスタンスごとに適用されます。 より多くの要求を処理するために、[スケール コントローラーによって関数アプリ インスタンスが追加](functions-scale.md#how-the-consumption-and-premium-plans-work)されると、インスタンスごとに接続の制限が適用されます。 つまり、接続のグローバルな制限はないので、すべてのアクティブ インスタンスでアクティブな接続の数が 600 をはるかに超える可能性があります。
 
 トラブルシューティングを行う際には、関数アプリに対して Application Insights を有効にしたことを確認します。 Application Insights では、実行など、関数アプリのメトリックを表示できます。 詳細については、「[Application Insights でテレメトリを表示する](functions-monitoring.md#view-telemetry-in-application-insights)」を参照してください。  
 

@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 1b6660a1565b3c119cc1dec0823870c7dd5bd24f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654089"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61477146"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage を使用した SQL Server のバックアップと復元
 ## <a name="overview"></a>概要
@@ -37,7 +37,7 @@ SQL Server をバックアップするときに直面する課題はいくつか
 * **ハードウェアの管理**:Azure サービスではハードウェア管理のオーバーヘッドはありません。 Azure サービスのハードウェア管理では、ハードウェア障害に対する冗長性実現と保護のためにgeo レプリケーションが行われます。
 * **無制限のストレージ**:Azure BLOB への直接バックアップを有効にすると、実質的に無制限のストレージにアクセスできます。 代わりに、Azure の仮想マシンのディスクにバックアップすると、マシンのサイズに基づく制限があります。 バックアップ用に Azure 仮想マシンにアタッチできるディスクの数には制限があります。 この制限はインスタンス サイズが XL の場合は 16 ディスクです。インスタンス サイズが小さくなるほど、このディスク数は少なくなります。
 * **バックアップの可用性**:Azure BLOB に格納されたバックアップはいつでもどこでも使用でき、データベースのアタッチ/デタッチまたは VHD のダウンロードやアタッチの必要なく、オンプレミスの SQL Server、または Azure 仮想マシンで実行されている別の SQL Server に復元するために簡単にアクセスできます。
-* **コスト**:使用するサービスに対してのみ課金されます。 社外ストレージやバックアップ アーカイブ用にこのサービスを選択することで、高い費用対効果を得られます。 詳細については、[Azure 料金計算ツール](https://go.microsoft.com/fwlink/?LinkId=277060 "料金計算ツール")および[Azure の料金に関する記事](https://go.microsoft.com/fwlink/?LinkId=277059 "料金に関する記事")をご覧ください。
+* **コスト**: 使用するサービスに対してのみ課金されます。 社外ストレージやバックアップ アーカイブ用にこのサービスを選択することで、高い費用対効果を得られます。 詳細については、[Azure 料金計算ツール](https://go.microsoft.com/fwlink/?LinkId=277060 "料金計算ツール")および[Azure の料金に関する記事](https://go.microsoft.com/fwlink/?LinkId=277059 "料金に関する記事")をご覧ください。
 * **ストレージ スナップショット**:データベース ファイルが Azure BLOB に格納されていて、SQL Server 2016 を使用している場合は、[ファイル スナップショット バックアップ](https://msdn.microsoft.com/library/mt169363.aspx)を使用して、ほぼ瞬時のバックアップと非常に簡単な復元を実行できます。
 
 詳細については、「 [Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://go.microsoft.com/fwlink/?LinkId=271617)」を参照してください。

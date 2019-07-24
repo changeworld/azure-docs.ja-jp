@@ -4,14 +4,14 @@ description: Azure Cosmos コンテナーに対して実行した操作の要求
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 06/14/2019
 ms.author: thweiss
-ms.openlocfilehash: 8ccb7ae9869ec01b4f26009535af613ccb1d35d0
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 3d088da4c771c828db9788817e424c4d89586dd6
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241118"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986144"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット使用量を確認する
 
@@ -39,7 +39,8 @@ SQL API を使用している場合、Azure Cosmos コンテナーに対する�
 
 ![Azure portal で SQL クエリの要求の使用量を表示した画面のスクリーンショット](./media/find-request-unit-charge/portal-sql-query.png)
 
-### <a name="use-the-net-sdk-v2"></a>.NET SDK V2 の使用
+### <a name="use-the-net-sdk"></a>.NET SDK を使用する
+### <a name="net-v2-sdk"></a>.Net V2 SDK
 
 [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) から返されたオブジェクトにより `RequestCharge` プロパティが公開されます。
 
@@ -73,6 +74,12 @@ while (query.HasMoreResults)
     requestCharge = queryResponse.RequestCharge;
 }
 ```
+
+### <a name="net-v3-sdk"></a>.Net V3 SDK
+
+[.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) から返されたオブジェクトにより `RequestCharge` プロパティが公開されます。
+
+[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
 
 詳細については、「[クイック スタート: Azure Cosmos DB の SQL API アカウントを使用して .NET Web アプリをビルドする](create-sql-api-dotnet.md)」を参照してください。
 
@@ -231,7 +238,7 @@ Azure Cosmos DB の Cassandra API に対して操作を実行すると、受信�
 
 ```csharp
 RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
-double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"], 0);
+double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"].Reverse().ToArray(), 0);
 ```
 
 詳細については、「[クイック スタート: .NET SDK と Azure Cosmos DB を使用して Cassandra アプリを構築する](create-cassandra-dotnet.md)」を参照してください。
@@ -302,3 +309,4 @@ RU 使用量を最適化する方法については、次の記事をご覧く�
 * [プロビジョニングされたスループットのグローバルなスケーリング](scaling-throughput.md)
 * [コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)
 * [特定のコンテナーに対してスループットをプロビジョニングする](how-to-provision-container-throughput.md)
+* [Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)

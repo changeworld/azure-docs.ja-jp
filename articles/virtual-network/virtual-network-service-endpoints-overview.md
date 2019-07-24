@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 73621c3bbab7f0c49feacab29e1e5de1792b80e4
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 54178ae8988266c751ae0e23ae8c5e6ef7a16f20
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618160"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544158"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -28,21 +28,22 @@ ms.locfileid: "59618160"
 
 **一般公開**
 
-- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)**:一般公開 (全 Azure リージョン)。
-- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
-- **[Azure Database for PostgreSQL サーバー](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (データベース サービスを利用できる Azure リージョン)。
-- **[Azure Database for MySQL サーバー](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (データベース サービスを利用できる Azure リージョン)。
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**: 一般公開 (データベース サービスを利用できる Azure リージョン)。
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
-- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)**:一般公開 (全 Azure リージョン)。
-- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
-- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
-- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (ADLS Gen1 を利用できる全 Azure リージョン)。
+- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** :一般公開 (全 Azure リージョン)。
+- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** :一般公開 (全 Azure リージョン)。
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** :一般公開 (全 Azure リージョン)。
+- **[Azure Database for PostgreSQL サーバー](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** :一般公開 (データベース サービスを利用できる Azure リージョン)。
+- **[Azure Database for MySQL サーバー](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** :一般公開 (データベース サービスを利用できる Azure リージョン)。
+- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** : 一般公開 (データベース サービスを利用できる Azure リージョン)。
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** :一般公開 (全 Azure リージョン)。
+- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** :一般公開 (全 Azure リージョン)。
+- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** :一般公開 (全 Azure リージョン)。
+- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** :一般公開 (全 Azure リージョン)。
+- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** :一般公開 (ADLS Gen1 を利用できる全 Azure リージョン)。
 
 **パブリック プレビュー**
 
-- **[Azure Container Registry](../container-registry/container-registry-vnet.md)**:プレビュー公開 (Azure Container Registry を利用できる全 Azure リージョン)。
+- **[Azure Container Registry](../container-registry/container-registry-vnet.md)** :プレビュー公開 (Azure Container Registry を利用できる全 Azure リージョン)。
+- **[Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions)** : プレビュー公開 (App Service を利用できる全 Azure リージョン)。
 
 最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
@@ -61,7 +62,7 @@ ms.locfileid: "59618160"
 - この機能は、Azure Resource Manager デプロイ モデルを使ってデプロイされた仮想ネットワークでのみ使用できます。
 - エンドポイントは、Azure 仮想ネットワークに構成されたサブネット上で有効になります。 エンドポイントは、お客様の構内から Azure サービスへのトラフィックに対しては使用できません。 詳細については、「[オンプレミスから Azure サービスへのアクセスの保護](#securing-azure-services-to-virtual-networks)」をご覧ください。
 - Azure SQL の場合、サービス エンドポイントは、仮想ネットワークのリージョン内の Azure サービス トラフィックにのみ適用されます。 Azure Storage の場合、RA-GRS および GRS のトラフィックをサポートするには、仮想ネットワークのデプロイ先のリージョンとペアになっているリージョンを含めるようにエンドポイントも拡張します。 [Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)の詳細をご覧ください。
-- ADLS Gen 1 の場合、VNET 統合機能は、同じリージョン内の仮想ネットワークでのみ利用できます。
+- ADLS Gen 1 の場合、VNET 統合機能は、同じリージョン内の仮想ネットワークでのみ利用できます。 また、Azure Data Lake Storage Gen1 の仮想ネットワーク統合では、仮想ネットワークと Azure Active Directory (Azure AD) との間で仮想ネットワーク サービス エンドポイント セキュリティを利用して、アクセス トークン内に追加のセキュリティ要求が生成されることに注意してください。 これらの要求は、ご利用の Data Lake Storage Gen1 アカウントに対して仮想ネットワークを認証し、アクセスを許可するために使用されます。 サービス エンドポイントをサポートするサービスの下にリストされている "Microsoft.AzureActiveDirectory" タグは、ADLS Gen 1 へのサービス エンドポイントをサポートするためだけに使用されます。 サービス エンドポイントは Azure Active Directory (Azure AD) によってネイティブにサポートされていません。 Azure Data Lake Store Gin 1 の VNet 統合の詳細については、[こちら](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Azure サービスへのアクセスを仮想ネットワークに限定する
 
@@ -120,7 +121,7 @@ ms.locfileid: "59618160"
 
 ## <a name="provisioning"></a>プロビジョニング
 
-サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットの *Microsoft.Network/JoinServicetoaSubnet* へのアクセス許可を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。
+サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットの "*Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action*" へのアクセス許可を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。
 
 [組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)と、特定のアクセス許可を[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法の詳細をご覧ください。
 
@@ -136,7 +137,7 @@ ms.locfileid: "59618160"
 
 ## <a name="virtual-network-service-endpoint-policies"></a>仮想ネットワーク サービス エンドポイント ポリシー 
 
-仮想ネットワーク サービス エンドポイント ポリシーでは、サービス エンドポイント経由での Azure サービスへの仮想ネットワーク トラフィックをフィルター処理し、特定の Azure サービス リソースのみを許可することができます。 サービス エンドポイント ポリシーでは、Azure サービスへの仮想ネットワーク トラフィックに対する詳細なアクセス制御が提供されます。 詳細情報:[仮想ネットワークのサービス エンドポイント ポリシー](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+仮想ネットワーク サービス エンドポイント ポリシーでは、サービス エンドポイント経由での Azure サービスへの仮想ネットワーク トラフィックをフィルター処理し、特定の Azure サービス リソースのみを許可することができます。 サービス エンドポイント ポリシーでは、Azure サービスへの仮想ネットワーク トラフィックに対する詳細なアクセス制御が提供されます。 詳細情報:[仮想ネットワーク サービス エンドポイント ポリシー](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
 ## <a name="faqs"></a>FAQ
 
@@ -144,7 +145,7 @@ FAQ については、[仮想ネットワーク サービス エンドポイン�
 
 ## <a name="next-steps"></a>次の手順
 
-- [仮想ネットワークのサービス エンドポイントを構成する](tutorial-restrict-network-access-to-resources.md)方法を学習する
+- [仮想ネットワーク サービス エンドポイントを構成する](tutorial-restrict-network-access-to-resources.md)方法を学習する
 - [Azure Storage アカウントを仮想ネットワークに限定する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [Azure SQL Database を仮想ネットワークに限定する](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [Azure SQL Data Warehouse を仮想ネットワークに限定する](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)方法を学習する

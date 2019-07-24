@@ -10,21 +10,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 06/11/2019
 ms.author: bwren
-ms.openlocfilehash: b4d67b64d8fc7c5063e96ed2a2502e9cbecd6065
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 80c4fa5fad574f1d6efe476df90a8396fa5cb4f3
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65229868"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205632"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 
 > [!NOTE]
 > この記事は、別段の定めがある場合を除き、Azure のパブリック クラウドとガバメント クラウドの両方に適用されます。
 
-**Azure パブリック クラウド向けの OMS ポータルは正式に廃止されました。Azure US Government クラウド向けの OMS ポータルは、2019 年 5 月 15 日をもって正式に廃止されます。** Azure portal への移行は喜ばしいイベントであり、切り替えは簡単に済むと見込んでいます。 しかし、変化には困難が付きものであり、中断を伴う可能性も考えられます。 ご質問やフィードバック、懸念事項については **LAUpgradeFeedback\@microsoft.com** までお問い合わせください。 この記事の残りの部分では、この切り替えの主なシナリオとロードマップについて説明します。
+**Azure パブリック クラウド向けの OMS ポータルは正式に廃止されました。Azure US Government クラウド向けの OMS ポータルは、2019 年 5 月 15 日に正式に廃止されました。** Azure portal への移行は喜ばしいイベントであり、切り替えは簡単に済むと見込んでいます。 しかし、変化には困難が付きものであり、中断を伴う可能性も考えられます。 この記事の残りの部分では、この切り替えの主なシナリオとロードマップについて説明します。
 
 Azure portal は、すべての Azure サービスのハブであり、リソースをピン留めできるダッシュボード、リソースを見つけるためのインテリジェント検索、リソース管理のためのタグ付けなど、豊富な機能を備えた管理エクスペリエンスを提供しています。 監視と管理のワークフローを統合、合理化するために、Microsoft では OMS ポータルの機能を Azure portal に追加する作業を進めていました。 今回、すべての OMS ポータルの機能が Azure portal に組み込まれました。 実際に、Traffic Manager などの一部の新機能は、Azure Portal でのみ使用可能となっています。 OMS ポータルで実行していた作業をすべて Azure portal で実行できるだけでなく、新機能も使用できます。 まだ Azure portal を使用していない場合は、すぐに使い始めることをお勧めします。
 
@@ -47,7 +47,7 @@ OMS ポータルが非推奨となるのに伴い、次の変更が発表され�
 - [ユーザーのアクセス許可を Azure portal に移行](#user-access-and-role-migration)する必要があります。
 - Update Management ソリューションの移行について詳しくは、「[OMS の更新プログラムの展開を Azure に移行する](../../automation/migrate-oms-update-deployments.md)」をご覧ください。
 
-Azure portal への切り替え方法については、「[OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問](oms-portal-faq.md)」を参照してください。 フィードバックやご質問、懸念事項については **LAUpgradeFeedback\@microsoft.com** までお問い合わせください。
+Azure portal への切り替え方法については、「[OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問](oms-portal-faq.md)」を参照してください。 
 
 ## <a name="user-access-and-role-migration"></a>ユーザー アクセスとロールの移行
 Azure portal のアクセス管理は、OMS ポータルのアクセス管理よりも機能が豊富で強力です。 Log Analytics でのアクセス管理の詳細については、「[ワークスペースを管理する](manage-access.md#manage-accounts-and-users)」を参照してください。
@@ -91,7 +91,7 @@ OMS モバイル アプリは、OMS ポータルと共に非推奨となりま�
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector と Application Insights ソリューション
 [Application Insights Connector](app-insights-connector.md) では、Application Insights のデータを Log Analytics のワークスペースに含めることができます。 このデータの重複は、インフラストラクチャとアプリケーションのデータ全体を視覚化するために必要でした。 Application Insights のデータ保有期間サポートが 2019 年 3 月まで延長されたこと、[リソース間のクエリ](../log-query/cross-workspace-query.md)を実行する機能が利用できること、[複数の Azure Monitor Application Insights リソースを表示できること](../log-query/unify-app-resource-data.md)から、Application Insights リソースからのデータを複製して Log Analytics に送信する必要はありません。 さらに、Connector はアプリケーション プロパティのサブセットを Log Analytics に送信する一方、リソース間のクエリによって高い柔軟性が提供されます。  
 
-そのため、Application Insights Connector は 2019 年 3 月 30 日の OMS ポータルの廃止と一緒に非推奨となり Azure Marketplace から除去されますが、既存の接続は 2019 年 6 月 30 日まで引き続き動作します。 OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 これは 2019 年 1 月に利用できる予定の REST API を使用してサポートされます。通知は [Azure の更新情報](https://azure.microsoft.com/updates/)に掲載されます。 
+そのため、Application Insights Connector は 2019 年 3 月 30 日の OMS ポータルの廃止と一緒に非推奨になり、Azure Marketplace から削除されました。 既存の接続は 2019 年 6 月 30日まで引き続き機能します。 OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 これは 2019 年 1 月に利用できる予定の REST API を使用してサポートされます。通知は [Azure の更新情報](https://azure.microsoft.com/updates/)に掲載されます。 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure ネットワーク セキュリティ グループ分析
 [Azure Network Security Group Analytics ソリューション](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor)は、最近発表された [Traffic Analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) に置き換えられます。Traffic Analytics では、クラウド ネットワークにおけるユーザーとアプリケーションのアクティビティを視覚化できます。 Traffic Analytics は、組織のネットワーク アクティビティの監査、アプリケーションとデータのセキュリティ保護、ワークロードのパフォーマンスの最適化、コンプライアンスの維持に役立ちます。 

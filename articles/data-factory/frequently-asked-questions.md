@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
 ms.openlocfilehash: d704c32ee7417c6460ad6cc880e451adddfa61de
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59048216"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61345756"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事では、Azure Data Factory に関してよく寄せられる質問に対する回答を示します。  
@@ -145,9 +145,9 @@ Data Factory では、リンクされたサービスは 2 つの目的に使用�
 
 Data Factory の概念について詳しくは、次の記事をご覧ください。
 
-- [データセットおよびリンクされたサービス](concepts-datasets-linked-services.md)
+- [データセットとリンクされたサービス](concepts-datasets-linked-services.md)
 - [パイプラインとアクティビティ](concepts-pipelines-activities.md)
-- [統合ランタイム](concepts-integration-runtime.md)
+- [Integration Runtime](concepts-integration-runtime.md)
 
 ## <a name="what-is-the-pricing-model-for-data-factory"></a>Data Factory の価格モデル
 Azure Data Factory の価格の詳細については、[Data Factory の価格の詳細](https://azure.microsoft.com/pricing/details/data-factory/)に関するページを参照してください。
@@ -211,5 +211,5 @@ Microsoft では、データ フローに関するサポートやトラブルシ
 ## <a name="next-steps"></a>次の手順
 データ ファクトリを作成する手順については、次のチュートリアルをご覧ください。
 
-- [クイック スタート:Data Factory を作成する。](quickstart-create-data-factory-dot-net.md)
+- [クイック スタート:データ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)
 - [チュートリアル:クラウド内のデータをコピーする](tutorial-copy-data-dot-net.md)

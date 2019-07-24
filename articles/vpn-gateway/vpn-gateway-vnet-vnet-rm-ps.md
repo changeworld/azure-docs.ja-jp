@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 6ea919a4c9554584e0da79739d3465586ae43227
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075153"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60456356"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 
@@ -298,7 +298,7 @@ TestVNet1 を構成したら、TestVNet4 を作成します。 下の手順を�
 
 このシナリオでは、TestVNet1 と TestVNet5 を接続します。 TestVNet1 と TestVNet5 は、異なるサブスクリプションに存在します。 サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。
 
-以下の手順とこれまでの手順の違いは、2 つ目のサブスクリプションとの関連で、構成手順を一部別個の PowerShell セッションで実行する必要があることです  (特に 2 つのサブスクリプションが異なる組織に属する場合)。
+以下の手順とこれまでの手順の違いは、2 つ目のサブスクリプションとの関連で、構成手順を一部別個の PowerShell セッションで実行する必要があることです (特に 2 つのサブスクリプションが異なる組織に属する場合)。
 
 この演習ではサブスクリプションのコンテキストを変更するため、手順 8 では、Azure Cloud Shell を使用するのではなく、ローカル環境のコンピューター上の PowerShell を使用する方が簡単な場合があります。
 

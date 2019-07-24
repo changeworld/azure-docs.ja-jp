@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 6179086c6a2cf187c976ff23bf24180257023d28
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e5acb8e0f8805da7f14bbce58b4bfd2acdc24f23
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289174"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181831"
 ---
 # <a name="secure-your-internet-of-things-iot-deployment"></a>モノのインターネット (IoT) のデプロイのセキュリティ保護
 
@@ -21,11 +21,11 @@ ms.locfileid: "51289174"
 
 Azure IoT デプロイの保護は、次の 3 つのセキュリティ領域に分類できます。
 
-* **デバイスのセキュリティ**: デプロイされている間に、IoT デバイスをセキュリティ保護。
+* **デバイスのセキュリティ**:デプロイされている間に、IoT デバイスをセキュリティ保護。
 
-* **接続のセキュリティ**: IoT デバイスと IoT Hub の間で送信されるすべてのデータの保護、改ざん防止。
+* **接続のセキュリティ**:IoT デバイスと IoT Hub の間で送信されるすべてのデータの保護、改ざん防止。
 
-* **クラウド セキュリティ**: クラウド経由、またクラウド格納によりデータを保護する手段の提供。
+* **クラウド セキュリティ**:クラウド経由での移動、またクラウド格納によりデータを保護する手段の提供。
 
 ![次の 3 つのセキュリティ領域](./media/iot-secure-your-deployment/overview.png)
 
@@ -35,7 +35,7 @@ IoT ソリューション アクセラレータでは、次の 2 つの方法を
 
 * デバイスで IoT Hub と通信するために使用される各デバイスの一意の id キー (セキュリティ トークン) の提供。
 
-* IoT Hub にデバイスを認証させる手段として、オンデバイスの [X.509 証明書](http://www.itu.int/rec/T-REC-X.509-201210-I/en)と秘密キーの使用。 この認証メソッドでは、デバイスの秘密キーがデバイス以外では分からなくなるため、常に高レベルのセキュリティ保護を提供できます。
+* IoT Hub にデバイスを認証させる手段として、オンデバイスの [X.509 証明書](https://www.itu.int/rec/T-REC-X.509-201210-S)と秘密キーの使用。 この認証メソッドでは、デバイスの秘密キーがデバイス以外では分からなくなるため、常に高レベルのセキュリティ保護を提供できます。
 
 セキュリティ トークンの方法では、各呼び出しに対称キーを関連付けることによって、IoT Hub にデバイスで実行する各呼び出しの認証を提供します。 X.509 ベースの認証は、TLS 接続の確立の一部として物理層に IoT デバイスの認証を許可します。 安全性が低いパターンである X.509 認証を行わず、セキュリティ トークン ベースのメソッドを使用できます。 2 つの方法の選択は主に、いかに安全なデバイス認証が必要であるか、また (秘密キーを安全に格納して) デバイスにセキュリティで保護された記憶域の可用性によって決まります。
 
@@ -53,11 +53,11 @@ IoT Hub では、デバイスとサービスの認証にセキュリティ ト�
 
 [IoT Hub では、MQTT、AMQP、HTTP などのプロトコルがサポートされます](../articles//iot-hub/iot-hub-devguide-security.md)。 各プロトコルは、IoT デバイスから IoT Hub まで異なる方法でセキュリティ トークンを使用します。
 
-* AMQP: SASL PLAIN および AMQP 要求ベースのセキュリティ (IoT Hub レベルのトークンの場合、`{policyName}@sas.root.{iothubName}`。デバイス スコープのトークンの場合、`{deviceId}`)。
+* AMQP:SASL PLAIN および AMQP 要求ベースのセキュリティ (IoT Hub レベルのトークンの場合、`{policyName}@sas.root.{iothubName}`。デバイス スコープのトークンの場合、`{deviceId}`)。
 
-* MQTT: CONNECT パケットでは、`{ClientId}`、**[ユーザー名]** フィールドの `{IoThubhostname}/{deviceId}`、および **[パスワード]** フィールドの SAS トークンとして `{deviceId}` が使用されます。
+* MQTT:CONNECT パケットでは、`{ClientId}`、 **[ユーザー名]** フィールドの `{IoThubhostname}/{deviceId}`、および **[パスワード]** フィールドの SAS トークンとして `{deviceId}` が使用されます。
 
-* HTTP: 有効なトークンは、承認要求ヘッダーにあります。
+* HTTP:有効なトークンは、承認要求ヘッダーにあります。
 
 IoT Hub ID レジストリを使用して、デバイスごとのセキュリティ資格情報とアクセス制御を構成できます。 ただし、IoT ソリューションで既に[カスタム デバイス ID レジストリや認証スキーム](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)にかなり投資している場合、トークン サービスを作成することで、この既存のインフラストラクチャに IoT Hub を統合できます。
 
@@ -101,13 +101,13 @@ Azure IoT Hub とソリューションの一部として使用するその他の
 
 Azure IoT Hub によって取り込まれたデータは、Azure Stream Analytics や Azure Blob Storage などのさまざまなサービスで使用できます。 これらのサービスでは、管理アクセスが可能になります。 これらのサービスと利用可能なオプションの詳細については、以下をご覧ください。
 
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/):属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
 
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからリアルタイムの分析情報を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
+* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/):クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからリアルタイムの分析情報を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
 
-* [Azure App Services](https://azure.microsoft.com/services/app-service/): クラウドとオンプレミスのどちらにあるデータにも接続できる強力な Web アプリとモバイル アプリを構築するためのクラウド プラットフォーム。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
+* [Azure App Services](https://azure.microsoft.com/services/app-service/):データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォームです。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
 
-* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
+* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/):Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
 
 * [Azure Blob Storage](https://azure.microsoft.com/services/storage/): デバイスからクラウドに送信されるデータに対応する信頼性と経済性に優れたクラウド ストレージ。
 

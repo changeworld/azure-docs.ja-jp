@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
 ms.openlocfilehash: ae8a0ab0382083ebfca0834d2238403668efa71d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670578"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60725603"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Reliable Services の WCF ベースの通信スタック
 Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを選択できます。 **CreateServiceReplicaListeners または CreateServiceInstanceListeners** メソッドから返された [ICommunicationListener](service-fabric-reliable-services-communication.md) を介し、選択した通信スタックをプラグインできます。 フレームワークでは、Windows Communication Foundation (WCF) ベースの通信を使用したいと考えるサービス作成者に、WCF に基づいた通信スタックの実装を提供します。
@@ -27,7 +27,7 @@ Reliable Services フレームワークにより、サービスの作成者は�
 ## <a name="wcf-communication-listener"></a>WCF 通信リスナー
 **ICommunicationListener** の WCF 固有の実装は、**Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** クラスによって提供されます。
 
- `ICalculator`
+`ICalculator`
 
 ```csharp
 [ServiceContract]

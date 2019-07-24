@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 2ed74a4ba19af3a441bcf26a48890f033e6c365f
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151691"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814806"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -20,16 +20,16 @@ DC/OS、Docker Swarm、または Kubernetes クラスター内のエージェン
 ## <a name="scale-with-the-azure-portal"></a>Azure Portal を使用したスケーリング
 
 1. [Azure Portal](https://portal.azure.com) で、**コンテナー サービス**を探し、変更するコンテナー サービスをクリックします。
-2. **[コンテナー サービス]** ブレードで、**[エージェント]** をクリックします。
+2. **[コンテナー サービス]** ブレードで、 **[エージェント]** をクリックします。
 3. **[VM 数]** に、目的のエージェント ノードの数を入力します。
 
     ![ポータルでのプールのスケーリング](./media/container-service-scale/container-service-scale-portal.png)
 
-4. 構成を保存するには、**[保存]** をクリックします。
+4. 構成を保存するには、 **[保存]** をクリックします。
 
 ## <a name="scale-with-the-azure-cli"></a>Azure CLI を使ったスケーリング
 
-最新の Azure CLI が[インストールされている](/cli/azure/install-az-cli2)こと、および Azure アカウントにサインインしていること (`az login`) を確認します。
+[Azure CLI をインストール](/cli/azure/install-azure-cli)し、`az login` で Azure アカウントにサインインします。
 
 ### <a name="see-the-current-agent-count"></a>現在のエージェント数の表示
 クラスターの現在のエージェント数を表示するには、`az acs show` コマンドを実行します。 クラスター構成が表示されます。 たとえば、次のコマンドは、リソース グループ `myResourceGroup` 内の `containerservice-myACSName` という名前のコンテナー サービスの構成を表示します。

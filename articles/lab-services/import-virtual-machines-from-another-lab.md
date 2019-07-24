@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
 ms.openlocfilehash: ca6ed58cfabb5027830828812c4820c1b586875c
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148902"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61322876"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Azure DevTest Labs で別のラボから仮想マシンをインポートする
 この記事では、別のラボから自分のラボに仮想マシンをインポートする方法について説明します。
@@ -62,7 +62,7 @@ VM をラボ間でインポートする際に注意する 2 つの重要な制�
 ```
 
 ### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>PowerShell を使用し、インポート元のラボのすべての VM をインポートする
-インポート元の仮想マシンが指定されていない場合、このスクリプトでは、DevTest Labs. のすべての VM が自動的にインポートされます。  例: 
+インポート元の仮想マシンが指定されていない場合、このスクリプトでは、DevTest Labs. のすべての VM が自動的にインポートされます。  例:
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 18e1bb486c47baf7648a74e31451e2db73f72250
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4b49e7453079b848a273aa8c1c706b2d00fff921
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156830"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606538"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>カスタム音声を作成するためのデータを準備する
 
@@ -49,7 +49,7 @@ ms.locfileid: "65156830"
 良質の音声フォントを作成するには、静かな部屋で高品質のマイクを使って録音します。 一定の音量、読み上げ速度、ピッチ、および表現方法で話すことが不可欠です。
 
 > [!TIP]
-> 製品用の音声を作成するには、専門の録音スタジオと音声タレントを使うことをお勧めします。 詳細については、[カスタム音声用の音声サンプルを録音する方法](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/record-custom-voice-samples)に関するページを参照してください。
+> 製品用の音声を作成するには、専門の録音スタジオと音声タレントを使うことをお勧めします。 詳細については、[カスタム音声用の音声サンプルを録音する方法](record-custom-voice-samples.md)に関するページを参照してください。
 
 ### <a name="audio-files"></a>オーディオ ファイル
 
@@ -132,7 +132,7 @@ ms.locfileid: "65156830"
 
 ## <a name="audio-only-beta"></a>オーディオのみ (ベータ)
 
-オーディオ録音の文字起こしがない場合は、**[オーディオのみ]** オプションを使用してデータをアップロードしてください。 このシステムは、オーディオ ファイルのセグメント化と文字起こしに役立つ場合があります。 このサービスは、音声テキスト変換サブスクリプションの使用量に対して課金されることに注意してください。
+オーディオ録音の文字起こしがない場合は、 **[オーディオのみ]** オプションを使用してデータをアップロードしてください。 このシステムは、オーディオ ファイルのセグメント化と文字起こしに役立つ場合があります。 このサービスは、音声テキスト変換サブスクリプションの使用量に対して課金されることに注意してください。
 
 オーディオを準備する際は、次のガイドラインに従ってください。
 

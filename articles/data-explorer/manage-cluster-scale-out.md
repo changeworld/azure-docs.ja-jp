@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/30/2019
+ms.openlocfilehash: 882f44683bbdc7f4eb49ff4912ca7a33187afbf8
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59261600"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537904"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>需要の変化に対応するようにクラスターのスケールアウトを管理する
 
@@ -24,7 +24,7 @@ ms.locfileid: "59261600"
 
 ## <a name="steps-to-configure-autoscale"></a>自動スケーリングを構成する方法
 
-Azure portal で、Data Explorer クラスター リソースに移動します。 **[設定]** という見出しの下にある **[スケール アウト]** を選択します。**[構成]** タブで、**[自動スケーリングの有効化]** を選択します。
+Azure portal で、Data Explorer クラスター リソースに移動します。 **[設定]** という見出しの下にある **[スケール アウト]** を選択します。 **[構成]** タブで、 **[自動スケーリングの有効化]** を選択します。
 
    ![自動スケールの有効化](media/manage-cluster-scaling/enable-autoscale.png)
 
@@ -34,7 +34,7 @@ Azure portal で、Data Explorer クラスター リソースに移動します�
 
    ![スケール ルール](media/manage-cluster-scaling/scale-rule.png)
 
-2. **[スケール モード]** には、**[メトリックに基づいてスケーリングする]** を選択します。 このモードは、動的スケーリングを提供します。 また、**[特定のインスタンス数にスケーリングする]** も選択できます。
+2. **[スケール モード]** には、 **[メトリックに基づいてスケーリングする]** を選択します。 このモードは、動的スケーリングを提供します。 また、 **[特定のインスタンス数にスケーリングする]** も選択できます。
 
 3. **[+ ルールの追加]** を選択します。
 
@@ -46,7 +46,7 @@ Azure portal で、Data Explorer クラスター リソースに移動します�
     | --- | --- |
     | **時間の集計** | **[平均]** など、集計条件を選択します。 |
     | **メトリック名** | **[キャッシュ使用率]** など、スケール操作のベースとするメトリックを選択します。 |
-    | **時間グレインの統計** | **[平均]**、**[最小]**、**[最大]**、**[合計]** から選択します。 |
+    | **時間グレインの統計** | **[平均]** 、 **[最小]** 、 **[最大]** 、 **[合計]** から選択します。 |
     | **演算子** | **[次の値以上]** など、適切なオプションを選択します。 |
     | **しきい値** | 適切な値を選択します。 たとえば、キャッシュ使用率の場合、80% が適切な開始点です。 |
     | **期間 (分)** | システムでメトリックを計算する際にさかのぼって確認する適切な期間を選択します。 既定値の 10 分から始めます。 |
@@ -76,10 +76,10 @@ Azure portal で、Data Explorer クラスター リソースに移動します�
 
 これで、Azure データ エクスプローラー クラスターのスケールアウト操作が構成されました。 スケールイン操作には別のルールを追加します。 この構成により、指定するメトリックに基づいて、クラスターを動的にスケーリングできます。
 
-クラスターの適切なサイズ設定を行うために、[クラスターのスケールアップを管理](manage-cluster-scale-up.md)することもできます。
-
 クラスターのスケーリングに関する問題が発生したときにサポートが必要な場合は、Azure portal で[サポート要求を開いてください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 ## <a name="next-steps"></a>次の手順
 
-[メトリックを使用した Azure Data Explorer のパフォーマンス、正常性、および使用状況の監視](using-metrics.md)
+* [メトリックを使用した Azure Data Explorer のパフォーマンス、正常性、および使用状況の監視](using-metrics.md)
+
+* クラスターの適切なサイズ設定を行うために、[クラスターのスケールアップを管理](manage-cluster-scale-up.md)します。

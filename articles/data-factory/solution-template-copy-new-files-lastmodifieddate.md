@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
 ms.openlocfilehash: cae75f4d64c8b3f74cc40e94a675c0f10a6bd9ec
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58111941"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60312815"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Azure Data Factory で LastModifiedDate に基づいて新規および変更済みのファイルをコピーする
 
@@ -43,7 +43,7 @@ ms.locfileid: "58111941"
 
     ![ソースへの新しい接続を作成する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
     
-2. 最初に、ストレージの **[タイプ]** を選択します。 次に、ストレージの **[アカウント名]** と **[アカウント キー]** を入力します。 最後に、**[完了]** を選択します。
+2. 最初に、ストレージの **[タイプ]** を選択します。 次に、ストレージの **[アカウント名]** と **[アカウント キー]** を入力します。 最後に、 **[完了]** を選択します。
 
     ![接続文字列を入力する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate2.png)
     
@@ -59,9 +59,9 @@ ms.locfileid: "58111941"
 
     ![パイプラインを表示する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
-6. **[デバッグ]** を選択して **[パラメーター]** の値を書き込み、**[完了]** を選択します。  以下の画像では、パラメーターを次のように設定しています。
-   - **FolderPath_Source** = **/source/**
-   - **FolderPath_Destination** = **/destination/**
+6. **[デバッグ]** を選択して **[パラメーター]** の値を書き込み、 **[完了]** を選択します。  以下の画像では、パラメーターを次のように設定しています。
+   - **FolderPath_Source** =  **/source/**
+   - **FolderPath_Destination** =  **/destination/**
    - **LastModified_From** =  **2019-02-01T00:00:00Z**
    - **LastModified_To** = **2019-03-01T00:00:00Z**
     
@@ -73,7 +73,7 @@ ms.locfileid: "58111941"
 
     ![結果を確認する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
     
-8. タンブリング ウィンドウ トリガーを追加してこのパイプラインを自動化すると、パイプラインで常に LastModifiedDate に基づいて新規および変更済みのファイルのみを定期的にコピーできます。  **[トリガーの追加]**、**[新規/編集]** の順に選択します。
+8. タンブリング ウィンドウ トリガーを追加してこのパイプラインを自動化すると、パイプラインで常に LastModifiedDate に基づいて新規および変更済みのファイルのみを定期的にコピーできます。  **[トリガーの追加]** 、 **[新規/編集]** の順に選択します。
 
     ![結果を確認する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
@@ -81,15 +81,15 @@ ms.locfileid: "58111941"
 
     ![結果を確認する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate9.png)
 
-10. トリガーの種類として **[タンブリング ウィンドウ]** を選択し、繰り返しを **[15 分ごと]** に設定して (任意の時間間隔に変更できます)、**[次へ]** を選択します。
+10. トリガーの種類として **[タンブリング ウィンドウ]** を選択し、繰り返しを **[15 分ごと]** に設定して (任意の時間間隔に変更できます)、 **[次へ]** を選択します。
 
     ![トリガーを作成する](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
-11. **[トリガー実行のパラメーター]** の値を次のように書き込み、**[完了]** を選択します。
-    - **FolderPath_Source** = **/source/**。  ソース データ ストアのフォルダーに置き換えることができます。
-    - **FolderPath_Destination** = **/destination/**。  コピー先データ ストアのフォルダーに置き換えることができます。
-    - **LastModified_From** =  **@trigger().outputs.windowStartTime**。  これは、パイプラインが最後にトリガーされた時間を特定するトリガーのシステム変数です。
-    - **LastModified_To** = **@trigger().outputs.windowEndTime**。  これは、今回パイプラインがトリガーされる時間を特定するトリガーのシステム変数です。
+11. **[トリガー実行のパラメーター]** の値を次のように書き込み、 **[完了]** を選択します。
+    - **FolderPath_Source** =  **/source/** 。  ソース データ ストアのフォルダーに置き換えることができます。
+    - **FolderPath_Destination** =  **/destination/** 。  コピー先データ ストアのフォルダーに置き換えることができます。
+    - **LastModified_From** =   **@trigger().outputs.windowStartTime**。  これは、パイプラインが最後にトリガーされた時間を特定するトリガーのシステム変数です。
+    - **LastModified_To** =  **@trigger().outputs.windowEndTime**。  これは、今回パイプラインがトリガーされる時間を特定するトリガーのシステム変数です。
     
     ![入力パラメーター](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

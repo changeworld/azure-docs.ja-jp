@@ -7,13 +7,13 @@ manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
-ms.author: pvrk
-ms.openlocfilehash: 6280ca55023fc604e70b62cabdc30cca6409d9e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: shivamg
+ms.openlocfilehash: f29acfc58c281622973f2f16ea36763a78751ed0
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66127821"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704908"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
 
@@ -86,7 +86,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 Microsoft Azure Backup エージェントをインストールする前に、Windows Server に、インストーラーをダウンロードする必要があります。 最新バージョンのインストーラーは、 [Microsoft ダウンロード センター](https://aka.ms/azurebackup_agent) または Recovery Services コンテナーの [ダッシュボード] ページから入手することができます。 インストーラーを、*C:\Downloads\* などの、簡単にアクセスできる場所に保存します。
 
 または、PowerShell を使用して、ダウンローダーを取得します。
- 
+
  ```powershell
  $MarsAURL = 'https://aka.ms/Azurebackup_Agent'
  $WC = New-Object System.Net.WebClient
@@ -102,7 +102,7 @@ MARSAgentInstaller.exe /q
 
 これにより、エージェントはすべて既定のオプションが指定されてインストールされます。 インストールは、バックグラウンドで数分かかります。 */nu* オプションを指定しない場合、インストールの最後に **[Windows Update]** ウィンドウが開き、更新プログラムが確認されます。 インストールすると、エージェントが、インストールされているプログラムの一覧に表示されます。
 
-インストールされているプログラムの一覧を表示するには、**[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** に移動します。
+インストールされているプログラムの一覧を表示するには、 **[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** に移動します。
 
 ![インストールされているエージェント](./media/backup-client-automation/installed-agent-listing.png)
 
@@ -139,7 +139,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 
 ```
 
 Windows Server または Windows クライアント コンピューターで [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) コマンドレットを実行し、コンピューターをコンテナーに登録します。
-このコマンドレットをはじめとする、バックアップに使用される一連のコマンドレットは、インストール プロセスの過程で Mars AgentInstaller によって追加される MSONLINE モジュールに属しています。 
+このコマンドレットをはじめとする、バックアップに使用される一連のコマンドレットは、インストール プロセスの過程で Mars AgentInstaller によって追加される MSONLINE モジュールに属しています。
 
 このエージェント インストーラーでは、$Env:PSModulePath 変数が更新されません。 つまり、モジュールの自動読み込みに失敗します。 この問題を解決するには、次のコマンドレットを実行してください。
 
@@ -200,7 +200,7 @@ Server properties updated successfully.
 
 データの機密性を保護するために、Microsoft Azure Backup に送信されるバックアップ データは暗号化されます。 暗号化パスフレーズは、復元時にデータの暗号化を解除するための "パスワード" になります。
 
-Azure portal の **[Recovery Services コンテナー]** セクションにある **[設定]** > **[プロパティ]** > **[セキュリティ PIN]** 下の **[生成]** を選択して、セキュリティ PIN を生成する必要があります。 その後、コマンド内で `generatedPIN` としてこれを使用します。
+Azure portal の **[Recovery Services コンテナー]** セクションにある **[設定]**  >  **[プロパティ]**  >  **[セキュリティ PIN]** 下の **[生成]** を選択して、セキュリティ PIN を生成する必要があります。 その後、コマンド内で `generatedPIN` としてこれを使用します。
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force
@@ -391,6 +391,32 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
+## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>MABS エージェントでの Windows Server のシステム状態のバックアップ
+
+このセクションでは、MABS エージェントでシステムの状態を設定する PowerShell コマンドについて説明します
+
+### <a name="schedule"></a>スケジュール
+```powershell
+$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
+```
+
+### <a name="retention"></a>保持
+
+```powershell
+$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
+```
+
+### <a name="configuring-schedule-and-retention"></a>スケジュールと保持期間の構成
+
+```powershell
+New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
+ ```
+
+### <a name="verifying-the-policy"></a>ポリシーの確認
+
+```powershell
+Get-OBSystemStatePolicy
+ ```
 
 ### <a name="applying-the-policy"></a>ポリシーの適用
 

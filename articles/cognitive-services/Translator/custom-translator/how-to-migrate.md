@@ -2,19 +2,19 @@
 title: Microsoft Translator Hub ワークスペースとプロジェクトの移行 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Microsoft Translator Hub ワークスペースとプロジェクトを移行します。
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 73fc0d26612d32f2614899c62f680ff9e85d1609
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ce81c23a42895f72545a8241d2e002d9798fec05
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698401"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447986"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -134,9 +134,9 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 |:-----|:----:|:----:|
 |カスタマイズ機能の状態   | 一般公開  | 一般公開 |
 | Text API バージョン  | V2    | V3  |
-| SMT のカスタマイズ | はい   | いいえ  |
-| NMT のカスタマイズ | いいえ     | はい |
-| 新しい統合 Speech Services のカスタマイズ | いいえ     | はい |
+| SMT のカスタマイズ | はい   | いいえ |
+| NMT のカスタマイズ | いいえ    | はい |
+| 新しい統合 Speech Services のカスタマイズ | いいえ    | はい |
 | トレースなし | はい | はい |
 
 ## <a name="new-languages"></a>新しい言語

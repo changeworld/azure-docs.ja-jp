@@ -16,11 +16,11 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121980"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60581397"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array 上の共有またはボリュームをバックアップする
 
@@ -66,11 +66,11 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
 
 #### <a name="to-create-a-manual-backup"></a>手動でバックアップを作成するには
 
-1. **[デバイス]** に移動します。 デバイスを選択し、選択された行の右端で **[...]** を右クリックします。 コンテキスト メニューから、**[バックアップの作成]** を選択します。
+1. **[デバイス]** に移動します。 デバイスを選択し、選択された行の右端で **[...]** を右クリックします。 コンテキスト メニューから、 **[バックアップの作成]** を選択します。
    
     ![バックアップの作成に移動](./media/storsimple-virtual-array-backup/takebackup1m.png)
 
-2. **[バックアックの作成]** ブレードで、**[バックアップの作成]** をクリックします。 これによりファイル サーバー上のすべての共有、または iSCSI サーバー上のすべてのボリュームがバックアップされます。 
+2. **[バックアックの作成]** ブレードで、 **[バックアップの作成]** をクリックします。 これによりファイル サーバー上のすべての共有、または iSCSI サーバー上のすべてのボリュームがバックアップされます。 
    
     ![バックアップの開始](./media/storsimple-virtual-array-backup/takebackup2m.png)
    
@@ -86,7 +86,7 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
    
      ![ジョブの詳細のバックアップ](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
-4. バックアップが完了したら、**[管理] > [バックアップ カタログ]** の順に移動します。 デバイス上の共有 (またはボリューム) すべてのクラウド スナップショットが表示されます。
+4. バックアップが完了したら、 **[管理] > [バックアップ カタログ]** の順に移動します。 デバイス上の共有 (またはボリューム) すべてのクラウド スナップショットが表示されます。
    
     ![完了したバックアップ](./media/storsimple-virtual-array-backup/takebackup19m.png) 
 
@@ -95,12 +95,12 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
 
 #### <a name="to-view-existing-backups"></a>既存のバックアップを表示するには
 
-1. **[デバイス]** ブレードに移動します。 使用しているデバイスを選択し、クリックします。 **[設定]** ブレードで、**[管理] > [バックアップ カタログ]** の順に移動します。
+1. **[デバイス]** ブレードに移動します。 使用しているデバイスを選択し、クリックします。 **[設定]** ブレードで、 **[管理] > [バックアップ カタログ]** の順に移動します。
    
     ![バックアップ カタログに移動](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. フィルター処理に使用する次の条件を指定します。
    
-   - **時間範囲** – **[過去 1 時間]**、**[過去 24 時間]**、**[過去 7 日間]**、**[過去 30 日間]**、**[過去 1 年]**、**[ユーザー設定の日付]** を指定できます。
+   - **時間範囲** – **[過去 1 時間]** 、 **[過去 24 時間]** 、 **[過去 7 日間]** 、 **[過去 30 日間]** 、 **[過去 1 年]** 、 **[ユーザー設定の日付]** を指定できます。
     
    - **デバイス** – StorSimple デバイス マネージャー サービスに登録されている iSCSI サーバーやファイル サーバーの一覧から選択します。
    

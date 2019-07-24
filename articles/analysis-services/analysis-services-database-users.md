@@ -9,11 +9,11 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891686"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61023612"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -35,7 +35,7 @@ model データベース レベルでは、すべてのユーザーがロール�
   
 1.  SSDT > **Tabular Model Explorer** で **Roles** を右クリックします｡  
   
-2.  **[ロール マネージャー]** で、**[新規]** をクリックします。  
+2.  **[ロール マネージャー]** で、 **[新規]** をクリックします。  
   
 3.  ロールの名前を入力します。  
   
@@ -51,9 +51,9 @@ model データベース レベルでは、すべてのユーザーがロール�
     |**プロセス**|メンバーは、プロセス操作および Process All (すべてプロセス) 操作を実行できます。 モデル スキーマを変更できず、データのクエリもできません。|  
     |**Administrator (管理者)**|メンバーは、モデル スキーマの変更とすべてのデータのクエリを実行できます。|   
   
-5.  作成しているロールに「Read (読み取り)」または「Read and Process (読み取りとプロセス)」のアクセス許可がある場合、DAX 数式を使用して行フィルターを追加できます。 **[Row Filters(行フィルター)]** タブをクリックし、テーブルを選択してから、**[DAX Filter(DAX フィルター)]** フィールドをクリックし、DAX 数式を入力します。
+5.  作成しているロールに「Read (読み取り)」または「Read and Process (読み取りとプロセス)」のアクセス許可がある場合、DAX 数式を使用して行フィルターを追加できます。 **[Row Filters(行フィルター)]** タブをクリックし、テーブルを選択してから、 **[DAX Filter(DAX フィルター)]** フィールドをクリックし、DAX 数式を入力します。
   
-6.  **[Members(メンバー)]** > **[Add External(外部を追加)]** の順にクリックします。  
+6.  **[Members(メンバー)]**  >  **[Add External(外部を追加)]** の順にクリックします。  
   
 8.  **[Add External Member(外部メンバーの追加)]** で、Azure AD のテナントにユーザーまたはグループを電子メール アドレスごとに入力します。 [OK] をクリックし、ロール マネージャーを終了した後、ロールおよびロール メンバーが Tabular Model Explorer に表示されます。 
  
@@ -66,7 +66,7 @@ model データベース レベルでは、すべてのユーザーがロール�
 
 デプロイ済みの model データベースにロールとユーザーを追加するには、サーバー管理者としてサーバーに接続しているか、または管理者アクセス許可があるデータベース ロールでサーバーに既に接続している必要があります。
 
-1. Object Exporer で、**[Roles(ロール)]** > **[New Role(新規ロール)]** の順に右クリックします。
+1. Object Exporer で、 **[Roles(ロール)]**  >  **[New Role(新規ロール)]** の順に右クリックします。
 
 2. **[Create Role(ロールの作成)]** で、ロールの名前と説明を入力します。
 
@@ -82,7 +82,7 @@ model データベース レベルでは、すべてのユーザーがロール�
 
      ![ユーザーの追加](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
-5. 作成しているロールに「Read (読み取り)」のアクセス許可がある場合、DAX 数式を使用して行フィルターを追加できます。 **[Row Filters(行フィルター)]** をクリックし、テーブルを選択してから、**[DAX Filter(DAX フィルター)]** フィールドに DAX 数式を入力します。 
+5. 作成しているロールに「Read (読み取り)」のアクセス許可がある場合、DAX 数式を使用して行フィルターを追加できます。 **[Row Filters(行フィルター)]** をクリックし、テーブルを選択してから、 **[DAX Filter(DAX フィルター)]** フィールドに DAX 数式を入力します。 
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>TMSL スクリプトを使用して、ロールとユーザーを追加する方法
 

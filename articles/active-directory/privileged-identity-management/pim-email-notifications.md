@@ -17,11 +17,11 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576949"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60289191"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 
@@ -51,8 +51,8 @@ Azure AD ロールに対するこれらの電子メールをどのユーザー�
 | User | ロールのアクティブ化が承認待ち | ロールのアクティブ化要求が完了した | PIM が有効になった |
 | --- | --- | --- | --- |
 | 特権ロール管理者</br>(アクティブ化/有資格) | はい</br>(明示的な承認者が指定されていない場合のみ) | はい* | はい |
-| セキュリティ管理者</br>(アクティブ化/有資格) | いいえ  | はい* | はい |
-| グローバル管理者</br>(アクティブ化/有資格) | いいえ  | はい* | はい |
+| セキュリティ管理者</br>(アクティブ化/有資格) | いいえ | はい* | はい |
+| グローバル管理者</br>(アクティブ化/有資格) | いいえ | はい* | はい |
 
 \* [**通知**設定](pim-how-to-change-default-settings.md#notifications)が**有資格**に設定されている場合。
 

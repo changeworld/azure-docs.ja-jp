@@ -3,18 +3,18 @@ title: Azure Functions における Microsoft Graph のバインド
 description: Azure Functions で Microsoft Graph のトリガーとバインドを使用する方法について説明します。
 services: functions
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ae376343103d68df226d30d1d76133a3f055f5c2
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997553"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480384"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -68,7 +68,7 @@ Visual Studio を使用している場合は、[この記事の前半で説明�
 > [!Note] 
 > Microsoft Graph の拡張機能は、Azure AD 認証のみをサポートします。 ユーザーは、職場または学校のアカウントでログインする必要があります。
 
-Azure Portal を使用している場合は、拡張機能のインストールを求めるプロンプトの下に警告が表示されます。 この警告では、App Service の認証および承認の構成と、テンプレートまたはバインドで必要なアクセス許可の要求が求められます。 必要に応じて、**[Configure Azure AD now]\(Azure AD を今すぐ構成\)** または **[アクセス許可を今すぐ追加]** をクリックします。
+Azure Portal を使用している場合は、拡張機能のインストールを求めるプロンプトの下に警告が表示されます。 この警告では、App Service の認証および承認の構成と、テンプレートまたはバインドで必要なアクセス許可の要求が求められます。 必要に応じて、 **[Configure Azure AD now]\(Azure AD を今すぐ構成\)** または **[アクセス許可を今すぐ追加]** をクリックします。
 
 
 
@@ -361,7 +361,7 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|リソース|アクセス許可|
+|Resource|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
 
@@ -524,7 +524,7 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|リソース|アクセス許可|
+|Resource|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
 
@@ -667,14 +667,14 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|リソース|アクセス許可|
+|Resource|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
 
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- 文字列
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -815,14 +815,14 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|リソース|アクセス許可|
+|Resource|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
 
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- 文字列
+- string
 - Microsoft.Graph.DriveItem
 
 
@@ -965,14 +965,14 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|リソース|アクセス許可|
+|Resource|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザーとしてのメールの送信|
 
 バインドは、.NET 関数に次の種類を公開します。
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- 文字列
+- string
 - カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
 
 
@@ -980,7 +980,7 @@ module.exports = function (context, req) {
 
 
 
-## <a name="webhooks"></a>Webhook
+## <a name="webhooks"></a>webhooks
 
 Webhook を使用すると、Microsoft Graph でのイベントに応答できます。 Webhook をサポートするには、_webhook サブスクリプション_ の作成、更新、および対応のための関数が必要です。 webhook の完全なソリューションには、次のバインドの組み合わせが必要です。
 - [Microsoft Graph の webhook トリガー](#webhook-trigger)を使用すると、受信した webhook に応答できます。
@@ -1402,7 +1402,7 @@ module.exports = function (context, req) {
 ### <a name="webhook-output---usage"></a>webhook の出力 - 使用方法
 
 バインドは、.NET 関数に次の種類を公開します。
-- 文字列
+- string
 - Microsoft.Graph.Subscription
 
 

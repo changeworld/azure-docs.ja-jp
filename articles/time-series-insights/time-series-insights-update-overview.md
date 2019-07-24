@@ -4,36 +4,36 @@ description: Azure Time Series Insights プレビューの概要です。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: anshan
+ms.reviewer: dpalled
 ms.workload: big-data
 ms.topic: overview
 ms.date: 04/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: a742e9f235812cdbdafdcb0a39581e0779fcd040
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b32ff070a1ffa9f83132ecc1d3e43bae398f509d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572916"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460726"
 ---
-# <a name="the-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビュー
+# <a name="azure-time-series-insights-preview"></a>Azure Time Series Insights プレビュー
 
-Azure Time Series Insights プレビューは、エンド ツー エンドのサービスとしてのプラットフォームのオファリングです。 豊富なコンテキスト情報を付加され、時系列に合わせて最適化された IoT スケールのデータの収集、処理、格納、分析、クエリに使用されます。 Time Series Insights は、アドホックなデータ探索と運用分析に最適です。 Time Series Insights は、産業用 IoT 展開の広範なニーズを満たす、個別に拡張可能なカスタマイズされたサービス オファリングです。
+Azure Time Series Insights プレビューは、エンド ツー エンドのサービスとしてのプラットフォーム (PaaS) のオファリングです。 豊富なコンテキスト情報を付加され、時系列に合わせて最適化された IoT スケールのデータの収集、処理、格納、分析、クエリに使用されます。 Time Series Insights は、アドホックなデータ探索と運用分析に最適です。 Time Series Insights は、産業用 IoT 展開の広範なニーズを満たす、個別に拡張可能なカスタマイズされたサービス オファリングです。
 
 > [!TIP]
-> 一般提供段階の機能については、[Azure Time Series Insights GA の概要](time-series-insights-overview.md)に関するページを参照してください。
+> 一般提供段階 (GA) の機能については、[Azure Time Series Insights GA の概要](time-series-insights-overview.md)に関するページを参照してください。
 
 ## <a name="video"></a>ビデオ
 
-### <a name="learn-more-about-the-azure-time-series-insights-preview-br"></a>Azure Time Series Insight プレビューの詳細を確認してください。 </br>
+### <a name="learn-more-about-azure-time-series-insights-preview-br"></a>Azure Time Series Insight プレビューの詳細を確認してください。 </br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player]
 
 ## <a name="define-iot-data"></a>IoT データを定義する
 
-IoT データとは、アセットが集約された組織で利用できる産業用のデータです。 IoT データは、ノイズの多い測定を記録するアセットから送信されるため、極めて構造化されていないことがよくあります。 このような測定としては、温度、モーション、湿度などがあります。 このようなデータ ストリームでは、大きなギャップ、破損したメッセージ、誤った読み取りといった特徴がよく見られます。 このようなストリームからのデータは、分析を行う前に、クリーンアップする必要があります。
+IoT データとは、アセットが集約された組織で利用できる産業用のデータです。 IoT データは、ノイズの多い測定を記録するアセットから送信されるため、極めて構造化されていないことがよくあります。 このような測定値としては、温度、モーション、湿度などがあります。 このようなデータ ストリームでは、大きなギャップ、破損したメッセージ、誤った読み取りといった特徴がよく見られます。 このようなストリームからのデータは、分析を行う前に、クリーンアップする必要があります。
 
 IoT データは、CRM や ERP といったファースト パーティ ソースからの追加データ入力がある場合にのみ意味を持つことがよくあります。 天気や場所など、サード パーティのデータ ソースから入力されることもあります。
 
@@ -55,7 +55,7 @@ IoT の一般的なデータ フローを次の図に示します。
 - 何十年分もの時系列データを格納する機能。
 - アセット ベースの運用インテリジェンスのためにクエリを明示的にモデル化したり最適化したりする機能。
 
-Time Series Insights は、IoT データ探索と運用分析情報のための、包括的なエンド ツー エンドのサービスとしてのプラットフォーム オファリングです。 Time Series Insights は IoT 規模のタイム シリーズ データを分析するための、完全に管理されたクラウド サービスを提供しています。
+Time Series Insights は、IoT データ探索と運用分析情報のための、包括的なエンド ツー エンドの PaaS オファリングです。 Time Series Insights は IoT 規模のタイム シリーズ データを分析するための、完全に管理されたクラウド サービスを提供しています。
 
 スキーマレスのメモリ内ストアに生データを格納できます。 分散クエリ エンジンと API を使用して、対話型のアドホック クエリを実行できます。 リッチなユーザー エクスペリエンスを利用して、1 秒間に何十億ものイベントを視覚化できます。 詳しくは、[データ探索機能](./time-series-insights-overview.md)に関するページをご覧ください。
 
@@ -76,12 +76,12 @@ Operational Insights およびデータ探索は、データ処理、ストレ�
 
 | | |
 | ---| ---|
-| **IoT 規模の時系列データに対応する多層ストレージ** | データ取り込み用の共通データ処理パイプラインでは、対話型クエリのためのウォーム ストレージにデータを格納できます。 また、大量のデータ用のコールド ストレージにデータを格納することもできます。 高パフォーマンスのアセット ベースの[クエリ](./time-series-insights-update-tsq.md)を利用します。 |
-| **未加工のテレメトリをコンテキスト化してアセット ベースの分析情報を生成する時系列モデル** | わかりやすい[時系列モデル](./time-series-insights-update-tsm.md)で未加工のテレメトリ データをコンテキスト化します。 高パフォーマンスでコスト最適化されたデバイス ベースのクエリを使って、充実した運用インテリジェンスを実現します。 |
-| **他のデータ ソリューションとの円滑で連続的な統合** |  Time Series Insights のデータは、オープンソース化された Apache Parquet ファイルに[格納](./time-series-insights-update-storage-ingress.md)されます。 ファースト パーティかサード パーティかにかかわらず、エンド ツー エンドのシナリオで他のデータ ソリューションと簡単に統合できます。 これらのシナリオには、ビジネス インテリジェンス、高度な機械学習、予測分析などが含まれます。 |
-| **ほぼリアルタイムのデータ探索** | [Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)のユーザー エクスペリエンスは、取り込みのパイプライン経由ですべてのデータ ストリーミングの視覚化を提供しています。 イベント ソースを接続するとすぐに、イベント データの表示、調査、クエリを行うことができます。 これにより、デバイスが想定どおりにデータを出力しているかどうかを検証できます。 IoT アセットの正常性、生産性、全体的な有効性を監視することもできます。 |
-| **根本原因分析と異常検出** | [Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)では、多段階の根本原因分析を実行して保存するために、パターン ビューとパースペクティブ ビューの両方がサポートされています。 Azure Stream Analytics と組み合わせて Time Series Insights を使用すると、ほぼリアルタイムでアラートや異常を検出できます。 |
-| **Time Series Insights プラットフォーム上に構築されたカスタム アプリケーション** | Time Series Insights では、[JavaScript SDK](./tutorial-explore-js-client-lib.md) がサポートされています。 SDK では、豊富なコントロールとクエリへの簡単なアクセスが提供されます。 SDK を使用し、特定のビジネス ニーズに合わせて、Time Series Insights 上にカスタム IoT アプリケーションを構築します。 また、Time Series Insights の [Query API](./time-series-insights-update-tsq.md) を直接使用して、カスタム IoT アプリケーションへのデータを生成できます。 |
+| IoT 規模の時系列データに対応する多層ストレージ | データ取り込み用の共通データ処理パイプラインでは、対話型クエリのためのウォーム ストレージにデータを格納できます。 また、大量のデータ用のコールド ストレージにデータを格納することもできます。 高パフォーマンスのアセット ベースの[クエリ](./time-series-insights-update-tsq.md)を利用します。 |
+| 未加工のテレメトリをコンテキスト化してアセット ベースの分析情報を生成する時系列モデル | わかりやすい[時系列モデル](./time-series-insights-update-tsm.md)で未加工のテレメトリ データをコンテキスト化します。 高パフォーマンスでコスト最適化されたデバイス ベースのクエリを使って、充実した運用インテリジェンスを実現します。 |
+| 他のデータ ソリューションとの円滑で連続的な統合 | Time Series Insights のデータは、オープンソース化された Apache Parquet ファイルに[格納](./time-series-insights-update-storage-ingress.md)されます。 ファースト パーティかサード パーティかにかかわらず、エンド ツー エンドのシナリオで他のデータ ソリューションと簡単に統合できます。 これらのシナリオには、ビジネス インテリジェンス、高度な機械学習、予測分析などが含まれます。 |
+| ほぼリアルタイムのデータ探索 | [Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)のユーザー エクスペリエンスは、取り込みのパイプライン経由ですべてのデータ ストリーミングの視覚化を提供しています。 イベント ソースを接続するとすぐに、イベント データの表示、調査、クエリを行うことができます。 これにより、デバイスが想定どおりにデータを出力しているかどうかを検証できます。 IoT アセットの正常性、生産性、全体的な有効性を監視することもできます。 |
+| 根本原因分析と異常検出 | [Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)では、多段階の根本原因分析を実行して保存するために、パターン ビューとパースペクティブ ビューの両方がサポートされています。 Azure Stream Analytics と組み合わせて Time Series Insights を使用すると、ほぼリアルタイムでアラートや異常を検出できます。 |
+| Time Series Insights プラットフォーム上に構築されたカスタム アプリケーション | Time Series Insights では、[JavaScript SDK](./tutorial-explore-js-client-lib.md) がサポートされています。 SDK では、豊富なコントロールとクエリへの簡単なアクセスが提供されます。 SDK を使用し、特定のビジネス ニーズに合わせて、Time Series Insights 上にカスタム IoT アプリケーションを構築します。 また、Time Series Insights の [Query API](./time-series-insights-update-tsq.md) を直接使用して、カスタム IoT アプリケーションへのデータを生成できます。 |
 
 ## <a name="next-steps"></a>次の手順
 
@@ -96,5 +96,5 @@ Azure Time Series Insights プレビューの概要:
 > [Azure Time Series Insights プレビューのユース ケース](./time-series-insights-update-use-cases.md)
 
 <!-- Images -->
-[1]: media/v2-update-overview/overview_one.png
-[2]: media/v2-update-overview/overview_two.png
+[1]: media/v2-update-overview/overview-one.png
+[2]: media/v2-update-overview/overview-two.png

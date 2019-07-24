@@ -18,11 +18,11 @@ ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899130"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60833069"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service での HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
 "502 無効なゲートウェイ" と "503 サービス利用不可" は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でホストされているアプリで発生する一般的なエラーです。 この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
@@ -78,7 +78,7 @@ Web アプリに問題が発生しているかどうかは、アプリを監視�
 #### <a name="use-the-diagnostics-tool"></a>診断ツールの使用
 App Service には、アプリのトラブルシューティングに役立つ構成不要のインテリジェントな対話型のエクスペリエンスが用意されています。 アプリに問題が発生した場合、診断ツールは問題点を指摘し、その問題のトラブルシューティングをすばやく簡単に行って解決するための適切な情報へとユーザーをガイドします。
 
-App Service 診断にアクセスするには、[Azure Portal](https://portal.azure.com) の App Service アプリまたは App Service 環境に移動します。 左側のナビゲーションで、**[問題の診断と解決]** をクリックします。
+App Service 診断にアクセスするには、[Azure Portal](https://portal.azure.com) の App Service アプリまたは App Service 環境に移動します。 左側のナビゲーションで、 **[問題の診断と解決]** をクリックします。
 
 #### <a name="use-the-kudu-debug-console"></a>Kudu デバッグ コンソールを使用する
 App Service には、ファイルのデバッグ、調査、アップロード用のデバッグ コンソールのほか、ご利用の環境についての情報を入手するための JSON エンドポイントが用意されています。 このコンソールは、アプリの *Kudu コンソール*または *SCM ダッシュボード*と呼ばれます。

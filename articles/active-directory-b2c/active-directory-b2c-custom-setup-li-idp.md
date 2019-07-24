@@ -2,20 +2,20 @@
 title: カスタム ポリシーを使用して LinkedIn アカウントでのサインインを設定する - Azure Active Directory B2C | Microsoft Docs
 description: カスタム ポリシーを使用して Azure Active Directory B2C で LinkedIn アカウントでのサインインを設定する
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3d927c2bf9344f2dc93cfe992e87457a0747f605
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: b336428592a4897319725782c994c3fae26bfae0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190754"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66510414"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して LinkedIn アカウントでのサインインを設定する
 
@@ -35,16 +35,16 @@ Azure AD B2C で ID プロバイダーとして LinkedIn を使用するには�
 
 1. LinkedIn アカウントの資格情報を使用して、[LinkedIn アプリケーション管理](https://www.linkedin.com/secure/developer?newapp=) の Web サイトにサインインします。
 2. **[アプリケーションの作成]** を選択します。
-3. **[会社名]**、**[アプリケーション名]**、および **[アプリケーションの説明]** を入力します。
+3. **[会社名]** 、 **[アプリケーション名]** 、および **[アプリケーションの説明]** を入力します。
 4. 作成した **[アプリケーションのロゴ]** をアップロードします。
 5. 提供される一覧から **[Application Use] (アプリケーションの用途)** を選択します。
 6. **[Web サイトの URL]** には「`https://your-tenant.b2clogin.com`」と入力します。  `your-tenant`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「contoso.b2clogin.com」とします。
 7. **[勤務先の電子メール]** のアドレスおよび **[勤務先電話番号]** を入力します。
-8. ページ下部の使用条件を確認して同意し、**[送信]** を選択します。
-9. **[認証]** を選択し、**[クライアント ID]** と **[クライアント シークレット]** の値を後で使用するために記録します。
+8. ページ下部の使用条件を確認して同意し、 **[送信]** を選択します。
+9. **[認証]** を選択し、 **[クライアント ID]** と **[クライアント シークレット]** の値を後で使用するために記録します。
 10. **[Authorized Redirect URLs] (認証済みのリダイレクト URL)** に「`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。 
 11. **[Update]\(更新\)** を選択します。
-12. **[設定]** を選択して、**[アプリケーションの状態]** を **[ライブ]** に変更し、**[更新]** を選択します。
+12. **[設定]** を選択して、 **[アプリケーションの状態]** を **[ライブ]** に変更し、 **[更新]** を選択します。
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
@@ -52,9 +52,9 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、**[Identity Experience Framework]** を選択します。
-5. **[ポリシー キー]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 6. **オプション**については、`Manual`を選択します。
 7. ポリシー キーの**名前**を入力します。 たとえば、「 `LinkedInSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 8. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
@@ -162,7 +162,7 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
 
 ここまでで、Azure AD B2C が LinkedIn アカウントと通信する方法を認識できるようにポリシーを構成しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
 
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、**[ポリシーのアップロード]** を選択します。
+1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
 2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
 3. **[アップロード]** をクリックします。
 
@@ -208,10 +208,10 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. アプリケーションの名前を入力します (*testapp1* など)。
-6. **[Web アプリ / Web API]** には `Yes` を選択し、**[応答 URL]** に `https://jwt.ms` を入力します。
+6. **[Web アプリ / Web API]** には `Yes` を選択し、 **[応答 URL]** に `https://jwt.ms` を入力します。
 7. **Create** をクリックしてください。
 
 ## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
@@ -223,7 +223,7 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_linkedin` とします。
 4. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignLinkedIn) に一致するように更新します。
 5. 変更を保存し、ファイルをアップロードしてから、一覧内の新しいポリシーを選択します。
-6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてテストします。
+6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、 **[今すぐ実行]** をクリックしてテストします。
 
 ## <a name="migration-from-v10-to-v20"></a>v1.0 から v2.0 への移行
 

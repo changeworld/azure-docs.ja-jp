@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756752"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61477945"
 ---
 # <a name="repairing-an-export-job"></a>Export ジョブの修復
 エクスポート ジョブが完了した後、オンプレミスで Microsoft Azure Import/Export ツールを実行して、次を行うことができます。  
@@ -83,7 +83,7 @@ Azure Import/Export を **RepairExport** オプションと一緒に使用して
   
 また Azure Import/Export サービスは、エクスポート プロセス中にマニフェスト ファイルをストレージ アカウントに保存することもできます。 マニフェスト ファイルの場所は、ジョブが完了した際に [Get Job](/rest/api/storageimportexport/jobs) 操作を通じて利用可能になります。 ドライブ マニフェスト ファイルの形式の詳細については、[ サービスのマニフェスト ファイルの形式](storage-import-export-file-format-metadata-and-properties.md)に関する記事をご覧ください。  
   
-次の例では、**/ManifestFile** パラメーターと **/CopyLogFile** パラメーターを使用する Azure Import/Export ツールを実行する方法を示しています。  
+次の例では、 **/ManifestFile** パラメーターと **/CopyLogFile** パラメーターを使用する Azure Import/Export ツールを実行する方法を示しています。  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log /ManifestFile:G:\9WM35C3U.manifest  

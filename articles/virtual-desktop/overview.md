@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 03/21/2019
+ms.date: 07/17/2019
 ms.author: helohr
-ms.openlocfilehash: 820c89ce352db772f629a99a438ed86448af02fe
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 03105232cb92a65f8c38d6d755910739a3fc4720
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965721"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305052"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビューとは 
 
@@ -26,6 +26,12 @@ Azure 上の Windows Virtual Desktop でできることは次のとおりです�
 * 既存のリモート デスクトップ サービス (RDS) と Windows Server のデスクトップやアプリをあらゆるコンピューターで利用
 * デスクトップとアプリの両方を仮想化
 * 統一的な管理エクスペリエンスを使って Windows 10、Windows Server、Windows 7 のデスクトップとアプリを管理
+
+## <a name="introductory-video"></a>紹介ビデオ
+
+次のビデオでは、Scott Manchester 氏が Windows Virtual Desktop の機能の一部を実演しています。
+
+<br></br><iframe src="https://www.youtube-nocookie.com/embed/30dOLcZ4_9U" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="key-capabilities"></a>主な機能
 
@@ -93,17 +99,12 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
 
-
 ## <a name="supported-virtual-machine-os-image"></a>サポートされている仮想マシン OS イメージ
 
 Windows Virtual Desktop は、次の OS イメージをサポートします。
 
 * Windows 10 (Enterprise マルチセッション)
 * Windows Server 2016
-
-## <a name="provide-feedback"></a>フィードバックの提供
-
-Windows Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Windows Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。 Windows Virtual Desktop がプレビューの間は、サポート ケースを受け付けていません。
 
 ## <a name="next-steps"></a>次の手順
 

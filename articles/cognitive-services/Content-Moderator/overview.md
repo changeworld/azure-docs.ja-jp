@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 7e9c12c7da701fb627c51373e57f870d3fc77ac5
-ms.sourcegitcommit: f013c433b18de2788bf09b98926c7136b15d36f1
+ms.openlocfilehash: d814a943bc8dc789abe84b33583714beb998c0ef
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
-ms.locfileid: "65551302"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607014"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 
@@ -25,11 +25,14 @@ Azure Content Moderator API は、テキスト、画像、ビデオのコンテ�
 
 ソフトウェア開発者またはチームが Content Moderator を使用するシナリオをいくつか次に示します。
 
-- ユーザーが生成した製品カタログなどのコンテンツをモデレーションするオンライン マーケットプレース
-- ユーザーが生成したゲームの成果物とチャット ルームをモデレーションするゲーム会社
-- ユーザーによって追加された画像、テキスト、ビデオをモデレーションするソーシャル メッセージング プラットフォーム
-- コンテンツに対する一元的なモデレーションを実装するエンタープライズ メディア企業
-- 学生および教育者にとって不適切なコンテンツをフィルター処理して除外する K-12 教育ソリューション プロバイダー
+- ユーザーが生成した製品カタログなどのコンテンツをモデレートするオンライン マーケットプレース。
+- ユーザーが生成したゲームの成果物とチャット ルームをモデレートするゲーム会社。
+- ユーザーによって追加された画像、テキスト、ビデオをモデレートするソーシャル メッセージング プラットフォーム。
+- コンテンツに対する一元的なモデレーションを実装するエンタープライズ メディア企業。
+- 学生および教育者にとって不適切なコンテンツをフィルター処理して除外する K-12 教育ソリューション プロバイダー。
+
+> [!NOTE]
+> Content Moderator を使用して、子どもの搾取に該当する違法な画像を検出することはできません。 ただし、認められた機関は [PhotoDNA Cloud Service](https://www.microsoft.com/photodna "Microsoft PhotoDNA Cloud Service") を使用してこのようなコンテンツを審査できます。
 
 ## <a name="what-it-includes"></a>備えている機能
 
@@ -62,7 +65,7 @@ Review API を使用すると、モデレーション パイプラインを人�
 
 ## <a name="the-review-tool"></a>レビュー ツール
 
-Content Moderator サービスには、ほかにも Web ベースの[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)が備わっています。このツールは、ヒューマン モデレーターによって処理されるコンテンツ レビューのホストとなります。 人間による入力がサービスに対するトレーニングになることはありませんが、このサービスの成果と目視レビュー チームの作業を組み合わせれば、開発者が効率性と正確性をうまく両立させることが可能になります。 また、レビュー ツールは、さまざまな Content Moderator リソース向けに、ユーザー フレンドリなフロントエンドを備えています。
+Content Moderator サービスには、ほかにも Web ベースの[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)が備わっています。このツールは、ヒューマン モデレーターによって処理されるコンテンツ レビューのホストとなります。 人間による入力がサービスに対するトレーニングになることはありませんが、このサービスの成果と目視レビュー チームの作業を組み合わせれば、開発者が効率性と正確性をうまく両立させることが可能になります。 また、レビュー ツールは、さまざまな Content Moderator リソース向けに、ユーザー フレンドリなフロントエンドも備えています。
 
 ![Content Moderator 目視レビュー ツールのホームページ](images/homepage.PNG)
 

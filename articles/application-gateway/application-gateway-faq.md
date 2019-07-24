@@ -6,18 +6,20 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 4/30/2019
+ms.date: 6/1/2019
 ms.author: victorh
-ms.openlocfilehash: 72eaa18d570e85274efbea80f12e9a7301eecbfa
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 71f1beb68171613fe926ba4d87a13ef58cac1edf
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947083"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655275"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Azure Application Gateway に関して寄せられた一般的な質問を以下に示します。
 
 ## <a name="general"></a>全般
 
@@ -43,7 +45,7 @@ Application Gateway は、HTTP、HTTPS、HTTP/2、WebSocket をサポートし�
 
 ### <a name="what-resources-are-supported-as-part-of-a-backend-pool"></a>バックエンド プールの一部としてはどのようなリソースがサポートされていますか?
 
-[サポート対象のバックエンド リソース](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pool)に関するセクションを参照してください。
+[サポート対象のバックエンド リソース](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#backend-pools)に関するセクションを参照してください。
 
 ### <a name="in-what-regions-is-application-gateway-available"></a>Application Gateway はどのリージョンで利用できますか?
 
@@ -187,13 +189,18 @@ Application Gateway は、IP 接続がある限り、所属している仮想ネ
 
 Application Gateway 上でマルチサイトを構成した場合には、[ホスト] フィールドにプローブの送信先の名前を指定します。 それ以外の場合には、"127.0.0.1" を使用します。 この値は、仮想マシンのホスト名とは異なります。 形式は、\<プロトコル\>://\<ホスト\>:\<ポート\>\<パス\> です。
 
-### <a name="can-i-whitelist-application-gateway-access-to-only-a-few-source-ips"></a>Application Gateway に対するアクセスを少数のソース IP にだけ限定することはできますか?
+### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Application Gateway に対するアクセスを少数のソース IP アドレスだけに限定することはできますか?
 
-はい。 [アクセスを特定のソース IP だけに限定する方法](https://docs.microsoft.com/azure/application-gateway/configuration-overview#whitelist-application-gateway-access-to-a-few-source-ips)に関するセクションを参照してください。
+はい。 [アクセスを特定のソース IP だけに限定する方法](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips)に関するセクションを参照してください。
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>パブリック側のリスナーとプライベート側のリスナーの両方に同じポートを使用することはできますか?
 
 いいえ。
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU から v2 SKU への移行に使用できるガイダンスはありますか。
+
+はい。 詳しくは、「[Migrate Azure Application Gateway and Web Application Firewall from v1 to v2 (Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する)](migrate-v1-v2.md)」をご覧ください。
+
 
 ## <a name="configuration---ssl"></a>構成 - SSL
 
@@ -312,6 +319,10 @@ WAF が現在サポートしているのは CRS [2.2.9](application-gateway-crs-
 ### <a name="does-waf-support-ddos-protection"></a>WAF は DDoS 保護をサポートしていますか?
 
 はい。 アプリケーション ゲートウェイをデプロイしてある仮想ネットワーク上で、DDos 保護を有効にすることができます。 この設定によって、アプリケーション ゲートウェイの仮想 IP (VIP) も Azure DDoS Protection サービスによる保護の対象になります。
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU から v2 SKU への移行に使用できるガイダンスはありますか。
+
+はい。 詳しくは、「[Migrate Azure Application Gateway and Web Application Firewall from v1 to v2 (Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する)](migrate-v1-v2.md)」をご覧ください。
 
 ## <a name="diagnostics-and-logging"></a>診断とログ記録
 

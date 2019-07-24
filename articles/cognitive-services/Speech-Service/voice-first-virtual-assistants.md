@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: travisw
-ms.custom: ''
-ms.openlocfilehash: c9ed6f898f4bcf8a5d4b2548cc1f3cf51f71bb2a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4055b474938e38f653021b46f18200f8e39dd69d
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138165"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604758"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>音声優先仮想アシスタント プレビューの概要
 
@@ -24,7 +23,9 @@ ms.locfileid: "65138165"
 
    ![Direct Line Speech のオーケストレーション サービス フローの概念図](media/voice-first-virtual-assistants/overview.png "音声チャネル フロー")
 
-Direct Line Speech とカスタムの音声優先仮想アシスタントのための関連する機能は、[仮想アシスタント ソリューション](https://docs.microsoft.com/azure/bot-service/bot-builder-virtual-assistant-introduction)と[エンタープライズ テンプレート](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)に最適な補足機能です。 Direct Line Speech は任意の互換性のあるボットで機能しますが、これらのリソースは、高品質の会話エクスペリエンスだけでなく、すぐに開始できる一般的なサポート スキルおよびモデルに再利用できるベースラインとして役立ちます。
+
+Direct Line Speech とカスタムの音声優先仮想アシスタントのための関連する機能は、[仮想アシスタント ソリューションとエンタープライズ テンプレート](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)に最適な補足機能です。 Direct Line Speech は任意の互換性のあるボットで機能しますが、これらのリソースは、高品質の会話エクスペリエンスだけでなく、すぐに開始できる一般的なサポート スキルおよびモデルに再利用できるベースラインとして役立ちます。
+
 
 ## <a name="core-features"></a>コア機能
 

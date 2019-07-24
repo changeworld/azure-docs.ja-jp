@@ -6,17 +6,17 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 79d2062f0e174eeb7550205f90c1650185e1623a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 47e14ff87a6197ccc97231835da545207545a328
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66236983"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460795"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する
 
@@ -34,15 +34,15 @@ ms.locfileid: "66236983"
 
 ### <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT ハブへのコンシューマー グループの追加
 
-アプリケーションは、コンシューマー グループを使用して、Azure IoT Hub からデータをプルします。 IoT Hub から確実にデータを読み取るため、この Time Series Insights 環境でのみ使用される専用のコンシューマー グループを提供します。
+アプリケーションは、コンシューマー グループを使用して、Azure IoT Hub からデータをプルします。 IoT ハブからデータを確実に読み取るには、この Time Series Insights 環境でのみ使用される専用のコンシューマー グループを指定します。
 
 新しいコンシューマー グループを IoT ハブに追加するには:
 
 1. Microsoft Azure portal で、ご利用の IoT Hub を探して開きます。
 
-1. メニューの **[設定]** で **[組み込みのエンドポイント]** を選択し、 **[イベント]** エンドポイントを選択します。
+1. **[設定]** で **[組み込みのエンドポイント]** を選択し、 **[イベント]** エンドポイントを選択します。
 
-   [![[組み込みのエンドポイント] ページで [イベント] ボタンを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_one.png#lightbox)
+   [![[組み込みのエンドポイント] ページで [イベント] ボタンを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-one.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-one.png#lightbox)
 
 1. **[コンシューマー グループ]** にコンシューマー グループの一意の名前を入力します。 Time Series Insights 環境で新しいイベント ソースを作成する場合に、これと同じ名前を使用します。
 
@@ -56,7 +56,7 @@ ms.locfileid: "66236983"
 
 1. **[環境トポロジ]** で **[イベント ソース]** を選択し、 **[追加]** を選択します。
 
-   [![[イベント ソース] を選択し、[追加] ボタンを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_two.png#lightbox)
+   [![[イベント ソース] を選択し、[追加] ボタンを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-two.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-two.png#lightbox)
 
 1. **[New event source] (新しいイベント ソース)** ウィンドウで、 **[イベント ソース名]** にこの Time Series Insights 環境の一意の名前を入力します。 たとえば、「**イベント ストリーム**」と入力します。
 
@@ -64,43 +64,44 @@ ms.locfileid: "66236983"
 
 1. **[インポート オプション]** の値を選択します。
 
-   * サブスクリプションのいずれかに IoT Hub が既にある場合は、 **[Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する)** を選択します。 このオプションは、最も簡単なアプローチです。
-   * IoT Hub がサブスクリプションの外部であるか、または高度なオプションを選択する場合は、 **[IoT ハブ設定を手動で行う]** を選択します。
+   * サブスクリプションのいずれかに IoT Hub が既にある場合は、 **[Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する)** を選択します。 このオプションが最も簡単な方法となります。
+   
+     [![[New event source] (新しいイベント ソース) ウィンドウでオプションを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-three.png#lightbox)
 
-   [![[New event source] (新しいイベント ソース) ウィンドウでオプションを選択する](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_three.png#lightbox)
+    * **[Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する)** オプションに必要なプロパティについて次の表に説明します。
 
-1. **[Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する)** オプションに必要なプロパティについて次の表に説明します。
+       [![[New event source] (新しいイベント ソース) ウィンドウ - [Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する) オプションで設定するプロパティ](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-four.png#lightbox)
 
-   [![[New event source] (新しいイベント ソース) ウィンドウ - [Use IoT Hub from available subscriptions] (使用可能なサブスクリプションの Iot Hub を使用する) オプションで設定するプロパティ](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_four.png#lightbox)
+       | プロパティ | 説明 |
+       | --- | --- |
+       | サブスクリプション ID | この IoT Hub が作成されたサブスクリプションを選択します。
+       | IoT Hub 名 | IoT Hub の名前を選択します。
+       | IoT Hub ポリシー名 | 共有アクセス ポリシーを取得します。 共有アクセス ポリシーは [IoT Hub の設定] タブで見つかります。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。
+       | IoT Hub ポリシー キー | キーが事前設定されています。
+       | IoT Hub コンシューマー グループ | IoT Hub からイベントを読み取るコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。
+       | イベントのシリアル化の形式 | JSON は、現時点で唯一使用可能なシリアル化の形式です。 イベント メッセージは、この形式である必要があります。そうでないとデータを読み取ることができません。 |
+       | タイムスタンプ プロパティ名 | この値を決定するには、IoT Hub に送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、イベント ソース内の**イベント エンキュー時間**がイベント タイムスタンプとして使用されます。 |
 
-   | プロパティ | 説明 |
-   | --- | --- |
-   | サブスクリプション ID | この IoT Hub が作成されたサブスクリプションを選択します。
-   | IoT Hub 名 | IoT Hub の名前を選択します。
-   | IoT Hub ポリシー名 | 共有アクセス ポリシーを取得します。 共有アクセス ポリシーは [IoT Hub の設定] タブで見つかります。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。
-   | IoT Hub ポリシー キー | キーが事前設定されています。
-   | IoT Hub コンシューマー グループ | IoT Hub からイベントを読み取るコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。
-   | イベントのシリアル化の形式 | JSON は、現時点で唯一使用可能なシリアル化の形式です。 イベント メッセージは、この形式である必要があります。そうでないとデータを読み取ることができません。 |
-   | タイムスタンプ プロパティ名 | この値を決定するには、IoT Hub に送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、イベント ソース内の**イベント エンキュー時間**が、イベント タイムスタンプとして使用されます。 |
+    * IoT Hub がサブスクリプションの外部であるか、または高度なオプションを選択する場合は、 **[IoT ハブ設定を手動で行う]** を選択します。
 
-1. 次の表に、**IoT Hub 設定を手動で行う**ために必要なプロパティを示します。
+      次の表に、**IoT Hub 設定を手動で行う**ために必要なプロパティを示します。
 
-   | プロパティ | 説明 |
-   | --- | --- |
-   | サブスクリプション ID | この IoT Hub が作成されたサブスクリプションです。
-   | リソース グループ | この IoT Hub が作成されたリソース グループ名です。
-   | IoT Hub 名 | IoT Hub の名前です。 IoT Hub を作成したときに、IoT Hub の名前を入力しました。
-   | IoT Hub ポリシー名 | 共有アクセス ポリシーです。 共有アクセス ポリシーは [IoT Hub の設定] タブで作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。
-   | IoT Hub ポリシー キー | Azure Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 ここにプライマリ キーまたはセカンダリ キーを入力します。
-   | IoT Hub コンシューマー グループ | IoT Hub からイベントを読み取るコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。
-   | イベントのシリアル化の形式 | JSON は、現時点で唯一使用可能なシリアル化の形式です。 イベント メッセージは、この形式である必要があります。そうでないとデータを読み取ることができません。 |
-   | タイムスタンプ プロパティ名 | この値を決定するには、IoT Hub に送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、イベント ソース内の**イベント エンキュー時間**が、イベント タイムスタンプとして使用されます。 |
+       | プロパティ | 説明 |
+       | --- | --- |
+       | サブスクリプション ID | この IoT Hub が作成されたサブスクリプションです。
+       | リソース グループ | この IoT Hub が作成されたリソース グループ名です。
+       | IoT Hub 名 | IoT Hub の名前です。 IoT Hub を作成したときに、IoT Hub の名前を入力しました。
+       | IoT Hub ポリシー名 | 共有アクセス ポリシーです。 共有アクセス ポリシーは [IoT Hub の設定] タブで作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。
+       | IoT Hub ポリシー キー | Azure Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 ここにプライマリ キーまたはセカンダリ キーを入力します。
+       | IoT Hub コンシューマー グループ | IoT Hub からイベントを読み取るコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。
+       | イベントのシリアル化の形式 | JSON は、現時点で唯一使用可能なシリアル化の形式です。 イベント メッセージは、この形式である必要があります。そうでないとデータを読み取ることができません。 |
+       | タイムスタンプ プロパティ名 | この値を決定するには、IoT Hub に送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、イベント ソース内の**イベント エンキュー時間**が、イベント タイムスタンプとして使用されます。 |
 
 1. IoT Hub に追加した、専用の Time Series Insights コンシューマー グループ名を追加します。
 
 1. **作成** を選択します。
 
-   [![[作成] ボタン](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub_five.png#lightbox)
+   [![[作成] ボタン](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-five.png)](media/time-series-insights-how-to-add-an-event-source-iothub/iothub-five.png#lightbox)
 
 1. イベント ソースの作成後、Time Series Insights は自動的に環境へのデータのストリーミングを開始します。
 

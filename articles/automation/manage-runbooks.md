@@ -4,17 +4,17 @@ description: この記事では、Azure Automation で Runbook を管理する�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5bb52e0547ed9bc18d67370ffb9db35942212aab
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 4519991f8ce3c8b4f99e1d7fb62295f3c0ece3a2
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887592"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478272"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
@@ -27,7 +27,7 @@ Azure ポータルまたは Windows PowerShell のいずれかを使用して、
 ### <a name="create-a-runbook-in-the-azure-portal"></a>Azure portal で Runbook を作成する
 
 1. Azure ポータルで、Automation アカウントを開きます。
-2. ハブから、**[Runbook]** を選択して、Runbook の一覧を開きます。
+2. ハブから、 **[Runbook]** を選択して、Runbook の一覧を開きます。
 3. **[Runbook の追加]** ボタンをクリックし、次に **[新しい Runbook の作成]** をクリックします。
 4. Runbook の **[名前]** を入力し、 [[種類]](automation-runbook-types.md)を選択します。 Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、およびダッシュを使用できます。
 5. **[作成]** をクリックして Runbook を作成し、エディターを開きます。
@@ -59,7 +59,7 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 > このポータルを使用して PowerShell ワークフロー Runbook にインポートできるのは .ps1 ファイルだけであることに注意してください。
 
 1. Azure ポータルで、Automation アカウントを開きます。
-2. ハブから、**[Runbook]** を選択して、Runbook の一覧を開きます。
+2. ハブから、 **[Runbook]** を選択して、Runbook の一覧を開きます。
 3. **[Runbook の追加]** ボタンをクリックし、次に **[インポート]** をクリックします。
 4. **[Runbook ファイル]** をクリックし、インポートするファイルを選択します。
 5. **[名前]** フィールドが有効になっている場合は、名前を変更できます。  Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、およびダッシュを使用できます。
@@ -72,7 +72,7 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 
 ### <a name="to-import-a-runbook-from-a-script-file-with-windows-powershell"></a>Windows PowerShell でスクリプト ファイルから Runbook をインポートするには
 
-[Import-AzureRMAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/import-azurermautomationrunbook) コマンドレットを使用し、PowerShell ワークフロー Runbook のドラフトとしてスクリプト ファイルをインポートできます。 Runbook が既に存在する場合、*-Force* パラメーターを使用しないと、インポートは失敗します。
+[Import-AzureRMAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/import-azurermautomationrunbook) コマンドレットを使用し、PowerShell ワークフロー Runbook のドラフトとしてスクリプト ファイルをインポートできます。 Runbook が既に存在する場合、 *-Force* パラメーターを使用しないと、インポートは失敗します。
 
 次のサンプル コマンドでは、Runbook にスクリプト ファイルをインポートする方法を示します。
 
@@ -98,7 +98,7 @@ Runbook のテスト時には [ドラフト バージョン](#publish-a-runbook)
 1. [テキスト エディター](automation-edit-textual-runbook.md)または[グラフィカル エディター](automation-graphical-authoring-intro.md)のどちらかで、ドラフト バージョンの Runbook を開きます。
 1. **[テスト]** ボタンをクリックして [テスト] ページを開きます。
 1. Runbook にパラメーターがある場合は左側のウィンドウに表示され、そこでテストに使用する値を指定することができます。
-1. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) に対してテストを実施する場合は、**[実行設定]** を **[ハイブリッド worker]** に変更して対象グループの名前を選択します。  それ以外の場合は、既定の **[Azure]** をそのまま使用してクラウドでテストを実行します。
+1. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) に対してテストを実施する場合は、 **[実行設定]** を **[ハイブリッド worker]** に変更して対象グループの名前を選択します。  それ以外の場合は、既定の **[Azure]** をそのまま使用してクラウドでテストを実行します。
 1. **[開始]** をクリックしてテストを開始します。
 1. Runbook が [PowerShell ワークフロー](automation-runbook-types.md#powershell-workflow-runbooks)または[グラフィカル](automation-runbook-types.md#graphical-runbooks)の場合、[出力] ウィンドウの下にあるボタンを使用して、テスト中に Runbook を停止または中断することができます。 Runbook は、中断される場合は中断前に現在のアクティビティを完了します。 Runbook を中断した後で、停止または再開できます。
 1. [出力] ウィンドウで Runbook の出力を確認します。

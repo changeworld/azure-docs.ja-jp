@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 43f68908c8549c2f1d8322b5c4ad3985618cfe6e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 89cee70c9d7c5dffdb3078756cf4fa94d7cd1a9a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695644"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67078222"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
-[Apache Storm](https://storm.apache.org/) の Java ベースのトポロジを作成する方法について説明します。 ここでは、文字カウント アプリケーションを実装する Storm トポロジを作成します。 [Apache Maven](https://maven.apache.org/) を使用して、プロジェクトを構築およびパッケージ化します。 次に、[Apache Storm Flux](https://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) フレームワークを使用してトポロジを定義する方法を説明します。
+[Apache Storm](https://storm.apache.org/) の Java ベースのトポロジを作成する方法について説明します。 ここでは、文字カウント アプリケーションを実装する Storm トポロジを作成します。 [Apache Maven](https://maven.apache.org/) を使用して、プロジェクトを構築およびパッケージ化します。 次に、[Apache Storm Flux](https://storm.apache.org/releases/2.0.0/flux.html) フレームワークを使用してトポロジを定義する方法を説明します。
 
 このドキュメントの手順を完了したら、HDInsight で Apache Storm にトポロジをデプロイできます。
 
@@ -621,7 +621,7 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
 
 ## <a name="convert-the-topology-to-flux"></a>トポロジを Flux に変換する
 
-[Flux](https://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) は、構成と実装を分離するために使用できる、Storm 0.10.0 以降で使用可能な新しいフレームワークです。 コンポーネントは現在も Java で定義しますが、トポロジは YAML ファイルを使用して定義します。 プロジェクトと共に既定のトポロジ定義をパッケージ化したり、トポロジの送信時にスタンドアロンのファイルを使用したりすることができます。 トポロジを Storm に送信するときに、環境変数または構成ファイルを使用して、YAML トポロジの定義に値を設定できます。
+[Flux](https://storm.apache.org/releases/2.0.0/flux.html) は、構成と実装を分離するために使用できる、Storm 0.10.0 以降で使用可能な新しいフレームワークです。 コンポーネントは現在も Java で定義しますが、トポロジは YAML ファイルを使用して定義します。 プロジェクトと共に既定のトポロジ定義をパッケージ化したり、トポロジの送信時にスタンドアロンのファイルを使用したりすることができます。 トポロジを Storm に送信するときに、環境変数または構成ファイルを使用して、YAML トポロジの定義に値を設定できます。
 
 YAML ファイルは、トポロジと、これらの間のデータ フローに使用するコンポーネントを定義します。 jar ファイルの一部として YAML ファイルを含めることも、外部 YAML ファイルを使用することもできます。
 

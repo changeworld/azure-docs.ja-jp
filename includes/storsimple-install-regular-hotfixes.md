@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 8cc5dbb907c342b766cebe6da36cf580ddac5e2c
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66171952"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181207"
 ---
 #### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用して通常の修正プログラムをインストールするには
 1. デバイスのシリアル コンソールに接続します。 詳細については、「[手順 1: シリアル コンソールに接続する](../articles/storsimple/storsimple-update-device.md#step1)」を参照してください。

@@ -16,23 +16,23 @@ ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216341"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60714143"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
 
 Azure Service Bus の 2 種類のログを表示できます。
 * **[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)** これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
-* **[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)**。 ジョブで発生するすべてのイベントに関する豊富な情報を含んだ診断ログを構成することができます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
+* **[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)** 。 ジョブで発生するすべてのイベントに関する豊富な情報を含んだ診断ログを構成することができます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
 ## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
 
 既定では、診断ログは無効になっています。 診断ログを有効にするには、次の手順を実行します。
 
-1.  [Azure ポータル](https://portal.azure.com)の **[監視 + 管理]** で、**[診断ログ]** をクリックします。
+1.  [Azure ポータル](https://portal.azure.com)の **[監視 + 管理]** で、 **[診断ログ]** をクリックします。
 
     ![ブレードで診断ログに移動する](./media/service-bus-diagnostic-logs/image1.png)
 
@@ -42,7 +42,7 @@ Azure Service Bus の 2 種類のログを表示できます。
 
     ![診断ログを有効にする](./media/service-bus-diagnostic-logs/image2.png)
 
-4.  **[状態]** で、**[オン]** をクリックします。
+4.  **[状態]** で、 **[オン]** をクリックします。
 
     ![診断ログの状態を変更する](./media/service-bus-diagnostic-logs/image3.png)
 

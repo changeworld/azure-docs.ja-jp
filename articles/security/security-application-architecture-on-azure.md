@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
 ms.openlocfilehash: 76f5627a28c2c0ab326197893a9b9739628af0fb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108077"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60597838"
 ---
 # <a name="application-architecture-on-azure"></a>Azure のアプリケーション アーキテクチャ
 Microsoft Azure 上のクラウド ベースのソリューションをセキュリティ保護するには、アーキテクチャの強力な基盤が不可欠です。 アーキテクト、デザイナー、および実装者は、アプリケーションとサービスのアーキテクチャに関する強力な知識を利用します。 この基礎知識は、クラウド ベースのソリューションのすべてのコンポーネントを理解するのに役立ち、設計および実装のすべての側面にセキュリティを統合しやすくします。
@@ -47,5 +47,5 @@ Microsoft は、Microsoft 製品を使用する特定の種類のシステム構
 テンプレートは、このコース以外でも利用もできます。
 
 * [トレーニング ビデオを視聴](https://aka.ms/3dBlueprintTemplateVideo) する
-*  [Microsoft 3D ブループリント Visio テンプレート](https://aka.ms/3DBlueprintTemplate)
+* [Microsoft 3D ブループリント Visio テンプレート](https://aka.ms/3DBlueprintTemplate)
 * 3D テンプレートと一緒に使用する [クラウドとエンタープライズのシンボル](https://docs.microsoft.com/azure/architecture/) をダウンロードする

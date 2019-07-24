@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 37e42b05046be27254d2ceb15a59fbdb931ae161
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64711914"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
@@ -69,7 +69,7 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
 
 最初の手順では、アラートを処理してパケット キャプチャを作成する Azure 関数を作成します。
 
-1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[コンピューティング]** > **[Function App]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[コンピューティング]**  >  **[Function App]** の順に選択します。
 
     ![Function App を作成する][1-1]
 
@@ -84,9 +84,9 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
     |**場所**|米国中部| Function App を作成するリージョン。|
     |**ストレージ アカウント**|{自動生成}| 一般的な記憶のために Azure Functions が必要とするストレージ アカウント。|
 
-3. **PacketCaptureExample Function App** ブレードで、**[関数]** > **[カスタム関数]** >**[+]** の順に選びます。
+3. **PacketCaptureExample Function App** ブレードで、 **[関数]**  >  **[カスタム関数]**  > **[+]** の順に選びます。
 
-4. **[HttpTrigger-Powershell]** を選び、残りの情報を入力します。 最後に、関数を作成するには、**[作成]** を選びます。
+4. **[HttpTrigger-Powershell]** を選び、残りの情報を入力します。 最後に、関数を作成するには、 **[作成]** を選びます。
 
     |**設定** | **値** | **詳細** |
     |---|---|---|
@@ -121,7 +121,7 @@ Network Watcher PowerShell コマンドレットを使うには、最新の Powe
 
      ![PowerShell フォルダー][functions5]
 
-1. **[Function App の設定]** > **[App Service エディターに移動]** の順に選びます。
+1. **[Function App の設定]**  >  **[App Service エディターに移動]** の順に選びます。
 
     ![Function App の設定][functions2]
 
@@ -137,7 +137,7 @@ Network Watcher PowerShell コマンドレットを使うには、最新の Powe
 
     * Az.Resources
 
-1. **Az.Network** サブフォルダーを右クリックし、**[ファイルのアップロード]** を選びます。 
+1. **Az.Network** サブフォルダーを右クリックし、 **[ファイルのアップロード]** を選びます。 
 
 6. Azure モジュールに移動します。 ローカルの **Az.Network** フォルダーで、フォルダー内のすべてのファイルを選びます。 **[OK]** をクリックします。 
 
@@ -208,11 +208,11 @@ Function App の App Service エディターで、**AlertPacketCapturePowerShell
    > [!NOTE]
    > アプリケーション作成時に使うパスワードは、前にキー ファイルを保存するときに作成したものと同じパスワードにする必要があります。
 
-1. Azure Portal で、**[サブスクリプション]** を選びます。 使うサブスクリプションを選び、**[アクセス制御 (IAM)]** を選びます。
+1. Azure Portal で、 **[サブスクリプション]** を選びます。 使うサブスクリプションを選び、 **[アクセス制御 (IAM)]** を選びます。
 
     ![関数の IAM][functions9]
 
-1. 使うアカウントを選び、**[プロパティ]** を選びます。 アプリケーション ID をコピーします。
+1. 使うアカウントを選び、 **[プロパティ]** を選びます。 アプリケーション ID をコピーします。
 
     ![関数のアプリケーション ID][functions10]
 
@@ -247,11 +247,11 @@ $Encryptedpassword
 
 ### <a name="store-the-environment-variables"></a>環境変数を格納する
 
-1. Function App に移動します。 **[Function App の設定]** > **[アプリケーション設定の構成]** の順に選びます。
+1. Function App に移動します。 **[Function App の設定]**  >  **[アプリケーション設定の構成]** の順に選びます。
 
     ![アプリケーションの設定の構成][functions11]
 
-1. 環境変数とその値をアプリの設定に追加し、**[保存]** を選びます。
+1. 環境変数とその値をアプリの設定に追加し、 **[保存]** を選びます。
 
     ![アプリケーション設定][functions12]
 
@@ -342,7 +342,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 ### <a name="create-the-alert-rule"></a>アラート ルールの作成
 
-既存の仮想マシンに移動してアラート ルールを追加します。 アラートの構成について詳しくは、「[Azure Monitorでの Azure サービス アラートの作成 - Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)」をご覧ください。 **[アラート ルール]** ブレードに次の値を入力して、**[OK]** を選びます。
+既存の仮想マシンに移動してアラート ルールを追加します。 アラートの構成について詳しくは、「[Azure Monitorでの Azure サービス アラートの作成 - Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)」をご覧ください。 **[アラート ルール]** ブレードに次の値を入力して、 **[OK]** を選びます。
 
   |**設定** | **値** | **詳細** |
   |---|---|---|
@@ -359,7 +359,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 ## <a name="review-the-results"></a>結果の確認
 
-アラートの条件がトリガーされた後、パケット キャプチャが作成されます。 Network Watcher に移動し、**[パケット キャプチャ]** を選びます。 このページでは、パケット キャプチャ ファイルのリンクを選んでパケット キャプチャをダウンロードできます。
+アラートの条件がトリガーされた後、パケット キャプチャが作成されます。 Network Watcher に移動し、 **[パケット キャプチャ]** を選びます。 このページでは、パケット キャプチャ ファイルのリンクを選んでパケット キャプチャをダウンロードできます。
 
 ![パケット キャプチャを表示する][functions14]
 
@@ -367,7 +367,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 他のツールとしては、[ストレージ エクスプローラー](https://storageexplorer.com/)を使うことができます。
 
-ダウンロードしたキャプチャは、**.cap** ファイルを読み取ることができる任意のツールを使って表示できます。 次に示すのはそのような 2 つのツールへのリンクです。
+ダウンロードしたキャプチャは、 **.cap** ファイルを読み取ることができる任意のツールを使って表示できます。 次に示すのはそのような 2 つのツールへのリンクです。
 
 - [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
 - [Wireshark](https://www.wireshark.org/)

@@ -11,11 +11,11 @@ ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: d701fba39685d781d1a4c2d8a6cf194ca7eb2908
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683054"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60530939"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler の概念、用語集、エンティティ
 
@@ -83,11 +83,11 @@ Azure Scheduler では、複数のジョブの種類がサポートされてい�
 
 | 要素 | 必須 | 説明 | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | いいえ  | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)のタイム ゾーン オフセットを含むジョブの開始時刻 | 
+| [**startTime**](#start-time) | いいえ | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)のタイム ゾーン オフセットを含むジョブの開始時刻 | 
 | [**action**](#action) | はい | **errorAction** オブジェクトを含む場合がある、プライマリ アクションの詳細 | 
-| [**errorAction**](#error-action) | いいえ  | プライマリ アクションが失敗した場合に実行するセカンダリ アクションの詳細 |
-| [**recurrence**](#recurrence) | いいえ  | 定期的なジョブの頻度や間隔などの詳細 | 
-| [**retryPolicy**](#retry-policy) | いいえ  | アクションを再試行する頻度の詳細 | 
+| [**errorAction**](#error-action) | いいえ | プライマリ アクションが失敗した場合に実行するセカンダリ アクションの詳細 |
+| [**recurrence**](#recurrence) | いいえ | 定期的なジョブの頻度や間隔などの詳細 | 
+| [**retryPolicy**](#retry-policy) | いいえ | アクションを再試行する頻度の詳細 | 
 | [**state**](#state) | はい | ジョブの現在の状態の詳細 |
 | [**status**](#status) | はい | サービスによって制御される、ジョブの現在のステータスの詳細 |
 ||||
@@ -248,15 +248,15 @@ Shared Access Signature (SAS) トークンについて詳しくは、[Shared Acc
 | プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
 | **frequency** | はい。**recurrence** が使用されているとき | "Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" | 発生の間隔の時間単位 | 
-| **interval** | いいえ  | 1 ～ 1000 | **frequency** に基づいて実行間の時間単位の数を決定する正の整数 | 
-| **schedule** | いいえ  | 多様 | 複雑で高度なスケジュールの詳細。 **hours**、**minutes**、**weekDays**、**months**、**monthDays** を参照してください | 
-| **hours** | いいえ  | 1 ～ 24 | ジョブ実行日時に対する時マークを含む配列 | 
-| **分** | いいえ  | 0 ～ 59 | ジョブ実行日時に対する分マークを含む配列 | 
-| **months** | いいえ  | 1 ～ 12 | ジョブ実行日時に対する月の配列 | 
-| **monthDays** | いいえ  | 多様 | ジョブ実行日時に対する日の配列 | 
-| **weekDays** | いいえ  | "Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、"Sunday" | ジョブ実行日時に対する曜日の配列 | 
-| **count** | いいえ  | <*none*> | 繰り返しの数。 既定では、無限に繰り返します。 **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 | 
-| **endTime** | いいえ  | <*none*> | 繰り返しを停止する日付と時刻。 既定では、無限に繰り返します。 **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 | 
+| **interval** | いいえ | 1 ～ 1000 | **frequency** に基づいて実行間の時間単位の数を決定する正の整数 | 
+| **schedule** | いいえ | 多様 | 複雑で高度なスケジュールの詳細。 **hours**、**minutes**、**weekDays**、**months**、**monthDays** を参照してください | 
+| **hours** | いいえ | 1 ～ 24 | ジョブ実行日時に対する時マークを含む配列 | 
+| **分** | いいえ | 0 ～ 59 | ジョブ実行日時に対する分マークを含む配列 | 
+| **months** | いいえ | 1 ～ 12 | ジョブ実行日時に対する月の配列 | 
+| **monthDays** | いいえ | 多様 | ジョブ実行日時に対する日の配列 | 
+| **weekDays** | いいえ | "Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、"Sunday" | ジョブ実行日時に対する曜日の配列 | 
+| **count** | いいえ | <*none*> | 繰り返しの数。 既定では、無限に繰り返します。 **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 | 
+| **endTime** | いいえ | <*none*> | 繰り返しを停止する日付と時刻。 既定では、無限に繰り返します。 **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 | 
 ||||
 
 これらの要素について詳しくは、[複雑なスケジュールと高度な繰り返しの作成](../scheduler/scheduler-advanced-complexity.md)に関するページをご覧ください。
@@ -278,8 +278,8 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 | プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
 | **retryType** | はい | **Fixed**、**None** | 再試行ポリシーを指定するか (**fixed**) しないか (**none**) を決定します。 | 
-| **retryInterval** | いいえ  | PT30S | 再試行の間隔と頻度を [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)で指定します。 最小値は 15 秒、最大値は 18 か月です。 | 
-| **retryCount** | いいえ  | 4 | 再試行の回数を指定します。 最大値は 20 です。 | 
+| **retryInterval** | いいえ | PT30S | 再試行の間隔と頻度を [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)で指定します。 最小値は 15 秒、最大値は 18 か月です。 | 
+| **retryCount** | いいえ | 4 | 再試行の回数を指定します。 最大値は 20 です。 | 
 ||||
 
 詳細については、[高可用性と信頼性](../scheduler/scheduler-high-availability-reliability.md)に関するページを参照してください。
@@ -307,7 +307,7 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 * 失敗の数 (ある場合)
 * エラーの数 (ある場合)
 
-例: 
+例:
 
 ```json
 "status": {

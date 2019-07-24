@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: spelluru
-ms.openlocfilehash: b29798bb87b7c5c677e7d80e552e45e8d1290541
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f31e014cf242675577bedd29a3a79332ede32bf5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787109"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304236"
 ---
 # <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する
 このチュートリアルでは、Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 次の手順を実行します。
@@ -235,7 +235,7 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
         ![関数の発行プロファイルの取得](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
     4. プロジェクトのフォルダーにファイルを保存します。 
 4. Visual Studio で **SBEventGridIntegration** を右クリックして **[発行]** を選択します。 
-5. **[発行]** ページで *[開始]* * を選択します。 
+5. **[発行]** ページで **[開始]** を選択します。 
 6. **[発行先を選択]** ページで、次の手順に従い、 **[プロファイルのインポート]** を選択します。 
 
     ![Visual Studio - [プロファイルのインポート] ボタン](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
@@ -280,7 +280,6 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
     3. **[リソース名]** で、Service Bus 名前空間を選択します。 
     4. **[新しいパラメーターの追加]** を選択し、 **[サフィックス フィルター]** を選択します。 
     5. **[サフィックス フィルター]** で、Service Bus トピックの 2 つ目のサブスクリプションの名前を入力します。 
-
         ![Logic Apps デザイナー - イベントの構成](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
 6. デザイナーで **[+ 新しいステップ]** を選択し、次の手順を実行します。
     1. **Service Bus** を検索します。

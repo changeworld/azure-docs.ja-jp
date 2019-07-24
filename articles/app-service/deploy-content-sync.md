@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
-ms.author: cephalin;dariagrigoriu
+ms.author: cephalin
+ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 65f372196671e95f7d9af7f47011e9ca1f9de316
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 60caadf58a8acdc7cecb0074e189fd1656032327
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551120"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617080"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>クラウド フォルダーから Azure App Service へのコンテンツの同期
 この記事では、Dropbox と OneDrive のコンテンツを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) と同期する方法を示します。 
@@ -30,11 +31,11 @@ ms.locfileid: "53551120"
 
 コンテンツの同期を有効にするのには、[Azure Portal](https://portal.azure.com) で App Service アプリのページに移動します。
 
-左側のメニューで、**[デプロイ センター]** > **[OneDrive]** または **[Dropbox]** > **[承認]** をクリックします。 承認のプロンプトに従います。 
+左側のメニューで、 **[デプロイ センター]**  >  **[OneDrive]** または **[Dropbox]**  >  **[承認]** をクリックします。 承認のプロンプトに従います。 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
-OneDrive または Dropbox の承認は、1 回のみ実行する必要があります。 既に承認されている場合は、**[続行]** をクリックします。 **[アカウントの変更]** をクリックすることで、承認済みの OneDrive または Dropbox のアカウントを変更できます。
+OneDrive または Dropbox の承認は、1 回のみ実行する必要があります。 既に承認されている場合は、 **[続行]** をクリックします。 **[アカウントの変更]** をクリックすることで、承認済みの OneDrive または Dropbox のアカウントを変更できます。
 
 ![](media/app-service-deploy-content-sync/continue.png)
 
@@ -43,13 +44,13 @@ OneDrive または Dropbox の承認は、1 回のみ実行する必要があり
 * **OneDrive**: `Apps\Azure Web Apps`
 * **Dropbox**: `Apps\Azure`
 
-完了したら、**[続行]** をクリックします。
+完了したら、 **[続行]** をクリックします。
 
-**[概要]** ページで、選択内容を確認し、**[完了]** をクリックします。
+**[概要]** ページで、選択内容を確認し、 **[完了]** をクリックします。
 
 ## <a name="synchronize-content"></a>コンテンツを同期する
 
-クラウド フォルダーのコンテンツを App Service と同期する場合は、**[デプロイ センター]** ページに戻り、**[同期]** をクリックします。
+クラウド フォルダーのコンテンツを App Service と同期する場合は、 **[デプロイ センター]** ページに戻り、 **[同期]** をクリックします。
 
 ![](media/app-service-deploy-content-sync/synchronize.png)
    
@@ -62,7 +63,7 @@ OneDrive または Dropbox の承認は、1 回のみ実行する必要があり
 
 コンテンツの同期を無効にするのには、[Azure Portal](https://portal.azure.com) で App Service アプリのページに移動します。
 
-左側のメニューで、**[デプロイ センター]** > **[切断]** をクリックします。
+左側のメニューで、 **[デプロイ センター]**  >  **[切断]** をクリックします。
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

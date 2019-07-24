@@ -7,14 +7,14 @@ manager: barbkess
 editor: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 05/24/2019
 ms.author: barclayn
-ms.openlocfilehash: 9346f3f9bd9395ac863af87d05724a76ae83fb2f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dba1fe91a635f467f4a3aeeaa048897065822869
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702327"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66236635"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 
@@ -25,6 +25,8 @@ Key Vault のコンテンツは、リージョン内と、同じ地域内の 150
 Key Vault サービス内の個々のコンポーネントで障害が発生した場合、リージョン内の代替コンポーネントが要求を処理し、機能が低下しないようにします。 この処理をトリガーするために、何かの措置を講じる必要はありません。 ユーザーからは見えないところで自動的に実行されます。
 
 Azure リージョン全体が使用できない場合がまれにありますが、そのような場合でもそのリージョン内の Azure Key Vault に対する要求は自動的にセカンダリ リージョンにルーティング ("*フェールオーバー*") されます。 プライマリ リージョンが再び使用できるようになったときに、要求は再びプライマリ リージョンにルーティング ("*フェールバック*") されます。 この動作も自動的に行われるため、ユーザーによる操作は必要ありません。
+
+この高可用性の設計のおかげで、Azure Key Vault では、メンテナンス アクティビティのためのダウンタイムは必要ありません。
 
 その場合の注意事項をいくつか次に示します。
 

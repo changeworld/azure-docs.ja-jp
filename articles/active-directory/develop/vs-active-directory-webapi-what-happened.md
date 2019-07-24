@@ -14,11 +14,11 @@ ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161934"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60353280"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>WebAPI プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
 
@@ -34,7 +34,7 @@ ms.locfileid: "56161934"
 
 プロジェクト ファイル (*.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
-| type | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -45,9 +45,9 @@ ms.locfileid: "56161934"
 | .NET; NuGet | Owin |
 | .NET; NuGet | System.IdentityModel.Tokens.Jwt |
 
-追加の参照 (**[ディレクトリ データの読み取り]** オプションを選択した場合):
+追加の参照 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
-| type | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 のみ) |
@@ -61,7 +61,7 @@ ms.locfileid: "56161934"
 
 次の参照は削除されます (Visual Studio 2015 では ASP.NET 4 プロジェクトのみ)。
 
-| type | リファレンス |
+| Type | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -70,7 +70,7 @@ ms.locfileid: "56161934"
 ## <a name="project-file-changes"></a>プロジェクト ファイルの変更
 
 - プロパティ `IISExpressSSLPort` が個別の数に設定されます。
-- プロパティ `WebProject_DirectoryAccessLevelKey` が 0 に設定されます。**[ディレクトリ データの読み取り]** オプションを選択した場合は、1 に設定されます。
+- プロパティ `WebProject_DirectoryAccessLevelKey` が 0 に設定されます。 **[ディレクトリ データの読み取り]** オプションを選択した場合は、1 に設定されます。
 - プロパティ `IISUrl` が `https://localhost:<port>/` に設定されます。このとき `<port>` は `IISExpressSSLPort` の値と一致します。
 
 ## <a name="webconfig-or-appconfig-changes"></a>web.config または app.config の変更

@@ -4,7 +4,7 @@ description: Azure IaaS での Linux 仮想マシンの名前解決のシナリ�
 services: virtual-machines
 documentationcenter: na
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: ae8315b2a484cddc500b5c2dd02a019cb4f46d8e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d9ff8ca8ce35c8698fc67fa8588eed4228230068
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819146"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668489"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンの DNS 名前解決のオプション
 Azure では、既定で、単一の仮想ネットワーク内に含まれるすべての仮想マシンの DNS 名の解決を提供しています。 Azure でホストされている仮想マシンに独自の DNS サービスを構成することにより、DNS 名を解決する独自のソリューションを実装できます。 次のシナリオは、どちらの方法が状況に適しているかを判断するのに役立ちます。
@@ -55,7 +55,7 @@ Azure では、パブリック DNS 名の解決と共に、同じ仮想ネット
 
 * Azure が作成する DNS サフィックスは変更できません。
 * 独自のレコードを手動で登録することはできません。
-* WINS と NetBIOS はサポートされません 
+* WINS と NetBIOS はサポートされません
 * ホスト名は DNS 互換である必要があります。
     使用できる文字は 0 ～ 9、a ～ z、'-' のみであり、最初または最後の文字として '-' は使用できません。 RFC 3696 セクション 2 を参照してください。
 * DNS クエリ トラフィックは仮想マシンごとに調整されます。 調整は、ほとんどのアプリケーションに影響がありません。  要求の調整が発生した場合は、クライアント側のキャッシュが有効になっていることを確認します。  詳しくは、「[Azure が提供する名前解決から最大限の効果を得る](#getting-the-most-from-name-resolution-that-azure-provides)」をご覧ください。
@@ -72,7 +72,7 @@ dnsmasq など、いくつかの異なる DNS キャッシュ パッケージを
 **Ubuntu (resolvconf を使用)**
   * dnsmasq パッケージをインストールします ("sudo apt-get install dnsmasq")。
 
-**SUSE (netconf を使用)**:
+**SUSE (netconf を使用)** :
 1. dnsmasq パッケージをインストールします ("sudo zypper install dnsmasq")。
 2. dnsmasq サービスを有効にします ("systemctl enable dnsmasq.service")。
 3. dnsmasq サービスを開始します ("systemctl start dnsmasq.service")。

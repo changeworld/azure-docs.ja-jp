@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 286d8bbc01b5916e842c196aed5a49ef1c76bc3c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 85a8ddf4ce87d7ac8ce460c0aff56311a2ea4578
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025197"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65540691"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>最新の Azure Search Service REST API バージョンへのアップグレード
 [Azure Search Service REST API](https://docs.microsoft.com/rest/api/searchservice/) の以前のバージョンを使用している場合、この記事を参考にして、一般公開された最新の API バージョン 2019-05-06 を使用するようにアプリケーションをアップグレードできます。
@@ -72,7 +72,9 @@ API バージョン 2019-05-06 および 2019-05-06 プレビュー以降、デ�
 
 プレビュー版の API からアップグレードする場合も上記の説明が適用されますが、バージョン 2019-05-06 では使用できないプレビュー機能があることにも注意する必要があります。
 
-* ["More like this" クエリ](search-more-like-this.md) は、引き続きプレビュー専用の機能となります。
+* ["More like this" クエリ](search-more-like-this.md)
+* [CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
+* [Cosmos DB インデクサーの MongoDB API サポート](search-howto-index-cosmosdb.md)
 
 コードでこれらの機能を使用している場合は、それらの使用を削除しないと、API バージョン 2019-05-06 にアップグレードすることはできません。
 

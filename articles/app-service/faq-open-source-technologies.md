@@ -17,11 +17,11 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 7831e5e989835b2c9432dbd61a242584a7b6244d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082944"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61270199"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -34,10 +34,10 @@ ms.locfileid: "58082944"
 PHP ログを有効にするには、次の手順を実行します。
 
 1. [Kudu の Web サイト](https://*yourwebsitename*.scm.azurewebsites.net)にサインインします。
-2. 上部のメニューから、**[デバッグ コンソール]** > **[CMD]** の順に選択します。
+2. 上部のメニューから、 **[デバッグ コンソール]**  >  **[CMD]** の順に選択します。
 3. **Site** フォルダーを選択します。
 4. **wwwroot** フォルダーを選択します。
-5. **+** アイコンをクリックして、**[新しいファイル]** を選択します。
+5. **+** アイコンをクリックして、 **[新しいファイル]** を選択します。
 6. **.user.ini** というファイル名を設定します。
 7. **. user.ini** の横にある鉛筆のアイコンを選択します。
 8. ファイルで、コード `log_errors=on` を追加します。
@@ -59,9 +59,9 @@ PHP ログを有効にするには、次の手順を実行します。
 
 Node.js アプリケーションのバージョンを変更するために、次のオプションのいずれかを使用できます。
 
-* Azure ポータルで、**[アプリ設定]** を使用します。
+* Azure ポータルで、 **[アプリ設定]** を使用します。
   1. Azure Portal で、Web アプリに移動します。
-  2. **[設定]** ブレードで、**[アプリケーション設定]** を選択します。
+  2. **[設定]** ブレードで、 **[アプリケーション設定]** を選択します。
   3. **[アプリ設定]** で、キーとして WEBSITE_NODE_DEFAULT_VERSION を含め、値として希望する Node.js のバージョンを指定できます。
   4. [Kudu コンソール](https://*yourwebsitename*.scm.azurewebsites.net)に移動します。
   5. Node.js バージョンを確認するには、次のコマンドを入力します。  
@@ -145,7 +145,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. app/lib フォルダーから sqljdbc*.jar ファイルを削除します。
 2. カスタム Tomcat または Azure Marketplace の Tomcat Web サーバーを使用している場合は、Tomcat lib フォルダーにこの .jar ファイルをコピーします。
-3. Azure ポータルから Java を有効にしている場合 (**[Java 1.8]** > **[Tomcat サーバー]** の順に選択)、アプリに並列のフォルダーに sqljdbc.* jar ファイルをコピーします。 次に、web.config ファイルに次のクラスパスの設定を追加します。
+3. Azure ポータルから Java を有効にしている場合 ( **[Java 1.8]**  >  **[Tomcat サーバー]** の順に選択)、アプリに並列のフォルダーに sqljdbc.* jar ファイルをコピーします。 次に、web.config ファイルに次のクラスパスの設定を追加します。
 
     ```xml
     <httpPlatform>

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan;kilroyh;yanmf;juliako
 ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894361"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61466587"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計 
 
@@ -121,7 +121,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 | --- | --- |
 | 1 対 1 |最も簡単なケースです。 最も細かい制御を提供します。 ただし、一般に、ライセンス配信コストは最も高くなります。 保護された資産ごとに少なくとも 1 つのライセンス要求が必要です。 |
 | 1 対多 |複数の資産に対して同じコンテンツ キーを使用できます。 たとえば、ジャンルやジャンルのサブセット (つまり Movie Gene) などの論理グループのすべての資産が、1 つのコンテンツ キーを使用します。 |
-| 多対 1 |各資産に複数のコンテンツ キーが必要です。 <br/><br/>たとえば、マルチ DRM の動的 CENC 保護を MPEG-DASH に対して適用し、動的 AES-128 暗号化を HLS に対して適用する必要がある場合、2 つのコンテンツ キーが必要です。 各コンテンツ キーに固有の ContentKeyType が必要です  (動的 CENC 保護に使われるコンテンツ キーには ContentKeyType.CommonEncryption を使い、 動的 AES-128 暗号化に使われるコンテンツ キーには ContentKeyType.EnvelopeEncryption を使います)。<br/><br/>もう 1 つの例として、DASH コンテンツの CENC 保護では、理論上は、あるコンテンツ キーを使ってビデオ ストリームを保護し、別のコンテンツ キーでオーディオ ストリームを保護できます。 |
+| 多対 1 |各資産に複数のコンテンツ キーが必要です。 <br/><br/>たとえば、マルチ DRM の動的 CENC 保護を MPEG-DASH に対して適用し、動的 AES-128 暗号化を HLS に対して適用する必要がある場合、2 つのコンテンツ キーが必要です。 各コンテンツ キーに固有の ContentKeyType が必要です (動的 CENC 保護に使われるコンテンツ キーには ContentKeyType.CommonEncryption を使い、 動的 AES-128 暗号化に使われるコンテンツ キーには ContentKeyType.EnvelopeEncryption を使います)。<br/><br/>もう 1 つの例として、DASH コンテンツの CENC 保護では、理論上は、あるコンテンツ キーを使ってビデオ ストリームを保護し、別のコンテンツ キーでオーディオ ストリームを保護できます。 |
 | 多対多 |前の 2 つのシナリオの組み合わせです。 コンテンツ キーの 1 つのセットが、同じ資産グループの複数の資産のそれぞれに使われます。 |
 
 考慮すべきもう 1 つの重要な要素は、永続的ライセンスと非永続的ライセンスの使用です。
@@ -362,7 +362,7 @@ Azure AD によって発行された JWT は、ポインター リソースへ�
 
 カスタム STS を使うときは、2 つの変更を行う必要があります。
 
-* 資産のライセンス配信サービスを構成するときに、Azure AD からの現在のキーではなく、カスタム STS での検証に使うセキュリティ キーを指定する必要があります  (詳細は後述)。 
+* 資産のライセンス配信サービスを構成するときに、Azure AD からの現在のキーではなく、カスタム STS での検証に使うセキュリティ キーを指定する必要があります (詳細は後述)。 
 * JTW トークンが生成されるときに、現在の Azure AD での X 509 証明書の秘密キーではなく、セキュリティ キーを指定します。
 
 セキュリティ キーには次の 2 種類があります。

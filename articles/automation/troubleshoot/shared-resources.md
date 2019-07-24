@@ -2,18 +2,18 @@
 title: Azure Automation 共有リソースのエラーをトラブルシューティングする
 description: Azure Automation 共有リソースのエラーをトラブルシューティングする方法を説明します
 services: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 66165a196c8b934df948f1d88b09a5859d3e792f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b9b1be699190f6dc6f4771411c22f376d51637ec
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58804498"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477446"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>共有リソースのエラーをトラブルシューティングする
 
@@ -136,7 +136,7 @@ You do not have permissions to create…
 
 実行アカウントを作成または更新するには、実行アカウントで使用するさまざまなリソースに対する適切なアクセス許可が必要です。 実行アカウントの作成または更新に必要なアクセス許可については、[実行アカウントのアクセス許可](../manage-runas-account.md#permissions)に関する記事を参照してください。
 
-問題の原因がロックである場合、ロックを解除しても構わないか確認します。 次に、ロックされているリソースに移動し、ロックを右クリックして、**[削除]** を選択して、ロックを解除します。
+問題の原因がロックである場合、ロックを解除しても構わないか確認します。 次に、ロックされているリソースに移動し、ロックを右クリックして、 **[削除]** を選択して、ロックを解除します。
 
 ### <a name="iphelper"></a>シナリオ:Runbook の実行時に「DLL 'iplpapi.dll' の 'GetPerAdapterInfo' というエントリ ポイントが見つかりません」というエラーが表示されます。
 

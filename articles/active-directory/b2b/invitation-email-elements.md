@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f93586d46aa01116990f8f02f344c6952d3c1b1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65768366"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
@@ -44,7 +44,7 @@ ms.locfileid: "65768366"
 行動への呼び掛けは、受信者が電子メールを受け取った理由と、受信者に求める行動の 2 つの部分で構成されます。
 - "why"(理由) セクションは、次のパターンを使用して指定できます:You've been invited to access applications in the &lt;テナント名&gt; organization (テナント名の組織のアプリケーションにアクセスするよう招待を受けています)
 
-- また、"受信者に求める行動" セクションは、**[開始]** ボタンの存在によって示されます。 招待を必要とせずに受信者が追加された場合、このボタンは表示されません。
+- また、"受信者に求める行動" セクションは、 **[開始]** ボタンの存在によって示されます。 招待を必要とせずに受信者が追加された場合、このボタンは表示されません。
 
 ### <a name="inviters-information"></a>招待元の情報
 電子メールには、招待元の表示名が含まれます。 また、Azure AD アカウントのプロフィール画像を設定している場合は、招待メールにその画像も含まれます。 どちらも、電子メールに対する受信者の信頼を高めることを目的としています。

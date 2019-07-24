@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: bd7cc37b8fc81fc9d4109826743f2243913d0604
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60735059"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub ファイルのアップロードを構成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "59047281"
 
 ![ポータルで IoT Hub ファイル アップロード設定を表示する](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **ストレージ コンテナー**:Azure portal を使用して現在の Azure サブスクリプションの Azure Storage アカウントの BLOB コンテナーを選択し、IoT Hub に関連付けます。 必要に応じて、**[ストレージ アカウント]** ブレードで Azure Storage アカウントを作成し、**[コンテナー]** ブレードで BLOB コンテナーを作成できます。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
+* **ストレージ コンテナー**:Azure portal を使用して現在の Azure サブスクリプションの Azure Storage アカウントの BLOB コンテナーを選択し、IoT Hub に関連付けます。 必要に応じて、 **[ストレージ アカウント]** ブレードで Azure Storage アカウントを作成し、 **[コンテナー]** ブレードで BLOB コンテナーを作成できます。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
 
    ![ポータルでファイル アップロードのストレージ コンテナーを表示する](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
@@ -33,9 +33,9 @@ ms.locfileid: "59047281"
 
 * **SAS TTL**:IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定で 1 時間に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
 
-* **File notification settings default TTL (ファイル通知設定の既定の TTL)**:有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定で 1 時間に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
+* **File notification settings default TTL (ファイル通知設定の既定の TTL)** :有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定で 1 時間に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
 
-* **File notification maximum delivery count (ファイル通知設定の最大配信回数)**:IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定で 10 に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
+* **File notification maximum delivery count (ファイル通知設定の最大配信回数)** :IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定で 10 に設定されますが、スライダーを使用して、他の値にカスタマイズできます。
 
    ![ポータルで IoT Hub ファイル アップロードを構成する](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 

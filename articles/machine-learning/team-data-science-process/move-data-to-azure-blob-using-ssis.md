@@ -12,11 +12,11 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844785"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61429887"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS コネクタを使用して Azure Blob Storage 間でデータを移動する
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) には、Azure への接続、Azure とオンプレミスのデータ ソースとの間でのデータ転送、Azure に格納したデータの処理に必要なコンポーネントが用意されています。
@@ -42,7 +42,7 @@ ms.locfileid: "57844785"
 
 **SSIS コネクタ**を使用するには、次のものをダウンロードする必要があります。
 
-* **SQL Server 2014 または 2016 Standard (またはそれ以降)**:インストールには SQL Server Integration Services が含まれます。
+* **SQL Server 2014 または 2016 Standard (またはそれ以降)** :インストールには SQL Server Integration Services が含まれます。
 * **Microsoft SQL Server 2014 または 2016 Integration Services Feature Pack for Azure**:これらは、[SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) および [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) のページからそれぞれダウンロードできます。
 
 > [!NOTE]

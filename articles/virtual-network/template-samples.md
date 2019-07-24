@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: c4d0c65cfae0bb323978f4143b0058071562ddb6
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c553e3f2de963abb4a3c23a4114eecfa33d0aa61
+ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682500"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66735333"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>仮想ネットワーク用の Azure Resource Manager テンプレート サンプル
 
@@ -29,7 +29,7 @@ ms.locfileid: "64682500"
 テンプレートで使用する JSON 構文とプロパティについては、「[Microsoft.Network resource types (Microsoft.Network のリソースの種類)](/azure/templates/microsoft.network/allversions)」を参照してください。
 
 
-| | |
+| タスク | 説明 |
 |----|----|
 |[2 つのサブネットから成る仮想ネットワークの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)| 2 つのサブネットから成る仮想ネットワークを作成します。|
 |[ネットワーク仮想アプライアンス経由のトラフィックのルーティング](https://github.com/Azure/azure-quickstart-templates/tree/master/201-userdefined-routes-appliance)| 3 つのサブネットから成る仮想ネットワークを作成します。 それぞれのサブネットに仮想マシンをデプロイします。 3 つ目のサブネット内の仮想マシンを介して一方のサブネットからもう一方のサブネットへトラフィックを誘導するルートを含んだルート テーブルを作成します。 このルート テーブルをいずれかのサブネットに関連付けます。|

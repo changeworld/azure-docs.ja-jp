@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: f17dc61f47dadf4c808467b2158cd9ef034e1ce9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 376df206d75780a4b814873d72d9c56554f6b0b8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59277121"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65956615"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>Windows IaaS VM で Azure Disk Encryption を有効にする
 
-有効にできるディスク暗号化シナリオは多数あり、手順はシナリオによって異なる場合があります。 以下のセクションでは、Windows IaaS VM 用のシナリオについて詳しく説明します。 ディスク暗号化を使用する前に、[Azure Disk Encryption の前提条件](../security/azure-security-disk-encryption-prerequisites.md)を満たす必要があります。 
+この記事では、Windows IaaS 仮想マシン (VM) で Microsoft Azure Disk Encryption を有効にする手順について説明します。 ディスク暗号化を使用する前に、まず [Azure Disk Encryption の前提条件](../security/azure-security-disk-encryption-prerequisites.md)を満たす必要があります。 
 
-ディスクを暗号化する前に、[スナップショット](../virtual-machines/windows/snapshot-copy-managed-disk.md)またはバックアップを作成します。 バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。 マネージド ディスクを含む VM では、暗号化する前にバックアップが必要になります。 バックアップを作成したら、Set-AzVMDiskEncryptionExtension コマンドレットで -skipVmBackup パラメーターを指定して、マネージド ディスクを暗号化できます。 暗号化された VM のバックアップと復元方法の詳細については、[Azure Backup](../backup/backup-azure-vms-encryption.md) に関する記事を参照してください。 
+暗号化の前に[スナップショットの作成](../virtual-machines/windows/snapshot-copy-managed-disk.md)やディスクのバックアップを行うことを強くお勧めします。 バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。 マネージド ディスクを含む VM では、暗号化する前にバックアップが必要になります。 バックアップを作成したら、[Set-AzVMDiskEncryptionExtension cmdlet](/powershell/module/az.compute/set-azvmdiskencryptionextension) コマンドレットで -skipVmBackup パラメーターを指定して、マネージド ディスクを暗号化できます。 暗号化された VM のバックアップと復元方法の詳細については、「[暗号化された Azure VM をバックアップおよび復元する](../backup/backup-azure-vms-encryption.md)」を参照してください。
 
 >[!WARNING]
 > - これまで [Azure AD アプリで Azure Disk Encryption](azure-security-disk-encryption-prerequisites-aad.md) を使用してこの VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 この暗号化された VM に対して [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) を使用することはできません。それはサポートされていないシナリオであり、暗号化された VM 用の AAD アプリケーションからの切り替えはまだサポートされていないことを意味します。 
@@ -27,12 +27,12 @@ ms.locfileid: "59277121"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="bkmk_RunningWinVM"></a> 既存または実行中の IaaS Windows VM で暗号化を有効にする
-このシナリオでは、テンプレート、PowerShell コマンドレット、または CLI コマンドを使用して、暗号化を有効にすることができます。 次のセクションでは、Azure Disk Encryption を有効にする方法を詳しく説明します。 仮想マシンを拡張するためのスキーマの情報が必要な場合は、[Windows 用 Azure Disk Encryption 拡張機能](../virtual-machines/extensions/azure-disk-enc-windows.md)に関する記事を参照してください。
+テンプレート、PowerShell コマンドレット、または CLI コマンドを使用して、暗号化を有効にすることができます。 仮想マシンを拡張するためのスキーマの情報が必要な場合は、[Windows 用 Azure Disk Encryption 拡張機能](../virtual-machines/extensions/azure-disk-enc-windows.md)に関する記事を参照してください。
 
 >[!IMPORTANT]
- >Azure Disk Encryption を有効にする前に、Azure Disk Encryption 以外を使用して、マネージド ディスク ベースの VM インスタンスのスナップショットまたはバックアップ (またはその両方) を作成する必要があります。 マネージド ディスクのスナップショットは、ポータルから作成できます。[Azure Backup](../backup/backup-azure-vms-encryption.md) を使用することもできます。 バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。 バックアップを作成したら、Set-AzVMDiskEncryptionExtension コマンドレットを使用し、-skipVmBackup パラメーターを指定してマネージド ディスクを暗号化できます。 バックアップが作成されておらず、このパラメーターを指定していない場合、マネージド ディスク ベースの VM に対して、Set-AzVMDiskEncryptionExtension コマンドを実行するとエラーが発生します。 
+ > Azure Disk Encryption を有効にする前に、Azure Disk Encryption 以外を使用して、マネージド ディスク ベースの VM インスタンスのスナップショットまたはバックアップ (またはその両方) を作成する必要があります。 マネージド ディスクのスナップショットは、ポータルから作成できます。[Azure Backup](../backup/backup-azure-vms-encryption.md) を使用することもできます。 バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。 バックアップを作成したら、Set-AzVMDiskEncryptionExtension コマンドレットを使用し、-skipVmBackup パラメーターを指定してマネージド ディスクを暗号化できます。 バックアップが作成されておらず、このパラメーターを指定していない場合、マネージド ディスク ベースの VM に対して、Set-AzVMDiskEncryptionExtension コマンドを実行するとエラーが発生します。 
 >
->暗号化を有効または無効にすると、VM が再起動する場合があります。 
+> 暗号化を有効または無効にすると、VM が再起動する場合があります。 
 >
 
 ### <a name="bkmk_RunningWinVMPSH"></a> Azure PowerShell を使用して既存または実行中の VM で暗号化を有効にする 
@@ -122,7 +122,7 @@ ms.locfileid: "59277121"
 [実行中の Windows VM を暗号化するための Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)を使用して、Azure で既存または実行中の IaaS Windows VM に対してディスク暗号化を有効にすることができます。
 
 
-1. Azure クイックスタート テンプレートで、**[Azure に配置する]** をクリックします。
+1. Azure クイックスタート テンプレートで、 **[Azure に配置する]** をクリックします。
 
 2. サブスクリプション、リソース グループ、場所、設定、法律条項、および契約を選択します。 **[購入]** をクリックして、既存または実行中の IaaS VM で暗号化を有効にします。
 
@@ -131,7 +131,7 @@ ms.locfileid: "59277121"
 | パラメーター | 説明 |
 | --- | --- |
 | vmName | 暗号化操作を実行する VM の名前。 |
-| KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。 コマンドレット `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` または次の Azure CLI コマンドを使用して取得できます `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
+| KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。 コマンドレット `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` または Azure CLI コマンド `az keyvault list --resource-group "MyKeyVaultResourceGroup"` を使用して取得できます。|
 | keyVaultResourceGroup | キー コンテナーが含まれているリソース グループの名前|
 |  keyEncryptionKeyURL | 生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL。 このパラメーターは、UseExistingKek ドロップダウン リストで **nokek** を選択した場合には省略可能です。 UseExistingKek ドロップダウン リストで **kek** を選択した場合は、_keyEncryptionKeyURL_ 値を入力する必要があります。 |
 | volumeType | 暗号化操作が実行されるボリュームの種類。 有効な値は _OS_、_Data_、および _All_ です。 
@@ -177,7 +177,7 @@ ms.locfileid: "59277121"
    >[!NOTE]
    > disk-encryption-keyvault パラメーターの値の構文は、/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] という完全な識別子の文字列です。</br> key-encryption-key パラメーターの値の構文は、 https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] という KEK への完全な URI です。 
 
-- **仮想マシン スケール セットの暗号化状態を取得する:**[Get-AzVmssDiskEncryption](/powershell/module/az.compute/get-azvmssdiskencryption) コマンドレットを使用します。
+- **仮想マシン スケール セットの暗号化状態を取得する:** [Get-AzVmssDiskEncryption](/powershell/module/az.compute/get-azvmssdiskencryption) コマンドレットを使用します。
     
     ```azurepowershell-interactive
     get-AzVmssVMDiskEncryption -ResourceGroupName "MyVMScaleSetResourceGroup" -VMScaleSetName "MySecureVmss"
@@ -207,7 +207,7 @@ ms.locfileid: "59277121"
    >[!NOTE]
    > disk-encryption-keyvault パラメーターの値の構文は、/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] という完全な識別子の文字列です。</br> key-encryption-key パラメーターの値の構文は、 https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] という KEK への完全な URI です。 
 
-- **仮想マシン スケール セットの暗号化状態を取得する:**[az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show) を使用します
+- **仮想マシン スケール セットの暗号化状態を取得する:** [az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show) を使用します
 
     ```azurecli-interactive
      az vmss encryption show --resource-group "MyVMScaleSetResourceGroup" --name "MySecureVmss"

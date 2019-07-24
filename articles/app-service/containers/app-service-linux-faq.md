@@ -4,7 +4,7 @@ description: Azure App Service on Linux の FAQ
 keywords: Azure App Service、Web アプリ、FAQ、Linux、OSS、コンテナー用の Web アプリ、複数コンテナー、マルチコンテナー
 services: app-service
 documentationCenter: ''
-author: yili
+author: msangapu-msft
 manager: stefsch
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: yili
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: ec571555415a912a31b094722bd47f67210a0372
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525128"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617348"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -39,13 +39,15 @@ App Service on Linux のリリースでは、機能の追加とプラットフ�
 
 **ランタイム スタックを構成する場合、[スタートアップ ファイル] セクションではどのような値が有効ですか。**
 
-| スタック     | 必要な値                                                                |
-|-----------|-------------------------------------------------------------------------------|
-| Java SE   | ご自分の `.jar` アプリケーションを起動するコマンド                                    |
-| Tomcat    | アプリの構成を実行するスクリプトの場所          |
-| Node.js   | PM2 構成ファイルまたは独自のスクリプト ファイル                                |
-| .NET Core | `dotnet <myapp>.dll` としてコンパイルされた DLL 名                                 |
-| Ruby      | ご自分のアプリの初期化に使用する Ruby スクリプト                     |
+| スタック           | 必要な値                                                                         |
+|-----------------|----------------------------------------------------------------------------------------|
+| Java SE         | ご自分の JAR アプリを起動するコマンド (例: `java -jar my-app.jar --server.port=80`) |
+| Tomcat、Wildfly | 必要なすべての構成を実行するスクリプトの場所 (例: `/home/site/deployments/tools/startup_script.sh`)          |
+| Node.js         | PM2 構成ファイルまたは独自のスクリプト ファイル                                |
+| .NET Core       | `dotnet <myapp>.dll` としてコンパイルされた DLL 名                                 |
+| Ruby            | ご自分のアプリの初期化に使用する Ruby スクリプト                     |
+
+これらのコマンドまたはスクリプトは、組み込みの Docker コンテナーが開始されてから、アプリケーション コードが開始されるまでの間に実行されます。
 
 ## <a name="management"></a>管理
 
@@ -117,10 +119,7 @@ const io = require('socket.io')(server,{
 
 **自分が所有するカスタム コンテナーを使用しています。プラットフォームを SMB 共有の `/home/` ディレクトリにマウントさせたいと考えています。**
 
-これは、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を *true* に設定することで実現できます。 これにより、プラットフォームのストレージの変更時に、コンテナーの再起動が行われることに注意してください。
-
->[!NOTE]
->`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が指定されていない場合や *false* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で共有されず、このディレクトリに書き込まれたファイルは再起動後には保持されません。
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が**指定されていない**場合や *true* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で**共有され**、書き込まれたファイルは再起動後も**保持されます**。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` を明示的に *false* に設定すると、マウントが無効になります。
 
 **カスタム コンテナーの起動に時間がかかり、起動が終了する前にプラットフォームがコンテナーを再起動します。**
 
@@ -136,7 +135,7 @@ const io = require('socket.io')(server,{
 
 **カスタム コンテナー イメージで複数のポートを公開できますか。**
 
-複数のポートの公開は現在サポートされていません。
+複数のポートの公開はサポートされていません。
 
 **自分が所有するストレージを持ち込むことはできますか?**
 
@@ -154,11 +153,11 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 
 いいえ、共有フロントエンドでの HTTPS の終了はプラットフォームが処理します。
 
-## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Docker Compose と Kubernetes を使用した複数コンテナー
+## <a name="multi-container-with-docker-compose"></a>Docker Compose を使用した複数コンテナー
 
 **複数コンテナーで使用するように、Azure Container Registry (ACR) を構成する方法を教えてください。**
 
-複数コンテナーで ACR を使用するには、**すべてのコンテナー イメージ**を同じ ACR レジストリ サーバーでホストする必要があります。 コンテナーを同じレジストリ サーバーに配置したら、アプリケーション設定を作成し、Docker Compose または Kubernetes の構成ファイルに ACR のイメージ名を含めて更新する必要があります。
+複数コンテナーで ACR を使用するには、**すべてのコンテナー イメージ**を同じ ACR レジストリ サーバーでホストする必要があります。 コンテナーを同じレジストリ サーバーに配置したら、アプリケーション設定を作成し、Docker Compose の構成ファイルに ACR のイメージ名を含めて更新する必要があります。
 
 次のアプリケーション設定を作成します。
 

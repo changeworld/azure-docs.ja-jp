@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 41cf5f8bcc69e181350a63d215fb0d78d43dcfdf
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399998"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67272820"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビューにおける委任されたアクセス
 
@@ -42,11 +42,11 @@ Windows Virtual Desktop の委任されたアクセスには、ユーザーお�
 
 ## <a name="powershell-cmdlets-for-role-assignments"></a>ロール割り当てを目的とした PowerShell のコマンドレット
 
-次のコマンドレットを実行して、ロール割り当てを作成、表示、編集できます。
+次のコマンドレットを実行して、ロールの割り当てを作成、表示、削除できます。
 
 * **Get-RdsRoleAssignment** はロール割り当ての一覧を表示します。
 * **New-RdsRoleAssignment** は新しいロール割り当てを作成します。
-* **Set-RdsRoleAssignment** はロール割り当てを編集します。
+* **Remove-RdsRoleAssignment** はロールの割り当てを削除します。
 
 ### <a name="accepted-parameters"></a>使用できるパラメーター
 
@@ -54,10 +54,10 @@ Windows Virtual Desktop の委任されたアクセスには、ユーザーお�
 
 * **AadTenantId**: サービス プリンシパルがメンバーとなる Azure Active Directory テナント ID を指定します。
 * **AppGroupName**: リモート デスクトップのアプリ グループの名前です。
-* **Diagnostics**: 診断のスコープを示します  (**Infrastructure** または **Tenant** パラメーターのいずれかと組み合わせる必要があります)。
+* **Diagnostics**: 診断のスコープを示します (**Infrastructure** または **Tenant** パラメーターのいずれかと組み合わせる必要があります)。
 * **HostPoolName**: リモート デスクトップのホスト プールの名前です。
 * **Infrastructure**: インフラストラクチャのスコープを示します。
-* **RoleDefinitionName**: ユーザー、グループ、またはアプリに割り当てられているリモート デスクトップ サービスのロールベース アクセス制御のロールの名前  (リモート デスクトップ サービスの所有者、リモート デスクトップ サービスの閲覧者など)。
+* **RoleDefinitionName**: ユーザー、グループ、またはアプリに割り当てられているリモート デスクトップ サービスのロールベース アクセス制御のロールの名前 (リモート デスクトップ サービスの所有者、リモート デスクトップ サービスの閲覧者など)。
 * **ServerPrincipleName**: Azure Active Directory アプリケーションの名前。
 * **SignInName**: ユーザーの電子メール アドレスまたはユーザー プリンシパル名。
 * **TenantName**: リモート デスクトップ テナントの名前。

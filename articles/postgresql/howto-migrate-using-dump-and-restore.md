@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: aa9485ec8fcabdc0276e0598bd3e19f04d70dfa1
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65066980"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースの移行
@@ -61,7 +61,7 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 >
 
 ### <a name="for-the-backup"></a>バックアップ
-- バックアップと平行して復元を行うことで処理をスピードアップできるよう､バックアップには -FC スイッチを使用します｡ 例: 
+- バックアップと平行して復元を行うことで処理をスピードアップできるよう､バックアップには -FC スイッチを使用します｡ 例:
 
     ```
     pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName > Z:\Data\Backups\MyDatabaseBackup.dump
@@ -72,7 +72,7 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 
 - 既定では、すでにその設定になっているはずですが､ダンプ ファイルを開いて､データの insert 後に create index ステートメントがあることを確認してください｡ そのようになっていない場合は、データの insert の後に create index ステートメントを移動します。
 
-- -fc および -j *#* スイッチを付けて復元することで､復元を並列処理します。 *#* ターゲット サーバーのコアの数です。 *#* をターゲット サーバーのコア数の 2 倍に設定することで､その影響を確認することもできます｡ 例: 
+- -fc および -j *#* スイッチを付けて復元することで､復元を並列処理します。 *#* ターゲット サーバーのコアの数です。 *#* をターゲット サーバーのコア数の 2 倍に設定することで､その影響を確認することもできます｡ 例:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump

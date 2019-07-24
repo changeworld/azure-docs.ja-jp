@@ -1,21 +1,21 @@
 ---
-title: チュートリアル:Azure Data Lake Storage から Azure SQL Data Warehouse に読み込む | Microsoft Docs
+title: 'チュートリアル: Azure Data Lake Storage から Azure SQL Data Warehouse に読み込む | Microsoft Docs'
 description: PolyBase 外部テーブルを使用して Azure Data Lake Storage から Azure SQL Data Warehouse にデータを読み込みます。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
-ms.date: 04/26/2019
+ms.subservice: load-data
+ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9d6a2c097a6040e7c005cc0feeefd59caf352441
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.openlocfilehash: cbf642b47e4233cec2e2d860288b3bb35b419cf2
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65850496"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304167"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake Storage から Azure SQL Data Warehouse へのデータの読み込み
 PolyBase 外部テーブルを使用して Azure Data Lake Storage から Azure SQL Data Warehouse にデータを読み込みます。 Data Lake Storage の格納データに対してアドホック クエリを実行できますが、最高のパフォーマンスを得るには、SQL Data Warehouse にデータをインポートすることをお勧めします。
@@ -109,7 +109,7 @@ WITH (
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
-    LOCATION='abfs://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
+    LOCATION='abfss://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
     CREDENTIAL = ADLSCredential
 );
 ```
@@ -171,7 +171,7 @@ WITH
 外部テーブルは厳密に型指定されます。 これは、取り込むデータの各行がテーブルのスキーマ定義を満たす必要があることを意味します。
 ある行がスキーマ定義に一致しない場合、その行の読み込みは拒否されます。
 
-REJECT_TYPE および REJECT_VALUE オプションでは､最終のテーブルに存在する必要がある行数またはデータの割合を定義することができます｡  読み込み中に値が定義した数または割合に達すると、読み込み操作が失敗します。 行が拒否される最も一般的な原因は、スキーマ定義との不一致です。 たとえば、ファイルに含まれるデータが文字列の場合に、列に int 型のスキーマが指定されていると、すべての行の読み込みが失敗します。
+REJECT_TYPE および REJECT_VALUE オプションでは､最終のテーブルに存在する必要がある行数またはデータの割合を定義することができます｡ 読み込み中に値が定義した数または割合に達すると、読み込み操作が失敗します。 行が拒否される最も一般的な原因は、スキーマ定義との不一致です。 たとえば、ファイルに含まれるデータが文字列の場合に、列に int 型のスキーマが指定されていると、すべての行の読み込みが失敗します。
 
 Data Lake Storage Gen1 は、ロール ベースのアクセス制御 (RBAC) を使って、データへのアクセスを制御します。 つまり、サービス プリンシパルは、Location パラメーターで定義されているディレクトリと、最終的なディレクトリとファイルの子に対する、読み取りアクセス許可を持っている必要があります。 これにより、PolyBase は認証を行って、そのデータを読み込むことができます。 
 

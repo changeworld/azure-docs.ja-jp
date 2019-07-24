@@ -4,17 +4,17 @@ description: インクルード ファイル
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 7d8773cc12b50382f6f300987ec6ce504cd238af
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3fd610512a87263eeb6599a24faef5ba23070823
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131680"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608259"
 ---
 [Application Insights のサンプリング機能](../articles/azure-functions/functions-monitoring.md#configure-sampling)を制御します。
 

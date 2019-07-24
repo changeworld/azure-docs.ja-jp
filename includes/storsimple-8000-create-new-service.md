@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 54a1bc9ce04cf10575b26cda7861c1dd458dc831
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156125"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181224"
 ---
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
 
@@ -19,7 +19,7 @@ ms.locfileid: "66156125"
 
     ![StorSimple デバイス マネージャーの作成](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    "_StorSimple 物理_" を検索します。 **[StorSimple 物理デバイス シリーズ]** を選択してクリックし、**[作成]** をクリックします。 または、Azure Portal で **+** をクリックし、**[ストレージ]** で **[StorSimple 物理デバイス シリーズ]** をクリックします。
+    "_StorSimple 物理_" を検索します。 **[StorSimple 物理デバイス シリーズ]** を選択してクリックし、 **[作成]** をクリックします。 または、Azure Portal で **+** をクリックし、 **[ストレージ]** で **[StorSimple 物理デバイス シリーズ]** をクリックします。
 
     ![StorSimple デバイス マネージャーの作成](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "66156125"
 
    5. **[新しいストレージ アカウントを作成する]** をオンにすると、サービスの作成時にストレージ アカウントが自動的に作成されます。 このストレージ アカウントの名前を指定します。 別の場所でデータが必要になる場合、このボックスをオフにします。
 
-   6. ダッシュボードにこのサービスへのクイック リンクが必要な場合、**[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
+   6. ダッシュボードにこのサービスへのクイック リンクが必要な場合、 **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
       
    7. **[作成]** をクリックして、StorSimple デバイス マネージャーを作成します。
 

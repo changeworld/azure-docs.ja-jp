@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: 8d3885ba25e479316f97ecbb0681a1680650fc09
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996664"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61083620"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Azure Automation Runbook を使用してラボで仮想マシンを順番に起動する
 DevTest Labs の[自動起動](devtest-lab-set-lab-policy.md#set-autostart)機能を使用すると、指定した時間に自動的に VM が起動するように構成できます。 ただし、この機能は、特定の順序で起動するマシンをサポートしていません。 このタイプのオートメーションに役立つシナリオがいくつかあります。  1 つのシナリオは、Jumpbox が他の VM へのアクセス ポイントとして使用されているため、ラボ内の Jumpbox VM を他の VM より先に起動する必要がある場合です。  この記事では、スクリプトを実行する PowerShell Runbook を使用して Azure Automation アカウントを設定する方法を説明します。 スクリプトでは、ラボの VM 上のタグを使用して、スクリプトを変更しなくても起動順序を制御できるようにします。
@@ -26,7 +26,7 @@ DevTest Labs の[自動起動](devtest-lab-set-lab-policy.md#set-autostart)機�
 この例では、ラボの VM に、適切な値 (0、1、2 など) を付けてタグ **StartupOrder** を追加する必要があります。 起動する必要がないマシンを -1 に指定します。
 
 ## <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
-Azure Automation アカウントは、[こちらの記事](../automation/automation-create-standalone-account.md)の手順に従って作成します。 アカウントを作成するときに、**[アカウントとして実行]** オプションを選択します。 Automation アカウントが作成されたら、**[モジュール]** ページを開き、メニューバーの **[Azure モジュールの更新]** を選択します。 既定のモジュールは数バージョン古いため、更新プログラムがないとスクリプトが機能しない可能性があります。
+Azure Automation アカウントは、[こちらの記事](../automation/automation-create-standalone-account.md)の手順に従って作成します。 アカウントを作成するときに、 **[アカウントとして実行]** オプションを選択します。 Automation アカウントが作成されたら、 **[モジュール]** ページを開き、メニューバーの **[Azure モジュールの更新]** を選択します。 既定のモジュールは数バージョン古いため、更新プログラムがないとスクリプトが機能しない可能性があります。
 
 ## <a name="add-a-runbook"></a>Runbook を追加する
 ここで、Runbook を Automation アカウントに追加するには、左側のメニューで **[Runbook]** を選択します。 メニューの **[Runbook の追加]** を選択し、指示に従って [PowerShell Runbook を作成](../automation/automation-first-runbook-textual-powershell.md)します。

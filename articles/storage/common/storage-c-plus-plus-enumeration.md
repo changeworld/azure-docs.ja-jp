@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: dineshm
 ms.subservice: common
 ms.openlocfilehash: edf50b97ff25a67b41bad266df9236145f288409
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65146877"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>C++ での Azure Storage のリソース一覧の取得
@@ -35,7 +35,7 @@ ms.locfileid: "65146877"
 これらの各方法については、シナリオごとに異なるオーバーロードを使用して示します。
 
 ## <a name="asynchronous-versus-synchronous"></a>非同期と同期
-C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。 例: 
+C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。 例:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;

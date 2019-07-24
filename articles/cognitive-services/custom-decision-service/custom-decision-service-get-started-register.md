@@ -12,11 +12,11 @@ ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
 ms.openlocfilehash: c56aef180f5e16d2ec1931caabe04295ef288ca9
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980688"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60509791"
 ---
 # <a name="register-your-application"></a>アプリケーションの登録
 
@@ -28,11 +28,11 @@ ms.locfileid: "55980688"
 
     まだサインインしていない場合は、[Microsoft アカウント](https://account.microsoft.com/account)を使用してサインインするように求められます。 ポータルにサインインすると、Microsoft アカウントがページの右上隅に表示されます。
 
-2. アプリケーションを追加するために、**[新しいアプリ]** ボタンをクリックします。
+2. アプリケーションを追加するために、 **[新しいアプリ]** ボタンをクリックします。
 
 3. ダイアログ ボックスで、アプリケーションのアプリ ID を選択します。 Custom Decision Service では、アプリケーションごとに一意の ID が必要です。 この ID が既に他のユーザーによって使用されている場合は、別の ID を選択するように求められます。
 
-4. Action Set API を指定します。 この設定は、アプリケーションの利用可能なコンテンツを Custom Decision Service に伝達する RSS または Atom フィードです。 フィードの名前を入力し、提供元の URL を入力します。 この手順を後で実行するには、**[フィード]** ボタンをクリックし、**[新しいフィード]** ボタンをクリックします。 RSS フィードを作成する例については後述します。
+4. Action Set API を指定します。 この設定は、アプリケーションの利用可能なコンテンツを Custom Decision Service に伝達する RSS または Atom フィードです。 フィードの名前を入力し、提供元の URL を入力します。 この手順を後で実行するには、 **[フィード]** ボタンをクリックし、 **[新しいフィード]** ボタンをクリックします。 RSS フィードを作成する例については後述します。
 
 5. アプリケーションを登録するために、左下隅にある **[カスタム アプリ]** チェック ボックスをオンにします。 アプリケーション データが記録されている Azure ストレージ アカウントの[接続文字列](../../storage/common/storage-configure-connection-string.md)を入力します。 ストレージ アカウントの作成方法の詳細については、[ストレージ アカウントを作成、管理、削除する方法](../../storage/common/storage-create-storage-account.md)に関するページを参照してください。
 

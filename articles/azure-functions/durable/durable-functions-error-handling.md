@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f3d7f916d31a03d7b868749026f541dd646459f6
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 79af90d1c2c5b698ee7394f7fb20486b3069038c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608624"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66751947"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions のエラー処理 (Azure Functions)
 
-Durable Function のオーケストレーションはコードで実装され、プログラミング言語のエラー処理機能を使用できます。 この点を考慮すると、エラー処理と補正をオーケストレーションに組み込むときに知っておく必要がある新しい概念は実際にはありません。 ただし、注意する必要があるいくつかの動作があります。
+Durable Function のオーケストレーションはコードで実装され、プログラミング言語のエラー処理機能を使用できます。 この点を考慮すると、エラー処理と補正をオーケストレーションに組み込む場合について知っておく必要がある新しい概念は実際にはありません。 ただし、注意する必要があるいくつかの動作があります。
 
 ## <a name="errors-in-activity-functions"></a>アクティビティ関数のエラー
 

@@ -14,11 +14,11 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6877c3e547d625cf58129a546dae798b37a24ae
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000897"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60469096"
 ---
 # <a name="assign-azure-active-directory-admin-roles-using-powershell"></a>PowerShell を使用して Azure Active Directory の管理者ロールを割り当てる
 

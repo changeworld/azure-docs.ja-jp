@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
+ms.author: glenga
+ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 8f4689e7d8d5af1aba2f31aac0359494a3a259f5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749921"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613379"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -74,18 +75,18 @@ when making changes in one don't forget the other two.
 
    ![Web ジョブを選択する](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. **[Web ジョブ]** ページで、**[追加]** を選択します。
+2. **[Web ジョブ]** ページで、 **[追加]** を選択します。
 
     ![[Web ジョブ] ページ](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. **[Web ジョブの追加]** 設定を、次の表に示されているように使用します。
+3. **[Web ジョブの追加]**  設定を、次の表に示されているように使用します。
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
    | Setting      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
-   | **[名前]** | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
-   | **[ファイルのアップロード]** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
+   | **[名前]**  | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
+   | **[ファイルのアップロード]**  | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
    | **種類** | 継続的 | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **スケール** | 複数のインスタンス | 継続的 Web ジョブでのみ使用できます。 プログラムまたはスクリプトがすべてのインスタンスで実行されるか、1 つのインスタンスだけで実行されるかどうかを決定します。 複数のインスタンスで実行するオプションは、Free または Shared [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)には適用されません。 | 
 
@@ -95,7 +96,7 @@ when making changes in one don't forget the other two.
 
    ![Web ジョブの一覧](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-2. 継続的 Web ジョブを開始または停止するには、一覧の Web ジョブを右クリックし、**[停止]** または **[開始]** をクリックします。
+2. 継続的 Web ジョブを開始または停止するには、一覧の Web ジョブを右クリックし、 **[停止]** または **[開始]** をクリックします。
 
     ![継続的 Web ジョブを停止する](./media/web-sites-create-web-jobs/continuousstop.png)
 
@@ -112,20 +113,20 @@ when making changes in one don't forget the other two.
 
    ![Web ジョブを選択する](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. **[Web ジョブ]** ページで、**[追加]** を選択します。
+2. **[Web ジョブ]** ページで、 **[追加]** を選択します。
 
     ![[Web ジョブ] ページ](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. **[Web ジョブの追加]** 設定を、次の表に示されているように使用します。
+3. **[Web ジョブの追加]**  設定を、次の表に示されているように使用します。
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
    | Setting      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
-   | **[名前]** | myTriggeredWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。|
-   | **[ファイルのアップロード]** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
-   | **[種類]** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
-   | **[トリガー]** | マニュアル | |
+   | **[名前]**  | myTriggeredWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。|
+   | **[ファイルのアップロード]**  | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
+   | **[種類]**  | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
+   | **[トリガー]**  | マニュアル | |
 
 4. Click **OK**.
 
@@ -150,21 +151,21 @@ when making changes in one don't forget the other two.
 
    ![Web ジョブを選択する](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. **[Web ジョブ]** ページで、**[追加]** を選択します。
+2. **[Web ジョブ]** ページで、 **[追加]** を選択します。
 
    ![[Web ジョブ] ページ](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. **[Web ジョブの追加]** 設定を、次の表に示されているように使用します。
+3. **[Web ジョブの追加]**  設定を、次の表に示されているように使用します。
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
    | Setting      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
-   | **[名前]** | myScheduledWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
-   | **[ファイルのアップロード]** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
-   | **[種類]** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
-   | **[トリガー]** | スケジュール | スケジュールを確実に動作させるために、Always On 機能を有効にします。 Always On 機能は、Basic、Standard、および Premium の価格レベルでのみ利用できます。|
-   | **[CRON 式]** | 0 0/20 * * * * | [CRON 式](#cron-expressions)については、次のセクションで説明します。 |
+   | **[名前]**  | myScheduledWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
+   | **[ファイルのアップロード]**  | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
+   | **[種類]**  | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
+   | **[トリガー]**  | スケジュール | スケジュールを確実に動作させるために、Always On 機能を有効にします。 Always On 機能は、Basic、Standard、および Premium の価格レベルでのみ利用できます。|
+   | **[CRON 式]**  | 0 0/20 * * * * | [CRON 式](#cron-expressions)については、次のセクションで説明します。 |
 
 4. Click **OK**.
 
@@ -186,7 +187,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="ViewJobHistory"></a>ジョブ履歴を表示する
 
-1. 履歴を表示する Web ジョブを選択し、**[ログ]** ボタンを選択します。
+1. 履歴を表示する Web ジョブを選択し、 **[ログ]** ボタンを選択します。
    
    ![[ログ] ボタン](./media/web-sites-create-web-jobs/wjbladelogslink.png)
 
@@ -194,11 +195,11 @@ when making changes in one don't forget the other two.
    
    ![Web ジョブの詳細](./media/web-sites-create-web-jobs/webjobdetails.png)
 
-3. **[WebJob Run Details]\(Web ジョブの実行の詳細\)** ページで、**[出力の切り替え]** を選択すると、ログの内容のテキストが表示されます。
+3. **[WebJob Run Details]\(Web ジョブの実行の詳細\)** ページで、 **[出力の切り替え]** を選択すると、ログの内容のテキストが表示されます。
    
     ![Web ジョブ実行の詳細](./media/web-sites-create-web-jobs/webjobrundetails.png)
 
-   出力されるテキストを別のブラウザー ウィンドウに表示するには、**[ダウンロード]** を選択します。 テキスト自体をダウンロードするには、**[ダウンロード]** を右クリックし、ブラウザーのオプションを使用してファイルの内容を保存します。
+   出力されるテキストを別のブラウザー ウィンドウに表示するには、 **[ダウンロード]** を選択します。 テキスト自体をダウンロードするには、 **[ダウンロード]** を右クリックし、ブラウザーのオプションを使用してファイルの内容を保存します。
    
 5. Web ジョブの一覧に移動するには、ページの上部にある **[Web ジョブ]** 階層リンクを選択します。
 

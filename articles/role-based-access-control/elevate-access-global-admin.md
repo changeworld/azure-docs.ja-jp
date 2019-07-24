@@ -16,10 +16,10 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ede7037aabc85739ee47636f1390c15e0b0d1639
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158416"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
@@ -53,7 +53,7 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
 
 1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)に全体管理者としてサインインします。
 
-1. ナビゲーション リストで **[Azure Active Directory]**、**[プロパティ]** の順にクリックします。
+1. ナビゲーション リストで **[Azure Active Directory]** 、 **[プロパティ]** の順にクリックします。
 
    ![Azure AD のプロパティ - スクリーンショット](./media/elevate-access-global-admin/aad-properties.png)
 
@@ -79,7 +79,7 @@ Azure portal を使用して全体管理者のアクセス権を昇格するに�
 
     ロールの割り当て方法については、「[RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)」を参照してください。 Azure AD Privileged Identity Management (PIM) を使用している場合、「[PIM で管理する Azure リソースを検出する](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)」または「[PIM で Azure リソース ロールを割り当てる](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)」を参照してください。
 
-1. 完了したら、**[Azure リソースのアクセス管理]** を **[いいえ]** に戻します。 これはユーザー別の設定であるため、アクセスの昇格に使用したユーザーでサインインする必要があります。
+1. 完了したら、 **[Azure リソースのアクセス管理]** を **[いいえ]** に戻します。 これはユーザー別の設定であるため、アクセスの昇格に使用したユーザーでサインインする必要があります。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

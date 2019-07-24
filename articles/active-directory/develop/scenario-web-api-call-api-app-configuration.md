@@ -15,18 +15,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dedef2d22df9c8c81410296bdb0c4814bd98b80
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f62cf65e275d8a9b909bf60103ccbd84e91e4574
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507123"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65785064"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Web API を呼び出す Web API - コードの構成
 
 Web API を登録した後は、アプリケーションのコードを構成することができます。
 
-ダウンストリーム Web API を呼び出すように Web API を構成するコードは、Web API を投影するために使用されるコードの上に構築されます。 詳細については、「[保護された Web API - アプリ構成](scenario-protected-web-api-app-configuration.md)」をご覧ください。
+ダウンストリーム Web API を呼び出すように Web API を構成するコードは、Web API を保護するために使用されるコードの上に構築されます。 詳細については、「[保護された Web API - アプリ構成](scenario-protected-web-api-app-configuration.md)」をご覧ください。
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>OnTokenValidated をサブスクライブするコード
 
@@ -74,7 +74,7 @@ AddAccountToCacheFromJwt() メソッドは次を実行する必要がありま�
 
 ### <a name="instantiate-a-confidential-client-application"></a>機密クライアントをインスタンス化する
 
-このフローは機密クライアント フローでのみ使用可能なため、保護された Web API は、クライアントの資格情報 (クライアント シークレットまたは証明書) を、それぞれ `WithClientSecret` メソッドまたは `WithCertificate` メソッドを介して [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.appconfig.confidentialclientapplicationbuilder?view=azure-dotnet-preview) に提供します。
+このフローは機密クライアント フローでのみ使用可能なため、保護された Web API は、クライアントの資格情報 (クライアント シークレットまたは証明書) を、それぞれ `WithClientSecret` メソッドまたは `WithCertificate` メソッドを介して [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) に提供します。
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -96,7 +96,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 ### <a name="how-to-call-on-behalf-of"></a>On-behalf-of を呼び出す方法
 
-on-behalf-of (OBO) 呼び出しは、`IConfidentialClientApplication` インターフェイスで [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.apiconfig.acquiretokenonbehalfofparameterbuilder?view=azure-dotnet-preview) メソッドを呼び出すことによって行われます。
+on-behalf-of (OBO) 呼び出しは、`IConfidentialClientApplication` インターフェイスで [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) メソッドを呼び出すことによって行われます。
 
 `ClientAssertion` は、独自のクライアントから Web API で受信されたベアラー トークンから構築されます。 [2 つのコンストラクター](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)、すなわち JWT ベアラー トークンを取るものと、任意の種類のユーザー アサーション (別の種類のセキュリティ トークン。その型は、`assertionType` という名前の追加パラメーターに指定される) を取るものがあります。
 

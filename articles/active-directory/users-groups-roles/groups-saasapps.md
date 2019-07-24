@@ -15,11 +15,11 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 873863016d6dc54c7439ec1f46180b3c063bda19
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173630"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60470417"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>SaaS アプリケーションへのアクセスをグループで管理する
 
@@ -30,11 +30,11 @@ Azure Active Directory (Azure AD) の Azure AD Premium ライセンスまたは 
 
 **SaaS アプリケーションにユーザーまたはグループに対するアクセス権を割り当てるには**
 
-1. [Azure AD 管理センター](https://aad.portal.azure.com)で、**[エンタープライズ アプリケーション]** を選択します。
+1. [Azure AD 管理センター](https://aad.portal.azure.com)で、 **[エンタープライズ アプリケーション]** を選択します。
 2. アプリケーション ギャラリーから追加したアプリケーションをクリックして開きます。
-3. **[ユーザーとグループ]**、**[ユーザーの追加]** の順に選択します。
-4. **[割り当ての追加]** で **[ユーザーとグループ]** を選択し、**[ユーザーとグループ]** 選択リストを開きます。
-6. 必要な数のグループまたはユーザーを選択して **[選択]** をクリックまたはタップし、**[割り当ての追加]** リストに追加します。 ユーザーに対するロールの割り当ても、この段階で行います。
+3. **[ユーザーとグループ]** 、 **[ユーザーの追加]** の順に選択します。
+4. **[割り当ての追加]** で **[ユーザーとグループ]** を選択し、 **[ユーザーとグループ]** 選択リストを開きます。
+6. 必要な数のグループまたはユーザーを選択して **[選択]** をクリックまたはタップし、 **[割り当ての追加]** リストに追加します。 ユーザーに対するロールの割り当ても、この段階で行います。
 7. **[割り当て]** を選択し、選択したエンタープライズ アプリケーションにユーザーまたはグループを割り当てます。
 
 ### <a name="next-steps"></a>次の手順

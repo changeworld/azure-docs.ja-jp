@@ -9,11 +9,11 @@ ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 25eb111871bbe3b18f59b0d6c123c72f3e55c859
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737112"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60498714"
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
 
@@ -25,14 +25,14 @@ ms.locfileid: "56737112"
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure Portal を使用してサーバー管理者を追加するには
 
 1. ポータルで、サーバーの **[Analysis Services 管理者]** をクリックします。
-2. **[\<サーバー名> - Analysis Services 管理者]** で、**[追加]** をクリックします。
+2. **[\<サーバー名> - Analysis Services 管理者]** で、 **[追加]** をクリックします。
 3. **[サーバー管理者を追加します]** で、Azure AD からユーザー アカウントを選択するか、メール アドレスで外部のユーザーを招待します。
 
     ![Azure Portal のサーバー管理者](./media/analysis-services-server-admins/aas-manage-users-admins.png)
 
 ## <a name="to-add-server-administrators-by-using-ssms"></a>SSMS を使用してサーバー管理者を追加するには
 
-1. サーバーを右クリックして、**[プロパティ]** をクリックします。
+1. サーバーを右クリックして、 **[プロパティ]** をクリックします。
 2. **[分析サーバーのプロパティ]** で **[セキュリティ]** をクリックします。
 3. **[追加]** をクリックし、Azure AD のユーザーまたはグループのメール アドレスを入力します。
    

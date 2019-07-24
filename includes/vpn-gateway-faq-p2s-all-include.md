@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/18/2019
+ms.date: 05/23/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f72ce02a8655ea97497098dc1412f69e07686861
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66147021"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056493"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
@@ -38,11 +38,13 @@ ms.locfileid: "66147021"
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>プロキシやファイアウォールを経由してポイント対サイト接続の機能を使用できますか。
 
-Azure では、ポイント対サイト VPN のオプションを 2 種類サポートしています:
+Azure では、次の 3 種類のポイント対サイト VPN オプションをサポートしています。
 
-* Secure Socket Tunneling Protocol (SSTP)。 SSTP は Microsoft 独自の SSL ベースのソリューションです。このソリューションは、ほとんどのファイアウォールが 443 SSL で使用する TCP ポートを開いていることを利用し、ファイアウォールを通過することができるようになっています。
+* Secure Socket Tunneling Protocol (SSTP)。 SSTP は、ほとんどのファイアウォールが 443 SSL で使用される送信 TCP ポートを開いているためにファイアウォールを通過できる、Microsoft 独自の SSL ベースのソリューションです。
 
-* IKEv2 VPN。 IKEv2 VPN は、標準ベースの IPsec VPN ソリューションであり、UDP ポート 500 と 4500 のほか、IP プロトコル番号  50 を使用しています。 ファイアウォールでここに挙げたポートが必ずしも開いているとは限りません。このため、IKEv2 VPN ではプロキシとファイアウォールを通過できないことがあります。
+* OpenVPN。 OpenVPN は、ほとんどのファイアウォールが 443 SSL で使用される送信 TCP ポートを開いているためにファイアウォールを通過できる、SSL ベースのソリューションです。
+
+* IKEv2 VPN。 IKEv2 VPN は標準ベースの IPsec VPN ソリューションであり、送信 UDP ポート 500 と 4500 のほか、IP プロトコル番号 50 を使用しています。 ファイアウォールでここに挙げたポートが必ずしも開いているとは限りません。このため、IKEv2 VPN ではプロキシとファイアウォールを通過できないことがあります。
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>ポイント対サイト接続用に構成されたクライアント コンピューターを再起動した場合、VPN は自動的に再接続されますか。
 
@@ -66,7 +68,7 @@ VPN トンネルのスループットを正確に一定レベルに維持する�
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>SSTP や IKEv2 をサポートしているポイント対サイト接続では、ソフトウェア VPN クライアントを使用できますか。
 
-いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
+いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 ただし、すべてのプラットフォーム上で OpenVPN クライアントを使用して、OpenVPN プロトコル経由で接続できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure は、Windows で IKEv2 VPN をサポートしていますか。
 

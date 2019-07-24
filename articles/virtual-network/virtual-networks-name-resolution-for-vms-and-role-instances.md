@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
 ms.openlocfilehash: e0f3de95cfd4a18294e5e8e2adcf3b52a7487dbb
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411352"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
@@ -70,7 +70,7 @@ Azure で提供される名前解決の機能を次に示します。
 Azure で提供される名前解決を使用する場合の考慮事項を次に示します。
 * Azure によって作成される DNS サフィックスは変更できません。
 * 独自のレコードを手動で登録することはできません。
-* WINS と NetBIOS はサポートされません  Windows エクスプローラーに VM を表示することはできません。
+* WINS と NetBIOS はサポートされません Windows エクスプローラーに VM を表示することはできません。
 * ホスト名は DNS 互換である必要があります。 名前に使用できる文字は 0-9、a-z、および "-" のみであり、最初または最後の文字として "-" は使用できません。
 * DNS クエリ トラフィックは VM ごとに調整されます。 調整は、ほとんどのアプリケーションに影響がありません。 要求の調整が発生した場合は、クライアント側のキャッシュが有効になっていることを確認します。 詳細については、「[DNS クライアントの構成](#dns-client-configuration)」を参照してください。
 * 最初の 180 のクラウド サービス内の VM だけが、クラシック デプロイ モデルの各仮想ネットワークに対して登録されます。 この制限は、Azure Resource Manager の仮想ネットワークには適用されません。
@@ -88,15 +88,15 @@ DNS クエリには、ネットワーク経由で送信する必要がないも�
 
 多数のさまざまな DNS キャッシュ パッケージ (dnsmasq など) を使用できます。 最も一般的なディストリビューションに dnsmasq をインストールする方法を次に示します。
 
-* **Ubuntu (resolvconf を使用)**:
+* **Ubuntu (resolvconf を使用)** :
   * `sudo apt-get install dnsmasq` を使用して dnsmasq パッケージをインストールします。
-* **SUSE (netconf を使用)**:
+* **SUSE (netconf を使用)** :
   * `sudo zypper install dnsmasq` を使用して dnsmasq パッケージをインストールします。
   * `systemctl enable dnsmasq.service` を使用して、dnsmasq サービスを有効にします。 
   * `systemctl start dnsmasq.service` を使用して、dnsmasq サービスを開始します。 
   * **/etc/sysconfig/network/config** を編集して、*NETCONFIG_DNS_FORWARDER=""* を *dnsmasq* に変更します。
   * `netconfig update` を使用して resolv.conf を更新し、キャッシュをローカル DNS リゾルバーとして設定します。
-* **CentOS (NetworkManager を使用)**: 
+* **CentOS (NetworkManager を使用)** :
   * `sudo yum install dnsmasq` を使用して dnsmasq パッケージをインストールします。
   * `systemctl enable dnsmasq.service` を使用して、dnsmasq サービスを有効にします。
   * `systemctl start dnsmasq.service` を使用して、dnsmasq サービスを開始します。
@@ -129,7 +129,7 @@ resolv.conf ファイルは通常は自動生成され、編集すべきでは�
 * **SUSE** (netconf を使用):
   1. *timeout:1 attempts:5* を **/etc/sysconfig/network/config** の **NETCONFIG_DNS_RESOLVER_OPTIONS=""** パラメーターに追加します。
   2. `netconfig update` を実行して更新します。
-* **CentOS** (NetworkManager を使用): 
+* **CentOS** (NetworkManager を使用):
   1. *echo "options timeout:1 attempts:5"* を **/etc/NetworkManager/dispatcher.d/11-dhclient** に追加します。
   2. `service network restart` を使用して更新します。
 
@@ -154,7 +154,7 @@ resolv.conf ファイルは通常は自動生成され、編集すべきでは�
 
 ![仮想ネットワーク間の DNS の図](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
-Azure で提供される名前解決を使用している場合、Azure の動的ホスト構成プロトコル (DHCP) によって内部 DNS サフィックス (**.internal.cloudapp.net**) が各 VM に提供されます。 ホスト名のレコードは **internal.cloudapp.net** ゾーン内に存在するため、このサフィックスによってホスト名を解決できます。 独自の名前解決ソリューションを使用している場合、このサフィックスは他の DNS アーキテクチャ (ドメイン参加シナリオなど) に干渉するため、VM には提供されません。 代わりに、Azure によって、機能を持たないプレース ホルダー (*reddog.microsoft.com*) が提供されます。
+Azure で提供される名前解決を使用している場合、Azure の動的ホスト構成プロトコル (DHCP) によって内部 DNS サフィックス ( **.internal.cloudapp.net**) が各 VM に提供されます。 ホスト名のレコードは **internal.cloudapp.net** ゾーン内に存在するため、このサフィックスによってホスト名を解決できます。 独自の名前解決ソリューションを使用している場合、このサフィックスは他の DNS アーキテクチャ (ドメイン参加シナリオなど) に干渉するため、VM には提供されません。 代わりに、Azure によって、機能を持たないプレース ホルダー (*reddog.microsoft.com*) が提供されます。
 
 必要に応じて、PowerShell または API を使用して、内部 DNS サフィックスを調べることができます。
 
@@ -176,7 +176,7 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 ### <a name="web-apps"></a>Web Apps
 仮想ネットワークにリンクされた App Service を使用して構築された Web アプリから同じ仮想ネットワーク内の VM への名前解決を実行する必要があるとします。 Azure (仮想 IP 168.63.129.16) にクエリを転送する DNS フォワーダーがあるカスタム DNS サーバーを設定することに加え、次の手順を実行します。
 1. 既に実行していなければ、[仮想ネットワークへのアプリの統合](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページの説明に従って、Web アプリに対する仮想ネットワークの統合を有効にします。
-2. Azure Portal で、Web アプリをホストしている App Service プランで、**[ネットワーキング]**、**[Virtual Network 統合]** の下の **[ネットワークの同期]** を選択します。
+2. Azure Portal で、Web アプリをホストしている App Service プランで、 **[ネットワーキング]** 、 **[Virtual Network 統合]** の下の **[ネットワークの同期]** を選択します。
 
     ![仮想ネットワークの名前解決のスクリーンショット](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
 
@@ -186,7 +186,7 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 * VM 上のソース仮想ネットワーク内に DNS フォワーダーを設定します。 この DNS フォワーダーを、ターゲット仮想ネットワーク内の DNS サーバーにクエリを転送するように構成します。
 * ソース仮想ネットワークの設定内にソース DNS サーバーを構成します。
 * [仮想ネットワークへのアプリの統合](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページの指示に従って、ソース仮想ネットワークにリンクする App Service Web App に対する仮想ネットワークの統合を有効にします。
-* Azure Portal で、Web アプリをホストしている App Service プランで、**[ネットワーキング]**、**[Virtual Network 統合]** の下の **[ネットワークの同期]** を選択します。
+* Azure Portal で、Web アプリをホストしている App Service プランで、 **[ネットワーキング]** 、 **[Virtual Network 統合]** の下の **[ネットワークの同期]** を選択します。
 
 ## <a name="specify-dns-servers"></a>DNS サーバーの指定
 独自の DNS サーバーを使用する場合、Azure では、仮想ネットワークごとに複数の DNS サーバーを指定できます。 また、ネットワーク インターフェイス (Azure Resource Manager の場合) またはクラウド サービス (クラシック デプロイ モデルの場合) ごとに複数の DNS サーバーを指定することもできます。 ネットワーク インターフェイスまたはクラウド サービスに対して指定された DNS サーバーは、仮想ネットワークに対して指定された DNS サーバーよりも優先されます。

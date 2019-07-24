@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078790"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62119526"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -45,27 +45,27 @@ App Service モバイル バックエンドを作成するには、[クイック
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
-**[テーブル API の作成]** の *[はじめに]* ブレードに戻り、**[バックエンド言語]** として **[C#]** を選択します。 **[ダウンロード]** をクリックし、圧縮されたプロジェクト ファイルをローカル コンピューターに抽出して、Visual Studio でソリューションを開きます。
+**[テーブル API の作成]** の *[はじめに]* ブレードに戻り、 **[バックエンド言語]** として **[C#]** を選択します。 **[ダウンロード]** をクリックし、圧縮されたプロジェクト ファイルをローカル コンピューターに抽出して、Visual Studio でソリューションを開きます。
 
 ### <a name="create-a-net-backend-using-visual-studio-2017"></a>Visual Studio 2017 を使用して .NET バックエンドを作成する
 
 Visual Studio インストーラーを使用して Azure ワークロードをインストールし、Visual Studio から Azure Mobile Apps プロジェクトに発行します。 SDK のインストールが完了したら、次の手順を使用して ASP.NET アプリケーションを作成します。
 
-1. **[新しいプロジェクト]** ダイアログを開きます (**[ファイル]** > **[新規作成]** > **[プロジェクト...]** の順にクリック)。
-2. **[Visual C#]** を展開し、**[Web]** を選択します。
+1. **[新しいプロジェクト]** ダイアログを開きます ( **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト...]** の順にクリック)。
+2. **[Visual C#]** を展開し、 **[Web]** を選択します。
 3. **[ASP.NET Web アプリケーション (.NET Framework)]** を選択します。
 4. プロジェクト名を入力します。 次に、 **[OK]** をクリックします
 5. テンプレートの一覧から **[Azure Mobile App]** を選択します。
 6. **[OK]** をクリックしてソリューションを作成します。
-7. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[発行...]** を選択し、発行のターゲットとして **[App Service]** を選択します。
+7. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[発行...]** を選択し、発行のターゲットとして **[App Service]** を選択します。
 8. プロンプトに従って認証し、発行する新規または既存の Azure App Service を選択します。
 
 ### <a name="create-a-net-backend-using-visual-studio-2015"></a>Visual Studio 2015 を使用して .NET バックエンドを作成する
 
 Visual Studio で Azure Mobile Apps プロジェクトを作成するには、[Azure SDK for .NET][4] (バージョン 2.9.0 以降) をインストールします。 SDK のインストールが完了したら、次の手順を使用して ASP.NET アプリケーションを作成します。
 
-1. **[新しいプロジェクト]** ダイアログを開きます (**[ファイル]** > **[新規作成]** > **[プロジェクト...]** の順にクリック)。
-2. **[テンプレート]** > **[Visual C#]** の順に展開し、**[Web]** を選択します。
+1. **[新しいプロジェクト]** ダイアログを開きます ( **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト...]** の順にクリック)。
+2. **[テンプレート]**  >  **[Visual C#]** の順に展開し、 **[Web]** を選択します。
 3. **[ASP.NET Web アプリケーション]** を選択します。
 4. プロジェクト名を入力します。 次に、 **[OK]** をクリックします
 5. *ASP.NET 4.5.2 テンプレート*の **[Azure Mobile App]** を選択します。 このプロジェクトの発行先となるクラウドにモバイル バックエンドを作成するために、 **[Host in the cloud (クラウドにホストする)]** チェック ボックスをオンにします。
@@ -75,11 +75,11 @@ Visual Studio で Azure Mobile Apps プロジェクトを作成するには、[A
 SDK は [NuGet.org]で入手できます。このパッケージには、SDK の使用を開始するために必要な基礎機能が含まれています。 SDK を初期化するには、 **HttpConfiguration** オブジェクトに対して操作を実行する必要があります。
 
 ### <a name="install-the-sdk"></a>SDK のインストール
-SDK をインストールするには、Visual Studio でサーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** を選択し、[Microsoft.Azure.Mobile.Server] パッケージを検索してから、**[インストール]** をクリックします。
+SDK をインストールするには、Visual Studio でサーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** を選択し、[Microsoft.Azure.Mobile.Server] パッケージを検索してから、 **[インストール]** をクリックします。
 
 ### <a name="server-project-setup"></a> サーバー プロジェクトの初期化
-.NET バックエンド サーバー プロジェクトは、他の ASP.NET プロジェクトと同じように、OWIN スタートアップ クラスを組み込むことによって初期化します。 NuGet パッケージ `Microsoft.Owin.Host.SystemWeb`が参照されていることを確認します。 Visual Studio でこのクラスを追加するには、サーバー プロジェクトを右クリックして、**[追加]** >
- **[新しい項目]**、**[Web]** > **[全般]** > **[OWIN スタートアップ クラス]** の順に選択します。  次の属性を持つクラスが生成されます。
+.NET バックエンド サーバー プロジェクトは、他の ASP.NET プロジェクトと同じように、OWIN スタートアップ クラスを組み込むことによって初期化します。 NuGet パッケージ `Microsoft.Owin.Host.SystemWeb`が参照されていることを確認します。 Visual Studio でこのクラスを追加するには、サーバー プロジェクトを右クリックして、 **[追加]**  >
+ **[新しい項目]** 、 **[Web]**  >  **[全般]**  >  **[OWIN スタートアップ クラス]** の順に選択します。  次の属性を持つクラスが生成されます。
 
     [assembly: OwinStartup(typeof(YourServiceName.YourStartupClassName))]
 
@@ -143,12 +143,12 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 このセクションでは、Visual Studio から .NET バックエンド プロジェクトを発行する方法を示します。 [Git](../app-service/deploy-local-git.md) やその他の利用可能な方法を利用して、バックエンド プロジェクトをデプロイすることもできます。
 
 1. Visual Studio でプロジェクトをリビルドして、NuGet パッケージを復元します。
-2. ソリューション エクスプローラーで目的のプロジェクトを右クリックし、 **[発行]** をクリックします。 初めて発行するときには、発行プロファイルを定義する必要があります。 既に定義したプロファイルがある場合は、それを選択し、**[発行]** をクリックします。
-3. 発行先の選択を求められた場合は、**[Microsoft Azure App Service]** > **[次へ]** の順にクリックして、必要であれば Azure の資格情報でサインインします。
+2. ソリューション エクスプローラーで目的のプロジェクトを右クリックし、 **[発行]** をクリックします。 初めて発行するときには、発行プロファイルを定義する必要があります。 既に定義したプロファイルがある場合は、それを選択し、 **[発行]** をクリックします。
+3. 発行先の選択を求められた場合は、 **[Microsoft Azure App Service]**  >  **[次へ]** の順にクリックして、必要であれば Azure の資格情報でサインインします。
    Visual Studio によって Azure から発行設定が直接ダウンロードされ、安全に保存されます。
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-1.png)
-4. **サブスクリプション**を選択し、**[表示]** で **[リソースの種類]** を選択して、**[モバイル アプリ]** を展開します。次に、モバイル アプリ バックエンドをクリックし、**[OK]** をクリックします。
+4. **サブスクリプション**を選択し、 **[表示]** で **[リソースの種類]** を選択して、 **[モバイル アプリ]** を展開します。次に、モバイル アプリ バックエンドをクリックし、 **[OK]** をクリックします。
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-wizard-2.png)
 5. 発行プロファイル情報を確認し、 **[発行]** をクリックします。
@@ -166,7 +166,7 @@ SQL テーブルをモバイル クライアントに公開するためのテー
 2. Mobile DbContext クラスにテーブル参照を構成する。
 3. テーブル コントローラーを作成する。
 
-データ転送オブジェクト (DTO) は、 `EntityData`から継承するプレーンな C# オブジェクトです。  例: 
+データ転送オブジェクト (DTO) は、 `EntityData`から継承するプレーンな C# オブジェクトです。  例:
 
     public class TodoItem : EntityData
     {
@@ -197,8 +197,8 @@ DTO を使用して、SQL データベース内にテーブルを定義します
 
 Azure SDK をインストール済みの場合は、テンプレート テーブル コントローラーを次のように作成できます。
 
-1. Controllers フォルダーを右クリックし、 **[追加]** > **[コントローラー]**」を参照してください。
-2. **[Azure Mobile Apps のテーブル コントローラー]** オプションを選択し、**[追加]** をクリックします。
+1. Controllers フォルダーを右クリックし、 **[追加]**  >  **[コントローラー]** 」を参照してください。
+2. **[Azure Mobile Apps のテーブル コントローラー]** オプションを選択し、 **[追加]** をクリックします。
 3. **[コントローラーの追加]** ダイアログ ボックスで、次の手順を実行します。
    * **[モデル クラス]** ボックスの一覧で、新しい DTO を選択します。
    * **[DbContext]** ボックスの一覧で、モバイル サービス DbContext クラスを選択します。
@@ -217,8 +217,8 @@ PageSize が、クライアントから要求されるサイズ以上になる�
 ## <a name="how-to-define-a-custom-api-controller"></a>方法:カスタム API コントローラーを定義する
 カスタム API コントローラーは、エンドポイントを公開して、モバイル アプリのバックエンドに最も基本的な機能を提供します。 [MobileAppController] 属性を使用して、モバイル固有の API コント ローラーを登録できます。 `MobileAppController` 属性は、ルートを登録し、Mobile Apps JSON シリアライザーを設定するほか、 [クライアント バージョン チェック](app-service-mobile-client-and-server-versioning.md)をオンにします。
 
-1. Visual Studio で、Controllers フォルダーを右クリックして、**[追加]** > **[コントローラー]** の順にクリックし、**[Web API 2 コントローラー &mdash; 空]** を選択して **[追加]** をクリックします。
-2. **コントローラー名** (`CustomController` など) を指定し、**[追加]** をクリックします。
+1. Visual Studio で、Controllers フォルダーを右クリックして、 **[追加]**  >  **[コントローラー]** の順にクリックし、 **[Web API 2 コントローラー &mdash; 空]** を選択して **[追加]** をクリックします。
+2. **コントローラー名** (`CustomController` など) を指定し、 **[追加]** をクリックします。
 3. 新しいコントローラーのクラス ファイルに、次の using ステートメントを追加します。
 
         using Microsoft.Azure.Mobile.Server.Config;
@@ -364,7 +364,7 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 ## <a name="how-to-add-push-notifications-to-a-server-project"></a>方法:サーバー プロジェクトにプッシュ通知を追加する
 **MobileAppConfiguration** オブジェクトを拡張し、Notification Hubs クライアントを作成して、サーバー プロジェクトにプッシュ通知を追加します。
 
-1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.Mobile.Server.Notifications` を見つけ、**[インストール]** をクリックします。
+1. Visual Studio でサーバー プロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.Mobile.Server.Notifications` を見つけ、 **[インストール]** をクリックします。
 2. 上記の手順を繰り返して、Notification Hubs クライアント ライブラリが含まれる `Microsoft.Azure.NotificationHubs` パッケージをインストールします。
 3. App_Start/Startup.MobileApp.cs で、初期化中に **AddPushNotifications()** 拡張メソッドの呼び出しを追加します。
 
@@ -469,8 +469,8 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 前の例では、Web.config ファイル内のアプリケーション設定 *authAudience* と *authIssuer* を、HTTPS スキームを使用して、それぞれアプリケーション ルートの URL に構成する必要があります。 同様に、*authSigningKey* をアプリケーションの署名キーの値に設定する必要があります。
 署名キーを取得するには、次の手順を実行します。
 
-1.  [Azure Portal]
-2. **[ツール]**、**[Kudu]**、**[移動]** の順にクリックします。
+1. [Azure Portal]
+2. **[ツール]** 、 **[Kudu]** 、 **[移動]** の順にクリックします。
 3. Kudu 管理サイトで、 **[環境]** をクリックします。
 4. *WEBSITE\_AUTH\_SIGNING\_KEY* の値を見つけます。
 

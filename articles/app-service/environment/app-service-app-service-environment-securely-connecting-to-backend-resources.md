@@ -16,11 +16,11 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: aea51234d26e5dbaef836419c2a13a12f8083e6f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315861"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62130706"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>App Service 環境からバックエンド リソースに安全に接続する
 ## <a name="overview"></a>概要

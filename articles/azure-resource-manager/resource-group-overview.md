@@ -1,23 +1,17 @@
 ---
 title: Azure Resource Manager の概要 | Microsoft Docs
 description: Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: 76df7de1-1d3b-436e-9b44-e1b3766b3961
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/05/2019
+ms.date: 05/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0ad1d12a4a2ca3a293546f2bac85210bb9152269
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1b0135bfff7233367eaf47a2f6dd1ee3ccfbcaf6
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269300"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205517"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 
@@ -51,13 +45,15 @@ Azure Resource Manager には、初めて使う方にとって、あまり馴染
 * タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理できます。
 * 同じタグを共有するリソース グループのコストを表示することで、組織の課金をわかりやすくすることができます。
 
-## <a name="understand-management-scope"></a>管理スコープの概要
+## <a name="understand-scope"></a>スコープを理解する
 
-Azure には、[管理グループ](../governance/management-groups/index.md)、サブスクリプション、[リソース グループ](#resource-groups)、およびリソースという 4 つのレベルの管理スコープが用意されています。 次の図に、これらのレイヤーの例を示します。
+Azure には、[管理グループ](../governance/management-groups/index.md)、サブスクリプション、[リソース グループ](#resource-groups)、およびリソースという 4 つのレベルのスコープが用意されています。 次の図に、これらのレイヤーの例を示します。
 
 ![Scope (スコープ)](./media/resource-group-overview/scope-levels.png)
 
 これらのスコープ レベルのいずれかに管理設定を適用します。 選択するレベルで、設定の適用範囲が決まります。 上位レベルの設定が下位レベルに継承されます。 たとえば、サブスクリプションに[ポリシー](../governance/policy/overview.md)を適用すると、そのポリシーはサブスクリプション内のすべてのリソース グループとリソースに適用されます。 リソース グループにポリシーを適用すると、そのポリシーはリソース グループとそのすべてのリソースに適用されます。 ただし、別のリソース グループにそのポリシー割り当てはありません。
+
+テンプレートを管理グループ、サブスクリプション、またはリソース グループにデプロイすることができます。
 
 ## <a name="guidance"></a>ガイダンス
 
@@ -85,13 +81,13 @@ Resource Manager テンプレートの作成に関する推奨事項について
 
 リソース グループを作成するとき、そのリソース グループの場所を指定する必要があります。 "なぜリソース グループに場所が必要なのか。 リソースがリソース グループとは異なる場所に存在してよいとしたら、いったいなぜリソース グループの場所が問題になるのか" と、疑問に思われるかもしれません。 リソース グループには、リソースについてのメタデータが格納されます。 そのため、リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
 
-リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 リスクを最小限に抑えるため、リソース グループとリソースは同じリージョンに配置するようにしてください。
+リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 信頼性の高いアプリケーションの設計の詳細については、「[信頼性の高い Azure アプリケーションの設計](/azure/architecture/reliability/)」を参照してください。
 
 ## <a name="resource-providers"></a>リソース プロバイダー
 
 各リソース プロバイダーは、これらのリソースを操作するための一連のリソースと操作を提供します。 たとえば、キーとシークレットを格納するためには、 **Microsoft.KeyVault** リソース プロバイダーを使用します。 このリソース プロバイダーには、キー コンテナーを作成するための **vaults** という名前のリソースの種類が用意されています。
 
-リソースの種類を表す名前は、**{resource-provider}/{resource-type}** のような形式になります。 キー コンテナーのリソースの種類は **Microsoft.KeyVault/vaults** です。
+リソースの種類を表す名前は、 **{resource-provider}/{resource-type}** のような形式になります。 キー コンテナーのリソースの種類は **Microsoft.KeyVault/vaults** です。
 
 リソースのデプロイを始める前に、利用可能なリソース プロバイダーを把握する必要があります。 リソース プロバイダーとリソースの名前がわかれば、Azure にデプロイするリソースの定義に役立ちます。 また、各リソースの種類の有効な場所と API のバージョンを把握しておく必要があります。 詳細については、「[リソース プロバイダーと種類](resource-manager-supported-services.md)」を参照してください。
 
@@ -174,7 +170,21 @@ Resource Manager では、セットアップ時に含まれていなかった特
 
 Azure に複雑なサービスをデプロイするときには、サービスを複数のリージョンにデプロイし、次のステップに進む前に正常性チェックする必要がある場合があります。 サービスの段階的なロールアウトをうまく調整するには、[Azure Deployment Manager](deployment-manager-overview.md) を使用します。 サービスのロールアウトを段階的に行えば、すべてのリージョンにサービスがデプロイされる前に潜在的な問題を見つけることができます。 これらの用心が必要でない場合は、前のセクションのデプロイ操作が、より適した選択肢となります。
 
-Deployment Manager は現在、プライベート プレビュー段階にあります。
+現在、Deployment Manager はパブリック プレビュー段階にあります。
+
+## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager の回復性
+
+Azure Resource Manager サービスは、回復性と継続的な可用性を実現するよう設計されています。 REST API での Resource Manager とコントロール プレーン操作 (management.azure.com に送信される要求) は、次のように動作します。
+
+* リージョン間に分散されます。 一部のサービスはリージョン固有です。
+
+* 複数の可用性ゾーンを含む場所では、可用性ゾーン (リージョン) 間で分散されます。
+
+* 単一の論理データ センターに依存しません。
+
+* メンテナンスのために休止することはありません。
+
+この回復性は、Resource Manager 経由で要求を受信するサービスに適用されます。 たとえば、Key Vault はこの回復性からメリットを得られます。
 
 [!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 

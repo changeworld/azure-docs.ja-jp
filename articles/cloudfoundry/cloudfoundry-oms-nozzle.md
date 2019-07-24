@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111465"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60199399"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
@@ -64,8 +64,8 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
 
    * **Log Analytics ワークスペース**:ワークスペースの名前を入力します。
    * **サブスクリプション**:複数のサブスクリプションがある場合、CF デプロイと同じものを選択します。
-   * **[リソース グループ]**:新しいリソース グループを作成するか、CF デプロイと同じリソース グループを使用します。
-   * **[場所]**:場所を入力します。
+   * **[リソース グループ]** :新しいリソース グループを作成するか、CF デプロイと同じリソース グループを使用します。
+   * **[場所]** :場所を入力します。
    * **価格レベル**:完了するには **[OK]** を選択します。
 
 詳細については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)に関するページを参照してください
@@ -78,7 +78,7 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
 1. Cloud Foundry 監視ソリューション テンプレートのフロントページが読み込まれたら、[作成] をクリックしてテンプレート ブレードを起動します。
 1. 必要なパラメーターを入力します。
     * **サブスクリプション**:Log Analytics ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
-    * **[リソース グループ]**:既存のリソース グループを選択するか、Log Analytics ワークスペース用の新しいグループを作成します。
+    * **[リソース グループ]** :既存のリソース グループを選択するか、Log Analytics ワークスペース用の新しいグループを作成します。
     * **リソース グループの場所**:リソース グループの場所を選択します。
     * **OMS_Workspace_Name**:ワークスペース名を入力します。ワークスペースが存在しない場合は、テンプレートによって新しいワークスペースが作成されます。
     * **OMS_Workspace_Region**:ワークスペースの場所を選択します。
@@ -184,7 +184,7 @@ Log Analytics ワークスペースを手動で作成した場合は、次の手
 
 ### <a name="1-import-the-oms-view"></a>1.OMS ビューをインポートする
 
-OMS ポータルから **[ビュー デザイナー]** > **[インポート]** > **[参照]** を参照し、omsview ファイルのいずれかを選択します。 たとえば、*Cloud Foundry.omsview* を選択してビューを保存します。 **[概要]** ページにタイルが表示されます。 選択すると、視覚的なメトリックが表示されます。
+OMS ポータルから **[ビュー デザイナー]**  >  **[インポート]**  >  **[参照]** を参照し、omsview ファイルのいずれかを選択します。 たとえば、*Cloud Foundry.omsview* を選択してビューを保存します。 **[概要]** ページにタイルが表示されます。 選択すると、視覚的なメトリックが表示されます。
 
 **[ビュー デザイナー]** で、これらのビューをカスタマイズするか、新しいビューを作成できます。
 

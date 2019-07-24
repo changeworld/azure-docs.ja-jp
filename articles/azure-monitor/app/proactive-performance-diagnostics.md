@@ -14,11 +14,11 @@ ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
 ms.openlocfilehash: b1a3b04427839736359c88f8ad6a8db5eedf8488
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121245"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61294093"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -48,9 +48,9 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
 ![サーバー応答時間の低下の検出例](media/proactive-performance-diagnostics/server_response_time_degradation.png)
 
-1. **トリアージ**:  通知は、影響を受けるユーザーまたは操作の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
-2. **スコープ**:  問題が影響する範囲はすべてのトラフィックですか。または一部のページのみですか。 特定のブラウザーまたは場所に限定されますか。 この情報を通知から取得できます。
-3. **診断**:  多くの場合、通知内の診断情報は問題の性質を示します。 たとえば、要求率が高い場合に応答時間が遅くなると、サーバーまたは依存関係が過負荷状態であることを示します。 
+1. **トリアージ**: 通知は、影響を受けるユーザーまたは操作の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
+2. **スコープ**: 問題が影響する範囲はすべてのトラフィックですか。または一部のページのみですか。 特定のブラウザーまたは場所に限定されますか。 この情報を通知から取得できます。
+3. **診断**: 多くの場合、通知内の診断情報は問題の性質を示します。 たとえば、要求率が高い場合に応答時間が遅くなると、サーバーまたは依存関係が過負荷状態であることを示します。 
 
     それ以外の場合は、Application Insights の [パフォーマンス] ブレードを開きます。 このブレードには[プロファイラー](profiler.md) データが表示されます。 例外がスローされた場合は、[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)を試すこともできます。
 

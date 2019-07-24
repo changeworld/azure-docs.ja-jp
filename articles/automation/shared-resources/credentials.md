@@ -4,17 +4,17 @@ description: Azure Automation の資格情報資産には、Runbook または DS
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6465fd069e73a571e0671d528f5d0b4da4602dc7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 44bc49d10c492822c1b5d30ad5794ac2522cb918
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551043"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478149"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation での資格情報資産
 
@@ -73,7 +73,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>Azure ポータルで新しい資格情報資産を作成するには
 
-1. Automation アカウントから、**[共有リソース]** の下の **[資格証明]** を選択します。
+1. Automation アカウントから、 **[共有リソース]** の下の **[資格証明]** を選択します。
 1. **[+ 資格情報の追加]** をクリックします。
 1. フォームに入力し、 **[作成]** をクリックして新しい資格情報を保存します。
 
@@ -112,7 +112,7 @@ $password = $myCredential.GetNetworkCredential().Password
 資格情報を使用して [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) で Azure を認証することもできます。 ほとんどの環境下で、[アカウントとして実行](../manage-runas-account.md) を使用して、それを [Get-AutomationConnection](../automation-connections.md) で取得する必要があります。
 
 ```azurepowershell
-$myCred = Get-AutomationPSCredential -Name 'MyCredential`
+$myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password

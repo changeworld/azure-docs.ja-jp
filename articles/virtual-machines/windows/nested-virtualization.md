@@ -4,19 +4,19 @@ description: Azure Virtual Machines で入れ子になった仮想化を有効�
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: acb44a34eae84d8a5718ebcc0003d3cf50b9d43a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 843dfa64cdf0af3ad6cfd3a9f83c16f0ce85fcd0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510060"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720215"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -40,11 +40,11 @@ Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状�
 
 仮想マシンへのリモート デスクトップ接続を作成します。
 
-1. 仮想マシンのプロパティで、**[接続]** ボタンをクリックします。 リモート デスクトップ プロトコル ファイル (.rdp ファイル) が作成されてダウンロードされます。
+1. 仮想マシンのプロパティで、 **[接続]** ボタンをクリックします。 リモート デスクトップ プロトコル ファイル (.rdp ファイル) が作成されてダウンロードされます。
 
-2. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、**[接続]** をクリックします。 Mac では、この[リモート デスクトップ クライアント](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)のような RDP クライアントを Mac App Store から入手する必要があります。
+2. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、 **[接続]** をクリックします。 Mac では、この[リモート デスクトップ クライアント](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)のような RDP クライアントを Mac App Store から入手する必要があります。
 
-3. 仮想マシンの作成時に指定したユーザー名とパスワードを入力し、**[OK]** をクリックします。
+3. 仮想マシンの作成時に指定したユーザー名とパスワードを入力し、 **[OK]** をクリックします。
 
 4. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続処理を続行します。
 
@@ -52,7 +52,7 @@ Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状�
 この設定は手動で構成するか、用意されている PowerShell スクリプトを使って自動で構成できます。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>選択肢 1: PowerShell スクリプトを使用して、入れ子になった仮想化を構成する
-Windows Server 2016 ホストの入れ子になった仮想化を有効にする PowerShell スクリプトは [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) でご利用いただけます。 スクリプトは、前提条件をチェックし、Azure VM で入れ子になった仮想化を構成します。 構成を完了するには、Azure VM を再起動する必要があります。 このスクリプトは他の環境で動作する可能性はありますが、保証されません。 Azure のブログ記事と、Azure で実行されている入れ子になった仮想化のライブ ビデオ デモをご確認ください  https://aka.ms/AzureNVblog
+Windows Server 2016 ホストの入れ子になった仮想化を有効にする PowerShell スクリプトは [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) でご利用いただけます。 スクリプトは、前提条件をチェックし、Azure VM で入れ子になった仮想化を構成します。 構成を完了するには、Azure VM を再起動する必要があります。 このスクリプトは他の環境で動作する可能性はありますが、保証されません。 Azure のブログ記事と、Azure で実行されている入れ子になった仮想化のライブ ビデオ デモをご確認ください [https://aka.ms/AzureNVblog](https://aka.ms/AzureNVblog )
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>選択肢 2: 入れ子になった仮想化を手動で構成する
 
@@ -120,6 +120,10 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 ## <a name="create-the-guest-virtual-machine"></a>ゲスト仮想マシンを作成する
 
+>[!IMPORTANT] 
+>
+>Azure ゲスト エージェントは入れ子になった VM ではサポートされておらず、ホスト VM と入れ子になった VM の両方で問題が発生する可能性があります。 入れ子になった VM には Azure エージェントをインストールしないでください。また、既に Azure ゲスト エージェントがインストールされている、入れ子になった VM を作成するためのイメージを使用しないでください。
+
 1. Hyper-V マネージャーを開いて、新しい仮想マシンを作成します。 作成した新しい内部ネットワークを使用するように仮想マシンを構成します。
     
     ![NetworkConfig](./media/virtual-machines-nested-virtualization/configure-networking.png)
@@ -143,7 +147,7 @@ IP アドレスをゲスト仮想マシンに割り当てるには、ゲスト�
   
 2. ウィザードで、[サーバーの役割] ページが表示されるまで **[次へ]** をクリックします。
   
-3. クリックして **[DHCP サーバー]** チェック ボックスをオンにし、**[機能の追加]** をクリックして、ウィザードが完了するまで **[次へ]** をクリックします。
+3. クリックして **[DHCP サーバー]** チェック ボックスをオンにし、 **[機能の追加]** をクリックして、ウィザードが完了するまで **[次へ]** をクリックします。
   
 4. **[インストール]** をクリックします。
 
@@ -151,15 +155,15 @@ IP アドレスをゲスト仮想マシンに割り当てるには、ゲスト�
 
 1. DHCP マネージャーを開きます。
   
-2. ナビゲーション ウィンドウで、サーバー名を展開し、**[IPv4]** を右クリックして、**[新しいスコープ]** をクリックします。 新しいスコープ ウィザードが表示されたら、**[次へ]** をクリックします。
+2. ナビゲーション ウィンドウで、サーバー名を展開し、 **[IPv4]** を右クリックして、 **[新しいスコープ]** をクリックします。 新しいスコープ ウィザードが表示されたら、 **[次へ]** をクリックします。
   
-3. スコープの名前と説明を入力し、**[次へ]** をクリックします。
+3. スコープの名前と説明を入力し、 **[次へ]** をクリックします。
   
 4. DHCP サーバーの IP 範囲を定義します (192.168.0.100 ～ 192.168.0.200 など)。
   
-5. [デフォルト ゲートウェイ] ページが表示されるまで、**[次へ]** をクリックします。 既定のゲートウェイとして前に作成した IP アドレス (192.168.0.1 など) を入力し、**[追加]** をクリックします。
+5. [デフォルト ゲートウェイ] ページが表示されるまで、 **[次へ]** をクリックします。 既定のゲートウェイとして前に作成した IP アドレス (192.168.0.1 など) を入力し、 **[追加]** をクリックします。
   
-6. ウィザードが完了するまで、すべて既定値のままにして **[次へ]** をクリックし、**[完了]** をクリックします。
+6. ウィザードが完了するまで、すべて既定値のままにして **[次へ]** をクリックし、 **[完了]** をクリックします。
     
 ### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>選択肢 2: ゲスト仮想マシンに静的 IP アドレスを手動で設定する
 IP アドレスがゲスト仮想マシンに動的に割り当てられるように DHCP を構成しなかった場合は、次の手順を実行して静的 IP アドレスを設定します。
@@ -168,7 +172,7 @@ IP アドレスがゲスト仮想マシンに動的に割り当てられるよ�
 
 2. ゲスト仮想マシンを右クリックし、[接続] をクリックします。
 
-3. ゲスト仮想マシンにログオンします。
+3. ゲスト仮想マシンにサインインします。
 
 4. ゲスト仮想マシンで、ネットワークと共有センターを開きます。
 

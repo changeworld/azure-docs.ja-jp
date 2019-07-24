@@ -3,17 +3,17 @@ title: リモート監視ソリューションをローカルにデプロイす�
 description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のために Visual Studio Code を使用してローカル コンピューターにデプロイする方法を示します。
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 946f815cecea4cc172fac35c0b260d795317e6e1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316220"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730164"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする - Visual Studio Code
 
@@ -59,16 +59,17 @@ dotnet build -c Release
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>ローカル コンピューター上のその他すべてのマイクロサービスをデプロイする
 
-次の手順では、Visual Studio 2017 のリモート監視マイクロサービスを実行する方法を示します。
+次の手順では、Visual Studio Code のリモート監視マイクロサービスを実行する方法を示します。
 
 1. Visual Studio Code を起動します。
-1. VS Code でローカル コピーから **azure-iot-pcs-remote-monitoring-dotnet** モジュールを開きます。
-1. scripts\local\launch\idesettings\vscode から **launch.json** ファイルと **tasks.json** ファイルをコピーします。\. 新しいフォルダー **azure-iot-pcs-remote-monitoring-dotnet\.vscode** を作成して、そこにファイルを貼り付けます。
-1. VS Code で [デバッグ] パネルを開き、**[Run all microservices]\(すべてのマイクロサービスを実行\)** 構成を実行します。 この構成は、デバイス シミュレーション マイクロサービスを Docker で実行し、他のマイクロサービスをデバッガーで実行します。
+1. VS Code で、**azure-iot-pcs-remote-monitoring-dotnet** フォルダーを開きます。
+1. **.vscode** という新しいフォルダーを **azure-iot-pcs-remote-monitoring-dotnet** フォルダー内に作成します。
+1. services\scripts\local\launch\idesettings\vscode から、作成したばかりの **.vscode** フォルダーに、**launch.json** ファイルと **tasks.json** ファイルをコピーします。
+1. VS Code で **[デバッグ] パネル**を開き、 **[Run all microservices]** (すべてのマイクロサービスを実行) 構成を実行します。 この構成は、デバイス シミュレーション マイクロサービスを Docker で実行し、他のマイクロサービスをデバッガーで実行します。
 
-たとえば**デバッグ コンソール**では、**Auth** サービスの出力が次のように表示されます。
+デバッグ コンソールでの **[Run All microservices]** (すべてのマイクロサービスを実行) を実行した出力は次のようになります。
 
-[![ローカル Auth サービスのデプロイ](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
+[![ローカル マイクロサービスのデプロイ](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
 ### <a name="run-the-web-ui"></a>Web UI を実行する
 

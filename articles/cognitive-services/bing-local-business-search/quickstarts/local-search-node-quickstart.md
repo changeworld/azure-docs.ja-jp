@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: d0760f89eb98955f7ebb503ce59f904192635f7a
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.author: rosh
+ms.openlocfilehash: 07b238f900a7f0ba15ad7b37ba7e194567fa0f6a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796889"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592717"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>クイック スタート: Node.js を使用して Bing Local Business Search API にクエリを送信する
 

@@ -7,12 +7,12 @@ ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 66eff6ee603ced03a8f4d75d4569752e0b11a6e7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 09ea70ac302806b4cb0e97fde92dda4208e3d659
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242531"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734513"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Azure Functions で Azure Cosmos DB トリガーを使用するときの問題の診断とトラブルシューティングを行う
 
@@ -56,7 +56,7 @@ Azure Function が次のエラー メッセージで失敗する: "Either the so
 
 このエラーは、現在のリース コンテナーがパーティション分割されているのに、パーティション キーのパスが `/id` ではないことを意味します。 この問題を解決するには、パーティション キーを `/id` としてリース コンテナーを作り直す必要があります。
 
-### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>"Value cannot be null.  Parameter name: o" (値を null にすることはできません。パラメーター名: o) と、トリガーを実行しようとすると Azure Functions ログに記録される
+### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>"Value cannot be null. Parameter name: o" (値を null にすることはできません。パラメーター名: o) と、トリガーを実行しようとすると Azure Functions ログに記録される
 
 Azure portal を使用していて、トリガーを使用する Azure 関数を調べているときに画面の **[実行]** ボタンを選択しようとすると、この問題が発生します。 トリガーを開始するために [実行] を選択する必要はなく、Azure 関数をデプロイすると自動的に開始されます。 Azure portal で Azure 関数のログ ストリームを確認したい場合は、単に監視対象のコンテナーに移動して新しい項目をいくつか挿入すると、トリガーの実行が自動的に表示されます。
 
@@ -88,6 +88,12 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 さらに、実行している Azure 関数アプリ インスタンスの数がわかっている場合は、そのシナリオを検証できます。 リース コンテナーを調べて、その中のリース項目の数を数えた場合、`Owner` プロパティの異なる値の数は、関数アプリのインスタンスの数と等しくなっている必要があります。 既知の Azure 関数アプリ インスタンスの数より Owner の数の方が多い場合、余分な所有者が変更を "盗んでいる" ことを意味します。
 
 このような状況を回避する簡単な方法は、`LeaseCollectionPrefix/leaseCollectionPrefix` を新しい/別の値で関数に適用するか、または新しいリース コンテナーでテストします。
+
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>バインディングを実行するには、IReadOnlyList<Document> または JArray を使用する必要があります。
+
+このエラーは、Azure Functions プロジェクト (または任意の参照されているプロジェクト) に、[Azure Functions Cosmos DB 拡張機能](./troubleshoot-changefeed-functions.md#dependencies)で提供されているバージョンとは異なるバージョンの Azure Cosmos DB SDK への手動による NuGet の参照が含まれている場合に発生します。
+
+この状況を回避するには、追加された手動による NuGet の参照を削除し、Azure Cosmos DB SDK の参照で Azure Functions Cosmos DB 拡張機能パッケージを介して解決されるようにします。
 
 ## <a name="next-steps"></a>次の手順
 

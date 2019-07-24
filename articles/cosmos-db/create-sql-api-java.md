@@ -8,25 +8,24 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: cb4ad20067783d8d6bd649710950fea51a22a454
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: d277ef51fd7f39ffab7ed4ace8848c682b28c383
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979139"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68001239"
 ---
 # <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Java アプリケーションを構築する
 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
-> * [.NET (プレビュー)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-このクイック スタートでは、Java アプリケーションを使用して Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウントのリソースを作成および管理する方法について説明します。 まず、Azure portal を使用して Azure Cosmos DB SQL API アカウントを作成し、[SQL Java SDK](sql-api-sdk-async-java.md) を使用して Java アプリケーションを作成します。さらに Java アプリケーションを使用して Cosmos DB アカウントにリソースを追加します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイック スタートを完了すると、UI とプログラムのどちらか好きな方法で、Cosmos DB データベースとコレクションの作成と変更ができるようになります。
+このクイック スタートでは、Java アプリケーションを使用して Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウントのリソースを作成および管理する方法について説明します。 まず、Azure portal を使用して Azure Cosmos DB SQL API アカウントを作成し、[SQL Java SDK](sql-api-sdk-async-java.md) を使用して Java アプリケーションを作成します。さらに Java アプリケーションを使用して Cosmos DB アカウントにリソースを追加します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートを完了すると、UI とプログラムのどちらか好きな方法で、Cosmos DB データベースとコンテナーの作成と変更ができるようになります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,7 +47,7 @@ ms.locfileid: "65979139"
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>コレクションの追加
+## <a name="add-a-container"></a>コンテナーの追加
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -75,7 +74,7 @@ ms.locfileid: "65979139"
 
 この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 それ以外の場合は、「[アプリの実行](#run-the-app)」に進んでください。 
 
-* `AsyncDocumentClient` の初期化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) は、Azure Cosmos DB データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
+* `AsyncDocumentClient` の初期化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) は、Azure Cosmos データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
 
     ```java
     client = new AsyncDocumentClient.Builder()
@@ -204,7 +203,7 @@ ms.locfileid: "65979139"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、データ エクスプローラーを使って Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法について説明しました。また、同じことを行うアプリをプログラムから実行する方法についても説明しました。 これで、Azure Cosmos DB コレクションに追加のデータをインポートできます。 
+このクイックスタートでは、データ エクスプローラーを使って Azure Cosmos アカウント、ドキュメント データベース、コンテナーを作成する方法について説明しました。また、同じことをプログラムから行うアプリを実行する方法についても説明しました。 これで、Azure Cosmos コンテナーに追加のデータをインポートできるようになりました。 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)

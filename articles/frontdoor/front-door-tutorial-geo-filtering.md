@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: c04a9dff55794a3e48146e8effc3627452b3db14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 97a3d63f94ca7e60f57177703a98b60e3f6c42ec
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65950168"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849185"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Front Door に使用する geo フィルタリング WAF ポリシーを設定する方法
 このチュートリアルでは、Azure PowerShell を使用して、サンプル geo フィルタリング ポリシーを作成し、それを既存の Front Door フロントエンド ホストに関連付ける方法を説明します。 このサンプル geo フィルタリング ポリシーでは、他のすべての国/地域 (米国を除く) からの要求がブロックされます。
@@ -110,6 +111,5 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > Front Door フロントエンド ホストに WAF ポリシーをリンクさせるために必要な WebApplicationFirewallPolicyLink プロパティの設定は 1 回だけです。 それ以降のポリシーの更新は、自動的にフロントエンド ホストに適用されます。
 
 ## <a name="next-steps"></a>次の手順
-
-- [Front Door によるアプリケーション層セキュリティ](front-door-application-security.md)について学習します。
+- [Azure Web アプリケーション ファイアウォール](waf-overview.md)について学習します。
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6cd0c72f94c020f9243a1a95faa799f1f798f36c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: b993b34f81298b40c8849084380b2d1770708351
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199204"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66482363"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -141,19 +141,9 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ マネ�
 
 GPT パーティション分割は OS ディスクではなく、データ ディスクでのみ使用できます。 OS ディスクは、MBR パーティション分割のスタイルを使用する必要があります。
 
-## <a name="uploading-to-a-managed-disk"></a>マネージド ディスクへのアップロード
+**どのような種類のディスクでスナップショットがサポートされますか。**
 
-**既存のマネージド ディスクにデータをアップロードできますか?**
-
-いいえ。アップロードは、**ReadyToUpload** 状態を持つ新しい空のディスクの作成中にのみ使用できます。
-
-**VM がアップロード状態にある間、その VM にディスクを接続できますか?**
-
-いいえ。
-
-**アップロード状態にあるマネージド ディスクのスナップショットを取得できますか?**
-
-いいえ。
+Premium SSD、Standard SSD、および Standard HDD でスナップショットがサポートされます。 これらの 3 つのディスクの種類では、すべてのディスク サイズでスナップショットがサポートされます (最大 32 TiB のサイズのディスクを含みます)。 Ultra SSD では、スナップショットはサポートされません。
 
 ## <a name="standard-ssd-disks"></a>Standard SSD ディスク
 
@@ -353,7 +343,7 @@ P4 (32 GiB) および P6 (64 GiB) ディスク サイズは、アンマネージ
 
 **Azure Backup と Azure Site Recovery サービスでサポートされている最大ディスク サイズはどれくらいですか?**
 
-Azure Backup と Azure Site Recovery サービスでサポートされている最大ディスク サイズは、4 TiB です。 最大 32 TiB の大容量ディスクに対するサポートがまもなく追加される予定です。
+Azure Backup と Azure Site Recovery サービスでサポートされている最大ディスク サイズは、4 TiB です。 最大 32 TiB の大容量ディスクに対するサポートは、まだ利用できません。
 
 **大容量ディスク サイズ (> 4 TiB) の Standard SSD と Standard HDD ディスクで最適化されたディスク IOPS と帯域幅を実現するために推奨される VM サイズはどれくらいですか?**
 
@@ -365,7 +355,7 @@ Azure Backup と Azure Site Recovery サービスでサポートされている�
 
 **どのリージョンで、8 TiB、16 TiB、および 32 TiB のサイズのマネージド ディスクがサポートされていますか?**
 
-8 TiB、16 TiB、および 32 TiB のディスク SKU は、グローバル Azure のすべてのリージョンでサポートされています。 Microsoft Azure Government と Azure China 21Vianet に対するサポートはまだ利用できません。
+グローバル Azure、Microsoft Azure Government、Azure China 21Vianet のすべてのリージョンで、8 TiB、16 TiB、32 TiB ディスク SKU がサポートされています。
 
 **すべてのディスク サイズについてホスト キャッシュを有効にするサポートはしていますか?**
 

@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
 ms.openlocfilehash: 3974be886b57fbf685b211369094edf844d96ab6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57975561"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60776526"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
-特定の Batch ジョブを実行するために、大規模な計算用に設計された Azure VM サイズを利用できます。 例: 
+特定の Batch ジョブを実行するために、大規模な計算用に設計された Azure VM サイズを利用できます。 例:
 
 * マルチインスタンスの [MPI ワークロード](batch-mpi.md)を実行するには、リモート ダイレクト メモリ アクセス (RDMA) 用のネットワーク インターフェイスを備えた H シリーズなどのサイズを選択できます。 これらのサイズでは、InfiniBand ネットワークに接続してノード間通信を行うため、MPI アプリケーションを高速化できます。 
 
@@ -115,7 +115,7 @@ Windows NC ノードのプールで CUDA アプリケーションを実行する
 | **SKU** | 2016-Datacenter |
 | **ノード サイズ** | NC6 Standard |
 | **アプリケーション パッケージの参照** | GPUDriver、バージョン 411.82 |
-| **開始タスクが有効** | True<br>**[コマンド ライン]** - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**ユーザー ID** - Pool autouser、admin<br/>**成功を待機** - True
+| **開始タスクが有効** | True<br>**[コマンド ライン]**  - `cmd /c "%AZ_BATCH_APP_PACKAGE_GPUDriver#411.82%\\GPUDriverSetup.exe /s"`<br/>**ユーザー ID** - Pool autouser、admin<br/>**成功を待機** - True
 
 ## <a name="example-nvidia-gpu-drivers-on-a-linux-nc-vm-pool"></a>例:Linux NC VM プールの NVIDIA GPU ドライバー
 

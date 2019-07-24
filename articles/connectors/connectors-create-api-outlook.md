@@ -12,11 +12,11 @@ ms.date: 08/18/2016
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: fd6836451a73551487b8f97903594154a2efc894
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228757"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105804"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-with-azure-logic-apps"></a>Azure Logic Apps を使用して、Outlook.com のメール、カレンダー、および連絡先を管理する
 

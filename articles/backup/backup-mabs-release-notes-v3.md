@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/22/2018
 ms.author: v-jysur
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: d37245d7eed39ee9d219578db9e0a50d758ba9a2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 39f91838a3b5ae360c47d38b22f63e6d94e8850f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660869"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655763"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup Server のリリース ノート
 この記事では、Microsoft Azure Backup Server (MABS) V3 の既知の問題と回避策を提供します。
@@ -61,7 +61,7 @@ ms.locfileid: "55660869"
 1.  [バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) SQL データベースと MABS V2 のアンインストール (アンインストール中に、保護されたデータを保持すると選択)。
 2.  SQL 2017 (Enterprise) にアップグレードし、アップグレードの一環としてレポートをアンインストールします。
 3. SQL Server Reporting Services (SSRS)[をインストール](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server)。
-4.  SQL Server Management Studio (SSMS) を[インストール](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017#ssms-installation-tips-and-issues-ssms-1791)。
+4.  SQL Server Management Studio (SSMS) を[インストール](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms#download-ssms-181)。
 5.  [SQL 2017 を使用した SSRS 構成](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs)に記載されているパラメーターを使用してレポートを構成します。
 6.  MABS V3を [インストール](backup-azure-microsoft-azure-backup.md)。
 7. [ここ](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10))に記されている通り、SSMS と実行 DPM 同期ツールを使用して SQL を[復元](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017)します。

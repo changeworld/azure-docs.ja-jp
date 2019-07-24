@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817430"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61258957"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
 > [!NOTE]
@@ -188,9 +188,9 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 | --- | --- | --- | --- |
 | frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |はい |NA |
 | interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |はい |NA |
-| style |スライスを間隔の始めまたは終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>frequency を Month に設定し、style を EndOfInterval に設定すると、スライスは月の最終日に生成されます。 style が StartOfInterval に設定されていると、スライスは月の最初の日に生成されます。<br/><br/>frequency を Day に設定し、style を EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>frequency を Hour に設定し、style を EndOfInterval に設定すると、スライスは時間の終わりに生成されます。 たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 |いいえ  |EndOfInterval |
-| anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/><b>メモ</b>:AnchorDateTime に frequency より細かい日付部分が含まれている場合、そのより細かい部分は無視されます。 <br/><br/>たとえば、<b>間隔</b>が<b>時間単位</b> (frequency: Hour、interval:1) で、<b>AnchorDateTime</b> に<b>分と秒</b>が含まれる場合、AnchorDateTime の<b>分と秒</b>部分は無視されます。 |いいえ  |01/01/0001 |
-| offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/><b>メモ</b>:anchorDateTime と offset の両方が指定されている場合は、結果としてシフトが結合されます。 |いいえ  |NA |
+| style |スライスを間隔の始めまたは終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>frequency を Month に設定し、style を EndOfInterval に設定すると、スライスは月の最終日に生成されます。 style が StartOfInterval に設定されていると、スライスは月の最初の日に生成されます。<br/><br/>frequency を Day に設定し、style を EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>frequency を Hour に設定し、style を EndOfInterval に設定すると、スライスは時間の終わりに生成されます。 たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 |いいえ |EndOfInterval |
+| anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/><b>メモ</b>:AnchorDateTime に frequency より細かい日付部分が含まれている場合、そのより細かい部分は無視されます。 <br/><br/>たとえば、<b>間隔</b>が<b>時間単位</b> (frequency: Hour、interval:1) で、<b>AnchorDateTime</b> に<b>分と秒</b>が含まれる場合、AnchorDateTime の<b>分と秒</b>部分は無視されます。 |いいえ |01/01/0001 |
+| offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/><b>メモ</b>:anchorDateTime と offset の両方が指定されている場合は、結果としてシフトが結合されます。 |いいえ |NA |
 
 ### <a name="offset-example"></a>offset 例
 既定では、毎日 (`"frequency": "Day", "interval": 1`) のスライスは UTC 時 12 AM (午前 0 時) に開始します。 開始時刻を 6 AM UTC にするには、次のスニペットに示すようにオフセットを設定します。 
@@ -234,8 +234,8 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 
 | ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | **Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ  |NA |
-| minimumRows | **Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ  |NA |
+| minimumSizeMB | **Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ |NA |
+| minimumRows | **Azure SQL データベース**または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ |NA |
 
 #### <a name="examples"></a>例
 **minimumSizeMB:**
@@ -268,9 +268,9 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 ## <a name="activity-policies"></a>アクティビティ ポリシー
 ポリシーはアクティビティの実行時の動作に影響します。具体的には、テーブルのスライスがいつ処理されるかです。 次の表で詳細に説明します。
 
-| プロパティ | 使用できる値 | 既定値 | 説明 |
+| プロパティ | 使用できる値 | Default value | 説明 |
 | --- | --- | --- | --- |
-| コンカレンシー |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、コンカレンシーの値を大きくするとデータ処理が速くなります。 |
+| concurrency |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、コンカレンシーの値を大きくするとデータ処理が速くなります。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |処理されるデータ スライスの順序を決定します。<br/><br/>たとえば、2 個のスライス (午後 4 時と午後 5 時の実行) があり、どちらも実行が保留されているとします。 executionPriorityOrder を NewestFirst に設定すると、午後 5 時のスライスが最初に処理されます。 同様に、executionPriorityORder を OldestFIrst に設定すると、午後 4 時のスライスが処理されます。 |
 | retry |整数<br/><br/>最大値は 10 |0 |スライスのデータ処理が失敗としてマークされるまでの再試行回数。 データ スライスのアクティビティの実行は、指定された再試行回数まで再試行されます。 再試行は、障害発生後にできるだけ早く行われます。 |
 | timeout |TimeSpan |00:00:00 |アクティビティのタイムアウト。 例:00:10:00 (10 分のタイムアウトを示す)<br/><br/>値が指定されていない場合、または値が 0 の場合は、タイムアウトは無期限です。<br/><br/>スライスのデータ処理時間がタイムアウト値を超えた場合、処理は取り消され、システムは処理の再試行を試みます。 再試行の回数は、retry プロパティで指定します。 タイムアウトが発生すると、ステータスは TimedOut に設定されます。 |
@@ -697,7 +697,7 @@ CopyActivity2 は、CopyActivity1 が正常に実行していて、Dataset2 を�
 
 この例では、最初のコピー アクティビティの出力データセット (Dataset2) が 2 番目のアクティビティの入力として指定されています。 したがって、2 番目のアクティビティは、最初のアクティビティからの出力データセットが準備ができたときにのみ実行されます。  
 
-この例では、CopyActivity2 で別の入力 (Dataset3 など) を使用できますが、CopyActivity2 への入力として Dataset2 も指定しているため、CopyActivity1 が完了するまでこのアクティビティは実行されません。 例: 
+この例では、CopyActivity2 で別の入力 (Dataset3 など) を使用できますが、CopyActivity2 への入力として Dataset2 も指定しているため、CopyActivity1 が完了するまでこのアクティビティは実行されません。 例:
 
 CopyActivity1
 

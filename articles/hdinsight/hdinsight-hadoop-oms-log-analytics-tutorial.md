@@ -2,18 +2,17 @@
 title: Azure Monitor ログを使用して Azure HDInsight クラスターを監視する
 description: Azure Monitor ログを使って HDInsight クラスターで実行中のジョブを監視する方法を説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: hrasheed
-ms.openlocfilehash: 610843d325744aec8ad944075f06c63c90b6fe4d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 06/03/2019
+ms.openlocfilehash: 16659a335ef6126e75f5a9a99784e71afa056bef
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203676"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479253"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログを使用して HDInsight クラスターを監視する
 
@@ -49,21 +48,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ここでは、ジョブやデバッグ ログなどを監視するために、Azure Log Analytics ワークスペースを使用するよう既存の HDInsight Hadoop クラスターを構成します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](./hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 このクラスターは、新しいポータル ページで開かれます。
 
-2. 左側のメニューから、**[すべてのサービス]** を選択します。
+1. 左側から、 **[監視]** の下にある **[Operations Management Suite]** を選択します。
 
-3. **[ANALYTICS]** で **[HDInsight クラスター]** を選択します。
+1. メイン ビューから、 **[OMS 監視]** の下にある **[有効化]** を選択します。
 
-4. 一覧からクラスターを選択します。
+1. **[ワークスペースを選択]** ドロップダウン リストから、既存の Log Analytics ワークスペースを選択します。
 
-5. 左側から、**[監視]** の下にある **[Operations Management Suite]** を選択します。
-
-6. メイン ビューから、**[OMS 監視]** の下にある **[有効化]** を選択します。
-
-7. **[ワークスペースを選択]** ドロップダウン リストから、既存の Log Analytics ワークスペースを選択します。
-
-8. **[保存]** を選択します。  設定を保存するまでしばらく時間がかかります。
+1. **[保存]** を選択します。  設定を保存するまでしばらく時間がかかります。
 
     ![HDInsight クラスターの監視の有効化](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "HDInsight クラスターの監視の有効化")
 
@@ -107,7 +100,7 @@ HDInsight では、Azure Monitor ログに追加できるクラスター固有�
 * HDInsight Spark Monitoring
 * HDInsight Storm Monitoring
 
-管理ソリューションをインストールする手順については、「[Azure の管理ソリューション](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)」をご覧ください。 テスト用に HDInsight Hadoop Monitoring ソリューションをインストールします。 インストールが完了すると、**[概要]** の下に **HDInsightHadoop** タイルが表示されます。 **HDInsightHadoop** タイルを選択します。 HDInsightHadoop ソリューションは次のようになります。
+管理ソリューションをインストールする手順については、「[Azure の管理ソリューション](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)」をご覧ください。 テスト用に HDInsight Hadoop Monitoring ソリューションをインストールします。 インストールが完了すると、 **[概要]** の下に **HDInsightHadoop** タイルが表示されます。 **HDInsightHadoop** タイルを選択します。 HDInsightHadoop ソリューションは次のようになります。
 
 ![HDInsight 監視ソリューションのビュー](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 

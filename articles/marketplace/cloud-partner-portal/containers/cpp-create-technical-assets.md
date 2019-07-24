@@ -1,25 +1,18 @@
 ---
-title: Azure コンテナー イメージの技術資産を作成する | Microsoft Docs
+title: Azure コンテナー イメージの技術資産を作成する | Azure Marketplace
 description: Azure コンテナー用の技術資産を作成します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 5a7531be73a872d9c088a0bf02a8686f947c220a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: c639389fdd0d4624152fcdfa4432be09a18a97bc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047366"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65794338"
 ---
 # <a name="prepare-your-container-technical-assets"></a>コンテナーの技術資産を準備する
 
@@ -60,9 +53,10 @@ ms.locfileid: "59047366"
 
 ## <a name="create-the-container-image"></a>コンテナー イメージを作成する
 
-- コンテナー仮想マシン (VM) 用の仮想ハード ディスク (VHD) を作成して構成します。 この VHD には、コンテナー用のオペレーティング システム (Windows、Linux、または Ubuntu) が格納されます。 データ ディスクの追加が必要になる場合があります。
-- VM の OS、VM のサイズ、開くポート、接続するデータ ディスクを構成します。
-- オファーに必要なアプリケーションと他のソフトウェアをインストールします。 たとえば、データベース ソフトウェア、サード パーティ製ソフトウェア、カスタム アプリケーションなどです。
+詳細については、以下を参照してください。
+
+* [チュートリアル:Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
+* [チュートリアル:Azure Container Registry タスクを使用して、クラウドでコンテナー イメージをビルドしてデプロイする](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)
 
 ## <a name="next-steps"></a>次の手順
 

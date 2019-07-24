@@ -3,7 +3,7 @@ title: ユニバーサル Windows プラットフォーム (UWP) アプリに認
 description: Azure App Service Mobile Apps を使用して、ユニバーサル Windows プラットフォーム (UWP) アプリのユーザーを認証する方法を説明します。その際に、さまざまな ID プロバイダーを使います。AAD、Google、Facebook、Twitter、Microsoft などです。
 services: app-service\mobile
 documentationcenter: windows
-author: conceptdev
+author: elamalani
 manager: panarasi
 editor: ''
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
@@ -12,18 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
-ms.author: panarasi
-ms.openlocfilehash: 7caaa1ca4cdaf7290b7ce05d17c07e565e7b51d1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 9a3a6a8d063836094c1285a5ab4c17ee403fc347
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698684"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67440231"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Windows アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーとかかわることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-users) を今すぐチェックしてください。
+>
+
+## <a name="overview"></a>概要
 このトピックでは、モバイル アプリにクラウド ベースの認証を追加する方法を説明します。 このチュートリアルでは、Azure App Service でサポートされている ID プロバイダーを使用して、Mobile Apps のユニバーサル Windows プラットフォーム (UWP) のクイック スタート プロジェクトに認証を追加します。 Mobile Apps のバックエンドによって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
 このチュートリアルは、Mobile Apps のクイック スタートに基づいています。 事前に [Mobile Apps の使用](app-service-mobile-windows-store-dotnet-get-started.md)に関するチュートリアルを完了している必要があります。
@@ -141,8 +146,8 @@ ms.locfileid: "59698684"
             Window.Current.Activate();
             base.OnActivated(args);
         }
-6. Package.appxmanifest ファイルを開き、 **[宣言]** に移動して、**[使用可能な宣言]** ドロップダウン リストで **[プロトコル]** を選択し、**[追加]** ボタンをクリックします。 次に、**[プロトコル]** 宣言の **[プロパティ]** を構成します。 **[表示名]** で、アプリケーションのユーザーに表示する名前を追加します。 **[名前]** に、自分の {url_scheme_of_your_app} を追加します。
-7. F5 キーを押してアプリを実行します。**[サインイン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサインインします。 サインインに成功すると、アプリはエラーなしで実行し、バックエンドに対してクエリを行ってデータを更新できるようになります。
+6. Package.appxmanifest ファイルを開き、 **[宣言]** に移動して、 **[使用可能な宣言]** ドロップダウン リストで **[プロトコル]** を選択し、 **[追加]** ボタンをクリックします。 次に、 **[プロトコル]** 宣言の **[プロパティ]** を構成します。 **[表示名]** で、アプリケーションのユーザーに表示する名前を追加します。 **[名前]** に、自分の {url_scheme_of_your_app} を追加します。
+7. F5 キーを押してアプリを実行します。 **[サインイン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサインインします。 サインインに成功すると、アプリはエラーなしで実行し、バックエンドに対してクエリを行ってデータを更新できるようになります。
 
 ## <a name="tokens"></a>クライアント側で認証トークンを保存する
 前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始するたびに、クライアントは ID プロバイダーと App Service の両方にアクセスする必要があります。 この方法は非効率であるだけでなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。 よって、App Service から返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用するほうが効果的です。

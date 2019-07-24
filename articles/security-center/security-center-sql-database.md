@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: rkarlin
 ms.openlocfilehash: 0a889de79b6a5921007614dac8d610c1be0222d2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114090"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60704556"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center と Azure SQL Database サービス
 [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
@@ -57,7 +57,7 @@ Security Center には [Azure ポータル](https://azure.microsoft.com/features
 * **SQL 監査と脅威検出**を有効にすると、コンプライアンス、高度な検出、調査のため、Azure データベースへのアクセスの監査を有効にすることが Security Center によって提案されます。
 * **SQL Transparent Data Encryption** を有効にすると、Azure SQL データベース、関連付けられたバックアップ、トランザクション ログ ファイルに関して、保存データの暗号化を有効にすることが Security Center によって提案されます。
 
-セキュリティ ポリシーを設定するには、[セキュリティ センター] ブレードの **[ポリシー]** タイルを選択します。 セキュリティ ポリシーを有効にするサブスクリプションは、**[セキュリティ ポリシー]** ブレードで選択します。 **[防止ポリシー]** を選択し、そのサブスクリプションで使用するセキュリティの推奨事項を **[オン]** にしてください。
+セキュリティ ポリシーを設定するには、[セキュリティ センター] ブレードの **[ポリシー]** タイルを選択します。 セキュリティ ポリシーを有効にするサブスクリプションは、 **[セキュリティ ポリシー]** ブレードで選択します。 **[防止ポリシー]** を選択し、そのサブスクリプションで使用するセキュリティの推奨事項を **[オン]** にしてください。
 ![セキュリティ ポリシー][3]
 
 詳細については、[セキュリティ ポリシーの設定](tutorial-security-policy.md)に関するページを参照してください。
@@ -73,7 +73,7 @@ Security Center には [Azure ポータル](https://azure.microsoft.com/features
 | [SQL データベースの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-databases.md) |SQL Database データベースの監査と脅威検出を有効にするよう推奨されます。 (対象になるのは SQL Database サービスのみです。 仮想マシン上で実行されている Microsoft SQL Server は含まれません。) |
 | [Transparent Data Encryption を有効にする](security-center-enable-transparent-data-encryption.md) |SQL データベースの暗号化を有効にするよう推奨されます。 (対象になるのは SQL Database サービスのみです。) |
 
-Azure リソースに関する推奨事項を確認するには、[セキュリティ センター] ブレードの **[推奨事項]** タイルを選択してください。 **[推奨事項]** ブレードで特定の推奨事項を選択すると詳細が表示されます。 この例では、**[Enable Auditing & Threat detection on SQL servers (SQL サーバーの監査と脅威検出を有効にする)]** を選択してみましょう。
+Azure リソースに関する推奨事項を確認するには、[セキュリティ センター] ブレードの **[推奨事項]** タイルを選択してください。 **[推奨事項]** ブレードで特定の推奨事項を選択すると詳細が表示されます。 この例では、 **[Enable Auditing & Threat detection on SQL servers (SQL サーバーの監査と脅威検出を有効にする)]** を選択してみましょう。
 
 ![Recommendations][4]
 
@@ -85,7 +85,7 @@ Azure リソースに関する推奨事項を確認するには、[セキュリ�
 推奨事項の詳細については、[セキュリティに関する推奨事項の管理](security-center-recommendations.md)についてのページを参照してください。
 
 ## <a name="monitor-security-health"></a>セキュリティ正常性を監視する
-サブスクリプションのリソースに対して [セキュリティ ポリシー](tutorial-security-policy.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  リソースのセキュリティの状態は、**[リソース セキュリティの正常性]** タイルで確認できます。 **[リソース セキュリティの正常性]** タイルの **[データ]** をクリックすると、**[Data Resources (データ リソース)]** ブレードが開き、監査や Transparent Data Encryption が有効になっていないなど、SQL の問題に関する推奨事項が示されます。 また、データベースの全般的なヘルス状態に関する推奨事項も示されます。
+サブスクリプションのリソースに対して [セキュリティ ポリシー](tutorial-security-policy.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  リソースのセキュリティの状態は、 **[リソース セキュリティの正常性]** タイルで確認できます。 **[リソース セキュリティの正常性]** タイルの **[データ]** をクリックすると、 **[Data Resources (データ リソース)]** ブレードが開き、監査や Transparent Data Encryption が有効になっていないなど、SQL の問題に関する推奨事項が示されます。 また、データベースの全般的なヘルス状態に関する推奨事項も示されます。
 ![リソースのセキュリティ正常性][6]
 
 詳細については、[セキュリティ ヘルスの監視](security-center-monitoring.md)に関するページを参照してください。
@@ -93,7 +93,7 @@ Azure リソースに関する推奨事項を確認するには、[セキュリ�
 ## <a name="manage-and-respond-to-security-alerts"></a>セキュリティの警告の管理と対応
 Security Center は、真の脅威を検出し、偽陽性の検出を減らすために、[Azure SQL 脅威検出](../sql-database/sql-database-threat-detection.md)などの Azure リソースからログ データを自動的に収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。
 
-警告を確認するには、[セキュリティ センター] ブレードの **[セキュリティ警告]** タイルを選択します。 **[セキュリティ警告]** ブレードで警告を選択すると、その原因となったイベントの詳細が表示されます。攻撃に対処するために必要な手順があれば、その情報も表示されます。 この例では、**[Potential SQL injection (SQL インジェクションの可能性)]** を選択してみましょう。
+警告を確認するには、[セキュリティ センター] ブレードの **[セキュリティ警告]** タイルを選択します。 **[セキュリティ警告]** ブレードで警告を選択すると、その原因となったイベントの詳細が表示されます。攻撃に対処するために必要な手順があれば、その情報も表示されます。 この例では、 **[Potential SQL injection (SQL インジェクションの可能性)]** を選択してみましょう。
 ![セキュリティ警告][7]
 
 以下に示したように、Security Center から提供される詳しい情報を確認することで、その警告を引き起こした原因、ターゲット リソース、(場合によっては) 発生元の IP アドレス、解決のための推奨事項を知ることができます。

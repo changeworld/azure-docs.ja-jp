@@ -11,14 +11,14 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff693ac34382ea5673989ecb6cbb38e19e176ad3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f49b384f6f943e8c6767a6133a835011bc1e6bac
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801073"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059332"
 ---
-# <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Azure Machine Learning サービスを使用して機械学習パイプラインを構築する
+# <a name="build-reusable-ml-pipelines-in-azure-machine-learning-service"></a>Azure Machine Learning service での再利用可能 ML 構築パイプライン
 
 この記事では、Azure Machine Learning SDK for Python を使用して構築できる機械学習パイプラインと、パイプラインを使用する利点について説明します。
 
@@ -34,6 +34,7 @@ ms.locfileid: "65801073"
 
 ![Azure Machine Learning サービスでの機械学習パイプライン](./media/concept-ml-pipelines/pipelines.png)
 
+<a name="compare"></a>
 ### <a name="which-azure-pipeline-technology-should-i-use"></a>どの Azure パイプライン テクノロジを使用すべきか
 
 Azure クラウドでは、目的が異なるさまざまなパイプラインが提供されています。 次の表に、それらのさまざまなパイプラインとその用途を示します。

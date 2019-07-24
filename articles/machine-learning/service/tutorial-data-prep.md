@@ -6,21 +6,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: sihhu
-ms.author: MayMSFT
+author: MayMSFT
+ms.author: sihhu
 ms.reviewer: trbye
-ms.date: 03/29/2019
+ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 67f3a0d10490c5c63dfe262d07985f51bb384e34
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 55bece47ad2a9965e5137ad720631d9b5f5add48
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604480"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297884"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
-このチュートリアルでは、[Azure Machine Learning 用のデータ準備パッケージ](https://aka.ms/data-prep-sdk)を使用して、回帰モデリングのためのデータを準備する方法について説明します。 さまざまな変換を実行して、2 つの異なる NYC タクシー データ セットをフィルター処理して結合します。
+このチュートリアルでは、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) からの[データ準備パッケージ](https://aka.ms/data-prep-sdk)を使用して、回帰モデリングのためのデータを準備する方法について説明します。 さまざまな変換を実行して、2 つの異なる NYC タクシー データ セットをフィルター処理して結合します。
 
 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。 このチュートリアル シリーズを完了すると、データの特徴についてモデルをトレーニングして、タクシー移動のコストを予測できます。 これらの特徴には、乗車日時、乗客数、乗車場所が含まれます。
 
@@ -38,15 +38,15 @@ ms.locfileid: "65604480"
 「[開発環境を設定する](#start)」にスキップしてノートブックの手順を読むか、以下の手順に従ってノートブックを入手し、Azure Notebooks または独自のノートブック サーバーで実行します。 ノートブックを実行するには、以下のものが必要です。
 
 * 以下のものがインストールされている Python 3.6 ノートブック サーバー。
-    *  Azure Machine Learning SDK for Python の azureml-dataprep パッケージ
+    * Azure Machine Learning SDK からの `azureml-dataprep` パッケージ
 * チュートリアル ノートブック
 
 * [ワークスペース内のクラウド ノートブック サーバー](#azure)を使用する 
 * [独自のノートブック サーバー](#server)を使用する
 
-### <a name="azure"></a>ワークスペース内のクラウド ノートブック サーバーを使用する
+### <a name="azure"></a>ワークスペース内のクラウド ノートブックサーバーを使用する
 
-独自のクラウドベースのノートブック サーバーで簡単に開始できます。 このクラウド リソースを作成すると、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。
+独自のクラウドベースのノートブック サーバーで簡単に開始できます。 このクラウド リソースを作成すると、Azure Machine Learning SDK for Python が既にインストールされて構成されています。
 
 [!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
@@ -56,8 +56,8 @@ ms.locfileid: "65604480"
 
 次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  手順を完了したら、**tutorials/regression-part1-data-prep.ipynb** ノートブックを実行します。
 
-1. [Azure Machine Learning Python のクイック スタート](setup-create-workspace.md#sdk)にあるインストール手順を完了して、Miniconda 環境を作成します。  「**ワークスペースを作成する**」セクションはスキップしてもかまいませんが、このチュートリアル シリーズの[パート 2](tutorial-auto-train-models.md) で必要になります。
-1. `pip install azureml-dataprep` を使用して、ご自分の環境に azureml-dataprep をインストールします。
+1. [Azure Machine Learning Python のクイック スタート](setup-create-workspace.md#sdk)にあるインストール手順を完了して、Miniconda 環境を作成し、SDK をインストールします。  「**ワークスペースを作成する**」セクションはスキップしてもかまいませんが、このチュートリアル シリーズの[パート 2](tutorial-auto-train-models.md) で必要になります。
+1. SDK をインストールすると、`azureml-dataprep` パッケージが自動的にインストールされます。
 1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
 
     ```
@@ -85,14 +85,14 @@ Python Notebook で、開発作業に関するすべての設定を行うこと�
 pip install "azureml-dataprep[pandas]>=1.1.0,<1.2.0"
 ```
 
-SDK をインポートします。
+パッケージをインポートします。
 
 ```python
 import azureml.dataprep as dprep
 ```
 
 > [!IMPORTANT]
-> 必ず最新バージョンをインストールしてください。 バージョン番号が 1.1.0 より低いと、このチュートリアルは正しく機能しません。
+> 必ず、最新の azureml.dataprep パッケージ バージョンをインストールしてください。 バージョン番号が 1.1.0 より低いと、このチュートリアルは正しく機能しません。
 
 ## <a name="load-data"></a>データを読み込む
 
@@ -112,6 +112,9 @@ yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 display(green_df_raw.head(5))
 display(yellow_df_raw.head(5))
 ```
+
+> [!Note]
+> この同じ例の URL は完全な URL ではありません。 代わりに、BLOB の demo フォルダーが参照されます。 一部のデータの完全な URL は、 https://dprepdata.blob.core.windows.net/demo/green-small/green_tripdata_2013-08.csv です
 
 `Dataflow` オブジェクトはデータフレームに類似しており、データに対して遅延評価される一連の不変の操作を表します。 操作は、異なる変換を呼び出して、利用可能なメソッドをフィルター処理することで追加できます。 `Dataflow` に対する操作の追加の結果は常に、新しい `Dataflow` オブジェクトです。
 

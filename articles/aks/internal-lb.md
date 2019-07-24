@@ -2,30 +2,32 @@
 title: Azure Kubernetes Service (AKS) で内部ロード バランサーを作成する
 description: サービスを Azure Kubernetes Service (AKS) を使用して公開する内部ロード バランサーを作成して使用する方法を示します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: iainfou
-ms.openlocfilehash: a26eab83f567a46f613e3bfda95fd99aba2b79c0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.author: mlearned
+ms.openlocfilehash: 5842003d43d4268d0f663e8a57e40562a480e252
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404316"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615154"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する
 
 Azure Kubernetes Service (AKS) でアプリケーションへのアクセスを制限するために、内部ロード バランサーを作成して使用できます。 内部ロード バランサーは、Kubernetes サービスを Kubernetes クラスターと同じ仮想ネットワークで実行されているアプリケーションからのみアクセス可能にします。 この記事では、Azure Kubernetes Service (AKS) を使用して内部ロード バランサーを使用する方法を示します。
 
 > [!NOTE]
-> Azure Load Balancer は、*Basic* と *Standard* の 2 つの SKU で使用できます。 AKS は現在、*Basic* SKU をサポートしています。 *Standard* SKU を使用する場合は、上流の [aks-engine][aks-engine] を使用できます。 詳細については、[Azure ロード バランサー SKU の比較][azure-lb-comparison]に関するページを参照してください。
+> Azure Load Balancer は、*Basic* と *Standard* の 2 つの SKU で使用できます。 サービス マニフェストを使用して AKS でロード バランサーを作成する場合、既定では *Basic* SKU が使用されます。 詳細については、[Azure ロード バランサー SKU の比較][azure-lb-comparison]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、AKS のクイックスタート ([Azure CLI を使用][aks-quickstart-cli]、or [using the Azure portal][aks-quickstart-portal]) を参照してください。
 
-また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+
+既存のサブネットまたはリソース グループを使用する場合、AKS クラスターのサービス プリンシパルにはネットワーク リソースを管理するアクセス許可が必要です。 一般に、委任されたリソースのサービス プリンシパルには*ネットワーク共同作成者*ロールを割り当てます。 アクセス許可の詳細については、[他の Azure リソースへの AKS アクセスの委任][aks-sp]に関する記事を参照してください。
 
 ## <a name="create-an-internal-load-balancer"></a>内部ロード バランサーを作成します。
 
@@ -46,7 +48,7 @@ spec:
     app: internal-app
 ```
 
-[kubectl apply]kubectl-apply] コマンドを使用して内部ロード バランサーをデプロイし、YAML マニフェストの名前を指定します。
+[kubectl apply][kubectl-apply] を使用して内部ロード バランサーをデプロイし、YAML マニフェストの名前を指定します。
 
 ```console
 kubectl apply -f internal-lb.yaml
@@ -94,7 +96,7 @@ internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 
 ## <a name="use-private-networks"></a>プライベート ネットワークを使用する
 
-AKS クラスターを作成するときに、高度なネットワーク設定を指定できます。 このアプローチでは、既存の Azure 仮想ネットワークとサブネットにクラスターをデプロイできます。 1 つのシナリオは、オンプレミス環境に接続されたプライベート ネットワークに AKS クラスターをデプロイし、内部的にのみアクセスできるサービスを実行することです。 詳細については、[Kubenet][use-kubenet] または [Azure CNI][advanced-networking] での仮想ネットワーク サブネットの構成を参照してください。
+AKS クラスターを作成するときに、高度なネットワーク設定を指定できます。 このアプローチでは、既存の Azure 仮想ネットワークとサブネットにクラスターをデプロイできます。 1 つのシナリオは、オンプレミス環境に接続されたプライベート ネットワークに AKS クラスターをデプロイし、内部的にのみアクセスできるサービスを実行することです。 詳細については、[Kubenet][use-kubenet] or [Azure CNI][advanced-networking] での仮想ネットワーク サブネットの構成を参照してください。
 
 プライベート ネットワークを使用する AKS クラスターに内部ロード バランサーをデプロイする場合、前の手順を変更する必要はありません。 ロード バランサーは、AKS クラスターと同じリソース グループ内に作成されますが、次の例に示すように、プライベート仮想ネットワークとサブネットに接続されます。
 
@@ -139,6 +141,7 @@ spec:
 [Kubernetes サービスのドキュメント][kubernetes-services]で Kubernetes サービスについて学習する。
 
 <!-- LINKS - External -->
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [aks-engine]: https://github.com/Azure/aks-engine
 
@@ -151,3 +154,4 @@ spec:
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources

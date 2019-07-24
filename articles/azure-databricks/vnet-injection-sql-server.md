@@ -9,11 +9,11 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 345e07fac30f4ad0c8e9918cb8a1ff0fb8aeb811
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59287622"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60770791"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>チュートリアル:Azure Databricks ノートブックから仮想ネットワーク内の SQL Server Linux Docker コンテナーのクエリを実行する
 
@@ -38,7 +38,7 @@ ms.locfileid: "59287622"
 
 ## <a name="create-a-linux-virtual-machine"></a>Linux 仮想マシンの作成
 
-1. Azure portal で、**[仮想マシン]** のアイコンを選択します。 次に、**[+ 追加]** を選択します。
+1. Azure portal で、 **[仮想マシン]** のアイコンを選択します。 次に、 **[+ 追加]** を選択します。
 
     ![新しい Azure 仮想マシンを追加する](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "59287622"
 
     ![新しい仮想マシンの構成の [基本] タブ](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
-3. **[ネットワーク]** タブに移動します。仮想ネットワークと、Azure Databricks クラスターが含まれているパブリック サブネットを選択します。 **[確認と作成]** で、**[作成]** を選択して仮想マシンをデプロイします。
+3. **[ネットワーク]** タブに移動します。仮想ネットワークと、Azure Databricks クラスターが含まれているパブリック サブネットを選択します。 **[確認と作成]** で、 **[作成]** を選択して仮想マシンをデプロイします。
 
     ![新しい仮想マシンの構成の [ネットワーク] タブ](./media/vnet-injection-sql-server/create-virtual-machine-networking.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "59287622"
     
     |Setting|推奨値|説明|
     |-------|---------------|-----------|
-    |ソース|IP アドレス|IP アドレスでは、特定のソース IP アドレスからの受信トラフィックが、このルールによって許可または拒否されることを指定します。|
+    |source|IP アドレス|IP アドレスでは、特定のソース IP アドレスからの受信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |ソース IP アドレス|<ご使用のパブリック IP\>|パブリック IP アドレスを入力します。 パブリック IP アドレスは、[bing.com](https://www.bing.com/) にアクセスして **"my IP"** を検索することで見つけることができます。|
     |ソース ポート範囲|*|すべてのポートからのトラフィックを許可します。|
     |宛先|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
@@ -80,7 +80,7 @@ ms.locfileid: "59287622"
 
     |Setting|推奨値|説明|
     |-------|---------------|-----------|
-    |ソース|IP アドレス|IP アドレスでは、特定のソース IP アドレスからの受信トラフィックが、このルールによって許可または拒否されることを指定します。|
+    |source|IP アドレス|IP アドレスでは、特定のソース IP アドレスからの受信トラフィックが、このルールによって許可または拒否されることを指定します。|
     |ソース IP アドレス|10.179.0.0/16|仮想ネットワークのアドレス範囲を入力します。|
     |ソース ポート範囲|*|すべてのポートからのトラフィックを許可します。|
     |宛先|IP アドレス|IP アドレスでは、特定のソース IP アドレスの送信トラフィックが、このルールによって許可または拒否されることを指定します。|
@@ -93,7 +93,7 @@ ms.locfileid: "59287622"
 
 ## <a name="run-sql-server-in-a-docker-container"></a>Docker コンテナーで SQL Server を実行する
 
-1. [Ubuntu for Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab)、または仮想マシンへの SSH による接続を確立するためのその他のツールを開きます。 Azure portal で仮想マシンに移動し、**[接続]** を選択して接続するために必要な SSH コマンドを取得します。
+1. [Ubuntu for Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab)、または仮想マシンへの SSH による接続を確立するためのその他のツールを開きます。 Azure portal で仮想マシンに移動し、 **[接続]** を選択して接続するために必要な SSH コマンドを取得します。
 
     ![仮想マシンへの接続](./media/vnet-injection-sql-server/vm-ssh-connect.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "59287622"
 
     ![SQL Server Management Studio を使用して SQL Server に接続する](./media/vnet-injection-sql-server/ssms-login.png)
 
-2. 正常に接続したら、**[新しいクエリ]** を選択し、次のコード スニペットを入力してデータベース、テーブルを作成し、テーブルにいくつかのレコードを挿入します。
+2. 正常に接続したら、 **[新しいクエリ]** を選択し、次のコード スニペットを入力してデータベース、テーブルを作成し、テーブルにいくつかのレコードを挿入します。
 
     ```SQL
     CREATE DATABASE MYDB;
@@ -161,7 +161,7 @@ ms.locfileid: "59287622"
 
 ## <a name="query-sql-server-from-azure-databricks"></a>Azure Databricks から SQL Server のクエリを実行する
 
-1. Azure Databricks ワークスペースに移動し、前提条件の一部としてクラスターを作成済みであることを確認します。 次に、**[ノートブックの作成]** を選択します。 ノートブックに名前を付け、言語として *[Python]* を選んで、作成済みのクラスターを選びます。
+1. Azure Databricks ワークスペースに移動し、前提条件の一部としてクラスターを作成済みであることを確認します。 次に、 **[ノートブックの作成]** を選択します。 ノートブックに名前を付け、言語として *[Python]* を選んで、作成済みのクラスターを選びます。
 
     ![Databricks ノートブックの新しい設定](./media/vnet-injection-sql-server/create-notebook.png)
 
@@ -197,7 +197,7 @@ ms.locfileid: "59287622"
 
 リソース グループ、Azure Databricks ワークスペース、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、不必要な課金を回避できます。 Azure Databricks ワークスペースを後で使用する予定がある場合は、クラスターを停止し、後で再起動することができます。 この Azure Databricks ワークスペースの使用を続けない場合は、以下の手順に従って、このチュートリアルで作成したすべてのリソースを削除してください。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソース グループの名前をクリックします。
+1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソース グループの名前をクリックします。
 
 2. リソース グループのページで **[削除]** を選択し、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** を再度選択します。
 

@@ -3,20 +3,20 @@ title: コンテナーの構成
 titlesuffix: Face - Azure Cognitive Services
 description: コンテナーの構成設定。
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: diberry
-ms.openlocfilehash: 4152cf90d9de2eda15a798fbf6b5b4aa4f5646f7
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 06/10/2019
+ms.author: dapine
+ms.openlocfilehash: d30c2218fe20d6b760f379caf52ca0bf97e1c750
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677784"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071490"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
 
@@ -53,7 +53,7 @@ ms.locfileid: "59677784"
 
 |必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
+|はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
 
 <!-- specific to face only -->
 
@@ -82,9 +82,9 @@ Face コンテナーには、格納される内容に応じて、BLOB、キャ�
 
 | Name | データ型 | 説明 |
 |------|-----------|-------------|
-| `StorageScenario` | String | コンテナーで使用されるストレージ シナリオ。 次の値を使用できます<br/>`Memory` - 既定値。 コンテナーでは、単一ノードの一時的な使用のために、非永続的、非分散およびインメモリ ストレージが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは破棄されます。<br/>`Azure` - コンテナーでは、ストレージのために Azure リソースが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは保持されます。|
-| `ConnectionStringOfAzureStorage` | String | コンテナーで使用される、Azure Storage リソースの接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
-| `ConnectionStringOfCosmosMongo` | String | コンテナーで使用される、Azure Cosmos DB リソースの MongoDB 接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
+| `StorageScenario` | string | コンテナーで使用されるストレージ シナリオ。 次の値を使用できます<br/>`Memory` - 既定値。 コンテナーでは、単一ノードの一時的な使用のために、非永続的、非分散およびインメモリ ストレージが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは破棄されます。<br/>`Azure` - コンテナーでは、ストレージのために Azure リソースが使用されます。 コンテナーが停止または削除された場合、そのコンテナーのストレージは保持されます。|
+| `ConnectionStringOfAzureStorage` | string | コンテナーで使用される、Azure Storage リソースの接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
+| `ConnectionStringOfCosmosMongo` | string | コンテナーで使用される、Azure Cosmos DB リソースの MongoDB 接続文字列。<br/>`Azure` が `StorageScenario` 構成設定に対して指定されている場合にのみ、この設定が適用されます。 |
 
 たとえば、次のコマンドでは、Azure ストレージ シナリオを指定し、Face コンテナーのデータを格納するために使用される Azure Storage および Cosmos DB リソースのサンプル接続文字列を提供します。
 
@@ -124,8 +124,8 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 
 |省略可能| Name | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|禁止| `Input` | String | Face コンテナーでは、これは使用されません。|
-|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+|禁止| `Input` | string | Face コンテナーでは、これは使用されません。|
+|省略可能| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>docker run コマンドの例 
 
@@ -134,7 +134,7 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 * **行連結文字**: 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
 * **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
 
-{_<引数名>_} はお客様独自の値に置き換えてください。
+{ _<引数名>_ } はお客様独自の値に置き換えてください。
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|

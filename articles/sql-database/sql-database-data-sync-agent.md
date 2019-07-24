@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
 ms.openlocfilehash: adb8917605a00208b328e7fd15f96d28c7838988
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485206"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60201665"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL データ同期のデータ同期エージェント
 
@@ -150,15 +150,15 @@ SQL Server をホストしているコンピューターで、エージェント
   1. SQL データ同期クライアント エージェント サービスを見つけます。  
     a. **[開始]** を選択します。  
     b. 検索ボックスに「**services.msc**」と入力します。  
-    c. 検索結果で、**[サービス]** を選択します。  
-    d. **[サービス]** ウィンドウで、**[SQL Data Sync Agent]\(SQL データ同期エージェント\)** のエントリまでスクロールします。  
-  1. **[SQL Data Sync Agent]\(SQL データ同期エージェント\)** を右クリックして、**[停止]** を選択します。
-  1. **[SQL Data Sync Agent]\(SQL データ同期エージェント\)** を右クリックして、**[プロパティ]** を選択します。
-  1. **[SQL Data Sync Agent Properties]\(SQL データ同期エージェントのプロパティ\)** ウィンドウで、**[ログイン]** タブを選択します。
+    c. 検索結果で、 **[サービス]** を選択します。  
+    d. **[サービス]** ウィンドウで、 **[SQL Data Sync Agent]\(SQL データ同期エージェント\)** のエントリまでスクロールします。  
+  1. **[SQL Data Sync Agent]\(SQL データ同期エージェント\)** を右クリックして、 **[停止]** を選択します。
+  1. **[SQL Data Sync Agent]\(SQL データ同期エージェント\)** を右クリックして、 **[プロパティ]** を選択します。
+  1. **[SQL Data Sync Agent Properties]\(SQL データ同期エージェントのプロパティ\)** ウィンドウで、 **[ログイン]** タブを選択します。
   1. **[パスワード]** ボックスにパスワードを入力します。
   1. **[パスワードの確認]** ボックスにパスワードをもう一度入力します。
   1. **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。
-  1. **[サービス]** ウィンドウで、**[SQL Data Sync Agent]\(SQL データ同期エージェント\)** サービスを右クリックし、**[開始]** をクリックします。
+  1. **[サービス]** ウィンドウで、 **[SQL Data Sync Agent]\(SQL データ同期エージェント\)** サービスを右クリックし、 **[開始]** をクリックします。
   1. **[サービス]** ウィンドウを閉じます。
 
 ### <a name="agent-key"></a> エージェント キーを送信できない
@@ -215,7 +215,7 @@ SQL データ同期クライアント エージェントに登録されている
   1. アプリを終了します。  
   1. [コンポーネント サービス] パネルを開きます。  
     a. タスク バーの検索ボックスに「**services.msc**」と入力します。  
-    b. 検索結果で、**[サービス]** をダブルクリックします。  
+    b. 検索結果で、 **[サービス]** をダブルクリックします。  
   1. **SQL データ同期**サービスを停止します。
   1. **SQL データ同期**サービスを再起動します。  
   1. アプリをもう一度開きます。
@@ -323,8 +323,8 @@ SQL データ同期の詳細については、次の記事を参照してくだ�
 -   データ同期の設定
     - ポータル - [チュートリアル:Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
     - PowerShell の場合
-        -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
+        -  [PowerShell を使用した複数の Azure SQL Database 間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [PowerShell を使用して Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行う](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
 -   監視 - [Azure Monitor ログによる SQL データ同期の監視](sql-database-sync-monitor-oms.md)
 -   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)

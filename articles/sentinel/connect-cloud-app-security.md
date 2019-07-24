@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: cd9e5e27-fdd4-4717-8924-be4c1c430f23
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: a418bb318654752eaf48ffbdd05b80cabb487ece
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 92de4120d73af70c5de013488344a15ba46513c7
+ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65207547"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67881082"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Microsoft Cloud App Security からデータを接続する 
 
@@ -39,7 +40,7 @@ Cloud App Security が既にある場合は、[ネットワークで有効](http
 Cloud App Security がデプロイされていてデータを取り込んでいる場合は、アラート データを Azure Sentinel に簡単にストリーミングすることができます。
 
 
-1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Cloud App Security]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Cloud App Security]** タイルをクリックします。
 
 2. **[接続]** をクリックします。
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/06/2019
 ms.author: magoedte
 ms.openlocfilehash: f4e15c4fc7bd7b786c5204153fe64f010e5ffe85
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148868"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>メトリックを有効にするためのコンテナーの Azure Monitor の更新方法
@@ -582,4 +582,4 @@ Azure PowerShell を使用して特定のクラスターを更新するには、
     ```
 
 ## <a name="verify-update"></a>更新を確認する 
-前に説明した方法のいずれかを使用して更新を開始したら、Azure Monitor メトリックス エクスプローラーを使用できます。また、**[メトリック名前空間]** から **[Insights]** が表示されていることを確認できます。 表示されている場合は、[メトリック アラート](../platform/alerts-metric.md)の設定または[ダッシュボード](../../azure-portal/azure-portal-dashboards.md)へのグラフのピン留めを開始できます。  
+前に説明した方法のいずれかを使用して更新を開始したら、Azure Monitor メトリックス エクスプローラーを使用できます。また、 **[メトリック名前空間]** から **[Insights]** が表示されていることを確認できます。 表示されている場合は、[メトリック アラート](../platform/alerts-metric.md)の設定または[ダッシュボード](../../azure-portal/azure-portal-dashboards.md)へのグラフのピン留めを開始できます。  

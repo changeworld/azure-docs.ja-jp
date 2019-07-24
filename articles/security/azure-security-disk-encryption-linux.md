@@ -7,16 +7,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 624ad22b1c63498e8ce936472cfc884910bc6f84
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ffdda51c4739dfad6c326a5c90f4a93ebfb321cd
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276951"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67294896"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Linux IaaS VM で Azure Disk Encryption を有効にする 
 
-有効にできるディスク暗号化シナリオは多数あり、手順はシナリオによって異なる場合があります。 以下のセクションでは、Linux IaaS VM 用のシナリオについて詳しく説明します。 ディスク暗号化を使用する前に、[Azure Disk Encryption の前提条件](azure-security-disk-encryption-prerequisites.md)を満たし、「[Additional prerequisites for Linux IaaS VMs](azure-security-disk-encryption-prerequisites.md#bkmk_LinuxPrereq)」(Linux IaaS VM の追加の前提条件) を確認しておく必要があります。
+有効にできるディスク暗号化シナリオは多数あり、手順はシナリオによって異なる場合があります。 以下のセクションでは、Linux IaaS VM 用のシナリオについて詳しく説明します。 ディスク暗号化を使用する前に、[Azure Disk Encryption の前提条件](azure-security-disk-encryption-prerequisites.md)を満たし、「[Linux IaaS VM の追加の前提条件](azure-security-disk-encryption-prerequisites.md#additional-prerequisites-for-linux-iaas-vms)」を確認しておく必要があります。
 
 ディスクを暗号化する前に、[スナップショット](../virtual-machines/windows/snapshot-copy-managed-disk.md)またはバックアップを作成します。 バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。 マネージド ディスクを含む VM では、暗号化する前にバックアップが必要になります。 バックアップを作成したら、Set-AzVMDiskEncryptionExtension コマンドレットで -skipVmBackup パラメーターを指定して、マネージド ディスクを暗号化できます。 暗号化された VM のバックアップと復元方法の詳細については、[Azure Backup](../backup/backup-azure-vms-encryption.md) に関する記事を参照してください。 
 
@@ -124,7 +124,7 @@ key-encryption-key パラメーターの値の構文は、 https://[keyvault-nam
 
 Azure 内にある既存または実行中の IaaS Linux VM でのディスク暗号化は、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)を使用して有効化できます。
 
-1. Azure クイックスタート テンプレートで、**[Azure に配置する]** をクリックします。
+1. Azure クイックスタート テンプレートで、 **[Azure に配置する]** をクリックします。
 
 2. サブスクリプション、リソース グループ、リソース グループの場所、パラメーター、法律条項、および契約を選択します。 **[作成]** をクリックして、既存または実行中の IaaS VM で暗号化を有効にします。
 
@@ -133,7 +133,7 @@ Azure 内にある既存または実行中の IaaS Linux VM でのディスク�
 | パラメーター | 説明 |
 | --- | --- |
 | vmName | 暗号化操作を実行する VM の名前。 |
-| KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。 コマンドレット `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` または次の Azure CLI コマンドを使用して取得できます `az keyvault list --resource-group "MyKeyVaultResourceGroupName"`|
+| KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。 コマンドレット `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` または Azure CLI コマンド `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` を使用して取得できます。|
 | keyVaultResourceGroup | キー コンテナーが含まれているリソース グループの名前|
 |  keyEncryptionKeyURL | 生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL。 このパラメーターは、UseExistingKek ドロップダウン リストで **nokek** を選択した場合には省略可能です。 UseExistingKek ドロップダウン リストで **kek** を選択した場合は、_keyEncryptionKeyURL_ 値を入力する必要があります。 |
 | volumeType | 暗号化操作が実行されるボリュームの種類。 有効な値は _OS_、_Data_、および _All_ です。 
@@ -165,7 +165,7 @@ Linux スケール セット データ ディスクの暗号化のバッチ フ�
     >[!NOTE]
     > disk-encryption-keyvault パラメーターの値の構文は、/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] という完全な識別子の文字列です。</br> key-encryption-key パラメーターの値の構文は、 https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] という KEK への完全な URI です。 
 
-- **仮想マシン スケール セットの暗号化状態を取得する:**[az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show) を使用します
+- **仮想マシン スケール セットの暗号化状態を取得する:** [az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show) を使用します
 
     ```azurecli-interactive
     az vmss encryption show --resource-group "MyVMScaleSetResourceGroup" --name "MySecureVmss"
@@ -226,7 +226,7 @@ Linux スケール セット データ ディスクの暗号化のバッチ フ�
 Linux 仮想マシン スケール セットを暗号化または暗号化解除するには、Azure Resource Manager テンプレートと次の手順を使用します:
 
 - [Linux 仮想マシン スケール セットでの暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
-- [Linux 仮想マシン スケール セットでの暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+- [Linux 仮想マシン スケール セットの暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
      1. **[Azure へのデプロイ]** をクリックします。
      2. 必須のフィールドに入力し、使用条件に同意します。
@@ -256,7 +256,7 @@ RAID または LVM ボリュームではなく RAID または LVM ボリュー�
 ### <a name="bkmk_EFAPSH"> </a> Azure CLI で EncryptFormatAll パラメーターを使用する
 [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) コマンドを使用して、Azure で実行中の IaaS 仮想マシンで暗号化を有効にします。
 
--  **EncryptFormatAll を使用して実行中の VM を暗号化する:**
+-  **EncryptFormatAll を使用して、実行中の VM を暗号化する:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --encrypt-format-all
@@ -345,7 +345,7 @@ PowerShell 構文とは異なり、CLI では暗号化を有効にする際に�
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault "MySecureVault" --volume-type "Data"
      ```
 
-- **KEK を使用して実行中の VM のデータ ボリュームを暗号化する:**
+- **KEK を使用し、実行中の VM のデータ ボリュームを暗号化する:**
 
      ```azurecli-interactive
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault  "MySecureVault" --key-encryption-key "MyKEK_URI" --key-encryption-keyvault "MySecureVaultContainingTheKEK" --volume-type "Data"
@@ -369,7 +369,7 @@ PowerShell 構文とは異なり、CLI では暗号化を有効にする際に�
 
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType 'data' –SequenceVersion $sequenceVersion -skipVmBackup;
       ```
-- **KEK を使用し、実行中の VM のデータ ボリュームを暗号化する:**-VolumeType パラメーターに使用できる値は、All、OS、Data です。 VM が以前にボリュームの種類 "OS" または "All" で暗号化された場合は、-VolumeType パラメーターを All に変更して、OS と新しいデータ ディスクの両方が含まれるようにする必要があります。
+- **KEK を使用し、実行中の VM のデータ ボリュームを暗号化する:** -VolumeType パラメーターに使用できる値は、All、OS、Data です。 VM が以前にボリュームの種類 "OS" または "All" で暗号化された場合は、-VolumeType パラメーターを All に変更して、OS と新しいデータ ディスクの両方が含まれるようにする必要があります。
 
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
@@ -398,7 +398,7 @@ Azure PowerShell、Azure CLI、または Resource Manager テンプレートを�
 
 - **Azure PowerShell を使用してディスク暗号化を無効にする:** 暗号化を無効にするには、[Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) コマンドレットを使用します。 
      ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [--volume-type {ALL, DATA, OS}]
+     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [-VolumeType {ALL, DATA, OS}]
      ```
 
 - **Azure CLI を使用して暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) コマンドを使用します。 
@@ -413,4 +413,4 @@ Azure PowerShell、Azure CLI、または Resource Manager テンプレートを�
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
-> [Windows 用の Azure Disk Encryption を有効にする](azure-security-disk-encryption-windows.md)
+> [Windows で Azure Disk Encryption を有効にする](azure-security-disk-encryption-windows.md)

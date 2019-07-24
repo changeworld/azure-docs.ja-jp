@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5d33c5c3fe970ee8e5d70e0ba358462d5bdf2bbd
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60295083"
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection の有効化
 
@@ -52,7 +52,7 @@ Azure Active Directory Identity Protection は、Azure Active Directory (Azure A
    
     ![作成](./media/enable/06.png "作成")
 
-5. **[Azure AD Identity Protection]** ブレードで、**[作成]** をクリックします。
+5. **[Azure AD Identity Protection]** ブレードで、 **[作成]** をクリックします。
    
     ![作成](./media/enable/04.png "作成")
 

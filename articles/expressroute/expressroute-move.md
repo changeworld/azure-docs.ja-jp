@@ -9,11 +9,11 @@ ms.date: 12/07/2018
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: dfa2bbc735a79555da0421f64ca644adbd7a1701
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135918"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60363833"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行
 この記事では、Azure ExpressRoute 回線をクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する意味について概説します。

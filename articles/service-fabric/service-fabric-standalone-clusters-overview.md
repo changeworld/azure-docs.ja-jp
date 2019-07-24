@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: b4b7759d1dc23c1a1b3a9b5aeb2a181923e14d40
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5997526098980220014d9bb2d47efe6c9aedee3d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670712"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66752341"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric スタンドアロン クラスターの概要
 
@@ -68,6 +68,7 @@ Service Fabric では、ユーザーの各グループに対して特定のク�
 
 * Windows Server 2012 R2
 * Windows Server 2016 
+* Windows Server 2019
 
 ## <a name="next-steps"></a>次の手順
 スタンドアロン クラスターの[セキュリティ保護](service-fabric-cluster-security.md)、[スケーリング](service-fabric-cluster-scaling-standalone.md)、および[アップグレード](service-fabric-cluster-upgrade-standalone.md)について詳細を確認します。

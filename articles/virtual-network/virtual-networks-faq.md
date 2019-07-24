@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: b072314bdbec1d5a6184e6f20e98c35a9135a5b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: fcc26d0d42576e8d39407f2af5bafe6de24db19f
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508417"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67154497"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -180,17 +180,18 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 ## <a name="azure-services-that-connect-to-vnets"></a>VNet に接続する Azure サービス
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Azure App Service Web Apps を VNet で使用することはできますか。
-はい。 ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイできます。 VNet にポイント対サイト接続が構成されている場合、すべての Web Apps は、VNet 内のリソースに安全に接続およびアクセスできます。 詳細については、次の記事を参照してください。
+はい。 ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイし、VNet 統合を使用してアプリのバックエンドを VNet に接続し、サービス エンドポイントを使用してインバウンド トラフィックをアプリにロックダウンできます。 詳細については、次の記事を参照してください。
 
+* [App Service のネットワーク機能](../app-service/networking-features.md)
 * [App Service 環境で Web Apps を作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Web Apps と VNet Integration and Hybrid Connections の併用](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json#hybrid-connections-and-app-service-environments)
+* [App Service のアクセス制限](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Web ロールと worker ロール (PaaS) を持つ Cloud Services を VNet にデプロイすることはできますか。
 はい。 Cloud Services ロール インスタンスは、VNet 内に (オプションで) デプロイできます。 そのためには、サービス構成のネットワーク構成セクションで、VNet の名前と、ロールとサブネットのマッピングを指定します。 どのバイナリも更新する必要はありません。
 
-### <a name="can-i-connect-a-virtual-machine-scale-set-vmss-to-a-vnet"></a>仮想マシン スケール セット (VMSS) を VNet に接続することはできますか。
-はい。 VMSS は VNet に接続する必要があります。
+### <a name="can-i-connect-a-virtual-machine-scale-set-to-a-vnet"></a>仮想マシン スケール セットを VNet に接続することはできますか。
+はい。 仮想マシン スケール セットは VNet に接続する必要があります。
 
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>VNet 内にリソースをデプロイできる Azure サービスの完全な一覧はありますか。
 はい。詳細については、「[Azure サービスの仮想ネットワーク統合](virtual-network-for-azure-services.md)」をご覧ください。
@@ -219,7 +220,7 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 ## <a name="apis-schemas-and-tools"></a>API、スキーマ、およびツール
 
 ### <a name="can-i-manage-vnets-from-code"></a>VNet をコードから管理できますか。
-はい。 [Azure Resource Manager](/rest/api/virtual-network) デプロイメント モデルおよび[クラシック (Service Management)](https://go.microsoft.com/fwlink/?LinkId=296833) デプロイメント モデルの VNet に REST API を使用できます。
+はい。 [Azure Resource Manager](/rest/api/virtual-network) デプロイ モデルと[クラシック](https://go.microsoft.com/fwlink/?LinkId=296833) デプロイ モデルで、VNet 用の REST API を使用できます。
 
 ### <a name="is-there-tooling-support-for-vnets"></a>VNet に対するツール サポートはありますか。
 はい。 次のツールを使用できます。
@@ -239,7 +240,7 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 2 つの仮想ネットワークが異なるリージョンにある場合 (グローバル VNet ピアリング)、Basic Load Balancer を使用するリソースには接続できません。 Standard Load Balancer を使用するリソースには接続できます。
 次のリソースは Basic Load Balancer を使用しています。つまり、グローバル VNet ピアリングを介してそれらと通信することはできません。
 - Basic Load Balancer の背後にある VM
-- Basic Load Balancer を使用する VM Scale Sets 
+- Basic Load Balancer を使用する仮想マシン スケール セット 
 - Redis Cache 
 - Application Gateway (v1) SKU
 - Service Fabric
@@ -247,7 +248,7 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 - API Management
 - Active Directory Domain Service (ADDS)
 - Logic Apps
-- HD Insight
+- HDInsight
 -   Azure Batch
 - AKS
 - App Service 環境
@@ -285,7 +286,7 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 いいえ。 ローカルであってもグローバルであっても、VNet ピアリングで帯域幅制限は課されません。 帯域幅は VM やコンピューティング リソースによってのみ制限されます。
 
 ### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>VNet ピアリングの問題をトラブルシューティングするにはどうすればよいですか?
-こちらの [トラブルシューティング ツール ガイド] をご覧ください (https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues))。
+こちらの[トラブルシューティング ガイド](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues)を試すことができます。
 
 ## <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 
@@ -381,13 +382,17 @@ Azure サービス アカウントの削除は独立した操作であり、ネ�
 Azure サービスに到達するには、NSG で送信接続を許可する必要があります。 NSG がすべてのインターネット送信トラフィックに対して開かれている場合、サービス エンドポイントのトラフィックは動作するはずです。 サービス タグを使用して、サービス IP にみに送信トラフィックを制限することもできます。  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>サービス エンドポイントを設定するにはどのようなアクセス許可が必要ですか。
-サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットの **Microsoft.Network/JoinServicetoaSubnet** へのアクセス許可を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。 組み込みロールと、特定のアクセス許可を[カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法の詳細をご覧ください。
+サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットのアクセス許可 "**Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action**" を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。 組み込みロールと、特定のアクセス許可を[カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法の詳細をご覧ください。
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>VNet サービス エンドポイント経由での Azure サービスへの仮想ネットワーク トラフィックをフィルター処理し、特定の Azure サービス リソースのみを許可することはできますか。 
 
 仮想ネットワーク (VNet) のサービス エンドポイント ポリシーでは、サービス エンドポイント経由での Azure サービスへの仮想ネットワーク トラフィックをフィルター処理し、特定の Azure サービス リソースのみを許可することができます。 エンドポイント ポリシーでは、Azure サービスへの仮想ネットワーク トラフィックから詳細なアクセス制御が提供されます。 サービス エンドポイント ポリシーについて詳しくは、[こちら](virtual-network-service-endpoint-policies-overview.md)をご覧ください。
- 
+
+### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory (Azure AD) は VNet サービス エンドポイントをサポートしますか。
+
+サービス エンドポイントは Azure Active Directory (Azure AD) によってネイティブにサポートされていません。 VNet サービス エンドポイントをサポートする Azure サービスの完全な一覧は[こちら](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)で確認できます。 サービス エンドポイントをサポートするサービスの下にリストされている "Microsoft.AzureActiveDirectory" タグは、ADLS Gen 1 へのサービス エンドポイントをサポートするために使用されます。 ADLS Gen 1 の場合、Azure Data Lake Storage Gen1 の仮想ネットワーク統合では、仮想ネットワークと Azure Active Directory (Azure AD) との間で仮想ネットワーク サービス エンドポイント セキュリティを利用して、アクセス トークン内に追加のセキュリティ要求が生成されます。 これらの要求は、ご利用の Data Lake Storage Gen1 アカウントに対して仮想ネットワークを認証し、アクセスを許可するために使用されます。 [Azure Data Lake Store Gen 1 VNet 統合]の詳細(../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>VNet から設定できる VNet サービス エンドポイントの数に制限はありますか。
 仮想ネットワーク内の VNet サービス エンドポイントの合計数に制限はありません。 Azure サービス リソース (Azure Storage アカウントなど) の場合、リソースへのアクセスに使用されるサブネットの数がサービスによって制限される場合があります。 制限の例を次の表に示します。 
 

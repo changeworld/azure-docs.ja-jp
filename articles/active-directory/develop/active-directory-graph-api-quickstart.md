@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05b3d749eb3e2bc767889831b4c1ff01833a3f39
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: a2ae83b655bfe607b1061168649ec74f02ab4064
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544679"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483174"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>方法:Azure AD Graph API を使用する
 
@@ -37,12 +37,12 @@ Azure Active Directory (Azure AD) Graph API を使用すると、OData REST API 
 
 ## <a name="how-to-construct-a-graph-api-url"></a>Graph API URL の作成方法
 
-Graph API では、CRUD 操作を実行するディレクトリのデータとオブジェクト (つまり、リソースまたはエンティティ) にアクセスするために、Open Data (OData) プロトコルに基づく URL を使用できます。 Graph API で使用される URL は、4 つの主要部分で構成されます。主要部分は、サービス ルート、テナント ID、リソース パス、およびクエリ文字列オプション (https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]) です。`https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]` 次の URL の例を使用して説明します。`https://graph.windows.net/contoso.com/groups?api-version=1.6`
+Graph API では、CRUD 操作を実行するディレクトリのデータとオブジェクト (つまり、リソースまたはエンティティ) にアクセスするために、Open Data (OData) プロトコルに基づく URL を使用できます。 Graph API で使用される URL は、4 つの主要部分で構成されます。主要部分は、サービス ルート、テナント ID、リソース パス、およびクエリ文字列オプション です。`https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]` 次の URL の例を使用して説明します。`https://graph.windows.net/contoso.com/groups?api-version=1.6`
 
 * **サービス ルート**:Azure AD Graph API では、サービス ルートは常に https://graph.windows.net です。
 * **テナント識別子**:このセクションでは、確認済み (登録済み) のドメイン名を指定できます。上記の例では contoso.com です。 テナント オブジェクト ID またはエイリアス ("myorganization" または "me") を指定することもできます。 詳しくは、[Azure AD Graph API のエンティティと操作のアドレス指定](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)に関するページをご覧ください。
 * **リソース パス**:URL のこのセクションは、対話するリソース (ユーザー、グループ、特定のユーザー、特定のグループなど) を識別します。上記の例では、リソース セットのアドレスを指定する最上位の "groups" です。 特定のエンティティ ("users/{objectId}" や "users/userPrincipalName" など) のアドレスを指定することもできます。
-* **クエリ パラメーター**:リソース パス セクションとクエリ パラメーター セクションは疑問符 (?) で区切られます。 Azure AD Graph API ではすべての要求に "api-version" クエリ パラメーターが必要です。 Azure AD Graph API では、OData クエリ オプションの **$filter**、**$orderby**、**$expand**、**$top**、および **$format** もサポートします。 クエリ オプションの **$count**、**$inlinecount**、および **$skip** は現在サポートされていません。 詳細については、「[Azure AD Graph API でサポートされているクエリ、フィルター、およびページング オプション](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)」を参照してください。
+* **クエリ パラメーター**:リソース パス セクションとクエリ パラメーター セクションは疑問符 (?) で区切られます。 Azure AD Graph API ではすべての要求に "api-version" クエリ パラメーターが必要です。 Azure AD Graph API では、OData クエリ オプションの **$filter**、 **$orderby**、 **$expand**、 **$top**、および **$format** もサポートします。 クエリ オプションの **$count**、 **$inlinecount**、および **$skip** は現在サポートされていません。 詳細については、「[Azure AD Graph API でサポートされているクエリ、フィルター、およびページング オプション](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)」を参照してください。
 
 ## <a name="graph-api-versions"></a>Graph API のバージョン
 
@@ -65,11 +65,11 @@ Azure AD Graph API 用の Azure AD Graph Explorer を使用して、アプリケ
 
 次に示すスクリーンショットは、Azure AD Graph Explorer に移動し、サインインして、サインインしたユーザー ディレクトリのすべてのユーザーを表示するために「`https://graph.windows.net/GraphDir1.OnMicrosoft.com/users?api-version=1.6`」と入力した場合に表示される出力です。
 
-![Azure AD Graph API Explorer](./media/active-directory-graph-api-quickstart/graph_explorer.png)
+![Azure AD Graph API Explorer の出力の例](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
 **Azure AD Graph Explorer を読み込む**:ツールを読み込むには、[https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) に移動します。 **[ログイン]** をクリックし、Azure AD アカウント資格情報でサインインし、テナントに対して Azure AD Graph Explorer を実行できます。 独自のテナントに対して Azure AD Graph Explorer を実行する場合は、ユーザー自身またはユーザーの管理者がサインイン中に同意する必要があります。 Office 365 サブスクリプションがある場合は、Azure AD テナントが自動的に設定されます。 Office 365 にサインインするための資格情報は、実際は Azure AD アカウントであり、これらの資格情報を Azure AD Graph Explorer で使用できます。
 
-**クエリを実行する**:クエリを実行するには、要求テキスト ボックスにクエリを入力し、**[取得]** をクリックするか、**Enter** キーを押します。 結果が応答ボックスに表示されます。 たとえば、`https://graph.windows.net/myorganization/groups?api-version=1.6` は、サインインしたユーザー ディレクトリ内のすべてのグループ オブジェクトを一覧表示します。
+**クエリを実行する**:クエリを実行するには、要求テキスト ボックスにクエリを入力し、 **[取得]** をクリックするか、**Enter** キーを押します。 結果が応答ボックスに表示されます。 たとえば、`https://graph.windows.net/myorganization/groups?api-version=1.6` は、サインインしたユーザー ディレクトリ内のすべてのグループ オブジェクトを一覧表示します。
 
 Azure AD Graph Explorer の次の機能と制限事項に注意してください。
 

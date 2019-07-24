@@ -12,18 +12,18 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 4757236d179e4d6ceb626f58f12cfe48799eed7a
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889377"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854363"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Resource Health を使用して、Azure SQL Database の接続をトラブルシューティングする
 
 ## <a name="overview"></a>概要
 
-SQL Database 用の [Resource Health](../service-health/resource-health-overview.md#getting-started) は、Azure の問題がお客様のリソースに影響を及ぼしている場合に、診断するためとサポートを受けるために役立ちます。 リソースの現在と過去の正常性に関する情報が表示され、問題を軽減するのに役立ちます。 Resource Health は、Azure のサービスの問題についてサポートが必要な場合にテクニカル サポートを提供します。
+SQL Database 用の [Resource Health](../service-health/resource-health-overview.md#get-started) は、Azure の問題がお客様のリソースに影響を及ぼしている場合に、診断するためとサポートを受けるために役立ちます。 リソースの現在と過去の正常性に関する情報が表示され、問題を軽減するのに役立ちます。 Resource Health は、Azure のサービスの問題についてサポートが必要な場合にテクニカル サポートを提供します。
 
 ![概要](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 

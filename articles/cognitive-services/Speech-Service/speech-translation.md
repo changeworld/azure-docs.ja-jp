@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 95682612b4b0fdb1baa5038039630e74abddb1a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 428dba9e8ff5ec072d5172fee357fd5319d04ad8
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890476"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657726"
 ---
 # <a name="what-is-speech-translation"></a>音声翻訳とは何か
 
@@ -32,9 +31,9 @@ Speech SDK および REST API を通じて使用可能な機能を以下に示�
 
 | ユース ケース | SDK | REST |
 |----------|-----|------|
-| 認識結果を使用した音声テキスト翻訳。 | はい | いいえ  |
-| 音声間翻訳。 | はい | いいえ  |
-| 中間認識と翻訳結果。 | はい | いいえ  |
+| 認識結果を使用した音声テキスト翻訳。 | はい | いいえ |
+| 音声間翻訳。 | はい | いいえ |
+| 中間認識と翻訳結果。 | はい | いいえ |
 
 ## <a name="get-started-with-speech-translation"></a>音声翻訳を使ってみる
 
@@ -42,11 +41,11 @@ Speech SDK および REST API を通じて使用可能な機能を以下に示�
 
 | クイック スタート | プラットフォーム | API リファレンス |
 |------------|----------|---------------|
-| [C#、.NET Core](quickstart-translate-speech-dotnetcore-windows.md) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、.NET Framework](quickstart-translate-speech-dotnetframework-windows.md) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、UWP](quickstart-translate-speech-uwp.md) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](quickstart-translate-speech-cpp-windows.md) |  Windows | [Browse](https://aka.ms/csspeech/cppref)|
-| [Java](quickstart-translate-speech-java-jre.md) |  Windows | [Browse](https://aka.ms/csspeech/javaref) |
+| [C#、.NET Core](quickstart-translate-speech-dotnetcore-windows.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#、.NET Framework](quickstart-translate-speech-dotnetframework-windows.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#、UWP](quickstart-translate-speech-uwp.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-translate-speech-cpp-windows.md) | Windows | [Browse](https://aka.ms/csspeech/cppref)|
+| [Java](quickstart-translate-speech-java-jre.md) | Windows、Linux、macOS | [Browse](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>サンプル コード
 
@@ -56,10 +55,7 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 
 ## <a name="migration-guides"></a>移行ガイド
 
-> [!WARNING]
-> Translator Speech は、2019 年 10 月 15 日に使用停止になる予定です。
-
-アプリケーション、ツール、または製品で Translator Speech をご使用の方に向けて、Speech Services への移行に役立つガイドを作成しました。
+アプリケーション、ツール、または製品で [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview) をご使用の方に向けて、Speech Services への移行に役立つガイドを作成しました。
 
 * [Translator Speech API から Speech Services に移行する](how-to-migrate-from-translator-speech-api.md)
 

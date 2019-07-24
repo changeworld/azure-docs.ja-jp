@@ -16,11 +16,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852967"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62096122"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -28,7 +28,7 @@ ms.locfileid: "57852967"
 ## <a name="general-questions"></a>一般的な質問
 **Q:複数の Azure AD ディレクトリを管理しています。どのようにすれば Azure Active Directory Premium のディレクトリに切り替えることができますか。**
 
-Azure AD テナントを切り替えるには、現在サインインしている**ユーザー名**を右上隅で選択して、適切なアカウントを選択します。 ここにアカウントが表示されていない場合は、**[サインアウト]** を選択し、Azure Active Directory Premium が有効になっているディレクトリのグローバル管理者資格情報を使用してサインインします。
+Azure AD テナントを切り替えるには、現在サインインしている**ユーザー名**を右上隅で選択して、適切なアカウントを選択します。 ここにアカウントが表示されていない場合は、 **[サインアウト]** を選択し、Azure Active Directory Premium が有効になっているディレクトリのグローバル管理者資格情報を使用してサインインします。
 
 **Q:Azure AD Connect Health では、どのバージョンの ID の役割がサポートされていますか。**
 
@@ -67,10 +67,10 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 
 | ロール | 機能 | German Cloud でサポートされている |
 | ------ | --------------- | --- |
-| Connect Health for Sync | 監視/分析情報/アラート/分析 | いいえ  |
+| Connect Health for Sync | 監視/分析情報/アラート/分析 | いいえ |
 |  | 同期エラー レポート | はい |
-| Connect Health for ADFS | 監視/分析情報/アラート/分析 | いいえ  |
-| Connect Health for ADDS | 監視/分析情報/アラート/分析 | いいえ  |
+| Connect Health for ADFS | 監視/分析情報/アラート/分析 | いいえ |
+| Connect Health for ADDS | 監視/分析情報/アラート/分析 | いいえ |
 
 同期のための Connect Health のエージェントの接続を確保するには、必要に応じて[インストール要件](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)を構成します。
 
@@ -106,9 +106,9 @@ Microsoft Azure AD Connect Health エージェント、AD FS、Web アプリケ�
 
 エージェントの登録時にプロキシを構成する必要がある場合は、Internet Explorer のプロキシ設定を事前に変更する必要があることがあります。
 
-1. Internet Explorer を開いて、**[設定]** > **[インターネット オプション]** > **[接続]** > **[LAN の設定]** の順に移動します。
+1. Internet Explorer を開いて、 **[設定]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。
 2. **[LAN にプロキシ サーバーを使用する]** をオンにします。
-3. HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、**[詳細設定]** を選択します。
+3. HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、 **[詳細設定]** を選択します。
 
 **Q:Azure AD Connect Health では、HTTP プロキシに接続するときの基本認証がサポートされていますか。**
 

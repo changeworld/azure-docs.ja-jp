@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/20/2017
 ms.author: ralfwi
 ms.openlocfilehash: 4191edf9a690e6d4aa28d93cdc6c437ed20abaa2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "58408452"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60685620"
 ---
 # <a name="available-services-in-azure-germany"></a>Azure Germany で利用可能なサービス
 Azure Germany はサービスを継続的に拡張しています。 これらのサービスのデプロイに使用されるコードは、グローバル Azure で使用されているコードと同じです。 この記事では、Azure Germany で現在利用できるサービスについて説明します。 
@@ -58,7 +58,7 @@ Azure Germany はサービスを継続的に拡張しています。 これら�
 | Service | リソース マネージャー | ポータル |
 | --- | --- | --- |
 | [Storage](./germany-services-storage.md#storage) | はい | はい |
-| StorSimple | いいえ  | いいえ  |
+| StorSimple | いいえ | いいえ |
 | バックアップ | はい | はい |
 | Site Recovery | はい | はい |
 
@@ -90,7 +90,7 @@ Azure Germany はサービスを継続的に拡張しています。 これら�
 | Service | リソース マネージャー | ポータル |
 | --- | --- | --- |
 | HDInsight | はい | はい |
-| Machine Learning | はい | いいえ  |
+| Machine Learning | はい | いいえ |
 
 
 ## <a name="internet-of-things-iotgermany-services-iotmd"></a>[モノのインターネット (IoT)](./germany-services-iot.md)
@@ -99,7 +99,7 @@ Azure Germany はサービスを継続的に拡張しています。 これら�
 | --- | --- | --- |
 | Event Hubs | はい | はい |
 | IoT Hub | はい | はい |
-| Notification Hubs | はい | いいえ  |
+| Notification Hubs | はい | いいえ |
 | Stream Analytics | はい | はい |
 
 
@@ -108,7 +108,7 @@ Azure Germany はサービスを継続的に拡張しています。 これら�
 | Service | リソース マネージャー | ポータル |
 | --- | --- | --- |
 | Service Bus | はい | はい |
-| StorSimple | いいえ  | いいえ  |
+| StorSimple | いいえ | いいえ |
 | SQL Server Stretch Database | はい | はい |
 
 
@@ -118,8 +118,8 @@ Azure Germany はサービスを継続的に拡張しています。 これら�
 | Service | リソース マネージャー | ポータル |
 | --- | --- | --- |
 | Active Directory Free | はい | はい |
-| Active Directory Premium | いいえ  | いいえ  |
-|  [Key Vault](./germany-services-securityandidentity.md#key-vault)  | はい | いいえ  |
+| Active Directory Premium | いいえ | いいえ |
+|  [Key Vault](./germany-services-securityandidentity.md#key-vault)  | はい | いいえ |
 
 
 
@@ -127,9 +127,9 @@ Azure Germany はサービスを継続的に拡張しています。 これら�
 
 | Service | リソース マネージャー | ポータル |
 | --- | --- | --- |
-| Automation | いいえ  | いいえ  |
+| Automation | いいえ | いいえ |
 | バックアップ | はい | はい |
-| Azure Monitor ログ | いいえ  | いいえ  |
+| Azure Monitor ログ | いいえ | いいえ |
 | Site Recovery | はい | はい |
 | Scheduler | はい | はい |
 

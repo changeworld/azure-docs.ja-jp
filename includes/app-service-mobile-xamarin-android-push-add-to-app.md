@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 3ced8c9fdadf547ec234c6d1bd5f3ddb8af7bc05
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42816270"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181682"
 ---
 1. `ToDoBroadcastReceiver`という名前のプロジェクトに新しいクラスを作成します。
 2. 次の using ステートメントを **ToDoBroadcastReceiver** クラスに追加します。
@@ -66,7 +66,7 @@ ms.locfileid: "42816270"
     このクラスは **GcmServiceBase** から派生したものであり、このクラスに **Service** 属性を適用する必要があることに注意してください。
 
     > [!NOTE]
-    > **GcmServiceBase** クラスでは、**OnRegistered()**、**OnUnRegistered()**、**OnMessage()**、**OnError()** の各メソッドを実装しています。 **PushHandlerService** クラスでは、これらのメソッドをオーバーライドする必要があります。
+    > **GcmServiceBase** クラスでは、**OnRegistered()** 、**OnUnRegistered()** 、**OnMessage()** 、**OnError()** の各メソッドを実装しています。 **PushHandlerService** クラスでは、これらのメソッドをオーバーライドする必要があります。
 
 6. **OnRegistered** イベント ハンドラーをオーバーライドする次のコードを **PushHandlerService** クラスに追加します。
 
@@ -109,7 +109,7 @@ ms.locfileid: "42816270"
     }
     ```
 
-    このメソッドでは、返された GCM 登録 ID を使用して、プッシュ通知のために Azure に登録します。 タグは、作成後にのみ登録に追加できます。 詳細については、「 [方法: タグへのプッシュを有効にするために、タグをデバイス インストールに追加する](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)」を参照してください。
+    このメソッドでは、返された GCM 登録 ID を使用して、プッシュ通知のために Azure に登録します。 タグは、作成後にのみ登録に追加できます。 詳細については、[方法:タグへのプッシュを有効にするために、タグをデバイス インストールに追加する](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)に関する記事をご覧ください。
 
 7. **PushHandlerService** の **OnMessage** メソッドを次のコードでオーバーライドします。
 

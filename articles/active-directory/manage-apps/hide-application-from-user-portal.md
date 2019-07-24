@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3dd98aa974f2adcd363c04c10b7a10cef6ca8ce7
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65824530"
 ---
 # <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory のエンドユーザーに対してアプリケーションを非表示にする
@@ -36,10 +36,10 @@ MyApps パネルと Office 365 アプリケーション ランチャーにアプ
 1.  ディレクトリのグローバル管理者として [Azure portal](https://portal.azure.com) にサインインします。
 2.  **[Azure Active Directory]** を選択します。
 3.  **[エンタープライズ アプリケーション]** を選択します。 **[Enterprise applications - All applications (エンタープライズ アプリケーション - すべてのアプリケーション)]** ブレードが開きます。
-4.  **[アプリケーションの種類]** で、**[エンタープライズ アプリケーション]** を選択します (まだ選択されていない場合)。
+4.  **[アプリケーションの種類]** で、 **[エンタープライズ アプリケーション]** を選択します (まだ選択されていない場合)。
 5.  非表示にするアプリケーションを検索し、アプリケーションをクリックします。  アプリケーションの概要が表示されます。
 6.  **[プロパティ]** をクリックします。 
-7.  **[ユーザーに表示しますか?]** という質問に対し、**[いいえ]** をクリックします。
+7.  **[ユーザーに表示しますか?]** という質問に対し、 **[いいえ]** をクリックします。
 8.  **[Save]** をクリックします。
 
 
@@ -50,8 +50,8 @@ MyApps パネルに一切の Office 365 アプリケーションが表示され�
 1.  ディレクトリのグローバル管理者として [Azure portal](https://portal.azure.com) にサインインします。
 2.  **[Azure Active Directory]** を選択します。
 3.  **[ユーザー設定]** を選択します。
-4.  **[エンタープライズ アプリケーション]** で、**[エンド ユーザーがアプリケーションを起動して表示する方法を管理する]** をクリックします。
-5.  **[ユーザーは Office 365 ポータルでのみ Office 365 アプリを表示できる]** で、**[はい]** をクリックします。
+4.  **[エンタープライズ アプリケーション]** で、 **[エンド ユーザーがアプリケーションを起動して表示する方法を管理する]** をクリックします。
+5.  **[ユーザーは Office 365 ポータルでのみ Office 365 アプリを表示できる]** で、 **[はい]** をクリックします。
 6.  **[Save]** をクリックします。
 
 

@@ -5,15 +5,15 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 29189a5919a01fcb897758fb64ca9e84b9381fb6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 07a5ee6ccdaecc78c9a8e61ae9e64a5264e3a875
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65410900"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66418359"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>オンプレミス マシンのディザスター リカバリーのために Azure リソースを準備する
 
@@ -52,12 +52,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 レプリケートされたマシンのイメージは Azure Storage に保存されます。 オンプレミスから Azure にフェールオーバーするとき、ストレージから Azure VM が作成されます。 ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
 
-1. [Azure portal](https://portal.azure.com) のメニューで、**[リソースの作成]** > **[Storage]** > **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
+1. [Azure portal](https://portal.azure.com) のメニューで、 **[リソースの作成]**  >  **[Storage]**  >  **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
 2. **[ストレージ アカウントの作成]** で、アカウントの名前を入力します。  選択する名前は Azure 内で一意で、3 から 24 文字の長さで、小文字と数字のみを使用する必要があります。 このチュートリアルでは **contosovmsacct1910171607** を使用します。
-3. **[デプロイ モデル]** で、**[Resource Manager]** を選択します。
+3. **[デプロイ モデル]** で、 **[Resource Manager]** を選択します。
 4. **[アカウントの種類]** で **[ストレージ (汎用 v1)]** を選択します。 Blob ストレージを選択しないでください。
 5. **[レプリケーション]** では、ストレージの冗長性のために、既定の **[読み取りアクセス geo 冗長ストレージ]** を選択します。 [安全な転送が必須] の設定は無効のままにします。
-6. **[パフォーマンス]** で **[Standard]** を選択します。 次に、**[アクセス層]** で、既定のオプションの **[ホット]** を選択します。
+6. **[パフォーマンス]** で **[Standard]** を選択します。 次に、 **[アクセス層]** で、既定のオプションの **[ホット]** を選択します。
 7. **[サブスクリプション]** で、新しいストレージ アカウントを作成するサブスクリプションを選択します。
 8. **[リソース グループ]** で、新しいリソース グループ名を入力します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 このチュートリアルでは **ContosoRG** を使用します。
 9. **[場所]** で、ストレージ アカウントの地理的な場所を選択します。 このチュートリアルでは、"**西ヨーロッパ**" を使用します。
@@ -68,21 +68,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
 
 1. Azure portal で **[+ リソースの作成]** を選択し、Azure Marketplace で "Recovery services" を検索します。
-2. **[Backup and Site Recovery (OMS)]** を選択します。 次に、**[Backup and Site Recovery]** ページで **[作成]** を選択します。
+2. **[Backup and Site Recovery (OMS)]** を選択します。 次に、 **[Backup and Site Recovery]** ページで **[作成]** を選択します。
 1. **[Recovery Services コンテナー] > [名前]** に、コンテナーを識別するフレンドリ名を入力します。 このチュートリアルでは **ContosoVMVault** を使用します。
 2. **[リソース グループ]** で、既存のリソース グループを選択するか、新しいリソース グループを作成します。 このチュートリアルでは **contosoRG** を使用します。
 3. **[場所]** で、コンテナーを配置するリージョンを選びます。 このチュートリアルでは、"**西ヨーロッパ**" を使用します。
-4. ダッシュボードから資格情報コンテナーにすばやくアクセスするには、**[ダッシュボードにピン留めする]** > **[作成]** の順に選択します。
+4. ダッシュボードから資格情報コンテナーにすばやくアクセスするには、 **[ダッシュボードにピン留めする]**  >  **[作成]** の順に選択します。
 
 ![新しい資格情報コンテナーの作成](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-新しい資格情報コンテナーは、**[ダッシュボード]** > **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに表示されます。
+新しい資格情報コンテナーは、 **[ダッシュボード]**  >  **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに表示されます。
 
 ## <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップ
 
 フェールオーバー後にストレージから作成された Azure VM は、このネットワークに参加します。
 
-1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[ネットワーク]** > **[仮想ネットワーク]** の順に選択します。 デプロイ モデルとして [Resource Manager] を選択したままにします。
+1. [Azure Portal](https://portal.azure.com) で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。 デプロイ モデルとして [Resource Manager] を選択したままにします。
 2. **[名前]** で、ネットワーク名を入力します。 Azure リソース グループ内で一意となる名前を使用してください。 このチュートリアルでは **ContosoASRnet** を使用します。
 3. ネットワークを作成するリソース グループを指定します。 このチュートリアルでは、既存のリソース グループ **contosoRG** を使用します。
 4. **[アドレス範囲]** で、ネットワークの範囲として **10.0.0.0/24** を入力します。 このネットワークにはサブネットがありません。

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
 ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342325"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60711285"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linux for SAP NetWeaver における Azure VM での GlusterFS
 
@@ -28,14 +28,14 @@ ms.locfileid: "53342325"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2009879]:https://launchpad.support.sap.com/#/notes/2009879
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2009879]: https://launchpad.support.sap.com/#/notes/2009879
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
@@ -99,7 +99,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    4. 管理ユーザー名、管理パスワード、SSH キー  
       コンピューターへのログオンで使用できる新しいユーザーが作成されます。
    5. サブネット ID  
-      VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、この ID は、/subscriptions/**&lt;サブスクリプション ID&gt;**/resourceGroups/**&lt;リソース グループ名&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;仮想ネットワーク名&gt;**/subnets/**&lt;サブネット名&gt;** のようになります。
+      VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、この ID は、/subscriptions/ **&lt;サブスクリプション ID&gt;** /resourceGroups/ **&lt;リソース グループ名&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;仮想ネットワーク名&gt;** /subnets/ **&lt;サブネット名&gt;** のようになります。
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Azure Portal を使用した手動による Linux のデプロイ
 
@@ -119,7 +119,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 ### <a name="configure-glusterfs"></a>GlusterFS を構成する
 
-次の各手順の先頭には、**[A]** - 全ノードが該当、**[1]** - ノード 1 のみ該当、**[2]** - ノード 2 のみ該当、**[3]** - ノード 3 のみ該当、のいずれかが付いています。
+次の各手順の先頭には、 **[A]** - 全ノードが該当、 **[1]** - ノード 1 のみ該当、 **[2]** - ノード 2 のみ該当、 **[3]** - ノード 3 のみ該当、のいずれかが付いています。
 
 1. **[A]** ホスト名解決を設定します
 

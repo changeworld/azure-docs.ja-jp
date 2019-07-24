@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.openlocfilehash: 2f71dc2bcd5463f81ae286bbe3099124eb3fa539
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023891"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62107980"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
 
@@ -64,10 +64,10 @@ ms.locfileid: "54023891"
         info:    OK
         info:    vm create command OK
    
-   * **-l (または --location)**。 VM が作成される Azure リージョンです。 ここでは、 *centralus*です。
-   * **-n (または --vm-name)**。 作成する VM の名前です。
-   * **-w (または --virtual-network-name)**。 VM の作成先となる VNet の名前です。 
-   * **-S (または --static-ip)**。 VM の静的プライベート IP アドレスです。
+   * **-l (または --location)** 。 VM が作成される Azure リージョンです。 ここでは、 *centralus*です。
+   * **-n (または --vm-name)** 。 作成する VM の名前です。
+   * **-w (または --virtual-network-name)** 。 VM の作成先となる VNet の名前です。 
+   * **-S (または --static-ip)** 。 VM の静的プライベート IP アドレスです。
    * **TestService**。 VM の作成先となるクラウド サービスの名前です。
    * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**。 VM の作成に使用されるイメージです。
    * **adminuser**。 Windows VM のローカル管理者です。

@@ -4,7 +4,7 @@ description: Microsoft Azure において仮想マシン (VM) 上で実行され
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/15/2019
+ms.date: 06/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f14110cec0650927f74dfe3a38f06187c6df39de
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8b4ed11b5a0f463afee0dae149820bb546db0c53
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792660"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058721"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -36,15 +36,12 @@ Azure for SAP HANA の独自性は、Azure を一線を画すものにしてい�
 
 ## <a name="latest-changes"></a>最新の変更
 
+- [SAP HANA (L インスタンス) ネットワーク アーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)の HANA L インスタンス向けに ExpressRoute Fast Path と Global Reach および関連するドキュメントを導入
 - [Azure portal を介した Azure HANA Large Instances の制御](hana-li-portal.md)のリリース
-
 - [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server にある Azure VM 上の SAP NetWeaver の高可用性](high-availability-guide-suse-netapp-files.md)のリリース
-
 - Azure Load Balancer と関連付けた **Linux OS パラメーター net.ipv4.tcp_timestamps** 設定の明確化
 
-- [Azure Availability Zones での SAP ワークロードの構成](sap-ha-availability-zones.md)のリリース
 
-- [SAP ワークロードの計画とデプロイ チェックリスト](sap-deployment-checklist.md)のリリース
 
 
 

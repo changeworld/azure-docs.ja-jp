@@ -7,14 +7,14 @@ ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 8809a2fed5a44910e3a353d9dc5bc41ea964a1ce
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.topic: conceptual
+ms.date: 05/20/2019
+ms.openlocfilehash: b48257cc8e10deb1ec922806f62a6c435069f66f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150485"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67467090"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -24,7 +24,7 @@ ms.locfileid: "65150485"
 
 この記事では、次のタスクの実行方法について説明します。
 
-* トラフィックが仮想ネットワーク内のサブネット間で統合サービス環境 (ISE) を通過できるように、Azure 仮想ネットワーク上のポートを設定します。
+* トラフィックが仮想ネットワーク内のサブネット間で統合サービス環境 (ISE) を通過できるように、仮想ネットワーク上の必要なすべてのポートがオープンしていることを確認します。
 
 * 統合サービス環境 (ISE) を作成します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "65150485"
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
   > [!IMPORTANT]
-  > ご利用の ISE で実行されるロジック アプリ、組み込みアクション、コネクタは、使用量ベースの料金プランではなく、異なる料金プランを使用します。 詳細については、「[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)」をご覧ください。
+  > ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクション、およびコネクターでは、使用量ベースの価格プランとは異なる価格プランが使用されます。 詳細については、「[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)」をご覧ください。
 
 * [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークがない場合は、[Azure 仮想ネットワークの作成](../virtual-network/quick-create-portal.md)方法について学んでください。 
 
@@ -60,11 +60,13 @@ ms.locfileid: "65150485"
 
 <a name="ports"></a>
 
-## <a name="set-up-network-ports"></a>ネットワーク ポートを設定する
+## <a name="check-network-ports"></a>ネットワーク ポートを確認する
 
-正常に動作し、アクセスできる状態を維持するには、統合サービス環境 (ISE) に仮想ネットワーク上で使用できる特定のポートが必要です。 そうしないと、このようなポートのいずれかが使用できない場合、ISE へのアクセスが失われ、動作しなくなる可能性があります。 仮想ネットワーク内で ISE を使用する場合、一般的な設定の問題はブロックされたポートが 1 つ以上あることです。 ISE と宛先システム間の接続の場合、使用するコネクタにも独自のポート要件があります。 たとえば、FTP コネクタを使用して FTP システムと通信する場合、その FTP システム上で使用するポート (コマンド送信用のポート 21 など) を使用できることを確認します。
+仮想ネットワークで統合サービス環境 (ISE) を使用するとき、よくある設定の問題は、ブロックされたポートが 1 つ以上あるということです。 ISE と宛先システムとの間の接続を作成するために使用するコネクターにも独自のポート要件がある可能性があります。 たとえば、FTP コネクタを使用して FTP システムと通信する場合、その FTP システム上で使用するポート (コマンド送信用のポート 21 など) を使用できることを確認します。
 
-ISE をデプロイする仮想ネットワークのサブネット間でトラフィックを制御するには、[サブネット間のネットワーク トラフィックをフィルター処理する](../virtual-network/tutorial-filter-network-traffic.md)ことで、そのようなサブネットに対して[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を設定できます。 以下の表は、ISE で使用される仮想ネットワーク内のポートと、それらのポートが使用される場所を説明したものです。 [Resource Manager のサービス タグ](../virtual-network/security-overview.md#service-tags)は、IP アドレス プレフィックスのグループを表し、セキュリティ規則を作成する際の複雑さを最小限に抑えるために役立ちます。
+ISE をデプロイする仮想ネットワークのサブネット間でトラフィックを制御するには、[サブネット間のネットワーク トラフィックをフィルター処理する](../virtual-network/tutorial-filter-network-traffic.md)ことで、必要に応じて仮想ネットワークに[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md) を設定できます。 このルートを選択する場合は、次の表で説明するように、NSG を使用する仮想ネットワークで ISE が特定のポートを開くことを確認ください。 仮想ネットワークに既存の NSG またはファイアウォールがある場合は、これらのポートを開くことを確認してください。 そうすると、ISE はアクセス可能状態のままとなり、ISE へのアクセスを失わないように正しく機能することができます。 そうしないと、いずれかの必要なポートが使用できなった場合、ISE は機能を停止します。
+
+以下の表は、ISE で使用される仮想ネットワーク内のポートと、それらのポートが使用される場所を説明したものです。 [Resource Manager のサービス タグ](../virtual-network/security-overview.md#service-tags)は、IP アドレス プレフィックスのグループを表し、セキュリティ規則を作成する際の複雑さを最小限に抑えるために役立ちます。
 
 > [!IMPORTANT]
 > サブネット内の内部通信の場合、それらのサブネット内のすべてのポートを開いておくことが ISE では必要になります。
@@ -97,12 +99,12 @@ ISE をデプロイする仮想ネットワークのサブネット間でトラ�
 
 統合サービス環境 (ISE) を作成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) の Azure メイン メニューで、**[リソースの作成]** を選択します。
+1. [Azure portal](https://portal.azure.com) の Azure メイン メニューで、 **[リソースの作成]** を選択します。
 検索ボックスに、フィルターとして「統合サービス環境」と入力します。
 
    ![新しいリソースの作成](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
-1. 統合サービス環境の作成ウィンドウで、**[作成]** を選択します。
+1. 統合サービス環境の作成ウィンドウで、 **[作成]** を選択します。
 
    ![[作成] を選択する](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
 
@@ -115,7 +117,7 @@ ISE をデプロイする仮想ネットワークのサブネット間でトラ�
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | 環境に使用する Azure サブスクリプション |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | 環境を作成する Azure リソース グループ |
    | **統合サービス環境の名前** | はい | <*environment-name*> | 環境を示す名前 |
-   | **場所** | はい | <*Azure-datacenter-region*> | 環境をデプロイする Azure データセンター リージョン |
+   | **Location** | はい | <*Azure-datacenter-region*> | 環境をデプロイする Azure データセンター リージョン |
    | **追加容量** | はい | 0 から 10 | この ISE リソースに使用する追加の処理ユニット数。 作成後に容量を追加する場合は、「[ISE の容量を追加する](#add-capacity)」を参照してください。 |
    | **Virtual Network** | はい | <*Azure-virtual-network-name*> | 環境内のロジック アプリが仮想ネットワークにアクセスできるように、その環境を挿入する Azure 仮想ネットワーク。 ネットワークがない場合は、[まず Azure 仮想ネットワークを作成](../virtual-network/quick-create-portal.md)します。 <p>**重要**:ISE を作成するときに "*のみ*"、この挿入を実行することができます。 |
    | **サブネット** | はい | <*subnet-resource-list*> | ISE では、環境内にリソースを作成するために "*空の*" サブネットが 4 つ必要です。 各サブネットを作成するには、[この表の下の手順に従います](#create-subnet)。  |
@@ -132,7 +134,7 @@ ISE をデプロイする仮想ネットワークのサブネット間でトラ�
 
    * [Classless Inter-Domain Routing (CIDR) 形式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)とクラス B アドレス空間を使用する。
 
-   * 各サブネットに*少なくとも* 32 個のアドレスが必要なため、そのアドレス空間で最低でも `/27` を使用する。 例: 
+   * 各サブネットに*少なくとも* 32 個のアドレスが必要なため、そのアドレス空間で最低でも `/27` を使用する。 例:
 
      * 2<sup>(32-27)</sup> は 2<sup>5</sup> (つまり 32) なので、`10.0.0.0/27` には 32 個のアドレスがあります。
 
@@ -159,11 +161,11 @@ ISE をデプロイする仮想ネットワークのサブネット間でトラ�
    1. **[サブネットの追加]** ウィンドウで次の情報を指定します。
 
       * **名前**:サブネットの名前
-      * **アドレス範囲 (CIDR ブロック)**:仮想ネットワークのサブネットの範囲 (CIDR 形式)
+      * **アドレス範囲 (CIDR ブロック)** :仮想ネットワークのサブネットの範囲 (CIDR 形式)
 
       ![サブネットの詳細を追加する](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
 
-   1. 完了したら、**[OK]** を選びます。
+   1. 完了したら、 **[OK]** を選びます。
 
    1. さらに 3 つのサブネットについてこれらの手順を繰り返します。
 
@@ -199,33 +201,19 @@ ISE をデプロイする仮想ネットワークのサブネット間でトラ�
 
 ## <a name="create-logic-app---ise"></a>ロジック アプリを作成する - ISE
 
-統合サービス環境 (ISE) を使用するロジック アプリを作成するには、[ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページに記載されている手順に従いますが、次の違いがあります。 
-
-* ロジック アプリを作成したら、次の例のように **[場所]** プロパティの **[統合サービス環境]** セクションから使用する ISE を選択します。
+統合サービス環境 (ISE) で実行されるロジック アプリを作成するには、 **[場所]** プロパティを設定するときを除き、[通常の方法でロジック アプリを作成し](../logic-apps/quickstart-create-first-logic-app-workflow.md)、 **[統合サービス環境]** セクションから ISE を選択します。たとえば、次のようになります。
 
   ![統合サービス環境を選択する](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-integration-service-environment.png)
 
-* HTTP など、同じ組み込みトリガーとアクションを使用できます。これらは、ロジック アプリと同じ ISE 内で動作します。 **ISE** ラベルがあるコネクタも、ロジック アプリと同じ ISE 内で動作します。 **ISE** ラベルがないコネクタはグローバルな Logic Apps サービスで実行されます。
-
-  ![ISE のコネクタを選択する](./media/connect-virtual-network-vnet-isolated-environment/select-ise-connectors.png)
-
-* Azure 仮想ネットワークに ISE を挿入した後は、ISE のロジック アプリからその仮想ネットワーク内のリソースに直接アクセスできます。 仮想ネットワークに接続されているオンプレミス システムの場合は、そのネットワークに ISE を挿入し、次のいずれかの項目を使用することで、ロジック アプリからそれらのシステムに直接アクセスできるようになります。 
-
-  * そのシステムの ISE コネクタ (SQL Server など)
-  
-  * HTTP アクション 
-  
-  * カスタム コネクタ
-
-  仮想ネットワーク内にない、または ISE コネクタがないオンプレミス システムの場合は、まず[オンプレミスのデータ ゲートウェイを設定します](../logic-apps/logic-apps-gateway-install.md)。
+ISE を使用するときに、グローバル Logic Apps サービスと比較して、トリガーとアクションがどのように機能するか、およびそれらがどのようにラベル付けされるかの違いについては、[ISE での分離とグローバルの概要](connect-virtual-network-vnet-isolated-environment-overview.md#difference)に関するページを参照してください。
 
 <a name="create-integration-account-environment"></a>
 
 ## <a name="create-integration-account---ise"></a>統合アカウントを作成する - ISE
 
-統合サービス環境 (ISE) でロジック アプリに統合アカウントを使用するには、その統合アカウントでロジック アプリと*同じ環境*を使用する必要があります。 ISE のロジック アプリは、同じ ISE 内の統合アカウントのみを参照できます。 
+統合サービス環境 (ISE) でロジック アプリに統合アカウントを使用する場合は、その統合アカウントはロジック アプリと*同じ環境*を使用する必要があります。 ISE のロジック アプリは、同じ ISE 内の統合アカウントのみを参照できます。
 
-ISE を使用する統合アカウントを作成するには、[統合アカウントの作成方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)に関する記事の手順を実行します。ただし、**[統合サービス環境]** セクションが表示されるようになった **[場所]** プロパティを除きます。 次の例のように、リージョンではなく ISE を選択します。
+ISE を使用する統合アカウントを作成するには、 **[場所]** プロパティを設定するときを除き、[通常の方法でロジック アプリを作成し](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)、 **[統合サービス環境]** セクションから ISE を選択します。たとえば、次のようになります。
 
 ![統合サービス環境を選択する](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 
@@ -237,27 +225,27 @@ ISE 基本単位の容量は固定されているため、さらにスループ�
 
 1. Azure portal で ISE を見つけます。
 
-1. ISE の使用状況とパフォーマンスのメトリックを確認するには、ISE のメイン メニューで、**[概要]** を選択します。
+1. ISE の使用状況とパフォーマンスのメトリックを確認するには、ISE のメイン メニューで、 **[概要]** を選択します。
 
    ![ISE の使用状況を表示する](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-usage.png)
 
-1. 自動スケーリングを設定するには、**[設定]** で **[スケールアウト]** を選択します。**[構成]** タブで、**[自動スケーリングの有効化]** を選択します。
+1. 自動スケーリングを設定するには、 **[設定]** で **[スケールアウト]** を選択します。 **[構成]** タブで、 **[自動スケーリングの有効化]** を選択します。
 
    ![自動スケーリングを有効にする](./media/connect-virtual-network-vnet-isolated-environment/scale-out.png)
 
 1. **[自動スケーリング設定の名前]** に設定の名前を入力します。
 
-1. **[既定値]** セクションで、**[メトリックに基づいてスケーリングする]** または **[特定のインスタンス数にスケーリングする]** のいずれかを選択します。
+1. **[既定値]** セクションで、 **[メトリックに基づいてスケーリングする]** または **[特定のインスタンス数にスケーリングする]** のいずれかを選択します。
 
    * インスタンス ベースを選択した場は、0 から 10 の範囲で処理ユニット数を入力します。
 
    * メトリック ベースを選択した場合は、次の手順に従います。
 
-     1. **[ルール]** セクションで、**[ルールの追加]** をクリックします。
+     1. **[ルール]** セクションで、 **[ルールの追加]** をクリックします。
 
      1. **[スケール ルール]** ウィンドウで、ルールがトリガーされる条件とその際に実行するアクションを設定します。
 
-     1. 完了したら、**[追加]** を選択します。
+     1. 完了したら、 **[追加]** を選択します。
 
 1. 自動スケーリングの設定が終了したら、変更を保存します。
 

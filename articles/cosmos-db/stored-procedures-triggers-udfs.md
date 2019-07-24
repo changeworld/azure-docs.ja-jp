@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB のストアド プロシー�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 06/14/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 40d120fe5fcc79721923d3493e74b5195ecc129c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 529c536d9ea3b898745f03c80b63702b2af485da
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965703"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165573"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>ストアド プロシージャ、トリガー、およびユーザー定義関数
 
@@ -75,7 +75,7 @@ JavaScript 関数は、[プロビジョニングされているスループッ�
 
 ## <a name="triggers"></a>トリガー
 
-このセクションでは、以下の 2 つのタイプのトリガーについて説明します。
+Azure Cosmos DB では 2 種類のトリガーがサポートされます。
 
 ### <a name="pre-triggers"></a>プリトリガー
 
@@ -84,6 +84,9 @@ Azure Cosmos DB には、Azure Cosmos DB 項目で操作を実行することに
 ### <a name="post-triggers"></a>ポストトリガー
 
 プリトリガーと同様に、ポストトリガーは、Azure Cosmos DB 項目の操作に関連付けられ、入力パラメーターを必要としません。 ポストトリガーは、操作が完了した *後に* 実行され、クライアントに送信される応答メッセージにアクセスします。 例については、「[トリガーを書き込む方法](how-to-write-stored-procedures-triggers-udfs.md#triggers)」の記事を参照してください。
+
+> [!NOTE]
+> 登録されたトリガーは、対応する操作 (作成/削除/置換/更新) が発生しても自動的には実行されません。 これらの操作を実行するときに明示的に呼び出す必要があります。 詳細については、[トリガーの実行方法](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)に関する記事を参照してください。
 
 ## <a id="udfs"></a>ユーザー定義関数
 

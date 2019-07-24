@@ -1,23 +1,23 @@
 ---
-title: SQL Data Warehouse の分類 | Microsoft Docs
+title: Azure SQL Data Warehouse の分類 | Microsoft Docs
 description: Azure SQL Data Warehouse で分類を使用してクエリのコンカレンシー、重要度、コンピューティング リソースを管理するためのガイダンスです。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 208308533753370575b844633c45f7e4aeda0864
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 4988d284bed46a918f85eec8d7b4a5b89fc6549e
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154205"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588485"
 ---
-# <a name="sql-data-warehouse-workload-classification"></a>SQL Data Warehouse のワークロード分類
+# <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse のワークロード分類
 
 この記事では、受信要求にリソース クラスと重要度を割り当てる SQL Data Warehouse のワークロード分類プロセスについて説明します。
 
@@ -81,4 +81,7 @@ sp_droprolemember ‘[Resource Class]’, membername
 
 ## <a name="next-steps"></a>次の手順
 
-分類子の作成を開始するには、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)」を参照してください。  SQL Data Warehouse のワークロード分類と重要度の詳細については、[ワークロード分類子の作成](quickstart-create-a-workload-classifier-tsql.md)と [SQL Data Warehouse の重要度](sql-data-warehouse-workload-importance.md)に関する記事をご覧ください。 クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)」を参照してください。
+- 分類子の作成の詳細については、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)」を参照してください。  
+- ワークロード分類子の作成方法については、[ワークロード分類子の作成](quickstart-create-a-workload-classifier-tsql.md)に関するクイック スタートを参照してください。
+- [ワークロードの重要度の構成](sql-data-warehouse-how-to-configure-workload-importance.md)と [Workload Management の管理と監視](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)に関するハウツー記事を参照してください。
+- クエリと割り当てられている重要度を確認するには、「[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)」を参照してください。

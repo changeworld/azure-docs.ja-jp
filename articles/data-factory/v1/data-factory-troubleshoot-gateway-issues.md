@@ -13,11 +13,11 @@ ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119345"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61252439"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。
@@ -50,7 +50,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 ゲートウェイが既にコンピューターにインストールされています。
 
 #### <a name="resolution"></a>解決策
-コンピューター上の既存のゲートウェイをアンインストールしてから、**[このコンピューターに直接インストールします]** リンクをもう一度クリックします。
+コンピューター上の既存のゲートウェイをアンインストールしてから、 **[このコンピューターに直接インストールします]** リンクをもう一度クリックします。
 
 ### <a name="3-problem"></a>手順 3.問題点
 新しいゲートウェイを登録するときに、次のエラーが表示される場合があります。
@@ -108,7 +108,7 @@ Data Management Gateway セットアップのバージョンが最新かどう�
 このエラーは、ゲートウェイが削除されているか、関連付けられているゲートウェイ キーが再生成されている場合に発生する可能性があります。
 
 #### <a name="resolution"></a>解決策
-ゲートウェイが削除されている場合は、ポータルでゲートウェイを再作成し、**[登録]** をクリックします。ポータルからキーをコピーして貼り付け、ゲートウェイを登録します。
+ゲートウェイが削除されている場合は、ポータルでゲートウェイを再作成し、 **[登録]** をクリックします。ポータルからキーをコピーして貼り付け、ゲートウェイを登録します。
 
 ゲートウェイが存在している一方でそのキーが再生成されている場合、新しいキーを使用してゲートウェイを登録します。 キーがない場合は、ポータルでもう一度キーを生成します。
 
@@ -206,7 +206,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 
 1. Data Management Gateway Configuration Manager を起動します。
 2. **[設定]** タブに切り替えます。  
-3. SSL 証明書を変更するために、**[変更]** をクリックします。
+3. SSL 証明書を変更するために、 **[変更]** をクリックします。
 
    ![証明書の変更ボタン](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
 4. 新しい証明書を SSL 証明書として選択します。 自分で生成した SSL 証明書も、任意の組織によって生成された SSL 証明書も使用できます。
@@ -280,7 +280,7 @@ SQL データベースに接続する前に、Data Management Gateway クライ�
 詳細なゲートウェイ ログの情報は、Windows イベント ログで確認できます。
 
 1. Windows **イベント ビューアー**を起動します。
-2. **[アプリケーションとサービス ログ]** > **[Data Management Gateway]** フォルダーでログを見つけます。
+2. **[アプリケーションとサービス ログ]**  >  **[Data Management Gateway]** フォルダーでログを見つけます。
 
    ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べます。
 

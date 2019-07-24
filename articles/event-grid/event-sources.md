@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: b6abb0048dcc722241a2cd87354224b0fd7fa2f9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: ad9bb5c135684c4573195298fb8e55a08208f6b6
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234188"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785814"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -74,7 +74,7 @@ Capture ファイル イベントに対応するために、Event Hubs のイベ
 
 ## <a name="iot-hub"></a>IoT Hub
 
-デバイスの作成、削除、接続、切断のイベントに対応するために、IoT Hub のイベントをサブスクライブします。
+デバイスの作成、削除、接続、切断、テレメトリのイベントに対応するために、IoT Hub のイベントをサブスクライブします。
 
 |タイトル  |説明  |
 |---------|---------|
@@ -140,6 +140,25 @@ BLOB の作成および削除のイベントに対応するために、Blob Stor
 | [Event Grid を使用して Azure Maps イベントに反応する](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure Maps と Event Grid の統合の概要。 |
 | [チュートリアル:ジオフェンスを設定する](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | このチュートリアルでは、Azure Maps を使用してジオフェンスを設定するための基本的な手順について説明します。 Azure Event Grid を使用してジオフェンスの結果をストリーミングし、ジオフェンスの結果に基づいて通知を設定します。 |
 | [イベント スキーマ](event-schema-azure-maps.md) | Azure Maps イベントでのフィールドを示します。 |
+
+## <a name="app-configuration"></a>App Configuration
+Azure App Configuration イベントをサブスクライブして、キーと値の変更イベントに応答します。
+
+|タイトル | 説明 |
+|---------|---------|
+| [Event Grid を使用して Azure App Configuration イベントに応答する](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure App Configuration と Event Grid の統合の概要。 |
+| [クイックスタート: Azure CLI を使用して Azure App Configuration イベントをカスタム Web エンドポイントにルーティングする](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Azure App Configuration イベントを Webhook に送信する方法を示します。 |
+| [イベント スキーマ](event-schema-app-configuration.md) | Azure App Configuration イベントのフィールドを表示します。 |
+
+## <a name="azure-signalr"></a>Azure SignalR
+クライアント接続のイベントに応答するには、Azure SignalR Service のイベントをサブスクライブします。
+
+|タイトル | 説明 |
+|---------|---------|
+| [Event Grid を使用して Azure SignalR Service のイベントに反応する](../azure-signalr/signalr-concept-event-grid-integration.md) | Azure SignalR Service と Event Grid の統合の概要。 |
+| [Azure SignalR Service のイベントを Event Grid に送信する方法](../azure-signalr/signalr-howto-event-grid-integration.md) | Event Grid を通して Azure SignalR Service のイベントをアプリケーションに送信する方法を示します。 |
+| [イベント スキーマ](event-schema-azure-signalr.md) | Azure SignalR Service のイベントのフィールドを示します。 |
+
 
 
 ## <a name="next-steps"></a>次の手順

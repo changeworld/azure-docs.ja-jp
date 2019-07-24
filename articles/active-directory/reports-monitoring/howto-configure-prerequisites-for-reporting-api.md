@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ab30dfeccc4ae1c7b09a8f48846ffb9e71cfc23
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436746"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60439090"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
@@ -64,11 +64,11 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
    
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. **[Azure Active Directory]** ページで、**[アプリの登録]** を選択します。
+2. **[Azure Active Directory]** ページで、 **[アプリの登録]** を選択します。
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. **[アプリの登録]** ページから、**[新しいアプリケーションの登録]** を選択します。
+3. **[アプリの登録]** ページから、 **[新しいアプリケーションの登録]** を選択します。
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
@@ -82,7 +82,7 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
     c. **[サインオン URL]** ボックスに、「`https://localhost`」と入力します。
 
-    d. **作成**を選択します。 
+    d. **作成** を選択します。 
 
 
 ## <a name="grant-permissions"></a>アクセス許可を付与する 
@@ -101,19 +101,19 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
 **API を使用するためのアクセス許可をアプリケーションに付与するには:**
 
-1. **[アプリの登録]** ページからアプリケーションを選択して、**[設定]** を選択します。 
+1. **[アプリの登録]** ページからアプリケーションを選択して、 **[設定]** を選択します。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. **[設定]** ページで、**[必要なアクセス許可]** を選択します。 
+2. **[設定]** ページで、 **[必要なアクセス許可]** を選択します。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. **[必要なアクセス許可]** ページの **[API]** の一覧で、**[Windows Azure Active Directory]** をクリックします。 
+3. **[必要なアクセス許可]** ページの **[API]** の一覧で、 **[Windows Azure Active Directory]** をクリックします。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-4. **[アクセスの有効化]** ページで、**[ディレクトリ データの読み取り]** をオンにして、**[サインインとユーザー プロファイルの読み取り]** をオフにします。 
+4. **[アクセスの有効化]** ページで、 **[ディレクトリ データの読み取り]** をオンにして、 **[サインインとユーザー プロファイルの読み取り]** をオフにします。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
@@ -125,21 +125,21 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/32.png)
 
-7. **[API アクセスの追加]** ページで、**[API を選択します]** をクリックします。
+7. **[API アクセスの追加]** ページで、 **[API を選択します]** をクリックします。
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/31.png)
 
-8. **[API を選択します]** ページで、**[Microsoft Graph]** をクイックして、**[選択]** をクリックします。
+8. **[API を選択します]** ページで、 **[Microsoft Graph]** をクイックして、 **[選択]** をクリックします。
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/33.png)
 
-9. **[アクセスの有効化]** ページで、**[すべての監査ログ データの読み取り]** をオンにして、**[選択]** をクリックします。  
+9. **[アクセスの有効化]** ページで、 **[すべての監査ログ データの読み取り]** をオンにして、 **[選択]** をクリックします。  
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/34.png)
 
-10. **[API アクセスの追加]** ページで、**[完了]** をクリックします。  
+10. **[API アクセスの追加]** ページで、 **[完了]** をクリックします。  
 
-11. **[必要なアクセス許可]** ページで、上部のツール バーの **[アクセス許可の付与]** をクリックし、**[はい]** をクリックします。
+11. **[必要なアクセス許可]** ページで、上部のツール バーの **[アクセス許可の付与]** をクリックし、 **[はい]** をクリックします。
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/17.png)
 
@@ -158,11 +158,11 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 **ドメイン名を取得するには:**
 
-1. [Azure portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** を選択します。
+1. [Azure portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** を選択します。
    
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
-2. **[Azure Active Directory]** ページで、**[カスタム ドメイン名]** を選択します。
+2. **[Azure Active Directory]** ページで、 **[カスタム ドメイン名]** を選択します。
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/09.png) 
 
@@ -173,13 +173,13 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 **アプリケーションのクライアント ID を取得するには:**
 
-1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** をクリックします。
    
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. **[アプリの登録]** ページから、アプリケーションを選択します。
 
-3. アプリケーション ページから、**[アプリケーション ID]** へ移動して、**[Click to copy]\(クリックしてコピー\)** を選択します。
+3. アプリケーション ページから、 **[アプリケーション ID]** へ移動して、 **[Click to copy]\(クリックしてコピー\)** を選択します。
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 
@@ -189,17 +189,17 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 **アプリケーションのクライアント シークレットを取得するには:**
 
-1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** をクリックします。
    
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2.  **[アプリの登録]** ページから、アプリケーションを選択します。
 
-3. アプリケーション ページの上部のツール バーで、**[設定]** を選択します。 
+3. アプリケーション ページの上部のツール バーで、 **[設定]** を選択します。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-4. **[設定]** ページの **[API アクセス]** セクションで、**[キー]** をクリックします。 
+4. **[設定]** ページの **[API アクセス]** セクションで、 **[キー]** をクリックします。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
@@ -209,7 +209,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
     a. **[説明]** ボックスに、「`Reporting API`」と入力します。
 
-    b. **[有効期限]** として、**[2 年]** を選択します。
+    b. **[有効期限]** として、 **[2 年]** を選択します。
 
     c. **[Save]** をクリックします。
 
@@ -231,7 +231,7 @@ Graph エクスプローラーを使用してサインインにアクセスし�
 
 ### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>エラー:AD Graph から Premium ライセンスを確認できませんでした 
 
-Graph エクスプローラーを使用してサインインにアクセスしようとしたときにこのようなエラー メッセージが表示された場合は、左側のナビゲーションのアカウントの下にある **[アクセス許可の変更]** を選択し、**[Tasks.ReadWrite]** と **[Directory.Read.All]** を選びます。 
+Graph エクスプローラーを使用してサインインにアクセスしようとしたときにこのようなエラー メッセージが表示された場合は、左側のナビゲーションのアカウントの下にある **[アクセス許可の変更]** を選択し、 **[Tasks.ReadWrite]** と **[Directory.Read.All]** を選びます。 
 
 ![アクセス許可の変更 UI](./media/troubleshoot-graph-api/modify-permissions.png)
 

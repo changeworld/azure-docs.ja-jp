@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 49c836f5e9189104ba77e8f3d865f4db199c4060
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66002969"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
@@ -160,7 +160,7 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
     </Creative>
 ```
 
-<**NonLinearAds**> 要素には 1 つ以上の <**NonLinear**> 要素が含まれており、それぞれ非線形広告を記述できます。 <**NonLinear**> 要素は、非線形広告のリソースを指定します。 このリソースは、<**StaticResource**>、<**IFrameResource**>、または <**HTMLResource**> です。  \<**StaticResource**> は、HTML 以外のリソースを記述し、リソースの表示方法を指定する creativeType 属性を定義します。
+<**NonLinearAds**> 要素には 1 つ以上の <**NonLinear**> 要素が含まれており、それぞれ非線形広告を記述できます。 <**NonLinear**> 要素は、非線形広告のリソースを指定します。 このリソースは、<**StaticResource**>、<**IFrameResource**>、または <**HTMLResource**> です。 \<**StaticResource**> は、HTML 以外のリソースを記述し、リソースの表示方法を指定する creativeType 属性を定義します。
 
 Image/gif、image/jpeg、image/png – リソースが HTML <**img**> タグで表示されます。
 

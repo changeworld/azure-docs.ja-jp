@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a256eb787d7e3dbd800ec2e630cac591b07ca0fc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361243"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444166"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API に接続する - .NET
 
@@ -27,19 +27,19 @@ ms.locfileid: "59361243"
 ## <a name="prerequisites"></a>前提条件
 
 - [Media Services アカウントを作成する](create-account-cli-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください
-- .NET の開発に使用するツールをインストールします。 この記事の手順では、[Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)を使用する方法を示します。 Visual Studio Code を使用できます。「[Working with C# (C# の使用)](https://code.visualstudio.com/docs/languages/csharp)」をご覧ください。 または、別のコード エディターを使用できます。
+- .NET の開発に使用するツールをインストールします。 この記事の手順では、[Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)を使用する方法を示します。 Visual Studio Code を使用できます。「[Working with C# (C# の使用)](https://code.visualstudio.com/docs/languages/csharp)」をご覧ください。 または、別のコード エディターを使用できます。
 
 ## <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
 1. Visual Studio を起動します。 
-1. **[ファイル]** メニューから **[新規作成]** > **[プロジェクト]** をクリックします。 
+1. **[ファイル]** メニューから **[新規作成]**  >  **[プロジェクト]** をクリックします。 
 1. **.NET Core** コンソール アプリケーションを作成します。
 
 このトピックのサンプル アプリの対象は `netcoreapp2.0` です。 コードでは "async main" が使用されています。これは、C# 7.1 以降で利用できます。 詳しくは、こちらの[ブログ](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)をご覧ください。
 
 ## <a name="add-required-nuget-packages"></a>必要な NuGet パッケージを追加する
 
-1. Visual Studio で、**[ツール]** > **[NuGet パッケージ マネージャー]** > **[NuGet Manager Console]\(NuGet マネージャー コンソール\)** の順に選択します。
+1. Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[NuGet Manager Console]\(NuGet マネージャー コンソール\)** の順に選択します。
 2. **[パッケージ マネージャー コンソール]** ウィンドウで、`Install-Package` コマンドを使用して次の NuGet パッケージを追加します。 たとえば、「 `Install-Package Microsoft.Azure.Management.Media` 」のように入力します。
 
 |Package|説明|
@@ -54,7 +54,7 @@ ms.locfileid: "59361243"
 
 ### <a name="create-appsettingsjson"></a>appsettings.json を作成する
 
-1. **[全般]** > **[テキスト ファイル]** に移動します。
+1. **[全般]**  >  **[テキスト ファイル]** に移動します。
 1. "appsettings.json" という名前に設定します。
 1. .json ファイルの [出力ディレクトリにコピー] プロパティを [新しい場合はコピーする] に設定します (発行されたときにアプリケーションがアクセスできるように)。
 
@@ -204,7 +204,7 @@ namespace ConsoleApp1
             //// ClientAssertionCertificate
             //// ApplicationTokenProvider.LoginSilentWithCertificateAsync
 
-            // Use ApplicationTokenProvider.LoginSilentAsync to get a token using a service principal with symetric key
+            // Use ApplicationTokenProvider.LoginSilentAsync to get a token using a service principal with symmetric key
             ClientCredential clientCredential = new ClientCredential(config.AadClientId, config.AadSecret);
             return await ApplicationTokenProvider.LoginSilentAsync(config.AadTenantId, clientCredential, ActiveDirectoryServiceSettings.Azure);
         }

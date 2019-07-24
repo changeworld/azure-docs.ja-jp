@@ -17,10 +17,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa4f5dc7a5aceaf81f71eacd36d131471a57e5c0
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65080167"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデーモン アプリ - トークンを取得する
@@ -65,7 +65,7 @@ public final static String KEYVAULT_DEFAULT_SCOPE = "https://vault.azure.net/.de
 
 > [!IMPORTANT]
 > v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープから目的の対象ユーザーを解析します。
-> そのため、Azure SQL (**https://database.windows.net**) のようにリソースによってスラッシュで終わる対象ユーザー (Azure SQL の場合: `https://database.windows.net/`) が要求されている場合は、`https://database.windows.net//.default` のスコープを要求する必要があります(二重スラッシュに注意してください)。 次も参照してください。MSAL.NET の問題 [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747):リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラーが発生した。
+> そのため、Azure SQL ( **https://database.windows.net** ) のようにリソースによってスラッシュで終わる対象ユーザー (Azure SQL の場合: `https://database.windows.net/` ) が要求されている場合は、`https://database.windows.net//.default` のスコープを要求する必要があります(二重スラッシュに注意してください)。 次も参照してください。MSAL.NET の問題 [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747):リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラーが発生した。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 

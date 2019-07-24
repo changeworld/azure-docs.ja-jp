@@ -3,8 +3,8 @@ title: Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー 
 description: この記事では、HTTP メッセージを使用して、OAuth2.0 On-Behalf-Of フローを使用するサービス間の認証を実装する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0c7c29bf3094c3d5fc99b9906ee4469a6643317
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 7582cd8453b25f071c18566f09d2155a6377a0a6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501605"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482163"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
@@ -42,7 +42,7 @@ OAuth 2.0 の On-Behalf-Of (OBO) フローは、アプリケーションがサ�
 
 以降の手順は OBO フローを構成するものであり、次の図を使用して説明します。
 
-![OAuth2.0 の On-Behalf-Of フロー](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![OAuth2.0 の On-Behalf-Of フローを示します](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. クライアント アプリケーションは、トークン A (API A の `aud` 要求) を使用して API A に要求を発行します。
 1. API A が Microsoft ID プラットフォーム トークン発行エンドポイントに対して認証を行い、API B にアクセスするためのトークンを要求します。
@@ -163,7 +163,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 ### <a name="error-response-example"></a>エラー応答の例
 
-ダウンストリーム API に多要素認証などの条件付きアクセス ポリシーが設計されている場合は、ダウンストリーム API へのアクセス トークンを取得しようとすると、トークン エンドポイントによってエラー応答が返されます。 クライアント アプリケーションが条件付きアクセス ポリシーを満たすためのユーザー操作を提供できるように、中間層サービスはこのエラーをクライアント アプリケーションに示す必要があります。
+ダウンストリーム API に条件付きアクセス ポリシー (多要素認証など) が設計されている場合は、ダウンストリーム API へのアクセス トークンを取得しようとすると、トークン エンドポイントによってエラー応答が返されます。 クライアント アプリケーションが条件付きアクセス ポリシーを満たすためのユーザー操作を提供できるように、中間層サービスでこのエラーをクライアント アプリケーションに示す必要があります。
 
 ```
 {
@@ -226,5 +226,5 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 OAuth 2.0 プロトコルと、クライアント資格情報を使用したサービス間認証を実行する別の方法について詳しく学びます。
 
 * [Microsoft ID プラットフォームでの OAuth 2.0 クライアント資格情報の付与](v2-oauth2-client-creds-grant-flow.md)
-* [Microsoft ID プラットフォームの OAuth 2.0 コード フロー](v2-oauth2-auth-code-flow.md)
+* [Microsoft ID プラットフォームでの OAuth 2.0 コード フロー](v2-oauth2-auth-code-flow.md)
 * [`/.default` スコープの使用](v2-permissions-and-consent.md#the-default-scope)

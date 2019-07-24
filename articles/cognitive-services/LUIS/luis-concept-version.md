@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: diberry
 ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870654"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60509695"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>LUIS バージョンを使用する方法とタイミング
 
@@ -46,12 +46,12 @@ LUIS のバージョンは、従来のプログラミングのバージョンと
 ## <a name="import-and-export-a-version"></a>バージョンのインポートとエクスポート
 バージョンは、アプリ レベルでインポートできます。 そのバージョンがアクティブなバージョンになり、アプリ ファイルの "versionId" プロパティでそのバージョン ID で使用されます。 バージョン レベルで既存のアプリにインポートすることもできます。 新規バージョンがアクティブなバージョンになります。 
 
-アプリ レベルやバージョン レベルでバージョンをエクスポートできます。 唯一の違いは、アプリ レベルでエクスポートされるバージョンは現在アクティブなバージョンであるのに対して、バージョン レベルでは、**[[設定]](luis-how-to-manage-versions.md)** ページで任意のバージョンを選択してエクスポートできます。 
+アプリ レベルやバージョン レベルでバージョンをエクスポートできます。 唯一の違いは、アプリ レベルでエクスポートされるバージョンは現在アクティブなバージョンであるのに対して、バージョン レベルでは、 **[[設定]](luis-how-to-manage-versions.md)** ページで任意のバージョンを選択してエクスポートできます。 
 
 アプリはインポート後に再度トレーニングされるため、エクスポートしたファイルには機械学習された情報が含まれません。 エクスポートしたファイルにはコラボレーターは含まれません。新しいアプリにそのバージョンをインポートした後、コラボレーターを追加し直す必要があります。
 
 ## <a name="export-each-version-as-app-backup"></a>各バージョンをアプリのバックアップとしてエクスポートする
-LUIS アプリをバックアップするために、**[[設定]](luis-how-to-manage-versions.md)** ページで各バージョンをエクスポートします。
+LUIS アプリをバックアップするために、 **[[設定]](luis-how-to-manage-versions.md)** ページで各バージョンをエクスポートします。
 
 ## <a name="delete-a-version"></a>バージョンを削除する
 [設定] ページのバージョンの一覧から、アクティブなバージョンを除くすべてのバージョンを削除できます。 

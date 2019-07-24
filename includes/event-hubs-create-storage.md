@@ -9,18 +9,18 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b84b0a8e09bf739ce62dee167ff751b491765c66
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66154566"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181711"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>イベント プロセッサ ホストのストレージ アカウントの作成
 イベント プロセッサ ホストは、永続的なチェックポイントの管理によって Event Hubs のイベントの受信を簡素化し、並列して受信を行うインテリジェントなエージェントです。 チェックポイント処理を実行するために、イベント プロセッサ ホストではストレージ アカウントが必要です。 次の例は、ストレージ アカウントを作成する方法とそのアクセス キーを取得する方法を示します。
 
 1. Azure portal で、画面の左上にある **[リソースの作成]** を選択します。
 
-2. **[ストレージ]**、**[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
+2. **[ストレージ]** 、 **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
    
     ![ストレージ アカウントを選択する](./media/event-hubs-create-storage/create-storage1.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "66154566"
    
       ![ストレージ アカウントの作成 - ページ](./media/event-hubs-create-storage/create-storage2.png)
 
-4. **[確認および作成]** ページで値を確認し、**[作成]** を選択します。 
+4. **[確認および作成]** ページで値を確認し、 **[作成]** を選択します。 
 
     ![ストレージ アカウントの設定を確認し、作成する](./media/event-hubs-create-storage/review-create-storage-account.png)
 5. "**デプロイメントが成功しました**" メッセージが表示されたら、ページの上部にある **[リソースに移動]** を選択します。 リソース リストからストレージ アカウントを選択して、ストレージ アカウント ページを起動することもできます。  
@@ -43,7 +43,7 @@ ms.locfileid: "66154566"
 7. **[要点]** ウィンドウで **[BLOB]** を選択します。 
 
     ![BLOB サービスを選択する](./media/event-hubs-create-storage/select-blobs-service.png)
-1. 上部にある **[+ コンテナー]** を選択して、コンテナーの**名前**を入力して、**[OK]** を選択します。 
+1. 上部にある **[+ コンテナー]** を選択して、コンテナーの**名前**を入力して、 **[OK]** を選択します。 
 
     ![BLOB コンテナーを作成する](./media/event-hubs-create-storage/create-blob-container.png)
 1. 左側のメニューの **[アクセス キー]** を選択して、**key1** の値をコピーします。 

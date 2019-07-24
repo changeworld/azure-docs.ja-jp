@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C で年齢制限を有効にする | Microsoft Docs
 description: アプリケーションを使用している未成年者を特定する方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b594dc6eadce5093c58d693492f8e86eb92ae4e3
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 33b379a03c92b81885f7adfc70f7025a85ce9057
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228004"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66511677"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で年齢制限を有効にする
 
@@ -91,9 +91,9 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 ユーザー フローで年齢制限を使うには、追加のプロパティが含まれるようにテナントを構成する必要があります。
 
 1. 上部メニューの **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** をクリックして、Azure AD B2C テナントを含むディレクトリを使っていることを確認します。 テナントが含まれるディレクトリを選択します。 
-2. Azure portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
+2. Azure portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 3. 左側のメニューで、テナントの **[プロパティ]** を選択します。
-2. **[年齢制御]** セクションで、**[構成]** をクリックします。
+2. **[年齢制御]** セクションで、 **[構成]** をクリックします。
 3. 操作が完了するまで待ちます。テナントは年齢制限対応に設定されます。
 
 ## <a name="enable-age-gating-in-your-user-flow"></a>ユーザー フローで年齢制限を有効にする
@@ -102,7 +102,7 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 
 1. 年齢制限が有効になっているユーザー フローを作成します。
 2. ユーザー フローを作成した後、メニューで **[プロパティ]** を選択します。
-3. **[年齢制御]** セクションで、**[有効]** を選択します。
+3. **[年齢制御]** セクションで、 **[有効]** を選択します。
 4. その後、未成年者として識別されたユーザーの管理方法を決定します。 **[Sign-up or sign-in]\(サインアップまたはサインイン\)** では、[`Allow minors to access your application`] または [`Block minors from accessing your application`] を選択します。 未成年者のブロックを選択した場合は、[`Send a JSON back to the application`] または [`Show an error message`] を選択します。 
 
 

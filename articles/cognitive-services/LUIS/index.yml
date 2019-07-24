@@ -105,9 +105,9 @@ sections:
         className: cardsD
         items:
           - title: REST API v2
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092356"> エンドポイント API</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2092087"> 作成 API</a></p>'
+            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092356"> エンドポイント API</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2092087"> オーサリング API</a></p>'
           - title: SDK
-            html: '<p><a href="https://aka.ms/luis-endpoint-sdk"> .NET エンドポイント SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET 作成 SDK</a></p>'
+            html: '<p><a href="https://aka.ms/luis-endpoint-sdk"> .NET エンドポイント SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET オーサリング SDK</a></p>'
           - title: PowerShell
             html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
           - title: CLI

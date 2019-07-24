@@ -10,18 +10,18 @@ reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e91c6fb4949a4902194bb95f98e49327434cdbfd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 250dd691c3ef3146d6768123de52bf0628b10e42
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244107"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66728959"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>C# を使用して Azure Time Series Insights GA 環境からデータを照会する
 
-この C# サンプルでは、Azure Time Series Insights GA 環境からデータを照会する方法について説明します。 
+この C# サンプルでは、Azure Time Series Insights GA 環境からデータを照会する方法について説明します。
 
 このサンプルでは、クエリ API の基本的な使用例をいくつか示します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "66244107"
 1. Web ソケット要求の例としては、関心のある環境のイベント集計データを要求します。 可用性の時間範囲全体のデータを要求します。
 
 > [!NOTE]
-> このコード例は [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample) にあります。
+> このコード例は [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) にあります。
 
 ## <a name="project-dependencies"></a>プロジェクト依存関係
 

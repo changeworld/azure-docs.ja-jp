@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963176"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
@@ -56,11 +56,11 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 はい。 シングル サインオンにこのアプリケーション インスタンスを既に使用していて、最新の修正プログラムを含めるように既存のプロビジョニング ジョブを移行する必要がある場合は、次の手順に従います。 この手順では、Microsoft Graph API および Microsoft Graph API エクスプローラーを使用して、既存の SCIM のアプリから古いプロビジョニング ジョブを削除し、新しい動作を使用する新しいジョブを作成する方法について説明します。
 
 > [!NOTE]
-> アプリケーションがまだ開発段階で、シングル サインオンまたはユーザー プロビジョニングのどちらかにまだデプロイされていない場合、最も簡単なソリューションは、Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション]** セクションでアプリケーション エントリを削除し、**[アプリケーションの作成] > [Non-gallery]\(ギャラリー以外\)** オプションを使用して、アプリケーションの新しいエントリを単に追加します。 これは、次に示す手順を行う代わりになるものです。
+> アプリケーションがまだ開発段階で、シングル サインオンまたはユーザー プロビジョニングのどちらかにまだデプロイされていない場合、最も簡単なソリューションは、Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション]** セクションでアプリケーション エントリを削除し、 **[アプリケーションの作成] > [Non-gallery]\(ギャラリー以外\)** オプションを使用して、アプリケーションの新しいエントリを単に追加します。 これは、次に示す手順を行う代わりになるものです。
  
-1. Azure portal (https://portal.azure.com) にサインインします。
+1. Azure portal (https://portal.azure.com ) にサインインします。
 2. Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション]** セクションで、既存の SCIM アプリケーションを検索して選択します。
-3. 既存 SCIM アプリの **[プロパティ]** セクションで、**[オブジェクト ID]** をコピーします。
+3. 既存 SCIM アプリの **[プロパティ]** セクションで、 **[オブジェクト ID]** をコピーします。
 4. 新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
 5. Graph エクスプローラーで次のコマンドを実行して、プロビジョニング ジョブの ID を確認します。 "[object-id]" を、手順 3 でコピーしたサービス プリンシパル ID (オブジェクト ID) に置き換えます。
  
@@ -98,9 +98,9 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 はい。 修正よりも前に存在していた古い動作用にアプリケーションをコード化していて、その新しいインスタンスをデプロイする必要がある場合は、次の手順に従います。 この手順では、Microsoft Graph API および Microsoft Graph API エクスプローラーを使用して、古い動作を使用する SCIM プロビジョニング ジョブを作成する方法について説明します。
  
-1. Azure portal (https://portal.azure.com) にサインインします。
+1. Azure portal (https://portal.azure.com ) にサインインします。
 2. Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション] > [アプリケーションの作成]** セクションで、**ギャラリー以外の**新しいアプリケーションを作成します。
-3. 新しいカスタム アプリの **[プロパティ]** セクションで、**[オブジェクト ID]** をコピーします。
+3. 新しいカスタム アプリの **[プロパティ]** セクションで、 **[オブジェクト ID]** をコピーします。
 4. 新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
 5. Graph エクスプローラーで次のコマンドを実行して、アプリのプロビジョニング構成を初期化します。
    "[object-id]" を、手順 3 でコピーしたサービス プリンシパル ID (オブジェクト ID) に置き換えます。

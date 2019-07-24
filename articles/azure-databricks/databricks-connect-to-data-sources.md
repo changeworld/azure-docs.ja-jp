@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
 ms.openlocfilehash: f2b7136ec21416e31c2af658974577023a4494de
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997936"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60240342"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Azure Databricks からデータ ソースに接続する
 
@@ -28,7 +28,7 @@ ms.locfileid: "59997936"
 
 次の一覧は、Azure Databricks で使用できる Azure 内のデータ ソースを示しています。 Azure Databricks で使用できるデータ ソースの完全な一覧については、[Azure Databricks のデータ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)に関する記事を参照してください。
 
-- [Azure SQL Database](https://docs.azuredatabricks.net/spark/latest/data-sources/sql-databases.html)
+- [Azure SQL データベース](https://docs.azuredatabricks.net/spark/latest/data-sources/sql-databases.html)
 
     このリンクでは、JDBC を使用して SQL データベースに接続するための DataFrame API と、JDBC インターフェイス経由の読み取りの並列処理を制御する方法を示します。 このトピックでは、Scala API の詳細な使用例の他に、最後に Python と Spark SQL の簡潔な例を示します。
 - [Azure Data Lake Store](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)

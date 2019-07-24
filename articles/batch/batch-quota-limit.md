@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: e33d014bd2dddf0c7310727229f8137c9f181325
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 820eddff7da3bb52ca94ea0cb7e2361d89892a4a
+ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540977"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "65595311"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -34,8 +34,6 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 > [!NOTE]
 > クォータは、容量の保証ではなく、クレジット制限です。 大規模な容量が必要な場合は、Azure サポートにお問い合わせください。
-> 
-> 
 
 ## <a name="resource-quotas"></a>リソース クォータ
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
@@ -62,7 +60,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 | **リソース** | **上限** |
 | --- | --- |
-| [同時実行タスク数](batch-parallel-node-tasks.md)  | ノードのコア数 x 4 |
+| [同時実行タスク数](batch-parallel-node-tasks.md) | ノードのコア数 x 4 |
 | [アプリケーション](batch-application-packages.md) 数 | 20 |
 | アプリケーションあたりのアプリケーション パッケージ数 | 40 |
 | プールあたりのアプリケーション パッケージ数 | 10 |
@@ -84,37 +82,49 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
 
 次の手順を実行し、[Azure Portal][portal] を使用して、Batch アカウントまたはサブスクリプションに対するクォータの引き上げを要求します。 クォータの引き上げの種類は、Batch アカウントのプール割り当てモードによって異なります。 クォータの増加を要求するには、クォータを増やしたい VM シリーズを含める必要があります。 クォータの増加が適用されると、すべてのシリーズの VM に適用されます。
 
-### <a name="increase-a-batch-cores-quota"></a>Batch のコア クォータを増やす 
+### <a name="increase-cores-quota-in-batch"></a>Batch でコアのクォータを増やす 
 
-1. ポータルのダッシュボードで **[ヘルプとサポート]** タイルを選択します。または、ポータルの右上隅にある疑問符 (**[?]**) を選択します。
-1. **[新しいサポート要求]** > **[基本]** の順にクリックします。
+1. ポータルのダッシュボードで **[ヘルプとサポート]** タイルを選択します。または、ポータルの右上隅にある疑問符 ( **[?]** ) を選択します。
+1. **[新しいサポート要求]**  >  **[基本]** の順にクリックします。
 1. **[基本]** で次のようにします。
    
-    a. **[問題の種類]** > **[クォータ]**
+    a. **[問題の種類]**  >  **[サービスとサブスクリプションの制限 (クォータ)]**
    
     b. サブスクリプションを選択します。
    
-    c. **[クォータの種類]** > **バッチ**
-   
-    d. **[サポート プラン]** > **[Quota Support - Included (クォータのサポート - 含む)]**
-   
-    **[次へ]** をクリックします。
-1. **[問題]** で次のようにします。
-   
-    a. [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
-   
-    b. **[詳細]** で、変更する個々のクォータ、Batch アカウント名、および新しい制限値を指定します。
-   
-    **[次へ]** をクリックします。
+    c. **[クォータの種類]**  > **バッチ**
+      
+    **[次へ]** を選択します。
+    
+1. **[Details (詳細)]** には次の項目があります。
+      
+    a. **[詳細の指定]** で、場所、クォータの種類、Batch アカウントを指定します。
+    
+    ![Batch によるクォータの増加][quota_increase]
+
+    クォータの種類には次のものが含まれます。
+
+    * **Batch アカウントあたり**  
+        1 つの Batch アカウントに固有の値。専用コアと優先順位の低いコア、およびジョブとプールの数を含みます。
+        
+    * **リージョンあたり**  
+        リージョン内のすべての Batch アカウントに適用される値。各サブスクリプションのリージョンごとの Batch アカウント数を含みます。
+
+    優先順位の低いクォータは、すべての VM シリーズ全体で 1 つの値です。 制約付き SKU が必要な場合は、 **[優先順位の低いコア]** を選択して、要求する VM ファミリを含める必要があります。
+
+    b. [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
+
+    **[次へ]** を選択します。
+
 1. **[連絡先情報]** で次のようにします。
    
     a. **希望連絡方法**を選択します。
    
     b. 必要な連絡先情報を確認および入力します。
    
-    **[作成]** をクリックしてサポート要求を送信します。
+    **[作成]** を選択してサポート リクエストを送信します。
 
-サポート要求を送信した後は、Azure サポートからの連絡を待ちます。 要求を完了するには最大で 2 営業日かかります。
+サポート要求を送信した後は、Azure サポートからの連絡を待ちます。 クォータ要求の処理が完了するには、数分または最大で 2 営業日かかる場合があります。
 
 ## <a name="related-quotas-for-vm-pools"></a>VM プールの関連クォータ
 
@@ -124,7 +134,7 @@ Azure 仮想ネットワークにデプロイされている仮想マシンの�
 * 1 つの[パブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * 1 つの[ロード バランサー](../load-balancer/load-balancer-overview.md)
 
-これらのリソースは、Batch プールの作成時に提供される仮想ネットワークを含むサブスクリプションで割り当てられます。 これらのリソースは、サブスクリプションの[リソース クォータ](../azure-subscription-service-limits.md)によって制限されます。 仮想ネットワークで大規模なプール デプロイを計画している場合、これらのサブスクリプションのクォータを確認してください。 必要に応じて、**[ヘルプとサポート]** を選択し、Azure portal で増加を要請してください。
+これらのリソースは、Batch プールの作成時に提供される仮想ネットワークを含むサブスクリプションで割り当てられます。 これらのリソースは、サブスクリプションの[リソース クォータ](../azure-subscription-service-limits.md)によって制限されます。 仮想ネットワークで大規模なプール デプロイを計画している場合、これらのサブスクリプションのクォータを確認してください。 必要に応じて、 **[ヘルプとサポート]** を選択し、Azure portal で増加を要請してください。
 
 
 ## <a name="related-topics"></a>関連トピック
@@ -137,3 +147,4 @@ Azure 仮想ネットワークにデプロイされている仮想マシンの�
 [support_sev]: https://aka.ms/supportseverity
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.png
+[quota_increase]: ./media/batch-quota-limit/quota-increase.png

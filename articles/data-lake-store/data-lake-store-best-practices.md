@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 50d0ed644b5afa744e8bce478199079fd4fb7432
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684159"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60878962"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス
 
@@ -45,7 +45,7 @@ Azure Active Directory のサービス プリンシパルは、一般的に Azur
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>Azure のサービス アクセスで Data Lake Storage Gen1 のファイアウォールを有効にする
 
-Data Lake Storage Gen1 には、ファイアウォールを有効にして、アクセスを Azure のサービスに限定するオプションが用意されていおり、外部からの侵入による攻撃ベクトルを小さくするのにおすすめです。 Data Lake Storage Gen1 アカウントのファイアウォールは、Azure Portal の **[ファイアウォール]** > **[ファイアウォールを有効にする] を [オン]** > **[Allow access to Azure services]\(Azure のサービスへのアクセスを許可する\)** のオプションで有効にできます。
+Data Lake Storage Gen1 には、ファイアウォールを有効にして、アクセスを Azure のサービスに限定するオプションが用意されていおり、外部からの侵入による攻撃ベクトルを小さくするのにおすすめです。 Data Lake Storage Gen1 アカウントのファイアウォールは、Azure Portal の **[ファイアウォール]**  >  **[ファイアウォールを有効にする] を [オン]**  >  **[Allow access to Azure services]\(Azure のサービスへのアクセスを許可する\)** のオプションで有効にできます。
 
 ![Data Lake Storage Gen1 のファイアウォール設定](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage Gen1 のファイアウォール設定")
 
@@ -101,7 +101,7 @@ Data Lake Storage Gen1 のデータの回復性のために、HA/DR の要件を
 |  |Distcp  |Azure Data Factory  |AdlCopy  |
 |---------|---------|---------|---------|
 |**スケールの上限**     | ワーカー ノードによる制限あり        | 最大クラウド データ移動単位による上限あり        | 分析単位による制限あり        |
-|**デルタのコピーをサポートする**     |   はい      | いいえ          | いいえ          |
+|**デルタのコピーをサポートする**     |   はい      | いいえ         | いいえ         |
 |**オーケストレーションが組み込まれている**     |  いいえ (Oozie Airflow または cron ジョブを使用)       | はい        | いいえ (Azure Automation または Windows タスク スケジューラを使用)         |
 |**サポートされるファイル形式**     | ADL、HDFS、WASB、S3、GS、CFS        |多数あり、[コネクタ](../data-factory/connector-azure-blob-storage.md)を参照。         | ADL から ADL、WASB から ADN (同じリージョンのみ)        |
 |**OS のサポート**     |Hadoop を実行しているすべての OS         | 該当なし          | Windows 10         |
@@ -136,7 +136,7 @@ Data Lake Storage Gen1 から検索可能なログへのログを取得する最
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>HDInsight でデバッグ レベルのログ記録を有効する
 
-Data Lake Storage Gen1 のログ配布が有効になっていない場合、Azure HDInsight には log4j を介して [Data Lake Storage Gen1 のクライアント側のログ記録](data-lake-store-performance-tuning-mapreduce.md)を有効にできます。 **[Ambari]** > **[YARN]** > **[Config]\(構成\)** > **[Advanced yarn-log4j configurations]\(高度な yarn-log4j 構成\)** で次のプロパティを設定する必要があります。
+Data Lake Storage Gen1 のログ配布が有効になっていない場合、Azure HDInsight には log4j を介して [Data Lake Storage Gen1 のクライアント側のログ記録](data-lake-store-performance-tuning-mapreduce.md)を有効にできます。 **[Ambari]**  >  **[YARN]**  >  **[Config]\(構成\)**  >  **[Advanced yarn-log4j configurations]\(高度な yarn-log4j 構成\)** で次のプロパティを設定する必要があります。
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
@@ -166,7 +166,7 @@ IoT のワークロードでは、データ ストアにランディングでき
 
 バッチ処理で一般的に使用される基本的な方法は、"in" フォルダーにデータをランディングする方法です。 次に、データが処理されると、ダウンストリームのプロセスが消費できるように、新しいデータが "out" フォルダーに入ります。 このディレクトリ構造は、個々のファイルで処理が必要なプロセスで、大規模なデータセット上で膨大な並列処理が必要とされない可能性があるジョブで見られます。 前述の推奨される IoT の構造と同様に、優れたディレクトリ構造にはリージョンや主題 (例: 組織、製品/製造業者) など、親レベルのフォルダーがあります。 この構造により、組織全体でデータの安全を確保し、ワークロードのデータをより管理しやすくなります。 さらに、プロセスでより優れた組織、フィルター検索、セキュリティ、自動化を実現するために、構造で日付と時間を考慮します。 日付構造の細分性のレベルは、データがアップロードまたは処理される間隔 (毎時、毎日、毎月など) によって決まります。
 
-ファイルのプロセスがデータの破損や予期しない形式により失敗することがあります。 このようなケースでは、**/bad** フォルダーにファイルを移動してさらに調査すると便利な場合があります。 また、バッチ ジョブはこれらの "*不良*" ファイルのレポート作成や通知を管理し、手動で介入できるようにします。 次のテンプレート構造を考慮してください。
+ファイルのプロセスがデータの破損や予期しない形式により失敗することがあります。 このようなケースでは、 **/bad** フォルダーにファイルを移動してさらに調査すると便利な場合があります。 また、バッチ ジョブはこれらの "*不良*" ファイルのレポート作成や通知を管理し、手動で介入できるようにします。 次のテンプレート構造を考慮してください。
 
     {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
@@ -177,7 +177,7 @@ IoT のワークロードでは、データ ストアにランディングでき
     NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
     NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
 
-Hive や従来の SQL データベースなどのデータベースで直接処理される一般的なバッチ データの場合、出力は既に Hive テーブルまたは外部データベースの別のフォルダーに入るように設定されているため、**/in** フォルダーや **/out** フォルダーは不要です。 たとえば、お客様からの毎日の抽出データはそれぞれのフォルダーにランディングし、Azure Data Factory、Apache Oozie、Apache Airflow などによるオーケストレーションは Hive や Spark の毎日のジョブをトリガーし、データを処理して Hive のテーブルに書き込みます。
+Hive や従来の SQL データベースなどのデータベースで直接処理される一般的なバッチ データの場合、出力は既に Hive テーブルまたは外部データベースの別のフォルダーに入るように設定されているため、 **/in** フォルダーや **/out** フォルダーは不要です。 たとえば、お客様からの毎日の抽出データはそれぞれのフォルダーにランディングし、Azure Data Factory、Apache Oozie、Apache Airflow などによるオーケストレーションは Hive や Spark の毎日のジョブをトリガーし、データを処理して Hive のテーブルに書き込みます。
 
 ## <a name="next-steps"></a>次の手順
 

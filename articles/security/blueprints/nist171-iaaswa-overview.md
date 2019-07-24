@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: b30094e264086f018acbf84144300df46c60ac4e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241325"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60610271"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-nist-sp-800-171"></a>Azure のセキュリティとコンプライアンスのブループリント: NIST SP 800-171 のための IaaS Web アプリケーション
 
@@ -31,7 +31,7 @@ Azure Portal からお客様が構成する Azure Storage 上にソリューシ�
 
 セキュリティ強化のために、このソリューションのすべてのリソースは、Azure Resource Manager を通じてリソース グループとして管理されます。 デプロイされたリソースと Azure Key Vault のキーへのアクセスは､Azure の Active Directory (Azure AD) ロールベースのアクセス制御 (RBAC) を使って制御されます｡ システムの正常性は、Azure Monitor によって監視されます。 どちらの監視サービスについても､お客様はログをキャプチャするよう構成できます。 システム正常性は、使いやすい 1 つのダッシュ ボードに表示されます。
 
-管理要塞ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 *Microsoft では､参照アーキテクチャのサブネットに対する管理とデータ インポート用に VPN または Azure ExpressRoute 接続を構成することを推奨しています。*
+管理踏み台ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 *Microsoft では､参照アーキテクチャのサブネットに対する管理とデータ インポート用に VPN または Azure ExpressRoute 接続を構成することを推奨しています。*
 
 
 ![NIST SP 800-171 のための IaaS Web アプリケーションの参照アーキテクチャ ダイアグラム](images/nist171-iaaswa-architecture.png "NIST SP 800-171 のための IaaS Web アプリケーションの参照アーキテクチャ ダイアグラム")
@@ -39,7 +39,7 @@ Azure Portal からお客様が構成する Azure Storage 上にソリューシ�
 このソリューションでは、次の Azure サービスを使用します。 詳しくは、[deployment architecture](#deployment-architecture)セクションをご覧ください。
 
 - Azure Virtual Machines
-    - (1) 管理/要塞 (Windows Server 2016 Datacenter)
+    - (1) 管理/踏み台 (Windows Server 2016 Datacenter)
     - (2) Active Directory ドメイン コントローラー (Windows Server 2016 Datacenter)
     - (2) SQL Server クラスター ノード (Windows Server 2016 上の SQL Server 2017)
     - (2) Web/IIS (Windows Server 2016 Datacenter)
@@ -70,11 +70,11 @@ Azure Portal からお客様が構成する Azure Storage 上にソリューシ�
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 次のセクションで、デプロイと実装の要素について詳しく説明します。
 
-**要塞ホスト**:要塞ホストは、この環境にデプロイされているリソースへのアクセスに利用できる単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
+**踏み台ホスト**:要塞ホストは、この環境にデプロイされているリソースへのアクセスに利用できる単一エントリ ポイントです。 踏み台ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
 
-このソリューションでは、次の構成を持つドメイン参加済み要塞ホストとして仮想マシンを作成します。
+このソリューションでは、次の構成を持つドメイン参加済み踏み台ホストとして仮想マシンを作成します。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
--   [Azure 診断拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
+-   [Azure Diagnostics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 -   未使用時の仮想マシン リソースの消費を抑えるための[自動シャットダウン ポリシー](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)。
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) の有効化。実行中のオペレーティング システムから分離されている保護された環境で、資格情報とその他のシークレットが実行されるようにします。
@@ -88,7 +88,7 @@ Azure Portal からお客様が構成する Azure Storage 上にソリューシ�
 
 あらゆるサブネットのそれぞれに専用の NSG が 1 つあります。
 - Application Gateway 用 NSG (LBNSG)
-- 要塞ホスト (MGTNSG) 用 NSG (MGTNSG)
+- 踏み台ホスト (MGTNSG) 用 NSG (MGTNSG)
 - プライマリおよびバックアップ ドメイン コントローラー用 NSG (ADNSG)
 - SQL Server とクラウド監視用 NSG (SQLNSG)
 - Web 層用 NSG (WEBNSG)
@@ -129,9 +129,9 @@ Azure の既定では､Azure データセンターとの間のあらゆる通�
 - キーに対して許可される暗号化操作は必要なものに制限されます。
 - このソリューションは Key Vault と連携して､Iaas VM ディスク暗号化キーとシークレットを管理します｡
 
-**更新プログラムの管理**: この参照アーキテクチャの一部としてデプロイされる Windows 仮想マシンは既定で、Windows Update サービスから自動的に更新プログラムを受け取るように構成されています。 このソリューションには、[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)サービスも含まれます。このサービスによって、更新されたデプロイを作成し､必要に応じて仮想マシンにパッチを適用することができます｡
+**更新プログラムの管理**: この参照アーキテクチャの一部としてデプロイされる Windows VM は既定で、Windows Update サービスから自動的に更新プログラムを受信するように構成されています。 このソリューションには、[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)サービスも含まれます。このサービスによって、更新されたデプロイを作成し､必要に応じて仮想マシンにパッチを適用することができます｡
 
-**マルウェア対策**: 仮想マシン用の [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) は、ウイルスやスパイウェアなどの悪意のあるソフトウェアの特定や削除に役立つリアルタイムの保護機能を提供します。 お客様は、既知の悪意のあるまたは望ましくないソフトウェアによって仮想マシンにインストールや実行が試みられたときに生成するアラートを構成できます。
+**マルウェア対策**: VM 用の [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) は、ウイルスやスパイウェアなどの悪意のあるソフトウェアの特定や削除に役立つリアルタイムの保護機能を提供します。 お客様は、既知の悪意のあるまたは望ましくないソフトウェアによって仮想マシンにインストールや実行が試みられたときに生成するアラートを構成できます。
 
 **Azure Security Center**:[Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) を使用すると、お客様はワークロード全体へのセキュリティ ポリシーの一元的な適用と管理、脅威にさらされる状態の制限、攻撃の検出とその対応を行うことができます。 Security Center はまた、Azure サービスの既存の構成にアクセスして、セキュリティ状況の改善とデータの保護に役立つ、構成とサービスに関する推奨事項を提供します。
 
@@ -141,7 +141,7 @@ Security Center では、優先順位の付いたセキュリティ アラート
 
 この参照アーキテクチャではまた、Security Center の [脆弱性評価](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)を利用します｡ 構成後、パートナー エージェント (Qualys など) はパートナーの管理プラットフォームに脆弱性データを報告します。 次に、パートナーの管理プラットフォームは、脆弱性と正常性の監視データを Security Center に送り返します。 お客様はこの情報を利用して、脆弱な VM をすぐに特定することができます｡
 
-**Azure Application Gateway**:このアーキテクチャでは、Web アプリケーション ファイアウォールが構成され、OWASP ルールセットが有効な Application Gateway を使用してセキュリティの脆弱性のリスクを軽減します。 その他の機能には次のものがあります。
+**Azure Application Gateway**:このアーキテクチャでは、Web アプリケーション ファイアウォールが構成され、OWASP ルールセットが有効なアプリケーション ゲートウェイを使用して、セキュリティの脆弱性のリスクを軽減します。 その他の機能には次のものがあります。
 
 - [エンド ツー エンド SSL](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)
 - [SSL オフロード](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-portal)の有効化
@@ -166,7 +166,7 @@ Azure サービスは、システムの正常性だけではなく、システ�
 - **アクティビティ ログ**:[アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)は、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、状態の判断に役立ちます。
 - **診断ログ**:[診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログ、Storage ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。 すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 ユーザーは個々の要件に応じて最大 730 日間の保有期間を設定できます。
 
-**Azure Monitor ログ**: これらのログは、処理、格納、処理、格納、ダッシュボードのレポート化を行うために、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)に統合されます。 データの収集後は、Log Analytics ワークスペース内にデータ型ごとに別にテーブルに編成されます｡ これにより、元のソースに関係なくにすべてのデータをまとめて分析できます。 Security Center は、Azure Monitor ログに統合されます。 お客様は Kusto クエリを使用してセキュリティ イベント データにアクセスして、それを他のサービスからのデータと組み合わせることができます。
+**Azure Monitor ログ**: これらのログは、処理、格納、およびダッシュボードでのレポート表示を行うために、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)に統合されます。 データの収集後は、Log Analytics ワークスペース内にデータ型ごとに別にテーブルに編成されます｡ これにより、元のソースに関係なくにすべてのデータをまとめて分析できます。 Security Center は、Azure Monitor ログに統合されています。 お客様は Kusto クエリを使用してセキュリティ イベント データにアクセスし、それを他のサービスからのデータと組み合わせることができます。
 
 このアーキテクチャの一部として、次の Azure [監視ソリューション](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)が含まれます。
 -   [Active Directory 評価](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment):Active Directory 正常性チェック ソリューションはサーバー環境のリスクと正常性を定期的に評価します。 このソリューションは、デプロイされているサーバー インフラストラクチャに固有の推奨事項を優先順位付きの一覧で提供します。

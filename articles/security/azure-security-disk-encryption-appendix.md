@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2872d106eea56a37c362195e7a3250058336768b
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66118492"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295053"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Azure Disk Encryption に関する付録 
 
@@ -133,15 +133,15 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
   - [実行中の Linux VM で暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。  
 
-### <a name="encrypt-or-decrypt-vm-scale-sets"></a>VM スケール セットを暗号化または暗号化解除する
+### <a name="encrypt-or-decrypt-virtual-machine-scale-sets"></a>仮想マシン スケール セットを暗号化または暗号化解除する
 
 - [実行中の Linux 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
 - [実行中の Windows 仮想マシン スケール セットでディスク暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [ジャンプボックスで Linux VM の VM スケール セットをデプロイし、Linux VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [ジャンプボックスで Linux VM の仮想マシン スケール セットをデプロイし、Linux VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [ジャンプボックスで Windows VM の VM スケール セットをデプロイし、Windows VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [ジャンプボックスで Windows VM の仮想マシン スケール セットをデプロイし、Windows VMSS で暗号化を有効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
 - [実行中の Linux 仮想マシン スケール セットでディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
@@ -175,7 +175,7 @@ Azure Disk Encryption の前提条件に既に精通している場合は、[Azu
 以下のセクションに示すのは、事前に暗号化された Windows VHD を準備し、それを Azure IaaS 内の暗号化された VHD としてデプロイするために必要な情報です。 Azure Site Recovery や Azure 上に新しい Windows VM (VHD) を準備し、それらを起動する際には、これらの情報を使用してください。 VHD を準備してアップロードする方法の詳細については、「[汎用化した VHD をアップロードして Azure で新しい VM を作成する](../virtual-machines/windows/upload-generalized-managed.md)」を参照してください。
 
 ### <a name="update-group-policy-to-allow-non-tpm-for-os-protection"></a>グループ ポリシーを更新して非 TPM で OS を保護できるようにする
-**[ローカル コンピューター ポリシー]** > **[コンピューターの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** の下にある、**[BitLocker ドライブ暗号化]** という BitLocker グループ ポリシー設定を構成します。 以下の図に示すように、**[オペレーティング システムのドライブ]** > **[スタートアップ時に追加の認証を要求する]** > **[互換性のある TPM が装備されていない BitLocker を許可する]** の順に選択して、この設定を変更します。
+**[ローカル コンピューター ポリシー]**  >  **[コンピューターの構成]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]** の下にある、 **[BitLocker ドライブ暗号化]** という BitLocker グループ ポリシー設定を構成します。 以下の図に示すように、 **[オペレーティング システムのドライブ]**  >  **[スタートアップ時に追加の認証を要求する]**  >  **[互換性のある TPM が装備されていない BitLocker を許可する]** の順に選択して、この設定を変更します。
 
 ![Azure での Microsoft マルウェア対策](./media/azure-security-disk-encryption/disk-encryption-fig8.png)
 
@@ -206,7 +206,7 @@ OS のパーティションを圧縮して、BitLocker 用にコンピュータ�
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>OS ディスクを暗号化するための前提条件
 
-* VM は、「[Azure Disk Encryption に関する FAQ](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)」に記載されている OS ディスクの暗号化と互換性のあるディストリビューションを使っている必要があります。 
+* VM は、[Azure Disk Encryption でサポートされているオペレーティング システムに関するページ記載されている OS ディスクの暗号化と互換性のあるディストリビューションを使っている必要があります。Linux](azure-security-disk-encryption-prerequisites.md#linux) 
 * VM は、Azure Resource Manager で Marketplace イメージから作成する必要があります。
 * 少なくとも 4 GB の RAM を持つAzure VM (推奨するサイズは 7 GB)。
 * (RHEL と CentOS については) SELinux を無効にします。 SELinux を無効にする方法については、 VM で「[SELinux User's and Administrator's Guide (SELinux ユーザーおよび管理者用ガイド)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)」の「4.4.2. Disabling SELinux (SELinux の無効化)」をご覧ください。
@@ -382,7 +382,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
 ### <a name="bkmk_openSUSE"></a>  openSUSE 13.2
 ディストリビューションのインストール時に暗号化を構成するには、次の手順を行います。
-1. ディスクをパーティション分割するときに、**[ボリューム グループの暗号化]** を選択し、パスワードを入力します。 これは、キー コンテナーにアップロードするパスワードです。
+1. ディスクをパーティション分割するときに、 **[ボリューム グループの暗号化]** を選択し、パスワードを入力します。 これは、キー コンテナーにアップロードするパスワードです。
 
    ![openSUSE 13.2 のセットアップ - ボリューム グループの暗号化](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 

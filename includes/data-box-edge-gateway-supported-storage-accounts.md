@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: alkohli
 ms.openlocfilehash: 6172570ad541dee10473d222f79fc1ba1ce19dea
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66161024"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181621"
 ---
 デバイスでサポートされるストレージ アカウントの一覧を次に示します。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b7968de8ad4357241eb8d86d51e991f4bbab959d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882074"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65601579"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -63,7 +63,7 @@ Log Analytics エージェントに加えて、ワイヤ データ ソリュー�
 | Windows エージェント | はい | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [Windows の Log Analytics エージェント](../../azure-monitor/platform/agent-windows.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)」を参照してください。 |
 | Linux エージェント | はい | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [Linux の Log Analytics エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)」を参照してください。 |
 | System Center Operations Manager 管理グループ | はい | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Azure Monitor への直接接続が必要です。 |
-| Azure ストレージ アカウント | いいえ  | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
+| Azure ストレージ アカウント | いいえ | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
 Windows では、データの収集と送信のために System Center Operations Manager と Azure Monitor の両方で Microsoft Monitoring Agent (MMA) が使用されます。 状況に応じて、このエージェントは System Center Operations Manager エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます。 System Center Operations Manager と Azure Monitor では、MMA バージョンが少し異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Azure Monitor、またはその両方にレポートできます。
 
@@ -356,7 +356,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="using-the-wire-data-20-solution"></a>Wire Data 2.0 ソリューションの使用
 
-Azure Portal の Log Analytics ワークスペースの **[概要]** ページで、**[Wire Data 2.0]** タイルをクリックし、Wire Data ダッシュボードを開きます。 ダッシュボードには、次の表に示したブレードが存在します。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 すべてのレコードを返すログ検索を実行するには、ブレードの一番下にある **[すべて表示]** をクリックするか、ブレード ヘッダーをクリックします。
+Azure Portal の Log Analytics ワークスペースの **[概要]** ページで、 **[Wire Data 2.0]** タイルをクリックし、Wire Data ダッシュボードを開きます。 ダッシュボードには、次の表に示したブレードが存在します。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 すべてのレコードを返すログ検索を実行するには、ブレードの一番下にある **[すべて表示]** をクリックするか、ブレード ヘッダーをクリックします。
 
 | **ブレード** | **説明** |
 | --- | --- |
@@ -370,7 +370,7 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 
 ![ログ検索例](./media/wire-data/log-search-example01.png)
 
-同様に、**[ローカル サブネット]** ブレードを使用して、サブネットを通過しているネットワーク トラフィックの量を確認することができます。 ユーザーは、多くの場合、アプリケーションにとって重要な領域の周辺にサブネットを定義します。 このブレードによって、これらの領域へのビューが提供されます。
+同様に、 **[ローカル サブネット]** ブレードを使用して、サブネットを通過しているネットワーク トラフィックの量を確認することができます。 ユーザーは、多くの場合、アプリケーションにとって重要な領域の周辺にサブネットを定義します。 このブレードによって、これらの領域へのビューが提供されます。
 
 ![ログ検索例](./media/wire-data/log-search-example02.png)
 
@@ -400,7 +400,7 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 | Direction | 受信または送信 |
 | MaliciousIP | 既知の悪意のある発信元の IP アドレス |
 | Severity | 疑いのあるマルウェアの重大度 |
-| RemoteIPCountry | リモート IP アドレスの国 |
+| RemoteIPCountry | リモート IP アドレスの国や地域 |
 | ManagementGroupName | Operations Manager 管理グループの名前 |
 | SourceSystem | データが収集されたソース |
 | SessionStartTime | セッションの開始時刻 |

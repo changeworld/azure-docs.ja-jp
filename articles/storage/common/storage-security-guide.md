@@ -9,18 +9,18 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 48ebbabca8d38db3a7c1344981f79991de29df80
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 3d5bfa2426d58fa5a09d2203272536eec7fa9c55
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154395"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65789955"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。
 
-- Azure Storage に書き込まれるすべてのデータは、[Storage Service Encryption (SSE)](storage-service-encryption.md) を使用して自動的に暗号化されます。 詳しくは、「[Announcing Default Encryption for Azure Blobs, Files, Table and Queue Storage (Azure Blob、Files、Table、Queue Storage 用の既定の暗号化の発表)](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)」をご覧ください。
+- Azure Storage に書き込まれるすべてのデータ (メタデータを含む) は、[Storage Service Encryption (SSE)](storage-service-encryption.md) を使用して自動的に暗号化されます。 詳しくは、「[Announcing Default Encryption for Azure Blobs, Files, Table and Queue Storage (Azure Blob、Files、Table、Queue Storage 用の既定の暗号化の発表)](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)」をご覧ください。
 - Azure Active Directory (Azure AD) とロールベースのアクセス制御 (RBAC) は、Azure Storage のリソース管理操作とデータ操作の両方でサポートされます。   
     - ストレージ アカウントを対象とする RBAC ロールをセキュリティ プリンシパルに割り当て、Azure AD を使用して、キー管理などのリソース管理操作を承認できます。
     - Azure AD の統合は、BLOB およびキュー データ操作でサポートされています。 サブスクリプション、リソース グループ、ストレージ アカウント、または個々のコンテナーやキューを対象とする RBAC ロールをセキュリティ プリンシパルまたは Azure リソースのマネージド ID に割り当てることができます。 詳細については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](storage-auth-aad.md)」を参照してください。   
@@ -238,10 +238,9 @@ Shared Access Signature と Stored Access Policy の詳しい使用方法と例�
     この記事では、BLOB、キュー メッセージ、テーブルの範囲、ファイルにサービスレベルの SAS を使用する例を紹介しています。
   * [Constructing a service SAS (サービス SAS の構築)](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Constructing an account SAS (アカウント SAS の構築)](https://msdn.microsoft.com/library/mt584140.aspx)
-* .NET クライアント ライブラリを使用して Shared Access Signature と Stored Access Policy を作成する方法のチュートリアルです。
 
+* これは、.NET クライアント ライブラリを使用して Shared Access Signature と Stored Access Policy を作成する方法のチュートリアルです。
   * [Shared Access Signatures (SAS) の使用](../storage-dotnet-shared-access-signature-part-1.md)
-  * [Shared Access Signature、パート 2: BLOB サービスによる SAS の作成および使用](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
     この記事には、SAS モデルの説明、Shared Access Signature の例、Shared Access Signature のベスト プラクティスの使用の推奨が含まれています。 また、付与されたアクセス許可の無効化についても説明しています。
 

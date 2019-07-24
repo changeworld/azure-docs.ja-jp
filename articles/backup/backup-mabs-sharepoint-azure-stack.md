@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
 ms.openlocfilehash: a52f42fb194d2f39861a57c95a664ad57b4f91d1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895874"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60500767"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Azure Stack 上の SharePoint ファームのバックアップ
 Microsoft Azure Backup Server (MABS) を使用して Azure Stack 上の SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。 Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。 また、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期リテンション期間のためには Azure にコピーできます。
@@ -72,7 +72,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
 2. **新しい保護グループの作成**ウィザードの **[保護グループの種類の選択]** ページで **[サーバー]** を選択し、 **[次へ]** をクリックします。
 
     ![保護グループの種類の選択](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
-3. **[グループ メンバーの選択]** 画面で、保護する SharePoint サーバーのチェック ボックスをオンにして、**[次へ]** をクリックします。
+3. **[グループ メンバーの選択]** 画面で、保護する SharePoint サーバーのチェック ボックスをオンにして、 **[次へ]** をクリックします。
 
     ![グループ メンバーの選択](./media/backup-azure-backup-sharepoint/select-group-members2.png)
 
@@ -108,10 +108,10 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
 8. MABS はレプリカに対して整合性チェックを実行することにより、データの整合性を保証します。 次の 2 つのオプションを使用できます。 整合性チェックを実行するスケジュールを定義することも、レプリカが不整合になった場合に必ず DPM に自動的にレプリカの整合性チェックを実行させることもできます。 適切なオプションを選択し、 **[次へ]** をクリックします。
 
     ![整合性チェック](./media/backup-azure-backup-sharepoint/consistency-check.png)
-9. **[オンライン保護するデータの指定]** ページで、保護する SharePoint ファームを選択し、**[次へ]** をクリックします。
+9. **[オンライン保護するデータの指定]** ページで、保護する SharePoint ファームを選択し、 **[次へ]** をクリックします。
 
     ![DPM の SharePoint 保護 1](./media/backup-azure-backup-sharepoint/select-online-protection1.png)
-10. **[オンライン バックアップ スケジュールの指定]** ページで、適切なスケジュールを選択して、**[次へ]** をクリックします。
+10. **[オンライン バックアップ スケジュールの指定]** ページで、適切なスケジュールを選択して、 **[次へ]** をクリックします。
 
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
@@ -130,7 +130,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
 12. ディスクと同様に、Azure でも最初の参照ポイント レプリカを作成する必要があります。 Azure に対する初期バックアップ コピーの適切な作成オプションを選択して、 **[次へ]** をクリックします。
 
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
-13. **[概要]** ページで選択した設定を確認し、**[グループの作成]** をクリックします。 保護グループが作成されると、成功メッセージが表示されます。
+13. **[概要]** ページで選択した設定を確認し、 **[グループの作成]** をクリックします。 保護グループが作成されると、成功メッセージが表示されます。
 
     ![まとめ](./media/backup-azure-backup-sharepoint/summary.png)
 
@@ -147,7 +147,7 @@ MABS を使用して SharePoint を保護する前に、**ConfigureSharePoint.ex
 3. 回復ポイントの範囲内でワイルドカード ベースの検索を使用して、SharePoint で *Recovering SharePoint item* を検索できます。
 
     ![MABS の SharePoint 保護 6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
-4. 検索結果から適切な回復ポイントを選択し、アイテムを右クリックして、**[回復]** を選択します。
+4. 検索結果から適切な回復ポイントを選択し、アイテムを右クリックして、 **[回復]** を選択します。
 5. さまざまな回復ポイントを参照して、回復するデータベースまたはアイテムを選択できます。 **日付、回復時刻**の順に選択した後、正しい**データベース、SharePoint ファーム、回復ポイント、アイテム**を順番に選択します。
 
     ![MABS の SharePoint 保護 7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)

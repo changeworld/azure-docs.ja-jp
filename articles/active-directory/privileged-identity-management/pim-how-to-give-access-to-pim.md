@@ -15,11 +15,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb22e3cc93baebac023c0148812c6a4c6c95be60
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489212"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60288613"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-pim"></a>PIM を管理する他の管理者にアクセス権を付与する
 
@@ -52,7 +52,7 @@ ms.locfileid: "59489212"
 
     ![特権ロール管理者 - メンバーの選択](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
 
-1. メンバーを選択し、**[選択]** をクリックします。
+1. メンバーを選択し、 **[選択]** をクリックします。
 
 1. **[OK]** をクリックして、メンバーを **特権ロール管理者**ロールの対象にします。
 
@@ -60,7 +60,7 @@ ms.locfileid: "59489212"
 
 1. メンバーを固定するには、特権ロール管理者メンバーの一覧でユーザーをクリックします。
 
-1. **[詳細]** をクリックし、**[永続化]** をクリックして、割り当てを永続化します。
+1. **[詳細]** をクリックし、 **[永続化]** をクリックして、割り当てを永続化します。
 
     ![特権ロール管理者 - 永続化](./media/pim-how-to-give-access-to-pim/pim-pra-make-permanent.png)
 
@@ -80,11 +80,11 @@ ms.locfileid: "59489212"
 
 1. **[特権ロール管理者]** ロールをクリックして、メンバー ページを開きます。
 
-1. 削除するユーザーの横にチェックマークを追加した後、**[メンバーの削除]** をクリックします。
+1. 削除するユーザーの横にチェックマークを追加した後、 **[メンバーの削除]** をクリックします。
 
     ![特権ロール管理者 - メンバーの削除](./media/pim-how-to-give-access-to-pim/pim-pra-remove-member.png)
 
-1. ロールからメンバーを削除するかどうかを確認するメッセージが表示されたら、**[はい]** をクリックします。
+1. ロールからメンバーを削除するかどうかを確認するメッセージが表示されたら、 **[はい]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

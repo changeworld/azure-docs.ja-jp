@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 07/02/2019
 ms.author: raynew
-ms.openlocfilehash: 2267a4e836fe1aff214f40e34afa830de50fa2d5
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: e395b10d9a99fdb454f3f02c7027e7acff64b434
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471647"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508184"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 [Azure Backup サービス](backup-overview.md)を使用すると、オンプレミスのコンピューターとワークロード、および Azure 仮想マシン (VM) をバックアップできます。 この記事では、Azure Backup を使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
@@ -40,7 +40,7 @@ Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル�
 
 **アクション** | **サポート**
 --- | ---
-Windows Azure VM の作成時にバックアップを有効にする | サポート対象:Windows Server 2019 (Datacenter/Datacenter Core)、Windows Server 2016 (Datacenter/Datacenter Core); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (RTM および SP1)
+Windows Azure VM の作成時にバックアップを有効にする | サポート対象: <br/><br/> - Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM および SP1 Standard)
 Linux VM の作成時にバックアップを有効にする | サポート対象:<br/><br/> - Ubuntu Server: 18.04、17.10、17.04、16.04 (LTS)、14.04 (LTS)<br/><br/> - Red Hat: RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4、12 SP2、12 SP3、15 <br/><br/> - Debian: 8、9<br/><br/> - CentOS: 6.9、7.3<br/><br/> - Oracle Linux:6.7、6.8、6.9、7.2、7.3
 シャットダウン状態/オフライン状態の VM をバックアップする | サポートされています。<br/><br/> スナップショットは、アプリ整合性ではなく、クラッシュ整合性のみです。
 マネージド ディスクへの移行後にディスクをバックアップする | サポートされています。<br/><br/> バックアップは引き続き機能します。 操作は必要ありません。
@@ -54,6 +54,8 @@ VM のバックアップ ポリシーを変更する | サポートされてい�
 毎月/毎年のバックアップ   | Azure VM 拡張機能を使用してバックアップする場合、サポートされません。 毎日および毎週のみサポートされます。<br/><br/> 毎月/毎年のリテンション期間の間、毎日/毎週のバックアップを保持するようにポリシーを設定できます。
 クロックの自動調整 | サポートされていません。<br/><br/> Azure Backup では、VM をバックアップするとき、夏時間変更に合わせた自動調整は行われません。<br/><br/>  必要に応じて手動でポリシーを変更してください。
 [ハイブリッド バックアップのセキュリティ機能](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |  セキュリティ機能の無効化はサポートされていません。
+コンピューター時間が変更された VM をバックアップする | サポートされていません。<br/><br/> その VM のバックアップを有効にした後にコンピューター時間が将来の日付/時刻に変更されている場合。ただし、時間の変更が元に戻された場合でも、バックアップの成功は保証されません。  
+
 
 ## <a name="operating-system-support-windows"></a>オペレーティング システムのサポート (Windows)
 
@@ -61,7 +63,7 @@ Windows Azure VM をバックアップする場合にサポートされるオペ
 
 **シナリオ** | **OS のサポート**
 --- | ---
-Azure VM エージェント拡張機能を使用したバックアップ | Windows クライアント: サポートされていません<br/><br/> Windows Server 2019 (Datacenter/Datacenter Core)、Windows Server 2016 (Datacenter/Datacenter Core); Windows Server 2012 R2 Datacenter; Windows Server 2008 R2 (RTM および SP1)
+Azure VM エージェント拡張機能を使用したバックアップ | Windows クライアント: サポートされていません<br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM および SP1 Standard)
 MARS エージェントを使用したバックアップ | [サポートされている](backup-support-matrix-mars-agent.md#support-for-direct-backups)オペレーティング システム。
 DPM/MABS を使用したバックアップ | [MABS](backup-mabs-protection-matrix.md) および [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807) を使用したバックアップでサポートされるオペレーティング システム。
 
@@ -146,7 +148,7 @@ VM サイズ |   少なくとも 2 つの CPU コアと 1 GB の RAM を備え�
 [可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview)で VM をバックアップする |  サポートされていません。
 [Hybrid Use Benefit (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) を使用してデプロイ済みの VM をバックアップする | サポートされています。
 [スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)でデプロイ済みの VM をバックアップする |  サポートされていません。
-[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images) からデプロイ済みの VM をバックアップする<br/><br/> (Microsoft、サード パーティによって公開) |  サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。
+[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images) からデプロイ済みの VM をバックアップする<br/><br/> (Microsoft、サード パーティによって公開) |  サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。 VM としてバックアップされた Azure Marketplace VM は、購入情報が必要ですがディスクとしてのものに限られるため、復元しません。
 カスタム イメージ (サード パーティ) からデプロイ済みの VM をバックアップする |   サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。
 Azure に移行済みの VM をバックアップする  | サポートされています。<br/><br/> VM をバックアップするには、移行済みマシンに VM エージェントをインストールする必要があります。
 マルチ VM 整合性をバックアップする | Azure Backup では、複数の VM 間でデータとアプリケーションに整合性はありません。
@@ -162,7 +164,7 @@ Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを
 ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。 <br/><br/> Standard SSD は、コンテナーが最新バージョンの Azure VM バックアップ (別名: インスタント リストア) にアップグレードされている場合にサポートされます。 [詳細情報](backup-instant-restore-capability.md)。
 マネージド ディスク | サポートされています。
 暗号化されたディスク | サポートされています。<br/><br/> Azure Disk Encryption が有効になっている Azure VM を (Azure AD アプリを使用して、または使用せずに) バックアップできます。<br/><br/> 暗号化された VM は、ファイル/フォルダー レベルでは復旧できません。 VM 全体を復旧する必要があります。<br/><br/> Azure Backup によって既に保護されている VM で暗号化を有効にできます。
-書き込みアクセラレータが有効になっているディスク | サポートされていません。<br/><br/> 最新バージョンの Azure VM バックアップ (別名、[インスタント リストア](backup-instant-restore-capability.md)) を実行している場合、書き込みアクセラレータが有効になっているディスクをバックアップから除外できます。
+書き込みアクセラレータが有効になっているディスク | サポートされていません。<br/><br/> Azure Backup は、バックアップ中に書き込みアクセラレータが有効になっているディスクを自動的に除外します。 これらはバックアップされないため、VM の復旧ポイントからこれらのディスクを復元することはできません。
 重複除去されたディスクをバックアップする | サポートされていません。
 保護された VM にディスクを追加する | サポートされています。
 保護された VM でディスクのサイズを変更する | サポートされています。

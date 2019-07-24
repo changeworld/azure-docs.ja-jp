@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 7eecd3908883b195b52755d03e70872afe9180bb
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105736"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SendGrid で電子メールの送信とメーリング リストの管理を行う
 
@@ -51,18 +51,18 @@ Azure Logic Apps と SendGrid コネクタを使用すると、電子メール�
 
 1. 以下からパスを選択します。 
 
-   * アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+   * アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
 
      または
 
    * アクションを追加するステップの間で、ステップ間の矢印の上にポインターを移動します。 
-   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
+   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
 1. 検索ボックスに、フィルターとして「sendgrid」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
 1. 接続の名前を指定します。 
 
-1. SendGrid API キーを入力し、**[作成]** を選択します。
+1. SendGrid API キーを入力し、 **[作成]** を選択します。
 
 1. 選択したアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 

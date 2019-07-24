@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
 ms.openlocfilehash: 5f7f9641e8fc7cd4c0e8dd153b350b9dd876b004
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168692"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62115433"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-uk-nhs"></a>Azure のセキュリティとコンプライアンスのブループリント:UK NHS のための IaaS Web アプリケーション
 
@@ -31,14 +31,14 @@ ms.locfileid: "58168692"
 
 セキュリティ強化のために、このソリューションのすべてのリソースは、Azure Resource Manager を通じてリソース グループとして管理されます。 デプロイされたリソースへのアクセス (Azure Key Vault 内のキーへのアクセスを含む) を制御するために、Azure Active Directory のロールベースのアクセス制御が使用されます。 システムの正常性は、Azure Security Center と Azure Monitor によって監視されます。 お客様が両方の監視サービスを構成してログをキャプチャし、簡単にナビゲートできる単一のダッシュボードにシステムの正常性を表示できます。 Azure Application Gateway は防止モードのファイアウォールとして構成され、TLSv1.2 以外のトラフィックを許可しません。
 
-管理要塞ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 **Microsoft では、参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています。**
+管理踏み台ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 **Microsoft では、参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています。**
 
 ![UK NHS のための IaaS Web アプリケーションの参照アーキテクチャ図](images/uknhs-iaaswa-architecture.png?raw=true "UK NHS のための IaaS Web アプリケーションの参照アーキテクチャ図")
 
 このソリューションでは、次の Azure サービスを使用します。 デプロイ アーキテクチャについて詳しくは、「[デプロイ アーキテクチャ](#deployment-architecture)」セクションをご覧ください。
 
 - Azure Virtual Machines
-    - (1) 管理/要塞 (Windows Server 2016 Datacenter)
+    - (1) 管理/踏み台 (Windows Server 2016 Datacenter)
     - (2) Active Directory ドメイン コントローラー (Windows Server 2016 Datacenter)
     - (2) SQL Server クラスター ノード (Windows Server 2016 上の SQL Server 2017)
     - (2) Web/IIS (Windows Server 2016 Datacenter)
@@ -71,11 +71,11 @@ ms.locfileid: "58168692"
 
 次のセクションで、デプロイと実装の要素について詳しく説明します。
 
-**要塞ホスト**:要塞ホストは、この環境にデプロイされたリソースへのユーザーのアクセスを許可する単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
+**踏み台ホスト**:要塞ホストは、この環境にデプロイされたリソースへのユーザーのアクセスを許可する単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
 
-このソリューションでは、次の構成を持つドメイン参加済み要塞ホストとして仮想マシンを作成します。
+このソリューションでは、次の構成を持つドメイン参加済み踏み台ホストとして仮想マシンを作成します。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
--   [Azure 診断拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
+-   [Azure Diagnostics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure ディスクの暗号化](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 -   未使用時の仮想マシン リソースの消費を抑えるための[自動シャットダウン ポリシー](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) の有効化。実行中のオペレーティング システムから分離されている保護された環境で、資格情報とその他のシークレットが実行されるようにします。
@@ -90,7 +90,7 @@ ms.locfileid: "58168692"
 
 各サブネットには、専用のネットワーク セキュリティ グループがあります。
 - Application Gateway 用の 1 つのネットワーク セキュリティ グループ (LBNSG)
-- 要塞ホスト用の 1 つのネットワーク セキュリティ グループ (MGTNSG)
+- 踏み台ホスト用の 1 つのネットワーク セキュリティ グループ (MGTNSG)
 - プライマリおよびバックアップ ドメイン コントローラー用の 1 つのネットワーク セキュリティ グループ (ADNSG)
 - SQL Server とクラウド監視用の 1 つのネットワーク セキュリティ グループ (SQLNSG)
 - Web 層用の 1 つのネットワーク セキュリティ グループ (WEBNSG)

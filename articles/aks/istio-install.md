@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: fc95ce4aad4e8597b02b9c862be33bfcf6185541
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 33d86ab8c88b45c7787620773f0df6e7fe888cf3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65850411"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
@@ -148,7 +148,7 @@ echo "source ~/completions/istioctl.bash" >> ~/.bashrc
 
 次は [Istio CRD を AKS にインストールする](#install-the-istio-crds-on-aks)セクションに進みます。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 Windows で **Powershell** ベースのシェルで Istio `istioctl` クライアント バイナリをインストールするには、次のコマンドを使用します。 これらのコマンドによって、Istio フォルダーに `istioctl` クライアント バイナリがコピーされ、永続的に `PATH` 経由で利用できるようになります。 これらのコマンドの実行には昇格された特権(管理者)は必要ありません。
 
@@ -237,7 +237,7 @@ data:
 EOF
 ```
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
 ```powershell
 $GRAFANA_USERNAME=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("grafana"))
@@ -281,7 +281,7 @@ data:
 EOF
 ```
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
 ```powershell
 $KIALI_USERNAME=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("kiali"))
@@ -536,6 +536,9 @@ Istio のインストール オプションと構成オプションを他にも�
 
 [Istio Bookinfo Application 例][istio-bookinfo-example]を使用した追加のシナリオに沿って勧めることもできます。
 
+Application Insights と Istio を使用して AKS アプリケーションを監視する方法については、次の Azure Monitor のドキュメントを参照してください。
+- [Kubernetes でホストされるアプリケーションに対するゼロ インストルメンテーション アプリケーション監視][app-insights]
+
 <!-- LINKS - external -->
 [istio]: https://istio.io
 [helm]: https://helm.sh
@@ -561,6 +564,8 @@ Istio のインストール オプションと構成オプションを他にも�
 [prometheus]: https://prometheus.io/
 [jaeger]: https://www.jaegertracing.io/
 [kiali]: https://www.kiali.io/
+
+[app-insights]: https://docs.microsoft.com/azure/azure-monitor/app/kubernetes
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

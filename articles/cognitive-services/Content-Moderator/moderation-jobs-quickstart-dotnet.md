@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
 ms.openlocfilehash: 24d5483cf3b418cada3c5b7f03eedbff13cc36d6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757040"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62113870"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>モデレーション ジョブを定義して使用する (.NET)
 
@@ -28,7 +28,7 @@ ms.locfileid: "58757040"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)サイトにサインインするか、アカウントを作成します。
+- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) サイトにサインインするか、アカウントを作成します。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>お使いの API キーで、レビュー作成のためにレビュー API の呼び出しが可能であることを確認してください
 
@@ -133,9 +133,9 @@ public static class Clients
 
 > [!NOTE]
 > TeamName 定数は、Content Moderator サブスクリプションの作成時に使用した名前に設定します。 [Content Moderator Web サイト](https://westus.contentmoderator.cognitive.microsoft.com/)から TeamName を取得します。
-> ログインしたら、**[設定]** (歯車) メニューから **[資格情報]** を選択します。
+> ログインしたら、 **[設定]** (歯車) メニューから **[資格情報]** を選択します。
 >
-> チーム名は、**[API]** セクションの **[Id]** フィールドの値です。
+> チーム名は、 **[API]** セクションの **[Id]** フィールドの値です。
 
 ```csharp
 /// <summary>

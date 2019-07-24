@@ -12,11 +12,11 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551757"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60453619"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -49,17 +49,17 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 ## <a name="add-the-connector"></a>コネクタの追加
 
 > [!IMPORTANT]
-> このコネクタにはトリガーがありません。 含まれているのはアクションだけです。 したがって、ロジック アプリを作成するときは、**[スケジュール - 繰り返し]**、**[要求/応答 - 応答]** など、他のトリガーを追加してロジック アプリを開始します。 
+> このコネクタにはトリガーがありません。 含まれているのはアクションだけです。 したがって、ロジック アプリを作成するときは、 **[スケジュール - 繰り返し]** 、 **[要求/応答 - 応答]** など、他のトリガーを追加してロジック アプリを開始します。 
 
 1. [Azure Portal](https://portal.azure.com) で、空のロジック アプリを作成します。
 
-2. ロジック アプリを開始するときに、**[要求/応答 - 要求]** トリガーを選択します。 
+2. ロジック アプリを開始するときに、 **[要求/応答 - 要求]** トリガーを選択します。 
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
 3. **[保存]** を選択します。 保存すると、要求 URL が自動的に生成されます。 
 
-4. **[新しいステップ]**、**[アクションの追加]** の順に選択します。 「`oracle`」と入力して、使用できるアクションを表示します。 
+4. **[新しいステップ]** 、 **[アクションの追加]** の順に選択します。 「`oracle`」と入力して、使用できるアクションを表示します。 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
@@ -80,12 +80,12 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. ロジック アプリを**保存**して、**[実行]** を選択します。 デザイナーを閉じて、実行履歴で状態を確認します。 失敗した場合は、失敗したことを示すメッセージの行を選択します。 デザイナーが開き、失敗した手順と、エラー情報が表示されます。 成功した場合は、追加した情報が電子メールで通知されます。
+8. ロジック アプリを**保存**して、 **[実行]** を選択します。 デザイナーを閉じて、実行履歴で状態を確認します。 失敗した場合は、失敗したことを示すメッセージの行を選択します。 デザイナーが開き、失敗した手順と、エラー情報が表示されます。 成功した場合は、追加した情報が電子メールで通知されます。
 
 
 ### <a name="workflow-ideas"></a>ワークフローについて
 
-* oracle というハッシュタグを監視し、データベースにツイートを入力して、そのツイートに対してクエリを実行できるようにするほか、他のアプリケーションで使用できるようにします。 ロジック アプリで `Twitter - When a new tweet is posted` トリガーを追加し、**#oracle** ハッシュタグを入力します。 次に、`Oracle Database - Insert row` アクションを追加し、テーブルを選択します。
+* oracle というハッシュタグを監視し、データベースにツイートを入力して、そのツイートに対してクエリを実行できるようにするほか、他のアプリケーションで使用できるようにします。 ロジック アプリで `Twitter - When a new tweet is posted` トリガーを追加し、 **#oracle** ハッシュタグを入力します。 次に、`Oracle Database - Insert row` アクションを追加し、テーブルを選択します。
 
     ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 

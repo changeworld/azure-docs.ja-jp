@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse で T-SQL のループを使う | Microsoft Docs
 description: ソリューションを開発するための、Azure SQL Data Warehouse での T-SQL のループの使用とカーソルの置換に関するヒントです。
 services: sql-data-warehouse
-author: ckarst
+author: XiaoyuL-Preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: cakarst
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 5aa26aeb27d962e6e6289a754ef57b49158b68db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c321bc4e493799a50ada4dd91faf2d2ebdee8aba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456291"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65850469"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>SDL Data Warehouse での T-SQL のループの使用
 ソリューションを開発するための、Azure SQL Data Warehouse での T-SQL のループの使用とカーソルの置換に関するヒントです。
@@ -25,7 +25,7 @@ ms.locfileid: "55456291"
 SQL Data Warehouse は、ステートメント ブロックを繰り返し実行するための [WHILE](/sql/t-sql/language-elements/while-transact-sql) ループをサポートします。 この WHILE ループは、指定された条件が true の場合に限り、またはコードが BREAK キーワードを使用してループを終了するまで実行されます。 ループは、SQL コードで定義されているカーソルを置き換えるために便利です。 また、SQL コードで記述されているほとんどすべてのカーソルは、高速順方向、読み取り専用など豊富です。 そのため、[WHILE] ループはカーソルの置換に対する優れた代替手段です。
 
 ## <a name="replacing-cursors-in-sql-data-warehouse"></a>SQL Data Warehouse でのカーソルの置換
-ただし、始める前に、まず、自分で "このカーソルは、セット ベースの操作を使用して再作成できるか" と問いかけてください。 多くの場合、答えは "はい" であり、この方法が最適です。 セット ベースの操作は、1 行ずつの反復的なアプローチをとるよりも速く実行されます。
+ただし、これを利用する前に次の質問をご検討してください:「セット ベースの操作を使用するよう、このカーソルを書き換えることができますか?」 多くの場合、答えは "はい" であり、この方法が最適です。 セット ベースの操作は、1 行ずつの反復的なアプローチをとるよりも速く実行されます。
 
 高速順方向の読み取り専用カーソルは、ループ構造で簡単に置き換えることができます。 単純な例を次に示します。 このコード例は、データベース内のすべてのテーブルの統計を更新します。 ループ内のテーブルを反復処理することで、各コマンドは順番に実行されます。
 

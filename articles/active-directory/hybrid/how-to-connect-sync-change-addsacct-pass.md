@@ -18,18 +18,18 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196369"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60241585"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>AD DS アカウント パスワードの変更
 AD DS アカウントとは、Azure AD Connect でオンプレミスの Active Directory との通信に使用したユーザー アカウントを指します。 AD DS アカウントのパスワードを変更する場合は、新しいパスワードを使用して Azure AD Connect 同期サービスを更新する必要があります。 それ以外の場合、同期サービスではオンプレミスの Active Directory と正しく同期できなくなり、次のエラーが発生します。
 
 * Synchronization Service Manager で、オンプレミスの AD でのすべてのインポートまたはエクスポートの操作は、**no-start-credensials** エラーとなり、失敗します。
 
-* Windows イベント ビューアーで、アプリケーション イベント ログに、**イベント ID 6000** のエラーと「**資格情報が有効でないため、管理エージェント "contoso.com" は実行できませんでした。**」というメッセージが表示されます。
+* Windows イベント ビューアーで、アプリケーション イベント ログに、**イベント ID 6000** のエラーと「**資格情報が有効でないため、管理エージェント "contoso.com" は実行できませんでした。** 」というメッセージが表示されます。
 
 
 ## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>AD DS アカウントの新しいパスワードで同期サービスを更新する方法
@@ -44,7 +44,7 @@ AD DS アカウントとは、Azure AD Connect でオンプレミスの Active D
 
 4. **[アクション]** の **[プロパティ]** を選択します。
 
-5. ポップアップ ダイアログで、**[Connect to Active Directory Forest (Active Directory フォレストに接続)]** を選択します。
+5. ポップアップ ダイアログで、 **[Connect to Active Directory Forest (Active Directory フォレストに接続)]** を選択します。
 
 6. AD DS アカウントの新しいパスワードを **[パスワード]** テキストボックスに入力します。
 

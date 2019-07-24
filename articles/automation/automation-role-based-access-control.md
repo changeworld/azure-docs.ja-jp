@@ -5,17 +5,17 @@ keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9b2bcdf3d74c6946b8c9f0dacaeabf28d9c76f94
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918792"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477729"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
@@ -232,6 +232,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |オンボード状態の確認 - VM を読み取る      | Microsoft.Compute/virtualMachines/read         | 仮想マシン         |
 |オンボード状態の確認 - アカウントを読み取る      | Microsoft.Automation/automationAccounts/read  |  Automation アカウント   |
 | VM のオンボード ワークスペース確認<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | サブスクリプション         |
+| Log Analytics プロバイダーの登録 |Microsoft.Insights/register/action | サブスクリプション|
 
 <sup>1</sup> VM ポータル エクスペリエンス経由でオンボードするには、このアクセス許可が必要です。
 
@@ -251,6 +252,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |保存した検索条件を作成および編集する     | Microsoft.OperationalInsights/workspaces/write        | ワークスペース        |
 |スコープ構成を作成および編集する     | Microsoft.OperationalInsights/workspaces/write        | ワークスペース        |
 |ソリューションをスコープ構成にリンクする      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | 解決策         |
+| Log Analytics プロバイダーの登録 |Microsoft.Insights/register/action | サブスクリプション|
 |**手順 2 - 複数の VM のオンボード**     |         |         |
 |VMOnboarding ブレード - MMA 拡張機能を作成する     | Microsoft.Compute/virtualMachines/write           | 仮想マシン        |
 |保存した検索条件を作成および編集する     | Microsoft.OperationalInsights/workspaces/write           | ワークスペース        |
@@ -287,7 +289,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 2. 利用可能なロールの一覧からロールを選択します。 Automation アカウントでサポートされている任意の組み込みロールを選択してもかまいません。また、自分で定義したカスタム ロールを選択することもできます。
 
-3. アクセス許可を付与するユーザーのユーザー名を **[選択]** フィールドに入力します。 一覧からユーザーを選択し、**[保存]** をクリックします。
+3. アクセス許可を付与するユーザーのユーザー名を **[選択]** フィールドに入力します。 一覧からユーザーを選択し、 **[保存]** をクリックします。
 
    ![Add users](media/automation-role-based-access-control/automation-04-add-users.png)
 
@@ -307,8 +309,8 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 Automation アカウントの管理に関与しないユーザーや既に退社したユーザーについては、アクセス権を削除することができます。 ユーザーを削除する手順を次に示します。
 
-1. **[アクセス制御 (IAM)]** ページで、削除するユーザーを選択し、**[削除]** をクリックします。
-2. 割り当ての詳細ウィンドウで、**[削除]** ボタンをクリックします。
+1. **[アクセス制御 (IAM)]** ページで、削除するユーザーを選択し、 **[削除]** をクリックします。
+2. 割り当ての詳細ウィンドウで、 **[削除]** ボタンをクリックします。
 3. **[はい]** をクリックして削除を確定します。
 
    ![Remove users](media/automation-role-based-access-control/automation-08-remove-users.png)
@@ -416,7 +418,7 @@ New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job 
 New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-実行後、ユーザーは Azure Portal にログインし、**[すべてのリソース]** を表示できます。 一覧に **Automation Runbook オペレーター**用として追加された Runbook が表示されます。
+実行後、ユーザーは Azure Portal にログインし、 **[すべてのリソース]** を表示できます。 一覧に **Automation Runbook オペレーター**用として追加された Runbook が表示されます。
 
 ![ポータルの Runbook RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 

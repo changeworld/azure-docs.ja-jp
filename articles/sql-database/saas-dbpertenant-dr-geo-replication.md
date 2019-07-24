@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
-ms.author: ayolubek
+ms.author: craigg
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b6f0d25f621768f79e8262f38617152e91692a23
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee10f3d1b9db79eff199581a67c40196315b73f6
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838852"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67872047"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>データベースの geo レプリケーションを使用したマルチテナント SaaS アプリケーションのディザスター リカバリー
 
@@ -90,9 +90,9 @@ geo レプリケーションに基づく DR プランは、3 つの部分から�
 ## <a name="review-the-healthy-state-of-the-application"></a>アプリケーションの正常性状態を確認する
 
 復旧プロセスを始める前に、アプリケーションの通常の正常な状態を確認します。
-1. Web ブラウザーで、Wingtip Tickets イベント ハブ (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net - &lt;user&gt; は実際の展開でのユーザーの値に置き換えます) を開きます。
+1. Web ブラウザーで、Wingtip Tickets イベント ハブ (http://events.wingtip-dpt.&lt ;user&gt;.trafficmanager.net - &lt; user&gt; は実際の展開でのユーザーの値に置き換えます) を開きます。
     * ページの下部までスクロールし、フッターでカタログ サーバー名と場所を確認します。 場所は、アプリを展開したリージョンです。
-    *ヒント:場所をマウスでポイントすると表示が拡大されます。*
+    *ヒント:場所をマウスでポイントすると表示が拡大されます。* 
     ![元のリージョンでのイベント ハブの正常な状態](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Contoso Concert Hall テナントをクリックして、そのイベント ページを開きます。
@@ -207,7 +207,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
  
      ![オフラインのイベント ハブ](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-   * オフラインのテナントの [イベント] ページを直接開いた場合は、"テナントはオフライン" であることを示す通知が表示されます。 たとえば、Contoso Concert Hall がオフラインのときに、 http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net/contosoconcerthall を開いてみます。![Contoso オフライン ページ](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+   * オフラインのテナントの [イベント] ページを直接開いた場合は、"テナントはオフライン" であることを示す通知が表示されます。 たとえば、Contoso Concert Hall がオフラインのときに、 http://events.wingtip-dpt.&lt ;ユーザー&gt;.trafficmanager.net/contosoconcerthall を開いてみます。![ Contoso オフライン ページ](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>復旧リージョン内に新しいテナントをプロビジョニングする
 既存のすべてのテナント データベースがフェールオーバーされる前であっても、復旧リージョンで新しいテナントをプロビジョニングできます。  
@@ -233,7 +233,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
     ![イベント ハブの復旧されたテナントと新しいテナント](media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
 
 2. [Azure Portal](https://portal.azure.com) で、リソース グループの一覧を開きます。  
-    * 展開したリソース グループに加えて、_-recovery_ というサフィックスが付いた復旧リソース グループが表示されることを確認します。  復旧リソース グループには、復旧プロセスの間に作成されたすべてのリソースと、停止中に作成された新しいリソースが含まれます。  
+    * 展開したリソース グループに加えて、 _-recovery_ というサフィックスが付いた復旧リソース グループが表示されることを確認します。  復旧リソース グループには、復旧プロセスの間に作成されたすべてのリソースと、停止中に作成された新しいリソースが含まれます。  
 
 3. 復旧リソース グループを開き、次の項目を確認します。
    * サフィックス _-recovery_ が付いた、catalog サーバーと tenants1 サーバーの復旧バージョン。  これらのサーバー上の復元されたカタログ データベースとテナント データベースはすべて、元のリージョンで使われていた名前のままです。
@@ -256,7 +256,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 2. *PowerShell ISE* で、...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 スクリプトを開き、次の値を設定します。
     * **$DemoScenario = 5**: 復旧リージョン内のテナントからイベントを削除します
 3. **F5** キーを押してスクリプトを実行します
-4. Contoso Concert Hall のイベント ページ (http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net/contosoconcerthall - &lt;ユーザー&gt; は実際の展開のユーザーの値に置き換えます) を更新し、最後のイベントが削除されていることを確認します。
+4. Contoso Concert Hall のイベント ページ (http://events.wingtip-dpt.&lt ;ユーザー&gt;.trafficmanager.net/contosoconcerthall - &lt; ユーザー&gt; は実際の展開のユーザーの値に置き換えます) を更新し、最後のイベントが削除されていることを確認します。
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>アプリケーションを元の運用リージョンに復帰する
 
@@ -289,7 +289,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
     * **F5** キーを押して、新しい PowerShell ウィンドウで復旧スクリプトを実行します。  復帰には数分かかり、PowerShell ウィンドウで監視できます。
     ![復帰プロセス](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. スクリプトが実行されている間に、イベント ハブのページ (http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net) を更新します。
+4. スクリプトが実行されている間に、イベント ハブのページ (http://events.wingtip-dpt.&lt ;ユーザー&gt;.trafficmanager.net) を更新します。
     * すべてのテナントがオンラインであり、このプロセス全体を通じてアクセスできることを確認します。
 
 5. 復帰が完了した後、イベント ハブを更新し、Hawthorn Hall のイベント ページを開きます。 このデータベースが元のリージョンに復帰していることを確認します。

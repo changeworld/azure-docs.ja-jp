@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: c7339dc683a062d4a74708d2e9f155f20f4d0ea8
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 787445d5186a173b2cba674b36cd95879cc863e5
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244097"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66389989"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 
@@ -28,7 +28,7 @@ ms.locfileid: "66244097"
 * [運用分析やプロセス効率](#operational-analysis-and-driving-process-efficiency)に、Time Series Insights を使用する利点は何ですか?
 * [高度な分析](#advanced-analytics)に、Time Series Insights を使用する利点は何ですか?
 
-これらの使用シナリオの概要を次に説明します。
+以下のセクションで、これらの使用シナリオの概要を説明します。
 
 ## <a name="introduction"></a>はじめに
 
@@ -54,7 +54,7 @@ Time Series Insights に格納されたデータと対話する方法は主に 3
 
     * JavaScript SDK の詳細については、[Time Series Insights JS クライアント ライブラリ](tutorial-explore-js-client-lib.md)と [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。
 
-    * URL と新しい UI の共有の詳細について、「[エクスプローラー プレビューでデータを視覚化する](time-series-insights-update-explorer.md)」を確認してください。
+    * URL と新しい UI の共有の詳細について、[Azure Time Series Insights プレビューのエクスプローラーでのデータ視覚化](time-series-insights-update-explorer.md)に関するページを確認してください。
 
 - 3 つ目の開始方法は、Time Series Insights に格納されているデータをクエリするために強力な API を使用することです。 Time Series Insights には、`from`、`to`、`first`、`last` などのテンポラル演算子があります。 `average`、`min`、`max`、`split by`、`order by`、`DateHistogram` などの集計および変換があります。 さらに `has`、`in`、`and`、`or`、`greater than`、`REGEX` などのフィルター演算子もあります。 これらすべての演算子により、ダウンストリーム アプリケーションではデータ内の興味のある傾向やパターンをすばやく見つけることができます。 それらを使用して、異常を検出するための独自の視覚化を設定します。
 
@@ -97,7 +97,5 @@ Time Series Insights では、2 つの簡単なコスト効率の高い方法で
 ## <a name="next-steps"></a>次の手順
 
 - [Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)の詳細を確認してください。
-
 - 環境を計画するには、[Time Series Insights プレビューの計画](./time-series-insights-update-plan.md)に関するページを参照してください。
-
 - [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。

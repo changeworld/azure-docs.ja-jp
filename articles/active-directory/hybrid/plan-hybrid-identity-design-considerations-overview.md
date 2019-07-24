@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167866"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60381467"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項
 企業世界では消費者基準のデバイスが広まっており、クラウド基準の SaaS (Software-as-a-Service/サービスとしてのソフトウェア) アプリケーションの導入が簡単になっています。 結果的に、内部データセンターとクラウド プラットフォームにわたりユーザーのアプリケーション アクセスを制御することが課題となります。  

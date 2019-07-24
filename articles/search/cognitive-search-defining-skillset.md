@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9eedf0be6089764c8111ae81d558f7e65af0a66d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e5d473cffeefe29febc4f0dfb2a620d917bf238d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021781"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672108"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>エンリッチメント パイプラインにスキルセットを作成する方法
 
-コグニティブ検索では、Azure Search で検索できるように、データを抽出および拡充します。 Microsoft では抽出ステップとエンリッチメント ステップを "*コグニティブ スキル*" と呼び、インデックスの作成中に参照される "*スキルセット*" と組み合わせます。 スキルセットでは、[組み込みのスキル](cognitive-search-predefined-skills.md)またはカスタム スキルを使用できます (詳細については、[カスタム スキルの作成例](cognitive-search-create-custom-skill-example.md)に関するページを参照してください)。
+コグニティブ検索では、Azure Search で検索できるように、データを抽出および拡充します。 Microsoft では抽出ステップとエンリッチメント ステップを "*コグニティブ スキル*" と呼び、インデックスの作成中に参照される "*スキルセット*" と組み合わせます。 スキルセットでは、[組み込みのスキル](cognitive-search-predefined-skills.md)またはカスタム スキルを使用できます (詳細については、[コグニティブ検索用のカスタム スキルの作成例](cognitive-search-create-custom-skill-example.md)に関するページを参照してください)。
 
 この記事では、使用するスキル用にエンリッチメント パイプラインを作成する方法を学習します。 スキルセットは、Azure Search [インデクサー](search-indexer-overview.md)に接続されます。 この記事で取り上げているパイプライン デザインの一環として、スキルセット自体を構築します。 
 
@@ -173,7 +173,7 @@ Content-Type: application/json
 
 * このスキルには、```"organizations"``` と呼ばれる出力があります。 出力は、処理中にのみ存在します。 この出力をダウンストリーム スキルの入力に連結するには、```"/document/organizations"``` としてこの出力を参照します。
 
-* 特定のドキュメントでは、```"/document/organizations"``` の値は、テキストから抽出された組織の配列になります。 例: 
+* 特定のドキュメントでは、```"/document/organizations"``` の値は、テキストから抽出された組織の配列になります。 例:
 
   ```json
   ["Microsoft", "LinkedIn"]
@@ -239,7 +239,7 @@ Bing Entity Search カスタム エンリッチャーの構造体を思い出し
 
 スキルセットによって、非構造化データから構造化情報が生成されます。 次の例を考えてみます。
 
-"*Microsoft では第 4 四半期に、昨年買収したソーシャル ネットワー キング会社 LinkedIn からの収益として 11 億ドルを記録しました。Microsoft は、この買収によって、LinkedIn の機能を自社の CRM と Office の機能に結合することができます。株主は、これまでの経過に興奮しています。*"
+"*Microsoft では第 4 四半期に、昨年買収したソーシャル ネットワー キング会社 LinkedIn からの収益として 11 億ドルを記録しました。Microsoft は、この買収によって、LinkedIn の機能を自社の CRM と Office の機能に結合することができます。株主は、これまでの経過に興奮しています。* "
 
 結果として生成される構造体は、次の図のようになります。
 

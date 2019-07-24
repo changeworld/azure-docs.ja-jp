@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
 ms.openlocfilehash: 5b0816079cdccd8a75830764fc8b1ad8a4d1b95e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "58408453"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60780915"
 ---
 # <a name="azure-germany-developer-guide"></a>Azure Germany 開発者ガイド
 Azure Germany 環境は、Microsoft の他のネットワークから切り離された Microsoft Azure のインスタンスです。 このガイドには、アプリケーション開発者と管理者が、Azure の個別のリージョンで作業を行うために理解する必要がある相違点について説明します。

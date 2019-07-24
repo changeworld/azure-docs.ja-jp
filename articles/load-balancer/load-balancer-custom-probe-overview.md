@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: 正常性プローブを使用して Load Balancer の背後にあるインスタンスを監視する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
-ms.author: kumud
-ms.openlocfilehash: e488a4a6438279270f3d86dafa16c45eda184059
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.author: allensu
+ms.openlocfilehash: 75009530940a0cce7adb8469ead5f55f509a1faa
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415709"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275349"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -121,7 +121,7 @@ Cloud Services を使用し、w3wp.exe を使う Web ロールがある場合は
 
 既定では、クラウド サービス ロール (worker ロールと Web ロール) は、ゲスト エージェントを使用してプローブを監視します。  ゲスト エージェント プローブは最終手段の構成です。  常に、TCP または HTTP のプローブを使って明示的に正常性プローブを使用してください。 ほとんどのアプリケーション シナリオでは、ゲスト エージェント プローブは明示的に定義されたプローブほど効果的ではありません。
 
-ゲスト エージェント プローブは、VM 内のゲスト エージェントのチェックです。 その後リッスンし、インスタンスが準備完了状態になっている場合にのみ、HTTP 200 OK で応答します  (他の状態はビジー、リサイクル中、停止中です)。
+ゲスト エージェント プローブは、VM 内のゲスト エージェントのチェックです。 その後リッスンし、インスタンスが準備完了状態になっている場合にのみ、HTTP 200 OK で応答します (他の状態はビジー、リサイクル中、停止中です)。
 
 詳しくは、[正常性プローブのサービス定義ファイル (csdef) の構成](https://msdn.microsoft.com/library/azure/ee758710.aspx)に関するページまたは[クラウド サービス用のパブリック ロード バランサーの作成の開始](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services)に関するページをご覧ください。
 

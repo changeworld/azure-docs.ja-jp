@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
 ms.openlocfilehash: 8e57c071c9fd93a8581d574aeec2b23b38b3ab95
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281661"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60844025"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動スケーリングの概要
 自動スケーリングは Service Fabric の追加機能であり、サービスによって報告される負荷またはリソースの使用量に基づいて、サービスを動的にスケーリングする機能です。 自動スケーリングは優れた柔軟性を提供し、必要に応じてサービスのインスタンスまたはパーティションを追加でプロビジョニングできます。 自動スケーリングは、プロセス全体が自動化された透過的なものであり、サービスのポリシーを設定した後は、サービス レベルの手動でのスケーリング操作は必要ありません。 自動スケーリングは、サービスの作成時に有効にできます。または、サービスを更新することでいつでも有効にできます。

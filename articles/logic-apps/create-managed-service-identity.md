@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
 ms.openlocfilehash: 65fe89bf775a649d5654ce739d8d18e05d3048ca
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65416116"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする
@@ -45,13 +45,13 @@ ms.locfileid: "65416116"
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure portal から、ロジック アプリ用のシステム割り当てのマネージド ID を有効にするには、目的のロジック アプリの ID 設定で、**[システム割り当て済み]** 設定をオンにします。
+Azure portal から、ロジック アプリ用のシステム割り当てのマネージド ID を有効にするには、目的のロジック アプリの ID 設定で、 **[システム割り当て済み]** 設定をオンにします。
 
 1. [Azure Portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-1. ロジック アプリのメニューの **[設定]** で、**[ID]** を選択します。 
+1. ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。 
 
-1. **[システム割り当て済み]** > **[状態]** で、**[オン]** を選択します。 次に、**[保存]** > **[はい]** を選択します。
+1. **[システム割り当て済み]**  >  **[状態]** で、 **[オン]** を選択します。 次に、 **[保存]**  >  **[はい]** を選択します。
 
    ![マネージド ID 設定をオンにする](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
 
@@ -76,7 +76,7 @@ Azure portal から、ロジック アプリ用のシステム割り当てのマ
 }
 ```
 
-例: 
+例:
 
 ```json
 {
@@ -132,19 +132,19 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
 1. Azure portal で、マネージド ID にアクセスを割り当てる Azure リソースに移動します。 
 
-1. リソースのメニューから **[アクセス制御 (IAM)]** を選択します。 ツール バーで、**[追加]** > **[ロールの割り当ての追加]** の順に選択します。
+1. リソースのメニューから **[アクセス制御 (IAM)]** を選択します。 ツール バーで、 **[追加]**  >  **[ロールの割り当ての追加]** の順に選択します。
 
    ![ロールの割り当ての追加](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
 1. **[ロールの割り当ての追加]** で、その ID の**ロール**を選択します。 
 
-1. **[アクセスの割り当て先]** プロパティで、まだ選択されていなければ、**[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
+1. **[アクセスの割り当て先]** プロパティで、まだ選択されていなければ、 **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
 
 1. **[選択]** ボックスで、ロジック アプリの名前の入力を、ロジック アプリの名前の最初の文字で始めます。 目的のロジック アプリが表示されたら、そのロジック アプリを選択します。
 
    ![マネージド ID を使用するロジック アプリを選択する](./media/create-managed-service-identity/add-permissions-select-logic-app.png)
 
-1. 完了したら、**[保存]** を選択します。
+1. 完了したら、 **[保存]** を選択します。
 
 ### <a name="authenticate-with-managed-identity-in-logic-app"></a>ロジック アプリでマネージド ID を使用して認証する
 
@@ -156,13 +156,13 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
    たとえば、[Azure AD をサポートする次の Azure サービスのいずれかで](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) Azure Active Directory (Azure AD) 認証を使用しているとします。 
    **[URI]** ボックスに、その Azure サービスのエンドポイント URL を入力します。 
-   つまり、Azure Resource Manager を使用している場合、**[URI]** プロパティにこの値を入力します。
+   つまり、Azure Resource Manager を使用している場合、 **[URI]** プロパティにこの値を入力します。
 
    `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version=2016-06-01`
 
-1. HTTP アクションで、**[詳細オプションの表示]** を選択します。
+1. HTTP アクションで、 **[詳細オプションの表示]** を選択します。
 
-1. **[認証]** 一覧から、**[マネージド ID]** を選択します。 この認証を選択後、**[対象ユーザー]** プロパティが既定のリソース ID 値で表示されます。
+1. **[認証]** 一覧から、 **[マネージド ID]** を選択します。 この認証を選択後、 **[対象ユーザー]** プロパティが既定のリソース ID 値で表示されます。
 
    ![[マネージド ID] を選択します](./media/create-managed-service-identity/select-managed-service-identity.png)
 
@@ -184,13 +184,13 @@ Azure portal、Azure Resource Manager デプロイ テンプレート、また�
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure portal から、ロジック アプリ用のシステム割り当てのマネージド ID を削除するには、目的のロジック アプリの ID 設定で、**[システム割り当て済み]** 設定をオフにします。
+Azure portal から、ロジック アプリ用のシステム割り当てのマネージド ID を削除するには、目的のロジック アプリの ID 設定で、 **[システム割り当て済み]** 設定をオフにします。
 
 1. [Azure Portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-1. ロジック アプリのメニューの **[設定]** で、**[ID]** を選択します。 
+1. ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。 
 
-1. **[システム割り当て済み]** > **[状態]** で、**[オフ]** を選択します。 次に、**[保存]** > **[はい]** を選択します。
+1. **[システム割り当て済み]**  >  **[状態]** で、 **[オフ]** を選択します。 次に、 **[保存]**  >  **[はい]** を選択します。
 
    ![マネージド ID 設定をオフにする](./media/create-managed-service-identity/turn-off-managed-service-identity.png)
 

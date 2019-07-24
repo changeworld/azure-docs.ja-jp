@@ -2,7 +2,7 @@
 title: Azure Traffic Manager で診断ログを有効にする
 description: Traffic Manager プロファイルの診断ログを有効にし、その結果作成されるログ ファイルにアクセスする方法について説明します。
 services: traffic-manager
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: kumud
-ms.openlocfilehash: a7d6893c42028790ec565961f2a2cb54035aefa1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: allensu
+ms.openlocfilehash: b2ebeb41e69b7edfd43c38cc3b828069a1b3401a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106463"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071245"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Azure Traffic Manager で診断ログを有効にする
 
@@ -57,8 +57,8 @@ Azure Traffic Manager の診断ログでは、Traffic Manager プロファイル
 ## <a name="access-log-files"></a>アクセス ログ ファイル
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
 1. ポータルで Azure ストレージ アカウントに移動します。
-2. お使いの Azure ストレージ アカウントの **[概要]** ページで、**[サービス]** の **[BLOB]** を選択します。
-3. **[コンテナー]** で **insights-logs-probehealthstatusevents** を選択し、PT1H.json ファイルまで下に移動した後、**[ダウンロード]** をクリックしてこのログ ファイルのコピーをダウンロードして保存します。
+2. お使いの Azure ストレージ アカウントの **[概要]** ページで、 **[サービス]** の **[BLOB]** を選択します。
+3. **[コンテナー]** で **insights-logs-probehealthstatusevents** を選択し、PT1H.json ファイルまで下に移動した後、 **[ダウンロード]** をクリックしてこのログ ファイルのコピーをダウンロードして保存します。
 
     ![BLOB ストレージから Traffic Manager プロファイルのログ ファイルにアクセスする](./media/traffic-manager-logs/traffic-manager-logs.png)
 
@@ -72,8 +72,8 @@ Azure Monitor を通じて使用可能なすべての診断ログでは、共通
 |||||
 |----|----|---|---|
 |**フィールド名**|**フィールドの型**|**定義**|**例**|
-|EndpointName|String|正常性の状態が記録されている Traffic Manager エンドポイントの名前。|*myPrimaryEndpoint*|
-|Status|String|プローブされた Traffic Manager エンドポイントの正常性の状態。 状態は **Up** または **Down** のいずれかです。|**Up**|
+|EndpointName|string|正常性の状態が記録されている Traffic Manager エンドポイントの名前。|*myPrimaryEndpoint*|
+|Status|string|プローブされた Traffic Manager エンドポイントの正常性の状態。 状態は **Up** または **Down** のいずれかです。|**Up**|
 |||||
 
 ## <a name="next-steps"></a>次の手順

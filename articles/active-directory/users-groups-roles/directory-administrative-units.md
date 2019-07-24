@@ -16,11 +16,11 @@ ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 77f1a6e5b1e8191c1497e437cc26e1caf1255ba7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210358"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60472369"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Azure Active Directory での管理単位の管理 (パブリック プレビュー)
 

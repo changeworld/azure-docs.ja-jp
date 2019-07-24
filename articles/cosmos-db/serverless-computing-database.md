@@ -4,14 +4,14 @@ description: Azure Cosmos DB と Azure Functions の両方を使用して、イ�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: db85d02a4f5c6e0f644a03394b570aac46202e72
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123778"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66256953"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -107,11 +107,11 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 ## <a name="tooling"></a>ツール
 
-Azure Portal と Visual Studio 2017 では、Azure Cosmos DB と Azure Functions 間のネイティブ統合を使用できます。
+Azure portal と Visual Studio 2019 では、Azure Cosmos DB と Azure Functions 間のネイティブ統合を使用できます。
 
 * Azure Functions ポータルでは、Azure Cosmos DB トリガーを作成できます。 クイック スタートの手順については、[Azure portal での Azure Cosmos DB トリガーの作成](https://aka.ms/cosmosdbtriggerportalfunc)に関するページをご覧ください。
 * Azure Cosmos DB ポータルで、Azure Cosmos DB トリガーを同じリソース グループ内の既存の Azure Functions アプリに追加できます。
-* Visual Studio 2017 では、[Visual Studio 2017 用の Azure Functions Tools](../azure-functions/functions-develop-vs.md) を利用して Azure Cosmos DB トリガーを作成できます。
+* Visual Studio 2019 では、[Azure Functions Tools](../azure-functions/functions-develop-vs.md) を利用して Azure Cosmos DB トリガーを作成できます。
 
     >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
 

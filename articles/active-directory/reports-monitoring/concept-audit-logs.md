@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3da96c09026baff3965e0a90d1f461fd948a3a50
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438397"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60441020"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの監査アクティビティ レポート 
 
@@ -122,12 +122,12 @@ Azure AD の監査ログは、コンプライアンスのためにシステム �
 - その他
 - ポリシー
 - ResourceManagement
-- GroupManagement
+- RoleManagement
 - GroupManagement
 
 **[アクティビティ]** フィルターは、カテゴリとアクティビティ リソースの種類の選択に基づいたものです。 参照する特定のアクティビティを選択することも、すべてを選択することもできます。 
 
-Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta を使用して全監査アクティビティのリストを取得できます ($tenantdomain は実際のドメイン名)。または、[監査レポートのイベント](reference-audit-activities.md)に関する記事を参照してください。
+Graph API https://graph.windows.net/ $tenantdomain/activities/auditActivityTypes?api-version=beta を使用して全監査アクティビティのリストを取得できます ($tenantdomain は実際のドメイン名)。または、[監査レポートのイベント](reference-audit-activities.md)に関する記事を参照してください。
 
 **[状態]** フィルターでは、監査操作の状態に基づいてフィルターに掛けることができます。 状態は、次のいずれかになります。
 
@@ -149,7 +149,7 @@ Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?
 
 カスタムの期間を選択すると、開始時刻と終了時刻を構成できます。
 
-また、**[ダウンロード]** ボタンを選択して、フィルターされたデータ (最大 250,000 個のレコード) をダウンロードすることもできます。 CSV 形式または JSON 形式でログをダウンロードすることができます。 ダウンロードできるレコードの数は、[Azure Active Directory レポートの保持ポリシー](reference-reports-data-retention.md)によって制限されます。
+また、 **[ダウンロード]** ボタンを選択して、フィルターされたデータ (最大 250,000 個のレコード) をダウンロードすることもできます。 CSV 形式または JSON 形式でログをダウンロードすることができます。 ダウンロードできるレコードの数は、[Azure Active Directory レポートの保持ポリシー](reference-reports-data-retention.md)によって制限されます。
 
 ![監査ログ](./media/concept-audit-logs/download.png "監査ログ")
 
@@ -180,11 +180,11 @@ Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?
 
 - グループまたはユーザーにどのライセンスが割り当てられているか。
 
-ユーザーに関連する監査データだけを確認する場合は、**[ユーザー]** タブの **[アクティビティ]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。このエントリ ポイントには、事前選択カテゴリとして **UserManagement** があります。
+ユーザーに関連する監査データだけを確認する場合は、 **[ユーザー]** タブの **[アクティビティ]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。このエントリ ポイントには、事前選択カテゴリとして **UserManagement** があります。
 
 ![監査ログ](./media/concept-audit-logs/users.png "監査ログ")
 
-グループに関連する監査データだけを確認する場合は、**[グループ]** タブの **[アクティビティ]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。このエントリ ポイントには、事前選択カテゴリとして **GroupManagement** があります。
+グループに関連する監査データだけを確認する場合は、 **[グループ]** タブの **[アクティビティ]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。このエントリ ポイントには、事前選択カテゴリとして **GroupManagement** があります。
 
 ![監査ログ](./media/concept-audit-logs/groups.png "監査ログ")
 
@@ -198,7 +198,7 @@ Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?
 * アプリケーションの名前は変更されたか。
 * アプリケーションに同意したのはだれか。
 
-お使いのアプリケーションに関連する監査データを確認する場合は、**[エンタープライズ アプリケーション]** ブレードの **[アクティビティ]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。 このエントリ ポイントには、**[アクティビティの種類]** として **[エンタープライズ アプリケーション]** があらかじめ選択されています。
+お使いのアプリケーションに関連する監査データを確認する場合は、 **[エンタープライズ アプリケーション]** ブレードの **[アクティビティ]** セクションの **[監査ログ]** に、フィルター処理されたビューがあります。 このエントリ ポイントには、 **[アクティビティの種類]** として **[エンタープライズ アプリケーション]** があらかじめ選択されています。
 
 ![監査ログ](./media/concept-audit-logs/enterpriseapplications.png "監査ログ")
 

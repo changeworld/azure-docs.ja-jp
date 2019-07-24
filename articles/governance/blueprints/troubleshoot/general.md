@@ -9,11 +9,11 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 42fdd6645a7a0e7cd9a2f0a7bc969e8eee62758c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789619"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60874962"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 
@@ -27,7 +27,7 @@ ms.locfileid: "59789619"
 
 1. 左側のページから **[割り当てられたブループリント]** を選択し、検索ボックスを使用してブループリントの割り当てをフィルター処理し、失敗した割り当てを検索します。 **[プロビジョニング状態]** 列で割り当て表を並べ替え、失敗した割り当てをまとめて表示することもできます。
 
-1. 状態が _[失敗]_ のブループリントを左クリックするか、**[割り当ての詳細を表示する]** を右クリックして選択します。
+1. 状態が _[失敗]_ のブループリントを左クリックするか、 **[割り当ての詳細を表示する]** を右クリックして選択します。
 
 1. ブループリント割り当てページの一番上に、割り当ての失敗を警告する赤いバナーが表示されます。 バナー内のどこでも良いのでクリックすると、詳細が表示されます。
 

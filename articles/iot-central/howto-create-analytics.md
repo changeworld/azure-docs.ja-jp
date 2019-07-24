@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでデバイス データを分
 description: Azure IoT Central アプリケーションでデバイス データを分析します。
 author: lmasieri
 ms.author: lmasieri
-ms.date: 02/20/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 05915e2059e45c002a9dfa71a538ed6391caa157
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ffe8b350c1b5cea23aeb65092c7912c6d6c1ed89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078331"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67052959"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>分析を使用してデバイス データを分析する方法
 
@@ -23,9 +23,9 @@ Azure IoT Central には、大量のデバイス データを理解するため�
 
 ## <a name="querying-your-data"></a>データのクエリ
 
-始めるには、**デバイス セット**を選択し、**フィルター**を追加して (省略可能)、**期間**を選択する必要があります。 これを行ったら、**[結果の表示]** を選択してデータの視覚化を開始します。
+始めるには、**デバイス セット**を選択し、**フィルター**を追加して (省略可能)、**期間**を選択する必要があります。 これを行ったら、 **[結果の表示]** を選択してデータの視覚化を開始します。
 
-* **デバイス セット:**[デバイス セット](howto-use-device-sets.md)は、ユーザーが定義したデバイスのグループです。 たとえば、オークランドのすべての冷蔵庫や、すべての回転 2.0 風力タービンなどです。
+* **デバイス セット:** [デバイス セット](howto-use-device-sets.md)は、ユーザーが定義したデバイスのグループです。 たとえば、オークランドのすべての冷蔵庫や、すべての回転 2.0 風力タービンなどです。
 
 * **フィルター:** 必要に応じて検索にフィルターを追加し、データを絞り込むことができます。 一度に最大 10 個のフィルターを追加できます。 たとえば、オークランドのすべての冷蔵庫で、温度が 60 度を超えるものを検索します。
 * **期間:** 既定では、過去 10 分間のデータを取得します。 この値を定義済みの時間範囲のいずれかに変更したり、カスタムの期間を選択したりできます。

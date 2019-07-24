@@ -1,20 +1,21 @@
 ---
-title: コンテナーのインストールと実行 - Anomaly Detector
+title: Anomaly Detector API を使用するためのコンテナーをインストールして実行する方法
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API の高度なアルゴリズムを利用し、時系列データ内の異常を特定します。
 services: cognitive-services
-author: aahill
+author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
-ms.topic: article
-ms.date: 05/28/2019
-ms.author: aahi
-ms.openlocfilehash: ec32d5de9e3af14abbf14f79f37ab00f3346b1c1
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.subservice: anomaly-detector
+ms.topic: conceptual
+ms.date: 06/19/2019
+ms.author: dapine
+ms.openlocfilehash: f84f1bab048630d6dd45085b3d082004d10bb6a8
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306974"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721711"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Anomaly Detector コンテナーのインストールと実行
 

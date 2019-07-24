@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 12a0ebeebbc3bdc205816c5534f59b1385cecb12
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 06/14/2019
+ms.openlocfilehash: 4e45251147561f2376ac4b044ebdf3a599092dcf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413749"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67126100"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用して、SQL Server を Azure SQL Database マネージド インスタンスにオンラインで移行する
 
@@ -26,13 +26,19 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
-> - Azure Database Migration Service のインスタンスを作成する。
-> - Azure Database Migration Service を使用して、移行プロジェクトを作成し、オンライン移行を開始する。
-> - 移行を監視する。
-> - 準備が整ったら、移行をカットオーバーする。
+>
+> * Azure Database Migration Service のインスタンスを作成する。
+> * Azure Database Migration Service を使用して、移行プロジェクトを作成し、オンライン移行を開始する。
+> * 移行を監視する。
+> * 準備が整ったら、移行をカットオーバーする。
+
+> [!IMPORTANT]
+> Azure Database Migration Service を使用した SQL Server から Azure SQL Database マネージド インスタンスへのオンラインでの移行のためには、そのサービスによるデータベースの移行に使用できる、データベースの完全バックアップとそれに続くログ バックアップを SMB ネットワーク共有上に用意する必要があります。 Azure Database Migration Service によってバックアップが開始されることはなく、移行のためのディザスター リカバリー計画の一部としてご自分が既に作成している場合がある、既存のバックアップが使用されます。
+> 必ず [WITH CHECKSUM オプションを使用してバックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)を作成してください。 さらに、単一のバックアップ メディアに複数のバックアップ (完全ログとトランザクション ログ) を追加しないでください。各バックアップを別々のバックアップ ファイルに作成します。
 
 > [!NOTE]
 > Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。
+
 > [!IMPORTANT]
 > 最適な移行エクスペリエンスのために、ターゲット データベースと同じ Azure リージョンに Azure Database Migration Service のインスタンスを作成することをお勧めします。 リージョンや地域をまたいでデータを移動する場合、移行プロセスが遅くなり、エラーが発生する可能性があります。
 
@@ -44,36 +50,41 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 [Azure Database Migration Service を使用した Azure SQL Database マネージド インスタンスの移行のネットワーク トポロジを学習します](https://aka.ms/dmsnetworkformi)。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNet) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 [Azure Database Migration Service を使用した Azure SQL Database マネージド インスタンスの移行のネットワーク トポロジを学習します](https://aka.ms/dmsnetworkformi)。 VNet の作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
     > [!NOTE]
     > VNet のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
-    > - ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
-    > - ストレージ エンドポイント
-    > - サービス バス エンドポイント
+    >
+    > * ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
+    > * ストレージ エンドポイント
+    > * サービス バス エンドポイント
     >
     > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
 
-- VNet ネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします:443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
-- [ソース データベース エンジンへのアクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
-- Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
-- 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
-- ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスし、SMB ポート 445 経由でファイルにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-- Azure SQL Database マネージド インスタンスを作成します。手順の詳細については、「[Create an Azure SQL Database Managed Instance in the Azure portal](https://aka.ms/sqldbmi)」 (Azure Portal で Azure SQL Database マネージド インスタンスを作成する) を参照してください。
-- ソース SQL Server への接続と、ターゲットのマネージド インスタンスに使用するログインが、sysadmin サーバー ロールのメンバーであることを確認します。
-- Azure Database Migration Service がデータベースの移行に使用できる、すべてのデータベースの完全なデータベース バックアップ ファイルと、その後のトランザクション ログのバックアップ ファイルを収納する SMB ネットワーク共有を提供します。
-- 作成したネットワーク共有に対して、ソース SQL Server インスタンスを実行しているサービス アカウントが書き込み特権を持っていること、およびソース サーバーのコンピューター アカウントが読み取り/書き込みアクセス権を持っていることを確認します。
-- 作成したネットワーク共有に対するフル コントロール権限を持つ Windows ユーザー (とパスワード) をメモしておきます。 Azure Database Migration Service は、ユーザーの資格情報を借用して、復元操作のために、Azure ストレージ コンテナーにバックアップ ファイルをアップロードします。
-- Azure Active Directory のアプリケーション ID を作成します。これにより、DMS サービスがターゲットの Azure SQL Database マネージド インスタンスと Azure Storage Container に接続するために使用できる、アプリケーション ID キーが生成されます。 詳細については、[ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)に関する記事を参照してください。
-- DMS サービスがデータベース バックアップ ファイルをアップロードしてデータベースの移行に使用できるように、**標準パフォーマンス レベル**と Azure Storage Account のメモを作成します。  作成された DMS サービスと同じ地域で、Azure Storage Account を確実に作成します。
+* VNet ネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートが確実にブロックされないようにします:443、53、9354、445、12000。 Azure VNet NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事を参照してください。
+* [ソース データベース エンジンへのアクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
+* Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
+* 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
+* ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスし、SMB ポート 445 経由でファイルにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
+* Azure SQL Database マネージド インスタンスを作成します。手順の詳細については、「[Create an Azure SQL Database Managed Instance in the Azure portal](https://aka.ms/sqldbmi)」 (Azure Portal で Azure SQL Database マネージド インスタンスを作成する) を参照してください。
+* ソース SQL Server への接続と、ターゲットのマネージド インスタンスに使用するログインが、sysadmin サーバー ロールのメンバーであることを確認します。
+* Azure Database Migration Service がデータベースの移行に使用できる、すべてのデータベースの完全なデータベース バックアップ ファイルと、その後のトランザクション ログのバックアップ ファイルを収納する SMB ネットワーク共有を提供します。
+* 作成したネットワーク共有に対して、ソース SQL Server インスタンスを実行しているサービス アカウントが書き込み特権を持っていること、およびソース サーバーのコンピューター アカウントが読み取り/書き込みアクセス権を持っていることを確認します。
+* 作成したネットワーク共有に対するフル コントロール権限を持つ Windows ユーザー (とパスワード) をメモしておきます。 Azure Database Migration Service は、ユーザーの資格情報を借用して、復元操作のために、Azure ストレージ コンテナーにバックアップ ファイルをアップロードします。
+* Azure Active Directory のアプリケーション ID を作成します。これにより、DMS サービスがターゲットの Azure SQL Database マネージド インスタンスと Azure Storage Container に接続するために使用できる、アプリケーション ID キーが生成されます。 詳細については、[ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)に関する記事を参照してください。
+
+  > [!NOTE]
+  > DMS では、指定されたアプリケーション ID のサブスクリプションに対する共同作成者アクセス許可が必要です。 これらのアクセス許可要件を削減するための取り組みが積極的に行われています。
+
+* DMS サービスがデータベース バックアップ ファイルをアップロードしてデータベースの移行に使用できるように、**標準パフォーマンス レベル**と Azure Storage Account のメモを作成します。  作成された DMS サービスと同じ地域で、Azure Storage Account を確実に作成します。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 
-1. Azure portal にサインインし、**[すべてのサービス]** を選択し、**[サブスクリプション]** を選択します。
+1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
 
     ![ポータルのサブスクリプションの表示](media/tutorial-sql-server-to-managed-instance-online/portal-select-subscriptions.png)
 
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、**[リソース プロバイダー]** を選択します。
+2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、 **[リソース プロバイダー]** を選択します。
 
     ![リソース プロバイダーの表示](media/tutorial-sql-server-to-managed-instance-online/portal-select-resource-provider.png)
 
@@ -87,7 +98,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
      ![Azure Marketplace](media/tutorial-sql-server-to-managed-instance-online/portal-marketplace.png)
 
-2. **[Azure Database Migration Service]** 画面で、**[作成]** を選択します。
+2. **[Azure Database Migration Service]** 画面で、 **[作成]** を選択します。
 
     ![Azure Database Migration Service インスタンスを作成する](media/tutorial-sql-server-to-managed-instance-online/dms-create1.png)
 
@@ -118,7 +129,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 サービスのインスタンスが作成されたら、Azure portal 内でそのサービスを探して開き、新しい移行プロジェクトを作成します。
 
-1. Azure ポータルで、**[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
+1. Azure ポータルで、 **[All services]\(すべてのサービス\)** を選択し、Azure Database Migration Service を検索して、**Azure Database Migration Service** を選択します。
 
     ![Azure Database Migration Service のすべてのインスタンスを検索する](media/tutorial-sql-server-to-managed-instance-online/dms-search.png)
 
@@ -126,7 +137,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 3. **[+ 新しい移行プロジェクト]** を選択します。
 
-4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、**[Source server type]\(ソース サーバーの種類\)** ボックスで **[SQL Server]** を選択した後、**[ターゲット サーバーの種類]** ボックスで **[Azure SQL Database Managed Instance]** を選択し、**[アクティビティの種類を選択します]** で **[オンライン データの移行]** を選択します。
+4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、 **[Source server type]\(ソース サーバーの種類\)** ボックスで **[SQL Server]** を選択した後、 **[ターゲット サーバーの種類]** ボックスで **[Azure SQL Database Managed Instance]** を選択し、 **[アクティビティの種類を選択します]** で **[オンライン データの移行]** を選択します。
 
    ![DMS のプロジェクトを作成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 
@@ -136,7 +147,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 1. **[移行ソースの詳細]** 画面で、ソース SQL Server の接続の詳細を指定します。
 
-2. 信頼できる証明書をサーバーにインストールしていない場合は、**[サーバー証明書を信頼する]** チェック ボックスをオンにします。
+2. 信頼できる証明書をサーバーにインストールしていない場合は、 **[サーバー証明書を信頼する]** チェック ボックスをオンにします。
 
     信頼できる証明書がインストールされていない場合、SQL Server はインスタンスの開始時に自己署名証明書を生成します。 この証明書は、クライアント接続の資格情報の暗号化に使用されます。
 
@@ -208,7 +219,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 1. **[移行の実行]** を選択します。
 
-2. 移行アクティビティ画面で、**[更新]** を選択して表示を更新します。
+2. 移行アクティビティ画面で、 **[更新]** を選択して表示を更新します。
 
    ![進行中の移行アクティビティ](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration2.png)
 
@@ -220,15 +231,15 @@ Azure Database Migration Service を使用すれば、オンプレミスの SQL 
 
 Azure SQL Database マネージド インスタンスのターゲット インスタンスで完全なデータベース バックアップが復元されたら、データベースは移行カットオーバーを実行するために使用できます。
 
-1. オンライン データベースの移行を完了する準備が整ったら、**[カットオーバーの開始]** を選択します。
+1. オンライン データベースの移行を完了する準備が整ったら、 **[カットオーバーの開始]** を選択します。
 
 2. ソース データベースへの着信トラフィックをすべて停止します。
 
 3. [ログ末尾のバックアップ] を採用し、バックアップ ファイルを SMB ネットワーク共有で使用できるようにしたら、この最後のトランザクション ログのバックアップが復元されるまで待機します。
 
-    その時点で、**[保留中の変更]** が 0 に設定されたことがわかります。
+    その時点で、 **[保留中の変更]** が 0 に設定されたことがわかります。
 
-4. **[確認]** を選択したら、**[適用]** を選択します。
+4. **[確認]** を選択したら、 **[適用]** を選択します。
 
     ![カットオーバー完了の準備](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 

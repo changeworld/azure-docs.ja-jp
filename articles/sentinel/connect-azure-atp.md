@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 5bf3cc44-ecda-4c78-8a63-31ab42f43605
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: f0d86a62c59df5bebd34137d0903fcaa7014573d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 77f745f92133f4f43cd2a65f2b69ded1eff9e8ed
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204269"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620626"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Azure Advanced Threat Protection (ATP) からデータを接続する
 
@@ -42,7 +43,7 @@ Azure ATP がデプロイされていて、データを取り込んでいる場�
 
 
 
-1. Azure Sentinel で **[データ コネクタ]** を選択し、**[Azure ATP]** タイルをクリックします。
+1. Azure Sentinel で **[データ コネクタ]** を選択し、 **[Azure ATP]** タイルをクリックします。
 
 2. **[接続]** をクリックします。
 

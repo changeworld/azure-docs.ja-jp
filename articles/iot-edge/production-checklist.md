@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: cb72949c0bb543885498b1b997fa0b4a644c204a
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956972"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
@@ -215,13 +215,13 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 | プラットフォーム | Location |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
-|  Windows | `C:\ProgramData\iotedge-moby\config\` |
+| Windows | `C:\ProgramData\iotedge-moby\config\` |
 
 変更を有効にするには、コンテナー エンジンを再起動する必要があります。
 
 **オプション:各コンテナー モジュールのログ設定を調整する**
 
-これは、各モジュールの **createOptions** で行うことができます。 例: 
+これは、各モジュールの **createOptions** で行うことができます。 例:
 
     "createOptions": {
         "HostConfig": {

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: e1b7558ea83c8948a8984215e15040e4d929cb1b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: be5a8151f0de0a33db09194a7159aded6848c78a
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141380"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416176"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する
 
@@ -41,56 +41,23 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-blockchain-member"></a>ブロックチェーン メンバーを作成する
 
-新しいコンソーシアムで Quorum 台帳プロトコルを実行するブロックチェーン メンバーを Azure Blockchain Service で作成します。
+新しいコンソーシアムで Quorum 台帳プロトコルを実行するブロックチェーン メンバーを Azure Blockchain Service で作成します。 渡す必要があるいくつかのパラメーターとプロパティがあります。 パラメーターの例は、実際の値に置き換えてください。
 
-渡す必要があるいくつかのパラメーターとプロパティがあります。 以下のパラメーターは、実際の値に置き換えてください。
+```azurecli-interactive
+az resource create --resource-group myResourceGroup --name myblockchainmember --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"eastus\", \"properties\": {\"password\": \"strongMemberAccountPassword@1\", \"protocol\": \"Quorum\", \"consortium\": \"myConsortiumName\", \"consortiumManagementAccountPassword\": \"strongConsortiumManagementPassword@1\" }, \"sku\": { \"name\": \"S0\" } }"
+```
 
 | パラメーター | 説明 |
 |---------|-------------|
 | **resource-group** | Azure Blockchain Service リソースが作成されるリソース グループ名。 前のセクションで作成したリソース グループを使用します
 | **name** | Azure Blockchain Service のブロックチェーン メンバーを識別する一意の名前。 名前はパブリック エンドポイント アドレスに使用されます。 たとえば、「 `myblockchainmember.blockchain.azure.com` 」のように入力します。
 | **location** | ブロックチェーン メンバーが作成される Azure リージョン。 たとえば、「 `eastus` 」のように入力します。 ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
-| **password** | メンバー アカウントのパスワード。 メンバー アカウントのパスワードは、基本認証を使用してブロックチェーン メンバーのパブリック エンドポイントへの認証を行うために使用されます。
+| **password** | メンバーの既定のトランザクション ノードのパスワード。 このパスワードは、ブロックチェーン メンバーの既定のトランザクション ノード パブリック エンドポイントに接続する際の基本認証に使用します。
 | **consortium** | 参加または作成するコンソーシアムの名前。
-| **consortiumManagementAccountPassword** | コンソーシアム管理パスワード。 これは、コンソーシアムに参加するために使用されます。
+| **consortiumAccountPassword** | コンソーシアム アカウントのパスワードは、メンバー アカウントのパスワードとも呼ばれます。 メンバー アカウントのパスワードは、メンバー用に作成される Ethereum アカウントの秘密キーの暗号化に使用されます。 メンバー アカウントとメンバー アカウントのパスワードをコンソーシアムの管理に使用します。
 | **skuName** | レベルの種類。 Standard には S0 を使用し、Basic には B0 を使用します。
 
-```azurecli-interactive
-az resource create --resource-group myResourceGroup --name myblockchainmember --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"eastus\", \"properties\": {\"password\": \"strongMemberAccountPassword@1\", \"protocol\": \"Quorum\", \"consortium\": \"myConsortiumName\", \"consortiumManagementAccountPassword\": \"strongConsortiumManagementPassword@1\" }, \"sku\": { \"name\": \"S0\" } }"
-```
-
 ブロックチェーン メンバーとサポート リソースの作成には約 10 分かかります。
-
-成功した作成操作の出力例を次に示します。
-
-```json
-{
-  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/mymembername",
-  "kind": null,
-  "location": "eastus",
-  "name": "mymembername",
-  "properties": {
-    "ConsortiumMemberDisplayName": "mymembername",
-    "consortium": "myConsortiumName",
-    "consortiumManagementAccountAddress": "0xfe5fbb9d1036298abf415282f52397ade5d5beef",
-    "consortiumManagementAccountPassword": null,
-    "consortiumRole": "ADMIN",
-    "dns": "mymembername.blockchain.azure.com",
-    "protocol": "Quorum",
-    "provisioningState": "Succeeded",
-    "userName": "mymembername",
-    "validatorNodesSku": {
-      "capacity": 2
-    }
-  },
-  "resourceGroup": "myResourceGroup",
-  "sku": {
-    "name": "S0",
-    "tier": "Standard"
-  },
-  "type": "Microsoft.Blockchain/blockchainMembers"
-}
-```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -104,7 +71,7 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次の手順
 
-ブロックチェーン メンバーを作成したら、[Geth](connect-geth.md)、[MetaMask](connect-metamask.md)、または [Truffle](connect-truffle.md) に関するトランザクション ノードへの接続クイックスタートのいずれかを試してください。
+ブロックチェーン メンバーを作成したら、[Geth](connect-geth.md)、[MetaMask](connect-metamask.md)、または [Truffle](connect-truffle.md) 向けの接続のクイックスタートのいずれかを試してください。
 
 > [!div class="nextstepaction"]
 > [Truffle を使用して Azure Blockchain Service ネットワークに接続する](connect-truffle.md)

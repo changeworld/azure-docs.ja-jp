@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: af55c161944447f2e6e2245fbb920803779984ca
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 611439802c200b30586b73b82d0a4bbbc857e114
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496199"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65606703"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio を使用してデータ スキュー問題を解決する
 
@@ -36,7 +36,7 @@ Azure Data Lake Tools for Visual Studio は、ジョブにおいてデータ ス
 
 ### <a name="option-2-pick-a-different-partition-or-distribution-key"></a>オプション 2:別のパーティションまたはディストリビューション キーを選択する
 
-前述の例では、国全体の税務監査状況だけを確認するのであれば、ID 番号をキーとして選択してデータ分散を改善することができます。 異なるパーティションやディストリビューション キーを選択することでデータをより均等に分散できる場合もありますが、それがビジネス ロジックに影響を与えないように注意する必要があります。 たとえば、各州の納税額の合計を計算するには、_州_をパーティション キーとして指定します。 問題が改善されない場合は、オプション 3 を試してみます。
+前述の例では、国や地域全体の税務監査状況だけを確認するのであれば、ID 番号をキーとして選択してデータ分散を改善することができます。 異なるパーティションやディストリビューション キーを選択することでデータをより均等に分散できる場合もありますが、それがビジネス ロジックに影響を与えないように注意する必要があります。 たとえば、各州の納税額の合計を計算するには、_州_をパーティション キーとして指定します。 問題が改善されない場合は、オプション 3 を試してみます。
 
 ### <a name="option-3-add-more-partition-or-distribution-keys"></a>オプション 3: パーティション キーまたはディストリビューション キーを追加する
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2019
 ms.author: bwren
 ms.openlocfilehash: f6617a504bbda666ce9ece018ccb0cf02635c360
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355212"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61425844"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics のスマート分析の例
 この記事では、Log Analytics のスマート分析機能を使用してユーザー アクティビティの分析を実行する例を紹介しています。 これらの例を利用して、Application Insights によって監視されているお客様のアプリケーションを分析することができます。また、これらのクエリの概念を使用して、他のデータを同様に分析することもできます。 
@@ -95,7 +95,7 @@ week
 ![コーホート分析の出力](media/smart-analytics/cohorts.png)
 
 ## <a name="rolling-monthly-active-users-and-user-stickiness"></a>変化する月間アクティブ ユーザーとユーザーの持続性
-次の例では、スライディング ウィンドウ計算を実行できる [series_fir](/azure/kusto/query/series-firfunction) 関数を使用した時系列分析を使用しています。 監視対象のサンプル アプリケーションは、カスタム イベントを通じてユーザーのアクティビティを追跡するオンライン ストアです。 このクエリでは _AddToCart_ と _Checkout_ という 2 種類のユーザー アクティビティを追跡し、_アクティブ ユーザー_ を特定の日に少なくとも 1 回の精算を実行したユーザーと定義しています。
+次の例では、スライディング ウィンドウ計算を実行できる [series_fir](/azure/kusto/query/series-firfunction) 関数を使用した時系列分析を使用しています。 監視対象のサンプル アプリケーションは、カスタム イベントを通じてユーザーのアクティビティを追跡するオンライン ストアです。 このクエリでは _AddToCart_ と _Checkout_ という 2 種類のユーザー アクティビティを追跡し、_アクティブ ユーザー_を特定の日に少なくとも 1 回の精算を実行したユーザーと定義しています。
 
 
 

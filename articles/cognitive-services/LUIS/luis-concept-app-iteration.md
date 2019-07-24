@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: 67bcb33727bc808f5e5bea701daffc77dde736ff
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337483"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60813766"
 ---
 # <a name="authoring-cycle-for-your-luis-app"></a>LUIS アプリの作成サイクル
 LUIS は、モデル変更、発話の例、公開、エンドポイント クエリからのデータ収集という反復サイクルの中で最も適切に学習します。 

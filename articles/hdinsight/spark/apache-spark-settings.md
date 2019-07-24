@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 77f4ec9cce5d02ea4cbcc4968d02773a13edfe5b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/17/2019
+ms.openlocfilehash: d5dca3f4517f3d24b765652f420a38c258ad9a2e
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681299"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190918"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 
@@ -61,7 +61,7 @@ Apache Spark のシステム構成には 3 つの場所があります。
 
 Apache Ambari Web UI に、主要なクラスター リソースの使用率メトリックのダッシュボード ビューが表示されます。  Ambari ダッシュボードには、Apache Spark の構成と、インストールされているその他のサービスが表示されます。 ダッシュボードには **[Config History]\(構成履歴\)** タブがあり、Spark を含むインストールされているすべてのサービスの構成情報を見ることができます。
 
-Apache Spark の構成値を見るには、**[Config History]\(構成履歴\)** を選び、**[Spark2]** を選びます。  **[Configs]\(構成\)** タブを選び、サービス一覧の `Spark` (または、バージョンによっては `Spark2`) を選びます。  クラスターの構成値の一覧が表示されます。
+Apache Spark の構成値を見るには、 **[Config History]\(構成履歴\)** を選び、 **[Spark2]** を選びます。  **[Configs]\(構成\)** タブを選び、サービス一覧の `Spark` (または、バージョンによっては `Spark2`) を選びます。  クラスターの構成値の一覧が表示されます。
 
 ![Spark の構成](./media/apache-spark-settings/spark-config.png)
 

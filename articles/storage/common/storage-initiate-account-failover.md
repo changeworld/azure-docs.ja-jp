@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 94a385b7e41dd4a7664dc40418456b304ebef509
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65150009"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>ストレージ アカウントのフェールオーバー (プレビュー) を開始する
@@ -53,10 +53,10 @@ Azure portal からアカウントのフェールオーバーを開始するに�
 
     ![geo レプリケーションとフェールオーバーの状態を示すスクリーンショット](media/storage-initiate-account-failover/portal-failover-prepare.png)
 
-3. お使いのストレージ アカウントが、geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) 用に構成されていることを確認します。 そうでない場合は、**[設定]** の **[構成]** を選択して、アカウントを geo 冗長に更新します。 
+3. お使いのストレージ アカウントが、geo 冗長ストレージ (GRS) または読み取りアクセス geo 冗長ストレージ (RA-GRS) 用に構成されていることを確認します。 そうでない場合は、 **[設定]** の **[構成]** を選択して、アカウントを geo 冗長に更新します。 
 4. **[最終同期時刻]** プロパティでは、セカンダリがプライマリからどれくらい遅れているかが示されます。 **[最終同期時刻]** では、フェールオーバー完了後に発生するデータ損失の範囲の見積もりが提供されます。
 5. **[フェールオーバーの準備 (プレビュー)]** を選択します。 
-6. 確認ダイアログを確認します。 準備ができていれば、**[はい]** を選択して確認し、フェールオーバーを開始します。
+6. 確認ダイアログを確認します。 準備ができていれば、 **[はい]** を選択して確認し、フェールオーバーを開始します。
 
     ![アカウントのフェールオーバーの確認ダイアログを示すスクリーンショット](media/storage-initiate-account-failover/portal-failover-confirm.png)
 

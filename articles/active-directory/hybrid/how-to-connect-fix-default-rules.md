@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d2f0956b44d6df64fb73e5eee7844574237d8755
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65067633"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect の既定の規則に加えた変更の修正
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 > 必要なカスタマイズを実現するために既存の既定の規則を変更することはサポートされていません。 行った場合、将来のリリースでそれらの規則を最新バージョンに更新できなくなります。 必要なバグ修正や新機能が手に入りません。 このドキュメントでは、既存の既定の規則を変更せずに、同じ結果を実現する方法を説明します。 
 
 ## <a name="how-to-identify-modified-default-rules"></a>変更された既定の規則を識別する方法
-バージョン 1.3.7.0 以降の Azure AD Connect では、変更された既定の規則を簡単に識別できます。 **デスクトップのアプリ**に移動して、**[Synchronization Rules Editor]\(同期規則エディター\)** を選択します。
+バージョン 1.3.7.0 以降の Azure AD Connect では、変更された既定の規則を簡単に識別できます。 **デスクトップのアプリ**に移動して、 **[Synchronization Rules Editor]\(同期規則エディター\)** を選択します。
 
 ![[Synchronization Rules Editor]\(同期規則エディター\) が強調表示されている Azure AD Connect](media/how-to-connect-fix-default-rules/default1.png)
 
@@ -71,7 +71,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 
 
 #### <a name="add-an-inbound-sync-rule"></a>受信同期規則を追加する
-受信同期規則は、属性のソースがコネクタ スペースであり、ターゲットがメタバースであることを意味します。 たとえば、オンプレミスの Active Directory から Azure Active Directory への新しい属性フローを追加するには、新しい受信同期規則を作成します。 **同期規則エディター**を起動し、方向として **[Inbound]\(受信\)** を選択して、**[Add new rule]\(新しい規則の追加\)** を選択します。 
+受信同期規則は、属性のソースがコネクタ スペースであり、ターゲットがメタバースであることを意味します。 たとえば、オンプレミスの Active Directory から Azure Active Directory への新しい属性フローを追加するには、新しい受信同期規則を作成します。 **同期規則エディター**を起動し、方向として **[Inbound]\(受信\)** を選択して、 **[Add new rule]\(新しい規則の追加\)** を選択します。 
 
  !同期規則エディター](media/how-to-connect-fix-default-rules/default3a.png)
 
@@ -81,9 +81,9 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 
 後で規則を簡単にメンテナンスできるように、規則の説明を提供します。 たとえば、規則の目的や必要な理由を基にして説明します。
 
-**[Connected System]\(接続されているシステム\)**、**[Connected System Object Type]\(接続されているシステム オブジェクトの種類\)**、**[Metaverse Object Type]\(メタバース オブジェクトの種類\)** の各フィールドを選択します。
+**[Connected System]\(接続されているシステム\)** 、 **[Connected System Object Type]\(接続されているシステム オブジェクトの種類\)** 、 **[Metaverse Object Type]\(メタバース オブジェクトの種類\)** の各フィールドを選択します。
 
-優先順位の値を 0 から 99 の範囲で指定します (値が小さいほど、優先順位が高くなります)。 **[Tag]\(タグ\)**、**[Enable Password Sync]\(パスワードの同期を有効にする\)**、**[Disabled]\(無効\)** の各フィールドは、既定の選択を使用します。
+優先順位の値を 0 から 99 の範囲で指定します (値が小さいほど、優先順位が高くなります)。 **[Tag]\(タグ\)** 、 **[Enable Password Sync]\(パスワードの同期を有効にする\)** 、 **[Disabled]\(無効\)** の各フィールドは、既定の選択を使用します。
 
 **[Scoping filter]\(スコープ フィルター\)** は空のままにします。 これは、Active Directory の接続されたシステムとメタバースの間のすべての結合されたオブジェクトに規則を適用することを意味します。
 
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 属性に対する適切な変換を追加します。 定数を割り当てて、定数値がターゲット属性にフローするようにできます。 ソース属性またはターゲット属性の間に直接マッピングを使用できます。 または、属性に対して式を使用することができます。 使用できるさまざまな[式関数](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference)は、こちらに掲載されています。
 
 #### <a name="add-an-outbound-sync-rule"></a>送信同期規則を追加する
-属性をターゲット ディレクトリにリンクするには、送信規則を作成する必要があります。 これは、ソースがメタバースであり、ターゲットが接続されたシステムであることを意味します。 送信規則を作成するには、**同期規則エディター**を起動し、**[Direction]\(方向\)** を **[Outbound]\(送信\)** に変更して、**[Add new rule]\(新しい規則の追加\)** を選択します。 
+属性をターゲット ディレクトリにリンクするには、送信規則を作成する必要があります。 これは、ソースがメタバースであり、ターゲットが接続されたシステムであることを意味します。 送信規則を作成するには、**同期規則エディター**を起動し、 **[Direction]\(方向\)** を **[Outbound]\(送信\)** に変更して、 **[Add new rule]\(新しい規則の追加\)** を選択します。 
 
 ![同期規則エディター](media/how-to-connect-fix-default-rules/default3c.png)
 
@@ -111,11 +111,11 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 > この場合は、`AuthoritativeNull` の代わりに `Null` を使用します。 これは、優先順位が低い (規則の数値が大きい) 場合でも、null 以外の値は null 値に置き換わるためです。 一方で、`AuthoritativeNull` が他の規則によって null 以外の値に置き換えられることはありません。 
 
 ### <a name="dont-sync-existing-attribute"></a>既存の属性を同期しない
-属性を同期から除外する場合は、Azure AD Connect が提供する属性フィルター機能を使用します。 デスクトップ アイコンから **Azure AD Connect** を起動し、**[同期オプションのカスタマイズ]** を選択します。
+属性を同期から除外する場合は、Azure AD Connect が提供する属性フィルター機能を使用します。 デスクトップ アイコンから **Azure AD Connect** を起動し、 **[同期オプションのカスタマイズ]** を選択します。
 
 ![Azure AD Connect のその他のタスクのオプション](media/how-to-connect-fix-default-rules/default4.png)
 
- **[Azure AD アプリと属性フィルター]** が選択されていることを確認して、**[次へ]** を選択します。
+ **[Azure AD アプリと属性フィルター]** が選択されていることを確認して、 **[次へ]** を選択します。
 
 ![Azure AD Connect オプション機能](media/how-to-connect-fix-default-rules/default5.png)
 
@@ -162,11 +162,11 @@ Azure AD Connect によって構成された既定の結合条件を使用しま
 
 ![同期サービスが強調表示されている Azure AD Connect](media/how-to-connect-fix-default-rules/default10.png)
 
-**[Metaverse Search]\(メタバースの検索\)** を選択します。 スコープ オブジェクトとして **[person]\(人\)** を選択し、**[Add Clause]\(句の追加\)** を選択して、検索条件を指定します。 次に、**[Search]\(検索\)** を選択し、検索結果内のオブジェクトをダブルクリックします。 このステップを実行する前に、フォレストでインポートと同期を実行して、Azure AD Connect のデータがそのオブジェクトの最新のものになるようにします。
+**[Metaverse Search]\(メタバースの検索\)** を選択します。 スコープ オブジェクトとして **[person]\(人\)** を選択し、 **[Add Clause]\(句の追加\)** を選択して、検索条件を指定します。 次に、 **[Search]\(検索\)** を選択し、検索結果内のオブジェクトをダブルクリックします。 このステップを実行する前に、フォレストでインポートと同期を実行して、Azure AD Connect のデータがそのオブジェクトの最新のものになるようにします。
 
 ![Synchronization Service Manager](media/how-to-connect-fix-default-rules/default11.png)
 
-**[Metaverse Object Properties]\(メタバース オブジェクトのプロパティ\)** で **[Connectors]\(コネクタ\)** を選択し、対応するコネクタ (フォレスト) でオブジェクトを選択して、**[Properties…]\(プロパティ...\)** を選択します。
+**[Metaverse Object Properties]\(メタバース オブジェクトのプロパティ\)** で **[Connectors]\(コネクタ\)** を選択し、対応するコネクタ (フォレスト) でオブジェクトを選択して、 **[Properties…]\(プロパティ...\)** を選択します。
 
 ![[Metaverse Object Properties (メタバース オブジェクトのプロパティ)]](media/how-to-connect-fix-default-rules/default12.png)
 

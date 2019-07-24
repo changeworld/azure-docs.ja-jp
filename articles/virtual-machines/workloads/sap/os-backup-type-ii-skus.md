@@ -4,7 +4,7 @@ description: SAP HANA on Azure (L インスタンス) Type II SKU のオペレ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82c5c74fe13bad99528486be69089df5f477457
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: dacc0a745fc387dcaf6be282b562d83e1b798ea4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436342"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710100"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus"></a>Type II SKU の OS のバックアップと復元
 
@@ -83,7 +83,7 @@ Relax-and-Recover (ReaR) パッケージは、HANA L インスタンスの **Typ
 ```
 #yum install rear -y
 ```
-ReaR ツールを構成するには、*/etc/rear/local.conf* ファイルの **OUTPUT_URL** パラメーターと **BACKUP_URL** パラメーターを更新する必要があります。
+ReaR ツールを構成するには、 */etc/rear/local.conf* ファイルの **OUTPUT_URL** パラメーターと **BACKUP_URL** パラメーターを更新する必要があります。
 ```
 OUTPUT=ISO
 ISO_MKISOFS_BIN=/usr/bin/ebiso

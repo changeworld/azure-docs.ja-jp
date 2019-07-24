@@ -11,11 +11,11 @@ ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775596"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60565453"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure Portal での Azure Search のサービス管理
 > [!div class="op_single_selector"]

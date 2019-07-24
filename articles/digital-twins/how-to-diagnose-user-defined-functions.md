@@ -6,40 +6,38 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2018
-ms.author: stefanmsft
+ms.date: 06/05/2019
+ms.author: stegaw
 ms.custom: seodec18
-ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 577467a6322b7f6d3cd7f199d80963f2f1a98ed6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961416"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849327"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数をデバッグする方法
 
-この記事では、ユーザー定義関数を診断してデバッグする方法について説明します。 次に、それらをデバッグするときの最も一般的なシナリオをいくつか紹介します。
+この記事では、Azure Digital Twins でユーザー定義関数を診断してデバッグする方法について説明します。 次に、それらをデバッグするときの最も一般的なシナリオをいくつか紹介します。
 
 >[!TIP]
 > Activity Logs、Diagnostic Logs、Azure Monitor を使用し、Azure Digital Twins にデバッグ ツールを設定する方法の詳細については、[監視とログの構成](./how-to-configure-monitoring.md)方法に関するページを参照してください。
 
 ## <a name="debug-issues"></a>問題をデバッグする
 
-Azure Digital Twins 内で発生するあらゆる問題を診断する方法について理解することで、問題、原因、解決策を効率的に特定するのに役立ちます。
+Azure Digital Twins 内で問題を診断する方法がわかると、問題を効果的に分析し、問題の原因を特定し、それらに適切な解決策を講じることができるようになります。
 
-### <a name="enable-log-analytics-for-your-instance"></a>インスタンスのログ分析を有効にする
+そのために、さまざまなログ記録、分析、および診断ツールが用意されています。
 
-Azure Digital Twins インスタンスのログとメトリックは Azure Monitor で表示されます。 このドキュメントでは、[Azure portal](../azure-monitor/learn/quick-create-workspace.md)、[Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md)、または [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) を通じて [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md) ワークスペースを作成していると仮定しています。
+### <a name="enable-logging-for-your-instance"></a>インスタンスのログ記録を有効にする
 
-> [!NOTE]
-> 初めて Azure Monitor ログにイベントを送信するときに 5 分の遅延が発生することがあります。
+Azure Digital Twins は堅牢なログ記録、監視、分析をサポートします。 ソリューションの開発者は Azure Monitor ログ、診断ログ、アクティビティ ログ、その他のサービスを使用して、IoT アプリの監視の複雑なニーズをサポートします。 ログ記録オプションを組み合わせて使用することで、複数のサービス間でクエリを実行またはレコードを表示できるほか、数多くのサービスにわたって詳細なログを記録する機能を提供します。
 
-Azure Digital Twins リソースの監視とログを構成する方法については、[こちら](./how-to-configure-monitoring.md)のページをご覧ください。
+* Azure Digital Twins 固有のログ構成については、[監視とログを構成する方法](./how-to-configure-monitoring.md)に関する記事を参照してください。
+* Azure Monitor を使って実現できる強力なログ設定については、[Azure Monitor](../azure-monitor/overview.md) の概要を参照してください。
+* Azure Portal、Azure CLI、または PowerShell を使用して Azure Digital Twins での診断ログ設定を構成するには、「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md)」の記事を参照してください。
 
-Azure Portal、Azure CLI、または PowerShell を使用して Azure Digital Twins での診断ログ設定を構成するには、「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md)」の記事をご覧ください。
-
->[!IMPORTANT]
-> すべてのログ カテゴリ、メトリック、および Azure Log Analytics ワークスペースを選択してください。
+一度構成すると、すべてのログ カテゴリ、メトリックを選択し、強力な Azure Monitor ログ分析ワークスペースを使用してデバッグ作業を補助できるようになります。
 
 ### <a name="trace-sensor-telemetry"></a>センサー テレメトリのトレース
 
@@ -209,4 +207,6 @@ function process(telemetry, executionContext) {
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Digital Twins で[監視とログ](../azure-monitor/platform/activity-logs-overview.md)を有効にする方法について確認する。
+- Azure Digital Twins で[監視とログ](./how-to-configure-monitoring.md)を有効にする方法について確認する。
+
+- Azure のログ記録オプションの詳細については、[Azure アクティビティ ログの概要](../azure-monitor/platform/activity-logs-overview.md)の記事を参照してください。

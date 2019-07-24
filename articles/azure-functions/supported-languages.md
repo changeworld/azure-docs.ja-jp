@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/02/2018
 ms.author: glenga
 ms.openlocfilehash: 8839fc0fb9f19a1cfa95a4191213503dba7602c6
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65148814"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions でサポートされている言語
@@ -45,7 +45,7 @@ ms.locfileid: "65148814"
 
 ### <a name="language-extensibility"></a>言語拡張
 
-2.x ランタイムは、[言語拡張](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)を提供するように設計されています。 2.x ランタイムの JavaScript および Java 言語は、この拡張機能で構築されています。
+2\.x ランタイムは、[言語拡張](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Language-Extensibility)を提供するように設計されています。 2\.x ランタイムの JavaScript および Java 言語は、この拡張機能で構築されています。
 
 ## <a name="next-steps"></a>次の手順
 

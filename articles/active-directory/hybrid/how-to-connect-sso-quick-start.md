@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06566ab81b6af847a7eb174731105b7f43a7197f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680904"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60242684"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 
 * **Azure AD Connect サーバーがセットアップされている**:サインイン方法として[パススルー認証](how-to-connect-pta.md)を使用する場合、他に確認すべき前提条件はありません。 サインイン方法として[パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)を使用する場合や、Azure AD Connect と Azure AD の間にファイアウォールがある場合は、次の点を確認してください。
    - Azure AD Connect バージョン 1.1.644.0 以降を使用している。 
-   - ファイアウォールまたはプロキシで DNS ホワイトリストを許可している場合は、**\*.msappproxy.net** の URL に対するポート 443 での接続をホワイトリストに登録します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。 この前提条件は、その機能を有効にした場合にのみ適用されます。 実際のユーザー サインインに必要な条件ではありません。
+   - ファイアウォールまたはプロキシで DNS ホワイトリストを許可している場合は、 **\*.msappproxy.net** の URL に対するポート 443 での接続をホワイトリストに登録します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。 この前提条件は、その機能を有効にした場合にのみ適用されます。 実際のユーザー サインインに必要な条件ではありません。
 
     >[!NOTE]
     >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合の詳細については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)をご覧ください。
@@ -62,14 +62,14 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 >[!NOTE]
 > Azure AD Connect が要件を満たしていない場合は、[PowerShell を使用してシームレス SSO を有効にする](tshoot-connect-sso.md#manual-reset-of-the-feature)こともできます。 Active Directory フォレストごとに複数のドメインがある場合に、シームレス SSO を有効にするドメインを絞り込むには、このオプションを使用します。
 
-新しく Azure AD Connect をインストールする場合は、[カスタム インストール パス](how-to-connect-install-custom.md)を選択します。 **[ユーザー サインイン]** ページで、**[シングル サインオンを有効にする]** チェックボックスをオンにします。
+新しく Azure AD Connect をインストールする場合は、[カスタム インストール パス](how-to-connect-install-custom.md)を選択します。 **[ユーザー サインイン]** ページで、 **[シングル サインオンを有効にする]** チェックボックスをオンにします。
 
 >[!NOTE]
 > このオプションは、サインオンの方法が**パスワード ハッシュ同期**または**パススルー認証**の場合にのみ選択できます。
 
 ![Azure AD Connect:ユーザーのサインイン](./media/how-to-connect-sso-quick-start/sso8.png)
 
-Azure AD Connect を既にインストールしている場合は、Azure AD Connect の **[ユーザー サインインの変更]** ページを選択して、**[次へ]** を選択します。 Azure AD Connect バージョン 1.1.880.0 以降を使用している場合、既定で **[シングル サインオンを有効にする]** オプションが選択されています。 それ以前のバージョンの Azure AD Connect を使用している場合は、**[シングル サインオンを有効にする]** オプションを選択します。
+Azure AD Connect を既にインストールしている場合は、Azure AD Connect の **[ユーザー サインインの変更]** ページを選択して、 **[次へ]** を選択します。 Azure AD Connect バージョン 1.1.880.0 以降を使用している場合、既定で **[シングル サインオンを有効にする]** オプションが選択されています。 それ以前のバージョンの Azure AD Connect を使用している場合は、 **[シングル サインオンを有効にする]** オプションを選択します。
 
 ![Azure AD Connect:ユーザー サインインの変更](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
@@ -86,7 +86,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 この手順に従って、シームレス SSO の有効化を正しく行ったことを確認します。
 
 1. テナントのグローバル管理者の資格情報を使用して、[Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
-2. 左ウィンドウで、**[Azure Active Directory]** を選択します。
+2. 左ウィンドウで、 **[Azure Active Directory]** を選択します。
 3. **[Azure AD Connect]** を選びます。
 4. **[シームレスなシングル サインオン]** 機能が **[有効]** になっていることを確認します。
 
@@ -104,7 +104,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 - `https://autologon.microsoftazuread-sso.com`
 
-また、グループ ポリシーを使用して、**[スクリプトを介したステータス バーの更新を許可する]** というイントラネットのゾーン ポリシー設定を有効にする必要があります。 
+また、グループ ポリシーを使用して、 **[スクリプトを介したステータス バーの更新を許可する]** というイントラネットのゾーン ポリシー設定を有効にする必要があります。 
 
 >[!NOTE]
 > 以下の手順は、Windows 上の Internet Explorer と Google Chrome (信頼済みサイト URL のセットを Internet Explorer と共有する場合) でのみ機能します。 macOS 上の Mozilla Firefox と Google Chrome をセットアップする方法については、次のセクションをご覧ください。
@@ -124,10 +124,10 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 1. グループ ポリシー管理エディター ツールを開きます。
 2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー**を使用します。
-3. **[ユーザーの構成]** > **[ポリシー]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[Internet Explorer]** > **[インターネット コントロール パネル]** > **[セキュリティ ページ]** の順に移動します。 次に **[サイトとゾーンの割り当て一覧]** を選択します。
+3. **[ユーザーの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[Internet Explorer]**  >  **[インターネット コントロール パネル]**  >  **[セキュリティ ページ]** の順に移動します。 次に **[サイトとゾーンの割り当て一覧]** を選択します。
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso6.png)
 4. ポリシーを有効にしてから、ダイアログ ボックスに次の値を入力します。
-   - **[値の名前]**:Kerberos チケットの転送先となる Azure AD URL。
+   - **[値の名前]** :Kerberos チケットの転送先となる Azure AD URL。
    - **[値]** (データ):**1** (イントラネット ゾーンを示す)。
 
      結果は次のようになります。
@@ -144,11 +144,11 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. **[ユーザーの構成]** > **[管理用テンプレート** **ポリシー]** > **> **[Windows コンポーネント]** > **[Internet Explorer]** > **[インターネット コントロール パネル]** > **[セキュリティ ページ]** > **[イントラネット ゾーン]** の順に移動します。 次に、**[スクリプトを介したステータス バーの更新を許可する]** を選択します。
+6. **[ユーザーの構成]**  >  **[管理用テンプレート** **ポリシー]** > **> **[Windows コンポーネント]**  >  **[Internet Explorer]**  >  **[インターネット コントロール パネル]**  >  **[セキュリティ ページ]**  >  **[イントラネット ゾーン]** の順に移動します。 次に、 **[スクリプトを介したステータス バーの更新を許可する]** を選択します。
 
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso11.png)
 
-7. ポリシー設定を有効にしてから、**[OK]** を選択します。
+7. ポリシー設定を有効にしてから、 **[OK]** を選択します。
 
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso12.png)
 
@@ -156,11 +156,11 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 1. グループ ポリシー管理エディター ツールを開きます。
 2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー**を使用します。
-3. **[ユーザーの構成]** > **[基本設定]** > **[Windows 設定]** > **[レジストリ]** > **[新規]** > **[レジストリ項目]** の順に移動します。
+3. **[ユーザーの構成]**  >  **[基本設定]**  >  **[Windows 設定]**  >  **[レジストリ]**  >  **[新規]**  >  **[レジストリ項目]** の順に移動します。
 
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso15.png)
 
-4. 次の値を該当するフィールドに入力し、**[OK]** をクリックします。
+4. 次の値を該当するフィールドに入力し、 **[OK]** をクリックします。
    - **キー パス**:***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
    - **値の名前**: ***https***。
    - **値の型**:***REG_DWORD***。

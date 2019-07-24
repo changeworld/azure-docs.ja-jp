@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: ab5cbf6e24d6e7b5530addcee655e1cc4621d042
-ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
+ms.openlocfilehash: 86a56e71b89e7408d1bc8ca0ee1dc8112bea368f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64875985"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65522141"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) の既知の問題
 
@@ -35,4 +35,4 @@ ms.locfileid: "64875985"
 - ソリューション コンポーネントをワークスペースから削除した後で、引き続きヘルス状態を Azure VM から見ることができます。たとえばパフォーマンス データやマップ データは、ポータルでそれぞれのビューに移動すると見ることができます。 データはしばらくするといずれはパフォーマンスおよびマップのビューに表示されなくなります。しかし、ヘルス ビューには引き続き VM のヘルス状態が表示されます。 **[今すぐ試す]** オプションは、パフォーマンス ビューとマップ ビューからの再オンボードのみに使用できます。
 
 ## <a name="next-steps"></a>次の手順
-ご利用の仮想マシンの監視を有効にするための要件と方法については、[Azure Monitor for VMs のデプロイ](vminsights-onboard.md)に関するページを確認してください。
+仮想マシンの監視を有効にするための要件と方法については、[Azure Monitor for VMs の有効化](vminsights-enable-overview.md)に関するページを確認してください。

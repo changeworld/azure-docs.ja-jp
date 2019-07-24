@@ -10,11 +10,11 @@ ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 342cf23db2df7d7c79a2b56df96d1a78d6ba215e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998132"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61467770"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>(非推奨) ELK を使って Azure Container Service クラスターを監視します
 
@@ -34,7 +34,7 @@ ELK スタックは、クラスター内のログの監視および分析に使�
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 
-ELK コンテナーが起動して実行されると、Marathon LB を介して Kibana にアクセスできるようにする必要があります。 次のように、**[サービス]** > **[kibana]** の順に移動し、**[編集]** をクリックします。
+ELK コンテナーが起動して実行されると、Marathon LB を介して Kibana にアクセスできるようにする必要があります。 次のように、 **[サービス]**  >  **[kibana]** の順に移動し、 **[編集]** をクリックします。
 
 ![ELK4](./media/container-service-monitoring-elk/elk4.PNG)
 

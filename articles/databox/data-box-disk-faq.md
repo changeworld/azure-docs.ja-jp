@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 05/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 69068304a6bc72f503ed85edf05229f10e4a8bc0
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258778"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66236346"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 
@@ -56,6 +56,9 @@ A.  Data Box Disk が現在使用できる場所については、「[利用可�
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
 A. Data Box Disk は、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、北ヨーロッパ、韓国、日本でサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
 
+### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>Q. Data Box Disk は配送中に国境を越えますか?
+A. Data Box Disk は宛先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもディスクを配送できます。
+
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. Data Box Disk に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box Disk に関して何か問題が発生した場合は、[Microsoft サポートに問い合わせ](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)てください。
 
@@ -65,7 +68,7 @@ A. Data Box Disk に関して何か問題が発生した場合は、[Microsoft �
 A.  いいえ。 データのサイズとディスクの在庫に応じて、8 TB のディスク (最大 5 台) が発送されます。  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>Q. Data Box Disk のロックを解除する方法を教えてください。 
-A.  Azure portal で、対象の Data Box Disk の注文に移動し、**[デバイスの詳細]** に移動します。 パスキーをコピーします。 お使いのオペレーティング システム用の Data Box Disk ロック解除ツールを Azure portal からダウンロードして抽出します。 ディスクにコピーするデータがあるコンピューターでツールを実行します。 パスキーを指定すると、ディスクのロックが解除されます。 ロック解除に使用するパスキーは、すべてのディスクで共通です。 
+A.  Azure portal で、対象の Data Box Disk の注文に移動し、 **[デバイスの詳細]** に移動します。 パスキーをコピーします。 お使いのオペレーティング システム用の Data Box Disk ロック解除ツールを Azure portal からダウンロードして抽出します。 ディスクにコピーするデータがあるコンピューターでツールを実行します。 パスキーを指定すると、ディスクのロックが解除されます。 ロック解除に使用するパスキーは、すべてのディスクで共通です。 
 
 詳細な手順については、[Windows クライアントでのディスクのロック解除](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)または [Linux クライアントでのディスクのロック解除](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)に関するページを参照してください。
 
@@ -84,7 +87,7 @@ A. はい。 同じホスト コンピューターに複数の Data Box Disk を
 A.  Data Box Disk の注文の状態は、Azure portal で追跡できます。 注文を作成する際に、通知メールを指定するように求められます。 指定した場合は、注文の状態が変化するたびにメールで通知されます。 [通知メールの構成](data-box-portal-ui-admin.md#edit-notification-details)方法に関するページを参照してください。
 
 ### <a name="q-how-do-i-return-the-disks"></a>Q. ディスクの返送方法を教えてください。 
-A.  Microsoft からの発送パッケージには、Data Box Disk と共に配送先住所ラベルが同梱されています。 このラベルを梱包箱に貼り付けて、封をしたパッケージを集荷場所に持ち込んでください。 ラベルを破損または紛失した場合は、**[概要] > [出荷ラベルをダウンロード]** に移動して、新しい返送ラベルをダウンロードしてください。
+A.  Microsoft からの発送パッケージには、Data Box Disk と共に配送先住所ラベルが同梱されています。 このラベルを梱包箱に貼り付けて、封をしたパッケージを集荷場所に持ち込んでください。 ラベルを破損または紛失した場合は、 **[概要] > [出荷ラベルをダウンロード]** に移動して、新しい返送ラベルをダウンロードしてください。
 
 ## <a name="migrate-data"></a>データの移行
 

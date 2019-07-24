@@ -11,10 +11,10 @@ ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: cae2acf98f39030f4ff340d32f1911bb2b5763ae
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65860843"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
@@ -42,7 +42,7 @@ ms.locfileid: "65860843"
 このデータは、AdventureWorksDW データベースの dbo.vTargetMail ビューにあります。 このデータを読み取るには、次の手順を実行します。
 
 1. [Azure Machine Learning Studio][Azure Machine Learning studio] にサインインし、実験をクリックします。
-2. 画面の左下にある **[+ 新規]** をクリックし、**[Blank Experiment]\(空白の実験\)** を選択します。
+2. 画面の左下にある **[+ 新規]** をクリックし、 **[Blank Experiment]\(空白の実験\)** を選択します。
 3. 実験の名前を入力します: Targeted Marketing。
 4. **[Data Input and output]\(データの入力と出力\)** の **[データのインポート]** モジュールを、モジュール ウィンドウからキャンバスにドラッグします。
 5. [プロパティ] ウィンドウで、SQL Data Warehouse データベースの詳細を指定します。
@@ -98,7 +98,7 @@ FROM [dbo].[vTargetMail]
 ## <a name="4-score-the-model"></a>4.モデルにスコアを付ける
 ここでは、テスト データに対するモデルのパフォーマンスをテストします。 選択したアルゴリズムを別のアルゴリズムと比較し、どちらのパフォーマンスが優れているかを評価します。
 
-1. **[Score Model]\(モデルのスコア付け\)** モジュールをキャンバスにドラッグし、**[モデルのトレーニング]** モジュールと **[Split Data]\(データの分割\)** モジュールに接続します。
+1. **[Score Model]\(モデルのスコア付け\)** モジュールをキャンバスにドラッグし、 **[モデルのトレーニング]** モジュールと **[Split Data]\(データの分割\)** モジュールに接続します。
    ![モデルにスコアを付ける][9]
 2. **[2 クラスのベイズ ポイント マシン]** を実験キャンバスにドラッグします。 このアルゴリズムのパフォーマンスを 2 クラスのブースト デシジョン ツリーのパフォーマンスと比較します。
 3. [モデルのトレーニング] モジュールと [モデルのスコア付け] モジュールをコピーしてキャンバスに貼り付けます。

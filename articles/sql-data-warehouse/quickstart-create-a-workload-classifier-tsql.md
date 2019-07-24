@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:ワークロード分類子の作成 - T-SQL | Microsoft Docs
-description: T-SQL を使用して重要度の高いワークロード分類子を作成する
+description: T-SQL を使用して重要度の高いワークロード分類子を作成します。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c84bf84f8ba28a98937b02a463003a900aefaa0
-ms.sourcegitcommit: 13cba995d4538e099f7e670ddbe1d8b3a64a36fb
+ms.openlocfilehash: f400989fdbdede4f4a07ee13c5a606d51529150c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2019
-ms.locfileid: "66002912"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588703"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>クイック スタート:T-SQL を使用してワークロード分類子を作成する
 

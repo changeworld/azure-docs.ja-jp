@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure Load Balancer と負荷分散された VM に対する IPv6 サポートについて説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,19 +13,19 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
-ms.author: kumud
-ms.openlocfilehash: 894a56c2e51e8fa8a2d72253563d218416ace4cb
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.author: allensu
+ms.openlocfilehash: b276766d69c187e2268f5896f23e3bd435ed63c3
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53161935"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274818"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
 
 >[!NOTE] 
->Azure Load Balancer では、Basic と Standard の 2 種類がサポートされています。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
+>Azure Load Balancer では、Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
 
 インターネットに接続するロード バランサーは、IPv6 アドレスでデプロイできます。 これにより、IPv4 接続に加えて次の機能を使用できます。
 

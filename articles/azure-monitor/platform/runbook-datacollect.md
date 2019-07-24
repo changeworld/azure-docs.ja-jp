@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
 ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102586"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60454201"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Azure Automation の Runbook を使用して Log Analytics でデータを収集する
 
@@ -43,7 +43,7 @@ ms.locfileid: "58102586"
 ## <a name="1-install-data-collector-api-module"></a>1.データ コレクター API モジュールをインストールする
 [HTTP データ コレクター API からのすべての要求](../../azure-monitor/platform/data-collector-api.md#create-a-request)を適切な形式に設定し、Authorization ヘッダーを含める必要があります。 Runbook でこれを行うこともできますが、このプロセスを簡略化するモジュールを使うことで必要なコードの量を減らすことができます。 使うことができるモジュールの 1 つは、PowerShell ギャラリーの [OMSIngestionAPI モジュール](https://www.powershellgallery.com/packages/OMSIngestionAPI)です。
 
-[モジュール](../../automation/automation-integration-modules.md) を Runbook で使うには、Automation アカウントにモジュールをインストールする必要があります。  同じアカウント内のすべての Runbook で、モジュールの関数を使うことができます。 Automation アカウントで **[資産]** > **[モジュール]** > **[モジュールの追加]** の順に選んで、新しいモジュールをインストールできます。
+[モジュール](../../automation/automation-integration-modules.md) を Runbook で使うには、Automation アカウントにモジュールをインストールする必要があります。  同じアカウント内のすべての Runbook で、モジュールの関数を使うことができます。 Automation アカウントで **[資産]**  >  **[モジュール]**  >  **[モジュールの追加]** の順に選んで、新しいモジュールをインストールできます。
 
 ただし、PowerShell ギャラリーには Automation アカウントに直接モジュールをデプロイできる簡単なオプションがあるので、このチュートリアルではそのオプションを使ってもかまいません。
 
@@ -52,12 +52,12 @@ ms.locfileid: "58102586"
 1. [PowerShell ギャラリー](https://www.powershellgallery.com/)に移動します。
 2. **OMSIngestionAPI** を探します。
 3. **[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** ボタンをクリックします。
-4. Automation アカウントを選び、**[OK]** をクリックしてモジュールをインストールします。
+4. Automation アカウントを選び、 **[OK]** をクリックしてモジュールをインストールします。
 
 ## <a name="2-create-automation-variables"></a>2.Automation 変数を作成する
 [Automation 変数](../../automation/automation-variables.md)は、Automation アカウントのすべての Runbook で使うことができる値を保持します。 実際の Runbook を編集することなくこれらの値を変更できるので、Runbook の柔軟性が高くなります。 HTTP データ コレクター API からのすべての要求では、Log Analytics ワークスペースの ID とキーが必要であり、この情報を格納するには変数資産が最適です。
 
-![variables](media/runbook-datacollect/variables.png)
+![変数](media/runbook-datacollect/variables.png)
 
 1. Azure Portal で、Automation アカウントに移動します。
 2. **[共有リソース]** の **[変数]** を選びます。
@@ -66,9 +66,9 @@ ms.locfileid: "58102586"
 | プロパティ | ワークスペース ID の値 | ワークスペース キーの値 |
 |:--|:--|:--|
 | Name | WorkspaceId | WorkspaceKey |
-| type | String | String |
+| Type | string | string |
 | 値 | Log Analytics ワークスペースのワークスペース ID を貼り付けます。 | Log Analytics ワークスペースのプライマリ キーまたはセカンダリ キーを貼り付けます。 |
-| 暗号化 | いいえ  | はい |
+| 暗号化 | いいえ | はい |
 
 ## <a name="3-create-runbook"></a>手順 3.Runbook を作成する
 
@@ -77,8 +77,8 @@ ms.locfileid: "58102586"
 ![Runbook を編集する](media/runbook-datacollect/edit-runbook.png)
 
 1. Automation アカウントに移動します。
-2. **[Runbook]** > **[Runbook の追加]** > **[新しい Runbook の作成]** の順にクリックします。
-3. Runbook 名に「**Collect-Automation-jobs**」と入力します。 Runbook の種類として、**[PowerShell]** を選びます。
+2. **[Runbook]**  >  **[Runbook の追加]**  >  **[新しい Runbook の作成]** の順にクリックします。
+3. Runbook 名に「**Collect-Automation-jobs**」と入力します。 Runbook の種類として、 **[PowerShell]** を選びます。
 4. **[作成]** をクリックして Runbook を作成し、エディターを開始します。
 5. 以下のコードをコピーして、Runbook に貼り付けます。 コードの説明については、スクリプト内のコメントをご覧ください。
     ```
@@ -135,7 +135,7 @@ Azure Automation には、発行する前に [Runbook をテストする](../../
 1. **[テスト ウィンドウ]** をクリックして、テスト環境で Runbook を開きます。
 1. Runbook にはパラメーターがあるので、それらの値を入力するように求められます。 ジョブ情報を収集するリソース グループの名前と Automation アカウントを入力します。
 1. **[開始]** をクリックして Runbook を開始します。
-1. Runbook は **[キューに登録済み]** の状態で開始した後、**[実行中]** に移行します。
+1. Runbook は **[キューに登録済み]** の状態で開始した後、 **[実行中]** に移行します。
 1. Runbook は、Json 形式で収集されたジョブの詳細出力を表示します。 ジョブが表示されない場合は、過去 1 時間の間に Automation アカウントでジョブが作成されていない可能性があります。 Automation アカウントで Runbook を開始してみた後、テストをもう一度実行します。
 1. Log Analytics への post コマンドでエラーが何も表示されないことを出力で確認します。 次のようなメッセージが表示されます。
 
@@ -158,7 +158,7 @@ Runbook が正しく動作していることを確認した後、運用環境で
 
 1. Automation アカウントに戻ります。
 2. **[Runbook]** をクリックし、**Collect-Automation-jobs** を選びます。
-3. **[編集]**、**[発行]** の順にクリックします。
+3. **[編集]** 、 **[発行]** の順にクリックします。
 4. 以前に発行したバージョンの上書きの確認を求められたら、**はい** をクリックします。
 
 ## <a name="7-set-logging-options"></a>7.ログ オプションを設定する
@@ -166,7 +166,7 @@ Runbook が正しく動作していることを確認した後、運用環境で
 
 ![ログとトレース](media/runbook-datacollect/logging.png)
 
-1. Runbook のプロパティで、**[Runbook の設定]** の **[ログとトレース]** を選びます。
+1. Runbook のプロパティで、 **[Runbook の設定]** の **[ログとトレース]** を選びます。
 2. **[詳細レコードの記録]** の設定を **[オン]** に変更します。
 3. **[Save]** をクリックします。
 
@@ -175,9 +175,9 @@ Runbook が正しく動作していることを確認した後、運用環境で
 
 ![Runbook のスケジュールを設定する](media/runbook-datacollect/schedule-runbook.png)
 
-1. Runbook のプロパティで、**[リソース]** の **[スケジュール]** を選びます。
-2. **[スケジュールの追加]** > **[スケジュールを Runbook にリンクします]** > **[新しいスケジュールを作成します]** の順にクリックします。
-5. スケジュールに次の値を入力し、**[作成]** をクリックします。
+1. Runbook のプロパティで、 **[リソース]** の **[スケジュール]** を選びます。
+2. **[スケジュールの追加]**  >  **[スケジュールを Runbook にリンクします]**  >  **[新しいスケジュールを作成します]** の順にクリックします。
+5. スケジュールに次の値を入力し、 **[作成]** をクリックします。
 
 | プロパティ | 値 |
 |:--|:--|
@@ -185,7 +185,7 @@ Runbook が正しく動作していることを確認した後、運用環境で
 | 開始 | 現在時刻より 5 分以上後の任意の時刻を選びます。 |
 | 繰り返し | 繰り返し |
 | 繰り返しの間隔 | 1 時間 |
-| 有効期限の設定 | いいえ  |
+| 有効期限の設定 | いいえ |
 
 スケジュールを作成した後、このスケジュールが Runbook を開始するたびに使われるパラメーター値を設定する必要があります。
 
@@ -198,10 +198,10 @@ Runbook が開始されるたびに、[ジョブが作成](../../automation/auto
 
 ![[ジョブ]](media/runbook-datacollect/jobs.png)
 
-1. Runbook のプロパティで、**[リソース]** の **[ジョブ]** を選びます。
+1. Runbook のプロパティで、 **[リソース]** の **[ジョブ]** を選びます。
 2. Runbook が開始されるたびに作成されたジョブの一覧が表示されます。
 3. ジョブの 1 つをクリックすると詳細が表示されます。
-4. Runbook からのログと出力を表示するには、**[すべてのログ]** をクリックします。
+4. Runbook からのログと出力を表示するには、 **[すべてのログ]** をクリックします。
 5. 一番下までスクロールし、次の図のようなエントリを探します。<br>![詳細](media/runbook-datacollect/verbose.png)
 6. このエントリをクリックすると、Log Analytics に送信された詳細な Json データが表示されます。
 

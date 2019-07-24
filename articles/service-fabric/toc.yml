@@ -73,10 +73,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5 - クラスターの削除
           href: service-fabric-tutorial-delete-cluster.md
-    - name: AWS でのスタンドアロン クラスターの作成
+    - name: スタンドアロン クラスターを作成する
       items:
-        - name: 1- AWS でのインフラストラクチャの作成
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1 - インフラストラクチャの作成
+          items:
+            - name: AWS を使用する
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: Azure を使用する
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2- Service Fabric の設定
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3- クラスターへのアプリケーションのデプロイ
@@ -270,7 +274,7 @@
           items:
             - name: Azure クラスターの概要
               href: service-fabric-azure-clusters-overview.md
-            - name: ノードの種類と VM Scale Sets
+            - name: ノード タイプと仮想マシン スケール セット
               href: service-fabric-cluster-nodetypes.md
             - name: Azure でのクラスターのアップグレード
               href: service-fabric-cluster-upgrade.md
@@ -517,6 +521,8 @@
               href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
             - name: Windows での Linux クラスターの設定
               href: service-fabric-local-linux-cluster-windows.md
+            - name: VS からリモート Linux クラスターに .NET Core アプリをデプロイする
+              href: service-fabric-how-to-publish-linux-app-vs.md
         - name: Linux/Eclipse 開発環境での作業
           items:
             - name: Java 開発用の Eclipse プラグインの使用
@@ -541,8 +547,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: 推奨プラクティス
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: 移行済みのアプリをリファクタリングする
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: アプリケーションを最新化する
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: アプリケーションのライフサイクルを管理する
       items:
         - name: アプリケーションをパッケージ化する
@@ -693,6 +699,8 @@
       items:
         - name: 一般的なシナリオの診断
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: コード パッケージのエラーの診断
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: アプリケーションの監視
           items:
             - name: アプリケーションへのログ記録の追加
@@ -842,8 +850,8 @@
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: トラブルシューティング ガイド
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
+    - name: リリース ノート
+      href: release-notes.md
     - name: サンプル コード
       href: 'https://aka.ms/servicefabricsamples'
     - name: サポート オプション
@@ -852,5 +860,7 @@
       href: service-fabric-versions.md
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
+    - name: トラブルシューティング ガイド
+      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

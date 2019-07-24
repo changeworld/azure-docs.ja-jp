@@ -4,17 +4,17 @@ description: この記事では、ローカル データ センターまたは�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 785cf5159615b4a81740e853f2b513f0e6d74aec
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: fceeed47ee77207e00ebfc619226ecbb5956bc3d
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198467"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478524"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する
 
@@ -46,12 +46,13 @@ Windows Hybrid Runbook Worker をインストールして構成するには、2 
 
 Hybrid Runbook Worker のデプロイを開始する前に、[ネットワークの計画に関する情報](#network-planning)を確認してください。 worker が正常にデプロイされたら、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。
 
+このソリューションと Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用していれば、このコンピューターを Automation アカウントの Hybrid Runbook Worker に追加して Automation Runbook をサポートできます。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。
 ## <a name="remove-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker を削除する
 
 要件に応じて、グループから 1 つ以上の Hybrid Runbook Worker を削除したり、グループを削除することができます。 オンプレミス コンピューターから Hybrid Runbook Worker を削除するには、次の手順を使用します。
 
 1. Azure Portal で、Automation アカウントに移動します。
-2. **[アカウント設定]** で、**[キー]** を選択し、**[URL]** と **[プライマリ アクセス キー]** の値をメモします。 この情報は、次の手順に必要です。
+2. **[アカウント設定]** で、 **[キー]** を選択し、 **[URL]** と **[プライマリ アクセス キー]** の値をメモします。 この情報は、次の手順に必要です。
 
 ### <a name="windows"></a>Windows
 
@@ -87,7 +88,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
    ![[プロパティ] ページ](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-3. 選択したグループの [プロパティ] ページで、**[削除]** を選択します。 メッセージによって、この操作の確認が求められます。 操作を続行する場合は、**[はい]** を選択します。
+3. 選択したグループの [プロパティ] ページで、 **[削除]** を選択します。 メッセージによって、この操作の確認が求められます。 操作を続行する場合は、 **[はい]** を選択します。
 
    ![Confirmation message](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 5f06ca04b0b6ea48ebb49952df71cb02946777fa
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66145363"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67333381"
 ---
 ## <a name="authentication"></a>Authentication
 
@@ -18,16 +18,15 @@ ms.locfileid: "66145363"
 | サポートされている Authorization ヘッダー | 音声テキスト変換 | テキスト読み上げ |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | はい | いいえ |
-| Authorization:ベアラー | はい | はい |
+| Authorization:Bearer | はい | はい |
 
-`Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 例: 
+`Ocp-Apim-Subscription-Key` ヘッダーを使用する場合、指定する必要があるのはサブスクリプション キーだけです。 例:
 
 ```
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-`Authorization: Bearer` ヘッダーを使用する場合は、`issueToken` エンドポイントに対して要求を実行する必要があります。 この要求では、サブスクリプション キーを、10 分間有効なアクセス トークンと交換します。 以降のいくつかのセクションでは、トークンの取得方法と使用方法、更新方法について説明します。
-
+`Authorization: Bearer` ヘッダーを使用する場合は、`issueToken` エンドポイントに対して要求を実行する必要があります。 この要求では、サブスクリプション キーを、10 分間有効なアクセス トークンと交換します。 以降のいくつかのセクションでは、トークンの取得方法と使用方法について説明します。
 
 ### <a name="how-to-get-an-access-token"></a>アクセス トークンを取得する方法
 

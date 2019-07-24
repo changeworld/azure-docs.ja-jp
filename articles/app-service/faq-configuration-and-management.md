@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 88051c45f21bdf11807ffcc63d8248cba81ae70b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec2580f0c71c98c7a03f3326cb1b8ff539109ee0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66137063"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720032"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -30,7 +30,7 @@ ms.locfileid: "66137063"
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>App Service のリソースを移動する場合の注意すべき制限はありますか?
 
-App Service のリソースを新しいリソース グループまたはサブスクリプションに移動する場合は、注意すべきいくつかの制限があります。 詳細については、「[App Service の制限](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations)」を参照してください。
+App Service のリソースを新しいリソース グループまたはサブスクリプションに移動する場合は、注意すべきいくつかの制限があります。 詳細については、「[App Service の制限](../azure-resource-manager/move-limitations/app-service-move-limitations.md)」を参照してください。
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Web アプリのカスタム ドメイン名はどのように使用しますか?
 
@@ -56,17 +56,17 @@ App Service Web アプリの SSL 証明書を購入して設定する方法に�
 
 現時点では、Azure Application Insights は移動操作をサポートしていません。 元のリソース グループに Application Insights のリソースが含まれている場合は、そのリソースを移動することはできません。 App Service アプリを移動しようとする際に Application Insights のリソースも含めると、移動操作全体が失敗します。 ただし、アプリが正常に動作するために、Application Insights と App Service プランがそのアプリと同じリソース グループ内に存在する必要はありません。
 
-詳細については、「[App Service の制限](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations)」を参照してください。
+詳細については、「[App Service の制限](../azure-resource-manager/move-limitations/app-service-move-limitations.md)」を参照してください。
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>ガイダンス チェックリストおよびリソースの移動操作の詳細はどこにありますか?
 
-「[App Service の制限](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations)」では、リソースを新しいサブスクリプションまたは同じサブスクリプション内の新しいリソース グループに移動する方法について説明します。 リソースの移動チェックリストに関する情報を入手し、移動操作をサポートしているサービスおよびApp Service の制限事項とその他のトピックの詳細について学習できます。
+「[App Service の制限](../azure-resource-manager/move-limitations/app-service-move-limitations.md)」では、リソースを新しいサブスクリプションまたは同じサブスクリプション内の新しいリソース グループに移動する方法について説明します。 リソースの移動チェックリストに関する情報を入手し、移動操作をサポートしているサービスおよびApp Service の制限事項とその他のトピックの詳細について学習できます。
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Web アプリのサーバーのタイム ゾーンはどのように設定しますか?
 
 Web アプリのサーバーのタイム ゾーンを設定するには、次の手順を実行します。
 
-1. Azure ポータルの App Service サブスクリプションで、**[アプリケーション設定]** メニューに移動します。
+1. Azure ポータルの App Service サブスクリプションで、 **[アプリケーション設定]** メニューに移動します。
 2. **[アプリ設定]** で次の設定を追加します。
     * Key = WEBSITE_TIME_ZONE
     * Value = *目的のタイム ゾーン*
@@ -76,13 +76,13 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な Web ジョブがときどき失敗する理由はなんですか?
 
-既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 Basic プランおよび Standard プランでは、**[常時接続]** 設定をオンにして、常に Web アプリをロードしておくことができます。 アプリで継続的な Web ジョブを実行する場合は、**[常時接続]** をオンにする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。 詳細については、「[Create a continuously running WebJob](webjobs-create.md#CreateContinuous)」(継続的に実行する Web ジョブの作成) を参照してください。
+既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 Basic プランおよび Standard プランでは、 **[常時接続]** 設定をオンにして、常に Web アプリをロードしておくことができます。 アプリで継続的な Web ジョブを実行する場合は、 **[常時接続]** をオンにする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。 詳細については、「[Create a continuously running WebJob](webjobs-create.md#CreateContinuous)」(継続的に実行する Web ジョブの作成) を参照してください。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Web アプリの送信 IP アドレスはどのように取得しますか?
 
 Web アプリの送信 IP アドレスの一覧を取得するには、次の手順を実行します。
 
-1. Azure ポータルの Web アプリのブレードで、**[プロパティ]** メニューに移動します。
+1. Azure ポータルの Web アプリのブレードで、 **[プロパティ]** メニューに移動します。
 2. **送信 IP アドレス**を検索します。
 
 送信 IP アドレスの一覧が表示されます。
@@ -136,7 +136,7 @@ Web ジョブのログを確認するには、次の手順を実行します。
 2. [Web ジョブ] を選択します。
 3. **[出力の切り替え]** ボタンを選択します。
 4. 出力ファイルをダウンロードするには、**ダウンロード** リンクを選択します。
-5. 個別実行では、**[個別呼び出し]** を選択します。
+5. 個別実行では、 **[個別呼び出し]** を選択します。
 6. **[出力の切り替え]** ボタンを選択します。
 7. ダウンロード リンクを選択します。
 
@@ -188,13 +188,13 @@ F12 トレースをキャプチャする方法は 2 つあります。
 3. **[ネットワーク]** タブが選択されていることを確認し、緑色の **[再生]** ボタンをクリックします。
 4. 問題を再現する手順を実行します。
 5. 赤の **[停止]** ボタンをクリックします。
-6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Microsoft Edge)。"*または*"、HAR ファイルを右クリックし、**[HAR 形式ですべて保存]** を選択します (Chrome)。
+6. **[保存]** ボタン (ディスク アイコン) をクリックし、HAR ファイルを保存します (Internet Explorer およびで Microsoft Edge)。"*または*"、HAR ファイルを右クリックし、 **[HAR 形式ですべて保存]** を選択します (Chrome)。
 
 ### <a name="f12-console-output"></a>F12 コンソール出力
 
 1. **[コンソール]** タブを選択します。
-2. 1 つ以上の項目を含むタブごとに、タブを選択します (**[エラー]**、**[警告]**、または **[情報]**)。 タブが選択されていない場合、カーソルをタブ以外の場所に移動すると、タブ アイコンは、グレーまたは黒になります。
-3. ウィンドウのメッセージ領域で右クリックし、**[すべてコピー]** を選択します。
+2. 1 つ以上の項目を含むタブごとに、タブを選択します ( **[エラー]** 、 **[警告]** 、または **[情報]** )。 タブが選択されていない場合、カーソルをタブ以外の場所に移動すると、タブ アイコンは、グレーまたは黒になります。
+3. ウィンドウのメッセージ領域で右クリックし、 **[すべてコピー]** を選択します。
 4. コピーしたテキストをファイルに貼り付け、ファイルを保存します。
 
 HAR ファイルを表示するには [HAR ビューアー](https://www.softwareishard.com/har/viewer/)を使用できます。

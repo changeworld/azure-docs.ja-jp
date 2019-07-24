@@ -1,25 +1,17 @@
 ---
 title: SAS トークンと Azure CLI を使用した Azure テンプレートのデプロイ | Microsoft Docs
 description: Azure Resource Manager と Azure CLI を使用して、SAS トークンで保護されているテンプレートのリソースを Azure にデプロイします。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: azurecli
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: d09aa46eabe705082edafe12da8442a79d1080b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a71698831859e92300706ade8c2284cbfc7ee241
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603198"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205411"
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>SAS トークンと Azure CLI を使用してプライベートの Resource Manager テンプレートをデプロイする
 

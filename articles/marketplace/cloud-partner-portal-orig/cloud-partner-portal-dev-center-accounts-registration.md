@@ -1,25 +1,18 @@
 ---
-title: Microsoft 開発者アカウントの作成 | Microsoft Docs
+title: Microsoft 開発者アカウントの作成 | Azure Marketplace
 description: Microsoft 開発者アカウントの作成の要件と手順を説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: adfe0af646fae79bc9a954cd5d654626880915d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 4fde5d81fb97bec23fdb46ff53b05874c88d9d67
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894089"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935860"
 ---
 <a name="create-a-microsoft-developer-account"></a>Microsoft 開発者アカウントの作成
 ====================================
@@ -28,7 +21,7 @@ ms.locfileid: "57894089"
 
 ## <a name="create-a-microsoft-account"></a>Microsoft アカウントの作成
 
-発行プロセスを始めるには、**Microsoft デベロッパー センター**で登録を完了する必要があります。 同じ登録済みアカウントを使用して、**[Cloud パートナー ポータル](https://cloudpartner.azure.com/)** で発行プロセスを開始します。
+発行プロセスを始めるには、**Microsoft デベロッパー センター**で登録を完了する必要があります。 同じ登録済みアカウントを使用して、 **[Cloud パートナー ポータル](https://cloudpartner.azure.com/)** で発行プロセスを開始します。
 
 ### <a name="general-account-guidelines"></a>一般アカウントのガイドライン
 
@@ -101,14 +94,14 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 
 3. [アカウントの保護にご協力ください] ウィザードを実行し、電話番号またはメール アドレスを使用して ID を検証します。
 
-4. [登録] の [アカウント情報] で、ドロップダウン リストから **[アカウントの国/地域]** を選択し、**[次へ]** を選択します。
+4. [登録] の [アカウント情報] で、ドロップダウン リストから **[アカウントの国/地域]** を選択し、 **[次へ]** を選択します。
 
    ![国/リージョンの選択](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"販売元" の国:Azure Marketplace でサービスを販売するには、登録済みエンティティが、ドロップダウン リストに表示される承認されたいずれかの "販売元" の国に所在している必要があります。 この制限は、支払いおよび課税上の理由から生じます。 詳細については、Marketplace 参加ポリシーに関するページをご覧ください。
+    >"販売元" の国/地域:Azure Marketplace でサービスを販売するには、登録済みエンティティが、ドロップダウン リストに表示される承認されたいずれかの "販売元" の国/地域に所在している必要があります。 この制限は、支払いおよび課税上の理由から生じます。 詳細については、Marketplace 参加ポリシーに関するページをご覧ください。
 
-5. [アカウントの種類] として **[会社]** を選択し、**[次へ]** を選択します。
+5. [アカウントの種類] として **[会社]** を選択し、 **[次へ]** を選択します。
 
     >[!IMPORTANT]
     >アカウントの種類を理解し、最適な種類を決定するには、次のスクリーン キャプチャで示されているアカウントの種類、場所、料金のページをご覧ください。
@@ -125,7 +118,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
     >[!IMPORTANT]
     >デベロッパー センターで会社を承認するための検証プロセスで使用されるため、連絡先情報は正確に入力してください。
 
-8. **会社の承認者**の連絡先情報を入力します。 会社の承認者とは、デベロッパー センターでアカウントを作成する権限が、組織の代表者として付与されていることを証明できる社内の担当者です。 この情報を提供した後、**[次へ]** を選択して**支払いセクション**に移動します。
+8. **会社の承認者**の連絡先情報を入力します。 会社の承認者とは、デベロッパー センターでアカウントを作成する権限が、組織の代表者として付与されていることを証明できる社内の担当者です。 この情報を提供した後、 **[次へ]** を選択して**支払いセクション**に移動します。
 
     ![会社の承認者を識別する](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_08.png)
 
@@ -141,7 +134,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 
 ### <a name="commercial-offers"></a>商用オファー
 
-時間単位の課金モデルを使用する仮想マシン プランなど、商用オファーを発行する場合は、税金と銀行取引情報を提供する必要があります。 そのためには、デベロッパー センター アカウントにサインインし、**[Update your account information]\(アカウント情報を更新する\)** を選択します。 次のセクション「銀行情報と税金情報を追加する」の指示に従います。
+時間単位の課金モデルを使用する仮想マシン プランなど、商用オファーを発行する場合は、税金と銀行取引情報を提供する必要があります。 そのためには、デベロッパー センター アカウントにサインインし、 **[Update your account information]\(アカウント情報を更新する\)** を選択します。 次のセクション「銀行情報と税金情報を追加する」の指示に従います。
 
 >[!IMPORTANT]
 >銀行口座および税の情報を提供することなく、運用環境に商用オファーをプッシュすることはできません。
@@ -158,11 +151,11 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 **銀行に関する情報を提供するには**
 
 1.  Microsoft アカウントを使用して、 [Microsoft デベロッパー センター](https://dev.windows.com/registration?accountprogram=azure) にサインインします。
-2.  左側の **[支払いアカウント]** を選択し、**[支払方法の選択]** で **[銀行口座]** または **[PayPal]** を選択します。
+2.  左側の **[支払いアカウント]** を選択し、 **[支払方法の選択]** で **[銀行口座]** または **[PayPal]** を選択します。
 
     >[!NOTE]
     >Marketplace で顧客が購入した商用オファーがある場合、このアカウントで購入の支払いを受け取ることになります。
-3.  支払い情報を入力し、**[保存]** を選択します。
+3.  支払い情報を入力し、 **[保存]** を選択します。
 
     >[!IMPORTANT]
     >支払いアカウントを更新または変更する必要がある場合は、上記の手順に従い、現在の情報の代わりに新しい情報を使用します。
@@ -179,7 +172,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
     - 永住権を持つ国または地域を選択します。
     - 基本的な市民権を保持している国または地域を選択します。
     - **[次へ]** を選択します。
-4.  税金の詳細を入力し、**[次へ]** をクリックします。
+4.  税金の詳細を入力し、 **[次へ]** をクリックします。
 
 >[!WARNING]
 >Microsoft デベロッパー センター アカウントで銀行口座と税金の情報の入力を完了することなく、商用オファーを運用環境に移行することはできません。
@@ -189,15 +182,15 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 デベロッパー センター登録で問題が発生した場合は、次の手順でサポート チケットを開いてください。
 
 1.  [サポート リンク](https://developer.microsoft.com/windows/support)に移動します。
-2.  **[お問い合わせ]** で、**[インシデントの送信]** を選択します。
+2.  **[お問い合わせ]** で、 **[インシデントの送信]** を選択します。
     ![チケットを開く](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_02.png)
-3.  **[問題の種類]** で [Dev Center のヘルプ] を、**[カテゴリ]** で [アプリの発行と管理] を選択します。 **[Start email]\(メールの開始\)** を選択します。
+3.  **[問題の種類]** で [Dev Center のヘルプ] を、 **[カテゴリ]** で [アプリの発行と管理] を選択します。 **[Start email]\(メールの開始\)** を選択します。
 
     ![問題の種類を示す](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_03.png)
 
 4.  サインイン ページが表示されます。 Microsoft アカウントを使用してサインインします。 Microsoft アカウントを持っていない場合は、[作成します](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1)。
 
-5.  問題に関する詳細情報を提供し、**[送信]** を選択してチケットを送信します。
+5.  問題に関する詳細情報を提供し、 **[送信]** を選択してチケットを送信します。
 
     ![チケットを送信する](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_05.png)
 

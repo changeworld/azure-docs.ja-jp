@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: 543135db8df69db7e0e6182c9d52b9c956ee80b1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8afed4eb1add0ba3a7db474e54b2f78a0babab06
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996986"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60789079"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>予約済み IP アドレス (クラシック デプロイ)
 

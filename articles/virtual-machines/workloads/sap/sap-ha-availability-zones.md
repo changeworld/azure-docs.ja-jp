@@ -18,11 +18,11 @@ ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339491"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62125324"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Availability Zones での SAP ワークロードの構成
 [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) は、Azure で提供されている高可用性機能の 1 つです。 Availability Zones により、Azure での SAP ワークロードの全体的な可用性が向上します。 この機能は、既に一部の[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)で利用可能になっています。 今後、さらに多くのリージョンで利用できるようになります。

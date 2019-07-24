@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.openlocfilehash: f2781e3cc2433f73ba7ff33e5c452e29de746adf
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956205"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Azure App Service 向けの Linux ASP.NET Core アプリを構成する
@@ -64,7 +64,7 @@ App Service と *Web.config* で同じ名前のアプリ設定を構成した場
 
 ## <a name="get-detailed-exceptions-page"></a>例外の詳細ページを表示する
 
-Visual Studio デバッガーで ASP.NET アプリの実行中に例外が発生すると、ブラウザーに例外の詳細ページが表示されますが、App Service ではそのページの代わりに汎用の **HTTP 500** エラーが表示されるか、「**要求の処理中にエラーが発生しました。**」 メッセージが表示されます。 App Service で例外の詳細ページを表示するには、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> で次のコマンドを実行してアプリ設定 `ASPNETCORE_ENVIRONMENT` をアプリに追加します。
+Visual Studio デバッガーで ASP.NET アプリの実行中に例外が発生すると、ブラウザーに例外の詳細ページが表示されますが、App Service ではそのページの代わりに汎用の **HTTP 500** エラーが表示されるか、「**要求の処理中にエラーが発生しました。** 」 メッセージが表示されます。 App Service で例外の詳細ページを表示するには、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> で次のコマンドを実行してアプリ設定 `ASPNETCORE_ENVIRONMENT` をアプリに追加します。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -124,7 +124,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>アプリ設定を使用
 
-<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a> で、次の CLI コマンドを実行して App Service アプリにアプリ設定を追加します。 *\<app-name>*、*\<resource-group-name>*、および *\<project-name>* を適切な値で置き換えます。
+<a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a> で、次の CLI コマンドを実行して App Service アプリにアプリ設定を追加します。 *\<app-name>* 、 *\<resource-group-name>* 、および *\<project-name>* を適切な値で置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"

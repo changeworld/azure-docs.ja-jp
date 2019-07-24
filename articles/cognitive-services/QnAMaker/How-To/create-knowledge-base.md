@@ -3,20 +3,20 @@ title: ナレッジ ベースを作成する
 titleSuffix: QnA Maker API - Azure Cognitive Services
 description: QnA Maker API サービス ポータルを使用して、おしゃべり機能を備えるナレッジ ベースを作成します。 これにより、アプリが魅力的になります。 上位の事前設定済みのおしゃべりのセットをボットのおしゃべりの開始点として KB に追加すると、最初から作成するよりもコストと時間を節約することができます。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
-ms.author: tulasim
+ms.date: 05/10/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ae278ac3e0fd9f93e080da8f52b9728e9c22a436
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 8c674d33d7f0958fbce8f080f43404c480c7410c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439245"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447439"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>クイック スタート:QnA Maker API サービス ポータルを使用してナレッジ ベースを作成する
 
@@ -33,9 +33,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-new-knowledge-base"></a>新しいナレッジ ベースの作成
 
-1. Azure 資格情報で [QnA Maker ポータル](https://qnamaker.ai)にサインインし、**[Create a knowledge base]** を選択します。
+1. Azure 資格情報で [QnA Maker ポータル](https://qnamaker.ai)にサインインし、 **[Create a knowledge base]** を選択します。
 
-1. QnA Maker サービスをまだ作成していない場合、**[Create a QnA service]\(QnA サービスの作成\)** を選択します。 
+1. QnA Maker サービスをまだ作成していない場合、 **[Create a QnA service]\(QnA サービスの作成\)** を選択します。 
 
 1. QnA Maker ポータルの**手順 2** のリストから、QnA Maker サービスと関連付けられた Azure テナント、Azure サブスクリプション名、および Azure リソース名を選択します。 ナレッジ ベースをホストする Azure QnA Maker サービスを選択します。
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - 抽出するデータのファイルをアップロードします。 追加できるドキュメントの数については、[価格情報](https://aka.ms/qnamaker-pricing)をご覧ください。
     - QnA を手動で追加する場合、上の図に示した**手順 4** は省略できます。
 
-1. **おしゃべり**を KB に追加します。 3 つのパーソナリティのいずれかを選択して、おしゃべりのサポートをボットに追加します。 
+1. **おしゃべり**を KB に追加します。 いずれかのパーソナリティを選択して、おしゃべりのサポートをボットに追加します。 
 
     ![おしゃべりを KB に追加する](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
 

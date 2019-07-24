@@ -4,15 +4,15 @@ description: Windows Virtual Desktop プレビュー ホスト プールの FSLo
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: f6516e37107a16d80c4d9eb9514782bdbcc44184
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 692902c28b336dd46a7c6f00d5cf5a61ee9f7328
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925208"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619103"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>ホスト プールのユーザー プロファイル共有を設定する
 
@@ -31,8 +31,8 @@ Windows Virtual Desktop プレビュー サービスでは、推奨されるユ�
 仮想マシンの作成後に、次の手順を実行してドメインに参加させます。
 
 1. 仮想マシンの作成時に指定した資格情報を使用して[仮想マシンに接続](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)します。
-2. 仮想マシン上で、**[コントロール パネル]** を起動し、**[システム]** を選択します。
-3. **[コンピューター名]** を選択し、**[設定の変更]** を選択してから **[変更]** を選択します
+2. 仮想マシン上で、 **[コントロール パネル]** を起動し、 **[システム]** を選択します。
+3. **[コンピューター名]** を選択し、 **[設定の変更]** を選択してから **[変更]** を選択します
 4. **[ドメイン]** を選択し、仮想ネットワーク上の Active Directory ドメインを入力します。
 5. ドメインに参加しているマシンに対する権限を持つドメイン アカウントで認証します。
 
@@ -43,10 +43,10 @@ Windows Virtual Desktop プレビュー サービスでは、推奨されるユ�
 1. Windows Virtual Desktop の Active Directory ユーザーを [Active Directory セキュリティ グループ](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups)に追加します。 このセキュリティ グループは、先ほど作成したファイル共有仮想マシンに対して、Windows Virtual Desktop ユーザーを認証するために使用されます。
 2. [ファイル共有仮想マシンに接続します](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
 3. ファイル共有仮想マシン上で、プロファイル共有として使用するフォルダーを **C ドライブ**に作成します。
-4. 新しいフォルダーを右クリックし、**[プロパティ]**、**[共有]**、**[詳細な共有]** を選択します。
-5. **[このフォルダーを共有する]** を選択し、**[アクセス許可]** を選択してから、**[追加]** を選択します。
+4. 新しいフォルダーを右クリックし、 **[プロパティ]** 、 **[共有]** 、 **[詳細な共有]** を選択します。
+5. **[このフォルダーを共有する]** を選択し、 **[アクセス許可]** を選択してから、 **[追加]** を選択します。
 6. Windows Virtual Desktop ユーザーを追加したセキュリティ グループを検索し、そのグループに**フル コントロール**があることを確認します。
-7. セキュリティ グループを追加した後、フォルダーを右クリックして **[プロパティ]** を選択し、**[共有]** を選択して、後で使用するために **[ネットワーク パス]** をコピーしておきます。
+7. セキュリティ グループを追加した後、フォルダーを右クリックして **[プロパティ]** を選択し、 **[共有]** を選択して、後で使用するために **[ネットワーク パス]** をコピーしておきます。
 
 アクセス許可について詳しくは、[FSLogix のドキュメント](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers)をご覧ください。
 

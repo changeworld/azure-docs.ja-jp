@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880085"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66234052"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -45,12 +45,12 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
   
     ![AAD ドメインの取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Azure テナント ID。 テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」を参照してください。
+* Azure テナント ID。 テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」を参照してください。
 
 ## <a name="end-user-authentication"></a>エンドユーザー認証
-この認証メカニズムは、エンド ユーザーに Azure AD 経由でアプリケーションにログインしてもらう場合に推奨する方法です。 アプリケーションは、ログインしたエンド ユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーは、アプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。
+この認証メカニズムは、エンド ユーザーに Azure AD 経由でアプリケーションにサインインしてもらう場合に推奨される方法です。 アプリケーションは、ログインしたエンド ユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーは、アプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。
 
-エンド ユーザーがログインすると、アクセス トークンと更新トークンがアプリケーションに付与されます。 アクセス トークンは Data Lake Storage Gen1 または Data Lake Analytics に対する各要求にアタッチされ、既定では 1 時間有効です。 更新トークンは、新しいアクセス トークンを取得するために使用でき、既定では最大 2 週間有効です。 エンド ユーザーのログインには、2 つの異なる方法を使用できます。
+エンドユーザーがサインインすると、アプリケーションにアクセス トークンと更新トークンが付与されます。 アクセス トークンは Data Lake Storage Gen1 または Data Lake Analytics に対する各要求にアタッチされ、既定では 1 時間有効です。 更新トークンは、新しいアクセス トークンを取得するために使用でき、既定では最大 2 週間有効です。 エンド ユーザーのサインインには、2 つの異なる方法を使用できます。
 
 ### <a name="using-the-oauth-20-pop-up"></a>OAuth 2.0 ポップアップの使用
 アプリケーションで、エンド ユーザーが資格情報を入力できる OAuth 2.0 認証ポップアップをトリガーできます。 このポップアップは、必要であれば、Azure AD の 2 要素認証 (2FA) プロセスでも機能します。 
@@ -82,13 +82,13 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>手順 2:アプリケーション ID とリダイレクト URI を取得する
 
-アプリケーション ID の取得については、[アプリケーション ID の取得](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)に関するページをご覧ください。
+アプリケーション ID の取得については、[アプリケーション ID の取得](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)に関するページをご覧ください。
 
 リダイレクト URI を取得するには、次の手順を実行します。
 
-1. Azure Portal で **[Azure Active Directory]** を選択します。**[アプリの登録]** をクリックし、作成した Azure AD ネイティブ アプリケーションを見つけてクリックします。
+1. Azure Portal で **[Azure Active Directory]** を選択します。 **[アプリの登録]** をクリックし、作成した Azure AD ネイティブ アプリケーションを見つけてクリックします。
 
-2. アプリケーションの **[設定]** ブレードで、**[リダイレクト URI]** をクリックします。
+2. アプリケーションの **[設定]** ブレードで、 **[リダイレクト URI]** をクリックします。
 
     ![リダイレクト URI の取得](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-redirect-uri.png)
 
@@ -97,17 +97,17 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 
 ## <a name="step-3-set-permissions"></a>手順 3:アクセス許可を設定する
 
-1. Azure Portal で **[Azure Active Directory]** を選択します。**[アプリの登録]** をクリックし、作成した Azure AD ネイティブ アプリケーションを見つけてクリックします。
+1. Azure Portal で **[Azure Active Directory]** を選択します。 **[アプリの登録]** をクリックし、作成した Azure AD ネイティブ アプリケーションを見つけてクリックします。
 
-2. アプリケーションの **[設定]** ブレードで、**[必要なアクセス許可]** をクリックし、**[追加]** をクリックします。
+2. アプリケーションの **[設定]** ブレードで、 **[必要なアクセス許可]** をクリックし、 **[追加]** をクリックします。
 
     ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
-3. **[API アクセスの追加]** ブレードで、**[API を選択します]** をクリックします。**[Azure Data Lake]** をクリックし、**[選択]** をクリックします。
+3. **[API アクセスの追加]** ブレードで、 **[API を選択します]** をクリックします。 **[Azure Data Lake]** をクリックし、 **[選択]** をクリックします。
 
     ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
  
-4.  **[API アクセスの追加]** ブレードで、**[アクセス許可の選択]** をクリックします。**[Full access to Data Lake Store (Data Lake Store にフル アクセス許可を与える)]** チェック ボックスをオンにし、**[選択]** をクリックします。
+4.  **[API アクセスの追加]** ブレードで、 **[アクセス許可の選択]** をクリックします。 **[Full access to Data Lake Store (Data Lake Store にフル アクセス許可を与える)]** チェック ボックスをオンにし、 **[選択]** をクリックします。
 
     ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 

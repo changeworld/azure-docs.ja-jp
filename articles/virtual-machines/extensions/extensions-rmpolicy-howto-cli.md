@@ -4,7 +4,7 @@ description: Azure Policy を使用して VM 拡張機能の展開を制限で�
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz;cynthn
-ms.openlocfilehash: 1f71276c25e3ec1e5791d9b35f89aa95190c6afd
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.author: roiyz
+ms.reviewer: cynthn
+ms.openlocfilehash: 79a65dc0e7aa85b2f8cef5f884fab7bc6cd076fe
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341964"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876720"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Azure Policy を使用して Linux VM への拡張機能のインストールを制限する
 
@@ -64,7 +65,7 @@ vim ~/clouddrive/azurepolicy.rules.json
 }
 ```
 
-完了したら、**Esc** キーを押して、「**:wq**」と入力し、ファイルを保存して閉じます。
+完了したら、**Esc** キーを押して、「 **:wq**」と入力し、ファイルを保存して閉じます。
 
 
 ## <a name="create-a-parameters-file"></a>パラメーター ファイルを作成する
@@ -94,7 +95,7 @@ vim ~/clouddrive/azurepolicy.parameters.json
 }
 ```
 
-完了したら、**Esc** キーを押して、「**:wq**」と入力し、ファイルを保存して閉じます。
+完了したら、**Esc** キーを押して、「 **:wq**」と入力し、ファイルを保存して閉じます。
 
 ## <a name="create-the-policy"></a>ポリシーの作成
 

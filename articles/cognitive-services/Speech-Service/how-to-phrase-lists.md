@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 5/02/2019
+ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 576d3c4a70c8870a31bc352b9f7723d2c2e69854
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 158819d481c0ce245539d783f194b159b2b9edb6
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025679"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606517"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>音声テキスト変換用のフレーズ リスト
 
@@ -65,7 +65,7 @@ phraseListGrammar.addPhrase("Move to Ted");
 ```
 
 >[!Note]
-> Speech Service で音声の照合に使用されるフレーズ リストの最大数は 1024 です。
+> Speech Service で音声の照合に使用されるフレーズ リストの最大数は 1024 フレーズです。
 
 clear() を呼び出すことで、`PhraseListGrammar` に関連付けられたフレーズを消去することもできます。
 

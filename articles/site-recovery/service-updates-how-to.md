@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 04/25/2019
 ms.author: rajanaki
-ms.openlocfilehash: e27dee213baf8365c3ad4efc69602f66e2081abe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: bde341063fb6742bbe2a92592981d4a2a437d214
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311154"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203429"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Azure Site Recovery のサービスの更新情報
 組織として、機能が停止したときに、それが計画されたものであれ、計画外のものであれ、どのような方法でデータの安全性を確保し、アプリやワークロードの実行状態を維持するかを把握しておく必要があります。 Azure Site Recovery は、サイトがダウンした場合でも利用可能な VM や物理サーバー上でアプリの実行状態を維持することで、BCDR 戦略に貢献します。 VM や物理サーバー上で実行されているワークロードは、プライマリ サイトが利用できなくなった場合でもセカンダリ ロケーションで利用できるように、Site Recovery によってレプリケートされます。 ワークロードは、プライマリ サイトが稼働状態に戻った時点でプライマリ サイトに復元されます。
@@ -33,6 +33,17 @@ Azure Site Recovery は、新機能の追加、サポート マトリックス�
 
 > [!IMPORTANT]
 > アップグレードの正式なサポートは N-4 から N までのバージョンです (N は最新バージョンです)。 N-6 を使用している場合は、まず N-4 にアップグレードしてから、N にアップグレードする必要があります。
+
+## <a name="expiry-of-components"></a>コンポーネントの有効期限
+Site Recovery のお客様は、コンポーネントの有効期限が近づいたとき、または期限が切れたときに、電子メール (登録している場合) またはポータルのコンテナー ダッシュボード上で通知を受け取ります。 Hyper-V VM を保護している場合、現時点ではコンテナー ダッシュボードの通知は利用できません。 また、お客様のシナリオの対応するインフラストラクチャ ビューに移動し、コンポーネントの横の [更新プログラムが利用可能です] ボタンをクリックすると、最新バージョンをダウンロードできるリンクにリダイレクトされます。
+
+コンポーネントの有効期限が近づいたときの電子メール通知の頻度を以下に示します。
+- コンポーネントの有効期限が切れる 60 日前: 2 週間に 1 回
+- 次の 53 日間: 1 週間に 1 回
+- 最終 7 日前:1 日 1 回
+- 有効期限が切れた後: 2 週間に 1 回
+
+
 
 ### <a name="upgrading-when-the-difference-between-current-version-and-latest-released-version-is-greater-than-4"></a>現在のバージョンとリリースされている最新のバージョンの差が 4 を超える場合のアップグレード
 
@@ -65,11 +76,11 @@ Azure Site Recovery は、新機能の追加、サポート マトリックス�
 2. Azure portal で、[Recovery Services コンテナー] の [レプリケートされたアイテム] ウィンドウに移動します。
 3. 画面上部にある次の通知をクリックします。
     
-    "*Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。*"
+    "*Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。* "
     
-    "*クリックしてインストールしてください ->*"
+    "*クリックしてインストールしてください ->* "
 
-4. 更新プログラムを適用する VM を選択し、**[OK]** をクリックします。
+4. 更新プログラムを適用する VM を選択し、 **[OK]** をクリックします。
 
 ## <a name="between-two-on-premises-vmm-sites"></a>2 つのオンプレミス VMM サイトの間
 1. Microsoft Azure Site Recovery Provider 向けの最新の更新プログラム ロールアップをダウンロードします。
@@ -101,7 +112,7 @@ Azure Site Recovery は、新機能の追加、サポート マトリックス�
 
 1. 前述の現在のバージョンおよびサポートに関する声明に基づいて、[ここ](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server)で提供されているガイドラインに従って、オンプレミス管理サーバーに最初に更新をインストールします。 これは、構成サーバーとプロセス サーバーの役割を持つサーバーです。
 2. スケールアウト プロセス サーバーがある場合は、[ここ](vmware-azure-manage-process-server.md#upgrade-a-process-server)で提供されているガイドラインに従って、次にそれらを更新します。
-3. 次に、保護されている各項目のモビリティ エージェントを更新するために、Azure portal に移動して、**[保護された項目 (Protected Items)]** > **[レプリケートされた項目 (Replicated Items)]** ページに移動します。 このページで VM を選択します。 各 VM のページの下部に表示される **[エージェントの更新]** ボタンを選択します。 これで、保護されているすべての VM でモビリティ サービス エージェントが更新されます。
+3. 次に、保護されている各項目のモビリティ エージェントを更新するために、Azure portal に移動して、 **[保護された項目 (Protected Items)]**  >  **[レプリケートされた項目 (Replicated Items)]** ページに移動します。 このページで VM を選択します。 各 VM のページの下部に表示される **[エージェントの更新]** ボタンを選択します。 これで、保護されているすべての VM でモビリティ サービス エージェントが更新されます。
 
 ### <a name="reboot-of-source-machine-after-mobility-agent-upgrade"></a>モビリティ エージェントのアップグレード後のソース マシンの再起動
 
@@ -118,15 +129,17 @@ Azure Site Recovery は、新機能の追加、サポート マトリックス�
 
 |更新プログラム ロールアップ  |プロバイダー  |統合セットアップ| OVF  |MARS|
 |---------|---------|---------|---------|--------|
+|[更新プログラム ロールアップ 37](https://support.microsoft.com/help/4508614/update-rollup-37-for-azure-site-recovery)     |   5.1.4300.0  |  9.25.5241.1   |  5.1.4300.0  | 2.0.9163.0
+|[更新プログラム ロールアップ 36](https://support.microsoft.com/en-in/help/4503156)     |   5.1.4150.0  |  9.24.5211.1   |  5.1.4150.0  | 2.0.9160.0
 |[更新プログラム ロールアップ 35](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery)     |   5.1.4000.0  |  9.23.5163.1   |  5.1.4000.0  | 2.0.9156.0
 |[更新プログラム ロールアップ 34](https://support.microsoft.com/en-us/help/4490016/update-rollup-34-for-azure-site-recovery) - ホット フィックス     |   5.1.3950.0  |  9.22.5142.1   |  5.1.3950.0  | 2.0.9155.0
 |[更新プログラム ロールアップ 33](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
 |[更新プログラム ロールアップ 32](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
-|[更新プログラム ロールアップ 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0
-|[更新プログラム ロールアップ 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)     |    5.1.3650.0   |   9.19.5007.1    |     5.1.3650.0    |2.0.9139.0
 
 ## <a name="previous-update-rollups"></a>以前の更新プログラム ロールアップ
 
+- [更新プログラム ロールアップ 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)
+- [更新プログラム ロールアップ 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)
 - [更新プログラム ロールアップ 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)
 - [更新プログラム ロールアップ 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery)
 - [更新プログラム ロールアップ 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery)

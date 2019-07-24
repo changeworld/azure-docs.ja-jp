@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/12/2017
 ms.openlocfilehash: a236043d5622e5a2e1ffd572c887fb5ffac2174a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838002"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345449"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Azure Machine Learning Studio Web サービスのパラメーターの使用
 Azure Machine Learning Web サービスは、変更可能なパラメーターを持つモジュールを含む実験を発行すると作成されます。 状況によっては、Web サービスの実行中にモジュールの動作変更が必要になる場合がありますが、 *Web サービスのパラメーター*を使えばこのタスクを実行できます。 
@@ -67,7 +67,7 @@ Web サービスの API ドキュメントには、Web サービス アクセス
    
    ![Web サービスのパラメーター](./media/web-service-parameters/parameter.png)
 6. **[実行]** をクリックします。 
-7. **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New] \(Web サービスのデプロイ [新規])]** を選択して、Web サービスをデプロイします。
+7. **[Web サービスのデプロイ]** をクリックし、 **[Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New] \(Web サービスのデプロイ [新規])]** を選択して、Web サービスをデプロイします。
 
 > [!NOTE] 
 > 新しい Web サービスをデプロイするには、Web サービスのデプロイ先となるサブスクリプションで十分なアクセス許可を持っている必要があります。 詳しくは、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。 

@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
 ms.openlocfilehash: 84b93005941acf625d05a48f0df7b685e1bea0bd
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65785497"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する
@@ -47,7 +47,7 @@ SQL Database でサポートされる機能とサポートされない機能の�
 
 - システム オブジェクトの照合順序
 - 接続関連:エンドポイント ステートメント。 SQL データベースは Windows 認証をサポートしませんが、同様の Azure Active Directory 認証をサポートします。 いくつかの認証の種類には、最新バージョン の SSMS が必要です。 詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」を参照してください。
-- 3 部構成または 4 部構成の名前を使用したデータベース間クエリ  (読み取り専用のデータベース間クエリは、[エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用してサポートされます)。
+- 3 部構成または 4 部構成の名前を使用したデータベース間クエリ (読み取り専用のデータベース間クエリは、[エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用してサポートされます)。
 - データベース間での所有権の継承、`TRUSTWORTHY` 設定
 - `EXECUTE AS LOGIN` 代わりに 'EXECUTE AS USER' を使用してください。
 - 拡張キー管理以外で暗号化がサポートされています。

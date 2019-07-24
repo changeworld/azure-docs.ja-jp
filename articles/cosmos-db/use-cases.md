@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 05/07/2017
-ms.openlocfilehash: 935c6ff03485c2b8e4d3e2f3df51c740ec1e8371
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 05/21/2019
+ms.openlocfilehash: 28a4cc854842b66a9fb61134e3ca9ac9a5f38fed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043296"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65965612"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
@@ -108,7 +108,7 @@ Azure Cosmos DB の使用を開始するには、[クイック スタート](cre
 * [Citrix](https://customers.microsoft.com/story/citrix)。 Citrix では、Azure Service Fabric および Azure Cosmos DB を使用してシングル サインオン ソリューションを開発しています。
 * [TEXA](https://customers.microsoft.com/story/texaspa) TEXA の革新的な車両所有者向け IoT ソリューションは、時間、費用、ガソリンを節約し、ひいては生活全般の負担を軽減します。
 * [Domino's Pizza](https://www.dominos.com)。 Domino's Pizza Inc. は、アメリカのピザ レストラン チェーンです。
-* [Johnson Controls](https://www.johnsoncontrols.com)。 Johnson Controls は、150 か国以上で幅広い顧客にサービスを提供する、グローバルな総合テクノロジーおよび多業種のリーダーです。
+* [Johnson Controls](https://www.johnsoncontrols.com)。 Johnson Controls は、150 以上の国や地域で幅広い顧客にサービスを提供する、グローバルな総合テクノロジおよび多業種のリーダーです。
 * [Microsoft Windows、ユニバーサル ストア、Azure IoT Hub、Xbox Live、その他のインターネット規模のサービス](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/)。 Microsoft が Azure Cosmos DB を使用して大規模でスケーラブルなサービスを構築する方法。
 * [Microsoft のデータと分析チーム](https://customers.microsoft.com/story/microsoftdataandanalytics)。 マイクロソフトのデータと分析チームは、Azure Cosmos DB を使用して、地球規模のビッグデータの収集を実現しました。
 * [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india)。 Sulekha では、Azure Cosmos DB を使用してインド各地で顧客と企業を結び付けています。

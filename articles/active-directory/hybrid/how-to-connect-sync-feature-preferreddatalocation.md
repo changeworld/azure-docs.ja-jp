@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Connect (同期): Office 365 の Multi-Geo 機能での優先されるデータの場所の構成 | Microsoft Docs'
+title: Azure AD Connect:Office 365 リソースの優先されるデータの場所の構成
 description: Azure Active Directory Connect 同期を使用して、Office 365 ユーザー リソースをユーザーの近くに配置する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 927987237b51a47d0c8b7c66054842b0a7ff09a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118444"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66473033"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect (同期): Office 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -40,7 +40,7 @@ Office 365 向けのすべての geo の一覧については、「[データの
 
 Multi-Geo で使用できる Office 365 の geo を次に示します。
 
-| ジオ (主要地域)  | preferredDataLocation 値 |
+| ジオ (主要地域) | preferredDataLocation 値 |
 | --- | --- |
 | アジア太平洋 | APC |
 | オーストラリア | AUS |
@@ -89,7 +89,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
 1. Azure AD Connect サーバーで PowerShell セッションを開始します。
 2. `Set-ADSyncScheduler -SyncCycleEnabled $false` コマンドレットを実行することで、スケジュールされた同期を無効にします。
-3. **[スタート]** > **[Synchronization Service]** の順に移動して、**Sychronization Service Manager** を起動します。
+3. **[スタート]**  >  **[Synchronization Service]** の順に移動して、**Sychronization Service Manager** を起動します。
 4. **[操作]** タブを選択し、状態が "*進行中*" になっている操作がないことを確認します。
 
 ![Synchronization Service Manager のスクリーンショット](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
@@ -98,10 +98,10 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 オンプレミスの Active Directory コネクタ スペースには、すべての Azure AD 属性がインポートされるわけではありません。 既定で同期されない属性を使用するように選択した場合、その属性をインポートする必要があります。 インポート対象の属性のリストにソース属性を追加するには、次の手順を実行します。
 
 1. Synchronization Service Manager の **[コネクタ]** タブを選択します。
-2. オンプレミスの Active Directory コネクタを右クリックし、**[プロパティ]** を選択します。
+2. オンプレミスの Active Directory コネクタを右クリックし、 **[プロパティ]** を選択します。
 3. ポップアップ ダイアログ ボックスで **[属性の選択]** タブに移動します。
-4. 属性の一覧で、使用することを選択したソース属性のチェック ボックスがオンになっていることを確認します。 属性が表示されない場合は、**[すべて表示]** チェックボックスを選択します。
-5. 保存するには、**[OK]** を選択します。
+4. 属性の一覧で、使用することを選択したソース属性のチェック ボックスがオンになっていることを確認します。 属性が表示されない場合は、 **[すべて表示]** チェックボックスを選択します。
+5. 保存するには、 **[OK]** を選択します。
 
 ![Synchronization Service Manager とプロパティ ダイアログ ボックスのスクリーンショット](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
@@ -109,19 +109,19 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 既定では、Azure AD のコネクタ スペースに **preferredDataLocation** 属性がインポートされません。 これをインポート対象の属性の一覧に追加するには、以下の操作を実行します。
 
 1. Synchronization Service Manager の **[コネクタ]** タブを選択します。
-2. Azure AD コネクタを右クリックし、**[プロパティ]** を選択します。
+2. Azure AD コネクタを右クリックし、 **[プロパティ]** を選択します。
 3. ポップアップ ダイアログ ボックスで **[属性の選択]** タブに移動します。
 4. 一覧で **preferredDataLocation** 属性を選択します。
-5. 保存するには、**[OK]** を選択します。
+5. 保存するには、 **[OK]** を選択します。
 
 ![Synchronization Service Manager とプロパティ ダイアログ ボックスのスクリーンショット](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step3.png)
 
 ## <a name="step-4-create-an-inbound-synchronization-rule"></a>手順 4:受信方向の同期規則を作成する
 受信方向の同期規則によって、オンプレミスの Active Directory のソース属性からメタバースに属性値が流れるのを許可します。
 
-1. **[スタート]** > **[Synchronization Rules Editor]** の順に移動して、**Synchronization Rules Editor** を起動します。
+1. **[スタート]**  >  **[Synchronization Rules Editor]** の順に移動して、**Synchronization Rules Editor** を起動します。
 2. 検索フィルターの **[方向]** を **[受信]** に設定します。
-3. 受信方向の規則を新規作成するには、**[新しいルールの追加]** を選択します。
+3. 受信方向の規則を新規作成するには、 **[新しいルールの追加]** を選択します。
 4. **[説明]** タブで次の構成を指定します。
 
     | Attribute | 値 | 詳細 |
@@ -134,14 +134,14 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
     | リンクの種類 | **Join** |  |
     | 優先順位 | *1 ～ 99 の範囲の数値を選択します* | 1 ～ 99 は、カスタム同期規則用に予約されています。 他の同期規則で使用されている値は選択しないでください。 |
 
-5. すべてのオブジェクトを含めるために、**[スコープ フィルター]** は空のままにします。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
+5. すべてのオブジェクトを含めるために、 **[スコープ フィルター]** は空のままにします。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
 6. **[変換]** タブに移動し、次の変換規則を実装します。
 
-    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
+    | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
     |直接 | preferredDataLocation | ソース属性を選択します | オフ | アップデート |
 
-7. 受信方向の規則を作成するには、**[追加]** を選択します。
+7. 受信方向の規則を作成するには、 **[追加]** を選択します。
 
 ![受信方向の同期規則の作成のスクリーンショット](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step4.png)
 
@@ -174,7 +174,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
 6. **[変換]** タブに移動し、次の変換規則を実装します。
 
-    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
+    | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
     | 直接 | preferredDataLocation | preferredDataLocation | オフ | プライマリの |
 
@@ -188,8 +188,8 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 1. オンプレミスの Active Directory コネクタで、**フル インポート**を実行します。
 
    1. Synchronization Service Manager の **[操作]** タブに進みます。
-   2. **オンプレミスの Active Directory コネクタ**を右クリックし、**[実行]** を選択します。
-   3. ダイアログ ボックスで **[フル インポート]** を選択し、**[OK]** を選択します。
+   2. **オンプレミスの Active Directory コネクタ**を右クリックし、 **[実行]** を選択します。
+   3. ダイアログ ボックスで **[フル インポート]** を選択し、 **[OK]** を選択します。
    4. 操作の完了を待ちます。
 
       > [!NOTE]
@@ -197,8 +197,8 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
 2. Azure AD コネクタで、**フル インポート**を実行します。
 
-   1. **Azure AD コネクタ**を右クリックし、**[実行]** を選択します。
-   2. ダイアログ ボックスで **[フル インポート]** を選択し、**[OK]** を選択します。
+   1. **Azure AD コネクタ**を右クリックし、 **[実行]** を選択します。
+   2. ダイアログ ボックスで **[フル インポート]** を選択し、 **[OK]** を選択します。
    3. 操作の完了を待ちます。
 
 3. 既存の**ユーザー** オブジェクトに対する同期規則の変更を検証します。
@@ -207,24 +207,24 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 
 4. オンプレミスの Active Directory コネクタで、**完全同期**を実行します。
 
-   1. **オンプレミスの Active Directory コネクタ**を右クリックし、**[実行]** を選択します。
-   2. ダイアログ ボックスで **[完全同期]** を選択し、**[OK]** を選択します。
+   1. **オンプレミスの Active Directory コネクタ**を右クリックし、 **[実行]** を選択します。
+   2. ダイアログ ボックスで **[完全同期]** を選択し、 **[OK]** を選択します。
    3. 操作の完了を待ちます。
 
 5. Azure AD に対する**保留中のエクスポート**を確認します。
 
-   1. **Azure AD コネクタ**を右クリックし、**[コネクタ スペースの検索]** を選択します。
+   1. **Azure AD コネクタ**を右クリックし、 **[コネクタ スペースの検索]** を選択します。
    2. **[コネクタ スペースの検索]** ダイアログ ボックスで、次の手順を実行します。
 
         a. **[スコープ]** を **[Pending Export]\(保留中のエクスポート\)** に設定します。<br>
         b. **[追加]、[変更]、[削除]** を含む、3 つのすべてのチェック ボックスを選択します。<br>
-        c. 変更がエクスポートされるオブジェクトを一覧表示するには、**[検索]** を選択します。 指定したオブジェクトの変更を検証するには、オブジェクトをダブルクリックします。<br>
+        c. 変更がエクスポートされるオブジェクトを一覧表示するには、 **[検索]** を選択します。 指定したオブジェクトの変更を検証するには、オブジェクトをダブルクリックします。<br>
         d. 変更が正しいことを確認します。
 
 6. **Azure AD コネクタ**で **[エクスポート]** を実行します。
 
-   1. **Azure AD コネクタ**を右クリックし、**[実行]** を選択します。
-   2. **[コネクタの実行]** ダイアログ ボックスで、**[エクスポート]** を選択し、**[OK]** を選択します。
+   1. **Azure AD コネクタ**を右クリックし、 **[実行]** を選択します。
+   2. **[コネクタの実行]** ダイアログ ボックスで、 **[エクスポート]** を選択し、 **[OK]** を選択します。
    3. 操作の完了を待ちます。
 
 > [!NOTE]

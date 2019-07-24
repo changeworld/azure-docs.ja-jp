@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
 ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895857"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60681875"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 
@@ -175,7 +175,7 @@ API がこのパターンに従うとき、ロジック アプリ ワークフ�
 
 | 要求に `triggerState` が含まれていますか? | API 応答 | 
 | -------------------------------- | -------------| 
-| いいえ  | HTTP `202 ACCEPTED` 状態と `location` ヘッダーを返します。ヘッダーの `triggerState` を現在の時刻に設定し、`retry-after` 間隔を 15 秒に設定します。 | 
+| いいえ | HTTP `202 ACCEPTED` 状態と `location` ヘッダーを返します。ヘッダーの `triggerState` を現在の時刻に設定し、`retry-after` 間隔を 15 秒に設定します。 | 
 | はい | `triggerState` の `DateTime` 後に追加されたファイルがないか、サービスに確認します。 | 
 ||| 
 

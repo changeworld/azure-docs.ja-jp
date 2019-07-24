@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 06/24/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ca2cfc9369fd6fb001b2a2dc401c33e5ddfd38c8
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 925b69e064e260a78a102a068f052ad7d396c380
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142905"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357053"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Azure CLI から Azure Storage 暗号化用にカスタマー マネージド キーを構成する
 
@@ -41,7 +41,7 @@ Azure CLI を使用してシステム割り当てマネージド ID を構成す
 
 ## <a name="create-a-new-key-vault"></a>新しいキー コンテナーを作成する
 
-Azure Storage 暗号化用にカスタマー マネージド キーを格納するために使用するキー コンテナーでは、キーを保護するための 2 つの設定、**[論理的な削除]** と **[Do Not Purge]\(消去しない\)** を有効にする必要があります。 これらの設定を有効にした状態で、PowerShell または Azure CLI を使用して新しいキー コンテナーを作成するには、次のコマンドを実行します。 山かっこ内のプレースホルダーをご自分の値に置き換えることを忘れないようにしてください。 
+Azure Storage 暗号化用にカスタマー マネージド キーを格納するために使用するキー コンテナーでは、キーを保護するための 2 つの設定、 **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** を有効にする必要があります。 これらの設定を有効にした状態で、PowerShell または Azure CLI を使用して新しいキー コンテナーを作成するには、次のコマンドを実行します。 山かっこ内のプレースホルダーをご自分の値に置き換えることを忘れないようにしてください。 
 
 Azure CLI を使用して新しいキー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) を呼び出します。 山かっこ内のプレースホルダーをご自分の値に置き換えることを忘れないようにしてください。
 
@@ -62,7 +62,7 @@ az keyvault create \
 
 ```azurecli-interactive
 storage_account_principal=$(az storage account show \
-    -name <storage-account> \
+    --name <storage-account> \
     --resource-group <resource-group> \
     --query identity.principalId \
     --output tsv)

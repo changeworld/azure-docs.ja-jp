@@ -3,19 +3,19 @@ title: Conversation Learner モデルでエンティティを使用する方法 
 titleSuffix: Azure
 description: Conversation Learner モデルでエンティティを使用する方法について説明します。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: a42a2ec36d9ce4fb9c139dfddcde0fe0c188c888
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: 3d9e2498a23ad49eb014cb0f81c819f3f63eef5c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210354"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66387799"
 ---
 # <a name="introduction-to-entities"></a>エンティティの概要
 

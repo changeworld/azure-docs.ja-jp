@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490395"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60628847"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL データベース プロジェクトを使った Azure Data Lake 用 U-SQL データベースの開発
 
@@ -27,7 +27,7 @@ U-SQL データベース プロジェクトは、開発者が高速かつ簡単�
 
 ## <a name="create-a-u-sql-database-project"></a>U-SQL データベース プロジェクトの作成
 
-バージョン 2.3.3000.0 以降の Azure Data Lake Tools for Visual Studio には、U-SQL データベース プロジェクトと呼ばれる新しいプロジェクト テンプレートが追加されています。 U-SQL プロジェクトを作成するには、**[File]\(ファイル\) > [New]\(新規\) > [Project]\(プロジェクト\)** の順に選択します。 U-SQL データベース プロジェクトは、**[Azure Data Lake] > [U-SQL] ノード**にあります。
+バージョン 2.3.3000.0 以降の Azure Data Lake Tools for Visual Studio には、U-SQL データベース プロジェクトと呼ばれる新しいプロジェクト テンプレートが追加されています。 U-SQL プロジェクトを作成するには、 **[File]\(ファイル\) > [New]\(新規\) > [Project]\(プロジェクト\)** の順に選択します。 U-SQL データベース プロジェクトは、 **[Azure Data Lake] > [U-SQL] ノード**にあります。
 
 ![Data Lake Tools for Visual Studio における U-SQL データベース プロジェクトの作成](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-create-usql-database-project-creation.png) 
 
@@ -45,7 +45,7 @@ U-SQL データベース プロジェクトを右クリックします。 **[追
 
     ![Data Lake Tools for Visual Studio -- U-SQL データベース プロジェクト参照の追加](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-project-reference-wizard.png)
 
-2.  アセンブリ デザイン ビューで、**[Create assembly from reference]\(参照からアセンブリを作成\)** ボックスの一覧から参照先アセンブリを選択します。
+2.  アセンブリ デザイン ビューで、 **[Create assembly from reference]\(参照からアセンブリを作成\)** ボックスの一覧から参照先アセンブリを選択します。
 
     ![Data Lake Tools for Visual Studio -- 参照からのアセンブリの作成](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-create-assembly-from-reference.png)
 
@@ -69,11 +69,11 @@ Visual Studio で、U-SQL データベース プロジェクトまたは .usqldb
 
 #### <a name="deploy-through-a-u-sql-database-project"></a>U-SQL データベース プロジェクトによる配置
 
-1.  U-SQL データベース プロジェクトを右クリックし、**[展開]** を選択します。
+1.  U-SQL データベース プロジェクトを右クリックし、 **[展開]** を選択します。
 2.  **U-SQL データベースの配置**ウィザードで、データベースを配置する **[ADLA account]\(ADLA アカウント\)** を選択します。 ローカル アカウントと ADLA アカウントの両方がサポートされています。
 3.  **[Database Source]\(データベース ソース\)** は、プロジェクトのビルド出力フォルダー内の .usqldbpack パッケージを指すように自動的に設定されます。
-4.  データベースを作成するには、**[データベース名]** に名前を入力します。 ターゲットの Azure Data Lake Analytics アカウントに同じ名前のデータベースが存在する場合、データベースは再作成されず、データベース プロジェクトに定義されているすべてのオブジェクトが作成されます。
-5.  U-SQL データベースを配置するには、**[送信]** を選択します。 すべてのリソース (アセンブリおよび追加ファイル) がアップロードされ、すべての DDL ステートメントを含む U-SQL ジョブが送信されます。
+4.  データベースを作成するには、 **[データベース名]** に名前を入力します。 ターゲットの Azure Data Lake Analytics アカウントに同じ名前のデータベースが存在する場合、データベースは再作成されず、データベース プロジェクトに定義されているすべてのオブジェクトが作成されます。
+5.  U-SQL データベースを配置するには、 **[送信]** を選択します。 すべてのリソース (アセンブリおよび追加ファイル) がアップロードされ、すべての DDL ステートメントを含む U-SQL ジョブが送信されます。
 
     ![Data Lake Tools for Visual Studio -- U-SQL データベース プロジェクトの配置](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-deploy-usql-database-project.png)
 
@@ -82,9 +82,9 @@ Visual Studio で、U-SQL データベース プロジェクトまたは .usqldb
 #### <a name="deploy-through-a-u-sql-database-deployment-package"></a>U-SQL データベース展開パッケージによる配置
 
 1.  **[サーバー エクスプローラー]** を開きます。 データベースの配置先となる **Azure Data Lake Analytics アカウント**を展開します。
-2.  **U-SQL データベース**を右クリックし、**[データベースの配置]** を選択します。
+2.  **U-SQL データベース**を右クリックし、 **[データベースの配置]** を選択します。
 3.  **[Database Source] (データベース ソース)** に U-SQL データベース展開パッケージ (.usqldbpack ファイル) のパスを設定します。
-4.  データベースを作成するには、**[データベース名]** に名前を入力します。 ターゲットの Azure Data Lake Analytics アカウントに同じ名前のデータベースが存在する場合、データベースは再作成されず、データベース プロジェクトに定義されているすべてのオブジェクトが作成されます。
+4.  データベースを作成するには、 **[データベース名]** に名前を入力します。 ターゲットの Azure Data Lake Analytics アカウントに同じ名前のデータベースが存在する場合、データベースは再作成されず、データベース プロジェクトに定義されているすべてのオブジェクトが作成されます。
 
     ![Data Lake Tools for Visual Studio -- U-SQL データベース パッケージの配置](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-deploy-usql-database-package.png)
 
@@ -105,7 +105,7 @@ U-SQL プロジェクトから、U-SQL データベース プロジェクトを�
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>U-SQL データベース参照の追加方法
 
-1. **ソリューション エクスプローラー**で U-SQL プロジェクトを右クリックし、**[U-SQL データベース参照の追加]** を選択します。
+1. **ソリューション エクスプローラー**で U-SQL プロジェクトを右クリックし、 **[U-SQL データベース参照の追加]** を選択します。
 
     ![Data Lake Tools for Visual Studio -- データベース プロジェクト参照の追加](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-database-project-reference.png)
 

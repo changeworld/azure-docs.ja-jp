@@ -2,18 +2,18 @@
 title: Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します
 services: backup
-author: trinadhk
+author: utraghuv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: trinadhk
-ms.openlocfilehash: 2ba94963238cd5ee96df5c178a072addc5ddd75e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: utraghuv
+ms.openlocfilehash: eaa0c0dc45b37491cd55033b49e2f78d219d416b
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082927"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565717"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 マルウェア、ランサムウェア、侵入などのセキュリティ問題への懸念が高まっています。 これらのセキュリティ問題は、金銭とデータの両方の観点からコストがかかる可能性があります。 このような攻撃を防ぐために、Azure Backup にはハイブリッド バックアップを保護するセキュリティ機能が用意されています。 この記事では、Azure Recovery Services エージェントと Azure Backup Server を使用して、これらの機能を有効にして使用する方法について説明します。 次のような機能が該当します。
@@ -42,7 +42,7 @@ Recovery Services コンテナーを作成している場合、すべてのセ�
     ![Azure Portal の [参照] オプションのスクリーンショット](./media/backup-azure-security-feature/browse-to-rs-vaults.png) <br/>
 
     Recovery Services コンテナーの一覧が表示されます。 この一覧でコンテナーを選択します。 選択したコンテナーのダッシュボードが開きます。
-3. コンテナーの下に表示されている項目一覧で、**[設定]** の下にある **[プロパティ]** をクリックします。
+3. コンテナーの下に表示されている項目一覧で、 **[設定]** の下にある **[プロパティ]** をクリックします。
 
     ![Recovery Services コンテナーのオプションのスクリーンショット](./media/backup-azure-security-feature/vault-list-properties.png)
 4. **[セキュリティの設定]** の下にある **[更新]** をクリックします。
@@ -53,7 +53,7 @@ Recovery Services コンテナーを作成している場合、すべてのセ�
 5. **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** ドロップダウン リストから値を選択し、[Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) を有効にしたかどうかを確認する値を選択します。 有効にした場合は、Azure Portal へのサインイン時に別のデバイス (携帯電話など) から認証を実行するように求められます。
 
    Backup で重要な操作を実行する場合、Azure Portal で使用可能なセキュリティ PIN を入力する必要があります。 Azure Multi-Factor Authentication を有効にすると、セキュリティ レイヤーが追加されます。 有効な Azure 資格情報を持ち、2 番目のデバイスから認証された承認済みのユーザーのみが Azure Portal にアクセスできます。
-6. セキュリティ設定を保存するには、**[有効]** を選択して、**[保存]** をクリックします。 **[有効]** を選択できるのは、前の手順で **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** リストから値を選択した場合のみです。
+6. セキュリティ設定を保存するには、 **[有効]** を選択して、 **[保存]** をクリックします。 **[有効]** を選択できるのは、前の手順で **[Have you configured Azure Multi-Factor Authentication? (Azure Multi-Factor Authentication を構成しましたか?)]** リストから値を選択した場合のみです。
 
     ![セキュリティ設定のスクリーンショット](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
@@ -88,7 +88,7 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 この PIN を受け取るには次のようにします。
 
 1. Azure ポータルにサインインします。
-2. **[Recovery Services コンテナー]** > **[設定]** > **[プロパティ]** の順に参照します。
+2. **[Recovery Services コンテナー]**  >  **[設定]**  >  **[プロパティ]** の順に参照します。
 3. **[セキュリティ PIN]** の下にある **[生成]** をクリックします。 これにより、Azure Recovery Services エージェントのユーザー インターフェイスに入力する PIN が含まれたブレードが開きます。
     この PIN が有効なのは 5 分間のみであり、その期間が過ぎると別のものが自動生成されます。
 

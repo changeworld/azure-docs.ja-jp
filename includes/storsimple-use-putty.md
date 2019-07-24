@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66118282"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181213"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>シリアル コンソールを使用して接続するには
 1. シリアル ケーブルをデバイスに接続します (直接、または USB シリアル アダプターを使用)。
-2. **コントロール パネル**を開き、**[デバイス マネージャー]** を開きます。
+2. **コントロール パネル**を開き、 **[デバイス マネージャー]** を開きます。
 3. 次の図に示すように COM ポートを確認します。
    
      ![シリアル コンソールを使用した接続](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)
 4. PuTTY を起動します。 
-5. 右側のウィンドウで、**[接続の種類]** を **[シリアル]** に変更します。
+5. 右側のウィンドウで、 **[接続の種類]** を **[シリアル]** に変更します。
 6. 右側のウィンドウで、適切な COM ポートを入力します。 シリアル構成パラメーターが次のように設定されていることを確認します。
    
    * 速度:115,200

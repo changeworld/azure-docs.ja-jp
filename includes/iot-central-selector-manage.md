@@ -9,11 +9,11 @@ ms.date: 02/07/2019
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 61f65b5ac9ae4c1ef8253a2d8230643d1fe63291
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120413"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181300"
 ---
 > [!div class="op_single_selector"]
 > * [ポータル](../articles/iot-central/howto-manage-iot-central-from-portal.md)

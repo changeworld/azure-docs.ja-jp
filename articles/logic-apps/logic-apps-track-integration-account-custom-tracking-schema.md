@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.openlocfilehash: f919e9a7cca210fa5920bcc6bed05a9a41fba8bf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 76a9ece9e925543e856136a798a60038316caad9
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192386"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67203041"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Azure Logic Apps でエンド ツー エンドのワークフローを監視するカスタム追跡スキーマを作成する
 
@@ -56,22 +56,22 @@ ms.locfileid: "57192386"
 }
 ```
 
-| プロパティ | type | 説明 |
-| --- | --- | --- |
-| sourceType |   | 実行ソースのタイプ。 許可されている値は、**Microsoft.Logic/workflows** と **custom** です。 (必須) |
-| ソース |   | ソースのタイプが **Microsoft.Logic/workflows** である場合は、このスキーマの後にソース情報を続ける必要があります。 ソースのタイプが **custom** の場合、スキーマは JToken です。 (必須) |
-| systemId | String | ロジック アプリのシステム ID。 (必須) |
-| runId | String | ロジック アプリの実行 ID。 (必須) |
-| operationName | String | 操作の名前 (アクションやトリガーなど)。 (必須) |
-| repeatItemScopeName | String | アクションが `foreach`/`until` ループ内にある場合の繰り返し項目名。 (必須) |
-| repeatItemIndex | 整数 | アクションが `foreach`/`until` ループ内にあるかどうか。 繰り返される項目のインデックスを示します。 (必須) |
-| trackingId | String | 追跡 ID (メッセージを関連付けるために使用します)。 (省略可能) |
-| correlationId | String | 関連付け ID (メッセージを関連付けるために使用します)。 (省略可能) |
-| clientRequestId | String | クライアントがメッセージを関連付けるために設定できます。 (省略可能) |
-| eventLevel |   | イベントのレベル。 (必須) |
-| eventTime |   | イベントの時刻 (YYYY-MM-DDTHH:MM:SS.00000Z という UTC 形式で示します)。 (必須) |
-| recordType |   | 追跡レコードのタイプ。 許可されている値は **custom** です。 (必須) |
-| record |   | カスタム レコード タイプ。 許可されている形式は、JToken です。 (必須) |
+| プロパティ | 必須 | Type | 説明 |
+| --- | --- | --- | --- |
+| sourceType | はい |   | 実行ソースのタイプ。 許可されている値は、**Microsoft.Logic/workflows** と **custom** です。 |
+| source | はい |   | ソースのタイプが **Microsoft.Logic/workflows** である場合は、このスキーマの後にソース情報を続ける必要があります。 ソースのタイプが **custom** の場合、スキーマは JToken です。 |
+| systemId | はい | string | ロジック アプリのシステム ID。 |
+| runId | はい | string | ロジック アプリの実行 ID。 |
+| operationName | はい | string | 操作の名前 (アクションやトリガーなど)。 |
+| repeatItemScopeName | はい | string | アクションが `foreach`/`until` ループ内にある場合の繰り返し項目名。 |
+| repeatItemIndex | はい | 整数 | アクションが `foreach`/`until` ループ内にあるかどうか。 繰り返される項目のインデックスを示します。 |
+| trackingId | いいえ | string | 追跡 ID (メッセージを関連付けるために使用します)。 |
+| correlationId | いいえ | string | 関連付け ID (メッセージを関連付けるために使用します)。 |
+| clientRequestId | いいえ | string | クライアントがメッセージを関連付けるために設定できます。 |
+| eventLevel | はい |   | イベントのレベル。 |
+| eventTime | はい |   | イベントの時刻 (YYYY-MM-DDTHH:MM:SS.00000Z という UTC 形式で示します)。 |
+| recordType | はい |   | 追跡レコードのタイプ。 許可されている値は **custom** です。 |
+| record | はい |   | カスタム レコード タイプ。 許可されている形式は、JToken です。 |
 ||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B プロトコル追跡スキーマ

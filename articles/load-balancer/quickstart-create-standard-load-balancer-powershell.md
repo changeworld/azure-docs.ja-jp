@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: このクイック スタートでは、PowerShell を使用して Standard Load Balancer を作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
-ms.author: kumud
+ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 513d3931c31ca94b4089139992bceb6f679caa98
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 0e00728e091a7d7d96cb624135519b17524d2227
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467689"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274104"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Standard Load Balancer を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "65467689"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
@@ -229,7 +229,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RgName -Location $location
 ```
 
 ### <a name="create-nics"></a>NIC の作成
-[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、仮想 NIC を作成し、前述の手順で作成したパブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 以下の例では、3 つの仮想 NIC を作成します  (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
+[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) を使用して、仮想 NIC を作成し、前述の手順で作成したパブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 以下の例では、3 つの仮想 NIC を作成します (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
 
 ```azurepowershell
 # Create NIC for VM1

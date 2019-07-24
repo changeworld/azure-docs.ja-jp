@@ -51,7 +51,8 @@
     - name: ニュースのページング
       href: paging-news.md
     - name: サムネイルのサイズ変更とトリミング
-      href: resize-and-crop-thumbnails.md
+      maintainContext: true
+      href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: v5 から v7 への API のアップグレード
       href: bing-news-upgrade-guide-v5-to-v7.md
     - name: Visual Studio を使用する

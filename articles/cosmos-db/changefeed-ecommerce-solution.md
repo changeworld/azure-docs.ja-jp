@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: a53a62a7bc7a5c7f8d9bdabdf411588fdf7bd5e7
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66257065"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
@@ -167,7 +167,7 @@ Cosmos DB コレクションで新しいドキュメントが作成される、�
 
 2. **App.config** ファイルに移動します。`<appSettings>` ブロックに、前に取得した Azure Cosmos DB アカウントのエンドポイントおよび一意の**主キー**を追加します。  
 
-3. **コレクション**名と**データベース**名を追加します  (別の名前にすることを選択していない限り、これらの名前は **changefeedlabcollection** と **changefeedlabdatabase** にしてください)。
+3. **コレクション**名と**データベース**名を追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabcollection** と **changefeedlabdatabase** にしてください)。
 
    ![接続文字列を更新する](./media/changefeed-ecommerce-solution/update-connection-string.png)
  
@@ -376,13 +376,13 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 6. **EcommerceWebApp.sln** を開き、**ソリューション エクスプローラー**の **Web.config** ファイルに移動します。  
 
-7. `<appSettings>` ブロック内に、**your URI here** と **your primary key here** と書かれている位置に、前に保存した **URI** と**主キー**を追加します。 その後、**データベース名**と**コレクション名**を示されているとおりに追加します  (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。
+7. `<appSettings>` ブロック内に、**your URI here** と **your primary key here** と書かれている位置に、前に保存した **URI** と**主キー**を追加します。 その後、**データベース名**と**コレクション名**を示されているとおりに追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。
 
-   **製品のコレクション名**、**カテゴリのコレクション名**、**人気の商品のコレクション名**を示されているとおりに入力します  (別の名前にすることを選択していない限り、これらの名前は **products、categories、および topItems** にしてください)。  
+   **製品のコレクション名**、**カテゴリのコレクション名**、**人気の商品のコレクション名**を示されているとおりに入力します (別の名前にすることを選択していない限り、これらの名前は **products、categories、および topItems** にしてください)。  
 
 8. **EcommerceWebApp.sln** 内の **[チェックアウト フォルダー]** に移動して開きます。 その後、そのフォルダー内の **Web.config** ファイルを開きます。  
 
-9. `<appSettings>` ブロック内で、以前に保存した **URI** と**主キー**を示されている位置に追加します。 その後、**データベース名**と**コレクション名**を示されているとおりに追加します  (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。  
+9. `<appSettings>` ブロック内で、以前に保存した **URI** と**主キー**を示されている位置に追加します。 その後、**データベース名**と**コレクション名**を示されているとおりに追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。  
 
 10. ページ上部の **[開始]** を押してプログラムを実行します。  
 

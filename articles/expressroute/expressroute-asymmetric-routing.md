@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: osamam
 ms.custom: seodec18
-ms.openlocfilehash: 6ece48d892f46a4f8bbeb66d3ebda9f532b621b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2b2b678cad50e45660fb763c2a1f9194500edf8d
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076663"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730202"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>複数のネットワーク パスを使用した非対称ルーティング
 この記事では、ネットワークの送信元と送信先の間で利用できるパスが複数存在する場合に、ネットワーク トラフィックが行きと戻りで異なるルートを取る場合がある理由について説明します。
@@ -50,7 +50,7 @@ Azure ExpressRoute 経由で Microsoft に接続すると、ネットワーク�
 
 次に ExpressRoute を有効にし、Microsoft から提供されるサービスを ExpressRoute を介して利用します。 Microsoft の他のサービスはすべてインターネットを介して利用します。 ExpressRoute に接続されている境界に別のファイアウォールをデプロイします。 特定のサービスについて、Microsoft によってより具体的なプレフィックスが ExpressRoute 経由でネットワークにアドバタイズされます。 ルーティング インフラストラクチャは、これらのプレフィックスの優先パスとして ExpressRoute を選択します。 パブリック IP アドレスが ExpressRoute 経由で Microsoft にアドバタイズされていない場合、Microsoft はインターネット経由でパブリック IP アドレスと通信します。 ユーザーのネットワークから Microsoft への送信トラフィックには ExpressRoute が使用され、Microsoft から戻ってくるトラフィックにはインターネットが使用されます。 境界のファイアウォールによって、状態テーブルにないフローの応答パケットが確認されると、戻りトラフィックがドロップされます。
 
-ExpressRoute とインターネットに同一のネットワーク アドレス変換 (NAT) プールを使用する場合、プライベート IP アドレスのネットワーク内にあるクライアントについて同様の問題が発生します。 Windows Update などのサービスについては IP アドレスが ExpressRoute 経由でアドバタイズされていないため、これらのサービスに対する要求はインターネット経由で送信されます。 ただし、戻りトラフィックは ExpressRoute 経由になります。 インターネットと ExpressRoute から同じサブネット マスクの IP アドレスを受け取った場合、Microsoft はインターネットより ExpressRoute を優先します。 ネットワーク境界に位置し、ExpressRoute に接続しているファイアウォールまたは別のステートフル デバイスに、フローに関する事前情報がない場合、そのフローに属するパケットはドロップされます。
+ExpressRoute とインターネットに同一のネットワーク アドレス変換 (NAT) プールをアドバタイズする場合、プライベート IP アドレスのネットワーク内にあるクライアントについて同様の問題が発生します。 Windows Update などのサービスについては IP アドレスが ExpressRoute 経由でアドバタイズされていないため、これらのサービスに対する要求はインターネット経由で送信されます。 ただし、戻りトラフィックは ExpressRoute 経由になります。 インターネットと ExpressRoute から同じサブネット マスクの IP アドレスを受け取った場合、Microsoft はインターネットより ExpressRoute を優先します。 ネットワーク境界に位置し、ExpressRoute に接続しているファイアウォールまたは別のステートフル デバイスに、フローに関する事前情報がない場合、そのフローに属するパケットはドロップされます。
 
 ## <a name="asymmetric-routing-solutions"></a>非対称ルーティングの解決策
 非対称ルーティングの問題を解決するには、主に 2 つの方法があります。 1 つはルーティングによるもので、もう 1 つは送信元ベースの NAT (SNAT) を使用するものです。

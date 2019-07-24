@@ -4,17 +4,17 @@ description: この記事では、ジョブの状態と Runbook ジョブ スト
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8672bc28ea5e8562472408810a38ea0de6778cfd
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: a305c90f50ce0ad618ca1cf4f32d88120a19d4a7
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200609"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476647"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Automation から Azure Monitor ログにジョブの状態とジョブ ストリームを転送する
 
@@ -52,7 +52,7 @@ Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 
 複数の Automation アカウントまたはワークスペースがある場合、前のコマンドの出力内で、構成する必要がある "*名前*" を見つけ、*ResourceId* 用にその値をコピーします。
 
-Automation アカウントの "*名前*" の値を調べる必要がある場合、Azure Portal の **[Automation アカウント]** ブレードから Automation アカウントを選択し、**[すべての設定]** を選択します。 **[すべての設定]** ブレードで、**[アカウント設定]** の **[プロパティ]** を選択します。  **[プロパティ]** ブレードで、値をメモすることができます。<br> ![Automation Account properties](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)に関するページを参照してください。
+Automation アカウントの "*名前*" の値を調べる必要がある場合、Azure Portal の **[Automation アカウント]** ブレードから Automation アカウントを選択し、 **[すべての設定]** を選択します。 **[すべての設定]** ブレードで、 **[アカウント設定]** の **[プロパティ]** を選択します。  **[プロパティ]** ブレードで、値をメモすることができます。<br> ![Automation Account properties](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png)に関するページを参照してください。
 
 ## <a name="set-up-integration-with-azure-monitor-logs"></a>Azure Monitor ログとの統合の設定
 
@@ -96,7 +96,7 @@ Azure Automation の診断から、Azure Monitor ログに 2 種類のレコー�
 | Caller_s |操作を開始したユーザー。 スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。 |
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | JobId_g |GUID。Runbook ジョブの ID です。 |
-| ResultType |Runbook ジョブの状態。 次のいずれかの値になります。<br>- 新規<br>- 開始済み<br>- 停止済み<br>- 中断<br>- 失敗<br>- 完了 |
+| ResultType |Runbook ジョブの状態。 次のいずれかの値になります。<br>- 新規<br>- 作成済み<br>- 開始済み<br>- 停止済み<br>- 中断<br>- 失敗<br>- 完了 |
 | Category | データの種類の分類。 Automation の場合、値は JobLogs です。 |
 | OperationName | Azure で実行された操作の種類を指定します。 Automation の場合、値は Job です。 |
 | Resource | Automation アカウントの名前です。 |
@@ -116,7 +116,7 @@ Azure Automation の診断から、Azure Monitor ログに 2 種類のレコー�
 | TimeGenerated |Runbook ジョブが実行された日付と時刻。 |
 | RunbookName_s |Runbook の名前。 |
 | Caller_s |操作を開始したユーザー。 スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。 |
-| StreamType_s |ジョブ ストリームの種類。 次のいずれかの値になります。<br>- 進行状況<br>- 出力<br>- 警告<br>- エラー<br>- デバッグ<br>- 詳細 |
+| StreamType_s |ジョブ ストリームの種類。 次のいずれかの値になります。<br>\- 進行状況<br>- 出力<br>- 警告<br>- エラー<br>- デバッグ<br>- 詳細 |
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | JobId_g |GUID。Runbook ジョブの ID です。 |
 | ResultType |Runbook ジョブの状態。 次のいずれかの値になります。<br>- In Progress |
@@ -143,7 +143,7 @@ Azure Monitor ログへの Automation ジョブ ログの送信を開始した�
 
 アラート ルールを作成するには、まずアラートを呼び出す Runbook ジョブ レコードに対するログ検索を作成します。 **[アラート]** ボタンをクリックし、アラート ルールを作成して構成します。
 
-1. Log Analytics ワークスペースの [概要] ページで、**[ログの表示]** をクリックします。
+1. Log Analytics ワークスペースの [概要] ページで、 **[ログの表示]** をクリックします。
 2. クエリ フィールドに次の検索クエリを入力して、アラート用のログ検索クエリを作成します。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`次の内容を使用して、Runbook 名でグループ化することもできます。`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    複数の Automation アカウントまたはサブスクリプションからワークスペースへのログをセットアップしてある場合は、サブスクリプションおよび Automation アカウントごとにアラートをグループ化することができます。 Automation アカウント名は JobLogs の検索のリソース フィールドで確認できます。
@@ -153,7 +153,7 @@ Azure Monitor ログへの Automation ジョブ ログの送信を開始した�
 エラーに関するアラートだけでなく、Runbook ジョブが終了しないときにもエラーが表示されます。 このような場合、PowerShell ではエラー ストリームが生成されますが、ジョブが終了しないエラーでは、ジョブの中断や失敗は起こりません。    
 
 1. Log Analytics ワークスペースで **[ログ]** をクリックします。
-2. クエリ フィールドに「`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g`」と入力し、**[検索]** ボタンをクリックします。
+2. クエリ フィールドに「`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g`」と入力し、 **[検索]** ボタンをクリックします。
 
 ### <a name="view-job-streams-for-a-job"></a>ジョブのジョブ ストリームを確認する
 ジョブのデバッグを行っているときに、ジョブ ストリームの確認が必要になることもあります。 次のクエリは、GUID が 2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0 である 1 つのジョブのすべてのストリームを表示します。   

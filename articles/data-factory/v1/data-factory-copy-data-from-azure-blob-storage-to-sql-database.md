@@ -14,18 +14,17 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 557228bafc00c3028a1fda520da8fe4ec8c7a6f2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: ad114ce3a40e11048d01c6768811089c43cdf1db
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678719"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839388"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル:Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -56,7 +55,7 @@ ms.locfileid: "59678719"
 このチュートリアルを実行するには、Azure ストレージ アカウントのアカウント名とアカウント キーが必要です。 Azure ストレージ アカウントの**アカウント名**と**アカウント キー**をメモしておきます。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューの **[すべてのサービス]** をクリックし、**[ストレージ アカウント]** を選択します。
+2. 左側のメニューの **[すべてのサービス]** をクリックし、 **[ストレージ アカウント]** を選択します。
 
     ![参照 - ストレージ アカウント](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
 3. **[ストレージ アカウント]** ブレードで、このチュートリアルで使用する **Azure ストレージ アカウント**を選択します。
@@ -70,17 +69,17 @@ ms.locfileid: "59678719"
 ## <a name="collect-sql-server-database-user-names"></a>SQL サーバー、データベース、ユーザーの名前を収集する
 このチュートリアルを実行するには、Azure SQL サーバー名、データベース名、ユーザー名が必要です。 Azure SQL データベースの**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
 
-1. **Azure Portal** で、左側にある **[すべてのサービス]** をクリックし、**[SQL データベース]** を選択します。
+1. **Azure Portal** で、左側にある **[すべてのサービス]** をクリックし、 **[SQL データベース]** を選択します。
 2. **[SQL データベース]** ブレードで、このチュートリアルで使用する**データベース**を選択します。 **データベース名**をメモしておきます。  
-3. **[SQL データベース]** ブレードで、**[設定]** の **[プロパティ]** をクリックします。
+3. **[SQL データベース]** ブレードで、 **[設定]** の **[プロパティ]** をクリックします。
 4. **[サーバー名]** と **[サーバー管理ログイン]** の値をメモしておきます。
 5. **[X]** をクリックしてすべてのブレードを閉じます。
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>Azure サービスに SQL サーバーへのアクセスを許可する
 Data Factory サービスから Azure SQL サーバーにアクセスできるように、Azure SQL サーバーで **[Azure サービスへのアクセスを許可する]** の設定が**オン**になっていることを確認します。 この設定を確認して有効にするには、次の手順を実行します。
 
-1. 左側にある **[すべてのサービス]** ハブをクリックし、**[SQL サーバー]** をクリックします。
-2. サーバーを選択し、**[設定]** の **[ファイアウォール]** をクリックします。
+1. 左側にある **[すべてのサービス]** ハブをクリックし、 **[SQL サーバー]** をクリックします。
+2. サーバーを選択し、 **[設定]** の **[ファイアウォール]** をクリックします。
 3. **[ファイアウォールの設定]** ブレードの **[Azure サービスへのアクセスを許可する]** で **[オン]** をクリックします。
 4. **[X]** をクリックしてすべてのブレードを閉じます。
 
@@ -117,7 +116,6 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
 これで前提条件を完了しました。 データ ファクトリを作成するには、次のいずれかの方法を使用します。 上部にあるドロップダウン リストのいずれかのオプションまたは次のリンクをクリックして、チュートリアルを実行します。     
 
 * [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-* [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)

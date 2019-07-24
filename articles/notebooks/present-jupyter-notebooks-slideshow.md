@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: 405fe71676de311ed7e59ea72798ff4fd2db0f62
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280470"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60237399"
 ---
 # <a name="run-a-notebook-slideshow"></a>ノートブックのスライドショーを実行する
 
@@ -42,7 +42,7 @@ Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事
 
 ランダム ノートブックを利用しており、これをスライドショーに使う場合、通常は、すべてのセルが未整理の状態で、コンテンツのほとんどがブラウザー ウィンドウの下端で表示が切れてしまいます。 効果的なプレゼンテーションを行うには、[スライドショー] セルのツールバーを使用して、各セルにスライドショーの種類を割り当てる必要があります。
 
-1. **[表示]** メニューで、**[Cell Toolbar]\(セルのツールバー\)** > **[スライドショー]** の順に選択します。
+1. **[表示]** メニューで、 **[Cell Toolbar]\(セルのツールバー\)**  >  **[スライドショー]** の順に選択します。
 
     ![セルのスライドショーツールバーが有効になっている](media/slideshow/slideshow-view-cell-toolbar.png)
 
@@ -67,7 +67,7 @@ Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事
 
 ### <a name="example-fragment-cells-for-bullet-items"></a>例: 箇条書き項目のフラグメント セル
 
-スライド上に箇条書きを 1 つずつ表示するには、**[スライド]** 種類の Markdown セルにスライドのヘッダーを配置して、**[フラグメント]** 種類の別個の Markdown セルに各箇条書きを配置します。
+スライド上に箇条書きを 1 つずつ表示するには、 **[スライド]** 種類の Markdown セルにスライドのヘッダーを配置して、 **[フラグメント]** 種類の別個の Markdown セルに各箇条書きを配置します。
 
 ![箇条書き項目のために複数の Markdown セルを作成している例](media/slideshow/slideshow-fragments.png)
 
@@ -96,9 +96,9 @@ Azure Notebooks は、Jupyter/IPython Slideshow Extension (RISE) を使って事
     ![コード セルの出力がスライド ショーに表示される](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > セルの出力は、スライドショー内でセルの一部と見なされます。 Notebook またはスライドショー ビューのいずれかでセルを実行すると、出力はもう一方のビューにも表示されます。 出力をクリアするには、**[セル]** > **[Current Outputs]\(現在の出力\)** > **[クリア]** コマンド (現在のセルに対して) または **[セル]** > **[All Outputs]\(すべての出力\)** > **[クリア]** (すべてのセルに対して) を使用します。
+    > セルの出力は、スライドショー内でセルの一部と見なされます。 Notebook またはスライドショー ビューのいずれかでセルを実行すると、出力はもう一方のビューにも表示されます。 出力をクリアするには、 **[セル]**  >  **[Current Outputs]\(現在の出力\)**  >  **[クリア]** コマンド (現在のセルに対して) または **[セル]**  >  **[All Outputs]\(すべての出力\)**  >  **[クリア]** (すべてのセルに対して) を使用します。
 
-1. スライドショーを終了する場合は、**[X]** を使用してノートブックのビューに戻ります。
+1. スライドショーを終了する場合は、 **[X]** を使用してノートブックのビューに戻ります。
 
 ## <a name="next-steps"></a>次の手順
 

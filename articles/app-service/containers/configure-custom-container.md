@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: feeb9ae4472fb3439ecc5d6505860cc407f9e4d3
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 02231f86d4ceddd6cde53fd242c2c91158d744a9
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919728"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480767"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Azure App Service のカスタム Linux コンテナーを構成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "64919728"
 
 ## <a name="configure-port-number"></a>ポート番号を構成する
 
-カスタム イメージの Web サーバーは、80 以外のポートを使用できます。 カスタムが使用するポートを Azure に指示するには、`WEBSITES_PORT` アプリ設定を使用します。 [このチュートリアルに含まれる Python サンプル](https://github.com/Azure-Samples/docker-django-webapp-linux)の GitHub ページは、`WEBSITES_PORT` を _8000_ に設定する必要があることを示しています。 Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することにより設定できます。 例: 
+カスタム イメージの Web サーバーは、80 以外のポートを使用できます。 カスタム コンテナーによって利用されるポートを Azure に指示するには、`WEBSITES_PORT` アプリ設定を使用します。 [このチュートリアルに含まれる Python サンプル](https://github.com/Azure-Samples/docker-django-webapp-linux)の GitHub ページは、`WEBSITES_PORT` を _8000_ に設定する必要があることを示しています。 Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することにより設定できます。 例:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -36,7 +36,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>環境変数を構成する
 
-カスタム コンテナーには、外部で指定する必要がある環境変数を使用できます。 Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することによりこれらを渡すことができます。 例: 
+カスタム コンテナーには、外部で指定する必要がある環境変数を使用できます。 Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することによりこれらを渡すことができます。 例:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
@@ -50,10 +50,10 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 永続的ストレージが無効になると、`/home` ディレクトリへの書き込みは、アプリの再起動後、または複数のインスタンス間で保持されません。 唯一の例外は `/home/LogFiles` ディレクトリであり、これは Docker およびコンテナーのログを格納するために使用されます。 永続的ストレージが有効になると、`/home` ディレクトリへのすべての書き込みは存続し、スケールアウトされたアプリのすべてのインスタンスからアクセスできます。
 
-既定では、永続的ストレージは*無効*になっています。 これを有効または無効にするには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することにより `WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定します。 例: 
+既定では、永続的ストレージが*有効*になり、設定はアプリケーション設定では公開されません。 これを無効にするには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを実行することにより `WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を指定します。 例:
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
+az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
 ```
 
 > [!NOTE]
@@ -122,7 +122,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 *docker-compose.yml* ファイルで、`volumes` オプションを `${WEBAPP_STORAGE_HOME}` にマップします。 
 
-`WEBAPP_STORAGE_HOME` は、アプリの永続的なストレージにマップされる App Service の環境変数です。 例: 
+`WEBAPP_STORAGE_HOME` は、アプリの永続的なストレージにマップされる App Service の環境変数です。 例:
 
 ```yaml
 wordpress:

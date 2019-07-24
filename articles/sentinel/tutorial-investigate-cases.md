@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: a493cd67-dc70-4163-81b8-04a9bc0232ac
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: d1da180d3b30b57ca2b69985bf3d0261b8d70c39
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 82fac23fc2d718aa908f6291241abaa2aedb8815
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205517"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621185"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>チュートリアル:Azure Sentinel プレビューでケースを調査する
 
@@ -40,7 +41,7 @@ Azure Sentinel に[データ ソースを接続した](quickstart-onboard.md)後
 
 ケースには複数のアラートを含めることができます。 ケースは、特定の調査に関連するすべての証拠を集計したものです。 ケースは、 **[分析]** ページで定義したアラートに基づいて作成されます。 重大度および状態など、アラートに関連するプロパティはケース レベルで設定されます。 探している脅威の種類とその検出方法が Azure Sentinel に認識された後、ケースを調査することで検出された脅威を監視できます。 
 
-1. **[Cases]** (ケース) を選択します。 **[Cases]** (ケース) ページには、自分に割り当てられたケースの数、開いているケースの数、 **[処理中]** に設定したケースの数、閉じたケースの数が表示されます。 各ケースについて、その発生時刻とケースの状態を確認できます。 最初に処理する対象を決定するには、重大度を確認します。 **[Cases]** (ケース) ページで **[アラート]** タブをクリックし、ケースに関連するすべてのアラートを表示します。 ケースの一部として以前にマップしたエンティティを、 **[エンティティ]** タブで表示できます。必要に応じて、たとえば状態または重大度によってケースをフィルター処理できます。 **[Cases]** (ケース) タブを見ると、 **[分析]** で定義した検出ルールによりトリガーされたアラートを含む、開いているケースが表示されます。 上部には、アクティブなケース、新しいケース、処理中のケースが表示されます。 また、重大度別のすべてのケースの概要を確認することもできます。
+1. **[Cases]** (ケース) を選択します。 **[Cases]** (ケース) ページには、ケースの数、開いているケースの数、 **[処理中]** に設定したケースの数、閉じたケースの数が表示されます。 各ケースについて、その発生時間とケースの状態を確認できます。 最初に処理する対象を決定するには、重大度を確認します。 **[Cases]** (ケース) ページで **[アラート]** タブをクリックし、ケースに関連するすべてのアラートを表示します。 ケースの一部として以前にマップしたエンティティを、 **[エンティティ]** タブで表示できます。必要に応じて、たとえば状態または重大度によってケースをフィルター処理できます。 **[Cases]** (ケース) タブを見ると、 **[分析]** で定義した検出ルールでトリガーされるアラートを含む、開いているケースが表示されます。 上部には、アクティブなケース、新しいケース、処理中のケースが表示されます。 また、重大度別のすべてのケースの概要を確認することもできます。
 
    ![アラート ダッシュボード](./media/tutorial-investigate-cases/cases.png)
 

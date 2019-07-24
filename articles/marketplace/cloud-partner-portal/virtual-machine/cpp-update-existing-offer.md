@@ -6,13 +6,13 @@ author: v-miclar
 ms.service: marketplace
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: Ankit.Sud
-ms.openlocfilehash: 4a75d706d55512201786b2b74376047ff75380a7
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: ansud
+ms.openlocfilehash: e6099caf949d93abf8c665f61cd9b91d545dd0f4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64938129"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612553"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Azure Marketplace で既存の VM プランを更新する
 

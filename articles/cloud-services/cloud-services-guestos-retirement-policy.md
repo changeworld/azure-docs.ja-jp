@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
 ms.openlocfilehash: ce66d44c0ddb84ed8c2908d02b8062195d6b461d
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351017"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61215841"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure ゲスト OS のサポートと提供終了のポリシー
 このページの情報は、Cloud Services の worker ロールと Web ロール (PaaS) Azure ゲスト オペレーティング システム ([ゲスト OS](cloud-services-guestos-update-matrix.md)) に関連しています。 このページの情報は、Virtual Machines (IaaS) には適用されません。

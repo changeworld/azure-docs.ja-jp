@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66167085"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181151"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>クラシック デプロイ モデルから Azure Resource Manager への IaaS リソースの移行
 最初に、サービスとしてのインフラストラクチャ (IaaS) リソースにおけるデータ プレーン操作と管理プレーン操作の違いについて理解することが重要です。
@@ -60,7 +60,7 @@ ms.locfileid: "66167085"
 |仮想ネットワークに ER ゲートウェイと VPN ゲートウェイの両方が割り当てられている。|
 |仮想ネットワーク ゲートウェイ接続が切断状態。|
 |Azure Resource Manager スタックにすべての ER 回線が事前に移行されている。|
-|Azure Resource Manager のネットワーク リソースのクォータ チェック  (例: 静的パブリック IP、動的パブリック IP、ロード バランサー、ネットワーク セキュリティ グループ、ルート テーブル、ネットワーク インターフェイス)。 |
+|Azure Resource Manager のネットワーク リソースのクォータ チェック (例: 静的パブリック IP、動的パブリック IP、ロード バランサー、ネットワーク セキュリティ グループ、ルート テーブル、ネットワーク インターフェイス)。 |
 | すべてのロード バランサー規則がデプロイと仮想ネットワークにわたって有効である。 |
 | 同じ仮想ネットワーク内にある停止済み (割り当て解除済み) VM 間のプライベート IP の競合。 |
 

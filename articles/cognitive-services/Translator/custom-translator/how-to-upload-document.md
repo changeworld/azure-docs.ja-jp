@@ -2,19 +2,19 @@
 title: ドキュメントをアップロードする方法 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: ドキュメントのアップロード機能を使用すると、トレーニング用の並列ドキュメントをアップロードできます。 並列ドキュメントは、一方がもう一方の翻訳であるドキュメントのペアです。 ペアの一方のドキュメントにはソース言語の文が含まれ、もう一方のドキュメントにはターゲット言語に翻訳されたこれらの文が含まれています。
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 7df7dd44716e98c74282bd0f0700ec7881ef31ef
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 948c9628147ae8cf869046b283601b939d35b290
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766950"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447925"
 ---
 # <a name="upload-a-document"></a>ドキュメントのアップロード
 

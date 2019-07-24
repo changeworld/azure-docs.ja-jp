@@ -5,18 +5,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 0203/26/2019
+ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 33d7f11842d6f22a86816b590cddd91eaf76ed72
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003685"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607048"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor のログ
 
@@ -79,7 +79,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 | データ | 説明 |
 |:---|:---|
 | Azure Active Directory 監査ログ | 各ディレクトリの診断設定によって構成されます。 「[Azure AD ログを Azure Monitor ログと統合する](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)」をご覧ください。  |
-| アクティビティ ログ | 既定では個別に格納され、ほぼリアルタイムのアラートに使用できます。 Log Analytics ワークスペースに書き込むには、Activity Log Analytics ソリューションをインストールします。 「[Log Analytics での Azure アクティビティ ログの収集と分析](collect-activity-logs.md)」をご覧ください。 |
+| アクティビティ ログ | 既定では個別に格納され、ほぼリアルタイムのアラートに使用できます。 Log Analytics ワークスペースに書き込むには、Activity Log Analytics ソリューションをインストールします。 「[Log Analytics での Azure アクティビティ ログの収集と分析](activity-log-collect.md)」をご覧ください。 |
 
 ### <a name="azure-resources"></a>Azure リソース
 

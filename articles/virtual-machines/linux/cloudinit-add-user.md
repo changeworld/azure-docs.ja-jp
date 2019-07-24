@@ -4,7 +4,7 @@ description: Azure CLI による作成時に、cloud-init を使用して、ユ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 51de92eb64e9879b769baf7e574ee1dca9355040
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: bcea130652789a84d332247445d8e25b2f7ac42e
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767011"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671787"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Azure で cloud-init を使用してユーザーを Linux VM に追加する
 この記事では、Azure でのプロビジョニング時に、[cloud-init](https://cloudinit.readthedocs.io) を使用して、仮想マシン (VM) または仮想マシン スケール セット (VMSS) でユーザーを追加する方法を示します。 この cloud-init スクリプトは、リソースが Azure によってプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください。
@@ -27,7 +27,7 @@ ms.locfileid: "55767011"
 ## <a name="add-a-user-to-a-vm-with-cloud-init"></a>cloud-init で VM にユーザーを追加する
 新しい Linux VM での最初のタスクの 1 つとして、*root* の使用を避けるために自分用の追加ユーザーを追加することがあります。 SSH キーは、セキュリティと使いやすさのためのベスト プラクティスです。 キーは、この cloud-init スクリプトで *~/.ssh/authorized_keys* ファイルに追加されます。
 
-Linux VM にユーザーを追加するには、現在のシェルに *cloud_init_upgrade.txt* という名前のファイルを作成し、次の構成を貼り付けます。 この例では、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 任意のエディターを使用することができます。 `sensible-editor cloud_init_add_user.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 **nano** エディターを使用するには #1 を選びます。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。  値 `ssh-authorized-keys:` に対してご自身の公開キー (*~/.ssh/id_rsa.pub* の内容など) を指定する必要があります。ここでは、例を簡単にするために短くなっています。
+Linux VM にユーザーを追加するには、現在のシェルに *cloud_init_upgrade.txt* という名前のファイルを作成し、次の構成を貼り付けます。 この例では、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 任意のエディターを使用することができます。 `sensible-editor cloud_init_add_user.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 **nano** エディターを使用するには #1 を選びます。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。  値 `ssh-authorized-keys:` に対してご自身の公開キー ( *~/.ssh/id_rsa.pub* の内容など) を指定する必要があります。ここでは、例を簡単にするために短くなっています。
 
 ```yaml
 #cloud-config
@@ -66,7 +66,7 @@ az vm create \
 ssh <publicIpAddress>
 ```
 
-ユーザーが VM および指定されたグループに追加されたことを確認するには、*/etc/group* ファイルの内容を次のように表示します。
+ユーザーが VM および指定されたグループに追加されたことを確認するには、 */etc/group* ファイルの内容を次のように表示します。
 
 ```bash
 cat /etc/group

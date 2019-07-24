@@ -15,11 +15,11 @@ ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526369"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60595765"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
@@ -131,7 +131,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 ソリューション内のその他の要素のパラメーター値は、 **parameters('parameter name')** の構文を使用して参照します。  たとえば、ワークスペース名にアクセスするには、**parameters('workspaceName')** を使用します。
 
-## <a name="variables"></a>variables
+## <a name="variables"></a>変数
 [Variables](../../azure-resource-manager/resource-group-authoring-templates.md#variables) は、その他の管理ソリューションで使用する値です。  これらの値は、ソリューションをインストールするユーザーには公開されません。  これは、作成者に 1 つの場所を提供することを意図しており、それによって、ソリューション全体にわたって何度も使用する値を管理できるようにします。 **resources** 要素でハードコーディングするのとは異なり、ソリューション固有の値を変数で記述する必要があります。  これによってコードが読みやすくなるとともに、後のバージョンでこれらの値を簡単に変更することができます。
 
 次の例は、ソリューションで使用される一般的なパラメーターを持つ**variables**要素です。

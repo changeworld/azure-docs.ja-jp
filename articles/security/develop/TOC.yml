@@ -1,0 +1,15 @@
+- name: 安全な開発に関するドキュメント
+  href: index.yml
+- name: 概念
+  expanded: true
+  items:
+    - name: ベスト プラクティス
+      items:
+        - name: 概要
+          href: secure-dev-overview.md
+        - name: セキュリティで保護されたアプリを設計する
+          href: secure-design.md
+        - name: セキュリティで保護されたアプリを開発する
+          href: secure-develop.md
+        - name: セキュリティで保護されたアプリをデプロイする
+          href: secure-deploy.md

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: kgremban
 ms.openlocfilehash: 3e703c999d57cf62064291cf91059a17a959a2c3
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608403"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64569242"
 ---
 # <a name="get-started-with-device-twins-python"></a>デバイス ツインの概要 (Python)
 
@@ -55,7 +55,7 @@ ms.locfileid: "59608403"
 
 ## <a name="create-the-service-app"></a>デバイス アプリを作成する
 
-このセクションでは、**{Device ID}** に関連付けられたデバイス ツインに場所のメタデータを追加する Python コンソール アプリを作成します。 その後、レドモンドにあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT ハブに格納されているデバイス ツインに対してクエリを実行します。
+このセクションでは、 **{Device ID}** に関連付けられたデバイス ツインに場所のメタデータを追加する Python コンソール アプリを作成します。 その後、レドモンドにあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT ハブに格納されているデバイス ツインに対してクエリを実行します。
 
 1. コマンド プロンプトを開き、**Azure IoT Hub Service SDK for Python** をインストールします。 SDK をインストールしたら、コマンド プロンプトを閉じます。
 
@@ -157,7 +157,7 @@ ms.locfileid: "59608403"
 
 ## <a name="create-the-device-app"></a>デバイス アプリを作成する
 
-このセクションでは、**{Device ID}** としてハブに接続し、デバイス ツインのレポートされるプロパティに携帯ネットワークを使用しているという情報を含めるよう更新する Python コンソール アプリを作成します。
+このセクションでは、 **{Device ID}** としてハブに接続し、デバイス ツインのレポートされるプロパティに携帯ネットワークを使用しているという情報を含めるよう更新する Python コンソール アプリを作成します。
 
 1. コマンド プロンプトを開き、**Azure IoT Hub Service SDK for Python** をインストールします。 SDK をインストールしたら、コマンド プロンプトを閉じます。
 
@@ -264,7 +264,7 @@ ms.locfileid: "59608403"
     python AddTagsAndQuery.py
     ```
 
-    今回は、**{Device ID}** が両方のクエリ結果に表示されるはずです。
+    今回は、 **{Device ID}** が両方のクエリ結果に表示されるはずです。
 
     ![2 番目のクエリ](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
 

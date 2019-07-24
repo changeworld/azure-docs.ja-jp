@@ -4,7 +4,7 @@ description: 制約付き vCPU 数に対応する VM サイズを示します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: ec2ee8fa9c374b5870cfcfd325925322c49aa0ca
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e05346e16315dfdeca926e6db87e6d5f2252e227
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718735"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668095"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>制約付き vCPU 対応の VM サイズ
 

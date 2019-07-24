@@ -8,20 +8,20 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: ec6f3884504c94b7669df21882aeb2a1eb9d7220
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 2e2d13e6923535a8993a6477cbbfb921f6092d66
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750584"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565603"
 ---
-# <a name="get-started-with-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics の使用を開始する
+# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Monitor で Log Analytics の使用を開始する
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-このチュートリアルでは、Azure portal で Azure Monitor Log Analytics を使用して、Azure Monitor ログ クエリを記述する方法について説明します。 以下の方法について説明します。
+このチュートリアルでは、Azure portal で Log Analytics を使用して Azure Monitor ログ クエリを記述する方法について説明します。 以下の方法について説明します。
 
-- 単純なクエリを作成する
+- Log Analytics を使用して単純なクエリを記述する
 - データのスキーマの概要
 - 結果のフィルター、並べ替え、グループ化
 - 時間の範囲を適用する
@@ -29,13 +29,22 @@ ms.locfileid: "56750584"
 - クエリの保存と読み込み
 - クエリのエクスポートと共有
 
+ログ クエリの記述に関するチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を参照してください。<br>
+ログ クエリの詳細については、[Azure Monitor でのログ クエリの概要](log-query-overview.md)に関するページを参照してください。
 
 ## <a name="meet-log-analytics"></a>Log Analytics について
 Log Analytics は、Azure Monitor ログ クエリの記述と実行に使用される Web ツールです。 Azure Monitor のメニューで **[ログ]** を選択し、これを開きます。 新しい空のクエリから開始されます。
 
 ![ホーム ページ](media/get-started-portal/homepage.png)
 
+## <a name="firewall-requirements"></a>ファイアウォールの要件
+Log Analytics を使用するには、ブラウザーが次のアドレスにアクセスできる必要があります。 ブラウザーがファイアウォールを介して Azure Portal にアクセスしている場合は、これらのアドレスへのアクセスを有効にする必要があります。
 
+| Uri | IP | Port |
+|:---|:---|:---|
+| portal.loganalytics.io | 動的 | 80,443 |
+| api.loganalytics.io | 動的 | 80,443 |
+| docs.loganalytics.io | 動的 | 80,443 |
 
 ## <a name="basic-queries"></a>基本的なクエリ
 クエリを使用すると、用語を検索し、傾向を特定し、パターンを分析し、データに基づいて他の多くの分析情報を表示できます。 基本的なクエリから始めてみましょう。
@@ -44,9 +53,9 @@ Log Analytics は、Azure Monitor ログ クエリの記述と実行に使用さ
 Event | search "error"
 ```
 
-このクエリは、_Event_ テーブルの任意のプロパティに "error" という用語が含まれるレコードを検索します。
+このクエリは、_Event_ テーブルの任意のプロパティに _error_ という用語が含まれるレコードを検索します。
 
-クエリは、テーブル名または **search** コマンドから始めることができます。 上記の例は、クエリのスコープを定義するテーブル名 _Event_ から始まります。 複数のコマンドは、パイプ (|) 文字で区切ります。そのため、最初のコマンドの出力は次のコマンドの入力になります。 1 つのクエリに任意の数のコマンドを追加できます。
+クエリは、テーブル名または [search](/azure/kusto/query/searchoperator) コマンドから始めることができます。 上の例は、テーブル名 _Event_ で始まり、Event テーブルのすべてのレコードが取得されます。 複数のコマンドは、パイプ (|) 文字で区切ります。そのため、最初のコマンドの出力は次のコマンドの入力になります。 1 つのクエリに任意の数のコマンドを追加できます。
 
 同じクエリは、次のように記述することもできます。
 
@@ -54,18 +63,18 @@ Event | search "error"
 search in (Event) "error"
 ```
 
-この例では、**search** は _Event_ テーブルにスコープされ、そのテーブル内のすべてのレコードから "error" という用語が検索されます。
+この例では、**search** はスコープが _Event_ テーブルに設定されているため、そのテーブル内のすべてのレコードで _error_ という用語が検索されます。
 
 ## <a name="running-a-query"></a>Running a query
-クエリを実行するには、**[実行]** ボタンをクリックするか、**Shift キーを押しながら Enter キー**を押します。 実行されるコードと返されるデータを決定する次の詳細情報を考慮してください。
+クエリを実行するには、 **[実行]** ボタンをクリックするか、**Shift キーを押しながら Enter キー**を押します。 実行されるコードと返されるデータを決定する次の詳細情報を考慮してください。
 
-- 改行:1 つの区切りでクエリが明確になります。 複数の改行で、別々のクエリに分割されます。
+- 改行:1 つの改行でクエリが読みやすくなります。 複数の改行で、別々のクエリに分割されます。
 - カーソル:クエリ内のどこかにカーソルを置いて実行します。 現在のクエリは、空白行が見つかるまでのコードと見なされます。
 - 時間の範囲: 既定では _過去 24 時間_ の時間の範囲が設定されています。 別の範囲を使用するには、時刻の選択ツールを使用するか、明示的な時間の範囲フィルターをクエリに追加します。
 
 
 ## <a name="understand-the-schema"></a>スキーマの概要
-スキーマは、論理カテゴリで視覚的にグループ化されたテーブルのコレクションです。 カテゴリの一部は、監視ソリューションのカテゴリです。 _LogManagement_ カテゴリには、Windows イベント、Syslog イベント、パフォーマンス データ、クライアントのハートビートなどの一般的なデータが含まれます。
+スキーマは、論理カテゴリで視覚的にグループ化されたテーブルのコレクションです。 カテゴリの一部は、監視ソリューションのカテゴリです。 _LogManagement_ カテゴリには、Windows および Syslog イベント、パフォーマンス データ、エージェントのハートビートなどの一般的なデータが含まれます。
 
 ![スキーマ](media/get-started-portal/schema.png)
 
@@ -88,7 +97,7 @@ Log Analytics では、以下によって結果の範囲が自動的に調整さ
 ### <a name="add-a-filter-to-the-query"></a>クエリにフィルターを追加する
 各レコードの左には矢印があります。 この矢印をクリックすると、そのレコードの詳細が表示されます。
 
-列名にカーソルを移動すると、[+] アイコンと [-] アイコンが表示されます。 同じ値のレコードのみを返すフィルターを追加するには、[+] 記号をクリックします。 この値を含むレコードを除外するには、[-] をクリックし、**[実行]** をクリックしてもう一度クエリを実行します。
+列名にカーソルを移動すると、[+] アイコンと [-] アイコンが表示されます。 同じ値のレコードのみを返すフィルターを追加するには、[+] 記号をクリックします。 この値を含むレコードを除外するには、[-] をクリックし、 **[実行]** をクリックしてもう一度クエリを実行します。
 
 ![クエリにフィルターを追加する](media/get-started-portal/add-filter.png)
 
@@ -116,7 +125,7 @@ Log Analytics では、以下によって結果の範囲が自動的に調整さ
 
 
 ## <a name="select-a-time-range"></a>時間の範囲を選択する
-既定では、Log Analytics では _過去 24 時間_ の時間範囲が適用されます。 別の範囲を使用するには、時刻の選択ツールで別の値を選択し、**[実行]** をクリックします。 事前設定されている値に加えて、_[カスタムの時間の範囲]_ オプションを使用して、クエリの絶対範囲を選択することができます。
+既定では、Log Analytics では _過去 24 時間_ の時間範囲が適用されます。 別の範囲を使用するには、時刻の選択ツールで別の値を選択し、 **[実行]** をクリックします。 事前設定されている値に加えて、 _[カスタムの時間の範囲]_ オプションを使用して、クエリの絶対範囲を選択することができます。
 
 ![時刻の選択ツール](media/get-started-portal/time-picker.png)
 
@@ -139,7 +148,7 @@ Event
 
 ![横棒グラフ](media/get-started-portal/bar-chart.png)
 
-結果は、積み上げ横棒グラフで表示されます。 _[積み上げ縦棒]_ をクリックし、_[円]_ を選択して結果を別のビューで表示します。
+結果は、積み上げ横棒グラフで表示されます。 _[積み上げ縦棒]_ をクリックし、 _[円]_ を選択して結果を別のビューで表示します。
 
 ![円グラフ](media/get-started-portal/pie-chart.png)
 

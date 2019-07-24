@@ -7,13 +7,13 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2019
-ms.author: dwalthermsft
-ms.openlocfilehash: cc873ad441c93a7fce54c275e9f7d52f0b044319
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.author: dwalther
+ms.openlocfilehash: f3239fa5d21078795e7b063cb0364e905cba25c1
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302427"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846623"
 ---
 # <a name="public-preview-service-limits"></a>パブリック プレビューのサービスの制限
 

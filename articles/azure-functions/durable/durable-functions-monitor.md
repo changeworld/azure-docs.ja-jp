@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9be062ec42f054832225c17a65b06e47dbcbe990
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 9d5e06c3d72d87a87b41a52ed4df369ebc04dccd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607281"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66387094"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
@@ -42,7 +42,7 @@ ms.locfileid: "59607281"
 
 このサンプルでは、Weather Underground API を使って、ある場所の現在の気象条件をチェックします。
 
-まず必要なのは、Weather Underground アカウントです。 [https://www.wunderground.com/signup](https://www.wunderground.com/signup) で無料で作成できます。 アカウントを作成したら、API キーを取得する必要があります。 これは、[https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api) にアクセスし、キー設定を選択することで行います。 Stratus Developer プランは無料で、このサンプルを実行するのに十分です。
+まず必要なのは、Weather Underground アカウントです。 [https://www.wunderground.com/signup](https://www.wunderground.com/signup) で無料で作成できます。 アカウントを作成したら、API キーを取得する必要があります。 これは、[https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1) にアクセスし、キー設定を選択することで行います。 Stratus Developer プランは無料で、このサンプルを実行するのに十分です。
 
 API キーを入手したら、次の**アプリ設定**を関数アプリに追加します。
 
@@ -89,7 +89,8 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 ## <a name="strongly-typed-data-transfer-net-only"></a>厳密に型指定されたデータ転送 (.NET のみ)
 
-オーケストレーターにはデータの複数の部分が必要であるため、C# および C# スクリプトにおける厳密に型指定されたデータ転送には[共有 POCO オブジェクト](../functions-reference-csharp.md#reusing-csx-code)が使われます。[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+オーケストレーターにはデータの複数の部分が必要であるため、C# および C# スクリプトにおける厳密に型指定されたデータ転送には[共有 POCO オブジェクト](../functions-reference-csharp.md#reusing-csx-code)が使われます。  
+[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
 

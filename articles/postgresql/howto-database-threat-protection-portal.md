@@ -1,19 +1,19 @@
 ---
-title: Advanced Threat Protection - Azure Database for PostgreSQL
+title: Advanced Threat Protection - Azure Database for PostgreSQL - Single Server
 description: 脅威の防止は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: bbb48708d0e5a7cd07a3971a6966f40696107562
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.date: 5/6/2019
+ms.openlocfilehash: a69a8b651188b9566fdbec4bc6de09a8fec164c7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095097"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65067465"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 向け Advanced Threat Protection
+# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Advanced Threat Protection for Azure Database for PostgreSQL - Single Server
 
 Azure Database for PostgreSQL 用の Advanced Threat Protection では、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。
 
@@ -28,7 +28,7 @@ Advanced Threat Protection は、高度なセキュリティ機能の統合パ�
 
 ## <a name="set-up-threat-detection"></a>脅威検出の設定
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) を開きます。
-2. 保護する Azure Database for PostgreSQL サーバーの構成ページに移動します。 セキュリティの設定で、**[Advanced Threat Protection] (プレビュー)** を選びます。
+2. 保護する Azure Database for PostgreSQL サーバーの構成ページに移動します。 セキュリティの設定で、 **[Advanced Threat Protection] (プレビュー)** を選びます。
 3. **[Advanced Threat Protection] (プレビュー)** の構成ページで次のようにします。
 
    - サーバーでの Advanced Threat Protection を有効にします

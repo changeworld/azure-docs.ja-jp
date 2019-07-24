@@ -14,11 +14,11 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68b6c1e037992930a70630b0d218cc98beba931d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187034"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60249245"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Azure Active Directory を使用して別のグループからグループを追加または削除する
 この記事は、Azure Active Directory を使用して別のグループからグループを追加および削除するのに役立ちます。
@@ -36,18 +36,18 @@ ms.locfileid: "56187034"
 
 1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、**[グループ]** を選択します。
+2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択します。
 
-3. **[グループ - すべてのグループ]** ページで、別のグループのメンバーになるグループを検索して選択します。 この演習では、**[MDM policy - West]\(MDM ポリシー - 西部\)** グループを使用します。
+3. **[グループ - すべてのグループ]** ページで、別のグループのメンバーになるグループを検索して選択します。 この演習では、 **[MDM policy - West]\(MDM ポリシー - 西部\)** グループを使用します。
 
     >[!Note]
-    >グループはメンバーとして、一度に 1 つのグループにのみ追加できます。 さらに、**[グループの選択]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。 ただし、ワイルドカード文字はサポートされません。
+    >グループはメンバーとして、一度に 1 つのグループにのみ追加できます。 さらに、 **[グループの選択]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。 ただし、ワイルドカード文字はサポートされません。
 
     ![[MDM policy - West]\(MDM ポリシー - 西部\) グループが選択された [グループ - すべてのグループ] ページ](media/active-directory-groups-membership-azure-portal/group-all-groups-screen.png)
 
-4. **[MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\)** ページで、**[グループ メンバーシップ]**、**[追加]** の順に選択し、ご自分のグループをメンバーにする対象グループを検索して、**[選択]** を選びます。 この演習では、**[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループを使用します。
+4. **[MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\)** ページで、 **[グループ メンバーシップ]** 、 **[追加]** の順に選択し、ご自分のグループをメンバーにする対象グループを検索して、 **[選択]** を選びます。 この演習では、 **[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループを使用します。
 
-    現在、**[MDM policy - West]\(MDM ポリシー - 西部\)** グループは、[MDM policy - All org]\(MDM ポリシー - すべての組織\) グループのプロパティと構成をすべて継承して、**[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループのメンバーになっています。
+    現在、 **[MDM policy - West]\(MDM ポリシー - 西部\)** グループは、[MDM policy - All org]\(MDM ポリシー - すべての組織\) グループのプロパティと構成をすべて継承して、 **[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループのメンバーになっています。
 
     ![グループを別のグループに追加してグループ メンバーシップを作成する](media/active-directory-groups-membership-azure-portal/add-group-membership.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "56187034"
 
     ![親グループを表示している [MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\) ページ](media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
 
-6. グループとメンバー リレーションシップのより詳細な表示については、グループ名 (**[MDM policy - All org]\(MDM ポリシー - すべての組織\)**) を選択して、**[MDM policy - West]\(MDM ポリシー - 西部\)** ページの詳細を確認します。
+6. グループとメンバー リレーションシップのより詳細な表示については、グループ名 ( **[MDM policy - All org]\(MDM ポリシー - すべての組織\)** ) を選択して、 **[MDM policy - West]\(MDM ポリシー - 西部\)** ページの詳細を確認します。
 
     ![メンバーとグループの両方の詳細を表示している [グループ メンバーシップ] ページ](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
 
@@ -65,11 +65,11 @@ ms.locfileid: "56187034"
 ### <a name="to-remove-a-member-group-from-another-group"></a>別のグループからメンバー グループを削除するには
 1. **[グループ - すべてのグループ]** ページで、別のグループのメンバーとして削除されるグループを検索して選択します。 この演習では、もう一度 **[MDM ポリシー - 西部]** グループを使用します。
 
-2. **[MDM policy - West]\(MDM ポリシー - 西部\)** 概要ページで、**[グループ メンバーシップ]** を選択します。
+2. **[MDM policy - West]\(MDM ポリシー - 西部\)** 概要ページで、 **[グループ メンバーシップ]** を選択します。
 
     ![[MDM policy - West]\(MDM ポリシー - 西部\) 概要ページ](media/active-directory-groups-membership-azure-portal/group-membership-overview.png)
 
-3. **[MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\)** ページから **[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループを選択して、**[MDM policy - West]\(MDM ポリシー - 西部\)** ページの詳細から **[削除]** を選択します。
+3. **[MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\)** ページから **[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループを選択して、 **[MDM policy - West]\(MDM ポリシー - 西部\)** ページの詳細から **[削除]** を選択します。
 
     ![メンバーとグループの両方の詳細を表示している [グループ メンバーシップ] ページ](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
 

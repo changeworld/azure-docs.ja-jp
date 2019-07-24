@@ -16,11 +16,11 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088708"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127142"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
@@ -131,7 +131,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 #### <a name="to-get-the-virtual-array-image"></a>仮想アレイのイメージを取得するには
 
 1. [Azure Portal](https://portal.azure.com/)にサインインします。 
-2. Azure Portal で、**[参照] > [StorSimple デバイス マネージャー]** の順にクリックします。
+2. Azure Portal で、 **[参照] > [StorSimple デバイス マネージャー]** の順にクリックします。
 3. 既存の StorSimple デバイス マネージャー サービスを選択します。 **[StorSimple デバイス マネージャー]** ブレードで **[クイック スタート]** をクリックします。 
 4. Microsoft ダウンロード センターからダウンロードするイメージに対応するリンクをクリックします。 イメージ ファイルは約 4.8 GB です。
    

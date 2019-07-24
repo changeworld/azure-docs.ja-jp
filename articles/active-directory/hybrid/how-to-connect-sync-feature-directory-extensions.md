@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff0fd4d01eab739b79685c1de67cb8fe28873961
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167203"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60347995"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[Azure AD Graph API ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://developer.microsoft.com/graph/) を通じて利用できます。 使用可能な属性を表示するには、それぞれ [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) と [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を使用します。
@@ -62,7 +62,7 @@ Azure AD のオブジェクトでは、ディレクトリ拡張機能に対し�
 または、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer#) を使用して、Microsoft Graph API で属性にクエリを実行します。
 
 >[!NOTE]
-> 属性が返されるように要求する必要があります。 このように、明白に属性を選びます： https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division. 
+> 属性が返されるように要求する必要があります。 このように、明白に属性を選びます： https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division. 
 >
 > 詳細については、[Microsoft Graph:クエリ パラメーターの使用](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)に関するページを参照してください。
 

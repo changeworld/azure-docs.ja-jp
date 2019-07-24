@@ -1,23 +1,17 @@
 ---
 title: Azure リソースをロックして変更を防止する | Microsoft Docs
 description: 重要な Azure リソースの更新または削除をユーザーに禁止するには、すべてのユーザーとロールを対象にロックを適用します。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: 53c57e8f-741c-4026-80e0-f4c02638c98b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8942ae9a24613f7b7896cf7124b344d9d9315954
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a6c7983d22eed4a4232fbb2db490c1743684a04c
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360447"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65813398"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止 
 
@@ -36,7 +30,13 @@ ms.locfileid: "59360447"
 
 Resource Manager のロックは、管理ウィンドウで実行され、`https://management.azure.com` に送信される操作で構成される操作のみに適用されます。 ロックは、リソースが独自の機能を実行する方法を制限しません。 リソースの変更は制限されますが、リソースの操作は制限されません。 たとえば、SQL Database に ReadOnly ロックを設定すると、データベースの削除または変更を実行できなくなりますが、 データベース内のデータの作成、更新、または削除は実行できます。 データのトランザクションは `https://management.azure.com` に送信されないため、これらの操作は許可されます。
 
-**ReadOnly** を適用すると、読み取り操作のように見えるいくつかの操作には実際に追加のアクションが必要となるため、予期しない結果を招く可能性があります。 たとえば、 **ReadOnly** ロックをストレージ アカウントに設定すると、すべてのユーザーがキーを一覧表示できなくなります。 返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。 別の例として、 **ReadOnly** ロックを App Service リソースに配置すると、Visual Studio のサーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio のサーバー エクスプローラーはリソース用のファイルを表示できなくなります。
+**ReadOnly** を適用すると予期しない結果につながる可能性があります。リソースを変更する操作のように見えなくても、実際はロックによってブロックされているアクションを必要とする場合があるためです。 **ReadOnly** ロックは、リソースまたはリソースを含むリソース グループに適用できます。 **ReadOnly** ロックによってブロックされる一般的な操作の例には、次のようなものがあります。
+
+* **ReadOnly** ロックをストレージ アカウントに設定すると、どのユーザーもキーを一覧表示できなくなります。 返されるキーは書き込み操作に使用できるため、キーの一覧表示操作は POST 要求を介して処理されます。
+
+* **ReadOnly** ロックを App Service リソースに設定すると、Visual Studio のサーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio のサーバー エクスプローラーはリソース用のファイルを表示できなくなります。
+
+* **ReadOnly** ロックを、仮想マシンを含むリソース グループに設定すると、どのユーザーも仮想マシンを起動したり、再起動したりできなくなります。 これらの操作では、POST 要求が必要です。
 
 ## <a name="who-can-create-or-delete-locks"></a>誰がロックを作成または削除できるか
 管理ロックを作成または削除するには、`Microsoft.Authorization/*` または `Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、**所有者**と**ユーザー アクセス管理者**にのみこれらのアクションが許可されています。
@@ -70,13 +70,13 @@ Azure Databricks などの一部の Azure サービスでは、[マネージド 
 
 ロックを**リソース**に適用するときには、次の形式を使用します。
 
-* 名前 -  `{resourceName}/Microsoft.Authorization/{lockName}`
-* 種類 -  `{resourceProviderNamespace}/{resourceType}/providers/locks`
+* 名前 - `{resourceName}/Microsoft.Authorization/{lockName}`
+* 種類 - `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
 **リソース グループ**または**サブスクリプション**にロックを適用するときには、次の形式を使用します。
 
-* 名前 -  `{lockName}`
-* 種類 -  `Microsoft.Authorization/locks`
+* 名前 - `{lockName}`
+* 種類 - `Microsoft.Authorization/locks`
 
 次の例では、App Service プラン、Web サイト、および Web サイトに対するロックを作成するテンプレートを示します。 ロックのリソースの種類は、ロック対象リソースのリソースの種類と **/providers/locks** です。 ロックの名前は、リソース名に **/Microsoft.Authorization/** とロックの名前を連結して作成されます。
 

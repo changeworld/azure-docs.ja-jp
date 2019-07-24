@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 3fdb0f566789382a1606b19e4fac179f9ecf40cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887461"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62122959"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>ホスト名の表示と変更
 ロール インスタンスをホスト名で参照できるようにするには、各ロールのサービス構成ファイルでホスト名の値を設定する必要があります。 そのためには、使用するホスト名を **Role** 要素の **vmName** 属性に追加します。 **vmName** 属性の値は、各ロール インスタンスのホスト名に対するベースとして使用されます。 たとえば、**vmName** が *webrole* であり、そのロールに 3 つのインスタンスがある場合、インスタンスのホスト名は *webrole0*、*webrole1*、*webrole2* になります。 仮想マシンのホスト名は仮想マシン名に基づいて設定されるため、構成ファイルで仮想マシンのホスト名を指定する必要はありません。 Microsoft Azure サービスの構成の詳細については、「 [Azure Service Configuration Schema (.cscfg File) (Azure サービス構成スキーマ (.cscfg ファイル))](https://msdn.microsoft.com/library/azure/ee758710.aspx)

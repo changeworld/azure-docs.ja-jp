@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: cdffbfd11a0f1c7d99818fa00f550965774b9b31
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: c32d9954b3c90a5f7e9c5475acdb141f7154cf76
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190066"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540350"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -23,7 +23,7 @@ ms.locfileid: "65190066"
 1. この記事のコメント セクション。
 2. [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
-4. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、**[ヘルプとサポート]** ボタンを選択し、**[新しいサポート要求]** を選択します。
+4. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、 **[ヘルプとサポート]** ボタンを選択し、 **[新しいサポート要求]** を選択します。
 
 ## <a name="general"></a>全般
 * <a id="why-files-useful"></a>
@@ -73,10 +73,10 @@ ms.locfileid: "65190066"
 
 * <a id="tier-options"></a>
   **Azure Files では、どのストレージ層がサポートされていますか。**  
-    現在 Azure Files でサポートされているのは、標準ストレージ層のみです。 Premium Storage およびクール ストレージのサポートについては、現時点でスケジュールをお伝えすることはできません。 
+    Azure Files は、Premium と Standard という 2 つのストレージ層をサポートしています。 Standard ファイル共有は汎用 (GPv1 または GPv2) ストレージ アカウントで作成され、Premium ファイル共有は FileStorage ストレージ アカウントで作成されます。 [Standard ファイル共有](storage-how-to-create-file-share.md)と[Premium ファイル共有](storage-how-to-create-premium-fileshare.md)の作成方法を参照してください。 
     
     > [!NOTE]
-    > BLOB のみのストレージ アカウントと Premium Storage アカウントからは、Azure ファイル共有を作成できません。
+    > BLOB ストレージ アカウントまたは *Premium* 汎用 (GPv1 または GPv2) ストレージ アカウントから Azure ファイル共有を作成することはできません。 Standard Azure ファイル共有は *Standard* 汎用アカウントでのみ作成し、Premium Azure ファイル共有は FileStorage ストレージ アカウントでのみ作成する必要があります。 *Premium* 汎用 (GPv1 および GPv2) ストレージ アカウントは、Premium ページ BLOB 専用です。 
 
 * <a id="give-us-feedback"></a>
   **Azure Files に追加してほしい機能があります。追加できますか。**  
@@ -356,11 +356,11 @@ ms.locfileid: "65190066"
     Azure Files のスケーラビリティおよびパフォーマンスのターゲットについては、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](storage-files-scale-targets.md)」を参照してください。
 
 * <a id="need-larger-share"></a>
-**Azure Files で現在提供されているよりも大きなファイル共有を必要としています。Azure ファイル共有のサイズを増やすことはできますか。**  
-    いいえ。 Azure ファイル共有の最大サイズは、5 TiB です。 これは、現時点でのハード制限であり、調整することはできません。 現在、共有サイズを 100 TiB にまで増やすソリューションに取り組んでいるところですが、現時点でスケジュールをお伝えすることはできません。
+**Azure ファイル共有に使用できるサイズ**  
+    Azure ファイル共有のサイズ (Premium および Standard) は最大 100 TiB までスケールアップできます。 GA オファリングとして最大 100 TiB の Premium ファイル共有サイズを利用できます。 GA オファリングとして最大 5 TiB の Standard ファイル共有サイズを利用できますが、プレビューでは最大 100 TiB のサイズを利用できます。 Standard レベルの大きいファイル共有のプレビューのオンボード手順については、この計画ガイドの「[大きなファイル共有へのオンボード (Standard レベル)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier)」セクションを参照してください。
 
 * <a id="open-handles-quota"></a>
-**同じファイルに同時にアクセスできるクライアントの数はどのくらいですか。**   
+**同じファイルに同時にアクセスできるクライアントの数はどのくらいですか。**    
     開くことができるハンドルのクォータは、1 つのファイルにつき 2,000 個です。 開いているハンドルが 2,000 個になると、クォータに達したことを伝えるエラー メッセージが表示されます。
 
 * <a id="zip-slow-performance"></a>
@@ -369,7 +369,7 @@ ms.locfileid: "65190066"
 
 * <a id="slow-perf-windows-81-2012r2"></a>
 **Windows Server 2012 R2 または Windows 8.1 で Azure ファイル共有をマウントした後、パフォーマンスが低下します。**  
-    Windows Server 2012 R2 および Windows 8.1 で Azure ファイル共有をマウントした場合、問題が生じることが確認されています。 この問題は、2014 年 4 月の Windows 8.1 および Windows Server 2012 R2 向けの累積更新プログラムのパッチで解決されています。 パフォーマンスを最適化するために、Windows Server 2012 R2 および Windows 8.1 のすべてのインスタンスに、このパッチが適用されていることを確認してください  (Windows Update で常に Windows パッチを取得することが推奨されます)。詳細については、関連する Microsoft サポート技術情報の記事「[Slow performance when you access Azure Files from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/kb/3114025)」を参照してください。
+    Windows Server 2012 R2 および Windows 8.1 で Azure ファイル共有をマウントした場合、問題が生じることが確認されています。 この問題は、2014 年 4 月の Windows 8.1 および Windows Server 2012 R2 向けの累積更新プログラムのパッチで解決されています。 パフォーマンスを最適化するために、Windows Server 2012 R2 および Windows 8.1 のすべてのインスタンスに、このパッチが適用されていることを確認してください (Windows Update で常に Windows パッチを取得することが推奨されます)。詳細については、関連する Microsoft サポート技術情報の記事「[Slow performance when you access Azure Files from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure Files にアクセスするときにパフォーマンスが低下する)](https://support.microsoft.com/kb/3114025)」を参照してください。
 
 ## <a name="features-and-interoperability-with-other-services"></a>機能およびその他のサービスとの相互運用性
 * <a id="cluster-witness"></a>

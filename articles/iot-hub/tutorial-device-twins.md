@@ -11,14 +11,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2019
+ms.date: 06/21/2019
 ms.custom: mvc
-ms.openlocfilehash: 85f1c051f13484ea8e14a6ae8402067b613fe2bc
-ms.sourcegitcommit: 1fbc75b822d7fe8d766329f443506b830e101a5e
+ms.openlocfilehash: 4ad3013f6914abbf4c75676e7423848dff9d5e9a
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65597534"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330356"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -53,7 +53,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 node --version
 ```
 
-https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+[https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip ) からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="set-up-azure-resources"></a>Azure リソースの設定
 
@@ -75,7 +75,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --name $hubname -o table
+az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 

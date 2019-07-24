@@ -17,11 +17,11 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 19b3e4cc5ba4bc0173721947bd1e1a680ca7b3a3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217702"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60869846"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>チュートリアル:ServiceNow を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる
 
@@ -67,11 +67,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="configure-automatic-user-account-provisioning"></a>自動ユーザー アカウント プロビジョニングを構成する
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-1. シングル サインオンのために ServiceNow を既に構成している場合は、検索フィールドで ServiceNow のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **ServiceNow** を検索します。 検索結果から ServiceNow を選択してアプリケーションの一覧に追加します。
+1. シングル サインオンのために ServiceNow を既に構成している場合は、検索フィールドで ServiceNow のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **ServiceNow** を検索します。 検索結果から ServiceNow を選択してアプリケーションの一覧に追加します。
 
-1. ServiceNow のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+1. ServiceNow のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
@@ -85,7 +85,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     c. **[ServiceNow 管理パスワード]** ボックスに、管理者のパスワードを入力します。
 
-1. Azure Portal で、**[テスト接続]** をクリックして Azure AD が ServiceNow アプリに接続できることを確認します。 接続が失敗した場合、使用中の ServiceNow アカウントに Team Admin アクセス許可があることを確認して、**"管理者資格情報"** の手順をもう一度試してください。
+1. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が ServiceNow アプリに接続できることを確認します。 接続が失敗した場合、使用中の ServiceNow アカウントに Team Admin アクセス許可があることを確認して、 **"管理者資格情報"** の手順をもう一度試してください。
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
 ms.openlocfilehash: a5099feee34eb5497b68987485412e29ad5d5365
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521519"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60480338"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Classic コンテナー レジストリのアップグレード
 
@@ -95,7 +95,7 @@ az acr update --name myclassicregistry --sku Premium
 
 Azure portal で Classic レジストリをアップグレードする場合、イメージに対応できる SKU に応じて、Azure によって Standard または Premium SKU のいずれかが自動的に選択されます。 たとえば、レジストリのイメージが 100 GiB 未満の場合、Classic レジストリから Standard (最大 100 GiB) に自動で選択、変換されます。
 
-Azure Portal を使用して Classic レジストリをアップグレードするには、対象のコンテナー レジストリの **[概要]** に移動して、**[管理対象レジストリへのアップグレード]** を選択します。
+Azure Portal を使用して Classic レジストリをアップグレードするには、対象のコンテナー レジストリの **[概要]** に移動して、 **[管理対象レジストリへのアップグレード]** を選択します。
 
 ![Azure Portal UI での Classic レジストリのアップグレード ボタン][update-classic-01-upgrade]
 

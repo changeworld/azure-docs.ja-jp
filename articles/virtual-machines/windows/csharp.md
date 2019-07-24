@@ -4,7 +4,7 @@ description: C# と Azure Resource Manager を使用して、仮想マシンと�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: ce05d097aa69aa1aadb8450e40722448bc5a7de0
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 2bc7eef9c4633b6064f2be251bc436c103f4e4a0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883060"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718703"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>C# を使用して Azure で Windows VM を作成および管理する #
 
@@ -39,15 +39,15 @@ ms.locfileid: "54883060"
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[.NET デスクトップ開発]** を選び、**[インストール]** をクリックします。 サマリーで、**[.NET Framework 4 から 4.6 の開発ツール]** が自動的に選択されていることが確認できます。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って .NET ワークロードを追加できます。
-2. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** をクリックします。
-3. **[テンプレート]** > **[Visual C#]** で **[コンソール アプリ (.NET Framework)]** を選択し、プロジェクトの名前に「*myDotnetProject*」と入力して、プロジェクトの場所を選んだ後、**[OK]** をクリックします。
+1. まだ [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio) をインストールしていない場合は、インストールを実行します。 [ワークロード] ページで **[.NET デスクトップ開発]** を選び、 **[インストール]** をクリックします。 サマリーで、 **[.NET Framework 4 から 4.6 の開発ツール]** が自動的に選択されていることが確認できます。 Visual Studio を既にインストールしてある場合は、Visual Studio 起動ツールを使って .NET ワークロードを追加できます。
+2. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** をクリックします。
+3. **[テンプレート]**  >  **[Visual C#]** で **[コンソール アプリ (.NET Framework)]** を選択し、プロジェクトの名前に「*myDotnetProject*」と入力して、プロジェクトの場所を選んだ後、 **[OK]** をクリックします。
 
 ## <a name="install-the-package"></a>パッケージをインストールする
 
 NuGet パッケージを使用すると、手順を完了するために必要なライブラリを簡単にインストールできます。 Visual Studio で必要なライブラリを入手するには、次の手順に従います。
 
-1. **[ツール]** > **[NuGet パッケージ マネージャー]** をクリックし、**[パッケージ マネージャー コンソール]** をクリックします。
+1. **[ツール]**  >  **[NuGet パッケージ マネージャー]** をクリックし、 **[パッケージ マネージャー コンソール]** をクリックします。
 2. コンソールに次のコマンドを入力します。
 
     ```
@@ -60,7 +60,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 ### <a name="create-the-authorization-file"></a>認証ファイルを作成する
 
-1. ソリューション エクスプ ローラーで、*[myDotnetProject]* > **[追加]** > **[新しい項目]** を右クリックしてから、*[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに *azureauth.properties* と名前を付けて、**[追加]** をクリックします。
+1. ソリューション エクスプ ローラーで、 *[myDotnetProject]*  >  **[追加]**  >  **[新しい項目]** を右クリックしてから、 *[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに *azureauth.properties* と名前を付けて、 **[追加]** をクリックします。
 2. 次の承認プロパティを追加します。
 
     ```
@@ -74,18 +74,18 @@ NuGet パッケージを使用すると、手順を完了するために必要�
     graphURL=https://graph.windows.net/
     ```
 
-    **&lt;subscription-id&gt;** をサブスクリプション ID に、**&lt;application-id&gt;** を Active Directory アプリケーション ID に、**&lt;authentication-key&gt;** をアプリケーション キーに、**&lt;tenant-id&gt;** をテナント識別子に置き換えます。
+    **&lt;subscription-id&gt;** をサブスクリプション ID に、 **&lt;application-id&gt;** を Active Directory アプリケーション ID に、 **&lt;authentication-key&gt;** をアプリケーション キーに、 **&lt;tenant-id&gt;** をテナント識別子に置き換えます。
 
 3. azureauth.properties ファイルを保存します。 
 4. AZURE_AUTH_LOCATION という Windows 環境変数を、作成した認証ファイルへのフルパスに設定します。 たとえば、次の PowerShell コマンドを使用します。
 
     ```
-    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2017\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
+    [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
 ### <a name="create-the-management-client"></a>管理クライアントを作成する
 
-1. 作成したプロジェクトの Program.cs ファイルを開き、次の using ステートメントをファイルの先頭の既存のステートメントに追加します。
+1. 作成したプロジェクトの Program.cs ファイルを開きます。 次に、ファイルの先頭にある既存のステートメントに次の using ステートメントを追加します。
 
     ```
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -365,7 +365,7 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>VM にデータ ディスクを追加する
 
-仮想マシンにデータ ディスクのサイズが 2 GB で、LUN が 0 で、キャッシングの種類が ReadWrite のデータ ディスクを追加するには、次のコードを Main メソッドに追加します。
+仮想マシンにデータ ディスクを追加するには、Main メソッドに次のコードを追加します。 この例では、2 GB のサイズ、LUN が 0、キャッシュの種類が ReadWrite のデータ ディスクを追加します。
 
 ```
 Console.WriteLine("Adding data disk to vm...");
@@ -390,7 +390,7 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 
 
-1. コンソール アプリケーションを実行するには、**[開始]** をクリックします。
+1. コンソール アプリケーションを実行するには、 **[開始]** をクリックします。
 
 2. **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 デプロイに関する情報を参照するには、デプロイ状態をクリックします。
 

@@ -1,23 +1,17 @@
 ---
 title: Azure リソースを新しいサブスクリプションまたはリソース グループに移動する | Microsoft Docs
 description: Azure Resource Manager を使用して、リソースを新しいリソース グループまたはサブスクリプションに移動します。
-services: azure-resource-manager
-documentationcenter: ''
 author: tfitzmac
-ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
+ms.date: 06/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: dfe2a103005cc48860c7bbeb3036afe94ff3a559
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6cb2f49113a67a8dc6cea70ae58bd440f420a1d2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004059"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442789"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -55,6 +49,7 @@ ms.locfileid: "60004059"
 * API Management
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
 * App Service 証明書 - 「[App Service 証明書の制限事項](#app-service-certificate-limitations)」
+* App Service ドメイン
 * Automation - Runbook は Automation アカウントと同じリソース グループに存在する必要があります。
 * Azure Active Directory B2C
 * Azure Cache for Redis - 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
@@ -85,7 +80,6 @@ ms.locfileid: "60004059"
 * DNS
 * Event Grid
 * Event Hubs
-* フロントドア
 * HDInsight クラスター - 「[HDInsight の制限事項](#hdinsight-limitations)」を参照
 * Iot Central
 * IoT Hub
@@ -94,16 +88,15 @@ ms.locfileid: "60004059"
 * Logic Apps
 * Machine Learning - Machine Learning Studio Web サービスは、同じサブスクリプション内のリソース グループには移動できますが、別のサブスクリプションには移動できません。 他の Machine Learning リソースは、異なるサブスクリプションに移動できます。
 * マネージド ディスク - 可用性ゾーン内のマネージド ディスクを別のサブスクリプションに移動することはできません
-* マネージド ID - ユーザー割り当て
 * Media Services
-* 監視 - 新しいサブスクリプションへの移動が[サブスクリプション クォータ](../azure-subscription-service-limits.md#monitor-limits)を超えないようにします
+* 監視 - 新しいサブスクリプションへの移動が[サブスクリプション クォータ](../azure-subscription-service-limits.md#azure-monitor-limits)を超えないようにします
 * Notification Hubs
 * Operational Insights
 * Operations Management
 * ポータルのダッシュボード
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - Basic SKU のパブリック IP は移動できます。 Standard SKU のパブリック IP は移動できません。
-* Recovery Services コンテナー - [プレビュー](#recovery-services-limitations)に登録します。
+* Recovery Services コンテナー - [制限](#recovery-services-limitations)を参照してください。
 * SAP HANA on Azure
 * Scheduler
 * 検索 - 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
@@ -111,8 +104,9 @@ ms.locfileid: "60004059"
 * Service Fabric
 * Service Fabric Mesh
 * SignalR Service
-* ストレージ - 別のリージョンのストレージ アカウントは、同一操作で移動させることはできません。 その代わり、リージョンごとの個別操作を使用します。
+* Storage
 * Storage (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
+* ストレージ同期サービス
 * Stream Analytics - 実行中状態の Stream Analytics ジョブは移動できません。
 * SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure SQL Data Warehouse データベースに適用されます。
 * Time Series Insights
@@ -144,8 +138,10 @@ ms.locfileid: "60004059"
 * Dev Spaces
 * Dynamics LCS
 * ExpressRoute
+* フロントドア
 * Lab Services のクラスルーム ラボを、新しいリソース グループまたはサブスクリプションに移動することはできません。 DevTest Labs は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
 * Managed Applications
+* マネージド ID - ユーザー割り当て
 * Microsoft Genomics
 * セキュリティ
 * Site Recovery
@@ -173,6 +169,7 @@ ms.locfileid: "60004059"
 * 証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
 * Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません。
 * プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
+* ユーザーが仮想ネットワーク内のすべてのリソースを移動するつもりがない既存のネットワーク内の仮想マシン。
 
 Azure Backup で構成された仮想マシンを移動するには、次の対処法を使用します。
 
@@ -221,6 +218,22 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
     - App Service Environment
 - リソース グループ内のすべての App Service リソースを一緒に移動する必要があります。
 - App Service リソースは、最初に作成されたときのリソース グループからのみ移動できます。 App Service リソースが元のリソース グループから移動されている場合は、まず元のリソース グループに戻してから、サブスクリプション間の移動を行うことができます。
+
+元のリソース グループを覚えていない場合は、診断を使用して見つけることができます。 Web アプリの場合、 **[問題の診断と解決]** を選択します。 その後、 **[構成と管理]** を選択します。
+
+![診断の選択](./media/resource-group-move-resources/select-diagnostics.png)
+
+**[移行オプション]** を選択します。
+
+![移行オプションの選択](./media/resource-group-move-resources/select-migration.png)
+
+Web アプリの移動に推奨される手順のオプションを選択します。
+
+![推奨される手順の選択](./media/resource-group-move-resources/recommended-steps.png)
+
+リソースを移動する前に推奨されるアクションをご確認ください。 これには、Web アプリの元のリソース グループに関する情報が含まれています。
+
+![Recommendations](./media/resource-group-move-resources/recommendations.png)
 
 ### <a name="app-service-certificate-limitations"></a>App Service 証明書の制限事項
 
@@ -312,7 +325,7 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
 
 ### <a name="recovery-services-limitations"></a>Recovery Services の制限事項
 
- Recovery Services コンテナーを移動するには、[限定パブリック プレビュー](../backup/backup-azure-move-recovery-services-vault.md)への登録が必要となります。
+ Recovery Services コンテナーを移動するには、次の手順に従います。[新しいリソース グループまたはサブスクリプションへのリソースに移動します](../backup/backup-azure-move-recovery-services-vault.md)。
 
 現在、一度に移動できる Recovery Services コンテナーはリージョンごとに 1 つです。 Azure Files、Azure File Sync、SQL を IaaS 仮想マシンにバックアップするコンテナーは移動できません。
 
@@ -460,7 +473,7 @@ Authorization: Bearer <access-token>
 
 ### <a name="a-nameuse-portal-by-using-azure-portal"></a><a name="use-portal" />Azure portal を使用する方法
 
-リソースを移動するには、それらのリソースがあるリソース グループを選択し、**[移動]** ボタンを選択します。
+リソースを移動するには、それらのリソースがあるリソース グループを選択し、 **[移動]** ボタンを選択します。
 
 ![リソースの移動](./media/resource-group-move-resources/select-move.png)
 

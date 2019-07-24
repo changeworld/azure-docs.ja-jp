@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161385"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
@@ -82,7 +82,7 @@ Resource Manager テンプレートでは、新しい Data Lake Storage Gen1 ア
 ## <a name="set-relevant-acls-on-the-sample-data"></a>サンプル データに関連 ACL を設定する
 アップロードしたサンプル データに HDInsight クラスターからアクセスできるようにするには、HDInsight クラスターと Data Lake Storage Gen1 との間に ID を確立するのに使用した Azure AD アプリケーションに、アクセスしようとしているファイルやフォルダーへのアクセスを持たせる必要があります。 このためには、次の手順を実行します。
 
-1. HDInsight クラスターと Data Lake Storage Gen1 アカウントに関連付けられている Azure AD アプリケーションの名前を確認します。 名前を確認する方法の 1 つは、Resource Manager テンプレートを使って作成した HDInsight クラスター ブレードを開き、**[クラスター AAD ID]** タブをクリックし、**[Service Principal Display Name]** (サービス プリンシパル表示名) の値を探すことです。
+1. HDInsight クラスターと Data Lake Storage Gen1 アカウントに関連付けられている Azure AD アプリケーションの名前を確認します。 名前を確認する方法の 1 つは、Resource Manager テンプレートを使って作成した HDInsight クラスター ブレードを開き、 **[クラスター AAD ID]** タブをクリックし、 **[Service Principal Display Name]** (サービス プリンシパル表示名) の値を探すことです。
 2. 次に、HDInsight クラスターからアクセスするファイルまたはフォルダーにおいて、この Azure AD アプリケーションにアクセス権を付与します。 Data Lake Storage Gen1 のファイルやフォルダーに正しい ACL を設定する方法については、[Data Lake Storage Gen1 に格納されているデータのセキュリティ保護](data-lake-store-secure-data.md#filepermissions)に関するページを参照してください。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Data Lake Storage Gen1 を使用する HDInsight クラスターでテスト ジョブを実行する

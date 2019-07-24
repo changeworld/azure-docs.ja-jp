@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0783251eaeef188c49c5b3aa61b5ecaec48127b7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 398efd36e6c8d82a5090b7446c95abb2d1bfbca1
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506705"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428760"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -72,6 +72,10 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ## <a name="mode"></a>Mode
 
+**Mode** は、ポリシーが Azure Resource Manager のプロパティまたはリソース プロバイダーのプロパティのどちらをターゲットにしているかどうかに応じて構成されます。
+
+### <a name="resource-manager-modes"></a>Resource Manager のモード
+
 **mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
 
 - `all`: リソース グループとすべてのリソースの種類を評価します
@@ -80,6 +84,13 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** 値が含まれていない場合、既定値として Azure PowerShell では `all` が、Azure CLI では `null` が使用されます。 `null` モードは、下位互換性をサポートするために `indexed` を使用するのと同じです。
 
 タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。 タグをサポートするリソースの一覧については、「[Azure リソースでのタグのサポート](../../../azure-resource-manager/tag-support.md)」を参照してください。
+
+### <a name="resource-provider-modes"></a>リソース プロバイダーのモード
+
+現在サポートされている唯一のリソース プロバイダーのモードは、[Azure Kubernetes Service](../../../aks/intro-kubernetes.md) のアドミッション コントローラー規則を管理するための `Microsoft.ContainerService.Data` です。
+
+> [!NOTE]
+> [Kubernetes 用の Azure Policy](rego-for-aks.md) はパブリック プレビューで、組み込みのポリシー定義のみをサポートします。
 
 ## <a name="parameters"></a>parameters
 
@@ -100,7 +111,8 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
   - `displayName`:ポータル内に表示されるパラメーターのフレンドリ名。
   - `strongType`:(省略可能) ポータル経由でポリシー定義を割り当てるときに使用されます。 コンテキスト対応の一覧を提供します。 詳しくは、[strongType](#strongtype) に関するページをご覧ください。
   - `assignPermissions`:(省略可能) ポリシーの割り当て中に Azure portal にロールの割り当てを作成させるには、_true_ に設定します。 このプロパティは、割り当てスコープ外でアクセス許可を割り当てたい場合に便利です。 ロールの割り当ては、ポリシーのロール定義ごと (またはイニシアチブのすべてのポリシーのロール定義ごとに) 1 つあります。 パラメーター値は、有効なリソースまたはスコープである必要があります。
-- `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。 割り当てられている既存のポリシー定義を更新するときは、必須です。
+- `defaultValue`:(省略可能) 値が指定されていない場合、割り当ての中でパラメーターの値を設定します。
+  割り当てられている既存のポリシー定義を更新するときは、必須です。
 - `allowedValues`:(省略可能) 割り当て中にパラメーターが許可する値の配列を指定します。
 
 たとえば、リソースをデプロイできる場所を制限するためのポリシー定義を定めることができます。 そのポリシー定義のパラメーターは、**allowedLocations** にすることができます。 このパラメーターは、許可される値を制限するために、ポリシー定義の割り当てごとに使用されます。 **strongType** の使用によって、ポータル経由で割り当てを完了したときに、拡張されたエクスペリエンスが提供されます。
@@ -264,12 +276,11 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `tags['''<tagName>''']`
   - この角かっこ構文では、2 個のアポストロフィでエスケープすることにより、アポストロフィが含まれるタグ名がサポートされます。
   - **'\<tagName\>'** は、条件を検証するタグの名前です。
-  - 例: `tags['''My.Apostrophe.Tag''']` (**'\<tagName\>'** がタグの名前)。
+  - 例: `tags['''My.Apostrophe.Tag''']` ( **'\<tagName\>'** がタグの名前)。
 - プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
 
 > [!NOTE]
-> `tags.<tagName>`、`tags[tagName]`、および`tags[tag.with.dots]` は、タグ フィールドを宣言する方法としてまだ受け付けられます。
-> ただし、推奨される式は上に示したものです。
+> `tags.<tagName>`、`tags[tagName]`、および`tags[tag.with.dots]` は、タグ フィールドを宣言する方法としてまだ受け付けられます。 ただし、推奨される式は上に示したものです。
 
 #### <a name="use-tags-with-parameters"></a>パラメーターを含むタグを使用する
 
@@ -389,6 +400,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 - **AuditIfNotExists**: リソースが存在しない場合に監査を有効にします。
 - **DeployIfNotExists**: リソースが存在しない場合にリソースをデプロイします。
 - **Disabled**: リソースがポリシー規則に準拠しているかどうかを評価しません。
+- **EnforceRegoPolicy**: Azure Kubernetes Service の Open Policy Agent アドミッション コントローラーを構成します (プレビュー)
 
 **append** の場合、次のように詳細を指定する必要があります。
 
@@ -498,14 +510,14 @@ Azure Policy では、次の種類の効果をサポートしています。
 
 ### <a name="understanding-the--alias"></a>[*] エイリアスについて
 
-利用できるいくつかのエイリアスには、'normal' という名前で表示されるバージョンと、それに **[\*]** が添付された別のバージョンがあります。 例: 
+利用できるいくつかのエイリアスには、'normal' という名前で表示されるバージョンと、それに **[\*]** が添付された別のバージョンがあります。 例:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 "通常" のエイリアスでは、フィールドは 1 つの値として表されます。 このフィールドは完全一致の比較シナリオ用で、値のセット全体を正確に定義する必要があります。それ以上でもそれ以下でもありません。
 
-配列内の各要素の値および各要素の特定のプロパティの比較は、**[\*]** エイリアスで可能です。 このアプローチでは、"全くない"、"1 つ以上が" または "すべてが" のシナリオで、要素のプロパティを比較できます。 例では、**ipRules[\*]** を使用して、すべての _action_ が _Deny_ であるかどうかが検証されますが、存在している規則の数または IP _value_ は検証されません。 このサンプル規則では、**ipRules[\*].value** が **10.0.4.1** であるすべての一致がチェックされ、1 つ以上の一致が検索されない場合のみ、**effectType** が適用されます。
+配列内の各要素の値および各要素の特定のプロパティの比較は、 **[\*]** エイリアスで可能です。 このアプローチでは、"全くない"、"1 つ以上が" または "すべてが" のシナリオで、要素のプロパティを比較できます。 例では、**ipRules[\*]** を使用して、すべての _action_ が _Deny_ であるかどうかが検証されますが、存在している規則の数または IP _value_ は検証されません。 このサンプル規則では、**ipRules[\*].value** が **10.0.4.1** であるすべての一致がチェックされ、1 つ以上の一致が検索されない場合のみ、**effectType** が適用されます。
 
 ```json
 "policyRule": {

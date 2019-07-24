@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/20/2019
 ms.author: shvija
-ms.openlocfilehash: 784d8c9280aeff7224f90ecee0b16c9c30381aeb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4e6f16a15547583baab63f452504d36eb2e43b85
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087730"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65978458"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Event Hubs での Azure リソースのマネージド ID
 
@@ -27,8 +27,28 @@ ms.locfileid: "53087730"
 マネージド ID に関連付けられた Event Hubs クライアントは、承認されているすべての操作を行うことができます。 マネージド ID を Event Hubs のロールに関連付けることによって承認が付与されます。 
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs のロールとアクセス許可
+マネージド ID は、Event Hubs 名前空間の **Event Hubs データ所有者**ロールに追加できます。 このロールにより、名前空間のすべてのエンティティに対する (管理およびデータの操作の) フル コントロールが ID に付与されます。
 
-Event Hubs 名前空間の "所有者" ロールまたは "共同作成者" ロールに対してのみマネージド ID を追加でき、これによって、この名前空間のすべてのエンティティに対するフル コントロールが ID に付与されます。 ただし、名前空間トポロジを変更する管理操作は、最初は Azure Resource Manager を使う場合にのみサポートされます。 ネイティブの Event Hubs REST 管理インターフェイスを使う場合はサポートされません。 このサポートは、.NET Framework クライアントの [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) オブジェクトをマネージド ID 内で使用できないことも意味します。 
+>[!IMPORTANT]
+> 以前は、マネージド ID を**所有者**ロールまたは**共同作成者**ロールに追加することをサポートしていました。 しかし、**所有者**ロールと**共同作成者**ロールのデータ アクセス特権は受け入れられなくなりました。 **所有者**ロールまたは**共同作成者**ロールを使用している場合は、**Event Hubs データ所有者**ロールの使用に切り替えてください。
+
+新しい組み込みロールを使用するには、次の手順に従ってください。 
+
+1. [Azure Portal](https://portal.azure.com) に移動します
+2. Event Hubs 名前空間に移動します。
+3. **[Event Hubs 名前空間]** ページで、左側のメニューの **[アクセス制御 (IAM)]** を選択します。
+4. **[アクセス制御 (IAM)]** ページで、 **[ロールの割り当てを追加する]** セクションの **[追加]** を選択します。 
+
+    ![[ロールの割り当てを追加する] ボタン](./media/event-hubs-managed-service-identity/add-role-assignment-button.png)
+5. **[ロールの割り当ての追加]** ページで、次の手順を実行します。 
+    1. **ロール** で、**Azure Event Hubs Data Owner\(Azure Event Hubs データ所有者\)** を選択します。 
+    2. ロールに追加する **ID** を選択します。
+    3. **[保存]** を選択します。 
+
+        ![Event Hubs データ所有者ロール](./media/event-hubs-managed-service-identity/add-role-assignment-dialog.png)
+6. **[ロールの割り当て]** ページに切り替えて、ユーザーが **Azure Event Hubs データ所有者**ロールに追加されたことを確認します。 
+
+    ![ユーザーがロールに追加されていることを確認](./media/event-hubs-managed-service-identity/role-assignments.png)
  
 ## <a name="use-event-hubs-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID で Event Hubs を使用する
 
@@ -46,7 +66,7 @@ Event Hubs 名前空間の "所有者" ロールまたは "共同作成者" ロ�
 
 ### <a name="set-up-the-managed-identity"></a>マネージド ID を設定する
 
-アプリケーションを作成したら、Azure Portal で新しく作成された Web アプリに移動し (チュートリアルにも示されています)、**[管理対象サービス ID]** ページに移動してこの機能を有効にします。 
+アプリケーションを作成したら、Azure Portal で新しく作成された Web アプリに移動し (チュートリアルにも示されています)、 **[管理対象サービス ID]** ページに移動してこの機能を有効にします。 
 
 ![マネージド サービス ID ページ](./media/event-hubs-managed-service-identity/msi1.png)
  
@@ -54,9 +74,9 @@ Event Hubs 名前空間の "所有者" ロールまたは "共同作成者" ロ�
 
 ### <a name="create-a-new-event-hubs-namespace"></a>新しい Event Hubs 名前空間を作成する
 
-次に、Azure リソースのマネージド ID のプレビューをサポートしている Azure リージョン (**米国東部**、**米国東部 2**、**西ヨーロッパ**) のいずれかで、[Event Hubs 名前空間を作成](event-hubs-create.md)します。 
+次に、[Event Hubs 名前空間を作成します](event-hubs-create.md)。 
 
-ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、**[ロールの割り当ての追加]** をクリックして、マネージド ID を**所有者**ロールに追加します。 そのためには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。 これで、Web アプリケーションのマネージド ID は、Event Hubs 名前空間と以前に作成したイベント ハブにアクセスできるようになりました。 
+ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、 **[ロールの割り当ての追加]** をクリックして、マネージド ID を**所有者**ロールに追加します。 そのためには、 **[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。 これで、Web アプリケーションのマネージド ID は、Event Hubs 名前空間と以前に作成したイベント ハブにアクセスできるようになりました。 
 
 ### <a name="run-the-app"></a>アプリの実行
 
@@ -70,7 +90,7 @@ Event Hubs 名前空間の "所有者" ロールまたは "共同作成者" ロ�
 
 ![発行プロファイルのインポート](./media/event-hubs-managed-service-identity/msi3.png)
  
-メッセージを送受信するには、名前空間の名前と作成したエンティティの名前を入力し、**[send]** または **[receive]** をクリックします。 
+メッセージを送受信するには、名前空間の名前と作成したエンティティの名前を入力し、 **[send]** または **[receive]** をクリックします。 
  
 マネージド ID は、Azure 環境内と、その ID を構成した App Service デプロイでのみ機能します。 現時点では、マネージド ID は App Service デプロイ スロットでは機能しません。
 

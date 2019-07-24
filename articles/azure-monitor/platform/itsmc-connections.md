@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: e52d78731615db8aacd5dba1f6b781adf4b7df53
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: ffd9c4bfc934faff1664ff39c0e979a9d6c09487
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66255195"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399774"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](../../azure-monitor/platform/itsmc-overview.md)に関する記事をご覧ください。
@@ -185,11 +185,12 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 ### <a name="prerequisites"></a>前提条件
 次の前提条件が満たされていることを確認してください。
 - ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- ServiceNow でサポートされているバージョン: London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
+- ServiceNow でサポートされているバージョン: Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
 
 **ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う必要があります。**
 - ServiceNow 製品のクライアント ID とクライアント シークレットを生成します。 クライアント ID とシークレットを生成する方法については、必要に応じて以下の情報をご覧ください。
 
+    - [Madrid の OAuth の設定](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [London の OAuth の設定](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Kingston の OAuth の設定](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Jakarta の OAuth の設定](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

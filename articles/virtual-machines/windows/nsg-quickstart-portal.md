@@ -4,7 +4,7 @@ description: Azure Portal で Resource Manager デプロイ モデルを使用�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: cac17403425f53593d4f48692b4216a92c8624e3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: cf85bfd8be146cb599ced61eaa2126ee9e12538b
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884387"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67723071"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンへのポートを開く方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -30,9 +30,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
-1. VM のリソース グループを検索して選択し、**[追加]** を選択して、**[ネットワーク セキュリティ グループ]** を検索して選択します。
+1. VM のリソース グループを検索して選択し、 **[追加]** を選択して、 **[ネットワーク セキュリティ グループ]** を検索して選択します。
 
-2. **作成**を選択します。
+2. **作成** を選択します。
 
     **[ネットワーク セキュリティ グループの作成]** ウィンドウが開きます。
 
@@ -48,15 +48,15 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. 新しいネットワーク セキュリティ グループを選択します。 
 
-2. **[受信セキュリティ規則]**、**[追加]** の順に選択します。
+2. **[受信セキュリティ規則]** 、 **[追加]** の順に選択します。
 
     ![受信規則の追加](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
 3. **[Advanced] \(詳細設定)** を選択します。 
 
-4. **[サービス]** ボックスの一覧で共通のサービスを選択します (たとえば、**[HTTP]**)。 使用する特定のポートを指定する場合、**[カスタム]** を選択することもできます。 
+4. **[サービス]** ボックスの一覧で共通のサービスを選択します (たとえば、 **[HTTP]** )。 使用する特定のポートを指定する場合、 **[カスタム]** を選択することもできます。 
 
-5. 必要に応じて、**[優先度]** または **[名前]** を変更します。 優先度は、ルールが適用される順序に影響します。数値が小さいほど、ルールが早く適用されます。
+5. 必要に応じて、 **[優先度]** または **[名前]** を変更します。 優先度は、ルールが適用される順序に影響します。数値が小さいほど、ルールが早く適用されます。
 
 6. **[追加]** を選択し、規則を作成します。
 
@@ -64,7 +64,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 最後に、ネットワーク セキュリティ グループを、サブネットまたは特定のネットワーク インターフェイスに関連付けます。 この例では、ネットワーク セキュリティ グループをサブネットに関連付けます。 
 
-1. **[サブネット]** を選択し、**[関連付け]** を選択します。
+1. **[サブネット]** を選択し、 **[関連付け]** を選択します。
 
     ![ネットワーク セキュリティ グループとサブネットの関連付け](./media/nsg-quickstart-portal/associate-subnet.png)
 

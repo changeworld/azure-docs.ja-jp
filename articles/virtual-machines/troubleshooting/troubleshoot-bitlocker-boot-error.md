@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 5ac40e3c98da613b53c06908bcde927cc2e81b08
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e60188496e060eeea14fc7b7f1cc9a662551b286
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684758"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485172"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM での BitLocker ブート エラー
 
@@ -48,7 +48,7 @@ ms.locfileid: "64684758"
 この方法で問題が解決しない場合は、次の手順で BEK ファイルを手動で復元します。
 
 1. バックアップとして、影響を受ける VM のシステム ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
-2. BitLocker によって暗号化されている[システム ディスクを復旧 VM にアタッチ](troubleshoot-recovery-disks-portal-windows.md)します。 これは、BitLocker で暗号化された VM でのみ利用可能なコマンドである[manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) を実行するために必要です。
+2. [復旧 VM にシステム ディスクを取り付ける](troubleshoot-recovery-disks-portal-windows.md)。 手順 7 で [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) コマンドを実行するには、復旧 VM で **[BitLocker ドライブ暗号化]** 機能を有効にする必要があります。
 
     マネージド ディスクをアタッチすると、エラー メッセージ "contains encryption settings and therefore cannot be used as a data disk” が表示される場合があります。 この状況では、次のスクリプトを実行して、ディスクのアタッチを再試行します。
 
@@ -106,7 +106,7 @@ ms.locfileid: "64684758"
 
     **Content Type** の値が **Wrapped BEK** の場合は、「[Key Encryption Key (KEK) のシナリオ](#key-encryption-key-scenario)」に進んでください。
 
-    これで、ドライブ用の BEK ファイルの名前がわかったので、secret-file-name.BEK ファイルを作成して、BEK ファイル ドライブのロックを解除する必要があります。 
+    これで、ドライブ用の BEK ファイルの名前がわかったので、secret-file-name.BEK ファイルを作成して、BEK ファイル ドライブのロックを解除する必要があります。
 
 6.  BEK ファイルを復元ディスクにダウンロードします。 次のサンプルは、BEK ファイルを C:\BEK フォルダーに保存します。 スクリプトを実行する前に、`C:\BEK\` パスが存在することを確認します。
 
@@ -127,7 +127,7 @@ ms.locfileid: "64684758"
     ```
     この例では、アタッチされた OS ディスクはドライブ F です。適切なドライブ文字を使用していることを確認してください。 
 
-    - BEK キーを使用してディスクのロックが正常に解除されれば、 BItLocker の問題は解決されたと考えることができます。 
+    - BEK キーを使用してディスクのロックが正常に解除されれば、 BitLocker の問題は解決されたと考えることができます。 
 
     - BEK キーを使用してもディスクのロックが解除されない場合は、次のコマンドを実行することで、保護の中断を使用して一時的に BitLocker をオフにすることができます。
     
@@ -254,7 +254,7 @@ Key Encryption Key のシナリオでは、次の手順に従います。
     ```
     この例では、アタッチされた OS ディスクはドライブ F です。適切なドライブ文字を使用していることを確認してください。 
 
-    - BEK キーを使用してディスクのロックが正常に解除されれば、 BItLocker の問題は解決されたと考えることができます。 
+    - BEK キーを使用してディスクのロックが正常に解除されれば、 BitLocker の問題は解決されたと考えることができます。 
 
     - BEK キーを使用してもディスクのロックが解除されない場合は、次のコマンドを実行することで、保護の中断を使用して一時的に BitLocker をオフにすることができます。
     

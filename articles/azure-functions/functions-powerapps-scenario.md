@@ -13,10 +13,10 @@ ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
 ms.openlocfilehash: 26f6502f63b39d3f1ecf8dfeb09c8df4daa63b68
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65786109"
 ---
 # <a name="call-a-function-from-powerapps"></a>PowerApps から関数を呼び出す
@@ -52,7 +52,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 ## <a name="add-a-connection-to-the-api"></a>文字列を API に追加する
 カスタム API (カスタム コネクタとも呼ばれます) は PowerApps で使用できますが、アプリで使用するには、その API に接続しておく必要があります。
 
-1. [web.powerapps.com](https://web.powerapps.com) で、**[接続]** をクリックします。
+1. [web.powerapps.com](https://web.powerapps.com) で、 **[接続]** をクリックします。
 
     ![PowerApps 接続](media/functions-powerapps-scenario/powerapps-connections.png)
 
@@ -60,7 +60,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 
     ![新しい接続](media/functions-powerapps-scenario/new-connection.png)
 
-1. API キーを入力し、**[作成]** をクリックします。
+1. API キーを入力し、 **[作成]** をクリックします。
 
     ![接続を作成する](media/functions-powerapps-scenario/create-connection.png)
 
@@ -70,7 +70,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 ## <a name="create-an-app-and-add-data-sources"></a>アプリを作成し、データ ソースを追加する
 これで PowerApps でアプリを作成し、Excel データとカスタム API を、アプリのデータ ソースとして追加することができます。
 
-1. [web.powerapps.com](https://web.powerapps.com) で、**[空白から開始]** > ![電話アプリ アイコン](media/functions-powerapps-scenario/icon-phone-app.png) (電話) > **[このアプリの作成]** の順に選択します。
+1. [web.powerapps.com](https://web.powerapps.com) で、 **[空白から開始]**  > ![電話アプリ アイコン](media/functions-powerapps-scenario/icon-phone-app.png) (電話) > **[このアプリの作成]** の順に選択します。
 
     ![[空白から開始] - 電話アプリ](media/functions-powerapps-scenario/create-phone-app.png)
 
@@ -96,22 +96,22 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 
     ![インポートする Excel データ](media/functions-powerapps-scenario/excel-table.png)
 
-    1. アプリ キャンバスで、**[データに接続]** を選択します。
+    1. アプリ キャンバスで、 **[データに接続]** を選択します。
 
-    1. **[データ]** パネルで、**[静的データをアプリに追加します]** をクリックします。
+    1. **[データ]** パネルで、 **[静的データをアプリに追加します]** をクリックします。
 
         ![データ ソースを追加する](media/functions-powerapps-scenario/add-static-data.png)
 
         通常は外部ソースのデータに対して読み取りおよび書き込みを行いますが、これはサンプルなので、Excel データを静的データとして追加します。
 
-    1. 保存した Excel ファイルに移動し、"**タービン**" テーブルを選択して、**[接続]** をクリックします。
+    1. 保存した Excel ファイルに移動し、"**タービン**" テーブルを選択して、 **[接続]** をクリックします。
 
         ![データ ソースを追加する](media/functions-powerapps-scenario/choose-table.png)
 
 
 1. カスタム API をデータ ソースとして追加します。
 
-    1. **[データ]** パネルで、**[データ ソースの追加]** をクリックします。
+    1. **[データ]** パネルで、 **[データ ソースの追加]** をクリックします。
 
     1. **[Turbine Repair]\(タービン修復\)** をクリックします。
 
@@ -120,7 +120,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 ## <a name="add-controls-to-view-data-in-the-app"></a>アプリでデータを表示するコントロールを追加する
 データ ソースがアプリで使用できるようになりました。次は、タービンのデータを表示できる画面をアプリに追加します。
 
-1. **[ホーム]** タブで、**[新しい画面]** > **[リスト画面]** をクリックします。
+1. **[ホーム]** タブで、 **[新しい画面]**  >  **[リスト画面]** をクリックします。
 
     ![リスト画面](media/functions-powerapps-scenario/list-screen.png)
 
@@ -140,7 +140,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 
     データ セットにはイメージが含まれていないため、次は、データに合わせてレイアウトを変更します。 
 
-1. 引き続き **[データ]** パネルで、**[レイアウト]** を **[タイトル、サブタイトル、本文]** に変更します。
+1. 引き続き **[データ]** パネルで、 **[レイアウト]** を **[タイトル、サブタイトル、本文]** に変更します。
 
     ![ギャラリーのレイアウトを変更する](media/functions-powerapps-scenario/change-layout.png)
 
@@ -160,7 +160,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 
     ![選択されている項目](media/functions-powerapps-scenario/selected-item.png)
 
-1. アプリの元の画面は必要ありません。 左側のウィンドウで、**[Screen1]** をポイントし、**[...]**、**[削除]** の順にクリックします。
+1. アプリの元の画面は必要ありません。 左側のウィンドウで、 **[Screen1]** をポイントし、 **[...]** 、 **[削除]** の順にクリックします。
 
     ![画面を削除する](media/functions-powerapps-scenario/delete-screen.png)
 
@@ -171,7 +171,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 ## <a name="add-controls-to-call-the-function-and-display-data"></a>関数を呼び出すコントロールを追加し、データを表示する
 アプリでタービンごとに概要データが表示されるようになりました。次は、作成した関数を呼び出すコントロールを追加し、返されたデータを表示します。 OpenAPI 定義で指定した方法に基づいて、関数にアクセスします。ここでは `TurbineRepair.CalculateCosts()` です。
 
-1. リボンの **[挿入]** タブで、**[ボタン]** をクリックします。 次に、同じタブをクリックし、**[ラベル]** をクリックします
+1. リボンの **[挿入]** タブで、 **[ボタン]** をクリックします。 次に、同じタブをクリックし、 **[ラベル]** をクリックします
 
     ![ボタンとラベルを挿入する](media/functions-powerapps-scenario/insert-controls.png)
 
@@ -209,9 +209,9 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 ## <a name="run-the-app"></a>アプリの実行
 アプリが完成しました。 次はこれを実行し、関数によってアクションが呼び出されるかどうかを確認します。
 
-1. PowerApps Studio の右上にある実行ボタンをクリックします:  ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png)。
+1. PowerApps Studio の右上にある実行ボタンをクリックします: ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png)。
 
-1. **ServiceRequired** の値が `Yes` のタービンを選択し、**[Calculate costs]\(コストを計算\)** ボタンをクリックします。 次のイメージような結果が表示されます。
+1. **ServiceRequired** の値が `Yes` のタービンを選択し、 **[Calculate costs]\(コストを計算\)** ボタンをクリックします。 次のイメージような結果が表示されます。
 
     ![PowerApps で完成したアプリ](media/functions-powerapps-scenario/finished-app.png)
 

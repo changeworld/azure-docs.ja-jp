@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT プレビューに関してよく寄せられる質問| Microsoft Docs
 description: Azure Security Center for IoT の機能とサービスに関してよく寄せられる質問に対する回答を確認します。
 services: asc-for-iot
-ms.service: ASCforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: 97fda6c2-1ecb-491f-b48d-41788bd7e0d3
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: f15cd14ddc3a489db3abbbd2665d242470b5a821
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4e04e21d55722b8cb90b277b34b5bffab343c575
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200706"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616589"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Azure Security Center for IoT に関してよく寄せられる質問  
 
@@ -69,11 +70,11 @@ ASC for IoT エージェントは、デバイスの構成、動作、および (
 
 ## <a name="where-i-can-get-the-asc-for-iot-security-agent"></a>どこで ASC for IoT セキュリティ エージェントを入手できますか。
 
-ASC for IoT セキュリティ エージェントは、オープン ソースであり、GitHub で 32 ビットと 64 ビットの Windows および Linux バージョンを入手できます (https://github.com/Azure/Azure-Security-IoT-Preview)。
+ASC for IoT セキュリティ エージェントは、オープン ソースであり、GitHub で 32 ビットと 64 ビットの Windows および Linux バージョンを入手できます (https://github.com/Azure/Azure-Security-IoT-Preview )。
 
 ## <a name="where-does-the-asc-for-iot-agent-get-installed"></a>ASC for IoT エージェントはどこにインストールされますか? 
 
-GitHub (https://github.com/Azure/Azure-Security-IoT-Preview) には、詳細なインストールとエージェントのデプロイ情報があります。
+GitHub (https://github.com/Azure/Azure-Security-IoT-Preview ) には、詳細なインストールとエージェントのデプロイ情報があります。
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>エージェントの依存関係と前提条件は何ですか?
 

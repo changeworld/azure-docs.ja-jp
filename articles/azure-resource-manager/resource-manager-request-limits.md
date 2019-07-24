@@ -1,28 +1,22 @@
 ---
 title: 要求の制限と調整 - Azure Resource Manager
 description: サブスクリプションの上限に達したときに、Azure Resource Manager の要求をスロットルする方法について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: e1047233-b8e4-4232-8919-3268d93a3824
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/05/2019
+ms.date: 07/09/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 91a776ba13ffaeeb4f8184371ae45a80d829ae46
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 36e881fb9ba3ab81611b94a36ef0beed8748d5b1
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550645"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705118"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
 
-Resource Manager では、Azure のサブスクリプションおよびテナントごとに、最大で 1 時間あたり 12,000 件の読み取り要求と 1 時間あたり 1,200 件の書き込み要求が許可されています。 これらの制限は、要求を行うプリンシパル ID と、サブスクリプション ID またはテナント ID の範囲に設定されます。 複数のプリンシパル ID から要求が発信されると、サブスクリプションまたはテナント全体の制限は、1 時間あたり 12,000 件および 1,200 件を超えます。
+Resource Manager では、Azure のサブスクリプションおよびテナントごとに、最大で 1 時間あたり 12,000 件の読み取り要求と 1 時間あたり 1,200 件の書き込み要求が許可されています。 これらの制限は、要求を行うセキュリティ プリンシパル (ユーザーまたはアプリケーション) と、サブスクリプション ID またはテナント ID の範囲に設定されます。 複数のセキュリティ プリンシパルから要求が発信されると、サブスクリプションまたはテナント全体の制限は、1 時間あたり 12,000 件および 1,200 件を超えます。
 
 要求は、サブスクリプションまたはテナントに適用されます。 サブスクリプション要求 (サブスクリプション内のリソース グループの取得など) では、サブスクリプション ID を渡す必要があります。 テナント要求 (有効な Azure の場所の取得など) には、サブスクリプション ID は含まれません。
 
@@ -32,7 +26,7 @@ Resource Manager では、Azure のサブスクリプションおよびテナン
 
 上限に達すると、HTTP 状態コード **429 Too many requests** が返されます。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Azure Resource Graph では、その操作に対する要求数が制限されます。 この記事内の、残りの要求数を確認する方法と、上限に達したときの対処方法の手順は、Resource Graph にも該当します。 ただし、Resource Graph は独自の制限とリセット レートを設定します。 詳細については、[Azure Resource Graph のスロットル](../governance/resource-graph/overview.md#throttling)に関する記事をご覧ください。
 
 ## <a name="remaining-requests"></a>残りの要求数
 残りの要求数を確認するには、応答ヘッダーを調べます。 読み取り要求では、残りの読み取り要求数の値がヘッダーに返されます。 書き込み要求には、残りの書き込み要求数の値が含まれます。 これらの値を確認できる応答ヘッダーを次の表に示します。

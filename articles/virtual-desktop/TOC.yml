@@ -16,6 +16,10 @@
       href: manage-app-groups.md
     - name: 5. サービスの更新プログラムを検証するためのホスト プールを作成する
       href: create-validation-host-pool.md
+    - name: 6. 管理ツールをデプロイする
+      href: manage-resources-using-ui.md
+    - name: 7. サービス アラートを設定する
+      href: set-up-service-alerts.md
 - name: 操作方法
   items:
     - name: Windows Virtual Desktop リソースに接続する
@@ -40,6 +44,10 @@
       href: configure-vm-gpu.md
     - name: セッション ホストを自動的にスケーリングする
       href: set-up-scaling-script.md
+    - name: Windows Virtual Desktop ユーザー用のフィードをカスタマイズする
+      href: customize-feed-for-virtual-desktop-users.md
+    - name: RDP プロパティをカスタマイズする
+      href: customize-rdp-properties.md
 - name: 概念
   items:
     - name: Windows Virtual Desktop の環境
@@ -50,6 +58,8 @@
       href: host-pool-load-balancing.md
     - name: FSLogix プロファイル コンテナーと Azure のファイル
       href: fslogix-containers-azure-files.md
+    - name: パートナー統合
+      href: partners.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート
@@ -64,6 +74,8 @@
       href: troubleshoot-client-connection.md
     - name: Windows Virtual Desktop PowerShell
       href: troubleshoot-powershell.md
+    - name: グラフィックスのパフォーマンスの問題の診断
+      href: remotefx-graphics-performance-counters.md
 - name: リファレンス
   items:
     - name: PowerShell
@@ -72,3 +84,5 @@
   items:
     - name: 技術コミュニティ サポート グループ
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
+    - name: UserVoice フォーラム
+      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'

@@ -2,18 +2,18 @@
 title: Power BI ワークスペース コレクションでの行レベルのセキュリティ
 description: Power BI ワークスペース コレクションでの行レベルのセキュリティの詳細
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 2d0c8629e4abf9e27cd204b9a13b79808b177501
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2a26cc7573abb970dc58c6f7c327dfbc659cb646
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715207"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672480"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの行レベルのセキュリティ
 
@@ -61,9 +61,9 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
    ![[モデリング] リボンの [ロールの管理] ボタン](media/row-level-security/modeling-tab-5.png)
 2. **Manager**という新しいロールを作成します。  
    ![Power BI Desktop でのロールの作成](media/row-level-security/manager-role-6.png)
-3. **District** テーブルで、**[District Manager] = USERNAME()** という DAX 式を入力します。  
+3. **District** テーブルで、 **[District Manager] = USERNAME()** という DAX 式を入力します。  
    ![ロールのテーブルの DAX フィルター式](media/row-level-security/manager-role-7.png)
-4. ルールが機能していることを確認するには、**[モデリング]** タブで **[ロールとして表示]** をクリックし、次のように入力します。  
+4. ルールが機能していることを確認するには、 **[モデリング]** タブで **[ロールとして表示]** をクリックし、次のように入力します。  
    ![[ロールとして表示]](media/row-level-security/view-as-roles-8.png)
 
    これで、**Andrew Ma** としてサインインした場合と同様に、レポートにデータが表示されるようになります。
@@ -83,8 +83,8 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
 > [!NOTE]
 > データに DirectQuery モードを使用している場合は、次の 2 つのオプションを選択して、双方向のクロス フィルターを有効にする必要があります。
 
-1. **[ファイル]** -> **[オプションと設定]** -> **[プレビュー機能]** -> **[Enable cross filtering in both directions for DirectQuery (DirectQuery 用に両方向のクロス フィルターを有効にする)]**。
-2. **[ファイル]** -> **[オプションと設定]** -> **[DirectQuery]** -> **[DirectQuery モードで無制限のメジャーを許可する]**。
+1. **[ファイル]**  ->  **[オプションと設定]**  ->  **[プレビュー機能]**  ->  **[Enable cross filtering in both directions for DirectQuery (DirectQuery 用に両方向のクロス フィルターを有効にする)]** 。
+2. **[ファイル]**  ->  **[オプションと設定]**  ->  **[DirectQuery]**  ->  **[DirectQuery モードで無制限のメジャーを許可する]** 。
 
 双方向のクロス フィルターの詳細については、ホワイトペーパー [Bidirectional cross-filtering in SQL Server Analysis Services 2016 and Power BI Desktop](https://download.microsoft.com/download/2/7/8/2782DF95-3E0D-40CD-BFC8-749A2882E109/Bidirectional%20cross-filtering%20in%20Analysis%20Services%202016%20and%20Power%20BI.docx) をダウンロードしてください。
 

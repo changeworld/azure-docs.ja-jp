@@ -4,7 +4,7 @@ description: Azure CLI と Azure Portal を使用して Linux VHD をダウン�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: f72d49a3ab204ce64eb89d0f05630b640c138e0a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: e7325282c6442a927f47df3e50efbfda481754fd
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329253"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667907"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
@@ -60,7 +60,7 @@ VHD を既存の VM の新しいインスタンス用のディスクまたはデ
 1.  [Azure Portal](https://portal.azure.com/) にサインインします。
 2.  ハブ メニューで **[Virtual Machines]** をクリックします。
 3.  一覧から VM を選択します。
-4.  VM のブレードで、**[停止]** をクリックします。
+4.  VM のブレードで、 **[停止]** をクリックします。
 
     ![VM の停止](./media/download-vhd/export-stop.png)
 
@@ -68,8 +68,8 @@ VHD を既存の VM の新しいインスタンス用のディスクまたはデ
 
 VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
 
-1.  VM のブレードのメニューで、**[ディスク]** をクリックします。
-2.  VM のオペレーティング システム ディスクを選択し、**[エクスポート]** をクリックします。
+1.  VM のブレードのメニューで、 **[ディスク]** をクリックします。
+2.  VM のオペレーティング システム ディスクを選択し、 **[エクスポート]** をクリックします。
 3.  **[URL の生成]** をクリックします。
 
     ![URL の生成](./media/download-vhd/export-generate.png)

@@ -3,19 +3,19 @@ title: Translator Text API の BreakSentence メソッド
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の BreakSentence メソッドを使用します。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: de11d493c1a42b67aeab6502f719bcee1adc6e99
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: swmachan
+ms.openlocfilehash: 59f6957f1781852e4ab4c0713742581b5c884f25
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578208"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357874"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
@@ -154,7 +154,7 @@ JSON 応答の例を次に示します。
   </tr>
   <tr>
     <td>429</td>
-    <td>呼び出し元からの要求が多すぎます。</td>
+    <td>クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。</td>
   </tr>
   <tr>
     <td>500</td>

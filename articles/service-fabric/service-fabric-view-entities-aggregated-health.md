@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c8113bffba824ddb0885e92b0d6c5392748899da
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: e4edcc0aecfbf03aff7cf9bee764522bb1c489f3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662773"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60716390"
 ---
 # <a name="view-service-fabric-health-reports"></a>Service Fabric の正常性レポートの確認
 Azure Service Fabric に正常性エンティティを使用する[正常性モデル](service-fabric-health-introduction.md)が導入されます。ここでは、システム コンポーネントやウォッチドッグで監視しているローカルの状態についてのレポートを確認できます。 すべての正常性データは[正常性ストア](service-fabric-health-introduction.md#health-store)によって集計され、エンティティが正常であるかどうかが判断されます。
@@ -677,7 +677,7 @@ DeployedApplicationHealth health = await fabricClient.HealthManager.GetDeployedA
 ### <a name="powershell"></a>PowerShell
 デプロイされたアプリケーションの正常性を取得するコマンドレットは [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。 アプリケーションのデプロイ先を探すには、 [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) を実行して、デプロイされたアプリケーションの子を確認します。
 
-次のコマンドレットは、**_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの正常性を取得します。
+次のコマンドレットは、 **_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの正常性を取得します。
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplicationHealth -ApplicationName fabric:/WordCount -NodeName _Node_0
@@ -735,7 +735,7 @@ DeployedServicePackageHealth health = await fabricClient.HealthManager.GetDeploy
 ### <a name="powershell"></a>PowerShell
 デプロイされたサービス パッケージの正常性を取得するコマンドレットは [Get-ServiceFabricDeployedServicePackageHealth](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicepackagehealth)です。 まず、 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) コマンドレットを使用してクラスターに接続します。 アプリケーションのデプロイ先を確認するには、 [Get-ServiceFabricApplicationHealth](/powershell/module/servicefabric/get-servicefabricapplicationhealth?view=azureservicefabricps) を実行して、デプロイされたアプリケーションを確認します。 アプリケーション内のサービス パッケージを確認するには、 [Get-ServiceFabricDeployedApplicationHealth](/powershell/module/servicefabric/get-servicefabricdeployedapplicationhealth?view=azureservicefabricps) の出力で、デプロイされたサービス パッケージの子を確認します。
 
-次のコマンドレットは、**_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの **WordCountServicePkg** サービス パッケージの正常性を取得します。 エンティティには、アクティブ化に成功したサービス パッケージとエントリー ポイント、および登録に成功したサービス型に関する **System.Hosting** のレポートが含まれています。
+次のコマンドレットは、 **_Node_2** にデプロイされた **fabric:/WordCount** アプリケーションの **WordCountServicePkg** サービス パッケージの正常性を取得します。 エンティティには、アクティブ化に成功したサービス パッケージとエントリー ポイント、および登録に成功したサービス型に関する **System.Hosting** のレポートが含まれています。
 
 ```powershell
 PS D:\ServiceFabric> Get-ServiceFabricDeployedApplication -ApplicationName fabric:/WordCount -NodeName _Node_2 | Get-ServiceFabricDeployedServicePackageHealth -ServiceManifestName WordCountServicePkg

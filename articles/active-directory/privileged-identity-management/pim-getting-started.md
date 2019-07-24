@@ -14,12 +14,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 651dc4efa653e7a4eb77f153280579ffd87fe8f7
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 408991ffc3922986234f7d40e1cd589b1d126ba1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59488634"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476483"
 ---
 # <a name="start-using-pim"></a>PIM の使用を開始する
 
@@ -54,27 +54,27 @@ PIM を使用するには、次のいずれかのライセンスが必要です�
 
 1. PIM クイック スタートをクリックして開きます。
 
-1. 一覧で、**[PIM を承認する]** をクリックします。
+1. 一覧で、 **[PIM を承認する]** をクリックします。
 
-    ![PIM を承認する](./media/pim-getting-started/consent-pim.png)
+    ![PIM に同意して PIM を有効にする](./media/pim-getting-started/consent-pim.png)
 
 1. **[ID を確認]** をクリックし、Azure MFA で ID を確認します。 アカウントの選択が求められます。
 
-    ![アカウントを選択する](./media/pim-getting-started/pick-account.png)
+    ![本人確認のためにアカウント ウィンドウを選択する](./media/pim-getting-started/pick-account.png)
 
 1. 確認のためにさらに情報が必要な場合は、そのプロセスが示されます。 詳細については、「[2 段階認証のサポートを受ける](https://go.microsoft.com/fwlink/p/?LinkId=708614)」を参照してください。
 
-    ![詳細情報が必要](./media/pim-getting-started/more-information-required.png)
+    ![組織が詳細情報を必要とする場合の [詳細情報が必要] ウィンドウ](./media/pim-getting-started/more-information-required.png)
 
     たとえば、電話確認の提供を求められる場合があります。
 
-    ![追加のセキュリティ確認](./media/pim-getting-started/additional-security-verification.png)
+    ![連絡方法を確認する追加のセキュリティ確認ページ](./media/pim-getting-started/additional-security-verification.png)
 
-1. 確認プロセスを完了したら、**[同意]** ボタンをクリックします。
+1. 確認プロセスを完了したら、 **[同意]** ボタンをクリックします。
 
-1. 表示されたメッセージ内で、**[はい]** をクリックして、PIM サービスに同意します。
+1. 表示されたメッセージ内で、 **[はい]** をクリックして、PIM サービスに同意します。
 
-    ![PIM メッセージに同意する](./media/pim-getting-started/consent-pim-message.png)
+    ![PIM メッセージに同意して同意プロセスを完了する](./media/pim-getting-started/consent-pim-message.png)
 
 ## <a name="sign-up-pim-for-azure-ad-roles"></a>Azure AD ロールを取得するために PIM にサインアップする
 
@@ -88,7 +88,7 @@ PIM を使用するには、次のいずれかのライセンスが必要です�
 
 1. **[サインアップ]** をクリックします。
 
-1. 表示されたメッセージ内で、**[はい]** をクリックして PIM にサインアップして、Azure AD ロールを管理します。
+1. 表示されたメッセージ内で、 **[はい]** をクリックして PIM にサインアップして、Azure AD ロールを管理します。
 
     ![Azure AD ロール メッセージを取得するために PIM にサインアップする](./media/pim-getting-started/sign-up-pim-message.png)
 
@@ -100,13 +100,13 @@ PIM を使用するには、次のいずれかのライセンスが必要です�
 
 PIM を設定すると、ID 管理タスクを実行できるようになります。
 
-![Top-level tasks for PIM - screenshot](./media/pim-getting-started/pim-quickstart-tasks.png)
+![タスクと管理のオプションが表示されている PIM のナビゲーション ウィンドウ](./media/pim-getting-started/pim-quickstart-tasks.png)
 
 | タスク + 管理 | 説明 |
 | --- | --- |
 | **自分のロール**  | 自分に割り当てられている適格でアクティブなロールの一覧が表示されます。 ここでは、割り当てられている適格なロールをアクティブにできます。 |
 | **個人の要求** | 適格なロール割り当てのアクティブ化の保留中要求が表示されます。 |
-| **要求の承認** | ディレクトリ内のユーザーによる適格なロールのアクティブ化要求のうち、自分が承認するものの一覧が表示されます。 |
+| **申請の承認** | ディレクトリ内のユーザーによる適格なロールのアクティブ化要求のうち、自分が承認するものの一覧が表示されます。 |
 | **アクセスのレビュー** | 自分に完了が割り当てられているアクティブなアクセス レビューが一覧表示されます (自分自身のアクセスをレビューするものと、他のユーザーのアクセスをレビューするものの両方)。 |
 | **Azure AD ロール** | Azure AD ロールの割り当てを管理するための、特権ロール管理者向けのダッシュボードと設定が表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、テナント全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。 |
 | **Azure リソース** | Azure リソース ロールの割り当てを管理するための、特権ロール管理者向けのダッシュボードと設定が表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、テナント全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。 |
@@ -123,13 +123,13 @@ PIM を開きやすくするには、Azure portal のダッシュボードに PI
 
 1. PIM クイック スタートをクリックして開きます。
 
-1. PIM クイック スタート ブレードをダッシュボードにピン留めするには、**[ダッシュボードにブレードをピン留め]** をオンにします。
+1. PIM クイック スタート ブレードをダッシュボードにピン留めするには、 **[ダッシュボードにブレードをピン留め]** をオンにします。
 
-    ![ダッシュボードにブレードをピン留め](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![ダッシュボードに PIM ブレードをピン留めするための押しピン アイコン](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Azure ダッシュボードでは、タイルが次のように表示されます。
 
-    ![PIM クイック スタート タイル](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![ダッシュボードの PIM クイック スタート タイル](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>次の手順
 

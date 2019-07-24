@@ -142,7 +142,7 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 
 ![データセットの管理](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-その他の種類のデータを実験にインポートする方法の詳細については、[Azure Machine Learning Studio へのトレーニング データのトレーニング データのインポート](import-data.md)に関するページを参照してください。
+[Azure Machine Learning Studio へのトレーニング データのインポート](import-data.md)に関するページを参照してください。
 
 ## <a name="create-an-experiment"></a>実験の作成
 

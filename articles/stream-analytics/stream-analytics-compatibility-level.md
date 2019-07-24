@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
 ms.openlocfilehash: c1b2875e6899d2301a4c4b564882214dc7bc4981
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65205454"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
@@ -41,7 +41,7 @@ Azure portal でジョブの互換性レベルを更新するには:
 
 1. [Azure portal](https://portal.azure.com) を使用して、Stream Analytics ジョブを見つけます。
 2. 互換性レベルを更新する前に、ジョブを**停止**します。 ジョブが実行状態の場合は、互換性レベルを更新できません。
-3. **[構成]** 見出しで、**[互換性レベル]** を選択します。
+3. **[構成]** 見出しで、 **[互換性レベル]** を選択します。
 4. 必要な互換性レベルの値を選択します。
 5. ページの下部にある **[保存]** を選択します。
 
@@ -81,7 +81,7 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>SQL 出力に書き込むときの DateTimeOffset
 
-**以前のレベル:**[DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 型は、UTC に調整されました。
+**以前のレベル:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 型は、UTC に調整されました。
 
 **1.2 レベル:** DateTimeOffset は調整されなくなりました。
 
@@ -107,7 +107,7 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 
 ### <a name="service-bus-xml-format"></a>Service Bus XML 形式
 
-**1.0 レベル:** Azure Stream Analytics が DataContractSerializer を使用していたため、メッセージのコンテンツに XML タグが含まれていました。 例: 
+**1.0 レベル:** Azure Stream Analytics が DataContractSerializer を使用していたため、メッセージのコンテンツに XML タグが含まれていました。 例:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

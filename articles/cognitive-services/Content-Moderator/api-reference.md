@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: reference
-ms.date: 04/30/2019
+ms.date: 05/29/2019
 ms.author: sajagtap
-ms.openlocfilehash: 19144ae40e67127b656cedd61199b732b1c05e86
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f802c64e141e8757f633d82ad577fa50f7d076fc
+ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236610"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66688894"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API リファレンス
 
-Azure Content Moderator API シリーズを使用するには次の方法で開始します 
+Azure Content Moderator API シリーズを使用するには次の方法で開始できます。
 
 - Azure portal で、[Content Moderator API にサブスクライブ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)します。
 - 「[Web 上で Content Moderator を試す](quick-start.md)」を参照して、[Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)でサインアップします。
@@ -37,7 +37,7 @@ Azure Content Moderator API シリーズを使用するには次の方法で開�
 
 ## <a name="review-apis"></a>API の確認
 
-Review API に含まれるコンポーネントを次に示します。
+Review API には次のコンポーネントがあります。
 
 | 説明 | リファレンス |
 | -------------------- |-------------|

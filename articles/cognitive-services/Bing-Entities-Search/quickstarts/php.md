@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: f311216182f85da3dd6cf01269062cc9c555f868
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 69624f7383b37b9d23f3fb8879f804e7169c1c29
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538529"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384556"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>クイック スタート:PHP を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -153,4 +153,4 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../overview.md )
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

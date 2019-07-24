@@ -2,8 +2,10 @@
   href: index.yml
 - name: 概要
   items:
-    - name: アプリケーション管理について
+    - name: アプリケーション管理とは
       href: what-is-application-management.md
+    - name: アプリケーション プロキシとは
+      href: what-is-application-proxy.md
 - name: クイック スタート
   expanded: true
   items:
@@ -43,24 +45,30 @@
           href: application-proxy-network-topology.md
         - name: リモート アクセス ソリューションの比較
           href: application-proxy-migration.md
+    - name: シングル サインオン
+      items:
+        - name: シングル サインオンとは
+          href: what-is-single-sign-on.md
+        - name: マルチテナント アプリケーション用の SSO を有効にする
+          href: isv-sso-content.md
+        - name: マルチテナント アプリケーション用に Azure テナントを作成する
+          href: isv-tenant-multi-tenant-app.md
+        - name: マルチテナント フェデレーションを選択する
+          href: isv-choose-multi-tenant-federation.md
+        - name: マルチテナント アプリケーション用のドキュメントを作成する
+          href: isv-create-sso-documentation.md
+        - name: シングル サインオンのデプロイを計画する
+          href: plan-sso-deployment.md
+    - name: ワンクリック SSO
+      items:
+        - name: ワンクリック SSO の構成
+          href: one-click-sso-tutorial.md
     - name: ユーザーとグループのプロビジョニング
       items:
         - name: 自動ユーザー プロビジョニング
-          href: configure-automatic-user-provisioning-portal.md
-        - name: SaaS アプリ
           href: user-provisioning.md
-        - name: SCIM 対応アプリ
+        - name: SCIM 対応アプリに対する自動プロビジョニング
           href: use-scim-to-provision-users-and-groups.md
-        - name: アプリケーション属性のカスタマイズ
-          href: Customize-application-attributes.md
-        - name: 属性マッピングの式の書き方
-          href: functions-for-customizing-application-data.md
-        - name: スコープ フィルター
-          href: define-conditional-rules-for-provisioning-user-accounts.md
-        - name: 自動ユーザー プロビジョニングについてのレポート
-          href: check-status-user-account-provisioning.md
-        - name: ユーザー プロビジョニングのトラブルシューティング
-          href: application-provisioning-config-problem.md
     - name: アプリケーションのセキュリティ
       items:
         - name: アプリのアクセス オプション
@@ -73,8 +81,6 @@
           href: tenant-restrictions.md
         - name: SAML トークン暗号化 (プレビュー) の構成
           href: howto-saml-token-encryption.md
-    - name: シングル サインオン
-      href: what-is-single-sign-on.md
     - name: エンドユーザーのポータル
       href: end-user-experiences.md
 - name: ハウツー ガイド
@@ -93,7 +99,9 @@
           href: application-proxy-configure-for-claims-aware-applications.md
         - name: コネクタの登録 - サイレント インストール
           href: application-proxy-register-connector-powershell.md
-        - name: ネイティブ クライアント アプリの構成
+        - name: モバイル アプリとデスクトップ アプリにオンプレミス API へのアクセスを付与する
+          href: application-proxy-secure-api-access.md
+        - name: モバイルとデスクトップのクライアント アプリの構成
           href: application-proxy-configure-native-client-application.md
         - name: カスタム ホーム ページの構成
           href: application-proxy-configure-custom-home-page.md
@@ -145,12 +153,20 @@
               href: application-proxy-configure-single-sign-on-on-premises-apps.md
     - name: '[ユーザー プロビジョニングの構成]'
       items:
-        - name: プロビジョニングにかかる時間
-          href: application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: ユーザー プロビジョニングの構成 - ギャラリー アプリ
+        - name: ギャラリー アプリに対するユーザー プロビジョニング
           href: application-provisioning-config-how-to.md
-        - name: マッピングするための属性の同期 - ギャラリー アプリ
-          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: 自動ユーザー プロビジョニングの構成
+          href: configure-automatic-user-provisioning-portal.md
+        - name: アプリケーション属性のカスタマイズ
+          href: Customize-application-attributes.md
+        - name: 属性マッピングの式の書き方
+          href: functions-for-customizing-application-data.md
+        - name: スコープ フィルター
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: プロビジョニング状態の確認
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: 自動ユーザー プロビジョニングについてのレポート
+          href: check-status-user-account-provisioning.md
     - name: ユーザーの割り当てとアプリへのアクセスの管理
       items:
         - name: ユーザーの同意の構成
@@ -223,10 +239,12 @@
               href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: ユーザー プロビジョニングのトラブルシューティング
           items:
+            - name: ユーザー プロビジョニングのトラブルシューティング
+              href: application-provisioning-config-problem.md
+            - name: マッピングするための属性の同期 - ギャラリー アプリ
+              href: user-provisioning-sync-attributes-for-mapping.md
             - name: 長時間かかる - ギャラリー アプリ
               href: application-provisioning-when-will-provisioning-finish.md
-            - name: ユーザー プロビジョニングの構成に関する問題 - ギャラリー アプリ
-              href: application-provisioning-config-problem.md
             - name: ギャラリー アプリケーションへのユーザー プロビジョニングを構成中の管理者の資格情報の保存に関する問題
               href: application-provisioning-config-problem-storage-limit.md
             - name: ユーザーがプロビジョニングされない - ギャラリー アプリ

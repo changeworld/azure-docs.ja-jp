@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.openlocfilehash: ba0e1386d67e920f1805d244f9042044bb462ec9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551995"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62109853"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>アプリケーションのグラフに Helm リポジトリとして Azure Container Registry を使用する
 

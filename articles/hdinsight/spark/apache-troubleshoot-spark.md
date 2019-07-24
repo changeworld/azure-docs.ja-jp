@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: a4dc7293c00097c7a5752e29bf7c9a203cbb31a5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64721157"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Spark のトラブルシューティング
@@ -44,7 +44,7 @@ Spark 構成値を調整して、Apache Spark アプリケーションの OutofM
 
     ![2048m への値の変更](./media/apache-troubleshoot-spark/update-config-5.png)
 
-6. 値を保存してから、構成を保存します。 ツールバーで、**[Save]\(保存\)** をクリックします。
+6. 値を保存してから、構成を保存します。 ツールバーで、 **[Save]\(保存\)** をクリックします。
 
     ![設定および構成の保存](./media/apache-troubleshoot-spark/update-config-6a.png)
 
@@ -52,7 +52,7 @@ Spark 構成値を調整して、Apache Spark アプリケーションの OutofM
 
     ![[Proceed Anyway]\(警告を無視して続行\) の選択](./media/apache-troubleshoot-spark/update-config-6b.png)
 
-    構成の変更内容に関するメモを入力して、**[Save]\(保存\)** をクリックします。
+    構成の変更内容に関するメモを入力して、 **[Save]\(保存\)** をクリックします。
 
     ![変更内容のメモの入力](./media/apache-troubleshoot-spark/update-config-6c.png)
 
@@ -68,7 +68,7 @@ Spark 構成値を調整して、Apache Spark アプリケーションの OutofM
 
     ![実行中のプロセスの確認](./media/apache-troubleshoot-spark/update-config-7c.png)
 
-8. 構成を追加することもできます。 構成の一覧で **[Custom-spark2-defaults]** を選択し、**[Add Property]\(プロパティの追加\)** をクリックします。
+8. 構成を追加することもできます。 構成の一覧で **[Custom-spark2-defaults]** を選択し、 **[Add Property]\(プロパティの追加\)** をクリックします。
 
     ![[Add Property]\(プロパティの追加\) をクリック](./media/apache-troubleshoot-spark/update-config-8.png)
 
@@ -188,7 +188,7 @@ java.lang.OutOfMemoryError
 
 1. Spark アプリケーションによって処理されるデータの最大サイズを決定します。 入力データ、入力データの変換によって生成される中間データ、および、アプリケーションが中間データをさらに変換する際に生成される出力データの各最大サイズに基づいて、サイズを推測することができます。 これは、最初に正式な推測ができないと、反復的なプロセスになる場合があります。 
 
-2. 使用する HDInsight クラスターに、Spark アプリケーションに対応できるメモリやコアなどのリソースが十分にあることを確認してください。 この判断は、YARN UI の [Cluster Metrics]\(クラスター メトリック\) セクションで、**[Memory Used]\(使用中のメモリ\)** の値と **[Memory Total]\(メモリ合計\)** の値、および **[VCores Used]\(使用中の VCore\)** の値と **[VCores Total]\(VCore 合計\)** の値を比較することで行うことができます。
+2. 使用する HDInsight クラスターに、Spark アプリケーションに対応できるメモリやコアなどのリソースが十分にあることを確認してください。 この判断は、YARN UI の [Cluster Metrics]\(クラスター メトリック\) セクションで、 **[Memory Used]\(使用中のメモリ\)** の値と **[Memory Total]\(メモリ合計\)** の値、および **[VCores Used]\(使用中の VCore\)** の値と **[VCores Total]\(VCore 合計\)** の値を比較することで行うことができます。
 
 3. 次の Spark 構成を、使用可能なメモリおよびコアの 90% 以下で、適切な値に設定します。 Spark アプリケーションのメモリ要件の範囲に十分収まる値を使用する必要があります。 
 

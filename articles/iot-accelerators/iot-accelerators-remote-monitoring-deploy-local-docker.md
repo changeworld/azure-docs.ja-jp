@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: db934725fe91a142c43ba66701919e9d5a70a4b2
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967549"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - Docker
@@ -92,7 +92,7 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 1. [Azure Portal](https://portal.azure.com) に移動します。
 1. ソリューション用に作成された**リソース グループ**に移動します。 このリソース グループの名前は、**start.cmd** スクリプトを実行したときにソリューション用に選択した名前です。
 1. リソースの一覧で **[Stream Analytics ジョブ]** をクリックします。
-1. Stream Analytics ジョブの **[概要]** ページで、**[開始]** ボタンをクリックします。 次に、**[開始]** をクリックしてジョブをすぐに開始します。
+1. Stream Analytics ジョブの **[概要]** ページで、 **[開始]** ボタンをクリックします。 次に、 **[開始]** をクリックしてジョブをすぐに開始します。
 
 ### <a name="connect-to-the-dashboard"></a>ダッシュボードに接続する
 

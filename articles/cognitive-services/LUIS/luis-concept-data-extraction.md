@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65150695"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
@@ -48,7 +48,7 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 |データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|
-|意図|String|topScoringIntent.intent|"GetStoreInfo"|
+|意図|string|topScoringIntent.intent|"GetStoreInfo"|
 
 チャットボットまたは LUIS 呼び出し元アプリが複数の意図のスコアに基づいて決定を行う場合、querystring パラメーター `verbose=true` を設定して、すべての意図のスコアを返します。 エンドポイントの応答は次のとおりです。
 
@@ -77,8 +77,8 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 |データ オブジェクト|データ型|データの場所|値|Score|
 |--|--|--|--|:--|
-|意図|String|intents[0].intent|"GetStoreInfo"|0.984749258|
-|意図|String|intents[1].intent|"None"|0.0168218873|
+|意図|string|intents[0].intent|"GetStoreInfo"|0.984749258|
+|意図|string|intents[1].intent|"None"|0.0168218873|
 
 事前構築済みのドメインを追加する場合、意図の名前は、`Utilties` や`Communication` などのドメインと、意図を表します。
 
@@ -108,9 +108,9 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 |Domain|データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|--|
-|Utilities|意図|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|Communication|意図|String|intents[1].intent|<b>Communication</b>.StartOver"|
-||意図|String|intents[2].intent|"None"|
+|Utilities|意図|string|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|Communication|意図|string|intents[1].intent|<b>Communication</b>.StartOver"|
+||意図|string|intents[2].intent|"None"|
 
 
 ## <a name="data-from-entities"></a>エンティティからのデータ
@@ -408,7 +408,7 @@ number の `2` と ToLocation `paris` の間には、どのエンティティに
 
 ### <a name="names-of-people"></a>人の名前
 
-人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 事前構築済みの **[personName](luis-reference-prebuilt-person.md)** エンティティ、または氏名の[ロール](luis-concept-roles.md)が含まれる**[簡易エンティティ](luis-concept-entity-types.md#simple-entity)** のどちらかを使用します。 
+人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 事前構築済みの **[personName](luis-reference-prebuilt-person.md)** エンティティ、または氏名の[ロール](luis-concept-roles.md)が含まれる **[簡易エンティティ](luis-concept-entity-types.md#simple-entity)** のどちらかを使用します。 
 
 簡易エンティティを使用する場合は、必ず発話のさまざまな部分に姓と名を使用している例を提供してください。また、None 意図を含むあらゆる意図にわたるさまざまな長さの発話で、姓と名を使用している例を提供してください。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
 

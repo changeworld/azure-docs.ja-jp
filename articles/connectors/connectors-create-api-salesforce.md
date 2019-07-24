@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 292d517f2c99974f4674a4c94472a0a320320ce4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233839"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62106017"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Salesforce リソースを監視、作成、および管理する
 
@@ -50,7 +50,7 @@ Salesforce トリガーを使用すると、Salesforce からの応答を取得�
 
      または
 
-   * 既存のロジック アプリの場合、アクションを追加する手順で、**[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「salesforce」と入力します。 アクションの一覧で、目的のアクションを選択します。
+   * 既存のロジック アプリの場合、アクションを追加する手順で、 **[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「salesforce」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
 1. Salesforce へのサインインを求めるメッセージが表示される場合は、ここでサインインしてアクセスを許可します。
 

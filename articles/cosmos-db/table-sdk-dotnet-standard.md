@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/18/2018
-ms.openlocfilehash: 38b283ed666b39b4e090bd95051a4454a9b47e62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/18/2019
+ms.openlocfilehash: 1c9894772f440a568cbc08890feb961471d84137
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57975663"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66480204"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -33,6 +33,9 @@ ms.locfileid: "57975663"
 |**現在サポートされているフレームワーク**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
+* バグの修正
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * 一般公開リリース
@@ -60,8 +63,11 @@ ms.locfileid: "57975663"
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。
 
-| Version | リリース日 | 提供終了日 |
+このクロスプラットフォーム対応の .NET Standard ライブラリ [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) は、.NET Framework ライブラリ [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) を置き換えます。
+
+| バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.0.1](#1.0.1) |2019 年 4 月 19 日 |--- |
 | [1.0.0](#1.0.0) |2019 年 3 月 13 日 |--- |
 | [0.11.0-preview](#0.11.0-preview) |2019 年 3 月 5 日 |--- |
 | [0.10.1-preview](#0.10.1-preview) |2019 年 1 月 22 日 |--- |

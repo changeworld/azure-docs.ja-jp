@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: cdf2a1a730be657b41c7a4b2daf2f178661394b4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 2a494b924107baeabbcf412af7e1bbdb1db0f753
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947103"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66752006"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure Application Gateway の新着情報
 
@@ -27,6 +27,7 @@ Azure Application Gateway は、継続的に更新されます。 常に最新�
 
 |機能  |説明  |追加日  |
 |---------|---------|---------|
+|WAF カスタム規則 |Applicaiton Gateway WAF_v2 では、カスタム ルールの作成がサポートされるようになりました。 [Application Gateway のカスタム ルール](custom-waf-rules-overview.md)に関する記事を参照してください。 |2019 年 6 月 |
 |自動スケーリング、ゾーン冗長性、静的 VIP のサポートの一般公開 |自動スケーリング、ゾーン冗長性、パフォーマンスの向上、静的 VIP、Key Vault、ヘッダーの書き換えをサポートする v2 SKU の一般公開。 [Application Gateway の自動スケーリングのドキュメント](application-gateway-autoscaling-zone-redundant.md)を参照してください。 |2019 年 4 月 |
 |Key Vault の統合 |Application Gateway では、HTTPS が有効なリスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) がサポートされるようになりました。 「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」を参照してください。 |2019 年 4 月 |
 |ヘッダーの CRUD/書き換え     |HTTP ヘッダーを書き換えることができるようになりました。 手順については、「[チュートリアル: アプリケーション ゲートウェイを作成して HTTP ヘッダーを書き換える](tutorial-http-header-rewrite-powershell.md)」を参照してください。|2018 年 12 月|

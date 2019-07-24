@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
 ms.openlocfilehash: 7f964fd78845e663c1ebcde7e79bfb7295c72f31
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64730571"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Azure CLI を使用したネットワーク セキュリティ グループ フローのログの構成
@@ -53,7 +53,7 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 
 指定するストレージ アカウントに対しては、Microsoft サービスまたは特定の仮想ネットワークのみにネットワーク アクセスを制限するネットワーク規則が構成されていてはなりません。 ストレージ アカウントは、フロー ログを有効化した NSG と同じ Azure サブスクリプションにも、異なる Azure サブスクリプションにも設定できます。 異なるサブスクリプションを使用する場合は、それらが同じ Azure Active Directory テナントに関連付けられている必要があります。 各サブスクリプションで使用するアカウントは、[必要なアクセス許可](required-rbac-permissions.md)を持っている必要があります。 
 
-ストレージ アカウントが、ネットワーク セキュリティ グループではなく、異なるリソース グループまたはサブスクリプション内にある場合、ストレージ アカウントの名前ではなく完全な ID を指定します。 たとえば、ストレージ アカウントが *RG-Storage* というリソース グループ内にある場合、前のコマンドで *storageAccountName* を指定するのではなく、*/subscriptions/{SubscriptionID}/resourceGroups/RG-Storage/providers/Microsoft.Storage/storageAccounts/storageAccountName* を指定する必要があります。
+ストレージ アカウントが、ネットワーク セキュリティ グループではなく、異なるリソース グループまたはサブスクリプション内にある場合、ストレージ アカウントの名前ではなく完全な ID を指定します。 たとえば、ストレージ アカウントが *RG-Storage* というリソース グループ内にある場合、前のコマンドで *storageAccountName* を指定するのではなく、 */subscriptions/{SubscriptionID}/resourceGroups/RG-Storage/providers/Microsoft.Storage/storageAccounts/storageAccountName* を指定する必要があります。
 
 ## <a name="disable-network-security-group-flow-logs"></a>ネットワーク セキュリティ グループのフローのログを無効にする
 

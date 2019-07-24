@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 743e4c5bebefbf6727c49257551b8c958eb6f031
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6afebfe9a5db713e31fed0acd2e8ad7244f30037
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64692549"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274925"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub メトリックの理解
 
@@ -32,7 +32,7 @@ IoT Hub メトリックは、Azure サブスクリプション内の Azure IoT �
    
     ![IoT Hub のメトリック ページを示すスクリーンショット](./media/iot-hub-metrics/enable-metrics-2.png)
     
-4. メトリック データを Event Hubs エンドポイントまたは Azure ストレージ アカウントに送信するように選択するには、**[診断設定]**、**[診断設定の追加]** の順にクリックします。
+4. メトリック データを Event Hubs エンドポイントまたは Azure ストレージ アカウントに送信するように選択するには、 **[診断設定]** 、 **[診断設定の追加]** の順にクリックします。
 
    ![診断設定ボタンの位置を示すスクリーンショット](./media/iot-hub-metrics/enable-metrics-3.png)
 
@@ -60,12 +60,14 @@ IoT Hub には、ハブの正常性の概要と、ハブに接続されている
 |d2c<br>.endpoints<br>.latency<br>.serviceBusQueues|ルーティング: Service Bus キューのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージと Service Bus キュー エンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
 |d2c<br>.endpoints<br>.egress<br>.serviceBusTopics|ルーティング: Service Bus トピックに配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージが Service Bus トピック エンドポイントに正常に配信された回数。|ディメンションなし|
 |d2c<br>.endpoints<br>.latency<br>.serviceBusTopics|ルーティング: Service Bus トピックのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージと Service Bus トピック エンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
-|d2c<br>.endpoints<br>.egress<br>.builtIn<br>.events|ルーティング: メッセージ/イベントに配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージが組み込みのエンドポイント (メッセージ/イベント) に正常に配信された回数。|ディメンションなし|
-|d2c<br>.endpoints<br>.latency<br>.builtIn.events|ルーティング: メッセージ/イベントのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージと組み込みエンドポイント (メッセージ/イベント) の受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
+|d2c<br>.endpoints<br>.egress<br>.builtIn<br>.events|ルーティング: メッセージ/イベントに配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージが組み込みのエンドポイント (メッセージ/イベント) に正常に配信された回数。 このメトリックは、IoT ハブに対してルーティングが有効になっている (https://aka.ms/iotrouting) ) 場合にのみ動作を開始します。|ディメンションなし|
+|d2c<br>.endpoints<br>.latency<br>.builtIn.events|ルーティング: メッセージ/イベントのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージと組み込みエンドポイント (メッセージ/イベント) の受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。 このメトリックは、IoT ハブに対してルーティングが有効になっている (https://aka.ms/iotrouting) ) 場合にのみ動作を開始します。|ディメンションなし|
 |d2c<br>.endpoints<br>.egress<br>.storage|ルーティング: ストレージに配信されたメッセージ|Count|合計|IoT Hub ルーティングにより、メッセージがストレージ エンドポイントに正常に配信された回数。|ディメンションなし|
 |d2c<br>.endpoints<br>.latency<br>.storage|ルーティング: ストレージのメッセージの待機時間|ミリ秒|平均|IoT Hub の受信メッセージとストレージ エンドポイントの受信テレメトリ メッセージの間の平均待機時間 (ミリ秒)。|ディメンションなし|
 |d2c<br>.endpoints<br>.egress<br>.storage<br>.bytes|ルーティング: ストレージに配信されたデータ|Bytes|合計|IoT Hub ルーティングでストレージ エンドポイントに配信されたデータの量 (バイト)。|ディメンションなし|
 |d2c<br>.endpoints<br>.egress<br>.storage<br>.blobs|ルーティング: ストレージに配信された BLOB|Count|合計|IoT Hub ルーティングで BLOB がストレージ エンドポイントに配信された回数。|ディメンションなし|
+|EventGridDeliveries|Event Grid の配信数 (プレビュー)|Count|合計|Event Grid に発行された IoT Hub イベントの数。 成功および失敗した要求の数には、Result ディメンションを使用します。 EventType ディメンションは、イベントの種類 (https://aka.ms/ioteventgrid) を示します。 要求の送信元を確認するには、EventType ディメンションを使用します。|Result、EventType|
+|EventGridLatency|Event Grid の待機時間 (プレビュー)|ミリ秒|平均|oT Hub イベントが生成されてから、そのイベントが Event Grid に発行されるまでの平均待機時間 (ミリ秒)。 この数は、すべてのイベントの種類の間の平均値です。 特定の種類のイベントの待機時間を確認するには、EventType ディメンションを使用します。|EventType|
 |d2c<br>.twin<br>.read<br>.success|成功したデバイスからのツイン読み取り|Count|合計|デバイスが開始して成功したツイン読み取りの数。|ディメンションなし|
 |d2c<br>.twin<br>.read<br>.failure|失敗したデバイスからのツイン読み取り|Count|合計|デバイスが開始したツイン読み取りの失敗数。|ディメンションなし|
 |d2c<br>.twin<br>.read<br>.size|デバイスからのツイン読み取りの応答サイズ|Bytes|平均|デバイスが開始して成功したツイン読み取りの平均、最小、および最大サイズ。|ディメンションなし|
@@ -99,8 +101,7 @@ IoT Hub には、ハブの正常性の概要と、ハブに接続されている
 |jobs<br>.failed|失敗したジョブ|Count|合計|失敗したジョブの数。|ディメンションなし|
 |d2c<br>.telemetry<br>.ingress<br>.sendThrottle|調整エラーの数|Count|合計|デバイスのスループット調整による調整エラーの数|ディメンションなし|
 |dailyMessage<br>QuotaUsed|使用されているメッセージの合計数|Count|平均|現在使用されているメッセージの合計数。 これは累積値であり、毎日 00 時 00 分 (UTC) になるとゼロにリセットされます。|ディメンションなし|
-|deviceDataUsage|デバイス データの合計使用量 (非推奨)|Bytes|合計|Iot Hub に接続されているデバイスとの間で転送されたバイト数|ディメンションなし|
-|deviceDataUsageV2|デバイス データの合計使用量 (プレビュー)|Bytes|合計|Iot Hub に接続されているデバイスとの間で転送されたバイト数|ディメンションなし|
+|deviceDataUsage|デバイス データの合計使用量|Bytes|合計|Iot Hub に接続されているデバイスとの間で転送されたバイト数|ディメンションなし|
 |totalDeviceCount|デバイスの合計数 (プレビュー)|Count|平均|IoT Hub に登録されたデバイスの数|ディメンションなし|
 |connected<br>DeviceCount|接続されているデバイス (プレビュー)|Count|平均|IoT Hub に接続されているデバイスの数|ディメンションなし|
 |configuration|構成メトリック|Count|合計|構成操作のメトリック|ディメンションなし|

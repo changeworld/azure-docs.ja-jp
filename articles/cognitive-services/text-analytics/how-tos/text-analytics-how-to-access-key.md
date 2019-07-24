@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: 813659b9b1a25e03bf599b0aa1dc9d6af67f1935
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002206"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60829132"
 ---
 # <a name="how-to-find-endpoints-and-access-keys-for-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service のエンドポイントとアクセス キーを見つける方法
 
@@ -27,7 +27,7 @@ Text Analytics にサインアップするとき、ご自身のサブスクリ�
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. 左側のナビゲーション ウィンドウで、**[すべてのサービス]** を選択します。
+2. 左側のナビゲーション ウィンドウで、 **[すべてのサービス]** を選択します。
 
 3. [フィルター] に「*Cognitive Services*」と入力します。 ご自分のサブスクリプションに Text Analytics がある場合は、**Text Analytics API** の API の種類と共にリストに表示されます。
 

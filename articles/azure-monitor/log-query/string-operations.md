@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012226"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61424705"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の文字列を操作する
 
@@ -49,34 +49,34 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>文字列の比較
 
- 演算子       |説明                         |大文字と小文字の区別|例 (`true` になる)
+演算子       |説明                         |大文字と小文字の区別|例 (`true` になる)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |等しい                              |はい           |`"aBc" == "aBc"`
 `!=`           |等しくない                          |はい           |`"abc" != "ABC"`
-`=~`           |等しい                              |いいえ             |`"abc" =~ "ABC"`
-`!~`           |等しくない                          |いいえ             |`"aBc" !~ "xyz"`
-`has`          |右辺が左辺の完全な用語として含まれる |いいえ |`"North America" has "america"`
-`!has`         |右辺が左辺の完全な用語として含まれない       |いいえ             |`"North America" !has "amer"` 
+`=~`           |等しい                              |いいえ            |`"abc" =~ "ABC"`
+`!~`           |等しくない                          |いいえ            |`"aBc" !~ "xyz"`
+`has`          |右辺が左辺の完全な用語として含まれる |いいえ|`"North America" has "america"`
+`!has`         |右辺が左辺の完全な用語として含まれない       |いいえ            |`"North America" !has "amer"` 
 `has_cs`       |右辺が左辺の完全な用語として含まれる |はい|`"North America" has_cs "America"`
 `!has_cs`      |右辺が左辺の完全な用語として含まれない       |はい            |`"North America" !has_cs "amer"` 
-`hasprefix`    |右辺が左辺の用語のプレフィックスとして含まれる         |いいえ             |`"North America" hasprefix "ame"`
-`!hasprefix`   |右辺が左辺の用語のプレフィックスとして含まれない     |いいえ             |`"North America" !hasprefix "mer"` 
+`hasprefix`    |右辺が左辺の用語のプレフィックスとして含まれる         |いいえ            |`"North America" hasprefix "ame"`
+`!hasprefix`   |右辺が左辺の用語のプレフィックスとして含まれない     |いいえ            |`"North America" !hasprefix "mer"` 
 `hasprefix_cs`    |右辺が左辺の用語のプレフィックスとして含まれる         |はい            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |右辺が左辺の用語のプレフィックスとして含まれない     |はい            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |右辺が左辺の用語のサフィックスとして含まれる         |いいえ             |`"North America" hassuffix "ica"`
-`!hassuffix`   |右辺が左辺の用語のサフィックスに含まれない     |いいえ             |`"North America" !hassuffix "americ"`
+`hassuffix`    |右辺が左辺の用語のサフィックスとして含まれる         |いいえ            |`"North America" hassuffix "ica"`
+`!hassuffix`   |右辺が左辺の用語のサフィックスに含まれない     |いいえ            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |右辺が左辺の用語のサフィックスとして含まれる         |はい            |`"North America" hassuffix_cs "ica"`
 `!hassuffix_cs`   |右辺が左辺の用語のサフィックスに含まれない     |はい            |`"North America" !hassuffix_cs "icA"`
-`contains`     |右辺が左辺のサブシーケンスとして出現する  |いいえ             |`"FabriKam" contains "BRik"`
-`!contains`    |右辺が左辺のサブシーケンスとして出現しない           |いいえ             |`"Fabrikam" !contains "xyz"`
+`contains`     |右辺が左辺のサブシーケンスとして出現する  |いいえ            |`"FabriKam" contains "BRik"`
+`!contains`    |右辺が左辺のサブシーケンスとして出現しない           |いいえ            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |右辺が左辺のサブシーケンスとして出現する  |はい           |`"FabriKam" contains_cs "Kam"`
 `!contains_cs`  |右辺が左辺のサブシーケンスとして出現しない           |はい           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |右辺が左辺の先頭のサブシーケンスである|いいえ             |`"Fabrikam" startswith "fab"`
-`!startswith`  |右辺が左辺の先頭のサブシーケンスでない|いいえ         |`"Fabrikam" !startswith "kam"`
+`startswith`   |右辺が左辺の先頭のサブシーケンスである|いいえ            |`"Fabrikam" startswith "fab"`
+`!startswith`  |右辺が左辺の先頭のサブシーケンスでない|いいえ        |`"Fabrikam" !startswith "kam"`
 `startswith_cs`   |右辺が左辺の先頭のサブシーケンスである|はい            |`"Fabrikam" startswith_cs "Fab"`
 `!startswith_cs`  |右辺が左辺の先頭のサブシーケンスでない|はい        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |右辺が左辺の末尾のサブシーケンスである|いいえ              |`"Fabrikam" endswith "Kam"`
-`!endswith`    |右辺が左辺の末尾のサブシーケンスでない|いいえ          |`"Fabrikam" !endswith "brik"`
+`endswith`     |右辺が左辺の末尾のサブシーケンスである|いいえ             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |右辺が左辺の末尾のサブシーケンスでない|いいえ         |`"Fabrikam" !endswith "brik"`
 `endswith_cs`     |右辺が左辺の末尾のサブシーケンスである|はい             |`"Fabrikam" endswith "Kam"`
 `!endswith_cs`    |右辺が左辺の末尾のサブシーケンスでない|はい         |`"Fabrikam" !endswith "brik"`
 `matches regex`|左辺には右辺の一致が含まれている        |はい           |`"Fabrikam" matches regex "b.*k"`

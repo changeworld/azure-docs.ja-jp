@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のクライアント証明書を使用して RESTful サービスをセキュリティで保護する | Microsoft Docs
 description: クライアント証明書を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f184ddfc01260b203b0df4090f5f231f58d2cb80
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b007aa4619effbd34e4e969e4ce7b58f3b0c4cf6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64699013"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66510537"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>クライアント証明書を使用して RESTful サービスをセキュリティで保護する
 
@@ -38,7 +38,7 @@ ms.locfileid: "64699013"
 * 有効な証明書 (秘密キーを備えた .pfx ファイル) がある。
 
 ## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>手順 1:Web アプリのクライアント証明書認証を構成する
-クライアント証明書を要求するように **Azure App Service** を設定するには、Web アプリの `clientCertEnabled` サイト設定を *true* に設定します。 この変更を行うには、Azure portal で Web アプリのページを開きます。 左側のナビゲーションの **[設定]** で **[SSL 設定]** を選択します。 **[クライアント証明書]** セクションで、**[着信クライアント証明書]** オプションをオンにします。
+クライアント証明書を要求するように **Azure App Service** を設定するには、Web アプリの `clientCertEnabled` サイト設定を *true* に設定します。 この変更を行うには、Azure portal で Web アプリのページを開きます。 左側のナビゲーションの **[設定]** で **[SSL 設定]** を選択します。 **[クライアント証明書]** セクションで、 **[着信クライアント証明書]** オプションをオンにします。
 
 >[!NOTE]
 >Azure App Service プランが Standard 以上であることを確認してください。 詳細については、[Azure App Service プランの詳細な概要](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)に関する記事をご覧ください。
@@ -48,14 +48,14 @@ ms.locfileid: "64699013"
 
 ## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>手順 2:証明書を Azure AD B2C ポリシー キーにアップロードする
 `clientCertEnabled` を *true* に設定すると、RESTful API との通信にクライアント証明書が求められます。 クライアント証明書を取得し、Azure AD B2C テナントにアップロードして保存するには、次の手順を実行する必要があります。 
-1. Azure AD B2C テナントで、**[B2C Settings]\(B2C 設定\)** > **[Identity Experience Framework]** の順に選択します。
+1. Azure AD B2C テナントで、 **[B2C Settings]\(B2C 設定\)**  >  **[Identity Experience Framework]** の順に選択します。
 
-2. テナント内で使用できるキーを表示するには、**[ポリシー キー]** を選択します。
+2. テナント内で使用できるキーを表示するには、 **[ポリシー キー]** を選択します。
 
 3. **[追加]** を選択します。  
     **[キーの作成]** ウィンドウが開きます。
 
-4. **[オプション]** ボックスで、**[アップロード]** を選択します。
+4. **[オプション]** ボックスで、 **[アップロード]** を選択します。
 
 5. **[名前]** ボックスに「**B2cRestClientCertificate**」と入力します。  
     プレフィックス *B2C_1A_* が自動的に追加されます。
@@ -68,7 +68,7 @@ ms.locfileid: "64699013"
 
 7. **作成** を選択します。
 
-8. テナント内で利用できるキーを表示して、作成したキー `B2C_1A_B2cRestClientCertificate` を確認するには、**[ポリシー キー]** を選択します。
+8. テナント内で利用できるキーを表示して、作成したキー `B2C_1A_B2cRestClientCertificate` を確認するには、 **[ポリシー キー]** を選択します。
 
 ## <a name="step-3-change-the-technical-profile"></a>手順 3:技術プロファイルを変更する
 カスタム ポリシーでクライアント証明書認証をサポートするには、次の手順を実行して技術プロファイルを変更します。
@@ -99,7 +99,7 @@ ms.locfileid: "64699013"
 
 ## <a name="step-4-upload-the-policy-to-your-tenant"></a>手順 4:ポリシーをテナントにアップロードする
 
-1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、**[Azure AD B2C]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、 **[Azure AD B2C]** を選択します。
 
 2. **[Identity Experience Framework]** を選択します。
 
@@ -112,12 +112,12 @@ ms.locfileid: "64699013"
 6. *TrustFrameworkExtensions.xml* ファイルをアップロードし、検証に合格したことを確認します。
 
 ## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>手順 5:[今すぐ実行] を使用してカスタム ポリシーをテストする
-1. **[Azure AD B2C の設定]** を開き、**[Identity Experience Framework]** を選択します。
+1. **[Azure AD B2C の設定]** を開き、 **[Identity Experience Framework]** を選択します。
 
     >[!NOTE]
     >[今すぐ実行] を使用するには、テナントに少なくとも 1 つのアプリケーションが事前登録されている必要があります。 アプリケーションを登録する方法については、 Azure AD B2C の[概要](active-directory-b2c-get-started.md)に関する記事または[アプリケーションの登録](active-directory-b2c-app-registration.md)に関する記事を参照してください。
 
-2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、**[今すぐ実行]** を選択します。
+2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、 **[今すぐ実行]** を選択します。
 
 3. **[名]** ボックスに「**Test**」と入力して、プロセスをテストします。  
     ウィンドウの上部に Azure AD B2C によってエラー メッセージが表示されます。    
@@ -287,7 +287,7 @@ if (IsValidClientCertificate() == false)
 ![証明書の検証コードの追加](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-code.png)
 
 ## <a name="step-7-publish-your-project-to-azure-and-test-it"></a>手順 7:プロジェクトを Azure に発行してテストする
-1. **ソリューション エクスプローラー**で **Contoso.AADB2C.API** プロジェクトを右クリックしてから、**[発行]** を選択します。
+1. **ソリューション エクスプローラー**で **Contoso.AADB2C.API** プロジェクトを右クリックしてから、 **[発行]** を選択します。
 
 2. "手順 6". を繰り返し、カスタム ポリシーを証明書の検証で再度テストします。 ポリシーを実行し、検証を追加した後、すべてが正しく動作するかどうかを確認します。
 

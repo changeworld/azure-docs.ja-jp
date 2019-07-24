@@ -2,35 +2,62 @@
 title: Azure リソースの複数インスタンスのデプロイ | Microsoft Docs
 description: Azure リソース マネージャー テンプレートで copy 操作と配列を使用して、リソースをデプロイする際に複数回反復処理する方法について説明します。
 services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-editor: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/01/2019
+ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 05b68fde30587967f65ee362344eea9a258f89a7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 22317372a7d954286ebcb0b59aea293c746b2a58
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205967"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67508181"
 ---
-# <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする
+# <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース、プロパティ、または変数の反復
 
-この記事では、リソースの複数のインスタンスを作成するために Azure Resource Manager テンプレートで反復処理する方法について説明します。 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](resource-group-authoring-templates.md#condition)に関する記述を参照してください。
+この記事では、Azure Resource Manager テンプレートでリソース、変数、またはプロパティの複数のインスタンスを作成する方法について説明します。 複数のインスタンスを作成するには、`copy` オブジェクトをテンプレートに追加します。
 
-チュートリアルについては、「[Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)」を参照してください。
+リソースで使用した場合、copy オブジェクトは次の形式になります。
 
+```json
+"copy": {
+    "name": "<name-of-loop>",
+    "count": <number-of-iterations>,
+    "mode": "serial" <or> "parallel",
+    "batchSize": <number-to-deploy-serially>
+}
+```
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+変数またはプロパティで使用した場合、copy オブジェクトは次の形式になります。
+
+```json
+"copy": [
+  {
+      "name": "<name-of-loop>",
+      "count": <number-of-iterations>,
+      "input": <values-for-the-property-or-variable>
+  }
+]
+```
+
+この記事では両方の使用法を詳しく説明します。 チュートリアルについては、「[Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)」を参照してください。
+
+リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](resource-group-authoring-templates.md#condition)に関する記述を参照してください。
+
+## <a name="copy-limits"></a>コピー制限
+
+反復回数を指定するには、count プロパティの値を指定します。 count は 800 を超えることはできません。
+
+count は負の数値にすることはできません。 REST API バージョン **2019-05-10** 以降のテンプレートをデプロイする場合、count を 0 に設定できます。 それ以前の REST API のバージョンでは、count をゼロに設定することはサポートされていません。 現時点では、Azure CLI または PowerShell では count をゼロに設定することはサポートされていませんが、このサポートは将来のリリースで追加される予定です。
+
+コピーで[完全モード デプロイ](deployment-modes.md)を使用する際は注意してください。 完全モードでリソース グループに再デプロイする場合、コピー ループを解決した後でテンプレートに指定されていないリソースはすべて削除されます。
+
+count の制限は、リソース、変数、プロパティのいずれで使用する場合でも同じです。
 
 ## <a name="resource-iteration"></a>リソースの反復
 
-デプロイ時に、リソースのインスタンスを 1 つまたは複数作成することを決定する必要がある場合は、リソースの種類に `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。 count 値は正の整数である必要がありますが、800 を超えることはできません。 
+デプロイ時に、リソースのインスタンスを 1 つまたは複数作成することを決定する必要がある場合は、リソースの種類に `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。
 
 複数回作成するリソースは、次の形式を取ります。
 
@@ -71,7 +98,7 @@ ms.locfileid: "65205967"
 * storage1
 * storage2
 
-インデックス値をオフセットするには、copyIndex() 関数に値を渡します。 実行する反復処理の数は copy 要素で指定されたままですが、copyIndex の値が指定された値でオフセットされます。 次の例を見てください。
+インデックス値をオフセットするには、copyIndex() 関数に値を渡します。 反復回数は copy 要素で指定されたままですが、copyIndex の値が指定された値でオフセットされます。 次の例を見てください。
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -156,7 +183,7 @@ mode プロパティでも **parallel** が既定値として使用されます�
 リソース上のプロパティの複数の値を作成するには、プロパティ要素に `copy` 配列を追加します。 この配列にはオブジェクトが含まれていて、各オブジェクトには次のプロパティがあります。
 
 * name - 複数の値を作成するプロパティの名前
-* count - 作成する値の数。 count 値は正の整数である必要がありますが、800 を超えることはできません。
+* count - 作成する値の数。
 * input - プロパティに割り当てる値を格納するオブジェクト  
 
 次の例は、仮想マシンで dataDisks プロパティに `copy` を適用する方法を示しています。

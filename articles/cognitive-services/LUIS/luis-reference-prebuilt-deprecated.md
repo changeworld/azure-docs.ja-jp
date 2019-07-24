@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
 ms.openlocfilehash: 653fbd65e5ccfbc65781f2332b35d10237f718d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795102"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60712782"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS アプリにおける非推奨の作成済みエンティティ
 以下の作成済みエンティティは非推奨であり、新しい LUIS アプリに追加することはできません。

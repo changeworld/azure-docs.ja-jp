@@ -1,20 +1,21 @@
 ---
 title: クイック スタート:Ink Recognizer REST API および Java を使用したデジタル インクの認識
+titleSuffix: Azure Cognitive Services
 description: Ink Recognizer API を使用して、デジタル インク ストロークの認識を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 6237253922544dc47bb11aec4dd58139f99eb0da
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: b1c739b6355d3b32063e5289720ed1d191611e65
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518625"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721233"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>クイック スタート:Ink Recognizer REST API および Java を使用したデジタル インクの認識
 

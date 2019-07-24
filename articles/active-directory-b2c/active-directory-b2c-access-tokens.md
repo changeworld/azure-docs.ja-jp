@@ -2,20 +2,20 @@
 title: アクセス トークンの要求 - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C にアクセス トークンを要求する方法を説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d1b4bb58d777d2dc5bd79b66e128a0edd7a88adc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 1a545f1e0fd1360d9147280454fb8b75bf216152
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702959"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66507389"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのアクセス トークンの要求
 
@@ -111,7 +111,7 @@ grant_type=authorization_code
 }
 ```
 
-https://jwt.ms を使用して、返されたアクセス トークンを調べると、次の例に似た内容が表示されるはずです。
+[https://jwt.ms](https://jwt.ms ) を使用して、返されたアクセス トークンを調べると、次の例に似た内容が表示されるはずです。
 
 ```
 {

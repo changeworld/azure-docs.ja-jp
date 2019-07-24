@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: f77069592fb34caf409b387f5c8452159f55e296
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7a1685622c44666eed6dac328772f6dba1418371
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311511"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66398234"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -105,7 +105,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
     - 再同期では、ソース ファイルとターゲット ファイルを固定チャンクに分割する固定ブロック チャンク アルゴリズムが使用されます。
     - 各チャンクのチェックサムが生成されます。 チェックサムを比較することによって、ソース側のどのブロックをターゲットに適用すべきかが判断されます。
 2. 再同期が完了すると、通常の差分レプリケーションが再開されます。
-3. 既定の業務時間外の再同期を待ちたくない場合は、VM を手動で再同期できます。 たとえば、障害が発生した場合などです。 そのためには、Azure Portal で VM を選択し、**[再同期]** を選択します。
+3. 既定の業務時間外の再同期を待ちたくない場合は、VM を手動で再同期できます。 たとえば、障害が発生した場合などです。 そのためには、Azure Portal で VM を選択し、 **[再同期]** を選択します。
 
     ![Manual resynchronization](./media/hyper-v-azure-architecture/image4-site.png)
 

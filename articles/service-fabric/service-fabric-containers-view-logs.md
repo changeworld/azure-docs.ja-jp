@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/15/2018
 ms.author: aljo
 ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662824"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60881490"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric コンテナー サービスのログを表示する
 Azure Service Fabric はコンテナー オーケストレーターであり、[Linux コンテナーと Windows コンテナー](service-fabric-containers-overview.md)の両方をサポートします。  この記事では、問題を診断してトラブルシューティングできるように、実行中のコンテナー サービスまたはデッド コンテナー (クラッシュしたコンテナー) のコンテナー ログを表示する方法について説明します。
@@ -27,9 +27,9 @@ Azure Service Fabric はコンテナー オーケストレーターであり、[
 ## <a name="access-the-logs-of-a-running-container"></a>実行中のコンテナーのログにアクセスする
 コンテナー ログには、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) を使用してアクセスできます。  Web ブラウザーで、[http://mycluster.region.cloudapp.azure.com:19080/Explorer](http://mycluster.region.cloudapp.azure.com:19080/Explorer) に移動することによってクラスターの管理エンドポイントから Service Fabric Explorer を開きます。  
 
-コンテナー ログは、コンテナー サービス インスタンスが実行しているクラスター ノードにあります。 例として、[Linux Voting サンプル アプリケーション](service-fabric-quickstart-containers-linux.md)の Web フロントエンド コンテナーのログを取得します。 ツリー ビューで、**[クラスター]**>**[アプリケーション]**>**[VotingType]**>**[fabric:/Voting/azurevotefront]** の順に展開します。  次に、パーティション (この例では d1aa737e-f22a-e347-be16-eec90be24bc1) を展開し、コンテナーがクラスター ノード *_lnxvm_0* 上で実行していることを確認します。
+コンテナー ログは、コンテナー サービス インスタンスが実行しているクラスター ノードにあります。 例として、[Linux Voting サンプル アプリケーション](service-fabric-quickstart-containers-linux.md)の Web フロントエンド コンテナーのログを取得します。 ツリー ビューで、 **[クラスター]** > **[アプリケーション]** > **[VotingType]** > **[fabric:/Voting/azurevotefront]** の順に展開します。  次に、パーティション (この例では d1aa737e-f22a-e347-be16-eec90be24bc1) を展開し、コンテナーがクラスター ノード *_lnxvm_0* 上で実行していることを確認します。
 
-ツリー ビューで、**[ノード]**>**[_lnxvm_0]**>**[fabric:/Voting]**>**[azurevotfrontPkg]**>**[コード パッケージ]**>**[コード]** の順に展開し、*_lnxvm_0* ノード上でコード パッケージを探します。  その後、**[コンテナー ログ]** オプションを選択してコンテナー ログを表示します。
+ツリー ビューで、 **[ノード]** > **[_lnxvm_0]** > **[fabric:/Voting]** > **[azurevotfrontPkg]** > **[コード パッケージ]** > **[コード]** の順に展開し、 *_lnxvm_0* ノード上でコード パッケージを探します。  その後、 **[コンテナー ログ]** オプションを選択してコンテナー ログを表示します。
 
 ![Service Fabric platform][Image1]
 

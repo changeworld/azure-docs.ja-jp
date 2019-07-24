@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: 9589d6ea69a2293d592a9e63f2b726f1a620bb9e
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54068920"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62126989"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Linux クラスターでの暗号化証明書の設定とシークレットの暗号化
 この記事では、Linux クラスターでの暗号化証明書の設定と、これを使用してシークレットの暗号化を行う方法について説明します。 Windows クラスターについては、[Windows クラスターでの暗号化証明書の設定とシークレットの暗号化][secret-management-windows-specific-link]を参照してください。

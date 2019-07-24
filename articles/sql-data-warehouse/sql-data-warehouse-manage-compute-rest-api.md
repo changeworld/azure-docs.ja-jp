@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 658b35163e20d024118bc7a3142c86614540f00c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5b8652a0b08b426e708a909ff988e51eee9c0821
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790248"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476061"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の REST API
 Azure SQL Data Warehouse でコンピューティング能力を管理するための REST API について説明します。
@@ -51,6 +51,9 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 ```
 
 ## <a name="check-database-state"></a>データベース状態の確認
+
+> [!NOTE]
+> 現在、"データベース状態の確認" では、データベースがオンライン ワークフローを完了している間に "オンライン" が返され、その結果として接続エラーが発生する場合があります。 この API 呼び出しを使用して接続試行をトリガーする場合は、アプリケーション コードに 2 分から 3 分の遅延を追加する必要がある可能性があります。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01 HTTP/1.1

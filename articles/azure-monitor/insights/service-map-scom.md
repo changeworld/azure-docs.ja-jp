@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: magoedte
 ms.openlocfilehash: 40e6d6ff6ea8748b525642e5507c80590b322b7a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60402536"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>サービス マップと System Center Operations Manager の統合
 
@@ -40,26 +40,26 @@ Operations Manager とサービス マップの統合を有効にするには、
 * Microsoft System Center サービス マップ
 
 ## <a name="configure-the-service-map-integration"></a>サービス マップ統合の構成
-サービス マップ管理パックをインストールすると、**[管理]** ウィンドウの **[Operations Management Suite]** の下に、**[サービス マップ]** という名前の新しいノードが表示されます。
+サービス マップ管理パックをインストールすると、 **[管理]** ウィンドウの **[Operations Management Suite]** の下に、 **[サービス マップ]** という名前の新しいノードが表示されます。
 
 >[!NOTE]
 >[Operations Management Suite はサービスのコレクション](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)であり Log Analytics に含まれていました。現在は、[Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md) の一部になっています。
 
 サービス マップの統合を構成するには、次の操作を行います。
 
-1. 構成ウィザードを開くには、**[サービス マップの概要]** ウィンドウの **[ワークスペースの追加]** をクリックします。  
+1. 構成ウィザードを開くには、 **[サービス マップの概要]** ウィンドウの **[ワークスペースの追加]** をクリックします。  
 
     ![[サービス マップの概要] ウィンドウ](media/service-map-scom/scom-configuration.png)
 
-2. **[接続構成ツール]** ウィンドウで、サービス プリンシパルのテナント名または ID、アプリケーション ID (ユーザー名またはクライアント ID とも呼ばれます)、およびパスワードを入力し、**[次へ]** をクリックします。 詳細については、「サービス プリンシパルの作成」を参照してください。
+2. **[接続構成ツール]** ウィンドウで、サービス プリンシパルのテナント名または ID、アプリケーション ID (ユーザー名またはクライアント ID とも呼ばれます)、およびパスワードを入力し、 **[次へ]** をクリックします。 詳細については、「サービス プリンシパルの作成」を参照してください。
 
     ![[接続構成ツール] ウィンドウ](media/service-map-scom/scom-config-spn.png)
 
-3. **[サブスクリプションの選択]** ウィンドウで、Azure サブスクリプション、Azure リソース グループ (Log Analytics ワークスペースが含まれるグループ)、Log Analytics ワークスペースを選択し、**[次へ]** をクリックします。
+3. **[サブスクリプションの選択]** ウィンドウで、Azure サブスクリプション、Azure リソース グループ (Log Analytics ワークスペースが含まれるグループ)、Log Analytics ワークスペースを選択し、 **[次へ]** をクリックします。
 
     ![Operations Manager 構成ワークスペース](media/service-map-scom/scom-config-workspace.png)
 
-4. **[Machine Group Selection]\(コンピューター グループの選択\)** ウィンドウで、Operations Manager に同期する Service Map コンピューター グループを選びます。 **[Add/Remove Machine Groups]\(コンピューター グループの追加/削除\)** をクリックして、**[Available Machine Groups]\(使用可能なコンピューター グループ\)** の一覧からグループを選択し、**[追加]** をクリックします。  グループの選択が完了したら、**[OK]** をクリックして完了します。
+4. **[Machine Group Selection]\(コンピューター グループの選択\)** ウィンドウで、Operations Manager に同期する Service Map コンピューター グループを選びます。 **[Add/Remove Machine Groups]\(コンピューター グループの追加/削除\)** をクリックして、 **[Available Machine Groups]\(使用可能なコンピューター グループ\)** の一覧からグループを選択し、 **[追加]** をクリックします。  グループの選択が完了したら、 **[OK]** をクリックして完了します。
 
     ![Operations Manager 構成コンピューター グループ](media/service-map-scom/scom-config-machine-groups.png)
 
@@ -73,7 +73,7 @@ Operations Manager とサービス マップの統合を有効にするには、
 
      ![Operations Manager 構成グループ](media/service-map-scom/scom-config-group.png)
 
-6. 省略可能:Log Analytics と通信する管理サーバーのリソース プールを選択し、**[ワークスペースの追加]** をクリックします。
+6. 省略可能:Log Analytics と通信する管理サーバーのリソース プールを選択し、 **[ワークスペースの追加]** をクリックします。
 
     ![Operations Manager 構成リソース プール](media/service-map-scom/scom-config-pool.png)
 
@@ -103,7 +103,7 @@ Service Map フォルダーには 4 つのノードがあります。
     ![Operations Manager の分散アプリケーション ダイアグラム](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>ワークスペースを編集または削除
-構成済みワークスペースは、**[サービス マップ概要]** ウィンドウ (**[管理]** ウィンドウ > **[Operations Management Suite]**  >  **[サービス]**) で編集または削除できます。
+構成済みワークスペースは、 **[サービス マップ概要]** ウィンドウ ( **[管理]** ウィンドウ > **[Operations Management Suite]**  >  **[サービス]** ) で編集または削除できます。
 
 >[!NOTE]
 >[Operations Management Suite はサービスのコレクション](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)であり Log Analytics に含まれていました。現在は、[Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md) の一部になっています。
@@ -113,7 +113,7 @@ Service Map フォルダーには 4 つのノードがあります。
 ![Operations Manager の [ワークスペースの編集] ウィンドウ](media/service-map-scom/scom-edit-workspace.png)
 
 ## <a name="configure-rules-and-overrides"></a>規則とオーバーライドの構成
-サービス マップから定期的に情報を取得するために、_Microsoft.SystemCenter.ServiceMapImport.Rule_ という規則が作成されます。 同期のタイミングを変更するには、この規則のオーバーライドを構成します (**[作成]** ウィンドウ &gt; **[規則]** > **[Microsoft.SystemCenter.ServiceMapImport.Rule]**)。
+サービス マップから定期的に情報を取得するために、_Microsoft.SystemCenter.ServiceMapImport.Rule_ という規則が作成されます。 同期のタイミングを変更するには、この規則のオーバーライドを構成します ( **[作成]** ウィンドウ &gt; **[規則]**  >  **[Microsoft.SystemCenter.ServiceMapImport.Rule]** )。
 
 ![Operations Manager の [Overrides properties (プロパティのオーバーライド)] ウィンドウ](media/service-map-scom/scom-overrides.png)
 

@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a748bb0fb44b3fae50426b56f2076f1a9730657
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 8e78cb712501b86f98d3459cac6280d0484f41a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080195"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65833109"
 ---
 # <a name="protected-web-api---move-to-production"></a>保護された Web API - 運用環境への移行
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b02945197b20c7fe704d0f8cfa9201a5b9cbc292
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dd1a46ea008ce5f8fb02dd468b27494d231717f0
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690941"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483928"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 
@@ -38,7 +38,7 @@ HDInsight 3.4 以降では、Mono を使用して C# トポロジを実行しま
 > [!IMPORTANT]  
 > このドキュメントの例では、HDInsight 3.5 クラスターまたは HDInsight 3.6 クラスターが想定されています。
 >
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 
 
 C# トポロジは .NET 4.5 も対象にする必要があります。
 
@@ -103,11 +103,11 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-completed-project"></a>完成したプロジェクトをダウンロードする
 
-このチュートリアルで作成したプロジェクトの完全なバージョンを [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からダウンロードできます。 ただし、このチュートリアルの手順に従って構成設定を指定する必要があります。
+この記事で作成したプロジェクトの完全なバージョンを [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からダウンロードできます。 ただし、この記事の手順に従って構成設定を指定する必要があります。
 
 ### <a name="prerequisites"></a>前提条件
 
-* [HDInsight クラスター バージョン 3.5 または 3.6 での Apache Storm](apache-storm-tutorial-get-started-linux.md)。
+* HDInsight 上の Apache Storm クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[Storm]** を選択してください。
 
     > [!WARNING]  
     > このドキュメントで使用している例では、HDInsight バージョン 3.5 または 3.6 での Storm が必要です。 クラス名の変更があるため、これは旧バージョンの HDInsight では動作しません。 以前のクラスターで動作するこの例のバージョンについては、[GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases) を参照してください。
@@ -133,7 +133,7 @@ Event Hubs スパウトとボルト コンポーネントは [https://github.com
 
 Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用](../../event-hubs/event-hubs-create.md)に関するページの "イベント ハブの作成" のセクションにある情報を使用します。
 
-1. イベント ハブが作成されたら、Azure Portal の **EventHub** 設定を表示し、**[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを追加します。
+1. イベント ハブが作成されたら、Azure Portal の **EventHub** 設定を表示し、 **[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを追加します。
 
    | Name | アクセス許可 |
    | --- | --- |
@@ -180,21 +180,21 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 ## <a name="deploy-the-topologies"></a>トポロジのデプロイ
 
-1. **ソリューション エクスプローラー**で **EventHubReader** プロジェクトを右クリックし、**[HDInsight の Storm に送信]** を選択します。
+1. **ソリューション エクスプローラー**で **EventHubReader** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
     ![ソリューション エクスプローラーのスクリーンショット ([HDInsight の Storm に送信] を強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/submittostorm.png)
 
-2. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
+2. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、 **[Java ファイル パス]** 、 **[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 
     ![[トポロジの送信] ダイアログ ボックスのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/submit.png)
 
-3. トポロジが送信されると、**[Storm トポロジ ビューアー]** が表示されます。 トポロジに関する情報を表示するには、左側のウィンドウにある **[EventHubReader]** トポロジを選択します。
+3. トポロジが送信されると、 **[Storm トポロジ ビューアー]** が表示されます。 トポロジに関する情報を表示するには、左側のウィンドウにある **[EventHubReader]** トポロジを選択します。
 
     ![Storm トポロジ ビューアーのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/topologyviewer.png)
 
-4. **ソリューション エクスプローラー**で **EventHubWriter** プロジェクトを右クリックし、**[HDInsight の Storm に送信]** を選択します。
+4. **ソリューション エクスプローラー**で **EventHubWriter** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
-5. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、**[Java ファイル パス]**、**[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
+5. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、 **[Java ファイル パス]** 、 **[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 
 6. トポロジが送信されたら、 **[Storm トポロジ ビューアー]** でトポロジ一覧を最新情報に更新し、両方のトポロジがクラスターで実行中であることを確認します。
 
@@ -202,7 +202,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 8. ボルトのコンポーネントの概要を開くには、ダイアグラムの **[LogBolt]** コンポーネントをダブルクリックします。
 
-9. **[Executors]** セクションで、**[ポート]** 列のリンクを 1 つ選択します。 これによって、コンポーネントで記録された情報が表示されます。 次のテキストのような情報が記録されています。
+9. **[Executors]** セクションで、 **[ポート]** 列のリンクを 1 つ選択します。 これによって、コンポーネントで記録された情報が表示されます。 次のテキストのような情報が記録されています。
 
         2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
         2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
@@ -210,7 +210,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 ## <a name="stop-the-topologies"></a>トポロジの停止
 
-トポロジを停止するには、**[Storm トポロジ ビューアー]** で各トポロジを選択し、**[強制終了]** をクリックします。
+トポロジを停止するには、 **[Storm トポロジ ビューアー]** で各トポロジを選択し、 **[強制終了]** をクリックします。
 
 ![Storm トポロジ ビューアーのスクリーンショット ([強制終了] ボタンを強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/killtopology.png)
 

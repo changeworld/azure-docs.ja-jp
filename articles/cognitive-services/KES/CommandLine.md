@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
 ms.openlocfilehash: 018552982a8ece3bbbaea2d60e2a6e64f681f822
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860118"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60815146"
 ---
 # <a name="command-line-interface"></a>コマンド ライン インターフェイス
 
@@ -82,7 +82,7 @@ Knowledge Exploration Service (KES) コマンド ライン インターフェイ
 | `<indexFile>`   | 入力バイナリ インデックスのパス           |
 | `--port <port>` | ローカル ポート番号。  既定値は8000 |
 
-これらのファイルは、ローカル ファイルのパスまたは AzureBLOB への URL パスによって指定できます。  Web サービスは、 http://localhost:&lt;port&gt;/ でホストされます。  サポートされている操作の一覧については、「[Web API](WebAPI.md)」を参照してください。
+これらのファイルは、ローカル ファイルのパスまたは AzureBLOB への URL パスによって指定できます。  Web サービスは、 http://localhost:&lt ;port&gt; / でホストされます。  サポートされている操作の一覧については、「[Web API](WebAPI.md)」を参照してください。
 
 Azure 環境以外の場合、ローカルでホストされるサービスは、最大 1 MB のサイズのインデックス ファイル、毎秒 10 要求、合計 1,000 回の呼び出しに制限されます。  これらの制限をなくすには、Azure VM 内で **host_service** を実行するか、**deploy_service** を使用して Azure クラウド サービスにデプロイします。
 

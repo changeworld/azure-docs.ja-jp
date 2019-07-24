@@ -1,28 +1,29 @@
 ---
 title: クラスター サイズのスケーリング - Azure HDInsight
-description: ワークロードに合わせて HDInsight クラスターをスケーリングします。
+description: ワークロードに合わせて Azure HDInsight クラスターを柔軟にスケーリングする
 author: ashishthaps
+ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.author: ashish
-ms.openlocfilehash: a172024e4662e647b39fe999f1be3cfcef04b5ce
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/10/2019
+ms.openlocfilehash: b85277a4238351b6448c2cf29676ae3d8c118385
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64698242"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077199"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight クラスターのスケーリング
 
-HDInsight では、クラスター内のワーカー ノードの数をスケールアップおよびスケールダウンできるようにすることで、柔軟性が提供されます。 これにより、クラスターを数時間後または週末に縮小したり、ビジネスの需要のピーク時に拡張したりできます。
+HDInsight では、クラスター内のワーカー ノードの数をスケールアップおよびスケールダウンできるようにすることで、柔軟性が提供されます。 この柔軟性により、クラスターを数時間後または週末に縮小したり、ビジネスの需要のピーク時に拡張したりできます。
 
-たとえば、1 日 1 回または月 1 回に発生するバッチ処理がある場合、そのスケジュールされたイベントの数分前に HDInsight クラスターをスケールアップして、十分な量のメモリと CPU のコンピューティング能力を確保できます。  その後、処理が完了し、使用量が再び減少したら、HDInsight クラスターをスケールダウンしてワーカー ノードの数を減らすことができます。
+定期的なバッチ処理がある場合は、操作の数分前に HDInsight クラスターをスケールアップして、クラスターに十分なメモリと CPU パワーを持たせることができます。  その後、処理が完了し、使用量が再び減少したら、HDInsight クラスターをスケールダウンしてワーカー ノードの数を減らすことができます。
 
+以下に示す方法のいずれかを使用して、クラスターを手動でスケーリングできます。または、[自動スケーリング](hdinsight-autoscale-clusters.md) オプションを使用して、CPU、メモリ、およびその他のメトリックに応じてシステムを自動的にスケールアップ/ダウンします。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!NOTE]  
+> HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。
 
 ## <a name="utilities-to-scale-clusters"></a>クラスターをスケーリングするユーティリティ
 
@@ -32,8 +33,8 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Cluster Name> -TargetInstanceCount \<NewSize>|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Resource group> --name \<Cluster Name> --target-instance-count \<NewSize>|
-|[Azure クラシック CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<Target Instance Count>|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Resource group> --name \<Cluster Name> --target-instance-count \<NewSize>|
+|[Azure CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<Target Instance Count> |
 |[Azure Portal](https://portal.azure.com)|HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスター サイズ]** を選択し、[クラスター サイズ] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。|  
 
 ![クラスターのスケーリング](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
@@ -44,21 +45,72 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 > * Azure クラシック CLI は非推奨です。クラシック デプロイ モデルでのみ使用してください。 その他すべてのデプロイについては、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用してください。  
 > * PowerShell AzureRM モジュールは非推奨です。  可能な限り、[Az モジュール](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0)を使用してください。
 
-## <a name="scaling-impacts-on-running-jobs"></a>実行中のジョブに対するスケーリングの影響
+## <a name="impact-of-scaling-operations"></a>スケーリング操作の影響
 
-実行中の HDInsight クラスターにノードを**追加**する場合、保留中または実行中のジョブに影響はありません。 さらに、新しいジョブも、スケーリング処理の実行中に安全に送信できます。 スケーリング操作が何らかの理由で失敗した場合、その失敗は適切に処理され、クラスターの機能状態は維持されます。
+実行中の HDInsight クラスターにノードを**追加** (スケールアップ) するときに、保留中または実行中のジョブが影響を受けることはありません。 スケーリング処理の実行中に新しいジョブを安全に送信できます。 スケーリング操作が何らかの理由で失敗した場合、クラスターの機能状態が維持されるように失敗が処理されます。
 
-ただし、ノードを**削除**してクラスターをスケールダウンしている場合、保留中または実行中のジョブは、スケーリング操作の完了時に失敗します。 この失敗の原因は、処理中にいくつかのサービスが再起動されることにあります。
+ノードを**削除** (スケールダウン) すると、保留中または実行中のジョブは、スケーリング操作の完了時に失敗します。 この失敗の原因は、スケーリング処理中にいくつかのサービスが再起動されることにあります。 手動のスケーリング操作中に、クラスターがセーフ モードでスタックするリスクもあります。
 
-この問題に対処するには、ジョブが完了するまで待ってからクラスターをスケールダウンするか、ジョブを手動で終了させるか、スケーリング操作の完了後にジョブを再送信します。
+データ ノード数を変更した場合の影響は、HDInsight でサポートされているクラスターの種類ごとに異なります。
 
-保留中または実行中のジョブの一覧を表示するには、次の手順に従って YARN ResourceManager UI を使用できます。
+* Apache Hadoop
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. 左側から、**[すべてのサービス]** > **[分析]** > **[HDInsight クラスター]** に移動し、クラスターを選択します。
-3. メイン ビューから、 **[クラスター ダッシュボード]** > **[Ambari ホーム]** に移動します。 クラスターのログイン資格情報を入力します。
-4. Ambari UI から、左側のメニューにあるサービスの一覧で **[YARN]** を選択します。  
-5. [YARN] ページから **[クイック リンク]** を選択し、アクティブなヘッド ノードにポインターを置き、**[ResourceManager UI]** を選択します。
+    保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内の worker ノードの数をシームレスに増加できます。 処理の進行中に新しいジョブを送信することもできます。 スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
+
+    データ ノードの数を減らして Hadoop クラスターのスケールを小さくした場合、クラスター内の一部のサービスが再起動されます。 この動作により、スケール設定処理の完了時に、実行中および保留中のすべてのジョブが失敗します。 ただし、処理が完了した後にジョブを再送信できます。
+
+* Apache HBase
+
+    実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。 地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。 ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
+
+    ```bash
+    pushd %HBASE_HOME%\bin
+    hbase shell
+    balancer
+    ```
+
+    HBase シェルの使用の詳細については、「[HDInsight で Apache HBase の例を使用する](hbase/apache-hbase-tutorial-get-started-linux.md)」を参照してください。
+
+* Apache Storm
+
+    実行中の Storm クラスターに対して、データ ノードの追加または削除をシームレスに実行できます。 ただし、スケール設定処理が正常に完了した後、トポロジのバランス再調整が必要になります。
+
+    バランス再調整は、次の 2 つの方法で実行できます。
+
+  * Storm Web UI
+  * コマンド ライン インターフェイス (CLI) ツール
+
+    詳細については、[Apache Storm に関するドキュメント](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)を参照してください。
+
+    Storm Web UI は、HDInsight クラスターで使用できます。
+
+    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
+    Storm トポロジのバランスを再調整する CLI コマンドの例を次に示します。
+
+    ```cli
+    ## Reconfigure the topology "mytopology" to use 5 worker processes,
+    ## the spout "blue-spout" to use 3 executors, and
+    ## the bolt "yellow-bolt" to use 10 executors
+    $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
+    ```
+
+## <a name="how-to-safely-scale-down-a-cluster"></a>クラスターを安全にスケールする方法
+
+### <a name="scale-down-a-cluster-with-running-jobs"></a>ジョブを実行してクラスターをスケールダウンする
+
+スケールダウン操作中に実行中のジョブが失敗するのを回避するため、次の 3 つのことを試すことができます。
+
+1. ジョブが完了するのを待ってから、クラスターをスケールダウンする。
+1. ジョブを手動で終了する。
+1. スケーリング操作の完了後に、ジョブを再送信する。
+
+保留中または実行中のジョブの一覧を表示するには、次の手順に従って YARN **Resource Manager UI** を使用できます。
+
+1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](./hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 クラスターは新しいポータル ページで開きます。
+2. メイン ビューから、 **[クラスター ダッシュボード]**  >  **[Ambari ホーム]** に移動します。 クラスターの資格情報を入力します。
+3. Ambari UI から、左側のメニューにあるサービスの一覧で **[YARN]** を選択します。  
+4. [YARN] ページから **[クイック リンク]** を選択し、アクティブなヘッド ノードにポインターを置き、 **[ResourceManager UI]** を選択します。
 
     ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
 
@@ -74,188 +126,35 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 yarn application -kill <application_id>
 ```
 
-例: 
+例:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
 ```
 
-## <a name="rebalancing-an-apache-hbase-cluster"></a>Apache HBase クラスターの再調整
+### <a name="getting-stuck-in-safe-mode"></a>セーフ モードでスタックする
 
-リージョン サーバーは、スケーリング操作の完了から数分以内に自動的に調整されます。 リージョン サーバーを手動で調整するには、次の手順を使用します。
+クラスターをスケールダウンすると、HDInsight は Apache Ambari 管理インターフェイスを使用して、まず不要なワーカー ノードを削除します。これにより、それらの HDFS ブロックが他のオンライン ワーカー ノードにレプリケートされます。 その後、HDInsight によってクラスターが安全にスケールダウンされます。 スケーリング操作中は、HDFS がセーフ モードになり、スケーリングが終了すると元の状態に戻ります。 ただし、場合によっては、レプリケーション中のファイル ブロックが原因で、スケーリング操作中に HDFS がセーフ モードでスタックします。
 
-1. SSH を使用して HDInsight クラスターに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+既定では、HDFS は 3 の `dfs.replication` 設定 (各ファイル ブロックの使用可能なコピーの数を制御する) で構成されます。 ファイル ブロックの各コピーは、クラスターの別々のノードに格納されます。
 
-2. HBase シェルを起動します。
-
-        hbase shell
-
-3. 次のコマンドを使用して、リージョン サーバーを手動で調整します。
-
-        balancer
-
-## <a name="scale-down-implications"></a>スケールダウンの影響
-
-前述のように、保留中または実行中のジョブはすべて、スケールダウン操作の完了時に終了します。 ただし、スケールダウンが発生した場合は他にも影響が生じる可能性があります。
-
-## <a name="hdinsight-name-node-stays-in-safe-mode-after-scaling-down"></a>HDInsight の名前ノードはスケールダウン後もセーフ モードを維持する
-
-ワーカー ノードが最低限の 1 つになるようにクラスターを縮小した場合、パッチの適用が原因でワーカー ノードが再起動されたときまたはスケーリング操作の直後に、Apache HDFS がセーフ モードのままになることがあります。
-
-この主な原因は、Hive がいくつかの `scratchdir` ファイルを使用していて、既定で各ブロックの 3 つのレプリカを必要としていることです。ただし、ワーカー ノードが最低限の 1 つになるようにスケールダウンした場合は、1 つのレプリカしか作成できません。 結果として、`scratchdir` 内のファイルは "*レプリケーション数が不足*" します。 これが原因で、スケール操作後にサービスが再起動したときに HDFS はセーフ モードのままになります。
-
-スケールダウンが試行されると、HDInsight は Apache Ambari 管理インターフェイスを使用してまず不要なワーカー ノードを削除します。これにより、それらの HDFS ブロックが他のオンライン ワーカー ノードにレプリケートされます。その後、クラスターを安全にスケールダウンします。 HDFS は、メンテナンス期間中はセーフ モードになり、スケーリングが終了すると元の状態に戻ります。 このときに、HDFS がセーフ モードのままになる場合があります。
-
-HDFS では、`dfs.replication` が 3 に設定されています。 したがって、オンラインのワーカー ノードが 3 つ未満の場合は常にスクラッチ ファイルのブロックのレプリケーション数が不足します。これは、各ファイル ブロックの予想される 3 つのコピーを利用できないためです。
-
-HDFS のセーフ モードを終了するためのコマンドを実行できます。 たとえば、セーフ モードになっている唯一の原因が一時ファイルのレプリケーション数不足であることがわかっている場合は、安全にセーフ モードを終了できます。 これは、レプリケーション数が不足しているファイルが Hive の一時スクラッチ ファイルであるためです。
-
-```bash
-hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
-```
-
-セーフ モードを終了すると、手動で一時ファイルを削除するか、Hive が最終的にそれらを自動クリーンアップするまで待つことができます。
+HDFS で想定されている数のブロックのコピーが使用できないことが検出されると、HDFS はセーフ モードになり、Ambari によってアラートが生成されます。 スケーリング操作中に HDFS がセーフ モードになったが、その後、レプリケーションに必要な数のノードが検出されないためにセーフ モードを終了できない場合は、そのクラスターがセーフ モードでスタックする場合があります。
 
 ### <a name="example-errors-when-safe-mode-is-turned-on"></a>セーフ モードがオンになっている場合のエラーの例
 
-* H070 Unable to open Hive session. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException:**Cannot create directory** /tmp/hive/hive/819c215c-6d87-4311-97c8-4f0b9d2adcf0. **Name node is in safe mode**. The reported blocks 75 needs additional 12 blocks to reach the threshold 0.9900 of total blocks 87. The number of live datanodes 10 has reached the minimum number 0. Safe mode will be turned off automatically once the thresholds have been reached.
+```
+org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create directory /tmp/hive/hive/819c215c-6d87-4311-97c8-4f0b9d2adcf0. Name node is in safe mode.
+```
 
-* H100 Unable to submit statement show databases: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException:Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed:**Connection refused**
-
-* H020 Could not establish connection to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001: org.apache.thrift.transport.TTransportException:Could not create http connection to http:\//hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException:Connect to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] failed:Connection refused: org.apache.thrift.transport.TTransportException:Could not create http connection to http:\//hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException:Connect to hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] failed:**Connection refused**
-
-* From the Hive logs:WARN [main]: server.HiveServer2 (HiveServer2.java:startHiveServer2(442)) – Error starting HiveServer2 on attempt 21, will retry in 60 seconds java.lang.RuntimeException:Error applying authorization policy on hive configuration: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException:**Cannot create directory** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Name node is in safe mode**.
-    The reported blocks 0 needs additional 9 blocks to reach the threshold 0.9900 of total blocks 9.
-    The number of live datanodes 10 has reached the minimum number 0. **Safe mode will be turned off automatically once the thresholds have been reached**.
-    at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1324)
+```
+org.apache.http.conn.HttpHostConnectException: Connect to hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
+```
 
 `/var/log/hadoop/hdfs/` フォルダーから、クラスターがスケーリングされた時刻付近の名前ノード ログを確認すると、セーフ モードに入った時刻がわかります。 ログ ファイルの名前は `Hadoop-hdfs-namenode-hn0-clustername.*` です。
 
 上記のエラーの根本原因は、Hive がクエリの実行中に HDFS 内の一時ファイルを利用することです。 HDFS がセーフ モードになると、Hive は HDFS に書き込めなくなるため、クエリを実行できません。 HDFS 内の一時ファイルは、各ワーカー ノード VM にマウントされたローカル ドライブにあり、最低 3 つのレプリカにあるその他のワーカー ノード間でレプリケートされます。
 
-Hive の `hive.exec.scratchdir` パラメーターは `/etc/hive/conf/hive-site.xml` 内で構成されます。
-
-```xml
-<property>
-    <name>hive.exec.scratchdir</name>
-    <value>hdfs://mycluster/tmp/hive</value>
-</property>
-```
-
-### <a name="view-the-health-and-state-of-your-hdfs-file-system"></a>HDFS ファイル システムの正常性と状態の表示
-
-各名前ノードから状態レポートを表示して、ノードがセーフ モードになっているかどうかを確認できます。 レポートを表示するには、各ヘッド ノードに SSH で接続して次のコマンドを実行します。
-
-```
-hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
-```
-
-![セーフ モード オフ](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
-
-> [!NOTE]  
-> HDInsight の既定のファイル システムは Azure Storage または Azure Data Lake Storage のどちらかであるため、`-D` スイッチが必要です。 `-D` は、ローカルの HDFS ファイル システムに対してコマンドが実行されるように指定します。
-
-次に、HDFS の状態の詳細を示すレポートを表示できます。
-
-```
-hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -report
-```
-
-このコマンドを実行すると、すべてのブロックが期待される範囲にレプリケートされている正常な状態のクラスターでは、次のような結果が表示されます。
-
-![セーフ モード オフ](./media/hdinsight-scaling-best-practices/report.png)
-
-HDFS は、欠落しているファイル ブロックやレプリケーション数が不足しているブロックなど、さまざまなファイルでの不整合をチェックする `fsck` コマンドをサポートしています。 `fsck` コマンドを `scratchdir` (一時スクラッチ ディスク) ファイルに対して実行するには、次のように入力します。
-
-```
-hdfs fsck -D 'fs.default.name=hdfs://mycluster/' /tmp/hive/hive
-```
-
-レプリケーション数が不足しているブロックがない正常な HDFS ファイル システムに対して実行すると、次のような出力が表示されます。
-
-```
-Connecting to namenode via http://hn0-scalin.name.bx.internal.cloudapp.net:30070/fsck?ugi=sshuser&path=%2Ftmp%2Fhive%2Fhive
-FSCK started by sshuser (auth:SIMPLE) from /10.0.0.21 for path /tmp/hive/hive at Thu Jul 06 20:07:01 UTC 2017
-..Status: HEALTHY
- Total size:    53 B
- Total dirs:    5
- Total files:   2
- Total symlinks:                0 (Files currently being written: 2)
- Total blocks (validated):      2 (avg. block size 26 B)
- Minimally replicated blocks:   2 (100.0 %)
- Over-replicated blocks:        0 (0.0 %)
- Under-replicated blocks:       0 (0.0 %)
- Mis-replicated blocks:         0 (0.0 %)
- Default replication factor:    3
- Average block replication:     3.0
- Corrupt blocks:                0
- Missing replicas:              0 (0.0 %)
- Number of data-nodes:          4
- Number of racks:               1
-FSCK ended at Thu Jul 06 20:07:01 UTC 2017 in 3 milliseconds
-
-
-The filesystem under path '/tmp/hive/hive' is HEALTHY
-```
-
-これに対し、レプリケーション数が不足しているブロックがある HDFS ファイル システムに対して `fsck` コマンドを実行した場合は、次のような出力が表示されます。
-
-```
-Connecting to namenode via http://hn0-scalin.name.bx.internal.cloudapp.net:30070/fsck?ugi=sshuser&path=%2Ftmp%2Fhive%2Fhive
-FSCK started by sshuser (auth:SIMPLE) from /10.0.0.21 for path /tmp/hive/hive at Thu Jul 06 20:13:58 UTC 2017
-.
-/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/inuse.info:  Under replicated BP-1867508080-10.0.0.21-1499348422953:blk_1073741826_1002. Target Replicas is 3 but found 1 live replica(s), 0 decommissioned replica(s) and 0 decommissioning replica(s).
-.
-/tmp/hive/hive/e7c03964-ff3a-4ee1-aa3c-90637a1f4591/inuse.info: CORRUPT blockpool BP-1867508080-10.0.0.21-1499348422953 block blk_1073741825
-
-/tmp/hive/hive/e7c03964-ff3a-4ee1-aa3c-90637a1f4591/inuse.info: MISSING 1 blocks of total size 26 B.Status: CORRUPT
- Total size:    53 B
- Total dirs:    5
- Total files:   2
- Total symlinks:                0 (Files currently being written: 2)
- Total blocks (validated):      2 (avg. block size 26 B)
-  ********************************
-  UNDER MIN REPL'D BLOCKS:      1 (50.0 %)
-  dfs.namenode.replication.min: 1
-  CORRUPT FILES:        1
-  MISSING BLOCKS:       1
-  MISSING SIZE:         26 B
-  CORRUPT BLOCKS:       1
-  ********************************
- Minimally replicated blocks:   1 (50.0 %)
- Over-replicated blocks:        0 (0.0 %)
- Under-replicated blocks:       1 (50.0 %)
- Mis-replicated blocks:         0 (0.0 %)
- Default replication factor:    3
- Average block replication:     0.5
- Corrupt blocks:                1
- Missing replicas:              2 (33.333332 %)
- Number of data-nodes:          1
- Number of racks:               1
-FSCK ended at Thu Jul 06 20:13:58 UTC 2017 in 28 milliseconds
-
-
-The filesystem under path '/tmp/hive/hive' is CORRUPT
-```
-
-HDFS の状態は Ambari UI 上でも確認できます。左側の **[HDFS]** サービスを選択するか、`https://<HDInsightClusterName>.azurehdinsight.net/#/main/services/HDFS/summary` を使用します。
-
-![Ambari での HDFS の状態](./media/hdinsight-scaling-best-practices/ambari-hdfs.png)
-
-アクティブまたはスタンバイ状態の NameNode で 1 つ以上の重大なエラーが見つかる場合もあります。 NameNode ブロックの正常性を確認するには、アラートの横にある NameNode リンクを選択します。
-
-![NameNode ブロックの正常性](./media/hdinsight-scaling-best-practices/ambari-hdfs-crit.png)
-
-スクラッチ ファイルをクリーンアップして、ブロックのレプリケーション エラーを解消するには、各ヘッド ノードに SSH で接続して次のコマンドを実行します。
-
-```
-hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
-```
-
-> [!NOTE]  
-> このコマンドにより、一部のジョブがまだ実行中であっても、Hive が中断される場合があります。
-
-### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode-due-to-under-replicated-blocks"></a>レプリケーション数が足りないブロックが原因で HDInsight がセーフ モードのままにならないようにする方法
+### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode"></a>HDInsight がセーフ モードでスタックするのを防ぐ方法
 
 HDInsight がセーフ モードのままにならないようにする方法はいくつかあります。
 
@@ -270,23 +169,31 @@ HDInsight がセーフ モードのままにならないようにする方法は
 
 すべての Hive ジョブを停止してから、1 つのワーカー ノードにスケールダウンします。 ワークロードがスケジュールされている場合は、Hive の処理が完了した後でスケールダウンします。
 
-これにより、tmp フォルダー内のスクラッチ ファイルの数を最小限に抑えることができます (存在する場合)。
+スケーリングの前に Hive ジョブを停止することで、tmp フォルダー内のスクラッチ ファイルの数を最小限に抑えることができます (存在する場合)。
 
 #### <a name="manually-clean-up-hives-scratch-files"></a>Hive のスクラッチ ファイルを手動でクリーンアップする
 
 Hive で一時ファイルが残っている場合は、これらのファイルを手動でクリーンアップしてからスケールダウンすることで、セーフ モードを回避できます。
 
-1. Hive サービスを停止し、すべてのクエリとジョブが完了していることを確認します。
+1. `hive.exec.scratchdir` 構成プロパティを見て、Hive の一時ファイルに使用されている場所を確認します。 このパラメーターは `/etc/hive/conf/hive-site.xml` 内で設定されます。
 
-2. `hdfs://mycluster/tmp/hive/` ディレクトリのコンテンツを一覧表示して、ファイルが含まれているかどうかを確認します。
-
+    ```xml
+    <property>
+        <name>hive.exec.scratchdir</name>
+        <value>hdfs://mycluster/tmp/hive</value>
+    </property>
     ```
+
+1. Hive サービスを停止し、すべてのクエリとジョブが完了していることを確認します。
+2. 上記で見つかったスクラッチ ディレクトリ `hdfs://mycluster/tmp/hive/` のコンテンツを一覧表示して、ファイルが含まれているかどうかを確認します。
+
+    ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     ```
-    
+
     ファイルが存在する場合の出力例は次のとおりです。
 
-    ```
+    ```output
     sshuser@hn0-scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c
     drwx------   - hive hdfs          0 2017-07-06 13:40 hdfs://mycluster/tmp/hive/hive/4f3f4253-e6d0-42ac-88bc-90f0ea03602c/_tmp_space.db
@@ -300,32 +207,43 @@ Hive で一時ファイルが残っている場合は、これらのファイル
 
     HDFS からファイルを削除するコマンドラインの例:
 
-    ```
+    ```bash
     hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
     ```
-    
-#### <a name="scale--hdinsight-to-three-worker-nodes"></a>HDInsight を 3 つのワーカー ノードにスケーリングする
 
-セーフ モードのままになる問題が解決せず、上記の手順を実行できない場合は、3 つのワーカー ノードにスケールダウンするだけで、この問題を回避できます。 1 つのワーカー ノードにスケールダウンすることと比較すると、コスト的な制限により、最適ではない可能性があります。 しかし、ワーカー ノードが 1 つのみの場合、HDFS では、データの 3 つのレプリカをクラスターで利用できることは保証できません。
+#### <a name="scale-hdinsight-to-three-or-more-worker-nodes"></a>HDInsight を 3 つ以上のワーカー ノードにスケーリングする
+
+2 つ以下のワーカー ノードにスケールダウンしたときに、クラスターがセーフ モードで頻繁にスタックし、前述の手順が機能しない場合は、3 つ以上のワーカー ノードを保持することで、クラスターがすべてセーフ モードになるのを回避できます。
+
+3 つのワーカー ノードを保持するのは 1 つだけのワーカー ノードにスケールダウンするよりも高コストですが、クラスターがセーフ モードでスタックするのを防ぐことができます。
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>セーフ モードを終了するコマンドを実行する
 
-最後のオプションでは、HDFS がセーフ モードになるまれなケースを監視し、セーフ モードを終了するコマンドを実行します。 HDFS がセーフ モードになった原因が Hive ファイルのレプリケーション数の不足であることがわかったら、次のコマンドを実行してセーフ モードを終了します。
+最後のオプションは、セーフ モードを終了するコマンドを実行することです。 HDFS がセーフ モードになる原因が、レプリケーション中の Hive ファイルだということがわかっている場合は、次のコマンドを実行してセーフ モードを終了することができます。
 
-* Linux の HDInsight:
+```bash
+hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
+```
+
+### <a name="scale-down-an-apache-hbase-cluster"></a>Apache HBase クラスターをスケールダウンする
+
+リージョン サーバーは、スケーリング操作の完了から数分以内に自動的に調整されます。 リージョン サーバーを手動で調整するには、次の手順を完了します。
+
+1. SSH を使用して HDInsight クラスターに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
+2. HBase シェルを起動します。
 
     ```bash
-    hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
+    hbase shell
     ```
-    
-* Windows の HDInsight:
+
+3. 次のコマンドを使用して、リージョン サーバーを手動で調整します。
 
     ```bash
-    hdfs dfsadmin -fs hdfs://headnodehost:9000 -safemode leave
+    balancer
     ```
-    
+
 ## <a name="next-steps"></a>次の手順
 
+* [Azure HDInsight クラスターを自動的にスケーリングする](hdinsight-autoscale-clusters.md)
 * [Azure HDInsight の概要](hadoop/apache-hadoop-introduction.md)
-* [クラスターのスケーリング](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)

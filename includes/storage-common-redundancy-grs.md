@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/26/2018
 ms.author: jeking
 ms.custom: include file
-ms.openlocfilehash: efa593d0ff0043d81574b67192deed30933e1e40
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 3aa5310589101fa66fd70cc8d5449fbef80f02fa
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66114878"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286180"
 ---
 geo 冗長ストレージ (GRS) は、プライマリ リージョンから数百マイル離れたセカンダリ リージョンにデータをレプリケートすることで、通年で少なくとも 99.99999999999999% (シックスティーンナイン) の持続性をオブジェクトに確保するように設計されています。 ご使用のストレージ アカウントで GRS が有効になっている場合は、地域的な停電やプライマリ リージョンが復旧できない災害が発生しても、データは保持されます。
 

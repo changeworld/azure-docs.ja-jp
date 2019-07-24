@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: dekapur
-ms.openlocfilehash: 5657ac9f10c42c2201641c9af447b7ad2e6a3507
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 99882bd23d7b94afc550247172e5b70deb23bec9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080651"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65791393"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances についてよく寄せられる質問
 
@@ -77,7 +77,7 @@ Azure Container Instances は、サーバーレスのコンテナー オンデ�
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>特定のリージョンで、ACI はいつ使用できるようになりますか。
 
-現在のリージョンの可用性は[こちら](container-instances-region-availability.md#availability---general)で公開されています。また、最新の情報は [List Capabilities](/rest/api/container-instances/listcapabilities) API を介して入手できます。 特定のリージョンの要件がある場合は、Azure サポートにお問い合わせください。
+現在の利用可能なリージョンについては、[こちら](container-instances-region-availability.md#availability---general)で公開されています。 特定のリージョンの要件がある場合は、Azure サポートにお問い合わせください。
 
 ## <a name="features-and-scenarios"></a>機能とシナリオ
 

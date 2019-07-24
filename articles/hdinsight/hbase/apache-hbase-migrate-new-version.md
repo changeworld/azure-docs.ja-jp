@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: ashishth
 ms.openlocfilehash: a152b815daeefa4c199af9b159eee8e5783971e2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65143322"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase クラスターを新しいバージョンに移行する
@@ -184,7 +184,7 @@ Azure HDInsight で Apache HBase クラスターをアップグレードする�
 
     ![[Turn On Maintenance Mode for HBase]\(HBase のメンテナンス モードをオンにする\) チェックボックスをオンにし、操作を確定します](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-7. 新しい HDInsight クラスターの Ambari にサインインします。 `fs.defaultFS` HDFS 設定を、元のクラスターで使用されているコンテナー名を指すように変更します。 この設定は、**[HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) > [Advanced core-site]\(高度なコアサイト\)** にあります。
+7. 新しい HDInsight クラスターの Ambari にサインインします。 `fs.defaultFS` HDFS 設定を、元のクラスターで使用されているコンテナー名を指すように変更します。 この設定は、 **[HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) > [Advanced core-site]\(高度なコアサイト\)** にあります。
 
     ![Ambari で、[Services]\(サービス\) > [HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) をクリックします](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
@@ -196,11 +196,11 @@ Azure HDInsight で Apache HBase クラスターをアップグレードする�
 
     ![Ambari で、HBase rootdir のコンテナー名を変更する](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
 1. HDInsight 3.6 を 4.0 にアップグレードする場合は、次の手順に従います。それ以外の場合は手順 10 までスキップしてください。
-    1. Ambari で必要なすべてのサービスを再起動するために、**[Services]\(サービス\　)** > **[Restart All Required]\(必須をすべて再起動\)** を選択します。
+    1. Ambari で必要なすべてのサービスを再起動するために、 **[Services]\(サービス\　)**  >  **[Restart All Required]\(必須をすべて再起動\)** を選択します。
     1. HBase サービスを停止します。
     1. Zookeeper ノードに SSH 接続し、[zkCli](https://github.com/go-zkcli/zkcli) コマンド `rmr /hbase-unsecure` を実行して Zookeeper から HBase ルートの znode を削除します。
     1. HBase を再起動します。
-1. 4.0 以外の HDInsight バージョンにアップグレードする場合は、次の手順に従います。
+1. 4\.0 以外の HDInsight バージョンにアップグレードする場合は、次の手順に従います。
     1. 変更を保存します。
     1. Ambari の指示に従って、必要なすべてのサービスを再起動します。
 1. アプリケーションが新しいクラスターを指すように設定します。

@@ -11,11 +11,11 @@ ms.date: 11/27/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.openlocfilehash: 61537a4cb8ca1e6e98f2fa04959861eb03480fe9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247257"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61474873"
 ---
 # <a name="view-a-maintenance-schedule"></a>メンテナンス スケジュールを表示する 
 
@@ -27,7 +27,7 @@ ms.locfileid: "55247257"
 
 1.  [Azure Portal](https://portal.azure.com/) にサインインします。
 2.  表示するデータ ウェア ハウスを選択します。 
-3.  選択したデータ ウェアハウスが、[概要] ブレードで開きます。 データ ウェアハウスに適用されているメンテナンス スケジュールが、**[Maintenance schedule (preview)]\(メンテナンス スケジュール (プレビュー)\)** の下に表示されます。
+3.  選択したデータ ウェアハウスが、[概要] ブレードで開きます。 データ ウェアハウスに適用されているメンテナンス スケジュールが、 **[Maintenance schedule (preview)]\(メンテナンス スケジュール (プレビュー)\)** の下に表示されます。
 
 ![[概要] ブレード](media/sql-data-warehouse-maintenance-scheduling/clear-overview-blade.PNG)
 

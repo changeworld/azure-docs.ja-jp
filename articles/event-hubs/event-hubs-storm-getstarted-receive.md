@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 75a96127c48186befc48b2240f78e49cd5914239
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679263"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60343421"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Apache Storm を使用して Azure Event Hubs からイベントを受信する
 
@@ -42,12 +42,12 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. Eclipse で、新しい Maven プロジェクトを作成します (**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします)。
+4. Eclipse で、新しい Maven プロジェクトを作成します ( **[ファイル]** 、 **[新規作成]** 、 **[プロジェクト]** の順にクリックします)。
    
     ![[ファイル] > [新規作成] > [プロジェクト]][12]
-5. **[既定のワークスペースの場所を使用する]** を選択し、**[次へ]** をクリックします。
-6. **maven-archetype-quickstart** アーキタイプを選択し、**[次へ]** をクリックします。
-7. **GroupID** と **ArtifactID** を挿入し、**[完了]** をクリックします。
+5. **[既定のワークスペースの場所を使用する]** を選択し、 **[次へ]** をクリックします。
+6. **maven-archetype-quickstart** アーキタイプを選択し、 **[次へ]** をクリックします。
+7. **GroupID** と **ArtifactID** を挿入し、 **[完了]** をクリックします。
 8. **pom.xml** で、`<dependency>` ノードに次の依存関係を追加します。
 
     ```xml  

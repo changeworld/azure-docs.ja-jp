@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 01729971169011002fa4231f043f82f105f81cdc
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 3919243569035be41293ddc97c76a9f964cda7cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414428"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64688495"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング: Azure サイト間 VPN が動作を停止して接続できない
 
@@ -102,7 +102,10 @@ Azure Resource Manager デプロイ モデルの場合:
 2. 証明書の警告を無視して続行します。
 3. 応答を受け取った場合、VPN ゲートウェイは正常であると考えられます。 応答を受け取らない場合、ゲートウェイが正常な状態にないか、またはゲートウェイ サブネット上の NSG が問題の原因になっている可能性があります。 応答のサンプル テキストを次に示します。
 
-    &lt;?xml version="1.0"?>  <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primary Instance:GatewayTenantWorker_IN_1 GatewayTenantVersion:14.7.24.6</string&gt;
+    ```xml
+    <?xml version="1.0"?>
+    <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primary Instance: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6</string>
+    ```
 
 ### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>手順 8. オンプレミス VPN デバイスで Perfect Forward Secrecy 機能が有効になっているかどうかを確認する
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: d9f814a49924ca95078f3b3decca4f3922c74c2b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 286c5850400242224e710a7883d3d3dc175cef12
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413652"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273206"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -41,7 +41,7 @@ ID のアプリケーションによる制御は、アプリケーションが *
 
 ## <a name="enable-duplicate-detection"></a>重複検出の有効化
 
-この機能は、ポータルでエンティティの作成する際に、既定ではオフになっている、**[重複データ検出を有効にする]** チェック ボックスをオンにすることで有効にできます。 新しいトピックを作成するための設定と同じです。
+この機能は、ポータルでエンティティの作成する際に、既定ではオフになっている、 **[重複データ検出を有効にする]** チェック ボックスをオンにすることで有効にできます。 新しいトピックを作成するための設定と同じです。
 
 ![][1]
 

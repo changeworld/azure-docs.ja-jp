@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 2639d47a6c9d8da53c9d6bccde0d317698d5d9fd
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257971"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61127858"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する  
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.locfileid: "58257971"
 * **ストリーミング (OnDemandOrigin) ロケーター**。 ストリーミング ロケーターは、アダプティブ ストリーミングに使用されます。 アダプティブ ストリーミングの例としては、Apple HTTP Live Streaming (HLS)、Microsoft Smooth Streaming、Dynamic Adaptive Streaming over HTTP (DASH。MPEG-DASH とも呼ばれます) などがあります。 ストリーミング ロケーターを作成するには、アセットに .ism ファイルが含まれている必要があります。 たとえば、「 http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest 」のように入力します。
 * **プログレッシブ (Shared Access Signature) ロケーター**。 プログレッシブ ロケーターは、プログレッシブ ダウンロードを通じてビデオを配信する場合に使用されます。
 
-HLS ストリーミング URL を作成するには、次のように、*(format=m3u8-aapl)* を URL に追加します。
+HLS ストリーミング URL を作成するには、次のように、 *(format=m3u8-aapl)* を URL に追加します。
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
 
@@ -48,7 +48,7 @@ Smooth Streaming 資産を再生するためのストリーミング URL を作�
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
 
-MPEG-DASH ストリーミング URL を作成するには、*(format=mpd-time-csf)* を URL に追加します。
+MPEG-DASH ストリーミング URL を作成するには、 *(format=mpd-time-csf)* を URL に追加します。
 
     {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
 
@@ -70,7 +70,7 @@ MPEG-DASH ストリーミング URL を作成するには、*(format=mpd-time-cs
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>ポータルを使用してアセットを発行するには
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** > **[資産]** を参照してください。 発行する資産を選択します。
+2. **[設定]**  >  **[資産]** を参照してください。 発行する資産を選択します。
 3. **[発行]** を選択します。
 4. ロケーターの種類を選択します。
 5. **[追加]** を選択します。
@@ -82,7 +82,7 @@ URL が **[発行された URL]** の一覧に追加されます。
 ## <a name="play-content-in-the-portal"></a>ポータル内でコンテンツを再生する
 Azure Portal のコンテンツ プレーヤーでビデオをテストできます。
 
-ビデオを選択し、**[再生]** を選択します。
+ビデオを選択し、 **[再生]** を選択します。
 
 ![Azure Portal でビデオを再生する](./media/media-services-portal-vod-get-started/media-services-play.png)
 

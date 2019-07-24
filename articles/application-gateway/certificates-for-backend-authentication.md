@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 3/14/2019
 ms.author: absha
 ms.openlocfilehash: 72ee9123ad959c0c7240d4f7a906adc1a4dd1a93
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260385"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60831730"
 ---
 # <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>Azure Application Gateway でのバックエンドをホワイトリスト登録するための証明書の作成
 
@@ -35,7 +35,7 @@ Application Gateway に対してバックエンド インスタンスをホワ�
 
 SSL 証明書から公開キー .cer ファイルをエクスポートします (秘密キーではありません)。 次の手順で、証明書のために Base-64 エンコード X.509(.CER) 形式の .cer ファイルをエクスポートします。
 
-1. 証明書から .cer ファイルを取得するには、**[ユーザー証明書の管理]** を開きます。 証明書を探して右クリックします (通常は Current User\Personal\Certificates にあります)。 **[すべてのタスク]**、**[エクスポート]** の順にクリックします。 **証明書のエクスポート ウィザード**が開きます。 Current User\Personal\Certificates に証明書が見つからない場合は、誤って "Certificates - Current User" ではなく "Certificates - Local Computer" を開いている可能性があります。 PowerShell を使用して現在のユーザー スコープで証明書マネージャーを開きたい場合は、コンソール ウィンドウで「*certmgr*」と入力します。
+1. 証明書から .cer ファイルを取得するには、 **[ユーザー証明書の管理]** を開きます。 証明書を探して右クリックします (通常は Current User\Personal\Certificates にあります)。 **[すべてのタスク]** 、 **[エクスポート]** の順にクリックします。 **証明書のエクスポート ウィザード**が開きます。 Current User\Personal\Certificates に証明書が見つからない場合は、誤って "Certificates - Current User" ではなく "Certificates - Local Computer" を開いている可能性があります。 PowerShell を使用して現在のユーザー スコープで証明書マネージャーを開きたい場合は、コンソール ウィンドウで「*certmgr*」と入力します。
 
    ![エクスポート](./media/certificates-for-backend-authentication/export.png)
 
@@ -43,15 +43,15 @@ SSL 証明書から公開キー .cer ファイルをエクスポートします 
 
    ![証明書をエクスポートします。](./media/certificates-for-backend-authentication/exportwizard.png)
 
-3. **[いいえ、秘密キーをエクスポートしません]** を選択して、**[次へ]** をクリックします。
+3. **[いいえ、秘密キーをエクスポートしません]** を選択して、 **[次へ]** をクリックします。
 
    ![秘密キーをエクスポートしません](./media/certificates-for-backend-authentication/notprivatekey.png)
 
-4. **[エクスポート ファイルの形式]** ページで **[Base-64 encoded X.509 (.CER)]** を選択し、**[次へ]** をクリックします。
+4. **[エクスポート ファイルの形式]** ページで **[Base-64 encoded X.509 (.CER)]** を選択し、 **[次へ]** をクリックします。
 
    ![Base-64 エンコード](./media/certificates-for-backend-authentication/base64.png)
 
-5. **[エクスポートするファイル]** で、**[参照]** をクリックして証明書をエクスポートする場所を選択します。 **[ファイル名]** に証明書ファイルの名前を指定します。 次に、 **[次へ]** をクリックします。
+5. **[エクスポートするファイル]** で、 **[参照]** をクリックして証明書をエクスポートする場所を選択します。 **[ファイル名]** に証明書ファイルの名前を指定します。 次に、 **[次へ]** をクリックします。
 
    ![参照](./media/certificates-for-backend-authentication/browse.png)
 
@@ -77,7 +77,7 @@ SSL 証明書から公開キー .cer ファイルをエクスポートします 
 
 次の手順で、証明書のための .cer ファイルをエクスポートします。
 
-1. 前述の「**バックエンド証明書から認証証明書をエクスポートする (v1 SKU の場合)**」セクションの手順 1 - 9 に従って、バックエンド証明書から公開キーをエクスポートします。
+1. 前述の「**バックエンド証明書から認証証明書をエクスポートする (v1 SKU の場合)** 」セクションの手順 1 - 9 に従って、バックエンド証明書から公開キーをエクスポートします。
 
 2. 公開キーがエクスポートされたらファイルを開きます。
 
@@ -89,7 +89,7 @@ SSL 証明書から公開キー .cer ファイルをエクスポートします 
 
    ![証明書の詳細](./media/certificates-for-backend-authentication/certdetails.png)
 
-4. ルート証明書を選択して、**[証明書の表示]** をクリックします。
+4. ルート証明書を選択して、 **[証明書の表示]** をクリックします。
 
    ![証明書のパス](./media/certificates-for-backend-authentication/rootcert.png)
 
@@ -97,11 +97,11 @@ SSL 証明書から公開キー .cer ファイルをエクスポートします 
 
    ![証明書の情報](./media/certificates-for-backend-authentication/rootcertdetails.png)
 
-5. **[詳細]** ビューに移動し、**[ファイルにコピー...]** をクリックします。
+5. **[詳細]** ビューに移動し、 **[ファイルにコピー...]** をクリックします。
 
    ![ルート証明書のコピー](./media/certificates-for-backend-authentication/rootcertcopytofile.png)
 
-6. この時点で、バックエンド証明書からルート証明書の詳細を抽出しました。 **証明書のエクスポート ウィザード**が表示されます。 ここで、前述の「**バックエンド証明書から認証証明書をエクスポートする (v1 SKU の場合)**」セクションの手順 2 - 9 に従って、Base-64 エンコード X.509(.CER) 形式の信頼されたルート証明書をエクスポートします。
+6. この時点で、バックエンド証明書からルート証明書の詳細を抽出しました。 **証明書のエクスポート ウィザード**が表示されます。 ここで、前述の「**バックエンド証明書から認証証明書をエクスポートする (v1 SKU の場合)** 」セクションの手順 2 - 9 に従って、Base-64 エンコード X.509(.CER) 形式の信頼されたルート証明書をエクスポートします。
 
 ## <a name="next-steps"></a>次の手順
 

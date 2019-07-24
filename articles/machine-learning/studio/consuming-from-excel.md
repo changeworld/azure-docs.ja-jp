@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855199"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60773792"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio Web サービスの使用
 
@@ -45,7 +45,7 @@ Web サービスを作成したら、Studio の左側の **[WEB サービス]** 
 **ブックを使用する**
 
 1. ブックを開きます。
-2. セキュリティの警告が表示されます。**[編集を有効にする]** ボタンをクリックします。
+2. セキュリティの警告が表示されます。 **[編集を有効にする]** ボタンをクリックします。
 
     ![編集を有効にして、保護されたビューのセキュリティ警告を削除する](./media/consuming-from-excel/enableeditting.png)
 3. セキュリティの警告が表示されます。 **[コンテンツの有効化]** ボタンをクリックして、スプレッドシートのマクロを実行します。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: fe8f97368531ed572083834256d84cd1ed6dd8a1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c3ef5362c4d97b8d805212f9cf813c7bc9c8c18c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687233"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059453"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する
 
@@ -38,9 +38,6 @@ HDInsight で [Apache Hive](https://hive.apache.org/) ライブラリを事前�
 **Linux ベースのクラスター**の場合: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
 
 **Windows ベースのクラスター**の場合: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
-
-> [!IMPORTANT]  
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 **要件**
 
@@ -68,23 +65,23 @@ HDInsight で [Apache Hive](https://hive.apache.org/) ライブラリを事前�
 
 2. **[オプションの構成]** セクションで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
-   * **[名前]**: スクリプト アクションのフレンドリ名を入力します。
+   * **[名前]** : スクリプト アクションのフレンドリ名を入力します。
 
-   * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh。
+   * **[スクリプト URI]** : https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh 。
 
-   * **[ヘッド]**: このオプションをオンにします。
+   * **[ヘッド]** : このオプションをオンにします。
 
-   * **[ワーカー]**:このオプションをオンにします。
+   * **[ワーカー]** :このオプションをオンにします。
 
-   * **[ZooKeeper]**: 空白のままにします。
+   * **[ZooKeeper]** : 空白のままにします。
 
-   * **[パラメーター]**: jar が格納されているコンテナーとストレージ アカウントの WASB アドレスを入力します。 たとえば、**wasb://libs\@mystorage.blob.core.windows.net/** です。
+   * **[パラメーター]** : jar が格納されているコンテナーとストレージ アカウントの WASB アドレスを入力します。 たとえば、**wasb://libs\@mystorage.blob.core.windows.net/** です。
 
-3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。
+3. **[スクリプト アクション]** の下部で、 **[選択]** を使用して構成を保存します。
 
-4. **[オプションの構成]** セクションで、**[リンクされたストレージ アカウント]** を選択し、**[ストレージ キーの追加]** リンクをクリックします。 jar が格納されているストレージ アカウントを選択します。 **選択** ボタンを使って設定を保存し、**オプションの構成**を戻します。
+4. **[オプションの構成]** セクションで、 **[リンクされたストレージ アカウント]** を選択し、 **[ストレージ キーの追加]** リンクをクリックします。 jar が格納されているストレージ アカウントを選択します。 **選択** ボタンを使って設定を保存し、**オプションの構成**を戻します。
 
-5. オプションの構成を保存するには、**[オプションの構成]** セクションの下部にある **[選択]** ボタンを使います。
+5. オプションの構成を保存するには、 **[オプションの構成]** セクションの下部にある **[選択]** ボタンを使います。
 
 6. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 

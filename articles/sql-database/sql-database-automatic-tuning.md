@@ -13,11 +13,11 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/06/2019
 ms.openlocfilehash: 6e818da29b7ee0d17ebe4f8e523648146973fa63
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796618"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61415767"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database での自動チューニング
 
@@ -68,8 +68,8 @@ Azure SQL Database で使用可能な自動チューニング オプションは
 
 | 自動チューニング オプション | 単一データベースとプールされたデータベースのサポート | インスタンス データベースのサポート |
 | :----------------------------- | ----- | ----- |
-| **CREATE INDEX** - ご自分のワークロードのパフォーマンスを向上させる可能性があるインデックスを特定し、インデックスを作成して、クエリのパフォーマンスが向上したことを自動的に確認します。 | はい | いいえ  | 
-| **DROP INDEX** - 一意なインデックスを除く冗長なインデックスや重複するインデックス、また長期間 (90 日超) 使用されていないインデックスを特定します。 なお、現在のところ、このオプションはパーティション切り替えやインデックス ヒントを使用するアプリケーションと互換性がありません。 | はい | いいえ  |
+| **CREATE INDEX** - ご自分のワークロードのパフォーマンスを向上させる可能性があるインデックスを特定し、インデックスを作成して、クエリのパフォーマンスが向上したことを自動的に確認します。 | はい | いいえ | 
+| **DROP INDEX** - 一意なインデックスを除く冗長なインデックスや重複するインデックス、また長期間 (90 日超) 使用されていないインデックスを特定します。 なお、現在のところ、このオプションはパーティション切り替えやインデックス ヒントを使用するアプリケーションと互換性がありません。 | はい | いいえ |
 | **FORCE LAST GOOD PLAN** (自動プラン修正) - 以前の良好なプランよりも速度の低い実行プランを使用している SQL クエリを特定し、その低速なプランの代わりに、最後に確認された良好なプランを使用してクエリを実行します。 | はい | はい |
 
 自動チューニングは、データベースのパフォーマンスを最適化できる **CREATE INDEX**、**DROP INDEX**、および **FORCE LAST GOOD PLAN** の推奨事項を識別し、[Azure portal](sql-database-advisor-portal.md) でそれらを表示し、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) と [REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning) を通してそれらを公開します。 FORCE LAST GOOD PLAN と、T-SQL による自動チューニング オプションの構成の詳細については、[自動チューニングでの自動プラン修正の導入](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)に関するページを参照してください。

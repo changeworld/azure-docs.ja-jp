@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4e2a182493b1e9de3d2ba9d586a9560e42fe0ecb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 56470c08f0ac940dae42821ae61846f1c86d52eb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773437"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479523"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>データ転送用の Azure ソリューションを選択する
 
@@ -63,6 +63,11 @@ ms.locfileid: "57773437"
 - 進行中の継続的なデータ転送を探していますか。
 
     "はい" の場合は、[シナリオ 4: 定期的なデータの転送](storage-solution-periodic-data-transfer.md)に関するページに記載されているスクリプト/プログラム オプションを使用します。
+ 
+
+## <a name="data-transfer-feature-in-azure-portal"></a>Azure portal のデータ転送機能
+
+Azure portal で Azure Storage アカウントにアクセスして、 **[データ転送]** 機能を選択することもできます。 環境内のネットワーク帯域幅、転送するデータのサイズ、およびデータ転送の頻度を指定します。 指定した情報に対応する最適なデータ転送ソリューションが表示されます。 
 
 ## <a name="next-steps"></a>次の手順
 

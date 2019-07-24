@@ -17,12 +17,12 @@ ms.date: 06/27/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 697bb8a60861acb120e92d8fd1dda3892a957b57
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 24c3af12d35d07796db9255f0ac76dd1389bd013
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518909"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108845"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック
 
@@ -125,7 +125,7 @@ ms.locfileid: "58518909"
 
 1. テナントのグローバル管理者の資格情報を使用して [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. **Identity Protection**に移動します。 
-3. **[Azure AD Identity Protection]** ページで、**[ユーザーのリスク ポリシー]** をクリックします。
+3. **[Azure AD Identity Protection]** ページで、 **[ユーザーのリスク ポリシー]** をクリックします。
 4. **[割り当て]** セクションで、目的のユーザー (およびグループ) とユーザーのリスク レベルを選択します。
 
     ![ユーザーのリスク](./media/playbook/03.png "プレイブック")
@@ -152,14 +152,14 @@ ms.locfileid: "58518909"
 
 2. **Azure AD Identity Protection** に移動します。
 
-3. **[Azure AD Identity Protection]** メイン ページで、**[サインインのリスク ポリシー]** をクリックします。 
+3. **[Azure AD Identity Protection]** メイン ページで、 **[サインインのリスク ポリシー]** をクリックします。 
 
 4. **[割り当て]** セクションで、目的のユーザー (およびグループ) とサインインのリスク レベルを選択します。
 
     ![サインインのリスク](./media/playbook/04.png "プレイブック")
 
 
-5. **[コントロール]** セクションで、必要なアクセスの制御 (**[多要素認証を要求する]** など) を選択します。 
+5. **[コントロール]** セクションで、必要なアクセスの制御 ( **[多要素認証を要求する]** など) を選択します。 
 
 6. **[ポリシーを適用します]** で **[オン]** を選択します。
 

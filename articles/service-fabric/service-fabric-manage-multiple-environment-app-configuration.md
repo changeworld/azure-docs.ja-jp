@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: dac96ef6fce38a0557444e181fa6eccb649cfb9a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298337"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60719228"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>複数の環境向けのアプリケーションの管理
 
@@ -42,7 +42,7 @@ Azure Service Fabric クラスターは、1 台から数千台のコンピュー
 
 > [!NOTE]
 > アプリケーションおよびサービスのマニフェスト ファイルの属性の中には、パラメーターをサポートしていないものがあります。
-> そのような場合は、展開ワークフローの一部として置換文字列に依存する必要があります。 Azure DevOps では、置換トークン (https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens) のような拡張機能を使用することができます。また、Jenkins では、スクリプト タスクを実行して値を置き換えることができます。
+> そのような場合は、展開ワークフローの一部として置換文字列に依存する必要があります。 Azure DevOps では、置換トークン (https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens ) のような拡張機能を使用することができます。また、Jenkins では、スクリプト タスクを実行して値を置き換えることができます。
 >
 
 ## <a name="specifying-parameters-during-application-creation"></a>アプリケーション作成時のパラメーターの指定

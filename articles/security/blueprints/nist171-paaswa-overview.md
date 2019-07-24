@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
 ms.openlocfilehash: f9773c3b372ab22cbcd99828e147d23c185c4eb6
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244623"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62127329"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Azure のセキュリティとコンプライアンスのブループリント - NIST Special Publication 800-171 のための PaaS Web アプリケーション
 
@@ -36,14 +36,14 @@ ms.locfileid: "57244623"
 
 SQL Database は SQL Server Management Studio により管理されます。 これはセキュリティで保護された VPN または Azure ExpressRoute 接続経由で SQL Database にアクセスするように構成されているローカル コンピューターから実行されます。
 
-Application Insights は、Azure Monitor ログを通して、リアルタイムでアプリケーションのパフォーマンス管理と分析を行います。"*Microsoft では、管理用の VPN または ExpressRoute 接続を構成し、参照アーキテクチャ サブネットにデータをインポートすることをお勧めしています。*"
+Application Insights は、Azure Monitor ログを通して、リアルタイムでアプリケーションのパフォーマンス管理と分析を行います。"*Microsoft では、管理用の VPN または ExpressRoute 接続を構成し、参照アーキテクチャ サブネットにデータをインポートすることをお勧めしています。* "
 
 ![NIST SP 800-171 のための PaaS Web アプリケーションの参照アーキテクチャ ダイアグラム](images/nist171-paaswa-architecture.png "NIST SP 800-171 のための PaaS Web アプリケーションの参照アーキテクチャ ダイアグラム")
 
 このソリューションでは、次の Azure サービスを使用します。 詳しくは、[deployment architecture](#deployment-architecture)セクションをご覧ください。
 
 - Azure Virtual Machines
-    - (1) 管理/要塞 (Windows Server 2016 Datacenter)
+    - (1) 管理/踏み台 (Windows Server 2016 Datacenter)
 - Azure Virtual Network
     - (1) /16 ネットワーク
     - (4) /24 ネットワーク
@@ -66,18 +66,18 @@ Application Insights は、Azure Monitor ログを通して、リアルタイム
 - Azure SQL Database
 - Azure Storage
 - Azure Automation
-- Azure Web Apps 
+- Azure Web Apps
 
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 次のセクションで、デプロイと実装の要素について詳しく説明します。
 
 **Azure Resource Manager**:[Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用して、ソリューション内の複数のリソースを 1 つのグループとして操作できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 お客様はデプロイ用のテンプレートを使用します。 テンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
 
-**要塞ホスト**:要塞ホストは、この環境にデプロイされているリソースへのアクセスに利用できる単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ トラフィックを許可するには、トラフィックのソースが NSG で定義されている必要があります。
+**踏み台ホスト**:要塞ホストは、この環境にデプロイされているリソースへのアクセスに利用できる単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ トラフィックを許可するには、トラフィックのソースが NSG で定義されている必要があります。
 
-このソリューションでは、次の構成を持つドメイン参加済み要塞ホストとして仮想マシンを作成します。
+このソリューションでは、次の構成を持つドメイン参加済み踏み台ホストとして仮想マシンを作成します。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
--   [Azure 診断拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
+-   [Azure Diagnostics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 -   未使用時の仮想マシン リソースの消費を抑えるための[自動シャットダウン ポリシー](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)。
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) の有効化。実行中のオペレーティング システムから分離されている保護された環境で、資格情報とその他のシークレットが実行されるようにします。
@@ -106,7 +106,7 @@ App Service 環境は、単一のアプリケーションのみを実行する�
 - Application Gateway 用の 1 つの NSG
 - App Service Environment 用の 1 つの NSG
 - SQL Database 用の 1 つの NSG
-- 要塞ホスト用の 1 つの NSG
+- 踏み台ホスト用の 1 つの NSG
 
 各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各 NSG で次の構成が有効になります。
   - [診断ログとイベント](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)が有効化され、ストレージ アカウントに格納される。

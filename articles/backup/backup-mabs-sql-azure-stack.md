@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
 ms.openlocfilehash: fb064c39fa014515fb2a3f4ccc96ce216f2f7b2e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60254478"
 ---
 # <a name="back-up-sql-server-on-stack"></a>Stack 上の SQL Server のバックアップ
 この記事では、Azure Stack 上の SQL Server データベースを保護するための Microsoft Azure Backup Server (MABS) の構成について説明します。
@@ -45,15 +45,15 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     ![Select SQL DB](./media/backup-azure-backup-sql/pg-databases.png)
 
-    選択メンバーの一覧には、選択したすべての項目が表示されます。 保護するサーバーまたはデータベースを選択したら、**[次へ]** をクリックします。
+    選択メンバーの一覧には、選択したすべての項目が表示されます。 保護するサーバーまたはデータベースを選択したら、 **[次へ]** をクリックします。
 
-5. **[データ保護方法の選択]** 画面では、保護グループの名前を指定し、**[オンライン保護を利用する]** チェックボックスをオンにします。
+5. **[データ保護方法の選択]** 画面では、保護グループの名前を指定し、 **[オンライン保護を利用する]** チェックボックスをオンにします。
 
     ![Data Protection Method - short-term disk & Online Azure](./media/backup-azure-backup-sql/pg-name.png)
 
-6. **[短期的な目標値の指定]** 画面では、ディスクへのバックアップ ポイントの作成に必要な情報を入力し、**[次へ]** をクリックします。
+6. **[短期的な目標値の指定]** 画面では、ディスクへのバックアップ ポイントの作成に必要な情報を入力し、 **[次へ]** をクリックします。
 
-    この例では、**[リテンション期間]** を **5 日間**、バックアップの頻度である **[同期の間隔]** を **15 分**おきに指定しています。 **[高速完全バックアップ]** は **午後 8 時 00 分**に設定されています。
+    この例では、 **[リテンション期間]** を **5 日間**、バックアップの頻度である **[同期の間隔]** を **15 分**おきに指定しています。 **[高速完全バックアップ]** は **午後 8 時 00 分**に設定されています。
 
     ![短期的な目標値](./media/backup-azure-backup-sql/pg-shortterm.png)
 
@@ -107,7 +107,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
     * 3 月の最終土曜日の午後 12 時 00 分のバックアップは、 10 年間保有されます。
 13. **[次へ]** をクリックし、初期バックアップのコピーを Azure に転送するための適切なオプションを選択します。 **[自動でネットワーク経由]** を選択できます
 
-14. **[概要]** 画面でポリシーの詳細を確認したら、**[グループの作成]** をクリックしてワークフローを完了します。 **[閉じる]** をクリックすると、[監視] ワークスペースでジョブの進行状況を監視できます。
+14. **[概要]** 画面でポリシーの詳細を確認したら、 **[グループの作成]** をクリックしてワークフローを完了します。 **[閉じる]** をクリックすると、[監視] ワークスペースでジョブの進行状況を監視できます。
 
     ![Creation of Protection Group In-Progress](./media/backup-azure-backup-sql/pg-summary.png)
 
@@ -120,7 +120,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 2. データベースを右クリックし、 **[回復ポイントの作成]** を選択します。
 
     ![Create Online Recovery Point](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
-3. ドロップダウン メニューから **[オンライン保護]** を選択し、**[OK]** をクリックして Azure の回復ポイントの作成を開始します。
+3. ドロップダウン メニューから **[オンライン保護]** を選択し、 **[OK]** をクリックして Azure の回復ポイントの作成を開始します。
 
     ![[回復ポイントの作成]](./media/backup-azure-backup-sql/sqlbackup-azure.png)
 4. ジョブの進行状況は **[監視]** ワークスペースに表示されます。
@@ -133,7 +133,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 1. Azure Backup Server の管理コンソールを開きます。 **[回復]** ワークスペースに移動すると、保護されているサーバーを確認できます。 目的のデータベース (この場合は ReportServer$MSDPM2012) を参照します。 **オンライン** ポイントとして指定される時刻を **[回復元]** で選択します。
 
     ![Select Recovery point](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. データベース名を右クリックし、**[回復]** をクリックします。
+2. データベース名を右クリックし、 **[回復]** をクリックします。
 
     ![Recover from Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
 3. MABS に復旧ポイントの詳細が表示されます。 **[次へ]** をクリックします。 データベースを上書きするには、回復のタイプとして **[元の SQL Server のインスタンスに回復する]** を選択します。 **[次へ]** をクリックします。
@@ -146,7 +146,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
 5. **[概要]** 画面に、これまでに指定した回復の構成が表示されます。 **[回復]** をクリックします。
 
-    回復の状態に、データベースが回復されていることが表示されます。 **[閉じる]** をクリックしてウィザードを閉じ、**[監視]** ワークスペースで進行状況を確認できます。
+    回復の状態に、データベースが回復されていることが表示されます。 **[閉じる]** をクリックしてウィザードを閉じ、 **[監視]** ワークスペースで進行状況を確認できます。
 
     ![Initiate recovery process](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 

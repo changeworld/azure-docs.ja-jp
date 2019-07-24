@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
 ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997401"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60771341"
 ---
 # <a name="post-deployment-tasks"></a>デプロイ後タスク
 
@@ -75,7 +75,7 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 Azure Portal で次の操作を行います。
 
-1. **[Azure Active Directory]** > **[アプリの登録]** の順に選択します。
+1. **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。
 2. アプリの登録を検索します (例: OCPAzureAD)。
 3. 結果のアプリの登録をクリックします。
 4. **[設定]** の **[必要なアクセス許可]** を選択します
@@ -83,11 +83,11 @@ Azure Portal で次の操作を行います。
 
    ![アプリケーションの登録](media/openshift-post-deployment/app-registration.png)
 
-6. [手順 1:API の選択]、**[Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)]** の順にクリックします。 下部にある **[選択]** をクリックします。
+6. [手順 1:API の選択]、 **[Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)]** の順にクリックします。 下部にある **[選択]** をクリックします。
 
    ![[アプリの登録] の [API の選択]](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. [手順 2:アクセス許可の選択] で、**[委任されたアクセス許可]** の **[サインインとユーザー プロファイルの読み取り]** を選択し、**[選択]** をクリックします。
+7. [手順 2:アクセス許可の選択] で、 **[委任されたアクセス許可]** の **[サインインとユーザー プロファイルの読み取り]** を選択し、 **[選択]** をクリックします。
 
    ![[アプリの登録] のアクセス](media/openshift-post-deployment/app-registration-access.png)
 
@@ -177,7 +177,7 @@ OpenShift Container Platform Marketplace オファーでは、クラスターの
 
 ### <a name="azure-cloud-provider-in-use"></a>使用中の Azure クラウド プロバイダー
 
-デプロイ時に指定された資格情報を使用し、(使用しているテンプレートとブランチに応じて) 要塞ノードまたは最初のマスター ノードに SSH を実行します。 次のコマンドを発行します。
+デプロイ時に指定された資格情報を使用し、(使用しているテンプレートとブランチに応じて) 踏み台ノードまたは最初のマスター ノードに SSH を実行します。 次のコマンドを発行します。
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -203,7 +203,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 
 Open Service Broker for Azure (OSBA) を使用して、OpenShift から Azure Cloud Services を直接プロビジョニングすることができます。 OSBA は、Azure 用の Open Service Broker API の実装です。 Open Service Broker API は、クラウド ネイティブ アプリケーションがロックインなしでクラウド サービスの管理に使用できるクラウド プロバイダー用の共通言語を定義した仕様です。
 
-OpenShift に OSBA をインストールするには、こちらの手順に従います: https://github.com/Azure/open-service-broker-azure#openshift-project-template。 
+OpenShift に OSBA をインストールするには、こちらの手順に従います: https://github.com/Azure/open-service-broker-azure#openshift-project-template 。 
 > [!NOTE]
 > OpenShift プロジェクト テンプレートのセクションの手順のみを実行し、インストールのセクション全体は実行しないでください。
 

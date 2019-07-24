@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 15d195361b9fe8523ae6e46ba035ca5927c4d242
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1b3a6a18d10b9d9f6ab6456ae2911e54f5c56a71
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924759"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67544097"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -81,7 +81,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
     ![ナビゲーション ウィンドウ][2]
 
-4. データベース レベルで監査を有効にする場合は、**[監査]** を  **[ON]\(オン\)** に切り替えます。
+4. データベース レベルで監査を有効にする場合は、 **[監査]** を  **[ON]\(オン\)** に切り替えます。
 
     サーバーの監査が有効になっている場合、データベース構成監査とサーバー監査が並行して存在します。
 
@@ -94,15 +94,15 @@ SQL Database 監査を使用して、以下を行うことができます。
 
     ![ストレージ オプション](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
-6. ストレージ アカウントへの監査ログの書き込みを構成するには、**[ストレージ]** を選択し、**[容量の詳細]** を開きます。 ログを保存する Azure ストレージ アカウントを選択し、リテンション期間を選択します。 古いログは削除されます。 次に、 **[OK]** をクリックします
+6. ストレージ アカウントへの監査ログの書き込みを構成するには、 **[ストレージ]** を選択し、 **[容量の詳細]** を開きます。 ログを保存する Azure ストレージ アカウントを選択し、リテンション期間を選択します。 古いログは削除されます。 次に、 **[OK]** をクリックします
 
     ![ストレージ アカウント](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. Log Analytics ワークスペースへの監査ログの書き込みを構成するには、**[Log Analytics (プレビュー)]** を選択して **[Log Analytics の詳細]** を開きます。 ログが書き込まれる Log Analytics ワークスペースを選択または作成し、**[OK]** をクリックします。
+7. Log Analytics ワークスペースへの監査ログの書き込みを構成するには、 **[Log Analytics (プレビュー)]** を選択して **[Log Analytics の詳細]** を開きます。 ログが書き込まれる Log Analytics ワークスペースを選択または作成し、 **[OK]** をクリックします。
 
     ![Log Analytics ワークスペース](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
-8. イベント ハブへの監査ログの書き込みを構成するには、**[イベント ハブ (プレビュー)]** を選択し、**[イベント ハブの詳細]** を開きます。 ログが書き込まれるイベント ハブを選択し、**[OK]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
+8. イベント ハブへの監査ログの書き込みを構成するには、 **[イベント ハブ (プレビュー)]** を選択し、 **[イベント ハブの詳細]** を開きます。 ログが書き込まれるイベント ハブを選択し、 **[OK]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
 
     ![イベント ハブ](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
@@ -110,10 +110,11 @@ SQL Database 監査を使用して、以下を行うことができます。
 10. 監査対象イベントをカスタマイズする場合は、[PowerShell コマンドレット](#subheading-7)または [REST API](#subheading-9) を使用して行います。
 11. 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](sql-database-threat-detection-get-started.md)に関するページを参照してください。
 
-
 > [!IMPORTANT]
->Azure SQL Data Warehouse 上で、または Azure SQL Data Warehouse が稼働しているサーバー上で監査を有効にすると、以前に一時停止されていた場合でも **Data Warehouse が再開されます**。 **監査を有効にした後、必ず Data Warehouse を再び一時停止してください**。
+> 一時停止中の Azure SQL Data Warehouse で監査を有効にすることはできません。 有効にするには、Data Warehouse の一時停止を解除してください。
 
+> [!WARNING]
+> Azure SQL Data Warehouse が稼働しているサーバーで監査を有効にすると、**Data Warehouse が再開して再び一時停止になる**ので、課金が発生する可能性があります。
 
 ## <a id="subheading-3"></a>監査ログとレポートを分析する
 
@@ -127,7 +128,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
     ![Log Analytics で開く](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
-- また、Log Analytics ブレードから監査ログにアクセスすることもできます。 ご自身の Log Analytics ワークスペースを開いて、**[全般]** セクションで **[ログ]** をクリックします。 監査ログを表示するには、*search "SQLSecurityAuditEvents"* などの単純なクエリから始めることができます。
+- また、Log Analytics ブレードから監査ログにアクセスすることもできます。 ご自身の Log Analytics ワークスペースを開いて、 **[全般]** セクションで **[ログ]** をクリックします。 監査ログを表示するには、*search "SQLSecurityAuditEvents"* などの単純なクエリから始めることができます。
     ここから [Azure Monitor ログ](../log-analytics/log-analytics-log-search.md) を使用して、監査ログのデータに対して詳細検索を実行することもできます。 Azure Monitor ログにより、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Azure Monitor ログの検索言語とコマンドに関する有用な追加情報については、[Azure Monitor ログ検索リファレンス](../log-analytics/log-analytics-log-search.md)に関するページをご覧ください。
 
 監査ログをイベント ハブに書き込む場合:
@@ -137,7 +138,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 監査ログを Azure ストレージ アカウントに書き込むことを選択すると、複数の方法でログを表示できるようになります。
 
-- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
+- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、「[SQL Database 監査ログの形式](https://go.microsoft.com/fwlink/?linkid=829599)」を参照してください。
 
 - [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 
@@ -154,19 +155,19 @@ SQL Database 監査を使用して、以下を行うことができます。
 - システム関数 **sys.fn_get_audit_file** (T-SQL) を使用して、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) に関するページをご覧ください。
 
 - SQL Server Management Studio (SSMS 17 以降) で **[監査ファイルの統合]** を使用します。
-    1. SSMS のメニューから、**[ファイル]** > **[開く]** > **[監査ファイルの統合]** を選択します。
+    1. SSMS のメニューから、 **[ファイル]**  >  **[開く]**  >  **[監査ファイルの統合]** を選択します。
 
         ![ナビゲーション ウィンドウ][9]
     2. **[監査ファイルの追加]** ダイアログ ボックスが表示されます。 **[追加]** オプションのいずれかを選択して、ローカル ディスクから監査ファイルをマージするか、Azure Storage からインポートするかを選択します。 Microsoft Azure Storage の詳細とアカウント キーを提供する必要があります。
 
-    3. 統合するすべてのファイルを追加した後に、**[OK]** をクリックして統合の操作を完了します。
+    3. 統合するすべてのファイルを追加した後に、 **[OK]** をクリックして統合の操作を完了します。
 
     4. 統合されたファイルを SSMS で開くと、ファイルを表示および分析し、XEL または CSV ファイルまたはテーブルにエクスポートすることができます。
 
 - Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 ダウンロード可能なテンプレートの詳細と、テンプレートへのアクセスについては、[Power BI での監査ログ データの分析](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/)に関するページを参照してください。
 - ポータル経由で、あるいは [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
   - ログ ファイルをローカルでダウンロードした後に、ファイルをダブルクリックし、SSMS でログを開き、表示し、分析します。
-  - また、Azure ストレージ エクスプ ローラーを使用して、同時に複数のファイルをダウンロードすることもできます。 それには、特定のサブフォルダーを右クリックし、**[名前を付けて保存]** を選択してローカル フォルダーに保存します。
+  - また、Azure ストレージ エクスプ ローラーを使用して、同時に複数のファイルをダウンロードすることもできます。 それには、特定のサブフォルダーを右クリックし、 **[名前を付けて保存]** を選択してローカル フォルダーに保存します。
 
 - 他の方法:
 
@@ -197,13 +198,13 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 運用環境では、ストレージ キーを最新の情報に定期的に更新することが推奨されます。 監査ログを Azure Storage に書き込む場合、ご自身のキーを最新の情報に更新するときに、お使いの監査ポリシーを再度保存する必要があります。 このプロセスは次のとおりです。
 
-1. **[容量の詳細]** を開きます。 **[ストレージ アクセス キー]** ボックスで **[セカンダリ]** をクリックし、**[OK]** をクリックします。 次に、監査構成ページの上部にある **[保存]** をクリックします。
+1. **[容量の詳細]** を開きます。 **[ストレージ アクセス キー]** ボックスで **[セカンダリ]** をクリックし、 **[OK]** をクリックします。 次に、監査構成ページの上部にある **[保存]** をクリックします。
 
     ![ナビゲーション ウィンドウ][5]
 2. ストレージ構成ページに移動し、プライマリ アクセス キーを再生成します。
 
     ![ナビゲーション ウィンドウ][6]
-3. 監査構成ページに戻り、[ストレージ アクセス キー] を [セカンダリ] から [プライマリ] に切り替え、**[OK]** をクリックします。 次に、監査構成ページの上部にある **[保存]** をクリックします。
+3. 監査構成ページに戻り、[ストレージ アクセス キー] を [セカンダリ] から [プライマリ] に切り替え、 **[OK]** をクリックします。 次に、監査構成ページの上部にある **[保存]** をクリックします。
 4. ストレージ構成ページに戻り、セカンダリ アクセス キーを (次のキー更新サイクルの準備として) 再生成します。
 
 ## <a name="additional-information"></a>追加情報
@@ -230,12 +231,14 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 ## <a id="subheading-7"></a>Azure PowerShell を使用して SQL Database の監査を管理する
 
-**PowerShell コマンドレット (WHERE 句のサポートによってフィルタリングを強化)**:
+**PowerShell コマンドレット (WHERE 句のサポートによってフィルタリングを強化)** :
 
-- [データベース監査ポリシーを作成または更新する (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [サーバー監査ポリシーを作成または更新する (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
-- [データベース監査ポリシーを取得する (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [サーバー監査ポリシーを取得する (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
+- [データベース監査ポリシーを作成または更新する (Set-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseaudit)
+- [サーバー監査ポリシーを作成または更新する (Set-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit)
+- [データベース監査ポリシーを取得する (Get-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseaudit)
+- [サーバー監査ポリシーを取得する (Get-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveraudit)
+- [データベース監査ポリシーを削除する (Remove-AzSqlDatabaseAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseaudit)
+- [サーバー監査ポリシーを削除する (Remove-AzSqlServerAudit)](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserveraudit)
 
 スクリプトの例については、[PowerShell を使用した監査と脅威検出の構成](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関するページを参照してください。
 

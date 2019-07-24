@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 05/16/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d99169fc38f3976b35a0ebbdd6605450fbd3e2e9
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f32952dff8f09db5b790818a5f98c527a04c2ef5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65412874"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65823403"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -81,9 +81,9 @@ Azure AD にサインインする必要があるすべてのユーザー アカ�
 
 | プロパティ | 必要条件 |
 | --- | --- |
-| 使用できる文字 |<ul><li>A - Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & \* - \_ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> |
-| 使用できない文字 |<ul><li>Unicode 文字。</li><li>スペース。</li><li> "\@\" 記号" の直前にピリオド文字 (".") を含めることはできません。</li></ul> |
-| パスワードの制限 |<ul><li>8 文字以上 16 文字以下。</li><li>次の 4 つのうち、3 つが必要です。<ul><li>小文字。</li><li>大文字。</li><li>数字 (0-9)。</li><li>記号 (上述のパスワード制限を参照してください)。</li></ul></li></ul> |
+| 使用できる文字 |<ul><li>A - Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & \* - \_ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
+| 使用できない文字 |<ul><li>Unicode 文字。</li><li> "\@\" 記号" の直前にピリオド文字 (".") を含めることはできません。</li></ul> |
+| パスワードの制限 |<ul><li>8 文字以上 256 文字以下。</li><li>次の 4 つのうち、3 つが必要です。<ul><li>小文字。</li><li>大文字。</li><li>数字 (0-9)。</li><li>記号 (上述のパスワード制限を参照してください)。</li></ul></li></ul> |
 | パスワードの有効期間 |<ul><li>既定値:**90** 日。</li><li>値を構成するには、Windows PowerShell 用 Azure Active Directory モジュールから `Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの期限切れの通知 |<ul><li>既定値:**14** 日 (パスワードの有効期限が切れる前)。</li><li>値を構成するには、`Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの期限切れ |<ul><li>既定値: **false** 日 (パスワードの有効期限が有効になっていることを示します)。</li><li>各ユーザー アカウントの値を構成するには、`Set-MsolUser` コマンドレットを使用します。</li></ul> |
@@ -99,7 +99,6 @@ Microsoft クラウド サービスのグローバル管理者またはユーザ
 
 > [!NOTE]
 > 有効期限が切れないように構成できるのは、ディレクトリ同期によって同期されていないユーザー アカウントのパスワードだけです。 ディレクトリ同期の詳細については、[AD と Azure AD の接続](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)に関するページをご覧ください。
->
 
 ## <a name="set-or-check-the-password-policies-by-using-powershell"></a>PowerShell を使用したパスワード ポリシーの設定または確認
 
@@ -157,7 +156,7 @@ Microsoft クラウド サービスのグローバル管理者またはユーザ
    ```
 
    > [!WARNING]
-   > `-PasswordPolicies DisablePasswordExpiration` を設定したパスワードは、引き続き `pwdLastSet` 属性に基づいて使用時間が計測されます。 ユーザーのパスワードを無期限に設定し、90 日以上たつと、パスワードは期限切れになります。 `pwdLastSet` 属性に基づいて、有効期限を `-PasswordPolicies None` に変更すると、90 日より古い `pwdLastSet` を持つすべてのパスワードは、ユーザーが次回サインインで変更する必要があります。 この変更は多数のユーザーに影響を与える可能性があります。 
+   > `-PasswordPolicies DisablePasswordExpiration` を設定したパスワードは、引き続き `pwdLastSet` 属性に基づいて使用時間が計測されます。 ユーザーのパスワードを無期限に設定し、90 日以上たつと、パスワードは期限切れになります。 `pwdLastSet` 属性に基づいて、有効期限を `-PasswordPolicies None` に変更すると、90 日より古い `pwdLastSet` を持つすべてのパスワードは、ユーザーが次回サインインで変更する必要があります。 この変更は多数のユーザーに影響を与える可能性があります。
 
 ## <a name="next-steps"></a>次の手順
 

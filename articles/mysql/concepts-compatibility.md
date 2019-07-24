@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.openlocfilehash: 05f48145973777052590f8d10e1a2ce1fd22ec7a
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258107"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60525399"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 この記事では、Azure Database for MySQL との、ドライバーと管理ツールの互換性について説明します。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
 ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65411587"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>Azure SDK for PHP をダウンロードする
@@ -29,8 +29,8 @@ Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発
 
 * **Azure 用 PHP クライアント ライブラリ**。 これらのクラス ライブラリには、データ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。
 * **Mac、Linux、Windows の Azure コマンド ライン インターフェイス (Azure CLI)** これは、Azure Websites や Azure Virtual Machines などの Azure サービスをデプロイおよび管理するためのコマンドのセットです。 Azure CLI は、Mac、Linux、Windows など、すべてのプラットフォームで動作します。
-* **Azure PowerShell (Windows のみ)**。 これは、Cloud Services や Virtual Machines などの Azure サービスをデプロイおよび管理するための PowerShell コマンドレットのセットです。
-* **Azure エミュレーター (Windows のみ)**。 コンピューティング エミュレーターとストレージ エミュレーターは、アプリケーションをローカルでテストできるようにするためのクラウド サービスおよびデータ管理サービスのローカル エミュレーターです。 Azure エミュレーターは Windows 上でのみ動作します。
+* **Azure PowerShell (Windows のみ)** 。 これは、Cloud Services や Virtual Machines などの Azure サービスをデプロイおよび管理するための PowerShell コマンドレットのセットです。
+* **Azure エミュレーター (Windows のみ)** 。 コンピューティング エミュレーターとストレージ エミュレーターは、アプリケーションをローカルでテストできるようにするためのクラウド サービスおよびデータ管理サービスのローカル エミュレーターです。 Azure エミュレーターは Windows 上でのみ動作します。
 
 以下のセクションでは、上に示したコンポーネントをダウンロードおよびインストールする方法を説明します。
 

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
-ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813043"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593858"
 ---
 # <a name="how-caching-works"></a>キャッシュのしくみ
 
@@ -126,7 +126,7 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 
 |    | Microsoft:一般的な Web 配信 | Verizon:一般的な Web 配信 | Verizon:DSA | Akamai:一般的な Web 配信 | Akamai:DSA | Akamai:大容量ファイルのダウンロード | Akamai: 一般的なメディア ストリーミングまたは VOD メディア ストリーミング |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **配信元を優先**       | はい    | はい   | いいえ    | はい    | いいえ    | 可能    | はい    |
+| **配信元を優先**       | はい    | はい   | いいえ   | はい    | いいえ   | 可能   | はい    |
 | **CDN キャッシュ期間** | 2 日 |7 日 | なし | 7 日 | なし | 1 日 | 1 年 |
 
 **配信元を優先**:サポートされているキャッシュ ディレクティブ ヘッダーを優先するかどうかを指定します (配信元サーバーからの HTTP 応答にそれらのヘッダーが存在する場合)。

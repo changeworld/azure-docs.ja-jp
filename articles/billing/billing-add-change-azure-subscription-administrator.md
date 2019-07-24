@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922894"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
@@ -51,13 +51,13 @@ RBAC を使用してリソースへのアクセスを管理することをお勧
 
     ![ロールの割り当てを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/role-assignments.png)
 
-1. **[追加]** > **[ロールの割り当ての追加]** をクリックして、**[ロールの割り当ての追加]** ウィンドウを開きます。
+1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、 **[ロールの割り当ての追加]** ウィンドウを開きます。
 
     ロールを割り当てるためのアクセス許可がない場合、このオプションは無効になります。
 
-1. **[ロール]** ドロップダウン リストで、**[所有者]** ロールを選択します。
+1. **[ロール]** ドロップダウン リストで、 **[所有者]** ロールを選択します。
 
-1. **[選択]** 一覧で、ユーザーを選択します。 一覧にユーザーが表示されない場合には、**[選択]** ボックスに表示名とメール アドレスを入力して、ディレクトリを検索します。
+1. **[選択]** 一覧で、ユーザーを選択します。 一覧にユーザーが表示されない場合には、 **[選択]** ボックスに表示名とメール アドレスを入力して、ディレクトリを検索します。
 
     ![選択された所有者ロールを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 

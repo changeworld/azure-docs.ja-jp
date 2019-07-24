@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
 ms.openlocfilehash: f86ae4977621927a09d9b83287a00dfa3bc17196
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880995"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736617"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
@@ -24,7 +24,7 @@ Azure Machine Learning Studio で新しいワークスペースを作成する�
 
 データセットの一部は、Azure Blob Storage で使用できます。 これらのデータセットでは、次の表に直接リンクが提供されています。 これらのデータセットは、[データのインポート][import-data] モジュールを使用して実験で使用できます。
 
-これらのサンプル データセットの残りの部分は、**[Saved Datasets]/(保存されたデータセット/)** の下にあるワークスペースで使用できます。 これは、Microsoft Azure Machine Learning Studio の実験キャンバスの左側のモジュール パレットにあります。
+これらのサンプル データセットの残りの部分は、 **[Saved Datasets]/(保存されたデータセット/)** の下にあるワークスペースで使用できます。 これは、Microsoft Azure Machine Learning Studio の実験キャンバスの左側のモジュール パレットにあります。
 実験キャンバスにこれらのデータセットのいずれかをドラッグすると、独自の実験で使用できます。
 
 ## <a name="datasets"></a>データセット
@@ -215,7 +215,7 @@ german.data ファイルを使用した、UCI Statlog (ドイツのクレジッ�
 <tr>
   <td>IMDB 映画のタイトル</td>
   <td>
-このデータセットには、Twitter のツイートで評価された映画に関する情報として、IMDB 登録 ID、映画の名称、ジャンル、および制作年が含まれます。 約 17,000 件の映画の情報があります。 データセットは、S.  Dooms, T. De Pessemier and L. Martens による論文 「MovieTweetings: a Movie Rating Dataset Collected From Twitter。 Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013」で紹介されました。
+このデータセットには、Twitter のツイートで評価された映画に関する情報として、IMDB 登録 ID、映画の名称、ジャンル、および制作年が含まれます。 約 17,000 件の映画の情報があります。 データセットは、S. Dooms, T. De Pessemier and L. Martens による論文 「MovieTweetings: a Movie Rating Dataset Collected From Twitter。 Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013」で紹介されました。
   </td>
 </tr>
 

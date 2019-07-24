@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: パススルー認証 (PTA) を使用して単一の AD フォレストを Azure に統合する | Microsoft Docs'
+title: チュートリアル:PTA を使用して単一 AD フォレストを Azure に統合する
 description: パススルー認証を使用してハイブリッド ID 環境を設定する方法について説明します。
 services: active-directory
 author: billmath
@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/18/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d848202840d49dde18d358769519329141c2b35
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233903"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66473013"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>チュートリアル: パススルー認証 (PTA) を使用して単一 AD フォレストを統合する
 

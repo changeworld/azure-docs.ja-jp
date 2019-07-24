@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092584"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60243532"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>SQL によって委任された管理者のアクセス許可を使用した Azure AD Connect のインストール
 以前の Azure AD Connect ビルドでは、SQL を必要とする構成をデプロイするとき、管理の委任はサポートされていませんでした。  Azure AD Connect をインストールするユーザーには、SQL サーバーにおけるサーバー管理者 (SA) アクセス許可が必要でした。

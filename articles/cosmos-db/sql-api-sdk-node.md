@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB は:SQL Node.js API、SDK、およびリソース
+title: Azure Cosmos DB:SQL Node.js API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB Node.js SDK の各バージョン間の変更など、SQL Node.js API と SDK に関するあらゆる詳細を提供します。
 author: deborahc
 ms.service: cosmos-db
@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
 ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033589"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60626742"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Node.js SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "54033589"
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-|リソース  |Link  |
+|Resource  |Link  |
 |---------|---------|
 |SDK のダウンロード  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |API ドキュメント  |  [JavaScript SDK リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
@@ -50,7 +50,7 @@ ms.locfileid: "54033589"
 * さまざまな入力ミスの修正
 
 ### <a name="2.0.4"/>2.0.4</a>
-* 2.0.3 で発生した型定義の問題を修正しました
+* 2\.0.3 で発生した型定義の問題を修正しました
 
 ### <a name="2.0.3"/>2.0.3</a>
 * `big-integer` の依存関係を削除しました
@@ -133,7 +133,7 @@ ms.locfileid: "54033589"
 * パーティション分割コレクションの TOP/ORDER BY クエリのサポートを追加しました。
 
 ### <a name="1.9.0"/>1.9.0</a>
-* スロットルされた要求のための再試行ポリシー サポートを追加しました  (スロットルされた要求は、要求レートが大きすぎるという例外をエラー コード 429 で受信します)。既定では、Azure Cosmos DB は、エラー コード 429 が発生した場合に、応答ヘッダーの retryAfter 回数に従って要求ごとに 9 回再試行します。 再試行の間にサーバーによって返される retryAfter 回数を無視する場合、固定の再試行間隔の回数を、ConnectionPolicy オブジェクトの RetryOptions プロパティの一部としてここで設定できます。 Azure Cosmos DB では、(再試行の回数に関係なく) スロットルされる要求ごとに最大 30 秒待機できるようになり、エラー コード 429 と共に応答を返すようになりました。 この回数は、ConnectionPolicy オブジェクトの RetryOptions プロパティでオーバーライドすることもできます。
+* スロットルされた要求のための再試行ポリシー サポートを追加しました (スロットルされた要求は、要求レートが大きすぎるという例外をエラー コード 429 で受信します)。既定では、Azure Cosmos DB は、エラー コード 429 が発生した場合に、応答ヘッダーの retryAfter 回数に従って要求ごとに 9 回再試行します。 再試行の間にサーバーによって返される retryAfter 回数を無視する場合、固定の再試行間隔の回数を、ConnectionPolicy オブジェクトの RetryOptions プロパティの一部としてここで設定できます。 Azure Cosmos DB では、(再試行の回数に関係なく) スロットルされる要求ごとに最大 30 秒待機できるようになり、エラー コード 429 と共に応答を返すようになりました。 この回数は、ConnectionPolicy オブジェクトの RetryOptions プロパティでオーバーライドすることもできます。
 * Cosmos DB は、スロットルの再試行の回数と再試行の間の要求の累積待機時間を表すために、すべての要求の応答ヘッダーとして x-ms-throttle-retry-count と x-ms-throttle-retry-wait-time-ms を返すようになりました。
 * ConnectionPolicy クラスの RetryOptions プロパティを公開する、RetryOptions クラスが追加されました。これは、一部の既定の再試行オプションをオーバーライドするために使用できます。
 
@@ -212,7 +212,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| Version | リリース日 | 提供終了日 |
+| バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
 | [2.0.0-3 (RC)](#2.0.0-3) |2018 年 8 月 2 日 |--- |
 | [1.14.4](#1.14.4) |2018 年 5 月 3 日 |--- |

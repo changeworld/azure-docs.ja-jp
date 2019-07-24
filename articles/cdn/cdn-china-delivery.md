@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: ce136a341809b1a485e86337f428b4685eba22f7
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a63914116f5ef9922ac05745764e0ad505dc3c91
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093548"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593945"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>Azure CDN を使用した中国へのコンテンツ配信
 
@@ -38,7 +38,7 @@ Azure CDN グローバルと Azure CDN China には、次の機能がありま�
 
      - 中国国外でのコンテンツ配信の実行
 
-     - 4 つの価格レベル: Microsoft 標準、Verizon 標準、Verizon プレミアム、Akamai 標準
+     - 4 つの価格レベル:Microsoft Standard、Verizon Standard、Verizon Premium、Akamai Standard
 
      - [ドキュメント](https://docs.microsoft.com/azure/cdn/)
 
@@ -48,7 +48,7 @@ Azure CDN グローバルと Azure CDN China には、次の機能がありま�
 
      - 中国国内でのコンテンツ配信の実行
 
-     - 2 つの価格レベル: 標準とプレミアム
+     - 2 つの価格レベル:Standard と Premium
 
      - [ドキュメント](https://docs.azure.cn/en-us/cdn/)
  
@@ -63,7 +63,7 @@ Azure CDN China に関する詳細については、以下を参照してくだ�
 
 - [Azure Content Delivery Network の使用](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [中国での Azure サービスの利用可能性](https://docs.microsoft.com/azure/china/china-get-started-service-availability)
+- [中国での Azure サービスの利用可能性](https://docs.microsoft.com/azure/china/concepts-service-availability)
 
 
 

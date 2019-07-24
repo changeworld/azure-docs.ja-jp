@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: 4a4f53f991355e634e8139f9e90bec6c508a527d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792749"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60745810"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Azure IoT Hub Device Provisioning サービスの概念
 
@@ -39,11 +39,11 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 サービス レベルの設定では、デバイス プロビジョニング サービスがデバイスを IoT Hub に割り当てる方法を指定します。 次の 3 つの割り当てポリシーがサポートされています。
 
-* **Evenly weighted distribution\(均等に重み付けされた分散\)**: リンクされた各 IoT Hub にデバイスが同程度にプロビジョニングされます。 既定の設定です。 デバイスを 1 つの IoT Hub だけにプロビジョニングしている場合、この設定を保持できます。
+* **Evenly weighted distribution\(均等に重み付けされた分散\)** : リンクされた各 IoT Hub にデバイスが同程度にプロビジョニングされます。 既定の設定です。 デバイスを 1 つの IoT Hub だけにプロビジョニングしている場合、この設定を保持できます。
 
-* **Lowest latency\(最も短い待機時間\)**: デバイスに対する待機時間が最も短い IoT Hub にデバイスをプロビジョニングします。 複数の IoT Hub にリンクしていて、同様に最も短い待機時間になっている場合、プロビジョニング サービスはそれらのハブ全体のデバイスをハッシュします。
+* **Lowest latency\(最も短い待機時間\)** : デバイスに対する待機時間が最も短い IoT Hub にデバイスをプロビジョニングします。 複数の IoT Hub にリンクしていて、同様に最も短い待機時間になっている場合、プロビジョニング サービスはそれらのハブ全体のデバイスをハッシュします。
 
-* **Static configuration via the enrollment list\(加入契約リストによる静的構成\)**: 加入契約リストの目的の IoT Hub の仕様が、サービス レベルの割り当てポリシーよりも優先されます。
+* **Static configuration via the enrollment list\(加入契約リストによる静的構成\)** : 加入契約リストの目的の IoT Hub の仕様が、サービス レベルの割り当てポリシーよりも優先されます。
 
 ## <a name="enrollment"></a>加入
 

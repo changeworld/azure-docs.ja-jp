@@ -13,11 +13,11 @@ ms.date: 04/08/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496575"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60732367"
 ---
 # <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、ページング
 
@@ -306,4 +306,4 @@ REST の例については、[ストリーミング ポリシーの一覧](https
 
 ## <a name="next-steps"></a>次の手順
 
-[ファイルのストリーム配信](stream-files-dotnet-quickstart.md)
+[ファイルのストリーミング](stream-files-dotnet-quickstart.md)

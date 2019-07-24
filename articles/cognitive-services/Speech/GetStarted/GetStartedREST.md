@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259943"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60515131"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>クイック スタート:Bing Speech 認識 REST API を使用する
 
@@ -28,7 +28,7 @@ ms.locfileid: "58259943"
 
 ### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Speech API をサブスクライブし、無料試用版のサブスクリプション キーを取得する
 
-Speech API は、Cognitive Services (以前の Project Oxford) の一部です。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、**[Get API Key]**(API キーの取得) を選択してキーを取得します。 プライマリ キーおよびセカンダリ キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
+Speech API は、Cognitive Services (以前の Project Oxford) の一部です。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、 **[Get API Key]** (API キーの取得) を選択してキーを取得します。 プライマリ キーおよびセカンダリ キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
 
 > [!IMPORTANT]
 >* サブスクリプション キーを取得します。 REST API にアクセスするには、その前に[サブスクリプション キー](https://azure.microsoft.com/try/cognitive-services/)を入手する必要があります。

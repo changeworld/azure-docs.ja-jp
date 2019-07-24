@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: db26380ef50fd7546f90ceccaec854587e4690c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 572313f65d5d97211dcb664d79122ea6be520bab
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66165934"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786548"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>ストレージ リソースをグローバル Azure に移行する
 
@@ -44,7 +44,7 @@ https://<storageaccountname>.blob.core.windows.net/<containername>/<blobname>
 
 URI の 3 つの部分 (*storageaccountname*、*containername*、*blobname*) は、PowerShell または Azure CLI を使用してポータルからから取得します。 BLOB の名前は URI の一部にすることも、パターン (*vm121314.vhd* など) として指定することもできます。
 
-また、Azure Storage アカウントにアクセスするためのストレージ アカウント キーも必要です。 これらは、PowerShell または CLI を使用してポータルから取得します。 例: 
+また、Azure Storage アカウントにアクセスするためのストレージ アカウント キーも必要です。 これらは、PowerShell または CLI を使用してポータルから取得します。 例:
 
 ```powershell
 Get-AzStorageAccountKey -Name <saname> -ResourceGroupName <rgname>
@@ -91,7 +91,7 @@ Azure Managed Disks は、VM ディスクに関連付けられたストレージ
 
 ### <a name="step-2-azcopy"></a>手順 2:AzCopy
 
-AzCopy を使用する方法の例については、「[BLOB](#blobs)」を参照してください。 ディスクを直接ソース環境からターゲット環境にコピーするには、AzCopy (または同様のツール) を使用します。 AzCopy で、URI をベース URI と Shared Access Signature の部分に分割する必要があります。 URI の Shared Access Signature の部分は、文字 "**?**" で始まります。 ポータルは、Shared Access Signature URI としてこの URI を提供します。
+AzCopy を使用する方法の例については、「[BLOB](#blobs)」を参照してください。 ディスクを直接ソース環境からターゲット環境にコピーするには、AzCopy (または同様のツール) を使用します。 AzCopy で、URI をベース URI と Shared Access Signature の部分に分割する必要があります。 URI の Shared Access Signature の部分は、文字 " **?** " で始まります。 ポータルは、Shared Access Signature URI としてこの URI を提供します。
 
 ```http
 https://md-kp4qvrzhj4j5.blob.core.cloudapi.de/r0pmw4z3vk1g/abcd?sv=2017-04-17&sr=b&si=22970153-4c56-47c0-8cbb-156a24b6e4b5&sig=5Hfu0qMw9rkZf6mCjuCE4VMV6W3IR8FXQSY1viji9bg%3D>
@@ -117,23 +117,23 @@ azcopy -v /source:"https://md-kp4qvrzhj4j5.blob.core.cloudapi.de/r0pmw4z3vk1g/ab
 
 新しいマネージド ディスクを作成するにはいくつかのオプションがあります。 Azure Portal で行う方法を次に示します。
 
-1. ポータルで、**[新規作成]** > **[マネージド ディスク]** > **[作成]** を選択します。
+1. ポータルで、 **[新規作成]**  >  **[マネージド ディスク]**  >  **[作成]** を選択します。
 1. 新しいディスクの名前を入力します。
 1. リソース グループを選択します。
-1. **[ソースの種類]** で、**[Storage blob] (ストレージ BLOB)** を選択します。 次に、AzCopy コマンドからターゲット URI をコピーするか、またはターゲット URI を参照して選択します。
-1. OS ディスクをコピーした場合は、**[OS]** の種類を選択します。 その他のディスクの種類の場合は、**[作成]** を選択します。
+1. **[ソースの種類]** で、 **[Storage blob] (ストレージ BLOB)** を選択します。 次に、AzCopy コマンドからターゲット URI をコピーするか、またはターゲット URI を参照して選択します。
+1. OS ディスクをコピーした場合は、 **[OS]** の種類を選択します。 その他のディスクの種類の場合は、 **[作成]** を選択します。
 
 ### <a name="step-4-create-the-vm"></a>手順 4:VM の作成
 
 先に説明したように、この新しいマネージド ディスクを使用して VM を作成するには複数の方法があります。 2 つのオプションを次に示します。
 
-- ポータルで、ディスクを選択してから、**[VM の作成]** を選択します。 通常どおりに VM の他のパラメーターを定義します。
+- ポータルで、ディスクを選択してから、 **[VM の作成]** を選択します。 通常どおりに VM の他のパラメーターを定義します。
 - PowerShell の場合は、「[復元されたディスクからの VM の作成](../backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks)」を参照してください。
 
 詳細:
 
 - Shared Access Signature URI を取得することによって [API 経由で](/rest/api/compute/disks/grantaccess)ディスクにエクスポートする方法を学習してください。 
-- 非管理対象の BLOB から [API 経由で](/rest/api/compute/disks/createorupdate#create_a_managed_disk_by_importing_an_unmanaged_blob_from_a_different_subscription.)マネージド ディスクを作成する方法を学習してください。
+- 非管理対象の BLOB から [API 経由で](/rest/api/compute/disks/createorupdate#create-a-managed-disk-by-importing-an-unmanaged-blob-from-a-different-subscription.)マネージド ディスクを作成する方法を学習してください。
 
 
 ## <a name="next-steps"></a>次の手順

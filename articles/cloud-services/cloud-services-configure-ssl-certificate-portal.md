@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2a9879ebc55a5f25c1a358e386697dce1c55ec90
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084346"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61434063"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure でアプリケーションの SSL を構成する
 
@@ -40,7 +40,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 * 証明書は秘密キーを含む必要があります。
 * 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
-* 証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。 証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。 サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。 たとえば、カスタム ドメイン名が **contoso.com** の場合は、***.contoso.com** または **www\.contoso.com** の証明書を CA に要求します。
+* 証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。 証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。 サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。 たとえば、カスタム ドメイン名が **contoso.com** の場合は、* **.contoso.com** または **www\.contoso.com** の証明書を CA に要求します。
 * 証明書では、2048 ビット以上の暗号化を使用する必要があります。
 
 テスト目的で、自己署名証明書を [作成して](cloud-services-certs-create.md) 使用できます。 自己署名証明書は CA を通じて認証されないため、cloudapp.net ドメインを Web サイト URL として使用できます。 たとえば、次のタスクでは自己署名証明書を使用しますが、証明書で使用される共通名 (CN) は **sslexample.cloudapp.net** です。
@@ -136,7 +136,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 (この例では、拇印アルゴリズムに **sha1** を使用しています。 証明書の拇印アルゴリズムに適切な値を指定してください。)
 
-サービス定義ファイルとサービス構成ファイルが更新されたので、Azure にアップロードするためにデプロイメントをパッケージ化します。 **cspack** を使用している場合は、**/generateConfigurationFile** フラグを使用しないでください。このフラグは、先ほど挿入した証明書情報を上書きしてしまいます。
+サービス定義ファイルとサービス構成ファイルが更新されたので、Azure にアップロードするためにデプロイメントをパッケージ化します。 **cspack** を使用している場合は、 **/generateConfigurationFile** フラグを使用しないでください。このフラグは、先ほど挿入した証明書情報を上書きしてしまいます。
 
 ## <a name="step-3-upload-a-certificate"></a>手順 3:証明書のアップロード
 Azure Portal に接続して...

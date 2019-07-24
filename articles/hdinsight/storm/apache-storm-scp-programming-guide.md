@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.openlocfilehash: c85074a2b26a79dbf5e464972e7f82b5955d15f1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64692481"
 ---
 # <a name="scp-programming-guide"></a>SCP プログラミング ガイド
@@ -149,7 +149,7 @@ Context は、アプリケーションに実行環境を提供します。 各 I
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf` は Storm で定義されているパラメーターで、`pluginConf` は SCP で定義されているパラメーターです。 例: 
+`stormConf` は Storm で定義されているパラメーターで、`pluginConf` は SCP で定義されているパラメーターです。 例:
 
     public class Constants
     {

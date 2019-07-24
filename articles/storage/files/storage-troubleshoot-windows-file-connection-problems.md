@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9658ed46e1a46aa3fc2c7fe251fd73b2ef0a13dd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 7bc7f3631748f4ac74a76e9e67aa2aef2c8f9a71
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991362"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480309"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -136,20 +136,19 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 
 ハンドルをいくつか閉じて、同時に開いているハンドルの数を減らしてから、再試行します。 詳細については、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
-<a id="accessdeniedportal"></a>
-## <a name="error-access-denied-when-browsing-to-an-azure-file-share-in-the-portal"></a>ポータルで Azure ファイル共有を参照すると、"アクセスが拒否されました" というエラーが発生する
+<a id="authorizationfailureportal"></a>
+## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>ポータルで Azure ファイル共有を参照すると、"承認エラー" エラーが発生する
 
 ポータルで Azure ファイル共有を参照すると、以下のエラーが発生する場合があります。
 
-アクセスが拒否されました  
-アクセス権がありません  
-このコンテンツを表示するためのアクセス権がないようです。 アクセス権を取得するには、所有者にご連絡ください。  
+承認エラー  
+アクセス権がありません 
 
 ### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 1:現在のユーザー アカウントには、ストレージ アカウントへのアクセス権がありません
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
-Azure ファイル共有が置かれたストレージ アカウントを参照して、**[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、「[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)」をご覧ください。
+Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、「[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)」をご覧ください。
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2:ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが有効になっている
 

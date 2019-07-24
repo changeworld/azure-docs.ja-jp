@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 89c4723e83979f89721677146810abdf99fb5d11
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331219"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310484"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択してください: "]
 > * [Version 1](functions-host-json-v1.md)
 > * [Version 2](functions-host-json.md)
 
@@ -35,7 +35,6 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 ## <a name="sample-hostjson-file"></a>サンプル host.json ファイル
 
 次のサンプル *host.json* ファイルには、すべての使用できるオプションが指定されています。
-
 
 ```json
 {
@@ -82,7 +81,10 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 
@@ -145,7 +147,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-すべての関数のタイムアウト期間を示します。 サーバーレス従量課金プランの有効な範囲は 1 秒から 10 分であり、既定値は 5 分です。 App Service プランでは、全体的な制限はなく、既定値はランタイムのバージョンによって異なります。 バージョン 2.x では、App Service プランの既定値は 30 分です。 バージョンでは 1.x では *null* であり、タイムアウトしないことを示します。
+すべての関数のタイムアウト期間を示します。 サーバーレス従量課金プランの有効な範囲は 1 秒から 10 分であり、既定値は 5 分です。 専用の App Service プランでは、全体的な制限はなく、既定値は 30 分です。 値 `-1` は、無制限の実行を示します。
 
 ```json
 {
@@ -193,6 +195,9 @@ Application Insights など、関数アプリのログの動作を制御しま�
     "logLevel": {
       "Function.MyFunction": "Information",
       "default": "None"
+    },
+    "console": {
+        ...
     },
     "applicationInsights": {
         ...
@@ -274,6 +279,18 @@ v2 ランタイムを対象とする関数アプリでは、バージョン文�
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="manageddependency"></a>managedDependency
+
+マネージド依存関係は、現在 PowerShell ベースの関数でのみサポートされているプレビュー機能です。 この機能を使用すると、サービスによって依存関係を自動的に管理できます。 enabled プロパティが true に設定されている場合、[requirements.psd1](functions-reference-powershell.md#dependency-management) ファイルが処理されます。 いずれかのマイナー バージョンがリリースされると、依存関係が更新されます。
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 

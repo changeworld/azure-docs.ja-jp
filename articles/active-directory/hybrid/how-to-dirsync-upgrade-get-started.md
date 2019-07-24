@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f2d9a7c8cfbfc4fb56ff8fba3c65ae9a7925830
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852960"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60348724"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect:DirSync からのアップグレード
 Azure AD Connect は DirSync の後継のツールです。 このトピックでは、DirSync からアップグレードする方法について説明します。 以下の手順は、Azure AD Connect の別のリリースまたは Azure AD Sync からのアップグレードには使用できません。
@@ -104,7 +104,7 @@ DirSync がサービス アカウントで使用したパスワードは取得�
      DirSync によって使用されている既存の SQL Server データベース サーバーに関する情報が表示されます。 必要に応じて、適切に調整を行います。 **[次へ]** をクリックしてインストールを続行します。
    * 50,000 個を超えるオブジェクトがある場合は、代わりにこの画面が表示されます。  
      ![分析が完了し、DirSync からアップグレードする準備が整いました。](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
-     インプレース アップグレードを続行するには、"**このコンピューターの DirSync のアップグレードを続行します。**" の横のチェック ボックスをオンにします。
+     インプレース アップグレードを続行するには、"**このコンピューターの DirSync のアップグレードを続行します。** " の横のチェック ボックスをオンにします。
      代わりに[並列デプロイ](#parallel-deployment)を行うには、DirSync の構成設定をエクスポートして新しいサーバーに移します。
 5. Azure AD への接続に現在使用しているアカウントのパスワードを入力します。 これは、DirSync によって現在使用されているアカウントでなければなりません。  
    ![Azure ADの資格情報を入力します。](./media/how-to-dirsync-upgrade-get-started/ConnectToAzureAD.png)  

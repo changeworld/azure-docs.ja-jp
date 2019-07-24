@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 04/16/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3de444d509684f0b4227abe91ec3c967f2bf8f03
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c28cf4326593897dcbc90902737fc4846356078d
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926276"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653382"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -30,51 +30,13 @@ Azure Disk Encryption GA は、Azure Resource Manager テンプレート、Azure
 
 Azure Disk Encryption を使用して VM ディスクを暗号化するための料金は発生しませんが、Azure Key Vault の使用に関連する料金が発生します。 Azure Key Vault のコストの詳細については、「[Key Vault の価格](https://azure.microsoft.com/pricing/details/key-vault/)」ページを参照してください。
 
-
-## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Azure Disk Encryption は、どのレベルの仮想マシンをサポートしていますか。
-
-Azure Disk Encryption は、[A、D、DS、G、GS、および F](https://azure.microsoft.com/pricing/details/virtual-machines/) シリーズの IaaS VM を含む Standard レベルの VM で使用できます。 Premium Storage がある VM でも利用できます。 Basic レベルの VM では使用できません。
-
-## <a name="bkmk_LinuxOSSupport"></a>Azure Disk Encryption は、どの Linux ディストリビューションをサポートしていますか。
-
-Azure Disk Encryption は [Azure での動作が保証された一部の Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)でサポートされています。Azure での動作が保証された Linux ディストリビューションはそれ自体があらゆる Linux サーバー ディストリビューションの一部となります。
-
- ![Azure Disk Encryption をサポートする Linux サーバー ディストリビューションのベン図](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
-
-Azure での動作が保証されていない Linux サーバー ディストリビューションでは Azure Disk Encryption がサポートされておらず、動作が保証されているディストリビューションの中でも、次のディストリビューションとバージョンだけで Azure Disk Encryption がサポートされています。
-
-| Linux ディストリビューション | バージョン | 暗号化がサポートされているボリュームの種類|
-| --- | --- |--- |
-| Ubuntu | 18.04| OS とデータ ディスク |
-| Ubuntu | 16.04| OS とデータ ディスク |
-| Ubuntu | 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS とデータ ディスク |
-| RHEL | 7.6 | OS とデータ ディスク* |
-| RHEL | 7.5 | OS とデータ ディスク* |
-| RHEL | 7.4 | OS とデータ ディスク* |
-| RHEL | 7.3 | OS とデータ ディスク* |
-| RHEL | 7.2 | OS とデータ ディスク* |
-| RHEL | 6.8 | データ ディスク* |
-| RHEL | 6.7 | データ ディスク* |
-| CentOS | 7.5 | OS とデータ ディスク |
-| CentOS | 7.4 | OS とデータ ディスク |
-| CentOS | 7.3 | OS とデータ ディスク |
-| CentOS | 7.2n | OS とデータ ディスク |
-| CentOS | 6.8 | OS とデータ ディスク |
-| CentOS | 7.1 | データ ディスク |
-| CentOS | 7.0 | データ ディスク |
-| CentOS | 6.7 | データ ディスク |
-| CentOS | 6.6 | データ ディスク |
-| CentOS | 6.5 | データ ディスク |
-| openSUSE | 42.3 | データ ディスク |
-| SLES | 12-SP4 | データ ディスク |
-| SLES | 12-SP3 | データ ディスク |
-
-> [!NOTE]
-> RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい ADE の実装がサポートされます。 RHEL の BYOS (Bring-Your-Own-Subscription) イメージについては、現在 ADE はサポートされません。 詳細については、[Linux での Azure Disk Encryption](azure-security-disk-encryption-linux.md) に関する記事も参照してください。
-
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Azure Disk Encryption の使用を開始するにはどうすればよいですか。
 
 最初に、[Azure Disk Encryption の概要](azure-security-disk-encryption-overview.md)をお読みください。
+
+## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Azure Disk Encryption がサポートされる VM サイズとオペレーティングシステムを教えてください。
+
+[Azure Disk Encryption の前提条件](azure-security-disk-encryption-prerequisites.md)の記事には、Azure Disk Encryption をサポートする [VM のサイズ](azure-security-disk-encryption-prerequisites.md#supported-vm-sizes)と [VM オペレーティング システム](azure-security-disk-encryption-prerequisites.md#supported-operating-systems)の一覧が記載されています。
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Azure Disk Encryption でブート ボリュームとデータ ボリュームの両方を暗号化できますか。
 
@@ -87,6 +49,9 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>シークレットまたは暗号化キーを切り替えるにはどうすればいいですか。
 
 シークレットを切り替えるには、別のキー コンテナーを指定して、最初に使用したのと同じコマンドを呼び出してディスクの暗号化を有効にするだけです。 キーの暗号化キーを切り替えるには、新しいキーの暗号化を指定して、最初に使用したのと同じコマンドを呼び出してディスク暗号化を有効にします。 
+
+>[!WARNING]
+> - これまで、[Azure AD アプリで Azure AD の資格情報を指定することで Azure Disk Encryption](azure-security-disk-encryption-prerequisites-aad.md) を使用してこの VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 この暗号化された VM に対して [Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) を使用することはできません。それはサポートされていないシナリオであり、暗号化された VM 用の AAD アプリケーションからの切り替えはまだサポートされていないことを意味します。
 
 ## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>最初にキー暗号化キーを使用していなかった場合は、どのようにしてキー暗号化キーを追加または削除すればいいですか。
 
@@ -123,7 +88,9 @@ Azure Disk Encryption の前提条件があります。 Azure Active Directory �
 Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用してください。 [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) の最新バージョンをダウンロードしてください。 Azure Disk Encryption は、Azure SDK Version 1.1.0 では*サポートされていません*。
 
 > [!NOTE]
-> Linux 用 Azure Disk Encryption プレビューの拡張機能は非推奨となっています。 詳細については、「[Deprecating Azure disk encryption preview extension for Linux IaaS VMs](https://blogs.msdn.microsoft.com/azuresecurity/2017/07/12/deprecating-azure-disk-encryption-preview-extension-for-linux-iaas-vms/)」(Linux IaaS VM 用 Azure Disk Encryption プレビューの拡張機能の非推奨化) を参照してください。
+> Linux 用 Azure Disk Encryption プレビューの拡張機能 "Microsoft.OSTCExtension.AzureDiskEncryptionForLinux" は非推奨となっています。 この拡張機能は、Azure Disk Encryption プレビュー リリース向けに公開されたものです。 テスト環境や運用環境のデプロイでプレビュー バージョンの拡張機能を使用することは避けてください。
+
+> Azure Resource Manager (ARM) などのデプロイ シナリオで、Linux IaaS VM の暗号化を有効にするために Linux VM 用の Azure Disk Encryption 拡張機能をデプロイする必要がある場合、Azure Disk Encryption の運用環境に対応した拡張機能 "Microsoft.Azure.Security.AzureDiskEncryptionForLinux" を使用する必要があります。
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>カスタム Linux イメージに対して Azure Disk Encryption を適用できますか。
 
@@ -158,7 +125,7 @@ Windows では、ADE は BitLocker AES256 暗号化方法を使用します (Win
 いいえ、Azure Disk Encryption を使用して既に暗号化されているデータ ドライブのデータは消去されません。 EncryptFormatAll で、OS ドライブが再暗号化されなかったのと同様に、既に暗号化されているデータ ドライブは再暗号化されません。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。        
 
 ## <a name="is-xfs-filesystem-supported"></a>XFS ファイルシステムはサポートされていますか。
-XFS ボリュームは、EncryptFormalAll を使用したデータ ディスクの暗号化でのみサポートされています。 ボリュームが再フォーマットされ、そのボリューム上の以前のデータがすべて消去されます。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。
+XFS ボリュームは、EncryptFormatAll を使用したデータ ディスクの暗号化でのみサポートされています。 ボリュームが再フォーマットされ、そのボリューム上の以前のデータがすべて消去されます。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>暗号化された VM をバックアップおよび復元することはできますか。 
 

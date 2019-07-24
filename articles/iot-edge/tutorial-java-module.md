@@ -9,12 +9,12 @@ ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7f659240e7de729c6f64acf41d76530475fb810f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 95fab84fb6472339c9d6b847f8c09139b55e1466
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64569486"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66303841"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Java IoT Edge モジュールを開発する
 
@@ -37,7 +37,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 次の表を使用し、Java モジュールを開発してデプロイする際のオプションをご確認ください。 
 
-| Java | Visual Studio Code | Visual Studio 2017 | 
+| Java | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Linux AMD64 の Java モジュールに VS Code を使用する](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 の Java モジュールに VS Code を使用する](./media/tutorial-c-module/green-check.png) |  |
@@ -241,7 +241,7 @@ Java モジュールを初めて作成する場合は、maven パッケージの
 
 ## <a name="deploy-modules-to-device"></a>モジュールをデバイスにデプロイする
 
-IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Code エクスプローラーと Azure IoT Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、既に config フォルダーに用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
+IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Code エクスプローラーと Azure IoT Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
 
 IoT Edge デバイスが稼働していることを確認します。
 
@@ -259,7 +259,7 @@ IoT Edge デバイスに配置マニフェストを適用すると、デバイ�
 
 IoT Edge デバイスのステータスは、Visual Studio Code エクスプローラーの **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを使用して確認できます。 デバイスの詳細を展開すると、デプロイされて実行中のモジュールが一覧表示されます。
 
-1. Visual Studio Code エクスプローラーで、自分の IoT Edge デバイスの名前を右クリックして、 **[Start Monitoring D2C Messages]\(D2C メッセージの監視を開始する\)** を選択します。
+1. Visual Studio Code エクスプローラーで、IoT Edge デバイスの名前を右クリックし、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 
 2. 自分の IoT ハブに到着するメッセージを表示します。 IoT Edge デバイスは、新しいデプロイを受け取ってすべてのモジュールを開始する必要があるため、メッセージの到着にはしばらく時間がかかる場合があります。 次に、JavaModule コードに加えられた変更により、マシンの温度が 25 度に達するまで待機してから、メッセージが送信されます。 また、その温度しきい値に達したすべてのメッセージにメッセージ型 **Alert** も追加されます。 
 
@@ -277,8 +277,8 @@ IoT Edge デバイスのステータスは、Visual Studio Code エクスプロ�
 
 5. モジュール ツイン編集ウィンドウ内の任意の場所を右クリックして、 **[Update module twin]\(モジュール ツインの更新\)** を選択します。 
 
-5. 到着する device-to-cloud メッセージを監視します。 新しいしきい値の温度に達するまで、メッセージは停止するはずです。 
- 
+6. 到着する device-to-cloud メッセージを監視します。 新しいしきい値の温度に達するまで、メッセージは停止するはずです。 
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 
 次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。 

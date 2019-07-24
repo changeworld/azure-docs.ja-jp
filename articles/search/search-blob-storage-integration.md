@@ -9,12 +9,12 @@ author: mgottein
 manager: cgronlun
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: b7e7ecd2a82a8d64967288def9c6ede7a292f72a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b6bb70e4c56adb162006d2597d301c73b12d2a8a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759393"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65540884"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Azure Search を使用した Blob Storage の検索
 
@@ -50,7 +50,7 @@ Azure Search は、Blob Storage ポータル ページから直接 BLOB に追�
 
 ![](./media/search-blob-storage-integration/blob-blade.png)
 
-**[Azure Search の追加]** をクリックするとフローが開始され、既存の Azure Search サービスを選択するか、新しいサービスを作成することができます。 新しいサービスを作成すると、ストレージ アカウントのポータル エクスペリエンスの外部に移動します。 ストレージのポータル ページに戻って、**[Azure Search の追加]** オプションを再度選択することができます。そこで、既存のサービスを選択できます。
+**[Azure Search の追加]** をクリックするとフローが開始され、既存の Azure Search サービスを選択するか、新しいサービスを作成することができます。 新しいサービスを作成すると、ストレージ アカウントのポータル エクスペリエンスの外部に移動します。 ストレージのポータル ページに戻って、 **[Azure Search の追加]** オプションを再度選択することができます。そこで、既存のサービスを選択できます。
 
 ## <a name="next-steps"></a>次の手順
 完全な[ドキュメント](https://aka.ms/azsblobindexer)にある Azure Search BLOB インデクサの詳細を学習します。

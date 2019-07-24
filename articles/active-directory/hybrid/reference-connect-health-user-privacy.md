@@ -15,11 +15,11 @@ ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27e5ae48a8194c05a19e5164ee2cc6be68967a62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112757"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60386248"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>ユーザー プライバシーと Azure AD Connect Health 
 
@@ -68,7 +68,7 @@ Azure AD Connect Health では、テナントの**すべて**の登録済みサ�
    ![データ収集の停止](./media/reference-connect-health-user-privacy/gdpr4.png)
   
 3. データ収集の停止による影響を受けるオンボード サービスの一覧を確認します。 
-4. 正確なテナント名を入力し、**[削除]** アクション ボタンを有効にします
+4. 正確なテナント名を入力し、 **[削除]** アクション ボタンを有効にします
 5. **[削除]** をクリックし、すべてのサービスの削除を実行します。 Connect Health は、オンボード サービスから送信されたすべてのデータの受信、処理、レポートを停止します。 プロセス全体で最大 24 時間かかることがあります。 この手順は元に戻せないことに注意してください。 
 6. プロセスが完了した後は、Connect Health に登録されているサービスは表示されなくなります。 
 
@@ -90,7 +90,7 @@ Azure AD Connect Health でテナントのデータ収集を再開すること�
  
    ![データ収集を有効にする](./media/reference-connect-health-user-privacy/gdpr6.png)
  
-3. 正確なテナント名を入力し、**[有効化]** ボタンをアクティブにします。
+3. 正確なテナント名を入力し、 **[有効化]** ボタンをアクティブにします。
 4. **[有効化]** ボタンをクリックし、Connect Health サービスのデータ収集の権限を許可します。 変更はすぐに適用されます。 
 5. [インストール プロセス](how-to-connect-health-agent-install.md)に関する記事に従って監視対象のサーバーにエージェントを再インストールすると、ポータルにサービスが表示されます。  
 

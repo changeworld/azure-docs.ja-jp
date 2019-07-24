@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: diberry
 ms.openlocfilehash: f23212a854fb37dda89fd2bf6b223cf0dc69526b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167577"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60198721"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>作成者とコラボレーターを管理する方法 
 

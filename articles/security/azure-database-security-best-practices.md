@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: b4744201f506730303e190783acc60bfaa383720
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 9cd02172af5246c60b93a6e4696988268abed506
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409804"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66258678"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
 この記事では、データベース セキュリティに関するベスト プラクティスについて説明します。
@@ -77,7 +77,7 @@ SQL Server 認証を使用する場合は、次のことを行う必要があり
 Azure AD 認証は、Azure AD の ID を使用して Azure SQL Database と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。
 
 > [!NOTE]
-> SQL Server 認証を使用して Azure AD 認証を使用することをお勧めします。
+> SQL Server 認証の使用よりも Azure AD 認証の使用をお勧めします。
 
 次のような利点があります。
 
@@ -165,6 +165,10 @@ SQL Server データベース エンジンまたは個々のデータベース�
 - 潜在的な脅威を検出し、これに対応します。
 
 さらに、脅威の検出は、アラートを、すべての Azure リソースのセキュリティ状態の一元的に表示するための Azure Security Center と統合します。
+
+## <a name="enable-feature-restrictions"></a>機能の制限を有効にする
+
+データベースに含まれているデータは、データベース エラーやクエリの実行時間を悪用する攻撃ベクトルを利用して攻撃者にさらされる可能性があります。 Azure SQL Database では、データベースを保護するために、さまざまな機能の制限のメカニズムが提供されます。 詳細については、[SQL Database 機能の制限](../sql-database/sql-database-feature-restrictions.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)」を参照してください。

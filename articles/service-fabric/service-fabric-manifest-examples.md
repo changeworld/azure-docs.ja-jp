@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: 85a3066095cfc30da19b06d26f41bdc156f85832
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664694"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60718225"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric のアプリケーションとサービス マニフェストの例
 このセクションでは、アプリケーションとサービス マニフェストの例を示します。 これらの例は、重要なシナリオを示すことを意図しているわけではなく、利用可能なさまざまな設定とその使用方法を示します。 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
 ms.openlocfilehash: 4b75b2cbd629204e7edbf1196eec9b03cb7a6736
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64943156"
 ---
 <a name="web-analytics"></a>Web Analytics
@@ -54,7 +54,7 @@ ms.locfileid: "64943156"
 
 これらのキャンペーン ID を複数組み合わせれば、顧客の流入元 (例: メール、ブログ、ソーシャル メディア) など、キャンペーンのトラフィックの源泉となっている複数のソースを特定することができます。
 
-例: 
+例:
 
 1. ニュースレターが参照元の場合:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
 2. LinkedIn が参照元の場合:  <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
@@ -71,7 +71,7 @@ ms.locfileid: "64943156"
     2.  ランディング ページ URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
 3. \"製品を試用する\" リンクをクリックすると、ユーザーが AppSource に誘導されます。
     1. 参照 URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. ランディング ページ URL (**この URL には必ず utm\_campaign と utm\_source を追加する**) =  [https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2. ランディング ページ URL (**この URL には必ず utm\_campaign と utm\_source を追加する**) =  [https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?**utm\_ campaign=MyCampaignAdName&utm\_ source=MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>キャンペーンの成果を評価する方法
 -----------------------------------------
@@ -88,7 +88,7 @@ ms.locfileid: "64943156"
 
 プラン全体のコンバージョン率表示と同様、このグラフでは、各種キャンペーンの貢献度内訳を確認できます。 このグラフは、コンバージョン率が相対的に高いキャンペーンの流入元を特定するのに役立ちます。
 
-### <a name="distribution-by-campaign"></a> **キャンペーンごとの分布**
+### <a name="distribution-by-campaign"></a>**キャンペーンごとの分布**
 
 ![WebAnalytics4](./media/si-getting-started/WebAnalytics4.png)
 

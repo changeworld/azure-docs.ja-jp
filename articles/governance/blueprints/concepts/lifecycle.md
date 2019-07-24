@@ -9,11 +9,11 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: a57085fa37efd56a46b740d8cbc4278dc53cf39f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795425"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60683191"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint のライフサイクルの概要
 
@@ -34,14 +34,14 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 
 ブループリントを作成するときは、成果物を追加し、管理グループまたはサブスクリプションに保存し、一意の名前と一意のバージョンを指定します。 この時点で、ブループリントは**ドラフト** モードであり、まだ割り当てることはできません。 **ドラフト** モードの間でも、更新と変更を続けることはできます。
 
-発行されていない**ドラフト** モードのブループリントには、**[ブループリントの定義]** ページで、**発行済み**のブループリントとは異なるアイコンが表示されます。 これらの未発行ブループリントについては、**[最新バージョン]** に **[ドラフト]** と表示されます。
+発行されていない**ドラフト** モードのブループリントには、 **[ブループリントの定義]** ページで、**発行済み**のブループリントとは異なるアイコンが表示されます。 これらの未発行ブループリントについては、 **[最新バージョン]** に **[ドラフト]** と表示されます。
 
 ブループリントを作成および編集するには、[Azure portal](../create-blueprint-portal.md#create-a-blueprint) または [REST API](../create-blueprint-rest-api.md#create-a-blueprint) を使用します。
 
 ## <a name="publishing-a-blueprint"></a>ブループリントの発行
 
 **ドラフト** モードのブループリントに対して計画された変更をすべて行った後は、**発行**して割り当て可能にできます。 **発行済み**バージョンのブループリントを変更することはできません。
-**発行済み**のブループリントに対しては、**ドラフト**のブループリントと異なるアイコンが表示され、**[最新バージョン]** 列に指定されたバージョン番号が表示されます。
+**発行済み**のブループリントに対しては、**ドラフト**のブループリントと異なるアイコンが表示され、 **[最新バージョン]** 列に指定されたバージョン番号が表示されます。
 
 ブループリントを発行するには、[Azure portal](../create-blueprint-portal.md#publish-a-blueprint) または [REST API](../create-blueprint-rest-api.md#publish-a-blueprint) を使用します。
 
@@ -73,7 +73,7 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 
 1. **[公開済みバージョン]** タブをクリックし、削除するバージョンを探します。
 
-1. 削除するバージョンを右クリックして、**[このバージョンを削除する]** を選択します。
+1. 削除するバージョンを右クリックして、 **[このバージョンを削除する]** を選択します。
 
 ## <a name="deleting-the-blueprint"></a>ブループリントの削除
 

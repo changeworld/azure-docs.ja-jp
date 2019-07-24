@@ -1,5 +1,5 @@
 ---
-title: 新しいマルチテナント アプリケーションを構成する方法 | Microsoft Docs
+title: シングル サインオンの構成方法 | Microsoft Docs
 description: Azure AD で開発中または登録中のカスタム アプリケーションのシングル サインオンを構成する方法。
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83fae56dd0cf7157575b7c5a07e33ca1888d8560
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: d151d4d7f32c479f2cfb4d71a8ed667f42e03b49
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545451"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465686"
 ---
-# <a name="how-to-configure-a-new-multi-tenant-application"></a>新しいマルチテナント アプリケーションを構成する方法
+# <a name="how-to-configure-single-sign-on-for-an-application"></a>アプリケーションのシングル サインオンを構成する方法
 
 アプリのフェデレーション シングル サインオン (SSO) は、OpenID Connect、SAML 2.0、または WS-Fed を使用して Azure AD 経由でフェデレーションしている場合、自動的に有効になります。 Azure AD とのセッションが既に存在しているのにエンド ユーザーのサインインが必要な場合、アプリが正しく構成されていない可能性があります。
 

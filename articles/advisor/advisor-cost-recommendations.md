@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 188a79df99a174436808acd3d964abf9357cf4c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fef7b82e6969de16d1815250d2373c99021b0e86
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699332"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66254719"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -45,11 +45,18 @@ Advisor では、予約インスタンスについて、残り 30 日で有効�
 
 Advisor は、ロード バランサーまたは仮想マシンなどの Azure リソースに現在関連付けられていないパブリック IP アドレスを識別します。 これらのパブリック IP アドレスには、わずかな料金がかかります。 それらを使用する予定がない場合は、削除するとコスト削減につながります。
 
+## <a name="delete-azure-data-factory-pipelines-that-are-failing"></a>障害が発生している Azure Data Factory パイプラインを削除する
+
+Azure Advisor は、繰り返し障害が発生している Azure Data Factory パイプラインを検出し、その問題を解決するか、または障害が発生しているパイプラインを必要なくなっている場合は削除することを推奨します。 障害発生中にサービスが提供されていない場合でも、これらのパイプラインに対して課金されます。 
+
+## <a name="use-standard-snapshots-for-managed-disks"></a>マネージド ディスクに Standard スナップショットを使用する
+コストの 60% を節約するために、親ディスクのストレージの種類には関係なく、スナップショットを Standard Storage に格納することをお勧めします。 これは、マネージド ディスクのスナップショットの既定オプションです。 Azure Advisor は、Premium Storage に格納されているスナップショットを識別し、スナップショットを Premium Storage から Standard Storage に移行することを推奨します。 [マネージド ディスクの価格](https://aka.ms/aa_manageddisksnapshot_learnmore)の詳細を確認してください。
+
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Advisor のコストに関する推奨事項にアクセスする方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
 
-2.  Advisor ダッシュボードで、**[コスト]** タブをクリックします。
+2.  Advisor ダッシュボードで、 **[コスト]** タブをクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

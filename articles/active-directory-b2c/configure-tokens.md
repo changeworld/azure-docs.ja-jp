@@ -2,20 +2,20 @@
 title: トークンの構成 - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でトークンの有効期間と互換性の設定を構成する方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69a6284ea7b8905bb5efdb1f4c9f26027bd6f9d9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e1163c88a100ebb7500607475ab5740557904137
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689610"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66511329"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でトークンを構成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "64689610"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用の Azure AD B2C テナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[ユーザー フロー (ポリシー)]** を選択します。
 5. あらかじめ作成しておいたユーザー フローを開きます。 
 6. **[プロパティ]** を選択します。

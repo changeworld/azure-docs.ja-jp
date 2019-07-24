@@ -16,10 +16,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3fb7fbba7ec48da580d2a630ae51aa20b3307848
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65080067"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>ユーザーをサインインさせる Web アプリ - サインイン
@@ -39,7 +39,7 @@ Web アプリからのサインアウトでは、サインインしたアカウ�
 
 ## <a name="application-registration"></a>アプリケーションの登録
 
-アプリケーションの登録中に、**ログアウト後の URI** を登録します。 このチュートリアルでは、**[認証]** ページの **[詳細設定]** セクションの **[ログアウト URL]** フィールドに `https://localhost:44321/signout-oidc` と登録しました。 詳細については、「[Register the webApp app](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)」 (webApp アプリを登録する) を参照してください。
+アプリケーションの登録中に、**ログアウト後の URI** を登録します。 このチュートリアルでは、 **[認証]** ページの **[詳細設定]** セクションの **[ログアウト URL]** フィールドに `https://localhost:44321/signout-oidc` と登録しました。 詳細については、「[Register the webApp app](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)」 (webApp アプリを登録する) を参照してください。
 
 ## <a name="aspnet-core-code"></a>ASP.NET Core コード
 
@@ -131,4 +131,4 @@ ASP.NET Core や ASP.NET を使用したくない場合は、[Open ID Connect](.
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [運用環境に移行する](scenario-web-app-sign-user-production.md)
+> [運用環境への移行](scenario-web-app-sign-user-production.md)

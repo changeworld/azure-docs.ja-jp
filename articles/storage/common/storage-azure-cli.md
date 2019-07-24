@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: ea7e4757aac0fccf60a44c70e9de6a63c1ec9498
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147004"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Azure Storage での Azure CLI の使用
@@ -345,7 +345,7 @@ az storage directory create --name myDir --share-name myshare
 ディレクトリ パスには複数のレベルを含めることができます (**dir1/dir2**)。 ただし、サブディレクトリを作成する前に、すべての親ディレクトリが存在することを確認する必要があります。 たとえば、パス **dir1/dir2**の場合、最初に**dir1** ディレクトリを作成した後、**dir2** ディレクトリを作成する必要があります。
 
 ### <a name="upload-a-local-file-to-a-share"></a>共有にローカル ファイルをアップロードする
-次の例では、**~/temp/samplefile.txt** から **myshare** ファイル共有のルートにファイルをアップロードします。 `--source` 引数で、アップロードする既存のローカル ファイルを指定します。
+次の例では、 **~/temp/samplefile.txt** から **myshare** ファイル共有のルートにファイルをアップロードします。 `--source` 引数で、アップロードする既存のローカル ファイルを指定します。
 
 ```azurecli
 az storage file upload --share-name myshare --source ~/temp/samplefile.txt

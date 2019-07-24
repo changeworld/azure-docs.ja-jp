@@ -16,10 +16,10 @@ ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 958b3d72a3a8df4a3b67f62e7db788d7142ca667
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66112897"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure portal を使用してリソースにマネージド ID アクセスを割り当てる
@@ -41,7 +41,7 @@ ms.locfileid: "66112897"
 
 2. アクセス制御を変更する目的のリソースに移動します。 この例では、ストレージ アカウントに Azure 仮想マシンへのアクセスを許可するため、ストレージ アカウントに移動します。
 
-3. リソースの **[アクセス制御 (IAM)]** ページを選択し、**[+ ロール割り当ての追加]** を選択します。 その後、**[ロール]**、**[Assign access to]\(アクセスの割り当て先\)** の順に指定して、該当の **[サブスクリプション]** を指定します。 検索条件領域に、リソースが表示されるはずです。 リソースを選択し、**[保存]** を選択します。 
+3. リソースの **[アクセス制御 (IAM)]** ページを選択し、 **[+ ロール割り当ての追加]** を選択します。 その後、 **[ロール]** 、 **[Assign access to]\(アクセスの割り当て先\)** の順に指定して、該当の **[サブスクリプション]** を指定します。 検索条件領域に、リソースが表示されるはずです。 リソースを選択し、 **[保存]** を選択します。 
 
    ![アクセス制御 (IAM) のスクリーンショット](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      

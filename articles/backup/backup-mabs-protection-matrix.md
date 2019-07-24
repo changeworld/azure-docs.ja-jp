@@ -9,12 +9,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 050e3032d47b8215ae1aef8492c247031275ab86
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 21c832235eeb86dcea94e70f34abaf4ec3489c3c
+ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094645"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67509609"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server の保護マトリックス
 
@@ -22,7 +22,7 @@ ms.locfileid: "58094645"
 
 ## <a name="protection-support-matrix"></a>保護のサポート マトリックス
 
-|ワークロード|Version|Azure Backup Server</br> インストール|Azure Backup</br> Server V3|Azure Backup</br> Server V2|保護と回復|
+|ワークロード|バージョン|Azure Backup Server</br> インストール|Azure Backup</br> Server V3|Azure Backup</br> Server V2|保護と回復|
 |------------|-----------|---------------|--------------|---------------|-----------------|
 |クライアント コンピューター (64 ビットおよび 32 ビット)|Windows 10|物理サーバー<br /><br />Hyper-V 仮想マシン<br /><br />VMware 仮想マシン|Y|Y|ボリューム、共有、フォルダー、ファイル、重複除去されたボリューム<br /><br />保護されるボリュームは NTFS である必要があります。 FAT および FAT32 はサポートされていません。<br /><br />ボリュームは少なくとも 1 GB である必要があります。 DPM はボリューム シャドウ コピー サービス (VSS) を使用してデータ スナップショットを取得し、そのスナップショットはボリュームが少なくとも 1 GB である場合にのみ機能します。|
 |クライアント コンピューター (64 ビットおよび 32 ビット)|Windows 8.1|物理サーバー<br /><br />Hyper-V 仮想マシン|Y|Y|ファイル<br /><br />保護されるボリュームは NTFS である必要があります。 FAT および FAT32 はサポートされていません。<br /><br />ボリュームは少なくとも 1 GB である必要があります。 DPM はボリューム シャドウ コピー サービス (VSS) を使用してデータ スナップショットを取得し、そのスナップショットはボリュームが少なくとも 1 GB である場合にのみ機能します。|
@@ -80,8 +80,17 @@ ms.locfileid: "58094645"
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2008 R2 SP1 - Enterprise および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2008 SP2|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|N|N|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダーの項目レベルの回復、ボリューム、仮想ハード ドライブ|
 |VMware VM|VMware vCenter/vSphere ESX/ESXi ライセンス版 5.5/6.0/6.5 |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|Y|Y|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
-|VMware VM|[VMware vSphere 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|Y|N|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
+|VMware VM|[VMware vSphere ライセンス版 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|Y|N|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> ファイルとフォルダーの項目レベルの回復は、Windows VM にのみ利用できます。VMware vApp はサポートされていません。|
 |Linux|Hyper-V または VMware ゲストとして実行されている Linux|物理サーバー、 <br/>オンプレミスの Hyper-V VM、 <br/> VMWare 内の Windows VM|Y|Y|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護: 仮想マシン全体<br /><br />回復: 仮想マシン全体 <br/><br/> サポートされる Linux ディストリビューションおよびバージョンの完全なリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」の記事を参照してください。|
+
+## <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
+
+Azure ExpressRoute がプライベートまたは Microsoft ピアリングで構成されている場合は、それを使用してデータを Azure にバックアップできません。
+
+Azure ExpressRoute がパブリック ピアリングで構成されている場合は、それを使用してデータを Azure にバックアップできます。
+
+>[!NOTE]
+>パブリック ピアリングは、新しい回線では非推奨です。
 
 ## <a name="cluster-support"></a>クラスターのサポート
 Azure Backup Server は、次のクラスタ化されたアプリケーション内のデータを保護できます。

@@ -6,13 +6,13 @@ author: keithcharlie
 ms.service: marketplace
 ms.topic: article
 ms.date: 07/09/2018
-ms.author: keithcharlie
-ms.openlocfilehash: 5106b22500b73b650742e7fe0f881c2a4c984eff
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: kevidal
+ms.openlocfilehash: 92c3452e07dee126666e6ee1fe0c46b1f8f6dfa4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937717"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876529"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
@@ -25,14 +25,14 @@ SaaS アプリケーションは、両方の Azure ネットショップで入�
 | ネットショップのオプション | 一覧 | 試用版/取引 |  
 | --- | --- | --- |  
 | AppSource | あり (お問い合わせ) | あり (PowerBI/Dynamics) |
-| Azure Marketplace | いいえ  | あり (SaaS アプリ) |   
+| Azure Marketplace | いいえ | あり (SaaS アプリ) |   
 
 **リスト:** リストの発行オプションは、お問い合わせのオファー タイプから構成され、試用版レベルまたは取引レベルの参加を実現できない場合に使用されます。 この方法の利点は、市場にソリューションのあるパブリッシャーはすぐに取引に転換し、ビジネスを向上できるリードの受け取りを始められることです。  
 **試用版/取引:** 顧客はソリューションを直接購入するか、試用版を要求することができます。 試用版エクスペリエンスを提供することで、顧客に提供されるエンゲージメント レベルが高くなり、顧客は購入前にソリューションを調べることができます。 試用版エクスペリエンスでは、ネットショップでのプロモーションの機会が多くなり、顧客エンゲージメントからより多くの有望なリードを期待できます。 試用は、少なくとも試用期間中は無料サポートを含む必要があります。  
 
 | SaaS アプリのオファー | ビジネス要件 | 技術的な要件 |  
 | --- | --- | --- |  
-| **お問い合わせ** | はい | いいえ  |  
+| **お問い合わせ** | はい | いいえ |  
 | **PowerBI/Dynamics** | はい | あり (Azure AD の統合) |  
 | **SaaS アプリ**| はい | あり (Azure AD の統合) |     
 
@@ -104,7 +104,7 @@ Azure AD を使ってアプリまたは試用版の 1 クリック認証を有�
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Marketplace に対する Azure AD 統合の認定  
 
-アプリケーションがシングル テナントかマルチテナントか、Azure AD フェデレーショ シングル サインオン (SSO) を初めて使用するか、既にサポートしているかに応じて、Azure AD の統合を認定することができます。  
+アプリケーションがシングル テナントかマルチテナントか、Azure AD フェデレーション シングル サインオン (SSO) を初めて使用するか、既にサポートしているかに応じて、Azure AD の統合を認定します。  
 
 **マルチテナント アプリケーションの場合:**  
 
@@ -148,4 +148,4 @@ SaaS ベースの技術的ソリューションをサブスクリプションと
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 
 - [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させます。
-- 詳細については、「[Azure SaaS アプリケーション プラン](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer)」を参照してください。
+- 詳細については、「[Azure SaaS アプリケーション プラン](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)」を参照してください。

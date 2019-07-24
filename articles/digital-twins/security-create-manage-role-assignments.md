@@ -7,14 +7,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 12/26/2018
-ms.author: lyrana
+ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a57089eb2cd87b08ba647afed002d90d6f14891a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162116"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846656"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure Digital Twins 内でのロールの割り当ての作成と管理
 
@@ -39,13 +39,13 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 次の表は、各属性を示しています。
 
-| Attribute | Name | 必須 | Type | 説明 |
+| Attribute | EnableAdfsAuthentication | 必須 | Type | 説明 |
 | --- | --- | --- | --- | --- |
-| roleId | ロール定義識別子 | はい | String | 必要なロールの割り当ての一意 ID。 ロールの定義とその識別子は、システム API のクエリを実行するか次の表を確認して見つけます。 |
-| objectId | オブジェクト識別子 | はい | String | Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名。 ロールの割り当ての割り当て先。 ロールの割り当ては、関連付けられている型に従って書式設定する必要があります。 `DomainName` objectIdType の場合、objectId は `“@”` 文字で始まる必要があります。 |
-| objectIdType | オブジェクト識別子の型 | はい | String | 使用するオブジェクト識別子の種類。 下の「**サポートされているオブジェクト識別子の型**」をご覧ください。 |
-| path | スペース パス | はい | String | `Space` オブジェクトへの完全アクセス パス。 例: `/{Guid}/{Guid}`。 識別子がグラフ全体のロールの割り当てを必要とする場合は、`"/"` を指定します。 この文字はルートの指定ですが、これを使用することはお勧めできません。 常に最小限の特権の原則に従ってください。 |
-| tenantId | テナント識別子 | 多様 | String | ほとんどの場合、Azure Active Directory テナント ID。 `DeviceId` および `TenantId` ObjectIdTypes では許可されません。 `UserId` および `ServicePrincipalId` ObjectIdTypes では必須です。 DomainName ObjectIdType では省略可能です。 |
+| roleId | ロール定義識別子 | はい | string | 必要なロールの割り当ての一意 ID。 ロールの定義とその識別子は、システム API のクエリを実行するか次の表を確認して見つけます。 |
+| objectId | オブジェクト識別子 | はい | string | Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名。 ロールの割り当ての割り当て先。 ロールの割り当ては、関連付けられている型に従って書式設定する必要があります。 `DomainName` objectIdType の場合、objectId は `“@”` 文字で始まる必要があります。 |
+| objectIdType | オブジェクト識別子の型 | はい | string | 使用するオブジェクト識別子の種類。 下の「**サポートされているオブジェクト識別子の型**」をご覧ください。 |
+| path | スペース パス | はい | string | `Space` オブジェクトへの完全アクセス パス。 例: `/{Guid}/{Guid}`。 識別子がグラフ全体のロールの割り当てを必要とする場合は、`"/"` を指定します。 この文字はルートの指定ですが、これを使用することはお勧めできません。 常に最小限の特権の原則に従ってください。 |
+| tenantId | テナント識別子 | 多様 | string | ほとんどの場合、Azure Active Directory テナント ID。 `DeviceId` および `TenantId` ObjectIdTypes では許可されません。 `UserId` および `ServicePrincipalId` ObjectIdTypes では必須です。 DomainName ObjectIdType では省略可能です。 |
 
 ### <a name="supported-role-definition-identifiers"></a>サポートされているロール定義識別子
 
@@ -165,10 +165,10 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **パラメーター値** | **必須** |  **Type** |  **説明** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | String |   UserId objectIdType の objectId。 |
-| YOUR_PATH | True | String |   アクセスを確認する選択済みパス。 |
-| YOUR_ACCESS_TYPE |  True | String |   確認するアクセスの種類。 |
-| YOUR_RESOURCE_TYPE | True | String |  確認するリソース。 |
+| YOUR_USER_ID |  True | string |   UserId objectIdType の objectId。 |
+| YOUR_PATH | True | string |   アクセスを確認する選択済みパス。 |
+| YOUR_ACCESS_TYPE |  True | string |   確認するアクセスの種類。 |
+| YOUR_RESOURCE_TYPE | True | string |  確認するリソース。 |
 
 要求が成功すると、指定されたパスとリソースについてアクセスの種類がユーザーに割り当てられているかどうかを示すブール値 `true` または `false` が返されます。
 

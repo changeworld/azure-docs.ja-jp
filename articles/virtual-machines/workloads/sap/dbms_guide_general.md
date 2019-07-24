@@ -16,29 +16,29 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b19c0fd8af2792a4ffb877e5c6a7fc6b3f94511
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 975289f338e638ed0209d4f6cf2a163ced996e42
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699255"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202940"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
-[1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1409604]:https://launchpad.support.sap.com/#/notes/1409604
-[1597355]:https://launchpad.support.sap.com/#/notes/1597355
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]:https://launchpad.support.sap.com/#/notes/2069760
-[2171857]:https://launchpad.support.sap.com/#/notes/2171857
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1114181]: https://launchpad.support.sap.com/#/notes/1114181
+[1409604]: https://launchpad.support.sap.com/#/notes/1409604
+[1597355]: https://launchpad.support.sap.com/#/notes/1597355
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2039619]: https://launchpad.support.sap.com/#/notes/2039619
+[2069760]: https://launchpad.support.sap.com/#/notes/2069760
+[2171857]: https://launchpad.support.sap.com/#/notes/2171857
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2233094]: https://launchpad.support.sap.com/#/notes/2233094
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 [deployment-guide]:deployment-guide.md
 [deployment-guide-3]:deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e
 [planning-guide]:planning-guide.md
@@ -150,8 +150,8 @@ VM の種類ごとに、接続できるデータ ディスクの数が制限さ�
 既に述べたように、IOPS の要件が 1 つの VHD で提供可能な容量を超えている場合は、複数の VHD にわたるデータベース ファイルで必要な IOPS の数のバランスを取ります。 IOPS 負荷を複数のディスクに分散する最も簡単な方法は、異なるディスク間でソフトウェア ストライプを構築することです。 そして、ソフトウェア ストライプから分割した LUN に SAP DBMS のデータ ファイルの数を設定します。 ストライプ内のディスクの数は、IOPS の需要、ディスク スループットの需要、およびボリュームの需要によって決まります。
 
 
-- - -
-> ![ Windows][Logo_Windows]  Windows
+---
+> ![Windows][Logo_Windows] Windows
 >
 > Windows 記憶域スペースを使用して複数の Azure VHD にわたってストライプ セットを作成することをお勧めします。 Windows Server 2012 R2 または Windows Server 2016 以上を使用してください。
 >
@@ -164,7 +164,7 @@ VM の種類ごとに、接続できるデータ ディスクの数が制限さ�
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > Azure Storage には VHD の 3 つのイメージが保存されるため、ストライプ化するときに冗長性を構成することには意味がありません。 必要なのは、I/O が異なる VHD に分散されるようにストライピングを構成することだけです。
@@ -230,8 +230,8 @@ Azure VM は、VM がデプロイされた後に非永続ディスクを提供�
 
 詳細については、[Azure の Windows VM 上の一時ドライブの解説](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)に関するページを参照してください。
 
-- - -
-> ![ Windows][Logo_Windows]  Windows
+---
+> ![Windows][Logo_Windows] Windows
 >
 > Azure VM の D ドライブは、Azure の計算ノード上のいくつかのローカル ディスクによってサポートされる非永続ドライブです。 これは非永続的であるため、ドライブ D の内容に加えられた変更は、VM を再起動すると失われます。 "変更" には、保存されたファイル、作成されたディレクトリ、インストールされたアプリケーションが含まれます。
 >
@@ -241,7 +241,7 @@ Azure VM は、VM がデプロイされた後に非永続ディスクを提供�
 >
 >
 
-- - -
+---
 
 
 
@@ -339,8 +339,8 @@ Azure VM 間のネットワーク待ち時間をさらに短縮するには、[A
 > すべての種類の VM で高速ネットワークがサポートされるわけではありません。 高速ネットワークをサポートする VM の種類の一覧が前の記事に記載されています。
 >
 
-- - -
-> ![ Windows][Logo_Windows]  Windows
+---
+> ![Windows][Logo_Windows] Windows
 >
 > Windows 用の高速ネットワークを使用して VM をデプロイする方法については、「[高速ネットワークを使った Windows 仮想マシンの作成](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)」を参照してください。
 >
@@ -350,7 +350,7 @@ Azure VM 間のネットワーク待ち時間をさらに短縮するには、[A
 >
 >
 
-- - -
+---
 
 > [!NOTE]
 > SUSE、Red Hat、および Oracle Linux の場合、Accelerated Networking は最近のリリースでサポートされています。 SLES 12 SP2、RHEL 7.2 などの以前のリリースでは、Azure 高速ネットワークはサポートされていません。

@@ -4,19 +4,19 @@ description: Azure Functions で Azure Blob Storage のトリガーとバイン�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: e4ec13453c204885f38b10272e76245e641fbef9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ad927de0274d415ac268d3a29abf2c135ee22d52
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203593"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480222"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -212,6 +212,7 @@ Python コードを次に示します。
 import logging
 import azure.functions as func
 
+
 def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
 ```
@@ -258,7 +259,7 @@ public void run(
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)で、次の属性を使用して BLOB トリガーを構成します。
 
-* [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobTriggerAttribute.cs)
+* [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
   属性のコンストラクターは、監視するコンテナーを示すパス文字列と、必要に応じて [BLOB 名のパターン](#trigger---blob-name-patterns)を受け取ります。 次に例を示します。
 
@@ -371,7 +372,7 @@ BLOB 名が *original-Blob1.txt* の場合、関数コード内の `name` 変数
 
 ### <a name="filter-on-file-type"></a>ファイルの種類のフィルター
 
-次の例は、*.png* ファイルでのみトリガーします。
+次の例は、 *.png* ファイルでのみトリガーします。
 
 ```json
 "path": "samples/{name}.png",
@@ -420,7 +421,7 @@ Azure Functions ランタイムでは、BLOB トリガー関数は、同一の�
 
 Azure Functions では、BLOB の配信確認メッセージは (アプリ設定 `AzureWebJobsStorage` で指定した) 関数アプリの Azure ストレージ アカウント内の *azure-webjobs-hosts* というコンテナーに格納されます。 BLOB の配信確認メッセージには次の情報が含まれています。
 
-* トリガーされた関数 ("*&lt;関数アプリ名>*.Functions.*&lt;関数名>*"。たとえば、"MyFunctionApp.Functions.CopyBlob")
+* トリガーされた関数 (" *&lt;関数アプリ名>* .Functions. *&lt;関数名>* "。たとえば、"MyFunctionApp.Functions.CopyBlob")
 * コンテナーの名前
 * BLOB の種類 ("BlockBlob" か "PageBlob")
 * BLOB の名前
@@ -434,7 +435,7 @@ BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテ�
 
 試行が 5 回とも失敗した場合、Azure Functions は *webjobs-blobtrigger-poison* という名前のストレージ キューにメッセージを追加します。 有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
 
-* FunctionId (形式: *&lt;Function App 名>*.Functions.*&lt;関数名>*)
+* FunctionId (形式: *&lt;Function App 名>* .Functions. *&lt;関数名>* )
 * BLOB の種類 ("BlockBlob" か "PageBlob")
 * コンテナー名
 * BlobName
@@ -631,6 +632,7 @@ Python コードを次に示します。
 import logging
 import azure.functions as func
 
+
 def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
     logging.info('Python Queue trigger function processed %s', inputblob.name)
     return inputblob
@@ -735,7 +737,7 @@ public static void Run(
 |**direction** | 該当なし | `in` に設定する必要があります。 例外は、[使用方法](#input---usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。|
 |**path** |**BlobPath** | BLOB へのパス。 |
-|**connection** |**Connection**| このバインドに使用する[ストレージ接続文字列](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-azure-storage-account)を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|**connection** |**Connection**| このバインドに使用する[ストレージ接続文字列](../storage/common/storage-configure-connection-string.md)を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
 |該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -953,6 +955,7 @@ Python コードを次に示します。
 ```python
 import logging
 import azure.functions as func
+
 
 def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
          outputblob: func.Out[func.InputStream]):

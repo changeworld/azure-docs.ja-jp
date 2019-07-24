@@ -3,19 +3,19 @@ title: Conversation Learner の既定の構成 - Microsoft Cognitive Services | 
 titleSuffix: Azure
 description: Conversation Learner の既定の構成について説明します。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 8050008bbae4a23f09b5fa94874a6315e798b448
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: ebdc1e1c100329e95bd19359408cb138d233b1c2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211289"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66385438"
 ---
 # <a name="default-values-and-boundaries"></a>既定値と境界
 
@@ -23,7 +23,7 @@ ms.locfileid: "55211289"
 
 ## <a name="default-configuration"></a>既定の構成
 
-パラメーター | 既定値
+パラメーター | Default value
 --- | --- 
 セッションのタイムアウトの既定値 | 30 分
 
@@ -39,7 +39,7 @@ ms.locfileid: "55211289"
 モデルあたりの作成済みのエンティティの最大数 | [LUIS の境界に関するドキュメント](https://docs.microsoft.com/azure/cognitive-services/luis/luis-boundaries)を参照してください。
 モデルあたりのエンティティの最大数 (合計数) | 100
 モデルあたりのアクションの最大数 | 32
-モデルあたりのトレーニング会話の最大数 | 1,000
+モデルあたりのトレーニング会話の最大数 | 1000
 トレーニング ダイアログあたりのユーザーのターンの最大数 | 100
 モデルあたりのログ会話の最大数 | 制限は設定されていません。ログ ダイアログは一定期間のみ保持され、その期間が経過すると破棄されます。  また、Conversation Learner UI では一度に 100 件のログ ダイアログが表示されます。 
 ユーザーあたりのモデルの最大数 | 制限は設定されていません。

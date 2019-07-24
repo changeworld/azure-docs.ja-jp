@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.date: 01/27/2017
 ms.openlocfilehash: 180d90450497b38f107f3601944385a003f50282
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193519"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60845785"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps の統合アカウントで AS2 メッセージと MDN を追跡するスキーマを作成する
 
@@ -56,22 +56,22 @@ ms.locfileid: "57193519"
 }
 ```
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | AS2 メッセージ送信者のパートナー名。 (省略可能) |
-| receiverPartnerName | String | AS2 メッセージ受信者のパートナー名。 (省略可能) |
-| as2To | String | AS2 メッセージ受信者の名前 (AS2 メッセージのヘッダーから取得します)。 (必須) |
-| as2From | String | AS2 メッセージ送信者の名前 (AS2 メッセージのヘッダーから取得します)。 (必須) |
-| agreementName | String | メッセージが解決される AS2 契約の名前。 (省略可能) |
-| direction | String | メッセージ フローの方向 (受信または送信)。 (必須) |
-| messageId | String | AS2 メッセージ ID (AS2 メッセージのヘッダーから取得します)(省略可能) |
-| dispositionType |String | Message Disposition Notification (MDN) のディスポジション タイプ値。 (省略可能) |
-| fileName | String | ファイル名 (AS2 メッセージのヘッダーから取得します)。 (省略可能) |
+| receiverPartnerName | string | AS2 メッセージ受信者のパートナー名。 (省略可能) |
+| as2To | string | AS2 メッセージ受信者の名前 (AS2 メッセージのヘッダーから取得します)。 (必須) |
+| as2From | string | AS2 メッセージ送信者の名前 (AS2 メッセージのヘッダーから取得します)。 (必須) |
+| agreementName | string | メッセージが解決される AS2 契約の名前。 (省略可能) |
+| direction | string | メッセージ フローの方向 (受信または送信)。 (必須) |
+| messageId | string | AS2 メッセージ ID (AS2 メッセージのヘッダーから取得します)(省略可能) |
+| dispositionType |string | Message Disposition Notification (MDN) のディスポジション タイプ値。 (省略可能) |
+| fileName | string | ファイル名 (AS2 メッセージのヘッダーから取得します)。 (省略可能) |
 | isMessageFailed |Boolean | AS2 メッセージが失敗したかどうか。 (必須) |
 | isMessageSigned | Boolean | AS2 メッセージが署名されたかどうか。 (必須) |
 | isMessageEncrypted | Boolean | AS2 メッセージが暗号化されたかどうか。 (必須) |
 | isMessageCompressed |Boolean | AS2 メッセージが圧縮されたかどうか。 (必須) |
-| correlationMessageId | String | AS2 メッセージ ID (メッセージを MDN と関連付けるために使用します)。 (省略可能) |
+| correlationMessageId | string | AS2 メッセージ ID (メッセージを MDN と関連付けるために使用します)。 (省略可能) |
 | incomingHeaders |JToken の辞書 | 受信 AS2 メッセージのヘッダー詳細。 (省略可能) |
 | outgoingHeaders |JToken の辞書 | 送信 AS2 メッセージのヘッダー詳細。 (省略可能) |
 | isNrrEnabled | Boolean | 値が不明の場合は、既定値を使用してください。 (必須) |
@@ -109,23 +109,23 @@ ms.locfileid: "57193519"
 }
 ```
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | AS2 メッセージ送信者のパートナー名。 (省略可能) |
-| receiverPartnerName | String | AS2 メッセージ受信者のパートナー名。 (省略可能) |
-| as2To | String | AS2 メッセージを受信するパートナー名。 (必須) |
-| as2From | String | AS2 メッセージを送信するパートナー名。 (必須) |
-| agreementName | String | メッセージが解決される AS2 契約の名前。 (省略可能) |
-| direction |String | メッセージ フローの方向 (受信または送信)。 (必須) |
-| messageId | String | AS2 メッセージ ID。 (省略可能) |
-| originalMessageId |String | AS2 の元のメッセージ ID。 (省略可能) |
-| dispositionType | String | MDN のディスポジション タイプ値。 (省略可能) |
+| receiverPartnerName | string | AS2 メッセージ受信者のパートナー名。 (省略可能) |
+| as2To | string | AS2 メッセージを受信するパートナー名。 (必須) |
+| as2From | string | AS2 メッセージを送信するパートナー名。 (必須) |
+| agreementName | string | メッセージが解決される AS2 契約の名前。 (省略可能) |
+| direction |string | メッセージ フローの方向 (受信または送信)。 (必須) |
+| messageId | string | AS2 メッセージ ID。 (省略可能) |
+| originalMessageId |string | AS2 の元のメッセージ ID。 (省略可能) |
+| dispositionType | string | MDN のディスポジション タイプ値。 (省略可能) |
 | isMessageFailed |Boolean | AS2 メッセージが失敗したかどうか。 (必須) |
 | isMessageSigned |Boolean | AS2 メッセージが署名されたかどうか。 (必須) |
 | isNrrEnabled | Boolean | 値が不明の場合は、既定値を使用してください。 (必須) |
 | StatusCode | 列挙型 | 許可されている値は、**Accepted**、**Rejected**、**AcceptedWithErrors** です。 (必須) |
 | micVerificationStatus | 列挙型 | 許可されている値は、**NotApplicable**、**Succeeded**、**Failed** です。 (必須) |
-| correlationMessageId | String | 関連付け ID。 元のメッセージ ID (MDN の構成対象であるメッセージのメッセージ ID) です。 (省略可能) |
+| correlationMessageId | string | 関連付け ID。 元のメッセージ ID (MDN の構成対象であるメッセージのメッセージ ID) です。 (省略可能) |
 | incomingHeaders | JToken の辞書 | 受信メッセージのヘッダー詳細を示します。 (省略可能) |
 | outgoingHeaders |JToken の辞書 | 送信メッセージのヘッダー詳細を示します。 (省略可能) |
 ||||

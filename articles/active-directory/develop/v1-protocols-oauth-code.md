@@ -18,10 +18,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e05d79773cfd2ebae8047e75d41684de9101787a
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65962184"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する
@@ -57,12 +57,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | パラメーター |  | 説明 |
 | --- | --- | --- |
 | tenant |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
-| client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 サービス サイドバーで **[Azure Active Directory]** をクリックして、**[アプリの登録]** をクリックしてアプリケーションを選択します。 |
+| client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 サービス サイドバーで **[Azure Active Directory]** をクリックして、 **[アプリの登録]** をクリックしてアプリケーションを選択します。 |
 | response_type |必須 |承認コード フローでは `code` を指定する必要があります。 |
 | redirect_uri |推奨 |アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ネイティブ アプリとモバイル アプリでは、`urn:ietf:wg:oauth:2.0:oob` の既定値を使用します。 |
 | response_mode |省略可能 |結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 `query`、`fragment`、または `form_post` を指定できます。 `query` はリダイレクト URI でクエリ文字列パラメーターとしてコードを提供します。 暗黙的フローを使って ID トークンを要求する場合、[OpenID 仕様](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)で規定された `query` を使用することはできません。コードのみを要求する場合は、`query`、`fragment`、`form_post` のいずれかを使用できます。 `form_post` は、リダイレクト URI に対するコードを含んだ POST を実行します。 コード フローの既定値は `query` です。  |
 | state |推奨 |要求に含まれ、トークンの応答としても返される値。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的にも使用されます。 |
-| resource | 推奨 |対象となる Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 アプリケーション ID/URI を調べるには、Azure Portal で **[Azure Active Directory]**、**[アプリの登録]** の順にクリックして、アプリケーションの **[設定]** ページを開きます。その後、**[プロパティ]** をクリックします。 `https://graph.microsoft.com` のような外部リソースである場合もあります。 認証またはトークン要求でこれが必要です。 認証プロンプトの回数を少なくするには、認証要求に配置して、ユーザーから同意を受信できるようにします。 |
+| resource | 推奨 |対象となる Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 アプリケーション ID/URI を調べるには、Azure Portal で **[Azure Active Directory]** 、 **[アプリの登録]** の順にクリックして、アプリケーションの **[設定]** ページを開きます。その後、 **[プロパティ]** をクリックします。 `https://graph.microsoft.com` のような外部リソースである場合もあります。 認証またはトークン要求でこれが必要です。 認証プロンプトの回数を少なくするには、認証要求に配置して、ユーザーから同意を受信できるようにします。 |
 | scope | **ignored** | v1 Azure AD アプリでは、Azure Portal のアプリケーションの **[設定]** の **[必要なアクセス許可]** で、スコープを静的に構成する必要があります。 |
 | prompt |省略可能 |ユーザーとの必要な対話の種類を指定します。<p> 有効な値は次のとおりです。 <p> *login*:再認証を求めるメッセージがユーザーに表示されます。 <p> *select_account*:アカウントの選択を求めるメッセージがユーザーに表示され、シングル サインオンが中断されます。 ユーザーでは、既存サインイン アカウントを選択して、記憶されているアカウントの資格情報を入力、またはまったく別のアカウントを一緒に、使用する可能性があります。 <p> *consent*:ユーザーの同意は得られていますが、更新する必要があります。 同意を求めるメッセージがユーザーに表示されます。 <p> *admin_consent*:組織内のすべてのユーザーを代表して同意するよう求めるメッセージが管理者に表示されます |
 | login_hint |省略可能 |ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。 多くのアプリでは、`preferred_username` 要求を使用して以前のサインインからユーザー名を抽出しておき、再認証時にこのパラメーターを使用します。 |
@@ -147,10 +147,10 @@ grant_type=authorization_code
 | code |必須 |前のセクションで取得した `authorization_code` 。 |
 | redirect_uri |必須 | クライアント アプリケーションに登録されている `redirect_uri`。 |
 | client_secret |Web アプリで必須、パブリック クライアントでは使用不可 |アプリのために Azure Portal の **[キー]** で作成した、アプリケーションのシークレット。 ネイティブ アプリ (パブリック クライアント) では使用できません。デバイスに client_secret を確実に保存することができないためです。 Web アプリや Web API (すべての機密クライアント) では `client_secret` をサーバー側で安全に保存する機能が備わっているため、これを指定する必要があります。 client_secret は、送信前に URL エンコードされる必要があります。 |
-| resource | 推奨 |対象となる Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 アプリケーション ID/URI を調べるには、Azure Portal で **[Azure Active Directory]**、**[アプリの登録]** の順にクリックして、アプリケーションの **[設定]** ページを開きます。その後、**[プロパティ]** をクリックします。 `https://graph.microsoft.com` のような外部リソースである場合もあります。 認証またはトークン要求でこれが必要です。 認証プロンプトの回数を少なくするには、認証要求に配置して、ユーザーから同意を受信できるようにします。 認証要求とトークン要求の if と resource パラメーターは一致する必要があります。 | 
+| resource | 推奨 |対象となる Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 アプリケーション ID/URI を調べるには、Azure Portal で **[Azure Active Directory]** 、 **[アプリの登録]** の順にクリックして、アプリケーションの **[設定]** ページを開きます。その後、 **[プロパティ]** をクリックします。 `https://graph.microsoft.com` のような外部リソースである場合もあります。 認証またはトークン要求でこれが必要です。 認証プロンプトの回数を少なくするには、認証要求に配置して、ユーザーから同意を受信できるようにします。 認証要求とトークン要求の if と resource パラメーターは一致する必要があります。 | 
 | code_verifier | 省略可能 | authorization_code を取得するために使用されたのと同じ code_verifier。 承認コード付与要求で PKCE が使用された場合は必須です。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。   |
 
-アプリケーション ID/URI を調べるには、Azure Portal で **[Azure Active Directory]**、**[アプリの登録]** の順にクリックして、アプリケーションの **[設定]** ページを開きます。その後、**[プロパティ]** をクリックします。
+アプリケーション ID/URI を調べるには、Azure Portal で **[Azure Active Directory]** 、 **[アプリの登録]** の順にクリックして、アプリケーションの **[設定]** ページを開きます。その後、 **[プロパティ]** をクリックします。
 
 ### <a name="successful-response"></a>成功応答
 成功応答時には Azure AD から[アクセス トークン](access-tokens.md)が返されます。 クライアント アプリケーションからのネットワーク呼び出しとこれに関連する遅延時間を最小限に抑えるために、クライアント アプリケーションは OAuth 2.0 応答で指定されているトークンの有効期間中、アクセス トークンをキャッシュする必要があります。 トークンの有効期間を決定するには、`expires_in` または `expires_on` のいずれかのパラメーター値を使用します。
@@ -258,7 +258,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="error-parameters"></a>エラーのパラメーター
 | パラメーター | 説明 |
 | --- | --- |
-| authorization_uri |承認サーバーの URI (物理エンドポイント)。 この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。 <p><p>  クライアントは、承認サーバーが信頼されていることを検証する必要があります。 リソースが Azure AD によって保護されている場合は、URL が https://login.microsoftonline.com または Azure AD によってサポートされる別のホスト名で始まることを確認するだけで十分です。 テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
+| authorization_uri |承認サーバーの URI (物理エンドポイント)。 この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。 <p><p> クライアントは、承認サーバーが信頼されていることを検証する必要があります。 リソースが Azure AD によって保護されている場合は、URL が https://login.microsoftonline.com または Azure AD によってサポートされる別のホスト名で始まることを確認するだけで十分です。 テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
 | error |「 [OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](https://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。 |
 | error_description |エラーの詳しい説明。 このメッセージはエンドユーザー向けではありません。 |
 | resource_id |リソースの一意の識別子を返します。 クライアント アプリケーションは、リソースのトークンを要求するときに、この識別子を `resource` パラメーターの値として使用できます。 <p><p> クライアント アプリケーションがこの値を確認することは重要です。確認を行わない場合、悪意のあるサービスから**権限昇格**攻撃を受ける可能性があります。 <p><p> 攻撃を防止するための推奨方法として、 `resource_id` と、アクセスしている Web API URL のベースが一致していることを確認します。 たとえば、 https://service.contoso.com/data にアクセスしている場合、`resource_id` は htttps://service.contoso.com/ になります。 クライアント アプリケーションは、ID を検証する信頼性の高い代替方法がない限り、ベース URL ではじまらない `resource_id` を拒否する必要があります。 |

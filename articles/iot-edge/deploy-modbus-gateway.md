@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 06/28/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 1c9855f982b888e8e1d68bfe5233983db8c826ad
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 325b69eb7b9b069db0ba49b4578541ee801c3444
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873765"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476171"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>IoT Edge デバイス ゲートウェイ経由で Modbus TCP デバイスに接続する
 
@@ -35,7 +35,7 @@ Modbus TCP (または RTU) プロトコルを使用した IoT デバイスを Az
 
 Modbus ゲートウェイの機能をテストしたい方のために、Microsoft からサンプル モジュールが提供されています。 Azure Marketplace や [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview) から、またはイメージ URI (**mcr.microsoft.com/azureiotedge/modbus:1.0**) を使用してモジュールにアクセスできます。
 
-独自のモジュールを作成し、実際の環境に合わせてカスタマイズする場合は、GitHub で公開されているオープン ソースの [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトをご利用ください。 プロジェクトのガイダンスに従って独自のコンテナー イメージを作成できます。 独自のコンテナー イメージを作成する場合は、「[Develop C# modules in Visual Studio (Visual Studio で C# モジュールを開発する)](how-to-visual-studio-develop-csharp-module.md)」または「[Develop modules in Visual Studio Code (Visual Studio Code でモジュールを開発する)](how-to-vs-code-develop-module.md)」をご覧ください。 これらの記事では、新規のモジュール作成や、コンテナー イメージのレジストリへの発行に関する手順について説明します。
+独自のモジュールを作成し、実際の環境に合わせてカスタマイズする場合は、GitHub で公開されているオープン ソースの [Azure IoT Edge Modbus モジュール](https://github.com/Azure/iot-edge-modbus) プロジェクトをご利用ください。 プロジェクトのガイダンスに従って独自のコンテナー イメージを作成できます。 コンテナー イメージを作成するには、[Visual Studio での C# モジュールの開発](how-to-visual-studio-develop-csharp-module.md)に関するページ、または [Visual Studio Code でのモジュールの開発](how-to-vs-code-develop-module.md)に関するページをご覧ください。 これらの記事では、新規のモジュール作成や、コンテナー イメージのレジストリへの発行に関する手順について説明します。
 
 ## <a name="try-the-solution"></a>ソリューションをお試しください
 
@@ -49,13 +49,13 @@ Modbus ゲートウェイの機能をテストしたい方のために、Microso
 
 4. Modbus モジュールを追加します。
 
-   1. **[追加]** をクリックし、**[IoT Edge モジュール]** を選択します。
+   1. **[追加]** をクリックし、 **[IoT Edge モジュール]** を選択します。
 
    2. **[名前]** フィールドに「modbus」と入力します。
 
    3. **[イメージ]** フィールドに、サンプル コンテナーのイメージの URI として「`mcr.microsoft.com/azureiotedge/modbus:1.0`」を入力します。
 
-   4. 必要なモジュール ツインのプロパティを更新するには、**[Enable]\(有効\)** チェック ボックスをオンにします。
+   4. 必要なモジュール ツインのプロパティを更新するには、 **[Enable]\(有効\)** チェック ボックスをオンにします。
 
    5. 次の JSON をテキスト ボックスにコピーします。 **SlaveConnection** の値を実際の Modbus デバイスの IPv4 アドレスに変更します。
 
@@ -70,7 +70,7 @@ Modbus ゲートウェイの機能をテストしたい方のために、Microso
                 "Op01":{
                   "PollingInterval": "1000",
                   "UnitId":"1",
-                  "StartAddress":"400001",
+                  "StartAddress":"40001",
                   "Count":"2",
                   "DisplayName":"Voltage"
                 }
@@ -83,22 +83,23 @@ Modbus ゲートウェイの機能をテストしたい方のために、Microso
 
    6. **[保存]** を選択します。
 
-5. **[モジュールの追加]** 手順に戻り、**[次へ]** を選択します。
+5. **[モジュールの追加]** 手順に戻り、 **[次へ]** を選択します。
 
-7. **[Specify Routes]\(ルートの指定\)** の手順で、以下の JSON をテキスト ボックスにコピーします。 Modbus モジュールによって収集されたすべてのメッセージが、このルートによって IoT Hub に送信されます。 このルートの "modbusOutput" は、Modbus モジュールがデータを出力するために使用するエンドポイントです。また、"upstream" は特別な転送先で、IoT Edge ハブに対して、メッセージを IoT Hub に送信するように指示します。
+7. **[Specify Routes]\(ルートの指定\)** の手順で、以下の JSON をテキスト ボックスにコピーします。 Modbus モジュールによって収集されたすべてのメッセージが、このルートによって IoT Hub に送信されます。 このルートの **modbusOutput** は、Modbus モジュールがデータを出力するために使用するエンドポイントです。また、 **$upstream** は特別な転送先で、IoT Edge ハブに対して、メッセージを IoT Hub に送信するように指示します。
+
    ```JSON
    {
-    "routes": {
-      "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
-    }
+     "routes": {
+       "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
+     }
    }
    ```
 
 8. **[次へ]** を選択します。
 
-9. **[Review Deployment]\(展開のレビュー\)** ステップで、**[送信]** を選びます。
+9. **[Review Deployment]\(展開のレビュー\)** ステップで、 **[送信]** を選びます。
 
-10. デバイスの詳細ページに戻り、**[更新]** を選びます。 新しい **modbus** モジュールが IoT Edge ランタイムと一緒に実行されていることが表示されます。
+10. デバイスの詳細ページに戻り、 **[更新]** を選びます。 新しい **modbus** モジュールが IoT Edge ランタイムと一緒に実行されていることが表示されます。
 
 ## <a name="view-data"></a>データの表示
 Modbus モジュールを介して送信されているデータを確認します。

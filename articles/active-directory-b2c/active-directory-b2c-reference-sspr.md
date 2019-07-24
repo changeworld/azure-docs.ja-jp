@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C でのセルフサービスによるパスワードのリセット | Microsoft Docs
 description: Azure Active Directory B2C で顧客向けにセルフサービスのパスワード リセットをセットアップする方法を示します
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: afce3feeb329ac2d5af5662a59bf81105b69abed
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e8137bc0e75595b5f548584bb2d1644de2e0fecd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66508917"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>顧客向けにセルフサービス パスワードのリセットをセットアップする
 
@@ -33,7 +33,7 @@ ms.locfileid: "64703509"
 4. **[セルフ サービスによるパスワードのリセットが有効]** を **[すべて]** に設定します。 
 5. ページの上部にある **[保存]** をクリックします。 以上で終わりです。
 
-テストするには、任意のサインイン ユーザー フロー (ID プロバイダーがローカル アカウントのもの) で [今すぐ実行] 機能を使用します。 ローカル アカウントのサインイン ページ (電子メール アドレスとパスワード、またはユーザー名とパスワードを入力する場所) で、**[アカウントにアクセスできない場合]** をクリックしてカスタマー エクスペリエンスを確認します。
+テストするには、任意のサインイン ユーザー フロー (ID プロバイダーがローカル アカウントのもの) で [今すぐ実行] 機能を使用します。 ローカル アカウントのサインイン ページ (電子メール アドレスとパスワード、またはユーザー名とパスワードを入力する場所) で、 **[アカウントにアクセスできない場合]** をクリックしてカスタマー エクスペリエンスを確認します。
 
 > [!NOTE]
 > [セルフサービスによるパスワードのリセット] ページは、 [会社のブランド機能](../active-directory/fundamentals/customize-branding.md)を使用してカスタマイズできます。

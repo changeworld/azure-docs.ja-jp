@@ -2,20 +2,20 @@
 title: ネイティブ クライアント アプリケーションを追加する - Azure Active Directory B2C | Microsoft Docs
 description: Active Directory B2C テナントにネイティブ クライアント アプリケーションを追加する方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
-ms.author: davidmu
+ms.author: marsma
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 772b6b8a4d71b7d1c6418651ee0a4ee7b03af0cc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b4e9b95cb226aeec686816d0ed7160062e110c62
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703907"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66511818"
 ---
 # <a name="add-a-native-client-application-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントへのネイティブ クライアント アプリケーションの追加
 
@@ -23,11 +23,11 @@ ms.locfileid: "64703907"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-1. **[アプリケーション]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 2. アプリケーションの名前を入力します。 たとえば、*nativeapp1* とします。
-3. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** の場合、**[いいえ]** を選択します。
-4. **[ネイティブ クライアントを含める]** の場合、**[はい]** を選択します。
+3. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** の場合、 **[いいえ]** を選択します。
+4. **[ネイティブ クライアントを含める]** の場合、 **[はい]** を選択します。
 5. **[リダイレクト URI]** に、カスタム スキームを含めた有効なリダイレクト URI を入力します。 リダイレクト URI を選択する際には、2 つの重要な考慮事項があります。
 
     - **一意** - リダイレクト URI のスキームは、すべてのアプリケーションで一意である必要があります。 `com.onmicrosoft.contoso.appname://redirect/path` の例では、`com.onmicrosoft.contoso.appname` はスキームです。 このパターンに従う必要があります。 2 つのアプリケーションで同じスキームを共有している場合、ユーザーにはアプリケーションを選択する選択肢が与えられます。 ユーザーが不適切な選択を行った場合、サインインは失敗します。

@@ -4,7 +4,7 @@ description: Azure で仮想マシンをプロビジョニングし、管理す�
 services: virtual-machines
 documentationcenter: ''
 author: xujing-ms
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines
@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3b8c9c80c93430d8dc5a888742e4e4e96ba99400
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437600"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695321"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Azure で仮想マシンを管理するときに発生する一般的なエラー メッセージについて説明します
 
@@ -131,7 +131,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  NetworkingInternalOperationError  |  不明なネットワーク割り当てエラー  |
 |  NetworkingInternalOperationError  |  VM のネットワーク プロファイルを処理中に内部エラーが発生しました。  |
 |  NotFound  |  可用性セット {0} が見つかりません。  |
-|  NotFound  |  要求で指定されたソース バーチャル マシン '{0}' は、この Azure の場所には存在しません。  |
+|  NotFound  |  要求で指定されたソース仮想マシン '{0}' は、この Azure の場所には存在しません。  |
 |  NotFound  |  ID {0} のテナントが見つかりません。  |
 |  NotFound  |  イメージ {0} が見つかりません。  |
 |  NotSupported  |  ライセンスの種類は {0} ですが、イメージ BLOB {1} はオンプレミスのものではありません。  |
@@ -172,7 +172,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  OperationNotAllowed  |  要求されたサイズ {0} は、VM が現在割り当てられているクラスターで利用できないため、VM のサイズ変更ができません。 VM を {1} へサイズ変更するには、割り当ての解除 (Azure Portal での停止操作) を実行し、もう一度サイズ変更の操作をしてみてください。 VM のサイズ変更の方針について詳しくは、 https://aka.ms/azure-resizevm をご覧ください。  |
 |  OSProvisioningClientError  |  VM '{0}' に OS をプロビジョニングできませんでした。現在、ゲスト OS をプロビジョニングしています。  |
 |  OSProvisioningClientError  |  VM '{0}' の OS をプロビジョニングできませんでした。 エラーの詳細:{1}。イメージが適切に準備 (一般化) されていることも確認してください。 <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ で手順を確認することができます </li></ul> |
+|  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>[https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ ) で手順を確認することができます </li></ul> |
 |  OSProvisioningClientError  |  VM に指定されたユーザー名は、この Linux ディストリビューションに関しては無効です。 エラーの詳細: {0}。  |
 |  OSProvisioningInternalError  |  内部エラーが発生したため、VM '{0}' の OS をプロビジョニングできませんでした。  |
 |  OSProvisioningTimedOut  |  割り当てられた時間内に VM '{0}' の OS のプロビジョニングが終了しませんでした。 まだプロビジョニングが正常に完了する可能性があります。 後でプロビジョニングの状態を確認してください。  |

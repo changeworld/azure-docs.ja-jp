@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 99aec3be893693e523dffefbb3c422222ac19a2e
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 354a68d7d4d07657baa7044566dde8b7ed77ca63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616868"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66400066"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理サーバーの Azure へのディザスター リカバリー アーキテクチャ
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
 ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729525"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60926080"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>デバイスの接続性とテレメトリの受信
 
@@ -71,8 +71,8 @@ YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=Con
 |---|---|---|---|
 | **DigitalTwins-Telemetry** | 1.0 | はい | システムに対してメッセージを示す定数値。 |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | はい | **Message** を送信しているセンサーの一意識別子。 この値は、それを処理するシステムでのオブジェクトの **HardwareId** プロパティと一致する必要があります。 たとえば、「 `00FF0643BE88-CO2` 」のように入力します。 |
-| **CreationTimeUtc** | `string` | いいえ  | ペイロードのサンプリング日時を示す [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の日付文字列。 たとえば、「 `2018-09-20T07:35:00.8587882-07:00` 」のように入力します。 |
-| **CorrelationId** | `string` | いいえ  | システム全体でイベントをトレースするために使用される UUID。 たとえば、「 `cec16751-ab27-405d-8fe6-c68e1412ce1f` 」のように入力します。
+| **CreationTimeUtc** | `string` | いいえ | ペイロードのサンプリング日時を示す [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) 形式の日付文字列。 たとえば、「 `2018-09-20T07:35:00.8587882-07:00` 」のように入力します。 |
+| **CorrelationId** | `string` | いいえ | システム全体でイベントをトレースするために使用される UUID。 たとえば、「 `cec16751-ab27-405d-8fe6-c68e1412ce1f` 」のように入力します。
 
 ### <a name="send-your-message-to-digital-twins"></a>Digital Twins へのメッセージの送信
 

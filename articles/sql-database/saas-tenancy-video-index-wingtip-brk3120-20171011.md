@@ -13,11 +13,11 @@ ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: bbe220780a3c21e7bfb15d0568904af4ed47f765
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567555"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61487281"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスと注釈付きのビデオ
 
@@ -25,7 +25,7 @@ ms.locfileid: "55567555"
 
 ビデオでは、以下のドキュメントの情報が詳しく説明されています。 
 - *概念:* マルチテナント SaaS データベース テナント パターン[saas-concept-design-patterns-563e]
-- *チュートリアル:*[Wingtip Tickets SaaS アプリケーション][saas-how-welcome-wingtip-app-679t]
+- *チュートリアル:* [Wingtip Tickets SaaS アプリケーション][saas-how-welcome-wingtip-app-679t]
 
 ビデオと記事では、クラウドの Azure SQL Database を利用してマルチテナント アプリケーションを作成するときのさまざまなフェーズについて説明されています。 Azure SQL Database の特殊な機能により、管理が容易で信頼できるパフォーマンスのマルチテナント アプリを、簡単に開発して実装できます。
 
@@ -44,7 +44,7 @@ ms.locfileid: "55567555"
 
 以下のタイトルは、この記事の後半にある対応する注釈付きセクションへのリンクです。
 
-- [1.**(開始)** ようこそスライド、0:00:03](#anchor-image-wtip-min00001)
+- [1. **(開始)** ようこそスライド、0:00:03](#anchor-image-wtip-min00001)
 - [2.セッションの目標、0:03:11](#anchor-image-wtip-min00311)
 - [3.予定、0:04:17](#anchor-image-wtip-min00417)
 - [4.マルチテナント Web アプリ、0:05:05](#anchor-image-wtip-min00505)
@@ -92,7 +92,7 @@ ms.locfileid: "55567555"
 
 
 &nbsp; <a name="anchor-image-wtip-min00001"/>
-#### <a name="1-start-welcome-slide-00001"></a>1.*(開始)* ようこそスライド、0:00:01
+#### <a name="1-start-welcome-slide-00001"></a>1. *(開始)* ようこそスライド、0:00:01
 
 *MYOB からの学習:Azure SQL Database での SaaS アプリケーション用の設計パターン - BRK3120*
 
@@ -296,7 +296,7 @@ ms.locfileid: "55567555"
 
 - *概念:* マルチテナント SaaS データベース テナント パターン[saas-concept-design-patterns-563e]
 
-- *チュートリアル:*[Wingtip Tickets SaaS アプリケーション][saas-how-welcome-wingtip-app-679t]
+- *チュートリアル:* [Wingtip Tickets SaaS アプリケーション][saas-how-welcome-wingtip-app-679t]
 
 - Wingtip Tickets SaaS テナント アプリケーションのさまざまなバージョンの GitHub リポジトリ:
     - [GitHub リポジトリ - スタンドアロン アプリケーション モデル用][github-wingtip-standaloneapp]。

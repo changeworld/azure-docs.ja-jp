@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: tamram
 ms.openlocfilehash: ede5e2587f1f4d99193e621965b68f75fbad27f4
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66149177"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181073"
 ---
 これで、Azure Blob Storage の基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 

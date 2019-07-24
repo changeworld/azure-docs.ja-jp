@@ -5,19 +5,19 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 05/29/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 037f37d6a8e1c41579403dbf7c9dd265efbb5d10
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8b1a701beac867c5f331ffa1ee1dee615961c6b3
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65030030"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416288"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-an-azure-blockchain-service-network"></a>クイック スタート:Truffle を使用して Azure Blockchain Service ネットワークに接続する
+# <a name="quickstart-use-truffle-to-connect-to-an-azure-blockchain-service-network"></a>クイック スタート:Truffle を使用して Azure Blockchain Service ネットワークに接続する
 
 Truffle は、Azure Blockchain Service ノードへの接続に使用できるブロックチェーン開発環境です。
 
@@ -26,24 +26,24 @@ Truffle は、Azure Blockchain Service ノードへの接続に使用できる�
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure Blockchain メンバーを作成する](create-member.md)
-* Truffle では、[Node.js](https://nodejs.org)、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)、[Truffle](https://github.com/trufflesuite/truffle) など、いくつかのツールがインストールされている必要があります。
-
-    Windows 10 で迅速に設定するには、Unix Bash シェル ターミナル用の [Ubuntu on Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6) をインストールした後、[Truffle](https://github.com/trufflesuite/truffle) をインストールします。 Ubuntu on Windows のディストリビューションには、Node.js と Git が含まれています。
+* [Truffle](https://github.com/trufflesuite/truffle) をインストールする。 Truffle では、[Node.js](https://nodejs.org)、[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) など、いくつかのツールがインストールされている必要があります。
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) をインストールする。 Python は Web3 に必要です。
 
 ## <a name="create-truffle-project"></a>Truffle プロジェクトを作成する
 
-1. Bash シェル ターミナルを開きます。
-1. ディレクトリを Truffle プロジェクト ディレクトリを作成する場所に変更します。 たとえば、次のように入力します。
-
-    ``` bash
-    cd /mnt/c
-    ```
-
+1. Node.js コマンド プロンプトまたはシェルを開きます。
+1. ディレクトリを Truffle プロジェクト ディレクトリを作成する場所に変更します。
 1. プロジェクト用のディレクトリを作成し、パスを新しいディレクトリに変更します。 たとえば、次のように入力します。
 
     ``` bash
     mkdir truffledemo
     cd truffledemo
+    ```
+
+1. Truffle プロジェクトを初期化します。
+
+    ``` bash
+    truffle init
     ```
 
 1. プロジェクト フォルダーに Ethereum JavaScript API web3 をインストールします。 現在、バージョン web3 バージョン 1.0.0-beta.37 が必要です。
@@ -53,12 +53,6 @@ Truffle は、Azure Blockchain Service ノードへの接続に使用できる�
     ```
 
     インストール中に npm の警告が表示されることがあります。
-
-1. Truffle プロジェクトを初期化します。
-
-    ``` bash
-    truffle init
-    ```
 
 1. Truffle の対話型開発コンソールを起動します。
 
@@ -70,7 +64,7 @@ Truffle は、Azure Blockchain Service ノードへの接続に使用できる�
 
 ## <a name="connect-to-transaction-node"></a>トランザクション ノードに接続する
 
-ここでは、Web3 を使用してトランザクション ノードに接続します。 Web3 の接続文字列は、Azure portal から取得できます。
+*Web3* を使用してトランザクション ノードに接続します。 *Web3* の接続文字列は、Azure portal から取得できます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. Azure Blockchain Service メンバーに移動します。 **[Transaction nodes]\(トランザクション ノード\)** と既定のトランザクション ノード リンクを選択します。
@@ -90,8 +84,7 @@ Truffle は、Azure Blockchain Service ノードへの接続に使用できる�
     truffle(develop)> var Web3 = require("Web3");
     truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
     truffle(develop)> var web3 = new Web3(provider);
-    truffle(develop)>
-     ```
+    ```
 
     **web3** オブジェクトでメソッドを呼び出して、トランザクション ノードと対話することができます。
 

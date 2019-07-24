@@ -8,19 +8,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: bef71f210e015dc10cd6f5c0c655d0d3beee3655
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5492f4865e464cf8bedaee6e9b0ab25532e21459
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728925"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448754"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight 上の Apache Spark クラスターでカスタム Python ライブラリを使用して Web サイト ログを分析する
 
 このノートブックは、HDInsight 上の Apache Spark でカスタム ライブラリを使用してログ データを分析する方法を示します。 使用するカスタム ライブラリは、 **iislogparser.py**と呼ばれる Python ライブラリです。
 
 > [!TIP]  
-> このチュートリアルは、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても利用できます。 Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。 Notebook からチュートリアルを実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、**PySpark** フォルダーにある **Analyze logs with Spark using a custom library.ipynb (カスタム library.ipynb を使用した Spark でのログの分析)** Notebook を実行します。
+> この記事はまた、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても使用できます。 Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。 Notebook から記事を実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、**PySpark** フォルダーにある **Analyze logs with Spark using a custom library.ipynb (カスタム library.ipynb を使用した Spark でのログの分析)** Notebook を実行します。
 >
 >
 
@@ -37,8 +37,8 @@ ms.locfileid: "64728925"
 
 データが Apache Hive テーブルとして保存されたら、次のセクションでは、Power BI や Tableau などの BI ツールを使用してその Hive テーブルに接続します。
 
-1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
-2. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
+1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]**  >  **[HDInsight クラスター]** でクラスターに移動することもできます。   
+2. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、 **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
    > [!NOTE]
    > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
@@ -46,7 +46,7 @@ ms.locfileid: "64728925"
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
-3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
+3. 新しい Notebook を作成します。 **[新規]** をクリックし、 **[PySpark]** をクリックします。
 
     ![新しい Jupyter Notebook の作成](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook の作成")
 4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
@@ -58,7 +58,7 @@ ms.locfileid: "64728925"
         from pyspark.sql.types import *
 
 
-1. クラスターにあらかじめ用意されているサンプル ログ データを使用して、RDD を作成します。 クラスターに関連付けられている既定のストレージ アカウント内のデータ (**\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**) にアクセスすることができます。
+1. クラスターにあらかじめ用意されているサンプル ログ データを使用して、RDD を作成します。 クラスターに関連付けられている既定のストレージ アカウント内のデータ ( **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**) にアクセスすることができます。
 
         logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 

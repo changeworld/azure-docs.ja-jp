@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: fb00c09680c6a80bc093c6f02ccd8d7269b8748c
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 42ee1dea8c9735592f6d6c9e0542ca094a6be383
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149480"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65962915"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Azure Front Door Service でのキャッシュ
 次のドキュメントは、キャッシュを有効にしたルーティング規則を使用して Front Door の動作を指定します。
@@ -101,7 +101,7 @@ Front Door でのキャッシュの消去では、大文字と小文字が区別
 ## <a name="cache-expiration"></a>キャッシュの有効期限
 キャッシュに項目が格納される期間を判断するために、次のヘッダーの順序が使用されます。</br>
 1. Cache-Control: s-maxage=\<seconds>
-2. Cache-Control: maxage=\<seconds>
+2. Cache-Control: max-age=\<seconds>
 3. Expires: \<http-date>
 
 応答がキャッシュされないことを示す Cache-Control 応答ヘッダー (Cache-Control: private、Cache-Control: no-cache、Cache-Control: no-store など) は受け入れられます。 ただし、POP で処理中の同じ URL の複数の要求がある場合、それらは応答を共有する場合があります。 キャッシュ制御が存在しない場合、既定の動作として、AFD によってリソースが X 時間の間、キャッシュに入れられます。ここで、X は 1 日から 3 日までの範囲からランダムに選択されます。

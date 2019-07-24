@@ -9,13 +9,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2019
-ms.author: tyao;kumud
-ms.openlocfilehash: 4c2f070e9b3c972f063008df8880b196ddb069cc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 8f51cb6944221416b098a9b953db417053155f1e
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797465"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849100"
 ---
 # <a name="policy-settings-for-web-application-firewall-with-azure-front-door"></a>Azure Front Door での Web アプリケーション ファイアウォールのポリシーの設定
 
@@ -31,7 +32,7 @@ Front Door 用の WAF ポリシーは、次の 2 つの状態のいずれかに�
 
 WAF ポリシーは、次の 2 つのモードで実行するように構成できます。
 
-- **検出モード** 検出モードで実行されている WAF では、監視以外のアクションは実施されず、要求とそれに一致した WAF ルールが WAF ログに記録されます。 Front Door に対して診断ログを有効にします (Azure portal では、**[診断]** セクションで実現できます)。
+- **検出モード** 検出モードで実行されている WAF では、監視以外のアクションは実施されず、要求とそれに一致した WAF ルールが WAF ログに記録されます。 Front Door に対して診断ログを有効にします (Azure portal では、 **[診断]** セクションで実現できます)。
 
 - **防止モード** 防止モードで実行するように構成された WAF は、要求が規則に一致すると指定されたアクションを実行します。 一致した要求は、WAF ログにも記録されます。
 

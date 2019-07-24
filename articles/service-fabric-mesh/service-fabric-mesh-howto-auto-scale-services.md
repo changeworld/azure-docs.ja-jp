@@ -16,11 +16,11 @@ ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 2233dffabd7c76ca55cf215f8bc04e66134f5799
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338804"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60583606"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションに対する自動スケーリング ポリシーを作成する
 Service Fabric Mesh にアプリケーションをデプロイすることの主な利点の 1 つは、サービスを簡単にスケールイン/スケールアウトできることです。これはサービスに対する負荷量の変化に対処するためや可用性を上げるために使用します。 手動でサービスをスケールインまたはスケールアウトしたり、自動スケーリング ポリシーを設定したりできます。

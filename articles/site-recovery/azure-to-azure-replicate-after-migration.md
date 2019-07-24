@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 019c6ec776277a9102cb95cd685bbae0fc660d66
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 4b764c8e7c3d97ff521add05033265f705c4136f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615916"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66399533"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Azure への移行後に Azure VM のディザスター リカバリーをセットアップする 
 
@@ -35,7 +35,7 @@ ms.locfileid: "59615916"
 
 ### <a name="install-the-agent-on-windows-vms"></a>Windows VM にエージェントをインストールする
 
-9.7.0.0 より前のバージョンの Site Recovery モビリティ サービスを実行しているか、またはエージェントを手動でインストールするその他の何らかの必要性がある場合、次の操作を行います。  
+9\.7.0.0 より前のバージョンの Site Recovery モビリティ サービスを実行しているか、またはエージェントを手動でインストールするその他の何らかの必要性がある場合、次の操作を行います。  
 
 1. VM の管理者特権があることを確認します。
 2. [VM エージェント インストーラー](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードします。
@@ -45,7 +45,7 @@ ms.locfileid: "59615916"
 エージェントがインストールされていることを確認するには:
 
 1. Azure VM の C:\WindowsAzure\Packages フォルダーで WaAppAgent.exe ファイルを確認します。
-2. このファイルを右クリックし、**[プロパティ]** で **[詳細]** タブを選択します。
+2. このファイルを右クリックし、 **[プロパティ]** で **[詳細]** タブを選択します。
 3. **[製品バージョン]** フィールドに 2.6.1198.718 以上が表示されていることを確認します。
 
 Windows のエージェントのインストールについては、[こちら](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)をご覧ください。
@@ -75,7 +75,7 @@ Windows のエージェントのインストールについては、[こちら](
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Linux の場合は、root ユーザーとしてサインインします。 端末で、**/user/local/ASR** に移動して、次のコマンドを実行します。
+    - Linux の場合は、root ユーザーとしてサインインします。 端末で、 **/user/local/ASR** に移動して、次のコマンドを実行します。
         ```
         ./uninstall.sh -Y
         ```

@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 6be1d2b1e68c52d45a42027be5f6d69cc2c25adc
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: bd53ae3346882cf20ae7464548fa9ef2c0329f05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509940"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65957015"
 ---
 # <a name="smart-contract-integration-patterns"></a>スマート コントラクトの統合パターン
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory レポートの保持ポリシー | Microsoft Docs
-description: Azure Active Directory でのレポート データの保持ポリシー
+title: Azure AD にレポート データが保存される期間 | Microsoft Docs
+description: Azure でさまざまな種類のレポート データが保存される期間について説明します。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,14 +17,14 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1423fddc13a6912e90b6a239921cf2a4d2662ec
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 41fa12c9d79d14a6602d995ed93b5d1a23be8a4d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683735"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65781054"
 ---
-# <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory レポートの保持ポリシー
+# <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD にレポート データが保存される期間
 
 この記事では、Azure Active Directory のさまざまなアクティビティ レポートのデータ保持ポリシーについて説明します。 
 

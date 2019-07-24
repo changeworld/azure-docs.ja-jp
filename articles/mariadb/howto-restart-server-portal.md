@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/7/2019
 ms.openlocfilehash: 232037562c4a84ee9217e2e89a0da2ffdc37d560
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "60745792"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB サーバーの再起動
@@ -30,7 +30,7 @@ ms.locfileid: "60745792"
 
 1. Azure portal で Azure Database for MariaDB サーバーを選択します。
 
-2. サーバーの **[概要]** ページのツール バーで、**[再起動]** をクリックします。
+2. サーバーの **[概要]** ページのツール バーで、 **[再起動]** をクリックします。
 
    ![Azure Database for MariaDB - [概要] - [再起動] ボタン](./media/howto-restart-server-portal/2-server.png)
 

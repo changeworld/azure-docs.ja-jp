@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: wesmc
 ms.openlocfilehash: f2af216dc199de7a49546a903b929a17cbddfe9f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341193"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60398682"
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT Hub と物理デバイス入門チュートリアル
 

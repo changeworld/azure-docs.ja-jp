@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: kumud
 ms.openlocfilehash: 23e46290af6bdb4c217d8fa0cd836673652fc81d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64701369"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>仮想マシンのネットワーク インターフェイスの追加と削除
@@ -55,18 +55,18 @@ VM を作成する前に、「[ネットワーク インターフェイスの作
 ## <a name="vm-add-nic"></a>ネットワーク インターフェイスを既存の VM に追加する
 
 1. Azure ポータルにサインインします。
-2. ポータルの上部にある検索ボックスに、ネットワーク インターフェイスを追加する VM の名前を入力するか、**[すべてのサービス]**、**[仮想マシン]** の順に選択して VM を参照します。 VM が見つかったら、選択します。 この VM は、追加するネットワーク インターフェイスの数をサポートしている必要があります。 各 VM サイズでサポートされるネットワーク インターフェイスの数を調べるには、「[Azure の Linux 仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」または「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。  
-3. **[設定]** で、**[概要]** を選択します。 **[停止]** を選択し、VM の**状態**が **[停止済み (割り当て解除)]** に変わるまで待ちます。
-4. **[設定]** で、**[ネットワーク]** を選択します。
+2. ポータルの上部にある検索ボックスに、ネットワーク インターフェイスを追加する VM の名前を入力するか、 **[すべてのサービス]** 、 **[仮想マシン]** の順に選択して VM を参照します。 VM が見つかったら、選択します。 この VM は、追加するネットワーク インターフェイスの数をサポートしている必要があります。 各 VM サイズでサポートされるネットワーク インターフェイスの数を調べるには、「[Azure の Linux 仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」または「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。  
+3. **[設定]** で、 **[概要]** を選択します。 **[停止]** を選択し、VM の**状態**が **[停止済み (割り当て解除)]** に変わるまで待ちます。
+4. **[設定]** で、 **[ネットワーク]** を選択します。
 5. **[ネットワーク インターフェイスの接続]** を選択します。 現在別の VM に接続されていないネットワーク インターフェイスの一覧で、接続するネットワーク インターフェイスを選択します。
 
    >[!NOTE]
    >選択したネットワーク インターフェイスで高速ネットワークを有効にしたり、IPv6 アドレスを割り当てたりすることはできません。また、このネットワーク インターフェイスの仮想ネットワークは、現在 VM に接続されているネットワーク インターフェイスが含まれる仮想ネットワークと同じである必要があります。
 
-   既存のネットワーク インターフェイスがない場合は、最初に作成する必要があります。 これを行うには、**[ネットワーク インターフェイスの作成]** を選択します。 ネットワーク インターフェイスの作成方法の詳細については、「[ネットワーク インターフェイスの作成](virtual-network-network-interface.md#create-a-network-interface)」を参照してください。 ネットワーク インターフェイスを仮想マシンに追加するときの追加の制約に関する詳細については、「[制約](#constraints)」を参照してください。
+   既存のネットワーク インターフェイスがない場合は、最初に作成する必要があります。 これを行うには、 **[ネットワーク インターフェイスの作成]** を選択します。 ネットワーク インターフェイスの作成方法の詳細については、「[ネットワーク インターフェイスの作成](virtual-network-network-interface.md#create-a-network-interface)」を参照してください。 ネットワーク インターフェイスを仮想マシンに追加するときの追加の制約に関する詳細については、「[制約](#constraints)」を参照してください。
 
 6. **[OK]** を選択します。
-7. **[設定]** で、**[概要]**、**[開始]** の順に選択し、仮想マシンを開始します。
+7. **[設定]** で、 **[概要]** 、 **[開始]** の順に選択し、仮想マシンを開始します。
 8. 複数のネットワーク インターフェイスが適切に使用されるように VM オペレーティング システムを構成します。 複数のネットワーク インターフェイスについては、[Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) または [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) の構成方法に関するページをご確認ください。
 
 ### <a name="commands"></a>command
@@ -82,7 +82,7 @@ VM にアタッチされているネットワーク インターフェイスを�
 1. ご利用のサブスクリプションの所有者、共同作成者、またはネットワーク共同作成者いずれかのロールが割り当てられているアカウントで、[Azure Portal](https://portal.azure.com) にサインインします。 アカウントへのロールの割り当て方法の詳細については、「[Azure ロールベースのアクセス制御の組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」を参照してください。
 2. Azure Portal 上部に "**リソースの検索**" というテキストが表示されたボックスがあります。そこに "**仮想マシン**" と入力します。 検索結果に **[仮想マシン]** が表示されたら、それを選択します。
 3. ネットワーク インターフェイスを表示する VM の名前を選択します。
-4. 選択した VM の **[設定]** セクションで、**[ネットワーク]** を選択します。 ネットワーク インターフェイスの設定とそれを変更する方法については、[ネットワーク インターフェイスの管理](virtual-network-network-interface.md)に関するページをご覧ください。 ネットワーク インターフェイスに割り当てる IP アドレスの追加、変更、または削除を行う方法については、[ネットワーク インターフェイスの IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページを参照してください。
+4. 選択した VM の **[設定]** セクションで、 **[ネットワーク]** を選択します。 ネットワーク インターフェイスの設定とそれを変更する方法については、[ネットワーク インターフェイスの管理](virtual-network-network-interface.md)に関するページをご覧ください。 ネットワーク インターフェイスに割り当てる IP アドレスの追加、変更、または削除を行う方法については、[ネットワーク インターフェイスの IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページを参照してください。
 
 ### <a name="commands"></a>command
 
@@ -94,9 +94,9 @@ VM にアタッチされているネットワーク インターフェイスを�
 ## <a name="remove-a-network-interface-from-a-vm"></a>ネットワーク インターフェイスを VM から削除する
 
 1. Azure ポータルにサインインします。
-2. ポータルの上部にある検索ボックスで、ネットワーク インターフェイスを削除 (デタッチ) する VM の名前を検索するか、**[すべてのサービス]**、**[仮想マシン]** の順に選択して VM を参照します。 VM が見つかったら、選択します。
+2. ポータルの上部にある検索ボックスで、ネットワーク インターフェイスを削除 (デタッチ) する VM の名前を検索するか、 **[すべてのサービス]** 、 **[仮想マシン]** の順に選択して VM を参照します。 VM が見つかったら、選択します。
 3. **[設定]** で **[概要]** を選択し、次に **[停止]** を選択します。 VM の**状態**が **[停止済み (割り当て解除)]** に変わるまで待ちます。
-4. **[設定]** で、**[ネットワーク]** を選択します。
+4. **[設定]** で、 **[ネットワーク]** を選択します。
 5. **[ネットワーク インターフェイスの切断]** を選択します。 現在仮想マシンに接続されているネットワーク インターフェイスの一覧で、デタッチするネットワーク インターフェイスを選択します。
 
    >[!NOTE]

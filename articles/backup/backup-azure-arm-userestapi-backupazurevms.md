@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: pullabhk
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 8a47d3cf346d7961e9f8b1c4fa615a2faa6b1da0
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 295c4fed9ab674f0c9e812c02f6b82ee53ef1b91
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289579"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274850"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -41,16 +41,16 @@ POST URI には、パラメーターとして `{subscriptionId}`、`{vaultName}`
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>応答
+#### <a name="responses"></a>Responses
 
-"refresh" 操作は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、別個に追跡する必要がある別の操作が作成されます。
+"refresh" 操作は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |type  |説明  |
+|Name  |Type  |説明  |
 |---------|---------|---------|
 |204 No Content     |         |  OK で、返されたコンテンツはありません      |
-|202 受理されました     |         |     承認済み    |
+|202 Accepted     |         |     承認済み    |
 
 ##### <a name="example-responses"></a>応答の例
 
@@ -108,13 +108,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *GET* URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません。
 
-#### <a name="responses"></a>応答
+##### <a name="responses-1"></a>応答
 
-|Name  |type  |説明  |
+|Name  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-##### <a name="example-responses"></a>応答の例
+##### <a name="example-responses-1"></a>応答の例
 
 *GET* 要求を送信すると、200 (OK) 応答が返されます。
 
@@ -186,7 +186,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 保護された項目を作成する場合、要求本文のコンポーネントは次のようになります。
 
-|Name  |type  |説明  |
+|Name  |Type  |説明  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem リソースのプロパティ         |
 
@@ -208,16 +208,16 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 `{sourceResourceId}` は、上述の、[保護可能な項目の一覧表示の応答](#example-responses-1)からの `{virtualMachineId}` です。
 
-#### <a name="responses"></a>応答
+#### <a name="responses"></a>Responses
 
-保護された項目の作成は、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、別個に追跡する必要がある別の操作が作成されます。
+保護された項目の作成は、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |type  |説明  |
+|Name  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 受理されました     |         |     承認済み    |
+|202 Accepted     |         |     承認済み    |
 
 ##### <a name="example-responses"></a>応答の例
 
@@ -300,7 +300,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 オンデマンド バックアップをトリガーする場合、要求本文のコンポーネントは次のようになります。
 
-|Name  |type  |説明  |
+|Name  |Type  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource プロパティ         |
 
@@ -319,17 +319,17 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 }
 ```
 
-### <a name="responses"></a>応答
+### <a name="responses"></a>Responses
 
-オンデマンド バックアップをトリガーすることは、[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、別個に追跡する必要がある別の操作が作成されます。
+オンデマンド バックアップのトリガーは[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)として扱われます。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|Name  |type  |説明  |
+|Name  |Type  |説明  |
 |---------|---------|---------|
-|202 受理されました     |         |     承認済み    |
+|202 Accepted     |         |     承認済み    |
 
-#### <a name="example-responses"></a>応答の例
+##### <a name="example-responses-3"></a>応答の例
 
 オンデマンド バックアップの *POST* 要求を送信したときの最初の応答は、場所のヘッダーまたは Azure-async-header を含む 202 (Accepted) です。
 
@@ -393,7 +393,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="changing-the-policy-of-protection"></a>保護のポリシーの変更
 
-VM の保護に使用されているポリシーを変更するために、[保護を有効にする](#enabling-protection-for-the-azure-vm)のと同じ形式を使用できます。 [要求本文](#example-request-body)で新しいポリシー ID を指定し、要求を送信するだけです。 例: testVM のポリシーを "DefaultPolicy" から "ProdPolicy" に変更するには、要求本文で "ProdPolicy" という ID を指定します。
+VM の保護に使用されているポリシーを変更するために、[保護を有効にする](#enabling-protection-for-the-azure-vm)のと同じ形式を使用できます。 [要求本文](#example-request-body)で新しいポリシー ID を指定し、要求を送信するだけです。 例:testVM のポリシーを 'DefaultPolicy' から 'ProdPolicy' に変更するには、要求本文で ID 'ProdPolicy' を指定します。
 
 ```http
 {
@@ -439,16 +439,16 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
 ```
 
-### <a name="responses"></a>応答
+### <a name="responses-2"> </a>応答
 
-保護の *DELETE* は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、別個に追跡する必要がある別の操作が作成されます。
+保護の *DELETE* は[非同期操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
-これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 204 (NoContent) です。
+これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、次にその操作が完了したときは 204 (NoContent)。
 
-|Name  |type  |説明  |
+|Name  |Type  |説明  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
-|202 受理されました     |         |     承認済み    |
+|202 Accepted     |         |     承認済み    |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -11,11 +11,11 @@ ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
 ms.openlocfilehash: 59824c4a10c50265ea0a15be69755748b87d4a3f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357827"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60690386"
 ---
 # <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Azure ポータルでハイ コントラストを有効にするかテーマを変更する
 
@@ -25,7 +25,7 @@ Azure ポータルのコントラストを上げる必要があったり、カ�
 
 ## <a name="turn-on-high-contrast"></a>ハイ コントラストを有効にする
 
-1. [Azure portal](https://portal.azure.com) のヘッダーで、**[設定]** を選択します。
+1. [Azure portal](https://portal.azure.com) のヘッダーで、 **[設定]** を選択します。
 
     ![Azure ポータルのポータル設定 (歯車) アイコンを示しているスクリーンショット](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 1. **[白]** または **[黒]** を選択します。
@@ -40,7 +40,7 @@ Azure ポータルのコントラストを上げる必要があったり、カ�
 
 ## <a name="change-theme"></a>テーマを変更する
 
-1. [Azure portal](https://portal.azure.com) のヘッダーで、**[設定]** を選択します。
+1. [Azure portal](https://portal.azure.com) のヘッダーで、 **[設定]** を選択します。
 
     ![Azure ポータルのポータル設定 (歯車) アイコンを示しているスクリーンショット](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 
@@ -52,5 +52,5 @@ Azure ポータルのコントラストを上げる必要があったり、カ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure portal のキーボード ショートカット](azure-portal-keyboard-shortcuts.md)
+- [Azure ポータルのキーボード ショートカット](azure-portal-keyboard-shortcuts.md)
 - [サポートされているブラウザーとデバイス](../azure-preview-portal-supported-browsers-devices.md)

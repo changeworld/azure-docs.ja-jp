@@ -5,16 +5,16 @@ services: cosmos-db
 author: luisbosquez
 manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
+ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: lbosq
-ms.openlocfilehash: 2f3967c64e79b2bc7b01b35eff26f5ac0d4e3db4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 4964f485f5e781b7fe0a0f09486512fe6a5b9035
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287576"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67592490"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>実行プロファイル ステップを使用して Gremlin のクエリを評価する方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "59287576"
 
 このステップを使用するには、Gremlin クエリの最後に `executionProfile()` 関数の呼び出しを追加するだけです。 **Gremlin クエリが実行され**、操作の結果でクエリ実行プロファイルを含む JSON 応答オブジェクトが返されます。
 
-例: 
+例:
 
 ```java
     // Basic traversal

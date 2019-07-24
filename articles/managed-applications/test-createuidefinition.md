@@ -1,40 +1,58 @@
 ---
 title: Azure Managed Applications 用の UI 定義をテストする | Microsoft Docs
 description: ポータルを使用してご自身の Azure マネージド アプリケーションを作成するためのユーザー エクスペリエンスをテストする方法について説明します。
-services: managed-applications
-documentationcenter: na
 author: tfitzmac
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/22/2018
+ms.date: 05/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: c88bdce64e88f8639da2c4ebb01f4594fccff8a0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 99ca319910be2cb20214172826eb40361abe72f0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747090"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257665"
 ---
-# <a name="test-azure-portal-interface-for-your-managed-application"></a>マネージド アプリケーション用の Azure portal のインターフェイスをテストする
-ご自身の Azure マネージド アプリケーション用の [createUiDefinition.json ファイルを作成](create-uidefinition-overview.md)したら、ユーザー エクスペリエンスをテストする必要があります。 テストを簡素化するには、ポータルでご自身のファイルを読み込むスクリプトを使用します。 マネージド アプリケーションを実際に展開する必要はありません。
+# <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure Managed Applications 用のポータル インターフェイスをテストする
+
+マネージド アプリケーション用の [createUiDefinition.json ファイルを作成](create-uidefinition-overview.md)したら、ユーザー エクスペリエンスをテストする必要があります。 テストを簡素化するには、ポータルにファイルを読み込むサンドボックス環境を使用します。 マネージド アプリケーションを実際に展開する必要はありません。 サンドボックスでは、最新の全画面表示ポータル エクスペリエンスでユーザー インターフェイスが表示されます。 または、インターフェイスのテスト用の PowerShell スクリプトを使用することもできますが、ポータルの従来のビューが使われます。 この記事では、両方の方法を紹介します。 インターフェイスのプレビューには、サンドボックスがお勧めの方法です。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **createUiDefinition.json** ファイル。 このファイルがない場合は、[サンプル ファイル](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)をコピーして、ローカルに保存します。
+* **createUiDefinition.json** ファイル。 このファイルがない場合は、[サンプル ファイル](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)をコピーします。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="download-test-script"></a>テスト スクリプトのダウンロード
+## <a name="use-sandbox"></a>サンドボックスの使用
+
+1. 「[UI 定義サンドボックスの作成](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)」を開きます。
+
+   ![サンドボックスの表示](./media/test-createuidefinition/show-sandbox.png)
+
+1. 空の定義をご自分の createUiDefinition.json ファイルの内容に置き換えます。 **[Preview]\(プレビュー\)** を選択します。
+
+   ![[プレビュー] の選択](./media/test-createuidefinition/select-preview.png)
+
+1. 作成したフォームが表示されます。 ユーザー エクスペリエンスをステップ実行して、値を入力できます。
+
+   ![フォームの表示](./media/test-createuidefinition/show-ui-form.png)
+
+### <a name="troubleshooting"></a>トラブルシューティング
+
+**[Preview]\(プレビュー\)** の選択後、フォームが表示されない場合は、構文エラーがある可能性があります。 右側のスクロール バーの赤色のインジケーターを探して、そこに移動します。
+
+![構文エラーの表示](./media/test-createuidefinition/show-syntax-error.png)
+
+フォームが表示されず、代わりにしずくの形が付いたクラウドのアイコンが表示された場合は、プロパティが不足しているなど、フォームにエラーがあります。 ブラウザーで、Web Developer Tools を開きます。 **コンソール**にお使いのインターフェイスに関する重要なメッセージが表示されます。
+
+![エラーの表示](./media/test-createuidefinition/show-error.png)
+
+## <a name="use-test-script"></a>テスト スクリプトの使用
 
 ポータルでご自身のインターフェイスをテストするには、お使いのローカル コンピューターに次のスクリプトのいずれかをコピーします。
 
 * [PowerShell side-load スクリプト](https://github.com/Azure/azure-quickstart-templates/blob/master/SideLoad-CreateUIDefinition.ps1)
 * [Azure CLI side-load スクリプト](https://github.com/Azure/azure-quickstart-templates/blob/master/sideload-createuidef.sh)
-
-## <a name="run-script"></a>スクリプトの実行
 
 ポータルでご自身のインターフェイス ファイルを確認するには、ダウンロードしたスクリプトを実行します。 スクリプトによりストレージ アカウントがご自身の Azure サブスクリプションに作成され、該当する createUiDefinition.json ファイルがそのストレージ アカウントにアップロードされます。 ストレージ アカウントが作成されるのは、最初にスクリプトを実行したとき、またはストレージ アカウントが削除されている場合です。 ストレージ アカウントが Azure サブスクリプション内に存在している場合は、そのアカウントが再利用されます。 スクリプトによって、ポータルが開き、ストレージ アカウントから該当するファイルが読み込まれます。
 
@@ -70,19 +88,9 @@ Azure CLI では、次を使用します。
 ./sideload-createuidef.sh
 ```
 
-## <a name="test-your-interface"></a>インターフェイスのテスト
-
 スクリプトによって、ブラウザーで新しいタブが開きます。 マネージド アプリケーションを作成するためのインターフェイスでポータルが表示されます。
 
 ![ポータルの表示](./media/test-createuidefinition/view-portal.png)
-
-フィールドに入力する前に、お使いのブラウザーで Web 開発者ツールを開きます。 **コンソール**にお使いのインターフェイスに関する重要なメッセージが表示されます。
-
-![コンソールの選択](./media/test-createuidefinition/select-console.png)
-
-インターフェイスの定義にエラーがある場合は、コンソールにその説明が表示されます。
-
-![エラーの表示](./media/test-createuidefinition/show-error.png)
 
 フィールドの値を指定します。 完了したら、テンプレートに渡された値が表示されます。
 
@@ -90,15 +98,7 @@ Azure CLI では、次を使用します。
 
 これらの値をパラメーター ファイルとして使用して、デプロイ テンプレートをテストできます。
 
-## <a name="troubleshooting-the-interface"></a>インターフェイスをトラブルシューティングする
-
-よく発生するエラーを次にいくつか示します。
-
-* ポータルでインターフェイスが読み込まれず、 代わりに、涙の粒が付いたクラウドのアイコンが表示される。 通常、このアイコンが表示されるのは、ファイル内に構文エラーがあるときです。 VS Code (またはスキーマを検証できる他の JSON エディター) で ファイルを開き、構文エラーを探します。
-
-* 概要画面でポータルがハングする。 通常、この状況が発生するのは、出力セクションにバグがある場合です。 たとえば、存在しないコントロールを参照している可能性があります。
-
-* 出力内のパラメーターが空である。 パラメーターが、存在しないプロパティを参照している可能性があります。 たとえば、コントロールの参照は有効であっても、プロパティの参照が無効になっています。
+概要画面で、ポータルがハングした場合、出力セクションにバグがある可能性があります。 たとえば、存在しないコントロールを参照している可能性があります。 出力のパラメーターが空の場合、パラメーターが、存在しないプロパティを参照している可能性があります。 たとえば、コントロールの参照は有効であっても、プロパティの参照が無効になっています。
 
 ## <a name="test-your-solution-files"></a>ソリューション ファイルのテスト
 

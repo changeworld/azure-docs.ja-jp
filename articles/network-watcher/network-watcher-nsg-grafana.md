@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
 ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000388"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62116257"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Network Watcher と Grafana を使用してネットワーク セキュリティ グループのフロー ログを管理および分析する
 
@@ -192,7 +192,7 @@ sudo service grafana-server start
 
 #### <a name="create-a-dashboard"></a>ダッシュボードを作成する
 
-NSG フロー ログを含む ElasticSearch インデックスから読み取るように Grafana が正常に構成されたら、ダッシュボードを作成し、カスタマイズできます。 新しいダッシュボードを作成するには、**[Create your first dashboard]\(最初のダッシュボードの作成\)** を選択します。 次のサンプル グラフ構成は、NSG ルールによってセグメント化されたフローを示しています。
+NSG フロー ログを含む ElasticSearch インデックスから読み取るように Grafana が正常に構成されたら、ダッシュボードを作成し、カスタマイズできます。 新しいダッシュボードを作成するには、 **[Create your first dashboard]\(最初のダッシュボードの作成\)** を選択します。 次のサンプル グラフ構成は、NSG ルールによってセグメント化されたフローを示しています。
 
 ![ダッシュボード グラフ](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
 

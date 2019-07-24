@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 6663e3fc48408de83e92f39e8c8070005818852d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b6b61ee44d252f76cd1aa5e1790456acb3d7bae5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097981"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620910"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics の JavaScript ユーザー定義集計 (プレビュー)
  
@@ -175,7 +175,7 @@ JavaScript UDA のデータ型については、[JavaScript UDF の統合](strea
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>ASA クエリで JavaScript UDA を呼び出す
 
-Azure portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 例: 
+Azure portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 例:
 
 ```SQL
 WITH value AS
@@ -234,5 +234,5 @@ GROUP BY TumblingWindow(minute, 5)
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

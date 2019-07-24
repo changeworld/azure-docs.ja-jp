@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 12/26/2017
+ms.date: 12/26/2018
 ms.author: rimman
-ms.openlocfilehash: 8ae4c5f64ad834e27db219fac8d30ff5250c3286
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 1e1cfe7f0e3af72de819ed09dcd0a6d190f239ab
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65519071"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839809"
 ---
 # <a name="quickstart-build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API と Java SDK を使用して Web アプリを構築する
 
@@ -33,7 +33,7 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 ## <a name="prerequisites"></a>前提条件
 
 このサンプルを実行する前に、以下の前提条件を満たしている必要があります。
-* [Azure 用の JDK および Azure Stack JDK バージョン 8 をインストールする] (https://aka.ms/azure-jdks)
+* [Azure 用の JDK および Azure Stack JDK バージョン 8 をインストールします](https://aka.ms/azure-jdks)
 * Maven (Maven がない場合は、`apt-get install maven` を実行します)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]

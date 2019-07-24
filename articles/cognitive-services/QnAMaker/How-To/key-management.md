@@ -3,20 +3,20 @@ title: リソースとキーの管理 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker サービスは、サブスクリプション キーとエンドポイント キーの 2 種類のキーを扱います。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 458d587c7ac73f7c8dacdceae3c9f923263533b3
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b9be1db9be1d4dd57994e101c07ed430425a5912
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792542"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447437"
 ---
 # <a name="how-to-manage-keys-in-qna-maker"></a>QnA Maker でキーを管理する方法
 
@@ -42,7 +42,7 @@ QnA Maker サービスは、**サブスクリプション キー**と**エンド
 
 エンドポイント キーは、[QnA Maker ポータル](https://qnamaker.ai)から管理することができます。
 
-1. [QnA Maker ポータル](https://qnamaker.ai)にログインし、お使いのプロファイルに移動してから、**[サービスの設定]** をクリックします。
+1. [QnA Maker ポータル](https://qnamaker.ai)にログインし、お使いのプロファイルに移動してから、 **[サービスの設定]** をクリックします。
 
     ![エンドポイント キー](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 

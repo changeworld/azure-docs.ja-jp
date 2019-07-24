@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/19/2018
 ms.author: tomfitz
 ms.openlocfilehash: 1dd0532452c3558e53f0236998953d2055ed328c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489694"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60390768"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>SKU 利用不可エラーを解決する
 
@@ -82,7 +82,7 @@ virtualMachines  southcentralus  Standard_F4                ...             None
 
 リージョンで利用可能な SKU を特定するには、[ポータル](https://portal.azure.com)を使用します。 ポータルにサインインし、インターフェイスからリソースを追加します。 値を設定するときに、そのリソースで利用可能な SKU が表示されます。 デプロイを完了する必要はありません。
 
-たとえば、仮想マシンの作成プロセスを開始できます。 利用可能な他のサイズを表示するには、**[サイズ変更]** を選択します。
+たとえば、仮想マシンの作成プロセスを開始できます。 利用可能な他のサイズを表示するには、 **[サイズ変更]** を選択します。
 
 ![VM を作成する](./media/resource-manager-sku-not-available-errors/create-vm.png)
 

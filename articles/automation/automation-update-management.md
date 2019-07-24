@@ -4,17 +4,17 @@ description: この記事では、Azure Update Management ソリューション�
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
-ms.date: 04/29/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b92083b78971ab00f87e073ba7f4944a6f828daf
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 3bfec413430de588be6c4423702d41779a8426d0
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991635"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477978"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -39,13 +39,13 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 Update Management を使用して、同じテナント内の複数のサブスクリプションにマシンをネイティブにオンボードできます。
 
-CVE がリリースされた後、Linux マシンの評価用に修正プログラムが表示されるまで 2 ～ 3 時間かかります。  Windows マシンの場合、リリースされてから評価用に修正プログラムが表示されるまで 12 ～ 15 時間かかります。
+パッケージがリリースされた後、Linux マシンの評価用に修正プログラムが表示されるまで 2、3 時間かかります。 Windows マシンの場合、リリースされてから評価用に修正プログラムが表示されるまで 12 ～ 15 時間かかります。
 
 コンピューターが更新プログラムのコンプライアンスを確認するためにスキャンを完了した後、エージェントによって情報が Azure Monitor ログに一括転送されます。 Windows コンピューターでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。
 
 このスキャン スケジュールに加えて、MMA の再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムのコンプライアンスを確認するためのスキャンが開始されます。
 
-Linux コンピューターでは、コンプライアンス スキャンは既定では 3 時間ごとに実行されます。 MMA エージェントを再起動した場合は、コンプライアンス スキャンは 15 分以内に開始されます。
+Linux コンピューターでは、コンプライアンス スキャンは既定で 1 時間ごとに実行されます。 MMA エージェントを再起動した場合は、コンプライアンス スキャンは 15 分以内に開始されます。
 
 このソリューションは、同期先として構成されたソースに基づいて、コンピューターがどの程度最新の状態であるかをレポートします。 Windows コンピューターが WSUS にレポートするよう構成されている場合、WSUS が Microsoft Update と最後に同期したタイミングによっては、その結果が Microsoft Updates の示す内容と一致しない場合があります。 この動作は、パブリック リポジトリではなくローカル リポジトリにレポートするよう構成されている Linux コンピューターも同様です。
 
@@ -73,14 +73,11 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降 (Windows Server 2012 および 2016 を含む)    |.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします   ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 以降 (Windows Server 2012 および 2016 を含む)    |.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします  ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための "yum" が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux での分類の更新](#linux-2)に関するページを参照してください。          |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |Ubuntu 14.04 LTS、16.04 LTS、18.04 (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
-
-> [!NOTE]
-> Azure 仮想マシン スケール セットは、Update Management で管理できます。 Update Management は、基本イメージではなくインスタンス自体で動作します。 一度にすべての VM インスタンスを更新しない場合、段階的に更新をスケジュールする必要があります。
 
 ### <a name="unsupported-client-types"></a>サポートされていないクライアントの種類
 
@@ -115,7 +112,7 @@ Linux 用 Log Analytics エージェントをインストールして最新バ�
 
 このソリューションを有効にすると、ソリューションに含まれている Runbook をサポートするために、Log Analytics ワークスペースに直接接続された Windows コンピューターが自動的に Hybrid Runbook Worker として構成されます。
 
-ソリューションで管理されている各 Windows コンピューターは、Automation アカウントの **[システム ハイブリッド worker グループ]** として、**[ハイブリッド Worker グループ]** ページに表示されます。 ソリューションは、*Hostname FQDN_GUID* の名前付け規則を使用します。 アカウントの Runbook でこれらのグループを対象として指定することはできません。 指定すると失敗します。 これらのグループは、管理ソリューションをサポートすることのみを目的としています。
+ソリューションで管理されている各 Windows コンピューターは、Automation アカウントの **[システム ハイブリッド worker グループ]** として、 **[ハイブリッド Worker グループ]** ページに表示されます。 ソリューションは、*Hostname FQDN_GUID* の名前付け規則を使用します。 アカウントの Runbook でこれらのグループを対象として指定することはできません。 指定すると失敗します。 これらのグループは、管理ソリューションをサポートすることのみを目的としています。
 
 このソリューションと Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用すると、Windows コンピューターを Automation アカウントの Hybrid Runbook Worker グループに追加して Automation Runbook をサポートすることができます。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 で追加されました。
 
@@ -195,7 +192,7 @@ Operations Manager 管理グループが Azure Monitor ログと通信してい�
 
 管理対象の各 Windows コンピューターでは、1 日 2 回スキャンが実行されます。 15 分ごとに Windows API が呼び出され、最後の更新時間を照会することで、状態が変化したかどうかが確認されます。 状態が変更された場合、コンプライアンス スキャンが開始されます。
 
-管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。
+各マネージド Linux コンピューターでは、1 時間ごとにスキャンが実行されます。
 
 管理対象のコンピューターの更新されたデータがダッシュボードに表示されるまでに、30 分～ 6 時間かかる場合があります。
 
@@ -224,9 +221,9 @@ Ubuntu でメンテナンス期間外に更新プログラムが適用されな�
 
 Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した仮想マシンは、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) にアクセスするよう登録されています。 その他の Linux ディストリビューションは、サポートされている方法に従って、ディストリビューション オンライン ファイル リポジトリから更新する必要があります。
 
-新しい更新プログラムのデプロイを作成するには、**[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ページが開きます。 次の表で説明されているプロパティの値を入力し、**[作成]** をクリックします。
+新しい更新プログラムのデプロイを作成するには、 **[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ページが開きます。 次の表で説明されているプロパティの値を入力し、 **[作成]** をクリックします。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 | --- | --- |
 | Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
@@ -262,7 +259,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 ## <a name="view-update-deployments"></a>更新プログラムのデプロイを表示する
 
-**[更新プログラムの展開]** タブをクリックすると、既存の更新プログラムのデプロイの一覧が表示されます。 表で更新プログラムのデプロイのいずれかをクリックすると、その更新プログラムのデプロイの **[更新プログラムの展開の実行]** ページが開きます。
+**[更新プログラムの展開]** タブをクリックすると、既存の更新プログラムのデプロイの一覧が表示されます。 表で更新プログラムのデプロイのいずれかをクリックすると、その更新プログラムのデプロイの **[更新プログラムの展開の実行]** ページが開きます。 ジョブのログは、最大 30 日間保存されます。
 
 ![更新プログラムのデプロイ結果の概要](./media/automation-update-management/update-deployment-run.png)
 
@@ -306,7 +303,7 @@ Update Management は、Windows の更新プログラムのダウンロードと
 
 ### <a name="pre-download-updates"></a>更新プログラムの事前ダウンロード
 
-グループ ポリシーで更新プログラムを自動的にダウンロードするように構成するには、[[自動更新を構成する]](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) 設定を **[3]** に設定します。 これで、必要な更新プログラムはバックグラウンドでダウンロードされますが、インストールされません。 そのため、Update Management のスケジュールを管理しながら、更新プログラムの管理のメンテナンス期間以外に更新プログラムをダウンロードできます。 この方法で Update Management の "**メンテナンス期間を超過しました**" エラーを防ぐことができます。
+グループ ポリシーで更新プログラムを自動的にダウンロードするように構成するには、[[自動更新を構成する]](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) 設定を **[3]** に設定します。 これで、必要な更新プログラムはバックグラウンドでダウンロードされますが、インストールされません。 そのため、Update Management のスケジュールを管理しながら、更新プログラムの管理のメンテナンス期間以外に更新プログラムをダウンロードできます。 この方法で Update Management の "**メンテナンス期間を超過しました**" エラーを防ぐことができます。
 
 この設定は PowerShell で行うこともできます。更新プログラムを自動ダウンロードするシステム上で、次の PowerShell を実行してください。
 
@@ -492,7 +489,7 @@ Update
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Approved) by Computer, SourceComputerId, UpdateID
 | where UpdateState=~"Needed" and Approved!=false
 | summarize by UpdateID, Classification )
-| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security"
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
 ```
 
 ##### <a name="computers-list"></a>コンピューター一覧
@@ -588,7 +585,7 @@ Update Management では、Azure または Azure 以外の VM の動的グルー
 
 ![グループを選択する](./media/automation-update-management/select-groups.png)
 
-動的グループの結果をプレビューするには、**[プレビュー]** ボタンをクリックします。 このプレビューでは、その時点でのグループのメンバーシップが表示されます。この例では、タグ **Role** が **BackendServer** に等しいマシンを検索しています。 このタグを持つマシンがさらに追加された場合、そのグループに対する将来のデプロイに追加されます。
+動的グループの結果をプレビューするには、 **[プレビュー]** ボタンをクリックします。 このプレビューでは、その時点でのグループのメンバーシップが表示されます。この例では、タグ **Role** が **BackendServer** に等しいマシンを検索しています。 このタグを持つマシンがさらに追加された場合、そのグループに対する将来のデプロイに追加されます。
 
 ![グループをプレビューする](./media/automation-update-management/preview-groups.png)
 

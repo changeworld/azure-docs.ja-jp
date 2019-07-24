@@ -7,12 +7,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tarcher
-ms.openlocfilehash: 7145a50bc53fd28afafd3de9c724b5e5f71624fa
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a88ad25e335026d5172c7997f62629d5ada46f6e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762308"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66693301"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>Terraform 状態を Azure Storage に格納する
 

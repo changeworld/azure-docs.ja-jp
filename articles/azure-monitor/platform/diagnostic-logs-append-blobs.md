@@ -9,11 +9,11 @@ ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370059"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60237653"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor 診断ログの形式変更のための準備
 
@@ -45,7 +45,7 @@ Azure Monitor で、Azure ストレージ アカウント、Event Hubs 名前空
 1. リソース診断設定を使用して、Azure ストレージ アカウントにログ データを送信する。
 2. ストレージ内のこれらのログの JSON 構造に依存しているツールがある。
  
-Azure ストレージ アカウントにデータを送信しているリソース診断設定があるかどうかを確認するには、ポータルの **[監視]** セクションに移動し、**[診断設定]** をクリックして、**診断状態**が**有効**に設定されているリソースを確認します。
+Azure ストレージ アカウントにデータを送信しているリソース診断設定があるかどうかを確認するには、ポータルの **[監視]** セクションに移動し、 **[診断設定]** をクリックして、**診断状態**が**有効**に設定されているリソースを確認します。
 
 ![Azure Monitor の [診断設定] ブレード](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 

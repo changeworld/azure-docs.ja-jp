@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.openlocfilehash: 7d7fbf5d72654c26edf09ab27f024eaf39f8c387
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64709001"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する
@@ -172,13 +172,13 @@ Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (h
 5. ファイルを保存するには、Ctrl + X キーを押します。 「 `Y` 」を入力します。 次に、**Enter** キーを押します。
 
     このワークフローは、次の 2 つの部分に分かれています。
-   * **資格情報セクション:**  このセクションでは、Oozie アクションを認証するために使用される資格情報を取得します。
+   * **資格情報セクション:** このセクションでは、Oozie アクションを認証するために使用される資格情報を取得します。
 
      この例では、Hive アクション用の認証を使用します。 詳細については、[アクションの認証](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html)に関するページを参照してください。
 
      資格情報サービスでは、Oozie アクションが、Hadoop サービスにアクセスするためのユーザーを偽装することが許可されます。
 
-   * **アクション セクション:**  このセクションには、map-reduce、Hive server 2、および Hive server 1 という 3 つのアクションがあります。
+   * **アクション セクション:** このセクションには、map-reduce、Hive server 2、および Hive server 1 という 3 つのアクションがあります。
 
      - map-reduce アクションは、集計された単語数を出力する、map-reduce 用の Oozie パッケージにある例を実行します。
 

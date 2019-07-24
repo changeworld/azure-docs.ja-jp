@@ -17,10 +17,10 @@ ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 226986fb7c41c19b58f0163414628ad08ddeda15
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65409965"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
@@ -54,21 +54,21 @@ ms.locfileid: "65409965"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
 [2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -365,7 +365,7 @@ ms.locfileid: "65409965"
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
-[sap-pam]:https://support.sap.com/pam (SAP 製品の可用性マトリックス)
+[sap-pam]: https://support.sap.com/pam (SAP 製品の可用性マトリックス)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -683,7 +683,7 @@ Azure Resource Manager の 3 層テンプレートは、2 つのクラスター�
 
 Architectural Template 1 のインフラストラクチャを準備するには
 
-- Azure Portal の **[パラメーター]** ブレードにある **[SYSTEMAVAILABILITY]** ボックスで、**[HA]** を選択します。
+- Azure Portal の **[パラメーター]** ブレードにある **[SYSTEMAVAILABILITY]** ボックスで、 **[HA]** を選択します。
 
   ![図 11:SAP 高可用性 Azure Resource Manager パラメーターを設定する][sap-ha-guide-figure-3000]
 
@@ -729,7 +729,7 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 >
 >
 
-1. Azure Portal の **[パラメーター]** ブレードにある **[NEWOREXISTINGSUBNET]** ボックスで、**[existing (既存)]** を選択します。
+1. Azure Portal の **[パラメーター]** ブレードにある **[NEWOREXISTINGSUBNET]** ボックスで、 **[existing (既存)]** を選択します。
 2. **[SUBNETID]** ボックスに、Azure 仮想マシンのデプロイ先となる準備済みの Azure ネットワーク SubnetID の完全な文字列を追加します。
 3. すべての Azure ネットワーク サブネットの一覧を取得するには、次の PowerShell コマンドを実行します。
 
@@ -753,7 +753,7 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 ### <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a> テストおよびデモ用のクラウドのみの SAP インスタンスのデプロイ
 クラウドのみのデプロイメント モデルで高可用性 SAP システムをデプロイすることができます。 この種類のデプロイは、主として、デモおよびテストのユース ケースに適しています。 運用環境での使用には適していません。
 
-- Azure Portal の **[パラメーター]** ブレードにある **[NEWOREXISTINGSUBNET]** ボックスで、**[new (新規)]** を選択します。 **[SUBNETID]** フィールドは空白のままにしておきます。
+- Azure Portal の **[パラメーター]** ブレードにある **[NEWOREXISTINGSUBNET]** ボックスで、 **[new (新規)]** を選択します。 **[SUBNETID]** フィールドは空白のままにしておきます。
 
   SAP Azure Resource Manager テンプレートは、Azure Virtual Network とサブネットを自動的に作成します。
 
@@ -792,14 +792,14 @@ ASCS/SCS テンプレートは、複数の ASCS/SCS インスタンスをホス�
 
 ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マルチ SID テンプレート][sap-templates-3-tier-multisid-xscs-marketplace-image]で、次のパラメーターの値を入力します。
 
-  - **Resource Prefix (リソース プレフィックス)**。  リソース プレフィックスを設定します。これは、デプロイ中に作成されるすべてのリソースのプレフィックスとして使われます。 リソースは 1 つの SAP システムのみに属するわけではないため、リソースのプレフィックスは 1 つの SAP システムの SID ではありません。  プレフィックスは、**3 ～ 6 文字**でなければなりません。
-  - **Stack Type (スタックの種類)**。 SAP システムのスタックの種類を選びます。 スタックの種類に応じて、Azure Load Balancer には、SAP システムごとに 1 つ (ABAP または Java のみ) または 2 つ (ABAP+ Java) のプライベート IP アドレスがあります。
-  -  **OS Type (OS の種類)**。 仮想マシンのオペレーティング システムを選びます。
-  -  **SAP System Count (SAP システム数)**。 このクラスターにインストールする SAP システムの数を選択します。
-  -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
-  -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
-  -  **New Or Existing Subnet (新規または既存のサブネット)**。 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを設定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、**[existing (既存)]** を選択します。
-  -  **Subnet Id (サブネット ID)**。VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/<*サブスクリプション ID*>/resourceGroups/<*リソース グループ名*>/providers/Microsoft.Network/virtualNetworks/<*仮想ネットワーク名*>/subnets/<*サブネット名*> のようになります
+  - **Resource Prefix (リソース プレフィックス)** 。  リソース プレフィックスを設定します。これは、デプロイ中に作成されるすべてのリソースのプレフィックスとして使われます。 リソースは 1 つの SAP システムのみに属するわけではないため、リソースのプレフィックスは 1 つの SAP システムの SID ではありません。  プレフィックスは、**3 ～ 6 文字**でなければなりません。
+  - **Stack Type (スタックの種類)** 。 SAP システムのスタックの種類を選びます。 スタックの種類に応じて、Azure Load Balancer には、SAP システムごとに 1 つ (ABAP または Java のみ) または 2 つ (ABAP+ Java) のプライベート IP アドレスがあります。
+  -  **OS Type (OS の種類)** 。 仮想マシンのオペレーティング システムを選びます。
+  -  **SAP System Count (SAP システム数)** 。 このクラスターにインストールする SAP システムの数を選択します。
+  -  **System Availability (システムの可用性)** 。 **[HA]** を選択します。
+  -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)** 。 マシンへのサインインに使用できる新しいユーザーを作成します。
+  -  **New Or Existing Subnet (新規または既存のサブネット)** 。 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを設定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、 **[existing (既存)]** を選択します。
+  -  **Subnet Id (サブネット ID)** 。VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/<*サブスクリプション ID*>/resourceGroups/<*リソース グループ名*>/providers/Microsoft.Network/virtualNetworks/<*仮想ネットワーク名*>/subnets/<*サブネット名*> のようになります
 
 テンプレートは 1 つの Azure Load Balancer インスタンスをデプロイし、これにより、複数の SAP システムがサポートされます。
 
@@ -827,16 +827,16 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 データベース マルチ SID テンプレートを設定するには、[データベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image]で、次のパラメーターの値を入力します。
 
-- **Sap System Id (SAP システム ID)**。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
-- **Os Type (OS の種類)**。 仮想マシンのオペレーティング システムを選びます。
-- **Dbtype (DB の種類)**。 クラスターにインストールするデータベースの種類を選びます。 Microsoft SQL Server をインストールする場合は、**[SQL]** を選択します。 仮想マシンに SAP HANA をインストールする予定の場合は、**[HANA]** を選択します。 正しいオペレーティング システムの種類 (SQL の場合は **Windows**、HANA の場合は Linux ディストリビューション) を選択してください。 仮想マシンに接続されている Azure Load Balancer は、選んだデータベースの種類をサポートするように構成されます。
+- **Sap System Id (SAP システム ID)** 。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
+- **Os Type (OS の種類)** 。 仮想マシンのオペレーティング システムを選びます。
+- **Dbtype (DB の種類)** 。 クラスターにインストールするデータベースの種類を選びます。 Microsoft SQL Server をインストールする場合は、 **[SQL]** を選択します。 仮想マシンに SAP HANA をインストールする予定の場合は、 **[HANA]** を選択します。 正しいオペレーティング システムの種類 (SQL の場合は **Windows**、HANA の場合は Linux ディストリビューション) を選択してください。 仮想マシンに接続されている Azure Load Balancer は、選んだデータベースの種類をサポートするように構成されます。
   * **SQL**。 ロード バランサーは、ポート 1433 で負荷分散を行います。 SQL Server Always On セットアップにはこのポートを使ってください。
   * **HANA**。 ロード バランサーは、ポート 35015 および 35017 で負荷分散を行います。 インスタンス番号が **50** の SAP HANA をインストールしてください。
   ロード バランサーはプローブ ポート 62550 を使います。
-- **Sap System Size (SAP システムのサイズ)**。 新しいシステムで提供する SAPS の数を設定します。 システムで必要となる SAPS の数が不明な場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-- **System Availability (システムの可用性)**。 **[HA]** を選択します。
-- **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
-- **Subnet Id (サブネット ID)**。ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
+- **Sap System Size (SAP システムのサイズ)** 。 新しいシステムで提供する SAPS の数を設定します。 システムで必要となる SAPS の数が不明な場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+- **System Availability (システムの可用性)** 。 **[HA]** を選択します。
+- **Admin Username and Admin Password (管理ユーザー名と管理パスワード)** 。 マシンへのサインインに使用できる新しいユーザーを作成します。
+- **Subnet Id (サブネット ID)** 。ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
 
 #### <a name="application-servers-template"></a> アプリケーション サーバー テンプレート
 
@@ -844,12 +844,12 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 アプリケーション サーバー マルチ SID テンプレートを設定するには、[アプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image]で、次のパラメーターの値を入力します。
 
-  -  **Sap System Id (SAP システム ID)**。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
-  -  **Os Type (OS の種類)**。 仮想マシンのオペレーティング システムを選びます。
-  -  **Sap System Size (SAP システムのサイズ)**。 新しいシステムで提供する SAPS の数です。 システムで必要となる SAPS の数が不明な場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-  -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
-  -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
-  -  **Subnet Id (サブネット ID)**。ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
+  -  **Sap System Id (SAP システム ID)** 。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
+  -  **Os Type (OS の種類)** 。 仮想マシンのオペレーティング システムを選びます。
+  -  **Sap System Size (SAP システムのサイズ)** 。 新しいシステムで提供する SAPS の数です。 システムで必要となる SAPS の数が不明な場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+  -  **System Availability (システムの可用性)** 。 **[HA]** を選択します。
+  -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)** 。 マシンへのサインインに使用できる新しいユーザーを作成します。
+  -  **Subnet Id (サブネット ID)** 。ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
 
 
 ### <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Azure 仮想ネットワーク
@@ -903,7 +903,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 ### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> SAP 仮想マシンの静的 IP アドレスの設定
 クラスターで使用する仮想マシンをデプロイした後は、すべての仮想マシンに静的 IP アドレスを設定する必要があります。 これは、ゲスト オペレーティング システムではなく、Azure Virtual Network の構成で行います。
 
-1. Azure Portal で、**[リソース グループ]** > **[ネットワーク カード]** > **[設定]** > **[IP アドレス]** の順に選択します。
+1. Azure Portal で、 **[リソース グループ]**  >  **[ネットワーク カード]**  >  **[設定]**  >  **[IP アドレス]** の順に選択します。
 2. **[IP アドレス]** ブレードの **[割り当て]** で **[静的]** を選択します。 **[IP アドレス]** ボックスに、使用する IP アドレスを入力します。
 
    > [!NOTE]
@@ -1014,7 +1014,7 @@ _**図 15:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷�
 
 SAP ASCS または SCS インスタンスに別の番号を使う場合は、それらのポートの名前と値を既定値から変更する必要があります。
 
-1. Azure Portal で、**<[*SID*>-lb-ascs ロード バランサー]** > **[負荷分散規則]** の順に選びます。
+1. Azure Portal で、 **<[*SID*>-lb-ascs ロード バランサー]**  >  **[負荷分散規則]** の順に選びます。
 2. SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
    * Name
@@ -1177,9 +1177,9 @@ SAP ASCS/SCS インスタンスの Windows Server フェールオーバー ク�
 
    _**図 30:** クラスター名オブジェクトの共有に対するアクセス許可を割り当てる_
 
-   アクセス許可には、クラスター名オブジェクト (この例では **pr1-ascs-vir$**) の共有内のデータを変更する権限を必ず含めます。
+   アクセス許可には、クラスター名オブジェクト (この例では **pr1-ascs-vir$** ) の共有内のデータを変更する権限を必ず含めます。
 
-3. クラスター名オブジェクトをリストに追加するには、**[追加]** を選択します。 図 31 に示されているものに加えて、コンピューター オブジェクトをチェックするようにフィルターを変更します。
+3. クラスター名オブジェクトをリストに追加するには、 **[追加]** を選択します。 図 31 に示されているものに加えて、コンピューター オブジェクトをチェックするようにフィルターを変更します。
 
    ![図 31:コンピューターを含むようにオブジェクトの種類を変更する][sap-ha-guide-figure-3020]
 
@@ -1205,13 +1205,13 @@ SAP ASCS/SCS インスタンスの Windows Server フェールオーバー ク�
 
    _**図 34:** クラスター クォーラム設定の構成ウィザードを開始する_
 
-2. **[クォーラム構成の選択]** ページで、**[クォーラム監視を選択する]** を選択します。
+2. **[クォーラム構成の選択]** ページで、 **[クォーラム監視を選択する]** を選択します。
 
    ![図 35:選択できるクォーラム構成][sap-ha-guide-figure-3024]
 
    _**図 35:** 選択できるクォーラム構成_
 
-3. **[クォーラム監視の選択]** ページで、**[ファイル共有監視を構成する]** を選択します。
+3. **[クォーラム監視の選択]** ページで、 **[ファイル共有監視を構成する]** を選択します。
 
    ![図 36:ファイル共有監視を選択する][sap-ha-guide-figure-3025]
 
@@ -1223,7 +1223,7 @@ SAP ASCS/SCS インスタンスの Windows Server フェールオーバー ク�
 
    _**図 37:** 監視共有のファイル共有の場所を定義する_
 
-5. 必要な変更を選択し、**[次へ]** を選択します。 図 38 に示すように、クラスター構成が正常に再構成されている必要があります。  
+5. 必要な変更を選択し、 **[次へ]** を選択します。 図 38 に示すように、クラスター構成が正常に再構成されている必要があります。  
 
    ![図 38:クラスターが再構成されたことを確認する][sap-ha-guide-figure-3027]
 
@@ -1288,13 +1288,13 @@ SIOS DataKeeper をインストールするには
 
    _**図 41:** SIOS DataKeeper のインストールの最初のページ_
 
-2. 図 42 のダイアログ ボックスで、**[Yes (はい)]** を選択します。
+2. 図 42 のダイアログ ボックスで、 **[Yes (はい)]** を選択します。
 
    ![図 42:DataKeeper からサービスを無効にすることが通知される][sap-ha-guide-figure-3032]
 
    _**図 42:** DataKeeper からサービスを無効にすることが通知される_
 
-3. 図 43 のダイアログ ボックスでは、**[Domain or Server account (ドメインまたはサーバーのアカウント)]** を選択することをお勧めします。
+3. 図 43 のダイアログ ボックスでは、 **[Domain or Server account (ドメインまたはサーバーのアカウント)]** を選択することをお勧めします。
 
    ![図 43:SIOS DataKeeper のユーザー選択][sap-ha-guide-figure-3033]
 
@@ -1318,7 +1318,7 @@ SIOS DataKeeper をインストールするには
 
 両方のノードに SIOS DataKeeper をインストールした後、構成を開始する必要があります。 構成の目的は、各仮想マシンに接続された追加の VHD 間で同期データ レプリケーションを実現することです。
 
-1. DataKeeper の管理および構成ツールを起動し、**[Connect to Server (サーバーに接続)]** を選択します  (図 46 の赤い丸で囲んだオプション)。
+1. DataKeeper の管理および構成ツールを起動し、 **[Connect to Server (サーバーに接続)]** を選択します (図 46 の赤い丸で囲んだオプション)。
 
    ![図 46:SIOS DataKeeper の管理および構成ツール][sap-ha-guide-figure-3036]
 
@@ -1361,7 +1361,7 @@ SIOS DataKeeper をインストールするには
 
    _**図 52:** レプリケーションの詳細を定義する_
 
-8. レプリケーション ジョブによってレプリケートされたボリュームを、Windows Server フェールオーバー クラスタリングのクラスター構成に共有ディスクとして示すかどうかを定義します。 SAP ASCS/SCS の構成では、Windows クラスターがレプリケートされたボリュームをクラスター ボリュームとして使用できる共有ディスクとして認識するように、**[はい]** を選択します。
+8. レプリケーション ジョブによってレプリケートされたボリュームを、Windows Server フェールオーバー クラスタリングのクラスター構成に共有ディスクとして示すかどうかを定義します。 SAP ASCS/SCS の構成では、Windows クラスターがレプリケートされたボリュームをクラスター ボリュームとして使用できる共有ディスクとして認識するように、 **[はい]** を選択します。
 
    ![図 53:[はい] を選択し、レプリケートされたボリュームをクラスター ボリュームとして設定する][sap-ha-guide-figure-3043]
 
@@ -1410,7 +1410,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 1. Windows DNS マネージャーで、ASCS/SCS インスタンスの仮想ホスト名の DNS エントリを作成します。
 
    > [!IMPORTANT]
-   > ASCS/SCS インスタンスの仮想ホスト名に割り当てる IP アドレスは Azure Load Balancer (**<*SID*>-lb-ascs**) に割り当てた IP アドレスと同じでなければなりません。  
+   > ASCS/SCS インスタンスの仮想ホスト名に割り当てる IP アドレスは Azure Load Balancer ( **<*SID*>-lb-ascs**) に割り当てた IP アドレスと同じでなければなりません。  
    >
    >
 
@@ -1420,7 +1420,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 
    _**図 56:** SAP ASCS/SCS クラスターの仮想名と TCP/IP アドレスの DNS エントリを定義する_
 
-2. 仮想ホスト名に割り当てる IP アドレスを定義するには、**[DNS マネージャー]** > **[ドメイン]** の順に選択します。
+2. 仮想ホスト名に割り当てる IP アドレスを定義するには、 **[DNS マネージャー]**  >  **[ドメイン]** の順に選択します。
 
    ![図 57:SAP ASCS/SCS クラスター構成の新しい仮想名と TCP/IP アドレス][sap-ha-guide-figure-3047]
 
@@ -1612,7 +1612,7 @@ SAP アプリケーション サーバー インスタンスのホストとし�
 
 _**図 61:** フェールオーバー クラスター マネージャー:SAP <*SID*> クラスター グループがクラスター ノード A で動作している_
 
-SIOS DataKeeper の管理および構成ツールで、共有ディスクのデータがクラスター ノード A (例: **pr1-ascs-0 [10.0.0.40]**) のソース ボリューム ドライブ S から、クラスター ノード B (例: **pr1-ascs-1 [10.0.0.41]**) のターゲット ボリューム ドライブ S に同期的にレプリケートされることを確認できます。
+SIOS DataKeeper の管理および構成ツールで、共有ディスクのデータがクラスター ノード A (例: **pr1-ascs-0 [10.0.0.40]** ) のソース ボリューム ドライブ S から、クラスター ノード B (例: **pr1-ascs-1 [10.0.0.41]** ) のターゲット ボリューム ドライブ S に同期的にレプリケートされることを確認できます。
 
 ![図 62:SIOS DataKeeper で、クラスター ノード A からクラスター ノード B にローカル ボリュームをレプリケートする][sap-ha-guide-figure-5001]
 
@@ -1641,7 +1641,7 @@ _**図 62:** SIOS DataKeeper で、クラスター ノード A からクラス�
 
    _**図 63**:フェールオーバー クラスター マネージャーで SAP <*SID*> クラスター グループがクラスター ノード B で動作している_
 
-   現在、共有ディスクはクラスター ノード B にマウントされています。SIOS DataKeeper は、クラスター ノード B (例: **pr1-ascs-1 [10.0.0.41]**) のソース ボリューム ドライブ S から、クラスター ノード A (例: **pr1-ascs-0 [10.0.0.40]**) のターゲット ボリューム ドライブ S に、データをレプリケートします。
+   現在、共有ディスクはクラスター ノード B にマウントされています。SIOS DataKeeper は、クラスター ノード B (例: **pr1-ascs-1 [10.0.0.41]** ) のソース ボリューム ドライブ S から、クラスター ノード A (例: **pr1-ascs-0 [10.0.0.40]** ) のターゲット ボリューム ドライブ S に、データをレプリケートします。
 
    ![図 64:SIOS DataKeeper で、クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする][sap-ha-guide-figure-5003]
 

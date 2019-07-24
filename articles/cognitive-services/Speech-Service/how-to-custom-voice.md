@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8cf9dc6cbfc96448462aac3a64807f8beb6036ad
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ed5428da28ebea8b1c7f925696f88e3f3f898942
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156838"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606713"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 
@@ -29,13 +29,13 @@ Custom Voice を開始する前に、Azure アカウントと Speech Services �
 
 ![Custom Voice のアーキテクチャ図](media/custom-voice/custom-voice-diagram.png)
 
-1.  [登録を行ってプロジェクトを作成する](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice?branch=release-build-cogserv-speech-services#set-up-your-azure-account) - Azure アカウントを作成し、Speech Services サブスクリプションを作成します。 この一元化されたサブスクリプションを通じて、音声テキスト変換、テキスト読み上げ、音声翻訳、Custom Voice ポータルにアクセスすることができます。 次に、Speech Services サブスクリプションを使用して、最初の Custom Voice プロジェクトを作成します。
+1.  [登録を行ってプロジェクトを作成する](#set-up-your-azure-account) - Azure アカウントを作成し、Speech Services サブスクリプションを作成します。 この一元化されたサブスクリプションを通じて、音声テキスト変換、テキスト読み上げ、音声翻訳、Custom Voice ポータルにアクセスすることができます。 次に、Speech Services サブスクリプションを使用して、最初の Custom Voice プロジェクトを作成します。
 
-2.  [データをアップロードする](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#upload-your-datasets) - Custom Voice ポータルまたは Custom Voice API を使用して、データ (オーディオとテキスト) をアップロードします。 ポータルで、発音スコアと信号対雑音比を調査および評価できます。 詳細については、[Custom Voice 用にデータを準備する方法](how-to-custom-voice-prepare-data.md)に関する記事を参照してください。
+2.  [データをアップロードする](how-to-custom-voice-create-voice.md#upload-your-datasets) - Custom Voice ポータルまたは Custom Voice API を使用して、データ (オーディオとテキスト) をアップロードします。 ポータルで、発音スコアと信号対雑音比を調査および評価できます。 詳細については、[Custom Voice 用にデータを準備する方法](how-to-custom-voice-prepare-data.md)に関する記事を参照してください。
 
-3.  [モデルをトレーニングする](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#build-your-voice-font) - 自分のデータを使用して、カスタム テキスト読み上げ音声モデルを作成します。 モデルはさまざまな言語でトレーニングできます。 トレーニング後にモデルをテストし、結果に満足したら、モデルをデプロイできます。
+3.  [モデルをトレーニングする](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) - 自分のデータを使用して、カスタム テキスト読み上げ音声モデルを作成します。 モデルはさまざまな言語でトレーニングできます。 トレーニング後にモデルをテストし、結果に満足したら、モデルをデプロイできます。
 
-4.  [モデルをデプロイする](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font?branch=release-build-cogserv-speech-services#create-and-use-a-custom-endpoint) - 自分のテキスト読み上げ音声モデルのカスタム エンドポイントを作成して、自分の製品、ツール、アプリケーションの音声合成にそれを使用します。
+4.  [モデルをデプロイする](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) - 自分のテキスト読み上げ音声モデルのカスタム エンドポイントを作成して、自分の製品、ツール、アプリケーションの音声合成にそれを使用します。
 
 ## <a name="set-up-your-azure-account"></a>Azure アカウントの設定
 
@@ -55,7 +55,7 @@ Azure アカウントと Speech Services サブスクリプションを作成し
 
 データ、モデル、テスト、エンドポイントなどのコンテンツは、Custom Voice ポータルの **[プロジェクト]** にまとめられます。 各プロジェクトは、国と言語、および作成したい音声の性別に固有です。 たとえば、米国の英語 (en-US) を使用するコール センターのチャット ボット用に、女性の音声のプロジェクトを作成できます。
 
-初めてのプロジェクトを作成するには、**[Text-to-Speech/Custom Voice]\(テキスト読み上げ/Custom Voice\)** タブを選択して、**[新しいプロジェクト]** をクリックします。 ウィザードの手順に従ってプロジェクトを使用します。 プロジェクトの作成後、4 つのタブが表示されます: **[データ]**、**[トレーニング]**、**[テスト中]**、**[デプロイ]**。 それぞれのタブの使い方については、「[次の手順](https://review.docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice?branch=release-build-cogserv-speech-services#next-steps)」に記載のリンクを使用してください。
+初めてのプロジェクトを作成するには、 **[Text-to-Speech/Custom Voice]\(テキスト読み上げ/Custom Voice\)** タブを選択して、 **[新しいプロジェクト]** をクリックします。 ウィザードの手順に従ってプロジェクトを使用します。 プロジェクトの作成後、4 つのタブが表示されます: **[データ]** 、 **[トレーニング]** 、 **[テスト中]** 、 **[デプロイ]** 。 それぞれのタブの使い方については、「[次の手順](#next-steps)」に記載のリンクを使用してください。
 
 ## <a name="next-steps"></a>次の手順
 

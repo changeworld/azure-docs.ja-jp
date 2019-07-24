@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: c49b9d5fdc0c17f16f1c80471a00dd53625dc6e8
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 054aaf6f607bba216f979665a0b0672ec253ba7f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236954"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475988"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する
+# <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する 
 
 Azure Machine Learning service では、さまざまなリソースまたは環境でモデルをトレーニングでき、それらを総称して[__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-target)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。  [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)に関するページで説明されているように、モデルのデプロイ用のコンピューティング先を作成することもできます。
 
-Azure Machine Learning SDK、Azure portal、または Azure CLI を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング ターゲットがある場合、それらを Azure Machine Learning service ワークスペースに接続して使用できます。
+Azure Machine Learning SDK、Azure portal、Azure CLI、または Azure Machine Learning VS Code 拡張機能を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング ターゲットがある場合、それらを Azure Machine Learning service ワークスペースに接続して使用できます。
  
 この記事では、モデル トレーニング用にさまざまなコンピューティング先を使用する方法について説明します。  すべてのコンピューティング先の手順が、同じワークフローに従います。
 1. まだない場合は、コンピューティング先を __作成__ します。
@@ -31,22 +31,22 @@ Azure Machine Learning SDK、Azure portal、または Azure CLI を使用して�
 
 
 >[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.6 を使用してテストされました。
+> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.39 を使用してテストされました。
 
 ## <a name="compute-targets-for-training"></a>モデル トレーニング用のコンピューティング先
 
 Azure Machine Learning service では、異なるコンピューティング先に対してさまざまなサポートが提供されています。 典型的なモデル開発ライフサイクルは、少量のデータを用いた開発と実験から始まります。 この段階では、ローカル環境を使用することをお勧めします。 たとえば、ローカル コンピューターやクラウドベースの VM などです。 より大規模なデータ セットにトレーニングをスケールアップする、または分散トレーニングを実行する段階で、Azure Machine Learning コンピューティングを使用して、実行を送信するたびに自動スケーリングするシングルノードまたはマルチノード クラスターを作成することをお勧めします。 独自のコンピューティング リソースを接続することもできますが、以下で説明するように、シナリオによってサポートが異なる場合があります:
 
 
-|トレーニング用のコンピューティング先| GPU アクセラレーション | 自動<br/> ハイパーパラメーター調整 | 自動</br> 機械学習 | Azure Machine Learning パイプライン |
+|トレーニング&nbsp;ターゲット| GPU のサポート |自動化された ML | ML パイプライン | ビジュアル インターフェイス
 |----|:----:|:----:|:----:|:----:|
-|[ローカル コンピューター](#local)| 可能性あり | &nbsp; | ✓ | &nbsp; |
-|[Azure Machine Learning コンピューティング](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
-|[リモート VM](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[ローカル コンピューター](#local)| 可能性あり | はい | &nbsp; | &nbsp; |
+|[Azure Machine Learning コンピューティング](#amlcompute)| はい | はい <br/>ハイパーパラメーター&nbsp;調整 | はい | はい |
+|[リモート VM](#vm) |はい | はい <br/>ハイパーパラメーター調整 | はい | &nbsp; |
+|[Azure&nbsp;Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | はい | はい | &nbsp; |
+|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | はい | &nbsp; |
+|[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | はい | &nbsp; |
+|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | はい | &nbsp; |
 
 **すべてのコンピューティング ターゲットは、複数のトレーニング ジョブで再利用できます**。 たとえば、リモート VM をワークスペースにアタッチした後、複数のジョブでそれを再利用できます。
 
@@ -377,6 +377,10 @@ Azure Machine Learning service 用の [CLI 拡張機能](reference-azure-machine
 
 詳しくは、「[リソース管理](reference-azure-machine-learning-cli.md#resource-management)」をご覧ください。
 
+## <a name="set-up-compute-with-vs-code"></a>VS Code でコンピューティングを設定する
+
+Azure Machine Learning service 用の [VS Code 拡張機能](how-to-vscode-tools.md#create-and-manage-compute-targets)を使用して、ワークスペースに関連付けられたコンピューティング先にアクセスし、これを作成および管理することができます。
+
 ## <a id="submit"></a>トレーニングの実行を送信する
 
 実行構成を作成した後は、それを使用して実験を実行します。  トレーニングの実行を送信するためのコード パターンは、すべての種類のコンピューティング先について同じです。
@@ -416,8 +420,13 @@ Azure Machine Learning service 用の [CLI 拡張機能](reference-azure-machine
 
 または、次のことができます。
 
-* [Estimator での ML モデルのトレーニング](how-to-train-ml-models.md)に関する記事で示されているように、`Estimator` オブジェクトを使用して実験を送信します。 
+* [Estimator での ML モデルのトレーニング](how-to-train-ml-models.md)に関する記事で示されているように、`Estimator` オブジェクトを使用して実験を送信します。
 * [CLI 拡張機能を使用](reference-azure-machine-learning-cli.md#experiments)して実験を送信します。
+* [VS Code 拡張機能](how-to-vscode-tools.md#train-and-tune-models)を介して実験を送信します。
+
+## <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
+
+ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 たとえば、リポジトリの現在のコミット ID が履歴の一部としてログに記録されます。
 
 ## <a name="notebook-examples"></a>ノートブックの例
 

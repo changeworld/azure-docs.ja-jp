@@ -5,19 +5,19 @@ services: functions
 cloud: ''
 documentationcenter: ''
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: cshoe
-ms.openlocfilehash: bf54d312de5625a7fa44cea4d5107e83cf15583c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ef8f2d5a63f7924097362f6aa0ebc78cc0f6455f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248253"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480705"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions のエラー処理
 

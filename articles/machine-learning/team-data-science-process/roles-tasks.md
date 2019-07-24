@@ -12,11 +12,11 @@ ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 05fc742bba535ea3968e60cd0f40c80b812c09fd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466440"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61043041"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process の役割とタスク
 

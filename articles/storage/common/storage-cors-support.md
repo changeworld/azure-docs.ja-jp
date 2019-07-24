@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bb296db0d97382deac984369704777de5d5cb362
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65147684"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート
@@ -165,13 +165,13 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 | Request | アカウントの設定とルールの評価結果 |  |  | Response |  |  |
 | --- | --- | --- | --- | --- | --- | --- |
 | **要求に Origin ヘッダーが存在する** |**このサービスに CORS ルールが指定されている** |**すべての元のドメインを許可する照合ルール (*) が存在する** |**元のドメインと完全に一致する照合ルールが存在する** |**Origin に設定された Vary にヘッダーが応答に含まれている** |**Access-Control-Allowed-Origin が応答に含まれている: "*"** |**Access-Control-Exposed-Headers が応答に含まれている** |
-| いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |
-| いいえ  |はい |いいえ  |いいえ  |はい |いいえ  |いいえ  |
-| いいえ  |可能  |はい |いいえ  |いいえ  |可能  |はい |
-| はい |いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |
-| 可能  |はい |いいえ  |可能  |はい |いいえ  |可能  |
-| はい |はい |いいえ  |いいえ  |はい |いいえ  |いいえ  |
-| 可能  |はい |はい |いいえ  |いいえ  |可能  |はい |
+| いいえ |いいえ |いいえ |いいえ |いいえ |いいえ |いいえ |
+| いいえ |はい |いいえ |いいえ |はい |いいえ |いいえ |
+| いいえ |可能 |はい |いいえ |いいえ |可能 |はい |
+| はい |いいえ |いいえ |いいえ |いいえ |いいえ |いいえ |
+| 可能 |はい |いいえ |可能 |はい |いいえ |可能 |
+| はい |はい |いいえ |いいえ |はい |いいえ |いいえ |
+| 可能 |はい |はい |いいえ |いいえ |可能 |はい |
 
 ## <a name="billing-for-cors-requests"></a>CORS 要求への課金
 ご使用のアカウントで ([Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)、[Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx) を呼び出して) いずれかのストレージ サービスに対して CORS を有効にしている場合、成功したプレフライト要求に対して課金されます。 費用を最小限に抑えるには、エージェント ユーザーが要求をキャッシュするよう、CORS ルールの **MaxAgeInSeconds** 要素に大きい値を設定することを検討してください。

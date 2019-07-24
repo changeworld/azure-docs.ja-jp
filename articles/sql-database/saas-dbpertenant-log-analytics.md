@@ -13,11 +13,11 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 6380488faa9a4554df5df5ea67e11dbeb8853fff
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455923"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61390554"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>マルチテナントの SQL Database SaaS アプリで Azure Monitor ログを設定して使用する
 
@@ -48,7 +48,7 @@ OMS ワークスペースは、Log Analytics ワークスペースと呼ばれ�
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>テナントでワークロードをシミュレートしてパフォーマンスの診断データを作成する 
 
-1. PowerShell ISE で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1* を開きます。 このスクリプトは、このチュートリアル中にいくつかのロード生成シナリオで実行することがあるため、開いたままにしておいてください。
+1. PowerShell ISE で、 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1* を開きます。 このスクリプトは、このチュートリアル中にいくつかのロード生成シナリオで実行することがあるため、開いたままにしておいてください。
 1. まだ行っていない場合は、テナントのバッチをプロビジョニングすることで、監視コンテキストの関連性が高まります。 このプロセスには数分かかります。
 
    a. **$DemoScenario = 1** _(テナントのバッチのプロビジョニング)_ を設定します。
@@ -69,7 +69,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 Azure Monitor は別個のサービスとして構成する必要があります。 Azure Monitor ログは、ログ データ、テレメトリ、およびメトリックを Log Analytics ワークスペース内に収集します。 Azure の他のリソースと同じように、Log Analytics ワークスペースを作成する必要があります。 ワークスペースは監視対象のアプリケーションと同じリソース グループ内に作成する必要はありません。 多くの場合は、そうすることが最も理にかなっています。 Wingtip Tickets アプリの場合、単一のリソース グループを使用することで、アプリケーションによってワークスペースが確実に削除されます。
 
-1. PowerShell ISE で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1* を開きます。
+1. PowerShell ISE で、 *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1* を開きます。
 1. F5 キーを押してスクリプトを実行します。
 
 Azure portal で Azure Monitor ログを開くことができるようになりました。 Log Analytics ワークスペース内にテレメトリが収集されて視覚化されるまで、数分かかります。 システムが診断データを収集する時間を長くすればするほど、エクスペリエンスの関連性が高くなります。 
@@ -114,7 +114,7 @@ Azure portal で Azure Monitor ログを開くことができるようになり�
  
      ![データベースのメトリック](media/saas-dbpertenant-log-analytics/log-analytics-database-metrics.png)
 
-1. 分析ページを左にスクロールして、**[リソース情報]** 一覧のサーバー タイルを選択します。  
+1. 分析ページを左にスクロールして、 **[リソース情報]** 一覧のサーバー タイルを選択します。  
 
     ![[リソース情報] 一覧](media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
 
@@ -127,7 +127,7 @@ Azure portal で Azure Monitor ログを開くことができるようになり�
     ![プールのメトリック](media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
 
 
-1. Log Analytics ワークスペースに戻り、**[OMS ポータル]** を選択して、このポータルでワークスペースを開きます。
+1. Log Analytics ワークスペースに戻り、 **[OMS ポータル]** を選択して、このポータルでワークスペースを開きます。
 
     ![Log Analytics ワークスペース](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
 ms.openlocfilehash: 6315e6d39a3b68854beb6563d075e3c79ca93a69
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359478"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60610816"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool の概要
 
-Microsoft Threat Modeling Tool 2018 は、無料で**[クリックしてダウンロードできる](https://aka.ms/threatmodelingtool)** ツールとして 2018 年 9 月に GA としてリリースされました。 配布のしくみが変わり、ユーザーがツールを開くたびに、最新の改善とバグの修正をプッシュできるようになりました。そのため、保守と使用が簡単になりました。
+Microsoft Threat Modeling Tool 2018 は、無料で **[クリックしてダウンロードできる](https://aka.ms/threatmodelingtool)** ツールとして 2018 年 9 月に GA としてリリースされました。 配布のしくみが変わり、ユーザーがツールを開くたびに、最新の改善とバグの修正をプッシュできるようになりました。そのため、保守と使用が簡単になりました。
 この記事では、Microsoft SDL 脅威モデリング アプローチの基本的なプロセスについて説明します。また、ツールを使用して、セキュリティ プロセスのバックボーンとして優れた脅威モデルを作成する方法について説明します。
 
-この記事は、SDL の脅威モデリング アプローチの既存の知識に基づいています。 短時間で復習するには、「**[Web アプリケーションの脅威モデル](https://msdn.microsoft.com/library/ms978516.aspx)**」と、2006 年に公開されたアーカイブ版の MSDN 記事「**[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)**」(STRIDE アプローチを使用してセキュリティ上の欠陥を見つける) を参照してください。
+この記事は、SDL の脅威モデリング アプローチの既存の知識に基づいています。 短時間で復習するには、「 **[Web アプリケーションの脅威モデル](https://msdn.microsoft.com/library/ms978516.aspx)** 」と、2006 年に公開されたアーカイブ版の MSDN 記事「 **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** 」(STRIDE アプローチを使用してセキュリティ上の欠陥を見つける) を参照してください。
 
 簡単にまとめると、このアプローチにはダイアグラムの作成、脅威の特定、脅威の軽減、各軽減策の検証が含まれます。 このプロセスをまとめた図を次に示します。
 
@@ -44,7 +44,7 @@ Threat Modeling Tool を起動すると、次の図のようにいくつかの�
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **[Feedback, Suggestions and Issues]\(フィードバック、提案、問題\) ボタン** | すべての SDL の **[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** が表示されます。 他のユーザーが実行していること、回避策、推奨事項を読むことができます。 探している情報が見つからない場合は、サポート チーム (tmtextsupport@microsoft.com) に電子メールで問い合わせてください。                                                                                                                            |
 | **Create a Model (モデルの作成)**                          | ダイアグラムを描画できる空白のキャンバスが開きます。 実際のモデルで使用したいテンプレートを選択してください。                                                                                                                                                                                                                                                                                                                                                                       |
-| **Template for New Models (新しいモデル用のテンプレート)**                 | モデルを作成する前に、テンプレートを選択する必要があります。 メインのテンプレートは Azure Threat Model Template です。Azure 固有のステンシル、脅威、軽減策が含まれています。 汎用的なモデルの場合は、ドロップダウン メニューから [SDL TM Knowledge Base]\(SDL TM ナレッジ ベース\) を選択します。 独自のテンプレートを作成する場合、または全ユーザーが使用できるように新しいテンプレートを提出する場合は、 「**[Template Repository](https://github.com/Microsoft/threat-modeling-templates)**」(テンプレート レポジトリ) GitHub ページで詳細を確認してください。                              |
+| **Template for New Models (新しいモデル用のテンプレート)**                 | モデルを作成する前に、テンプレートを選択する必要があります。 メインのテンプレートは Azure Threat Model Template です。Azure 固有のステンシル、脅威、軽減策が含まれています。 汎用的なモデルの場合は、ドロップダウン メニューから [SDL TM Knowledge Base]\(SDL TM ナレッジ ベース\) を選択します。 独自のテンプレートを作成する場合、または全ユーザーが使用できるように新しいテンプレートを提出する場合は、 「 **[Template Repository](https://github.com/Microsoft/threat-modeling-templates)** 」(テンプレート レポジトリ) GitHub ページで詳細を確認してください。                              |
 | **Open a Model (モデルを開く)**                            | <p>以前に保存した脅威モデルを開きます。 [Recently Opened Models]\(最近開いたモデル\) 機能は、最近使ったファイルを開く必要がある場合に便利です。 この項目にマウスを移動すると、モデルを開く方法が 2 つ表示されます。</p><p><ul><li>[Open From this Computer]\(このコンピューターから開く\) - ローカル記憶域を使用するファイルを開く従来の方法です</li><li>[Open from OneDrive]\(OneDrive から開く\) - チームで OneDrive 内のフォルダーを使用して 1 個所にすべての脅威モデルを保存し、共有することで、生産性を向上し、コラボレーションに利用することができます。</li></ul></p> |
 | **ファースト ステップ ガイド**                   | **[Microsoft Threat Modeling Tool](./azure-security-threat-modeling-tool.md)** のメイン ページを開きます                                                                                                                                                                                                                                                                                                                                                                                            |
 
@@ -86,7 +86,7 @@ Threat Modeling Tool チームはツールの機能と操作性を改善する�
 
 ## <a name="analyzing-threats"></a>脅威の分析
 
-高橋さんがアイコン メニュー項目から分析ビュー (ファイルと虫眼鏡のアイコン) をクリックすると、既定のテンプレートに基づいて Threat Modeling Tool が検出し、生成した脅威の一覧が表示されます。このテンプレートでは、**[STRIDE (スプーフィング、改ざん、情報漏えい、否認、サービス拒否、特権の昇格)](https://en.wikipedia.org/wiki/STRIDE_(security))** という SDL アプローチを使用しています。 STRIDE は、予測可能な特定の組み合わせ脅威をソフトウェアが受け、脅威はこれら 6 つのカテゴリを使用して検出できる、という考えです。
+高橋さんがアイコン メニュー項目から分析ビュー (ファイルと虫眼鏡のアイコン) をクリックすると、既定のテンプレートに基づいて Threat Modeling Tool が検出し、生成した脅威の一覧が表示されます。このテンプレートでは、 **[STRIDE (スプーフィング、改ざん、情報漏えい、否認、サービス拒否、特権の昇格)](https://en.wikipedia.org/wiki/STRIDE_(security))** という SDL アプローチを使用しています。 STRIDE は、予測可能な特定の組み合わせ脅威をソフトウェアが受け、脅威はこれら 6 つのカテゴリを使用して検出できる、という考えです。
 
 このアプローチは、自宅を守るために、アラーム システムを追加したり、泥棒を追いかける前に、個々のドアと窓にロックのしくみを確実に持たせることに似ています。
 

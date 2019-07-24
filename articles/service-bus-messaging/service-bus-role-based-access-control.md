@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: aschhab
-ms.openlocfilehash: 7ef152b130e77e833e19c51ff97d0cea577216c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f5390162ce56a0e77ef41740d7e88f3546c5530
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845003"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444731"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
 
@@ -31,11 +31,18 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 ## <a name="service-bus-roles-and-permissions"></a>Service Bus のロールとアクセス許可
 
-初期パブリック プレビューの場合、Azure AD のアカウントとサービス プリンシパルを追加できるのは、Service Bus メッセージング名前空間の "所有者" ロールまたは "共同作成者" ロールだけです。 この操作では、名前空間のすべてのエンティティに対するフル コントロールが ID に付与されます。 名前空間トポロジを変更する管理操作は、最初は Azure のリソース管理によってのみサポートされ、ネイティブの Service Bus REST 管理インターフェイスではサポートされません。 このサポートは、.NET Framework クライアントの [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) オブジェクトを Azure AD アカウントで使用できないことも意味します。
+Azure では、Service Bus 名前空間へのアクセスを承認するための次の組み込み RBAC ロールが提供されています。
+
+* [Azure Service Bus データ所有者 (プレビュー)](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner-preview):Service Bus 名前空間とそのエンティティ (キュー、トピック、サブスクリプション、およびフィルター) へのデータ アクセスが可能です。
+
+>[!IMPORTANT]
+> 以前は、 **"所有者"** または **"共同作成者"** ロールへのマネージド ID の追加がサポートされていました。
+>
+> しかし、 **"所有者"** と **"共同作成者"** ロールのデータ アクセス特権は受け入れられなくなります。 **"所有者"** または **"共同作成者"** ロールを使用していた場合、それらは **"Azure Service Bus データ所有者 (プレビュー)"** ロールを利用するように変更する必要があります。
 
 ## <a name="use-service-bus-with-an-azure-ad-domain-user-account"></a>Azure AD ドメイン ユーザー アカウントで Service Bus を使用する
 
-次のセクションでは、対話型の Azure AD ユーザーにログオンを求めるサンプル アプリケーションを作成して実行するために必要な手順、そのユーザー アカウントに Event Hubs のアクセス権を付与する方法、およびその ID を使って Service Bus にアクセスする方法について説明します。
+次のセクションでは、対話型の Azure AD ユーザーにサインインを求めるサンプル アプリケーションを作成して実行するために必要な手順、そのユーザー アカウントに Event Hubs のアクセス権を付与する方法、およびその ID を使って Service Bus にアクセスする方法について説明します。
 
 この概要では、簡単なコンソール アプリケーションについて説明します。[そのコードは GitHub にあります](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。
 
@@ -47,9 +54,9 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 ### <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間を作成する
 
-次に、RBAC のプレビューをサポートする次の Azure リージョンのいずれかで、[Service Bus メッセージング名前空間を作成](service-bus-create-namespace-portal.md)します:**米国東部**、**米国東部 2**、または**西ヨーロッパ**。
+次に、[Service Bus Messaging 名前空間を作成します](service-bus-create-namespace-portal.md)。
 
-名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、**[ロールの割り当ての追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
+名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、 **[ロールの割り当ての追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、 **[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
 
 これで、そのユーザー アカウントは、Service Bus 名前空間と以前に作成したキューにアクセスできるようになります。
 
@@ -67,12 +74,12 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 - `tenantId`:**TenantId** の値に設定します。
 - `clientId`:**ApplicationId** の値に設定します。
-- `clientSecret`:クライアント シークレットを使ってログオンする場合は、Azure AD で作成します。 また、ネイティブ アプリの代わりに Web アプリまたは API を使います。 また、前に作成した名前空間の **[アクセス制御 (IAM)]** にアプリを追加します。
+- `clientSecret`:クライアント シークレットを使ってサインオンする場合は、Azure AD で作成します。 また、ネイティブ アプリの代わりに Web アプリまたは API を使います。 また、前に作成した名前空間の **[アクセス制御 (IAM)]** にアプリを追加します。
 - `serviceBusNamespaceFQDN`:新しく作成した Service Bus 名前空間の完全な DNS 名に設定します (例: `example.servicebus.windows.net`)。
 - `queueName`:作成したキューの名前に設定します。
 - 前の手順においてアプリで指定したリダイレクト URI です。
 
-コンソール アプリケーションを実行すると、シナリオの選択を求められます。**[Interactive User Login]\(対話型のユーザー ログイン\)** をクリックし、その番号を入力して Enter キーを押します。 アプリケーションはログイン ウィンドウを表示し、Service Bus へのアクセスの同意を求めた後、サービスを使ってログイン ID を用いた送信/受信シナリオを実行します。
+コンソール アプリケーションを実行すると、シナリオの選択を求められます。 **[Interactive User Login]\(対話型のユーザー ログイン\)** をクリックし、その番号を入力して Enter キーを押します。 アプリケーションはログイン ウィンドウを表示し、Service Bus へのアクセスの同意を求めた後、サービスを使ってログイン ID を用いた送信/受信シナリオを実行します。
 
 ## <a name="next-steps"></a>次の手順
 

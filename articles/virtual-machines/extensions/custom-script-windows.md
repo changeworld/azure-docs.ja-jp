@@ -3,19 +3,19 @@ title: Windows の Azure カスタム スクリプト拡張機能 | Microsoft Do
 description: カスタム スクリプト拡張機能を使用して Windows VM の構成タスクを自動化します。
 services: virtual-machines-windows
 manager: carmonm
-author: georgewallace
+author: bobbytreed
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
-ms.author: gwallace
-ms.openlocfilehash: b71ba69bcf4965ea607e097c392573e77aab6865
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.author: robreed
+ms.openlocfilehash: 8487b8477b1837fce0b1c2c6435174c48dfbded4
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408287"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478419"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -227,7 +227,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 **[+ 追加]** をクリックし、リソースの一覧で **[カスタム スクリプト拡張機能]** を選択します。
 
-**[拡張機能のインストール]** ページでローカル PowerShell ファイルを選択し、引数が必要であればそれを入力し、**[OK]** をクリックします。
+**[拡張機能のインストール]** ページでローカル PowerShell ファイルを選択し、引数が必要であればそれを入力し、 **[OK]** をクリックします。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -273,7 +273,7 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 
 `commandToExecute` コマンドを実行すると、拡張機能によってこのディレクトリ (例: `...\Downloads\2`) が現在の作業ディレクトリとして設定されます。 この処理により、`fileURIs` プロパティを使用してダウンロードされたファイルを見つけるときに相対パスを使用できます。 例については、下記の表を参照してください。
 
-絶対ダウンロード パスは経時的に変わる可能性があるため、可能であれば、`commandToExecute` の文字列では相対スクリプト/ファイル パスを使用することをお勧めします。 例: 
+絶対ダウンロード パスは経時的に変わる可能性があるため、可能であれば、`commandToExecute` の文字列では相対スクリプト/ファイル パスを使用することをお勧めします。 例:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""

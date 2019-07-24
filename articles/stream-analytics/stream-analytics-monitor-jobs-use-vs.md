@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: e673d4f1c2d58a61c541cca4f8448dffc003f9fa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101015"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61479440"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Visual Studio を使用して Stream Analytics ジョブを監視および管理する
 
@@ -29,7 +29,7 @@ ms.locfileid: "53101015"
 
 ## <a name="job-metrics"></a>ジョブのメトリックス
 
-**[ジョブの概要]** は、折りたたむことができます。重要なメトリックとともにグラフを表示するには、**[ジョブ メトリック]** タブをクリックします。 グラフに追加するメトリックの種類にチェックを付け、グラフから削除するメトリックの種類のチェックを外します。
+**[ジョブの概要]** は、折りたたむことができます。重要なメトリックとともにグラフを表示するには、 **[ジョブ メトリック]** タブをクリックします。 グラフに追加するメトリックの種類にチェックを付け、グラフから削除するメトリックの種類のチェックを外します。
 
 ![Visual Studio での Stream Analytics メトリック](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
 

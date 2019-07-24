@@ -4,23 +4,23 @@ description: この記事では、Azure Time Series Insights 環境のデータ�
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec62639988dca4b216087e8235be6053140644ee
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: dc192b1e8f5492cdfbfb434b5efb573182c51bb1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406355"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164583"
 ---
-# <a name="understand-data-retention-in-time-series-insights"></a>Time Series Insights のデータ保有について
+# <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights のデータ保有について
 
-この記事では、Time Series Insights 環境 (TSI) のデータ保有を制御する 2 つの設定について説明します。
+この記事では、Azure Time Series Insights 環境のデータ保有に影響する 2 つの設定について説明します。
 
 ## <a name="video"></a>ビデオ
 
@@ -30,13 +30,13 @@ ms.locfileid: "65406355"
 
 お使いの Azure Time Series 環境にはそれぞれ、**データ保有期間**を制御する設定があります。 この値は 1 から 400 日間となっています。 環境の記憶域容量に達したとき、またはリテンション期間が終了したときのいずれか早い方でデータが削除されます。
 
-また、Azure Time Series 環境には、**[ストレージ制限を超過したときの動作]** という設定があります。 この設定によって、環境の最大容量に到達したときのイングレスと消去の動作が制御されます。 この設定には、次の 2 つの動作の選択肢があります。
+また、Azure Time Series 環境には、 **[ストレージ制限を超過したときの動作]** という設定があります。 この設定によって、環境の最大容量に到達したときのイングレスと消去の動作が制御されます。 この設定には、次の 2 つの動作の選択肢があります。
 
 - **[Purge old data]\(古いデータを消去\)** (既定値)  
 - **イングレスを一時停止**
 
 > [!NOTE]
-> 既定では、新しい環境を作成するとき、**古いデータを消去する**ようにリテンション期間が設定されます。 Azure Portal で、必要に応じて、作成後にこの設定を切り替えることができます。TSI 環境の **[構成]** ページを利用してください。
+> 既定では、新しい環境を作成するとき、**古いデータを消去する**ようにリテンション期間が設定されます。 Azure portal で、必要に応じて、作成後にこの設定を切り替えることができます。Time Series Insights 環境の **[構成]** ページを利用してください。
 
 保有動作を切り替える方法については、「[Configuring retention in Time Series Insights](time-series-insights-how-to-configure-retention.md)」 (Time Series Insights のリテンション期間を設定する) を参照してください。
 
@@ -44,8 +44,8 @@ ms.locfileid: "65406355"
 
 ## <a name="purge-old-data"></a>古いデータを消去
 
-- この動作は TSI 環境の既定の動作であり、パブリック プレビュー後に TSI 環境で見られたものと同じ動作です。  
-- ユーザーが使用する TSI 環境に*最も新しいデータ*を常に表示したい場合は、この動作を選択します。 
+- この動作は、Time Series Insights 環境の既定の動作です。  
+- ユーザーが使用する Time Series Insights 環境に "*最も新しいデータ*" を常に表示する場合は、この動作を選択します。
 - この動作では、環境の上限に到達したとき (保有期間、サイズ、カウントのいずれかが上限に達した時点で)、データが*消去*されます。 リテンション期間は既定で 30 日間に設定されます。
 - 取り込まれた日が最も古いデータが先に消去されます (FIFO 手法)。
 
@@ -91,7 +91,7 @@ ms.locfileid: "65406355"
 
 [![イベント ハブのメッセージのリテンション期間。](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-TSI では、イベント ソースでプロパティが構成されていない場合 (`timeStampPropertyName`)、イベント ハブに到着したときのタイムスタンプに X 軸が設定されます。 `timeStampPropertyName` が何か別のものに設定されている場合、イベントの解析時に、データ パケットで構成済みの `timeStampPropertyName` が環境により検索されます。
+Time Series Insights では、イベント ソースでプロパティが構成されていない場合 (`timeStampPropertyName`)、イベント ハブに到着したときのタイムスタンプに X 軸が設定されます。 `timeStampPropertyName` が何か別のものに設定されている場合、イベントの解析時に、データ パケットで構成済みの `timeStampPropertyName` が環境により検索されます。
 
 環境を拡張し、容量を増やすか、リテンション期間を延ばす必要がある場合、「[Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)」で詳細をご覧ください。  
 

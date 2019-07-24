@@ -4,17 +4,17 @@ description: Azure Automation の接続資産には、Runbook または DSC 構�
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e7dccc4a396d4cf8af1062057c4c3ce6efe978ed
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6b1f9cbececcf02962cdde9741764999a920abf8
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918027"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478660"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation での接続資産
 
@@ -72,8 +72,8 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 ### <a name="to-create-a-new-connection-with-the-azure-portal"></a>Azure ポータルで新しい接続を作成するには
 
-1. Automation アカウントから、**[資産]** 部分をクリックして **[資産]** ブレードを開きます。
-2. **[接続]** 部分をクリックして、**[接続]** ブレードを開きます。
+1. Automation アカウントから、 **[資産]** 部分をクリックして **[資産]** ブレードを開きます。
+2. **[接続]** 部分をクリックして、 **[接続]** ブレードを開きます。
 3. ブレード上部の **[接続の追加]** をクリックします。
 4. **[種類]** ドロップダウンで、作成する接続の種類を選択します。 フォームにその特定の種類のプロパティが表示されます。
 5. フォームに入力し、 **[作成]** をクリックして新しい接続を保存します。
@@ -126,36 +126,40 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $
 import azure.mgmt.resource
 import automationassets
 
+
 def get_automation_runas_credential(runas_connection):
-  """ Returns credentials to authenticate against Azure resoruce manager """
-  from OpenSSL import crypto
-  from msrestazure import azure_active_directory
-  import adal
+    """ Returns credentials to authenticate against Azure resoruce manager """
+    from OpenSSL import crypto
+    from msrestazure import azure_active_directory
+    import adal
 
-  # Get the Azure Automation Run As service principal certificate
-  cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
-  pks12_cert = crypto.load_pkcs12(cert)
-  pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM, pks12_cert.get_privatekey())
+    # Get the Azure Automation Run As service principal certificate
+    cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+    pks12_cert = crypto.load_pkcs12(cert)
+    pem_pkey = crypto.dump_privatekey(
+        crypto.FILETYPE_PEM, pks12_cert.get_privatekey())
 
-  # Get Run As connection information for the Azure Automation service principal
-  application_id = runas_connection["ApplicationId"]
-  thumbprint = runas_connection["CertificateThumbprint"]
-  tenant_id = runas_connection["TenantId"]
+    # Get Run As connection information for the Azure Automation service principal
+    application_id = runas_connection["ApplicationId"]
+    thumbprint = runas_connection["CertificateThumbprint"]
+    tenant_id = runas_connection["TenantId"]
 
-  # Authenticate with service principal certificate
-  resource = "https://management.core.windows.net/"
-  authority_url = ("https://login.microsoftonline.com/" + tenant_id)
-  context = adal.AuthenticationContext(authority_url)
-  return azure_active_directory.AdalAuthentication(
-    lambda: context.acquire_token_with_client_certificate(
-      resource,
-      application_id,
-      pem_pkey,
-      thumbprint)
-  )
+    # Authenticate with service principal certificate
+    resource = "https://management.core.windows.net/"
+    authority_url = ("https://login.microsoftonline.com/" + tenant_id)
+    context = adal.AuthenticationContext(authority_url)
+    return azure_active_directory.AdalAuthentication(
+        lambda: context.acquire_token_with_client_certificate(
+            resource,
+            application_id,
+            pem_pkey,
+            thumbprint)
+    )
+
 
 # Authenticate to Azure using the Azure Automation Run As service principal
-runas_connection = automationassets.get_automation_connection("AzureRunAsConnection")
+runas_connection = automationassets.get_automation_connection(
+    "AzureRunAsConnection")
 azure_credential = get_automation_runas_credential(runas_connection)
 ```
 

@@ -13,11 +13,11 @@ ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850294"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61485083"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Azure SQL Database、SQL Data Warehouse、Data Factory、Power BI による SaaS 分析を調べる
 
@@ -170,7 +170,7 @@ SQL Data Warehouse は、テナント データに対して集計を実行する
 1. ADF ユーザー インターフェイスの **[作成者]** タブで、左側のウィンドウから **SQLDBToDW** パイプラインを選択します。
 1. **[トリガー]** をクリックし、プルダウン メニューから **[Trigger Now]\(今すぐトリガー\)** をクリックします。 このアクションはパイプラインをすぐに実行します。 運用シナリオでは、スケジュールに基づいてデータを更新するパイプライン実行タイムテーブルを定義します。
   ![adf_trigger](media/saas-tenancy-tenant-analytics/adf_trigger.JPG)
-1. **[Pipeline Run]\(パイプライン実行\)** ページで、**[完了]** をクリックします。
+1. **[Pipeline Run]\(パイプライン実行\)** ページで、 **[完了]** をクリックします。
  
 ### <a name="monitor-the-pipeline-run"></a>パイプラインの実行を監視します
 1. ADF ユーザー インターフェイスで左側のメニューから **[Monitor]\(監視\)** タブに切り替えます。
@@ -189,9 +189,9 @@ SQL Data Warehouse は、テナント データに対して集計を実行する
 次の手順に従って、Power BI に接続し、以前に作成したビューをインポートします。
 
 1. Power BI Desktop を起動します。
-2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]**  を選択します。
-3. **[データの取得]** ウィンドウで、**[Azure SQL Database]** を選びます。
-4. データベース ログイン ウィンドウで、サーバー名 (**catalog-dpt-&lt;ユーザー&gt;.database.windows.net**) を入力します。 **[データ接続モード]** で **[インポート]** を選び、**[OK]** をクリックします。 
+2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]** を選択します。
+3. **[データの取得]** ウィンドウで、 **[Azure SQL Database]** を選びます。
+4. データベース ログイン ウィンドウで、サーバー名 (**catalog-dpt-&lt;ユーザー&gt;.database.windows.net**) を入力します。 **[データ接続モード]** で **[インポート]** を選び、 **[OK]** をクリックします。 
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
@@ -229,7 +229,7 @@ Contoso Concert Hall の各イベントに対する時間経過に伴う累積�
 
 チケット販売パターンに関する洞察により、Wingtip Tickets でビジネス モデルを最適化できます。 Wingtip では、すべてのテナントに均等に課金するのではなく、コンピューティング サイズが異なるサービス レベルを導入する必要があると考えられます。 1 日により多くのチケットを販売する必要がある大規模な会場には、サービス レベル アグリーメント (SLA) が高い上位層を提供できます。 これらの会場では、データベースごとのリソースの上限が高いプールにデータベースを配置できます。 各サービス層に時間単位の販売割り当てを設定し、割り当てを超えた場合は追加料金が課金されるようにすることもできます。 売上が定期的に激増する大規模な会場は上位層からメリットが得られ、Wingtip Tickets はサービスをより効率的に収益化できます。
 
-その一方で、Wingtip Tickets の一部の顧客は、サービス コストに見合うだけのチケットを販売するのに苦戦していると不満を漏らしています。 これらの洞察に、業績が低迷している会場のチケットの売上を伸ばす機会がおそらくあります。 売上が増加すれば、サービスの知覚価値が高まります。 fact_Tickets を右クリックし、**[新しいメジャー]** を選択します。 **AverageTicketsSold** という新しいメジャーの次の式を入力します。
+その一方で、Wingtip Tickets の一部の顧客は、サービス コストに見合うだけのチケットを販売するのに苦戦していると不満を漏らしています。 これらの洞察に、業績が低迷している会場のチケットの売上を伸ばす機会がおそらくあります。 売上が増加すれば、サービスの知覚価値が高まります。 fact_Tickets を右クリックし、 **[新しいメジャー]** を選択します。 **AverageTicketsSold** という新しいメジャーの次の式を入力します。
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))

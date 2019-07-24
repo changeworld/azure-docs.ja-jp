@@ -2,26 +2,26 @@
 title: Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて | Microsoft Docs
 description: Azure Active Directory B2C を使用するアプリケーションのユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 26dea1b636fce9e7f5defddd5cf4bc4c7d78d5da
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 6c9109cf4d6d67d3d8001a9de1d54e24622a9286
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682016"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66511175"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて
 
 Azure Active Directory (Azure AD) B2C によってアプリケーションに提供されるユーザー インターフェイス (UI) をカスタマイズしたり、ブランド名を付けたりする機能は、一貫性のある操作性を顧客に与えるために重要です。 そのような操作性には、サインアップ、サインイン、プロファイル編集、パスワード リセットが含まれます。 この記事では、アプリケーションの UI カスタマイズに役立つ情報を提供します。
 
-これらの操作性のニーズに基づき、さまざまな方法でアプリケーションの UI をカスタマイズします。 例: 
+これらの操作性のニーズに基づき、さまざまな方法でアプリケーションの UI をカスタマイズします。 例:
 
 - [ユーザー フロー](active-directory-b2c-reference-policies.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集といった操作を提供している場合、[Azure portal を使用して UI をカスタマイズ](tutorial-customize-ui.md)します。
 - v2 のユーザー フローを使用している場合は、[ページ レイアウト テンプレート](#page-layout-templates)を使用して、さらにカスタマイズを行うことなく、ユーザー フロー ページの外観を変更できます。 たとえば、オーシャン ブルーやスレート グレーのテーマをユーザー フローのすべてのページに適用できます。
@@ -48,11 +48,11 @@ Azure AD B2C によって、顧客のブラウザーでコードが実行され�
 
 v2 のユーザー フローでは、既定のページの見た目をよくし、独自のカスタマイズの適切なベースとして使用できる、デザイン済みのテンプレートを選択できます。
 
-左側のメニューで、**[カスタマイズ]** の **[ページ レイアウト]** を選択します。 次に、**[テンプレート (プレビュー)]** を選択します。
+左側のメニューで、 **[カスタマイズ]** の **[ページ レイアウト]** を選択します。 次に、 **[テンプレート (プレビュー)]** を選択します。
 
 ![ページ レイアウト テンプレートを選択する](media/customize-ui-overview/template.png)
 
-一覧からテンプレートを選択します。 たとえば、**[オーシャン ブルー]** テンプレートでは、次のレイアウトがユーザー フロー ページに適用されます。
+一覧からテンプレートを選択します。 たとえば、 **[オーシャン ブルー]** テンプレートでは、次のレイアウトがユーザー フロー ページに適用されます。
 
 ![オーシャン ブルー テンプレート](media/customize-ui-overview/ocean-blue.png)
 

@@ -2,20 +2,21 @@
 title: Azure Active Directory B2C でのユーザー データの管理 | Microsoft Docs
 description: Azure AD B2C 内のユーザー データを削除またはエクスポートする方法を説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/06/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 18e0f102ba1447a734045d5225bb09f019016139
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 4cbca467b50dd0e43132b6d09dc0785c501fca0f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683901"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204690"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー データの管理
 
@@ -25,7 +26,7 @@ ms.locfileid: "64683901"
 
 ## <a name="delete-user-data"></a>ユーザー データを削除する
 
-ユーザー データは、Azure AD B2C ディレクトリおよび監査ログに格納されます。 すべてのユーザー監査データは、30 日間、Azure AD B2C に保持されます。 その 30 日の期間内にユーザー データを削除する場合は、[ユーザーの削除](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser)操作を使用できます。 データが存在する Azure AD B2C テナントごとに、DELETE 操作を行う必要があります。 
+ユーザー データは、Azure AD B2C ディレクトリおよび監査ログに格納されます。 すべてのユーザー監査データは、Azure AD B2C に 7 日間保持されます。 その 7 日の期間内にユーザー データを削除する場合は、[ユーザーの削除](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser)操作を使用できます。 データが存在する Azure AD B2C テナントごとに、DELETE 操作を行う必要があります。 
 
 Azure AD B2C 内のすべてのユーザーには、オブジェクト ID が割り当てられています。 オブジェクト ID は、Azure AD B2C 内のユーザー データの削除に使用する明確な識別子を提供します。 アーキテクチャによっては、オブジェクト ID は、他のサービス (財務データベース、マーケティング データベース、顧客関係管理データベースなど) との間の便利な相関関係識別子になる可能性があります。 
 
@@ -33,7 +34,7 @@ Azure AD B2C 内のすべてのユーザーには、オブジェクト ID が割
 
 次の例では、可能なデータ削除フローを示します。
 
-1. ユーザーがサインインし、**[自分のデータを削除]** を選びます。
+1. ユーザーがサインインし、 **[自分のデータを削除]** を選びます。
 2. アプリケーションは、アプリケーションの管理セクション内のデータを削除するオプションを提供します。
 3. アプリケーションは、Azure AD B2C に対する認証を強制します。 Azure AD B2C は、ユーザーのオブジェクト ID を含むトークンをアプリケーションに提供します。 
 4. アプリケーションによってトークンが受け取られます。Azure AD Graph API への呼び出しを通じてユーザー データを削除するために、オブジェクト ID が使用されます。 Azure AD Graph API によってユーザー データが削除され、状態コード 200 OK が返されます。

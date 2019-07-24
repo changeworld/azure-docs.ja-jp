@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 4617e878f2af446608ede4e0aed644848564a074
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 651ae9d9f9a622724e1ee606219ba940995aa555
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609077"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441746"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -36,24 +36,26 @@ CLI では、`--verbose` スイッチを使用してコマンド実行中に詳�
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>エラー "Azure Dev Spaces コントローラーを作成できませんでした"
 
+### <a name="reason"></a>理由
 コントローラーの作成で問題が発生した場合に、このようなエラーが表示されることがあります。 これが一時的なエラーの場合は、コントローラーを削除して再作成することで修正されます。
 
-### <a name="try"></a>次の操作を試してください。
+### <a name="try"></a>試す
 
-コントローラーを削除するには、Azure Dev Spaces の CLI を使用します。 Visual Studio や Cloud Shell でこれを行うことはできません。 AZDS CLI をインストールするには、まず、Azure CLI をインストールして、以下のコマンドを実行します。
+コントローラーを削除する:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+```
+
+コントローラーを削除するには、Azure Dev Spaces CLI を使用する必要があります。 Visual Studio からコントローラーを削除することはできません。 また、Azure Cloud Shell に Azure Dev Spaces CLI をインストールすることもできないため、Azure Cloud Shell からコントローラーを削除することはできません。
+
+Azure Dev Spaces CLI がインストールされていない場合は、まず次のコマンドを使用してインストールしてからコントローラーを削除できます。
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-次に、以下のコマンドを実行してコントローラーを削除します。
-
-```cmd
-azds remove -g <resource group name> -n <cluster name>
-```
-
-コントローラーの再作成は、CLI や Visual Studio から行うことができます。 初めての場合と同じように、チュートリアルの手順に従ってください。
-
+コントローラーの再作成は、CLI や Visual Studio から行うことができます。 例については、[チーム開発](quickstart-team-development.md)または [.NET Core を使用した開発](quickstart-netcore-visualstudio.md)のクイックスタートを参照してください。
 
 ## <a name="error-service-cannot-be-started"></a>エラー "サービスを開始できません。"
 
@@ -71,13 +73,13 @@ azds up --verbose --output json
 
 Visual Studio で次の操作を行います。
 
-1. **[ツール] > [オプション]** を開き、**[プロジェクトとソリューション]** で、**[ビルドおよび実行]** を選択します。
+1. **[ツール] > [オプション]** を開き、 **[プロジェクトとソリューション]** で、 **[ビルドおよび実行]** を選択します。
 2. **[MSBuild プロジェクト ビルドの出力の詳細]** の設定を **[詳細]** または **[診断]** に変更します。
 
     ![ツール オプション ダイアログのスクリーンショット](media/common/VerbositySetting.PNG)
     
 ### <a name="multi-stage-dockerfiles"></a>マルチステージの Dockerfile:
-マルチステージの Dockerfile を使用すると、"*Service cannot be started (サービスを開始できません)*" エラーが発生します。 このような状況では、詳細出力に次のテキストが含まれます。
+マルチステージの Dockerfile を使用すると、"*Service cannot be started (サービスを開始できません)* " エラーが発生します。 このような状況では、詳細出力に次のテキストが含まれます。
 
 ```cmd
 $ azds up -v
@@ -95,7 +97,7 @@ Service cannot be started.
 このエラーは、AKS ノードでマルチステージ ビルドをサポートしていない旧バージョンの Docker が実行されているために発生します。 マルチステージ ビルドを回避するには、Dockerfile を書き直します。
 
 ### <a name="rerunning-a-service-after-controller-re-creation"></a>コントローラーの再作成後のサービスの再実行
-このクラスターに関連付けられた Azure Dev Spaces を削除してから再作成した後、サービスを再実行しようとすると、"*Service cannot be started (サービスを開始できません)*" エラーが発生します。 このような状況では、詳細出力に次のテキストが含まれます。
+このクラスターに関連付けられた Azure Dev Spaces を削除してから再作成した後、サービスを再実行しようとすると、"*Service cannot be started (サービスを開始できません)* " エラーが発生します。 このような状況では、詳細出力に次のテキストが含まれます。
 
 ```cmd
 Installing Helm chart...
@@ -111,7 +113,7 @@ Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already ex
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Dev Spaces サービスに関連付けられたパブリック URL で DNS の名前解決が失敗します。
 
-`azds prep` コマンドで `--public` スイッチを指定するか、Visual Studio で `Publicly Accessible` チェック ボックスをオンにすることで、サービスのパブリック URL エンドポイントを構成できます。 Dev Spaces でサービスを実行すると、パブリック DNS 名が自動的に登録されます。 この DNS 名が登録されていない場合は、パブリック URL に接続するときに、Web ブラウザーに "*Page cannot be displayed (ページを表示できません)*" または "*Site cannot be reached (サイトに到達できません)*" エラーが表示されます。
+`azds prep` コマンドで `--public` スイッチを指定するか、Visual Studio で `Publicly Accessible` チェック ボックスをオンにすることで、サービスのパブリック URL エンドポイントを構成できます。 Dev Spaces でサービスを実行すると、パブリック DNS 名が自動的に登録されます。 この DNS 名が登録されていない場合は、パブリック URL に接続するときに、Web ブラウザーに "*Page cannot be displayed (ページを表示できません)* " または "*Site cannot be reached (サイトに到達できません)* " エラーが表示されます。
 
 ### <a name="try"></a>次の操作を試してください。
 
@@ -157,7 +159,7 @@ azds.exe が正しくインストールされていないか、構成されて�
 
 ### <a name="try"></a>次の操作を試してください。
 
-1. %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev Spaces CLI (プレビュー) で azds.exe を探してください。 見つかった場合は、その場所を PATH 環境変数に追加します。
+1. %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev Spaces CLI で azds.exe を探してください。 見つかった場合は、その場所を PATH 環境変数に追加します。
 2. azds.exe がインストールされていない場合は、次のコマンドを実行します。
 
     ```cmd
@@ -185,7 +187,7 @@ Azure Dev Spaces でネイティブにサポートされる言語でアプリケ
 ### <a name="try"></a>次の操作を試してください。
 1. コンテナーがビルド/デプロイ処理中の場合、2 ～ 3 秒待ってからサービスへのアクセスを再試行できます。 
 1. ポート 構成を確認します。 次のすべてのアセットに指定されたポート番号が**同一**である必要があります。
-    * **Dockerfile:**`EXPOSE` 命令によって指定されます。
+    * **Dockerfile:** `EXPOSE` 命令によって指定されます。
     * **[Helm チャート](https://docs.helm.sh):** サービスの `externalPort` および `internalPort` 値 (多くの場合、`values.yml` ファイルにある) で指定されます。
     * Node.js などのアプリケーション コードで開かれているポートがあります: `var server = app.listen(80, function () {...}`
 
@@ -242,7 +244,7 @@ VS Code デバッガーを実行すると、エラー `Invalid 'cwd' value '/src
 ### <a name="try"></a>次の操作を試してください。
 必要な手順:
 1. _azds.yaml_ ファイルを変更して、ビルド コンテキストをソリューション レベルに設定します。
-2. _Dockerfile_ および _Dockerfile.develop_ ファイルを変更して、新しいビルド コンテキストからの相対位置でプロジェクト (_.csproj_) ファイルを正しく参照します。
+2. _Dockerfile_ および _Dockerfile.develop_ ファイルを変更して、新しいビルド コンテキストからの相対位置でプロジェクト ( _.csproj_) ファイルを正しく参照します。
 3. _.dockerignore_ ファイルを .sln ファイルと同じ場所に置き、必要に応じて変更します。
 
 https://github.com/sgreenmsft/buildcontextsample に例があります
@@ -261,7 +263,7 @@ Azure サブスクリプションの所有者または共同作成者のアク�
 az provider register --namespace Microsoft.DevSpaces
 ```
 
-## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>AKS 仮想ノードの "*Waiting for container image build... (コンテナーイメージがビルドされるのを待っています...)*" 手順で Dev Spaces がタイムアウトする
+## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>AKS 仮想ノードの "*Waiting for container image build... (コンテナーイメージがビルドされるのを待っています...)* " 手順で Dev Spaces がタイムアウトする
 
 ### <a name="reason"></a>理由
 このタイムアウトは、Dev Spaces を使用して、[AKS 仮想ノード](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)上で実行するように構成されているサービスを実行しようとした場合に発生します。 Dev Spaces では、現在、仮想ノード上でのサービスのビルドもデバッグもサポートされていません。
@@ -293,10 +295,20 @@ Dev Spaces を介してビルドまたはデバッグするサービスを VM �
 ### <a name="try"></a>次の操作を試してください。
 通常は、クラスター内のエージェント ノードを再起動すると、この問題が解決します。
 
+## <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>"エラー: リリース azds-\<identifier\>-\<spacename\>-\<servicename\> が失敗しました: サービス '\<servicename\>' は既に存在します" または "\<servicename\> に対するプル アクセスが拒否されました。リポジトリが存在しないか、'docker login' が必要な場合があります"
+
+### <a name="reason"></a>理由
+これらのエラーは、ダイレクト Helm コマンド (`helm install`、`helm upgrade`、`helm delete` など) と、Dev Spaces コマンド (`azds up`、`azds down` など) を同じ開発スペース内に混在させて実行した場合に、発生することがあります。 原因は、Dev Spaces に独自の Tiller インスタンスがあり、これが、同じ開発スペースで実行されているご自身の Tiller インスタンスと競合していることです。
+
+### <a name="try"></a>次の操作を試してください。
+Helm コマンドと Dev Spaces コマンドは両方とも同じ AKS クラスターに対して使用しても問題ありませんが、それぞれの Dev Spaces 対応名前空間で、いずれかが使用されていなければなりません。
+
+たとえば、Helm コマンドを使用して、親開発スペースでご自身のアプリケーション全体を実行するとします。 その親から離れた場所に子開発スペースを作成し、Dev Spaces を使って子開発スペース内で個別のサービスを実行した後、そのサービスをまとめてテストできます。 ご自身の変更をチェックインする準備ができたら、Helm コマンドを使用して、更新されたコードを親開発スペースにデプロイします。 更新されたサービスを親開発スペースで実行するときに `azds up` は使用しないでください。これは、Helm を使用して最初にサービスで実行されたサービスと競合するためです。
+
 ## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Azure Dev Spaces プロキシは開発空間で実行されているその他のポッドと干渉することがあります
 
 ### <a name="reason"></a>理由
-AKS クラスター内の名前空間で Dev Spaces を有効にすると、_mindaro-proxy_ と呼ばれる追加のコンテナーが、その名前空間内で実行される各ポッドにインストールされます。 このコンテナーは、ポッド内のサービスへの呼び出しをインターセプトしますが、これは Dev Spaces のチーム開発機能に不可欠です。ただし、これらのポッド内で実行中の特定のサービスに干渉する可能性があります。 Azure Cache for Redis を実行するポッドに干渉し、マスター/スレーブ通信での接続エラーと障害の原因になることがわかっています。
+AKS クラスター内の名前空間で Dev Spaces を有効にすると、_mindaro-proxy_ と呼ばれる追加のコンテナーが、その名前空間内で実行される各ポッドにインストールされます。 このコンテナーは、ポッド内のサービスへの呼び出しをインターセプトしますが、これは Dev Spaces のチーム開発機能に不可欠です。ただし、これらのポッド内で実行中の特定のサービスに干渉する可能性があります。 Azure Cache for Redis を実行するポッドに干渉し、プライマリ/セカンダリ通信での接続エラーと障害の原因になることがわかっています。
 
 ### <a name="try"></a>次の操作を試してください。
 影響を受けるポッドを、Dev Spaces が有効になって "_いない_" クラスター内の名前空間に移動できます。 Dev Spaces が有効な名前空間内で、残りのアプリケーションの実行を続けることができます。 Dev Spaces は、Dev Spaces に非対応の名前空間の内部に _mindaro-proxy_ コンテナーをインストールしません。
@@ -364,7 +376,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS クラスター上の管理者用の *kubeconfig* を読み取るためのアクセス権を持っている必要があります。 たとえば、この権限は、[組み込みの Azure Kubernetes Service クラスター管理者ロール](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)で利用できます。 また、Azure Dev Spaces コントローラーにアクセスするユーザーには、コントローラーの "*共同作成者*" または "*所有者*" の RBAC ロールが設定されている必要もあります。
 
 ### <a name="try"></a>試す
-AKS クラスターに対するユーザーの権限の更新に関する詳細は、[こちら](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user)で確認できます。
+AKS クラスターに対するユーザーの権限の更新に関する詳細は、[こちら](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)で確認できます。
 
 コントローラーに対するユーザーの RBAC ロールを更新するには、次のようにします。
 
@@ -374,8 +386,56 @@ AKS クラスターに対するユーザーの権限の更新に関する詳細�
 1. コントローラーをクリックします。
 1. *[アクセス制御] (IAM)* ウィンドウを開きます。
 1. *[ロールの割り当て]* タブをクリックします。
-1. *[追加]* をクリックして、*[ロールの割り当ての追加]* をクリックします。
-    * *[ロール]* で、*[共同作成者]* または *[所有者]* を選択します。
-    * *[アクセスの割り当て先]* で、*[Azure AD のユーザー、グループ、サービス プリンシパル]* を選択します。
+1. *[追加]* をクリックして、 *[ロールの割り当ての追加]* をクリックします。
+    * *[ロール]* で、 *[共同作成者]* または *[所有者]* を選択します。
+    * *[アクセスの割り当て先]* で、 *[Azure AD のユーザー、グループ、サービス プリンシパル]* を選択します。
     * *[選択]* で、権限を付与するユーザーを検索します。
 1. [ *Save*] をクリックします。
+
+## <a name="controller-create-failing-due-to-controller-name-length"></a>コントローラー名の文字数が原因でコントローラーの作成に失敗しました
+
+### <a name="reason"></a>理由
+Azure Dev Spaces コントローラー名の文字数は 31 文字までです。 AKS クラスターの Dev Spaces を有効にするとき、またはコントローラーを作成するときに、コントローラー名が 31 文字を超えていると、次のようなエラーが発生します。
+
+*クラスター'a-controller-name-that-is-way-too-long-aks-east-us' の Dev Spaces コントローラーを作成できませんでした: Azure Dev Spaces コントローラー名 'a-controller-name-that-is-way-too-long-aks-east-us' は無効です。制約に違反しました: Azure Dev Spaces 名の最大文字数は 31 文字です*
+
+### <a name="try"></a>試す
+
+別の名前でコントローラーを作成します。
+
+```cmd
+azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
+```
+
+## <a name="enabling-dev-spaces-failing-when-windows-node-pools-are-added-to-an-aks-cluster"></a>AKS クラスターに Windows ノード プールが追加されていると、Dev Spaces を有効にすることができません
+
+### <a name="reason"></a>理由
+現在のところ、Azure Dev Spaces は Linux のポッドとノードのみで実行するものです。 Windows ノード プールのある AKS クラスターがある場合は、Azure Dev Spaces ポッドが Linux ノードでのみスケジュールされていることを確認する必要があります。 Azure Dev Spaces ポッドが Windows ノードで実行されるようにスケジュールされている場合、そのポッドは開始されず、Dev Spaces の有効化は失敗します。
+
+### <a name="try"></a>試す
+AKS クラスターに[テイントを追加](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)して、Linux ポッドが Windows ノードで実行されるようにスケジュールされていないことを確認します。
+
+## <a name="error-found-no-untainted-linux-nodes-in-ready-state-on-the-cluster-there-needs-to-be-at-least-one-untainted-linux-node-in-ready-state-to-deploy-pods-in-azds-namespace"></a>エラー "クラスター上で準備完了状態のテイントされていない Linux ノードが見つかりませんでした。 "azds" 名前空間にポッドをデプロイするには、準備完了状態でテイントされていない Linux ノードが少なくとも 1 つ必要です。"
+
+### <a name="reason"></a>理由
+
+ポッドをスケジュールする*準備完了*状態のテイントされていないノードが見つからなかったため、Azure Dev Spaces で AKS クラスターにコントローラーを作成できませんでした。 Azure Dev Spaces では、容認を指定せずにポッドをスケジュールするための、少なくとも 1 つの*準備完了*状態の Linux ノードが必要です。
+
+### <a name="try"></a>試す
+少なくとも 1 つの Linux ノードで容認を指定せずに確実にポッドをスケジュールできるように、AKS クラスターで[テイント構成を更新](../aks/operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations)します。 また、容認を指定せずポッドをスケジュールできる少なくとも 1 つの Linux ノードが、*準備完了*状態であることも確認します。 ノードが*準備完了*状態に達するのに時間がかかっている場合は、ノードの再起動を試みることができます。
+
+## <a name="error-azure-dev-spaces-cli-not-installed-properly-when-running-az-aks-use-dev-spaces"></a>`az aks use-dev-spaces` の実行時のエラー "Azure Dev Spaces CLI が正しくインストールされていません"
+
+### <a name="reason"></a>理由
+Azure Dev Spaces CLI に対する更新により、そのインストール パスが変更されました。 2\.0.63 より前のバージョンの Azure CLI を使用している場合は、このエラーが表示されることがあります。 Azure CLI のバージョンを表示するには、`az --version` を使用します。
+
+```bash
+$ az --version
+azure-cli                         2.0.60 *
+...
+```
+
+2\.0.63 の前のバージョンの Azure CLI で `az aks use-dev-spaces` を実行している場合は、エラー メッセージに関係なくインストールは成功します。 引き続き問題なく `azds` を使用できます。
+
+### <a name="try"></a>試す
+[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) のインストールを 2.0.63 以降に更新します。 これにより、`az aks use-dev-spaces` の実行中に受け取るエラー メッセージが解決されます。 また、引き続き現在のバージョンの Azure CLI と Azure Dev Spaces CLI を使用することもできます。

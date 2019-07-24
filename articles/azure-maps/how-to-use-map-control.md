@@ -1,19 +1,19 @@
 ---
-title: Azure Maps のマップ コントロールを使用する方法 | Microsoft Docs
+title: Azure Maps の Web マップ コントロールの概要 | Microsoft Docs
 description: Azure Maps のマップ コントロール クライアント側 JavaScript ライブラリを使用する方法について説明します。
-author: dsk-2015
-ms.author: dkshir
+author: walsehgal
+ms.author: v-musehg
 ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9e3a442a3d6c420c548979327c193628efbee5aa
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: aa923fa7e2d5e673e6a2db2b349e54d433d1817b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549220"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65957278"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -68,7 +68,7 @@ ms.locfileid: "59549220"
     </body>
     ```
 
-5. マップ コントロールを初期化するには、html 本文に新しいセクションを定義し、スクリプトを作成します。 [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用してマップを認証するには、固有の Azure Maps アカウント キーまたは Azure Active Directory (AAD) 資格情報を使用します。 アカウントを作成するか、キーを確認する必要がある場合は、「[Azure Maps のアカウントとキーを管理する方法](how-to-manage-account-keys.md)」を参照してください。 **language** オプションには、マップ ラベルとコントロールに使用される言語を指定します。 サポートされている言語の詳細については、[サポートされている言語](supported-languages.md)に関するページを参照してください。 サブスクリプション キーを使用して認証する場合は、次のようになります。
+5. マップ コントロールを初期化するには、html 本文に新しいセクションを定義し、スクリプトを作成します。 `Map` クラスのインスタンスを作成するときに、最初のパラメーターとしてマップ `<div>` の `id` または `HTMLElement` (`document.getElementById('myMap')` など) を渡します。 [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用してマップを認証するには、固有の Azure Maps アカウント キーまたは Azure Active Directory (AAD) 資格情報を使用します。 アカウントを作成するか、キーを確認する必要がある場合は、「[Azure Maps のアカウントとキーを管理する方法](how-to-manage-account-keys.md)」を参照してください。 **language** オプションには、マップ ラベルとコントロールに使用される言語を指定します。 サポートされている言語の詳細については、[サポートされている言語](supported-languages.md)に関するページを参照してください。 サブスクリプション キーを使用して認証する場合は、次のようになります。
 
     ```HTML
     <script type="text/javascript">

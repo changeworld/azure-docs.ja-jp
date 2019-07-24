@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: aljo
-ms.openlocfilehash: b4d3699c0327bb2771a358d3e3c2921bdc39ee5e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cb0f750f4049a1ce652c829f43928a95f30e6973
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670423"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66302237"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric のアプリケーションとサービスのセキュリティ
 マイクロサービス アーキテクチャには、[多くの利点](service-fabric-overview-microservices.md)があります。 しかし、マイクロサービスのセキュリティの管理は困難であり、従来のモノリシックなアプリケーション セキュリティの管理とは異なります。 
@@ -36,7 +36,7 @@ API レベルの信頼性を判断するために、最初に行う手順は認�
 
 サービスに直接アクセスできる場合は、ユーザーを認証するために、Azure Active Directory のような認証サービスか、セキュリティ トークン サービス (STS) として機能する専用認証マイクロサービスを使用することができます。 信頼性の判断は、セキュリティ トークンまたは cookie を使用して、サービス間で共有されます。 
 
-ASP.NET Core の場合、[ユーザーを認証する](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)ための主なしくみは、ASP.NET Core Identity メンバーシップ システムです。 ASP.NET Core Identity では、開発者によって構成されたデータ ストアにユーザー情報 (サインイン情報、ロール、要求など) が格納されます。 ASP.NET Core Identity は、2 要素認証をサポートしています。  外部認証プロバイダーもサポートされているため、ユーザーは、Microsoft、Google、Facebook、Twitter などのプロバイダーによる既存の認証プロセスを使用してログインすることができます。 
+ASP.NET Core の場合、[ユーザーを認証する](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)ための主なしくみは、ASP.NET Core Identity メンバーシップ システムです。 ASP.NET Core Identity では、開発者によって構成されたデータ ストアにユーザー情報 (サインイン情報、ロール、要求など) が格納されます。 ASP.NET Core Identity は、2 要素認証をサポートしています。  外部認証プロバイダーもサポートされているため、ユーザーは、Microsoft、Google、Facebook、Twitter などのプロバイダーによる既存の認証プロセスを使用してサインインすることができます。
 
 ### <a name="authorization"></a>Authorization
 認証後、サービスはユーザー アクセスを承認するか、ユーザーの実行できる操作を判断する必要があります。 このプロセスにより、サービスはすべてのユーザーではなく一部の認証されたユーザーだけに API の使用を許可することができます。 承認は、ユーザーがだれであるかを確認するプロセスである認証とは独立して直交しています。 承認では、現在のユーザーのために 1 つ以上の ID を作成する場合があります。

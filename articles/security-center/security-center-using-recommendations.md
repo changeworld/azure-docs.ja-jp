@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 3/26/2019
 ms.author: v-mohabe
 ms.openlocfilehash: 60bb1c3b81ef990993a2ce659a2b189c9d8a0eba
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65967975"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
@@ -60,7 +60,7 @@ Jeff は、毎日の監視アクティビティの一環として、Azure にサ
 
 3. Jeff は、最初に処理する推奨事項を決定する必要があります。 それで、セキュリティ スコアをクリックし、[セキュリティ スコアの影響](security-center-secure-score.md)がどれほど改善されるかに注目しながら推奨事項について処理を始めます。
 
-4. Jeff はたくさんの VM やサーバーに接続しているため、**[計算とアプリ]** にターゲットを絞ることにします。
+4. Jeff はたくさんの VM やサーバーに接続しているため、 **[計算とアプリ]** にターゲットを絞ることにします。
 
 5. Jeff が **[計算とアプリ]** をクリックすると、推奨事項の一覧が表示されます。セキュリティ スコアへの影響に照らしてそれらを処理します。
 

@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/21/2019
 ms.author: shvija
-ms.openlocfilehash: 549cfb84ff247295e01c800aa41ba265bb8921c7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dfdeee9591b5d6ccbadadaef83c6598dd0e850d8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540081"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448136"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Active Directory のロールベースのアクセス制御 (プレビュー)
 
@@ -27,8 +27,13 @@ Azure Event Hubs の場合、名前空間およびそれに関連するすべて
 Azure AD の RBAC を使うアプリケーションは、SAS ルールとキーまたは Event Hubs に固有のアクセス トークンを処理する必要はありません。 クライアント アプリは、Azure AD とやり取りして認証コンテキストを確立し、Event Hubs 用のアクセス トークンを取得します。 対話型ログインを必要とするドメイン ユーザー アカウントでは、アプリケーションはどのような資格情報も直接処理しません。
 
 ## <a name="event-hubs-roles-and-permissions"></a>Event Hubs のロールとアクセス許可
+Azure では、Event Hubs 名前空間へのアクセスを承認するための次の組み込み RBAC ロールが提供されています。
 
-初期パブリック プレビューの場合、Azure AD のアカウントとサービス プリンシパルを追加できるのは、Event Hubs 名前空間の "所有者" ロールまたは "共同作成者" ロールだけです。 この操作では、名前空間のすべてのエンティティに対するフル コントロールが ID に付与されます。 名前空間トポロジを変更する管理操作は、最初は Azure のリソース管理によってのみサポートされ、ネイティブの Event Hubs REST 管理インターフェイスではサポートされません。 このサポートは、.NET Framework クライアントの [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) オブジェクトを Azure AD アカウントで使用できないことも意味します。  
+[Azure Event Hubs データ所有者 (プレビュー)](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview) ロールでは、Event Hubs 名前空間とそのエンティティ (キュー、トピック、サブスクリプション、およびフィルター) へのデータ アクセスが可能です。
+
+>[!IMPORTANT]
+> 以前は、マネージド ID を**所有者**ロールまたは**共同作成者**ロールに追加することをサポートしていました。 しかし、**所有者**ロールと**共同作成者**ロールのデータ アクセス特権は受け入れられなくなりました。 **所有者**ロールまたは**共同作成者**ロールを使用している場合は、**Azure Event Hubs データ所有者 (プレビュー)** ロールの使用に切り替えてください。
+
 
 ## <a name="use-event-hubs-with-an-azure-ad-domain-user-account"></a>Azure AD ドメイン ユーザー アカウントで Event Hubs を使用する
 
@@ -44,9 +49,9 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 
 ### <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 
-次に、RBAC の Event Hubs プレビューをサポートする Azure リージョンのいずれかで、[Event Hubs 名前空間を作成](event-hubs-create.md)します。**米国東部**、**米国東部 2**、または**西ヨーロッパ**。 
+次に、[Event Hubs 名前空間を作成します](event-hubs-create.md)。 
 
-名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、**[ロールの割り当ての追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。 これで、そのユーザー アカウントは、Event Hubs 名前空間と以前に作成したイベント ハブにアクセスできるようになります。
+名前空間を作成した後、ポータルでその **[アクセス制御 (IAM)]** ページに移動し、 **[ロールの割り当ての追加]** をクリックして、Azure AD ユーザー アカウントを所有者ロールに追加します。 自分専用のユーザー アカウントを使い、名前空間を作成した場合は、既に所有者ロールになっています。 別のアカウントをロールに追加するには、 **[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。 これで、そのユーザー アカウントは、Event Hubs 名前空間と以前に作成したイベント ハブにアクセスできるようになります。
  
 ### <a name="register-the-application"></a>アプリケーションを登録する
 
@@ -67,7 +72,7 @@ Azure AD の RBAC を使うアプリケーションは、SAS ルールとキー�
 - `eventHubName`:作成したイベント ハブの名前に設定します。
 - 前の手順においてアプリで指定したリダイレクト URI です。
  
-コンソール アプリケーションを実行すると、シナリオの選択を求められます。**[Interactive User Login]\(対話型のユーザー ログイン\)** をクリックし、その番号を入力して Enter キーを押します。 アプリケーションはサインイン ウィンドウを表示し、Event Hubs へのアクセスの同意を求めた後、サービスを使ってサインイン ID を用いた送信/受信シナリオを実行します。
+コンソール アプリケーションを実行すると、シナリオの選択を求められます。 **[Interactive User Login]\(対話型のユーザー ログイン\)** をクリックし、その番号を入力して Enter キーを押します。 アプリケーションはサインイン ウィンドウを表示し、Event Hubs へのアクセスの同意を求めた後、サービスを使ってサインイン ID を用いた送信/受信シナリオを実行します。
 
 アプリは `ServiceAudience.EventHubsAudience` をトークン対象ユーザーとして使用します。 対象ユーザーを定数として使用できない他の言語や SDK を使用する場合、使用する適切な値は `https://eventhubs.azure.net/` になります。
 

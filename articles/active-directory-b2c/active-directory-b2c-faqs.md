@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のよく寄せられる質問 (FAQ) | Microsoft Docs
 description: Azure Active Directory B2C についてよく寄せられる質問 (FAQ)。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c837ce66656c0e8a6a15d359c76459b03c2d0dd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9198bd4f88533a8eb5817dcb6edb75931c40ec80
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722767"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66510047"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -32,7 +32,7 @@ Azure AD B2C は、Microsoft Office 365 のユーザーの認証に使用でき�
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Azure AD B2C のローカル アカウントとは何ですか。 それらは、Azure AD の職場または学校アカウントとはどのような点が異なるのですか。
 Azure AD テナントでは、テナントに属するユーザーは、`<xyz>@<tenant domain>` の形式の電子メール アドレスを使用してサインインします。  `<tenant domain>` は、テナントの確認済みドメインの 1 つ、または初期の `<...>.onmicrosoft.com` ドメインです。 この種類のアカウントは、職場または学校アカウントです。
 
-Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意のメール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com など) を使用してサインインします。 この種類のアカウントはローカル アカウントです。  ローカル アカウントとして任意のユーザー名もサポートしています (joe、bob、sarah、jim など)。 Azure Portal で Azure AD B2C の ID プロバイダーを構成する場合、この 2 種類のローカル アカウントのいずれかを選択できます。 Azure AD B2C テナントで、**[ID プロバイダー]** をクリックし、[ローカル アカウント] の **[ユーザー名]** を選択します。 
+Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意のメール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com など) を使用してサインインします。 この種類のアカウントはローカル アカウントです。  ローカル アカウントとして任意のユーザー名もサポートしています (joe、bob、sarah、jim など)。 Azure Portal で Azure AD B2C の ID プロバイダーを構成する場合、この 2 種類のローカル アカウントのいずれかを選択できます。 Azure AD B2C テナントで、 **[ID プロバイダー]** をクリックし、[ローカル アカウント] の **[ユーザー名]** を選択します。 
 
 アプリケーションのユーザー アカウントは常に、サインアップ ユーザー フローによって、サインアップもしくはサインイン ユーザー フローによって、または Azure AD Graph API を使用して作成する必要があります。 Azure Portal で作成されたユーザー アカウントは、テナントを管理するためだけに使用されます。
 
@@ -121,7 +121,7 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 3. **[ユーザーとグループ]** を選択します。
 4. 各ユーザーを順に選択します (ただし、現在サインインに使用しているサブスクリプション管理者ユーザーは除きます)。 ページ下部の **[削除]** をクリックし、確認プロンプトに **[はい]** をクリックします。
 5. **[アプリの登録]** をクリックします。
-6. **b2c-extensions-app** というアプリケーションを選択します。 **[削除]** をクリックし、確認を求めるメッセージが表示されたら、**[はい]** をクリックします。
+6. **b2c-extensions-app** というアプリケーションを選択します。 **[削除]** をクリックし、確認を求めるメッセージが表示されたら、 **[はい]** をクリックします。
 7. **[概要]** を選択します。
 8. **[ディレクトリの削除]** をクリックします。 プロセスを完了するには、画面に表示される指示に従ってください。
 

@@ -3,19 +3,19 @@ title: Conversation Learner を使用したユーザー データの管理 - Mic
 titleSuffix: Azure
 description: Conversation Learner を使用したユーザー データの管理方法について説明します。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 83c7e808e48733487e84d668236cdb327c21c44c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.author: nitinme
+ms.openlocfilehash: 7ea0b246a16ff196a4160d9822b5db15cd39a4a6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249080"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66385197"
 ---
 # <a name="managing-user-data"></a>ユーザー データの管理
 

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.openlocfilehash: 2724451d44a793023f7b69196b186f68f6fc6a26
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/17/2019
+ms.openlocfilehash: b0d963e212e66bf96ec42ec2a5c0fd5005f7a889
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720473"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165891"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -34,7 +34,7 @@ HDInsight クラスターを作成する際、次のいくつかの異なる Azu
 |Azure Storage| Blob Storage** | Object | ブロック BLOB | Standard | ホット、クール、アーカイブ | All | All |
 |Azure Data Lake Storage Gen1| 該当なし | 階層構造 (ファイルシステム) | 該当なし | 該当なし | 該当なし | 3.6 のみ | HBase を除くすべて |
 
-* * HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみが型 BlobStorage になることができます。
+\* * HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみが型 BlobStorage になることができます。
 
 ストレージ アカウントの種類について詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 
@@ -137,7 +137,7 @@ HDInsight では、それぞれのコンピューティング ノードにロー
 
 HDInsight を介して、Azure Storage 内のデータにアクセスすることもできます。 構文は次のとおりです。
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 HDInsight クラスターで Azure Storage アカウントを使用するときには、次の原則を考慮してください。
 

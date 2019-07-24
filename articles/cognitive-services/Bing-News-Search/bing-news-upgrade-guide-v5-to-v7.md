@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 04c457fba5cb32cc1312ffac2c2f7c1470b5a46b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 235cc1c74c099a71d289d38369ebc10132564825
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878444"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66383296"
 ---
 # <a name="news-search-api-upgrade-guide"></a>News Search API のアップグレード ガイド
 
@@ -70,24 +70,24 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- `contractualRules` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `contractualRules` フィールドには、従う必要があるルールのリストが含まれています (たとえば、記事の属性)。 `provider` を使用するのではなく、`contractualRules` に指定されている属性を適用する必要があります。 この記事には、[Web Search API](../bing-web-search/search-the-web.md) 応答に News の回答が含まれている場合にのみ `contractualRules`が含まれます。
+- `contractualRules` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `contractualRules` フィールドには、従う必要があるルールのリストが含まれています (たとえば、記事の属性)。 `provider` を使用するのではなく、`contractualRules` に指定されている属性を適用する必要があります。 この記事には、[Web Search API](../bing-web-search/search-the-web.md) 応答に News の回答が含まれている場合にのみ `contractualRules`が含まれます。
 
 ## <a name="non-breaking-changes"></a>非破壊的変更
 
 ### <a name="query-parameters"></a>クエリ パラメーター
 
-- [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) クエリ パラメーターをに設定できる可能性のある値として Products が追加されました。 [市場別のカテゴリ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)に関するページを参照してください。
+- [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) クエリ パラメーターをに設定できる可能性のある値として Products が追加されました。 [市場別のカテゴリ](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)に関するページを参照してください。
 
-- 最近の日付から並べられたトレンドのトピックを返す [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortby) クエリ パラメーターが追加されました。
+- 最近の日付から並べられたトレンドのトピックを返す [SortBy](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortby) クエリ パラメーターが追加されました。
 
-- [Since](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#since) クエリ パラメーターが追加されました。指定した Unix エポック タイムスタンプ以降に Bing によって検出されたトレンドのトピックを返します。
+- [Since](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#since) クエリ パラメーターが追加されました。指定した Unix エポック タイムスタンプ以降に Bing によって検出されたトレンドのトピックを返します。
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- `mentions` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `mentions` フィールドには、記事で見つかったエンティティ (人物または場所) のリストが含まれています。
+- `mentions` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `mentions` フィールドには、記事で見つかったエンティティ (人物または場所) のリストが含まれています。
 
-- `video` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `video` フィールドには、ニュース記事に関連する動画が含まれています。 動画は、埋め込むことができる \<iframe\> または動画のサムネイルのいずれかです。
+- `video` フィールドが [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) オブジェクトに追加されました。 `video` フィールドには、ニュース記事に関連する動画が含まれています。 動画は、埋め込むことができる \<iframe\> または動画のサムネイルのいずれかです。
 
-- `sort` フィールドが [News](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) オブジェクトに追加されました。 `sort` フィールドには、記事の並べ替え順序が表示されます。 たとえば、記事は関連性 (既定) または日付順で並べ替えられます。
+- `sort` フィールドが [News](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) オブジェクトに追加されました。 `sort` フィールドには、記事の並べ替え順序が表示されます。 たとえば、記事は関連性 (既定) または日付順で並べ替えられます。
 
-- 並べ替え順序を定義する [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#sortvalue) オブジェクトが追加されました。 `isSelected` フィールドは、応答が並べ替え順序を使用したかどうかを示します。 **true** の場合、応答は並べ替え順序を使用しました。 `isSelected` が **false** の場合、`url` フィールドの URL を使用して、別の並べ替え順序を要求できます。
+- 並べ替え順序を定義する [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) オブジェクトが追加されました。 `isSelected` フィールドは、応答が並べ替え順序を使用したかどうかを示します。 **true** の場合、応答は並べ替え順序を使用しました。 `isSelected` が **false** の場合、`url` フィールドの URL を使用して、別の並べ替え順序を要求できます。

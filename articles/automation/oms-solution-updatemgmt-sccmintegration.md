@@ -4,17 +4,17 @@ description: この記事は、このソリューションを使用して System
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ddc055be45eae923be31d7d11621c9427660bf74
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 92a93982cdd042a92b006cab7052ad4a6fee6fff
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818308"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478198"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager と Update Management の統合
 
@@ -39,7 +39,7 @@ Configuration Manager から更新プログラムのデプロイを引き続き�
 
 1. [ソフトウェア更新プログラムのデプロイのプロセス](/sccm/sum/deploy-use/deploy-software-updates)に関するページで説明されているプロセスを使用して、Configuration Manager 階層の最上位サイトからソフトウェア更新プログラムのデプロイを作成します。 標準のデプロイとは異なる構成が必要な唯一の設定は、デプロイ パッケージのダウンロード動作を制御するための **[ソフトウェアの更新をインストールしない]** オプションです。 この動作は、次の手順でスケジュールされた更新プログラムのデプロイを作成することによって、Update Management ソリューションによって管理されます。
 
-1. Azure Automation で **[Update Management]** を選択します。 「[更新プログラムの展開の作成](automation-tutorial-update-management.md#schedule-an-update-deployment)」で説明されている手順に従って新しいデプロイを作成し、**[種類]** ドロップダウン リストから **[Imported groups]\(インポートされたグループ\)** を選択して適切な Configuration Manager コレクションを選択します。 以下の重要な点に注意してください。a. 選択した Configuration Manager デバイス コレクションにメンテナンス期間が定義されている場合、コレクションのメンバーは、スケジュールされたデプロイで定義されている **[期間]** 設定ではなくこの設定を使用します。
+1. Azure Automation で **[Update Management]** を選択します。 「[更新プログラムの展開の作成](automation-tutorial-update-management.md#schedule-an-update-deployment)」で説明されている手順に従って新しいデプロイを作成し、 **[種類]** ドロップダウン リストから **[Imported groups]\(インポートされたグループ\)** を選択して適切な Configuration Manager コレクションを選択します。 以下の重要な点に注意してください。a. 選択した Configuration Manager デバイス コレクションにメンテナンス期間が定義されている場合、コレクションのメンバーは、スケジュールされたデプロイで定義されている **[期間]** 設定ではなくこの設定を使用します。
     b. ターゲット コレクションのメンバーは、(直接、プロキシ サーバー経由、または Log Analytics ゲートウェイ経由で) インターネットに接続できる必要があります。
 
 Azure Automation を介した更新プログラムのデプロイが完了した後、選択したコンピューター グループのメンバーであるターゲット コンピューターによって、スケジュールされた時刻にローカル クライアント キャッシュから更新プログラムがインストールされます。 [更新プログラムのデプロイ ステータスを表示](automation-tutorial-update-management.md#view-results-of-an-update-deployment)して、デプロイの結果を監視できます。
@@ -48,7 +48,7 @@ Azure Automation を介した更新プログラムのデプロイが完了した
 
 Configuration Manager クライアントである Windows Server VM の更新プログラムを管理するには、このソリューションによって管理されるすべてのクライアントのソフトウェア更新管理機能を無効にするようにクライアント ポリシーを構成する必要があります。 既定のクライアント設定では、階層内のすべてのデバイスが対象となります。 このポリシー設定とその構成方法の詳細については、「[System Center Configuration Manager でクライアント設定を構成する方法](/sccm/core/clients/deploy/configure-client-settings)」を確認してください。
 
-この構成変更を実行した後、「[更新プログラムの展開の作成](automation-tutorial-update-management.md#schedule-an-update-deployment)」で説明されている手順に従って新しいデプロイを作成し、**[種類]** ドロップダウン リストから **[Imported groups]\(インポートされたグループ\)** を選択して適切な Configuration Manager コレクションを選択します。
+この構成変更を実行した後、「[更新プログラムの展開の作成](automation-tutorial-update-management.md#schedule-an-update-deployment)」で説明されている手順に従って新しいデプロイを作成し、 **[種類]** ドロップダウン リストから **[Imported groups]\(インポートされたグループ\)** を選択して適切な Configuration Manager コレクションを選択します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a8513344c35c14ebf06f3693da618ed20047d07b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f1eac83f2b5460bf56ddff1bf15d9180adb49a48
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792047"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66382274"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>クイック スタート:Azure SQL Database の接続とクエリ
 
@@ -39,6 +39,7 @@ ms.locfileid: "65792047"
 |[PHP](sql-database-connect-query-php.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを PHP を使って作成する方法について説明します。|
 |[Python](sql-database-connect-query-python.md)|このクイック スタートでは、Python を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータを照会する方法について説明します。 |
 |[Ruby](sql-database-connect-query-ruby.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを Ruby を使って作成する方法について説明します。|
+|[R](sql-database-connect-query-r.md)|このクイック スタートでは、Azure SQL Database Machine Learning Services で R を使用して、Azure SQL データベースに接続するためのプログラムを作成し、Transact-SQL ステートメントを使用してデータを照会する方法について説明します。|
 |||
 
 ## <a name="tls-considerations-for-sql-database-connectivity"></a>SQL Database の接続に関する TLS の考慮事項
@@ -65,7 +66,7 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
 | Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](https://msdn.microsoft.com/library/mt484311.aspx) | [ダウンロード](https://go.microsoft.com/fwlink/?linkid=852460) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [ダウンロード](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows、Linux、macOS | [SQL Server 用 Node.js ドライバー](https://msdn.microsoft.com/library/mt652093.aspx) | [インストール](https://msdn.microsoft.com/library/mt652094.aspx) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
-| Python | Windows、Linux、macOS | [Python SQL ドライバー](https://msdn.microsoft.com/library/mt652092.aspx) | インストール オプション:  <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
+| Python | Windows、Linux、macOS | [Python SQL ドライバー](https://msdn.microsoft.com/library/mt652092.aspx) | インストール オプション: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows、Linux、macOS | [SQL Server 用 Ruby ドライバー](https://msdn.microsoft.com/library/mt691981.aspx) | [インストール](https://msdn.microsoft.com/library/mt711041.aspx) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows、Linux、macOS | [SQL Server 用 Microsoft ODBC ドライバー](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [ダウンロード](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 03/29/2019
 ms.author: diberry
 ms.openlocfilehash: d615eb2a23b953bad5e41859357d9ae9e9be2ba6
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521218"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60197704"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
 
@@ -26,7 +26,7 @@ ms.locfileid: "59521218"
 
 ## <a name="import-a-dataset-file-for-batch-testing"></a>バッチ テスト用のデータセット ファイルのインポート
 
-1. 上部のバーで **[テスト]** を選択し、**[Batch testing panel]\(バッチ テスト パネル\)** を選択します。
+1. 上部のバーで **[テスト]** を選択し、 **[Batch testing panel]\(バッチ テスト パネル\)** を選択します。
 
     ![バッチ テストのリンク](./media/luis-how-to-batch-test/batch-testing-link.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "59521218"
 
 ## <a name="view-batch-test-results"></a>バッチ テストの結果の表示 
 
-バッチ テストの結果を確認するには、**[See results]\(結果の表示\)** を選択します。
+バッチ テストの結果を確認するには、 **[See results]\(結果の表示\)** を選択します。
 
 ![バッチ テストの結果](./media/luis-how-to-batch-test/run-test-results.png)
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: 25ccf20fc78a9ec00d4dfe23a60e824e96d12945
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58094941"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444545"
 ---
 # <a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションに対して Application Insights Snapshot Debugger を有効にしたにもかかわらず、例外のスナップショットが表示されない場合は、次の手順を使用してトラブルシューティングを行うことができます。 スナップショットが生成されない理由としては、さまざまなことが考えられます。 スナップショットの正常性チェックを実行すると、いくつかの一般的な原因を特定できます。
@@ -39,6 +39,10 @@ ms.locfileid: "58094941"
 
 公開したアプリケーションで、正しいインストルメンテーション キーを使用していることを確認します。 通常、インストルメンテーション キーは、ApplicationInsights.config ファイルから読み取られます。 値が、ポータルに表示される Application Insights リソースのインストルメンテーション キーと同じであることを確認します。
 
+## <a name="preview-versions-of-net-core"></a>.NET Core のプレビュー バージョン
+アプリケーションにプレビュー バージョンの .NET Core が使用され、ポータルの [Application Insights ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)でスナップショット デバッガーが有効な場合、スナップショット デバッガーが起動しない場合があります。 まず「[その他の環境用にスナップショット デバッガーを有効にする](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)」の手順を実行して [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリケーションに含め、"***さらに***" [Application Insights ウィンドウで有効にします](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。
+
+
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>最新バージョンの NuGet にアップグレードする
 
 [ポータルの [Application Insights] ウィンドウ](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)を通じて Snapshot Debugger を有効にした場合、アプリケーションでは既に最新の NuGet パッケージが実行されています。 [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージを含めることで Snapshot Debugger を有効にした場合は、Visual Studio の NuGet パッケージ マネージャーを使用して、Microsoft.ApplicationInsights.SnapshotCollector の最新バージョンが使用されているかどうかを確認してください。 リリース ノートについては https://github.com/Microsoft/ApplicationInsights-Home/issues/167 を参照してください。
@@ -50,7 +54,7 @@ ms.locfileid: "58094941"
 1. Azure Portal で App Service アプリケーションを開きます。
 2. **[高度なツール]** をクリックするか、**Kudu** を検索します。
 3. **[Go]** をクリックします。
-4. **[Debug console]**(デバッグ コンソール) ドロップダウン リスト ボックスで、**[CMD]** を選択します。
+4. **[Debug console]** (デバッグ コンソール) ドロップダウン リスト ボックスで、 **[CMD]** を選択します。
 5. **[LogFiles]** をクリックします。
 
 `Uploader_` または `SnapshotUploader_`で始まる名前で拡張子が `.log` であるファイルが 1 つ以上表示されます。 適切なアイコンをクリックしてログ ファイルをダウンロードするか、またはブラウザーでログ ファイルを開きます。
@@ -164,13 +168,13 @@ Snapshot Collector は、いくつかのよく知られている場所を確認�
 - APPDATA
 - TEMP
 
-適切なフォルダーが見つからない場合は、Snapshot Collector によって "_Could not find a suitable shadow copy folder (適切なシャドウ コピー フォルダーが見つかりません)_" エラーが報告されます。
+適切なフォルダーが見つからない場合は、Snapshot Collector によって "_Could not find a suitable shadow copy folder (適切なシャドウ コピー フォルダーが見つかりません)_ " エラーが報告されます。
 
 コピーに失敗した場合、Snapshot Collector は `ShadowCopyFailed` エラーを報告します。
 
 アップローダーを起動できない場合、Snapshot Collector は `UploaderCannotStartFromShadowCopy` エラーを報告します。 メッセージの本文に `System.UnauthorizedAccessException` が含まれることがよくあります。 このエラーは、通常、アクセス許可が制限されたアカウントの下でアプリケーションが実行されているために発生します。 このアカウントには、シャドウ コピー フォルダーに書き込むためのアクセス許可が与えられていますが、コードを実行するためのアクセス許可が与えられていません。
 
-これらのエラーは通常、起動時に発生するため、"_Uploader failed to start (アップローダーを起動できませんでした)_" という `ExceptionDuringConnect` エラーが続いて表示されます。
+これらのエラーは通常、起動時に発生するため、"_Uploader failed to start (アップローダーを起動できませんでした)_ " という `ExceptionDuringConnect` エラーが続いて表示されます。
 
 これらのエラーを回避するには、`ShadowCopyFolder` 構成オプションを使用して、シャドウ コピー フォルダーを手動で指定します。 たとえば、ApplicationInsights.config を使用する場合は、次のように指定します。
 

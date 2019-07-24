@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/06/2019
 ms.author: yegu
 ms.openlocfilehash: 4254175955c3560c7bd0fdd08c6b60c318238b76
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991574"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60552353"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>Azure Cache for Redis の geo レプリケーションの構成方法
 
@@ -56,11 +56,11 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
 ## <a name="add-a-geo-replication-link"></a>geo レプリケーション リンクの追加
 
-1. geo レプリケーションのために 2 つのキャッシュをリンクするには、まずプライマリ リンク キャッシュにするキャッシュのリソース メニューの **[geo レプリケーション]** をクリックします。 次に、**[geo レプリケーション]** ブレードの **[キャッシュ レプリケーション リンクの追加]** をクリックします。
+1. geo レプリケーションのために 2 つのキャッシュをリンクするには、まずプライマリ リンク キャッシュにするキャッシュのリソース メニューの **[geo レプリケーション]** をクリックします。 次に、 **[geo レプリケーション]** ブレードの **[キャッシュ レプリケーション リンクの追加]** をクリックします。
 
     ![リンクの追加](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. **[互換性のあるキャッシュ]** の一覧で目的のセカンダリ キャッシュの名前をクリックします。 そのセカンダリ キャッシュが一覧に表示されていない場合は、セカンダリ キャッシュの [geo レプリケーションの前提条件](#geo-replication-prerequisites)が満たされていることを確認します。 キャッシュをリージョンでフィルター処理するには、マップ内のリージョンをクリックして、**[互換性のあるキャッシュ]** の一覧にあるキャッシュのみを表示します。
+2. **[互換性のあるキャッシュ]** の一覧で目的のセカンダリ キャッシュの名前をクリックします。 そのセカンダリ キャッシュが一覧に表示されていない場合は、セカンダリ キャッシュの [geo レプリケーションの前提条件](#geo-replication-prerequisites)が満たされていることを確認します。 キャッシュをリージョンでフィルター処理するには、マップ内のリージョンをクリックして、 **[互換性のあるキャッシュ]** の一覧にあるキャッシュのみを表示します。
 
     ![geo レプリケーションの互換性のあるキャッシュ](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
     
@@ -80,7 +80,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
     ![キャッシュの状態](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    レプリケーション プロセスが完了すると、**[リンクの状態]** が「**成功**」に変わります。
+    レプリケーション プロセスが完了すると、 **[リンクの状態]** が「**成功**」に変わります。
 
     ![キャッシュの状態](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -88,7 +88,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
 ## <a name="remove-a-geo-replication-link"></a>geo レプリケーション リンクの削除
 
-1. 2 つのキャッシュ間のリンクを削除し、geo レプリケーションを停止するには、**[geo レプリケーション]** ブレードで **[Unlink caches]\(キャッシュのリンク解除\)** をクリックします。
+1. 2 つのキャッシュ間のリンクを削除し、geo レプリケーションを停止するには、 **[geo レプリケーション]** ブレードで **[Unlink caches]\(キャッシュのリンク解除\)** をクリックします。
     
     ![[Unlink caches]\(キャッシュのリンク解除\)](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 

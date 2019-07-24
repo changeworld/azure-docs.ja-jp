@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
 ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652169"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60742123"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure における IP アドレスの種類と割り当て方法 (クラシック)
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
@@ -90,9 +90,9 @@ Azure [Application Gateway](../application-gateway/application-gateway-introduct
 | Resource | 動的 | 静的 | 複数の IP アドレス |
 | --- | --- | --- | --- |
 | クラウド サービス |はい |はい |はい |
-| IaaS VM または PaaS ロール インスタンス |はい |いいえ  |いいえ  |
-| VPN Gateway |はい |いいえ  |いいえ  |
-| Application gateway |はい |いいえ  |いいえ  |
+| IaaS VM または PaaS ロール インスタンス |はい |いいえ |いいえ |
+| VPN Gateway |はい |いいえ |いいえ |
+| Application gateway |はい |いいえ |いいえ |
 
 ## <a name="private-ip-addresses"></a>プライベート IP アドレス
 プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、クラウド サービス内の他のリソース、 [仮想ネットワーク](virtual-networks-overview.md)(VNet)、あるいはオンプレミス ネットワーク (VPN Gateway または ExpressRoute 回線経由) と通信することができます。
@@ -140,7 +140,7 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 | Resource | 動的 | 静的 | 複数の IP アドレス |
 | --- | --- | --- | --- |
 | VM (*スタンドアロン* クラウド サービスまたは VNet 内) |はい |はい |はい |
-| PaaS ロール インスタンス (*スタンドアロン* クラウド サービスまたは VNet 内) |はい |いいえ  |いいえ  |
+| PaaS ロール インスタンス (*スタンドアロン* クラウド サービスまたは VNet 内) |はい |いいえ |いいえ |
 | 内部ロード バランサーのフロント エンド |はい |はい |はい |
 | Application Gateway のフロント エンド |はい |はい |はい |
 

@@ -6,20 +6,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1659ab72620b6bf91eb932f8414a0f6600350e37
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 49e8fbef7af16e109c1e9f1e0d8c9aab1a008e21
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714474"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257996"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari には使いやすい Web UI と REST API が用意されているため、Apache Hadoop クラスターを簡単に管理および監視できます。 Linux ベースの HDInsight クラスターに含まれている Ambari は、クラスターの監視と構成の変更を行うために使用します。
+Apache Ambari には使いやすい Web UI と REST API が用意されているため、Apache Hadoop クラスターを簡単に管理および監視できます。 Ambari は HDInsight クラスターに含まれ、クラスターの監視と構成の変更を行うために使用します。
 
 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 
@@ -27,14 +27,9 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 [Apache Ambari](https://ambari.apache.org) は使いやすい Web UI を提供することにより、Hadoop の管理を簡略化します。 Ambari を使って、Hadoop クラスターを管理および監視できます。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
-Ambari Web UI は、Linux オペレーティング システムを使用する HDInsight クラスターに既定で付属しています。
-
-> [!IMPORTANT]  
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 
-
 ## <a name="connectivity"></a>接続
 
-Ambari Web UI はお使いの HDInsight クラスター (HTTPS://CLUSTERNAME.azurehdinsight.net) にあります。**CLUSTERNAME** はお使いのクラスターの名前になります。
+Ambari Web UI はお使いの HDInsight クラスター (`https://CLUSTERNAME.azurehdinsight.net`) にあります。`CLUSTERNAME` はお使いのクラスターの名前です。
 
 > [!IMPORTANT]  
 > HDInsight の Ambari に接続するには、HTTPS が必要です。 認証情報の入力を求められたら、クラスターの作成時に提供された管理者アカウント名とパスワードを入力します。
@@ -54,23 +49,17 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ![ambari ナビゲーション](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
 
-* **Ambari ロゴ** - ダッシュボードを表示します。これを使用してクラスターを監視できます。
-
-* **[クラスター名 # ops]** - 進行中の Ambari 操作の数を表示します。 クラスター名または **[# ops]** を選択すると、バックグラウンドでの操作の一覧が表示されます。
-
-* **[# alerts]** - クラスターの警告または重要なアラートの数 (ある場合) が表示されます。
-
-* **[Dashboard]** - ダッシュボードが表示されます。
-
-* **[Services]** - クラスターのサービスの情報と構成設定。
-
-* **[Hosts]** - クラスター内のノードの情報と構成設定。
-
-* **[Alerts]** - 情報、警告、重要なアラートのログ。
-
-* **[Admin]** - クラスターにインストールされたソフトウェア スタック/サービス、サービス アカウント情報、Kerberos セキュリティ。
-
-* **[admin] ボタン** - Ambari の管理、ユーザー設定、ログアウトを行います。
+|Item |説明 |
+|---|---|
+|Ambari ロゴ|ダッシュボードを表示します。これを使用してクラスターを監視できます。|
+|クラスター名 # ops|進行中の Ambari 操作の数が表示されます。 クラスター名または **[# ops]** を選択すると、バックグラウンドでの操作の一覧が表示されます。|
+|# alerts|クラスターの警告またはクリティカルなアラートの数 (ある場合) が表示されます。|
+|ダッシュボード|ダッシュボードが表示されます。|
+|サービス|クラスターのサービスの情報と構成設定。|
+|ホスト|クラスター内のノードの情報と構成設定。|
+|アラート|情報、警告、クリティカル アラートのログ。|
+|[Admin]|クラスターにインストールされたソフトウェア スタック/サービス、サービス アカウント情報、Kerberos セキュリティ。|
+|[Admin] ボタン|Ambari の管理、ユーザー設定、サインアウト。|
 
 ## <a name="monitoring"></a>監視
 
@@ -85,19 +74,19 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 **[OK]** 以外のアラートでは、アラート数を表示する **[# alerts]** エントリがページ上部に表示されます。 このエントリを選択すると、アラートとそのステータスが表示されます。
 
-アラートはいくつかの既定のグループにまとめられます。このグループは、**[Alerts]** ページで表示できます。
+アラートはいくつかの既定のグループにまとめられます。このグループは、 **[Alerts]** ページで表示できます。
 
 ![alerts ページ](./media/hdinsight-hadoop-manage-ambari/alerts.png)
 
-グループを管理するには、**[Actions]** メニューを使用して、**[Manage Alert Groups]** を選択します。
+グループを管理するには、 **[Actions]** メニューを使用して、 **[Manage Alert Groups]** を選択します。
 
 ![manage alert groups ダイアログ](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
 
-**[Actions]** メニューで、__[Manage Alert Notifications ]__ を選択して、アラート方法を管理したり、アラート通知を作成したりすることもできます。 現在の通知が表示されます。 ここから通知を作成することもできます。 特定のアラート/重要度の組み合わせが発生したとき、通知は **EMAIL** または **SNMP** で送信されます。 たとえば、**[YARN Default]** グループのいずれかのアラートが **[Critical]** に設定されたときに電子メール メッセージを送信できます。
+**[Actions]** メニューで、 __[Manage Alert Notifications ]__ を選択して、アラート方法を管理したり、アラート通知を作成したりすることもできます。 現在の通知が表示されます。 ここから通知を作成することもできます。 特定のアラート/重要度の組み合わせが発生したとき、通知は **EMAIL** または **SNMP** で送信されます。 たとえば、 **[YARN Default]** グループのいずれかのアラートが **[Critical]** に設定されたときに電子メール メッセージを送信できます。
 
 ![Create alert ダイアログ](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
-最後に、__[Actions]__ メニューの __[Manage Alert Settings]__ を選択すると、通知の送信前にアラートが発生する回数を設定できます。 この設定は、一時的なエラーの通知を防ぐために使用できます。
+最後に、 __[Actions]__ メニューの __[Manage Alert Settings]__ を選択すると、通知の送信前にアラートが発生する回数を設定できます。 この設定は、一時的なエラーの通知を防ぐために使用できます。
 
 ### <a name="cluster"></a>クラスター
 
@@ -109,7 +98,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ![heatmaps のダッシュボード](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
 
-クラスター内のノードの詳細については、**[Hosts]** を選択します。 次に、関心のある特定のノードを選択します。
+クラスター内のノードの詳細については、 **[Hosts]** を選択します。 次に、関心のある特定のノードを選択します。
 
 ![ホストの詳細](./media/hdinsight-hadoop-manage-ambari/host-details.png)
 
@@ -162,31 +151,18 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 2. **[Actions]** メニューを使用して、実行する操作を選択します。
 
-   * **[Start all components]** - ホスト上のすべてのコンポーネントを開始します。
-
-   * **[Stop all components]** - ホスト上のすべてのコンポーネントを停止します。
-
-   * **[Restart all components]** - ホスト上のすべてのコンポーネントを停止してから起動します。
-
-   * **[Turn on maintenance mode]** - ホストのアラートを抑制します。 アラートを生成するアクションを実行している場合は、このモードを有効にする必要があります。 たとえば、サービスの停止と開始です。
-
-   * **[Turn off maintenance mode]** - ホストを通常の警告に戻します。
-
-   * **[Stop]** - ホスト上の DataNode または NodeManagers を停止します。
-
-   * **[Start]** - ホスト上の DataNode または NodeManagers を起動します。
-
-   * **[Restart]** - ホスト上の DataNode または NodeManagers を停止して起動します。
-
-   * **[Decommission]** - クラスターからホストを削除します。
-
-     > [!NOTE]  
-     > HDInsight クラスターではこの操作は使用しないでください。
-
-   * **[Recommission]** - 使用停止にしたホストをクラスターに追加します。
-
-     > [!NOTE]  
-     > HDInsight クラスターではこの操作は使用しないでください。
+    |Item |説明 |
+    |---|---|
+    |Start all components|ホスト上のすべてのコンポーネントを起動します。|
+    |Stop all components|ホスト上のすべてのコンポーネントを停止します。|
+    |Restart all components|ホスト上のすべてのコンポーネントを停止してから起動します。|
+    |Turn on maintenance mode|ホストのアラートを抑制します。 アラートを生成するアクションを実行している場合は、このモードを有効にする必要があります。 たとえば、サービスの停止と開始です。|
+    |Turn off maintenance mode|ホストを通常の警告に戻します。|
+    |Stop|ホスト上の DataNode または NodeManagers を停止します。|
+    |start|ホスト上の DataNode または NodeManagers を起動します。|
+    |Restart|ホスト上の DataNode または NodeManagers を停止して起動します。|
+    |Decommission|クラスターからホストを削除します。 **HDInsight クラスターではこの操作は使用しないでください。**|
+    |Recommission|以前に使用停止したホストをクラスターに追加します。 **HDInsight クラスターではこの操作は使用しないでください。**|
 
 ### <a id="service"></a>サービス
 
@@ -206,12 +182,12 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
     ![service action](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
    > [!NOTE]  
-   > クラスターの実行中にサービスを再起動すると、アラートが生成される場合があります。 アラートを回避するには、**[Service Actions]** ボタンを使用して、再起動を実行する前に、サービスの **[Maintenance mode]** を有効にします。
+   > クラスターの実行中にサービスを再起動すると、アラートが生成される場合があります。 アラートを回避するには、 **[Service Actions]** ボタンを使用して、再起動を実行する前に、サービスの **[Maintenance mode]** を有効にします。
 
 3. 操作を選択したら、ページ上部の **[# op]** エントリが増分され、バックグラウンド操作が実行されていることが示されます。 バックグラウンド操作を表示するように設定されている場合は、バックグラウンド操作の一覧が表示されます。
 
    > [!NOTE]  
-   > サービスの **[Maintenance mode]** を有効にした場合は、操作が完了したら、**[Service Actions]** ボタンを使用してこれを忘れずに無効にしてください。
+   > サービスの **[Maintenance mode]** を有効にした場合は、操作が完了したら、 **[Service Actions]** ボタンを使用してこれを忘れずに無効にしてください。
 
 サービスを構成するには、次の手順を実行します。
 
@@ -226,7 +202,6 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 ## <a name="ambari-views"></a>Ambari ビュー
 
 Ambari ビューを使うと、開発者は [Apache Ambari ビュー フレームワーク](https://cwiki.apache.org/confluence/display/AMBARI/Views)を使用して Ambari Web UI に UI 要素をプラグインできます。 HDInsight には、Hadoop クラスター タイプの異なる次のビューが用意されています。
-
 
 * Hive ビュー:Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。 クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。 Hive ビューの使用法の詳細については、[HDInsight での Apache Hive ビューの使用](hadoop/apache-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 

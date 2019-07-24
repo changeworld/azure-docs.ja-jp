@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
 ms.openlocfilehash: bc791fea1dfd184749e84cb7b7a912972c6a9f12
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60657631"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Azure API Management でサブスクリプションを作成する
 

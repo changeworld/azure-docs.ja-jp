@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2019
 ms.author: bwren
 ms.openlocfilehash: 8f645f7d569546a8362d0149806a2b4636567fd0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789993"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61086750"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor の名称と用語の変更
 最近、Azure Monitor に大きな変更が加えられ、Azure のお客様が監視を簡単に行えるようにするためにさまざまなサービスが統合されました。 この記事では、Azure Monitor のドキュメント内で最近行われた名称と用語の変更について説明します。
@@ -31,7 +31,7 @@ Azure Monitor ログ データは引き続き Log Analytics ワークスペー�
 現在、_ログ分析_ という用語は、クエリの記述と実行およびログ データの分析に使用する Azure portal 内のページに主に適用されています。 これは、メトリック データの分析に使用する Azure portal 内のページである[メトリックス エクスプローラー](platform/metrics-charts.md)と同等の機能です。
 
 ### <a name="log-analytics-workspaces"></a>Log Analytics ワークスペース
-Azure Monitor 内のログ データを保持する[ワークスペース](platform/manage-access.md)は引き続き Log Analytics ワークスペースと呼ばれます。 Azure portal 内の **[Log Analytics]** メニューの名称は **[Log Analytics ワークスペース]** に変更されました。ここでは、[新しいワークスペースを作成](learn/quick-create-workspace.md)し、データ ソースを構成します。 **Azure Monitor** ではログおよびその他の監視データを分析し、**[Log Analytics ワークスペース]** ではワークスペースを構成します。
+Azure Monitor 内のログ データを保持する[ワークスペース](platform/manage-access.md)は引き続き Log Analytics ワークスペースと呼ばれます。 Azure portal 内の **[Log Analytics]** メニューの名称は **[Log Analytics ワークスペース]** に変更されました。ここでは、[新しいワークスペースを作成](learn/quick-create-workspace.md)し、データ ソースを構成します。 **Azure Monitor** ではログおよびその他の監視データを分析し、 **[Log Analytics ワークスペース]** ではワークスペースを構成します。
 
 ### <a name="management-solutions"></a>管理ソリューション
 [管理ソリューション](insights/solutions.md)の名称は、その機能をよりわかりやすく示すために _監視ソリューション_ に変更されました。

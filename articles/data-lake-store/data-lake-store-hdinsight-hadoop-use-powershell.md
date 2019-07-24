@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: f78ad8d58bb1bc760a31b792b44a4a39ed25e1f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66161391"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を (追加のストレージとして) 使用する HDInsight クラスターを作成する
@@ -155,7 +155,7 @@ Data Lake Storage Gen1 の Active Directory 認証を設定するには、次の
 
 このセクションでは、Azure Active Directory アプリケーションのサービス プリンシパルを作成し、そのサービス プリンシパルにロールを割り当てて、証明書を指定することでサービス プリンシパルとして認証する手順を実行します。 Azure Active Directory でアプリケーションを作成するには、次のコマンドを実行します。
 
-1. PowerShell コンソール ウィンドウで、次のコマンドレットを貼り付けます。 **-DisplayName** プロパティに指定する値は一意になるようにしてください。 また、**-HomePage** と **-IdentiferUris** の値はプレースホルダー値であるため、確認されません。
+1. PowerShell コンソール ウィンドウで、次のコマンドレットを貼り付けます。 **-DisplayName** プロパティに指定する値は一意になるようにしてください。 また、 **-HomePage** と **-IdentiferUris** の値はプレースホルダー値であるため、確認されません。
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 

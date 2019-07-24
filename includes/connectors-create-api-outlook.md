@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: estfan
 ms.openlocfilehash: 187906a912c999142d764de6ad5da3daccf63ba7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133207"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181429"
 ---
-1. 検索ボックスに、フィルターとして「outlook.com」と入力します。 この例では、**[新しいメールが届いたとき]** トリガーを選択します。
+1. 検索ボックスに、フィルターとして「outlook.com」と入力します。 この例では、このトリガーを選択します。 **[When a new email arrives (新しい電子メールが届いたとき)]**
 
    ![Outlook.com のトリガーまたはアクションの検索](./media/connectors-create-api-outlook/select-outlook.png)
 

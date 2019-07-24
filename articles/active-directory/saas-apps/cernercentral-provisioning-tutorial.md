@@ -16,10 +16,10 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61e88e0fe7e6eec5b3cdfd03755a186744b77b47
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964206"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>チュートリアル:Cerner Central を構成し、自動ユーザー プロビジョニングに対応させる
@@ -87,11 +87,11 @@ Cerner Central にユーザー アカウントをプロビジョニングする�
 
 4. 最後に、Cerner のサンドボックスと運用環境の両方のユーザー リスト領域 ID を取得して構成を完了する必要があります。 取得方法については、 https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM をご覧ください。 
 
-5. この手順から、Azure AD を構成して Cerner にユーザー アカウントをプロビジョニングします。 [Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
+5. この手順から、Azure AD を構成して Cerner にユーザー アカウントをプロビジョニングします。 [Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** セクションに移動します。
 
-6. シングル サインオンのために Cerner Central を既に構成している場合は、検索フィールドで Cerner Central のインスタンスを検索します。 または、**[追加]** を選択して、アプリケーション ギャラリーで **[Cerner Central]** を検索します。 検索結果から Cerner Central を選択して、アプリケーションの一覧に追加します。
+6. シングル サインオンのために Cerner Central を既に構成している場合は、検索フィールドで Cerner Central のインスタンスを検索します。 または、 **[追加]** を選択して、アプリケーション ギャラリーで **[Cerner Central]** を検索します。 検索結果から Cerner Central を選択して、アプリケーションの一覧に追加します。
 
-7. Cerner Central のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+7. Cerner Central のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 8. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -105,7 +105,7 @@ Cerner Central にユーザー アカウントをプロビジョニングする�
     > 
     > 運用: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-   * **[シークレット トークン]** フィールドに、手順 3 で生成した OAuth ベアラー トークンを入力し、**[テスト接続]** をクリックします。
+   * **[シークレット トークン]** フィールドに、手順 3 で生成した OAuth ベアラー トークンを入力し、 **[テスト接続]** をクリックします。
 
    * ポータルの右上に成功通知が表示されます。
 
@@ -115,7 +115,7 @@ Cerner Central にユーザー アカウントをプロビジョニングする�
 
 1. **[属性マッピング]** セクションで、Azure AD から Cerner Central に同期されるユーザーとグループの属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Cerner Central のユーザー アカウントおよびグループとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-1. Cerner Central に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+1. Cerner Central に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
 1. **[Save]** をクリックします。
 

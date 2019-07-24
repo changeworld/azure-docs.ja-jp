@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: b046ce5a8647abe601a6327667241d98445ce1e4
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259892"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61130561"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -55,7 +55,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 ![OpenPolicy][open_policy]
 
 ### <a name="token-restriction"></a>トークン制限
-トークン制限ポリシーを選択するには、**[トークン]** ボタンを選択します。
+トークン制限ポリシーを選択するには、 **[トークン]** ボタンを選択します。
 
 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、単純 Web トークン ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と JSON Web トークン (JWT) 形式のトークンがサポートされます。 詳細については、「[JWT authentication](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」(JWT 認証) を参照してください。
 

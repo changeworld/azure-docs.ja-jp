@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792778"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60653365"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
@@ -28,11 +28,11 @@ ms.locfileid: "59792778"
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="missing-dlls-or-dependencies"></a>DLL または依存コンポーネントの欠落
-ロールが応答しない、**[初期化しています]**、**[ビジー]**、**[停止しています]** の状態を繰り返す、といった症状は、DLL やアセンブリの不足が原因で起こる場合があります。
+ロールが応答しない、 **[初期化しています]** 、 **[ビジー]** 、 **[停止しています]** の状態を繰り返す、といった症状は、DLL やアセンブリの不足が原因で起こる場合があります。
 
 DLL やアセンブリの不足は、次のような症状を引き起こします。
 
-* ロール インスタンスが **[初期化しています]**、**[ビジー]**、**[停止しています]** の状態を繰り返す。
+* ロール インスタンスが **[初期化しています]** 、 **[ビジー]** 、 **[停止しています]** の状態を繰り返す。
 * ロール インスタンスが **[準備完了]** 状態に移行したにもかかわらず、Web アプリケーションにアクセスしてもページが表示されない。
 
 これらの問題に関して推奨される調査方法がいくつかあります。
@@ -78,7 +78,7 @@ Web サイトにアクセスすると、詳しいエラー メッセージが表
 * 説明:現在の Web 要求の実行中に、処理されない例外が発生しました。 エラーに関する詳細および例外の発生場所については、スタック トレースを参照してください。
 * 例外の詳細: System.IO.FIleNotFoundException: ファイルまたはアセンブリ "Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35"、またはその依存関係の 1 つが読み込めませんでした。 指定されたファイルが見つかりません。
 
-例: 
+例:
 
 ![Explicit Server Error in '/' Application](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 

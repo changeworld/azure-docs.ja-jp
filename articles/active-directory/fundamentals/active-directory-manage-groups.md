@@ -14,11 +14,11 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c2bffad4254815d2ed51d9bbc14b32a521b5537
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193868"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60248487"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory グループを使用したアプリとリソース アクセスの管理
 Azure Active Directory (Azure AD) は、組織のグループを使用した、クラウド ベースのアプリ、オンプレミスのアプリ、およびリソースの管理に役立ちます。 リソースは、ディレクトリ内のロールによってオブジェクトを管理するアクセス許可のように、ディレクトリの一部となっている場合と、サービスとしてのソフトウェア (SaaS) アプリ、Azure サービス、SharePoint サイト、オンプレミスのリソースのように、ディレクトリの外部リソースである場合があります。

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 9385ed5127b8cc1aaf84c887b652fd8970883ba6
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: b881a645a42d92407aa39d0f4896629f799e6928
+ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65524022"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66426928"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Azure Search アプリケーションに提案やオートコンプリートを追加する
 
@@ -46,7 +46,7 @@ ms.locfileid: "65524022"
 
 * [DotNetHowToAutoComplete サンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)をダウンロードします。
 
-このサンプルは、検索候補、オートコンプリート、ファセット ナビゲーション、およびクライアント側のキャッシュに対応する包括的なものです。 readme とコメントで、サンプルによって提供される機能の詳細な説明をお読みください。
+このサンプルは、検索候補、オートコンプリート、ファセット ナビゲーション、およびクライアント側のキャッシュに対応する包括的なものです。 readme とコメントで、サンプルによって提供される機能の詳細な説明を確認してください。
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
@@ -70,7 +70,7 @@ C# と JavaScript の両方のバージョンで、検索ボックスの実装�
 <input class="searchBox" type="text" id="example1a" placeholder="search">
 ```
 
-これは、スタイリング用のクラス、JavaScript によって参照される ID、およびプレースホルダー テキストがある単純な入力テキスト ボックスです。  魔法は埋め込み JavaScript にあります。
+この例は、スタイリング用のクラス、JavaScript によって参照される ID、およびプレースホルダー テキストがあるシンプルな入力テキスト ボックスです。  魔法は埋め込み JavaScript にあります。
 
 C# 言語のサンプルでは、Index.cshtml 内で JavaScript を使用して、[jQuery UI Autocomplete ライブラリ](https://jqueryui.com/autocomplete/)を利用します。 このライブラリでは、MVC コントローラーに対する非同期呼び出しを実行して検索候補を取得することで、検索ボックスにオートコンプリートの機能が追加されます。 JavaScript 言語バージョンは、IndexJavaScript.cshtml にあります。 これには、検索バー用の次のスクリプトに加えて、Azure Search に対する REST API 呼び出しが含まれます。
 
@@ -95,7 +95,7 @@ $(function () {
 source: "/home/suggest?highlights=false&fuzzy=false&",
 ```
 
-上記の行は、検索ボックスの下に表示する項目の一覧を取得する場所を jQuery UI Autocomplete 関数に指示します。 これは、MVC プロジェクトであるため、クエリ候補を返すためのロジックを含む HomeController.cs 内の Suggest 関数を呼び出します (Suggest については次のセクションで説明します)。 また、この関数は、強調表示、あいまい一致、および用語を制御するためのいくつかのパラメーターを渡します。 オートコンプリート JavaScript API では、term パラメーターが追加されます。
+上記の行は、検索ボックスの下に表示する項目の一覧を取得する場所を jQuery UI Autocomplete 関数に指示します。 このプロジェクトは、MVC プロジェクトであるため、クエリ候補を返すためのロジックを含む HomeController.cs 内の Suggest 関数を呼び出します (Suggest については次のセクションで説明します)。 また、この関数は、強調表示、あいまい一致、および用語を制御するためのいくつかのパラメーターを渡します。 オートコンプリート JavaScript API では、term パラメーターが追加されます。
 
 ### <a name="extending-the-sample-to-support-fuzzy-matching"></a>あいまい一致をサポートするようにサンプルを拡張する
 
@@ -162,7 +162,7 @@ Web ページの JavaScript コードの見直しが終わったので、次は�
 
 Controllers ディレクトリ内の **HomeController.cs** ファイルを開きます。 
 
-最初に気付くのは、クラスの上部にある `InitSearch` と呼ばれるメソッドです。 これは、Azure Search サービスに対する認証済み HTTP インデックス クライアントを作成します。 詳細については、「[.NET アプリケーションから Azure Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)」をご覧ください。
+最初に気付くのは、クラスの上部にある `InitSearch` と呼ばれるメソッドです。 このメソッドでは、Azure Search サービスに対する認証済み HTTP インデックス クライアントを作成します。 詳細については、「[.NET アプリケーションから Azure Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)」をご覧ください。
 
 行 41 の Suggest 関数に注目してください。 これは、[DocumentsOperationsExtensions.Suggest メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)に基づいています。
 
@@ -271,7 +271,7 @@ $(function () {
 });
 ```
 
-これを上記の home コント ローラーを呼び出す例と比較した場合、いくつかの類似点に気付くでしょう。  `minLength` と `position` のオートコンプリート構成は、完全に同じです。 
+この例を上記の home コント ローラーを呼び出す例と比較した場合、いくつかの類似点に気付くでしょう。  `minLength` と `position` のオートコンプリート構成は、完全に同じです。 
 
 大きな違いは source にあります。 home コントローラー内の Suggest メソッドを呼び出す代わりに、REST 要求が JavaScript 関数内に作成され、Ajax を使用して実行されます。 応答は "success" で処理され、source として使用します。
 
@@ -302,7 +302,7 @@ var autocompleteUri = "https://" + searchServiceName + ".search.windows.net/inde
 
 1. NYCJobs サンプル コードの DataLoader フォルダー内の **DataLoader.sln** を Visual Studio で開きます。
 
-1. Azure Search サービスの接続情報を追加します。 DataLoader プロジェクト内の App.config を開き、TargetSearchServiceName と TargetSearchServiceApiKey appSettings を、利用している Azure Search サービスと Azure Search Service API キーを反映するように更新します。 これらは Azure Portal で確認できます。
+1. Azure Search サービスの接続情報を追加します。 DataLoader プロジェクト内の App.config を開き、TargetSearchServiceName と TargetSearchServiceApiKey appSettings を、利用している Azure Search サービスと Azure Search Service API キーを反映するように更新します。 この情報は、Azure portal で確認できます。
 
 1. F5 キーを押してアプリケーションを起動し、2 つのインデックスを作成して NYCJob サンプル データをインポートします。
 

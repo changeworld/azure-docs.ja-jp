@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
 ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361877"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60373694"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 
@@ -85,14 +85,14 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 | --- | --- |
 | [Owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |ユーザー アクセスを含め、あらゆるものを変更できます。 |
 | [Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |すべてのリソースを含め、あらゆるものを編集できます。 |
-| [Application Insights コンポーネントの共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights のリソース、Web テスト、アラートを編集できます。 |
+| [Application Insights コンポーネントの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights のリソース、Web テスト、アラートを編集できます。 |
 | [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |表示はできますが、何も変更することはできません。 |
 | [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガー機能を使用するためのアクセス許可をユーザーに付与します。 このロールは、所有者ロールにも共同作成者ロールにも含まれていないことに注意してください。 |
 | Azure Service Deploy リリース管理の共同作成者 | Azure Service Deploy を使用してデプロイするサービスの共同作成者ロール。 |
 | [Data Purger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 個人データを消去するための特殊なロール。 詳細については、[個人データに関するガイダンス](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data)についての記事をご覧ください。   |
 | ExpressRoute 管理者 | Express Route を作成、削除、管理できます。|
-| [Log Analytics 共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure 診断の構成が含まれます。  |
-| [Log Analytics 閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure 診断構成の表示など、監視設定の表示を行うことができます。 |
+| [Log Analytics Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。  |
+| [Log Analytics Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 |
 | masterreader | ユーザーがあらゆるものを表示できるようにします。ただし、変更することはできません。 |
 | [Monitoring Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | すべての監視データを読み取り、監視設定を更新できます。 |
 | [監視メトリック パブリッシャー](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします。 |
@@ -115,7 +115,7 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 
 ## <a name="related-content"></a>関連コンテンツ
 
-* [Azure でのロール ベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)
+* [Azure の役割基準のアクセス制御](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>ロール メンバーシップを特定する PowerShell クエリ
 

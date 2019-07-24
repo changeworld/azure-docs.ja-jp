@@ -6,26 +6,23 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 12/15/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 80146c7ec7b496b33bede8172d9945c78b26511e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c466c11cc51ca8d8efcf9ff4e86a9dbd2fd4930c
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039029"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985652"
 ---
 # <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>チュートリアル:Async Java SDK を使って Java アプリを構築し SQL API アカウントに格納されているデータを管理する
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET (プレビュー)](sql-api-dotnet-get-started-preview.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [.NET Core (プレビュー)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
-> * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.JS](sql-api-nodejs-get-started.md)
 > 
 
 開発者は、NoSQL ドキュメント データを使用するアプリケーションを持っていることがあります。 Azure Cosmos DB の SQL API アカウントを使用して、このドキュメント データを格納し、そのデータにアクセスすることができます。 このチュートリアルでは、Async Java SDK を使用して Java アプリケーションを構築し、ドキュメント データを格納し、そのデータにアクセスする方法について説明します。 
@@ -82,7 +79,7 @@ cd azure-cosmosdb-get-started
 
 次に、[Azure portal](https://portal.azure.com) に戻り、エンドポイントとプライマリ マスター キーを取得します。 Azure Cosmos DB のエンドポイントとプライマリ キーは、アプリケーションが接続先を認識し、Azure Cosmos DB がアプリケーションの接続を信頼するために必要です。 `AccountSettings.java` ファイルは、プライマリ キーと URI の値を保持します。 
 
-Azure ポータルで Azure Cosmos アカウントに移動し、**[キー]** をクリックします。 ポータルから URI とプライマリ キーをコピーし、`AccountSettings.java` ファイルに貼り付けます。 
+Azure ポータルで Azure Cosmos アカウントに移動し、 **[キー]** をクリックします。 ポータルから URI とプライマリ キーをコピーし、`AccountSettings.java` ファイルに貼り付けます。 
 
 ```java
 public class AccountSettings 
@@ -275,7 +272,7 @@ mvn exec:java -DACCOUNT_HOST=<YOUR_COSMOS_DB_HOSTNAME> -DACCOUNT_KEY= <YOUR_COSM
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、リソース グループ、Azure Cosmos アカウント、およびすべての関連リソースを削除できます。 これを行うには、仮想マシン用のリソース グループを選択し、**[削除]** を選択した後、削除するリソース グループの名前を確認します。
+必要がなくなったら、リソース グループ、Azure Cosmos アカウント、およびすべての関連リソースを削除できます。 これを行うには、仮想マシン用のリソース グループを選択し、 **[削除]** を選択した後、削除するリソース グループの名前を確認します。
 
 
 ## <a name="next-steps"></a>次の手順

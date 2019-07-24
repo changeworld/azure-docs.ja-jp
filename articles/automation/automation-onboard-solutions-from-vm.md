@@ -2,19 +2,19 @@
 title: Azure VM から Update Management、Change Tracking、および Inventory ソリューションをオンボードする
 description: Azure 仮想マシンを Azure Automation の一部である Update Management、Change Tracking、および Inventory ソリューションでオンボードする方法について説明します。
 services: automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 6b8693768e08f7ed80765015efa5af1a73b850c7
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619732"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476600"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure 仮想マシンから Update Management、Change Tracking、および Inventory ソリューションをオンボードする
 
@@ -26,22 +26,22 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="enable-the-solutions"></a>ソリューションの有効化
 
-既存の仮想マシンに移動します。 **［操作］** の下の **［更新プログラムの管理］**、**［インベントリ］** または **［変更の追跡］** を選択します。 仮想マシンは、ご使用の Automation アカウントの場所に関係なく任意のリージョンに存在できます。 VM からのソリューションをオンボードする場合、VM がワークスペースにオンボードされているかを判断するために、`Microsoft.OperationalInsights/workspaces/read` アクセス許可を保持している必要があります。 一般的に必要な追加のアクセス許可については、[コンピューターのオンボードに必要なアクセス許可](automation-role-based-access-control.md#onboarding)に関する記事をご覧ください。
+既存の仮想マシンに移動します。 **［操作］** の下の **［更新プログラムの管理］** 、 **［インベントリ］** または **［変更の追跡］** を選択します。 仮想マシンは、ご使用の Automation アカウントの場所に関係なく任意のリージョンに存在できます。 VM からのソリューションをオンボードする場合、VM がワークスペースにオンボードされているかを判断するために、`Microsoft.OperationalInsights/workspaces/read` アクセス許可を保持している必要があります。 一般的に必要な追加のアクセス許可については、[コンピューターのオンボードに必要なアクセス許可](automation-role-based-access-control.md#onboarding)に関する記事をご覧ください。
 
-ソリューションを VM に対してのみ有効にするには、**［Enable for this VM］\(この VM で有効にする\)** が選択されていることを確認します。 複数のマシンをソリューションにオンボードするには、**[Enable for VMs in this subscription]\(このサブスクリプションの VM を有効にする\)** を選択し、**[Click to select machines to enable]\(クリックして有効にするマシンを選択\)** を選択します。 一度に複数のマシンをオンボードする方法については、「[Update Management、Change Tracking、および Inventory ソリューションのオンボード](automation-onboard-solutions-from-automation-account.md)」を参照してください。
+ソリューションを VM に対してのみ有効にするには、 **［Enable for this VM］\(この VM で有効にする\)** が選択されていることを確認します。 複数のマシンをソリューションにオンボードするには、 **[Enable for VMs in this subscription]\(このサブスクリプションの VM を有効にする\)** を選択し、 **[Click to select machines to enable]\(クリックして有効にするマシンを選択\)** を選択します。 一度に複数のマシンをオンボードする方法については、「[Update Management、Change Tracking、および Inventory ソリューションのオンボード](automation-onboard-solutions-from-automation-account.md)」を参照してください。
 
-Log Analytics ワークスペースと Automation アカウントを選択し、**[有効にする]** を選択して、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
+Log Analytics ワークスペースと Automation アカウントを選択し、 **[有効にする]** を選択して、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
 ![Update Management ソリューションのオンボード](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
-他のソリューションに移動し、**[有効化]** を選択します。 これらのソリューションは前に有効にしたソリューションと同じワークスペースと Automation アカウントを使用するため、Log Analytics ワークスペースと Automation アカウントのドロップダウン リストは無効になっています。
+他のソリューションに移動し、 **[有効化]** を選択します。 これらのソリューションは前に有効にしたソリューションと同じワークスペースと Automation アカウントを使用するため、Log Analytics ワークスペースと Automation アカウントのドロップダウン リストは無効になっています。
 
 > [!NOTE]
 > **変更の追跡**と**インベントリ**は、同じソリューションを使用します。 これらのソリューションの片方を有効にすると、他方も有効になります。
 
 ## <a name="scope-configuration"></a>スコープ構成
 
-各ソリューションは、ワークスペース内のスコープ構成を使用して、ソリューションの対象となるコンピューターを決定します。 スコープ構成は、ソリューションのスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 スコープ構成にアクセスするには、Automation アカウントで、**[関連リソース]** の下の **[ワークスペース]** を選択します。 ワークスペースで、**[ワークスペースのデータ ソース]** の下の **[スコープ構成]** を選択します。
+各ソリューションは、ワークスペース内のスコープ構成を使用して、ソリューションの対象となるコンピューターを決定します。 スコープ構成は、ソリューションのスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 スコープ構成にアクセスするには、Automation アカウントで、 **[関連リソース]** の下の **[ワークスペース]** を選択します。 ワークスペースで、 **[ワークスペースのデータ ソース]** の下の **[スコープ構成]** を選択します。
 
 選択したワークスペースに Update Management または Change Tracking ソリューションがまだない場合は、次のスコープ構成が作成されます。
 
@@ -51,7 +51,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 選択したワークスペースにソリューションが既にある場合、ソリューションの再デプロイは行われず、スコープ構成の追加も行われません。
 
-いずれかの構成の省略記号 (**...**) を選択し、**[編集]** を選択します。 **[スコープ構成の編集]** ウィンドウで、**[コンピューター グループの選択]** を選択します。 **[コンピューター グループ]** ウィンドウに、スコープ構成を作成するために使用された、保存された検索条件が表示されます。
+いずれかの構成の省略記号 ( **...** ) を選択し、 **[編集]** を選択します。 **[スコープ構成の編集]** ウィンドウで、 **[コンピューター グループの選択]** を選択します。 **[コンピューター グループ]** ウィンドウに、スコープ構成を作成するために使用された、保存された検索条件が表示されます。
 
 ## <a name="saved-searches"></a>保存した検索条件
 
@@ -59,7 +59,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 ワークスペースに移動します。 **[全般]** の下の **[保存された検索]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|名前     |Category  |エイリアス  |
+|Name     |Category  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |
@@ -103,7 +103,9 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 * VM の開始/停止の Runbook スケジュール
 * VM の開始/停止の Runbook
-* variables
+* 変数
+
+Automation アカウントの自分のワークスペースを Log Analytics ワークスペースからリンク解除することもできます。 自分のワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。 [Automation アカウント] ページで **[アカウントのリンク解除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,7 +4,7 @@ description: Azure Resource Manager テンプレートで仮想マシン リソ�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: d234e7f8a6005722a33a797f2b8ae6a1e1f4b98b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: fd4fad40ef4809c756321493854f38fd813569ca
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327767"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710280"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -28,7 +28,7 @@ ms.locfileid: "56327767"
 
 VM リソースを含め、[ギャラリーにはテンプレート](https://azure.microsoft.com/documentation/templates/?term=VM)が多数あります。 テンプレートに含めることができるすべての要素をここで説明するわけではありません。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 次の例では、指定された数の VM を作成するためのテンプレートの典型的なリソース セクションを示しています。
 
@@ -152,7 +152,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 >
 >
 
-## <a name="api-version"></a>API バージョン
+## <a name="api-version"></a>API Version
 
 テンプレートを使用してリソースをデプロイする際に、使用する API のバージョンを指定する必要があります。 この例では、次の apiVersion 要素を使用して仮想マシン リソースを示しています。
 

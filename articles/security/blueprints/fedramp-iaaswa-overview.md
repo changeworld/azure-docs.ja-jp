@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 1ba5b813843ce2f5d31f337ab4d3d94e521b0e0c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864475"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60586136"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure のセキュリティとコンプライアンスのブループリント:FedRAMP のための IaaS Web アプリケーション
 
@@ -40,14 +40,14 @@ ms.locfileid: "57864475"
 デプロイ手順については、[ここ](https://aka.ms/fedrampblueprintrepo)をクリックしてください。
 
 ## <a name="architecture-diagram-and-components"></a>アーキテクチャ ダイアグラムとコンポーネント
-このソリューションは、バックエンドに SQL Server を使用する IaaS Web アプリケーション向けのリファレンス アーキテクチャをデプロイします。 アーキテクチャには、Web 層、データ層、Active Directory インフラストラクチャ、Application Gateway、および Azure Load Balancer が含まれています。 Web 層とデータ層にデプロイされる仮想マシンは可用性セット内に構成され、SQL Server インスタンスは高可用性のために AlwaysOn 可用性グループ内に構成されます。 仮想マシンはドメインに参加し、Active Directory グループ ポリシーを使用して、オペレーティング システム レベルでセキュリティとコンプライアンスの構成が適用されます。 要塞ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 **Azure では参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または Azure ExpressRoute 接続を構成することを推奨しています。**
+このソリューションは、バックエンドに SQL Server を使用する IaaS Web アプリケーション向けのリファレンス アーキテクチャをデプロイします。 アーキテクチャには、Web 層、データ層、Active Directory インフラストラクチャ、Application Gateway、および Azure Load Balancer が含まれています。 Web 層とデータ層にデプロイされる仮想マシンは可用性セット内に構成され、SQL Server インスタンスは高可用性のために AlwaysOn 可用性グループ内に構成されます。 仮想マシンはドメインに参加し、Active Directory グループ ポリシーを使用して、オペレーティング システム レベルでセキュリティとコンプライアンスの構成が適用されます。 踏み台ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 **Azure では参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または Azure ExpressRoute 接続を構成することを推奨しています。**
 
 ![FedRAMP のための IaaS Web アプリケーションの参照アーキテクチャ図](images/fedramp-iaaswa-architecture.png?raw=true "FedRAMP のための IaaS Web アプリケーションの参照アーキテクチャ図")
 
 このソリューションでは、次の Azure サービスを使用します。 デプロイ アーキテクチャについて詳しくは、「[デプロイ アーキテクチャ](#deployment-architecture)」セクションをご覧ください。
 
 - Azure Virtual Machines
-    - (1) 要塞ホスト (Microsoft Windows Server 2016 Datacenter)
+    - (1) 踏み台ホスト (Microsoft Windows Server 2016 Datacenter)
     - (2) Active Directory ドメイン コントローラー (Windows Server 2016 Datacenter)
     - (2) SQL Server クラスター ノード (Windows Server 2016 上の SQL Server 2017)
     - (2) Web/IIS (Windows Server 2016 Datacenter)
@@ -78,7 +78,7 @@ ms.locfileid: "57864475"
 
 以下のセクションでは、開発と実装の要素について詳しく説明します。
 
-**要塞ホスト**:要塞ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供する、単一のエントリ ポイントです。 要塞ホストの NSG は、TCP ポート 3389 のみで RDP 接続を許可します。 お客様は、組織のシステム セキュリティ強化要件を満たすために要塞ホストをさらに詳細に構成できます。
+**踏み台ホスト**:踏み台ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供する、単一のエントリ ポイントです。 踏み台ホストの NSG は、TCP ポート 3389 のみで RDP 接続を許可します。 お客様は、組織のシステム セキュリティ強化要件を満たすために踏み台ホストをさらに詳細に構成できます。
 
 ### <a name="virtual-network"></a>仮想ネットワーク
 このアーキテクチャは、10.200.0.0/16 のアドレス空間 を使用してプライベート仮想ネットワークを定義します。
@@ -89,7 +89,7 @@ ms.locfileid: "57864475"
 
 各サブネットには、専用のネットワーク セキュリティ グループ (NSG) があります。
 - Application Gateway 用の 1 つの NSG (LBNSG)
-- 要塞ホスト (MGTNSG) 用の 1 つの NSG
+- 踏み台ホスト (MGTNSG) 用の 1 つの NSG
 - プライマリおよびバックアップ ドメイン コントローラー用の 1 つの NSG (ADNSG)
 - SQL Server (SQLNSG) 用の 1 つの NSG
 - Web 層用の 1 つの NSG (WEBNSG)
@@ -149,8 +149,8 @@ ms.locfileid: "57864475"
 
 Azure Monitor ログは、システムの正常性だけではなく、システムとユーザーのアクティビティを詳細に記録します。 [Azure Monitor ログ](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
 
-- **アクティビティ ログ:**[アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)は、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、状態の判断に役立ちます。
-- **診断ログ:**[診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)は、リソースによって出力されるすべてのログです。 これらのログには、Windows イベント システム ログ、Azure ストレージ ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。
+- **アクティビティ ログ:** [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)は、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、状態の判断に役立ちます。
+- **診断ログ:** [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)は、リソースによって出力されるすべてのログです。 これらのログには、Windows イベント システム ログ、Azure ストレージ ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。
 - **ログのアーカイブ**:すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 リテンション期間には、組織固有の保有要件を満たすために最長 730 日までの日数をユーザーが設定できます。 これらのログは、処理、格納、およびダッシュボードでのレポート表示を行うために、Azure Monitor ログに接続されます。
 
 さらに、このアーキテクチャの一部として、次の監視ソリューションがインストールされます。 これらのソリューションは、FedRAMP セキュリティ統制に適合するよう、お客様の責任で設定してください。
@@ -189,7 +189,7 @@ Azure Monitor ログは、システムの正常性だけではなく、システ
 
 2. 配置前 PowerShell スクリプト (azure-blueprint/predeploy/Orchestration_InitialSetup.ps1) を実行します。
 
-3. 下のボタンをクリックし、Azure ポータルにサインインします。必要な ARM テンプレート パラメーターを入力し、**[購入]**  をクリックします。
+3. 下のボタンをクリックし、Azure ポータルにサインインします。必要な ARM テンプレート パラメーターを入力し、 **[購入]**  をクリックします。
 
     [![Azure へのデプロイ](https://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Ffedramp-iaas-webapp%2Fmaster%2Fazuredeploy.json)
 

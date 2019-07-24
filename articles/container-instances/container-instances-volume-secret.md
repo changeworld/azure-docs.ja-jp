@@ -7,21 +7,21 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: danlep
-ms.openlocfilehash: 3c1c83bb0c3e46a7eaab519050d9c556e2cc1a7a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2be640c8c7773ebd1fb5c83e67e3f0762d011e85
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372281"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657571"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Azure Container Instances にシークレット ボリュームをマウントする
 
 "*シークレット*" ボリュームは、コンテナー グループ内のコンテナーに機微な情報を提供する目的で使います。 秘密情報は、"*シークレット*" ボリューム内のファイルに格納され、コンテナー グループ内のコンテナーからアクセスすることができます。 "*シークレット*" ボリュームに秘密情報を格納すれば、SSH キーやデータベースの資格情報など、機微なデータをアプリケーション コードに追加せずに済みます。
 
-*シークレット* ボリュームは、RAM でバックアップされるファイルシステムである [tmpfs][tmpfs] によってバックアップされます。コンテンツが不揮発性の記憶域に書き込まれることはありません。
+すべての "*シークレット*" ボリュームは、RAM でバックアップされるファイルシステムである [tmpfs][tmpfs] によってバックアップされます。コンテンツが不揮発性の記憶域に書き込まれることはありません。
 
 > [!NOTE]
-> "*シークレット*" ボリュームは、現在のところ Linux コンテナーに限定されています。 Windows と Linux の両方のコンテナーのセキュリティで保護された環境変数を渡す方法の詳細については、「[環境変数の設定](container-instances-environment-variables.md)」を参照してください。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) で確認できます。
+> "*シークレット*" ボリュームは、現在のところ Linux コンテナーに限定されています。 Windows と Linux の両方のコンテナーのセキュリティで保護された環境変数を渡す方法の詳細については、「[環境変数の設定](container-instances-environment-variables.md)」を参照してください。 Microsoft ではすべての機能を Windows コンテナーに取り入れるように取り組んでいますが、現在のプラットフォームの違いは、[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
 
 ## <a name="mount-secret-volume---azure-cli"></a>シークレット ボリュームのマウント - Azure CLI
 
@@ -36,7 +36,7 @@ az container create \
     --secrets-mount-path /mnt/secrets
 ```
 
-次に示したのは、実行中のコンテナーのシェルを開いて、シークレット ボリューム内のファイルをリストした後、その内容を表示する [az container exec][az-container-exec] コマンドの出力です。
+次の [az container exec][az-container-exec] の出力は、実行中のコンテナーのシェルを開いて、シークレット ボリューム内のファイルをリストした後、その内容を表示しています。
 
 ```console
 $ az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
@@ -60,7 +60,7 @@ YAML テンプレートを使ってデプロイするときは、テンプレー
 以下の YAML テンプレートは、"*シークレット*" ボリュームを `/mnt/secrets` でマウントするコンテナーを 1 つ含んだコンテナー グループを定義しています。 このシークレット ボリュームには、"mysecret1" と "mysecret2" の 2 つのシークレットがあります。
 
 ```yaml
-apiVersion: '2018-06-01'
+apiVersion: '2018-10-01'
 location: eastus
 name: secret-volume-demo
 properties:

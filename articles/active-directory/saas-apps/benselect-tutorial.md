@@ -16,11 +16,11 @@ ms.date: 06/23/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 699afd4703efc5e8f63bb13fe1dd753a0c72594d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209440"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60282693"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benselect"></a>チュートリアル:Azure Active Directory と BenSelect の統合
 
@@ -60,11 +60,11 @@ Azure AD への BenSelect の統合を構成するには、ギャラリーから
 
 **ギャラリーから BenSelect を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
 
     ![Active Directory][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
     
@@ -76,7 +76,7 @@ Azure AD への BenSelect の統合を構成するには、ギャラリーから
 
     ![Azure AD のテスト ユーザーの作成](./media/benselect-tutorial/tutorial_benselect_search.png)
 
-1. 結果ウィンドウで **[BenSelect]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. 結果ウィンドウで **[BenSelect]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/benselect-tutorial/tutorial_benselect_addfromgallery.png)
 
@@ -101,11 +101,11 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 
 **BenSelect で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **[BenSelect]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **[BenSelect]** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
 
     ![Configure single sign-on][4]
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+1. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![Configure single sign-on](./media/benselect-tutorial/tutorial_benselect_samlbase.png)
 
@@ -118,7 +118,7 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[BenSelect サポート チーム](mailto:support@selerix.com)に問い合わせてください。
  
-1. **[SAML 署名証明書]** セクションで、**[Certificate(Raw)] \(証明書 (Raw))** をクリックし、証明書ファイルをコンピューターに保存します。
+1. **[SAML 署名証明書]** セクションで、 **[Certificate(Raw)] \(証明書 (Raw))** をクリックし、証明書ファイルをコンピューターに保存します。
 
     ![Configure single sign-on](./media/benselect-tutorial/tutorial_benselect_certificate.png) 
 
@@ -128,25 +128,25 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 
 1. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、次の手順を実行します。
 
-    a. **[User Identifier] \(ユーザー識別子)** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
+    a. **[User Identifier] \(ユーザー識別子)** ドロップダウン リストで、 **[ExtractMailPrefix]** を選択します。
 
-    b. **[Mail] \(メール)** ドロップダウン リストで、**[user.userprincipalname]** を選択します。
+    b. **[Mail] \(メール)** ドロップダウン リストで、 **[user.userprincipalname]** を選択します。
 
 1. **[保存]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/benselect-tutorial/tutorial_general_400.png)
 
-1. **[BenSelect Configuration] \(BenSelect 構成)** セクションで、**[Configure BenSelect] \(BenSelect の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+1. **[BenSelect Configuration] \(BenSelect 構成)** セクションで、 **[Configure BenSelect] \(BenSelect の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![Configure single sign-on](./media/benselect-tutorial/tutorial_benselect_configure.png) 
 
-1. **BenSelect** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Raw)**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [BenSelect サポート チーム](mailto:support@selerix.com)に送信する必要があります。
+1. **BenSelect** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Raw)** 、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [BenSelect サポート チーム](mailto:support@selerix.com)に送信する必要があります。
 
    >[!NOTE]
    >適切なサーバー (app2101 など) で SSO を設定するために、この統合には SHA256 アルゴリズム (SHA1 はサポート対象外) が必要であるという点を伝える必要があります。 
    
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、 **[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -155,15 +155,15 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **Azure Portal** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/benselect-tutorial/create_aaduser_01.png) 
 
-1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+1. **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
     ![Azure AD のテスト ユーザーの作成](./media/benselect-tutorial/create_aaduser_02.png) 
 
-1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+1. ダイアログの上部にある **[追加]** をクリックして、 **[ユーザー]** ダイアログを開きます。
  
     ![Azure AD のテスト ユーザーの作成](./media/benselect-tutorial/create_aaduser_03.png) 
 
@@ -175,9 +175,9 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+    c. **[パスワードを表示]** を選択し、 **[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-benselect-test-user"></a>BenSelect テスト ユーザーの作成
 
@@ -191,7 +191,7 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 
 **BenSelect に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
@@ -203,7 +203,7 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 
     ![ユーザーの割り当て][202] 
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 

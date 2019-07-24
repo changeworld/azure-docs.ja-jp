@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259586"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60337427"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -101,7 +101,7 @@ CSR は単なるテキスト ファイルです。 必ずしも、最終的に�
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-**Get-AzurePublishSettingsFile** は、Azure Portal の **[サブスクリプション]** > **[管理証明書]** に新しい管理証明書を作成します。 新しい証明書の名前は、"<サブスクリプション名>-<今日の日付>-credentials" のようになります。
+**Get-AzurePublishSettingsFile** は、Azure Portal の **[サブスクリプション]**  >  **[管理証明書]** に新しい管理証明書を作成します。 新しい証明書の名前は、"<サブスクリプション名>-<今日の日付>-credentials" のようになります。
 
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>メイン SSL 証明書 (.pfx) と中間証明書 (.p7b) のインストールを自動化する方法を教えてください。
 
@@ -194,7 +194,7 @@ Windows 10 と Windows Server 2016 は、クライアントとサーバー側の
 3. **DuoEnabled** という新しいダブルワード値を作成します。
 4. 値を 1 に設定します。
 5. サーバーを再起動します。
-6. **[既定の Web サイト]** に移動し、**[バインド]** で、作成した自己署名証明書を使用して新しい TLS バインドを作成します。 
+6. **[既定の Web サイト]** に移動し、 **[バインド]** で、作成した自己署名証明書を使用して新しい TLS バインドを作成します。 
 
 詳細については、次を参照してください。
 
@@ -228,7 +228,7 @@ Microsoft では、所有者、またはその指名を受けた担当者から�
 
 このエラーは、Azure Active Directory に参加しているコンピューターから RDP ファイルを使った場合に発生する可能性があります。 この問題を解決するには、次の手順に従ってください。
 
-1. ダウンロードした RDP ファイルを右クリックして、**[編集]** を選びます。
+1. ダウンロードした RDP ファイルを右クリックして、 **[編集]** を選びます。
 2. ユーザー名の前にプレフィックスとして "&#92;" を追加します。 たとえば、**username** の代わりに **.\username** を使います。
 
 ## <a name="scaling"></a>スケーリング

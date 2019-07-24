@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/06/2019
 ms.author: aschhab
 ms.openlocfilehash: 699581c7ccd3f36da0cd0c1def623607b7c0a13b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60589673"
 ---
 # <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 
@@ -47,7 +47,7 @@ Premium レベルの名前空間では、エンティティのパーティショ
 
 ### <a name="create-a-partitioned-entity"></a>パーティション分割されたエンティティを作成する
 
-パーティション分割されたキューまたはトピックを作成する方法は複数あります。 ご使用のアプリケーションからキューまたはトピックを作成する際に、[QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning] プロパティまたは [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] プロパティをそれぞれ **true** に設定することで、キューまたはトピックのパーティション分割を有効にできます。 これらのプロパティは、キューまたはトピックが作成された時点で設定される必要があり、従来の [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) ライブラリのみで使用できます。 既に説明したように、既存のキューまたはトピックでこれらのプロパティを変更することはできません。 例: 
+パーティション分割されたキューまたはトピックを作成する方法は複数あります。 ご使用のアプリケーションからキューまたはトピックを作成する際に、[QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning] プロパティまたは [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning] プロパティをそれぞれ **true** に設定することで、キューまたはトピックのパーティション分割を有効にできます。 これらのプロパティは、キューまたはトピックが作成された時点で設定される必要があり、従来の [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) ライブラリのみで使用できます。 既に説明したように、既存のキューまたはトピックでこれらのプロパティを変更することはできません。 例:
 
 ```csharp
 // Create partitioned topic
@@ -87,7 +87,7 @@ Service Bus が別のパーティションにメッセージをエンキュー�
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>高度なトピック: パーティション分割されたエンティティでのトランザクションの使用
 
-トランザクションの一部として送信されるメッセージでは、パーティション キーを指定する必要があります。 キーは次のプロパティのいずれかです: [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)、または [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)。 同じトランザクションの一部として送信されるすべてのメッセージで、同じパーティション キーを指定する必要があります。 トランザクション内でパーティション キーなしのメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 同じトランザクション内で異なるパーティション キーを持つ複数のメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 例: 
+トランザクションの一部として送信されるメッセージでは、パーティション キーを指定する必要があります。 キーは次のプロパティのいずれかです: [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)、または [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)。 同じトランザクションの一部として送信されるすべてのメッセージで、同じパーティション キーを指定する必要があります。 トランザクション内でパーティション キーなしのメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 同じトランザクション内で異なるパーティション キーを持つ複数のメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 例:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -107,7 +107,7 @@ committableTransaction.Commit();
 
 トランザクション メッセージを、セッションを認識するトピックまたはキューに送信するには、メッセージに [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティが設定されている必要があります。 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティも指定されている場合は、このプロパティの値が [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティの値と同じである必要があります。 これらが異なる場合、Service Bus は無効操作例外を返します。
 
-通常の (パーティション分割されていない) キューまたはトピックと異なり、単一のトランザクションを使用して複数のメッセージを別々のセッションに送信することはできません。 これを試みると、Service Bus は無効操作例外を返します。 例: 
+通常の (パーティション分割されていない) キューまたはトピックと異なり、単一のトランザクションを使用して複数のメッセージを別々のセッションに送信することはできません。 これを試みると、Service Bus は無効操作例外を返します。 例:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();

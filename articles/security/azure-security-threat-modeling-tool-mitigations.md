@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 24aa49fd4ccccda372d2632ef4aee22bd5cb2bf6
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359138"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60611317"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool の軽減策
 
@@ -49,8 +49,8 @@ Threat Modeling Tool の軽減策は、Web アプリケーションのセキュ�
 * 最も一般的な間違いがどこで起きるか
 * 最も実践的な機能強化をどこで行うことができるか
 
-そのため、これらのカテゴリを使用して、セキュリティに関連する作業の対象と優先順位を定めることができます。最も一般的なセキュリティの問題が入力の検証、認証、および承認のカテゴリで発生することが判明した場合は、そこから作業を開始できます。 詳細については、**[このブログ投稿](https://www.google.com/patents/US7818788)** を参照してください。
+そのため、これらのカテゴリを使用して、セキュリティに関連する作業の対象と優先順位を定めることができます。最も一般的なセキュリティの問題が入力の検証、認証、および承認のカテゴリで発生することが判明した場合は、そこから作業を開始できます。 詳細については、 **[このブログ投稿](https://www.google.com/patents/US7818788)** を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-「**[Threat Modeling Tool Threats](./azure-security-threat-modeling-tool-threats.md)**」(Threat Modeling Tool の脅威) に進み、設計上の脅威の可能性を生成するときにツールで使用される脅威のカテゴリの詳細について学びます。
+「 **[Threat Modeling Tool Threats](./azure-security-threat-modeling-tool-threats.md)** 」(Threat Modeling Tool の脅威) に進み、設計上の脅威の可能性を生成するときにツールで使用される脅威のカテゴリの詳細について学びます。

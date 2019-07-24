@@ -13,11 +13,11 @@ ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bcb49048fa9200b8970f37a4f187ca995d208cc2
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961586"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60474094"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>個人用の Microsoft アカウントを追加する
 標準的な 2 要素検証プロセスとパスワードなしの電話によるサインイン方法向けに、Outlook.com や Xbox LIVE などの個人用の Microsoft アカウントを Microsoft Authenticator アプリに追加します。
@@ -39,7 +39,7 @@ ms.locfileid: "56961586"
 
 1. ご使用のコンピューターで、[[Security basics]\(セキュリティの基礎\)](https://account.microsoft.com/security) ページに移動して、個人用の Microsoft アカウントを使用してサインインします。 たとえば、「 alain@outlook.com 」のように入力します。
 
-2. **[Security basics]\(セキュリティの基礎\)** ページの下部で、**[more security options]\(さらに多くのセキュリティ オプション\)** のリンクを選択します。
+2. **[Security basics]\(セキュリティの基礎\)** ページの下部で、 **[more security options]\(さらに多くのセキュリティ オプション\)** のリンクを選択します。
 
     ![[more security options]\(さらに多くのセキュリティ オプション\) リンクが強調表示された [Security basics]\(セキュリティの基礎\) ページ](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
 
@@ -49,18 +49,18 @@ ms.locfileid: "56961586"
 
 1. モバイル デバイスで Microsoft Authenticator アプリを開きます。
 
-2. 右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから、**[アカウントの追加]** を選択します。
+2. 右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから、 **[アカウントの追加]** を選択します。
 
     ![[Customize and control]\(カスタマイズと制御\) アイコンが強調表示された [アカウント] ページ](./media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon.png)
 
-3. **[アカウントの追加]** ページで、**[個人用アカウント]** を選択します。
+3. **[アカウントの追加]** ページで、 **[個人用アカウント]** を選択します。
 
-4. 適切なメール アドレス (alain@outlook.com など) を使用して、個人用アカウントにサインインし、**[次へ]** を選択します。
+4. 適切なメール アドレス (alain@outlook.com など) を使用して、個人用アカウントにサインインし、 **[次へ]** を選択します。
 
     >[!Note]
     >個人用の Microsoft アカウントをお持ちでない場合は、ここで作成することができます。
 
-5. パスワードを入力し、**[サインイン]** を選択します。
+5. パスワードを入力し、 **[サインイン]** を選択します。
 
     個人用アカウントが Microsoft Authenticator アプリに追加されます。
 

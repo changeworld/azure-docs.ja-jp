@@ -16,11 +16,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7209f468f493e226fae22ccd260e8ceb2e570494
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439143"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60286675"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -48,12 +48,12 @@ Office 365 の資格情報を使用して **Azure 管理センター**にアク�
 
 Microsoft 365 管理センターで**リスクのフラグ付きユーザー**のレポートにアクセスするには:
 
-1.  左側のナビゲーション メニューで、**[管理センター]** を選択します。 
+1.  左側のナビゲーション メニューで、 **[管理センター]** を選択します。 
 2.  **[Azure AD ]** を選びます。
 3.  **Azure Active Directory 管理センター**にログインします。
 4.  ページ上部に **[新しいポータルの確認]** というバナーが表示される場合は、そのリンクを選択します。
-4.  左側のナビゲーション メニューで、**[Azure Active Directory]** を選択します。 
-5.  ナビゲーション ウィンドウの **[セキュリティ]** セクションから、**[リスクのフラグ付きユーザー]** を選択します。
+4.  左側のナビゲーション メニューで、 **[Azure Active Directory]** を選択します。 
+5.  ナビゲーション ウィンドウの **[セキュリティ]** セクションから、 **[リスクのフラグ付きユーザー]** を選択します。
 
 ## <a name="remediation-actions"></a>修復アクション
 

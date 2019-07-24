@@ -11,10 +11,10 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 76297be79fca62b1f2f777f9cba4a0a8fe134768
-ms.sourcegitcommit: 16cb78a0766f9b3efbaf12426519ddab2774b815
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65851632"
 ---
 # <a name="development-best-practices-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の開発のベスト プラクティス

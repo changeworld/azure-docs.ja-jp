@@ -16,11 +16,11 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 517ac0f612b9e5fc5909a7f0fe2ce088c9b367d9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548699"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60776212"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Batch コンピューティング ノードでのジョブ準備タスクとジョブ解放タスクの実行
 
@@ -180,7 +180,7 @@ Sample complete, hit ENTER to exit...
 ### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Azure Portal でのジョブの準備タスクと解放タスクの確認
 サンプル アプリケーションを実行する際、[Azure Portal][portal] を使用して、ジョブとそのタスクのプロパティを表示したり、ジョブのタスクによって変更された共有テキスト ファイルをダウンロードしたりできます。
 
-以下のスクリーンショットは、サンプル アプリケーション実行後の Azure Portal の **[準備タスク]** ブレードです。 タスクの完了後 (ただし、ジョブとプールが削除される前)、*JobPrepReleaseSampleJob* プロパティに移動し、**[準備タスク]** または **[リリース タスク]** をクリックして、それらのプロパティを表示します。
+以下のスクリーンショットは、サンプル アプリケーション実行後の Azure Portal の **[準備タスク]** ブレードです。 タスクの完了後 (ただし、ジョブとプールが削除される前)、*JobPrepReleaseSampleJob* プロパティに移動し、 **[準備タスク]** または **[リリース タスク]** をクリックして、それらのプロパティを表示します。
 
 ![Job preparation properties in Azure portal][1]
 

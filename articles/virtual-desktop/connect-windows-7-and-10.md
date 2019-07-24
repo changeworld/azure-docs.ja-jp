@@ -4,15 +4,15 @@ description: Windows 10 または Windows 7 から Windows Virtual Desktop プ�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: helohr
-ms.openlocfilehash: b7d7b25d0355f2379b90313f17e2b595234df827
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 66b423ea27cc0f9112349964fcfd0d75f08c12bd
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65145982"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620113"
 ---
 # <a name="connect-from-windows-10-or-windows-7"></a>Windows 10 または Windows 7 から接続する
 
@@ -33,7 +33,7 @@ Windows 7 と Windows 10 を実行するデバイスから Windows Virtual Deskt
 
 フィードをサブスクライブするには:
 
-1. すべてのアプリ リストからクライアントを起動し、**[リモート デスクトップ]** を探します。
+1. すべてのアプリ リストからクライアントを起動し、 **[リモート デスクトップ]** を探します。
 1. サービスに接続して自分のリソースを取得するために、メイン ページで **[サブスクライブ]** を選択します。
 1. メッセージが表示されたら、自分のユーザー アカウントで**サインイン**します。
 
@@ -51,8 +51,8 @@ Windows 7 と Windows 10 を実行するデバイスから Windows Virtual Deskt
 
 サブスクライブ後、詳細パネルにアクセスしてフィードに関する追加情報を表示できます。
 
-1. クライアントのメイン ページで、フィード名の右側の省略記号 (**...**) を選択します。
-1. ドロップダウン メニューから、**[詳細]** を選択します。
+1. クライアントのメイン ページで、フィード名の右側の省略記号 ( **...** ) を選択します。
+1. ドロップダウン メニューから、 **[詳細]** を選択します。
 1. クライアントの右側に [詳細] パネルが表示されます。
 
 [詳細] パネルには、フィードに関する有用な情報が含まれます。
@@ -62,14 +62,14 @@ Windows 7 と Windows 10 を実行するデバイスから Windows Virtual Deskt
 - 前回の更新の日付/時刻
 - 前回の更新の状態
 
-必要に応じて、**[今すぐ更新]** を選択して手動の更新を開始できます。
+必要に応じて、 **[今すぐ更新]** を選択して手動の更新を開始できます。
 
 ## <a name="unsubscribe-from-a-feed"></a>フィードからサブスクライブ解除する
 
 このセクションでは、フィードからサブスクライブ解除する方法を説明します。 別のアカウントで再度サブスクライブするか、システムからリソースを削除するために、サブスクライブ解除できます。
 
-1. クライアントのメイン ページで、フィード名の右側の省略記号 (**...**) を選択します。
-1. ドロップダウン メニューから、**[サブスクライブ解除]** を選択します。
+1. クライアントのメイン ページで、フィード名の右側の省略記号 ( **...** ) を選択します。
+1. ドロップダウン メニューから、 **[サブスクライブ解除]** を選択します。
 1. 確認し、ダイアログから **[続行]** を選択します。
 
 ## <a name="update-the-client"></a>クライアントの更新

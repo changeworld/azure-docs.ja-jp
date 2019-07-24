@@ -16,11 +16,11 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433656"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60321833"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのハードウェア コンポーネントの交換
 
@@ -67,7 +67,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 | コンポーネント | 台数 | プラグイン モジュール? | 交換手順 |
 |:--- |:--- |:--- |:--- |
-| シャーシ |1 |いいえ  |[StorSimple デバイスのシャーシを交換する](storsimple-8000-chassis-replacement.md) |
+| シャーシ |1 |いいえ |[StorSimple デバイスのシャーシを交換する](storsimple-8000-chassis-replacement.md) |
 | プライマリ コントローラー |2 |はい |[StorSimple デバイスのコントローラー モジュールを交換する](storsimple-8000-controller-replacement.md) |
 | 764W 電源冷却モジュール (PCM) |2 |はい |[StorSimple デバイスの電源冷却モジュールを交換する](storsimple-8000-power-cooling-module-replacement.md) |
 | バックアップ バッテリ |2 |はい |[StorSimple デバイスのバックアップ バッテリ モジュールを交換する](storsimple-8000-battery-replacement.md) |
@@ -79,7 +79,7 @@ StorSimple 8000 シリーズ デバイスは、主エンクロージャまたは
 
 | コンポーネント | 台数 | プラグイン モジュール? | 交換手順 |
 |:--- |:--- |:--- |:--- |
-| シャーシ |1 |いいえ  |[StorSimple デバイスのシャーシを交換する](storsimple-8000-chassis-replacement.md) |
+| シャーシ |1 |いいえ |[StorSimple デバイスのシャーシを交換する](storsimple-8000-chassis-replacement.md) |
 | EBOD コントローラー |2 |はい |[StorSimple デバイスの EBOD コントローラーを交換する](storsimple-8000-ebod-controller-replacement.md) |
 | 580W 電源冷却モジュール (PCM) |2 |はい |[StorSimple デバイスの電源冷却モジュールを交換する](storsimple-8000-power-cooling-module-replacement.md) |
 | ディスク ドライブ |12 |はい |[StorSimple デバイスのディスク ドライブを交換する](storsimple-8000-disk-drive-replacement.md) |

@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
 ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009754"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736790"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Azure Front Door Service でのメトリックとログの監視
 
@@ -54,7 +54,7 @@ Azure Front Door Service を使用すると、次の方法でリソースを監�
 
     ![アクティビティ ログ](./media/front-door-diagnostics/activity-log.png)
 
-3. フィルター処理のスコープを選択し、**[適用]** を選択します。
+3. フィルター処理のスコープを選択し、 **[適用]** を選択します。
 
 ## <a name="diagnostic-logging"></a>診断ログ
 診断ログは、監査やトラブルシューティングにとって重要な操作とエラーに関する豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。

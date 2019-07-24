@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 4108616e3ae41e2c88b74bb08d5f846c0035101f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55293997"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60236208"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>System Center Data Protection Manager のトラブルシューティング
 
@@ -60,7 +60,7 @@ System Center Data Protection Manager の最新リリース ノートについ�
 この問題を解決するには、次のアクションを実行してください。
 - 最新バージョンの Azure Backup エージェントを使用していることを確認します。
 - Data Protection Manager サーバーと保護されるサーバーの間に接続 (ネットワーク/ファイアウォール/プロキシ) があることを確認します。
-- SQL Server を保護している場合は、**[ログインのプロパティ]** > **[NT AUTHORITY\SYSTEM]** プロパティで、**sysadmin** 設定が有効になっていることを確認します。
+- SQL Server を保護している場合は、 **[ログインのプロパティ]**  >  **[NT AUTHORITY\SYSTEM]** プロパティで、**sysadmin** 設定が有効になっていることを確認します。
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>エラー:サーバーが、コンテナー資格情報ファイルに指定されているとおりに登録されていません
 

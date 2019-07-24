@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a6ebfc86a2489910d23faa96550f34cc979c0435
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7b6323e02225be3d954e4ee91ea06952bb3ce396
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875304"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66001761"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Event Hubs メッセージングの例外
 
@@ -91,6 +91,12 @@ Event Hubs では、タイムアウトは接続文字列の一部として、ま
 
 このエラーはあまり発生しません。 名前空間に対してコードを実行しているコンテナーの CPU が不足している場合、つまり、Event Hubs ロード バランサーの開始前の時間が数秒もないときに発生します。
 
+### <a name="limit-on-calls-to-the-getruntimeinformation-method"></a>GetRuntimeInformation メソッドの呼び出しの上限
+Azure Event Hubs は、GetRuntimeInfo に対して 1 秒あたり最大 50 の呼び出しをサポートしています。 制限に達すると、次のような例外が表示される可能性があります。
+
+```
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+```
 
 ## <a name="next-steps"></a>次の手順
 

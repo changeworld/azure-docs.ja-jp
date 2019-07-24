@@ -7,14 +7,14 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/27/2017
-ms.author: diegomrtnzg
+ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd502a308d6298dc2941461632a2832ac336c45c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079096"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849863"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(非推奨) Azure DevOps で ACS エンジンと Docker Swarm Mode を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
 
@@ -62,7 +62,7 @@ ms.locfileid: "58079096"
 
 ## <a name="step-1-configure-your-azure-devops-organization"></a>手順 1: Azure DevOps 組織の構成 
 
-このセクションでは、Azure DevOps 組織を構成します。 Azure DevOps サービス エンドポイントを構成するには、Azure DevOps プロジェクトで、ツールバーの **[設定]** アイコンをクリックし、**[サービス]** を選択します。
+このセクションでは、Azure DevOps 組織を構成します。 Azure DevOps サービス エンドポイントを構成するには、Azure DevOps プロジェクトで、ツールバーの **[設定]** アイコンをクリックし、 **[サービス]** を選択します。
 
 ![サービス エンドポイントを開く](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/services-vsts.PNG)
 
@@ -70,8 +70,8 @@ ms.locfileid: "58079096"
 
 Azure DevOps プロジェクトと Azure アカウント間の接続を設定します。
 
-1. 左側で、**[新しいサービス エンドポイント]** > **[Azure Resource Manager]** をクリックします。
-2. Azure DevOps が Azure アカウントで動作することを承認するには、**[サブスクリプション]** を選択し、**[OK]** をクリックします。
+1. 左側で、 **[新しいサービス エンドポイント]**  >  **[Azure Resource Manager]** をクリックします。
+2. Azure DevOps が Azure アカウントで動作することを承認するには、 **[サブスクリプション]** を選択し、 **[OK]** をクリックします。
 
     ![Azure DevOps - Azure の承認](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-azure.PNG)
 
@@ -79,8 +79,8 @@ Azure DevOps プロジェクトと Azure アカウント間の接続を設定し
 
 Azure DevOps プロジェクトと GitHub アカウント間の接続を設定します。
 
-1. 左側で、**[新しいサービス エンドポイント]** > **[GitHub]** の順にクリックします。
-2. Azure DevOps が GitHub アカウントを使用することを承認するには、**[認証]** をクリックし、開いたウィンドウの手順に従います。
+1. 左側で、 **[新しいサービス エンドポイント]**  >  **[GitHub]** の順にクリックします。
+2. Azure DevOps が GitHub アカウントを使用することを承認するには、 **[認証]** をクリックし、開いたウィンドウの手順に従います。
 
     ![Azure DevOps - GitHub の承認](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github.png)
 
@@ -100,7 +100,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
 ### <a name="initial-pipeline-setup"></a>パイプラインの初期設定
 
-1. ビルド パイプラインを作成するには、Azure DevOps プロジェクトに接続し、**[Build & Release]\(ビルドとリリース\)** をクリックします。 **[ビルド定義]** セクションで、**[+ 新規]** をクリックします。 
+1. ビルド パイプラインを作成するには、Azure DevOps プロジェクトに接続し、 **[Build & Release]\(ビルドとリリース\)** をクリックします。 **[ビルド定義]** セクションで、 **[+ 新規]** をクリックします。 
 
     ![Azure DevOps - 新しいビルド パイプライン](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-build-vsts.PNG)
 
@@ -108,21 +108,21 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
     ![Azure DevOps - 新しい空のビルド パイプライン](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-empty-build-vsts.PNG)
 
-4. 次に、**[変数]** タブをクリックし、2 つの新しい変数(**RegistryURL**  と **AgentURL**) を作成します。 レジストリとクラスター エージェントの DNS の値を貼り付けます。
+4. 次に、 **[変数]** タブをクリックし、2 つの新しい変数(**RegistryURL**  と **AgentURL**) を作成します。 レジストリとクラスター エージェントの DNS の値を貼り付けます。
 
     ![Azure DevOps - ビルド変数の構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 
-5. **[ビルド定義]** ページで、**[トリガー]** タブを開き、前提条件で作成した MyShop プロジェクトのフォークを使用するように、継続的インテグレーションで使用するビルドを構成します。 次に、**[バッチ変更]** を選択します。 **[ブランチ仕様]** として "*docker-linux*" が選択されていることを確認します。
+5. **[ビルド定義]** ページで、 **[トリガー]** タブを開き、前提条件で作成した MyShop プロジェクトのフォークを使用するように、継続的インテグレーションで使用するビルドを構成します。 次に、 **[バッチ変更]** を選択します。 **[ブランチ仕様]** として "*docker-linux*" が選択されていることを確認します。
 
     ![Azure DevOps - ビルド リポジトリの構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github-repo-conf.PNG)
 
 
-6. 最後に、**[オプション]** タブをクリックし、既定のエージェント キューを **[Hosted Linux Preview]\(ホストされている Linux (プレビュー)\)** に構成します。
+6. 最後に、 **[オプション]** タブをクリックし、既定のエージェント キューを **[Hosted Linux Preview]\(ホストされている Linux (プレビュー)\)** に構成します。
 
     ![Azure DevOps - ホスト エージェントの構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-agent.png)
 
 ### <a name="define-the-build-workflow"></a>ビルド ワークフローの定義
-次の手順では、ビルド ワークフローを定義します。 最初に、コードのソースを構成する必要があります。 これを行うには、**[GitHub]**、およびお使いの**リポジトリ**と**ブランチ** (docker-linux) を選択します。
+次の手順では、ビルド ワークフローを定義します。 最初に、コードのソースを構成する必要があります。 これを行うには、 **[GitHub]** 、およびお使いの**リポジトリ**と**ブランチ** (docker-linux) を選択します。
 
 ![Azure DevOps - ソース コードの構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-source-code.png)
 
@@ -136,7 +136,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
 イメージごとに 2 つの Docker ステップ (イメージをビルドするステップと Azure コンテナー レジストリにイメージをプッシュするステップ) が必要です。 
 
-1. ビルド ワークフローにステップを追加するには、**[+ ビルド ステップの追加]** をクリックし、**[Docker]** を選択します。
+1. ビルド ワークフローにステップを追加するには、 **[+ ビルド ステップの追加]** をクリックし、 **[Docker]** を選択します。
 
     ![Azure DevOps - ビルド ステップの追加](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-add-task.png)
 
@@ -144,7 +144,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
     ![Azure DevOps - Docker ビルド](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-build.png)
 
-    ビルド操作については、Azure Container Registry、**[Build an image]\(イメージのビルド\)** アクション、および各イメージを定義する Dockerfile を選択します。 **[作業ディレクトリ]** を Dockerfile のルート ディレクトリとして定義し、**[イメージ名]** を定義し、**[最新のタグを含める]** を選択します。
+    ビルド操作については、Azure Container Registry、 **[Build an image]\(イメージのビルド\)** アクション、および各イメージを定義する Dockerfile を選択します。 **[作業ディレクトリ]** を Dockerfile のルート ディレクトリとして定義し、 **[イメージ名]** を定義し、 **[最新のタグを含める]** を選択します。
     
     イメージ名は、```$(RegistryURL)/[NAME]:$(Build.BuildId)``` の形式にする必要があります。 **[NAME]** をイメージ名に置き換えます。
     - ```proxy```
@@ -157,7 +157,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
     ![Azure DevOps - Docker プッシュ](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-push.png)
 
-    プッシュ操作については、Azure コンテナー レジストリ、**[Push an image]\(イメージのプッシュ\)** アクションを選択し、前のステップでビルドした**イメージ名**を入力し、**[最新のタグを含める]** を選択します。
+    プッシュ操作については、Azure コンテナー レジストリ、 **[Push an image]\(イメージのプッシュ\)** アクションを選択し、前のステップでビルドした**イメージ名**を入力し、 **[最新のタグを含める]** を選択します。
 
 4. 5 つの各イメージのビルド ステップとプッシュ ステップを構成したら、ビルド ワークフローにステップをもう 3 つ追加します。
 
@@ -197,17 +197,17 @@ Azure DevOps を使用すると、[複数の環境のリリースを管理](http
 
 ### <a name="initial-release-setup"></a>リリースの初期設定
 
-1. リリース パイプラインを作成するために、**[リリース]** > **[+ リリース]** の順にクリックします
+1. リリース パイプラインを作成するために、 **[リリース]**  >  **[+ リリース]** の順にクリックします
 
-2. 成果物ソースを構成するために、**[成果物]** > **[成果物ソースのリンク]** の順にクリックします。 ここでは、この新しいリリース パイプラインを、前の手順で定義したビルドにリンクします。 その後、docker-compose.yml ファイルをリリース プロセスで使用できるようになります。
+2. 成果物ソースを構成するために、 **[成果物]**  >  **[成果物ソースのリンク]** の順にクリックします。 ここでは、この新しいリリース パイプラインを、前の手順で定義したビルドにリンクします。 その後、docker-compose.yml ファイルをリリース プロセスで使用できるようになります。
 
     ![Azure DevOps - リリース成果物](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-artefacts.png) 
 
-3. リリース トリガーを構成するために、**[トリガー]** をクリックし、**[継続的配置]** を選択します。 同じ成果物ソースにトリガーを設定します。 この設定により、ビルドが正常に完了したときに新しいリリースが開始されることが保証されます。
+3. リリース トリガーを構成するために、 **[トリガー]** をクリックし、 **[継続的配置]** を選択します。 同じ成果物ソースにトリガーを設定します。 この設定により、ビルドが正常に完了したときに新しいリリースが開始されることが保証されます。
 
     ![Azure DevOps - リリース トリガー](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-trigger.png) 
 
-4. リリース変数を設定するには、**[変数]** をクリックします。**[+変数]** を選択し、3 つの新しい変数 (**docker.username****docker.password**、および **docker.registry**) をレジストリの情報を使用して作成します。 レジストリとクラスター エージェントの DNS の値を貼り付けます。
+4. リリース変数を設定するには、 **[変数]** をクリックします。 **[+変数]** を選択し、3 つの新しい変数 (**docker.username** **docker.password**、および **docker.registry**) をレジストリの情報を使用して作成します。 レジストリとクラスター エージェントの DNS の値を貼り付けます。
 
     ![Azure DevOps - ビルド リポジトリの構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-variables.png)
 
@@ -235,13 +235,13 @@ Azure DevOps を使用すると、[複数の環境のリリースを管理](http
 
     マスターで実行されるコマンドでは、Docker CLI と Docker-Compose CLI を使用して、次のタスクを実行します。
 
-   - Azure コンテナー レジストリにログインします (**[変数]** タブに定義されている 3 つのビルド変数を使用します)。
+   - Azure コンテナー レジストリにログインします ( **[変数]** タブに定義されている 3 つのビルド変数を使用します)。
    - Swarm エンドポイント (:2375) を使用するよう **DOCKER_HOST** 変数を定義します。
    - 前の安全なコピー タスクによって作成された、docker-compose.yml ファイルを含む *deploy* フォルダーに移動します。 
    - 新しいイメージの取得とコンテナーの作成を行う `docker stack deploy` コマンドを実行します。
 
      >[!IMPORTANT]
-     > 前の画面に示すように、**[STDERR でのエラー]** チェック ボックスはオフのままにします。 この設定により、`docker-compose` が (コンテナーの停止や削除などの) 診断メッセージを標準エラー出力に出力することで、リリース プロセスを完了できます。 このチェック ボックスをオンにすると、すべてうまくいった場合でも、Azure DevOps からリリース中にエラーが発生したと報告されます。
+     > 前の画面に示すように、 **[STDERR でのエラー]** チェック ボックスはオフのままにします。 この設定により、`docker-compose` が (コンテナーの停止や削除などの) 診断メッセージを標準エラー出力に出力することで、リリース プロセスを完了できます。 このチェック ボックスをオンにすると、すべてうまくいった場合でも、Azure DevOps からリリース中にエラーが発生したと報告されます。
      >
 3. この新しいリリース パイプラインを保存します。
 

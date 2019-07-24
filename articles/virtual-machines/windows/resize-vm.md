@@ -4,7 +4,7 @@ description: Resource Manager デプロイ モデルで作成された Windows �
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 057ff274-6dad-415e-891c-58f8eea9ed78
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: f54ff738199d433308a8eaba6a643861c57b4abb
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 353bc3499f93eca72dd325c2114cd364145986c6
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540688"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722905"
 ---
 # <a name="resize-a-windows-vm"></a>Windows VM のサイズ変更
 
@@ -30,7 +30,7 @@ ms.locfileid: "58540688"
 
 VM が Premium Storage を使用している場合、Premium Storage のサポートを受けるには、**s** バージョンのサイズを選択する必要があります。 たとえば、Standard_E4_v3 ではなく Standard_E4**s**_v3 を選択します。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>可用性セット内にない Windows VM のサイズ変更
 

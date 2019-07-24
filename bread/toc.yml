@@ -336,7 +336,19 @@
         - name: Project Acoustics
           tocHref: /azure/cognitive-services/acoustics/
           topicHref: /azure/cognitive-services/acoustics/what-is-acoustics
-    - name: コネクタ
+        - name: Form Recognizer
+          tocHref: /azure/cognitive-services/form-recognizer/
+          topicHref: /azure/cognitive-services/form-recognizer/
+        - name: Ink Recognizer
+          tocHref: /azure/cognitive-services/Ink-Recognizer/
+          topicHref: /azure/cognitive-services/Ink-Recognizer/
+        - name: Personalizer
+          tocHref: /azure/cognitive-services/personalizer/
+          topicHref: /azure/cognitive-services/personalizer/
+        - name: Immersive Reader
+          tocHref: /azure/cognitive-services/immersive-reader/
+          topicHref: /azure/cognitive-services/immersive-reader/
+    - name: Connectors
       tocHref: /azure/connectors/
       topicHref: /azure/connectors/
     - name: Container Instances
@@ -358,6 +370,9 @@
         - name: Kubernetes
           tocHref: /azure/container-service/kubernetes/
           topicHref: /azure/container-service/kubernetes/
+    - name: Bastion
+      tocHref: /azure/bastion/
+      topicHref: /azure/bastion/
     - name: Cosmos DB
       tocHref: /azure/cosmos-db/
       topicHref: /azure/cosmos-db/
@@ -466,6 +481,9 @@
     - name: Key Vault
       tocHref: /azure/key-vault/
       topicHref: /azure/key-vault/
+    - name: Azure Kinect DK
+      tocHref: /azure/kinect-dk/
+      topicHref: /azure/kinect-dk/
     - name: Lab Services
       tocHref: /azure/lab-services/
       topicHref: /azure/lab-services/
@@ -581,6 +599,10 @@
     - name: セキュリティ
       tocHref: /azure/security/
       topicHref: /azure/security/
+      items:
+        - name: 開発
+          tocHref: /azure/security/develop/
+          topicHref: /azure/security/develop/
     - name: Security Center
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/
@@ -653,6 +675,9 @@
           tocHref: /azure/virtual-machines/workloads/
           topicHref: /azure/virtual-machines/workloads/workloads
           items:
+            - name: ハイ パフォーマンス コンピューティング
+              tocHref: /azure/virtual-machines/workloads/hpc/
+              topicHref: /azure/virtual-machines/linux/high-performance-computing?toc=%2fazure%2fvirtual-machines%2fworkloads%2fhpc%2ftoc.json
             - name: SAP
               tocHref: /azure/virtual-machines/workloads/sap/
               topicHref: /azure/virtual-machines/workloads/sap/get-started

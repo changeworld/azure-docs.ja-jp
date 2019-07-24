@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
-ms.openlocfilehash: 1e3ec677f2c3ce2a7f942c47269fe1f70885ac02
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 01349dbc5fe98fd69ce7219ef6f2029d7bb815d0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466455"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067912"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Azure IoT リファレンス アーキテクチャの概要
 
 この記事では、[Azure IoT のリファレンス アーキテクチャ](https://aka.ms/iotrefarchitecture)を紹介し、その推奨事項に従っている [Azure IoT ソリューション アクセラレータ](about-iot-accelerators.md)の例を示します。
 
-オープン ソースの[リモート監視](iot-accelerators-remote-monitoring-sample-walkthrough.md)ソリューション アクセラレータと[接続済みファクトリ](iot-accelerators-connected-factory-sample-walkthrough.md) ソリューション アクセラレータは、リファレンス アーキテクチャの推奨事項の多くに従っています。 ソリューション アクセラレータは、独自の IoT ソリューションの開始点として、または学習ツールとして利用できます。
+オープン ソースの[リモート監視](iot-accelerators-remote-monitoring-sample-walkthrough.md)ソリューション アクセラレータと[接続済みファクトリ](iot-accelerators-connected-factory-features.md) ソリューション アクセラレータは、リファレンス アーキテクチャの推奨事項の多くに従っています。 ソリューション アクセラレータは、独自の IoT ソリューションの開始点として、または学習ツールとして利用できます。
 
 ## <a name="overview"></a>概要
 

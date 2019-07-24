@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 635e72a8e8a70b8885afea282511fbfaf24d2f94
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 9a7c186f7c5fb46078eaa5729e79fdcc256ecc6d
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957341"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460211"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -52,7 +52,7 @@ FunctionsProject
 
 プロジェクトのルートには、関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.js) とバインド構成ファイル (function.json) が含まれるフォルダーがあります。 `function.json` の親ディレクトリの名前は常に関数の名前です。
 
-Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
+Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="exporting-a-function"></a>関数のエクスポート
 
@@ -110,7 +110,7 @@ JavaScript では、[バインド](functions-triggers-bindings.md)が構成さ�
 
 ### <a name="inputs"></a>入力
 Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 関数は、トリガーと他の入力バインド (`direction === "in"` のバインド) を 3 つの方法で読み取ることができます。
- - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
+ - ** _[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -141,7 +141,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
 
 次の方法のいずれかで (これらの方法を組み合わせることはできません)、出力バインドにデータを割り当てることができます。
 
-- **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
+- ** _[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
   ```
 
   同期関数を使用している場合、[`context.done`](#contextdone-method) を使用してこのオブジェクトを返すことができます (例を参照)。
-- **_[出力が 1 つの場合に推奨]_ 直接値を返し $return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
+- ** _[出力が 1 つの場合に推奨]_ 直接値を返し $return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
 - **`context.bindings` に値を割り当てます。** context.bindings に直接値を割り当てることができます。
 
   ```javascript
@@ -397,9 +397,9 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[応答のみ]_ `context.res.send(body?: any)` の呼び出し。** HTTP の応答は、入力 `body` を応答本文として使用して作成されます。 `context.done()` は暗黙的に呼び出されます。
++ ** _[応答のみ]_ `context.res.send(body?: any)` の呼び出し。** HTTP の応答は、入力 `body` を応答本文として使用して作成されます。 `context.done()` は暗黙的に呼び出されます。
 
-+ **_[応答のみ]_ `context.done()` の呼び出し。** これは、`context.done()` メソッドに渡される応答を返す特殊な種類の HTTP バインディングです。 次の HTTP 出力バインディングで、`$return` 出力パラメーターを定義します。
++ ** _[応答のみ]_ `context.done()` の呼び出し。** これは、`context.done()` メソッドに渡される応答を返す特殊な種類の HTTP バインディングです。 次の HTTP 出力バインディングで、`$return` 出力パラメーターを定義します。
 
     ```json
     {
@@ -421,7 +421,7 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
 | Functions バージョン | Node.js バージョン | 
 |---|---|
 | 1.x | 6.11.2 (ランタイムによりロック) |
-| 2.x  | "_アクティブ LTS_" と偶数の "_現在の_" Node.js のバージョン (8.11.1 と 10.14.1 を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用してバージョンを設定します。|
+| 2.x  | _アクティブ LTS_ および_メンテナンス LTS_ Node.js バージョン (8.11.1 および 10.14.1 を推奨)。 WEBSITE_NODE_DEFAULT_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用してバージョンを設定します。|
 
 ランタイムが使用している現在のバージョンを確認するには、上記のアプリ設定を調べるか、または任意の関数から `process.version` を出力します。
 
@@ -455,7 +455,7 @@ module.exports = function(context) {
 ### <a name="using-kudu"></a>Kudu を使用する
 1. `https://<function_app_name>.scm.azurewebsites.net` にアクセスします。
 
-2. **[デバッグ コンソール]** > **[CMD]** をクリックします。
+2. **[デバッグ コンソール]**  >  **[CMD]** をクリックします。
 
 3. `D:\home\site\wwwroot` に移動し、ページの上半分にある **wwwroot** フォルダーに package.json ファイルをドラッグします。  
     関数アプリにファイルをアップロードする方法は、他にもあります。 詳細については、「[関数アプリ ファイルを更新する方法](functions-reference.md#fileupdate)」を参照してください。 
@@ -465,23 +465,16 @@ module.exports = function(context) {
 
 ## <a name="environment-variables"></a>環境変数
 
-Functions では、サービス接続文字列などの[アプリ設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 次の `GetEnvironmentVariable` 関数で示すように、これらの設定には `process.env` を使用してアクセスできます。
+Functions では、サービス接続文字列などの[アプリ設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 2 つ目と 3 つ目の `context.log()` の呼び出しで示されているように、`process.env`を使用してこれらの設定にアクセスできます。ここでは `AzureWebJobsStorage` と `WEBSITE_SITE_NAME` の環境変数をログに記録します。
 
 ```javascript
-module.exports = function (context, myTimer) {
+module.exports = async function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
     context.log('Node.js timer trigger function ran!', timeStamp);
-    context.log(GetEnvironmentVariable("AzureWebJobsStorage"));
-    context.log(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
-
-    context.done();
+    context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
+    context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
-
-function GetEnvironmentVariable(name)
-{
-    return name + ": " + process.env[name];
-}
 ```
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
@@ -583,7 +576,7 @@ TypeScript プロジェクトからローカルで開発およびデプロイす
 
 Visual Studio Code 用の [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) の拡張機能を使用すると、TypeScript を使用して関数を開発することができます。 Core Tools は Azure Functions の拡張機能の要件です。
 
-Visual Studio Code で TypeScript 関数アプリを作成するには、関数アプリを作成し、言語の選択を求められる際に、`TypeScript` を選択するだけです。
+Visual Studio Code で TypeScript 関数アプリを作成するには、関数アプリを作成するときに言語として `TypeScript` を選択します。
 
 **F5** を押してアプリをローカルで実行すると、ホスト (func.exe) が初期化される前にトランスパイルが実行されます。 
 
@@ -591,7 +584,7 @@ Visual Studio Code で TypeScript 関数アプリを作成するには、関数�
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Core Tools を使用して TypeScript 関数アプリ プロジェクトを作成するには、関数アプリを作成するときに typescript 言語オプションを指定する必要があります。 これは、次の方法のいずれかで実行できます。
+Core Tools を使用して TypeScript 関数アプリ プロジェクトを作成するには、関数アプリを作成するときに TypeScript 言語オプションを指定する必要があります。 これは、次の方法のいずれかで実行できます。
 
 - `func init` コマンドを実行し、言語スタックとして `node` を選択してから `typescript` を選択してください。
 
@@ -621,6 +614,55 @@ App Service プランを使用する関数アプリを作成するときは、�
 ### <a name="connection-limits"></a>接続の制限
 
 Azure Functions アプリケーションでサービス固有のクライアントを使用する場合は、関数呼び出しごとに新しいクライアントを作成しないでください。 代わりに、グローバル スコープに 1 つの静的クライアントを作成してください。 詳細については、[Azure Functions での接続の管理](manage-connections.md)に関するページを参照してください。
+
+### <a name="use-async-and-await"></a>`async` と `await` を使用する
+
+Azure Functions を JavaScript で記述する場合、`async` と `await` のキーワードを使用してコードを記述することをお勧めします。 コールバックや Promise の `.then` および `.catch` の代わりに `async` と `await` を使用してコードを記述することにより、2 つの一般的な問題を回避できます。
+ - [Node.js プロセスをクラッシュさせる](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly)、キャッチされない例外のスロー。他の関数の実行に影響する可能性があります。
+ - 適切に待機しない非同期呼び出しによって発生する、context.log からのログの欠落などの予期しない動作。
+
+以下の例では、その 2 番目のパラメーターとしてエラーファースト コールバック関数を使用して非同期メソッド `fs.readFile` が呼び出されます。 このコードは上記の両方の問題の原因となります。 正しいスコープでは明示的にキャッチされない例外によって、プロセス全体がクラッシュします (問題 1)。 コールバック関数のスコープ外で `context.done()` を呼び出すことは、ファイルが読み取られる前に関数呼び出しが終了する可能性があることを意味します (問題 2)。 この例では、`context.done()` の呼び出しが早すぎるため、結果として `Data from file:` で始まるログ エントリが欠落します。
+
+```javascript
+// NOT RECOMMENDED PATTERN
+const fs = require('fs');
+
+module.exports = function (context) {
+    fs.readFile('./hello.txt', (err, data) => {
+        if (err) {
+            context.log.error('ERROR', err);
+            // BUG #1: This will result in an uncaught exception that crashes the entire process
+            throw err;
+        }
+        context.log(`Data from file: ${data}`);
+        // context.done() should be called here
+    });
+    // BUG #2: Data is not guaranteed to be read before the Azure Function's invocation ends
+    context.done();
+}
+```
+
+`async` および `await` のキーワードを使用すると、これらの両方のエラーを回避しやすくなります。 Node.js のユーティリティ関数 [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) を使用して、エラーファースト コールバック スタイルの関数を、待機可能な関数に変更してください。
+
+次の例では、関数の実行中にスローされたハンドルされない例外により、例外を発生させた個々の呼び出しのみが失敗します。 `await` キーワードは、`readFileAsync` に続くステップが、`readFile` の完了後にのみ実行されることを意味しています。 `async` と `await` を使用することで、`context.done()` コールバックを呼び出す必要もありません。
+
+```javascript
+// Recommended pattern
+const fs = require('fs');
+const util = require('util');
+const readFileAsync = util.promisify(fs.readFile);
+
+module.exports = async function (context) {
+    try {
+        const data = await readFileAsync('./hello.txt');
+    } catch (err) {
+        context.log.error('ERROR', err);
+        // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation
+        throw err;
+    }
+    context.log(`Data from file: ${data}`);
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 

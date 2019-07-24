@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102943"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61459081"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "58102943"
 
 1. 新しい Azure Database for MySQL サーバーを作成する
 
-   新しい MySQL サーバーを作成します (例:  "replica.mysql.database.azure.com")。 サーバーの作成については、「[Azure portal を使用した Azure Database for MySQL サーバーの作成](quickstart-create-mysql-server-database-using-azure-portal.md)」を参照してください。 このサーバーは、データイン レプリケーションにおける "レプリカ" サーバーになります。
+   新しい MySQL サーバーを作成します (例: "replica.mysql.database.azure.com")。 サーバーの作成については、「[Azure portal を使用した Azure Database for MySQL サーバーの作成](quickstart-create-mysql-server-database-using-azure-portal.md)」を参照してください。 このサーバーは、データイン レプリケーションにおける "レプリカ" サーバーになります。
 
    > [!IMPORTANT]
    > Azure Database for MySQL サーバーは、汎用とメモリ最適化のどちらかの価格レベルで作成する必要があります。
@@ -84,7 +84,7 @@ ms.locfileid: "58102943"
 
    **MySQL Workbench**
 
-   レプリケーション ロールを MySQL Workbench で作成するには、**[Management]\(管理\)** パネルから **[Users and Privileges]\(ユーザーと権限\)** パネルを開きます。 次に、**[Add Account]\(アカウントの追加\)** をクリックします。 
+   レプリケーション ロールを MySQL Workbench で作成するには、 **[Management]\(管理\)** パネルから **[Users and Privileges]\(ユーザーと権限\)** パネルを開きます。 次に、 **[Add Account]\(アカウントの追加\)** をクリックします。 
  
    ![[Users and Privileges]\(ユーザーと権限\)](./media/howto-data-in-replication/users_privileges.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "58102943"
 
    ![同期ユーザー](./media/howto-data-in-replication/syncuser.png)
  
-   **[Administrative Roles]\(管理者ロール\)** パネルをクリックし、**[Global Privileges]\(グローバル権限\)** の一覧から **[Replication Slave]\(レプリケーション スレーブ\)** を選択します。 次に、**[Apply]\(適用\)** をクリックして、レプリケーション ロールを作成します。
+   **[Administrative Roles]\(管理者ロール\)** パネルをクリックし、 **[Global Privileges]\(グローバル権限\)** の一覧から **[Replication Slave]\(レプリケーション スレーブ\)** を選択します。 次に、 **[Apply]\(適用\)** をクリックして、レプリケーション ロールを作成します。
 
    ![[Replication Slave]\(レプリケーション スレーブ\)](./media/howto-data-in-replication/replicationslave.png)
 
@@ -157,7 +157,7 @@ ms.locfileid: "58102943"
        - このパラメーターは変数で渡すことをお勧めします。 詳細については、以降の例を参照してください。
 
 > [!NOTE]
-> マスター サーバーが Azure VM にホストされる場合は、[Azure サービスへのアクセスを許可] を [有効] に設定して、マスター サーバーとレプリカ サーバーが相互に通信できるようにします。 この設定は、**[接続のセキュリティ]** オプションから変更できます。 詳細については、[ポータルを使用したファイアウォール規則の管理](howto-manage-firewall-using-portal.md)に関するページを参照してください。
+> マスター サーバーが Azure VM にホストされる場合は、[Azure サービスへのアクセスを許可] を [有効] に設定して、マスター サーバーとレプリカ サーバーが相互に通信できるようにします。 この設定は、 **[接続のセキュリティ]** オプションから変更できます。 詳細については、[ポータルを使用したファイアウォール規則の管理](howto-manage-firewall-using-portal.md)に関するページを参照してください。
 
    **例**
 

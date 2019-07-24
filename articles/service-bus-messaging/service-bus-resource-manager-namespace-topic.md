@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 8155a9c8dd8e16ae9853f78ea949954fd15d30e1
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a63ad846f569f434e1cae33746f61e3a033de66c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847511"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66755025"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
 
@@ -99,7 +99,7 @@ Service Bus 名前空間に作成するサブスクリプションの名前。
 **Messaging**タイプの標準的な Service Bus 名前空間を作成し、トピックとサブスクリプションを追加します。
 
 ```json
-"resources ": [{
+"resources": [{
         "apiVersion": "[variables('sbVersion')]",
         "name": "[parameters('serviceBusNamespaceName')]",
         "type": "Microsoft.ServiceBus/Namespaces",

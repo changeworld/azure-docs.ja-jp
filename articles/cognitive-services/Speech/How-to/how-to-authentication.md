@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 11d6256fb63452b849a80abab181876d14b3b6a6
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674839"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60515049"
 ---
 # <a name="authenticate-to-the-speech-api"></a>Speech API を認証する
 
@@ -29,7 +29,7 @@ Bing Speech の認証には、次を使用できます。
 
 ## <a name="use-a-subscription-key"></a>サブスクリプション キーを使用する
 
-Speech Service を使用するには、まず Cognitive Services (旧 Project Oxford) の一部である Speech API にサブスクライブする必要があります。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、**[Get API Key]**(API キーの取得) を選択してキーを取得します。 プライマリ キーおよびセカンダリ キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
+Speech Service を使用するには、まず Cognitive Services (旧 Project Oxford) の一部である Speech API にサブスクライブする必要があります。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、 **[Get API Key]** (API キーの取得) を選択してキーを取得します。 プライマリ キーおよびセカンダリ キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
 
 長期間使用する場合や、クォータが増加した場合は、[Azure アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
 

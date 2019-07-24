@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C の Identity Experience Framework スキーマの整数要求変換の例 | Microsoft Docs
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの整数要求変換の例。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 20c109f188acfe37292aa31dfe057ced8b73199b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 976cf55dd8f1c11d1ea605b25086fa644afec980
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66510804"
 ---
 # <a name="integer-claims-transformations"></a>整数要求変換
 
@@ -29,7 +29,7 @@ long データ型を string データ型に変換します。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | long | 文字列に変換する ClaimType。  |
+| InputClaim | inputClaim | long | 文字列に変換する ClaimType。 |
 | OutputClaim | outputClaim | string | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
 
 この例では、値の型が long の `numericUserId` 要求は、値の型が string の `UserId` 要求に変換されます。

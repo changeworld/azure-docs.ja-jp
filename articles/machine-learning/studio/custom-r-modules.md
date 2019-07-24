@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: 6d330340ff09ddb6c2bec04259f964f2298dbffc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65025058"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用にカスタム R モジュールを定義する
@@ -97,7 +97,7 @@ XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値
 ### <a name="package-and-register-the-module"></a>モジュールのパッケージ化と登録
 この 2 つのファイルを *CustomAddRows.R* および *CustomAddRows.xml* として保存し、*CustomAddRows.zip* ファイルに zip 圧縮します。
 
-そのファイルを Machine Learning ワークスペースに登録するには、Machine Learning Studio でワークスペースに移動します。下部にある **[+新規]** ボタンをクリックし、**[モジュール] -> [zip パッケージから]** を選択して新しい **Custom Add Rows** モジュールをアップロードします。
+そのファイルを Machine Learning ワークスペースに登録するには、Machine Learning Studio でワークスペースに移動します。下部にある **[+新規]** ボタンをクリックし、 **[モジュール] -> [zip パッケージから]** を選択して新しい **Custom Add Rows** モジュールをアップロードします。
 
 ![Zip のアップロード](./media/custom-r-modules/upload-from-zip-package.png)
 
@@ -171,7 +171,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 * **Input** 要素の **IsOptional** 属性の値は省略可能です (指定されていない場合、既定で *false* に設定されます)。ただし、この値を指定する場合は、*true* または *false* を指定する必要があります。
 
 ### <a name="output-elements"></a>Output 要素
-**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです  (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
+**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -286,7 +286,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * Numeric
     * Boolean
     * Categorical
-    * String
+    * string
     * Label
     * 機能
     * Score

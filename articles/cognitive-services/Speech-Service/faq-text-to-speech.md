@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: d93de4ff3f6dd00ac049ea9d83aebb7aad07137e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a5ca7d8a6b09dc277664fdc7db2433466e665d56
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883289"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606672"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>テキスト読み上げについてよく寄せられる質問
 
@@ -33,7 +33,7 @@ ms.locfileid: "55883289"
 
 **Q:カスタム音声モデルを使用する場合、API は標準音声と同じですか。**
 
-**A**: カスタム音声モデルを作成し、デプロイした場合、使用しているモデルに固有のエンドポイントを得られます。 その音声を使用してアプリで話すには、HTTP 要求でそのエンドポイントを指定する必要があります。 カスタム エンドポイントにも、テキスト読み上げサービスの REST API で使用可能な同じ機能が用意されています。 「[カスタム エンドポイントを作成して使用する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint)」方法を参照してください。
+**A**: カスタム音声モデルを作成し、デプロイした場合、使用しているモデルに固有のエンドポイントを得られます。 その音声を使用してアプリで話すには、HTTP 要求でそのエンドポイントを指定する必要があります。 カスタム エンドポイントにも、テキスト読み上げサービスの REST API で使用可能な同じ機能が用意されています。 「[カスタム エンドポイントを作成して使用する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint)」方法を参照してください。
 
 **Q:カスタム音声モデルの作成には、自分でトレーニング データを準備する必要がありますか。**
 
@@ -41,7 +41,7 @@ ms.locfileid: "55883289"
 
 カスタマイズされた音声モデルを作成するには、音声データのコレクションが必要です。 このコレクションは、一連の音声録音のオーディオ ファイルと、文字起こしされた各オーディオ ファイルのテキスト ファイルで構成されます。 デジタル音声の結果は、トレーニング データの品質に大きく依存します。 良質のテキスト読み上げ音声を生成するには、高品質のスタンド マイクを使用して静かな部屋で録音を行うことが重要です。 一定の音量、話す速さ、ピッチ、さらには話の表現方法における一貫性までもが、優れたデジタル音声の構築に不可欠です。 音声は、録音スタジオで録音することを強くお勧めします。
 
-現時点では、オンライン録音のサポートは提供しておらず、推奨している録音スタジオもありません。 形式に関する要件については、[録音および文字起こしを準備する方法](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts)を参照してください。
+現時点では、オンライン録音のサポートは提供しておらず、推奨している録音スタジオもありません。 形式に関する要件については、[録音および文字起こしを準備する方法](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice)を参照してください。
 
 **Q:カスタム音声トレーニングのために音声データを録音するには、どのようなスクリプトを使用すればよいですか。**
 
@@ -59,7 +59,7 @@ ms.locfileid: "55883289"
 
 **Q:ユーザーの要求は調整されますか。**
 
-**A**: REST API では、要求を 5 秒で 25 に制限しています。 詳細は、[テキスト読み上げ](text-to-speech.md)に関するページを参照してください。 
+**A**: REST API では、要求を 5 秒で 25 に制限しています。 詳細は、[テキスト読み上げ](text-to-speech.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076192"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60515320"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Bing Speech の WebSocket プロトコル
 
@@ -69,7 +69,7 @@ Speech Service では、すべてのクライアントに、接続を識別す�
 
 有効な JWT アクセス トークンを取得するために使用される API キーのサブスクライブ方法と取得方法については、[Cognitive Services のサブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページをご覧ください。
 
-API キーは、トークン サービスに渡されます。 例: 
+API キーは、トークン サービスに渡されます。 例:
 
 ``` HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
@@ -82,7 +82,7 @@ Content-Length: 0
 |----|----|----|
 | Ocp-Apim-Subscription-Key | ASCII | Your subscription key (サブスクリプション キー) |
 
-トークン サービスは、JWT アクセス トークンを `text/plain` として返します。 その後 JWT は、文字列 `Bearer` のプレフィックスが付いた *Authorization* ヘッダーで、`Base64 access_token` としてハンドシェイクに渡されます。 例: 
+トークン サービスは、JWT アクセス トークンを `text/plain` として返します。 その後 JWT は、文字列 `Bearer` のプレフィックスが付いた *Authorization* ヘッダーで、`Base64 access_token` としてハンドシェイクに渡されます。 例:
 
 `Authorization: Bearer [Base64 access_token]`
 
@@ -175,7 +175,7 @@ Speech Service では、最善の音声認識機能を提供するため、お�
 | フィールド | 説明 |
 |----|----|
 | WebSocket message encoding | Text |
-| 本文 | ペイロード (JSON 構造) |
+| Body | ペイロード (JSON 構造) |
 
 #### <a name="required-message-headers"></a>必須のメッセージ ヘッダー
 
@@ -244,7 +244,7 @@ Speech Service は、一意の要求識別子を含んだ最初の `audio` メ�
 | フィールド | 説明 |
 |-------------|----------------|
 | WebSocket message encoding | Binary |
-| 本文 | 音声チャンクのバイナリ データ。 最大サイズは、8,192 バイトです。 |
+| Body | 音声チャンクのバイナリ データ。 最大サイズは、8,192 バイトです。 |
 
 #### <a name="required-message-headers"></a>必須のメッセージ ヘッダー
 
@@ -311,7 +311,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 | Path | `telemetry` |
 | X-Timestamp | クライアントの UTC クロックのタイムスタンプ (ISO 8601 形式) |
 | Content-Type | `application/json` |
-| 本文 | ターンに関するクライアント情報を含んだ JSON 構造体 |
+| Body | ターンに関するクライアント情報を含んだ JSON 構造体 |
 
 `telemetry` メッセージの本文のスキーマについては、「[テレメトリ スキーマ](#telemetry-schema)」セクションで説明されていす。
 
@@ -332,7 +332,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 | WebSocket message encoding | Text |
 | Path | `speech.startDetected` |
 | Content-Type | application/json; charset=utf-8 |
-| 本文 | 発話の開始が検出された状況に関する情報を含んだ JSON 構造体。 この構造体の *Offset* フィールドは、音声ストリーム内で発話が検知された箇所のオフセット (100 ナノ秒単位) を示します。このオフセットは、音声ストリームの先頭からの相対位置で示されます。 |
+| Body | 発話の開始が検出された状況に関する情報を含んだ JSON 構造体。 この構造体の *Offset* フィールドは、音声ストリーム内で発話が検知された箇所のオフセット (100 ナノ秒単位) を示します。このオフセットは、音声ストリームの先頭からの相対位置で示されます。 |
 
 #### <a name="sample-message"></a>サンプル メッセージ
 
@@ -358,7 +358,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | Path | `speech.hypothesis` |
 | X-RequestId | "ダッシュのない" 形式の UUID |
 | Content-Type | application/json |
-| 本文 | 音声認識仮説の JSON 構造体 |
+| Body | 音声認識仮説の JSON 構造体 |
 
 #### <a name="sample-message"></a>サンプル メッセージ
 
@@ -389,7 +389,7 @@ Speech Service では、確定された認識結果を生成するための十�
 | WebSocket message encoding | Text |
 | Path | `speech.phrase` |
 | Content-Type | application/json |
-| 本文 | 音声フレーズの JSON 構造体 |
+| Body | 音声フレーズの JSON 構造体 |
 
 音声フレーズの JSON スキーマには、次のフィールドが含まれます: `RecognitionStatus`、 `DisplayText`、 `Offset`、および`Duration`。 これらのフィールドについて詳しくは、「[トランスクリプション応答](../concepts.md#transcription-responses)」をご覧ください。
 
@@ -416,7 +416,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | ------------- | ---------------- |
 | WebSocket message encoding | Text |
 | Path | `speech.endDetected` |
-| 本文 | 発話の終了が検知された箇所のオフセットを含んだ JSON 構造体。 オフセットは、認識に使用された音声の先頭を基点に、100 ナノ秒単位で表されます。 |
+| Body | 発話の終了が検知された箇所のオフセットを含んだ JSON 構造体。 オフセットは、認識に使用された音声の先頭を基点に、100 ナノ秒単位で表されます。 |
 | Content-Type | application/json; charset=utf-8 |
 
 #### <a name="sample-message"></a>サンプル メッセージ
@@ -442,7 +442,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | WebSocket message encoding | Text |
 | Path | `turn.start` |
 | Content-Type | application/json; charset=utf-8 |
-| 本文 | JSON 構造体 |
+| Body | JSON 構造体 |
 
 #### <a name="sample-message"></a>サンプル メッセージ
 
@@ -468,7 +468,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | ------------- | ---------------- |
 | WebSocket message encoding | Text |
 | Path | `turn.end` |
-| 本文 | なし |
+| Body | なし |
 
 #### <a name="sample-message"></a>サンプル メッセージ
 

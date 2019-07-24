@@ -4,16 +4,16 @@ description: Azure IoT Central アプリケーションから Azure Event Hubs �
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 03/20/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: c6f10352646350152c5aac795885231697e81fe7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65463972"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850203"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Azure IoT Central でデータをエクスポートする
 
@@ -59,24 +59,24 @@ ms.locfileid: "65463972"
 
 1. ご使用の IoT Central アプリケーションにサインインします。
 
-2. 左側のメニューで、**[継続的データ エクスポート]** を選択します。
+2. 左側のメニューで、 **[継続的データ エクスポート]** を選択します。
 
     > [!Note]
     > 左側のメニューに [継続的データ エクスポート] が表示されない場合は、そのアプリの管理者ではありません。 データ エクスポートの設定について、管理者に問い合わせてください。
 
     ![新しい cde イベント ハブの作成](media/howto-export-data/export_menu1.png)
 
-3. 右上の **[+ 新規]** ボタンを選択します。 エクスポート先として、**[Azure Event Hubs]** または **[Azure Service Bus]** を選択します。 
+3. 右上の **[+ 新規]** ボタンを選択します。 エクスポート先として、 **[Azure Event Hubs]** または **[Azure Service Bus]** を選択します。 
 
     > [!NOTE] 
     > アプリごとのエクスポートの最大数は 5 です。 
 
     ![新しい継続的データ エクスポートの作成](media/howto-export-data/export_new1.png)
 
-4. ドロップダウン リスト ボックスで、お使いの **Event Hubs 名前空間/Service Bus 名前空間**を選択します。 リスト内の最後のオプション (**[Enter a connection string]\(接続文字列を入力する\)**) を選択することもできます。 
+4. ドロップダウン リスト ボックスで、お使いの **Event Hubs 名前空間/Service Bus 名前空間**を選択します。 リスト内の最後のオプション ( **[Enter a connection string]\(接続文字列を入力する\)** ) を選択することもできます。 
 
     > [!NOTE] 
-    > ご使用の **IoT Central アプリと同じサブスクリプション**の Storage Account/Event Hubs 名前空間/Service Bus 名前空間のみが表示されます。 このサブスクリプションとは異なる場所にエクスポートする場合は、**[Enter a connection string]\(接続文字列を入力する\)** を選択して、手順 5 に進みます。
+    > ご使用の **IoT Central アプリと同じサブスクリプション**の Storage Account/Event Hubs 名前空間/Service Bus 名前空間のみが表示されます。 このサブスクリプションとは異なる場所にエクスポートする場合は、 **[Enter a connection string]\(接続文字列を入力する\)** を選択して、手順 5 に進みます。
 
     > [!NOTE] 
     > 7 日間の試用版アプリの場合、継続的データ エクスポートを構成する唯一の方法は、接続文字列を使用することです。 7 日間の試用版アプリに関連付けられた Azure サブスクリプションがないのはこのためです。
@@ -85,7 +85,7 @@ ms.locfileid: "65463972"
 
 5. (省略可能) **[Enter a connection string]\(接続文字列を入力する\)** を選択すると、接続文字列を貼り付けるための新しいボックスが表示されます。 次の接続文字列を取得するには:
     - Event Hubs や Service Bus。Azure portal で名前空間に移動します。
-        - **[設定]** で、**[共有アクセス ポリシー]** を選択します。
+        - **[設定]** で、 **[共有アクセス ポリシー]** を選択します。
         - 既定の **RootManageSharedAccessKey** を選択するか、新しいポリシーを作成します。
         - プライマリまたはセカンダリの接続文字列をコピーします。
  
@@ -93,7 +93,7 @@ ms.locfileid: "65463972"
 
 7. **[Data to export]\(エクスポートするデータ\)** で、エクスポートするデータの種類を **[オン]** に設定して指定します。
 
-6. 継続的データ エクスポートを有効にするには、**[データのエクスポート]** が **[オン]** になっていることを確認します。 **[保存]** を選択します。
+6. 継続的データ エクスポートを有効にするには、 **[データのエクスポート]** が **[オン]** になっていることを確認します。 **[保存]** を選択します。
 
     ![連続データ エクスポートを構成する](media/howto-export-data/export_list1.png)
 

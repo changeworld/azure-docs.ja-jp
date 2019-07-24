@@ -1,21 +1,21 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/07/2019
-ms.openlocfilehash: fe1b4699a300831294c26b103d322fb83ad87d3b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 664cea26f910fa5b3354e2879a33de50eb13a7f3
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116755"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286161"
 ---
 送信要求を行うために HTTP プロキシを構成する必要がある場合は、次の 2 つの引数を使用します。
 
-| Name | データ型 | 説明 |
+| EnableAdfsAuthentication | データ型 | 説明 |
 |--|--|--|
-|HTTP_PROXY|string|使用するプロキシ。例: `http://proxy:8888`<br><proxy-url>|
+|HTTP_PROXY|string|使用するプロキシ。例: `http://proxy:8888`<br>`<proxy-url>`|
 |HTTP_PROXY_CREDS|string|プロキシで認証されるために必要な資格情報。例: ユーザー名:パスワード。|
 |`<proxy-user>`|string|プロキシのユーザー。|
 |`proxy-password`|string|プロキシの `<proxy-user>` に関連付けられているパスワード。|

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2b8d68cc348ce8e157c7d58424eaebb06940335
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436670"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60359043"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication によるユーザー データの収集
 
@@ -135,7 +135,7 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 
 MFA Server バージョン 8.0 以降では、管理者は、次の手順に従ってユーザーのすべてのデータをエクスポートできます。
 
-- MFA Server にログインし、**[ユーザー]** タブに移動します。目的のユーザーを選択し、**[編集]** ボタンをクリックします。 (Alt + PrtScn キーを押して) 各タブのスクリーンショットを取ると、ユーザーに現在の MFA 設定を提供できます。
+- MFA Server にログインし、 **[ユーザー]** タブに移動します。目的のユーザーを選択し、 **[編集]** ボタンをクリックします。 (Alt + PrtScn キーを押して) 各タブのスクリーンショットを取ると、ユーザーに現在の MFA 設定を提供できます。
 - MFA Server のコマンド ラインから次のコマンドを実行して、JSON 形式のファイルを生成します (インストールに合わせてパスを変更してください)。`C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>`
 - 管理者は、Web サービス SDK の GetUserGdpr 操作をオプションとして使用して、特定のユーザー用に収集されたすべての MFA クラウド サービス情報をエクスポートしたり、より大きなレポート ソリューションに組み込んだりすることもできます。
 - `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` とすべてのバックアップ内で "\<username> " を検索して (検索に引用符を含めます)、追加または変更されたユーザー レコードのすべてのインスタンスを検索します。

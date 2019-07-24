@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/12/2018
 ms.openlocfilehash: 00a3904bd78f3bb76266c726af28582770b23921
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316491"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60724096"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C と C++ を使用して SQL Database に接続する
 
@@ -45,7 +45,7 @@ Azure SQL DB への接続も変わりはなく、現在、データベースに�
 ## <a id="ConnectionString"></a>手順 2:接続文字列を取得する
 Azure SQL データベースがプロビジョニングされたら、次の手順に従って接続情報を指定し、ファイアウォール アクセスのクライアント IP アドレスを追加する必要があります。
 
-[Azure Portal](https://portal.azure.com/)で、**[データベース接続文字列の表示]** を使用し、データベースの概要セクションの一部として表示されている Azure SQL Database ODBC 接続文字列を取得します。
+[Azure Portal](https://portal.azure.com/)で、 **[データベース接続文字列の表示]** を使用し、データベースの概要セクションの一部として表示されている Azure SQL データベース ODBC 接続文字列を取得します。
 
 ![ODBCConnectionString](./media/sql-database-develop-cplusplus-simple/azureportal.png)
 
@@ -112,7 +112,7 @@ Windows ODBC のサンプルと同様に、SQLDriverConnect 呼び出しを、�
 
 ![入力ライブラリとして ODBC を追加する](./media/sql-database-develop-cplusplus-simple/lib.png)
 
-アプリケーションを起動するには、**[デバッグ]** メニューから Linux コンソールを表示します。
+アプリケーションを起動するには、 **[デバッグ]** メニューから Linux コンソールを表示します。
 
 ![Linux コンソール](./media/sql-database-develop-cplusplus-simple/linuxconsole.png)
 
@@ -134,5 +134,5 @@ GitHub では、この記事のすべてのサンプルを含む GetStarted ソ�
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-*  [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)
+* [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)
 

@@ -16,11 +16,11 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 72c2e23b0d60ca242549ebf2c058ea8f44f2b1c8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60520156"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル:Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -68,11 +68,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 Azure AD は、割り当てられたユーザーのアカウントの詳細を Workplace by Facebook と自動的に同期する機能をサポートしています。 この自動同期機能によって、ユーザーが初めてサインインする前に、Workplace by Facebook がユーザーのアクセスを承認するために必要なデータを取得できます。 また、Azure AD のアクセス権が取り消された場合、Workplace by Facebook からユーザーのプロビジョニングを解除できます。
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]** > **[エンタープライズ アプリ]** > **[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリ]**  >  **[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために Workplace by Facebook を既に構成している場合は、検索フィールドで Workplace by Facebook のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Workplace by Facebook** を検索します。 検索結果から Workplace by Facebook を選択してアプリケーションの一覧に追加します。
+2. シングル サインオンのために Workplace by Facebook を既に構成している場合は、検索フィールドで Workplace by Facebook のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **Workplace by Facebook** を検索します。 検索結果から Workplace by Facebook を選択してアプリケーションの一覧に追加します。
 
-3. Workplace by Facebook のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+3. Workplace by Facebook のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
@@ -80,7 +80,7 @@ Azure AD は、割り当てられたユーザーのアカウントの詳細を W
 
 5. **[管理者資格情報]** セクションの下で、Workplace by Facebook 管理者からアクセス トークンを入力し、テナント URL の値を `https://www.facebook.com/scim/v1/` に設定します。 Workplace のアクセス トークンを作成する方法については、こちらの[手順](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps)を参照してください。 
 
-6. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Workplace by Facebook アプリに接続できることを確認します。 接続が失敗した場合、使用中の Workplace by Facebook アカウントに Team Admin アクセス許可があることを確認してください。
+6. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Workplace by Facebook アプリに接続できることを確認します。 接続が失敗した場合、使用中の Workplace by Facebook アカウントに Team Admin アクセス許可があることを確認してください。
 
 7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
@@ -90,7 +90,7 @@ Azure AD は、割り当てられたユーザーのアカウントの詳細を W
 
 10. **[属性マッピング]** セクションで、Azure AD から Workplace by Facebook に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Workplace by Facebook のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-11. Workplace by Facebook に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+11. Workplace by Facebook に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
 12. **[保存]** をクリックします。
 

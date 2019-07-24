@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 1d7bb72dab622cd0b18d1da1aa34a651e1443997
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095536"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65964248"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct を構成する方法
 
@@ -226,7 +226,9 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 ExpressRoute Direct には、前述したシナリオをサポートするために利用できるだけの追加の回線帯域幅があります。 次のとおりです。40 Gbps と 100 Gbps です。
 
-Standard 回線または Premium 回線を作成できます。 Standard 回線は料金に含まれていますが、Premium 回線には選択した帯域幅に基づいた費用がかかります。 回線は従量制のみで作成でき、無制限は ExpressRoute Direct ではサポートされません。
+**SkuTier** には Local、Standard、または Premium を使用できます。
+
+ExpressRoute Direct では無制限がサポートされていないため、**SkuFamily** には MeteredData のみを使用できます。
 
 ExpressRoute Direct リソース上に回線を作成します。
 

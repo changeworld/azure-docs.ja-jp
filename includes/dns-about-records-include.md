@@ -1,3 +1,16 @@
+---
+author: vhorne
+ms.service: dns
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: victorh
+ms.openlocfilehash: f7fa018225d82e2db4a3c51b333aea6fcb9a1514
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181805"
+---
 ### <a name="record-names"></a>レコード名
 
 Azure DNS では、相対名を使用してレコードを指定します。 "*完全修飾*" ドメイン名 (FQDN) にはゾーン名が含まれますが、"*相対*" 名には含まれません。 たとえば、"contoso.com" ゾーン内の相対レコード名 "www" によって、完全修飾レコード名 "www.contoso.com" が示されます。
@@ -8,7 +21,7 @@ DNS ゾーンのルート ("*頂点*") にある DNS レコードを *apex* (頂
 
 各 DNS レコードには名前と種類があります。 レコードは、含まれるデータによってさまざまな種類に分けられます。 最も一般的な種類は "A" レコードで、名前が IPv4 アドレスにマップされます。 また、"MX" レコードもよく使用される種類で、名前がメール サーバーにマップされます。
 
-Azure DNS では、一般的な DNS レコードの種類である A、AAAA、CAA、CNAME、MX、NS、PTR、SOA、SRV、TXT をすべてサポートしています。 [SPF レコードは TXT レコードを使用して表される](../articles/dns/dns-zones-records.md#spf-records)ことに注意してください。
+Azure DNS は、次に示す一般的なあらゆる DNS レコード タイプをサポートします:A、AAAA、CAA、CNAME、MX、NS、PTR、SOA、SRV、TXT。 [SPF レコードは TXT レコードを使用して表される](../articles/dns/dns-zones-records.md#spf-records)ことに注意してください。
 
 ### <a name="record-sets"></a>レコード セット
 

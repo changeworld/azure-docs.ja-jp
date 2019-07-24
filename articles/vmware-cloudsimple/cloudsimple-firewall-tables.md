@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 861c2e86d623c46c14366f19457d1f689386a316
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64576859"
 ---
 # <a name="firewall-tables-overview"></a>ファイアウォール テーブルの概要
@@ -53,7 +53,7 @@ ms.locfileid: "64576859"
 
 すべてのファイアウォールの表で、次の既定のルールが作成されます。
 
-|優先順位|Name|状態の追跡|Direction|トラフィックのタイプ|Protocol|ソース|発信元ポート|変換先|宛先ポート|Action|
+|優先順位|Name|状態の追跡|Direction|トラフィックのタイプ|Protocol|source|発信元ポート|変換先|宛先ポート|Action|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
 |65000|allow-all-to-internet (インターネットへの発信をすべて許可)|ステートフル|送信|パブリック IP またはインターネットのトラフィック|All|任意|任意|任意|任意|ALLOW|
 |65001|deny-all-from-internet (インターネットからの受信はすべて拒否)|ステートフル|受信|パブリック IP またはインターネットのトラフィック|All|任意|任意|任意|任意|拒否|

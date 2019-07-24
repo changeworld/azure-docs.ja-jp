@@ -3,19 +3,19 @@ title: ファイアウォールの内側で翻訳する - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: IP ファイアウォールの内側で Translator Text API を使用して翻訳します。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: ebc8b7ce4ed0242f1bc62e3b97b6594cfe810374
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: d0ebce2dd41b170a18057ca76dd3ae4cf3ce0be2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915749"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435982"
 ---
 # <a name="how-to-translate-behind-ip-firewalls-with-the-translator-text-api"></a>IP ファイアウォールの内側で Translator Text API を使用して翻訳する方法
 

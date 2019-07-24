@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64d4c48697d38cfa5942e09cb672af37c27eede2
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: dd4c6952aab1581a968fc671141792c0e16a7d46
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688688"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536962"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のレポート
 
@@ -59,7 +59,7 @@ Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、
 
 MFA のサインイン アクティビティ レポートから、次の情報にアクセスできます。
 
-**MFA の必要性:** サインインに MFA が必要かどうか。 ユーザーごとの MFA、条件付きアクセス、または他の理由で、MFA を必須にすることができます。 指定できる値は、**はい**または**いいえ**です。
+**MFA の必要性:** サインインに MFA が必要かどうか。 ユーザーごとの MFA、条件付きアクセス、または他の理由で、MFA が必要になる場合があります。 指定できる値は、**はい**または**いいえ**です。
 
 **MFA の結果:** MFA が満たされたか拒否されたかに関する詳細情報。
 
@@ -115,7 +115,7 @@ MFA のサインイン アクティビティ レポートから、次の情報�
 
 **MFA 認証の詳細:** スクラブ バージョンの電話番号 (例: +X XXXXXXXX64)。
 
-**条件付きアクセス** 以下を含む、サインイン試行に影響を与えた条件付きアクセス ポリシーに関する情報を確認します。
+**条件付きアクセス** 以下を含む、サインイン試行に影響を与えた条件付きアクセス ポリシーに関する情報を見つけます。
 
 - ポリシー名
 - 許可コントロール
@@ -134,7 +134,60 @@ MFA のサインイン アクティビティ レポートから、次の情報�
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 
+## <a name="possible-results-in-activity-reports"></a>アクティビティ レポートで考えられる結果
+
+次の表を利用すると、ダウンロードしたバージョンの多要素認証アクティビティ レポートを使用して多要素認証のトラブルシューティングを行うことができます。 これらは Azure portal には直接表示されません。
+
+| 呼び出しの結果 | 説明 | 概略的な説明 |
+| --- | --- | --- |
+| SUCCESS_WITH_PIN | PIN Entered (PIN を入力しました) | ユーザーが PIN を入力しました。  認証に成功した場合は、正しい PIN が入力されたためです。  認証が拒否された場合は、間違った PIN が入力されたか、そのユーザーが標準モードに設定されています。 |
+| SUCCESS_NO_PIN | Only # Entered (# のみを入力しました) | ユーザーが PIN モードに設定され、認証が拒否された場合、これはユーザーが自分の PIN を入力せずに # のみを入力したことを意味します。  ユーザーが標準モードに設定されていて認証が成功した場合、これはユーザーが # のみを入力したことを意味します。これは標準モードでは正しい操作です。 |
+| SUCCESS_WITH_PIN_BUT_TIMEOUT | # Not Pressed After Entry (入力後に # が押されていません) | # が入力されていないため、ユーザーは DTMF の数字を送信しませんでした。  入力が完了したことを示す # が入力されない限り、入力された他の数字は送信されません。 |
+|SUCCESS_NO_PIN_BUT_TIMEOUT | No Phone Input - Timed Out (電話番号の入力なし - タイムアウトになりました) | 電話には出ましたが、応答がありませんでした。  通常、これは通話がボイスメールで取得されたことを示します。 |
+| SUCCESS_PIN_EXPIRED | PIN Expired and Not Changed (PIN が期限切れになり、変更されていません) | ユーザーの PIN は期限切れであり、変更を求められましたが、PIN の変更が正常に完了しませんでした。 |
+| SUCCESS_USED_CACHE | Used Cache (キャッシュが使用されました) | 構成されたキャッシュのタイムフレーム内に同じユーザー名に対する前回の認証が成功したため、Multi-Factor Authentication の呼び出しなしで認証が成功しました。 |
+| SUCCESS_BYPASSED_AUTH | Bypassed Auth (認証がバイパスされました) | ユーザーに対して開始されたワンタイム バイパスを使用して認証が成功しました。  バイパスの詳細については、バイパスされたユーザー履歴レポートに関する記事を参照してください。 |
+| SUCCESS_USED_IP_BASED_CACHE | Used IP-based Cache (IP ベースのキャッシュが使用されました) | 構成されたキャッシュのタイムフレーム内に同じユーザー名、アプリケーション名、IP に対する前回の認証が成功したため、Multi-Factor Authentication の呼び出しなしで認証が成功しました。 |
+| SUCCESS_USED_APP_BASED_CACHE | Used App-based Cache (アプリベースのキャッシュが使用されました) | 構成されたキャッシュのタイムフレーム内に同じユーザー名、認証の種類、アプリケーション名に対する前回の認証が成功したため、Multi-Factor Authentication の呼び出しなしで認証が成功しました。 |
+| SUCCESS_INVALID_INPUT | Invalid Phone Input (無効な電話番号の入力) | 電話から送信された応答が無効です。  これは、FAX 機またはモデムからの可能性があります。または、ユーザーが自分の PIN の一部として「*」を入力した可能性があります。 |
+| SUCCESS_USER_BLOCKED | User is Blocked (ユーザーはブロックされています) | ユーザーの電話番号がブロックされています。  ブロックされた番号は、認証の呼び出し中にユーザーにより、または Azure portal を使用している管理者により開始されます。 <br> 注:  ブロックされた番号も不正行為アラートの副産物です。 |
+| SUCCESS_SMS_AUTHENTICATED | Text Message Authenticated (テキスト メッセージが認証されました) | 双方向テスト メッセージの場合、ユーザーはワンタイム パスコード (OTP) または OTP + PIN で正しく応答しました。 |
+| SUCCESS_SMS_SENT | Text Message Sent (テキスト メッセージが送信されました) | テキスト メッセージの場合、ワンタイム パスコード (OTP) を含むテキスト メッセージは正常に送信されました。  ユーザーは、認証を完了するためにアプリケーションに OTP または OTP + PIN を入力します。 |
+| SUCCESS_PHONE_APP_AUTHENTICATED | Mobile App Authenticated (モバイル アプリの認証済み) | ユーザーはモバイル アプリを介して認証に成功しました。 |
+| SUCCESS_OATH_CODE_PENDING | OATH Code Pending (OATH コードが保留中です) | ユーザーは OATH コードの入力を求められましたが、応答しませんでした。 |
+| SUCCESS_OATH_CODE_VERIFIED | OATH Code Verified (OATH コードの検証済み) | ユーザーはプロンプトが表示されたときに有効な OATH コードを入力しました。 |
+| SUCCESS_FALLBACK_OATH_CODE_VERIFIED | Fallback OATH Code Verified (フォールバック OATH コードの検証済み) | ユーザーは主要な多要素認証方法を使用して認証を拒否されてから、フォールバックの有効な OATH コードを提供されました。 |
+| SUCCESS_FALLBACK_SECURITY_QUESTIONS_ANSWERED | Fallback Security Questions Answered (フォールバック セキュリティの質問が回答されました) | ユーザーは主要な多要素認証方法を使用して認証を拒否されてから、フォールバックのセキュリティの質問に正しく答えました。 |
+| FAILED_PHONE_BUSY | Auth Already In Progress (認証が既に進行中です) | Multi-Factor Authentication で既にこのユーザーの認証が処理されています。  多くの場合、これは同じサインオン中に複数の認証要求を送信する RADIUS クライアントによって引き起こされます。 |
+| CONFIG_ISSUE | Phone Unreachable (電話に到達できません) | 呼び出しが試行されましたが、発信できなかったか、応答がありませんでした。  これには、ビジー信号、ファスト ビジー信号 (切断)、トライトーン (サービスが停止された番号)、呼び出し中のタイムアウトなどが含まれます。 |
+| FAILED_INVALID_PHONENUMBER | Invalid Phone Number Format (無効な電話番号形式です) | 電話番号の形式が正しくありません。  電話番号は数字である必要があります。また、国番号 +1 (米国およびカナダ) では 10 桁である必要があります。 |
+| FAILED_USER_HUNGUP_ON_US | User Hung Up the Phone (ユーザーが電話を切りました) | ユーザーは電話に出ましたが、ボタンを押さずに電話を切りました。 |
+| FAILED_INVALID_EXTENSION | Invalid Extension (無効な内線です) | 内線に無効な文字が含まれています。  数字、コンマ、*、# のみを使用できます。  @ プレフィックスも使用できます。 |
+| FAILED_FRAUD_CODE_ENTERED | Fraud Code Entered (不正なコードが入力されました) | ユーザーが通話中に不正を報告することを選択したため、認証が拒否され電話番号がブロックされました。| 
+| FAILED_SERVER_ERROR | Unable to Place Call (電話をかけられません) | Multi-Factor Authentication サービスで電話をかけることができませんでした。 |
+| FAILED_SMS_NOT_SENT | Text Message Could Not Be Sent (テキスト メッセージを送信できませんでした) | テキスト メッセージを送信できませんでした。  認証は拒否されます。 |
+| FAILED_SMS_OTP_INCORRECT | Text Message OTP Incorrect (テキスト メッセージの OTP が正しくありません) | ユーザーは、受信したテキスト メッセージから正しくないワンタイム パスコード (OTP) を入力しました。  認証は拒否されます。 |
+| FAILED_SMS_OTP_PIN_INCORRECT | Text Message OTP + PIN Incorrect (テキスト メッセージの OTP と PIN が正しくありません) | ユーザーは、正しくないワンタイム パスコード (OTP)、正しくないユーザー PIN、またはその両方を入力しました。  認証は拒否されます。 |
+| FAILED_SMS_MAX_OTP_RETRY_REACHED | Exceeded Maximum Text Message OTP Attempts (テキスト メッセージ OTP の最大試行回数を超えました) | ユーザーは、ワンタイム パスコード (OTP) の最大試行回数を超えました。 |
+| FAILED_PHONE_APP_DENIED | Mobile App Denied (モバイル アプリが拒否されました) | ユーザーがモバイル アプリで [拒否] ボタンを押して認証を拒否しました。 |
+| FAILED_PHONE_APP_INVALID_PIN | Mobile App Invalid PIN (モバイル アプリの無効な PIN) | モバイル アプリで認証するときに、ユーザーが無効な PIN を入力しました。 |
+| FAILED_PHONE_APP_PIN_NOT_CHANGED | Mobile App PIN Not Changed (モバイル アプリの PIN は変更されませんでした) | ユーザーがモバイル アプリで必要な PIN の変更を正常に完了しませんでした。 |
+| FAILED_FRAUD_REPORTED | Fraud Reported (不正が報告されました) | ユーザーがモバイル アプリで不正を報告しました。 |
+| FAILED_PHONE_APP_NO_RESPONSE | Mobile App No Response (モバイル アプリに応答がありません) | ユーザーはモバイル アプリの認証要求に応答しませんでした。 |
+| FAILED_PHONE_APP_ALL_DEVICES_BLOCKED | Mobile App All Devices Blocked (モバイル アプリですべてのデバイスがブロックされました) | このユーザーのモバイル アプリ デバイスは通知に応答しなくなり、ブロックされました。 |
+| FAILED_PHONE_APP_NOTIFICATION_FAILED | Mobile App Notification Failed (モバイル アプリの通知に失敗しました) | ユーザーのデバイス上のモバイル アプリに通知を送信しようとしたときにエラーが発生しました。 |
+| FAILED_PHONE_APP_INVALID_RESULT | Mobile App Invalid Result (モバイル アプリの無効な結果) | モバイル アプリから無効な結果が返されました。 |
+| FAILED_OATH_CODE_INCORRECT | OATH Code Incorrect (OATH コードが正しくありません) | ユーザーが正しくない OATH コードを入力しました。  認証は拒否されます。 |
+| FAILED_OATH_CODE_PIN_INCORRECT | OATH Code + PIN Incorrect (OATH コードと PIN が正しくありません) | ユーザーは、正しくない OATH コード、正しくないユーザー PIN、またはその両方を入力しました。  認証は拒否されます。 |
+| FAILED_OATH_CODE_DUPLICATE | Duplicate OATH Code (重複する OATH コード) | ユーザーは、前に使用されていた OATH コードを入力しました。  認証は拒否されます。 |
+| FAILED_OATH_CODE_OLD | OATH Code Out of Date (OATH コードが最新ではありません) | ユーザーは、前に使用されていた OATH コードの前の OATH コードを入力しました。  認証は拒否されます。 |
+| FAILED_OATH_TOKEN_TIMEOUT | OATH Code Result Timeout (OATH コード結果のタイムアウト) | ユーザーの OATH コードの入力に時間がかかりすぎており、Multi-Factor Authentication の試行は既にタイムアウトしました。 |
+| FAILED_SECURITY_QUESTIONS_TIMEOUT | Security Questions Result Timeout (セキュリティの質問結果のタイムアウト) | ユーザーのセキュリティの質問に対する回答の入力に時間がかかりすぎており、Multi-Factor Authentication の試行が既にタイムアウトしました。 |
+| FAILED_AUTH_RESULT_TIMEOUT | Auth Result Timeout (認証結果のタイムアウト) | ユーザーは、Multi-Factor Authentication の試行に時間がかかりすぎて完了できませんでした。 |
+| FAILED_AUTHENTICATION_THROTTLED | Authentication Throttled (認証が調整されています) | 多要素認証の試行がサービスによって調整されました。 |
+
 ## <a name="next-steps"></a>次の手順
 
+* [SSPR と MFA の使用状況と分析情報のレポート](howto-authentication-methods-usage-insights.md)
 * [ユーザー向け](../user-help/multi-factor-authentication-end-user.md)
 * [デプロイする場所](concept-mfa-whichversion.md)

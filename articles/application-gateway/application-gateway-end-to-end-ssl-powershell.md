@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: a4ce1ad347742886e7d89a32bbeb60c2e0281409
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d9851f6b3e32d0c7ab0d7774458ba5bc4d9ba823
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198558"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66729672"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Application Gateway での PowerShell を使用したエンド ツー エンド SSL の構成
 
@@ -44,7 +44,7 @@ Application Gateway は、カスタム SSL オプションの定義をサポー�
 
 アプリケーション ゲートウェイでエンド ツー エンド SSL を構成するには、ゲートウェイ用とバックエンド サーバー用の証明書が必要です。 ゲートウェイ証明書は、SSL プロトコルの仕様に従って対称キーを得る目的で使用されます。 対称キーは、ゲートウェイに送信されたトラフィックの暗号化と暗号化の解除に使用されます。 ゲートウェイ証明書は、Personal Information Exchange (PFX) 形式である必要があります。 このファイル形式により、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要な秘密キーをエクスポートできます。
 
-エンド ツー エンド SSL 暗号化では、アプリケーション ゲートウェイにバックエンドをホワイトリスト登録する必要があります。 バックエンド サーバーの公開証明書をアプリケーション ゲートウェイにアップロードしてください。 証明書を追加することにより、アプリケーション ゲートウェイは、既知のバックエンド インスタンスのみと通信するため、 エンド ツー エンド通信のセキュリティが強化されます。
+エンド ツー エンド SSL 暗号化では、アプリケーション ゲートウェイにバックエンドを明示的に許可する必要があります。 バックエンド サーバーの公開証明書をアプリケーション ゲートウェイにアップロードしてください。 証明書を追加することにより、アプリケーション ゲートウェイは、既知のバックエンド インスタンスのみと通信するため、 エンド ツー エンド通信のセキュリティが強化されます。
 
 この構成プロセスについては以降のセクションで説明します。
 
@@ -138,7 +138,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    ```
 
    > [!NOTE]
-   > バックエンド サーバーの IP アドレスの代わりに、完全修飾ドメイン名 (FQDN) の値も使用できます。 有効にするには、**-BackendFqdns** スイッチを使用します。 
+   > バックエンド サーバーの IP アドレスの代わりに、完全修飾ドメイン名 (FQDN) の値も使用できます。 有効にするには、 **-BackendFqdns** スイッチを使用します。 
 
 4. パブリック IP エンドポイントのフロントエンド IP ポートを構成します。 このポートは、エンドユーザーが接続するポートです。
 
@@ -170,7 +170,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
    > バックエンドでホスト ヘッダーと Server Name Indication (SNI) を使用している場合、取得した公開キーがトラフィックの送信先となる目的のサイトであるとは限りません。 確かでない場合は、バックエンド サーバーで https://127.0.0.1/ にアクセスして、*既定*の SSL バインドにどの証明書が使用されているかを確認します。 このセクションでその要求の公開キーを使用します。 HTTPS バインドでホスト ヘッダーと SNI を使用しており、バックエンド サーバーでの https://127.0.0.1/ に対する手動のブラウザー要求から応答と証明書を受信していない場合は、バックエンド サーバーで既定の SSL バインドを設定する必要があります。 これを行わないと、プローブは失敗し、バックエンドはホワイトリストに登録されません。
 
    ```powershell
-   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\cert.cer
+   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]
@@ -231,6 +231,69 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name 'publicIP01'
 $appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
+## <a name="apply-a-new-certificate-if-the-back-end-certificate-is-expired"></a>バックエンド証明書が期限切れになった場合に新しい証明書を適用する
+
+バックエンド証明書が期限切れになった場合に新しい証明書を適用するには、この手順を使用します。
+
+1. 更新するアプリケーション ゲートウェイを取得します。
+
+   ```powershell
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
+   
+2. .cer ファイルから新しい証明書リソースを追加します。このファイルには、証明書の公開キーが含まれています。また、アプリケーション ゲートウェイで SSL 終了のためにリスナーに追加されたものと同じ証明書にすることもできます。
+
+   ```powershell
+   Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
+   ```
+    
+3. 新しい認証証明書オブジェクトを変数に取得します (TypeName:Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate)。
+
+   ```powershell
+   $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
+   ```
+ 
+ 4. 新しい証明書を **BackendHttp** 設定に割り当て、それを $AuthCert 変数を使用して参照します (変更する HTTP 設定名を指定します)。
+ 
+   ```powershell
+   $out= Set-AzApplicationGatewayBackendHttpSetting -ApplicationGateway $gw -Name "HTTP1" -Port 443 -Protocol "Https" -CookieBasedAffinity Disabled -AuthenticationCertificates $Authcert
+   ```
+    
+ 5. 変更をアプリケーション ゲートウェイにコミットし、含まれる新しい構成を $out 変数に渡します。
+ 
+   ```powershell
+   Set-AzApplicationGateway -ApplicationGateway $gw  
+   ```
+
+## <a name="remove-an-unused-expired-certificate-from-http-settings"></a>HTTP 設定から使用されていない期限切れ証明書を削除する
+
+HTTP 設定から使用されていない期限切れ証明書を削除するには、この手順を使用します。
+
+1. 更新するアプリケーション ゲートウェイを取得します。
+
+   ```powershell
+   $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
+   ```
+   
+2. 削除する認証証明書の名前を一覧表示します。
+
+   ```powershell
+   Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw | select name
+   ```
+    
+3. アプリケーション ゲートウェイから認証証明書を削除します。
+
+   ```powershell
+   $gw=Remove-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name ExpiredCert
+   ```
+ 
+ 4. 変更をコミットします。
+ 
+   ```powershell
+   Set-AzApplicationGateway -ApplicationGateway $gw
+   ```
+
+   
 ## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイで SSL プロトコル バージョンを制限する
 
 これまでの手順で、エンド ツー エンド SSL を使用したアプリケーションの作成と、SSL プロトコルの特定バージョンの無効化について説明しました。 次の例では、既存のアプリケーション ゲートウェイの特定の SSL ポリシーを無効にします。

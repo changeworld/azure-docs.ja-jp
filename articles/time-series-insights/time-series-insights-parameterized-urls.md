@@ -4,19 +4,19 @@ description: この記事では、パラメーター化した URL を Azure Time
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: e70eb7ae73e88b37e649d519d0d0428554dd4ab3
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: dfc04397b1d7e9f3256810cbe469067ae52c99bd
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467520"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66238969"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
@@ -86,11 +86,11 @@ JavaScript における日付のミリ秒表現については、「[Epoch & Uni
 | `multiChartStack=false` | `true` は既定で有効なので、積み重ねるには `false` を渡します。 |
 | `multiChartStack=false&multiChartSameScale=true` | 期間全体で同じ Y 軸のスケールを使用するには、積み重ねを有効にする必要があります。  既定では `false` なので、"true" を渡してこの機能を有効にします。 |
 | `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | 単位 = 日、時間、分、秒、ミリ秒。  単位は常に大文字にします。 </br> timeBucketSize に目的の整数を渡して、単位数を定義します。  最大 7 日間まで滑らかにすることができます。  |
-| `timezoneOffset=-<integer>` | この整数は常にミリ秒単位です。 </br> この機能は、ローカル時刻 (ブラウザーの時刻) または UTC を選択できる TSI エクスプローラーで有効にする機能とは少し異なります。 |
+| `timezoneOffset=-<integer>` | この整数は常にミリ秒単位です。 </br> この機能は、ローカル時刻 (ブラウザーの時刻) または UTC を選択できる Time Series Insights エクスプローラーで有効にする機能とは少し異なります。 |
 
 ### <a name="examples"></a>例
 
-URL パラメーターとして TSI 環境に時系列定義を追加するには、以下を追加します。
+URL パラメーターとして Time Series Insights 環境に時系列定義を追加するには、以下を追加します。
 
 ```plaintext
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
@@ -112,7 +112,7 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 > [!TIP]
 > Explorer ライブで [URL の使用](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}])についてご覧ください。
 
-上の URL は、TSI Explorer ビューを記述し、構築しています。
+上の URL は、Time Series Insights Explorer ビューを記述し、構築しています。
 
 [![Time Series Insights Explorer の期間](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
 

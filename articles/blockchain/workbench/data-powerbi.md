@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: dcb6729581d5282b32359874eaad22050d0d2048
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510705"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Microsoft Power BI で Azure Blockchain Workbench データを使用する
@@ -35,7 +35,7 @@ Microsoft Power BI は Power BI Desktop を使用して SQL DB データベー�
     ![データを取得する](./media/data-powerbi/get-data.png)
 3.  データ ソースの種類の一覧から **[SQL Server]** を選択します。
 
-4.  ダイアログ ボックスでサーバーとデータベースの名前を指定します。 データをインポートするか、**[DirectQuery]** を実行するかを指定します。 **[OK]** を選択します。
+4.  ダイアログ ボックスでサーバーとデータベースの名前を指定します。 データをインポートするか、 **[DirectQuery]** を実行するかを指定します。 **[OK]** を選択します。
 
     ![SQL Server の選択](./media/data-powerbi/select-sql.png)
 

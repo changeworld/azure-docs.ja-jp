@@ -1,6 +1,6 @@
 ---
-title: Windows コンピューターを Azure Log Analytics に接続する | Microsoft Docs
-description: この記事では、Microsoft Monitoring Agent (MMA) を使用して、他のクラウドやオンプレミス内にホストされている Windows コンピューターを Log Analytics に接続する方法について説明します。
+title: Windows コンピューターを Azure Monitor に接続する | Microsoft Docs
+description: この記事では、Windows 用 Log Analytics エージェントを使用して、他のクラウドやオンプレミス内にホストされている Windows コンピューターを Azure Monitor に接続する方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 34f02b1d72f08ef5da6b8a5740243b6e557bfb4a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 7f562959ac6022539ccf7137f352a2e9507758dc
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138142"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67146347"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows コンピューターを Azure Monitor に接続する
 
@@ -44,19 +44,19 @@ Azure Monitor を使用して、ローカル データ センターやその他�
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
 Windows 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Azure Monitor と正常に通信できるようにするために必要です。 
 
-1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、エージェントのレポート送信先にするワークスペースを選択します。
 3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
-4. **[接続されたソース]**、**[Windows サーバー]** の順に選択します。   
+4. **[接続されたソース]** 、 **[Windows サーバー]** の順に選択します。   
 5. **ワークスペース ID**と**主キー**をコピーして、好みのエディターに貼り付けます。    
    
 ## <a name="configure-agent-to-use-tls-12"></a>TLS 1.2 を使用するようエージェントを構成する
 Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) プロトコルが使用されるようにするには、次の手順を実行して、仮想マシンにエージェントがインストールされる前または後に、それを有効にできます。   
 
 1. 次のレジストリ キーを探します:**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
-2. TLS 1.2 用に **Protocols** の下に **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2** のサブキーを作成します。
-3. 前に作成した TLS 1.2 プロトコル バージョンのサブキーの下に **Client** サブキーを作成します。 たとえば、**HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** です。
-4. **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** の下に次の DWORD 値を作成します。
+2. TLS 1.2 用に **Protocols** の下に **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2** のサブキーを作成します。
+3. 前に作成した TLS 1.2 プロトコル バージョンのサブキーの下に **Client** サブキーを作成します。 たとえば、**HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** です。
+4. **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** の下に次の DWORD 値を作成します。
 
     * **Enabled** [値 = 1]
     * **DisabledByDefault** [値 = 0]  
@@ -75,14 +75,14 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 1. ご使用の Log Analytics ワークスペースで、先の手順で移動した **[Windows サーバー]** ページの **[Windows エージェントのダウンロード]** から、Windows オペレーティング システムのプロセッサ アーキテクチャに応じた適切なバージョンを選択します。   
 2. セットアップを実行して、コンピューターにエージェントをインストールします。
 2. **[ようこそ]** ページで **[次へ]** をクリックします。
-3. **[ライセンス条項]** ページの記述内容を確認し、**[同意する]** をクリックします。
+3. **[ライセンス条項]** ページの記述内容を確認し、 **[同意する]** をクリックします。
 4. **[インストール先フォルダー]** ページで、既定のインストール フォルダーを変更するか、変更せずに **[次へ]** をクリックします。
-5. **[エージェントのセットアップ オプション]** ページで、エージェントを接続する Azure Log Analytics をクリックし、**[次へ]** をクリックします。   
+5. **[エージェントのセットアップ オプション]** ページで、エージェントを接続する Azure Log Analytics をクリックし、 **[次へ]** をクリックします。   
 6. **[Azure Log Analytics]** ページで、次の手順を実行します。
-   1. **[ワークスペース ID]** と **[ワークスペース キー (主キー)]** に、先ほどコピーした値を貼り付けます。  コンピューターが Azure Government クラウド内の Log Analytics ワークスペースに報告する必要がある場合は、**[Azure クラウド]** ドロップダウン リストから **[Azure US Government]** を選択します。  
-   2. コンピューターがプロキシ サーバーを介して Log Analytics サービスと通信する必要がある場合は、**[詳細]** をクリックし、プロキシ サーバーの URL とポート番号を指定します。  プロキシ サーバーで認証が必要な場合には、プロキシ サーバーにアクセスするためのユーザー名とパスワードを入力し、**[次へ]** をクリックします。  
-7. 必要な構成設定をしたら、**[次へ]** をクリックします。<br><br> ![ワークスペース ID と主キーの貼り付け](media/agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
-8. **[インストールの準備完了]** ページで、設定内容を確認し、**[インストール]** をクリックします。
+   1. **[ワークスペース ID]** と **[ワークスペース キー (主キー)]** に、先ほどコピーした値を貼り付けます。  コンピューターが Azure Government クラウド内の Log Analytics ワークスペースに報告する必要がある場合は、 **[Azure クラウド]** ドロップダウン リストから **[Azure US Government]** を選択します。  
+   2. コンピューターがプロキシ サーバーを介して Log Analytics サービスと通信する必要がある場合は、 **[詳細]** をクリックし、プロキシ サーバーの URL とポート番号を指定します。  プロキシ サーバーで認証が必要な場合には、プロキシ サーバーにアクセスするためのユーザー名とパスワードを入力し、 **[次へ]** をクリックします。  
+7. 必要な構成設定をしたら、 **[次へ]** をクリックします。<br><br> ![ワークスペース ID と主キーの貼り付け](media/agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
+8. **[インストールの準備完了]** ページで、設定内容を確認し、 **[インストール]** をクリックします。
 9. **[構成は正常に終了しました]** ページで **[完了]** をクリックします。
 
 完了すると、**コントロール パネル**に **Microsoft Monitoring Agent** が表示されます。 Log Analytics にレポートが送信されていることを確認する方法については、「[Log Analytics へのエージェント接続を確認する](#verify-agent-connectivity-to-log-analytics)」をご覧ください。 
@@ -110,14 +110,16 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 2. エージェントをサイレント モードでインストールし、Azure の商用クラウド内のワークスペースにレポートを送信するように構成するには、セットアップ ファイルを抽出したフォルダーから、次のコマンドを入力します。 
    
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
 
    Azure の米国政府機関向けクラウドをエージェントのレポート送信先として構成するには、次のコマンドを入力します。 
 
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
+    >[!NOTE]
+    >パラメーター *OPINSIGHTS_WORKSPACE_ID* および *OPINSIGHTS_WORKSPACE_KEY* の文字列値を二重引用符でカプセル化し、パッケージの有効なオプションとして解釈するよう Windows インストーラーに指示する必要があります。 
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Azure Automation の DSC を使用してエージェントをインストールする
 
@@ -184,11 +186,11 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 エージェントのインストールが完了した後、エージェントが正常に接続され、レポートが送信されていることを確認するには、次の 2 つの方法があります。  
 
-**[コントロール パネル]** 内のコンピューターから、**[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、**[Azure Log Analytics]** タブに、次のことを示すメッセージがエージェントによって表示されます。"**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました。**"<br><br> ![Log Analytics への MMA 接続の状態](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+**[コントロール パネル]** 内のコンピューターから、 **[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、 **[Azure Log Analytics]** タブに、次のことを示すメッセージがエージェントによって表示されます。"**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました。** "<br><br> ![Log Analytics への MMA 接続の状態](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 また、Azure portal で簡単なログ クエリを実行することもできます。  
 
-1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で「**Azure Monitor**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Azure Monitor]** を選択します。  
+1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で「**Azure Monitor**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Azure Monitor]** を選択します。  
 2. メニューの **[ログ]** を選択します。 
 2. [ログ] ペインのクエリ フィールドに次のように入力します。  
 
@@ -202,4 +204,6 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 ## <a name="next-steps"></a>次の手順
 
-マシンへのデプロイ ライフ サイクル中にエージェントを管理する方法については、「[Windows および Linux での Log Analytics エージェントの管理とメンテナンス](agent-manage.md)」をご覧ください。  
+- マシンへのデプロイ ライフ サイクル中にエージェントを管理する方法については、「[Windows および Linux での Log Analytics エージェントの管理とメンテナンス](agent-manage.md)」をご覧ください。  
+
+- エージェントのインストールまたは管理中に問題が発生した場合は、[Windows エージェントのトラブルシューティング](agent-windows-troubleshoot.md)に関する記事を参照してください。

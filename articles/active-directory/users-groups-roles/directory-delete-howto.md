@@ -15,11 +15,11 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91ac6b4530414850c52605bac8cb701aa2b877d4
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607298"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60473131"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Azure Active Directory でディレクトリを削除する
 
@@ -48,7 +48,7 @@ Azure AD ディレクトリを削除すると、そのディレクトリに含�
   
    ![組織を削除するコマンドを選択します](./media/directory-delete-howto/delete-directory-list.png)
 
-5. ディレクトリが 1 つ以上のチェックに合格しなかった場合は、合格する方法に関する詳細情報へのリンクが提示されます。 すべてのチェックに合格したら、**[削除]** を選択してプロセスを完了します。
+5. ディレクトリが 1 つ以上のチェックに合格しなかった場合は、合格する方法に関する詳細情報へのリンクが提示されます。 すべてのチェックに合格したら、 **[削除]** を選択してプロセスを完了します。
 
 ## <a name="if-you-cant-delete-the-directory"></a>ディレクトリを削除できない場合
 
@@ -69,7 +69,7 @@ Microsoft 365 管理センターを使用して、サブスクリプションを
 
 1. 組織のグローバル管理者であるアカウントを使用して、[Microsoft 365 管理センター](https://admin.microsoft.com)にサインインします。 既定の初期ドメイン contoso.onmicrosoft.com を持つ "Contoso" ディレクトリを削除する場合は、admin@contoso.onmicrosoft.com などの UPN を使用してサインインします。
 
-2. **[Billing]\(課金\)** をクリックし、**[サブスクリプション]** を選択してから、キャンセルするサブスクリプションを選択します。 **[キャンセル]** クリックすると、ページが更新されます。
+2. **[Billing]\(課金\)** をクリックし、 **[サブスクリプション]** を選択してから、キャンセルするサブスクリプションを選択します。 **[キャンセル]** クリックすると、ページが更新されます。
   
    ![サブスクリプションを削除するための [削除] リンク](./media/directory-delete-howto/delete-command.png)
   
@@ -105,7 +105,7 @@ Deleted | 削除されたデータ | ユーザーはセルフサービス サイ
 
 ## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Azure portal でセルフサービス サインアップ製品を削除する方法を教えてください
 
-Microsoft Power BI や Azure Rights Management サービスなどのセルフサービス サインアップ製品は、**[削除]** 状態にすると、Azure AD ポータル内ですぐに削除できます。
+Microsoft Power BI や Azure Rights Management サービスなどのセルフサービス サインアップ製品は、 **[削除]** 状態にすると、Azure AD ポータル内ですぐに削除できます。
 
 1. 組織のグローバル管理者であるアカウントを使用して、 [Azure AD 管理センター](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) にサインインします。 既定の初期ドメイン contoso.onmicrosoft.com を持つ "Contoso" ディレクトリを削除する場合は、admin@contoso.onmicrosoft.com などの UPN を使用してサインオンします。
 
@@ -113,7 +113,7 @@ Microsoft Power BI や Azure Rights Management サービスなどのセルフサ
 
     ![ユーザー名が間違って入力されたか、ユーザー名が見つかりません](./media/directory-delete-howto/licenses-page.png)
 
-3.  **[削除]**  を選択して製品を削除し、データがすぐに完全に削除されることを示す条項に同意します。 この削除操作により、すべてのユーザーが削除され、組織から製品へのアクセス権も削除されます。 [はい] をクリックして削除を進めます。  
+3.  **[削除]**   を選択して製品を削除し、データがすぐに完全に削除されることを示す条項に同意します。 この削除操作により、すべてのユーザーが削除され、組織から製品へのアクセス権も削除されます。 [はい] をクリックして削除を進めます。  
 
     ![ユーザー名が間違って入力されたか、ユーザー名が見つかりません](./media/directory-delete-howto/delete-product.png)
 

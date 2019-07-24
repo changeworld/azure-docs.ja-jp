@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
 ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58889755"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61036273"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
@@ -43,7 +43,7 @@ Azure Functions 1.x の試験段階の言語は、新しいモデルを使用す
 
 既定では、Azure portal で作成された関数アプリはバージョン 2.x に設定されます。 新機能への投資が行われているので、可能であれば、このランタイム バージョンを使用するようにします。 必要に応じて、バージョン 1.x ランタイム上で関数アプリを実行することもできます。 ランタイムのバージョンを変更できるのは、関数アプリを作成してから関数を追加するまでの間のみです。 ランタイム バージョンを 1.x に固定する方法については、「[現在のランタイム バージョンの表示と更新](set-runtime-version.md#view-and-update-the-current-runtime-version)」を参照してください。
 
-## <a name="migrating-from-1x-to-2x"></a>1.x から 2.x への移行
+## <a name="migrating-from-1x-to-2x"></a>1\.x から 2.x への移行
 
 バージョン 2.x ではなくバージョン 1.x のランタイムを使用するように記述された既存のアプリを移行することができます。 必要な変更の大部分は、.NET Framework 4.7 と .NET Core 2 間の C# API の変更など、言語ランタイムの変更に関連する変更です。 また、コードとライブラリが、選択した言語ランタイムと互換性があることを確認する必要があります。 最後に、以下で示すトリガー、バインド、および機能での変更にも注意してください。 最適な移行結果を得るには、バージョン 2.x 用の新しい関数アプリを作成し、既存のバージョン 1.x の関数コードを新しいアプリに移植する必要があります。  
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 353641c514c9171e211221b84b13c5f09a413a48
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341224"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868257"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する
 
@@ -116,7 +116,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ![[Bing Image Search のフォーム]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-Bing Image Search API には、検索結果を絞り込み、フィルター処理するための[フィルター クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#filter-query-parameters)がいくつか用意されています。 このアプリケーションの HTML フォームは、次のパラメーター オプションを使用して表示します。
+Bing Image Search API には、検索結果を絞り込み、フィルター処理するための[フィルター クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters)がいくつか用意されています。 このアプリケーションの HTML フォームは、次のパラメーター オプションを使用して表示します。
 
 |              |                                                                                                                                                                                    |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -320,7 +320,7 @@ Bing Image Search API から、ユーザーの検索エクスペリエンスを�
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `pivotSuggestions` | 元の検索の軸語を別のものに置き換えるクエリです。 たとえば、"赤い花" を検索した場合、"赤" が軸語で、"黄色い花" が候補になる可能性があります。 |
 | `queryExpansions`  | 複数の条件を追加することで、元の検索を絞り込むクエリです。 たとえば、"Microsoft Surface" を検索した場合、クエリが "Microsoft Surface Pro" に拡張される場合があります。                                   |
-| `relatedSearches`  | 元の検索を入力した他のユーザーが他に入力したことのあるクエリです。 たとえば、"レーニア山" を検索した場合、関連する検索は "セント  ヘレンズ山" となる場合があります。                       |
+| `relatedSearches`  | 元の検索を入力した他のユーザーが他に入力したことのあるクエリです。 たとえば、"レーニア山" を検索した場合、関連する検索は "セント ヘレンズ山" となる場合があります。                       |
 | `similarTerms`     | 元の検索と似た意味を持つクエリです。 たとえば、"子猫" を検索すると、似た用語として "かわいい" が挙げられる場合があります。                                                                   |
 
 このアプリケーションでは `relatedItems` の提案のみがレンダリングされ、結果のリンクがページのサイドバーに配置されます。
@@ -369,7 +369,7 @@ searchItemRenderers = {
     }, // relatedSearches renderer omitted
 ```
 
-サムネイルの画像の `height` と `width` は、サムネイルの URL 内の `<img>` タグに加えて、`h` および `w` フィールドで使用されます。 こうすることで、Bing は正確にそのサイズの[サムネイル](resize-and-crop-thumbnails.md)を返すことができます。
+サムネイルの画像の `height` と `width` は、サムネイルの URL 内の `<img>` タグに加えて、`h` および `w` フィールドで使用されます。 こうすることで、Bing は正確にそのサイズの[サムネイル](../bing-web-search/resize-and-crop-thumbnails.md)を返すことができます。
 
 ## <a name="persisting-client-id"></a>クライアント ID の永続化
 
@@ -386,7 +386,7 @@ Bing Search API からの応答には、`X-MSEdge-ClientID` ヘッダーが含�
 > [!NOTE]
 > 運用環境の Web アプリケーションでは、いずれにしても要求サーバー側を実行する必要があります。 そうしないと、Web ページに Bing Search API キーを含める必要があり、ソースを表示した人ならだれでもキーを使用できるようになってしまいます。 権限のない者によって行われた要求であっても、すべての利用に対してユーザーの API サブスクリプション キーに基づいて料金が発生するため、キーは公開しないようにする必要があります。
 
-開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
+開発目的の場合は、CORS プロキシを介して Bing Web Search API 要求を行うことができます。 そのようなプロキシからの応答には、応答ヘッダーを許可して JavaScript で使用できるようにする `Access-Control-Expose-Headers` ヘッダーが含まれています。
 
 CORS プロキシをインストールして、チュートリアル アプリがクライアント ID ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 さらに、コマンド ウィンドウで次のコマンドを発行します。
 

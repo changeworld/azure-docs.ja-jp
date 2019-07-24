@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 86ad6fce34f323d94f7b9c318ba81f547360d4df
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804962"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66237322"
 ---
 # <a name="networking"></a>ネットワーク
 
@@ -71,6 +71,8 @@ Service Fabric クラスターは、[高速ネットワークを導入した Lin
 * Windows コンテナー ワークロードを実行するには、[Open ネットワーク モード](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)を使用してサービス間の通信を容易にします。
 
 * [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) や [Service Fabric リバース プロキシ](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)などのリバース プロキシを使用して、80 や 443 などの一般的なアプリケーション ポートを公開します。
+
+* Azure クラウド ストレージからベース レイヤーをプルできない、インターネットから物理的に隔離されたエアギャップ マシン上でホストされている Windows コンテナーでは、Docker デーモンの [--allow-nondistributable-artifacts](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) フラグを使用して、外部レイヤーの動作を上書きします。
 
 ## <a name="next-steps"></a>次の手順
 

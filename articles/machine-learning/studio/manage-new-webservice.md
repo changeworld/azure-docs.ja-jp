@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
 ms.openlocfilehash: 711cb674cb00a880eadda11b03da87631df90b0d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838376"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60861737"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Azure Machine Learning Studio Web サービス ポータルを使用して Web サービスを管理する
 Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
@@ -117,7 +117,7 @@ Web サービスの [クイック スタート] ページで、 **[プラン]** 
 1. Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、 [Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにサインインします。
 2. **[Classic Web Services (クラシック Web サービス)]** をクリックします。
 
-クラシック Web サービスを管理するには、**[Classic Web Services (クラシック Web サービス)]** をクリックします。 [Classic Web Services (クラシック Web サービス)]ページでは、次の操作を実行できます。
+クラシック Web サービスを管理するには、 **[Classic Web Services (クラシック Web サービス)]** をクリックします。 [Classic Web Services (クラシック Web サービス)]ページでは、次の操作を実行できます。
 
 * Web サービスをクリックして、関連付けられているエンドポイントを表示する。
 * Web サービスを削除する。

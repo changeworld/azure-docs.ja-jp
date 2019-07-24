@@ -13,14 +13,14 @@ ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 720aafac79a67f64b0974dba0dd60c6aa24a8c54
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342073"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60480595"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>メール アドレスを使用するようにセキュリティ情報 (プレビュー) を設定する
-次の手順に従って、パスワードのリセット メソッドを追加できます。 これを初回に設定したら、**[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
+次の手順に従って、パスワードのリセット メソッドを追加できます。 これを初回に設定したら、 **[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
 
 パスワードのリセット メソッドを設定した後、[Authenticator アプリ](security-info-setup-auth-app.md)、[テキスト メッセージ](security-info-setup-text-msg.md)、または[電話呼び出し](security-info-setup-phone-number.md)を使用して、2 要素認証メソッドも設定する必要があります。
 
@@ -38,40 +38,40 @@ ms.locfileid: "57342073"
 
     ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
 
-2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから **[セキュリティ情報]** を選択した後、**[セキュリティ情報]** ページで **[メソッドの追加]** を選択します。
+2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから **[セキュリティ情報]** を選択した後、 **[セキュリティ情報]** ページで **[メソッドの追加]** を選択します。
 
     ![[メソッドの追加] オプションが強調表示されている [セキュリティ情報] ページ](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. **[メソッドの追加]** ページで、ドロップダウン リストから **[電子メール]** を選択し、**[追加]** を選択します。
+3. **[メソッドの追加]** ページで、ドロップダウン リストから **[電子メール]** を選択し、 **[追加]** を選択します。
 
     ![[電子メール] が選択された [メソッドの追加] ボックス](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. **[電子メール]** ページで、メール アドレス (alain@gmail.com など) を入力し、**[次へ]** を選択します。
+4. **[電子メール]** ページで、メール アドレス (alain@gmail.com など) を入力し、 **[次へ]** を選択します。
 
     ![電話番号を追加し、電話呼び出しを選択する](media/security-info/securityinfo-myprofile-emailaddress.png)
 
     >[!Important]
     >このメール アドレスには、職場または学校の電子メールを選択できません。
 
-5. 指定したメール アドレスに送信されたコードを入力し、**[次へ]** を選択します。
+5. 指定したメール アドレスに送信されたコードを入力し、 **[次へ]** を選択します。
 
     ![電話番号を追加し、テキスト メッセージを選択する](media/security-info/securityinfo-myprofile-emailcode.png)
 
     セキュリティ情報が更新され、パスワードのリセットを使用するときに、自分のメール アドレスを使用して本人確認をできるようになります。
 
 ## <a name="delete-your-email-address-from-your-security-info-methods"></a>セキュリティ情報メソッドからメール アドレスを削除する
-セキュリティ情報メソッドとしてメール アドレスを使用しなくなった場合は、**[セキュリティ情報]** ページから削除できます。
+セキュリティ情報メソッドとしてメール アドレスを使用しなくなった場合は、 **[セキュリティ情報]** ページから削除できます。
 
 >[!Important]
 >メール アドレスを誤って削除した場合、元に戻す方法はありません。 この記事の「[メール アドレスを設定するには](#set-up-your-email-address-from-the-security-info-page)」セクションの手順に従って、メソッドを再度追加する必要があります。
 
 ### <a name="to-delete-your-email-address"></a>メール アドレスを削除するには
 
-1. **[セキュリティ情報]** ページで、**[電子メール]** オプションの横にある **[削除]** リンクを選択します。
+1. **[セキュリティ情報]** ページで、 **[電子メール]** オプションの横にある **[削除]** リンクを選択します。
 
     ![セキュリティ情報から電話番号メソッドを削除するためのリンク](media/security-info/securityinfo-myprofile-emaildelete.png)
 
-2. 確認ボックスで **[はい]** を選択して、**メール アドレス**を削除します。 電子メール アカウントを削除すると、セキュリティ情報から削除され、**[セキュリティ情報]** ページから消去されます。
+2. 確認ボックスで **[はい]** を選択して、**メール アドレス**を削除します。 電子メール アカウントを削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。
 
 ## <a name="additional-security-info-methods"></a>追加のセキュリティ情報メソッド
 操作内容に基づき、本人確認のために組織から連絡が届きますが、その方法には追加の選択肢があります。 選択肢は次のようになっています。

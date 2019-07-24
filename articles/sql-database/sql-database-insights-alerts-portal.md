@@ -13,11 +13,11 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
 ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855590"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61035979"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Azure Portal を使用して Azure SQL Database および Data Warehouse のアラートを作成する
 
@@ -47,11 +47,11 @@ ms.locfileid: "57855590"
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure ポータルでメトリックにアラート ルールを作成する
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
-2. [監視] セクションで、**[アラート (クラシック)]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
+2. [監視] セクションで、 **[アラート (クラシック)]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
    
      ![監視](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **SQL DW のみ**:**[DWU 利用状況]** グラフをクリックします。 **[クラシック アラートの表示]** を選択します
+   - **SQL DW のみ**: **[DWU 利用状況]** グラフをクリックします。 **[クラシック アラートの表示]** を選択します
 
 3. **[メトリック アラートの追加 (クラシック)]** ボタンを選択して、フィールドに入力します。
    

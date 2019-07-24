@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 73588d8c84525cf70de9fac312b0a485055b0a2c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496898"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605702"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>OPC Vault をゼロからデプロイする
 
@@ -39,13 +39,13 @@ OPC Vault は、OPC UA サーバーとクライアント アプリケーショ�
 
 - Visual Studio:環境変数は、Visual Studio の [プロジェクト プロパティ] からも設定できます。左側のウィンドウで [構成プロパティ]、[環境] の順に選択し、複数の変数を追加できるセクションにアクセスします。
 
-- IntelliJ Rider:IntelliJ IDEA (https://www.jetbrains.com/help/idea/run-debug-configuration-application.html) と同様に、各実行構成で環境変数を設定できます
+- IntelliJ Rider:IntelliJ IDEA (https://www.jetbrains.com/help/idea/run-debug-configuration-application.html ) と同様に、各実行構成で環境変数を設定できます
 
 ## <a name="run-and-debug-with-visual-studio"></a>Visual Studio で実行およびデバッグする
 
 Visual Studio では、IDE の外部で何も構成しなくても、コマンド プロンプトを使用せずにすばやくアプリケーションを開くことができます。
 
-Visual Studio 2017 を使用した手順:
+Visual Studio を使用してアプリケーションを実行してデバッグするには:
 
 1. `iot-opc-gds-service.sln` ファイルを使用しているソリューションを開きます。
 

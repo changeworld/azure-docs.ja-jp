@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/23/2018
 ms.author: aljo
 ms.openlocfilehash: 4cc2d6355a0147c33048f1c2c27a3648b9223db4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663776"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62110925"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>仮想マシン スケール セット インスタンスまたはクラスター ノードにリモート接続する
 Azure で実行される Service Fabric クラスターでは、定義するクラスター ノードの種類ごとに、[仮想マシンの個別のスケールを設定](service-fabric-cluster-nodetypes.md)します。  特定のスケール セット インスタンス (クラスター ノード) にリモート接続することができます。  単一インスタンス VM とは異なり、スケール セット インスタンスには独自の仮想 IP アドレスがありません。 そのため、特定のインスタンスにリモート接続するために使用できる IP アドレスとポートの検索が難しい場合があります。
@@ -30,7 +30,7 @@ Azure で実行される Service Fabric クラスターでは、定義するク�
 
     通常、クラスターで定義されている各ノード型には、独自の仮想 IP アドレスと専用のロード バランサーがあります。 既定では、ノード型のロード バランサーは、次の形式で名前が付けられます: *LB-{cluster-name}-{node-type}* (例: *LB-mycluster-FrontEnd*)。 
     
-    Azure portal のロード バランサー ページで、**[設定]** > **[受信 NAT 規則]** の順に選択します。 
+    Azure portal のロード バランサー ページで、 **[設定]**  >  **[受信 NAT 規則]** の順に選択します。 
 
     ![ロード バランサーの受信 NAT 規則](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -38,7 +38,7 @@ Azure で実行される Service Fabric クラスターでは、定義するク�
 
     ![ロード バランサーの受信 NAT 規則](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
-    ノードごとに、**[DESTINATION]** 列に IP アドレス、**[TARGET]** 列にスケール セットのインスタンス、**[SERVICE]** 列にポート番号が表示されます。 リモート接続の場合は、ポートはポート 3389 から始まる昇順で各ノードに割り当てられます。
+    ノードごとに、 **[DESTINATION]** 列に IP アドレス、 **[TARGET]** 列にスケール セットのインスタンス、 **[SERVICE]** 列にポート番号が表示されます。 リモート接続の場合は、ポートはポート 3389 から始まる昇順で各ノードに割り当てられます。
 
     受信 NAT 規則は、クラスターの Resource Manager テンプレートの `Microsoft.Network/loadBalancers` セクションでも見つけることができます。
     

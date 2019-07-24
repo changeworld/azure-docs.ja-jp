@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 01d36188c1684eae8303cb20ba0fd0c708ff91ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079915"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60309872"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>StorSimple の新しい認証を使用する
 
@@ -81,7 +81,7 @@ AAD サービス登録キーを生成するには、次の手順を実行しま�
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>AAD サービス登録キーを生成するには
 
-1. **StorSimple デバイス マネージャー**で、**[管理]&gt;****[キー]** の順に移動します。 検索バーを使用して、"_キー_" を検索することもできます。
+1. **StorSimple デバイス マネージャー**で、 **[管理]&gt;** **[キー]** の順に移動します。 検索バーを使用して、"_キー_" を検索することもできます。
     
 2. **[キーの生成]** をクリックします。
 

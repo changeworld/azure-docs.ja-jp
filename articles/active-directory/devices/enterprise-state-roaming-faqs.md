@@ -2,27 +2,21 @@
 title: 設定とデータのローミングに関する FAQ | Microsoft Docs
 description: 設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。
 services: active-directory
-keywords: Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a77cf89b7697b7b6b08dead34339ae50dbba8518
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9f9270aff6bc2aab7e210716ffe3e21efb07b8ed
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517863"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481954"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 この記事では、IT 管理者が設定やアプリ データの同期に関して抱く可能性のあるいくつかの疑問に答えます。
@@ -75,7 +69,7 @@ November 2015 以降のリリースの Windows 10 では、Enterprise State Roam
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>複数テナントの Azure AD アカウントが存在する場合、設定は同期されますか
 異なる Azure AD テナントの複数の Azure AD アカウントが同じデバイス上に存在する場合は、そのデバイスのレジストリを、Azure AD テナントごとに Azure Rights Management サービスと通信するように更新する必要があります。  
 
-1. 各 Azure AD テナントの GUID を見つけます。 Azure Portal を開いて Azure AD テナントを選択します。 テナントの GUID は、選択されたテナントの [プロパティ] ページ (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)) にあり、**[ディレクトリ ID]** というラベルが付いています。 
+1. 各 Azure AD テナントの GUID を見つけます。 Azure Portal を開いて Azure AD テナントを選択します。 テナントの GUID は、選択されたテナントの [プロパティ] ページ (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) ) にあり、 **[ディレクトリ ID]** というラベルが付いています。 
 2. GUID を特定したら、レジストリ キー **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>** を追加する必要があります。
    **テナント ID の GUID** キーから、**AllowedRMSServerUrls** という名前の新しい複数行文字列値 (REG-MULTI-SZ) を作成します。 そのデータに対して、デバイスがアクセスする他の Azure テナントのライセンス配布ポイントの URL を指定します。
 3. ライセンス配布ポイントの URL は、AADRM モジュールから **Get-AadrmConfiguration** コマンドレットを実行することによって見つけることができます。 **LicensingIntranetDistributionPointUrl** の値と **LicensingExtranetDistributionPointUrl** の値とが異なる場合は、両方の値を指定します。 同じ値である場合は、その値を一度だけ指定してください。
@@ -106,7 +100,7 @@ Enterprise State Roaming でローミングされたデータは各企業の所�
 Windows 10 の MDM やグループ ポリシーには、個々のアプリケーションを対象にローミングを無効にするための設定は存在しません。 テナントの管理者がそのマネージド デバイス上の全アプリを対象にアプリ データの同期を無効にすることはできますが、アプリ単位やアプリ内の階層単位で細かく制御することはできません。
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>ローミングはどのようにして有効または無効にできますか
-**設定**アプリから **[アカウント]** > **[設定の同期]** の順に移動します。 このページから、設定のローミングに使用されているアカウントを確認したり、ローミング対象となる設定グループの有効と無効を個別に切り替えたりすることができます。
+**設定**アプリから **[アカウント]**  >  **[設定の同期]** の順に移動します。 このページから、設定のローミングに使用されているアカウントを確認したり、ローミング対象となる設定グループの有効と無効を個別に切り替えたりすることができます。
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Windows 10 におけるローミングの実現手段としてマイクロソフトが推奨する方法は
 設定のローミングに関して、マイクロソフトでは、移動ユーザー プロファイル、UE-V、Enterprise State Roaming などいくつかのソリューションを提供しています。  マイクロソフトが将来の Windows バージョン向けとして積極的に開発に取り組んでいるのは Enterprise State Roaming です。 データをクラウドに移すことに関して勤務先が積極的でない、または準備が整っていない場合は、主要なローミング テクノロジとして UE-V を使用することをお勧めします。 既存の Windows デスクトップ アプリケーションのローミングに対応する必要がある一方で、クラウドへの移行を勤務先が積極的に推進している場合は、Enterprise State Roaming と UE-V を併用することをお勧めします。 UE-V と Enterprise State Roaming は非常に類似したテクノロジですが、相互に排他的ではありません。 組織がユーザーが必要とするローミング サービスを確実に提供できるように、互いに補完します。  

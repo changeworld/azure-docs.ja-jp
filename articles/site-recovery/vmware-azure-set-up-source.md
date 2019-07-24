@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: 075f86b24e2915d9689db8097889a830bade74c5
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149361"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60723428"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Azure への VMware レプリケーションのソース環境を設定する
 
@@ -30,10 +30,10 @@ ms.locfileid: "60149361"
 ## <a name="choose-your-protection-goals"></a>保護の目標を選択する
 
 1. **[Recovery Services コンテナー]** で、コンテナー名を選択します。 このシナリオでは、**ContosoVMVault** を使います。
-2. **[作業の開始]** で、[Site Recovery] を選択します。 次に、**[インフラストラクチャの準備]** を選択します。
-3. **[保護の目標]** > **[マシンのある場所]** で、**[オンプレミス]** を選びます。
-4. **[マシンをどこにレプリケートしますか]** で、**[To Azure]\(Azure\)** を選びます。
-5. **[マシンは仮想化されていますか]** で、**[はい (VMware vSphere ハイパーバイザー の場合)]** を選びます。 **[OK]** をクリックします。
+2. **[作業の開始]** で、[Site Recovery] を選択します。 次に、 **[インフラストラクチャの準備]** を選択します。
+3. **[保護の目標]**  >  **[マシンのある場所]** で、 **[オンプレミス]** を選びます。
+4. **[マシンをどこにレプリケートしますか]** で、 **[To Azure]\(Azure\)** を選びます。
+5. **[マシンは仮想化されていますか]** で、 **[はい (VMware vSphere ハイパーバイザー の場合)]** を選びます。 **[OK]** をクリックします。
 
 ## <a name="set-up-the-configuration-server"></a>構成サーバーを設定する
 

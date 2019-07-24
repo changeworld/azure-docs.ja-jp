@@ -15,11 +15,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492704"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60248017"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのパスワードをリセットする
 
@@ -35,13 +35,13 @@ ms.locfileid: "59492704"
 
 1. [Azure portal](https://portal.azure.com/) にユーザー管理者またはパスワード管理者としてサインインします。 使用可能なロールについて詳しくは、[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md#available-roles)に関するページを参照してください。
 
-2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、リセットを必要としているユーザーを検索して選択し、**[パスワードのリセット]** を選択します。
+2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、リセットを必要としているユーザーを検索して選択し、 **[パスワードのリセット]** を選択します。
 
     **[パスワードのリセット]** オプションを含む **[Alain Charon - プロファイル]** ページが表示されます。
 
     ![[パスワードのリセット] オプションが強調表示されているユーザーのプロファイル ページ](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
 
-3. **[パスワードのリセット]** ページで、**[パスワードのリセット]** を選択します。
+3. **[パスワードのリセット]** ページで、 **[パスワードのリセット]** を選択します。
 
     ユーザー用に一時パスワードが自動生成されます。
 

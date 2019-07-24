@@ -3,17 +3,17 @@ title: Azure IoT Central で Webhook を使用して Azure Functions をトリ�
 description: Azure IoT Central でルールがトリガーされるたびに実行される関数アプリを作成します。
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0d92e9bdf8ec207e5ef0e3f891c162182b5a4fff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 92d6f005018040e20c2df72dbc608a47bc8d9f08
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264847"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849016"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Azure IoT Central で Webhook を使用して Azure Functions をトリガーする
 
@@ -31,15 +31,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure portal で新しい関数アプリを作成する](media/howto-trigger-azure-functions/createfunction.png)
 
-2. 関数アプリを展開し、[関数] の横にある **[+] ボタン**を選択します。 この関数が関数アプリの最初の関数である場合は、開発環境として **[ポータル内]** を選択し、**[続行]** を選択します。
+2. 関数アプリを展開し、[関数] の横にある **[+] ボタン**を選択します。 この関数が関数アプリの最初の関数である場合は、開発環境として **[ポータル内]** を選択し、 **[続行]** を選択します。
 
     ![関数アプリでカスタム関数を選択する](media/howto-trigger-azure-functions/customfunction.png)
 
-3. **[webhook + API]** テンプレートを選択し、**[作成]** を選択します。 このトピックでは、.NET ベースの Azure 関数を使用します。
+3. **[webhook + API]** テンプレートを選択し、 **[作成]** を選択します。 このトピックでは、.NET ベースの Azure 関数を使用します。
 
     ![汎用 Webhook トリガーを選択する](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
 
-4. 新しい関数で、**[</> 関数の URL の取得]** を選択し、値をコピーして保存します。 この値を使用して、webhook を構成します。
+4. 新しい関数で、 **[</> 関数の URL の取得]** を選択し、値をコピーして保存します。 この値を使用して、webhook を構成します。
 
     ![関数の URL を取得する](media/howto-trigger-azure-functions/getfunctionurl.png)
 

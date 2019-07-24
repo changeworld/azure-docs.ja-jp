@@ -3,19 +3,19 @@ title: Translator Text API の Transliterate メソッド
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の Transliterate メソッドを使用します。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 4811e40f87962ecde75c7b2bb14e1d033e82ad44
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: swmachan
+ms.openlocfilehash: ddf4ca1939e09f5f63999657e7a751c9e53693e2
+ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577841"
+ms.lasthandoff: 06/25/2019
+ms.locfileid: "67357662"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
 
@@ -147,7 +147,7 @@ JSON 応答の例を次に示します。
   </tr>
   <tr>
     <td>429</td>
-    <td>呼び出し元からの要求が多すぎます。</td>
+    <td>クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。</td>
   </tr>
   <tr>
     <td>500</td>

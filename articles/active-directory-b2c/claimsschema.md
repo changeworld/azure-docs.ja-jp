@@ -2,20 +2,20 @@
 title: ClaimsSchema  - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの ClaimsSchema 要素を指定します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 81df3532ee466f32ee42f0010de9aa74dbeb6d85
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721755"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66511865"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -107,7 +107,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | `Type` | はい | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値は、単純なテキスト マスクが要求の文字列の先頭部分に適用されることを示します。 `Regex`値は、正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
-| `Regex` | いいえ  | **`Type`** が `Regex` に設定されている場合、使用される正規表現を指定します。
+| `Regex` | いいえ | **`Type`** が `Regex` に設定されている場合、使用される正規表現を指定します。
 
 次の例では **PhoneNumber** 要求を `Simple` マスクで構成します。
 
@@ -146,7 +146,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| MergeBehavior | いいえ  | 同じ識別子を持つ親ポリシー内の ClaimType に列挙値をマージするために使用するメソッド。 基本ポリシーで指定された要求を上書きする場合は、この属性を使用します。 指定できる値: `Append`、`Prepend`、および `ReplaceAll`。 `Append`値は、親ポリシーで指定したコレクションの末尾に追加する必要があるデータのコレクション。 `Prepend`値は、親ポリシーで指定したコレクションの前に追加する必要があるデータのコレクション。 `ReplaceAll`値が無視される親ポリシーで指定されたデータのコレクション。 |
+| MergeBehavior | いいえ | 同じ識別子を持つ親ポリシー内の ClaimType に列挙値をマージするために使用するメソッド。 基本ポリシーで指定された要求を上書きする場合は、この属性を使用します。 指定できる値: `Append`、`Prepend`、および `ReplaceAll`。 `Append`値は、親ポリシーで指定したコレクションの末尾に追加する必要があるデータのコレクション。 `Prepend`値は、親ポリシーで指定したコレクションの前に追加する必要があるデータのコレクション。 `ReplaceAll`値が無視される親ポリシーで指定されたデータのコレクション。 |
 
 **制限** 要素には、次の要素が含まれています。
 
@@ -163,7 +163,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 | --------- | -------- | ----------- |
 | Text | はい | このオプションのユーザー インターフェイスでユーザーに表示される表示文字列。 |
 |値 | はい | このオプションの選択に関連付けられている要求の値。 |
-| SelectByDefault | いいえ  | このオプションが既定で UI で選択するかどうかを示します。 指定できる値True または False。 |
+| SelectByDefault | いいえ | このオプションが既定で UI で選択するかどうかを示します。 指定できる値True または False。 |
 
 次の例では、**市区町村**ドロップダウン リストの要求を設定し、既定値を`New York`に設定します。
 
@@ -191,7 +191,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | RegularExpression | はい | この種類の要求が有効になるのに一致する必要がある正規表現。 |
-| HelpText | いいえ  | この要求のパターンまたは正規表現。 |
+| HelpText | いいえ | この要求のパターンまたは正規表現。 |
 
 次の例では、**電子メール**要求を正規表現入力検証とヘルプ テキストとともに設定します。
 

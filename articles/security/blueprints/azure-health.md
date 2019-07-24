@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
 ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885946"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60609730"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
@@ -46,7 +46,7 @@ IaaS ソリューションは、オンプレミスの SQL ベースのソリュ�
 
 - よくある質問については、[FAQ](https://aka.ms/healthblueprintfaq) ガイダンスをご覧ください。
 
--   **アーキテクチャ図**:  この図は、ブループリントとユース ケース シナリオの例で使用される参照アーキテクチャを示します。
+-   **アーキテクチャ図**: この図は、ブループリントとユース ケース シナリオの例で使用される参照アーキテクチャを示します。
 
 -   [IaaS 拡張機能](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) - このソリューションは、オンプレミスの SQL ベースのソリューションを Azure に移行する方法と、クラウドベースのサービスとソリューションを安全に管理するために Privileged Access Workstation を実装する方法を示します。 
 
@@ -55,9 +55,9 @@ IaaS ソリューションは、オンプレミスの SQL ベースのソリュ�
 
 この基本アーキテクチャは次のコンポーネントで構成されています。
 
--   **[脅威モデル](https://aka.ms/healththreatmodel)**: [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168) で使用するために、包括的な脅威モデルが tm7 形式で提供され、ソリューションのコンポーネント、コンポーネント間のデータ フロー、信頼境界が示されます。 このモデルは、Machine Learning Studio コンポーネントや他の変更点を開発するときに、システム インフラストラクチャの潜在的なリスク箇所を理解するのに役立ちます。
+-   **[脅威モデル](https://aka.ms/healththreatmodel)** : [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168) で使用するために、包括的な脅威モデルが tm7 形式で提供され、ソリューションのコンポーネント、コンポーネント間のデータ フロー、信頼境界が示されます。 このモデルは、Machine Learning Studio コンポーネントや他の変更点を開発するときに、システム インフラストラクチャの潜在的なリスク箇所を理解するのに役立ちます。
 
--   **[お客様の実装マトリックス](https://aka.ms/healthcrmblueprint)**: Microsoft Excel ブックに、関連する HITRUST の要件が示され、各要件を満たす際に Microsoft とお客様が負う責任が記載されます。
+-   **[お客様の実装マトリックス](https://aka.ms/healthcrmblueprint)** : Microsoft Excel ブックに、関連する HITRUST の要件が示され、各要件を満たす際に Microsoft とお客様が負う責任が記載されます。
 
 -   **[ヘルス レビュー。](https://aka.ms/healthreviewpaper)** このソリューションは、Coalfire systems, Inc. によってレビューされました。「Health Compliance (HIPAA, and HITRUST) Review and guidance for implementation」(ヘルプ コンプライアンス (HIPAA/HITRUST) レビューおよび実装のためのガイダンス) には、監査担当者によるソリューションのレビューと、このブループリントを実稼働可能なデプロイに変える際の考慮事項が記載されています。
 
@@ -251,7 +251,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 **1.顧客データ (phi データ) の一括インポート**
 
-デモ スクリプト  .\\HealthcareDemo.ps1 を、**BulkPatientAdmission** スイッチを指定して使用すると (**デモのデプロイと実行**に関するページで概説)、次の処理パイプラインが実行されます。
+デモ スクリプト .\\HealthcareDemo.ps1 を、**BulkPatientAdmission** スイッチを指定して使用すると (**デモのデプロイと実行**に関するページで概説)、次の処理パイプラインが実行されます。
 1. **Azure Blob Storage** - 患者データのサンプル .csv ファイルがストレージにアップロードされます。
 2. **Event Grid** - イベントにより、Azure Functions にデータが発行されます (一括インポート - BLOB イベント)。
 3. **Azure Functions** - 処理を実行し、セキュリティで保護された event(type; blob url) 関数を使用してデータを SQL ストレージに格納します。
@@ -267,7 +267,7 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 
 **2.新しい患者の入院**
 
-デモ スクリプト  .\\HealthcareDemo.ps1 を、**BulkPatientadmission** スイッチを指定して使用すると (**デモのデプロイと実行**に関するページで概説)、次の処理パイプラインが実行されます。![](images/securetransact.png)
+デモ スクリプト .\\HealthcareDemo.ps1 を、**BulkPatientadmission** スイッチを指定して使用すると (**デモのデプロイと実行**に関するページで概説)、次の処理パイプラインが実行されます。![](images/securetransact.png)
 **1.Azure Functions** がトリガーされ、関数が Azure Active Directory の[ベアラー トークン](/rest/api/)を要求します。
 
 **2.Key Vault** が、要求したトークンに関連付けられているシークレットを要求します。

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65203628"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight クラスターでジョブが遅いか失敗する場合のトラブルシューティング
@@ -206,7 +206,7 @@ YARN レベルでは、2 種類のタイムアウトがあります。
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>ステップ 4:環境のスタックとバージョンを確認する
 
-Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。  Hadoop サービス ライブラリのバージョンが正しくないと、クラスターの障害の原因になる可能性があります。  Ambari UI で **[Admin]\(管理\)** メニューを選び、**[Stacks and Versions]\(スタックとバージョン\)** を選びます。  ページの上部で **[Versions]\(バージョン\)** タブを選び、サービスのバージョン情報を確認します。
+Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。  Hadoop サービス ライブラリのバージョンが正しくないと、クラスターの障害の原因になる可能性があります。  Ambari UI で **[Admin]\(管理\)** メニューを選び、 **[Stacks and Versions]\(スタックとバージョン\)** を選びます。  ページの上部で **[Versions]\(バージョン\)** タブを選び、サービスのバージョン情報を確認します。
 
 ![スタックとバージョン](./media/hdinsight-troubleshoot-failed-cluster/stack-versions.png)
 

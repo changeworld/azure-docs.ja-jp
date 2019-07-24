@@ -14,11 +14,11 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb29fb5ef2e755ff456ad177b66349792b2fa21c
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60248439"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 新しい Azure AD テナントにはすべて、*domainname*.onmicrosoft.com という初期ドメイン名が付いてきます。 初期ドメイン名を変更または削除することはできませんが、一覧に実際の組織の名前を追加することができます。 カスタム ドメイン名を追加すると、*alain\@contoso.com* など、ユーザーになじみのあるユーザー名を作成するのに役立ちます。
@@ -29,7 +29,7 @@ ms.locfileid: "58418858"
 ## <a name="create-your-directory-in-azure-ad"></a>Azure AD ディレクトリを作成する
 ドメイン名を取得したら、最初の Azure AD ディレクトリを作成できます。
 
-1. サブスクリプションの**所有者**ロールを持つアカウントを使用して、お使いのディレクトリの [Azure portal](https://portal.azure.com/) にサインインし、**[Azure Active Directory]** を選択します。 サブスクリプション ロールの詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)」を参照してください。
+1. サブスクリプションの**所有者**ロールを持つアカウントを使用して、お使いのディレクトリの [Azure portal](https://portal.azure.com/) にサインインし、 **[Azure Active Directory]** を選択します。 サブスクリプション ロールの詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)」を参照してください。
 
     ![Azure AD オプションが表示されている Azure portal 画面](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
@@ -44,11 +44,11 @@ ms.locfileid: "58418858"
 ## <a name="add-your-custom-domain-name-to-azure-ad"></a>Azure AD にカスタム ドメイン名を追加する
 ディレクトリを作成したら、カスタム ドメイン名を追加できます。
 
-1. **[カスタム ドメイン名]** を選択し、**[カスタム ドメインの追加]** を選択します。
+1. **[カスタム ドメイン名]** を選択し、 **[カスタム ドメインの追加]** を選択します。
 
     ![[カスタム ドメイン名] ページ。[カスタム ドメインの追加] が表示されている](media/add-custom-domain/add-custom-domain.png)
 
-2. 組織の新しいドメイン名を **[カスタム ドメイン名]** ボックスに入力し (例: _contoso.com_)、**[ドメインの追加]** を選択します。
+2. 組織の新しいドメイン名を **[カスタム ドメイン名]** ボックスに入力し (例: _contoso.com_)、 **[ドメインの追加]** を選択します。
 
     未検証のドメインが追加されて、DNS 情報を示す **[Contoso]** ページが表示されます。
 
@@ -75,7 +75,7 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 ### <a name="to-verify-your-custom-domain-name"></a>カスタム ドメイン名を検証するには
 1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、**[カスタム ドメイン名]** を選択します。
+2. **[Azure Active Directory]** を選択し、 **[カスタム ドメイン名]** を選択します。
 
 3. **[Fabrikam - カスタム ドメイン名]** ページで、カスタム ドメイン名の **[Contoso]** を選択します。
 

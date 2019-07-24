@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 2af076153725dc91caaf07b710acf21ebc143fb0
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678583"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67273660"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Azure Event Hubs のプログラミング ガイド
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](event-hubs-what-is-event-hubs.md)」を参照してください。
@@ -58,7 +58,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="event-serialization"></a>イベントのシリアル化
 
-[EventData][] クラスには[オーバーロードされたコンストラクターが 2 つ](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)あります。これらのコンストラクターは、イベント データ のペイロードを表すさまざまなパラメーター、バイト配列、またはバイト配列を受け取ります。 JSON と共に [EventData][] を使用するときには、JSON でエンコードされた文字列のバイト配列を取得するのに **Encoding.UTF8.GetBytes()** を使用できます。 例: 
+[EventData][] クラスには[オーバーロードされたコンストラクターが 2 つ](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor)あります。これらのコンストラクターは、イベント データ のペイロードを表すさまざまなパラメーター、バイト配列、またはバイト配列を受け取ります。 JSON と共に [EventData][] を使用するときには、JSON でエンコードされた文字列のバイト配列を取得するのに **Encoding.UTF8.GetBytes()** を使用できます。 例:
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -70,6 +70,9 @@ for (var i = 0; i < numMessagesToSend; i++)
 ```
 
 ## <a name="partition-key"></a>パーティション キー
+
+> [!NOTE]
+> パーティションをよく知らない場合は、[この記事](event-hubs-features.md#partitions)を参照してください。 
 
 イベント データを送信するときに、パーティション割り当てを生成するためにハッシュされる値を指定できます。 [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) プロパティを使用して、パーティションを指定します。 ただし、パーティションを使用するという決定は、可用性と整合性のどちらを優先するかを選択することを意味します。 
 
@@ -107,7 +110,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-イベント処理を開始するには、 [EventProcessorHost][]をインスタンス化し、イベント ハブの適切なパラメーターを提供します。 例: 
+イベント処理を開始するには、 [EventProcessorHost][]をインスタンス化し、イベント ハブの適切なパラメーターを提供します。 例:
 
 > [!NOTE]
 > EventProcessorHost およびその関連クラスは **Microsoft.Azure.EventHubs.Processor** パッケージ内に用意されています。 [この記事](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)の手順に従うか、[パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)のウィンドウで `Install-Package Microsoft.Azure.EventHubs.Processor` コマンドを発行して、パッケージをご自分の Visual Studio プロジェクトに追加します。

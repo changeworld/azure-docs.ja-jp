@@ -2,20 +2,20 @@
 title: カスタム ポリシーを使用して Azure Active Directory B2C で Google アカウントによるサインインを設定する | Microsoft Docs
 description: カスタム ポリシーを使用して Azure Active Directory B2C で Google アカウントでのサインインを設定します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 94b71dc8a355b818af6789022eb297100b569e73
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 498fe63964e44de8f9e1bc06c1740f1a9ef9b392
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712030"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654164"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Google アカウントによるサインインを設定する
 
@@ -30,16 +30,16 @@ ms.locfileid: "64712030"
 
 ## <a name="register-the-application"></a>アプリケーションを登録する
 
-Google アカウントのユーザーがサインインできるようにするには、Google アプリケーション プロジェクトを作成する必要があります。 
+Google アカウントのユーザーがサインインできるようにするには、Google アプリケーション プロジェクトを作成する必要があります。
 
 1. お使いのアカウントの資格情報を使用して [Google Developers Console](https://console.developers.google.com/) にサインインします。
-2. **プロジェクト名**を入力し、**[作成]** をクリックして、新しいプロジェクトを使用していることを確認します。
-3. 左側のメニューで **[認証情報]** を選択して、**[認証情報を作成]、[Oauth クライアント ID]** の順に選択します。
+2. **プロジェクト名**を入力し、 **[作成]** をクリックして、新しいプロジェクトを使用していることを確認します。
+3. 左側のメニューで **[認証情報]** を選択して、 **[認証情報を作成]、[Oauth クライアント ID]** の順に選択します。
 4. **[Configure consent screen (同意画面の構成)]** を選択します。
-5. 有効な**メール アドレス**を選択または指定し、ユーザーに表示する**製品名**を入力します。**[認証済みドメイン]** に「`b2clogin.com`」と入力し、**[保存]** をクリックします。
+5. 有効な**メール アドレス**を選択または指定し、ユーザーに表示する**製品名**を入力します。 **[認証済みドメイン]** に「`b2clogin.com`」と入力し、 **[保存]** をクリックします。
 6. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。
 7. アプリケーションの **[名前]** を入力します。
-8. **[承認済みの JavaScript 生成元]** に「`https://your-tenant-name.b2clogin.com`」と入力し、**[承認済みのリダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 your-tenant-name をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
+8. **[承認済みの JavaScript 生成元]** に「`https://your-tenant-name.b2clogin.com`」と入力し、 **[承認済みのリダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 your-tenant-name をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
 8. **Create** をクリックしてください。
 9. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 テナントで ID プロバイダーとして Google を構成するには、両方の値が必要です。 クライアント シークレットは、重要なセキュリティ資格情報です。
 
@@ -49,9 +49,9 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
-5. **[ポリシー キー]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 6. **オプション**については、`Manual`を選択します。
 7. ポリシー キーの**名前**を入力します。 たとえば、「 `GoogleSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 8. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
@@ -60,7 +60,7 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
-ユーザーに Google アカウントを使用してサインインさせるには、そのアカウントを、Azure AD B2C がエンドポイント経由で通信できるクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。 
+ユーザーに Google アカウントを使用してサインインさせるには、そのアカウントを、Azure AD B2C がエンドポイント経由で通信できるクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 Google アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
@@ -117,7 +117,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
 
 ここまでで、Azure AD B2C が Azure AD ディレクトリと通信する方法を認識するようにポリシーを設定しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
 
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、**[ポリシーのアップロード]** を選択します。
+1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
 2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
 3. **[アップロード]** をクリックします。
 
@@ -152,7 +152,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
     ```
-    
+
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの ID に更新します。 たとえば、「 `Google-OAuth` 」のように入力します。
 
 3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
@@ -163,10 +163,10 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. アプリケーションの名前を入力します (*testapp1* など)。
-6. **[Web アプリ / Web API]** には `Yes` を選択し、**[応答 URL]** に `https://jwt.ms` を入力します。
+6. **[Web アプリ / Web API]** には `Yes` を選択し、 **[応答 URL]** に `https://jwt.ms` を入力します。
 7. **Create** をクリックしてください。
 
 ## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
@@ -178,4 +178,4 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_google` とします。
 4. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignGoogle) に一致するように更新します。
 5. 変更を保存し、ファイルをアップロードしてから、一覧内の新しいポリシーを選択します。
-6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてテストします。
+6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、 **[今すぐ実行]** をクリックしてテストします。

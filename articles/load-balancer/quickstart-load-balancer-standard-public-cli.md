@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: このクイックスタートでは、Azure CLI を使用してパブリック ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 tags: azure-resource-manager
 Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: a98f65db3739cf3f4771df7a2ef864008f7dbaa9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c655d108e018bb843b81a4c45c94584985e82488
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170904"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273972"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
@@ -68,7 +68,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
   az network lb create \
     --resource-group myResourceGroupSLB \
     --name myLoadBalancer \
-    --sku standard
+    --sku standard \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       
@@ -236,9 +236,9 @@ for i in `seq 1 2`; do
     --nics myNic$i \
     --image UbuntuLTS \
     --generate-ssh-keys \
-    --custom-data cloud-init.txt
+    --custom-data cloud-init.txt \
     --no-wait
-    done
+done
 ```
 VM がデプロイされるまでに、数分かかる場合があります。
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pullabhk
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 6469e3b35357867b6b38b00c8b11637ba30b2960
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 6a2e065466ab4426a6472b64fae19d264ff8dd81
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287579"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734219"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>PowerShell を使用して Azure VM 内の SQL Database をバックアップおよび復元する
 
@@ -25,7 +25,7 @@ ms.locfileid: "58287579"
 
 > [!div class="checklist"]
 > * PowerShell を設定し、Azure Recovery Services プロバイダーを登録します。
-> * Recovery Services コンテナーを作成します。
+> * Recovery Services コンテナーを作成する。
 > * Azure VM 内の SQL DB のバックアップを構成します。
 > * バックアップ ジョブを実行します。
 > * バックアップした SQL DB を復元します。
@@ -66,7 +66,7 @@ PowerShell を次のように設定します。
 4. **Connect-AzAccount** を使用して Azure アカウントにサインインします。
 5. 表示される Web ページで、アカウントの資格情報を入力するように求められます。
 
-    * または、**-Credential** を使用して、**Connect-AzAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含めることもできます。
+    * または、 **-Credential** を使用して、**Connect-AzAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含めることもできます。
     * CSP パートナーがテナントのために活動している場合は、そのテナントの tenantID またはテナントのプライマリ ドメイン名をして、その顧客をテナントとして指定します。 たとえば、「**Connect-AzAccount -Tenant** fabrikam.com」を指定します。
 
 6. 1 つのアカウントが複数のサブスクリプションを持つことができるため、使用するサブスクリプションをアカウントに関連付けます。
@@ -110,7 +110,7 @@ Recovery Services コンテナーは Resource Manager のリソースである�
 3. コンテナー ストレージに使用する冗長性の種類を指定します。
 
     * [ローカル冗長ストレージ](../storage/common/storage-redundancy-lrs.md)または [geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md)を使用できます。
-    * 次の例では、**testvault** の [Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperties?view=azps-1.4.0) コマンドの **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
+    * 次の例では、**testvault** に対する [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) コマンドの **-BackupStorageRedundancy** オプションが **GeoRedundant** に設定されています。
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -281,7 +281,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 
 ````powershell
 $startDate = (Get-Date).AddDays(-7).ToUniversalTime()
-$endDate = Get-Date.ToUniversalTime()
+$endDate = (Get-Date).ToUniversalTime()
 Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $targetVault.ID -StartDate $startdate -EndDate $endDate
 ````
 
@@ -477,6 +477,18 @@ WorkloadName     Operation            Status               StartTime            
 master           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
 ```
 
+### <a name="re-register-sql-vms"></a>SQL VM の再登録
+
+> [!WARNING]
+> 再登録を試行する前に、必ずこちらの[ドキュメント](backup-sql-server-azure-troubleshoot.md#re-registration-failures)を確認して、エラーの現象と原因を把握してください。
+
+SQL VM の再登録をトリガーするには、関連するバックアップ コンテナーをフェッチして、登録のコマンドレットに渡します。
+
+````powershell
+$SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -FriendlyName <VM name> -VaultId $targetvault.ID
+Register-AzRecoveryServicesBackupContainer -Container $SQLContainer -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID
+````
+
 ### <a name="stop-protection"></a>保護の停止
 
 #### <a name="retain-data"></a>データの保持
@@ -518,7 +530,7 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Azure Backup はユーザーがトリガーしたジョブしか SQL バックアップで追跡できないことに注意してください。 スケジュールされたバックアップ (ログ バックアップを含む) はポータル/powershell には表示されません。 ただし、スケジュールされたジョブが失敗した場合は、[バックアップ アラート](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)が生成されてポータルに表示されます。 スケジュールされたすべてのジョブとその他の関連情報を追跡するには、[Azure Monitor を使用](backup-azure-monitoring-use-azuremonitor.md)します。
 
-ユーザーは、バックアップなど非同期ジョブの[出力](#on-demand-backup)に返される JobID を使用して、アドホック操作やユーザーがトリガーした操作を追跡できます。 [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetails?view=azps-1.5.0) PS コマンドレットを使用して、ジョブおよび詳細を追跡します。
+ユーザーは、バックアップなど非同期ジョブの[出力](#on-demand-backup)に返される JobID を使用して、アドホック操作やユーザーがトリガーした操作を追跡できます。 [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS コマンドレットを使用して、ジョブとその詳細を追跡します。
 
 ````powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID

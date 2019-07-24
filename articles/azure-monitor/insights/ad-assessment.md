@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.openlocfilehash: 3b5da6c9046fc694bd5eb0f55cf031b82b6d0103
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370535"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60919836"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Azure Monitor で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 
@@ -34,7 +34,7 @@ Active Directory 正常性チェック ソリューションを使用して、�
 
 組織にとって最も重要な対象領域を選択し、リスクのない正常な環境の実行に向けた進行状況を追跡できます。
 
-ソリューションを追加し、チェックが完了すると、環境のインフラストラクチャの **[Active Directory 正常性チェック]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、**[Active Directory 正常性チェック]** ダッシュボードの情報を使用する方法について説明します。ここでは、Active Directory サーバー インフラストラクチャを確認し、推奨された解決方法を実行できます。  
+ソリューションを追加し、チェックが完了すると、環境のインフラストラクチャの **[Active Directory 正常性チェック]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、 **[Active Directory 正常性チェック]** ダッシュボードの情報を使用する方法について説明します。ここでは、Active Directory サーバー インフラストラクチャを確認し、推奨された解決方法を実行できます。  
 
 ![[Active Directory 正常性チェック] タイルの画像](./media/ad-assessment/ad-healthcheck-summary-tile.png)
 
@@ -111,7 +111,7 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-1. **[概要]** ページで、**[Active Directory 正常性チェック]** タイルをクリックします。
+1. **[概要]** ページで、 **[Active Directory 正常性チェック]** タイルをクリックします。
 1. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 1. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![正常性チェックの推奨事項の画像](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 1. **[推奨する解決方法]** で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、コンプライアンスのスコアが上がります。 修正された項目は **[合格したオブジェクト]** として表示されます。

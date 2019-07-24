@@ -1,7 +1,7 @@
 ---
 title: ML パイプラインの作成、実行、追跡
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning SDK for Python で機械学習パイプラインを作成して実行します。 パイプラインを使用して、機械学習 (ML) のフェーズをつなぎ合わせるワークフローを作成して管理することができます。 データ保護、モデル トレーニング、モデル デプロイ、推論などのフェーズがあります。
+description: Azure Machine Learning SDK for Python で機械学習パイプラインを作成して実行します。 パイプラインを使用して、機械学習 (ML) のフェーズをつなぎ合わせるワークフローを作成して管理することができます。 これらのフェーズとしては、データ保護、モデルのトレーニング、モデル デプロイ、推論/スコアリングなどがあります。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
-ms.date: 01/08/2019
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2e6bc0fd9de4fdba1188b40c49ebf9459d684d38
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 948594a43cec92aa62386b041ce8c96a0558995e
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679994"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67466926"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Azure Machine Learning SDK を使用して機械学習パイプラインを作成および実行する
 
@@ -53,12 +53,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * データストアに存在するデータまたはデータストアでアクセス可能なデータを指し示すように、`DataReference` オブジェクトを構成します。
 
-* パイプラインの手順が実行される[コンピューティング先](concept-azure-machine-learning-architecture.md#compute-target)を設定します。
+* パイプラインの手順が実行される[コンピューティング先](concept-azure-machine-learning-architecture.md#compute-targets)を設定します。
 
 ### <a name="set-up-a-datastore"></a>データストアをセットアップする
 データストアには、パイプラインでアクセスするデータが格納されます。 各ワークスペースに既定のデータストアがあります。 データストアを追加登録できます。 
 
-ワークスペースを作成すると、[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) と [Azure BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)が既定でワークスペースに接続されます。 Azure Files がワークスペースの既定のデータストアですが、BLOB ストレージをデータストアとして使用することもできます。 詳細については、[Azure Files、Azure BLOB、Azure ディスクの使い分け](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関するページを参照してください。 
+ワークスペースを作成すると、[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) と [Azure BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)が既定でワークスペースに接続されます。 Azure Blob Storage がワークスペースの既定のデータストアですが、BLOB ストレージをデータストアとして使用することもできます。 詳細については、[Azure Files、Azure BLOB、Azure ディスクの使い分け](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関するページを参照してください。 
 
 ```python
 # Default datastore (Azure file storage)
@@ -251,6 +251,8 @@ trainStep = PythonScriptStep(
 )
 ```
 
+共同環境でパイプラインを使用する際は、前の結果 (`allow_reuse`) の再利用が鍵となります。不要な再実行を除去することで機敏性が提供されるからです。 ステップの script_name、inputs、およびパラメーターが同じままのときは、これが既定の動作になります。 ステップの出力が再使用されると、ジョブはコンピューティングに送信されず、代わりに、前の実行の結果が、次のステップの実行ですぐに使用可能になります。 false に設定されている場合は、パイプライン実行中、このステップの新規実行が常に生成されます。 
+
 ステップを定義した後は、それらのステップの一部またはすべてを使用してパイプラインをビルドします。
 
 > [!NOTE]
@@ -294,7 +296,7 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 > [!IMPORTANT]
 > スナップショットにファイルが含まれないようにするには、[.gitignore](https://git-scm.com/docs/gitignore) または `.amlignore` ファイルをディレクトリに作成して、そこにそれらのファイルを追加してください。 `.amlignore` ファイルには、[.gitignore](https://git-scm.com/docs/gitignore) ファイルと同じ構文とパターンが使用されます。 両方のファイルが存在する場合、`.amlignore` ファイルが優先されます。
 >
-> 詳細については、「[スナップショット](concept-azure-machine-learning-architecture.md#snapshot)」を参照してください。
+> 詳細については、「[スナップショット](concept-azure-machine-learning-architecture.md#snapshots)」を参照してください。
 
 ```python
 # Submit the pipeline to be run
@@ -314,6 +316,10 @@ pipeline_run1.wait_for_completion()
 ![パイプラインとして実験を実行する図](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
 詳細については、「[Experiment class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)」リファレンスを参照してください。
+
+## <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
+
+ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 たとえば、リポジトリの現在のコミット ID が履歴の一部としてログに記録されます。
 
 ## <a name="publish-a-pipeline"></a>パイプラインを発行する
 
@@ -359,6 +365,7 @@ response = requests.post(published_pipeline1.endpoint,
     json={"ExperimentName": "My_Pipeline",
         "ParameterAssignments": {"pipeline_arg": 20}})
 ```
+
 ## <a name="view-results"></a>結果の表示
 
 すべてのパイプラインとその実行の詳細の一覧を表示します。
@@ -368,6 +375,25 @@ response = requests.post(published_pipeline1.endpoint,
  ![機械学習パイプラインの一覧](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. 実行結果を表示する特定のパイプラインを選択します。
+
+## <a name="caching--reuse"></a>キャッシュと再利用  
+
+パイプラインの動作を最適化およびカスタマイズするためには、キャッシュと再使用に関連するいくつかのことを実行できます。 たとえば、次のようなことを選択できます。
++ [ステップ定義](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)中に `allow_reuse=False` を設定して、**既定のステップ実行出力の再利用をオフにします**。 共同環境でパイプラインを使用する際は再利用が鍵となります。不要な再実行を除去することで機敏性が提供されるからです。 ただし、これを行わないことも選択できます。
++ `hash_paths=['<file or directory']` を使用して、source_directory の絶対パスまたは相対パスも含めるように、他のファイルおよびディレクトリに**ハッシュをスクリプトを超えて拡張**します。 
++ `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` を使用して、**1 回の実行で全ステップの出力の再生成を強制します**。
+
+既定では、ステップに対する `allow-reuse` は有効になっており、メイン スクリプト ファイルのみがハッシュされます。 したがって、ある特定のステップのスクリプトが同じ場合 (`script_name`、inputs、およびパラメーター)、前のステップ実行の出力が再利用されて、ジョブはコンピューティングに送信されず、代わりに、前の実行の結果が次のステップで即時使用可能になります。  
+
+```python
+step = PythonScriptStep(name="Hello World", 
+                        script_name="hello_world.py",  
+                        compute_target=aml_compute,  
+                        source_directory= source_directory, 
+                        allow_reuse=False, 
+                        hash_paths=['hello_world.ipynb']) 
+```
+ 
 
 ## <a name="next-steps"></a>次の手順
 - [GitHub 上のこれらの Jupyter notebook](https://aka.ms/aml-pipeline-readme) を使用して、機械学習パイプラインをさらに調べます。

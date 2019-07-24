@@ -13,11 +13,11 @@ ms.reviewer: sstein, carlrab, srbozovi, bonova
 manager: craigg
 ms.date: 02/18/2019
 ms.openlocfilehash: 59088ad53e923f1303c0e800df9c25f70e63812f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360487"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60701885"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>クイック スタート: Azure SQL Database Managed Instance に接続するように Azure VM を構成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "59360487"
 
    ![マネージド インスタンスのリソース](./media/sql-database-managed-instance-configure-vm/resources.png)
 
-2. **[サブネット]** を選択し、**[+ サブネット]** を選択して新しいサブネットを作成します。
+2. **[サブネット]** を選択し、 **[+ サブネット]** を選択して新しいサブネットを作成します。
 
    ![マネージド インスタンスのサブネット](./media/sql-database-managed-instance-configure-vm/subnets.png)
 
@@ -121,9 +121,9 @@ SQL マネージド インスタンスはプライベート仮想ネットワー
 
 4. **[仮想マシンに接続する]** フォームを閉じます。
 5. VM に接続するには、ダウンロードした RDP ファイルを開きます。
-6. メッセージが表示されたら、**[Connect]** を選択します。 Mac では、この[リモート デスクトップ クライアント](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)のような RDP クライアントを Mac App Store から入手する必要があります。
+6. メッセージが表示されたら、 **[Connect]** を選択します。 Mac では、この[リモート デスクトップ クライアント](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)のような RDP クライアントを Mac App Store から入手する必要があります。
 
-7. 仮想マシンの作成時に指定したユーザー名とパスワードを入力し、**[OK]** を選択します。
+7. 仮想マシンの作成時に指定したユーザー名とパスワードを入力し、 **[OK]** を選択します。
 
 8. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** を選択して接続処理を続行します。
 
@@ -134,7 +134,7 @@ SQL マネージド インスタンスはプライベート仮想ネットワー
 1. 仮想マシンで、SQL Server Management Studio (SSMS) を開きます。
 
    SSMS を始めて起動するので構成を完了する必要があるため、開くまでにしばらくかかります。
-2. **[サーバーに接続]** ダイアログ ボックスで、**[サーバー名]** ボックスにマネージド インスタンスの完全修飾**ホスト名**を入力します。 **[SQL Server 認証]** を選択し、ユーザー名とパスワードを入力して、**[接続]** を選択します。
+2. **[サーバーに接続]** ダイアログ ボックスで、 **[サーバー名]** ボックスにマネージド インスタンスの完全修飾**ホスト名**を入力します。 **[SQL Server 認証]** を選択し、ユーザー名とパスワードを入力して、 **[接続]** を選択します。
 
     ![SSMS 接続](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 

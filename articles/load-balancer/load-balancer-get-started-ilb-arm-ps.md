@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure Resource Manager と Azure PowerShell モジュールを使用して、内部ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 17753ba374475c19fee1a213654caf4a624088f8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: allensu
+ms.openlocfilehash: b53225334c6a7d61fcee70327df5979af1e424ee
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669909"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275403"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用した内部ロード バランサーの作成
 
@@ -251,7 +251,7 @@ $backendnic2= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-b
 
 ### <a name="step-1-store-the-load-balancer-resource"></a>手順 1:ロード バランサーのリソースを格納する
 
-変数にロード バランサーのリソースを格納します (まだ実行していない場合)。 ここでは、**$lb** という変数名を使用しています。スクリプトの属性名には、前の手順で作成したロード バランサー リソースの名前を使用します。
+変数にロード バランサーのリソースを格納します (まだ実行していない場合)。 ここでは、 **$lb** という変数名を使用しています。スクリプトの属性名には、前の手順で作成したロード バランサー リソースの名前を使用します。
 
 ```azurepowershell-interactive
 $lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
@@ -267,7 +267,7 @@ $backend = Get-AzLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBala
 
 ### <a name="step-3-store-the-network-interface"></a>手順 3:ネットワーク インターフェイスを格納する
 
-別の変数にネットワーク インターフェイスを格納します。 このインターフェイスは、「手順 1: ネットワーク インターフェイスを作成する」で作成されたものです。 ここでは、**$nic1** という変数名を使用しています。 前の例と同じネットワーク インターフェイス名を使用します。
+別の変数にネットワーク インターフェイスを格納します。 このインターフェイスは、「手順 1: ネットワーク インターフェイスを作成する」で作成されたものです。 ここでは、 **$nic1** という変数名を使用しています。 前の例と同じネットワーク インターフェイス名を使用します。
 
 ```azurepowershell-interactive
 $nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG

@@ -1,7 +1,7 @@
 ---
 title: ダッシュボード - Language Understanding
 titleSuffix: Azure Cognitive Services
-description: 視覚化されたレポート作成ツールである分析概要ダッシュボードで意図を修正します。
+description: 視覚化されたレポート作成ツールである分析ダッシュボードで意図を修正します。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a518a697369ff74689a0c4ac05af96453b6a5ca4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 055d113a2bc77f8de1b4b881718007c869470532
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072470"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66236954"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>ダッシュボードを使用してアプリを改善する方法
 
-発話例を使用しているときに、トレーニング対象アプリの意図に関する問題を見つけて修正します。 概要ダッシュボードには、修正する必要がある主な意図と共に、全体的なアプリ情報が表示されます。 
+発話例を使用しているときに、トレーニング対象アプリの意図に関する問題を見つけて修正します。 ダッシュボードには、修正する必要がある主な意図と共に、全体的なアプリ情報が表示されます。 
 
 レビュー ダッシュボード分析は、モデルを変更および改善するたびに繰り返される反復プロセスです。
 
@@ -38,11 +38,11 @@ ms.locfileid: "65072470"
 
 正しい予測は青色で表されます。
 
-概要ダッシュボードには、これらの問題が表示され、影響を受ける意図が示され、アプリを改善するためにすべきことが提案されます。 
+ダッシュボードには、これらの問題が表示され、影響を受ける意図が示され、アプリを改善するためにすべきことが提案されます。 
 
 ## <a name="before-app-is-trained"></a>アプリをトレーニングする前に 
 
-アプリをトレーニングする前の概要ダッシュボードには、修正に関する提案は表示されません。 アプリをトレーニングすると、これらの提案が表示されます。  
+アプリをトレーニングする前のダッシュボードには、修正に関する提案は表示されません。 アプリをトレーニングすると、これらの提案が表示されます。  
 
 ## <a name="check-your-publishing-status"></a>発行状態を確認する
 
@@ -50,7 +50,7 @@ ms.locfileid: "65072470"
 
 アクティブなバージョンが修正対象のバージョンであることを確認します。 
 
-![概要ダッシュボードには、アプリの外部サービス、発行されているリージョン、集計されたエンドポイントのヒット数が表示されます。](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
+![ダッシュボードには、アプリの外部サービス、発行されているリージョン、および集計されたエンドポイントのヒット数が表示されます。](./media/luis-how-to-use-dashboard/analytics-card-1-shows-app-summary-and-endpoint-hits.png)
 
 これには、任意の外部サービス、発行されているリージョン、集計されたエンドポイントのヒット数も表示されます。 
 
@@ -68,7 +68,7 @@ ms.locfileid: "65072470"
 
 ### <a name="compare-changes-across-versions"></a>バージョン間の変更内容を比較する
 
-アプリを変更する前に新しいバージョンを作成します。 新しいバージョンでは、提案された変更を意図の発話例に加えてから、もう一度トレーニングします。 [ダッシュボード] ページの **[Training evaluation]\(トレーニング評価\)** カードで、**[Show change from trained version]\(トレーニングしたバージョンからの変更を表示する\)** を使用して変更内容を比較します。 
+アプリを変更する前に新しいバージョンを作成します。 新しいバージョンでは、提案された変更を意図の発話例に加えてから、もう一度トレーニングします。 [ダッシュボード] ページの **[Training evaluation]\(トレーニング評価\)** カードで、 **[Show change from trained version]\(トレーニングしたバージョンからの変更を表示する\)** を使用して変更内容を比較します。 
 
 ![バージョン間の変更内容を比較する](./media/luis-how-to-use-dashboard/compare-improvement-across-versions.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "65072470"
 
 * さらに発話を意図に追加してから、もう一度トレーニングします。 
 
-概要ダッシュボードで提案されていない限り、"None" の意図に発話を追加しないでください。
+ダッシュボードで提案されていない限り、None 意図に発話を追加しないでください。
 
 > [!Tip]
 > より多くの発話を必要とする意図をひと目で確認できるガイドとして、ページ上の 3 つ目のセクション **[Utterances per intent]\(意図あたりの発話\)** と **[Utterances (number)]\(発話 (数)\)** 設定を使用します。  

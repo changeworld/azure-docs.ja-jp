@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32efe76ac2fce4c4541287e96c3a495f3eb9031b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 52b5e37c29e4b3df3f171f683266b5d0a3e0c95d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161494"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67109288"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのインシデント対応要件の決定
 大規模または中規模の組織は、多くの場合、[セキュリティ インシデント対応](https://technet.microsoft.com/library/cc700825.aspx)を配備し、インシデントのレベルに基づく IT 措置を支援します。 ID 管理システムはインシデント対応プロセスの重要な構成要素です。ID 管理システムを利用し、ターゲットに対して特定のアクションを実行した人物を特定できるからです。 ハイブリッド ID ソリューションでは、潜在的な脅威を特定し、軽減するための措置を行うために IT が活用できる監視と報告の機能を備えている必要があります。 典型的なインシデント対応計画では、計画の一部として次のフェーズが与えられます。

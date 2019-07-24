@@ -6,15 +6,15 @@ keywords: エンコード;エンコーダー;メディア
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 01/17/2019
+ms.date: 08/16/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c7d895cd87122374a79a520643580a179961fba3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1f152f7f94c12beecf015d9389ed85cb310573bd
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317325"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297736"
 ---
 # <a name="recommended-live-streaming-encoders"></a>おすすめのライブ ストリーミング エンコーダー
 
@@ -24,7 +24,7 @@ Azure Media Services では、[ライブ イベント](https://docs.microsoft.co
 
   > [!NOTE]
   > パススルー方式を使用することが、ライブ ストリーミングを行う最も経済的な方法です。
-
+ 
 * オンプレミスのライブ エンコーダーでは、次のいずれかの形式で、Media Services によるライブ エンコードが有効な Live Event にシングル ビットレート ストリームが送信されます。RTMP またはスムーズ ストリーミング (フラグメント化 MP4)。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードが Live Event で実行されます。
 
 Media Services でのライブ エンコードの詳細については、[Media Services v3 でのライブ ストリーミング](live-streaming-overview.md)に関するページをご覧ください。
@@ -60,6 +60,9 @@ Media Services では、マルチビットレートのスムーズ ストリー�
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live と Hero 4K (UHD/HEVC)
 
+> [!TIP]
+>  複数の言語でライブ イベント (たとえば、英語のオーディオ トラックやスペイン語のオーディオ トラックなど) をストリーミングする場合は、パススルー ライブ イベントにライブ フィードを送信するように構成された Media Excel ライブ エンコーダーを利用して、これを実現できます。
+
 ## <a name="configuring-on-premises-live-encoder-settings"></a>オンプレミス ライブ エンコーダーの設定を構成する
 
 ご利用のライブ イベントの種類に有効な設定に関する詳細については、「[ライブ イベントの種類の比較](live-event-types-comparison.md)」を参照してください。
@@ -94,7 +97,7 @@ Media Services は、Azure Media Services オンプレミス エンコーダー 
 10. 手順 8.の URL と手順 9 のホスト名を組み合わせて、完全な URL を取得します。
 11. ライブ エンコーダーを約 10 分間実行します。
 12. ライブ イベントを停止します。 
-13. [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用してアーカイブされた資産を再生し、すべての品質レベルで目に見える異常がないことを確認します。 または、ライブ セッション中にプレビュー URL を使用して再生し、検証します。
+13. [Azure Media Player](https://aka.ms/azuremediaplayer) などのプレーヤーを使用してアーカイブされた資産を再生し、すべての品質レベルで目に見える異常がないことを確認します。 または、ライブ セッション中にプレビュー URL を使用して再生し、検証します。
 14. 資産 ID、ライブ アーカイブの公開済みストリーミング URL、およびライブ エンコーダーから使用されている設定とバージョンを記録します。
 15. 各サンプルの作成後に、Live Event の状態をリセットします。
 16. エンコーダーでサポートされているすべての構成について、手順 5 - 15 を繰り返します (必要に応じて、広告信号、キャプション、または異なるエンコード速度を使用します)。
@@ -113,18 +116,18 @@ Media Services は、Azure Media Services オンプレミス エンコーダー 
 10. 手順 8.の URL と手順 9 のホスト名を組み合わせて、完全な URL を取得します。
 11. ライブ エンコーダーを約 10 分間実行します。
 12. ライブ イベントを停止します。
-13. [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用してアーカイブされた資産を再生し、すべての品質レベルについて目に見える異常がないことを確認します。 または、ライブ セッション中にプレビュー URL を使用して再生し、検証します。
+13. [Azure Media Player](https://aka.ms/azuremediaplayer) などのプレーヤーを使用してアーカイブされた資産を再生し、すべての品質レベルについて目に見える異常がないことを確認します。 または、ライブ セッション中にプレビュー URL を使用して再生し、検証します。
 14. 資産 ID、ライブ アーカイブの公開済みストリーミング URL、およびライブ エンコーダーから使用されている設定とバージョンを記録します。
 15. 各サンプルの作成後に、Live Event の状態をリセットします。
 16. エンコーダーでサポートされているすべての構成について、手順 5 - 15 を繰り返します (必要に応じて、広告信号、キャプション、または異なるエンコード速度を使用します)。
 
 ### <a name="longevity-verification"></a>持続時間の検証
 
-[パススルー ライブ イベント検証](#pass-through-live-event-verification)と同じ手順に従います。ただし、手順 11 を除きます。 <br/>10 分ではなく、1 週間以上ライブ エンコーダーを実行します。 再生に目に見える異常がないことを確認するため、[Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) などのプレーヤーを使用して、時折ライブ ストリーミング (またはアーカイブされた資産) を監視します。
+[パススルー ライブ イベント検証](#pass-through-live-event-verification)と同じ手順に従います。ただし、手順 11 を除きます。 <br/>10 分ではなく、1 週間以上ライブ エンコーダーを実行します。 再生に目に見える異常がないことを確認するため、[Azure Media Player](https://aka.ms/azuremediaplayer) などのプレーヤーを使用して、時折ライブ ストリーミング (またはアーカイブされた資産) を監視します。
 
 ### <a name="email-your-recorded-settings"></a>記録した設定をメールで送信する
 
-最後に、すべての自己検証チェックに成功したことを知らせる通知として、amsstreaming@microsoft.com 宛の電子メールで記録した設定とライブ アーカイブ パラメーターを Azure Media Services に送信します。 また、すべてのフォローアップに関する自分の連絡先情報を含めます。 このプロセスに関して質問がある場合は、Azure Media Services チームに問い合わせることができます。
+最後に、すべての自己検証チェックに成功したことを知らせる通知として、amshelp@microsoft.com 宛の電子メールで記録した設定とライブ アーカイブ パラメーターを Azure Media Services に送信します。 また、すべてのフォローアップに関する自分の連絡先情報を含めます。 このプロセスに関して質問がある場合は、Azure Media Services チームに問い合わせることができます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,7 +3,7 @@ title: Azure Mobile Apps 向け Apache Cordova プラグインの使用方法
 description: Azure Mobile Apps 向け Apache Cordova プラグインの使用方法
 services: app-service\mobile
 documentationcenter: javascript
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
@@ -12,18 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: 3c22aab20a9260bfd21869f0b327211e2f3d8894
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 327cb3a3667c63454549ec694790769c9ea1fd58
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004209"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446417"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-how-to-use-client-library) を今すぐチェックしてください。
+>
+
+## <a name="overview"></a>概要
 このガイドでは、最新の [Azure Mobile Apps 向け Apache Cordova プラグイン]を使用して一般的なシナリオを実行する方法について説明します。 Azure Mobile Apps を初めて使用する場合は、まず、「 [Apache Cordova アプリの作成] 」を参照して、バックエンドの作成、テーブルの作成、構築済みの Apache Cordova プロジェクトのダウンロードを行ってください。 このガイドでは、クライアント側の Apache Cordova プラグインに重点を置いています。
 
 ## <a name="supported-platforms"></a>サポートされるプラットフォーム
@@ -93,12 +98,12 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 
 ローカル設定を構成に追加するには、以下の手順に従います。
 
-1.  [Azure Portal]
+1. [Azure Portal]
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
-3.  **[ツール]**
-4. [監視] メニューの **[リソース エクスプローラー]** をクリックし、**[実行]** をクリックします。  新しいウィンドウまたはタブが開きます。
-5. 左側のナビゲーションで、サイトの **[config]** ノード、**[authsettings]** ノードの順に展開します。
-6.  **[編集]**
+3. **[ツール]**
+4. [監視] メニューの **[リソース エクスプローラー]** をクリックし、 **[実行]** をクリックします。  新しいウィンドウまたはタブが開きます。
+5. 左側のナビゲーションで、サイトの **[config]** ノード、 **[authsettings]** ノードの順に展開します。
+6. **[編集]**
 7. "allowedExternalRedirectUrls" 要素を探します。  この要素は、null または値の配列に設定できます。  値を次の値に変更します。
 
          "allowedExternalRedirectUrls": [
@@ -113,7 +118,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
 この時点で設定が保存されます。  設定の保存が完了するまで、ブラウザー ウィンドウを閉じないでください。
 また、App Service の CORS 設定に、これらのループバック URL を追加します。
 
-1.  [Azure Portal]
+1. [Azure Portal]
 2. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
 3. [設定] ブレードが自動的に開きます。  開かない場合は、 **[すべての設定]** をクリックします。
 4. API メニューの **[CORS]** をクリックします。

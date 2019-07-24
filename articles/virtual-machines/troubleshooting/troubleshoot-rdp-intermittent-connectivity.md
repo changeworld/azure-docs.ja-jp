@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
 ms.openlocfilehash: 7fecf8c5fdafb64f7922054dd2bb9755b0dec031
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881343"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60386178"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Azure VM でリモート デスクトップの接続が頻繁に切れる
 
@@ -92,11 +92,11 @@ ms.locfileid: "55881343"
 
 1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
 2. OS ディスクを復旧 VM に接続したら、[ディスクの管理] コンソールでそのディスクが **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
-3. 接続した OS ディスクで、**\windows\system32\config** フォルダーに移動します。 ロールバックが必要な場合に備えて、このフォルダーのすべてのファイルをバックアップとしてコピーします。
+3. 接続した OS ディスクで、 **\windows\system32\config** フォルダーに移動します。 ロールバックが必要な場合に備えて、このフォルダーのすべてのファイルをバックアップとしてコピーします。
 4. レジストリ エディター (regedit.exe) を起動します。
-5. **HKEY_LOCAL_MACHINE** キーを選択します。 メニューで、**[ファイル]** > **[ハイブの読み込み]** を選択します。
-6. 接続した OS ディスクで、**\windows\system32\config\SYSTEM** フォルダーを参照します。 ハイブの名前として、「**BROKENSYSTEM**」と入力します。 **HKEY_LOCAL_MACHINE** キーの下に、新しいレジストリ ハイブが表示されます。 次に、**HKEY_LOCAL_MACHINE** キーの下のソフトウェア ハイブ **\windows\system32\config\SOFTWARE** を読み込みます。 ハイブ ソフトウェアの名前として、「**BROKENSYSTEM**」と入力します。 
-7. 管理者特権でのコマンド プロンプト ウィンドウを開いて (**[管理者として実行]**)、残りの手順のコマンドを実行して RDP 構成をリセットします。 
+5. **HKEY_LOCAL_MACHINE** キーを選択します。 メニューで、 **[ファイル]**  >  **[ハイブの読み込み]** を選択します。
+6. 接続した OS ディスクで、 **\windows\system32\config\SYSTEM** フォルダーを参照します。 ハイブの名前として、「**BROKENSYSTEM**」と入力します。 **HKEY_LOCAL_MACHINE** キーの下に、新しいレジストリ ハイブが表示されます。 次に、**HKEY_LOCAL_MACHINE** キーの下のソフトウェア ハイブ **\windows\system32\config\SOFTWARE** を読み込みます。 ハイブ ソフトウェアの名前として、「**BROKENSYSTEM**」と入力します。 
+7. 管理者特権でのコマンド プロンプト ウィンドウを開いて ( **[管理者として実行]** )、残りの手順のコマンドを実行して RDP 構成をリセットします。 
 8. サーバーとクライアント間の通信がネイティブの RDP 暗号化を使用するように、RDP セキュリティ レイヤーを 0 まで下げます。
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet001\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f

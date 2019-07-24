@@ -8,7 +8,7 @@ metadata:
   author: PatrickFarley
   manager: cgronlun
   ms.service: cognitive-services
-  ms.subservice: form-recognizer
+  ms.subservice: forms-recognizer
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
@@ -16,7 +16,16 @@ metadata:
   ms.author: pafarley
 ms.custom: seodec18
 abstract:
-  description: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出するコグニティブ サービスです。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習では、手作業によるデータのラベリングまたは集中的なコーディングおよびメンテナンスを行わなくても、モデルはフィールドとエントリ間のレイアウトと関係を理解できます。
+  description: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出するコグニティブ サービスです。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習では、手作業によるデータのラベル付けまたは集中的なコーディングとメンテナンスを行うことなく、モデルはフィールドとエントリ間のレイアウトと関係を理解できます。
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: ../media/index/form-recognizer-landing-page-video.png
+      width: 250
+    title: 'Form Recognizer による AI を活用したプロセスの自動化 (2:15)'
+    href: 'https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer'
+    width: 250
 sections:
   - items:
       - type: list
@@ -34,6 +43,11 @@ sections:
             image:
               src: ../media/index/i_get-started.svg
             title: コンテナーのインストールと実行
+          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
+            html: <p>カスタム モデルをトレーニングするために最適化されたデータ セットの作成。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: トレーニング データ セットの作成
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph

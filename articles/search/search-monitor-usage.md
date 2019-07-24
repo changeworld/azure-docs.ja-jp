@@ -8,15 +8,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/16/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: bf78cd9b70aa4a82ef96fdd529d3ee5b1641038c
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: bac897178c8220abe72a92a5cf14fc4767cdd3bf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035361"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66755067"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search でリソースの消費量とクエリ アクティビティを監視する
 
@@ -77,13 +77,15 @@ Azure Monitor ログと Blob Storage は、どちらも無料の共有サービ�
 
 1. まだない場合は、[ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)します。 この演習で使用したすべてのリソースを後で削除する場合にクリーンアップが簡単なように、Azure Search と同じリソース グループにそれを配置することができます。
 
-2. 検索サービスの [概要] ページを開きます。 左側のナビゲーション ウィンドウで **[監視]** まで下にスクロールし、**[監視を有効にする]** をクリックします。
+   ストレージ アカウントは、Azure Search と同じリージョンに存在する必要があります。
+
+2. 検索サービスの [概要] ページを開きます。 左側のナビゲーション ウィンドウで **[監視]** まで下にスクロールし、 **[監視を有効にする]** をクリックします。
 
    ![監視を有効にする](./media/search-monitor-usage/enable-monitoring.png "監視を有効にする")
 
 3. エクスポートするデータを選択します (ログ、メトリック、または両方)。 データはストレージ アカウントにコピーする、イベント ハブに送信する、または Azure Monitor ログにエクスポートすることができます。
 
-   Blob Storage にアーカイブするには、ストレージ アカウントのみが存在する必要があります。 ログ データをエクスポートすると、コンテナーと BLOB が作成されます。
+   Blob Storage にアーカイブするには、ストレージ アカウントのみが存在する必要があります。 ログ データをエクスポートすると、必要に応じてコンテナーと BLOB が作成されます。
 
    ![Blob Storage アーカイブを構成する](./media/search-monitor-usage/configure-blob-storage-archive.png "Blob Storage アーカイブを構成する")
 
@@ -159,7 +161,7 @@ ThrottledSearchQueriesPercentage の場合は、最小値、最大値、平均�
 
 1. Azure portal でストレージ アカウントを開きます。 
 
-2. 左側のナビゲーション ウィンドウで、**[BLOB]** をクリックします。 **insights-logs-operationlogs** と **insights-metrics-pt1m** が表示されるはずです。 これらのコンテナーは、ログ データが Blob Storage にエクスポートされるときに、Azure Search によって作成されます。
+2. 左側のナビゲーション ウィンドウで、 **[BLOB]** をクリックします。 **insights-logs-operationlogs** と **insights-metrics-pt1m** が表示されるはずです。 これらのコンテナーは、ログ データが Blob Storage にエクスポートされるときに、Azure Search によって作成されます。
 
 3. .json ファイルが表示されるまで、フォルダー階層を下に移動します。  コンテキスト メニューを使用して、ファイルをダウンロードします。
 
@@ -173,7 +175,7 @@ Azure Search REST API または .NET SDK を使用することにより、プロ
 * [ドキュメントの数](/rest/api/searchservice/count-documents)
 * [インデクサーの状態の取得](/rest/api/searchservice/get-indexer-status)
 
-PowerShell または Azure CLI の使用を有効にする方法については、[こちら](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs)のマニュアルをご覧ください。
+PowerShell または Azure CLI の使用を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)のマニュアルをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

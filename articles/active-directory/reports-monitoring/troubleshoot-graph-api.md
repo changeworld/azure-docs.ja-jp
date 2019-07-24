@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b517204fb650020bdebf8172186f30fff58f722
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438548"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60285010"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>Azure Active Directory Reporting API でのエラーのトラブルシューティング
 
@@ -40,7 +40,7 @@ Graph エクスプローラーを使用してサインインにアクセスし�
 
 ### <a name="error-failed-to-do-premium-license-check-from-ad-graph"></a>エラー:AD Graph から Premium ライセンスを確認できませんでした 
 
-Graph エクスプローラーを使用してサインインにアクセスしようとしたときにこのようなエラー メッセージが表示された場合は、左側のナビゲーションのアカウントの下にある **[アクセス許可の変更]** を選択し、**[Tasks.ReadWrite]** と **[Directory.Read.All]** を選びます。 
+Graph エクスプローラーを使用してサインインにアクセスしようとしたときにこのようなエラー メッセージが表示された場合は、左側のナビゲーションのアカウントの下にある **[アクセス許可の変更]** を選択し、 **[Tasks.ReadWrite]** と **[Directory.Read.All]** を選びます。 
 
 ![アクセス許可の変更 UI](./media/troubleshoot-graph-api/modify-permissions.png)
 

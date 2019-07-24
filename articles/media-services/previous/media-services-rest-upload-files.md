@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f63087d107b9db30e2af6273afde7f51f1c72404
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: b7583a0fda2fca0d8ff80879389b824a7b352a84
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295115"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66752878"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする  
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
         ]
     }
     ```
-4. **[Postman]** ウィンドウの左にある **[1 Get AAD Auth token]\(1 AAD Auth トークンの取得\)** -> **[Get Azure AD Token for Service Principal]\(サービス プリンシパルの Azure AD トークンの取得\)** をクリックします。
+4. **[Postman]** ウィンドウの左にある **[1 Get AAD Auth token]\(1 AAD Auth トークンの取得\)**  ->  **[Get Azure AD Token for Service Principal]\(サービス プリンシパルの Azure AD トークンの取得\)** をクリックします。
 
     URL 部分には、**AzureADSTSEndpoint** 環境変数が入力されます (このチュートリアルの初めの方で、コレクションをサポートする環境変数の値を設定しています)。
 
@@ -109,7 +109,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
 ### <a name="create-an-access-policy"></a>アクセス ポリシーを作成します。
 
-1. **[AccessPolicy]** -> **[Create AccessPolicy for Upload]\(アップロード用の AccessPolicy の作成\)** の順に選択します。
+1. **[AccessPolicy]**  ->  **[Create AccessPolicy for Upload]\(アップロード用の AccessPolicy の作成\)** の順に選択します。
 2. **[送信]** をクリックします。
 
     ![ファイルをアップロードする](./media/media-services-rest-upload-files/postman-access-policy.png)
@@ -122,7 +122,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
 [資産](https://docs.microsoft.com/rest/api/media/operations/asset)は、ビデオ、オーディオ、イメージ、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイルなど、Media Services 内の多様な種類やセットのオブジェクトのためのコンテナーです。 REST API で資産を作成するには、Media Services に POST 要求を送信し、要求本文に、資産に関するプロパティ情報を配置する必要があります。
 
-資産を作成するときに追加できるプロパティの 1 つは **Options** です。 次の暗号化オプションのいずれかを指定できます。**[None]** (既定、暗号化は使用されない)、**[StorageEncrypted]** (クライアント側のストレージ暗号化を使って事前に暗号化されたコンテンツに対応)、**[CommonEncryptionProtected]**、または **[EnvelopeEncryptionProtected]**。 暗号化された資産がある場合は、配信ポリシーを構成する必要があります。 詳細については、「[資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
+資産を作成するときに追加できるプロパティの 1 つは **Options** です。 次の暗号化オプションのいずれかを指定できます。 **[None]** (既定、暗号化は使用されない)、 **[StorageEncrypted]** (クライアント側のストレージ暗号化を使って事前に暗号化されたコンテンツに対応)、 **[CommonEncryptionProtected]** 、または **[EnvelopeEncryptionProtected]** 。 暗号化された資産がある場合は、配信ポリシーを構成する必要があります。 詳細については、「[資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
 
 資産が暗号化されたら、**ContentKey** を作成し、次の記事の説明に従ってその資産にリンクする必要があります:[ContentKey の作成方法](media-services-rest-create-contentkey.md)。 ファイルを資産にアップロードした後、**AssetFile** エンティティの暗号化プロパティを **Asset** 暗号化中に取得した値に更新する必要があります。 **MERGE** HTTP 要求を使用して実行します。 
 
@@ -130,7 +130,7 @@ Media Services REST API を使用する場合は、次の点を考慮してく�
 
 ### <a name="create-an-asset"></a>資産を作成する
 
-1. **[資産]** -> **[資産の作成]** の順に選択します。
+1. **[資産]**  ->  **[資産の作成]** の順に選択します。
 2. **[送信]** をクリックします。
 
     ![ファイルをアップロードする](./media/media-services-rest-upload-files/postman-create-asset.png)
@@ -161,7 +161,7 @@ SAS URL には次の形式があります。
 
 ### <a name="create-a-sas-locator"></a>SAS ロケーターを作成する
 
-1. **[ロケーター]** -> **[Create SAS Locator]\(SAS ロケーターの作成\)** を選択します。
+1. **[ロケーター]**  ->  **[Create SAS Locator]\(SAS ロケーターの作成\)** を選択します。
 2. **[送信]** をクリックします。
 
     "test" スクリプトでは、指定したメディア ファイル名と SAS ロケーター情報に基づいて "Upload URL" を作成し、適切な環境変数を設定します。
@@ -176,7 +176,7 @@ SAS URL には次の形式があります。
 
 - [Azure Storage REST API の使用](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [PUT Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [BLOB を Blob Storage にアップロードする](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [BLOB を Blob Storage にアップロードする](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>Postman を使用してファイルをアップロードする
 
@@ -187,9 +187,9 @@ SAS URL には次の形式があります。
 新しい要求を作成して設定するには、次の手順を実行します。
 1. **+** キーを押して、新しい要求タブを作成します。
 2. **PUT** 操作を選択し、URL に **{{UploadURL}}** を貼り付けます。
-2. **[Authorization]\(承認\)** タブはそのままにしておきます(**[ベアラー トークン]** に設定しないでください)。
+2. **[Authorization]\(承認\)** タブはそのままにしておきます( **[ベアラー トークン]** に設定しないでください)。
 3. **[ヘッダー]** タブで、次を指定します:**Key**: "x-ms-blob-type" および **Value**:"BlockBlob"。
-2. **[本文]** タブで、**[バイナリ]** をクリックします。
+2. **[本文]** タブで、 **[バイナリ]** をクリックします。
 4. **MediaFileName** 環境変数に指定した名前のファイルを選択します。
 5. **[送信]** をクリックします。
 
@@ -199,7 +199,7 @@ SAS URL には次の形式があります。
 
 ファイルがアップロードされたら、お使いの資産に関連付けられている BLOB ストレージにアップロードしたメディア ファイル用の資産に、メタデータを作成する必要があります。
 
-1. **[AssetFiles]** -> **[CreateFileInfos]** の順に選択します。
+1. **[AssetFiles]**  ->  **[CreateFileInfos]** の順に選択します。
 2. **[送信]** をクリックします。
 
     ![ファイルをアップロードする](./media/media-services-rest-upload-files/postman-create-file-info.png)

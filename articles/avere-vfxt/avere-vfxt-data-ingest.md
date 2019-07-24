@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
 ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050491"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60410120"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>vFXT クラスターへのデータの移動 - 並列データ取り込み 
 
@@ -259,7 +259,7 @@ for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt
 
 ## <a name="use-the-msrsync-utility-to-populate-cloud-volumes"></a>msrsync ユーティリティを使用したクラウド ボリュームの設定
 
-``msrsync`` ツールも、Avere クラスターのバックエンド コア ファイラーへのデータ移動に使用できます。 このツールは、複数の ``rsync`` プロセスを並列実行して帯域幅の使用を最適化することを目的に設計されています。 GitHub (https://github.com/jbd/msrsync) で入手できます。
+``msrsync`` ツールも、Avere クラスターのバックエンド コア ファイラーへのデータ移動に使用できます。 このツールは、複数の ``rsync`` プロセスを並列実行して帯域幅の使用を最適化することを目的に設計されています。 GitHub (https://github.com/jbd/msrsync ) で入手できます。
 
 ``msrsync`` では、ソース ディレクトリを別々の "バケット" に分割したうえで、個々の ``rsync`` プロセスを各バケットに対して実行します。
 

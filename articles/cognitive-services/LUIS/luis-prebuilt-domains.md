@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
 ms.openlocfilehash: e1b99396c4739dc6f1b7a4da0164553d4c25ef3c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60198947"
 ---
 # <a name="add-prebuilt-domains-for-common-usage-scenarios"></a>一般的な使用シナリオの事前構築済みドメインを追加する 
 
@@ -28,7 +28,7 @@ LUIS には事前構築済みドメインの一連の事前構築済み意図が
 
 1. **[Intents]\(意図\)** ページで、左下のツール バーの **[Add prebuilt domains]\(事前構築済みドメインの追加\)** を選択します。 
 
-1. **[カレンダー]** 意図を選択し、**[ドメインの追加]** ボタンを選択します。
+1. **[カレンダー]** 意図を選択し、 **[ドメインの追加]** ボタンを選択します。
 
     ![カレンダー事前構築済みドメインを追加する](./media/luis-prebuilt-domains/add-prebuilt-domain.png)
 
@@ -40,9 +40,9 @@ LUIS には事前構築済みドメインの一連の事前構築済み意図が
 
 1. 上部ツール バーで **[発行]** を選択します。 **[運用]** に発行します。 
 
-1. 緑の成功通知が表示されたら、**[Refer to the list of endpoints]\(エンドポイントの一覧を参照する\)** リンクを選択して、エンドポイントを表示します。
+1. 緑の成功通知が表示されたら、 **[Refer to the list of endpoints]\(エンドポイントの一覧を参照する\)** リンクを選択して、エンドポイントを表示します。
 
-1. エンドポイントを選択します。 新しいブラウザー タブでそのエンドポイントが開きます。 ブラウザー タブを開いたままにして、**[テスト]** セクションに移動します。
+1. エンドポイントを選択します。 新しいブラウザー タブでそのエンドポイントが開きます。 ブラウザー タブを開いたままにして、 **[テスト]** セクションに移動します。
 
 ## <a name="test"></a>テスト
 

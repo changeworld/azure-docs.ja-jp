@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999535"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60391239"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -342,7 +342,7 @@ BLOB をオブジェクトにバインドする前に関数内でいくつかの
 ### <a name="automatic-poison-message-handling"></a>有害メッセージの自動処理
 SDKでは、キュー メッセージを処理する関数を最大 5 回呼び出します。 5 回目の実行に失敗した場合、メッセージは有害キューに移動されます。 再試行の最大数を構成する方法については、「 [構成オプションの設定方法](#how-to-set-configuration-options)」をご覧ください。
 
-有害キューには *{originalqueuename}*-poison という名前が付けられます。 メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
+有害キューには *{originalqueuename}* -poison という名前が付けられます。 メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
 
 次の例では、キュー メッセージが存在しない BLOB の名前を含んでいると、 **CopyBlob** 関数が失敗します。 その場合、メッセージは copyblobqueue キューから copyblobqueue-poison キューへと移動されます。 その後、 **ProcessPoisonMessage** が有害メッセージを記録されます。
 
@@ -534,7 +534,7 @@ public static void WriteLog(
 }
 ```
 
-WebJobs SDK ダッシュボードで特定の関数呼び出しのページに移動し、**[Toggle Output (出力切り替え)]** を選択すると、**TextWriter** オブジェクトからの出力が表示されます。
+WebJobs SDK ダッシュボードで特定の関数呼び出しのページに移動し、 **[Toggle Output (出力切り替え)]** を選択すると、**TextWriter** オブジェクトからの出力が表示されます。
 
 ![呼び出しのリンク](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
 
@@ -544,7 +544,7 @@ Web ジョブのページ (特定の関数呼び出しのページではなく) 
 
 ![TextWriter](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-連続的な Web ジョブでは、Web アプリのファイル システム内の /data/jobs/continuous/*{webjobname}*/job_log.txt にアプリケーション ログが表示されます。
+連続的な Web ジョブでは、Web アプリのファイル システム内の /data/jobs/continuous/ *{webjobname}* /job_log.txt にアプリケーション ログが表示されます。
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

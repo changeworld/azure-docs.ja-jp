@@ -1,6 +1,6 @@
 ---
-title: Azure Status Monitor v2 API リファレンス:監視を無効にする | Microsoft Docs
-description: Status Monitor v2 API リファレンス Disable-ApplicationInsightsMonitoring。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+title: 'Azure Status Monitor v2 API リファレンス: 監視を無効にする | Microsoft Docs'
+description: Status Monitor v2 API リファレンス。 Disable-ApplicationInsightsMonitoring。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
 author: MS-TimothyMothra
@@ -12,26 +12,26 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 6f2bde824c2a9815dc9fd4791ab43e03558da835
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 201c5cc251896efae6b9f4639818471c0f011afe
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144927"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66514401"
 ---
 # <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring-v021-alpha"></a>Status Monitor v2 API:Disable-ApplicationInsightsMonitoring (v0.2.1-alpha)
 
-このドキュメントでは、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーとして付属しているコマンドレットについて説明します。
+この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
 > [!IMPORTANT]
 > 現在、Status Monitor v2 はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 一部の機能は、サポートされていなかったり、制限されていたりする場合があります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="description"></a>説明
 
-ターゲット マシンの監視を無効にします。
-このコマンドレットは、IIS applicationHost.config に対する編集を削除し、レジストリ キーを削除します。
+ターゲット コンピューターに対する監視を無効にします。
+このコマンドレットでは、IIS applicationHost.config に対する編集を削除し、レジストリ キーを削除します。
 
 > [!IMPORTANT] 
 > このコマンドレットでは、管理者権限の PowerShell セッションが必要です。
@@ -45,7 +45,7 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ## <a name="parameters"></a>parameters 
 
 ### <a name="-verbose"></a>-Verbose
-**共通パラメーター**です。 詳細なログを出力する場合はこのスイッチを使用します。
+**共通パラメーター。** 詳細なログを表示するにはこのスイッチを使用します。
 
 ## <a name="output"></a>Output
 
@@ -76,5 +76,5 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="next-steps"></a>次の手順
 
- Status Monitor v2 をさらに活用します。
- - ガイドを使用して、Status Monitor v2 を[トラブルシューティング](status-monitor-v2-troubleshoot.md)します。
+ Status Monitor v2 の活用:
+ - ガイドを使用して、Status Monitor v2 の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行います。

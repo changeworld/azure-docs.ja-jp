@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT プレビューの Linux C エージェントをインストールおよびデプロイするガイド | Microsoft Docs
 description: Azure Security Center for IoT エージェントを 32 ビットと 64 ビットの両方の Linux にインストールする方法について説明します。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: b0982203-c3c8-4a0b-8717-5b5ac4038d8c
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 5623b9870788edfb3b96ef248154e8b9f60b4593
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 808ff912a997a4c09a22048ada7546daab895701
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198431"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618265"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Linux 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
 
@@ -50,7 +51,7 @@ ms.locfileid: "65198431"
 
 1. [GitHub](https://aka.ms/iot-security-github-cs) からマシンに最新バージョンをダウンロードします。
 
-1. パッケージの内容を展開し、_/Install_ フォルダーに移動します。
+1. パッケージの内容を展開し、 _/Install_ フォルダーに移動します。
 
 1. `chmod +x InstallSecurityAgent.sh` を実行して、**InstallSecurityAgent スクリプト**に実行アクセス許可を追加します。 
 

@@ -16,11 +16,11 @@ ms.date: 01/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd7826455624ca4a84d668455f522cbde411ac8b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163189"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60431758"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>チュートリアル:Box を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -62,7 +62,7 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
   * ユーザー オブジェクトのみをプロビジョニングするよう構成した場合は、直接割り当てられたすべてのユーザーがプロビジョニング キューに配置され、さらに、割り当てられたグループのメンバーであるユーザーもすべてプロビジョニング キューに配置されます。 
   * グループ オブジェクトをプロビジョニングするよう構成した場合は、割り当てられたすべてのグループ オブジェクトと、それらのグループのメンバーであるユーザーもすべて Box にプロビジョニングされます。 Box への書き込み時に、グループとユーザーのメンバーシップは保持されます。
 
-**[属性] の [シングル サインオン]** タブを使用すると、SAML ベースの認証時に Box に提示するユーザーの属性 (または要求) を構成できます。また、**[属性] の [プロビジョニング]** タブを使用すると、プロビジョニング操作時の Azure AD から Box へのユーザーとグループの属性のフロー方法を構成できます。
+**[属性] の [シングル サインオン]** タブを使用すると、SAML ベースの認証時に Box に提示するユーザーの属性 (または要求) を構成できます。また、 **[属性] の [プロビジョニング]** タブを使用すると、プロビジョニング操作時の Azure AD から Box へのユーザーとグループの属性のフロー方法を構成できます。
 
 ### <a name="important-tips-for-assigning-users-to-box"></a>ユーザーを Box に割り当てる際の重要なヒント 
 
@@ -87,11 +87,11 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
 
 このセクションでは、Box への Active Directory ユーザー アカウントのプロビジョニングを有効にする方法を説明します。
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために Box を既に構成している場合は、検索フィールドで Box のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Box** を検索します。 検索結果から Box を選択してアプリケーションの一覧に追加します。
+2. シングル サインオンのために Box を既に構成している場合は、検索フィールドで Box のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **Box** を検索します。 検索結果から Box を選択してアプリケーションの一覧に追加します。
 
-3. Box のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+3. Box のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
@@ -99,7 +99,7 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
 
 5. **[管理者資格情報]** セクションの **[承認する]** をクリックして、新しいブラウザー ウィンドウで Box のログイン ダイアログを開きます。
 
-6. **[Box へのアクセスを許可するにはログインしてください]** ページで、必要な資格情報を入力し、**[認証する]** をクリックします。 
+6. **[Box へのアクセスを許可するにはログインしてください]** ページで、必要な資格情報を入力し、 **[認証する]** をクリックします。 
    
     ![Enable automatic user provisioning](./media/box-userprovisioning-tutorial/IC769546.png "Enable automatic user provisioning")
 
@@ -107,7 +107,7 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
    
     ![Enable automatic user provisioning](./media/box-userprovisioning-tutorial/IC769549.png "Enable automatic user provisioning")
 
-8. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Box アプリに接続できることを確認します。 接続が失敗した場合、使用中の Box アカウントに Team Admin アクセス許可があることを確認して、**"承認"** の手順をもう一度試してください。
+8. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Box アプリに接続できることを確認します。 接続が失敗した場合、使用中の Box アカウントに Team Admin アクセス許可があることを確認して、 **"承認"** の手順をもう一度試してください。
 
 9. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
@@ -125,7 +125,7 @@ Azure Portal の **[Box] > [ユーザーとグループ]** タブでは、Box �
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 
-Box テナントでは、同期済みのユーザーは、**[管理コンソール]** の **[管理対象のユーザー]** に表示されます。
+Box テナントでは、同期済みのユーザーは、 **[管理コンソール]** の **[管理対象のユーザー]** に表示されます。
 
 ![Integration status](./media/box-userprovisioning-tutorial/IC769556.png "Integration status")
 

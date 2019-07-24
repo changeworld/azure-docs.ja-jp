@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: f35ed65b25d469b524e7174affecb45ad7c4735c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66115740"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft ピアリング経由のサイト間 VPN を構成する
@@ -73,7 +73,7 @@ ExpressRoute 回線の Microsoft ピアリング経由で利用するサービ�
 
 この例は、"*Azure 米国西部 2*" リージョンのみでのデプロイです。 ルート フィルター規則が追加され、米国西部 2 リージョン プレフィックスの公開のみが許可されます。その BGP コミュニティ値は *12076:51026* です。 **[ルールの管理]** を選択して、許可するリージョン プレフィックスを指定します。
 
-ルート フィルター内で、ルート フィルターを適用する ExpressRoute 回線を選択する必要もあります。 ExpressRoute 回線を選択するには、**[回線の追加]** を選択します。 前の図では、ルート フィルターは、例の ExpressRoute 回線に関連付けられています。
+ルート フィルター内で、ルート フィルターを適用する ExpressRoute 回線を選択する必要もあります。 ExpressRoute 回線を選択するには、 **[回線の追加]** を選択します。 前の図では、ルート フィルターは、例の ExpressRoute 回線に関連付けられています。
 
 ### <a name="configfilter"></a>2.1 ルート フィルターを構成する
 

@@ -9,10 +9,10 @@ ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 416040d91da2f6346027f738de507777f804fd1f
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66237730"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
@@ -129,7 +129,7 @@ AzCopy は、最高のパフォーマンスの単純なコマンドを使って 
 > [!Note]  
 > Azure ファイル共有をマウントするには、パスワードとしてストレージ アカウント キーを使用する必要があります。したがって、信頼できる環境でのみマウントすることをお勧めします。 
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 複数の PC で mount コマンドを実行するために PowerShell を使用できます。 次の例では、`$computers` は手動で入力しますが、マウントするコンピューターの一覧は自動で生成できます。 たとえば、Active Directory からの結果によって、この変数を設定できます。
 
 ```powershell

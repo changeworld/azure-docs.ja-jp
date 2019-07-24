@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 7c10d00916ef65767c98616c7337bfa444c339a9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60725399"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors の状態のアクセス、保存、および削除
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) は、ロジックと状態の両方をカプセル化し、状態を確実に維持できるシングル スレッド オブジェクトです。 各アクター インスタンスは、独自の[状態マネージャー](service-fabric-reliable-actors-state-management.md)を持ちます。これは、辞書のようなデータ構造で、キーと値のペアを確実に格納します。 状態マネージャーは、状態プロバイダーのラッパーです。 [永続化設定](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication)の使用に関係なく、データの格納に使用できます。

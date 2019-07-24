@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 06/30/2019
 ms.author: juliako
-ms.openlocfilehash: 5acd9b68368f56000a0a32d1ade310cf30143950
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799377"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67488682"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
@@ -32,6 +32,8 @@ ms.locfileid: "65799377"
 |Name|定義|説明|
 |---|---|---|
 |widgets|コンマで区切られた文字列|レンダリングする分析情報を制御できます。 <br/>例: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` の場合、人物とブランドの UI 分析情報のみがレンダリングされます<br/>使用可能なオプション: people、keywords、annotations、brands、sentiments、transcript、search。<br/>version=2 の場合は URL からはサポートされません<br/><br/>**注:** バージョン 2 では、widgets での URL パラメーターはサポートされません。 |
+|locale|省略形の言語コード|分析情報言語を制御します。 既定値は `en` です。 (例: `language=de`)。|
+|タブ|既定で選択されるタブ|既定で表示される [insights] タブを制御します。 `tab=timeline` では、選択されたタイムライン タブで分析情報が表示されます。|
 
 ### <a name="player-widget"></a>プレーヤー ウィジェット
 
@@ -39,12 +41,12 @@ ms.locfileid: "65799377"
 
 |Name|定義|説明|
 |---|---|---|
-|t|開始からの秒数|プレーヤーで、指定した時点から再生を開始します。<br/>例: t=60|
-|captions|言語コード|ウィジェットを読み込むときに指定された言語のキャプションを取り込んで、キャプション メニューで使用できるようにします。<br/>例: captions=en-US|
-|showCaptions|ブール値|既に有効になっているキャプションとともにプレーヤーを読み込みます。<br/>例: showCaptions=true|
-|type||オーディオ プレーヤーのスキンをアクティブにします (ビデオ部分は削除されます)。<br/>例: type=audio|
-|autoplay|ブール値|プレーヤーがビデオの読み込み時に、その再生を開始する必要があるかどうかを示します (既定値は true)。<br/>例: autoplay=false|
-|language|言語コード|プレーヤーの言語を制御します (既定値は EN-US)<br/>例: language=de-DE|
+|t|開始からの秒数|プレーヤーで、指定した時点から再生を開始します。<br/>例: `t=60`.|
+|captions|言語コード|ウィジェットを読み込むときに指定された言語のキャプションを取り込んで、キャプション メニューで使用できるようにします。<br/>例: `captions=en-US`.|
+|showCaptions|ブール値|既に有効になっているキャプションとともにプレーヤーを読み込みます。<br/>例: `showCaptions=true`.|
+|type||オーディオ プレーヤーのスキンをアクティブにします (ビデオ部分は削除されます)。<br/>例: `type=audio`.|
+|autoplay|ブール値|プレーヤーがビデオの読み込み時に、その再生を開始する必要があるかどうかを示します (既定値は true)。<br/>例: `autoplay=false`.|
+|language|言語コード|プレーヤーの言語を制御します (既定値は EN-US)<br/>例: `language=de-DE`.|
 
 ## <a name="embedding-public-content"></a>パブリック コンテンツの埋め込み
 
@@ -62,6 +64,9 @@ ms.locfileid: "65799377"
 
     ![ウィジェット](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 
+> [!NOTE]
+> 動画の URL の共有に問題がある場合は、リンクに 'location' パラメーターを追加してみてください。 このパラメーターは、[Video Indexer が存在する Azure リージョン](regions.md)に設定する必要があります。 たとえば、「 `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 」のように入力します。
+
 ## <a name="embedding-private-content"></a>プライベート コンテンツの埋め込み
 
 (前のセクションで示した) 埋め込みポップアップから埋め込みコードを取得できるのは、**パブリック** ビデオの場合のみです。 
@@ -72,7 +77,7 @@ ms.locfileid: "65799377"
     
 [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API を使用してコグニティブな分析情報ウィジェットのコンテンツを取得します。または、[**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を使用して、それを上に示した URL にクエリ パラメーターとして追加します。 この URL を、**iframe** の **src** 値として指定します。
 
-埋め込んだウィジェットで (Web アプリケーションにあるような) 分析情報の編集機能を提供したい場合は、編集アクセス許可を持つアクセス トークンを渡す必要があります。 [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) または [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を、**&allowEdit=true** を指定して使用します。 
+埋め込んだウィジェットで (Web アプリケーションにあるような) 分析情報の編集機能を提供したい場合は、編集アクセス許可を持つアクセス トークンを渡す必要があります。 [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) または [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) を、 **&allowEdit=true** を指定して使用します。 
 
 ## <a name="widgets-interaction"></a>ウィジェットの対話
 
@@ -173,7 +178,7 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
         </video>    
 
 2. コグニティブな分析情報ウィジェットを埋め込みます。
-3. "メッセージ" イベントをリッスンして、プレーヤー用の通信を実装します。 例: 
+3. "メッセージ" イベントをリッスンして、プレーヤー用の通信を実装します。 例:
 
         <script>
     
@@ -234,7 +239,7 @@ iframe ウィンドウのタイトルも、iframe の URL に `&title=<YourTitle
 
 Video Indexer プレーヤーを埋め込む場合は、iframe のサイズを指定することで、プレーヤーのサイズを選択できます。
 
-例: 
+例:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 

@@ -9,10 +9,10 @@ ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4dde358f10e9ac5054297ff68a0971404c0dc135
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65157957"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple のメンテナンスと更新
@@ -63,7 +63,7 @@ CloudSimple バックアップの内容:
 
 [サポート要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を開くことで復元を要求できます。
 
-## <a name="maintenance"></a>メンテナンス 
+## <a name="maintenance"></a>メンテナンス
 
 CloudSimple では、数種類の計画メンテナンスが行われます。
 
@@ -91,11 +91,11 @@ VMware インフラストラクチャの構成変更が必要になることが�
 
 ## <a name="updates-and-upgrades"></a>更新とアップグレード
 
-CloudSimple は、プライベート クラウドの VMware ソフトウェア (ESXi、vCenter、PSC、NSX) のライフサイクル管理を担います。
+CloudSimple は、プライベート クラウド内の VMware ソフトウェア (ESXi、vCenter、PSC、NSX) のライフサイクル管理を担います。
 
 ソフトウェア更新の内容:
 
-* **パッチ**。 VMware によってリリースされたセキュリティ パッチとバグ修正プログラム。
+* **パッチ**。 VMware によってリリースされたセキュリティ パッチまたはバグ修正プログラム。
 * **[Updates]** (更新)。 VMware スタック コンポーネントのマイナー バージョン変更。
 * **アップグレード**。 VMware スタック コンポーネントのメジャー バージョン変更。
 

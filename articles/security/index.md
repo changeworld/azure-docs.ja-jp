@@ -10,14 +10,14 @@ ms.service: security
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/16/2019
+ms.date: 06/11/2019
 ms.author: angrobe
-ms.openlocfilehash: 10b4c6bfb9c79ee933feadec2ee41e52c86df76e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d921e529140bc7446e3c9f97b33ba226431d7b91
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607726"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67143513"
 ---
 # <a name="azure-security-documentation"></a>Azure のセキュリティのドキュメント
 
@@ -122,12 +122,12 @@ ms.locfileid: "60607726"
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-log-audit">
+        <a href="/azure/security/develop">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Azure にはどのような監視オプションとログ記録オプションが用意されていますか?</p>
+                            <p style="font-size: 1.12rem;">セキュリティで保護されたアプリケーションの開発とデプロイ</p>
                         </div>
                     </div>
                 </div>
@@ -163,6 +163,23 @@ ms.locfileid: "60607726"
 </ul>
 
 <ul class="cardsL panelContent singlePanelContent" style="display:flex!important;">
+    <li style="list-style: none;">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <div class="ico64Link"><img src="https://docs.microsoft.com/media/common/i_code-samples.svg" alt="" /></div>
+                        <h3>開発者</h3>
+                        <ul class="noBullet">
+                            <li style="list-style: none;">
+                                <a class="barLink" href="/azure/security/develop/secure-dev-overview">安全な開発のベスト プラクティス</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
     <li style="list-style: none;">
         <div class="cardSize">
             <div class="cardPadding">
@@ -227,29 +244,6 @@ ms.locfileid: "60607726"
             </div>
         </div>
     </li>
-    <li style="list-style: none;">
-    <div class="cardSize">
-        <div class="cardPadding">
-            <div class="card">
-                <div class="cardText">
-                     <div class="ico64Link"><img src="https://docs.microsoft.com/media/common/i_tasks.svg" alt="" /></div>
-                     <h3>Checklists</h3>
-                     <ul class="noBullet">
-                        <li style="list-style: none;">
-                            <a class="barLink" href="/azure/security/azure-database-security-checklist">データベースのセキュリティ保護</a>
-                        </li>
-                        <li style="list-style: none;">
-                            <a class="barLink" href="/azure/security/azure-operational-security-checklist">運用上のセキュリティ</a>
-                        </li>
-                        <li style="list-style: none;">
-                            <a class="barLink" href="/azure/security/azure-service-fabric-security-checklist">Service Fabric のセキュリティ</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</li>
 </ul>
 
 <ul class="cardsFTitle panelContent">

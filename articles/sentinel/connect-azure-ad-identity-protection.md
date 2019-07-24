@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 91c870e5-2669-437f-9896-ee6c7fe1d51d
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 10dc31e21f20618450de6d99b3fce40d63272d31
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: c88c157c5f37bb0bd1e82225bdacfbd60806bbf8
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204375"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620637"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Azure AD Identity Protection からデータを接続する
 
@@ -42,7 +43,7 @@ Azure AD Identity Protection が既にある場合は、[お使いのネット�
 Azure AD Identity Protection がデプロイされ、データを取得している場合は、アラート データを Azure Sentinel に簡単にストリーミングできます。
 
 
-1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Azure AD Identity Protection]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Azure AD Identity Protection]** タイルをクリックします。
 
 2. **[接続]** をクリックして、Azure AD Identity Protection のイベントの Azure Sentinel へのストリーミングを開始します。
 

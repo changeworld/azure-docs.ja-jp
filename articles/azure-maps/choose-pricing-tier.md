@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547345"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60796292"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure Maps での適切な価格レベルの選択
 
@@ -55,7 +55,7 @@ S0 および S1 の価格レベルをさらによく理解するには、「**�
 
 ### <a name="pricing-tier-targeted-customers"></a>価格レベルの対象のお客様
 
-| 価格レベル   |     対象となるお客様                                                                |
+| 価格レベル  |     対象となるお客様                                                                |
 |---------------|:-----------------------------------------------------------------------------------------|
 | S0            |    <p>S0 価格レベルの対象は、小規模または中規模の企業のお客様です。 同時実行ユーザー数が多くないことが予想される場合は、この価格レベルが最適です。 また、前記の表に示されているコア地理空間 API でサービス要件が満たされる場合も、この価格レベルが最適です。 この価格レベルは、一般提供されており、 概念実証開発や早い段階のテストからアプリケーションの運用やデプロイまで、すべての運用ステージのアプリケーションで利用できます。<p>|
 | S1            |    <p>S1 価格レベルは、大企業や、ミッションクリティカルなアプリケーション、多数の同時実行ユーザーのサポートを必要とするお客様に適しています。 また、高度な地理空間サービスを必要とするお客様にも適しています。</p>|

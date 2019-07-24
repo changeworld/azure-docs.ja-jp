@@ -4,7 +4,7 @@ description: この記事では、Azure CLI を使用した、プラットフォ
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d6f5a877-05b6-4127-a545-3f5bede4e479
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0e21a962fb03a42af4cb32fcdf60cd59746a591d
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543272"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667374"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する方法を説明します。 この記事では、[Azure クラシック CLI](../../cli-install-nodejs.md) が必要です。 Azure CLI は、Azure Resource Manager リソースにのみ適用されるため、この移行には使用できません。
@@ -146,7 +146,7 @@ CLI または Azure ポータルを使用して、準備したリソースの構
 
 ![仮想ネットワークの名前全体が強調表示されているコマンド ラインのスクリーン ショット。](../media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
 
-上の例では、**"Group classicubuntu16 classicubuntu16"** 全体が **virtualNetworkName** です。
+上の例では、 **"Group classicubuntu16 classicubuntu16"** 全体が **virtualNetworkName** です。
 
 最初に、次のコマンドを使用して、仮想ネットワークを移行できるかどうかを検証します。
 

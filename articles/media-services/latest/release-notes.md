@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 06/07/2019
 ms.author: juliako
-ms.openlocfilehash: 8f50188480b963d13460c79175ea6972d3e68f6a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b3e772ebb05f79abb70e58e63a93c3336a413e38
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153076"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67542551"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -34,9 +34,43 @@ ms.locfileid: "65153076"
 
 詳細については、「[Media Services v2 から v3 への移行のガイダンス](migrate-from-v2-to-v3.md#known-issues)」を参照してください。
 
+## <a name="june-2019"></a>2019 年 6 月
+
+### <a name="video-subclipping"></a>ビデオのサブクリップ
+
+[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)を使用してビデオをエンコードする際に、ビデオをトリミングまたはサブクリップできるようになりました。 
+
+この機能は、[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) プリセットまたは [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) プリセットを使用して構築された[変換](https://docs.microsoft.com/rest/api/media/transforms)で動作します。 
+
+次の例を参照してください。
+
+* [.NET を使用してビデオをサブクリップする](subclip-video-dotnet-howto.md)
+* [REST を使用してビデオをサブクリップする](subclip-video-rest-howto.md)
+
 ## <a name="may-2019"></a>2019 年 5 月
 
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Media Services の診断ログとメトリックに対する Azure Monitor のサポート
+
+Media Services で出力されたテレメトリ データを Azure Monitor を使用して表示できるようになりました。
+
+* Azure Monitor の診断ログを使用して、Media Services のキー配信エンドポイントによって送信された要求を監視します。 
+* Media Services の[ストリーミング エンドポイント](streaming-endpoint-concept.md)によって出力されたメトリックを監視します。   
+
+詳細については、「[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)」を参照してください。
+
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>ダイナミック パッケージでの複数のオーディオ トラックのサポート 
+
+複数のコーデックと言語を使用する複数のオーディオ トラックを持つ資産をストリーミングするとき、[ダイナミック パッケージ](dynamic-packaging-overview.md)では、HLS 出力 (バージョン 4 以上) 用の複数のオーディオ トラックがサポートされるようになりました。
+
+### <a name="korea-regional-pair-is-open-for-media-services"></a>韓国のリージョン ペアで Media Services を提供開始 
+
+Media Services が、韓国中部と韓国南部のリージョンで利用できるようになりました。 
+
+詳細については、「[Media Services v3 が存在するクラウドとリージョン](azure-clouds-regions.md)」を参照してください。
+
 ### <a name="performance-improvements"></a>パフォーマンスの向上
+
+Media Services のパフォーマンス向上を含む更新が追加されました。
 
 * 処理でサポートされているファイルの最大サイズが更新されました。 [クォータと制限](limits-quotas-constraints.md)に関する記事を参照してください。
 * [エンコードの速度の向上](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
@@ -50,9 +84,9 @@ ms.locfileid: "65153076"
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)」を参照してください。
+動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs)」を参照してください。
 
-資産またはアカウント フィルターの一覧を指定できるようになりました。これはストリーミング ロケーターに適用されます。 詳細については、[フィルターとストリーミング ロケーターの関連付け](filters-concept.md#associate-filters-with-streaming-locator)に関する記事を参照してください。
+資産またはアカウント フィルターの一覧を指定できるようになりました。これはストリーミング ロケーターに適用されます。 詳細については、[フィルターとストリーミング ロケーターの関連付け](filters-concept.md#associating-filters-with-streaming-locator)に関する記事を参照してください。
 
 ## <a name="february-2019"></a>2019 年 2 月
 

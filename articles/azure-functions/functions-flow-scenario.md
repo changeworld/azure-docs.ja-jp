@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 662c78fc7074b0dafc53c393962aa4b578779095
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d3e777b5611dec382dc4eaaac5ec1594abcdab31
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092260"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65787687"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Microsoft Flow から関数を呼び出す
 
@@ -36,6 +36,8 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 > * 応急処理がコスト効率に優れている場合に電子メールを送信するフローを作成する。
 > * フローを実行する。
 
+[!INCLUDE [functions-openapi-note](../../includes/functions-openapi-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 + ご使用の Azure アカウントと同じサインイン資格情報を使用するアクティブな [Microsoft Flow アカウント](https://flow.microsoft.com/documentation/sign-up-sign-in/)。 
@@ -47,17 +49,17 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
 | リストの列     | データ型           | メモ                                    |
 |-----------------|---------------------|------------------------------------------|
-| **タイトル**           | 1 行のテキスト | タービンの名前                      |
-| **LastServiceDate** | 日付                |                                          |
+| **Title**           | 1 行のテキスト | タービンの名前                      |
+| **LastServiceDate** | Date                |                                          |
 | **MaxOutput**       | Number              | タービンの出力 (KwH 単位)            |
 | **ServiceRequired** | はい/いいえ              |                                          |
 | **EstimatedEffort** | Number              | 応急処理の推定所要時間 (時間単位) |
 
-1. ご使用の SharePoint サイトで、**[新規]**、**[リスト]** の順にクリックまたはタップします。
+1. ご使用の SharePoint サイトで、 **[新規]** 、 **[リスト]** の順にクリックまたはタップします。
 
     ![新しい SharePoint リストを作成する](./media/functions-flow-scenario/new-list.png)
 
-2. `Turbines` という名前を入力してから、**[作成]** をクリックまたはタップします。
+2. `Turbines` という名前を入力してから、 **[作成]** をクリックまたはタップします。
 
     ![新しいリストの名前を指定する](./media/functions-flow-scenario/create-list.png)
 
@@ -65,11 +67,11 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     ![Turbines リスト](./media/functions-flow-scenario/initial-list.png)
 
-3. ![新しいアイテム アイコン](./media/functions-flow-scenario/icon-new.png)、**[日付]** の順にクリックまたはタップします。
+3. ![新しいアイテム アイコン](./media/functions-flow-scenario/icon-new.png)、 **[日付]** の順にクリックまたはタップします。
 
     ![1 行のテキスト フィールドを追加する](./media/functions-flow-scenario/add-column.png)
 
-4. `LastServiceDate` という名前を入力してから、**[作成]** をクリックまたはタップします。
+4. `LastServiceDate` という名前を入力してから、 **[作成]** をクリックまたはタップします。
 
     ![LastServiceDate 列を作成する](./media/functions-flow-scenario/date-column.png)
 
@@ -90,15 +92,15 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 ## <a name="add-a-connection-to-the-api"></a>文字列を API に追加する
 カスタム API (カスタム コネクタとも呼ばれる) は Microsoft Flow で使用できますが、フローで使用する前に、この API に接続しておく必要があります。
 
-1. [flow.microsoft.com](https://flow.microsoft.com) で、歯車アイコン (右上にある)、**[接続]** の順にクリックします。
+1. [flow.microsoft.com](https://flow.microsoft.com) で、歯車アイコン (右上にある)、 **[接続]** の順にクリックします。
 
     ![フローの接続](media/functions-flow-scenario/flow-connections.png)
 
-1. **[接続の作成]** をクリックし、**[Turbine Repair]\(タービン修復\)** コネクタまでスクロール ダウンしてそれをクリックします。
+1. **[接続の作成]** をクリックし、 **[Turbine Repair]\(タービン修復\)** コネクタまでスクロール ダウンしてそれをクリックします。
 
     ![接続を作成する](media/functions-flow-scenario/create-connection.png)
 
-1. API キーを入力して、**[接続の作成]** をクリックします。
+1. API キーを入力して、 **[接続の作成]** をクリックします。
 
     ![API キーを入力して作成する](media/functions-flow-scenario/api-key.png)
 
@@ -114,7 +116,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
 まず一から (テンプレートなしで) フローを作成し、SharePoint リストでアイテム作成時に発生する*トリガー*を追加します。 その後、次に起こる動作を決定する*条件*を追加します。
 
-1. [flow.microsoft.com](https://flow.microsoft.com) で、**[マイ フロー]**、**[一から作成]** の順にクリックします。
+1. [flow.microsoft.com](https://flow.microsoft.com) で、 **[マイ フロー]** 、 **[一から作成]** の順にクリックします。
 
     ![一から作成する](media/functions-flow-scenario/create-from-blank.png)
 
@@ -124,19 +126,19 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     SharePoint にまだサインインしていない場合は、サインインを求めるメッセージが表示されます。
 
-3. **[サイトのアドレス]** にご使用の SharePoint サイト名を入力し、**[リスト名]** にタービン データが含まれるリストを入力します。
+3. **[サイトのアドレス]** にご使用の SharePoint サイト名を入力し、 **[リスト名]** にタービン データが含まれるリストを入力します。
 
     ![トリガーを選択する](media/functions-flow-scenario/site-list.png)
 
-4. **[新しいステップ]**、**[条件の追加]** の順にクリックします。
+4. **[新しいステップ]** 、 **[条件の追加]** の順にクリックします。
 
     ![条件を追加する](media/functions-flow-scenario/add-condition.png)
 
-    Microsoft Flow により、**[If yes] \(はいの場合\)** と **[If no] \(いいえの場合\)** という 2 つの分岐がフローに追加されます。 マッチングする条件を定義した後、一方または両方の分岐にステップを追加します。
+    Microsoft Flow により、次の 2 つの分岐がフローに追加されます。 **[If yes]\(はいの場合\)** と **[If no]\(いいえの場合\)** です。 マッチングする条件を定義した後、一方または両方の分岐にステップを追加します。
 
     ![条件分岐](media/functions-flow-scenario/condition-branches.png)
 
-5. **[条件]** カードで、1 つ目のボックスをクリックし、**[動的なコンテンツ]** ダイアログ ボックスから **[ServiceRequired]** を選択します。
+5. **[条件]** カードで、1 つ目のボックスをクリックし、 **[動的なコンテンツ]** ダイアログ ボックスから **[ServiceRequired]** を選択します。
 
     ![条件用のフィールドを選択する](media/functions-flow-scenario/condition1-field.png)
 
@@ -154,7 +156,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
 次は、Azure 内の関数を呼び出すカスタム コネクタを追加します。 標準コネクタと同様に、フローにカスタム コネクタを追加します。 
 
-1. **[If yes] \(はいの場合\)** 分岐で、**[アクションの追加]** をクリックします。
+1. **[If yes] \(はいの場合\)** 分岐で、 **[アクションの追加]** をクリックします。
 
     ![アクションを追加する](media/functions-flow-scenario/condition1-yes-add-action.png)
 
@@ -166,19 +168,19 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     ![コストの計算の既定値](media/functions-flow-scenario/calculates-costs-default.png)
 
-3. **[Calculates costs]\(コストの計算\)** カードで、**[動的なコンテンツ]** ダイアログ ボックスを使用して、この関数の入力内容を選択します。 Microsoft Flow では、数値フィールドは表示されますが、日付フィールドは表示されません。それは、OpenAPI 定義で **[時間]** と **[容量]** が数値に指定されているためです。
+3. **[Calculates costs]\(コストの計算\)** カードで、 **[動的なコンテンツ]** ダイアログ ボックスを使用して、この関数の入力内容を選択します。 Microsoft Flow では、数値フィールドは表示されますが、日付フィールドは表示されません。それは、OpenAPI 定義で **[時間]** と **[容量]** が数値に指定されているためです。
 
-    **[時間]** に **[EstimatedEffort]** を選択し、**[容量]** に **[MaxOutput]** を選択します。
+    **[時間]** に **[EstimatedEffort]** を選択し、 **[容量]** に **[MaxOutput]** を選択します。
 
     ![アクションを選択する](media/functions-flow-scenario/calculates-costs-fields.png)
 
      次は、関数の出力に基づいて別の条件を追加します。
 
-4. **[If yes] \(はいの場合\)** 分岐の下部で、**[More] \(詳細\)**、**[条件の追加]** の順にクリックします。
+4. **[If yes] \(はいの場合\)** 分岐の下部で、 **[More] \(詳細\)** 、 **[条件の追加]** の順にクリックします。
 
     ![条件を追加する](media/functions-flow-scenario/condition2-add.png)
 
-5. **[条件 2]** カードで、1 つ目のボックスをクリックし、**[動的なコンテンツ]** ダイアログ ボックスから **[メッセージ]** を選択します。
+5. **[条件 2]** カードで、1 つ目のボックスをクリックし、 **[動的なコンテンツ]** ダイアログ ボックスから **[メッセージ]** を選択します。
 
     ![条件用のフィールドを選択する](media/functions-flow-scenario/condition2-field.png)
 
@@ -194,7 +196,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
 フローのこの時点で、関数は関数からの**メッセージ**値 `Yes` または`No` と、コストと収益可能性に関するその他の情報を返します。 2 つ目の条件の **[If yes] \(はいの場合\)** 分岐で電子メールを送信しますが、SharePoint リストへの書き戻しや[承認プロセス](https://flow.microsoft.com/documentation/modern-approvals/)の開始など、さまざまなことをいくつでも実行できます。
 
-1. 2 つ目の条件の **[If yes] \(はいの場合\)** 分岐で、**[アクションの追加]** をクリックします。
+1. 2 つ目の条件の **[If yes] \(はいの場合\)** 分岐で、 **[アクションの追加]** をクリックします。
 
     ![アクションを追加する](media/functions-flow-scenario/condition2-yes-add-action.png)
 
@@ -202,7 +204,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     ![Outlook で電子メールを送信する](media/functions-flow-scenario/outlook-send-email.png)
 
-3. **[電子メールの送信]** カードで、電子メールを作成します。 **"宛先"** フィールドに、ご自分の組織内の有効な名前を入力します。 次の図では、**[動的なコンテンツ]** ダイアログ ボックスのテキストとトークンの組み合わせからなるその他のフィールドを示します。 
+3. **[電子メールの送信]** カードで、電子メールを作成します。 **"宛先"** フィールドに、ご自分の組織内の有効な名前を入力します。 次の図では、 **[動的なコンテンツ]** ダイアログ ボックスのテキストとトークンの組み合わせからなるその他のフィールドを示します。 
 
     ![電子メールのフィールド](media/functions-flow-scenario/email-fields.png)
 
@@ -212,13 +214,13 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     ![フローを完成させる](media/functions-flow-scenario/complete-flow.png)
 
-4. ページ上部で **[フローの更新]** をクリックしてから、**[完了]** をクリックします。
+4. ページ上部で **[フローの更新]** をクリックしてから、 **[完了]** をクリックします。
 
 ## <a name="run-the-flow"></a>フローを実行する
 
 これで、フローが完成しました。SharePoint リストに行を追加して、フローがどのように応答するかをご確認ください。
 
-1. SharePoint リストに戻り、**[クイック編集]** をクリックします。
+1. SharePoint リストに戻り、 **[クイック編集]** をクリックします。
 
     ![クイック編集](media/functions-flow-scenario/quick-edit.png)
 
@@ -238,7 +240,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     アイテムを追加すると、フローがトリガーされます。次はこれを少し見てみましょう。
 
-4. [flow.microsoft.com](https://flow.microsoft.com) で、**[マイ フロー]** をクリックしてから、作成したフローをクリックします。
+4. [flow.microsoft.com](https://flow.microsoft.com) で、 **[マイ フロー]** をクリックしてから、作成したフローをクリックします。
 
     ![マイ フロー](media/functions-flow-scenario/my-flows.png)
 
@@ -248,7 +250,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     実行が成功した場合は、次のページでフローの処理を確認できます。 何らかの理由で実行が失敗した場合は、次のページでトラブルシューティング情報が提供されます。
 
-6. フローの間に起こったことを確認するには、カードを展開します。 たとえば、関数への入力と関数からの出力を確認するには、**[Calculates costs]\(コストの計算\)** カードを展開します。 
+6. フローの間に起こったことを確認するには、カードを展開します。 たとえば、関数への入力と関数からの出力を確認するには、 **[Calculates costs]\(コストの計算\)** カードを展開します。 
 
     ![コストの計算の入力と出力](media/functions-flow-scenario/calculates-costs-outputs.png)
 

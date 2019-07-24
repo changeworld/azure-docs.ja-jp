@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.openlocfilehash: 7a3d9a5f87a565625052fc54e3ecccc99fd928a7
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259501"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61386814"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>Azure Database for MariaDB と互換性がある MariaDB ドライバーと管理ツール
 
@@ -29,7 +29,7 @@ PHP | https://secure.php.net/downloads.php | 5.5、5.6、7.x | 5.3 | SSL MySQLi 
 .NET | [GitHub 上の MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [Nuget のインストール パッケージ](https://www.nuget.org/packages/MySqlConnector/) | 0.27 以降 | 0.26.5 以前 |
 MySQL コネクタ/NET | [MySQL コネクタ/NET](https://github.com/mysql/mysql-connector-net) | 8.0、7.0、6.10 |  | 一部の非 UTF8 Windows システムでは、エンコードのバグが原因で、接続できない場合があります。
 Node.js |  [GitHub 上の MySQLjs](https://github.com/mysqljs/mysql/) <br> NPM のインストール パッケージ:<br> NPM から `npm install mysql` を実行 | 2.15 | 2.14.1 以前
-GO | https://github.com/go-sql-driver/mysql/releases | 1.3、1.4 | 1.2 以前 | バージョン 1.3 では接続文字列で `allowNativePasswords=true` を使用します。 バージョン 1.4 には修正プログラムが含まれているため、`allowNativePasswords=true`は不要になりました。
+GO | https://github.com/go-sql-driver/mysql/releases | 1.3、1.4 | 1.2 以前 | バージョン 1.3 では接続文字列で `allowNativePasswords=true` を使用します。 バージョン 1.4 には修正プログラムが含まれているため、`allowNativePasswords=true` は不要になりました。
 Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3、2.0、2.1、2.2 | 1.2.2 以前 |
 Java | https://downloads.mariadb.org/connector-java/ | 2.1、2.0、1.6 | 1.5.5 以前 |
 

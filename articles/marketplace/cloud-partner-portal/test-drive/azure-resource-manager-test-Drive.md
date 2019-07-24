@@ -1,25 +1,19 @@
 ---
-title: Azure Resource Manager の体験版 | Microsoft Docs
+title: Azure Resource Manager 体験版 | Azure Marketplace
 description: Azure Resource Manager を使用して Markeplace 体験版を作成します
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Patrick .Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 2fe1a1fc1ff82415a5c2f88c72ae707b12cd5283
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.author: pabutler
+ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65606435"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -323,7 +317,7 @@ Azure サブスクリプションとサービスの制限について詳しく�
 
 ![ユーザー インターフェイスでの体験版の有効化](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-最初の最も重要なフィールドは、オファーで体験版を有効にするかどうかの切り替えです。 **[はい]** を選択すると、必要なフィールドを含むフォームの残りの部分を設定できるようになります。**[いいえ]** を選択するとフォームは無効になり、体験版を無効にして再発行した場合、運用環境から体験版が削除されます。
+最初の最も重要なフィールドは、オファーで体験版を有効にするかどうかの切り替えです。 **[はい]** を選択すると、必要なフィールドを含むフォームの残りの部分を設定できるようになります。 **[いいえ]** を選択するとフォームは無効になり、体験版を無効にして再発行した場合、運用環境から体験版が削除されます。
 
 注:ユーザーによってアクティブに使用されている体験版が存在する場合は、そのセッションの期限が切れるまで、それらの体験版は引き続き実行されます。
 
@@ -368,7 +362,7 @@ Azure サブスクリプションとサービスの制限について詳しく�
 
 **[Test Drive Resource Manager template]\(体験版 Resource Manager テンプレート\) -** "*必須*" Resource Manager テンプレートをここにアップロードします。 これは、前のセクションで作成したファイルです。 メイン テンプレート ファイルに "main-template.json" という名前を付け、必要な主要変数の出力パラメーターが Resource Manager テンプレートに含まれることを確認します。 (.zip ファイルにする必要があります)
 
-**[Access Information]\(アクセス情報\) -** "*必須*" 顧客が体験版を取得すると、アクセス情報が顧客に対して表示されます。 これらの説明は、体験版 Resource Manager テンプレートからの役に立つ出力パラメーターを共有するためのものです。 出力パラメーターを含めるには、二重中かっこを使用し (例: **{{outputname}}**)、正しい場所に挿入します。 (フロントエンドでレンダリングするため、HTML 文字列形式にすることをお勧めします)。
+**[Access Information]\(アクセス情報\) -** "*必須*" 顧客が体験版を取得すると、アクセス情報が顧客に対して表示されます。 これらの説明は、体験版 Resource Manager テンプレートからの役に立つ出力パラメーターを共有するためのものです。 出力パラメーターを含めるには、二重中かっこを使用し (例: **{{outputname}}** )、正しい場所に挿入します。 (フロントエンドでレンダリングするため、HTML 文字列形式にすることをお勧めします)。
 
 ### <a name="test-drive-deployment-subscription-details"></a>体験版デプロイ サブスクリプションの詳細
 
@@ -388,7 +382,7 @@ Azure サブスクリプションとサービスの制限について詳しく�
 
 ![Azure Active Directory テナントの一覧](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Azure AD テナントの組織、ドメイン、国を定義します](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Azure AD テナントの組織、ドメイン、国や地域を定義します](./media/azure-resource-manager-test-drive/subdetails5.png)
 
 ![選択を確認する](./media/azure-resource-manager-test-drive/subdetails6.png)
 

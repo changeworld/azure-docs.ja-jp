@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bb7af0f7ed20336ab08d4f3ca9639057b9c67f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65149770"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
@@ -124,7 +124,7 @@ SDK またはポータルで共有リンクからワークスペースを直接�
 
 ## <a name="diagnostic-logs"></a>診断ログ
 
-サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 いくつかのログを確認するには、[Azure portal](https://portal.azure.com) にアクセスし、自分のワークスペースに移動して、**[ワークスペース]、[実験]、[実行]、[ログ]** の順に選択します。
+サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 いくつかのログを確認するには、[Azure portal](https://portal.azure.com) にアクセスし、自分のワークスペースに移動して、 **[ワークスペース]、[実験]、[実行]、[ログ]** の順に選択します。
 
 ## <a name="resource-quotas"></a>リソース クォータ
 

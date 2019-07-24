@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 05/22/2019
+ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b021975983858386cd7c847ba11a26f4feb9562
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 8f090a3f07eba529fd39976545eb654083e637eb
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66150455"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67561410"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -53,7 +53,7 @@ A. Data Box の原容量は 100 TB であり、使用可能な容量は 80 TB �
 A.  Data Box を利用できる国や地域については、「[利用可能なリージョン](data-box-overview.md#region-availability)」をご覧ください。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Q. Data Box では、どのリージョンでデータを保存できますか?
-A. Data Box は、米国内のすべてのリージョン、西ヨーロッパ、北ヨーロッパ、フランス、英国でサポートされています。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。 詳細については、「[Region availability (利用可能なリージョン)](data-box-overview.md#region-availability)」をご覧ください。
+A. Data Box は、米国内のすべてのリージョン、西ヨーロッパ、北ヨーロッパ、フランス、英国、日本、オーストラリア、およびカナダでサポートされています。 詳細については、「[Region availability (利用可能なリージョン)](data-box-overview.md#region-availability)」をご覧ください。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Q. Data Box に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box に関して何か問題が発生した場合は、[Microsoft サポート](data-box-disk-contact-microsoft-support.md)にお問い合わせください。
@@ -170,7 +170,7 @@ A.  To speed up the copy process:
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>Q. Data Box で複数のストレージ アカウントを使用することはできますか?
-A.  はい。 Data Box では、最大 10 件のストレージ アカウント、汎用、クラシック、または BLOB ストレージがサポートされています。 ホット BLOB とクール BLOB の両方がサポートされています。 GA リリース段階では、Azure パブリック クラウドにおいて、米国の全地域、西ヨーロッパ、北ヨーロッパ、フランス、英国でのストレージ アカウントがサポートされています。
+A.  はい。 Data Box では、最大 10 件のストレージ アカウント、汎用、クラシック、または BLOB ストレージがサポートされています。 ホット BLOB とクール BLOB の両方がサポートされています。 
 
 
 ## <a name="ship-device"></a>デバイスの配送
@@ -184,7 +184,7 @@ A. デバイスが到着時に破損していたり、改ざんの兆候があ�
 A. Data Box サービスでは、Microsoft が Azure データセンターとの間の配送を扱います。 自身の運送業者を使用する場合は、Azure インポート/エクスポート サービスを使用できます。 詳細については、「[Azure インポート/エクスポート サービスの概要](../storage/common/storage-import-export-service.md)」を参照してください。
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>Q. Data Box デバイスは配送中に国境を越えますか?
-A. すべての Data Box デバイスは配送先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもデバイスを配送できます。
+A. すべての Data Box デバイスは配送先と同じ国内から出荷され、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国からもデバイスを配送できます。 これは、Data Box デバイスと Data Box Heavy デバイスの両方に適用されます。
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Q. E インク表示が返品ラベルを示していません。 どうすればよいですか。
 A. E インク表示が返品ラベルを示していない場合は、次の手順を実行します。

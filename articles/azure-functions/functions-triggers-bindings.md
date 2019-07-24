@@ -4,18 +4,18 @@ description: トリガーとバインドを使用して、Azure 関数をオン�
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 3865f748a9ca2fe09660d6454542d64f73a8e3c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0896a829a24335f3e62581fa3b63e013478781bc
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58889840"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480992"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -88,7 +88,7 @@ JavaScript などの動的に型指定される言語の場合は、*function.js
 - [バインド式とパターン](./functions-bindings-expressions-patterns.md)
 - [Azure 関数の戻り値の使用](./functions-bindings-return-value.md)
 - [バインド式を登録する方法](./functions-bindings-register.md)
-- テスト: 
+- テスト:
   - [Azure Functions のコードをテストするための戦略](functions-test-a-function.md)
   - [HTTP によってトリガーされない関数を手動で実行する](functions-manually-run-non-http.md)
 - [バインド エラーの処理](./functions-bindings-errors.md)

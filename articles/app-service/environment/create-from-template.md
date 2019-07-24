@@ -15,10 +15,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: bdf722ffa7a7c499ff256392886e0f229f27c7a5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66137090"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
@@ -69,12 +69,12 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 ASE の作成には 1 時間ほどかかります。 続いて、ポータルの、デプロイをトリガーしたサブスクリプションの ASE の一覧に、作成した ASE が表示されます。
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>"既定の" SSL 証明書をアップロードして構成する
-SSL 証明書は、アプリへの SSL 接続を確立するために使用する "既定の" SSL 証明書として ASE に関連付ける必要があります。 ASE の既定の DNS サフィックスが *internal-contoso.com* である場合、 https://some-random-app.internal-contoso.com への接続には **.internal-contoso.com* に対して有効な SSL 証明書が必要です。 
+SSL 証明書は、アプリへの SSL 接続を確立するために使用する "既定の" SSL 証明書として ASE に関連付ける必要があります。 ASE の既定の DNS サフィックスが *internal-contoso.com* である場合、 https://some-random-app.internal-contoso.com への接続には * *.internal-contoso.com* に対して有効な SSL 証明書が必要です。 
 
 内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な SSL 証明書を取得します。 どのようなソースから SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
 
-* **Subject**:この属性は、**.your-root-domain-here.com* に設定する必要があります。
-* **Subject Alternative Name**:この属性には、**.your-root-domain-here.com* と **.scm.your-root-domain-here.com* の両方が含まれている必要があります。 各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続で、*your-app-name.scm.your-root-domain-here.com* 形式のアドレスが使用されます。
+* **Subject**:この属性は、* *.your-root-domain-here.com* に設定する必要があります。
+* **Subject Alternative Name**:この属性には、* *.your-root-domain-here.com* と * *.scm.your-root-domain-here.com* の両方が含まれている必要があります。 各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続で、*your-app-name.scm.your-root-domain-here.com* 形式のアドレスが使用されます。
 
 有効な SSL 証明書を取得した後は、さらに 2 つの準備手順を実行する必要があります。 SSL 証明書を .pfx ファイルとして変換/保存します。 .pfx ファイルには、すべての中間証明書とルート証明書を忘れずに含めてください。 パスワードで保護してください。
 
@@ -154,7 +154,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 変更を適用するには ASE フロントエンドあたり約 40 分かかります。 たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまでに約 1 時間 20 分かかります。 テンプレートの実行中に、ASE をスケーリングすることはできません。  
 
-テンプレートが完了したら、ILB ASE 上のアプリは、HTTPS 経由でアクセスできます。 接続は、既定の SSL 証明書を使用して保護されます。 既定の SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。 たとえば、 https://mycustomapp.internal-contoso.com の場合、**.internal-contoso.com* の既定の SSL 証明書が使用されます。
+テンプレートが完了したら、ILB ASE 上のアプリは、HTTPS 経由でアクセスできます。 接続は、既定の SSL 証明書を使用して保護されます。 既定の SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。 たとえば、 https://mycustomapp.internal-contoso.com の場合、* *.internal-contoso.com* の既定の SSL 証明書が使用されます。
 
 ただし、パブリックのマルチテナント サービスで実行されるアプリの場合と同じように、開発者は個々のアプリのカスタム ホスト名を構成できます。 個々のアプリに一意の SNI SSL 証明書バインドを構成することもできます。
 

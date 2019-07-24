@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009854"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61443447"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>自動デバイス管理パッケージをリモート監視ソリューション アクセラレータにインポートする
 
@@ -49,7 +49,7 @@ ms.locfileid: "59009854"
 
 1. リモート監視 Web UI で **[パッケージ]** ページに移動します。![[パッケージ] ページ](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
-1. **[+ 新しいパッケージ]** をクリックし、パッケージの種類として **[構成]** を選択し、**[参照]** をクリックして、前のセクションで保存した **configuration.json** ファイルを選択します。
+1. **[+ 新しいパッケージ]** をクリックし、パッケージの種類として **[構成]** を選択し、 **[参照]** をクリックして、前のセクションで保存した **configuration.json** ファイルを選択します。
 
     ![構成を選択する](media/iot-accelerators-remote-monitoring-import-adm-package/uploadpackage.png)
 

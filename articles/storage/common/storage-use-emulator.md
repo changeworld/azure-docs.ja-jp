@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: 5f55228c80142b2a21af585cb04d16f148460af0
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65149096"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
@@ -78,7 +78,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 これらのコマンドの詳細については、「[ストレージ エミュレーター コマンド ライン ツールのリファレンス](#storage-emulator-command-line-tool-reference)」を参照してください。
 
 > [!TIP]
-> [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使用して、LocalDB のインストールを含め、SQL Server インスタンスを管理できます。 SMSS の **[サーバーへの接続]** ダイアログで、**[サーバー名:]** フィールドに `(localdb)\MSSQLLocalDb` を指定して LocalDB インスタンスに接続します。
+> [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使用して、LocalDB のインストールを含め、SQL Server インスタンスを管理できます。 SMSS の **[サーバーへの接続]** ダイアログで、 **[サーバー名:]** フィールドに `(localdb)\MSSQLLocalDb` を指定して LocalDB インスタンスに接続します。
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>ストレージ エミュレーターに対する要求の認証
 ストレージ エミュレーターをインストールして起動すると、コードをテストできます。 クラウドの Azure Storage の場合と同様に、ストレージ エミュレーターに対する各要求は、匿名である場合を除いて承認される必要があります。 ストレージ エミュレーターに対する要求の承認には、共有キー認証を使用するか、共有アクセス署名 (SAS) を使用することができます。

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: b97fb1956c75332c40e242484b9d94419a45eb92
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 19ced9767d77b0d7bfcec6f01425ab1089a55d54
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242555"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069225"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -48,6 +48,9 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
    ![ビルド パイプラインのチーム プロジェクト、リポジトリ、およびブランチを選択する](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
 3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、**ASP.NET** テンプレートを選択します。 
+
+> [!NOTE]
+> CI の一環として前のタスクで手動でインストールしていない場合、この CI 用に選択するエージェント プールには Docker for Windows をインストールしておく必要があります。 エージェント プールの選択については、[Microsoft によってホストされているエージェント](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml)の記事を参照してください。`Hosted VS2017` または `Hosted VS2019` から始めることをお勧めします。 
 
 これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するために設定できるビルド パイプラインが作成されました。 
 

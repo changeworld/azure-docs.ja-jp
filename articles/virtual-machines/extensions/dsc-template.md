@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 41d9f21688df6f32918500365bc88f3f168604d2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1bcec37e7642ae0cb5bd68de1426c8cc62085d38
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869651"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61475526"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
@@ -178,35 +178,35 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 
 ## <a name="details"></a>詳細
 
-| プロパティ名 | type | 説明 |
+| プロパティ名 | Type | 説明 |
 | --- | --- | --- |
-| settings.wmfVersion |文字列 |VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを **latest** に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、**4.0**、**5.0**、**5.1**、**latest** のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。 |
-| settings.configuration.url |文字列 |DSC 構成 .zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationUrlSasToken** プロパティに SAS トークンの値を設定します。 **settings.configuration.script** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、Location Configuration Manager (LCM) のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
-| settings.configuration.script |文字列 |DSC 構成の定義を含むスクリプトのファイル名を指定します。 このスクリプトは、**settings.configuration.url** プロパティで指定した URL からダウンロードされた .zip ファイルのルート フォルダーに含まれている必要があります。 **settings.configuration.url** または **settings.configuration.script** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、LCM のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
-| settings.configuration.function |文字列 |DSC 構成の名前を指定します。 名前が指定された構成は、**settings.configuration.script** によって定義されたスクリプト内に含まれている必要があります。 **settings.configuration.url** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、LCM のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
+| settings.wmfVersion |string |VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを **latest** に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、**4.0**、**5.0**、**5.1**、**latest** のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。 |
+| settings.configuration.url |string |DSC 構成 .zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationUrlSasToken** プロパティに SAS トークンの値を設定します。 **settings.configuration.script** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、Location Configuration Manager (LCM) のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
+| settings.configuration.script |string |DSC 構成の定義を含むスクリプトのファイル名を指定します。 このスクリプトは、**settings.configuration.url** プロパティで指定した URL からダウンロードされた .zip ファイルのルート フォルダーに含まれている必要があります。 **settings.configuration.url** または **settings.configuration.script** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、LCM のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
+| settings.configuration.function |string |DSC 構成の名前を指定します。 名前が指定された構成は、**settings.configuration.script** によって定義されたスクリプト内に含まれている必要があります。 **settings.configuration.url** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、LCM のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
 | settings.configurationArguments |コレクション |DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されません。 |
-| settings.configurationData.url |文字列 |DSC 構成の入力として使用する構成データ (.psd1) ファイルのダウンロード元の URL を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationDataUrlSasToken** プロパティに SAS トークンの値を設定します。 |
-| settings.privacy.dataCollection |文字列 |テレメトリの収集を有効または無効にします。 このプロパティに指定できる値は、**Enable**、**Disable**、**''**、または **$null** のみです。 このプロパティを空または null にした場合は、テレメトリが有効になります。 既定値は **''** です。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。 |
+| settings.configurationData.url |string |DSC 構成の入力として使用する構成データ (.psd1) ファイルのダウンロード元の URL を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationDataUrlSasToken** プロパティに SAS トークンの値を設定します。 |
+| settings.privacy.dataCollection |string |テレメトリの収集を有効または無効にします。 このプロパティに指定できる値は、**Enable**、**Disable**、 **''** 、または **$null** のみです。 このプロパティを空または null にした場合は、テレメトリが有効になります。 既定値は **''** です。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。 |
 | settings.advancedOptions.downloadMappings |コレクション |WMF のダウンロード元になる別の場所を定義します。 詳しくは、「[Azure DSC extension 2.8 and how to map downloads of the extension dependencies to your own location (Azure DSC 拡張機能 2.8 と、拡張機能の依存関係のダウンロードを独自の場所にマップする方法)](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)」をご覧ください。 |
 | protectedSettings.configurationArguments |コレクション |DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されます。 |
-| protectedSettings.configurationUrlSasToken |文字列 |**settings.configuration.url** で定義された URL へのアクセスに使用する SAS トークンを指定します。 このプロパティは暗号化されます。 |
-| protectedSettings.configurationDataUrlSasToken |文字列 |**settings.configurationData.url** で定義された URL へのアクセスに使用する SAS トークンを指定します。 このプロパティは暗号化されます。 |
+| protectedSettings.configurationUrlSasToken |string |**settings.configuration.url** で定義された URL へのアクセスに使用する SAS トークンを指定します。 このプロパティは暗号化されます。 |
+| protectedSettings.configurationDataUrlSasToken |string |**settings.configurationData.url** で定義された URL へのアクセスに使用する SAS トークンを指定します。 このプロパティは暗号化されます。 |
 
 ## <a name="default-configuration-script"></a>既定の構成スクリプト
 
 次の値について詳しくは、[ローカル構成マネージャーの基本設定](/powershell/dsc/metaconfig#basic-settings)に関するページをご覧ください。
 DSC 拡張機能の既定の構成スクリプトは、次の表に記載されている LCM プロパティの構成にのみ使用できます。
 
-| プロパティ名 | type | 説明 |
+| プロパティ名 | Type | 説明 |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |必須のプロパティです。 Azure Automation サービスに登録するためにノードで使用するキーを、PowerShell 資格情報オブジェクトのパスワードとして指定します。 この値は、Automation アカウントに対して **listkeys** メソッドを使用することで、自動的に検出できます。  [例](#example-using-referenced-azure-automation-registration-values)を参照してください。 |
-| settings.configurationArguments.RegistrationUrl |文字列 |必須のプロパティです。 ノードが登録を試みる Automation エンドポイントの URL を指定します。 この値は、Automation アカウントに対して **reference** メソッドを使用することで、自動的に検出できます。 |
-| settings.configurationArguments.NodeConfigurationName |文字列 |必須のプロパティです。 ノードに割り当てる Automation アカウントのノード構成を指定します。 |
-| settings.configurationArguments.ConfigurationMode |文字列 |LCM のモードを指定します。 有効なオプションには、**ApplyOnly**、**ApplyandMonitor**、および **ApplyandAutoCorrect** があります。  既定値は **ApplyandMonitor** です。 |
+| settings.configurationArguments.RegistrationUrl |string |必須のプロパティです。 ノードが登録を試みる Automation エンドポイントの URL を指定します。 この値は、Automation アカウントに対して **reference** メソッドを使用することで、自動的に検出できます。 |
+| settings.configurationArguments.NodeConfigurationName |string |必須のプロパティです。 ノードに割り当てる Automation アカウントのノード構成を指定します。 |
+| settings.configurationArguments.ConfigurationMode |string |LCM のモードを指定します。 有効なオプションには、**ApplyOnly**、**ApplyandMonitor**、および **ApplyandAutoCorrect** があります。  既定値は **ApplyandMonitor** です。 |
 | settings.configurationArguments.RefreshFrequencyMins | uint32 | LCM が Automation アカウントを使用して更新プログラムの確認を試みる頻度を指定します。  既定値は **30** です。  最小値は **15** です。 |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | LCM が現在の構成を検証する頻度を指定します。 既定値は **15** です。 最小値は **15** です。 |
 | settings.configurationArguments.RebootNodeIfNeeded | ブール値 | DSC 操作で要求した場合に、ノードが自動的に再起動されてよいかどうかを指定します。 既定値は **false** です。 |
-| settings.configurationArguments.ActionAfterReboot | 文字列 | 構成を適用したときの再起動後の動作を指定します。 有効なオプションは、**ContinueConfiguration** と **StopConfiguration** です。 既定値は **ContinueConfiguration** です。 |
+| settings.configurationArguments.ActionAfterReboot | string | 構成を適用したときの再起動後の動作を指定します。 有効なオプションは、**ContinueConfiguration** と **StopConfiguration** です。 既定値は **ContinueConfiguration** です。 |
 | settings.configurationArguments.AllowModuleOverwrite | ブール値 | LCM がノード上の既存のモジュールを上書きするかどうかを指定します。 既定値は **false** です。 |
 
 ## <a name="settings-vs-protectedsettings"></a>settings と protectedSettings
@@ -353,7 +353,7 @@ Resource Manager テンプレートでは、次のコードにより、正しい
 "Privacy.dataCollection is '{0}'.
 The only possible values are '', 'Enable', and 'Disable' (Privacy.dataCollection は '{0}' です。指定できる値は ''、'Enable'、および 'Disable' のみです)"
 "WmfVersion is '{0}'.
-Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定できる値は …  および 'latest' のみです)"
+Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定できる値は … および 'latest' のみです)"
 
 **問題点**:指定した値が許可されていません。
 

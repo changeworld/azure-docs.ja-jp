@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 22996b277aba96cbbfedbb3e9cc67644d1a535ca
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: abef7815effcf420c8a0065ed46ce3c16c19ebe0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799016"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65991758"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -46,8 +46,8 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの追加
 
-1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
-2. **[参照]** タブをクリックし、**[Microsoft Azure Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** を検索して、**[Microsoft.Azure.ServiceBus]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
+1. 新しく作成したプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+2. **[参照]** タブをクリックし、 **[Microsoft Azure Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** を検索して、 **[Microsoft.Azure.ServiceBus]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
    
     ![Select a NuGet package][nuget-pkg]
 
@@ -191,7 +191,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
     }
     ```
 
-7. プログラムを実行し、Azure Portal を確認します。名前空間の **[概要]** ウィンドウでキューの名前をクリックしてください。 キューの **[要点]** 画面が表示されます。 キューの **[アクティブなメッセージ数]** の値が **10** になっていることに注目してください。 この値は、メッセージを取得しないまま送信側アプリケーションを実行するたびに 10 ずつ増えます (メッセージの取得については次のセクションで説明します)。 アプリからキューにメッセージを追加するたびに、キューの最新のサイズによって、**[要点]** ウィンドウの **[現在]** の値も増えている点に注目してください。
+7. プログラムを実行し、Azure Portal を確認します。名前空間の **[概要]** ウィンドウでキューの名前をクリックしてください。 キューの **[要点]** 画面が表示されます。 キューの **[アクティブなメッセージ数]** の値が **10** になっていることに注目してください。 この値は、メッセージを取得しないまま送信側アプリケーションを実行するたびに 10 ずつ増えます (メッセージの取得については次のセクションで説明します)。 アプリからキューにメッセージを追加するたびに、キューの最新のサイズによって、 **[要点]** ウィンドウの **[現在]** の値も増えている点に注目してください。
    
       ![メッセージ サイズ][queue-message]
 
@@ -390,6 +390,9 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
     ![Queue length][queue-message-receive]
 
 お疲れさまでした。 ここではキューを作成して、そこに一連のメッセージを送信したり、同じキューからそれらのメッセージを受信したりしました。
+
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
 ## <a name="next-steps"></a>次の手順
 

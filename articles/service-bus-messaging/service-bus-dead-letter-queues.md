@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 05/21/2019
 ms.author: aschhab
-ms.openlocfilehash: 0364304a203e03faf69868174a45cb41850ce112
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: af67b27dacf3bb86c2dd5c878a2751e027a53acb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733316"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66003135"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -102,6 +102,17 @@ while(true)
     }
 }
 ```
+
+## <a name="path-to-the-dead-letter-queue"></a>配信不能キューへのパス
+配信不能キューにアクセスするには、次の構文を使用します。
+
+```
+<queue path>/$deadletterqueue
+<topic path>/Subscription/<subscription path>/$deadletterqueue
+```
+
+.NET SDK を使用している場合、配信不能キューへのパスを取得するには、SubscriptionClient.FormatDeadLetterPath() メソッドを使用します。 このメソッドは、 **/$DeadLetterQueue** を使用して、トピック名、サブスクリプション名、サフィックスを指定します。
+
 
 ## <a name="next-steps"></a>次の手順
 

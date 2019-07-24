@@ -9,16 +9,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33765d57f1a0e5788011b2d9d9c2f57d06713ddb
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 922273e3805004f6af068ea748c16f5675810144
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680691"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66001456"
 ---
-# <a name="common-security-attributes-for-azure-storage"></a>Azure Storage の一般的なセキュリティ属性
+# <a name="security-attributes-for-azure-storage"></a>Azure Storage のセキュリティ属性
 
-セキュリティは、Azure サービスのすべての要素に統合されています。 この記事では、Azure Storage に組み込まれている一般的なセキュリティ属性について説明します。 
+この記事では、Azure Storage に組み込まれているセキュリティ属性について説明します。 
 
 [!INCLUDE [Security Attributes Header](../../../includes/security-attributes-header.md)]
 
@@ -38,8 +38,8 @@ ms.locfileid: "59680691"
 |---|---|--|
 | サービス エンドポイントのサポート| はい |  |
 | VNet インジェクションのサポート| 該当なし |  |
-| ネットワークの分離/ファイアウォールのサポート| はい | |
-| 強制トンネリングのサポート | 該当なし |  |
+| ネットワークの分離とファイアウォールのサポート| はい | |
+| 強制トンネリングのサポート| 該当なし |  |
 
 ## <a name="detection"></a>検出
 
@@ -47,19 +47,19 @@ ms.locfileid: "59680691"
 |---|---|--|
 | Azure 監視サポート (Log analytics や App Insights など)| はい | Azure Monitor のメトリックが利用できるようになり、ログのプレビューが開始されました |
 
-## <a name="iam-support"></a>IAM サポート
+## <a name="identity-and-access-management"></a>ID 管理とアクセス管理
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| アクセス管理 - 認証| はい | Azure Active Directory、共有キー、共有アクセス トークン。 |
-| アクセス管理 - 承認| はい | RBAC、POSIX ACL、SAS トークンを使用した承認をサポートします |
+| Authentication| はい | Azure Active Directory、共有キー、共有アクセス トークン。 |
+| Authorization| はい | RBAC、POSIX ACL、SAS トークンを使用した承認をサポートします |
 
 
 ## <a name="audit-trail"></a>監査証跡
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| コントロール/管理プレーンのログ記録と監査 | はい | Azure Resource Manager アクティビティ ログ |
+| コントロールと管理プレーンのログ記録と監査 | はい | Azure Resource Manager アクティビティ ログ |
 | データ プレーンのログ記録と監査| はい | サービスの診断ログおよび Azure Monitor のログのプレビューが開始されました  |
 
 ## <a name="configuration-management"></a>構成管理

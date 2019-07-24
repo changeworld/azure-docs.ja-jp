@@ -4,7 +4,7 @@ description: Resource Manager デプロイ モデルで Azure PowerShell また�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 57fbab4194f6cd232e1462ecea9a07d104c6cb51
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 3ae730389b54fc1034bfac3ffdc7e56a2dc5f3fc
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205731"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67718969"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
 
@@ -31,12 +31,12 @@ Azure portal または PowerShell を使用して、Azure 管理 VM イメージ
 ## <a name="use-the-portal"></a>ポータルの使用
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
-2. 左側のメニューで、**[すべてのリソース]** を選択します。 **[種類]** でリソースを並べ替えて、イメージを簡単に見つけることができます。
+2. 左側のメニューで、 **[すべてのリソース]** を選択します。 **[種類]** でリソースを並べ替えて、イメージを簡単に見つけることができます。
 3. 一覧から使うイメージを選びます。 イメージの **[概要]** ページが開きます。
 4. メニューから **[VM の作成]** を選択します。
-5. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのログインに使用されます。 完了したら、**[OK]** を選択します。 既存のリソース グループに新しい VM を作成するか、**[新規作成]** を選択して VM を格納する新しいリソース グループを作成することができます。
-6. VM のサイズを選択します。 その他のサイズも表示するには、**[すべて表示]** を選択するか、**[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 
-7. **[設定]** で必要な変更を行い、**[OK]** を選択します。 
+5. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのログインに使用されます。 完了したら、 **[OK]** を選択します。 既存のリソース グループに新しい VM を作成するか、 **[新規作成]** を選択して VM を格納する新しいリソース グループを作成することができます。
+6. VM のサイズを選択します。 その他のサイズも表示するには、 **[すべて表示]** を選択するか、 **[Supported disk type (サポートされているディスクの種類)]** フィルターを変更します。 
+7. **[設定]** で必要な変更を行い、 **[OK]** を選択します。 
 8. 概要ページでは、イメージ名が **[プライベート イメージ]** の一覧に表示されます。 **[OK]** を選択して、仮想マシンのデプロイを開始します。
 
 

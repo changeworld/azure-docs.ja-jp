@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: 49491c5283ba16c5379c1115fae597bd7fd6ea19
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 06/26/2019
+ms.openlocfilehash: ac57e873a6948e85e78849bd4e22db85491c4bfb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567130"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441540"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL Database のテンポラル テーブルの概要
 
@@ -109,7 +109,7 @@ WITH (DROP_EXISTING = ON);
 ## <a name="step-2-run-your-workload-regularly"></a>手順 2:ワークロードを定期的に実行する
 テンポラル テーブルの大きな利点は、変更を追跡するために、既存の Web サイトになんら変更や調整を加える必要がないことです。 テンポラル テーブルは一度作成すれば、その後はユーザーに意識させることなく、データに変更が行われるたびに、以前の行バージョンを保存します。 
 
-このシナリオで変更の自動追跡を利用するために、ユーザーが Web サイト セッションを終了するたびに、 **PagesVisited** 列を更新してみましょう。
+このシナリオで変更の自動追跡を利用するために、ユーザーが Web サイト セッションを終了するたびに、**PagesVisited** 列を更新してみましょう。
 
 ```
 UPDATE WebsiteUserInfo  SET [PagesVisited] = 5 
@@ -195,6 +195,7 @@ ALTER TABLE dbo.WebsiteUserInfo
 * [カスタム クリーンアップ スクリプト](https://msdn.microsoft.com/library/mt637341.aspx#Anchor_3)
 
 ## <a name="next-steps"></a>次の手順
-テンポラル テーブルの詳細については、 [MSDN のドキュメント](https://msdn.microsoft.com/library/dn935015.aspx)を参照してください。
-Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
+
+- テンポラル テーブルの詳細については、「チェック アウト[テンポラル テーブル](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables)」をご覧ください。
+- Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。
 

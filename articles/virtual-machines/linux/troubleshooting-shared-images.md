@@ -4,7 +4,7 @@ description: 共有イメージ ギャラリーに関する問題のトラブル
 services: virtual-machine-windows
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/25/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
+ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 5e8ff00090b3556eadceb3a64423736d8c876dca
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f57befcf33def189520829c4ee85468b53aae4a7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150279"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708543"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>共有イメージ ギャラリーのトラブルシューティング
 

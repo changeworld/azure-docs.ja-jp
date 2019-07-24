@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: a620b592a33f9de11de53d623d257f203da2157b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547703"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61370358"
 ---
 # <a name="door-monitor"></a>ドア モニター          
 
@@ -52,7 +52,7 @@ MXChip IoT DevKit には、磁気センサーが組み込まれています。 �
 
 ### <a name="sendgrid-deployment"></a>SendGrid のデプロイ
 
-Azure サービスをプロビジョニングするには、**[Azure へのデプロイ]** ボタンをクリックします。 このボタンを使用すると、オープン ソース プロジェクトを Microsoft Azure に短時間で簡単にデプロイできます。
+Azure サービスをプロビジョニングするには、 **[Azure へのデプロイ]** ボタンをクリックします。 このボタンを使用すると、オープン ソース プロジェクトを Microsoft Azure に短時間で簡単にデプロイできます。
 
 下の **[Azure へのデプロイ]** ボタンをクリックします。 
 
@@ -66,27 +66,27 @@ SendGrid のサインアップ フォームが表示されます。
 
 サインアップ フォームに入力します。
 
-   * **[リソース グループ]**:SendGrid サービスをホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関する記事をご覧ください。
+   * **[リソース グループ]** :SendGrid サービスをホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関する記事をご覧ください。
 
-   * **[名前]**:SendGrid サービスの名前。 他のサービスとは異なる一意の名前を選択します。
+   * **[名前]** :SendGrid サービスの名前。 他のサービスとは異なる一意の名前を選択します。
 
    * **Password**:このサービスにはパスワードが必要です。このプロジェクト内で他に使用されることはありません。
 
    * **電子メール**: SendGrid サービスは、この電子メール アドレスに確認を送信します。
 
-このアプリケーションを後で見つけやすくするために、**[ダッシュボードにピン留めする]** オプションをオンにし、**[購入]** をクリックしてサインイン フォームを送信します。
+このアプリケーションを後で見つけやすくするために、 **[ダッシュボードにピン留めする]** オプションをオンにし、 **[購入]** をクリックしてサインイン フォームを送信します。
  
 ### <a name="sendgrid-api-key-creation"></a>SendGrid API キーの作成
 
-デプロイが完了したら、それをクリックし、**[管理]** ボタンをクリックします。 SendGrid アカウント ページが表示されます。ここで、電子メール アドレスを確認する必要があります。
+デプロイが完了したら、それをクリックし、 **[管理]** ボタンをクリックします。 SendGrid アカウント ページが表示されます。ここで、電子メール アドレスを確認する必要があります。
 
 ![SendGrid の管理](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-SendGrid ページで、**[設定]** > **[API キー]** > **[API キーの作成]** をクリックします。
+SendGrid ページで、 **[設定]**  >  **[API キー]**  >  **[API キーの作成]** をクリックします。
 
 ![SendGrid: API の作成 (その 1)](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
-**[API キーの作成]** ページで、**[API キー名]** を入力し、**[作成と表示]** をクリックします。
+**[API キーの作成]** ページで、 **[API キー名]** を入力し、 **[作成と表示]** をクリックします。
 
 ![SendGrid: API の作成 (その 2)](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-second.png)
 
@@ -106,7 +106,7 @@ API キーは 1 回だけ表示されます。 次の手順で使用するため
 
 サインアップ フォームの各フィールドに情報を入力します。
 
-   * **[リソース グループ]**:SendGrid サービスをホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関する記事をご覧ください。
+   * **[リソース グループ]** :SendGrid サービスをホストするリソース グループを作成するか、既存のリソース グループを使用します。 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/manage-resource-groups-portal.md)に関する記事をご覧ください。
 
    * **Iot Hub 名**:IoT Hub の名前。 他のサービスとは異なる一意の名前を選択します。
 
@@ -114,7 +114,7 @@ API キーは 1 回だけ表示されます。 次の手順で使用するため
 
    * **送信者アドレス**:このフィールドは、SendGrid サービスを設定するときに使用したのと同じ電子メール アドレスにする必要があります。
 
-このアプリケーションを後で見つけやすくするために、**[ダッシュボードにピン留めする]** オプションをオンにし、次の手順に進む準備ができたら、**[購入]** をクリックします。
+このアプリケーションを後で見つけやすくするために、 **[ダッシュボードにピン留めする]** オプションをオンにし、次の手順に進む準備ができたら、 **[購入]** をクリックします。
  
 ## <a name="build-and-upload-the-code"></a>コードをビルドしてアップロードする
 
@@ -131,11 +131,11 @@ API キーは 1 回だけ表示されます。 次の手順で使用するため
 
 ### <a name="open-arduino-examples-folder"></a>[Arduino Examples]\(Arduino の例\) フォルダーを開く
 
-左側の **[ARDUINO EXAMPLES]** セクションを展開し、**[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照し、**[DoorMonitor]** を選択します。 このアクションによって、プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
+左側の **[ARDUINO EXAMPLES]** セクションを展開し、 **[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照し、 **[DoorMonitor]** を選択します。 このアクションによって、プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-サンプル アプリは、コマンド パレットから開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
+サンプル アプリは、コマンド パレットから開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、 **[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ### <a name="provision-azure-services"></a>Azure サービスのプロビジョニング
 
@@ -183,7 +183,7 @@ DevKit が再起動され、コードの実行が開始されます。
 
 プログラムは、DevKit が安定した磁場の中にあるときに、まず初期化を実行します。
 
-初期化が終わると、画面に `Door closed` が表示されます。 磁場が変化すると、状態が `Door opened` に変わります。 ドアの状態が変化するたびに、電子メール通知を受信します  (これらの電子メール メッセージが受信されるまで、最大 5 分かかる場合があります)。
+初期化が終わると、画面に `Door closed` が表示されます。 磁場が変化すると、状態が `Door opened` に変わります。 ドアの状態が変化するたびに、電子メール通知を受信します (これらの電子メール メッセージが受信されるまで、最大 5 分かかる場合があります)。
 
 ![磁石がセンサーの近くにあるとき:Door Closed](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "磁石がセンサーの近くにあるとき:Door Closed")
 

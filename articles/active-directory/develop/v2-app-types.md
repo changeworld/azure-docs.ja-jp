@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec10359c6f684b1d7fb008946b7ceca2ed626ba
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: ac3dbd3f2148c14780c380cc0c7f2fab2a41e165
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545374"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482398"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
@@ -51,7 +51,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>シングル ページ アプリ (JavaScript)
 
-最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。 AngularJS、Ember.js、または Durandal.js などのフレームワークを使用して記述されていることも少なくありません。 Microsoft ID プラットフォーム エンドポイントでは、[OAuth 2.0 暗黙的フロー](v2-oauth2-implicit-grant-flow.md)を使用してこれらのアプリがサポートされます。
+最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。 Angular、React、または Vue などのフレームワークを使用して記述されていることも、少なくありません。 Microsoft ID プラットフォーム エンドポイントでは、[OAuth 2.0 暗黙的フロー](v2-oauth2-implicit-grant-flow.md)を使用してこれらのアプリがサポートされます。
 
 このフローでは、アプリは Microsoft ID プラットフォーム承認エンドポイントから直接トークンを受け取るため、サーバー間の交換は実行されません。 すべての認証ロジックとセッション処理は、余分なページのリダイレクトなしに、JavaScript クライアント内ですべて行うことができます。
 
@@ -106,7 +106,7 @@ Web API は、アクセス許可 ([スコープ](v2-permissions-and-consent.md)�
 
 Web API は、すべての種類のアプリ (Web サーバー アプリ、デスクトップ アプリとモバイル アプリ、シングル ページ アプリ、サーバー側のデーモン、さらにそれ以外の Web API など) からアクセス トークンを受信できます。 Web API 認証の大まかな流れは次のとおりです。
 
-![Web API 認証フロー](./media/v2-app-types/convergence-scenarios-webapi.svg)
+![Web API の認証フロー](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
 OAuth2 アクセス トークンを使用して Web API をセキュリティ保護する方法については、[Microsoft ID プラットフォームの使用の開始](v2-overview.md#getting-started)に関するセクションの Web API コード サンプルを確認してください。
 

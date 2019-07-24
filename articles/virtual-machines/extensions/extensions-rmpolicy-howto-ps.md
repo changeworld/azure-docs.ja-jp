@@ -4,7 +4,7 @@ description: Azure Policy を使用して拡張機能の展開を制限できま
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz;cynthn
-ms.openlocfilehash: 4dc68127f2d19426c372be027634bb2563dbfa6c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.author: roiyz
+ms.reviewer: cynthn
+ms.openlocfilehash: 7060ef84a3483b1f74253a7f96ac33f7929b6799
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341659"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876736"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure Policy を使用して Windows VM への拡張機能のインストールを制限する
 
@@ -26,7 +27,7 @@ ms.locfileid: "56341659"
 
 このチュートリアルでは、Cloud Shell で Azure PowerShell を使用します。このバージョンは常に更新され最新になっています。 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-rules-file"></a>規則ファイルを作成する
 

@@ -4,7 +4,7 @@ description: SUSE Linux オペレーティング システムを格納した Azu
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 066d01a6-2a54-4718-bcd0-90fe7a5303a1
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 2b0c01ee4b1d1bc5ce83fc0afc309abfcf25f33e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05731acd5e808075145c50281063e8990129d882
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996698"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708687"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Azure 用の SLES または openSUSE 仮想マシンの準備
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -99,7 +99,7 @@ SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www
         # logout
 16. Hyper-V マネージャーで **[アクション]、[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
-- - -
+---
 ## <a name="prepare-opensuse-131"></a>openSUSE 13.1 以上の準備
 1. Hyper-V マネージャーの中央のウィンドウで仮想マシンを選択します。
 2. **[接続]** をクリックすると、仮想マシンのウィンドウが開きます。
@@ -140,7 +140,7 @@ SUSE では、独自の VHD を構築する代わりに、 [VMDepot](https://www
 7. "/etc/sysconfig/network/dhcp" ファイルを編集して、次のように `DHCLIENT_SET_HOSTNAME` パラメーターを変更することをお勧めします。
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **重要:**"/etc/sudoers" で、次の行をコメント アウトするか削除する必要があります (ある場合)。
+8. **重要:** "/etc/sudoers" で、次の行をコメント アウトするか削除する必要があります (ある場合)。
    
      Defaults targetpw   # ask for the password of the target user i.e. root ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
 9. SSH サーバーがインストールされており、起動時に開始するように構成されていることを確認します。  通常これが既定です。

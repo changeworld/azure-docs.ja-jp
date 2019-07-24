@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C でのカスタム ポリシーのトラブルシューティング | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーを使って作業するときに発生するエラーを解決する方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5345069005f9161ff04fffb063fda99b7594ec08
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 552f056a6637b3ebacfbd15eb878c28adbec6b88
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64703037"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66509969"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C のカスタム ポリシーと Identity Experience Framework のトラブルシューティング
 
@@ -57,8 +57,8 @@ XML ルールのレビューが役に立つ可能性があります。 Azure AD 
 
 * `Run Now` と `https://jwt.io` を使用して、Web アプリケーションまたはモバイル アプリケーションとは別にポリシーをテストします。 この Web サイトは、証明書利用者アプリケーションと同様に動作します。 このサイトには、Azure AD B2C ポリシーによって生成される JSON Web トークン (JWT) の内容が表示されます。 Identity Experience Framework でテスト アプリケーションを作成するには、次の値を使用します。
     * 名前:TestApp
-    * Web アプリ/Web API:いいえ 
-    * ネイティブ クライアント:いいえ 
+    * Web アプリ/Web API:いいえ
+    * ネイティブ クライアント:いいえ
 
 * クライアント ブラウザーと Azure AD B2C の間でのメッセージ交換をトレースするには、[Fiddler](https://www.telerik.com/fiddler) を使用します。 これにより、オーケストレーション手順のどこでユーザー体験が失敗するか、ヒントを得ることができます。
 

@@ -6,14 +6,13 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-origin.date: 08/15/2018
-ms.date: 03/12/2019
-ms.author: v-junlch
+ms.date: 8/15/2018
+ms.author: victorh
 ms.openlocfilehash: 90200f7be6c71346441922365fc4439111dd8701
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66133692"
 ---
 # <a name="renew-application-gateway-certificates"></a>Application Gateway の証明書を更新する
@@ -24,11 +23,11 @@ Azure portal、Azure PowerShell、または Azure CLI を使って、リスナ�
 
 ## <a name="azure-portal"></a>Azure ポータル
 
-ポータルからリスナー証明書を更新するには、アプリケーション ゲートウェイ リスナーに移動します。 更新が必要な証明書のあるリスナーをクリックして、**[選択した証明書の更新または編集]** をクリックします。
+ポータルからリスナー証明書を更新するには、アプリケーション ゲートウェイ リスナーに移動します。 更新が必要な証明書のあるリスナーをクリックして、 **[選択した証明書の更新または編集]** をクリックします。
 
-![証明書の更新](./media/renew-certificate/ssl-cert.png)
+![証明書の更新](media/renew-certificate/ssl-cert.png)
 
-新しい PFX 証明書をアップロードし、名前を指定し、パスワードを入力してから、**[保存]** をクリックします。
+新しい PFX 証明書をアップロードし、名前を指定し、パスワードを入力してから、 **[保存]** をクリックします。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -36,7 +35,7 @@ Azure portal、Azure PowerShell、または Azure CLI を使って、リスナ�
 
 Azure PowerShell を使用して証明書を更新するには、次のスクリプトを使用します。
 
-```azurepowershell
+```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
   -ResourceGroupName <ResourceGroup> `
   -Name <AppGatewayName>
@@ -53,17 +52,15 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
 ## <a name="azure-cli"></a>Azure CLI
 
-```azurecli
-az network application-gateway ssl-cert update `
-  -n "<CertName>" `
-  --gateway-name "<AppGatewayName>" `
-  -g "ResourceGroupName>" `
-  --cert-file <PathToCerFile> `
+```azurecli-interactive
+az network application-gateway ssl-cert update \
+  -n "<CertName>" \
+  --gateway-name "<AppGatewayName>" \
+  -g "ResourceGroupName>" \
+  --cert-file <PathToCerFile> \
   --cert-password "<password>"
 ```
 
 ## <a name="next-steps"></a>次の手順
 
 Azure Application Gateway で SSL オフロードを構成する方法を学習するには、[SSL オフロードの構成](application-gateway-ssl-portal.md)に関するページをご覧ください。
-
-<!-- Update_Description: code update -->

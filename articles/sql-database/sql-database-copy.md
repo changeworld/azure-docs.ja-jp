@@ -8,20 +8,20 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
-ms.author: sahsan
+ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 04/11/2019
-ms.openlocfilehash: 4516d61c1bf8a32e807bcbc01ea1e5b283e31060
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 06/03/2019
+ms.openlocfilehash: dc82ace4c5bf1204075bfa5e34d0b1489a3acb98
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65762687"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876268"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL データベースのコピーを作成する
 
-Azure SQL Database では、同じサーバーまたは別のサーバーのいずれかに、トランザクション上一貫性のある、既存の Azure SQL データベースのコピーを作成するための複数の方法が用意されています。 Azure Portal、PowerShell、または T-SQL を使って、SQL Database をコピーできます。 
+Azure SQL Database では、同じサーバーまたは別のサーバーのいずれかに、トランザクション上一貫性のある、既存の Azure SQL データベース ([単一データベース](sql-database-single-database.md)) のコピーを作成するための複数の方法が用意されています。 Azure Portal、PowerShell、または T-SQL を使って、SQL Database をコピーできます。 
 
 ## <a name="overview"></a>概要
 
@@ -42,15 +42,13 @@ Azure SQL Database では、同じサーバーまたは別のサーバーのい�
 
 ## <a name="copy-a-database-by-using-the-azure-portal"></a>Azure Portal を使ってデータベースをコピーする
 
-Azure Portal を使ってデータベースをコピーするには、データベースのページを開き、**[コピー]** をクリックします。 
+Azure Portal を使ってデータベースをコピーするには、データベースのページを開き、 **[コピー]** をクリックします。 
 
    ![データベースのコピー](./media/sql-database-copy/database-copy.png)
 
 ## <a name="copy-a-database-by-using-powershell"></a>PowerShell を使ってデータベースをコピーする
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 PowerShell を使用してデータベースをコピーするには、[New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) コマンドレットを使用します。 
 

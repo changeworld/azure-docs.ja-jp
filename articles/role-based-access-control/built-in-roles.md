@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 06/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ce23b891decd20db239e653702533ac7af21b980
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: b92bc0a6c5d51ad26e069a363619edbdf0daa7c0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073336"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442884"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -54,14 +54,22 @@ ms.locfileid: "65073336"
 | [Automation Runbook Operator](#automation-runbook-operator) | Runbook のジョブを作成する方法については、Runbook のプロパティを参照してください。 |
 | [Avere 共同作成者](#avere-contributor) | Avere vFXT クラスターを作成および管理できます。 |
 | [Avere オペレーター](#avere-operator) | クラスターを管理するために Avere vFXT クラスターによって使用されます |
+| [Azure Event Hubs データ所有者 (プレビュー)](#azure-event-hubs-data-owner-preview) | Azure Event Hubs リソースへのフル アクセスを許可します。 |
+| [Azure Event Hubs データ受信者 (プレビュー)](#azure-event-hubs-data-receiver-preview) | Azure Event Hubs リソースへの受信アクセスを許可します。 |
+| [Azure Event Hubs データ送信者 (プレビュー)](#azure-event-hubs-data-sender-preview) | Azure Event Hubs リソースへの送信アクセスを許可します。 |
 | [Azure Kubernetes Service クラスター管理者ロール](#azure-kubernetes-service-cluster-admin-role) | クラスター管理者の資格情報アクションを一覧表示します。 |
 | [Azure Kubernetes Service クラスター ユーザー ロール](#azure-kubernetes-service-cluster-user-role) | クラスター ユーザーの資格情報アクションを一覧表示します。 |
+| [Azure Maps データ閲覧者 (プレビュー)](#azure-maps-data-reader-preview) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 |
+| [Azure Service Bus データ所有者 (プレビュー)](#azure-service-bus-data-owner-preview) | Azure Service Bus リソースへのフル アクセスを許可します。 |
+| [Azure Service Bus データ受信者 (プレビュー)](#azure-service-bus-data-receiver-preview) | Azure Service Bus リソースへの受信アクセスを許可します。 |
+| [Azure Service Bus データ送信者 (プレビュー)](#azure-service-bus-data-sender-preview) | Azure Service Bus リソースへの送信アクセスを許可します。 |
 | [Azure Stack Registration Owner](#azure-stack-registration-owner) | Azure Stack の登録を管理できます。 |
 | [Backup Contributor](#backup-contributor) | バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません |
 | [Backup Operator](#backup-operator) | バックアップ サービスを管理できます (バックアップの削除、資格情報コンテナーの作成、他のユーザーに対するアクセス権の付与を除く) |
 | [Backup Reader](#backup-reader) | バックアップ サービスを表示できますが、変更を行うことはできません |
 | [Billing Reader](#billing-reader) | 課金データへの読み取りアクセスを許可します |
 | [BizTalk Contributor](#biztalk-contributor) | BizTalk Services を管理できます。ただし、それらへのアクセスは含まれません。 |
+| [ブロックチェーン メンバー ノードへのアクセス (プレビュー)](#blockchain-member-node-access-preview) | ブロックチェーン メンバー ノードにアクセスできるようにします |
 | [CDN Endpoint Contributor](#cdn-endpoint-contributor) | CDN エンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 |
 | [CDN Endpoint Reader](#cdn-endpoint-reader) | CDN エンドポイントを表示できますが、変更はできません。 |
 | [CDN Profile Contributor](#cdn-profile-contributor) | CDN プロファイルとそのエンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 |
@@ -95,8 +103,8 @@ ms.locfileid: "65073336"
 | [Lab Creator](#lab-creator) | Azure Lab アカウントで管理対象のラボを作成、管理、削除できます。 |
 | [Log Analytics Contributor](#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。 |
 | [Log Analytics Reader](#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 |
-| [Logic App Contributor](#logic-app-contributor) | ロジック アプリを管理できますが、アクセスすることはできません。 |
-| [Logic App Operator](#logic-app-operator) | ロジック アプリの読み取り、有効化、無効化ができます。 |
+| [Logic App Contributor](#logic-app-contributor) | ロジック アプリを管理できますが、アクセス権を変更することはできません。 |
+| [Logic App Operator](#logic-app-operator) | ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。 |
 | [Managed Application Operator Role](#managed-application-operator-role) | マネージド アプリケーション リソースに対する読み取りとアクションの実行が可能です。 |
 | [Managed Applications 閲覧者](#managed-applications-reader) | マネージド アプリおよび要求 JIT アクセスでリソースを読み取ることができます。 |
 | [Managed Identity Contributor](#managed-identity-contributor) | ユーザー割り当て ID の作成、読み取り、更新、削除を行います |
@@ -126,15 +134,15 @@ ms.locfileid: "65073336"
 | [SQL マネージド インスタンス共同作成者](#sql-managed-instance-contributor) | SQL マネージド インスタンスと必要なネットワーク構成を管理することができますが、他のユーザーにアクセス権を付与することはできません。 |
 | [SQL Security Manager](#sql-security-manager) | SQL サーバーとデータベースのセキュリティ関連のポリシーを管理できます。ただし、それらへのアクセスは管理できません。 |
 | [SQL Server Contributor](#sql-server-contributor) | SQL サーバーとデータベースを管理できます。ただし、それらへのアクセスや、それらのセキュリティ関連ポリシーは管理できません。 |
-| [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントを管理できますが、アクセスすることはできません。 |
-| [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント キー オペレーターは、ストレージ アカウントでのキーの一覧表示と再生成を行うことができます |
-| [ストレージ BLOB データ共同作成者](#storage-blob-data-contributor) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
-| [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を許可します。 |
-| [ストレージ BLOB データ閲覧者](#storage-blob-data-reader) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセスを許可します |
-| [ストレージ キュー データ共同作成者共同作成者](#storage-queue-data-contributor) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
-| [ストレージ キュー データのメッセージ プロセッサ](#storage-queue-data-message-processor) | Azure Storage キュー メッセージに対するピーク アクセス、受信アクセス、削除アクセスを許可します |
-| [ストレージ キュー データ メッセージ送信者](#storage-queue-data-message-sender) | Azure Storage キュー メッセージの送信を許可します |
-| [ストレージ キュー データ閲覧者](#storage-queue-data-reader) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセスを許可します |
+| [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントの管理を許可します。 ストレージ アカウント内のデータにはアクセスできません。 |
+| [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント アクセス キーを一覧表示および再生成できます。 |
+| [ストレージ BLOB データ共同作成者](#storage-blob-data-contributor) | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
+| [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
+| [ストレージ BLOB データ閲覧者](#storage-blob-data-reader) | Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
+| [ストレージ キュー データ共同作成者共同作成者](#storage-queue-data-contributor) | Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
+| [ストレージ キュー データのメッセージ プロセッサ](#storage-queue-data-message-processor) | Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
+| [ストレージ キュー データ メッセージ送信者](#storage-queue-data-message-sender) | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
+| [ストレージ キュー データ閲覧者](#storage-queue-data-reader) | Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 | [Support Request Contributor](#support-request-contributor) | Support request を作成して管理できます |
 | [Traffic Manager Contributor](#traffic-manager-contributor) | Traffic Manager プロファイルを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
 | [User Access Administrator](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理します。 |
@@ -544,6 +552,51 @@ ms.locfileid: "65073336"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
+## <a name="azure-event-hubs-data-owner-preview"></a>Azure Event Hubs データ所有者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Event Hubs リソースへのフル アクセスを許可します。 |
+> | **Id** | f526a384-b230-433a-b45c-95f59c4a2dec |
+> | **アクション** |  |
+> | Microsoft.EventHub/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-event-hubs-data-receiver-preview"></a>Azure Event Hubs データ受信者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Event Hubs リソースへの受信アクセスを許可します。 |
+> | **Id** | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
+> | **アクション** |  |
+> | Microsoft.EventHub/*/eventhubs/consumergroups/read |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/*/receive/action |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-event-hubs-data-sender-preview"></a>Azure Event Hubs データ送信者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Event Hubs リソースへの送信アクセスを許可します。 |
+> | **Id** | 2b629674-e913-4c01-ae53-ef4638d8f975 |
+> | **アクション** |  |
+> | Microsoft.EventHub/*/eventhubs/read |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.EventHub/*/send/action |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
 ## <a name="azure-kubernetes-service-cluster-admin-role"></a>Azure Kubernetes Service クラスター管理者ロール
 > [!div class="mx-tableFixed"]
 > | | |
@@ -571,6 +624,70 @@ ms.locfileid: "65073336"
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-maps-data-reader-preview"></a>Azure Maps データ閲覧者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 |
+> | **Id** | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | **アクション** |  |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.Maps/accounts/data/read | Maps アカウントにデータ読み取りアクセスを許可します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-service-bus-data-owner-preview"></a>Azure Service Bus データ所有者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Service Bus リソースへのフル アクセスを許可します。 |
+> | **Id** | 090c5cfd-751d-490a-894a-3ce6f1109419 |
+> | **アクション** |  |
+> | Microsoft.ServiceBus/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-service-bus-data-receiver-preview"></a>Azure Service Bus データ受信者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Service Bus リソースへの受信アクセスを許可します。 |
+> | **Id** | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
+> | **アクション** |  |
+> | Microsoft.ServiceBus/*/queues/read |  |
+> | Microsoft.ServiceBus/*/topics/read |  |
+> | Microsoft.ServiceBus/*/topics/subscriptions/read |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/*/receive/action |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-service-bus-data-sender-preview"></a>Azure Service Bus データ送信者 (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Service Bus リソースへの送信アクセスを許可します。 |
+> | **Id** | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
+> | **アクション** |  |
+> | Microsoft.ServiceBus/*/queues/read |  |
+> | Microsoft.ServiceBus/*/topics/read |  |
+> | Microsoft.ServiceBus/*/topics/subscriptions/read |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.ServiceBus/*/send/action |  |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -606,7 +723,6 @@ ms.locfileid: "65073336"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | バックアップの管理に関連するメタ データの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | バックアップ ポリシーの作成および管理 |
@@ -672,7 +788,6 @@ ms.locfileid: "65073336"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
@@ -739,7 +854,6 @@ ms.locfileid: "65073336"
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Recovery Services コンテナーに対するバックアップ操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
@@ -812,6 +926,21 @@ ms.locfileid: "65073336"
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="blockchain-member-node-access-preview"></a>ブロックチェーン メンバー ノードへのアクセス (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | ブロックチェーン メンバー ノードにアクセスできるようにします |
+> | **Id** | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
+> | **アクション** |  |
+> | Microsoft.Blockchain/blockchainMembers/transactionNodes/read | 既存のブロックチェーン メンバーのトランザクション ノードを取得または一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | ブロックチェーン メンバーのトランザクション ノードに接続します。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -1139,6 +1268,8 @@ ms.locfileid: "65073336"
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Advisor/configurations/read | 構成の取得 |
+> | Microsoft.Advisor/recommendations/read | 推奨事項を読み取ります。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1159,6 +1290,8 @@ ms.locfileid: "65073336"
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Advisor/configurations/read | 構成の取得 |
+> | Microsoft.Advisor/recommendations/read | 推奨事項を読み取ります。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1198,6 +1331,7 @@ ms.locfileid: "65073336"
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | 注文に関連する暗号化されていない資格情報を一覧表示します。 |
 > | Microsoft.Databox/locations/availableSkus/action | このメソッドは、使用可能な SKU の一覧を返します。 |
+> | Microsoft.Databox/locations/validateAddress/action | 配送先住所を検証し、存在する場合には別の住所を指定します。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
@@ -1299,6 +1433,7 @@ ms.locfileid: "65073336"
 > | Microsoft.DevTestLab/*/read | ラボのプロパティの読み取り |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | ラボ内のランダムに要求可能な仮想マシンを要求します。 |
 > | Microsoft.DevTestLab/labs/createEnvironment/action | ラボで仮想マシンを作成します。 |
+> | Microsoft.DevTestLab/labs/ensureCurrentUserProfile/action | 現在のユーザーがラボで有効なプロファイルを持っていることを確認します。 |
 > | Microsoft.DevTestLab/labs/formulas/delete | 数式を削除します。 |
 > | Microsoft.DevTestLab/labs/formulas/read | 数式を読み取ります。 |
 > | Microsoft.DevTestLab/labs/formulas/write | 数式を追加または変更します。 |
@@ -1426,6 +1561,7 @@ ms.locfileid: "65073336"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Resources/deployments/operations/read | デプロイ操作を取得または一覧表示します。 |
 > | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -1563,7 +1699,7 @@ ms.locfileid: "65073336"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | ロジック アプリを管理できますが、アクセスすることはできません。 |
+> | **説明** | ロジック アプリを管理できますが、アクセス権を変更することはできません。 |
 > | **Id** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -1597,7 +1733,7 @@ ms.locfileid: "65073336"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | ロジック アプリの読み取り、有効化、無効化ができます。 |
+> | **説明** | ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。 |
 > | **Id** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -1664,9 +1800,9 @@ ms.locfileid: "65073336"
 > | **説明** | ユーザー割り当て ID の作成、読み取り、更新、削除を行います |
 > | **Id** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | **アクション** |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/write |  |
-> | Microsoft.ManagedIdentity/userAssignedIdentities/*/delete |  |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/read | 既存のユーザー割り当て ID を取得します。 |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/write | 新しいユーザー割り当て ID を作成するか、既存のユーザー割り当て ID に関連付けられているタグを更新します。 |
+> | Microsoft.ManagedIdentity/userAssignedIdentities/delete | 既存のユーザー割り当て ID を削除します。 |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
@@ -2421,7 +2557,7 @@ ms.locfileid: "65073336"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | ストレージ アカウントの管理を許可します。 ストレージ アカウント内のデータにはアクセスできません。 |
+> | **説明** | ストレージ アカウントの管理を許可します。 アカウント キーへのアクセスを提供します。これを使用して、共有キー認証を使用してデータにアクセスすることができます。 |
 > | **Id** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | あらゆる承認の読み取り |
@@ -2460,7 +2596,7 @@ ms.locfileid: "65073336"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)」をご覧ください。 |
+> | **説明** | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 > | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | コンテナーを削除します。 |
@@ -2479,10 +2615,10 @@ ms.locfileid: "65073336"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)」をご覧ください。 |
+> | **説明** | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 > | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **アクション** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/* | コンテナーのフル アクセス許可。  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/* | コンテナーのフル アクセス許可。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -2494,7 +2630,7 @@ ms.locfileid: "65073336"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)」をご覧ください。 |
+> | **説明** | Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 > | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
@@ -2509,7 +2645,7 @@ ms.locfileid: "65073336"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)」をご覧ください。 |
+> | **説明** | Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 > | **Id** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/delete | キューを削除します。 |
@@ -2528,7 +2664,7 @@ ms.locfileid: "65073336"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)」をご覧ください。 |
+> | **説明** | Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 > | **Id** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | **アクション** |  |
 > | "*なし*" |  |
@@ -2544,7 +2680,7 @@ ms.locfileid: "65073336"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)」をご覧ください。 |
+> | **説明** | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 > | **Id** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | **アクション** |  |
 > | "*なし*" |  |
@@ -2559,7 +2695,7 @@ ms.locfileid: "65073336"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)」をご覧ください。 |
+> | **説明** | Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 > | **Id** | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | キューまたはキューの一覧を返します。 |

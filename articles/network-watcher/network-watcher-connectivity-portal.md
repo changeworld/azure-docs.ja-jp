@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: kumud
 ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64702011"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Azure Portal を使用した Azure Network Watcher との接続のトラブルシューティング
@@ -44,7 +44,7 @@ ms.locfileid: "64702011"
 
 この例では、ポート 80 で接続先の仮想マシンへの接続を確認します。
 
-Network Watcher に移動し、**[接続のトラブルシューティング]** をクリックします。 接続を確認する仮想マシンを選択します。 **[Destination]\(接続先\)** セクションで、**[仮想マシンの選択]** を選択し、テスト対象の適切な仮想マシンおよびポートを選択します。
+Network Watcher に移動し、 **[接続のトラブルシューティング]** をクリックします。 接続を確認する仮想マシンを選択します。 **[Destination]\(接続先\)** セクションで、 **[仮想マシンの選択]** を選択し、テスト対象の適切な仮想マシンおよびポートを選択します。
 
 **[チェック]** をクリックすると、指定したポート上の仮想マシン間の接続が確認されます。 この例では、接続先の VM に到達できず、ホップの一覧が表示されます。
 
@@ -52,7 +52,7 @@ Network Watcher に移動し、**[接続のトラブルシューティング]** 
 
 ## <a name="check-remote-endpoint-connectivity"></a>リモート エンドポイントの接続を確認する
 
-リモート エンドポイントへの接続および待機時間を確認するには、**[Destination]\(接続先\)** セクションの **[手動で指定]** オプション ボタンを選択し、URL とポートを入力して、**[チェック]** をクリックします。  この手順は、Web サイトやストレージ エンドポイントなどのリモート エンドポイントで使用します。
+リモート エンドポイントへの接続および待機時間を確認するには、 **[Destination]\(接続先\)** セクションの **[手動で指定]** オプション ボタンを選択し、URL とポートを入力して、 **[チェック]** をクリックします。  この手順は、Web サイトやストレージ エンドポイントなどのリモート エンドポイントで使用します。
 
 ![Web サイトの接続確認の結果][2]
 

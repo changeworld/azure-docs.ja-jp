@@ -5,11 +5,11 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: b6ea8c7b3a6374572c8bd31e3c62b788efbafcbc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156336"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181829"
 ---
 ## <a name="obtain-an-azure-resource-manager-token"></a>Azure Resource Manager トークンの取得
 Azure Active Directory では、Azure リソース マネージャーを使用してリソース上で実行するすべてのタスクを認証する必要があります。 ここに示す例では、パスワード認証が使用されます。その他の手法については、[Azure Resource Manager の要求の認証][lnk-authenticate-arm]に関する記事を参照してください。

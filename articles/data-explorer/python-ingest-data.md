@@ -1,24 +1,24 @@
 ---
-title: クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータを取り込む
-description: このクイック スタートでは、Python を使用して Azure Data Explorer にデータを取り込む方法について説明します。
+title: Azure Data Explorer の Python ライブラリを使用してデータを取り込む
+description: この記事では、Python を使用して Azure Data Explorer にデータを取り込む (読み込む) 方法について説明します。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 10/16/2018
-ms.openlocfilehash: fdeae2c6b598feee0abc57c80ea32f2108504330
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: da23ec91891776e9a459b04c5718147427843991
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046463"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496920"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータを取り込む
+# <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Azure Data Explorer の Python ライブラリを使用してデータを取り込む
 
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、Python 用のクライアント ライブラリとして、[取り込みライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)と[データ ライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)の 2 つが用意されています。 これらのライブラリを使用すると、クラスターにデータを取り込み (読み込み)、コードからデータのクエリを行うことができます。 このクイック スタートではまず、クラスター内にテーブルとデータ マッピングを作成します。 その後、クラスターに対するインジェストをキューに入れて、結果を検証します。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、Python 用のクライアント ライブラリとして、[取り込みライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)と[データ ライブラリ](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)の 2 つが用意されています。 これらのライブラリを使用すると、クラスターにデータを取り込み (読み込み)、コードからデータのクエリを行うことができます。 この記事ではまず、クラスター内にテーブルとデータ マッピングを作成します。 その後、クラスターに対するインジェストをキューに入れて、結果を検証します。
 
-このクイック スタートは [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb) でも利用できます。
+この記事は [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb) でも利用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -170,7 +170,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-他のクイック スタートやチュートリアルを行う場合は、作成したリソースをそのままにします。 行わない場合は、データベースで次のコマンドを実行して、StormEvents テーブルをクリーンアップします。
+他の記事に進む場合は、作成したリソースをそのままにします。 行わない場合は、データベースで次のコマンドを実行して、StormEvents テーブルをクリーンアップします。
 
 ```Kusto
 .drop table StormEvents
@@ -178,5 +178,4 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Python を使用したデータのクエリ](python-query-data.md)
+* [Python を使用したデータのクエリ](python-query-data.md)

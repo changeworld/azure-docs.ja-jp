@@ -11,10 +11,10 @@ ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 2707081adafa74237e3fb7730837f581e0c8b790
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154221"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
@@ -101,21 +101,21 @@ Message Analyzer を使用して、クライアント アプリケーション�
 
 このチュートリアルでは、まず Message Analyzer でネットワーク トレースを収集して保存し、次に分析セッションを作成してトレースとログを分析します。 Message Analyzer でネットワーク トレースを収集するには:
 
-1. Message Analyzer で、**[File]、[Quick Trace]、[Unencrypted HTTPS]** の順に選択します。
+1. Message Analyzer で、 **[File]、[Quick Trace]、[Unencrypted HTTPS]** の順に選択します。
 2. すぐにトレースが開始します。 **[Stop]** を選択してトレースを停止します。これで、ストレージ トラフィックのみをトレースするように構成することができます。
 3. **[Edit]** を選択してトレース セッションを編集します。
 4. **Microsoft-Pef-WebProxy** ETW プロバイダーの右側にある **[Configure]** リンクを選択します。
-5. **[Advanced Settings]** ダイアログで、**[Provider]** タブをクリックします。
+5. **[Advanced Settings]** ダイアログで、 **[Provider]** タブをクリックします。
 6. **Hostname Filter** フィールドに、スペースで区切られたストレージ エンドポイントを指定します。 たとえば、次のようにエンドポイントを指定することができます。`storagesample` をストレージ アカウントの名前に変更してください。
 
     ```   
     storagesample.blob.core.windows.net storagesample.queue.core.windows.net storagesample.table.core.windows.net
     ```
 
-7. ダイアログを終了し、**[Restart]** をクリックして、ホスト名フィルターを配置した状態でトレースの収集を開始します。これで、Azure Storage ネットワーク トラフィックのみがトレースに含まれるようになります。
+7. ダイアログを終了し、 **[Restart]** をクリックして、ホスト名フィルターを配置した状態でトレースの収集を開始します。これで、Azure Storage ネットワーク トラフィックのみがトレースに含まれるようになります。
 
 > [!NOTE]
-> ネットワーク トレースの収集が完了したら、Fiddler で変更した HTTPS トラフィックを復号化する設定を元に戻すことを強くお勧めします。 [Fiddler Options] ダイアログで、**[Capture HTTPS CONNECTs]** および **[Decrypt HTTPS Traffic]** チェックボックスをオフにします。
+> ネットワーク トレースの収集が完了したら、Fiddler で変更した HTTPS トラフィックを復号化する設定を元に戻すことを強くお勧めします。 [Fiddler Options] ダイアログで、 **[Capture HTTPS CONNECTs]** および **[Decrypt HTTPS Traffic]** チェックボックスをオフにします。
 >
 >
 
@@ -155,7 +155,7 @@ Message Analyzer には、サーバー、クライアント、およびネット
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Message Analyzer と Azure Storage アセットをダウンロードしてインストールする
 1. [Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) を Microsoft ダウンロード センターからダウンロードし、インストーラーを実行します。
 2. Message Analyzer を起動します。
-3. **[ツール]** メニューの **[資産マネージャー]** を選択します。 **[資産マネージャー]** ダイアログで、**[ダウンロード]** を選択し、**Azure Storage** をフィルター処理します。 以下の画像のように、Azure Storage アセットが表示されます。
+3. **[ツール]** メニューの **[資産マネージャー]** を選択します。 **[資産マネージャー]** ダイアログで、 **[ダウンロード]** を選択し、**Azure Storage** をフィルター処理します。 以下の画像のように、Azure Storage アセットが表示されます。
 4. **[Sync All Displayed Items]** をクリックして、Azure Storage アセットをインストールします。 以下に利用できるアセットを挙げます。
    * **Azure Storage の色ルール:** Azure Storage の色ルールにより、色、テキスト、およびフォント スタイルを使用する特別なフィルターを定義し、トレース内の特定の情報を含むメッセージを強調表示することができます。
    * **Azure Storage チャート:** Azure Storage チャートは、サーバー ログ データをグラフ化する定義済みのチャートです。 現時点で Azure Storage チャートを使用する場合、Analysis Grid に読み込むことができるのはサーバー ログのみである点に注意してください。
@@ -174,10 +174,10 @@ Message Analyzer には、サーバー、クライアント、およびネット
 ### <a name="import-your-log-files-into-message-analyzer"></a>ログ ファイルを Message Analyzer にインポートする
 すべての保存済みログ ファイル (サーバー側、クライアント側、ネットワーク) を、分析のために Microsoft Message Analyzer 内の単一のセッションにインポートできます。
 
-1. Microsoft Message Analyzer の **[File]** メニューで、**[New Session]**、**[Blank Session]** の順にクリックします。 **[New Session]** ダイアログで、分析セッションの名前を入力します。 **[Session Details]** パネルで、**[Files]** をクリックします。
-2. Message Analyzer によって生成されるネットワーク トレース データを読み込むには、**[Add Files]** をクリックし、Web トレース セッションから .matp ファイルを保存した場所に移動して .matp ファイルを選択し、**[Open]** をクリックします。
-3. サーバー側のログ データを読み込むには、**[Add Files]** をクリックし、サーバー側のログをダウンロードした場所に移動します。そのうえで、分析対象の時間範囲のログ ファイルを選択し、**[Open]** をクリックします。 次に、**[Session Details]** パネルで、各サーバー側ログ ファイルの **[Text Log Configuration]** ボックスを **[AzureStorageLog]** に設定し、Microsoft Message Analyzer がログ ファイルを正しく解析できるようにします。
-4. クライアント側のログ データを読み込むには、**[Add Files]** をクリックし、クライアント側のログを保存した場所に移動します。そのうえで、分析対象のログ ファイルを選択し、**[Open]** をクリックします。 次に、**[Session Details]** パネルで、各クライアント側ログ ファイルの **[Text Log Configuration]** ボックスを **[AzureStorageClientDotNetV4]** に設定し、Microsoft Message Analyzer がログ ファイルを正しく解析できるようにします。
+1. Microsoft Message Analyzer の **[File]** メニューで、 **[New Session]** 、 **[Blank Session]** の順にクリックします。 **[New Session]** ダイアログで、分析セッションの名前を入力します。 **[Session Details]** パネルで、 **[Files]** をクリックします。
+2. Message Analyzer によって生成されるネットワーク トレース データを読み込むには、 **[Add Files]** をクリックし、Web トレース セッションから .matp ファイルを保存した場所に移動して .matp ファイルを選択し、 **[Open]** をクリックします。
+3. サーバー側のログ データを読み込むには、 **[Add Files]** をクリックし、サーバー側のログをダウンロードした場所に移動します。そのうえで、分析対象の時間範囲のログ ファイルを選択し、 **[Open]** をクリックします。 次に、 **[Session Details]** パネルで、各サーバー側ログ ファイルの **[Text Log Configuration]** ボックスを **[AzureStorageLog]** に設定し、Microsoft Message Analyzer がログ ファイルを正しく解析できるようにします。
+4. クライアント側のログ データを読み込むには、 **[Add Files]** をクリックし、クライアント側のログを保存した場所に移動します。そのうえで、分析対象のログ ファイルを選択し、 **[Open]** をクリックします。 次に、 **[Session Details]** パネルで、各クライアント側ログ ファイルの **[Text Log Configuration]** ボックスを **[AzureStorageClientDotNetV4]** に設定し、Microsoft Message Analyzer がログ ファイルを正しく解析できるようにします。
 5. **[New Session]** ダイアログで **[Start]** をクリックし、ログ データの読み込みと解析を実施します。 ログ データは Message Analyzer Analysis Grid に表示されます。
 
 以下の画像では、サーバー、クライアント、およびネットワーク トレースのログ ファイルで構成したセッションの例が表示されています。
@@ -188,7 +188,7 @@ Message Analyzer はログ ファイルをメモリに読み込むという点�
 
 最初に、確認したいタイム フレームを決めますが、このタイム フレームはできる限り短い期間にします。 多くの場合、確認するタイム フレームは数分から、最大でも数時間に制限する必要があります。 必要条件を満たすログ セットの中から、最小サイズのものをインポートします。
 
-まだサイズの大きいログ データが残っている場合は、セッション フィルターを指定して、読み込む前にログ データをフィルター処理する必要があります。 **[Session Filter]** ボックスで、**[Library]** をクリックして定義済みのフィルターを選択します。たとえば、Azure Storage フィルターから **[Global Time Filter I]** を選択して、時間間隔によるフィルターを適用します。 その後、フィルター条件を編集し、確認したい時間間隔について開始および終了時のタイムスタンプを指定することができます。 特定の状態コードによってフィルターを適用することもできます。たとえば、状態コードが 404 のログ エントリのみを読み込むように選択できます。
+まだサイズの大きいログ データが残っている場合は、セッション フィルターを指定して、読み込む前にログ データをフィルター処理する必要があります。 **[Session Filter]** ボックスで、 **[Library]** をクリックして定義済みのフィルターを選択します。たとえば、Azure Storage フィルターから **[Global Time Filter I]** を選択して、時間間隔によるフィルターを適用します。 その後、フィルター条件を編集し、確認したい時間間隔について開始および終了時のタイムスタンプを指定することができます。 特定の状態コードによってフィルターを適用することもできます。たとえば、状態コードが 404 のログ エントリのみを読み込むように選択できます。
 
 Microsoft Message Analyzer に対するログ データのインポートの詳細については、TechNet の [メッセージ データの取得](https://technet.microsoft.com/library/dn772437.aspx) に関するページを参照してください。
 
@@ -200,7 +200,7 @@ Azure ストレージ クライアント ライブラリは、すべての要求
 ### <a name="select-a-view-layout-to-display-in-the-analysis-grid"></a>ビュー レイアウトを選択して Analysis Grid に表示する
 Message Analyzer 向けの Storage アセットには Azure Storage View Layouts という定義済みのビューが含まれていますが、これを使用すると、さまざまなシナリオに役立つグループや列によってデータを表示することができます。 カスタム ビュー レイアウトを作成し、それを保存して再利用することもできます。
 
-以下の画像では、ツール バー リボンから **[View Layout]** を選択するとことでアクセスできる、**[View Layout]** メニューが表示されています。 Azure Storage のビュー レイアウトは、このメニューの **[Azure Storage]** ノードの下にグループ化されています。 検索ボックスで `Azure Storage` を検索すると、Azure Storage ビュー レイアウトのみでフィルター処理できます。 ビュー レイアウトの横にある星を選択してお気に入りに設定し、メニューの最上部に表示することもできます。
+以下の画像では、ツール バー リボンから **[View Layout]** を選択するとことでアクセスできる、 **[View Layout]** メニューが表示されています。 Azure Storage のビュー レイアウトは、このメニューの **[Azure Storage]** ノードの下にグループ化されています。 検索ボックスで `Azure Storage` を検索すると、Azure Storage ビュー レイアウトのみでフィルター処理できます。 ビュー レイアウトの横にある星を選択してお気に入りに設定し、メニューの最上部に表示することもできます。
 
 ![[View Layout] メニュー](./media/storage-e2e-troubleshooting/view-layout-menu.png)
 
@@ -211,7 +211,7 @@ Message Analyzer 向けの Storage アセットには Azure Storage View Layouts
 ![Azure Storage View Layout](./media/storage-e2e-troubleshooting/view-layout-client-request-id-module.png)
 
 > [!NOTE]
-> ログ ファイルの種類によって含まれる列は異なるため、Analysis Grid に複数のログ ファイルのデータが表示された場合、いくつかの列は任意の行に何のデータも含まれていない場合があります。 たとえば前の図では、**[Timestamp]**、**[TimeElapsed]**、**[Source]**、**[Destination]** の各列について、クライアント ログの行には何のデータも表示されていませんが、この原因は、クライアント ログにはこれらの列が存在せず、ネットワーク トレースには存在するためです。 同様に、**[Timestamp]** 列にはサーバー ログのタイムスタンプ データが表示されていますが、サーバー ログには含まれていない **[TimeElapsed]**、**[Source]**、**[Destination]** の各列には何も表示されていません。
+> ログ ファイルの種類によって含まれる列は異なるため、Analysis Grid に複数のログ ファイルのデータが表示された場合、いくつかの列は任意の行に何のデータも含まれていない場合があります。 たとえば前の図では、 **[Timestamp]** 、 **[TimeElapsed]** 、 **[Source]** 、 **[Destination]** の各列について、クライアント ログの行には何のデータも表示されていませんが、この原因は、クライアント ログにはこれらの列が存在せず、ネットワーク トレースには存在するためです。 同様に、 **[Timestamp]** 列にはサーバー ログのタイムスタンプ データが表示されていますが、サーバー ログには含まれていない **[TimeElapsed]** 、 **[Source]** 、 **[Destination]** の各列には何も表示されていません。
 >
 >
 
@@ -229,10 +229,10 @@ Azure Storage カラー ルールを使用するだけでなく、独自のカ�
 ### <a name="group-and-filter-log-data-to-find-400-range-errors"></a>ログ データをグループ化してフィルターを適用し、400 番台のエラーを見つける
 次に、ログ データをグループ化してフィルターを適用し、400 番台のすべてのエラーを見つけます。
 
-1. Analysis Grid で **[StatusCode]** 列を見つけて列見出しを右クリックし、**[Group]** を選択します。
+1. Analysis Grid で **[StatusCode]** 列を見つけて列見出しを右クリックし、 **[Group]** を選択します。
 2. 次に、 **[ClientRequestId]** 列によってグループ化します。 これで、Analysis Grid 内のデータが状態コードとクライアント要求 ID によって整理されたことがわかります。
-3. View Filter ツール ウィンドウがまだ表示されていない場合、これを表示します。 ツール バー リボンで、**[Tool Windows]**、**[View Filter]** の順に選択します。
-4. ログ データにフィルターを適用して 400 番台のエラーのみを表示するには、次のフィルター条件を **[View Filter]** ウィンドウに追加し、**[Apply]** をクリックします。
+3. View Filter ツール ウィンドウがまだ表示されていない場合、これを表示します。 ツール バー リボンで、 **[Tool Windows]** 、 **[View Filter]** の順に選択します。
+4. ログ データにフィルターを適用して 400 番台のエラーのみを表示するには、次のフィルター条件を **[View Filter]** ウィンドウに追加し、 **[Apply]** をクリックします。
 
     ```   
     (AzureStorageLog.StatusCode >= 400 && AzureStorageLog.StatusCode <=499) || (HTTP.StatusCode >= 400 && HTTP.StatusCode <= 499)
@@ -256,9 +256,9 @@ Azure Storage カラー ルールを使用するだけでなく、独自のカ�
 ### <a name="filter-log-data-to-find-404-errors"></a>ログ データにフィルターを適用して 404 エラーを見つける
 Storage アセットには定義済みのフィルターが含まれており、これを使用してログ データを絞り込み、探しているエラーや傾向を見つけることができます。 次は、2 つの定義済みフィルターを適用します。1 つは 404 エラーについてサーバーおよびネットワーク トレース ログに適用するフィルターで、もう 1 つは指定した時間範囲についてそれらのデータに適用するフィルターです。
 
-1. View Filter ツール ウィンドウがまだ表示されていない場合、これを表示します。 ツール バー リボンで、**[Tool Windows]**、**[View Filter]** の順に選択します。
-2. View Filter ウィンドウで、**[Library]** を選択し、`Azure Storage` を検索して Azure Storage フィルターを見つけます。 **[404 (Not Found) messages in all logs]** のフィルターを選択します。
-3. もう一度 **[Library]** メニューを表示し、**[Global Time Filter]** を見つけて選択します。
+1. View Filter ツール ウィンドウがまだ表示されていない場合、これを表示します。 ツール バー リボンで、 **[Tool Windows]** 、 **[View Filter]** の順に選択します。
+2. View Filter ウィンドウで、 **[Library]** を選択し、`Azure Storage` を検索して Azure Storage フィルターを見つけます。 **[404 (Not Found) messages in all logs]** のフィルターを選択します。
+3. もう一度 **[Library]** メニューを表示し、 **[Global Time Filter]** を見つけて選択します。
 4. フィルター内に表示されるタイムスタンプを、確認したい範囲に編集します。 これにより、分析するデータの範囲を絞り込むことができます。
 5. フィルターは以下の例のように表示されます。 **[Apply]** をクリックして Analysis Grid にフィルターを適用します。
 
@@ -279,8 +279,8 @@ Storage アセットには定義済みのフィルターが含まれており、
 次に、このクライアント要求 ID とクライアント ログ データを関連付けて、エラーが発生した際にクライアントがどのように対処していたかを確認します。 このセッションのために新しい Analysis Grid ビューを表示してクライアント ログ データを確認することができますが、このビューは 2 番目のタブに開きます。
 
 1. まず、 **ClientRequestId** フィールドの値をクリップボードにコピーします。 コピーするには、**ClientRequestId** フィールドにあるどちらかの行を選択し、データ値を右クリックして **[Copy 'ClientRequestId']** を選択します。
-2. ツール バー リボンで、**[New Viewer]**、**[Analysis Grid]** の順に選択して新しいタブを開きます。新しいタブは、ログ ファイル内のすべてのデータを、グループ化やフィルター、カラー ルールを適用せずに表示します。
-3. ツール バー リボンで、**[View Layout]** を選択し、**[Azure Storage]** セクションの **[All .NET Client Columns]** を選択します。 このビュー レイアウトでは、サーバーおよびネットワーク トレース ログだけでなく、クライアント ログのデータも表示されます。 このデータは、既定では **[MessageNumber]** 列によって並べ替えが行われています。
+2. ツール バー リボンで、 **[New Viewer]** 、 **[Analysis Grid]** の順に選択して新しいタブを開きます。新しいタブは、ログ ファイル内のすべてのデータを、グループ化やフィルター、カラー ルールを適用せずに表示します。
+3. ツール バー リボンで、 **[View Layout]** を選択し、 **[Azure Storage]** セクションの **[All .NET Client Columns]** を選択します。 このビュー レイアウトでは、サーバーおよびネットワーク トレース ログだけでなく、クライアント ログのデータも表示されます。 このデータは、既定では **[MessageNumber]** 列によって並べ替えが行われています。
 4. 次に、クライアント ログでクライアント要求 ID を検索します。 ツール バー リボンで **[Find Messages]** を選択し、**Find** フィールドでクライアント要求 ID についてのカスタム フィルターを指定します。 フィルターには、この構文を使用して独自のクライアント要求 ID を指定します。
 
     ```

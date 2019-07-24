@@ -2,18 +2,18 @@
 title: Azure Red Hat OpenShift のサポートされているリソース | Microsoft Docs
 description: Microsoft Azure Red Hat OpenShift でサポートされている Azure リージョンと仮想マシンのサイズについて説明します。
 services: container-service
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 22cc195b7808ad4a9111aafcf883a68c51f3709f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 05/15/2019
+ms.openlocfilehash: c226227797802ab58d1bcbaadb7e97e780b30560
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080265"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66306215"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift のリソース
 
@@ -21,17 +21,7 @@ ms.locfileid: "65080265"
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 
-世界中の次の Azure リージョンに、Azure Red Hat OpenShift クラスターをデプロイできます。
-
-|リージョン|CLI コード|
-|-|-|
-|AU オーストラリア東部|`australiaeast`|
-|CA カナダ中部|`canadacentral`|
-|CA カナダ東部|`canadaeast`|
-|US 米国東部|`eastus`|
-|US 米国西部|`westus`|
-|EU 西ヨーロッパ|`westeurope`|
-|EU 北ヨーロッパ|`northeurope`|
+Azure Red Hat OpenShift クラスターをデプロイできる最新のリージョン一覧については、[リージョン別の使用できる製品](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)に関する記事を参照してください。
 
 ## <a name="virtual-machine-sizes"></a>仮想マシン サイズ
 

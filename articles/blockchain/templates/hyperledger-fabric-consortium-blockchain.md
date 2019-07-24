@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
 ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510751"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric コンソーシアム ネットワーク
@@ -66,7 +66,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 
 ## <a name="deployment"></a>Deployment
 
-**Hyperledger Fabric コンソーシアム** テンプレートで、**[作成]** を選択します。
+**Hyperledger Fabric コンソーシアム** テンプレートで、 **[作成]** を選択します。
 
 テンプレート デプロイでは、マルチノード [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) ネットワークを段階的に構成できます。 デプロイ フローは、基本、コンソーシアム ネットワーク設定、Fabric 構成、およびオプションのコンポーネントの 4 つの手順に分割されます。
 
@@ -100,7 +100,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 **ネットワーク構成** |新しいネットワークを作成することも、既存のネットワークに参加することもできます。 *[Join Existing]\(既存に参加\)* を選択した場合、追加の値を指定する必要があります。 |新しいネットワーク <br/> 既存に参加 |
 **HLF CA パスワード** |デプロイの一部として作成される証明機関によって生成された証明書に使用するパスワード。 パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。<br /><br />仮想マシンにはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|1 から 25 文字 |
 **組織のセットアップ** |組織の名前と証明書をカスタマイズしたり、使用する既定値を指定することができます。|既定値 <br/> 詳細 |
-**VPN ネットワークの設定** | VM にアクセスするための VPN トンネル ゲートウェイをプロビジョニングします。 | はい <br/> いいえ  |
+**VPN ネットワークの設定** | VM にアクセスするための VPN トンネル ゲートウェイをプロビジョニングします。 | はい <br/> いいえ |
 
 **[OK]** を選択します。
 
@@ -141,7 +141,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 
 ![まとめ](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
-法律条項とプライバシー条項を確認し、**[購入]** を選択してデプロイします。 デプロイ時間は、プロビジョニングされる VM の数に基づき、数分から数十分かかります。
+法律条項とプライバシー条項を確認し、 **[購入]** を選択してデプロイします。 デプロイ時間は、プロビジョニングされる VM の数に基づき、数分から数十分かかります。
 
 ## <a name="next-steps"></a>次の手順
 

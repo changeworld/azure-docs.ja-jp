@@ -14,11 +14,11 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eaed7357221f5b766bfb8b9e1a9031c08854ac9a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339905"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60477288"
 ---
 # <a name="access-and-use-apps-on-the-my-apps-portal"></a>マイ アプリ ポータルでアプリにアクセスして使用する
 Web ベースの**マイ アプリ** ポータルでは、職場または学校アカウントを使用して、社内にあるクラウドベースのアプリを表示して起動したり、一部のプロフィール情報とアカウント情報を更新したり、**グループ**情報を確認したり、アプリとグループの**アクセス レビュー**を実行したりすることができます。 **マイ アプリ** ポータルにアクセスできない場合は、ヘルプデスクに連絡してアクセス許可を得る必要があります。
@@ -55,11 +55,11 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 ### <a name="to-download-and-install-the-extension"></a>拡張機能をダウンロードしてインストールするには
 使用しているブラウザーに基づいて、拡張機能をダウンロードしてインストールします。
 
-- **Google Chrome。** Chrome Web ストアから、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)機能に移動して、**[Add to Chrome]**(Chrome に追加) を選択します。
+- **Google Chrome。** Chrome Web ストアから、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)機能に移動して、 **[Add to Chrome]** (Chrome に追加) を選択します。
 
-- **Mozilla Firefox**。**[Firefox Add-ons]**(Firefox アドオン) ページから、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://addons.mozilla.org/firefox/addon/access-panel-extension/)機能に移動して、**[Add to Firefox]**(Firefox に追加) を選択します。
+- **Mozilla Firefox**。 **[Firefox Add-ons]** (Firefox アドオン) ページから、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://addons.mozilla.org/firefox/addon/access-panel-extension/)機能に移動して、 **[Add to Firefox]** (Firefox に追加) を選択します。
 
-- **Microsoft Edge**。Microsoft Store から、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab)機能に移動して、**[取得]** を選択します。
+- **Microsoft Edge**。Microsoft Store から、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab)機能に移動して、 **[取得]** を選択します。
 
 アイコンは**アドレス** バーの右側に追加され、サインインして拡張機能をカスタマイズできます。
 
@@ -68,7 +68,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 
 1. **アドレス** バーの右側にある新しい**アプリによるセキュリティで保護されたサインイン拡張機能**アイコン![拡張機能アイコン](media/my-apps-portal/my-apps-portal-extension-icon.png)を選択し、続いて **[開始するにはサインインしてください]** を選択します。
 
-2. **[設定]** アイコン![設定アイコン](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) を右クリックし、**[設定]** を選択します。
+2. **[設定]** アイコン![設定アイコン](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) を右クリックし、 **[設定]** を選択します。
 
 3. **[設定]** ボックスで、ポータルに表示する最近使用したアプリの数を選択し、リモートで使用できるように、組織の内部 URL のリダイレクトを許可するかどうかを選択します。
 
@@ -110,7 +110,7 @@ iOS バージョン 7 以降を実行している iPhone または iPad デバ�
 
 1. モバイル デバイスでは、Safari などの Web ブラウザー アプリを起動します。
 
-2. https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. [https://myapps.microsoft.com](https://myapps.microsoft.com ) に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
 
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
@@ -123,7 +123,7 @@ Android デバイス上の**マイ アプリ** ポータルを表示して使用
 
 1. モバイル デバイスでは、Google Chrome などの Web ブラウザー アプリを起動します。
 
-2. https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. [https://myapps.microsoft.com](https://myapps.microsoft.com ) に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
 
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
@@ -140,7 +140,7 @@ Android デバイス上の**マイ アプリ** ポータルを表示して使用
 
     ![[アプリの追加] ページ、マイ アプリ ポータル内](media/my-apps-portal/my-apps-portal-add-apps-page.png)
 
-2. 指定されたリストから追加するアプリを選択し、**[追加]** を選択します。
+2. 指定されたリストから追加するアプリを選択し、 **[追加]** を選択します。
 
 3. アプリは、**アプリ** ページ上のリストに追加されます。
 

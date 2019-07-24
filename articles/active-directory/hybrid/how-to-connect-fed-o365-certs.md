@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883447"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60244823"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要
@@ -99,8 +99,8 @@ Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"�
 | AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | Action |
 |:---:|:---:|:---:|:---:|:---:|
 | はい |はい |はい |- |対処は必要ありません。 「 [トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。 |
-| はい |いいえ  |- |15 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
-| いいえ  |- |- |30 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
+| はい |いいえ |- |15 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
+| いいえ |- |- |30 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
 
 \[-] 該当せず
 
@@ -114,7 +114,7 @@ Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"�
 
 **1.AD FS の AutoCertificateRollover プロパティが True に設定されている。** これは、有効期限が切れる前に、AD FS が新しいトークン署名証明書とトークン暗号化解除証明書を自動的に生成することを示します。
 
-**2.AD FS のフェデレーション メタデータへのパブリック アクセスが確保されている。**  (社内ネットワークの外部の) パブリック インターネット上のコンピューターで次の URL に移動して、フェデレーション メタデータにパブリックにアクセスできることを確認します。
+**2.AD FS のフェデレーション メタデータへのパブリック アクセスが確保されている。** (社内ネットワークの外部の) パブリック インターネット上のコンピューターで次の URL に移動して、フェデレーション メタデータにパブリックにアクセスできることを確認します。
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 

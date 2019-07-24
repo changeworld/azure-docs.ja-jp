@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: eebe3ed15d21b08b208667a571bd59eac98a674d
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 18de3e52d61afd8e1ef20f80c020c8b7d96b9757
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190266"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603263"
 ---
 # <a name="what-is-conversation-transcription"></a>会話の文字起こしとは
 
@@ -67,6 +67,11 @@ ms.locfileid: "65190266"
 > 仕様とデザインの詳細については、[Microsoft Speech Device SDK マイク](https://aka.ms/cts/microphone)に関するページを参照してください。 開発キットの詳細および購入については、[Microsoft Speech Device SDK の入手](https://aka.ms/cts/getsdk)に関するページを参照してください。
 
 会話の文字起こしを Speech Devices SDK とともに使用する方法については、[会話の文字起こしの使用方法](https://aka.ms/cts/howto)に関するページを参照してください。
+
+
+## <a name="quick-start-with-a-sample-app"></a>サンプル アプリを含むクイック スタート
+
+Microsoft Speech Device SDK には、すべてのデバイス関連サンプル用のクイック スタート サンプル アプリがあります。 会話の文字起こしは、その 1 つです。 それは、参照用のサンプル アプリとそのソース コードを含む [Speech Device SDK android クイック スタート](https://aka.ms/sdsdk-quickstart)にあります。
 
 ## <a name="next-steps"></a>次の手順
 

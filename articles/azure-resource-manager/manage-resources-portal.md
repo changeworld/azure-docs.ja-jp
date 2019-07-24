@@ -5,18 +5,15 @@ services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 20bf38b87ce29f8506a5611ecd25cf38f6d4ed61
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a4ff94a98514041290518e72e1b13c76722b9d4f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824987"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205596"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure portal を使用した Azure リソース の管理
 
@@ -40,7 +37,7 @@ Azure のリソースは、Azure のサービスとリソース グループで�
 サービスの種類によってリソースを開くには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のウィンドウで、Azure のサービスを選択します。 この場合は、**[ストレージ アカウント]** です。  該当するサービスが表示されない場合は、**[すべてのサービス]** を選択し、サービスの種類を選択します。
+2. 左側のウィンドウで、Azure のサービスを選択します。 この場合は、 **[ストレージ アカウント]** です。  該当するサービスが表示されない場合は、 **[すべてのサービス]** を選択し、サービスの種類を選択します。
 
     ![ポータルで Azure リソースを開く](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
 
@@ -55,7 +52,7 @@ Azure のリソースは、Azure のサービスとリソース グループで�
 リソース グループによってリソースを開くには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のウィンドウで、**[リソース グループ]** を選択し、グループ内のリソースを一覧表示します。
+2. 左側のウィンドウで、 **[リソース グループ]** を選択し、グループ内のリソースを一覧表示します。
 3. 開くリソースを選択します。 
 
 ## <a name="manage-resources"></a>リソースの管理
@@ -72,7 +69,7 @@ Azure のリソースは、Azure のサービスとリソース グループで�
 2. **[削除]** を選択します。 次のスクリーンショットには、仮想マシンの管理オプションが表示されています。
 
     ![Azure リソースを削除する](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
-3. 削除を確認するためにリソースの名前を入力し、**[削除]** をクリックします。
+3. 削除を確認するためにリソースの名前を入力し、 **[削除]** をクリックします。
 
 Azure Resource Manager によってリソースの削除の順序が決定される方法の詳細については、「[Azure Resource Manager によるリソース グループの削除](./resource-group-delete.md)」をご覧ください。
 
@@ -82,7 +79,7 @@ Azure Resource Manager によってリソースの削除の順序が決定され
 2. **[移動]** を選択します。 次のスクリーンショットには、ストレージ アカウントの管理オプションが表示されています。
 
     ![Azure リソースを移動する](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
-3. ニーズに応じて、**[別のリソース グループに移動する]** または **[別のサブスクリプションに移動する]** を選択します。
+3. ニーズに応じて、 **[別のリソース グループに移動する]** または **[別のサブスクリプションに移動する]** を選択します。
 
 詳細については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 
@@ -106,7 +103,7 @@ Azure Resource Manager によってリソースの削除の順序が決定され
 2. **[タグ]** を選択します。 次のスクリーンショットには、ストレージ アカウントの管理オプションが表示されています。
 
     ![Azure リソースにタグを付ける](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
-3. タグのプロパティを指定し、**[保存]** を選択します。
+3. タグのプロパティを指定し、 **[保存]** を選択します。
 
 詳細については、[タグを使用した Azure リソースの整理](./resource-group-using-tags.md#portal)に関する記事をご覧ください。
 
@@ -124,7 +121,7 @@ Azure Resource Manager によってリソースの削除の順序が決定され
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Resource Manager については、「[Azure Resource Manager の概要](./resource-group-overview.md)」をご覧ください。
-- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./resource-group-authoring-templates.md)」をご覧ください。
-- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)をご覧ください。
-- Azure Resource Manager のテンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)をご覧ください。
+- Azure Resource Manager については、「[Azure Resource Manager の概要](./resource-group-overview.md)」を参照してください。
+- Resource Manager テンプレートの構文については、「[Azure Resource Manager テンプレートの構造と構文の詳細](./resource-group-authoring-templates.md)」を参照してください。
+- テンプレートを開発する方法については、[ステップバイステップのチュートリアル](/azure/azure-resource-manager/)のページをご覧ください。
+- Azure Resource Manager テンプレートのスキーマを表示するには、[テンプレート リファレンス](/azure/templates/)のページをご覧ください。

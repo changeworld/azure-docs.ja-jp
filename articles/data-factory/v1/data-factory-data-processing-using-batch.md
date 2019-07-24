@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e95f167cf6dcfe90fff1c2be174ca197cb2aa004
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 67829b6245fe4fea8da88c97fa8d5aeedccc90a0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204034"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446620"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -103,9 +103,9 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 #### <a name="azure-batch-pool-of-virtual-machines"></a>仮想マシンの Azure Batch プール
 2 個以上のコンピューティング ノードで Batch プール を作成します。
 
-1. [Azure Portal](https://portal.azure.com) で、左側のメニューの **[参照]** を選択し、**[Batch アカウント]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、左側のメニューの **[参照]** を選択し、 **[Batch アカウント]** を選択します。
 
-1. Batch アカウントを選択して、**[Batch アカウント]** ブレードを開きます。
+1. Batch アカウントを選択して、 **[Batch アカウント]** ブレードを開きます。
 
 1. **[プール]** タイルを選択します。
 
@@ -113,7 +113,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
    a. プールの ID を入力します (**プール ID**)。 プールの ID をメモしておきます。 データ ファクトリ ソリューションを作成するときに必要になります。
 
-   b. **[オペレーティング システム ファミリ]** 設定には、**[Windows Server 2012 R2]** を指定します。
+   b. **[オペレーティング システム ファミリ]** 設定には、 **[Windows Server 2012 R2]** を指定します。
 
    c. **ノード価格レベル**を選択します。
 
@@ -124,7 +124,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
    f. **[OK]** を選択してプールを作成します。
 
 #### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
-[Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) または [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) (ClumsyLeaf Software 製) を使用して、Storage プロジェクトのデータを検査し、変更します。 また、クラウドホスト型アプリケーションのログのデータを検査して変更することもできます。
+[Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) または [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (ClumsyLeaf Software 製) を使用して、Storage プロジェクトのデータを検査し、変更します。 また、クラウドホスト型アプリケーションのログのデータを検査して変更することもできます。
 
 1. プライベートなアクセス (匿名アクセスなし) で **mycontainer** という名前のコンテナーを作成します。
 
@@ -142,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
    ![入力フォルダー](./media/data-factory-data-processing-using-batch/image4.png)
 
-   Storage Explorer を使用している場合は、ファイル **file.txt** を **mycontainer** にアップロードします。 ツールバーの **[コピー]** を選択して、BLOB のコピーを作成します。 **[BLOB のコピー]** ダイアログ ボックスで、**[宛先 BLOB 名]** を「`inputfolder/2015-11-16-00/file.txt`」に変更します。 この手順を繰り返して `inputfolder/2015-11-16-01/file.txt`、`inputfolder/2015-11-16-02/file.txt`、`inputfolder/2015-11-16-03/file.txt`、`inputfolder/2015-11-16-04/file.txt` などを作成します。 この操作では、フォルダーが自動的に作成されます。
+   Storage Explorer を使用している場合は、ファイル **file.txt** を **mycontainer** にアップロードします。 ツールバーの **[コピー]** を選択して、BLOB のコピーを作成します。 **[BLOB のコピー]** ダイアログ ボックスで、 **[宛先 BLOB 名]** を「`inputfolder/2015-11-16-00/file.txt`」に変更します。 この手順を繰り返して `inputfolder/2015-11-16-01/file.txt`、`inputfolder/2015-11-16-02/file.txt`、`inputfolder/2015-11-16-03/file.txt`、`inputfolder/2015-11-16-04/file.txt` などを作成します。 この操作では、フォルダーが自動的に作成されます。
 
 1. `customactivitycontainer` という名前の別のコンテナーを作成します。 カスタム アクティビティの zip ファイルを、このコンテナーにアップロードします。
 
@@ -182,9 +182,9 @@ public IDictionary<string, string> Execute(
 
    a. Visual Studio 2012/2013/2015 を起動します。
 
-   b. **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
+   b. **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択します。
 
-   c. **[テンプレート]** を展開し、**[Visual C#]\#** を選択します。 このチュートリアルでは C\# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。
+   c. **[テンプレート]** を展開し、 **[Visual C#]\#** を選択します。 このチュートリアルでは C\# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。
 
    d. 右側にあるプロジェクトの種類の一覧から **[クラス ライブラリ]** を選択します。
 
@@ -194,7 +194,7 @@ public IDictionary<string, string> Execute(
 
    g. **[OK]** を選択してプロジェクトを作成します。
 
-1. **[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に選択します。
+1. **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。
 
 1. パッケージ マネージャー コンソールで、次のコマンドを実行して Microsoft.Azure.Management.DataFactories をインポートします。
 
@@ -396,7 +396,7 @@ public IDictionary<string, string> Execute(
 
     Calculate メソッドは、入力ファイル (フォルダー内の BLOB) 内のキーワード "Microsoft" のインスタンス数を計算します。 検索語句 "Microsoft" は、コードにハード コーディングされています。
 
-1. プロジェクトをコンパイルします。 メニューの **[ビルド]** を選択し、**[ソリューションのビルド]** を選択します。
+1. プロジェクトをコンパイルします。 メニューの **[ビルド]** を選択し、 **[ソリューションのビルド]** を選択します。
 
 1. エクスプローラーを起動し、**bin\\debug** または **bin\\release** フォルダーに移動します。 フォルダーの選択は、ビルドの種類によって変わります。
 
@@ -552,9 +552,9 @@ test custom activity Microsoft test custom activity Microsoft
 リンクされたサービスは、データ ストアまたはコンピューティング サービスをデータ ファクトリにリンクします。 この手順では、ストレージ アカウントと Batch アカウントをデータ ファクトリにリンクします。
 
 #### <a name="create-an-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
-1. **[CustomActivityFactory]** の **[データ ファクトリ]** ブレードで、**[作成およびデプロイ]** を選択します。 Data Factory エディターが表示されます。
+1. **[CustomActivityFactory]** の **[データ ファクトリ]** ブレードで、 **[作成およびデプロイ]** を選択します。 Data Factory エディターが表示されます。
 
-1. コマンド バーの **[新しいデータ ストア]** を選択し、**[Azure Storage]** を選択します。 Storage のリンクされたサービスを作成するときに使用する JSON スクリプトがエディターに表示されます。
+1. コマンド バーの **[新しいデータ ストア]** を選択し、 **[Azure Storage]** を選択します。 Storage のリンクされたサービスを作成するときに使用する JSON スクリプトがエディターに表示されます。
 
    ![新しいデータ ストア](./media/data-factory-data-processing-using-batch/image7.png)
 
@@ -567,7 +567,7 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="create-an-azure-batch-linked-service"></a>Azure Batch のリンクされたサービスの作成
 この手順では、データ ファクトリのカスタム アクティビティの実行に使用される、Batch アカウント用にリンクされたサービスを作成します。
 
-1. コマンド バーの **[新しい計算]** を選択し、**[Azure Batch]** を選択します。 Batch のリンクされたサービスを作成するときに使用する JSON スクリプトがエディターに表示されます。
+1. コマンド バーの **[新しい計算]** を選択し、 **[Azure Batch]** を選択します。 Batch のリンクされたサービスを作成するときに使用する JSON スクリプトがエディターに表示されます。
 
 1. JSON スクリプト内では:
 
@@ -801,7 +801,7 @@ test custom activity Microsoft test custom activity Microsoft
    * カスタム アクティビティは入力として **InputDataset**、出力として **OutputDataset** を使用します。
    * カスタム アクティビティの **linkedServiceName** プロパティは、**AzureBatchLinkedService** を示します。これによって、Batch でカスタム アクティビティが実行する必要がある Data Factory がわかります。
    * **concurrency** の設定は重要です。 既定値を使用する場合は、Batch プールにコンピューティング ノードが複数ある場合でも、スライスは 1 つずつ処理されます。 そのため、Batch の並行処理機能を利用することはありません。 **concurrency** をより大きな値に設定した場合、2 とすると、つまり 2 つのスライス (Batch 内の 2 つのタスクに対応する) が、同時に処理できます。 この場合、Batch プール内の VM が両方利用されます。 concurrency プロパティを適切に設定します。
-   * 既定では、1 つのみのタスク (スライス) が、VM 上で任意のポイントで実行されます。 Batch プールの既定では、**[VM ごとの最大タスク]** は 1 に設定されています。 前提条件の一環で、このプロパティを 2 に設定してプールを作成しました。 そのため、VM 上で 2 つのデータ ファクトリ スライスを同時に実行できます。
+   * 既定では、1 つのみのタスク (スライス) が、VM 上で任意のポイントで実行されます。 Batch プールの既定では、 **[VM ごとの最大タスク]** は 1 に設定されています。 前提条件の一環で、このプロパティを 2 に設定してプールを作成しました。 そのため、VM 上で 2 つのデータ ファクトリ スライスを同時に実行できます。
      - **isPaused** プロパティは、既定で false に設定されています。 この例では、スライスが過去に開始されているので、パイプラインは即時に実行されます。 このプロパティを **true** に設定すると、パイプラインを一時停止できます。また **false** に設定し直すと再開されます。
      -   **start** 時刻と **end** 時刻は 5 時間離れています。 スライスは毎時生成されるため、パイプラインによって 5 つのスライスが生成されます。
 
@@ -810,11 +810,11 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="step-5-test-the-pipeline"></a>手順 5:パイプラインをテストする
 この手順では、ファイルを入力フォルダーにドロップして、パイプラインをテストします。 まず、入力フォルダーごとに 1 つのファイルを使用してパイプラインをテストします。
 
-1. Azure Portal の **[データ ファクトリ]** ブレードで、**[ダイアグラム]** を選択します。
+1. Azure Portal の **[データ ファクトリ]** ブレードで、 **[ダイアグラム]** を選択します。
 
    ![ダイアグラム](./media/data-factory-data-processing-using-batch/image10.png)
 
-1. **[ダイアグラム]** ビューで、**[InputDataset]** という入力データセットをダブルクリックします。
+1. **[ダイアグラム]** ビューで、 **[InputDataset]** という入力データセットをダブルクリックします。
 
    ![InputDataset](./media/data-factory-data-processing-using-batch/image11.png)
 
@@ -822,7 +822,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![入力スライスの開始時刻と終了時刻](./media/data-factory-data-processing-using-batch/image12.png)
 
-1. **[ダイアグラム]** ビューで、**[OutputDataset]** を選択します。
+1. **[ダイアグラム]** ビューで、 **[OutputDataset]** を選択します。
 
 1. 出力スライスが作成された場合、5 個の出力スライスが**準備完了**の状態で表示されます。
 
@@ -847,7 +847,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. 出力フォルダーで、**2015-11-16-01.txt** という出力ファイルを削除します。
 
-1. **[OutputDataset]** ブレードで、**[スライス開始時間]** を **11/16/2015 01:00:00 AM** に設定したスライスを右クリックします。 **[実行]** を選択し、スライスを再実行または再度処理します。 スライスには、1 個のファイルではなく、5 個のファイルがあります。
+1. **[OutputDataset]** ブレードで、 **[スライス開始時間]** を **11/16/2015 01:00:00 AM** に設定したスライスを右クリックします。 **[実行]** を選択し、スライスを再実行または再度処理します。 スライスには、1 個のファイルではなく、5 個のファイルがあります。
 
     ![ラン](./media/data-factory-data-processing-using-batch/image17.png)
 
@@ -890,7 +890,7 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 
    **[OutputDataset]** ブレードで、スライスを選択すると、そのスライスの **[データ スライス]** ブレードが表示されます。 **[アクティビティの実行]** には、スライスの 1 回のアクティビティの実行が表示されます。 コマンド バーの **[実行]** を選択する場合、同じスライスの別のアクティビティの実行を開始できます。
 
-   アクティビティの実行を選択すると、**[アクティビティの実行の詳細]** ブレードにログ ファイルの一覧が表示されます。 user\_0.log ファイルにログに記録されたメッセージが表示されます。 パイプライン/アクティビティ JSON で再試行回数が 3 に設定されているので、エラーが発生した場合、3 つのアクティビティの実行が表示されます。 アクティビティの実行を選択すると、ログ ファイルが表示されます。このファイルを確認して、エラーのトラブルシューティングを行うことができます。
+   アクティビティの実行を選択すると、 **[アクティビティの実行の詳細]** ブレードにログ ファイルの一覧が表示されます。 user\_0.log ファイルにログに記録されたメッセージが表示されます。 パイプライン/アクティビティ JSON で再試行回数が 3 に設定されているので、エラーが発生した場合、3 つのアクティビティの実行が表示されます。 アクティビティの実行を選択すると、ログ ファイルが表示されます。このファイルを確認して、エラーのトラブルシューティングを行うことができます。
 
    ![[OutputDataset] および [データ スライス] ブレード](./media/data-factory-data-processing-using-batch/image18.png)
 
@@ -917,7 +917,7 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 
 1. **assemblyName** (MyDotNetActivity.dll)、**entryPoint**(MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip)、**packageLinkedService** (zip ファイルを含む BLOB ストレージを示す必要があります) が正しい値に設定されていることを確認します。
 
-1. エラーを修正し、スライスを再処理する場合は、**[OutputDataset]** ブレードのスライスを右クリックし、**[実行]** を選択します。
+1. エラーを修正し、スライスを再処理する場合は、 **[OutputDataset]** ブレードのスライスを右クリックし、 **[実行]** を選択します。
 
    ![[OutputDataset] ブレードの [実行] オプション](./media/data-factory-data-processing-using-batch/image21.png)
 
@@ -932,7 +932,7 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 #### <a name="extend-the-sample"></a>サンプルの拡張
 Data Factory および Batch の機能の詳細については、このサンプルを拡張することができます。 たとえば、異なる時間範囲でスライスを処理するには、次の手順を実行します。
 
-1. `inputfolder` にサブフォルダー2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、および 2015-11-16-09 を追加します。 これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム]** ビューで、**[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OutputDataset]** をダブルクリックして、出力スライスの状態を表示します。 **準備完了**の状態である場合、出力フォルダーで出力ファイルを確認します。
+1. `inputfolder` にサブフォルダー2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、および 2015-11-16-09 を追加します。 これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム]** ビューで、 **[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OutputDataset]** をダブルクリックして、出力スライスの状態を表示します。 **準備完了**の状態である場合、出力フォルダーで出力ファイルを確認します。
 
 1. 特に Batch 上で発生する処理のように、どのようにソリューションのパフォーマンスに影響するかを理解するには、**concurrency** の設定を増加または減少させます。 **concurrency** 設定の詳細については、「手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
 

@@ -11,19 +11,19 @@ ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.openlocfilehash: ff3549ce77a2b691dcaaa94b6a59e9c011ff6e21
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60690708"
 ---
 # <a name="add-remove-and-sort-favorites"></a>お気に入りの追加、削除、並べ替え
 
-よく使うサービスにすばやくアクセスできるように、**[お気に入り]** 一覧に項目を追加または削除します。 **[お気に入り]** 一覧には一般的なサービスが既に追加されていますが、カスタマイズすることをお勧めします。 お客様が **[お気に入り]** に加えた変更は、お客様にのみ表示されます。
+よく使うサービスにすばやくアクセスできるように、 **[お気に入り]** 一覧に項目を追加または削除します。 **[お気に入り]** 一覧には一般的なサービスが既に追加されていますが、カスタマイズすることをお勧めします。 お客様が **[お気に入り]** に加えた変更は、お客様にのみ表示されます。
 
 ## <a name="add-or-remove-a-favorite"></a>お気に入りを追加または削除する
 
-**[お気に入り]** の下に一覧表示されている項目は、**[すべてのサービス]** から選択されます。 各サービスの横にある星アイコン ![黄色の星アイコン](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-star.png) は、項目が一覧に表示されるかどうかを示します。 星アイコンを選択して **[お気に入り]** 一覧からサービスを追加または削除します。
+**[お気に入り]** の下に一覧表示されている項目は、 **[すべてのサービス]** から選択されます。 各サービスの横にある星アイコン ![黄色の星アイコン](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-star.png) は、項目が一覧に表示されるかどうかを示します。 星アイコンを選択して **[お気に入り]** 一覧からサービスを追加または削除します。
 
 ### <a name="add-cost-management--billing-to-favorites"></a>[コストの管理と請求] を [お気に入り] に追加します。
 

@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 513836257a292069da709ad7a71e480f2b4d069d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66158278"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と SQL Data Warehouse の IP ファイアウォール規則
@@ -105,7 +105,7 @@ Azure portal でサーバー レベルの IP ファイアウォール規則を�
 
       ![サーバーの IP ファイアウォール規則](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
-2. ツールバーの **[クライアント IP の追加]** をクリックし、現在使用しているコンピューターの IP アドレスを追加したら、**[保存]** をクリックします。 現在の IP アドレスに対してサーバー レベルの IP ファイアウォール規則が作成されます。
+2. ツールバーの **[クライアント IP の追加]** をクリックし、現在使用しているコンピューターの IP アドレスを追加したら、 **[保存]** をクリックします。 現在の IP アドレスに対してサーバー レベルの IP ファイアウォール規則が作成されます。
 
       ![サーバー レベルの IP ファイアウォール規則を設定する](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
 
@@ -115,7 +115,7 @@ Azure portal でサーバー レベルの IP ファイアウォール規則を�
 
 1. サーバーの概要ページからサーバー レベルの規則を設定するには、[設定] の下の左側のメニューで **[ファイアウォール]** をクリックします。
 
-2. ツールバーの **[クライアント IP の追加]** をクリックし、現在使用しているコンピューターの IP アドレスを追加したら、**[保存]** をクリックします。 現在の IP アドレスに対してサーバー レベルの IP ファイアウォール規則が作成されます。
+2. ツールバーの **[クライアント IP の追加]** をクリックし、現在使用しているコンピューターの IP アドレスを追加したら、 **[保存]** をクリックします。 現在の IP アドレスに対してサーバー レベルの IP ファイアウォール規則が作成されます。
 
 ## <a name="manage-ip-firewall-rules-using-transact-sql"></a>Transact-SQL を使って IP ファイアウォール規則を管理する
 

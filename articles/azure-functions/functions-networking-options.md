@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 49f89d39b3b917ec6357b241d7c413c2790eca25
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f13e498859986d5ee697cbd67907fd344147ed0c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64575605"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66492832"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -37,7 +37,7 @@ ms.locfileid: "64575605"
 |[送信 IP の制限](#private-site-access)|❌いいえ| ❌いいえ|❌いいえ|✅はい|
 |[仮想ネットワークの統合](#virtual-network-integration)|❌いいえ|❌いいえ|✅はい|✅はい|
 |[仮想ネットワーク統合のプレビュー (Azure ExpressRoute とサービス エンドポイント送信)](#preview-version-of-virtual-network-integration)|❌いいえ|✅はい|✅はい|✅はい|
-|[ハイブリッド接続](#hybrid-connections)|❌いいえ|❌いいえ|✅はい|✅はい|
+|[VNet](#hybrid-connections)|❌いいえ|❌いいえ|✅はい|✅はい|
 |[プライベート サイトへのアクセス](#private-site-access)|❌いいえ| ✅はい|✅はい|✅はい|
 
 ## <a name="inbound-ip-restrictions"></a>受信 IP の制限
@@ -61,7 +61,7 @@ IP 制限を使用すると、アプリへのアクセスを許可または拒�
 
 仮想ネットワーク統合を使用すると、アプリから、仮想ネットワークで実行されているデータベースや Web サービスにアクセスできます。 仮想ネットワーク統合では、VM 上でアプリケーション用にパブリック エンドポイントを公開する必要はありません。 代わりに、インターネット ルーティングできないプライベート アドレスを使用できます。
 
-一般提供バージョンの仮想ネットワーク統合は、関数アプリを仮想ネットワークに接続するために VPN ゲートウェイに依存しています。 App Service プランでホストされている関数で使用できます。 この機能の構成方法については、「[アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md#enabling-vnet-integration)」を参照してください。
+一般提供バージョンの仮想ネットワーク統合は、関数アプリを仮想ネットワークに接続するために VPN ゲートウェイに依存しています。 App Service プランでホストされている関数で使用できます。 この機能の構成方法については、「[アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md)」を参照してください。
 
 ### <a name="preview-version-of-virtual-network-integration"></a>仮想ネットワーク統合のプレビュー バージョン
 
@@ -81,7 +81,7 @@ IP 制限を使用すると、アプリへのアクセスを許可または拒�
 
 プレビュー バージョンの仮想ネットワーク統合の使用の詳細については、「[関数アプリを Azure 仮想ネットワークに統合する](functions-create-vnet.md)」を参照してください。
 
-## <a name="hybrid-connections"></a>ハイブリッド接続
+## <a name="hybrid-connections"></a>ハイブリッド接続と
 
 [ハイブリッド接続](../service-bus-relay/relay-hybrid-connections-protocol.md)は、他のネットワークのアプリケーション リソースにアクセスするために使用できる Azure Relay の機能です。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために使用することはできません。 ハイブリッド接続は、[App Service プラン](functions-scale.md#app-service-plan)および [App Service Environment](../app-service/environment/intro.md) で実行されている関数に使用できます。
 

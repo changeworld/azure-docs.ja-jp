@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602275"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67428317"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>コネクテッド ファクトリ ソリューション アクセラレータの構成
 
@@ -29,7 +29,7 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 * テスト ステーション
 * パッケージ化ステーション
 
-これらの OPC UA サーバーは OPC UA ノードを持ち、[OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) がこれらのノードの値をコネクテッド ファクトリに送信します。 次のトピックがあります。
+これらの OPC UA サーバーは OPC UA ノードを持ち、[OPC Publisher](overview-opc-publisher.md) がこれらのノードの値をコネクテッド ファクトリに送信します。 次のトピックがあります。
 
 * 現在の電力消費量など、現在の動作状態。
 * 生産された製品数など、生産情報。
@@ -266,8 +266,8 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 
 * Name
 * 説明
-* イメージ
-* 場所
+* Image
+* Location
 * Units
 * Visible
 
@@ -282,7 +282,7 @@ WebApp は、すべてのトポロジ ノードの情報を含む内部データ
 * 計算に含まれる OPC UA ノードの値。
 * テレメトリの値からの数値の計算方法。
 
-コネクテッド ファクトリは、 https://www.oeefoundation.org が発行した OEE 数式を使用します。
+コネクテッド ファクトリは、[http://www.oeefoundation.org](http://www.oeefoundation.org) が発行した OEE 数式を使用します。
 
 ステーションの OPC UA ノード オブジェクトは、OEE/KPI 計算で使用するためのタグ付けを有効にします。 **Relevance** プロパティは、OPC UA ノードの値を使用する必要がある OEE/KPI の数値を示します。 **OpCode** プロパティは、値を計算に含める方法を定義します。
 
@@ -307,7 +307,7 @@ WebApp は、すべてのトポロジ ノードの情報を含む内部データ
 
   OPC UA サーバー内のノードの値を識別します。 プロパティの形式は、OPC UA 仕様で指定されているとおりにする必要があります。 取り込まれるメッセージでは、このプロパティは **NodeId** として送信されます。
 
-OPC Publisher を使用してテレメトリ データをコネクテッド ファクトリに取り込む方法の詳細については、[こちら](https://github.com/Azure/iot-edge-opc-publisher)の GitHub ページをご覧ください。
+テレメトリ データをコネクテッド ファクトリに取り込む方法の詳細については、「[OPC Publisher とは](overview-opc-publisher.md)」を参照してください。
 
 ## <a name="example-how-kpi1-is-calculated"></a>例:KPI1 の計算方法
 
@@ -340,4 +340,4 @@ OPC Publisher を使用してテレメトリ データをコネクテッド フ�
 
 ## <a name="next-steps"></a>次の手順
 
-次は、[コネクテッド ファクトリ ソリューション アクセラレータ用のゲートウェイを Windows または Linux 上にデプロイする](iot-accelerators-connected-factory-gateway-deployment.md)方法について学習することをお勧めします。
+次は、[コネクテッド ファクトリ ソリューションをカスタマイズする](iot-accelerators-connected-factory-customize.md)方法について学習することをお勧めします。

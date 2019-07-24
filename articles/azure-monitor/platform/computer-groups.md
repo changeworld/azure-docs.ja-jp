@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
 ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549305"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60740996"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでのコンピューター グループ
 Azure Monitor では、コンピューター グループを使用して、[ログ クエリ](../log-query/log-query-overview.md)の範囲を特定のコンピューターのセットに限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログ クエリに含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
@@ -28,7 +28,7 @@ Azure Monitor では、コンピューター グループを使用して、[ロ�
 ## <a name="creating-a-computer-group"></a>コンピューター グループの作成
 Azure Monitor のコンピューター グループは、以下の表に示した方法のいずれかで作成できます。  それぞれの方法について、以降のセクションで詳しく説明します。 
 
-| 方法 | 説明 |
+| Method | 説明 |
 |:--- |:--- |
 | Log query |コンピューターの一覧を返すログ クエリを作成します。 |
 | Log Search API |ログ クエリの結果に基づいてプログラムからコンピューター グループを作成するには、Log Search API を使用します。 |
@@ -48,12 +48,12 @@ Azure Portal でログ検索からコンピューター グループを作成す
 1. Azure portal の **[Azure Monitor]** メニューで **[ログ]** をクリックします。
 1. グループに含めるコンピューターが返されるクエリを作成して実行します。
 1. 画面の上部にある **[保存]** をクリックします。
-1. **[名前を付けて保存]** を **[関数]** に変更し、**[このクエリをコンピューター グループとして保存します]** を選択します。
-1. コンピューター グループに対して表で説明されている各プロパティの値を指定し、**[保存]** をクリックします。
+1. **[名前を付けて保存]** を **[関数]** に変更し、 **[このクエリをコンピューター グループとして保存します]** を選択します。
+1. コンピューター グループに対して表で説明されている各プロパティの値を指定し、 **[保存]** をクリックします。
 
 次の表では、コンピューター グループを定義するプロパティについて説明しています。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:---|:---|
 | Name   | ポータルに表示するクエリの名前。 |
 | 関数のエイリアス | クエリ内でコンピューター グループを識別するのに使用される一意のエイリアス。 |
@@ -66,7 +66,7 @@ Active Directory のグループ メンバーシップをインポートする�
 > [!NOTE]
 > インポートされた Active Directory グループのみが Windows コンピューターを含みます。
 
-Azure portal でお使いの Log Analytics ワークスペースの **[詳細設定]** から、Active Directory のセキュリティ グループをインポートするように Azure Monitor を構成します。  **[コンピューター グループ]**、**[Active Directory]** の順に選択し、**[コンピューターから Active Directory のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
+Azure portal でお使いの Log Analytics ワークスペースの **[詳細設定]** から、Active Directory のセキュリティ グループをインポートするように Azure Monitor を構成します。  **[コンピューター グループ]** 、 **[Active Directory]** の順に選択し、 **[コンピューターから Active Directory のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
 
 ![Active Directory からのコンピューター グループ](media/computer-groups/configure-activedirectory.png)
 
@@ -75,7 +75,7 @@ Azure portal でお使いの Log Analytics ワークスペースの **[詳細設
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
 WSUS グループのメンバーシップをインポートするように Azure Monitor を構成すると、Log Analytics エージェントが存在するすべてのコンピューターの対象グループ メンバーシップが分析されます。  クライアント側のターゲット指定方式を使用している場合、Azure Monitor に接続されていて、かつ WSUS の対象グループに属しているすべてのコンピューターのグループ メンバーシップが、Azure Monitor にインポートされます。 サーバー側のターゲット指定方式を使用している場合、グループ メンバーシップ情報を Azure Monitor にインポートするためには、WSUS サーバーに Log Analytics エージェントがインストールされている必要があります。  このメンバーシップは絶えず 4 時間おきに更新されます。 
 
-Azure portal でお使いの Log Analytics ワークスペースの **[詳細設定]** から、WSUS グループをインポートするように Azure Monitor を構成します。  **[コンピューター グループ]**、**[WSUS]** の順に選択し、**[WSUS のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
+Azure portal でお使いの Log Analytics ワークスペースの **[詳細設定]** から、WSUS グループをインポートするように Azure Monitor を構成します。  **[コンピューター グループ]** 、 **[WSUS]** の順に選択し、 **[WSUS のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
 
 ![WSUS のコンピューター グループ](media/computer-groups/configure-wsus.png)
 
@@ -84,14 +84,14 @@ Azure portal でお使いの Log Analytics ワークスペースの **[詳細設
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
 Configuration Manager のコレクション メンバーシップをインポートするように Azure Monitor を構成すると、各コレクションのコンピューター グループが作成されます。  コンピューター グループを最新に保つために、コレクション メンバーシップ情報は 3 時間ごとに取得されます。 
 
-Configuration Manager のコレクションをインポートするには、[Azure Monitor に Configuration Manager を接続する](collect-sccm.md)必要があります。  その後、Azure portal でお使いの Log Analytics ワークスペースの **[詳細設定]** からインポートを構成できます。  **[コンピューター グループ]**、**[SCCM]** の順に選択して、**[Configuration Manager コレクション メンバーシップをインポートする]** を選択します。  さらに手動で構成する必要はありません。
+Configuration Manager のコレクションをインポートするには、[Azure Monitor に Configuration Manager を接続する](collect-sccm.md)必要があります。  その後、Azure portal でお使いの Log Analytics ワークスペースの **[詳細設定]** からインポートを構成できます。  **[コンピューター グループ]** 、 **[SCCM]** の順に選択して、 **[Configuration Manager コレクション メンバーシップをインポートする]** を選択します。  さらに手動で構成する必要はありません。
 
 ![SCCM のコンピューター グループ](media/computer-groups/configure-sccm.png)
 
 コレクションがインポートされると、検出されたコンピューターおよびグループ メンバーシップの数と、インポートされたグループの数がメニューに表示されます。  そのいずれかのリンクをクリックすると、**ComputerGroup** のレコードがこの情報と共に返されます。
 
 ## <a name="managing-computer-groups"></a>コンピューター グループの管理
-ログ クエリまたは Log Search API から作成されたコンピューター グループは、Azure portal でお使いの Log Analytics ワークスペースの **[詳細設定]** から表示できます。  **[コンピューター グループ]** を選択してから、**[保存済みグループ]** を選択します。  
+ログ クエリまたは Log Search API から作成されたコンピューター グループは、Azure portal でお使いの Log Analytics ワークスペースの **[詳細設定]** から表示できます。  **[コンピューター グループ]** を選択してから、 **[保存済みグループ]** を選択します。  
 
 **[削除]** 列の **[x]** をクリックすると、コンピューター グループが削除されます。  グループの **[メンバーの表示]** アイコンをクリックすると、グループのログ検索が実行されて、そのメンバーが返されます。  コンピューター グループは変更できませんが、コンピューター グループを削除し、変更された設定で再度作成する必要があります。
 

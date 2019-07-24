@@ -5,18 +5,15 @@ services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 559c1874c119eabef2c35a954961c1e669df3c06
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: bc3c1a05c64edea260bd177dd7eaefc003db5310
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507223"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296285"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure portal を使用して Azure Resource Manager リソース グループを管理する
 
@@ -47,24 +44,24 @@ ms.locfileid: "65507223"
 4. 次の値を入力します。
 
    - **サブスクリプション**:Azure サブスクリプションを選択します。 
-   - **[リソース グループ]**:新しいリソース グループの名前を入力します。 
-   - **[リージョン]**:**[米国中部]** など、Azure の場所を選択します。
+   - **[リソース グループ]** :新しいリソース グループの名前を入力します。 
+   - **[リージョン]** : **[米国中部]** など、Azure の場所を選択します。
 
-     ![リソース グループの作成 ](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
+     ![リソース グループの作成](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. **[確認と作成]** を選択します
 6. **作成** を選択します。 リソース グループの作成には数秒かかります。
-7. 上部のメニューにある **[最新の情報に更新]** を選択してリソース グループの一覧を最新の状態に更新し、新しく作成されたリソース グループを選択してこれを開きます。 または、上部にある **[通知]** (ベルのアイコン) をクリックしてから、**[リソース グループに移動]** を選択して、新しく作成されたリソース グループを開きます
+7. 上部のメニューにある **[最新の情報に更新]** を選択してリソース グループの一覧を最新の状態に更新し、新しく作成されたリソース グループを選択してこれを開きます。 または、上部にある **[通知]** (ベルのアイコン) をクリックしてから、 **[リソース グループに移動]** を選択して、新しく作成されたリソース グループを開きます
 
     ![リソース グループに移動](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
 ## <a name="list-resource-groups"></a>リソース グループの一覧を表示する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. リソース グループを表示するには、**[リソース グループ]** を選択します
+2. リソース グループを表示するには、 **[リソース グループ]** を選択します
 
     ![リソース グループの参照](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
 
-3. リソース グループについて表示される情報をカスタマイズするには、**[列の編集]** を選択します。 次のスクリーンショットは、表示に追加できる追加列を示しています。
+3. リソース グループについて表示される情報をカスタマイズするには、 **[列の編集]** を選択します。 次のスクリーンショットは、表示に追加できる追加列を示しています。
 
 ## <a name="open-resource-groups"></a>リソース グループを開く
 
@@ -94,9 +91,9 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 ロックを適用することで、組織の他のユーザーが重要なリソース (Azure サブスクリプション、リソース グループ、リソースなど) を誤って削除または変更するのを防ぐことができます。 
 
 1. 削除するリソース グループを開きます。  「[リソース グループを開く](#open-resource-groups)」を参照してください。
-2. 左側のウィンドウで、**[ロック]** を選択します。
-3. ロックをリソース グループに追加するには、**[追加]** を選択します。
-4. **[ロック名]**、**[ロックの種類]**、**[メモ]** を入力します。 ロックの種類には、**[読み取り専用]** および **[削除]** が含まれます。
+2. 左側のウィンドウで、 **[ロック]** を選択します。
+3. ロックをリソース グループに追加するには、 **[追加]** を選択します。
+4. **[ロック名]** 、 **[ロックの種類]** 、 **[メモ]** を入力します。 ロックの種類には、 **[読み取り専用]** および **[削除]** が含まれます。
 
     ![Azure リソース グループをロックする](./media/manage-resource-groups-portal/manage-resource-groups-add-lock.png)
 
@@ -109,14 +106,6 @@ Resource Manager テンプレートを作成した後に、Azure portal を使�
 ## <a name="export-resource-groups-to-templates"></a>リソース グループをテンプレートにエクスポートする
 
 テンプレートをエクスポートする方法の詳細については、[テンプレートへの単一および複数のリソースのエクスポート - ポータル](export-template-portal.md)に関するページを参照してください。
-
-### <a name="fix-export-issues"></a>エクスポートの問題の修正
-
-テンプレート関数のエクスポートは、すべてのリソースの種類でサポートされているわけではありません。 エクスポートの問題は、リソース グループからエクスポートする場合にのみ発生します。デプロイ履歴からのエクスポートでは発生しません。 最後のデプロイがリソース グループの現在の状態を正確に表しているようであれば、リソース グループからではなく、デプロイ履歴からテンプレートをエクスポートすることをお勧めします。 単一のテンプレートで定義されていない変更をリソース グループに加えた場合にのみ、リソース グループからエクスポートしてください。
-
-エクスポートの問題を回避するには、欠けているリソースを対象のテンプレートに手動で追加します。 エラー メッセージには、エクスポートできないリソースの種類が含まれています。 そのリソースの種類は、[テンプレート リファレンス](/azure/templates/)で探してください。 たとえば、仮想ネットワーク ゲートウェイを手動で追加するには、[Microsoft.Network/virtualNetworkGateways テンプレート リファレンス](/azure/templates/microsoft.network/virtualnetworkgateways)を参照してください。 テンプレート リファレンスには、テンプレートにリソースを追加するための JSON が記載されています。
-
-リソースに対応する JSON 形式を取得したら、次にリソースの値を取得する必要があります。 リソースの値は、リソースの種類に対応する REST API の GET 操作を使用して確認できます。 たとえば、仮想ネットワーク ゲートウェイの値を取得するには、「[Virtual Network Gateways - Get](/rest/api/network-gateway/virtualnetworkgateways/get)」(仮想ネットワーク ゲートウェイ - Get) を参照します。
 
 ## <a name="manage-access-to-resource-groups"></a>リソース グループへのアクセスを管理する
 

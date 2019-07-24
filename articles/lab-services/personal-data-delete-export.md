@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: spelluru
 ms.openlocfilehash: e681652c13e521bd33524e247db65088f47a794c
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51637148"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60394990"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs から個人データをエクスポートまたは削除する
 この記事では、Azure DevTest Labs サービスから個人データを削除およびエクスポートする手順を説明します。 
@@ -39,10 +39,10 @@ DevTest Labs では、ユーザーの電子メール アドレスを使用して
 ### <a name="user-object-id"></a>ユーザー オブジェクト ID
 DevTest Labs では、ユーザー オブジェクト ID を使用して、ラボ管理者に前月比のコスト傾向とリソース別のコストを示します。 これにより、ラボのコストを追跡し、しきい値を管理することができます。 
 
-**現在のカレンダー月の推定コスト傾向:**
+**現在のカレンダー月の推定コスト傾向:** 
 ![現在のカレンダー月の推定コスト傾向](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**リソース別の推定前月比コスト:**
+**リソース別の推定前月比コスト:** 
 ![リソース別の推定前月比コスト](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 

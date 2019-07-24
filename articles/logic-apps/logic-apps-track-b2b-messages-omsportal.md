@@ -10,11 +10,11 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193213"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62120128"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Azure Monitor ログで B2B メッセージを追跡する
 
@@ -45,7 +45,7 @@ ms.locfileid: "57193213"
 
 Azure Monitor ログでロジック アプリの B2B メッセージを追跡するには、事前に Azure Monitor ログに **Logic Apps B2B** ソリューションを追加します。 [Azure Monitor ログへのソリューションの追加](../azure-monitor/learn/quick-create-workspace.md)に関する詳細を参照してください。
 
-1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、 **[Log Analytics]** を選択します。
 
    ![[Log Analytics] を選択する](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
@@ -53,11 +53,11 @@ Azure Monitor ログでロジック アプリの B2B メッセージを追跡す
 
    ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-1. **[Log Analytics の使用を開始する]** > **[監視ソリューションの構成]** の順に選択し、**[ソリューションの表示]** を選択します。
+1. **[Log Analytics の使用を開始する]**  >  **[監視ソリューションの構成]** の順に選択し、 **[ソリューションの表示]** を選択します。
 
    ![[ソリューションの表示] を選択する](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
-1. [概要] ページで、**[追加]** を選択して、**[管理ソリューション]** の一覧を開きます。 その一覧から **[Logic Apps B2B]** を選択します。 
+1. [概要] ページで、 **[追加]** を選択して、 **[管理ソリューション]** の一覧を開きます。 その一覧から **[Logic Apps B2B]** を選択します。 
 
    ![Logic Apps B2B ソリューションを選択する](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
@@ -85,7 +85,7 @@ B2B メッセージが処理された後、それらのメッセージの状態�
    ![更新されたメッセージ カウント](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
-   > 既定では、**[Logic Apps B2B]** タイルには 1 日に基づいたデータが表示されます。 データの範囲を異なる間隔に変更するには、ページの上部にある範囲コントロールを選択します。
+   > 既定では、 **[Logic Apps B2B]** タイルには 1 日に基づいたデータが表示されます。 データの範囲を異なる間隔に変更するには、ページの上部にある範囲コントロールを選択します。
    > 
    > ![間隔を変更する](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
 
@@ -104,7 +104,7 @@ B2B メッセージが処理された後、それらのメッセージの状態�
 
    ![AS2 メッセージを表示する](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
 
-3. 特定のメッセージの入力と出力を表示またはエクスポートするには、これらのメッセージを選択し、**[ダウンロード]** を選択します。 メッセージが表示されたら、.zip ファイルをローカル コンピューターに保存してから、そのファイルを抽出します。 
+3. 特定のメッセージの入力と出力を表示またはエクスポートするには、これらのメッセージを選択し、 **[ダウンロード]** を選択します。 メッセージが表示されたら、.zip ファイルをローカル コンピューターに保存してから、そのファイルを抽出します。 
 
    抽出されたフォルダーには、選択されたメッセージごとのフォルダーが含まれています。 
    受信確認を設定した場合、メッセージ フォルダーには受信確認の詳細を含むファイルも含まれています。 
@@ -121,13 +121,13 @@ B2B メッセージが処理された後、それらのメッセージの状態�
 
    ![メッセージ ファイルをダウンロードする](media/logic-apps-track-b2b-messages-omsportal/download-messages.png)
 
-4. 同じ実行 ID を持つすべてのアクションを表示するには、**[ログ検索]** ページで、メッセージの一覧からメッセージを選択します。
+4. 同じ実行 ID を持つすべてのアクションを表示するには、 **[ログ検索]** ページで、メッセージの一覧からメッセージを選択します。
 
    これらのアクションを列で並べ替えたり、特定の結果を検索したりすることができます。
 
    ![同じ実行 ID を持つアクション](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
 
-   * 組み込みのクエリで結果を検索するには、**[お気に入り]** を選択します。
+   * 組み込みのクエリで結果を検索するには、 **[お気に入り]** を選択します。
 
    * [フィルターを追加することによってクエリを構築する方法](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)を参照してください。 
    または、[Azure Monitor ログでログ検索を使用してデータを見つける方法](../log-analytics/log-analytics-log-searches.md)に関する詳細を参照してください。
@@ -153,7 +153,7 @@ AS2 メッセージごとのプロパティの説明を次に示します。
 | ロジック アプリ | AS2 アクションが設定されているロジック アプリ |
 | Status | AS2 メッセージの状態 <br>[成功] = 有効な AS2 メッセージを受信または送信しました。 MDN が設定されていません。 <br>[成功] = 有効な AS2 メッセージを受信または送信しました。 MDN が設定および受信されたか、または MDN が送信されました。 <br>[失敗] = 無効な AS2 メッセージを受信しました。 MDN が設定されていません。 <br>[Pending] \(保留中) = 有効な AS2 メッセージを受信または送信しました。 MDN が設定されており、MDN が予測されています。 |
 | Ack | MDN メッセージの状態 <br>[承認済み] = 肯定の MDN を受信または送信しました。 <br>[Pending] \(保留中) = MDN の受信または送信を待機しています。 <br>[拒否] = 否定の MDN を受信または送信しました。 <br>[必要なし] = MDN が契約で設定されていません。 |
-| 方向 | AS2 メッセージの方向 |
+| Direction | AS2 メッセージの方向 |
 | 関連付け ID | ロジック アプリ内のすべてのトリガーとアクションを関連付ける ID |
 | メッセージ ID | AS2 メッセージ ヘッダーからの AS2 メッセージ ID |
 | Timestamp | AS2 アクションがメッセージを処理した時間 |
@@ -184,7 +184,7 @@ X12 メッセージごとのプロパティの説明を次に示します。
 | ロジック アプリ | X12 アクションが設定されているロジック アプリ |
 | Status | X12 メッセージの状態 <br>[成功] = 有効な X12 メッセージを受信または送信しました。 機能確認が設定されていません。 <br>[成功] = 有効な X12 メッセージを受信または送信しました。 機能確認が設定および受信されたか、または機能確認が送信されました。 <br>[失敗] = 無効な X12 メッセージを受信または送信しました。 <br>[Pending] \(保留中) = 有効な X12 メッセージを受信または送信しました。 機能確認が設定されており、機能確認が予測されています。 |
 | Ack | 機能確認 (997) の状態 <br>[承認済み] = 肯定の機能確認を受信または送信しました。 <br>[拒否] = 否定の機能確認を受信または送信しました。 <br>[Pending] \(保留中) = 機能確認を予測していましたが、受信しませんでした。 <br>[Pending] \(保留中) = 機能確認を生成しましたが、パートナーに送信できません。 <br>[必要なし] = 機能確認が設定されていません。 |
-| 方向 | X12 メッセージの方向 |
+| Direction | X12 メッセージの方向 |
 | 関連付け ID | ロジック アプリ内のすべてのトリガーとアクションを関連付ける ID |
 | メッセージの種類 | EDI X12 メッセージの種類 |
 | ICN | X12 メッセージのインターチェンジ制御番号 |
@@ -217,7 +217,7 @@ EDIFACT メッセージごとのプロパティの説明を次に示します。
 | ロジック アプリ | EDIFACT アクションが設定されているロジック アプリ |
 | Status | EDIFACT メッセージの状態 <br>[成功] = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定されていません。 <br>[成功] = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定および受信されたか、または機能確認が送信されました。 <br>[失敗] = 無効な EDIFACT メッセージを受信または送信しました。 <br>[Pending] \(保留中) = 有効な EDIFACT メッセージを受信または送信しました。 機能確認が設定されており、機能確認が予測されています。 |
 | Ack | 機能確認 (997) の状態 <br>[承認済み] = 肯定の機能確認を受信または送信しました。 <br>[拒否] = 否定の機能確認を受信または送信しました。 <br>[Pending] \(保留中) = 機能確認を予測していましたが、受信しませんでした。 <br>[Pending] (保留中) = 機能確認を生成しましたが、パートナーに送信できません。 <br>[必要なし] = 機能確認が設定されていません。 |
-| 方向 | EDIFACT メッセージの方向 |
+| Direction | EDIFACT メッセージの方向 |
 | 関連付け ID | ロジック アプリ内のすべてのトリガーとアクションを関連付ける ID |
 | メッセージの種類 | EDIFACT メッセージの種類 |
 | ICN | EDIFACT メッセージのインターチェンジ制御番号 |

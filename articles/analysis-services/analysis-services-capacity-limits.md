@@ -9,11 +9,11 @@ ms.date: 04/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 0ffbffc788baaffd4a0532c3918ed82cc3eaf5c3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527814"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61023556"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Analysis Services のリソースとオブジェクトの制限
 

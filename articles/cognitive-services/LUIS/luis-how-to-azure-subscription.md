@@ -9,29 +9,30 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781699"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797950"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>LUIS アプリでのサブスクリプション キーの使用
 
-無料の最初の 1000 のエンドポイント クエリの使用には、サブスクリプション キーを作成する必要がありません。 それらのエンドポイント クエリを使用したら、[Azure portal](https://portal.azure.com) に Azure リソースを作成し、そのリソースを [LUIS ポータル](https://www.luis.ai)の LUIS アプリに割り当てます。
-
-HTTP 403 または 429 の形式で _クォータ不足_ エラーが表示される場合、キーを作成して、アプリに割り当てる必要があります。 
+Language Understanding (LUIS) を初めて使用するときは、サブスクリプション キーを作成する必要はありません。 最初に 1000 エンドポイント クエリが提供されます。 
 
 テストおよびプロトタイプについてのみ、Free (F0) レベルを使用します。 運用システムについては、[有料](https://aka.ms/luis-price-tier)レベルを使用してください。 運用環境でのエンドポイントのクエリには、[作成者キー](luis-concept-keys.md#authoring-key)を使用しないでください。
+
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
 ## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Azure portal 内で予測エンドポイント ランタイム リソースを作成する
 
-詳細については、[アプリ作成](get-started-portal-build-app.md)のクイック スタートを参照してください。
+[予測エンドポイント リソース](get-started-portal-deploy-app.md#create-the-endpoint-resource)は、Azure portal 内で作成します。 このリソースは、エンドポイントの予測クエリでのみ使用します。 このアプリに変更を加えるために、このリソースを使用しないでください。
+
+Language Understanding リソースまたは Cognitive Services リソースを作成できます。 Language Understanding リソースを作成する場合、リソース名の後にリソースの種類を設定することをお勧めします。 
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -46,10 +47,19 @@ HTTP 403 または 429 の形式で _クォータ不足_ エラーが表示さ�
 <a name="assign-endpoint-key"></a>
 <a name="assign-resource"></a>
 
+### <a name="using-resource-from-luis-portal"></a>LUIS ポータルからリソースを使用する
+
+LUIS ポータルからリソースを使用する場合は、キーと場所を把握しておく必要はありません。 代わりに、リソース テナント、サブスクリプション、リソース名を把握しておく必要があります。
+
+LUIS ポータルで LUIS アプリにリソースを[割り当てる](#assign-resource-key-to-luis-app-in-luis-portal)と、キーと場所は [管理] セクションの **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** ページのクエリ予測エンドポイント URL の一部として設定されます。
+ 
+### <a name="using-resource-from-rest-api-or-sdk"></a>REST API または SDK からリソースを使用する
+
+REST API または SDK からリソースを使用する場合は、キーと場所を把握しておく必要があります。 この情報は、[管理] セクションの **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** ページおよび Azure portal のリソースの [概要] ページや [キー] ページのクエリ予測エンドポイント URL の一部として設定されます。
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>LUIS ポータルの LUIS アプリにリソース キーを割り当てる
 
-詳細については、[デプロイ](get-started-portal-deploy-app.md)のクイック スタートを参照してください。
+LUIS 向けの新しいリソースを作成するたびに、[LUIS アプリにそのリソースを割り当てる](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)必要があります。 割り当てた後は、新しいリソースを作成しない限り、この手順をもう一度実行する必要はありません。 ご自分のアプリのリージョンを拡張したり、より多くの予測クエリをサポートしたりする場合に、新しいリソースを作成します。
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>
@@ -90,7 +100,7 @@ HTTP 403 または 429 の形式で _クォータ不足_ エラーが表示さ�
 ```
 
 ### <a name="enable-bing-spell-checker"></a>Bing のスペル チェック機能を有効にする 
-**[Endpoint url settings]\(エンドポイント URL 設定)** では、**[Bing spell checker]\(Bing のスペル チェック機能)** トグルによって、LUIS での予測前にスペルミスがある単語を収集できます。 **[Bing Spell Check キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** を作成します。 
+**[Endpoint url settings]\(エンドポイント URL 設定)** では、 **[Bing spell checker]\(Bing のスペル チェック機能)** トグルによって、LUIS での予測前にスペルミスがある単語を収集できます。 **[Bing Spell Check キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** を作成します。 
 
 **spellCheck=true** querystring パラメーターと **bing-spell-check-subscription-key={YOUR_BING_KEY_HERE}** を追加します。 `{YOUR_BING_KEY_HERE}` を実際の Bing スペル チェック機能キーに置き換えます。
 
@@ -133,7 +143,7 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
 
     この POST API には、次の設定が必要です。
 
-    |type|Setting|値|
+    |Type|Setting|値|
     |--|--|--|
     |ヘッダー|`Authorization`|`Authorization` の値は `Bearer {token}` です。 トークンの値の前に、`Bearer` という単語とスペースを 1 つ入力する必要があることに注意してください。|
     |ヘッダー|`Ocp-Apim-Subscription-Key`|実際の[オーサリング キー](luis-how-to-account-settings.md)。|
@@ -147,21 +157,41 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
 
 1.  [Azure](https://portal.azure.com) で、ご自身の LUIS サブスクリプションを検索します。 LUIS サブスクリプションを選択します。
     ![LUIS サブスクリプション の検索](./media/luis-usage-tiers/find.png)
-1.  使用可能な価格レベルを表示するには、**[価格レベル]** を選択します。 
+1.  使用可能な価格レベルを表示するには、 **[価格レベル]** を選択します。 
     ![価格レベルの表示](./media/luis-usage-tiers/subscription.png)
-1.  価格レベルを選択し、**[選択]** を選択して、ご自身の変更内容を保存します。 
+1.  価格レベルを選択し、 **[選択]** を選択して、ご自身の変更内容を保存します。 
     ![ご自身の LUIS 支払いレベルの変更](./media/luis-usage-tiers/plans.png)
 1.  価格の変更が完了したら、ポップアップ ウィンドウで新しい価格レベルを確認します。 
     ![ご自身の LUIS 支払いレベルの確認](./media/luis-usage-tiers/updated.png)
 1. 必ず **[発行]** ページで[このエンドポイント キーを割り当て](#assign-endpoint-key)て、すべてのエンドポイントのクエリで使用します。 
 
-## <a name="how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage"></a>キーが価格レベルの使用状況を超えたときのクォータ不足エラーを修正する方法
-価格レベルごとに、LUIS アカウントに対して許可されるエンドポイント要求の割合が決まっています。 要求の割合が、従量制課金アカウントで許可されている 1 分または 1 か月あたりの割合を超えると、要求は "429: 要求が多すぎます" という HTTP エラーを受け取ります。
+## <a name="fix-http-status-code-403-and-429"></a>HTTP 状態コード 403 および 429 を解決する
 
-価格レベルごとに、1 か月に許可される累積要求数が決まっています。 要求の合計数が、許可されている割合を超えると、要求は "403: 許可されていません" という HTTP エラーを受け取ります。  
+価格レベルの 1 秒あたりのトランザクション数または 1 か月あたりのトランザクション数を超えると、403 および 429 のエラー状態コードを取得します。
+
+### <a name="when-you-receive-an-http-403-error-status-code"></a>HTTP 403 エラー状態コードを受信した場合
+
+無料の 1000 エンドポイント クエリをすべて使用しているか、価格レベルの 1 か月あたりのトランザクションのクォータを超えた場合は、HTTP 403 エラー状態コードが表示されます。 
+
+このエラーを解決するには、高いレベルに[価格レベルを変更](luis-how-to-azure-subscription.md#change-pricing-tier)するか、[新しいリソースを作成](get-started-portal-deploy-app.md#create-the-endpoint-resource)して[アプリに割り当てる](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)必要があります。
+
+このエラーの解決方法は次のとおりです。
+
+* [Azure portal](https://portal.azure.com) で、Language Understanding リソースの **[リソース管理] -> [価格レベル]** で、価格レベルをより高い TP レベルに変更します。 リソースが既に Language Understanding アプリに割り当てられている場合、Language Understanding ポータルでは何もする必要はありません。
+*  使用量が最も高い価格レベルを超えた場合は、ロード バランサーを使って Language Understanding リソースをその前に追加します。 これには、Kubernetes または Docker Compose を含む [Language Understanding コンテナー](luis-container-howto.md)が役立ちます。
+
+### <a name="when-you-receive-an-http-429-error-status-code"></a>HTTP 429 エラー状態コードを受信した場合
+
+この状態コードは、1 秒あたりのトランザクションが価格レベルを超えると返されます。  
+
+解決方法は次のとおりです。
+
+* 最高レベルではない場合は、[価格レベルを上げる](#change-pricing-tier)ことができます。
+* 使用量が最も高い価格レベルを超えた場合は、ロード バランサーを使って Language Understanding リソースをその前に追加します。 これには、Kubernetes または Docker Compose を含む [Language Understanding コンテナー](luis-container-howto.md)が役立ちます。
+* この状態コードが表示された場合は、自分で実装する[再試行ポリシー](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)を使用してクライアント アプリケーションの要求をゲートすることができます。 
 
 ## <a name="viewing-summary-usage"></a>使用状況の表示
-Azure で LUIS の使用に関する情報を表示できます。 **[概要]** ページには、呼び出し、エラーなど、最近の概要情報が表示されます。 LUIS エンドポイント要求を行ったらすぐに、**[概要] ページ**を確認します。使用状況が表示されるまでに最大で 5 分かかります。
+Azure で LUIS の使用に関する情報を表示できます。 **[概要]** ページには、呼び出し、エラーなど、最近の概要情報が表示されます。 LUIS エンドポイント要求を行ったらすぐに、 **[概要] ページ**を確認します。使用状況が表示されるまでに最大で 5 分かかります。
 
 ![使用状況の表示](./media/luis-usage-tiers/overview.png)
 

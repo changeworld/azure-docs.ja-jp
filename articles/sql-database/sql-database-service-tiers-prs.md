@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e12b89d0469587d7d7326bbee30f6467ada06bd5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7f184178343f69f522148777752c51afc5c5dcb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64574072"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65790409"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database Premium RS サービス レベル (プレビュー) の廃止 - 移行のオプション
 
@@ -27,7 +27,7 @@ ms.locfileid: "64574072"
 
 - 仮想コア サービス レベル
 
-  [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)の **General Purpose** サービス レベルと **Business Critical** サービス レベル。 これらの 2 つのサービス レベルは一般提供中です。 仮想コアベースの購入モデルでは、最大でデータベースあたり 100 TB の自動スケーリングによってお客様のワークロードのニーズにオンデマンドで適応する**ハイパースケール** サービス レベル (パブリック プレビュー段階) も提供されています。 ハイパースケール サービス レベルでは、Premium RS サービス レベルにより近い価格で、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)の Premium サービス レベルに相当する IO パフォーマンスが提供されます。
+  [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)の **General Purpose** サービス レベルと **Business Critical** サービス レベル。 これらの 2 つのサービス レベルは一般提供中です。 仮想コアベースの購入モデルでは、最大でデータベースあたり 100 TB の自動スケーリングによってお客様のワークロードのニーズにオンデマンドで適応する**ハイパースケール** サービス レベルも提供されています。 ハイパースケール サービス レベルでは、Premium RS サービス レベルにより近い価格で、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)の Premium サービス レベルに相当する IO パフォーマンスが提供されます。
 - Dev/Test 価格
 
   [Dev/Test 価格](https://azure.microsoft.com/pricing/dev-test/)では、お客様の Visual Studio サブスクリプションによって、ライセンス込みの価格と比較して最大 55% の割引が提供されます。
@@ -70,10 +70,10 @@ Microsoft の価格およびドキュメントと共にこの記事のガイダ�
 
 |**現在利用しているのが以下の場合**|**相当する仮想コアベースの以下に移行**|**相当する DTU ベースの以下に移行**|
 |---|---|---|
-|Premium RS 1|(プレビュー) ハイパースケール 1 仮想コア (Gen4) または Business Critical 1 仮想コア (Gen4)|Premium 1|
-|Premium RS 2|(プレビュー) ハイパースケール 2 仮想コア (Gen4) または Business Critical 2 仮想コア (Gen4)|Premium 2|
-|Premium RS 4|(プレビュー) ハイパースケール 4 仮想コア (Gen4) または Business Critical 4 仮想コア (Gen4)|Premium 4
-|Premium RS 6|(プレビュー) ハイパースケール 6 仮想コア (Gen4) または Business Critical 6 仮想コア (Gen4)|Premium 6|
+|Premium RS 1| ハイパースケール 1 仮想コア (Gen4) または Business Critical 1 仮想コア (Gen4)|Premium 1|
+|Premium RS 2| ハイパースケール 2 仮想コア (Gen4) または Business Critical 2 仮想コア (Gen4)|Premium 2|
+|Premium RS 4| ハイパースケール 4 仮想コア (Gen4) または Business Critical 4 仮想コア (Gen4)|Premium 4
+|Premium RS 6| ハイパースケール 6 仮想コア (Gen4) または Business Critical 6 仮想コア (Gen4)|Premium 6|
 
 |**現在利用しているのが以下の場合**|**相当する仮想コアベースの以下に移行**|**相当する DTU ベースの以下に移行**|
 |---|---|---|

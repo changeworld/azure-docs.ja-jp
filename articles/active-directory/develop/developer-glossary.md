@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/13/2019
+ms.date: 05/21/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c989b690e9537dcaaf3710996474a1b8b99826b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 314d7a8e8cf6837e2b22446ba23fee03d539bf35
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962745"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66235347"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 
@@ -60,7 +60,7 @@ ms.locfileid: "65962745"
 
 * Azure AD Identity Management と[ OpenID Connect][OpenIDConnect] プロトコル実装によるシングル サインオンの強固な管理
 * [クライアント アプリケーション](#client-application)による[保護されたリソース](#resource-server)への OAuth 2.0 [承認サーバー](#authorization-server)を介したブローカー アクセス
-* [同意フレームワーク](#consent) 
+* [同意フレームワーク](#consent)
 
 詳細については、「[Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]」を参照してください。
 
@@ -142,7 +142,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 これらの要求は [同意](#consent) プロセス時にも出現し、管理者またはリソース所有者には、そのテナント内のリソースに対するクライアント アクセスを許可/拒否する機会が与えられます。
 
-アクセス許可要求の構成は、[Azure Portal][AZURE-portal] の [アプリケーション] タブまたは [設定] タブにある [必要なアクセス許可] で、必要な "委任されたアクセス許可" と "アプリケーションのアクセス許可" (後者には全体管理者ロールのメンバーシップが必要) を選択することによって行います。 [public クライアント](#client-application)は、資格情報を安全に維持できないため、要求できるのは委任されたアクセス許可のみです。一方 [confidential クライアント](#client-application)は、委任されたアクセス許可とアプリケーションのアクセス許可のどちらでも要求することができます。 クライアントの[アプリケーション オブジェクト](#application-object)は、宣言された権限をその [requiredResourceAccess プロパティ][AAD-Graph-App-Entity]に格納します。
+アクセス許可要求の構成は、[Azure portal][AZURE-portal] のアプリケーション用の **[API アクセス許可]** ページで、目的の "委任されたアクセス許可" と "アプリケーションのアクセス許可" (後者には全体管理者ロールのメンバーシップが必要) を選択することによって行います。 [public クライアント](#client-application)は、資格情報を安全に維持できないため、要求できるのは委任されたアクセス許可のみです。一方 [confidential クライアント](#client-application)は、委任されたアクセス許可とアプリケーションのアクセス許可のどちらでも要求することができます。 クライアントの[アプリケーション オブジェクト](#application-object)は、宣言された権限をその [requiredResourceAccess プロパティ][AAD-Graph-App-Entity]に格納します。
 
 ## <a name="resource-owner"></a>リソース所有者
 

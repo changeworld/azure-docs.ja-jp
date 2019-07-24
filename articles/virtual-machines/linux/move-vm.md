@@ -4,7 +4,7 @@ description: Resource Manager デプロイ モデルで Linux VM を他の Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: d2d3f36c9b4ee0557f9e060bec762877a94ea637
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 7c22fe8beea894bccb311a63a1be70c972188e59
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734183"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67667279"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>他のサブスクリプションまたはリソース グループへの Linux VM の移動
 この記事では、リソース グループまたはサブスクリプション間で Linux の仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での VM の移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動する場合に便利です。
@@ -65,7 +65,7 @@ az resource move \
     --destination-group "myDestinationResourceGroup"
 ```
 
-VM とそのリソースを他のサブスクリプションに移動する場合は、**--destination-subscriptionId** パラメーターを追加して、移動先のサブスクリプションを指定します。
+VM とそのリソースを他のサブスクリプションに移動する場合は、 **--destination-subscriptionId** パラメーターを追加して、移動先のサブスクリプションを指定します。
 
 指定したリソースの移動の確認を求められたら、「**Y**」を入力して確認します。
 

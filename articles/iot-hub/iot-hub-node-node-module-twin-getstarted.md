@@ -10,11 +10,11 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.openlocfilehash: 312d3abad2ee2c9e668f8b354aaba96f8a652698
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259288"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60626222"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Node.js バックエンドおよび Node.js デバイスを使用した IoT Hub モジュール ID とモジュール ツインの概要
 

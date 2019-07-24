@@ -11,17 +11,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
-ms.author: brahmnes
-ms.openlocfilehash: ac937ddb1bcaed6813a0de4d631f820eff01e26f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: bfung
+ms.openlocfilehash: 5ac1d1339cb8a26cc86157d4d2aa664517418095
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877740"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67617790"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Azure Service Fabric、クラウド サービス、および Virtual Machines で .NET アプリのスナップショット デバッガーを有効にする
 
-ASP.NET または ASP.NET Core のアプリケーションを Azure App Service で実行する場合は、以下の手順を使用することもできます。 カスタマイズされたスナップショット デバッガー構成がアプリケーションで必要でなければ、[Application Insights ポータル ページからスナップショット デバッガーを有効にする](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)ことを強くお勧めします。 アプリケーションを Azure Service Fabric、クラウド サービス、Virtual Machines、またはオンプレミスのマシンで実行する場合、次の手順を使用する必要があります。 
+ASP.NET または ASP.NET Core アプリケーションが Azure App Service で実行されている場合は、[Application Insights ポータル ページからスナップショット デバッガーを有効にする](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)ことを強くお勧めします。 ただし、カスタマイズされたスナップショット デバッガーの構成、またはプレビュー バージョンの .NET Core がアプリケーションに必要な場合は、[Application Insights ポータル ページで有効にする](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)手順に "***加え***"、この手順も実行する必要があります。
+
+アプリケーションを Azure Service Fabric、クラウド サービス、Virtual Machines、またはオンプレミスのマシンで実行する場合、次の手順を使用する必要があります。 
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>ASP.NET アプリケーションのスナップショット コレクションの構成
 
@@ -66,7 +68,7 @@ ASP.NET または ASP.NET Core のアプリケーションを Azure App Service 
 4. スナップショットは、Application Insights にレポートされる例外についてのみ収集されます。 場合によっては (たとえば、.NET プラットフォームの古いバージョン)、[例外コレクションを構成](../../azure-monitor/app/asp-net-exceptions.md#exceptions)して、ポータルでスナップショット付きの例外を表示する必要があります。
 
 
-## <a name="configure-snapshot-collection-for-aspnet-core-20-applications"></a>ASP.NET Core 2.0 アプリケーションのスナップショット コレクションの構成
+## <a name="configure-snapshot-collection-for-applications-using-aspnet-core-20-or-above"></a>ASP.NET Core 2.0 以降を使用してアプリケーションのスナップショット コレクションを構成する
 
 1. まだ有効にしていない場合は、[ASP.NET Core Web アプリで Application Insights を有効](../../azure-monitor/app/asp-net-core.md)にします。
 
@@ -76,52 +78,70 @@ ASP.NET または ASP.NET Core のアプリケーションを Azure App Service 
 2. [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリに含めます。
 
 3. アプリケーションの `Startup` クラスを変更し、スナップショット コレクターのテレメトリ プロセッサを追加および構成します。
+    1. [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージ バージョン 1.3.5 以降を使用している場合は、`Startup.cs` に次の using ステートメントを追加します。
 
-    次の using ステートメントを `Startup.cs` に追加します。
+       ```csharp
+            using Microsoft.ApplicationInsights.SnapshotCollector;
+       ```
 
-   ```csharp
-   using Microsoft.ApplicationInsights.SnapshotCollector;
-   using Microsoft.Extensions.Options;
-   using Microsoft.ApplicationInsights.AspNetCore;
-   using Microsoft.ApplicationInsights.Extensibility;
-   ```
+       `Startup.cs` の `Startup` クラス内にある ConfigureServices メソッドの末尾に次を追加します。
 
-   次の `SnapshotCollectorTelemetryProcessorFactory`クラスを `Startup` クラスに追加します。
+       ```csharp
+            services.AddSnapshotCollector((configuration) =>
+            {
+                IConfigurationSection section = Configuration.GetSection(nameof(SnapshotCollectorConfiguration));
+                if (section.Value != null)
+                {
+                    section.Bind(configuration);
+                }
+            });
 
-   ```csharp
-   class Startup
-   {
-       private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
+       ```
+    2. [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージ バージョン 1.3.4 以前を使用している場合は、`Startup.cs` に次の using ステートメントを追加します。
+
+       ```csharp
+       using Microsoft.ApplicationInsights.SnapshotCollector;
+       using Microsoft.Extensions.Options;
+       using Microsoft.ApplicationInsights.AspNetCore;
+       using Microsoft.ApplicationInsights.Extensibility;
+       ```
+    
+       次の `SnapshotCollectorTelemetryProcessorFactory`クラスを `Startup` クラスに追加します。
+    
+       ```csharp
+       class Startup
        {
-           private readonly IServiceProvider _serviceProvider;
-
-           public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
-               _serviceProvider = serviceProvider;
-
-           public ITelemetryProcessor Create(ITelemetryProcessor next)
+           private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
            {
-               var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
-               return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
+               private readonly IServiceProvider _serviceProvider;
+    
+               public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
+                   _serviceProvider = serviceProvider;
+    
+               public ITelemetryProcessor Create(ITelemetryProcessor next)
+               {
+                   var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
+                   return new SnapshotCollectorTelemetryProcessor(next, configuration: snapshotConfigurationOptions.Value);
+               }
+           }
+           ...
+        ```
+        `SnapshotCollectorConfiguration` と `SnapshotCollectorTelemetryProcessorFactory` サービスをスタートアップ パイプラインに追加します。
+    
+        ```csharp
+           // This method gets called by the runtime. Use this method to add services to the container.
+           public void ConfigureServices(IServiceCollection services)
+           {
+               // Configure SnapshotCollector from application settings
+               services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
+    
+               // Add SnapshotCollector telemetry processor.
+               services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
+    
+               // TODO: Add other services your application needs here.
            }
        }
-       ...
-    ```
-    `SnapshotCollectorConfiguration` と `SnapshotCollectorTelemetryProcessorFactory` サービスをスタートアップ パイプラインに追加します。
-
-    ```csharp
-       // This method gets called by the runtime. Use this method to add services to the container.
-       public void ConfigureServices(IServiceCollection services)
-       {
-           // Configure SnapshotCollector from application settings
-           services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
-
-           // Add SnapshotCollector telemetry processor.
-           services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
-
-           // TODO: Add other services your application needs here.
-       }
-   }
-   ```
+       ```
 
 4. 必要に応じて、appsettings.json に SnapshotCollectorConfiguration セクションを追加して、スナップショット デバッガー構成をカスタマイズします。 スナップショット デバッガー構成のすべての設定は省略可能です。 既定の構成と同じ構成を示す例を次に示します。
 
@@ -172,5 +192,5 @@ ASP.NET または ASP.NET Core のアプリケーションを Azure App Service 
 ## <a name="next-steps"></a>次の手順
 
 - 例外をトリガーできるアプリケーションへのトラフィックを生成します。 その後、Application Insights インスタンスにスナップショットが送信がされるまで 10 ～ 15 分待機します。
-- Azure portal で[スナップショット](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json)を確認します。
-- Profiler の問題のトラブルシューティングについては、[スナップショット デバッガーのトラブルシューティング](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)に関する記事をご覧ください。
+- Azure portal で[スナップショット](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal)を確認します。
+- スナップショット デバッガーの問題のトラブルシューティングについては、[スナップショット デバッガーのトラブルシューティング](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)のページを参照してください。

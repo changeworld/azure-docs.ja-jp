@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c14c3aaf2a5d648572fdc251540264e8057a00f9
+ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66152338"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67144317"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 
@@ -154,7 +154,7 @@ az container exec --resource-group myResourceGroup --name mycontainer --exec-com
 コンテナーの bash シェルで、次のコマンドを実行します。 Azure Active Directory を使って Key Vault に認証するためのアクセス トークンを取得するには、次のコマンドを実行します。
 
 ```bash
-curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net%2F' -H Metadata:true -s
+curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true -s
 ```
 
 出力:
@@ -170,7 +170,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https://mykeyvault.vault.azure.net/...*):
+次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください ( *https://mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -252,7 +252,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https:\//mykeyvault.vault.azure.net/...*)。
+次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https:\//mykeyvault.vault.azure.net/...* )。
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

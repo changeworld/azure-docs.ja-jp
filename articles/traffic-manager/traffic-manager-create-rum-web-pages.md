@@ -3,7 +3,7 @@ title: Web ページでの Azure Traffic Manager への Real User Measurements |
 description: Real User Measurements を Traffic Manager に送信するように Web ページを設定する
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2d044457df80f16a6e8073e7f3253a611f74d8a8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117270"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071213"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Web ページを使用して Azure Traffic Manager に Real User Measurements を送信する方法
 
@@ -31,7 +31,7 @@ Real User Measurements (RUM) キーを取得し、生成されたコードを We
 Azure Portal を使用して RUM キーを取得するには:
 1. ブラウザーから Azure Portal にサインインします。 まだアカウントを持っていない場合は、1 か月間の無料試用版にサインアップできます。
 2. ポータルの検索バーで、変更の対象となる Traffic Manager プロファイル名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
-3. Traffic Manager プロファイル ブレードで、**[設定]** の下の **[Real User Measurements]\(Real User Measurements\)** をクリックします。
+3. Traffic Manager プロファイル ブレードで、 **[設定]** の下の **[Real User Measurements]\(Real User Measurements\)** をクリックします。
 4. **[キーの生成]** をクリックして、新しい RUM キーを作成します。
  
    ![Real User Measurements キーの生成](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)

@@ -2,20 +2,20 @@
 title: チュートリアル - Web アプリケーションで認証を有効にする - Azure Active Directory B2C | Microsoft Docs
 description: ASP.NET Web アプリケーションで Azure Active Directory B2C を使用してユーザー ログインを提供する方法に関するチュートリアル。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
-ms.author: davidmu
+ms.author: marsma
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: fc7f198299460faaf5e5df62fe4e167a3d595486
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e9e497c8f10108b8e05314f35546345f7f812524
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190368"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66507799"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Web アプリケーションで認証を有効にする
 
@@ -41,12 +41,12 @@ ms.locfileid: "65190368"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[アプリケーション]** を選択し、*webapp1* アプリケーションを選択します。
 5. **[応答 URL]** に「`https://localhost:44316`」を追加します。
 6. **[保存]** を選択します。
 7. プロパティ ページで、アプリケーション ID を記録しておきます。これは、Web アプリケーションを構成するときに使用します。
-8. **[キー]**、**[キーの生成]**、**[保存]** の順に選択します。 Web アプリケーションの構成時に使用するキーを書き留めておきます。
+8. **[キー]** 、 **[キーの生成]** 、 **[保存]** の順に選択します。 Web アプリケーションの構成時に使用するキーを書き留めておきます。
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 
@@ -69,13 +69,13 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
-1. ソリューション エクスプローラーで、**TaskWebApp** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. ソリューション エクスプローラーで、**TaskWebApp** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** をクリックします。
 2. **F5**キーを押します。 既定のブラウザーで、ローカルの Web サイトアドレス `https://localhost:44316/` が開かれます。
 
 ### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
 
 1. **[Sign up / Sign in]\(サインアップ/サインイン\)** をクリックして、アプリケーションのユーザーとしてサインアップします。 **b2c_1_signupsignin1** ユーザー フローが使用されます。
-2. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、**[今すぐサインアップ]** を選択します。 サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザー フローで定義されているユーザーのパスワードと要求された属性も収集されます。
+2. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[今すぐサインアップ]** を選択します。 サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザー フローで定義されているユーザーのパスワードと要求された属性も収集されます。
 3. 有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。 
 
     ![サインアップ ワークフロー](media/active-directory-b2c-tutorials-web-app/sign-up-workflow.png)

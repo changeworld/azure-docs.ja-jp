@@ -9,11 +9,11 @@ ms.date: 04/03/2017
 ms.author: snmuvva
 ms.subservice: alerts
 ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465668"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345782"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>webhook を使用してクラシック メトリック アラートが Azure 以外のシステムに通知するように設定する
 webhook を使用して、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 アラートで webhook を使用して、SMS メッセージを送信するサービス、バグのログ記録、チャット/メッセージング サービスを介したチームへの通知、またはその他のさまざまなアクションに対して、アラートをルーティングできます。 
@@ -69,7 +69,7 @@ POST 操作には、すべてのメトリックベースのアラートについ
 ```
 
 
-| フィールド | 必須 | 値の固定セット | メモ |
+| フィールド | Mandatory | 値の固定セット | メモ |
 |:--- |:--- |:--- |:--- |
 | status |Y |"Activated"、"Resolved" |設定した条件に基づいたアラートの状態。 |
 | context |Y | |アラート コンテキスト。 |

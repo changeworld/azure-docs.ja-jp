@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
 ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879783"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61281487"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>多層 Dynamics AX アプリケーションのディザスター リカバリーの設定   
 
@@ -45,9 +45,9 @@ Site Recovery を使用して Dynamics AX アプリケーションのディザ�
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | [はい] | [はい]
-**VMware** | [はい] | [はい]
-**物理サーバー** | [はい] | [はい]
+**Hyper-V** | はい | はい
+**VMware** | はい | はい
+**物理サーバー** | はい | はい
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Site Recovery を使用して Dynamics AX アプリケーションのディザスター リカバリーを可能にする
 ### <a name="protect-your-dynamics-ax-application"></a>Dynamics AX アプリケーションを保護する
@@ -99,7 +99,7 @@ Dynamics AX クライアントと Application Object Server VM 用に、Site Rec
 
 Site Recovery で復旧計画を作成して、フェールオーバー プロセスを自動化できます。 復旧計画には、アプリ層と Web 層を追加します。 アプリ層の前にフロントエンドがシャットダウンするように、異なるグループに順序付けます。
 
-1. サブスクリプションで Site Recovery コンテナーを選択し、**[復旧計画]** タイルを選択します。
+1. サブスクリプションで Site Recovery コンテナーを選択し、 **[復旧計画]** タイルを選択します。
 
 2. **[+ 復旧計画]** をクリックし、名前を指定します。
 
@@ -145,7 +145,7 @@ Application Object Server VM グループが立ち上がった後、そのグル
 
 5. セカンダリ環境が立ち上がったら、検証を行うことができます。
 
-6. 検証が完了したら、**[Validations Complete]\(検証完了\)** をクリックします。テスト フェールオーバー環境がクリーニングされます。
+6. 検証が完了したら、 **[Validations Complete]\(検証完了\)** をクリックします。テスト フェールオーバー環境がクリーニングされます。
 
 テスト フェールオーバーの実行の詳細については、「[Site Recovery での Azure へのフェールオーバーをテストする](site-recovery-test-failover-to-azure.md)」を参照してください。
 
@@ -155,9 +155,9 @@ Application Object Server VM グループが立ち上がった後、そのグル
 
 2. Dynamics AX 用に作成された復旧計画を選択します。
 
-3. **[フェールオーバー]** を選択し、**[フェールオーバー]** を選択します。
+3. **[フェールオーバー]** を選択し、 **[フェールオーバー]** を選択します。
 
-4. ターゲット ネットワークを選択し、**[✓]** をクリックしてフェールオーバー プロセスを開始します。
+4. ターゲット ネットワークを選択し、 **[✓]** をクリックしてフェールオーバー プロセスを開始します。
 
 フェールオーバーの実行の詳細については、「[Site Recovery でのフェールオーバー](site-recovery-failover.md)」を参照してください。
 
@@ -169,7 +169,7 @@ Application Object Server VM グループが立ち上がった後、そのグル
 
 2. Dynamics AX 用に作成された復旧計画を選択します。
 
-3. **[フェールオーバー]** を選択し、**[フェールオーバー]** を選択します。
+3. **[フェールオーバー]** を選択し、 **[フェールオーバー]** を選択します。
 
 4. **[方向の変更]** を選択します。
 

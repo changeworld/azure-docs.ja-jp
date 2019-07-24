@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: f953e1dc15e12c37c30a86ebd7536b1126bf18f7
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e78fa419b067c0bad48229dcfd8d4e986fc16903
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062002"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62117303"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 要素
 ドロップダウン リストを備えた選択コントロールです。
@@ -55,7 +55,7 @@ ms.locfileid: "37062002"
 
 - `constraints.allowedValues` のラベルは項目の表示テキストであり、その値は要素が選択された際の出力値です。
 - 指定する場合、既定値は `constraints.allowedValues` 内に存在するラベルである必要があります。 指定しない場合、`constraints.allowedValues` 内の最初の項目が選択されます。 既定値は **null** です。
-- `constraints.allowedValues` には少なくとも 1 つの項目が必要です。
+- `constraints.allowedValues` には、少なくとも 1 つの項目が必要です。
 - 必須ではない値をエミュレートするには、ラベルと `""` という値 (空の文字列) を持つ項目を `constraints.allowedValues` に追加します。
 
 ## <a name="sample-output"></a>サンプル出力

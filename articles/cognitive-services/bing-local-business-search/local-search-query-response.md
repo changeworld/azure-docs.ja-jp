@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh; v-gedod
-ms.openlocfilehash: 45f7adab684b7b6097328a42abb60c8d58c1acc2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 06/26/2018
+ms.author: rosh
+ms.openlocfilehash: cf622f658208ab85fe0a0670a0e034bd58a5047d
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796789"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849933"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing Local Business Search API クエリと応答の送信と使用
 
@@ -22,7 +22,7 @@ Bing Local Business Search API から、検索クエリをそのエンドポイ�
 
 ## <a name="creating-a-request"></a>要求の作成
 
-Bing Local Business Search API に要求を送信するには、検索語句を `q=` パラメーターに追加してから、それを API エンドポイントに追加して、`Ocp-Apim-Subscription-Key` ヘッダーを含めます。 例: 
+Bing Local Business Search API に要求を送信するには、検索語句を `q=` パラメーターに追加してから、それを API エンドポイントに追加して、`Ocp-Apim-Subscription-Key` ヘッダーを含めます。 例:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
@@ -37,6 +37,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 ## <a name="using-responses"></a>応答の使用
 
 Bing Local Business Search API からの JSON 応答には、`SearchResponse` オブジェクトが含まれます。 API では、`places` フィールドに関連する検索結果が返されます。 結果が見つからない場合、`places` フィールドは応答に含まれません。
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 ```
 {
@@ -58,7 +60,7 @@ API によって返される JSON の結果には、次の属性が含まれま�
 * entityPresentationInfo
 * geo
 * id
-* name
+* 名前
 * routeablePoint
 * telephone
 * url

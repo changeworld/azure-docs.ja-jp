@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 15b45cadc69830827952d87ffc2315b06b07b02c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663402"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62124991"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Reliable Services 通信 API の使用方法
 プラットフォームとしての Azure Service Fabric は、サービス間の通信にまったく依存しません。 UDP から HTTP まで、あらゆるプロトコルとスタックに対応します。 サービスの通信方法の選択は、サービス開発者に委ねられています。 Reliable Services アプリケーション フレームワークには、組み込みの通信スタックと、カスタム通信コンポーネントの構築に使用できる API が用意されています。
@@ -216,7 +216,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-別のクラスター内のサービスに接続するには、一連のクラスター ゲートウェイ エンドポイントを指定して ServicePartitionResolver を作成できます。 ゲートウェイ エンドポイントは、同じクラスターに接続するさまざまなエンドポイントであることに注意してください。 例: 
+別のクラスター内のサービスに接続するには、一連のクラスター ゲートウェイ エンドポイントを指定して ServicePartitionResolver を作成できます。 ゲートウェイ エンドポイントは、同じクラスターに接続するさまざまなエンドポイントであることに注意してください。 例:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");

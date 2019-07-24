@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
 ms.openlocfilehash: 5194bdcd5b77b0527ccdefc1af85bf03bdac2cab
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64938166"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>AppSource および Azure Marketplace でおすすめになる方法
@@ -28,8 +28,8 @@ Azure Marketplace や AppSource の **[おすすめアプリ]** セクション�
 次のアクション アイテムを実行して、スコアを上げることができます。
 
 1. "*アプリまたはサービスが適切に分類されるようにします*": アプリまたはサービスの機能を表す 3 つのカテゴリを選択します。
-2. "*Azure Marketplace アプリ: Azure の消費を月ごとに増やします。*" 1 か月間の Azure の使用量を 1,000 時間にできれば、おすすめになる可能性が大幅に高まります。
-3. "*AppSource アプリ: オファーの取得数を増やします。*" 1 か月間の取得数を 10 回にすることができれば、おすすめになる可能性が大幅に高まります。 
+2. "*Azure Marketplace アプリ: Azure の消費を月ごとに増やします。* " 1 か月間の Azure の使用量を 1,000 時間にできれば、おすすめになる可能性が大幅に高まります。
+3. "*AppSource アプリ: オファーの取得数を増やします。* " 1 か月間の取得数を 10 回にすることができれば、おすすめになる可能性が大幅に高まります。 
 4. "*共同販売準備完了状態にします*": 共同販売準備完了のための要件を満たすようにします。
 5. "*オファーの品質を向上させます*": オファーを変更する方法については、[コンテンツ掲載のガイドライン](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation)に関する記事をご覧ください
 6. Marketplace で複数のオファーを公開します: すべてのコア アプリとサービスが掲載されていますか。 試用版エクスペリエンスがありますか。

@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: a77cf20be30361abf6590dbd53bdb07c327eb9d8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204988"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
@@ -131,7 +131,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
 ### <a name="enable-storage-logging-using-the-azure-portal"></a>Azure portal を使用したストレージ ログの有効化  
 
-Azure portal では、**[Diagnostics settings (classic)]\(診断の設定 (クラシック)\)** ブレードを使用して、ストレージ ログを制御します。このブレードは、ストレージ アカウントの **[Menu blade]\(メニュー ブレード\)** の **[監視 (クラシック)]** セクションからアクセスできます。
+Azure portal では、 **[Diagnostics settings (classic)]\(診断の設定 (クラシック)\)** ブレードを使用して、ストレージ ログを制御します。このブレードは、ストレージ アカウントの **[Menu blade]\(メニュー ブレード\)** の **[監視 (クラシック)]** セクションからアクセスできます。
 
 指定できるのは、ログに記録するストレージ サービスと、ログ データの保持期間 (日数) です。  
 
@@ -189,7 +189,7 @@ queueClient.SetServiceProperties(serviceProperties);
 > [!NOTE]
 >  AzCopy は、Azure SDK に含まれているものですが、[https://aka.ms/AzCopy](https://aka.ms/AzCopy) から最新バージョンをいつでもダウンロードできます。 既定では、AzCopy は、フォルダー **C:\Program Files (x86)\Microsoft SDKs\Windows Azure\AzCopy** 内にインストールされます。コマンド プロンプトまたは PowerShell ウィンドウ内でこのツールを実行しようとするときは、事前にこのフォルダーをパスに追加する必要があります。  
 
- 次の例は、2014 年 5 月 20 日の午前 09 時、午前 10 時、および午前 11 時から Queue サービスのログ データをダウンロードする方法を示しています。 AzCopy で **/S** パラメーターを指定すると、ログ ファイル名内の日時に基づいて、ローカル フォルダー構造が作成されます。**/V** パラメーターを指定すると、詳細な出力が生成されます。**/Y** パラメーターを指定すると、すべてのローカル ファイルが上書きされます。 **<yourstorageaccount\>** は、ストレージ アカウント名に置き換えます。**<yourstoragekey\>** は、ストレージ アカウント キーに置き換えます。  
+ 次の例は、2014 年 5 月 20 日の午前 09 時、午前 10 時、および午前 11 時から Queue サービスのログ データをダウンロードする方法を示しています。 AzCopy で **/S** パラメーターを指定すると、ログ ファイル名内の日時に基づいて、ローカル フォルダー構造が作成されます。 **/V** パラメーターを指定すると、詳細な出力が生成されます。 **/Y** パラメーターを指定すると、すべてのローカル ファイルが上書きされます。 **<yourstorageaccount\>** は、ストレージ アカウント名に置き換えます。 **<yourstoragekey\>** は、ストレージ アカウント キーに置き換えます。  
 
 ```
 AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs\Storage' '2014/05/20/09' '2014/05/20/10' '2014/05/20/11' /sourceKey:<yourstoragekey> /S /V /Y  

@@ -5,25 +5,27 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/30/2019
+ms.date: 05/21/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 9647cdd584b53f581f46f728ca2d08f9a113ce92
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 57736a3cd553e83294d5290867e261b626cb035f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66156135"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66814890"
 ---
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事の例を完了するには、汎用 VM の既存のマネージド イメージを保持している必要があります。 詳細については、[チュートリアル: Azure CLI 2.0 を使用して Azure VM のカスタム イメージを作成する方法](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)に関するチュートリアルを参照してください。 マネージド イメージにデータ ディスクが含まれている場合、データ ディスクのサイズが 1 TB を超えることはできません。
+この記事の例を完了するには、汎用 VM の既存のマネージド イメージを保持している必要があります。 詳細については、[チュートリアル: Azure CLI を使用して Azure VM のカスタム イメージを作成する](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)を参照してください。 マネージド イメージにデータ ディスクが含まれている場合、データ ディスクのサイズが 1 TB を超えることはできません。
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/bash](https://shell.azure.com/bash) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
+
+CLI をインストールしてローカルで使用する場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-an-image-gallery"></a>イメージ ギャラリーを作成する 
 
@@ -33,7 +35,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location WestCentralUS
-az sig create -g myGalleryRG --gallery-name myGallery
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
 ## <a name="create-an-image-definition"></a>イメージ定義を作成する
@@ -44,7 +46,7 @@ az sig create -g myGalleryRG --gallery-name myGallery
 
 ```azurecli-interactive 
 az sig image-definition create \
-   -g myGalleryRG \
+   --resource-group myGalleryRG \
    --gallery-name myGallery \
    --gallery-image-definition myImageDefinition \
    --publisher myPublisher \
@@ -60,16 +62,16 @@ az sig image-definition create \
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 
-この例では、イメージのバージョンは *1.0.0* であり、"*米国中西部*" リージョンに 2 個のレプリカ、"*米国中南部*" リージョンに 1 個のレプリカ、および "*米国東部 2*" リージョンに 1 個のレプリカを作成しています。
+この例では、イメージのバージョンは *1.0.0* であり、ゾーン冗長ストレージを使用して "*米国中西部*" リージョンに 2 個のレプリカ、"*米国中南部*" リージョンに 1 個のレプリカ、および "*米国東部 2*" リージョンに 1 個のレプリカを作成しています。
 
 
 ```azurecli-interactive 
 az sig image-version create \
-   -g myGalleryRG \
+   --resource-group myGalleryRG \
    --gallery-name myGallery \
    --gallery-image-definition myImageDefinition \
    --gallery-image-version 1.0.0 \
-   --target-regions "WestCentralUS" "SouthCentralUS=1" "EastUS2=1" \
+   --target-regions "WestCentralUS" "SouthCentralUS=1" "EastUS2=1=Standard_ZRS" \
    --replica-count 2 \
    --managed-image "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage"
 ```
@@ -77,5 +79,24 @@ az sig image-version create \
 > [!NOTE]
 > 同じマネージド イメージを使用して別のイメージ バージョンを作成する前に、そのイメージ バージョンが構築とレプリケーションを完全に完了するまで待つ必要があります。
 >
-> イメージ バージョンを作成するときに、`--storage-account-type standard_zrs` を追加することによって、イメージ バージョンを[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
+> イメージ バージョンを作成するときに、`--storage-account-type standard_zrs` を追加することによって、すべてのイメージ バージョンのレプリカを[ゾーン冗長ストレージ](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)に格納することもできます。
 >
+
+## <a name="share-the-gallery"></a>ギャラリーを共有する
+
+他のユーザーとは、ギャラリー レベルで共有することをお勧めします。 ギャラリーのオブジェクト ID を取得するには、[az sig show](/cli/azure/sig#az-sig-show) を使用します。
+
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
+```
+
+電子メール アドレスおよび [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) と共に、オブジェクト ID をスコープとして使用して、ユーザーに共有イメージ ギャラリーへのアクセスを付与します。
+
+```azurecli-interactive
+az role assignment create --role "Reader" --assignee <email address> --scope <gallery ID>
+```
+
+

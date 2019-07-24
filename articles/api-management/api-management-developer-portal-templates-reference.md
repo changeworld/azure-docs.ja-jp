@@ -14,18 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 540e9804d2ee84c050531f5287d4c4b8922ae999
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 0f339984a9db1a337f97e6db24571004cc34f679
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26128751"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60657647"
 ---
 # <a name="developer-portal-templates"></a>開発者ポータル テンプレート
 
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
   
-テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)」を参照してください。  
+テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ##  <a name="DeveloperPortalTemplates"></a> 開発者ポータル テンプレート  
   
@@ -46,7 +48,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
     -   [成果物](api-management-product-templates.md#Product)  
 -   [アプリケーション](api-management-application-templates.md)  
     -   [アプリケーション リスト](api-management-application-templates.md#ProductList)  
-    -   [アプリケーション](api-management-application-templates.md#Application)  
+    -   [Application](api-management-application-templates.md#Application)  
 -   [問題](api-management-issue-templates.md)  
     -   [問題リスト](api-management-issue-templates.md#IssueList)  
 -   [ユーザー プロファイル](api-management-user-profile-templates.md)  
@@ -59,7 +61,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
     -   [サインアップ](api-management-page-templates.md#SignUp)  
     -   [ページが見つかりません](api-management-page-templates.md#PageNotFound)
 
-## <a name="next-steps"></a>次のステップ  
+## <a name="next-steps"></a>次の手順  
 
 + [テンプレート リファレンス](api-management-developer-portal-templates-reference.md)  
 + [データ モデル リファレンス](api-management-template-data-model-reference.md)  

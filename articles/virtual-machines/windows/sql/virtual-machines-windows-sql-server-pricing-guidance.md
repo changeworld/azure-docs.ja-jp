@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 19ba6896d9186cae32249fc8eb51319f9b37a6ff
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d53c1de9678db497a20788d0cab7ee4f0e6f0c9c
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330792"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607065"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM の料金ガイダンス
 
@@ -58,10 +58,10 @@ ms.locfileid: "54330792"
 | SQL Server のエディション | ワークロード |
 |-----|-----|
 | Web | 小規模 Web サイト |
-| 標準 | 少量から中量のワークロード |
+| Standard | 少量から中量のワークロード |
 | Enterprise | 大量のワークロードまたはミッションクリティカルなワークロード|
 
-これらのエディションの SQL Server ライセンス料金には 2 つのオプションがあります。"*使用した分を支払う*" 方法と、"*自分のライセンスを持ち込む (BYOL)*" 方法です。
+これらのエディションの SQL Server ライセンス料金には 2 つのオプションがあります。"*使用した分を支払う*" 方法と、"*自分のライセンスを持ち込む (BYOL)* " 方法です。
 
 ## <a name="pay-per-usage"></a>使用した分を支払う
 
@@ -85,7 +85,7 @@ ms.locfileid: "54330792"
 | Ubuntu | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[SQL Server 2017 Standard Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
 
 > [!IMPORTANT]
-> ポータルで SQL Server 仮想マシンを作成するとき、**[サイズの選択]** ウィンドウには見積もりコストが表示されます。 この見積もりに含まれるのは、VM を実行するためのコンピューティング コストと、OS (Windows または他社製 Linx オペレーティング システム) のライセンス コストのみであることに注意してください。
+> ポータルで SQL Server 仮想マシンを作成するとき、 **[サイズの選択]** ウィンドウには見積もりコストが表示されます。 この見積もりに含まれるのは、VM を実行するためのコンピューティング コストと、OS (Windows または他社製 Linx オペレーティング システム) のライセンス コストのみであることに注意してください。
 >
 > ![VM サイズを選択するブレード](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
 >
@@ -99,7 +99,7 @@ ms.locfileid: "54330792"
 **ライセンス モビリティを使用した自分の SQL Server ライセンスの持ち込み** (**BYOL**) は、Azure VM のソフトウェア アシュアランスで既存の SQL Server ボリューム ライセンスを使用することです。 BYOL を使用した SQL Server VM の料金は、SQL Server のライセンスではなく、VM を実行するコストに対してのみ発生します。これは、ボリューム ライセンス プログラムを介して既にライセンスとソフトウェア アシュアランスを取得している場合が対象になります。
 
 > [!IMPORTANT]
-> BYOL イメージには、ソフトウェア アシュアランスの Enterprise Agreement が必要です。 現時点では、Azure Cloud Solution Partner (CSP) の一部として利用することはできません。
+> BYOL イメージには、ソフトウェア アシュアランスの Enterprise Agreement が必要です。 現時点では、Azure Cloud Solution Partner (CSP) の一部として利用することはできません。 CSP のお客様は従量課金イメージをデプロイし、次に [Azure ハイブリッド特典](virtual-machines-windows-sql-ahb.md)を有効にして、ご自身のライセンスを持ち込めます。
 
 > [!NOTE]
 > BYOL イメージは、現在、Windows 仮想マシンでのみご利用いただけます。 ただし、SQL Server は Linux 専用の VM に手動でインストールできます。 [Linux SQL VM のよくあるご質問](../../linux/sql/sql-server-linux-faq.md)に関するページをご覧ください。
@@ -110,7 +110,7 @@ ms.locfileid: "54330792"
 
 - **有効期間と規模がわかっているワークロード**。 たとえば、1 年にわたって必要で、要求が予測されているアプリ。
 
-BYOL を SQL Server VM で利用するには、SQL Server Standard または Enterprise と[ソフトウェア アシュアランス](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1) のライセンス (ボリューム ライセンス プログラムの必須オプション、他の製品では必要に応じて購入可能) が必要です。 ボリューム ライセンス プログラムで提供される料金レベルは、契約のタイプ、SQL Server の数やコミットメントによってさまざまです。 ただし、経験則として、継続的な運用環境のワークロードに自分のライセンスを持ち込むメリットは次のとおりです。
+BYOL を SQL Server VM で利用するには、SQL Server Standard または Enterprise と[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1) のライセンス (ボリューム ライセンス プログラムの必須オプション、他の製品では必要に応じて購入可能) が必要です。 ボリューム ライセンス プログラムで提供される料金レベルは、契約のタイプ、SQL Server の数やコミットメントによってさまざまです。 ただし、経験則として、継続的な運用環境のワークロードに自分のライセンスを持ち込むメリットは次のとおりです。
 
 | BYOL のメリット | 説明 |
 |-----|-----|

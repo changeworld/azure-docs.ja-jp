@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b210af2a70a3ce858d8f53102a181c75373b4176
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522079"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606940"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>チュートリアル:ビデオとトランスクリプトのモデレーション
 
@@ -37,22 +37,22 @@ ms.locfileid: "58522079"
 - [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の Web サイトにサインアップして、カスタム タグを作成します。 この手順に関するヘルプが必要な場合は、[タグの使用](Review-Tool-User-Guide/tags.md)に関する記事をご覧ください。
 
     ![ビデオ モデレーションのカスタム タグのスクリーンショット](images/video-tutorial-custom-tags.png)
-- サンプル アプリケーションを実行するには、Azure アカウント、Azure Media Services リソース、Azure Content Moderator リソース、および Azure Active Directory の資格情報が必要です。 これらを取得する方法については、[ビデオ モデレート API](video-moderation-api.md) ガイドをご覧ください。
+- サンプル アプリケーションを実行するには、Azure アカウント、Azure Media Services リソース、Azure Content Moderator リソース、および Azure Active Directory の資格情報が必要です。 これらを取得する方法については、[ビデオ モデレート API](video-moderation-api.md) に関するガイドを参照してください。
 - [ビデオ レビュー コンソール アプリケーション](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp)を GitHub からダウンロードします。
 
 ## <a name="enter-credentials"></a>資格情報を入力する
 
 `App.config` ファイルを編集して、Active Directory テナントの名前、サービス エンドポイント、およびサブスクリプション キー (`#####` で示されます) を追加します。 次の情報が必要です。
 
-    |キー|説明|
-    |-|-|
-    |`AzureMediaServiceRestApiEndpoint`|Azure Media Services (AMS) API のエンドポイント|
-    |`ClientSecret`|Azure Media Services のサブスクリプション キー|
-    |`ClientId`|Azure Media Services のクライアント ID|
-    |`AzureAdTenantName`|組織を表す Active Directory テナント名|
-    |`ContentModeratorReviewApiSubscriptionKey`|Content Moderator レビュー API のサブスクリプション キー|
-    |`ContentModeratorApiEndpoint`|Content Moderator API のエンドポイント|
-    |`ContentModeratorTeamId`|Content Moderator のチーム ID|
+|キー|説明|
+|-|-|
+|`AzureMediaServiceRestApiEndpoint`|Azure Media Services (AMS) API のエンドポイント|
+|`ClientSecret`|Azure Media Services のサブスクリプション キー|
+|`ClientId`|Azure Media Services のクライアント ID|
+|`AzureAdTenantName`|組織を表す Active Directory テナント名|
+|`ContentModeratorReviewApiSubscriptionKey`|Content Moderator レビュー API のサブスクリプション キー|
+|`ContentModeratorApiEndpoint`|Content Moderator API のエンドポイント|
+|`ContentModeratorTeamId`|Content Moderator のチーム ID|
 
 ## <a name="examine-the-main-code"></a>メイン コードを確認する
 
@@ -60,7 +60,7 @@ ms.locfileid: "58522079"
 
 ### <a name="methods-of-program-class"></a>Program クラスのメソッド
 
-|方法|説明|
+|Method|説明|
 |-|-|
 |`Main`|コマンド ラインを解析し、ユーザー入力を収集し、処理を開始します。|
 |`ProcessVideo`|圧縮、アップロード、モデレーションを行って、ビデオ レビューを作成します。|
@@ -225,7 +225,7 @@ ms.locfileid: "58522079"
 > [!NOTE]
 > コンソール アプリケーションは、[Azure Media Indexer API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) を使用して、アップロードされたビデオのオーディオ トラックからトランスクリプトを生成します。結果は WebVTT 形式で提供されます。 この形式の詳細については、[Web ビデオ テキスト トラック形式](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)に関するページをご覧ください。
 
-## <a name="create-a-the-human-in-the-loop-review"></a>人間参加型レビューを作成する
+## <a name="create-a-human-review"></a>人間のレビューを作成する
 
 モデレーション プロセスは、ビデオからキー フレームの一覧を、オーディオ トラックのトランスクリプトと共に返します。 次の手順は、Content Moderator レビュー ツールでの人間のモデレーター用のレビューの作成です。 `Program.cs` 内の `ProcessVideo()` メソッドに戻ると、`CreateVideoReviewInContentModerator()` メソッドへの呼び出しがあることがわかります。 このメソッドは、次に示すように、`VideoReviewAPI.cs` 内の `videoReviewApi` クラス内にあります。
 

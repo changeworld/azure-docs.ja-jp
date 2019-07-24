@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: d88bdb1eaeb95413df84bf69ed4fc763b6d4901f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449269"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61458496"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs の安全なプッシュ
 
@@ -120,7 +120,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
     このメソッドは、共有設定に格納された資格情報によってアプリケーション バックエンドを呼び出して通知コンテンツを取得します。
 
 4. ここでは、受信通知を処理し、上記のメソッドを使用して表示するコンテンツを取得する必要があります。 最初に、プッシュ通知を受信するときに iOS アプリケーションがバックグラウンドで実行されるようにします。 **XCode** で、左側のパネルのアプリケーション プロジェクトを選択し、中央のウィンドウの **[ターゲット]** セクションでメイン アプリケーション ターゲットをクリックします。
-5. 次に、中央ウィンドウの上部で **[機能]** タブをクリックし、**[リモート通知]** チェック ボックスをオンにします。
+5. 次に、中央ウィンドウの上部で **[機能]** タブをクリックし、 **[リモート通知]** チェック ボックスをオンにします。
 
     ![][IOS1]
 

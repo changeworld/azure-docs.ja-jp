@@ -16,10 +16,10 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 356af6567cea96efc7edbe8bc4932182d35ebc07
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65963947"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>チュートリアル:GitHub を構成し、自動ユーザー プロビジョニングに対応させる
@@ -60,11 +60,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Azure AD で GitHub への自動ユーザー アカウント プロビジョニングを構成する
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために GitHub を既に構成している場合は、検索フィールドで GitHub のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **GitHub** を検索します。 検索結果から GitHub を選択してアプリケーションの一覧に追加します。
+2. シングル サインオンのために GitHub を既に構成している場合は、検索フィールドで GitHub のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **GitHub** を検索します。 検索結果から GitHub を選択してアプリケーションの一覧に追加します。
 
-3. GitHub のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+3. GitHub のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -76,7 +76,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![承認ダイアログ](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Azure Portal で、**[テナント URL]** を入力し、**[テスト接続]** をクリックして、Azure AD が GitHub アプリに接続できることを確認します。 接続できない場合は、GitHub アカウントに Admin アクセス許可があり、**[テナント URL]** が正しく入力されていることを確認した後、"承認" ステップを再度試します (**テナント URL** はルール `https://api.github.com/scim/v2/organizations/<Organization_name>` で作成でき、組織は GitHub アカウントの **[Settings]\(設定\)** > **[Organizations]\(組織\)** でわかります)。
+7. Azure Portal で、 **[テナント URL]** を入力し、 **[テスト接続]** をクリックして、Azure AD が GitHub アプリに接続できることを確認します。 接続できない場合は、GitHub アカウントに Admin アクセス許可があり、 **[テナント URL]** が正しく入力されていることを確認した後、"承認" ステップを再度試します (**テナント URL** はルール `https://api.github.com/scim/v2/organizations/<Organization_name>` で作成でき、組織は GitHub アカウントの **[Settings]\(設定\)**  >  **[Organizations]\(組織\)** でわかります)。
 
     ![承認ダイアログ](./media/github-provisioning-tutorial/GitHub3.png)
 
@@ -88,7 +88,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11. **[属性マッピング]** セクションで、Azure AD から GitHub に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で GitHub のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-12. GitHub に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+12. GitHub に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
 13. **[Save]** をクリックします。
 

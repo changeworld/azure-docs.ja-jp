@@ -4,7 +4,7 @@ description: シリアル コンソールを使用して Azure 仮想マシン�
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5a97a40ba48db9f73471d5fd778ceb5cb9070964
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 87db223465c0d6680b8d60807bf90afc81e52554
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011341"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708338"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
 
 ## <a name="system-request-sysrq"></a>システム要求 (SysRq)
-SysRq は Linux オペレーション システム カーネルによって解釈されるキーのシーケンスであり、事前定義済みの一連のアクションをトリガーできます。 これらのコマンドは通常、仮想マシンのトラブルシューティングまたは復旧が従来の管理では実行できない場合 (たとえば、VM が応答しない場合など) に使用されます。 Azure Serial Console の SysRq 機能を使用することは、SysRq キーを押すことや物理キーボード上に文字が入力されることと、同等の動作になります。
+SysRq は Linux オペレーション システム カーネルによって解釈されるキーのシーケンスであり、事前定義済みの一連のアクションをトリガーできます。 これらのコマンドは通常、仮想マシンのトラブルシューティングまたは復旧が従来の管理では実行できない場合 (たとえば、VM が応答していない場合など) に使用されます。 Azure Serial Console の SysRq 機能を使用することは、SysRq キーを押すことや物理キーボード上に文字が入力されることと、同等の動作になります。
 
 SysRq シーケンスが配信されると、以降は、カーネル構成によってシステムの応答方法が制御されます。 SysRq の有効化および無効化に関する情報については、「*SysRq Admin Guide*」(SysRq 管理ガイド) の "[テキスト](https://aka.ms/kernelorgsysreqdoc) | [マークダウン](https://aka.ms/linuxsysrq)" を参照してください。  
 
@@ -36,7 +36,7 @@ Azure Serial Console は、以下に示すコマンド バーのキーボード 
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
-SysRq コマンドは、停止している仮想マシン上や、カーネルが応答しない状態  (カーネル パニックなど) になった仮想マシン上では、使用できません。
+SysRq コマンドは、停止している仮想マシン上や、カーネルが応答しない状態 (カーネル パニックなど) になった仮想マシン上では、使用できません。
 
 ### <a name="enable-sysrq"></a>SysRq の有効化 
 前記の「*SysRq Admin Guide*」(SysRq 管理ガイド) の説明にあるように、すべてのコマンドまたは一部の特定のコマンドが利用可能か、またはどのコマンドも利用不可能になるように SysRq を構成できます。 以下の手順を使用してすべての SysRq コマンドを有効にできますが、再起動すると、この構成は失われます。
@@ -80,7 +80,7 @@ SysReq の構成を永続化するために、次の手順を実行してすべ�
 |``x``  |    ppc/powerpc プラットフォーム上で、xmon インターフェイスによって使用されます。 sparc64 上でグローバル PMU Register を表示します。 MIPS 上のすべての TLB エントリをダンプします。
 |``y``  |    グローバル CPU Register を表示します [SPARC-64 固有]
 |``z``  |    ftrace バッファーをダンプします。
-|``0``-``9`` | コンソール ログ レベルを設定して、どのカーネル メッセージがコンソールにプリントされるかを制御します  (たとえば ``0`` では、PANIC や OOPS などの緊急時のメッセージのみがコンソールに示されるように、レベルを設定します)。
+|``0``-``9`` | コンソール ログ レベルを設定して、どのカーネル メッセージがコンソールにプリントされるかを制御します (たとえば ``0`` では、PANIC や OOPS などの緊急時のメッセージのみがコンソールに示されるように、レベルを設定します)。
 
 ### <a name="distribution-specific-documentation"></a>ディストリビューション固有のドキュメント ###
 SysRq に関するディストリビューション固有のドキュメントと、Linux を構成して SysRq の "Crash" コマンドを受信した場合にクラッシュ ダンプを作成するための手順については、以下のリンクを参照してください。
@@ -99,7 +99,7 @@ SysRq に関するディストリビューション固有のドキュメント�
 - [クラッシュ ログの収集](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>マスク不可能割り込み (NMI) 
-マスク不可能割り込み (NMI) は、仮想マシン上のソフトウェアで無視されない信号を作成するために設計されています。 従来より、NMI は、特定の応答時間を要したシステム上でのハードウェアの問題を監視するために使用されてきました。  今日、プログラマーおよびシステム管理者は、応答していないシステムのデバッグやトラブルシューティングのためのメカニズムとして、NMI をよく使用しています。
+マスク不可能割り込み (NMI) は、仮想マシン上のソフトウェアで無視されない信号を作成するために設計されています。 従来より、NMI は、特定の応答時間を要したシステム上でのハードウェアの問題を監視するために使用されてきました。  現在、プログラマーやシステム管理者は、応答していないシステムのデバッグやトラブルシューティングのためのメカニズムとして、NMI をよく使用しています。
 
 シリアル コンソールは、以下に示すコマンド バーのキーボード アイコンを使用して、NMI を Azure 仮想マシンに送信するために使用できます。 NMI が配信されると、以降は、仮想マシン構成によってシステムの応答方法が制御されます。  Linux オペレーティング システムは、オペレーティング システムが NMI を受信した場合に、クラッシュしてメモリ ダンプを作成するように構成できます。
 

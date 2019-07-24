@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 8f5c1755462d2bbd28dd7f8db427cda141817588
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a14e03c21de0b5388040943fbe5e9434271b567f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308858"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66258814"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -86,7 +86,9 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 受信側が同じパラメーターでハッシュを再計算して、発行者が有効な署名キーを所有していることを確認できるように、トークンにはハッシュされていない値が含まれています。
 
-リソース URI とは、アクセスが要求される Service Bus リソースの完全な URI です。 たとえば、`http://<namespace>.servicebus.windows.net/<entityPath>` または `sb://<namespace>.servicebus.windows.net/<entityPath>` (つまり `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`) です。 URI は[パーセント エンコード](https://msdn.microsoft.com/library/4fkewx0t.aspx)になっている必要があります。
+リソース URI とは、アクセスが要求される Service Bus リソースの完全な URI です。 たとえば、`http://<namespace>.servicebus.windows.net/<entityPath>` または `sb://<namespace>.servicebus.windows.net/<entityPath>` (つまり `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`) です。 
+
+**URI は[パーセント エンコード](https://msdn.microsoft.com/library/4fkewx0t.aspx)になっている必要があります。**
 
 署名に使用される共有アクセス承認規則は、この URI、またはその階層の親のいずれかで指定したエンティティに構成する必要があります。 たとえば、前の例では、`http://contoso.servicebus.windows.net/contosoTopics/T1` または `http://contoso.servicebus.windows.net` となります。
 
@@ -247,7 +249,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 
 AMQP メッセージには一連のプロパティと、簡単なメッセージより多くの情報が含まれています。 SAS トークンはメッセージの本文です (コンストラクターを使用)。 **"ReplyTo"** プロパティは、受信側リンクで検証結果を受信するノード名に設定されます (必要に応じて名前を変更できます。名前はサービスで自動的に作成されます)。 最後の 3 つの application/custom プロパティは、実行する必要がある操作の種類を示すためにサービスで使用されます。 CBS ドラフト仕様に記載されているように、**操作名** ("put-token")、**トークンの種類** (この例では、`servicebus.windows.net:sastoken`)、およびトークンを適用する**オーディエンスの "名前"** (エンティティ全体) を設定する必要があります。
 
-発行元は、送信側リンクで SAS トークンを送信した後に、受信側リンクの応答を読み取る必要があります。 応答は、**"status-code"** というアプリケーション プロパティを含む簡単な AMQP メッセージです。このプロパティには、HTTP 状態コードと同じ値を含めることができます。
+発行元は、送信側リンクで SAS トークンを送信した後に、受信側リンクの応答を読み取る必要があります。 応答は、 **"status-code"** というアプリケーション プロパティを含む簡単な AMQP メッセージです。このプロパティには、HTTP 状態コードと同じ値を含めることができます。
 
 ## <a name="rights-required-for-service-bus-operations"></a>Service Bus の操作に必要な権限
 

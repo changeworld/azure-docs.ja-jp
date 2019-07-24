@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: 03df2ceb2df4d857e48f1790703a1d87647e43d0
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445273"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60401172"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Tools を使用する
 
@@ -67,15 +67,15 @@ ms.locfileid: "58445273"
 
 ## <a name="direct-methods"></a>ダイレクト メソッド
 
-1. デバイスを右クリックし、**[ダイレクト メソッドの呼び出し]** を選択します。 
+1. デバイスを右クリックし、 **[ダイレクト メソッドの呼び出し]** を選択します。 
 
 2. 入力ボックスにメソッド名とペイロードを入力します。
 
-3. 結果が、**[OUTPUT]\(出力\)** > **[Azure IoT Hub Toolkit]** ビューに表示されます。
+3. 結果が、 **[OUTPUT]\(出力\)**  >  **[Azure IoT Hub Toolkit]** ビューに表示されます。
 
 ## <a name="read-device-twin"></a>デバイス ツインの読み取り
 
-1. デバイスを右クリックし、**[デバイス ツインの編集]** を選択します。 
+1. デバイスを右クリックし、 **[デバイス ツインの編集]** を選択します。 
 
 2. **azure-iot-device-twin.json** ファイルが開き、デバイス ツインの内容が表示されます。
 
@@ -91,11 +91,11 @@ ms.locfileid: "58445273"
 
 IoT Hub からデバイスにメッセージを送信するには、次の手順に従います。
  
-1. デバイスを右クリックして、**[Send C2D Message to Device]\(C2D メッセージをデバイスに送信する\)** を選択します。 
+1. デバイスを右クリックして、 **[Send C2D Message to Device]\(C2D メッセージをデバイスに送信する\)** を選択します。 
 
 2. 入力ボックスにメッセージを入力します。
 
-3. 結果が、**[OUTPUT]\(出力\)** > **[Azure IoT Hub Toolkit]** ビューに表示されます。
+3. 結果が、 **[OUTPUT]\(出力\)**  >  **[Azure IoT Hub Toolkit]** ビューに表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

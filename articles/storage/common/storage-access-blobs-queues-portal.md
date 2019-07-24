@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 00f34fa9a1932aebd467163e0ed7441c993387df
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65154008"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Azure portal を使用した BLOB またはキュー データへのアクセス
@@ -81,7 +81,7 @@ Azure AD アカウントの使用に切り替えるには、図内で強調表�
 
 ![Azure AD アカウントがアクセスをサポートしていないかどうかを示すエラー](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 
-BLOB は Azure AD アカウントにそれらを表示するアクセス許可がない場合には表示されないことに注意してください。 認証に再度アクセス キーを使用するには、**[Switch to access key]\(アクセス キーへの切り替え)\** リンクをクリックします。
+BLOB は Azure AD アカウントにそれらを表示するアクセス許可がない場合には表示されないことに注意してください。 認証に再度アクセス キーを使用するには、 **[Switch to access key]\(アクセス キーへの切り替え\)** リンクをクリックします。
 
 ### <a name="azure-ad-account"></a>Azure AD アカウント
 
@@ -93,7 +93,7 @@ Azure AD アカウントを使用して認証を行う場合は、ポータル�
 
 ![アカウント キーへのアクセスがない場合に表示されるエラー](media/storage-access-blobs-queues-portal/auth-error-access-key.png)
 
-アカウント キーへのアクセスがない場合は、BLOB は一覧表示されないことに注意してください。 認証に再度 Azure AD アカウントを使用するには、**[Switch to Azure AD User Account]\(Azure AD ユーザー アカウントへの切り替え)\** リンクをクリックします。
+アカウント キーへのアクセスがない場合は、BLOB は一覧表示されないことに注意してください。 認証に再度 Azure AD アカウントを使用するには、 **[Switch to Azure AD User Account]\(Azure AD ユーザー アカウントへの切り替え\)** リンクをクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

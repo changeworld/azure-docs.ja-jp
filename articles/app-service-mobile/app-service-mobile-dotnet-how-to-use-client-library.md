@@ -3,7 +3,7 @@ title: App Service Mobile Apps の管理されたクライアント ライブラ
 description: Windows および Xamarin アプリで Azure App Service Mobile Apps 用の .NET クライアント ライブラリを使用する方法について説明します。
 services: app-service\mobile
 documentationcenter: ''
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
@@ -12,24 +12,29 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/24/2018
-ms.author: crdun
-ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: af0a4af2bec29e68175d2e15203a02507f08bfeb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886014"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446353"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-dotnet-how-to-use-client-library) を今すぐチェックしてください。
+>
+
 ## <a name="overview"></a>概要
-このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。 Mobile Apps を初めて使用する場合は、まず、[Azure Mobile Apps のクイックスタート チュートリアル][1]を完了することを検討してください。 このガイドでは、クライアント側の管理された SDK に重点を置いています。 Mobile Apps 用のサーバー側 SDK の詳細については、[.NET Server SDK][2] または [Node.js Server SDK][3] に関するドキュメントを参照してください。
+このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。 Mobile Apps を初めて使用する場合は、まず、 [Azure Mobile Apps のクイックスタート][1] チュートリアルを完了することを検討してください。 このガイドでは、クライアント側の管理された SDK に重点を置いています。 Mobile Apps 用のサーバー側 SDK の詳細については、[.NET Server SDK][2] or the
+[Node.js Server SDK][3] に関するドキュメントを参照してください。
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
 クライアント SDK のリファレンス ドキュメントは、[Azure Mobile Apps .NET クライアントのリファレンス][4]に関するページにあります。
-GitHub リポジトリの「[Azure Samples (Azure サンプル)][5]」にも、いくつかのクライアント サンプルがあります。
+GitHub リポジトリの「 [Azure Samples (Azure サンプル)][5]」にも、いくつかのクライアント サンプルがあります。
 
 ## <a name="supported-platforms"></a>サポートされているプラットフォーム
 .NET プラットフォームでは、次のプラットフォームをサポートしています。
@@ -43,7 +48,7 @@ GitHub リポジトリの「[Azure Samples (Azure サンプル)][5]」にも、�
 "サーバーフロー" の認証では、UI の表示に WebView を使用します。  デバイスで WebView UI を表示できない場合は、他の認証方法が必要になります。  そのため、この SDK は腕時計型デバイスのような制限付きデバイスには適していません。
 
 ## <a name="setup"></a>セットアップと前提条件
-テーブルを少なくとも 1 つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。  このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、`Complete` の各列が含まれています。 このテーブルは、「[Azure Mobile Apps クイックスタート][1]」で作成したものと同じテーブルです。
+テーブルを少なくとも 1 つ含むモバイル アプリ バックエンド プロジェクトを既に作成して発行してあるものとします。  このトピックで使用するコードでは、テーブルの名前は `TodoItem` であり、`Id`、`Text`、`Complete` の各列が含まれています。 このテーブルは、 [Azure Mobile Apps クイックスタート][1]で作成したものと同じテーブルです。
 
 C# での対応する型指定されたクライアント側の型は次のクラスです。
 
@@ -62,13 +67,14 @@ public class TodoItem
 
 [JsonPropertyAttribute][6] を使用して、クライアントのフィールドとテーブルのフィールド間の *PropertyName* のマッピングが定義されます。
 
-Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 [Azure ポータル] で **Easy Tables**設定を使用することもできます。
+Mobile Apps バックエンドでテーブルを作成する方法については、[.NET Server SDK のトピック][7]
+or the [Node.js Server SDK topic][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 [Azure ポータル] で **Easy Tables**設定を使用することもできます。
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>方法:マネージド クライアント SDK パッケージをインストールする
-[NuGet][9] から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
+[NuGet][9]から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
 
-* **Visual Studio** でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、**[インストール]** をクリックします。
-* **Xamarin Studio** でプロジェクトを右クリックし、**[Add]\(追加\)**、>**[Add NuGet Packages]\(NuGet パッケージの追加\)** の順にクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、**[Add Package]\(パッケージの追加\)** をクリックします。
+* **Visual Studio** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、 **[インストール]** をクリックします。
+* **Xamarin Studio** でプロジェクトを右クリックし、 **[Add]\(追加\)** 、> **[Add NuGet Packages]\(NuGet パッケージの追加\)** の順にクリックします。`Microsoft.Azure.Mobile.Client` パッケージを見つけ、 **[Add Package]\(パッケージの追加\)** をクリックします。
 
 メイン アクティビティ ファイルに、次の **using** ステートメントを必ず追加してください。
 
@@ -80,7 +86,8 @@ using Microsoft.WindowsAzure.MobileServices;
 > Android プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じである必要があることに注意してください。 SDK には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
 ### <a name="symbolsource"></a>方法: Visual Studio でデバッグ シンボルを使用する
-Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] で入手できます。  SymbolSource を Visual Studio と統合する場合は、[SymbolSource の説明][11]をご覧ください。
+SymbolSource を Visual Studio と統合するには、Microsoft.Azure.Mobile 名前空間のシンボルを [SymbolSource][10].  Refer to the
+[SymbolSource instructions][11] に使用します。
 
 ## <a name="create-client"></a>Mobile Apps クライアントの作成
 次のコードでは、モバイル アプリ バックエンドへのアクセスに使用する [MobileServiceClient][12] オブジェクトを作成します。
@@ -378,7 +385,7 @@ await table.DeleteAsync(jo);
 
 Mobile Apps はオプティミスティック コンカレンシーをサポートしており、モバイル アプリ バックエンドで各テーブルに定義されている `version` システム プロパティ列を使用して各項目の変更を追跡します。 レコードが更新されるたびに、Mobile Apps はそのレコードの `version` プロパティを新しい値に設定します。 各更新要求の際に、要求に含まれているレコードの `version` プロパティが、サーバー上のレコードの同じプロパティと比較されます。 要求で渡されたバージョンがバックエンドと一致しない場合、クライアント ライブラリは `MobileServicePreconditionFailedException<T>` 例外を生成します。 例外に含まれている型は、レコードのサーバー側のバージョンを含んでいるバックエンドのレコードです。 アプリケーションはこの情報を使用して、バックエンドからの正しい `version` 値で更新要求をもう一度実行して変更をコミットするかどうかを判断できます。
 
-オプティミスティック コンカレンシーを有効にするには、テーブル クラスに `version` システム プロパティ用の列を定義します。 例: 
+オプティミスティック コンカレンシーを有効にするには、テーブル クラスに `version` システム プロパティ用の列を定義します。 例:
 
 ```csharp
 public class TodoItem
@@ -517,13 +524,13 @@ PullOptions pullOptions = new PullOptions
 ## <a name="#offlinesync"></a>オフライン テーブルの操作
 オフライン テーブルは、ローカル SQLite ストア データを使用して、オフラインのときに使用するためのデータを格納します。  テーブル操作はすべて、リモート サーバー ストアではなく、ローカル SQLite ストアに対して実行されます。  オフライン テーブルを作成するには、まずプロジェクトを準備します。
 
-1. Visual Studio で、ソリューション、**[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
+1. Visual Studio で、ソリューション、 **[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
 2. (省略可能) Windows デバイスをサポートする場合、次の SQLite ランタイム パッケージのいずれかをインストールします。
 
    * **Windows 8.1 ランタイム:** [SQLite for Windows 8.1][3] をインストールします。
    * **Windows Phone 8.1:** [SQLite for Windows Phone 8.1][4] をインストールします。
    * **ユニバーサル Windows プラットフォーム**: [ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
-3. (省略可能)。 Windows デバイスで、**[参照]**、 > **[参照の追加]** の順に右クリックします。**Windows** フォルダー、**[拡張機能]** の順に展開してから、**Visual C++ 2013 Runtime for Windows** SDK と共に適切な **SQLite for Windows** SDK を有効にします。
+3. (省略可能)。 Windows デバイスで、 **[参照]** 、 >  **[参照の追加]** の順に右クリックします。**Windows** フォルダー、 **[拡張機能]** の順に展開してから、**Visual C++ 2013 Runtime for Windows** SDK と共に適切な **SQLite for Windows** SDK を有効にします。
     Windows プラットフォームによって SQLite SDK の名前はわずかに異なります。
 
 テーブル参照を作成する前に、ローカル ストアを準備する必要があります。
@@ -616,7 +623,7 @@ var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Ne
 この形式は型指定されたメソッド呼び出しであり、**MarkAllResult** の戻り値の型が定義されている必要があります。 型指定および型指定のないメソッドの両方がサポートされます。
 
 API が "/" で始まっていない限り、InvokeApiAsync() メソッドは API の先頭に "/api/" を追加します。
-例: 
+例:
 
 * `InvokeApiAsync("completeAll",...)` はバックエンドで /api/completeAll を呼び出します
 * `InvokeApiAsync("/.auth/me",...)` はバックエンドで /.auth/me を呼び出します
@@ -657,7 +664,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
    * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は https://login.microsoftonline.com/contoso.onmicrosoft.com である必要があります。 この値は、[Azure ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
-   * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、*https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
+   * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 これは、 *https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。
 
      各プラットフォームに必要なコードは次のとおりです。
 
@@ -909,11 +916,11 @@ Microsoft Store アプリでプッシュ通知を有効にするには、パッ�
 
 この値を取得するには:
 
-1. Visual Studio ソリューション エクスプローラーで、Microsoft Store アプリプロジェクトを右クリックし、  **[ストア]**、 > **[アプリケーションをストアと関連付ける]** の順にクリックします。
-2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインします。次に、**[新しいアプリケーション名の予約]** にアプリの名前を入力し、**[予約]** をクリックします。
-3. アプリの登録が正常に作成されたら、アプリ名を選択し、**[次へ]** をクリックして、**[関連付け]** をクリックします。
+1. Visual Studio ソリューション エクスプローラーで、Microsoft Store アプリプロジェクトを右クリックし、  **[ストア]** 、 >  **[アプリケーションをストアと関連付ける]** の順にクリックします。
+2. ウィザードで **[次へ]** をクリックし、Microsoft アカウントでサインインします。次に、 **[新しいアプリケーション名の予約]** にアプリの名前を入力し、 **[予約]** をクリックします。
+3. アプリの登録が正常に作成されたら、アプリ名を選択し、 **[次へ]** をクリックして、 **[関連付け]** をクリックします。
 4. Microsoft アカウントを使用して [Windows デベロッパー センター] にログインします。 **[マイ アプリ]** で、作成したアプリ登録をクリックします。
-5. **[アプリ管理]**、 > **[アプリ ID]** の順にクリックし、下にスクロールして **[パッケージ SID]** を探します。
+5. **[アプリ管理]** 、 >  **[アプリ ID]** の順にクリックし、下にスクロールして **[パッケージ SID]** を探します。
 
 多くの場合、パッケージ SID は URI として処理されます。その場合、スキームとして *ms-app://* を使用する必要があります。 この値をプレフィックスとして連結して形成されたパッケージ SID のバージョンをメモしておきます。
 

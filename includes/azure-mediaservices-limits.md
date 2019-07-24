@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116334"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181556"
 ---
 >[!NOTE]
 >固定されないリソースの場合は、サポート チケットを開いてクォータの増加を要求してください。 上限を高くするために追加の Azure Media Services アカウントを作成することはしないでください。
@@ -26,9 +26,9 @@ ms.locfileid: "66116334"
 | 一度に 1 つの資産に関連付けられる一意のロケーター数 | 5<sup>4</sup> |
 | Media Services アカウントあたりのライブ チャンネル数 |5|
 | チャネルあたりの停止状態のプログラム数 |50|
-| チャネルあたりの実行状態のプログラム数  |3|
+| チャネルあたりの実行状態のプログラム数 |3|
 | Media Services アカウントあたりの、停止または実行しているストリーミング エンドポイント数|2|
-| ストリーミング エンドポイントあたりのストリーミング ユニット数  |10 |
+| ストリーミング エンドポイントあたりのストリーミング ユニット数 |10 |
 | ストレージ アカウント | 1,000<sup>5</sup> (固定) |
 | ポリシー | 1,000,000<sup>6</sup> |
 | ファイル サイズ| シナリオによっては、Media Services での処理についてサポートされている最大ファイル サイズに制限があります。<sup>7</sup> |

@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure CLI でゾーンのパブリック IP アドレス フロントエンドを使用してパブリック Standard Load Balancer を作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
-ms.author: kumud
-ms.openlocfilehash: 7f5aa65b055669a8a4047dffa72d456fed0714f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 7da41456a4f4bb88d402d27b42b31f6d4adfa7f6
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66111596"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274308"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Azure CLI を使用してゾーン フロントエンドで Standard Load Balancer を作成する
 
@@ -153,7 +153,7 @@ az network nsg rule create \
 --priority 200
 ```
 ### <a name="create-nics"></a>NIC の作成
-[az network nic create](/cli/azure/network/nic#az-network-nic-create)で 3 つの仮想 NIC を作成し、パブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 以下の例では、3 つの仮想 NIC を作成します  (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
+[az network nic create](/cli/azure/network/nic#az-network-nic-create)で 3 つの仮想 NIC を作成し、パブリック IP アドレスとネットワーク セキュリティ グループに関連付けます。 以下の例では、3 つの仮想 NIC を作成します (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

@@ -11,56 +11,77 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 05/29/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 763aadc50a8760b4265dbfc21e9278f909b68433
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: ead1892062912840c9931ae60d11c90975ad26ac
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342019"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66475111"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Azure App Service のアプリケーション コードに SSL 証明書を使用する
 
-このガイドでは、Azure App Service のアプリケーション コードにアップロード、またはインポートされた SSL 証明書を使用する方法について説明します。 ユース ケースの例では、証明書の認証を必要とするアプリが外部サービスにアクセスします。 
+この攻略ガイドでは、アプリケーション コードで公開またはプライベートの証明書を使用する方法について説明します。 ユース ケースの例では、証明書の認証を必要とするアプリが外部サービスにアクセスします。
 
-コードで SSL 証明書を使用するこの方法では App Service の SSL 機能を使用するため、アプリは **Basic** 層以上にある必要があります。 もう 1 つの方法は、アプリケーション ディレクトリに証明書ファイルを含め、直接読み込むことです (「[代替方法: ファイルとして証明書を読み込む](#file)」を参照してください)。 ただし、この代替方法では、アプリケーション コードや開発者から、証明書の秘密キーを隠すことはできません。 さらに、アプリケーション コードがオープン ソース リポジトリ内にある場合は、リポジトリ内に秘密キーで証明書を保管することはできません。
+コードで証明書を使用するこの方法では、App Service の SSL 機能を利用します。そのため、お客様のアプリは **Basic** レベル以上でなければなりません。 または、[アプリ リポジトリに証明書ファイルを含める](#load-certificate-from-file)ことができます。しかし、これはプライベート証明書では推奨されません。
 
 App Service の SSL 証明書の管理機能を使用すれば、証明書とアプリケーション コードを分離して管理し、機密データを保護できます。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="upload-a-private-certificate"></a>プライベート証明書のアップロード
 
-この手順を実行するには、以下が必要です。
+プライベート証明書をアップロードする前に、[すべての要件を満たす](app-service-web-tutorial-custom-ssl.md#prepare-a-private-certificate)ようにしてください。ただし、サーバー認証用に構成する必要はありません。
 
-- [App Service アプリを作成する](/azure/app-service/)
-- [カスタム DNS 名を Web アプリにマップする](app-service-web-tutorial-custom-domain.md)
-- Web アプリに [SSL 証明書をアップロード](app-service-web-tutorial-custom-ssl.md)、または [App Service 証明書をインポート](web-sites-purchase-ssl-web-site.md)する
+アップロードの準備ができたら、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> で次のコマンドを実行します。
 
+```azurecli-interactive
+az webapp config ssl upload --name <app-name> --resource-group <resource-group-name> --certificate-file <path-to-PFX-file> --certificate-password <PFX-password> --query thumbprint
+```
 
-## <a name="load-your-certificates"></a>証明書の読み込み
+証明書の拇印をコピーし、「[証明書をアクセス可能にする](#make-the-certificate-accessible)」を参照してください。
 
-App Service にアップロードまたはインポートされた証明書を使用するには、まず、アプリケーション コードからアクセスできるようにします。 これには、`WEBSITE_LOAD_CERTIFICATES` アプリ設定を使用します。
+## <a name="upload-a-public-certificate"></a>パブリック証明書のアップロード
 
-<a href="https://portal.azure.com" target="_blank">Azure ポータル</a>で Web アプリのページを開きます。
+公開証明書は、 *.cer* 形式でサポートされています。 公開証明書をアップロードするには、<a href="https://portal.azure.com" target="_blank">Azure portal</a> で自分のアプリに移動します。
 
-左側のナビゲーションで、**[SSL 証明書]** をクリックします。
+アプリの左側のナビゲーションで、 **[SSL 設定]**  >  **[公開証明書 (.cer)]**  >  **[公開証明書のアップロード]** の順にクリックします。
 
-![アップロードされた証明書](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
+**[名前]** に、証明書の名前を入力します。 **[CER 証明書ファイル]** で、目的の CER ファイルを選択します。
 
-この Web アプリにアップロードおよびインポートされた すべての SSL 証明書のサムプリントが表示されます。 使用する証明書のサムプリントをコピーします。
+**[アップロード]** をクリックします。
 
-左側のナビゲーションで **[アプリケーション設定]** をクリックします。
+![パブリック証明書をアップロードする](./media/app-service-web-ssl-cert-load/private-cert-upload.png)
 
-`WEBSITE_LOAD_CERTIFICATES` という名前を付けてアプリケーション設定を追加し、その値に証明書のサムプリントを設定します。 複数の証明書にアクセスできるようにするには、サムプリントの値をコンマで区切ります。 すべての証明書にアクセスできるようにするには、値を `*` に設定します。 これにより、証明書を`CurrentUser\My`ストア内に配置していることにご留意ください。
+証明書がアップロードされたら、証明書の拇印をコピーし、「[証明書をアクセス可能にする](#make-the-certificate-accessible)」を参照してください。
+
+## <a name="import-an-app-service-certificate"></a>App Service 証明書をインポートする
+
+「[Azure App Service の SSL 証明書を購入して構成する](web-sites-purchase-ssl-web-site.md)」を参照してください。
+
+証明書がインポートされたら、証明書の拇印をコピーし、「[証明書をアクセス可能にする](#make-the-certificate-accessible)」を参照してください。
+
+## <a name="make-the-certificate-accessible"></a>証明書をアクセス可能にする
+
+アップロードまたはインポートした証明書をアプリ コードで使用するには、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> で次のコマンドを実行し、`WEBSITE_LOAD_CERTIFICATES` アプリ設定を使用して目的の拇印をアクセス可能にします。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
+```
+
+自分の証明書をすべてアクセス可能にするには、値を `*` に設定します。
+
+> [!NOTE]
+> この設定により、ほとんどの価格レベルでは指定された証明書が [Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) ストアに配置されます。ただし、**Isolated** レベルの場合 (つまり、アプリが [App Service Environment](environment/intro.md) で実行される場合) は、証明書が [Local Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) ストアに配置されます。
+>
 
 ![アプリケーション設定の構成](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 
-完了したら、**[保存]** をクリックします。
+完了したら、 **[保存]** をクリックします。
 
-これで、構成された証明書は、コードで使用することができます。
+これで、構成された証明書をコードで使用する準備が整いました。
 
-## <a name="use-certificate-in-c-code"></a>C# コードで証明書を使用する
+## <a name="load-the-certificate-in-code"></a>証明書をコードに読み込む
 
 証明書にアクセスできるようになったら、証明書のサムプリントを使用して C# コードからアクセスします。 次のコードでは、サムプリントが `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` の証明書を読み込みます。
 
@@ -88,11 +109,17 @@ certStore.Close();
 ```
 
 <a name="file"></a>
-## <a name="alternative-load-certificate-as-a-file"></a>代替方法: ファイルとして証明書を読み込む
+## <a name="load-certificate-from-file"></a>ファイルから証明書を読み込む
 
-このセクションでは、アプリケーション ディレクトリ内にある証明書ファイルを読み込む方法について説明しました。 
+自分のアプリケーション ディレクトリから証明書ファイルを読み込む必要がある場合、[Git](deploy-local-git.md) などは使用せず、[FTPS](deploy-ftp.md) を使用してアップロードすることをお勧めします。 プライベート証明書などの機密データは、ソース管理から分離しておく必要があります。
 
-次の C# の例では、アプリのリポジトリの `certs` ディレクトリから証明書 `mycert.pfx` を読み込みます。
+.NET コードに直接ファイルを読み込む場合でも、ライブラリでは現在のユーザー プロファイルが読み込まれるかどうかを確認します。 現在のユーザー プロファイルを読み込むには、<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> で次のコマンドを使用して、`WEBSITE_LOAD_USER_PROFILE` アプリ設定を構成します。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+```
+
+この設定が構成されると、次の C# の例では、アプリのリポジトリの `certs` ディレクトリから `mycert.pfx` という証明書が読み込まれます。
 
 ```csharp
 using System;
@@ -105,4 +132,3 @@ string certPath = Server.MapPath("~/certs/mycert.pfx");
 X509Certificate2 cert = GetCertificate(certPath, signatureBlob.Thumbprint);
 ...
 ```
-

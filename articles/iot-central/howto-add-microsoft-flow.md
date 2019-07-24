@@ -8,12 +8,12 @@ ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: c0a03b70c6e5e4742e03d4892b2b5f97c908ab9c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: e8bc8b8d4e3585ea4c0505f2e36abc6d1da7f8eb
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467979"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797721"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Microsoft Flow 内で IoT Central コネクタを使用してワークフローを作成する
 
@@ -31,7 +31,8 @@ IoT Central をモバイル通知や Microsoft Teams などの他のサービス
 ## <a name="prerequisites"></a>前提条件
 
 - 従量課金制アプリケーション
-- Flow にサインインするための、Microsoft の個人アカウント、または職場または学校アカウント ([Microsoft Flow のプランの詳細](https://aka.ms/microsoftflowplans))
+- Microsoft Flow を使用するための、Microsoft の個人アカウント、または職場または学校アカウント ([Microsoft Flow のプランの詳細を参照してください](https://aka.ms/microsoftflowplans))
+- Azure IoT Central コネクタを使用するための職場または学校アカウント
 
 ## <a name="trigger-a-workflow"></a>ワークフローのトリガー
 
@@ -45,7 +46,12 @@ IoT Central をモバイル通知や Microsoft Teams などの他のサービス
 
     ![使用可能な Microsoft Flow テンプレート](media/howto-add-microsoft-flow/flowtemplates1.png)
 
-1. 選択したテンプレートのコネクタにサインインするように求められます。 コネクタにサインインすると、ワークフローを構築するデザイナーが表示されます。 ワークフローには、[アプリケーション] と [規則] が既に入力されている IoT Central トリガーが含まれています。
+1. 選択したテンプレートのコネクタにサインインするように求められます。 
+
+    > [!NOTE]
+    > Azure IoT Central コネクタを使用するには、Azure Active Directory アカウント (職場または学校アカウント) を使用してサインインする必要があります。 abc@outlook.com や abc@live.com などの個人アカウントは、Azure IoT Central コネクタではサポートされていません。
+
+    コネクタにサインインすると、ワークフローを構築するためのデザイナーが表示されます。 ワークフローには、[アプリケーション] と [規則] が既に入力されている IoT Central トリガーが含まれています。
 
 1. アクションに渡される情報をカスタマイズしたり、新しいアクションを追加したりすることで、ワークフローをカスタマイズできます。 この例では、アクションは **[通知] - [Send me a mobile notification]\(モバイル通知を受け取る\)** です。 IoT Central 規則からの"*動的なコンテンツ*"を含め、デバイス名やタイムスタンプなどの重要な情報を通知に渡すことができます。
 
@@ -54,7 +60,7 @@ IoT Central をモバイル通知や Microsoft Teams などの他のサービス
 
     ![動的なウィンドウを開いて Flow でアクションを編集します](./media/howto-add-microsoft-flow/flowdynamicpane1.png)
 
-1. アクションの編集が完了したら、**[保存]** を選択します。 ワークフローの概要ページが表示されます。 ここで、実行履歴を表示して、他の同僚と共有できます。
+1. アクションの編集が完了したら、 **[保存]** を選択します。 ワークフローの概要ページが表示されます。 ここで、実行履歴を表示して、他の同僚と共有できます。
 
     > [!NOTE]
     > IoT Central アプリでこの規則を他のユーザーに編集してもらいたい場合は、Microsoft Flow 内でこの規則を他のユーザーと共有します。 ワークフロー内で他のユーザーの Microsoft Flow アカウントを所有者として追加します。
@@ -71,13 +77,13 @@ Microsoft Flow から直接 IoT Central コネクタを使用してワークフ�
 
 1. トリガーとして **[Flow button for mobile]\(モバイル用の Flow ボタン\)** を検索します。
 
-1. このトリガー内で、**[デバイス名]** という名前のテキスト入力を追加します。 説明のテキストを **[Enter the device name of your new device]\(新規デバイスのデバイス名を入力してください\)** に変更します。
+1. このトリガー内で、 **[デバイス名]** という名前のテキスト入力を追加します。 説明のテキストを **[Enter the device name of your new device]\(新規デバイスのデバイス名を入力してください\)** に変更します。
 
 1. 新しいアクションを追加します。 **[Azure IoT Central - Create a device]\(Azure IoT Central - デバイスの作成\)** アクションを検索します。
 
 1. アプリケーションを選択し、デバイス作成元のデバイス テンプレートをドロップダウンから選択します。 [expand to show all the properties and settings of the device]\(デバイスのすべてのプロパティと設定を展開表示する\) というアクションが表示されます。
 
-1. [デバイス名] フィールドを選択します。 [動的なコンテンツ] ウィンドウで、**[デバイス名]** を選択します。 この値は、ユーザーがモバイル アプリで入力した入力値から渡され、IoT Central 内の新しいデバイスの名前になります。 この例では、必須フィールドは [デバイス名] のみで、赤のアスタリスクで示されています。 別のデバイス テンプレートでは、複数の必須フィールドを持つものもあり、これらのフィールドをすべて入力しないと、新しいデバイスを作成できません。
+1. [デバイス名] フィールドを選択します。 [動的なコンテンツ] ウィンドウで、 **[デバイス名]** を選択します。 この値は、ユーザーがモバイル アプリで入力した入力値から渡され、IoT Central 内の新しいデバイスの名前になります。 この例では、必須フィールドは [デバイス名] のみで、赤のアスタリスクで示されています。 別のデバイス テンプレートでは、複数の必須フィールドを持つものもあり、これらのフィールドをすべて入力しないと、新しいデバイスを作成できません。
 
     ![Flow の [create device action]\(デバイス アクションの作成\) 動的ウィンドウ](./media/howto-add-microsoft-flow/flowcreatedevice1.png)
 

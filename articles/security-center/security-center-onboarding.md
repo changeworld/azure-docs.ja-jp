@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 19/02/2019
+ms.date: 02/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: fe8ceb8c196f7329027502847fba481169458d86
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: e5d93d2f1f1c082610cb14a5ea621e0919a41866
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65966795"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67588998"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>セキュリティ強化のための Azure Security Center Standard へのオンボード
 ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。  Standard は無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
@@ -58,7 +58,7 @@ Azure サブスクリプション全体を Standard レベルにアップグレ�
    >
 
 ## <a name="onboard-non-azure-computers"></a>Azure 以外のコンピューターのオンボード
-Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、これらのリソースをオンボードしておく必要があります。 Azure 以外のコンピューターは、**[使用の開始]** ブレードまたは **[コンピューティング]** ブレードから追加できます。 ここでは両方の方法を紹介します。
+Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、これらのリソースをオンボードしておく必要があります。 Azure 以外のコンピューターは、 **[使用の開始]** ブレードまたは **[コンピューティング]** ブレードから追加できます。 ここでは両方の方法を紹介します。
 
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>**[使用の開始]** から新しい Azure 以外のコンピューターを追加する
 
@@ -71,17 +71,17 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 
    ![Azure 以外のコンピューターの追加][7]
 
-既存のワークスペースがある場合は、**[Add new Non-Azure computers]\(新しい Azure 以外のコンピューターの追加\)** に一覧表示されます。 コンピューターを既存のワークスペースに追加することも、新しいワークスペースを作成することもできます。 新しいワークスペースを作成するには、**[add a new workspace]\(新しいワークスペースを追加\)** リンクをクリックします。
+既存のワークスペースがある場合は、 **[Add new Non-Azure computers]\(新しい Azure 以外のコンピューターの追加\)** に一覧表示されます。 コンピューターを既存のワークスペースに追加することも、新しいワークスペースを作成することもできます。 新しいワークスペースを作成するには、 **[add a new workspace]\(新しいワークスペースを追加\)** リンクをクリックします。
 
 ### <a name="add-new-non-azure-computers-from-compute"></a>**[コンピューティング]** から新しい Azure 以外のコンピューターを追加する
 
 **新しいワークスペースを作成してコンピューターを追加する**
 
-1. **[Add new non-Azure computers]\(新しい Azure 以外のコンピューターの追加\)** で、**[add a new workspace]\(新しいワークスペースを追加\)** をクリックします。
+1. **[Add new non-Azure computers]\(新しい Azure 以外のコンピューターの追加\)** で、 **[add a new workspace]\(新しいワークスペースを追加\)** をクリックします。
 
    ![新しいワークスペースの追加][4]
 
-2. **[セキュリティおよび監査]** で、**[OMS ワークスペース]** を選択して新しいワークスペースを作成します。
+2. **[セキュリティおよび監査]** で、 **[OMS ワークスペース]** を選択して新しいワークスペースを作成します。
    > [!NOTE]
    > OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
 3. **[OMS ワークスペース]** で、ワークスペースの情報を入力します。
@@ -90,18 +90,18 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 
 **既存のワークスペースを選択してコンピューターを追加する**
 
-前述の **[オンボード]** からのワークフローに従ってコンピューターを追加できます。 また、**[コンピューティング]** からのワークフローに従ってコンピューターを追加することもできます。 この例では、**[コンピューティング]** を使用します。
+前述の **[オンボード]** からのワークフローに従ってコンピューターを追加できます。 また、 **[コンピューティング]** からのワークフローに従ってコンピューターを追加することもできます。 この例では、 **[コンピューティング]** を使用します。
 
-1. Security Center のメイン メニューに戻り、**[概要]** ダッシュボードに移動します。
+1. Security Center のメイン メニューに戻り、 **[概要]** ダッシュボードに移動します。
 
    ![概要][5]
 
 2. **[Compute & apps (コンピューティングとアプリ)]** を選択します。
-3. **[Compute & apps (コンピューティングとアプリ)]** で、**[コンピューターの追加]** を選択します。
+3. **[Compute & apps (コンピューティングとアプリ)]** で、 **[コンピューターの追加]** を選択します。
 
    ![[コンピューティング] ブレード][6]
 
-4. **[Add new non-Azure computers]\(新しい Azure 以外のコンピューターの追加\)** で、コンピューターの接続先となるワークスペースを選択し、**[コンピューターの追加]** をクリックします。
+4. **[Add new non-Azure computers]\(新しい Azure 以外のコンピューターの追加\)** で、コンピューターの接続先となるワークスペースを選択し、 **[コンピューターの追加]** をクリックします。
 
    ![コンピューターの追加][7]
 

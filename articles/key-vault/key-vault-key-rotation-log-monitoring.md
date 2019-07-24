@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
 ms.openlocfilehash: 20a170963ff4a8ff9cb69d3397e66e12c1047d16
-ms.sourcegitcommit: 179918af242d52664d3274370c6fdaec6c783eb6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65561183"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>キー ローテーションと監査で Azure Key Vault を設定する
@@ -99,9 +99,9 @@ Get-AzKeyVaultSecret –VaultName <vaultName>
 
     ![アプリケーションの登録を作成する](./media/keyvault-keyrotation/create-app.png)
 
-5. アプリケーションが Azure Active Directory に追加されると、アプリケーション ページが開きます。 **[設定]** を選択し、**[プロパティ]** を選択します。 **[アプリケーション ID]** の値をコピーします。 これは後の手順で必要になります。
+5. アプリケーションが Azure Active Directory に追加されると、アプリケーション ページが開きます。 **[設定]** を選択し、 **[プロパティ]** を選択します。 **[アプリケーション ID]** の値をコピーします。 これは後の手順で必要になります。
 
-次に、アプリケーション用のキーを生成して、Azure Active Directory と対話できるようにします。 キーを作成するには、**[設定]** で **[キー]** を選択します。 Azure Active Directory アプリケーション用に新しく生成されたキーをメモします。 後の手順で必要になります。 このキーは、このセクションを離れた後で入手することはできません。 
+次に、アプリケーション用のキーを生成して、Azure Active Directory と対話できるようにします。 キーを作成するには、 **[設定]** で **[キー]** を選択します。 Azure Active Directory アプリケーション用に新しく生成されたキーをメモします。 後の手順で必要になります。 このキーは、このセクションを離れた後で入手することはできません。 
 
 ![Azure Active Directory アプリ キー](./media/keyvault-keyrotation/create-key.png)
 
@@ -173,11 +173,11 @@ Key Vault のシークレットとして保存した値のローテーション�
 
 この記事では、Azure PowerShell と Azure Automation を組み合わせて使用して、Azure ストレージ アカウントのアクセス キーを変更します。 その後、その新しいキーでキー コンテナーのシークレットを更新します。
 
-Azure Automation でキー コンテナー内にシークレット値を設定できるようにするには、**AzureRunAsConnection** という名前の接続用のクライアント ID を取得する必要があります。 この接続は、Azure Automation インスタンスを確立したときに作成されています。 この ID を取得するには、Azure Automation インスタンスから **[資産]** を選択します。 そこから、**[接続]**、**[AzureRunAsConnection]** サービス プリンシパルの順に選択します。 **[ApplicationId]** の値をメモします。
+Azure Automation でキー コンテナー内にシークレット値を設定できるようにするには、**AzureRunAsConnection** という名前の接続用のクライアント ID を取得する必要があります。 この接続は、Azure Automation インスタンスを確立したときに作成されています。 この ID を取得するには、Azure Automation インスタンスから **[資産]** を選択します。 そこから、 **[接続]** 、 **[AzureRunAsConnection]** サービス プリンシパルの順に選択します。 **[ApplicationId]** の値をメモします。
 
 ![Azure Automation クライアント ID](./media/keyvault-keyrotation/Azure_Automation_ClientID.png)
 
-**[資産]** で、**[モジュール]** を選択します。 **[ギャラリー]** を選択し、次の各モジュールの更新バージョンを検索してインポートします。
+**[資産]** で、 **[モジュール]** を選択します。 **[ギャラリー]** を選択し、次の各モジュールの更新バージョンを検索してインポートします。
 
     Azure
     Azure.Storage
@@ -195,7 +195,7 @@ Azure Automation 接続用のアプリケーション ID を取得したら、�
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-次に、Azure Automation インスタンスで **[Runbook]** を選択し、**[Runbook の追加]** を選択します。 **[簡易作成]** を選択します。 Runbook に名前を付け、Runbook の種類として **[PowerShell]** を選択します。 説明を追加できます。 最後に、**[作成]** を選択します。
+次に、Azure Automation インスタンスで **[Runbook]** を選択し、 **[Runbook の追加]** を選択します。 **[簡易作成]** を選択します。 Runbook に名前を付け、Runbook の種類として **[PowerShell]** を選択します。 説明を追加できます。 最後に、 **[作成]** を選択します。
 
 ![Runbook を作成する](./media/keyvault-keyrotation/Create_Runbook.png)
 
@@ -242,13 +242,13 @@ $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
-エディター ウィンドウで **[テスト ウィンドウ]** を選択して、スクリプトをテストします。 エラーなしでスクリプトが実行されたら、**[発行]** を選択できます。その後、Runbook 構成ウィンドウで Runbook 用のスケジュールを適用できます。
+エディター ウィンドウで **[テスト ウィンドウ]** を選択して、スクリプトをテストします。 エラーなしでスクリプトが実行されたら、 **[発行]** を選択できます。その後、Runbook 構成ウィンドウで Runbook 用のスケジュールを適用できます。
 
 ## <a name="key-vault-auditing-pipeline"></a>Key Vault 監査のパイプライン
 
 Key Vault を設定するときに、監査をオンにして、Key Vault へのアクセス要求のログを収集できます。 これらのログは、指定された Azure ストレージ アカウントに保存され、抽出、監視、および分析の対象にすることができます。 次のシナリオでは、Azure Functions、Azure Logic Apps、および Key Vault の監査ログを利用してパイプラインを作成し、Web アプリのアプリ ID と一致しないアプリがコンテナーからシークレットを取得するときに電子メールを送信します。
 
-最初に、Key Vault へのログオンを有効にする必要があります。 次の PowerShell コマンドを使用します  (詳細については、[Key Vault のログ記録に関するこちらの記事](key-vault-logging.md)をご覧ください)。
+最初に、Key Vault へのログオンを有効にする必要があります。 次の PowerShell コマンドを使用します (詳細については、[Key Vault のログ記録に関するこちらの記事](key-vault-logging.md)をご覧ください)。
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
@@ -265,12 +265,12 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 1. Service Bus 名前空間を作成します (使用できるものが既にある場合は、手順 2 に進みます)。
 2. Azure portal で Service Bus インスタンスに移動し、その中にキューを作成する名前空間を選択します。
-3. **[リソースの作成]** > **[エンタープライズ統合]** > **[Service Bus]** を選択し、必要な詳細を入力します。
-4. 名前空間を選択し、**[接続情報]** を選択して、Service Bus 接続情報を見つけます。 この情報は、次のセクションで必要です。
+3. **[リソースの作成]**  >  **[エンタープライズ統合]**  >  **[Service Bus]** を選択し、必要な詳細を入力します。
+4. 名前空間を選択し、 **[接続情報]** を選択して、Service Bus 接続情報を見つけます。 この情報は、次のセクションで必要です。
 
 次に、[Azure 関数を作成](../azure-functions/functions-create-first-azure-function.md)して、ストレージ アカウント内のキー コンテナー ログをポーリングし、新しいイベントを取得します。 この関数は、スケジュールに従ってトリガーされます。
 
-Azure 関数アプリを作成するには、**[リソースの作成]** を選択し、**関数アプリ**用のマーケットプレースで Function App を検索し、**[作成]** をクリックします。 作成中、既存のホスティング プランを使用するか、新しいプランを作成できます。 動的ホスティングを選択することもできます。 Azure Functions のホスティング オプションの詳細については、「[Azure Functions のスケーリング方法](../azure-functions/functions-scale.md)」をご覧ください。
+Azure 関数アプリを作成するには、 **[リソースの作成]** を選択し、**関数アプリ**用のマーケットプレースで Function App を検索し、 **[作成]** をクリックします。 作成中、既存のホスティング プランを使用するか、新しいプランを作成できます。 動的ホスティングを選択することもできます。 Azure Functions のホスティング オプションの詳細については、「[Azure Functions のスケーリング方法](../azure-functions/functions-scale.md)」をご覧ください。
 
 Azure 関数アプリが作成されたら、それに移動し、シナリオとして **[タイマー]** を、言語として **[C\#]** を選択します。 次に **[この関数を作成する]** を選択します。
 
@@ -396,7 +396,7 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 この sync.txt ファイルには、最後に発生したイベントのタイム スタンプが含まれます。 ログが読み込まれたら、各自のタイム スタンプに基づいて並べ替えを行って、適切な順序になっていることを確認します。
 
-この関数では、Azure Functions ですぐには利用できない 2 つの追加のライブラリを参照します。 これらのライブラリを追加するには、Azure Functions で NuGet を使用してそれらをプルする必要があります。 **[コード]** ボックスで、**[ファイルの表示]** を選択します。
+この関数では、Azure Functions ですぐには利用できない 2 つの追加のライブラリを参照します。 これらのライブラリを追加するには、Azure Functions で NuGet を使用してそれらをプルする必要があります。 **[コード]** ボックスで、 **[ファイルの表示]** を選択します。
 
 ![[ファイルの表示] オプション](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
@@ -429,9 +429,9 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 次に、Azure ロジック アプリを作成する必要があります。このアプリは、関数によって Service Bus キューにプッシュされるイベントを取得し、その内容を解析し、一致する条件に基づいて電子メールを送信します。
 
-**[リソースの作成]** > **[統合]** > **[ロジック アプリ]** を選択して、[ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
+**[リソースの作成]**  >  **[統合]**  >  **[ロジック アプリ]** を選択して、[ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
-ロジック アプリが作成されたら、それに移動し、**[編集]** を選択します。 ロジック アプリ エディターで、**[Service Bus キュー]** を選択し、Service Bus 資格情報を入力して、それをキューに接続します。
+ロジック アプリが作成されたら、それに移動し、 **[編集]** を選択します。 ロジック アプリ エディターで、 **[Service Bus キュー]** を選択し、Service Bus 資格情報を入力して、それをキューに接続します。
 
 ![Azure Logic App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
@@ -443,10 +443,10 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 この式は、基本的に、受信イベント (Service Bus メッセージの本文) の *appid* がアプリの *appid* でない場合に、**false** を返します。
 
-次に、**[IF NO, DO NOTHING] \(いいえの場合は何もしない\)** でアクションを作成します。
+次に、 **[IF NO, DO NOTHING] \(いいえの場合は何もしない\)** でアクションを作成します。
 
 ![Azure Logic Apps - アクションの選択](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-アクションで、**[Office 365 - send email]\(Office 365 - メール送信\)** を選択します。 フィールドに入力して、定義された条件が **false** を返したときに送信する電子メールを作成します。 Office 365 がない場合は、同じ結果を実現するための他の方法を探してください。
+アクションで、 **[Office 365 - send email]\(Office 365 - メール送信\)** を選択します。 フィールドに入力して、定義された条件が **false** を返したときに送信する電子メールを作成します。 Office 365 がない場合は、同じ結果を実現するための他の方法を探してください。
 
 これで、1 分に 1 回、新しいキー コンテナーの監査ログを確認するエンド ツー エンドのパイプラインができました。 それは、検出した新しいログを Service Bus キューにプッシュします。 新しいメッセージがキューに届くと、ロジック アプリがトリガーされます。 イベント内の *appid* が呼び出し元アプリケーションのアプリケーション ID と一致しない場合は、電子メールが送信されます。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
 ms.openlocfilehash: ee78227f645cbeded7a5c689750db835faf1055f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728314"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60420190"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>.NET で Azure Relay WCF リレーを使用する方法
 この記事では、Azure Relay サービスの使用方法について説明します。 サンプルは、C# で記述され、Windows Communication Foundation (WCF) API と Service Bus アセンブリに含まれている拡張機能を使用しています。 Azure Relay の詳細については、[Azure Relay の概要](relay-what-is-it.md)に関するページをご覧ください。
@@ -41,7 +41,7 @@ Azure Relay を使って、既存のエンタープライズ環境内の WCF サ
 ## <a name="get-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの取得
 [Service Bus NuGet パッケージ](https://www.nuget.org/packages/WindowsAzure.ServiceBus) は、Service Bus API を取得し、Service Bus 依存関係をすべて備えたアプリケーションを構成する最も簡単な方法です。 プロジェクトに NuGet パッケージをインストールするには、次のステップを行います。
 
-1. [ソリューション エクスプローラー] で、**[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1. [ソリューション エクスプローラー] で、 **[参照]** を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 2. "Service Bus" を検索して、 **[Microsoft Azure Service Bus]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、次のダイアログ ボックスを閉じます。
    
    ![](./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-13.png)

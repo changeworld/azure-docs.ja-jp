@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
-ms.author: sujayt
-ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sutalasi
+ms.openlocfilehash: 844563e03529e472624b35d2b545c3e432e4ea17
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60789802"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876293"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのネットワークについて
 
@@ -77,7 +77,7 @@ Site Recovery IP アドレスの範囲は次のとおりです。
    米国中北部 | 23.96.195.247 | 168.62.249.226
    北ヨーロッパ | 40.69.212.238 | 52.169.18.8
    西ヨーロッパ | 52.166.13.64 | 40.68.93.145
-   米国東部 | 13.82.88.226 | 104.45.147.24
+   East US | 13.82.88.226 | 104.45.147.24
    米国西部 | 40.83.179.48 | 104.40.26.199
    米国中南部 | 13.84.148.14 | 104.210.146.250
    米国中部 | 40.69.144.231 | 52.165.34.144
@@ -128,7 +128,7 @@ Site Recovery IP アドレスの範囲は次のとおりです。
 
 3. ターゲットの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
 
-   **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
+   **Location** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
     --- | --- | ---
    米国中部 | 40.69.144.231 | 52.165.34.144
 
@@ -142,7 +142,7 @@ Site Recovery IP アドレスの範囲は次のとおりです。
 
 3. ソースの場所に対応する Site Recovery IP に対して、送信方向の HTTPS (443) ルールを作成します。
 
-   **場所** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
+   **Location** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
     --- | --- | ---
    米国中部 | 13.82.88.226 | 104.45.147.24
 
@@ -165,7 +165,7 @@ Site Recovery IP アドレスの範囲は次のとおりです。
 
 ### <a name="forced-tunneling"></a>強制トンネリング
 
-0.0.0.0/0 アドレス プレフィックスの Azure の既定のシステム ルートを [カスタム ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes)でオーバーライドし、VM トラフィックをオンプレミス ネットワーク仮想アプライアンス (NVA) に転送することもできますが、この構成は Site Recovery レプリケーションにはお勧めしません。 カスタム ルートを使用している場合、レプリケーション トラフィックが Azure 境界から外に出ないように、"ストレージ" 用の仮想ネットワーク内に[仮想ネットワーク サービス エンドポイントを作成する](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)ことをお勧めします。
+0\.0.0.0/0 アドレス プレフィックスの Azure の既定のシステム ルートを [カスタム ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes)でオーバーライドし、VM トラフィックをオンプレミス ネットワーク仮想アプライアンス (NVA) に転送することもできますが、この構成は Site Recovery レプリケーションにはお勧めしません。 カスタム ルートを使用している場合、レプリケーション トラフィックが Azure 境界から外に出ないように、"ストレージ" 用の仮想ネットワーク内に[仮想ネットワーク サービス エンドポイントを作成する](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage)ことをお勧めします。
 
 ## <a name="next-steps"></a>次の手順
 - [Azure 仮想マシンをレプリケート](site-recovery-azure-to-azure.md)することで、ワークロードの保護を開始します。

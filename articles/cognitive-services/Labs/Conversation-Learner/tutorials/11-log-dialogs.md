@@ -3,19 +3,19 @@ title: Conversation Learner モデルで会話を記録する方法 - Microsoft 
 titleSuffix: Azure
 description: Conversation Learner モデルで会話を記録する方法について説明します。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: e3a84bfa643ebe74983bcef0d0ea72c701ffa589
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ms.openlocfilehash: f1e161fa05a77682d0b5eb1c6c21975ac87028a3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170498"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66387662"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Conversation Learner モデルで会話を記録する方法
 

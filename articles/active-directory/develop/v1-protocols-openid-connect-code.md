@@ -3,8 +3,8 @@ title: Azure AD での OpenID Connect 認証コード フローについて | Mi
 description: この記事では、Azure Active Directory と OpenID Connect を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法について説明します。
 services: active-directory
 documentationcenter: .net
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/4/2019
-ms.author: celested
+ms.date: 05/22/2019
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06639f943542e322e79e137e31be7b8954566a0f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 9df592272b97bded9eba64249aa7608c72f8abdf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261991"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66121537"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect と Azure Active Directory を使用する Web アプリケーションへのアクセスの承認
 
@@ -93,7 +93,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | パラメーター |  | 説明 |
 | --- | --- | --- |
 | tenant |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
-| client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]**、**[アプリの登録]** の順にクリックし、アプリケーションを選択して、アプリケーション ページでアプリケーション ID を特定します。 |
+| client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]** 、 **[アプリの登録]** の順にクリックし、アプリケーションを選択して、アプリケーション ページでアプリケーション ID を特定します。 |
 | response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。 `code` や `token` などの他の response_types が含まれていてもかまいません。 |
 | scope | 推奨 | OpenID Connect の仕様では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。 これとその他の OIDC スコープは v1.0 エンドポイントでは無視されますが、標準に準拠したクライアントにとっては依然としてベスト プラクティスです。 |
 | nonce |必須 |アプリによって生成された、要求に含まれる値。この値が、最終的な `id_token` に要求として含まれます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常、この値はランダム化された一意の文字列または GUID になっており、要求の送信元を特定する際に使用できます。 |
@@ -107,7 +107,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ### <a name="sample-response"></a>応答のサンプル
 
-ユーザー認証後の応答は以下のサンプルのようになります。
+ユーザーが認証された後でサインイン要求内に指定された `redirect_uri` に送信される応答の例は、次のようになります。
 
 ```
 POST / HTTP/1.1
@@ -189,8 +189,8 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
 2. ページの右上隅のアカウントをクリックして、Active Directory を選択します。
-3. 左側のナビゲーション パネルで **[Azure Active Directory]**、**[アプリの登録]** の順に選択し、アプリケーションを選択します。
-4. **[設定]**、**[プロパティ]** の順にクリックして、**[ログアウト URL]** テキスト ボックスを探します。 
+3. 左側のナビゲーション パネルで **[Azure Active Directory]** 、 **[アプリの登録]** の順に選択し、アプリケーションを選択します。
+4. **[設定]** 、 **[プロパティ]** の順にクリックして、 **[ログアウト URL]** テキスト ボックスを探します。 
 
 ## <a name="token-acquisition"></a>トークンの取得
 多くの Web アプリは、ユーザーをサインインさせるだけでなく、OAuth を使用してそのユーザーの代わりに Web サービスにアクセスする必要もあります。 このシナリオでは、OpenID Connect を使ってユーザー認証を行うと同時に、[OAuth 承認コード フロー](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)を使って、`access_tokens` を取得するための `authorization_code` を取得します。
@@ -216,7 +216,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 
 ### <a name="successful-response"></a>成功応答
 
-`response_mode=form_post` を使用した場合の正常な応答は次のようになります。
+`response_mode=form_post` を使用して `redirect_uri` に送信された成功応答は、次のようになります。
 
 ```
 POST /myapp/ HTTP/1.1

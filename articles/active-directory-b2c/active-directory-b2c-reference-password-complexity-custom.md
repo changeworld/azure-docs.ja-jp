@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの複雑さを構成する | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの複雑さの要件を構成する方法。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7fb90720b8ee3834a0451cc70b026099dadaf369
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 04a37e6faf51787457d7ca4ab8434fd253deb2ed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682471"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66509151"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの複雑さを構成する
 
@@ -113,18 +113,18 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[Identity Experience Framework]** を選択します。
-5. [カスタム ポリシー] ページで、**[ポリシーのアップロード]** をクリックします。
+5. [カスタム ポリシー] ページで、 **[ポリシーのアップロード]** をクリックします。
 6. **[ポリシーが存在する場合は上書きする]** を選択し、*SingUpOrSignInPasswordComplexity.xml* ファイルを検索して選択します。
 7. **[アップロード]** をクリックします。
 
 ### <a name="run-the-policy"></a>ポリシーを実行する
 
 1. 変更したポリシーを開きます。 たとえば、*B2C_1A_signup_signin_password_complexity* にします。
-2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 トークンを表示するには、**[応答 URL]** に `https://jwt.ms` が表示される必要があります。
+2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 トークンを表示するには、 **[応答 URL]** に `https://jwt.ms` が表示される必要があります。
 3. **[今すぐ実行]** をクリックします。
-4. **[今すぐサインアップ]** を選択し、メール アドレスを入力して、新しいパスワードを入力します。 パスワード制限に関するガイダンスが表示されます。 ユーザー情報の入力を終了して、**[作成]** をクリックします。 返されたトークンの内容が表示されます。
+4. **[今すぐサインアップ]** を選択し、メール アドレスを入力して、新しいパスワードを入力します。 パスワード制限に関するガイダンスが表示されます。 ユーザー情報の入力を終了して、 **[作成]** をクリックします。 返されたトークンの内容が表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,17 +4,17 @@ description: Microsoft やコミュニティからの Runbook とモジュール
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 20aafc117ad8b6bd625894180fdfe79bd86192bd
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: fcf48cfdb43473f99b139f0a0a07a5ace9a91642
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519002"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476962"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 
@@ -81,7 +81,7 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
    ![PowerShell モジュールの詳細](media/automation-runbook-gallery/gallery-item-details-blade.png)
 
 6. モジュールを Azure Automation に直接インストールするには、 **[インポート]** ボタンをクリックします。
-7. [インポート] ボタンをクリックすると、**[インポート]** ウィンドウに、インポートしようとしているモジュール名が表示されます。 すべての依存関係がインストールされている場合は、**[OK]** ボタンがアクティブになります。 依存関係が存在しない場合は、このモジュールをインポートする前に、その依存関係をインポートする必要があります。
+7. [インポート] ボタンをクリックすると、 **[インポート]** ウィンドウに、インポートしようとしているモジュール名が表示されます。 すべての依存関係がインストールされている場合は、 **[OK]** ボタンがアクティブになります。 依存関係が存在しない場合は、このモジュールをインポートする前に、その依存関係をインポートする必要があります。
 8. **[インポート]** ページで **[OK]** をクリックしてモジュールをインポートします。 Azure Automation がモジュールをアカウントにインポートしている間に、モジュールとコマンドレットについてのメタデータが抽出されます。 各アクティビティを抽出する必要があるため、このアクションには数分かかる場合があります。
 9. モジュールをデプロイ中であることが最初に通知され、プロセスが完了すると完了通知が表示されます。
 10. モジュールがインポートされた後は、使用可能なアクティビティを確認できます。 そのリソースを、Runbook と Desired State Configuration で使用することができます。
@@ -91,7 +91,7 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 
 ## <a name="python-runbooks"></a>Python Runbook
 
-Python Runbook は、[スクリプト センター ギャラリー](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)にあります。 Python Runbook をスクリプト センター ギャラリーに投稿するには、**[Upload a contribution]** \(投稿のアップロード\) をクリックします。 投稿をアップロードするときに、タグ **Python** を確実に追加してください。
+Python Runbook は、[スクリプト センター ギャラリー](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)にあります。 Python Runbook をスクリプト センター ギャラリーに投稿するには、 **[Upload a contribution]** \(投稿のアップロード\) をクリックします。 投稿をアップロードするときに、タグ **Python** を確実に追加してください。
 
 > [!NOTE]
 > [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter)にコンテンツをアップロードするには、最低 100 ポイントが必要です。 

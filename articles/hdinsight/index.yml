@@ -9,7 +9,7 @@ metadata:
   ms.author: hrasheed
   ms.service: hdinsight
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 06/13/2019
 abstract:
   description: Azure HDInsight を使用してストリーミング データや履歴データを分析する方法について説明します。 チュートリアルとその他のドキュメントでは、Apache Hadoop、Apache Spark、Apache Hive、Apache LLAP、Apache Kafka、Apache Storm、Microsoft Machine Learning Server といった最も人気のあるオープンソース フレームワークを使用して、クラスターの作成、ビッグ データの処理と分析、ソリューションの開発を行う方法を紹介します。<p>Azure HDInsight は、全範囲に対応した、オープンソースのエンタープライズ向けマネージド分析サービスです。 HDInsight は、大量のデータを簡単かつ迅速に高いコスト効率で処理できるようにするクラウド サービスです。 また、抽出/変換/読み込み (ETL)、データ ウェアハウス、機械学習、IoT など、幅広いシナリオに対応しています。</p>
   aside:
@@ -52,11 +52,11 @@ sections:
           - image:
               src: media/index/storm_r.svg
             text: Apache Storm
-            href: /azure/hdinsight/storm/apache-storm-tutorial-get-started-linux
+            href: /azure/hdinsight/storm/apache-storm-quickstart
           - image:
               src: media/index/ml-server_r.svg
             text: ML サービス
-            href: /azure/hdinsight/r-server/r-server-get-started
+            href: /azure/hdinsight/r-server/machine-learning-services-quickstart-job-rstudio
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph
@@ -64,7 +64,6 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: 'Apache Hadoop&#58; <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">ETL 操作を実行する</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">オンデマンド クラスターを作成する</a>'
           - html: 'Apache Spark&#58; <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">対話型のクエリを実行する</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">データを視覚化する</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">機械学習</a>'
           - html: 'Apache Kafka&#58; <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Kafka を使った構造化ストリーミング</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">HDInsight の Storm で使用する</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Kafka の Producer API と Consumer API を使用する</a>'
           - html: 'Apache HBase &#58; <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">VNET に HBase クラスターを作成する</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Apache Phoenix を使用する</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Spark に接続する</a>'

@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/22/2019
-ms.author: monhaber
-ms.openlocfilehash: 9806f92a3f00df60cd75315eca427836348e7534
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 05/29/2019
+ms.author: v-mohabe
+ms.openlocfilehash: 0b83575baa2221f0b502abbf919654492c7ab6cf
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244290"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295756"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-iaas"></a>IaaS の SQL サーバー向け Advanced Data Security
-IaaS の SQL サーバー向け Advanced Data Security は、高度な SQL セキュリティ機能のための統合パッケージです。 現在のところ、データベースの潜在的な脆弱性を検出し、軽減する機能や、データベースに対する脅威を示す異常な行動を検出する機能が含まれています。
+# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Azure Virtual Machines の SQL Server 向け Advanced Data Security (パブリック プレビュー)
+Azure Virtual Machines の SQL サーバー向け Advanced Data Security は、高度な SQL セキュリティ機能のための統合パッケージです。 現時点 (パブリック プレビュー) では、データベースの潜在的な脆弱性を検出し、軽減する機能や、データベースに対する脅威を示している可能性がある異常なアクティビティを検出する機能が含まれています。 
 
-IaaS SQL サーバー向けのこのセキュリティ オファリングは、[Azure SQL Database Advanced Data Security パッケージ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)で使用されている同じ基礎技術に基づいています。
+Azure VM SQL サーバー向けのこのセキュリティ オファリングは、[Azure SQL Database Advanced Data Security パッケージ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)で使用されているのと同じ基礎技術に基づいています。
 
 
 ## <a name="overview"></a>概要
 
-Advanced Data Security (ADS) からは、脆弱性の評価と Advanced Threat Protection から構成される一連の高度な SQL セキュリティ機能が提供されます。
+Advanced Data Security では、脆弱性の評価と Advanced Threat Protection から構成される一連の高度な SQL セキュリティ機能が提供されます。
 
 * [脆弱性評価](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)では、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 セキュリティの状態を伝え、セキュリティの問題を解決してデータベースのセキュリティを強化するための手順が含まれます。
 * [Advanced Threat Protection](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) では、SQL サーバーにアクセスしたり、SQL サーバーを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。 データベースでの不審なアクティビティを継続的に監視し、異常なデータベース アクセス パターンに対してアクション指向のセキュリティ通知を提供します。 このようなアラートからは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨されるアクションが提示されます。
 
-## <a name="get-started-with-ads-for-iaas"></a>ADS for IaaS を使ってみる
+## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Azure VM の SQL 向け Advanced Data Security を使ってみる
 
-ADS for IaaS の使用を始める手順は以下のとおりです。
+Azure VM の SQL 向け Advanced Data Security (パブリック プレビュー) を使ってみるには、以下の手順に従います。
 
-### <a name="set-up-ads-for-iaas"></a>ADS for IaaS の設定
+### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>Azure VM の SQL 向け Advanced Data Security を設定する
 
 **開始する前に**:分析対象のセキュリティ ログを保存するための Log Analytics ワークスペースが必要になります。 用意していない場合は簡単に作成できます。詳細は、「[Azure ポータルで Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)」にあります。
 
@@ -95,7 +95,7 @@ ADS for IaaS の使用を始める手順は以下のとおりです。
 
 ASC アラートの生成時にメール通知を受け取る受信者の一覧を設定できます。 メールには、Azure Security Center におけるアラートの直接リンクと関連するすべての詳細が含まれます。 
 
-1. **[Security Center]**  > 、 **[セキュリティ ポリシー]** の順に進み、関連サブスクリプションの行で **[設定の編集 >]** をクリックします。
+1. **[Security Center]**  >  **[Pricing & settings]\(価格と設定\)** に移動し、適切なサブスクリプションをクリックします。
 
     ![サブスクリプション設定](./media/security-center-advanced-iaas-data/subscription-settings.png)
 
@@ -120,7 +120,7 @@ ASC アラートの生成時にメール通知を受け取る受信者の一覧�
 
 脆弱性評価の結果とレポートは、Log Analytics から直接表示できます。
 
-1. ADS ソリューションで Log Analytics ワークスペースに移動します。
+1. Advanced Data Security ソリューションで Log Analytics ワークスペースに移動します。
 1. **[ソリューション]** に移動し、 **[SQL の脆弱性評価]** ソリューションを選択します。
 1. **[概要]** ウィンドウで、 **[概要の表示]** をクリックし、 **[SQL Vulnerability Assessment Report]\(SQL の脆弱性評価レポート\)** を選択します。
 
@@ -130,7 +130,7 @@ ASC アラートの生成時にメール通知を受け取る受信者の一覧�
 
     ![過去 7 日間を設定します](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
 
-1. 詳細を見るには、いずれかのダッシュボード要素をクリックします。 例: 
+1. 詳細を見るには、いずれかのダッシュボード要素をクリックします。 例:
 
    1. **[Failed checks summary]\(失敗したチェックのまとめ\)** セクションの脆弱性チェックをクリックすると、Log Analytics テーブルと、すべてのデータベースに対して行ったこのチェックの結果が表示されます。 結果が含まれるものが最初に表示されます。
 
@@ -142,10 +142,10 @@ ASC アラートの生成時にメール通知を受け取る受信者の一覧�
 
 1. 脆弱性評価の結果データに Log Analytics クエリを実行し、ニーズに基づいてデータを詳細に分析できます。
 
-## <a name="advanced-threat-protection-for-sql-servers-on-iaas-alerts"></a>IaaS の SQL サーバー向け Advanced Threat Protection のアラート
+## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Azure VM の SQL サーバー向け Advanced Threat Protection のアラート
 普段は見られない、潜在的に有害な SQL Server へのアクセスが試行されると、あるいは SQL Server の悪用が試行されると、アラートが生成されます。 これらのイベントにより、次のアラートがトリガーされる場合があります。
 
-### <a name="anomalous-access-pattern-alerts"></a>異常なアクセス パターンのアラート
+### <a name="anomalous-access-pattern-alerts-supported-in-public-preview"></a>(パブリック プレビューでサポートされている) 異常なアクセス パターンのアラート
 
 * **通常とは異なる場所からのアクセス:** このアラートは、だれかが通常とは異なる地理的な場所から SQL サーバーにログオンしたことで SQL Server へのアクセス パターンに変化が生じたときにトリガーされます。 考えられる原因は次のとおりです。
      * 攻撃者または悪意のある元社員が SQL Server にアクセスしました。

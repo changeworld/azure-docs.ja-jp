@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: b3ffc9794967f44708d8330d4dc5d5de11b794d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079181"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61474557"
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>SQL Data Warehouse のサポート チケットを作成する方法
 SQL Data Warehouse で問題が発生した場合は、サポート チケットを作成してください。エンジニアリング チームがサポートいたします。
@@ -25,7 +25,7 @@ SQL Data Warehouse で問題が発生した場合は、サポート チケット
 2. ホーム画面で **[ヘルプとサポート]** タブをクリックします。
    
     ![[ヘルプとサポート]](./media/sql-data-warehouse-get-started-create-support-ticket/MainPage.PNG)
-3. [ヘルプとサポート] ブレードで **[新しいサポート要求]** をクリックし、**[基本]** ブレードに入力します。
+3. [ヘルプとサポート] ブレードで **[新しいサポート要求]** をクリックし、 **[基本]** ブレードに入力します。
 
    お客様の [Azure サポート プラン][Azure support plan]を選択します。
    

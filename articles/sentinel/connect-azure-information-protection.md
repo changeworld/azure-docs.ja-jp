@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4b73edd10521b23fb4befbe4fe7d9f0c7b496de3
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 3edfdca16141726ea591c8473528fc23ee076c53
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204296"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620604"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection からデータを接続する
 
@@ -41,7 +42,7 @@ Azure Information Protection が既にある場合は、[ネットワークで�
 Azure Information Protection がデプロイされ、データを取得している場合は、アラート データを Azure Sentinel に簡単にストリーミングできます。
 
 
-1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[Azure Information Protection]** タイルをクリックします。
+1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Azure Information Protection]** タイルをクリックします。
 
 2. [Azure Information Protection ポータル](https://portal.azure.com/?ScannerConfiguration=true&EndpointDiscovery=true#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/quickstartBlade)に移動します。 
 

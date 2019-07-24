@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497742"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60576188"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>StorSimple 診断ツールを使用して、8000 シリーズ デバイスに関する問題のトラブルシューティングを行います。
 
@@ -378,7 +378,7 @@ Web proxy                               Not enabled         Web proxy is not...
 
 1.  最初に、階層化ボリュームとアーカイブ オプションをオンにした階層化ボリュームの組合せを作成します。 このアクションにより、64 KB と 512 KB の両方の BLOB のサイズのテストが実行されます。
 
-2. ボリュームを作成して構成したら、コマンドレットを実行します。 次のコマンドを入力します: 
+2. ボリュームを作成して構成したら、コマンドレットを実行します。 型:
 
     `Invoke-HcsDiagnostics -Scope Performance`
 

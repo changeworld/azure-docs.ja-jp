@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369226"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60415662"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
 
@@ -47,8 +47,8 @@ SSPR が有効になっていない場合でも、ユーザーにはパスワー
 
 組織でパスワードのリセット要求を管理者に通知しないようにする場合は、以下の構成を有効にできます。
 
-* すべてのエンド ユーザーに対してセルフ サービスによるパスワードのリセットを有効にします。 このオプションは **[パスワード リセット]** > **[プロパティ]** の下にあります。 ユーザーに自分のパスワードをリセットさせたくない場合は、アクセスの対象を空のグループにすることができます。 *このオプションは推奨されません。*
-* ヘルプデスクのリンクをカスタマイズして、ユーザーがヘルプを得るために使用できる Web URL または mailto: アドレスを指定します。 このオプションは **[パスワード リセット]** > **[カスタマイズ]** > **[カスタム ヘルプデスクの電子メールまたは URL]** の下にあります。
+* すべてのエンド ユーザーに対してセルフ サービスによるパスワードのリセットを有効にします。 このオプションは **[パスワード リセット]**  >  **[プロパティ]** の下にあります。 ユーザーに自分のパスワードをリセットさせたくない場合は、アクセスの対象を空のグループにすることができます。 *このオプションは推奨されません。*
+* ヘルプデスクのリンクをカスタマイズして、ユーザーがヘルプを得るために使用できる Web URL または mailto: アドレスを指定します。 このオプションは **[パスワード リセット]**  >  **[カスタマイズ]**  >  **[カスタム ヘルプデスクの電子メールまたは URL]** の下にあります。
 
 ## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>SSPR の AD FS サインイン ページをカスタマイズする
 
@@ -75,7 +75,7 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 ### <a name="directory-name"></a>ディレクトリ名
 
-**[Azure Active Directory]** > **[プロパティ]** で、ディレクトリ名属性を変更できます。 ポータルと自動通信で表示される組織のフレンドリ名を表示できます。 このオプションは、以下の形式の自動メールで最も多く表示されます。
+**[Azure Active Directory]**  >  **[プロパティ]** で、ディレクトリ名属性を変更できます。 ポータルと自動通信で表示される組織のフレンドリ名を表示できます。 このオプションは、以下の形式の自動メールで最も多く表示されます。
 
 * メールのフレンドリ名 (例: "Microsoft on behalf of CONTOSO demo")
 * メールの件名行 (例: "CONTOSO demo account email verification code")

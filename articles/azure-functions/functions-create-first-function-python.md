@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 88e8d543e8bc3c3ae07133ec333b33c4486c2684
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 5ef30fbf647492f79c64508d8306868aa1f6b278
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864512"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444574"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure で HTTP によってトリガーされる関数を作成する
 
@@ -32,9 +32,9 @@ ms.locfileid: "65864512"
 
 + [Python 3.6](https://www.python.org/downloads/) のインストール。
 
-+ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.666 以降をインストールします。
++ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.6.1071 以降をインストールします。
 
-+ [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.x 以降をインストールします。
++ [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.x 以降のバージョンをインストールします。
 
 + 有効な Azure サブスクリプション
 
@@ -44,18 +44,18 @@ ms.locfileid: "65864512"
 
 Python 関数をローカルで開発し、テストするには、Python 3.6 環境で作業する必要があります。 次のコマンドを実行して、`.env` という名前の仮想環境を作成してアクティブにします。
 
-### <a name="bash-or-a-terminal-window"></a>Bash またはターミナル ウィンドウ:
+### <a name="bash"></a>Bash:
 
 ```bash
-python3.6 -m venv .env
-source .env/bin/activate
+python3.6 -m venv .venv
+source .venv/bin/activate
 ```
 
 ### <a name="powershell-or-a-windows-command-prompt"></a>PowerShell または Windows コマンド プロンプト:
 
 ```powershell
-py -3.6 -m venv .env
-.env\scripts\activate
+py -3.6 -m venv .venv
+.venv\scripts\activate
 ```
 
 残りのコマンドは仮想環境内で実行されます。
@@ -66,7 +66,7 @@ Functions プロジェクトは、Azure の関数アプリに相当します。 
 
 仮想環境で次のコマンドを実行します。worker ランタイムとして **python** を選択します。
 
-```command
+```console
 func init MyFunctionProj
 ```
 
@@ -78,25 +78,17 @@ _MyFunctionProj_ という名前のフォルダーが作成されます。これ
 
 新しい MyFunctionProj フォルダーに移動します。
 
-```command
+```console
 cd MyFunctionProj
 ```
 
 次に、host.json ファイルを更新し、拡張バンドルを有効にします。  
 
-## <a name="reference-bindings"></a>参照バインディング
-
-拡張バンドルにより、これから先、バインディング拡張を簡単に追加できます。 また、.NET Core 2.x SDK をインストールする必要がなくなります。 拡張バンドルには、バージョン 2.6.1071 以降の Core Tools が必要です。 
-
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
-
-これでプロジェクトに関数を追加できます。
-
 ## <a name="create-a-function"></a>関数を作成する
 
 プロジェクトに関数を追加するには、次のコマンドを実行します。
 
-```command
+```console
 func new
 ```
 
@@ -175,7 +167,7 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 ```
 
 > [!NOTE]
-> Linux アプリと Windows アプリは同じリソース グループ内でホストすることができません。 Windows の関数アプリまたは Web アプリで `myResourceGroup` という名前のリソース グループが存在する場合、別のリソース グループを使用する必要があります。
+> Azure Functions の Linux 向け従量課金プランは現在、プレビュー段階であり、使用できるのは次のリージョンだけです: 米国西部、米国東部、西ヨーロッパ、東アジア。 さらに、Linux アプリと Windows アプリは同じリソース グループ内でホストすることができません。 Windows の関数アプリまたは Web アプリで `myResourceGroup` という名前のリソース グループが存在する場合、別のリソース グループを使用する必要があります。
 
 これで、Azure でローカル関数プロジェクトを関数アプリに公開できます。
 

@@ -11,11 +11,11 @@ ms.date: 04/03/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4bc1867f0dd18a101b2e764970de4e1904b960e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790860"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60680416"
 ---
 # <a name="change-a-maintenance-schedule"></a>メンテナンス スケジュールの変更 
 
@@ -40,9 +40,9 @@ ms.locfileid: "59790860"
    ![メンテナンスの設定ブレード](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
 5. ドロップダウン リスト ボックスを使用して、優先されるプライマリとセカンダリのメンテナンス ウィンドウを選択します。
-   - **[日]**:選択したウィンドウでメンテナンスを実行する優先日。
-   - **[開始時刻]**:メンテナンス ウィンドウに対する優先開始時刻。
-   - **[時間枠]**:時間枠の優先時間数。
+   - **[日]** :選択したウィンドウでメンテナンスを実行する優先日。
+   - **[開始時刻]** :メンテナンス ウィンドウに対する優先開始時刻。
+   - **[時間枠]** :時間枠の優先時間数。
 
    ブレードの下部にある **[スケジュールの概要]** 領域が、選択した値に基づいて更新されます。 
   

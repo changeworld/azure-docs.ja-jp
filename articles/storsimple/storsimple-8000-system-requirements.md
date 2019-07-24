@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: f05e3e85d36ffc23a193a6771a0271c71b2f8544
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013642"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60631908"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 シリーズのソフトウェア、高可用性、ネットワークの要件
 
@@ -63,14 +63,14 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 
 | ポート番号<sup>1,2</sup> | インまたはアウト | ポート範囲 | 必須 | メモ |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |アウト |WAN |いいえ  |<ul><li>送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |アウト |WAN |いいえ |<ul><li>送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |アウト |WAN |はい |<ul><li>送信ポートは、クラウドのデータへのアクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li><li>このポートは、ガベージ コレクション用のコントローラーでも使用されます。</li></ul> |
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
 | TCP 9354 |アウト |WAN |はい |送信ポートは、StorSimple デバイス マネージャー サービスと通信するために StorSimple デバイスによって使用されます。 |
-| 3260 (iSCSI) |イン |LAN |いいえ  |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
-| 5985 |イン |LAN |いいえ  |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
-| 5986 |イン |LAN |いいえ  |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 3260 (iSCSI) |イン |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
+| 5985 |イン |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 5986 |イン |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
@@ -231,7 +231,7 @@ StorSimple デバイス モデル 8600 には、主エンクロージャに加�
 * 両方の EBOD エンクロージャ コントローラー モジュール、両方の SAS ケーブル、およびすべてのハード ディスク ドライブは必ず常時取り付けておきます。
 * EBOD エンクロージャ コントローラー モジュールで障害が発生した場合は、すぐに交換を要求します。
 * EBOD エンクロージャ コントローラー モジュールで故障が発生した場合は、該当するモジュールを交換する前に、もう 1 つのコントローラー モジュールがアクティブ状態であることを確認します。 コントローラーがアクティブであることを確認するには、「 [デバイスのアクティブなコントローラーを識別する](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
-* EBOD コントローラー モジュールの交換中に、**[監視]** > **[ハードウェアの正常性]** にアクセスして、StorSimple デバイス マネージャー サービスのコンポーネントの状態を継続して監視します。
+* EBOD コントローラー モジュールの交換中に、 **[監視]**  >  **[ハードウェアの正常性]** にアクセスして、StorSimple デバイス マネージャー サービスのコンポーネントの状態を継続して監視します。
 * SAS ケーブルの障害または交換が必要な場合 (Microsoft サポートはこのような判断にかかわる必要があります)、交換が必要な SAS ケーブルのみを取り外すようにします。
 * どの時点でも両方の SAS ケーブルをシステムから同時に取り外さないでください。
 

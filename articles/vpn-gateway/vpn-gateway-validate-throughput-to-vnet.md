@@ -2,31 +2,24 @@
 title: Microsoft Azure Virtual Network への VPN スループットの検証 | Microsoft Docs
 description: このドキュメントの目的は、ユーザーがオンプレミスのリソースから Azure 仮想マシンへのネットワーク スループットを検証できるようにすることです。
 services: vpn-gateway
-documentationcenter: na
-author: chadmath
+author: cherylmc
 manager: jasmc
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/15/2018
+ms.date: 05/29/2019
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c1117afcf6254c32ebe0a4e72ad5619606098253
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821663"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66388610"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
 
 VPN ゲートウェイ接続を使用すると、Azure 内の Virtual Network とオンプレミスの IT インフラストラクチャ間の安全なクロスプレミス接続を確立できます。
 
-この記事では、オンプレミスのリソースから Azure 仮想マシン (VM) へのネットワーク スループットを検証する方法を示します。 また、トラブルシューティングのガイドラインも示します。
+この記事では、オンプレミスのリソースから Azure 仮想マシン (VM) へのネットワーク スループットを検証する方法を示します。 また、トラブルシューティングのガイドラインも示します。 
 
 >[!NOTE]
 >この記事の目的は、一般的な問題の診断と修正に役立つことです。 次の情報を使用して問題を解決できない場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
@@ -109,7 +102,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 
     次の画面は、この例の出力を示しています。
 
-    ![出力](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
+    ![Output](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
 5. (省略可能) テスト結果を保持するためには、次のコマンドを実行します。
 
@@ -122,17 +115,17 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 ## <a name="address-slow-file-copy-issues"></a>低速ファイル コピーの問題の対処
 エクスプローラーを使用するか、RDP セッション経由でドラッグ アンド ドロップする場合に、低速ファイル コピーが発生することがあります。 この問題は、次の要因の一方または両方に原因があります。
 
-- エクスプローラーや RDP などのファイル コピー アプリケーションでは、ファイルのコピー時に複数のスレッドを使用しません。 パフォーマンス向上のためには、[Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) などのマルチスレッド ファイル コピー アプリケーションを使用して、16 個または 32 個のスレッドを使用してファイルをコピーしてください。 Richcopy でファイル コピーのスレッド数を変更するには、**[アクション]**  >  **[コピー オプション]**  >  **[ファイルのコピー]** をクリックします。<br><br>
+- エクスプローラーや RDP などのファイル コピー アプリケーションでは、ファイルのコピー時に複数のスレッドを使用しません。 パフォーマンス向上のためには、[Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx) などのマルチスレッド ファイル コピー アプリケーションを使用して、16 個または 32 個のスレッドを使用してファイルをコピーしてください。 Richcopy でファイル コピーのスレッド数を変更するには、 **[アクション]**  >  **[コピー オプション]**  >  **[ファイルのコピー]** をクリックします。<br><br>
 ![低速ファイル コピーの問題](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 - 不十分な VM ディスク読み取り/書き込み速度。 詳細については、[Azure Storage のトラブルシューティング](../storage/common/storage-e2e-troubleshooting.md)に関するページを参照してください。
 
 ## <a name="on-premises-device-external-facing-interface"></a>オンプレミスのデバイスの外部に接続するインターフェイス
-オンプレミスの VPN デバイスのインターネットに接続する IP アドレスが、Azure の[ローカル ネットワーク](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)定義に含まれている場合、VPN が表示されない、突発的な切断、またはパフォーマンスの問題が発生することがあります。
+オンプレミスの VPN デバイスのインターネットに接続する IP アドレスが Azure の[ローカル ネットワーク](vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) アドレス空間の定義に含まれている場合は、VPN の起動不可、散発的な切断、パフォーマンスの問題などが発生することがあります。
 
 ## <a name="checking-latency"></a>待機時間のチェック
 tracert を使用して、Microsoft Azure エッジ デバイスを追跡し、ホップ間で 100 ミリ秒を超える遅延があるかどうかを判断します。
 
-オンプレミスのネットワークから、Azure Gateway または VM の VIP に対して *tracert* を実行します。 * のみが返された場合、Azure エッジに到達したことがわかります。 "MSN" を含む DNS 名が返された場合、Microsoft バックボーンに到達したことがわかります。<br><br>
+オンプレミスのネットワークから、Azure Gateway または VM の VIP に対して *tracert* を実行します。 \* のみが返された場合、Azure エッジに到達したことがわかります。 "MSN" を含む DNS 名が返された場合、Microsoft バックボーンに到達したことがわかります。<br><br>
 ![待機時間のチェック](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 
 ## <a name="next-steps"></a>次の手順

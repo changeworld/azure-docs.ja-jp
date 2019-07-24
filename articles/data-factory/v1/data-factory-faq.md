@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485851"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60486852"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]
@@ -98,7 +98,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
-> * が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
+> \* が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
 
 ### <a name="what-are-the-supported-file-formats"></a>どのようなファイル形式がサポートされますか。
 [!INCLUDE [data-factory-file-format](../../../includes/data-factory-file-format.md)]
@@ -189,7 +189,7 @@ external プロパティが適切に設定されている場合は、入力デ�
 2. **[データセット]** ブレードの特定のデータセットをクリックします。
 3. **[テーブル]** ブレードの **[最近使用したスライス]** ボックスの一覧で、目的のスライスを選択します。
 4. **[データ スライス]** ブレードの **[アクティビティの実行]** ボックスの一覧で、[アクティビティの実行] をクリックします。
-5. **[アクティビティの実行の詳細]** ブレードで、**[プロパティ]** タイルをクリックします。
+5. **[アクティビティの実行の詳細]** ブレードで、 **[プロパティ]** タイルをクリックします。
 6. **[期間]** フィールドに表示されている値を確認します。 この値が、スライスの処理にかかった時間です。   
 
 ### <a name="how-to-stop-a-running-slice"></a>実行中のスライスを停止するにはどうすればよいですか

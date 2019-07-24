@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: d78fb546e954c4ae12e5836d9a7bef7ed5003090
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 62d359494050b188869d51d1e3975c823b9c0a76
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65511072"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204934"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -32,6 +32,10 @@ Application Insights を使用している場合の Application Insights イン�
 |キー|値の例|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
+
+## <a name="azurefunctionsenvironment"></a>AZURE_FUNCTIONS_ENVIRONMENT
+
+Functions ランタイムのバージョン 2.x では、ランタイム環境に基づいてアプリの動作を構成します。 この値は、[初期化中に読み取られます](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)。 `AZURE_FUNCTIONS_ENVIRONMENT` は任意の値に設定することができますが、次の [3 つの値](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)がサポートされています。[Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)、[Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 `AZURE_FUNCTIONS_ENVIRONMENT` が設定されていない場合、既定値は `Production` です。 この設定は、ランタイム環境を設定するために、`ASPNETCORE_ENVIRONMENT` の代わりに使用する必要があります。 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -71,14 +75,6 @@ Application Insights を使用している場合の Application Insights イン�
 |キー|値の例|
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1,feature2|
-
-## <a name="azurewebjobsscriptroot"></a>AzureWebJobsScriptRoot
-
-*host.json* ファイルと関数フォルダーがあるルート ディレクトリへのパスです。 関数アプリでの既定は、`%HOME%\site\wwwroot` です。
-
-|キー|値の例|
-|---|------------|
-|AzureWebJobsScriptRoot|%HOME%\site\wwwroot|
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
@@ -122,7 +118,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="functionsworkerruntime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、および `python` (Python) です。
+ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、`powershell` (PowerShell)、`python` (Python) です。
 
 |キー|値の例|
 |---|------------|

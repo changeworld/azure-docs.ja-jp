@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: aljo
-ms.openlocfilehash: 9e8f209f1448119ed2e3dfd5d38d42699a4be01c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 58af752d8b7fcec5c681e2b8975d109a0f731878
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670865"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66302272"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -141,9 +141,9 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>コンテナー レジストリにイメージをプッシュする
 アプリケーションが Docker で実行されることを確認したら、イメージを Azure Container Registry のレジストリにプッシュします。
 
-[レジストリの資格情報](../container-registry/container-registry-authentication.md)を使用してコンテナー レジストリにログインするには、`docker login` を実行します。
+`docker login` を実行し、ご自分の[レジストリの資格情報](../container-registry/container-registry-authentication.md)を使用してお使いのコンテナー レジストリにサインインします。
 
-次の例では、Azure Active Directory [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)の ID とパスワードを渡します。 たとえば、自動化シナリオのために、レジストリにサービス プリンシパルを割り当てることができます。 または、レジストリのユーザー名とパスワードを使ってログインすることもできます。
+次の例では、Azure Active Directory [サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)の ID とパスワードを渡します。 たとえば、自動化シナリオのために、レジストリにサービス プリンシパルを割り当てることができます。 または、ご自分のレジストリのユーザー名とパスワードを使ってサインインすることもできます。
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -200,7 +200,7 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 service-fabric-get-started-containers.md#configure-cluster-wide-credentials)を参照してください
 
 ## <a name="configure-isolation-mode"></a>分離モードの構成
-6.3 のランタイム リリースでは、Linux コンテナーで VM 分離がサポートされています。つまり、process と hyperv の 2 つの分離モードがサポートされています。 hyperv 分離モードでは、各コンテナーとコンテナー ホスト間でカーネルが分離されます。 hyperv 分離は、[Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) を使用して実装されています。 分離モードは、Linux クラスター用にアプリケーション マニフェスト ファイルの `ServicePackageContainerPolicy` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 既定は、プロセス分離モードです。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
+6\.3 のランタイム リリースでは、Linux コンテナーで VM 分離がサポートされています。つまり、process と hyperv の 2 つの分離モードがサポートされています。 hyperv 分離モードでは、各コンテナーとコンテナー ホスト間でカーネルが分離されます。 hyperv 分離は、[Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) を使用して実装されています。 分離モードは、Linux クラスター用にアプリケーション マニフェスト ファイルの `ServicePackageContainerPolicy` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 既定は、プロセス分離モードです。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
 
 ```xml
 <ServiceManifestImport>
@@ -231,7 +231,12 @@ service-fabric-get-started-containers.md#configure-cluster-wide-credentials)を�
 
 
 ## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
-Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。 
+
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 
+
+v6.4 の最新の更新リリース以降、Docker の HEALTHCHECK 評価をエラーとしてレポートするかどうかの選択肢ができました。 このオプションを有効にすると、*health_status* が*正常*の場合、**OK** 正常性レポートが表示され、*health_status* が*異常*の場合、**ERROR** が表示されます。
+
+コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される Dockerfile に存在する必要があります。
 
 ![HealthCheckHealthy][1]
 
@@ -246,12 +251,18 @@ ApplicationManifest の **ContainerHostPolicies** の一部として **HealthCon
     <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
     <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
-        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true"
+              RestartContainerOnUnhealthyDockerHealthStatus="false" 
+              TreatContainerUnhealthyStatusAsError="false" />
       </ContainerHostPolicies>
     </Policies>
 </ServiceManifestImport>
 ```
-既定では、*IncludeDockerHealthStatusInSystemHealthReport* は **true** に設定され、*RestartContainerOnUnhealthyDockerHealthStatus* は **false** に設定されています。 *RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
+既定で、*IncludeDockerHealthStatusInSystemHealthReport* は **true** に設定され、*RestartContainerOnUnhealthyDockerHealthStatus* は **false** に設定され、*TreatContainerUnhealthyStatusAsError* は **false** に設定されています。 
+
+*RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
+
+*TreatContainerUnhealthyStatusAsError* が **true** に設定されている場合、コンテナーの *health_status* が*異常*のとき、**ERROR** 正常性レポートが表示されます。
 
 Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 

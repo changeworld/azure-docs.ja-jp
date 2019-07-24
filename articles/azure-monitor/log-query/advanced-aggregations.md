@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 37eb8ca3c25268dd7923087439a8fbf0fd1f168b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 56e87da0353a41504035a070d4c10bab0dda2279
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269911"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60551755"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの高度な集計
 
@@ -38,6 +38,7 @@ Event
 | order by TimeGenerated desc
 | summarize makelist(EventID) by Computer
 ```
+
 |Computer|list_EventID|
 |---|---|
 | computer1 | [704,701,1501,1500,1085,704,704,701] |
@@ -54,6 +55,7 @@ Event
 | order by TimeGenerated desc
 | summarize makeset(EventID) by Computer
 ```
+
 |Computer|list_EventID|
 |---|---|
 | computer1 | [704,701,1501,1500,1085] |
@@ -76,7 +78,7 @@ Heartbeat
 | computer1 | "security"、"updates"、"changeTracking" |
 | computer2 | "security"、"updates" |
 | computer3 | "antiMalware"、"changeTracking" |
-| ... | ... | ... |
+| ... | ... |
 
 `mvexpand` を使用すると、コンマ区切りリストではなく、次のようにそれぞれの値が個別の行に表示されます。
 
@@ -96,7 +98,7 @@ Heartbeat
 | computer2 | "updates" |
 | computer3 | "antiMalware" |
 | computer3 | "changeTracking" |
-| ... | ... | ... |
+| ... | ... |
 
 
 次に、もう一度 `makelist` を使用して、項目をまとめてグループ化すると、今度はソリューションごとにコンピューターのリストを表示できます。
@@ -108,6 +110,7 @@ Heartbeat
 | mvexpand Solutions
 | summarize makelist(Computer) by tostring(Solutions) 
 ```
+
 |解決方法 | list_Computer |
 |--------------|----------------------|
 | "security" | ["computer1", "computer2"] |
@@ -124,6 +127,7 @@ Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
+
 | Category | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接エージェント | 2017-06-06T17:00:00Z | 15 |
@@ -153,6 +157,7 @@ Heartbeat
 | mvexpand TimeGenerated, count_
 | project Category, TimeGenerated, count_
 ```
+
 | Category | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接エージェント | 2017-06-06T17:00:00Z | 15 |

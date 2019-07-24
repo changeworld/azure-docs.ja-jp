@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492090"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66472576"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) からログを照会する方法
 VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報を収集し、Azure Monitor 内の Log Analytics ワークスペースにこれらを転送します。  このデータは、Azure Monitor で[クエリ](../../azure-monitor/log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
@@ -101,7 +101,7 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 | プロパティ | Description |
 |:--|:--|
-|RemoteCountry |RemoteIp をホストしている国の名前。  例: *United States* |
+|RemoteCountry |RemoteIp をホストしている国や地域の名前。  例: *United States* |
 |RemoteLatitude |地理的位置情報の緯度。 例: *47.68* |
 |RemoteLongitude |地理的位置情報の経度。 例: *-122.12* |
 
@@ -124,13 +124,6 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 
 ### <a name="ports"></a>Port 
 受信トラフィックを積極的に受け入れるマシン、または潜在的にトラフィックを受け入れることができても報告期間中はアイドルであるマシン上のポートは、VMBoundPort テーブルに書き込まれます。  
-
->[!NOTE]
->Azure Monitor for VMs では、次のリージョンの Log Analytics ワークスペースでのポート データの収集と記録をサポートしていません。  
->- 米国東部  
->- 西ヨーロッパ
->
-> このデータの収集は、Azure Monitor for VMs の他の[サポートされているリージョン](vminsights-onboard.md#log-analytics)では有効になっています。 
 
 VMBoundPort のすべてのレコードは、以下のフィールドで識別されます。 
 
@@ -202,7 +195,7 @@ VMBoundPort のすべてのレコードは、以下のフィールドで識別�
 | ProductVersion_s | 製品バージョン |
 | FileVersion_s | ファイル バージョン |
 | CommandLine_s | コマンド ライン |
-| ExecutablePath _s | 実行可能ファイルのパス |
+| ExecutablePath_s | 実行可能ファイルのパス |
 | WorkingDirectory_s | 作業ディレクトリ |
 | UserName | プロセスが実行されているアカウント |
 | UserDomain | プロセスが実行されているドメイン |

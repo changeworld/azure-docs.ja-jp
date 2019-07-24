@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 12/07/2017
 ms.author: atsenthi
 ms.openlocfilehash: e5371cd3ea9de1993f0f824325f6cbf1e25343d4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667929"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60773045"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric アプリケーションと次の手順
 Azure Service Fabric アプリケーションが作成されました。 この記事では、試してみるべきチュートリアル、プロジェクトの構成、その他の詳細情報、考えられる次のステップについて説明します。

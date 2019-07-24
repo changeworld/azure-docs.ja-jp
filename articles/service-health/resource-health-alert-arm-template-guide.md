@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 71856f9de3d67590d524fa8bb1119a384d156d2e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e552b90a4c98eff7b04cbeaef26aa10749ce672c
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64700159"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66493393"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -43,7 +43,7 @@ Azure Resource Health では、Azure リソースの現在および過去の正�
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Resource Health アラートの Resource Manager テンプレートを `resourcehealthalert.json` として作成して保存します ([次の詳細を参照](#resource-manager-template-for-resource-health-alerts))。
+3. Resource Health アラートの Resource Manager テンプレートを `resourcehealthalert.json` として作成して保存します ([次の詳細を参照](#resource-manager-template-options-for-resource-health-alerts))。
 
 4. このテンプレートを使用して、新しい Azure Resource Manager デプロイを作成します。
 
@@ -76,7 +76,7 @@ Azure Resource Health では、Azure リソースの現在および過去の正�
 
 このプロセスを完全に自動化する場合は、手順 5 で値を求めるメッセージが表示されないよう、Resource Manager テンプレートを編集します。
 
-## <a name="resource-manager-template-for-resource-health-alerts"></a>Resource Health アラートの Resource Manager テンプレート
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Resource Health アラートの Resource Manager テンプレート オプション
 
 Resource Health アラートを作成するための開始点として、この基本テンプレートを使用できます。 このテンプレートは記述どおりに動作し、ユーザーはサインアップして、サブスクリプション内のすべてのリソースにわたり、新しくアクティブになったすべてのリソース正常性イベントに関するアラートを受信できます。
 
@@ -284,7 +284,9 @@ Azure Resource Health では、テスト ランナーを使用してリソース
 },
 ```
 
-この例では、現在および以前の正常性状態が "Unknown" でないイベントのみを通知します。 この変更は、アラートが携帯電話または電子メールに直接送信される場合に役立つ可能性があります。
+この例では、現在および以前の正常性状態が "Unknown" でないイベントのみを通知します。 この変更は、アラートが携帯電話または電子メールに直接送信される場合に役立つ可能性があります。 
+
+イベントによっては、currentHealthStatus および previousHealthStatus プロパティが null 値になっていることがあることにご注意ください。 たとえば Updated イベントが発生する場合、リソースの正常性の状態は最後のレポートから変化しておらず、追加のイベント情報が利用できるようになった (cause など) だけの可能性があります。 そのため、上記の句を使用すると、properties.currentHealthStatus および properties.previousHealthStatus の値は null に設定されるため、アラートによってはトリガーされないことがあります。
 
 ### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>ユーザーが開始したイベントを回避するためのアラートの調整
 
@@ -304,12 +306,12 @@ Resource Health イベントは、プラットフォームまたはユーザー�
     ]
 }
 ```
+イベントによっては、cause フィールドが null 値になっていることがあることにご注意ください。 つまり、正常性の遷移 (available から unavailable など) が起こり、通知の遅延を避けるためにイベントがすぐにログに記録されます。 そのため、上記の句を使用すると、properties.clause プロパティ値が null に設定されるため、アラートはトリガーされないことがあります。
 
-## <a name="recommended-resource-health-alert-template"></a>推奨される Resource Health アラート テンプレート
+## <a name="complete-resource-health-alert-template"></a>完全な Resource Health アラート テンプレート
 
-前のセクションで説明したさまざまな調整を使用して、信号雑音比率を最大化するよう構成された包括的なアラート テンプレートを作成できます。
+前のセクションで説明したさまざまな調整を使用した、信号雑音比率が最大になるよう構成されたサンプル テンプレートを次に示します。 イベントによっては、currentHealthStatus、previousHealthStatus、cause プロパティ値が null の場合があるという前述の注意を念頭に置いてください。
 
-推奨されるテンプレートを次に示します。
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -440,5 +442,7 @@ Resource Health に関する詳細情報を参照してください。
 -  [Azure Resource Health の概要](Resource-health-overview.md)
 -  [Azure Resource Health で利用できるリソースの種類と正常性チェック](resource-health-checks-resource-types.md)
 
+
 Service Health アラートを作成します。
 -  [Service Health のアラートの構成](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Azure アクティビティ ログのイベント スキーマ](../azure-monitor/platform/activity-log-schema.md)

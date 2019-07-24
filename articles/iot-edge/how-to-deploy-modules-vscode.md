@@ -11,11 +11,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 91a074cf98291b105864a69730314efff3482254
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155016"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62126411"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Visual Studio Code から Azure IoT Edge モジュールをデプロイする
 
@@ -108,7 +108,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 1. Visual Studio Code で**エクスプローラー** ビューを開きます。
 
-1. エクスプローラーの下部で、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
+1. エクスプローラーの下部で、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
 
    ![[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\) セクションを展開する](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
@@ -126,7 +126,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 モジュールをデバイスにデプロイするには、モジュール情報で構成されている配置マニフェストを適用します。
 
-1. Visual Studio Code エクスプローラー ビューで、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
+1. Visual Studio Code エクスプローラー ビューで、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
 
 1. デプロイ マニフェストで構成する IoT Edge デバイスを右クリックします。
 
@@ -135,7 +135,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 1. **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。
 
-1. 使用する配置マニフェスト JSON ファイルに移動し、**[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。
+1. 使用する配置マニフェスト JSON ファイルに移動し、 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** をクリックします。
 
    ![Select Edge Deployment Manifest (Edge 配置マニフェストの選択)](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
 
@@ -145,7 +145,7 @@ Visual Studio Code 用の Azure IoT 拡張機能を使用して、IoT ハブで�
 
 モジュールをデバイスにデプロイした後で、そのすべてを **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションで表示できます。 IoT Edge デバイスの横の矢印を選択して展開します。 現在実行中のすべてのモジュールが表示されます。
 
-デバイスに新しいモジュールを最近デプロイした場合は、**[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーをポイントし、更新アイコンをクリックしてビューを更新します。
+デバイスに新しいモジュールを最近デプロイした場合は、 **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクション ヘッダーをポイントし、更新アイコンをクリックしてビューを更新します。
 
 モジュールの名前を右クリックして、モジュール ツインを表示および編集します。
 

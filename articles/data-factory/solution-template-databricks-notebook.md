@@ -13,11 +13,11 @@ ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
 ms.openlocfilehash: 562ce675acc43002ce468d60f8a8c412410be86c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630805"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60395405"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Azure Data Factory で Databricks を使用してデータを変換する
 
@@ -95,7 +95,7 @@ ms.locfileid: "58630805"
 
     1.  **Databricks** – Databricks クラスターへの接続用。
 
-        前提条件 2.c で生成したアクセス キーを使用して、Databricks のリンクされたサービスを作成します。 "*対話型クラスター*" がある場合は、それを選択してもかまいません。 (この例では、*[New job cluster]\(新しいジョブ クラスター\)* オプションを使用します。)
+        前提条件 2.c で生成したアクセス キーを使用して、Databricks のリンクされたサービスを作成します。 "*対話型クラスター*" がある場合は、それを選択してもかまいません。 (この例では、 *[New job cluster]\(新しいジョブ クラスター\)* オプションを使用します。)
 
         ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "58630805"
 
 ## <a name="create-activities"></a>アクティビティを作成する
 
-1.  ソース使用可能性チェックを行うためのルックアップ アクティビティ "**Availability flag**" を作成します (ルックアップまたは GetMetadata を使用できます)。 2.a で作成した "sourceAvailability_Dataset" を選択します。
+1.  ソース使用可能性チェックを行うためのルックアップ アクティビティ "**Availability flag**" を作成します (ルックアップまたは GetMetadata を使用できます)。 2\.a で作成した "sourceAvailability_Dataset" を選択します。
 
     ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
 

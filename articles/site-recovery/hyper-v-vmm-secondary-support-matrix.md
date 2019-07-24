@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e8b8f9856fe7e0fa591ceb42aab97e92642b6098
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360798"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66399364"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -58,10 +58,10 @@ Windows Server 2012 R2 | Windows Server 2012 R2 の [Hyper-V でサポートさ�
 ホスト - NIC チーミング | はい 
 ホスト - VLAN | はい 
 ホスト - IPv4 | はい 
-ホスト - IPv6 | いいえ  
-ゲスト VM - NIC チーミング | いいえ 
+ホスト - IPv6 | いいえ 
+ゲスト VM - NIC チーミング | いいえ
 ゲスト VM - IPv4 | はい
-ゲスト VM - IPv6 | いいえ 
+ゲスト VM - IPv6 | いいえ
 Guest VM - Windows/Linux - 静的 IP アドレス | はい
 ゲスト VM - マルチ NIC | はい
 
@@ -84,16 +84,16 @@ SAN (ISCSI) | はい
 VMDK |  該当なし
 VHD/VHDX | はい (最大 16 個のディスク)
 第 2 世代 VM | はい
-共有クラスター ディスク | いいえ 
-暗号化されたディスク | いいえ 
+共有クラスター ディスク | いいえ
+暗号化されたディスク | いいえ
 UEFI| 該当なし
-NFS | いいえ 
-SMB 3.0 | いいえ 
+NFS | いいえ
+SMB 3.0 | いいえ
 RDM | 該当なし
 1 TB より大きいディスク | はい
 ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい
-記憶域 | はい
-ディスクのホット アド/削除 | いいえ 
+記憶域スペース | はい
+ディスクのホット アド/削除 | いいえ
 ディスクの除外 | はい
 マルチパス (MPIO) | はい
 
@@ -101,8 +101,8 @@ RDM | 該当なし
 
 **アクション** | **サポートされています**
 --- | --- 
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 |  いいえ 
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ 
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 |  いいえ
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery プロバイダー
 

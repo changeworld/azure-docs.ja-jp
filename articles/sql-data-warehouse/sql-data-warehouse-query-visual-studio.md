@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 6aa707d3c63b7ead6db94f84ebd9214302cc7367
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65873726"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Visual Studio および SSDT を使用して SQL Data Warehouse に接続する
@@ -38,7 +38,7 @@ Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に�
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1.SQL Data Warehouse への接続
 1. Visual Studio 2013 または 2015 を開きます。
-2. SQL Server オブジェクト エクスプローラーを開きます。 これを行うには、**[表示]** > **[SQL Server オブジェクト エクスプローラー]** の順に選択します。
+2. SQL Server オブジェクト エクスプローラーを開きます。 これを行うには、 **[表示]**  >  **[SQL Server オブジェクト エクスプローラー]** の順に選択します。
    
     ![[SQL Server オブジェクト エクスプローラー]][1]
 3. **[SQL Server の追加]** アイコンをクリックします。
@@ -48,9 +48,9 @@ Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に�
    
     ![[サーバーへの接続]][3]
    
-   * **[サーバー名]**:  前の手順で特定した**サーバー名**を入力します。
-   * **[認証]**:  **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
-   * **[ユーザー名]** と **[パスワード]**:  先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
+   * **[サーバー名]** : 前の手順で特定した**サーバー名**を入力します。
+   * **[認証]** : **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
+   * **[ユーザー名]** と **[パスワード]** : 先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
    * **[接続]** をクリックします。
 5. 確認のために、Azure SQL Server を展開します。 サーバーに関連付けられているデータベースが表示されます。 AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
    

@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: jowargo
 ms.openlocfilehash: 9942b1d4d8b5d538f5150a36e596753282039be7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488103"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60234256"
 ---
 # <a name="configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal で通知ハブ用に Baidu クラウド プッシュの設定を構成する
 この記事では、Azure portal を使用して Azure 通知ハブ用に Baidu クラウド プッシュの設定を構成する方法について説明します。 

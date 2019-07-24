@@ -9,13 +9,13 @@ ms.date: 01/28/2019
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-manager: jeconnoc
-ms.openlocfilehash: 7b463be143ed3f89c1b10424dafc7a0e841ecbfc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+manager: gwallace
+ms.openlocfilehash: 2da92b4fcd98024ada8d852d65e08fe8c70e3884
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775647"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704053"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces での事業継続とディザスター リカバリー
 
@@ -27,7 +27,7 @@ Azure Dev Spaces は Azure Kubernetes Service (AKS) の機能です。 AKS で�
 
 異なるリージョンの AKS クラスターで Dev Spaces を有効にすると、1 つの Azure リージョンで障害が発生した直後に Dev Spaces の使用を再開できます。
 
-AKS の複数リージョンのデプロイの概要については、「[複数リージョンへのデプロイを計画する](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multi-region-deployment)」を参照してください。
+AKS の複数リージョンのデプロイの概要については、「[複数リージョンへのデプロイを計画する](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)」を参照してください。
 
 Azure Dev Spaces と互換性のある AKS クラスターのデプロイについては、「[Azure Cloud Shell を使用して Kubernetes クラスターを作成する](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)」を参照してください。
 
@@ -80,11 +80,11 @@ azds space select -n <space name>
 Visual Studio を使用している場合は、次の手順を通じて、既存のプロジェクトで使用されるクラスターを切り替えることができます。
 
 1. Visual Studio でプロジェクトを開きます。
-1. ソリューション エクスプローラーでプロジェクト名を右クリックし、**[プロパティ]** をクリックします。
-1. 左側のウィンドウで、**[デバッグ]** をクリックします。
-1. デバッグ プロパティ ページで、**[プロファイル]** ドロップダウン リストをクリックし、**[Azure Dev Spaces]** を選択します。
+1. ソリューション エクスプローラーでプロジェクト名を右クリックし、 **[プロパティ]** をクリックします。
+1. 左側のウィンドウで、 **[デバッグ]** をクリックします。
+1. デバッグ プロパティ ページで、 **[プロファイル]** ドロップダウン リストをクリックし、 **[Azure Dev Spaces]** を選択します。
 1. **[変更]** ボタンをクリックします。
-1. 表示されたダイアログで、お客様が使用したい AKS クラスターを選択します。 必要に応じて、**[スペース]** ドロップダウン リストから適切なオプションを選択して、作業する別の開発空間を選択するか、新しい開発空間を作成します。
+1. 表示されたダイアログで、お客様が使用したい AKS クラスターを選択します。 必要に応じて、 **[スペース]** ドロップダウン リストから適切なオプションを選択して、作業する別の開発空間を選択するか、新しい開発空間を作成します。
 
 適切なクラスターと空間を選択したら、F5 キーを押して Dev Spaces でサービスを稼働できます。
 

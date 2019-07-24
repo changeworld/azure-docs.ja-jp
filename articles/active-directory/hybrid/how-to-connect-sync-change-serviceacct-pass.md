@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 077671ab4e964d7641aa3a0f0b435b39117eb6aa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65139390"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync サービス アカウントのパスワードの変更
@@ -46,7 +46,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 次のようなエラーが表示されます。
 
 - Windows サービス コントロール マネージャーで同期サービスを開始しようとすると、暗号化キーを取得できないため、"<strong>ローカル コンピューターで Microsoft Azure AD Sync サービスを開始できませんでした。詳細情報はシステム イベント ログを参照してください。これが Microsoft 以外のサービスである場合は、サービス ベンダーに問い合わせてください。その際、サービス固有のエラー コードが -21451857952 であることを伝えてください</strong>" というエラーが表示され失敗します。
-- Windows イベント ビューアーでは、アプリケーション イベント ログに**イベント ID 6028** のエラーと、*"The server encryption key cannot be accessed."* (サーバー暗号化キーにアクセスできませんでした) というエラー メッセージが記録されます。
+- Windows イベント ビューアーでは、アプリケーション イベント ログに**イベント ID 6028** のエラーと、 *"The server encryption key cannot be accessed."* (サーバー暗号化キーにアクセスできませんでした) というエラー メッセージが記録されます。
 
 これらのエラーが表示されないようにするために、パスワードの変更時には「[ADSync サービス アカウントの暗号化キーの破棄](#abandoning-the-adsync-service-account-encryption-key)」の手順に従ってください。
  
@@ -98,7 +98,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 2. **[コネクタ]** タブに移動します。
 3. オンプレミス AD に対応する **AD コネクタ** を選択します。 AD コネクタが複数ある場合は、各コネクタについて次の手順を繰り返します。
 4. **[アクション]** の **[プロパティ]** を選択します。
-5. ポップアップ ダイアログで、**[Connect to Active Directory Forest] \(Active Directory フォレストに接続)** を選択します。
+5. ポップアップ ダイアログで、 **[Connect to Active Directory Forest] \(Active Directory フォレストに接続)** を選択します。
 6. AD DS アカウントのパスワードを **[パスワード]** テキストボックスに入力します。 パスワードがわからない場合は、この手順を実行する前に既知の値に設定する必要があります。
 7. **[OK]** をクリックして新しいパスワードを保存し、ポップアップ ダイアログを閉じます。
 ![Azure AD Connect 同期の暗号化キー破棄ユーティリティ](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)

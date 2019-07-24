@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: b8c21b908ca9162a7e44c7af1e222babc6ee1eb7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265612"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60631953"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Azure Notebooks のプロファイルとユーザー ID
 
@@ -63,8 +63,8 @@ ms.locfileid: "59265612"
 | アカウント情報 | 表示名、ユーザー ID、およびパブリック電子メール アドレス。 ここでの電子メール アカウントは、他のユーザーにお客様と連絡する手段を提供します。このアカウントは、Azure Notebooks 自体にサインインするために使用する[アカウント](azure-notebooks-user-account.md)とは異なる場合があります。 |
 | プロファイル情報 | 自分の位置情報、会社、役職、Web サイト、自分自身の簡単な説明。 |
 | ソーシャル プロファイル | 共有する場合は、自分の GitHub、Twitter、Facebook ID。 |
-| プライバシー設定 | 2 つのコマンドを提供します。<ul><li>**[Export My Profile]\(マイ プロファイルのエクスポート\)**: 写真、プロファイル情報、セキュリティ ログなど、Azure Notebooks で自分のプロファイルに保存されるすべての情報が含まれる、*.zip* ファイルを作成してダウンロードします。</li><li>**[Delete My Account]\(マイ アカウントの削除\)**: Azure Notebooks に格納されたすべての個人情報を完全に削除します。</li></ul> |
-| サイトの機能を有効にする | Azure Notebooks の動作のさまざまな部分を制御できます。<ul><li>**[Unified Frontend for Notebooks]\(Notebooks 用の統合フロントエンド\)**: よりすばやくノートブックを起動し、永続性を向上させることができます。</li><li>**[Run in JupyterLab by default]\(既定で JupyterLab で実行する\)**:既定では、Azure Notebooks によってほとんどのユーザーに適したシンプルなユーザー インターフェイスが提供されます。 JupyterLab では、経験豊富なユーザー向けのより豊富ですが、より複雑なインターフェイスが提供されます。</li><li>**[VNext Website]\(VNext Web サイト\)**: このドキュメントに示された現代化された Web レイアウトを有効にします。</li></ul> |
+| プライバシー設定 | 2 つのコマンドを提供します。<ul><li>**[Export My Profile]\(マイ プロファイルのエクスポート\)** : 写真、プロファイル情報、セキュリティ ログなど、Azure Notebooks で自分のプロファイルに保存されるすべての情報が含まれる、 *.zip* ファイルを作成してダウンロードします。</li><li>**[Delete My Account]\(マイ アカウントの削除\)** : Azure Notebooks に格納されたすべての個人情報を完全に削除します。</li></ul> |
+| サイトの機能を有効にする | Azure Notebooks の動作のさまざまな部分を制御できます。<ul><li>**[Unified Frontend for Notebooks]\(Notebooks 用の統合フロントエンド\)** : よりすばやくノートブックを起動し、永続性を向上させることができます。</li><li>**[Run in JupyterLab by default]\(既定で JupyterLab で実行する\)** :既定では、Azure Notebooks によってほとんどのユーザーに適したシンプルなユーザー インターフェイスが提供されます。 JupyterLab では、経験豊富なユーザー向けのより豊富ですが、より複雑なインターフェイスが提供されます。</li><li>**[VNext Website]\(VNext Web サイト\)** : このドキュメントに示された現代化された Web レイアウトを有効にします。</li></ul> |
 
 ## <a name="next-steps"></a>次の手順  
 

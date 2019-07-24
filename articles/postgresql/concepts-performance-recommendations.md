@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 31d8c0fdf1b4df3ee00f3652c933b4b738384bea
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65068842"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨事項
@@ -25,7 +25,7 @@ ms.locfileid: "65068842"
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 [パフォーマンスに関する推奨事項](concepts-performance-recommendations.md)機能は、パフォーマンスを向上させる可能性のあるインデックスを識別するために、サーバーの間でワークロードを分析します。
 
-Azure portal の PostgreSQL サーバーに関するページで、メニュー バーの **[インテリジェント パフォーマンス]** セクションから、**[パフォーマンスの推奨事項]** を開きます。
+Azure portal の PostgreSQL サーバーに関するページで、メニュー バーの **[インテリジェント パフォーマンス]** セクションから、 **[パフォーマンスの推奨事項]** を開きます。
 
 ![パフォーマンスに関する推奨事項ランディング ページ](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 

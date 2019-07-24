@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: c664b089f316255fabc4c8dc36b291d7d63e6280
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66140160"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181676"
 ---
 このセクションでは、Mobile Apps の既存のバックエンド プロジェクトのコードを更新して、新しい項目が追加されるたびにプッシュ通知を送信するようにします。 このプロセスは、Azure Notification Hubs の[テンプレート](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)機能を使用しており、クロスプラットフォームのプッシュを有効にします。 テンプレートを使用してさまざまなクライアントがプッシュ通知に登録されるため、1 つの汎用プッシュがすべてのクライアント プラットフォームに届きます。
 
@@ -17,8 +17,8 @@ ms.locfileid: "66140160"
 
 ### <a name="dotnet"></a>.NET バックエンド プロジェクト
 
-1. Visual Studio で、サーバー プロジェクトを右クリックします。 次に、**[NuGet パッケージの管理]** を選択します。 `Microsoft.Azure.NotificationHubs` を検索し、**[インストール]** を選択します。 このプロセスにより、バックエンドから通知を送信するための Notification Hubs ライブラリがインストールされます。
-2. サーバー プロジェクトで、**[コントローラー]** > **[TodoItemController.cs]** の順に開きます。 次の using ステートメントを追加します。
+1. Visual Studio で、サーバー プロジェクトを右クリックします。 次に、 **[NuGet パッケージの管理]** を選択します。 `Microsoft.Azure.NotificationHubs` を検索し、 **[インストール]** を選択します。 このプロセスにより、バックエンドから通知を送信するための Notification Hubs ライブラリがインストールされます。
+2. サーバー プロジェクトで、 **[コントローラー]**  >  **[TodoItemController.cs]** の順に開きます。 次の using ステートメントを追加します。
 
     ```csharp
     using System.Collections.Generic;

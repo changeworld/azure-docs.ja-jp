@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: d87c8a46459a9b4bf80bef895ec97e436d38e699
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 17469d3602935715d570a496e12b6680269ff465
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186834"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60622941"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Azure DevTest Labs でキー コンテナーにシークレットを格納する
 Azure DevTest Labs の使用時には複雑なシークレット (Windows 仮想マシンのパスワード、Linux 仮想マシンの SSH 公開キー、または成果物を使用して Git リポジトリを複製するための個人用アクセス トークン) の入力が必要な場合があります。 通常、シークレットは長いランダムな文字列です。 そのため、シークレットの入力は面倒で、特に同じシークレットを複数回使用する場合は注意が必要です。

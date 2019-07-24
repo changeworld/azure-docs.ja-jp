@@ -12,11 +12,11 @@ ms.date: 05/04/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d1634552522a3d1056f9af29386b6ae32754cae0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834088"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61429299"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Azure Machine Learning 用にデータを Azure SQL Database に移動する
 
@@ -43,13 +43,13 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 
 ここで説明されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。 NYC タクシー データセットを自身のオンプレミスの SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](sql-walkthrough.md#dbload)」に記載されている手順に従います。 これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
 
-## <a name="file-to-azure-sql-database"></a> フラット ファイル ソースから Azure SQL Database へのデータの移動
+## <a name="file-to-azure-sql-database"></a> フラット ファイル ソースから Azure SQL データベースへのデータの移動
 フラット ファイル (CSV 形式または TSV 形式) のデータは、一括挿入 SQL クエリを使用して Azure SQL データベースに移動できます。
 
 ### <a name="bulk-insert-sql-query"></a> 一括挿入 SQL クエリ
 一括挿入 SQL クエリを使用する手順は、フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する手順と似ています。 詳細については、「 [一括挿入 SQL クエリ](move-sql-server-virtual-machine.md#insert-tables-bulkquery)」をご覧ください。
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a> オンプレミスの SQL Server から Azure SQL Database へのデータの移動
+## <a name="sql-on-prem-to-sazure-sql-database"></a> オンプレミスの SQL Server から Azure SQL データベースへのデータの移動
 ソース データがオンプレミスの SQL Server に保存されている場合は、さまざまな方法で Azure SQL データベースにデータを移動できます。
 
 1. [フラット ファイルへのエクスポート](#export-flat-file)

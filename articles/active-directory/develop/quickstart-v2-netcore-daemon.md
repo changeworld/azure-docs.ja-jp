@@ -17,12 +17,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3851e53bb648811b46ec69d9c4fc91b920ce80fb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a42cfe1374f3defdf6ed8acc828e6c7e446588bc
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65784952"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595138"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -95,6 +95,10 @@ ms.locfileid: "65784952"
     ```
     > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
     > > [新しいクライアント シークレットを生成する]()
+    
+    > [!div class="sxs-lookup" renderon="portal"]
+    > > [!NOTE]
+    > > このクイックスタートでは、Enter_the_Supported_Account_Info_Here をサポートしています。
     
     > [!div renderon="docs"]
     >> 各値の説明:

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3b4c3bac1a2d62246fa5a7ff3a348c6cb2652ea1
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a29381bded4bb2562227bd5f23ccb59bb5add028
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868169"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059210"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する 
 
@@ -64,16 +64,16 @@ Media Services の関数を開発するときは、自分が開発するさま�
 |Name|定義|例| 
 |---|---|---|
 |SigningKey |署名キー。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | webhook エンドポイント アドレス。 webhook 関数が作成されたら、**[関数の URL の取得]** リンクから URL をコピーできます。 | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==|
+|WebHookEndpoint | webhook エンドポイント アドレス。 webhook 関数が作成されたら、 **[関数の URL の取得]** リンクから URL をコピーできます。 | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==|
 
 ## <a name="create-a-function"></a>関数を作成する
 
-デプロイした関数アプリは、**[App Services]** の Azure Functions に表示されます。
+デプロイした関数アプリは、 **[App Services]** の Azure Functions に表示されます。
 
-1. 目的の関数アプリを選択し、**[新しい関数]** をクリックします。
+1. 目的の関数アプリを選択し、 **[新しい関数]** をクリックします。
 2. **C#** コードと **[API と webhook]** シナリオを選択します。 
 3. **[汎用 webhook - C#]** を選択します。
-4. webhook に名前を付けて、**[作成]** を押します。
+4. webhook に名前を付けて、 **[作成]** を押します。
 
 ### <a name="files"></a>ファイル
 
@@ -245,7 +245,7 @@ private static string PublishAndBuildStreamingURLs(String jobID)
 
     // Get a reference to the streaming manifest file from the  
     // collection of files in the asset. 
-    var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+    var manifestFile = asset.AssetFiles.ToList().Where(f => f.Name.ToLower().
                 EndsWith(".ism")).
                 FirstOrDefault();
 

@@ -1,20 +1,18 @@
 ---
-title: Azure パートナーと顧客の使用状況の属性
+title: Azure パートナーと顧客の使用状況の属性 | Azure Marketplace
 description: Azure Marketplace ソリューションの顧客による使用状況を追跡する方法の概要
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
-manager: nunoc
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
-ms.author: yijenj
-ms.openlocfilehash: 078815185ddb6018a394401f57f7557ac3aedb73
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.author: pabutler
+ms.openlocfilehash: fa0a88ce3f74c20ab36931a6a78f8265bdb9d8be
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59050154"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876234"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -180,11 +178,11 @@ SKU など、さらに細かな粒度で GUID を追跡することもできま�
 
 1. [クラウド パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
 
-1. 右上隅に表示されるご自身のアカウント アイコンを選択し、**[Publisher profile]\(発行プロファイル\)** を選択します。
+1. 右上隅に表示されるご自身のアカウント アイコンを選択し、 **[Publisher profile]\(発行プロファイル\)** を選択します。
 
    ![発行プロファイルの選択](media/marketplace-publishers-guide/guid-image-for-lu.png)
 
-1. **[プロファイル]** ページで、**[Add Tracking GUID]\(トラッキング GUID の追加\)** を選択します。
+1. **[プロファイル]** ページで、 **[Add Tracking GUID]\(トラッキング GUID の追加\)** を選択します。
 
    ![[Add Tracking GUID]\(トラッキング GUID の追加\) を選択](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
 
@@ -210,7 +208,7 @@ SKU など、さらに細かな粒度で GUID を追跡することもできま�
 
 テンプレートに変更を加えてテスト デプロイを実行した後、タグを付けたデプロイ済みのリソースを取得するには、以下の PowerShell スクリプトを使用します。
 
-このスクリプトを使用すると、GUID が Resource Manager テンプレートに正常に追加されたことを確認できます。 このスクリプトは、Resource Manager API のデプロイには適用されません。
+このスクリプトを使用すると、GUID が Resource Manager テンプレートに正常に追加されたことを確認できます。 このスクリプトは、Resource Manager API または Terraform のデプロイには適用されません。
 
 Azure にサインインします。 スクリプトを実行する前に、検証対象のデプロイがあるサブスクリプションを選択します。 スクリプトはデプロイのサブスクリプション コンテキスト内で実行する必要があります。
 
@@ -249,7 +247,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>レポート
 
-顧客の使用状況の属性のレポートは、パートナー センター分析ダッシュ ボードで確認できます。 ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure))。
+顧客の使用状況の属性のレポートは、パートナー センター分析ダッシュ ボードで確認できます。 ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure))。 レポートを表示するには、パートナー センターの資格情報を使用してサインインする必要があります。 レポートまたはサインインに関する問題が発生した場合は、「サポートを受ける」セクションの指示に従ってサポート リクエストを作成します。
 
 [Partner Association Type]\(パートナー関連付けタイプ\) のドロップダウン リストで追跡対象のテンプレートを選択すると、レポートが表示されます。
 
@@ -269,7 +267,13 @@ foreach ($deployment in $deployments){
 
 ## <a name="get-support"></a>サポートを受ける
 
-マーケットプレースのオンボードや顧客の使用状況の属性についてサポートが必要な場合は、以下の手順に従います。
+発生した問題に応じて 2 つのサポート チャネルがあります。
+
+パートナー センターの問題 (顧客の利用状況属性レポートの表示やサインインなど) が発生した場合は、[https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support) でパートナー センター サポート チームにサポート要求を作成します。
+
+![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+
+マーケットプレースのオンボードや、顧客の使用状況の属性全般 (顧客の使用状況の属性の設定方法など) についてのサポートが必要な場合は、次の手順に従います。
 
 1. [サポート ページ](https://go.microsoft.com/fwlink/?linkid=844975)に移動します。
 
@@ -277,8 +281,8 @@ foreach ($deployment in $deployments){
 
 1. 問題の**カテゴリ**を選択します。
 
-   - 使用状況の関連付けの問題の場合は、**[その他]** を選択します。
-   - Azure Marketplace CPP に関するアクセスの問題の場合は、**[Access Problem]\(アクセスの問題\)** を選択します。
+   - 使用状況の関連付けの問題の場合は、 **[その他]** を選択します。
+   - Azure Marketplace CPP に関するアクセスの問題の場合は、 **[Access Problem]\(アクセスの問題\)** を選択します。
 
      ![問題のカテゴリを選択](media/marketplace-publishers-guide/lu-article-incident.png)
 
@@ -293,7 +297,7 @@ foreach ($deployment in $deployments){
 
    ![インシデント タイトルとして「ISV Usage Tracking」を入力](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
 
-1. フォームに必要事項を入力し、**[送信]** を選択します。
+1. フォームに必要事項を入力し、 **[送信]** を選択します。
 
 顧客の使用状況の属性を理解して採用するために、Microsoft パートナー技術コンサルタントから、技術的なプレセール、デプロイ、およびアプリケーション開発のシナリオに関する技術的なガイダンスを受けることもできます。
 

@@ -8,6 +8,8 @@
       href: sql-database-paas-vs-sql-server-iaas.md
     - name: リリース ノート
       href: sql-database-release-notes.md
+    - name: ゲートウェイの IP 移行に関する更新情報
+      href: sql-database-gateway-migration.md
 - name: クイック スタート
   expanded: true
   items:
@@ -28,6 +30,8 @@
       items:
         - name: サーバーレベルの IP ファイアウォール規則
           href: sql-database-server-level-firewall-rule.md
+        - name: Managed Instance でのパブリック エンドポイントの構成
+          href: sql-database-managed-instance-public-endpoint-configure.md
         - name: マネージド インスタンスへのクライアント VM 接続
           href: sql-database-managed-instance-configure-vm.md
         - name: マネージド インスタンスへのポイント対サイト接続
@@ -83,25 +87,29 @@
           href: sql-database-design-first-database.md
         - name: .NET を使用したデータベースの設計
           href: sql-database-design-first-database-csharp.md
-    - name: SQL Database への移行
+    - name: 単一データベース
       items:
         - name: DMS を使用して単一データベースまたはプールされたデータベースに移行する
           href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
-        - name: DMS を使用してマネージド インスタンスに移行する
+        - name: 地理的に分散したデータベースの実装
+          href: sql-database-implement-geo-distributed-database.md
+        - name: Azure SQL Data Sync の設定
+          href: sql-database-get-started-sql-data-sync.md
+    - name: マネージド インスタンス
+      items:
+        - name: DMS を使用したオンライン移行
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+        - name: トランザクション レプリケーションの構成
+          href: replication-with-sql-database-managed-instance.md
     - name: SQL Database のセキュリティ
       items:
         - name: 単一データベースとプールされたデータベースのセキュリティ
           href: sql-database-security-tutorial.md
         - name: Managed Instance のセキュリティ
           href: sql-database-managed-instance-aad-security-tutorial.md
-    - name: 地理的に分散したデータベースの実装
-      href: sql-database-implement-geo-distributed-database.md
-    - name: Azure SQL Data Sync の設定
-      href: sql-database-get-started-sql-data-sync.md
     - name: Machine Learning サービス
       items:
-        - name: R で予測モデルを作成してデプロイする
+        - name: R で予測モデルを作成する
           items:
             - name: 1 - データの準備
               href: sql-database-tutorial-predictive-model-prepare-data.md
@@ -109,6 +117,14 @@
               href: sql-database-tutorial-predictive-model-build-compare.md
             - name: 3 - モデルのデプロイ
               href: sql-database-tutorial-predictive-model-deploy.md
+        - name: R でクラスタリング モデルを作成する
+          items:
+            - name: 1 - データの準備
+              href: sql-database-tutorial-clustering-model-prepare-data.md
+            - name: 2 - モデルの作成
+              href: sql-database-tutorial-clustering-model-build.md
+            - name: 3 - モデルのデプロイ
+              href: sql-database-tutorial-clustering-model-deploy.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -195,6 +211,8 @@
           href: sql-database-managed-instance-index.yml
         - name: マネージド インスタンスの機能
           href: sql-database-managed-instance.md
+        - name: マネージド インスタンスの FAQ
+          href: sql-database-managed-instance-faq.md
         - name: Management API リファレンス
           href: sql-database-managed-instance-create-manage.md
         - name: リソース制限
@@ -492,14 +510,10 @@
           href: sql-database-managed-instance-find-management-endpoint-ip-address.md
         - name: 組み込みのファイアウォール保護の確認
           href: sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md
-        - name: トランザクション レプリケーション
-          href: replication-with-sql-database-managed-instance.md
         - name: 脅威検出の構成
           href: sql-database-managed-instance-threat-detection.md
         - name: アプリケーションの接続
           href: sql-database-managed-instance-connect-app.md
-        - name: パブリック エンドポイントの構成
-          href: sql-database-managed-instance-public-endpoint-configure.md
     - name: データの読み込みと移動
       items:
         - name: Azure 内でのデータベースのコピー

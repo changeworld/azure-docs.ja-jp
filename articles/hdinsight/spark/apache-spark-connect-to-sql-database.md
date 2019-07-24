@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/15/2018
-ms.openlocfilehash: 84946083146517146ad9aeb48693230aaaaf7943
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 05/21/2019
+ms.openlocfilehash: 3812cf55a26a12ef110b8acf14edd0e8bfd36851
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701175"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66236531"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark クラスターを使用して Azure SQL データベースのデータを読み書きする
 
-Azure HDInsight の Apache Spark クラスターを Azure SQL データベースと接続してから、SQL Database からのデータの読み取り、および SQL Database へのデータの書き込みやストリーミングを行う方法を説明します。 この記事の説明では、[Jupyter Notebook](https://jupyter.org/) を使って Scala コード スニペットを実行します。 ただし、Scala または Python でスタンドアロン アプリケーションを作成して、同じタスクを実行することもできます。 
+Azure HDInsight の Apache Spark クラスターを Azure SQL データベースと接続してから、SQL Database からのデータの読み取り、および SQL Database へのデータの書き込みやストリーミングを行う方法を説明します。 この記事の説明では、[Jupyter Notebook](https://jupyter.org/) を使って Scala コード スニペットを実行します。 ただし、Scala または Python でスタンドアロン アプリケーションを作成して、同じタスクを実行することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL データベース
 最初に、Spark クラスターに関連付けられた [Jupyter Notebook](https://jupyter.org/) を作成します。 この Notebook を使って、この記事で使われているコード スニペットを実行します。 
 
 1. [Azure Portal](https://portal.azure.com/) でクラスターを開きます。
-1. 右側の**クラスター ダッシュボード**の下で、**[Jupyter Notebook]** を選択します。  **クラスター ダッシュボード** が表示されない場合は、ブレードの左側のメニューで **[概要]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
+1. 右側の**クラスター ダッシュボード**の下で、 **[Jupyter Notebook]** を選択します。  **クラスター ダッシュボード**が表示されない場合は、左側のメニューの **[概要]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
     ![Spark 上の Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上の Jupyter Notebook")
    
@@ -45,7 +45,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL データベース
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. Jupyter Notebook で、右上隅の **[New]\(新規\)** をクリックし、**[Spark]** をクリックして Scala Notebook を作成します。 HDInsight Spark クラスター上の Jupyter Notebook では、Python2 アプリケーション用の **PySpark** カーネル、Python3 アプリケーション用の **PySpark3** カーネルも提供されます。 この記事では、Scala Notebook を作成します。
+1. Jupyter Notebook で、右上隅の **[New]\(新規\)** をクリックし、 **[Spark]** をクリックして Scala Notebook を作成します。 HDInsight Spark クラスター上の Jupyter Notebook では、Python2 アプリケーション用の **PySpark** カーネル、Python3 アプリケーション用の **PySpark3** カーネルも提供されます。 この記事では、Scala Notebook を作成します。
    
     ![Spark 上の Jupyter Notebook のカーネル](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook のカーネル")
 
@@ -164,7 +164,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL データベース
 
 1. 最初のステップとして、**hvactable** 内にレコードがないことを確認します。 SSMS を使い、テーブルに対して次のクエリを実行します。
 
-       DELETE FROM [dbo].[hvactable]
+       TRUNCATE TABLE [dbo].[hvactable]
 
 1. HDInsight Spark クラスターに新しい Jupyter Notebook を作成します。 コード セルに次のスニペットを貼り付けてから、**Shift + Enter** キーを押します。
 
@@ -174,7 +174,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL データベース
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-1. **HVAC.csv** から hvactable にデータをストリーミングします。 */HdiSamples/HdiSamples/SensorSampleData/HVAC/* にある HVAC.csv ファイルをクラスターで使うことができます。 次のスニペットでは最初に、ストリーミングするデータのスキーマを取得します。 次に、そのスキーマを使ってストリーミング データフレームを作成します。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
+1. **HVAC.csv** から hvactable にデータをストリーミングします。 HVAC.csv ファイルは、クラスター (`/HdiSamples/HdiSamples/SensorSampleData/HVAC/`) で入手できます。 次のスニペットでは最初に、ストリーミングするデータのスキーマを取得します。 次に、そのスキーマを使ってストリーミング データフレームを作成します。 次のスニペットをコード セルに貼り付け、**Shift + Enter** キーを押して実行します。
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 

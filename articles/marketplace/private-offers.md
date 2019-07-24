@@ -7,13 +7,13 @@ manager: pabutler
 ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
-ms.author: qianw211
-ms.openlocfilehash: 179775076382022b9a97e7d76bc1e0dc4fbf69db
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: pabutler
+ms.openlocfilehash: dcba2b40bdcf4558f7a06f7e14d0ce654a9c1ec1
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937567"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876078"
 ---
 # <a name="private-offers"></a>プライベート オファー
 

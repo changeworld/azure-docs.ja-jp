@@ -17,10 +17,10 @@ ms.date: 07/25/2018
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: c85644e3cab39f9e0864af91722ee54aab6d59f3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66139749"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service の PremiumV2 レベルの構成
@@ -51,12 +51,12 @@ App Service アプリの価格レベルは、実行されている [App Service 
 
 <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>で App Service プランを構成する場合は、 **[価格レベル]** を選択します。 
 
-**[Production]\(運用\)** を選択してから **[P1V2]**、**[P2V2]**、または **[P3V2]** を選択し、**[適用]** をクリックします。
+**[Production]\(運用\)** を選択してから **[P1V2]** 、 **[P2V2]** 、または **[P3V2]** を選択し、 **[適用]** をクリックします。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> オプションとして **[P1V2]** **[P2V2]**、および **[P3V2]** が表示されない場合、またはこれらのオプションがグレー表示になっている場合、App Service プランが含まれている基になる App Service デプロイで **PremiumV2** を利用できない可能性があります。 詳細については、「[サポートされてないリソース グループとリージョンの組み合わせからスケール アップする](#unsupported)」を参照してください。
+> オプションとして **[P1V2]** **[P2V2]** 、および **[P3V2]** が表示されない場合、またはこれらのオプションがグレー表示になっている場合、App Service プランが含まれている基になる App Service デプロイで **PremiumV2** を利用できない可能性があります。 詳細については、「[サポートされてないリソース グループとリージョンの組み合わせからスケール アップする](#unsupported)」を参照してください。
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>既存のアプリを PremiumV2 レベルにスケール アップする
 
@@ -66,11 +66,11 @@ App Service アプリの価格レベルは、実行されている [App Service 
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a> で、App Service アプリ ページを開きます。
 
-App Service アプリ ページの左側のナビゲーションで、**[スケール アップ (App Service のプラン)]** を選択します。
+App Service アプリ ページの左側のナビゲーションで、 **[スケール アップ (App Service のプラン)]** を選択します。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-**[Production]\(運用\)** を選択してから **[P1V2]**、**[P2V2]**、または **[P3V2]** を選択し、**[適用]** をクリックします。
+**[Production]\(運用\)** を選択してから **[P1V2]** 、 **[P2V2]** 、または **[P3V2]** を選択し、 **[適用]** をクリックします。
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
@@ -114,7 +114,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-次のコマンドは、App Service プランを _P1V2_ で作成します。 `-WorkerSize` のオプションは _[Small]_、_[Medium]_、および _[Large]_ です。
+次のコマンドは、App Service プランを _P1V2_ で作成します。 `-WorkerSize` のオプションは _[Small]_ 、 _[Medium]_ 、および _[Large]_ です。
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

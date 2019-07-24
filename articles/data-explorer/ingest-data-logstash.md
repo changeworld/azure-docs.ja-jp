@@ -1,22 +1,22 @@
 ---
-title: クイック スタート:Logstash から Azure Data Explorer にデータを取り込む
-description: このクイック スタートでは、Logstash から Azure Data Explorer にデータを取り込む (読み込む) 方法について学習します
+title: Logstash から Azure Data Explorer にデータを取り込む
+description: この記事では、Logstash から Azure Data Explorer にデータを取り込む (読み込む) 方法について学習します
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 01/14/2019
-ms.openlocfilehash: e0d81454e6036d09bb74af6f522063a1aed5fffe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046412"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66494535"
 ---
-# <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>クイック スタート:Logstash から Azure Data Explorer にデータを取り込む
+# <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Logstash から Azure Data Explorer にデータを取り込む
 
-[Logstash](https://www.elastic.co/products/logstash) は、多くのソースからデータを同時に取り込み、変換したデータを任意の "一時退避場所" に送信する、オープン ソースのサーバー側データ処理パイプラインです。 このクイック スタートでは、そのデータを Azure Data Explorer に送信します。これは、ログとテレメトリ データのための高速で非常にスケーラブルなデータ探索サービスです。 最初にテスト クラスターにテーブルとデータのマッピングを作成し、次にデータをテーブルに送信して結果を検証するように Logstash に指示します。
+[Logstash](https://www.elastic.co/products/logstash) は、多くのソースからデータを同時に取り込み、変換したデータを任意の "一時退避場所" に送信する、オープン ソースのサーバー側データ処理パイプラインです。 この記事では、そのデータを Azure Data Explorer に送信します。これは、ログとテレメトリ データのための高速で非常にスケーラブルなデータ探索サービスです。 最初にテスト クラスターにテーブルとデータのマッピングを作成し、次にデータをテーブルに送信して結果を検証するように Logstash に指示します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -146,5 +146,4 @@ output {
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [クエリを作成する](write-queries.md)
+* [クエリを作成する](write-queries.md)

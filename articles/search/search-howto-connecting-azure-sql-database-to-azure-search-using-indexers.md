@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c23933e7f379a438d436fd99c5fea7899c5891ef
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 59a45791676f62f42763e0e834d327b0c0c4106d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025358"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66755103"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Azure SQL Database に接続し、Azure Search インデクサーを使用してコンテンツのインデックスを作成する
 
@@ -158,23 +158,7 @@ Azure サービスにデータベースへの接続を許可することが必�
 
 **interval** パラメーターは必須です。 interval は、連続する 2 つのインデクサー実行の開始の時間間隔を示します。 許可される最短の間隔は 5 分です。最長は 1 日です。 XSD "dayTimeDuration" 値 ([ISO 8601 期間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。 使用されるパターンは、`P(nD)(T(nH)(nM))` です。 たとえば、15 分ごとの場合は `PT15M`、2 時間ごとの場合は `PT2H` です。
 
-省略可能な **startTime** は、スケジュールされた実行を開始するときを示します。 省略すると、現在の UTC 時刻が使用されます。 この時刻は過去でもかまいません。その場合、最初の実行はインデクサーが startTime から継続的に実行されているかのようにスケジュールされます。  
-
-特定のインデクサーを実行できるのは一度に 1 つだけです。 インデクサーの開始予定時間にそのインデクサーが既に実行されている場合、その実行は、次回予定されている時間まで延期されます。
-
-さらに具体的な例を示します。 次のような時間単位のスケジュールを構成したものとします。
-
-    "schedule" : { "interval" : "PT1H", "startTime" : "2015-03-01T00:00:00Z" }
-
-これは次のように動作します。
-
-1. 最初のインデクサーの実行は、UTC で 2015 年 3 月 1 日午前 12 時前後に開始します 。
-2. この実行に 20 分 (または、1 時間未満) かかるものとします。
-3. 第 2 の実行は、2015 年 3 月 1 日午前 1 時前後に開始します。
-4. この実行に 1 時間以上かかるものとします。たとえば、70 分かかって、午前 2 時 10 分前後に終了します。
-5. 今は午前 2 時で、3 番目の実行が開始する時刻です。 ただし、午前 1 時からの 2 番目の実行が 継続中のため、3 番目の実行はスキップされます。 3 番目の実行は午前 3 時に開始します。
-
-**PUT インデクサー** 要求を使用することで、既存のインデクサーのスケジュールを追加、変更、削除できます。
+インデクサーのスケジュールの定義の詳細については、「[Azure Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)」を参照してください。
 
 <a name="CaptureChangedRows"></a>
 

@@ -16,11 +16,11 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e0a4eed020728bea5de196eebe438947ae509e4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191991"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60515660"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>チュートリアル:Salesforce Sandbox を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -60,11 +60,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 このセクションでは、Active Directory のユーザー アカウントのユーザー プロビジョニングを Salesforce Sandbox に対して有効にする方法について説明します。
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-1. シングル サインオンのために Salesforce Sandbox を既に構成している場合は、検索フィールドで Salesforce Sandbox のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **Salesforce Sandbox** を検索します。 検索結果から Salesforce Sandbox を選択してアプリケーションの一覧に追加します。
+1. シングル サインオンのために Salesforce Sandbox を既に構成している場合は、検索フィールドで Salesforce Sandbox のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **Salesforce Sandbox** を検索します。 検索結果から Salesforce Sandbox を選択してアプリケーションの一覧に追加します。
 
-1. Salesforce Sandbox のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+1. Salesforce Sandbox のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -76,23 +76,23 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
    
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
-1. Salesforce Sandbox のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce Sandbox の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、**[Settings]\(設定\)** をクリックします。
+1. Salesforce Sandbox のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce Sandbox の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、 **[Settings]\(設定\)** をクリックします。
 
      ![Enable automatic user provisioning](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
 
-1. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、**[私のセキュリティ トークンのリセット]** をクリックします。
+1. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、 **[私のセキュリティ トークンのリセット]** をクリックします。
   
     ![Enable automatic user provisioning](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
 
-1. **[セキュリティ トークンのリセット]** ページで、**[セキュリティ トークンのリセット]** ボタンをクリックします。
+1. **[セキュリティ トークンのリセット]** ページで、 **[セキュリティ トークンのリセット]** ボタンをクリックします。
 
     ![Enable automatic user provisioning](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
 
 1. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。 新しいセキュリティ トークンが記載された Salesforce Sandbox.com からの電子メールを探します。
 
-1. トークンをコピーして Azure AD のウィンドウに移動し、**[シークレット トークン]** フィールドに貼り付けます。
+1. トークンをコピーして Azure AD のウィンドウに移動し、 **[シークレット トークン]** フィールドに貼り付けます。
 
-1. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Salesforce Sandbox アプリに接続できることを確認します。
+1. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Salesforce Sandbox アプリに接続できることを確認します。
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、チェック ボックスをオンにします。
 

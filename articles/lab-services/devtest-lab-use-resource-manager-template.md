@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
 ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62101569"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンを作成する 
 
@@ -51,7 +51,7 @@ Resource Manager テンプレートを使用して DevTest Labs で VM を作成
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>仮想マシンの Resource Manager テンプレートを表示し保存する
 1. 「[Azure DevTest Labs のラボに最初の VM を作成する](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)」の手順に従い、仮想マシンの作成を始めます。
 1. 仮想マシンに必要な情報を入力し、この VM に必要なすべてのアイテムを追加します。
-1. [構成の設定] ウィンドウの下部で、**[View ARM template]\(ARM テンプレートの表示\)** を選択します。
+1. [構成の設定] ウィンドウの下部で、 **[View ARM template]\(ARM テンプレートの表示\)** を選択します。
 
    ![[View ARM template]\(ARM テンプレートの表示\) ボタン](./media/devtest-lab-use-arm-template/devtestlab-lab-view-rm-template.png)
 1. 後で別の仮想マシンの作成に使用するために、Resource Manager テンプレートをコピーして保存します。

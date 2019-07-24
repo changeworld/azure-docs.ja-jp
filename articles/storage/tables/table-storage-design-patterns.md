@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 63a81e390c113d10378973f928ffb58d71e8628e
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271630"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295115"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -263,7 +263,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 ![部署エンティティと従業員エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
 
 ### <a name="solution"></a>解決策
-データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 例:   
+データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 例:  
 
 ![部署エンティティ](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
 
@@ -574,7 +574,25 @@ if (retrieveResult.Result != null)
 この例では、 **従業員エンティティ**型のエンティティを取得することをどのように予想しているか注意してください。  
 
 ### <a name="retrieving-multiple-entities-using-linq"></a>LINQ を使用して複数のエンティティを取得します。
-複数のエンティティを取得するには、て、ストレージ クライアント ライブラリとともにLINQ を使用し、 **where** 句のあるクエリを指定します。 テーブル スキャンを回避するのには、where 句の **PartitionKey** 値と、可能であれば **RowKey** 値をインクルードし、テーブルとパーティションのスキャンを避けます。 Table サービスは、where 句で一部の比較演算子 (より大きい、以上、より小さい、以下、等しい、等しくない) のみサポートしています。 次の c# のコード スニペットは、Sales 部署 (**PartitionKey** が部署名を格納していると仮定) の中で、姓が "B" (**RowKey** が姓を格納していると仮定) で始まるすべての従業員を検索 します。  
+LINQ を使用すると、Microsoft Azure Cosmos Table Standard Library を使用するときに、Table service から複数のエンティティを取得できます。 
+
+```cli
+dotnet add package Microsoft.Azure.Cosmos.Table
+```
+
+以下の例を機能させるには、名前空間を含める必要があります。
+
+```csharp
+using System.Linq;
+using Microsoft.Azure.Cosmos.Table;
+using Microsoft.Azure.Cosmos.Table.Queryable;
+```
+
+employeeTable は、CreateQuery<ITableEntity>() メソッドを実装する CloudTable オブジェクトであり、TableQuery<ITableEntity> を返します。 この種類のオブジェクトは、IQueryable を実装し、LINQ クエリ式とドット表記の構文を使用できるようにします。
+
+複数のエンティティの取得は、**where** 句でクエリを指定することで実現します。 テーブル スキャンを回避するのには、where 句の **PartitionKey** 値と、可能であれば **RowKey** 値をインクルードし、テーブルとパーティションのスキャンを避けます。 Table サービスは、where 句で一部の比較演算子 (より大きい、以上、より小さい、以下、等しい、等しくない) のみサポートしています。 
+
+次の c# のコード スニペットは、Sales 部署 (**PartitionKey** が部署名を格納していると仮定) の中で、姓が "B" (**RowKey** が姓を格納していると仮定) で始まるすべての従業員を検索 します。  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();

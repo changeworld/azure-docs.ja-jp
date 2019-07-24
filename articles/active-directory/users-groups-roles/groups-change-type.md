@@ -16,11 +16,11 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dd753ca4994975302a0bc6fede61964f80196d7c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199603"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60472073"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Azure Active Directory で静的なグループメンバーシップを動的に変更する
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) で、グループのメンバーシップを�
 
 次の手順は、ユーザーのグループを静的メンバーシップから動的メンバーシップに変更する例です。
 
-1. 選択したグループの **[プロパティ]** ページで、**[動的ユーザー]** の **[メンバーシップの種類]** を選び、グループ メンバーシップの変更について説明するダイアログ ボックスで [はい] を選んで続行します。 
+1. 選択したグループの **[プロパティ]** ページで、 **[動的ユーザー]** の **[メンバーシップの種類]** を選び、グループ メンバーシップの変更について説明するダイアログ ボックスで [はい] を選んで続行します。 
   
    ![動的ユーザーのメンバーシップの種類を選ぶ](./media/groups-change-type/select-group-to-convert.png)
   

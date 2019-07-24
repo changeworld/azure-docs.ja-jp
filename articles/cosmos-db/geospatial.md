@@ -4,14 +4,14 @@ description: Azure Cosmos DB と SQL API を使用した空間オブジェクト
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/01/2017
+ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 9c6ea982d9a605696dad0c943aa6dd2ae155d6bd
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d0571608e154915a473145374ce007854aaa57f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770739"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66480127"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API アカウントで地理空間データと GeoJSON 位置データを使用する
 
@@ -142,7 +142,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-緯度情報と経度情報がなくても、物理的な住所や所在地名 (都市、国など) があれば、Bing マップ REST サービスなどのジオコーディング サービスを使って実際の座標を検索することができます。 Bing マップのジオコーディングの詳細については、 [こちら](https://msdn.microsoft.com/library/ff701713.aspx)を参照してください。
+緯度情報と経度情報がなくても、物理的な住所や所在地名 (都市、国や地域など) があれば、Bing マップ REST サービスなどのジオコーディング サービスを使って実際の座標を検索することができます。 Bing マップのジオコーディングの詳細については、 [こちら](https://msdn.microsoft.com/library/ff701713.aspx)を参照してください。
 
 ## <a name="querying-spatial-types"></a>空間データ型のクエリ
 地理空間データの挿入方法がわかったら、SQL と LINQ で Azure Cosmos DB のデータを検索してみましょう。
@@ -254,7 +254,7 @@ SQL .NET SDK には、LINQ 式の中で使用するための、`Distance()` と 
 **距離検索の LINQ クエリ**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
-        .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
+        .Where(u => u.ProfileType == "Public" && u.Location.Distance(new Point(32.33, -4.66)) < 30000))
     {
         Console.WriteLine("\t" + user);
     }

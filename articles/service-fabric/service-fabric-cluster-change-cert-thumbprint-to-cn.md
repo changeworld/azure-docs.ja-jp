@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: aljo
-ms.openlocfilehash: d6860cdfb2e453a2151b4c5e425cfe0b12d88f8b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a94fda5a1f3aedd5842bad92b5348a77177b4137
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050477"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66302460"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>証明書の拇印から共通名へとクラスターを変更する
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。 この記事では、実行中の Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するように更新する方法について説明します。
@@ -102,7 +102,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
 > スケール セットのシークレットでは、各シークレットはバージョン管理された一意のリソースであるため、2 つの個別のシークレットに対して同じリソース ID はサポートされません。 
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>ポータルからテンプレートをダウンロードして更新する
-基になるスケール セットに証明書がインストールされましたが、その証明書と共通名を使用するように Service Fabric クラスターを更新する必要もあります。  ここで、クラスター デプロイ用のテンプレートをダウンロードします。  [Azure Portal](https://portal.azure.com) にログインし、クラスターをホストしているリソース グループに移動します。  **[設定]** で、**[デプロイ]** を選択します。  最新のデプロイを選択し、**[テンプレートの表示]** をクリックします。
+基になるスケール セットに証明書がインストールされましたが、その証明書と共通名を使用するように Service Fabric クラスターを更新する必要もあります。  ここで、クラスター デプロイ用のテンプレートをダウンロードします。  [Azure portal](https://portal.azure.com) にサインインし、クラスターをホストしているリソース グループに移動します。  **[設定]** で、 **[デプロイ]** を選択します。  最新のデプロイを選択し、 **[テンプレートの表示]** をクリックします。
 
 ![テンプレートの表示][image1]
 
@@ -127,7 +127,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
     },
     ```
 
-    また、*certificateThumbprint* を削除することを検討します。これはもう不要の可能性があります。
+    また、*certificateThumbprint* を削除することを検討します。これは Resource Manager テンプレートでもう参照されていない可能性があります。
 
 2. **Microsoft.Compute/virtualMachineScaleSets** リソースで、拇印ではなく証明書の設定の共通名を使用するように仮想マシン拡張機能を更新します。  **virtualMachineProfile**->**extensionProfile**->**extensions**->**properties**->**settings**->**certificate** に `"commonNames": ["[parameters('certificateCommonName')]"],` を追加し、`"thumbprint": "[parameters('certificateThumbprint')]",` を削除します。
     ```json

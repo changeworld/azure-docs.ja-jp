@@ -10,11 +10,11 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526344"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60527311"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Diagnostics 拡張機能の構成スキーマのバージョンと履歴
 このページでは、Microsoft Azure SDK に付属する Azure Diagnostics 拡張機能のスキーマのバージョン一覧を示します。  
@@ -178,7 +178,7 @@ EventHub にルーティングする機能が追加されました。
 Sink 要素と、診断データを [Application Insights](../../azure-monitor/app/cloudservices.md) に送信することで、アプリケーションとシステムおよびインフラストラクチャのレベル全体の問題を診断しやすくする機能が追加されました。
 
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 と診断拡張 1.3
-Visual Studio のクラウド サービス プロジェクトで、次の変更が行われました  (これらの変更はそれ以降のバージョンの Azure SDK にも当てはまります)。
+Visual Studio のクラウド サービス プロジェクトで、次の変更が行われました (これらの変更はそれ以降のバージョンの Azure SDK にも当てはまります)。
 
 * ローカル エミュレーターで診断がサポートされるようになりました。 この変更により、Visual Studio での開発およびテスト時に診断データを収集し、開発中のアプリケーションで正しくトレースが作成されることを確認できるようになりました。 Visual Studio で Azure ストレージ エミュレーターを使ってクラウド サービス プロジェクトを実行している間に行われる診断データ収集が、接続文字列 `UseDevelopmentStorage=true` を指定すると有効になります。 すべての診断データは、(開発ストレージ) ストレージ アカウントに収集されます。
 * 診断ストレージ アカウントの接続文字列 (Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString) の保存先が、再びサービス構成 (.cscfg) ファイルに戻されました。 Azure SDK 2.5 では、診断ストレージ アカウントが diagnostics.wadcfgx ファイルで指定されていました。
@@ -188,7 +188,7 @@ Azure SDK 2.4 以前と Azure SDK 2.6 以降とで、接続文字列の働きに
 * Azure SDK 2.4 以前では、実行時に診断プラグインが診断ログを転送するためのストレージ アカウント情報を取得する目的で接続文字列を使用していました。
 * Azure SDK 2.6 以降では、Visual Studio が診断接続文字列を使用して、発行時に診断拡張機能を適切なストレージ アカウント情報で構成します。 Visual Studio が発行時に使用する各種サービス構成に対し、異なるストレージ アカウントを接続文字列で定義することができます。 しかし、(Azure SDK 2.5 以降) 診断プラグインが使用できなくなったため、.cscfg ファイルだけでは診断拡張機能を有効にできません。 Visual Studio や PowerShell などのツールを使用して個別に拡張機能を有効にする必要があります。
 * PowerShell を使用して診断拡張機能を構成するプロセスを単純化するために、Visual Studio からの出力パッケージには、ロールごとの診断拡張機能のパブリック構成 XML も含まれます。 Visual Studio は、診断接続文字列を使用して、パブリック構成に存在するストレージ アカウント情報を取り込みます。 パブリック構成ファイルは拡張機能フォルダーに作成され、`PaaSDiagnostics.<RoleName>.PubConfig.xml` というパターンに従います。 このファイルを PowerShell ベースのデプロイで使用し、各構成をロールにマップすることができます。
-* .cscfg ファイル内の接続文字列は、Azure Portal で診断データにアクセスするときにも使用されるため、**[監視]** タブで確認できます。ポータルで監視データを詳細出力するようにサービスを構成するには、この接続文字列が必要となります。
+* .cscfg ファイル内の接続文字列は、Azure Portal で診断データにアクセスするときにも使用されるため、 **[監視]** タブで確認できます。ポータルで監視データを詳細出力するようにサービスを構成するには、この接続文字列が必要となります。
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Azure SDK 2.6 以降へのプロジェクトの移行
 Azure SDK 2.5 から Azure SDK 2.6 以降に移行するとき、.wadcfgx ファイルで指定した診断ストレージ アカウントがある場合、そのアカウントが維持されます。 さまざまなストレージ構成で異なるストレージ アカウントの使用の柔軟性を利用するには、接続文字列をプロジェクトに手動で追加する必要があります。 Azure SDK 2.4 以前から Azure SDK 2.6 にプロジェクトを移行する場合は、診断接続文字列が保持されます。 ただし、前のセクションでも触れたように、Azure SDK 2.6 では接続文字列の扱いが変更されているので注意してください。

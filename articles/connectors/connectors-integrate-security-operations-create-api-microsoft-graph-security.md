@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
 ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673684"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60448050"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
 
@@ -62,12 +62,12 @@ Microsoft Graph Security の詳細については、「[Microsoft Graph Security
 
    または
 
-   既存のロジック アプリでは、Microsoft Graph Security アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。
+   既存のロジック アプリでは、Microsoft Graph Security アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。
 
    または
 
    ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
-   表示されるプラス (+) 記号を選択し、**[アクションの追加]** を選択します。
+   表示されるプラス (+) 記号を選択し、 **[アクションの追加]** を選択します。
 
 1. 検索ボックスに、フィルターとして「microsoft graph security」と入力します。 アクションの一覧から、目的のアクションを選択します。
 

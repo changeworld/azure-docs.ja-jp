@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.openlocfilehash: 9b68b9d0bbac984c29759cf4b7b026a559a9d819
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569165"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60809017"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Service を使用した Azure Functions の開発と構成
 
@@ -36,7 +36,7 @@ Azure Functions および Azure SignalR Service で構築されたサーバー�
 
 ### <a name="negotiate-function"></a>negotiate 関数
 
-クライアント アプリケーションでは、Azure SignalR Service に接続するために、有効なアクセス トークンが必要になります。 アクセス トークンは匿名か、または特定のユーザー ID に認証済みのものを使用できます。 サーバーレスの SignalR Service アプリケーションでは、トークンと、SignalR Service エンドポイント URL などの他の接続情報を取得するために「negotiate」という名前の HTTP エンドポイントが必要です。
+クライアント アプリケーションでは、Azure SignalR Service に接続するために、有効なアクセス トークンが必要になります。 アクセス トークンは匿名でも特定のユーザー ID に認証することもできます。 サーバーレスの SignalR Service アプリケーションでは、トークンと、SignalR Service エンドポイント URL などの他の接続情報を取得するために「negotiate」という名前の HTTP エンドポイントが必要です。
 
 HTTP によってトリガーされる Azure 関数と *SignalRConnectionInfo* 入力バインドを使用して、接続情報オブジェクトを生成します。 関数には、`/negotiate` で終わる HTTP ルートが必要です。
 
@@ -46,7 +46,7 @@ negotiate 関数を作成する方法の詳細については、[*SignalRConnect
 
 ### <a name="sending-messages-and-managing-group-membership"></a>メッセージの送信とグループ メンバーシップの管理
 
-*SignalR* 出力バインドを使用して、Azure SignalR Service に接続したクライアントにメッセージを送信します。 すべてのクライアントにメッセージをブロードキャストすることも、特定のユーザー ID で認証されたか、特定のグループに追加されたクライアントのサブセットにそれらを送信することもできます。
+*SignalR* 出力バインドを使用して、Azure SignalR Service に接続したクライアントにメッセージを送信します。 すべてのクライアントにメッセージをブロードキャストすることも、特定のユーザー ID で認証されるか、特定のグループに追加されていたクライアントのサブセットにそれらを送信することもできます。
 
 ユーザーは、1 つ以上のグループに追加できます。 *SignalR* 出力バインドを使用して、グループに対してユーザーを追加または削除することもできます。
 

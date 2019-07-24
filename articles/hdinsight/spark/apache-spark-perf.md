@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: dfbbdf3f2414f7b00445b271b667ad761ba93df0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5701bb534d0fd0e25aab90f9d1035c96bb55c518
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724377"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66476102"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Apache Spark ジョブを最適化する
 
@@ -59,10 +59,10 @@ Spark では、csv、json、xml、parquet、orc、avro など、多くの形式�
 
 | ストアの種類 | ファイル システム | 速度 | 一時的 | ユース ケース |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb[s]:**//url/ | **Standard** | はい | 一時的なクラスター |
-| Azure Data Lake Storage Gen 2| **abfs[s]:**//url/ | **より高速** | はい | 一時的なクラスター |
-| Azure Data Lake Storage Gen 1| **adl:**//url/ | **より高速** | はい | 一時的なクラスター |
-| ローカルの HDFS | **hdfs:**//url/ | **最も高速** | いいえ  | 24 時間 365 日の対話型クラスター |
+| Azure Blob Storage | **wasb:** //url/ | **Standard** | はい | 一時的なクラスター |
+| Azure Data Lake Storage Gen 2| **abfs[s]:** //url/ | **より高速** | はい | 一時的なクラスター |
+| Azure Data Lake Storage Gen 1| **adl:** //url/ | **より高速** | はい | 一時的なクラスター |
+| ローカルの HDFS | **hdfs:** //url/ | **最も高速** | いいえ | 24 時間 365 日の対話型クラスター |
 
 ## <a name="use-the-cache"></a>キャッシュの使用
 

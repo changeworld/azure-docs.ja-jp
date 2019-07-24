@@ -8,10 +8,10 @@ ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: conceptual
 ms.openlocfilehash: 7b9503b2db14d4de6c4c8cf983c42bccd6f9f8fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66157439"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する
@@ -98,7 +98,7 @@ Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 
 この時点で、仮想ネットワーク ゲートウェイは削除されています。 次の手順を使用して、使用されなくなったリソースを削除できます。
 
-### <a name="5-delete-the-local-network-gateways"></a>5. ローカル ネットワーク ゲートウェイを削除します。
+### <a name="5-delete-the-local-network-gateways"></a>5\. ローカル ネットワーク ゲートウェイを削除します。
 
 対応するローカル ネットワーク ゲートウェイの一覧を取得します。
 

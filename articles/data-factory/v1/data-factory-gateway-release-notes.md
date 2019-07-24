@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 865bfdae199bca7ebee888be527db239d34511d1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017618"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60486466"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]
@@ -103,7 +103,7 @@ Data Management Gateway とその使用方法の詳細については、次の�
 *  Gateway 構成マネージャーを使用して、ゲートウェイ用の HTTP プロキシを設定できます。 構成されている場合、Azure BLOB、Azure テーブル、Azure Data Lake、および Document DB には HTTP プロキシでアクセスします。
 *  Azure BLOB、Azure Data Lake Store、オンプレミスのファイル システム、およびオンプレミスの HDFS との間でデータをコピーするときに、TextFormat のヘッダーを処理できます。
 *  既にサポートされているブロック BLOB のほか、追加 Blob とページ BLOB からのデータのコピーがサポートされています。
-*  新しいゲートウェイの状態 "**オンライン (制限付き)**" が導入されました。この状態は、ゲートウェイの主な機能が、コピー ウィザードの対話型操作のサポートを除いて動作することを示します。
+*  新しいゲートウェイの状態 "**オンライン (制限付き)** " が導入されました。この状態は、ゲートウェイの主な機能が、コピー ウィザードの対話型操作のサポートを除いて動作することを示します。
 *  登録キーにより、ゲートウェイ登録の堅牢性が向上しました。
 
 ## <a name="216040"></a>2.1.6040。

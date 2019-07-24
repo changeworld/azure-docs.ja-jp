@@ -16,11 +16,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 934562147fedcc81b16fd1ad2534af5662ef4b78
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436831"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60437674"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Azure Active Directory Power BI コンテンツ パックの使用方法
 
@@ -66,7 +66,7 @@ Azure AD Power BI コンテンツ パックには、次のレポートが付属�
 
 ## <a name="customize-azure-ad-activity-content-pack"></a>Azure AD アクティビティ コンテンツ パックのカスタマイズ
 
-**ビジュアルの変更**:レポートのビジュアルは、**[レポートの編集]** をクリックして編集できるほか、必要なビジュアルを選択することができます。
+**ビジュアルの変更**:レポートのビジュアルは、 **[レポートの編集]** をクリックして編集できるほか、必要なビジュアルを選択することができます。
  
 ![Azure Active Directory Power BI コンテンツ パック](./media/howto-power-bi-content-pack/09.png) 
  
@@ -86,7 +86,7 @@ Azure AD Power BI コンテンツ パックには、次のレポートが付属�
 
 ## <a name="schedule-a-daily-refresh-of-your-power-bi-report"></a>Power BI レポートの日次更新スケジュール
 
-Power BI レポートの日次更新をスケジュールするには、**[データセット]** > **[設定]** > **[更新のスケジュール設定]** の順に移動し、以下のように設定します。
+Power BI レポートの日次更新をスケジュールするには、 **[データセット]**  >  **[設定]**  >  **[更新のスケジュール設定]** の順に移動し、以下のように設定します。
  
 ![Azure Active Directory Power BI コンテンツ パック](./media/howto-power-bi-content-pack/15.png) 
 
@@ -96,7 +96,7 @@ Power BI レポートの日次更新をスケジュールするには、**[デ�
 
 - 新しいコンテンツ パックをダウンロードし、この記事の手順を使用してセットアップします。
 
-- セットアップが完了したら、**[データ ソース]** > **[設定]** > **[データ ソースの資格情報]** の順に移動し、資格情報を入力し直します。
+- セットアップが完了したら、 **[データ ソース]**  >  **[設定]**  >  **[データ ソースの資格情報]** の順に移動し、資格情報を入力し直します。
 
     ![Azure Active Directory Power BI コンテンツ パック](./media/howto-power-bi-content-pack/16.png) 
 
@@ -134,7 +134,7 @@ Power BI 全般のヘルプ情報については、こちらの[ヘルプ記事]
  
 ### <a name="data-import-is-too-slow"></a>データのインポートが遅すぎます 
  
-**このエラーがどのように表面化するか**:Power BI でコンテンツ パックに接続した後、Azure AD アクティビティ ログ用のダッシュボードを準備するためのデータ インポート処理が開始されます。 次のメッセージが表示されます。**[データをインポートしています...]**。これ以上は進みません。  
+**このエラーがどのように表面化するか**:Power BI でコンテンツ パックに接続した後、Azure AD アクティビティ ログ用のダッシュボードを準備するためのデータ インポート処理が開始されます。 次のメッセージが表示されます。 **[データをインポートしています...]** 。これ以上は進みません。  
 
 | 原因 | 修正方法 |
 | ---   | ---        |

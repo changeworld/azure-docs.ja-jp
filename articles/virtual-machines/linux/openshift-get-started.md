@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: c8ebd10544331d3b7d887124542fe4ee2753c714
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: d9e3aa3dae81166ef91f57ea6a95087a952001ed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233143"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65550978"
 ---
 # <a name="openshift-in-azure"></a>Azure の OpenShift
 
@@ -36,7 +36,7 @@ OpenShift には、コンテナーのオーケストレーションと管理の�
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift は Azure で実行される OpenShift のフル マネージド オファリングです。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 完全なドキュメントは[こちら](https://docs.microsoft.com/azure/openshift/)でご覧いただけます。 
+Microsoft Azure Red Hat OpenShift は Azure で実行される OpenShift のフル マネージド オファリングです。 このサービスは、Microsoft と Red Hat によって共同で管理され、サポートされています。 詳細については、[Azure Red Hat OpenShift Service](https://docs.microsoft.com/azure/openshift/) ドキュメントをご覧ください。
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 

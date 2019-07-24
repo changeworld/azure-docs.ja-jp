@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 06/03/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 807045089f70e117d46754412d974be7fba5a77a
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 0dc4c29d3a12902b3ce01f9505cba5ac02e921eb
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65832494"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625341"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft ID プラットフォームの進化
 
@@ -58,7 +58,7 @@ Azure portal **[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083
 
 ### <a name="msal-libraries"></a>MSAL ライブラリ
 
-MSAL ライブラリを使用し、すべての Microsoft ID を認証するアプリケーションをビルドできます。 .NET の MSAL ライブラリは一般公開されています。 JavaScript、iOS、Android の MSAL ライブラリはプレビュー段階であり、運用環境で使用できます。 プレビュー段階の MSAL ライブラリには一般公開されているバージョンの MSAL と ADAL と同じ運用レベルのサポートを提供しています。
+MSAL ライブラリを使用し、すべての Microsoft ID を認証するアプリケーションをビルドできます。 .NET と JavaScript の MSAL ライブラリは一般提供されています。 iOS と Android の MSAL ライブラリはプレビュー段階であり、運用環境での使用に適しています。 プレビュー段階の MSAL ライブラリには一般公開されているバージョンの MSAL と ADAL と同じ運用レベルのサポートを提供しています。
 
 MSAL ライブラリを利用し、アプリケーションを Azure AD B2C と統合することもできます。
 

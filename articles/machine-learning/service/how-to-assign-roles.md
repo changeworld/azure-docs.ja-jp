@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 02/20/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5cc86c40f56cee28ff6a6912acd67961285bffc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4a5723b2ffbd34fd7cf022bf747b4504b3bdac53
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025326"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797656"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
@@ -49,13 +49,13 @@ Azure Machine Learning ワークスペースは Azure リソースの 1 つで�
 [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) をインストール済みの場合は、CLI コマンドを使用してユーザーにロールを割り当てることもできます。
 
 ```azurecli-interactive 
-az ml workspace share -n <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
+az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
 `user` フィールドは、ワークスペースの親サブスクリプションが存在する Azure Active Directory のインスタンスにおける既存のユーザーのメール アドレスです。 このコマンドレットを使用する方法の例を次に示します。
 
 ```azurecli-interactive 
-az ml workspace share -n my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
 ## <a name="create-custom-role"></a>カスタム ロールの作成
@@ -113,5 +113,5 @@ az ml workspace share -n my_workspace -g my_resource_group --role "Data Scientis
 ## <a name="next-steps"></a>次の手順
 
 - [エンタープライズ セキュリティの概要](concept-enterprise-security.md)
-- [仮想ネットワーク内での実験と推論の安全な実行](how-to-enable-virtual-network.md)
+- [仮想ネットワーク内での実験と推論/スコアの安全な実行](how-to-enable-virtual-network.md)
 - [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)

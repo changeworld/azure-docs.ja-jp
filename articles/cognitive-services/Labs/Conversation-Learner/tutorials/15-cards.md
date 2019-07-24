@@ -3,19 +3,19 @@ title: Conversation Learner モデルでカードを使用する方法 (パー�
 titleSuffix: Azure
 description: Conversation Learner モデルでカードを使用する方法について説明します。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: a2db74e4c5688c0a2a3975ff828caf20c3cf7904
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: d0b87597c506aca5c3b4f6f3815f58656203ac3c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222578"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66389519"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>カードを使用する方法 (パート 1/2)
 

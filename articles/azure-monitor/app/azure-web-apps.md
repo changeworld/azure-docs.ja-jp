@@ -9,19 +9,19 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: ec5b3572cbf74bad9b82eb93a45d7a4664023b95
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 5594c1f3517bf3d3f74841493df3c683304fa3f5
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408233"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502091"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
 [Azure App Services](https://docs.microsoft.com/azure/app-service/) 上で実行されているご利用の .NET および .NET Core ベースの Web アプリケーションで、これまでよりも簡単に監視を有効にすることができるようになりました。 以前は手動でサイト拡張機能をインストールする必要がありましたが、最新の拡張機能/エージェントが既定でアプリ サービス イメージに組み込まれました。 この記事では、Application Insights の監視を有効にする手順を説明し、大規模なデプロイ プロセスを自動化する準備となるガイダンスを提供します。
 
 > [!NOTE]
-> **[開発ツール]** > **[拡張機能]** を使用して Application Insights のサイト拡張機能を手動で追加することは、非推奨になりました。 この拡張機能のインストール方法は、新しい各バージョンの手動更新が必要でした。 拡張機能の最新の安定版リリースが、App Service イメージの一部として[プレインストール](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)されるようになりました。 これらのファイルは `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` にあり、安定版リリースごとに自動的に更新されます。 以下の監視を有効にするエージェント ベースの手順を実行すると、非推奨の拡張機能は自動的に削除されます。
+> **[開発ツール]**  >  **[拡張機能]** を使用して Application Insights のサイト拡張機能を手動で追加することは、非推奨になりました。 この拡張機能のインストール方法は、新しい各バージョンの手動更新が必要でした。 拡張機能の最新の安定版リリースが、App Service イメージの一部として[プレインストール](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)されるようになりました。 これらのファイルは `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` にあり、安定版リリースごとに自動的に更新されます。 以下の監視を有効にするエージェント ベースの手順を実行すると、非推奨の拡張機能は自動的に削除されます。
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 
@@ -100,7 +100,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 
 ASP.NET の場合、クライアント側の監視はオプトインです。 クライアント側の監視を有効にするには:
 
-* **[設定]**、****[アプリケーション設定]**** の順に選択します
+* **[設定]** 、** **[アプリケーション設定]**** の順に選択します
    * [アプリケーション設定] で、新しい**アプリ設定名**と**値**を追加します。
 
      [Name] \(名前): `APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -119,7 +119,7 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 
 何らかの理由でクライアント側の監視を無効にするには、次の手順を実行します。
 
-* **[設定]** > **[アプリケーション設定]** の順に選択します。
+* **[設定]**  >  **[アプリケーション設定]** の順に選択します。
    * [アプリケーション設定] で、新しい**アプリ設定名**と**値**を追加します。
 
      名前: `APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -318,7 +318,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
     1. プレインストールされたサイト拡張機能 ApplicationInsightsAgent を有効にするようにアプリケーション設定を指定します。 「[PowerShell で有効にする](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell)」を参照してください。
     2. Azure App Service の Application Insights 拡張機能という名前のプライベート サイト拡張機能を手動で削除します。
 
-2.5.1 より前のバージョンからアップグレードする場合は、ApplicationInsigths dll がアプリケーションの bin フォルダーから削除されていることを確認します。[トラブルシューティングの手順](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)を参照してください。
+2\.5.1 より前のバージョンからアップグレードする場合は、ApplicationInsigths dll がアプリケーションの bin フォルダーから削除されていることを確認します。[トラブルシューティングの手順](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 633981682bd8820d72a98b3fc6fbd802e0cd2afb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 32dc928147af8fbb3c84bdb76e50cee4fdabe17d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867224"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66386646"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Video Search API のアップグレード ガイド
 
@@ -71,11 +71,11 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>クエリ パラメーター
 
-- `modulesRequested` クエリ パラメーターの名前が [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#modulesrequested) に変更されました。  
+- `modulesRequested` クエリ パラメーターの名前が [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) に変更されました。  
 
 ### <a name="object-changes"></a>オブジェクトの変更
 
-- [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) の `nextOffsetAddCount` フィールドの名前が `nextOffset` に変更されました。 オフセットを使用する方法も変更されています。 以前は、[オフセット](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) クエリ パラメーターを値 `nextOffset` と、前のオフセット値と、結果のビデオの数に設定していました。 現在は、`offset` クエリ パラメーターを値 `nextOffset` に設定するだけです。  
+- [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) の `nextOffsetAddCount` フィールドの名前が `nextOffset` に変更されました。 オフセットを使用する方法も変更されています。 以前は、[オフセット](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) クエリ パラメーターを値 `nextOffset` と、前のオフセット値と、結果のビデオの数に設定していました。 現在は、`offset` クエリ パラメーターを値 `nextOffset` に設定するだけです。  
   
-- `relatedVideos` フィールドのデータ型を `Video[]` から [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videosmodule) に変更しました ([VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videodetails) を参照)。
+- `relatedVideos` フィールドのデータ型を `Video[]` から [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) に変更しました ([VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) を参照)。
 

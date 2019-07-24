@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 52a9cfa52cd63715addadcbfb367510ded56fd76
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5f4a1962f90d54001f315827c1243e929344e3d7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142722"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274004"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にアプリケーションを接続する
 
@@ -45,7 +45,7 @@ Vnet を接続するには、次の 2 つのオプションがあります。
 望ましいオプションはピアリングです。ピアリングでは Microsoft バックボーン ネットワークが使用されるため、接続の観点から言えば、ピアリングされた VNet 内の仮想マシンであっても、同じ VNet 内の仮想マシンであっても、待機時間に顕著な違いはありません。 VNet ピアリングは、同じリージョン内のネットワークに制限されます。  
 
 > [!IMPORTANT]
-> Managed Instance の VNet ピアリング シナリオは、[グローバル仮想ネットワーク ピアリングの制約](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。
+> Managed Instance の VNet ピアリング シナリオは、[グローバル仮想ネットワーク ピアリングの制約](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)により、同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 
 
 ## <a name="connect-an-on-premises-application"></a>オンプレミス アプリケーションを接続する
 
@@ -56,7 +56,7 @@ Vnet を接続するには、次の 2 つのオプションがあります。
 - サイト間 VPN 接続 ([Azure Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)、[PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、[Azure CLI](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - [ExpressRoute](../expressroute/expressroute-introduction.md) 接続  
 
-オンプレミスから Azure への接続を正常に確立したにもかかわらず、マネージド インスタンスへの接続を確立できない場合は、ファイアウォールで、SQL ポート 1433 とリダイレクト用のポート範囲 11000-12000 上に、オープンなアウトバウンド接続があることを確認してください。
+オンプレミスから Azure への接続を正常に確立しているが、マネージド インスタンスへの接続を確立できない場合は、ファイアウォールでリダイレクト用に SQL ポート 1433 および範囲 11000-11999 のポート上に送信接続が開かれているかどうかを確認してください。
 
 ## <a name="connect-an-application-on-the-developers-box"></a>開発者ボックス上のアプリケーションを接続する
 
@@ -68,10 +68,10 @@ Vnet を接続するには、次の 2 つのオプションがあります。
 
 ![VNET ピアリング](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
-基本のインフラストラクチャを構成したら、一部の設定を変更して、VPN Gateway がマネージド インスタンスをホストする仮想ネットワークの IP アドレスを参照できるようにします。 これを行うには、**[Peering settings]\(ピアリング設定\)** の下で次の具体的な変更を実行します。
+基本のインフラストラクチャを構成したら、一部の設定を変更して、VPN Gateway がマネージド インスタンスをホストする仮想ネットワークの IP アドレスを参照できるようにします。 これを行うには、 **[Peering settings]\(ピアリング設定\)** の下で次の具体的な変更を実行します。
 
-1. VPN ゲートウェイをホストする VNet で **[ピアリング]**、マネージド インスタンスとピアリングされている VNet 接続に進み、**[ゲートウェイ転送を許可する]** をクリックします。
-2. マネージド インスタンスをホストする VNet で **[ピアリング]**、VPN Gateway とピアリングされている VNet 接続に進み、**[Use remote gateways]\(リモート ゲートウェイを使用\)** をクリックします。
+1. VPN ゲートウェイをホストする VNet で **[ピアリング]** 、マネージド インスタンスとピアリングされている VNet 接続に進み、 **[ゲートウェイ転送を許可する]** をクリックします。
+2. マネージド インスタンスをホストする VNet で **[ピアリング]** 、VPN Gateway とピアリングされている VNet 接続に進み、 **[Use remote gateways]\(リモート ゲートウェイを使用\)** をクリックします。
 
 ## <a name="connect-an-azure-app-service-hosted-application"></a>Azure App Service でホストされたアプリケーションを接続する
 
@@ -96,7 +96,7 @@ Azure App Service をマネージド インスタンスに接続する場合の�
 
 接続の問題のトラブルシューティングには、次を参照してください。
 
-- 別のサブネットでは可能であるにもかかわらず、同じ VNet の Azure 仮想マシンからマネージド インスタンスに接続できない場合、アクセスをブロックしている可能性あるネットワーク セキュリティ グループが VM サブネットに設定されているか確認します。また、SQL ポート 1433 と 11000 - 12000 の範囲のポートに発信接続が開かれている必要もあります。これらは、Azure の境界内からリダイレクトを使用して接続するために必要です。
+- 同じ VNet であるが、別のサブネット内の Azure 仮想マシンからマネージド インスタンスに接続できない場合は、VM サブネット上に、アクセスをブロックしている可能性のあるネットワーク セキュリティ グループが設定されているかどうかを確認します。さらに、SQL ポート 1433 および範囲 11000-11999 のポートは Azure 境界内でリダイレクト経由で接続するために必要であるため、これらのポート上に送信接続を開く必要があることに注意してください。
 - VNet と関連付けられているルート テーブルで、BGP 伝達が**有効**に設定されていることを確認します。
 - P2S VPN を使用している場合、Azure portal の構成に**イングレスとエグレス**の数が表示されることを確認します。 ゼロ以外の数であるということは、Azure がトラフィックをオンプレミスからまたはオンプレミスにルーティングしていることを示します。
 

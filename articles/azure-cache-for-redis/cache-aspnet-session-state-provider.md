@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: yegu
 ms.openlocfilehash: 7333fa51da1cd5bbd9175d56571ec1d17cbbe33f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65203925"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET セッション状態プロバイダー
@@ -29,7 +29,7 @@ Azure Cache for Redis には、セッション状態プロバイダーが用意�
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>ASP.NET セッション状態をキャッシュに格納する
 
-Visual Studio で Azure Cache for Redis Session State NuGet パッケージを使用してクライアント アプリケーションを構成するには、**[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+Visual Studio で Azure Cache for Redis Session State NuGet パッケージを使用してクライアント アプリケーションを構成するには、 **[ツール]** メニューで **[NuGet パッケージ マネージャー]** 、 **[パッケージ マネージャー コンソール]** の順にクリックします。
 
 [`Package Manager Console`] ウィンドウで、次のコマンドを実行します。
     
@@ -39,7 +39,7 @@ Install-Package Microsoft.Web.RedisSessionStateProvider
 ```
 
 > [!IMPORTANT]
-> Premium レベルでクラスター機能を使用する場合は、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 以降を使用する必要があります。そうしないと、例外がスローされます。 2.0.1 以降への移行は重大な変更です。詳しくは、「[v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」(v2.0.0 の重大な変更の詳細) をご覧ください。 この記事の更新時点での、このパッケージの最新バージョンは 2.2.3 です。
+> Premium レベルでクラスター機能を使用する場合は、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 以降を使用する必要があります。そうしないと、例外がスローされます。 2\.0.1 以降への移行は重大な変更です。詳しくは、「[v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」(v2.0.0 の重大な変更の詳細) をご覧ください。 この記事の更新時点での、このパッケージの最新バージョンは 2.2.3 です。
 > 
 > 
 

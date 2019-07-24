@@ -3,20 +3,20 @@ title: ナレッジ ベースの編集 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker では、使いやすい編集環境で、ナレッジ ベースのコンテンツを管理することができます。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/26/2019
-ms.author: tulasim
+ms.date: 05/10/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 22d408204b69e0a564103efd29468c6f0d68d93a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 006170b2030b6511ba732a1b12aa5b5b811d8900
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577206"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447488"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>QnA Maker のナレッジ ベースを編集する
 
@@ -40,7 +40,7 @@ QnA Maker では、使いやすい編集環境で、ナレッジ ベースのコ
     |--|--|
     |URL の追加|**[Manage knowledgebase]\(ナレッジ ベースの管理\) -> [+ Add URL]\(+ URL の追加\)** リンクをクリックして、新しい FAQ コンテンツをナレッジ ベースに追加するために新しい URL を追加できます。|
     |URL の削除|既存の URL を削除するには、ごみ箱の削除アイコンを選択します。|
-    |URL コンテンツの更新|既存の URL の最新のコンテンツをクロールするためのナレッジ ベースが必要な場合は、**[更新]** チェック ボックスをオンにします。 これにより、最新の URL コンテンツでナレッジ ベースが更新されます。|
+    |URL コンテンツの更新|既存の URL の最新のコンテンツをクロールするためのナレッジ ベースが必要な場合は、 **[更新]** チェック ボックスをオンにします。 これにより、最新の URL コンテンツでナレッジ ベースが更新されます。|
     |ファイルの追加|**[Manage knowledge base]\(ナレッジ ベースの管理\)** を選択してから **[+ ファイルの追加]** を選択し、サポートされているファイル ドキュメントを追加してナレッジ ベースに含めることができます。|
     |[インポート]|**[Ímport Knowledgebase]\(ナレッジ ベースのインポート\)** ボタンを選択して、既存のナレッジ ベースをインポートすることもできます。 |
     |アップデート|ナレッジ ベースの更新は、ナレッジ ベースと関連付けられた QnA Maker サービスの作成中に使用している**管理価格レベル**によって異なります。 必要な場合、Azure portal から管理レベルを更新することもできます。
@@ -54,13 +54,13 @@ QnA Maker では、使いやすい編集環境で、ナレッジ ベースのコ
 
 ## <a name="add-a-qna-pair"></a>QnA ペアの追加
 
-**[設定]** ページ上で、**[Add QnA pair]\(QnA ペアの追加\)** を選択して、ナレッジ ベースのテーブルに新しい行を追加します。
+**[設定]** ページ上で、 **[Add QnA pair]\(QnA ペアの追加\)** を選択して、ナレッジ ベースのテーブルに新しい行を追加します。
 
 ![[Add QnA pair]\(QnA ペアの追加\)](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
 ## <a name="delete-a-qna-pair"></a>QnA ペアの削除
 
-QnA を削除するには、QnA 行の右端にある**削除**アイコンをクリックします。 これは、永続的な操作です。 この操作を元に戻すことはできません。 ペアを削除する前に、**[パブリッシュ]** ページから KB をエクスポートすることを検討してください。 
+QnA を削除するには、QnA 行の右端にある**削除**アイコンをクリックします。 これは、永続的な操作です。 この操作を元に戻すことはできません。 ペアを削除する前に、 **[パブリッシュ]** ページから KB をエクスポートすることを検討してください。 
 
 ![QnA ペアの削除](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -72,8 +72,7 @@ QnA を削除するには、QnA 行の右端にある**削除**アイコンを�
 
 ## <a name="add-metadata"></a>メタデータの追加
 
-
-メタデータ アイコンを選択してメタデータ ペアを追加します。 メタデータ ペアは、1 つのキーと 1 つの値で構成されます。
+最初に **[表示オプション]** を選択してから、 **[メタデータの表示]** を選択して、メタデータのペアを追加します。 これにより、メタデータの列が表示されます。 次に、 **+** 記号を選択して、メタデータのペアを追加します。 このペアは、1 つのキーと 1 つの値で構成されます。
 
 ![メタデータの追加](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
@@ -102,7 +101,7 @@ QnA を削除するには、QnA 行の右端にある**削除**アイコンを�
 
 ## <a name="delete-azure-resources"></a>Azure リソースを削除する 
 
-QnA Maker ナレッジ ベースに使用されているいずれかの Azure リソースを削除すると、ナレッジ ベースは機能しなくなります。 いずれかのリソースを削除する前に、**[設定]** ページから確実にナレッジ ベースをエクスポートしてください。 
+QnA Maker ナレッジ ベースに使用されているいずれかの Azure リソースを削除すると、ナレッジ ベースは機能しなくなります。 いずれかのリソースを削除する前に、 **[設定]** ページから確実にナレッジ ベースをエクスポートしてください。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,11 +10,11 @@ ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
 ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110972"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60809942"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(非推奨) Log Analytics で Azure Container Service DC/OS クラスターを監視する
 
@@ -43,14 +43,14 @@ Log Analytics は、オンプレミスのインフラストラクチャやクラ
 
    ![](media/container-service-monitoring-oms/image2.png)
 
-2. **[インストール]** をクリックします。 バージョン情報と **[パッケージのインストール]** または **[Advanced Installation] (高度なインストール)** ボタンを含むポップアップが表示されます。 **[Advanced Installation (高度なインストール)]** をクリックすると、**[OMS specific configuration properties (OMS に固有の構成のプロパティ)]** ページが表示されます。
+2. **[インストール]** をクリックします。 バージョン情報と **[パッケージのインストール]** または **[Advanced Installation] (高度なインストール)** ボタンを含むポップアップが表示されます。 **[Advanced Installation (高度なインストール)]** をクリックすると、 **[OMS specific configuration properties (OMS に固有の構成のプロパティ)]** ページが表示されます。
 
    ![](media/container-service-monitoring-oms/image3.png)
 
    ![](media/container-service-monitoring-oms/image4.png)
 
 3. ここでは、`wsid` (Log Analytics ワークスペース ID) と `wskey` (ワークスペース ID の主キー) を入力するよう求められます。 `wsid` と `wskey` の両方を取得するには、<https://mms.microsoft.com> でアカウントを作成する必要があります。
-   手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして `wsid` と `wskey` を取得する必要があります。
+   手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]** 、 **[接続されたソース]** 、 **[Linux サーバー]** の順にクリックして `wsid` と `wskey` を取得する必要があります。
 
    ![](media/container-service-monitoring-oms/image5.png)
 
@@ -64,7 +64,7 @@ Linux 用 Log Analytics エージェントを VM にインストールしたら�
 
 ### <a name="azure-portal"></a>Azure ポータル 
 
-<https://portal.microsoft.com/> で Azure portal にサインインします。 **[Marketplace]** で **[監視 + 管理]** を選択し、**[See All (すべて表示)]** をクリックします。 検索ボックスに「`containers`」と入力します。 検索結果に "コンテナー" が表示されます。 **[コンテナー]** を選択し、**[作成]** をクリックします。
+<https://portal.microsoft.com/> で Azure portal にサインインします。 **[Marketplace]** で **[監視 + 管理]** を選択し、 **[See All (すべて表示)]** をクリックします。 検索ボックスに「`containers`」と入力します。 検索結果に "コンテナー" が表示されます。 **[コンテナー]** を選択し、 **[作成]** をクリックします。
 
 ![](media/container-service-monitoring-oms/image9.png)
 
@@ -72,7 +72,7 @@ Linux 用 Log Analytics エージェントを VM にインストールしたら�
 
 ![](media/container-service-monitoring-oms/image10.PNG)
 
-ワークスペースを選択したら、**[作成]** をクリックします。
+ワークスペースを選択したら、 **[作成]** をクリックします。
 
 ![](media/container-service-monitoring-oms/image11.png)
 

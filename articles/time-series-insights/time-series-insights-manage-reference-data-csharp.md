@@ -6,18 +6,18 @@ services: time-series-insights
 author: ashannon7
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 683aa2c7112533d9e3c06ddcb238048a26c75db3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 0a482ae44c796e1519ffad0a604510166b1ac63c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66237610"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165609"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する
 
@@ -36,7 +36,7 @@ ms.locfileid: "66237610"
 1. サンプル コードを編集して、 **#DUMMY#** で指定されたサンプル定数をコードの先頭付近に配置する。
 
 > [!NOTE]
-> GA サンプル コードについては、[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample) を参照してください。
+> GA サンプル コードについては、[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) を参照してください。
 
 ## <a name="project-dependencies"></a>プロジェクト依存関係
 

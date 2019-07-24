@@ -4,7 +4,7 @@ description: Azure における Linux VM のライフサイクルの概要 (VM �
 services: virtual-machines-linux
 documentationcenter: ''
 author: shandilvarun
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 31933b0297dd821340313df04b3f6eccd5865e13
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: b894b0d1c97af7b3d71eab6bf48bea7a6ecc23cb
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043608"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708719"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>仮想マシンのライフサイクルと状態
 
@@ -27,4 +27,4 @@ ms.locfileid: "40043608"
 
 ## <a name="next-steps"></a>次の手順
 
-VM の監視の詳細については、「[Azure で仮想マシンを監視する方法](monitor.md)」を参照してください。
+VM の監視について詳しくは、「[Azure で仮想マシンを監視する方法](monitor.md)」をご覧ください。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 899bf4bbf201ae785a4f49c7f278de75fb48945e
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 02a8b825a513c75ef7c037348ccaecdf5026ded2
+ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926272"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67560478"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -31,8 +31,8 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 | Windows 8.1            | SMB 3.0     | はい                   | はい                  |
 | Windows Server 2012 R2 | SMB 3.0     | はい                   | はい                  |
 | Windows Server 2012    | SMB 3.0     | はい                   | はい                  |
-| Windows 7              | SMB 2.1     | はい                   | いいえ                    |
-| Windows Server 2008 R2 | SMB 2.1     | はい                   | いいえ                    |
+| Windows 7              | SMB 2.1     | はい                   | いいえ                   |
+| Windows Server 2008 R2 | SMB 2.1     | はい                   | いいえ                   |
 
 <sup>1</sup>Windows 10 バージョン 1507、1607、1703、1709、1803、1809。  
 <sup>2</sup>Windows Server バージョン 1709 および 1803。
@@ -205,7 +205,7 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![Azure ファイル共有がマウントされました](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. Azure ファイル共有をマウント解除することになったら、エクスプローラーの **[ネットワークの場所]** の下にある共有のエントリを右クリックし、**[切断]** を選択します。
+7. Azure ファイル共有をマウント解除することになったら、エクスプローラーの **[ネットワークの場所]** の下にある共有のエントリを右クリックし、 **[切断]** を選択します。
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Windows から共有スナップショットへのアクセス
 手動で、またはスクリプトや Azure Backup のようなサービスを通じて自動で共有スナップショットを取得した場合、Windows のファイル共有内にある以前のバージョンの共有、ディレクトリ、または特定のファイルを表示することができます。 共有スナップショットは、[Azure portal](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md)、および [Azure CLI](storage-how-to-use-files-cli.md) で取得することができます。
@@ -224,7 +224,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 ![開かれたスナップショット](./media/storage-how-to-use-files-windows/snapshot-browse-windows.png)
 
 #### <a name="restore-from-a-previous-version"></a>以前のバージョンから復元する
-共有スナップショット作成時のディレクトリ全体の内容を元の場所に再帰的にコピーするには、**[復元]** を選択します。
+共有スナップショット作成時のディレクトリ全体の内容を元の場所に再帰的にコピーするには、 **[復元]** を選択します。
  ![警告メッセージ内の [復元] ボタン](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>Windows/Windows Server のセキュリティ保護
@@ -234,7 +234,7 @@ Windows で Azure ファイル共有をマウントするには、ポート 445 
 
 | Windows のバージョン                           | SMB 1 の既定の状態 | 無効化/削除の方法       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019 (プレビュー)             | Disabled             | Windows の機能を使って削除 |
+| Windows Server 2019                       | Disabled             | Windows の機能を使って削除 |
 | Windows Server バージョン 1709 以降            | Disabled             | Windows の機能を使って削除 |
 | Windows 10 バージョン 1709 以降                | Disabled             | Windows の機能を使って削除 |
 | Windows Server 2016                       | Enabled              | Windows の機能を使って削除 |
@@ -246,7 +246,7 @@ Windows で Azure ファイル共有をマウントするには、ポート 445 
 | Windows 7                                 | Enabled              | レジストリで無効化       | 
 
 ### <a name="auditing-smb-1-usage"></a>SMB 1 の使用状況の監査
-> Windows Server 2019 (プレビュー)、Windows Server 半期チャネル (バージョン 1709 および 1803)、Windows Server 2016、Windows 10 (バージョン 1507、1607、1703、1709、1803)、Windows Server 2012 R2、Windows 8.1 が対象となります。
+> Windows Server 2019、Windows Server 半期チャネル (バージョン 1709 および 1803)、Windows Server 2016、Windows 10 (バージョン 1507、1607、1703、1709、1803)、Windows Server 2012 R2、Windows 8.1 が対象となります
 
 お使いの環境から SMB 1 を削除する前に、その変更によって支障が生じるクライアントがないかを確認するために、SMB 1 の使用状況を監査したい場合があります。 SMB 共有に対する要求が SMB 1 で行われると、イベント ログの `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` に、監査イベントが記録されます。 
 
@@ -260,7 +260,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Windows Server から SMB 1 を削除する
-> Windows Server 2019 (プレビュー)、Windows Server 半期チャネル (バージョン 1709 および 1803)、Windows Server 2016、Windows Server 2012 R2 が対象となります。
+> Windows Server 2019、Windows Server 半期チャネル (バージョン 1709 および 1803)、Windows Server 2016、Windows Server 2012 R2 が対象となります
 
 Windows Server インスタンスから SMB 1 を削除するには、管理者特権の PowerShell セッションから次のコマンドレットを実行します。
 

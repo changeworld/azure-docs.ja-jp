@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c081a6296e1fae89f24a2c3ddb1ae66f7a3f94aa
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: fe01d55b17c0f6f6dd6a621fbac0cf4d3a268ee3
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662552"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306780"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル:Linux Service Fabric クラスターにコンテナー イメージを作成する
 
@@ -88,7 +88,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
-最初に、**az login** コマンドを実行して Azure アカウントにログインします。
+最初に、**az login** コマンドを実行して Azure アカウントにサインインします。
 
 ```bash
 az login
@@ -116,9 +116,9 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 このチュートリアルの残りの部分では、選択したコンテナー レジストリ名のプレースホルダーとして「acrName」を使用します。 この値をメモしておいてください。
 
-## <a name="log-in-to-your-container-registry"></a>コンテナー レジストリにログインする
+## <a name="sign-in-to-your-container-registry"></a>コンテナー レジストリにサインインする
 
-イメージをプッシュする前に、ACR のインスタンスにログインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
+イメージをプッシュする前に、ACR のインスタンスにサインインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
 
 ```bash
 az acr login --name <acrName>

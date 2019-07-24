@@ -1,5 +1,5 @@
 ---
-title: フィードバック ループ - Personalizer
+title: クイック スタート:フィードバック ループを作成する - Personalizer
 titleSuffix: Azure Cognitive Services
 description: Personalizer サービスを使用するこの C# クイック スタートでコンテンツをパーソナライズします。
 services: cognitive-services
@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/08/2019
+ms.topic: quickstart
+ms.date: 06/11/2019
 ms.author: edjez
-ms.openlocfilehash: b0dc8fbbb80a4d03b2cb64d09ffe9a36883c5bf9
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: 0b856b8d134cc160b8bb759fce0408204cf0ba61
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65521367"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722442"
 ---
 # <a name="quickstart-personalize-content-using-c"></a>クイック スタート:C# を使用してコンテンツをパーソナライズする 
 
@@ -42,6 +42,8 @@ Personalizer を使い始めるには、次の手順が必要です。
 
 Azure portal の Personalizer リソースで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
 
+Personalizer Loop を初めてインスタンス化したときには、トレーニング元となる Reward API 呼び出しがないため、モデルは存在しません。 Rank 呼び出しは、各項目に対して等しい確率を返します。 それでも、アプリケーションは、RewardActionId の出力を使用して、常にコンテンツをランク付けする必要があります。
+
 ![モデルの更新頻度を変更する](./media/settings/configure-model-update-frequency-settings.png)
 
 ## <a name="creating-a-new-console-app-and-referencing-the-personalizer-sdk"></a>新しいコンソール アプリケーションの作成と Personalizer SDK の参照 
@@ -52,6 +54,7 @@ Get the latest code as a Visual Studio solution from [GitHub] (add link).
 
 1. Visual Studio で、新しい Visual C# コンソール アプリを作成します。
 1. Personalizer クライアント ライブラリの NuGet パッケージをインストールします。 メニューで、 **[ツール]** を選択し、 **[Nuget パッケージ マネージャー]** を選択し、次に **[ソリューションの NuGet パッケージの管理]** を選択します。
+1. **[プレリリースを含める]** をオンにします。
 1. **[参照]** タブを選択し、 **[検索]** ボックスに「`Microsoft.Azure.CognitiveServices.Personalizer`」と入力します。
 1. **Microsoft.Azure.CognitiveServices.Personalizer** が表示されたら選択します。
 1. 自分のプロジェクト名の横のチェックボックスを選択し、 **[インストール]** を選択します。

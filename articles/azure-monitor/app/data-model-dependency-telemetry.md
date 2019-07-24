@@ -13,11 +13,11 @@ ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 3e3d6b8fdc9ac8dd28f73fecd6231e97a5645407
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120089"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60901027"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依存関係テレメトリ:Application Insights データ モデル
 
@@ -35,7 +35,7 @@ ms.locfileid: "54120089"
 
 この依存関係呼び出しによって開始されるコマンド。 例: すべてのクエリ パラメーターを使用する SQL ステートメントと HTTP URL。
 
-## <a name="type"></a>type
+## <a name="type"></a>Type
 
 依存関係の種類の名前。 依存関係を論理的にグループ化するための小さなカーディナリティの値と、commandName や resultCode のようなフィールドの変換です。 例: SQL、Azure テーブル、HTTP。
 
@@ -43,7 +43,7 @@ ms.locfileid: "54120089"
 
 依存関係呼び出しのターゲット サイト。 例: サーバー名、ホスト アドレス。 詳細については、[相関付け](../../azure-monitor/app/correlation.md)に関するページを参照してください。
 
-## <a name="duration"></a>duration
+## <a name="duration"></a>Duration
 
 `DD.HH:MM:SS.MMMMMM` 形式の要求時間。 `1000` 日未満である必要があります。
 

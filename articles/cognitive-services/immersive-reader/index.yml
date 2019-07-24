@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Immersive Reader のドキュメント
+metadata:
+  title: Immersive Reader のドキュメント - クイックスタート、チュートリアル、API リファレンス - Azure Cognitive Services  | Microsoft Docs
+  description: アプリケーションで Immersive Reader を使用する方法について説明します。
+  services: cognitive-services
+  author: metanMSFT
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/20/2019
+  ms.author: metanMSFT
+abstract:
+  description: Immersive Reader は、新しい読者、言語学習者、学習障碍者の読解力向上のために実証済みの手法を実装したツールです。 Immersive Reader は、Immersive Reader SDK を使用して Web アプリケーションで使用することができます。
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/immersive-reader/overview
+            html: <p>Immersive Reader の概要とアプリケーションへの統合方法について説明します。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Immersive Reader とは
+          - href: /azure/cognitive-services/immersive-reader/reference
+            html: <p>Immersive Reader Javascript SDK について説明します。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Immersive Reader SDK の使用
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: Immersive Reader を使ってみましょう。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            text: 'C&#35;'
+            alt: 'C# ロゴ'
+            href: quickstart
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Immersive Reader を使用したアプリケーションを開発する方法について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial.md">Node.js を使用して Immersive Reader を起動する</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: SDK
+            html: <p><a href="reference.md">Javascript</a></p>

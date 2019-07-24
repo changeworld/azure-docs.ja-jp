@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
 ms.openlocfilehash: a9049ba1fbd7d3bdce061d277f6a7a02d9b1e4b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880066"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60740393"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>カスタム API をデプロイして Azure Logic Apps のワークフローから呼び出す
 
@@ -29,7 +29,7 @@ ms.locfileid: "57880066"
 
 1. [Azure Portal](https://portal.azure.com) で、Web アプリまたは API アプリを選択します。
 
-2. アプリ メニューが開いたら、**[API]** で **[API 定義]** を選択します。 **[API 定義の場所]** を OpenAPI の swagger.json ファイルの URL に設定します。
+2. アプリ メニューが開いたら、 **[API]** で **[API 定義]** を選択します。 **[API 定義の場所]** を OpenAPI の swagger.json ファイルの URL に設定します。
 
    通常、URL は `https://{name}.azurewebsites.net/swagger/docs/v1)` 形式で表示されます。
 

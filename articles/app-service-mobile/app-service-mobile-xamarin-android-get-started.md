@@ -3,7 +3,7 @@ title: Xamarin Android アプリに Azure Mobile Apps を使用する
 description: 次のチュートリアルに従って、Xamarin Android 開発用の Azure Mobile Apps を使用します
 services: app-service\mobile
 documentationcenter: xamarin
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
@@ -12,17 +12,21 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: crdun
-ms.openlocfilehash: 29efa963a254913e3d4744ade1d161c5c8ce42e4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: eed900ee54f62056eceeb35a43a4ba6526b049ca
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893352"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447084"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
+
+> [!NOTE]
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-android-get-started) を今すぐチェックしてください。
+>
 
 ## <a name="overview"></a>概要
 このチュートリアルでは、Xamarin Android アプリケーションにクラウドベースのバックエンド サービスを追加する方法を示します。 詳細については、「 [モバイル アプリとは](app-service-mobile-value-prop.md)」を参照してください。
@@ -46,15 +50,27 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
 
 これで、モバイル クライアント アプリケーションで使用できる Azure モバイル アプリ バックエンドのプロビジョニングが完了しました。 次は、簡単な "todo list" バックエンドのサーバー プロジェクトをダウンロードして、それを Azure に発行します。
 
-## <a name="configure-the-server-project"></a>サーバー プロジェクトの構成
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>データベース接続を作成し、クライアントとサーバー プロジェクトを構成する
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-xamarinandroid-app"></a>Xamarin.Android アプリのダウンロードと実行
-1. **[Download and run your Xamarin.Android project (Xamarin.Android プロジェクトをダウンロードして実行する)]** の **[ダウンロード]** ボタンをクリックします。
+## <a name="run-the-xamarinandroid-app"></a>Xamarin.Android アプリを実行する
+1. Xamarin.Android プロジェクトを開きます。
 
-      圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
-2. **F5** キーを押してプロジェクトをビルドし、アプリケーションを開始します。
-3. アプリで、意味のあるテキスト (たとえば、「*チュートリアルの完了*」) を入力し、**[追加]** ボタンをクリックします。
+2. [Azure Portal](https://portal.azure.com/) にアクセスし、作成したモバイル アプリに移動します。 `Overview` ブレードで、モバイル アプリのパブリック エンドポイントである URL を探します。 例 - アプリ名 "test123" のサイト名は https://test123.azurewebsites.net になります。
+
+3. このフォルダー内のファイル `ToDoActivity.cs` (xamarin.android/ZUMOAPPNAME/ToDoActivity.cs) を開きます。 アプリケーション名は `ZUMOAPPNAME` です。
+
+4. `ToDoActivity` クラスで、`ZUMOAPPURL` 変数を上のパブリック エンドポイントに置き換えます。
+
+    `const string applicationURL = @"ZUMOAPPURL";`
+
+    →
+    
+    `const string applicationURL = @"https://test123.azurewebsites.net";`
+    
+5. F5 キーを押して、アプリをデプロイおよび実行します。
+
+6. アプリで、意味のあるテキスト (たとえば、「*チュートリアルの完了*」) を入力し、 **[追加]** ボタンをクリックします。
 
     ![][10]
 
@@ -62,27 +78,14 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
 
    > [!NOTE]
    > モバイル アプリ バックエンドにアクセスしてデータのクエリと挿入を行うコードを確認できます (ToDoActivity.cs C# ファイルにあります)。
-   >
-   >
-
+   
 ## <a name="troubleshooting"></a>トラブルシューティング
 ソリューションのビルドで問題が発生した場合は、NuGet パッケージ マネージャーを実行し、`Xamarin.Android` サポート パッケージを更新します。 クイック スタート プロジェクトには、必ずしも最新バージョンが含まれていません。
 
 プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じである必要があることに注意してください。 [Azure Mobile Apps の NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
-## <a name="next-steps"></a>次の手順
-* [アプリへのオフライン同期の追加](app-service-mobile-xamarin-android-get-started-offline-data.md)
-* [アプリへの認証の追加](app-service-mobile-xamarin-android-get-started-users.md)
-* [Xamarin.Android アプリへのプッシュ通知の追加](app-service-mobile-xamarin-android-get-started-push.md)
-* [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md)
-
 <!-- Images. -->
 [0]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-completed-android.png
-[6]: ./media/app-service-mobile-xamarin-android-get-started/mobile-portal-quickstart-xamarin.png
-[8]: ./media/app-service-mobile-xamarin-android-get-started/mobile-xamarin-project-android-vs.png
-[9]: ./media/app-service-mobile-xamarin-android-get-started/mobile-xamarin-project-android-xs.png
 [10]: ./media/app-service-mobile-xamarin-android-get-started/mobile-quickstart-startup-android.png
-
 <!-- URLs. -->
-[Azure Portal]: https://azure.portal.com/
 [Visual Studio]: https://go.microsoft.com/fwLink/p/?LinkID=534203

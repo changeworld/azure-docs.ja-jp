@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: mbaldwin
 ms.custom: seodec18
-ms.openlocfilehash: 4af2db5af49e1fc70ee46f4fc4c953731daedf0e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c36f9506665f573a2e7990102af81a9de088e95b
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862371"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67501641"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用して Windows IaaS VM を暗号化する
 
@@ -42,8 +42,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-1. **[Windows PowerShell ISE]** を右クリックし、**[管理者として実行]** をクリックします。
-1. **[管理者: Windows PowerShell ISE]** ウィンドウで、**[表示]** をクリックし、**[スクリプト ウィンドウの表示]** をクリックします。
+1. **[Windows PowerShell ISE]** を右クリックし、 **[管理者として実行]** をクリックします。
+1. **[管理者: Windows PowerShell ISE]** ウィンドウで、 **[表示]** をクリックし、 **[スクリプト ウィンドウの表示]** をクリックします。
 1. スクリプト ウィンドウで、次のコマンドレットを入力します。 
 
      ```azurepowershell
@@ -57,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="bkmk_PrereqScript"></a> Azure Disk Encryption の前提条件スクリプトを実行する
  **ADEPrereqScript.ps1** では、リソース グループとキー コンテナーが作成され、キー コンテナーのアクセス ポリシーが設定されます。 また、このスクリプトでは、誤って削除されるのを防ぐため、キー コンテナーに対するリソース ロックも作成されます。  
 
-1. **[管理者: Windows PowerShell ISE]** ウィンドウで、**[ファイル]** をクリックし、**[開く]** をクリックします。 **ADEPrereqScript.ps1** ファイルに移動してダブルクリックします。 スクリプトがスクリプト ウィンドウで開かれます。
+1. **[管理者: Windows PowerShell ISE]** ウィンドウで、 **[ファイル]** をクリックし、 **[開く]** をクリックします。 **ADEPrereqScript.ps1** ファイルに移動してダブルクリックします。 スクリプトがスクリプト ウィンドウで開かれます。
 2. **[スクリプトの実行]** の緑色の矢印をクリックするか F5 キーを押して、スクリプトを実行します。 
 3. 新しい**リソース グループ**と新しい**キー コンテナー**の名前を入力します。 後でリソース グループを削除するので、このクイック スタートでは既存のリソース グループまたはキー コンテナーを使用しないでください。 
 4. リソースを作成する場所を入力します (例: **EastUS**)。 場所の一覧を取得するには、`Get-AzLocation` を使用します。
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     $cred = Get-Credential -Message "Enter a username and password for the virtual machine."
     
     # Create a resource group
-    #New-AzResourceGroup -Name $resourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroup -Location $location
     
     # Create a subnet configuration
     $subnetConfig = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24

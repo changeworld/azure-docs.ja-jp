@@ -9,18 +9,22 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 06/18/2019
 ms.author: diberry
-ms.openlocfilehash: 132ba922fa73c73d0e001e84659b5a24996d406b
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 7e1e61d96b066c395668ce1dd9cdba4cb4ecb2be
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235800"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204097"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
 この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
+
+## <a name="whats-new"></a>新機能
+
+Language Understanding の詳細については、[こちら](whats-new.md)をご覧ください。
 
 <a name="luis-authoring"></a>
 
@@ -46,10 +50,10 @@ ms.locfileid: "65235800"
 [Bing Spell Check API V7](luis-tutorial-bing-spellcheck.md) のチュートリアルをご覧ください。 LUIS は、Bing Spell Check API V7 による制限を強制します。
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>プログラムで LUIS アプリを編集するにはどうすればよいですか?
-LUIS アプリをプログラムで編集するには、[Authoring API](https://aka.ms/luis-authoring-apis) を使います。 Authoring API の呼び出し方法の例は、[LUIS Authoring API の呼び出し](./luis-quickstart-node-add-utterance.md)に関するページ、および「[Build a LUIS app programmatically using Node.js](./luis-tutorial-node-import-utterances-csv.md)」(Node.js を使用してプログラムで LUIS アプリを作成する) をご覧ください。 Authoring API を使うには、エンドポイント キーではなく[オーサリング キー](luis-concept-keys.md#authoring-key)を使用する必要があります。 プログラムで作成すると、1 か月あたり最大 1,000,000 呼び出し、および 1 秒あたり最大 5 トランザクションが可能です。 キーおよび LUIS でのキーの使用の詳細については、[キーの管理](./luis-concept-keys.md)に関するページをご覧ください。
+LUIS アプリをプログラムで編集するには、[Authoring API](https://go.microsoft.com/fwlink/?linkid=2092087) を使います。 Authoring API の呼び出し方法の例は、[LUIS Authoring API の呼び出し](./luis-quickstart-node-add-utterance.md)に関するページ、および「[Build a LUIS app programmatically using Node.js](./luis-tutorial-node-import-utterances-csv.md)」(Node.js を使用してプログラムで LUIS アプリを作成する) をご覧ください。 Authoring API を使うには、エンドポイント キーではなく[オーサリング キー](luis-concept-keys.md#authoring-key)を使用する必要があります。 プログラムで作成すると、1 か月あたり最大 1,000,000 呼び出し、および 1 秒あたり最大 5 トランザクションが可能です。 キーおよび LUIS でのキーの使用の詳細については、[キーの管理](./luis-concept-keys.md)に関するページをご覧ください。
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>正規表現のマッチングを提供していたパターン機能はどこにありますか?
-以前の**パターン機能**は現在は非推奨になっており、**[パターン](luis-concept-patterns.md)** に置き換えられています。
+以前の**パターン機能**は現在は非推奨になっており、 **[パターン](luis-concept-patterns.md)** に置き換えられています。
 
 ### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>エンティティを使って正しいデータを取得するにはどうすればよいですか?
 [エンティティ](luis-concept-entity-types.md)および[データ抽出](luis-concept-data-extraction.md)に関するページをご覧ください。
@@ -106,7 +110,7 @@ Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-se
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>アプリのダッシュボードにエンドポイントのヒットが表示されないのはなぜですか?
 アプリのダッシュボードの合計エンドポイント ヒット数は定期的に更新されますが、Azure Portal で LUIS エンドポイント キーに関連付けられているメトリックの方がより頻繁に更新されます。
 
-更新されたエンドポイント ヒット数がダッシュボードに表示されない場合は、Azure portal にサインインし、LUIS エンドポイント キーに関連付けられているリソースを検索し、**[メトリック]** を開いて **[呼び出し合計]** メトリックを選択してください。 エンドポイント キーが複数の LUIS アプリに使用されている場合、Azure Portal のメトリックには、それを使用するすべての LUIS アプリからの呼び出しの集計数が示されます。
+更新されたエンドポイント ヒット数がダッシュボードに表示されない場合は、Azure portal にサインインし、LUIS エンドポイント キーに関連付けられているリソースを検索し、 **[メトリック]** を開いて **[呼び出し合計]** メトリックを選択してください。 エンドポイント キーが複数の LUIS アプリに使用されている場合、Azure Portal のメトリックには、それを使用するすべての LUIS アプリからの呼び出しの集計数が示されます。
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>エンドポイントのクォータを取得する PowerShell コマンドはありますか?
 
@@ -164,7 +168,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ## <a name="app-publishing"></a>アプリの発行
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>[Add a key to your app]\(アプリにキーを追加する\) ウィンドウのテナント ID とは何ですか?
-Azure では、テナントはサービスに関連付けられているクライアントまたは組織を表します。 Azure portal でテナント ID を調べるには、**[Azure Active Directory]** > **[管理]** > **[プロパティ]** の順に選択して、**[ディレクトリ ID]** ボックスを確認します。
+Azure では、テナントはサービスに関連付けられているクライアントまたは組織を表します。 Azure portal でテナント ID を調べるには、 **[Azure Active Directory]**  >  **[管理]**  >  **[プロパティ]** の順に選択して、 **[ディレクトリ ID]** ボックスを確認します。
 
 ![Azure portal でのテナント ID](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -185,18 +189,18 @@ LUIS の一般公開 (GA) よりも前からアプリが存在していた場合
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>クォータ不足に関するエラーを受信しました。 どのように修正すればよいですか 
 
-詳細については、「[キーが価格レベルの使用状況を超えたときのクォータ不足エラーを修正する方法](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage)」を参照してください。
+詳細については、「[HTTP 状態コード 403 および 429 を解決する](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429)」を参照してください。
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>さらに多くのエンドポイント クエリを処理する必要があります。 どうすればよいですか? 
 
-詳細については、「[キーが価格レベルの使用状況を超えたときのクォータ不足エラーを修正する方法](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage)」を参照してください。
+詳細については、「[HTTP 状態コード 403 および 429 を解決する](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429)」を参照してください。
 
 
 
 ## <a name="app-management"></a>アプリの管理
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>ユーザーの発話のログをダウンロードするにはどうすればよいですか?
-既定では、LUIS アプリはユーザーからの発話をログに記録します。 ユーザーが LUIS アプリに送信した発話のログをダウンロードするには、**[マイ アプリ]** に移動し、アプリを選択します。 コンテキストのツールバーで **[Export endpoint logs]\(エンドポイント ログのエクスポート\)** を選択します。 ログは、コンマ区切り値 (CSV) ファイルとして書式設定されています。
+既定では、LUIS アプリはユーザーからの発話をログに記録します。 ユーザーが LUIS アプリに送信した発話のログをダウンロードするには、 **[マイ アプリ]** に移動し、アプリを選択します。 コンテキストのツールバーで **[Export endpoint logs]\(エンドポイント ログのエクスポート\)** を選択します。 ログは、コンマ区切り値 (CSV) ファイルとして書式設定されています。
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>発話のログ記録を無効にするにはどうすればよいですか?
 クライアント アプリケーションが LUIS のクエリに使用しているエンドポイント URL で `log=false` を設定することにより、ユーザー発話のログ記録をオフにできます。 ただし、ログ記録をオフにすると、[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md#what-is-active-learning)に基づいて発話を提案したりパフォーマンスを向上させたりする LUIS アプリの機能が無効になります。 データのプライバシーを考慮して `log=false` を設定した場合、LUIS からユーザーの発話の記録をダウンロードしたり、発話を使用してアプリの品質を向上させたりすることはできません。
@@ -244,12 +248,12 @@ Microsoft の取り組みと、Azure サービスでのデータ管理とアク�
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Azure Bot Service で問題を解決する
 
-Azure Bot Service を使用していて、**[Test in Web Chat]\(Web チャットでのテスト\)** から `Sorry, my bot code is having an issue` が返ることが問題である場合は、ログをチェックします。
+Azure Bot Service を使用していて、 **[Test in Web Chat]\(Web チャットでのテスト\)** から `Sorry, my bot code is having an issue` が返ることが問題である場合は、ログをチェックします。
 
 1. Azure portal で、お使いのボットの **[ボットの管理]** セクションから **[ビルド]** を選択します。
 1. オンライン コード エディターを開きます。 
 1. 上部の青いナビゲーション バーで、ボットの名前 (右側の 2 番目の項目) を選択します。
-1. 結果のドロップダウン リストで、**[Kudu コンソールを開く]** を選択します。
+1. 結果のドロップダウン リストで、 **[Kudu コンソールを開く]** を選択します。
 1. **LogFiles** を選択し、**Application** を選択します。 すべてのログ ファイルを確認します。 アプリケーション フォルダーにエラーが見あたらない場合は、**LogFiles** ですべてのログ ファイルを確認します。 
 1. C# などのコンパイル言語を使用している場合は、プロジェクトを忘れずにリビルドします。
 
@@ -295,6 +299,12 @@ Build 2019 Conference では、次の機能が公開されました。
 * [V3 API 移行ガイドのプレビュー](luis-migration-api-v3.md)
 * [改善された分析ダッシュ ボード](luis-how-to-use-dashboard.md)
 * [改善された事前構築済みドメイン](luis-reference-prebuilt-domains.md) 
+* [動的なリスト エンティティ](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
+* [外部エンティティ](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+
+ビデオ:
+
+* [How to use Azure Conversational AI to scale your business for the next generation (Azure の対話型 AI を使用して次世代のビジネスを拡大する方法)](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
 ## <a name="next-steps"></a>次の手順
 

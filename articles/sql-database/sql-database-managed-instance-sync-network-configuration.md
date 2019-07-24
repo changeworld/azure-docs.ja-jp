@@ -13,11 +13,11 @@ ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 12/13/2018
 ms.openlocfilehash: 0d7920080fd61389741fbe785f5141003bef5251
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797286"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61314730"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>ネットワーク構成を Azure App Service のホスティング プラン用に同期する
 
@@ -31,11 +31,11 @@ ms.locfileid: "59797286"
 
    ![App Service プラン](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
 
-2. **[ネットワーク]** をクリックし、**[管理するにはここをクリック]** をクリックします。
+2. **[ネットワーク]** をクリックし、 **[管理するにはここをクリック]** をクリックします。
 
    ![サービス プランの管理](./media/sql-database-managed-instance-sync-networking/manage-plan.png)
 
-3. 目的の **VNet** を選択し、**[ネットワークの同期]** をクリックします。
+3. 目的の **VNet** を選択し、 **[ネットワークの同期]** をクリックします。
 
    ![ネットワークの同期](./media/sql-database-managed-instance-sync-networking/sync.png)
 

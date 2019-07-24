@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: fccf7bb5abafe75017a8df91f1f88a98238c74b7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64704207"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services のサンプル
@@ -38,7 +38,7 @@ GitHub 上のこれらのサンプル データベースを使用して、独自
 
 ## <a name="adventure-works-internet-sales-sample-model-in-azure-portal"></a>Azure Portal の Adventure Works Internet Sales サンプル モデル
 
-Azure Portal に Analysis Services サーバーがある場合、サンプル モデルをすばやく簡単に作成できます。 Azure Portal のサーバーの概要ページで、**[新しいモデル]** をクリックし、**[データ ソースを選ぶ]** で **[サンプル データ]** を選択します。
+Azure Portal に Analysis Services サーバーがある場合、サンプル モデルをすばやく簡単に作成できます。 Azure Portal のサーバーの概要ページで、 **[新しいモデル]** をクリックし、 **[データ ソースを選ぶ]** で **[サンプル データ]** を選択します。
 
 
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
 ms.openlocfilehash: 7d9aafeb920eab7f6a87061a135bf2e464add436
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64697990"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>HDInsight の Apache Phoenix
@@ -127,7 +127,7 @@ HDInsight HBase クラスターには、構成の変更を行うための [Ambar
 
 1. Phoenix を有効または無効にしたり、Phoenix のクエリ タイムアウトの設定を制御したりするには、Hadoop のユーザー資格情報を使って Ambari Web UI (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`) にログインします。
 
-2. 左側のメニューのサービス一覧から **[HBase]** を選び、**[Configs]\(構成\)** タブを選びます。
+2. 左側のメニューのサービス一覧から **[HBase]** を選び、 **[Configs]\(構成\)** タブを選びます。
 
     ![Ambari の HBase の構成](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
 

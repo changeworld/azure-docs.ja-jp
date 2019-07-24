@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959684"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61485432"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング 
 
@@ -156,23 +156,23 @@ Start-Service -Name "SessionEnv"
 
 証明書を更新できない場合は、以下の手順に従って、証明書の削除を試みます。
 
-1. 同じ VNET 内の別の VM で、**[ファイル名を指定して実行]** ボックスを開き、「**mmc**」と入力して、**[OK]** をクリックします。 
+1. 同じ VNET 内の別の VM で、 **[ファイル名を指定して実行]** ボックスを開き、「**mmc**」と入力して、 **[OK]** をクリックします。 
 
 2. **[ファイル]** メニューの **[スナップインの追加と削除]** を選択します。
 
-3. **[利用できるスナップイン]** ボックスの一覧で **[証明書]** を選択し、**[追加]** を選択します。
+3. **[利用できるスナップイン]** ボックスの一覧で **[証明書]** を選択し、 **[追加]** を選択します。
 
-4. **[コンピューター アカウント]** を選択し、**[次へ]** を選択します。
+4. **[コンピューター アカウント]** を選択し、 **[次へ]** を選択します。
 
 5. **[別のコンピューター]** を選択してから、問題が発生している VM の IP アドレスを追加します。
    >[!Note]
    >内部ネットワークを使用して、仮想 IP アドレスの使用を回避します。
 
-6. **[完了]** を選択し、**[OK]** を選択します。
+6. **[完了]** を選択し、 **[OK]** を選択します。
 
    ![コンピューターを選択する](./media/event-id-troubleshoot-vm-rdp-connecton/select-computer.png)
 
-7. 証明書を展開し、Remote Desktop\Certificates フォルダーに移動し、証明書を右クリックして、**[削除]** を選択します。
+7. 証明書を展開し、Remote Desktop\Certificates フォルダーに移動し、証明書を右クリックして、 **[削除]** を選択します。
 
 8. リモート デスクトップ構成サービスを再起動します。
 
@@ -250,7 +250,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 **ソース:**      Microsoft-Windows-TerminalServices-SessionBroker <br />
 **日付:**          *時刻* <br />
 **イベント ID:**    2056 <br />
-**タスク カテゴリ:**(109) <br />
+**タスク カテゴリ:** (109) <br />
 **レベル:**       Error <br />
 **キーワード:**       <br />
 **ユーザー:**        NETWORK SERVICE <br />
@@ -266,7 +266,7 @@ NULL <br />
 **ソース:**      Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
 **日付:**          *時刻* <br />
 **イベント ID:**    1,296 <br />
-**タスク カテゴリ:**(104) <br />
+**タスク カテゴリ:** (104) <br />
 **レベル:**       Error <br />
 **キーワード:**       <br />
 **ユーザー:**        NETWORK SERVICE <br />

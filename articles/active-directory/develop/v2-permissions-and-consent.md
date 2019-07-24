@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 717607de6d9d193a7373637d0d0fcd879b54fed0
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544883"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482138"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -89,7 +89,7 @@ OpenID Connect の Microsoft ID プラットフォーム実装には、特定の
 
 `email` スコープは `openid` スコープやその他のスコープと共に使用できます。 これにより、アプリがユーザーのプライマリ電子メール アドレスに `email` 要求の形式でアクセスできます。 電子メール アドレスがユーザー アカウントと関連付けられている場合のみ (常にではありません)、`email` 要求はトークンに含まれます。 `email` スコープを使用する場合は、トークンに `email` 要求が存在しないケースにも対応できるようにアプリを準備する必要があります。
 
-### <a name="profile"></a>[プロファイル]
+### <a name="profile"></a>profile
 
 `profile` スコープは `openid` スコープやその他のスコープと共に使用できます。 これにより、アプリはユーザーの多くの情報にアクセスできます。 アプリがアクセスできる情報には、ユーザーの名、姓、希望するユーザー名、オブジェクト ID などがありますが、これらに限定されるものではありません。 特定のユーザーに対して id_tokens パラメーターで使用できるプロファイル要求の完全な一覧については、[`id_tokens` のリファレンス](id-tokens.md)をご覧ください。
 
@@ -124,7 +124,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 > [!NOTE]
 > この時点で、`offline_access` ("アクセス権を与えたデータへのアクセスを管理する") と `user.read` ("サインインとプロファイルの読み取り") のアクセス許可が、アプリケーションへの初期同意に自動的に組み込まれます。  一般に、これらのアクセス許可は、適切なアプリの機能に必要です。`offline_access` は、ネイティブおよび Web のアプリに不可欠の更新トークンへのアクセスをアプリに提供し、`user.read` は、クライアントまたはアプリが長期間にわたってユーザーを適切に識別し、基本的なユーザー情報にアクセスできるようにする `sub` 要求へのアクセスを提供します。  
 
-![職場アカウントの同意](./media/v2-permissions-and-consent/work_account_consent.png)
+![作業アカウントの同意を示すスクリーンショットの例](./media/v2-permissions-and-consent/work_account_consent.png)
 
 ユーザーがアクセス許可の要求を承認すると、同意が記録されるので、ユーザーはそれ以降にアカウントにサインインするときに再度同意する必要はありません。
 

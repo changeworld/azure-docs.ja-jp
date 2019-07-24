@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 5bb68f3f0139a98f10e28957209f8530a762b76c
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413905"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65603096"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 
@@ -74,9 +74,9 @@ Azure Import/Export サービスでは、ジョブを作成することで、Azu
 8. 運送業者アカウントを使用して、インポート ジョブで提供された返送先住所にドライブが送付されます。
 
 > [!NOTE]
-> 現地 (データ センターの所在国内) 発送の場合は、国内運送業者のアカウントを共有してください 
+> 現地 (データ センターの所在国内または地域内) 発送の場合は、国内運送業者のアカウントを共有してください 
 >
-> 海外 (データ センターの所在国外) 発送の場合は、国際運送業者のアカウントを共有してください
+> 海外 (データ センターの所在国外または地域外) 発送の場合は、国際運送業者のアカウントを共有してください
 
  ![図 1: インポート ジョブのフロー](./media/storage-import-export-service/importjob.png)
 
@@ -104,9 +104,9 @@ Azure Import/Export サービスでは、ジョブを作成することで、Azu
 10. 運送業者アカウントを使用して、インポート ジョブで提供された返送先住所にドライブが送付されます。
 
 > [!NOTE]
-> 現地 (データ センターの所在国内) 発送の場合は、国内運送業者のアカウントを共有してください 
+> 現地 (データ センターの所在国内または地域内) 発送の場合は、国内運送業者のアカウントを共有してください 
 >
-> 海外 (データ センターの所在国外) 発送の場合は、国際運送業者のアカウントを共有してください
+> 海外 (データ センターの所在国外または地域外) 発送の場合は、国際運送業者のアカウントを共有してください
   
  ![図 2: エクスポート ジョブのフロー](./media/storage-import-export-service/exportjob.png)
 
@@ -119,7 +119,7 @@ Azure Import/Export サービスでは、すべての Azure Storage アカウン
 ### <a name="supported-shipping-locations"></a>サポートされる送付先
 
 
-|Country  |Country  |Country  |Country  |
+|国/リージョン  |国/リージョン  |国/リージョン  |国/リージョン  |
 |---------|---------|---------|---------|
 |米国東部    | 北ヨーロッパ        | インド中部        |US Gov アイオワ         |
 |米国西部     |西ヨーロッパ         | インド南部        | US DoD East        |

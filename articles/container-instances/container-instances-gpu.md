@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000659"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60583822"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -211,7 +211,7 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-GPU のリソースの使用は高価になる可能性があるため、コンテナーが長期間にわたり予期せず実行されていることがないようにします。 Azure portal でコンテナーを監視するか、[az container show][az-container-show] コマンドを使用して、コンテナー グループの状態を確認します。 例: 
+GPU のリソースの使用は高価になる可能性があるため、コンテナーが長期間にわたり予期せず実行されていることがないようにします。 Azure portal でコンテナーを監視するか、[az container show][az-container-show] コマンドを使用して、コンテナー グループの状態を確認します。 例:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table

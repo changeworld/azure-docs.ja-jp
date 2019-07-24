@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
 ms.openlocfilehash: 6e94aac47ce5b45e700e2413d2e86d5f36596348
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482438"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60614938"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Azure Monitor ログによる SQL データ同期の監視 
 
@@ -86,7 +86,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
 4.  **[Runbook file] (Runbook ファイル)** で、指定された `DataSyncLogPowerShellRunbook` ファイルを使用します。 **[Runbook type] (Runbook の種類)** を `PowerShell` として設定します。 この Runbook に名前を付けます。
 
-5.  **作成**を選択します。 これで Runbook が作成されました。
+5.  **作成** を選択します。 これで Runbook が作成されました。
 
 6.  Azure Automation アカウントで、[共有リソース] の下にある **[変数]** タブを選択します。
 
@@ -124,11 +124,11 @@ Runbook のスケジュールを設定するには:
 
 5.  **[繰り返し]** を [繰り返し] に設定し、必要な間隔を設定します。 ここ (このスクリプト) と Azure Monitor ログで同じ間隔を使用します。
 
-6.  **作成**を選択します。
+6.  **作成** を選択します。
 
 ### <a name="check-the-automation"></a>オートメーションをチェックする
 
-オートメーションが期待どおりに実行されているかどうかを監視するには、Automation アカウントの **[概要]** で、**[監視]** の下にある **[Job Statistics] \(ジョブの統計)** ビューを見つけます。 見やすくするために、これをダッシュボードにピン留めします。 Runbook の実行が成功すると [完了] と表示され、実行が失敗すると [失敗] と表示されます。
+オートメーションが期待どおりに実行されているかどうかを監視するには、Automation アカウントの **[概要]** で、 **[監視]** の下にある **[Job Statistics] \(ジョブの統計)** ビューを見つけます。 見やすくするために、これをダッシュボードにピン留めします。 Runbook の実行が成功すると [完了] と表示され、実行が失敗すると [失敗] と表示されます。
 
 ## <a name="create-an-azure-monitor-reader-alert-for-email-notifications"></a>電子メール通知のための Azure Monitor リーダー アラートの作成
 
@@ -136,19 +136,19 @@ Azure Monitor ログを使用するアラートを作成するには、次のこ
 
 1.  Azure portal で **[ログ検索]** を選択します。
 
-2.  選択した間隔に含まれる同期グループごとのエラーおよび警告を選択するためのクエリを作成します。 例: 
+2.  選択した間隔に含まれる同期グループごとのエラーおよび警告を選択するためのクエリを作成します。 例:
 
     `Type=DataSyncLog\_CL LogLevel\_s!=Success| measure count() by SyncGroupName\_s interval 60minute`
 
-3.  クエリを実行した後、**[アラート]** を示すベルを選択します。
+3.  クエリを実行した後、 **[アラート]** を示すベルを選択します。
 
-4.  **[Generate alert based on] \(アラートを生成する基準)** で、**[Metric Measurement] \(メトリック測定)** を選択します。
+4.  **[Generate alert based on] \(アラートを生成する基準)** で、 **[Metric Measurement] \(メトリック測定)** を選択します。
 
     1.  [Aggregate Value] \(集計値) を **[より大きい]** に設定します。
 
     2.  **[より大きい]** の後に、通知を受信するまでに経過するしきい値を入力します。 データ同期では一時的なエラーが予測されます。ノイズを減らすために、しきい値を 5 に設定します。
 
-5.  **[アクション]** で、**[電子メール通知]** を [はい] に設定します。 目的の電子メール受信者を入力します。
+5.  **[アクション]** で、 **[電子メール通知]** を [はい] に設定します。 目的の電子メール受信者を入力します。
 
 6.  **[Save]** をクリックします。 これで、指定された受信者がエラー発生時に電子メール通知を受信するようになりました。
 
@@ -205,8 +205,8 @@ SQL データ同期の詳細については、以下を参照してください�
 -   データ同期の設定
     - ポータル - [チュートリアル:Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
     - PowerShell の場合
-        -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
+        -  [PowerShell を使用した複数の Azure SQL Database 間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [PowerShell を使用して Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行う](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](sql-database-data-sync-agent.md)
 -   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
 -   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)

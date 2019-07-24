@@ -3,6 +3,7 @@ title: Azure SQL Database Machine Learning Services (プレビュー) の主な�
 description: このトピックでは、Azure SQL Database Machine Learning Services と R および SQL Server Machine Learning Services の主な違いについて説明します。
 services: sql-database
 ms.service: sql-database
+ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 92785015a1ce122b8301b56fa62d122c8d95180c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ee92b598625b1346cf87c661d1867cc1cb012b60
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725055"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67486006"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>SQL Server の Machine Learning Services と Azure SQL Database の Machine Learning Services (プレビュー) の主な違い
 
@@ -43,12 +44,15 @@ R パッケージの管理とインストールの動作は、SQL Database と S
 - パッケージでアウトバウンド ネットワークを呼び出すことはできません。 この制限は、SQL Server での [Machine Learning Services の既定のファイアウォール規則](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration)に似ていますが、SQL Database で変更することはできません。
 - 外部ランタイム (Java など) に依存するか、インストールまたは使用のための OS API へのアクセスが必要なパッケージはサポートされません。
 
+## <a name="writing-to-a-temporary-table"></a>一時テーブルへの書き込み
+
+Azure SQL Database で RODBC を使用している場合、一時テーブルは `sp_execute_external_script` セッションの内部でも外部でも作成できません。 対処法として、[RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) と [ rxDataStep ](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (overwrite=FALSE、append="rows" に設定) を使用して、`sp_execute_external_script` クエリの前に作成されたグローバル一時テーブルに書き込みます。
+
 ## <a name="resource-governance"></a>リソース ガバナンス
 
 [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) と外部リソース プールを使用して、R リソースを制限することはできません。
 
 パブリック プレビューの期間中は、R リソースは最大で SQL Database リソースの 20% に設定され、選択するサービス レベルによって異なります。 詳細については、「[Azure SQL Database purchasing models](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)」 (Azure SQL Database の購入モデル) を参照してください。
-
 ### <a name="insufficient-memory-error"></a>メモリ不足エラー
 
 R に使用できるメモリが不足している場合は、エラー メッセージが表示されます。 一般的なエラー メッセージは次のとおりです。
@@ -63,4 +67,4 @@ R に使用できるメモリが不足している場合は、エラー メッ�
 
 - 「[Azure SQL Database Machine Learning Services with R (preview)](sql-database-machine-learning-services-overview.md) 」(R 付き Azure SQL Database 機械学習サービスと R (プレビュー)) の概要を参照してください。
 - Azure SQL データベース機械学習サービス (プレビュー) を R で照会する方法について、「[クイック スタート ガイド](sql-database-connect-query-r.md)」を参照してください。
-- シンプルな R スクリプトで開始すするには、「[Create and run simple R scripts in Azure SQL Database Machine Learning Services (preview)](sql-database-quickstart-r-create-script.md)」(Azure SQL データベース機械学習サービス (プレビュー)) を参照してください。
+- シンプルな R スクリプトから始めるには、「[Azure SQL Database Machine Learning Services (プレビュー) で簡単な R スクリプトを作成して実行する](sql-database-quickstart-r-create-script.md)」を参照してください。

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
 ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601085"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447456"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>azureiotsolutions.com サイトを使用してソリューション アクセラレータをデプロイする
 
@@ -60,7 +60,7 @@ AzureIoTSolutions.com サイトは、[Azure Certified for IoT デバイス カ�
 
 ![デバイス カタログ](media/iot-accelerators-permissions/devicecatalog.png)
 
-ユーザーがハードウェア製造元である場合は、**[パートナーになる]** をクリックして、Certified for IoT プログラムでの Microsoft とのパートナー提携について確認してください。
+ユーザーがハードウェア製造元である場合は、 **[パートナーになる]** をクリックして、Certified for IoT プログラムでの Microsoft とのパートナー提携について確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

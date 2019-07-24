@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 678e370977cadae642207f91a02136404fb6c34e
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609321"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60710549"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -255,7 +255,7 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
 
 Visual Studio を使用する場合は、[OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET 属性を使用してオーケストレーション クライアントにバインドできます。
 
-スクリプト言語 (*.csx* ファイル、*.js* ファイルなど) を使用して開発する場合、オーケストレーション トリガーは、*function.json* の `bindings` 配列で次の JSON オブジェクトによって定義されます。
+スクリプト言語 ( *.csx* ファイル、 *.js* ファイルなど) を使用して開発する場合、オーケストレーション トリガーは、*function.json* の `bindings` 配列で次の JSON オブジェクトによって定義されます。
 
 ```json
 {

@@ -8,16 +8,18 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e88977cc4d99df176116e6be7d8e06adb6297782
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 9d29445054848d798476fed8184b89f9b6c1210f
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65209575"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497574"
 ---
 # <a name="vlans-and-subnets-overview"></a>VLAN とサブネットの概要
 
 CloudSimple では、CloudSimple サービスがデプロイされているリージョンごとにネットワークが提供されます。  ネットワークは、ルーティングが既定で有効になっている単一の TCP レイヤー 3 アドレス空間です。  このリージョン内に作成されるすべてのプライベート クラウドとサブネットでは、追加構成なしで相互通信できます。  VLAN を使って vCenter で分散ポート グループを作成できます。
+
+![CloudSimple ネットワーク トポロジ](media/cloudsimple-network-topology.png)
 
 ## <a name="vlans"></a>VLAN
 
@@ -34,6 +36,10 @@ VLAN を作成するときに、サブネットのアドレス空間を定義す
 プライベート クラウドは、vCenter サーバーによって管理される、分離された VMware スタック (ESXi ホスト、vCenter、vSAN、および NSX) 環境として作成されます。  管理コンポーネントは、**vSphere/vSAN サブネット CIDR** に対して選択されたネットワーク内にデプロイされます。  ネットワーク CIDR の範囲は、デプロイの間に異なる複数のサブネットに分割されます。
 
 最小 vSphere/vSAN サブネット CIDR プレフィックス範囲: **/24**、最大 vSphere/vSAN サブネット CIDR プレフィックス範囲: **/21**
+
+> [!CAUTION]
+> vSphere/vSAN CIDR 範囲の IP アドレスは、プライベート クラウド インフラストラクチャで使用するために予約されています。 どの仮想マシンでもこの範囲の IP アドレスは使用しないでください。
+
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>vSphere/vSAN サブネットの CIDR 範囲の制限
 

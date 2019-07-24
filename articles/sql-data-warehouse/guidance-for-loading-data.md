@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
-ms.date: 04/17/2018
+ms.subservice: load-data
+ms.date: 05/31/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: f1bfd6a9f7b5d6b7622b3fc79848b986172ff746
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bb170b53946a014d4aa69ce628c2e4bef7459b93
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240840"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595580"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse へのデータ読み込みのベスト プラクティス
 
@@ -102,7 +102,9 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 ## <a name="creating-statistics-after-the-load"></a>読み込み後に統計を作成する
 
-クエリ パフォーマンスを向上させるには、最初に読み込んだ後またはデータに大きな変更が加えられた後に、すべてのテーブルのすべての列で統計を作成することが重要です。  統計の詳細については、 [統計](sql-data-warehouse-tables-statistics.md)に関する記事を参照してください。 次の例では、Customer_Speed テーブルの 5 つの列に関する統計を作成します。
+クエリ パフォーマンスを向上させるには、最初に読み込んだ後またはデータに大きな変更が加えられた後に、すべてのテーブルのすべての列で統計を作成することが重要です。  手動で行うことも、[統計の自動作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)の有効化を通じて行うこともできます。
+
+統計の詳細については、 [統計](sql-data-warehouse-tables-statistics.md)に関する記事を参照してください。 次の例では、Customer_Speed テーブルの 5 つの列に関する統計を手動で作成する方法を示しています。
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);

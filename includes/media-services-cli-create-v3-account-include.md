@@ -5,15 +5,15 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 02/21/2019
+ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 79af6512e9ce3d3f897be216ee3626c5d4fbcf1d
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: feec6a695ad867d26d32904d020648b029f9da35
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56741452"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181265"
 ---
 ## <a name="create-a-media-services-account"></a>Media Services アカウントを作成する
 
@@ -22,6 +22,8 @@ ms.locfileid: "56741452"
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
 リソース グループを作成するには、次のコマンドを使用します。 Azure リソース グループは、Azure Media Services のアカウントや関連するストレージ アカウントなど、各種リソースのデプロイと管理の対象となる論理上のコンテナーです。
+
+`amsResourceGroup` を実際の値に置き換えることができます。
 
 ```azurecli
 az group create --name amsResourceGroup --location westus2
@@ -35,7 +37,7 @@ Media Services アカウントの作成では、Azure Storage アカウント �
 
 この例では、General Purpose v2、Standard LRS アカウントを作成します。 ストレージ アカウントで実験する場合は、`--sku Standard_LRS` を使用します。 ただし、運用環境用の SKU を選択する場合は、ビジネス継続性のために地理的レプリケーションを提供する `--sku Standard_RAGRS` を検討してください。 詳細については、[ストレージ アカウント](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)に関するページを参照してください。
  
-Media Services アカウントに関連付けるストレージ アカウントは、以下のコマンドで作成します。 以下のスクリプトの `storageaccountforams` は、実際の値に置き換えてください。 アカウント名は 24 文字未満にする必要があります。
+Media Services アカウントに関連付けるストレージ アカウントは、以下のコマンドで作成します。 以下のスクリプトの `storageaccountforams` は、実際の値に置き換えてください。 `amsResourceGroup` は、前の手順で、リソース グループに指定した値と一致させる必要があります。 ストレージ アカウント名は 24 文字未満にする必要があります。
 
 ```azurecli
 az storage account create --name storageaccountforams \  

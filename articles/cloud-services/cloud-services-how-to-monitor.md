@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: jeconnoc
 ms.openlocfilehash: 844fef9a87c1db06c6415c59d4be26caf928382b
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789469"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61432903"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>クラウド サービスの監視の概要
 
@@ -40,7 +40,7 @@ ms.locfileid: "53789469"
 
 ## <a name="advanced-monitoring"></a>高度な監視
 
-高度な監視では、監視対象のロールで **Azure Diagnostics** 拡張機能 (および必要に応じて Application Insights SDK) が使用されます。 診断拡張機能は、(ロールごとに) 構成ファイル **diagnostics.wadcfgx** を使用して、監視する診断メトリックを構成します。 Azure 診断拡張機能では、データを収集して Azure Storage アカウントに格納します。 これらの設定は、**.wadcfgx** ファイル、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) ファイル、および[.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) ファイルで構成されています。 つまり、高度な監視機能には追加のコストが伴います。
+高度な監視では、監視対象のロールで **Azure Diagnostics** 拡張機能 (および必要に応じて Application Insights SDK) が使用されます。 診断拡張機能は、(ロールごとに) 構成ファイル **diagnostics.wadcfgx** を使用して、監視する診断メトリックを構成します。 Azure 診断拡張機能では、データを収集して Azure Storage アカウントに格納します。 これらの設定は、 **.wadcfgx** ファイル、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) ファイル、および[.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) ファイルで構成されています。 つまり、高度な監視機能には追加のコストが伴います。
 
 ロールが作成されるたびに、Visual Studio が Azure Diagnostics 拡張機能をロールに追加します。 この診断拡張機能では、次の種類の情報を収集できます。
 
@@ -60,7 +60,7 @@ ms.locfileid: "53789469"
 
 まず、**クラシック** ストレージ アカウントがない場合は、[作成します](../storage/common/storage-quickstart-create-account.md)。 ストレージ アカウントが**クラシック デプロイ モデル**を指定して作成されたことを確認します。
 
-次は、**ストレージ アカウント (クラシック)** リソースに移動します。 **[設定]** > **[アクセス キー]** を選択し、**[プライマリ接続文字列]** の値をコピーします。 クラウド サービスではこの値が必要です。 
+次は、**ストレージ アカウント (クラシック)** リソースに移動します。 **[設定]**  >  **[アクセス キー]** を選択し、 **[プライマリ接続文字列]** の値をコピーします。 クラウド サービスではこの値が必要です。 
 
 高度な診断機能を有効にするには、**ServiceDefinition.csdef** と **ServiceConfiguration.cscfg** の 2 つの構成ファイルを変更する必要があります。
 
@@ -77,7 +77,7 @@ ms.locfileid: "53789469"
 
 これにより、すべての **ServiceConfiguration.cscfg** ファイルに追加する必要がある新しい設定が定義されます。 
 
-通常、**.cscfg** ファイルは 2 つあります。Azure へのデプロイのための **ServiceConfiguration.cloud.cscfg** と、エミュレートされた環境へのローカル デプロイに使用される **ServiceConfiguration.local.cscfg** です。 各 **.cscfg** ファイルを開いて変更します。 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` という設定を追加します。 値は、クラシック ストレージ アカウントの**プライマリ接続文字列**に設定します。 開発用コンピューターでローカル ストレージを使用する必要がある場合は、`UseDevelopmentStorage=true` を使用します。
+通常、 **.cscfg** ファイルは 2 つあります。Azure へのデプロイのための **ServiceConfiguration.cloud.cscfg** と、エミュレートされた環境へのローカル デプロイに使用される **ServiceConfiguration.local.cscfg** です。 各 **.cscfg** ファイルを開いて変更します。 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` という設定を追加します。 値は、クラシック ストレージ アカウントの**プライマリ接続文字列**に設定します。 開発用コンピューターでローカル ストレージを使用する必要がある場合は、`UseDevelopmentStorage=true` を使用します。
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">

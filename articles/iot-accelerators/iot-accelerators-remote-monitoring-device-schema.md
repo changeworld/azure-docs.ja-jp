@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0f9669d491648ecc621aab27d0908dcc3dc84438
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65823325"
 ---
 # <a name="understand-the-device-model-schema"></a>デバイス モデル スキーマについて
@@ -116,7 +116,7 @@ ms.locfileid: "65823325"
 
 ## <a name="properties"></a>Properties
 
-スキーマの `Properties` セクションでは、デバイスがソリューションに報告するプロパティ値を定義します。 例: 
+スキーマの `Properties` セクションでは、デバイスがソリューションに報告するプロパティ値を定義します。 例:
 
 ```json
 "Properties": {

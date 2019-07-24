@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 0f445d1fff48ee7a04c0b1c1d64c808f87d824b7
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673166"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60515227"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>クイック スタート:.NET Windows 用に C&#35; で Bing Speech 認識サービス ライブラリを使用する
 
@@ -40,7 +40,7 @@ C# サービス ライブラリを使用するには、[NuGet パッケージ Mi
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Speech Recognition API をサブスクライブし、無料試用版のサブスクリプション キーを取得する
 
-Speech API は、Cognitive Services (以前の Project Oxford) の一部です。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、**[Get API Key]**(API キーの取得) を選択してキーを取得します。 プライマリ キーおよびセカンダリ キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
+Speech API は、Cognitive Services (以前の Project Oxford) の一部です。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、 **[Get API Key]** (API キーの取得) を選択してキーを取得します。 プライマリ キーおよびセカンダリ キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
 
 > [!IMPORTANT]
 > * サブスクリプション キーを取得します。 Speech クライアント ライブラリを使用するには、まず[サブスクリプション キー](https://azure.microsoft.com/try/cognitive-services/)を取得する必要があります。
@@ -49,19 +49,19 @@ Speech API は、Cognitive Services (以前の Project Oxford) の一部です�
 
 ## <a name="step-1-install-the-sample-application"></a>手順 1:サンプル アプリケーションをインストールする
 
-1. Visual Studio 2015 を起動し、**[ファイル]** > **[開く]** > **[プロジェクト/ソリューション]** を選択します。
+1. Visual Studio 2015 を起動し、 **[ファイル]**  >  **[開く]**  >  **[プロジェクト/ソリューション]** を選択します。
 
 2. SpeechClient.sln という名前の Visual Studio 2015 ソリューション (.sln) ファイルをダブルクリックして開きます。 Visual Studio でソリューションが開きます。
 
 ## <a name="step-2-build-the-sample-application"></a>手順 2:サンプル アプリケーションを構築する
 
-Ctrl キーと Shift キーを押しながら B キーを押すか、リボン メニューで **[ビルド]** を選択します。 その後、**[ソリューションのビルド]** を選択します。
+Ctrl キーと Shift キーを押しながら B キーを押すか、リボン メニューで **[ビルド]** を選択します。 その後、 **[ソリューションのビルド]** を選択します。
 
 ## <a name="step-3-run-the-sample-application"></a>手順 3:サンプル アプリケーションの実行
 
 1. ビルドが完了したら、F5 キーを押すか、リボン メニューの **[開始]** を選択してサンプルを実行します。
 
-2. サンプルの出力ディレクトリを開きます (たとえば、SpeechClientSample\bin\Debug)。 Shift キーを押しながら右クリックし、**[Open command window here]\(ここにコマンド ウィンドウを開く\)** を選択します。
+2. サンプルの出力ディレクトリを開きます (たとえば、SpeechClientSample\bin\Debug)。 Shift キーを押しながら右クリックし、 **[Open command window here]\(ここにコマンド ウィンドウを開く\)** を選択します。
 
 3. 次の引数を指定して `SpeechClientSample.exe` を実行します。
 

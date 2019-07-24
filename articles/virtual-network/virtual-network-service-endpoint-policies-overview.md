@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: sumeet.mittal
-ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.author: sumi
+ms.openlocfilehash: 86726eefb53638036a4e9207c648bf5ffe6c866e
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494175"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595381"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>仮想ネットワーク サービス エンドポイント ポリシー (プレビュー)
 
@@ -190,6 +190,6 @@ __Azure Storage__:WestCentralUS、WestUS2、NorthCentralUS、SouthCentralUS、Ce
 
 ## <a name="next-steps"></a>次の手順
 
-- [仮想ネットワークのサービス エンドポイント ポリシーを構成する方法](virtual-network-service-endpoint-policies-portal.md)を学習する
-- [仮想ネットワークのサービス エンドポイント](virtual-network-service-endpoints-overview.md)の詳細を確認する
+- [仮想ネットワーク サービス エンドポイント ポリシーを構成する方法](virtual-network-service-endpoint-policies-portal.md)を学習する
+- [仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)の詳細を確認する
 

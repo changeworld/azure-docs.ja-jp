@@ -10,11 +10,11 @@ ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: 4d2e8b442f70ee791fe65a32402e5272eda3f209
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807479"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60589044"
 ---
 # <a name="deploy-service-catalog-app-through-azure-portal"></a>Azure portal を使用してサービス カタログ アプリをデプロイする
 
@@ -32,23 +32,23 @@ Azure portal で次の手順のようにします。
 
    ![サービス カタログ アプリケーションを検索する](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
 
-1. マネージ アプリケーション サービスの説明が表示されます。 **作成**を選択します。
+1. マネージ アプリケーション サービスの説明が表示されます。 **作成** を選択します。
 
    ![作成の選択](./media/deploy-service-catalog-quickstart/create-service-catalog.png)
 
-1. アクセスできるマネージ アプリケーションの定義が表示されます。 使用可能な定義から、デプロイするものを選択します。 このクイック スタートでは、前のクイック スタートで作成した **Managed Storage Account** の定義を使用します。 **作成**を選択します。
+1. アクセスできるマネージ アプリケーションの定義が表示されます。 使用可能な定義から、デプロイするものを選択します。 このクイック スタートでは、前のクイック スタートで作成した **Managed Storage Account** の定義を使用します。 **作成** を選択します。
 
    ![デプロイする定義を選択する](./media/deploy-service-catalog-quickstart/select-definition.png)
 
-1. **[基本]** タブの値を指定します。サービス カタログ アプリをデプロイする Azure サブスクリプションを選択します。 **applicationGroup** という名前の新しいリソース グループを作成します。 アプリの場所を選択します。 終わったら、**[OK]** を選択します。
+1. **[基本]** タブの値を指定します。サービス カタログ アプリをデプロイする Azure サブスクリプションを選択します。 **applicationGroup** という名前の新しいリソース グループを作成します。 アプリの場所を選択します。 終わったら、 **[OK]** を選択します。
 
    ![基本の値を指定する](./media/deploy-service-catalog-quickstart/provide-basics.png)
 
-1. ストレージ アカウント名のプレフィックスを指定します。 作成するストレージ アカウントの種類を選択します。 終わったら、**[OK]** を選択します。
+1. ストレージ アカウント名のプレフィックスを指定します。 作成するストレージ アカウントの種類を選択します。 終わったら、 **[OK]** を選択します。
 
    ![ストレージの値を指定する](./media/deploy-service-catalog-quickstart/provide-storage.png)
 
-1. 概要を確認します。 検証が成功したら、**[OK]** を選択してデプロイを開始します。
+1. 概要を確認します。 検証が成功したら、 **[OK]** を選択してデプロイを開始します。
 
    ![概要を表示する](./media/deploy-service-catalog-quickstart/view-summary.png)
 

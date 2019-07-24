@@ -15,11 +15,11 @@ ms.date: 04/03/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: f76dd423cb3f7fbae6cc88d064e49dc2d56f1a1c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60766069"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service Environment の管理アドレス
 
@@ -38,7 +38,7 @@ App Service Environment (ASE) は、ご使用の Azure Virtual Network (VNet) �
 
 ## <a name="configuring-a-network-security-group"></a>ネットワーク セキュリティ グループの構成
 
-ネットワーク セキュリティ グループがあれば、個々のアドレスや、独自の構成を維持することについて心配する必要がありません。 すべてのアドレスを保持して最新の状態に保たれる AppServiceManagement という名前の IP サービス タグがあります。 この IP サービス タグを NSG で使用するには、ポータルに移動して [Network Security Groups UI]\(ネットワーク セキュリティ グループ UI\) を開き、[セキュリティ規則の受信] を選択します。 受信管理トラフィック用の既存の規則がある場合は、それを編集します。 この NSG がお使いの ASE で作成されたものでない場合や、すべて新しいものの場合は、**[追加]** を選択します。 [ソース] ドロップダウンで、**[Service Tag]\(サービス タグ)** を選択します。  [ソース サービス タグ] で **AppServiceManagement** を選択します。 ソース ポートの範囲を \*、[Destination]\(宛先) を **[Any]\(任意)**、宛先ポート範囲を **[454 455]**、プロトコルを **[TCP]**、[アクション] を **[許可]** に設定します。 規則を作成する場合は、[優先度] を設定する必要があります。 
+ネットワーク セキュリティ グループがあれば、個々のアドレスや、独自の構成を維持することについて心配する必要がありません。 すべてのアドレスを保持して最新の状態に保たれる AppServiceManagement という名前の IP サービス タグがあります。 この IP サービス タグを NSG で使用するには、ポータルに移動して [Network Security Groups UI]\(ネットワーク セキュリティ グループ UI\) を開き、[セキュリティ規則の受信] を選択します。 受信管理トラフィック用の既存の規則がある場合は、それを編集します。 この NSG がお使いの ASE で作成されたものでない場合や、すべて新しいものの場合は、 **[追加]** を選択します。 [ソース] ドロップダウンで、 **[Service Tag]\(サービス タグ)** を選択します。  [ソース サービス タグ] で **AppServiceManagement** を選択します。 ソース ポートの範囲を \*、[Destination]\(宛先) を **[Any]\(任意)** 、宛先ポート範囲を **[454 455]** 、プロトコルを **[TCP]** 、[アクション] を **[許可]** に設定します。 規則を作成する場合は、[優先度] を設定する必要があります。 
 
 ![サービス タグでの NSG の作成][1]
 

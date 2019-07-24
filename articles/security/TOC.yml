@@ -54,8 +54,14 @@
               href: azure-security-disk-encryption-overview.md
             - name: クイック スタート
               items:
-                - name: VM の暗号化 - Azure PowerShell
-                  href: quick-encrypt-vm-powershell.md
+                - name: Azure CLI を使用して Linux VM を暗号化する
+                  href: azure-disk-encryption-linux-cli-quickstart.md
+                - name: Azure PowerShell を使用して Linux VM を暗号化する
+                  href: azure-disk-encryption-linux-powershell-quickstart.md
+                - name: Azure CLI を使用して Windows VM を暗号化する
+                  href: azure-disk-encryption-windows-cli-quickstart.md
+                - name: Azure PowerShell を使用して Windows VM を暗号化する
+                  href: azure-disk-encryption-windows-powershell-quickstart.md
             - name: Azure Disk Encryption
               items:
                 - name: ディスク暗号化の前提条件
@@ -136,6 +142,9 @@
         - name: セキュリティ チェックリスト
           displayName: 'identity, active directory, password'
           href: azure-ad-secure-steps.md
+        - name: パスワードなしの選択
+          displayName: 'identity, active directory, passwordless'
+          href: azure-ad-passwordless.md
         - name: ベスト プラクティス
           displayName: 'password, identity, active directory'
           href: azure-security-identity-management-best-practices.md
@@ -226,6 +235,8 @@
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
       items:
+        - name: 監査対象別の Azure サービス
+          href: ./compliance/azure-services-in-fedramp-auditscope.md
         - name: データ分析
           href: ./blueprints/fedramp-analytics-overview.md
         - name: データ ウェアハウス
@@ -342,6 +353,8 @@
               href: azure-security-threat-modeling-tool-releases-71601261.md
             - name: Threat Modeling Tool 更新プログラム リリース 7.1.60408.1 - 2019 年 4 月 9 日
               href: azure-security-threat-modeling-tool-releases-71604081.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60702.1 - 7/02/2019
+              href: azure-security-threat-modeling-tool-releases-71607021.md
         - name: 軽減策
           href: azure-security-threat-modeling-tool-mitigations.md
           items:

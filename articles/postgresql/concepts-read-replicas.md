@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: ce99e03cbd767b5e25871397ea9ae9a301132ab6
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 06/14/2019
+ms.openlocfilehash: c98247b0ba8b670a59dec9aa3ec87e949f1dda78
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510971"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147929"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -40,10 +40,9 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 レプリカ作成ワークフローを開始すると、空の Azure Database for PostgreSQL サーバーが作成されます。 新しいサーバーには、マスター サーバー上にあったデータが設定されます。 作成時間は、マスター上のデータ量と、最後の週次完全バックアップからの経過時間に依存します。 時間の範囲は、数分から数時間になる可能性があります。
 
-読み取りレプリカ機能では、PostgreSQL の (論理レプリケーションではなく) 物理レプリケーションが使用されます。 レプリケーション スロットを使用したストリーミング レプリケーションが、既定の動作モードです。 必要に応じて、遅れを取り戻すためにログ配布が使用されます。
+すべてのレプリカでストレージの[自動拡張](concepts-pricing-tiers.md#storage-auto-grow)が有効になっています。 自動拡張機能によって、レプリカにレプリケートされるデータをレプリカで保持し続けることができ、ストレージ不足エラーを原因とするレプリケーションの中断を防ぐことができます。
 
-> [!NOTE]
-> サーバーに記憶域のアラートを設定していない場合、設定することをお勧めします。 サーバーがレプリケーションに影響を与えるその容量の上限に近づくと、アラートによって通知されます。
+読み取りレプリカ機能では、PostgreSQL の (論理レプリケーションではなく) 物理レプリケーションが使用されます。 レプリケーション スロットを使用したストリーミング レプリケーションが、既定の動作モードです。 必要に応じて、遅れを取り戻すためにログ配布が使用されます。
 
 [Azure portal で読み取りレプリカを作成する](howto-read-replicas-portal.md)方法を確認してください。
 
@@ -61,17 +60,15 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 メッセージが表示されたら、ユーザー アカウントのパスワードを入力します。
 
 ## <a name="monitor-replication"></a>レプリケーションを監視します
-Azure Database for PostgreSQL は、Azure Monitor に **Max Lag Across Replicas (レプリカ間の最大ラグ)** メトリックを提供します。 このメトリックは、マスター サーバーのみで使用できます。 そのメトリックでは、マスターと最も遅れているレプリカの間のラグがバイト単位で示されます。 
+Azure Database for PostgreSQL には、レプリケーションを監視するための 2 つのメトリックがあります。 2 つのメトリックは **[Max Lag Across Replicas]\(レプリカ間の最大ラグ\)** と **[Replica Lag]\(レプリカ間のラグ\)** です。 これらのメソッドを表示する方法については、[読み取りレプリカのハウツー記事](howto-read-replicas-portal.md)の「**レプリカの監視**」セクションを参照してください。
 
-Azure Database for PostgreSQL は、Azure Monitor に**Replica Lag (レプリカ ラグ)** メトリックも提供します。 このメトリックは、レプリカのみで使用できます。 
+**[Max lag across replicas]\(レプリカ間の最大ラグ\)** メトリックは、マスターと最も遅れているレプリカの間のラグをバイト単位で示します。 このメトリックは、マスター サーバーのみで使用できます。
 
-メトリックは、`pg_stat_wal_receiver` ビューから計算されます。
+**[Replica Lag]\(レプリカのラグ\)** メトリックでは最後に再生されたトランザクションからの時間が表示されます。 マスター サーバーでトランザクションが発生していない場合、メトリックにはこのタイム ラグが反映されます。 このメトリックは、レプリカ サーバーのみで使用できます。 レプリカのラグは、`pg_stat_wal_receiver` ビューから計算されます。
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 ```
-
-Replica Lag (レプリカ ラグ) メトリックでは最後に再生されたトランザクションからの時間が表示されます。 マスター サーバーでトランザクションが発生していない場合、メトリックにはこのタイム ラグが反映されます。
 
 レプリカのラグがワークロードに対して許容できない値に達したときに通知されるアラートを設定します。 
 
@@ -125,6 +122,9 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 PostgreSQL では、読み取りレプリカの `max_connections` パラメーターの値をマスターの値以上にする必要があります。そうしないと、レプリカが起動しません。 Azure Database for PostgreSQL で、`max_connections` パラメーター値は、SKU に基づきます。 詳しくは、「[Azure Database for PostgreSQL の制限事項](concepts-limits.md)」をご覧ください。 
 
 サーバーの値を更新しようとしていて、制限に従っていない場合、エラーが表示されます。
+
+### <a name="maxpreparedtransactions"></a>max_prepared_transactions
+読み取りレプリカの `max_prepared_transactions` パラメーターの値をマスターの値以上にすることが [PostgreSQL では必要](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)です。そうしないと、レプリカが起動しません。 マスターで `max_prepared_transactions` を変更する場合、まずレプリカで変更します。
 
 ### <a name="stopped-replicas"></a>停止されたレプリカ
 マスター サーバーと読み取りレプリカの間のレプリケーションを停止した場合、変更を適用するためにレプリカが再起動されます。 停止したレプリカは、読み取りと書き込みの両方を受け入れるスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。

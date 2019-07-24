@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: aaa72d3a29fee28ede336a2be350015bf3cbc9b4
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 2c90dcf1672a3d3505aaa19aec953ad97f5289bb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565540"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446214"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)に関するページを参照してください。
@@ -40,11 +40,11 @@ ms.locfileid: "59565540"
 
     ```powershell
 
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
 
     ```
 
-## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Azure Resource Manager テンプレートを使用する Azure VM でのセルフホステッド IR の設定 (オートメーション)
+## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用する Azure VM でのセルフホステッド IR の設定 
 [この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime)を使用して、Azure 仮想マシンでのセルフホステッド IR のセットアップを自動化できます。 このテンプレートでは、高可用性とスケーラビリティの機能を備えた完全に機能するセルフホステッド IR を Azure Virtual Network 内に簡単に設定できます (ノード数を 2 以上に設定している場合のみ)。
 
 ## <a name="command-flow-and-data-flow"></a>コマンド フローとデータ フロー
@@ -57,13 +57,13 @@ ms.locfileid: "59565540"
 1. データ開発者は、PowerShell コマンドレットを使用して Azure Data Factory 内でセルフホステッド統合ランタイムを作成します。 現時点では、Azure ポータルはこの機能をサポートしていません。
 2. データ開発者は、データ ストアへの接続に使用する必要があるセルフホステッド統合ランタイムのインスタンスを指定することによって、オンプレミスのデータ ストアへのリンクされたサービスを作成します。
 3. セルフホステッド統合ランタイム ノードでは、Windows DPAPI (Data Protection Application Programming Interface) を使用して資格情報を暗号化し、その資格情報をローカルに保存します。 高可用性を目的として複数ノードが設定されている場合、資格情報はさらに他のノード間で同期されます。 各ノードでは、DPAPI を使用して資格情報を暗号化し、それらをローカルに格納します。 資格情報の同期は、データ開発者に透過的であり、セルフホステッド IR によって処理されます。    
-4. Data Factory サービスでは、共有 Azure Service Bus キューを使用する*コントロール チャネル* を介して、ジョブのスケジューリングと管理のためにセルフホステッド統合ランタイムと通信を行います。 アクティビティ ジョブを実行する必要がある場合、Data Factory は、その要求を資格情報と共に (資格情報が自己ホスト型統合ランタイムに保存されていない場合) キューに入れます。 セルフホステッド統合ランタイムでは、そのキューをポーリングした後、ジョブを開始します。
+4. Data Factory サービスでは、共有 [Azure Service Bus Relay](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it#wcf-relay) を使用する*コントロール チャネル* を介して、ジョブのスケジューリングと管理のためにセルフホステッド統合ランタイムと通信を行います。 アクティビティ ジョブを実行する必要がある場合、Data Factory は、その要求を資格情報と共に (資格情報が自己ホスト型統合ランタイムに保存されていない場合) キューに入れます。 セルフホステッド統合ランタイムでは、そのキューをポーリングした後、ジョブを開始します。
 5. セルフホステッド統合ランタイムでは、データ パイプラインでのコピー アクティビティの構成方法に応じて、オンプレミス ストアからクラウド ストレージに、またはその逆に、データをコピーします。 この手順では、セルフホステッド統合ランタイムは、セキュリティで保護された (HTTPS) チャネルを使用して、クラウド ベースのストレージ サービス (Azure Blob Storage など) と直接通信を行います。
 
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>セルフホステッド IR の使用に関する注意点
 
 - 1 つの自己ホスト型統合ランタイムは、複数のオンプレミス データ ソースで使用できます。 単一のセルフホステッド統合ランタイムを、同じ Azure Active Directory テナント内の別のデータ ファクトリと共有することができます。 詳細については、[セルフホステッド統合ランタイムの共有](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)に関するセクションを参照してください。
-- 単一コンピューター上にインストールできるセルフホステッド統合ランタイムのインスタンスは 1 つのみとなります。 オンプレミス データ ソースにアクセスする必要があるデータ ファクトリが 2 つある場合、両方のデータ ファクトリから 2 つのオンプレミス コンピューターそれぞれにセルフホステッド統合ランタイムをインストールするか、[セルフホステッド統合ランタイム](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)を使用して別のデータ ファクトリと共有する必要があります。  
+- 単一コンピューター上にインストールできるセルフホステッド統合ランタイムのインスタンスは 1 つのみとなります。 オンプレミス データ ソースにアクセスする必要があるデータ ファクトリが 2 つある場合、[セルフホステッド IR 共有機能](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories)を使用してセルフホステッド統合ランタイムを共有するか、またはデータ ファクトリごとに 2 つのオンプレミス コンピューターそれぞれにセルフホステッド統合ランタイムをインストールします。  
 - セルフホステッド統合ランタイムは、データ ソースと同じコンピューター上に存在する必要はありません。 しかし、セルフホステッド統合ランタイムをデータ ソースの近くに配置することにより、セルフホステッド統合ランタイムからデータ ソースへの接続時間が短縮されます。 自己ホスト型統合ランタイムは、オンプレミス データ ソースをホストするコンピューターとは異なるコンピューターにインストールすることをお勧めします。 セルフホステッド統合ランタイムとデータ ソースが別のコンピューター上にある場合、セルフホステッド統合ランタイムではデータ ソースとリソースの競合は発生しません。
 - 同じオンプレミス データ ソースに接続する異なるコンピューター上で、複数のセルフホステッド統合ランタイムを使用することができます。 たとえば、2 つのデータ ファクトリを提供する 2 つのセルフホステッド統合ランタイムがあり、どちらのデータ ファクトリにも同じオンプレミス データ ソースが登録されている場合があります。
 - Power BI シナリオを提供するゲートウェイがコンピューターに既にインストールされている場合は、Azure Data Factory 用のセルフホステッド統合ランタイムを別のコンピューター上にインストールします。
@@ -74,7 +74,7 @@ ms.locfileid: "59565540"
 
 ## <a name="prerequisites"></a>前提条件
 
-- サポートされているオペレーティング システムのバージョンは、Windows 7 Service Pack 1、Windows 8.1、Windows 10、Windows Server 2008 R2 SP1、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016 です。 セルフホステッド統合ランタイムのドメイン コントローラーへのインストールはサポートされていません。
+- サポートされているオペレーティング システムのバージョンは、Windows 7 Service Pack 1、Windows 8.1、Windows 10、Windows Server 2008 R2 SP1、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows Server 2019 です。 セルフホステッド統合ランタイムのドメイン コントローラーへのインストールはサポートされていません。
 - .NET Framework 4.6.1 以降が必要です。 Windows 7 コンピューター上にセルフホステッド統合ランタイムをインストールする場合は、.NET Framework 4.6.1 以降をインストールします。 詳細については、「 [.NET Framework システム要件](/dotnet/framework/get-started/system-requirements) 」をご覧ください。
 - セルフホステッド統合ランタイム コンピューターの推奨される最小限の構成は、2 GHz、4 コア、8 GB の RAM、80 GB のディスクです。
 - ホスト コンピューターが休止状態の場合、自己ホスト型統合ランタイムはデータ要求に応答しません。 セルフホステッド統合ランタイムをインストールする前に、コンピューターに適切な電源プランを構成します。 コンピューターが休止状態に入るよう構成されている場合、自己ホスト型統合ランタイムのインストール時にメッセージが出力されます。
@@ -86,15 +86,16 @@ ms.locfileid: "59565540"
 
 - コンピューターが休止状態にならないように、セルフホステッド統合ランタイム用のホスト コンピューターの電源プランを構成します。 ホスト コンピューターが休止状態になると、セルフホステッド統合ランタイムはオフラインになります。
 - 定期的に、自己ホスト型統合ランタイムに関連付けられている資格情報をバックアップします。
+- セルフホステッド IR の設定操作を自動化するには、[後述するセクション](#automation-support-for-self-hosted-ir-function)を参照してください。  
 
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>ダウンロード センターからセルフホステッド IR をインストールして登録する
 
 1. [Microsoft Integration Runtime のダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=39717)に移動します。
 2. **[ダウンロード]** を選択します。次に、64 ビット バージョン (32 ビットはサポートされていません) を選んでから **[次へ]** を選択します。
 3. MSI ファイルを直接実行するか、ハード ディスクに保存してから実行します。
-4. **[ようこそ]** ページで言語を選び、**[次へ]** を選択します。
-5. マイクロソフト ソフトウェア ライセンス条項に同意して、**[次へ]** を選択します。
-6. セルフホステッド統合ランタイムをインストールする**フォルダー**を選んで、**[次へ]** を選択します。
+4. **[ようこそ]** ページで言語を選び、 **[次へ]** を選択します。
+5. マイクロソフト ソフトウェア ライセンス条項に同意して、 **[次へ]** を選択します。
+6. セルフホステッド統合ランタイムをインストールする**フォルダー**を選んで、 **[次へ]** を選択します。
 7. **[インストールの準備完了]** ページで **[インストール]** をクリックします。
 8. **[完了]** をクリックしてインストールを完了します。
 9. Azure PowerShell を使用して認証キーを取得します。 認証キーを取得するための PowerShell の例を以下に示します。
@@ -106,9 +107,48 @@ ms.locfileid: "59565540"
 
     a. 認証キーをテキスト領域に貼り付けます。
 
-    b. 必要に応じて、**[認証キーの表示]** を選択してキー テキストを表示します。
+    b. 必要に応じて、 **[認証キーの表示]** を選択してキー テキストを表示します。
 
     c. **[登録]** を選択します。
+
+## <a name="automation-support-for-self-hosted-ir-function"></a>セルフホステッド IR 機能の自動化のサポート
+
+
+> [!NOTE]
+> Azure 仮想マシン上でセルフホステッド IR を設定し、Azure Resource Manager テンプレートを使用して設定を自動化する予定の場合は、[セクション](#setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template)を参照してください。
+
+既存のセルフホステッド IR を設定または管理するコマンド ラインを使用できます。 これは、特にインストール、セルフホステッド IR ノードの登録の自動化に使用できます。 
+
+**Dmgcmd.exe** は、通常は次の場所にあるセルフホステッド インストールに含まれています。C:\Program Files\Microsoft Integration Runtime\3.0\Shared\ フォルダー。 これはさまざまなパラメーターをサポートしており、自動化のためにバッチ スクリプトを使用してコマンド プロンプトから呼び出すことができます。 
+
+*使用法:* 
+
+```powershell
+dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["password"] -Loglevel <logLevel> ] 
+```
+
+ *詳細 (パラメーター/プロパティ):* 
+
+| プロパティ                                                    | 説明                                                  | 必須 |
+| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
+| RegisterNewNode "`<AuthenticationKey>`"                     | 指定された認証キーを使用して Integration Runtime (セルフホステッド) ノードを登録します | いいえ       |
+| EnableRemoteAccess "`<port>`" ["`<thumbprint>`"]            | 高可用クラスターを設定する場合や、同じネットワーク内のリモート コンピューターから **New-AzDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用して (ADF サービスを経由せずに) 直接セルフホステッド IR に対して資格情報の設定を有効する場合のために、現在のノード上でリモート アクセスを有効にします。 | いいえ       |
+| EnableRemoteAccessInContainer "`<port>`" ["`<thumbprint>`"] | ノードがコンテナーで実行されているときに、現在のノードへのリモート アクセスを有効にします | いいえ       |
+| DisableRemoteAccess                                         | 現在のノードへのリモート アクセスを無効にします。 マルチノード設定にはリモート アクセスが必要です。 New-**AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell コマンドレットは、セルフホステッド IR ノードと同じマシン上で実行される限り、リモート アクセスが無効な場合でも機能します。 | いいえ       |
+| Key "`<AuthenticationKey>`"                                 | 以前の認証キーを上書き/更新します。 キーが新しい統合ランタイムのものである場合、これにより以前のセルフホステッド IR ノードがオフラインになる可能性があるので、注意してください。 | いいえ       |
+| GenerateBackupFile "`<filePath>`" "`<password>`"            | 現在のノードのバックアップ ファイルを生成します。バックアップ ファイルには、ノード キーとデータ ストアの資格情報が含まれています。 | いいえ       |
+| ImportBackupFile "`<filePath>`" "`<password>`"              | バックアップ ファイルからノードを復元します                          | いいえ       |
+| Restart                                                     | Integration Runtime (セルフホステッド) ホスト サービスを再開します   | いいえ       |
+| start                                                       | Integration Runtime (セルフホステッド) ホスト サービスを開始します     | いいえ       |
+| Stop                                                        | Integration Runtime (セルフホステッド) 更新サービスを停止します        | いいえ       |
+| StartUpgradeService                                         | Integration Runtime (セルフホステッド) 更新サービスを開始します       | いいえ       |
+| StopUpgradeService                                          | Integration Runtime (セルフホステッド) 更新サービスを停止します        | いいえ       |
+| TurnOnAutoUpdate                                            | Integration Runtime (セルフホステッド) の自動更新を有効にします        | いいえ       |
+| TurnOffAutoUpdate                                           | Integration Runtime (セルフホステッド) の自動更新を無効にします       | いいえ       |
+| SwitchServiceAccount "<domain\user>" ["password"]           | DIAHostService を新しいアカウントとして実行するように設定します。 システム アカウントまたは仮想アカウントの場合は空のパスワード ("") を使用します | いいえ       |
+| Loglevel `<logLevel>`                                       | ETW ログ レベルを設定します (Off、Error、Verbose、または All)。 通常、Microsoft サポートがデバッグ時に使用します。 | いいえ       |
+
+   
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性とスケーラビリティ
@@ -122,7 +162,7 @@ ms.locfileid: "59565540"
 > 各ノードを関連付けるために新しいセルフホステッド統合ランタイムを作成する必要はありません。 セルフホステッド統合ランタイムを別のコンピューターにインストールし、同じ認証キーを使用してそれを登録できます。 
 
 > [!NOTE]
-> 高可用性とスケーラビリティ用の別のノードを追加する前に、最初のノードで **[Remote access to intranet]\(イントラネットへのリモート アクセス\)** オプションを確実に有効にします (**[Microsoft Integration Runtime 構成マネージャー]** > **[設定]** > **[Remote access to intranet]\(イントラネットへのリモート アクセス\)**)。 
+> 高可用性とスケーラビリティ用の別のノードを追加する前に、最初のノードで **[Remote access to intranet]\(イントラネットへのリモート アクセス\)** オプションを確実に有効にします ( **[Microsoft Integration Runtime 構成マネージャー]**  >  **[設定]**  >  **[Remote access to intranet]\(イントラネットへのリモート アクセス\)** )。 
 
 ### <a name="scale-considerations"></a>スケールに関する考慮事項
 
@@ -271,7 +311,7 @@ download.microsoft.com | 443 | 更新プログラムのダウンロードに使�
 
 1. **Microsoft Integration Runtime 構成マネージャー**を開きます。
 2. **[設定]** タブに切り替えます。
-3. **[HTTP プロキシ]** セクションの **[変更]** リンクを選択して、**[HTTP プロキシを設定する]** ダイアログ ボックスを開きます。
+3. **[HTTP プロキシ]** セクションの **[変更]** リンクを選択して、 **[HTTP プロキシを設定する]** ダイアログ ボックスを開きます。
 4. **[次へ]** を選択します。 その後、プロキシ設定を保存して統合ランタイムのホスト サービスを再起動するためのアクセス許可を求める警告が表示されます。
 
 構成マネージャー ツールを使用して、HTTP プロキシを表示して更新することができます。
@@ -310,7 +350,7 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
     ```
 3. 元の場所に構成ファイルを保存します。 次に、セルフホステッド統合ランタイムのホスト サービスを再開して、変更を取得します。 
 
-   サービスを再開するには、コントロール パネルのサービス アプレットを使用します。 または、Integration Runtime 構成マネージャーから、**[サービスの停止]** ボタンを選択し、**[サービスの開始]** を選びます。 
+   サービスを再開するには、コントロール パネルのサービス アプレットを使用します。 または、Integration Runtime 構成マネージャーから、 **[サービスの停止]** ボタンを選択し、 **[サービスの開始]** を選びます。 
    
    サービスが開始されない場合は、不正確な XML タグ構文が編集済みのアプリケーション構成ファイルに追加されている可能性があります。
 
@@ -323,7 +363,7 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
 次のようなエラーが発生した場合は、ファイアウォールまたはプロキシ サーバーの不適切な構成が原因である可能性があります。構成が不適切だと、セルフホステッド統合ランタイムが自身を認証するための Data Factory に接続できません。 ファイアウォールとプロキシ サーバーが確実に正しく構成されるようにするには、前のセクションを参照してください。
 
 * セルフホステッド統合ランタイムを登録すると、次のエラーが表示されます。"この Integration Runtime ノードの登録に失敗しました。 認証キーが有効であることと、このコンピューター上で統合サービスのホストサービスが実行されていることを確認してください。"
-* Integration Runtime 構成マネージャーを開くと、**[切断]** または **[接続中]** という状態が表示されます。 **[イベント ビューアー]** > **[アプリケーションとサービス ログ]** > **[Microsoft Integration Runtime]** の順に選択して Windows イベント ログを表示すると、次のようなエラー メッセージが表示されます。
+* Integration Runtime 構成マネージャーを開くと、 **[切断]** または **[接続中]** という状態が表示されます。 **[イベント ビューアー]**  >  **[アプリケーションとサービス ログ]**  >  **[Microsoft Integration Runtime]** の順に選択して Windows イベント ログを表示すると、次のようなエラー メッセージが表示されます。
 
     ```
     Unable to connect to the remote server
@@ -331,9 +371,9 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
     ```
 
 ### <a name="enabling-remote-access-from-an-intranet"></a>イントラネットからのリモート アクセスを有効にする  
-PowerShell を使用して、セルフホステッド統合ランタイムがインストールされているのとは別の (ネットワーク内の) コンピューターから資格情報を暗号化する場合、**[イントラネットからのリモート アクセス]** オプションを有効にすることができます。 PowerShell を使用して、セルフホステッド統合ランタイムがインストールされているのと同じコンピューターで資格情報を暗号化する場合、**[イントラネットからのリモート アクセス]** オプションを有効にすることはできません。
+PowerShell を使用して、セルフホステッド統合ランタイムがインストールされているのとは別の (ネットワーク内の) コンピューターから資格情報を暗号化する場合、 **[イントラネットからのリモート アクセス]** オプションを有効にすることができます。 PowerShell を使用して、セルフホステッド統合ランタイムがインストールされているのと同じコンピューターで資格情報を暗号化する場合、 **[イントラネットからのリモート アクセス]** オプションを有効にすることはできません。
 
-高可用性とスケーラビリティ用の別のノードを追加する前に、**[イントラネットからのリモート アクセス]** を有効にする必要があります。  
+高可用性とスケーラビリティ用の別のノードを追加する前に、 **[イントラネットからのリモート アクセス]** を有効にする必要があります。  
 
 既定では、セルフホステッド統合ランタイム (バージョン 3.3.xxxx.x 以降) の設定中に、セルフホステッド統合ランタイムのインストールにより、セルフホステッド統合ランタイム コンピューター上の **[イントラネットからのリモート アクセス]** が無効になります。
 
@@ -341,7 +381,7 @@ PowerShell を使用して、セルフホステッド統合ランタイムがイ
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-``` 
+```
 
 セルフホステッド統合ランタイム コンピューター上でポート 8060 を開かない場合は、資格情報の設定アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成します。 たとえば、**New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell コマンドレットを使用できます。
 

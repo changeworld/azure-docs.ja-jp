@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: roaror
 ms.openlocfilehash: 476a143555323bbb5058541000a5b1a26d23b71a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012969"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61330853"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB から Azure Cosmos DB の MongoDB 用 API へのデータ移行の移行前手順
 
@@ -51,7 +51,7 @@ ms.locfileid: "60012969"
 
 個々のそれぞれのコレクションにどれくらいのスループットを確保すべきかわからない場合、データベースレベルのスループットを選択します。 お使いの Azure Cosmos データベースに構成されたプロビジョニング済みスループットは、MongoDB VM や物理サーバーの計算容量と論理的に同等であると考えることができます。ただし、弾力的にスケーリングでき、よりコスト効率が高いです。 詳細については、[Azure Cosmos コンテナーおよびデータベースへのスループットのプロビジョニング](set-throughput.md)に関するページを参照してください。
 
-スループットをデータベース レベルでプロビジョニングした場合、そのデータベース内に作成したすべてのコレクションは、パーティションとシャード キーを使用して作成する必要があります。 パーティションの詳細については、[Azure Cosmos DB でのパーティション分割と水平スケーリング](partition-data.md)に関するページをご覧ください。 移行中にパーティションまたはシャード キーを指定しない場合、Azure Database Migration Service によって各ドキュメントに自動生成されるシャード キーのフィールドに、*_id* 属性が自動入力されます。
+スループットをデータベース レベルでプロビジョニングした場合、そのデータベース内に作成したすべてのコレクションは、パーティションとシャード キーを使用して作成する必要があります。 パーティションの詳細については、[Azure Cosmos DB でのパーティション分割と水平スケーリング](partition-data.md)に関するページをご覧ください。 移行中にパーティションまたはシャード キーを指定しない場合、Azure Database Migration Service によって各ドキュメントに自動生成されるシャード キーのフィールドに、 *_id* 属性が自動入力されます。
 
 ### <a name="optimal-number-of-request-units-rus-to-provision"></a>プロビジョニングする要求ユニット (RU) の最適な数
 

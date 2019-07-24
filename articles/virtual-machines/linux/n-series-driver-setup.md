@@ -4,7 +4,7 @@ description: Azure で Linux を実行する N シリーズ VM 用の NVIDIA GPU
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c80b821d6bd0263473ba0178eea148f7a2d5773
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d6c8bdb27e9e976a7a490c2a824e994242378641
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788124"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67671201"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -187,9 +187,9 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
 
    sudo apt-get dist-upgrade -y
 
-  sudo apt-get install build-essential ubuntu-desktop -y
-  ```
-3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NVv2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
+   sudo apt-get install build-essential ubuntu-desktop -y
+   ```
+3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします (NV または NVv2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
 
    ```
    blacklist nouveau
@@ -214,7 +214,7 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
+6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、 **[はい]** を選択します。
 
 7. インストールが完了したら、/etc/nvidia/gridd.conf.template を、/etc/nvidia/ にある新しいファイル gridd.conf にコピーします。
 
@@ -244,7 +244,7 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
    sudo yum install dkms
    ```
 
-2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NV2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
+2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします (NV または NV2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
 
    ```
    blacklist nouveau
@@ -278,7 +278,7 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
+6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、 **[はい]** を選択します。
 
 7. インストールが完了したら、/etc/nvidia/gridd.conf.template を、/etc/nvidia/ にある新しいファイル gridd.conf にコピーします。
   

@@ -8,19 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 2a7af59495966c76a47ea84311ab073eb594f82e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b00630354834897793bbf357be378051bcf74698
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707560"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059383"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
 Azure HDInsight クラスターは、Azure クラウドで実行される使い慣れた Linux 環境での Apache Hadoop を提供します。 使い方は、ほとんどの点で、Linux 環境の他の Hadoop とまったく同じです。 ここでは、知っておく必要がある特定の違いについて説明します。
-
-> [!IMPORTANT]  
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,7 +52,7 @@ HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-
 
 ## <a name="remote-access-to-services"></a>サービスへのリモート アクセス
 
-* **Ambari (web)** - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (web)**  - https://CLUSTERNAME.azurehdinsight.net
 
     クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にサインインします。
 
@@ -66,14 +63,14 @@ HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-
     >
     > Ambari Web UI の全機能を使用するには、SSH トンネルを使用して、クラスター ヘッド ノードに対する Web トラフィックがプロキシ経由になるようにします。 「[SSH トンネリングを使用して Apache Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください
 
-* **Ambari (REST)** - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
     > クラスター管理者のユーザー名とパスワードを使用して認証します。
     >
     > 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-* **WebHCat (Templeton)** - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
 
     > [!NOTE]  
     > クラスター管理者のユーザー名とパスワードを使用して認証します。
@@ -251,7 +248,7 @@ __Azure Data Lake Storage__ を使用している場合は、次のリンクを�
 HDInsight クラスターのスケーリングに関する具体的な情報については、以下を参照してください。
 
 * [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-command-line.md#scale-clusters)
+* [Azure CLI を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-command-line.md#scale-clusters)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Hue (またはその他の Hadoop コンポーネント) のインストール方法
 
@@ -288,7 +285,6 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 
 ## <a name="next-steps"></a>次の手順
 
-* [Windows ベースの HDInsight から Linux ベースへの移行](hdinsight-migrate-from-windows-to-linux.md)
 * [Apache Ambari REST API を使用した HDInsight クラスターの管理](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
 * [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)

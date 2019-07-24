@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C で Graph API を使用する | Microsoft Docs
 description: アプリケーション ID を使用して B2C テナント用の Graph API を呼び出してプロセスを自動化する方法。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/07/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ce4446f52fec4312466fc18cb97e25e93358ee1a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 88b1d05a47f4a8267ab936a922ac190a925bd5ba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697924"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66510180"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C:Azure AD Graph API を使用する
 
@@ -42,22 +42,22 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ページの右上隅のアカウント名を選択して、Azure AD B2C テナントを選択します。
-3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
+3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、 **[アプリの登録]** 、 **[追加]** の順にクリックします。
 4. 画面の指示に従い、新しいアプリケーションを作成します。 
     1. アプリケーション タイプとして **[Web App / API]** (Web アプリ/API) を選択します。    
     2. これはこの例に関係がないので、**任意のサインオン URL** (例: `https://B2CGraphAPI`) を指定します。  
 5. この時点でアプリケーションの一覧に表示されたアプリケーションをクリックして、**アプリケーション ID** (クライアント ID とも呼ばれます) を取得します。 後のセクションで必要になるため、この ID をコピーします。
 6. [設定] メニューで **[キー]** をクリックします。
-7. **[パスワード]** セクションにキーの説明を入力し、期間を選択して、**[保存]** をクリックします。 後のセクションで使用するために、キーの値 (クライアント シークレットとも呼ばれます) をコピーします。
+7. **[パスワード]** セクションにキーの説明を入力し、期間を選択して、 **[保存]** をクリックします。 後のセクションで使用するために、キーの値 (クライアント シークレットとも呼ばれます) をコピーします。
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>アプリケーション用に作成、読み取り、および更新アクセス許可を構成する
 ここでは、ユーザーの作成、読み取り、更新、および削除に必要なすべてのアクセス許可を取得するようにアプリケーションを構成する必要があります。
 
 1. Azure Portal の [アプリの登録] メニューで手順を続行し、アプリケーションを選択します。
 2. [設定] メニューで **[必要なアクセス許可]** をクリックします。
-3. [必要なアクセス許可] メニューで、**[Windows Azure Active Directory]** をクリックします。
-4. [アクセスの有効化] メニューで、**[アプリケーション アクセス許可]** から **[ディレクトリ データの読み取りと書き込み]** を選択し、**[保存]** をクリックします。
-5. 最後に、[必要なアクセス許可] メニューに戻り、**[アクセス許可の付与]** をクリックします。
+3. [必要なアクセス許可] メニューで、 **[Windows Azure Active Directory]** をクリックします。
+4. [アクセスの有効化] メニューで、 **[アプリケーション アクセス許可]** から **[ディレクトリ データの読み取りと書き込み]** を選択し、 **[保存]** をクリックします。
+5. 最後に、[必要なアクセス許可] メニューに戻り、 **[アクセス許可の付与]** をクリックします。
 
 これで B2C テナントに対してユーザーの作成、読み取り、更新を実行する権限を持つアプリケーションが用意されました。
 
@@ -67,7 +67,7 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 > 
 
 ## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>アプリケーションに対するパスワードの削除または更新のアクセス許可を構成する
-現在、*[ディレクトリ データの読み取りと書き込み]* アクセス許可には、ユーザーを削除したり、ユーザー パスワードを更新したりする権限は含まれて**いません**。 アプリケーションにユーザーを削除したり、パスワードを更新したりする権限を付与する場合は、PowerShell に関連した次の追加の手順を実行する必要があります。そうでない場合は、次のセクションにスキップできます。
+現在、 *[ディレクトリ データの読み取りと書き込み]* アクセス許可には、ユーザーを削除したり、ユーザー パスワードを更新したりする権限は含まれて**いません**。 アプリケーションにユーザーを削除したり、パスワードを更新したりする権限を付与する場合は、PowerShell に関連した次の追加の手順を実行する必要があります。そうでない場合は、次のセクションにスキップできます。
 
 まず、[Azure AD PowerShell v1 モジュール (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0) をまだインストールしていない場合は、それをインストールします。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fae09b5aeed05dfb09f2b998de805ef0607e7f39
+ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359004"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65823544"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -33,7 +33,7 @@ ms.locfileid: "59359004"
 
 ## <a name="cloud-apps-assignments"></a>クラウド アプリの割り当て
 
-条件付きアクセス ポリシーを使用して、ユーザーが[クラウド アプリ](conditions.md#cloud-apps)にアクセスする方法を制御します。 条件付きアクセス ポリシーを構成する際に、クラウド アプリを少なくとも 1 つ選択する必要があります。 
+条件付きアクセス ポリシーを使用して、ユーザーが[クラウド アプリ](conditions.md#cloud-apps-and-actions)にアクセスする方法を制御します。 条件付きアクセス ポリシーを構成する際に、クラウド アプリを少なくとも 1 つ選択する必要があります。 
 
 ![ポリシーに対してクラウド アプリを選択する](./media/technical-reference/09.png)
 
@@ -48,7 +48,6 @@ Microsoft から、次のクラウド アプリに条件付きアクセス ポ�
 - Microsoft Application Insights Analytics
 - Microsoft Azure Information Protection - [詳細情報](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - Microsoft Azure Management - [詳細情報](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
-- Microsoft Azure RemoteApp
 - Microsoft Azure Subscription Management
 - Microsoft Cloud App Security
 - Microsoft Commerce Tools Access Control Portal
@@ -144,7 +143,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Name | 1 |
 | Type | REG_SZ (文字列) |
-| データ | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
+| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
 **Windows 8.1 および 7** で Chrome をサポートするには、次のレジストリ キーを作成してください。
 
@@ -153,7 +152,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Name | 1 |
 | Type | REG_SZ (文字列) |
-| データ | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 これらのブラウザーはデバイス認証をサポートしており、デバイスを識別してポリシーで検証することができます。 ブラウザーがプライベート モードで実行している場合、デバイス チェックは失敗します。
 
@@ -167,7 +166,6 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 
 | クライアント アプリ | 対象サービス | プラットフォーム |
 | --- | --- | --- |
-| Azure リモート アプリ | Azure Remote App サービス | Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
 | Dynamics CRM アプリ | Dynamics CRM | Windows 10、Windows 8.1、iOS、Android |
 | メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Office 365 Exchange Online | Windows 10 |
 | アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス| Android および iOS |
@@ -203,6 +201,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 この設定は、以下のクライアント アプリに適用されます。
 
 - Microsoft Azure Information Protection
+- Microsoft Bookings
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow

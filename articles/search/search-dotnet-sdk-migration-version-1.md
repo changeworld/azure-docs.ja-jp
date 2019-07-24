@@ -10,18 +10,14 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 3f47656bb13d08ea56cf25a2a29897722abb1cdb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 82823bae76521080634d4f7ff285d94ce8495fbf
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65024160"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK バージョン 1.1 へのアップグレード
-
-> [!Important]
-> このコンテンツはまだ準備中の段階です。 Azure Search .NET SDK のバージョン 9.0 が NuGet 上で提供されています。 この記事では、9.0 へのアップグレード方法について説明します。 
-> 
 
 バージョン 1.0.2-preview 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 1.1 を使用するようにアプリケーションをアップグレードできます。
 
@@ -37,7 +33,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 以前にバージョン 1.0.0-preview、1.0.1-preview、または 1.0.2-preview を使用していた場合、ビルドは成功するはずであり、次に進む準備が整います。
 
-0.13.0-preview 以前のバージョンを使用していた場合、次のようなビルド エラーが表示されます。
+0\.13.0-preview 以前のバージョンを使用していた場合、次のようなビルド エラーが表示されます。
 
     Program.cs(137,56,137,62): error CS0117: 'Microsoft.Azure.Search.Models.IndexBatch' does not contain a definition for 'Create'
     Program.cs(137,99,137,105): error CS0117: 'Microsoft.Azure.Search.Models.IndexAction' does not contain a definition for 'Create'
@@ -178,7 +174,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
         };
 
 ### <a name="model-class-changes"></a>モデル クラスの変更
-「[操作メソッドの変更](#OperationMethodChanges)」で説明されているシグネチャの変更により、`Microsoft.Azure.Search.Models` 名前空間の多くのクラスの名前が変更されるか、クラスが削除されました。 例: 
+「[操作メソッドの変更](#OperationMethodChanges)」で説明されているシグネチャの変更により、`Microsoft.Azure.Search.Models` 名前空間の多くのクラスの名前が変更されるか、クラスが削除されました。 例:
 
 * `IndexDefinitionResponse` は `AzureOperationResponse<Index>` によって置き換えられました
 * `DocumentSearchResponse` の名前が `DocumentSearchResult` に変更されました

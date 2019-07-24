@@ -10,18 +10,18 @@ ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: e657c4678c76e8ff667c1a3f30409fc157f52d16
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 18b124ca7f6f270488fa8e010d2b1c0404f8e9e2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798239"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66384775"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web Search API の言語と地域のサポート
 
 Bing Web Search API では 30 を超える国または地域がサポートされ、その多くで複数の言語が使用されています。 クエリでの国または地域の指定は、国または地域の関心に基づいた検索結果の絞り込みに役立ちます。 結果には Bing へのリンクを含めることができ、これらのリンクにより、指定された国/地域または言語に従って Bing ユーザー エクスペリエンスをローカライズできます。
 
-`cc` クエリ パラメーターを使用して国または地域を指定できます。 国または地域を指定する場合、[`Accept-Language` ヘッダー](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers)を使用して 1 つ以上の言語コードも指定する必要があります。 各市場でサポートされている言語の一覧を確認するには、「[市場](#markets)」の表をご利用ください。
+`cc` クエリ パラメーターを使用して国または地域を指定できます。 国または地域を指定する場合、[`Accept-Language` ヘッダー](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)を使用して 1 つ以上の言語コードも指定する必要があります。 各市場でサポートされている言語の一覧を確認するには、「[市場](#markets)」の表をご利用ください。
 
 または、`mkt` クエリ パラメーターと「**市場**」の表のコードを使用して市場を指定できます。 市場を指定すると、同時に国または地域と優先言語が指定されます。 `setLang` クエリ パラメーターを使用すれば、言語を明示的に設定できます。
 

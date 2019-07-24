@@ -2,20 +2,20 @@
 title: Azure サブスクリプションをリンクする方法 - Azure Active Directory B2C | Microsoft Docs
 description: Azure AD B2C テナントの Azure サブスクリプションへの課金を有効にするためのステップ バイ ステップ ガイドです。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/24/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f9e3e63942c8fac5fc24ca26969b71e6ef4257f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9d3ce15ac9899fe09d907296976db15ed0babb35
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64706822"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612478"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Azure サブスクリプションを Azure Active Directory B2C テナントにリンクする
 
@@ -53,9 +53,9 @@ Azure サブスクリプションを表示する Azure AD テナントに移動�
 
 ![結果リストで選択された Azure AD B2C](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c-result.png)
 
-Azure AD B2C の詳細が表示されます。 新しい Azure Active Directory B2C テナントの構成を開始するには、**[作成]** をクリックします。
+Azure AD B2C の詳細が表示されます。 新しい Azure Active Directory B2C テナントの構成を開始するには、 **[作成]** をクリックします。
 
-リソースの作成画面で、**[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** を選択します。
+リソースの作成画面で、 **[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** を選択します。
 
 ## <a name="create-an-azure-ad-b2c-resource-within-the-azure-subscription"></a>Azure サブスクリプション内に Azure AD B2C リソースを作成する
 
@@ -81,6 +81,14 @@ Azure サブスクリプション内に Azure AD B2C リソースが正常に作
 - Azure AD B2C テナント リソースを他の Azure サブスクリプション、または他のリソース グループに移動する。
 
 ![B2C リソース設定](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+
+## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Azure AD B2C テナントの課金サブスクリプションを変更する
+
+Azure AD B2C テナントは、ソースと宛先のサブスクリプションが同じ Azure Active Directory テナント内に存在する場合、別のサブスクリプションに移動できます。
+
+Azure AD B2C テナントなどの Azure リソースを別のサブスクリプションに移動する方法については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
+
+移動を開始する前に、必ず記事全体に目を通して、このような移動についての制限事項および要件を十分に理解してください。 リソースを移動する手順だけでなく、移動前のチェックリストや移動操作の検証方法などの重要な情報が含まれています。
 
 ## <a name="known-issues"></a>既知の問題
 

@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: apurvajo;cephalin
+ms.author: cephalin
+ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 0febb8fadd973b67ed232d6094d85894fb383d14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: e7768eb29caf66fd8f666a9475ac0787826a47e0
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955716"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618910"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -45,7 +46,7 @@ ms.locfileid: "65955716"
 
 ![証明書の作成](./media/app-service-web-purchase-ssl-web-site/createssl.png)
 
-次の表を使用して、証明書を構成できます。 完了したら、**[作成]** をクリックします。
+次の表を使用して、証明書を構成できます。 完了したら、 **[作成]** をクリックします。
 
 | Setting | 説明 |
 |-|-|
@@ -60,7 +61,7 @@ ms.locfileid: "65955716"
 
 証明書の購入プロセスの完了後、この証明書の使用を開始する前に完了する必要のある手順がまだいくつかあります。 
 
-[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、**[証明書の構成]** > **[手順 1:格納]** をクリックします。
+[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、 **[証明書の構成]**  >  **[手順 1:格納]** をクリックします。
 
 ![KV に格納する準備完了のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
@@ -73,19 +74,19 @@ ms.locfileid: "65955716"
 | Name | 英数字とダッシュで構成される一意の名前。 |
 | リソース グループ | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
 | Location | App Service アプリと同じ場所を選択します。 |
-| 価格レベル  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
+| 価格レベル | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |
 | 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/key-vault-network-security.md)」の手順に従って構成できます |
 
-コンテナーを選択したら、**[Key Vault リポジトリ]** ページを閉じます。 **[ストア]** オプションに、成功を示す緑色のチェック マークが表示されます。 次の手順のためにページは開いたままにしておきます。
+コンテナーを選択したら、 **[Key Vault リポジトリ]** ページを閉じます。 **[ストア]** オプションに、成功を示す緑色のチェック マークが表示されます。 次の手順のためにページは開いたままにしておきます。
 
 ## <a name="verify-domain-ownership"></a>ドメインの所有権を検証する
 
-最後の手順で使用した **[証明書の構成]** ページで、**[手順 2:確認]** をクリックします。
+最後の手順で使用した **[証明書の構成]** ページで、 **[手順 2:確認]** をクリックします。
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
-**[App Service の確認]** を選択します。 Web アプリに既にドメインをマップしたので (「[前提条件](#prerequisites)」を参照)、既に確認されています。 **[確認]** をクリックして、この手順を完了します。 **"証明書はドメイン確認済みです"** というメッセージが表示されるまで、**[最新の情報に更新]** をクリックします。
+**[App Service の確認]** を選択します。 Web アプリに既にドメインをマップしたので (「[前提条件](#prerequisites)」を参照)、既に確認されています。 **[確認]** をクリックして、この手順を完了します。 **"証明書はドメイン確認済みです"** というメッセージが表示されるまで、 **[最新の情報に更新]** をクリックします。
 
 > [!NOTE]
 > 4 種類のドメイン検証方法がサポートされています。 
@@ -97,19 +98,19 @@ ms.locfileid: "65955716"
 
 ## <a name="bind-certificate-to-app"></a>アプリに証明書をバインドする
 
-**[Azure portal](https://portal.azure.com/)** の左側のメニューから、**[App Services]** > **[\<your_ app>]** を選択します。
+**[Azure portal](https://portal.azure.com/)** の左側のメニューから、 **[App Services]**  >  **[\<your_ app>]** を選択します。
 
-アプリの左側のナビゲーションから、**[SSL 設定]** > **[プライベート証明書 (.pfx)]** > **[App Service 証明書のインポート]** を選択します。
+アプリの左側のナビゲーションから、 **[SSL 設定]**  >  **[プライベート証明書 (.pfx)]**  >  **[App Service 証明書のインポート]** を選択します。
 
 ![証明書インポートのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
 購入した証明書を選択します。
 
-証明書がインポートされたら、それをアプリ上のマップされたドメイン名にバインドする必要があります。 **[バインド]** > **[SSL バインディングの追加]** を選択します。 
+証明書がインポートされたら、それをアプリ上のマップされたドメイン名にバインドする必要があります。 **[バインド]**  >  **[SSL バインディングの追加]** を選択します。 
 
 ![証明書インポートのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/AddBinding.png)
 
-次の表を使用して、**[SSL バインディング]** ダイアログでバインディングを構成してから、**[バインディングの追加]** をクリックします。
+次の表を使用して、 **[SSL バインディング]** ダイアログでバインディングを構成してから、 **[バインディングの追加]** をクリックします。
 
 | Setting | 説明 |
 |-|-|
@@ -131,7 +132,7 @@ ms.locfileid: "65955716"
 
 証明書のキーを更新すると、証明機関から発行された新しい証明書が展開されます。
 
-キー更新操作が完了したら、**[同期]** をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
+キー更新操作が完了したら、 **[同期]** をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
 
 > [!NOTE]
 > **[同期]** をクリックしなくても、証明書は 48 時間以内に App Service によって自動的に同期されます。
@@ -140,13 +141,13 @@ ms.locfileid: "65955716"
 
 任意の時点で証明書の自動更新をオンにするには、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、左側のナビゲーションで **[自動更新の設定]** をクリックします。
 
-**[オン]** を選択して、**[保存]** をクリックします。 自動更新をオンにすると、証明書は有効期限の 60 日前に自動更新を開始できます。
+**[オン]** を選択して、 **[保存]** をクリックします。 自動更新をオンにすると、証明書は有効期限の 60 日前に自動更新を開始できます。
 
 ![証明書を自動的に更新する](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
-証明書を手動で更新するには、**[手動更新]** をクリックします。 有効期限の 60 日前に、証明書の手動更新を要求できます。
+証明書を手動で更新するには、 **[手動更新]** をクリックします。 有効期限の 60 日前に、証明書の手動更新を要求できます。
 
-更新操作が完了したら、**[同期]** をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
+更新操作が完了したら、 **[同期]** をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
 
 > [!NOTE]
 > **[同期]** をクリックしなくても、証明書は 48 時間以内に App Service によって自動的に同期されます。

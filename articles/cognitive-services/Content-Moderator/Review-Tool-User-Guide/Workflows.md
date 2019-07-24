@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: sajagtap
 ms.openlocfilehash: 006f7d6691b8872aaa7ff8ccacff484585761d00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795799"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61271115"
 ---
 # <a name="define-and-use-moderation-workflows"></a>モデレーション ワークフローを定義して使用する
 
@@ -39,7 +39,7 @@ ms.locfileid: "59795799"
 
 ### <a name="define-evaluation-criteria"></a>評価基準の定義
 
-次の画面で、**[If]** セクションに移動します。 上部のドロップダウン メニューで **[条件]** を選択します。 これにより、ワークフローがアクションを実行する条件を構成できます。 複数の条件を使用する場合は、代わりに **[Combination]\(組み合わせ\)** を選択します。 
+次の画面で、 **[If]** セクションに移動します。 上部のドロップダウン メニューで **[条件]** を選択します。 これにより、ワークフローがアクションを実行する条件を構成できます。 複数の条件を使用する場合は、代わりに **[Combination]\(組み合わせ\)** を選択します。 
 
 次にコネクタを選択します。 この例では、**Content Moderator** を使用します。 選択するコネクタに応じて、表示されるデータ出力のオプションが変わります。 他のコネクタの設定方法については、レビュー ツールの設定ガイドの「[Connectors](./configure.md#connectors)」セクションを参照してください。
 

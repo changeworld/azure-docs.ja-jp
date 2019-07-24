@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 6/27/2019
 ms.author: raynew
-ms.openlocfilehash: 3ad3438f02ead9063a683a39d4ac5823274d55f7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155172"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491753"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 
@@ -35,7 +35,7 @@ Site Recovery は、アプリケーション レベルの保護と復旧に次�
 * アプリに依存しないため、サポートされているマシンで実行されるすべてのワークロードに対してレプリケーションを行えます。
 * RPO を使用した近同期レプリケーションにかかる時間はわずか 30 秒間であるため、重要度の高いビジネス アプリケーションのニーズを満たします。
 * アプリケーションとの整合性が取られたスナップショットであるため、単一層または複数層のアプリケーションに適しています。
-* SQL Server AlwaysOn と統合できるほか、その他のアプリケーション レベルのレプリケーション テクノロジ (AD のレプリケーション、SQL AlwaysOn、Exchange データベース可用性グループ (DAG)、Oracle Data Guard など) と組み合わせて使用できます。
+* SQL Server AlwaysOn と統合できるほか、その他のアプリケーション レベルのレプリケーション テクノロジ (AD のレプリケーション、SQL AlwaysOn、Exchange データベース可用性グループ (DAG) など) と組み合わせて使用できます。
 * 柔軟な復旧計画を策定し、1 回のクリックでアプリケーション スタック全体を復旧できます。この計画に、外部スクリプトや手動のアクションを含めることもできます。
 * Site Recovery と Azure の高度なネットワーク管理により、IP アドレスの予約、負荷分散の構成、低 RTO ネットワーク切り替え用の Azure Traffic Manager との統合など、アプリのネットワーク要件が簡略化されます。
 * 豊富な自動化ライブラリに、運用環境ですぐに使えるアプリケーション固有のスクリプトが用意されています。これらのスクリプトをダウンロードして、復旧計画に統合することができます。
@@ -103,9 +103,9 @@ Azure Site Recovery は、次のような点で Dynamics AX ERP ソリューシ�
 
 | **RDS** |**Azure VM を Azure にレプリケートする** | **Hyper-V VM をセカンダリ サイトにレプリケート** | **Hyper-V VM を Azure にレプリケート** | **VMware VM をセカンダリ サイトにレプリケート** | **VMware VM を Azure にレプリケート** | **物理サーバーをセカンダリ サイトにレプリケート** | **物理サーバーを Azure にレプリケート** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **プールされた仮想デスクトップ (管理対象外)** |いいえ |はい |いいえ  |はい |いいえ  |はい |いいえ  |
-| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ |はい |いいえ  |はい |いいえ  |はい |いいえ  |
-| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |[はい]|はい |はい |はい |はい |はい |[はい] |
+| **プールされた仮想デスクトップ (管理対象外)** |いいえ|はい |いいえ |はい |いいえ |はい |いいえ |
+| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ|はい |いいえ |はい |いいえ |はい |いいえ |
+| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |はい|はい |はい |はい |はい |はい |はい |
 
 [Azure Site Recovery を使用して RDS のディザスター リカバリーを設定します](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure)。
 

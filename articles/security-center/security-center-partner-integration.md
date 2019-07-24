@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: e756a0a7af9ad89e3aad8b0dbe27a870a3f855c1
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: cfe1137f0b0b155a06ebb5ce54bfd83859bdfa01
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400953"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569819"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
+
+> [!NOTE]
+> セキュリティ ソリューションのサブセットは、2019 年 6 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_solutions)」を参照してください。
 
 ## <a name="integrated-azure-security-solutions"></a>統合された Azure セキュリティ ソリューション
 Security Center を使用すると、Azure で統合されたセキュリティ ソリューションを簡単に有効にすることができます。 利点は次のとおりです。
@@ -58,7 +61,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 2. **[Microsoft Azure] メニュー**の **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
-3. Security Center のメニューで、**[セキュリティ ソリューション]** を選択します。
+3. Security Center のメニューで、 **[セキュリティ ソリューション]** を選択します。
 
    ![Security Center の概要](./media/security-center-partner-integration/overview.png)
 
@@ -93,7 +96,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 ### <a name="discovered-solutions"></a>検出されたソリューション
 
-Security Center は、Azure で実行されていても Security Center に接続されていないセキュリティ ソリューションを自動的に検出し、**[検出されたソリューション]** セクションにソリューションを表示します。 これには、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) などの Azure ソリューションだけでなく、パートナー ソリューションも含まれます。
+Security Center は、Azure で実行されていても Security Center に接続されていないセキュリティ ソリューションを自動的に検出し、 **[検出されたソリューション]** セクションにソリューションを表示します。 これには、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) などの Azure ソリューションだけでなく、パートナー ソリューションも含まれます。
 
 > [!NOTE]
 > 検出されたソリューション機能のサブスクリプション レベルで、Security Center の Standard レベルが必要です。 セキュリティの価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
@@ -108,7 +111,7 @@ Security Center は、共通イベント形式 (CEF) のログを転送するこ
 
 ### <a name="add-data-sources"></a>データ ソースの追加
 
-**[データ ソースの追加]** セクションには、接続できるその他の使用可能なデータ ソースが表示されます。 このようなソースのいずれかからデータを追加する手順については、**[追加]** をクリックしてください。
+**[データ ソースの追加]** セクションには、接続できるその他の使用可能なデータ ソースが表示されます。 このようなソースのいずれかからデータを追加する手順については、 **[追加]** をクリックしてください。
 
 ![データ ソース](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
@@ -134,8 +137,8 @@ Security Center は、共通イベント形式 (CEF) のログを転送するこ
 
     ![セキュリティ センターの選択](./media/quick-security-solutions/quick-security-solutions-fig1.png)  
 
-3. Security Center のメイン メニューで、**[セキュリティ ソリューション]** を選択します。
-4. セキュリティ ソリューションのページで、**[Add data sources (3)]\(データ ソースの追加 (3)\)** の下にある **[共通イベント形式]** の **[追加]** をクリックします。
+3. Security Center のメイン メニューで、 **[セキュリティ ソリューション]** を選択します。
+4. セキュリティ ソリューションのページで、 **[Add data sources (3)]\(データ ソースの追加 (3)\)** の下にある **[共通イベント形式]** の **[追加]** をクリックします。
 
     ![データ ソースを追加する](./media/quick-security-solutions/quick-security-solutions-fig2.png)
 
@@ -156,26 +159,26 @@ Security Center は、共通イベント形式 (CEF) のログを転送するこ
 
 次の手順に進む前に、Syslog が Security Center への報告を開始するまで待機する必要があります。 これにはしばらく時間がかかる場合があります。この時間は、環境のサイズによって異なります。
 
-1.  Security Center ダッシュボードの左側のウィンドウで、**[検索]** をクリックします。
+1.  Security Center ダッシュボードの左側のウィンドウで、 **[検索]** をクリックします。
 2.  Syslog (Linux マシン) の接続先であるワークスペースを選択します。
-3.  「*CommonSecurityLog*」と入力し、**[検索]** ボタンをクリックします。
+3.  「*CommonSecurityLog*」と入力し、 **[検索]** ボタンをクリックします。
 
 次の例は、これらの手順の結果を示しています。![CommonSecurityLog](./media/quick-security-solutions/common-sec-log.png)
 
 #### <a name="clean-up-resources"></a>リソースのクリーンアップ
 このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き次のクイックスタートとチュートリアルを行う予定の場合、Standard レベルの実行を継続して、自動プロビジョニングを有効のままにしてください。 続行しないまたは Free レベルに戻したい場合:
 
-1. Security Center のメイン メニューに戻り、**[セキュリティ ポリシー]** を選択します。
+1. Security Center のメイン メニューに戻り、 **[セキュリティ ポリシー]** を選択します。
 2. Free に戻したいサブスクリプションまたはポリシーを選択します。 **[セキュリティ ポリシー]** が開きます。
-3. **[ポリシー コンポーネント]** で、**[価格レベル]** を選択します。
+3. **[ポリシー コンポーネント]** で、 **[価格レベル]** を選択します。
 4. **[Free]** を選択して、Standard レベルから Free レベルにサブスクリプションを変更します。
 5. **[保存]** を選択します。
 
 自動プロビジョニングを無効にする場合:
 
-1. Security Center のメイン メニューに戻り、**[セキュリティ ポリシー]** を選択します。
+1. Security Center のメイン メニューに戻り、 **[セキュリティ ポリシー]** を選択します。
 2. 自動プロビジョニングを無効にするサブスクリプションを選択します。
-3. **[セキュリティ ポリシー - データ収集]** で、**[オンボード]** の **[オフ]** を選択して、自動プロビジョニングを無効にします。
+3. **[セキュリティ ポリシー - データ収集]** で、 **[オンボード]** の **[オフ]** を選択して、自動プロビジョニングを無効にします。
 4. **[保存]** を選択します。
 
 >[!NOTE]

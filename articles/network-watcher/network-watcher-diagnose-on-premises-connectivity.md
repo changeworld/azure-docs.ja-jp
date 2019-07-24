@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 95c6e1f015e519bd1e753fce9a2c6f064a854456
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64713772"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66754068"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN Gateway を使用してオンプレミスの接続を診断する
 
@@ -36,7 +36,7 @@ Azure Network Watcher のトラブルシューティング機能により、Gate
 
 1. Virtual Network Gateway - Azure 上の VPN Gateway
 1. Local Network Gateway - Azure クラウドで表示されている、[オンプレミスの (FortiGate) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)
-1. サイト間接続 (ルート ベース) - [VPN Gateway とオンプレミス ルーター間の接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#createconnection)
+1. サイト間接続 (ルート ベース) - [VPN Gateway とオンプレミス ルーター間の接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
 1. [FortiGate の構成](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 サイト対サイト構成を構成するための詳細なガイダンスについては、[Azure portal を使用したサイト対サイト接続を含む VNet の作成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事を参照してください。
@@ -84,13 +84,13 @@ Azure Network Watcher のトラブルシューティング機能を使用する�
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
 | NoFault | エラーが検出されなかった場合。 |はい|
-| GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ |
-| PlannedMaintenance |  ゲートウェイ インスタンスはメンテナンス中です。  |いいえ |
-| UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。 | いいえ  |
-| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ  |
-| PlatformInActive | プラットフォームに問題があります。 | いいえ |
-| ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ |
-| NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 これはただの警告です。| いいえ |
+| GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ|
+| PlannedMaintenance |  ゲートウェイ インスタンスはメンテナンス中です。  |いいえ|
+| UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。 | いいえ |
+| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ |
+| PlatformInActive | プラットフォームに問題があります。 | いいえ|
+| ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ|
+| NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 これはただの警告です。| いいえ|
 | ConnectionsNotConnected | どの接続も接続されていません。 これはただの警告です。| はい|
 | GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | はい |
 
@@ -99,12 +99,12 @@ Azure Network Watcher のトラブルシューティング機能を使用する�
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
 | NoFault | エラーが検出されなかった場合。 |はい|
-| GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ |
-| PlannedMaintenance | ゲートウェイ インスタンスはメンテナンス中です。  |いいえ |
-| UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。  | いいえ  |
-| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ  |
-| ConnectionEntityNotFound | 接続の構成がありません。 | いいえ  |
-| ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ |
+| GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ|
+| PlannedMaintenance | ゲートウェイ インスタンスはメンテナンス中です。  |いいえ|
+| UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。  | いいえ |
+| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ |
+| ConnectionEntityNotFound | 接続の構成がありません。 | いいえ |
+| ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ|
 | ConnectionNotConfiguredOnGateway | 基になるサービスで接続が構成されていません。 | はい |
 | ConnectionMarkedStandby | 基になるサービスがスタンバイとマークされています。| はい|
 | Authentication | 事前共有キーが一致しません。 | はい|

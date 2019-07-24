@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 4d4c540e00794bfdf1df265457798cc13530c828
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873201"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61337790"
 ---
 # <a name="lambda-search-syntax"></a>ラムダ検索の構文
 
@@ -91,7 +91,7 @@ VisitNode(Expression<Func<INode, Action>> action, IEnumerable<string> select = n
 
 ##### <a name="bool-dicedouble-p"></a>bool dice(double p)
 
-0.0 以上 1.0 未満の乱数を生成します。 この関数は、数値が *p* 以下の場合にのみ *true* を返します。
+0\.0 以上 1.0 未満の乱数を生成します。 この関数は、数値が *p* 以下の場合にのみ *true* を返します。
 
 *json* 検索と比較して、*ラムダ*検索は表現力に富んでいます。クエリのパターンを指定するために、C# ラムダ式を直接使用できます。 次に 2 つの例を示します。
 

@@ -15,17 +15,17 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008381"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60632238"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイス構成を変更する
 
 ## <a name="overview"></a>概要
 
-Azure ポータルでは、**[設定]** ブレードの **[デバイスの設定]** セクションに、StorSimple デバイス マネージャー サービスによって管理されている StorSimple デバイスの再構成できるすべてのデバイス パラメーターが含まれます。 このチュートリアルでは、**[設定]** ブレードを使用して以下のデバイス レベルのタスクを実行する方法について説明します。
+Azure ポータルでは、 **[設定]** ブレードの **[デバイスの設定]** セクションに、StorSimple デバイス マネージャー サービスによって管理されている StorSimple デバイスの再構成できるすべてのデバイス パラメーターが含まれます。 このチュートリアルでは、 **[設定]** ブレードを使用して以下のデバイス レベルのタスクを実行する方法について説明します。
 
 * デバイスのフレンドリ名を変更する
 * デバイスの時刻設定を変更する
@@ -93,11 +93,11 @@ Azure ポータルでセカンダリ DNS サーバーを変更するには、次
 
 1. StorSimple デバイス マネージャー サービスに移動します。 デバイスの一覧から、デバイスを選択してクリックします。
 
-2. **[設定]** ブレードで、**[デバイスの設定]、[ネットワーク]** の順に移動します。 これで、**[ネットワーク設定]** ブレードが表示されます。 **[DNS 設定]** タイルをクリックします。 セカンダリ DNS サーバーの IP アドレスを変更します。
+2. **[設定]** ブレードで、 **[デバイスの設定]、[ネットワーク]** の順に移動します。 これで、 **[ネットワーク設定]** ブレードが表示されます。 **[DNS 設定]** タイルをクリックします。 セカンダリ DNS サーバーの IP アドレスを変更します。
 
     ![セカンダリ DNS サーバーの IP アドレスを変更する](./media/storsimple-8000-modify-device-config/modify-secondary-dns1.png)
 
-4. コマンド バーの **[保存]** をクリックし、確認を求められたら、**[OK]** をクリックします。
+4. コマンド バーの **[保存]** をクリックし、確認を求められたら、 **[OK]** をクリックします。
 
     ![変更を保存して確認する](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
 

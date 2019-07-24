@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000591"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60193715"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Azure Front Door Service の バック エンドとバックエンド プール
 この記事では、Azure Front Door Service でアプリのデプロイをマップする方法に関する概念について説明します。 また、アプリのバックエンドに関する、Front Door 構成のさまざまな用語についても説明します。
@@ -71,7 +71,7 @@ Front Door Service は、構成されたバックエンドそれぞれに定期�
 
 - **プロトコル**。 Front Door Service からバックエンドへの正常性プローブ要求を HTTP と HTTPS プロトコルのどちらを経由して送信するかを定義します。
 
-- **間隔 (秒)**。 バックエンドに対する正常性プローブの頻度、つまり各 Front Door 環境がプローブを送信する間隔を定義します。
+- **間隔 (秒)** 。 バックエンドに対する正常性プローブの頻度、つまり各 Front Door 環境がプローブを送信する間隔を定義します。
 
     >[!NOTE]
     >フェールオーバーを高速化するには、間隔をより小さい値に設定してください。 値が小さくなると、バックエンドが受信する正常性プローブのボリュームは大きくなります。 たとえば、間隔が 30 秒に設定されていて、90 の Front Door 環境または POP が世界中に存在する場合、各バックエンドは 1 秒あたり 3 から 5 件のプローブ要求を受信します。
@@ -85,11 +85,11 @@ Front Door Service は、構成されたバックエンドそれぞれに定期�
 
 - **成功サンプル サイズ**。 前述のとおり、サンプル サイズ、つまりバックエンドが正常であると見なすために必要な成功サンプルの数を定義します。 たとえば、Front Door の正常性プローブの間隔が 30 秒、サンプル サイズが 5、成功サンプル サイズが 3 だとします。 バックエンドの正常性プローブを評価するたびに、150 秒間 (5 x 30) で最新の 5 つのサンプルを確認します。 バックエンドが正常であると宣言するには、少なくとも 3 つのプローブが成功している必要があります。
 
-- **待機時間感度 (追加の待機時間)**。 Front Door で待ち時間の測定感度の範囲内にあるバックエンドに要求を送信するか、最も近いバックエンドに要求を転送するかを定義します。
+- **待機時間感度 (追加の待機時間)** 。 Front Door で待ち時間の測定感度の範囲内にあるバックエンドに要求を送信するか、最も近いバックエンドに要求を転送するかを定義します。
 
 詳細については、[最小限の待ち時間ベースのルーティング方法](front-door-routing-methods.md#latency)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 - [Front Door プロファイルの作成](quickstart-create-front-door.md)
-- [Front Door の仕組み](front-door-routing-architecture.md)
+- [Front Door のしくみ](front-door-routing-architecture.md)

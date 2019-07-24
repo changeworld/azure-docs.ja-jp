@@ -11,19 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 04/19/2019
-ms.openlocfilehash: cbcdcfd151951334246a4e85d9f521a15bb6269d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/03/2019
+ms.openlocfilehash: 1b452fb0bac91429793f8d55e439c36c70784722
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66146131"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66492716"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 [高可用性アーキテクチャ](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)の一部として、Premium、Business Critical、または Hyperscale サービス レベルの各データベースは、1 つのプライマリ レプリカと複数のセカンダリ レプリカを使用して自動的にプロビジョニングされます。 セカンダリ レプリカは、プライマリ レプリカと同じコンピューティング サイズでプロビジョニングされます。 **読み取りスケールアウト**機能では、読み取り/書き込みレプリカを共有する代わりに、読み取り専用レプリカのいずれか 1 つの処理能力を使用して SQL Database の読み取り専用ワークロードを負荷分散できます。 これにより、読み取り専用のワークロードは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーション向けです。 追加コストなしで利用できるこの追加能力を使用すると、パフォーマンス上のメリットを得られる可能性があります。
 
@@ -93,7 +91,7 @@ Premium または Business Critical サービス レベルの単一データベ�
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-読み取りスケールアウトの設定は、**[構成]** データベース ブレードで管理できます。 
+読み取りスケールアウトの設定は、 **[構成]** データベース ブレードで管理できます。 
 
 ### <a name="powershell"></a>PowerShell
 

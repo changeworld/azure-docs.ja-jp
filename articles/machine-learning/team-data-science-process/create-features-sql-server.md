@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2d01b74e7db275f4b2e3933415bbae40911b114b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7bc44d8e755af3d212d616425c6a1fd925172298
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854893"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65602939"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL と Python を使用して SQL Server のデータの特徴を作成する
 このドキュメントでは、Azure の SQL Server VM に保存されたデータから、アルゴリズムの学習効率を高めることのできる特徴を生成する方法について説明します。 このタスクを実行するには、SQL または Python のようなプログラミング言語を使用できます。 ここでは、両方の方法を説明しています。
@@ -68,7 +68,7 @@ ms.locfileid: "57854893"
 * 符号は、地球の北半球か南半球か、および東半球か西半球かを示します。
 * 100 の位が 0 でなければ、それは経度を使用していることを示します。緯度ではありません。
 * 10 の位は、最大で約 1,000 キロメートル単位で位置を示します。 これは、どの大陸または海洋にいるかに関する有益な情報です。
-* 1 の位 (1 つの 10 進数の角度) は、最大 111 キロメートル (60 海里、約 69 マイル) 単位で位置を示します。 これは、大まかにどの大きい州または国にいるかを示します。
+* 1 の位 (1 つの 10 進数の角度) は、最大 111 キロメートル (60 海里、約 69 マイル) 単位で位置を示します。 これは、大まかにどの大きい州または国や地域にいるかを示します。
 * 小数第 1 位は最大 11.1 km: になります。この位で、大都市と隣接する大都市の位置を識別できます。
 * 小数第 2 位は、最大 1.1 km に値します。ある村と隣接する村を識別できます。
 * 小数第 3 位は、最大 110 m に値します。大規模な農地または施設の構内を識別できます。
@@ -93,7 +93,7 @@ ms.locfileid: "57854893"
 
 > [!TIP]
 > お好みのプログラム言語でレコードを挿入できます。 書き込みの効率を向上させるために、データをチャンクで挿入する必要がある場合があります。 pyodbc を使用してそのようにする方法の例については、[こちら](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python)を参照してください。
->  [BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)
+> [BCP ユーティリティ](https://msdn.microsoft.com/library/ms162802.aspx)
 > 
 > 
 

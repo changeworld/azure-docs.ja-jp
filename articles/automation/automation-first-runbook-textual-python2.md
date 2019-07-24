@@ -4,17 +4,17 @@ description: 簡単な Python Runbook を作成、テスト、および発行す
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e79f4b58582ab6643a7a13ffee25503060a2208c
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: a030005d73df61c31c5aa1c2e1b56e52b03a56e3
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226744"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478503"
 ---
 # <a name="my-first-python-runbook"></a>初めての Python Runbook
 
@@ -48,7 +48,7 @@ ms.locfileid: "58226744"
 1. **[プロセス管理]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
 1. **[+ Runbook の追加]** を選択して、新しい Runbook を作成します。
 1. Runbook に *MyFirstRunbook-Python* という名前を付けます。
-1. ここでは、[Python Runbook](automation-runbook-types.md#python-runbooks) を作成するため、**[Runbook の種類]** では **[Python 2]** を選択します。
+1. ここでは、[Python Runbook](automation-runbook-types.md#python-runbooks) を作成するため、 **[Runbook の種類]** では **[Python 2]** を選択します。
 1. **[作成]** をクリックして Runbook を作成し、テキスト エディターを開きます。
 
 ## <a name="add-code-to-the-runbook"></a>Runbook にコードを追加する
@@ -79,7 +79,7 @@ Runbook を発行するときは、既存の発行済みバージョンをドラ
 この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
 
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
-1. ここで **[Runbook]** ウィンドウで左へスクロールして Runbook を表示すると、**[編集状態]** は **[発行済み]** になっています。
+1. ここで **[Runbook]** ウィンドウで左へスクロールして Runbook を表示すると、 **[編集状態]** は **[発行済み]** になっています。
 1. 右にスクロールして戻り、**MyFirstRunbook-Python** のウィンドウを表示します。
    上部のオプションを使用すると、Runbook の開始、Runbook の表示、Runbook の将来の開始スケジュールの設定を行うことができます。
 2. Runbook を開始するために **[開始]** をクリックし、[Runbook の開始] ブレードが開いたら **[OK]** をクリックします。
@@ -153,13 +153,14 @@ Compute クライアントを使用して、VM を起動します。 Runbook に
 ```python
 # Initialize the compute management client with the RunAs credential and specify the subscription to work against.
 compute_client = ComputeManagementClient(
-azure_credential,
-  str(runas_connection["SubscriptionId"])
+    azure_credential,
+    str(runas_connection["SubscriptionId"])
 )
 
 
 print('\nStart VM')
-async_vm_start = compute_client.virtual_machines.start("MyResourceGroup", "TestVM")
+async_vm_start = compute_client.virtual_machines.start(
+    "MyResourceGroup", "TestVM")
 async_vm_start.wait()
 ```
 
@@ -188,11 +189,12 @@ vm_name = str(sys.argv[2])
 ここでは Runbook の最後の 2 行を変更し、ハード コードされた値を使用する代わりに入力パラメーターの値をご利用いただけます。
 
 ```python
-async_vm_start = compute_client.virtual_machines.start(resource_group_name, vm_name)
+async_vm_start = compute_client.virtual_machines.start(
+    resource_group_name, vm_name)
 async_vm_start.wait()
 ```
 
-Python Runbook を開始 (**[テスト]** ページ上で、または発行済みの Runbook として) すると、**[パラメーター]** の下の **[Runbook の開始]** ページでパラメーターの値を入力できます。
+Python Runbook を開始 ( **[テスト]** ページ上で、または発行済みの Runbook として) すると、 **[パラメーター]** の下の **[Runbook の開始]** ページでパラメーターの値を入力できます。
 
 最初のボックスへ値を入力し始めると、2 番目のボックスが表示され、順次必要に応じた数のパラメーター値を入力できます。
 

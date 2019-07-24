@@ -4,7 +4,7 @@ description: Visual Studio サブスクリプションの特典を使用して�
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fcd97b07416526d71d5bee9bc198eb0d912e1c55
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999761"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67719161"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
 適切な Visual Studio (以前は MSDN) サブスクリプションがある場合は、Azure で Windows 7、Windows 8、または Windows 10 Enterprise (x64) を開発/テストのシナリオに使用できます。 この記事では、Windows 7、Windows 8.1、Windows 10 Enterprise を Azure で実行するための資格要件と、次の Azure ギャラリーのイメージの使用について説明します。
@@ -57,7 +57,7 @@ ms.locfileid: "57999761"
 
   ![Azure ポータルからのプラン ID の詳細](./media/client-images/offer-id-azure-portal.png) 
 
-- または、**[課金情報]** をクリックした後、サブスクリプション ID をクリックします。 *[課金情報]* ウィンドウにプラン ID が表示されます。
+- または、 **[課金情報]** をクリックした後、サブスクリプション ID をクリックします。 *[課金情報]* ウィンドウにプラン ID が表示されます。
 
 また、Azure アカウント ポータルの ['サブスクリプション' タブ](https://account.windowsazure.com/Subscriptions) からオファー ID を表示することもできます。
 

@@ -5,17 +5,17 @@ services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6b3b49049ea1ed36a08fad9619183017b0f07d99
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 6e96c4361cf086884bb483e2268b592dac40140b
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080481"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606066"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2.0 プレビュー (Azure Functions)
 
@@ -93,11 +93,12 @@ Durable Functions によってサポートされるさまざまな "コンテキ
 
 エンティティ関数では、"*持続エンティティ*" と呼ばれる小さい状態の読み取りと更新のための操作が定義されています。 オーケストレーター関数と同様、エンティティ関数は特殊なトリガー型である "*エンティティ トリガー*" を含む関数です。 オーケストレーター関数とは異なり、エンティティ関数には特定のコードの制約はありません。 また、エンティティ関数では、制御フローを介して状態を表す暗黙的ではなく、明示的に状態が管理されます。
 
-次のコードは、*Counter* エンティティを定義する簡単なエンティティ関数の例です。 その関数では 3 つの操作 `add`、`remove`、`reset` が定義されており、いずれでも整数値 `currentValue` が更新されます。
+次のコードは、*Counter* エンティティを定義する簡単なエンティティ関数の例です。 その関数では 3 つの操作 `add`、`subtract`、`reset` が定義されており、いずれでも整数値 `currentValue` が更新されます。
 
 ```csharp
+[FunctionName("Counter")]
 public static async Task Counter(
-    [EntityTrigger(EntityName = "Counter")] IDurableEntityContext ctx)
+    [EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
     int operand = ctx.GetInput<int>();
@@ -153,8 +154,8 @@ public static async Task Counter(
 エンティティでの操作の実行では、コンテキスト オブジェクト (.NET では`IDurableEntityContext`) で次のメンバーを呼び出すことができます。
 
 * **OperationName**: 操作の名前を取得します。
-* **GetInput\<T>**: 操作に対する入力を取得します。
-* **GetState\<T>**: エンティティの現在の状態を取得します。
+* **GetInput\<T>** : 操作に対する入力を取得します。
+* **GetState\<T>** : エンティティの現在の状態を取得します。
 * **SetState**: エンティティの状態を更新します。
 * **SignalEntity**: エンティティに一方向のメッセージを送信します。
 * **Self**: エンティティの ID を取得します。
@@ -171,7 +172,7 @@ public static async Task Counter(
 
 持続エンティティは、`orchestrationClient` バインド (.NET では `IDurableOrchestrationClient`) を使用して通常の関数から呼び出すことができます。 以下のメソッドがサポートされています。
 
-* **ReadEntityStateAsync\<T>**: エンティティの状態を読み取ります。
+* **ReadEntityStateAsync\<T>** : エンティティの状態を読み取ります。
 * **SignalEntityAsync**: エンティティに一方向のメッセージを送信し、エンキューされるまで待機します。
 
 これらのメソッドでは、一貫性よりパフォーマンスが優先されています。`ReadEntityStateAsync` は古い値を返すことがあり、`SignalEntityAsync` は操作が完了する前に返ることがあります。 これに対し、オーケストレーションからのエンティティの呼び出しでは、(次に示すように) 整合性が厳密です。
@@ -182,7 +183,7 @@ public static async Task Counter(
 
 * **SignalEntity**: エンティティに一方向のメッセージを送信します。
 * **CallEntityAsync**: エンティティにメッセージを送信し、操作が完了したことを示す応答を待ちます。
-* **CallEntityAsync\<T>**: エンティティにメッセージを送信し、T 型の結果を含む応答を待ちます。
+* **CallEntityAsync\<T>** : エンティティにメッセージを送信し、T 型の結果を含む応答を待ちます。
 
 双方向の通信を使用すると、操作の実行中にスローされた例外も、呼び出し元のオーケストレーションに返送されて、再スローされます。 これに対し、ファイア アンド フォーゲットを使用すると、例外は反映されません。
 
@@ -200,21 +201,25 @@ public static async Task Counter(
 たとえば、2 人のプレーヤーが使用可能かどうかをテストした後、両方をゲームに割り当る必要があるオーケストレーションについて考えます。 このタスクは、次のようにクリティカル セクションを使用して実装できます。
 
 ```csharp
-
-EntityId player1 = /* ... */;
-EntityId player2 = /* ... */;
-
-using (await ctx.LockAsync(player1, player2))
+[FunctionName("Orchestrator")]
+public static async Task RunOrchestrator(
+    [OrchestrationTrigger] IDurableOrchestrationContext ctx)
 {
-    bool available1 = await ctx.CallEntityAsync<bool>(player1, "is-available");
-    bool available2 = await ctx.CallEntityAsync<bool>(player2, "is-available");
+    EntityId player1 = /* ... */;
+    EntityId player2 = /* ... */;
 
-    if (available1 && available2)
+    using (await ctx.LockAsync(player1, player2))
     {
-        Guid gameId = ctx.NewGuid();
+        bool available1 = await ctx.CallEntityAsync<bool>(player1, "is-available");
+        bool available2 = await ctx.CallEntityAsync<bool>(player2, "is-available");
 
-        await ctx.CallEntityAsync(player1, "assign-game", gameId);
-        await ctx.CallEntityAsync(player2, "assign-game", gameId);
+        if (available1 && available2)
+        {
+            Guid gameId = ctx.NewGuid();
+
+            await ctx.CallEntityAsync(player1, "assign-game", gameId);
+            await ctx.CallEntityAsync(player2, "assign-game", gameId);
+        }
     }
 }
 ```

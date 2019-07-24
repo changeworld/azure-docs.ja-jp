@@ -15,17 +15,17 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ebced83346a7b130598e4a5f49a72d51ffd18e4f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56584898"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62118775"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>Azure CLI を使用して Azure リソースのカスタム ロールを作成する
 
 [Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure CLI を使用して、カスタム ロールを作成して管理する方法について説明します。
 
-カスタム ロールの作成方法に関するステップ倍ステップのチュートリアルが必要な場合は、「[チュートリアル: Azure CLI を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
+カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

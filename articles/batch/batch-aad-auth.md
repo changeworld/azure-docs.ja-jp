@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 0ca22cfe99e77cd2ed3c5a966fb2412444103d71
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 5cda3f99a263e8eef13ee2e8d8e6453eda0f4cb6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64922443"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341172"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -93,22 +93,22 @@ Azure AD にアプリケーションを登録する詳細については、「[A
 
 アプリケーションを登録したら、Azure portal で次の手順に従って、Batch サービスへのアクセス権をアプリケーションに付与します。
 
-1. Azure Portal の左側のナビゲーション ウィンドウで、**[すべてのサービス]** を選択します。 **[アプリの登録]** をクリックします。
+1. Azure Portal の左側のナビゲーション ウィンドウで、 **[すべてのサービス]** を選択します。 **[アプリの登録]** をクリックします。
 2. アプリケーション登録の一覧で、アプリケーションの名前を検索します。
 
     ![アプリケーションの名前を検索する](./media/batch-aad-auth/search-app-registration.png)
 
-3. アプリケーションをクリックし、**[設定]** をクリックします。 **[API アクセス]** セクションで、**[必要なアクセス許可]** を選択します。
-4. **[必要なアクセス許可]** ブレードで、**[追加]** ボタンをクリックします。
+3. アプリケーションをクリックし、 **[設定]** をクリックします。 **[API アクセス]** セクションで、 **[必要なアクセス許可]** を選択します。
+4. **[必要なアクセス許可]** ブレードで、 **[追加]** ボタンをクリックします。
 5. **[API の選択]** で、Batch API を検索します。 API が見つかるまで、次の各文字列を検索します。
     1. **MicrosoftAzureBatch**。
     2. **Microsoft Azure Batch**。 新しい Azure AD テナントでは、この名前が使用される場合があります。
     3. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。 
 6. Batch API を見つけたら、それを選択して **[選択]** をクリックします。
-7. **[アクセス許可の選択]** で、**[Access Azure Batch Service]\(Azure Batch サービスへのアクセス)** の横のチェック ボックスをオンにし、**[選択]** をクリックします。
+7. **[アクセス許可の選択]** で、 **[Access Azure Batch Service]\(Azure Batch サービスへのアクセス)** の横のチェック ボックスをオンにし、 **[選択]** をクリックします。
 8. **[Done]** をクリックします。
 
-これで、**[必要なアクセス許可]** ウィンドウに、ADAL と Batch サービス API の両方へのアクセスが Azure AD アプリケーションに許可されたことが示されます。 Azure AD を使用したアプリの初回登録時に、ADAL へのアクセス許可が自動的に付与されます。
+これで、 **[必要なアクセス許可]** ウィンドウに、ADAL と Batch サービス API の両方へのアクセスが Azure AD アプリケーションに許可されたことが示されます。 Azure AD を使用したアプリの初回登録時に、ADAL へのアクセス許可が自動的に付与されます。
 
 ![API のアクセス許可を付与する](./media/batch-aad-auth/required-permissions-data-plane.png)
 
@@ -125,9 +125,9 @@ Azure AD にアプリケーションを登録する詳細については、「[A
 
 Azure Portal で次の手順に従います。
 
-1. Azure Portal の左側のナビゲーション ウィンドウで、**[すべてのサービス]** を選択します。 **[アプリの登録]** をクリックします。
+1. Azure Portal の左側のナビゲーション ウィンドウで、 **[すべてのサービス]** を選択します。 **[アプリの登録]** をクリックします。
 2. アプリの登録の一覧から、アプリケーションの名前を検索します。
-3. アプリケーションをクリックし、**[設定]** をクリックします。 **[API アクセス]** セクションで、**[キー]** を選択します。
+3. アプリケーションをクリックし、 **[設定]** をクリックします。 **[API アクセス]** セクションで、 **[キー]** を選択します。
 4. キーを作成するために、キーの説明を入力します。 次に、キーの有効期間を 1 年または 2 年から選択します。 
 5. **[保存]** ボタンをクリックしてキーを作成および表示します。 キーの値を安全な場所にコピーしてください。ブレードを離れた後は再度アクセスすることはできません。 
 
@@ -138,11 +138,11 @@ Azure Portal で次の手順に従います。
 サービス プリンシパルを使用して認証するには、アプリケーションに RBAC ロールを割り当てる必要があります。 次の手順に従います。
 
 1. Azure Portal ポータルで、アプリケーションで使用する Batch アカウントに移動します。
-2. Batch アカウントの **[設定]** ブレードで、**[Access Control (IAM)]** を選択します。
+2. Batch アカウントの **[設定]** ブレードで、 **[Access Control (IAM)]** を選択します。
 3. **[ロールの割り当て]** タブをクリックします。
 4. **[ロールの割り当ての追加]** ボタンをクリックします。 
 5. **[ロール]** ドロップダウン リストで、アプリケーションに _[共同作成者]_ または _[リーダー]_ のいずれかのロールを選択します。 これらのロールの詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。  
-6. **[選択]** フィールドに、アプリケーションの名前を入力します。 リストからアプリケーションを選択し、**[保存]** をクリックします。
+6. **[選択]** フィールドに、アプリケーションの名前を入力します。 リストからアプリケーションを選択し、 **[保存]** をクリックします。
 
 この時点で、RBAC ロールが割り当てられたアプリケーションがアクセス制御の設定に表示されている必要があります。 
 
@@ -324,31 +324,31 @@ from azure.common.credentials import ServicePrincipalCredentials
 サービス プリンシパルを使用する場合は、テナント ID を指定する必要があります。 テナント ID を取得するには、「[Azure Acitve Directory のテナント ID を取得する](#get-the-tenant-id-for-your-active-directory)」で概要を説明する手順に従ってください。
 
 ```python
-TENANT_ID = "<tenant-id>";
+TENANT_ID = "<tenant-id>"
 ```
 
 Batch サービスのリソース エンドポイントを次のように参照します。  
 
 ```python
-RESOURCE = "https://batch.core.windows.net/";
+RESOURCE = "https://batch.core.windows.net/"
 ```
 
 Batch アカウントを次のように参照します。
 
 ```python
-BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com";
+BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com"
 ```
 
 アプリケーションのアプリケーション ID (クライアント ID) を指定します。 アプリケーション ID は、Azure Portal のアプリの登録から入手できます。
 
 ```python
-CLIENT_ID = "<application-id>";
+CLIENT_ID = "<application-id>"
 ```
 
 Azure Portal からコピーした秘密キーを次のように指定します。
 
 ```python
-SECRET = "<secret-key>";
+SECRET = "<secret-key>"
 ```
 
 **ServicePrincipalCredentials** オブジェクトを作成します。

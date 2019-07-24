@@ -13,11 +13,11 @@ ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729100"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60475857"
 ---
 # <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>マイ プロファイル (プレビュー) ポータルから接続されているデバイスを管理する
 **マイ プロファイル** ポータルの **[デバイス]** ページで、ご自分の職場または学校アカウントを使用して接続されているデバイスを管理して、もう所有していないものを無効にできます。
@@ -27,7 +27,7 @@ ms.locfileid: "57729100"
 ## <a name="view-your-connected-devices"></a>接続されているデバイスを表示する
 1. ご自分の職場または学校アカウントでサインインした後、 https://myprofile.microsoft.com/ ページに移動します。
 
-2. 左側のナビゲーション ウィンドウから **[デバイス]** を選択するか、**[デバイス]** ブロックから **[デバイスの管理]** リンクを選択します。
+2. 左側のナビゲーション ウィンドウから **[デバイス]** を選択するか、 **[デバイス]** ブロックから **[デバイスの管理]** リンクを選択します。
 
     ![[デバイス] リンクが強調表示されている [マイ プロファイル] ページ](media/myprofile-portal/myprofile-portal-devices.png)
 

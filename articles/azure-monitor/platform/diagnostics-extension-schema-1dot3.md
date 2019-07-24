@@ -10,11 +10,11 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59497085"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60238064"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Microsoft Azure Diagnostics の 1.3 以降の構成スキーマ
 > [!NOTE]
@@ -451,7 +451,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |----------------|-----------------|  
 | **overallQuotaInMB** | Azure Diagnostics によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 4096 MB です。<br />
 |**useProxyServer** | IE 設定で設定したプロキシ サーバー設定を使用するように Azure Diagnostics を構成します。|
-|**sinks** | 1.5 で追加されました。 省略可能。 シンクの場所を指定すると共に、シンクをサポートするすべての子要素の診断データを送信します。 シンクの例に、Application Insights または Event Hubs があります。|  
+|**sinks** | 1\.5 で追加されました。 省略可能。 シンクの場所を指定すると共に、シンクをサポートするすべての子要素の診断データを送信します。 シンクの例に、Application Insights または Event Hubs があります。|  
 
 
 <br /> <br />
@@ -507,7 +507,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**DirectoryConfiguration**|必須。 必須属性: <br /><br /> **containerName** - ログ ファイルの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。|  
+|**DirectoryConfiguration**|必須。 必須属性:<br /><br /> **containerName** - ログ ファイルの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。|  
 
 
 
@@ -532,8 +532,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|[EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性: <br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
-|**EtwManifestProviderConfiguration**|必須属性: <br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
+|**EtwEventSourceProviderConfiguration**|[EventSource クラス](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性:<br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
+|**EtwManifestProviderConfiguration**|必須属性:<br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 
 
 
@@ -545,7 +545,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |子要素|説明|  
 |--------------------|-----------------|  
 |**DefaultEvents**|オプションの属性:<br/><br/> **eventDestination** - イベントを保存するテーブルの名前|  
-|**Event**|必須属性: <br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
+|**Event**|必須属性:<br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
 
 
 
@@ -555,7 +555,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |子要素|説明|  
 |--------------------|-----------------|  
 |**DefaultEvents**|オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
-|**Event**|必須属性: <br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
+|**Event**|必須属性:<br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
 
 
 
@@ -564,11 +564,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。  
 
- **resourceId** 属性は必須です。  Azure Diagnostics のデプロイ先仮想マシンまたは仮想マシン スケール セットのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。  
+ **resourceId** 属性は必須です。  Azure Diagnostics のデプロイ先仮想マシンまたは仮想マシン スケール セットのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、 **[ID]** フィールドの値をコピーします。  
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**MetricAggregation**|必須属性: <br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
+|**MetricAggregation**|必須属性:<br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 
 
 
@@ -584,7 +584,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |子要素|説明|  
 |-------------------|-----------------|  
 |**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「 `\Processor(_Total)\% Processor Time` 」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。|
-|**sinks** | 1.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Azure Monitor や Event Hubs です。|    
+|**sinks** | 1\.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Azure Monitor や Event Hubs です。|    
 
 
 
@@ -598,7 +598,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子要素|説明|  
 |-------------------|-----------------|  
-|**DataSource**|収集する Windows イベント ログ。 必須属性: <br /><br /> **name** - 収集する Windows イベントについて説明する XPath クエリ。 例:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> すべてのイベントを収集するには、"*" を指定します。|  
+|**DataSource**|収集する Windows イベント ログ。 必須属性:<br /><br /> **name** - 収集する Windows イベントについて説明する XPath クエリ。 例:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> すべてのイベントを収集するには、"*" を指定します。|  
 
 
 
@@ -606,7 +606,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="logs-element"></a>Logs 要素  
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Logs*
 
- バージョン 1.0 および 1.1 に存在します。 1.2 にはありません。 1.3 で再び追加されています。  
+ バージョン 1.0 および 1.1 に存在します。 1\.2 にはありません。 1\.3 で再び追加されています。  
 
  基本的な Azure ログのバッファー構成を定義します。  
 
@@ -615,12 +615,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**bufferQuotaInMB**|**unsignedInt**|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferLogLevelFilter**|**string**|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** で、すべてのログを転送します。 他の有効値は、(情報量が多いものから順に) **Verbose**、**Information**、**Warning**、**Error**、**Critical** となります。|  
 |**scheduledTransferPeriod**|**duration**|省略可能。 最も近い分単位の値に丸められた、スケジュールされているデータ転送の間隔を指定します。<br /><br /> 既定値は PT0S です。|  
-|**sinks** |**string**| 1.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Application Insights または Event Hubs があります。|  
+|**sinks** |**string**| 1\.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Application Insights または Event Hubs があります。|  
 
 ## <a name="dockersources"></a>DockerSources
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
 
- 1.9 で追加。
+ 1\.9 で追加。
 
 |要素名|説明|  
 |------------------|-----------------|  

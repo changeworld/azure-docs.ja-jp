@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
 ms.openlocfilehash: d2db5bced78a00c8acabc150752fe65e9515dff1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849365"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60480640"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使って複数のテーブルを一括コピーする
 

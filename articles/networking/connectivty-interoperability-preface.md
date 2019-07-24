@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 8be546c5dba4c6c694c8cef03a4bdd6005d68189
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771567"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60811108"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure バックエンド接続機能の相互運用性: テストの設定
 

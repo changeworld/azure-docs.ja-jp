@@ -4,7 +4,7 @@ description: Azure portal を使用して、仮想マシン イメージを作�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2019
+ms.date: 06/27/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 1b760612d8d9a5ed0817ce662ed190f3477cd125
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ea0a5961aff5935efea3eb98fd53904ce864ec2c
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65235854"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67708907"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Azure portal を使用して共有イメージ ギャラリーを作成する
 
@@ -54,24 +54,28 @@ ms.locfileid: "65235854"
 
 イメージ バージョンが完成したら、新しい VM を作成することができます。 
 
+> [!IMPORTANT]
+> ポータルを使用して、別の Azure テナント内のイメージから VM をデプロイすることはできません。 テナント間で共有されているイメージから VM を作成するには、[Azure CLI](shared-images.md#create-a-vm) または [PowerShell](../windows/shared-images.md#create-vms-from-an-image) を使用する必要があります。
+
+
 この例では、"*米国東部*" のデータセンターにある *myResourceGroup* に、*myVMfromImage* という名前の VM を作成します。
 
 1. イメージ バージョンのページで、ページの上部にあるメニューから **[VM の作成]** を選択します。
-1. **[リソース グループ]** で、**[新規作成]** を選択し、名前として「*myResourceGroup*」と入力します。
+1. **[リソース グループ]** で、 **[新規作成]** を選択し、名前として「*myResourceGroup*」と入力します。
 1. **[仮想マシン名]** に、「*myVM*」と入力します。
-1. **[リージョン]** で、*[米国東部]* を選択します。
+1. **[リージョン]** で、 *[米国東部]* を選択します。
 1. **[可用性オプション]** で、既定の *[インフラストラクチャ冗長は必要ありません]* のままにします。
 1. **[イメージ]** の値は、イメージ バージョンのページから起動した場合に自動的に入力されるはずです。
 1. **[サイズ]** では、利用可能なサイズの一覧から VM サイズを選択し、[選択] をクリックします。
-1. **[管理者アカウント]** で、**[パスワード]** または **[SSH 公開キー]** を選択した後、自分の情報を入力します。
-1. VM へのリモート アクセスを許可する場合、**[パブリック受信ポート]** で、**[選択したポートを許可する]** を選択し、ドロップダウンから **[SSH (22)]** を選択します。 VM へのリモート アクセスを許可しない場合、**[パブリック受信ポート]** で、**[なし]** を選択したままにします。
+1. **[管理者アカウント]** で、 **[パスワード]** または **[SSH 公開キー]** を選択した後、自分の情報を入力します。
+1. VM へのリモート アクセスを許可する場合、 **[パブリック受信ポート]** で、 **[選択したポートを許可する]** を選択し、ドロップダウンから **[SSH (22)]** を選択します。 VM へのリモート アクセスを許可しない場合、 **[パブリック受信ポート]** で、 **[なし]** を選択したままにします。
 1. 完了したら、ページの下部にある **[Review + create]\(確認と作成\)** ボタンを選択します。
 1. VM が検証に合格したら、ページの下部にある **[作成]** を選択し、デプロイを開始します。
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 これを行うには、仮想マシンのリソース グループを選択し、**[削除]** を選択して、削除するリソース グループの名前を確認します。
+必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 これを行うには、仮想マシンのリソース グループを選択し、 **[削除]** を選択して、削除するリソース グループの名前を確認します。
 
 個々のリソースを削除する場合は、逆の順序でそれらを削除する必要があります。 たとえば、イメージ定義を削除するには、そのイメージから作成されたすべてのイメージ バージョンを削除する必要があります。
 

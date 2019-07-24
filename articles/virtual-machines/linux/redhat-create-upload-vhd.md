@@ -4,7 +4,7 @@ description: Red Hat Linux オペレーティング システムを格納した 
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 6c6b8f72-32d3-47fa-be94-6cb54537c69f
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 05/17/2019
 ms.author: szark
-ms.openlocfilehash: 01acdf23c3113c3c4d185263b5cab75f3efd34a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f7f9baec5421a63e46536480cde8d60d3877d4d7
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001651"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67670974"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
-この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。
+この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。 RHEL イメージの作成を自動化する方法については、[Azure Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview) を参照してください。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Hyper-V マネージャーからの Red Hat ベースの仮想マシンの準備
 
@@ -32,7 +32,7 @@ ms.locfileid: "58001651"
 
 **RHEL のインストールに関する注記**
 
-* Azure では、VHDX 形式がサポートされません。 Azure でサポートされるのは、容量固定の VHD のみです。 Hyper-V マネージャーを使ってディスクの形式を VHD に変換するか、または convert-vhd コマンドレットを使用してください。 VirtualBox を使用する場合は、ディスクの作成時に、既定の動的割り当てオプションではなく、**[容量固定]** を選択します。
+* Azure では、VHDX 形式がサポートされません。 Azure でサポートされるのは、容量固定の VHD のみです。 Hyper-V マネージャーを使ってディスクの形式を VHD に変換するか、または convert-vhd コマンドレットを使用してください。 VirtualBox を使用する場合は、ディスクの作成時に、既定の動的割り当てオプションではなく、 **[容量固定]** を選択します。
 * Azure でサポートされるのは、世代 1 の仮想マシンのみです。 第 1 世代の仮想マシンを、VHDX ファイル形式から VHD ファイル形式に、容量可変から容量固定ディスクに変換できます。 ただし仮想マシンの世代を変更することはできません。 詳細については、「[Should I create a generation 1 or 2 virtual machine in Hyper-V? (Hyper-V で第 1 世代または第 2 世代の仮想マシンを作成する必要はありますか)](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」を参照してください。
 * VHD のサイズの上限は、1,023 GB です。
 * Logical Volume Manager (LVM) がサポートされており、Azure 仮想マシンの OS ディスクやデータ ディスクに使用できます。 ただし、一般に、LVM ではなく OS ディスクの標準パーティションを使用することをお勧めします。 特にオペレーティング システム ディスクをトラブルシューティングのために別の同じ仮想マシンに接続する必要がある場合、そうすることで、複製された仮想マシンとの LVM 名の競合を回避することができます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) および [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のドキュメントもご覧ください。
@@ -110,7 +110,7 @@ ms.locfileid: "58001651"
 
 1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
-    Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、/etc/waagent.conf にある次のパラメーターを適切に変更します。
+    Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になる場合があることにご注意ください。 前の手順で Azure Linux エージェントのインストール後に、/etc/waagent.conf にある次のパラメーターを適切に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -124,13 +124,15 @@ ms.locfileid: "58001651"
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
 
         # logout
 
-1. Hyper-V マネージャーで **[アクション]** > **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
+1. Hyper-V マネージャーで **[アクション]**  >  **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Hyper-V マネージャーからの RHEL 7 仮想マシンの準備
@@ -163,7 +165,7 @@ ms.locfileid: "58001651"
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -193,7 +195,7 @@ ms.locfileid: "58001651"
 
 1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
-    Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
+    Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になる場合があることにご注意ください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -207,13 +209,15 @@ ms.locfileid: "58001651"
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
 
         # logout
 
-1. Hyper-V マネージャーで **[アクション]** > **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
+1. Hyper-V マネージャーで **[アクション]**  >  **[シャットダウン]** の順にクリックします。 これで、Linux VHD を Azure にアップロードする準備が整いました。
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>KVM からの Red Hat ベースの仮想マシンの準備
@@ -315,7 +319,7 @@ ms.locfileid: "58001651"
 
         # chkconfig waagent on
 
-1. Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、**/etc/waagent.conf** にある次のパラメーターを適切に変更します。
+1. Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になる場合があることにご注意ください。 前の手順で Azure Linux エージェントのインストール後に、 **/etc/waagent.conf** にある次のパラメーターを適切に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -329,6 +333,8 @@ ms.locfileid: "58001651"
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -340,7 +346,7 @@ ms.locfileid: "58001651"
 1. qcow2 イメージを VHD 形式に変換します。
 
 > [!NOTE]
-> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。  https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 [https://bugs.launchpad.net/qemu/+bug/1490611](https://bugs.launchpad.net/qemu/+bug/1490611 ) を参照してください。
 >
 
 
@@ -413,7 +419,7 @@ ms.locfileid: "58001651"
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この構成を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -464,7 +470,7 @@ ms.locfileid: "58001651"
 
 1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
-    Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
+    Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になる場合があることにご注意ください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -478,6 +484,8 @@ ms.locfileid: "58001651"
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -489,7 +497,7 @@ ms.locfileid: "58001651"
 1. qcow2 イメージを VHD 形式に変換します。
 
 > [!NOTE]
-> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。  https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 [https://bugs.launchpad.net/qemu/+bug/1490611](https://bugs.launchpad.net/qemu/+bug/1490611 ) を参照してください。
 >
 
 
@@ -561,7 +569,7 @@ ms.locfileid: "58001651"
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 これを行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 これを行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
@@ -593,7 +601,7 @@ ms.locfileid: "58001651"
 
 1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
-    Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
+    Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になる場合があることにご注意ください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -607,6 +615,8 @@ ms.locfileid: "58001651"
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -616,7 +626,7 @@ ms.locfileid: "58001651"
 1. 仮想マシンをシャットダウンし、VMDK ファイルを .vhd ファイルに変換します。
 
 > [!NOTE]
-> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。  https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 [https://bugs.launchpad.net/qemu/+bug/1490611](https://bugs.launchpad.net/qemu/+bug/1490611 ) を参照してください。
 >
 
 
@@ -667,7 +677,7 @@ ms.locfileid: "58001651"
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例: 
+1. GRUB 構成でカーネルのブート行を変更して Azure の追加のカーネル パラメーターを含めます。 この変更を行うには、テキスト エディターで `/etc/default/grub` を開き、`GRUB_CMDLINE_LINUX` パラメーターを編集します。 例:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
@@ -707,7 +717,7 @@ ms.locfileid: "58001651"
 
 1. オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
-    Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になることに注意してください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
+    Azure Linux エージェントは、Azure で仮想マシンがプロビジョニングされた後に仮想マシンに接続されたローカルのリソース ディスクを使用してスワップ領域を自動的に構成できます。 ローカル リソース ディスクは一時ディスクであるため、仮想マシンのプロビジョニングが解除されると空になる場合があることにご注意ください。 前の手順で Azure Linux エージェントのインストール後に、`/etc/waagent.conf` にある次のパラメーターを適切に変更します。
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -721,6 +731,8 @@ ms.locfileid: "58001651"
 
 1. 次のコマンドを実行して仮想マシンをプロビジョニング解除し、Azure でのプロビジョニング用に準備します。
 
+        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # skip the deprovision step
         # sudo waagent -force -deprovision
 
         # export HISTSIZE=0
@@ -730,7 +742,7 @@ ms.locfileid: "58001651"
 1. 仮想マシンをシャットダウンし、VMDK ファイルを VHD 形式に変換します。
 
 > [!NOTE]
-> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。  https://bugs.launchpad.net/qemu/+bug/1490611 を参照してください。
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 [https://bugs.launchpad.net/qemu/+bug/1490611](https://bugs.launchpad.net/qemu/+bug/1490611 ) を参照してください。
 >
 
 
@@ -875,14 +887,14 @@ ms.locfileid: "58001651"
         NM_CONTROLLED=no
         EOF
 
-        # Deprovision and prepare for Azure
+        # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision
 
         %end
 
 1. インストール システムからアクセスできる場所に kickstart ファイルを置きます。
 
-1. Hyper-V マネージャーで新しい仮想マシンを作成します。 **[仮想ハード ディスクの接続]** ページで、**[後で仮想ハード ディスクを接続する]** を選択し、仮想マシンの新規作成ウィザードを完了します。
+1. Hyper-V マネージャーで新しい仮想マシンを作成します。 **[仮想ハード ディスクの接続]** ページで、 **[後で仮想ハード ディスクを接続する]** を選択し、仮想マシンの新規作成ウィザードを完了します。
 
 1. 仮想マシンの設定を開きます。
 

@@ -13,11 +13,11 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
 ms.openlocfilehash: f37769ceb761b8c8bc4834568813bb1b7af7f66a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458994"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60549990"
 ---
 # <a name="task-fail-event"></a>タスク失敗イベント
 
@@ -52,11 +52,11 @@ ms.locfileid: "55458994"
 }
 ```
 
-|要素名|type|メモ|
+|要素名|Type|メモ|
 |------------------|----------|-----------|
-|jobId|String|タスクを含むジョブの ID です。|
-|id|String|タスクの ID です。|
-|taskType|String|タスクの型です。 ジョブ マネージャー タスクを示す 'JobManager' と、ジョブ マネージャー タスクでないことを示す 'User' のいずれかです。 このイベントは、ジョブ準備タスク、ジョブ リリース タスク、または開始タスクでは発生しません。|
+|jobId|string|タスクを含むジョブの ID です。|
+|id|string|タスクの ID です。|
+|taskType|string|タスクの型です。 ジョブ マネージャー タスクを示す 'JobManager' と、ジョブ マネージャー タスクでないことを示す 'User' のいずれかです。 このイベントは、ジョブ準備タスク、ジョブ リリース タスク、または開始タスクでは発生しません。|
 |systemTaskVersion|Int32|これは、タスクの内部再試行カウンターです。 Batch サービスは一時的問題に対応するタスクを内部で再試行できます。 これらの問題には、内部的なスケジュール エラーや、コンピューティング ノードを異常な状態から回復しようとする動作が含まれます。|
 |[nodeInfo](#nodeInfo)|複合型|タスクが実行されたコンピューティング ノードに関する情報が含まれます。|
 |[multiInstanceSettings](#multiInstanceSettings)|複合型|このタスクが複数のコンピューティング ノードが必要な複数インスタンス タスクであることを指定します。  詳細は [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) をご覧ください。|
@@ -65,27 +65,27 @@ ms.locfileid: "55458994"
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|要素名|type|メモ|
+|要素名|Type|メモ|
 |------------------|----------|-----------|
-|poolId|String|タスクが実行されたプールの ID。|
-|nodeId|String|タスクが実行されたノードの ID。|
+|poolId|string|タスクが実行されたプールの ID。|
+|nodeId|string|タスクが実行されたノードの ID。|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|要素名|type|メモ|
+|要素名|Type|メモ|
 |------------------|----------|-----------|
 |numberOfInstances|Int32|タスクに必要なコンピューター ノードの数。|
 
 ###  <a name="constraints"></a> constraints
 
-|要素名|type|メモ|
+|要素名|Type|メモ|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|タスクを再試行できる最大回数。 Batch サービスは、終了コードが 0 以外の場合にタスクを再試行します。<br /><br /> この値によって再試行の回数が限定されますのでご注意ください。 Batch サービスはタスクを 1 回試行してから、上限に達するまで再試行できます。 たとえば、最大再試行回数が 3 の場合、Batch はタスクを最大 4 回試行します (初回試行 1 回と再試行 3 回)。<br /><br /> 最大再試行回数が 0 の場合、Batch サービスはタスクを再試行しません。<br /><br /> 最大再試行回数が -1 の場合、Batch サービスはタスクを無制限に再試行します。<br /><br /> 既定値は 0 (再試行なし) です。|
 
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|要素名|type|メモ|
+|要素名|Type|メモ|
 |------------------|----------|-----------|
 |startTime|DateTime|タスクの実行が開始した時刻です。 '実行中' は**実行している**状態に対応するため、タスクがリソース ファイルやアプリケーション パッケージを指定する場合、開始時刻はタスクがこれらのファイルやパッケージのダウンロードやデプロイを開始した時刻を反映します。  タスクが再起動または再実行された場合は、タスクが実行を開始したつい最近の時刻となります。|
 |endTime|DateTime|タスクが完了した時刻です。|

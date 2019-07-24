@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c83e14d65b30775f0dad54ab9ade1a7bed5ac821
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ad211eef673731a856c4db99fe0b4712217b23e5
+ms.sourcegitcommit: f9448a4d87226362a02b14d88290ad6b1aea9d82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66139447"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66808484"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成
 
@@ -99,7 +99,7 @@ SQL Database については、このチュートリアルでは [Azure SQL Data
 
 Cloud Shell で、[`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) コマンドを使用して SQL Database 論理サーバーを作成します。
 
-"*\<server_name >*" プレースホルダーを一意の SQL Database 名で置換します。 この名前は、SQL Database エンドポイント (`<server_name>.database.windows.net`) の一部として使用されるため、名前は Azure のすべての論理サーバーで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。 また、"*\<db_username >*" と "*db_password >\<*" を選択したユーザー名とパスワードで置換します。 
+" *\<server_name >* " プレースホルダーを一意の SQL Database 名で置換します。 この名前は、SQL Database エンドポイント (`<server_name>.database.windows.net`) の一部として使用されるため、名前は Azure のすべての論理サーバーで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。 また、" *\<db_username >* " と "*db_password >\<* " を選択したユーザー名とパスワードで置換します。 
 
 
 ```azurecli-interactive
@@ -148,7 +148,7 @@ az sql db create --resource-group myResourceGroup --server <server_name> --name 
 
 ### <a name="create-connection-string"></a>接続文字列を作成する
 
-次の文字列を前に使用した "*\<server_name>*"、"*\<db_username>*"、"*\<db_password>*" で置換します。
+次の文字列を前に使用した " *\<server_name>* "、" *\<db_username>* "、" *\<db_password>* " で置換します。
 
 ```
 Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_username>;Password=<db_password>;Encrypt=true;Connection Timeout=30;
@@ -174,7 +174,7 @@ Server=tcp:<server_name>.database.windows.net,1433;Database=coreDB;User ID=<db_u
 
 ### <a name="configure-an-environment-variable"></a>環境変数の構成
 
-Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 次のコマンドで、"*\<app name>*" および "*\<connection_string>*" パラメーターを先ほど作成した接続文字列で置換します。
+Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 次のコマンドで、" *\<app name>* " および " *\<connection_string>* " パラメーターを先ほど作成した接続文字列で置換します。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
@@ -182,7 +182,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 次に、`ASPNETCORE_ENVIRONMENT` アプリ設定を "_Production_" に設定します。 ローカル開発環境では SQLite を使用し、Azure 環境では SQL Database を使用するため、Azure で実行しているかどうかをこの設定で把握できます。
 
-次の例では、Azure アプリの `ASPNETCORE_ENVIRONMENT` アプリ設定を構成します。 "*\<appname>*" プレースホルダーを置換します。
+次の例では、Azure アプリの `ASPNETCORE_ENVIRONMENT` アプリ設定を構成します。 " *\<appname>* " プレースホルダーを置換します。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
@@ -351,7 +351,7 @@ _Views\Todos\Index.cshtml_ を開きます。
 dotnet run
 ```
 
-ブラウザーで `http://localhost:5000/` にアクセスします。 これで、To Do 項目を追加し、**[完了]** チェック ボックスをオンにすることができるようになります。 そうすると、完了済みの項目としてホームページに表示されます。 `Edit` ビューを変更していないため、`Edit` ビューには `Done` フィールドが表示されないことに注意してください。
+ブラウザーで `http://localhost:5000/` にアクセスします。 これで、To Do 項目を追加し、 **[完了]** チェック ボックスをオンにすることができるようになります。 そうすると、完了済みの項目としてホームページに表示されます。 `Edit` ビューを変更していないため、`Edit` ビューには `Done` フィールドが表示されないことに注意してください。
 
 ### <a name="publish-changes-to-azure"></a>Azure に変更を発行する
 
@@ -371,7 +371,7 @@ git push azure master
 
 Azure App Service で ASP.NET Core アプリが稼動している間、コンソールのログをパイプ処理で Cloud Shell に渡すことができます。 このようにすると、アプリケーション エラーのデバッグに役立つ同じ診断メッセージを取得できます。
 
-サンプル プロジェクトは既に、[Azure における ASP.NET Core のログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure)に関するページのガイダンスに従っています。ただし、次の 2 つの変更を構成に加えています。
+サンプル プロジェクトは既に、[Azure における ASP.NET Core のログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider)に関するページのガイダンスに従っています。ただし、次の 2 つの変更を構成に加えています。
 
 - *DotNetCoreSqlDb.csproj* で `Microsoft.Extensions.Logging.AzureAppServices` への参照を追加しています。
 - *Startup.cs* で `loggerFactory.AddAzureWebAppDiagnostics()` を呼び出します。

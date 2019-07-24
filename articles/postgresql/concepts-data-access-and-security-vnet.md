@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: c873abcdf3c64f8357c584c8e24809270946bf74
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073473"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の仮想ネットワーク サービス エンドポイントと規則を使用する
@@ -33,7 +33,7 @@ ms.locfileid: "65073473"
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
-**仮想ネットワーク サービス エンドポイント:**[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for PostgreSQL サービスと MySQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネットの Azure SQL Database、Azure Database for PostgreSQL、および Azure Database for MySQL のすべてのサーバーに対してサービス エンドポイント トラフィックが構成されることに注意することが重要です。 
+**仮想ネットワーク サービス エンドポイント:** [仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for PostgreSQL サービスと MySQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネットの Azure SQL Database、Azure Database for PostgreSQL、および Azure Database for MySQL のすべてのサーバーに対してサービス エンドポイント トラフィックが構成されることに注意することが重要です。 
 
 **仮想ネットワーク規則:** Azure Database for PostgreSQL サーバーの仮想ネットワーク規則は、Azure Database for PostgreSQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for PostgreSQL の ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
@@ -53,7 +53,7 @@ ms.locfileid: "65073473"
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Azure サービスへのアクセス許可
 
-接続のセキュリティ ペインには、**[Azure サービスへのアクセスを許可]** とラベル付けされた **[オン/オフ]** ボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらくは Azure Database for PostgreSQL Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
+接続のセキュリティ ペインには、 **[Azure サービスへのアクセスを許可]** とラベル付けされた **[オン/オフ]** ボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらくは Azure Database for PostgreSQL Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
 
 ### <a name="b-ip-rules"></a>B. IP 規則
 
@@ -89,8 +89,8 @@ Azure Database for PostgreSQL のファイアウォールでは、Azure Database
 
 仮想ネットワーク サービス エンドポイントの管理では、セキュリティ ロールが分離されています。 以下の各ロールでは、次の操作が必要です。
 
-- **ネットワーク管理者:**&nbsp; エンドポイントを有効にします。
-- **データベース管理者:**&nbsp; アクセス制御リスト (ACL) を更新して、指定されたサブネットを Azure Database for PostgreSQL サーバーに追加します。
+- **ネットワーク管理者:** &nbsp; エンドポイントを有効にします。
+- **データベース管理者:** &nbsp; アクセス制御リスト (ACL) を更新して、指定されたサブネットを Azure Database for PostgreSQL サーバーに追加します。
 
 *RBAC による代替:*
 

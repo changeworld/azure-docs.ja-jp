@@ -2,20 +2,20 @@
 title: チュートリアル - ネイティブ クライアント アプリケーションで認証を有効にする - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C を使用して .NET デスクトップ アプリケーションのユーザー ログインを提供する方法に関するチュートリアルです。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
-ms.author: davidmu
+ms.author: marsma
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7ca7a670e8d660efb43861312b2670efbaac6638
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 474aad3b4b2019c9f79f8f1316dd88769e0fabbd
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190237"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66508199"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してネイティブ クライアント アプリケーションで認証を有効にする
 
@@ -39,11 +39,11 @@ ms.locfileid: "65190237"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. アプリケーションの名前を入力します。 たとえば、*nativeapp1* とします。
-6. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** の場合、**[いいえ]** を選択します。
-7. **[ネイティブ クライアントを含める]** の場合、**[はい]** を選択します。
+6. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** の場合、 **[いいえ]** を選択します。
+7. **[ネイティブ クライアントを含める]** の場合、 **[はい]** を選択します。
 8. **[リダイレクト URI]** に、カスタム スキームを含めた有効なリダイレクト URI を入力します。 リダイレクト URI を選択する際には、2 つの重要な考慮事項があります。
 
     - **一意** - リダイレクト URI のスキームは、すべてのアプリケーションで一意である必要があります。 `com.onmicrosoft.contoso.appname://redirect/path` の例では、`com.onmicrosoft.contoso.appname` はスキームです。 このパターンに従う必要があります。 2 つのアプリケーションで同じスキームを共有している場合、ユーザーにはアプリケーションを選択する選択肢が与えられます。 ユーザーが不適切な選択を行った場合、サインインは失敗します。
@@ -83,7 +83,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 ### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
 
 1. **[サインイン]** をクリックし、ユーザーとしてサインアップします。 これにより、**B2C_1_signupsignin1** ユーザー フローが使用されます。
-2. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、**[今すぐサインアップ]** リンクをクリックします。 
+2. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[今すぐサインアップ]** リンクをクリックします。 
 3. サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザー フローで定義されているユーザーのパスワードと要求された属性も収集されます。
 
     有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。 

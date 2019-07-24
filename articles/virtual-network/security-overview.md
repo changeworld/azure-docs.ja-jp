@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: 73664359b206a9e149ebac6859df24a1263cd313
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: a81232266749c14ce421ccf774e0cbd843b8b4eb
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996783"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67436605"
 ---
 # <a name="security-groups"></a>セキュリティ グループ
 <a name="network-security-groups"></a>
@@ -51,42 +51,51 @@ ms.locfileid: "59996783"
 
 ## <a name="service-tags"></a>サービス タグ
 
- サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。 独自のサービス タグを作成したり、タグに含まれる IP アドレスを指定したりすることはできません。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 
- 
- Azure [パブリック](https://www.microsoft.com/download/details.aspx?id=56519)、[米国政府](https://www.microsoft.com/download/details.aspx?id=57063)、[中国](https://www.microsoft.com/download/details.aspx?id=57062)、[ドイツ](https://www.microsoft.com/download/details.aspx?id=57064) クラウドに対する以下の毎週の発行でサービス タグのリストとプレフィックスの詳細をダウンロードして、オンプレミスのファイアウォールと統合できます。
+サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。 独自のサービス タグを作成したり、タグに含まれる IP アドレスを指定したりすることはできません。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 
 
- セキュリティ規則の定義で使うことができるサービス タグは次のとおりです。 サービス タグの名前は、[Azure のデプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)により若干異なります。
+次のサービス タグを[ネットワーク セキュリティ グループ ルール](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)で使用できます。 末尾にアスタリスクが付いているサービス タグ (たとえば AzureCloud*) は、[Azure ファイアウォール ネットワーク ルール](https://docs.microsoft.com/azure/firewall/service-tags)でも使用できます。 
 
-* **VirtualNetwork** (Resource Manager) (クラシックの場合は **VIRTUAL_NETWORK**):このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、[ピアリング](virtual-network-peering-overview.md)された仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に接続された仮想ネットワーク、[ユーザーが定義したルート](virtual-networks-udr-overview.md)に使用されるアドレス プレフィックスが含まれます。
+* **VirtualNetwork** (Resource Manager) (クラシックの場合は **VIRTUAL_NETWORK**):このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、[ピアリング](virtual-network-peering-overview.md)された仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に接続された仮想ネットワーク、[ユーザーが定義したルート](virtual-networks-udr-overview.md)に使用されるアドレス プレフィックスが含まれます。 このタグには既定のルートが含まれる場合があることに注意してください。 
 * **AzureLoadBalancer** (Resource Manager) (クラシックの場合は **AZURE_LOADBALANCER**):このタグは、Azure のインフラストラクチャのロード バランサーを表します。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。
 * **Internet** (Resource Manager) (クラシックの場合は **INTERNET**):このタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。 [Azure に所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)がこのアドレス範囲に含まれます。
-* **AzureCloud** (Resource Manager のみ):このタグは、すべての[データセンターのパブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)を含む Azure の IP アドレス空間を表します。 値として *AzureCloud* を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCloud に対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure AzureCloud へのアクセスのみを許可する場合は、サービス タグとして *AzureCloud.EastUS* と指定できます。 
-* **AzureTrafficManager** (Resource Manager のみ):このタグは、Azure Traffic Manager プローブ IP アドレスに対する IP アドレス空間を表します。 Traffic Manager プローブ IP アドレスについて詳しくは、[Azure Traffic Manager の FAQ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs) に関するページをご覧ください。 
-* **Storage** (Resource Manager のみ):このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージに対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure Storage へのアクセスのみを許可する場合は、サービス タグとして *Storage.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 
-* **Sql** (Resource Manager のみ):このタグは、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 値として *Sql* を指定した場合、SQL へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の SQL へのアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure SQL Database へのアクセスのみを許可する場合は、サービス タグとして *Sql.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 
-* **AzureCosmosDB** (Resource Manager のみ):このタグは、Azure Cosmos Database サービスのアドレス プレフィックスを表します。 値として *AzureCosmosDB* を指定した場合、AzureCosmosDB へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCosmosDB へのアクセスのみを許可する場合は、AzureCosmosDB.[リージョン名] の形式でリージョンを指定できます。 
-* **AzureKeyVault** (Resource Manager のみ):このタグは、Azure KeyVault サービスのアドレス プレフィックスを表します。 値として *AzureKeyVault* を指定した場合、AzureKeyVault へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureKeyVault へのアクセスのみを許可する場合は、AzureKeyVault.[リージョン名] の形式でリージョンを指定できます。 
-* **EventHub** (Resource Manager のみ):このタグは、Azure EventHub サービスのアドレス プレフィックスを表します。 値として *EventHub* を指定した場合、EventHub へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の EventHub へのアクセスのみを許可する場合は、EventHub.[リージョン名] の形式でリージョンを指定できます。 
-* **ServiceBus** (Resource Manager のみ):このタグは、Premium サービス レベルを使用して、Azure ServiceBus サービスのアドレス プレフィックスを表します。 値として *ServiceBus* を指定した場合、ServiceBus へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の ServiceBus へのアクセスのみを許可する場合は、ServiceBus.[リージョン名] の形式でリージョンを指定できます。 
-* **MicrosoftContainerRegistry** (Resource Manager のみ):このタグは、Microsoft Container Registry サービスのアドレス プレフィックスを表します。 値として *MicrosoftContainerRegistry* を指定した場合、MicrosoftContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の MicrosoftContainerRegistry へのアクセスのみを許可する場合は、MicrosoftContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 
-* **AzureContainerRegistry** (Resource Manager のみ):このタグは、Azure Container Registry サービスのアドレス プレフィックスを表します。 値として *AzureContainerRegistry* を指定した場合、AzureContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureContainerRegistry へのアクセスのみを許可する場合は、AzureContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 
-* **AppService** (Resource Manager のみ):このタグは、Azure AppService サービスのアドレス プレフィックスを表します。 値として *AppService* を指定した場合、AppService へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AppService へのアクセスのみを許可する場合は、AppService.[リージョン名] の形式でリージョンを指定できます。 
-* **AppServiceManagement** (Resource Manager のみ):このタグは、Azure AppService Management サービスのアドレス プレフィックスを表します。 値として *AppServiceManagement* を指定した場合、AppServiceManagement へのトラフィックが許可または拒否されます。 
-* **ApiManagement** (Resource Manager のみ):このタグは、Azure Api Management サービスのアドレス プレフィックスを表します。 値として *ApiManagement* を指定した場合、ApiManagement へのトラフィックが許可または拒否されます。  
-* **AzureConnectors** (Resource Manager のみ):このタグは、Azure Connectors サービスのアドレス プレフィックスを表します。 値として *AzureConnectors* を指定した場合、AzureConnectors へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureConnectors へのアクセスのみを許可する場合は、AzureConnectors.[リージョン名] の形式でリージョンを指定できます。 
-* **GatewayManager** (Resource Manager のみ):このタグは、Azure Gateway Manager サービスのアドレス プレフィックスを表します。 値として *GatewayManager* を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。  
-* **AzureDataLake** (Resource Manager のみ):このタグは、Azure Data Lake サービスのアドレス プレフィックスを表します。 値として *AzureDataLake* を指定した場合、AzureDataLake へのトラフィックが許可または拒否されます。 
-* **AzureActiveDirectory** (Resource Manager のみ):このタグは、AzureActiveDirectory サービスのアドレス プレフィックスを表します。 値として *AzureActiveDirectory* を指定した場合、AzureActiveDirectory へのトラフィックが許可または拒否されます。  
-* **AzureMonitor** (Resource Manager のみ): このタグは、AzureMonitor サービスのアドレス プレフィックスを表します。 値として *AzureMonitor* を指定した場合、AzureMonitor へのトラフィックが許可または拒否されます。 
-* **ServiceFabric** (Resource Manager のみ): このタグは、ServiceFabric サービスのアドレス プレフィックスを表します。 値として *ServiceFabric* を指定した場合、ServiceFabric へのトラフィックが許可または拒否されます。 
-* **AzureMachineLearning** (Resource Manager のみ): このタグは、AzureMachineLearning サービスのアドレス プレフィックスを表します。 値として *AzureMachineLearning* を指定した場合、AzureMachineLearning へのトラフィックが許可または拒否されます。 
-* **BatchNodeManagement** (Resource Manager のみ):このタグは、Azure BatchNodeManagement サービスのアドレス プレフィックスを表します。 値として *BatchNodeManagement* を指定した場合、Batch サービスからコンピューティング ノードへのトラフィックが許可または拒否されます。
+* **AzureCloud*** (Resource Manager のみ):このタグは、すべての[データセンターのパブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)を含む Azure の IP アドレス空間を表します。 値として *AzureCloud* を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCloud へのアクセスのみを許可する場合は、AzureCloud.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureTrafficManager*** (Resource Manager のみ):このタグは、Azure Traffic Manager プローブ IP アドレスに対する IP アドレス空間を表します。 Traffic Manager プローブ IP アドレスについて詳しくは、[Azure Traffic Manager の FAQ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs) に関するページをご覧ください。 受信セキュリティ規則には、このタグをお勧めします。  
+* **Storage*** (Resource Manager のみ):このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージへのアクセスのみを許可する場合は、Storage.[リージョン名] の形式でリージョンを指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 送信セキュリティ規則には、このタグをお勧めします。 
+* **Sql*** (Resource Manager のみ):このタグは、Azure SQL Database、Azure Database for MySQL、Azure Database for PostgreSQL、Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 値として *Sql* を指定した場合、SQL へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の SQL へのアクセスのみを許可する場合は、Sql.[リージョン名] の形式でリージョンを指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureCosmosDB*** (Resource Manager のみ):このタグは、Azure Cosmos Database サービスのアドレス プレフィックスを表します。 値として *AzureCosmosDB* を指定した場合、AzureCosmosDB へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCosmosDB へのアクセスのみを許可する場合は、AzureCosmosDB.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureKeyVault*** (Resource Manager のみ):このタグは、Azure KeyVault サービスのアドレス プレフィックスを表します。 値として *AzureKeyVault* を指定した場合、AzureKeyVault へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureKeyVault へのアクセスのみを許可する場合は、AzureKeyVault.[リージョン名] の形式でリージョンを指定できます。 このタグは、**AzureActiveDirectory** タグに依存します。 送信セキュリティ規則には、このタグをお勧めします。  
+* **EventHub*** (Resource Manager のみ):このタグは、Azure EventHub サービスのアドレス プレフィックスを表します。 値として *EventHub* を指定した場合、EventHub へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の EventHub へのアクセスのみを許可する場合は、EventHub.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **ServiceBus*** (Resource Manager のみ):このタグは、Premium サービス レベルを使用して、Azure ServiceBus サービスのアドレス プレフィックスを表します。 値として *ServiceBus* を指定した場合、ServiceBus へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の ServiceBus へのアクセスのみを許可する場合は、ServiceBus.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **MicrosoftContainerRegistry*** (Resource Manager のみ):このタグは、Microsoft Container Registry サービスのアドレス プレフィックスを表します。 値として *MicrosoftContainerRegistry* を指定した場合、MicrosoftContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の MicrosoftContainerRegistry へのアクセスのみを許可する場合は、MicrosoftContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureContainerRegistry*** (Resource Manager のみ):このタグは、Azure Container Registry サービスのアドレス プレフィックスを表します。 値として *AzureContainerRegistry* を指定した場合、AzureContainerRegistry へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureContainerRegistry へのアクセスのみを許可する場合は、AzureContainerRegistry.[リージョン名] の形式でリージョンを指定できます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AppService*** (Resource Manager のみ):このタグは、Azure AppService サービスのアドレス プレフィックスを表します。 値として *AppService* を指定した場合、AppService へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AppService へのアクセスのみを許可する場合は、AppService.[リージョン名] の形式でリージョンを指定できます。 WebApps フロントエンドへの送信セキュリティ規則には、このタグをお勧めします。  
+* **AppServiceManagement*** (Resource Manager のみ):このタグは、App Service Environment 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *AppServiceManagement* を指定した場合、AppServiceManagement へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
+* **ApiManagement*** (Resource Manager のみ):このタグは、APIM 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *ApiManagement* を指定した場合、ApiManagement へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureConnectors*** (Resource Manager のみ):このタグは、プローブ/バックエンド接続の Logic Apps コネクタのアドレス プレフィックスを表します。 値として *AzureConnectors* を指定した場合、AzureConnectors へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureConnectors へのアクセスのみを許可する場合は、AzureConnectors.[リージョン名] の形式でリージョンを指定できます。 受信セキュリティ規則には、このタグをお勧めします。 
+* **GatewayManager** (Resource Manager のみ):このタグは、VPN/アプリ ゲートウェイ専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *GatewayManager* を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。 受信セキュリティ規則には、このタグをお勧めします。 
+* **AzureDataLake*** (Resource Manager のみ):このタグは、Azure Data Lake サービスのアドレス プレフィックスを表します。 値として *AzureDataLake* を指定した場合、AzureDataLake へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureActiveDirectory*** (Resource Manager のみ):このタグは、AzureActiveDirectory サービスのアドレス プレフィックスを表します。 値として *AzureActiveDirectory* を指定した場合、AzureActiveDirectory へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。
+* **AzureMonitor*** (Resource Manager のみ):このタグは、Log Analytics、App Insights、AzMon、およびカスタム メトリック (GiG エンドポイント) のアドレス プレフィックスを表します。 値として *AzureMonitor* を指定した場合、AzureMonitor へのトラフィックが許可または拒否されます。 Log Analytics では、このタグは **Storage** タグに依存します。 送信セキュリティ規則には、このタグをお勧めします。
+* **ServiceFabric*** (Resource Manager のみ):このタグは、ServiceFabric サービスのアドレス プレフィックスを表します。 値として *ServiceFabric* を指定した場合、ServiceFabric へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureMachineLearning*** (Resource Manager のみ):このタグは、AzureMachineLearning サービスのアドレス プレフィックスを表します。 値として *AzureMachineLearning* を指定した場合、AzureMachineLearning へのトラフィックが許可または拒否されます。 送信セキュリティ規則には、このタグをお勧めします。 
+* **BatchNodeManagement*** (Resource Manager のみ):このタグは、Azure Batch 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *BatchNodeManagement* を指定した場合、Batch サービスからコンピューティング ノードへのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureBackup*** (Resource Manager のみ):このタグは、AzureBackup サービスのアドレス プレフィックスを表します。 値として *AzureBackup* を指定した場合、AzureBackup へのトラフィックが許可または拒否されます。 このタグは、**Storage** および **AzureActiveDirectory** タグに依存します。送信セキュリティ規則には、このタグをお勧めします。 
+* **AzureActiveDirectoryDomainServices*** (Resource Manager のみ):このタグは、Azure Active Directory Domain Services 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *AzureActiveDirectoryDomainServices* を指定した場合、AzureActiveDirectoryDomainServices へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。  
+* **SqlManagement*** (Resource Manager のみ):このタグは、SQL 専用デプロイの管理トラフィックのアドレス プレフィックスを表します。 値として *SqlManagement* を指定した場合、SqlManagement へのトラフィックが許可または拒否されます。 受信/送信セキュリティ規則には、このタグをお勧めします。 
 
 > [!NOTE]
 > Azure サービスのサービス タグは、使用されている特定のクラウドからのアドレス プレフィックスを表します。 
 
 > [!NOTE]
-> Azure Storage や Azure SQL Database などのサービスの[仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)を実装する場合、Azure ではサービスの仮想ネットワーク サブネットに[ルート](virtual-networks-udr-overview.md#optional-default-routes)が追加します。 ルートのアドレス プレフィックスは、対応するサービス タグと同じアドレス プレフィックスまたは CIDR 範囲です。
+> Azure Storage や Azure SQL Database などのサービスの[仮想ネットワーク サービス エンドポイント](virtual-network-service-endpoints-overview.md)を実装する場合、Azure はサービスの仮想ネットワーク サブネットへの[ルート](virtual-networks-udr-overview.md#optional-default-routes)を追加します。 ルートのアドレス プレフィックスは、対応するサービス タグと同じアドレス プレフィックスまたは CIDR 範囲です。
+
+### <a name="service-tags-in-on-premises"></a>オンプレミスのサービス タグ  
+Azure [パブリック](https://www.microsoft.com/download/details.aspx?id=56519)、[米国政府](https://www.microsoft.com/download/details.aspx?id=57063)、[中国](https://www.microsoft.com/download/details.aspx?id=57062)、[ドイツ](https://www.microsoft.com/download/details.aspx?id=57064) クラウドに対する翌週のパブリケーションでサービス タグのリストとプレフィックスの詳細をダウンロードして、オンプレミスのファイアウォールと統合できます。
+
+**Service Tag Discovery API** (パブリック プレビュー)、[REST](https://aka.ms/discoveryapi_rest)、[Azure PowerShell](https://aka.ms/discoveryapi_powershell)、および [Azure CLI](https://aka.ms/discoveryapi_cli) を使用してこの情報をプログラムで取得することもできます。 
+
+> [!NOTE]
+> Azure [パブリック](https://www.microsoft.com/en-us/download/details.aspx?id=41653)、[中国](https://www.microsoft.com/en-us/download/details.aspx?id=42064)、および[ドイツ](https://www.microsoft.com/en-us/download/details.aspx?id=54770) クラウドに対する翌週のパブリケーション (古いバージョン) は、2020 年 6 月 30 日までに非推奨になります。 上記の説明に従い更新されたパブリケーションの使用を開始してください。 
 
 ## <a name="default-security-rules"></a>既定セキュリティ規則
 
@@ -219,7 +228,7 @@ Azure がネットワーク セキュリティ グループの受信規則と送
 ## <a name="azure-platform-considerations"></a>Azure プラットフォームに関する考慮事項
 
 - **ホスト ノードの仮想 IP**:DHCP、DNS、IMDS、正常性の監視などの基本的なインフラストラクチャ サービスは、仮想化されたホストの IP アドレス 168.63.129.16 および 169.254.169.254 を通じて提供されます。 これらの IP アドレスは Microsoft に属し、この目的のためにすべてのリージョンで使われる唯一の仮想化 IP アドレスです。
-- **ライセンス (キー管理サービス)**:仮想マシンで実行されている Windows イメージのライセンスを取得する必要があります。 ライセンスを適用するために、そのような問い合わせを処理するキー管理サービスのホスト サーバーには要求が送信されます。 この要求は、ポート 1688 を通じて送信されます。 [default route 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) 構成を使用したデプロイに関しては、このプラットフォーム ルールは無効となります。
+- **ライセンス (キー管理サービス)** :仮想マシンで実行されている Windows イメージのライセンスを取得する必要があります。 ライセンスを適用するために、そのような問い合わせを処理するキー管理サービスのホスト サーバーには要求が送信されます。 この要求は、ポート 1688 を通じて送信されます。 [default route 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) 構成を使用したデプロイに関しては、このプラットフォーム ルールは無効となります。
 - **負荷分散プール内の仮想マシン**:適用されるソース ポートおよびアドレス範囲は、元のコンピューターからのもので、ロード バランサーではありません。 ターゲット ポートとアドレス範囲は、ロード バランサーのものではなく、ターゲット コンピューターのものになります。
 - **Azure のサービス インスタンス**:HDInsight、Application Service Environments、および仮想マシン スケール セットなどの Azure サービスのインスタンスが仮想ネットワークのサブネットにデプロイされています。 仮想ネットワークにデプロイできるサービスの詳細な一覧については、[Azure サービスの仮想ネットワーク](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関するページをご覧ください。 リソースがデプロイされているサブネットにネットワーク セキュリティ グループを適用する前に、各サービスのポート要件を確認してください。 サービスに必要なポートを拒否すると、サービスは正しく機能しません。
 - **アウトバウンド メールの送信**:Azure Virtual Machines からのメール送信に関して、Microsoft では、Authenticated SMTP リレー サービスの利用を推奨しています (通常は、TCP ポート 587 で接続されますが、他のポートが使用されることもあります)。 SMTP リレー サービスは、送信者評価に特化することで、サード パーティのメール プロバイダーによってメッセージが拒否される可能性を最小限に抑えます。 そのような SMTP リレー サービスとしては、Exchange Online Protection や SendGrid が代表的ですが、他にもさまざまなリレー サービスが存在します。 Azure に限らず、またサブスクリプションの種類に限らず、SMTP リレー サービスは広く利用されています。 
@@ -227,7 +236,7 @@ Azure がネットワーク セキュリティ グループの受信規則と送
   2017 年 11 月 15 日より前に Azure サブスクリプションを作成した場合、SMTP リレー サービスが利用できるほか、TCP ポート 25 を使用して直接メールを送信することもできます。 2017 年 11 月 15 日以降に Azure サブスクリプションを作成した場合、ポート 25 を使用して直接メールを送信することはできません。 ポート 25 を使用したアウトバウンド通信の動作は、ご利用のサブスクリプションの種類によって次のように異なります。
 
      - **マイクロソフト エンタープライズ契約**:送信ポート 25 の通信が許可されます。 仮想マシンから外部のメール プロバイダーに直接アウトバウンド メールを送信できます。Azure プラットフォームによる制限はありません。 
-     - **従量課金制**:アウトバウンド ポート 25 の通信が、送信元となるすべてのリソースについてブロックされます。 外部のメール プロバイダーに仮想マシンから直接 (認証済み SMTP リレーを介さずに) メールを送信する必要がある場合は、申請によって制限を解除することができます。 申請は Microsoft の裁量にて審査および承認されます。また、申請が許可されるのは、詐欺行為防止チェックの実施後となります。 申請を行うには、*[Technical]\(技術\)*、*[Virtual Network Connectivity]\(仮想ネットワーク接続\)*、*[Cannot send e-mail (SMTP/Port 25)]\(メールを送信できない (SMTP/ポート 25)\)* を問題の種類とするサポート ケースを開いてください。 ご利用のサブスクリプションから Authenticated SMTP リレー経由ではなく直接メール プロバイダーにメールを送信することが必要である理由をサポート ケースに詳しく記してください。 ご利用のサブスクリプションが免除された場合に、ポート 25 を使用したアウトバウンド通信が許可されるのは、その免除日以降に作成された仮想マシンだけです。
+     - **従量課金制**:アウトバウンド ポート 25 の通信が、送信元となるすべてのリソースについてブロックされます。 外部のメール プロバイダーに仮想マシンから直接 (認証済み SMTP リレーを介さずに) メールを送信する必要がある場合は、申請によって制限を解除することができます。 申請は Microsoft の裁量にて審査および承認されます。また、申請が許可されるのは、詐欺行為防止チェックの実施後となります。 申請を行うには、 *[Technical]\(技術\)* 、 *[Virtual Network Connectivity]\(仮想ネットワーク接続\)* 、 *[Cannot send e-mail (SMTP/Port 25)]\(メールを送信できない (SMTP/ポート 25)\)* を問題の種類とするサポート ケースを開いてください。 ご利用のサブスクリプションから Authenticated SMTP リレー経由ではなく直接メール プロバイダーにメールを送信することが必要である理由をサポート ケースに詳しく記してください。 ご利用のサブスクリプションが免除された場合に、ポート 25 を使用したアウトバウンド通信が許可されるのは、その免除日以降に作成された仮想マシンだけです。
      - **MSDN、Azure Pass、Azure イン オープン プラン、Education、BizSpark、および無料試用版**:アウトバウンド ポート 25 の通信が、送信元となるすべてのリソースについてブロックされます。 制限解除を申請することはできません。申請は許可されません。 仮想マシンからメールを送信する必要がある場合は、SMTP リレー サービスを使用する必要があります。
      - **クラウド サービス プロバイダー**:クラウド サービス プロバイダーを介して Azure リソースを使用しているお客様は、クラウド サービス プロバイダーを相手方とするサポート ケースを作成できます。また、安全な SMTP リレーが利用できない場合は、お客様の代わりにプロバイダーがブロック解除のケースを作成するよう要求できます。
 

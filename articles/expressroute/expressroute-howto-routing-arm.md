@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: d59a26184cac8df31fd16637d538c1eb45d947df
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e2f38671910be2c7300f39fcbca32e8a1ccd9891
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "64716138"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線のピアリングの作成と変更
@@ -303,7 +303,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 このセクションでは、ExpressRoute 回線用の Azure パブリック ピアリング構成を作成、取得、更新、および削除します。
 
 > [!Note]
-> Azure パブリック ピアリングは、新しい回線では非推奨です。 詳細については、「[ExpressRoute peering](expressroute-circuit-peerings.md)」を参照してください。
+> Azure パブリック ピアリングは、新しい回線では非推奨です。 詳細については、[ExpressRoute のピアリング](expressroute-circuit-peerings.md)に関する記事を参照してください。
 >
 
 ### <a name="to-create-azure-public-peering"></a>Azure パブリック ピアリングを作成するには

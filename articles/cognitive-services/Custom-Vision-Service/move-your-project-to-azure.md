@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
 ms.openlocfilehash: 6fac6531ea0a39796de13f95aee33b30dc91f131
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274452"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60816522"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>期間限定試用版のプロジェクトを Azure に移行する方法
 
@@ -33,9 +33,9 @@ Custom Vision Service の Azure への移行を完了すると、Azure の外部
     - Azure アカウントを持っていない場合は、無料で[アカウントを作成](https://azure.microsoft.com/free/)します。
     - Azure のサブスクリプションやリソースの概念の概要については、[Azure 開発者向けガイド](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#manage-your-subscriptions)を参照してください。
 -  [Python](https://www.python.org/downloads/)
-- [pip](https://pip.pypa.io/en/stable/installing/)
+- [Pip](https://pip.pypa.io/en/stable/installing/)
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure Portal で Custom Vision リソースを作成する
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portal で Custom Vision リソースを作成する
 
 Azure で Custom Vision Service を使用するには、[Azure Portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) で Custom Vision Training および Prediction リソースを作成する必要があります。 
 

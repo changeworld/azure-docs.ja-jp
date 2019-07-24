@@ -15,11 +15,11 @@ ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 6d4b7ba842d08723b90a4f2491d9e79e68dd932e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994894"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60733574"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay ライセンスの要件と構成 
 
@@ -35,7 +35,7 @@ Media Services を使用した **Apple FairPlay** での HLS コンテンツの�
 * コンテンツ所有者による[デプロイ パッケージ](https://developer.apple.com/contact/fps/)の取得が Apple によって求められます。 Media Services でキー セキュリティ モジュール (KSM) が既に実装されていること、および最終的な FPS パッケージを要求していることを明記してください。 最終的な FPS パッケージには、証明書を生成し、アプリケーション シークレット キー (ASK) を取得する指示が含まれています。 ASK を使用して、FairPlay を構成します。
 * Media Services キー/ライセンスの配信側で次の設定が必要です。
 
-    * **アプリ証明書 (AC)**: 秘密キーを含む .pfx ファイル。 このファイルを作成し、パスワードを使用して暗号化します。 .pfx ファイルの形式は Base64 である必要があります。
+    * **アプリ証明書 (AC)** : 秘密キーを含む .pfx ファイル。 このファイルを作成し、パスワードを使用して暗号化します。 .pfx ファイルの形式は Base64 である必要があります。
 
         次の手順では、FairPlay 用の .pfx 証明書ファイルを生成する方法について説明します。
 
@@ -54,7 +54,7 @@ Media Services を使用した **Apple FairPlay** での HLS コンテンツの�
     
 * FPS のクライアント側で、次の設定が必要です。
 
-  * **アプリ証明書 (AC)**: オペレーティング システムが一部のペイロードを暗号化する際に使用する公開キーを含む .cer/.der ファイル。 Media Services で把握しておく必要がある理由は、プレーヤーで必要になるからです。 復号化は、キー配信サービスが対応する秘密キーを使用して行います。
+  * **アプリ証明書 (AC)** : オペレーティング システムが一部のペイロードを暗号化する際に使用する公開キーを含む .cer/.der ファイル。 Media Services で把握しておく必要がある理由は、プレーヤーで必要になるからです。 復号化は、キー配信サービスが対応する秘密キーを使用して行います。
 
 * FairPlay で暗号化されたストリームを再生するには、まず実際の ASK を取得してから、実際の証明書を生成する必要があります。 そのプロセスにより、3 つすべてのパートが作成されます。
 

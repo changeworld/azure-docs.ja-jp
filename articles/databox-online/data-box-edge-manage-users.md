@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: alkohli
 ms.openlocfilehash: 68f8ad903f967812c4a416c732b35fa1712404cd
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998568"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60756658"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>Azure portal を使用して Azure Data Box Edge のユーザーを管理する
 
@@ -40,11 +40,11 @@ ms.locfileid: "59998568"
 
 ユーザーを追加するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Data Box Edge リソースに移動し、**[概要] > [ユーザー]** に移動します。 コマンド バーの **[+ ユーザーの追加]** を選択します。
+1. Azure portal で Data Box Edge リソースに移動し、 **[概要] > [ユーザー]** に移動します。 コマンド バーの **[+ ユーザーの追加]** を選択します。
 
     ![[ユーザーの追加] の選択](media/data-box-edge-manage-users/add-user-1.png)
 
-2. 追加するユーザーのユーザー名とパスワードを指定します。 パスワードを確認し、**[追加]** を選択します。
+2. 追加するユーザーのユーザー名とパスワードを指定します。 パスワードを確認し、 **[追加]** を選択します。
 
     ![ユーザー名とパスワードの指定](media/data-box-edge-manage-users/add-user-2.png)
 
@@ -66,11 +66,11 @@ ms.locfileid: "59998568"
 ユーザーを削除するには、Azure portal で次の手順を実行します。
 
 
-1. Azure portal で Data Box Edge リソースに移動し、**[概要] > [ユーザー]** に移動します。
+1. Azure portal で Data Box Edge リソースに移動し、 **[概要] > [ユーザー]** に移動します。
 
     ![削除するユーザーの選択](media/data-box-edge-manage-users/delete-user-1.png)
 
-2. ユーザーの一覧でユーザーを選択し、**[削除]** を選択します。  
+2. ユーザーの一覧でユーザーを選択し、 **[削除]** を選択します。  
 
    ![[削除] を選択する](media/data-box-edge-manage-users/delete-user-2.png)
 

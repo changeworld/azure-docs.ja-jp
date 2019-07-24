@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
 ms.openlocfilehash: a947f9a94dd4ceed624e6b04a671b21b8926d25e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080745"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60322789"
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースの管理
 
@@ -33,13 +33,13 @@ Machine Learning Studio ワークスペースは、Azure portal で管理でき�
 Studio ワークスペースを Azure portal で 管理するには:
 
 1. Azure サブスクリプション管理者アカウントを使用して [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ページ上部の検索ボックスに「machine learning studio workspaces」と入力した後、**[Machine Learning Studio ワークスペース]** を選択します。
+2. ページ上部の検索ボックスに「machine learning studio workspaces」と入力した後、 **[Machine Learning Studio ワークスペース]** を選択します。
 3. 管理するワークスペースをクリックします。
 
 標準のリソース管理情報と利用可能なオプションに加え、以下のことも可能です。
 
 - **[プロパティ]** の表示 - このページではワークスペースとリソースの情報が表示され、このワークスペースに接続されているサブスクリプションとリソース グループが変更できます。
-- **[ストレージの再同期]** - ワークスペースによってキーがストレージ アカウントに維持されます。 ストレージ アカウントによってキーが変更された場合は、**[キーの再同期]** をクリックして、ワークスペースでキーを同期できます。
+- **[ストレージの再同期]** - ワークスペースによってキーがストレージ アカウントに維持されます。 ストレージ アカウントによってキーが変更された場合は、 **[キーの再同期]** をクリックして、ワークスペースでキーを同期できます。
 
 この Studio ワークスペースに関連付けられた Web サービスを管理するには、Machine Learning Web サービス ポータルを使用します。 詳細な情報については、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。
 

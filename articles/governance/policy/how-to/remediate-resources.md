@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fe06e7081e4e3691aeb054985f9f2f3f6dc7d19e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ba015a1d5183fcf27cfcc05ef1d0cd838201e91e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794992"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077115"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
-**deployIfNotExists**に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに対して割り当てポリシーの **deployIfNotExists** 効果を実行するよう Policy に指示することによって行うことができます｡ この記事では、Policy による修復を理解して実行するために必要な手順を示します。
+**deployIfNotExists**に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに割り当てられているポリシーの **deployIfNotExists** 効果を実行するように Azure Policy に指示することによって実行されます。 この記事では、Azure Policy による修復を理解して実行するために必要な手順を示します。
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>修復のセキュリティの仕組み
 
-**deployIfNotExists** ポリシー定義にあるテンプレートを実行する場合､Policy は[管理対象 id](../../../active-directory/managed-identities-azure-resources/overview.md)を使用します｡
-管理対象 ID は Policy によって各割り当てに作成されますが、どのようなロールを管理対象 ID に付与するかについての詳細が必要です。 管理対象 ID にロールが存在しない場合、そのポリシーまたはイニシアチブの割り当て中にこのエラーが表示されます。 ポータルを使用している場合、割り当てが開始されると、Policy は示されているロールのすべてを自動的に管理対象 ID に付与します。
+**deployIfNotExists** ポリシー定義にあるテンプレートを実行するとき､Azure Policy では[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) が使用されます｡
+マネージド ID は Azure Policy によって各割り当てに対して作成されますが、どのようなロールをマネージド ID に付与するかについての詳細が必要です。 管理対象 ID にロールが存在しない場合、そのポリシーまたはイニシアチブの割り当て中にこのエラーが表示されます。 ポータルを使用している場合、割り当てが開始されると、Azure Policy によって、示されているロールのすべてが自動的にマネージド ID に付与されます。
 
 ![管理対象 ID - ロールが存在しない](../media/remediate-resources/missing-role.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "59794992"
 "details": {
     ...
     "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+        "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
         "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
     ]
 }
@@ -51,13 +51,9 @@ ms.locfileid: "59794992"
 az role definition list --name 'Contributor'
 ```
 
-```azurepowershell-interactive
-Get-AzRoleDefinition -Name 'Contributor'
-```
-
 ## <a name="manually-configure-the-managed-identity"></a>管理対象 ID を手動で設定します。
 
-ポータルを使用して割り当てを作成する際、Policy はポリシー管理対象 ID を作成すると共に､**roleDefinitionIds** に定義されているロールをその管理対象 ID に付与します。 次の条件では、管理対象 ID を作成し、アクセス許可を割り当てる手順を手動で行う必要があります:
+ポータルを使用して割り当てを作成する際、Azure Policy によって、マネージド ID の生成と **roleDefinitionIds** に定義されているロールのマネージド ID への付与の両方が実行されます。 次の条件では、管理対象 ID を作成し、アクセス許可を割り当てる手順を手動で行う必要があります:
 
 - SDK (Azure PowerShell など) を使用している場合
 - 割り当てスコープの範囲外のリソースがテンプレートによって変更される場合
@@ -108,7 +104,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 割り当ての管理対象 ID にロールを追加するには、次の手順に従います｡
 
-1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
+1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
 1. Azure Policy ページの左側にある **[割り当て]** を選択します。
 
@@ -126,7 +122,8 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. リソース ページにある **アクセス制御 (IAM)** のリンクをクリックして、アクセス制御ページの上部にある **[+ Add role assignment]\(+ ロール割り当ての追加\)** をクリックします。
 
-1. ポリシー定義から､ **roleDefinitionIds** に一致するロールを選択します｡ **Assign access to** は ''Azure AD user, group, or application という既定値の設定のままにします｡ **[選択]** ボックスで、前の手順で見つけた割り当てリソース ID の部分を貼り付けるか､入力します。 検索が完了したら、同じ名前のオブジェクトをクリックすることで ID を選択し､**[保存]** をクリックします。
+1. ポリシー定義から､ **roleDefinitionIds** に一致するロールを選択します｡
+   **Assign access to** は ''Azure AD user, group, or application という既定値の設定のままにします｡ **[選択]** ボックスで、前の手順で見つけた割り当てリソース ID の部分を貼り付けるか､入力します。 検索が完了したら、同じ名前のオブジェクトをクリックすることで ID を選択し､ **[保存]** をクリックします。
 
 ## <a name="create-a-remediation-task"></a>修復タスクを作成する
 
@@ -136,7 +133,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 **修復タスク** を作成するには､次の手順に従います。
 
-1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
+1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
    ![[すべてのサービス] で [ポリシー] を検索する](../media/remediate-resources/search-policy.png)
 
@@ -149,11 +146,11 @@ if ($roleDefinitionIds.Count -gt 0)
    > [!NOTE]
    > **修復タスク**ページは、**コンプライアンス** ページから問題のポリシーを見つけて､クリックし、ページの [] をクリックし、**修復タスクの作成**ボタンをクリックしても開くことができます。
 
-1. **[New remediation task]\(新しい修復タスク\)** ページで **[Scope]\(スコープ\)** 省略記号ボタンを使って、ポリシーが割り当てられている子リソースを選択することで、修復するリソースをフィルター処理します (個々のリソース オブジェクトまでフィルター可能)。 また、**[場所]** ドロップダウンを使って､リソースをさらにフィルター処理することもできます｡ 表に示されたリソースのみ修復されます。
+1. **[New remediation task]\(新しい修復タスク\)** ページで **[Scope]\(スコープ\)** 省略記号ボタンを使って、ポリシーが割り当てられている子リソースを選択することで、修復するリソースをフィルター処理します (個々のリソース オブジェクトまでフィルター可能)。 また、 **[場所]** ドロップダウンを使って､リソースをさらにフィルター処理することもできます｡ 表に示されたリソースのみ修復されます。
 
    ![修復 - 修復するリソースを選択する](../media/remediate-resources/select-resources.png)
 
-1. リソースのフィルター処理を終えたら、**[修復]** をクリックして、修復タスクを開始します。 **[修復タスク]** タブに対するポリシー コンプライアンス ページが開いて、タスクの進行状況が表示されます｡
+1. リソースのフィルター処理を終えたら、 **[修復]** をクリックして、修復タスクを開始します。 **[修復タスク]** タブに対するポリシー コンプライアンス ページが開いて、タスクの進行状況が表示されます｡
 
    ![修復 - 修復タスクの進行状況](../media/remediate-resources/task-progress.png)
 
@@ -193,9 +190,9 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Policy のサンプル](../samples/index.md)を確認する
-- [ポリシー定義の構造](../concepts/definition-structure.md)を確認する
-- [ポリシーの効果について](../concepts/effects.md)確認する
-- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解する
-- [コンプライアンス データを取得する](getting-compliance-data.md)ための方法を学びます。
+- [Azure Policy のサンプル](../samples/index.md)を確認します。
+- 「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を確認します。
+- 「[Policy の効果について](../concepts/effects.md)」を確認します。
+- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
+- [コンプライアンス データを取得する](getting-compliance-data.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

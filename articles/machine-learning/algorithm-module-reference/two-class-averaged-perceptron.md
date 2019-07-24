@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: f0fec525ed87f91cf102053383b2934aac4b71c0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027771"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>2 クラス平均化パーセプトロン モジュール
@@ -37,7 +37,7 @@ ms.locfileid: "65027771"
 
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **[Single Parameter]\(単一パラメーター\)**:モデルの構成方法を決めている場合は、特定の値のセットを引数として渡します。
+    -   **[Single Parameter]\(単一パラメーター\)** :モデルの構成方法を決めている場合は、特定の値のセットを引数として渡します。
   
 3.  **[Learning rate]\(学習速度\)** に*学習速度*の値を指定します。 学習速度の値は、モデルがテストされて修正される度に確率的勾配降下法で使用されるステップのサイズを制御します。
   

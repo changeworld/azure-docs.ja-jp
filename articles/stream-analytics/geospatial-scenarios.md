@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: cc301855e4cdcb8eb687e753835577399cfe72b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58807372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60789565"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Azure Stream Analytics を使用したジオフェンシングおよび地理空間集計のシナリオ
 

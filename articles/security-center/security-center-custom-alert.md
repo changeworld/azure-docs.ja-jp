@@ -14,32 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: a5deee4209001d8c2212033c2d547d7c4199bd25
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 984bd4d5db210679884655721be0cbcdac8c1705
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192622"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485277"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure Security Center のカスタム アラート ルール (プレビュー)
 このドキュメントは、Azure Security Center でカスタム アラート ルールを作成する際に役立ちます。
 
 > [!NOTE]
-> カスタム アラートは、2019 年 6 月 30 日に廃止されます。
+> Security Center のカスタム アラートは廃止されました。 
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Azure Security Center のカスタム アラート ルールの提供終了
 
-カスタム アラート エクスペリエンスは、基になっていたインフラストラクチャが廃止されることから、2019 年 6 月 30 日に廃止される予定です。 非推奨となるまでの期間、ユーザーは、既存のカスタム アラート ルールを編集することはできますが、新しいものを追加することはできません。
+カスタムのアラート エクスペリエンスは、依存していた基のインフラストラクチャが廃止されたことから、2019 年 6 月 30 日に廃止されました。 廃止前に定義されたカスタム アラートは有効にならず、それらのカスタム アラート ルールに基づくセキュリティ アラートは生成されません。 後述する代替方法で再作成するために、Security Center でカスタム アラート ルールのクエリを表示することはできます。
+
 ユーザーには次のどちらかをお勧めします。
-- ワンクリック オンボードで [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) を有効にして、既存のアラートを自動的に移行し、新しいアラートを作成します
+- [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) を有効にし、組み込みの[分析](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)機能を使用してアラート ルールを再作成します
 - Azure Monitor ログ アラートでアラートを再作成します
                                      
-既存のアラートを保持し、それらを Azure Sentinel に移行するには、[Azure Sentinel を起動](https://portal.azure.com/#create/Microsoft.ASI/preview)してください。 最初の手順で、カスタム アラートが格納されているワークスペースを選択し、[分析] メニュー項目を選択して、アラートを自動的に移行します。
+既存のアラートを保持し、それらを Azure Sentinel で再作成するには、[Azure Sentinel を起動](https://portal.azure.com/#create/Microsoft.ASI/preview)してください。 最初の手順で、カスタム アラートが格納されているワークスペースを選択し、[分析] メニュー項目を選択して、カスタム アラート ルールを設定します。 その他の情報については、[ドキュメント](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)を参照してください。
 
 > [!NOTE]
-> Azure Sentinel へのカスタム アラートの移行は、選択したワークスペース内のすべてのカスタム アラートの 1 回限りの移行です。 移行の完了後、その選択したワークスペースのカスタム アラートは Azure Security Center を使用してアクセスできなくなります。
->
-> [Search](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) または [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) ステートメント クエリを使用したカスタム アラートは、Azure Sentinel でサポートされておらず、移行されません。 移行を実行する前に、これらのアラートを編集してください。
+> [Search](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) または [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) ステートメント クエリを使用したカスタム アラートは、Azure Sentinel でサポートされていません。 移行を実行する前に、これらのアラートを編集してください。
 
 Azure Monitor ログ アラートを使用してアラートを再作成するには、次を参照してください。ログ アラートを作成する方法の手順については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)」を参照してください。 Azure Monitor のログ アラートの一般的な概要については、[ここ](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)をクリックしてください。
 
@@ -58,8 +57,8 @@ Security Center のカスタム アラート ルールを使用すると、環�
 
 **[セキュリティ センター]** ダッシュボードを開き、次の手順に従ってカスタム アラート ルールを作成します。
 
-1.  左側のウィンドウの **[検出]** で、**[Custom alert rules (Preview)]\(カスタム アラート ルール (プレビュー)\)** をクリックします。
-2.  **[Security Center – Custom alert rules (Preview)]\(Security Center – カスタム アラート ルール (プレビュー)\)** ページで、**[新しいカスタム アラート ルール]** をクリックします。
+1.  左側のウィンドウの **[検出]** で、 **[Custom alert rules (Preview)]\(カスタム アラート ルール (プレビュー)\)** をクリックします。
+2.  **[Security Center – Custom alert rules (Preview)]\(Security Center – カスタム アラート ルール (プレビュー)\)** ページで、 **[新しいカスタム アラート ルール]** をクリックします。
 
     ![カスタム アラート](./media/security-center-custom-alert/security-center-custom-alert-fig1.png)
 
@@ -71,7 +70,7 @@ Security Center のカスタム アラート ルールを使用すると、環�
 5.  **[説明]** フィールドに、このルールの目的を示す簡単な説明を入力します。
 6.  **[重大度]** フィールドで、必要性に応じた重大度レベル (高、中、低) を選択します。
 7.  **[サブスクリプション]** フィールドで、このルールを適用できるサブスクリプションを選択します。
-8.  **[ワークスペース]** フィールドで、このルールで監視するワークスペースを選択し、**[検索クエリ]** フィールドに、結果の取得に使用するクエリを入力します。
+8.  **[ワークスペース]** フィールドで、このルールで監視するワークスペースを選択し、 **[検索クエリ]** フィールドに、結果の取得に使用するクエリを入力します。
 
     > [!NOTE]
     > カスタム アラートの格納先として選択するワークスペースに対する書き込みアクセス許可が必要です。
@@ -89,7 +88,7 @@ Security Center のカスタム アラート ルールを使用すると、環�
 11. **[評価]** フィールドで、このルールを評価して実行する頻度を選択します。
 12. **[結果の数]** フィールドで、演算子を選択します ([次の値より大きい] または [次の値より小さい])。
 13. **[しきい値]** フィールドに、先ほど選択した演算子の参照として使用される数を入力します。
-14. このルールの次のアラートが Security Center によって送信されるまでの待ち時間を設定する場合は、**[アラートを表示しない]** オプションを有効にします。
+14. このルールの次のアラートが Security Center によって送信されるまでの待ち時間を設定する場合は、 **[アラートを表示しない]** オプションを有効にします。
 15. **[OK]** をクリックして終了します。
 
 新しいアラート ルールの作成が完了すると、カスタム アラート ルールの一覧にそれが表示されます。 そのルールの条件が満たされると、新しいアラートがトリガーされます。これは **[セキュリティ アラート]** ダッシュボードで確認できます。

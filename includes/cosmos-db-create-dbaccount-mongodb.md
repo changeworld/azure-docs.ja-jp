@@ -9,14 +9,14 @@ ms.date: 12/26/2018
 ms.author: rimman
 ms.custom: include file
 ms.openlocfilehash: f000f10a3b20fda04c908a6dea0cc9799b49ef76
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66151408"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181722"
 ---
 1. 新しいウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
-2. 左側のメニューで、**[リソースの作成]**、**[データベース]** の順にクリックし、**[Azure Cosmos DB]** の下にある **[作成]** をクリックします。
+2. 左側のメニューで、 **[リソースの作成]** 、 **[データベース]** の順にクリックし、 **[Azure Cosmos DB]** の下にある **[作成]** をクリックします。
    
    ![その他のサービスと Azure Cosmos DB が強調表示された Azure portal のスクリーンショット](./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png)
 
@@ -34,6 +34,6 @@ ms.locfileid: "66151408"
 
     ![Azure Cosmos DB の新しいアカウント ページ](./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png)
 
-4. アカウントの作成には数分かかります。 ポータルに "**Your Cosmos account with wire protocol compatibility for MongoDB is ready (MongoDB に対してワイヤ プロトコルの互換性がある Cosmos アカウントの準備ができました)**" ページが表示されるまで待ちます。
+4. アカウントの作成には数分かかります。 ポータルに "**Your Cosmos account with wire protocol compatibility for MongoDB is ready (MongoDB に対してワイヤ プロトコルの互換性がある Cosmos アカウントの準備ができました)** " ページが表示されるまで待ちます。
 
     ![Azure Portal の [通知] ウィンドウ](./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-account-created.png)

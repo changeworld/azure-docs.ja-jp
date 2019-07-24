@@ -4,17 +4,17 @@ description: このガイドは、CEO、CIO、CISO、チーフ ID アーキテ�
 services: active-directory
 keywords: ''
 author: martincoetzer
-ms.author: martincoetzer
+ms.author: martinco
 ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 773d4dd28da3165261d75e4f800750c1f54377d0
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c0faeb211860391c93563200f509d60876a504b9
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702303"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786693"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する 
 
@@ -81,7 +81,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
    * 複数サイトのオンプレミス認証ソリューション。
 5. Azure AD Identity Protection では、「*資格情報が漏洩したユーザー*」レポートを提供するために、選択されたサインイン方法には関係なくパスワード ハッシュの同期が必要です。 組織は主要なサインイン方法が失敗した場合、パスワード ハッシュ同期が失敗イベントの前に構成されていれば、パスワード ハッシュ同期にフェールオーバーできます。
 
->[!NOTE]
+> [!NOTE]
 > Azure AD Identity Protection には、[Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) ライセンスが必要です。
 
 ## <a name="detailed-considerations"></a>詳細な考慮事項
@@ -94,14 +94,17 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 * **高度なシナリオ**。 組織は、Azure AD Premium P2 で Azure AD Identity Protection のレポートを使用して ID からの分析情報を使用することを選択できます。 その 1 つの例が漏洩した資格情報レポートです。 Windows Hello for Business には、[パスワード ハッシュ同期を使用するときの特定の要件](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification)があります。 [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync) では、ユーザーが会社の資格情報を使用してマネージド ドメインでプロビジョニングできるよう、パスワードのハッシュ同期を求めます。
 
-    パスワード ハッシュ同期を使用する多要素認証が必要な組織は、Azure AD の多要素認証を使用する必要があります。 これらの組織は、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。
+    パスワード ハッシュ同期を使用する多要素認証が必要な組織は、Azure AD の多要素認証または[条件付きアクセス カスタム コントロール](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。
+
+> [!NOTE]
+> Azure AD の条件付きアクセスでは [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) ライセンスが必要です。
 
 * **ビジネス継続性**。 クラウド認証と共にパスワード ハッシュ同期を使用することは、すべての Microsoft データセンターに対応するようにスケーリングするクラウド サービスとして、高い可用性を実現します。 パスワード ハッシュ同期が長期間ダウンしないようにするには、2 つめ Azure AD Connect サーバーを、スタンバイ構成のステージング モードで展開します。
 
 * **考慮事項**。 現在、パスワード ハッシュ同期では、オンプレミスのアカウントの状態の変化はすぐには適用されません。 このような状況では、ユーザーは、Azure AD にユーザー アカウントの状態が同期されるまで、クラウド アプリにアクセスできます。 組織がこのような制限を回避する方法の 1 つは、管理者がオンプレミスのユーザー アカウントの状態を一括更新した後に、新しい同期サイクルを実行することです。 たとえば、アカウントを無効にします。
 
 > [!NOTE]
-> 現在、パスワードの期限切れとアカウントのロックアウトの状態は、Azure AD と Azure AD Connect では同期されません。 
+> 現在、パスワードの期限切れとアカウントのロックアウトの状態は、Azure AD と Azure AD Connect では同期されません。 ユーザーのパスワードを変更し、 *[ユーザーは次回ログオン時にパスワードの変更が必要]* フラグを設定した場合、ユーザーが自分のパスワードを変更するまで Azure AD と Azure AD Connect ではパスワード ハッシュは同期されません。
 
 展開手順については、[パスワード ハッシュ同期の実装](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)に関する記事をご覧ください。
 
@@ -115,7 +118,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 
 * **高度なシナリオ**。 パススルー認証では、サインインの時点でオンプレミスのアカウント ポリシーが適用されます。 たとえば、オンプレミスのユーザーのアカウントの状態が、無効、ロックアウト、[パスワード期限切れ](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication)、またはユーザーに許可されているサインイン時間の超過の場合、アクセスは拒否されます。 
 
-    パススルー認証を使用する多要素認証が必要な組織は、Azure Multi-Factor Authentication (MFA) を使用する必要があります。 これらの組織は、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。 高度な機能では、パススルー認証を選択するかどうかにかかわらず、パスワード ハッシュ同期が必要になります。 たとえば、Identity Protection の漏洩した資格情報のレポートです。
+    パススルー認証を使用する多要素認証が必要な組織は、Azure Multi-Factor Authentication (MFA) または[条件付きアクセス カスタム コントロール](https://docs.microsoft.com/azure/active-directory/conditional-access/controls#custom-controls-preview)を使用する必要があります。 これらの組織は、フェデレーションに依存する、サード パーティ製またはオンプレミスの多要素認証方法を使用できません。 高度な機能では、パススルー認証を選択するかどうかにかかわらず、パスワード ハッシュ同期が必要になります。 たとえば、Identity Protection の漏洩した資格情報のレポートです。
 
 * **ビジネス継続性**。 2 つの追加パススルー認証エージェントを展開することをお勧めします。 Azure AD Connect サーバー上の最初のエージェントに加えて、これらを追加します。 この追加の展開によって、認証要求の高可用性が保証されます。 3 つのエージェントを展開すると、メンテナンスのために 1 つのエージェントを停止しても、まだ 1 つのエージェントの障害に対応できます。 
 
@@ -136,7 +139,7 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 * **高度なシナリオ**。 通常、フェデレーション認証ソリューションが必要になるのは、Azure AD によってネイティブにサポートされていない認証要件がある場合です。 [適切なサインイン オプションを選択する](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/)のに役立つ詳しい情報をご覧ください。 次の一般的な要件で考えてみましょう。
 
   * スマートカードまたは証明書を必要とする認証。
-  * オンプレミスの MFA サーバーまたはサード パーティの多要素プロバイダー。
+  * フェデレーション ID プロバイダーを必要とするオンプレミスの MFA サーバーまたはサード パーティの多要素プロバイダー。
   * サード パーティの認証ソリューションを使用する認証。 「[Azure AD のフェデレーション互換性リスト](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility)」をご覧ください。
   * ユーザー プリンシパル名 (UPN) (例: user@domain.com) ではなく、sAMAccountName (例: DOMAIN\username) を必要とするサインイン。
 

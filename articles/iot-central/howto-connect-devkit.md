@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 82222dd927f46761941a6a750d96222cc626e71b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 130ca6bc946d44d80cddba5486d405bfb15523cb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006184"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66235879"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -34,8 +34,8 @@ ms.locfileid: "60006184"
 - **デバイス状態**の状態測定。
 - **ボタン B 押下**でのイベント測定。
 - **電圧**、**電流**、**ファン速度**、**IR** のトグルの設定。
-- デバイス プロパティである **[Die Number] (サイコロの数字)** と、場所プロパティである **[デバイスの場所]**。
-- クラウド プロパティである **[メーカー]**。
+- デバイス プロパティである **[Die Number] (サイコロの数字)** と、場所プロパティである **[デバイスの場所]** 。
+- クラウド プロパティである **[メーカー]** 。
 - コマンド **Echo** および **Countdown**。 実際のデバイス上で **Echo** コマンドが受信されると、送信された値がデバイスの画面に表示されます。 実際のデバイスで **Countdown** コマンドが受信されると、LED がパターンを順番に繰り返し、デバイスによってカウントダウン値が IoT Central に送信されます。
 
 構成について詳しくは、「[MXChip デバイス テンプレートの詳細](#mxchip-device-template-details)」をご覧ください
@@ -46,7 +46,7 @@ ms.locfileid: "60006184"
 
 Azure IoT Central アプリケーションでは、**MXChip** デバイス テンプレートから実デバイスを追加し、デバイスの接続詳細を書きとめます。**スコープ ID、デバイス ID、主キー**:
 
-1. Device Explorer から**実際のデバイス**を追加し、**[+ 新規] > [Real]\(リアル\)** を選択して実際のデバイスを追加します。
+1. Device Explorer から**実際のデバイス**を追加し、 **[+ 新規] > [Real]\(リアル\)** を選択して実際のデバイスを追加します。
 
     * 小文字の **[デバイス ID]** を入力するか、推奨される**デバイス ID** を使用します。
     * **[デバイス名]** を入力するか、推奨名を使います
@@ -61,7 +61,7 @@ Azure IoT Central アプリケーションでは、**MXChip** デバイス テ�
 
 ### <a name="prepare-the-devkit-device"></a>DevKit デバイスを準備する
 
-以前にデバイスを使用しており、別の WiFi ネットワーク、接続文字列、またはテレメトリ測定を使用するようにそのデバイスを再構成するには、**A** ボタンと **B** ボタンの両方を同時に押します。 それで機能しない場合は、**[リセット]** ボタンを押して再試行します。
+以前にデバイスを使用しており、別の WiFi ネットワーク、接続文字列、またはテレメトリ測定を使用するようにそのデバイスを再構成するには、**A** ボタンと **B** ボタンの両方を同時に押します。 それで機能しない場合は、 **[リセット]** ボタンを押して再試行します。
 
 #### <a name="to-prepare-the-devkit-device"></a>DevKit デバイスを準備するには
 
@@ -113,7 +113,7 @@ DevKit デバイスが再起動すると、デバイスの画面に次のもの�
 > [!NOTE]
 > 接続しようとしたときにデバイスがループしているように見える場合は、IoT Central でデバイスが **[ブロック済み]** かどうかを確認し、アプリに接続できるようにデバイスを **[ブロック解除]** します。
 
-デバイスをシェイクして、報告されるプロパティを送信します。 デバイスは、**[Die Number] (サイコロの数字)** デバイス プロパティとして乱数を送信します。
+デバイスをシェイクして、報告されるプロパティを送信します。 デバイスは、 **[Die Number] (サイコロの数字)** デバイス プロパティとして乱数を送信します。
 
 Azure IoT Central でテレメトリ測定や報告されるプロパティの値を表示したり、設定を構成したりできます。
 
@@ -197,9 +197,9 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 | 湿度       | %      | 0       | 100     | 0              |
 | temp           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | -1000   | 1,000    | 0              |
-| magnetometerY  | mgauss | -1000   | 1,000    | 0              |
-| magnetometerZ  | mgauss | -1000   | 1,000    | 0              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
 | accelerometerX | mg     | -2000   | 2000    | 0              |
 | accelerometerY | mg     | -2000   | 2000    | 0              |
 | accelerometerZ | mg     | -2000   | 2000    | 0              |
@@ -225,7 +225,7 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 電圧      | setVoltage | ボルト | 0              | 0       | 240     | 0       |
 | Current      | setCurrent | アンペア  | 0              | 0       | 100     | 0       |
-| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
+| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 トグル設定
 
@@ -250,4 +250,4 @@ IoT Central アプリケーションから呼び出されたコマンドにデ�
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、Raspberry Pi をご利用の Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](howto-set-up-template.md)方法を学習することです。
+これで、MXChip IoT DevKit を Azure IoT Central アプリケーションに接続する方法を学習したので、推奨される次の手順は、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](howto-set-up-template.md)方法を学習することです。

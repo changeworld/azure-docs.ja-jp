@@ -1,23 +1,17 @@
 ---
 title: Azure Resource Manager テンプレートの関数 - 論理 | Microsoft Docs
 description: Azure Resource Manager テンプレートで論理値を判定するために使用する関数について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4684c38fe506ed912c6827f1e60b94b847024347
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 2487cf928685423e4b60bb2923fc7e348eaff0c3
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405666"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447969"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの論理関数
 
@@ -40,8 +34,8 @@ Resource Manager には、テンプレートで比較を行うための関数が
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |ブール値 |true かどうかを確認する最初の値。 |
-| arg2 |はい |ブール値 |true かどうかを確認する 2 番目の値。 |
-| 残りの引数 |いいえ  |ブール値 |true かどうかを確認する追加の引数。 |
+| arg2 |はい |Boolean |true かどうかを確認する 2 番目の値。 |
+| 残りの引数 |いいえ |Boolean |true かどうかを確認する追加の引数。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -145,7 +139,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| condition |はい |ブール値 |true か false かどうかを確認する値。 |
+| condition |はい |Boolean |true か false かどうかを確認する値。 |
 | trueValue |はい | string、int、object、または array |条件が true の場合に返される値。 |
 | falseValue |はい | string、int、object、または array |条件が false の場合に返される値。 |
 
@@ -188,8 +182,8 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| yesOutput | String | はい |
-| noOutput | String | × |
+| yesOutput | string | はい |
+| noOutput | string | × |
 | objectOutput | Object | { "test": "value1" } |
 
 次の[テンプレート例](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)では、条件付きで有効な式限定で、この関数を使用する方法を示しています。
@@ -250,7 +244,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |ブール値 |変換する値。 |
+| arg1 |はい |Boolean |変換する値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -323,8 +317,8 @@ Resource Manager には、テンプレートで比較を行うための関数が
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |ブール値 |true かどうかを確認する最初の値。 |
-| arg2 |はい |ブール値 |true かどうかを確認する 2 番目の値。 |
-| 残りの引数 |いいえ  |ブール値 |true かどうかを確認する追加の引数。 |
+| arg2 |はい |Boolean |true かどうかを確認する 2 番目の値。 |
+| 残りの引数 |いいえ |Boolean |true かどうかを確認する追加の引数。 |
 
 ### <a name="return-value"></a>戻り値
 

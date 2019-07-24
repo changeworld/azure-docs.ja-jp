@@ -137,6 +137,8 @@
           href: overview-opc-twin.md
         - name: OPC Vault とは
           href: overview-opc-vault.md
+        - name: OPC Publisher とは
+          href: overview-opc-publisher.md
         - name: コネクテッド ファクトリとは
           href: iot-accelerators-connected-factory-features.md
     - name: クイック スタート
@@ -147,18 +149,12 @@
       items:
         - name: OPC Twin アーキテクチャ
           href: overview-opc-twin-architecture.md
-        - name: コネクテッド ファクトリのアーキテクチャ
-          href: iot-accelerators-connected-factory-sample-walkthrough.md
     - name: ハウツー ガイド
       items:
         - name: 接続済みファクトリ
           items:
             - name: ダッシュボードの使用
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: ゲートウェイの選択
-              href: iot-accelerators-connected-factory-gateway-deployment.md
-            - name: OPC Publisher の利用
-              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: ソリューション アクセラレータの構成
               href: iot-accelerators-connected-factory-configure.md
             - name: ソリューション アクセラレータのカスタマイズ
@@ -181,6 +177,12 @@
                   href: howto-opc-vault-deploy-existing-client-server-communication.md
             - name: OPC Vault をゼロからデプロイする
               href: howto-opc-vault-deploy-scratch.md
+        - name: OPC Publisher
+          items:
+            - name: OPC Publisher の構成
+              href: howto-opc-publisher-configure.md
+            - name: OPC Publisher の実行
+              href: howto-opc-publisher-run.md
     - name: リソース
       items:
         - name: GitHub リポジトリ
@@ -209,7 +211,7 @@
           href: iot-accelerators-device-simulation-advanced-device.md
         - name: Time Series Insights によるテレメトリの視覚化
           href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: Protbuf を使用してテレメトリをシリアル化する
+        - name: Protobuf を使用したテレメトリのシリアル化
           href: iot-accelerators-device-simulation-protobuf.md
         - name: カスタム Docker イメージのデプロイ
           href: iot-accelerators-device-simulation-deploy-image.md

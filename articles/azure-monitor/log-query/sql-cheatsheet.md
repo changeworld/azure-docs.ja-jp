@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: a0233774deaffe25a8e59f79511a0031b1535ba4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b756b9484273c098dbeb6685430f70626b3af787
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011003"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65789230"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL から Azure Monitor ログ クエリへのチート シート 
 
@@ -50,4 +50,4 @@ null 値の評価                         |`SELECT * FROM dependencies WHERE res
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Monitor でのログ クエリの記述](get-started-queries.md)に関するレッスンをご覧ください。
+- [Azure Monitor でのログ クエリの記述](get-started-queries.md)に関するレッスンを行います。

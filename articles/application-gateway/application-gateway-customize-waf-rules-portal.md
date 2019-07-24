@@ -6,12 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: f7ffb8d6adfd4afc75618834a3fe82cf9a3d0c9f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.topic: conceptual
+ms.openlocfilehash: f4af52907ab2e950636dea0874b49500f3a6b587
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64720383"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613452"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Azure Portal を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
 

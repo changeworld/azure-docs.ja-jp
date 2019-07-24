@@ -3,8 +3,8 @@ title: SaaS アプリケーションへの Azure Active Directory 自動ユー�
 description: 自動ユーザー アカウント プロビジョニング ジョブの状態を確認する方法と、個々のユーザーのプロビジョニングをトラブルシューティングする方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: celested
-ms.reviewer: asmalser
+ms.author: mimart
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6d1684c4bc0031978fb5e76548a3112b0f1ef2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 70ca1e2f4fd831619cc3cd443d98018a35f4e1ef
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206992"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65963082"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート
 
@@ -43,7 +43,7 @@ Azure Active Directory には、エンド ツー エンドの ID ライフ サ�
 
 * **ソース システム** - Azure AD プロビジョニング サービスの同期元である、ユーザーのリポジトリ。 Azure Active Directory は、事前統合されたほとんどのプロビジョニング コネクタのソース システムです。ただし、いくつかの例外があります (例:Workday Inbound Synchronization)。
 
-* **ターゲット システム** - Azure AD プロビジョニング サービスの同期先である、ユーザーのリポジトリ。 これは、通常は SaaS アプリケーション (例:Salesforce、ServiceNow、Google Apps、Dropbox for Business) です。ただし、場合によっては、Active Directory などのオンプレミス システムにすることもできます (例:Workday Inbound Synchronization から Active Directory へ)。
+* **ターゲット システム** - Azure AD プロビジョニング サービスの同期先である、ユーザーのリポジトリ。 これは、通常は SaaS アプリケーション (例:Salesforce、ServiceNow、G Suite、Dropbox for Business) です。ただし、場合によっては、Active Directory などのオンプレミス システムにすることもできます (例:Workday Inbound Synchronization から Active Directory へ)。
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Azure 管理ポータルからプロビジョニング レポートを取得する
@@ -72,7 +72,7 @@ Azure Active Directory には、エンド ツー エンドの ID ライフ サ�
  ![概要レポート](./media/check-status-user-account-provisioning/summary_report.PNG)
 
 ## <a name="provisioning-audit-logs"></a>プロビジョニング監査ログ
-プロビジョニング サービスによって実行されたすべてのアクティビティは、Azure AD 監査ログに記録されます。このログは、**[アカウント プロビジョニング]** カテゴリの下の **[監査ログ]** タブで表示することができます。 記録されるアクティビティ イベントの種類には、次のようなものがあります。
+プロビジョニング サービスによって実行されたすべてのアクティビティは、Azure AD 監査ログに記録されます。このログは、 **[アカウント プロビジョニング]** カテゴリの下の **[監査ログ]** タブで表示することができます。 記録されるアクティビティ イベントの種類には、次のようなものがあります。
 
 * **インポート イベント** - "インポート" イベントは、Azure AD プロビジョニング サービスが個々のユーザーまたはグループに関する情報をソース システムまたはターゲット システムから取得するたびに記録されます。 同期中、まずユーザーがソース システムから取得され、結果が "インポート" イベントとして記録されます。 次に、取得されたユーザーの照合 ID がターゲット システムに対して照会され、その ID が存在するかどうかが確認されます。その結果も、"インポート" イベントとして記録されます。 これらのイベントでは、イベントの時点で Azure AD プロビジョニング サービスによって参照された、マップされている全ユーザー属性とその値が記録されます。 
 
@@ -119,7 +119,7 @@ Azure Active Directory には、エンド ツー エンドの ID ライフ サ�
 
 ### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>プロビジョニング監査ログを表示するためのヒント
 
-Azure Portal で見やすく表示するには、**[列]** ボタンを選択し、以下の列を選択します。
+Azure Portal で見やすく表示するには、 **[列]** ボタンを選択し、以下の列を選択します。
 
 * **[日付]** - イベントが発生した日付が表示されます。
 * **[ターゲット]** - イベントの対象のアプリ名とユーザー ID が表示されます。

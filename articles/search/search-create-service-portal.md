@@ -6,19 +6,19 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 05/08/2019
+ms.date: 07/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9de8fa297c2b3f89f74b17e0dac3eab007367b9b
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: d0d1dbb81f00f500f3eb95c605ed0c15c634f624
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65471595"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706821"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
-Azure Search は、カスタム アプリに検索エクスペリエンスを追加するために使用されるスタンドアロンのリソースです。 Azure Search は他の Azure サービスと簡単に統合できますが、単独で、またはネットワーク サーバー上のアプリや他のクラウド プラットフォーム上で実行されているソフトウェアと共に使用することもできます。
+Azure Search は、カスタム アプリに検索エクスペリエンスを追加するために使用されるスタンドアロンのリソースです。 Azure Search は他の Azure サービスと簡単に統合できますが、スタンドアロン コンポーネントとして使用することも、ネットワーク サーバー上のアプリまたは他のクラウド プラットフォーム上で実行されているソフトウェアと統合することもできます。
 
 この記事では、[Azure portal](https://portal.azure.com/) 内で Azure Search リソースを作成する方法を説明します。
 
@@ -36,7 +36,7 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左上隅のプラス記号 ([+ リソースの作成]) をクリックします。
-3. 検索バーを使用して "Azure Search" を検索するか、**[Web]** > **[Azure Search]** を使用してリソースに移動します。
+3. 検索バーを使用して "Azure Search" を検索するか、 **[Web]**  >  **[Azure Search]** を使用してリソースに移動します。
 
 ![Azure Search リソースに移動](./media/search-create-service-portal/find-search3.png "Azure Search へのナビゲーション パス")
 
@@ -69,11 +69,14 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 ## <a name="select-a-location"></a>場所を選択します。
 
-Azure サービスの 1 つである Azure Search は、世界中のデータ センターでホストできます。 地域によって[価格が異なる場合](https://azure.microsoft.com/pricing/details/search/)があります。
+Azure サービスの 1 つである Azure Search は、世界中のデータ センターでホストできます。 サポートされているリージョンの一覧は、[価格のページ](https://azure.microsoft.com/pricing/details/search/)にあります。 
 
-別の Azure サービス (Azure Storage、Azure Cosmos DB、Azure SQL Database) によって提供されたデータにインデックスを付ける場合は、帯域幅の料金を避けるために同じリージョンに Azure Search サービスを作成します。 サービスが同じリージョン内にある場合、アウトバウンド データに料金はかかりません。
+別の Azure サービス (Azure Storage、Azure Cosmos DB、Azure SQL Database) によって提供されたデータにインデックスを付ける場合は、帯域幅の料金を避けるために、同じリージョン内に Azure Search サービスを作成することをお勧めします。 サービスが同じリージョン内にある場合、アウトバウンド データに料金はかかりません。
 
-コグニティブ検索 AI エンリッチメントを使用している場合は、Cognitive Services リソースと同じリージョンにサービスを作成します。 サービスのコロケーションは、AI エンリッチメントの要件です。
+コグニティブ検索 AI エンリッチメントを使用している場合は、Cognitive Services リソースと同じリージョンにサービスを作成します。 *Azure Search と Cognitive Services を同じリージョンに配置することは、AI を強化するための要件です*。
+
+> [!Note]
+> インド中部は、現在、新しいサービスには使用できません。 既にインド中部で使用できるサービスについては、制限なしでスケールアップでき、サービスはそのリージョンで完全にサポートされます。 このリージョンに関する制限は一時的なものであり、新しいサービスのみに限定されます。 制限が適用されなったら、この注記を削除する予定です。
 
 ## <a name="select-a-pricing-tier-sku"></a>価格レベルの選択 (SKU)
 
@@ -85,27 +88,29 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 
 ## <a name="create-your-service"></a>サービスの作成
 
-サインインするたびにアクセスしやすくするために、サービスをダッシュボードにピン留めすることを忘れないでください。
+サービスを作成するための必要な入力を入力します。 
 
-![ダッシュボードにピン留めする](./media/search-create-service-portal/new-service3.png "アクセスしやすいようダッシュボードにリソースをピン留めする")
+![サービスの確認と作成](./media/search-create-service-portal/new-service3.png "サービスの確認と作成")
+
+ご利用のサービスは数分以内にデプロイされ、Azure の通知を介してそれを監視できます。 今後アクセスしやすくするために、サービスをご自分のダッシュ ボードにピン留めすることを検討してください。
+
+![サービスの監視とピン留め](./media/search-create-service-portal/monitor-notifications.png "サービスの監視とピン留め")
 
 ## <a name="get-a-key-and-url-endpoint"></a>キーと URL エンドポイントを取得する
 
-いくつかの例外はありますが、新しいサービスを使用するためには、URL エンドポイントと認可の API キーを指定する必要があります。 クイック スタート、チュートリアル ([Azure Search REST API の探索 (Postman)](search-fiddler.md) や [.NET から Azure Search を使用する方法](search-howto-dotnet-sdk.md)に関するページなど)、サンプル、カスタム コードはいずれも、特定のリソースで実行するためにはエンドポイントとキーが必要です。
+ポータルを使用していない場合、新しいサービスにアクセスするには、URL エンドポイントと認証 API キーを指定する必要があります。
 
 1. サービス概要ページの右側から、URL エンドポイントを探してコピーします。
 
-   ![URL エンドポイントが表示されるサービス概要ページ](./media/search-create-service-portal/url-endpoint.png "URL エンドポイントと他のサービス詳細")
-
 2. 左側のナビゲーション ウィンドウから **[キー]** を選択し、いずれかの管理者キー (どちらも働きは同じです) をコピーします。 ご利用のサービスのオブジェクトを作成、更新、削除するためには、管理者の API キーが必要です。
 
-   ![プライマリ キーとセカンダリ キーが表示されている [キー] ページ](./media/search-create-service-portal/admin-api-keys.png "認可に使用される管理者の API キー")
+   ![URL エンドポイントが表示されるサービス概要ページ](./media/search-create-service-portal/get-url-key.png "URL エンドポイントと他のサービス詳細")
 
-ポータル ベースのタスクにエンドポイントとキーは必要ありません。 ポータルは、ご利用の Azure Search リソースにあらかじめ管理者権限付きでリンクされています。 ポータルのチュートリアルについては、[Azure Search でのインポート、インデックス付け、クエリに関するチュートリアル](search-get-started-portal.md)を参照してください。
+ポータル ベースのタスクにエンドポイントとキーは必要ありません。 ポータルは、ご利用の Azure Search リソースにあらかじめ管理者権限付きでリンクされています。 ポータルのチュートリアルについては、[クイック スタート: ポータルで Azure Search インデックスを作成する](search-get-started-portal.md)から始めてください。
 
 ## <a name="scale-your-service"></a>サービスを拡張する
 
-サービスを作成するのに数分かかる場合があります (レベルによっては 15 分以上)。 サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。 Azure Search サービスの Standard レベルを選択しているため、レプリカとパーティションの 2 つのディメンションでサービスを拡張できます。 Basic レベルを選択した場合は、レプリカのみ追加できます。 無料サービスをプロビジョニングした場合、拡張は利用できません。
+サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。 Azure Search サービスの Standard レベルを選択している場合は、レプリカとパーティションの 2 つのディメンションでご利用のサービスをスケーリングできます。 Basic レベルを選択した場合は、レプリカのみ追加できます。 無料サービスをプロビジョニングした場合、拡張は利用できません。
 
 ***パーティション***を使用すると、サービスでより多くのドキュメントを格納し、検索できます。
 
@@ -117,13 +122,13 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 > サービスでは、[読み取り専用の SLA の場合は 2 つのレプリカ、読み取り/書き込み SLA の場合は 3 つのレプリカ](https://azure.microsoft.com/support/legal/sla/search/v1_0/)が必要です。
 
 1. Azure Portal で検索サービス ページを開きます。
-2. 左のナビゲーション ウィンドウで、**[設定]** > **[スケール]** を選択します。
+2. 左のナビゲーション ウィンドウで、 **[設定]**  >  **[スケール]** を選択します。
 3. スライダーを使って、いずれかの種類のリソースを追加します。
 
 ![容量を追加する](./media/search-create-service-portal/settings-scale.png "レプリカとパーティションで容量を追加する")
 
 > [!Note]
-> 1 つのサービスで許可される検索ユニットの総数の[制限](search-limits-quotas-capacity.md)は、レベルごとに異なります (レプリカ * パーティション数 = 検索ユニット合計)。
+> パーティションごとのストレージと速度がより高いレベルで向上します。 詳細については、[容量と制限](search-limits-quotas-capacity.md)に関するページをご覧ください。
 
 ## <a name="when-to-add-a-second-service"></a>2 番目のサービスの追加が必要になる状況
 
@@ -145,4 +150,4 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 Azure Search サービスのプロビジョニングが完了した後、ポータル内で最初のインデックスの作成に進むことができます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:ポータル内でのデータのインポート、インデックス作成、クエリの実行](search-get-started-portal.md)
+> [クイック スタート:ポータルで Azure Search インデックスを作成する](search-get-started-portal.md)

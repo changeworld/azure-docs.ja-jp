@@ -2,24 +2,25 @@
 title: Azure Security Center for IoT のコストを理解する (プレビュー) | Microsoft Docs
 description: Azure Security Center for IoT に関連するコストとその管理方法について説明します。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: ef839708-4574-4a40-bc45-07005f8e9daf
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 40963e0d81ccff21cc625b799833b996547a13b6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: dd041cdb1608eab60fa2a5fa756f381656a13a46
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198333"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67618450"
 ---
 # <a name="pricing-and-associated-costs"></a>価格と関連コスト
 

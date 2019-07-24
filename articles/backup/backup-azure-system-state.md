@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
 ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105201"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60782720"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Windows のシステム状態を Resource Manager デプロイメントにバックアップする
 この記事では、Windows Server のシステム状態を Azure にバックアップする方法について説明します。 基本事項に関するチュートリアルです。
@@ -28,7 +28,7 @@ Windows Server のシステム状態をバックアップするには、デー�
 
 ### <a name="to-create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成するには
 1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ハブ メニューの **[すべてのサービス]** をクリックし、リソースの一覧で「**Recovery Services**」と入力して、**[Recovery Services コンテナー]** をクリックします。
+2. ハブ メニューの **[すべてのサービス]** をクリックし、リソースの一覧で「**Recovery Services**」と入力して、 **[Recovery Services コンテナー]** をクリックします。
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-system-state/open-rs-vault-list.png) <br/>
 
@@ -37,7 +37,7 @@ Windows Server のシステム状態をバックアップするには、デー�
 
     ![Create Recovery Services Vault step 2](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
-    [Recovery Services コンテナー] ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定するよう求められます。
+    [Recovery Services コンテナー] ブレードが開き、 **[名前]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[場所]** を指定するよう求められます。
 
     ![Recovery Services コンテナーの作成手順 3](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
@@ -47,9 +47,9 @@ Windows Server のシステム状態をバックアップするには、デー�
 
 6. **[リソース グループ]** セクションで、次のことを行います。
 
-    * リソース グループを作成する場合は、**[新規作成]** を選択します。
+    * リソース グループを作成する場合は、 **[新規作成]** を選択します。
     または
-    * 使用可能なリソース グループの一覧を表示するには、**[既存のものを使用]** を選択し、ドロップダウン メニューをクリックします。
+    * 使用可能なリソース グループの一覧を表示するには、 **[既存のものを使用]** を選択し、ドロップダウン メニューをクリックします。
 
    リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
@@ -57,7 +57,7 @@ Windows Server のシステム状態をバックアップするには、デー�
 
 8. [Recovery Services コンテナー] ブレードの下部にある **[作成]** をクリックします。
 
-    Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 数分経過してもコンテナーが表示されない場合は、**[最新の情報に更新]** をクリックしてください。
+    Recovery Services コンテナーの作成には数分かかることがあります。 ポータルの右上の領域で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 数分経過してもコンテナーが表示されない場合は、 **[最新の情報に更新]** をクリックしてください。
 
     ![[最新の情報に更新] ボタンをクリックする](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
 
@@ -70,24 +70,24 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     ![Recovery Services コンテナーの一覧から新しいコンテナーを選択する](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    コンテナーを選択すると、**[Recovery Services コンテナー]** ブレードが縮小され、"*上部にコンテナー名が表示された*" 設定ブレードとコンテナーの詳細ブレードが開きます。
+    コンテナーを選択すると、 **[Recovery Services コンテナー]** ブレードが縮小され、"*上部にコンテナー名が表示された*" 設定ブレードとコンテナーの詳細ブレードが開きます。
 
     ![新しいコンテナーのストレージ構成を表示する](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
-2. 新しいコンテナーの設定ブレードで、垂直スライドを使って下へスクロールして [管理] セクションに移動し、**[バックアップ インフラストラクチャ]** をクリックします。
+2. 新しいコンテナーの設定ブレードで、垂直スライドを使って下へスクロールして [管理] セクションに移動し、 **[バックアップ インフラストラクチャ]** をクリックします。
     [バックアップ インフラストラクチャ] ブレードが開きます。
-3. [バックアップ インフラストラクチャ] ブレードで、**[バックアップ構成]** をクリックして **[バックアップ構成]** ブレードを開きます。
+3. [バックアップ インフラストラクチャ] ブレードで、 **[バックアップ構成]** をクリックして **[バックアップ構成]** ブレードを開きます。
 
     ![新しいコンテナーのストレージ構成を設定する](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. コンテナーの適切なストレージ レプリケーション オプションを選択します。
 
     ![ストレージ構成の選択](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用する場合は、引き続き **[geo 冗長]** を使用します。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、**[ローカル冗長]** を選択します。これにより、Azure Storage のコストを削減できます。 [geo 冗長](../storage/common/storage-redundancy-grs.md)ストレージと[ローカル冗長](../storage/common/storage-redundancy-lrs.md)ストレージのオプションの詳細については、こちらの[ストレージ冗長性の概要](../storage/common/storage-redundancy.md)を参照してください。
+    既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用する場合は、引き続き **[geo 冗長]** を使用します。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、 **[ローカル冗長]** を選択します。これにより、Azure Storage のコストを削減できます。 [geo 冗長](../storage/common/storage-redundancy-grs.md)ストレージと[ローカル冗長](../storage/common/storage-redundancy-lrs.md)ストレージのオプションの詳細については、こちらの[ストレージ冗長性の概要](../storage/common/storage-redundancy.md)を参照してください。
 
 コンテナーを作成したら、Windows のシステム状態をバックアップするための構成を行います。
 
 ## <a name="configure-the-vault"></a>コンテナーの構成
-1. Recovery Services コンテナー (先ほど作成したコンテナー) のブレードの [作業の開始] セクションで **[バックアップ]** をクリックし、**[バックアップ作業の開始]** ブレードで、**[バックアップの目標]** を選択します。
+1. Recovery Services コンテナー (先ほど作成したコンテナー) のブレードの [作業の開始] セクションで **[バックアップ]** をクリックし、 **[バックアップ作業の開始]** ブレードで、 **[バックアップの目標]** を選択します。
 
     ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
@@ -97,17 +97,17 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 2. **[ワークロードはどこで実行されていますか?]** ボックスの一覧の **[オンプレミス]** を選択します。
 
-    Windows Server または Windows コンピューターが Azure にない物理マシンであるため、**[オンプレミス]** を選択します。
+    Windows Server または Windows コンピューターが Azure にない物理マシンであるため、 **[オンプレミス]** を選択します。
 
-3. **[何をバックアップしますか?]** メニューの **[システム状態]** を選択し、**[OK]** をクリックします。
+3. **[何をバックアップしますか?]** メニューの **[システム状態]** を選択し、 **[OK]** をクリックします。
 
     ![ファイルとフォルダーの構成](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    [OK] をクリックすると、**[バックアップの目標]** の横にチェックマークが表示され、**[インフラストラクチャの準備]** ブレードが開きます。
+    [OK] をクリックすると、 **[バックアップの目標]** の横にチェックマークが表示され、 **[インフラストラクチャの準備]** ブレードが開きます。
 
     ![バックアップの目標の構成完了、次はインフラストラクチャの準備](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
-4. **[インフラストラクチャの準備]** ブレードで、**[Windows Server または Windows クライアント用エージェントのダウンロード]** をクリックします。
+4. **[インフラストラクチャの準備]** ブレードで、 **[Windows Server または Windows クライアント用エージェントのダウンロード]** をクリックします。
 
     ![[Download Agent for Windows Server or Windows Client]](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
@@ -115,7 +115,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     ![MARSAgentInstaller ダイアログ](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
 
-5. ダウンロードのポップアップ メニューで、**[保存]** をクリックします。
+5. ダウンロードのポップアップ メニューで、 **[保存]** をクリックします。
 
     既定では、 **MARSagentinstaller.exe** ファイルがダウンロード フォルダーに保存されます。 インストーラーのダウンロードが完了すると、インストーラーを実行するかフォルダーを開くかをたずねるポップアップが表示されます。
 
@@ -123,7 +123,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     まだ、エージェントをインストールする必要はありません。 エージェントはコンテナー資格情報をダウンロードした後にインストールできます。
 
-6. **[インフラストラクチャの準備]** ブレードで、**[ダウンロード]** をクリックします。
+6. **[インフラストラクチャの準備]** ブレードで、 **[ダウンロード]** をクリックします。
 
     ![コンテナー資格情報のダウンロード](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
@@ -190,7 +190,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 4. [バックアップする項目の選択] 画面で、 **[項目の追加]** をクリックします。
 
-5. **[システム状態]** を選択し、**[OK]** をクリックします。
+5. **[システム状態]** を選択し、 **[OK]** をクリックします。
 
 6. **[次へ]** をクリックします。
 
@@ -208,7 +208,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     ![Windows Server を今すぐバックアップする](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. 表示される **[Select Backup Item]\(バックアップ項目の選択)** 画面で **[システム状態]** を選択し、**[次へ]** をクリックします。
+3. 表示される **[Select Backup Item]\(バックアップ項目の選択)** 画面で **[システム状態]** を選択し、 **[次へ]** をクリックします。
 
 4. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]** をクリックします。
 

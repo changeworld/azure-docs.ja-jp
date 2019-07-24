@@ -11,11 +11,11 @@ ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, Open Service Broker for Azure
 ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991977"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61028426"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>既存の MongoDB アプリケーションを MongoDB 用 Azure Cosmos DB API および Open Service Broker for Azure (OSBA) と統合する
 
@@ -267,7 +267,7 @@ press Ctrl+C to detach
 ...
 ```
 
-ログに表示されている URL に移動します。 前の例では、*http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* を使用します。 
+ログに表示されている URL に移動します。 前の例では、 *http://spring-music.1234567890abcdef1234.eastus.aksapp.io/* を使用します。 
 
 アプリケーションで変更内容が表示されることを確認します。
 

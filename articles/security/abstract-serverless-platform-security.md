@@ -7,11 +7,11 @@ ms.date: 06/21/2018
 ms.topic: article
 ms.service: security
 ms.openlocfilehash: 87010b3256fb8eef6871d76f80db2999760386b4
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320746"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60587497"
 ---
 # <a name="azure-functions-and-serverless-platform-security"></a>Azure Functions とサーバーレス プラットフォームのセキュリティ
 ## <a name="abstract"></a>要約
@@ -27,5 +27,5 @@ ms.locfileid: "53320746"
 * Azure のコンテキストにおける重大なセキュリティの問題と軽減策
 * Microsoft サーバーレス プラットフォームのセキュリティ保護
 
-[ホワイト ペーパーをダウンロードする](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-functions-serverless-platform-security/ja-jp/Microsoft_Serverless_Platform_ja-JP.pdf)
+[ホワイト ペーパーをダウンロードする](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-functions-serverless-platform-security/Microsoft%20Serverless%20Platform.pdf)
 

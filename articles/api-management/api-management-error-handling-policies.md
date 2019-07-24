@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: apimpm
-ms.openlocfilehash: 73609e802eceea6aa94d77cef6ca1d654264973d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 87693caa5343e359bb3ab424de489c2270bbca62
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265009"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64704438"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API Management のポリシーにおけるエラー処理
 
@@ -73,19 +73,19 @@ Azure API Management では、パブリッシャーは `ProxyError` オブジェ
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)  
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)  
   
-## <a name="lasterror"></a>LastError
+## <a name="lasterror"></a>lastError
 
  エラーが発生し、コントロールが `on-error` ポリシー セクションにジャンプすると、エラーは [context.LastError](api-management-policy-expressions.md#ContextVariables) プロパティ内に格納されます。このプロパティには、`on-error` セクションにあるポリシーがアクセス可能です。 LastError のプロパティは次のとおりです。  
   
-| Name     | type   | 説明                                                                                               | 必須 |
-|----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Source   | 文字列 | エラーが発生した要素を指定します。 ポリシーまたは組み込みパイプライン ステップ名のいずれかになります。     | [はい]      |
-| Reason   | 文字列 | エラー処理に使用できる、マシンに適したエラー コード。                                       | いいえ        |
-| Message  | 文字列 | 人間が判読できるエラーの説明。                                                                         | [はい]      |
-| Scope    | 文字列 | エラーが発生したスコープの名前 ("global"、"product"、"api"、または "operation") | いいえ        |
-| Section  | 文字列 | エラーが発生したセッション名。 設定される可能性がある値: "inbound"、"backend"、"outbound"、"on-error"。       | いいえ        |
-| Path     | 文字列 | 入れ子になったポリシー (例: "choose[3]/when[2]") を指定します。                                                        | いいえ        |
-| PolicyId | 文字列 | エラーが発生したポリシーの `id` 属性の値 (顧客が指定した場合)             | いいえ        |
+| Name       | Type   | 説明                                                                                               | 必須 |
+|------------|--------|-----------------------------------------------------------------------------------------------------------|----------|
+| `Source`   | string | エラーが発生した要素を指定します。 ポリシーまたは組み込みパイプライン ステップ名のいずれかになります。     | はい      |
+| `Reason`   | string | エラー処理に使用できる、マシンに適したエラー コード。                                       | いいえ       |
+| `Message`  | string | 人間が判読できるエラーの説明。                                                                         | はい      |
+| `Scope`    | string | エラーが発生したスコープの名前 ("global"、"product"、"api"、または "operation") | いいえ       |
+| `Section`  | string | エラーが発生したセッション名。 設定される可能性がある値: "inbound"、"backend"、"outbound"、"on-error"。       | いいえ       |
+| `Path`     | string | 入れ子になったポリシー (例: "choose[3]/when[2]") を指定します。                                                        | いいえ       |
+| `PolicyId` | string | エラーが発生したポリシーの `id` 属性の値 (顧客が指定した場合)             | いいえ       |
 
 > [!TIP]
 > context.Response.StatusCode によって状態コードにアクセスできます。  
@@ -98,7 +98,7 @@ Azure API Management では、パブリッシャーは `ProxyError` オブジェ
   
 | Source        | 条件                                 | Reason                  | Message                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 構成 | API または操作に URI が一致しません | OperationNotFound       | 操作に受信要求を一致させることができません。                                                                      |
+| configuration | API または操作に URI が一致しません | OperationNotFound       | 操作に受信要求を一致させることができません。                                                                      |
 | authorization | サブスクリプション キーが指定されていません             | SubscriptionKeyNotFound | サブスクリプション キーがないため、アクセスが拒否されました。 この API に要求を行うときは、サブスクリプション キーを指定してください。 |
 | authorization | サブスクリプション キー値が無効です         | SubscriptionKeyInvalid  | サブスクリプション キーが無効なため、アクセスが拒否されました。 アクティブなサブスクリプションへの有効なキーを指定してください。            |
   

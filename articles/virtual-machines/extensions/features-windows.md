@@ -4,7 +4,7 @@ description: Azure 仮想マシンに使用できる拡張機能について、�
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2cd64b54b1a30080d7942a754bc0c0c72c59f88
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66160267"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705986"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -62,7 +62,7 @@ Azure VM エージェントは、Azure VM と Azure ファブリック コント
 Windows ゲスト エージェントは複数の OS で実行されますが、拡張機能フレームワークでは拡張を行う OS に対して制限があります。 詳細については、 [こちらの記事](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
 )を参照してください。
 
-一部の拡張機能は、すべての OS ではサポートされず、"*エラー コード 51、'OS がサポートされていません'*" が出力される場合があります。 サポートの可否については、個々の拡張機能のドキュメントを確認してください。
+一部の拡張機能は、すべての OS ではサポートされず、"*エラー コード 51、'OS がサポートされていません'* " が出力される場合があります。 サポートの可否については、個々の拡張機能のドキュメントを確認してください。
 
 #### <a name="network-access"></a>ネットワーク アクセス
 
@@ -143,7 +143,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-VM 拡張機能は、Azure Portal から既存の VM に適用できます。 ポータルで VM を選択し、**[拡張機能]** を選択してから、**[追加]** を選択します。 利用可能な拡張機能の一覧から目的の拡張機能を選択し、ウィザードの手順に従います。
+VM 拡張機能は、Azure Portal から既存の VM に適用できます。 ポータルで VM を選択し、 **[拡張機能]** を選択してから、 **[追加]** を選択します。 利用可能な拡張機能の一覧から目的の拡張機能を選択し、ウィザードの手順に従います。
 
 次の例は、Azure Portal からの Microsoft Antimalware 拡張機能のインストールを示しています。
 
@@ -400,7 +400,7 @@ Extensions[0]           :
     Message             : Finished executing command
 ```
 
-拡張機能の実行の状態は、Azure Portal で確認することもできます。 拡張機能の状態を表示するには、VM を選択し、**[拡張機能]** を選択して、目的の拡張機能を選択します。
+拡張機能の実行の状態は、Azure Portal で確認することもできます。 拡張機能の状態を表示するには、VM を選択し、 **[拡張機能]** を選択して、目的の拡張機能を選択します。
 
 ### <a name="rerun-vm-extensions"></a>VM 拡張機能の再実行
 

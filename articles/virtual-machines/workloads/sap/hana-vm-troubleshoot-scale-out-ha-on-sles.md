@@ -4,7 +4,7 @@ description: Azure 仮想マシンで実行されている SLES 12 SP3 での SA
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermannd
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b794b045efa4be20a63e9996425d69f0212ae0d7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520583"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707235"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 での SAP HANA スケールアウトの高可用性セットアップの確認とトラブルシューティング 
 
@@ -94,7 +94,7 @@ SAP HANA ネットワークの推奨事項に従って、1 つの Azure 仮想�
 
 複数のネットワークの使用に関連する SAP HANA 構成については、「[SAP HANA global.ini](#sap-hana-globalini)」を参照してください。
 
-クラスター内のすべての VM には、サブネットの数に対応する 3 つの vNIC があります。 「[複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法][azure-linux-multiple-nics]」では、Linux VM のデプロイ時に Azure で発生する可能性のあるルーティングの問題について説明しています。 この特定のルーティングの記事は、複数の vNIC を使用する場合にのみ適用されます。 SLES 12 SP3 では、この問題は既定で SUSE により解決されます。 詳細については、「[Multi-NIC with cloud-netconfig in EC2 and Azure][suse-cloud-netconfig]」 (EC2 および Azure で cloud-netconfig を使用した複数の NIC) を参照してください。
+クラスター内のすべての VM には、サブネットの数に対応する 3 つの vNIC があります。 「[複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法][azure-linux-multiple-nics]」describes a potential routing issue on Azure when deploying a Linux VM. This specific routing article applies only for use of multiple vNICs. The problem is solved by SUSE per default in SLES 12 SP3. For more information, see [Multi-NIC with cloud-netconfig in EC2 and Azure][suse-cloud-netconfig]。
 
 
 複数のネットワークを使用するように SAP HANA が正しく構成されていることを確認するには、次のコマンドを実行します。 最初に、3 つのすべてのサブネットに対する 3 つのすべての内部 IP アドレスがアクティブであることを、OS レベルで確認します。 別の IP アドレス範囲でサブネットを定義した場合は、コマンドを調整する必要があります。
@@ -456,11 +456,11 @@ node.startup = automatic
 3. 右側で **[iSCSI Initiator]\(iSCSI イニシエーター\)** までスクロールして選択します。
 4. 次の画面の **[Service]\(サービス\)** タブに、ノードの一意のイニシエーター名が表示されます。
 5. イニシエーター名の上にある **[Service Start]\(サービスの開始\)** 値が **[When Booting]\(起動時\)** に設定されていることを確認します。
-6. そうでない場合は、**[Manually]\(手動\)** の代わりに **[When Booting]\(起動時\)** に設定します。
+6. そうでない場合は、 **[Manually]\(手動\)** の代わりに **[When Booting]\(起動時\)** に設定します。
 7. 次に、上部のタブを **[Connected Targets]\(接続済みのターゲット\)** に切り替えます。
 8. **[Connected Targets]\(接続済みのターゲット)** 画面に、次の例のような SBD デバイスのエントリが表示されます:**10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**。
 9. **Start-Up** 値が **on boot** に設定されているかどうかを確認します。
-10. そうでない場合は、**[Edit]\(編集\)** を選択して変更します。
+10. そうでない場合は、 **[Edit]\(編集\)** を選択して変更します。
 11. 変更内容を保存し、YaST2 を終了します。
 
 
@@ -726,7 +726,7 @@ Transition Summary:
 ## <a name="planned-maintenance"></a>Azure の計画メンテナンス 
 
 計画メンテナンスについては、さまざまなユース ケースがあります。 問題は、それが OS レベルでの変更やディスク構成などのインフラストラクチャのメンテナンスだけなのか、または HANA アップグレードなのかということです。
-追加情報については、「[Towards Zero Downtime][sles-zero-downtime-paper]」 (ゼロ ダウンタイムに向けて) や「[SAP HANA SR Performance Optimized Scenario][sles-12-for-sap]」 (SAP HANA SR パフォーマンス最適化シナリオ) などの SUSE のドキュメントを参照してください。 これらのドキュメントには、プライマリを手動で移行する方法を示す例も記載されています。
+追加情報については、[「Towards Zero Downtime」(ゼロ ダウンタイムに向けて)][sles-zero-downtime-paper] or [SAP HANA SR Performance Optimized Scenario][sles-12-for-sap]など、SUSE のドキュメントを参照してください。 これらのドキュメントには、プライマリを手動で移行する方法を示す例も記載されています。
 
 インフラストラクチャのメンテナンスのユース ケースを確認するために、集中的な内部テストが行われました。 プライマリの移行に関連するあらゆる問題を回避するために、クラスターをメンテナンス モードにする前に、必ずプライマリを移行することを決定しました。 このようにすると、クラスターに前の状況 (どちらの側がプライマリで、どちら側がセカンダリであったか) を忘れさせる必要がなくなります。
 
@@ -964,7 +964,7 @@ https://&ltnode&gt:7630
 ![Hawk で制約を一覧表示する](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-次のように、**[History]\(履歴\)** の下の Hawk で **hb_report** 出力をアップロードすることもできます。 「ログ ファイルを収集する hb_report」を参照してください。 
+次のように、 **[History]\(履歴\)** の下の Hawk で **hb_report** 出力をアップロードすることもできます。 「ログ ファイルを収集する hb_report」を参照してください。 
 
 ![Hawk で hb_report 出力をアップロードする](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 

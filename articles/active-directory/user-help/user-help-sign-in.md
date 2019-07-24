@@ -14,11 +14,11 @@ ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60e4d9a4cb555dfbc9f05961487a8f794d19e1bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268357"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60472981"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>2 段階認証またはセキュリティ情報を使ったサインイン方法
 2 段階認証またはセキュリティ情報を設定したら、指定した認証方法を使って、アカウントにサインインできるようになります。
@@ -32,13 +32,13 @@ ms.locfileid: "59268357"
 
 1. ユーザー名とパスワードを使って、アカウントにサインインします。
 
-2. モバイル デバイスに送信された承認通知から、**[承認]** を選択します。
+2. モバイル デバイスに送信された承認通知から、 **[承認]** を選択します。
 
 ## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>モバイル デバイスの認証アプリのコードを使ってサインインする
 
 1. ユーザー名とパスワードを使って、アカウントにサインインします。
 
-2. 認証アプリを開き、アカウントに対してランダムに生成されたコードを、**[コードの入力]** ボックスに入力します。
+2. 認証アプリを開き、アカウントに対してランダムに生成されたコードを、 **[コードの入力]** ボックスに入力します。
 
 ## <a name="sign-in-using-your-phone-number"></a>電話番号を使ってサインインする
 
@@ -55,7 +55,7 @@ ms.locfileid: "59268357"
 ## <a name="sign-in-using-another-verification-method"></a>別の認証方法を使用してサインインする
 なんらかの理由で主要なサインイン方法を使用できない場合は、事前に設定した別の認証方法を使用することができます。
 
-1. 通常どおりアカウントにサインインし、**[2 段階認証]** ページで **[別の方法でサインイン]** リンクを選択します。
+1. 通常どおりアカウントにサインインし、 **[2 段階認証]** ページで **[別の方法でサインイン]** リンクを選択します。
 
     ![サインインの検証方法を変更する](media/security-info/two-factor-auth-signin-another-way.png)
 

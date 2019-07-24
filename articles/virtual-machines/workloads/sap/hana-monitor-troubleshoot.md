@@ -4,7 +4,7 @@ description: SAP HANA on Azure (L インスタンス) での HANA 側からの�
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15b3fb4ae483e5b0e4f930d0dc08de6d198d0e5f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f25218156157f626b667c474de1674d1d8509a24
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005249"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705811"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 側からの監視とトラブルシューティング
 
@@ -36,7 +36,7 @@ SAP HANA のパフォーマンスに関連した FAQ は、以下の SAP Note �
 
 ## <a name="sap-hana-alerts"></a>SAP HANA アラート
 
-最初の手順として、現在の SAP HANA アラート ログを確認します。 SAP HANA Studio で、**[管理コンソール]:[アラート]:[表示]: [すべてのアラート]** に進みます。 このタブには、設定されている最小および最大しきい値から外れる特定の値 (空き物理メモリ、CPU 使用率など) のすべての SAP HANA アラートが表示されます。 既定では、チェックが 15 分ごとに自動更新されます。
+最初の手順として、現在の SAP HANA アラート ログを確認します。 SAP HANA Studio で、 **[管理コンソール]:[アラート]:[表示]: [すべてのアラート]** に進みます。 このタブには、設定されている最小および最大しきい値から外れる特定の値 (空き物理メモリ、CPU 使用率など) のすべての SAP HANA アラートが表示されます。 既定では、チェックが 15 分ごとに自動更新されます。
 
 ![SAP HANA Studio で、[管理コンソール]:[アラート]:[表示]: [すべてのアラート] に進みます。](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
@@ -94,10 +94,10 @@ SAP HANA データベースによって割り当てられたメモリの量が�
 [SAP Note #2081065 – SAP HANA ネットワークのトラブルシューティング](https://launchpad.support.sap.com/#/notes/2081065)のページを参照して、この SAP Note に記載されているネットワークに関するトラブルシューティングの手順を実行してください。
 
 1. サーバーとクライアント間のラウンド トリップ時間を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700)__ を実行します。
+  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) __ を実行します。
   
 2. ノード間通信を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700)__ を実行します。
+  A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) __ を実行します。
 
 3. Linux コマンド **ifconfig** を実行します (出力は、パケット損失が発生しているかどうかを示します)。
 4. Linux コマンド **tcpdump** を実行します。
@@ -124,19 +124,19 @@ HANA\_Configuration\_Minichecks を使用して SAP HANA Health Check を実行�
 
 [SAP Note #1969700 の SAP HANA の SQL ステートメント コレクション](https://launchpad.support.sap.com/#/notes/1969700)のページを参照し、そのページに添付されている SQL Statements.zip ファイルをダウンロードしてください。 この .zip ファイルをローカルのハード ドライブに保存します。
 
-SAP HANA Studio の **[System Information (システム情報)]** タブで、**[Name (名前)]** 列を右クリックし、**[Import SQL Statements (SQL ステートメントのインポート)]** を選択します。
+SAP HANA Studio の **[System Information (システム情報)]** タブで、 **[Name (名前)]** 列を右クリックし、 **[Import SQL Statements (SQL ステートメントのインポート)]** を選択します。
 
 ![SAP HANA Studio の [System Information (システム情報)] タブで、[Name (名前)] 列を右クリックし、[Import SQL Statements (SQL ステートメントのインポート)] を選択する](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
 ローカルに保存されている SQL Statements.zip ファイルを選択すると、対応する SQL ステートメントが含まれているフォルダーがインポートされます。 この時点で、これらの SQL ステートメントを使用して、さまざまな診断チェックを実行できます。
 
-たとえば、SAP HANA システム レプリケーションの帯域幅要件をテストするには、SQL コンソールで **[Replication: Bandwidth (レプリケーション: 帯域幅)]** の下の **Bandwidth** ステートメントを右クリックし、** SQL コンソールの **[開く]** を選択します。
+たとえば、SAP HANA システム レプリケーションの帯域幅要件をテストするには、SQL コンソールで **[Replication: Bandwidth (レプリケーション: 帯域幅)] の下の **Bandwidth** ステートメントを右クリックし、** SQL コンソールの **[開く]** を選択します。
 
 完全な SQL ステートメントが開かれるので、入力パラメーター (変更セクション) を変更し、実行することができます。
 
 ![完全な SQL ステートメントが開かれるので、入力パラメーター (変更セクション) を変更し、実行することができる](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-別の例では、**[Replication: Overview (レプリケーション: 概要)]** の下のステートメントを右クリックします。 コンテキスト メニューで **[Execute (実行)]** を選択します。
+別の例では、 **[Replication: Overview (レプリケーション: 概要)]** の下のステートメントを右クリックします。 コンテキスト メニューで **[Execute (実行)]** を選択します。
 
 ![別の例では、[Replication: Overview (レプリケーション:概要)] の下のステートメントを右クリックします。 コンテキスト メニューで [Execute (実行)] を選択する](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
@@ -144,7 +144,7 @@ SAP HANA Studio の **[System Information (システム情報)]** タブで、**
 
 ![その結果、トラブルシューティングに役立つ情報が表示される](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-HANA\_Configuration\_Minichecks でも同じことを実行し、_[C]_ (重大度) 列の _X_ マークを確認します。
+HANA\_Configuration\_Minichecks でも同じことを実行し、 _[C]_ (重大度) 列の _X_ マークを確認します。
 
 サンプル出力:
 
@@ -160,11 +160,11 @@ SAP HANA のサービス情報 (CPU、メモリなど) を示す **HANA\_Service
 
 ![SAP HANA のサービス情報を示す HANA\_Services\_Statistics](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-SAP HANA インスタンスの全般的な情報を示す **HANA\_Configuration\_Overview\_Rev110+**。
+SAP HANA インスタンスの全般的な情報を示す **HANA\_Configuration\_Overview\_Rev110+** 。
 
 ![SAP HANA インスタンスの全般的な情報を示す HANA\_Configuration\_Overview\_Rev110+](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-SAP HANA パラメーターをチェックする **HANA\_Configuration\_Parameters\_Rev70+**。
+SAP HANA パラメーターをチェックする **HANA\_Configuration\_Parameters\_Rev70+** 。
 
 ![SAP HANA パラメーターをチェックする HANA\_Configuration\_Parameters\_Rev70+](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 

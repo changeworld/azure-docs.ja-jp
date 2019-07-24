@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: c2089f9f6267f318dafe641a6a5b22e7e87427ca
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441068"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60308203"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 仮想マシンのパフォーマンス診断
 
@@ -37,7 +37,7 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
 パフォーマンス診断では、[PerfInsights](https://aka.ms/perfinsights) という診断ツールを実行する VM 拡張機能がインストールされます。 パフォーマンス診断をインストールして実行するには、次の手順を実行します。
 1.  コマンドの左側の列にある **[仮想マシン]** を選択します。
 1.  VM 名の一覧から、診断を実行する VM を選択します。
-1.  コマンドの右側の列で、**[パフォーマンス診断]** を選択します。
+1.  コマンドの右側の列で、 **[パフォーマンス診断]** を選択します。
 
     ![パフォーマンス診断の [インストール] ボタンが強調表示されている Azure portal のスクリーンショット](media/performance-diagnostics/performance-diagnostics-install.png)
 
@@ -54,7 +54,7 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
     ![[パフォーマンス診断の設定] ブレードのストレージ アカウントの選択のスクリーンショット](media/performance-diagnostics/select-storage-account.png)
 
 1. **[パフォーマンス診断のインストール]** ボタンを選択します。
-1. インストールが完了した後で診断を実行するには、**[診断の実行]** チェック ボックスをオンにします。 この選択を行うと、パフォーマンス分析シナリオと関連オプションを選択できるようになります。
+1. インストールが完了した後で診断を実行するには、 **[診断の実行]** チェック ボックスをオンにします。 この選択を行うと、パフォーマンス分析シナリオと関連オプションを選択できるようになります。
 
     ![パフォーマンス診断のインストール ボタンのスクリーンショット](media/performance-diagnostics/install-diagnostics-button.png)
 
@@ -126,7 +126,7 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
 **[レポートのダウンロード]** ボタンを使用して、ストレージとネットワークの構成、パフォーマンス カウンター、トレース、プロセスの一覧、ログなど、その他のさまざまな診断情報を含む HTML レポートをダウンロードできます。 内容は選択した分析によって変わります。 高度なトラブルシューティングのために、高い CPU 使用率、高いディスク使用量、過剰なメモリを使用するプロセスに関連する追加情報や対話型のグラフをレポートに含めることができます。 パフォーマンス診断レポートの詳細については、「[Review diagnostics report](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report)」(診断レポートの確認) を参照してください。
 
 ## <a name="manage-performance-diagnostics-reports"></a>パフォーマンス診断レポートを管理する
-1 つまたは複数のパフォーマンス診断レポートを削除するには、**[レポートの削除]** ボタンを使用します。
+1 つまたは複数のパフォーマンス診断レポートを削除するには、 **[レポートの削除]** ボタンを使用します。
 
 ## <a name="how-to-uninstall-performance-diagnostics"></a>パフォーマンス診断をアンインストールする方法
 VM からパフォーマンス診断をアンインストールすることができます。 この操作で VM 拡張機能は削除されますが、ストレージ アカウントにある診断データには影響がありません。 
@@ -144,7 +144,7 @@ VM からパフォーマンス診断をアンインストールすることが�
 診断レポートを Microsoft と共有するには、複数の方法があります。
 
 **オプション 1:** 最新のレポートを自動的に共有する  
-Microsoft とのサポート チケットを開くときに、パフォーマンス診断レポートを共有することが重要です。 診断の実行時に (**[診断情報を Microsoft と共有することに同意します]** チェック ボックスをオンにして) この情報を Microsoft と共有することを選択した場合、Microsoft は、実行日から最大 30 日間、出力 zip ファイルへの SAS リンクを使用して、お客様のストレージ アカウントのレポートにアクセスできます。 サポート エンジニアが使用できるのは、最新のレポートのみです。 
+Microsoft とのサポート チケットを開くときに、パフォーマンス診断レポートを共有することが重要です。 診断の実行時に ( **[診断情報を Microsoft と共有することに同意します]** チェック ボックスをオンにして) この情報を Microsoft と共有することを選択した場合、Microsoft は、実行日から最大 30 日間、出力 zip ファイルへの SAS リンクを使用して、お客様のストレージ アカウントのレポートにアクセスできます。 サポート エンジニアが使用できるのは、最新のレポートのみです。 
 
 **オプション 2:** 診断レポートの圧縮ファイルのために Shared Access Signature を生成する  
 Shared Access Signature を使用して、レポートの圧縮ファイルへのリンクを共有することができます。 そのためには、次の手順に従います。 
@@ -170,4 +170,4 @@ Shared Access Signature を使用して、レポートの圧縮ファイルへ�
 ## <a name="next-steps"></a>次の手順
 パフォーマンス診断の分析情報とレポートを確認しても問題の原因を特定できず、さらにサポートが必要な場合は、Microsoft カスタマー サポートとのサポート チケットを開くことができます。 
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

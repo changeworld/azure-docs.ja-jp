@@ -1,15 +1,15 @@
 ---
-author: diberry
-ms.author: diberry
+author: IEvangelist
+ms.author: dapine
+ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/02/2019
-ms.openlocfilehash: ffd17f7a641e1481aa4c88f8b2eb12ec11fa7d8b
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: b08516b35a864eae6d15c4c5c928f0550c64c239
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66116734"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67712394"
 ---
 Fluentd は、ログの一元管理を実現するオープンソースのデータ コレクターです。 [Fluentd](https://www.fluentd.org) サーバーに対するコンテナーの接続は、`Fluentd` の設定によって管理されます。 コンテナーには、お客様のコンテナーでログ、および必要に応じてメトリック データを Fluentd サーバーに書き込むことができる Fluentd ログ プロバイダーが含まれます。
 
@@ -17,7 +17,7 @@ Fluentd は、ログの一元管理を実現するオープンソースのデー
 
 | Name | データ型 | 説明 |
 |------|-----------|-------------|
-| `Host` | String | Fluentd サーバーの IP アドレスまたは DNS ホスト名。 |
+| `Host` | string | Fluentd サーバーの IP アドレスまたは DNS ホスト名。 |
 | `Port` | 整数 | Fluentd サーバーのポート。<br/> 既定値は 24224 です。 |
 | `HeartbeatMs` | 整数 | ハートビート間隔 (ミリ秒)。 この間隔が期限切れになるまでにイベント トラフィックが送信されなかった場合、ハートビートが Fluentd サーバーに送信されます。 既定値は、60000 ミリ秒 (1 分) です。 |
 | `SendBufferSize` | 整数 | 送信操作用に割り当てられたネットワーク バッファー領域 (バイト数)。 既定値は、32,768 バイト (32 キロバイト) です。 |

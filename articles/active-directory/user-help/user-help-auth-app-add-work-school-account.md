@@ -13,11 +13,11 @@ ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 231f3c44344f4119bab6e1efb5546e6fded0c784
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960620"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60473873"
 ---
 # <a name="add-your-work-or-school-account"></a>職場または学校のアカウントを追加する
 組織で 2 要素認証を使用している場合は、認証方法の 1 つとして、Microsoft Authenticator アプリを使用するように職場または学校のアカウントを設定できます。
@@ -32,15 +32,15 @@ ms.locfileid: "56960620"
     >[!Note]
     >**[追加のセキュリティ確認]** ページが表示されない場合は、管理者がセキュリティ情報 (プレビュー) エクスペリエンスをオンにしている可能性があります。 その場合は、[[認証アプリを使用するようにセキュリティ情報を設定する]](security-info-setup-auth-app.md) セクションの指示に従います。 そうでない場合は、組織のヘルプ デスクに問い合わせる必要があります。 セキュリティ情報の詳細については、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」を参照してください。
 
-2. **[Authenticator アプリ]** の横のチェック ボックスをオンにし、**[構成]** を選択します。
+2. **[Authenticator アプリ]** の横のチェック ボックスをオンにし、 **[構成]** を選択します。
 
     **[モバイル アプリケーションの構成]** ページが表示されます。
     
     ![QR コードを提供する画面](./media/user-help-auth-app-download-install/auth-app-barcode.png)
 
-3. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、**[職場または学校アカウント]** を選択します。
+3. Microsoft Authenticator アプリを開き、右上の **[Customize and control]\(カスタマイズと制御\)** アイコンから **[アカウントの追加]** を選択して、 **[職場または学校アカウント]** を選択します。
 
-4. お使いのデバイスのカメラを使用して、コンピューターの **[モバイル アプリケーションの構成]** 画面から QR コードをスキャンして、**[完了]** を選択します。
+4. お使いのデバイスのカメラを使用して、コンピューターの **[モバイル アプリケーションの構成]** 画面から QR コードをスキャンして、 **[完了]** を選択します。
 
     >[!Note]
     >カメラで QR コードをキャプチャできない場合は、2 要素検証のために Microsoft Authenticator アプリにご自分のアカウント情報を手動で追加できます。 これを行う方法と詳細については、[手動でのアカウントの追加](user-help-auth-app-add-account-manual.md)に関するページを参照してください。

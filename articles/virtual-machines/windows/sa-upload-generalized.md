@@ -4,7 +4,7 @@ description: 一般化した VHD を Azure ストレージ アカウントにア
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cd81eb3d62332bba67f0056a6f7b49279bc50c4f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bdfcb729aed88dd93a2ce61a8d28f34a5c327713
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788814"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710375"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>一般化した VHD を Azure にアップロードして新しい VM を作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "59788814"
 
 このトピックではストレージ アカウントの使用について説明していますが、代わりに Managed Disks の使用をお勧めします。 マネージド ディスクを使用する新しい VM の準備、アップロード、作成を行う方法の詳しいチュートリアルについては、[Azure にアップロードされた一般化した VHD から Managed Disks を使用した新しい VM の作成](upload-generalized-managed.md)に関するページをご覧ください。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-vm"></a>VM を準備する
 
@@ -52,7 +52,7 @@ ms.locfileid: "59788814"
 
 1. Windows 仮想マシンへのサインイン
 2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを **%windir%\system32\sysprep** に変更し、`sysprep.exe` を実行します。
-3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。
+3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、 **[一般化する]** チェック ボックスがオンになっていることを確認します。
 4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
 5. Click **OK**.
    
@@ -283,7 +283,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ## <a name="verify-that-the-vm-was-created"></a>VM 作成の確認
-完了したら、[Azure Portal](https://portal.azure.com) で **[参照]** > **[仮想マシン]** にアクセスするか、次の PowerShell コマンドを使用して、新しく作成された VM を確認します。
+完了したら、[Azure Portal](https://portal.azure.com) で **[参照]**  >  **[仮想マシン]** にアクセスするか、次の PowerShell コマンドを使用して、新しく作成された VM を確認します。
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

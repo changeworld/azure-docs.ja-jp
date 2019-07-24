@@ -13,10 +13,10 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 7f742b094575b78f453fb735b23cc5319a27fa7e
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65206646"
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database の拡張イベント
@@ -90,7 +90,7 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 | **sys.database_event_session_targets** |イベント セッションに対してイベント ターゲットごとに行を返します。 |
 | **sys.database_event_sessions** |SQL Database のデータベース内のイベント セッションごとに行を返します。 |
 
-Microsoft SQL Server では、同様のカタログ ビュー名には *.database\_* ではなく、*.server\_* が含まれています。 名前のパターンは、**sys.server_event_%** のようになっています。
+Microsoft SQL Server では、同様のカタログ ビュー名には *.database\_* ではなく、 *.server\_* が含まれています。 名前のパターンは、**sys.server_event_%** のようになっています。
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>新しい動的管理ビュー [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 

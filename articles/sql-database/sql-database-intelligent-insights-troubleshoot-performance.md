@@ -13,11 +13,11 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: fff4aa947f878974d2d0f18f373b8c0917ed7d70
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316057"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60703515"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
@@ -223,7 +223,7 @@ SQL データベースではさまざまな種類のラッチを使うことが�
 
 ### <a name="what-is-happening"></a>状況
 
-この検出可能なパフォーマンス パターンは、TempDB リソースへのアクセスを試みるスレッドのボトルネックが存在するデータベース パフォーマンスの状態を示します  (この状態は IO に関連していません)。このパフォーマンスの問題の一般的なシナリオは、数百の同時実行クエリのすべてが小さい tempDB テーブルを作成して、使用し、ドロップすることです。 システムは、過去 7 日間のパフォーマンス ベースラインとの比較により、同じ tempDB テーブルを使う同時実行クエリ数の増加において十分に統計上有意であることが認められ、データベースのパフォーマンスに影響を与えていることを検出しました。
+この検出可能なパフォーマンス パターンは、TempDB リソースへのアクセスを試みるスレッドのボトルネックが存在するデータベース パフォーマンスの状態を示します (この状態は IO に関連していません)。このパフォーマンスの問題の一般的なシナリオは、数百の同時実行クエリのすべてが小さい tempDB テーブルを作成して、使用し、ドロップすることです。 システムは、過去 7 日間のパフォーマンス ベースラインとの比較により、同じ tempDB テーブルを使う同時実行クエリ数の増加において十分に統計上有意であることが認められ、データベースのパフォーマンスに影響を与えていることを検出しました。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
@@ -326,7 +326,7 @@ Azure SQL Analytics に移動して、Azure Portal から Intelligent Insights �
 > [!TIP]
 > PDF バージョンをダウンロードするには、フローチャートを選びます。
 
-Intelligent Insights では、パフォーマンスの問題の根本原因の解析に通常 1 時間かかります。 Intelligent Insights で問題を見つけることができず、問題を見つけることが重要であるときは、クエリ データ ストアを使って、手動でパフォーマンスの問題の根本原因を特定します  (通常、これらの問題とは 1 時間以内のものです)。詳しくは、「[クエリのストアを使用した、パフォーマンスの監視](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)」をご覧ください。
+Intelligent Insights では、パフォーマンスの問題の根本原因の解析に通常 1 時間かかります。 Intelligent Insights で問題を見つけることができず、問題を見つけることが重要であるときは、クエリ データ ストアを使って、手動でパフォーマンスの問題の根本原因を特定します (通常、これらの問題とは 1 時間以内のものです)。詳しくは、「[クエリのストアを使用した、パフォーマンスの監視](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 - [Intelligent Insights](sql-database-intelligent-insights.md) の概念の習得。

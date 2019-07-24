@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 05/15/2019
 ms.author: shvija
-ms.openlocfilehash: d1ed16465efb6c70b4426f22e8b9983112142c79
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e1ec6987f1a142e9bf9cd4413cfb4444bde1b7dd
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162647"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796994"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -23,6 +23,15 @@ ms.locfileid: "56162647"
 
 ### <a name="what-is-an-event-hubs-namespace"></a>Event Hubs 名前空間とはどういうものですか。
 名前空間は、Event Hub/Kafka トピックのためのスコーピング コンテナーです。 これにより、一意の [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) が提供されます。 名前空間は、複数の Event Hub/Kafka トピックを収容できるアプリケーション コンテナーとして機能します。 
+
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>どのような場合に新しい名前空間を作成し、どのような場合に既存の名前空間を使用すればよいですか。
+容量の割り当て ([スループット ユニット (TU)](#throughput-units)) は、名前空間レベルで課金されます。 名前空間は、リージョンにも関連付けられています。
+
+次のシナリオのいずれかに該当する場合は、既存の名前空間を使用するのではなく、新しい名前空間を作成することをお勧めします。 
+
+- イベント ハブを新しいリージョンに関連付ける必要がある。
+- イベント ハブを別のサブスクリプションに関連付ける必要がある。
+- 異なる容量が割り当てられたイベント ハブが必要である (つまり、追加されたイベント ハブを含む名前空間の容量ニーズが 40 TU のしきい値を超え、専用のクラスターも使用したくない)  
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Event Hubs の Basic レベルと Standard レベルは何が違いますか。
 
@@ -50,6 +59,47 @@ Event Hubs Standard レベルは現在、最大 7 日間の保有期間をサポ
 
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Event Hubs を監視するにはどうしたらよいですか。
 Event Hubs は、リソースの状態を示す網羅的なメトリックを [Azure Monitor](../azure-monitor/overview.md) に出力します。 また、Event Hubs サービスの全体的な正常性を名前空間レベルだけでなく、エンティティ レベルでも評価することができます。 どのような監視が提供されるかについては、[Azure Event Hubs](event-hubs-metrics-azure-monitor.md) に関するページを参照してください。
+
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか。 
+Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。
+
+- Advanced Message Queuing Protocol (AMQP)
+- HTTP
+- Apache Kafka
+
+これらのプロトコルを使用して Azure Event Hubs と通信するために開く必要がある送信ポートについては、次の表を参照してください。 
+
+| Protocol | Port | 詳細 | 
+| -------- | ----- | ------- | 
+| AMQP | 5671 と 5672 | [AMQP プロトコル ガイド](../service-bus-messaging/service-bus-amqp-protocol-guide.md)に関するページを参照してください | 
+| HTTP、HTTPS | 80、443 |  |
+| Kafka | 9093 | [Kafka アプリケーションからの Event Hubs の使用](event-hubs-for-kafka-ecosystem-overview.md)に関するページをご覧ください
+
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>どのような IP アドレスをホワイトリストに登録する必要がありますか。
+接続のためにホワイトリストに登録する必要がある適切な IP アドレスを検索するには、次の手順に従います。
+
+1. コマンド プロンプトで、次のコマンドを実行します。 
+
+    ```
+    nslookup <YourNamespaceName>.servicebus.windows.net
+    ```
+2. `Non-authoritative answer` で返された IP アドレスをメモします。 これが変更されるのは、名前空間を別のクラスターに復元した場合のみです。
+
+名前空間にゾーン冗長性を使用している場合は、次の追加手順を実行する必要があります。 
+
+1. まず、名前空間に対して nslookup を実行します。
+
+    ```
+    nslookup <yournamespace>.servicebus.windows.net
+    ```
+2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 
+
+    ```
+    <name>-s1.servicebus.windows.net
+    <name>-s2.servicebus.windows.net
+    <name>-s3.servicebus.windows.net
+    ```
+3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka の統合
 

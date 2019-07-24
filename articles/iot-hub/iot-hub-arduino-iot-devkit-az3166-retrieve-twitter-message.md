@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101212"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60779837"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>シェイク、シェイクしてツイート -- Azure Functions を使用して Twitter メッセージを取得する
 
@@ -49,10 +49,10 @@ ms.locfileid: "58101212"
 
 ### <a name="open-the-arduino-examples-folder"></a>[Arduino Examples]\(Arduino の例\) フォルダーを開く
 
-左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、**[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、**[ShakeShake]** を選択します。 プロジェクト フォルダーを表示する、新しい VS Code ウィンドウが開きます。 MXCHIP AZ3166 セクションが表示されない場合は、デバイスが正しく接続されていることを確認し、Visual Studio Code を再起動します。  
+左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、 **[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、 **[ShakeShake]** を選択します。 プロジェクト フォルダーを表示する、新しい VS Code ウィンドウが開きます。 MXCHIP AZ3166 セクションが表示されない場合は、デバイスが正しく接続されていることを確認し、Visual Studio Code を再起動します。  
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-コマンド パレットから同じプロジェクトを開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
+コマンド パレットから同じプロジェクトを開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、 **[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="provision-azure-services"></a>Azure サービスのプロビジョニング
 
@@ -88,7 +88,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 次に、デバイス コードをビルドしてアップロードします。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 1. `Ctrl+P` キーを使用して `task device-upload` を実行します。
 
@@ -167,11 +167,11 @@ Arduino スケッチは、Azure IoT Hub にイベントを送信します。 こ
 
 3. [何らかのユーティリティ](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/)を使用して、これら 2 つのキーから Twitter ベアラー トークンを生成します。
 
-4. [Azure portal](https://portal.azure.com/){:target="_blank"} で、**[リソース グループ]** に移動して、"Shake, Shake" プロジェクトの Azure Functions (タイプ: App Service) を見つけます。 名前には、常に 'shake...' 文字列が含まれます。
+4. [Azure portal](https://portal.azure.com/){:target="_blank"} で、 **[リソース グループ]** に移動して、"Shake, Shake" プロジェクトの Azure Functions (タイプ: App Service) を見つけます。 名前には、常に 'shake...' 文字列が含まれます。
 
    ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
-5. 独自のトークンを使用して、**[関数] > [shakeshake-cs]** 内で `run.csx` のコードを更新します。
+5. 独自のトークンを使用して、 **[関数] > [shakeshake-cs]** 内で `run.csx` のコードを更新します。
 
    ```csharp
    string authHeader = "Bearer " + "[your own token]";

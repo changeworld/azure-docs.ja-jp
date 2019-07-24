@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: bf2af67bb9498d4814f63fa66fdd50171ce0b4a1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 18ef1f182611a9c8fbf24cd08026633f5449bbe9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534346"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60613535"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Storage Explorer を使用して Azure Data Lake Storage Gen1 リソースを管理する
 
 [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) は、テキストやバイナリ データなどの大量の非構造化データを格納するためのサービスです。 そのデータには、HTTP または HTTPS を介してどこからでもアクセスすることができます。 Azure Storage Explorer 上で Data Lake Storage Gen1 を使用すると、BLOB やキューなど、他の Azure エンティティと共に、Data Lake Storage Gen1 のデータおよびリソースにアクセスし、管理できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。
 
-もう 1 つの利点は、Data Lake Storage Gen1 データを管理するためにサブスクリプションのアクセス許可が不要であることです。 Storage Explorer では、アクセス許可が付与されていれば、**[Local and Attached]\(ローカルで接続済み\)** ノードに Data Lake Storage Gen1 パスをアタッチできます。
+もう 1 つの利点は、Data Lake Storage Gen1 データを管理するためにサブスクリプションのアクセス許可が不要であることです。 Storage Explorer では、アクセス許可が付与されていれば、 **[Local and Attached]\(ローカルで接続済み\)** ノードに Data Lake Storage Gen1 パスをアタッチできます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事の手順を完了するには、次の前提条件を満たす必要があります。
@@ -43,7 +43,7 @@ Azure Storage Explorer の最新版は、[製品 Web ページ](https://azure.mi
        
    ![プラグイン アイコン](./media/data-lake-store-in-storage-explorer/plug-in-icon.png)
  
-2. **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、**[サインイン]** を選択します。
+2. **[Add an Azure Account]\(Azure アカウントの追加\)** を選択し、 **[サインイン]** を選択します。
 
    ![[Azure Storage へ接続] ダイアログ ボックス](./media/data-lake-store-in-storage-explorer/connect-to-azure-subscription.png)
 
@@ -51,7 +51,7 @@ Azure Storage Explorer の最新版は、[製品 Web ページ](https://azure.mi
 
     ![Azure のサインイン ダイアログ ボックス](./media/data-lake-store-in-storage-explorer/sign-in.png)
 
-3. 一覧からサブスクリプションを選択し、**[適用]** を選択します。
+3. 一覧からサブスクリプションを選択し、 **[適用]** を選択します。
 
     ![サブスクリプション情報と [適用] ボタン](./media/data-lake-store-in-storage-explorer/apply-subscription.png)
 
@@ -65,7 +65,7 @@ Data Lake Storage Gen1 から Azure サブスクリプションに正常に接�
 ご利用のサブスクリプションに存在しないリソースであっても、そのリソースの URI を支給してもらえば、アクセスすることができます。 サインイン後、その URI を使って Data Lake Storage Gen1 に接続することができます。
 1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで **[Local and Attached]\(ローカルで接続済み\)** を展開します。
-3. **[Data Lake Store]** を右クリックし、**[Connect to Data Lake Store]\(Data Lake Store に接続する\)** を選択します。
+3. **[Data Lake Store]** を右クリックし、 **[Connect to Data Lake Store]\(Data Lake Store に接続する\)** を選択します。
 
       ![ショートカット メニューの [Connect to Data Lake Store]\(Data Lake Store に接続する\)](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-uri-attach.png)
 
@@ -83,7 +83,7 @@ Data Lake Storage Gen1 アカウントのリソースには、フォルダーと
 1. ストレージ エクスプローラーを開きます。
 2. 左側のウィンドウで、表示する Data Lake Storage Gen1 アカウントが含まれているサブスクリプションを展開します。
 3. **[Data Lake Store]** を展開します。
-4. 表示する Data Lake Storage Gen1 アカウントのノードを右クリックし、**[開く]** を選択します。 Data Lake Storage Gen1 アカウントをダブルクリックして開くこともできます。 
+4. 表示する Data Lake Storage Gen1 アカウントのノードを右クリックし、 **[開く]** を選択します。 Data Lake Storage Gen1 アカウントをダブルクリックして開くこともできます。 
    
    メイン ウィンドウには、Data Lake Storage Gen1 アカウントの内容が表示されます。
 
@@ -110,7 +110,7 @@ Data Lake Storage Gen1 アカウントを作成した後で、次の操作を実
 
 次の項目では、Data Lake Storage Gen1 アカウント内でリソースを管理する方法を示します。 実行したいタスクの手順に従ってください。
 
-### <a name="upload-files"></a>ファイルのアップロード
+### <a name="upload-files"></a>ファイルをアップロードする
 
 1. メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[ファイルのアップロード]** を選択します。
 

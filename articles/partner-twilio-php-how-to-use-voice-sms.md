@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: a51cd589702320ecb55e6a2e3c5f0a6139e281fe
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158076"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60422357"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>PHP で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -40,20 +40,20 @@ Twilio API は、アプリケーションに音声および SMS 機能を提供�
 Twilio API の主要な側面として、Twilio 動詞と Twilio Markup Language (TwiML) が挙げられます。
 
 ### <a id="Verbs"></a>Twilio 動詞
-API では、Twilio 動詞を使用します。たとえば、**&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
+API では、Twilio 動詞を使用します。たとえば、 **&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
 
 Twilio 動詞の一覧を次に示します。 他の動詞と機能については、 [Twilio Markup Language のドキュメント](https://www.twilio.com/docs/api/twiml)を参照してください。
 
-* **&lt;Dial&gt;**: 呼び出し元を別の電話に接続します。
-* **&lt;Gather&gt;**: 電話キーパッドで入力された数字を収集します。
-* **&lt;Hangup&gt;**: 通話を終了します。
-* **&lt;Play&gt;**: オーディオ ファイルを再生します。
-* **&lt;Pause&gt;**: 指定された秒数だけ静かに待ちます。
-* **&lt;Record&gt;**: 呼び出し元の声を録音し、声が録音されたファイルの URL を返します。
-* **&lt;Redirect&gt;**: 通話または SMS の制御を別の URL に存在する TwiML に転送します。
-* **&lt;Reject&gt;**: Twilio 番号への受信通話を、課金することなく拒否します。
-* **&lt;Say&gt;**: テキストを通話で流れる音声に変換します。
-* **&lt;Sms&gt;**: SMS メッセージを送信します。
+* **&lt;Dial&gt;** : 呼び出し元を別の電話に接続します。
+* **&lt;Gather&gt;** : 電話キーパッドで入力された数字を収集します。
+* **&lt;Hangup&gt;** : 通話を終了します。
+* **&lt;Play&gt;** : オーディオ ファイルを再生します。
+* **&lt;Pause&gt;** : 指定された秒数だけ静かに待ちます。
+* **&lt;Record&gt;** : 呼び出し元の声を録音し、声が録音されたファイルの URL を返します。
+* **&lt;Redirect&gt;** : 通話または SMS の制御を別の URL に存在する TwiML に転送します。
+* **&lt;Reject&gt;** : Twilio 番号への受信通話を、課金することなく拒否します。
+* **&lt;Say&gt;** : テキストを通話で流れる音声に変換します。
+* **&lt;Sms&gt;** : SMS メッセージを送信します。
 
 ### <a id="TwiML"></a>TwiML
 TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで、通話または SMS をどのように処理するかを Twilio に通知します。
@@ -84,7 +84,7 @@ PHP 用 Twilio ライブラリを使用するようにアプリケーション�
 
 1. GitHub ([https://github.com/twilio/twilio-php][twilio_php]) から PHP 用 Twilio ライブラリをダウンロードし、**Services** ディレクトリをアプリケーションに追加します。
    
-    - または -
+    \- または -
 2. PHP 用 Twilio ライブラリを PEAR パッケージとしてインストールします。 インストールには、次のコマンドを使用できます。
    
         $ pear channel-discover twilio.github.com/pear
@@ -174,7 +174,7 @@ PHP 用 Twilio ライブラリをインストールしたら、ライブラリ�
     }
 
 ## <a id="howto_provide_twiml_responses"></a>方法:独自の Web サイトから TwiML 応答を返す
-アプリケーションで Twilio API の呼び出しを開始すると、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 前の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています  (TwiML は Twilio で使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。もう 1 つの例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、`<Say>` 要素を格納している `<Response>` 要素が表示されます)。
+アプリケーションで Twilio API の呼び出しを開始すると、Twilio は TwiML 応答を返すことが想定されている URL にユーザーの要求を送信します。 前の例では、Twilio から提供される URL [https://twimlets.com/message][twimlet_message_url] を使用しています (TwiML は Twilio で使用するように設計されており、ブラウザーで表示できます。 たとえば、[https://twimlets.com/message][twimlet_message_url] をクリックすると、空の `<Response>` 要素が表示されます。もう 1 つの例として、[https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] をクリックすると、`<Say>` 要素を格納している `<Response>` 要素が表示されます)。
 
 Twilio から提供される URL を使用する代わりに、HTTP 応答を返す独自のサイトを作成できます。 XML 応答を返すサイトは任意の言語で作成できます。このトピックでは、PHP を使用して TwiML を作成するとします。
 

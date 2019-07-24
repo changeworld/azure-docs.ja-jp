@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: e0e065b23581f297ee4ae2288a6e437da461a19f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998358"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60362103"
 ---
 # <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>ASP.NET プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
 ## <a name="references-added"></a>リファレンスの追加

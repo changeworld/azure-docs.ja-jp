@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
 ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522712"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60236899"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor での Windows イベント ログのデータ ソース
 Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](agent-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -28,9 +28,9 @@ Windows イベント ログは、多くのアプリケーションが書き込�
 ## <a name="configuring-windows-event-logs"></a>Windows イベント ログの構成
 Windows イベント ログは、[[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)から構成します。
 
-Azure Monitor は、設定で指定されている Windows イベント ログのイベントのみを収集します。  イベント ログを追加するには、追加するログの名前を入力して、**+** をクリックします。  各ログについて、選択した重大度レベルのイベントのみが収集されます。  各ログで収集する重大度レベルにチェックマークを入れます。  イベントをフィルター処理するための追加条件を指定することはできません。
+Azure Monitor は、設定で指定されている Windows イベント ログのイベントのみを収集します。  イベント ログを追加するには、追加するログの名前を入力して、 **+** をクリックします。  各ログについて、選択した重大度レベルのイベントのみが収集されます。  各ログで収集する重大度レベルにチェックマークを入れます。  イベントをフィルター処理するための追加条件を指定することはできません。
 
-イベント ログの名前を入力していくと、Azure Monitor が一般的なイベント ログ名の候補を表示します。 追加しようとするログが候補リストに表示されない場合、ログの完全な名前を入力して追加することもできます。 ログの完全な名前はイベント ビューアーを使用して確認できます。 イベント ビューアーで、ログの *[プロパティ]* ページを開き、*[フル ネーム]* フィールドの文字列をコピーします。
+イベント ログの名前を入力していくと、Azure Monitor が一般的なイベント ログ名の候補を表示します。 追加しようとするログが候補リストに表示されない場合、ログの完全な名前を入力して追加することもできます。 ログの完全な名前はイベント ビューアーを使用して確認できます。 イベント ビューアーで、ログの *[プロパティ]* ページを開き、 *[フル ネーム]* フィールドの文字列をコピーします。
 
 ![Windows イベントの構成](media/data-sources-windows-events/configure.png)
 
@@ -57,7 +57,7 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 | ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、この値は `AOI-<workspace ID>` です |
 | RenderedDescription |イベントの説明とパラメーターの値 |
 | Source |イベントのソース。 |
-| SourceSystem |イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または Operations Manager による管理 <br> Linux – すべての Linux エージェント  <br>  AzureStorage – Azure Diagnostics |
+| SourceSystem |イベント収集元のエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または Operations Manager による管理 <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure Diagnostics |
 | TimeGenerated |イベントが Windows で作成された日付と時刻。 |
 | UserName |イベントのログを記録したアカウントのユーザー名。 |
 

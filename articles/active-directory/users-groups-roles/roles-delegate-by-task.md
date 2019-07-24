@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 05/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 21136046bad8cb58432de367f0de06d1d0457eec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361372"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083784"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -56,6 +56,9 @@ ID プロバイダーの作成、読み取り、更新、削除を実行する |
 ユーザーの作成、読み取り、更新、削除を実行する | グローバル管理者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
 すべての構成を読み取る | グローバル管理者 | 
 B2C 監査ログを読み取る | グローバル管理者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+
+> [!NOTE]
+> Azure AD B2C のグローバル管理者には、Azure AD のグローバル管理者と同じアクセス許可はありません。 Azure AD B2C のグローバル管理者権限がある場合は、Azure Active Directory ディレクトリではなく Azure AD B2C ディレクトリにいることを確認してください。
 
 ## <a name="company-branding"></a>会社のブランド
 
@@ -338,7 +341,7 @@ VPN 接続の証明書を削除する | 条件付きアクセス管理者 | セ�
 
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
-サポート チケットを送信する | サービス管理者 | アプリケーション管理者、課金管理者、クラウド アプリケーション管理者、コンプライアンス管理者、Dynamics 365 管理者、Desktop Analytics 管理者、Exchange 管理者、パスワード管理者、Information Protection 管理者、Intune 管理者、Skype for Business 管理者、Power BI 管理者、特権認証管理者、SharePoint 管理者、Teams 通信管理者、Teams 管理者、ユーザー管理者、Workplace Analytics 管理者
+サポート チケットを送信する | サービス管理者 | アプリケーション管理者、Azure Information Protection 管理者、課金管理者、クラウド アプリケーション管理者、コンプライアンス管理者、Dynamics 365 管理者、Desktop Analytics 管理者、Exchange 管理者、パスワード管理者、Intune 管理者、Skype for Business 管理者、Power BI 管理者、特権認証管理者、SharePoint 管理者、Teams 通信管理者、Teams 管理者、ユーザー管理者、Workplace Analytics 管理者
 
 ## <a name="next-steps"></a>次の手順
 

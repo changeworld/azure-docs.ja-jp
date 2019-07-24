@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 7c2e3b2bea7ddef3dfbf69f85b499d9a60158689
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999129"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60585016"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 
@@ -41,13 +41,13 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
     * TEST_CONN_PASSWORD
     * TEST_CONN_SERVER_NAME
 
-3. サンプル プロジェクトをビルドするには、_./sample_ ディレクトリで次のコマンドを実行します。
+3. サンプル プロジェクトをビルドするには、 _./sample_ ディレクトリで次のコマンドを実行します。
 
     ```
     mvn install
     ```
     
-4. サンプル プロジェクトを開始するには、_./sample_ ディレクトリで次のコマンドを実行します。 
+4. サンプル プロジェクトを開始するには、 _./sample_ ディレクトリで次のコマンドを実行します。 
     
     ```
     mvn -q exec:java "-Dexec.mainClass=com.microsoft.azure.elasticdb.samples.elasticscalestarterkit.Program"

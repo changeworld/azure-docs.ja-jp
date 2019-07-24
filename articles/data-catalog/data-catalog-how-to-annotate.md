@@ -1,6 +1,6 @@
 ---
 title: Azure Data Catalog でデータ ソースに注釈を付ける方法
-description: Azure Data Catalog でデータ資産に注釈を付ける方法を説明する操作方法に関する記事 (フレンドリ名、タグ、説明、エキスパートを含む)　
+description: Azure Data Catalog でデータ資産に注釈を付ける方法を説明する操作方法に関する記事 (フレンドリ名、タグ、説明、エキスパートを含む)
 services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
@@ -8,12 +8,12 @@ ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 3a66c8c5963972828723dd74ffe560a0e2240165
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 18dfd9eb66c1dc71ecb14bb748d9cdd6afeb00a7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011137"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65953173"
 ---
 # <a name="how-to-annotate-data-sources"></a>データ ソースに注釈を付ける方法
 ## <a name="introduction"></a>はじめに
@@ -29,7 +29,7 @@ Data Catalog では、さまざまなユーザーがエンタープライズ デ
 * データ スチュワードは、データ ソース内の資産と属性がエンタープライズ データ モデルにどのようにマップされるかを認識しています。
 * アナリストは、自身がサポートするビジネス プロセスのコンテキストでデータがどのように使用されるかを把握しています。
 
-これらのパースペクティブのそれぞれが貴重であるため、Data Catalog では、メタデータに対してクラウドソーシング手法を使用します。この手法では、それぞれをキャプチャおよび使用して、登録済みのデータ ソースの全体像を提供することができます。 Data Catalog ポータルを使用することで、各ユーザーは、他のユーザーによって指定された注釈を表示しながら、自身の注釈を追加、編集することができます。
+これらのパースペクティブのそれぞれが貴重であるため、Data Catalog では、メタデータに対してクラウドソーシング手法を使用します。この手法では、それぞれをキャプチャおよび使用して、登録済みのデータ ソースの全体像を提供することができます。 Data Catalog ポータルを使用することで、各ユーザーは、他のユーザーによって指定された注釈を表示しながら、自身の注釈を追加および編集することができます。
 
 ## <a name="different-types-of-annotations"></a>さまざまな種類の注釈
 Data Catalog では、次の種類の注釈がサポートされています。

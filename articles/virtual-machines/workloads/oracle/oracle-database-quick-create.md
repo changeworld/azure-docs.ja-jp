@@ -4,7 +4,7 @@ description: Azure 環境で Oracle Database 12c データベースをすばや�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 490ac613adac968cc323c2d8351b59aece181b68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 26c6abc75e653b489a7385c423a9b2d00a4ed063
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66153887"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705304"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
@@ -311,7 +311,7 @@ VM を再起動したとき、既定では、Oracle データベースは自動�
     https://<VM ip address or hostname>:5502/em
     ```
 
-**SYS** アカウントを使用してログインし、**[as sysdba]\(sysdba として\)** チェック ボックスにオンにできます。 インストール時に設定したパスワード **OraPasswd1** を使用します。 
+**SYS** アカウントを使用してログインし、 **[as sysdba]\(sysdba として\)** チェック ボックスにオンにできます。 インストール時に設定したパスワード **OraPasswd1** を使用します。 
 
 ![Oracle OEM Express ログイン ページのスクリーンショット](./media/oracle-quick-start/oracle_oem_express_login.png)
 

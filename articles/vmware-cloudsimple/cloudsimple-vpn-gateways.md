@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa7730247ddc5f30c3d21a32421a6c55ec4ef72e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 2eae81f357904bd5034d7409ef42b681d1085930
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872760"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67695218"
 ---
 # <a name="vpn-gateways-overview"></a>VPN ゲートウェイの概要
 
@@ -26,7 +26,7 @@ CloudSimple には、2 種類の VPN ゲートウェイが用意されていま�
 
 ## <a name="site-to-site-vpn-gateway"></a>サイト間 VPN ゲートウェイ
 
-サイト間 VPN ゲートウェイは、CloudSimple 領域ネットワークとオンプレミスのデータ センターの間で暗号化されたトラフィックの送信に使用されます。 この接続を使用して、オンプレミス ネットワークと CloudSimple リージョン ネットワークの間のネットワーク トラフィックのための、サブネット/CIDR の範囲を定義します。
+サイト間 VPN ゲートウェイは、CloudSimple 領域ネットワークとオンプレミスのデータ センターの間で暗号化されたトラフィックの送信に使用されます。 この接続を使用して、オンプレミス ネットワークと CloudSimple リージョン ネットワーク間の通信のためのサブネット/CIDR の範囲を定義します。
 
 VPN ゲートウェイでは、プライベート クラウド上のオンプレミスからのサービス、およびオンプレミス ネットワークからのプライベート クラウド上のサービスを利用できます。  CloudSimple は、オンプレミス ネットワークからの接続を確立するための、ポリシー ベースの VPN サーバーを提供します。
 
@@ -37,9 +37,12 @@ VPN ゲートウェイでは、プライベート クラウド上のオンプレ
 * オンプレミス リソースからプライベート クラウド vCenter への、VM テンプレート、ISO イメージ、その他のファイルの簡易な転送。
 * プライベート クラウドで実行されているワークロードへの、オンプレミス ネットワークからのアクセシビリティ。
 
-### <a name="cryptographic-parameters"></a>暗号化パラメーター
+![サイト間 VPN 接続の図](media/cloudsimple-site-to-site-vpn-connection.png)
 
-サイト間 VPN 接続では、セキュリティで保護された接続を確立するために、次の既定の暗号化パラメーターを使用します。  オンプレミス VPN デバイスからの接続を作成するときには、パラメーターが一致している必要があります。
+> [!IMPORTANT]
+> TCP MSS は 1,078 バイト以下で固定する必要があります。 お使いの VPN デバイスで MSS クランプがサポートされていない場合は、別の方法として、トンネル インターフェイスの MTU を 1,118 バイトに設定することができます。 
+
+### <a name="cryptographic-parameters"></a>暗号化パラメーター
 
 サイト間 VPN 接続では、セキュリティで保護された接続を確立するために、次の既定の暗号化パラメーターを使用します。  オンプレミス VPN デバイスからの接続を作成する場合は、オンプレミス VPN ゲートウェイでサポートされている次のパラメーターのいずれかを使用します。
 
@@ -50,7 +53,7 @@ VPN ゲートウェイでは、プライベート クラウド上のオンプレ
 | IKE のバージョン | IKEv1 | IKEv1 | IKEv1 |
 | 暗号化 | AES 128 | AES 256 | AES 256 |
 | ハッシュ アルゴリズム| SHA 256 | SHA 256 | SHA 1 |
-| Diffie Hellman グループ (DH グループ) | 1 | 1 | 1 |
+| Diffie Hellman グループ (DH グループ) | 2 | 2 | 2 |
 | 有効期間 | 28,800 秒 | 28,800 秒 | 28,800 秒 |
 | データ サイズ | 4 GB | 4 GB | 4 GB |
 

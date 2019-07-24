@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148857"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181728"
 ---
 # <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(非推奨) Azure Container Service での Docker コンテナーのセキュリティ保護
 
@@ -24,7 +24,7 @@ ms.locfileid: "66148857"
 ### <a name="public-and-private-images"></a>パブリックおよびプライベート イメージ
 一般的に、公開されているソフトウェア パッケージと同様、公開されているコンテナー イメージのセキュリティは保証されていません。 コンテナー イメージは、複数のソフトウェア レイヤーから構成され、各ソフトウェア レイヤーが脆弱である可能性があります。 イメージの所有者などのコンテナー イメージの配信元 (信頼できるソースかどうかの判断基準)、イメージを構成するソフトウェア レイヤー、およびソフトウェア バージョンを把握することが重要です。 
 
-たとえば、Docker Hub で公式の [nginx リポジトリ](https://hub.docker.com/_/nginx/)にアクセスし、**[Tags]** タブに移動すると、各イメージの脆弱性が色分けされており、 それぞれの色が、イメージのソフトウェア レイヤーの脆弱性を示しています。 Docker Hub での脆弱性スキャンの詳細については、「[Understanding official repos on Docker Hub (Docker Hub の正式なリポジトリについて)](https://blog.docker.com/2015/06/understanding-official-repos-docker-hub/)」を参照してください。
+たとえば、Docker Hub で公式の [nginx リポジトリ](https://hub.docker.com/_/nginx/)にアクセスし、 **[Tags]** タブに移動すると、各イメージの脆弱性が色分けされており、 それぞれの色が、イメージのソフトウェア レイヤーの脆弱性を示しています。 Docker Hub での脆弱性スキャンの詳細については、「[Understanding official repos on Docker Hub (Docker Hub の正式なリポジトリについて)](https://blog.docker.com/2015/06/understanding-official-repos-docker-hub/)」を参照してください。
 
 ![Docker Hub の Nginx のイメージ](./media/container-service-security/docker-hub-nginx.png)
 

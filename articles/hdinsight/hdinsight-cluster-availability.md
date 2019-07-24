@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 459de569916af14b0efea0ff08b92e5c93ed2369
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 195999ba685828042fc958e8aed7e67bad694657
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64718891"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786561"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Ambari と Azure Monitor ログを使用してクラスターの可用性を監視する方法
 
@@ -75,11 +75,11 @@ Ambari では、次に示すように、可用性に関連する多数の定義�
 
 ![Ambari アラートの構成の編集ビュー](media/hdinsight-cluster-availability/ambari-alert-configuration-edit.png)
 
-この例では、異常な DataNodes が 2 つの場合に重大アラートをトリガーし、異常な DataNode が 1 つのみの場合に警告をトリガーできます。 編集を完了したら、**[保存]** をクリックします。
+この例では、異常な DataNodes が 2 つの場合に重大アラートをトリガーし、異常な DataNode が 1 つのみの場合に警告をトリガーできます。 編集を完了したら、 **[保存]** をクリックします。
 
 ### <a name="email-notifications"></a>電子メール通知
 
-必要に応じて、Ambari アラートに対する電子メール通知を構成することも可能です。 これを行うには、**[アラート]** タブ上で、左上にある **[Actions]\(アクション\)** ボタン、**[Manage Notifications]\(通知の管理\)** の順にクリックします。
+必要に応じて、Ambari アラートに対する電子メール通知を構成することも可能です。 これを行うには、 **[アラート]** タブ上で、左上にある **[Actions]\(アクション\)** ボタン、 **[Manage Notifications]\(通知の管理\)** の順にクリックします。
 
 ![Ambari 上で通知のアクションを管理する](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
@@ -96,13 +96,13 @@ Azure Monitor ログでは、HDInsight クラスターなどの複数のリソ�
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>HDInsight Azure Monitor ログの統合を有効にする
 
-ポータルの HDInsight クラスター リソースのページから、**[Operations Management Suite]** ブレードをクリックします。 次に、**[有効]** をクリックして、ドロップダウンから Log Analytics ワークスペースを選択します。
+ポータルの HDInsight クラスター リソースのページから、 **[Operations Management Suite]** ブレードをクリックします。 次に、 **[有効]** をクリックして、ドロップダウンから Log Analytics ワークスペースを選択します。
 
 ![[HDInsight Operations Management Suite] ブレード](media/hdinsight-cluster-availability/portal-enable-oms.png)
 
 ### <a name="query-metrics-and-logs-tables-in-the-logs-blade"></a>[ログ] ブレードにあるメトリックとログのクエリの表
 
-Azure Monitor ログの統合が有効になったら (これには数分かかる場合があります)、**[Log Analytics ワークスペース]** リソースに移動して、**[ログ]** ブレードをクリックします。
+Azure Monitor ログの統合が有効になったら (これには数分かかる場合があります)、 **[Log Analytics ワークスペース]** リソースに移動して、 **[ログ]** ブレードをクリックします。
 
 ![Log Analytics ワークスペースの [ログ] ブレード](media/hdinsight-cluster-availability/portal-logs.png)
 
@@ -123,13 +123,13 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 > [!NOTE] 
 > 可用性率は 24 時間の期間に測定されるので、正確な可用性率を表示するには、それまでに少なくとも 24 時間、クラスターが実行される必要があります。
 
-右上隅にある **[固定]** をクリックして、共有のダッシュボードにこのテーブルを固定表示することが可能です。 書き込み可能な共有のダッシュボードがない場合は、次の記事で作成方法を確認できます:「[Azure portal でのダッシュボードの作成と共有](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-a-dashboard-and-manage-access-control)」
+右上隅にある **[固定]** をクリックして、共有のダッシュボードにこのテーブルを固定表示することが可能です。 書き込み可能な共有のダッシュボードがない場合は、次の記事で作成方法を確認できます:「[Azure portal でのダッシュボードの作成と共有](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard)」
 
 ### <a name="azure-monitor-alerts"></a>Azure Monitor アラート
 
 メトリックの値またはクエリの結果が特定の条件に合った場合にトリガーする Azure Monitor アラートを設定することも可能です。 例として、1 つまたは複数のノードが 5 時間以内にハートビートを送信しなかった (つまり、利用できないと推定される) 場合に電子メールを送信するアラートを作成しましょう。
 
-以下に示すように、**[ログ]** ブレードから、**利用できないコンピューター**のサンプル クエリにある **[実行]** をクリックして、そのクエリを実行します。
+以下に示すように、 **[ログ]** ブレードから、**利用できないコンピューター**のサンプル クエリにある **[実行]** をクリックして、そのクエリを実行します。
 
 ![Log Analytics ワークスペースの [ログ] ブレードの '利用できないコンピューター' のサンプル クエリ](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
 
@@ -143,7 +143,7 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 
 ![アラート ルールの条件](media/hdinsight-cluster-availability/portal-condition-title.png)
 
-これにより、**[シグナル ロジックの構成]** ブレードが開かれます。
+これにより、 **[シグナル ロジックの構成]** ブレードが開かれます。
 
 **[アラート ロジック]** セクションを次のように設定します。
 
@@ -151,28 +151,28 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 
 このクエリでは、利用できないノードだけを結果として返すので、結果の数が 0 より大きい場合、必ずアラートが発生します。
 
-**[評価基準]** セクションで、利用できないノードについてチェックする頻度に基づいて、**[期間]** および **[頻度]** を設定します。
+**[評価基準]** セクションで、利用できないノードについてチェックする頻度に基づいて、 **[期間]** および **[頻度]** を設定します。
 
 このアラートの目的のために、必ず **[期間] = [頻度]** になることに留意してください。 期間、頻度、およびその他のアラート パラメーターに関する詳細は、[こちら](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log#log-search-alert-rule---definition-and-types)で確認できます。
 
-シグナル ロジックの構成が終わったら、**[完了]** をクリックします。
+シグナル ロジックの構成が終わったら、 **[完了]** をクリックします。
 
 ![アラート ルールにおいてシグナル ロジックを構成する](media/hdinsight-cluster-availability/portal-configure-signal-logic.png)
 
-既存のアクション グループがまだない場合は、**[アクション グループ]** セクション下にある **[新規作成]** をクリックします。
+既存のアクション グループがまだない場合は、 **[アクション グループ]** セクション下にある **[新規作成]** をクリックします。
 
 ![アラート ルールの新しいアクション グループ](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
 
-これにより、**[アクション グループの追加]** ブレードが開かれます。 **[アクション グループ名 ]**、**[短い名前]**、**[サブスクリプション]**、および **[リソース グループ]** を選択します。 **[アクション]** セクション下で、**[アクション名]** を選択して、**[アクションの種類]** として **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** を選択します。
+これにより、 **[アクション グループの追加]** ブレードが開かれます。 **[アクション グループ名 ]** 、 **[短い名前]** 、 **[サブスクリプション]** 、および **[リソース グループ]** を選択します。 **[アクション]** セクション下で、 **[アクション名]** を選択して、 **[アクションの種類]** として **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** を選択します。
 
 > [!NOTE]
 > [Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\) 以外にも、Azure Function、LogicApp、Webhook、ITSM、および Automation Runbook など、アラートがトリガーできる他のアクションが複数あります。 [詳細を確認してください。](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#action-specific-information)
 
-これにより、**[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** ブレードが開かれます。 受信者の **[名前]** を選択し、**[電子メール]** チェック ボックスを**オン**にして、アラートの送信先になる電子メール アドレスを入力します。 **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** ブレードで **[OK]** をクリックしてから、**[アクション グループの追加]** ブレードでアクション グループの構成を完了します。
+これにより、 **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** ブレードが開かれます。 受信者の **[名前]** を選択し、 **[電子メール]** チェック ボックスを**オン**にして、アラートの送信先になる電子メール アドレスを入力します。 **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** ブレードで **[OK]** をクリックしてから、 **[アクション グループの追加]** ブレードでアクション グループの構成を完了します。
 
 ![アラート ルールの [アクション グループの追加]](media/hdinsight-cluster-availability/portal-add-action-group.png)
 
-これらのブレードを閉じた後、**[アクション グループ]** セクション下にアクション グループが一覧表示されていることを確認できます。 最後に、**[アラート ルール名]** と **[説明]** を入力して、**[重大度]** を選択し、**[アラートの詳細]** セクションを完成させます。
+これらのブレードを閉じた後、 **[アクション グループ]** セクション下にアクション グループが一覧表示されていることを確認できます。 最後に、 **[アラート ルール名]** と **[説明]** を入力して、 **[重大度]** を選択し、 **[アラートの詳細]** セクションを完成させます。
 **[アラート ルールの作成]** をクリックして完了します。
 
 ![アラート ルールの作成を完了する](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
@@ -188,7 +188,7 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 
 ![Log Analytics ワークスペースのアラート](media/hdinsight-cluster-availability/portal-alerts.png)
 
-重要度によるグループ (つまり、上記に強調表示されている **[重大度 1]**) をクリックすると、以下のように発生したその重大度の全アラートに対するレコードが表示されます。
+重要度によるグループ (つまり、上記に強調表示されている **[重大度 1]** ) をクリックすると、以下のように発生したその重大度の全アラートに対するレコードが表示されます。
 
 ![Log Analytics ワークスペースの [重大度 1] のアラート](media/hdinsight-cluster-availability/portal-alerts-sev-1.png)
 

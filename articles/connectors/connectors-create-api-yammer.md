@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: ca2d28f3438fd166fa282488206662c95777bf3b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233329"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62104733"
 ---
 # <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Yammer アカウントの監視と管理を行う
 
@@ -55,12 +55,12 @@ Yammer アカウントから応答を取得し、その出力を他のアクシ�
 
    * 既存のロジック アプリの場合: 
    
-     * アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+     * アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
 
        または
 
      * アクションを追加するステップの間で、ステップ間の矢印の上にポインターを移動します。 
-     表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+     表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]**  を選択します。
      
        検索ボックスに、フィルターとして「yammer」と入力します。 
        アクションの一覧で、目的のアクションを選択します。

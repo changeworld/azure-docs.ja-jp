@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
 ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552012"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61369350"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>MQTT サーバーにメッセージを送信する
 
@@ -45,10 +45,10 @@ ms.locfileid: "57552012"
 
 ## <a name="open-the-mqttclient-sample"></a>MQTTClient サンプルを開く
 
-左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、**[Examples for MXCHIP AZ3166] > [MQTT]** を参照して、**[MQTTClient]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
+左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、 **[Examples for MXCHIP AZ3166] > [MQTT]** を参照して、 **[MQTTClient]** を選択します。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
 
 > [!NOTE]
-> コマンド パレットから例を開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
+> コマンド パレットから例を開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、 **[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>DevKit に対する Arduino スケッチのビルドとアップロード
 

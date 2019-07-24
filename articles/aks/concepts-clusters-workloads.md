@@ -2,17 +2,17 @@
 title: Azure Kubernetes Services (AKS) における Kubernetes の基本概念
 description: Kubernetes の基本のクラスターおよびワークロードについてと、クラスターおよびワークロードが Azure Kubernetes Service (AKS) の機能にどのように関連しているかを説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: faac0f02d1a1b8927fa0c651f44f8b120a583d9a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.date: 06/03/2019
+ms.author: mlearned
+ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230152"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616020"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -70,9 +70,9 @@ AKS は、専用の API サーバー、スケジューラなど、単一のテ�
 
 ノードの Azure VM サイズには、CPU 数、メモリ量、利用可能なストレージのサイズと種類 (高パフォーマンスの SSD や正規の HDD など) を定義します。 大容量の CPU およびメモリ、または高パフォーマンスのストレージを必要とするアプリケーションの需要を想定している場合は、それに沿ったノード サイズを計画してください。 また、需要に合わせて、AKS クラスター内のノード数をスケールアップすることも可能です。
 
-AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアップすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。
+AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux または Windows Server 2019 に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアップすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。 エージェント ノードは、標準の仮想マシンとして課金されるので、使用している VM サイズに対して付与されている割引 ([Azure の予約][reservation-discounts]を含む) は、自動的に適用されます。
 
-別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターで公式にサポートされる前にそれらを提供しています。 たとえば、Moby 以外のWindows コンテナーまたはコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
+別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターで公式にサポートされる前にそれらを提供しています。 たとえば、Moby 以外のコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
 
 ### <a name="resource-reservations"></a>リソース予約
 
@@ -83,15 +83,15 @@ Kubernetes のコア コンポーネントは、各ノード (*kubelet*、*kube-
 
 これらの予約があるため、アプリケーションに使用可能な CPU とメモリの量は、ノード自体に含まれる量よりも小さく見える場合があります。 実行するアプリケーションの数によってリソースの制約が生じる場合は、これらの予約によって、Kubernetes のコア コンポーネントに使用可能な CPU とメモリが確保されます。 リソースの予約を変更することはできません。
 
-例: 
+例:
 
 - **Standard DS2 v2** ノード サイズには、2 つの vCPU と 7 GiB のメモリが含まれます
     - 7 GiB メモリの 20% = 1.4 GiB
-    - ノードで使用できるメモリの合計は、*(7 - 1.4) = 5.6 GiB* になります
+    - ノードで使用できるメモリの合計は、 *(7 - 1.4) = 5.6 GiB* になります
     
 - **Standard E4s v3** ノード サイズには、4 つの vCPU と 32 GiB のメモリが含まれます
     - 32 GiB メモリの 20% = 6.4 GiB (ただし、AKS で予約されるのは最大で 4 GiB のみ)
-    - ノードで使用できるメモリの合計は、*(32 - 4) = 28 GiB* になります
+    - ノードで使用できるメモリの合計は、 *(32 - 4) = 28 GiB* になります
     
 基盤のノード OS にも、自身のコア機能を果たすために一定の CPU とメモリ リソースが必要になります。
 
@@ -105,13 +105,34 @@ AKS クラスターをスケーリングまたはアップグレードすると�
 
 AKS での複数のノード プールの使用方法の詳細については、[AKS でのクラスターの複数のノード プールの作成と管理][use-multiple-node-pools]に関する記事をご覧ください。
 
+### <a name="node-selectors"></a>ノードのセレクター
+
+複数のノード プールを含む AKS クラスターでは、特定のリソースに使用するノード プールを、Kubernetes スケジューラに指示することができます。 たとえば、イングレス コントローラーは、Windows Server ノードで実行しないでください (現在、AKS でプレビュー中)。 ノード セレクターでは、ノード OS などのさまざまなパラメーターを定義でき、ポッドがスケジュールされる場所を制御できます。
+
+次の基本的な例は、ノード セレクター *"beta.kubernetes.io/os": linux* を使用して Linux ノード上の NGINX インスタンスをスケジュールします。
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx:1.15.12
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
+```
+
+ポッドがスケジュールされる場所を制御する方法の詳細については、「[Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス][operator-best-practices-advanced-scheduler]」を参照してください。
+
 ## <a name="pods"></a>ポッド
 
 Kubernetes は*ポッド*を使用して、お使いのアプリケーションのインスタンスを実行します。 ポッドは、アプリケーションの単一のインスタンスを表します。 ポッドは通常、コンテナーと 1 対 1 のマッピングを保持していますが、ポッドに複数のコンテナーを含むことができる高度なシナリオもあります。 これらのマルチコンテナー ポッドは、同じノード上にまとめてスケジュールされ、コンテナーが関連するリソースを共有できるようにします。
 
 ポッドを作成する場合、*リソースの上限*を定義して、一定量の CPU やメモリ リソースを要求できます。 Kubernetes スケジューラは、要件を満たす利用可能なリソースを備えたノード上で実行されるように、ポッドのスケジュール設定を試みます。 また、指定されたポッドでの基本ノードからのコンピューティング リソースの消費量が過大にならないように、リソースの上限を指定することも可能です。 ベスト プラクティスは、必要かつ許可されているリソースがどれかを Kubernetes スケジューラが認識できるように、すべてのポッドにリソース制限を組み入れることです。
 
-詳細については、[Kubernetes ポッド][kubernetes-pods]と [Kubernetes ポッドのライフサイクル][kubernetes-pod-lifecycle]に関するページをご覧ください。
+詳細については、[Kubernetes ポッドに関するページと、][kubernetes-pods]Kubernetes ポッドのライフサイクル and [Kubernetes pod lifecycle][kubernetes-pod-lifecycle] に関するページを参照してください。
 
 ポッドは論理リソースですが、コンテナーは、アプリケーション ワークロードが実行される場所です。 ポッドは通常、短期間の破棄可能なリソースであり、個々にスケジュール設定されたポッドでは、Kubernetes が提供する高可用性と冗長性の一部の機能が欠落します。 ポッドは通常、個々にスケジュール設定されず、デプロイ コントローラーなどの Kubernetes の "*コントローラー*" によってデプロイされ管理されます。
 
@@ -168,7 +189,7 @@ Helm を使用するために、Kubernetes クラスターに *Tiller* と呼ば
 
 ![Helm には、クライアント コンポーネントと Kubernetes クラスター内にリソースを作成するサーバー側の Tiller コンポーネントが含まれます。](media/concepts-clusters-workloads/use-helm.png)
 
-詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][aks-helm]」をご覧ください。
+詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][aks-helm]」を参照してください。
 
 ## <a name="statefulsets-and-daemonsets"></a>StatefulSet と DaemonSet
 
@@ -185,7 +206,7 @@ Helm を使用するために、Kubernetes クラスターに *Tiller* と呼ば
 
 `kind: StatefulSet` を使用して YAML 形式でアプリケーションを定義すると、StatefulSet コントローラーは要求されたレプリカのデプロイと管理を処理します。 データは、Azure Managed Disks または Azure Files によって提供された永続的なストレージに書き込まれます。 複数の StatefulSet を使用すると、StatefulSet が削除されても、基本の永続化ストレージは残ります。
 
-詳細については、[Kubernetes の StatefulSet][kubernetes-statefulsets] に関するページをご覧ください。
+詳細については、[Kubernetes の StatefulSet][kubernetes-statefulsets] に関するページを参照してください。
 
 StatefulSet 内のレプリカは、1 つの AKS クラスター内にある任意の利用可能なノード全体にスケジュールされて、実行されます。 セット内の 1 つ以上のポッドが、ノード上で実行されることを保証する必要がある場合は、代わりに、DaemonSet を使用できます。
 
@@ -197,7 +218,7 @@ DaemonSet コントローラーでは、既定の Kubernetes スケジューラ�
 
 StatefulSet と同様に、DaemonSet は `kind: DaemonSet` を使用して、YAML 定義の一部として定義されています。
 
-詳細については、[Kubernetes の DaemonSet][kubernetes-daemonset] に関するページをご覧ください。
+詳細については、[Kubernetes の DaemonSet][kubernetes-daemonset] に関するページを参照してください。
 
 > [!NOTE]
 > [仮想ノードのアドオン](virtual-nodes-cli.md#enable-virtual-nodes-addon)を使用している場合は、DaemonSet によって仮想ノード上にポッドが作成されることはありません。
@@ -214,11 +235,11 @@ AKS クラスターを作成すると、次の名前空間が利用可能にな�
 - *kube-system* - この名前空間は、DNS とプロキシ、または Kubernetes ダッシュボードのようなネットワーク機能など、重要なリソースが置かれている場所です。 通常は、この名前空間に独自のアプリケーションをデプロイしません。
 - *kube-public* - この名前空間は、通常は使用されませんが、クラスター全体でリソースを表示可能にして、ユーザーが確認できるようにするために使用できます。
 
-詳細については、[Kubernetes の名前空間][kubernetes-namespaces] に関するページをご覧ください。
+詳細については、[Kubernetes の名前空間][kubernetes-namespaces] に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Kubernetes の主要なコンポーネントの一部と、それらのコンポーネントを AKS クラスターに適用する方法について説明しました。 Kubernetes と AKS の中心概念に関する追加情報については、次の記事を参照してください。
+この記事では、Kubernetes の主要なコンポーネントの一部と、それらのコンポーネントを AKS クラスターに適用する方法について説明しました。 Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 
 - [Kubernetes/AKS のアクセスと ID][aks-concepts-identity]
 - [Kubernetes/AKS のセキュリティ][aks-concepts-security]
@@ -248,3 +269,5 @@ AKS クラスターを作成すると、次の名前空間が利用可能にな�
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md

@@ -13,14 +13,14 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/22/2019
 ms.author: gokuma
-ms.openlocfilehash: 1f9ee5cf28de8fdb824bebf222e5e8d80e22c34f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 57768fc463f5ea1d2f1ec386f3f0975758220013
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712438"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626395"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows Data Science Virtual Machine のプロビジョニング
 
@@ -61,13 +61,13 @@ DSVM には次のツールが含まれています。
 
 DSVM を使えば分析プロジェクトをすぐに開始できます。 R、Python、SQL、C# など、さまざまな言語でタスクを処理できます。 Visual Studio では、コードを開発してテストするための使いやすい統合開発環境 (IDE) が提供されています。 Azure SDK が VM に含まれているため、Microsoft のクラウド プラットフォームにあるさまざまなサービスを使用してアプリケーションを構築できます。
 
-このデータ サイエンス VM イメージにソフトウェア課金はありません。 Azure の利用料のみを支払います。 料金は、プロビジョニングする仮想マシンのサイズによって異なります。 コンピューティング料金について詳しくは、[Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm?tab=PlansAndPrice) ページの**価格の詳細**に関するセクションをご覧ください。
+このデータ サイエンス VM イメージにソフトウェア課金はありません。 Azure の利用料のみを支払います。 料金は、プロビジョニングする仮想マシンのサイズによって異なります。 コンピューティング料金について詳しくは、[Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) ページの**価格の詳細**に関するセクションをご覧ください。
 
 ### <a name="other-dsvm-versions"></a>その他の DSVM バージョン
 
 * [Ubuntu](dsvm-ubuntu-intro.md) イメージ。 DSVM に似た多数のツールに加えて、いくつかの追加のディープ ラーニング フレームワークがあります。
 * [Linux CentOS](linux-dsvm-intro.md) イメージ。
-* Data Science Virtual Machine の [Windows Server 2012 エディション](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.standard-data-science-vm)。 いくつかのツールは、Windows Server 2016 エディションでのみ使用できます。 その他、この記事は Windows Server 2012 エディションにも該当します。
+* Data Science Virtual Machine の [Windows Server 2012 エディション](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows)。 いくつかのツールは、Windows Server 2016 エディションでのみ使用できます。 その他、この記事は Windows Server 2012 エディションにも該当します。
 
 ## <a name="prerequisite"></a>前提条件
 
@@ -84,17 +84,17 @@ DSVM インスタンスを作成するには:
 
 1. スクリーンショットの右側のウィンドウに表示されている各手順を構成するために、次の情報を入力する必要があります。
 
-   1. **[基本]**:
-      * **[Name]**: DSVM の名前
-      * **[VM ディスクの種類]**: **[SSD]** または **[HDD]** のどちらか。 NVidia Tesla K80 ベースなどの NC_v1 GPU インスタンスの場合、ディスクの種類として **[HDD]** を選択します。
-      * **[ユーザー名]**: 管理者アカウントの ID
-      * **[パスワード]**: 管理者アカウントのパスワード
+   1. **[基本]** :
+      * **[Name]** : DSVM の名前
+      * **[VM ディスクの種類]** : **[SSD]** または **[HDD]** のどちらか。 NVidia Tesla K80 ベースなどの NC_v1 GPU インスタンスの場合、ディスクの種類として **[HDD]** を選択します。
+      * **[ユーザー名]** : 管理者アカウントの ID
+      * **[パスワード]** : 管理者アカウントのパスワード
       * **サブスクリプション**:複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。
       * **リソース グループ**。 新しいリソース グループを作成するか、既存のグループを使用できます。
       * **場所**。 最適なデータ センターを選択します。 ネットワーク アクセスを最速にするために、データの大半が存在するデータ センターか、物理的に最も近いデータ センターを選びます。
-   1. **[サイズ]**:機能の要件とコストの制約を満たしている、いずれかのサーバーの種類を選択します。 VM サイズのさらに多くの選択肢を表示するには、**[すべて表示]** を選択します。
+   1. **[サイズ]** :機能の要件とコストの制約を満たしている、いずれかのサーバーの種類を選択します。 VM サイズのさらに多くの選択肢を表示するには、 **[すべて表示]** を選択します。
    1. **設定**:  
-      * **[Managed Disks を使用]**。 Azure で VM のディスクを管理する場合、**[管理済み]** を選択します。 管理しない場合は、新規または既存のストレージ アカウントを指定する必要があります。  
+      * **[Managed Disks を使用]** 。 Azure で VM のディスクを管理する場合、 **[管理済み]** を選択します。 管理しない場合は、新規または既存のストレージ アカウントを指定する必要があります。  
       * **その他のパラメーター**。 既定値を使用できます。 既定値以外の値の使用する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
    1. **概要**:入力したすべての情報が正しいことを確認します。 **作成** を選択します。
 
@@ -105,6 +105,8 @@ DSVM インスタンスを作成するには:
 ## <a name="how-to-access-the-dsvm"></a>DSVM にアクセスする方法
 
 VM を作成してプロビジョニングした後は、前述の **[基本]** セクションで作成した管理者アカウントの資格情報を使って、リモート デスクトップを使用できます。 VM にインストールされて構成されたツールを使い始めることができます。 多くのツールには、スタート メニューのタイルとデスクトップ アイコンからアクセスできます。
+
+また、Data Science VM を Azure Notebooks に接続して、VM で Jupyter Notebook を実行し、無料のサービス レベルの制限をバイパスすることもできます。 詳細については、[Notebooks プロジェクトの管理と構成 - コンピューティング レベル](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)に関するページを参照してください。
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Microsoft データ サイエンス仮想マシンにインストールされているツール
 
@@ -123,13 +125,13 @@ Machine Learning Server は、データの並列処理とチャンク処理を�
 Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.6 がインストールされています。 このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、および Data Analytics パッケージが含まれています。 Visual Studio Community 2017 にインストールされている PTVS を使用できます。 または、IDLE や Spyder など、Anaconda でバンドルされている IDE の 1 つを使用できます。 これらのパッケージのいずれかを検索して起動します (Win + S)。
 
 > [!NOTE]
-> Anaconda Python 2.7 で Python Tools for Visual Studio をポイントするには、各バージョン用のカスタム環境を作成する必要があります。 Visual Studio 2017 Community でこれらの環境パスを設定するには、**[ツール]** > **[Python ツール]** > **[Python 環境]** に移動します。 そして、**[+ カスタム]** を選択します。
+> Anaconda Python 2.7 で Python Tools for Visual Studio をポイントするには、各バージョン用のカスタム環境を作成する必要があります。 Visual Studio 2017 Community でこれらの環境パスを設定するには、 **[ツール]**  >  **[Python ツール]**  >  **[Python 環境]** に移動します。 そして、 **[+ カスタム]** を選択します。
 
 Anaconda Python 3.6 は、**C:\Anaconda** にインストールされています。 Anaconda Python 2.7 は、**c:\Anaconda\envs\python2** にインストールされています。 詳細な手順については、[PTVS のドキュメント](https://docs.microsoft.com/visualstudio/python/installing-python-interpreters)をご覧ください。
 
 ### <a name="the-jupyter-notebook"></a>Jupyter Notebook
 
-Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook サーバーには、Python 2.7、Python 3.x、PySpark、Julia、および R カーネルがあらかじめ構成されています。 Jupyter サーバーを開始し、ブラウザーを起動して Notebook サーバーにアクセスするには、**[Jupyter Notebook]** デスクトップ アイコンを使用します。
+Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook サーバーには、Python 2.7、Python 3.x、PySpark、Julia、および R カーネルがあらかじめ構成されています。 Jupyter サーバーを開始し、ブラウザーを起動して Notebook サーバーにアクセスするには、 **[Jupyter Notebook]** デスクトップ アイコンを使用します。
 
 Python および R には、複数のサンプル ノートブックがパッケージングされています。Jupyter にアクセスすると、以下のテクノロジの使用方法がノートブックに表示されます。
 
@@ -146,7 +148,7 @@ Python および R には、複数のサンプル ノートブックがパッケ
 
 DSVM には Visual Studio Community が含まれています。 これは Microsoft の定評ある IDE の無料版であり、評価用または小規模なチーム用に使用できます。 [ライセンス条項](https://www.visualstudio.com/support/legal/mt171547)をご覧ください。
 
-デスクトップ アイコンまたは **[スタート]** メニューを使用して Visual Studio を開きます。 プログラムを探し (Win + S)、**[Visual Studio]** を探します。 そこから、C#、Python、R、node.js などの言語でプロジェクトを作成できます。 インストールされているプラグインでは、次の Azure サービスを簡単に使用できます。
+デスクトップ アイコンまたは **[スタート]** メニューを使用して Visual Studio を開きます。 プログラムを探し (Win + S)、 **[Visual Studio]** を探します。 そこから、C#、Python、R、node.js などの言語でプロジェクトを作成できます。 インストールされているプラグインでは、次の Azure サービスを簡単に使用できます。
 
 * Azure Data Catalog
 * Azure HDInsight Hadoop と Spark
@@ -180,7 +182,7 @@ VM には複数の Azure ツールがインストールされます。
 
 * デスクトップのショートカットは、Azure SDK のドキュメントに移動します。
 * Azure Storage アカウントとの間でデータをコピーするには、**AzCopy** を使用します。 使用方法を表示するには、コマンド プロンプトで「**Azcopy**」と入力します。
-* Azure Storage アカウントに格納したオブジェクトを参照するには、**Azure Storage Explorer** を使用します。 Azure Storage との間でデータのコピーも行います。 このツールにアクセスするには、**[検索]** フィールドに「**Storage Explorer**」と入力します。 または、Windows の **[スタート]** メニューから探します。
+* Azure Storage アカウントに格納したオブジェクトを参照するには、**Azure Storage Explorer** を使用します。 Azure Storage との間でデータのコピーも行います。 このツールにアクセスするには、 **[検索]** フィールドに「**Storage Explorer**」と入力します。 または、Windows の **[スタート]** メニューから探します。
 * **Adlcopy** は、Azure Data Lake にデータをコピーします。 使用方法を見るには、コマンド プロンプトで「**adlcopy**」と入力します。
 * **dtui** は、クラウド上の NoSQL データベースである Azure Cosmos DB との間でデータをコピーします。 コマンド プロンプトで「**dtui**」と入力します。
 * **Azure Data Factory Integration Runtime** は、オンプレミスのデータ ソースとクラウドの間でデータをコピーします。 Azure Data Factory のようなツール内で使用されます。

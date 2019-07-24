@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904254"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60610512"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -71,7 +71,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 
 ビルトイン機能は、次の 6 つの機能区分に分類されます:操作、アプリケーション、ストレージ、ネットワーキング、コンピューティング、ID。 Azure プラットフォームのこれら 6 つの領域で使用できる機能の詳細については、概要情報に記載されています。
 
-## <a name="operations"></a>操作
+## <a name="operations"></a>Operations
 このセクションでは、セキュリティ操作を行う上で重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="security-and-audit-dashboard"></a>[セキュリティおよび監査] ダッシュボード

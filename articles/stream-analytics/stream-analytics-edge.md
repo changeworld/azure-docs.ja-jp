@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics on IoT Edge
 description: Azure Stream Analytics でエッジ ジョブを作成し、Azure IoT Edge で実行中のデバイスに展開します。
-services: stream-analytics
+ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 4/2/2019
+ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892230"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621007"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
  
@@ -61,7 +60,7 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 ASA のコンパイルされたクエリとジョブ構成をエクスポートするには、ストレージ コンテナーが必要です。 これは、特定のクエリで ASA Docker イメージを構成するときに使用されます。 
 1. Azure Portal からストレージ アカウントを作成するには、[こちらの手順](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)に従ってください。 ASA でアカウントを使用するために、オプションを変更する必要はありません。
 2. 新しく作成したストレージ アカウントで、Blob Storage コンテナーを作成します。
-    1. **[BLOB]**、**[+ コンテナー]** の順にクリックします。 
+    1. **[BLOB]** 、 **[+ コンテナー]** の順にクリックします。 
     2. 名前を入力し、コンテナーを **[プライベート]** のままにします。
 
 #### <a name="create-an-asa-edge-job"></a>ASA Edge ジョブを作成する
@@ -82,7 +81,7 @@ ASA のコンパイルされたクエリとジョブ構成をエクスポート�
 4. **[IoT Edge の設定]** メニュー で、ストレージ コンテナー情報を設定します。
 
 5. オプション設定を設定します
-    1. **イベントの順序付け**。 ポータルで順不同ポリシーを構成できます。 ドキュメントは[こちら](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396)で入手できます。
+    1. **イベントの順序付け**。 ポータルで順不同ポリシーを構成できます。 ドキュメントは[こちら](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)で入手できます。
     2. **ロケール**。 内部化形式を設定します。
 
 
@@ -103,15 +102,15 @@ ASA のコンパイルされたクエリとジョブ構成をエクスポート�
 
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>ASA を IoT Edge デバイスに展開する
 ##### <a name="add-asa-to-your-deployment"></a>ASA を展開に追加する
-- Azure portal で IoT Hub を開き、**[IoT Edge]** に移動して、この展開の対象となるデバイスをクリックします。
-- **[モジュールの設定]**、**[+ 追加]**、**[Azure Stream Analytics モジュール]** の順に選択します。
+- Azure portal で IoT Hub を開き、 **[IoT Edge]** に移動して、この展開の対象となるデバイスをクリックします。
+- **[モジュールの設定]** 、 **[+ 追加]** 、 **[Azure Stream Analytics モジュール]** の順に選択します。
 - サブスクリプションと、作成した ASA Edge ジョブを選択します。 [保存] をクリックします。
 ![ASA モジュールを展開に追加する](media/stream-analytics-edge/add-stream-analytics-module.png)
 
 
 > [!Note]
 > この手順中に、ASA によって、ストレージ コンテナー内に "EdgeJobs" という名前のフォルダーが作成されます (まだ存在しない場合)。 "EdgeJobs" フォルダーには、展開ごとに新しいサブフォルダーが作成されます。
-> ジョブをエッジ デバイスに展開する目的で、ASA は、ジョブ定義ファイルに対して共有アクセス署名 (SAS) を作成します。 SAS キーは、デバイス ツインを使用して、IoT Edge デバイスに安全に送信されます。 このキーの有効期限は、作成日から 3 年間です。
+> ジョブを IoT Edge デバイスに展開すると、ASA は、ジョブ定義ファイルに対して共有アクセス署名 (SAS) を作成します。 SAS キーは、デバイス ツインを使用して、IoT Edge デバイスに安全に送信されます。 このキーの有効期限は、作成日から 3 年間です。 IoT Edge ジョブを更新すると SAS が変更されますが、イメージのバージョンは変更されません。 **更新**したら、以下の展開ワークフローに従ってください。更新通知がデバイスに記録されます。
 
 
 IoT Edge の展開の詳細については、[こちらのページ](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)をご覧ください。
@@ -203,9 +202,31 @@ IoT Edge の更新プログラム上の参照データは、デプロイによ�
 * [Azure Stream Analytics on IoT Edge ライセンス](https://go.microsoft.com/fwlink/?linkid=862827)。 
 * [Azure Stream Analytics on IoT Edge に関するサード パーティへの通知](https://go.microsoft.com/fwlink/?linkid=862828)。
 
+## <a name="azure-stream-analytics-module-image-information"></a>Azure Stream Analytics モジュールのイメージ情報 
+
+このバージョン情報は、2019 年 6 月 27 日に最終更新が行われました。
+
+- イメージ: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+   - 基本イメージ: microsoft/dotnet:2.1.6-runtime-alpine3.7
+   - プラットフォーム:
+      - アーキテクチャ: amd64
+      - OS: linux
+  
+- イメージ: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+   - 基本イメージ: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
+   - プラットフォーム:
+      - アーキテクチャ: arm
+      - OS: linux
+  
+- イメージ: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+   - 基本イメージ: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
+   - プラットフォーム:
+      - アーキテクチャ: amd64
+      - OS: windows
+      
+      
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
-
 
 ## <a name="next-steps"></a>次の手順
 

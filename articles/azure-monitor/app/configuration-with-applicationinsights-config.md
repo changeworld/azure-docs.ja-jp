@@ -10,18 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 3957fefb44bd8e4732f74f69d5522bd499100d0b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 13bf27fd58530c357e3bb83f7cbc503855d40304
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149862"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075331"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
-Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかのモジュールのパラメーターを設定したりできます。
+Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかに対してパラメーターを設定したりできます。
 
 アプリケーションの種類に応じて、構成ファイルの名前は `ApplicationInsights.config` または `ApplicationInsights.xml` になります。 構成ファイルは、[SDK のほとんどのバージョンのインストール][start]時にプロジェクトに自動的に追加されます。 また、[IIS サーバー上の Status Monitor][redfield] によって Web アプリにも追加されます。Web アプリには、[Azure Web サイトまたは VM の Application Insights 拡張機能](azure-web-apps.md)を選択したときにも追加されます。
 
@@ -30,10 +30,10 @@ Application Insights .NET SDK は、いくつかの NuGet パッケージで構�
 このドキュメントでは、構成ファイルの各セクション、SDK のコンポーネントの制御方法、それらのコンポーネントを読み込む NuGet パッケージについて説明します。
 
 > [!NOTE]
-> ApplicationInsights.config および .xml の手順は、.NET Core SDK には適用されません。 .NET Core アプリケーションへの変更には、通常 appsettings.json ファイルを使用します。 この例については、[スナップショット デバッガーのドキュメント](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)を参照してください。
+> ApplicationInsights.config および .xml の手順は、.NET Core SDK には適用されません。 .NET Core アプリケーションを構成するには、[こちら](../../azure-monitor/app/asp-net-core.md)のガイドに従ってください。
 
 ## <a name="telemetry-modules-aspnet"></a>テレメトリ モジュール (ASP.NET)
-各テレメトリ モジュールは特定の種類のデータを回収し、コア API を利用してデータを送信します。 モジュールはさまざまな NuGet パッケージによりインストールされます。NuGet パッケージはまた、必要な行を .config ファイルに追加します。
+各テレメトリ モジュールでは特定の種類のデータを収集し、コア API を利用してデータを送信します。 モジュールはさまざまな NuGet パッケージによりインストールされます。NuGet パッケージはまた、必要な行を .config ファイルに追加します。
 
 各モジュールの構成ファイルにノードが存在します。 モジュールを無効にするには、ノードを削除するか、コメント アウトします。
 
@@ -52,10 +52,12 @@ CPU、メモリ、IIS インストールのネットワーク負荷など、[シ
 * [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet パッケージ
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Application Insights 診断テレメトリ
-`DiagnosticsTelemetryModule` は Application Insights インストルメンテーション コード自体のエラーを報告します。 たとえば、コードのパフォーマンス カウンターにアクセスできない場合、または `ITelemetryInitializer` が例外をスローする場合です。 [診断検索][diagnostic]に、このモジュールが追跡するトレース テレメトリが表示されます。 dc.services.vsallin.net に診断データが送信されます。
+`DiagnosticsTelemetryModule` は Application Insights インストルメンテーション コード自体のエラーを報告します。 たとえば、コードのパフォーマンス カウンターにアクセスできない場合、または `ITelemetryInitializer` が例外をスローする場合です。 [診断検索][diagnostic]に、このモジュールが追跡するトレース テレメトリが表示されます。
 
+```
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
-* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet パッケージ このパッケージのみをインストールする場合、ApplicationInsights.config ファイルは自動作成されません。
+* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet package. If you only install this package, the ApplicationInsights.config file is not automatically created.
+```
 
 ### <a name="developer-mode"></a>開発者モード
 `DeveloperModeWithDebuggerAttachedTelemetryModule` は、デバッガーがアプリケーション プロセスに接続されているときに、Application Insights の `TelemetryChannel` にデータを即座に、一度に 1 つのテレメトリ項目を送信するよう強制します。 これにより、アプリケーションによるテレメトリの追跡時や、アプリケーションが Application Insights ポータルに表示されるときの時間間隔が削減されます。 ここでは、CPU とネットワーク帯域幅のオーバーヘッドが著しく費やされます。
@@ -91,19 +93,19 @@ HTTP 要求の [応答時間と結果コード](../../azure-monitor/app/asp-net.
 * [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
-Microsoft.ApplicationInsights パッケージには、SDK の[コア API](https://msdn.microsoft.com/library/mt420197.aspx) が含まれています。 コア API は、他のテレメトリ モジュールで使用されます。[これを使用して独自のテレメトリを定義](../../azure-monitor/app/api-custom-events-metrics.md)することもできます。
+Microsoft.ApplicationInsights パッケージには、SDK の[コア API](https://msdn.microsoft.com/library/mt420197.aspx) が含まれています。 その他のテレメトリ モジュールではこれが使用されると共に、[独自のテレメトリを定義するために使用する](../../azure-monitor/app/api-custom-events-metrics.md)ことも可能です。
 
 * ApplicationInsights.config にエントリがありません。
 * [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) NuGet パッケージ この NuGet だけをインストールする場合、.config ファイルは生成されません。
 
 ## <a name="telemetry-channel"></a>テレメトリ チャネル
-テレメトリ チャネルにより、テレメトリのバッファリングと Application Insights サービスへの送信が管理されます。
+[テレメトリ チャネル](telemetry-channels.md)では、テレメトリのバッファリングと Application Insights サービスへの送信が管理されます。
 
-* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` がサービスの既定のチャネルです。 メモリにデータをバッファーします。
-* `Microsoft.ApplicationInsights.PersistenceChannel` はコンソール アプリケーションの代替です。 アプリが停止したときにフラッシュされていないデータを永続ストレージに保存できます。また、アプリが再開したときにそのデータを送信します。
+* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` は Web アプリケーション用の既定のチャネルです。 メモリ内にデータをバッファーし、より信頼性の高いテレメトリ配信のために、再試行のメカニズムとローカル ディスク ストレージを採用しています。
+* `Microsoft.ApplicationInsights.InMemoryChannel` は軽量なテレメトリ チャネルであり、他のチャネルが構成されていない場合に使用されます。 
 
 ## <a name="telemetry-initializers-aspnet"></a>テレメトリの初期化子 (ASP.NET)
-テレメトリの初期化子は、テレメトリのあらゆるアイテムと共に送信されるコンテキスト プロパティを設定します。
+テレメトリの初期化子は、テレメトリのあらゆる項目と共に送信されるコンテキスト プロパティを設定します。
 
 [独自の初期化子を記述し](../../azure-monitor/app/api-filtering-sampling.md#add-properties) 、コンテキスト プロパティを設定できます。
 
@@ -129,13 +131,13 @@ Microsoft.ApplicationInsights パッケージには、SDK の[コア API](https:
 
     `<Filters>` は、要求の識別プロパティを設定します。
 * `UserTelemetryInitializer` は、ユーザーのブラウザーで実行する Application Insights JavaScript インストルメンテーション コードが生成する `ai_user` Cookie から抽出された値を使用して、すべてのテレメトリ項目の `User` コンテキストの `Id` および `AcquisitionDate` プロパティを更新します。
-* `WebTestTelemetryInitializer` は、[可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)からの HTTP 要求のユーザー ID、セッション ID 合成ソース プロパティを設定します。
+* `WebTestTelemetryInitializer` は、[可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)からの HTTP 要求に対してユーザー ID、セッション ID、および合成ソース プロパティを設定します。
   `<Filters>` は、要求の識別プロパティを設定します。
 
 Service Fabric で実行されている .NET アプリケーションの場合、`Microsoft.ApplicationInsights.ServiceFabric` NuGet パッケージを含めることができます。 このパッケージには、Service Fabric のプロパティをテレメトリ項目に追加する `FabricTelemetryInitializer` が含まれています。 詳細については、この NuGet パッケージによって追加されるプロパティに関する [GitHub のページ](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md)をご覧ください。
 
 ## <a name="telemetry-processors-aspnet"></a>テレメトリ プロセッサ (ASP.NET)
-テレメトリ プロセッサは、SDK からポータルに送信される直前の各テレメトリ アイテムをフィルター処理し、変更できます。
+テレメトリ プロセッサは、SDK からポータルに送信される直前の各テレメトリ項目をフィルター処理して変更できます。
 
 [独自のテレメトリ プロセッサを記述](../../azure-monitor/app/api-filtering-sampling.md#filtering)できます。
 
@@ -157,7 +159,7 @@ Service Fabric で実行されている .NET アプリケーションの場合�
 [サンプリングの詳細についてはこちらを参照してください](../../azure-monitor/app/sampling.md)。
 
 #### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>固定レート サンプリング テレメトリ プロセッサー (2.0.0-beta1 以降)
-標準的な [サンプリング テレメトリ プロセッサ](../../azure-monitor/app/api-filtering-sampling.md) も用意されています (2.0.1 以降)。
+標準的な[サンプリング テレメトリ プロセッサ](../../azure-monitor/app/api-filtering-sampling.md)も用意されています (2.0.1 以降)。
 
 ```XML
 
@@ -181,7 +183,7 @@ Service Fabric で実行されている .NET アプリケーションの場合�
 SDK のメモリー内ストレージに格納できるテレメトリ項目の数。 この数に達すると、テレメトリのバッファーがフラッシュされます。つまり、テレメトリの項目が、Application Insights サーバーに送信されます。
 
 * 最小:1
-* 最大:1,000
+* 最大:1000
 * 既定値は500
 
 ```
@@ -261,7 +263,7 @@ SpringBoot の application.properties と applicationinsights.xml の構成の�
 
 キーを動的に設定する場合 (たとえば、アプリケーションからの結果を別のリソースに送信する場合)、構成ファイルからキーを省略し、代わりにコードで設定することができます。
 
-TelemetryClient のすべてのインスタンスのキーを設定するには (標準のテレメトリ モジュールを含む)、TelemetryConfiguration.Active でキーを設定します。 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーの設定を行います。
+TelemetryClient のすべてのインスタンスにキーを設定するには (標準のテレメトリ モジュールを含む)、TelemetryConfiguration.Active にキーを設定します。 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーの設定を行います。
 
 ```csharp
 

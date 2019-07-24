@@ -18,10 +18,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf236bff2300129ec97d3b8946c4c2a2748bca77
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65602133"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>MSAL.NET を使用する Xamarin iOS に固有の考慮事項
@@ -58,7 +58,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 
 トークン キャッシュを機能させるため、および `AcquireTokenSilentAsync` メソッドを機能させるためには、複数のステップに従う必要があります。
 1. *`* Entitlements.plist* ファイル内でキーチェーンを有効にし、バンドル識別子で**キーチェーン グループ**を指定します。
-2. iOS プロジェクト オプション ウィンドウの**バンドル署名ビュー**にある **[カスタム エンタイトルメント]** フィールドで、*`*Entitlements.plist*`* ファイルを選択します。
+2. iOS プロジェクト オプション ウィンドウの**バンドル署名ビュー**にある **[カスタム エンタイトルメント]** フィールドで、 *`*Entitlements.plist*`* ファイルを選択します。
 3. 証明書に署名するときは、XCode で同じ Apple ID を使用していることを確認してください。
 
 ## <a name="enable-token-cache-sharing-across-ios-applications"></a>iOS アプリケーション間でのトークン キャッシュ共有の有効化

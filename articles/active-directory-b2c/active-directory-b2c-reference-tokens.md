@@ -2,20 +2,20 @@
 title: トークンの概要 - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C で使用されるトークンについて説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ac3c2132fc28d9813a9322898f79c7cdfffa12d7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b0a5eca4823bd6ec7d1197adb205f7fb98f8d67e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681890"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66509089"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のトークンの概要
 

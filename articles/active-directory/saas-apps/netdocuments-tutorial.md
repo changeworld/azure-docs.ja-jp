@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: d42e266de9c958c8a71cc5fa680a78c2278cec6e
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 929d5d7a8e2b45aeb4ef71e4599cfcf23be83088
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65956783"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67096599"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>チュートリアル:Azure Active Directory と NetDocuments の統合
 
@@ -109,7 +109,7 @@ NetDocuments で Azure AD シングル サインオンを構成するには、�
     b. **[応答 URL]** ボックスに、`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 リポジトリ ID は、CA- で始まり、その後に NetDocuments リポジトリに関連付けられている 8 文字のコードが続く値です。 詳細については、[NetDocuments Federated Identity サポート ドキュメント](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login)を参照してください。 また、上の情報を使用して構成することが難しい場合は、[NetDocuments クライアント サポート チーム](https://support.netdocuments.com/hc/)に連絡して、これらの値を取得してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を、実際のサインオン URL および応答 URL で更新してください。 リポジトリ ID は、**CA-** で始まり、その後に NetDocuments リポジトリに関連付けられている 8 文字のコードが続く値です。 詳細については、[NetDocuments Federated Identity サポート ドキュメント](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login)を参照してください。 また、上の情報を使用して構成することが難しい場合は、[NetDocuments クライアント サポート チーム](https://support.netdocuments.com/hc/)に連絡して、これらの値を取得してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 

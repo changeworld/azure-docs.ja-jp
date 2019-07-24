@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 1232cdd156dd473850fde6e7c4f3ce0554155764
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 7c698abb133c14f32b60b22acbbccc37a191a02e
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020400"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604860"
 ---
 # <a name="ship-an-application"></a>アプリケーションの出荷
 
@@ -24,14 +24,14 @@ Azure Cognitive Services Speech SDK を配布するときは、[Speech SDK ラ�
 
 プラットフォームによって、ご自身のアプリケーションを実行するための依存関係には違いがあります。
 
-## <a name="windows"></a> Windows
+## <a name="windows"></a>Windows
 
 Cognitive Services Speech SDK は、Windows 10 および Windows Server 2016 でテストされています。
 
-Cognitive Services Speech SDK には、[Visual Studio 2017 の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。 最新バージョンの `Microsoft Visual C++ Redistributable for Visual Studio 2017` のインストーラーはこちらからダウンロードできます。
+Cognitive Services Speech SDK には、[Visual Studio 2019 の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。 最新バージョンの `Microsoft Visual C++ Redistributable for Visual Studio 2019` のインストーラーはこちらからダウンロードできます。
 
-- [Win32](https://aka.ms/vs/15/release/vc_redist.x86.exe)
-- [x64](https://aka.ms/vs/15/release/vc_redist.x64.exe)
+- [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
+- [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
 
 お使いのアプリケーションでマネージド コードを使用する場合は、ターゲット マシンに `.NET Framework 4.6.1` 以降が必要です。
 
@@ -39,13 +39,16 @@ Cognitive Services Speech SDK には、[Visual Studio 2017 の Microsoft Visual 
 
 必要な Speech SDK ファイルは、お使いのアプリケーションと同じディレクトリに展開できます。 この方法で、お使いのアプリケーションはライブラリに直接アクセスできます。 必ず、お使いのアプリケーションと一致する正しいバージョン (Win32/x64) を選択してください。
 
-| Name | Function
+| EnableAdfsAuthentication | Function
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | Core SDK。ネイティブおよびマネージド展開に必要
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | マネージド展開に必要
 
 >[!NOTE]
 > リリース 1.3.0 以降、(以前のリリースで提供されていた) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ファイルは不要になりました。 この機能はコア SDK に統合されました。
+
+>[!NOTE]
+> Windows フォーム アプリケーション (.NET Framework) の C# プロジェクトの場合は、ライブラリがプロジェクトのデプロイ設定に含まれていることを確認してください。 これは `Properties -> Publish Section` で確認できます。 `Application Files` ボタンをクリックし、一覧を下にスクロールして、対応するライブラリを見つけます。 値が `Included` に設定されていることを確認します。 プロジェクトが発行またはデプロイされると、Visual Studio にこのファイルが組み込まれます。
 
 ## <a name="linux"></a>Linux
 

@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: fa19ea0c7ebeea0170822db0dae298f84e958983
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: dbb5ee122e715aeaa66d786f02966beedd2447c3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006133"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65522326"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ
 
@@ -80,13 +80,13 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 マネージド インスタンスの内部から接続が開始される場合 (バックアップと監査ログ)、トラフィックは、管理エンドポイントのパブリック IP アドレスから始まっているように見えます。 マネージド インスタンスの IP アドレスのみを許可するようにファイアウォール規則を設定することで、マネージ ドインスタンスからパブリック サービスへのアクセスを制限できます。 詳細については、[マネージド インスタンスの組み込みのファイアウォールの確認](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)に関する記事を参照してください。
 
 > [!NOTE]
-> マネージド インスタンスのリージョン内にある Azure サービスに送信されるトラフィックは最適化されるため、マネージド インスタンス管理エンドポイントのパブリック IP アドレスに対して NAT 処理が行われません。 そのため、IP ベースのファイアウォール規則を使用する必要がある場合 (最も一般的な用途はストレージ)、サービスがマネージド インスタンスとは異なるリージョンに存在する必要があります。
+> マネージド インスタンスのリージョン内にある Azure サービスに送信されるトラフィックは最適化されるため、マネージド インスタンス管理エンドポイントのパブリック IP アドレスに対しては NAT 処理が行われません。 そのため、IP ベースのファイアウォール規則を使用する必要がある場合 (最も一般的な用途はストレージ)、サービスがマネージド インスタンスとは異なるリージョンに存在する必要があります。
 
 ## <a name="network-requirements"></a>ネットワークの要件
 
 マネージド インスタンスは、仮想ネットワーク内の専用サブネットにデプロイします。 サブネットには、次の特性が必要です。
 
-- **専用サブネット:** マネージド インスタンスのサブネットには自身に関連付けられている他のクラウド サービスを含めることはできず、ゲートウェイ サブネットになることもできません。 サブネットには、マネージド インスタンス以外のリソースを含めることはできず、後でサブネットにリソースを追加することもできません。
+- **専用サブネット:** マネージド インスタンスのサブネットには自身に関連付けられている他のクラウド サービスを含めることはできず、ゲートウェイ サブネットになることもできません。 サブネットには、マネージド インスタンス以外のリソースを含めることはできず、後でサブネットに他の種類のリソースを追加することもできません。
 - **ネットワーク セキュリティ グループ (NSG):** 仮想サブネットに関連付けられている NSG で、他の規則に先立って、[受信セキュリティ規則](#mandatory-inbound-security-rules)と[送信セキュリティ規則](#mandatory-outbound-security-rules)を定義する必要があります。 マネージド インスタンスがリダイレクト接続用に構成されている場合は、NSG を使用してポート 1433 およびポート 11000-11999 上のトラフィックをフィルター処理することで、マネージド インスタンスのデータ エンドポイントへのアクセスを制御できます。
 - **ユーザー定義ルート (UDR) テーブル:** 仮想ネットワークに関連付けられている UDR テーブルには、特定の[エントリ](#user-defined-routes)が含まれている必要があります。
 - **サービス エンドポイントなし**: マネージド インスタンスのサブネットにサービス エンドポイントを関連付けることはできません。 仮想ネットワークの作成時に、サービス エンドポイント オプションが無効になっていることを確認してください。
@@ -97,7 +97,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-inbound-security-rules"></a>必須の受信セキュリティ規則
 
-| Name       |Port                        |Protocol|ソース           |宛先|Action|
+| Name       |Port                        |Protocol|source           |宛先|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |ALLOW |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
@@ -105,7 +105,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-outbound-security-rules"></a>必須の送信セキュリティ規則
 
-| Name       |Port          |Protocol|ソース           |宛先|Action|
+| Name       |Port          |Protocol|source           |宛先|Action|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |ALLOW |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |ALLOW |

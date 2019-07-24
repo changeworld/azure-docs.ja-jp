@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 6ec85e840f8e61c46e86b0fa8fb947fb763a4265
-ms.sourcegitcommit: 17411cbf03c3fa3602e624e641099196769d718b
+ms.openlocfilehash: 410990ecdca8a94be9c7c3d0b48a5092fcaa6060
+ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65518857"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66515905"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -81,7 +81,7 @@ DSC 拡張機能を使用してノードを State Configuration サービスに�
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-ノード構成名については、構成ではなく、必ず*ノード構成*の名前を使用していることを確認してください。
+[ノード構成名] から、Azure State Configuration にノード構成が存在することを確認します。  存在しない場合、拡張機能のデプロイはエラーを返します。  また、構成ではなく、必ず "*ノード構成*" の名前を使用していることを確認してください。
 構成は、[ノード構成 (MOF ファイル) をコンパイルする](https://docs.microsoft.com/azure/automation/automation-dsc-compile) ために使用されるスクリプトに定義されています。
 名前は常に、Configuration の後にピリオド `.` と `localhost` または特定のコンピューター名が続いたものになります。
 
@@ -178,26 +178,26 @@ az vm extension set \
 
 1. VM に移動します。
 2. **[設定]** で **[拡張機能]** を選択します。
-3. 作成される新しいページで、**[+ 追加]** を選択し、**[PowerShell Desired State Configuration]** を選びます。
+3. 作成される新しいページで、 **[+ 追加]** を選択し、 **[PowerShell Desired State Configuration]** を選びます。
 4. 拡張機能の情報ページの下部にある **[作成]** をクリックします。
 
 このポータルでは次の入力を収集します。
 
-- **[Configuration Modules or Script]\(構成モジュールまたはスクリプト\)**:このフィールドは必須です (フォームは[既定の構成スクリプト](#default-configuration-script)用に更新されていません)。 構成モジュールおよびスクリプトは、構成スクリプトを含む .ps1 ファイルまたは .ps1 構成スクリプトがルートにある .zip ファイルが必要です。 .zip ファイルを使用する場合は、すべての依存リソースを .zip 内のモジュール フォルダーに含める必要があります。 Azure PowerShell SDK に含まれているコマンドレット **Publish-AzureVMDscConfiguration -OutputArchivePath** を使用して、.zip ファイルを作成することができます。 .zip ファイルはユーザーの Blob Storage にアップロードされ、SAS トークンによってセキュリティで保護されます。
+- **[Configuration Modules or Script]\(構成モジュールまたはスクリプト\)** :このフィールドは必須です (フォームは[既定の構成スクリプト](#default-configuration-script)用に更新されていません)。 構成モジュールおよびスクリプトは、構成スクリプトを含む .ps1 ファイルまたは .ps1 構成スクリプトがルートにある .zip ファイルが必要です。 .zip ファイルを使用する場合は、すべての依存リソースを .zip 内のモジュール フォルダーに含める必要があります。 Azure PowerShell SDK に含まれているコマンドレット **Publish-AzureVMDscConfiguration -OutputArchivePath** を使用して、.zip ファイルを作成することができます。 .zip ファイルはユーザーの Blob Storage にアップロードされ、SAS トークンによってセキュリティで保護されます。
 
-- **[Module-qualified Name of Configuration]\(モジュールで修飾された構成の名前\)**:.ps1 ファイルに複数の構成関数を含めることができます。 .ps1 構成スクリプトの名前に続けて \\ と構成関数の名前を入力します。 たとえば、.ps1 スクリプトの名前が configuration.ps1 であり、構成が **IisInstall** であれば、**configuration.ps1\IisInstall** と入力します。
+- **[Module-qualified Name of Configuration]\(モジュールで修飾された構成の名前\)** :.ps1 ファイルに複数の構成関数を含めることができます。 .ps1 構成スクリプトの名前に続けて \\ と構成関数の名前を入力します。 たとえば、.ps1 スクリプトの名前が configuration.ps1 であり、構成が **IisInstall** であれば、**configuration.ps1\IisInstall** と入力します。
 
-- **[Configuration Arguments]\(構成の引数\)**:構成関数が引数を受け取る場合は、**argumentName1=value1,argumentName2=value2** という形式でここに入力します。 この形式は、PowerShell コマンドレットまたは Resource Manager テンプレートで構成引数を受け取る方法とは異なる形式であることに注意してください。
+- **[Configuration Arguments]\(構成の引数\)** :構成関数が引数を受け取る場合は、**argumentName1=value1,argumentName2=value2** という形式でここに入力します。 この形式は、PowerShell コマンドレットまたは Resource Manager テンプレートで構成引数を受け取る方法とは異なる形式であることに注意してください。
 
-- **[Configuration Data PSD1 File]\(構成データの PSD1 ファイル\)**:このフィールドは省略可能です。 .psd1 の構成データ ファイルが必要な構成では、このフィールドを使用してデータ フィールドを選択し、ユーザーの Blob Storage にアップロードします。 構成データ ファイルは、Blob Storage 内の SAS トークンによってセキュリティで保護されます。
+- **[Configuration Data PSD1 File]\(構成データの PSD1 ファイル\)** :このフィールドは省略可能です。 .psd1 の構成データ ファイルが必要な構成では、このフィールドを使用してデータ フィールドを選択し、ユーザーの Blob Storage にアップロードします。 構成データ ファイルは、Blob Storage 内の SAS トークンによってセキュリティで保護されます。
 
-- **[WMF Version]\(WMF のバージョン\)**:VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを latest に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0、5.0、5.1、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。
+- **[WMF Version]\(WMF のバージョン\)** :VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを latest に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0、5.0、5.1、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。
 
-- **[Data Collection]\(データ収集\)**:拡張機能でテレメトリを収集するかどうかを決定します。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。
+- **[Data Collection]\(データ収集\)** :拡張機能でテレメトリを収集するかどうかを決定します。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。
 
 - **バージョン**:インストールする DSC 拡張機能のバージョンを指定します。 バージョンの詳細については、[DSC 拡張機能のバージョン履歴](/powershell/dsc/azuredscexthistory)に関するページを参照してください。
 
-- **[自動アップグレードのマイナー バージョン]**:このフィールドは、コマンドレットの **AutoUpdate** スイッチにマップされ、インストール時に拡張機能を最新バージョンに自動的に更新できます。 **[はい]** の場合、利用可能な最新バージョンを使用するように拡張機能ハンドラーに指示します。**[いいえ]** の場合は、指定された**バージョン**が強制的にインストールされます。 **[はい]** と **[いいえ]** のいずれも選択しないことは、**[いいえ]** を選択することと同じです。
+- **[自動アップグレードのマイナー バージョン]** :このフィールドは、コマンドレットの **AutoUpdate** スイッチにマップされ、インストール時に拡張機能を最新バージョンに自動的に更新できます。 **[はい]** の場合、利用可能な最新バージョンを使用するように拡張機能ハンドラーに指示します。 **[いいえ]** の場合は、指定された**バージョン**が強制的にインストールされます。 **[はい]** と **[いいえ]** のいずれも選択しないことは、 **[いいえ]** を選択することと同じです。
 
 ## <a name="logs"></a>ログ
 

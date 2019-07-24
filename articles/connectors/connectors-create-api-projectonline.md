@@ -12,11 +12,11 @@ ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 663363d05c1875d22a0ecc0478abcf7e0ec89c99
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230371"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105632"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Project Online のプロジェクト、タスク、およびリソースを管理する
 
@@ -52,7 +52,7 @@ Project Online では、強力なプロジェクト管理機能を利用して�
 
      または
 
-   * 既存のロジック アプリの場合、アクションを追加する手順で、**[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「Project Online」と入力します。 アクションの一覧で、目的のアクションを選択します。
+   * 既存のロジック アプリの場合、アクションを追加する手順で、 **[新しいステップ]** を選択します。 検索ボックスに、フィルターとして「Project Online」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
 1. Project Online へのサインインを求めるメッセージが表示される場合は、ここでサインインします。
 

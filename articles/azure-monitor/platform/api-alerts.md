@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.openlocfilehash: bee64909c7f3b295691ef1cb1840424aa7e3fe49
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549714"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345908"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する
 Log Analytics のアラート REST API は、Log Analytics でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
@@ -217,7 +217,7 @@ Log Analytics を使用するとアラートをカテゴリに分類し、簡単
 #### <a name="suppress"></a>Suppress
 Log Analytics ベースのクエリ アラートは、しきい値に達するか超過するたびに発生します。 クエリに示されたロジックに基づいて、連続する間隔でアラートが生成され、その結果の通知が常に送信される可能性があります。 このようなシナリオを防ぐため、ユーザーは、指定した時間待機してからアラート ルールの 2 回目の通知が発生するように Log Analytics に指示する [抑制] オプションを設定することができます。 抑制が 30 分に設定したとします。まず最初のアラートが生成され、構成された通知が送信されます。 この場合、アラート ルールの通知が再び使用されるまで、30 分待機されます。 その間、アラート ルールは継続して実行されます。この期間にアラート ルールが何回生成されたかにかかわらず、指定した期間は Log Analytics によって通知のみが抑制されます。
 
-Log Analytics アラート ルールの抑制プロパティは、*[スロットリング]* 値と、*DurationInMinutes* 値を使用した抑制期間を使用して指定されます。
+Log Analytics アラート ルールの抑制プロパティは、 *[スロットリング]* 値と、*DurationInMinutes* 値を使用した抑制期間を使用して指定されます。
 
 しきい値、重大度、および抑制プロパティのみを含むアクションに対する応答の例を次に示します
 

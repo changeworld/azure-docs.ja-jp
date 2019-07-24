@@ -9,11 +9,11 @@ ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: bca78e2963f19b60071b1b27c8dc65c76818e10e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66166094"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181185"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>SSH とキーの概要
 

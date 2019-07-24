@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
-ms.openlocfilehash: b20fa7a1f43369cde85c2535637eec7ceb1d3c29
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 13a855c5770281e2578523bfc1813b2e03df6651
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787186"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65539246"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>PowerShell を使用した Azure Cloud Services での診断の有効化
 Azure Diagnostics 拡張機能を使用して、クラウド サービスからアプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 この記事では、PowerShell を使用して Cloud Service の Azure Diagnostics 拡張機能を有効にする方法について説明します。  この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) に関するページを参照してください。
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Cloud Service のデプロイの一環としての診断拡張機能の有効化
-この方法は、クラウド サービスのデプロイの一環として診断拡張機能を有効にすることができる継続的インテグレーション型のシナリオに適用できます。 新しいクラウド サービスのデプロイを作成するときに、 *ExtensionConfiguration* パラメーターを [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) コマンドレットに渡して診断拡張機能を有効にすることができます。 *ExtensionConfiguration* パラメーターは、 [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) コマンドレットを使用して作成できるさまざまな診断構成を受け取ります。
+この方法は、クラウド サービスのデプロイの一環として診断拡張機能を有効にすることができる継続的インテグレーション型のシナリオに適用できます。 新しい Cloud Service のデプロイを作成するときに、*ExtensionConfiguration* パラメーターを [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-3.7.0) コマンドレットに渡して診断拡張機能を有効にすることができます。 *ExtensionConfiguration* パラメーターは、 [New-AzureServiceDiagnosticsExtensionConfig](/powershell/module/servicemanagement/azure/new-azureservicediagnosticsextensionconfig?view=azuresmps-3.7.0) コマンドレットを使用して作成できるさまざまな診断構成を受け取ります。
 
 次の例は、診断構成がそれぞれ異なる WebRole と WorkerRole を含むクラウド サービスの診断を有効にする方法を示しています。
 
@@ -85,7 +85,7 @@ foreach ($extPath in $diagnosticsExtensions)
 New-AzureDeployment -ServiceName $service_name -Slot Production -Package $service_package -Configuration $service_config -ExtensionConfiguration $diagnosticsConfigurations
 ```
 
-Visual Studio Online では、Cloud Services の自動デプロイに診断拡張機能と同様の方法が使用されます。 完全な例については、「 [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/vso-agent-tasks/blob/master/Tasks/AzureCloudPowerShellDeployment/Publish-AzureCloudDeployment.ps1) 」を参照してください。
+Visual Studio Online では、Cloud Services の自動デプロイに診断拡張機能と同様の方法が使用されます。 完全な例については、「 [Publish-AzureCloudDeployment.ps1](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureCloudPowerShellDeploymentV1/Publish-AzureCloudDeployment.ps1) 」を参照してください。
 
 診断構成で `StorageAccount` を指定しなかった場合は、*StorageAccountName* パラメーターをコマンドレットに渡す必要があります。 *StorageAccountName* パラメーターを指定すると、診断構成ファイルに指定されたストレージ アカウントではなく、このパラメーターに指定されたストレージ アカウントがコマンドレットで常に使用されます。
 
@@ -120,7 +120,7 @@ Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 ## <a name="remove-diagnostics-extension"></a>診断拡張機能の削除
-Cloud Service で診断を無効にするには、 [Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) コマンドレットを使用します。
+Cloud Service で診断を無効にするには、[Remove-AzureServiceDiagnosticsExtension](/powershell/module/servicemanagement/azure/remove-azureservicediagnosticsextension?view=azuresmps-3.7.0) コマンドレットを使用します。
 
 ```powershell
 Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"

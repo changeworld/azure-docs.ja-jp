@@ -15,12 +15,12 @@ ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: c6da92ccd50707e676a1f5d583fe22ae8b3d8b73
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494869"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476314"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>PIM で Azure リソース ロールの設定を構成する
 
@@ -38,19 +38,19 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
 1. サブスクリプションや管理グループなど、管理するリソースをクリックします。
 
-    ![管理する Azure リソースの一覧](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![管理できるリソースを一覧表示する [Azure リソース] ページ](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
 1. **[ロールの設定]** をクリックします。
 
-    ![ロールの設定](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Azure リソース ロールを一覧表示する [ロールの設定] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
 1. 設定を構成するロールをクリックします。
 
-    ![ロールの設定の詳細](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![複数の割り当てとアクティブ化の設定を一覧表示する [ロールの設定の詳細] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
 1. **[編集]** をクリックして [ロールの設定] ウィンドウを開きます。
 
-    ![ロールの設定を編集する](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![割り当てとアクティブ化の設定を更新するためのオプションがある [Edit role settings]/(ロールの設定の編集/) ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
     各ロールの [ロールの設定] ウィンドウでは、複数の設定を構成できます。
 
@@ -62,15 +62,15 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
 | | |
 | --- | --- |
-| **永続的な有資格割り当てを許可する** | リソース管理者は、永続的に資格のあるメンバーシップを割り当てることができます。 |
-| **資格のある割り当てが次の期間後に期限切れになる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
+| **永続的に資格のある割り当てを許可する** | リソース管理者は、永続的に資格のあるメンバーシップを割り当てることができます。 |
+| **次の後に、資格のある割り当ての有効期限が切れる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 また、このような**アクティブな**割り当て期間のオプションからいずれかを選択することができます。
 
 | | |
 | --- | --- |
-| **永続的なアクティブ割り当てを許可する** | リソース管理者は、永続的にアクティブなメンバーシップを割り当てることができます。 |
-| **アクティブな割り当てが次の期間後に期限切れになる** | リソース管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
+| **永続するアクティブな割り当てを許可する** | リソース管理者は、永続的にアクティブなメンバーシップを割り当てることができます。 |
+| **アクティブ割り当ては次の期間後に期限切れになる** | リソース管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 > [!NOTE] 
 > リソース管理者は､終了日時が指定されている割り当てのどれでも更新することができます｡ これに対し､メンバーは[ロールの割り当てを延長または更新する](pim-resource-roles-renew-extend.md)セルフサービス要求を開始することができます｡
@@ -83,13 +83,13 @@ PIM によって、2 つの異なるシナリオで、必要に応じて Azure M
 
 場合によっては、メンバーをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたメンバーにアクティブ化を要求する必要はありません。 このシナリオでは、メンバーは、ロールが割り当てられた時点からそのロールで既にアクティブであるため、自分のロールの割り当てを使用しているとき、PIM では MFA を強制できません。
 
-割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、**[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに MFA を強制することができます。
+割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに MFA を強制することができます。
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>アクティブ化に Multi-Factor Authentication を要求する
 
 ロールの資格を持つメンバーに対して、アクティブ化には MFA の実行を必須にすることができます。 このプロセスにより、アクティブ化を要求しているユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
 
-資格のあるメンバーに対して、アクティブ化には MFA の実行を必須にするには、**[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
+資格のあるメンバーに対して、アクティブ化には MFA の実行を必須にするには、 **[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
 
 詳細については、[多要素認証 (MFA) と PIN](pim-how-to-require-mfa.md) に関するページを参照してください。
 
@@ -99,7 +99,7 @@ PIM によって、2 つの異なるシナリオで、必要に応じて Azure M
 
 ## <a name="require-justification"></a>理由を必須にする
 
-アクティブな割り当てに対して、またはアクティブ化するときに、メンバーに理由の入力を必須にすることができます。 理由を必須にするには、**[アクティブな割り当てに理由が必要]** チェックボックスまたは **[アクティブ化に理由が必要]** チェックボックスをオンにします。
+アクティブな割り当てに対して、またはアクティブ化するときに、メンバーに理由の入力を必須にすることができます。 理由を必須にするには、 **[アクティブな割り当てに理由が必要]** チェックボックスまたは **[アクティブ化に理由が必要]** チェックボックスをオンにします。
 
 ## <a name="require-approval-to-activate"></a>アクティブ化の承認を必須にする
 
@@ -109,13 +109,13 @@ PIM によって、2 つの異なるシナリオで、必要に応じて Azure M
 
 1. **[承認者の選択]** をクリックして [メンバーまたはグループの選択] ウィンドウを開きます。
 
-    ![メンバーまたはグループの選択](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![承認者を選択するための [メンバーまたはグループの選択] ウィンドウ](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. 少なくとも 1 つのメンバーまたはグループを選択し、**[選択]** をクリックします。 任意の組み合わせのメンバーとグループを追加できます。 少なくとも 1 人の承認者を選択する必要があります。 既定の承認者はいません。
+1. 少なくとも 1 つのメンバーまたはグループを選択し、 **[選択]** をクリックします。 任意の組み合わせのメンバーとグループを追加できます。 少なくとも 1 人の承認者を選択する必要があります。 既定の承認者はいません。
 
     選択した承認者の一覧に選択内容が表示されます。
 
-1. すべてのロール設定を指定したら、**[更新]** をクリックして変更を保存します。
+1. すべてのロール設定を指定したら、 **[更新]** をクリックして変更を保存します。
 
 ## <a name="next-steps"></a>次の手順
 

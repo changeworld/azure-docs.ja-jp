@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010937"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60437315"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD ログを Azure Monitor ログと統合する
 
@@ -44,7 +44,7 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 監査アクティビティ ログとサインイン アクティビティ ログを Azure Monitor ログにルーティングして、さらに詳しく分析できます。 
 
-* **[監査ログ]**:テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
+* **[監査ログ]** :テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 * **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 
 > [!NOTE]
@@ -64,15 +64,15 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
 
-2. **[Azure Active Directory]** > **[診断設定]** -> **[Add diagnostic setting]\(診断設定の追加\)** を選択します。 **[監査ログ]** または **[サインイン]** ページから **[エクスポート設定]** を選択して、診断設定の構成ページに移動することもできます。  
+2. **[Azure Active Directory]**  >  **[診断設定]**  ->  **[Add diagnostic setting]\(診断設定の追加\)** を選択します。 **[監査ログ]** または **[サインイン]** ページから **[エクスポート設定]** を選択して、診断設定の構成ページに移動することもできます。  
     
-3. **[診断設定]** メニューで **[Send to Log Analytics workspace]\(Log Analytics ワークスペースに送信\)** チェック ボックスをオンにして、**[構成]** を選択します。
+3. **[診断設定]** メニューで **[Send to Log Analytics workspace]\(Log Analytics ワークスペースに送信\)** チェック ボックスをオンにして、 **[構成]** を選択します。
 
 4. ログ送信先の Log Analytics ワークスペースを選択するか、表示されたダイアログ ボックスで新しいワークスペースを作成します。  
 
 5. 次のいずれかまたは両方を実行します。
-    * 監査ログを Log Analytics ワークスペースに送信するには、**[AuditLogs]** チェックボックスをオンにします。 
-    * サインイン ログを Log Analytics ワークスペースに送信するには、**[SignInLogs]** チェックボックスをオンにします。
+    * 監査ログを Log Analytics ワークスペースに送信するには、 **[AuditLogs]** チェックボックスをオンにします。 
+    * サインイン ログを Log Analytics ワークスペースに送信するには、 **[SignInLogs]** チェックボックスをオンにします。
 
 6. **[保存]** を選択して設定を保存します。
 

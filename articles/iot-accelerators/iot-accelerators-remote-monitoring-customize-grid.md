@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: e1c694847a1ec16d4d7a7b1118df71cb06396186
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165932"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447099"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI にカスタム グリッドを追加する
 
 この記事では、リモート監視ソリューション アクセラレータの Web UI のページに新しいグリッドを追加する方法について説明します。 この記事では、次の内容について説明します。
 
-- ローカル開発環境を準備する方法。
+- ローカルの開発環境を準備する方法。
 - Web UI のページに新しいグリッドを追加する方法。
 
 この記事で使用するグリッドの例では、「[Add a custom service to the Remote Monitoring solution accelerator web UI](iot-accelerators-remote-monitoring-customize-service.md)」(リモート監視ソリューション アクセラレータ Web UI にカスタム サービスを追加する) のハウツー記事で追加方法が説明されているサービスのデータが表示されます。
@@ -239,7 +239,7 @@ npm start
     ```js
     doSomething = () => {
       //Just for demo purposes. Don't console log in a real grid.
-      console.log('hard selected rows', this.gridApi.getSelectedRows());
+      console.log('Hard selected rows', this.gridApi.getSelectedRows());
     };
     ```
 
@@ -263,16 +263,16 @@ npm start
 1. ソフト選択されたリンクがクリックされると、**onSoftSelectChange** イベントがトリガーされます。 詳細のポップアップを開くなど、その行に必要なアクションが実行されます。 この例では、単にコンソールに出力されます。
 
     ```js
-    onSoftSelectChange = (rowId, rowEvent) => {
+    onSoftSelectChange = (rowId, rowData) => {
+      //Note: only the Id is reliable, rowData may be out of date
       const { onSoftSelectChange } = this.props;
-      const obj = (this.gridApi.getDisplayedRowAtIndex(rowId) || {}).data;
-      if (obj) {
+      if (rowId) {
         //Just for demo purposes. Don't console log a real grid.
-        console.log('Soft selected', obj);
-        this.setState({ softSelectedObj: obj });
+        console.log('Soft selected', rowId);
+        this.setState({ softSelectedId: rowId });
       }
       if (isFunc(onSoftSelectChange)) {
-        onSoftSelectChange(obj, rowEvent);
+        onSoftSelectChange(rowId, rowData);
       }
     }
     ```

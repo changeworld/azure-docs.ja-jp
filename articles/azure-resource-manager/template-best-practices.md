@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 03/05/2019
 ms.author: tomfitz
 ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440474"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60389578"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -147,7 +147,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 * 一部の場所で使用できないリソースについては、個別のパラメーターを使用するか、場所のリテラル値を指定します。
 
-## <a name="variables"></a>variables
+## <a name="variables"></a>変数
 
 [変数](resource-group-authoring-templates.md#variables)を使用する場合は、次の情報を活用してください。
 

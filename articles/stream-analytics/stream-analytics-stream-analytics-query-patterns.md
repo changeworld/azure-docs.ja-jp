@@ -7,31 +7,31 @@ ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/08/2017
-ms.openlocfilehash: 9c9a5f219af0d474e1608f98595abe027b894117
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/16/2019
+ms.openlocfilehash: 88df7ae0d4e6054d82302ad5f0adabcf656cb0f5
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001734"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620817"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>一般的 Stream Analytics 使用状況パターンのクエリ例
 
-## <a name="introduction"></a>はじめに
-Azure Stream Analytics のクエリは SQL に類似したクエリ言語で表現されます。 言語の構造については、「[Stream Analytics query language reference](https://msdn.microsoft.com/library/azure/dn834998.aspx)」(Stream Analytics クエリ言語リファレンス) ガイドで確認できます。 
+Azure Stream Analytics のクエリは SQL に類似したクエリ言語で表現されます。 言語の構造については、「[Stream Analytics query language reference](/stream-analytics-query/stream-analytics-query-language-reference)」(Stream Analytics クエリ言語リファレンス) ガイドで確認できます。 
 
-クエリのデザインでは、イベント データを 1 つの入力ストリームから別の出力データ ストアに移動する単純なパススルー ロジックを表すことができます。 または、TollApp サンプルのように、豊富なパターン マッチングとテンポラル解析を行って、さまざまな時間枠にわたる集計を計算することができます。 複数の入力からのデータを結合してストリーミング イベントを結合し、静的な参照データに対する参照を行ってイベントの値を多様化することができます。 複数の出力にデータを書き込むこともできます。
+クエリのデザインでは、イベント データを 1 つの入力ストリームから出力データ ストアに移動する、単純なパススルー ロジックを表すことができます。また、「[Stream Analytics を使って IoT ソリューションを構築する](stream-analytics-build-an-iot-solution-using-stream-analytics.md)」のガイドで説明しているように、豊富なパターン マッチングとテンポラル解析を行って、さまざまな時間枠にわたって集計を計算することもできます。 複数の入力からのデータを結合してストリーミング イベントを結合し、静的な参照データに対する参照を行ってイベントの値を多様化することができます。 複数の出力にデータを書き込むこともできます。
 
-この記事では、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。 このドキュメントは作成中であり、継続的に新しいパターンで更新されます。
+この記事では、実際のシナリオに基づいて、いくつかの一般的なクエリ パターンの対処方法について説明します。
 
-## <a name="work-with-complex-data-types-in-json-and-avro"></a>JSON および AVRO での複合データ型の操作 
+## <a name="work-with-complex-data-types-in-json-and-avro"></a>JSON および AVRO での複合データ型の操作
+
 Azure Stream Analytics では、CSV、JSON、および Avro データ形式のイベントの処理をサポートします。
+
 JSON と Avro のどちらも、入れ子になったオブジェクト (レコード) や配列などの複合型を含むことができます。 これらの複雑なデータ型の操作については、[JSON および AVRO データの解析](stream-analytics-parsing-json.md)に関する記事をご覧ください。
 
-
 ## <a name="query-example-convert-data-types"></a>クエリの例:データ型の変換
-**説明**:入力ストリームのプロパティの型を定義します。
-たとえば、自動車の重量は入力ストリームでは文字列ですが、**合計**を計算するために **INT** に変換する必要があります。
+
+**説明**:入力ストリームのプロパティの型を定義します。 たとえば、自動車の重量は入力ストリームでは文字列ですが、**SUM** を計算するために **INT** に変換する必要があります。
 
 **入力**:
 
@@ -59,9 +59,10 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
         TumblingWindow(second, 10)
 ```
 
-**説明**:**Weight** フィールドの **CAST** ステートメントを使用してそのデータ型を指定します。 サポートされるデータ型の一覧については、「[Data types (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx)」(データ型 (Azure Stream Analytics)) をご覧ください。
+**説明**:**Weight** フィールドの **CAST** ステートメントを使用してそのデータ型を指定します。 サポートされるデータ型の一覧については、「[Data types (Azure Stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics)」(データ型 (Azure Stream Analytics)) をご覧ください。
 
-## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>クエリの例:Like/Not like を使用してパターン マッチングを行う
+## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>クエリの例:LIKE/NOT LIKE を使用してパターン マッチングを行う
+
 **説明**:イベントのフィールド値が特定のパターンと一致することを確認します。
 たとえば、結果が A で始まり 9 で終わるライセンス プレートを返すかどうかを検査します。
 
@@ -91,11 +92,11 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
         LicensePlate LIKE 'A%9'
 ```
 
-**説明**:**LIKE** ステートメントを使用して **LicensePlate** フィールドの値を検査します。 値は A で始まり、0 個以上の文字列が続き、9 で終わります。 
+**説明**:**LIKE** ステートメントを使用して **LicensePlate** フィールドの値を検査します。 値は文字 A で始まり、0 個以上の文字列が続き、数字 9 で終わります。 
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>クエリの例:異なるケース/値に異なるロジックを指定する (CASE ステートメント)
-**説明**:特定の条件に基づいて、フィールドに異なる計算を適用します。
-たとえば、通過した自動車の台数を製造元ごとに表す文字列情報を指定します。このとき、台数が 1 のときだけ異なる計算を適用するものとします。
+
+**説明**:特定の条件に基づいて、フィールドに異なる計算を適用します。 たとえば、通過した自動車の台数を製造元ごとに表す文字列情報を指定します。このとき、台数が 1 のときだけ異なる計算を適用するものとします。
 
 **入力**:
 
@@ -120,7 +121,7 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
             WHEN COUNT(*) = 1 THEN CONCAT('1 ', Make)
             ELSE CONCAT(CAST(COUNT(*) AS NVARCHAR(MAX)), ' ', Make, 's')
         END AS CarsPassed,
-        System.TimeStamp AS Time
+        System.TimeStamp() AS Time
     FROM
         Input TIMESTAMP BY Time
     GROUP BY
@@ -128,11 +129,11 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
         TumblingWindow(second, 10)
 ```
 
-**説明**:**CASE** 式は、式を一連の単純な式と比較して結果を決定します。 この例では、カウント 1 の自動車は、カウントが 1 以外の自動車とは異なる文字列の説明を返します。 
+**説明**:**CASE** 式は、式を一連の単純な式と比較して結果を決定します。 この例では、カウント 1 の自動車は、カウントが 1 以外の自動車とは異なる文字列の説明を返します。
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>クエリの例:複数の出力にデータを送信する
-**説明**:1 つのジョブから複数の出力ターゲットにデータを送信します。
-たとえば、しきい値に基づくアラートのデータを分析し、すべてのイベントを Blob Storage にアーカイブします。
+
+**説明**:1 つのジョブから複数の出力ターゲットにデータを送信します。 たとえば、しきい値に基づくアラートのデータを分析し、すべてのイベントを Blob Storage にアーカイブします。
 
 **入力**:
 
@@ -172,7 +173,7 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
 
     SELECT
         Make,
-        System.TimeStamp AS Time,
+        System.TimeStamp() AS Time,
         COUNT(*) AS [Count]
     INTO
         AlertOutput
@@ -185,12 +186,11 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
         [Count] >= 3
 ```
 
-**説明**:**INTO** 句は、Stream Analytics に対して、このステートメントからのデータを書き込む出力を指定します。
-1 番目のクエリは、受け取ったデータを **ArchiveOutput** という名前の出力にパススルーします。
-2 番目のクエリは、簡単な集計とフィルター処理を行い、結果を下流のアラート システムに送信します。
+**説明**:**INTO** 句は、Stream Analytics に対して、このステートメントからのデータを書き込む出力を指定します。 1 番目のクエリは、受け取ったデータを **ArchiveOutput** という名前の出力にパススルーします。 2 番目のクエリは、簡単な集計とフィルター処理を行い、結果を下流のアラート システム **AlertOutput** に送信します。
 
 また、共通テーブル式 (CTE) (**WITH** ステートメントなど) の結果を複数の出力ステートメントに再利用することもできます。 このオプションには、入力ソースに対して開くリーダーが少なくて済むという追加の利点があります。
-例:  
+
+例: 
 
 ```SQL
     WITH AllRedCars AS (
@@ -206,8 +206,8 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
 ```
 
 ## <a name="query-example-count-unique-values"></a>クエリの例:一意の値をカウントする
-**説明**:ストリームに出現するフィールドの、値ごとの件数を一定間隔でカウントします。
-たとえば、料金所を通過した自動車の、メーカーごとの台数を 2 秒間隔でカウントする場合などです。
+
+**説明**:ストリームに出現するフィールドの、値ごとの件数を一定間隔でカウントします。 たとえば、料金所を通過した自動車の、メーカーごとの台数を 2 秒間隔でカウントする場合などです。
 
 **入力**:
 
@@ -231,19 +231,19 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
 ```SQL
 SELECT
      COUNT(DISTINCT Make) AS CountMake,
-     System.TIMESTAMP AS TIME
+     System.TIMESTAMP() AS TIME
 FROM Input TIMESTAMP BY TIME
 GROUP BY 
      TumblingWindow(second, 2)
 ```
 
 
-**説明:**
+**説明:** 
 **COUNT(DISTINCT Make)** は、特定の時間枠内での、**Make** 列の個別の値の数を返します。
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>クエリの例:値が変化したかどうかを判定する
-**説明**:前の値が現在の値と異なるかどうかを判定します。
-たとえば、前に有料道路を走っていた自動車のメーカーが現在の自動車と同じであるかどうかなどです。
+
+**説明**:前の値が現在の値と異なるかどうかを判定します。 たとえば、前に有料道路を走っていた自動車のメーカーが現在の自動車と同じであるかどうかなどです。
 
 **入力**:
 
@@ -273,6 +273,7 @@ GROUP BY
 **説明**:**LAG** を使用して入力ストリームで 1 つ前のイベントを調べて、**Make** の値を取得します。 次に、現在のイベントの **Make** の値と比較し、異なる場合はイベントを出力します。
 
 ## <a name="query-example-find-the-first-event-in-a-window"></a>クエリの例:期間内の最初のイベントを検索する
+
 **説明**:10 分間隔で最初の自動車を検索します。
 
 **入力**:
@@ -331,6 +332,7 @@ GROUP BY
 ```
 
 ## <a name="query-example-find-the-last-event-in-a-window"></a>クエリの例:期間内の最後のイベントを検索する
+
 **説明**:10 分間隔で最後の自動車を検索します。
 
 **入力**:
@@ -378,6 +380,7 @@ GROUP BY
 **説明**:クエリには 2 つの手順があります。 最初の手順では、10 分間隔で最新のタイムスタンプを検索します。 2 番目の手順では、最初のクエリの結果と元のストリームを結合し、各期間で最後のタイムスタンプに一致するイベントを検索します。 
 
 ## <a name="query-example-detect-the-absence-of-events"></a>クエリの例:イベントがないことを検出する
+
 **説明**:特定の条件と一致する値がストリームに存在しないことを確認します。
 たとえば、同じ製造元の 2 台の自動車が、最後の 90 秒で続けて有料道路に進入したことを把握するには、どうすればよいのでしょうか。
 
@@ -414,6 +417,7 @@ GROUP BY
 **説明**:**LAG** を使用して入力ストリームで 1 つ前のイベントを調べて、**Make** の値を取得します。 これを現在のイベントの **Make** の値と比較し、同じ場合はイベントを出力します。 また、**LAG** を使用して前の自動車のデータを取得することもできます。
 
 ## <a name="query-example-detect-the-duration-between-events"></a>クエリの例:イベントの間隔を検出する
+
 **説明**:特定のイベントの間隔を検出します。 たとえば、Web クリック ストリームから、ある機能に費やされた時間を調べます。
 
 **入力**:  
@@ -433,13 +437,18 @@ GROUP BY
 
 ```SQL
     SELECT
-        [user], feature, DATEDIFF(second, LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'), Time) as duration
+        [user],
+    feature,
+    DATEDIFF(
+        second,
+        LAST(Time) OVER (PARTITION BY [user], feature LIMIT DURATION(hour, 1) WHEN Event = 'start'),
+        Time) as duration
     FROM input TIMESTAMP BY Time
     WHERE
         Event = 'end'
 ```
 
-**説明**:**LAST** 関数を使用して、イベントの種類が **Start** であった最後の **TIME** 値を取得します。 **LAST** 関数は **PARTITION BY [user]** が使用し、一意のユーザーごとに結果が計算されることを示します。 このクエリでは、**Start** イベントと **Stop** イベントの時間差の最大しきい値を 1 時間としていますが、必要に応じて構成可能です **(LIMIT DURATION(hour, 1)**。
+**説明**:**LAST** 関数を使用して、イベントの種類が **Start** であった最後の **TIME** 値を取得します。 **LAST** 関数は **PARTITION BY [user]** が使用し、一意のユーザーごとに結果が計算されることを示します。 このクエリでは、**Start** イベントと **Stop** イベントの時間差の最大しきい値を 1 時間としていますが、必要に応じて構成可能です **(LIMIT DURATION(hour, 1)** 。
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>クエリの例:条件の期間を検出する
 **説明**:条件が発生していた時間の長さを調べます。
@@ -488,8 +497,8 @@ GROUP BY
 **説明**:**LAG** を使用して 24 時間の入力ストリームに着目し、重量の上限を 20000 として、**StartFault** と **StopFault** の範囲で該当するインスタンスを探します。
 
 ## <a name="query-example-fill-missing-values"></a>クエリの例:欠落値を入力する
-**説明**:欠落値があるイベントのストリームの場合、定期的な間隔でイベントのストリームを生成します。
-たとえば、最近検出されたデータ ポイントを報告する 5 秒ごとのイベントを生成します。
+
+**説明**:欠落値があるイベントのストリームの場合、定期的な間隔でイベントのストリームを生成します。 たとえば、最近検出されたデータ ポイントを報告する 5 秒ごとのイベントを生成します。
 
 **入力**:
 
@@ -502,7 +511,7 @@ GROUP BY
 | "2014-01-01T06:01:30" |5 |
 | "2014-01-01T06:01:35" |6 |
 
-**出力 (最初の 10 行)**:
+**出力 (最初の 10 行)** :
 
 | windowend | lastevent.t | lastevent.value |
 | --- | --- | --- |
@@ -521,19 +530,19 @@ GROUP BY
 
 ```SQL
     SELECT
-        System.Timestamp AS windowEnd,
+        System.Timestamp() AS windowEnd,
         TopOne() OVER (ORDER BY t DESC) AS lastEvent
     FROM
         input TIMESTAMP BY t
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 ```
 
-**説明**:このクエリは、5 秒ごとにイベントを生成し、それまでに受信した最後のイベントを出力します。 [ホッピング ウィンドウ](https://msdn.microsoft.com/library/dn835041.aspx "ホッピング ウィンドウ -- Azure Stream Analytics") 期間は、クエリが最新のイベントを検出するためにさかのぼる期間 (この例では 300 秒) を指定します。
+**説明**:このクエリは、5 秒ごとにイベントを生成し、それまでに受信した最後のイベントを出力します。 [ホッピング ウィンドウ](/stream-analytics-query/hopping-window-azure-stream-analytics)期間は、クエリが最新のイベントを検出するためにさかのぼる期間 (この例では 300 秒) を指定します。
 
 
 ## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>クエリの例:同じストリーム内で 2 つのイベントの種類を関連付ける
-**説明**:場合によっては、特定の期間中に発生した複数のイベントの種類に基づいて、アラートを生成する必要があります。
-たとえば、家庭用電子レンジの IoT シナリオにおいて、ファン温度が 40 未満、直近 3 分間の最大電力が 10 未満の場合にアラートを生成する必要があるとします。
+
+**説明**:場合によっては、特定の期間中に発生した複数のイベントの種類に基づいて、アラートを生成する必要があります。 たとえば、家庭用電子レンジの IoT シナリオにおいて、ファン温度が 40 未満、直近 3 分間の最大電力が 10 未満の場合にアラートを生成する必要があるとします。
 
 **入力**:
 
@@ -569,7 +578,7 @@ GROUP BY
 ```SQL
 WITH max_power_during_last_3_mins AS (
     SELECT 
-        System.TimeStamp AS windowTime,
+        System.TimeStamp() AS windowTime,
         deviceId,
         max(value) as maxPower
     FROM
@@ -602,11 +611,11 @@ WHERE
     AND t2.maxPower > 10
 ```
 
-**説明**:1 つ目の `max_power_during_last_3_mins` クエリでは、[スライディング ウィンドウ](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)を使用して、すべてのデバイスの電力センサーの最大値 (直近 3 分間) を特定しています。 2 つ目のクエリでは、1 つ目のクエリと結合して、現在のイベントに関連する直近のウィンドウの電力値を特定しています。 その後、条件が満たされた場合には、デバイスについてのアラートが生成されます。
+**説明**:1 つ目の `max_power_during_last_3_mins` クエリでは、[スライディング ウィンドウ](/stream-analytics-query/sliding-window-azure-stream-analytics)を使用して、すべてのデバイスの電力センサーの最大値 (直近 3 分間) を特定しています。 2 つ目のクエリでは、1 つ目のクエリと結合して、現在のイベントに関連する直近のウィンドウの電力値を特定しています。 その後、条件が満たされた場合には、デバイスについてのアラートが生成されます。
 
 ## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>クエリの例:デバイスのクロックのずれ (サブストリーム) と関係なくイベントを処理する
-**説明**:イベント プロデューサー間またはパーティション間のクロックのずれや、ネットワーク待機時間が原因でイベントが遅れて、あるいは順序がずれて到着することがあります。 次の例では、TollID 2 のデバイス クロックは TollID 1 より 10 秒遅れており、TollID 3 のデバイス クロックは TollID 1 より 5 秒遅れています。 
 
+**説明**:イベント プロデューサー間またはパーティション間のクロックのずれや、ネットワーク待機時間が原因でイベントが遅れて、あるいは順序がずれて到着することがあります。 次の例では、TollID 2 のデバイス クロックは TollID 1 より 5 秒遅れており、TollID 3 のデバイス クロックは TollID 1 より 10 秒遅れています。 
 
 **入力**:
 
@@ -643,10 +652,11 @@ FROM input
 GROUP BY TUMBLINGWINDOW(second, 5), TollId
 ```
 
-**説明**:[TIMESTAMP BY OVER](https://msdn.microsoft.com/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) 句は、サブストリームを使用して各デバイスのタイムラインで個別に検索します。 各 TollID の出力イベントは計算されると同時に生成され、同じクロックをすべてのデバイスが参照しているかのように順序が変更されるのではなく、各 TollID ごとにイベントが順序付けられます。
+**説明**:[TIMESTAMP BY OVER](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) 句は、サブストリームを使用して各デバイスのタイムラインで個別に検索します。 各 TollID の出力イベントは計算されると同時に生成され、同じクロックをすべてのデバイスが参照しているかのように順序が変更されるのではなく、各 TollID ごとにイベントが順序付けられます。
 
 ## <a name="query-example-remove-duplicate-events-in-a-window"></a>クエリの例:期間内の重複するイベントを削除する
-**説明**:特定の期間内のイベントに対する平均の計算などの操作を実行するときは、重複するイベントを除外する必要があります。
+
+**説明**:特定の期間内のイベントに対する平均の計算などの操作を実行するときは、重複するイベントを除外する必要があります。 次の例では、2 番目のイベントは最初のイベントの重複です。
 
 **入力**:  
 
@@ -679,7 +689,7 @@ With Temp AS (
     GROUP BY
         Value,
         DeviceId,
-        SYSTEM.TIMESTAMP
+        SYSTEM.TIMESTAMP()
 )
 
 SELECT
@@ -689,15 +699,25 @@ FROM Temp
 GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
-**説明**:[COUNT(DISTINCT Time)](https://docs.microsoft.com/stream-analytics-query/count-azure-stream-analytics) は、特定の時間枠内での、Time 列の個別の値の数を返します。 その後、このステップの出力を使用し、重複を除去することによって、デバイスあたりの平均を計算できます。
+**説明**:[COUNT(DISTINCT Time)](/stream-analytics-query/count-azure-stream-analytics) は、特定の時間枠内での、Time 列の個別の値の数を返します。 その後、このステップの出力を使用し、重複を除去することによって、デバイスあたりの平均を計算できます。
+
+## <a name="geofencing-and-geospatial-queries"></a>ジオフェンシングおよび地理空間クエリ
+Azure Stream Analytics には、フリート管理、ライド シェア、コネクテッド カー、および資産追跡などのシナリオを実装するために使用できる、組み込みの地理空間関数が用意されています。 地理空間データは、イベント ストリームまたは参照データの一部として、GeoJSON または WKT 形式で取り込むことができます。 詳細については、「[Azure Stream Analytics を使用したジオフェンシングおよび地理空間集計のシナリオ](geospatial-scenarios.md)」を参照してください。
+
+## <a name="language-extensibility-through-javascript-and-c"></a>JavaScript と C# による言語の拡張性
+Azure Stream Ananlytics のクエリ言語は、JavaScript または C# 言語で記述されたカスタム関数を使用して拡張できます。 詳細については、次の記事を参照してください。
+* [Azure Stream Analytics の JavaScript ユーザー定義関数](stream-analytics-javascript-user-defined-functions.md)
+* [Azure Stream Analytics の JavaScript ユーザー定義集計](stream-analytics-javascript-user-defined-aggregates.md)
+* [Azure Stream Analytics Edge ジョブの .NET Standard ユーザー定義関数の開発](stream-analytics-edge-csharp-udf-methods.md)
 
 ## <a name="get-help"></a>問い合わせ
+
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

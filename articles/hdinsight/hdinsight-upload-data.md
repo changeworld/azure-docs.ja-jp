@@ -1,33 +1,32 @@
 ---
 title: HDInsight で Apache Hadoop ジョブのデータをアップロードする
 description: Azure クラシック CLI、Azure Storage Explorer、Azure PowerShell、Hadoop コマンド ライン、または Sqoop を使用して、HDInsight で Apache Hadoop ジョブのデータをアップロードしてアクセスする方法について説明します。
-keywords: ETL Hadoop, Hadoop へのデータの取得, Hadoop ロード データ
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/08/2019
-ms.openlocfilehash: 3283c885956c5b43171c6287dc00efa9a82db28e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 06/03/2019
+ms.openlocfilehash: fceea6273f00fdf16d8934533f08bc3494795bc4
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64722785"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433281"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
-Azure HDInsight には、Azure Storage と Azure Data lake Storage (Gen1 および Gen2) を経由した、フル機能を備えた Hadoop 分散ファイル システム (HDFS) が用意されています。 Azure Storage と Data Lake Storage Gen1 および Gen2 は、顧客にシームレスなエクスペリエンスを提供する HDFS 拡張機能として設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure Storage、Data Lake Storage Gen1 および Gen2 は、そのデータに対する格納と計算のために最適化された個別のファイル システムです。 Azure Storage を使用するメリットについては、[HDInsight での Azure Storage の使用][hdinsight-storage]、[HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)、および [HDInsight での Data Lake Storage Gen2 の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)のそれぞれに関するページを参照してください。
+Azure HDInsight には、Azure Storage と Azure Data lake Storage (Gen1 および Gen2) を経由した、フル機能を備えた Hadoop 分散ファイル システム (HDFS) が用意されています。 Azure Storage と Data Lake Storage Gen1 および Gen2 は、顧客にシームレスなエクスペリエンスを提供する HDFS 拡張機能として設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure Storage、Data Lake Storage Gen1 および Gen2 は、そのデータに対する格納と計算のために最適化された個別のファイル システムです。 Azure Storage を使用するメリットについては、[HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)、[HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)、[HDInsight での Data Lake Storage Gen2 の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)のそれぞれに関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、次の要件にご注意ください。
 
-* Azure HDInsight クラスター。 手順については、[Azure HDInsight の概要][hdinsight-get-started]または [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+* Azure HDInsight クラスター。 手順については、[Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)または [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 * 次の記事に関する知識
 
-    - [HDInsight での Azure Storage の使用][hdinsight-storage]
+    - [HDInsight での Azure Storage の使用](hdinsight-hadoop-use-blob-storage.md)
     - [HDInsight での Data Lake Storage Gen1 の使用](hdinsight-hadoop-use-data-lake-store.md)
     - [HDInsight での Data Lake Storage Gen2 の使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
@@ -64,11 +63,11 @@ hadoop -copyFromLocal <localFilePath> <storageFilePath>
 
 HDInsight の既定のファイル システムは Azure Storage にあるため、/example/data.txt は実際は Azure Storage 上にあります。 このファイルは次のように表すこともできます。
 
-    wasb:///example/data/data.txt
+    wasbs:///example/data/data.txt
 
 or
 
-    wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
 ファイルに使用するその他の Hadoop コマンドの一覧は、[https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html) をご覧ください。
 
@@ -83,7 +82,7 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 | [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
 | [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
 | [Cerulea](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
-| [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | |✔ |
+| [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [Microsoft Azure 用の CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
@@ -104,7 +103,7 @@ Azure Data Factory はフル マネージドのサービスで、データの保
 ### <a id="sqoop"></a>Apache Sqoop
 Sqoop は、Hadoop とリレーショナル データベース間でデータを転送するためのツールです。 このツールを使用して、SQL、MySQL、Oracle などのリレーショナル データベース管理システム (RDBMS) から Hadoop 分散ファイル システム (HDFS) へデータをインポートしたり、MapReduce または Hive を使用して Hadoop のデータを変換し、そのデータを RDBMS へ取り込んだりできます。
 
-詳細については、[HDInsight での Sqoop の使用][hdinsight-use-sqoop]に関するページを参照してください。
+詳細については、[HDInsight での Sqoop の使用](hadoop/hdinsight-use-sqoop.md)に関するページを参照してください。
 
 ### <a name="development-sdks"></a>開発 SDK
 Azure Storage には、次のプログラミング言語で Azure SDK を使用してアクセスすることもできます。
@@ -152,28 +151,21 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 
 Apache Ambari を使うことで、`fs.azure.write.request.size` の値をグローバルに増やすこともできます。 Ambari Web UI で値を変更するには、次の手順を使えます。
 
-1. ブラウザーで、クラスターの Ambari Web UI に移動します。 これは https://CLUSTERNAME.azurehdinsight.net です。**CLUSTERNAME** はクラスターの名前です。
+1. ブラウザーで、クラスターの Ambari Web UI に移動します。 これは `https://CLUSTERNAME.azurehdinsight.net` です。`CLUSTERNAME` はクラスターの名前です。
 
     プロンプトが表示されたら、クラスターの管理者名とパスワードを入力します。
-2. 画面の左側にある **[HDFS]** を選び、**[Configs (構成)]** を選びます。
+2. 画面の左側にある **[HDFS]** を選び、 **[Configs (構成)]** を選びます。
 3. **[Filter... (フィルター...)]** フィールドに「`fs.azure.write.request.size`」と入力します。 ページの中央にフィールドと現在の値が表示されます。
 4. 値を 262144 (256 KB) から新しい値に変更します。 たとえば、4194304 (4 MB) に変更します。
 
-![Ambari Web UI で値を変更する画像](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
+    ![Ambari Web UI で値を変更する画像](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
 Ambari の使用について詳しくは、「[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 ここでは、HDInsight にデータを取り込む方法を説明しました。次の記事でデータの分析方法を学習してください。
 
-* [Azure HDInsight の概要][hdinsight-get-started]
-* [プログラムによる Apache Hadoop ジョブの送信][hdinsight-submit-jobs]
-* [HDInsight での Apache Hive の使用][hdinsight-use-hive]
-* [HDInsight での Apache Pig の使用][hdinsight-use-pig]
-
-[hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-[hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
+* [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [プログラムによる Apache Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)

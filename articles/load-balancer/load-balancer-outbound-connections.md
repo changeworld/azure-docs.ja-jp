@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: この記事では、Azure によって、パブリック インターネット サービスと VM がどのように通信するかを説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
-ms.author: kumud
-ms.openlocfilehash: d5f52829f5895b30afd160cc8ded755332aca5c5
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.author: allensu
+ms.openlocfilehash: 6623b3e679faaa73f18c0f6b376de101113bcbdb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190166"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274552"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 

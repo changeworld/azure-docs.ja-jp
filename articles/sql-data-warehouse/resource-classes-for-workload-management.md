@@ -1,21 +1,21 @@
 ---
-title: ワークロード管理用のリソース クラス - Azure SQL Data Warehouse | Microsoft Docs
+title: Azure SQL Data Warehouse のワークロード管理用のリソース クラス | Microsoft Docs
 description: Azure SQL Data Warehouse のクエリで、リソース クラスを使用して、コンカレンシーとコンピューティング リソース を管理するためのガイダンスです。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
-ms.date: 03/15/2019
+ms.subservice: workload-management
+ms.date: 06/20/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ad8dad35013a28696e7c9cb5cc68464f3c4bf64
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 548271e888344eeb0d111c074153ef7492af5b33
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520056"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595531"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のリソース クラスでのワークロード管理
 
@@ -79,11 +79,12 @@ Azure SQL Data Warehouse のクエリで、リソース クラスを使用して
 
 Gen1 の動的リソース クラスを詳しく見ていくと､それらの動作を解釈する上で複雑さを増しているいくつかの要素があることが分かります｡
 
-- smallrc リソース クラスは静的リソース クラス同様に固定メモリ モデルで動作します｡  Smallrc のクエリでは､サービス レベルの上昇に応じて動的にメモリが増えるわけではありません｡
+**Gen1 で**
+- smallrc リソース クラスは静的リソース クラス同様に固定メモリ モデルで動作します｡  Smallrc のクエリでは､サービス レベルの上昇に応じて動的にメモリが増えるわけではありません｡ 
 - サービス レベルが変化すると､可能なクエリのコンカレンシー数は上下することがあります｡
-- 同じリソース クラスに割り当てられているメモリーは､サービス レベルのスケーリングに比例して変化するわけではありません｡
+- 同じリソース クラスに割り当てられているメモリーは､サービス レベルのスケーリングに比例して変化するわけではありません。
 
-**Gen2 のみ**では､動的リソース クラスは､上記の点の対処において真の意味で動的です｡  新しいルールは､small-medium-large-xlarge のリソース クラスに対するメモリ 割り当て率の 3-10-22-70です｡この割り当て率は**サービス レベルに依存しません**｡  次の表は､サービス レベルに依存しない､メモリ割り当て率とクエリの最小同時実行数をまとめています｡
+**Gen2 では**､動的リソース クラスは､上記の点に対応している真の意味で動的なクラスです。  新しいルールは､small-medium-large-xlarge のリソース クラスに対するメモリ 割り当て率の 3-10-22-70です｡この割り当て率は**サービス レベルに依存しません**｡  次の表は､サービス レベルに依存しない､メモリ割り当て率とクエリの最小同時実行数をまとめています｡
 
 | リソース クラス | メモリ率 | 最小同時実行クエリ数 |
 |:--------------:|:-----------------:|:----------------------:|
@@ -274,7 +275,7 @@ EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;
 -------------------------------------------------------------------------------
 -- Dropping prc_workload_management_by_DWU procedure if it exists.
 -------------------------------------------------------------------------------
-IF EXISTS (SELECT -FROM sys.objects WHERE type = 'P' AND name = 'prc_workload_management_by_DWU')
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'prc_workload_management_by_DWU')
 DROP PROCEDURE dbo.prc_workload_management_by_DWU
 GO
 

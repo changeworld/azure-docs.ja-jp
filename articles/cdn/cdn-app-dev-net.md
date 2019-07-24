@@ -7,23 +7,23 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 63cf4101-92e7-49dd-a155-a90e54a792ca
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 838c76e6a383b61ff465f3ed7506af34c8cd01d4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916616"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594174"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
-> * [Node.js](cdn-app-dev-node.md)
+> * [Node.JS](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
 > 
 > 
@@ -42,13 +42,13 @@ ms.locfileid: "58916616"
 ## <a name="create-your-project-and-add-nuget-packages"></a>プロジェクトを作成し、NuGet パッケージを追加する
 これまでの手順で、CDN プロファイルのリソース グループを作成し、そのグループ内の CDN プロファイルとエンドポイントを管理するための Azure AD アプリケーション アクセス許可を割り当てました。この段階で、アプリケーションの作成を開始できます。
 
-Visual Studio 2015 で、**[ファイル]**、**[新規]**、**[プロジェクト]** の順にクリックして、新しいプロジェクト ダイアログを開きます。  左側のウィンドウで **[Visual C#]** を展開し、**[Windows]** を選択します。  中央のウィンドウで **[コンソール アプリケーション]** をクリックします。  プロジェクトに名前を付け、 **[OK]** をクリックします。  
+Visual Studio 2015 で、 **[ファイル]** 、 **[新規]** 、 **[プロジェクト]** の順にクリックして、新しいプロジェクト ダイアログを開きます。  左側のウィンドウで **[Visual C#]** を展開し、 **[Windows]** を選択します。  中央のウィンドウで **[コンソール アプリケーション]** をクリックします。  プロジェクトに名前を付け、 **[OK]** をクリックします。  
 
 ![新しいプロジェクト](./media/cdn-app-dev-net/cdn-new-project.png)
 
 このプロジェクトでは、NuGet パッケージに含まれているいくつかの Azure ライブラリを使用します。  それでは、ライブラリをプロジェクトに追加していきましょう。
 
-1. **[ツール]** メニュー、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** を順にクリックします。
+1. **[ツール]** メニュー、 **[NuGet パッケージ マネージャー]** 、 **[パッケージ マネージャー コンソール]** を順にクリックします。
    
     ![Manage Nuget Packages](./media/cdn-app-dev-net/cdn-manage-nuget.png)
 2. パッケージ マネージャー コンソールで、次のコマンドを実行して、 **Active Directory Authentication Library (ADAL)** をインストールします。

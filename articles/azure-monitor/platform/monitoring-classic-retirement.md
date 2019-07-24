@@ -8,22 +8,25 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e7cb9f4750fc26d4e03d255c8614e42a42944fd0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: fb7821b07e68459cb3d76812a12e85387b9f0f52
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678107"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295103"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 
 Azure Monitor は、フル スタックの統合監視サービスになり、リソース全体で "ワン メトリック" と "ワン アラート" をサポートするようになりました。詳細については、[新しい Azure Monitor に関するブログ記事](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/)を参照してください。この新しい Azure の監視およびアラート プラットフォームは、処理速度が速く、より賢く、拡張できるように構築され、Microsoft のインテリジェント クラウド哲学に沿って、成長するクラウド コンピューティングの拡大に対応します。 
 
-新しい Azure の監視およびアラート プラットフォームの配置に伴い、Azure アラートの "*クラシック アラートの表示*" セクションでホストされている "クラシック" な監視およびアラート プラットフォームは、その提供を終了し、Azure パブリック クラウドで **2019 年 6 月に廃止される予定**です。 [Azure Government クラウド](../../azure-government/documentation-government-welcome.md)は影響を受けません。
+新しい Azure の監視およびアラート プラットフォームの配置に伴い、Azure アラートの "*クラシック アラートの表示*" セクションでホストされている "クラシック" な監視およびアラート プラットフォームは、その提供を終了し、Azure パブリック クラウドで **2019 年 8 月に廃止される予定**です。 [Azure Government クラウド](../../azure-government/documentation-government-welcome.md)と [Azure China 21Vianet](https://docs.azure.cn/) に影響はありません。
+
+> [!NOTE]
+> 移行ツールの展開が遅れたことで、クラシック アラート移行の提供終了日が、最初に発表された 2019 年 6 月 30 日から [2019 年 8 月 31 日に延長](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/)されました。
 
  ![Azure portal のクラシック アラート](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
-新しいプラットフォームの使用を開始し、新しいプラットフォームでアラートを再作成することをお勧めします。 多数のアラートを作成しているお客様のために、中断や追加コストなしで既存のクラシック アラートを新しいアラート システムに移動するための[自主的移行ツール](alerts-using-migration-tool.md)を[段階的に展開](alerts-understand-migration.md#roll-out-phases)する作業が進んでいます。
+新しいプラットフォームの使用を開始し、新しいプラットフォームでアラートを再作成することをお勧めします。 多数のアラートを作成しているお客様のために、中断や追加コストなしで既存のクラシック アラートを新しいアラート システムに移動するための[自主的移行ツール](alerts-using-migration-tool.md)を[段階的に展開](alerts-understand-migration.md#rollout-phases)する作業が進んでいます。
 
 > [!IMPORTANT]
 > アクティビティ ログで作成されたクラシック アラート ルールは非推奨や移行の対象になることはありません。 アクティビティ ログで作成されたすべてのクラシック アラート ルールには、新しい Azure Monitor のアラートからそのままアクセスし、使用できます。 詳細については、「[Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-activity-log.md)」を参照してください。 同様に、Service Health に関するアラートには、新しい Service Health セクションからそのままアクセスし、使用できます。 詳細については、[サービスの正常性通知のアラート](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)に関するページを参照してください。
@@ -50,26 +53,26 @@ Azure リソースの新しいメトリックは、以下のように使用で�
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>クラシック監視およびアラート プラットフォームの提供終了
 
 前述のとおり、Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md) で現在使用できるクラシック監視およびアラート プラットフォームは、新しいシステムへの引継ぎが進行中であるため、数か月後に提供終了される予定です。
-古いクラシックな監視とアラートは、関連する API、Azure portal のインターフェイス、およびその中のサービスも含めて、2019年 6 月 30 日付けで提供が終了します。 具体的には、次の機能が廃止されます。
+古いクラシックな監視とアラートは、関連する API、Azure portal のインターフェイス、およびその中のサービスも含めて、2019年 8 月 31 日付けで提供が終了します。 具体的には、次の機能が廃止されます。
 
 - Azure portal の [アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md)で現在利用できる Azure リソースの古い (クラシック) メトリックとアラート; [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) リソースとしてアクセス可能
 - Application Insights の古い (クラシック) プラットフォームとカスタム メトリック、Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md) で現在使用でき、[microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) リソースとしてアクセス可能なアラート
 - Azure portal で [Application Insights 内のスマート検出](../../azure-monitor/app/proactive-diagnostics.md)として現在使用できる古い (クラシック) エラーの異常; Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md)に表示されるように構成されたアラート
 
-対応する [API](https://msdn.microsoft.com/library/azure/dn931945.aspx)、[PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)、[CLI](../../azure-monitor/platform/alerts-classic-portal.md)、[Azure Portal ページ](../../azure-monitor/platform/alerts-classic-portal.md)、および[リソース テンプレート](../../azure-monitor/platform/alerts-enable-template.md)を含むすべてのクラシック監視およびアラート システムは、2019 年 6 月末まで使用可能なままです。 
+対応する [API](https://msdn.microsoft.com/library/azure/dn931945.aspx)、[PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)、[CLI](../../azure-monitor/platform/alerts-classic-portal.md)、[Azure portal ページ](../../azure-monitor/platform/alerts-classic-portal.md)、および[リソース テンプレート](../../azure-monitor/platform/alerts-enable-template.md)を含むすべてのクラシック監視およびアラート システムは、2019 年 8 月末まで使用可能なままです。 
 
-2019 年 6 月末時点の Azure Monitor:
+2019 年 8 月末時点の Azure Monitor:
 
 - クラシック監視およびアラート サービスは廃止され、新しいアラート ルールの作成には使用可能できなくなります。
-- 2019 年 6 月の後もアラート (クラシック) に引き続き存在するアラート ルールはすべて、引き続き通知を実行して起動しますが、変更することはできなくなります。
-- 2019 年 7 月から、クラシック監視およびアラートの移行可能なアラート ルールは、Microsoft によって新しい Azure 監視プラットフォームにある同等のアラート ルールに自動的に移されます。 このプロセスは、ダウンタイムなしでシームレスに実行され、お客様の監視範囲が失われることはありません。
+- 2019 年 8 月の後もアラート (クラシック) に引き続き存在するアラート ルールの実行は継続され、通知が発行されますが、変更することはできなくなります。
+- 2019 年 9 月から、クラシック監視およびアラートの移行可能なアラート ルールは、Microsoft によって、新しい Azure 監視プラットフォームにある同等のアラート ルールに数週間にわたって段階的に移動されます。 このプロセスは、ダウンタイムなしでシームレスに実行され、お客様の監視範囲が失われることはありません。
 - 新しいアラート プラットフォームへのアラート ルールの移行によって、前のような監視範囲が実現されますが、新しいペイロードによる通知が発生します。 クラシック アラート ルールに関連付けられたメール アドレス、Webhook エンドポイント、ロジック アプリ リンクはすべて、移行時に引き継がれますが、新しいプラットフォームではアラートのペイロードが異なるため、正常に機能しない可能性があります
-- いくつかの[クラシック アラート ルールは自動的には移行できません](alerts-understand-migration.md#which-classic-alert-rules-can-be-migrated)。それらのルールは、ユーザーによる手動での措置が必要となり、引き続き 2020 年 6 月まで動作します。
+- [自動的に移行できないクラシック アラート ルール](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated)はユーザーによる手動アクションが必要であり、これらの実行は 2020 年 6 月まで継続されます。
 
 > [!IMPORTANT]
-> Microsoft Azure Monitor では、クラシック アラート ルールを新しいプラットフォームに[自主的に移行するためのツール](alerts-using-migration-tool.md)を段階的に展開してきました。 そして、2019 年 7 月より、まだ存在していて、かつ移行することができる従来のアラート ルールすべてに対して、それを強制的に実行します。 お客様は、従来のアラート ルールの移行後、従来のアラート ルールのペイロードを使用するオートメーションが、[Application Insights でのメトリックとアラートの統合](#unified-metrics-and-alerts-in-application-insights)または[他の Azure リソースでのメトリックとアラートの統合](#unified-metrics-and-alerts-for-other-azure-resources)からの新しいペイロードの処理に合わせて改変されたことを確認する必要があります。 詳細については、[クラシック アラート ルールの移行に向けての準備](alerts-prepare-migration.md)に関するページを参照してください。
+> Microsoft Azure Monitor では、クラシック アラート ルールを新しいプラットフォームに[自主的に移行するためのツール](alerts-using-migration-tool.md)を段階的に展開してきました。 そして、2019 年 9 月から、まだ存在していて、かつ移行することができる従来のアラート ルールすべてに対して、それが強制的に実行されます。 お客様は、従来のアラート ルールの移行後、従来のアラート ルールのペイロードを使用するオートメーションが、[Application Insights でのメトリックとアラートの統合](#unified-metrics-and-alerts-in-application-insights)または[他の Azure リソースでのメトリックとアラートの統合](#unified-metrics-and-alerts-for-other-azure-resources)からの新しいペイロードの処理に合わせて改変されたことを確認する必要があります。 詳細については、[クラシック アラート ルールの移行に向けての準備](alerts-prepare-migration.md)に関するページを参照してください。
 
-お客様の意思で Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md) から新しい Azure アラートに移行するためのツールは間もなく提供される予定です。 アラート (クラシック) 内に構成済みで新しい Azure Monitor に移行されるすべてのルールは無料のままであり、課金対象になりません。 移行後のクラシック アラート ルールでは、電子メール、Webhook、または LogicApp による通知のプッシュにも料金はかかりません。 ただし、新しい種類の通知またはアクション (SMS、音声通話、ITSM 統合など) の使用では、その使用が、移行後のアラートに追加されたか新しいアラートに追加されたかに応じて課金対象になります。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
+お客様の意思で Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md) から新しい Azure アラートに移行できるツールがロールアウトされています。 アラート (クラシック) 内に構成済みで新しい Azure Monitor に移行されるすべてのルールは無料のままであり、課金対象になりません。 移行後のクラシック アラート ルールでは、電子メール、Webhook、または LogicApp による通知のプッシュにも料金はかかりません。 ただし、新しい種類の通知またはアクション (SMS、音声通話、ITSM 統合など) の使用では、その使用が、移行後のアラートに追加されたか新しいアラートに追加されたかに応じて課金対象になります。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
 
 さらに、[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)として、以下が課金対象になります。
 

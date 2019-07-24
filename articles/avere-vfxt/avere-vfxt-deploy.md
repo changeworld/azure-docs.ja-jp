@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: v-erkell
 ms.openlocfilehash: 7ded66c29f12b8f68746726ca6c126bffbc51f0d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257316"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60410267"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>vFXT クラスターのデプロイ
 
@@ -41,7 +41,7 @@ Azure portal にある作成テンプレートにアクセスします。「Aver
 
 ![階層リンク [新規] > [Marketplace] > [すべて] がある Azure Portal を表示するブラウザー ウィンドウ。 [すべて] ページでは、検索フィールドに "avere"という語があり、2 番目の結果である "Avere vFXT for Azure ARM Template" は赤枠で囲まれて強調表示されます。](media/avere-vfxt-template-choose.png)
 
-Avere vFXT for Azure ARM Template ページで詳細を確認した後、**[作成]** をクリックして開始します。 
+Avere vFXT for Azure ARM Template ページで詳細を確認した後、 **[作成]** をクリックして開始します。 
 
 ![Azure Marketplace (デプロイ テンプレートの先頭ページを表示したところ)](media/avere-vfxt-deploy-first.png)
 
@@ -74,7 +74,7 @@ Avere vFXT for Azure ARM Template ページで詳細を確認した後、**[作�
 
 * **[場所]** - お客様のクラスターとリソースに使用する Azure の場所を選択します。
 
-完了したら、**[OK]** をクリックします。 
+完了したら、 **[OK]** をクリックします。 
 
 > [!NOTE]
 > クラスター コントローラーに公開 IP アドレスを割り当てたい場合は、既存のネットワークを選択するのではなく、クラスター用に新しい仮想ネットワークを作成してください。 この設定は 2 ページ目にあります。
@@ -91,7 +91,7 @@ Avere vFXT for Azure ARM Template ページで詳細を確認した後、**[作�
 
 * **[Avere vFXT cluster name]\(Avere vFXT クラスターの名前\)** - クラスターに一意の名前を付けます。 
 
-* **[サイズ]** - このセクションには、クラスター ノードに使用される VM の種類が表示されます。 推奨されるオプションは 1 つだけですが、**[サイズの変更]** リンクをクリックすると、このインスタンスの種類の詳細と料金計算ツールへのリンクを含むテーブルが開かれます。  
+* **[サイズ]** - このセクションには、クラスター ノードに使用される VM の種類が表示されます。 推奨されるオプションは 1 つだけですが、 **[サイズの変更]** リンクをクリックすると、このインスタンスの種類の詳細と料金計算ツールへのリンクを含むテーブルが開かれます。  
 
 * **[Cache size per node]\(ノードごとのキャッシュ サイズ\)** - クラスターのキャッシュは、クラスター ノード全体にわたるため、お客様の Avere vFXT クラスターの合計キャッシュ サイズは、ノードごとのキャッシュ サイズにノード数を掛けた値となります。 
 
@@ -113,7 +113,7 @@ Avere vFXT for Azure ARM Template ページで詳細を確認した後、**[作�
 
 * **[Create and use blob storage]\(Blob Storage を作成して使用する\)** - 新しい Azure BLOB コンテナーを作成して、それを新しい Avere vFXT クラスターのバックエンド ストレージとして構成する場合は **true** を選択します。 また、このオプションでは、クラスター サブネット内のクラスターおよび Microsoft ストレージ サービス エンドポイントと同じリソース グループ内に新しいストレージ アカウントが作成されます。 
   
-  既存の仮想ネットワークを指定した場合、クラスターを作成するには、事前にその仮想ネットワークにストレージ サービス エンドポイントが含まれている必要があります  (詳細については、「[Avere vFXT システムの計画](avere-vfxt-deploy-plan.md)」をご覧ください)。
+  既存の仮想ネットワークを指定した場合、クラスターを作成するには、事前にその仮想ネットワークにストレージ サービス エンドポイントが含まれている必要があります (詳細については、「[Avere vFXT システムの計画](avere-vfxt-deploy-plan.md)」をご覧ください)。
 
   新しいコンテナーを作成したくない場合は、このフィールドを **[false]** に設定してください。 この場合、クラスターの作成後にストレージをアタッチし、構成する必要があります。 手順については、[ストレージの構成](avere-vfxt-add-storage.md)に関するページを参照してください。 
 
@@ -121,11 +121,11 @@ Avere vFXT for Azure ARM Template ページで詳細を確認した後、**[作�
 
 ## <a name="validation-and-purchase"></a>確認と購入
 
-3 ページ目では、構成の概要が示されているので、パラメーターを確認します。 確認後、問題がなければ、**[OK]** ボタンをクリックして次に進みます。 
+3 ページ目では、構成の概要が示されているので、パラメーターを確認します。 確認後、問題がなければ、 **[OK]** ボタンをクリックして次に進みます。 
 
 ![デプロイ テンプレートの 3 ページ目 - 確認](media/avere-vfxt-deploy-3.png)
 
-4 ページ目で、必要な連絡先情報を入力し、**[作成]** ボタンをクリックして、利用規約に同意して Avere vFXT for Azure クラスターを作成します。 
+4 ページ目で、必要な連絡先情報を入力し、 **[作成]** ボタンをクリックして、利用規約に同意して Avere vFXT for Azure クラスターを作成します。 
 
 ![デプロイ テンプレートの 4 ページ目 - 利用規約、[作成] ボタン](media/avere-vfxt-deploy-4.png)
 

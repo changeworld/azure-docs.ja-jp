@@ -10,10 +10,10 @@ ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 847c928681451b4fef93198e2f2272d5bb04b1b8
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64919798"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration での DSC 構成のコンパイル
@@ -41,7 +41,7 @@ Azure Automation State Configuration を使用して、Desired State Configurati
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Azure プレビューを使用した DSC 構成のコンパイル
 
-1. Automation アカウントから、**[状態の構成 (DSC)]** をクリックします。
+1. Automation アカウントから、 **[状態の構成 (DSC)]** をクリックします。
 1. **[構成]** タブをクリックして、コンパイルする構成の名前をクリックします。
 1. **[コンパイル]** をクリックします。
 1. 構成にパラメーターが含まれていない場合、コンパイルの実行を確認するメッセージが表示されます。 構成にパラメーターが含まれている場合は、 **[構成のコンパイル]** ブレードが開き、パラメーター値を入力できます。 パラメーターの詳細については、次の「[**基本パラメーター**](#basic-parameters)」セクションを参照してください。
@@ -176,7 +176,7 @@ Node ($AllNodes.Where{$_.Role -eq 'WebServer'}).NodeName
 > [!NOTE]
 > Azure Portal ではなく、Azure PowerShell を使用して Azure Automation State Configuration でコンパイルする場合に、**ConfigurationData** を使用できます。
 
-次の DSC 構成の例では、**$ConfigurationData** および **$AllNodes** キーワードを介して **ConfigurationData** を使用します。 この例では、[**xWebAdministration** モジュール](https://www.powershellgallery.com/packages/xWebAdministration/)も必要になります。
+次の DSC 構成の例では、 **$ConfigurationData** および **$AllNodes** キーワードを介して **ConfigurationData** を使用します。 この例では、[**xWebAdministration** モジュール](https://www.powershellgallery.com/packages/xWebAdministration/)も必要になります。
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -239,7 +239,7 @@ Azure Automation の DSC 構成は、`Get-AutomationPSCredential` コマンド�
 
 ノード構成 (MOF 構成ドキュメント) で資格情報を安全に保持するには、ノード構成 MOF ファイルで資格情報を暗号化する必要があります。 ただし、現時点では、ノード構成 MOF 作成時に資格情報をプレーンテキストで出力することを許可するように PowerShell DSC に指定する必要があります。PowerShell DSC は、コンパイル ジョブによって生成された MOF ファイル全体を Azure Automation が暗号化することを認識していないためです。
 
- [**ConfigurationData**](#configurationdata)をクリックします。 DSC 構成に表示され、資格情報を使用する各ノード ブロックの名前に対して、**ConfigurationData** を使用して `PSDscAllowPlainTextPassword = $true` を渡す必要があります。
+[**ConfigurationData**](#configurationdata)をクリックします。 DSC 構成に表示され、資格情報を使用する各ノード ブロックの名前に対して、**ConfigurationData** を使用して `PSDscAllowPlainTextPassword = $true` を渡す必要があります。
 
 次の例は、Automation 資格情報資産を使用する DSC 構成の例です。
 
@@ -283,7 +283,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 ```
 
 > [!NOTE]
-> コンパイルが完了すると、次のようなエラーが表示される可能性があります。"**"Microsoft.PowerShell.Management" スナップインが既にインポートされているため、"Microsoft.PowerShell.Management" モジュールがインポートされませんでした。**" この警告は無視してかまいません。
+> コンパイルが完了すると、次のようなエラーが表示される可能性があります。" **"Microsoft.PowerShell.Management" スナップインが既にインポートされているため、"Microsoft.PowerShell.Management" モジュールがインポートされませんでした。** " この警告は無視してかまいません。
 
 ## <a name="partial-configuration"></a>部分構成
 
@@ -307,9 +307,9 @@ Azure の外部でコンパイルしたノード構成 (MOF) をインポート�
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>Azure Portal でのノード構成のインポート
 
-1. [Automation アカウント] から、**[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
-1. **[状態の構成 (DSC)]** ページで **[構成]** タブをクリックし、**[+ 追加]** をクリックします。
-1. **[インポート]** ページで、**[Node Configuration File (ノード構成ファイル)]** テキスト ボックスの横にあるフォルダー アイコンをクリックして、ローカル コンピューター上のノード構成ファイル (MOF) を参照します。
+1. [Automation アカウント] から、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
+1. **[状態の構成 (DSC)]** ページで **[構成]** タブをクリックし、 **[+ 追加]** をクリックします。
+1. **[インポート]** ページで、 **[Node Configuration File (ノード構成ファイル)]** テキスト ボックスの横にあるフォルダー アイコンをクリックして、ローカル コンピューター上のノード構成ファイル (MOF) を参照します。
 
    ![ローカル ファイルの参照](./media/automation-dsc-compile/import-browse.png)
 

@@ -13,10 +13,10 @@ ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd684e1bd48f877a74280b33b4df65d7baaa0fe7
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65507173"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Azure Active Directory でグループ所有者を追加または削除する
@@ -30,17 +30,17 @@ Azure Active Directory (Azure AD) グループを所有および管理するの�
 ### <a name="to-add-a-group-owner"></a>グループ所有者を追加するには
 1. ディレクトリのグローバル管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、**[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
+2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
 
-3. **[MDM policy - West の概要]** ページで、**[所有者]** を選択します。
+3. **[MDM policy - West の概要]** ページで、 **[所有者]** を選択します。
 
     ![[MDM policy - West の概要] ページ、[所有者] オプションが強調表示](media/active-directory-accessmanagement-managing-group-owners/add-owners-option-overview-blade.png)
 
-4. **[MDM policy - West - 所有者]** ページで、**[所有者の追加]** を選択し、新しいグループ所有者にするユーザーを選択して、**[選択]** を選択します。
+4. **[MDM policy - West - 所有者]** ページで、 **[所有者の追加]** を選択し、新しいグループ所有者にするユーザーを選択して、 **[選択]** を選択します。
 
     ![[MDM policy - West - 所有者] ページ、[所有者の追加] オプションが強調表示](media/active-directory-accessmanagement-managing-group-owners/add-owners-owners-blade.png)
 
-    新しい所有者を選択して、**[所有者]** ページを更新すると、所有者の一覧に名前が追加されているのがわかります。
+    新しい所有者を選択して、 **[所有者]** ページを更新すると、所有者の一覧に名前が追加されているのがわかります。
 
 ## <a name="remove-an-owner-from-a-group"></a>グループから所有者を削除する
 Azure AD を使用してグループから所有者を削除します。
@@ -48,9 +48,9 @@ Azure AD を使用してグループから所有者を削除します。
 ### <a name="to-remove-an-owner"></a>所有者を削除するには
 1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。
 
-2. **[Azure Active Directory]** を選択し、**[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
+2. **[Azure Active Directory]** を選択し、 **[グループ]** を選択して、所有者を削除するグループ (この例では、*MDM policy - West*) を選択します。
 
-3. **[MDM policy - West の概要]** ページで、**[所有者]** を選択します。
+3. **[MDM policy - West の概要]** ページで、 **[所有者]** を選択します。
 
     ![[MDM policy - West の概要] ページ、[所有者] オプションが強調表示](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
 
@@ -58,7 +58,7 @@ Azure AD を使用してグループから所有者を削除します。
 
     ![ユーザーの情報ページ、[削除] オプションが強調表示](media/active-directory-accessmanagement-managing-group-owners/remove-owner-info-blade.png)
 
-    所有者を削除した後、**[所有者]** ページに戻ると、所有者の一覧から名前が削除されているのがわかります。
+    所有者を削除した後、 **[所有者]** ページに戻ると、所有者の一覧から名前が削除されているのがわかります。
 
 ## <a name="next-steps"></a>次の手順
 - [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)

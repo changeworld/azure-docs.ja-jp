@@ -15,11 +15,11 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66120158"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181353"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -39,7 +39,7 @@ Visual Studio で、お使いのプロジェクトを実行するには、**F5**
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
 
-サインインしたら、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。 結果は、**[API Call Results]\(API コールの結果\)** ボックスに表示されます。 `AcquireTokenInteractive` または `AcquireTokenSilent` の呼び出しを介して取得されたトークンに関する基本情報は、**[Token Info]\(トークン情報\)** ボックスに表示されます。 結果には、以下のプロパティが含まれます。
+サインインしたら、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。 結果は、 **[API Call Results]\(API コールの結果\)** ボックスに表示されます。 `AcquireTokenInteractive` または `AcquireTokenSilent` の呼び出しを介して取得されたトークンに関する基本情報は、 **[Token Info]\(トークン情報\)** ボックスに表示されます。 結果には、以下のプロパティが含まれます。
 
 |プロパティ  |形式  |説明 |
 |---------|---------|---------|

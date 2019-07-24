@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6b9577bcf8b527abb0cb7b8720ed83ec8321655b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8a844465f7ba2222acd7efaf100c7b682c15adb2
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724467"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67433512"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
@@ -108,11 +108,11 @@ az hdinsight script-action execute ^
 
 ### <a name="storage-firewall"></a>ストレージ ファイアウォール
 
-**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、**[信頼された Microsoft サービスによる ... を許可します]** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
+**[選択されたネットワーク]** で **[ファイアウォールと仮想ネットワーク]** に関する制限を使用してストレージ アカウントをセキュリティで保護する場合、 **[信頼された Microsoft サービスによる ... を許可します]** の例外を有効にして、HDInsight ストレージ アカウントにアクセスできるようにしてください。
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>ストレージ アカウントが Azure Portal またはツールに表示されない
 
-Azure Portal で HDInsight クラスターを表示しているときに、__[プロパティ]__ の下の __[ストレージ アカウント]__ エントリを選択すると、このスクリプト アクションを通じて追加したストレージ アカウントは表示されません。 Azure PowerShell と Azure CLI でも、追加のストレージ アカウントは表示されません。
+Azure Portal で HDInsight クラスターを表示しているときに、 __[プロパティ]__ の下の __[ストレージ アカウント]__ エントリを選択すると、このスクリプト アクションを通じて追加したストレージ アカウントは表示されません。 Azure PowerShell と Azure CLI でも、追加のストレージ アカウントは表示されません。
 
 ストレージ情報が表示されないのは、スクリプトがクラスターの core-site.xml 構成を変更するだけだからです。 この情報は、Azure 管理 API を使用してクラスター情報を取得するときには使用されません。
 
@@ -197,11 +197,14 @@ jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNA
 
 この問題を回避するには、ストレージ アカウントの既存のエントリを削除する必要があります。 既存のエントリを削除するには、次の手順を実行します。
 
+> [!IMPORTANT]  
+> クラスターに接続されているプライマリ ストレージ アカウントのストレージ キーのローテーションはサポートされていません。
+
 1. Web ブラウザーで、HDInsight クラスターの Ambari Web UI を開きます。 URI は `https://CLUSTERNAME.azurehdinsight.net` です。 `CLUSTERNAME` をクラスターの名前に置き換えます。
 
     プロンプトが表示されたら、クラスターの HTTP ログイン ユーザー名とパスワードを入力します。
 
-2. ページの左側のサービスの一覧で、__[HDFS]__ を選択します。 ページの中央の __[Configs (構成)]__ タブを選択します。
+2. ページの左側のサービスの一覧で、 __[HDFS]__ を選択します。 ページの中央の __[Configs (構成)]__ タブを選択します。
 
 3. __[Filter... (フィルター...)]__ フィールドに __fs.azure.account__ の値を入力します。 これで、クラスターに追加されたすべてのストレージ アカウントのエントリが返されます。 エントリには、__keyprovider__ と __key__ という 2 つの種類があります。 両方に、キー名の一部としてストレージ アカウントの名前が含まれています。
 
@@ -210,7 +213,7 @@ jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNA
         fs.azure.account.keyprovider.mystorage.blob.core.windows.net
         fs.azure.account.key.mystorage.blob.core.windows.net
 
-4. 削除する必要があるストレージ アカウントのキーを特定した後、エントリの右側にある赤い "-" アイコンを使用してエントリを削除します。 次に、__[Save (保存)]__ ボタンを使用して、変更を保存します。
+4. 削除する必要があるストレージ アカウントのキーを特定した後、エントリの右側にある赤い "-" アイコンを使用してエントリを削除します。 次に、 __[Save (保存)]__ ボタンを使用して、変更を保存します。
 
 5. 変更が保存された後、スクリプト アクションを使用してストレージ アカウントと新しいキー値をクラスターに追加します。
 

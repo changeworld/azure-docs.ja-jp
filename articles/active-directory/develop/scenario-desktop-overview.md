@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44d31011ca70bbebaf994b5fb80a45eee8dbde40
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 204e230f7ff0897d2ba97213ebc836aff9d0324b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65080377"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204647"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>シナリオ: Web API を呼び出すデスクトップ アプリ
 
@@ -53,7 +53,7 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 
   ![デスクトップ アプリケーション](media/scenarios/desktop-app.svg)
 
-- 移植可能なコマンド ライン ツール (おそらく、Linux または Mac で実行される .NET Core アプリケーション) を作成している場合は、(.NET Core では [Web ブラウザー](https://aka.ms/msal-net-uses-web-browser)が提供されていないため) 対話式認証を使用できず、また統合 Windows 認証も使用できません。 その場合の最善の選択肢は、デバイス コード フローを使用することです。 このフローは、iOT アプリケーションなどのブラウザーがないアプリケーションにも使用されます。
+- 移植可能なコマンド ライン ツール (おそらく、Linux または Mac で実行される .NET Core アプリケーション) を作成している場合は、(.NET Core では [Web ブラウザー](https://aka.ms/msal-net-uses-web-browser)が提供されていないため) 対話式認証を使用できず、また統合 Windows 認証も使用できません。 その場合の最善の選択肢は、デバイス コード フローを使用することです。 このフローは、IoT アプリケーションなどのブラウザーがないアプリケーションにも使用されます。
 
   ![ブラウザーレス アプリケーション](media/scenarios/device-code-flow-app.svg)
 

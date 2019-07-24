@@ -8,10 +8,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
 ms.openlocfilehash: af26bcee08ded8eb66d640f954113be3e7672e1b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64709140"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法
@@ -28,7 +28,7 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
     ![クラスター ダッシュボードが選ばれたポータルの画像](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
-3. 次に、__[HDInsight クラスター ダッシュボード]__ を選択します。 認証を求められたら、クラスターのログイン (管理者) 資格情報を使用して認証を行います。
+3. 次に、 __[HDInsight クラスター ダッシュボード]__ を選択します。 認証を求められたら、クラスターのログイン (管理者) 資格情報を使用して認証を行います。
 
     ![HDInsight クラスター ダッシュボード エントリの画像](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
 
@@ -50,7 +50,7 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
     ![auto.create.topics.enable エントリの画像](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-7. Kafka サービスを選び、__[Restart]\(再起動\)__ を選んで、__[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選びます。 メッセージが表示されたら、__[Confirm restart all]\(すべて再起動\)__ を選択します。
+7. Kafka サービスを選び、 __[Restart]\(再起動\)__ を選んで、 __[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選びます。 メッセージが表示されたら、 __[Confirm restart all]\(すべて再起動\)__ を選択します。
 
     ![再起動の選択の画像](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 

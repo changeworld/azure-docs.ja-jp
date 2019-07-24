@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/6/2018
 ms.author: victorh
 ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853710"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61296380"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure ポータルを使用した DNS レコードとレコード セットの管理
 
@@ -79,7 +79,7 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 ## <a name="delete"></a>レコード セットを削除する
 
-1. レコード セットの **[Record set properties (レコード セットのプロパティ)]** ブレードで、**[削除]** をクリックします。
+1. レコード セットの **[Record set properties (レコード セットのプロパティ)]** ブレードで、 **[削除]** をクリックします。
 
     ![レコード セットの削除](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
 

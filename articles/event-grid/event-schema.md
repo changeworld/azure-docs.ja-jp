@@ -8,18 +8,21 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: b67d656ed6ab537a01696ec9c0c98f84b880f03b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470625"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67785846"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
 この記事では、すべてのイベントに存在するプロパティとスキーマについて説明します。 イベントは、5 つの必須文字列プロパティと 1 つの必須データ オブジェクトで構成されます。 プロパティは、すべてのイベントに共通であり、発行元を問いません。 データ オブジェクトには、各発行元に固有のプロパティが含まれています。 システム トピックの場合、これらのプロパティは、リソース プロバイダー (Azure Storage や Azure Event Hubs など) に固有です。
 
-イベント ソースは、複数のイベント オブジェクトを含めることができる配列で Azure Event Grid にイベントを送信します。 Event Grid トピックへイベントを送信する際の、配列の合計サイズの上限は 1 MB です。 配列内の各イベントは 64 KB に制限されます。 イベントまたは配列がサイズ制限を超えた場合は、**[413 ペイロードが大きすぎます]** という応答を受信します。
+イベント ソースは、複数のイベント オブジェクトを含めることができる配列で Azure Event Grid にイベントを送信します。 Event Grid トピックへイベントを送信する際の、配列の合計サイズの上限は 1 MB です。 配列内の各イベントは 64 KB (一般提供) または 1 MB (プレビュー) に制限されます。 イベントまたは配列がサイズ制限を超えた場合は、 **[413 ペイロードが大きすぎます]** という応答を受信します。
+
+> [!NOTE]
+> 一般提供 (GA) のサービス レベル アグリーメント (SLA) では、最大 64 KB のサイズのイベントが有効範囲に含まれます。 最大 1 MB のサイズのイベントのサポートは現在、プレビュー段階です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
 
 Event Grid は、1 つのイベントを含む配列でサブスクライバーにイベントを送信します。 この動作は、今後変更される可能性があります。
 
@@ -80,16 +83,16 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 
 すべてのイベントには、次の同じ最上位レベルのデータが含まれています。
 
-| プロパティ | type | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
-| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
-| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
-| data | オブジェクト | リソース プロバイダーに固有のイベント データ。 |
-| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | string | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | イベントの一意識別子。 |
+| data | object | リソース プロバイダーに固有のイベント データ。 |
+| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトのプロパティの詳細については、イベント ソースを参照してください。
 
@@ -101,6 +104,7 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [リソース グループ (管理操作)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
+* [Azure SignalR](event-schema-azure-signalr.md)
 
 カスタム トピックの場合、イベントの発行元がデータ オブジェクトを決定します。 最上位レベルのデータには、リソースによって定義された標準のイベントと同じフィールドを含める必要があります。
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66155839"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181215"
 ---
 > [!NOTE]
 > SharePoint 用 StorSimple アダプターの RBS 構成を変更する際は、Domain Admins グループに属しているユーザー アカウントでログオンする必要があります。 さらに、サーバーの全体管理と同じホストで実行されているブラウザーから構成ページにアクセスする必要があります。
@@ -18,7 +18,7 @@ ms.locfileid: "66155839"
 
 #### <a name="to-configure-rbs"></a>RBS を構成するには
 1. [SharePoint サーバーの全体管理] ページを開き、 **[システム設定]** を参照します。 
-2. **[Azure StorSimple]** セクションで、**[StorSimple アダプターの構成]** をクリックします。
+2. **[Azure StorSimple]** セクションで、 **[StorSimple アダプターの構成]** をクリックします。
    
     ![Configure the StorSimple Adapter](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
 3. **[StorSimple アダプターの構成]** ページで、次の手順を実行します。
@@ -49,7 +49,7 @@ ms.locfileid: "66155839"
 
 4. 構成を確認します。
    
-   1. SharePoint サーバーの全体管理 Web サイトにサインインし、**[StorSimple アダプターの構成]** ページに移動します。
+   1. SharePoint サーバーの全体管理 Web サイトにサインインし、 **[StorSimple アダプターの構成]** ページに移動します。
    2. 構成の詳細を表示して、入力した設定に一致しているかどうかを確認します。 
 5. RBS が正しく動作することを確認します。
    

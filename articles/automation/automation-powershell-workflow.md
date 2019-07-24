@@ -4,17 +4,17 @@ description: この記事では、PowerShell に慣れている作成者を対�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c5764c36a646b9639c0eb6463c39b9f014c4272d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 085fcd6269663cb0055aaefe11ddc9434e8da7a1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168087"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476993"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明
 
@@ -35,7 +35,7 @@ Workflow Test-Workflow
 }
 ```
 
-ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。 Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は "*.ps1*" でなければなりません。
+ワークフローの名前は、Automation の Runbook の名前と一致する必要があります。 Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は " *.ps1*" でなければなりません。
 
 ワークフローにパラメーターを追加するには、スクリプトの場合と同様に **Param** キーワードを使用します。
 

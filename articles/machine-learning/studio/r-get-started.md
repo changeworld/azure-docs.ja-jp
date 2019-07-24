@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
 ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726545"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で R プログラミング言語の使用を開始する
@@ -73,7 +73,7 @@ Machine Learning Studio では、R スクリプトは [R スクリプトの実�
 
 #### <a name="execute-r-code"></a>R コードの実行
 
-[R スクリプトの実行][execute-r-script]モジュール内の R コードは、**[実行]** ボタンを選択して実験を行うと、実行されます。 実行が完了すると、[[R スクリプトの実行]][execute-r-script] アイコンにチェックマークが表示されます。
+[R スクリプトの実行][execute-r-script]モジュール内の R コードは、 **[実行]** ボタンを選択して実験を行うと、実行されます。 実行が完了すると、[[R スクリプトの実行]][execute-r-script] アイコンにチェックマークが表示されます。
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>Azure Machine Learning 向けの防御的な R コーディング
 
@@ -87,16 +87,16 @@ R 例外処理のより包括的な取り扱いが必要な場合は、「[参�
 
 Azure Machine Learning Studio プラットフォームでの R コード実行の出力は、主に output.log にあります。 また、いくつかの追加情報が error.log で見られます。  
 
-R コード実行中に Machine Learning Studio でエラーが発生した場合、最初にすべきことは error.log を調べることです。 このファイルには、エラーを把握して修正するために役立つ有用なエラー メッセージが含まれています。 error.log を表示するには、エラーを含む [R スクリプトの実行][execute-r-script]の**プロパティ ウィンドウ**で、**[エラー ログの表示]** を選択します。
+R コード実行中に Machine Learning Studio でエラーが発生した場合、最初にすべきことは error.log を調べることです。 このファイルには、エラーを把握して修正するために役立つ有用なエラー メッセージが含まれています。 error.log を表示するには、エラーを含む [R スクリプトの実行][execute-r-script]の**プロパティ ウィンドウ**で、 **[エラー ログの表示]** を選択します。
 
-たとえば、未定義変数 y を持つ次の R コードを [R スクリプトの実行][execute-r-script]モジュールで実行した場合: 
+たとえば、未定義変数 y を持つ次の R コードを [R スクリプトの実行][execute-r-script]モジュールで実行した場合:
 
 ```R
 x <- 1.0
 z <- x + y
 ```
 
-このコードは、次のエラー状態で実行に失敗します。 **プロパティ ウィンドウ**で、**[エラー ログの表示]** を選択すると、図 2 の内容が表示されます。
+このコードは、次のエラー状態で実行に失敗します。 **プロパティ ウィンドウ**で、 **[エラー ログの表示]** を選択すると、図 2 の内容が表示されます。
 
   ![エラー メッセージのポップアップ](./media/r-quickstart/fig2.png)
 
@@ -152,19 +152,19 @@ RStudio の使用に関する追加情報が、以下の「[RStudio ドキュメ
 最初に、 **csdairydata.csv** ファイルを Azure Machine Learning Studio に読み込みます。
 
 1. Azure Machine Learning 環境を起動します。
-1. 画面の左下の **[+ 新規]** を選択し、**[データセット]** を選択します。
-1. **[ローカル ファイルから]**、**[参照]** の順にクリックし、ファイルを選択します。
+1. 画面の左下の **[+ 新規]** を選択し、 **[データセット]** を選択します。
+1. **[ローカル ファイルから]** 、 **[参照]** の順にクリックし、ファイルを選択します。
 1. データセットの種類として **[一般的なヘッダー付き CSV ファイル (.csv)]** が選択されていることを確認します。
 1. チェック マークを選択します。
-1. データセットがアップロードされた後、**[データセット]** タブを選択すると、新しいデータセットを確認できます。  
+1. データセットがアップロードされた後、 **[データセット]** タブを選択すると、新しいデータセットを確認できます。  
 
 #### <a name="create-an-experiment"></a>実験の作成
 
 いくつかのデータを Machine Learning Studio に読み込んだので、分析をするために実験を作成する必要があります。  
 
-1. 左下の **[+ 新規]** を選択し、**[実験]**、**[空の実験]** の順に選択します。
+1. 左下の **[+ 新規]** を選択し、 **[実験]** 、 **[空の実験]** の順に選択します。
 1. 実験を選択し、ページ上部のタイトル **[... に関して作成された実験]** を変更することで、実験に名前を付けることができます。 たとえば、「 **カリフォルニア乳製品分析**」に変更できます。
-1. 実験ページの左側で、**[保存済みのデータセット]** を展開し、**[マイ データセット]** を展開します。 前にアップロードした **cadairydata.csv** が表示されます。
+1. 実験ページの左側で、 **[保存済みのデータセット]** を展開し、 **[マイ データセット]** を展開します。 前にアップロードした **cadairydata.csv** が表示されます。
 1. **csdairydata.csv データセット** を、実験にドラッグ アンド ドロップします。
 1. 左側のウィンドウの上部にある **[実験項目の検索]** ボックスで、「[R スクリプトの実行][execute-r-script]」と入力します。 検索一覧に、モジュールが表示されます。
 1. [R スクリプトの実行][execute-r-script]モジュールを、パレットにドラッグ アンド ドロップします。  
@@ -179,7 +179,7 @@ RStudio の使用に関する追加情報が、以下の「[RStudio ドキュメ
 
 #### <a name="check-on-the-data"></a>データのチェック
 
-実験に読み込んだデータを調べましょう。 実験で、**cadairydata.csv データセット**の出力を選択し、**[視覚化]** を選択します。 図 4 の内容が表示されます。  
+実験に読み込んだデータを調べましょう。 実験で、**cadairydata.csv データセット**の出力を選択し、 **[視覚化]** を選択します。 図 4 の内容が表示されます。  
 
 ![cadairydata.csv データセットのサマリー](./media/r-quickstart/fig4.png)
 
@@ -243,7 +243,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
    maml.mapOutputPort('cadairydata')
    ```
 
-1. zip ファイルを作成し、スクリプトをこの zip ファイルにコピーします。 Windows の場合、ファイルを右クリックし、**[送る]**、**[圧縮フォルダー]** の順に選択します。 この操作で、"simpleplot.R" ファイルを含む新しい zip ファイルが作成されます。
+1. zip ファイルを作成し、スクリプトをこの zip ファイルにコピーします。 Windows の場合、ファイルを右クリックし、 **[送る]** 、 **[圧縮フォルダー]** の順に選択します。 この操作で、"simpleplot.R" ファイルを含む新しい zip ファイルが作成されます。
 
 1. ファイルを、Machine Learning Studio の**データセット**に追加し、種類を **zip** に指定します。 データセットに zip ファイルが表示されるようになります。
 
@@ -323,7 +323,7 @@ cadairydata <- maml.mapInputPort(1)
 maml.mapOutputPort('cadairydata')
 ```
 
-この実験の実行後、結果データセット 1 出力ポートを選択し、**[視覚化]** を選択します。 図 6 の内容が表示されます。
+この実験の実行後、結果データセット 1 出力ポートを選択し、 **[視覚化]** を選択します。 図 6 の内容が表示されます。
 
 ![カリフォルニア酪農データの出力の視覚化](./media/r-quickstart/fig7.png)
 
@@ -335,7 +335,7 @@ maml.mapOutputPort('cadairydata')
 
 [R スクリプトの実行][execute-r-script]モジュールのデバイス出力には、メッセージとグラフィックスの出力が含まれています。 R からの標準出力と標準エラー メッセージは両方とも、R デバイス出力ポートに送信されます。  
 
-R デバイス出力を表示するには、ポートを選択して、**[視覚化]** を選択します。 R スクリプトからの標準出力と標準エラーが表示されます (図 7 を参照)。
+R デバイス出力を表示するには、ポートを選択して、 **[視覚化]** を選択します。 R スクリプトからの標準出力と標準エラーが表示されます (図 7 を参照)。
 
 ![R デバイス ポートからの標準出力と標準エラー](./media/r-quickstart/fig8.png)
 
@@ -930,7 +930,7 @@ outframe
 
 最初のコード行は少しわかりにくく、説明があれば理解するのに役立つかもしれません。 詳細に説明すると、次のようになります。
 
-1. 引数が "**1**" の演算子 "**[[**" を指定すると、ccf オブジェクト リストの最初の要素からの時間差における相関関係のベクトルが選択されます。
+1. 引数が "**1**" の演算子 " **[[** " を指定すると、ccf オブジェクト リストの最初の要素からの時間差における相関関係のベクトルが選択されます。
 2. `do.call()` 関数は、`lapply()` によるリスト応答の要素に、`rbind()` 関数を適用します。
 3. `data.frame()` 関数は、`do.call()` により生成された結果を、データフレームに変換します。
 
@@ -1313,7 +1313,7 @@ RStudio はドキュメントが非常に整っているため、 ここでは�
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio で、R 言語を使用するために必要な基本事項について説明します。 R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 
 * Emmanuel Paradis による『[R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf)』は入門書として適しています。  
-* 『[An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)』(W. N. Venables  他による ) では、もう少し詳しく説明されています。
+* 『[An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)』(W. N. Venables 他による ) では、もう少し詳しく説明されています。
 
 R の使用を開始するのに役立つ書籍は、多数存在します。 役に立つものをいくつか紹介します。
 

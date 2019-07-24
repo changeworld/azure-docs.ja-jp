@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: ed94677eea91e3543dced9825a1372f60550a524
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: ed05748a450d8d2082476aaba0831383e5fb60a0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073611"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441559"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Azure SQL Database サービスとは
 
@@ -39,11 +39,11 @@ Azure SQL データベースには、そのデータベースのデプロイに�
 
 SQL Database は、そのコード ベースを [Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)と共有しています。 Microsoft のクラウド優先戦略に基づく SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 この方法によって、修正プログラムの適用やアップグレードなしで SQL Server の最新の機能をユーザーに提供することができ、数百万のデータベースでこれらの新機能をテストすることができます。 発表される新しい機能の詳細については、以下を参照してください。
 
-- **[SQL Database の Azure ロードマップ](https://azure.microsoft.com/roadmap/?category=databases)**:
+- **[SQL Database の Azure ロードマップ](https://azure.microsoft.com/roadmap/?category=databases)** :
 
   最新情報や今後の予定を知ることができます。
 
-- **[Azure SQL Database のブログ](https://azure.microsoft.com/blog/topics/database)**:
+- **[Azure SQL Database のブログ](https://azure.microsoft.com/blog/topics/database)** :
 
   SQL Database に関するニュースと機能についての SQL Server 製品チームのメンバーのブログです。
 
@@ -110,20 +110,20 @@ Azure Availability Zones は、高可用性の問題で機能します。  1 つ
 
 実際、Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント [(SLA)](https://azure.microsoft.com/support/legal/sla/) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべてのデータベースは Azure プラットフォームによって完全に管理され、データ損失ゼロおよび高いデータ可用性 (%) が保証されます。 基になるハードウェア、ソフトウェア、ネットワークの障害リスクへの対応や、パッチの適用、バックアップ、レプリケーション、障害検出、バグ修正、フェールオーバー、データベースのアップグレードなど、各種メンテナンス タスクは、Azure によって自動的に処理されます。 Standard の可用性は、計算レイヤーとストレージ レイヤーを分離することで得られます。 Premium の可用性は、計算とストレージを単一ノードに統合してパフォーマンスを確保し、そのうえで、Always On 可用性グループのようなテクノロジを導入することによって得られます。 Azure SQL Database の高可用性機能の詳細については、[SQL Database の可用性](sql-database-high-availability.md)に関するページをご覧ください。 さらに、SQL Database には、次のような、組み込みの[ビジネス継続性とグローバルなスケーラビリティ](sql-database-business-continuity.md)の機能を備えています。
 
-- **[自動バックアップ](sql-database-automated-backups.md)**:
+- **[自動バックアップ](sql-database-automated-backups.md)** :
 
   SQL Database では、Azure SQL データベースのフル、差分、トランザクション ログの各バックアップを自動的に実行することで、任意の時点への復旧を可能にしています。 単一データベースおよびプールされたデータベースについては、長期的なバックアップ保有期間のために、フル データベース バックアップを Azure ストレージに保存するように SQL Database を構成することができます。 マネージド インスタンスについては、長期的なバックアップ保有期間のためにコピーのみのバックアップを実行することもできます。
 
-- **[ポイントインタイム リストア](sql-database-recovery-using-backups.md)**:
+- **[ポイントインタイム リストア](sql-database-recovery-using-backups.md)** :
 
   すべての SQL Database デプロイ オプションは、あらゆる Azure SQL データベースについて、自動バックアップのリテンション期間内の任意の時点への復旧をサポートします。
-- **[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)**:
+- **[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)** :
 
   単一データベースおよびプールされたデータベースでは、同じ Azure データ センターまたは世界各地に分散された Azure データ センター内に、最大 4 つの読み取り可能なセカンダリ データベースを構成することができます。  たとえば、カタログ データベースを使用する SaaS アプリケーションで大量の同時実行の読み取り専用トランザクションが行われる場合は、アクティブ geo レプリケーションを使用してグローバル スケールの読み取りを有効することで、読み取りワークロードによるプライマリ上のボトルネックを取り除くことができます。 マネージド インスタンスについては、自動フェールオーバー グループを使用します。
-- **[自動フェールオーバー グループ](sql-database-auto-failover-group.md)**:
+- **[自動フェールオーバー グループ](sql-database-auto-failover-group.md)** :
 
   すべての SQL Database デプロイ オプションでは、フェールオーバー グループを使用して、高可用性と負荷分散をグローバル スケールで有効にすることができます。これには、データベース、エラスティック プール、マネージド インスタンスの大規模セットの透過的な geo レプリケーションおよびフェールオーバーが含まれます。 フェールオーバー グループを使用すると、グローバルに分散された SaaS アプリケーションを最小限の管理オーバーヘッドで作成することができ、複雑な監視、ルーティング、およびフェールオーバーのオーケストレーションは、すべて SQL Database にまかせることができます。
-- **[ゾーン冗長データベース](sql-database-high-availability.md)**:
+- **[ゾーン冗長データベース](sql-database-high-availability.md)** :
 
   SQL Database では、プレミアムまたはビジネス クリティカルのデータベースまたはエラスティック プールを複数の可用性ゾーンにわたってプロビジョニングすることができます。 これらのデータベースとエラスティック プールには、高可用性を目的とする複数の冗長レプリカが存在します。それらのレプリカを複数の可用性ゾーンに配置することで回復性を高め、たとえばデータの損失を生じさせずにデータセンター規模の障害から自動的に復旧することができます。
 
@@ -191,16 +191,16 @@ SQL Database は、定期監査に参加し、さまざまなコンプライア�
 
 SQL Database は、アプリケーションの開発と管理をより簡単で生産的にします。 SQL Database を使用すると、優れたアプリの構築に注力することができます。 既に所有しているツールとスキルを使用して、SQL Database で管理と開発を行うことができます。
 
-- **[Azure portal](https://portal.azure.com/)**:
+- **[Azure portal](https://portal.azure.com/)** :
 
   すべての Azure サービスを管理するための Web ベースのアプリケーションです
-- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)**:
+- **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)** :
 
   SQL Server から SQL Database まで、あらゆる SQL インフラストラクチャを管理するための、無料でダウンロードできるクライアント アプリケーションです
-- **[Visual Studio での SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**:
+- **[Visual Studio での SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)** :
 
   SQL Server リレーショナル データベース、Azure SQL データベース、Integration Services パッケージ、Analysis Services データ モデル、および Reporting Services レポートを開発するための、無料でダウンロードできるクライアント アプリケーションです。
-- **[Visual Studio Code](https://code.visualstudio.com/docs)**:
+- **[Visual Studio Code](https://code.visualstudio.com/docs)** :
 
   Linux、macOS、および Windows 用の無料でダウンロードできるオープン ソースのコード エディターです。Microsoft SQL Server、Azure SQL Database、および SQL Data Warehouse のデータを照会するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)を含む拡張機能をサポートします。
 

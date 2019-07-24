@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e9f40e749642f2025c5298df74f9d8ff87aec14b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 90989a9105405f1784b3be9ab59f55cd3433feaf
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784058"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66479230"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Business Critical レベル - Azure SQL Database
 
@@ -49,6 +49,7 @@ Business Critical サービス レベルの対象となるアプリケーショ�
 
 ## <a name="next-steps"></a>次の手順
 
+- [Managed Instance](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) の Business Critical レベル、[仮想コア モデル](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute-tier)または [DTU モデル](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)の単一データベース、[仮想コア モデル](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes)および [DTU モデル](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits)のエラスティック プールのリソース特性 (コア数、IO、メモリ) を確認します。
 - [General Purpose](sql-database-service-tier-general-purpose.md) レベルと [Hyperscale](sql-database-service-tier-hyperscale.md) レベルについて学びます。
 - [Service Fabric](../service-fabric/service-fabric-overview.md) について学びます。
 - 高可用性およびディザスター リカバリーのためのその他のオプションについては、[ビジネス継続性](sql-database-business-continuity.md)に関するページを参照してください。

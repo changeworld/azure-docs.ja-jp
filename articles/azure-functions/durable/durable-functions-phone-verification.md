@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: cf43e29e967ee6f920eb38feb9c73d70f9621ea4
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62123316"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
-このサンプルでは、人による操作を含む [Durable Functions](durable-functions-overview.md) オーケストレーションを構築する方法を示します。 自動プロセスに実際の人が関与する場合、プロセスは人への通知の送信と応答の受信を非同期に行うことができる必要があります。 また、人がいない可能性にも対応する必要があります  (この最後の部分では、タイムアウトが重要になります)。
+このサンプルでは、人による操作を含む [Durable Functions](durable-functions-overview.md) オーケストレーションを構築する方法を示します。 自動プロセスに実際の人が関与する場合、プロセスは人への通知の送信と応答の受信を非同期に行うことができる必要があります。 また、人がいない可能性にも対応する必要があります (この最後の部分では、タイムアウトが重要になります)。
 
 このサンプルでは、SMS ベースの電話確認システムを実装します。 この種のフローは、顧客の電話番号を確認するとき、または多要素認証 (MFA) に、よく使われます。 これは、実装全体が 2 つの小さい関数を使って行われる強力な例です。 データベースなどの外部データ ストアは必要ありません。
 

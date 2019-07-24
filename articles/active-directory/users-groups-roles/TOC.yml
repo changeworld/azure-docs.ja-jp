@@ -116,7 +116,7 @@
           href: licensing-groups-change-licenses.md
         - name: その他のシナリオ
           href: licensing-group-advanced.md
-        - name: PowerShell を使用したグループ ライセンス
+        - name: PowerShell および Graph でのグループ ライセンス付与
           href: licensing-ps-examples.md
         - name: ライセンス供与のためのサービス プラン ID
           href: licensing-service-plan-reference.md

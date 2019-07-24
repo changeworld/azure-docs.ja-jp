@@ -5,23 +5,23 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 06/04/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: be8c3d3be4410d15ba132a24a417e7a7b0418352
-ms.sourcegitcommit: 3675daec6c6efa3f2d2bf65279e36ca06ecefb41
+ms.openlocfilehash: 169e25aeb8503a11f768a2a3062022eef51a76b8
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65620272"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67659841"
 ---
-**ドキュメントの最終更新日**:2019 年 5 月 14 日 10:00 AM PST。
+**ドキュメントの最終更新日**:2019 年 6 月 4 日午後 3:00 PST。
 
 投機的実行のサイドチャネル攻撃として知られる[新たな CPU 脆弱性クラス](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)を開示したところ、よりわかりやすい説明を求めて、お客様からさまざまな質問が寄せられています。  
 
 Microsoft は、クラウド サービス全体に軽減策を展開しました。 Azure を実行し、顧客ワークロードを互いに分離するインフラストラクチャは保護されています。 つまり同じインフラストラクチャを使用する潜在的な攻撃者が、これらの脆弱性を利用してお客様のアプリケーションを攻撃することはできません。
 
-Azure では、可能な限り[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-not-requiring-a-reboot)を利用することで、お客様への影響を極力少なくし、再起動を不要にしています。 システム全体に及ぶ更新をホストに対して行う際は、引き続きこうした手法を活用しながらお客様を保護してまいります。
+Azure では、可能な限り[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-that-doesnt-require-a-reboot)を利用することで、お客様への影響を極力少なくし、再起動を不要にしています。 システム全体に及ぶ更新をホストに対して行う際は、引き続きこうした手法を活用しながらお客様を保護してまいります。
 
 Azure にさまざまな角度から組み込まれているセキュリティについて詳しくは、「[Azure のセキュリティのドキュメント](https://docs.microsoft.com/azure/security/)」サイトをご覧ください。 
 
@@ -29,7 +29,7 @@ Azure にさまざまな角度から組み込まれているセキュリティ�
 > このドキュメントが初めて公開されて以来、この脆弱性クラスについて同様の記事がいくつか開示されてきました。 Microsoft は今後もお客様の保護とガイダンスの提供に積極的に投資していく予定です。 引き続き解決策を公開していくために、このページは随時更新されます。 
 > 
 > 2019 年 5 月 14 日、[Intel](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) は Microarchitectural Data Sampling (MDS) と呼ばれる、新たな投機的実行サイド チャネルの脆弱性を公開しました。MDS については、Microsoft のセキュリティ ガイダンス [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013) を参照してください。これには、複数の CVE が割り当てられています。 
-> - CVE-2018-11091 - Microarchitectural Data Sampling Uncacheable Memory (MDSUM)
+> - CVE-2019-11091 - Microarchitectural Data Sampling Uncacheable Memory (MDSUM)
 > - CVE-2018-12126 - Microarchitectural Store Buffer Data Sampling (MSBDS) 
 > - CVE-2018-12127 - Microarchitectural Load Port Data Sampling (MLPDS)
 > - CVE-2018-12130 - Microarchitectural Fill Buffer Data Sampling (MFBDS)
@@ -72,12 +72,12 @@ Azure 上で実行するアプリケーションを他の Azure ユーザーか�
 
 信頼されていないコードを実行している場合は、VM 内またはクラウド サービス内で追加的なセキュリティ機能を有効にすることができます。 VM 内またはクラウド サービス内でセキュリティ機能を有効にするために、オペレーティング システムが最新の状態になっていることも並行して確認してください
 
-### <a name="windows"></a> Windows 
+### <a name="windows"></a>Windows 
 
 そうした追加的なセキュリティ機能を有効にするためには、対象のオペレーティング システムが最新の状態にあることが必要です。 投機的実行のサイドチャネルに関しては、さまざまな軽減策が既定で有効になっていますが、ここで説明する追加的な機能は手動で有効にする必要があり、またパフォーマンスに影響を及ぼすことがあります。 
 
 
-**手順 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM サイズに移す必要があります。 VM でハイパースレッディングが有効になっているかどうかを確認するには、VM 内で Windows コマンド ラインを使用して以下のスクリプトを参照してください。
+**手順 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM サイズに移す必要があります。 ハイパースレッド化された VM サイズの一覧については[こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/windows/acu)を参照してください (ここで、vCPU とコアの比率は 2:1 です)。 VM でハイパースレッディングが有効になっているかどうかを確認するには、VM 内で Windows コマンド ラインを使用して以下のスクリプトを参照してください。
 
 対話型インターフェイスを起動するには、`wmic` と入力します。 次に、以下を入力して、VM 上の物理および論理プロセッサの量を表示します。
 
@@ -85,7 +85,7 @@ Azure 上で実行するアプリケーションを他の Azure ユーザーか�
 CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
 ```
 
-論理プロセッサの数が物理プロセッサ (コア) よりも多い場合は、ハイパースレッディングが有効になっています。  ハイパースレッド化された VM を実行している場合は、[Azure サポートに問い合わせて](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)、ハイパースレッディングを無効にしてください。  ハイパースレッディングが無効になると、**VM の完全な再起動が必要になります**。 
+論理プロセッサの数が物理プロセッサ (コア) よりも多い場合は、ハイパースレッディングが有効になっています。  ハイパースレッド化された VM を実行している場合は、[Azure サポートに問い合わせて](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)、ハイパースレッディングを無効にしてください。  ハイパースレッディングが無効になると、**VM の完全な再起動が必要になります**。 VM コア数が減少した理由については、「[コア数](#core-count)」を参照してください。
 
 
 **手順 2**:手順 1 と並行して [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の手順に従い、[SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell モジュールを使って、保護が有効になっていることを確認します。
@@ -123,7 +123,7 @@ Windows OS support for MDS mitigation is enabled: True
 <a name="linux"></a>追加的なセキュリティ機能一式を内部で有効にするためには、対象のオペレーティング システムが完全に最新の状態にあることが必要です。 一部の軽減策については、既定で有効になります。 次のセクションで説明している内容は、既定でオフになっている機能や、ハードウェア サポート (マイクロコード) に依存している機能が対象となります。 これらの機能を有効にすると、パフォーマンスに影響が生じることがあります。 詳しい手順については、オペレーティング システムの提供元のドキュメントを参照してください。
 
 
-**手順 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM に移す必要があります。  ハイパースレッド化された VM を実行しているかどうかを確認するには、Linux VM で `lspcu` コマンドを実行します。 
+**手順 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM に移す必要があります。  ハイパースレッド化された VM サイズの一覧については[こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/acu)を参照してください (ここで、vCPU とコアの比率は 2:1 です)。 ハイパースレッド化された VM を実行しているかどうかを確認するには、Linux VM で `lscpu` コマンドを実行します。 
 
 `Thread(s) per core = 2` の場合、ハイパースレッディングが有効になっています。 
 
@@ -137,8 +137,7 @@ CPU Architecture:      x86_64
 CPU op-mode(s):        32-bit, 64-bit
 Byte Order:            Little Endian
 CPU(s):                8
-On-line CPU(s) list:   0,2,4,6
-Off-line CPU(s) list:  1,3,5,7
+On-line CPU(s) list:   0-7
 Thread(s) per core:    2
 Core(s) per socket:    4
 Socket(s):             1
@@ -146,7 +145,8 @@ NUMA node(s):          1
 
 ```
 
-ハイパースレッド化された VM を実行している場合は、[Azure サポートに問い合わせて](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)、ハイパースレッディングを無効にしてください。  注:ハイパースレッディングが無効になると、**VM の完全な再起動が必要になります**。
+ハイパースレッド化された VM を実行している場合は、[Azure サポートに問い合わせて](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)、ハイパースレッディングを無効にしてください。  ハイパースレッディングが無効になると、**VM の完全な再起動が必要になります**。 VM コア数が減少した理由については、「[コア数](#core-count)」を参照してください。
+
 
 
 **手順 2**:以下のいずれかの投機的実行サイド チャネルの脆弱性を軽減する場合は、お使いのオペレーティング システム プロバイダーのドキュメントを参照してください。   
@@ -155,22 +155,27 @@ NUMA node(s):          1
 - [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 
 - [Ubuntu](https://wiki.ubuntu.com/SecurityTeam/KnowledgeBase/) 
 
+
+### <a name="core-count"></a>コア数
+
+ハイパースレッド化された VM が作成されると、Azure によってコアあたり 2 つのスレッドが割り当てられます。これらは vCPU と呼ばれます。 ハイパースレッディングが無効にされると、Azure によってスレッドが削除され、1 つのスレッド化されたコア (物理コア) が表示されます。 vCPU と CPU の比率は 2:1 なので、ハイパースレッディングが無効になると、VM 内の CPU 数は半分に減少したように見えます。 たとえば、D8_v3 VM は、8 個の vCPU (コアあたり 2 スレッド × 4 コア) 上で実行されるハイパースレッド化された VM です。  ハイパースレッディングが無効にされると、CPU はコアあたり 1 スレッドの 4 物理コアに低下します。 
+
 ## <a name="next-steps"></a>次の手順
 
 この記事では、多くの最新のプロセッサに影響を与える、以下の投機的実行サイド チャネル攻撃のガイダンスを提供しています。
 
-[Spectre Meltdown](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180002):
+[Spectre Meltdown](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180002):
 - CVE-2017-5715 - ブランチ ターゲット インジェクション (BTI)  
 - CVE-2017-5754 - カーネル ページ テーブル アイソレーション (KPTI)
 - CVE-2018-3639 - 投機的ストア バイパス (KPTI) 
  
-[L1 ターミナル フォールト (L1TF)](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV180018):
+[L1 ターミナル フォールト (L1TF)](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV180018):
 - CVE-2018-3615 - Intel ソフトウェア ガード エクステンションズ (Intel SGX)
 - CVE-2018-3620 - オペレーティング システム (OS) およびシステム管理モード (SMM)
 - CVE-2018-3646 - Virtual Machine Manager (VMM) への影響
 
-[Microarchitectural Data Sampling](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV190013): 
-- CVE-2018-11091 - Microarchitectural Data Sampling Uncacheable Memory (MDSUM)
+[Microarchitectural Data Sampling](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190013): 
+- CVE-2019-11091 - Microarchitectural Data Sampling Uncacheable Memory (MDSUM)
 - CVE-2018-12126 - Microarchitectural Store Buffer Data Sampling (MSBDS)
 - CVE-2018-12127 - Microarchitectural Load Port Data Sampling (MLPDS)
 - CVE-2018-12130 - Microarchitectural Fill Buffer Data Sampling (MFBDS)

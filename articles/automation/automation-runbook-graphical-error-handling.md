@@ -4,17 +4,17 @@ description: この記事では、Azure Automation のグラフィカル Runbook
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d7fe38334b71334d4dae9235643117efdf5fbd5d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ed6620333382a1e43ee1b38a009c91e8d7038233
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436690"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476950"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Automation のグラフィカル Runbook におけるエラー処理
 
@@ -61,7 +61,7 @@ Runbook の作成者は、エラーが発生する可能性のある各アクテ
 
 **Get-AutomationVariable** アクティビティと **Start-AzureRmVm** は、例外をエラーに変換するように構成されています。 変数の取得や VM の起動に関する問題がある場合には、エラーが生成されます。<br><br> ![Automation Runbook のエラー処理アクティビティの設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
 
-エラー リンクは、これらのアクティビティから単一の**エラー管理**アクティビティ (コード アクティビティ) にリンクされています。 このアクティビティは単純な PowerShell の式で構成されており、*Throw* キーワードで処理を停止し、*$Error.Exception.Message* で現在の例外に関するメッセージを取得するようになっています。<br><br> ![Automation Runbook のエラー処理コードの例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+エラー リンクは、これらのアクティビティから単一の**エラー管理**アクティビティ (コード アクティビティ) にリンクされています。 このアクティビティは単純な PowerShell の式で構成されており、*Throw* キーワードで処理を停止し、 *$Error.Exception.Message* で現在の例外に関するメッセージを取得するようになっています。<br><br> ![Automation Runbook のエラー処理コードの例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 
 ## <a name="next-steps"></a>次の手順

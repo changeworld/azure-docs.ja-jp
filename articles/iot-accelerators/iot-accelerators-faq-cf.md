@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: ed429d923cad2c715621990c146d4cf3a23e7bca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904755"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447932"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -76,7 +76,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 1. アクティブなコンテナーを確認するには、`docker ps` を実行します。
 1. すべてのシミュレーション コンテナーを停止するには、`./stopsimulation` を実行します。
 1. すべてのシミュレーション コンテナーを開始するには、次のようにします。
-    * シェル変数を **IOTHUB_CONNECTIONSTRING** という名前でエクスポートします。 `<name of your deployment>.config.user` ファイルの **IotHubOwnerConnectionString** 設定の値を使用します。 例: 
+    * シェル変数を **IOTHUB_CONNECTIONSTRING** という名前でエクスポートします。 `<name of your deployment>.config.user` ファイルの **IotHubOwnerConnectionString** 設定の値を使用します。 例:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -146,7 +146,7 @@ IoT Hub に送信されるデータが表示されない場合は、シミュレ
 
 接続済みファクトリの GitHub リポジトリにある `build.ps1` スクリプトを使ってデプロイする場合は、ビルド ウィンドウの環境変数 `$env:MapApiQueryKey` を [Azure Maps アカウントのキー](../azure-maps/how-to-manage-account-keys.md)に設定します。 このようにすると、インタラクティブ マップが自動的に有効になります。
 
-デプロイ後に、ソリューション アクセラレータに Azure Maps アカウント キーを追加することもできます。 Azure Portal に移動し、接続済みファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、**[アプリケーション設定]** セクションを探します。 **MapApiQueryKey** を [Azure Maps アカウントのキー](../azure-maps/how-to-manage-account-keys.md)に設定します。 設定を保存した後、**[概要]** に移動して、App Service を再起動します。
+デプロイ後に、ソリューション アクセラレータに Azure Maps アカウント キーを追加することもできます。 Azure Portal に移動し、接続済みファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、 **[アプリケーション設定]** セクションを探します。 **MapApiQueryKey** を [Azure Maps アカウントのキー](../azure-maps/how-to-manage-account-keys.md)に設定します。 設定を保存した後、 **[概要]** に移動して、App Service を再起動します。
 
 ### <a name="how-do-i-create-an-azure-maps-account"></a>Azure Maps アカウントを作成するにはどうすればいいですか
 

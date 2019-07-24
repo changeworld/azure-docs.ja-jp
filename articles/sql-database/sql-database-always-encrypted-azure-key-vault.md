@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: bcda6ac723101d6a907a10c5163ae1baf0ad2214
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66168107"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Azure Key Vault 内で機密データを保護し、暗号化キーを格納する
@@ -85,14 +85,14 @@ Azure Active Directory (AAD) アプリケーションを設定し、アプリケ
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. **[リソースの作成]** > **[データベース]** > **[SQL データベース]** に移動します。
+2. **[リソースの作成]**  >  **[データベース]**  >  **[SQL データベース]** に移動します。
 3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL データベース](sql-database-single-database-get-started.md)」を参照してください。
    
     ![空のデータベースの作成](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
 チュートリアルの後の方で接続文字列が必要になるため、データベースを作成した後に、新しい Clinic データベースを参照し、接続文字列をコピーします。 いつでも接続文字列を取得できますが、Azure ポータルで簡単にそれをコピーできます。
 
-1. **[SQL Database]** > **[Clinic]** > **[データベース接続文字列の表示]** の順に移動します。
+1. **[SQL Database]**  >  **[Clinic]**  >  **[データベース接続文字列の表示]** の順に移動します。
 2. **ADO.NET**の接続文字列をコピーします。
    
     ![接続文字列のコピー](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
@@ -100,7 +100,7 @@ Azure Active Directory (AAD) アプリケーションを設定し、アプリケ
 ## <a name="connect-to-the-database-with-ssms"></a>SSMS を使用してデータベースに接続する
 SSMS を開き、Clinic データベースを作成したサーバーに接続します。
 
-1. SSMS を開きます。 (**[サーバーへの接続]** ウィンドウを開いていない場合は、**[接続]** > **[データベース エンジン]** の順に移動して開きます)。
+1. SSMS を開きます。 ( **[サーバーへの接続]** ウィンドウを開いていない場合は、 **[接続]**  >  **[データベース エンジン]** の順に移動して開きます)。
 2. サーバー名と資格情報を入力します。 サーバー名がわからない場合は、[SQL Database] ブレードか、先ほどコピーした接続文字列で確認できます。 *database.windows.net*を含む完全なサーバー名を入力してください。
    
     ![接続文字列のコピー](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
@@ -111,7 +111,7 @@ SSMS を開き、Clinic データベースを作成したサーバーに接続�
 このセクションでは、患者データを保持するテーブルを作成します。 これは最初は通常のテーブルで、次のセクションで暗号化を構成します。
 
 1. **[データベース]** を展開します。
-2. **Clinic** データベースを右クリックして、**[新しいクエリ]** をクリックします。
+2. **Clinic** データベースを右クリックして、 **[新しいクエリ]** をクリックします。
 3. [新しいクエリ] ウィンドウに次の Transact-SQL (T-SQL) を貼り付けて、 **実行** します。
 
 ```sql
@@ -138,10 +138,10 @@ SSMS に用意されているウィザードを使用すると、列マスター
    
     ![[列の暗号化]](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
-Always Encrypted ウィザードには、**[列の選択]**、**[マスター キー構成]**、**[検証]**、および **[まとめ]** のセクションがあります。
+Always Encrypted ウィザードには、 **[列の選択]** 、 **[マスター キー構成]** 、 **[検証]** 、および **[まとめ]** のセクションがあります。
 
 ### <a name="column-selection"></a>列の選択
-**[説明]** ページの **[次へ]** をクリックして、**[列の選択]** ページを開きます。 このページで、暗号化する列、 [暗号化の種類、使用する列暗号化キー (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) を選択します。
+**[説明]** ページの **[次へ]** をクリックして、 **[列の選択]** ページを開きます。 このページで、暗号化する列、 [暗号化の種類、使用する列暗号化キー (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) を選択します。
 
 各患者の **SSN** と **BirthDate** 情報を暗号化します。 SSN 列では決定論的な暗号化を使用します。この場合、等値のルックアップ、結合、グループ化を実行できます。 BirthDate 列ではランダム化された暗号化を使用します。この場合、操作は実行できません。
 
@@ -161,7 +161,7 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 ![マスター キー構成](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
 ### <a name="validation"></a>検証
-列の暗号化はすぐに実行することも、PowerShell スクリプトを保存して後から実行することもできます。 このチュートリアルでは、**[今すぐ続行して完了]** を選択して **[次へ]** をクリックします。
+列の暗号化はすぐに実行することも、PowerShell スクリプトを保存して後から実行することもできます。 このチュートリアルでは、 **[今すぐ続行して完了]** を選択して **[次へ]** をクリックします。
 
 ### <a name="summary"></a>まとめ
 設定がすべて正しいことを確認し、 **[完了]** をクリックすれば、Always Encrypted の設定は完了です。
@@ -175,7 +175,7 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 * 列暗号化キーを作成し、Azure Key Vault に格納しました。
 * 選択した列の暗号化の構成 Patients テーブルにはまだデータがありませんが、選択した列にデータが存在していれば、この段階で暗号化されています。
 
-SSMS でキーが生成されていることを確認するには、**[Clinic]** > **[セキュリティ]** > **[Always Encrypted キー]** の順に展開します。
+SSMS でキーが生成されていることを確認するには、 **[Clinic]**  >  **[セキュリティ]**  >  **[Always Encrypted キー]** の順に展開します。
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>暗号化されたデータを扱うクライアント アプリケーションを作成する
 Always Encrypted を設定したので、暗号化された列に対して、*inserts* や *selects* を実行するアプリケーションを構築できます。  
@@ -186,8 +186,8 @@ Always Encrypted を設定したので、暗号化された列に対して、*in
 > 
 
 1. Visual Studio を開き、新しい C# **コンソール アプリケーション** (Visual Studio 2015 以前) または **コンソール アプリケーション (.NET Framework)** (Visual Studio 2017 以降) を作成します。 プロジェクトは必ず **.NET Framework 4.6** 以降に設定してください。
-2. プロジェクトに **AlwaysEncryptedConsoleAKVApp** という名前を付けて、**[OK]** をクリックします。
-3. **[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に進んで、次の NuGet のパッケージをインストールします。
+2. プロジェクトに **AlwaysEncryptedConsoleAKVApp** という名前を付けて、 **[OK]** をクリックします。
+3. **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に進んで、次の NuGet のパッケージをインストールします。
 
 パッケージ マネージャー コンソールで、次の 2 行のコードを実行します。
 
@@ -615,8 +615,8 @@ Clinic データベースで次のクエリを実行します。
 
 次に、接続中に *Column Encryption Setting=enabled* パラメーターを追加します。
 
-1. SSMS の**オブジェクト エクスプローラー**でサーバーを右クリックし、**[切断]** を選択します。
-2. **[接続]** > **[データベース エンジン]** の順にクリックして **[サーバーへの接続]** ウィンドウを開き、**[オプション]** をクリックします。
+1. SSMS の**オブジェクト エクスプローラー**でサーバーを右クリックし、 **[切断]** を選択します。
+2. **[接続]**  >  **[データベース エンジン]** の順にクリックして **[サーバーへの接続]** ウィンドウを開き、 **[オプション]** をクリックします。
 3. **[追加の接続パラメーター]** をクリックし、「**Column Encryption Setting=enabled**」と入力します。
    
     ![新しいコンソール アプリケーション](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)

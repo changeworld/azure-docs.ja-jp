@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 536210922d13f66aaa5a09bd87bd2d92da8d416c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b7ffef5c3a7c8dd21654b6364013b1718bea1292
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546111"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482982"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft ID プラットフォームのプロトコル
 
@@ -36,7 +36,7 @@ ms.locfileid: "65546111"
 
 OAuth 2.0 と OpenID Connect におけるフローはほぼすべて、情報のやり取りに 4 つの当事者が関係します。
 
-![OAuth 2.0 Roles](./media/active-directory-v2-flows/protocols-roles.svg)
+![OAuth 2.0 ロールを示す図](./media/active-directory-v2-flows/protocols-roles.svg)
 
 * **承認サーバー**は、Microsoft ID プラットフォーム エンドポイントとして、ユーザーの本人性確認、リソースへのアクセス権の付与と取り消し、トークンの発行という役割を担います。 承認サーバーは、ID プロバイダーと呼ばれることもあります。ユーザーの情報とそのアクセス、そしてフロー内の当事者間の信頼関係に関するすべてのことは、承認サーバーによって安全に処理されます。
 * **リソース所有者** とは通常、エンド ユーザーを指します。 データを所有し、そのデータ (またはリソース) へのアクセスをサード パーティに許可する権限を持つ当事者です。
@@ -48,7 +48,7 @@ OAuth 2.0 と OpenID Connect におけるフローはほぼすべて、情報の
 個人用アカウントと職場や学校のアカウントの両方を受け付けるアプリはすべて、[Azure portal](https://aka.ms/appregistrations) の**アプリの登録** エクスペリエンスを通じて登録する必要があります。登録後、OAuth 2.0 または OpenID Connect を使用して、それらのユーザーをサインインさせることができます。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する**アプリケーション ID**。
-* **リダイレクト URI** または**パッケージ識別子** (アプリに戻す応答をリダイレクトする際に使用)。
+* 応答をアプリにリダイレクトして戻すために使用できる**リダイレクト URI** (オプション)
 * その他シナリオに応じた値。
 
 詳細については、 [アプリの登録](quickstart-register-app.md)方法を参照してください。

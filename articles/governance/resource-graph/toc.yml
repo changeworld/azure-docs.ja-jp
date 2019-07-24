@@ -33,6 +33,9 @@
     - name: 大規模なデータ セットを処理する
       displayName: 'page, first, skip, token'
       href: ./concepts/work-with-data.md
+    - name: スロットルされた要求に関するガイダンス
+      displayName: 'pagination, batching, throttling, parallel'
+      href: ./concepts/guidance-for-throttled-requests.md
 - name: ハウツー ガイド
   items:
     - name: リソースの変更の取得

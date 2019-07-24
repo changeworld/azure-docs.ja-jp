@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e471f447b0c50c9c65923d7135b2b48789728df
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: a8a200df2f474cead197a0e74ae7e27927f814d2
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470692"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66242270"
 ---
 # <a name="security-info-preview-overview"></a>セキュリティ情報 (プレビュー) の概要
 
@@ -28,7 +28,7 @@ ms.locfileid: "65470692"
 >[!Important]
 >このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 
-## <a name="security-info-articles"></a>セキュリティ情報に関する記事
+## <a name="security-info-related-articles"></a>セキュリティ情報に関連する記事
 
 セキュリティ情報の追加、更新、削除に関する詳細と手順については、(使用する方法に応じて) 次の記事を参照してください。
 

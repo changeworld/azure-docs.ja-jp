@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/04/2019
 ms.openlocfilehash: 54890aef8dabfa019a5181c155b6668b1c07cf2c
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755936"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60331922"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Entity Framework による Elastic Database クライアント ライブラリ
 
@@ -45,8 +45,8 @@ ms.locfileid: "55755936"
 
 Entity Framework 開発者は、アプリケーションをビルドし、アプリケーション オブジェクトの持続性を確認する場合に、次の 4 つのワークフローのいずれかに依存します。
 
-* **コード ファースト (新しいデータベース)**: EF 開発者がアプリケーション コードでモデルを作成した後、EF によってこのモデルからデータベースが生成されます。 
-* **コード ファースト (既存のデータベース)**: 開発者は、EF を使用して既存のデータベースからモデルのアプリケーション コードを作成します。
+* **コード ファースト (新しいデータベース)** : EF 開発者がアプリケーション コードでモデルを作成した後、EF によってこのモデルからデータベースが生成されます。 
+* **コード ファースト (既存のデータベース)** : 開発者は、EF を使用して既存のデータベースからモデルのアプリケーション コードを作成します。
 * **モデル ファースト**: 開発者が EF デザイナーでモデルを作成した後、EF によってこのモデルからデータベースが作成されます。
 * **データベース ファースト**: 開発者は、EF ツールを使用して、既存のデータベースからモデルを推論します。 
 

@@ -19,10 +19,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23a8eaaf095be1d59944791bd793047886dda40c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65544804"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft ID プラットフォームと OpenID Connect プロトコル
@@ -91,7 +91,7 @@ Web アプリでユーザーを認証する必要があるときは、ユーザ�
 > [!IMPORTANT]
 > /authorization エンドポイントから ID トークンを適切に要求するには、[登録ポータル](https://portal.azure.com)でのアプリ登録で、[認証] タブの id_tokens の暗黙的な許可を有効する必要があります (これで、[アプリケーション マニフェスト](reference-app-manifest.md)の `oauth2AllowIdTokenImplicitFlow` フラグが `true` に設定されます)。 有効でない場合、`unsupported_response` エラー"The provided value for the input parameter 'response_type' isn't allowed for this client. Expected value is 'code'"\(入力パラメーター 'response_type' に入力された値はこのクライアントで許可されません。入力できる値は 'code' です。\) が返されます。
 
-例: 
+例:
 
 ```
 // Line breaks are for legibility only.

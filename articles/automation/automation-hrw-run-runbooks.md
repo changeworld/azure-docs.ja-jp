@@ -4,17 +4,17 @@ description: この記事では、Hybrid Runbook Worker ロールを持つロー
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fab886de55cc524390093f7e7913c79f7af3fe78
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 88e3c0514861da0bd11acffd26cced54717e4418
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858143"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478483"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -35,7 +35,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 ```
 
 > [!NOTE]
-> The **RunOn** parameter was added to the **Start-AzureAutomationRunbook** cmdlet in version 0.9.1 of Microsoft Azure PowerShell. 以前のバージョンがインストールされている場合は、 [最新バージョンをダウンロード](https://azure.microsoft.com/downloads/) する必要があります。 PowerShell から Runbook を開始するワークステーションでは、このバージョンをインストールするだけです。 ワーカー コンピューターから Runbook を開始する場合を除き、そのコンピューターにインストールする必要はありません。
+> **RunOn** パラメーターは、Microsoft Azure PowerShell のバージョン 0.9.1 で **Start-AzureAutomationRunbook** コマンドレットに追加されました。 以前のバージョンがインストールされている場合は、 [最新バージョンをダウンロード](https://azure.microsoft.com/downloads/) する必要があります。 PowerShell から Runbook を開始するワークステーションでは、このバージョンをインストールするだけです。 ワーカー コンピューターから Runbook を開始する場合を除き、そのコンピューターにインストールする必要はありません。
 
 ## <a name="runbook-permissions"></a>Runbook のアクセス許可
 
@@ -72,7 +72,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 1. ローカル リソースに対するアクセス権を持つ [資格情報資産](automation-credentials.md) を作成します。
 2. Azure ポータルで Automation アカウントを開きます。
 3. **[ハイブリッド Worker グループ]** タイルを選択し、グループを選択します。
-4. **[すべての設定]**、**[ハイブリッド Worker グループの設定]** の順に選択します。
+4. **[すべての設定]** 、 **[ハイブリッド Worker グループの設定]** の順に選択します。
 5. **[実行者]** を **[既定]** から **[カスタム]** に変更します。
 6. 資格情報を選択し、 **[保存]** をクリックします。
 

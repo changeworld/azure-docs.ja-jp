@@ -14,11 +14,11 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b74049833b055caa112c346b74798893f2c0febf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181834"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60476678"
 ---
 # <a name="get-help-with-two-step-verification"></a>2 段階認証のサポートを受ける
 
@@ -31,7 +31,7 @@ Microsoft は、2 段階認証を提供していますが、その機能を使�
 
 ## <a name="why-do-i-need-to-use-another-verification-method"></a>別の認証方法を使用する必要がある理由は何ですか。
 
-アカウントで別の認証方法を使用する必要がある理由はいくつかあります。 例: 
+アカウントで別の認証方法を使用する必要がある理由はいくつかあります。 例:
 
 - **携帯電話またはデバイスを忘れた場合。** 携帯電話を自宅に忘れたものの、職場でサインインする必要がある場合があります。 まず、携帯電話が必要ない別の方法を使用してサインインしてください。
 
@@ -43,7 +43,7 @@ Microsoft は、2 段階認証を提供していますが、その機能を使�
 
 ## <a name="sign-in-using-another-verification-method"></a>別の認証方法を使用してサインインする
 
-1. 通常どおりアカウントにサインインし、**[2 段階認証]** ページで **[Sign in another way]\(別の方法でサインイン\)** リンクを選択します。
+1. 通常どおりアカウントにサインインし、 **[2 段階認証]** ページで **[Sign in another way]\(別の方法でサインイン\)** リンクを選択します。
 
     ![サインインの検証方法を変更する](./media/multi-factor-authentication-end-user-troubleshoot/two-factor-auth-signin-another-way.png)
 

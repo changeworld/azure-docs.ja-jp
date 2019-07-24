@@ -13,10 +13,10 @@ ms.author: shlo
 ms.reviewer: ''
 manager: craigg
 ms.openlocfilehash: b32e4abebdfb93312c60a25ca8b483f071e5e73c
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65507814"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
@@ -70,7 +70,7 @@ Azure Data Factory で **[始めましょう]** ページに移動します。 *
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス**からの既存のデータ ファクトリ リソースを Azure Repos Git リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
 
 #### <a name="configuration-method-2-azure-repos-git-repo-ux-authoring-canvas"></a>構成方法 2 (Azure Repos Git リポジトリ):UX 作成キャンバス
-Azure Data Factory UX **作成キャンバス**でデータ ファクトリを見つけます。 **[Data Factory]** ドロップダウン メニューを選択して、**[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
+Azure Data Factory UX **作成キャンバス**でデータ ファクトリを見つけます。 **[Data Factory]** ドロップダウン メニューを選択して、 **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
 
 構成ウィンドウが表示されます。 構成設定について詳しくは、「<a href="#method1">構成方法 1</a>」の説明をご覧ください。
 
@@ -105,17 +105,17 @@ Azure Repos を組織の Active Directoryに接続する方法について詳し
 ### <a name="use-version-control"></a>バージョン コントロールの使用
 開発者は、バージョン コントロール (_ソース管理_ とも呼ばれます) システムを使うことで、コードの共同作業を行い、コード ベースに対して行われた変更を追跡することができます。 ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。
 
-データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`master` は既定のコラボレーション ブランチです)。 ユーザーは、**[+ 新しいブランチ]** をクリックして機能ブランチを作成し、その機能ブランチで開発を行うこともできます。
+データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`master` は既定のコラボレーション ブランチです)。 ユーザーは、 **[+ 新しいブランチ]** をクリックして機能ブランチを作成し、その機能ブランチで開発を行うこともできます。
 
 ![同期または発行してコードを変更](media/author-visually/sync-publish.png)
 
-機能ブランチでの機能開発によって準備ができたら、**[pull request の作成]** をクリックできます。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、pull request の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
+機能ブランチでの機能開発によって準備ができたら、 **[pull request の作成]** をクリックできます。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、pull request の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`master` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
 
 ![新しい pull request を作成する](media/author-visually/create-pull-request.png)
 
 ### <a name="configure-publishing-settings"></a>発行の設定を構成する
 
-発行ブランチを構成するには､すなわち､Resource Manager テンプレートが保存されているブランチを構成するには､コラボレーション ブランチのルート フォルダーに `publish_config.json` ファイルを追加します｡ Data Factory は、このファイルを読み取り、フィールド `publishBranch` を探して､新しいブランチが存在していない場合は､指定されている値を使ってブランチを作成します。 以降､Resource Manager のテンプレートはすべて､その指定した場所に保存されます｡ 例: 
+発行ブランチを構成するには､すなわち､Resource Manager テンプレートが保存されているブランチを構成するには､コラボレーション ブランチのルート フォルダーに `publish_config.json` ファイルを追加します｡ Data Factory は、このファイルを読み取り、フィールド `publishBranch` を探して､新しいブランチが存在していない場合は､指定されている値を使ってブランチを作成します。 以降､Resource Manager のテンプレートはすべて､その指定した場所に保存されます｡ 例:
 
 ```json
 {
@@ -132,7 +132,7 @@ Git モードからの発行では､次のスクリーン ショットに示す
 Data Factory はファクトリを読み取るときに `publish_config.json` ファイルを読み取るだけです｡ ポータルにファクトリをすでに読み込んでいる場合は､ブラウザを最新の情報に更新することで､変更が有効になっていることを確認することができます｡
 
 ### <a name="publish-code-changes"></a>コード変更の発行
-コラボレーション ブランチ (`master` が既定値) に変更をマージしたら、**[発行]** を選択して、マスター ブランチ内のコード変更を Data Factory サービスに手動で発行します。
+コラボレーション ブランチ (`master` が既定値) に変更をマージしたら、 **[発行]** を選択して、マスター ブランチ内のコード変更を Data Factory サービスに手動で発行します。
 
 ![Data Factory サービスに変更を発行する](media/author-visually/publish-changes.png)
 
@@ -191,7 +191,7 @@ GitHub リポジトリを構成するには、使用している Azure サブス
 
 **構成方法 1 (パブリック リポジトリ):[Let's get started]\(始めましょう\) ページ**
 
-Azure Data Factory で  **[始めましょう]**  ページに移動します。 [ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
+Azure Data Factory で  **[始めましょう]**   ページに移動します。 [ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
 ![Data Factory の [始めましょう] ページ](media/author-visually/github-integration-image1.png)
 
@@ -209,7 +209,7 @@ Azure Data Factory で  **[始めましょう]**  ページに移動します�
 | **コラボレーション ブランチ**                                 | 発行に使用される GitHub コラボレーション ブランチ。 既定は master です。 別のブランチからのリソースを発行する場合は、この設定を変更します。                                                                                                                                                                                                                                                               |                    |
 | **ルート フォルダー**                                          | GitHub コラボレーション ブランチのルート フォルダー。                                                                                                                                                                                                                                                                                                                                                                             |                    |
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX  **作成キャンバス** からの既存のデータ ファクトリ リソースを GitHub リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
-| **ソースをインポートするブランチ**                       | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a.  コラボレーション b.  新規作成 c.  既存のものを使用                                                                                                                                                                                                     |                    |
+| **ソースをインポートするブランチ**                       | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>構成方法 2 (パブリック リポジトリ):UX 作成キャンバス
 
@@ -223,7 +223,7 @@ Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを
 
 #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>構成方法 1 (Enterprise リポジトリ):[Let's get started]\(始めましょう\) ページ
 
-Azure Data Factory で  **[始めましょう]**  ページに移動します。 [ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
+Azure Data Factory で  **[始めましょう]**   ページに移動します。 [ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
 ![Data Factory の [始めましょう] ページ](media/author-visually/github-integration-image1.png)
 
@@ -243,7 +243,7 @@ Azure Data Factory で  **[始めましょう]**  ページに移動します�
 | **コラボレーション ブランチ**                                 | 発行に使用される GitHub コラボレーション ブランチ。 既定は master です。 別のブランチからのリソースを発行する場合は、この設定を変更します。                                                                                                                                                                                                                                                               |                    |
 | **ルート フォルダー**                                          | GitHub コラボレーション ブランチのルート フォルダー。                                                                                                                                                                                                                                                                                                                                                                             |                    |
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX  **作成キャンバス** からの既存のデータ ファクトリ リソースを GitHub リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
-| **ソースをインポートするブランチ**                       | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a.  コラボレーション b.  新規作成 c.  既存のものを使用                                                                                                                                                                                                     |                    |
+| **ソースをインポートするブランチ**                       | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用                                                                                                                                                                                                     |                    |
 
 #### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>構成方法 2 (Enterprise リポジトリ):UX 作成キャンバス
 
@@ -267,7 +267,7 @@ Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを
 ![動的なコンテンツの追加](media/author-visually/dynamic-content-2.png)
 
 ## <a name="provide-feedback"></a>フィードバックの提供
-機能に関するコメントを送信するには、またはツールの問題について Microsoft に通知するには、**[フィードバック]** を選択します。
+機能に関するコメントを送信するには、またはツールの問題について Microsoft に通知するには、 **[フィードバック]** を選択します。
 
 ![フィードバック](media/author-visually/provide-feedback.png)
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: 6894486118f69e682353142be04821e1d28440e5
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523173"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60814668"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
 
@@ -73,7 +73,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
 
 ### <a name="configure-foreach-loop-container"></a>Foreach ループ コンテナーを構成する
 
-1. **[コレクション]** ページで、**[列挙子]** を **[Foreach File 列挙子]** に設定します。
+1. **[コレクション]** ページで、 **[列挙子]** を **[Foreach File 列挙子]** に設定します。
 
 2. **[列挙子の構成]** グループの下の **[フォルダー]** を、ダウンロードした U-SQL スクリプトを含む一時フォルダーに設定します。
 
@@ -81,7 +81,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
 
     ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
-4. **[変数のマッピング]** ページで、ユーザー定義変数を追加して、各 U-SQL ファイルのファイル名を取得します。 ファイル名を取得するには、**[インデックス]** を 0 に設定します。 この例では、`User::FileName` という名前の変数を定義します。 この変数は、U-SQL スクリプト ファイルの接続を動的に取得し、Azure Data Lake Analytics タスクの U-SQL ジョブ名を設定するために使用されます。
+4. **[変数のマッピング]** ページで、ユーザー定義変数を追加して、各 U-SQL ファイルのファイル名を取得します。 ファイル名を取得するには、 **[インデックス]** を 0 に設定します。 この例では、`User::FileName` という名前の変数を定義します。 この変数は、U-SQL スクリプト ファイルの接続を動的に取得し、Azure Data Lake Analytics タスクの U-SQL ジョブ名を設定するために使用されます。
 
     ![ファイル名を取得するように Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-variable-mapping.png)
 
@@ -94,13 +94,13 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
     このファイル接続を作成するには:
 
    1. [FileConnection] の設定で **[\<新しい接続...>]** を選択します。
-   2. **[使用法の種類]** を **[既存のファイル]** に設定し、**[ファイル]** を既存の任意のファイルのファイル パスに設定します。
+   2. **[使用法の種類]** を **[既存のファイル]** に設定し、 **[ファイル]** を既存の任意のファイルのファイル パスに設定します。
 
        ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-   3. **接続マネージャー** ビューで、今作成したファイル接続を右クリックし、**[プロパティ]** を選択します。
+   3. **接続マネージャー** ビューで、今作成したファイル接続を右クリックし、 **[プロパティ]** を選択します。
 
-   4. **[プロパティ]** ウィンドウで、**[式]** を展開し、**[ConnectionString]** を Foreach ループ コンテナーで定義されている変数 (`@[User::FileName]` など) に設定します。
+   4. **[プロパティ]** ウィンドウで、 **[式]** を展開し、 **[ConnectionString]** を Foreach ループ コンテナーで定義されている変数 (`@[User::FileName]` など) に設定します。
 
        ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
@@ -110,7 +110,7 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
 
 5. **[式]** を使用して、U-SQL ジョブの名前を動的に設定します。
 
-    1. **[式]** ページで、**[JobName]** に新しい式のキーと値のペアを追加します。
+    1. **[式]** ページで、 **[JobName]** に新しい式のキーと値のペアを追加します。
     2. JobName の値を Foreach ループ コンテナーで定義されている変数 (`@[User::FileName]` など) に設定します。
     
         ![U-SQL ジョブ名に SSIS 式を構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
@@ -129,11 +129,11 @@ Azure Feature Pack の **Azure BLOB のダウンロード タスク**を使用�
 
 クラウドに格納されている U-SQL ファイルを使用する以外に、自分のローカル コンピューター上のファイルまたは SSIS パッケージでデプロイされたファイルも使用することができます。
 
-1. SSIS プロジェクトで **[接続マネージャー]** を右クリックして、**[新しい接続マネージャー]** を選択します。
+1. SSIS プロジェクトで **[接続マネージャー]** を右クリックして、 **[新しい接続マネージャー]** を選択します。
 
-2. **[ファイル]** の種類を選択し、**[追加]** をクリックします。
+2. **[ファイル]** の種類を選択し、 **[追加]** をクリックします。
 
-3. **[使用法の種類]** を **[既存のファイル]** に設定し、**[ファイル]** をローカル コンピューター上のファイルに設定します。
+3. **[使用法の種類]** を **[既存のファイル]** に設定し、 **[ファイル]** をローカル コンピューター上のファイルに設定します。
 
     ![ローカル ファイルへのファイル接続を追加する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 

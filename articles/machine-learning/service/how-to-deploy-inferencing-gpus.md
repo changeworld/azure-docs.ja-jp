@@ -1,7 +1,7 @@
 ---
-title: GPU を使用して推論を行うためにディープ ラーニング モデルをデプロイする方法
+title: GPU を使用した推論のためのモデルをデプロイする
 titleSuffix: Azure Machine Learning service
-description: ディープ ラーニング モデルを、推論に GPU が使用される Web サービスとしてデプロイする方法について説明します。 この記事では、TensorFlow モデルが Azure Kubernetes Service クラスターにデプロイされます。 このクラスターでは、Web サービスをホストして推論要求をスコア付けするために GPU 対応 VM を使用します。
+description: この記事では、Azure Machine Learning service を使用して、GPU 対応の Tensorflow ディープ ラーニング モデルを Web サービスとしてデプロイし、推論要求をスコア付けする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,144 +9,143 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 05/02/2019
-ms.openlocfilehash: 5cc0fe0526937245d3ca913afc477f0259e2afd4
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.date: 06/01/2019
+ms.openlocfilehash: 8086d059913cc61bff0bca31681368bea6d76777
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515039"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67543798"
 ---
-# <a name="how-to-do-gpu-inferencing"></a>GPU 推論を行う方法
+# <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU を使用した推論のためのディープ ラーニング モデルをデプロイする
 
-Web サービスとしてデプロイされた機械学習モデルで GPU 推論を使用する方法について説明します。 この記事では、Azure Machine Learning service を使用して、TensorFlow ディープ ラーニング モデルのサンプルをデプロイする方法について説明します。 モデルは、GPU 対応 VM を使用してサービスをホストする Azure Kubernetes Service (AKS) クラスターにデプロイされます。 要求がサービスに送信されると、モデルで GPU が使用され、推論が実行されます。
+この記事では、Azure Machine Learning service を使用して GPU 対応の Tensorflow ディープ ラーニング モデルを Web サービスとしてデプロイする方法について説明します。
 
-GPU は、高度に並列化可能な計算におけるパフォーマンスについて、CPU を上回っています。 ディープ ラーニング モデルのトレーニングと推論は (特に要求のバッチが大きい場合)、GPU の優れたユース ケースです。  
+モデルを Azure Kubernetes Service (AKS) クラスターにデプロイして、GPU 対応の推論を行います。 推論、つまりモデルのスコア付けは、デプロイされたモデルが予測に使用されるフェーズです。 CPU の代わりに GPU を使用すると、高度に並列化可能な計算でパフォーマンスが向上します。
 
-この例では、TensorFlow で保存されたモデルを Azure Machine Learning にデプロイする方法を示します。 
+このサンプルでは TensorFlow モデルを使用しますが、スコアリング ファイルと環境ファイルにわずかな変更を加えることで、GPU をサポートするすべての機械学習フレームワークに次の手順を適用できます。 
 
-## <a name="goals-and-prerequisites"></a>目標と前提条件
+この記事では、次の手順を実行します。
 
-手順に従って次の操作を行います。
 * GPU 対応 AKS クラスターを作成する
-* Tensorflow-GPU を使用してモデルをデプロイする
+* Tensorflow GPU モデルをデプロイする
+* デプロイされたモデルにサンプル クエリを発行する
 
-前提条件:
-* Azure Machine Learning service ワークスペース
-* Python
-* TensorFlow SavedModel が登録済み。 モデルを登録する方法については、[モデルのデプロイ](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#registermodel)に関するページを参照してください
+## <a name="prerequisites"></a>前提条件
 
-この記事は、[TensorFlow モデルの AKS へのデプロイ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/production-deploy-to-aks-gpu/production-deploy-to-aks-gpu.ipynb)に関する記事に基づいています。そこでは、TensorFlow で保存されたモデルを使用し、AKS クラスターにデプロイします。 ただし、スコアリング ファイルと環境ファイルをわずかに変更すれば、GPU をサポートするすべての機械学習フレームワークに適用可能です。  
+* Azure Machine Learning service ワークスペース。
+* Python ディストリビューション。
+* TensorFlow で保存された登録済みモデル。
+    * モデルを登録する方法については、[モデルのデプロイ](../service/how-to-deploy-and-where.md#registermodel)に関するページを参照してください。
 
-## <a name="provision-aks-cluster-with-gpus"></a>GPU を備えた AKS クラスターをプロビジョニングする
-Azure には多数の異なる GPU オプションがあり、それらはすべて、推論に使用できます。 機能とコストの完全な内訳については、[N シリーズの一覧](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series)を参照してください。 
+この一連のハウツー シリーズのパート 1 の [TensorFlow モデルのトレーニング方法](how-to-train-tensorflow.md)に関する記事を完了することで、必要な前提条件を満たすことができます。
 
-AKS と Azure Machine Learning service の使用の詳細については、[デプロイの方法と場所に関する記事](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#create-a-new-cluster)を参照してください。
+## <a name="provision-an-aks-cluster-with-gpus"></a>GPU を備えた AKS クラスターをプロビジョニングする
 
-```python
-# Provision AKS cluster with GPU machine
-prov_config = AksCompute.provisioning_configuration(vm_size="Standard_NC6")
+Azure には、さまざまな GPU オプションが多数あります。 そのいずれも、推論に使用できます。 機能とコストの完全な内訳については、[N シリーズ VM の一覧](https://azure.microsoft.com/pricing/details/virtual-machines/linux/#n-series)を参照してください。
 
-# Create the cluster
-aks_target = ComputeTarget.create(
-    workspace=ws, name=aks_name, provisioning_configuration=prov_config
-)
+AKS と Azure Machine Learning service の使用の詳細については、[デプロイの方法と場所](../service/how-to-deploy-and-where.md#deploy-aks)に関する記事を参照してください。
 
-aks_target.wait_for_deployment()
+```Python
+# Choose a name for your cluster
+aks_name = "aks-gpu"
+
+# Check to see if the cluster already exists
+try:
+    compute_target = ComputeTarget(workspace=ws, name=aks_name)
+    print('Found existing compute target')
+except ComputeTargetException:
+    print('Creating a new compute target...')
+    # Provision AKS cluster with GPU machine
+    prov_config = AksCompute.provisioning_configuration(vm_size="Standard_NC6")
+
+    # Create the cluster
+    aks_target = ComputeTarget.create(
+        workspace=ws, name=aks_name, provisioning_configuration=prov_config
+    )
+
+    aks_target.wait_for_completion(show_output=True)
 ```
 
 > [!IMPORTANT]
 > Azure では、AKS クラスターがプロビジョニングがされている限り、課金が行われます。 使い終わったら、必ず自分の AKS クラスターを削除してください。
 
+## <a name="write-the-entry-script"></a>エントリ スクリプトを記述する
 
-## <a name="write-entry-script"></a>エントリ スクリプトを記述する
-
-以下を `score.py` として自分の作業ディレクトリに保存します。 このファイルは、自分のサービスに送信された画像のスコア付けに使用されます。 このファイルによって、TensorFlow で保存されたモデルが読み込まれます。そして、各 POST 要求によって入力画像が TensorFlow セッションに渡され、結果スコアが返されます。
-他の推論フレームワークでは、異なるスコアリング ファイルが必要になります。
+次のコードを `score.py` として自分の作業ディレクトリに保存します。 画像が自分のサービスに送信されると、このファイルによって画像にスコアが付けられます。 TensorFlow で保存されたモデルが読み込まれ、各 POST 要求で入力画像が TensorFlow セッションに渡されて、結果のスコアが返されます。 他の推論フレームワークでは、異なるスコアリング ファイルが必要になります。
 
 ```python
-import tensorflow as tf
+import json
 import numpy as np
-import ujson
+import os
+import tensorflow as tf
+
 from azureml.core.model import Model
-from azureml.contrib.services.aml_request import AMLRequest, rawhttp
-from azureml.contrib.services.aml_response import AMLResponse
 
 def init():
-    global session
-    global input_name
-    global output_name
+    global X, output, sess
+    tf.reset_default_graph()
+    model_root = Model.get_model_path('tf-dnn-mnist')
+    saver = tf.train.import_meta_graph(os.path.join(model_root, 'mnist-tf.model.meta'))
+    X = tf.get_default_graph().get_tensor_by_name("network/X:0")
+    output = tf.get_default_graph().get_tensor_by_name("network/output/MatMul:0")
     
-    session = tf.Session()
+    sess = tf.Session()
+    saver.restore(sess, os.path.join(model_root, 'mnist-tf.model'))
 
-    model_path = Model.get_model_path('resnet50')
-    model = tf.saved_model.loader.load(session, ['serve'], model_path)
-    if len(model.signature_def['serving_default'].inputs) > 1:
-        raise ValueError("This score.py only supports one input")
-    input_name = [tensor.name for tensor in model.signature_def['serving_default'].inputs.values()][0]
-    output_name = [tensor.name for tensor in model.signature_def['serving_default'].outputs.values()]
-    
-
-@rawhttp
-def run(request):
-    if request.method == 'POST':
-        reqBody = request.get_data(False)
-        resp = score(reqBody)
-        return AMLResponse(resp, 200)
-    if request.method == 'GET':
-        respBody = str.encode("GET is not supported")
-        return AMLResponse(respBody, 405)
-    return AMLResponse("bad request", 500)
-
-def score(data):
-    result = session.run(output_name, {input_name: [data]})
-    return ujson.dumps(result[1])
-
-if __name__ == "__main__":
-    init()
-    with open("lynx.jpg", 'rb') as f: #load file for testing locally
-        content = f.read()
-        print(score(content))
+def run(raw_data):
+    data = np.array(json.loads(raw_data)['data'])
+    # make prediction
+    out = output.eval(session=sess, feed_dict={X: data})
+    y_hat = np.argmax(out, axis=1)
+    return y_hat.tolist()
 
 ```
+## <a name="define-the-conda-environment"></a>Conda 環境を定義する
 
-## <a name="define-conda-environment"></a>Conda 環境を定義する
-`myenv.yml` という名前の Conda 環境ファイルを作成し、自分のサービスの依存関係を指定します。 `tensorflow-gpu` の使用を指定することは、パフォーマンスの高速化を実現するうえで重要です。
+`myenv.yml` という名前の Conda 環境ファイルを作成し、自分のサービスの依存関係を指定します。 パフォーマンスを高速化するには、`tensorflow-gpu` の使用を指定することが重要です。
+
 ```yaml
-name: aml-accel-perf
-channels:
-  - defaults
+name: project_environment
 dependencies:
-  - tensorflow-gpu = 1.12
-  - numpy
-  - ujson
-  - pip:
-    - azureml-core
-    - azureml-contrib-services
+  # The python interpreter version.
+  # Currently Azure ML only supports 3.5.2 and later.
+- python=3.6.2
+
+- pip:
+  - azureml-defaults==1.0.43.*
+- numpy
+- tensorflow-gpu=1.12
+channels:
+- conda-forge
 ```
 
-## <a name="define-gpu-inferenceconfig"></a>GPU InferenceConfig を定義する
+## <a name="define-the-gpu-inferenceconfig-class"></a>GPU InferenceConfig クラスを定義する
 
-GPU の有効化を指定する [`InferenceConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) を作成します。 これにより、CUDA がイメージに確実にインストールされます。
+GPU を有効にし、Docker イメージを使用して CUDA がインストールされるようにする `InferenceConfig` オブジェクトを作成します。
 
 ```python
 from azureml.core.model import Model
 from azureml.core.model import InferenceConfig
 
-aks_service_name ='gpu-rn'
+aks_service_name ='aks-dnn-mnist'
 gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled = False, 
                                                     num_replicas = 3, 
                                                     cpu_cores=2, 
                                                     memory_gb=4)
-model = Model(ws,"resnet50")
+model = Model(ws,"tf-dnn-mnist")
 
 inference_config = InferenceConfig(runtime= "python", 
                                    entry_script="score.py",
                                    conda_file="myenv.yml", 
-                                   gpu_enabled=True)
+                                   enable_gpu=True)
 ```
 
-詳細については、[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) と [AksServiceDeploymentConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) に関するページを参照してください。
+詳細については、次を参照してください。
+
+- [InferenceConfig クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)
+- [AksServiceDeploymentConfiguration クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)
+
 ## <a name="deploy-the-model"></a>モデルをデプロイする
 
 モデルを自分の AKS クラスターにデプロイし、それによってサービスが作成されるのを待ちます。
@@ -155,7 +154,7 @@ inference_config = InferenceConfig(runtime= "python",
 aks_service = Model.deploy(ws,
                            models=[model],
                            inference_config=inference_config, 
-                           deployment_config=aks_config,
+                           deployment_config=gpu_aks_config,
                            deployment_target=aks_target,
                            name=aks_service_name)
 
@@ -164,33 +163,45 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> Azure Machine Learning service では、GPU を必要とする `InferenceConfig` があるモデルは、GPU がないクラスターにデプロイされません。
+> Azure Machine Learning service では、GPU の有効化が想定される `InferenceConfig` オブジェクトがあるモデルは、GPU がないクラスターにデプロイされません。
 
-詳細については、[モデル](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)に関するページを参照してください。
+詳細については、「[Model class (Model クラス)](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)」を参照してください。
 
-## <a name="issue-sample-query-to-deployed-model"></a>デプロイされたモデルに対してサンプル クエリを発行する
+## <a name="issue-a-sample-query-to-your-model"></a>モデルにサンプル クエリを発行する
 
-デプロイされた自分のモデルに対してサンプル クエリを発行します。 このモデルでは、そこに POST 要求として送信する JPEG 画像がスコア付けされます。 
+デプロイされたモデルにテスト クエリを送信します。 モデルに jpeg 画像を送信すると、画像がスコア付けされます。 次のコード サンプルでは、外部のユーティリティ関数を使用して画像を読み込みます。 関連するコードは [GitHub 上の pir TensorFlow サンプル](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow/utils.py)にあります。 
 
 ```python
-scoring_url = aks_service.scoring_uri
-api_key = aks_service.get_key()(0)
-IMAGEURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Lynx_lynx_poing.jpg/220px-Lynx_lynx_poing.jpg"
+# Used to test your webservice
+from utils import load_data 
 
-headers = {'Authorization':('Bearer '+ api_key)}
-img_data = read_image_from(IMAGEURL).read()
-r = requests.post(scoring_url, data = img_data, headers=headers)
+# Load test data from model training
+X_test = load_data('./data/mnist/test-images.gz', False) / 255.0
+y_test = load_data('./data/mnist/test-labels.gz', True).reshape(-1)
+
+# send a random row from the test set to score
+random_index = np.random.randint(0, len(X_test)-1)
+input_data = "{\"data\": [" + str(list(X_test[random_index])) + "]}"
+
+api_key = aks_service.get_keys()[0]
+headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+resp = requests.post(aks_service.scoring_uri, input_data, headers=headers)
+
+print("POST to url", aks_service.scoring_uri)
+#print("input data:", input_data)
+print("label:", y_test[random_index])
+print("prediction:", resp.text)
 ```
 
 > [!IMPORTANT]
-> 待機時間とスループットを最適化するために、ご利用のクライアントは、エンドポイントと同じ Azure リージョンに存在する必要があります。  現時点では、この API は、Azure の米国東部リージョンに作成されています。
+> 待機時間を最小化し、スループットを最適化するために、ご利用のクライアントは、必ずエンドポイントと同じ Azure リージョンに存在するようにします。 この例では、API は米国東部 Azure リージョンに作成されています。
 
-## <a name="cleaning-up-the-resources"></a>リソースをクリーンアップする
+## <a name="clean-up-the-resources"></a>リソースのクリーンアップ
 
-デモの完了後、リソースを削除します。
+この例を完了したら、リソースを削除します。
 
 > [!IMPORTANT]
-> Azure では、AKS クラスターのデプロイ時間に基づいて課金が行われます。 これが完了した後は必ずクリーンアップしてください。
+> Azure では、AKS クラスターがデプロイされている時間に基づいて課金が行われます。 これが完了した後は必ずクリーンアップしてください。
 
 ```python
 aks_service.delete()
@@ -199,6 +210,6 @@ aks_target.delete()
 
 ## <a name="next-steps"></a>次の手順
 
-* [FPGA でモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service)
-* [ONNX を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/service/how-to-build-deploy-onnx#deploy)
-* [TensorFlow DNN モデルをトレーニングする](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow)
+* [FPGA でモデルをデプロイする](../service/how-to-deploy-fpga-web-service.md)
+* [ONNX を使用してモデルをデプロイする](../service/concept-onnx.md#deploy-onnx-models-in-azure)
+* [TensorFlow DNN モデルをトレーニングする](../service/how-to-train-tensorflow.md)

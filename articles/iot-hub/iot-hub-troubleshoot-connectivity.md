@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
 ms.openlocfilehash: a107689796c58b17c445e7a9cf7c6f0402ef6005
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571054"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61440150"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断の検出とトラブルシューティング
 
@@ -37,7 +37,7 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
 
 5. **[接続]** ログの収集を有効にします。
 
-6. 分析しやすくするために、**[Log Analytics への送信]** を有効にします ([価格を参照](https://azure.microsoft.com/pricing/details/log-analytics/))。 「[接続に関するエラーを解決する](#resolve-connectivity-errors)」の例を参照してください。
+6. 分析しやすくするために、 **[Log Analytics への送信]** を有効にします ([価格を参照](https://azure.microsoft.com/pricing/details/log-analytics/))。 「[接続に関するエラーを解決する](#resolve-connectivity-errors)」の例を参照してください。
 
    ![推奨設定](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
@@ -51,7 +51,7 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
 
 2. IoT ハブに移動します。
 
-3. **[Alerts]**(アラート) を選択します。
+3. **[Alerts]** (アラート) を選択します。
 
 4. **[新しいアラート ルール]** を選択します。
 

@@ -12,13 +12,13 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: cbb144cc8aac6dc8e90d196147b0c154471b7239
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: evternov
+ms.openlocfilehash: 9bc94f653f5e70883b483fa44f6a17f6e9e9eaf1
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102062"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594436"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights のデータをカスタム データ ソースと関連付ける
 

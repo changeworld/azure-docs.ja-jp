@@ -4,7 +4,7 @@ description: Chef VM 拡張機能を使用して、仮想マシンに Chef ク�
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e72536cc6f9ec3b94016d16de8502e70bc7107aa
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089167"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706081"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Linux および Windows 用の Chef VM 拡張機能
 
@@ -69,10 +69,10 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 ### <a name="core-property-values"></a>コア プロパティ値
 
 | Name | 値/例 | データ型
-| ---- | ---- | ---- 
+| ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | 文字列 |
-| type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | 文字列 |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>設定
@@ -80,14 +80,14 @@ Chef VM 拡張機能では、コンテンツ配信ネットワーク (CDN) か�
 | Name | 値/例 | データ型 | 必須
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | Y |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | 文字列 | Y |
-| settings/runlist | `recipe[mycookbook::default]` | 文字列 | Y |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
+| settings/runlist | `recipe[mycookbook::default]` | string | Y |
 
 ### <a name="protected-settings"></a>保護された設定
 
 | Name | 例 | データ型 | 必須
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | 文字列 | Y |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
 
 <!--
 ### Linux-specific settings
@@ -139,7 +139,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myExistingVM -o 
 /var/lib/waagent/Chef.Bootstrap.WindowsAzure.LinuxChefClient
 ```
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 ```powershell
 C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\

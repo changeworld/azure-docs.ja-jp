@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 4/29/2019
 ms.openlocfilehash: 219899c2e336f544ff6572589cc79f84f555490d
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233842"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight の Apache HBase 用書き込みアクセラレータ
@@ -36,7 +36,7 @@ MemStore がフラッシュされる前に **RegionServer** がクラッシュ�
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>HDInsight の HBase 用書き込みアクセラレータを有効にする方法
 
-書き込みアクセラレータ機能を使用して新しい HBase クラスターを作成するには、**手順 3 の「ストレージ」** に達するまで、[HDInsight のクラスターの設定](../hdinsight-hadoop-provision-linux-clusters.md)手順に従ってください。 **[metastore の設定]** で、**[Enable Accelerated Writes (preview)]\(書き込みアクセラレータを有効にする (プレビュー)\)** の横にあるチェックボックスをオンにします。 次に、クラスターの作成の残りの手順に進みます。
+書き込みアクセラレータ機能を使用して新しい HBase クラスターを作成するには、**手順 3 の「ストレージ」** に達するまで、[HDInsight のクラスターの設定](../hdinsight-hadoop-provision-linux-clusters.md)手順に従ってください。 **[metastore の設定]** で、 **[Enable Accelerated Writes (preview)]\(書き込みアクセラレータを有効にする (プレビュー)\)** の横にあるチェックボックスをオンにします。 次に、クラスターの作成の残りの手順に進みます。
 
 ![HDInsight の Apache HBase 用書き込みアクセラレータ オプションを有効にする](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
 

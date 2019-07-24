@@ -2,19 +2,20 @@
 title: 倫理と責任ある使用 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: これらのガイドラインは、会社およびサービスへの信頼の構築を助けるようなパーソナル化の実装を支援することを目的としています。 必ず、パーソナル化が人々の生活に与える影響を調査し、学び、慎重に検討してください。 疑問がある場合は、ガイダンスを求めてください。
+services: cognitive-services
 author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
+ms.topic: conceptual
+ms.date: 06/12/2019
 ms.author: edjez
-ms.openlocfilehash: 7b1e972b5516aa79d1754e32e487e17c9e68ac1d
-ms.sourcegitcommit: eea74d11a6d6ea6d187e90e368e70e46b76cd2aa
+ms.openlocfilehash: ceb32e9e378ba1e58db11e55be8bd551faf08c2a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2019
-ms.locfileid: "65035423"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722397"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Personalizer の責任ある実装のガイドライン
 
@@ -49,7 +50,7 @@ Personalizer を実装することは、ご自身のユーザーとビジネス�
 
 コンテンツとユーザー インターフェイスをパーソナル化することを学習するサービスを使用すると、便利です。 それはまた、パーソナル化によって現実の世界にマイナスの副作用が生じるような方法で誤って適用される可能性もあります。これには、ユーザーがコンテンツのパーソナル化に気付いていない場合を含みます。 
 
-マイナスの副作用や透明性の欠如が生じる可能性の高い Personalizer の使用例として、"リワード" が長期的で複雑な多くの要因に依存しているシナリオにおいて、即時リワードまで過度に単純化されたときに、個人にとって好ましくない結果になることがあります。 これらは "結果的" な選択、または損害を及ぼすリスクを含む選択と見なされる傾向にあります。 例:  
+マイナスの副作用や透明性の欠如が生じる可能性の高い Personalizer の使用例として、"リワード" が長期的で複雑な多くの要因に依存しているシナリオにおいて、即時リワードまで過度に単純化されたときに、個人にとって好ましくない結果になることがあります。 これらは "結果的" な選択、または損害を及ぼすリスクを含む選択と見なされる傾向にあります。 例: 
 
 
 * **ファイナンス**: リスク要因が、個人が知らない、入手できない、または争うことができないデータに基づいた、ローン、金融、保険商品のオファーをパーソナル化します。 
@@ -128,17 +129,13 @@ Personalizer では、アプリケーションのビジネス ロジックによ
 * Personalizer が機能するために使用される情報と資産 (モデル、学習ポリシー、その他のデータなど) をアーカイブして、結果を再現できるようにします。
 
 ### <a name="transparency"></a>透明性
-*AI システムは理解可能である必要があります*。 Personalizer 使用時
+*AI システムは理解可能である必要があります*。 Personalizer 使用時には:
 
-•   コンテンツがどのような方法でカスタマイズされたかに関する情報を提供します。 たとえば、"提案の理由" というラベルの付いたボタンをユーザーに表示して、 ユーザーとアクションのどのような最上位の特徴が、Personalizer の結果において役割を果たしたかを示すことができます。
-•   使用条件において、ユーザーおよびユーザーのふるまいに関する情報を使ってエクスペリエンスをパーソナル化することに必ず言及します。
-
-
-* *コンテンツがどのような方法でパーソナル化されたかについてユーザーに情報を与えます。* たとえば、`Why These Suggestions?` というラベルの付いたボタンをユーザーに表示して、ユーザーとアクションのどのような最上位の特徴が、パーソナル化において役割を果たしたかを示すことができます。
-* 使用条件において、ユーザーに関する情報を使ってエクスペリエンスをパーソナル化することに必ず言及します。
+* *コンテンツがどのような方法でパーソナル化されたかについてユーザーに情報を与えます。* たとえば、`Why These Suggestions?` というラベルの付いたボタンをユーザーに表示して、ユーザーとアクションのどのような最上位の特徴が、Personalizer の結果において役割を果たしたかを示すことができます。
+* 利用規約において、ユーザーおよびユーザーのふるまいに関する情報を使ってエクスペリエンスをパーソナル化することに必ず言及します。
 
 ### <a name="fairness"></a>公平性
-*AI システムでは、すべてのユーザーを公平に扱う必要があります。
+"*AI システムでは、すべてのユーザーを公平に扱う必要があります*"。
 
 * 結果が長期的または結果的であるか、実際の損害を含むユース ケースには Personalizer を使用しないでください。
 * コンテンツのパーソナル化に使用することが適切でない特徴、または望ましくないバイアスを伝達することにつながる可能性がある特徴は、使わないでください。 たとえば、財務状況が似ている人はだれでも、金融商品について同じパーソナル化されたレコメンデーションを参照することになります。
@@ -200,7 +197,7 @@ Microsoft では、お客様がこれらの責任に基づいて行動するの�
 * 「[Ethics and Data Science](https://www.oreilly.com/library/view/ethics-and-data/9781492043898/)」(倫理とデータ科学)、DJ Patil、Hilary Mason、Mike Loukides 著
 * [ACM 倫理規定](https://www.acm.org/code-of-ethics)
 * [遺伝情報差別禁止法 - GINA](https://en.wikipedia.org/wiki/Genetic_Information_Nondiscrimination_Act)
-* [FATML の説明可能なアルゴリズムの原則](http://www.fatml.org/resources/principles-for-accountable-algorithms)
+* [FATML の説明可能なアルゴリズムの原則](https://www.fatml.org/resources/principles-for-accountable-algorithms)
 
 
 ## <a name="next-steps"></a>次の手順

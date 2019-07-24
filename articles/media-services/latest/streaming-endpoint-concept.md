@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/27/2019
+ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 3f939154d2b34e6dc043e505ab89897221bcfe23
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149230"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848904"
 ---
-# <a name="streaming-endpoints-origin"></a>ストリーミング エンドポイント (配信元)
+# <a name="streaming-endpoints"></a>ストリーミング エンドポイント 
 
 Microsoft Azure Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリケーションに直接配信できます。 また、**ストリーミング エンドポイント**は、業界最先端の DRM に動的 (Just-In-Time) 暗号化を提供します。
 
@@ -55,21 +55,19 @@ SLA については、[価格と SLA](https://azure.microsoft.com/pricing/detail
 
 機能|Standard|Premium
 ---|---|---
-最初の 15 日間無料 <sup>1</sup>| はい |いいえ 
 スループット |最大 600 Mbps であり、CDN を使用した場合に実効スループットが大幅に向上します。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN を使用した場合に実効スループットが大幅に向上します。
 CDN|Azure CDN、サード パーティ製 CDN、または CDN なし。|Azure CDN、サード パーティ製 CDN、または CDN なし。
 課金は日割り計算| 毎日|毎日
 動的な暗号化|はい|はい
 動的パッケージ|はい|はい
 スケール|対象スループットまで自動スケールアップ。|追加の SU
-IP フィルタリング/G20/カスタム ホスト  <sup>2</sup>|はい|はい
+IP フィルタリング/G20/カスタム ホスト  <sup>1</sup>|はい|はい
 プログレッシブ ダウンロード|はい|はい
 推奨使用量 |大半のストリーミング シナリオに推奨。|プロフェッショナルな使用量。
 
-<sup>1</sup> 無料試用版は、新しく作成したメディア サービス アカウントと既定のストリーミング エンドポイントにのみ適用されます。<br/>
-<sup>2</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。<br/>
+<sup>1</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。<br/>
 
-## <a name="properties"></a>Properties 
+## <a name="properties"></a>properties 
 
 このセクションでは、ストリーミング エンドポイントの一部のプロパティについて詳しく説明します。 新しいストリーミング エンドポイントを作成する方法の例と全プロパティの説明については、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)に関する記事をご覧ください。 
 
@@ -79,7 +77,7 @@ IP フィルタリング/G20/カスタム ホスト  <sup>2</sup>|はい|はい
     すべてのデータ センターが Azure CDN 統合をサポートしているわけではありません。 対象のデータ センターで Azure CDN 統合を利用できるかどうかを確認するには、次の操作を行います。
  
   - `cdnEnabled` を true に設定してみます。
-  - - "Streaming endpoint CdnEnabled property cannot be set to true as CDN capability is not available in the current region"\(現在のリージョンで CDN 機能を利用できないため、ストリーミング エンドポイントの cdnEnabled プロパティを true に設定できません\) というメッセージと共に返された `HTTP Error Code 412` (PreconditionFailed) の結果を確認します。 
+  - \- "Streaming endpoint CdnEnabled property cannot be set to true as CDN capability is not available in the current region"\(現在のリージョンで CDN 機能を利用できないため、ストリーミング エンドポイントの cdnEnabled プロパティを true に設定できません\) というメッセージと共に返された `HTTP Error Code 412` (PreconditionFailed) の結果を確認します。 
 
     このエラーが発生した場合、そのデータ センターはサポートされていません。 別のデータ センターをお試しください。
 - `cdnProfile` - `cdnEnabled` が true に設定されている場合は、`cdnProfile` の値を渡すこともできます。 `cdnProfile` は CDN エンドポイントのポイントが作成される、CDN プロファイルの名前です。 既存の cdnProfile を指定するか、新しいものを使用できます。 値が NULL で `cdnEnabled` が true の場合、既定値 "AzureMediaStreamingPlatformCdnProfile" が使用されます。 指定された `cdnProfile` が既に存在する場合、その下にエンドポイントが作成されます。 プロファイルが存在しない場合は、新しいプロファイルが自動的に作成されます。

@@ -9,11 +9,11 @@ ms.date: 04/15/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: bc244ecb62655d1e95046fb0eb8548fdacdcc2a1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679728"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61478591"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -26,7 +26,7 @@ WAImportExport ツールを使用してハード ドライブを準備するた�
 
 |プラットフォーム |バージョン |
 |---------|---------|
-| Windows     | Windows 7 Enterprise、Windows 7 Ultimate <br> Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise <br> Windows 10        |
+|Windows     | Windows 7 Enterprise、Windows 7 Ultimate <br> Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Windows クライアントに必要なその他のソフトウェア
@@ -50,7 +50,7 @@ Azure Import/Export サービスでは、以下の種類のストレージ ア�
 各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。 言い換えると、1 つのインポート/エクスポート ジョブを、複数のストレージ アカウントに対して使用することはできません。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-quickstart-create-account.md)」を参照してください。
 
 > [!IMPORTANT] 
-> Azure Import/Export サービスでは、[仮想ネットワークのサービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md) 機能が有効になっているストレージ アカウントはサポートされません。 
+> Azure Import/Export サービスでは、[仮想ネットワーク サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md) 機能が有効になっているストレージ アカウントはサポートされません。 
 
 ## <a name="supported-storage-types"></a>サポートされるストレージの種類
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499881"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60754201"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway 一般提供リリース ノート
 
@@ -33,7 +33,7 @@ ms.locfileid: "58499881"
 
 - **新しい仮想ディスク イメージ** - Azure Portal で新しい VHDX および VMDK を入手できるようになりました。 新しい Data Box Gateway GA デバイスをプロビジョニング、構成、およびデプロイするには、これらのイメージをダウンロードしてください。 以前のプレビュー リリースで作成された Data Box Gateway デバイスをこのバージョンに更新することはできません。 詳細については、[Azure Data Box Gateway のデプロイ準備](data-box-gateway-deploy-prep.md)に関する記事をご覧ください。
 - **NFS サポート** - NFS サポートは現在プレビュー段階にあり、Data Box Edge および Data Box Gateway デバイスにアクセスする v3.0 および v4.1 クライアントで使用できます。
-- **ストレージ回復性** - ストレージ回復性機能により、Data Box Edge デバイスは 1 台のデータ ディスクの障害に耐えることができます。 現在、この機能はプレビュー段階にあります。 ストレージ回復性は、ローカル Web UI で、**[ストレージの設定]** の **[Resilient] (回復性がある)** オプションを選択することによって有効にすることができます。
+- **ストレージ回復性** - ストレージ回復性機能により、Data Box Edge デバイスは 1 台のデータ ディスクの障害に耐えることができます。 現在、この機能はプレビュー段階にあります。 ストレージ回復性は、ローカル Web UI で、 **[ストレージの設定]** の **[Resilient] (回復性がある)** オプションを選択することによって有効にすることができます。
 
 
 ## <a name="known-issues-in-ga-release"></a>GA リリースの既知の問題

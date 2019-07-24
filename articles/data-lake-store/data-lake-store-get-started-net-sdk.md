@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8da40aa04381542c8c750c8d7e33c9a29879371d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879711"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65900880"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -32,25 +32,19 @@ ms.locfileid: "58879711"
 .NET SDK を使用して Data Lake Storage Gen1 に対するデータ管理操作を実行する方法については、[.NET SDK を使用した Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-net-sdk.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Visual Studio 2013、2015、2017**。 以下の手順では、Visual Studio 2017 を使用します。
+* **Visual Studio 2013 以降**。 以下の手順では、Visual Studio 2019 を使用します。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 ## <a name="create-a-net-application"></a>.NET アプリケーションの作成
-1. Visual Studio を開き、コンソール アプリケーションを作成します。
-2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
-3. **[新しいプロジェクト]** で、次の値を入力するか、選択します。
+1. Visual Studio で、 **[ファイル]** メニュー、 **[新規作成]** 、 **[プロジェクト]** の順に選択します。
+2. **[コンソール アプリ (.NET Framework)]** を選択し、 **[次へ]** を選択します。
+3. **[プロジェクト名]** に `CreateADLApplication` と入力して、 **[作成]** を選択します。
 
-   | プロパティ | 値 |
-   | --- | --- |
-   | Category |テンプレート/Visual C#/Windows |
-   | テンプレート |コンソール アプリケーション |
-   | Name |CreateADLApplication |
-4. **[OK]** をクリックしてプロジェクトを作成します。
-5. NuGet パッケージをプロジェクトに追加します。
+4. NuGet パッケージをプロジェクトに追加します。
 
    1. ソリューション エクスプローラーでプロジェクト名を右クリックし、 **[NuGet パッケージの管理]** をクリックします。
-   2. **[NuGet パッケージ マネージャー]** タブで、**[パッケージ ソース]** が **nuget.org** に設定されており、**[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
+   2. **[NuGet パッケージ マネージャー]** タブで、 **[パッケージ ソース]** が **nuget.org** に設定されており、 **[プレリリースを含める]** チェック ボックスがオンになっていることを確認します。
    3. 以下の NuGet パッケージを検索してインストールします。
 
       * `Microsoft.Azure.Management.DataLake.Store` - このチュートリアルでは、v2.1.3-preview を使用します。
@@ -58,7 +52,7 @@ ms.locfileid: "58879711"
 
         ![NuGet ソースの追加](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "新しい Azure Data Lake アカウントの作成")
    4. **NuGet パッケージ マネージャー**を閉じます。
-6. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
+5. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
 
         using System;
         using System.IO;
@@ -74,7 +68,7 @@ ms.locfileid: "58879711"
         using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-7. 変数を宣言し、プレースホルダーの値を指定します。 さらに、指定したローカル パスとファイル名がコンピューターに存在していることを確認します。
+6. 変数を宣言し、プレースホルダーの値を指定します。 さらに、指定したローカル パスとファイル名がコンピューターに存在していることを確認します。
 
         namespace SdkSample
         {

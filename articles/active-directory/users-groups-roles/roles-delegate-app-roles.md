@@ -16,11 +16,11 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119741"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60469130"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Azure Active Directory でアプリ管理者ロールを委任する
 
@@ -39,7 +39,7 @@ Azure portal でアプリケーションのアクセスを管理する権限を�
 3. 次のロールのいずれかを開いて、そのメンバー割り当てを表示します。
    * **アプリケーション管理者**
    * **クラウド アプリケーション管理者**
-4. ロールの **[メンバー]** ページで、**[メンバーの追加]** を選択します。
+4. ロールの **[メンバー]** ページで、 **[メンバーの追加]** を選択します。
 5. ロールに追加する 1 人以上のメンバーを選択します。 <!--Members can be users or groups.-->
 
 これらのロールの説明は、「[使用可能なロール](directory-assign-admin-roles.md#available-roles)」で見ることができます。
@@ -50,8 +50,8 @@ Azure portal でアプリケーションのアクセスを管理する権限を�
 
 1. テナントのグローバル管理者ロールに適したアカウントを使用して、[Azure AD テナント](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
 2. 十分なアクセス許可を取得したら、次の一方または両方を設定します。
-   * [テナントの [ユーザー設定] ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)で、**[ユーザーはアプリケーションを登録できる]** を [いいえ] に設定します。
-   * [エンタープライズ アプリケーションのユーザー設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)で、**[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** を [いいえ] に設定します。
+   * [テナントの [ユーザー設定] ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)で、 **[ユーザーはアプリケーションを登録できる]** を [いいえ] に設定します。
+   * [エンタープライズ アプリケーションのユーザー設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)で、 **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** を [いいえ] に設定します。
 3. 次に、必要に応じて、このアクセス許可を必要とするユーザーを、アプリケーション開発者ロールのメンバーとして割り当てます。
 
 ユーザーがアプリケーションを登録すると、そのユーザーはアプリケーションの最初の所有者として自動的に追加されます。

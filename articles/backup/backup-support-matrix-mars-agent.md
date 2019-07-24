@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
 ms.openlocfilehash: 9799914cdabf1f64fccfd6bfd891f9498b860e39
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64923001"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
@@ -66,7 +66,7 @@ MARS エージェントには、次の URL へのアクセス権が必要です�
 
 **機能** | **詳細**
 --- | ---
-帯域幅の制御 | サポートされています。 MARS エージェントで、**[プロパティの変更]** を使用して帯域幅を調整します。
+帯域幅の制御 | サポートされています。 MARS エージェントで、 **[プロパティの変更]** を使用して帯域幅を調整します。
 Network throttling | Windows Server 2008 R2、Windows Server 2008 SP2、または Windows 7 を実行しているバックアップ済みのコンピューターでは使用できません。
 
 ## <a name="support-for-direct-backups"></a>直接バックアップのサポート
@@ -75,16 +75,16 @@ MARS エージェントを使用すると、オンプレミスのコンピュー
 
 **オペレーティング システム** | **ファイル/フォルダー** | **システム状態**
 --- | --- | ---
-Windows 10 (Enterprise、Pro、Home) | はい | いいえ 
-Windows 8.1 (Enterprise、Pro)| はい |いいえ 
-Windows 8 (Enterprise、Pro) | はい | いいえ 
-Windows 7 (Ultimate、Enterprise、Pro、Home Premium/Basic、Starter) | はい | いいえ 
+Windows 10 (Enterprise、Pro、Home) | はい | いいえ
+Windows 8.1 (Enterprise、Pro)| はい |いいえ
+Windows 8 (Enterprise、Pro) | はい | いいえ
+Windows 7 (Ultimate、Enterprise、Pro、Home Premium/Basic、Starter) | はい | いいえ
 Windows Server 2016 (Standard、Datacenter、Essentials) | はい | はい
 Windows Server 2012 R2 (Standard、Datacenter、Foundation、Essentials) | はい | はい
 Windows Server 2012 (Standard、Datacenter、Foundation) | はい | はい
 Windows Server 2008 R2 (Standard、Enterprise、Datacenter、Foundation) | はい | はい
-Windows Server 2008 SP2 (Standard、Datacenter、Foundation) | はい | いいえ 
-Windows Storage Server 2016/2012 R2/2012 (Standard、Workgroup) | はい | いいえ 
+Windows Server 2008 SP2 (Standard、Datacenter、Foundation) | はい | いいえ
+Windows Storage Server 2016/2012 R2/2012 (Standard、Workgroup) | はい | いいえ
 
 詳細については、「[サポートされている MABS および DPM オペレーティング システム](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)」を参照してください。
 

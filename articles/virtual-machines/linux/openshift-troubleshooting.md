@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 04/19/2019
 ms.author: haroldw
 ms.openlocfilehash: af6746e7246b8783e5bdbef34cf1b57427aa7ebb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001118"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60771279"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Azure での OpenShift デプロイのトラブルシューティング
 
@@ -34,11 +34,11 @@ OpenShift クラスターが正常にデプロイされない場合は、Azure p
 
 **OpenShift Container Platform**
 
-Ansible プレイブック ホストに SSH 接続します。 テンプレートまたは Marketplace オファーの場合は、要塞ホストを使用します。 要塞ホストから、クラスター内の他のすべてのノード (マスター、インフラストラクチャ、CNS、コンピューティング) に SSH 接続できます。 ログ ファイルを表示するには、root である必要があります。 SSH アクセスでは root は既定で無効になるため、root を使用して他のノードに接続しないでください。
+Ansible プレイブック ホストに SSH 接続します。 テンプレートまたは Marketplace オファーの場合は、踏み台ホストを使用します。 踏み台ホストから、クラスター内の他のすべてのノード (マスター、インフラストラクチャ、CNS、コンピューティング) に SSH 接続できます。 ログ ファイルを表示するには、root である必要があります。 SSH アクセスでは root は既定で無効になるため、root を使用して他のノードに接続しないでください。
 
 **OKD**
 
-Ansible プレイブック ホストに SSH 接続します。 OKD テンプレート (バージョン 3.9 以前) では、master-0 ホストを使用します。 OKD テンプレート (バージョン3.10 以降) では、要塞ホストを使用します。 Ansible プレイブック ホストから、クラスター内の他のすべてのノード (マスター、インフラストラクチャ、CN、コンピューティング) に SSH 接続できます。 ログ ファイルを表示するには、root (sudo su -) である必要があります。 SSH アクセスでは root は既定で無効になるため、root を使用して他のノードに接続しないでください。
+Ansible プレイブック ホストに SSH 接続します。 OKD テンプレート (バージョン 3.9 以前) では、master-0 ホストを使用します。 OKD テンプレート (バージョン3.10 以降) では、踏み台ホストを使用します。 Ansible プレイブック ホストから、クラスター内の他のすべてのノード (マスター、インフラストラクチャ、CN、コンピューティング) に SSH 接続できます。 ログ ファイルを表示するには、root (sudo su -) である必要があります。 SSH アクセスでは root は既定で無効になるため、root を使用して他のノードに接続しないでください。
 
 ## <a name="log-files"></a>ログ ファイル
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mbullwin
 ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307821"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60899419"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
@@ -44,7 +44,7 @@ ms.locfileid: "57307821"
 * [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
 
 ## <a name="setup"></a>連続エクスポートを作成する
-1. アプリの Application Insights リソースで、[連続エクスポート] を開き、**[追加]** を選択します。
+1. アプリの Application Insights リソースで、[連続エクスポート] を開き、 **[追加]** を選択します。
 
 2. テレメトリをエクスポートするデータ型を選択します。
 
@@ -59,7 +59,7 @@ ms.locfileid: "57307821"
 
     ![[イベントの種類の選択] をクリックします](./media/export-telemetry/create-container.png)
 
-エクスポートが作成されると、処理が開始されます  エクスポートを作成した後に到着したデータのみが取得されます。
+エクスポートが作成されると、処理が開始されます エクスポートを作成した後に到着したデータのみが取得されます。
 
 ストレージにデータが表示されるまで、約 1 時間の遅延が発生する可能性があります。
 
@@ -93,11 +93,11 @@ ms.locfileid: "57307821"
 >
 
 ## <a name="get"></a> データの確認
-ポータルでストレージを直接検査することができます。 **[参照]** をクリックしてストレージ アカウントを選択し、**[コンテナー]** を開きます。
+ポータルでストレージを直接検査することができます。 **[参照]** をクリックしてストレージ アカウントを選択し、 **[コンテナー]** を開きます。
 
-Visual Studio で Azure ストレージを検査するには、**[表示]**、**[Cloud Explorer]** の順に開きます  (このメニュー コマンドがない場合は、Azure SDK をインストールする必要があります。**[新しいプロジェクト]** ダイアログを開き、[Visual C#]、[クラウド] の順に展開して、**[Microsoft Azure SDK for .NET の取得]** を選択します)。
+Visual Studio で Azure ストレージを検査するには、 **[表示]** 、 **[Cloud Explorer]** の順に開きます (このメニュー コマンドがない場合は、Azure SDK をインストールする必要があります。 **[新しいプロジェクト]** ダイアログを開き、[Visual C#]、[クラウド] の順に展開して、 **[Microsoft Azure SDK for .NET の取得]** を選択します)。
 
-BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナーが表示されます。 各ファイルの URI は、Application Insights のリソース名、そのインストルメンテーション キー、テレメトリの種類/日付/時刻から派生します  (リソース名はすべて小文字になり、インストルメンテーション キーのダッシュは省略されます)。
+BLOB ストアを開くと、BLOB ファイルのセットを含むコンテナーが表示されます。 各ファイルの URI は、Application Insights のリソース名、そのインストルメンテーション キー、テレメトリの種類/日付/時刻から派生します (リソース名はすべて小文字になり、インストルメンテーション キーのダッシュは省略されます)。
 
 ![適切なツールで Blob ストアを調べます](./media/export-telemetry/04-data.png)
 
@@ -128,7 +128,7 @@ Where
 [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](export-data-model.md)
 
 ## <a name="processing-the-data"></a>データの処理
-小規模な処理では、データを分解してスプレッドシートに読み込んだ後で他の処理を実行するコードを記述できます。 例: 
+小規模な処理では、データを分解してスプレッドシートに読み込んだ後で他の処理を実行するコードを記述できます。 例:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {

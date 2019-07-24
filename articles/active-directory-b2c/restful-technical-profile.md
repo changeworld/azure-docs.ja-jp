@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 内のカスタム ポリシーで RESTful 技術プロファイルを定義する |Microsoft Docs
 description: Azure Active Directory B2C 内のカスタム ポリシーで RESTful 技術プロファイルを定義します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0726c22e436658d51419b9e32d73f48db99ba805
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 21a2ea861df96a057db0ec13eacd0906ed51fff1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705303"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66512741"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -87,9 +87,9 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 | --------- | -------- | ----------- |
 | ServiceUrl | はい | REST API エンドポイントの URL。 | 
 | AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 可能な値: `None`、`Basic`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書があるサービスのみがサービスにアクセスできます。 | 
-| SendClaimsIn | いいえ  | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 | 
-| ClaimsFormat | いいえ  | 出力要求の形式を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される出力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される出力要求です。 `Header` の値は、要求本文で送信される出力要求です。 `QueryString` の値は、要求クエリ文字列で送信される出力要求です。 | 
-| DebugMode | いいえ  | 技術プロファイルをデバッグ モードで実行します。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 返却エラー メッセージ セクションを参照してください。 | 
+| SendClaimsIn | いいえ | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 | 
+| ClaimsFormat | いいえ | 出力要求の形式を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される出力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される出力要求です。 `Header` の値は、要求本文で送信される出力要求です。 `QueryString` の値は、要求クエリ文字列で送信される出力要求です。 | 
+| DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 返却エラー メッセージ セクションを参照してください。 | 
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
@@ -161,11 +161,11 @@ REST API は、「そのユーザーは CRM システムでは見つかりませ
 | --------- | -------- | ----------- |
 | version | はい | 1.0.0 | 
 | status | はい | 409 | 
-| code | いいえ  | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 | 
-| requestId | いいえ  | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからの要求識別子。 | 
+| code | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 | 
+| requestId | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからの要求識別子。 | 
 | userMessage | はい | ユーザーに示されるエラー メッセージ。 | 
-| developerMessage | いいえ  | `DebugMode` が有効な場合に表示される、問題の詳細な説明とそれを修正する方法。 | 
-| moreInfo | いいえ  | `DebugMode` が有効な場合に表示される、追加情報をポイントする URI。 | 
+| developerMessage | いいえ | `DebugMode` が有効な場合に表示される、問題の詳細な説明とそれを修正する方法。 | 
+| moreInfo | いいえ | `DebugMode` が有効な場合に表示される、追加情報をポイントする URI。 | 
 
 次の例は、JSON で書式設定されたエラー メッセージを返す REST API を示しています。
 

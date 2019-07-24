@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694114"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60577857"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Go から分散トレースを収集する (プレビュー)
 
@@ -28,7 +28,7 @@ Application Insights は、[OpenCensus](https://opencensus.io) と Microsoft の
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 まず、インストルメンテーション キー (ikey) を生成する Application Insights リソースを作成する必要があります。 ikey を使用して、OpenCensus でインストルメント化されたアプリケーションから Application Insights に分散トレースを送信するようにローカル フォワーダーを構成します。   
 
-1. **[リソースの作成]** > **[開発者ツール]** > **[Application Insights]** の順に選択します。
+1. **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** の順に選択します。
 
    ![Application Insights リソースの追加](./media/opencensus-Go/0001-create-resource.png)
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-local-forwarder"></a>ローカル フォワーダーを構成する
 
-1. **[概要]** > **[Essentials]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
+1. **[概要]**  >  **[Essentials]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
 
    ![インストルメンテーション キーのスクリーンショット](./media/opencensus-Go/0003-instrumentation-key.png)
 
@@ -202,7 +202,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![パフォーマンス データが表示されたライブ メトリック ストリームのスクリーンショット](./media/opencensus-go/0006-stream.png)
 
-3. **[概要]** ページに戻り、**[アプリケーション マップ]** を選択して、アプリケーション コンポーネント間の依存関係と呼び出しのタイミングを視覚的に表したレイアウトを表示します。
+3. **[概要]** ページに戻り、 **[アプリケーション マップ]** を選択して、アプリケーション コンポーネント間の依存関係と呼び出しのタイミングを視覚的に表したレイアウトを表示します。
 
     ![基本的なアプリケーション マップのスクリーンショット](./media/opencensus-go/0007-application-map.png)
 

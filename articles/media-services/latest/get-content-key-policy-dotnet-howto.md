@@ -13,11 +13,11 @@ ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: juliako
 ms.openlocfilehash: 58b6f49f4bbbd93fefb9b616f92baf7ef30f7deb
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615831"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60322636"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>既存のポリシーから署名キーを取得する
 

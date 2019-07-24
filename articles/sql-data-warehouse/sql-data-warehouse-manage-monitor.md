@@ -11,11 +11,11 @@ ms.date: 04/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.openlocfilehash: ff1f613dfdfb5c43b727bcc9c7f7a1f0afca0975
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546898"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60748776"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
 この記事では、動的管理ビュー (DMV) を使用してワークロードを監視する方法について説明します。 Azure SQL Data Warehouse でのクエリの実行の調査が含まれます。

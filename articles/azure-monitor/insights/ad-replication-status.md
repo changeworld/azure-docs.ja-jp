@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.openlocfilehash: f7bbde98c6ef35021cc03b2646193d3601ca1cff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425850"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60495177"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Monitor で Active Directory のレプリケーション状態を監視する
 
@@ -106,7 +106,7 @@ AD Replication Status タイルには、現在発生しているレプリケー�
 >
 
 ### <a name="ad-replication-status-details"></a>AD レプリケーションの状態の詳細
-一覧のいずれかの任意の項目をクリックすると、ログ クエリにその詳細を表示できます。 その項目に関連するエラーのみが表示されるよう、結果はフィルター処理されます。 たとえば、**[宛先サーバーの状態 (ADDC02)]** の最初のドメイン コントローラーをクリックすると、クエリ結果がフィルター処理されて、エラーと、宛先サーバーとして示されているそのドメイン コントローラーが表示されます。
+一覧のいずれかの任意の項目をクリックすると、ログ クエリにその詳細を表示できます。 その項目に関連するエラーのみが表示されるよう、結果はフィルター処理されます。 たとえば、 **[宛先サーバーの状態 (ADDC02)]** の最初のドメイン コントローラーをクリックすると、クエリ結果がフィルター処理されて、エラーと、宛先サーバーとして示されているそのドメイン コントローラーが表示されます。
 
 ![クエリ結果内の AD レプリケーションの状態エラー](./media/ad-replication-status/oms-ad-replication-search-details.png)
 

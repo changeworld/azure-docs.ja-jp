@@ -39,11 +39,11 @@ MSAL のトークン取得メソッドの多くでは、*scopes* パラメータ
 MSAL で v1.0 のリソースにアクセスすることもできます。 詳細については、[Scopes for a v1.0 application (v1.0 アプリケーションのスコープ)](msal-v1-app-scopes.md) に関する記事を参照してください。
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>Web API に対して特定のスコープを要求する
-アプリケーションでリソース API に対する特定のアクセス許可を備えたトークンを要求する必要がある場合、API のアプリ ID URI を含むスコープを、*&lt;アプリ ID URI&gt;/&lt;スコープ&gt;* という形式で渡すことが必要になります
+アプリケーションでリソース API に対する特定のアクセス許可を備えたトークンを要求する必要がある場合、API のアプリ ID URI を含むスコープを、 *&lt;アプリ ID URI&gt;/&lt;スコープ&gt;* という形式で渡すことが必要になります。
 
-たとえば、Microsoft Graph API のスコープは `https://graph.microsoft.com/User.Read` です
+たとえば、Microsoft Graph API のスコープは `https://graph.microsoft.com/User.Read` です。
 
-または、たとえばカスタム Web API のスコープは `api://abscdefgh-1234-abcd-efgh-1234567890/api.read` です
+または、たとえばカスタム Web API のスコープは `api://abscdefgh-1234-abcd-efgh-1234567890/api.read` です。
 
 Microsoft Graph API の場合のみ、スコープの値 `user.read` は `https://graph.microsoft.com/User.Read` という形式にマップされ、区別なく使用できます。
 
@@ -75,7 +75,7 @@ MSAL は、1 つのトークン キャッシュ (または、機密クライア�
 - 承認コード フローを使用してトークンを取得します
 
 ## <a name="acquiring-tokens"></a>トークンの取得
-一般に、トークンを取得する方法は、パブリック クライアント アプリケーションか機密クライアント アプリケーションかによって決まります。
+一般に、トークンを取得する方法は、アプリケーションがパブリック クライアントか機密クライアントかによって決まります。
 
 ### <a name="public-client-applications"></a>パブリック クライアント アプリケーション
 パブリック クライアント アプリケーション (デスクトップまたはモバイルのアプリ) の場合は、次のようにします。

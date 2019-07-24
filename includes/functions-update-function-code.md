@@ -10,11 +10,11 @@ ms.date: 03/12/2019
 ms.author: glenga
 ms.custom: include file, fasttrack-edit
 ms.openlocfilehash: 5b009fafc818a06bdda309b3e025251cc0997e47
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66132180"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67180948"
 ---
 ## <a name="update-the-function"></a>関数を更新する
 

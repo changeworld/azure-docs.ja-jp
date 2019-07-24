@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 06/17/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d3ab6f53fdb11b0b8d643868d0692667c8672f9
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: b8244707ec44b9afc51d5f2c21c3e95ff0692cfb
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545173"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482357"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。 Microsoft ID プラットフォームによる OAuth 2.0 の実装を使用すると、サインインおよび API アクセスをモバイル アプリやデスクトップ アプリに追加できます。 このガイドでは、[Azure オープンソース認証ライブラリ](active-directory-authentication-libraries.md)を利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
+デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。 Microsoft ID プラットフォームによる OAuth 2.0 の実装を使用すると、サインインおよび API アクセスをモバイル アプリやデスクトップ アプリに追加できます。 このガイドでは、[Azure オープンソース認証ライブラリ](reference-v2-libraries.md)を利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
 
 > [!NOTE]
 > Microsoft ID プラットフォーム エンドポイントでは、Azure Active Directory のすべてのシナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォーム エンドポイントを使用すべきかどうかを判定するには、[Microsoft ID プラットフォームの制限](active-directory-v2-limitations.md)に関するページを参照してください。
@@ -68,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `client_id`   | 必須    | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた**アプリケーション (クライアント) ID**。  |
 | `response_type` | 必須    | 承認コード フローでは `code` を指定する必要があります。       |
 | `redirect_uri`  | 必須 | アプリ の redirect_uri。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかの redirect_uri と完全に一致させる必要があります (ただし、URL エンコードが必要)。 ネイティブ アプリとモバイル アプリでは、`https://login.microsoftonline.com/common/oauth2/nativeclient` の既定値を使用します。   |
-| `scope`  | 必須    | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。 |
+| `scope`  | 必須    | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。  要求の `/authorize` の段階では、これに複数のリソースを含めることができ、ご利用のアプリが呼び出す必要がある複数の Web API に対して同意を取得することを許可します。 |
 | `response_mode`   | 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 以下のいずれかを指定できます。<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` はリダイレクト URI でクエリ文字列パラメーターとしてコードを提供します。 暗黙的フローを使って ID トークンを要求する場合、[OpenID 仕様](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)で規定された `query` を使用することはできません。コードのみを要求する場合は、`query`、`fragment`、`form_post` のいずれかを使用できます。 `form_post` は、リダイレクト URI に対するコードを含んだ POST を実行します。 詳細については、[OpenID Connect プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)に関するページを参照してください。  |
 | `state`                 | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この値を使用すると、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードすることもできます。 |
 | `prompt`  | 省略可能    | ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は `login`、`none`、`consent` だけです。<br/><br/>- `prompt=login` は、その要求でユーザーに資格情報の入力を強制し、シングル サインオンを無効にします。<br/>- `prompt=none` はその反対であり、ユーザーにどのような対話型プロンプトも表示されないようにします。 シングル サインオンで確認なしで要求を完了できない場合は、Microsoft ID プラットフォーム エンドポイントから `interaction_required` エラーが返されます。<br/>- `prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。 |
@@ -147,14 +147,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> を必ず置き換えてください)。 (`code` を必ず置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> を必ず置き換えてください)。 (`code` を置き換えるのを忘れないでください) [![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 | パラメーター  | 必須/省略可能 | 説明     |
 |------------|-------------------|----------------|
 | `tenant`   | 必須   | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。  |
 | `client_id` | 必須  | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページでアプリに割り当てられたアプリケーション (クライアント) ID。 |
 | `grant_type` | 必須   | 承認コード フローでは `authorization_code` を指定する必要があります。   |
-| `scope`      | 必須   | スコープのスペース区切りリスト。 この段階で要求するスコープは、最初の段階で要求したスコープと同じか、またはそのサブセットである必要があります。 この要求で指定したスコープが複数のリソース サーバーにまたがる場合、Microsoft ID プラットフォーム エンドポイントからは、最初のスコープで指定したリソースのトークンが返されます。 スコープの詳細については、 [アクセス許可、同意、スコープ](v2-permissions-and-consent.md)に関するページを参照してください。 |
+| `scope`      | 必須   | スコープのスペース区切りリスト。 この段階で要求するスコープは、最初の段階で要求したスコープと同じか、またはそのサブセットである必要があります。 このスコープはすべて、OIDC スコープ (`profile`、`openid`、`email`) に沿って、1 つのリソースからである必要があります。 スコープの詳細については、 [アクセス許可、同意、スコープ](v2-permissions-and-consent.md)に関するページを参照してください。 |
 | `code`          | 必須  | フローの最初の段階で取得した authorization_code。 |
 | `redirect_uri`  | 必須  | authorization_code の取得に使用された同じ redirect_uri 値。 |
 | `client_secret` | Web アプリの場合は必須 | アプリ登録ポータルで作成した、アプリケーションのシークレット。 client_secret をデバイスに確実に保存することはできないため、ネイティブ アプリではアプリケーションのシークレットを使用しないでください。 Web アプリや Web API では client_secret をサーバー側で安全に保存する機能が備わっており、必ず指定する必要があります。  クライアント シークレットは、送信前に URL エンコードされる必要があります。  |
@@ -181,8 +181,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `token_type`    | トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 |
 | `expires_in`    | アクセス トークンの有効期間 (秒)。 |
 | `scope`         | access_token が有効である範囲。 |
-| `refresh_token` | OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。 Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 アクセス トークンの更新の詳細については、[後述のセクション](#refresh-the-access-token)を参照してください。 <br> **注:**`offline_access` スコープが要求された場合のみ提供されます。 |
-| `id_token`      | JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:**`openid` スコープが要求された場合のみ提供されます。 |
+| `refresh_token` | OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。 Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 アクセス トークンの更新の詳細については、[後述のセクション](#refresh-the-access-token)を参照してください。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。 |
+| `id_token`      | JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 
 ### <a name="error-response"></a>エラー応答
 
@@ -228,7 +228,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 `access_token` を無事取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、Web API への要求に使用することができます。
 
 > [!TIP]
->  ヘッダーを置き換えてください)。 (最初に `Authorization` ヘッダーを置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> ヘッダーを置き換えてください)。 (まず `Authorization` ヘッダーを置き換えます) [![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 GET /v1.0/me/messages
@@ -259,7 +259,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> を必ず置き換えてください)。 (`refresh_token` を必ず置き換えてください)。[![Postman で実行](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> を必ず置き換えてください)。 (`refresh_token` を置き換えるのを忘れないでください) [![Postman でこの要求を実行してみる](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 > 
 
 | パラメーター     |                | 説明        |
@@ -291,8 +291,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `token_type`    | トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 |
 | `expires_in`    | アクセス トークンの有効期間 (秒)。   |
 | `scope`         | access_token が有効である範囲。    |
-| `refresh_token` | 新しい OAuth 2.0 更新トークン。 できるだけ長い時間、更新トークンを有効な状態に維持するためには、この新しく取得した更新トークンで古い更新トークンを置き換える必要があります。 <br> **注:**`offline_access` スコープが要求された場合のみ提供されます。|
-| `id_token`      | 無署名の JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:**`openid` スコープが要求された場合のみ提供されます。 |
+| `refresh_token` | 新しい OAuth 2.0 更新トークン。 できるだけ長い時間、更新トークンを有効な状態に維持するためには、この新しく取得した更新トークンで古い更新トークンを置き換える必要があります。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。|
+| `id_token`      | 無署名の JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 
 #### <a name="error-response"></a>エラー応答
 

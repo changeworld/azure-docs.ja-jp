@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 131a55d130e7ebf619ee283e943c0b0a7b45edfd
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ef0a9213d095d0b7ae4343e2af145236a7e005a1
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472859"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305403"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid トピックを管理するためのイベント ドメインについて
 
@@ -22,8 +22,6 @@ ms.locfileid: "54472859"
 * 承認と認証を管理する。
 * 各トピックを個別に管理するのではなく、パーティション分割する。
 * 各トピック エンドポイントへの個別の発行を回避する。
-
-この機能はプレビュー段階にあります。 これを使用するには、プレビュー拡張機能またはモジュールをインストールする必要があります。 方法については、「[イベント ドメインを使用してトピックを管理し、イベントを発行する](how-to-event-domains.md)」をご覧ください。
 
 ## <a name="event-domain-overview"></a>イベント ドメインの概要
 
@@ -99,18 +97,18 @@ Event Grid には、RBAC がイベント ドメインでより簡単に動作す
 イベント ドメインにより、トピックへの発行が自動的に処理されます。 管理する各トピックに個別にイベントを発行するのではなく、すべてのイベントをドメインのエンドポイントに対して発行することができます。 Event Grid によって、各イベントは正しいトピックに確実に送信されます。
 
 ## <a name="limits-and-quotas"></a>制限とクォータ
+イベント ドメインに関連した制限とクォータを次に示します。
 
-### <a name="control-plane"></a>コントロール プレーン
+- イベント ドメインあたり 100,000 トピック 
+- Azure サブスクリプションあたり 100 イベント ドメイン 
+- イベント ドメイン内のトピックあたり 500 イベント サブスクリプション
+- 50 のドメイン スコープ サブスクリプション 
+- 毎秒 5,000 イベントのインジェスト速度 (ドメインへの取り込み)
 
-プレビュー期間中、イベント ドメインはドメイン内の 1,000 個のトピックに制限され、ドメイン内のトピックごとに 50 個のイベント サブスクリプションに制限されます。 イベント ドメイン スコープ サブスクリプションも 50 に制限されます。
-
-### <a name="data-plane"></a>データ プレーン
-
-プレビュー期間中、イベント ドメインのイベント スループットは、カスタム トピックが制限されるのと同じ 5,000 イベント/秒の取り込み率に制限されます。
+これらの制限が実情に沿わない場合は、サポート チケットを開くか、[askgrid@microsoft.com](mailto:askgrid@microsoft.com) 宛てにメールを送信して製品チームにご相談ください。 
 
 ## <a name="pricing"></a>価格
-
-プレビュー期間中、イベント ドメインでは、Event Grid の他のすべての機能で使用されるのと同じ[操作価格](https://azure.microsoft.com/pricing/details/event-grid/)が使用されます。
+イベント ドメインでは、Event Grid の他のすべての機能で使用されるのと同じ[操作価格](https://azure.microsoft.com/pricing/details/event-grid/)が使用されます。
 
 イベント ドメインでの操作は、カスタム トピックの場合と同じように動作します。 イベント ドメインへのイベントの各取り込みは 1 回の操作であり、イベントの各配信試行も 1 回の操作となります。
 

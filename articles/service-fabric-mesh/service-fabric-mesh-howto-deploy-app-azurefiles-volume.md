@@ -16,11 +16,11 @@ ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: fa078f17768d4885403f2f3e3d6b91251f0aaced
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335965"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60419375"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームをマウントする 
 
@@ -74,8 +74,8 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 これらの値は [Azure portal](https://portal.azure.com) でも見つけることができます。
 * `<storageAccountName>` - **[ストレージ アカウント]** に、ファイル共有を作成するときに使用したストレージ アカウントの名前があります。
-* `<storageAccountKey>` - **[ストレージ アカウント]** でストレージ アカウントを選択し、**[アクセス キー]** を選択して **key1** の下の値を使用します。
-* `<fileShareName>` - **[ストレージ アカウント名]** でストレージ アカウントを選択し、**[ファイル]** を選択します。 使用する名前は、作成したファイル共有の名前です。
+* `<storageAccountKey>` - **[ストレージ アカウント]** でストレージ アカウントを選択し、 **[アクセス キー]** を選択して **key1** の下の値を使用します。
+* `<fileShareName>` - **[ストレージ アカウント名]** でストレージ アカウントを選択し、 **[ファイル]** を選択します。 使用する名前は、作成したファイル共有の名前です。
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>ボリューム リソースを宣言し、サービス リソース (JSON) を更新する
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: d5ddec40a1b20e377ec18ce871018f674557e7b4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111766"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60704034"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Azure Security Center での Transparent Data Encryption の有効化
 Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効になっていない場合に、SQL Database で TDE を有効にすることを勧めます。 TDE によってデータが保護されます。データベース、関連するバックアップ、保存されているトランザクション ログ ファイルを暗号化することで、コンプライアンス要件を満たすことができます。アプリケーションに変更を加える必要はありません。 詳細については、「[Azure SQL Database での Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096)」をご覧ください。
@@ -32,14 +32,14 @@ Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効
 >
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-1. **[推奨事項]** ブレードで、**[Transparent Data Encryption を有効にする]** を選択します。
+1. **[推奨事項]** ブレードで、 **[Transparent Data Encryption を有効にする]** を選択します。
    ![Transparent Data Encryption を有効にする][1]
 2. **[SQL データベースで Transparent Data Encryption を有効にする]** ブレードが開きます。 TDE を有効にする SQL Database を選択します。
    ![TDE を有効にする SQL DB の選択][2]
 3. **[Transparent Data Encryption]** ブレードで、[データ暗号化] の **[オン]** を選択し、ブレードの上部のリボンにある **[保存]** をクリックします。
    ![TDE の有効化][3]
 
-   選択した SQL Database で TDE が有効になると、**[暗号化の状態]** が **[暗号化済み]** に変わります。    
+   選択した SQL Database で TDE が有効になると、 **[暗号化の状態]** が **[暗号化済み]** に変わります。    
 
    ![暗号化の状態][4]
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: d0a4180a3ea28427b8d82c6f5cf86ef9fa51d580
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 6e20aef77625fe426526884c3fcee83019afd0c0
+ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785898"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66299245"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -57,7 +57,7 @@ Application Insights SDK の参照がまだない場合:
 
     *C#:* `using Microsoft.ApplicationInsights;`
 
-    *Visual Basic:*`Imports Microsoft.ApplicationInsights`
+    *Visual Basic:* `Imports Microsoft.ApplicationInsights`
 
     *Java:* `import com.microsoft.applicationinsights.TelemetryClient;`
 
@@ -529,7 +529,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-重要なスタック情報の大部分は既に個別の変数に抽出されていますが、`details` 構造を分析してさらに詳細な情報を取得できます。 この構造は動的なので、期待する型に結果をキャストする必要があります。 例: 
+重要なスタック情報の大部分は既に個別の変数に抽出されていますが、`details` 構造を分析してさらに詳細な情報を取得できます。 この構造は動的なので、期待する型に結果をキャストする必要があります。 例:
 
 ```kusto
 exceptions
@@ -592,7 +592,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: AI.S
 `message` のサイズ制限は、プロパティの制限よりも非常に高くなっています。
 TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。  
 
-加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタリングしたり検索したりすることができます。 例: 
+加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタリングしたり検索したりすることができます。 例:
 
 *C#*
 
@@ -712,7 +712,7 @@ dependencies
 
 ## <a name="flushing-data"></a>データのフラッシュ
 
-通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯にデータを送信します。 ただし、終了するアプリケーションで SDK を使用する場合などには、バッファーのフラッシュが必要になることがあります。
+通常、SDK からは一定の間隔 (通常 30 秒) で、またはバッファがいっぱいになったとき (通常 500 項目) にデータが送信されます。 ただし、終了するアプリケーションで SDK を使用する場合などには、バッファーのフラッシュが必要になることがあります。
 
 *C#*
 
@@ -1155,7 +1155,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient には、すべてのテレメトリ データとともに送信される値が含まれる Context プロパティが備わっています。 通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。 例: 
+TelemetryClient には、すべてのテレメトリ データとともに送信される値が含まれる Context プロパティが備わっています。 通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。 例:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1164,7 +1164,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 いずれかの値を自分で設定した場合は、その値と標準の値が混同されないように、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) から該当する行を削除することを検討します。
 
 * **Component**:アプリそのバージョン。
-* **Device**:アプリが実行されているデバイスに関するデータ  (Web アプリでは、テレメトリを送信するサーバーまたはクライアント デバイスのデータ)。
+* **Device**:アプリが実行されているデバイスに関するデータ (Web アプリでは、テレメトリを送信するサーバーまたはクライアント デバイスのデータ)。
 * **InstrumentationKey**:テレメトリが表示される Azure 内の Application Insights リソース。 通常、ApplicationInsights.config から取得されます。
 * **Location**:デバイスの地理的な場所。
 * **Operation**:Web アプリでは現在の HTTP 要求。 他の種類のアプリケーションでは、イベントをグループ化するために、これを設定できます。

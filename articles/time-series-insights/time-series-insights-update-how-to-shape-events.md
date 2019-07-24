@@ -1,8 +1,8 @@
 ---
 title: Azure Time Series Insights プレビューでのイベントの調整 | Microsoft Docs
-description: Azure Time Series Insights プレビューでのイベントの調整を理解します。
+description: Azure Time Series Insights プレビューでのイベントの調整方法を理解します。
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 38072d111d51cc2d2c6265643b69a870a679a454
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: f0e1a79073596dcabfacb7163e12b33bb582b7c3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466155"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66238925"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのイベントの調整
 
@@ -23,7 +23,7 @@ ms.locfileid: "65466155"
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
-Azure Time Series Insights プレビューにイベントを送信する方法について検討することが重要です。 具体的には、常に、以下を考慮する必要があります。
+Azure Time Series Insights プレビューにイベントを送信する方法を検討します。 具体的には、常に、以下を考慮する必要があります。
 
 * ネットワーク上でできるだけ効率的にデータを送信する。
 * 自分のシナリオにとってより適切に集計できる方法でデータを格納する。
@@ -31,16 +31,16 @@ Azure Time Series Insights プレビューにイベントを送信する方法�
 クエリ パフォーマンスを最善に維持するには、次の手順に従ってください。
 
 * 不要なプロパティを送信しない。 Time Series Insights プレビューは、従量課金制です。 クエリを実行するデータを格納して処理することをお勧めします。
-* 静的データにインスタンス フィールドを使用する。 この手法によって、ネットワーク上で静的なデータを送信しないようにできます。 インスタンス フィールドは、タイム シリーズ モデルのコンポーネントであり、Time Series Insights GA サービスで参照データのように機能します。 インスタンス フィールドの詳細については、「[Time Series Models (タイム シリーズ モデル)](./time-series-insights-update-tsm.md)」を参照してください。
+* 静的データにインスタンス フィールドを使用する。 この手法によって、ネットワーク上で静的なデータを送信しないようにできます。 インスタンス フィールドはタイム シリーズ モデルのコンポーネントであり、一般に利用できるサービスである Time Series Insights で参照データのように動作します。 インスタンス フィールドの詳細については、「[Time Series Models (タイム シリーズ モデル)](./time-series-insights-update-tsm.md)」を参照してください。
 * 2 つ以上のイベント間でディメンション プロパティを共有します。 この手法によって、ネットワーク経由でより効率的にデータを送信できます。
-* 深い入れ子の配列を使用しない。 Time Series Insights プレビューでは、オブジェクトを含む、入れ子になった最大 2 レベルの配列をサポートしています。 Time Series Insights プレビューでは、メッセージ内の配列は、プロパティ値のペアを使用する複数のイベントにフラット化されます。
-* すべて、またはほとんどのイベントに対して数個のメジャーのみが存在する場合は、これらのメジャーを同じオブジェクト内の個別のプロパティとして送信することをお勧めします。 個別に送信することでイベントの数が減少し、処理する必要があるイベントが少なくなるため、クエリのパフォーマンスを改善できることがあります。
+* 深い入れ子の配列を使用しない。 Time Series Insights プレビューでは、オブジェクトを含む最大 2 つのレベルの入れ子配列がサポートされます。 Time Series Insights プレビューでは、メッセージ内の配列は、プロパティ値のペアを使用する複数のイベントにフラット化されます。
+* すべて、またはほとんどのイベントに対して数個のメジャーのみが存在する場合は、これらのメジャーを同じオブジェクト内の個別のプロパティとして送信することをお勧めします。 個別に送信することでイベントの数が減少し、処理する必要があるイベントが少なくなるため、クエリのパフォーマンスが向上する可能性があります。
 
 ## <a name="example"></a>例
 
 次の例では、2 つ以上のデバイスが、メジャーや信号を送信するシナリオを使用しています。 メジャーまたは信号には、*フロー レート*、*エンジン オイル圧*、*温度*、または*湿度*を使用できます。
 
-次の例では IoT Hub メッセージが 1 つあり、外側の配列に共通のディメンション値の共有部分が含まれています。 外側の配列は、Time Series Instance データを使用してメッセージの効率を改善します。 Time Series Instance には、イベントごとに変更されないが、データ解析に役立つプロパティを提供するデバイス メタデータが含まれています。 ネットワーク経由で送信されるバイト数を削減し、メッセージをより効率的にするには、共通のディメンション値のバッチ処理と、Time Series Instance メタデータの使用を検討してください。
+次の例では Azure IoT Hub メッセージが 1 つあり、外側の配列に共通のディメンション値の共有部分が含まれています。 外側の配列は、Time Series Instance データを使用してメッセージの効率を改善します。 Time Series Instance には、イベントごとに変更されないが、データ解析に役立つプロパティを提供するデバイス メタデータが含まれています。 ネットワーク経由で送信されるバイト数を削減し、メッセージをより効率的にするには、共通のディメンション値のバッチ処理と、Time Series Instance メタデータの使用を検討してください。
 
 ### <a name="example-json-payload"></a>JSON ペイロードの例
 
@@ -108,7 +108,7 @@ Azure Time Series Insights プレビューにイベントを送信する方法�
   },
 ```
 
-Time Series Insights プレビューは、クエリ時に (フラット化の後に) テーブルを結合します。 このテーブルには、**Type** などの追加の列が含まれます。 次の例で、利用統計情報データの[調整](./time-series-insights-send-events.md#json)方法を示します。
+Time Series Insights プレビューは、クエリ時に (フラット化の後に) テーブルを結合します。 このテーブルには、**Type** などの追加の列が含まれます。 次の例で、テレメトリ データの[調整](./time-series-insights-send-events.md#json)方法を示します。
 
 | deviceId  | Type | L1 | L2 | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -119,16 +119,15 @@ Time Series Insights プレビューは、クエリ時に (フラット化の後
 前の例では、次の点に注意してください。
 
 * 静的プロパティは、ネットワーク経由で送信されるデータを最適化するために、Time Series Insights プレビューに格納されます。
-* Time Series Insights プレビュー データは、インスタンスで定義されている *timeSeriesId* を使用して、クエリ時に結合されます。
+* Time Series Insights プレビュー データは、インスタンスに定義されている Time Series ID を使用して、クエリ時に結合されます。
 * 2 層の入れ子が使用されます。これは、Time Series Insights プレビューでサポートされている最大です。 深く入れ子された配列は使用しないことが重要です。
 * メジャーはほとんどないため、同じオブジェクト内の個別のプロパティとして送信されます。 たとえば、**series.Flow Rate psi**、**series.Engine Oil Pressure psi**、および **series.Flow Rate ft3/s** が一意な列です。
 
 >[!IMPORTANT]
-> インスタンス フィールドは、利用統計情報と共には格納されません。 **タイム シリーズ モデル**にメタデータと格納されます。
+> インスタンス フィールドは、テレメトリと共には格納されません。 それらは、メタデータと共に**タイム シリーズ モデル**に格納されます。
 > 上記の表は、クエリ ビューを表しています。
 
 ## <a name="next-steps"></a>次の手順
 
 - これらのガイドラインを実践するには、[Azure Time Series Insights プレビューのクエリ構文](./time-series-insights-query-data-csharp.md)に関するページを参照してください。 Time Series Insights プレビュー データ アクセス REST API のクエリ構文の詳細について説明します。
-
 - サポートされている JSON の調整の詳細については、「[サポートされている JSON 構造](./time-series-insights-send-events.md#json)」を参照してください。

@@ -17,11 +17,11 @@ ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096301"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60607694"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)
 > [!div class="op_single_selector"]
@@ -75,7 +75,7 @@ ms.locfileid: "58096301"
 | **暗号化** |有効/無効 (無効) |暗号化を有効または無効にします。 暗号化を有効にすると、バックアップの復元に使用する証明書は、指定されたストレージ アカウントの同じ automaticbackup コンテナー内に、同じ名前付け規則を使用して配置されます。 パスワードが変更された場合、そのパスワードを使用して新しい証明書が生成されますが、以前のバックアップの復元には古い証明書が引き続き使用されます。 |
 | **パスワード** |パスワード テキスト (なし) |暗号化キーのパスワード。 暗号化を有効にした場合にのみ必須となります。 暗号化されたバックアップを復元するには、バックアップの作成時に使用した正しいパスワードおよび関連する証明書が必要です。 |
 | **システム データベースのバックアップ** | 有効/無効 (無効) | Master、Model、および MSDB の完全バックアップを実行します。 |
-| **バックアップ スケジュールの構成** | 手動/自動 (自動) | ログの増加に基づいて完全およびログ バックアップを自動的に実行するには、**[自動]** を選びます。 完全およびログ バックアップのスケジュールを指定するには、**[手動]** を選びます。 |
+| **バックアップ スケジュールの構成** | 手動/自動 (自動) | ログの増加に基づいて完全およびログ バックアップを自動的に実行するには、 **[自動]** を選びます。 完全およびログ バックアップのスケジュールを指定するには、 **[手動]** を選びます。 |
 
 ## <a name="configuration-with-powershell"></a>PowerShell での構成
 次の PowerShell の例では、既存の SQL Server 2014 VM の自動バックアップを構成しています。 **New-AzureVMSqlServerAutoBackupConfig** コマンドは、$storageaccount 変数で指定された Azure ストレージ アカウントにバックアップを保存するように、自動バックアップ設定を構成します。 これらのバックアップは 10 日間保持されます。 **Set-AzureVMSqlServerExtension** コマンドは、指定された Azure VM をこれらの設定で更新します。

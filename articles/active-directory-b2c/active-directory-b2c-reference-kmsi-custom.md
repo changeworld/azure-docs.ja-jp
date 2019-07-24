@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C の "サインインしたままにする (KMSI)" | Microsoft Docs
 description: Azure Active Directory B2C で "サインインしたままにする (KMSI)" を設定する方法を説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cd48f2c194cc643d131a7def4b96285cde0bcbf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0ae6f19ea9a04aa6b2547fa031dbb09d03b887c3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712534"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66509423"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で "サインインしたままにする (KMSI)" を有効にする
 
@@ -180,7 +180,7 @@ Azure Active Directory (Azure AD) B2C では、Web アプリケーションと�
     ```
 
 4. 変更内容を保存し、ファイルをアップロードします。
-5. アップロードしたカスタムのポリシーをテストするには、Azure portal でポリシー ページに移動し、**[今すぐ実行]** を選択します。
+5. アップロードしたカスタムのポリシーをテストするには、Azure portal でポリシー ページに移動し、 **[今すぐ実行]** を選択します。
 
 [こちら](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in)でサンプル ポリシーを見つけることができます。
 

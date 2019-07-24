@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/17/2019
-ms.openlocfilehash: c49044d8bd96efb7e86cf54509c32033900be305
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73c837897f4a104fabb4143d4b49fa3fbc258bb4
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180910"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66305026"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>イベント ドメインを使用してトピックを管理し、イベントを発行する
 
@@ -27,10 +27,6 @@ ms.locfileid: "58180910"
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>プレビュー機能のインストール
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
-
 ## <a name="create-an-event-domain"></a>イベント ドメインを作成する
 
 大規模なトピック セットを管理するには、イベント ドメインを作成します。
@@ -38,10 +34,6 @@ ms.locfileid: "58180910"
 Azure CLI では、次を使用します。
 
 ```azurecli-interactive
-# If you haven't already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid domain create \
   -g <my-resource-group> \
   --name <my-domain-name> \
@@ -51,10 +43,6 @@ az eventgrid domain create \
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
 New-AzureRmEventGridDomain `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain-name> `
@@ -203,6 +191,23 @@ Get-AzureRmEventGridDomainKey `
 ```
 
 次に、HTTP POST を実行するための任意のメソッドを使用して、Event Grid ドメインにイベントを発行します。
+
+## <a name="search-lists-of-topics-or-subscriptions"></a>トピックまたはサブスクリプションの検索一覧
+
+多数のトピックまたはサブスクリプションの検索および管理を行うために、Event Grid の API は改ページの一覧表示をサポートしています。
+
+### <a name="using-cli"></a>CLI の使用
+
+これを使用するには、Azure CLI Event Grid 拡張機能バージョン 0.4.1 以降を使用していることを確認してください。
+
+```azurecli-interactive
+# If you haven't already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
+az eventgrid topic list \
+    --odata-query "contains(name, 'my-test-filter')"
+```
 
 ## <a name="next-steps"></a>次の手順
 

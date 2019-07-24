@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: c5ceeb2e6419cab7945454087edd4c821db28343
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65204214"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Data Box BLOB ストレージに関連する問題のトラブルシューティング
@@ -27,7 +27,7 @@ ms.locfileid: "65204214"
 |---------|---------|
 |Unable to retrieve child resources. (子リソースを取得できません。) The value for one of the HTTP headers is not in the correct format. (いずれかの HTTP ヘッダーの値の形式が正しくありません。)|**[編集]** メニューから **[Target Azure Stack APIs]\(Azure Stack API を対象とする\)** を選択します。 <br>Azure Storage Explorer を再起動します。|
 |`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |エンドポイント名 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` が次の場所にあるホスト ファイルに追加されていることを確認します。 <li>`C:\Windows\System32\drivers\etc\hosts` (Windows) </li><li> `/etc/hosts` (Linux)</li>|
-|Unable to retrieve child resources. (子リソースを取得できません。) <br>Details: self-signed certificate (詳細: 自己署名証明書) |次の手順に従って、ご使用のデバイス用の SSL 証明書を Azure Storage Explorer にインポートします。 <li>Azure portal から証明書をダウンロードします。 詳細については、[証明書のダウンロード](data-box-deploy-copy-data-via-rest.md#download-certificate)に関する記事を参照してください。</li><li>**[編集]** メニューから、**[SSL 証明書]**、**[証明書のインポート]** の順に選択します。</li>|
+|Unable to retrieve child resources. (子リソースを取得できません。) <br>Details: self-signed certificate (詳細: 自己署名証明書) |次の手順に従って、ご使用のデバイス用の SSL 証明書を Azure Storage Explorer にインポートします。 <li>Azure portal から証明書をダウンロードします。 詳細については、[証明書のダウンロード](data-box-deploy-copy-data-via-rest.md#download-certificate)に関する記事を参照してください。</li><li>**[編集]** メニューから、 **[SSL 証明書]** 、 **[証明書のインポート]** の順に選択します。</li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>AzCopy for Windows で見られるエラー
 
@@ -55,7 +55,7 @@ ms.locfileid: "65204214"
 |エラー メッセージ  |推奨される操作 |
 |---------|---------|
 |The value for one of the HTTP headers is not in the correct format. (いずれかの HTTP ヘッダーの値の形式が正しくありません。) |インストールしたバージョンの Python 用 Azure Storage ライブラリが Data Box でサポートされていません。 Azure Data Box Blob ストレージの要件で、サポートされるバージョンを確認してください。|
-|... [SSL:CERTIFICATE_VERIFY_FAILED] …|Python を実行する前に、REQUESTS_CA_BUNDLE 環境変数を Base64 でエンコードされた SSL 証明書ファイルのパスに設定してください ([証明書のダウンロード](data-box-deploy-copy-data-via-rest.md#download-certificate)方法を参照してください)。 <br>例: <br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>あるいは、証明書をシステムの証明書ストアに追加し、この環境変数をそのストアのパスに設定します。 <br> Ubuntu の場合の例: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|... [SSL:CERTIFICATE_VERIFY_FAILED] …|Python を実行する前に、REQUESTS_CA_BUNDLE 環境変数を Base64 でエンコードされた SSL 証明書ファイルのパスに設定してください ([証明書のダウンロード](data-box-deploy-copy-data-via-rest.md#download-certificate)方法を参照してください)。 <br>例:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>あるいは、証明書をシステムの証明書ストアに追加し、この環境変数をそのストアのパスに設定します。 <br> Ubuntu の場合の例: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>一般的なエラー

@@ -16,11 +16,11 @@ ms.date: 01/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: e6d18222e15f62f12592362827b6dbc4a3d7dfbc
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820316"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60766921"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
 このチュートリアルでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) の[マイクロサービス](https://en.wikipedia.org/wiki/Microservices)で構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法を示します。 
@@ -62,7 +62,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 
 1. [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) App Service のサンプルに移動します。
 2. readme.md の **[Azure にデプロイ]** をクリックします。
-3. [deploy-to-azure](https://deploy.azure.com) サイトが表示され、デプロイメント パラメーターの入力が求められます。 ほとんどのフィールドにはリポジトリ名が設定されていますが、一部にランダムな文字列が設定されていることに注意してください。 必要に応じてすべてのフィールドを変更できますが、入力する必要があるのは SQL Server の管理用のログインとパスワードだけです。**[次へ]** をクリックします。
+3. [deploy-to-azure](https://deploy.azure.com) サイトが表示され、デプロイメント パラメーターの入力が求められます。 ほとんどのフィールドにはリポジトリ名が設定されていますが、一部にランダムな文字列が設定されていることに注意してください。 必要に応じてすべてのフィールドを変更できますが、入力する必要があるのは SQL Server の管理用のログインとパスワードだけです。 **[次へ]** をクリックします。
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
 4. 次に、 **[デプロイ]** をクリックしてデプロイメント プロセスを開始します。 プロセスの実行が完了したら、 http://todoapp*XXXX*.azurewebsites.net リンクをクリックし、デプロイされたアプリケーションを参照します。 
@@ -70,7 +70,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
    UI は、初めて参照するときに少し時間がかかります。これは、アプリがちょうど起動中であるためですが、十分な機能を備えたアプリケーションと考えてください。
-5. [デプロイ] ページに戻り、**[管理]** リンクをクリックすると、Azure Portal に新しいアプリケーションが表示されます。
+5. [デプロイ] ページに戻り、 **[管理]** リンクをクリックすると、Azure Portal に新しいアプリケーションが表示されます。
 6. **[要点]** ボックスの一覧で、リソース グループのリンクをクリックします。 **[外部プロジェクト]** で、アプリが既に GitHub リポジトリに接続されていることにも注意してください。 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
@@ -192,11 +192,11 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 ## <a name="deploy-the-resource-group-template-yourself"></a>リソース グループ テンプレートを自分でデプロイする
 **[Azure へのデプロイ]** ボタンは優れていますが、azuredeploy.json を GitHub に既にプッシュしている場合にのみ、azuredeploy.json でリソース グループ テンプレートをデプロイできます。 Azure .NET SDK には、ローカル コンピューターから直接 JSON テンプレート ファイルをデプロイするためのツールも用意されています。 これを行うには、次の手順に従います。
 
-1. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** をクリックします。
-2. **[Visual C#]** > **[クラウド]** > **[Azure リソース グループ]** をクリックした後、**[OK]** をクリックします。
+1. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** をクリックします。
+2. **[Visual C#]**  >  **[クラウド]**  >  **[Azure リソース グループ]** をクリックした後、 **[OK]** をクリックします。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
-3. **[Azure テンプレートの選択]** で、**[空白のテンプレート]** を選択し、**[OK]** をクリックします。
+3. **[Azure テンプレートの選択]** で、 **[空白のテンプレート]** を選択し、 **[OK]** をクリックします。
 4. azuredeploy.json を新しいプロジェクトの **[テンプレート]** フォルダーにドラッグします。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
@@ -204,7 +204,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 6. デモで使用する目的のみで、 **[リソースの追加]** をクリックして、標準の Application Insights リソースをいくつか JSON ファイルに追加してみます。 JSON ファイルのデプロイのみに興味がある場合は、デプロイの手順に進んでください。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
-7. **[Web アプリの Application Insights]** を選択し、既存の App Service プランとアプリが選択されていることを確認して、**[追加]** をクリックします。
+7. **[Web アプリの Application Insights]** を選択し、既存の App Service プランとアプリが選択されていることを確認して、 **[追加]** をクリックします。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
    
@@ -219,18 +219,18 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 11. `location` プロパティと `isEnabled` プロパティを見つけて次のように設定します。 他の 3 つのアラート (紫色の電球) についても同様の操作を行います。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. これで、デプロイする準備が整いました。 プロジェクトを右クリックして **[デプロイ]** > **New [デプロイ]ment**に関するページをご覧ください。
+12. これで、デプロイする準備が整いました。 プロジェクトを右クリックして **[デプロイ]**  > **New [デプロイ]ment**に関するページをご覧ください。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. ログインしていない場合は、Azure アカウントにログインします。
-14. サブスクリプション内の既存のリソース グループを選択するか、**[azuredeploy.json]** を選択してから **[パラメーターの編集]** をクリックして新しいリソース グループを作成します。
+14. サブスクリプション内の既存のリソース グループを選択するか、 **[azuredeploy.json]** を選択してから **[パラメーターの編集]** をクリックして新しいリソース グループを作成します。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
     これで、便利なテーブルで、テンプレート ファイルで定義されているすべてのパラメーターを編集できるようになりました。 既定値を定義するパラメーターには既定値が既に設定されています。また、使用できる値の一覧を定義するパラメーターはドロップダウン リストとして表示されます。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
-15. 空のパラメーターすべてに値を設定します。**[repoUrl]** には [GitHub リポジトリの ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) のアドレスを使用します。 その後、**[保存]** をクリックします。
+15. 空のパラメーターすべてに値を設定します。 **[repoUrl]** には [GitHub リポジトリの ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) のアドレスを使用します。 その後、 **[保存]** をクリックします。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     

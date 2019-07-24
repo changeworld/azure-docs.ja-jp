@@ -10,14 +10,19 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 193ed7099293fb1ee4c056abcc5c2f34d78627b7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e7d959e77d27fb04b18f402e4056d4dea1607039
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024704"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65522883"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成
+
+> [!Note]
+> delimitedText 解析モードはプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で .NET SDK のサポートはありません。
+>
+
 既定では、 [Azure Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は区切りテキスト BLOB を 1 つのテキスト チャンクとして解析します。 ただし、CSV データを含む BLOB では、BLOB の各行を個別のドキュメントとして処理することがよくあります。 たとえば、次のような区切りテキストを解析し、それぞれが "id"、"datePublished"、"tags" フィールドを含む 2 つのドキュメントに格納するような場合です。 
 
     id, datePublished, tags
@@ -26,13 +31,11 @@ ms.locfileid: "65024704"
 
 この記事では、`delimitedText` 解析モードを設定し、Azure Search BLOB インデクサーを使用して CSV BLOB を解析する方法について説明します。 
 
-現在、`delimitedText` 解析モードは、パブリック プレビューの段階であるため、運用ワークロードに対しては使用しないことをお勧めします。
-
 > [!NOTE]
 > 1 つの Azure BLOB から複数の検索ドキュメントを出力するには、[一対多のインデックス作成](search-howto-index-one-to-many-blobs.md)に関するページにあるインデクサー構成の推奨事項に従ってください。
 
 ## <a name="setting-up-csv-indexing"></a>CSV インデックス作成の設定
-CSV BLOB のインデックスを作成するには、 `delimitedText` 解析モードを使用してインデクサーの定義を作成または更新します。  
+CSV BLOB のインデックスを作成するには、[インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)要求で `delimitedText` 解析モードを使用してインデクサーの定義を作成または更新します。
 
     {
       "name" : "my-csv-indexer",
@@ -40,14 +43,12 @@ CSV BLOB のインデックスを作成するには、 `delimitedText` 解析モ
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
 
-インデクサー作成 API の詳細については、「 [インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
-
 `firstLineContainsHeaders` は、各 BLOB の最初の (空白以外の) 行にヘッダーが含まれていることを示します。
 BLOB に最初のヘッダー行が含まれていない場合は、インデクサーの構成でヘッダーを指定する必要があります。 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-`delimitedTextDelimiter` 構成設定を使用して区切り記号をカスタマイズできます。 例: 
+`delimitedTextDelimiter` 構成設定を使用して区切り記号をカスタマイズできます。 例:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 

@@ -1,19 +1,19 @@
 ---
 title: 従来の Log Analytics アラート API から新しい Azure Alerts API に切り替える
-description: 従来の savedSearch ベースの Log Analytics Alert API の廃止の概要と、アラート ルールを新しい ScheduledQueryRules API に切り替えるプロセスについて、お客様の一般的な問題への対処の詳細を含めて説明します。
+description: 従来の savedSearch ベースの Log Analytics Alert API の概要と、アラート ルールを新しい ScheduledQueryRules API に切り替えるプロセスについて、お客様の一般的な問題への対処の詳細を含めて説明します。
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 05/30/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 1706fc050fecd2e4be3a40725ec3e63a9036b3a9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 0e8cb18b3ea4b01db6b373ebbcb55c1e17614319
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486632"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66399145"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>ログ アラートの API の基本設定を切り替える
 
@@ -22,7 +22,7 @@ ms.locfileid: "58486632"
 
 最近まで、アラート ルールは Microsoft Operations Management Suite ポータルで管理していました。 新しいアラート エクスペリエンスは Log Analytics などの Microsoft Azure のさまざまなサービスと統合されており、Microsoft はお客様に[アラート ルールを OMS ポータルから Azure に拡張する](alerts-extend.md)ことをお願いしました。 しかし、お客様の中断を最小限にするため、このプロセスではそれを使用するためのプログラム インターフェイスは変更されませんでした (SavedSearch に基づく [Log Analytics Alert API](api-alerts.md))。
 
-しかし現在は、実際には Azure プログラムでは代わりに [Azure Monitor - ScheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用するようになっており、[ログ アラートに対する Azure の課金](alerts-unified-log.md#pricing-and-billing-of-log-alerts)にもそれが反映されていることを、Log Analytics アラートのユーザーにお知らせします。 API を使用してログ アラートを管理する方法の詳細については、「[Azure リソース テンプレートを使用したログ アラートの管理](alerts-log.md#managing-log-alerts-using-azure-resource-template)」および「[PowerShell、CLI、または API を使用したログ アラートの管理](alerts-log.md#managing-log-alerts-using-powershell-cli-or-api)」をご覧ください。
+しかし現在は、実際には Azure プログラムでは代わりに [Azure Monitor - ScheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用するようになっており、[ログ アラートに対する Azure の課金](alerts-unified-log.md#pricing-and-billing-of-log-alerts)にもそれが反映されていることを、Log Analytics アラートのユーザーにお知らせします。 API を使用してログ アラートを管理する方法の詳細については、「[Azure リソース テンプレートを使用したログ アラートの管理](alerts-log.md#managing-log-alerts-using-azure-resource-template)」および「[PowerShell を使用したログ アラートの管理](alerts-log.md#managing-log-alerts-using-powershell)」をご覧ください。
 
 ## <a name="benefits-of-switching-to-new-azure-api"></a>新しい Azure API に切り替える利点
 
@@ -33,22 +33,23 @@ ms.locfileid: "58486632"
 - [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用して作成されたログ アラートには、最大 48 時間の期間を定義でき、以前より長い期間でデータをフェッチできます
 - 単一リソースとして 1 回でアラート ルールを作成でき、[従来の Log Analytics Alert API](api-alerts.md) のように 3 レベルのリソースを作成する必要はありません
 - Azure のクエリ ベースのログ アラートのすべてのバリエーションに対する 1 つのプログラム インターフェイス - 新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) は、Log Analytics と Application Insights のルールを管理するために使用できます
+- [PowerShell コマンドレット](alerts-log.md#managing-log-alerts-using-powershell)を使用してログ アラートを管理する
 - ログ アラートのすべての新機能と将来の開発は、新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) でのみ利用できます
 
 ## <a name="process-of-switching-from-legacy-log-alerts-api"></a>従来のログ アラート API から切り替えるプロセス
 
-[従来の Log Analytics Alert API](api-alerts.md) からアラート ルールを移動するプロセスに、アラートの定義、クエリ、構成の変更は含まれません。 アラート ルールおよび監視は影響を受けず、切り替え中または切り替え後にアラートが停止またはストールすることはありません。
-
-ユーザーは、[従来の Log Analytics Alert API](api-alerts.md) または新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) のどちらを使用してもかまいません。 アラート ルールの作成にどちらの API を使用しても、"*同じ API によってのみ管理できます*" (Azure portal の場合と同様)。 既定では、Azure Monitor では引き続き Azure portal からの新しいアラート ルールの作成に[従来の Log Analytics Alert API](api-alerts.md) が使用されます。
+ユーザーは、[従来の Log Analytics Alert API](api-alerts.md) または新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) のどちらを使用してもかまいません。 アラート ルールの作成にどちらの API を使用しても、"*同じ API によってのみ管理できます*" (Azure portal の場合と同様)。 既定では、Azure Monitor では引き続き、Log Analytics の既存のワークスペースに対して Azure portal から新しいアラート ルールを作成するときに[従来の Log Analytics Alert API](api-alerts.md) が使用されます。 お知らせしているように、[2019 年 6 月 1 日以降に作成される新しい Log ワークスペース](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)では自動的に、Azure portal での作業時を含め、新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) が既定で使用されます。
 
 設定を scheduledQueryRules API に切り替えることによる影響は次のとおりです。
 
-- プログラム インターフェイスを使用してログ アラートを管理するために行われるすべての操作は、代わりに [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用して行う必要があります。 詳細については、[Azure リソース テンプレートによるサンプルの使用](alerts-log.md#managing-log-alerts-using-azure-resource-template)および [Azure CLI と PowerShell によるサンプルの使用](alerts-log.md#managing-log-alerts-using-powershell-cli-or-api)に関するページをご覧ください
+- プログラム インターフェイスを使用してログ アラートを管理するために行われるすべての操作は、代わりに [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用して行う必要があります。 詳細については、[Azure リソース テンプレートによるサンプルの使用](alerts-log.md#managing-log-alerts-using-azure-resource-template)および [PowerShell によるサンプルの使用](alerts-log.md#managing-log-alerts-using-powershell)に関するページをご覧ください
 - Azure portal で作成される新しいログ アラート ルールはすべて、[scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) のみを使用して作成され、ユーザーは Azure portal で[新しい API の追加機能](#benefits-of-switching-to-new-azure-api)を使用することもできます
 - ログ アラート ルールの重大度が変わります ("*重大、警告、および情報*" から "*重大度値の 0、1、および 2*")。 重大度 4 でアラートを作成/更新するルールのオプションも同様です。
 
-> [!CAUTION]
-> ユーザーが設定を新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) に切り替えるよう選択すると、ルールでは、古い[従来の Log Analytics Alert API](api-alerts.md).の使用を選択したり元に戻すことはできません。
+[従来の Log Analytics Alert API](api-alerts.md) からアラート ルールを移動するプロセスに、アラートの定義、クエリ、構成の変更は含まれません。 アラート ルールおよび監視は影響を受けず、切り替え中または切り替え後にアラートが停止またはストールすることはありません。 唯一の違いは、API の基本設定の変更と、新しい API を使用したルールへのアクセスです。
+
+> [!NOTE]
+> 基本設定を新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) に切り替えるようにユーザーが選択した後は、古い[従来の Log Analytics Alert API](api-alerts.md) の使用を選択したり元に戻すことはできません。
 
 自主的に新しい [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) に切り替えて[従来の Log Analytics Alert API](api-alerts.md) からの使用をブロックしたいお客様は、次の API で PUT 呼び出しを実行して特定の Log Analytics ワークスペースに関連付けられているすべてのアラート ルールを切り替えることによって行うことができます。
 

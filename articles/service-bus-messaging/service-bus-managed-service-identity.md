@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: aschhab
-ms.openlocfilehash: abba0e15314387aed09e39f05d9127f346f9c799
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8477ff8c8ff0bc1629ff4cdc61f7c28c6eed778c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65228402"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65978795"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Azure Service Bus での Azure リソースのマネージド ID 
 
@@ -29,7 +29,23 @@ ms.locfileid: "65228402"
 
 ## <a name="service-bus-roles-and-permissions"></a>Service Bus のロールとアクセス許可
 
-マネージド ID は、Service Bus 名前空間の "所有者" または "共同作成者" ロールにのみ追加できます。 これにより、名前空間のすべてのエンティティに対するフル コントロールが ID に付与されます。 ただし、名前空間トポロジを変更する管理操作は、最初は Azure Resource Manager を使う場合にのみサポートされます。 ネイティブの Service Bus REST 管理インターフェイスを使う場合はサポートされません。 このサポートは、.NET Framework クライアントの [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) オブジェクトまたは .NET Standard クライアントの [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) オブジェクトをマネージド ID 内で使用できないことも意味します。
+マネージド ID は、Service Bus 名前空間の "Service Bus データ所有者" ロールに追加できます。 これにより、名前空間のすべてのエンティティに対する (管理およびデータの操作の) フル コントロールが ID に付与されます。
+
+>[!IMPORTANT]
+> 以前は、マネージド ID を **"所有者"** または **"共同作成者"** ロールに追加することをサポートしていました。
+>
+> しかし、 **"所有者"** と **"共同作成者"** ロールのデータ アクセス特権は受け入れられなくなります。 **"所有者"** または **"共同作成者"** ロールを使用していた場合、 それらは **"Service Bus データ所有者"** ロールを利用するように変更する必要があります。
+
+新しい組み込みのロールを使用するには、次の手順を実行してください。
+
+1. [Azure portal](https://portal.azure.com) に移動します
+2. 現在 "所有者" または "共同作成者" ロールを設定している Service Bus 名前空間に移動します。
+3. 左側のウィンドウのメニューで [アクセス制御 (IAM)] をクリックします。
+4. 次のように進めて、新しいロールの割り当てを追加します
+
+    ![](./media/service-bus-role-based-access-control/ServiceBus_RBAC_SBDataOwner.png)
+
+5. [保存] をクリックして、新しいロールの割り当てを保存します。
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID による Service Bus の使用
 
@@ -43,7 +59,7 @@ ms.locfileid: "65228402"
 
 ### <a name="set-up-the-managed-identity"></a>マネージド ID を設定する
 
-アプリケーションを作成したら、Azure Portal で新しく作成された Web アプリに移動し (チュートリアルにも示されています)、**[管理対象サービス ID]** ページに移動してこの機能を有効にします。 
+アプリケーションを作成したら、Azure Portal で新しく作成された Web アプリに移動し (チュートリアルにも示されています)、 **[管理対象サービス ID]** ページに移動してこの機能を有効にします。 
 
 ![](./media/service-bus-managed-service-identity/msi1.png)
 
@@ -51,9 +67,9 @@ ms.locfileid: "65228402"
 
 ### <a name="create-a-new-service-bus-messaging-namespace"></a>新しい Service Bus メッセージング名前空間を作成する
 
-次に、RBAC のプレビューをサポートする次の Azure リージョンのいずれかで、[Service Bus メッセージング名前空間を作成](service-bus-create-namespace-portal.md)します:**米国東部**、**米国東部 2**、または**西ヨーロッパ**。 
+次に、[Service Bus メッセージング名前空間を作成します](service-bus-create-namespace-portal.md)。 
 
-ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、**[ロールの割り当ての追加]** をクリックして、マネージド ID を**所有者**ロールに追加します。 そのためには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
+ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、 **[ロールの割り当ての追加]** をクリックして、マネージド ID を**所有者**ロールに追加します。 そのためには、 **[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
 
 これで、Web アプリケーションのマネージド ID は、Service Bus 名前空間と以前に作成したキューにアクセスできるようになりました。 
 
@@ -69,7 +85,7 @@ Default.aspx ページはランディング ページです。 コードは Defa
 
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
-メッセージを送受信するには、名前空間の名前と作成したエンティティの名前を入力します。 次に、**[send]** または **[receive]** をクリックします。
+メッセージを送受信するには、名前空間の名前と作成したエンティティの名前を入力します。 次に、 **[send]** または **[receive]** をクリックします。
 
 
 > [!NOTE]

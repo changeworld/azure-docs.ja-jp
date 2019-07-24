@@ -1,24 +1,24 @@
 ---
-title: クイック スタート:Azure Data Explorer に Azure BLOB を取り込む
-description: このクイック スタートでは、Event Grid サブスクリプションを使用して Azure Data Explorer にストレージ アカウントのデータを送信する方法を説明します。
+title: Azure Data Explorer に Azure BLOB を取り込む
+description: この記事では、Event Grid サブスクリプションを使用して Azure Data Explorer にストレージ アカウントのデータを送信する方法を説明します。
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 01/30/2019
-ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 5854a8974a4d2a9dbc1aa690dc2340fd806f4219
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051854"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67490132"
 ---
-# <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>クイック スタート:Event Grid の通知をサブスクライブすることで Azure Data Explorer に BLOB を取り込む
+# <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid の通知をサブスクライブすることで Azure Data Explorer に BLOB を取り込む
 
 Azure Data Explorer は、ログと利用統計情報のための高速でスケーラブルなデータ探索サービスです。 BLOB コンテナーに書き込まれた BLOB からの継続的な取り込み (データの読み込み) を実行できます。 
 
-このクイック スタートでは、 [Azure Event Grid](/azure/event-grid/overview) サブスクリプションの設定方法、およびイベント ハブを使用して Azure Data Explorer にイベントをルーティングする方法について説明します。 まずは、Azure Event Hubs に通知を送信する イベント グリッド サブスクリプションを持つストレージ アカウントが必要です。 次に、Event Grid データ接続を作成して、システム全体のデータ フローを確認します。
+この記事では、[Azure Event Grid](/azure/event-grid/overview) サブスクリプションの設定方法、およびイベント ハブを使用して Azure Data Explorer にイベントをルーティングする方法について説明します。 まずは、Azure Event Hubs に通知を送信する イベント グリッド サブスクリプションを持つストレージ アカウントが必要です。 次に、Event Grid データ接続を作成して、システム全体のデータ フローを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ Azure Data Explorer は、ログと利用統計情報のための高速でスケ
 ## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>お使いのストレージ アカウント内に Event Grid サブスクリプションを作成する
 
 1. Azure portal でストレージ アカウントを検索します。
-1. **[イベント]** > **[イベント サブスクリプション]** を選択します。
+1. **[イベント]**  >  **[イベント サブスクリプション]** を選択します。
 
     ![アプリケーションの [クエリ] リンク](media/ingest-data-event-grid/create-event-grid-subscription.png)
 
@@ -48,20 +48,20 @@ Azure Data Explorer は、ログと利用統計情報のための高速でスケ
     | エンドポイント | *test-hub* | 作成したイベント ハブ。 |
     | | |
 
-1. 特定のコンテナーからのファイルを追跡する場合は、**[追加機能]** タブを選択します。 次のように、通知用のフィルターを設定します。
+1. 特定のコンテナーからのファイルを追跡する場合は、 **[追加機能]** タブを選択します。 次のように、通知用のフィルターを設定します。
     * **[次で始まるサブジェクト]** フィールドは、BLOB コンテナーの*リテラル* プレフィックスです。 適用されるパターンは *startswith* であるため、複数のコンテナーにまたがることができます。 ワイルドカードは使用できません。
-     次のように設定する "*必要があります*"。*`/blobServices/default/containers/`*[コンテナーのプレフィックス]
+     次のように設定する "*必要があります*"。 *`/blobServices/default/containers/`* [コンテナーのプレフィックス]
     * **[Subject Ends With]\(指定の値で終わる件名\)** フィールドは、BLOB の "*リテラル*" サフィックスです。 ワイルドカードは使用できません。
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Azure データ エクスプローラーでターゲット テーブルを作成する
 
 Azure Data Explorer で、Event Hubs のデータの送信先となるテーブルを作成します。 前提条件で準備したクラスターとデータベース内にテーブルを作成します。
 
-1. Azure portal のクラスターで、**[クエリ]** を選択します。
+1. Azure portal のクラスターで、 **[クエリ]** を選択します。
 
     ![アプリケーションの [クエリ] リンク](media/ingest-data-event-grid/query-explorer-link.png)
 
-1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択して、取り込んだデータを受け取るテーブル (TestTable) を作成します。
+1. 次のコマンドをウィンドウにコピーし、 **[実行]** を選択して、取り込んだデータを受け取るテーブル (TestTable) を作成します。
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
@@ -69,7 +69,7 @@ Azure Data Explorer で、Event Hubs のデータの送信先となるテーブ�
 
     ![クエリの作成の実行](media/ingest-data-event-grid/run-create-table.png)
 
-1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択して、テーブル (TestTable) の列名とデータ型に受信 JSON データをマップします。
+1. 次のコマンドをウィンドウにコピーし、 **[実行]** を選択して、テーブル (TestTable) の列名とデータ型に受信 JSON データをマップします。
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.TimeStamp"},{"column":"Value","path":"$.Value"},{"column":"Source","path":"$.Source"}]'
@@ -81,17 +81,17 @@ Azure Data Explorer で、Event Hubs のデータの送信先となるテーブ�
 
 1. ツールバーの **[通知]** を選択して、イベント ハブのデプロイが成功したことを確認します。
 
-1. 作成したクラスターの **[データベース]** > **[TestDatabase]** を選択します。
+1. 作成したクラスターの **[データベース]**  >  **[TestDatabase]** を選択します。
 
     ![テスト データベースの選択](media/ingest-data-event-grid/select-test-database.png)
 
-1. **[データ インジェスト]** > **[データ接続の追加]** を選択します。
+1. **[データ インジェスト]**  >  **[データ接続の追加]** を選択します。
 
     ![データの取り込み](media/ingest-data-event-grid/data-ingestion-create.png)
 
 1.  次の接続の種類を選択します:**Blob Storage**。
 
-1. フォームに次の情報を入力し、**[作成]** を選択します。
+1. フォームに次の情報を入力し、 **[作成]** を選択します。
 
     ![イベント ハブの接続](media/ingest-data-event-grid/create-event-grid-data-connection.png)
 
@@ -107,15 +107,15 @@ Azure Data Explorer で、Event Hubs のデータの送信先となるテーブ�
     | コンシューマー グループ | *test-group* | 作成したイベント ハブに定義されているコンシューマー グループ。 |
     | | |
 
-    ターゲット テーブル: 
+    ターゲット テーブル:
 
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | テーブル | *TestTable* | **TestDatabase** に作成したテーブル。 |
-    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOH、SCSV、TSV、および TXT です。 |
+    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOH、SCSV、TSV、および TXT です。 サポートされている圧縮オプションは、Zip と GZip です。 |
     | 列マッピング | *TestMapping* | **TestDatabase** に作成したマッピング。受信 JSON データを **TestTable** の列名とデータ型にマッピングします。|
     | | |
-
+    
 ## <a name="generate-sample-data"></a>サンプル データを作成する
 
 Azure Data Explorer とストレージ アカウントが接続されたので、サンプル データを作成して BLOB ストレージにアップロードできます。
@@ -157,7 +157,7 @@ Azure Storage リソースを操作するいくつかの基本的な Azure CLI �
 > [!NOTE]
 > Azure Data Explorer には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。
 既定では、ポリシーは 5 分間に構成されます。
-このポリシーは、必要に応じて、後で変更できます。 このクイック スタートでは、数分間の待機時間が発生する可能性があります。
+このポリシーは、必要に応じて、後で変更できます。 この記事では、数分間の待機時間が発生する可能性があります。
 
 1. アプリの実行中に Azure portal でイベント グリッドを確認すると、アクティビティの急上昇が見られます。
 
@@ -192,9 +192,8 @@ Azure Storage リソースを操作するいくつかの基本的な Azure CLI �
 
 1. **test-resource-group** で **[リソース グループの削除]** を選択します。
 
-1. 新しいウィンドウで、削除するリソース グループの名前 (*test-hub-rg*) を入力し、**[削除]** を選択します。
+1. 新しいウィンドウで、削除するリソース グループの名前 (*test-hub-rg*) を入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)
+* [Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

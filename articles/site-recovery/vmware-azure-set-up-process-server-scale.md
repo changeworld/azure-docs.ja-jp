@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64925491"
 ---
 # <a name="scale-with-additional-process-servers"></a>追加のプロセス サーバーによるスケール
@@ -24,7 +24,7 @@ ms.locfileid: "64925491"
 
 VMware レプリケーションのために[容量計画](site-recovery-plan-capacity-vmware.md)を実行したことを確認してください。 これは、追加のプロセス サーバーをどのように、いつデプロイする必要があるかを識別する助けとなります。
 
-9.24 バージョンから、ガイダンスは新しいレプリケーションの場合はプロセス サーバーの選択中に追加されます。 プロセス サーバーは、特定の条件に基づいて、「健全」、「警告」、「重大」とマークされます。 プロセス サーバーの状態に影響を与える可能性があるさまざまなシナリオを理解するには、[プロセス サーバーのアラート](vmware-physical-azure-monitor-process-server.md#process-server-alerts)を確認します。
+9\.24 バージョンから、ガイダンスは新しいレプリケーションの場合はプロセス サーバーの選択中に追加されます。 プロセス サーバーは、特定の条件に基づいて、「健全」、「警告」、「重大」とマークされます。 プロセス サーバーの状態に影響を与える可能性があるさまざまなシナリオを理解するには、[プロセス サーバーのアラート](vmware-physical-azure-monitor-process-server.md#process-server-alerts)を確認します。
 
 > [!NOTE]
 > 複製された Process Server コンポーネントの使用はサポートされていません。 PS スケールアウトごとに、この記事の手順に従います。

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c81a9f3891130f1c6fc2f1a665d7065fb983227
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 150ecbdfcc21ee7ec0bf54fd5b824bc93e0c76ce
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370192"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483319"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -41,7 +41,9 @@ ms.locfileid: "58370192"
 [パススルー認証](../hybrid/how-to-connect-pta.md)を使用する場合は、以下を確認してください。
 
 * Azure AD のロックアウトしきい値が、Active Directory アカウント ロックアウトしきい値より**小さい**。 Active Directory アカウント ロックアウトしきい値が Azure AD のロックアウトしきい値より少なくとも 2 - 3 倍長くなるように値を設定します。 
-* Azure AD のロックアウト期間 **(秒単位)** が、Active Directory のロックアウト カウンターのリセットの期間 **(分単位)** より **長い**。
+* Azure AD のロックアウト期間は、Active Directory のロックアウト カウンターのリセットの期間より長い期間を設定する必要があります。 AD の期間は分単位で設定しますが、Azure AD の期間は秒単位で設定することに注意してください。 
+
+たとえば、Azure AD のカウンターが AD よりも高くなるようにしたい場合は、オンプレミス AD が 1 分 (60 秒) に設定されていても、Azure AD は 120 秒 (2 分) になります。
 
 > [!IMPORTANT]
 > 現時点では、ユーザーのクラウド アカウントがスマート ロックアウト機能によってロックされている場合、管理者はロックを解除できません。 管理者はロックアウト期間が期限切れになるまで待つ必要があります。
@@ -52,7 +54,7 @@ ms.locfileid: "58370192"
 
 1. グループ ポリシー管理ツールを開きます。
 2. 組織のアカウント ロックアウト ポリシーを含む、グループ ポリシー (例: **デフォルト ドメイン ポリシー)** を編集します。
-3. **[コンピューターの構成]** > **[ポリシー]** > **[Windows 設定]** > **[セキュリティ設定]** > **[アカウント ポリシー]** > **[アカウント ロックアウト ポリシー]** の順に移動します。
+3. **[コンピューターの構成]**  >  **[ポリシー]**  >  **[Windows 設定]**  >  **[セキュリティ設定]**  >  **[アカウント ポリシー]**  >  **[アカウント ロックアウト ポリシー]** の順に移動します。
 4. **[アカウント ロックアウトのしきい値]** と **[ロックアウト カウンターのリセット]** の値を確認します。
 
 ![オンプレミス Active Directory アカウント ロックアウト ポリシーを変更する](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -63,7 +65,7 @@ ms.locfileid: "58370192"
 
 組織のスマート ロックアウト値を確認または編集するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]**、**[認証方法]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory]** 、 **[認証方法]** の順にクリックします。
 1. 何回サインインに失敗したらアカウントがロックアウトされるかを基に **[ロックアウトのしきい値]** を設定します。 既定値は 10 です。
 1. **[Lockout duration in seconds]\(秒単位のロックアウト期間\)** で、各ロックアウトの長さを秒単位で設定します。 既定値は 60 秒 (1 分) です。
 

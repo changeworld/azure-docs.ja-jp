@@ -3,8 +3,8 @@ title: アプリケーション アクセス パネルのブラウザー拡張�
 description: アクセス パネルのブラウザー拡張機能のインストール時に発生する一般的なエラーを修正します。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/4/2018
-ms.author: celested
+ms.date: 05/04/2018
+ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 216568ac43c8e1b04c91d9a8f611a0ceb2e430af
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 598a69593046354e83fe35b7b2ecfb0745e8b637
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674006"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66388326"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能のインストール
 
@@ -49,7 +49,7 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 
 2.  パスワードベースの SSO アプリケーションを選択します。
 
-3.  メッセージが表示されたら、**[今すぐインストール]** を選択します。  
+3.  メッセージが表示されたら、 **[今すぐインストール]** を選択します。  
     選択したブラウザーのダウンロード リンクにリダイレクトされます。 
     
 4.  **[追加]** を選択します。
@@ -63,7 +63,8 @@ Azure AD のエディションを使用している場合は、アクセス パ�
 次のサイトから Chrome と Microsoft Edge 対応の拡張機能を直接ダウンロードすることもできます。
 
 - [Chrome 拡張機能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Microsoft Edge 拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
+- [Microsoft Edge 拡張機能](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Firefox 拡張機能](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能の使用
 * `https://myapps.microsoft.com` 以外のマイ アプリの URL を使用している場合は、次の手順に従って既定の URL を構成します。
@@ -71,17 +72,17 @@ Azure AD のエディションを使用している場合は、アクセス パ�
    2. メニューから **[My Apps URL]\(マイ アプリの URL)** を選択します。
    3. 既定の URL を選択します。
    4. 拡張機能のアイコンを選択します。
-   5. 拡張機能にサインインするには、**[開始するにはサインインしてください]** を選択します。
+   5. 拡張機能にサインインするには、 **[開始するにはサインインしてください]** を選択します。
 
 * ブラウザーからアプリに直接サインインするには、以下の手順を実行します。
-   1. 拡張機能のインストール後、**[開始するにはサインインしてください]** を選択して拡張機能にサインインします。
+   1. 拡張機能のインストール後、 **[開始するにはサインインしてください]** を選択して拡張機能にサインインします。
    2. サインオン URL を使用してアプリにサインインします。  
        サインオン URL は、通常、サインイン フォームを表示するアプリの URL です。
       拡張機能の状態が変わり、パスワードが使用可能であることが示されます。
    3. サインインするには、拡張機能のアイコンを選択します。
 
 * 拡張機能からアプリを起動するには、以下の手順を実行します。
-   1. 拡張機能のインストール後、**[開始するにはサインインしてください]** を選択して拡張機能にサインインします。
+   1. 拡張機能のインストール後、 **[開始するにはサインインしてください]** を選択して拡張機能にサインインします。
    2. 拡張機能のアイコンを選択して、そのメニューを開きます。
    3. マイ アプリ ポータルで使用可能なアプリを検索します。
    4. 検索結果の一覧で、アプリを選択します。  

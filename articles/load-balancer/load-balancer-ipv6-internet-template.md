@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Azure Load Balancer と負荷分散された VM に IPv6 サポートをデプロイする方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.author: allensu
+ms.openlocfilehash: 4286879dc53cc835532c7a8243eaf88813545265
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039794"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274996"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>テンプレートを使用して IPv6 でインターネットに接続するロード バランサー ソリューションをデプロイする
 
@@ -70,7 +70,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
     ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. [パラメーターの編集] をクリックします。 [パラメーター] ブレードで、[テンプレート パラメーター] セクションのガイダンスに従って値を指定し、[保存] をクリックして [パラメーター] ブレードを閉じます。 [カスタム デプロイ] ブレードで、サブスクリプションを選択するか、既存のリソース グループを選択または新しいリソース グループを作成します。 リソース グループを作成する場合は、リソース グループの場所を選択します。 次に、**[法律条項]** をクリックし、法律条項で **[購入]** をクリックします。 Azure でリソースのデプロイを開始します。 すべてのリソースをデプロイするのに数分かかります。
+6. [パラメーターの編集] をクリックします。 [パラメーター] ブレードで、[テンプレート パラメーター] セクションのガイダンスに従って値を指定し、[保存] をクリックして [パラメーター] ブレードを閉じます。 [カスタム デプロイ] ブレードで、サブスクリプションを選択するか、既存のリソース グループを選択または新しいリソース グループを作成します。 リソース グループを作成する場合は、リソース グループの場所を選択します。 次に、 **[法律条項]** をクリックし、法律条項で **[購入]** をクリックします。 Azure でリソースのデプロイを開始します。 すべてのリソースをデプロイするのに数分かかります。
 
     ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 

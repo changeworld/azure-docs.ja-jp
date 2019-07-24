@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.openlocfilehash: a3c88953eea95871529e8ab257f52b694db443a9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544857"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61244312"
 ---
 # <a name="azure-database-for-mysql-data-in-replication-stored-procedures"></a>Azure Database for MySQL データイン レプリケーションのストアド プロシージャ
 

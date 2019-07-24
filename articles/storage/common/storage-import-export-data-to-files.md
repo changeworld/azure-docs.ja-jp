@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 28026a429643c62434ddfd7591126169857a7371
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265638"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61479074"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
@@ -115,7 +115,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 ## <a name="step-2-create-an-import-job"></a>手順 2:インポート ジョブの作成 
 
 次の手順を実行して、Azure portal でインポート ジョブを作成します。
-1. https://portal.azure.com/ にログオンします。
+1. [https://portal.azure.com/ ](https://portal.azure.com/) にログオンします。
 2. **[すべてのサービス] > [ストレージ] > [インポート/エクスポート ジョブ]** の順に移動します。 
 
     ![インポート/エクスポートへの移動](./media/storage-import-export-data-to-blobs/import-to-blob1.png)

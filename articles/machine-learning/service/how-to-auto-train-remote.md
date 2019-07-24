@@ -1,7 +1,7 @@
 ---
 title: 自動 ML リモート コンピューティング ターゲット
 titleSuffix: Azure Machine Learning service
-description: Data Science Virtual Machine (DSVM) リモート コンピューティング ターゲット上の自動機械学習と、Azure Machine Learning サービスを使用して、モデルを構築する方法について学習します
+description: Azure Machine Learning リモート コンピューティング ターゲット上の自動機械学習と、Azure Machine Learning service を使用して、モデルを構築する方法について学習します
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -12,26 +12,26 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6f2d71abeacee531b21a8276f621367dd39a39d9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6a18bdf3a2a1ccd60ff20d21ebd99f4f6e15e38f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891669"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65551335"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
 Azure Machine Learning では、管理しているさまざまな種類のコンピューティング リソースに対してモデルをトレーニングします。 ローカル コンピューターまたはクラウド内のコンピューターをコンピューティング ターゲットにすることができます。
 
-コンピューティング ターゲットをさらに追加して、機械学習実験を簡単にスケール アップまたはスケール アウトできます。 コンピューティング ターゲットのオプションには、Ubuntu ベースのデータ サイエンス仮想マシン (DSVM) または Azure Machine Learning コンピューティングが含まれます。 DSVM とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くの一般的なデータ サイエンスや他のツールが事前にインストールされ、事前に構成されています。  
+Azure Machine Learning Compute (AmlCompute) などのコンピューティング ターゲットを追加することで、機械学習実験を簡単にスケールアップまたはスケールアウトすることができます。 AmlCompute は、シングルノードまたはマルチノードのコンピューティングを簡単に作成できる、マネージド コンピューティング インフラストラクチャです。
 
-この記事では、DSVM 上で ML を使用してモデルを構築する方法について説明します。
+この記事では、自動 ML と AmlCompute を使用してモデルを構築する方法について説明します。
 
 ## <a name="how-does-remote-differ-from-local"></a>リモートとローカルの違い
 
-[自動機械学習を使用して分類モデルをトレーニングする方法](tutorial-auto-train-models.md)に関するチュートリアルでは、ローカル コンピューターで自動 ML を使用してモデルをトレーニングする方法について説明しています。  ローカルでトレーニングするときのワークフローは、リモート ターゲットの場合にも適用できます。 ただし、リモート コンピューティングの場合、自動 ML 実験の反復処理は非同期的に実行されます。 この機能では、特定の反復を取り消したり、実行の状態を確認したりできるほか、Jupyter ノートブックで他のセルに対する作業を続行することも可能です。 リモートからトレーニングするには、まず Azure DSVM などのリモート コンピューティング ターゲットを作成します。  次に、リモート ソースを構成して、そこにご自身のコードを送信します。
+[自動機械学習を使用して分類モデルをトレーニングする方法](tutorial-auto-train-models.md)に関するチュートリアルでは、ローカル コンピューターで自動 ML を使用してモデルをトレーニングする方法について説明しています。  ローカルでトレーニングするときのワークフローは、リモート ターゲットの場合にも適用できます。 ただし、リモート コンピューティングの場合、自動 ML 実験の反復処理は非同期的に実行されます。 この機能では、特定の反復を取り消したり、実行の状態を確認したりできるほか、Jupyter ノートブックで他のセルに対する作業を続行することも可能です。 リモートからトレーニングするには、まず AmlCompute などのリモート コンピューティング ターゲットを作成します。 次に、リモート ソースを構成して、そこにご自身のコードを送信します。
 
-この記事では、リモートの DSVM で自動 ML 実験を実行するために必要な追加の手順について説明します。  チュートリアルのワークスペース オブジェクト `ws` は、このコード全体で使用されています。
+この記事では、リモートの AmlCompute ターゲットで自動 ML 実験を実行するために必要な追加の手順について説明します。 チュートリアルのワークスペース オブジェクト `ws` は、このコード全体で使用されています。
 
 ```python
 ws = Workspace.from_config()
@@ -39,67 +39,32 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>リソースを作成する
 
-DSVM がまだ存在しない場合は、ワークスペースに DSVM を作成します (`ws`)。 以前に作成された DSVM がある場合、このコードは作成プロセスをスキップし、既存のリソースの詳細を `dsvm_compute` オブジェクトに読み込みます。  
+まだ存在しない場合は、ワークスペース (`ws`) に AmlCompute ターゲットを作成します。  
 
-**推定所要時間**: VM の作成時間は約 5 分です。
-
-```python
-from azureml.core.compute import DsvmCompute
-
-dsvm_name = 'mydsvm' #Name your DSVM
-try:
-    dsvm_compute = DsvmCompute(ws, dsvm_name)
-    print('found existing dsvm.')
-except:
-    print('creating new dsvm.')
-    # Below is using a VM of SKU Standard_D2_v2 which is 2 core machine. You can check Azure virtual machines documentation for additional SKUs of VMs.
-    dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
-    dsvm_compute = DsvmCompute.create(ws, name = dsvm_name, provisioning_configuration = dsvm_config)
-    dsvm_compute.wait_for_completion(show_output = True)
-```
-
-リモート コンピューティング ターゲットとして `dsvm_compute` オブジェクトを使用できるようになりました。
-
-DSVM の名前には次の制限があります。
-+ 64 文字未満にする必要があります。  
-+ 次の文字は使用できません。`\` ~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
-
->[!Warning]
->Marketplace の購入資格に関するメッセージで作成が失敗する場合:
->    1. [Azure portal](https://portal.azure.com) に移動します
->    1. DSVM の作成を開始します 
->    1. [Want to create programmatically]\(プログラムで作成する\) を選択してプログラムによる作成を有効にします
->    1. VM を実際に作成せずに終了します
->    1. 作成コードを再実行します
-
-このコードでは、プロビジョニングされた DSVM に対してユーザー名またはパスワードが作成されません。 VM に直接接続する必要がある場合は、[Azure portal](https://portal.azure.com) に移動して資格情報を作成します。  
-
-### <a name="attach-existing-linux-dsvm"></a>既存の Linux DSVM をアタッチする
-
-既存の Linux DSVM をコンピューティング ターゲットとしてアタッチすることもできます。 この例では、既存 DSVM を利用しますが、新しいリソースは作成しません。
-
-> [!NOTE]
->
-> 次のコードでは、[RemoteCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remote.remotecompute?view=azure-ml-py) ターゲット クラスを使用して、既存の VM をコンピューティング ターゲットとしてアタッチします。
-> [DsvmCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.dsvmcompute?view=azure-ml-py) クラスは、この設計パターンを優先して今後のリリースで非推奨になります。
-
-次のコードを実行して、既存の Linux DSVM からコンピューティング ターゲットを作成します。
+**推定所要時間**: AmlCompute ターゲットの作成には約 5 分かかります。
 
 ```python
-from azureml.core.compute import ComputeTarget, RemoteCompute 
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
 
-attach_config = RemoteCompute.attach_configuration(username='<username>',
-                                                   address='<ip_address_or_fqdn>',
-                                                   ssh_port=22,
-                                                   private_key_file='./.ssh/id_rsa')
-compute_target = ComputeTarget.attach(workspace=ws,
-                                      name='attached-vm',
-                                      attach_configuration=attach_config)
+amlcompute_cluster_name = "automlcl" #Name your cluster
+provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2", 
+                                                            # for GPU, use "STANDARD_NC6"
+                                                            #vm_priority = 'lowpriority', # optional
+                                                            max_nodes = 6)
 
-compute_target.wait_for_completion(show_output=True)
+compute_target = ComputeTarget.create(ws, amlcompute_cluster_name, provisioning_config)
+    
+# Can poll for a minimum number of nodes and for a specific timeout.
+# If no min_node_count is provided, it will use the scale settings for the cluster.
+compute_target.wait_for_completion(show_output = True, min_node_count = None, timeout_in_minutes = 20)
 ```
 
 リモート コンピューティング ターゲットとして `compute_target` オブジェクトを使用できるようになりました。
+
+クラスター名には次の制限があります。
++ 64 文字未満にする必要があります。  
++ 次の文字は使用できません。`\` ~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
 
 ## <a name="access-data-using-getdata-file"></a>get_data ファイルを使用してデータにアクセスする
 
@@ -161,7 +126,7 @@ automl_settings = {
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = dsvm_compute,
+                             compute_target = compute_target,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                             )
@@ -175,7 +140,7 @@ automl_config = AutoMLConfig(task='classification',
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = dsvm_compute,
+                             compute_target = compute_target,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                              model_explainability=True,
@@ -291,7 +256,7 @@ print(per_class_imp)
 
 ## <a name="example"></a>例
 
-[how-to-use-azureml/automated-machine-learning/remote-execution/auto-ml-remote-execution.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-execution/auto-ml-remote-execution.ipynb) ノートブックは、この記事の概念を示しています。 
+[how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) ノートブックは、この記事の概念を示しています。 
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

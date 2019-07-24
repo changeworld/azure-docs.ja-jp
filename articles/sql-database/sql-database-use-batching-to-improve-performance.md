@@ -13,11 +13,11 @@ ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: e76b5ecd3d6401c317f6500ec376fc25d3fa55b8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997692"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60331130"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法
 
@@ -98,16 +98,16 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 **オンプレミスから Azure へ**:
 
-| 操作 | トランザクションなし (ミリ秒) | トランザクションあり (ミリ秒) |
+| Operations | トランザクションなし (ミリ秒) | トランザクションあり (ミリ秒) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1,000 |128852 |102917 |
 
-**Azure から Azure へ (同じデータ センター)**:
+**Azure から Azure へ (同じデータ センター)** :
 
-| 操作 | トランザクションなし (ミリ秒) | トランザクションあり (ミリ秒) |
+| Operations | トランザクションなし (ミリ秒) | トランザクションあり (ミリ秒) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -194,7 +194,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 以下の表は、テーブル値パラメーターの使用に関するアドホック テストの結果です (単位はミリ秒)。
 
-| 操作 | オンプレミスから Azure へ (ミリ秒) | 同じ Azure データセンター (ミリ秒) |
+| Operations | オンプレミスから Azure へ (ミリ秒) | 同じ Azure データセンター (ミリ秒) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -234,7 +234,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 次の表は、 **SqlBulkCopy** を使ったバッチ処理のパフォーマンスを示すアドホック テストの結果です (単位はミリ秒)。
 
-| 操作 | オンプレミスから Azure へ (ミリ秒) | 同じ Azure データセンター (ミリ秒) |
+| Operations | オンプレミスから Azure へ (ミリ秒) | 同じ Azure データセンター (ミリ秒) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -279,7 +279,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 次の表は、このタイプの挿入ステートメントのパフォーマンスを示すアドホック テストの結果です (単位はミリ秒)。
 
-| 操作 | テーブル値パラメーター (ミリ秒) | 単一ステートメントでの挿入 (ミリ秒) |
+| Operations | テーブル値パラメーター (ミリ秒) | 単一ステートメントでの挿入 (ミリ秒) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |

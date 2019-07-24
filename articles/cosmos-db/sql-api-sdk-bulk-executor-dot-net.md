@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB は:Bulk Executor .NET API、SDK、およびリソース
+title: Azure Cosmos DB:Bulk Executor .NET API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB Bulk Executor .NET SDK の各バージョン間の変更など、Bulk Executor .NET API と SDK に関するあらゆる詳細を提供します。
 author: tknandu
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 4f2d8b3246901f139695998224dfe036cccb9833
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74eddadd7fd967daa1eebb9d7cb223fdc708025f
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855786"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66471428"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET Bulk Executor ライブラリ:ダウンロード情報 
 
@@ -42,6 +42,18 @@ ms.locfileid: "57855786"
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
+
+* グラフの Bulk Executor で頂点とエッジに ttl を受け付けるためのサポートが追加されました。
+
+### <a name="a-name220-preview2220-preview2"></a><a name="2.2.0-preview2"/>2.2.0-preview2
+
+* ゲートウェイ モードで実行されているとき Azure Cosmos DB のエラスティック スケーリング中に例外が発生する問題を修正しました。 この修正により 1.4.1 リリースと機能的に同等になります。
+
+### <a name="a-name210-preview2210-preview2"></a><a name="2.1.0-preview2"/>2.1.0-preview2
+
+* SQL API アカウントで削除対象のパーティション キーとドキュメント ID のタプルを受け付けるための BulkDelete のサポートが追加されました。 この変更により 1.4.0 リリースと機能的に同等になります。
+
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * .NET Standard 2.0 をサポートするために、MongoBulkExecutor が含まれています。 この機能により、リリース 1.3.0 と同水準の機能を実現しつつ、ターゲット フレームワークとして .NET Standard 2.0 のサポートが追加されます。
@@ -50,10 +62,24 @@ ms.locfileid: "57855786"
 
 * BulkExecutor ライブラリを .NET Core アプリケーションに対応させるため、サポートされるターゲット フレームワークの 1 つとして .NET Standard 2.0 を追加しました。
 
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
+
+* 最新バージョンの Azure Cosmos DB .NET SDK (2.4.0) を使用するように Bulk Executor が更新されました。
+
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
+
+* グラフの Bulk Executor で頂点とエッジに ttl を受け付けるためのサポートが追加されました。
+
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
+
+* ゲートウェイ モードで実行されているとき Azure Cosmos DB のエラスティック スケーリング中に例外が発生する問題を修正しました。
+
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
+
+* SQL API アカウントで削除対象のパーティション キーとドキュメント ID のタプルを受け付けるための BulkDelete のサポートが追加されました。
+
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-* SQL API アカウント向けに BulkDelete 操作のオーバーロードを追加し、パーティション キー、削除対象のドキュメント ID のタプルを受け取ることができるようにしました。
-* SQL API アカウント向けに BulkDelete 操作のオーバーロードを追加し、パーティション キーの値を指定してそのパーティション キーが含まれる RequestOptions を受け取ることができるようにしました。また、削除対象のドキュメントを指定して入力クエリの中でフィルターとして使用することもできます。
 * BulkExecutor により使用されるユーザー エージェントにフォーマットの問題が発生する原因となっていた問題を修正しました。
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0

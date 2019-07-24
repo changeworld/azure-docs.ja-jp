@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 45cbb26eb74dd78bf46a6b148a32a7762bb31fbc
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 730ecd306bf33709ed5d9fa334b64f7cd7a482dc
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696873"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066486"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight 上の Apache Spark で Application Insights テレメトリ ログを分析する
 
@@ -26,9 +26,6 @@ HDInsight 上の [Apache Spark](https://spark.apache.org/) を使用して Appli
 * Application Insights を使用するように構成済みのアプリケーション。
 
 * Linux ベースの HDInsight クラスターの作成に慣れていること。 詳細については、[HDInsight 上の Apache Spark の作成](apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
-
-  > [!IMPORTANT]  
-  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * Web ブラウザー。
 
@@ -48,7 +45,7 @@ HDInsight 上の [Apache Spark](https://spark.apache.org/) を使用して Appli
 
 Application Insights は、BLOB にテレメトリ情報を連続してエクスポートするように構成できます。 こうすることで、HDInsight が BLOB に格納されたデータを読み取ることができます。 ただし、守る必要のある要件がいくつかあります。
 
-* **[場所]**:ストレージ アカウントと HDInsight が別の場所にあると、待ち時間が長くなることがあります。 また、地域間のデータ移動に対して料金が適用されるので、コストも大きくなります。
+* **[場所]** :ストレージ アカウントと HDInsight が別の場所にあると、待ち時間が長くなることがあります。 また、地域間のデータ移動に対して料金が適用されるので、コストも大きくなります。
 
     > [!WARNING]  
     > HDInsight 以外の場所でストレージ アカウントを使用することはできません。
@@ -77,7 +74,7 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
     ![クラスター ダッシュボード](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
 
-2. Jupyter のページの右上隅にある **[New]** をクリックし、**[PySpark]** を選択します。 新しいブラウザーのタブが開き、Python ベースの Jupyter Notebook が表示されます。
+2. Jupyter のページの右上隅にある **[New]** をクリックし、 **[PySpark]** を選択します。 新しいブラウザーのタブが開き、Python ベースの Jupyter Notebook が表示されます。
 
 3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のテキストを入力します。
 
@@ -219,7 +216,7 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 1. [Azure ポータル](https://portal.azure.com)で、HDInsight クラスター上の Spark を選択します。 **[クイック リンク]** セクションで **[クラスター ダッシュボード]** を選択してから、[クラスター ダッシュボード] セクションで **[Jupyter Notebook]** を選択します。
 
     ![クラスター ダッシュボード](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
-2. Jupyter のページの右上隅にある **[新規作成]** をクリックし、**[Scala]** を選択します。 新しいブラウザーのタブが開き、Scala ベースの Jupyter Notebook が表示されます。
+2. Jupyter のページの右上隅にある **[新規作成]** をクリックし、 **[Scala]** を選択します。 新しいブラウザーのタブが開き、Scala ベースの Jupyter Notebook が表示されます。
 3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のテキストを入力します。
 
    ```scala

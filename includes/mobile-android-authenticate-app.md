@@ -1,4 +1,16 @@
-
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: crdun
+ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181862"
+---
 1. Android Studio でプロジェクトを開きます。
 
 2. Android Studio の **Project Explorer** で `ToDoActivity.java` ファイルを開き、次の import ステートメントを追加します。
@@ -50,7 +62,7 @@
     このコードで、Google 認証プロセスを処理するメソッドが作成されます。 ダイアログに認証されたユーザーの ID が表示されます。 認証に成功した場合のみ続行できます。
 
     > [!NOTE]
-    > Google 以外の ID プロバイダーを使用している場合は、**login** メソッドに渡す値を、_MicrosoftAccount_、_Facebook_、_Twitter_、_windowsazureactivedirectory_ のいずれかに変更します。
+    > Google 以外の ID プロバイダーを使用している場合は、**login** メソッドに渡される値を次のいずれかの値に変更します。_MicrosoftAccount_、_Facebook_、_Twitter_、または _windowsazureactivedirectory_。
 
 4. **onCreate** メソッドで、`MobileServiceClient` オブジェクトをインスタンス化するコードの後に、次のコード行を追加します。
 

@@ -7,13 +7,13 @@ manager: pabutler
 ms.service: marketplace
 ms.topic: article
 ms.date: 09/22/2018
-ms.author: qianw211
-ms.openlocfilehash: 9f4ad704de83e5971b5bc10083aefeec5d28374b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.author: pabutler
+ms.openlocfilehash: 3010b63c7c4c575d915789c19b60710194c79196
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937849"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874666"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
@@ -84,7 +84,7 @@ Azure Marketplace で認定および発行されるためには、IoT Edge モ�
 
 - [Microsoft Partner Network に登録する](https://partner.microsoft.com/membership)
 - [Microsoft アカウント](https://account.microsoft.com/account/)を作成する (Azure Marketplace 取引オファーに必要です。他のユーザーには推奨)。
-- [Marketplace 登録フォーム](https://azuremarketplace.microsoft.com/sell/signup)を送信する
+- [Marketplace 登録フォーム](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)を送信する 詳細については、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)方法を参照してください。
 
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 

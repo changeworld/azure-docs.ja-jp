@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 04/12/2019
 ms.author: banders
 ms.openlocfilehash: bcbf5ab48f3476a911fc4ade1eb0c395fb335d43
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002733"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60370231"
 ---
 # <a name="azure-software-plan-discount"></a>Azure ソフトウェア プラン割引
 
@@ -29,7 +29,7 @@ VM をシャット ダウンするときに、割引は別の一致する VM (�
 
 ## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
 
-予約割引は、"*使わなければ駄目になる*" です。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。
+予約割引は、"*使用しないと失われます*"。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。
 
 リソースをシャットダウンすると、予約割引は、指定されたスコープ内の別の一致するリソースに自動的に適用されます。 指定されたスコープ内に一致するリソースが見つからない場合、予約済み時間は*失われます*。
 

@@ -16,11 +16,11 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e3145d0faaa3aecb90b582b3b6ef0063572ff43
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175967"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60430779"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>チュートリアル:GoToMeeting を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -57,11 +57,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-account-provisioning"></a>自動ユーザー アカウント プロビジョニングを構成するには:
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-1. シングル サインオンのために GoToMeeting を既に構成している場合は、検索フィールドで GoToMeeting のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **GoToMeeting** を検索します。 検索結果から GoToMeeting を選択してアプリケーションの一覧に追加します。
+1. シングル サインオンのために GoToMeeting を既に構成している場合は、検索フィールドで GoToMeeting のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **GoToMeeting** を検索します。 検索結果から GoToMeeting を選択してアプリケーションの一覧に追加します。
 
-1. GoToMeeting のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+1. GoToMeeting のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
@@ -73,7 +73,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     b. **[GoToMeeting 管理パスワード]** ボックスに、管理者のパスワードを入力します。
 
-1. Azure Portal で、**[テスト接続]** をクリックして Azure AD が GoToMeeting アプリに接続できることを確認します。 接続が失敗した場合、使用中の GoToMeeting アカウントに Team Admin アクセス許可があることを確認して、**"管理者資格情報"** の手順をもう一度試してください。
+1. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が GoToMeeting アプリに接続できることを確認します。 接続が失敗した場合、使用中の GoToMeeting アカウントに Team Admin アクセス許可があることを確認して、 **"管理者資格情報"** の手順をもう一度試してください。
 
 1. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 

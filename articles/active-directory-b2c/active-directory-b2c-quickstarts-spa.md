@@ -2,20 +2,20 @@
 title: クイック スタート - Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定 | Microsoft Docs
 description: Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル シングルページ アプリケーションを実行します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.date: 10/24/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2e5f16fa42e86442f6600e375df343f3b6369986
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 47df2cbdf0b083cf672353471d1ef51e03507475
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190382"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835333"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 ## <a name="prerequisites"></a>前提条件
 
 - **[ASP.NET および Web の開発]** ワークロードを含む [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
--  [Node.js](https://nodejs.org/en/download/)
+- [Node.js](https://nodejs.org/en/download/)
 - Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。
 - [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-1. Node.js のコマンド プロンプトから次のコマンドを実行してサーバーを起動します。 
+1. Node.js のコマンド プロンプトから次のコマンドを実行してサーバーを起動します。
 
     ```
     cd active-directory-b2c-javascript-msal-singlepageapp
@@ -56,23 +56,23 @@ Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネ
 
 1. **[Login]\(ログイン\)** をクリックしてワークフローを開始します。
 
-    ![ブラウザーでのサンプル アプリ](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
+    ![ブラウザーに表示されたシングルページ アプリケーションのサンプル アプリ](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
-    このサンプルは、ソーシャル ID プロバイダーを使用する方法や、メール アドレスを使用してローカル アカウントを作成する方法など、複数のサインアップ方法に対応しています。 このクイック スタートでは、Facebook、Google、Microsoft、または Twitter のいずれかのソーシャル ID プロバイダー アカウントを使用します。 
+    このサンプルは、ソーシャル ID プロバイダーを使用する方法や、メール アドレスを使用してローカル アカウントを作成する方法など、複数のサインアップ方法に対応しています。 このクイック スタートでは、Facebook、Google、Microsoft、または Twitter のいずれかのソーシャル ID プロバイダー アカウントを使用します。
 
 2. このサンプル Web アプリでは、Wingtip Toys という架空のブランドのカスタム ログイン ページが Azure AD B2C により表示されます。 ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。
 
-    ![サインインまたはサインアップ用のプロバイダー](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+    ![ID プロバイダー ボタンが表示されたサインインまたはサインアップ ページ](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
-    ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) し、アプリケーションがそのソーシャル アカウントから情報を読み取ることを承認します。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
+    ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) し、アプリケーションがそのソーシャル アカウントから情報を読み取ることを承認します。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。
 
 3. ID プロバイダーのサインイン プロセスを完了します。
 
 ## <a name="access-a-protected-api-resource"></a>保護された API リソースにアクセスする
 
-**[Call Web API]\(Web API の呼び出し\)** をクリックすると、Web API 呼び出しから表示名が JSON オブジェクトとして返されます。 
+**[Call Web API]\(Web API の呼び出し\)** をクリックすると、Web API 呼び出しから表示名が JSON オブジェクトとして返されます。
 
-![Web API の応答](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
+![Web API の応答が表示されているブラウザーのサンプル アプリケーション](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
 
 このシングルページ アプリケーション サンプルは、保護された Web API リソースへの要求にアクセス トークンを追加します。
 

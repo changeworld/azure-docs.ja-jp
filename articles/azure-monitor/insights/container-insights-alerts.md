@@ -11,26 +11,27 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2019
+ms.date: 04/26/2019
 ms.author: magoedte
-ms.openlocfilehash: bbd7c733c7c089328d2fbe016426fe9de3a6b5ce
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 46ac6794272728069d50479f8cd097185bfeeb1a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998653"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65072386"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor でパフォーマンスの問題に関するアラートを設定する方法
 コンテナーに対する Azure Monitor は、Azure Container Instances にデプロイされているか、Azure Kubernetes Service (AKS) でホストされているマネージド Kubernetes クラスターにデプロイされている、コンテナー ワークロードのパフォーマンスを監視します。
 
 この記事では、以下の状況のアラートを有効にする方法について説明します。
 
-* クラスター ノードで CPU またはメモリの使用率が定義済みのしきい値を超えたとき
-* 対応するリソースに設定されている上限と比較して、コントローラー内のいずれかのコンテナーで CPU またはメモリの使用率が定義済みのしきい値を超えたとき
-* *NotReady* 状態のノード数
-*  *Failed*、*Pending*、*Unknown*、*Running*、*Succeeded* の各ポッドフェーズ数
+- クラスター ノードで CPU またはメモリの使用率がしきい値を超えたとき
+- 対応するリソースに設定されている上限と比較して、コントローラー内のいずれかのコンテナーで CPU またはメモリの使用率がしきい値を超えたとき
+- *NotReady* 状態のノード数
+- *Failed*、*Pending*、*Unknown*、*Running*、*Succeeded* の各ポッドフェーズ数
+- クラスター ノードで空きディスク領域がしきい値を超えたとき 
 
-クラスター ノードで CPU またはメモリの使用率が高いことを警告するには、提供されているクエリを使用して、メトリック アラートまたはメトリック測定アラートを作成します。 メトリック アラートは、ログ アラートよりも待ち時間が短くなります。 しかし、ログ アラートでは、高度なクエリと、より洗練された機能が利用できます。 ログ アラートのクエリは、*now* 演算子を使用して日時を現在と比較し、1 時間戻ります  (コンテナーに対する Azure Monitor では、すべての日付が協定世界時 (UTC) 形式で格納されます)。
+クラスター ノードで CPU またはメモリの使用率が高いこと、またはクラスター ノードで空きディスク領域が少ないことを警告するには、メトリック アラートまたはメトリック測定アラートを作成するために提供されているクエリを使用します。 メトリック アラートは、ログ アラートよりも待ち時間が短くなります。 しかし、ログ アラートでは、高度なクエリと、より洗練された機能が利用できます。 ログ アラートのクエリは、*now* 演算子を使用して日時を現在と比較し、1 時間戻ります (コンテナーに対する Azure Monitor では、すべての日付が協定世界時 (UTC) 形式で格納されます)。
 
 Azure Monitor のアラートに詳しくない場合は、事前に「[Microsoft Azure のアラートの概要](../platform/alerts-overview.md)」を参照してください。 ログ クエリを使用したアラートの詳細については、「[Azure Monitor でのログ アラート](../platform/alerts-unified-log.md)」を参照してください。 メトリック アラートの詳細については、[Azure Monitor でのメトリック アラート](../platform/alerts-metric-overview.md)に関するページを参照してください。
 
@@ -255,6 +256,33 @@ let endDateTime = now();
 >[!NOTE]
 >*Pending*、*Failed*、*Unknown* などの特定のポッド フェーズについてのアラートを生成するには、クエリの最後の行を変更します。 たとえば、*FailedCount* についてのアラートを生成するには、次のようにします。 <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
+次のクエリは、空き領域の使用が 90% を超えるクラスター ノードのディスクを返します。 クラスター ID を取得するには、まず、次のクエリを実行し、`ClusterId` プロパティの値をコピーします。
+
+```kusto
+InsightsMetrics
+| extend Tags = todynamic(Tags)            
+| project ClusterId = Tags['container.azm.ms/clusterId']   
+| distinct tostring(ClusterId)   
+``` 
+
+```kusto
+let clusterId = '<cluster-id>';
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+InsightsMetrics
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| where Origin == 'container.azm.ms/telegraf'            
+| where Namespace == 'disk'            
+| extend Tags = todynamic(Tags)            
+| project TimeGenerated, ClusterId = Tags['container.azm.ms/clusterId'], Computer = tostring(Tags.hostName), Device = tostring(Tags.device), Path = tostring(Tags.path), DiskMetricName = Name, DiskMetricValue = Val   
+| where ClusterId =~ clusterId       
+| where DiskMetricName == 'used_percent'
+| summarize AggregatedValue = max(DiskMetricValue) by bin(TimeGenerated, trendBinSize)
+| where AggregatedValue >= 90
+```
+
 ## <a name="create-an-alert-rule"></a>アラート ルールを作成する
 前述のログ検索ルールのいずれかを使用して、Azure Monitor でログ アラートを作成するには、次の手順に従います。  
 
@@ -263,7 +291,7 @@ let endDateTime = now();
 >
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のウィンドウで、**[モニター]** を選択します。 **[分析情報]** で **[コンテナー]** を選択します。
+2. 左側のウィンドウで、 **[モニター]** を選択します。 **[分析情報]** で **[コンテナー]** を選択します。
 3. **[監視対象クラスター]** タブで、一覧からクラスターを選択します。
 4. 左側のウィンドウの **[監視]** で **[ログ]** を選択して、Azure Monitor のログ ページを開きます。 このページを使用して、Azure Log Analytics クエリを記述し、実行することができます。
 5. **[ログ]** ページで **[+ 新しいアラート ルール]** を選択します。
@@ -272,14 +300,14 @@ let endDateTime = now();
 8. 次のようにアラートを構成します。
 
     1. **[基準]** ドロップダウン リストで **[メトリック測定]** を選択します。 メトリック測定では、クエリの対象となったオブジェクトのうち、指定したしきい値を上回っている値の各オブジェクトについて、アラートが生成されます。
-    1. **[条件]** で **[より大きい]** を選択し、最初の基準となる **[しきい値]** として「**75**」を入力します。 または、独自の条件を満たす別の値を入力します。
-    1. **[アラートをトリガーする基準]** セクションで、**[連続する違反]** を選択します。 ドロップダウン リストで **[より大きい]** を選択し、「**2**」と入力します。
-    1. コンテナーの CPU またはメモリの使用率に関するアラートを構成するには、**[集計]** で **[ContainerName]** を選択します。 
-    1. **[評価基準]** セクションで、**[期間]** の値を **[60 分]** に設定します。 ルールは 5 分ごとに実行され、現在の時刻から過去 1 時間以内に作成されたレコードが返されます。 期間の枠を広く設定すると、データ待ち時間が発生する原因になります。 また、クエリが必ずデータを返すため、検知漏れによってアラートが発生しない事態を回避することができます。
+    1. **[条件]** で **[より大きい]** を選択し、CPU およびメモリ使用率のアラートの最初の基準となる **[しきい値]** として「**75**」と入力します。 ディスク領域不足のアラートについては、「**90**」と入力します。 または、独自の条件を満たす別の値を入力します。
+    1. **[アラートをトリガーする基準]** セクションで、 **[連続する違反]** を選択します。 ドロップダウン リストで **[より大きい]** を選択し、「**2**」と入力します。
+    1. コンテナーの CPU またはメモリの使用率に関するアラートを構成するには、 **[集計]** で **[ContainerName]** を選択します。 クラスター ノードのディスク領域不足のアラートを構成するには、 **[ClusterId]** を選択します。
+    1. **[評価基準]** セクションで、 **[期間]** の値を **[60 分]** に設定します。 ルールは 5 分ごとに実行され、現在の時刻から過去 1 時間以内に作成されたレコードが返されます。 期間の枠を広く設定すると、データ待ち時間が発生する原因になります。 また、クエリが必ずデータを返すため、検知漏れによってアラートが発生しない事態を回避することができます。
 
 9. **[完了]** を選択して、アラート ルールを完成させます。
 10. **[アラート ルール名]** フィールドに名前を入力します。 アラートの詳細情報を提供する **[説明]** を指定します。 提供されるオプションの中から、適切な重大度レベルを選択します。
-11. アラート ルールをすぐにアクティブにするには、**[ルールの作成時に有効にする]** の既定値をそのまま使用します。
+11. アラート ルールをすぐにアクティブにするには、 **[ルールの作成時に有効にする]** の既定値をそのまま使用します。
 12. 既存の**アクション グループ**を選択するか、新しいグループを作成します。 この手順により、アラートがトリガーされるたびに同じアクションが実行されます。 お客様の IT または DevOps オペレーション チームでのインシデントの管理方法に基づいて構成してください。
 13. **[アラート ルールの作成]** を選択してアラート ルールを完成させます。 すぐに実行が開始されます。
 

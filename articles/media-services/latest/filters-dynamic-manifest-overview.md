@@ -11,32 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 06/11/2019
 ms.author: juliako
-ms.openlocfilehash: 21fb2b84fd58fb7cca7551ee1cef0c79179cfa40
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: a8e4228340917fe26ca5999bd70d122e31cd3c43
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467142"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797608"
 ---
-# <a name="dynamic-manifests"></a>動的マニフェスト
+# <a name="pre-filtering-manifests-with-dynamic-packager"></a>Dynamic Packager でマニフェストにフィルターを事前適用する
 
-Media Services には、定義済みのフィルターに基づいた**動的マニフェスト**が用意されています。 フィルターを定義しておくと ([フィルターの定義](filters-concept.md)に関する記事を参照)、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーム配信できるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、アダプティブ ビットレート ストリーミング プロトコル(Apple HTTP Live Streaming (HLS)、MPEG DASH、Smooth Streaming) に適用できます。 
+アダプティブ ビットレート ストリーミング コンテンツをデバイスに配信するときは、多くの場合、特定のデバイス機能または利用可能なネットワーク帯域幅をターゲットにするために、マニフェストの複数のバージョンを公開する必要があります。 [Dynamic Packager](dynamic-packaging-overview.md) を使用すると、特定のコーデック、解像度、ビットレート、およびオーディオ トラックの組み合わせをその場で除外できるフィルターを指定できるので、複数のコピーを作成する必要がなくなります。 必要なのは、ターゲット デバイス (iOS、Android、SmartTV、またはブラウザー) とネットワーク機能 (高帯域幅、モバイル、または低帯域幅の各シナリオ) に合わせて構成されたフィルターの特定のセットを含む新しい URL を発行することだけです。 この場合、クライアントはクエリ文字列によって (利用可能な[アセット フィルターまたはアカウント フィルター](filters-concept.md)を指定して) コンテンツのストリーミングを操作したり、フィルターを使用してストリームの特定のセクションをストリーミングしたりできます。
 
-次の表に、フィルターを含んだ URL の例をいくつか示します。
+いくつかの配信シナリオでは、ユーザーが特定のトラックにアクセスできないようにする必要があります。 たとえば、HD トラックを含むマニフェストを、特定のレベルの利用者には発行したくない場合があります。 または、追加トラックのメリットを受けない特定のデバイスへの配信コストを削減するために、特定のアダプティブ ビットレート (ABR) トラックを削除したい場合があります。 この場合、あらかじめ作成しておいたフィルターのリストを、作成時に[ストリーミング ロケーター](streaming-locators-concept.md)に関連付けることができます。 この場合、コンテンツのストリーミング方法はクライアントによって操作できず、**ストリーミング ロケーター**によって定義されます。
 
-|Protocol|例|
-|---|---|
-|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|スムーズ ストリーミング|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
+[ストリーミング ロケーターでのフィルター](filters-concept.md#associating-filters-with-streaming-locator)の指定に、クライアントが URL で指定する追加のデバイス固有フィルターを加えた、複合的なフィルタリングを実行できます。 これは、メタデータやイベント ストリーム、オーディオ言語、説明的なオーディオ トラックなどの追加トラックを制限するために役立つことがあります。 
+
+このように、ストリームにさまざまなフィルターを指定できることで、強力な**動的マニフェスト**操作ソリューションが提供され、ターゲット デバイスの複数のユースケース シナリオをターゲットにすることが可能になります。 このトピックでは、**動的マニフェスト**に関連する概念を説明し、この機能を使用するシナリオの例を示します。
 
 > [!NOTE]
-> アセットやその既定のマニフェストが動的マニフェストによって変更されることはありません。 クライアントはストリームにフィルターを使用するかしないかを選択できます。 
+> アセットやその既定のマニフェストが動的マニフェストによって変更されることはありません。 
 > 
-
-このトピックでは、**動的マニフェスト**に関連する概念を説明し、この機能を使用するシナリオの例を示します。
 
 ## <a name="manifests-overview"></a>マニフェストの概要
 
@@ -52,9 +48,19 @@ REST の例については、[REST を使用したファイルのアップロー
 
 ### <a name="monitor-the-bitrate-of-a-video-stream"></a>ビデオ ストリームのビットレートを監視する
 
-[Azure Media Player のデモ ページ](https://aka.ms/amp)を使用して、ビデオ ストリームのビットレートを監視します。 デモ ページの **[Diagnostics]\(診断\)** タブに診断情報が表示されます。
+[Azure Media Player のデモ ページ](https://ampdemo.azureedge.net/azuremediaplayer.html)を使用して、ビデオ ストリームのビットレートを監視します。 デモ ページの **[Diagnostics]\(診断\)** タブに診断情報が表示されます。
 
 ![Azure Media Player の診断][amp_diagnostics]
+ 
+### <a name="examples-urls-with-filters-in-query-string"></a>次に例を示します。クエリ文字列にフィルターを含む URL
+
+フィルターは、アダプティブ ビットレート ストリーミング プロトコルHLS、MPEG-DASH、および Smooth Streaming) に適用できます。 次の表に、フィルターを含んだ URL の例をいくつか示します。
+
+|Protocol|例|
+|---|---|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|スムーズ ストリーミング|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="rendition-filtering"></a>演奏フィルター処理
 
@@ -122,10 +128,6 @@ REST の例については、[REST を使用したファイルのアップロー
 
 詳細については、 [このブログ](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) をご覧ください。
 
-## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
-
-資産またはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)は、このフィルターの一覧を、クライアントが URL で指定するフィルターとともに適用します。 この組み合わせでは、[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。これは、URL のフィルターとストリーミング ロケーターで指定したフィルターに基づきます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
-
 ## <a name="considerations-and-limitations"></a>考慮事項と制限事項
 
 - VOD フィルターの場合、**forceEndTimestamp**、**presentationWindowDuration**、**liveBackoffDuration** の値は設定しないでください。 これらは、ライブ フィルターのシナリオでのみ使用します。 
@@ -136,7 +138,6 @@ REST の例については、[REST を使用したファイルのアップロー
     
     - アセットのトラックのプロパティを調べるには、[マニフェスト ファイルを取得して調査](#get-and-examine-manifest-files)します。
     - アセット フィルターのタイムスタンプのプロパティを設定するための数式は次のとおりです。 <br/>startTimestamp = &lt;マニフェストにおける開始時間&gt; +  &lt;所定のフィルター開始時間 (秒)&gt; * タイムスケール
-
 
 ## <a name="next-steps"></a>次の手順
 

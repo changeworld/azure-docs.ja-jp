@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: d1c1ed7388ff55e4f17559742054cea973f65ba7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: f0b0ff3ff4ac742a7e850798c736eb31098f66e8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192291"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65966384"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -118,3 +118,15 @@ AKS クラスターを別のサブスクリプションに移したり、サブ�
 
 * AKS *MC_* リソース グループ名は、リソース グループ名とリソース名を結合します。 `MC_resourceGroupName_resourceName_AzureRegion` の自動生成された構文は、80 文字以内にする必要があります。 必要な場合は、リソース グループ名または AKS クラスター名の長さを短くします。
 * *dnsPrefix* の最初と最後は英数字の値にする必要があります。 有効な文字には英数字の値とハイフン (-) が含まれます。 *dnsPrefix* にはピリオド (.) などの特殊文字を含めることはできません。
+
+## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>クラスターを作成、更新、スケーリング、削除、またはアップグレードしようとすると、別の操作が進行中のためその操作は許可されませんというエラーを受け取ります。
+
+*このトラブルシューティングの支援は、aka.ms/aks-pending-operation に基づいています*
+
+クラスター操作は、前の操作がまだ進行中のときには制限されます。 クラスターの詳細な状態を取得するには、`az aks show -g myResourceGroup -n myAKSCluster -o table` コマンドを使用します。 必要に応じて、独自のリソース グループと AKS クラスター名を使用します。
+
+次のクラスター状態の出力に基づきます。
+
+* クラスターが、 *[成功]* または *[失敗]* 以外のプロビジョニング状態の場合は、操作 (*アップグレード / 更新 / 作成 / スケーリング / 削除 / 移行*) が終了するまで待ってください。 前の操作が完了したら、最新のクラスターの操作を再試行します。
+
+* クラスターでアップグレードが失敗している場合は、 「[クラスターがエラー状態であり、状態が修正されるまで、アップグレードもスケーリングも機能しないというエラーが表示されます](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed)」で概説されている手順に従ってください。

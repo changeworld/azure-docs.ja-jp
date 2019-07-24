@@ -16,18 +16,22 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 95acda60935e82b226a1a0e860b5fa8effb8e47e
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 8e5a7bfc243fc8c797ffc66b2130756567ddc0fb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332134"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65795777"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Azure VM の SQL Server への SQL Server データベースの移行
 
 オンプレミスの SQL Server ユーザー データベースを Azure VM の SQL Server に移行する方法は多数あります。 この記事では、さまざまな方法について簡単に説明し、さまざまなシナリオに最適な方法を紹介します。
 
+
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
+
+  > [!NOTE]
+  > SQL Server 2008 および SQL Server 2008 R2 のオンプレミス インスタンス向け[サポート ライフ サイクルの終了](https://www.microsoft.com/sql-server/sql-server-2008)が近づいています。 サポートを延長するには、SQL Server インスタンスを Azure VM に移行することも、セキュリティ更新プログラムの延長を購入してオンプレミスを維持することもできます。 詳細については、「[Extend support for SQL Server 2008 and 2008 R2 with Azure (Azure での SQL Server 2008 および 2008 R2 のサポート延長)](virtual-machines-windows-sql-server-2008-eos-extend-support.md)」を参照してください
 
 ## <a name="what-are-the-primary-migration-methods"></a>主な移行方法
 主な移行方法は次のとおりです。
@@ -55,7 +59,7 @@ ms.locfileid: "54332134"
 
 次の表に、主な移行方法の一覧を示します。ここでは、それぞれの方法を使用するタイミングとして最適な状況についても説明します。
 
-| 方法 | 移行元データベースのバージョン | 移行先データベースのバージョン | 移行元データベースのバックアップ サイズ制限 | メモ |
+| Method | 移行元データベースのバージョン | 移行先データベースのバージョン | 移行元データベースのバックアップ サイズ制限 | メモ |
 | --- | --- | --- | --- | --- |
 | [圧縮機能を使用してオンプレミスのバックアップの実行し、そのバックアップ ファイルを Azure 仮想マシンに手動でコピーする](#backup-and-restore) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | これは、マシン間でデータベースを移動する際の、十分にテストされた非常にシンプルな手法です。 |
 | [URL へのバックアップを実行し、その URL から Azure 仮想マシンに復元する](#backup-to-url-and-restore) |SQL Server 2012 SP1 CU2 以上 |SQL Server 2012 SP1 CU2 以上 |SQL Server 2016 の場合は 12.8 TBまで、それ以外の場合は 1 TB まで | これは、Azure Storage を使用してバックアップ ファイルを VM に移動するもう 1 つの方法です。 |

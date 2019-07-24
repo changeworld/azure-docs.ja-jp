@@ -12,18 +12,21 @@ ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
-ms.date: 01/04/2019
+ms.date: 06/19/2019
 ms.author: jowargo
-ms.openlocfilehash: c9aadb0dcd5adabed6a6490760282c5201a79000
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f6a6bc9b1d4826796299d073e0edfbfcede948e7
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848679"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67274907"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu での Notification Hubs の使用
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+
+> [!IMPORTANT]
+> このチュートリアルは非推奨です。 
 
 Baidu クラウド プッシュは、プッシュ通知をモバイル デバイスに送信するために使用することのできる中国のクラウド サービスです。
 
@@ -65,11 +68,11 @@ Baidu を使用するには、Baidu アカウントが必要です。 既にア�
 
 Baidu クラウド プッシュ プロジェクトを作成すると、アプリケーション ID、API キー、およびシークレット キーが届きます。
 
-1. [Baidu ポータル]にログインしたら、**[更多>>]** (**詳細**) をクリックします。
+1. [Baidu ポータル]にログインしたら、 **[更多>>]** (**詳細**) をクリックします。
 
     ![登録 - 詳細](./media/notification-hubs-baidu-get-started/BaiduRegistrationMore.png)
 
-2. **[站长与开发者服务]** \(**Web 管理者および開発者向けサービス**\) セクションを下へスクロールし、**[百度云推送]** \(**Baidu クラウド プッシュ**\) をクリックします。
+2. **[站长与开发者服务]** \(**Web 管理者および開発者向けサービス**\) セクションを下へスクロールし、 **[百度云推送]** \(**Baidu クラウド プッシュ**\) をクリックします。
 
     ![Baidu オープン クラウド プラットフォーム](./media/notification-hubs-baidu-get-started/BaiduOpenCloudPlatform.png)
 
@@ -101,7 +104,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6. 通知ハブで **[Notification Services]** を選択し、**[Baidu (Android China)]** を選択します。
+&emsp;&emsp;6. 通知ハブで **[Notification Services]** を選択し、 **[Baidu (Android China)]** を選択します。
 
 &emsp;&emsp;&emsp;&emsp;![Azure Notification Hubs - Baidu](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
@@ -165,7 +168,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
     ![Azure Notification Hubs - Baidu (SDK ライブラリ)](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. プロジェクトの `libs` フォルダーで、`pushervice-x.y.z.jar` ファイルを右クリックし、**[ライブラリとして追加]** を選択して、このライブラリをプロジェクトにインクルードします。
+7. プロジェクトの `libs` フォルダーで、`pushervice-x.y.z.jar` ファイルを右クリックし、 **[ライブラリとして追加]** を選択して、このライブラリをプロジェクトにインクルードします。
 
     ![Azure Notification Hubs - Baidu (ライブラリとして追加)](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 

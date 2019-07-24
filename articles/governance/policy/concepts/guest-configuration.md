@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c11d6519986cf7a0e70d1fe004ef527c3df247d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c98229a28f31ff715f252dc3915ca690e99245ff
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59277727"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979509"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成を理解します。
 
@@ -33,7 +33,7 @@ Azure のリソースを監査し、[修復](../how-to/remediate-resources.md)�
 
 Azure portal からゲストの構成用のリソース プロバイダを登録するには、次の手順を実行します。
 
-1. Azure portal を起動し、**[すべてのサービス]** をクリックします。 **サブスクリプション**を検索して選択します。
+1. Azure portal を起動し、 **[すべてのサービス]** をクリックします。 **サブスクリプション**を検索して選択します。
 
 1. ゲスト構成を有効にするために必要とするサブスクリプションを検索し、クリックします。
 
@@ -58,18 +58,18 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 |オペレーティング システム|検証ツール|メモ|
 |-|-|-|
-| Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
+|Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
 |Linux|[Chef InSpec](https://www.chef.io/inspec/)| ゲスト構成拡張機能によって、Ruby、Python がインストールされます。 |
 
 ### <a name="validation-frequency"></a>検証の頻度
 
-ゲスト構成クライアントは、新しいコンテンツを 5 分ごとにチェックします。 ゲスト割り当てを受信すると、設定が 15 分間隔でチェックされます。 監査が完了するとすぐに、結果がゲスト構成リソース プロバイダーに送信されます。 ポリシー[評価トリガー](../how-to/get-compliance-data.md#evaluation-triggers)が発生すると、マシンの状態がゲスト構成リソース プロバイダーに書き込まれます。 これにより、Azure Policy が Azure Resource Manager のプロパティを評価します。 オンデマンドのポリシー評価により、ゲスト構成リソース プロバイダーから、最新の値が取得されます。 ただし、仮想マシン内の構成の新しい監査はトリガーされません。
+ゲスト構成クライアントは、新しいコンテンツを 5 分ごとにチェックします。 ゲスト割り当てを受信すると、設定が 15 分間隔でチェックされます。 監査が完了するとすぐに、結果がゲスト構成リソース プロバイダーに送信されます。 ポリシー[評価トリガー](../how-to/get-compliance-data.md#evaluation-triggers)が発生すると、マシンの状態がゲスト構成リソース プロバイダーに書き込まれます。 これにより、Azure Policy が Azure Resource Manager のプロパティを評価します。 オンデマンドの Azure Policy 評価により、ゲスト構成リソース プロバイダーから最新の値が取得されます。 ただし、仮想マシン内の構成の新しい監査はトリガーされません。
 
 ### <a name="supported-client-types"></a>サポートされているクライアントの種類
 
 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
 
-|Publisher|Name|バージョン|
+|発行元|名前|バージョン|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -80,7 +80,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 |SUSE|SLES|12 SP3|
 
 > [!IMPORTANT]
-> ゲスト構成は、サポートされる OS を実行しているノードを監査できます。  カスタム イメージを使用する仮想マシンを監査する場合は、**DeployIfNotExists** の定義を複製し、**If** セクションを変更してイメージのプロパティを含める必要があります。
+> ゲスト構成は、サポートされる OS を実行しているノードを監査できます。 カスタム イメージを使用する仮想マシンを監査する場合は、**DeployIfNotExists** の定義を複製し、**If** セクションを変更してイメージのプロパティを含める必要があります。
 
 ### <a name="unsupported-client-types"></a>サポートされていないクライアントの種類
 
@@ -93,9 +93,7 @@ Azure のゲスト構成リソース プロバイダーと通信するには、�
 IP アドレス一覧では、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)をダウンロードできます。 このファイルは毎週更新され、現在デプロイされている範囲と今後変更される IP 範囲が反映されます。 VM がデプロイされているリージョンの IP への送信アクセスのみを許可する必要があります。
 
 > [!NOTE]
-> Azure データセンター IP アドレス XML ファイルには、Microsoft Azure データセンターで使用されている IP アドレス範囲が一覧表示されています。 このファイルには、計算、SQL、およびストレージの範囲が含まれています。
-> 更新されたファイルが毎週投稿されます。 このファイルには、現在デプロイされている範囲と、次に予定されている IP 範囲の変更が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。
-> 新しい XML ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 Azure ExpressRoute ユーザーは、このファイルが、毎月第 1 週に Azure 領域の Border Gateway Protocol (BGP) アドバタイズを更新するために使用されることに注意してください。
+> Azure データセンター IP アドレス XML ファイルには、Microsoft Azure データセンターで使用されている IP アドレス範囲が一覧表示されています。 このファイルには、計算、SQL、およびストレージの範囲が含まれています。 更新されたファイルが毎週投稿されます。 このファイルには、現在デプロイされている範囲と、次に予定されている IP 範囲の変更が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。 新しい XML ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 Azure ExpressRoute ユーザーは、このファイルが、毎月第 1 週に Azure 領域の Border Gateway Protocol (BGP) アドバタイズを更新するために使用されることに注意してください。
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 
@@ -140,7 +138,7 @@ Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<ver
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
-- [ポリシー定義の構造](definition-structure.md)を確認します。
+- 「[Azure Policy の定義の構造](definition-structure.md)」を確認します。
 - 「[Policy の効果について](effects.md)」を確認します。
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。
 - [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)方法を学習します。

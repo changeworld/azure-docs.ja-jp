@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7e90dc00a8e042e48d8016e25dda04c15ce9f619
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670636"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62114075"
 ---
 # <a name="introduction-to-application-groups"></a>アプリケーション グループの概要
 通常、Service Fabric のクラスター リソース マネージャーは、クラスター全体で ([メトリック](service-fabric-cluster-resource-manager-metrics.md)で表される) 負荷を均等に分散することによって、クラスター リソースを管理します。 Service Fabric では、クラスター内のノードの容量が管理され、[容量](service-fabric-cluster-resource-manager-cluster-description.md)によってクラスター全体が管理されます。 メトリックと容量は、非常に多くの種類のワークロードに適していますが、複数の Service Fabric アプリケーションのインスタンスを頻繁に使用するパターンの場合、追加の要件が生じることがあります。 たとえば、次のような場合があります。
@@ -186,7 +186,7 @@ ApplicationLoad クエリでは、アプリケーションで指定されたア�
 * Application Capacity: アプリケーションの負荷の最大許容値。
 
 ## <a name="removing-application-capacity"></a>アプリケーション容量の削除
-アプリケーション容量の各パラメーターは、アプリケーションに対して設定した後で、アプリケーション更新 API または PowerShell コマンドレットを使用して削除できます。 例: 
+アプリケーション容量の各パラメーターは、アプリケーションに対して設定した後で、アプリケーション更新 API または PowerShell コマンドレットを使用して削除できます。 例:
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity

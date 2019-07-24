@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: fed8791fbc7cc7f049a1161fb3903c7f6d42d4e8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b2ae24c0449b009db6fcecdd8a1366ea5154629a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689309"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66257814"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル 
 
@@ -28,25 +28,22 @@ HDInsight Spark クラスターは、アプリケーションをテストする�
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
+HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
 ## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Spark HDInsight での Jupyter Notebook の作成
 
-1. [Azure Portal](https://portal.azure.com/) でクラスターを開きます。  手順については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 クラスターは新しいポータル ブレードで開きます。
+1. [Azure portal](https://portal.azure.com/) で Spark クラスターを選択します。  手順については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 **[概要]** ビューが開きます。
 
-2. **[クイック リンク]** セクションで **[クラスター ダッシュボード]** をクリックして、**[クラスター ダッシュボード]** ブレードを開きます。  **[クイック リンク]** が表示されない場合は、ブレードの左側のメニューで **[概要]** をクリックします。
+2. **[概要]** ビューから、 **[クラスター ダッシュボード]** ボックスの **[Jupyter Notebook]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
-    ![Spark 上の Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook") 
-
-3. **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
-   
+    ![Spark 上の Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上の Jupyter Notebook") 
+  
    > [!NOTE]  
    > ブラウザーで次の URL を開き、Spark クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-
-3. **[新規]** をクリックし、**[Pyspark]**、**[PySpark3]**、または **[Spark]** をクリックして、Notebook を作成します。 Scala アプリケーションには Spark カーネルを、Python2 アプリケーションには PySpark カーネルを、Python3 アプリケーションには PySpark3 カーネルを使用します。
+3. **[新規]** を選択し、 **[Pyspark]** 、 **[PySpark3]** 、または **[Spark]** を選択して、Notebook を作成します。 Scala アプリケーションには Spark カーネルを、Python2 アプリケーションには PySpark カーネルを、Python3 アプリケーションには PySpark3 カーネルを使用します。
    
     ![Spark 上の Jupyter Notebook のカーネル](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook のカーネル") 
 
@@ -86,7 +83,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
    > [!NOTE]  
    > PySpark カーネルによって追加されるマジックに加えて、`%%sh` などの[組み込み IPython](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics) マジックも使用することができます。 `%%sh` マジックは、クラスター ヘッド ノードでスクリプトやコード ブロックを実行する際に使用することができます。
 
-1. **自動視覚化**。 **Pyspark** カーネルは、Hive と SQL のクエリの出力を自動的に視覚化します。 表、円グラフ、面積グラフ、棒グラフなど、さまざまな種類の視覚化から選択できます。
+- **自動視覚化**。 Pyspark カーネルによって、Hive と SQL のクエリの出力が自動的に視覚化されます。 表、円グラフ、面積グラフ、棒グラフなど、さまざまな種類の視覚化から選択できます。
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>%%sql マジックでサポートされるパラメーター
 `%%sql` マジックでは、クエリの実行時に受け取る出力の種類の制御に使用できる、さまざまなパラメーターがサポートされます。 次の表に、出力を示します。
@@ -94,7 +91,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 | パラメーター | 例 | 説明 |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |クエリの結果を [Pandas](https://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化するには、このパラメーターを使用します。 データ フレーム変数の名前は、指定した変数の名前です。 |
-| パラメーター |`-q` |セルの視覚化をオフにするには、これを使用します。 セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、 `-q -o <VARIABLE>`を使用します。 (たとえば、`CREATE TABLE` ステートメントのような、SQL クエリを実行するために) 結果をキャプチャせずに視覚化をオフにする必要がある場合、`-o` 引数を指定せずに `-q` を使用します。 |
+| パラメーター |`-q` |セルの視覚化をオフにするには、これを使用します。 セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、`-q -o <VARIABLE>` を使用します。 (たとえば、`CREATE TABLE` ステートメントのような、SQL クエリを実行するために) 結果をキャプチャせずに視覚化をオフにする必要がある場合、`-o` 引数を指定せずに `-q` を使用します。 |
 | -m |`-m <METHOD>` |ここで **METHOD** は **take** または **sample** です (既定値は **take**)。 メソッドが **take**の場合、カーネルによって、MAXROWS (この表で後述) で指定された結果のデータ セットの先頭から要素が取得されます。 メソッドが **sample** の場合、カーネルによって、この表の次に説明する `-r` パラメーターに従って、データ セットの要素がランダムにサンプリングされます。 |
 | -r |`-r <FRACTION>` |ここで **FRACTION** は、0.0 ～ 1.0 の浮動小数点数です。 SQL クエリのサンプル メソッドが `sample` の場合、カーネルは、結果セットの指定された割合の要素をランダムにサンプリングします。 たとえば、`-m sample -r 0.01` 引数を使用して SQL クエリを実行した場合、結果の行の 1% がランダムにサンプリングされます。 |
 | -n |`-n <MAXROWS>` |**MAXROWS** は整数値です。 カーネルによって、出力行の数が **MAXROWS** に制限されます。 **MAXROWS** が **-1** など、負の数の場合は、結果セット内の行数は制限されません。 |
@@ -107,22 +104,13 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 上記のステートメントによって、次のことが行われます。
 
 * **hivesampletable**からすべてのレコードを選択します。
-* -q を使用しているため、自動視覚化をオフにします。
+* -q を使用しているため、自動視覚化がオフになります。
 * `-m sample -r 0.1 -n 500` を使用しているため、hivesampletable 内の行の 10% がランダムにサンプリングされ、結果セットのサイズが 500 行に制限されます。
 * 最後に、 `-o query2` を使用しているため、 **query2**という名前のデータフレームにも、その出力が保存されます。
 
 ## <a name="considerations-while-using-the-new-kernels"></a>新しいカーネルを使用する場合の考慮事項
 
-どのカーネルを使用する場合でも、Notebook を実行したままにしておくと、クラスターのリソースが消費されます。  これらのカーネルでは、コンテキストがプリセットされているため、Notebook を終了するだけではコンテキストは強制終了されません。そのため、クラスターのリソースは消費され続けます。 Notebook の使用が終了したら、Notebook の **[ファイル]** メニューの **[Close and Halt (閉じて停止する)]** オプションを使用することをお勧めします。これにより、コンテキストが強制終了され、Notebook が終了します。     
-
-## <a name="show-me-some-examples"></a>いくつかの例
-
-Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つのフォルダーが表示されます。
-
-* **PySpark** フォルダーには、新しい **Python** カーネルを使用するサンプル Notebook があります。
-* **Scala** フォルダーには、新しい **Spark** カーネルを使用するサンプル Notebook があります。
-
-**PySpark** または **Spark** フォルダーから **00 - [READ ME FIRST] Spark Magic Kernel Features** Notebook を開くと、利用できるさまざまなマジックを確認できます。 この 2 つのフォルダーにはサンプル ノードブックが他にもあります。Jupyter ノードブックと HDInsight Spark クラスターを利用したさまざまなシナリオの実現方法について学習できます。
+どのカーネルを使用する場合でも、Notebook を実行したままにしておくと、クラスターのリソースが消費されます。  これらのカーネルでは、コンテキストがプリセットされているため、Notebook を終了するだけではコンテキストは強制終了されません。そのため、クラスターのリソースは消費され続けます。 Notebook の使用が終了したら、Notebook の **[ファイル]** メニューの **[Close and Halt (閉じて停止する)]** オプションを使用することをお勧めします。これにより、コンテキストが強制終了され、Notebook が終了します。
 
 ## <a name="where-are-the-notebooks-stored"></a>Notebook の格納場所
 
@@ -133,8 +121,8 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 
 Notebook がストレージ アカウントに保存される方法は、[Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) と互換性があります。 そのため、クラスターに SSH で接続する場合は、次のスニペットに示すようにファイル管理コマンドを使用できます。
 
-    hdfs dfs -ls /HdiNotebooks                               # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
-    hdfs dfs –copyToLocal /HdiNotebooks                    # Download the contents of the HdiNotebooks folder
+    hdfs dfs -ls /HdiNotebooks                            # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
+    hdfs dfs –copyToLocal /HdiNotebooks                   # Download the contents of the HdiNotebooks folder
     hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
 クラスターの既定のストレージ アカウントが Azure Storage か Azure Data Lake Storage かに関わらず、ノートブックはクラスターのヘッド ノード `/var/lib/jupyter` にも保存されます。
@@ -144,7 +132,8 @@ Notebook がストレージ アカウントに保存される方法は、[Apache
 Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome でのみサポートされます。
 
 ## <a name="feedback"></a>フィードバック
-新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。 カーネルが改良されるにつれて、API も変更される可能性があります。 これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。 これらのカーネルの最終リリースの設計に役立ちます。 ご意見やフィードバックは、この記事の下部にある **コメント** のセクションからお寄せください。
+
+新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。 カーネルが改良されるにつれて、API も変更される可能性があります。 これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。 これらのカーネルの最終リリースの設計に役立ちます。 ご意見やフィードバックは、この記事の下部にある **フィードバック**のセクションからお寄せください。
 
 ## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)

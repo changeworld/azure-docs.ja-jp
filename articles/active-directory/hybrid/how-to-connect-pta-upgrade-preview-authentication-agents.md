@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 494ccc3b90b8c249ee935087dcf0f0b5264b02ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172252"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60386773"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory パススルー認証:認証エージェント (プレビュー) のアップグレード
 
@@ -40,7 +40,7 @@ ms.locfileid: "56172252"
 以下の手順に従って、認証エージェントがインストールされている場所を確認します。
 
 1. テナントのグローバル管理者の資格情報を使って、[Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
-2. 左側のナビゲーションで、**[Azure Active Directory]** を選びます。
+2. 左側のナビゲーションで、 **[Azure Active Directory]** を選びます。
 3. **[Azure AD Connect]** を選びます。 
 4. **[パススルー認証]** を選びます。 このブレードには、認証エージェントがインストールされているサーバーが一覧表示されます。
 
@@ -71,7 +71,7 @@ ms.locfileid: "56172252"
 2. **プレビュー バージョンの認証エージェントをアンインストールする**: [この PowerShell スクリプト](https://aka.ms/rmpreviewagent)をダウンロードし、サーバーで管理者として実行します。
 3. **認証エージェントの最新バージョン (バージョン 1.5.389.0 以降) をダウンロードする**: テナントのグローバル管理者の資格情報を使って、[Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。 **[Azure Active Directory] -> [Azure AD Connect] -> [パススルー認証] -> [エージェントのダウンロード]** の順に選びます。 [サービスの条項](https://aka.ms/authagenteula)を受け入れ、最新バージョンの認証エージェントをダウンロードします。 認証エージェントは[ここ](https://aka.ms/getauthagent)からダウンロードすることもできます。
 4. **最新バージョンの認証エージェントをインストールする**: 手順 3 でダウンロードした実行可能ファイルを実行します。 求められたら、テナントのグローバル管理者の資格情報を入力します。
-5. **最新バージョンがインストールされたことを確認する**: 前と同じように **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動し、**[Microsoft Azure AD Connect 認証エージェント]** のエントリがあることを確認します。
+5. **最新バージョンがインストールされたことを確認する**: 前と同じように **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動し、 **[Microsoft Azure AD Connect 認証エージェント]** のエントリがあることを確認します。
 
 >[!NOTE]
 >上記の手順を完了した後に [Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを見ると、各サーバーに**アクティブ**と**非アクティブ**の 2 つの認証エージェントのエントリがあることがわかります。 これは "_予期されること_" です。 **非アクティブ**のエントリは、数日後に自動的に削除されます。
@@ -83,7 +83,7 @@ ms.locfileid: "56172252"
 1. **プレビュー バージョンの認証エージェントをアンインストールする**: [この PowerShell スクリプト](https://aka.ms/rmpreviewagent)をダウンロードし、サーバーで管理者として実行します。
 2. **認証エージェントの最新バージョン (バージョン 1.5.389.0 以降) をダウンロードする**: テナントのグローバル管理者の資格情報を使って、[Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。 **[Azure Active Directory] -> [Azure AD Connect] -> [パススルー認証] -> [エージェントのダウンロード]** の順に選びます。 サービスの条項に同意し、最新バージョンをダウンロードします。
 3. **最新バージョンの認証エージェントをインストールする**: 手順 2 でダウンロードした実行可能ファイルを実行します。 求められたら、テナントのグローバル管理者の資格情報を入力します。
-4. **最新バージョンがインストールされたことを確認する**: 前と同じように **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動し、**[Microsoft Azure AD Connect 認証エージェント]** というエントリがあることを確認します。
+4. **最新バージョンがインストールされたことを確認する**: 前と同じように **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動し、 **[Microsoft Azure AD Connect 認証エージェント]** というエントリがあることを確認します。
 
 >[!NOTE]
 >上記の手順を完了した後に [Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを見ると、各サーバーに**アクティブ**と**非アクティブ**の 2 つの認証エージェントのエントリがあることがわかります。 これは "_予期されること_" です。 **非アクティブ**のエントリは、数日後に自動的に削除されます。

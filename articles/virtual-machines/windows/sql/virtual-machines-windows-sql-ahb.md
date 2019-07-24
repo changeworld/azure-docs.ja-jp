@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3f62557d024f56b7014784b6956f15a950f8cca7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1fb67600ea01629e7bf3ab4c7c470e4727b0e923
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926246"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66393181"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure での SQL Server 仮想マシンのライセンス モデルを変更する方法
 このアーティクルでは、新しい SQL VM リソース プロバイダーである、**Microsoft.SqlVirtualMachine** を使用して Azure での SQL Server 仮想マシンのライセンス モデルを変更する方法を説明します。 SQL Server をホストする仮想マシン (VM) には、従量課金制とライセンス持ち込み (BYOL) の 2 種類のライセンス モデルがあります。 そして現在は、Azure portal、Azure CLI、または PowerShell を使用して、SQL Server VM で使用するライセンス モデルを変更することができます。 
@@ -34,7 +34,7 @@ ms.locfileid: "64926246"
 ## <a name="remarks"></a>解説
 
 
- - CSP のお客様は、最初に従量課金制の VM をデプロイした後、それをライセンス持ち込みに変換することによって、Azure ハイブリッド特典を利用できます。 
+ - Azure Cloud Solution Partner (CSP) のお客様は、最初に従量課金制の VM をデプロイした後、それをライセンス持ち込みに変換することによって、Azure ハイブリッド特典を利用できます。 
  - カスタム SQL Server VM イメージをリソース プロバイダーに登録するとき、ライセンスの種類を 'AHUB' として指定します。 ライセンスの種類を空白のままにするか、'PAYG' を指定すると、登録は失敗します。 
  - SQL Server VM リソースを削除する場合は、イメージのハード コーディングされたライセンス設定に戻ります。 
  - SQL Server VM を可用性セットに追加するには、VM を再作成する必要があります。 そのため、可用性セットに追加されたすべての VM は既定の従量課金制ライセンス タイプに戻ることになります。さらに、AHB をもう一度有効にする必要があります。 
@@ -197,7 +197,7 @@ SQL IaaS 拡張機能は、SQL Server VM を SQL VM リソース プロバイダ
 このエラーは、SQL Server VM で SQL リソース プロバイダーに登録されていないライセンス モデルを変更しようとしたときに発生します。 リソース プロバイダーを[サブスクリプション](#register-sql-vm-resource-provider-with-subscription)に登録した後、SQL Server VM を SQL [リソース プロバイダー](#register-sql-server-vm-with-sql-resource-provider)に登録する必要があります。 
 
 ### <a name="cannot-validate-argument-on-parameter-sku"></a>パラメーター 'Sku' の引数を検証できない
-4.0 より後の Azure PowerShell を使用している場合に、SQL Server VM のライセンス モデルを変更しようとすると、このエラーが発生する可能性があります。Set-AzResource :パラメーター 'Sku' の引数を検証できません。 この引数は null か空です。 null または空でない引数を指定して、コマンドを再度実行してください。
+4\.0 より後の Azure PowerShell を使用している場合に、SQL Server VM のライセンス モデルを変更しようとすると、このエラーが発生する可能性があります。Set-AzResource :パラメーター 'Sku' の引数を検証できません。 この引数は null か空です。 null または空でない引数を指定して、コマンドを再度実行してください。
 このエラーを解決するには、ライセンス モデルを切り替えるときに、前に説明した PowerShell コード スニペットの以下の行のコメントを解除します。
 
 ```powershell

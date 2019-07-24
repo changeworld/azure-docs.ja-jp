@@ -13,10 +13,10 @@ ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 6115d7f70c2c75898b18a27af298a44ca87ca1bd
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66240882"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ
@@ -169,7 +169,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 次の手順に従って、Power BI に接続し、以前に作成したビューをインポートします。
 
 1. Power BI Desktop を起動します。
-2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]**  を選択します。
+2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]** を選択します。
 3. **[データを取得]** ウィンドウで、[Azure SQL Database] を選択します。
 4. データベース ログイン ウィンドウで、サーバー名 (catalog-dpt-&lt;User&gt;.database.windows.net) を入力します。 **[データ接続モード]** の **[インポート]** を選択し、[OK] をクリックします。 
 

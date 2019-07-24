@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 30c97eed5f28631bd2583cbda75df5755ffe2e34
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896161"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626095"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -29,16 +29,16 @@ Azure Functions では、C# および C# スクリプト プログラミング�
 この記事では、既に次の記事に目を通していることを前提とします。
 
 * [Azure Functions の開発者向けガイド](functions-reference.md)
-* [Azure Functions 向けの Visual Studio 2017 Tools](functions-develop-vs.md)
+* [Azure Functions 向けの Visual Studio 2019 Tools](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>関数クラス ライブラリ プロジェクト
 
 Visual Studio では、**Azure Functions** プロジェクト テンプレートは、次のファイルを含む C# クラス ライブラリ プロジェクトを作成します。
 
 * [host.json](functions-host-json.md) - ローカルまたは Azure 内で実行される場合に、プロジェクト内のすべての関数に影響を及ぼす構成設定を格納します。
-* [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。 このファイルにはシークレットが含まれていて、Azure の関数アプリには公開されません。 代わりに、[関数アプリにアプリ設定を追加](functions-develop-vs.md#function-app-settings)する必要があります。
+* [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。 このファイルにはシークレットが含まれていて、Azure の関数アプリには公開されません。 代わりに、[関数アプリにアプリ設定を追加](functions-develop-vs.md#function-app-settings)します。
 
-プロジェクトをビルドするときに、次のようなフォルダー構造がビルドの出力ディレクトリに作成されます。
+プロジェクトをビルドするときに、次の例のようなフォルダー構造がビルドの出力ディレクトリに作成されます。
 
 ```
 <framework.version>
@@ -50,7 +50,7 @@ Visual Studio では、**Azure Functions** プロジェクト テンプレート
  | - host.json
 ```
 
-このディレクトリは、Azure 上で関数アプリにデプロイされるディレクトリです。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は、[NuGet パッケージとしてプロジェクトに追加](./functions-bindings-register.md#c-class-library-with-visual-studio-2017)されます。
+このディレクトリは、Azure 上で関数アプリにデプロイされるディレクトリです。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は、[NuGet パッケージとしてプロジェクトに追加](./functions-bindings-register.md#vs)されます。
 
 > [!IMPORTANT]
 > ビルド処理では、関数ごとに *function.json* ファイルが作成されます。 この *function.json* ファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 関数を無効にする方法については、[関数を無効にする方法](disable-function.md#functions-2x---c-class-libraries)に関するページをご覧ください。
@@ -72,7 +72,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` 属性は、関数のエントリ ポイントとしてメソッドをマークします。 名前はプロジェクト内で一意であり、文字で始まり、英数字、`_`、および `-` のみが含まれ、127 文字以下にする必要があります。 プロジェクト テンプレートでは、多くの場合、`Run` という名前のメソッドが作成されますが、有効な C# メソッド名であればメソッド名として使用できます。
+`FunctionName` 属性は、関数のエントリ ポイントとしてメソッドをマークします。 名前はプロジェクト内で一意であり、文字で始まり、英数字、`_`、`-` のみが含まれ、127 文字以下にする必要があります。 プロジェクト テンプレートでは、多くの場合、`Run` という名前のメソッドが作成されますが、有効な C# メソッド名であればメソッド名として使用できます。
 
 トリガー属性は、トリガーの種類を指定し、メソッド パラメーターに入力データをバインドします。 例の関数は 1 つのクエリ メッセージによってトリガーされ、そのクエリ メッセージは `myQueueItem` パラメーターでメソッドに渡されます。
 
@@ -156,7 +156,7 @@ public static class BindingExpressionsExample
 
 *function.json* ファイルの生成は、NuGet パッケージ ([Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)) によって実行されます。 
 
-Functions ランタイムのバージョン 1.x と 2.x では同じパッケージが使用されます。 1.x プロジェクトと 2.x プロジェクトの違いはターゲット フレームワークです。 次に示すのは *.csproj* ファイルの関連する部分で、ターゲット フレームが異なっていることと、`Sdk` パッケージが同じであることがわかります。
+Functions ランタイムのバージョン 1.x と 2.x では同じパッケージが使用されます。 1\.x プロジェクトと 2.x プロジェクトの違いはターゲット フレームワークです。 次に示すのは *.csproj* ファイルの関連する部分で、ターゲット フレームが異なっていることと、`Sdk` パッケージが同じであることがわかります。
 
 **Functions 1.x**
 
@@ -181,7 +181,7 @@ Functions ランタイムのバージョン 1.x と 2.x では同じパッケー
 </ItemGroup>
 ```
 
-`Sdk` パッケージ間の依存関係はトリガーとバインドです。 1.x のトリガーとバインドの対象は .NET Framework であるため、1.x プロジェクトは 1.x のトリガーとバインドを参照します。一方、2.x のトリガーとバインドの対象は .NET Core です。
+`Sdk` パッケージ間の依存関係はトリガーとバインドです。 1\.x のトリガーとバインドの対象は .NET Framework であるため、1.x プロジェクトは 1.x のトリガーとバインドを参照します。一方、2.x のトリガーとバインドの対象は .NET Core です。
 
 `Sdk` パッケージも、[Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) に依存しており、間接的に [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage) に依存します。 これらの依存関係により、ユーザーのプロジェクトでは、必ずそのプロジェクト用の Functions ランタイム バージョンで動作するパッケージ バージョンが使用されます。 たとえば、`Newtonsoft.Json` のバージョンが .NET Framework 4.6.1 用のバージョン 11 だとします。ところが、.NET Framework 4.6.1 を対象とする Functions ランタイムは `Newtonsoft.Json` 9.0.1 としか互換性がありません。 この場合は、そのプロジェクトの関数コードも `Newtonsoft.Json` 9.0.1 を使用する必要があります。
 
@@ -191,7 +191,7 @@ Functions ランタイムのバージョン 1.x と 2.x では同じパッケー
 
 Visual Studio では、[Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) を使用して、Functions プロジェクトを実行します。 Core Tools は、Functions ランタイム用のコマンド ライン インターフェイスです。
 
-npm を使用して Core Tools をインストールする場合、これは Visual Studio で使用される Core Tools バージョンには影響しません。 Functions ランタイム バージョン 1.x の場合、Visual Studio は Core Tools のバージョンを *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* に格納し、そこに格納されている中で最も新しいバージョンを使用します。 Functions 2.x の場合、Core Tools は **Azure Functions と Web ジョブ ツール**の拡張機能に含まれます。 1.x と 2.x の両方について、使用されているバージョンは、Functions プロジェクトを実行するときに、コンソール出力で確認できます。
+npm を使用して Core Tools をインストールする場合、これは Visual Studio で使用される Core Tools バージョンには影響しません。 Functions ランタイム バージョン 1.x の場合、Visual Studio は Core Tools のバージョンを *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* に格納し、そこに格納されている中で最も新しいバージョンを使用します。 Functions 2.x の場合、Core Tools は **Azure Functions と Web ジョブ ツール**の拡張機能に含まれます。 1\.x と 2.x の両方について、使用されているバージョンは、Functions プロジェクトを実行するときに、コンソール出力で確認できます。
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
@@ -373,7 +373,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>複数属性の例
 
-前の例では、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリ設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 `IBinder`ではなく、`Binder` パラメーターを使用します。  例: 
+前の例では、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリ設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 `IBinder`ではなく、`Binder` パラメーターを使用します。  例:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

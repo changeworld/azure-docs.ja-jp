@@ -13,11 +13,11 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60248089"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
 Azure Active Directory (Azure AD) を使用して、プロファイル画像、職種別情報、および一部の設定などのユーザー プロファイル情報を追加します。 新しいユーザーの追加方法については、[Azure Active Directory でユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページをご覧ください。
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 ## <a name="to-add-or-change-profile-information"></a>プロファイル情報を追加または変更する
 1. [Azure portal](https://portal.azure.com/) に組織のユーザー管理者としてサインインします。
 
-2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、_Alain Charon_ にします。
+2. **[Azure Active Directory]** 、 **[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、_Alain Charon_ にします。
 
     **[Alain Charon - Profile]** \(Alain Charon - プロファイル\) ページが表示されます。
 

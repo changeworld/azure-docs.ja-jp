@@ -10,11 +10,11 @@ ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996131"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60309768"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(非推奨) Azure Container Service で Kubernetes Web UI を使用する
 
@@ -100,14 +100,14 @@ $ az acs kubernetes browse -g [Resource Group] -n [Container service instance na
 
 リソースが表示されない場合は、監視データが反映されるまで数分間待つことが必要になる場合があります。
 
-コンテナーのログを表示するには、**[ログの表示]** をクリックします。
+コンテナーのログを表示するには、 **[ログの表示]** をクリックします。
 
 ![Kubernetes のログ](./media/container-service-kubernetes-ui/logs.png)
 
 ### <a name="viewing-your-service"></a>サービスを表示する
 コンテナーを実行するほかにも、Kubernetes UI は外部 `Service` を作成しました。これにより、クラスターにあるコンテナーにトラフィックを運ぶロード バランサーがプロビジョニングされます。
 
-左側のナビゲーション ウィンドウで、**[サービス]** をクリックしてすべてのサービスを表示します (1 つだけあるはずです)。
+左側のナビゲーション ウィンドウで、 **[サービス]** をクリックしてすべてのサービスを表示します (1 つだけあるはずです)。
 
 ![Kubernetes サービス](./media/container-service-kubernetes-ui/service-deployed.png)
 
@@ -125,7 +125,7 @@ UI でオブジェクトを表示するだけではなく、Kubernetes API オ�
 
 ![Kubernetes 編集](./media/container-service-kubernetes-ui/edit.png)
 
-`spec.replicas` フィールドを `2` に編集し、**[更新]** をクリックします。
+`spec.replicas` フィールドを `2` に編集し、 **[更新]** をクリックします。
 
 これで、Pod のいずれかを削除することにより、レプリカの数を 2 つに下げます。
 

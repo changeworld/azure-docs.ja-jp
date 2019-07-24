@@ -19,37 +19,33 @@
         - name: Node.js の場合
           href: stream-files-nodejs-quickstart.md
     - name: アップロードされたファイルのエンコードとビデオのストリーム配信
-      items:
-        - name: .NET の場合
-          displayName: 'encode, encoding, job, transform'
-          href: stream-files-tutorial-with-api.md
+      displayName: 'encode, encoding, job, transform'
+      href: stream-files-tutorial-with-api.md
     - name: ライブ ストリーム配信
-      items:
-        - name: .NET の場合
-          href: stream-live-tutorial-with-api.md
+      href: stream-live-tutorial-with-api.md
+      displayName: 'Live Events, Live Outputs, ingest'
     - name: ビデオの分析
-      items:
-        - name: .NET の場合
-          displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-          href: analyze-videos-tutorial-with-api.md
+      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
+      href: analyze-videos-tutorial-with-api.md
     - name: AES-128 を使用した動的な暗号化
-      items:
-        - name: .NET の場合
-          href: protect-with-aes128.md
+      href: protect-with-aes128.md
     - name: DRM を使用した動的な暗号化
-      items:
-        - name: .NET の場合
-          displayName: 'PlayReady, Widevine, FairPlay'
-          href: protect-with-drm.md
+      displayName: 'PlayReady, Widevine, FairPlay'
+      href: protect-with-drm.md
 - name: 概念
   items:
     - name: 概要
       href: concepts-overview.md
-    - name: クラウドのアップロードとストレージ
+    - name: アカウント
       items:
-        - name: Storage
+        - name: Media Services アカウント
+          displayName: subscription
+          href: media-services-account-concept.md
+        - name: ストレージ アカウント
           href: storage-account-concept.md
           displayName: Storage side encryption
+    - name: アップロード
+      items:
         - name: アセット
           href: assets-concept.md
     - name: エンコード
@@ -97,12 +93,13 @@
           href: streaming-policy-concept.md
         - name: ストリーミング エンドポイントのエラー コード
           href: streaming-endpoint-error-codes.md
-    - name: 動的暗号化とキー配信
+    - name: コンテンツ保護
       items:
-        - name: ストリーミング プロトコルと暗号化の種類
-          displayName: 'dynamic, encryption, content protection, PlayReady, Widevine, FairPlay'
+        - name: 動的暗号化とキー配信
+          displayName: 'content protection, streaming protocols, encryption types, content protection, PlayReady, Widevine, FairPlay'
           href: content-protection-overview.md
-        - name: アクセス制御を使用したマルチ DRM システム
+        - name: マルチ DRM システムの設計
+          displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md
         - name: DRM ライセンス
           items:
@@ -122,6 +119,7 @@
           href: live-streaming-overview.md
         - name: ライブ イベントとライブ出力
           href: live-events-outputs-concept.md
+          displayName: 'vanity, ingest'
         - name: おすすめのライブ エンコーダー
           href: recommended-on-premises-live-encoders.md
         - name: クラウド DVR の使用
@@ -231,12 +229,26 @@
             - name: REST の場合
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+        - name: ビデオをサブクリップする
+          items:
+            - name: .NET の場合
+              href: subclip-video-dotnet-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
+            - name: REST の場合
+              href: subclip-video-rest-howto.md
+              displayName: 'subclipping, clip, edit, trim, clipping'
     - name: Event Grid の使用
       items:
         - name: イベントの監視 - ポータル
           href: monitor-events-portal-how-to.md
         - name: イベントの監視 - CLI
           href: job-state-events-cli-how-to.md
+    - name: Azure Monitor の使用
+      items:
+        - name: 監視メトリック
+          href: media-services-metrics-howto.md
+        - name: 診断ログの監視
+          href: media-services-diagnostic-logs-howto.md
     - name: コンテンツの保護
       items:
         - name: コンテンツ キー ポリシーの取得 - .NET

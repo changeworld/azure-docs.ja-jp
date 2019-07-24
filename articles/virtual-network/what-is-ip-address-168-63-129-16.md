@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 78d2392e32465b3091c49032dc5df5f3a5b6061a
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: acfd5230d1bd572ea5179651558e3f736a8570af
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65416031"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65833133"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP アドレス 168.63.129.16 とは
 
@@ -38,7 +38,7 @@ IP アドレス 168.63.129.16 は、Azure プラットフォーム リソース�
 
 [Azure Load Balancer の正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md)は、この IP アドレスから送信されます。 この IP アドレスをブロックした場合、プローブは失敗します。
 
-仮想ネットワーク以外のシナリオでは、正常性プローブのソースはプライベート IP であり、168.63.129.16 は使用されません。
+仮想ネットワーク以外のシナリオ (クラシック) では、正常性プローブのソースはプライベート IP であり、168.63.129.16 は使用されません。
 
 ## <a name="next-steps"></a>次の手順
 

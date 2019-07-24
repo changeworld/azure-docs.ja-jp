@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66126271"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594203"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -331,29 +331,29 @@ Microsoft ログ データの遅延 | Verizon ログ データの遅延 | Akamai
 | RequestCountHttpStatus4xx | 4xx の HTTP コード (400、404 など) になった要求の合計数。 | はい | はい |はい |
 | RequestCountHttpStatus5xx | 5xx の HTTP コード (500、504 など) になった要求の合計数。 | はい | はい |はい |
 | RequestCountHttpStatusOthers | その他のすべての HTTP コード (2xx-5xx 以外) の数。 | はい | はい |はい |
-| RequestCountHttpStatus200 | HTTP コード応答 200 になった要求の合計数。 | はい | いいえ   |はい |
-| RequestCountHttpStatus206 | HTTP コード応答 206 になった要求の合計数。 | はい | いいえ   |はい |
-| RequestCountHttpStatus302 | HTTP コード応答 302 になった要求の合計数。 | はい | いいえ   |はい |
-| RequestCountHttpStatus304 | HTTP コード応答 304 になった要求の合計数。 | はい | いいえ   |はい |
-| RequestCountHttpStatus404 | HTTP コード応答 404 になった要求の合計数。 | はい | いいえ   |はい |
-| RequestCountCacheHit | キャッシュ ヒットが生じた要求の合計数。 POP からクライアントに対して、アセットが直接処理されました。 | はい | はい | いいえ   |
-| RequestCountCacheMiss | キャッシュ ミスが生じた要求の合計数。 キャッシュ ミスとは、クライアントに最も近い POP でアセットが見つからず、元のドメインから取得されたことを意味します。 | はい | はい | いいえ  |
-| RequestCountCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットに対する要求の合計数。 | はい | はい | いいえ  |
-| RequestCountCacheUncacheable | アセットの Cache-Control および Expires ヘッダーによりキャッシュされなかったアセットへの要求の合計数。この場合、POP または HTTP クライアントではキャッシュすべきでないことを示します。 | はい | はい | いいえ  |
-| RequestCountCacheOthers | 上記に含まれないキャッシュの状態の要求の合計数。 | いいえ  | はい | いいえ   |
+| RequestCountHttpStatus200 | HTTP コード応答 200 になった要求の合計数。 | はい | いいえ  |はい |
+| RequestCountHttpStatus206 | HTTP コード応答 206 になった要求の合計数。 | はい | いいえ  |はい |
+| RequestCountHttpStatus302 | HTTP コード応答 302 になった要求の合計数。 | はい | いいえ  |はい |
+| RequestCountHttpStatus304 | HTTP コード応答 304 になった要求の合計数。 | はい | いいえ  |はい |
+| RequestCountHttpStatus404 | HTTP コード応答 404 になった要求の合計数。 | はい | いいえ  |はい |
+| RequestCountCacheHit | キャッシュ ヒットが生じた要求の合計数。 POP からクライアントに対して、アセットが直接処理されました。 | はい | はい | いいえ  |
+| RequestCountCacheMiss | キャッシュ ミスが生じた要求の合計数。 キャッシュ ミスとは、クライアントに最も近い POP でアセットが見つからず、元のドメインから取得されたことを意味します。 | はい | はい | いいえ |
+| RequestCountCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットに対する要求の合計数。 | はい | はい | いいえ |
+| RequestCountCacheUncacheable | アセットの Cache-Control および Expires ヘッダーによりキャッシュされなかったアセットへの要求の合計数。この場合、POP または HTTP クライアントではキャッシュすべきでないことを示します。 | はい | はい | いいえ |
+| RequestCountCacheOthers | 上記に含まれないキャッシュの状態の要求の合計数。 | いいえ | はい | いいえ  |
 | EgressTotal | 送信データ転送 (GB) | はい |はい |はい |
-| EgressHttpStatus2xx | HTTP 状態コードが 2xx の応答の送信データ転送* (GB)。 | はい | はい | いいえ   |
-| EgressHttpStatus3xx | HTTP 状態コードが 3xx の応答の送信データ転送 (GB)。 | はい | はい | いいえ   |
-| EgressHttpStatus4xx | HTTP 状態コードが 4xx の応答の送信データ転送 (GB)。 | はい | はい | いいえ   |
-| EgressHttpStatus5xx | HTTP 状態コードが 5xx の応答の送信データ転送 (GB)。 | はい | はい | いいえ  |
-| EgressHttpStatusOthers | その他の HTTP 状態コードの応答の送信データ転送 (GB)。 | はい | はい | いいえ   |
-| EgressCacheHit | CDN の POP/エッジで CDN キャッシュから直接配信された応答の送信データ転送。 | はい | はい | いいえ  |
-| EgressCacheMiss. | 最も近い POP サーバーで見つからず、配信元サーバーから取得された応答の送信データ転送。 | はい | はい | いいえ  |
-| EgressCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットの送信データ転送。 | はい | はい | いいえ  |
-| EgressCacheUncacheable | アセットの Cache-Control および/または Expires ヘッダーによりキャッシュされなかったアセットの送信データ転送。 POP または HTTP クライアントではキャッシュすべきでないことを示します。 | はい | はい | いいえ  |
-| EgressCacheOthers | その他のキャッシュ シナリオの送信データ転送。 | いいえ  | はい | いいえ  |
+| EgressHttpStatus2xx | HTTP 状態コードが 2xx の応答の送信データ転送* (GB)。 | はい | はい | いいえ  |
+| EgressHttpStatus3xx | HTTP 状態コードが 3xx の応答の送信データ転送 (GB)。 | はい | はい | いいえ  |
+| EgressHttpStatus4xx | HTTP 状態コードが 4xx の応答の送信データ転送 (GB)。 | はい | はい | いいえ  |
+| EgressHttpStatus5xx | HTTP 状態コードが 5xx の応答の送信データ転送 (GB)。 | はい | はい | いいえ |
+| EgressHttpStatusOthers | その他の HTTP 状態コードの応答の送信データ転送 (GB)。 | はい | はい | いいえ  |
+| EgressCacheHit | CDN の POP/エッジで CDN キャッシュから直接配信された応答の送信データ転送。 | はい | はい | いいえ |
+| EgressCacheMiss. | 最も近い POP サーバーで見つからず、配信元サーバーから取得された応答の送信データ転送。 | はい | はい | いいえ |
+| EgressCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットの送信データ転送。 | はい | はい | いいえ |
+| EgressCacheUncacheable | アセットの Cache-Control および/または Expires ヘッダーによりキャッシュされなかったアセットの送信データ転送。 POP または HTTP クライアントではキャッシュすべきでないことを示します。 | はい | はい | いいえ |
+| EgressCacheOthers | その他のキャッシュ シナリオの送信データ転送。 | いいえ | はい | いいえ |
 
-* 送信データ転送は、CDN の POP サーバーからクライアントに配信されたトラフィックを指します。
+\* 送信データ転送は、CDN の POP サーバーからクライアントに配信されたトラフィックを指します。
 
 
 ### <a name="schema-of-the-core-analytics-logs"></a>コア分析ログのスキーマ 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/22/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2b615bbe7ffdf2f709cd7d7b0add4f956bec6a84
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 38bafdb4753b41a9c8acd599e6b7215e1777c6cd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728331"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65779478"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
@@ -40,32 +40,33 @@ Azure Files は、クライアント アプリケーションに対して、2 �
 API | いつ使用するか | メモ
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | アプリケーションが次のような場合。 <ul><li>SMB 経由でファイルの読み取り/書き込みをする必要がある</li><li>ポート 445 経由で Azure Files アカウントにアクセスするデバイスで実行している</li><li>ファイル共有のどの管理設定も管理する必要がない</li></ul> | SMB 経由の Azure Files によるファイル I/O のコーディングは、通常、ネットワーク ファイル共有またはローカル ストレージ デバイスでの I/O のコーディングと同じです。 ファイル I/O など、.NET のさまざまな機能の概要については、[このチュートリアル](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)を参照してください。
-[WindowsAzure.Storage](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet#client-library) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 の SMB 経由で Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST とファイル共有の管理を使用するファイル I/O に `WindowsAzure.Storage` を使用する方法について説明します。
+[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 の SMB 経由で Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST とファイル共有の管理を使用するファイル I/O に `Microsoft.Azure.Storage.File` を使用する方法について説明します。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>コンソール アプリケーションの作成とアセンブリの取得
 Visual Studio で、新しい Windows コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2017 でコンソール アプリケーションを作成する方法を説明しますが、この手順は Visual Studio の他のバージョンでも同様です。
 
-1. **[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
-2. **[インストール済み]** > **[テンプレート]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** の順に選択します。
+1. **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
+2. **[インストール済み]**  >  **[テンプレート]**  >  **[Visual C#]**  >  **[Windows クラシック デスクトップ]** の順に選択します。
 3. **[コンソール アプリ (.NET Framework)]** を選択します。
 4. **[名前]** フィールドに、アプリケーションの名前を入力します。
 5. **[OK]** を選択します。
 
 このチュートリアルのすべてのコード例は、コンソール アプリケーションの `Program.cs` ファイルの `Main()` メソッドに追加できます。
 
-Azure クラウド サービス、Azure Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなど、どの種類の .NET アプリケーションでも Azure ストレージ クライアント ライブラリを使用できます。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
+Azure クラウド サービス、Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなど、どの種類の .NET アプリケーションでも Azure Storage クライアント ライブラリを使用できます。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>NuGet を使用した必要なパッケージのインストール
 このチュートリアルを完了するには、プロジェクトで参照する必要があるパッケージが 2 つあります。
 
-* [.NET 用の Microsoft Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/): このパッケージを使用すると、ストレージ アカウント内のデータ リソースにプログラムでアクセスできます。
-* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/):このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
+* [.NET 用 Microsoft Azure Storage 共通ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/):このパッケージを使用すると、ストレージ アカウント内の共通リソースにプログラムでアクセスできます。
+* [.NET 用 Microsoft Azure Storage Blob ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/):このパッケージを使用すると、ストレージ アカウント内の BLOB リソースにプログラムでアクセスできます。
+* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/):このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
 
 NuGet を使って両方のパッケージを取得できます。 次の手順に従います。
 
-1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
 2. "WindowsAzure.Storage" をオンラインで検索し、 **[インストール]** をクリックしてストレージ クライアント ライブラリとその依存関係をインストールします。
-3. "WindowsAzure.ConfigurationManager" をオンラインで検索し、**[インストール]** をクリックして Azure Configuration Manager をインストールします。
+3. "WindowsAzure.ConfigurationManager" をオンラインで検索し、 **[インストール]** をクリックして Azure Configuration Manager をインストールします。
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>ストレージ アカウントの資格情報を app.config ファイルに保存
 次に、プロジェクトの app.config ファイルに資格情報を保存します。 次の例のようになるように app.config ファイルを編集します。ここで、`myaccount` は実際のストレージ アカウント名に置き換え、`mykey` は実際のストレージ アカウント キーに置き換えてください。
@@ -90,9 +91,9 @@ NuGet を使って両方のパッケージを取得できます。 次の手順�
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
-using Microsoft.WindowsAzure.Storage; // Namespace for Storage Client Library
-using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Azure Blobs
-using Microsoft.WindowsAzure.Storage.File; // Namespace for Azure Files
+using Microsoft.Azure.Storage; // Namespace for Storage Client Library
+using Microsoft.Azure.Storage.Blob; // Namespace for Azure Blobs
+using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 ```
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
@@ -157,7 +158,7 @@ if (share.Exists())
 {
     // Check current usage stats for the share.
     // Note that the ShareStats object is part of the protocol layer for the File service.
-    Microsoft.WindowsAzure.Storage.File.Protocol.ShareStats stats = share.GetStats();
+    Microsoft.Azure.Storage.File.Protocol.ShareStats stats = share.GetStats();
     Console.WriteLine("Current share usage: {0} GB", stats.Usage.ToString());
 
     // Specify the maximum size of the share, in GB.
@@ -220,7 +221,7 @@ if (share.Exists())
 }
 ```
 
-Shared Access Signature の作成と使用の詳細については、「[Shared Access Signature (SAS) の使用](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」と、[Azure BLOB での SAS の作成と使用](../blobs/storage-dotnet-shared-access-signature-part-2.md)に関するページを参照してください。
+Shared Access Signature の作成方法と使用方法の詳細については、「[Shared Access Signatures (SAS) の使用](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
 ## <a name="copy-files"></a>ファイルのコピー
 Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。 次のセクションでは、プログラムを使用してこれらのコピー操作を実行する方法を示します。
@@ -401,18 +402,18 @@ CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTim
 ## <a name="troubleshooting-azure-files-using-metrics"></a>メトリックを使用した Azure Files のトラブルシューティング
 Azure ストレージ分析で Azure Files のメトリックがサポートされるようになりました。 メトリック データを使用すると、要求のトレースや問題の診断ができます。
 
-[Azure Portal](https://portal.azure.com) から Azure Files のメトリックを有効にすることができます。 REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
+[Azure portal](https://portal.azure.com) から Azure Files のメトリックを有効にすることができます。 REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
 
 次のコード例では、.NET 用ストレージ クライアント ライブラリを使用して、Azure Files のメトリックを有効にする方法を示します。
 
 まず、`Program.cs` ファイルで、先ほど追加したディレクティブに加え、次の `using` ディレクティブを追加します。
 
 ```csharp
-using Microsoft.WindowsAzure.Storage.File.Protocol;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using Microsoft.Azure.Storage.File.Protocol;
+using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Azure BLOB、Azure テーブル、Azure キューは `Microsoft.WindowsAzure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` 型を使用しますが、Azure Files はその独自の型である、`Microsoft.WindowsAzure.Storage.File.Protocol` 名前空間の `FileServiceProperties` 型を使用することに注意してください。 ただし、両方の名前空間は、次のコードのコンパイルのため、自身のコードから参照される必要があります。
+Azure BLOB、Azure テーブル、Azure キューは `Microsoft.Azure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` 型を使用しますが、Azure Files はその独自の型である、`Microsoft.Azure.Storage.File.Protocol` 名前空間の `FileServiceProperties` 型を使用することに注意してください。 ただし、両方の名前空間は、次のコードのコンパイルのため、自身のコードから参照される必要があります。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -423,7 +424,7 @@ CloudFileClient fileClient = storageAccount.CreateCloudFileClient();
 
 // Set metrics properties for File service.
 // Note that the File service currently uses its own service properties type,
-// available in the Microsoft.WindowsAzure.Storage.File.Protocol namespace.
+// available in the Microsoft.Azure.Storage.File.Protocol namespace.
 fileClient.SetServiceProperties(new FileServiceProperties()
 {
     // Set hour metrics

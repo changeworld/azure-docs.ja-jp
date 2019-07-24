@@ -17,12 +17,12 @@ ms.date: 09/13/2018
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5127342f97a90103ef56efbd7465832440ec0f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: c04d1a01c0ffd69e70dfa3b88b4f3c7f4b3576d4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521814"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108800"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>クイック スタート:Azure Active Directory Identity Protection を使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 
@@ -85,29 +85,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. [[Azure AD Identity Protection]](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/Overview) ページに移動します。
  
-3. **[Azure AD Identity Protection]** ページの **[構成]** セクションで、**[サインインのリスク ポリシー]** をクリックします。
+3. **[Azure AD Identity Protection]** ページの **[構成]** セクションで、 **[サインインのリスク ポリシー]** をクリックします。
  
-4. ポリシー ページの **[割り当て]** セクションで、**[ユーザー]** をクリックします。
+4. ポリシー ページの **[割り当て]** セクションで、 **[ユーザー]** をクリックします。
 
-5. **[ユーザー]** ページで、**[ユーザーの選択]** をクリックします。
+5. **[ユーザー]** ページで、 **[ユーザーの選択]** をクリックします。
 
-6. **[ユーザーの選択]** ページで **[Alain Charon]** を選択し、**[選択]** をクリックします。
+6. **[ユーザーの選択]** ページで **[Alain Charon]** を選択し、 **[選択]** をクリックします。
 
-7. **[ユーザー]** ページで、**[完了]** をクリックします。 
+7. **[ユーザー]** ページで、 **[完了]** をクリックします。 
 
-8. ポリシー ページの **[割り当て]** セクションで、**[条件]** をクリックします。
+8. ポリシー ページの **[割り当て]** セクションで、 **[条件]** をクリックします。
 
-9. **[条件]** ページで、**[サインイン リスク]** をクリックします。
+9. **[条件]** ページで、 **[サインイン リスク]** をクリックします。
 
-10. **[サインイン リスク]** ページで **[Medium and above]/(中以上/)** を選択し、**[選択]** をクリックします。 
+10. **[サインイン リスク]** ページで **[Medium and above]/(中以上/)** を選択し、 **[選択]** をクリックします。 
 
-11. **[条件]** ページで、**[完了]** をクリックします。
+11. **[条件]** ページで、 **[完了]** をクリックします。
 
-12. ポリシー ページの **[コントロール]** セクションで、**[アクセス]** をクリックします。
+12. ポリシー ページの **[コントロール]** セクションで、 **[アクセス]** をクリックします。
 
-13. **[アクセス]** ページで **[アクセスを許可]** をクリックし、**[多要素認証を要求する]** を選択して、**[選択]** をクリックします。
+13. **[アクセス]** ページで **[アクセスを許可]** をクリックし、 **[多要素認証を要求する]** を選択して、 **[選択]** をクリックします。
 
-14. ポリシー ページで、**[保存]** をクリックします。  
+14. ポリシー ページで、 **[保存]** をクリックします。  
 
 
 ## <a name="test-your-conditional-access-policy"></a>条件付きアクセス ポリシーをテストする

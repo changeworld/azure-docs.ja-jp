@@ -4,17 +4,17 @@ description: この記事では、Azure Automation Hybrid Runbook Worker のト�
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ea6599152d3cbf1f50132f5b207c19148401f798
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 1ab9de1e11fa4f43894a6789fb2ba6fedbd1b77e
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608641"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477512"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hybrid Runbook Worker のトラブルシューティング
 
@@ -56,7 +56,7 @@ Hybrid Runbook Worker を実行するコンピューターは、この機能を�
 
 Hybrid Runbook Worker の機能を実行するコンピューターがハードウェアの最小要件を満たしていることを確認します。 満たしている場合は、CPU とメモリの使用を監視して、Hybrid Runbook Worker プロセスのパフォーマンスと Windows の間の相関関係を調べます。 メモリまたは CPU に負荷がかかっている場合は、リソースのアップグレードが必要である可能性があります。 または、最小要件を満たす別のコンピューティング リソースを選択し、ワークロードがさらに多くのリソースを必要とすることを示したときに拡張できます。
 
-**Microsoft-SMA** のイベント ログで " *Win32 Process Exited with code [4294967295]*" という説明の対応するイベントを確認します。 このエラーの原因は、Runbook で認証が構成されていないか、または Hybrid Worker グループの Run As 資格情報が指定されていません。 「[Runbook のアクセス許可](../automation-hrw-run-runbooks.md#runbook-permissions) 」を参照して、Runbook の認証を正しく構成してあることを確認します。
+**Microsoft-SMA** のイベント ログで " *Win32 Process Exited with code [4294967295]* " という説明の対応するイベントを確認します。 このエラーの原因は、Runbook で認証が構成されていないか、または Hybrid Worker グループの Run As 資格情報が指定されていません。 「[Runbook のアクセス許可](../automation-hrw-run-runbooks.md#runbook-permissions) 」を参照して、Runbook の認証を正しく構成してあることを確認します。
 
 ### <a name="no-cert-found"></a>シナリオ:Hybrid Runbook Worker の証明書ストア内に証明書が見つからない
 
@@ -146,7 +146,7 @@ PowerShell で次のコマンドを入力して、このエージェントが実
 
 #### <a name="issue"></a>問題
 
-**アプリケーションとサービス ログ\Operations Manager** のイベント ログで、イベント 4502 と、**Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** および次の説明を含む EventMessage が表示されます:*サービス \<wsid\>.oms.opinsights.azure.com によって提示された証明書は、Microsoft サービスで使用する証明機関によって発行されたものではありません。TLS/SSL 通信を遮断するプロキシが実行されているかどうかをネットワーク管理者に問い合わせてください。記事 KB3126513 に、接続の問題に関するトラブルシューティング情報が記載されています。*"
+**アプリケーションとサービス ログ\Operations Manager** のイベント ログで、イベント 4502 と、**Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** および次の説明を含む EventMessage が表示されます:*サービス \<wsid\>.oms.opinsights.azure.com によって提示された証明書は、Microsoft サービスで使用する証明機関によって発行されたものではありません。TLS/SSL 通信を遮断するプロキシが実行されているかどうかをネットワーク管理者に問い合わせてください。記事 KB3126513 に、接続の問題に関するトラブルシューティング情報が記載されています。* "
 
 #### <a name="cause"></a>原因
 

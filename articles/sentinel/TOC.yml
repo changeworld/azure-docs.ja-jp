@@ -40,6 +40,8 @@
               href: connect-azure-atp.md
             - name: Azure Security Center の接続
               href: connect-azure-security-center.md
+            - name: ドメイン ネーム サーバーの接続
+              href: connect-dns.md
             - name: Microsoft Web アプリケーション ファイアウォールの接続
               href: connect-microsoft-waf.md
             - name: Windows ファイアウォールの接続
@@ -50,6 +52,8 @@
           items:
             - name: 汎用 CEF の接続
               href: connect-common-event-format.md
+            - name: AWS の接続
+              href: connect-aws.md
             - name: Barracuda の接続
               href: connect-barracuda.md
             - name: Check Point の接続

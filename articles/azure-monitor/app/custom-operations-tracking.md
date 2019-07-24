@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2c33c481d96a9edecc6360a9a91c095c2bca220b
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995542"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798344"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -51,7 +51,10 @@ Application Insights Web SDK は、IIS パイプラインで実行される ASP.
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
 {
-    private readonly TelemetryClient telemetryClient = new TelemetryClient(TelemetryConfiguration.Active);
+    // you may create a new TelemetryConfiguration instance, reuse one you already have
+    // or fetch the instance created by Application Insights SDK.
+    private readonly TelemetryConfiguration telemetryConfiguration = TelemetryConfiguration.CreateDefault();
+    private readonly TelemetryClient telemetryClient = new TelemetryClient(telemetryConfiguration);
     
     public ApplicationInsightsMiddleware(OwinMiddleware next) : base(next) {}
 
@@ -207,20 +210,7 @@ public async Task Process(BrokeredMessage message)
 [Azure Storage キュー](../../storage/queues/storage-dotnet-how-to-use-queues.md)の操作を追跡し、プロデューサー、コンシューマー、Azure Storage 間でテレメトリを相互に関連付ける例を次に示します。 
 
 Storage キューには HTTP API があります。 キューに対するすべての呼び出しは、Application Insights の HTTP 要求の依存関係コレクターによって追跡されます。
-`Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` が `applicationInsights.config` に含まれていることを確認してください。 ない場合は、[Application Insights SDK におけるフィルター処理と前処理](../../azure-monitor/app/api-filtering-sampling.md)に関する記事に従って、プログラムによって追加してください。
-
-ApplicationInsights を手動で構成する場合は、次のように `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule` を作成して初期化する必要があります。
- 
-```csharp
-DependencyTrackingTelemetryModule module = new DependencyTrackingTelemetryModule();
-
-// You can prevent correlation header injection to some domains by adding it to the excluded list.
-// Make sure you add a Storage endpoint. Otherwise, you might experience request signature validation issues on the Storage service side.
-module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
-module.Initialize(TelemetryConfiguration.Active);
-
-// Do not forget to dispose of the module during application shutdown.
-```
+ASP.NET および ASP.NET Core アプリケーションでは既定で構成されます。他の種類のアプリケーションでの構成については、[コンソール アプリケーションに関するドキュメント](../../azure-monitor/app/console.md)を参照してください。
 
 Application Insights の操作 ID を Storage の要求 ID に関連付けることもできます。 Storage の要求クライアントとサーバーの要求 ID の設定および取得方法については、「[Azure Storage の監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)」を参照してください。
 
@@ -229,8 +219,8 @@ Storage キューは HTTP API をサポートしているため、キューを�
 
 この例は、`Enqueue` 操作を追跡する方法を示しています。 次のようにすることができます。
 
- - **再試行を関連付ける (存在する場合)**:すべての再試行には、`Enqueue` 操作という共通の親が 1 つ存在します。 また、受信要求の子として追跡されます。 キューに対する論理要求が複数存在する場合、どの呼び出しが再試行されたかを見極めることは難しいことがあります。
- - **Storage ログを関連付ける (存在する場合に必要に応じて)**:Storage ログは Application Insights のテレメトリに関連付けられます。
+ - **再試行を関連付ける (存在する場合)** :すべての再試行には、`Enqueue` 操作という共通の親が 1 つ存在します。 また、受信要求の子として追跡されます。 キューに対する論理要求が複数存在する場合、どの呼び出しが再試行されたかを見極めることは難しいことがあります。
+ - **Storage ログを関連付ける (存在する場合に必要に応じて)** :Storage ログは Application Insights のテレメトリに関連付けられます。
 
 `Enqueue` 操作は、親操作 (受信 HTTP 要求など) の子です。 HTTP の依存関係呼び出しは、`Enqueue` 操作の子であり、受信要求の孫でもあります。
 

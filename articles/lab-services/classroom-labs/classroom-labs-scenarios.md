@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: spelluru
 ms.openlocfilehash: 4d2ba11181977f1976b5ae933e8b93a92424fa96
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56809425"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60695295"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>トレーニング用のクラスルーム ラボを使用する
 トレーニング用のラボを設定することができます。 Azure Lab Services のクラスルーム ラボでは、各受講者がトレーニングで同じ分離環境を使用する、トレーニング用のラボを作成することができます。 各受講者が必要としている場合にのみトレーニング環境を利用できるようにし、トレーニング環境にトレーニングに必要なリソース (仮想マシンなど) が十分に含まれるようにするポリシーを適用できます。 

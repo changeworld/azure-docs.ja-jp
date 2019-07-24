@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820027"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60505463"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM でゲスト OS ファイアウォールを無効にします
 
@@ -108,7 +108,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 6.  **[Connect to another computer]\(別のコンピューターに接続\)** を選択します。
 
-7.  問題VMの **プライベート IP アドレス (DIP)** を入力します。
+7.  問題VMの **プライベート IP アドレス (DIP)**  を入力します。
 
 8.  ローカルのファイアウォール ポリシーを再起動します。
 

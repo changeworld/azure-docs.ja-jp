@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8434340bb7ed95cc36115c05048b2b67682b5796
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 66e4a578e3f443f4cbc3f6e5467cf9a86adf05fe
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224500"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297044"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>App Service などのマルチテナント バックエンドに対する Application Gateway のサポート
 
@@ -31,7 +31,7 @@ Web サーバー内がマルチテナント アーキテクチャ設計の場合
 
 - HTTP 設定内で明示的に入力された固定値をホスト名として設定する機能。 この機能では、特定の HTTP 設定が適用されたバックエンド プールへのすべてのトラフィックについて、ホスト ヘッダーがこの値にオーバーライドされます。 エンド ツー エンド SSL を使用している場合、オーバーライドされたこのホスト名は SNI 拡張機能で使用されます。 この機能を使用すれば、顧客の受信ホスト ヘッダーと異なるホスト ヘッダーがバックエンド プール ファームによって想定されるシナリオに対応できます。
 
-- バックエンド プール メンバーの IP または FQDN からホスト名を取得する機能。 HTTP 設定では、個々のバックエンド プール メンバーからホスト名を取得するオプションが構成されている場合、バックエンド プール メンバーの FQDN からホスト名を動的に選択するオプションも設定できます。 エンド ツー エンド SSL を使用している場合、このホスト名は FQDN から取得され、SNI 拡張機能で使用されます。 この機能を使用すれば、バックエンド プールに 2 つ以上のマルチテナント PaaS サービス (Azure Web Apps など) を使用でき、各メンバーへの要求のホスト ヘッダーに FQDN から取得されたホスト名を含めるシナリオに対応できます。 このシナリオを実装する場合は、HTTP 設定内で [[バックエンド アドレスからホスト名を選択します]](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-backend-address) というスイッチを使用します。これにより、元の要求内のホスト ヘッダーが動的にオーバーライドされ、バックエンド プール内に示されているホスト ヘッダーになります。  たとえば、要求が当該バックエンド サーバーに送信される場合、バックエンド プールの FQDN に "contoso11.azurewebsites.net" と "contoso22.azurewebsites.net" が含まれていれば、元の要求のホスト ヘッダー (contoso.com) は、contoso11.azurewebsites.net または contoso22.azurewebsites.net にオーバーライドされます。 
+- バックエンド プール メンバーの IP または FQDN からホスト名を取得する機能。 HTTP 設定では、個々のバックエンド プール メンバーからホスト名を取得するオプションが構成されている場合、バックエンド プール メンバーの FQDN からホスト名を動的に選択するオプションも設定できます。 エンド ツー エンド SSL を使用している場合、このホスト名は FQDN から取得され、SNI 拡張機能で使用されます。 この機能を使用すれば、バックエンド プールに 2 つ以上のマルチテナント PaaS サービス (Azure Web Apps など) を使用でき、各メンバーへの要求のホスト ヘッダーに FQDN から取得されたホスト名を含めるシナリオに対応できます。 このシナリオを実装する場合は、HTTP 設定内で [[バックエンド アドレスからホスト名を選択します]](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) というスイッチを使用します。これにより、元の要求内のホスト ヘッダーが動的にオーバーライドされ、バックエンド プール内に示されているホスト ヘッダーになります。  たとえば、要求が当該バックエンド サーバーに送信される場合、バックエンド プールの FQDN に "contoso11.azurewebsites.net" と "contoso22.azurewebsites.net" が含まれていれば、元の要求のホスト ヘッダー (contoso.com) は、contoso11.azurewebsites.net または contoso22.azurewebsites.net にオーバーライドされます。 
 
   ![Web アプリのシナリオ](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -62,4 +62,4 @@ App Service からの応答内のホスト名によって、エンドユーザ�
 
 ## <a name="next-steps"></a>次の手順
 
-マルチテナント アプリケーション (Azure App Service の Web アプリなど) と共にアプリケーション ゲートウェイをバックエンド プール メンバーとして設定する方法については、[Application Gateway を使用する App Service の Web アプリ の構成](https://docs.microsoft.com/azure/application-gateway/create-web-app)に関するページを参照してください。
+マルチテナント アプリケーション (Azure App Service の Web アプリなど) と共にアプリケーション ゲートウェイをバックエンド プール メンバーとして設定する方法については、[Application Gateway を使用する App Service の Web アプリ の構成](https://docs.microsoft.com/azure/application-gateway/configure-web-app-portal)に関するページを参照してください。

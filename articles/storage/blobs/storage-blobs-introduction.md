@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 01/03/2019
+ms.date: 05/24/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 498dd3be75cb27263c811d9db541b2e040599156
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e216503cac2db55115bd4c1b5bf0e2f6e50355fc
+ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65788020"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67190851"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob Storage の概要
 
@@ -29,7 +29,7 @@ Blob Storage には、3 種類のリソースがあります。
 
 次の図に、これらのリソースの関係を示します。
 
-![Blob Storage のアーキテクチャ図](./media/storage-blob-introduction/blob1.png)
+![アカウントの BLOB とコンテナー リソース間の関係](./media/storage-blob-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>ストレージ アカウント
 
@@ -56,7 +56,7 @@ Azure Storage では、3 種類の BLOB がサポートされています。
 
 * **ブロック BLOB** には、約 4.7 TB までのテキストとバイナリ データが格納されます。 ブロック BLOB は、個別に管理できるデータ ブロックで構成されます。
 * **追加 BLOB** は、ブロック BLOB と同様にブロックで構成されますが、追加操作用に最適化されています。 追加 BLOB は、仮想マシンのデータのログ記録などのシナリオに最適です。
-* **ページ BLOB** には、最大 8 TB のランダム アクセス ファイルが格納されます。 ページ BLOB には、Azure 仮想マシン用のディスクとして機能する仮想ハード ドライブ (VHD) ファイルが格納されます。 ページ BLOB について詳しくは、「[Azure ページ BLOB の概要](storage-blob-pageblob-overview.md)」をご覧ください
+* **ページ BLOB** には、最大 8 TB のランダム アクセス ファイルが格納されます。 ページ BLOB は、仮想ハード ドライブ (VHD) ファイルを格納し、Azure 仮想マシン用のディスクとして機能します。 ページ BLOB について詳しくは、「[Azure ページ BLOB の概要](storage-blob-pageblob-overview.md)」をご覧ください
 
 異なる種類の BLOB の詳細については、「[Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)」(ブロック BLOB、追加 BLOB、ページ BLOB について) をご覧ください。
 
@@ -68,8 +68,8 @@ Azure Storage では、3 種類の BLOB がサポートされています。
 - **Azure Storage Data Movement Library** は、Azure Storage サービス間でデータを移動するための .NET ライブラリです。 AzCopy ユーティリティは、Data Movement Library を使用して構築されています。 詳細については、Data Movement Library の[参照ドキュメント](/dotnet/api/microsoft.azure.storage.datamovement)をご覧ください。 
 - **Azure Data Factory** では、Azure リソースを認証するためのアカウント キー、Shared Access Signature、サービス プリンシパル、またはマネージド ID を使用した Blob Storage 間のデータのコピーをサポートしています。 詳しくは、「[Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。 
 - **blobfuse** は Azure Blob Storage 用の仮想ファイル システム ドライバーです。 Linux ファイル システムでは、blobfuse を使用して、お客様のストレージ アカウント内の既存のブロック BLOB データにアクセスできます。 詳しくは、「[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)」をご覧ください。
-- **Azure Data Box Disk** は、大規模なデータセットやネットワーク上の制約によって有線でのデータのアップロードが非現実的になったときに、オンプレミスのデータを Blob Storage に転送するサービスです。 [Azure Data Box Disk](../../databox/data-box-disk-overview.md) を使用すると、Microsoft から SSD (Solid State Disk) を取り寄せることができます。 必要なデータは、それらのディスクにコピーし、Microsoft に送り返すことで、BLOB ストレージにアップロードすることができます。
-- **Azure Import/Export サービス**を使用すると、大量のデータをお客様のストレージ アカウントからハード ディスクにエクスポートすることができます。ハード ディスクはお客様が用意し、処理後に Microsoft からお客様のデータと共に送り返されます。 詳しくは、[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../common/storage-import-export-service.md)に関する記事をご覧ください。
+- **Azure Data Box** サービスは、大規模なデータセットやネットワーク上の制約によって有線でのデータのアップロードが非現実的になったときに、オンプレミスのデータを Blob Storage に転送するために使用できるサービスです。 データのサイズに応じて、[Azure Data Box Disk](../../databox/data-box-disk-overview.md)、[Azure Data Box](../../databox/data-box-overview.md)、または [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md) デバイスを Microsoft に要求できます。 その後にデータをそれらのデバイスにコピーし、Microsoft に送り返すことで、Blob Storage にアップロードすることができます。
+- **Azure Import/Export サービス**を使用して、お客様が用意したハード ディスクを使用して、大量のデータをお客様のストレージ アカウントにインポートまたはお客様のストレージ アカウントからエクスポートすることができます。 詳しくは、[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../common/storage-import-export-service.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

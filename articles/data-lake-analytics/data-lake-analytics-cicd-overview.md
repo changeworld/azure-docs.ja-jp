@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544820"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60333862"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法  
 
@@ -44,7 +44,7 @@ U-SQL プロジェクトのビルド タスクを設定する前に、U-SQL プ�
 ない場合、プロジェクトを移行する 2 つのオプションがあります。
 
 - オプション 1:古いインポート項目を前述の項目に変更します。
-- オプション 2:古いプロジェクトを Azure Data Lake Tools for Visual Studio で開きます。 2.3.3000.0 よりも新しいバージョンを使用します。 古いプロジェクト テンプレートが自動的に最新バージョンにアップグレードされます。 2.3.3000.0 より新しいバージョンで作成された新しいプロジェクトでは、新しいテンプレートが使用されます。
+- オプション 2:古いプロジェクトを Azure Data Lake Tools for Visual Studio で開きます。 2\.3.3000.0 よりも新しいバージョンを使用します。 古いプロジェクト テンプレートが自動的に最新バージョンにアップグレードされます。 2\.3.3000.0 より新しいバージョンで作成された新しいプロジェクトでは、新しいテンプレートが使用されます。
 
 ### <a name="get-nuget"></a>NuGet を入手する
 
@@ -81,9 +81,9 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 * **USQLSDKPath=\<U-SQL Nuget package>\build\runtime**。 このパラメーターは、U-SQL 言語サービス用の NuGet パッケージのインストール パスを参照します。
 * **USQLTargetType=Merge or SyntaxCheck**:
-    * **Merge**。 マージ モードでコードビハインド ファイルをコンパイルします。 たとえば、**.cs**、**.py**、**.r** などのファイルです。 結果のユーザー定義コード ライブラリを U-SQL スクリプトにインライン展開します。 たとえば、dll バイナリ、Python、R などのコードです。
+    * **Merge**。 マージ モードでコードビハインド ファイルをコンパイルします。 たとえば、 **.cs**、 **.py**、 **.r** などのファイルです。 結果のユーザー定義コード ライブラリを U-SQL スクリプトにインライン展開します。 たとえば、dll バイナリ、Python、R などのコードです。
     * **SyntaxCheck**。 SyntaxCheck モードでは、まずコードビハインド ファイルが U-SQL スクリプトにマージされます。 次に、U-SQL スクリプトがコンパイルされ、コードが検証されます。
-* **DataRoot=\<DataRoot パス>**。 DataRoot は SyntaxCheck モードの場合にのみ必要です。 SyntaxCheck モードでスクリプトをビルドすると、MSBuild によってスクリプト内のデータベース オブジェクトに対する参照がチェックされます。 ビルド前に、U-SQL データベースから参照されるオブジェクトを含め、一致するローカル環境をビルド コンピューターの DataRoot フォルダー上にセットアップしてください。 [U-SQL データベース プロジェクトを参照する](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)ことによって、これらのデータベース依存関係を管理することもできます。 MSBuild ではデータベース オブジェクト参照のみがチェックされ、ファイルはチェックされません。
+* **DataRoot=\<DataRoot パス>** 。 DataRoot は SyntaxCheck モードの場合にのみ必要です。 SyntaxCheck モードでスクリプトをビルドすると、MSBuild によってスクリプト内のデータベース オブジェクトに対する参照がチェックされます。 ビルド前に、U-SQL データベースから参照されるオブジェクトを含め、一致するローカル環境をビルド コンピューターの DataRoot フォルダー上にセットアップしてください。 [U-SQL データベース プロジェクトを参照する](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)ことによって、これらのデータベース依存関係を管理することもできます。 MSBuild ではデータベース オブジェクト参照のみがチェックされ、ファイルはチェックされません。
 * **EnableDeployment=true** または **false**。 EnableDeployment は、ビルド処理中に参照されている U-SQL データベースをデプロイできるかどうかを示します。 U-SQL データベース プロジェクトを参照し、U-SQL スクリプトでデータベース オブジェクトを使用する場合は、このパラメーターを **true** に設定します。
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Azure Pipelines を使用した継続的インテグレーション
@@ -92,7 +92,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 ![U-SQL プロジェクトの MSBuild タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
-1.  `Azure.DataLake.USQL.SDK` を含むソリューションで参照する NuGet パッケージを取得する NuGet 復元タスクを追加して、MSBuild で U-SQL 言語ターゲットを見つけられるようにします。 手順 2 で直接 MSBuild 引数サンプルを使用する場合は、**[詳細設定]** > **[宛先ディレクトリ]** を `$(Build.SourcesDirectory)/packages` に設定します。
+1.  `Azure.DataLake.USQL.SDK` を含むソリューションで参照する NuGet パッケージを取得する NuGet 復元タスクを追加して、MSBuild で U-SQL 言語ターゲットを見つけられるようにします。 手順 2 で直接 MSBuild 引数サンプルを使用する場合は、 **[詳細設定]**  >  **[宛先ディレクトリ]** を `$(Build.SourcesDirectory)/packages` に設定します。
 
     ![U-SQL プロジェクトの NuGet 復元タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
@@ -328,7 +328,7 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
    ![U-SQL プロジェクトの CI/CD MSBuild タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
 
-1. `Azure.DataLake.USQL.SDK` を含むソリューションで参照する NuGet パッケージを取得する NuGet 復元タスクを追加して、MSBuild で U-SQL 言語ターゲットを見つけられるようにします。 手順 2 で直接 MSBuild 引数サンプルを使用する場合は、**[詳細設定]** > **[宛先ディレクトリ]** を `$(Build.SourcesDirectory)/packages` に設定します。
+1. `Azure.DataLake.USQL.SDK` を含むソリューションで参照する NuGet パッケージを取得する NuGet 復元タスクを追加して、MSBuild で U-SQL 言語ターゲットを見つけられるようにします。 手順 2 で直接 MSBuild 引数サンプルを使用する場合は、 **[詳細設定]**  >  **[宛先ディレクトリ]** を `$(Build.SourcesDirectory)/packages` に設定します。
 
    ![U-SQL プロジェクトの CI/CD NuGet タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 

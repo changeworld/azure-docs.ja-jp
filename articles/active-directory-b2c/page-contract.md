@@ -1,27 +1,31 @@
 ---
-title: Azure Active Directory B2C でページ コントラクトを選択する | Microsoft Docs
+title: ページ コントラクトを選択する - Azure Active Directory B2C
 description: Azure Active Directory B2C でページ コントラクトを選択する方法について説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: davidmu
+ms.date: 07/04/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4cd29df19179f07fd9b61a2f484b1d49cc05c4cf
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f7098d805b0e3f1527587fc3411cd4c3b234b057
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570583"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540387"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>カスタム ポリシーを使用して Azure Active Directory B2C でページ コントラクトを選択する | Microsoft Docs
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-ユーザー フローを使用しているか、カスタム ポリシーを使用しているかに関係なく、Azure Active Directory (Azure AD) B2C ポリシーでクライアント側 JavaScript コードを有効にできます。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](active-directory-b2c-overview-custom.md)に要素を追加し、ページ コントラクトを選択して要求内に[b2clogin.com](b2clogin.md)を使用します。 ページ コントラクトは、Azure AD B2C が提供する要素とお客様が指定するコンテンツの関連付けです。 この記事では、カスタム ポリシーでページ コントラクトを構成して、Azure AD B2C でページ コントラクトを選択する方法について説明します。
+ユーザー フローを使用しているか、カスタム ポリシーを使用しているかに関係なく、Azure Active Directory (Azure AD) B2C ポリシーでクライアント側 JavaScript コードを有効にできます。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](active-directory-b2c-overview-custom.md)に要素を追加し、ページ コントラクトを選択して要求内に[b2clogin.com](b2clogin.md)を使用します。
+
+ページ コントラクトは、Azure AD B2C が提供する要素とお客様が指定するコンテンツの関連付けです。
+
+この記事では、カスタム ポリシーでページ コントラクトを構成して、Azure AD B2C でページ コントラクトを選択する方法について説明します。
 
 > [!NOTE]
 > ユーザー フローに対して JavaScript を有効にする場合、「[avaScript and page contract versions in Azure Active Directory B2C](user-flow-javascript-overview.md)」(Azure Active Directory B2Cでの JavaScript とページ コントラクト バージョン) を参照してください。
@@ -42,27 +46,54 @@ ms.locfileid: "64570583"
 </ContentDefinition>
 ```
 
-ページ コントラクトを選択するには、ポリシーで [ContentDefinitions](contentdefinitions.md) 内の **DataUri** 値を変更します。 古い **DataUri** 値から新しい値に切り替えると、不変パッケージを選択することになります。 このパッケージを使用するメリットは、それが変更されたり、ページ上で予期しない動作が生じたりすることがないとわかっている点です。 
+ページ コントラクトを選択するには、ポリシーで [ContentDefinitions](contentdefinitions.md) 内の **DataUri** 値を変更します。 古い **DataUri** 値から新しい値に切り替えると、不変パッケージを選択することになります。 このパッケージを使用するメリットは、それが変更されたり、ページ上で予期しない動作が生じたりすることがないとわかっている点です。
 
-ページ コントラクトを設定するには、次の表を使用して **DataUri** 値を見つけます。 
+ページ コントラクトを設定するには、次の表を使用して **DataUri** 値を見つけます。
 
 | 古い DataUri 値 | 新しい DataUri 値 |
 | ----------------- | ----------------- |
-| urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0 | urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0 |
-| urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0 | urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0 | 
-| urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0 | urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0 |
-| urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0 | urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0 |
-| urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0 | urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0 |
-| urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0 | urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0 |
-| urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0 | urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0 | 
-| urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0 | urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0 |
-| urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0 | urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0 |
-| urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0 | urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0 |
-| urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0 | urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0 |
+| `urn:com:microsoft:aad:b2c:elements:claimsconsent:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:claimsconsent:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.1.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.0.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.1.0` |
+
+## <a name="version-change-log"></a>バージョンの変更ログ
+
+ページ コントラクト パッケージは定期的に更新され、ページ要素に修正と機能強化が加えられます。 次の変更ログは、各バージョンで導入された変更を示しています。
+
+### <a name="110"></a>1.1.0
+
+- 例外ページ (globalexception)
+  - アクセシビリティの修正
+  - 連絡先がない場合のポリシーからの既定のメッセージが削除されました
+  - 既定の CSS が削除されました
+- MFA ページ (多要素)
+  - [Confirm Code]\(コードの確認\) ボタンが削除されました
+  - コードの入力フィールドは、最大 6 文字の入力のみを受け取るようになりました
+  - 6 桁のコードを入力すると、入力したコードの確認がページによって自動的に試行されます。ボタンをクリックする必要はありません。
+  - コードが正しくない場合、入力フィールドは自動的にクリアされます
+  - 正しくないコードが 3 回試行されると、B2C からサービスにエラーが送信されます
+  - アクセシビリティの修正
+  - 既定の CSS が削除されました
+- セルフアサート ページ (selfasserted)
+  - キャンセル アラートが削除されました
+  - エラー要素の CSS クラス
+  - エラーの表示/非表示ロジックが改善されました
+  - 既定の CSS が削除されました
+- SSP が統一されました (unifiedssp)
+  - サインインしたままにする (KMSI) コントロールが追加されました
+
+### <a name="100"></a>1.0.0
+
+- 最初のリリース
 
 ## <a name="next-steps"></a>次の手順
 
 アプリケーションのユーザー インターフェイスをカスタマイズする方法の詳細については、「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」を参照してください。
-
-
-

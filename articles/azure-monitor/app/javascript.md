@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: fee172eccd79fd28e281b2beece9702630ac39b5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2192bad89764f20c24c85d9571bebbd6518de307
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001189"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66387267"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
@@ -57,17 +57,17 @@ and before any other scripts. Your first data will appear
 automatically in just a few seconds.
 -->
 <script type="text/javascript">
-var appInsights=window.appInsights||function(a){
-  function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){
+  function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/next/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t
   }({
       instrumentationKey:"<your instrumentation key>"
   });
-  
-window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+
+window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
-追跡するすべてのページの `</head>` タグの直前にスクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。 例: 
+追跡するすべてのページの `</head>` タグの直前にスクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。 例:
 
 * ASP.NET MVC プロジェクトで、 `View\Shared\_Layout.cshtml`
 * SharePoint サイトのコントロール パネルで、[ [サイト設定 / マスター ページ](sharepoint.md)] を開きます。
@@ -86,7 +86,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
       // Insert here
     });
 
-[利用できるパラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) の例を次に示します。
+構成パラメーターの完全な一覧については、[GitHub のページ](https://github.com/microsoft/applicationinsights-js#configuration)を参照してください。 使用可能なパラメーターには、次のものがあります。
 
     // Send telemetry immediately without batching.
     // Remember to remove this when no longer required, as it
@@ -96,17 +96,21 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
     // Don't log browser exceptions.
     disableExceptionTracking: boolean,
 
+    // Set false to enable autocollection of [Fetch requests](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) (disabled by default)
+    disableFetchTracking: boolean, // default is true
+    
     // Don't log ajax calls.
     disableAjaxTracking: boolean,
 
     // Limit number of Ajax calls logged, to reduce traffic.
     maxAjaxCallsPerView: 10, // default is 500
-
+    
     // Time page load up to execution of first trackPageView().
     overridePageViewDuration: boolean,
 
     // Set dynamically for an authenticated user.
     accountId: string,
+    
 
 ## <a name="run"></a>アプリを実行する
 Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。 **F5** キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
@@ -118,7 +122,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![In portal.azure.com, open your app's resource and click Settings, Browser](./media/javascript/03.png)
 
-まだデータが表示されませんか?  ページの上部にある **[更新]** をクリックします。 まだは何も表示されませんか? [トラブルシューティング](troubleshoot-faq.md)に関するページを参照します。
+まだデータが表示されませんか? ページの上部にある **[更新]** をクリックします。 まだは何も表示されませんか? [トラブルシューティング](troubleshoot-faq.md)に関するページを参照します。
 
 [ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された [メトリックス エクスプローラーのブレード](metrics-explorer.md) です。 時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。 **[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
 

@@ -6,12 +6,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4ca3dddb2b5ea4897ff82f1d91e88dc656305453
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8396f682558b71ca99af845bd51f7b2c8059f79b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721583"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67072015"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop YARN のトラブルシューティング
 
@@ -31,7 +31,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 | thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
-1. **[Ambari Views]** アイコンを選択し、グリッド パターンを選択します。 次に、**[YARN Queue Manager]\(YARN キュー マネージャー\)** を選択します。
+1. **[Ambari Views]** アイコンを選択し、グリッド パターンを選択します。 次に、 **[YARN Queue Manager]\(YARN キュー マネージャー\)** を選択します。
 
     ![Ambari Views アイコンをクリックする](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
 2. **default** キューを選びます。
@@ -40,7 +40,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 3. **default** キューで、**容量**を 50% から 25% に変更します。 **thriftsvr** キューで、**容量**を 25% に変更します。
 
     ![default キューと thriftsvr キューの容量を 25% に変更する](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
-4. 新しいキューを作成し、**[キューの追加]** を選択します。
+4. 新しいキューを作成し、 **[キューの追加]** を選択します。
 
     ![[キューの追加] を選択する](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
 
@@ -48,7 +48,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
     ![キューの名前を Spark にする](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
 
-6. **[容量]** の値は 50% のままにして、**[アクション]** ボタンをクリックします。
+6. **[容量]** の値は 50% のままにして、 **[アクション]** ボタンをクリックします。
 
     ![[アクション] ボタンを選択する](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
 7. **[Save and Refresh Queues]\(キューの保存と更新\)** を選択します。
@@ -132,7 +132,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 ### <a name="additional-reading-2"></a>その他の情報
 
 - [SSH を使用して HDInsight (Apache Hadoop) に接続する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
-- [Apache Hadoop YARN の概念とアプリケーション](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
+- [Apache Hadoop YARN の概念とアプリケーション](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 
 ### <a name="see-also"></a>関連項目

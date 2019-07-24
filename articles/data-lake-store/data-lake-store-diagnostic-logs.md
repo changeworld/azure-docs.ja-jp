@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877960"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60878714"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の診断ログへのアクセス
 Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方法、およびそのアカウント用に収集されたログを表示する方法について説明します。
@@ -31,7 +31,7 @@ Azure Data Lake Storage Gen1 アカウントの診断ログを有効にする方
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントの診断ログを有効にする
 1. 新しい [Azure Portal](https://portal.azure.com) にサインオンします。
 2. Data Lake Storage Gen1 アカウントを開き、Data Lake Storage Gen1 アカウント ブレードから **[診断設定]** をクリックします。
-3. **[診断設定]** ブレードで、**[診断を有効にする]** をクリックします。
+3. **[診断設定]** ブレードで、 **[診断を有効にする]** をクリックします。
 
     ![診断ログの有効化](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "診断ログの有効化")
 
@@ -61,7 +61,7 @@ Data Lake Storage Gen1 アカウントのログ データを表示するには�
 * データが格納されている Azure Storage アカウントから
 
 ### <a name="using-the-data-lake-storage-gen1-settings-view"></a>Data Lake Storage Gen1 の [設定] ビューの使用
-1. Data Lake Storage Gen1 アカウントの **[設定]** ブレードから、**[診断ログ]** をクリックします。
+1. Data Lake Storage Gen1 アカウントの **[設定]** ブレードから、 **[診断ログ]** をクリックします。
    
     ![診断ログを表示する](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "診断ログを表示する") 
 2. **[診断ログ]** ブレードには、**監査ログ**と**要求ログ**によって分類されたログが表示されます。
@@ -115,25 +115,25 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 #### <a name="request-log-schema"></a>要求ログのスキーマ
 | Name | Type | 説明 |
 | --- | --- | --- |
-| time |String |ログのタイムスタンプ (UTC) |
-| resourceId |String |操作が行われたリソースの ID |
-| category |String |ログのカテゴリ。 **Requests**など。 |
-| operationName |String |ログに記録される操作の名前。 getfilestatus など。 |
-| resultType |String |操作の状態。200 など。 |
-| callerIpAddress |String |要求を行うクライアントの IP アドレス |
-| correlationId |String |関連するログ エントリのセットをグループ化するために使用できる、ログの ID |
+| time |string |ログのタイムスタンプ (UTC) |
+| resourceId |string |操作が行われたリソースの ID |
+| category |string |ログのカテゴリ。 **Requests**など。 |
+| operationName |string |ログに記録される操作の名前。 getfilestatus など。 |
+| resultType |string |操作の状態。200 など。 |
+| callerIpAddress |string |要求を行うクライアントの IP アドレス |
+| correlationId |string |関連するログ エントリのセットをグループ化するために使用できる、ログの ID |
 | identity |Object |ログを生成した ID |
 | properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="request-log-properties-schema"></a>要求ログのプロパティのスキーマ
 | Name | Type | 説明 |
 | --- | --- | --- |
-| HttpMethod |String |操作に使用される HTTP メソッド。 GET など。 |
-| Path |String |操作が実行されたパス |
+| HttpMethod |string |操作に使用される HTTP メソッド。 GET など。 |
+| Path |string |操作が実行されたパス |
 | RequestContentLength |int |HTTP 要求のコンテンツの長さ |
-| ClientRequestId |String |この要求を一意に識別する ID |
-| StartTime |String |サーバーが要求を受信した時刻 |
-| EndTime |String |サーバーが応答を送信した時間 |
+| ClientRequestId |string |この要求を一意に識別する ID |
+| StartTime |string |サーバーが要求を受信した時刻 |
+| EndTime |string |サーバーが応答を送信した時間 |
 
 ### <a name="audit-logs"></a>監査ログ
 JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
@@ -162,20 +162,20 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 #### <a name="audit-log-schema"></a>監査ログのスキーマ
 | Name | Type | 説明 |
 | --- | --- | --- |
-| time |String |ログのタイムスタンプ (UTC) |
-| resourceId |String |操作が行われたリソースの ID |
-| category |String |ログのカテゴリ。 **Audit**など。 |
-| operationName |String |ログに記録される操作の名前。 getfilestatus など。 |
-| resultType |String |操作の状態。200 など。 |
-| resultSignature |String |操作に関する追加情報。 |
-| correlationId |String |関連するログ エントリのセットをグループ化するために使用できる、ログの ID |
+| time |string |ログのタイムスタンプ (UTC) |
+| resourceId |string |操作が行われたリソースの ID |
+| category |string |ログのカテゴリ。 **Audit**など。 |
+| operationName |string |ログに記録される操作の名前。 getfilestatus など。 |
+| resultType |string |操作の状態。200 など。 |
+| resultSignature |string |操作に関する追加情報。 |
+| correlationId |string |関連するログ エントリのセットをグループ化するために使用できる、ログの ID |
 | identity |Object |ログを生成した ID |
 | properties |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="audit-log-properties-schema"></a>監査ログのプロパティのスキーマ
 | Name | Type | 説明 |
 | --- | --- | --- |
-| StreamName |String |操作が実行されたパス |
+| StreamName |string |操作が実行されたパス |
 
 ## <a name="samples-to-process-the-log-data"></a>ログ データ処理のサンプル
 Azure Data Lake Storage Gen1 から Azure Monitor ログにログを送信すると (Azure Monitor ログの使用の詳細については、「[Azure Monitor ログ検索で収集されたデータの表示または分析](../azure-monitor/learn/tutorial-viewdata.md)」を参照)、次のクエリによってユーザーの表示名、イベントの時刻、およびイベントの時刻でのイベント数の一覧を含むテーブルがビジュアル グラフと共に返されます。 これに変更を加えて、ユーザーの GUID などの属性を簡単に表示できます。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: victorh
-ms.openlocfilehash: 7f132c513354a87b4f1bd37db4c6c6ed8e0fd041
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: df741b34e1268c547723af87401760197d395780
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949963"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61293831"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS で DNS ゾーンを管理する方法
 
@@ -68,8 +68,8 @@ az account list
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>省略可能: Azure DNS Private Zones の機能 (パブリック プレビュー) のインストール/使用
-パブリック プレビュー段階の Azure DNS Private Zone の機能は、Azure CLI の拡張機能を介してリリースされます。 "dns" Azure CLI 拡張機能をインストールしてください。 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>省略可能:Azure DNS Private Zones の機能 (パブリック プレビュー) のインストール/使用
+Azure DNS Private Zone の機能は、Azure CLI を拡張したものであり、パブリック プレビューとしてリリースされます。 "dns" Azure CLI 拡張機能をインストールしてください。 
 ```
 az extension add --name dns
 ``` 
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>ヘルプの表示
 
-Azure DNS に関連するすべての Azure CLI コマンドは `az network dns` で始まります。 `--help` オプション (短縮形 `-h`) を使用すると、各コマンドのヘルプを利用できます。  例: 
+Azure DNS に関連するすべての Azure CLI コマンドは `az network dns` で始まります。 `--help` オプション (短縮形 `-h`) を使用すると、各コマンドのヘルプを利用できます。  例:
 
 ```azurecli
 az network dns --help

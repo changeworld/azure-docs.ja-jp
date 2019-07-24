@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ccac719c78ce2844a8dd37a80445e11baa4a488
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 22f3e4cde892a70ec331523524508a50008a4073
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962876"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483016"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Microsoft ID プラットフォーム (v2.0) に更新する理由
 
@@ -36,7 +36,7 @@ ms.locfileid: "65962876"
 
 * v1.0 エンドポイントでは、職場と学校のアカウント (Azure AD) でのみ、ご利用のアプリケーションにサインインすることができます。
 * Microsoft ID プラットフォーム エンドポイントでは、Azure AD からの職場と学校のアカウント、および個人の Microsoft アカウント (MSA) (hotmail.com、outlook.com、msn.com など) でサインインできます。
-* 両方のエンドポイントで、*[シングルテナント](single-and-multi-tenant-apps.md)* として構成されているアプリケーション、またはテナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) を指すように構成されている*マルチテナント* アプリケーションに対する Azure AD ディレクトリの*[ゲスト ユーザー](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* によるサインインも受け入れられます。
+* 両方のエンドポイントで、 *[シングルテナント](single-and-multi-tenant-apps.md)* として構成されているアプリケーション、またはテナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) を指すように構成されている*マルチテナント* アプリケーションに対する Azure AD ディレクトリの *[ゲスト ユーザー](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* によるサインインも受け入れられます。
 
 Microsoft ID プラットフォーム エンドポイントを使用した場合は、個人の Microsoft アカウントに加え、職場や学校のアカウントからのサインインを受け付けるアプリを記述することができます。 そのため、完全にアカウント非依存のアプリを作成することができます。 たとえば、アプリで [Microsoft Graph](https://graph.microsoft.io) を呼び出す場合、SharePoint サイトやディレクトリ データなど、いくつかの追加の機能とデータを職場のアカウントで使用できます。 しかし、[ユーザーのメールの読み取り](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_messages)など、多くのアクションでは、同じコードで個人アカウントおよび職場と学校のアカウントの両方のメールにアクセスすることができます。
 
@@ -46,7 +46,7 @@ Microsoft ID プラットフォーム エンドポイントの場合、Microsoft
 
 必要な OAuth 2.0 アクセス許可を事前に指定するには、Azure AD v1.0 エンドポイントを使用するアプリが必要になります。その例を以下に示します。
 
-![アクセス許可の登録 UI](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
+![アクセス許可の登録 UI を示す例](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
 
 アプリケーションの登録時に直接設定されるアクセス許可は**静的**となります。 アプリの静的アクセス許可は Azure portal で定義されており、コードを適切に維持できますが、開発者にとってはそれがいくつかの問題を引き起こす場合があります。
 

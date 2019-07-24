@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:Python で REST API を使用してモデルをトレーニングし、フォーム データを抽出する - Form Recognizer
+title: クイック スタート:Python で REST API を使用してモデルをトレーニングしてフォーム データを抽出する - Form Recognizer
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Python で Form Recognizer REST API を使用してモデルをトレーニングし、フォームからデータを抽出します。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: form-recognizer
+ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/24/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 139c0c29033dc45d07fd0987c2eee92308512329
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 63b58e5e667d03d7808973b0783ed98ab4cb5447
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65906971"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67605870"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>クイック スタート:Python で REST API を使用して Form Recognizer モデルをトレーニングし、フォーム データを抽出する
 
@@ -26,31 +26,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このクイック スタートを完了するには、以下が必要です。
 - アクセスが制限された Form Recognizer プレビューへのアクセス。 プレビューへのアクセスを取得するには、[Form Recognizer アクセス要求](https://aka.ms/FormRecognizerRequestAccess)フォームに記入して送信します。
 - インストールされている [Python](https://www.python.org/downloads/) (サンプルをローカルで実行する場合)。
-- 同じ種類の少なくとも 5 つのフォームのセット。 このクイックスタートでは、[サンプル データセット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。
+- 同じ種類の少なくとも 5 つのフォームのセット。 このデータをモデルのトレーニングに使用します。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Blob Storage アカウントのルートにデータをアップロードします。
 
 ## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
 
-Form Recognizer を使用するためのアクセスが認められている場合、複数のリンクおよびリソースを含むウェルカム メールを受信します。 そのメッセージ内の "Azure portal" リンクを使用して、Azure portal を開き、Form Recognizer リソースを作成します。 **[作成]** ウィンドウには以下の情報が表示されます。
+[!INCLUDE [create resource](../includes/create-resource.md)]
 
-|    |    |
-|--|--|
-| **Name** | リソースのわかりやすい名前。 わかりやすい名前 (*MyNameFaceAPIAccount* など) を使用することをお勧めします。 |
-| **サブスクリプション** | アクセスが許可されている Azure サブスクリプションを選択します。 |
-| **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
-| **[価格レベル]** | リソースのコストは、選択した価格レベルと使用量に依存します。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
-| **リソース グループ** | リソースを含む [Azure リソース グループ](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group)。 新しいグループを作成することも、既存のグループに追加することもできます。 |
+## <a name="train-a-form-recognizer-model"></a>Form Recognizer モデルをトレーニングする
 
-> [!IMPORTANT]
-> 通常、Azure portal で Cognitive Service リソースを作成するときに、マルチ サービスのサブスクリプション キー (複数の Cognitive Services で使用) または 単一サービスのサブスクリプション キー (特定の Cognitive Services でのみ使用) を作成するオプションがあります。 ただし、Form Recognizer はプレビュー リリースなので、複数のサービス サブスクリプションに含まれず、ウェルカム メールに記載されているリンクを使用しない限り、単一サービスのサブスクリプションを作成できません。
+まず、Azure Storage BLOB コンテナー内にトレーニング データのセットが必要です。 主な入力データと同じ種類/構造の入力済みフォーム (PDF ドキュメントやイメージ) が少なくとも 5 つ必要です。 または、2 つの入力済みフォームを持つ 1 つの空のフォームを使用できます。 空のフォームのファイル名には "empty" の語を含める必要があります。 トレーニング データをまとめるためのヒントとオプションについては、[カスタム モデル用のトレーニング データ セットの作成](../build-training-data-set.md)に関する記事を参照してください。
 
-Form Recognizer リソースがデプロイが完了すると、ポータルの **[すべてのリソース]** の一覧からこれを検索して選択します。 続いて、 **[キー]** タブを選択してサブスクリプション キーを表示します。 どちらのキーも、リソースへのアクセス権をアプリに与えます。 **KEY 1** の値をコピーします。 これは、次のセクションで使用します。
+Azure Blob コンテナー内のドキュメントを使用して Form Recognizer モデルをトレーニングするには、次の Python コードを実行して、**Train** API を呼び出します。 コードを実行する前に、次の変更を行います。
 
-## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
-
-サンプルを作成して実行するには、以下のコード スニペットに次の変更を加えます。
 1. `<Endpoint>` を、サブスクリプション キーを取得した Azure リージョンの Form Recognizer リソースのエンドポイント URL で置き換えます。
-1. `<SAS URL>` を、トレーニング データの場所の Azure BLOB Storage コンテナー共有アクセス署名 (SAS) URL で置き換えます。  
 1. `<Subscription key>` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
+1. `<SAS URL>` を Azure Blob ストレージ コンテナーの共有アクセス署名 (SAS) URL に置き換えます。 SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[共有アクセス署名の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります。`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+
     ```python
     ########### Python Form Recognizer Train #############
     from requests import post as http_post
@@ -124,9 +115,9 @@ Form Recognizer リソースがデプロイが完了すると、ポータルの 
 次に、ドキュメントを分析して、そこからキーと値のペアとテーブルを抽出します。 次の Python スクリプトを実行して **Model - Analyze** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
 1. `<Endpoint>` を、Form Recognizer サブスクリプション キーで取得したエンドポイントで置き換えます。 これは、Form Recognizer リソースの **[概要]** タブにあります。
-1. `<File Path>` を、データの抽出元となるフォームの場所のファイル パスまたは URL に置き換えます。
+1. `<path to your form>` をお使いのフォームのファイル パス (例: C:\temp\file.pdf) に置き換えます。
 1. `<modelID>` を、前のセクションで受信したモデル ID で置き換えます。
-1. `<file type>` を、ファイルの種類で置き換えます。 サポートされている種類は pdf、image/jpeg、image/png です。
+1. `<file type>` を、ファイルの種類で置き換えます。 サポートされている種類: `application/pdf`、`image/jpeg`、`image/png`。
 1. `<subscription key>` は、実際のサブスクリプション キーで置き換えてください。
 
     ```python
@@ -135,11 +126,11 @@ Form Recognizer リソースがデプロイが完了すると、ポータルの 
     
     # Endpoint URL
     base_url = r"<Endpoint>" + "/formrecognizer/v1.0-preview/custom"
-    file_path = r"<File Path>"
+    file_path = r"<path to your form>"
     model_id = "<modelID>"
     headers = {
         # Request headers
-        'Content-Type': 'application/<file type>',
+        'Content-Type': '<file type>',
         'Ocp-Apim-Subscription-Key': '<subscription key>',
     }
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 02/25/2019
+ms.date: 05/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 15118535578419f9e1230c5b2fcfd0d7c42257ea
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 638d7bfb0e396874415c1055c4b707a65caffa4e
+ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65909005"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67269306"
 ---
 # <a name="access-data-from-your-datastores"></a>データストアからデータにアクセスする
 
@@ -59,7 +59,19 @@ ds = ws.get_default_datastore()
 
 ### <a name="register-your-own-datastore-with-the-workspace"></a>ワークスペースで独自のデータストアを登録する
 
-既存の Azure Storage がある場合は、ワークスペース上のデータストアとして登録できます。   すべての登録メソッドは [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラス上にあり、register_azure_* という形式があります。 
+既存の Azure Storage がある場合は、ワークスペース上のデータストアとして登録できます。 
+
+<a name="store"></a>
+
+####  <a name="storage-guidance"></a>ストレージのガイダンス
+
+Blob Storage と BLOB データストアをお勧めします。 BLOB では Standard ストレージと Premium ストレージの両方を使用できます。 お勧めは Premium ストレージです。より高価になりますが、スループットの速度が上がるため、特に大規模なデータ セットに対するトレーニングでは、トレーニングの実行速度が向上する可能性があります。 ストレージ アカウントのコストの情報については、[Azure の料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service)に関するページをご覧ください。
+
+>[!NOTE]
+> Azure Machine Learning service では、特定のシナリオで役立つ可能性のあるその他の種類のデータストアもサポートされています。 たとえば、データベースに格納されたデータを使用してトレーニングする必要がある場合、AzureSQLDatabaseDatastore または AzurePostgreSqlDatastore を使用できます。 使用可能なデータストアの種類については、[こちらのテーブル](#matrix)をご覧ください。
+
+#### <a name="register-your-datastore"></a>データストアの登録
+すべての登録メソッドは [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラス上にあり、register_azure_* という形式があります。
 
 次の例では、Azure BLOB コンテナーまたは Azure ファイル共有のデータストアとしての登録を示しています。
 
@@ -74,7 +86,7 @@ ds = ws.get_default_datastore()
                                                create_if_not_exists=True)
   ```
 
-+ **Azure ファイル共有データストア**の場合、[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) を使用します。 例:  
++ **Azure ファイル共有データストア**の場合、[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) を使用します。 例: 
   ```Python
   ds = Datastore.register_azure_file_share(workspace=ws, 
                                            datastore_name='your datastore name', 
@@ -149,7 +161,7 @@ ds.download(target_path='your target path',
 <a name="train"></a>
 ## <a name="access-datastores-during-training"></a>トレーニング中のデータストアへのアクセス
 
-自分のデータストアをコンピューティング先で使用できるようにすると、トレーニング スクリプト内のパラメーターとしてデータストアへのパスを渡すだけで、トレーニングの実行中にアクセスすることができます (トレーニングや検証データなど)。
+自分のデータストアをトレーニング コンピューティング先で使用できるようにすると、トレーニング スクリプト内のパラメーターとしてデータストアへのパスを渡すだけで、トレーニングの実行中にアクセスすることができます (トレーニングや検証データなど)。
 
 次の表では、実行中にデータストアの使用方法をコンピューティング先に指示する [`DataReference`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) メソッドの一覧を示します。
 
@@ -178,28 +190,30 @@ ds.path('./bar').as_download()
 > [!NOTE]
 > すべての `ds` または `ds.path` オブジェクトは、コンピューティング先でのマウント/ダウンロード パスを表す値を持つ、`"$AZUREML_DATAREFERENCE_XXXX"` という形式の環境変数名に解決されます。 コンピューティング先でのデータストア パスは、トレーニング スクリプトの実行パスと同じであるとは限りません。
 
-### <a name="compute-context-and-datastore-type-matrix"></a>コンピューティング コンテキストとデータストアの型の関係
+<a name="matrix"></a>
+### <a name="training-compute-and-datastore-matrix"></a>トレーニング コンピューティングとデータストアのマトリックス
 
-次の表では、コンピューティング コンテキストとデータストアの異なる組み合わせのシナリオで使用可能なデータ アクセス関数を示します。 この表の "パイプライン" という用語は、[Azure Machine Learning パイプライン](https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines)の入力または出力としてデータストアを使用する機能を示します。
+次のマトリックスでは、トレーニング コンピューティング先とデータストアの異なる組み合わせのシナリオで使用可能なデータ アクセス機能を示します。 詳細については、[Azure Machine Learning のトレーニング コンピューティング先](how-to-set-up-training-targets.md#compute-targets-for-training)に関する記事を参照してください。
 
-||ローカル コンピューティング|Azure Machine Learning コンピューティング|データ転送|Databricks|HDInsight|Azure Batch|Azure Data Lake Analytics|Virtual Machines|
--|--|-----------|----------|---------|-----|--------------|---------|---------|
-|AzureBlobDatastore|[`as_download()`] [`as_upload()`]|[`as_mount()`]<br> [`as_download()`] [`as_upload()`] <br> パイプライン|パイプライン|パイプライン|[`as_download()`] <br> [`as_upload()`]|パイプライン||[`as_download()`] <br> [`as_upload()`]|
-|AzureFileDatastore|[`as_download()`] [`as_upload()`]|[`as_mount()`]<br> [`as_download()`] [`as_upload()`] パイプライン |||[`as_download()`] [`as_upload()`]|||[`as_download()`] [`as_upload()`]|
-|AzureDataLakeDatastore|||パイプライン|パイプライン|||パイプライン||
-|AzureDataLakeGen2Datastore|||パイプライン||||||
-|AzureDataPostgresSqlDatastore|||パイプライン||||||
-|AzureSqlDatabaseDataDatastore|||パイプライン||||||
-
+|Compute|[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)                                       |[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)                                      |[AzureDataLakeDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakedatastore?view=azure-ml-py) |[AzureDataLakeGen2Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_data_lake_datastore.azuredatalakegen2datastore?view=azure-ml-py) [AzurePostgreSqlDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_postgre_sql_datastore.azurepostgresqldatastore?view=azure-ml-py) [AzureSqlDatabaseDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_sql_database_datastore.azuresqldatabasedatastore?view=azure-ml-py) |
+|--------------------------------|----------------------------------------------------------|----------------------------------------------------------|------------------------|----------------------------------------------------------------------------------------|
+| ローカル|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、[as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、[as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)|該当なし         |該当なし                                                                         |
+| Azure Machine Learning コンピューティング |[as_mount()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)、[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、[as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)、[ML&nbsp;pipelines](concept-ml-pipelines.md)|[as_mount()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)、[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、[as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)、[ML&nbsp;pipelines](concept-ml-pipelines.md)|該当なし         |該当なし                                                                         |
+| 仮想マシン               |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)、[as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                           | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |該当なし         |該当なし                                                                         |
+| HDInsight                      |[as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            | [as_download()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-) [as_upload()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)                            |該当なし         |該当なし                                                                         |
+| データ転送                  |[ML&nbsp;パイプライン](concept-ml-pipelines.md)                                               |該当なし                                           |[ML&nbsp;パイプライン](concept-ml-pipelines.md)            |[ML&nbsp;パイプライン](concept-ml-pipelines.md)                                                                            |
+| Databricks                     |[ML&nbsp;パイプライン](concept-ml-pipelines.md)                                              |該当なし                                           |[ML&nbsp;パイプライン](concept-ml-pipelines.md)             |該当なし                                                                         |
+| Azure Batch                    |[ML&nbsp;パイプライン](concept-ml-pipelines.md)                                               |該当なし                                           |該当なし         |該当なし                                                                         |
+| Azure Data Lake Analytics       |該当なし                                           |該当なし                                           |[ML&nbsp;パイプライン](concept-ml-pipelines.md)             |該当なし                                                                         |
 
 > [!NOTE]
-> [`as_mount()`] ではなく [`as_download()`] を使用して、高度に反復的で大規模なデータ処理を高速で実行するシナリオがある場合があります。これは実験的に検証することができます。
+> `as_mount()` ではなく `as_download()` を使用して、高度に反復的で大規模なデータ処理を高速で実行するシナリオがある場合があります。これは実験的に検証することができます。
 
 ### <a name="examples"></a>例 
 
 次のコード例は、トレーニング中に自分のデータストアにアクセスするための [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) クラスに固有のものです。
 
-このコードでは、`script_params` で定義したパラメーターを使用し、指定したソース ディレクトリのトレーニング スクリプト `train.py` を使用して、エスティメーターが作成されます。すべては、指定したコンピューティング先で行われます。
+このコードでは、`script_params` で定義したパラメーターを使用し、指定したソース ディレクトリのトレーニング スクリプト `train.py` を使用して、エスティメーターが作成されます。すべては、指定したトレーニング コンピューティング先で行われます。
 
 ```Python
 from azureml.train.estimator import Estimator

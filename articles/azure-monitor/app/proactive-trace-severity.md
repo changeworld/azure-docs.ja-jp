@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
 ms.openlocfilehash: 10b909fd5239546047aa4696a1f6a68a703778c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001246"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60306396"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>トレースの重大度の比率の低下 (プレビュー)
 
@@ -33,7 +33,7 @@ ms.locfileid: "58001246"
 
 ## <a name="how-do-i-fix-it"></a>どのように修正すればよいですか
 通知には、診断プロセスでサポートされる診断情報が含まれています。
-1. **トリアージ**:  通知では影響を受ける操作の数が示されます。 この情報を基に、問題に優先順位を割り当てることができます。
+1. **トリアージ**: 通知では影響を受ける操作の数が示されます。 この情報を基に、問題に優先順位を割り当てることができます。
 2. **範囲**。 問題の影響を受けるのはすべてのトラフィックか、それとも一部の操作だけか。 この情報を通知から取得できます。
 3. **診断**。 サポート情報にリンクしている関連項目とレポートを使用して、問題の詳細な診断に役立てることができます。
 

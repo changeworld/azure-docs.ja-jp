@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110785"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60551588"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Azure ダッシュボードでマークダウン タイルを使用して、カスタム コンテンツを表示する
 
@@ -26,13 +26,13 @@ ms.locfileid: "58110785"
 
    ![ダッシュボード編集ビューを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-2. **[タイル ギャラリー]** で **[Markdown]\(マークダウン\)** というタイルを見つけて、**[追加]** をクリックします。 タイルがダッシュボードに追加され、**[マークダウンの編集]** ウィンドウが開きます。
+2. **[タイル ギャラリー]** で **[Markdown]\(マークダウン\)** というタイルを見つけて、 **[追加]** をクリックします。 タイルがダッシュボードに追加され、 **[マークダウンの編集]** ウィンドウが開きます。
 
-1. **[タイトル]**、**[サブタイトル]**、および **[コンテンツ]** フィールドを編集して、タイルをカスタマイズします。 以下の例では、マークダウン タイルがカスタム ヘルプ デスク情報を表示するように編集されています。
+1. **[タイトル]** 、 **[サブタイトル]** 、および **[コンテンツ]** フィールドを編集して、タイルをカスタマイズします。 以下の例では、マークダウン タイルがカスタム ヘルプ デスク情報を表示するように編集されています。
 
    ![マークダウン タイルの編集ビューを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
 
-4. **[完了]** を選択して、**[マークダウンの編集]** ウィンドウを閉じます。 コンテンツが [マークダウン] タイルに表示されます。これは、右下隅のハンドルをドラッグしてサイズ変更できます。
+4. **[完了]** を選択して、 **[マークダウンの編集]** ウィンドウを閉じます。 コンテンツが [マークダウン] タイルに表示されます。これは、右下隅のハンドルをドラッグしてサイズ変更できます。
 
    ![カスタムのマークダウン タイルを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 

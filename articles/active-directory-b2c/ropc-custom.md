@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C でリソース所有者のパスワード資格情報フローを構成する | Microsoft Docs
 description: Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する方法を説明します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d86caf5e5c6df29e00f17462f6a06602ff1245d8
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d01e8ce894bfb1ece3555eddc714d2d3a80e44b5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688858"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164846"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 
@@ -43,11 +43,11 @@ ROPC フローでは次のオプションがサポートされています。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. *ROPC_Auth_app* などのアプリケーションの名前を入力します。
 6. **[Web App/Web API]\(Web アプリ/Web API\)** に対して **[いいえ]** を選択し、次に **[Native client]\(ネイティブ クライアント\)** に対して **[はい]** を選択します。
-7. その他のすべての値はそのままにして、**[作成]** を選択します。
+7. その他のすべての値はそのままにして、 **[作成]** を選択します。
 8. 新しいアプリケーションを選択し、後で使用するためにアプリケーション ID を記録します。
 
 ##  <a name="create-a-resource-owner-policy"></a>リソース所有者のポリシーを作成する
@@ -140,7 +140,7 @@ ROPC フローでは次のオプションがサポートされています。
     </TechnicalProfile>
     ```
 
-    **client_id** と **resource_id** の **DefaultValue** を、前提条件のチュートリアルで作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
+    **client_id** の **DefaultValue** を、前提条件のチュートリアルで作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。 **resource_id** の **DefaultValue** も、前提条件のチュートリアルで作成した IdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。  
 
 5. 次の **ClaimsProvider** 要素とその技術プロファイルを、**ClaimsProviders** 要素に追加します。
 
@@ -233,7 +233,7 @@ ROPC フローでは次のオプションがサポートされています。
     </UserJourney>
     ```
 
-7. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、**[ポリシーのアップロード]** を選択します。
+7. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
 8. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
 9. **[アップロード]** をクリックします。
 
@@ -254,8 +254,8 @@ ROPC フローでは次のオプションがサポートされています。
     <OutputClaim ClaimTypeReferenceId="surname" DefaultValue="" />
     ```
 
-5. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、**[ポリシーのアップロード]** を選択します。
-6. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
+5. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
+6. **[ポリシーが存在する場合は上書きする]** を有効にし、*ROPC_Auth.xml* ファイルを参照して選択します。
 7. **[アップロード]** をクリックします。
 
 ## <a name="test-the-policy"></a>ポリシーをテストする
@@ -269,7 +269,7 @@ ROPC フローでは次のオプションがサポートされています。
 
 | キー | 値 |
 | --- | ----- |
-| ユーザー名 | `user-account` |
+| username | `user-account` |
 | password | `password1` |
 | grant_type | password |
 | scope | openid `application-id` offline_access |

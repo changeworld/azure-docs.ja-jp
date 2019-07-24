@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
 ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994018"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60497422"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173268"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60348282"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect で使用するインストールの種類の選択
 Azure AD Connect には、新規インストール用に簡易とカスタマイズの 2 種類のインストールが用意されています。 このトピックは、どちらのオプションでインストールするかを決める際に役立ちます。

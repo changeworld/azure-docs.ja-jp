@@ -4,7 +4,7 @@ description: SAP HANA on Azure (L インスタンス) 用ディザスター リ�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7d4f6216b4a57796ab5c0296713316dd97c47a8
-ms.sourcegitcommit: 60606c5e9a20b2906f6b6e3a3ddbcb6c826962d6
+ms.openlocfilehash: 6454c82e3d9c73d1b5a4b2224abf1ab63a798355
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2019
-ms.locfileid: "64987889"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67709646"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>ディザスター リカバリーのフェールオーバー手順
 
@@ -57,7 +57,7 @@ DR サイトにフェールオーバーするときは、2 つのケースを考
 
       出力では、**hdbdaemon** プロセスが停止状態であり、実行中または開始済み状態の他の HANA プロセスが存在しないことが示されます。
 1. ディザスター リカバリー サイトをどのスナップショット名やどの SAP HANA バックアップ ID に復元するかを確認します。 実際のディザスター リカバリーの場合、通常、このスナップショットは最新のスナップショットです。 失われたデータを復旧する必要がある場合は、古いスナップショットを選択します。
-1. 高優先度のサポート要求を通じて Azure サポートに問い合わせます。 そのスナップショットの名前と日付、または HANA バックアップ ID を指定して、 DR サイト上でのスナップショットの復元を要請します。 既定では、オペレーション チームは /hana/data ボリュームのみを復元します。 /hana/logbackups ボリュームも必要な場合は、その点を明確に伝える必要があります。 */hana/shared ボリュームは復元しないでください。* 代わりに、PRD の /hana/shared ボリュームを再びマウントした後に、**.snapshot** ディレクトリとそのサブディレクトリの global.ini など、特定のファイルを選択してください。 
+1. 高優先度のサポート要求を通じて Azure サポートに問い合わせます。 そのスナップショットの名前と日付、または HANA バックアップ ID を指定して、 DR サイト上でのスナップショットの復元を要請します。 既定では、オペレーション チームは /hana/data ボリュームのみを復元します。 /hana/logbackups ボリュームも必要な場合は、その点を明確に伝える必要があります。 */hana/shared ボリュームは復元しないでください。* 代わりに、PRD の /hana/shared ボリュームを再びマウントした後に、 **.snapshot** ディレクトリとそのサブディレクトリの global.ini など、特定のファイルを選択してください。 
 
    オペレーション チーム側では、次の手順が発生します。
 

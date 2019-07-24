@@ -2,18 +2,18 @@
 title: Azure Kubernetes Service (AKS) クラスターで Virtual Kubelet を実行する
 description: Azure Kubernetes Service (AKS) で Virtual Kubelet を使用して、Azure Container Instances 上で Linux および Windows コンテナーを実行する方法について説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/14/2018
-ms.author: iainfou
-ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 05/31/2019
+ms.author: mlearned
+ms.openlocfilehash: f18992be353d2d6cc739412d98ccd97d5e78d4c7
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054014"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613856"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
 
@@ -22,17 +22,39 @@ Azure Container Instances (ACI) には Azure 内でコンテナーを実行す�
 Azure Container Instances に Virtual Kubelet プロバイダーを使用する場合、標準の Kubernetes ノードであるかのように、コンテナー インスタンス上で Linux と Windows 両方のコンテナーをスケジュールすることができます。 この構成では、Kubernetes の機能と、コンテナー インスタンスの管理値とコスト上の利点の両方を活用できます。
 
 > [!NOTE]
-> AKS では、ACI でコンテナーをスケジュールするための "*仮想ノード*" と呼ばれる組み込みサポートを利用できるようになりました。 これらの仮想ノードでは、現在、Linux コンテナー インスタンスがサポートされています。 Windows コンテナー インスタンスをスケジュールする必要がある場合は、引き続き Virtual Kubelet を使用できます。 それ以外の場合は、この記事に記載されている手動の Virtual Kubelet の手順ではなく、仮想ノードを使用する必要があります。 仮想ノードを使い始めるには、[Azure CLI][virtual-nodes-cli] または [Azure portal][virtual-nodes-portal] を使用します。
+> AKS では、ACI でコンテナーをスケジュールするための "*仮想ノード*" と呼ばれる組み込みサポートを利用できるようになりました。 これらの仮想ノードでは、現在、Linux コンテナー インスタンスがサポートされています。 Windows コンテナー インスタンスをスケジュールする必要がある場合は、引き続き Virtual Kubelet を使用できます。 それ以外の場合は、この記事に記載されている手動の Virtual Kubelet の手順ではなく、仮想ノードを使用する必要があります。 仮想ノードを使い始めるには、[Azure CLI][virtual-nodes-cli] または or [Azure portal][virtual-nodes-portal] を使用します。
 >
 > Virtual Kubelet は実験的なオープン ソース プロジェクトなので、その点を考慮して使用する必要があります。 Virtual Kubelet に関する投稿、問題の提起、詳細情報については、[Virtual Kubelet GitHub プロジェクト][vk-github]に関するページを参照してください。
 
-## <a name="prerequisite"></a>前提条件
+## <a name="before-you-begin"></a>開始する前に
 
 このドキュメントでは、AKS クラスターがあることを前提としています。 AKS クラスターが必要な場合は、[Azure Kubernetes Service (AKS) のクイック スタート][aks-quick-start]に関するページを参照してください。
 
-また、Azure CLI バージョン **2.0.33** 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+また、Azure CLI バージョン **2.0.65** 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-Virtual Kubelet をインストールするには、[Helm](https://docs.helm.sh/using_helm/#installing-helm) も必要です。
+Virtual Kubelet をインストールするには、AKS クラスターに [Helm][aks-helm] をインストールして構成します。 必要に応じて、Tiller が [Kubernetes RBAC で使用するために構成されている](#for-rbac-enabled-clusters)ことを確認します。
+
+### <a name="register-container-instances-feature-provider"></a>Container Instances 機能プロバイダーを登録する
+
+以前に Azure コンテナー インスタンス (ACI) サービスを使用していない場合は、ご使用のサブスクリプションでサービス プロバイダーを登録します。 ACI プロバイダーの状態は、次の例で示すように [az provider list][az-provider-list] コマンドを使用して確認できます。
+
+```azurecli-interactive
+az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
+```
+
+*Microsoft.ContainerInstance* プロバイダーは、次の出力の例で示すように *Registered* としてレポートします。
+
+```console
+Namespace                    RegistrationState
+---------------------------  -------------------
+Microsoft.ContainerInstance  Registered
+```
+
+プロバイダーが *NotRegistered* として示される場合は、次の例で示すように [az provider register][az-provider-register] を使用してプロバイダーを登録します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerInstance
+```
 
 ### <a name="for-rbac-enabled-clusters"></a>RBAC 対応クラスターの場合
 
@@ -61,7 +83,7 @@ subjects:
 
 次の例に示すように、[kubectl apply][kubectl-apply] でサービス アカウントとバインドを適用し、*rbac-virtual-kubelet.yaml* ファイルを指定します。
 
-```
+```console
 $ kubectl apply -f rbac-virtual-kubelet.yaml
 
 clusterrolebinding.rbac.authorization.k8s.io/tiller created
@@ -80,42 +102,44 @@ helm init --service-account tiller
 Virtual Kubelet をインストールするには、[az aks install-connector][aks-install-connector] コマンドを使用します。 次の例では、Linux と Windows 両方のコネクタを展開します。
 
 ```azurecli-interactive
-az aks install-connector --resource-group myAKSCluster --name myAKSCluster --connector-name virtual-kubelet --os-type Both
+az aks install-connector \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --connector-name virtual-kubelet \
+    --os-type Both
 ```
 
-これらの引数は `aks install-connector` コマンドに使用できます。
+これらの引数は、[az aks install-connector][aks-install-connector] コマンドに使用できます。
 
 | 引数: | 説明 | 必須 |
 |---|---|:---:|
 | `--connector-name` | ACI コネクタの名前。| はい |
 | `--name` `-n` | マネージド クラスターの名前。 | はい |
 | `--resource-group` `-g` | リソース グループの名前。 | はい |
-| `--os-type` | コンテナー インスタンスのオペレーティング システムのタイプ。 使用できる値は以下の通りです。両方、Linux、Windows。 既定値はLinux。 | いいえ  |
-| `--aci-resource-group` | ACI コンテナー グループを作成するリソース グループ。 | いいえ  |
-| `--location` `-l` | ACI コンテナー グループを作成する場所。 | いいえ  |
-| `--service-principal` | Azure API に対する認証に使用されるサービス プリンシパル。 | いいえ  |
-| `--client-secret` | サービス プリンシパルに関連付けられているシークレット。 | いいえ  |
-| `--chart-url` | ACI Connector をインストールする Helm チャートの URL。 | いいえ  |
-| `--image-tag` | Virtual Kubelet コンテナー イメージのイメージ タグ。 | いいえ  |
+| `--os-type` | コンテナー インスタンスのオペレーティング システムのタイプ。 使用できる値は以下の通りです。両方、Linux、Windows。 既定値はLinux。 | いいえ |
+| `--aci-resource-group` | ACI コンテナー グループを作成するリソース グループ。 | いいえ |
+| `--location` `-l` | ACI コンテナー グループを作成する場所。 | いいえ |
+| `--service-principal` | Azure API に対する認証に使用されるサービス プリンシパル。 | いいえ |
+| `--client-secret` | サービス プリンシパルに関連付けられているシークレット。 | いいえ |
+| `--chart-url` | ACI Connector をインストールする Helm チャートの URL。 | いいえ |
+| `--image-tag` | Virtual Kubelet コンテナー イメージのイメージ タグ。 | いいえ |
 
 ## <a name="validate-virtual-kubelet"></a>Virtual Kubelet を検証する
 
 Virtual Kubelet がインストールされていることを検証するには、[kubectl get nodes][kubectl-get] コマンドを使用して Kubernetes ノードの一覧を返します。
 
-```
+```console
 $ kubectl get nodes
 
-NAME                                    STATUS    ROLES     AGE       VERSION
-aks-nodepool1-23443254-0                Ready     agent     16d       v1.9.6
-aks-nodepool1-23443254-1                Ready     agent     16d       v1.9.6
-aks-nodepool1-23443254-2                Ready     agent     16d       v1.9.6
-virtual-kubelet-virtual-kubelet-linux   Ready     agent     4m        v1.8.3
-virtual-kubelet-virtual-kubelet-win     Ready     agent     4m        v1.8.3
+NAME                                             STATUS   ROLES   AGE   VERSION
+aks-nodepool1-56577038-0                         Ready    agent   11m   v1.12.8
+virtual-kubelet-virtual-kubelet-linux-eastus     Ready    agent   39s   v1.13.1-vk-v0.9.0-1-g7b92d1ee-dev
+virtual-kubelet-virtual-kubelet-windows-eastus   Ready    agent   37s   v1.13.1-vk-v0.9.0-1-g7b92d1ee-dev
 ```
 
 ## <a name="run-linux-container"></a>Linux コンテナーを実行する
 
-`virtual-kubelet-linux.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と [toleration][toleration] が使用されている点に気を付けてください。
+`virtual-kubelet-linux.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と and [toleration][toleration] が使用されている点に気を付けてください。
 
 ```yaml
 apiVersion: apps/v1
@@ -156,16 +180,16 @@ kubectl create -f virtual-kubelet-linux.yaml
 
 `-o wide` 引数を指定して [kubectl get pods][kubectl-get] コマンドを使用し、スケジュールされたノードがあるポッドの一覧を出力します。 `aci-helloworld` ポッドは `virtual-kubelet-virtual-kubelet-linux` ノードでスケジュールされています。
 
-```
+```console
 $ kubectl get pods -o wide
 
-NAME                                READY     STATUS    RESTARTS   AGE       IP             NODE
-aci-helloworld-2559879000-8vmjw     1/1       Running   0          39s       52.179.3.180   virtual-kubelet-virtual-kubelet-linux
+NAME                              READY   STATUS    RESTARTS   AGE     IP               NODE
+aci-helloworld-7b9ffbf946-rx87g   1/1     Running   0          22s     52.224.147.210   virtual-kubelet-virtual-kubelet-linux-eastus
 ```
 
 ## <a name="run-windows-container"></a>Windows コンテナーを実行する
 
-`virtual-kubelet-windows.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と [toleration][toleration] が使用されている点に気を付けてください。
+`virtual-kubelet-windows.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と and [toleration][toleration] が使用されている点に気を付けてください。
 
 ```yaml
 apiVersion: apps/v1
@@ -204,13 +228,13 @@ spec:
 kubectl create -f virtual-kubelet-windows.yaml
 ```
 
-`-o wide` 引数を指定して [kubectl get pods][kubectl-get] コマンドを使用し、スケジュールされたノードがあるポッドの一覧を出力します。 `nanoserver-iis` ポッドは `virtual-kubelet-virtual-kubelet-win` ノードでスケジュールされています。
+`-o wide` 引数を指定して [kubectl get pods][kubectl-get] コマンドを使用し、スケジュールされたノードがあるポッドの一覧を出力します。 `nanoserver-iis` ポッドは `virtual-kubelet-virtual-kubelet-windows` ノードでスケジュールされています。
 
-```
+```console
 $ kubectl get pods -o wide
 
-NAME                                READY     STATUS    RESTARTS   AGE       IP             NODE
-nanoserver-iis-868bc8d489-tq4st     1/1       Running   8         21m       138.91.121.91   virtual-kubelet-virtual-kubelet-win
+NAME                              READY   STATUS    RESTARTS   AGE     IP               NODE
+nanoserver-iis-5d999b87d7-6h8s9   1/1     Running   0          47s     52.224.143.39    virtual-kubelet-virtual-kubelet-windows-eastus
 ```
 
 ## <a name="remove-virtual-kubelet"></a>Virtual Kubelet を削除する
@@ -218,7 +242,11 @@ nanoserver-iis-868bc8d489-tq4st     1/1       Running   8         21m       138.
 Virtual Kubelet を削除するには、[az aks remove-connector][aks-remove-connector] コマンドを使用します。 引数の値を、コネクタ、AKS クラスター、および AKS クラスター リソース グループの名前に置き換えます。
 
 ```azurecli-interactive
-az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --connector-name virtual-kubelet
+az aks remove-connector \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --connector-name virtual-kubelet \
+    --os-type Both
 ```
 
 > [!NOTE]
@@ -226,7 +254,7 @@ az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --conn
 
 ## <a name="next-steps"></a>次の手順
 
-Virtual Kubelet で考えられる問題については、[既知の問題と回避策][vk-troubleshooting]に関する記事を参照してください。 Virtual Kubelet の問題を報告するには、[GitHub の問題を開きます][vk-issues]。
+Virtual Kubelet で考えられる問題については、[既知の問題と回避策][vk-troubleshooting]. To report problems with the Virtual Kubelet, [open a GitHub issue][vk-issues]に関する記事を参照してください。
 
 [Virtual Kubelet GitHub プロジェクト][vk-github]のページで Virtual Kubelet の詳細について参照してください。
 
@@ -237,6 +265,9 @@ Virtual Kubelet で考えられる問題については、[既知の問題と回
 [aks-install-connector]: /cli/azure/aks#az-aks-install-connector
 [virtual-nodes-cli]: virtual-nodes-cli.md
 [virtual-nodes-portal]: virtual-nodes-portal.md
+[aks-helm]: kubernetes-helm.md
+[az-provider-list]: /cli/azure/provider#az-provider-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

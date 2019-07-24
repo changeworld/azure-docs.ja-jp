@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 668c380f38f410083ffe7d2cd6690be447f614dc
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798331"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66390041"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル:Bing Web Search API を使用して単一ページの Web アプリを作成する
 
@@ -80,7 +80,7 @@ npm install
 
 ## <a name="query-options"></a>クエリ オプション
 
-HTML フォームには、[Bing Web Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters) のクエリ パラメーターにマップされるオプションが含まれています。 この表は、サンプル アプリを使用してユーザーが検索結果をフィルター処理する方法の内訳を示しています。
+HTML フォームには、[Bing Web Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) のクエリ パラメーターにマップされるオプションが含まれています。 この表は、サンプル アプリを使用してユーザーが検索結果をフィルター処理する方法の内訳を示しています。
 
 | パラメーター | 説明 |
 |-----------|-------------|
@@ -93,7 +93,7 @@ HTML フォームには、[Bing Web Search API v7](https://docs.microsoft.com/re
 | `offset` | 隠しフィールド。 要求における最初の検索結果のオフセット。ページングに使用されます。 新しい要求ごとに `0` にリセットされます。 |
 
 > [!NOTE]
-> Bing Web Search API には、検索結果を絞り込むための追加のクエリ パラメーターが用意されています。 このサンプルでは、ごく一部のみを使用しています。 使用できるパラメーターの詳細な一覧については、[Bing Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters)を参照してください。
+> Bing Web Search API には、検索結果を絞り込むための追加のクエリ パラメーターが用意されています。 このサンプルでは、ごく一部のみを使用しています。 使用できるパラメーターの詳細な一覧については、[Bing Web Search API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters)を参照してください。
 
 `bingSearchOptions()` 関数は、Bing Search API で必要な形式にこれらのオプションを変換します。
 
@@ -382,7 +382,7 @@ searchItemRenderers = {
 > [!IMPORTANT]
 > このサンプル アプリには、Web ページ、ニュース、画像、動画、関連する検索用のレンダラーがあります。 このアプリケーションでは、受け取る可能性のあるすべての種類の結果に対するレンダラーが必要です。結果の種類には、計算、スペル修正候補、エンティティ、タイム ゾーン、定義などがあります。
 
-一部のレンダリング関数は `item` パラメーターのみを受け取ります。 コンテキストに基づいて項目を別の方法でレンダリングするために使用できる他のパラメーターを受け取るものもあります  (この情報を使わないレンダラーは、これらのパラメーターを受け取る必要はありません)。
+一部のレンダリング関数は `item` パラメーターのみを受け取ります。 コンテキストに基づいて項目を別の方法でレンダリングするために使用できる他のパラメーターを受け取るものもあります (この情報を使わないレンダラーは、これらのパラメーターを受け取る必要はありません)。
 
 コンテキスト引数は次のとおりです。
 

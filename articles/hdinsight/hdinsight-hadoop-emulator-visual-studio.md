@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.openlocfilehash: 3286ca3b9c85236ff322eb19324bc5ac7a904e22
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65605455"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する
@@ -37,9 +37,9 @@ Hortonworks サンドボックスが実行中であることを確認します�
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>サンドボックスにツールを接続する
 
-1. Visual Studio を開き、**[表示]**、**[サーバー エクスプローラー]** の順に選択します。
+1. Visual Studio を開き、 **[表示]** 、 **[サーバー エクスプローラー]** の順に選択します。
 
-2. **[サーバー エクスプローラー]** の **[HDInsight]** エントリをクリックし、**[Connect to HDInsight Emulator (HDInsight Emulator に接続)]** を選択します。
+2. **[サーバー エクスプローラー]** の **[HDInsight]** エントリをクリックし、 **[Connect to HDInsight Emulator (HDInsight Emulator に接続)]** を選択します。
 
     ![サーバー エクスプローラーのスクリーンショット ([HDInsight Emulator に接続する] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
 
@@ -55,14 +55,14 @@ Hortonworks サンドボックスが実行中であることを確認します�
 
     **[次へ]** をクリックして続行します。
 
-5. サービスの検証が完了するのを待ちます。 検証が失敗し、構成を更新するよう求められることがあります。 検証が失敗した場合は、**[更新]** をクリックし、サービスの構成と検証が完了するのを待ちます。
+5. サービスの検証が完了するのを待ちます。 検証が失敗し、構成を更新するよう求められることがあります。 検証が失敗した場合は、 **[更新]** をクリックし、サービスの構成と検証が完了するのを待ちます。
 
     ![ダイアログ ボックスのスクリーンショット ([更新] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
     > [!NOTE]  
     > 更新プロセスでは、Ambari を使用して、Data Lake Tools for Visual Studio で必要とされる要件に合わせて Hortonworks サンドボックス構成が変更されます。
 
-6. 検証が終わったら、**[完了]** をクリックして、構成を完了します。
+6. 検証が終わったら、 **[完了]** をクリックして、構成を完了します。
     ![ダイアログ ボックスのスクリーンショット ([完了] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
      >[!NOTE]  
@@ -74,7 +74,7 @@ Hortonworks サンドボックスが実行中であることを確認します�
 
 Hive には、構造化データを操作するための、SQL に似たクエリ言語 (HiveQL) が用意されています。 次の手順は、ローカル クラスターに対してオンデマンド クエリを実行する方法を示しています。
 
-1. **サーバー エクスプローラー**で、前の手順で追加したローカル クラスターのエントリを右クリックし、**[Hive クエリの作成]** を選択します。
+1. **サーバー エクスプローラー**で、前の手順で追加したローカル クラスターのエントリを右クリックし、 **[Hive クエリの作成]** を選択します。
 
     ![サーバー エクスプローラーのスクリーンショット ([Hive クエリの作成] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
 
@@ -84,7 +84,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
         select count(*) from sample_08;
 
-    クエリを実行するには、ウィンドウの上部にある **[送信]** を選択します。 他の値 (**[バッチ]** とサーバー名) は既定値のままにします。
+    クエリを実行するには、ウィンドウの上部にある **[送信]** を選択します。 他の値 ( **[バッチ]** とサーバー名) は既定値のままにします。
 
     ![クエリ ウィンドウのスクリーンショット ([送信] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
 
@@ -103,7 +103,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
     **[ジョブの出力]** リンクをクリックすると、出力が表示されます。 この例では、"823" と表示されます。これは、sample_08 テーブル内の行の数です。 **[ジョブのログ]** リンクと **[Download YARN Log (YARN ログのダウンロード)]** リンクを使用すると、ジョブに関する診断情報を表示できます。
 
-4. また、対話形式で Hive ジョブを実行することもできます。その場合は、**[バッチ]** フィールドを **[対話型]** に変更し、 **[実行]** をクリックしてください。
+4. また、対話形式で Hive ジョブを実行することもできます。その場合は、 **[バッチ]** フィールドを **[対話型]** に変更し、 **[実行]** をクリックしてください。
 
     ![スクリーンショット ([対話型] ボタンと [実行] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
 
@@ -118,9 +118,9 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
 複数の Hive スクリプトを含むプロジェクトを作成することもできます。 関連するスクリプトがある場合やバージョン管理システムにスクリプトを格納する場合は、プロジェクトを使用します。
 
-1. Visual Studio で、**[ファイル]**、**[新規]**、**[プロジェクト]** の順に選択します。
+1. Visual Studio で、 **[ファイル]** 、 **[新規]** 、 **[プロジェクト]** の順に選択します。
 
-2. プロジェクトの一覧から、**[テンプレート]**、**[Azure Data Lake]** の順に展開し、**[HIVE (HDInsight)]** を選択します。 テンプレートの一覧から **[Hive Sample (Hive サンプル)]** を選択します。 名前と場所を入力し、**[OK]** を選択します。
+2. プロジェクトの一覧から、 **[テンプレート]** 、 **[Azure Data Lake]** の順に展開し、 **[HIVE (HDInsight)]** を選択します。 テンプレートの一覧から **[Hive Sample (Hive サンプル)]** を選択します。 名前と場所を入力し、 **[OK]** を選択します。
 
     ![[新しいプロジェクト] ウィンドウのスクリーンショット ([Azure Data Lake]、[HIVE]、[Hive Sample]\(Hive サンプル\)、[OK] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
@@ -130,7 +130,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
 Hive には構造化データを操作するための SQL に似た言語が用意されていますが、Pig はデータで変換を実行することによって機能します。 Pig は変換のパイプラインを作成できる言語 (Pig Latin) を備えています。 ローカル クラスターで Pig を使用するには、次の手順に従います。
 
-1. Visual Studio を開いて、**[ファイル]**、**[新規]**、**[プロジェクト]** の順に選択します。 プロジェクトの一覧から、**[テンプレート]**、**[Azure Data Lake]** の順に展開し、**[Pig (HDInsight)]** を選択します。 テンプレートの一覧から、**[Pig Application (Pig アプリケーション)]** を選択します。 名前と場所を入力し、**[OK]** を選択します。
+1. Visual Studio を開いて、 **[ファイル]** 、 **[新規]** 、 **[プロジェクト]** の順に選択します。 プロジェクトの一覧から、 **[テンプレート]** 、 **[Azure Data Lake]** の順に展開し、 **[Pig (HDInsight)]** を選択します。 テンプレートの一覧から、 **[Pig Application (Pig アプリケーション)]** を選択します。 名前と場所を入力し、 **[OK]** を選択します。
 
     ![[新しいプロジェクト] ウィンドウのスクリーンショット ([Azure Data Lake]、[Pig]、[Pig Application]\(Pig アプリケーション\)、[OK] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 
@@ -147,7 +147,7 @@ Hive には構造化データを操作するための SQL に似た言語が用�
         c = GROUP b BY ip_address;
         DUMP c;
 
-    Pig では Hive とは異なる言語を使用しますが、ジョブを実行する方法はどちらの言語でも同じで、**[送信]** ボタンをクリックします。 **[送信]** の横にあるドロップダウンを選択すると、Pig の詳細な送信設定用のダイアログ ボックスが表示されます。
+    Pig では Hive とは異なる言語を使用しますが、ジョブを実行する方法はどちらの言語でも同じで、 **[送信]** ボタンをクリックします。 **[送信]** の横にあるドロップダウンを選択すると、Pig の詳細な送信設定用のダイアログ ボックスが表示されます。
 
     ![[スクリプトの送信] ダイアログ ボックスのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
 
@@ -159,7 +159,7 @@ Hive には構造化データを操作するための SQL に似た言語が用�
 
 Data Lake Tools では、Hadoop で実行されたジョブに関する情報も簡単に表示できます。 ローカル クラスターで実行されたジョブを表示するには、次の手順に従います。
 
-1. **サーバー エクスプローラー**で、ローカル クラスターを右クリックし、**[ジョブの表示]** を選択します。 クラスターに送信されたジョブの一覧が表示されます。
+1. **サーバー エクスプローラー**で、ローカル クラスターを右クリックし、 **[ジョブの表示]** を選択します。 クラスターに送信されたジョブの一覧が表示されます。
 
     ![サーバー エクスプローラーのスクリーンショット ([ジョブの表示] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
 
@@ -173,11 +173,11 @@ Data Lake Tools では、Hadoop で実行されたジョブに関する情報も
 
 ## <a name="view-hive-databases"></a>Hive データベースを表示する
 
-1. **[サーバー エクスプローラー]** で、**[HDInsight local cluster (HDInsight ローカル クラスター)]** エントリ、**[Hive Databases (Hive データベース)]** の順に展開します。 ローカル クラスター上の **[既定]** データベースと **[xademo]** データベースが表示されます。 データベースを展開すると、データベース内のテーブルが表示されます。
+1. **[サーバー エクスプローラー]** で、 **[HDInsight local cluster (HDInsight ローカル クラスター)]** エントリ、 **[Hive Databases (Hive データベース)]** の順に展開します。 ローカル クラスター上の **[既定]** データベースと **[xademo]** データベースが表示されます。 データベースを展開すると、データベース内のテーブルが表示されます。
 
     ![サーバー エクスプローラーのスクリーンショット (データベースを展開)](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
 
-2. テーブルを展開すると、そのテーブルの列が表示されます。 すぐにデータを表示するには、テーブルを右クリックし、**[上位 100 行を表示 ]** を選択します。
+2. テーブルを展開すると、そのテーブルの列が表示されます。 すぐにデータを表示するには、テーブルを右クリックし、 **[上位 100 行を表示 ]** を選択します。
 
     ![サーバー エクスプローラーのスクリーンショット (テーブルを展開し、[上位 100 行を表示] を選択)](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
 
@@ -189,7 +189,7 @@ Data Lake Tools では、Hadoop で実行されたジョブに関する情報も
 
 ### <a name="create-a-table"></a>テーブルを作成する
 
-テーブルを作成するには、データベースを右クリックし、**[テーブルの作成]** を選択します。
+テーブルを作成するには、データベースを右クリックし、 **[テーブルの作成]** を選択します。
 
 ![サーバー エクスプローラーのスクリーンショット ([テーブルの作成] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
 

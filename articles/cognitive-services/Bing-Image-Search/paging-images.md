@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 38b2244d68de25f53d59dd4eb0a6beba03f0e51d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9368abe7d3b6ad6cf6e86b503dca4fca4f18739c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339540"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66388471"
 ---
 # <a name="page-through-the-images-results"></a>画像の結果のページング
 
-Image Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリとの関連性が高い結果の総数のサブセットです。 利用可能な結果の推定総数を取得するには、回答オブジェクトの [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#totalestimatedmatches) フィールドにアクセスします。  
+Image Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリとの関連性が高い結果の総数のサブセットです。 利用可能な結果の推定総数を取得するには、回答オブジェクトの [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#totalestimatedmatches) フィールドにアクセスします。  
 
 次の例は、画像の回答に含まれる `totalEstimatedMatches` フィールドを示しています。  
 
@@ -34,7 +34,7 @@ Image Search API を呼び出すと、結果のリストが Bing から返され
 }  
 ```  
 
-利用可能な画像をページングするには、[count](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#count) および [offset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offset) クエリ パラメーターを使用します。  
+利用可能な画像をページングするには、[count](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#count) および [offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) クエリ パラメーターを使用します。  
 
 `count` パラメーターでは、応答で返される結果の数を指定します。 応答に要求できる結果の最大数は 150 です。 既定値は 35 です。 配信される実際の数は、要求した数よりも少ない可能性があります。
 
@@ -58,7 +58,7 @@ Host: api.cognitive.microsoft.com
 
 一度に 35 個の画像をページングする場合は、最初の要求で `offset` クエリ パラメーターを 0 に設定し、後続の要求ごとに `offset` を 35 ずつ増やすと予想できます。 しかし、後続の応答の結果の一部が前の応答と重複することがあります。 たとえば、応答内の最初の 2 つの画像が、前の応答の最後の 2 つの画像と同じである場合があります。
 
-重複する結果を排除するには、`Images` オブジェクトの [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#nextoffset) フィールドを使用します。 `nextOffset` フィールドは、次の要求に使用する `offset` を示します。 たとえば、一度に 30 個の画像をページングする場合は、最初の要求で `count` を 30 に、`offset` を 0 に設定します。 次の要求では、`count` を 30 に、`offset` を前の応答の `nextOffset` の値に設定します。 後方にページングするには、前のオフセットのスタックを維持し、最新のものをポップすることお勧めします。
+重複する結果を排除するには、`Images` オブジェクトの [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#nextoffset) フィールドを使用します。 `nextOffset` フィールドは、次の要求に使用する `offset` を示します。 たとえば、一度に 30 個の画像をページングする場合は、最初の要求で `count` を 30 に、`offset` を 0 に設定します。 次の要求では、`count` を 30 に、`offset` を前の応答の `nextOffset` の値に設定します。 後方にページングするには、前のオフセットのスタックを維持し、最新のものをポップすることお勧めします。
 
 > [!NOTE]
 > ページングは、画像検索 (/images/search) にのみ適用され、画像の分析情報や注目の画像 (/images/trending) には適用されません。

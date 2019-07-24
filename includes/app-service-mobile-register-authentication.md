@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: d5557ce1dda7bb36b8b0a6a44fcaca50e0667bb7
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66139844"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181667"
 ---
 最初に、ID プロバイダーのサイトでアプリを登録する必要があります。その後、プロバイダーによって生成された資格情報を Mobile Apps バックエンドに設定します。
 

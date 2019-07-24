@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: 56b13a0ba6a93f1acd8edf1ce6c95561f63758c8
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66148777"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181726"
 ---
 > [!WARNING]
 >  **Azure Container Service (ACS) は非推奨となっています。ACS に新しい機能が追加されることはありません。API、ポータルのエクスペリエンス、CLI コマンド、ドキュメントはすべて非推奨としてマークされます。**

@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65761790"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>カスタム変換を使用してエンコードする方法 - REST
@@ -135,7 +135,7 @@ Azure Media Services を使用してエンコードする場合、[ファイル�
 
 この例では、先ほど定義したカスタム プリセットに基づく**変換**を作成します。 変換を作成するときは、まず [Get](https://docs.microsoft.com/rest/api/media/transforms/get) を使用して、変換がすでに存在しているかどうかを確認する必要があります。 変換が存在する場合はそれを再利用します。 
 
-ダウンロードした Postman のコレクションで、**[Transforms and Jobs]\(変換とジョブ\)**->**[Create or Update Transform]\(変換の作成または更新\)** を選択します。
+ダウンロードした Postman のコレクションで、 **[Transforms and Jobs]\(変換とジョブ\)** -> **[Create or Update Transform]\(変換の作成または更新\)** を選択します。
 
 **PUT** の HTTP 要求メソッドは、以下のようになります。
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
 ms.openlocfilehash: dfbaabd3d27804909334a7a370bcc89115e625c4
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119172"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60900272"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](../../azure-monitor/app/app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
@@ -63,7 +63,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 ![エンドツーエンドのトランザクションの詳細ビューのスクリーンショット。](./media/diagnostic-search/004.png)
 
 ## <a name="filter-event-types"></a>イベントの種類のフィルター選択
-[フィルター] ブレードを開き、表示するイベントの種類を選択します  (後でブレードを開いたときに表示されるフィルターを復元するには、[リセット] をクリックします)。
+[フィルター] ブレードを開き、表示するイベントの種類を選択します (後でブレードを開いたときに表示されるフィルターを復元するには、[リセット] をクリックします)。
 
 ![[フィルター] を選択し、テレメトリの種類を選択します](./media/diagnostic-search/02-filter-req.png)
 
@@ -112,7 +112,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 部分文字列ではなく、語句全体を検索します。 引用符で特殊文字を囲みます。
 
-| 文字列 | 一致 "*しない*" | 一致する |
+| string | 一致 "*しない*" | 一致する |
 | --- | --- | --- |
 | HomeController.About |home<br/>controller<br/>out | homecontroller<br/>about<br/>"homecontroller.about"|
 |米国|Uni<br/>ted|united<br/>states<br/>united AND states<br/>"united states"

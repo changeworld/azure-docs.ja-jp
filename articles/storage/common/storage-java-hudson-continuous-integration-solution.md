@@ -7,14 +7,14 @@ ms.service: storage
 ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: seguler
+ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 4b47af857fada453e36fcb0c23e6d89e5ad90e42
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 54e91d4df1109b9ece1150f8b44665789e4dfce1
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154340"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875881"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -64,7 +64,7 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
 2. **[Manage Hudson]** ページで **[Manage Plugins]** をクリックします。
 3. **[Available]** タブをクリックします。
 4. **[Others]** をクリックします。
-5. **[Artifact Uploaders]** セクションで、**[Microsoft Azure Storage plugin]** を選択します。
+5. **[Artifact Uploaders]** セクションで、 **[Microsoft Azure Storage plugin]** を選択します。
 6. **[インストール]** をクリックします。
 7. インストール完了後、Hudson を再起動します。
 
@@ -89,8 +89,8 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
 説明のため、ストレージ アカウントにファイルをアップロードするためのビルド後のアクションを追加する前に、複数のファイルを作成するジョブを作成する必要があります。
 
 1. Hudson ダッシュボードで、 **[New Job]** をクリックします。
-2. ジョブの名前を **MyJob** に設定し、**[Build a free-style software job]**、**[OK]** の順にクリックします。
-3. ジョブ構成の **[Build]** セクションで **[Add build step]** をクリックした後、**[Execute Windows batch command]** を選択します。
+2. ジョブの名前を **MyJob** に設定し、 **[Build a free-style software job]** 、 **[OK]** の順にクリックします。
+3. ジョブ構成の **[Build]** セクションで **[Add build step]** をクリックした後、 **[Execute Windows batch command]** を選択します。
 4. **[Command]** で次のコマンドを使用します。
 
     ```   
@@ -103,7 +103,7 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
 
 5. ジョブ構成の **[Post-build Actions]** セクションで **[Upload artifacts to Microsoft Azure Blob storage]** をクリックします。
 6. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
-7. **[Container Name]** では、コンテナー名を指定します(コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。 (コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。環境変数を使用することもできます。この例では、コンテナー名に「**${JOB_NAME}**」と入力します。
+7. **[Container Name]** では、コンテナー名を指定します(コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。 (コンテナーは、ビルド アーティファクトをアップロードする時点で存在していなければ、自動で作成されます)。環境変数を使用することもできます。この例では、コンテナー名に「 **${JOB_NAME}** 」と入力します。
    
     **ヒント**
    
@@ -111,9 +111,9 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
 8. この例では **[Make new container public by default]** をクリックします。 (プライベート コンテナーを使用する場合には、Shared Access Signature を作成してアクセスを許可する必要があります。 ただし、この点についてはこの記事では取り扱いません。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) の使用](../storage-dotnet-shared-access-signature-part-1.md)」を参照してください。)
 9. [省略可能] ビルド アーティファクトをアップロードする前にコンテナーの内容をクリアする場合、 **[Clean container before uploading]** をクリックします (コンテナーの内容をクリアしない場合は、チェック ボックスをオフにします)。
 10. **[List of Artifacts to upload]\(アップロードするアーティファクトのリスト\)** では、「**text/*.txt**」と入力します。
-11. **[Common virtual path for uploaded artifacts]** では、「**${BUILD\_ID}/${BUILD\_NUMBER}**」と入力します。
+11. **[Common virtual path for uploaded artifacts]** では、「 **${BUILD\_ID}/${BUILD\_NUMBER}** 」と入力します。
 12. **[Save]** をクリックして設定を保存します。
-13. Hudson ダッシュボードで、**[Build Now]** をクリックして **MyJob** を実行します。 コンソール出力でステータスを確認します。 ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure Storage に関するステータス メッセージが表示されます。
+13. Hudson ダッシュボードで、 **[Build Now]** をクリックして **MyJob** を実行します。 コンソール出力でステータスを確認します。 ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure Storage に関するステータス メッセージが表示されます。
 14. ジョブが正常に完了すると、パブリック BLOB を開いてビルド アーティファクトを確認できます。
     
     a. [Azure Portal](https://portal.azure.com) にサインインします。
@@ -126,15 +126,15 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
     
     e. **myjob** という名前のコンテナーをクリックします。これは、Hudson ジョブを作成したときに割り当てたジョブ名を小文字にしたものです。 Azure Storage では、コンテナー名と BLOB 名は小文字です (大文字と小文字は区別されます)。 **myjob** という名前のコンテナーの BLOB の一覧に、**hello.txt** と **date.txt** の 2 つがあります。 そのどちらかの URL をコピーして、ブラウザーで開きます。 このテキスト ファイルがビルド アーティファクトとしてアップロードされていることがわかります。
 
-アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。 **[List of Artifacts to upload]** でセミコロンを区切り記号として使用することで、アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクション 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。 たとえば、Hudson ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure Blob Storage にアップロードする場合は、**[List of Artifacts to upload]** の値に「**build/\*.jar;build/\*.txt**」を使用します。 また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。 たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、**[List of Artifacts to upload]** の値として **build/\*.jar::binaries;build/\*.txt::notices** を使用します。
+アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクションは、ジョブごとに 1 つのみ作成できます。 **[List of Artifacts to upload]** でセミコロンを区切り記号として使用することで、アーティファクトを Azure BLOB ストレージにアップロードするビルド後のアクション 1 つに、(ワイルドカードを含む) 複数のファイルとファイル パスを指定できます。 たとえば、Hudson ビルドによってワークスペースの **build** フォルダーに JAR ファイルと TXT ファイルが生成され、これら両方のファイルを Azure Blob Storage にアップロードする場合は、 **[List of Artifacts to upload]** の値に「**build/\*.jar;build/\*.txt**」を使用します。 また、2 重コロンの構文を使用すると、BLOB 名で使用するパスを指定できます。 たとえば、JAR ファイルのアップロードに BLOB パス内の **binaries** を使用し、TXT ファイルのアップロードに BLOB パス内の **notices** を使用する場合、 **[List of Artifacts to upload]** の値として **build/\*.jar::binaries;build/\*.txt::notices** を使用します。
 
 ## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Azure BLOB ストレージからのダウンロードを実行するビルド手順の作成方法
 次の手順では、Azure BLOB ストレージから項目をダウンロードするビルド手順を構成する方法を示します。 この手順は、Azure BLOB ストレージに保持している JAR ファイルなどの項目をビルドに含める場合に便利です。
 
-1. ジョブ構成の **[Build]** セクションで **[Add build step]** をクリックし、**[Download from Azure Blob storage]** を選択します。
+1. ジョブ構成の **[Build]** セクションで **[Add build step]** をクリックし、 **[Download from Azure Blob storage]** を選択します。
 2. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
 3. **[Container name]** では、ダウンロードする BLOB が格納されているコンテナーの名前を指定します。 環境変数を使用できます。
-4. **[Blob name]** には BLOB 名を指定します。 環境変数を使用できます。 また、アスタリスクを使用して、BLOB 名の先頭文字 (複数可) の後にワイルドカードを指定できます。 たとえば「**project\\***」と入力すると、名前が "**project**" で始まる BLOB がすべて指定されます。
+4. **[Blob name]** には BLOB 名を指定します。 環境変数を使用できます。 また、アスタリスクを使用して、BLOB 名の先頭文字 (複数可) の後にワイルドカードを指定できます。 たとえば「**project\\** *」と入力すると、名前が "**project**" で始まる BLOB がすべて指定されます。
 5. [省略可能] **[Download path]** では、Azure Blob Storage のファイルのダウンロード先となる、Hudson を実行しているコンピューター上のパスを指定します。 Azure BLOB ストレージのファイルはこのパスにダウンロードされます。 環境変数も使用できます( **[Download path]** に値を入力しない場合、Azure Blob Storage のファイルは、ジョブのワークスペースにダウンロードされます)。
 
 Azure BLOB ストレージからダウンロードする項目が他にもある場合は、追加のビルド手順を作成できます。
@@ -153,7 +153,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
   
     (ここに挙げた形式は、パブリック Azure クラウドに適用されるものです。 これとは異なる Azure クラウドを使用している場合は、[Azure Portal](https://portal.azure.com) 内のエンドポイントを使用して URL エンドポイントを指定します。)
   
-    この形式では、`storageaccount` はストレージ アカウントの名前、`container_name` はコンテナーの名前、`blob_name` は BLOB の名前をそれぞれ表します。 コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ**/** で区切ります。 このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD\_ID}/${BUILD\_NUMBER}** でした。このため、BLOB の URL は次のようになります。
+    この形式では、`storageaccount` はストレージ アカウントの名前、`container_name` はコンテナーの名前、`blob_name` は BLOB の名前をそれぞれ表します。 コンテナー名にはパスを複数使用することができます。その場合には、スラッシュ **/** で区切ります。 このチュートリアルで例に使用したコンテナー名は **MyJob**、共通仮想パスは **${BUILD\_ID}/${BUILD\_NUMBER}** でした。このため、BLOB の URL は次のようになります。
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 

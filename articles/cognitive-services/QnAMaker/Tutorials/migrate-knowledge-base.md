@@ -3,20 +3,20 @@ title: ナレッジ ベースの移行 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: ナレッジ ベースを移行するには、一方のナレッジ ベースからエクスポートしてから他方のナレッジ ベースにインポートする必要があります。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 04ee592122d7c76396f091f8d249518976682004
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264320"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446593"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>エクスポート/インポートを使用したナレッジ ベースの移行
 
@@ -43,7 +43,7 @@ ms.locfileid: "59264320"
 
     ![KB の作成](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. この新しいナレッジ ベースで、**[SETTINGS]\(設定\)** タブを開いて、**[Import knowledge base]\(ナレッジ ベースのインポート\)** を選択します。 これにより質問、回答、およびメタデータがインポートされ、抽出元のデータ ソースの名前は保持されます。
+1. この新しいナレッジ ベースで、 **[SETTINGS]\(設定\)** タブを開いて、 **[Import knowledge base]\(ナレッジ ベースのインポート\)** を選択します。 これにより質問、回答、およびメタデータがインポートされ、抽出元のデータ ソースの名前は保持されます。
 
    ![ナレッジ ベースのインポート](../media/qnamaker-how-to-migrate-kb/Import.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "59264320"
     この時点で、ナレッジ ベースのすべてのコンテンツ、つまり、質問、回答、メタデータと、ソース ファイルの名前、URL が新しいナレッジ ベースにインポートされています。 
 
 ## <a name="chat-logs-and-alterations"></a>チャットログと変更
-大文字と小文字が区別されない変更 (シノニム) は、自動的にはインポートされません。 古いナレッジから変更をエクスポートするには [V2 API](https://aka.ms/qnamaker-v2-apis) を使用し、新しいナレッジ ベースに変更を移動するには [V4 API](https://aka.ms/qnamaker-v4-apis) を使用します。
+大文字と小文字が区別されない変更 (シノニム) は、自動的にはインポートされません。 [V4 API](https://go.microsoft.com/fwlink/?linkid=2092179) を使用して、新しいナレッジ ベースに変更を移行します。
 
 チャットログを移行することはできません。新しいナレッジ ベースでは Application Insights を使ってチャットログが格納されているためです。 
 

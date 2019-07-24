@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c9d707d1a76b3b5913d66745767df8e84362a192
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 578f7a01c22bd5aafd4e4ac08c9f5ab78e340a34
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890855"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65606516"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](https://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
@@ -110,7 +110,7 @@ AzCopy を使用してデータをコピーするには
    * 左側のパネルで SQL Server 名を右クリックしてから、 **[プロパティ]** をクリックします。
      
        ![SQL Server プロパティ][14]
-   * 左側の **[ページの選択]** リストから、**[データベース設定]** を選択します。
+   * 左側の **[ページの選択]** リストから、 **[データベース設定]** を選択します。
    * **[データベースの既定の場所]** が選択した**データ ディスク**の場所になっているか確認し、なっていなければ変更します。 この場所は、既定の位置設定で作成した場合に新しいデータベースが存在する場所です。
      
        ![SQL Database 既定値][15]  
@@ -126,7 +126,7 @@ AzCopy を使用してデータをコピーするには
    
    * **bcp\_parallel\_generic.ps1** は、テーブルにデータを並行一括インポートする汎用スクリプトです。 このスクリプトを変更し、スクリプト内のコメント行に示されているとおりに入力変数とターゲット変数を設定します。
    * **bcp\_parallel\_nyctaxi.ps1** は汎用スクリプトの構成済みのバージョンであり、NYC タクシー乗車データの両方のテーブルを読み込むために使用できます。  
-8. スクリプト名 **bcp\_parallel\_nyctaxi.ps1** を右クリックしてから、**[編集]** をクリックして PowerShell で開きます。 事前設定された変数を確認し、選択したデータベース名、入力データ フォルダー、対象のログ フォルダー、およびサンプルのフォーマット ファイル **nyctaxi_trip.xml** と **nyctaxi\_fare.xml** (**Sample Scripts** フォルダーにあります) へのパスに合わせて変更します。
+8. スクリプト名 **bcp\_parallel\_nyctaxi.ps1** を右クリックしてから、 **[編集]** をクリックして PowerShell で開きます。 事前設定された変数を確認し、選択したデータベース名、入力データ フォルダー、対象のログ フォルダー、およびサンプルのフォーマット ファイル **nyctaxi_trip.xml** と **nyctaxi\_fare.xml** (**Sample Scripts** フォルダーにあります) へのパスに合わせて変更します。
    
     ![データの一括インポート][16]
    
@@ -233,7 +233,7 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 ラベルの生成と geography 変換探索クエリは、カウントする部分を削除してラベルや特徴を生成することにも使用できます。 その他の特徴エンジニアリングの SQL の例は、「 [IPython Notebook でのデータの探索と特徴エンジニアリング](#ipnb) 」セクションにあります。 SQL Server データベースのインスタンスで直接実行する SQL クエリを使用して、データセット全体または大規模なサブセットで特徴生成クエリを実行するとより効率的です。 クエリは **SQL Server Management Studio**、IPython Notebook、データベースにローカルやリモートにアクセスできるいずれかの開発ツールまたは環境で実行します。
 
 #### <a name="preparing-data-for-model-building"></a>モデル作成用にデータを準備する
-次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]**、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体から 1% のランダム サンプルを抽出します。 このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL Server データベース インスタンスから直接データを取り込めます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
+次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]** 、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体から 1% のランダム サンプルを抽出します。 このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL Server データベース インスタンスから直接データを取り込めます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -515,7 +515,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
     cursor.commit()
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>特徴エンジニアリング: 10 進数の緯度と経度から抽出する場所特徴
-この例では、[緯度] フィールドや [経度] フィールドの 10 進数表記を、国、都市、町、ブロックなどの異なる粒度に細分化します。新しい geo フィールドは実際の場所にマップされていないことに注意してください。 Geocode の場所のマッピングの詳細については、「[Bing マップの REST サービス](https://msdn.microsoft.com/library/ff701710.aspx)」を参照してください。
+この例では、"緯度" フィールドや "経度" フィールドの 10 進数表記を、国または地域、都市、町、ブロックなどの異なる粒度に細分化します。新しい geo フィールドは実際の場所にマップされていないことに注意してください。 Geocode の場所のマッピングの詳細については、「[Bing マップの REST サービス](https://msdn.microsoft.com/library/ff701710.aspx)」を参照してください。
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent
@@ -586,7 +586,7 @@ SQL Server データベースから直接データを読み取る、二項分類
 ![Azure Machine Learning のトレーニング][10]
 
 > [!IMPORTANT]
-> 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]**、**[tip\_amount]**、**[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
+> 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]** 、 **[tip\_amount]** 、 **[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
 > 
 > 不要な列またはターゲット リークを除外するために、[データセット内の列の選択][select-columns]モジュールまたは[メタデータの編集][edit-metadata]を使用できます。 詳細については、[データセット内の列の選択][select-columns]と[メタデータの編集][edit-metadata]のリファレンス ページをご覧ください。
 > 

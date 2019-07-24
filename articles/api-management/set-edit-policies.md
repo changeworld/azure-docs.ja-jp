@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: 3d1847b6001ef8e32f00a4e1cd9728d5ca0662f8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008268"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205292"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management ポリシーの設定または編集方法
 
@@ -38,8 +38,8 @@ ms.locfileid: "51008268"
 
 4. 前にインポートした API の 1 つを選びます。
 5. **[デザイン]** タブを選択します。
-6. ポリシーを適用する操作を選びます。 すべての操作にポリシーを適用する場合は、**[すべての操作]** を選択します。
-7. **[受信処理]** または **[送信処理]** セクションで、**</>** (コード エディター) アイコンを選択します。
+6. ポリシーを適用する操作を選びます。 すべての操作にポリシーを適用する場合は、 **[すべての操作]** を選択します。
+7. **[受信処理]** または **[送信処理]** セクションで、 **</>** (コード エディター) アイコンを選択します。
 8. 目的のポリシー コードを適切なブロックのいずれかに貼り付けます。
          
         <policies>

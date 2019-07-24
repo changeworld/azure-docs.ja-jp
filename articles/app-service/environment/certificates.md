@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ba34638bbdb838adc6f1e61b1f8b07a6915815c0
+ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271897"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67540778"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>証明書と App Service Environment 
 
@@ -55,7 +55,7 @@ ASE の作成と証明書のアップロードは、ポータルで 1 つのア�
 
     $fileName = "exportedcert.pfx"
     Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
-
+自己署名証明書を作成するときは、サブジェクト名を CN={ASE_NAME_HERE}_InternalLoadBalancingASE の形式にする必要があります。
 
 ## <a name="application-certificates"></a>アプリケーション証明書 
 
@@ -65,7 +65,7 @@ ASE でホストされているアプリは、マルチテナント App Service 
 - IP ベースの SSL。外部 ASE でのみサポートされます。  ILB ASE は、IP ベースの SSL をサポートしていません。
 - KeyVault がホストされている証明書 
 
-これらの証明書のアップロードおよび管理の手順は、App Service SSL チュートリアル (https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl) にあります。  Web アプリに割り当てたカスタム ドメイン名と一致するように証明書を構成するだけの場合は、これらの手順で十分です。 既定のドメイン名を使用して ILB ASE Web アプリ用に証明書をアップロードする場合は、前述したように、証明書の SAN 内の scm サイトを指定します。 
+これらの証明書のアップロードおよび管理の手順は、App Service SSL チュートリアル (https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl ) にあります。  Web アプリに割り当てたカスタム ドメイン名と一致するように証明書を構成するだけの場合は、これらの手順で十分です。 既定のドメイン名を使用して ILB ASE Web アプリ用に証明書をアップロードする場合は、前述したように、証明書の SAN 内の scm サイトを指定します。 
 
 ## <a name="tls-settings"></a>TLS の設定 
 
@@ -85,7 +85,9 @@ ASE 内のアプリに証明書をアップロードするには、次の手順�
 
     84EC242A4EC7957817B8E48913E50953552DAFA6,6A5C65DC9247F762FE17BF8D4906E04FE6B31819
 
-証明書は、その設定を構成したアプリと同じ App Service プラン内のすべてのアプリで使用できます。 別の App Service プラン内のアプリに対してもその証明書を使用できるようにする必要がある場合は、その App Service プランでアプリ設定操作を繰り返す必要があります。 証明書が設定されていることを確認するには、Kudu コンソールに移動し、PowerShell デバッグ コンソールでコマンド dir \localmachine\root を発行します。 
+証明書は、その設定を構成したアプリと同じ App Service プラン内のすべてのアプリで使用できます。 別の App Service プラン内のアプリに対してもその証明書を使用できるようにする必要がある場合は、その App Service プランでアプリ設定操作を繰り返す必要があります。 証明書が設定されていることを確認するには、Kudu コンソールに移動し、PowerShell デバッグ コンソールで次のコマンドを発行します。
+
+    dir cert:\localmachine\root
 
 テストを実行するには、自己署名証明書を作成し、次の PowerShell を使用して *.cer* ファイルを生成します。 
 

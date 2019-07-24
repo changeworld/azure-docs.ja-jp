@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
 ms.openlocfilehash: ef6086afa17f1ab864d70678a6da6df2a78e0c16
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65190292"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Windows 仮想マシンの作成
@@ -63,7 +63,7 @@ VM インスタンスの詳細については、[Windows VM のサイズ](../vir
 
 ## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>Azure 高速ネットワークが有効な Windows VM を作成する
 ## <a name="portal-creation"></a>ポータルの作成
-この記事では、高速ネットワークを使用した仮想マシンを、Azure PowerShell を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 portal で仮想マシンを作成するときは、**[仮想マシンの作成]** ブレードで **[ネットワーク]** タブを選択します。このタブには、**[高速ネットワーク]** のオプションがあります。  [サポートされるオペレーティングシステム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択している場合、このオプションは自動的に [オン] になります。  そうでない場合は、高速ネットワークに対して [オフ] オプションが選択され、有効にならない理由がユーザーに示されます。   
+この記事では、高速ネットワークを使用した仮想マシンを、Azure PowerShell を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure portal を使って作成することもできます](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 portal で仮想マシンを作成するときは、 **[仮想マシンの作成]** ブレードで **[ネットワーク]** タブを選択します。このタブには、 **[高速ネットワーク]** のオプションがあります。  [サポートされるオペレーティングシステム](#supported-operating-systems)と [VM サイズ](#supported-vm-instances)を選択している場合、このオプションは自動的に [オン] になります。  そうでない場合は、高速ネットワークに対して [オフ] オプションが選択され、有効にならない理由がユーザーに示されます。   
 * *注:* ポータルからは、サポートされているオペレーティング システムのみを有効にできます。  カスタム イメージを使用していて、そのイメージで高速ネットワークがサポートされている場合は、CLI または Powershell を使用して VM を作成してください。 
 
 仮想マシンが作成されたら、「高速ネットワークが有効化されていることを確認する」の手順に従って、高速ネットワークが有効であることを確認できます。
@@ -211,9 +211,9 @@ New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "centralus
 Azure で VM を作成したら、VM に接続して、Windows でドライバーがインストールされていることを確認します。
 
 1. インターネット ブラウザーから Azure [Portal](https://portal.azure.com) を開いて、自分の Azure アカウントでサインインします。
-2. Azure Portal の上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに「*myVm*」と入力します。 検索結果に **myVm** が表示されたら、それをクリックします。 **[接続]** ボタンの下に **[作成中]** と表示されている場合、Azure による VM の作成がまだ完了していません。 概要の左上隅にある **[接続]** は必ず、**[接続]** ボタンの下の **[作成中]** が見えなくなってからクリックしてください。
+2. Azure Portal の上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに「*myVm*」と入力します。 検索結果に **myVm** が表示されたら、それをクリックします。 **[接続]** ボタンの下に **[作成中]** と表示されている場合、Azure による VM の作成がまだ完了していません。 概要の左上隅にある **[接続]** は必ず、 **[接続]** ボタンの下の **[作成中]** が見えなくなってからクリックしてください。
 3. 「[仮想マシンの作成](#create-the-virtual-machine)」で入力したユーザー名とパスワードを入力します。 Azure で Windows VM に接続したことがない場合は、「[仮想マシンへの接続](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine)」を参照してください。
-4. Windows の [スタート] ボタンを右クリックし、**[デバイス マネージャー]** をクリックします。 **[ネットワーク アダプター]** ノードを展開します。 **[Mellanox ConnectX-3 Virtual Function Ethernet Adapter]** が表示されていることを確認します (下図参照)。
+4. Windows の [スタート] ボタンを右クリックし、 **[デバイス マネージャー]** をクリックします。 **[ネットワーク アダプター]** ノードを展開します。 **[Mellanox ConnectX-3 Virtual Function Ethernet Adapter]** が表示されていることを確認します (下図参照)。
 
     ![[デバイス マネージャー]](./media/create-vm-accelerated-networking/device-manager.png)
 

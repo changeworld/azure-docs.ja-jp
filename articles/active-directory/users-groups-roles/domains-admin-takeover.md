@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: b32ef37c6d61c88a18acd5ddc80cc6154369ca29
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202488"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65780536"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 
@@ -37,11 +37,11 @@ ms.locfileid: "58202488"
 
 Office 365 など SharePoint と OneDrive が搭載されている一部の製品では、外部引き継ぎをサポートしていません。 このシナリオに該当する場合、または管理されていない ("シャドウ") テナントの作成をセルフサービス サインアップを使用したユーザーから引き継ぎたいと考えている管理者の場合は、内部管理者の引き継ぎを使ってこれを実行できます。
 
-1. Power BI などのサインアップを使って、管理されていないテナントにユーザー コンテキストを作成します。 わかりやすい例にするために、この手順では Power BI を使用した方法を仮定します。
+1. Power BI のサインアップを使って、管理されていないテナントにユーザー コンテキストを作成します。 わかりやすい例にするために、この手順では Power BI を使用した方法を仮定します。
 
-2. [Power BI サイト](https://powerbi.com)を開き、**[無料体験を開始する]** を選びます。 たとえば、`admin@fourthcoffee.xyz` のように、組織のドメイン名を使用しているユーザー アカウントを入力します。 認証コードを入力したら、電子メールで確認コードをチェックします。
+2. [Power BI サイト](https://powerbi.com)を開き、 **[無料体験を開始する]** を選びます。 たとえば、`admin@fourthcoffee.xyz` のように、組織のドメイン名を使用しているユーザー アカウントを入力します。 認証コードを入力したら、電子メールで確認コードをチェックします。
 
-3. Power BI からの確認の電子メールで、**[Yes, that's me]\(はい、私です\)** を選びます。
+3. Power BI からの確認の電子メールで、 **[Yes, that's me]\(はい、私です\)** を選びます。
 
 4. Power BI ユーザー アカウントで、[Microsoft 365 管理センター](https://admin.microsoft.com)にサインインします。 管理されていないテナントで既に確認済みのドメイン名の **[管理者になる]**  に誘導するメッセージを受信します。 **[Yes, I want to be the admin]\(はい、管理者になります\)** を選択します。
   
@@ -82,7 +82,7 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 ドメイン名の所有権を確認するときは、Azure AD では、管理されていないテナントからドメイン名を削除し、既存のテナントに移動します。 非管理対象ディレクトリの外部管理者の引き継ぎには、内部管理者の引き継ぎと同じ DNS TXT の確認プロセスを行う必要があります。 相違点は、ドメイン名と共に次の内容も移行されることです。
 
 - ユーザー
-- サブスクリプション
+- Subscriptions
 - ライセンスの割り当て
 
 ### <a name="support-for-external-admin-takeover"></a>外部管理者の引き継ぎのサポート
@@ -126,8 +126,8 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 `get-msoldomain` | 現在のテナントに関連付けられているドメイン名を表示します。
 `new-msoldomain –name <domainname>` | "未確認" (DNS の確認がまだ実行されていない) としてテナントにドメイン名を追加します。
 `get-msoldomain` | ドメイン名は、管理対象テナントに関連付けられているドメイン名の一覧に含まれるようになりましたが、"**未確認**" として表示されます。
-`get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | ドメインの新しい DNS TXT レコード (MS=xxxxx) に含める情報を提示します。 TXT レコードのプロパゲートに一定の時間がかかるため、確認が直ちに行われるわけではありません。数分間待機してから、**-ForceTakeover** オプションを検討します。 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>お使いのドメイン名がまだ確認済みではない場合、**-ForceTakeover** オプションを使って続行できます。 TXT レコードが作成され、引き継ぎプロセスが開始されたことを確認します。<li>**- ForceTakeover** オプションは、引き継ぎをブロックしている Office 365 サービスが管理されていないテナントに含まれている場合など、外部管理者の引き継ぎを強制的に行う場合のみ、コマンドレットに追加する必要があります。
+`get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | ドメインの新しい DNS TXT レコード (MS=xxxxx) に含める情報を提示します。 TXT レコードのプロパゲートに一定の時間がかかるため、確認が直ちに行われるわけではありません。数分間待機してから、 **-ForceTakeover** オプションを検討します。 
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>お使いのドメイン名がまだ確認済みではない場合、 **-ForceTakeover** オプションを使って続行できます。 TXT レコードが作成され、引き継ぎプロセスが開始されたことを確認します。<li>**- ForceTakeover** オプションは、引き継ぎをブロックしている Office 365 サービスが管理されていないテナントに含まれている場合など、外部管理者の引き継ぎを強制的に行う場合のみ、コマンドレットに追加する必要があります。
 `get-msoldomain` | ドメインの一覧に、ドメイン名が "**確認済み**" と表示されるようになりました。
 
 ### <a name="powershell-example"></a>PowerShell の例
@@ -153,7 +153,7 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. このコマンドから返される値 (チャレンジ) をコピーします。 例: 
+4. このコマンドから返される値 (チャレンジ) をコピーします。 例:
    ```powershell
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
@@ -164,7 +164,7 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
    ```
   
-   例: 
+   例:
   
    ```powershell
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com

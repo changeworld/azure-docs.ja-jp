@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: f0b850038a29dd0949def97b359b2b7a5ce920bc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58659748"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60392859"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
 
@@ -143,4 +143,4 @@ public static TextWriter Out = Console.Out;
 
 ## <a name="next-steps"></a>次の手順
 アプリケーションに追加した同じトレース コードで Azure のクラスター上のアプリケーションの診断を行うこともできます。 ツールの各オプションや、その設定方法について説明した記事を参照してください。
-* [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)
+* [Azure Diagnostics でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)

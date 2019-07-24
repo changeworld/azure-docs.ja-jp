@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf7aaa0de87ffa8280a6db34c5497779a5ded41c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4bd3e7d47b6e3083af6f388a5cd750da240a76b6
+ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545864"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66392882"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) の概要
 Microsoft Authentication Library (MSAL) を利用すると、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォーム エンドポイントから[トークン](developer-glossary.md#security-token)を取得できます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API があります。 MSAL は .NET、JavaScript、Android、iOS で利用でき、さまざまなアプリケーション アーキテクチャとアプリケーション プラットフォームをサポートします。
@@ -55,7 +55,7 @@ MSAL は次のような多くのアプリケーション シナリオで使用�
 | ライブラリ | サポートされているプラットフォームとフレームワーク|
 | --- | --- | 
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/>[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework、.NET Core、Xamarin Android、Xamarin iOS、ユニバーサル Windows プラットフォーム|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js (プレビュー)](https://github.com/AzureAD/microsoft-authentication-library-for-js)| AngularJS、Ember.js、Durandal.js など、JavaScript/TypeScript フレームワーク|
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/>[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| AngularJS、Ember.js、Durandal.js など、JavaScript/TypeScript フレームワーク|
 | ![MSAL for Android](media/sample-v2-code/logo_Android.png) <br/>[MSAL for Android (プレビュー)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | ![MSAL for iOS](media/sample-v2-code/logo_iOS.png) <br/>[MSAL.Objective-C (プレビュー)](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS|
 

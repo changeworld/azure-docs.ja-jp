@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: shipatel
 author: shivp950
-ms.date: 09/24/2018
+ms.date: 05/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e65f739a9641181381205c7255d0472325e8055c
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 7f0806a1d68cd2cede1ae51f0a50a8125c1e7c8b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359922"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66016533"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Azure Machine Learning Services ワークスペースを作成し、管理する
 
-この記事では、[Azure Machine Learning Services](overview-what-is-azure-ml.md) 用の Azure portal 内で [**Azure Machine Learning Services ワークスペース**](concept-azure-machine-learning-architecture.md#workspace)を作成、表示、削除します。  [CLI](reference-azure-machine-learning-cli.md) または [Python コード](https://aka.ms/aml-sdk)を利用してワークスペースを作成したり、削除したりすることもできます。
+この記事では、[Azure Machine Learning Services](overview-what-is-azure-ml.md) 用の Azure portal 内で [**Azure Machine Learning Services ワークスペース**](concept-workspace.md)を作成、表示、削除します。  [CLI](reference-azure-machine-learning-cli.md)、[Python コード](https://aka.ms/aml-sdk)、または [VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning)を使用して、ワークスペースを作成したり、削除したりすることもできます。
 
-## <a name="create-a-workspace"></a>ワークスペースの作成 
+## <a name="create-a-workspace"></a>ワークスペースの作成
 
 ワークスペースを作成するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "58359922"
 
 ## <a name="view"></a>ワークスペースの表示
 
-1. ポータルの左上隅にある **[すべてのサービス]** を選択します。 
+1. ポータルの左上隅にある **[すべてのサービス]** を選択します。
 
 1. **[すべてのサービス]** フィルター フィールドに、「**Machine Learning service**」と入力します。  
 
@@ -49,8 +49,7 @@ ms.locfileid: "58359922"
 
   ![[削除] ボタン](media/how-to-manage-workspace/delete-workspace.png)
 
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 

@@ -13,11 +13,11 @@ ms.reviewer: billgib
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 4059b0f979e7e6856905f1759129167d62d7b5f5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274430"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60326347"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>テナント単位データベース SaaS アプリケーションで、シングル テナントを復元します。
 
@@ -64,7 +64,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 ### <a name="open-the-events-app-to-review-the-current-events"></a>Events アプリを開いて現在のイベントを確認する
 
-1. Events Hub (http://events.wtp.&lt;user&gt;.trafficmanager.net) を開き、**[Contoso Concert Hall]** を選択します。
+1. Events Hub (http://events.wtp.&lt;user&gt;.trafficmanager.net) を開き、 **[Contoso Concert Hall]** を選択します。
 
    ![Events Hub](media/saas-dbpertenant-restore-single-tenant/events-hub.png)
 
@@ -76,7 +76,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 1. PowerShell ISE で ...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\*Demo-RestoreTenant.ps1* を開き、次の値を設定します。
 
-   * **$DemoScenario** = **1** *((チケットの販売がない) 最後のイベントを削除します)*。
+   * **$DemoScenario** = **1** *((チケットの販売がない) 最後のイベントを削除します)* 。
 2. F5 キーを押してスクリプトを実行し、最後のイベントを削除します。 次の確認メッセージが表示されます。
 
    ```Console
@@ -84,7 +84,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
    Deleted event 'Seriously Strauss' from Contoso Concert Hall venue.
    ```
 
-3. Contoso のイベント ページが開きます。 下へスクロールし、そのイベントがなくなったことを確認します。 まだイベントが一覧に残っている場合は、**[最新の情報に更新]** をクリックして、イベントがなくなったことを確認します。
+3. Contoso のイベント ページが開きます。 下へスクロールし、そのイベントがなくなったことを確認します。 まだイベントが一覧に残っている場合は、 **[最新の情報に更新]** をクリックして、イベントがなくなったことを確認します。
    ![最後のイベントが削除された](media/saas-dbpertenant-restore-single-tenant/last-event-deleted.png)
 
 ## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>運用データベースと並行してテナント データベースを復元する
@@ -95,18 +95,18 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 1. 「[データを誤って削除した状態のテナントをシミュレートする](#simulate-a-tenant-accidentally-deleting-data)」の手順を完了します。
 2. PowerShell ISE で、...\\Learning Modules\\Business Continuity and Disaster Recovery\\RestoreTenant\\_Demo-RestoreTenant.ps1_ を開きます。
-3. **$DemoScenario** = **2** と設定します *(並列でテナントを復元します)*。
+3. **$DemoScenario** = **2** と設定します *(並列でテナントを復元します)* 。
 4. F5 キーを押してスクリプトを実行します。
 
 このスクリプトは、イベントが削除される前の特定の時点にテナント データベースを復元します。 データベースは、_ContosoConcertHall\_old_ という名前の新しいデータベースに復元されます。 この復元されたデータベースに存在するカタログ メタデータが削除されて、データベースは、*ContosoConcertHall\_old* という名前から構築されたキーを使ってカタログに追加されます。
 
-デモ スクリプトは、ブラウザーでこの新しいテナント データベースのイベント ページを開きます。 URL に関するメモ: ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old```。このページは、復元されたデータベースからのデータを示しており、*_old* が名前に追加されています。
+デモ スクリプトは、ブラウザーでこの新しいテナント データベースのイベント ページを開きます。 URL に関するメモ: ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old```。このページは、復元されたデータベースからのデータを示しており、 *_old* が名前に追加されています。
 
 ブラウザーに表示されるイベントをスクロールして、前述のセクションで削除したイベントが復元されていることを確認します。
 
 独自のイベント アプリを使用して、復元されたテナントを追加のテナントとして公開することは、復元されたデータに対してテナント アクセスを提供する方法とは異なります。 復元パターンを示すのに役立ちます。 一般的に、古いデータへの読み取りアクセス許可を付与し、復元されたデータベースを定義した期間保持します。 サンプルでは、_復元されたテナントの削除_ のシナリオの実行を完了した後に、復元されたテナント エントリを削除できます。
 
-1. **$DemoScenario** = **4** を設定します *(復元されたテナントを削除します)*。
+1. **$DemoScenario** = **4** を設定します *(復元されたテナントを削除します)* 。
 2. F5 キーを押してスクリプトを実行します。
 3. これで、*ContosoConcertHall\_old* エントリがカタログから削除されました。 ブラウザーでこのテナントのイベント ページを閉じます。
 
@@ -115,7 +115,7 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 ここでは、Contoso Concert Hall テナントをイベントが削除される前の時点に復元します。 *Restore-TenantInPlace* スクリプトは、テナント データベースを新しいデータベースに復元して、元のデータベースを削除します。 この復元パターンは、重大なデータ破損からの回復に最適であり、テナントは大規模なデータ損失に対応する必要がある場合があります。
 
 1. PowerShell ISE で **Demo-RestoreTenant.ps1** ファイルを開きます。
-2. **$DemoScenario** = **5** を設定します *(テナントを所定の場所に復元します)*。
+2. **$DemoScenario** = **5** を設定します *(テナントを所定の場所に復元します)* 。
 3. F5 キーを押してスクリプトを実行します。
 
 このスクリプトは、イベントが削除される前の時点にテナント データベースを復元します。 それ以上更新されないように、最初に Contoso Concert Hall テナントをオフラインにします。 その後、復元ポイントから復元することによって、並列データベースが作成されます。 データベース名が既存のテナント データベース名と競合しないように、タイムスタンプを使用して、復元されたデータベースの名前が指定されます。 続いて、古いテナント データベースが削除され、復元されたデータベースの名前が元のデータベース名に変更されます。 最後に、Contoso Concert Hall がオンラインに戻り、復元されたデータベースへのアプリからのアクセスが許可されます。

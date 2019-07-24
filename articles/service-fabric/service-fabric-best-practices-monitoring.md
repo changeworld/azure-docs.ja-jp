@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: d90daaf18e5161053e00671b7667d05ec8e5db76
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242923"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60533811"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視と診断
 
@@ -48,7 +48,7 @@ Linux クラスターの場合、Azure Monitor ログは Azure プラットフ�
 ## <a name="next-steps"></a>次の手順
 
 * アプリケーションのインストルメント化の概要については、[アプリケーション レベルのイベントとログの生成](service-fabric-diagnostics-event-generation-app.md)に関するページを参照してください。
-* アプリケーションの Application Insights を設定する手順については、「[Service Fabric での ASP.NET Core アプリケーションの監視と診断](service-fabric-tutorial-monitoring-aspnet.md)」をご覧ください。
+* アプリケーションの Application Insights を設定する手順をについては、「[Service Fabric での ASP.NET Core アプリケーションの監視と診断](service-fabric-tutorial-monitoring-aspnet.md)」をご覧ください。
 * Service Fabric が提供するプラットフォームおよびイベント監視の詳細については、[プラットフォーム レベルのイベントとログの生成](service-fabric-diagnostics-event-generation-infra.md)に関するページを参照してください。
 * Service Fabric との Azure Monitor ログを構成する: [クラスターに Azure Monitor ログを設定する](service-fabric-diagnostics-oms-setup.md)
 * コンテナーの監視用に Azure Monitor ログを設定する方法については、「[Azure Service Fabric での Windows コンテナーの監視と診断](service-fabric-tutorial-monitoring-wincontainers.md)」を参照してください。

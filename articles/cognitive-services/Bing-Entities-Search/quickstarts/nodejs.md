@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 8007d576a6b896f12423087cfd4a483d9171abc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 177e0ef0adab3b683657a9b872300cb38185d795
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104371"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66384568"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>クイック スタート:Node.js を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -179,4 +179,4 @@ ms.locfileid: "58104371"
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../overview.md )
-* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Bing Entity Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb09d91bb3204a1ab3dc4f9df71eabd2ee7d2bd1
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 406bd11765e4b580849e8719939c3e11c19d99a8
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487534"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604562"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure クイック スタート テンプレートを使用して Azure VM で SQL Server の Always On 可用性グループを構成する
 この記事では、Azure クイック スタート テンプレートを使用して、Azure での SQL Server Virtual Machines 用の Always On 可用性グループ構成のデプロイを部分的に自動化する方法について説明します。 このプロセスでは、2 つの Azure クイック スタート テンプレートが使用されます。 
@@ -38,7 +38,7 @@ ms.locfileid: "58487534"
 クイック スタート テンプレートを使用して Always On 可用性グループのセットアップを自動化するには、次の前提条件が必要です。 
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
 - ドメイン コントローラーを含むリソース グループ。 
-- [SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider)されているのと同じ可用性セットまたは可用性ゾーンにある、1 つ以上のドメイン参加済みの、[SQL Server 2016 (またはそれ以上の) Enterprise エディションを実行する Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。  
+- [SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-register-with-resource-provider.md)されているのと同じ可用性セットまたは可用性ゾーンにある、1 つ以上のドメイン参加済みの、[SQL Server 2016 (またはそれ以上の) Enterprise エディションを実行する Azure の VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。  
 - 可用性グループと同じサブネット内の内部ロード バランサー用に 1 つと、可用性グループ リスナー用に 1 つの、2 つの使用可能な (どのエンティティでも使用されていない) IP アドレス。 既存のロード バランサーが使用されている場合は、使用可能な IP アドレスが 1 つだけ必要です。  
 
 ## <a name="permissions"></a>アクセス許可
@@ -51,7 +51,7 @@ Azure クイック スタート テンプレートを使用して Always On 可�
 ## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>手順 1 - WSFC を作成し、クイック スタート テンプレートを使用して SQL Server VM をクラスターに参加させる 
 SQL Server VM が SQL VM の新しいリソース プロバイダーに登録されたら、SQL Server VM を *SqlVirtualMachineGroups* に参加させることができます。 このリソースでは、バージョン、エディション、完全修飾ドメイン名、クラスターと SQL サービスの両方を管理するための AD アカウント、クラウド監視としてのストレージ アカウントなど、Windows フェールオーバー クラスターのメタデータを定義します。 SQL Server VM を *SqlVirtualMachineGroups* リソース グループに追加することで、Windows フェールオーバー クラスター サービスをブートストラップし、クラスターを作成します。次にそのクラスターに、それらの SQL Server VM を参加させます。 この手順は **101-sql-vm-ag-setup** クイック スタート テンプレートで自動化されますが、以下の手順を使用して実装することができます。
 
-1. [**101-sql-vm-ag-setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) クイック スタート テンプレートに移動し、**[Azure へのデプロイ]** を選択して、Azure portal 内でクイック スタート テンプレートを起動します。
+1. [**101-sql-vm-ag-setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) クイック スタート テンプレートに移動し、 **[Azure へのデプロイ]** を選択して、Azure portal 内でクイック スタート テンプレートを起動します。
 1. 必須フィールドに入力し、Windows フェールオーバー クラスターのメタデータを構成します。 省略可能なフィールドは空白のままでかまいません。
 
     次の表には、テンプレートに必要な値が示されています。 
@@ -73,8 +73,8 @@ SQL Server VM が SQL VM の新しいリソース プロバイダーに登録さ
    | **Sas トークンとしての \_artifacts の場所** | このフィールドは、意図的に空白のままにされています。 |
    | &nbsp; | &nbsp; |
 
-1. 使用条件に同意する場合は、**[上記の使用条件に同意する]** の横のチェック ボックスをオンにし、**[購入]** を選択してクイック スタート テンプレートのデプロイを完了します。 
-1. デプロイを監視するには、上部のナビゲーション バナーにある **[通知]** ベル アイコンからデプロイを選択するか、Azure portal で **[リソース グループ]** に移動し、**[設定]** フィールドの **[デプロイ]** を選択して、'Microsoft.Template' デプロイを選びます。 
+1. 使用条件に同意する場合は、 **[上記の使用条件に同意する]** の横のチェック ボックスをオンにし、 **[購入]** を選択してクイック スタート テンプレートのデプロイを完了します。 
+1. デプロイを監視するには、上部のナビゲーション バナーにある **[通知]** ベル アイコンからデプロイを選択するか、Azure portal で **[リソース グループ]** に移動し、 **[設定]** フィールドの **[デプロイ]** を選択して、'Microsoft.Template' デプロイを選びます。 
 
    >[!NOTE]
    > テンプレートのデプロイ中に指定された資格情報は、デプロイの期間中のみ保存されます。 デプロイの完了後、それらのパスワードは削除されるので、SQL Server VM をさらにクラスターに追加する必要が生じると、もう一度パスワードを指定するよう求められます。 
@@ -97,7 +97,7 @@ Always On 可用性グループ (AG) リスナーには、内部 Azure Load Bala
 
    | Setting | 値 |
    | --- | --- |
-   | **Name** |ロード バランサーを表すテキスト名  (例: **sqlLB**)。 |
+   | **Name** |ロード バランサーを表すテキスト名 (例: **sqlLB**)。 |
    | **Type** |**内部**:ほとんどの実装では、内部ロード バランサーを使います。この場合、同じ仮想ネットワーク内のアプリケーションを可用性グループに接続できます。  </br> **外部**:アプリケーションをパブリック インターネット接続経由で可用性グループに接続できます。 |
    | **Virtual Network** | SQL Server インスタンスが存在する仮想ネットワークを選択します。 |
    | **サブネット** | SQL Server インスタンスが存在するサブネットを選択します。 |
@@ -105,14 +105,14 @@ Always On 可用性グループ (AG) リスナーには、内部 Azure Load Bala
    | **プライベート IP アドレス** | サブネット内の利用可能な IP アドレスを指定します。 |
    | **サブスクリプション** |複数のサブスクリプションを所有している場合、このフィールドが表示されます。 このリソースに関連付けられているサブスクリプションを選択します。 通常は、可用性グループのすべてのリソースについて同じサブスクリプションを選択してください。 |
    | **リソース グループ** |SQL Server インスタンスが存在するリソース グループを選択します。 |
-   | **場所** |Azure において SQL Server インスタンスが存在する場所を選択します。 |
+   | **Location** |Azure において SQL Server インスタンスが存在する場所を選択します。 |
    | &nbsp; | &nbsp; |
 
-6. **作成**を選択します。 
+6. **作成** を選択します。 
 
 
   >[!IMPORTANT]
-  > 各 SQL Server VM 用のパブリック IP リソースには、Standard Load Balancer と互換性のある Standard SKU が必要です。 VM のパブリック IP リソースの SKU を決定するには、**[リソース グループ]** に移動し、目的の SQL Server VM 用の **[パブリック IP アドレス]** リソースを選択し、**[概要]** ウィンドウの **[SKU]** で値を見つけます。 
+  > 各 SQL Server VM 用のパブリック IP リソースには、Standard Load Balancer と互換性のある Standard SKU が必要です。 VM のパブリック IP リソースの SKU を決定するには、 **[リソース グループ]** に移動し、目的の SQL Server VM 用の **[パブリック IP アドレス]** リソースを選択し、 **[概要]** ウィンドウの **[SKU]** で値を見つけます。 
 
 ## <a name="step-4---create-the-ag-listener-and-configure-the-ilb-with-the-quickstart-template"></a>手順 4 - AG リスナーを作成し、クイック スタート テンプレートを使用して ILB を構成する
 
@@ -128,7 +128,7 @@ Always On 可用性グループ (AG) リスナーには、内部 Azure Load Bala
    
    
 ILB を構成し、AG リスナーを作成するには、次の操作を行います。
-1. [**101-sql-vm-aglistener-setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) クイック スタート テンプレートに移動し、**[Azure へのデプロイ]** を選択して、Azure portal 内でクイック スタート テンプレートを起動します。
+1. [**101-sql-vm-aglistener-setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) クイック スタート テンプレートに移動し、 **[Azure へのデプロイ]** を選択して、Azure portal 内でクイック スタート テンプレートを起動します。
 1. 必須フィールドに入力して ILB を構成し、可用性グループ リスナーを作成します。 省略可能なフィールドは空白のままでかまいません。 
 
     次の表には、テンプレートに必要な値が示されています。 
@@ -142,13 +142,13 @@ ILB を構成し、AG リスナーを作成するには、次の操作を行い�
    | **リスナー** | リスナーに割り当てたい DNS 名。 既定では、このテンプレートで 'aglistener' という名前が指定されますが、これは変更できます。 名前は 15 文字以下にしてください。 |
    | **リスナー ポート** | リスナーで使用するポート。 通常、このポートは既定のポートである 1433 にする必要があります。そのため、これはこのテンプレートで指定されたポート番号となります。 しかし、既定のポートが変更された場合、リスナー ポートでは代わりにその値を使用する必要があります。 | 
    | **リスナー IP** | リスナーで使用する IP。  この IP アドレスは、テンプレートのデプロイ中に作成されるので、未使用の IP アドレスを指定してください。  |
-   | **既存のサブネット** | SQL Server VM の内部サブネットの*名前* (例: 既定値)。 この値は、**[リソース グループ]** に移動し、**[vNet]** を選択し、**[設定]** ウィンドウで **[サブネット]** を選び、**[名前]** で値をコピーすることで、決定できます。 |
+   | **既存のサブネット** | SQL Server VM の内部サブネットの*名前* (例: 既定値)。 この値は、 **[リソース グループ]** に移動し、 **[vNet]** を選択し、 **[設定]** ウィンドウで **[サブネット]** を選び、 **[名前]** で値をコピーすることで、決定できます。 |
    | **既存の内部ロード バランサー** | 手順 3 で作成した ILB の名前。 |
    | **プローブ ポート** | ILB で使用するプローブ ポート。 テンプレートでは既定で 59999 を使用しますが、この値は変更できます。 |
    | &nbsp; | &nbsp; |
 
-1. 使用条件に同意する場合は、**[上記の使用条件に同意する]** の横のチェック ボックスをオンにし、**[購入]** を選択してクイック スタート テンプレートのデプロイを完了します。 
-1. デプロイを監視するには、上部のナビゲーション バナーにある **[通知]** ベル アイコンからデプロイを選択するか、Azure portal で **[リソース グループ]** に移動し、**[設定]** フィールドの **[デプロイ]** を選択して、'Microsoft.Template' デプロイを選びます。 
+1. 使用条件に同意する場合は、 **[上記の使用条件に同意する]** の横のチェック ボックスをオンにし、 **[購入]** を選択してクイック スタート テンプレートのデプロイを完了します。 
+1. デプロイを監視するには、上部のナビゲーション バナーにある **[通知]** ベル アイコンからデプロイを選択するか、Azure portal で **[リソース グループ]** に移動し、 **[設定]** フィールドの **[デプロイ]** を選択して、'Microsoft.Template' デプロイを選びます。 
 
    >[!NOTE]
    >デプロイが途中で失敗した場合は、**101-sql-vm-aglistener-setup** クイック スタート テンプレートを再デプロイする前に、PowerShell を使用して、手動で[新たに作成されたリスナーを削除する](#remove-availability-group-listener)必要があります。 
@@ -185,13 +185,13 @@ AG リスナーの Azure クイック スタート テンプレートで使用�
 
 1. ドメイン コントローラーで、**サーバー マネージャー**の **[ツール]** オプションから **[Active Directory ユーザーとコンピューター]** ウィンドウを開きます。 
 2. 左側のウィンドウで **[ユーザー]** を選択し、目的のアカウントに移動します。
-3. 目的のアカウントを右クリックし、**[プロパティ]** を選択します。
-4. **[アカウント]** タブを選択し、**[ユーザー ログオン名]** が空白かどうかを確認します。 その場合、これがエラーの原因です。 
+3. 目的のアカウントを右クリックし、 **[プロパティ]** を選択します。
+4. **[アカウント]** タブを選択し、 **[ユーザー ログオン名]** が空白かどうかを確認します。 その場合、これがエラーの原因です。 
 
     ![ユーザー アカウントが空白になっていることは、UPN が指定されていないことを示しています](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
 
 5. ユーザーの名前と一致するように **[ユーザー ログオン名]** に入力し、ドロップダウンから適切なドメインを選択します。 
-6. **[適用]** を選択して変更内容を保存し、**[OK]** を選択してダイアログ ボックスを閉じます。 
+6. **[適用]** を選択して変更内容を保存し、 **[OK]** を選択してダイアログ ボックスを閉じます。 
 
    これらの変更を加えたら、もう一度 Azure クイック スタート テンプレートのデプロイを試みます。 
 

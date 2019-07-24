@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 01/17/2019
 ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446784"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60846203"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して統合アカウントからアーティファクト メタデータを管理する
 
@@ -41,13 +41,13 @@ ms.locfileid: "54446784"
 
 1. Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。 統合アカウントを見つけて開きます。
 
-1. メタデータを追加するアーティファクトを選択し、**[編集]** を選択します。 下の画像のように、そのアーティファクトのメタデータ詳細を入力します。
+1. メタデータを追加するアーティファクトを選択し、 **[編集]** を選択します。 下の画像のように、そのアーティファクトのメタデータ詳細を入力します。
 
    ![メタデータを入力する](media/logic-apps-enterprise-integration-metadata/add-partner-metadata.png)
 
-1. 完了したら、**[OK]** を選びます。
+1. 完了したら、 **[OK]** を選びます。
 
-1. 統合アカウントの JavaScript Object Notation (JSON) 定義でこのメタデータを表示するには、**[JSON として編集]** を選択し、JSON エディターを開きます。 
+1. 統合アカウントの JavaScript Object Notation (JSON) 定義でこのメタデータを表示するには、 **[JSON として編集]** を選択し、JSON エディターを開きます。 
 
    ![パートナー メタデータの JSON](media/logic-apps-enterprise-integration-metadata/partner-metadata.png)
 
@@ -55,9 +55,9 @@ ms.locfileid: "54446784"
 
 1. Azure portal で、目的の統合アカウントにリンクされているロジック アプリを開きます。 
 
-1. ロジック アプリ デザイナーで、ワークフローのトリガーまたは最後のアクションの下にメタデータを取得する手順を追加する場合、**[新しいステップ]**、**[アクションの追加]** の順に選択します。 
+1. ロジック アプリ デザイナーで、ワークフローのトリガーまたは最後のアクションの下にメタデータを取得する手順を追加する場合、 **[新しいステップ]** 、 **[アクションの追加]** の順に選択します。 
 
-1. 検索ボックスに「integration account」と入力します。 検索ボックスで、**[すべて]** を選択します。 アクションの一覧から、次のアクションを選択します。**統合アカウントのアーティファクトの検索 - 統合アカウント**
+1. 検索ボックスに「integration account」と入力します。 検索ボックスで、 **[すべて]** を選択します。 アクションの一覧から、次のアクションを選択します。**統合アカウントのアーティファクトの検索 - 統合アカウント**
 
    ![[統合アカウントのアーティファクトの検索] を選択する](media/logic-apps-enterprise-integration-metadata/integration-account-artifact-lookup.png)
 
@@ -75,9 +75,9 @@ ms.locfileid: "54446784"
 
 1. そのメタデータを処理するためのアクションを追加します。例:
 
-   1. **[統合アカウントのアーティファクトの検索]** で **[次のステップ]** を選択し、**[アクションの追加]** を選択します。 
+   1. **[統合アカウントのアーティファクトの検索]** で **[次のステップ]** を選択し、 **[アクションの追加]** を選択します。 
 
-   1. 検索ボックスに「http」と入力します。 検索ボックスの下で **[ビルトイン]** を選択し、**[HTTP - HTTP]** アクションを選択します。
+   1. 検索ボックスに「http」と入力します。 検索ボックスの下で **[ビルトイン]** を選択し、 **[HTTP - HTTP]** アクションを選択します。
 
       ![HTTP アクションを追加する](media/logic-apps-enterprise-integration-metadata/http-action.png)
 
@@ -89,11 +89,11 @@ ms.locfileid: "54446784"
       |----------|----------|-------|-------------| 
       | **メソッド** | はい | <*operation-to-run*> | アーティファクトで実行する HTTP 操作。 たとえば、この HTTP アクションでは **GET** メソッドが使用されます。 | 
       | **URI** | はい | <*metadata-location*> | 取得したアーティファクトから `routingUrl` メタデータ値にアクセスするには、下のような式を使用できます。 <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **ヘッダー** | いいえ  | <*header-values*> | HTTP アクションに渡すトリガーからのヘッダー出力。 たとえば、トリガーの `headers` プロパティ値を渡すには、次のような式を使用できます。 <p>`@triggeroutputs()['headers']` | 
-      | **本文** | いいえ  | <*body-content*> | HTTP アクションの `body` プロパティで渡すその他のコンテンツ。 この例では、アーティファクトの `properties` 値が HTTP アクションに渡されます。 <p>1.**[本文]** プロパティ内をクリックし、動的コンテンツ リストを表示します。 プロパティが表示されていない場合、**[さらに表示する]** を選択します。 <br>2.動的コンテンツ リストの **[統合アカウントのアーティファクトの検索]** で **[プロパティ]** を選択します。 | 
+      | **ヘッダー** | いいえ | <*header-values*> | HTTP アクションに渡すトリガーからのヘッダー出力。 たとえば、トリガーの `headers` プロパティ値を渡すには、次のような式を使用できます。 <p>`@triggeroutputs()['headers']` | 
+      | **本文** | いいえ | <*body-content*> | HTTP アクションの `body` プロパティで渡すその他のコンテンツ。 この例では、アーティファクトの `properties` 値が HTTP アクションに渡されます。 <p>1. **[本文]** プロパティ内をクリックし、動的コンテンツ リストを表示します。 プロパティが表示されていない場合、 **[さらに表示する]** を選択します。 <br>2.動的コンテンツ リストの **[統合アカウントのアーティファクトの検索]** で **[プロパティ]** を選択します。 | 
       |||| 
 
-      例: 
+      例:
 
       ![HTTP アクションの値と式を指定する](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
 

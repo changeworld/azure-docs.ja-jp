@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 929a4e4366c9e94ed4e1915406914991624f6baa
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149633"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60565556"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
@@ -47,7 +47,7 @@ ms.locfileid: "60149633"
     a. アプリケーション整合性ポイントを生成するには、[ガイダンス](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine)を参照して、Site Recovery VSS プロバイダーの手動インストールを完了します。 </br>
     b.  アプリケーション整合性ポイントを生成したくない場合は、[レプリケーション ポリシーを変更](vmware-azure-set-up-replication.md#create-a-policy)して、アプリケーション整合性ポイントをオフにします。
 
-### <a name="before-922-versions"></a>9.22 バージョンより前
+### <a name="before-922-versions"></a>9\.22 バージョンより前
 
 1. エージェントをソース マシンにプッシュします。 エージェントをソース マシンにコピーすると、複数の環境エラーが原因で失敗することがあります。 プッシュ インストールの失敗のトラブルシューティングについては、[ガイダンス](vmware-azure-troubleshoot-push-install.md)を参照してください。
 2. エージェントがサーバーに正常にコピーされた後、前提条件の確認がサーバー上で実行されます。 1 つ以上の[前提条件](vmware-physical-azure-support-matrix.md)が満たされていないと、インストールは失敗します。 すべての前提条件が満たされた場合は、インストールがトリガーされます。
@@ -65,11 +65,11 @@ ms.locfileid: "60149633"
 
 1. インストール ファイルをマシンにコピーして実行します。
 2. **[Installation Option]\(インストール オプション\)** で **[Install mobility service]\(モビリティ サービスのインストール\)** を選択します。
-3. インストール先の場所を選択し、**[インストール]** を選択します。
+3. インストール先の場所を選択し、 **[インストール]** を選択します。
 
     ![モビリティ サービスのインストール オプションのページ](./media/vmware-physical-mobility-service-install-manual/mobility1.png)
 
-4. **[インストールの進行状況]** でインストールを監視します。 インストールが完了したら、**[Proceed to Configuration]\(構成に進む\)** を選択して、構成サーバーにサービスを登録します。
+4. **[インストールの進行状況]** でインストールを監視します。 インストールが完了したら、 **[Proceed to Configuration]\(構成に進む\)** を選択して、構成サーバーにサービスを登録します。
 
     ![モビリティ サービスの登録ページ](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 

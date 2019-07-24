@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
 ms.openlocfilehash: 0f5a996d68c80fd9b1f55a36de37579ea245d99d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922774"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Azure Monitor へのログ データの送信 (パブリック プレビュー)
@@ -141,7 +141,7 @@ Azure Monitor HTTP データ コレクター API 経由でデータを送信す�
 
 | プロパティのデータ型 | サフィックス |
 |:--- |:--- |
-| String |_s |
+| string |_s |
 | Boolean |_b |
 | Double |_d |
 | Date/time |_t |
@@ -214,7 +214,7 @@ Azure Monitor HTTP データ コレクター API によって送信されたデ�
 サンプルごとに、次の手順を実行して承認ヘッダーの変数を設定します。
 
 1. Azure Portal で、Log Analytics ワークスペースを検索します。
-2. **[詳細設定]** を選択し、**[接続されたソース]** を選択します。
+2. **[詳細設定]** を選択し、 **[接続されたソース]** を選択します。
 2. **[ワークスペース ID]** の右側にあるコピー アイコンを選択し、**Customer ID** 変数の値としてその ID を貼り付けます。
 3. **[主キー]** の右側にあるコピー アイコンを選択し、**Shared Key** 変数の値としてその ID を貼り付けます。
 

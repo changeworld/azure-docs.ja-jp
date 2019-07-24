@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931e44f85131e8cbdd7aecddd6398f6f59d1b166
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: a6935d2a89968b55dec1626d23b3f290261cf66f
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937288"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67655443"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -31,6 +31,266 @@ ms.locfileid: "64937288"
 - バグの修正
 - 非推奨の機能
 - 変更の計画
+
+---
+
+## <a name="novemberdecember-2018"></a>2018 年 11 月/12 月
+
+### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>同期範囲から削除されたユーザーがクラウド専用アカウントに切り替わらない
+
+**種類:** 固定  
+**サービス カテゴリ:** [ユーザー管理]  
+**製品の機能:** Directory
+
+>[!Important]
+>この修正についてご意見をいただき、ご迷惑をおかけしていることをよく理解しております。 このため、お客様の組織に変更を簡単に導入できるようになるまで、この変更は元に戻しました。
+
+Active Directory Domain Services (AD DS) オブジェクトが同期範囲から除外され、後続の同期周期で Azure AD のごみ箱に移動されると、ユーザーの DirSyncEnabled フラグが間違って **False** に切り替わるバグを修正しました。 この修正の結果、ユーザーが同期範囲から除外され、その後、Azure AD のごみ箱から復元された場合、予想どおり、ユーザー アカウントはオンプレミス AD との同期を維持します。また、その権限ソース (SoA) がオンプレミス AD のままなので、クラウドで管理できません。
+
+この修正の前は、DirSyncEnabled フラグが False に切り替わるという問題がありました。 これらのアカウントがクラウド専用オブジェクトに変換された、アカウントをクラウドで管理できるという間違った印象を与えました。 しかしながら、アカウントの SoA はオンプレミスのままであり、同期されるプロパティ (シャドウ属性) はすべてオンプレミス AD から届きます。 この状態は Azure AD とその他のクラウド ワークロードでさまざまな問題を引き起こしました。これらのアカウントは AD と同期しているものとして処理されるはずですが、クラウド専用アカウントのように動作しました。
+
+現時点では、AD 同期アカウントをクラウド専用アカウントに実際に変換する唯一の方法はテナント レベルで DirSync を無効にし、SoA を転送するバックエンド操作をトリガーすることです。 この種の SoA 変更では、オンプレミス関連の属性 (LastDirSyncTime やシャドウ属性など) をすべて消去する必要があり、また、他のクラウド ワークロードに信号を送り、個々のオブジェクトもクラウド専用アカウントに変換させる必要があります (ただし、これらに限定されません)。
+
+結果的に、今回の修正によって、一部のシナリオでは過去に必須でしたが、AD と同期しているユーザーの ImmutableID 属性を直接更新することが回避されます。 仕様では、Azure AD のオブジェクトの ImmutableID はその名前が示すように不変であることを意図しています。 Azure AD Connect Health と Azure AD Connect Synchronization クライアントで導入された新機能で次のようなシナリオに対処できます。
+
+- **多数のユーザーを対象に大規模な ImmutableID 更新を段階的に行う**
+  
+  たとえば、時間のかかる AD DS フォレスト間移行を行う必要があります。 解決方法:Azure AD Connect を使用し、**ソース アンカーを構成**します。また、ユーザーが移行するとき、Azure AD からローカル AD DS ユーザーの新しいフォレストの ms-DS-Consistency-Guid 属性に既存の ImmutableID 値をコピーします。 詳細については、「[sourceAnchor としての ms-DS-ConsistencyGuid の使用](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor)」を参照してください。
+
+- **多数のユーザーを対象に大規模な ImmutableID 更新を一度に行う**
+
+  たとえば、Azure AD Connect の導入中、設定を間違え、SourceAnchor 属性を変更しなければなりません。 解決方法:テナント レベルで DirSync を無効にし、無効な ImmutableID 値をすべて消去します。 詳しくは、「[Office 365 のディレクトリ同期を無効にする](/office365/enterprise/turn-off-directory-synchronization)」をご覧ください。
+
+- **オンプレミス ユーザーと Azure AD の既存ユーザーを再度組み合わせる** たとえば、AD DS でユーザーが再作成された場合、Azure AD の既存アカウントと再度組み合わされず、重複する Azure AD アカウントが生成されます (孤立オブジェクト)。 解決方法:Azure portal の Azure AD Connect Health を使用し、ソース アンカー/ImmutableID のマッピングをやり直します。 詳細については、「[孤立したオブジェクトのシナリオ](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario)」を参照してください。
+
+### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>重大な変更:Azure Monitor を通じた監査およびサインイン ログ スキーマの更新
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** レポート  
+**製品の機能:** 監視とレポート
+
+現在、監査とサインインのログ ストリームはどちらも Azure Monitor を通じて公開していますので、お使いの SIEM ツールや Log Analytics とログ ファイルをシームレスに統合できます。 お客様のフィードバックに基づき、またこの機能の一般提供の発表に備えて、次の変更がスキーマに加えられます。 これらのスキーマ変更と関連ドキュメントの更新は 1 月の第 1 週までに行われる予定です。
+
+#### <a name="new-fields-in-the-audit-schema"></a>監査スキーマの新しいフィールド
+リソースに対して実行される操作の種類を提供するために、新しい **[操作の種類]** フィールドが追加されます。 たとえば、 **[追加]** 、 **[更新]** 、 **[削除]** などです。
+
+#### <a name="changed-fields-in-the-audit-schema"></a>監査スキーマの変更されるフィールド
+監査スキーマの次のフィールドが変更されます:
+
+|フィールド名|変更箇所|古い値|新しい値|
+|----------|------------|----------|----------|
+|Category|以前は **[サービス名]** フィールドでした。 現在は **[監査カテゴリ]** フィールドです。 **[サービス名]** は **loggedByService** フィールドに名前が変更されました。|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービスのパスワード リセット</li></ul>|<ul><li>[ユーザー管理]</li><li>グループ管理</li><li>アプリの管理</li></ul>|
+|targetResources|**TargetResourceType** を最上位レベルに含みます。|&nbsp;|<ul><li>ポリシー</li><li>アプリ</li><li>User</li><li>Group</li></ul>|
+|loggedByService|監査ログを生成したサービスの名前を提供します。|Null|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービスのパスワード リセット</li></ul>|
+|結果|監査ログの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>失敗</li></ul>|
+
+#### <a name="changed-fields-in-the-sign-in-schema"></a>サインイン スキーマの変更されるフィールド
+サインイン スキーマの次のフィールドが変更されます:
+
+|フィールド名|変更箇所|古い値|新しい値|
+|----------|------------|----------|----------|
+|appliedConditionalAccessPolicies|これは **conditionalaccessPolicies** フィールドでした。 現在は **appliedConditionalAccessPolicies** フィールドです。|変更なし|変更なし|
+|conditionalAccessStatus|サインイン時点の条件付きアクセス ポリシー ステータスの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>失敗</li><li>未適用</li><li>Disabled</li></ul>|
+|appliedConditionalAccessPolicies: 結果|サインイン時点の個別の条件付きアクセス ポリシー ステータスの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>失敗</li><li>未適用</li><li>Disabled</li></ul>|
+
+スキーマの詳細については、「[Azure Monitor の Azure AD 監査ログ スキーマを解釈する (プレビュー)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)」を参照してください。
+
+---
+
+### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>Identity Protection の教師あり機械学習モデルとリスク スコア エンジンの機能強化
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** Identity Protection  
+**製品の機能:** リスク スコア
+
+Identity Protection に関連した、ユーザーおよびサインインのリスク評価エンジンの機能強化により、ユーザー リスクの精度とカバレッジを向上させることができます。 管理者にとっての注目点は、ユーザーのリスク レベルが特定の検出のリスク レベルに直接リンクされなくなったことと、リスクの高いサインイン イベントの数とレベルが増加していることです。
+
+ユーザーのサインインと検出のパターンの追加機能を使用してユーザーのリスクを計算する、教師ありの機械学習モデルによってリスクの検出が評価されるようになりました。 ユーザーに関連付けられた検出のリスクが低または中の場合でも、このモデルに基づいて、管理者はリスク スコアの高いユーザーを見つけることができます。 
+
+---
+
+### <a name="administrators-can-reset-their-own-password-using-the-microsoft-authenticator-app-public-preview"></a>管理者が Microsoft Authenticator アプリ (パブリック プレビュー) を使用して自分自身のパスワードをリセット可能
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** セルフサービスによるパスワードのリセット  
+**製品の機能:** ユーザー認証
+
+Azure AD 管理者は、Microsoft Authenticator アプリの通知や、任意のモバイル認証アプリまたはハードウェア トークンのコードを使用して、自分自身のパスワードをリセットできるようになりました。 自分自身のパスワードをリセットするために、管理者は次の方法のうちの 2 つを使用できるようになります:
+
+- Microsoft Authenticator アプリの通知
+
+- その他のモバイル認証アプリ/ハードウェア トークンのコード
+
+- Email
+
+- 音声通話
+
+- テキスト メッセージ
+
+Microsoft Authenticator アプリを使用したパスワードのリセットの詳細については、[Azure AD のセルフサービスでのパスワード リセット - モバイル アプリと SSPR (プレビュー)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr-preview) に関するページを参照してください。
+
+---
+
+### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>新しい Azure AD Cloud Device Administrator ロール (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** デバイスの登録と管理  
+**製品の機能:** アクセス制御
+
+クラウド デバイス管理タスクを実行するために、管理者はユーザーを新しい Cloud Device Administrator ロールに割り当てることができます。 Cloud Device Administrators ロールを割り当てられたユーザーは、Azure AD でデバイスを有効化、無効化、削除できることに加えて、Azure portal で Windows 10 の BitLocker キー (ある場合) を読み取ることができます。
+
+ロールとアクセス許可の詳細については、「[Azure Active Directory の管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)」を参照してください
+
+---
+
+### <a name="manage-your-devices-using-the-new-activity-timestamp-in-azure-ad-public-preview"></a>Azure AD で新しいアクティビティ タイムスタンプを使用してデバイスを管理する (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** デバイスの登録と管理  
+**製品の機能:** デバイスのライフサイクル管理
+
+Azure AD では、古くなったデバイスを環境から排除するために、定期的に組織のデバイスを更新したり、インベントリから削除したりする必要があります。 このプロセスを支援するために、Azure AD では、新しいアクティビティ タイムスタンプによってデバイスが更新されることで、デバイスのライフサイクルが管理しやすくなりました。
+
+このタイムスタンプを取得および使用する方法については、「[方法:Azure AD で古いデバイスを管理する](https://docs.microsoft.com/azure/active-directory/devices/manage-stale-devices)」を参照してください
+
+---
+
+### <a name="administrators-can-require-users-to-accept-a-terms-of-use-on-each-device"></a>管理者が各デバイスで利用規約の承諾をユーザーに要求可能
+
+**種類:** 新機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** ガバナンス
+ 
+管理者は **[各デバイスでユーザーによる同意が必要]** オプションを有効にすることで、テナントでユーザーが使用しているすべてのデバイスで利用規約の承諾をユーザーに要求できるようになりました。
+
+詳細については、[Azure Active Directory Terms of Use 機能の、デバイスごとの利用規約に関するセクション](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#per-device-terms-of-use)を参照してください。
+
+---
+
+### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-a-recurring-schedule"></a>管理者が定期的なスケジュールに基づいて利用規約の有効期限を設定可能
+
+**種類:** 新機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** ガバナンス
+ 
+
+管理者は **[期限切れの同意]** オプションを有効にすることで、すべてのユーザーを対象に、利用規約の有効期限を指定の定期スケジュールに基づいて設定できるようになりました。 年に 1 回、半年に 1 回、3 か月に 1 回、または月に 1 回のスケジュールを指定できます。 利用規約が期限切れになったら、ユーザーは再度受け入れる必要があります。
+
+詳細については、[Azure Active Directory Terms of Use 機能の、利用規約の追加に関するセクション](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#add-terms-of-use)を参照してください。
+
+---
+
+### <a name="administrators-can-configure-a-terms-of-use-to-expire-based-on-each-users-schedule"></a>管理者が各ユーザーのスケジュールに基づいて利用規約の有効期限を設定可能
+
+**種類:** 新機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** ガバナンス
+
+管理者は、ユーザーが利用規約を再承諾しなければならない期間を指定できるようになりました。 たとえば、管理者は、ユーザーが 90 日おきに利用規約を再承諾しなければならないことを指定できます。
+
+詳細については、[Azure Active Directory Terms of Use 機能の、利用規約の追加に関するセクション](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use#add-terms-of-use)を参照してください。
+ 
+---
+
+### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Azure Active Directory のロールに関する新しい Azure AD Privileged Identity Management (PIM) の電子メール
+
+**種類:** 新機能  
+**サービス カテゴリ:** Privileged Identity Management  
+**製品の機能:** Privileged Identity Management
+ 
+Azure AD Privileged Identity Management (PIM) を使用しているお客様は、過去 7 日間の次の情報を含むダイジェスト電子メールを毎週受信できるようになりました:
+
+- 最上位の有資格かつ永続的なロール割り当ての概要
+
+- ロールをアクティブ化しているユーザー数
+
+- PIM でロールに割り当てられたユーザー数
+
+- PIM 外でロールに割り当てられたユーザー数
+
+- PIM で "永続化" されたユーザー数
+
+PIM と利用可能な電子メール通知の詳細については、「[PIM での電子メール通知](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)」を参照してください。
+
+---
+
+### <a name="group-based-licensing-is-now-generally-available"></a>グループベースのライセンスの一般提供開始
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** その他  
+**製品の機能:** Directory
+
+グループベースのライセンスのパブリック プレビューが終了し、一般提供が開始されました。 この一般向けリリースの一環として、この機能のスケーラビリティの向上に加えて、単一ユーザーへのグループベースのライセンス割り当てを再処理できるようになり、Office 365 E3/A3 ライセンスでグループベースのライセンスが使用できるようになりました。
+
+グループベースのライセンスの詳細については、「[Azure Active Directory のグループベースのライセンスとは](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal)」を参照してください。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 11 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+ 
+2018 年 11 月に、フェデレーションを使用した以下の 26 の新規アプリのサポートが、アプリ ギャラリーに追加されました:
+
+[CoreStack](https://cloud.corestack.io/site/login)、[HubSpot](https://docs.microsoft.com/azure/active-directory/saas-apps/HubSpot-tutorial)、[GetThere](https://docs.microsoft.com/azure/active-directory/saas-apps/getthere-tutorial)、[Gra-Pe](https://docs.microsoft.com/azure/active-directory/saas-apps/grape-tutorial)、[eHour](https://getehour.com/try-now)、[Consent2Go](https://docs.microsoft.com/azure/active-directory/saas-apps/Consent2Go-tutorial)、[Appinux](https://docs.microsoft.com/azure/active-directory/saas-apps/appinux-tutorial)、[DriveDollar](https://azuremarketplace.microsoft.com/marketplace/apps/savitas.drivedollar-azuread?tab=Overview)、[Useall](https://docs.microsoft.com/azure/active-directory/saas-apps/useall-tutorial)、[Infinite Campus](https://docs.microsoft.com/azure/active-directory/saas-apps/infinitecampus-tutorial)、[Alaya](https://alayagood.com/en/demo/)、[HeyBuddy](https://docs.microsoft.com/azure/active-directory/saas-apps/heybuddy-tutorial)、[Wrike SAML](https://docs.microsoft.com/azure/active-directory/saas-apps/wrike-tutorial)、[Drift](https://docs.microsoft.com/azure/active-directory/saas-apps/drift-tutorial)、[Zenegy for Business Central 365](https://accounting.zenegy.com/)、[Everbridge Member Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/everbridge-tutorial)、[IDEO](https://profile.ideo.com/users/sign_up)、[Ivanti Service Manager (ISM)](https://docs.microsoft.com/azure/active-directory/saas-apps/ivanti-service-manager-tutorial)、[Peakon](https://docs.microsoft.com/azure/active-directory/saas-apps/peakon-tutorial)、[Allbound SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/allbound-sso-tutorial)、[Plex Apps - Classic Test](https://test.plexonline.com/signon)、[Plex Apps – Classic](https://www.plexonline.com/signon)、[Plex Apps - UX Test](https://test.cloud.plex.com/sso)、[Plex Apps – UX](https://cloud.plex.com/sso)、[Plex Apps – IAM](https://accounts.plex.com/)、[CRAFTS - Childcare Records, Attendance, & Financial Tracking System](https://getcrafts.ca/craftsregistration) 
+
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+
+---
+
+## <a name="october-2018"></a>2018 年 10 月
+
+### <a name="azure-ad-logs-now-work-with-azure-log-analytics-public-preview"></a>Azure AD のログを Azure Log Analytics (パブリック プレビュー) と連携させることが可能になりました
+
+**種類:** 新機能  
+**サービス カテゴリ:** レポート  
+**製品の機能:** 監視とレポート
+
+Azure AD のログを Azure Log Analytics に転送できるようになりました。 要望の特に多かったこの機能が追加されたことで、ビジネス、運営、セキュリティに関する分析データへのアクセスがこれまで以上に改善され、インフラストラクチャの監視機能も強化されました。 詳しくは、関連のブログ記事 (「[Azure Active Directory Activity logs in Azure Log Analytics now available (Azure Active Directory のアクティビティ ログが Azure Log Analytics で利用できるようになりました)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-Activity-logs-in-Azure-Log-Analytics-now/ba-p/274843)」) をご覧ください。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---october-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 10 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+
+2018 年 10 月に、フェデレーションを使用した以下の 14 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
+
+[My Award Points](https://docs.microsoft.com/azure/active-directory/saas-apps/myawardpoints-tutorial)、[Vibe HCM](https://docs.microsoft.com/azure/active-directory/saas-apps/vibehcm-tutorial)、ambyint、[MyWorkDrive](https://docs.microsoft.com/azure/active-directory/saas-apps/myworkdrive-tutorial)、[BorrowBox](https://docs.microsoft.com/azure/active-directory/saas-apps/borrowbox-tutorial)、Dialpad、[ON24 Virtual Environment](https://docs.microsoft.com/azure/active-directory/saas-apps/on24-tutorial)、[RingCentral](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial)、[Zscaler Three](https://docs.microsoft.com/azure/active-directory/saas-apps/zscaler-three-tutorial)、[Phraseanet](https://docs.microsoft.com/azure/active-directory/saas-apps/phraseanet-tutorial)、[Appraisd](https://docs.microsoft.com/azure/active-directory/saas-apps/appraisd-tutorial)、[Workspot Control](https://docs.microsoft.com/azure/active-directory/saas-apps/workspotcontrol-tutorial)、[Shuccho Navi](https://docs.microsoft.com/azure/active-directory/saas-apps/shucchonavi-tutorial)、[Glassfrog](https://docs.microsoft.com/azure/active-directory/saas-apps/glassfrog-tutorial)
+
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+
+---
+
+### <a name="azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services の電子メール通知
+
+**種類:** 新機能  
+**サービス カテゴリ:** Azure AD Domain Services  
+**製品の機能:** Azure AD Domain Services
+
+Azure AD Domain Services では、マネージド ドメインの構成ミスや問題に関するアラートが、Azure portal を通じて提供されます。 これらのアラートにはステップ バイ ステップ ガイドが含まれているので、サポートへの連絡を必要とすることなく、問題の解決に着手できます。
+
+10 月からは、マネージド ドメインの通知設定をカスタマイズできるようになるので、新しいアラートの発生時に、指定のユーザー グループへ電子メールを自動送信できるようになります。これにより、ポータルで更新プログラムを常時確認する必要がなくなります。
+
+詳しくは、「[Azure AD Domain Services の通知設定](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-notifications)」をご覧ください。
+
+---
+
+### <a name="azure-ad-portal-supports-using-the-forcedelete-domain-api-to-delete-custom-domains"></a>Azure AD ポータルで、ForceDelete ドメイン API を使用してカスタム ドメインを削除できるようになりました 
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** ディレクトリ管理  
+**製品の機能:** Directory
+
+ForceDelete ドメイン API を使用して、ユーザー、グループ、アプリなどの参照を、カスタム ドメイン名 (contoso.com) から既定の初期ドメイン名 (contoso.onmicrosoft.com) へと非同期的に名前変更することにより、カスタム ドメイン名を削除できるようになりました。
+
+これにより、カスタム ドメイン名が使用されなくなった場合や、そのドメイン名を別の Azure AD で使用する必要が生じた場合に、ドメイン名をよりすばやく削除できるようになりました。
+
+詳しくは、「[カスタム ドメイン名を削除する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-manage#delete-a-custom-domain-name)」をご覧ください。
 
 ---
 
@@ -92,7 +352,7 @@ ms.locfileid: "64937288"
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** SSO
 
-[マイ アプリ] アクセス パネルで使用できる新しいデプロイ計画をご確認ください (https://aka.ms/deploymentplans)。
+[マイ アプリ] アクセス パネルで使用できる新しいデプロイ計画をご確認ください (https://aka.ms/deploymentplans) 。
 [マイ アプリ] アクセス パネルによって、ユーザーは 1 つの場所でアプリケーションの検索とアクセスを行えます。 このポータルでは、ユーザーはセルフ サービスで、アプリケーションとグループへのアクセスを要求したり、他のユーザーに代わってこれらのリソースへのアクセスを管理したりすることなどが可能です。
 
 詳細については、「[マイ アプリ ポータルとは](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)」を参照してください
@@ -125,7 +385,7 @@ Azure portal の **[サインイン]** ページの **[トラブルシューテ�
 
 ### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Azure AD アプリベースの条件付きアクセス向けの承認されたクライアント アプリの新規追加
 
-**タイプ:** 変更の計画  
+**種類:** 変更の計画  
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
 
@@ -213,7 +473,7 @@ SAML ベースのアプリの構成 UI が更新された一部として、以�
 
 - SAML アプリの NameID 形式を設定する方法と、ディレクトリ拡張機能として NameID 値を設定する方法。
 
-この更新されたビューをオンにするには、**[シングル サインオン]** ページ上部の **[Try out our new experience] (新しいエクスペリエンスを試す)** リンクをクリックします。 詳細については、「[チュートリアル:Azure Active Directory による SAML ベースのシングル サインオンをアプリケーションに構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)」を参照してください。
+この更新されたビューをオンにするには、 **[シングル サインオン]** ページ上部の **[Try out our new experience] (新しいエクスペリエンスを試す)** リンクをクリックします。 詳細については、「[チュートリアル:Azure Active Directory による SAML ベースのシングル サインオンをアプリケーションに構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)」を参照してください。
 
 ---
 
@@ -483,7 +743,7 @@ Azure AD Connect の最新リリースは次のとおりです。
 
 ---
 
-### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>使用条件 (ToU) エンドユーザー UI の更新
+### <a name="updates-to-the-terms-of-use-end-user-ui"></a>使用条件エンドユーザー UI の更新
 
 **種類:** 変更された機能  
 **サービス カテゴリ:** 使用条件  
@@ -557,10 +817,10 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 **アプリのアクセス許可を更新するには**
 
-1. Azure Portal にサインインし、**[Azure Active Directory]** を選択してから **[アプリの登録]** を選択します。
-2. Azure AD アクティビティ ログ API を使用しているアプリを選択して **[設定]** を選択し、**[必要なアクセス許可]** を選んでから、**[Windows Azure Active Directory]** API を選択します。
-3. **[アクセスの有効化]** ブレードの **[委任されたアクセス許可]** 領域で、**[ディレクトリ データの読み取り]** チェック ボックスをオンにして、**[保存]** を選択します。
-4. **[アクセス許可の付与]** を選択し、**[はい]** を選択します。
+1. Azure Portal にサインインし、 **[Azure Active Directory]** を選択してから **[アプリの登録]** を選択します。
+2. Azure AD アクティビティ ログ API を使用しているアプリを選択して **[設定]** を選択し、 **[必要なアクセス許可]** を選んでから、 **[Windows Azure Active Directory]** API を選択します。
+3. **[アクセスの有効化]** ブレードの **[委任されたアクセス許可]** 領域で、 **[ディレクトリ データの読み取り]** チェック ボックスをオンにして、 **[保存]** を選択します。
+4. **[アクセス許可の付与]** を選択し、 **[はい]** を選択します。
     
     >[!Note]
     >アプリへのアクセス許可の付与は、全体管理者が行う必要があります。
@@ -579,28 +839,28 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 
 [PCI Security Standards Council](https://www.pcisecuritystandards.org/) は、**2018 年 6 月 30 日**に開始されたコンプライアンスに沿って、新しいより安全なアプリ プロトコルを有効にして、初期バージョンの TLS および Secure Sockets Layer (SSL) を無効化する必要があることを決定しました。 この変更は、Azure AD サービスに接続し、PCI DSS コンプライアンスを必要とする場合には、TLS 1.0 を無効にしなければならないことを意味します。 複数のバージョンの TLS が使用可能ですが、TLS 1.2 は Azure Active Directory Services に利用できる最新バージョンです。 クライアント/サーバーおよびブラウザー/サーバーの両方の組み合わせにおいて、TLS 1.2 に直接移行することを強くお勧めします。
 
-古いブラウザーでは、TLS 1.2 などの新しい TLS バージョンがサポートされない可能性があります。 お使いのブラウザーでどの TLS バージョンがサポートされるかを確認するには、[Qualys SSL Labs](https://www.ssllabs.com/) サイトへ移動して、**[Test your browser]** をクリックします。 お使いの Web ブラウザーを最新バージョンにアップグレードして、可能であれば TLS 1.2 のみを有効にすることをお勧めします。
+古いブラウザーでは、TLS 1.2 などの新しい TLS バージョンがサポートされない可能性があります。 お使いのブラウザーでどの TLS バージョンがサポートされるかを確認するには、[Qualys SSL Labs](https://www.ssllabs.com/) サイトへ移動して、 **[Test your browser]** をクリックします。 お使いの Web ブラウザーを最新バージョンにアップグレードして、可能であれば TLS 1.2 のみを有効にすることをお勧めします。
 
 **TLS 1.2 を有効にするために、ブラウザーで実行する手順**
 
 - **Microsoft Edge および Internet Explorer (いずれも、Internet Explorer を使用して設定される)**
 
-    1. Internet Explorer を開き、**[ツール]** > **[インターネット オプション]** > **[詳細]** の順に選択します。
-    2. **[セキュリティ]** 領域で、**[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択して、**[OK]** をクリックします。
+    1. Internet Explorer を開き、 **[ツール]**  >  **[インターネット オプション]**  >  **[詳細]** の順に選択します。
+    2. **[セキュリティ]** 領域で、 **[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択して、 **[OK]** をクリックします。
     3. すべてのブラウザー ウィンドウを閉じて、Internet Explorer を再起動します。 
 
 - **Google Chrome**
 
-    1. Google Chrome を開き、「*chrome://settings/*」とアドレス バーに入力して、**Enter** キーを押します。
-    2. **[詳細]** オプションを展開し、**[システム]** 領域へ移動して、**[プロキシ セットアップを開く]** を選択します。
-    3. **[インターネットのプロパティ]** ボックスで、**[詳細]** タブを選択し、**[セキュリティ]** 領域へ移動して、**[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択してから、**[OK]** をクリックします。
+    1. Google Chrome を開き、「*chrome://settings/* 」とアドレス バーに入力して、**Enter** キーを押します。
+    2. **[詳細]** オプションを展開し、 **[システム]** 領域へ移動して、 **[プロキシ セットアップを開く]** を選択します。
+    3. **[インターネットのプロパティ]** ボックスで、 **[詳細]** タブを選択し、 **[セキュリティ]** 領域へ移動して、 **[use TLS 1.2]\(TLS 1.2 を使用する\)** を選択してから、 **[OK]** をクリックします。
     4. すべてのブラウザー ウィンドウを閉じて、Google Chrome を再起動します。
 
 - **Mozilla Firefox**
 
     1. Firefox を開き、アドレス バーに「*about:config*」と入力してから、**Enter** キーを押します。
     2. *TLS* という語句を検索して、**security.tls.version.max** エントリを選択します。
-    3. 値を **3** に設定して、ブラウザーでバージョン TLS 1.2 までを使用するように設定し、**[OK]** をクリックします。
+    3. 値を **3** に設定して、ブラウザーでバージョン TLS 1.2 までを使用するように設定し、 **[OK]** をクリックします。
 
         >[!NOTE]
         >Firefox バージョン 60.0 では TLS 1.3 をサポートしているため、security.tls.version.max の値を **4** に設定することもできます。
@@ -641,25 +901,25 @@ Azure AD Password Protection の詳細については、「[組織内の不適�
 
 ---
 
-### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>使用条件 (ToU: Terms of Use) の作成時に作成された、新しい "すべてのゲスト" 条件付きアクセス ポリシー テンプレート
+### <a name="new-all-guests-conditional-access-policy-template-created-during-terms-of-use-creation"></a>使用条件の作成中に作成された、新しい "すべてのゲスト" 条件付きアクセス ポリシー テンプレート
 
 **種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** ガバナンス
 
-使用条件 (ToU) の作成時に、"すべてのゲスト" および "すべてのアプリ" 用の新しい条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、新しく作成された ToU を適用し、ゲストの作成および強制プロセスを合理化します。
+使用条件の作成中に、"すべてのゲスト" と "すべてのアプリ" のための新しい条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、新しく作成された ToU を適用し、ゲストの作成および強制プロセスを合理化します。
 
 詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)」を参照してください。
 
 ---
 
-### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-tou-creation"></a>使用条件 (ToU) の作成時に作成された、新しい "カスタム" 条件付きアクセス ポリシー テンプレート
+### <a name="new-custom-conditional-access-policy-template-created-during-terms-of-use-creation"></a>使用条件の作成中に作成された、新しい "カスタム" 条件付きアクセス ポリシー テンプレート
 
 **種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** ガバナンス
 
-使用条件 (ToU) の作成時に、新しい "カスタム" 条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、ToU を作成してから、すぐに条件付きアクセス ポリシーの作成ブレードに移動できます。ポータル経由で、手動で移動する必要はありません。
+使用条件の作成中に、新しい "カスタム" 条件付きアクセス ポリシー テンプレートも作成されます。 この新しいポリシー テンプレートでは、ToU を作成してから、すぐに条件付きアクセス ポリシーの作成ブレードに移動できます。ポータル経由で、手動で移動する必要はありません。
 
 詳しくは、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)」を参照してください。
 
@@ -699,7 +959,7 @@ MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deploy
 
     - **エンタープライズ アプリ所有者。** SSO 設定、アプリの割り当て、および承認 (Azure AD リソースを除く) を含め、所有するエンタープライズ アプリの多くの側面を管理する権限が付与されます。
 
-パブリック プレビューの詳細については、ブログ「[Azure AD delegated application management roles are in public preview!](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/)」(Azure AD の委任されたアプリケーション管理ロールをパブリック プレビューで確認しよう!)  を参照してください。 ロールとアクセス許可の詳細については、「[Azure Active Directory の管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)」を参照してください。
+パブリック プレビューの詳細については、ブログ「[Azure AD delegated application management roles are in public preview!](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/)」(Azure AD の委任されたアプリケーション管理ロールをパブリック プレビューで確認しよう!) を参照してください。 ロールとアクセス許可の詳細については、「[Azure Active Directory の管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)」を参照してください。
 
 ---
 
@@ -729,7 +989,7 @@ Azure Active Directory (Azure AD) などのサービスとしてのソフトウ�
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** 開発者エクスペリエンス
  
-Azure AD Terms of Use を管理するための Microsoft Graph API が追加されました。 使用条件オブジェクトを作成、更新、または削除できます。
+Azure AD Terms of Use の管理操作のための Microsoft Graph API が追加されました。 使用条件オブジェクトを作成、更新、削除できます。
 
 ---
 
@@ -837,7 +1097,7 @@ Azure AD アクティビティ ログ (サインイン ログと監査ログを�
 **サービス カテゴリ:** その他  
 **製品の機能:** Directory
  
-Azure Active Directory (Azure AD) のデプロイ方法に関する新しいステップ バイ ステップ ガイド。セルフサービスによるパスワードのリセット (SSPR)、シングル サインオン (SSO)、条件付きアクセス (CA)、アプリ プロキシ、ユーザー プロビジョニング、パススルー認証 (PTA) に対する Active Directory フェデレーション サービス (AD FS)、およびパスワード ハッシュの同期 (PHS) に対する ADFS が含まれます。
+Azure Active Directory (Azure AD) のデプロイ方法に関する新しいステップ バイ ステップ ガイド。セルフサービスによるパスワードのリセット (SSPR)、シングル サインオン (SSO)、条件付きアクセス (CA)、アプリ プロキシ、ユーザー プロビジョニング、パススルー認証 (PTA) に対する Active Directory フェデレーション サービス (ADFS)、およびパスワード ハッシュの同期 (PHS) に対する ADFS が含まれます。
 
 デプロイ ガイドを表示するには、GitHub の [Identity Deployment Guides](https://aka.ms/DeploymentPlans) (ID デプロイ ガイド) リポジトリに移動します。 デプロイ ガイドに関するフィードバックを提出するには、[Deployment Plan Feedback (デプロイ プランに関するフィードバック) フォーム](https://aka.ms/deploymentplanfeedback)を使用してください。 デプロイ ガイドに関する質問がある場合は、[IDGitDeploy](mailto:idgitdeploy@microsoft.com) までお問い合わせください。
 
@@ -875,7 +1135,7 @@ AADConnect の 5 月のリリースには、PingFederate との統合のパブ�
 
 ### <a name="id-tokens-can-no-longer-be-returned-using-the-query-responsemode-for-new-apps"></a>新しいアプリでは query response_mode を使用して ID トークンを返すことはできません。 
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
  
@@ -916,7 +1176,7 @@ SAML ベースの SSO アプリケーションを構成するときに、構成�
  
 ### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Azure AD Terms of Use にユーザーごとのレポートが設けられた
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** コンプライアンス
  
@@ -963,7 +1223,7 @@ Connect Health で、U/P ログインの失敗のしきい値を超える IP ア
 **製品の機能:** コンプライアンス
  
 
-Azure AD Terms of Use がパブリック プレビューから一般公開になりました。
+Azure AD Terms of Use がパブリック プレビューから一般公開に移動されました。
 
 詳細については、[Azure AD Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)に関するページを参照してください。
 
@@ -1020,7 +1280,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 **サービス カテゴリ:** その他  
 **製品の機能:** サード パーティ統合
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) にリストされているアプリケーションが SAML ベースのシングル サインオンをサポートしている場合、**[今すぐ入手する]** をクリックすると、そのアプリケーションに関連する統合チュートリアルが表示されます。 
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) にリストされているアプリケーションが SAML ベースのシングル サインオンをサポートしている場合、 **[今すぐ入手する]** をクリックすると、そのアプリケーションに関連する統合チュートリアルが表示されます。 
 
 ---
 
@@ -1085,7 +1345,7 @@ Azure AD B2C の ID プロバイダーとして、Twitter または GitHub を�
 
 ### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>iOS および Android 用の、Azure AD アプリケーション ベースの条件付きアクセスを使用した、Intune Managed Browser によるブラウザー アクセスの制限
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティ & 保護
  
@@ -1442,7 +1702,7 @@ Azure AD とオンプレミス データ ソース (Windows Server Active Direct
  
 ### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>Azure AD アプリケーション ベースの条件付きアクセスで使用できるアプリケーションに Intune App Protection ポリシー対応アプリケーションを追加
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティ & 保護
 
@@ -1463,9 +1723,9 @@ Azure AD とオンプレミス データ ソース (Windows Server Active Direct
 
 ---
 
-### <a name="terms-of-use-update-to-mobile-experience"></a>モバイル エクスペリエンス向けに使用条件を更新 
+### <a name="terms-of-use-update-to-mobile-experience"></a>使用条件のモバイル エクスペリエンスへの更新 
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** コンプライアンス
 
@@ -1511,7 +1771,7 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** SSO
 
-新しいユーザー設定を使用することで、ユーザーのアクセス パネルで Office 365 アプリケーションを表示する方法が管理しやすくなりました。 このオプションは、Office ポータルでのみ Office アプリを表示する場合に、ユーザーのアクセス パネル内のアプリ数を減らすのに役立ちます。 この設定は **[ユーザー設定]** 内にあり、**[ユーザーは Office 365 ポータルでのみ Office 365 アプリを表示できる]** というラベルが付いています。
+新しいユーザー設定を使用することで、ユーザーのアクセス パネルで Office 365 アプリケーションを表示する方法が管理しやすくなりました。 このオプションは、Office ポータルでのみ Office アプリを表示する場合に、ユーザーのアクセス パネル内のアプリ数を減らすのに役立ちます。 この設定は **[ユーザー設定]** 内にあり、 **[ユーザーは Office 365 ポータルでのみ Office 365 アプリを表示できる]** というラベルが付いています。
 
 詳細については、「[Azure Active Directory でユーザーのエクスペリエンスからアプリケーションを非表示にする](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)」をご覧ください。
 
@@ -1552,7 +1812,7 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
  
 2018 年 1 月 8日に、PhoneFactor Web ポータルは廃止されました。 このポータルは、MFA サーバーの管理に使用されていましたが、これらの機能は portal.azure.com の Azure Portal に移行しました。 
 
-MFA の構成は、**[Azure Active Directory] \> [MFA サーバー]** にあります。
+MFA の構成は、 **[Azure Active Directory] \> [MFA サーバー]** にあります。
  
 ---
  
@@ -1593,7 +1853,7 @@ MFA の構成は、**[Azure Active Directory] \> [MFA サーバー]** にあり�
 
 2. 右上隅に表示されるご自身の名前をクリックし、一覧から **[プロファイル]** を選択します。 
 
-3. **[プロファイル]** で、**[使用条件の確認]** を選択します。 
+3. **[プロファイル]** で、 **[使用条件の確認]** を選択します。 
 
 4. 承認した使用条件を確認できます。 
 
@@ -1731,7 +1991,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 アプリケーションベースの条件付きアクセスで以下の条件を構成できるようになります。
 
-**クライアント アプリ:** ブラウザー
+**クライアント アプリ:** Browser
 
 **この変更の影響**
 
@@ -1739,13 +1999,13 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 この機能の詳細については、今後のブログとリリース ノートをお待ちください。 
 
-詳細については、「[Azure Active Directory の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)」をご覧ください。
+詳細については、[Azure AD の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)に関するページを参照してください。
  
 ---
 
 ### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Azure AD アプリベースの条件付きアクセス向けの承認されたクライアント アプリの新規追加
 
-**タイプ:** 変更の計画  
+**種類:** 変更の計画  
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
 
@@ -1790,7 +2050,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 ### <a name="azure-ad-app-based-conditional-access"></a>Azure AD のアプリベースの条件付きアクセス 
  
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** Azure AD  
 **製品の機能:** ID のセキュリティと保護
 
@@ -1813,7 +2073,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 - 承認済みクライアント アプリを必須にする
 
-詳細については、「[Azure Active Directory のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)」をご覧ください。
+詳細については、[Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)に関するページを参照してください。
  
 ---
 
@@ -1836,7 +2096,7 @@ Azure AD に接続されているすべてのデバイスと、それらのデ�
 
 ### <a name="support-for-macos-as-a-device-platform-for-azure-ad-conditional-access"></a>Azure AD の条件付きアクセス用デバイス プラットフォームとしての macOS のサポート 
 
-**タイプ:** 新機能    
+**種類:** 新機能    
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護 
 
@@ -1849,7 +2109,7 @@ Azure AD 条件付きアクセス ポリシーのデバイス プラットフォ
 詳細については、次を参照してください。
 
 - [Intune で macOS デバイス用のデバイス コンプライアンス ポリシーを作成する](https://aka.ms/macoscompliancepolicy)
-- [Azure Active Directory の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+- [Azure AD の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
  
 ---
 
@@ -1890,7 +2150,7 @@ Azure AD 管理センターで以下の操作が可能になりました。
 
 ### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Azure AD アプリベースの条件付きアクセス向けの承認されたクライアント アプリの新規追加
  
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
 
@@ -1908,13 +2168,13 @@ Azure AD 管理センターで以下の操作が可能になりました。
 
 ### <a name="use-or-between-controls-in-a-conditional-access-policy"></a>条件付きアクセス ポリシーのコントロール間での "OR" の使用 
 
-**タイプ:** 変更された機能    
+**種類:** 変更された機能    
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
  
 条件付きアクセス コントロールで (選択したコントロールのいずれかを必須にする) "OR" を使用できるようになりました。 この機能を使用すると、アクセス コントロール間を "OR" でつないでポリシーを作成できます。 たとえば、この機能を使用して、多要素認証を使用したサインイン "または" 準拠デバイスの使用をユーザーに求めるポリシーを作成できます。
 
-詳細については、「[Azure Active Directory の条件付きアクセスのコントロール](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls)」をご覧ください。
+詳細については、[Azure AD の条件付きアクセスのコントロール](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls)に関するページを参照してください。
  
 ---
 
@@ -1953,7 +2213,7 @@ Azure Portal では次の機能が提供されています。
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** シングル サインオン  
 
-Azure AD は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。 この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery#how-to-manually-capture-sign-in-fields-for-an-application)」に示されています。 この機能は、[Azure Portal](https://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで*ギャラリー以外のアプリケーション*を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの**シングル サインオン** モードを**パスワード ベースのシングル サインオン**を実行するように構成できます。
+Azure AD は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。 この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-password-single-sign-on-non-gallery-applications-problems#manually-capture-sign-in-fields-for-an-app)」に示されています。 この機能は、[Azure Portal](https://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで*ギャラリー以外のアプリケーション*を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの**シングル サインオン** モードを**パスワード ベースのシングル サインオン**を実行するように構成できます。
  
 サービスの問題により、この機能は一時的に無効化されていました。 問題が解決されたため、サインイン フィールドの自動検出が再び利用可能になりました。
 
@@ -2035,7 +2295,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** シングル サインオン  
 
-新しい**アプリの非表示**プロパティにより、ご利用のユーザー ポータルに表示されるアプリを管理しやすくなりました。 アプリの非表示は、バックエンド サービス用のアプリ タイルが表示されていたり、タイルが重複してユーザーのアプリ ランチャーが整理されていなかったりする場合に役立ちます。 切り替えボタンはサード パーティ製アプリの **[プロパティ]** セクションにあり、**[Visible to user?]\(ユーザーに表示しますか?\)** というラベルが付いています。 PowerShell を介してプログラムでアプリを非表示にすることもできます。 
+新しい**アプリの非表示**プロパティにより、ご利用のユーザー ポータルに表示されるアプリを管理しやすくなりました。 アプリの非表示は、バックエンド サービス用のアプリ タイルが表示されていたり、タイルが重複してユーザーのアプリ ランチャーが整理されていなかったりする場合に役立ちます。 切り替えボタンはサード パーティ製アプリの **[プロパティ]** セクションにあり、 **[Visible to user?]\(ユーザーに表示しますか?\)** というラベルが付いています。 PowerShell を介してプログラムでアプリを非表示にすることもできます。 
 
 詳細については、[Azure AD でユーザーのエクスペリエンスからサードパーティ製アプリケーションを非表示にする](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)方法に関するページをご覧ください。 
 

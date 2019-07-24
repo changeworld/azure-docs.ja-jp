@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.openlocfilehash: 9422d543ad83f29d60fd7e1de51a79c3416e5b14
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65956165"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Linux Node.js アプリを構成する
@@ -71,7 +71,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>npm start を実行する
 
-`npm start` を使用してをアプリを開始するには、`start` スクリプトが *package.json* ファイル内にあることを確認するだけです。 例: 
+`npm start` を使用してをアプリを開始するには、`start` スクリプトが *package.json* ファイル内にあることを確認するだけです。 例:
 
 ```json
 {
@@ -104,7 +104,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 次の拡張子を持つカスタム スタート ファイルを構成することもできます。
 
 - *.js* ファイル
-- *.json*、*. config.js*、*.yaml*、または *.yml* の拡張子を持つ [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
+- *.json*、 *. config.js*、 *.yaml*、または *.yml* の拡張子を持つ [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
 
 カスタム スタート ファイルを追加するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
@@ -119,7 +119,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 [PM2 で実行](#run-with-pm2)するように構成した場合、*.config.js、*.yml、または *.yaml* を使用して実行したときを除き、[Visual Studio Code](https://code.visualstudio.com/) で Node.js アプリをリモートからデバッグできます。
 
-ほとんどの場合、アプリ用に追加の構成は必要ありません。 アプリが *process.json* ファイル (既定またはカスタム) で実行されている場合、JSON ルートに `script` プロパティが必要です。 例: 
+ほとんどの場合、アプリ用に追加の構成は必要ありません。 アプリが *process.json* ファイル (既定またはカスタム) で実行されている場合、JSON ルートに `script` プロパティが必要です。 例:
 
 ```json
 {
@@ -131,9 +131,9 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 リモート デバッグ用に Visual Studio Code を設定するには、[App Service 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)をインストールします。 拡張機能ページの指示に従い、Visual Studio Code で Azure にサインインします。
 
-Azure エクスプローラーで、デバッグするアプリを見つけ、それを右クリックして、**[リモート デバッグを開始する]** を選択します。 **[はい]** をクリックしてアプリに対して有効にします。 App Service により、トンネル プロキシが開始され、デバッガがアタッチされます。 続いて、アプリに対して要求を行って、ブレーク ポイントで中断しているデバッガを確認できます。
+Azure エクスプローラーで、デバッグするアプリを見つけ、それを右クリックして、 **[リモート デバッグを開始する]** を選択します。 **[はい]** をクリックしてアプリに対して有効にします。 App Service により、トンネル プロキシが開始され、デバッガがアタッチされます。 続いて、アプリに対して要求を行って、ブレーク ポイントで中断しているデバッガを確認できます。
 
-デバッグが完了すると、**[切断]** を選択してデバッガを停止します。 求められたら、**[はい]** をクリックしてリモート デバッグを無効にする必要があります。 後で無効にするには、Azure エクスプローラーでもう一度アプリを右クリックし、**[リモート デバッグの無効化]** を選択します。
+デバッグが完了すると、 **[切断]** を選択してデバッガを停止します。 求められたら、 **[はい]** をクリックしてリモート デバッグを無効にする必要があります。 後で無効にするには、Azure エクスプローラーでもう一度アプリを右クリックし、 **[リモート デバッグの無効化]** を選択します。
 
 ## <a name="access-environment-variables"></a>環境変数へのアクセス
 
@@ -147,7 +147,7 @@ process.env.NODE_ENV
 
 既定では、Kudu は、Node.js アプリがデプロイされていることを認識すると、`npm install --production` を実行します。 アプリで、Grunt、Bower、Gulp など、一般的な自動化ツールのいずれかが必要な場合、それを実行する[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)を提供する必要があります。
 
-リポジトリでこれらのツールを実行できるようにするには、*package.json* での依存関係にこれらを追加する必要があります。 例: 
+リポジトリでこれらのツールを実行できるようにするには、*package.json* での依存関係にこれらを追加する必要があります。 例:
 
 ```json
 "dependencies": {
@@ -165,7 +165,7 @@ npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-リポジトリのルートには現在、*.deployment* と *deploy.sh* の 2 つの追加ファイルがあります。
+リポジトリのルートには現在、 *.deployment* と *deploy.sh* の 2 つの追加ファイルがあります。
 
 *deploy.sh* を開き、次のような `Deployment` セクションを見つけます。
 
@@ -226,7 +226,7 @@ fi
 
 App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
-一般的な Web フレームワークでは、標準のアプリ パターンで `X-Forwarded-*` 情報にアクセスできます。 [Express](https://expressjs.com/) で、[trust proxy](https://expressjs.com/guide/behind-proxies.html) を使用できます。 例: 
+一般的な Web フレームワークでは、標準のアプリ パターンで `X-Forwarded-*` 情報にアクセスできます。 [Express](https://expressjs.com/) で、[trust proxy](https://expressjs.com/guide/behind-proxies.html) を使用できます。 例:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -249,7 +249,7 @@ if (req.secure) {
 動作中の Node.js アプリが App Service で異なる動作をしたり、エラーが発生した場合は、次のことを試してください。
 
 - [ログ ストリームにアクセス](#access-diagnostic-logs)します。
-- 実稼働モードでローカルにアプリをテストします。 App Service では、実稼働モードで Node.js アプリが実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 例: 
+- 実稼働モードでローカルにアプリをテストします。 App Service では、実稼働モードで Node.js アプリが実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 例:
     - *package.json* に応じて、実稼働モードに別々のパッケージ (`dependencies` と `devDependencies`) がインストールされる場合があります。
     - 特定の Web フレームワークでは、実稼働モードで静的ファイルを別にデプロイすることがあります。
     - 特定の Web フレームワークでは、実稼働モードで実行しているときにカスタム スタートアップ スクリプトを使用することがあります。

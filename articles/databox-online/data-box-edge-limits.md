@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: b454b563cdb870ca8f07a45b796dc6b1e272502d
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64924593"
 ---
 # <a name="azure-data-box-edge-limits"></a>Azure Data Box Edge の制限
@@ -29,9 +29,9 @@ Microsoft Azure Data Box Edge ソリューションをデプロイおよび運�
 
 | 説明 | 値 |
 |---|---|
-|いいえ。 デバイスあたりのファイル数 |1 億 |
-|いいえ。 デバイスあたりの共有数 |24 |
-|いいえ。 コンテナーあたりの共有数 |1 |
+|デバイスあたりのファイル数 |1 億 |
+|デバイスあたりの共有数 |24 |
+|コンテナーあたりの共有数 |1 |
 |1 つの共有に書き込まれる最大サイズ ファイル| 5 TB |
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限

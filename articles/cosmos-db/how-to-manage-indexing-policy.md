@@ -4,14 +4,14 @@ description: Azure Cosmos DB でインデックス作成ポリシーを管理す
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 06/27/2019
 ms.author: thweiss
-ms.openlocfilehash: 179b67306803437ccad085cccfb1b5fd40888261
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9fe58e9d49a46fd03a2938f2860a3a5d476813af
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240857"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441787"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -167,7 +167,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>一部のプロパティ パスを選択的に除外するオプトアウト ポリシー
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
@@ -201,7 +201,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
 ### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>一部のプロパティ パスを選択的に包含するオプトイン ポリシー
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/path/to/included/property/?",
@@ -235,7 +235,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>特定のプロパティ パスに対してのみ空間インデックスを使用する
 ```
     {
-        "indexingPolicy": "consistent",
+        "indexingMode": "consistent",
         "includedPaths": [
             {
                 "path": "/*",
@@ -280,7 +280,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
 ### <a name="no-indexing"></a>インデックス作成なし
 ```
     {
-        "indexingPolicy": "none"
+        "indexingMode": "none"
     }
 ```
 
@@ -357,7 +357,7 @@ JSON 形式で示されたインデックス作成ポリシーの例をいくつ
                     "path":"/age",
                     "order":"ascending"
                 }
-            ]
+            ],
             [  
                 {  
                     "path":"/name",

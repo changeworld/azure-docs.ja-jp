@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886099"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60751680"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Net# ニューラル ネットワーク仕様言語について
 
@@ -89,17 +89,17 @@ Azure Machine Learning Studio で作成するニューラル ネットワーク 
 
 `Const X = 28;`
 
-2 つ以上の定数を同時に定義するには、識別子の名前と値を中かっこで囲み、セミコロンで区切ります。 例: 
+2 つ以上の定数を同時に定義するには、識別子の名前と値を中かっこで囲み、セミコロンで区切ります。 例:
 
 `Const { X = 28; Y = 4; }`
 
-それぞれの代入式の右側には、整数、実数、ブール値 (True または False)、あるいは数式を使用することができます。 例: 
+それぞれの代入式の右側には、整数、実数、ブール値 (True または False)、あるいは数式を使用することができます。 例:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>層の宣言
 
-層の宣言が必要です。 これは、サイズと、接続のバンドルと属性を含む、層のソースを定義します。 宣言ステートメントは、層の名前 (input、hidden または output) で始まり、それに層の次元 (正の整数のタプル) が続きます。 例: 
+層の宣言が必要です。 これは、サイズと、接続のバンドルと属性を含む、層のソースを定義します。 宣言ステートメントは、層の名前 (input、hidden または output) で始まり、それに層の次元 (正の整数のタプル) が続きます。 例:
 
 ```Net#
 input Data auto;

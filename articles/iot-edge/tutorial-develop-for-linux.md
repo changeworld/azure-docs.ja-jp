@@ -4,17 +4,17 @@ description: このチュートリアルでは、Linux コンテナーを使用�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/26/2019
+ms.date: 06/10/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41589dccae4e1259e4dc9368d5825ba770b4bdcc
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: e5499afebf29df2942e74148b33797844fa9c880
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146694"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67051936"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>チュートリアル:Linux のデバイス用の IoT Edge モジュールを開発する
 
@@ -22,7 +22,7 @@ Visual Studio Code を使用して、コードを開発して、IoT Edge を実�
 
 クイックスタートの記事では、Linux 仮想マシンを使用して IoT Edge デバイスを作成し、Azure Marketplace から事前構成済みのモジュールをデプロイしました。 このチュートリアルでは、独自のコードを開発して IoT Edge デバイスにデプロイする方法について説明します。 このチュートリアルは、特定のプログラミング言語や Azure サービスをより詳細に説明する、他のすべてのチュートリアルにとって有用な前提条件です。 
 
-このチュートリアルでは、**C モジュールの Linux デバイスへの**デプロイ例を使用します。 この例が選択された理由は、前提条件が最も少ないため、正しいライブラリがインストールされているかどうかを心配せずに開発ツールについて学習できるためです。 開発の概念を理解したら、使用する言語や Azure サービスを選択して、詳細に進むことができます。 
+このチュートリアルでは、**C# モジュールの Linux デバイスへの**展開例を使用します。 この例が選択された理由は、IoT Edge ソリューションで最も一般的な開発者シナリオだからです。 別の言語の使用や Azure サービスのデプロイを予定している場合でも、このチュートリアルは開発ツールと概念の学習に役立ちます。 この開発プロセスの概要を完了したら、使用する言語や Azure サービスを選択して、詳細に進むことができます。 
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -38,22 +38,22 @@ Visual Studio Code を使用して、コードを開発して、IoT Edge を実�
 
 ## <a name="key-concepts"></a>主要な概念
 
-このチュートリアルでは、IoT Edge モジュールの開発について説明します。 *IoT Edge モジュール* (略して、単に*モジュール*と呼ばれることもある) は、実行可能コードを含むコンテナーです。 IoT Edge デバイスには 1 つ以上のモジュールをデプロイできます。 モジュールは、センサーからのデータの取り込み、データ分析操作やデータ クリーニング操作の実行、または IoT ハブへのメッセージの送信のような特定のタスクを実行します。 詳細については、「[Azure IoT Edge モジュールについて](iot-edge-modules.md)」を参照してください。
+このチュートリアルでは、IoT Edge モジュールの開発について順を追って説明します。 *IoT Edge モジュール* (略して、単に*モジュール*と呼ばれることもある) は、実行可能コードを含むコンテナーです。 IoT Edge デバイスには 1 つ以上のモジュールをデプロイできます。 モジュールは、センサーからのデータの取り込み、データ分析操作やデータ クリーニング操作の実行、または IoT ハブへのメッセージの送信のような特定のタスクを実行します。 詳細については、「[Azure IoT Edge モジュールについて](iot-edge-modules.md)」を参照してください。
 
 IoT Edge モジュールを開発する場合は、開発マシンと、モジュールが最終的にデプロイされるターゲット IoT Edge デバイスの違いを理解することが重要です。 モジュール コードを保持するためにビルドするコンテナーは、*ターゲット デバイス*のオペレーティング システム (OS) と一致している必要があります。 たとえば、最も一般的なシナリオは、ある人が Windows コンピューターでモジュールを開発しているが、そのターゲットとして、IoT Edge を実行している Linux デバイスを予定している場合です。 その場合、コンテナーのオペレーティング システムは Linux になります。 このチュートリアルを進めていくときには、*開発マシンの OS* と*コンテナーの OS* の違いに留意してください。
 
-このチュートリアルでは、IoT Edge を実行している Linux デバイスをターゲットとしています。 ご使用の開発マシンが Linux コンテナーを実行できる限り、自分の好きな開発マシンのオペレーティング システムを使用することができます。 Linux デバイス用の開発には Visual Studio Code を使用することをお勧めします。そのため、このチュートリアルでもそれを使用します。 Visual Studio 2017 も使用できますが、この 2 つのツールの間にはサポートに違いがあります。
+このチュートリアルでは、IoT Edge を実行している Linux デバイスをターゲットとしています。 ご使用の開発マシンが Linux コンテナーを実行できる限り、自分の好きな開発マシンのオペレーティング システムを使用することができます。 Linux デバイス用の開発には Visual Studio Code を使用することをお勧めします。そのため、このチュートリアルでもそれを使用します。 Visual Studio も使用できますが、この 2 つのツールの間にはサポートに違いがあります。
 
-次の表に、Visual Studio Code と Visual Studio 2017 で **Linux コンテナー**に対してサポートされる開発シナリオを示します。
+次の表に、**Linux コンテナー**に関して Visual Studio Code と Visual Studio でサポートされる開発シナリオを示します。
 
-|   | Visual Studio Code | Visual Studio 2017 |
+|   | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Linux のデバイスのアーキテクチャ** | Linux AMD64 <br> Linux ARM32 | Linux AMD64 <br> Linux ARM32 |
 | **Azure サービス** | Azure Functions <br> Azure Stream Analytics <br> Azure Machine Learning |   |
 | **Languages** | C <br> C# <br> Java <br> Node.js <br> Python | C <br> C# |
-| **詳細情報** | [Visual Studio Code 用の Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Visual Studio 2017 用の Azure IoT Edge ツール](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) |
+| **詳細情報** | [Visual Studio Code 用の Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) | [Visual Studio 2017 用の Azure IoT Edge ツール](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) <br> [Visual Studio 2019 用の Azure IoT Edge ツール](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools) |
 
-このチュートリアルでは、Visual Studio Code の開発手順を説明します。 Visual Studio 2017 を使用する場合は、「[Visual Studio 2017 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする](how-to-visual-studio-develop-module.md)」に記載されている手順を参照してください。
+このチュートリアルでは、Visual Studio Code の開発手順を説明します。 Visual Studio を使用する場合は、「[Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする](how-to-visual-studio-develop-module.md)」に記載されている手順を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,6 +62,8 @@ IoT Edge モジュールを開発する場合は、開発マシンと、モジ�
 * 開発設定に応じて、独自のコンピューターまたは仮想マシンを使用できます。
 * コンテナー エンジンを実行できるほとんどのオペレーティング システムを使用して、Linux デバイス用の IoT Edge モジュールを開発することができます。 このチュートリアルでは、Windows コンピューターを使用しますが、MacOS または Linux での既知の相違点を指摘します。 
 * このチュートリアルの後半でモジュール テンプレート パッケージをプルするために、[Git](https://git-scm.com/) をインストールします。  
+* [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 Linux 上の Azure IoT Edge デバイス:
 
@@ -114,9 +116,9 @@ Visual Studio Code の IoT 拡張機能を使用して、IoT Edge モジュー�
 
 ## <a name="create-a-new-module-project"></a>新しいモジュール プロジェクトを作成する
 
-Azure IoT Tools の拡張機能は、Visual Studio Code でサポートされているすべての IoT Edge モジュール言語のプロジェクト テンプレートを提供します。 これらのテンプレートは、作業モジュールをデプロイして IoT Edge をテストするために必要なすべてのファイルとコードを含んでいます。または、独自のビジネス ロジックでテンプレートをカスタマイズするための開始点を提供します。 
+Azure IoT Tools の拡張機能は、Visual Studio Code でサポートされているすべての IoT Edge モジュール言語のプロジェクト テンプレートを提供します。 これらのテンプレートは、作業モジュールをデプロイして IoT Edge をテストするために必要なすべてのファイルとコードを含んでいます。または、独自のビジネス ロジックを使用してテンプレートをカスタマイズするための開始点を提供します。 
 
-このチュートリアルでは、C モジュールのテンプレートを使用します。インストールする前提条件が最も少ないからです。 
+このチュートリアルで、この C# モジュール テンプレートを使用するのは、最も一般的に使用されているテンプレートだからです。 
 
 ### <a name="create-a-project-template"></a>プロジェクト テンプレートを作成する
 
@@ -126,7 +128,7 @@ Visual Studio Code のコマンド パレットで、次を検索して選択し
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
-   | Select module template (モジュール テンプレートの選択) | **C モジュール**を選択します。 |
+   | Select module template (モジュール テンプレートの選択) | **C# モジュール**を選択します。 |
    | Provide a module name (モジュール名の指定) | 既定の **SampleModule** を受け入れます。 |
    | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br> 最終的なイメージ リポジトリは、\<レジストリ名\>.azurecr.io/samplemodule のようになります。 |
  
@@ -139,7 +141,7 @@ Visual Studio Code のコマンド パレットで、次を検索して選択し
 * **.env** ファイルは、コンテナー レジストリへの資格情報を保持しています。 これらの資格情報は IoT Edge デバイスと共有されており、コンテナー イメージをプルするためにアクセスすることができます。 
 * **deployment.debug.template.json** ファイルと **deployment.template.json** ファイルは、配置マニフェストの作成に役立つテンプレートです。 *配置マニフェスト*は、どのモジュールをデバイスにデプロイするか、それらをどのように構成するか、そしてそれらが互いに、およびクラウドとどのように通信するかを正確に定義するファイルです。 テンプレート ファイルは、一部の値にポインターを使用します。 テンプレートを真の配置マニフェストに変換するときに、ポインターは他のソリューション ファイルから取得した値に置き換えられます。 デプロイ テンプレートで 2 つの共通プレース ホルダーを見つけます。 
 
-  * レジストリ資格情報セクションで、アドレスは、ソリューションを作成したときに指定した情報から自動的に入力されています。 ただし、ユーザー名とパスワードは、.env ファイルに格納されている変数を参照します。 これはセキュリティのためです。.env ファイルは GIT Ignore ですが、デプロイ テンプレートはそうではないからです。 
+  * レジストリ資格情報セクションで、アドレスは、ソリューションを作成したときに指定した情報から自動的に入力されています。 ただし、ユーザー名とパスワードは、.env ファイルに格納されている変数を参照します。 これはセキュリティのためです .env ファイルは GIT Ignore ですが、デプロイ テンプレートはそうではないからです。 
   * ソリューションを作成したときにイメージ リポジトリを指定しましたが、SampleModule セクションでコンテナー イメージは入力されていません。 このプレースホルダーは、SampleModule フォルダー内の **module.json** ファイルを指しています。 そのファイルに移動すると、イメージ フィールドにはリポジトリが含まれているだけでなく、バージョンとコンテナーのプラットフォームで構成されるタグ値も含まれていることが分かります。 バージョンは、開発サイクルの一部として手動で反復することができ、コンテナー プラットフォームは、このセクションの後半で紹介するスイッチャーを使用して選択します。 
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>レジストリの資格情報を IoT Edge エージェントに提供する
@@ -154,9 +156,9 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
 
-現在、Visual Studio Code は、Linux AMD64 デバイスと Linux ARM32v7 デバイス用の C モジュールを開発できます。 ソリューションごとにターゲットのアーキテクチャを選択する必要があります。これは、コンテナーのビルド方法と実行方法に影響を与えるからです。 既定値は Linux AMD64 です。 
+現在、Visual Studio Code では Linux AMD64 および ARM32v7 デバイス用の C# モジュールを開発できます。 ソリューションごとにターゲットのアーキテクチャを選択する必要があります。これは、コンテナーのビルド方法と実行方法に影響を与えるからです。 既定値は Linux AMD64 です。 
 
-1. コマンド パレットを開き、「**Azure IoT Edge:Set Default Target Platform for Edge Solution** (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)」を検索するか、ウィンドウの下部にあるサイド バーでショートカット アイコンを選択します。 
+1. コマンド パレットを開き、次を検索します: 「**Azure IoT Edge: Set Default Target Platform for Edge Solution (Azure IoT Edge: Edge ソリューションの既定のターゲット プラットフォームの設定)** 」。または、ウィンドウの下部にあるサイド バーで、ショートカット アイコンを選択します。 
 
    ![サイド バーのアーキテクチャ アイコンを選択する](./media/tutorial-develop-for-linux/select-architecture.png)
 
@@ -168,17 +170,19 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
 
 各モジュールは、コードで宣言された複数の *入力*キューと *出力*キューを持つことができます。 デバイスで実行されている IoT Edge ハブは、1 つのモジュールの出力から、1 つ以上のモジュールの入力にメッセージをルーティングします。 入力と出力を宣言するための特定の言語は、言語によって異なりますが、その概念はすべてのモジュールで同じです。 モジュール間のルーティングの詳細については、[ルートの宣言](module-composition.md#declare-routes)に関する記事を参照してください。
 
-1. **modules/SampleModules/** フォルダー内にある **main.c** ファイルを開きます。 
+プロジェクト テンプレートに含まれるサンプル C# コードには、.NET 用 IoT Hub SDK の [ModuleClient クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)が使用されています。 
 
-2. IoT Hub C SDK は、[SetInputMessageCallback](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-setinputmessagecallback) 関数を使用してモジュールの入力キューを初期化します。 main.c ファイル内でその関数を検索します。
+1. **modules/SampleModule/** フォルダー内にある **Program.cs** ファイルを開きます。 
 
-3. SetInputMessageCallback 関数コンストラクターを確認し、**input1** という入力キューがコード内で初期化されていることを確認します。 
+2. program.cs で **SetInputMessageHandlerAsync** メソッドを見つけます。
+
+2. [SetInputMessageHandlerAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync?view=azure-dotnet) メソッドでは、受信メッセージを受け取る入力キューが設定されます。 このメソッドを確認し、**input1** という入力キューがどのように初期化されるかを確かめます。 
 
    ![SetInputMessageCallback コンストラクターで入力名を見つける](./media/tutorial-develop-for-linux/declare-input-queue.png)
 
-4. モジュールの出力キューは、同様の方法で初期化されます。 main.c ファイルで [SendEventToOutputAsync](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-ll-h/iothubmoduleclient-ll-sendeventtooutputasync) 関数を検索します。 
+3. 次に、**SendEventAsync** メソッドを見つけます。
 
-5. SendEventToOutputAsync 関数コンストラクターを確認し、**output1** という出力キューがコード内で初期化されていることを確認します。 
+4. [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient.sendeventasync?view=azure-dotnet) メソッドでは、受け取ったメッセージが処理され、それらを渡すための出力キューが設定されます。 このメソッドを確認し、**output1** という出力キューが初期化されることを確かめます。 
 
    ![SendEventToOutputAsync で出力名を見つける](./media/tutorial-develop-for-linux/declare-output-queue.png)
 
@@ -210,7 +214,7 @@ IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格�
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   `--password-stdin` の使用を推奨するセキュリティ警告を受け取る場合があります。 そのベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスを参照してください。
+   `--password-stdin` の使用を推奨するセキュリティ警告を受け取る場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスを参照してください。
 
 ### <a name="build-and-push"></a>ビルドとプッシュ 
 
@@ -220,7 +224,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 
    ![IoT Edge モジュールをビルドしてプッシュする](./media/tutorial-develop-for-linux/build-and-push-modules.png)
 
-   ビルドおよびプッシュ コマンドは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、ターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 次に、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。 
+   ビルドおよびプッシュ コマンドは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、お使いのターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 次に、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。 
 
    このプロセスは、初回は数分間かかる可能性がありますが、次回これらのコマンドを実行するときは、それより速くなります。 
 
@@ -245,7 +249,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 
 10. コンテナー レジストリで、 **[リポジトリ]** を選択し、次に **samplemodule** を選択します。 イメージの両方のバージョンがレジストリにプッシュされていたことを確認します。
 
-   ![コンテナー レジストリ内の両方のイメージのバージョンを表示する](./media/tutorial-develop-for-linux/view-repository-versions.png)
+    ![コンテナー レジストリ内の両方のイメージのバージョンを表示する](./media/tutorial-develop-for-linux/view-repository-versions.png)
 
 <!--Alternative steps: Use VS Code Docker tools to view ACR images with tags-->
 
@@ -256,7 +260,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 * コンテナー レジストリからコピーした資格情報を使用して `docker login` コマンドを実行したか。 これらの資格情報は、Azure にサインインする際に使用するものとは異なります。 
 * コンテナー リポジトリは正しいか。 正しいコンテナー レジストリ名と正しいモジュール名が含まれているか。 SampleModule フォルダー内の **module.json** ファイルを開いて確認してください。 リポジトリ値は、 **\<レジストリ名\>.azurecr.io/samplemodule** のようになっているはずです。 
 * **SampleModule** とは異なる名前を自分のモジュールに使用した場合、その名前はソリューション全体で一貫しているか。
-* 対象のマシンは、ビルドしているのと同じ種類のコンテナーを実行しているか。 このチュートリアルは Linux IoT Edge デバイスを対象としているため、Visual Studio Code のサイド バーには **amd64** または **arm32v7** と表示され、Docker Desktop は Linux コンテナーを実行している必要があります。 Visual Studio Code の C モジュールは、Windows コンテナーをサポートしていません。 
+* 対象のマシンは、ビルドしているのと同じ種類のコンテナーを実行しているか。 このチュートリアルは Linux IoT Edge デバイスを対象としているため、Visual Studio Code のサイド バーには **amd64** または **arm32v7** と表示され、Docker Desktop は Linux コンテナーを実行している必要があります。  
 
 ## <a name="deploy-modules-to-device"></a>モジュールをデバイスにデプロイする
 
@@ -284,7 +288,7 @@ Visual Studio Code がコンテナー レジストリにアクセスできるよ
 
 SampleModule コードは、入力キューを介してメッセージを受け取り、出力キューを介してそれらを渡します。 配置マニフェストは、メッセージを tempSensor から SampleModule に渡し、次に SampleModule から IoT Hub にメッセージを転送したルートを宣言しました。 Visual Studio Code 用の Azure IoT ツールを使用すると、個々のデバイスから IoT Hub に到着したメッセージを表示できます。 
 
-1. Visual Studio Code エクスプ ローラーで、監視する IoT Edge デバイスを右クリックして、 **[Start Monitoring D2C Message] (D2C メッセージの監視の開始)** を選択します。 
+1. Visual Studio Code のエクスプローラーで、監視する IoT Edge デバイスを右クリックして、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。 
 
 2. Visual Studio Code の出力ウィンドウを監視して、IoT ハブに到着するメッセージを確認してください。 
 

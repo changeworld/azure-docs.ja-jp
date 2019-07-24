@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 167f697d4928d88114a30739a1d39a576c87ac84
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608488"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62126667"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -47,7 +47,7 @@ Azure Functions の診断と監視には、[Application Insights](../../azure-mo
 * **reason**: 追跡イベントに関連付けられている追加のデータ。 たとえば外部イベントの通知をインスタンスが待機している場合、待機しているイベントの名前がこのフィールドによって表されます。 関数が失敗した場合、エラーの詳細がここに格納されます。
 * **isReplay**: 追跡イベントが再生された実行に対するものであるかどうかを示すブール値。
 * **extensionVersion**: Durable Task 拡張機能のバージョン。 拡張機能のバグの可能性を報告するときにこのデータが特に重要となります。 長時間実行されるインスタンスでは、実行中に更新が生じた場合、複数のバージョンが報告されます。
-* **sequenceNumber**: イベントの実行シーケンス番号。 タイムスタンプと組み合わせると、イベントを実行時刻順に並べ替えるのに役立ちます。 "*インスタンスの実行中にホストが再起動した場合、この番号はゼロにリセットされるので、常に、最初にタイムスタンプで並べ替えて、次に sequenceNumber で並べ替えることが重要です。*"
+* **sequenceNumber**: イベントの実行シーケンス番号。 タイムスタンプと組み合わせると、イベントを実行時刻順に並べ替えるのに役立ちます。 "*インスタンスの実行中にホストが再起動した場合、この番号はゼロにリセットされるので、常に、最初にタイムスタンプで並べ替えて、次に sequenceNumber で並べ替えることが重要です。* "
 
 Application Insights に出力される追跡データの詳細レベルは、`host.json` ファイルの `logger` (Functions 1.x) または `logging` (Functions 2.x) セクションで構成できます。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.openlocfilehash: c32592ce539eeb2dec71792e4a6eb31e7d904eff
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771159"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60312517"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
 
@@ -108,15 +108,15 @@ ms.locfileid: "57771159"
 
      ![パイプラインのレビュー](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. **[ストアド プロシージャ]** を選択します。 **[ストアド プロシージャ名]** に **[update_watermark]** を選択します。 **[Import parameter (インポート パラメーター)]** を選択し、**[動的なコンテンツの追加]** を選択します。  
+9. **[ストアド プロシージャ]** を選択します。 **[ストアド プロシージャ名]** に **[update_watermark]** を選択します。 **[Import parameter (インポート パラメーター)]** を選択し、 **[動的なコンテンツの追加]** を選択します。  
 
      ![ストアド プロシージャ アクティビティの設定](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png) 
 
-10. **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** という内容を書き込んで、**[完了]** を選択します。  
+10. **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** という内容を書き込んで、 **[完了]** を選択します。  
 
      ![ストアド プロシージャのパラメーターの内容を書き込む](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)      
      
-11. **[デバッグ]** を選択し、**[パラメーター]** に入力して、**[完了]** を選択します。
+11. **[デバッグ]** を選択し、 **[パラメーター]** に入力して、 **[完了]** を選択します。
 
     ![**デバッグ** の選択](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "57771159"
             INSERT INTO data_source_table
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
-14. パイプラインをもう一度実行するには、**[デバッグ]** を選択し、**[パラメーター]** に入力して、**[完了]** を選択します。
+14. パイプラインをもう一度実行するには、 **[デバッグ]** を選択し、 **[パラメーター]** に入力して、 **[完了]** を選択します。
 
     ![**デバッグ** の選択](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 

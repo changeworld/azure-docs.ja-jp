@@ -9,12 +9,12 @@ ms.date: 05/11/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b929d9d1acc217c291c5aa645ee2d8952f401cd1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ccafa3431e12b036346c4fd654b2978dc9021471
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192166"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65912406"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -139,7 +139,7 @@ Azure Portal では、ストレージ アカウントの可用性、要求の総
 BLOB などのさまざまなストレージ オブジェクトのサイズを推定する方法については、ブログ記事「 [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity (Azure Storage の課金について - 帯域幅、トランザクション、および容量)](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)」を参照してください。
 
 ### <a name="monitoring-availability"></a>可用性監視
-時間単位メトリックまたは分単位メトリックのテーブルの **Availability** 列の値を監視して、ストレージ アカウントの Storage サービスの可用性を監視する必要があります。これらのテーブルは、**$MetricsHourPrimaryTransactionsBlob**、**$MetricsHourPrimaryTransactionsTable**、**$MetricsHourPrimaryTransactionsQueue**、**$MetricsMinutePrimaryTransactionsBlob**、**$MetricsMinutePrimaryTransactionsTable**、**$MetricsMinutePrimaryTransactionsQueue**、**$MetricsCapacityBlob** です。 **Availability** 列には、その行が表しているサービスまたは API 操作の可用性を示すパーセント値が入っています (**RowKey** から、行に含まれているのがサービス全体のメトリックなのか、それとも特定の API 操作のメトリックなのかがわかります)。
+時間単位メトリックまたは分単位メトリックのテーブルの **Availability** 列の値を監視して、ストレージ アカウントの Storage サービスの可用性を監視する必要があります。これらのテーブルは、 **$MetricsHourPrimaryTransactionsBlob**、 **$MetricsHourPrimaryTransactionsTable**、 **$MetricsHourPrimaryTransactionsQueue**、 **$MetricsMinutePrimaryTransactionsBlob**、 **$MetricsMinutePrimaryTransactionsTable**、 **$MetricsMinutePrimaryTransactionsQueue**、 **$MetricsCapacityBlob** です。 **Availability** 列には、その行が表しているサービスまたは API 操作の可用性を示すパーセント値が入っています (**RowKey** から、行に含まれているのがサービス全体のメトリックなのか、それとも特定の API 操作のメトリックなのかがわかります)。
 
 100% より低い値は、一部のストレージ要求が失敗したことを示します。 失敗した理由は、エラーの種類別に要求数を示すメトリック データの他の列 (**ServerTimeoutError** など) を参照して調べることができます。 要求の負荷分散を向上させるためにサービスがパーティションを移動しているときの一時的なサーバー タイムアウトなどの理由で、**Availability** が一時的に 100% を切ることを予期しておく必要があります。また、このような偶発的な状況は、クライアント アプリケーションの再試行ロジックで対処する必要があります。 ストレージ メトリックが **Availability** の計算に含めるトランザクションの種類の一覧については、「[Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/azure/hh343260.aspx)」をご覧ください。
 
@@ -426,7 +426,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 **PercentThrottlingError** の増加は、多くの場合、ストレージ要求数が増加するのと同時に、またはアプリケーションの最初のロード テストのときに生じます。 また、ストレージ操作により、「503 サーバーはビジー状態」または「500 操作タイムアウト」HTTP ステータス メッセージがクライアントで示されることもあります。
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>PercentThrottlingError の一時的増加
-アプリケーションにおいてアクティビティ量が多い時期と一致して **PercentThrottlingError** 値が急増している場合は、クライアントの再試行に備えて、指数 (非線形) バックオフ戦略を実装します。 バックオフの再試行により、パーティションにおける即座の負荷が減少し、アプリケーションがトラフィックの急増を平滑化しやすくなります。 ストレージ クライアント ライブラリを使って再試行ポリシーを実装する方法について詳しくは、「[Microsoft.WindowsAzure.Storage.RetryPolicies 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.retrypolicy)」をご覧ください。
+アプリケーションにおいてアクティビティ量が多い時期と一致して **PercentThrottlingError** 値が急増している場合は、クライアントの再試行に備えて、指数 (非線形) バックオフ戦略を実装します。 バックオフの再試行により、パーティションにおける即座の負荷が減少し、アプリケーションがトラフィックの急増を平滑化しやすくなります。 ストレージ クライアント ライブラリを使って再試行ポリシーを実装する方法の詳細については、「[Microsoft.Azure.Storage.RetryPolicies 名前空間](/dotnet/api/microsoft.azure.storage.retrypolicies)」を参照してください。
 
 > [!NOTE]
 > アプリケーションのアクティビティ量が多い時期と一致せずに、**PercentThrottlingError** 値が急増することもあります。この原因として可能性が高いのは、Storage サービスが負荷分散を改善するためにパーティションを移動している場合です。
@@ -467,17 +467,17 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 ### <a name="the-client-is-receiving-403-messages"></a>クライアントが HTTP 403 (許可されていません) のメッセージを受け取る
 クライアント アプリケーションが HTTP 403 (許可されていません) エラーをスローする場合、可能性の高い原因は、クライアントがストレージ要求を送信するときに期限切れの Shared Access Signature (SAS) を使用していることです (原因の他の可能性としては、クロック スキュー、無効なキー、空のヘッダーなどがあります)。 期限切れの SAS キーが原因の場合、サーバー側の Storage Logging ログ データのエントリが表示されません。 以下の表に、この問題が生じたときにストレージ クライアント ライブラリによって生成されるクライアント側のログのサンプルを示します。
 
-| ソース | 詳細度 | 詳細度 | クライアント要求 ID | [操作テキスト] |
+| source | 詳細度 | 詳細度 | クライアント要求 ID | [操作テキスト] |
 | --- | --- | --- | --- | --- |
-| Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |場所 Primary、場所モード PrimaryOnly で操作を開始しています。 |
-| Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> に同期要求を開始しています。 |
-| Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |応答を待機しています。 |
-| Microsoft.WindowsAzure.Storage |警告 |2 |85d077ab -… |応答の待機中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
-| Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |応答を受け取りました。 状態コード = 403、要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d、Content-MD5 = 、ETag = . |
-| Microsoft.WindowsAzure.Storage |警告 |2 |85d077ab -… |操作中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
-| Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |操作を再試行する必要があるかどうかを検査しています。 再試行回数 = 0、HTTP 状態コード = 403、例外 = リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
-| Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |次の場所が、場所モードに基づいてプライマリに設定されています。 |
-| Microsoft.WindowsAzure.Storage |Error |1 |85d077ab -… |再試行ポリシーは再試行を許可しませんでした。 失敗しました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
+| Microsoft.Azure.Storage |情報 |3 |85d077ab -… |場所 Primary、場所モード PrimaryOnly で操作を開始しています。 |
+| Microsoft.Azure.Storage |情報 |3 |85d077ab -… |<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> に同期要求を開始しています。 |
+| Microsoft.Azure.Storage |情報 |3 |85d077ab -… |応答を待機しています。 |
+| Microsoft.Azure.Storage |警告 |2 |85d077ab -… |応答の待機中に例外がスローされました。リモート サーバーがエラー(403) 禁止。 |
+| Microsoft.Azure.Storage |情報 |3 |85d077ab -… |応答を受け取りました。 状態コード = 403、要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d、Content-MD5 = 、ETag = . |
+| Microsoft.Azure.Storage |警告 |2 |85d077ab -… |操作中に例外がスローされました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
+| Microsoft.Azure.Storage |情報 |3 |85d077ab -… |操作を再試行する必要があるかどうかを検査しています。 再試行回数 = 0、HTTP 状態コード = 403、例外 = リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
+| Microsoft.Azure.Storage |情報 |3 |85d077ab -… |次の場所が、場所モードに基づいてプライマリに設定されています。 |
+| Microsoft.Azure.Storage |Error |1 |85d077ab -… |再試行ポリシーは再試行を許可しませんでした。 失敗しました。リモート サーバーがエラー「(403) 許可されていません」を返しました。 |
 
 このシナリオでは、クライアントが SAS トークンをサーバーに送信する前にトークンが期限切れになった理由を調査しなければなりません。
 
@@ -720,10 +720,10 @@ Microsoft Message Analyzer の使用の詳細については、「[付録 3: Mic
 
 Fiddler を起動すると、ローカル マシンの HTTP および HTTPS トラフィックのキャプチャが開始されます。 以下に、Fiddler の操作に役立ついくつかのコマンドを示します。
 
-* トラフィックのキャプチャを停止および開始します。 メイン メニューで、**[File]**、**[Capture Traffic]** の順にクリックし、キャプチャのオン/オフを切り替えます。
-* キャプチャしたトラフィック データを保存します。 メイン メニューで、**[File]**、**[Save]**、**[All Sessions]** の順にクリックします。これにより、セッション アーカイブ ファイルにトラフィックを保存できるようになります。 後で分析するためセッション アーカイブを再読み込みしたり、要請された場合にそのファイルを Microsoft サポートに送信したりできます。
+* トラフィックのキャプチャを停止および開始します。 メイン メニューで、 **[File]** 、 **[Capture Traffic]** の順にクリックし、キャプチャのオン/オフを切り替えます。
+* キャプチャしたトラフィック データを保存します。 メイン メニューで、 **[File]** 、 **[Save]** 、 **[All Sessions]** の順にクリックします。これにより、セッション アーカイブ ファイルにトラフィックを保存できるようになります。 後で分析するためセッション アーカイブを再読み込みしたり、要請された場合にそのファイルを Microsoft サポートに送信したりできます。
 
-Fiddler がキャプチャするトラフィックの量を制限するために、**[Filters]** タブで構成するフィルターを使用することができます。以下のスクリーンショットには、 **contosoemaildist.table.core.windows.net** ストレージ エンドポイントに送信されるトラフィックのみをキャプチャするフィルターが示されています。
+Fiddler がキャプチャするトラフィックの量を制限するために、 **[Filters]** タブで構成するフィルターを使用することができます。以下のスクリーンショットには、 **contosoemaildist.table.core.windows.net** ストレージ エンドポイントに送信されるトラフィックのみをキャプチャするフィルターが示されています。
 
 ![][5]
 
@@ -739,10 +739,10 @@ Fiddler がキャプチャするトラフィックの量を制限するために
 
    ![][6]
 5. **[開始]** をクリックします。 これで、Wireshark は、ローカル マシンでクライアント アプリケーションを使用しているときに Table サービス エンドポイントとの間で送受信されるすべてのパケットをキャプチャします。
-6. 終了したら、メイン メニューで **[Capture]**、**[Stop]** の順にクリックします。
-7. キャプチャしたデータを Wireshark キャプチャ ファイルに保存するには、メイン メニューで **[File]**、**[Save]** の順にクリックします。
+6. 終了したら、メイン メニューで **[Capture]** 、 **[Stop]** の順にクリックします。
+7. キャプチャしたデータを Wireshark キャプチャ ファイルに保存するには、メイン メニューで **[File]** 、 **[Save]** の順にクリックします。
 
-WireShark は、**[packetlist]** ウィンドウに存在するエラーをすべて強調表示します。 **[Expert Info]** ウィンドウを使用して (**[Analyze]**、**[Expert Info]** の順にクリック)、エラーや警告の概要を表示することもできます。
+WireShark は、 **[packetlist]** ウィンドウに存在するエラーをすべて強調表示します。 **[Expert Info]** ウィンドウを使用して ( **[Analyze]** 、 **[Expert Info]** の順にクリック)、エラーや警告の概要を表示することもできます。
 
 ![][7]
 
@@ -759,7 +759,7 @@ WireShark は、**[packetlist]** ウィンドウに存在するエラーをす�
 Microsoft Message Analyzer を使用すると、Fiddler と同様の方法で HTTP および HTTPS トラフィックをキャプチャできるうえに、Wireshark と同様の方法でネットワーク トラフィックをキャプチャすることもできます。
 
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer を使用した Web トレース セッションの構成
-Microsoft Message Analyzer を使用した HTTP と HTTPS トラフィックの Web トレース セッションを構成するには、Microsoft Message Analyzer アプリケーションを実行し、**[File]** メニューで **[Capture/Trace]** をクリックします。 使用可能なトレース シナリオのリストで、**[Web Proxy]** を選択します。 **[Trace Scenario Configuration (トレース シナリオの構成)]** パネルの **[HostnameFilter]** ボックスに、ストレージ エンドポイントの名前を入力します (これらの名前は [Azure Portal](https://portal.azure.com) で調べられます)。 たとえば、Azure Storage アカウントの名前が **contosodata** である場合は、**[HostnameFilter]** テキストボックスに以下を追加する必要があります。
+Microsoft Message Analyzer を使用した HTTP と HTTPS トラフィックの Web トレース セッションを構成するには、Microsoft Message Analyzer アプリケーションを実行し、 **[File]** メニューで **[Capture/Trace]** をクリックします。 使用可能なトレース シナリオのリストで、 **[Web Proxy]** を選択します。 **[Trace Scenario Configuration (トレース シナリオの構成)]** パネルの **[HostnameFilter]** ボックスに、ストレージ エンドポイントの名前を入力します (これらの名前は [Azure Portal](https://portal.azure.com) で調べられます)。 たとえば、Azure Storage アカウントの名前が **contosodata** である場合は、 **[HostnameFilter]** テキストボックスに以下を追加する必要があります。
 
 ```
 contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
@@ -770,7 +770,7 @@ contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata
 >
 >
 
-トレース データの収集を開始する準備ができたら、**[Start With]** ボタンをクリックします。
+トレース データの収集を開始する準備ができたら、 **[Start With]** ボタンをクリックします。
 
 Microsoft Message Analyzer の **Web Proxy** トレースの詳細については、「 [Microsoft-PEF-WebProxy Provider (Microsoft-PEF-WebProxy プロバイダー)](https://technet.microsoft.com/library/jj674814.aspx)」を参照してください。
 
@@ -779,11 +779,11 @@ Microsoft Message Analyzer の組み込みの **Web Proxy** トレースは、Fi
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer を使用したネットワーク問題の診断
 Microsoft Message Analyzer の **Web Proxy** トレースを使用してクライアント アプリケーションとストレージ サービスの間の HTTP/HTTPS トラフィックの詳細をキャプチャすることに加え、組み込みの **Local Link Layer** トレースを使用してネットワークのパケット情報をキャプチャすることもできます。 これにより、Wireshark を使用してキャプチャできるデータと同様のデータをキャプチャし、ドロップされたパケットなどのネットワーク問題を診断することができます。
 
-以下のスクリーンショットは、**[DiagnosisTypes]** 列に**情報**メッセージが表示された **Local Link Layer** トレースの例を示しています。 **[DiagnosisTypes]** 列のアイコンをクリックすると、メッセージの詳細が表示されます。 この例では、サーバーが、クライアントからの確認を受信しなかったためにメッセージ #305 を再転送しました。
+以下のスクリーンショットは、 **[DiagnosisTypes]** 列に**情報**メッセージが表示された **Local Link Layer** トレースの例を示しています。 **[DiagnosisTypes]** 列のアイコンをクリックすると、メッセージの詳細が表示されます。 この例では、サーバーが、クライアントからの確認を受信しなかったためにメッセージ #305 を再転送しました。
 
 ![][9]
 
-Microsoft Message Analyzer でトレース セッションを作成するときに、フィルターを指定して、トレースに含まれる不要な情報の量を削減できます。 トレースを定義する **[Capture/Trace]** ページで、**[Microsoft-Windows-NDIS-PacketCapture]** の横にある **[Configure]** リンクをクリックします。 以下のスクリーンショットは、3 つのストレージ サービスの IP アドレスに関する TCP トラフィックをフィルター処理する構成を示しています。
+Microsoft Message Analyzer でトレース セッションを作成するときに、フィルターを指定して、トレースに含まれる不要な情報の量を削減できます。 トレースを定義する **[Capture/Trace]** ページで、 **[Microsoft-Windows-NDIS-PacketCapture]** の横にある **[Configure]** リンクをクリックします。 以下のスクリーンショットは、3 つのストレージ サービスの IP アドレスに関する TCP トラフィックをフィルター処理する構成を示しています。
 
 ![][10]
 
@@ -795,10 +795,10 @@ Microsoft Message Analyzer の Local Link Layer トレースの詳細につい�
 BLOB ストレージからダウンロードしたストレージ ログ データを Excel にインポートするには、以下の手順に従います。
 
 * **[データ]** メニューで **[テキストから]** をクリックします。
-* 表示するログ ファイルを参照し、**[インポート]** をクリックします。
+* 表示するログ ファイルを参照し、 **[インポート]** をクリックします。
 * **[テキスト ファイル ウィザード]** の手順 1 で **[カンマやタブなどの区切り文字によってフィールドごとに区切られたデータ]** を選択します。
 
-**[テキスト ファイル ウィザード]** の手順 1 で、**[セミコロン]** のみを区切り文字として選択し、**[文字列の引用符]** として二重引用符を選択します。 **[完了]** をクリックし、ワークブックでデータを配置する場所を選択します。
+**[テキスト ファイル ウィザード]** の手順 1 で、 **[セミコロン]** のみを区切り文字として選択し、 **[文字列の引用符]** として二重引用符を選択します。 **[完了]** をクリックし、ワークブックでデータを配置する場所を選択します。
 
 ### <a name="appendix-5"></a>付録 5: Application Insights for Azure DevOps を使用した監視
 パフォーマンスと可用性の監視の一部として、Azure DevOps 用の Application Insights 機能を使用することもできます。 このツールは、以下を実行できます。

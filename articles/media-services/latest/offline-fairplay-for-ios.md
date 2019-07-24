@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 58315e639a54b67bdef6751004b7a768e4f92224
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: f2514fff2a3bb292a86c9f4c0e92c37ed2709097
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937511"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341041"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
 
@@ -41,6 +41,9 @@ ms.locfileid: "64937511"
 
 この記事では、iOS 10 以降を搭載するデバイスを対象とする FairPlay Streaming (FPS) のオフライン モードのサポートについて説明します。 この機能は、watchOS、tvOS、Safari on macOS など、他の Apple プラットフォームではサポートされていません。
 
+> [!NOTE]
+> オフライン DRM は、コンテンツをダウンロードするときの 1 ライセンスのために、1 つの要求を発行することに対してのみ課金されます。 どのエラーにも課金は行われません。
+
 ## <a name="prerequisites"></a>前提条件
 
 iOS 10 以降のデバイスの FairPlay 用にオフライン DRM を実装する前に、次の準備が必要です。
@@ -54,7 +57,7 @@ iOS 10 以降のデバイスの FairPlay 用にオフライン DRM を実装す�
 
     - FPS Server SDK には、キー セキュリティ モジュール (KSM)、クライアントのサンプル、仕様、テスト ベクターのセットが含まれています。
     - FPS Deployment Pack には、D 関数、仕様および FPS 証明書生成方法の説明、顧客固有の秘密キー、アプリケーション秘密キーが含まれています。 Apple は、ライセンスのあるコンテンツ プロバイダーに対してのみ、FPS Deployment Pack を発行します。
-* https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git を複製します。 
+* [https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git ) を複製します。 
 
     [.NET を使用した DRM の暗号化](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)に関する記事にあるコードを変更して FairPlay の構成を追加する必要があります。  
 

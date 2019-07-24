@@ -7,19 +7,20 @@ author: rkarlin
 manager: rkarlin
 editor: ''
 ms.assetid: 5dd59729-c623-4cb4-b326-bb847c8f094b
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 673b1df6094703bebcbfd9d82c1268c01d46e814
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ee7b31a57bc9627776b9ca5445132a4662506134
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233587"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67611327"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Syslog を使用して、ご利用の外部ソリューションを接続する
 
@@ -38,12 +39,12 @@ Syslog 接続は、Linux 用エージェントを使用して実現されます�
 
 ## <a name="connect-your-syslog-appliance"></a>Syslog アプライアンスを接続する
 
-1. Azure Sentinel ポータルで、**[データ コネクタ]** を選択し、**[Syslog]** タイルを選択します。
+1. Azure Sentinel ポータルで、 **[データ コネクタ]** を選択し、 **[Syslog]** タイルを選択します。
 2. ご利用の Linux マシンが Azure 内にない場合は、Azure Sentinel **エージェント for Linux** をダウンロードしてご利用のアプライアンス上にインストールします。 
 1. Azure 内で作業している場合は、Syslog メッセージの受信専用である Azure Sentinel ワークスペース内で VM を選択または作成します。 Azure Sentinel ワークスペース内の VM を選択し、左側のウィンドウの上部にある **[接続]** をクリックします。
-3. Syslog コネクタの設定に戻り、**[Configure the logs to be connected]\(接続するログの構成\)** をクリックします。 
+3. Syslog コネクタの設定に戻り、 **[Configure the logs to be connected]\(接続するログの構成\)** をクリックします。 
 4. **[Press here to open the configuration blade]\(構成ブレードを開くにはここを押してください\)** をクリックします。
-1. **[データ]**、**[Syslog]** の順に選択します。
+1. **[データ]** 、 **[Syslog]** の順に選択します。
    - Syslog によって送信する各ファシリティがテーブル内にあることを確認します。 ファシリティごとに、監視を実行し、重大度レベルを設定します。 **[Apply]** をクリックします。
 1. ご利用の Syslog マシン上で、それらのファシリティを送信していることを確認します。 
 

@@ -16,11 +16,11 @@ ms.date: 08/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbb94c28d56b0492fe3488d7c9e2e1257a8b9388
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183804"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60624353"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safeconnect"></a>チュートリアル:Azure Active Directory と SafeConnect の統合
 
@@ -60,11 +60,11 @@ Azure AD への SafeConnect の統合を構成するには、ギャラリーか�
 
 **ギャラリーから SafeConnect を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。 
 
     ![Azure Active Directory のボタン][1]
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、 **[すべてのアプリケーション]** に移動します。
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
@@ -72,7 +72,7 @@ Azure AD への SafeConnect の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**SafeConnect**」と入力し、結果パネルで **[SafeConnect]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**SafeConnect**」と入力し、結果パネルで **[SafeConnect]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の SafeConnect](./media/safeconnect-tutorial/tutorial_safeconnect_addfromgallery.png)
 
@@ -96,11 +96,11 @@ SafeConnect で Azure AD のシングル サインオンを構成してテスト
 
 **SafeConnect で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **SafeConnect** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **SafeConnect** アプリケーション統合ページで、 **[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン]** ダイアログで、 **[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/safeconnect-tutorial/tutorial_safeconnect_samlbase.png)
 
@@ -110,7 +110,7 @@ SafeConnect で Azure AD のシングル サインオンを構成してテスト
 
      **[サインオン URL]** ボックスに、「`https://portal.myweblogon.com:8443/saml/login`」と入力します。
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+4. **[SAML 署名証明書]** セクションで、 **[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/safeconnect-tutorial/tutorial_safeconnect_certificate.png) 
 
@@ -132,11 +132,11 @@ SafeConnect で Azure AD のシングル サインオンを構成してテスト
 
     ![Azure Active Directory のボタン](./media/safeconnect-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+2. ユーザーの一覧を表示するには、 **[ユーザーとグループ]** に移動し、 **[すべてのユーザー]** をクリックします。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/safeconnect-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+3. **[ユーザー]** ダイアログ ボックスを開くには、 **[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
 
     ![[追加] ボタン](./media/safeconnect-tutorial/create_aaduser_03.png)
 
@@ -148,9 +148,9 @@ SafeConnect で Azure AD のシングル サインオンを構成してテスト
 
     b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-safeconnect-test-user"></a>SafeConnect テスト ユーザーの作成
 
@@ -164,7 +164,7 @@ SafeConnect で Azure AD のシングル サインオンを構成してテスト
 
 **SafeConnect に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、 **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
@@ -176,7 +176,7 @@ SafeConnect で Azure AD のシングル サインオンを構成してテスト
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[追加]** ボタンをクリックします。 次に、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 

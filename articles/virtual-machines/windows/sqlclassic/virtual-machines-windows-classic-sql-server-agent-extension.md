@@ -17,11 +17,11 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 2b719185aabd39cd70b9cb890a9599aa06ca4ff4
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330536"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60334847"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>SQL Server Agent 拡張機能 (クラシック) による Azure Virtual Machines での管理タスクの自動化
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ Windows PowerShell を起動し、 **Add-AzureAccount** コマンドを使用し
 > SQL Server IaaS Agent 拡張機能は、[SQL Server VM ギャラリー イメージ](../sql/virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (従量課金制またはライセンス持ち込み) でのみサポートされます。 SQL Server を OS のみの Windows Server 仮想マシンに手動でインストールする場合や、カスタマイズされた SQL Server VM VHD をデプロイする場合、この拡張機能はサポートされません。 このような場合、PowerShell を使用して手動で拡張機能をインストールして管理することは可能ですが、代わりに、SQL Server VM ギャラリーイメージをインストールしてカスタマイズすることを強くお勧めします。
 
 ## <a name="status"></a>Status
-拡張機能がインストールされていることを確認する 1 つの方法は、Azure Portal にエージェントの状態を表示することです。 仮想マシン ブレードの一覧で仮想マシンを選び、**[拡張機能]** をクリックします。 **SQLIaaSAgent** 拡張機能が表示されます。
+拡張機能がインストールされていることを確認する 1 つの方法は、Azure Portal にエージェントの状態を表示することです。 仮想マシン ブレードの一覧で仮想マシンを選び、 **[拡張機能]** をクリックします。 **SQLIaaSAgent** 拡張機能が表示されます。
 
 ![Azure Portal での SQL Server IaaS Agent 拡張機能](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-portal.png)
 

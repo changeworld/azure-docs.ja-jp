@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: jowargo
 ms.openlocfilehash: 31a22aabc7b0f1d51a673ef8642037103badcc02
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828164"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61457806"
 ---
 # <a name="routing-and-tag-expressions"></a>ルーティングとタグ式
 
@@ -35,13 +35,13 @@ ms.locfileid: "54828164"
 2. **タグ**:指定したタグを含むすべての登録が通知を受信します。
 3. **タグ式**:タグのセットが指定した式と一致するすべての登録が、通知を受信します。
 
-## <a name="tags"></a>タグ
+## <a name="tags"></a>Tags
 
 タグは、最大 120 文字の任意の文字列です。英数字と一部の英数字以外の文字 ("_"、"@"、"#"、"."、":"、"-") を使用できます。 ‘_’, ‘@’, ‘#’, ‘.’, ‘:’, ‘-’.次の例は、特定の音楽グループに関するトースト通知を受信するアプリケーションを示します。 このシナリオでは、次の図に示すように、通知をルーティングするための単純な方法として、さまざまなバンドを表すタグを使用して登録にラベルを付けます。
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
-この図で、**[Beatles]** というタグが付いたメッセージは、タグ **[Beatles]** で登録されたタブレットにのみ到達します。
+この図で、 **[Beatles]** というタグが付いたメッセージは、タグ **[Beatles]** で登録されたタブレットにのみ到達します。
 
 タグの登録の作成の詳細については、「[登録管理](notification-hubs-push-notification-registration-management.md)」を参照してください。
 

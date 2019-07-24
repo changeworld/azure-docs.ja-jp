@@ -4,7 +4,7 @@ description: シリアル コンソールを使用して Azure 仮想マシン�
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: ad29bbd038c8982778f2dbca63756f6995077dce
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 79729cf222c208a78a2eac430e51b996cddb4e78
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204915"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710538"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
 
@@ -36,7 +36,7 @@ Azure Serial Console は、以下に示すコマンド バーのキーボード 
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
-SysRq コマンドは、停止している仮想マシン上や、カーネルが応答しない状態  (カーネル パニックなど) になった仮想マシン上では、使用できません。
+SysRq コマンドは、停止している仮想マシン上や、カーネルが応答しない状態 (カーネル パニックなど) になった仮想マシン上では、使用できません。
 
 ### <a name="enable-sysrq"></a>SysRq の有効化 
 前記の「*SysRq Admin Guide*」(SysRq 管理ガイド) の説明にあるように、すべてのコマンドまたは一部の特定のコマンドが利用可能か、またはどのコマンドも利用不可能になるように SysRq を構成できます。 以下の手順を使用してすべての SysRq コマンドを有効にできますが、再起動すると、この構成は失われます。
@@ -80,7 +80,7 @@ SysReq の構成を永続化するために、次の手順を実行してすべ�
 |``x``  |    ppc/powerpc プラットフォーム上で、xmon インターフェイスによって使用されます。 sparc64 上でグローバル PMU Register を表示します。 MIPS 上のすべての TLB エントリをダンプします。
 |``y``  |    グローバル CPU Register を表示します [SPARC-64 固有]
 |``z``  |    ftrace バッファーをダンプします。
-|``0``-``9`` | コンソール ログ レベルを設定して、どのカーネル メッセージがコンソールにプリントされるかを制御します  (たとえば ``0`` では、PANIC や OOPS などの緊急時のメッセージのみがコンソールに示されるように、レベルを設定します)。
+|``0``-``9`` | コンソール ログ レベルを設定して、どのカーネル メッセージがコンソールにプリントされるかを制御します (たとえば ``0`` では、PANIC や OOPS などの緊急時のメッセージのみがコンソールに示されるように、レベルを設定します)。
 
 ### <a name="distribution-specific-documentation"></a>ディストリビューション固有のドキュメント ###
 SysRq に関するディストリビューション固有のドキュメントと、Linux を構成して SysRq の "Crash" コマンドを受信した場合にクラッシュ ダンプを作成するための手順については、以下のリンクを参照してください。

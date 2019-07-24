@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:Kafka から Azure Data Explorer にデータを取り込む
-description: このクイック スタートでは、Kafka から Azure Data Explorer にデータを取り込む方法について説明します。
+title: Kafka から Azure Data Explorer にデータを取り込む
+description: この記事では、Kafka から Azure Data Explorer にデータを取り込む (読み込む) 方法について学習します
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 05/17/2019
-ms.openlocfilehash: f36acb7237438848a53fdf91c291c4f67233af5d
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65901026"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66497275"
 ---
-# <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>クイック スタート:Kafka から Azure Data Explorer にデータを取り込む
+# <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Kafka から Azure Data Explorer にデータを取り込む
  
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer には、Kafka からの取り込み (データの読み込み) 機能があります。 Kafka は、システム間やアプリケーション間で確実にデータを移動するリアルタイム ストリーミング データ パイプラインの構築を可能にする分散ストリーミング プラットフォームです。
  
@@ -162,5 +162,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
  
 ## <a name="next-steps"></a>次の手順
  
-> [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)
+* [Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

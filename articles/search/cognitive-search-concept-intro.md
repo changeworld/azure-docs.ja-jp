@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 05/28/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 24c6df6a06d08249f236fc36d64b4204b0103b3c
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 60a7a141cfcec3beced9e57baddebbc26e753141
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540893"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672161"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Azure Search での "コグニティブ検索" とは?
 
@@ -86,7 +86,7 @@ Azure Search のコグニティブ スキルは、Cognitive Services API の機�
 | 自然言語処理 | テキスト入力に関する洞察や情報を取得するテキスト処理。 言語の検出、センチメント分析、およびキー フレーズの抽出は自然言語処理に分類されるスキルです。  | [キー フレーズ抽出スキル](cognitive-search-skill-keyphrases.md)、[言語検出スキル](cognitive-search-skill-language-detection.md)、[感情分析スキル](cognitive-search-skill-sentiment.md) |
 | ドキュメントの解読 | インデックス作成時にテキスト以外のソースからテキスト コンテンツを抽出または作成する処理。 光学式文字認識 (OCR) はこの例ですが、インデクサーがアプリケーション ファイルからコンテンツを抽出するため、一般的に、コア インデクサー機能を指します。 ソース ファイルの場所を規定するデータソースと、フィールドをマッピングを規定するインデクサー定義は、いずれも、ドキュメント解読処理で重要な要因です。 | [インデクサー](search-indexer-overview.md)を参照してください。 |
 | シェーパー | テキスト フラグメントをより大きな構造に統合したり、逆に大きなテキスト フラグメントを下流プロセスで処理できるよう管理可能なサイズに分割します。 | [シェーパー スキル](cognitive-search-skill-shaper.md)、[テキスト マージャー スキル](cognitive-search-skill-textmerger.md)、[テキスト 分割スキル](cognitive-search-skill-textsplit.md) |
-| エンリッチメントされたドキュメント | コード内からは直接アクセスできない、一時的な内部構造です。 処理中にエンリッチメントされたドキュメントが生成されますが、検索インデックスに保存されるのは最終出力のみです。 フィールド マッピングにより、どのデータ要素をインデックスに追加するかが決定されます。 | [エンリッチメントされたドキュメントへのアクセス](cognitive-search-tutorial-blob.md#access-enriched-document)に関する記事を参照してください。 |
+| エンリッチメントされたドキュメント | 処理中に生成される一時的な内部構造。最終出力は検索インデックスに反映されます。 どのエンリッチメントが実行されるかは、スキルセットによって決まります。 フィールド マッピングにより、どのデータ要素をインデックスに追加するかが決定されます。 オプションで、Storage Explorer、Power BI などのツールや、Azure Blob Storage に接続するその他のツールを使用して、エンリッチメントされたドキュメントを永続化して探索するためのナレッジ ストアを作成できます。 | [ナレッジ ストア (プレビュー)](knowledge-store-concept-intro.md) に関するページを参照してください。 |
 | Indexer |  検索可能なデータとメタデータを外部データ ソースから抽出し、ドキュメント解読のために、インデックスとデータ ソース間のフィールド対フィールドのマッピングに基づいてインデックスを作成するクローラーです。 コグニティブ検索エンリッチメントのために、インデクサーはスキルセットを呼び出し、インデックス内のターゲット フィールドとエンリッチメント出力を関連付けるフィールド マッピングを含みます。 インデクサーの定義には、パイプライン操作のためのすべての指示と参照が含まれ、ユーザーがインデクサーを実行すると、パイプラインが呼び出されます。 | [インデクサー](search-indexer-overview.md) |
 | データ ソース  | Azure でサポートされる型の外部データ ソースに接続するために、インデクサーによって使用されるオブジェクト。 | [インデクサー](search-indexer-overview.md)を参照してください。 |
 | Index | フィールド構造と使用状況を定義するインデックス スキーマから構築された Azure Search で永続化された検索インデックスです。 | [Azure Search のインデックス](search-what-is-an-index.md) | 
@@ -101,7 +101,7 @@ Azure Search のコグニティブ スキルは、Cognitive Services API の機�
 
 + [クイック スタート (ポータル)](cognitive-search-quickstart-blob.md)
 + [チュートリアル (HTTP 要求)](cognitive-search-tutorial-blob.md)
-+ [カスタム スキルの例 (C#)](cognitive-search-create-custom-skill-example.md)
++ [例:コグニティブ検索用のカスタム スキルを作成する (C#)](cognitive-search-create-custom-skill-example.md)
 
 学習目的には無料のサービスをお勧めしますが、無料のトランザクションの数は 1 日あたり 20 のドキュメントまでに制限されることに注意してください。 1 日でクイック スタートとチュートリアルの両方を実行するには、両方の演習が制限内に収まるように、より小さなファイル セット (10 ドキュメント) を使用してください。
 

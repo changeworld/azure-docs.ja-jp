@@ -8,19 +8,19 @@ writer: zchia
 manager: beatrizd
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
-ms.author: zchia
-ms.openlocfilehash: f79bc083105f997b08f7cfa6f8e08a8f4f455455
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.author: jeedes
+ms.openlocfilehash: f9bfa0eaea67919bad775af5cf9071cd3d6973ca
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470524"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672650"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Dynamic Signal を構成する
 
@@ -45,11 +45,11 @@ Azure AD で自動ユーザー プロビジョニング用に Dynamic Signal を
 
 **Azure AD アプリケーション ギャラリーから Dynamic Signal を追加するには、次の手順に従います。**
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、**[Azure Active Directory]** を選択します。
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
 
     ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** を選択します。
+2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -57,7 +57,7 @@ Azure AD で自動ユーザー プロビジョニング用に Dynamic Signal を
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Dynamic Signal**」と入力し、結果ウィンドウで **[Dynamic Signal]** を選択してから、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Dynamic Signal**」と入力し、結果ウィンドウで **[Dynamic Signal]** を選択してから、 **[追加]** をクリックしてアプリケーションを追加します。
 
     ![結果リストの Dynamic Signal](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>Azure AD で Dynamic Signal 用に自動ユーザー プロビジョニングを構成するには
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
@@ -102,25 +102,25 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションで、手順 6 で説明するように、Dynamic Signal アカウントの **[テナント URL]** と **[シークレット トークン]** を入力します。
 
-6. Dynamic Signal 管理コンソールで、**[Admin]\(管理者\) > [Advanced]\(詳細設定\) > [API]** に移動します。
+6. Dynamic Signal 管理コンソールで、 **[Admin]\(管理者\) > [Advanced]\(詳細設定\) > [API]** に移動します。
 
     ![Dynamic Signal のプロビジョニング](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
 
-    **[SCIM API URL]** を **[Tenant URL]\(テナント URL\)** にコピーします。 **[Generate New Token]\(新しいトークンの生成\)** をクリックして、**[Bearer Token]\(ベアラー トークン\)** を生成し、その値を **[Secret Token]\(シークレット トークン\)** にコピーします。
+    **[SCIM API URL]** を **[Tenant URL]\(テナント URL\)** にコピーします。 **[Generate New Token]\(新しいトークンの生成\)** をクリックして、 **[Bearer Token]\(ベアラー トークン\)** を生成し、その値を **[Secret Token]\(シークレット トークン\)** にコピーします。
 
     ![Dynamic Signal のプロビジョニング](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
 
-7. 手順 5 の各フィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Dynamic Signal に接続できることを確認します。 接続できない場合は、使用中の Dynamic Signal アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+7. 手順 5 の各フィールドに値を入力したら、 **[テスト接続]** をクリックして、Azure AD が Dynamic Signal に接続できることを確認します。 接続できない場合は、使用中の Dynamic Signal アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 
-8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、**[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+8. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
     ![通知用メール](common/provisioning-notification-email.png)
 
 9. **[Save]** をクリックします。
 
-10. **[マッピング]** セクションで、**[Synchronize Azure Active Directory Users to Dynamic Signal]\(Azure Active Directory ユーザーを Dynamic Signal に同期する\)** を選択します。
+10. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Users to Dynamic Signal]\(Azure Active Directory ユーザーを Dynamic Signal に同期する\)** を選択します。
 
     ![Dynamic Signal ユーザー マッピング](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
 
@@ -130,7 +130,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-13. Dynamic Signal に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+13. Dynamic Signal に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
@@ -138,11 +138,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
-15. プロビジョニングの準備ができたら、**[保存]** をクリックします。
+15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
-これにより、**[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Dynamic Signal に対して実行されたすべてのアクションが記載されています。
+これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Dynamic Signal に対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
 

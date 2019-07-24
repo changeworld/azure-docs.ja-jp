@@ -3,19 +3,19 @@ title: Conversation Learner モデルで分岐操作と元に戻す操作を使�
 titleSuffix: Azure
 description: Conversation Learner モデルで分岐操作と元に戻す操作を使用する方法について説明します。
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: cca7b42c83be3ca428509ea48c387a1c35ddb35a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: 6ffa0881df07e453c8beb175b8580deebbfc1ec9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206732"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66389885"
 ---
 # <a name="how-to-use-branching-and-undo-operations"></a>分岐操作と元に戻す操作の使用方法
 このチュートリアルでは、元に戻す操作と分岐処理について取り上げます。
@@ -25,7 +25,7 @@ ms.locfileid: "55206732"
 ### <a name="undo"></a>元に戻す
 開発者は、ユーザーの最後の入力またはアクションの選択を "元に戻す" ことができます。 "元に戻す" 操作を実行すると、実際にはバックグラウンドで新しい会話が作成され、直前のステップまで再生されます。  つまり、会話の API 呼び出しとエンティティ検出コールバックが再び呼び出されます。
 
-### <a name="branch"></a>[Branch]\(ブランチ\)
+### <a name="branch"></a>[Branch]\(ブランチ)
 既存のトレーニング会話と同じ方法で開始される新しいトレーニング会話を作成します。これにより、会話のターンを手動で再入力する手間を省くことができます。 "分岐" 操作を実行すると、バックグラウンドで新しい会話が作成され、選択されたステップまで既存のトレーニング会話が再生されます。  つまり、会話の API 呼び出しとエンティティ検出コールバックが再び呼び出されます。
 
 
@@ -51,7 +51,7 @@ ms.locfileid: "55206732"
 6. `Undo` ボタンをクリックします。
     - 最後の入力が削除されて、ボットの最後の応答 "What would you like on your pizza?" (ピザに何をのせますか?) になります
 
-## <a name="branch"></a>[Branch]\(ブランチ\)
+## <a name="branch"></a>[Branch]\(ブランチ)
 
 このデモでは、既存のトレーニング会話を開き、それから分岐することによって新しいトレーニング会話を作成します。
 

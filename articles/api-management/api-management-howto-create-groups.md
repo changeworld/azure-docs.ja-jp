@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 3986b07c3568c3dcbb4077361d38f74d658458cd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5392cf5463dd0b11d1ce53856c8e4e2e788892b0
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38603066"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60658439"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
+
 API Management では、開発者に成果物の表示を許可するかどうかが、グループを使用して管理されます。 グループに対して成果物の表示が許可されると、そのグループに属する開発者は、グループに関連付けられた成果物を表示してサブスクライブできるようになります。 
 
 API Management には、次に示すシステム グループが用意されています。これらのシステム グループを変更することはできません。
@@ -35,9 +36,11 @@ API Management には、次に示すシステム グループが用意されて�
 
 発行者ポータルでグループを作成および管理するだけでなく、API Management REST API [グループ](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) エンティティを使用してグループを作成および管理することができます。
 
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-「[Create an Azure API Management instance (Azure API Management インスタンスを作成する)](get-started-create-service-instance.md)」の記事にあるタスクを完了します。
+次の記事のタスクを済ませておいてください: [Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -52,7 +55,7 @@ API Management には、次に示すシステム グループが用意されて�
 
     ![新しいグループを追加する](./media/api-management-howto-create-groups/groups001.png)
 
-グループが作成されると、それが **[グループ]** リストに追加されます。 <br/>グループの **[名前]** または **[説明]** を編集するには、そのグループの名前と **[設定]** をクリックします。<br/>グループを削除するには、そのグループの名前をクリックし、**[削除]** を押します。
+グループが作成されると、それが **[グループ]** リストに追加されます。 <br/>グループの **[名前]** または **[説明]** を編集するには、そのグループの名前と **[設定]** をクリックします。<br/>グループを削除するには、そのグループの名前をクリックし、 **[削除]** を押します。
 
 グループが作成されます。このグループは、成果物および開発者と関連付けることができます。
 
@@ -68,7 +71,7 @@ API Management には、次に示すシステム グループが用意されて�
 
     ![グループと成果物を関連付ける](./media/api-management-howto-create-groups/groups003.png)
 
-    成果物からグループを削除するには、**[削除]** をクリックします。
+    成果物からグループを削除するには、 **[削除]** をクリックします。
 
     ![グループを削除する](./media/api-management-howto-create-groups/groups004.png)
 

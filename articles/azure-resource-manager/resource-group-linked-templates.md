@@ -1,25 +1,17 @@
 ---
 title: Azure デプロイ用のリンク テンプレート | Microsoft Docs
 description: Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: 27d8c4b2-1e24-45fe-88fd-8cf98a6bb2d2
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: bbbaef306b9ed2bb415b29bc6d96dcfe649338f9
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 4a5fe1bd2bf57fbec240ab242dd889014dde9578
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205939"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206427"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -91,7 +83,7 @@ ms.locfileid: "65205939"
 > [!NOTE]
 > 入れ子になったテンプレートの場合、入れ子になったテンプレート内に定義されている変数またはパラメーターは使用できません。 パラメーターと変数は、メイン テンプレートから使用できます。 上の例では、`[variables('storageName')]` は、入れ子になったテンプレートではなく、メイン テンプレートから値を取得します。 この制限は、外部テンプレートには適用されません。
 >
-> 入れ子テンプレート内で定義された 2 つのリソースがあり、一方のリソースが他方のリソースに依存している場合、依存関係の値は単に依存先リソースの名前になります。
+> 入れ子になったテンプレート内で定義された 2 つのリソースがあり、一方のリソースが他方のリソースに依存している場合、依存関係の値は単に依存先リソースの名前になります。
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"

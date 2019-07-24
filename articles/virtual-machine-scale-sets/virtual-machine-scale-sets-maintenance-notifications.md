@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 31d4829c6adaf4bd5392ef393dcaefbeb7dc6255
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2ba1bb914dfc2edbe17d12cc58df097b60d1f94c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992421"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849739"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 
@@ -78,18 +78,18 @@ Azure Portal、PowerShell、REST API、Azure CLI を使用して、仮想マシ�
 計画メンテナンス ウェーブをスケジュールする際、Azure portal を使って今後のメンテナンス ウェーブの影響を受ける仮想マシン スケール セットの一覧を表示できます。 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューで、**[すべてのサービス]** を選択し、**[仮想マシン スケール セット]** を選択します。
+2. 左側のメニューで、 **[すべてのサービス]** を選択し、 **[仮想マシン スケール セット]** を選択します。
 3. **[仮想マシン スケール セット]** で **[列の編集]** を選択して、使用可能な列の一覧を開きます。
-4. **[利用可能な列]** セクションで **[セルフサービス メンテナンス]** を選択し、**[選択された列]** リストに移動します。 **[適用]** を選択します。  
+4. **[利用可能な列]** セクションで **[セルフサービス メンテナンス]** を選択し、 **[選択された列]** リストに移動します。 **[適用]** を選択します。  
 
-    **[利用可能な列]** セクションのドロップダウン リストを **[すべて]** から **[プロパティ]** に切り替えると、**[セルフサービス メンテナンス]** 項目を簡単に見つけることができます。
+    **[利用可能な列]** セクションのドロップダウン リストを **[すべて]** から **[プロパティ]** に切り替えると、 **[セルフサービス メンテナンス]** 項目を簡単に見つけることができます。
 
 これで、仮想マシン スケール セットの一覧に **[セルフサービス メンテナンス]** 列が表示されます。 各仮想マシン スケール セットのセルフサービス メンテナンスの列の値は、次のいずれかの値をとることができます。
 
 | 値 | 説明 |
 |-------|-------------|
 | はい | 仮想マシン スケール セット内の少なくとも 1 つの VM がセルフ サービス期間内です。 このセルフサービス期間中は、いつでもメンテナンスを開始することができます。 | 
-| いいえ  | 影響を受ける仮想マシン スケール セットには、セルフサービス期間内の VM はありません。 | 
+| いいえ | 影響を受ける仮想マシン スケール セットには、セルフサービス期間内の VM はありません。 | 
 | - | 仮想マシン スケール セットは、計画メンテナンス ウェーブの一部ではありません。| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>ポータルの通知とアラート
@@ -98,20 +98,20 @@ Azure は、サブスクリプション所有者と共同所有者グループ�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで **[モニター]** を選択します。 
-3. **[Monitor - Alerts (classic)] (監視 - アラート (クラシック))** ウィンドウで、**[+ アクティビティ ログ アラートの追加]** を選択します。
+3. **[Monitor - Alerts (classic)] (監視 - アラート (クラシック))** ウィンドウで、 **[+ アクティビティ ログ アラートの追加]** を選択します。
 4. **[アクティビティ ログ アラートの追加]** ページで、必要な情報を選択または入力します。 **[条件]** では、次の値を設定します。
-   - **イベント カテゴリ**:**[サービスの正常性]** を選択します。
-   - **サービス**:**[Virtual Machine Scale Sets and Virtual Machines]\(仮想マシン スケール セットおよび仮想マシン\)** を選択します。
-   - **タイプ**:**[計画メンテナンス]** を選択します。 
+   - **イベント カテゴリ**: **[サービスの正常性]** を選択します。
+   - **サービス**: **[Virtual Machine Scale Sets and Virtual Machines]\(仮想マシン スケール セットおよび仮想マシン\)** を選択します。
+   - **タイプ**: **[計画メンテナンス]** を選択します。 
     
 アクティビティ ログ アラートの構成方法については、「[アクティビティ ログ アラートの作成](../azure-monitor/platform/activity-log-alerts.md)」をご覧ください
     
     
 ## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>ポータルから仮想マシン スケール セットのメンテナンスを開始する
 
-仮想マシン スケール セットの概要では、メンテナンスに関連する詳細情報をさらに表示することもできます。 仮想マシン スケール セット内の少なくとも 1 つの VM が計画メンテナンス ウェーブに含まれる場合は、ページの上部にある新しい通知リボンが追加されます。 通知リボンを選択すると、**[メンテナンス]** ページに移動します。 
+仮想マシン スケール セットの概要では、メンテナンスに関連する詳細情報をさらに表示することもできます。 仮想マシン スケール セット内の少なくとも 1 つの VM が計画メンテナンス ウェーブに含まれる場合は、ページの上部にある新しい通知リボンが追加されます。 通知リボンを選択すると、 **[メンテナンス]** ページに移動します。 
 
-**[メンテナンス]** ページでは、計画メンテナンスの影響を受ける VM インスタンスを確認できます。 メンテナンスを開始するには、影響を受ける VM に対応するチェック ボックスを選択します。 次に、**[メンテナンスを開始する]** を選択します。
+**[メンテナンス]** ページでは、計画メンテナンスの影響を受ける VM インスタンスを確認できます。 メンテナンスを開始するには、影響を受ける VM に対応するチェック ボックスを選択します。 次に、 **[メンテナンスを開始する]** を選択します。
 
 メンテナンスを開始すると、影響を受ける仮想マシン スケール セット内の VM がメンテナンス中になり、一時的に利用できなくなります。 セルフサービス期間を過ぎてしまった場合でも、仮想マシン スケール セットのメンテナンスが Azure によって実行される時間枠は表示することができます。
  
@@ -127,9 +127,14 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 **MaintenanceRedeployStatus** では、次のプロパティが返されます。 
 
-| Value | Description   |
-
-|-------|---------------| | IsCustomerInitiatedMaintenanceAllowed | 現在 VM でメンテナンスを開始できるかどうかが示されます。 | | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 | | PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 | | MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 | | MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 | | LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
+| 値 | 説明   |
+|-------|---------------|
+| IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
+| PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |
+| PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 |
+| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 |
+| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 |
+| LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
 
 
 
@@ -153,9 +158,14 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 
 **MaintenanceRedeployStatus** では、各 VM インスタンスについて次のプロパティが返されます。 
 
-| Value | Description   |
-
-|-------|---------------| | IsCustomerInitiatedMaintenanceAllowed | 現在 VM でメンテナンスを開始できるかどうかが示されます。 | | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 | | PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 | | MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 | | MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 | | LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
+| 値 | 説明   |
+|-------|---------------|
+| IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
+| PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |
+| PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 |
+| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 |
+| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 |
+| LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
 
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>CLI を使用して VM インスタンスに対するメンテナンスを開始する
@@ -176,7 +186,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **A:** 可用性セットまたは仮想マシン スケール セットにデプロイされた仮想マシンでは、更新ドメインが使用されます。 メンテナンスを実行するときに、Azure では更新ドメインの制約が遵守され、(同じ可用性セット内の) 別の更新ドメインの VM は再起動されません。 また、Azure は VM の次のグループに移行する前に少なくとも 30 分待機します。 
 
-高可用性の詳細については、「[Azure の仮想マシンのリージョンと可用性について](../virtual-machines/windows/regions-and-availability.md)」を参照してください。
+高可用性の詳細については、「[Azure の仮想マシンのリージョンと可用性について](../virtual-machines/windows/availability.md)」を参照してください。
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 

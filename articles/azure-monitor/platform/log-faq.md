@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 08e915354df4f4aa1d9a183e78cbad47460b8d37
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002343"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66356223"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 
@@ -42,7 +42,7 @@ Azure portal の新しいログ エクスペリエンスは高度な分析ポー
 
 ### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>Q. 新しいログ エクスペリエンスでクエリ エクスプローラーと [保存] ボタンを表示できないのはなぜですか?
 
-特定のリソースのコンテキストでログを検索する場合、**クエリ エクスプローラー**、**[保存]** ボタンおよび **[警告の設定]** ボタンは使用できません。 アラートを作成し、クエリを保存または読み込むには、ログのスコープをワークスペースに指定する必要があります。 ワークスペース コンテキストでログを開くには、**[すべてのサービス]** > **[監視]** > **[ログ]** の順に選択します。 最後に使用されたワークスペースが選択されますが、その他のワークスペースを選択することはできます。 詳細については、「[Log Analytics におけるデータの表示と分析](../log-query/portals.md)」を参照してください。
+特定のリソースのコンテキストでログを検索する場合、**クエリ エクスプローラー**、 **[保存]** ボタンおよび **[警告の設定]** ボタンは使用できません。 アラートを作成し、クエリを保存または読み込むには、ログのスコープをワークスペースに指定する必要があります。 ワークスペース コンテキストでログを開くには、 **[すべてのサービス]**  >  **[監視]**  >  **[ログ]** の順に選択します。 最後に使用されたワークスペースが選択されますが、その他のワークスペースを選択することはできます。 詳細については、「[Log Analytics におけるデータの表示と分析](../log-query/portals.md)」を参照してください。
 
 ### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>Q. 新しいログ エクスペリエンスではカスタム フィールドをどのように抽出するのですか? 
 
@@ -80,11 +80,11 @@ A. できます。Azure でのログのページと、高度な分析ポータ�
 
 ### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>Q. Azure portal で自分のビューとソリューションを表示するにはどうすればよいですか? 
 
-A:Azure portal には、ビューとインストールされているソリューションのリストが表示されます。 **[すべてのサービス]** をクリックします。 リソースのリストで、**[監視]** を選択してから **[...詳細]** をクリックします。 最後に使用されたワークスペースが選択されますが、その他のワークスペースを選択することはできます。 
+A:Azure portal には、ビューとインストールされているソリューションのリストが表示されます。 **[すべてのサービス]** をクリックします。 リソースのリストで、 **[監視]** を選択してから **[...詳細]** をクリックします。 最後に使用されたワークスペースが選択されますが、その他のワークスペースを選択することはできます。 
 
 ### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>Q. 米国中西部リージョンでワークスペースを作成できないのはなぜですか? 
 
-A:このリージョンは一時的な容量の上限に達しています。 この上限は 2019 年前半に対処される予定です。
+A:このリージョンは一時的な容量の上限に達しています。 この制限は、2019 年 9 月末までに対処される予定です。
 
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>Q. Log Analytics で使用されるエージェントは Azure Security Center のエージェントと同じですか?
@@ -142,13 +142,13 @@ A:データ収集が停止したときに通知を受けるには、[新しい�
 
 - **[アラートの条件を定義します]** では、リソース ターゲットとして Log Analytics ワークスペースを指定します。
 - **[アラートの条件]** では、以下を指定します。
-   - **[シグナル名]** では、**[カスタム ログ検索]** を選択します。
-   - **[検索クエリ]**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **[シグナル名]** では、 **[カスタム ログ検索]** を選択します。
+   - **[検索クエリ]** : `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - **[アラート ロジック]** は "*結果の数*" **に基づき、** **[条件]** は**しきい値**の *0* "*より大きい*" です
-   - **[期間]** は *30* 分、**[アラートの頻度]** は *10* 分間隔に設定します
+   - **[期間]** は *30* 分、 **[アラートの頻度]** は *10* 分間隔に設定します
 - **[アラートの詳細を定義します]** では、以下を指定します。
    - **[名前]** を *[Data collection stopped] \(データ収集が停止した)* に
-   - **[重大度]**: *[警告]*
+   - **[重大度]** : *[警告]*
 
 既存の[アクション グループ](../../azure-monitor/platform/action-groups.md)を指定するか、アクション グループを新たに作成して、ログ アラートが条件に一致する場合に、ハートビートが 15 分以上なければ通知が送られるようにします。
 
@@ -186,7 +186,7 @@ A:最新の更新プログラム ロールアップに更新し、管理パッ�
 
 ### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>Q:エージェントが Log Analytics と通信できることを確認するにはどうすればよいですか?
 
-A:エージェントが OMS と通信できることを確認するには、[コントロール パネル]、[システムとセキュリティ]、**[Microsoft Monitoring Agent]** の順に選択します。
+A:エージェントが OMS と通信できることを確認するには、[コントロール パネル]、[システムとセキュリティ]、 **[Microsoft Monitoring Agent]** の順に選択します。
 
 **[Azure Log Analytics (OMS)]** タブの緑色のチェック マークを確認します。 緑色のチェック マーク アイコンは、エージェントが Azure サービスと通信できることを示します。
 
@@ -194,7 +194,7 @@ A:エージェントが OMS と通信できることを確認するには、[コ
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>Q:エージェントの Log Analytics との通信を停止するにはどうすればよいですか?
 
-A:System Center Operations Manager では、OMS マネージド コンピューターの一覧からコンピューターを削除します。 Operations Manager はエージェントの構成を更新して、Log Analytics に報告しなくなるようにします。 Log Analytics に直接接続されているエージェントの場合は、次の手順でエージェントの通信を停止できます。[コントロール パネル]、[システムとセキュリティ]、**[Microsoft Monitoring Agent]** の順に選択します。
+A:System Center Operations Manager では、OMS マネージド コンピューターの一覧からコンピューターを削除します。 Operations Manager はエージェントの構成を更新して、Log Analytics に報告しなくなるようにします。 Log Analytics に直接接続されているエージェントの場合は、次の手順でエージェントの通信を停止できます。[コントロール パネル]、[システムとセキュリティ]、 **[Microsoft Monitoring Agent]** の順に選択します。
 **[Azure Log Analytics (OMS)]** に表示されているすべてのワークスペースを削除します。
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Q:ワークスペースを Azure サブスクリプション間で移動しようとするとエラーが表示されるのはなぜですか?

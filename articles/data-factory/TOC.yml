@@ -468,7 +468,7 @@
           href: data-flow-sink.md
         - name: 並べ替え
           href: data-flow-sort.md
-        - name: ソース
+        - name: source
           href: data-flow-source.md
         - name: 代理キー
           href: data-flow-surrogate-key.md
@@ -486,6 +486,8 @@
           href: control-flow-expression-language-functions.md
         - name: システム変数
           href: control-flow-system-variables.md
+        - name: データ フローのパラメーター
+          href: parameters-data-flow.md
     - name: セキュリティ
       items:
         - name: データ移動のセキュリティに関する考慮事項
@@ -516,7 +518,7 @@
       items:
         - name: Azure 統合ランタイム
           href: create-azure-integration-runtime.md
-        - name: 自己ホスト型統合ランタイム
+        - name: セルフホステッド統合ランタイム
           href: create-self-hosted-integration-runtime.md
         - name: Azure-SSIS 統合ランタイム
           href: create-azure-ssis-integration-runtime.md
@@ -562,12 +564,22 @@
           href: solution-template-copy-files-multiple-containers.md
         - name: LastModifiedDate を基準に新しいファイルをコピーする
           href: solution-template-copy-new-files-lastmodifieddate.md
-        - name: 制御テーブルを使用した一括コピー
+        - name: データベースからの一括コピー
           href: solution-template-bulk-copy-with-control-table.md
-        - name: 制御テーブルを使用した差分コピー
+        - name: データベースからの差分コピー
           href: solution-template-delta-copy-with-control-table.md
+        - name: ファイルの移動
+          href: solution-template-move-files.md
         - name: Databricks を使用したデータ変換
           href: solution-template-databricks-notebook.md
+    - name: トラブルシューティング ガイド
+      items:
+        - name: アクティビティのトラブルシューティング
+          href: data-factory-troubleshoot-guide.md
+        - name: Azure SSIS IR の管理に関するトラブルシューティング
+          href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング
+          href: ssis-integration-runtime-ssis-activity-faq.md
 - name: リファレンス
   items:
     - name: .NET

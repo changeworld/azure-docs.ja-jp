@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 0466265ad5a24e8ea6dc5079e2b4006d74e7dde0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0e6a52ea2fdd05546a4da9f8cd1165b41ed27944
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452534"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62097742"
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Azure で AlwaysOn 可用性グループの ILB リスナーを構成する
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "38452534"
 ## <a name="overview"></a>概要
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Azure Resource Manager とクラシックです](../../../azure-resource-manager/resource-manager-deployment-model.md)。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。
 
 Resource Manager モデルで AlwaysOn 可用性グループのリスナーを構成する方法については、「[Azure の AlwaysOn 可用性グループに使用する内部ロード バランサーの構成](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)」をご覧ください。
 

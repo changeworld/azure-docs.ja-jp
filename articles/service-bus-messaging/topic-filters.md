@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
 ms.openlocfilehash: 41af53dbfbb5c863007a332445a2f184fcbcbf81
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741064"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60332229"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
 

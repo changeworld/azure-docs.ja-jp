@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66126803"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum Proof-of-Authority Consortium
@@ -150,7 +150,7 @@ Proof-of-Authority の中核をなすのは分散型ガバナンスです。 ガ
 MetaMask をインストールした後、ブラウザーのガバナンス DApp に移動します。  URL は確認の電子メールまたはデプロイの出力で Azure ポータルで見つけることができます。  ブラウザー内のウォレットをインストールしていない場合、どのアクションも実行できませんが、管理者の状態を読み取ることはできます。  
 
 #### <a name="becoming-an-admin"></a>管理者になる
-ネットワークにデプロイした最初のメンバーが自動的に管理者になり、そのパリティ ノードが検証コントロールとしてリストされます。  ネットワークに参加している場合、既存の管理者セットの多数 (50% 超) によって管理者として投票される必要があります。  管理者にならない選択をした場合でも、ノードは、ブロックチェーンとの同期状態を保ち、これを検証しますが、ブロック作成プロセスに参加することはありません。 管理者になる投票プロセスを開始するには、__[申請]__ をクリックし、Ethereum アドレスおよび別名を入力します。
+ネットワークにデプロイした最初のメンバーが自動的に管理者になり、そのパリティ ノードが検証コントロールとしてリストされます。  ネットワークに参加している場合、既存の管理者セットの多数 (50% 超) によって管理者として投票される必要があります。  管理者にならない選択をした場合でも、ノードは、ブロックチェーンとの同期状態を保ち、これを検証しますが、ブロック作成プロセスに参加することはありません。 管理者になる投票プロセスを開始するには、 __[申請]__ をクリックし、Ethereum アドレスおよび別名を入力します。
 
 ![申請](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
@@ -365,7 +365,7 @@ Monitor の場所 (既存の Azure Monitor ログへの接続 = 新規作成)|�
 
     -  前の手順で提供されたのと同じ Ethereum アドレスを使用します
 
-    -  提供された *[Consortium Data Url]\(コンソーシアム データの URL\)* を、*[Ethereum Settings]\(Ethereum の設定\)* で渡します
+    -  提供された *[Consortium Data Url]\(コンソーシアム データの URL\)* を、 *[Ethereum Settings]\(Ethereum の設定\)* で渡します
 
     -  ネットワークの残りの部分が VPN の背後にある場合は、詳細セクションで*プライベート VNet* を選択します
 

@@ -2,19 +2,19 @@
 title: 辞書とは - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: 辞書とは、Microsoft Translator で常に同じように翻訳させたい一連の句または文 (そしてその翻訳) を指定する、アラインされたドキュメントです。 辞書は、用語集や用語ベースと呼ばれることもあります。
-author: rajdeep-in
+author: swmachan
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: bfefb1fe44959bc7e5186a0f14813f41256cf2d5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c837399778723b0b084c26422b7bea762f0e7709
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775443"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447357"
 ---
 # <a name="what-is-a-dictionary"></a>辞書とは
 

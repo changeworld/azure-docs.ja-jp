@@ -5,15 +5,15 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 05/30/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: d893fb1023188498260813642678397a39bb2442
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
+ms.openlocfilehash: 1ee4f89885bd10a116963d42e87766bcd05cc0b4
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64872368"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67852737"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -33,6 +33,7 @@ ms.locfileid: "64872368"
 以下の詳細は、Microsoft Azure portal インターフェイスを使用してログ アラートを使用するためのステップ バイ ステップ ガイドです。
 
 ### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Microsoft Azure portal でログ アラート ルールを作成する
+
 1. [ポータル](https://portal.azure.com/)で **[モニター]** を選び、[モニター] セクションで **[アラート]** を選びます。
 
     ![監視](media/alerts-log/AlertsPreviewMenu.png)
@@ -48,7 +49,6 @@ ms.locfileid: "64872368"
 1. **[リソースの選択]** のリンクを使用してターゲットを指定し、リソースを選択することで、アラートの条件を定義します。 _サブスクリプション_、_リソースの種類_ を選択し、必要な _リソース_ を選択して、フィルターを適用します。
 
    > [!NOTE]
-   > 
    > ログ アラートを作成する場合、続行する前に、選択したリソースに使用可能な**ログ** シグナルを確認します。
    >  ![リソースの選択](media/alerts-log/Alert-SelectResourceLog.png)
 
@@ -142,7 +142,6 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
     "variables": {
         "alertLocation": "southcentralus",
         "alertName": "samplelogalert",
-        "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
         "alertDescription": "Sample log search alert",
         "alertStatus": "true",
         "alertSource":{
@@ -172,7 +171,6 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
         "type":"Microsoft.Insights/scheduledQueryRules",
         "apiVersion": "2018-04-16",
         "location": "[variables('alertLocation')]",
-        "tags":{"[variables('alertTag')]": "Resource"},
         "properties":{
             "description": "[variables('alertDescription')]",
             "enabled": "[variables('alertStatus')]",
@@ -204,9 +202,6 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
 
 ```
 
-> [!IMPORTANT]
-> [スケジュール済みクエリ ルール](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)の API 呼び出しまたはリソース テンプレートを使用する際には、ターゲット リソースへの非表示のリンクが指定された Tag フィールドが必須です。
-
 上記のサンプル JSON は、このチュートリアルの目的で (たとえば) sampleScheduledQueryRule.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) を使用してデプロイすることができます。
 
 
@@ -226,7 +221,6 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
         "alertName": "sample log alert",
         "alertDescr": "Sample log search alert",
         "alertStatus": "true",
-        "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
         "alertSource":{
             "Query":"union workspace(\"servicews\").Update, app('serviceapp').requests | summarize AggregatedValue = count() by bin(TimeGenerated,1h), Classification",
             "Resource1": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews",
@@ -263,7 +257,6 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
         "type":"Microsoft.Insights/scheduledQueryRules",
         "apiVersion": "2018-04-16",
         "location": "[variables('alertLocation')]",
-        "tags":{"[variables('alertTag')]": "Resource"},
         "properties":{
             "description": "[variables('alertDescr')]",
             "enabled": "[variables('alertStatus')]",
@@ -304,27 +297,40 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
 ```
 
 > [!IMPORTANT]
-> [スケジュール済みクエリ ルール](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)の API 呼び出しまたはリソース テンプレートを使用する際には、ターゲット リソースへの非表示のリンクが指定された Tag フィールドが必須です。 ログ アラートでリソース間クエリを使用する場合、[authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) の使用は必須であり、ユーザーには記載されているリソースの一覧へのアクセス権が必要です。
+> ログ アラートでリソース間クエリを使用する場合、[authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) の使用は必須であり、ユーザーには記載されているリソースの一覧へのアクセス権が必要です。
 
 上記のサンプル JSON は、このチュートリアルの目的で (たとえば) sampleScheduledQueryRule.json として保存でき、[Azure portal で Azure Resource Manager](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) を使用してデプロイすることができます。
 
-## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>PowerShell、CLI、または API を使用したログ アラートの管理
+## <a name="managing-log-alerts-using-powershell"></a>PowerShell を使用したログ アラートの管理
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor - [スケジュール済みクエリ ルール API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) は REST API であり、Azure Resource Manager REST API と完全な互換性があります。 そのためこれは、Resource Manager コマンドレットだけでなく Azure CLI を使用して、Powershell を介して使用できます。
+Azure Monitor - [スケジュール済みクエリ ルール API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) は REST API であり、Azure Resource Manager REST API と完全な互換性があります。 また、[Scheduled Query Rules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) を利用するために、次の PowerShell コマンドレットが用意されています。
+
+1. [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) :新しいログ アラート ルールを作成するための Powershell コマンドレット。
+1. [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) :既存のログ アラート ルールを更新するための Powershell コマンドレット。
+1. [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) :ログ アラートのソース パラメーターを指定するオブジェクトを作成または更新するための Powershell コマンドレット。 [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) および [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) コマンドレットによって入力として使用されます。
+1. [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule):ログ アラートのスケジュール パラメーターを指定するオブジェクトを作成または更新するための Powershell コマンドレット。 [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) および [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) コマンドレットによって入力として使用されます。
+1. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) :ログ アラートのアクション パラメーターを指定するオブジェクトを作成または更新するための Powershell コマンドレット。 [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) および [Set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) コマンドレットによって入力として使用されます。
+1. [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) :ログ アラートのアクション グループ パラメーターを指定するオブジェクトを作成または更新するための Powershell コマンドレット。 [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) コマンドレットによって入力として使用されます。
+1. [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) :ログ アラートのトリガー条件パラメーターを指定するオブジェクトを作成または更新するための Powershell コマンドレット。 [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) コマンドレットによって入力として使用されます。
+1. [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) :[メトリック測定タイプのログ アラート](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)のメトリック トリガー条件パラメーターを指定するオブジェクトを作成または更新するための Powershell コマンドレット。 [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) コマンドレットによって入力として使用されます。
+1. [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) :既存のログ アラート ルールまたは特定のログ アラート ルールを一覧表示するための Powershell コマンドレット
+1. [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) :ログ アラート ルールを有効または無効にするための Powershell コマンドレット
+1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule):既存のログ アラート ルールを削除するための Powershell コマンドレット
+
+> [!NOTE]
+> ScheduledQueryRules PowerShell コマンドレットは、コマンドレット自体によって、または Azure Monitor - [Scheduled Query Rules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) を使用して作成されたルールのみを管理できます。 従来の [Log Analytics Alert API](api-alerts.md) と、[Log Analytics 保存済み検索およびアラート](../insights/solutions-resources-searches-alerts.md)の従来のテンプレートを使用して作成されたログ アラート ルールは、ユーザーが [Log Analytics アラート用に API 基本設定を切り替えた](alerts-log-api-switch.md)後に限り、ScheduledQueryRules PowerShell コマンドレットを使用して管理できます。
+
+## <a name="managing-log-alerts-using-cli-or-api"></a>CLI または API を使用したログ アラートの管理
+
+Azure Monitor - [スケジュール済みクエリ ルール API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) は REST API であり、Azure Resource Manager REST API と完全な互換性があります。 そのためこれは、Azure CLI 用の Resource Manager コマンドを使用して、PowerShell を介して使用できます。
 
 
 > [!NOTE]
 > Log Analytics のログ アラートは、従来の [Log Analytics Alert API](api-alerts.md) や [Log Analytics の保存された検索とアラート](../insights/solutions-resources-searches-alerts.md)の従来のテンプレートを使用して管理することもできます。 ここで詳しく説明している新しい ScheduledQueryRules API を既定で使用する方法の詳細については、[Log Analytics アラート用の新しい API に切り替える方法](alerts-log-api-switch.md)に関するページを参照してください。
 
-現在、ログ アラートには専用の PowerShell コマンドや CLI コマンドはありません。ただし、リソース テンプレートのセクションで前に示したサンプル リソース テンプレート (sampleScheduledQueryRule.json) に対し、Azure Resource Manager PowerShell コマンドレットを介して以下のように使用できます。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
-```
-
-リソース テンプレートのセクションで前に示したサンプル リソース テンプレート (sampleScheduledQueryRule.json) に対する Azure Resource Manager コマンドの Azure CLI での使い方を以下に示します。
+現在、ログ アラートには専用の CLI コマンドはありません。ただし、リソース テンプレートのセクションで前に示したサンプル リソース テンプレート (sampleScheduledQueryRule.json) に対し、Azure Resource Manager CLI コマンドを介して次のように使用できます。
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json

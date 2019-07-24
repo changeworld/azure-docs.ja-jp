@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: cherylmc
 ms.openlocfilehash: 1096c120b4e7731fabd574c4096e70fe02b6272d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66146995"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する:PowerShell
@@ -232,7 +232,7 @@ VPN クライアント構成を使用すると、デバイスは P2S 接続を�
 
 ### <a name="connect-from-a-mac-vpn-client"></a>Mac の VPN クライアントから接続する
 
-[ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、**[接続]** をクリックします。
+[ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、 **[接続]** をクリックします。
 
   ![Mac の接続](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 

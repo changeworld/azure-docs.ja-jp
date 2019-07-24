@@ -17,11 +17,11 @@ ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 3b3bb206286629a68c14b6444f3f88ffa0af50dd
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540875"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60583267"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 
@@ -143,11 +143,11 @@ Get-AzureVM -ServiceName <servicename> -Name <vmname> | Get-AzureDataDisk
 1. ディスク名と LUN に注目します。
 
     ![DisknameAndLUN][2]
-1. VM にリモート デスクトップ接続します。 **[コンピューターの管理]** | **[デバイス マネージャー]** | **[ディスク ドライブ]** の順に選択します。 [Microsoft 仮想ディスク] の各プロパティを確認します。
+1. VM にリモート デスクトップ接続します。 **[コンピューターの管理]**  |  **[デバイス マネージャー]**  |  **[ディスク ドライブ]** の順に選択します。 [Microsoft 仮想ディスク] の各プロパティを確認します。
 
     ![VirtualDiskProperties][3]
 1. この LUN 番号は、VM に VHD をアタッチするときに指定した LUN 番号です。
-1. [Microsoft 仮想ディスク] の **[詳細]** タブに移動し、**[プロパティ]** 一覧の **[ドライバー キー]** に移動します。 **[値]** で**オフセット**を確認します (次のスクリーンショットでは 0002)。 0002 は記憶域プールが参照する PhysicalDisk2 を表します。
+1. [Microsoft 仮想ディスク] の **[詳細]** タブに移動し、 **[プロパティ]** 一覧の **[ドライバー キー]** に移動します。 **[値]** で**オフセット**を確認します (次のスクリーンショットでは 0002)。 0002 は記憶域プールが参照する PhysicalDisk2 を表します。
 
     ![VirtualDiskPropertyDetails][4]
 1. 各記憶域プールで、関連するディスクをダンプします。

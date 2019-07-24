@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: b8e66a9d5bba0c48f15b1ccd3f2d47e5405db792
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785600"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60718380"
 ---
 # <a name="package-an-application"></a>アプリケーションをパッケージ化する
 
@@ -54,7 +54,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ## <a name="use-setupentrypoint"></a>SetupEntryPoint の使用
 
-**SetupEntryPoint** を使用する際の一般的なシナリオは、サービス開始前に実行可能ファイルを実行する必要がある場合や、昇格した特権で操作を実行する必要がある場合になります。 例: 
+**SetupEntryPoint** を使用する際の一般的なシナリオは、サービス開始前に実行可能ファイルを実行する必要がある場合や、昇格した特権で操作を実行する必要がある場合になります。 例:
 
 * サービス実行可能ファイルが使用する可能性がある環境変数の設定と初期化などです。 これは、Service Fabric のプログラミング モデルによって記述された実行可能ファイルだけに限定されません。 たとえば、npm.exe は node.js アプリケーションのデプロイに構成されているいくつかの環境変数が必要です。
 * セキュリティ証明書のインストールによるアクセス制御の設定
@@ -73,7 +73,7 @@ Visual Studio 2015 を使用して、アプリケーションを作成する場�
 
 ![Visual Studio でアプリケーションをパッケージングする][vs-package-command]
 
-パッケージ化が完了したら、**[出力]** ウィンドウにパッケージの場所が表示されます。 アプリケーションを Visual Studio でデプロイまたはデバッグする場合、パッケージ化の手順は自動で行われます。
+パッケージ化が完了したら、 **[出力]** ウィンドウにパッケージの場所が表示されます。 アプリケーションを Visual Studio でデプロイまたはデバッグする場合、パッケージ化の手順は自動で行われます。
 
 ### <a name="build-a-package-by-command-line"></a>コマンド ラインを使用したパッケージ構築
 

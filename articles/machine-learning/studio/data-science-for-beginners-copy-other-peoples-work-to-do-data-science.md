@@ -11,11 +11,11 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: 8bacc3940cebaf9c62179cee0788e5903e56a310
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369209"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60751818"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5:初心者向けデータ サイエンス シリーズ
@@ -52,7 +52,7 @@ ms.locfileid: "58369209"
 
 Microsoft では、[Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) という、無料で試用できるクラウドベースのサービスを提供しています。 さまざまな機械学習アルゴリズムを使って実験できるワークスペースが用意されており、有益なソリューションが得られたら、それを Web サービスとして立ち上げることができます。
 
-このサービスの一部として、**[Azure AI ギャラリー](https://gallery.azure.ai/)** というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の 1 つに Azure Machine Learning Studio の実験 (モデル) のコレクションがあります。これらは有志によって構築され、だれもが使用できるように提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。 だれでもアクセスできるので、自由に閲覧してください。
+このサービスの一部として、 **[Azure AI ギャラリー](https://gallery.azure.ai/)** というものがあります。 このギャラリーには、さまざまなリソースが存在しますが、その中の 1 つに Azure Machine Learning Studio の実験 (モデル) のコレクションがあります。これらは有志によって構築され、だれもが使用できるように提供されています。 独自ソリューションの構築にあたって、これらの実験に込められている他人の思考や労力を活かさない手はありません。 だれでもアクセスできるので、自由に閲覧してください。
 
 ![Azure AI ギャラリー](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 

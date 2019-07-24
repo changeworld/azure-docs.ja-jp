@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
 ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286127"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61449019"
 ---
 # <a name="create-an-advanced-device-model"></a>高度なデバイス モデルを作成する
 
@@ -169,7 +169,7 @@ IoT デバイスは、さまざまなプロトコルを使用して接続でき�
 
 ### <a name="supported-methods"></a>サポートされるメソッド
 
-シミュレートされたデバイスはメソッド呼び出しに対応できます。その場合、何らかのロジックが実行され、何らかの応答が提供されます。 シミュレーションと同様、メソッド ロジックは JavaScript ファイルに格納され、デバイス状態を操作できます。 例: 
+シミュレートされたデバイスはメソッド呼び出しに対応できます。その場合、何らかのロジックが実行され、何らかの応答が提供されます。 シミュレーションと同様、メソッド ロジックは JavaScript ファイルに格納され、デバイス状態を操作できます。 例:
 
 ```json
 "CloudToDeviceMethods": {
@@ -259,7 +259,7 @@ JavaScript ファイルには、次の 2 つのパラメーターを受け入れ
     * **deviceModel**。 たとえば、**Elevator** です。
 * 前の呼び出しで関数によって返された値である、**state** オブジェクト。 このデバイス状態はシミュレーション サービスによって維持され、テレメトリ メッセージを生成するために使用されます。
 
-**main** 関数では新しいデバイスの状態が返されます。 例: 
+**main** 関数では新しいデバイスの状態が返されます。 例:
 
 ```JavaScript
 function main(context, state) {
@@ -510,7 +510,7 @@ function main(context, state) {
 
 ![ファイルを参照する](media/iot-accelerators-device-simulation-advanced-device/browse.png)
 
-ファイルが検証に合格した場合は、**[保存]** をクリックします。これで、デバイス モデルをシミュレーションで使用する準備が整います。 それ以外の場合は、エラーを修正して、ファイルを再アップロードします。
+ファイルが検証に合格した場合は、 **[保存]** をクリックします。これで、デバイス モデルをシミュレーションで使用する準備が整います。 それ以外の場合は、エラーを修正して、ファイルを再アップロードします。
 
 ![保存](media/iot-accelerators-device-simulation-advanced-device/validated.png)
 

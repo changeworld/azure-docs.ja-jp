@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d9b7296a116ebd06542a53087afbd083dbd3a7eb
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c828f616d0be1611770c8673f9884e0ee50dba19
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64696761"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625589"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
@@ -111,22 +111,33 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 | クラウド  | リージョン | プライマリ エンドポイントの URL | ペアのリージョン | 探索 URL |
 |--------|--------|----------------------|---------------|---------------|
-| パブリック |オーストラリア東部 | https://kailani-aue.one.microsoft.com | オーストラリア南東部 | https://kailani-aue.one.microsoft.com |
-| パブリック |オーストラリア南東部 | https://kailani-aus.one.microsoft.com | オーストラリア東部 | https://tm-kailani-aus.one.microsoft.com |
-| パブリック | カナダ中部 | https://kailani-cac.one.microsoft.com | カナダ東部 | https://tm-kailani-cac.one.microsoft.com |
-| パブリック | カナダ東部 | https://kailani-cae.one.microsoft.com | カナダ中部 | https://tm-kailani.cae.one.microsoft.com |
-| パブリック | 米国中部 | https://kailani-cus.one.microsoft.com | 米国東部 2 | https://tm-kailani-cus.one.microsoft.com |
-| パブリック | 東アジア | https://kailani11.one.microsoft.com | 東南アジア | https://tm-kailani11.one.microsoft.com |
-| パブリック | 米国東部 | https://kailani1.one.microsoft.com | 米国西部 | https://tm-kailani1.one.microsoft.com |
-| パブリック | 米国東部 2 | https://kailani-ess.one.microsoft.com | 米国中部 | https://tm-kailani-ess.one.microsoft.com |
-| パブリック | 北ヨーロッパ | https://kailani7.one.microsoft.com | 西ヨーロッパ | https://tm-kailani7.one.microsoft.com |
-| パブリック | 東南アジア | https://kailani10.one.microsoft.com | 東アジア | https://tm-kailani10.one.microsoft.com |
-| パブリック | 英国南部 | https://kailani-uks.one.microsoft.com | 英国西部 | https://tm-kailani-uks.one.microsoft.com |
-| パブリック | 英国西部 | https://kailani-ukw.one.microsoft.com | 英国南部 | https://tm-kailani-ukw.one.microsoft.com |
-| パブリック | 西ヨーロッパ | https://kailani6.one.microsoft.com | 北ヨーロッパ | https://tm-kailani6.one.microsoft.com |
-| パブリック | 米国西部 | https://kailani.one.microsoft.com | 米国東部 | https://tm-kailani.one.microsoft.com |
-| Government | 米国政府アリゾナ | https://usgovarizona01.afs.azure.us | 米国政府テキサス | https://tm-usgovarizona01.afs.azure.us |
-| Government | 米国政府テキサス | https://usgovtexas01.afs.azure.us | 米国政府アリゾナ | https://tm-usgovtexas01.afs.azure.us |
+| パブリック |オーストラリア東部 | https:\//kailani-aue.one.microsoft.com | オーストラリア南東部 | https:\//tm-kailani-aue.one.microsoft.com |
+| パブリック |オーストラリア南東部 | https:\//kailani-aus.one.microsoft.com | オーストラリア東部 | https:\//tm-kailani-aus.one.microsoft.com |
+| パブリック | ブラジル南部 | https:\//brazilsouth01.afs.azure.net | 米国中南部 | https:\//tm-brazilsouth01.afs.azure.net |
+| パブリック | カナダ中部 | https:\//kailani-cac.one.microsoft.com | カナダ東部 | https:\//tm-kailani-cac.one.microsoft.com |
+| パブリック | カナダ東部 | https:\//kailani-cae.one.microsoft.com | カナダ中部 | https:\//tm-kailani.cae.one.microsoft.com |
+| パブリック | インド中部 | https:\//kailani-cin.one.microsoft.com | インド南部 | https:\//tm-kailani-cin.one.microsoft.com |
+| パブリック | 米国中部 | https:\//kailani-cus.one.microsoft.com | 米国東部 2 | https:\//tm-kailani-cus.one.microsoft.com |
+| パブリック | 東アジア | https:\//kailani11.one.microsoft.com | 東南アジア | https:\//tm-kailani11.one.microsoft.com |
+| パブリック | East US | https:\//kailani1.one.microsoft.com | 米国西部 | https:\//tm-kailani1.one.microsoft.com |
+| パブリック | 米国東部 2 | https:\//kailani-ess.one.microsoft.com | 米国中部 | https:\//tm-kailani-ess.one.microsoft.com |
+| パブリック | 東日本 | https:\//japaneast01.afs.azure.net | 西日本 | https:\//tm-japaneast01.afs.azure.net |
+| パブリック | 西日本 | https:\//japanwest01.afs.azure.net | 東日本 | https:\//tm-japanwest01.afs.azure.net |
+| パブリック | 韓国中部 | https:\//koreacentral01.afs.azure.net/ | 韓国南部 | https:\//tm-koreacentral01.afs.azure.net/ |
+| パブリック | 韓国南部 | https:\//koreasouth01.afs.azure.net/ | 韓国中部 | https:\//tm-koreasouth01.afs.azure.net/ |
+| パブリック | 米国中北部 | https:\//northcentralus01.afs.azure.net | 米国中南部 | https:\//tm-northcentralus01.afs.azure.net |
+| パブリック | 北ヨーロッパ | https:\//kailani7.one.microsoft.com | 西ヨーロッパ | https:\//tm-kailani7.one.microsoft.com |
+| パブリック | 米国中南部 | https:\//southcentralus01.afs.azure.net | 米国中北部 | https:\//tm-southcentralus01.afs.azure.net |
+| パブリック | インド南部 | https:\//kailani-sin.one.microsoft.com | インド中部 | https:\//tm-kailani-sin.one.microsoft.com |
+| パブリック | 東南アジア | https:\//kailani10.one.microsoft.com | 東アジア | https:\//tm-kailani10.one.microsoft.com |
+| パブリック | 英国南部 | https:\//kailani-uks.one.microsoft.com | 英国西部 | https:\//tm-kailani-uks.one.microsoft.com |
+| パブリック | 英国西部 | https:\//kailani-ukw.one.microsoft.com | 英国南部 | https:\//tm-kailani-ukw.one.microsoft.com |
+| パブリック | 米国中西部 | https:\//westcentralus01.afs.azure.net | 米国西部 2 | https:\//tm-westcentralus01.afs.azure.net |
+| パブリック | 西ヨーロッパ | https:\//kailani6.one.microsoft.com | 北ヨーロッパ | https:\//tm-kailani6.one.microsoft.com |
+| パブリック | 米国西部 | https:\//kailani.one.microsoft.com | East US | https:\//tm-kailani.one.microsoft.com |
+| パブリック | 米国西部 2 | https:\//westus201.afs.azure.net | 米国中西部 | https:\//tm-westus201.afs.azure.net |
+| Government | 米国政府アリゾナ | https:\//usgovarizona01.afs.azure.us | 米国政府テキサス | https:\//tm-usgovarizona01.afs.azure.us |
+| Government | 米国政府テキサス | https:\//usgovtexas01.afs.azure.us | 米国政府アリゾナ | https:\//tm-usgovtexas01.afs.azure.us |
 
 - 使用しているストレージ アカウントがローカル冗長 (LRS) またはゾーン冗長 (ZRS) の場合、有効にする必要があるのは、"プライマリ エンドポイント URL" に記載された URL だけです。
 
@@ -134,9 +145,9 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 **例:** ストレージ同期サービスを `"West US"` にデプロイしてそこにサーバーを登録するとします。 この場合、サーバーには、次の URL との通信を許可することになります。
 
-> - https://kailani.one.microsoft.com (プライマリ エンドポイント: 米国西部)
-> - https://kailani1.one.microsoft.com (ペア フェールオーバー リージョン: 米国東部)
-> - https://tm-kailani.one.microsoft.com (プライマリ リージョンの検出 URL)
+> - https:\//kailani.one.microsoft.com (プライマリ エンドポイント: 米国西部)
+> - https:\//kailani1.one.microsoft.com (ペアのフェールオーバー リージョン: 米国東部)
+> - https:\//tm-kailani.one.microsoft.com (プライマリ リージョンの探索 URL)
 
 ## <a name="summary-and-risk-limitation"></a>概要とリスクの制限
 このドキュメントで前述したリストは、現時点で Azure File Sync が通信する URL を記載したものです。 ファイアウォールで、これらのドメインに向かうトラフィックを許可する必要があります。 Microsoft は、このリストを最新の内容に保つよう努めます。

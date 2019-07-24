@@ -13,11 +13,11 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
 ms.openlocfilehash: 47fd6c1e2bb342bc1a31fb16a45a5ebc749dca69
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621449"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60702618"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL Database アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを管理する
 
@@ -92,7 +92,7 @@ Azure SQL Database で[アクティブ geo レプリケーション](sql-databas
 
 1. プライマリ リージョンに Web アプリのステージング環境をデプロイします (6)。
 2. プライマリ Azure リージョンにセカンダリ データベースを作成します (7)。 Web アプリのステージング環境を、これに接続するように構成します。 
-3. セカンダリ データベースをプライマリ リージョンにレプリケートすることで、バックアップ リージョンにもう 1 つの geo 冗長セカンダリ データベースを作成します  (この方法を *geo レプリケーションの連鎖*と呼びます) (8)。
+3. セカンダリ データベースをプライマリ リージョンにレプリケートすることで、バックアップ リージョンにもう 1 つの geo 冗長セカンダリ データベースを作成します (この方法を *geo レプリケーションの連鎖*と呼びます) (8)。
 4. Web アプリ インスタンスのステージング環境をバックアップ リージョンにデプロイし (9)、(8) で作成した geo 冗長セカンダリ データベースに接続するように構成します。
 
 > [!NOTE]

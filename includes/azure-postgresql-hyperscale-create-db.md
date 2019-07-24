@@ -9,11 +9,11 @@ ms.date: 05/14/2019
 ms.author: jonels
 ms.custom: include file
 ms.openlocfilehash: c07e352288d7dc1d0bf198fd74c8baaded3a2d23
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66154488"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181418"
 ---
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -32,7 +32,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
    - サーバー グループ名: 新しいサーバー グループの一意の名前を入力します。これはサーバー サブドメインにも使用されます。
    - 管理者ユーザー名: 現在、値 **citus** である必要があり、変更することはできません。
    - パスワード: 少なくとも 8 文字で、次のカテゴリのうち 3 つのカテゴリの文字が含まれている必要があります。英字大文字、英字小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など)。
-   - 場所: データに最も高速にアクセスできるよう、お客様のユーザーに最も近い場所を使用します。
+   - 場所: データに最速でアクセスできるよう、お客様のユーザーに最も近い場所を使用します。
 
    > [!IMPORTANT]
    > ここで指定するサーバー管理者のパスワードは、サーバーとそのデータベースにログインするために必要です。 後で使用するために、この情報を覚えておくか、記録しておきます。

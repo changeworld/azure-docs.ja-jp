@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
 ms.openlocfilehash: 3d324c54d10433520a73f2bd836c26bd79f1b3bb
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662314"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615266"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Windows クラスターでの暗号化証明書の設定とシークレットの暗号化
 この記事では、Windows クラスターでの暗号化証明書の設定と、これを使用してシークレットの暗号化を行う方法について説明します。 Linux クラスターについては、[Linux クラスターでの暗号化証明書の設定とシークレットの暗号化][secret-management-linux-specific-link]を参照してください。

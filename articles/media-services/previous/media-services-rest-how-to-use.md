@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu
 ms.openlocfilehash: fbdd9325f50e1bcb271b7ca47b9ccd3361d0d27e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64687053"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要 
@@ -74,21 +74,21 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 | ヘッダー | Type | 値 |
 | --- | --- | --- |
 | Date |RFC 1123 の日付 |要求のタイムスタンプ |
-| Accept |Content type |次のような応答に対する要求のコンテンツの種類:<p> - application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
+| Accept |Content type |次のような応答に対する要求のコンテンツの種類:<p> \- application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
 | Accept-Encoding |Gzip、deflate |GZIP Encoding および DEFLATE Encoding　(該当する場合)。 注:大きなリソースでは、Media Services はこのヘッダーを無視し、圧縮されていないデータを返す場合があります。 |
 | Accept-Language |"en"、"es" など。 |応答の優先言語を指定します。 |
 | Accept-Charset |"UTF-8"　などの文字の種類 |既定値は UTF-8 です。 |
 | X-HTTP-Method |HTTP メソッド |PUT や DELETE などの HTTP メソッドをサポートしないクライアントやファイアウォールが、GET 呼び出しを通じてトンネリングされたこれらのメソッドを使用できます。 |
 | Content-Type |コンテンツの種類 |PUT または POST 要求の本文のコンテンツの種類。 |
-| client-request-id |String |指定した要求を識別する、呼び出し元で定義された値。 指定されている場合、この値は、要求をマッピングする方法として、応答メッセージに含まれます。 <p><p>**重要**<p>値は 2096b (2k) に制限する必要があります。 |
+| client-request-id |string |指定した要求を識別する、呼び出し元で定義された値。 指定されている場合、この値は、要求をマッピングする方法として、応答メッセージに含まれます。 <p><p>**重要**<p>値は 2096b (2k) に制限する必要があります。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 応答ヘッダー
 要求したリソースと実行を意図した操作によって返されるヘッダーのセットを次に示します。
 
 | ヘッダー | Type | 値 |
 | --- | --- | --- |
-| request-id |String |現在の操作、生成されたサービスのための一意の識別子。 |
-| client-request-id |String |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |
+| request-id |string |現在の操作、生成されたサービスのための一意の識別子。 |
+| client-request-id |string |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |
 | Date |RFC 1123 の日付 |要求が処理された日時。 |
 | Content-Type |多様 |応答本文のコンテンツの種類。 |
 | Content-Encoding |多様 |Gzip またはデフレート (必要に応じて)。 |

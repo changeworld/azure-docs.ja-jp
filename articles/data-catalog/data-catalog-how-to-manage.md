@@ -8,12 +8,12 @@ ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 0b155a5cdfa1c540e1cfb92147f6ebc7f88dd929
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 407e25b7bb1a2220448c9701bbef208195c50b63
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000642"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65953115"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Azure Data Catalog でデータ資産を管理する
 ## <a name="introduction"></a>はじめに
@@ -52,7 +52,7 @@ Data Catalog 内のデータ資産に所有権が設定されている場合、�
 ### <a name="remove-owners"></a>所有者の削除
 資産の所有者はだれでも共同所有者を追加できます。同様に、資産の所有者はだれでも共同所有者を削除できます。
 
-資産の所有者が自分自身を所有者として削除した場合、以後、資産を管理できなくなります。 資産の所有者が自分自身を所有者として削除したとき、他に共同所有者が存在しなかった場合は、資産が未所有の状態に戻されます。
+資産の所有者が自分自身を所有者として削除した場合、以後、資産を管理できなくなります。 資産の所有者が自分自身を所有者として削除したとき、他に共同所有者が存在しなかった場合は、資産は未所有の状態に戻ります。
 
 ## <a name="control-visibility"></a>可視性の制御
 データ資産の所有者は、自分が所有するデータ資産の可視性を制御できます。 既定では、Data Catalog のすべてのユーザーがデータ資産を検出して表示できます。この既定の可視性を制限するには、資産所有者が、資産のプロパティで可視性の設定を **[全ユーザー]** から **[所有者とこれらのユーザー]** に切り替えます。 そのうえで所有者が特定のユーザーやセキュリティ グループを追加できます。

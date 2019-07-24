@@ -2,20 +2,20 @@
 title: RelyingParty - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの RelyingParty 要素を指定します。
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/25/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca78e7a9ce44b492dafcc00c1663d54718ca7fac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2b5e9bfe6eaa9b84e259d941760792635a2994f4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705087"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66512850"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -202,13 +202,13 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシー ファイル内の **ClaimsSchema** セクションに既に定義されている **ClaimType** への参照。 |
-| DefaultValue | いいえ  | 既定値が空の場合に使用できる既定値。 |
-| PartnerClaimType | いいえ  | ClaimType 定義で構成されている別の名前で、要求を送信します。 |
+| DefaultValue | いいえ | 既定値が空の場合に使用できる既定値。 |
+| PartnerClaimType | いいえ | ClaimType 定義で構成されている別の名前で、要求を送信します。 |
 
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 **SubjectNameingInfo** 要素によって、トークン サブジェクトの値を制御します。
-- **JTW トークン** - `sub` 要求。 これは、トークンが情報をアサートするプリンシパルです (アプリケーションのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。 詳細は、[トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)をご覧ください。
+- **JWT トークン** - `sub` 要求。 これは、トークンが情報をアサートするプリンシパルです (アプリケーションのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。 詳細は、[トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)をご覧ください。
 - **SAML トークン**- `<Subject><NameID>` subject 要素を識別する要素。
 
 **SubjectNamingInfo** 要素には、次の属性が含まれています。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: ba9a0ab775e062f21a058b537e289fe3ea2b40bb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d508ce217e3a97b3399435cb63295eb28965359a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65605611"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -104,7 +104,7 @@ Heartbeat
 | render timechart  
 ```
  
-コンピューターのインジェスト時間を、それが置かれている (対応する IP アドレスに基づく) 国ごとに表示するには、次のクエリを使用します。 
+コンピューターのインジェスト時間を、それが置かれている (対応する IP アドレスに基づく) 国や地域ごとに表示するには、次のクエリを使用します。 
 
 ``` Kusto
 Heartbeat 

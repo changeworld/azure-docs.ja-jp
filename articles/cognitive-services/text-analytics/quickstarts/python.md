@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/09/2019
+ms.date: 06/28/2019
 ms.author: aahi
-ms.openlocfilehash: 9ae894bee803c60b56a1bfacd5667f355aa44d2b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: fdef4bc582a61033a45b88d2ab7dcf9da92a91f1
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799998"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305495"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python REST API を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
@@ -49,7 +49,6 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 import requests
 # pprint is used to format the JSON response
 from pprint import pprint
-from IPython.display import HTML
 ```
 
 サブスクリプション キーと、Text Analytics REST API のエンドポイントのための変数を作成します。 エンドポイントのリージョンが、サインアップしたときに使用したリージョン (`westcentralus` など) に対応していることを確認します。 試用版のキーを使用している場合は、何も変更する必要はありません。
@@ -288,6 +287,7 @@ documents = {"documents" : [
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
 response  = requests.post(entities_url, headers=headers, json=documents)
 entities = response.json()
+pprint(entities)
 ```
 
 ### <a name="output"></a>Output

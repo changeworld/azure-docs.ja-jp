@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 8/8/2018
 ms.author: aljo
 ms.openlocfilehash: 5a45f14e5ac1da5152f320bd92b1ebb42be1d214
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662748"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60881429"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 

@@ -1,31 +1,26 @@
 ---
 title: リージョン全体で安全なデプロイを実施する - Azure Deployment Manager
 description: Azure Deployment Manager で多くのリージョンにわたってサービスをデプロイする方法について説明します すべてのリージョンにロール アウトする前に、デプロイの安定性を確認する安全なデプロイの実施方法について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/09/2018
+ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dd7e29f8f37572565e505aade97b964254b6d72c
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 6a25444f0207ec5eceb029c5d31d222a31813e22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466551"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066832"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Deployment Manager で安全なデプロイを実施できるようにする (パブリック プレビュー)
 
 多くのリージョンにわたってサービスをデプロイし、各リージョンで期待どおりに実行できるようにするには、Azure Deployment Manager を使用してサービスの段階的ロールアウトを調整します。 Azure のデプロイの場合と同様に、[Resource Manager テンプレート](resource-group-authoring-templates.md)でサービスのリソースを定義します。 テンプレートを作成した後、Deployment Manager を使用して、サービスのトポロジとロールアウトする方法について記述します。
 
-Deployment Manager は、Resource Manager の一機能です。 デプロイ中に機能を拡張します。 複数のリージョンにデプロイする必要のある複雑なサービスが存在する場合は、Deployment Manager を使用します。 サービスのロールアウトを段階的に行えば、すべてのリージョンにサービスがデプロイされる前に潜在的な問題を見つけることができます。 段階的なロールアウトの特別な注意事項が不要な場合は、Resource Manager の標準[デプロイ オプション](resource-group-template-deploy-portal.md)を使用してください。 Deployment Manager は、継続的インテグレーションと継続的デリバリー (CI/CD) のサービスなど、Resource Manager のデプロイをサポートするすべての既存のサードパーティ ツールとシームレスに統合します。 
+Deployment Manager は、Resource Manager の一機能です。 デプロイ中に機能を拡張します。 複数のリージョンにデプロイする必要のある複雑なサービスが存在する場合は、Deployment Manager を使用します。 サービスのロールアウトを段階的に行えば、すべてのリージョンにサービスがデプロイされる前に潜在的な問題を見つけることができます。 段階的なロールアウトの特別な注意事項が不要な場合は、Resource Manager の標準[デプロイ オプション](resource-group-template-deploy-portal.md)を使用してください。 Deployment Manager は、継続的インテグレーションと継続的デリバリー (CI/CD) のサービスなど、Resource Manager のデプロイをサポートするすべての既存のサードパーティ ツールとシームレスに統合します。
 
-Azure Deployment Manager はプライベート プレビュー段階です。 Azure Deployment Manager を使用するには、[サインアップ フォーム](https://aka.ms/admsignup)に入力します。 [フィードバック](https://aka.ms/admfeedback)を提供して、機能の改善にご協力ください。
+Azure Deployment Manager はプレビュー段階です。 [フィードバック](https://aka.ms/admfeedback)を提供して、機能の改善にご協力ください。
 
 Deployment Manager を使用するには、次の 4 つのファイルを作成する必要があります。
 
@@ -36,17 +31,18 @@ Deployment Manager を使用するには、次の 4 つのファイルを作成�
 
 トポロジ テンプレートをデプロイしてから、ロールアウト テンプレートをデプロイします。
 
-Azure Deployment Manager REST API のリファレンスについては、[こちら](https://docs.microsoft.com/rest/api/deploymentmanager/)でご覧いただけます。
+その他のリソース:
 
-## <a name="supported-locations"></a>サポートされる場所
-
-プレビューの場合、Deployment Manager リソースは、米国中部と米国東部 2 でサポートされます。 この記事で説明するサービス ユニット、成果物ソース、ロールアウトなどのリソースをトポロジおよびロールアウト テンプレートで定義する場合、これらのリージョンのいずれかを場所に指定する必要があります。 ただし、仮想マシン、ストレージ アカウント、Web アプリなどのサービスを作成するためにデプロイするリソースは、そのすべての[標準の場所](https://azure.microsoft.com/global-infrastructure/services/?products=all)でサポートされます。  
+- [Azure Deployment Manager REST API リファレンス](https://docs.microsoft.com/rest/api/deploymentmanager/)
+- [チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する](./deployment-manager-tutorial.md)」の手順に従います。
+- [チュートリアル:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。
+- [Azure Deployment Manager サンプル](https://github.com/Azure-Samples/adm-quickstart)。
 
 ## <a name="identity-and-access"></a>ID とアクセス
 
 Deployment Manager では、[ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) がデプロイ操作を実行します。 デプロイの開始前にこの ID を作成します。 この ID には、サービスをデプロイしているサブスクリプションへのアクセス権と、デプロイを完了するための十分な特権が与えられている必要があります。 ロールを介して認められるアクションの詳細については、「[Azure リソースの組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
-ID は、Deployment Manager のサポートされている場所のいずれかに置かれている必要があります。また、ロールアウトと同じ場所に置かれている必要もあります。
+ID は、ロールアウトと同じ場所に存在する必要があります。
 
 ## <a name="topology-template"></a>トポロジ テンプレート
 
@@ -200,7 +196,7 @@ ID は、Deployment Manager のサポートされている場所のいずれか�
 
 ### <a name="steps"></a>手順
 
-デプロイ操作の前または後に実行する手順を定義できます。 現在は、`wait` 手順と "healthCheck" 手順だけを利用できます。 
+デプロイ操作の前または後に実行する手順を定義できます。 現在は、`wait` 手順と "healthCheck" 手順だけを利用できます。
 
 待機手順は、続行する前にデプロイを一時停止します。 次のサービス ユニットをデプロイする前に、サービスが期待どおりに実行されていることを確認できます。 次の例は、待機手順の一般的な形式を示します。
 
@@ -221,7 +217,9 @@ ID は、Deployment Manager のサポートされている場所のいずれか�
 
 duration プロパティは、[ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601#Durations)を使用します。 前述の例では、1 分間の待機を指定します。
 
-正常性チェック手順の詳細については、「[]()」と「[]()」を参照してください。詳細については、[手順テンプレート リファレンス](/azure/templates/Microsoft.DeploymentManager/steps)を参照してください。
+正常性チェックの手順の詳細については、「[Azure Deployment Manager に正常性統合ロールアウトを導入する](./deployment-manager-health-check.md)」と「[Tutorial:Use health check in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)」 (チュートリアル: Azure Deployment Manager で正常性チェックを使用する) を参照してください。
+
+詳細については、[steps テンプレート リファレンス](/azure/templates/Microsoft.DeploymentManager/steps)を参照してください。
 
 ### <a name="rollouts"></a>ロールアウト
 
@@ -269,13 +267,13 @@ ID オブジェクトは、デプロイ アクションを実行する[ユーザ
 
 ## <a name="parameter-file"></a>パラメーター ファイル
 
-2 つのパラメーター ファイルを作成します。 一方のパラメーター ファイルはサービス トポロジのデプロイ時に使用され、もう一方はロールアウト デプロイに使用されます。 両方のパラメーター ファイルで同じであることを確認する必要のあるいくつかの値があります。  
+2 つのパラメーター ファイルを作成します。 一方のパラメーター ファイルはサービス トポロジのデプロイ時に使用され、もう一方はロールアウト デプロイに使用されます。 両方のパラメーター ファイルで同じであることを確認する必要のあるいくつかの値があります。
 
 ## <a name="containerroot-variable"></a>containerRoot 変数
 
 バージョン管理されたデプロイでは、成果物へのパスを新しいバージョンごとに変更します。 デプロイを初めて実行するときに、パスは `https://<base-uri-blob-container>/binaries/1.0.0.0` であるとします。 2 回目は、`https://<base-uri-blob-container>/binaries/1.0.0.1` になります。 Deployment Manager は、`$containerRoot` 変数を使用すると、現在のデプロイに関する正しいルート パスの取得が簡略化されます。 この値はバージョンごとに変更され、デプロイ前にはわかりません。
 
-テンプレート用のパラメーター ファイルで `$containerRoot` 変数を使用して、Azure リソースをデプロイします。 デプロイ時に、この変数は、ロールアウトからの実際の値に置き換えられます。 
+テンプレート用のパラメーター ファイルで `$containerRoot` 変数を使用して、Azure リソースをデプロイします。 デプロイ時に、この変数は、ロールアウトからの実際の値に置き換えられます。
 
 たとえば、ロールアウト中に、バイナリの成果物の成果物ソースを作成します。
 

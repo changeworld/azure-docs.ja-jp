@@ -6,18 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d7e66970db3397531c798bc37bf7c1f346e999bf
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 364ceabc3c9e7a577bd126b81bcd5256d947bbe3
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924771"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66476781"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>チュートリアル:Edge のデプロイを準備する  
-
 
 これは、Edge を完全にデプロイするために必要な一連のデプロイ チュートリアルの中で最初のものです。 このチュートリアルでは、Edge リソースをデプロイするために Azure portal を準備する方法を説明します。
 
@@ -31,7 +30,6 @@ ms.locfileid: "64924771"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-
 ### <a name="get-started"></a>作業開始
 
 Edge をデプロイするには、以下の順序どおりにチュートリアルを参照してください。
@@ -42,7 +40,7 @@ Edge をデプロイするには、以下の順序どおりにチュートリア
 | 2. |**[Edge をインストールする](data-box-edge-deploy-install.md)**|Edge 物理デバイスの開梱、ラックへの取り付け、ケーブル接続を行います。  |
 | 手順 3. |**[Edge を接続、設定、アクティブ化する](data-box-edge-deploy-connect-setup-activate.md)** |ローカル Web UI に接続して、デバイス設定を完了し、デバイスをアクティブ化します。 このデバイスは、SMB または NFS 共有を設定する準備ができています。  |
 | 4. |**[Edge を使用してデータを転送する](data-box-edge-deploy-add-shares.md)** |共有を追加し、SMB または NFS を介して共有に接続します。 |
-| 5. |**[Edge を使用してデータを変換する](data-box-edge-deploy-configure-compute.md)** |データを Azure に移動するときにデータを変換するように、デバイス上の Edge モジュールを構成します。 |
+| 5. |**[Edge を使用してデータを変換する](data-box-edge-deploy-configure-compute.md)** |データを Azure に移動するときにそれを変換するように、デバイス上のコンピューティング モジュールを構成します。 |
 
 これで、Azure Portal をセットアップする準備が整いました。
 
@@ -55,8 +53,12 @@ Edge をデプロイするには、以下の順序どおりにチュートリア
 開始する前に次の点を確認します。
 
 - Microsoft Azure サブスクリプションで Edge リソースが有効になっていること。 従量課金制のサブスクリプションには対応していません。
-- お使いのサブスクリプションに対して所有者または共同作成者のアクセス権を持っていること。
-- Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、「[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)」をご覧ください。
+- Data Box Edge/Data Box Gateway、IoT Hub、および Azure Storage のリソースに対してリソース グループ レベルの所有者または共同作成者のアクセス許可を持っていること。
+
+    - Data Box Edge/Data Box Gateway のリソースを作成するには、リソース グループ レベルにスコープ指定された共同作成者 (以上) のアクセス許可を持っている必要があります。 また、`Microsoft.DataBoxEdge` プロバイダーが登録されていることも確認する必要があります。 登録方法の詳細については、「[リソース プロバイダーの登録](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
+    - IoT Hub リソースを作成するには、Microsoft.Devices プロバイダーが登録されていることを確認します。 登録方法の詳細については、「[リソース プロバイダーの登録](data-box-edge-manage-access-power-connectivity-mode.md#register-resource-providers)」をお読みください。
+    - Storage アカウントのリソースを作成するには、ここでも、リソース グループ レベルにスコープ指定された共同作成者以上のアクセス許可が必要になります。 Azure Storage は、既定で、登録されたリソース プロバイターになっています。
+- Azure Active Directory Graph API に対して管理者またはユーザーのアクセス権を持っていること。 詳細については、[Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) に関するページをご覧ください。
 - アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 
 ### <a name="for-the-data-box-edge-device"></a>Edge デバイスに対して
@@ -64,7 +66,7 @@ Edge をデプロイするには、以下の順序どおりにチュートリア
 物理デバイスを配置する前に次の点を確認します。
 
 - 配送パッケージに同梱されている安全性情報を確認済みであること。
-- デバイスをラック マウントするため、データセンターの標準 19 インチ ラックに空いている 1 U スロットが 1 つあること。 
+- デバイスをラック マウントするため、データセンターの標準 19 インチ ラックに空いている 1U スロットが 1 つあること。
 - デバイスを安全に置くことができる、平らで安定した水平の作業面が用意されていること。
 - デバイスをセットアップする予定の場所に、独立した電源からの標準 AC 電源、または無停電電源装置 (UPS) を備えたラック配電ユニット (PDU) があること。
 - 物理デバイスにアクセスできること。

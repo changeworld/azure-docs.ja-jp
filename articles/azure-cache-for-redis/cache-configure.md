@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 6bf42406c97ccb67251a14a7a963d3da2e01dbb4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849966"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60554703"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
@@ -32,7 +32,7 @@ ms.locfileid: "58849966"
 ## <a name="configure-azure-cache-for-redis-settings"></a>Azure Cache for Redis の設定を構成する
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]** ブレードの **[リソース]** メニューを使って行うことができます。
+Azure Cache for Redis の設定の表示と構成は、 **[Azure Cache for Redis]** ブレードの **[リソース]** メニューを使って行うことができます。
 
 ![Azure Cache for Redis の設定](./media/cache-configure/redis-cache-settings.png)
 
@@ -125,10 +125,10 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
 * [キースペース通知 (詳細設定)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>アクセス ポート
-新しいキャッシュでは、SSL を使用しないアクセスが既定で無効になっています。 非 SSL ポートを有効にするには、**[詳細設定]** ブレードにある **[SSL によるアクセスのみ許可する]** で **[いいえ]** をクリックしてから、**[保存]** をクリックします。
+新しいキャッシュでは、SSL を使用しないアクセスが既定で無効になっています。 非 SSL ポートを有効にするには、 **[詳細設定]** ブレードにある **[SSL によるアクセスのみ許可する]** で **[いいえ]** をクリックしてから、 **[保存]** をクリックします。
 
 > [!NOTE]
-> Azure Cache for Redis への SSL アクセスでは、既定で TLS 1.0 がサポートされます。 最小限サポートされる TLS のバージョンは、**[詳細設定]** ブレードの **[TLS の最小バージョン]** ドロップダウンを使用して、必要な場合は、TLS 1.2 まで引き上げることができます。その後、**[保存]** をクリックします。
+> Azure Cache for Redis への SSL アクセスでは、既定で TLS 1.0 がサポートされます。 最小限サポートされる TLS のバージョンは、 **[詳細設定]** ブレードの **[TLS の最小バージョン]** ドロップダウンを使用して、必要な場合は、TLS 1.2 まで引き上げることができます。その後、 **[保存]** をクリックします。
 
 ![Azure Cache for Redis のアクセス ポート](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -179,7 +179,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 ![Recommendations](./media/cache-configure/redis-cache-no-recommendations.png)
 
-キャッシュの操作中に、高いメモリ使用量、ネットワーク帯域幅、サーバー負荷などの状況が発生した場合は、**[Azure Cache for Redis]** ブレードにアラートが表示されます。
+キャッシュの操作中に、高いメモリ使用量、ネットワーク帯域幅、サーバー負荷などの状況が発生した場合は、 **[Azure Cache for Redis]** ブレードにアラートが表示されます。
 
 ![Recommendations](./media/cache-configure/redis-cache-recommendations-alert.png)
 
@@ -198,11 +198,11 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 | サーバーの負荷 |[使用状況グラフ -  Redis サーバーの負荷](cache-how-to-monitor.md#usage-charts) |
 | メモリ使用量 |[キャッシュのパフォーマンス - サイズ](cache-faq.md#cache-performance) |
 
-キャッシュをアップグレードするには、**[今すぐアップグレード]** をクリックして、価格レベルを変更し、キャッシュの[スケーリング](#scale)を行います。 価格レベルの選択の詳細については、「[Azure Cache for Redis のサービス内容と適切なサイズの選択](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」をご覧ください。
+キャッシュをアップグレードするには、 **[今すぐアップグレード]** をクリックして、価格レベルを変更し、キャッシュの[スケーリング](#scale)を行います。 価格レベルの選択の詳細については、「[Azure Cache for Redis のサービス内容と適切なサイズの選択](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」をご覧ください。
 
 
 ### <a name="scale"></a>スケール
-キャッシュの価格レベルを表示または変更するには、**[スケール]** をクリックします。 スケーリングの詳細については、「[Azure Cache for Redis のスケーリング方法](cache-how-to-scale.md)」をご覧ください。
+キャッシュの価格レベルを表示または変更するには、 **[スケール]** をクリックします。 スケーリングの詳細については、「[Azure Cache for Redis のスケーリング方法](cache-how-to-scale.md)」をご覧ください。
 
 ![Azure Cache for Redis の価格レベル](./media/cache-configure/pricing-tier.png)
 
@@ -218,7 +218,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 ![Redis クラスター サイズ](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
-クラスター サイズを変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
+クラスター サイズを変更するには、スライダーを使用するか、 **[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、 **[OK]** をクリックして保存します。
 
 > [!IMPORTANT]
 > Redis クラスタリングは、Premium キャッシュでのみ使用できます。 詳細については、[Premium Azure Cache for Redis のクラスタリングの構成方法](cache-how-to-premium-clustering.md)に関するページを参照してください。
@@ -275,7 +275,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 ファイアウォール ルール構成は、すべてのレベルの Azure Cache for Redis で利用できます。
 
-キャッシュのファイアウォール ルールを表示して構成するには、**[ファイアウォール]** をクリックします。
+キャッシュのファイアウォール ルールを表示して構成するには、 **[ファイアウォール]** をクリックします。
 
 ![ファイアウォール](./media/cache-configure/redis-firewall-rules.png)
 
@@ -356,7 +356,7 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 
 ### <a name="diagnostics"></a>診断
 
-既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、**[診断]** をクリックし、キャッシュ診断の格納に使用する[ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
+既定では、Azure Monitor のキャッシュ メトリックは [30 日間格納](../azure-monitor/platform/data-platform-metrics.md)され、その後削除されます。 キャッシュ メトリックを 30 日よりも長く保持するには、 **[診断]** をクリックし、キャッシュ診断の格納に使用する[ストレージ アカウントを構成](cache-how-to-monitor.md#export-cache-metrics)します。
 
 >[!NOTE]
 >キャッシュ メトリックをストレージにアーカイブする以外に、[イベント ハブにストリーム配信したり、Azure Monitor ログに送信したり](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)できます。
@@ -484,7 +484,7 @@ Redis コマンドの詳細については、[https://redis.io/commands](https:/
 > 
 > 
 
-Redis コンソールにアクセスするには、**[Azure Cache for Redis]** ブレードの **[コンソール]** をクリックします。
+Redis コンソールにアクセスするには、 **[Azure Cache for Redis]** ブレードの **[コンソール]** をクリックします。
 
 ![Redis コンソール](./media/cache-configure/redis-console-menu.png)
 

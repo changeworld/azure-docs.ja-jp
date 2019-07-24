@@ -2,22 +2,32 @@
 title: Azure Red Hat OpenShift に関してよく寄せられる質問 | Microsoft Docs
 description: Microsoft Azure Red Hat OpenShift に関してよく寄せられる質問への回答を示します
 services: container-service
-author: tylermsft
-ms.author: twhitney
+author: jimzim
+ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 881734caf855ccfc4f001693fe261b8448b49bc4
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 2001b849e9c43d552889475ca237c52b141f3f04
+ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65466198"
+ms.lasthandoff: 05/29/2019
+ms.locfileid: "66306262"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
 この記事では、Microsoft Azure Red Hat OpenShift に関してよく寄せられる質問 (FAQ) を説明します。
+
+## <a name="how-do-i-get-started"></a>開始するには?
+
+Azure Red Hat OpenShift を使用する前に、Azure Red Hat OpenShift の予約アプリケーション ノードを 4 個以上購入する必要があります。
+
+Azure をご利用の場合は、Azure portal から [Azure Red Hat OpenShift 予約インスタンスを購入](https://aka.ms/openshift/buy)します。 購入後、24 時間以内にサブスクリプションはアクティブ化され、その後はクラスターをプロビジョニングできるようになります。
+
+Azure をご利用のお客様でない場合は、[営業担当者に問い合わせて](https://aka.ms/openshift/contact-sales)、ページの下部にある販売フォームに入力してプロセスを開始してください。
+
+詳細については、[Azure Red Hat OpenShift の価格ページ](https://aka.ms/openshift/pricing)を参照してください。
 
 ## <a name="which-azure-regions-are-supported"></a>どの Azure リージョンがサポートされていますか?
 
@@ -66,3 +76,7 @@ Docker レジストリは `https://docker-registry.apps.<clustername>.<region>.a
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>マスターおよびインフラストラクチャ ノードは、Azure Kubernetes Service (AKS) の場合と同様に無視されますか?
 
 いいえ。 クラスター マスターを含めすべてのリソースは、顧客サブスクリプションで実行します。 これらの種類のリソースは、読み取り専用のリソース グループに置かれます。
+
+## <a name="is-open-service-broker-for-azure-osba-supported"></a>Open Service Broker for Azure (OSBA) はサポートされていますか?
+
+はい。 OSBA は Azure Red Hat OpenShift と共に使用できます。 詳細については、「[Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template)」を参照してください。

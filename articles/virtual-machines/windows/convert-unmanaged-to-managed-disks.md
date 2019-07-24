@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 3c45c8587e3ca19b32ccd8dc66575333622b3cf1
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 9cbee4f9f4f694510e852fe3790c8242ef346576
+ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796579"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66416054"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクからマネージド ディスクに変換します
 
@@ -37,7 +37,7 @@ ms.locfileid: "65796579"
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
-
+* 変換前の VM で使用されていた元の VHD とストレージ アカウントは削除されません。 その後も料金が発生します。 これらのアーティファクトに対して課金されないように、変換が完了したことを確認したら、元の VHD BLOB は削除してください。 削除するためにこれらのアタッチされていないディスクを探す必要がある場合は、「[Find and delete unattached Azure managed and unmanaged disks (接続されていない Azure マネージド ディスクおよびアンマネージド ディスクを見つけて削除する)](find-unattached-disks.md)」を参照してください。
 
 
 ## <a name="convert-single-instance-vms"></a>単一インスタンスの VM を変換する
@@ -106,8 +106,8 @@ Azure portal を使用して、アンマネージド ディスクをマネージ
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ポータルで VM の一覧から VM を選択します。
 3. VM のブレードで、メニューから **[ディスク]** を選択します。
-4. **[ディスク]** ブレードの上部で、**[編集]** を選択します。
-5. VM が可用性セット内にある場合は、可用性セットを先に変換する必要があることを示す警告が **[マネージド ディスクへの移行]** ブレードに表示されます。 警告には、可用性セットを変換するためにクリックできるリンクが含まれています。 可用性セットが変換された後、または VM が可用性セットに含まれていない場合は、**[移行]** をクリックして、ディスクをマネージド ディスクに移行するプロセスを開始します。
+4. **[ディスク]** ブレードの上部で、 **[編集]** を選択します。
+5. VM が可用性セット内にある場合は、可用性セットを先に変換する必要があることを示す警告が **[マネージド ディスクへの移行]** ブレードに表示されます。 警告には、可用性セットを変換するためにクリックできるリンクが含まれています。 可用性セットが変換された後、または VM が可用性セットに含まれていない場合は、 **[移行]** をクリックして、ディスクをマネージド ディスクに移行するプロセスを開始します。
 
 VM が停止し、移行の完了後に再起動します。
 

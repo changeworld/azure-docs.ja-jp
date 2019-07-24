@@ -5,14 +5,14 @@ author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: lbosq
-ms.openlocfilehash: 06601fbad43b3daf00e06efbe95a092e76559e36
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 277755641047bf311e06d17de5fe9d39bcc3b74b
+ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849824"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66480585"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
 
@@ -55,21 +55,21 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 
     Setting|推奨値|説明
     ---|---|---
-    hosts|2017 年 12 月 20 日より前に作成したアカウントの場合、[*account-name*.gremlin.cosmosdb.azure.com] または [*account-name*.graphs.azure.com]|次のスクリーンショットをご覧ください。 これは、Azure Portal の [概要] ページに表示される [Gremlin URI] の値から末尾の ":443/" を削除して角かっこで囲んだものです。
+    hosts|[*account-name*.gremlin.cosmos.azure.com]|次のスクリーンショットをご覧ください。 これは、Azure Portal の [概要] ページに表示される [Gremlin URI] の値から末尾の ":443/" を削除して角かっこで囲んだものです。
     port|443|443 に設定します。
     username|*自分のユーザー名*|`/dbs/<db>/colls/<coll>` 形式のリソースです。`<db>` は実際のデータベースの名前、`<coll>` は実際のコレクションの名前になります。
     password|*自分のプライマリ キー*| 以下の 2 つ目のスクリーンショットをご覧ください。 これは自分のプライマリ キーです。Azure Portal の [キー] ページの [プライマリ キー] ボックスから取得できます。 ボックスの左側にあるコピー ボタンを使用して値をコピーしてください。
     connectionPool|{enableSsl: true}|SSL 用の接続プールの設定です。
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>driver.ser.GraphSONMessageSerializerV1d0,<br> config: { serializeResultToString: true }}|この値に設定します。改行 (`\n`) を削除して値を貼り付けてください。
 
-    hosts の値には、**[概要]** ページから **[Gremlin URI]** の値をコピーします。![Azure Portal の [概要] ページで Gremlin URI の値を表示してコピー](./media/create-graph-gremlin-console/gremlin-uri.png)
+    hosts の値には、 **[概要]** ページから **[Gremlin URI]** の値をコピーします。![Azure Portal の [概要] ページで Gremlin URI の値を表示してコピー](./media/create-graph-gremlin-console/gremlin-uri.png)
 
-    パスワードの値には、**[キー]** ページから **[主キー]** をコピーします。![Azure portal の [キー] ページでプライマリ キーを表示してコピーする](./media/create-graph-gremlin-console/keys.png)
+    パスワードの値には、 **[キー]** ページから **[主キー]** をコピーします。![Azure portal の [キー] ページでプライマリ キーを表示してコピーする](./media/create-graph-gremlin-console/keys.png)
 
 remote secure.yaml ファイルは、次のようになります。
 
 ```
-hosts: [your_database_server.gremlin.cosmosdb.azure.com]
+hosts: [your_database_server.gremlin.cosmos.azure.com] 
 port: 443
 username: /dbs/your_database_account/colls/your_collection
 password: your_primary_key

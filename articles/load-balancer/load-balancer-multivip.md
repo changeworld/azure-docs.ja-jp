@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: MultiVIP の概要とクラウド サービスで複数の Vip を設定する方法
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: kumud
-ms.openlocfilehash: bf5721e206316a4ce576253743e9ac65de47094a
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.author: allensu
+ms.openlocfilehash: 3e97bea85d4d97b159168b21b4a6e932e655ccfb
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194046"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274700"
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>クラウド サービスの複数の VIP を構成する
 

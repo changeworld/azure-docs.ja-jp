@@ -15,12 +15,12 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f8189b5a90f7e9114ec39a874cc60912ac2bb0ce
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 73c14b3d3023dcca113589d63276216fcfdd17f1
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872991"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67513447"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>クイック スタート: Python で Azure Cache for Redis を使用する
 
@@ -48,7 +48,9 @@ ms.locfileid: "65872991"
 
 次の例では、Python3 の *pip3* を使用し、昇格された管理者特権で実行されている Visual Studio 2019 の開発者コマンド プロンプトを使用して、Windows 10 に redis-py パッケージをインストールします。
 
+```python
     pip3 install redis
+```
 
 ![redis-py をインストールする](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
@@ -67,6 +69,9 @@ True
 b'bar'
 ```
 
+> [!IMPORTANT]
+> Redis では、バージョンは 3.0 以降であり、SSL 証明書の確認が実行されます。 Redis に接続する場合は、ssl_ca_certs を明示的に設定する必要があります。 RH Linux の場合、ssl_ca_certs は "/etc/pki/tls/certs/ca-bundle.crt" 証明書モジュール内で見つけることができます。
+
 ## <a name="create-a-python-script"></a>Python スクリプトを作成する
 
 *PythonApplication1.py* という名前の新しいスクリプト テキスト ファイルを作成します。
@@ -79,7 +84,8 @@ import redis
 myHostname = "<Your Host Name>.redis.cache.windows.net"
 myPassword = "<Your Access Key>"
 
-r = redis.StrictRedis(host=myHostname, port=6380,password=myPassword,ssl=True)
+r = redis.StrictRedis(host=myHostname, port=6380,
+                      password=myPassword, ssl=True)
 
 result = r.ping()
 print("Ping returned : " + str(result))
@@ -91,7 +97,7 @@ result = r.get("Message")
 print("GET Message returned : " + result.decode("utf-8"))
 
 result = r.client_list()
-print("CLIENT LIST returned : ") 
+print("CLIENT LIST returned : ")
 for c in result:
     print("id : " + c['id'] + ", addr : " + c['addr'])
 ```

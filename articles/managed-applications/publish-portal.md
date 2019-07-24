@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: e52acd8587203c4729ac2bcd6e4bbc09620ead86
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: f27d30d4709fbf373c8458629d0c8c5af4333acf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096038"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61297018"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Azure ポータル経由でサービス カタログ アプリケーションを発行する
 
@@ -35,7 +35,7 @@ ms.locfileid: "47096038"
 
 1. **サービス カタログ**を検索します。
 
-1. 結果から、**[Service Catalog Managed Application Definition]\(サービス カタログのマネージド アプリケーション定義\)** までスクロールします。 それを選択します。
+1. 結果から、 **[Service Catalog Managed Application Definition]\(サービス カタログのマネージド アプリケーション定義\)** までスクロールします。 それを選択します。
 
    ![マネージド アプリケーション定義を検索する](./media/publish-portal/select-managed-apps-definition.png)
 
@@ -47,15 +47,15 @@ ms.locfileid: "47096038"
 
    ![値を指定する](./media/publish-portal/fill-application-values.png)
 
-1. [Authentication and Lock Level]\(認証とロックのレベル\) セクションで、**[Add Authorization]\(承認の追加\)** を選択します。
+1. [Authentication and Lock Level]\(認証とロックのレベル\) セクションで、 **[Add Authorization]\(承認の追加\)** を選択します。
 
    ![承認を追加する](./media/publish-portal/add-authorization.png)
 
-1. リソースを管理する Azure Active Directory グループを選択し、**[OK]** を選択します。
+1. リソースを管理する Azure Active Directory グループを選択し、 **[OK]** を選択します。
 
    ![承認グループを追加する](./media/publish-portal/add-auth-group.png)
 
-1. すべての値を指定したら、**[Create]\(作成\)** を選択します。
+1. すべての値を指定したら、 **[Create]\(作成\)** を選択します。
 
    ![マネージド アプリケーションを作成する](./media/publish-portal/create-app.png)
 

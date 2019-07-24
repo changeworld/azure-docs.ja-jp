@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C の Identity Experience Framework スキーマの文字列要求変換の例 | Microsoft Docs
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの文字列要求変換の例
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6c6b90cb2b24f6a87504a3a0dbd47f998b67ebc1
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a06447aaa6579052285e7e2cd93bf40183ed173f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707463"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66512584"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -281,7 +281,7 @@ ms.locfileid: "64707463"
 
 - 入力パラメーター:
     - **randomGeneratorType**:INTEGER
-    - **maximumNumber**:1,000
+    - **maximumNumber**:1000
     - **stringFormat**:OTP_{0}
     - **base64**: false
 - 出力要求: 

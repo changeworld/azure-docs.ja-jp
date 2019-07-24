@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 664099322bef3ac85d980fbe5e43dcc49cba862b
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 296bc42313ef80425004d3c9b43c6792cbaf97f4
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65411560"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>OpenShift Container Platform の Azure へのデプロイ
@@ -46,7 +46,7 @@ Azure で OpenShift Container Platform をデプロイするには、次のい�
 
 また、プライベート マスターとプライベート ルーターが選択された場合は、**domainName** にカスタム ドメイン名を入力することも必要になります。
 
-デプロイが成功した後は、要塞ノードは SSH 接続できるパブリック IP を備えたノードだけです。  マスター ノードがパブリック アクセス用に構成されている場合でも、SSH アクセスには公開されません。
+デプロイが成功した後は、踏み台ノードは SSH 接続できるパブリック IP を備えたノードだけです。  マスター ノードがパブリック アクセス用に構成されている場合でも、SSH アクセスには公開されません。
 
 Resource Manager テンプレートを使用してデプロイするには、パラメーター ファイルを使用して入力パラメーターを指定します。 デプロイをさらにカスタマイズするには、GitHub リポジトリをフォークし、適切な項目を変更します。
 
@@ -66,7 +66,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "_artifactsLocation": {
@@ -336,7 +336,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
 
 ## <a name="connect-to-the-openshift-cluster"></a>OpenShift クラスターへの接続
 
-デプロイが完了したら、デプロイの出力セクションから接続を取得します。 **OpenShift コンソール URL** を使用して、ブラウザーから OpenShift コンソールに接続します。 要塞ホストに SSH 接続することもできます。 管理者のユーザー名は clusteradmin で、要塞のパブリック IP DNS FQDN は bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com である例を次に示します。
+デプロイが完了したら、デプロイの出力セクションから接続を取得します。 **OpenShift コンソール URL** を使用して、ブラウザーから OpenShift コンソールに接続します。 踏み台ホストに SSH 接続することもできます。 管理者のユーザー名は clusteradmin で、踏み台のパブリック IP DNS FQDN は bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com である例を次に示します。
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com

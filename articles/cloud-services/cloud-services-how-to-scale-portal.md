@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 29ee71e7946145e50cc875df96b674abec3e12df
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f5597773b3127852481d5e14844bed889c4d6f83
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004338"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61435318"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
 
@@ -41,14 +41,14 @@ ms.locfileid: "39004338"
 
 * アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスと共にデプロイする必要があります。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
-* 自動スケールは、すべてのロールが**準備完了**状態の場合にのみ発生します。  
+* 自動スケールは、すべてのロールが**準備完了**状態の場合にのみ発生します。  
 
 
 ## <a name="where-scale-is-located"></a>スケールの設定
 クラウド サービスを選択したら、該当するクラウド サービス ブレードを表示状態にします。
 
 1. クラウド サービス ブレードの **[ロールとインスタンス]** タイルで、クラウド サービスの名前を選択します。   
-   **重要**: ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
+   **重要**:ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. **[スケール]** タイルを選択します。
@@ -66,7 +66,7 @@ ms.locfileid: "39004338"
 2. 親プロファイルのルールを追加します。
 3. 別のプロファイルを追加します。
 
-**[プロファイルの追加]** を選択します。 プロファイルではスケールで使用するモードを指定します。**[常時]**、**[繰り返し]**、**[固定日付]** という 3 つのモードがあります。
+**[プロファイルの追加]** を選択します。 プロファイルではスケールで使用するモードを指定します。 **[常時]** 、 **[繰り返し]** 、 **[固定日付]** という 3 つのモードがあります。
 
 プロファイルとルールを構成したら、上部にある **[保存]** アイコンをクリックします。
 
@@ -101,7 +101,7 @@ ms.locfileid: "39004338"
 ルールを構成したら、ルール ブレードの下部にある **[OK]** ボタンを選択します。
 
 ## <a name="back-to-manual-scale"></a>手動スケールに戻る
-[[スケールの設定]](#where-scale-is-located) に移動し、**[スケールの基準]** オプションを **[手動で入力したインスタンス数]** に設定します。
+[[スケールの設定]](#where-scale-is-located) に移動し、 **[スケールの基準]** オプションを **[手動で入力したインスタンス数]** に設定します。
 
 ![プロファイルとルールを使用したクラウド サービスのスケール設定](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 

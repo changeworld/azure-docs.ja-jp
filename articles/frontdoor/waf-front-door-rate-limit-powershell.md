@@ -9,22 +9,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: e0ad1e85a4cd47de823bc4f224b5a8834b1068b9
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 05/31/2019
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 99af39e996aaadd572603f63d019ff929b679550
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59686144"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846243"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールのレート制限ルールを構成する
 Azure Front Door 用の Azure Web アプリケーション ファイアウォール (WAF) では、1 分間中に単一クライアント IP から送信できる要求数が制御されます。
 この記事では、Azure PowerShell を使用して WAF レート制限ルールを構成し、単一クライアントから Web アプリケーション (URL に */promo* が含まれる) に送信できる要求数を制御する方法を説明します。
-
-> [!IMPORTANT]
-> 現在、Azure Front Door 用の WAF レート制限ルール機能は、パブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -55,20 +52,20 @@ Install-Module -Name Az.FrontDoor
 Front Door プロファイルを作成するには、[Front Door プロファイルの作成に関するクイック スタート](quickstart-create-front-door.md)で説明されている手順に従います
 
 ## <a name="define-url-match-conditions"></a>URL 一致条件を定義する
-URL 一致条件 (URL に /promo が含まれる) を定義するには、[New-AzFrontDoorMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoormatchconditionobject) を使用します。
-次の例では、*/promo* が *RequestUri* 変数の値として照合されます。
+URL 一致条件 (URL に /promo が含まれる) を定義するには、[New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) を使用します。
+次の例では、 */promo* が *RequestUri* 変数の値として照合されます。
 
 ```powershell-interactive
-   $promoMatchCondition = New-AzFrontDoorMatchConditionObject `
+   $promoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
      -MatchVariable RequestUri `
      -OperatorProperty Contains `
      -MatchValue "/promo"
 ```
 ## <a name="create-a-custom-rate-limit-rule"></a>カスタム レート制限ルールを作成する
-レート制限を設定するには、[New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-AzFrontDoorCustomRuleObject) を使用します。 次の例では、制限が 1000 に設定されています。 クライアントから promo ページへの要求数が 1 分間中に 1000 件を超えると、次の 1 分間が開始されるまでの間、要求がブロックされます。
+レート制限を設定するには、[New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) を使用します。 次の例では、制限が 1000 に設定されています。 クライアントから promo ページへの要求数が 1 分間中に 1000 件を超えると、次の 1 分間が開始されるまでの間、要求がブロックされます。
 
 ```powershell-interactive
-   $promoRateLimitRule = New-AzFrontDoorCustomRuleObject `
+   $promoRateLimitRule = New-AzFrontDoorWafCustomRuleObject `
      -Name "rateLimitRule" `
      -RuleType RateLimitRule `
      -MatchCondition $promoMatchCondition `
@@ -79,14 +76,14 @@ URL 一致条件 (URL に /promo が含まれる) を定義するには、[New-A
 
 ## <a name="configure-a-security-policy"></a>セキュリティ ポリシーを構成する
 
-`Get-AzureRmResourceGroup` を使用して、Front Door プロファイルが含まれているリソース グループの名前を見つけます。 次に、Front Door プロファイルを含む指定されたリソース グループ内で、[New-AzFrontDoorFireWallPolicy](/powershell/module/az.frontdoor/new-azfrontdoorfirewallPolicy) を使用して、カスタム レート制限ルールを持つセキュリティ ポリシーを構成します。
+`Get-AzureRmResourceGroup` を使用して、Front Door プロファイルが含まれているリソース グループの名前を見つけます。 次に、Front Door プロファイルを含む指定されたリソース グループ内で、[New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) を使用して、カスタム レート制限ルールによるセキュリティ ポリシーを構成します。
 
 次の例では、*myResourceGroupFD1* という名前のリソース グループを使用します。また、Front Door プロファイルを作成したときに、[Front Door の作成に関するクイック スタート](quickstart-create-front-door.md)で説明されている手順に従ったと想定しています。
 
- [New-AzFrontDoorFireWallPolicy](/powershell/module/Az.FrontDoor/New-AzFrontDoorFireWallPolicy) を使用します。
+ [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) を使用します。
 
 ```powershell-interactive
-   $ratePolicy = New-AzFrontDoorFireWallPolicy `
+   $ratePolicy = New-AzFrontDoorWafPolicy `
      -Name "RateLimitPolicyExamplePS" `
      -resourceGroupName myResourceGroupFD1 `
      -Customrule $promoRateLimitRule `

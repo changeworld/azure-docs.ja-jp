@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 395a231fcf43378a51e22427254abb196a46081e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64709008"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66245086"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 
@@ -39,7 +39,7 @@ ms.locfileid: "64709008"
 
 1. **[Web Service Input]\(Web サービス入力\)** モジュールをユーザーのデータ入力に接続します。 通常は、入力データが最初のトレーニング データと同じ方法で処理されるようにします。
 1. **[Web Service Output]\(Web サービス出力\)** モジュールを **[Train Model]\(モデルのトレーニング\)** の出力に接続します。
-1. **[Evaluate Model]\(モデルの評価\)** モジュールがある場合は、**[Web Service Output]\(Web サービス出力\)** モジュールを接続して評価結果を出力することができます。
+1. **[Evaluate Model]\(モデルの評価\)** モジュールがある場合は、 **[Web Service Output]\(Web サービス出力\)** モジュールを接続して評価結果を出力することができます。
 1. 実験を実行します。
 
     実験を実行した後のワークフローは、次の画像のようになります。
@@ -59,7 +59,7 @@ ms.locfileid: "64709008"
 
 次の手順を実行して、再トレーニング API を呼び出します。
 
-1. Visual Studio で、C# コンソール アプリケーションを作成します:**[新規]** > **[プロジェクト]** > **[Visual C#]** > **[Windows Classic Desktop]** > **[コンソール アプリ (.NET Framework)]**
+1. Visual Studio で、C# コンソール アプリケーションを作成します: **[新規]**  >  **[プロジェクト]**  >  **[Visual C#]**  >  **[Windows Classic Desktop]**  >  **[コンソール アプリ (.NET Framework)]**
 1. Machine Learning Web サービス ポータルにサインインします。
 1. 使用する Web サービスをクリックします。
 1. **[Consume (使用)]** をクリックします。
@@ -85,11 +85,11 @@ ms.locfileid: "64709008"
 BES サンプル コードは、ファイルをローカル ドライブ ("C:\temp\CensusInput.csv" など) から Azure Storage にアップロードして処理し、その結果を Azure Storage に書き込みます。
 
 1. Azure portal にサインインする
-1. 左側のナビゲーションで **[その他のサービス]** をクリックし、**[ストレージ アカウント]** を探して選択します。
+1. 左側のナビゲーションで **[その他のサービス]** をクリックし、 **[ストレージ アカウント]** を探して選択します。
 1. ストレージ アカウントの一覧から、再トレーニング済みのモデルを格納するいずれかのアカウントを選択します。
 1. 左側のナビゲーションで **[アクセス キー]** をクリックします。
 1. **プライマリ アクセス キー**をコピーして保存します。
-1. 左側のナビゲーションで **[コンテナー]** をクリックします。
+1. 左側のナビゲーション列で、 **[BLOB]** をクリックします。
 1. 既存のコンテナーを選択するか、コンテナーを新規作成して、名前を保存します。
 
 *StorageAccountName*、*StorageAccountKey*、および *StorageContainerName* 宣言を見つけて、ポータルから保存した値を更新します。

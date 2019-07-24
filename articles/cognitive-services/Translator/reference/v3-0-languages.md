@@ -3,19 +3,19 @@ title: Translator Text API の Languages メソッド
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の Languages メソッドを使用します。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: swmachan
+ms.openlocfilehash: 7bac97b7edbfa0f7a03a65e462106b33160c6d1a
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915766"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67435077"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -263,7 +263,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>呼び出し元からの要求が多すぎます。</td>
+    <td>クライアントが要求の制限を超えたため、サーバーは要求を拒否しました。</td>
   </tr>
   <tr>
     <td>500</td>

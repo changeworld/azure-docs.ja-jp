@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: 14b7cc8f8162574380ca21ac515af8b7d3d5ded9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111698"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60911447"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Azure Security Center でネットワーク セキュリティ グループを有効にする
 Azure Security Center では、ネットワーク セキュリティ グループ (NSG) が有効になっていない場合、NSG を有効にするよう推奨されます。 NSG には、Virtual Network の VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。 NSG の詳細については、「 [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/security-overview.md)
@@ -39,7 +39,7 @@ NSG を有効にしていない場合、Security Center から 2 つの推奨事
    ![Configure NSG for subnet][2]
 
    ![Configure NSG for VM][3]
-3. **[ネットワーク セキュリティ グループの選択]** ブレードで、既存の NSG を選択するか、**[新規作成]** を選択して新しい NSG を作成します。
+3. **[ネットワーク セキュリティ グループの選択]** ブレードで、既存の NSG を選択するか、 **[新規作成]** を選択して新しい NSG を作成します。
 
    ![[ネットワーク セキュリティ グループの選択]][4]
 

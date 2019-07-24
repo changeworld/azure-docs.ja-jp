@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: d1e9a6da399adcdca87c1d6dc30eaf425ec0541e
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: e7863e4a0f4cab6f6328de19d1611710f9188de3
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609015"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838762"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
 
@@ -82,10 +82,6 @@ ms.locfileid: "59609015"
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>IoT ハブに対する接続文字列を取得する
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
 ## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
@@ -125,11 +121,11 @@ microSD カードに Raspbian イメージをインストールするための�
 
 2. Pi を起動してから、`pi` をユーザー名として、`raspberry` をパスワードとして使用して Raspbian にサインインします。
 
-3. Raspberry アイコン > **[Preferences]\(設定)** > **[Raspberry Pi Configuration]\(Raspberry Pi 構成)** の順にクリックします。
+3. Raspberry アイコン > **[Preferences]\(設定)**  >  **[Raspberry Pi Configuration]\(Raspberry Pi 構成)** の順にクリックします。
 
    ![[Raspbian Preferences] (Raspbian 設定)メニュー](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
-4. **[Interfaces]** (インターフェイス) タブで、**[I2C]** と **[SSH]** を **[Enable]** (有効) に設定し、**[OK]** をクリックします。 物理センサーがなく、シミュレートされたセンサー データを使用する場合は、この手順は省略可能です。
+4. **[Interfaces]** (インターフェイス) タブで、 **[I2C]** と **[SSH]** を **[Enable]** (有効) に設定し、 **[OK]** をクリックします。 物理センサーがなく、シミュレートされたセンサー データを使用する場合は、この手順は省略可能です。
 
    ![I2C と SSH を Raspberry Pi で有効にする](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -199,10 +195,10 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    node -v
    ```
 
-   バージョンが 4.x より前であるか、Node.js が Pi にない場合は、最新バージョンをインストールします。
+   バージョンが 10.x より前であるか、Node.js が Pi にない場合は、最新バージョンをインストールします。
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/01/2019
 ms.author: jowargo
-ms.openlocfilehash: 86a2cd824d1896211efd40bb8aa1d007149ef2db
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 67df6c84c5a88a3ffc82948898e356e0a913ba27
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203573"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227782"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の Android アプリケーション ユーザーにプッシュ通知を送信する
 
@@ -37,7 +37,7 @@ ms.locfileid: "65203573"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Azure Notification Hubs と Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を完了してください。
+「[チュートリアル: Azure Notification Hubs と Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を完了してください。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -276,7 +276,7 @@ ms.locfileid: "65203573"
         super.onCreate(savedInstanceState);
 
         mainActivity = this;
-        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
+        FirebaseService.createChannelAndHandleNotifications(getApplicationContext());
         fcm = FirebaseInstanceId.getInstance();
         registerClient = new RegisterClient(this, BACKEND_ENDPOINT);
         setContentView(R.layout.activity_main);
@@ -320,7 +320,7 @@ ms.locfileid: "65203573"
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. その後、**[サインイン]** ボタン クリック イベントとプッシュ通知の送信を処理する次のメソッドを追加します。
+9. その後、 **[サインイン]** ボタン クリック イベントとプッシュ通知の送信を処理する次のメソッドを追加します。
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -476,7 +476,7 @@ ms.locfileid: "65203573"
 
 1. デバイスまたは Android Studio を使用したエミュレーターでアプリケーションを実行します。
 2. Android アプリケーションで、ユーザー名とパスワードを入力します。 どちらも同じ文字列値にする必要があり、空白や特殊文字が含まれることはありません。
-3. Android アプリケーションで、 **[サインイン]** をクリックします。 「**Signed in and registered (サインインおよび登録済み)**」というトースト メッセージが表示されるまで待機します。 これは、**[Send Notification] (通知の送信)** ボタンを有効にします。
+3. Android アプリケーションで、 **[サインイン]** をクリックします。 「**Signed in and registered (サインインおよび登録済み)** 」というトースト メッセージが表示されるまで待機します。 これは、 **[Send Notification] (通知の送信)** ボタンを有効にします。
 
     ![][A2]
 4. トグル ボタンをクリックして、アプリを実行し、ユーザーを登録したすべてのプラットフォームを有効にします。

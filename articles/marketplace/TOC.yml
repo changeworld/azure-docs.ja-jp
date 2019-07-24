@@ -58,8 +58,6 @@
         - name: Marketplace のベネフィット
           href: ./gtm-your-marketplace-benefits.md
           items:
-            - name: Microsoft を利用したビジネスのプロモーション
-              href: ./gtm-promote-your-business.md
             - name: 推奨されるソリューション
               href: ./preferred-solutions.md
             - name: 統合されたソリューション
@@ -328,39 +326,6 @@
               href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: SaaS アプリケーション オファー
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
-          items:
-            - name: 前提条件
-              href: ./cloud-partner-portal/saas-app/cpp-prerequisites.md
-            - name: SaaS アプリケーション オファーの作成
-              href: ./cloud-partner-portal/saas-app/cpp-create-offer.md
-              items:
-                - name: '[プランの設定] タブ'
-                  href: ./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md
-                - name: '[技術情報] タブ'
-                  href: ./cloud-partner-portal/saas-app/cpp-technical-info-tab.md
-                - name: '[プラン] タブ'
-                  href: ./cloud-partner-portal/saas-app/cpp-plans-tab.md
-                - name: '[チャンネル情報] タブ'
-                  href: ./cloud-partner-portal/saas-app/cpp-channel-info-tab.md
-                - name: '[体験版] タブ'
-                  href: ./cloud-partner-portal/saas-app/cpp-testdrive-tab.md
-                - name: '[ネットショップの詳細] タブ'
-                  href: ./cloud-partner-portal/saas-app/cpp-storefront-tab.md
-                - name: '[連絡先] タブ'
-                  href: ./cloud-partner-portal/saas-app/cpp-contacts-tab.md
-            - name: オファーの発行
-              href: ./cloud-partner-portal/saas-app/cpp-publish-offer.md
-            - name: 既存のオファーの更新
-              href: ./cloud-partner-portal/saas-app/cpp-update-existing-offer.md
-            - name: SaaS Fulfillment API
-              href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
-              items:
-                - name: SaaS アプリケーションの登録
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-registration.md
-                - name: SaaS API v1 (非推奨)
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
-                - name: SaaS API v2
-                  href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
         - name: 仮想マシンのオファー
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
           items:
@@ -470,10 +435,21 @@
           href: ./partner-center-portal/manage-account.md
         - name: 会社の職場アカウントを検索または作成する
           href: ./partner-center-portal/company-work-accounts.md
+        - name: CPP からパートナー センターへのアカウントの移行
+          href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: 新しいオファーを作成する
       items:
+        - name: オファー作成のチェックリスト
+          href: ./partner-center-portal/offer-creation-checklist.md
         - name: SaaS オファーを作成する
           href: ./partner-center-portal/create-new-saas-offer.md
+        - name: SaaS の従量制課金
+          href: ./partner-center-portal/saas-metered-billing.md
+          items:
+            - name: Marketplace の測定サービス API - FAQ
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+            - name: Marketplace の測定サービス API
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
         - name: SaaS Fulfillment API
           href: ./partner-center-portal/pc-saas-fulfillment-apis.md
           items:
@@ -483,6 +459,8 @@
               href: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
             - name: SaaS Fulfillment API v1 (非推奨)
               href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
+            - name: SaaS Fulfillment API - FAQ
+              href: ./partner-center-portal/saas-fulfillment-apis-faq.md
     - name: 発行状態
       href: ./partner-center-portal/publishing-status.md
     - name: 既存のオファーを更新する

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 1/23/2017
 ms.author: adigan
 ms.openlocfilehash: b16963265c971e604f03b51fd63f7fe411bab36e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66127767"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>PowerShell を使用して Data Protection Manager (DPM) サーバーに Microsoft Azure Backup をデプロイおよび管理する手順
@@ -119,7 +119,7 @@ MARSAgentInstaller.exe /q
 
 これにより、エージェントはすべて既定のオプションが指定されてインストールされます。 インストールは、バックグラウンドで数分かかります。 */nu* オプションを指定しない場合、インストールの最後に **[Windows Update]** ウィンドウが開き、更新プログラムが確認されます。
 
-エージェントが、インストールされているプログラムの一覧に表示されます。 インストールされているプログラムの一覧を表示するには、**[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** に移動します。
+エージェントが、インストールされているプログラムの一覧に表示されます。 インストールされているプログラムの一覧を表示するには、 **[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** に移動します。
 
 ![インストールされているエージェント](./media/backup-dpm-automation/installed-agent-listing.png)
 
@@ -361,7 +361,7 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 データソースのすべての回復ポイントの一覧を取得するには、 [Get DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) コマンドレットを使用します。 この例の内容:
 
 * 配列 ```$PG```
-*  ```$PG[0]```
+* ```$PG[0]```
 * データソースのすべての回復ポイントを取得します。
 
 ```powershell

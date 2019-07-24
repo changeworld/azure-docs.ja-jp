@@ -3,7 +3,7 @@ title: Azure Traffic Manager のしくみ | Microsoft Docs
 description: この記事は、Traffic Manager でトラフィックをルーティングし、Web アプリケーションの高いパフォーマンスと可用性を実現するしくみを理解するために役立ちます
 services: traffic-manager
 documentationcenter: ''
-author: KumudD
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: kumud
-ms.openlocfilehash: 52469cb2735b2270815191ec0815daee350882a4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: allensu
+ms.openlocfilehash: a74af002dfdad5df9640be4b5fdd7f657b183bd4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108867"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071183"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager のしくみ
 
@@ -53,7 +53,7 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
 
 ![Traffic Manager を使用した接続の確立][2]
 
-1. クライアントは、構成されている再帰 DNS サービスに対して DNS クエリを送信し、名前 "partners.contoso.com" を解決します  再帰 DNS サービス ("ローカル DNS" サービスと呼ばれることもあります) は、DNS ドメインを直接ホストしません。 代わりに、クライアントは、DNS 名を解決するために必要となる、信頼できるさまざまな DNS サービスにインターネット経由で接続する作業をオフロードします。
+1. クライアントは、構成されている再帰 DNS サービスに対して DNS クエリを送信し、名前 "partners.contoso.com" を解決します 再帰 DNS サービス ("ローカル DNS" サービスと呼ばれることもあります) は、DNS ドメインを直接ホストしません。 代わりに、クライアントは、DNS 名を解決するために必要となる、信頼できるさまざまな DNS サービスにインターネット経由で接続する作業をオフロードします。
 2. DNS 名を解決するために、再帰 DNS サービスは、"contoso.com" ドメインのネーム サーバーを見つけます。 次に、そのネーム サーバーに接続して、"partners.contoso.com" DNS レコードを要求します。 "contoso.com" DNS サーバーは、"contoso.trafficmanager.net" を指す CNAME レコードを返します。
 3. 次に、再帰 DNS サービスは、Azure Traffic Manager サービスで提供される、"trafficmanager.net" ドメインのネーム サーバーを見つけます。 見つけた DNS サーバーに "contoso.trafficmanager.net" の DNS レコードの要求を送信します。
 4. Traffic Manager ネーム サーバーは要求を受け取り、 次の内容に基づいてエンドポイントを選択します。

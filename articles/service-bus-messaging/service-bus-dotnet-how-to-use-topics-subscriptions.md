@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 892d485fb5cdaa08107870e9ab5b2b7ad9bcba5b
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 2ca8f0e34b63802453c8876f878b531e78e66d76
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608896"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65991773"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 
@@ -33,7 +33,7 @@ ms.locfileid: "59608896"
 ## <a name="prerequisites"></a>前提条件
 
 1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
-2. 従うべき手順を「[クイック スタート:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認し、次のタスクを実行します:
+2. 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」で確認し、次のタスクを実行します:
     1. Service Bus **名前空間**を作成します。
     2. **接続文字列**を取得します。
     3. 名前空間の**トピック**を作成します。
@@ -51,8 +51,8 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの追加
 
-1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
-2. **[参照]** タブをクリックし、**[Microsoft Azure Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** を検索して、**[Microsoft.Azure.ServiceBus]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
+1. 新しく作成したプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+2. **[参照]** タブをクリックし、 **[Microsoft Azure Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** を検索して、 **[Microsoft.Azure.ServiceBus]** 項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
    
     ![Select a NuGet package][nuget-pkg]
 
@@ -194,7 +194,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
     }
     ```
 
-3. プログラムを実行し、Azure Portal を確認します。名前空間の **[概要]** ウィンドウでトピックの名前をクリックしてください。 トピックの **[要点]** 画面が表示されます。 ウィンドウの下部付近に表示されているサブスクリプション一覧で、サブスクリプションの **[メッセージ数]** の値が **10** になっていることがわかります。 この値は、メッセージを取得しないまま送信側アプリケーションを実行するたびに 10 ずつ増えます (メッセージの取得については次のセクションで説明します)。 アプリからトピックにメッセージを追加するたびに、トピックの最新のサイズによって、**[要点]** ウィンドウの **[現在]** の値も増えている点に注目してください。
+3. プログラムを実行し、Azure Portal を確認します。名前空間の **[概要]** ウィンドウでトピックの名前をクリックしてください。 トピックの **[要点]** 画面が表示されます。 ウィンドウの下部付近に表示されているサブスクリプション一覧で、サブスクリプションの **[メッセージ数]** の値が **10** になっていることがわかります。 この値は、メッセージを取得しないまま送信側アプリケーションを実行するたびに 10 ずつ増えます (メッセージの取得については次のセクションで説明します)。 アプリからトピックにメッセージを追加するたびに、トピックの最新のサイズによって、 **[要点]** ウィンドウの **[現在]** の値も増えている点に注目してください。
    
       ![メッセージ サイズ][topic-message]
 
@@ -393,6 +393,9 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
     ![トピックの長さ][topic-message-receive]
 
 お疲れさまでした。 以上、トピックとサブスクリプションを作成し、10 個のメッセージを送信して、それらのメッセージを受信するまでの流れを、.NET Standard ライブラリを使って説明しました。
+
+> [!NOTE]
+> Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
 ## <a name="next-steps"></a>次の手順
 

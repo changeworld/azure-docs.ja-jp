@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C の Identity Experience Framework スキーマの JSON 要求変換の例 | Microsoft Docs
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの JSON 要求変換の例
 services: active-directory-b2c
-author: davidmu1
+author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7574327f8acbd2215080e43a57b0b9c7cdd8b423
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9a026d205d3ab855ecbb51048e7464df6fb4a094
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710244"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66510748"
 ---
 # <a name="json-claims-transformations"></a>JSON 要求変換
 
@@ -191,7 +191,7 @@ XML データを JSON 形式に変換します。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | xml | string | データを XML から JSON 形式に変換する要求変換で使用される ClaimTypes。 |
+| InputClaim | Xml | string | データを XML から JSON 形式に変換する要求変換で使用される ClaimTypes。 |
 | OutputClaim | json | string | この ClaimsTransformation が呼び出された後に生成される ClaimType は、JSON 形式のデータであります。 |
 
 ```XML

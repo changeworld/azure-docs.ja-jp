@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: yegu
 ms.openlocfilehash: 602d77f3d4e8ed10c2c964462bc2dc21240cef5c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235718"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60541388"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Premium Azure Redis Cache の Redis クラスタリングの構成方法
 Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Cache for Redis インスタンスでクラスタリングを構成する方法について説明します。
@@ -47,7 +47,7 @@ Azure では、Redis クラスターは、各シャードがプライマリ/レ�
 
 ![クラスタリング][redis-cache-clustering]
 
-クラスター内に最大 10 個のシャードを作成できます。 **[有効]** をクリックし、クスライダーを操作するか 1 ～ 10 の値を入力して **[シャード数]** を設定し、**[OK]** をクリックします。
+クラスター内に最大 10 個のシャードを作成できます。 **[有効]** をクリックし、クスライダーを操作するか 1 ～ 10 の値を入力して **[シャード数]** を設定し、 **[OK]** をクリックします。
 
 各シャードは Azure によって管理されるプライマリ/レプリカ キャッシュ ペアであり、キャッシュの合計サイズはシャードの数に価格レベルで選択したキャッシュ サイズを掛けることによって計算されます。 
 
@@ -66,7 +66,7 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>実行中の Premium キャッシュのクラスター サイズを変更する
-クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、**[リソース] メニュー**の **[Redis クラスターのサイズ]** をクリックします。
+クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、 **[リソース] メニュー**の **[Redis クラスターのサイズ]** をクリックします。
 
 > [!NOTE]
 > Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階にあります。
@@ -75,7 +75,7 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
 
 ![Redis クラスター サイズ][redis-cache-redis-cluster-size]
 
-クラスター サイズを変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
+クラスター サイズを変更するには、スライダーを使用するか、 **[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、 **[OK]** をクリックして保存します。
 
 クラスター サイズを増やすと、スループットとキャッシュの最大サイズが増えます。 クラスター サイズを増やして、クライアントが利用できる最大接続数が増えることはありません。
 

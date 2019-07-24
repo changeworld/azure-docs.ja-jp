@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17c0d19ad0c4a846d5f75905fe9072f2fe0e0f78
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084134"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66386765"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>ホステッド UI エクスペリエンスを構成する
 
@@ -31,7 +31,7 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
   
 2. Bing Custom Search インスタンスを選択します。
 
-3. **[Hosted UI]**(ホステッド UI) タブをクリックします。  
+3. **[Hosted UI]** (ホステッド UI) タブをクリックします。  
   
 4. レイアウトを選択します。
 
@@ -78,7 +78,7 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > 必要に応じて、次のクエリ パラメーターを URL に追加します。 これらのパラメーターについては、[Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) のリファレンスをご覧ください。
+  > 必要に応じて、次のクエリ パラメーターを URL に追加します。 これらのパラメーターについては、[Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) のリファレンスをご覧ください。
   >
   > - q
   > - mkt
@@ -88,7 +88,7 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
   > [!IMPORTANT]
   > このページには、プライバシーに関する声明や、その他の通知および条項を表示できません。 使用状況に適合するかどうかはさまざまです。  
 
-カスタム構成 ID を含めて、詳細については、**[Production]**(運用) タブの下にある **[エンドポイント]** に移動してください。
+カスタム構成 ID を含めて、詳細については、 **[Production]** (運用) タブの下にある **[エンドポイント]** に移動してください。
 
 ## <a name="configuration-options"></a>構成オプション
 

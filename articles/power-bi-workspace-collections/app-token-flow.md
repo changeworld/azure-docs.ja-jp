@@ -4,16 +4,16 @@ description: Power BI ワークスペース コレクションでの認証と承
 services: power-bi-workspace-collections
 author: rkarlin
 ms.author: rkarlin
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 5fbe08bb9ebc355074a790f7732c9de10eaad859
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 713c56904769c133272db4fb65f8b596ab66804b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64707109"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672503"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの認証と承認
 
@@ -24,7 +24,7 @@ Power BI ワークスペース コレクション サービスでは、明示的
 
 ## <a name="two-ways-to-authenticate"></a>2 つの認証方法
 
-**キー** - Power BI ワークスペース コレクションのすべての REST API 呼び出しでキーを使用できます。 このキーは **Microsoft Azure Portal** の **[すべての設定]**、**[アクセス キー]** にあります。 キーは常にパスワードと同様に扱ってください。 これらのキーは、特定のワークスペース コレクションで REST API 呼び出しを行うアクセス許可を持ちます。
+**キー** - Power BI ワークスペース コレクションのすべての REST API 呼び出しでキーを使用できます。 このキーは **Microsoft Azure Portal** の **[すべての設定]** 、 **[アクセス キー]** にあります。 キーは常にパスワードと同様に扱ってください。 これらのキーは、特定のワークスペース コレクションで REST API 呼び出しを行うアクセス許可を持ちます。
 
 REST 呼び出しでキーを使用するには、次の Authorization ヘッダーを追加します。
 

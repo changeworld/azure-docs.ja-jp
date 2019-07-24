@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: magottei
 ms.openlocfilehash: 1a375c438682c7afba2c65c049810d7d7234c808
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66122029"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181588"
 ---
 * PDF
 * Microsoft Office 形式: DOCX/DOC、XLSX/XLS、PPTX/PPT、MSG (Outlook 電子メール)  

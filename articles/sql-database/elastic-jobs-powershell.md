@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 53e10636535c553ac5fa17b5f4aac1000cd138bc
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666794"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445387"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>PowerShell を使用したエラスティック ジョブ エージェントの作成
 
@@ -71,7 +71,7 @@ Get-Module Az.Sql
 
 エラスティック ジョブ エージェントを作成するには、[ジョブ データベース](sql-database-job-automation-overview.md#job-database)として使用するデータベース (S0 以上) が必要です。 
 
-"*次のスクリプトを実行すると、新しいリソース グループ、サーバー、およびジョブ データベースとして使用されるデータベースが作成されます。さらに、このスクリプトを実行すると、ジョブを実行する対象の、2 つの空のデータベースを含む 2 番目のサーバーも作成されます。*"
+"*次のスクリプトを実行すると、新しいリソース グループ、サーバー、およびジョブ データベースとして使用されるデータベースが作成されます。さらに、このスクリプトを実行すると、ジョブを実行する対象の、2 つの空のデータベースを含む 2 番目のサーバーも作成されます。* "
 
 エラスティック ジョブには特定の命名要件がないため、[Azure 要件](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に準拠している限り、任意の命名規則を使用できます。
 
@@ -285,6 +285,23 @@ $JobExecution | Get-AzSqlElasticJobStepExecution
 # Get the job target execution details
 $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
+
+### <a name="job-execution-states"></a>ジョブの実行状態
+
+可能なジョブの実行状態を次の表に示します。
+
+|状態|説明|
+|:---|:---|
+|**Created** | ジョブの実行は作成されたばかりで、まだ進行中ではありません。|
+|**InProgress** | ジョブの実行は現在進行中です。|
+|**WaitingForRetry** | ジョブ実行はそのアクションを完了できず、再試行を待機しています。|
+|**Succeeded** | ジョブの実行は正常に完了しました。|
+|**SucceededWithSkipped** | ジョブの実行は正常に完了しましたが、その子の一部がスキップされました。|
+|**Failed** | ジョブの実行は失敗し、再試行回数の上限に達しました。|
+|**TimedOut** | ジョブの実行はタイムアウトしました。|
+|**Canceled** | ジョブの実行は取り消されました。|
+|**Skipped** | 同じジョブ手順の別の実行が同じターゲットに対して既に実行されていたため、ジョブの実行はスキップされました。|
+|**WaitingForChildJobExecutions** | ジョブの実行は、その子の実行が完了するまで待機しています。|
 
 ## <a name="schedule-the-job-to-run-later"></a>ジョブを後で実行するようにスケジュールする
 

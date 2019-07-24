@@ -1,22 +1,22 @@
 ---
-title: クイック スタート:Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む
-description: このクイック スタートでは、.NET Standard SDK を使用して Azure Data Explorer にデータを取り込む (読み込む) 方法について説明します。
+title: Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む
+description: この記事では、.NET Standard SDK を使用して Azure Data Explorer にデータを取り込む (読み込む) 方法について説明します。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 11/18/2018
-ms.openlocfilehash: 6a068c45a13bd45a09ed51fd154b5842938e0c5e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 06/03/2019
+ms.openlocfilehash: 53cf055a0900a25923fe67b961755c1f4367e1fb
+ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59044671"
+ms.lasthandoff: 06/04/2019
+ms.locfileid: "66496885"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>クイック スタート:Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む
+# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む
 
-Azure Data Explorer (ADX) は、ログとテレメトリ データのための高速で非常にスケーラブルなデータ探索サービスです。 ADX では、.NET Standard 用のクライアント ライブラリとして、[取り込みライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard)と[データ ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard)の 2 つが用意されています。 これらのライブラリを使用すると、クラスターにデータを取り込み (読み込み)、コードからデータのクエリを行うことができます。 このクイック スタートではまず、テスト クラスター内にテーブルとデータ マッピングを作成します。 その後、クラスターに対するインジェストをキューに入れて、結果を検証します。
+Azure Data Explorer (ADX) は、ログとテレメトリ データのための高速で非常にスケーラブルなデータ探索サービスです。 ADX では、.NET Standard 用のクライアント ライブラリとして、[取り込みライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard)と[データ ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard)の 2 つが用意されています。 これらのライブラリを使用すると、クラスターにデータを取り込み (読み込み)、コードからデータのクエリを行うことができます。 この記事ではまず、テスト クラスター内にテーブルとデータ マッピングを作成します。 その後、クラスターに対するインジェストをキューに入れて、結果を検証します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -226,7 +226,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-他のクイック スタートやチュートリアルを行う場合は、作成したリソースをそのままにします。 行わない場合は、データベースで次のコマンドを実行して、`StormEvents` テーブルをクリーンアップします。
+他の記事に進む場合は、作成したリソースをそのままにします。 行わない場合は、データベースで次のコマンドを実行して、`StormEvents` テーブルをクリーンアップします。
 
 ```Kusto
 .drop table StormEvents
@@ -234,5 +234,4 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [クエリを作成する](write-queries.md)
+* [クエリを作成する](write-queries.md)

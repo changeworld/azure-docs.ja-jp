@@ -14,10 +14,10 @@ ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e40a1fd72adf353d5c4d856544482cb7bd68f43
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65413996"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
@@ -47,7 +47,7 @@ ms.locfileid: "65413996"
 | .NET; NuGet | System.IdentityModel.Tokens.Jwt |
 | .NET        | System.Runtime.Serialization |
 
-追加の参照 (**[ディレクトリ データの読み取り]** オプションを選択した場合):
+追加の参照 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
 | Type | リファレンス |
 | --- | --- |
@@ -72,7 +72,7 @@ ms.locfileid: "65413996"
 ## <a name="project-file-changes"></a>プロジェクト ファイルの変更
 
 - プロパティ `IISExpressSSLPort` が個別の数に設定されます。
-- プロパティ `WebProject_DirectoryAccessLevelKey` が 0 に設定されます。**[ディレクトリ データの読み取り]** オプションを選択した場合は、1 に設定されます。
+- プロパティ `WebProject_DirectoryAccessLevelKey` が 0 に設定されます。 **[ディレクトリ データの読み取り]** オプションを選択した場合は、1 に設定されます。
 - プロパティ `IISUrl` が `https://localhost:<port>/` に設定されます。このとき `<port>` は `IISExpressSSLPort` の値と一致します。
 
 ## <a name="webconfig-or-appconfig-changes"></a>web.config または app.config の変更
@@ -91,7 +91,7 @@ ms.locfileid: "65413996"
 
 - `System.IdentityModel.Tokens.Jwt` と `Microsoft.IdentityModel.Protocol.Extensions`の `<runtime><assemblyBinding>` ノードの下に `<dependentAssembly>` 要素が追加されます。
 
-追加の変更 (**[ディレクトリ データの読み取り]** オプションを選択した場合):
+追加の変更 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
 - `<appSettings>` の下に次の構成エントリが追加されます。
 

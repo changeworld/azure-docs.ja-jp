@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 ms.openlocfilehash: 5a053ab213390a12c5d2051a802a1fa98279c344
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66155175"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory の Until アクティビティ
@@ -54,10 +54,10 @@ Until アクティビティは、プログラミング言語における do-unti
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | `Until` アクティビティの名前。 | String | はい
+name | `Until` アクティビティの名前。 | string | はい
 type | **Until** に設定する必要があります。 | String | はい
 expression | true または false に評価される式であることが必要です | 式。  | はい
-timeout | ここに指定した時間が経過すると、do-until ループがタイムアウトします。 | 文字列 をオンにします。 `d.hh:mm:ss` または `hh:mm:ss`。 既定値は 7 日間です。 最大値は 90 日間です。 | いいえ 
+timeout | ここに指定した時間が経過すると、do-until ループがタイムアウトします。 | 文字列 をオンにします。 `d.hh:mm:ss` または `hh:mm:ss`。 既定値は 7 日間です。 最大値は 90 日間です。 | いいえ
 Activities | 式が `true` に評価されるまで実行される一連のアクティビティです。 | アクティビティの配列。 |  はい
 
 ## <a name="example-1"></a>例 1

@@ -11,10 +11,10 @@ ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 2f076dd3a5b1ceb9e24548652a71fda5b9aa48b7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65027621"
 ---
 # <a name="two-class-support-vector-machine-module"></a>2 クラス サポート ベクター マシン モジュール
@@ -43,7 +43,7 @@ ms.locfileid: "65027621"
   
 2.  **[Create trainer mode]\(トレーナー モードの作成\)** オプションを設定して、モデルのトレーニング方法を指定します。  
   
-    -   **[Single Parameter]\(単一パラメーター\)**: モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
+    -   **[Single Parameter]\(単一パラメーター\)** : モデルの構成方法がわかっている場合、特定の値のセットを引数として渡すことができます。  
 
 3.  モデルの構築時に使用されるイテレーションの回数を示す数値を **[Number of iterations]\(イテレーションの数\)** に入力します。  
   
@@ -53,11 +53,11 @@ ms.locfileid: "65027621"
   
      モデルのチューニングには、この正則化係数を使用できます。 値を大きくすると、モデルの複雑度に対するペナルティーが大きくなります。  
   
-5.  トレーニング前に特徴を正規化したい場合は、**[Normalize features]\(特徴の正規化\)** オプションを選択します。
+5.  トレーニング前に特徴を正規化したい場合は、 **[Normalize features]\(特徴の正規化\)** オプションを選択します。
   
      正規化を適用すると、トレーニング前に、データ ポイントが平均値を中心として 1 単位の標準偏差を備えるようにスケーリングされます。
   
-6.  係数を正規化するには、**[Project to the unit sphere]\(単位球面への投影\)** オプションを選択します。
+6.  係数を正規化するには、 **[Project to the unit sphere]\(単位球面への投影\)** オプションを選択します。
   
      単位空間に値を投影すると、トレーニング前に、データ ポイントが 0 を中心として 1 単位の標準偏差を備えるようにスケーリングされます。
   
@@ -74,7 +74,7 @@ ms.locfileid: "65027621"
 
 トレーニングの完了後:
 
-+ モデルのパラメーターとトレーニングから学習された特徴の重みを確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックし、**[Visualize]\(可視化\)** を選択します。
++ モデルのパラメーターとトレーニングから学習された特徴の重みを確認するために、[[Train Model]\(モデルのトレーニング\)](./train-model.md) の出力を右クリックし、 **[Visualize]\(可視化\)** を選択します。
 
 + トレーニング済みのモデルを使用して予測を行うには、[モデルのスコア付け](score-model.md)モジュールにトレーニング済みのモデルを接続します。
 

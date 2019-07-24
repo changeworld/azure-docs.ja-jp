@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: d5a287a8da884290e94e9ac1c864abe28e47d53d
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: c4fe05c96b1006a7d110caa019619ce8be396fe8
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508138"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491564"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリングする
 
@@ -21,28 +21,33 @@ Azure Kubernetes Service (AKS) のアプリケーションの需要に対応す�
 この記事では、AKS クラスターでクラスター オートスケーラーを有効にして管理する方法について説明します。 クラスター オートスケーラーはプレビューで、単一ノード プールがある AKS クラスターでのみテストする必要があります。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスかつオプトインです。 プレビューは、コミュニティからフィードバックやバグを収集するために提供されます。 ただし、これらは Azure テクニカル サポートではサポートされません。 クラスターを作成するか、または既存のクラスターにこれらの機能を追加した場合、そのクラスターは、この機能がプレビューでなくなり、一般提供 (GA) となるまでサポートされません。
+> AKS のプレビュー機能は、セルフサービス、オプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
 >
-> プレビュー機能に関する問題が発生した場合は、バグ タイトルにプレビュー機能の名前を使用して、[AKS GitHub リポジトリで問題をオープンします][aks-github]。
+> * [AKS のサポート ポリシー][aks-support-policies]
+> * [Azure サポートに関する FAQ][aks-faq]
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Azure CLI バージョン 2.0.55 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+この記事では、Azure CLI バージョン 2.0.65 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-クラスター オートスケーラーをサポートする AKS クラスターは、仮想マシン スケール セットを使用し、かつ Kubernetes バージョン *1.12.4* 以降を実行している必要があります。 このスケール セット サポートはプレビュー段階です。 スケール セットを使用するクラスターをオプトインして作成するには、最初に以下の例に示すように、[az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
+クラスター オートスケーラーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
 
 ```azurecli-interactive
+# Install the aks-preview extension
 az extension add --name aks-preview
-```
 
-> [!NOTE]
-> 以前に *aks-preview* 拡張機能をインストール済みの場合は、`az extension update --name aks-preview` コマンドを使用して、利用可能な更新プログラムをインストールします。
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
 
 ### <a name="register-scale-set-feature-provider"></a>スケール セット機能プロバイダーを登録する
 
 スケール セットを使用する AKS を作成するには、サブスクリプションで機能フラグを有効にする必要もあります。 *VMSSPreview* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
+
+> [!CAUTION]
+> サブスクリプションで機能を登録する場合、現時点ではその機能の登録解除を行うことができません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name VMSSPreview --namespace Microsoft.ContainerService
@@ -62,7 +67,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="limitations"></a>制限事項
 
-仮想マシン スケール セットを使用する AKS クラスターを作成および管理する際は、次の制限が適用されます。
+クラスター オートスケーラーを使用する AKS クラスターを作成および管理する場合には、次の制限が適用されます。
 
 * HTTP アプリケーションのルーティング アドオンは使用できません。
 
@@ -81,9 +86,9 @@ az provider register --namespace Microsoft.ContainerService
 * Pod Disruption Budget (PDB) の制限が非常に厳しく、ポッドの数が特定のしきい値を下回ることが許可されていない。
 * ポッドが、別のノードでスケジュールされた場合に適用できないノード セレクターまたはアンチ アフィニティーを使用している。
 
-クラスター オートスケーラーでスケールダウンを行えない場合がある状況について詳しくは、「[What types of pods can prevent the cluster autoscaler from removing a node?][autoscaler-scaledown]」を参照してください。
+クラスター オートスケーラーでスケールダウンを行えない場合がある状況について詳しくは、「[What types of pods can prevent the cluster autoscaler from removing a node?][autoscaler-scaledown]」 (クラスター オートスケーラーがノードから削除されるのを防止できるのは、どの種類のポッドですか?) を参照してください。
 
-クラスター オートスケーラーは、スケール イベント間の時間間隔やリソースしきい値などに対して開始パラメーターを使用します。 これらのパラメーターは、Azure プラットフォームによって定義されており、現在公開されていないため、調整することはできません。 クラスター オートスケーラーが使用するパラメーターについて詳しくは、「[What are the cluster autoscaler parameters?][autoscaler-parameters]」を参照してください。
+クラスター オートスケーラーは、スケール イベント間の時間間隔やリソースしきい値などに対して開始パラメーターを使用します。 これらのパラメーターは、Azure プラットフォームによって定義されており、現在公開されていないため、調整することはできません。 クラスター オートスケーラーが使用するパラメーターについて詳しくは、「[What are the cluster autoscaler parameters?][autoscaler-parameters]」 (クラスター オートスケーラー パラメーターとは何ですか?) を参照してください。
 
 これらの 2 つのオートスケーラーは連携して機能し、両方のオートスケーラーが 1 つのクラスターにデプロイされることがよくあります。 この 2 つを組み合わせて使用する場合、ポッドの水平オートスケーラーの主な役割は、アプリケーションの需要を満たすために必要な数のポッドを実行することになります。 クラスター オートスケーラーの主な役割は、スケジュールされたポッドをサポートするために必要な数のノードを実行することになります。
 
@@ -92,7 +97,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>AKS クラスターの作成とクラスター オートスケーラーの有効化
 
-AKS クラスターを作成する必要がある場合は、[az aks create][az-aks-create] コマンドを使用します。 前述の「[開始する前に](#before-you-begin)」セクションで概説されている必須の最小バージョン番号以上の *--kubernetes-version* を指定します。 クラスター オートスケーラーを有効にして構成するには、*--enable-cluster-autoscaler* パラメーターを使用し、ノードの *--min-count* と *--max-count* を指定します。
+AKS クラスターを作成する必要がある場合は、[az aks create][az-aks-create] コマンドを使用します。 前述の「[開始する前に](#before-you-begin)」セクションで概説されている必須の最小バージョン番号以上の *--kubernetes-version* を指定します。 クラスター オートスケーラーを有効にして構成するには、 *--enable-cluster-autoscaler* パラメーターを使用し、ノードの *--min-count* と *--max-count* を指定します。
 
 > [!IMPORTANT]
 > クラスター オートスケーラーは、Kubernetes のコンポーネントです。 AKS クラスターは、ノードに仮想マシン スケール セットを使用しますが、Azure portal で、または Azure CLI を使用して、スケール セットの自動スケーリングの設定を手動で有効にしたり編集したりしないでください。 必要なスケール設定の管理は、Kubernetes クラスター オートスケーラーが行います。 詳細については、「[MC_ リソース グループ内の AKS リソースを変更できますか?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc_-resource-group)」を参照してください。
@@ -118,7 +123,7 @@ az aks create \
 
 ### <a name="enable-the-cluster-autoscaler-on-an-existing-aks-cluster"></a>既存の AKS クラスターでのクラスター オートスケーラーの有効化
 
-前述の「[開始する前に](#before-you-begin)」セクションで概説されている要件を満たす既存の AKS クラスターでクラスター オートスケーラーを有効にすることができます。 [az aks update][az-aks-update] コマンドを使用して、*--enable-cluster-autoscaler* を選択し、ノードの *--min-count* と *--max-count* を指定します。 以下の例は、最小 *1* つ、最大 *3* つのノードを使用する既存のクラスターでクラスター オートスケーラーを有効にします。
+前述の「[開始する前に](#before-you-begin)」セクションで概説されている要件を満たす既存の AKS クラスターでクラスター オートスケーラーを有効にすることができます。 [az aks update][az-aks-update] コマンドを使用して、 *--enable-cluster-autoscaler* を選択し、ノード *--min-count* と *--max-count* を指定します。 以下の例は、最小 *1* つ、最大 *3* つのノードを使用する既存のクラスターでクラスター オートスケーラーを有効にします。
 
 ```azurecli-interactive
 az aks update \
@@ -135,7 +140,7 @@ az aks update \
 
 既存の AKS クラスターを作成または更新する前述のステップで、クラスター オートスケーラーの最小ノード数は *1* に設定され、最大ノード数は *3* に設定されました。 アプリケーション需要の変化に応じて、クラスター オートスケーラーのノード数の調整が必要になる場合があります。
 
-ノード数を変更するには、[az aks update][az-aks-update] コマンドを使用して、最小値と最大値を指定します。 以下の例は、*--min-count* を *1* に、*--max-count* を *5* に設定します。
+ノード数を変更するには、[az aks update][az-aks-update] コマンドを使用して、最小値と最大値を指定します。 以下の例は、 *--min-count* を *1* に、 *--max-count* を *5* に設定します。
 
 ```azurecli-interactive
 az aks update \
@@ -181,10 +186,12 @@ az aks update \
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[aks-github]: https://github.com/azure/aks/issues
+[aks-support-policies]: support-policies.md
+[aks-faq]: faq.md
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [autoscaler-scaledown]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node
 [autoscaler-parameters]: https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-the-parameters-to-ca

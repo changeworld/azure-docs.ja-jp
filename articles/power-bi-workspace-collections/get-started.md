@@ -2,18 +2,18 @@
 title: Microsoft Power BI ワークスペース コレクションの概要
 description: Power BI ワークスペース コレクションは、アプリケーション開発者が自分のアプリケーションに対話型の Power BI レポートを追加できる Azure サービスです。
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
+ms.service: power-bi-embedded
 author: rkarlin
 ms.author: rkarlin
 ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: d1011a8fd8f181233be8e1fa27c3bfaea3d86141
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2b3381166e40f6d9586306e351b5f3ea77cc2ad8
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685162"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67669136"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI ワークスペース コレクションの概要
 
@@ -57,7 +57,7 @@ ms.locfileid: "64685162"
 
 ## <a name="view-power-bi-api-access-keys"></a>Power BI API のアクセス キーの表示
 
-Power BI REST API を呼び出すために必要な最も重要な情報の 1 つが **アクセス キー**です。 アクセス キーは、API 要求の認証に使用される **アプリ トークン** を生成するために使用します。 **アクセス キー**を表示するには、**[設定]** の **[アクセス キー]** をクリックします。 **アプリ トークン**の詳細については、「[Authenticating and authorizing with Power BI Workspace Collections](app-token-flow.md) (Power BI ワークスペース コレクションでの認証と承認)」をご覧ください。
+Power BI REST API を呼び出すために必要な最も重要な情報の 1 つが **アクセス キー**です。 アクセス キーは、API 要求の認証に使用される **アプリ トークン** を生成するために使用します。 **アクセス キー**を表示するには、 **[設定]** の **[アクセス キー]** をクリックします。 **アプリ トークン**の詳細については、「[Authenticating and authorizing with Power BI Workspace Collections](app-token-flow.md) (Power BI ワークスペース コレクションでの認証と承認)」をご覧ください。
 
    ![Azure Portal のワークスペース コレクション設定内のアクセス キー](media/get-started/access-keys.png)
 

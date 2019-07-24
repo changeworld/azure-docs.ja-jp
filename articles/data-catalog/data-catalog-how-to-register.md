@@ -9,11 +9,11 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
 ms.openlocfilehash: 57b9a040b875c584b126e2062e4938b37875a31b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002988"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61001295"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でのデータ ソースの登録
 ## <a name="introduction"></a>はじめに

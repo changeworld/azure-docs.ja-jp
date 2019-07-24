@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 8a505e88ff92c5227d3b42da2adaf1dce58e6fbb
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.openlocfilehash: ca53d85a09727b75f68da8d049ac3fcd6723a041
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65441509"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302268"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -54,9 +54,9 @@ Azure VM Desired State Configuration 拡張機能は非同期に実行される�
 
 オンボードする Azure 仮想マシンを選択します。
 
-マシンに PowerShell Desired State 拡張機能がインストールされておらず、[電源の状態] が [実行中] の場合は、**[接続]** をクリックします。
+マシンに PowerShell Desired State 拡張機能がインストールされておらず、[電源の状態] が [実行中] の場合は、 **[接続]** をクリックします。
 
-**[登録]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/metaconfig4)、および必要に応じて VM に割り当てるノード構成を入力します。
+**[登録]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/managing-nodes/metaconfig)、および必要に応じて VM に割り当てるノード構成を入力します。
 
 ![オンボード](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
@@ -302,7 +302,7 @@ State Configuration 登録プロトコルに必要な情報は、Azure Portal �
 - 登録 URL は、[キーの管理] ブレードの [URL] フィールドです。
 - 登録キーは、[キーの管理] ブレードのプライマリ アクセス キーまたはセカンダリ アクセス キーです。 いずれかのキーを使用できます。
 
-セキュリティ強化のため、Automation アカウントのプライマリおよびセカンダリ アクセス キーを (**[キーの管理]** ページで) いつでも再生成して、以前のキーを使用して今後ノードが登録されないようにすることができます。
+セキュリティ強化のため、Automation アカウントのプライマリおよびセカンダリ アクセス キーを ( **[キーの管理]** ページで) いつでも再生成して、以前のキーを使用して今後ノードが登録されないようにすることができます。
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Azure 仮想マシンのオンボードに関するトラブルシューティング
 
@@ -311,7 +311,7 @@ Azure Automation State Configuration を使用すると、構成管理のため�
 > [!NOTE]
 > Azure VM Desired State Configuration 拡張機能を使用する Azure Automation State Configuration への Azure Windows VM のオンボード方法では、ノードが Azure Automation に登録済みと表示されるまでに最大で 1 時間かかる場合があります。 これは、VM を Azure Automation State Configuration にオンボードするために必要な Windows Management Framework 5.0 を、Azure VM DSC 拡張機能が VM にインストールするためです。
 
-トラブルシューティングを行う場合や、Azure VM Desired State Configuration 拡張機能の状態を表示する場合は、Azure Portal でオンボードされている VM に移動し、**[設定]** の **[拡張機能]** をクリックします。 次に、お使いのオペレーティング システムに応じて **[DSC]** または **[DSCForLinux]** をクリックします。 詳細は、 **[詳細な状態の表示]** をクリックして表示できます。
+トラブルシューティングを行う場合や、Azure VM Desired State Configuration 拡張機能の状態を表示する場合は、Azure Portal でオンボードされている VM に移動し、 **[設定]** の **[拡張機能]** をクリックします。 次に、お使いのオペレーティング システムに応じて **[DSC]** または **[DSCForLinux]** をクリックします。 詳細は、 **[詳細な状態の表示]** をクリックして表示できます。
 
 ## <a name="certificate-expiration-and-reregistration"></a>証明書の有効期限と再登録
 

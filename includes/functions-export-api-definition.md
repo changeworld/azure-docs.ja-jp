@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 49ac1a7585ddf2a6500c7e9382880109c3f7f431
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66131720"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67180946"
 ---
 ## <a name="export-an-api-definition"></a>API 定義をエクスポートする
 「[関数の OpenAPI 定義の作成](../articles/azure-functions/functions-openapi-definition.md)」で作成した関数の OpenAPI 定義があります。 このプロセスの次の手順では、API 定義をエクスポートして、PowerApps と Microsoft Flow がカスタム API でこの定義を使用できるようにします。
@@ -17,7 +17,7 @@ ms.locfileid: "66131720"
 > [!IMPORTANT]
 > PowerApps および Microsoft Flow テナントと同じ資格情報を使用して、Azure にサインインする必要があることに注意してください。 これにより、Azure がカスタム API を作成し、PowerApps と Microsoft Flow の両方でその API を使用できるように指定できます。
 
-1. [Azure Portal](https://portal.azure.com) で、関数アプリ名 (**function-demo-energy** など) > **[プラットフォーム機能]** > **[API 定義]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com) で、関数アプリ名 (**function-demo-energy** など) > **[プラットフォーム機能]**  >  **[API 定義]** の順にクリックします。
 
     ![[API の定義]](media/functions-export-api-definition/api-definition.png)
 

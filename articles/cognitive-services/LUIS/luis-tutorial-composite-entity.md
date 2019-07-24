@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
 ms.openlocfilehash: a5cedec4937da276a4848498ad29a723f6e41ba3
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65073698"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>チュートリアル:関連するデータのグループ化と抽出
@@ -73,7 +73,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 1. **[Manage prebuilt entity]\(事前構築済みエンティティの管理\)** ボタンを選択します。
 
-1. 事前構築済みエンティティの一覧から **[personName](luis-reference-prebuilt-person.md)** を選択し、**[完了]** を選択します。
+1. 事前構築済みエンティティの一覧から **[personName](luis-reference-prebuilt-person.md)** を選択し、 **[完了]** を選択します。
 
     ![[number] が選択されている事前構築済みエンティティ ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
@@ -81,7 +81,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 ## <a name="create-composite-entity-from-example-utterances"></a>発話の例から複合エンティティを作成する
 
-1. 左側のナビゲーションで、**[Intents]\(意図\)** を選択します。
+1. 左側のナビゲーションで、 **[Intents]\(意図\)** を選択します。
 
 1. 意図の一覧から **TransferEmployeeToDepartment** を選択します。
 
@@ -99,7 +99,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 ## <a name="label-example-utterances-with-composite-entity"></a>発話の例に複合エンティティのラベルを付ける
 
-1. 各発話の例で、複合に含まれている左端のエンティティを選択します。 次に、**「Wrap in composite entity」(複合エンティティにラップする)** を選択します。
+1. 各発話の例で、複合に含まれている左端のエンティティを選択します。 次に、 **「Wrap in composite entity」(複合エンティティにラップする)** を選択します。
 
 1. 複合エンティティ内の最後の単語を選択してから、ポップアップ メニューから **[TransferEmployeeInfo]** を選択します。 
 

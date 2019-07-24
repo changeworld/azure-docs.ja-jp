@@ -10,12 +10,12 @@
     - name: クイック スタート
       expanded: true
       items:
-        - name: 初期化と容量の購入
+        - name: 初期化と容量のプロビジョニング
           href: quickstart-create-cloudsimple-service.md
         - name: プライベート クラウド環境の構成
           href: quickstart-create-private-cloud.md
         - name: プライベート クラウドでの VMware VM の作成
-          href: 'https://docs.azure.cloudsimple.com/quickstart-create-private-cloud-vmware-virtual-machine/'
+          href: quickstart-create-private-cloud-vmware-virtual-machine.md
         - name: Azure での VMware VM の使用
           href: quickstart-create-vmware-virtual-machine.md
     - name: 概念
@@ -55,31 +55,29 @@
     - name: チュートリアル
       items:
         - name: リソース プロバイダーを有効にする
-          href: 'https://docs.azure.cloudsimple.com/enable-cloudsimple-service/'
+          href: enable-cloudsimple-service.md
         - name: CloudSimple サービスを作成する
-          href: 'https://docs.azure.cloudsimple.com/create-cloudsimple-service/'
+          href: create-cloudsimple-service.md
         - name: CloudSimple ポータルにアクセスする
-          href: 'https://docs.azure.cloudsimple.com/access-cloudsimple-portal/'
+          href: access-cloudsimple-portal.md
         - name: ノードを管理する
           items:
-            - name: ノードを購入する
+            - name: ノードのプロビジョニング
               href: create-nodes.md
         - name: プライベート クラウドのリソースを管理する
           items:
             - name: プライベート クラウドを作成する
-              href: 'https://docs.azure.cloudsimple.com/create-private-cloud/'
+              href: create-private-cloud.md
             - name: プライベート クラウドを管理する
-              href: 'https://docs.azure.cloudsimple.com/manage-private-cloud/'
+              href: manage-private-cloud.md
             - name: プライベート クラウドを拡大する
-              href: 'https://docs.azure.cloudsimple.com/expand-private-cloud/'
+              href: expand-private-cloud.md
             - name: プライベート クラウドを縮小する
-              href: 'https://docs.azure.cloudsimple.com/shrink-private-cloud/'
-            - name: プライベート クラウド ラックの一覧を表示する
-              href: 'https://docs.azure.cloudsimple.com/view-cloud-racks/'
+              href: shrink-private-cloud.md
             - name: Azure サブスクリプションをマッピングする
-              href: 'https://docs.azure.cloudsimple.com/azure-subscription-mapping/'
+              href: azure-subscription-mapping.md
             - name: 権限をエスカレートする
-              href: 'https://docs.azure.cloudsimple.com/escalate-private-cloud-privileges/'
+              href: escalate-private-cloud-privileges.md
         - name: CloudSimple アクティビティを監視する
           href: 'https://docs.azure.cloudsimple.com/activity/'
         - name: プライベート クラウドのネットワークを設定する

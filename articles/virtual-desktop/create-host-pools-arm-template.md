@@ -4,15 +4,15 @@ description: Azure Resource Manager テンプレートを使用して Windows Vi
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 4df8b854a94374346eec6f77d761e65a04ef78a2
-ms.sourcegitcommit: bb85a238f7dbe1ef2b1acf1b6d368d2abdc89f10
+ms.openlocfilehash: cdc61aede6e650bce62768b7a97f8640affd594f
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65523984"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620481"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してホスト プールを作成する
 
@@ -40,9 +40,9 @@ Enterprise サブスクリプションにデプロイする場合は、下にス
 
 クラウド ソリューション プロバイダー サブスクリプションにデプロイする場合は、次の手順に従って Azure にデプロイします。
 
-1. 下にスクロールし、**[Deploy to Azure]\(Azure へのデプロイ\)** を右クリックしてから **[リンク先をコピー]** を選択します。
+1. 下にスクロールし、 **[Deploy to Azure]\(Azure へのデプロイ\)** を右クリックしてから **[リンク先をコピー]** を選択します。
 2. メモ帳などのテキスト エディターを開き、そこにリンクを貼り付けます。
-3. "https://portal.azure.com/" の直後のハッシュタグ (#) の前に、アット マーク (@) とそれに続けてテナント ドメイン名を入力します。 使用する必要がある形式の例を次に示します: https://portal.azure.com/@Contoso.onmicrosoft.com#create/。
+3. "https://portal.azure.com/ " の直後のハッシュタグ (#) の前に、アット マーク (@) とそれに続けてテナント ドメイン名を入力します。 使用する必要がある形式の例を次に示します: https://portal.azure.com/@Contoso.onmicrosoft.com#create/ 。
 4. クラウド ソリューション プロバイダー サブスクリプションに対する管理者/共同作成者のアクセス許可を持つユーザーとして Azure portal にサインインします。
 5. テキスト エディターにコピーしたリンクをアドレス バーに貼り付けます。
 

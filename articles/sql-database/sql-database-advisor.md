@@ -13,11 +13,11 @@ ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: d09adbfa7cb2782d710ef3116cbd7bc68ee247b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787802"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61417585"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL Database のパフォーマンスに関する推奨事項
 
@@ -71,7 +71,7 @@ SQL Server に対して発行されたすべてのクエリは、実行プラン
 > Microsoft は、現在、"スキーマの問題の修正" に関する推奨事項を廃止しているところです。 かつて "スキーマの問題の修正" 推奨事項で扱っていたスキーマの問題を含め、データベース パフォーマンスの問題を監視するには、[Intelligent Insights](sql-database-intelligent-insights.md) の使用をお勧めします。
 > 
 
-SQL Database サービスが、ご使用の SQL データベースで発生したスキーマ関連の SQL エラー数が異常であることを検出すると、**[スキーマの問題の修正]** 推奨事項が表示されます。 この推奨事項は、通常、データベースでスキーマ関連のエラー (無効な列名、無効なオブジェクト名など) が 1 時間に複数件発生した場合に表示されます。
+SQL Database サービスが、ご使用の SQL データベースで発生したスキーマ関連の SQL エラー数が異常であることを検出すると、 **[スキーマの問題の修正]** 推奨事項が表示されます。 この推奨事項は、通常、データベースでスキーマ関連のエラー (無効な列名、無効なオブジェクト名など) が 1 時間に複数件発生した場合に表示されます。
 
 "スキーマの問題" は SQL Server での構文エラーの一種です。 SQL クエリの定義とデータベース スキーマの定義が合っていないときに発生します。 たとえば、クエリで想定される列の 1 つがターゲット テーブルで見つからない、あるいはその逆の場合です。 
 
@@ -79,7 +79,7 @@ Azure SQL Database サービスが、ご使用の SQL データベースで発�
 
 | SQL エラー コード | Message |
 | --- | --- |
-| 201 |プロシージャまたは関数 '*' にはパラメーター '*' が必要ですが、指定されませんでした。 |
+| 201 |プロシージャまたは関数 ' *' にはパラメーター '* ' が必要ですが、指定されませんでした。 |
 | 207 |列名 '*' が無効です。 |
 | 208 |オブジェクト名 '*' が無効です。 |
 | 213 |列名または指定された値の数がテーブルの定義と一致しません。 |

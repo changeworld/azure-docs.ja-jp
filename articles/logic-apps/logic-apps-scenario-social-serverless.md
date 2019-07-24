@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 5dd9d8eac7d65815d7c98a28b0d5af55f19cec47
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.openlocfilehash: 29d56e64f118fe36fb4905dca20d9fba2f210665
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65464434"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295926"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
 
@@ -48,7 +48,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 テキストの背後にあるセンチメントを検出するために、[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を使用できます。
 
-1. ロジック アプリ デザイナーのトリガーの下で、**[新しいステップ]** を選択します。
+1. ロジック アプリ デザイナーのトリガーの下で、 **[新しいステップ]** を選択します。
 
 2. **テキスト分析**コネクタを検索します。
 
@@ -56,7 +56,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 4. メッセージが表示される場合は、テキスト分析サービス用の有効な Cognitive Services キーを指定します。
 
-5. **[要求本文]** の下で、**[ツイート テキスト]** フィールドを選択します。これにより、ツイート テキストが分析用の入力として提供されます。
+5. **[要求本文]** の下で、 **[ツイート テキスト]** フィールドを選択します。これにより、ツイート テキストが分析用の入力として提供されます。
 
 ツイート データとそのツイートに関する洞察を取得したら、その他のいくつかの関連するコネクタと、そのアクションを使用できますようになります。
 
@@ -81,7 +81,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 ## <a name="add-azure-function-to-logic-app"></a>ロジック アプリへの Azure 関数の追加
 
-1. ロジック アプリ デザイナーの **[Detect Sentiment]\(センチメントの検出\)** アクションで、**[新しいステップ]** を選択します。
+1. ロジック アプリ デザイナーの **[Detect Sentiment]\(センチメントの検出\)** アクションで、 **[新しいステップ]** を選択します。
 
 2. **Azure Functions** コネクタを検索し、作成した関数を選択します。
 
@@ -99,10 +99,10 @@ Visual Studio または Azure Portal で過去の実行履歴を表示するに�
 
 * Visual Studio Cloud Explorer を開きます。 ロジック アプリを検索し、アプリのショートカット メニューを開きます。 **[実行履歴を開く]** を選択します。
 
-  > [!NOTE]
-  > Visual Studio 2019 の場合、Cloud Explorer は Azure portal でロジック アプリ デザイナーを開くことはできますが、まだ埋め込まれている Logic App Designer や実行履歴を開くことはできません。
+  > [!TIP]
+  > このコマンドが Visual Studio 2019 にない場合は、Visual Studio の最新の更新プログラムが適用されていることを確認してください。
 
-* Azure Portal でロジック アプリを検索します。 ロジック アプリのメニューで、**[概要]** を選択します。 
+* Azure Portal でロジック アプリを検索します。 ロジック アプリのメニューで、 **[概要]** を選択します。 
 
 ## <a name="create-automated-deployment-templates"></a>自動デプロイ テンプレートを作成する
 

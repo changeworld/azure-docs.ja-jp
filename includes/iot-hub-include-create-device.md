@@ -9,28 +9,28 @@ ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: d70544866b9e321d98acd3978da145276e036025
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66146531"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67181274"
 ---
 <!-- put the ## header in the file that includes this file -->
 
 このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成します。 IoT hub に接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳しくは、[IoT Hub 開発者ガイド](../articles/iot-hub/iot-hub-devguide-identity-registry.md)の "ID レジストリ" に関するセクションをご覧ください 
 
-1. IoT ハブのナビゲーション メニューの **[IoT デバイス]** を開き、**[追加]** を選択して IoT ハブに新しいデバイスを登録します。
+1. IoT ハブのナビゲーション メニューの **[IoT デバイス]** を開き、 **[追加]** を選択して IoT ハブに新しいデバイスを登録します。
 
     ![ポータルでデバイス ID を作成する](./media/iot-hub-include-create-device/create-identity-portal.png)
 
-1. 新しいデバイスの名前 (**myDeviceId** など) を入力し、**[保存]** を選択します。 この操作で、IoT ハブの新しいデバイス ID が作成されます。
+1. 新しいデバイスの名前 (**myDeviceId** など) を入力し、 **[保存]** を選択します。 この操作で、IoT ハブの新しいデバイス ID が作成されます。
 
    ![新しいデバイスを追加する](./media/iot-hub-include-create-device/create-a-device.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 
-1. デバイスが作成された後、**[IoT デバイス]** ウィンドウの一覧からデバイスを開きます。 後で使用するために **[接続文字列 --- 主キー]** をコピーします。
+1. デバイスが作成された後、 **[IoT デバイス]** ウィンドウの一覧からデバイスを開きます。 後で使用するために **[接続文字列 --- 主キー]** をコピーします。
 
     ![デバイスの接続文字列](./media/iot-hub-include-create-device/device-details.png)
 

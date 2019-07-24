@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 7f60371fb533526ef5bdb154d0c08dface9c0d1f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667754"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60393952"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code を使用して Java Service Fabric アプリケーションを開発する
 
@@ -45,7 +45,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 ## <a name="open-the-application-in-vs-code"></a>VS Code でアプリケーションを開く
 
-VS Code を開きます。  **アクティビティ バー**の [エクスプローラー] アイコンをクリックし、**[フォルダーを開く]** をクリックするか、**[ファイル]、[フォルダーを開く]** の順にクリックします。 リポジトリを複製したフォルダーの *./service-fabric-java-quickstart/Voting* ディレクトリに移動し、**[OK]** をクリックします。 このワークスペースには、以下のスクリーンショットと同じファイルが含まれています。
+VS Code を開きます。  **アクティビティ バー**の [エクスプローラー] アイコンをクリックし、 **[フォルダーを開く]** をクリックするか、 **[ファイル]、[フォルダーを開く]** の順にクリックします。 リポジトリを複製したフォルダーの *./service-fabric-java-quickstart/Voting* ディレクトリに移動し、 **[OK]** をクリックします。 このワークスペースには、以下のスクリーンショットと同じファイルが含まれています。
 
 ![ワークスペースの Java Voting アプリケーション](./media/service-fabric-develop-java-applications-with-vs-code/java-voting-application.png)
 
@@ -109,7 +109,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
 
 ブレークポイントを設定するには、次の手順を実行します。
 
-1. エクスプローラーで、*/Voting/VotingDataService/src/statefulservice/VotingDataService.java* ファイルを開きます。 `addItem` メソッドの `try` ブロックの最初のコード行 (80 行目) にブレークポイントを設定します。
+1. エクスプローラーで、 */Voting/VotingDataService/src/statefulservice/VotingDataService.java* ファイルを開きます。 `addItem` メソッドの `try` ブロックの最初のコード行 (80 行目) にブレークポイントを設定します。
    
    ![Voting データ サービスにブレークポイントを設定する](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-set.png)
 
@@ -119,7 +119,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
 
    ![[Debug (Attach)]\(デバッグ (アタッチ)\) の構成](./media/service-fabric-develop-java-applications-with-vs-code/debug-attach-java.png)
 
-3. Web ブラウザーで `http://localhost:8080` にアクセスします。 テキスト ボックスに新しい項目を入力し、**[+ 追加]** をクリックします。 ブレークポイントにヒットするはずです。 VS Code の上部にある [デバッグ] ツールバーを使用して、実行の継続、行のステップ オーバー、メソッドへのステップ イン、現在のメソッドからのステップ アウトを行うことができます。 
+3. Web ブラウザーで `http://localhost:8080` にアクセスします。 テキスト ボックスに新しい項目を入力し、 **[+ 追加]** をクリックします。 ブレークポイントにヒットするはずです。 VS Code の上部にある [デバッグ] ツールバーを使用して、実行の継続、行のステップ オーバー、メソッドへのステップ イン、現在のメソッドからのステップ アウトを行うことができます。 
    
    ![ブレークポイントのヒット](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-hit.png)
        
@@ -127,7 +127,7 @@ VS Code でアプリケーションをデバッグする場合、ローカル �
    
    ![デバッガーから切断する](./media/service-fabric-develop-java-applications-with-vs-code/debug-bar-disconnect.png)
        
-5. デバッグが完了したら、**[Service Fabric:Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンドを使用して、ローカル クラスターから Voting アプリケーションを削除できます。 
+5. デバッグが完了したら、 **[Service Fabric:Remove Application]\(Service Fabric: アプリケーションの削除\)** コマンドを使用して、ローカル クラスターから Voting アプリケーションを削除できます。 
 
 ## <a name="next-steps"></a>次の手順
 

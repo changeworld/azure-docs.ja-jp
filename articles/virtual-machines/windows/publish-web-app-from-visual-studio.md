@@ -13,16 +13,16 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d5fd6041f21700ffddd3b2c4755b7ce01691681e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4b8e3ddf1cf5d61f730ce01a35ee0813b47ad2d2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304100"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66305927"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
 
-このドキュメントでは、Visual Studio 2017 の **Microsoft Azure Virtual Machines** 発行機能を使用して、Azure 仮想マシン (VM) へ ASP.NET Web アプリケーションを発行する方法について説明します。  
+このドキュメントでは、Visual Studio 2019 の **Microsoft Azure Virtual Machines** 発行機能を使用して、Azure 仮想マシン (VM) へ ASP.NET Web アプリケーションを発行する方法について説明します。  
 
 ## <a name="prerequisites"></a>前提条件
 Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を使用するために VM を正しくセットアップする必要があります。
@@ -34,13 +34,13 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 ## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Visual Studio を使用して Azure VM に ASP.NET Web アプリを発行します。
 次のセクションでは、Azure の仮想マシンに既存の ASP.NET Web アプリケーションを発行する方法について説明します。
 
-1. Visual Studio 2017 で Web アプリケーション ソリューションを開きます。
-2. ソリューション エクスプローラーでプロジェクトを右クリックし、**[発行]** を選択します。
+1. Visual Studio 2019 で Web アプリケーション ソリューションを開きます。
+2. ソリューション エクスプローラーでプロジェクトを右クリックし、 **[発行]** を選択します。
 3. ページの右側の矢印を使用して、**Microsoft Azure Virtual Machines** が表示されるまで発行オプションをスクロールします。  
 
    ![発行 ページ - 右矢印]
 
-4. **Microsoft Azure Virtual Machines** アイコンを選択し、**[発行]** を選択します。
+4. **Microsoft Azure Virtual Machines** アイコンを選択し、 **[発行]** を選択します。
 
    ![[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]
 
@@ -58,7 +58,7 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 
 7. 発行を開始するには、[OK] をクリックします。
 
-8. 資格情報が表示されたら、発行権限 (通常は VM の作成時に使用された管理者のユーザー名とパスワード) で構成されたターゲット VM 上のユーザー アカウントのユーザー名とパスワードを入力します。  
+8. 資格情報が表示されたら、発行権限で構成されたターゲット VM 上のユーザー アカウントのユーザー名とパスワードを入力します。 通常、これらの資格情報は、VM の作成時に使用された管理者のユーザー名とパスワードです。  
 
    ![WebDeploy ログイン]
 
@@ -90,7 +90,7 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 
 ### <a name="modify-publish-profile-settings"></a>発行プロファイル設定の変更
 
-発行プロファイルを表示して設定を変更するには、**[設定]** を選択します。  
+発行プロファイルを表示して設定を変更するには、 **[設定]** を選択します。  
 
 ![発行 ページ - 設定 ボタン]
 
@@ -99,14 +99,14 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 ![発行設定 - 接続 ページ]
 
 #### <a name="save-user-name-and-password"></a>ユーザー名とパスワードの保存
-- 発行するたびに認証情報を入力しなくてもすむように、**[ユーザー名]** と **[パスワード]** フィールドに入力して、**[パスワードを保存する]** をオンにできます。
-- 使用して、**[接続の検証]** ボタンをクリックして、適切な情報を入力したことを確認します。
+- 発行するたびの認証情報の入力を回避します。 これを行うには、 **[ユーザー名]** フィールドと **[パスワード]** フィールドに値を入力し、 **[パスワードの保存]** ボックスを選択します。
+- 使用して、 **[接続の検証]** ボタンをクリックして、適切な情報を入力したことを確認します。
 
 #### <a name="deploy-to-clean-web-server"></a>クリーンな Web サーバーへの展開
 
-- 毎回、Web アプリケーションのクリーンなコピーを　Web サーバーに確実にアップロードする (および過去のデプロイから残っている他のファイルがない) には、**[設定]** タブの **[発行先の追加ファイルを削除する]** チェック ボックスをオンにします。
+- アップロードのたびに Web サーバーに Web アプリケーションのクリーン コピーが確実に保存され、以前のデプロイの他のファイルが残らないようにするには、 **[設定]** タブの **[発行先の追加ファイルを削除する]** チェックボックスをオンにします。
 
-- 警告: この設定を使用して発行すると、Web サーバー (wwwroot ディレクトリ) に存在するすべてのファイルが削除されます。 このオプションを有効にして発行する前に、必ずマシンの状態を確認してください。 
+- 警告:この設定を使用して発行すると、Web サーバー (wwwroot ディレクトリ) に存在するすべてのファイルが削除されます。 このオプションを有効にして発行する前に、必ずマシンの状態を確認してください。 
 
 ![発行設定 - 設定 ページ]
 

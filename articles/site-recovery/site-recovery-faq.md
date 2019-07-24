@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/08/2019
+ms.date: 6/27/2019
 ms.author: raynew
-ms.openlocfilehash: 74ccc76ff139cae21e3583b0fea11596f5fd6b62
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: a9c7aa2be945e4fbaa65bdd2a145d576422c5539
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413923"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491770"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
 この記事では、Azure Site Recovery に関してよく寄せられる質問をまとめています。</br>
@@ -86,7 +86,7 @@ Site Recovery を使用している間は、[料金計算ツール](https://aka.
 はい。Site Recovery では、保護されたインスタンスは最初の 31 日間無料ですが、Azure Storage、ストレージ トランザクション、およびデータ転送については料金が発生する場合があります。 また、復旧された仮想マシンも、Azure のコンピューティングの料金が発生する場合があります。
 
 
-### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>ディザスター リカバリー ドリル/テスト フェールオーバーの実行に関連するコストはありますか? 
+### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>ディザスター リカバリー ドリル/テスト フェールオーバーの実行に関連するコストはありますか?
 
 DR ドリルに対しては、別個のコストはかかりません。 テスト フェールオーバー後に VM が作成されると、以降はコンピューティングの料金がかかります。
 
@@ -124,15 +124,15 @@ Site Recovery を使用すると、サポートされている VM または物�
 はい。 ブランチ オフィスでのレプリケーションとフェールオーバーを調整するために Site Recovery を使用すると、1 か所ですべてのブランチ オフィスのワークロードの統一されたオーケストレーションとビューが得られます。 ブランチ オフィスに出向くことなく、フェールオーバーを容易に実行し、本社からすべてのブランチのディザスター リカバリーを管理できます。
 
 
-### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Azure VM でディザスター リカバリーはサポートされますか? 
+### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Azure VM でディザスター リカバリーはサポートされますか?
 
 はい、Site Recovery では Azure リージョン間での Azure VM のディザスター リカバリーがサポートされます。 Azure VM のディザスター リカバリーに関する[一般的な質問を確認します](azure-to-azure-common-questions.md)。
 
-### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>VMware VM でディザスター リカバリーはサポートされますか? 
+### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>VMware VM でディザスター リカバリーはサポートされますか?
 
 Site Recovery では、オンプレミスの VMware VM のディザスター リカバリーをサポートします。 VMware VM のディザスター リカバリーに関する[一般的な質問を確認します](vmware-azure-common-questions.md)。
 
-### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Hyper-V VM でディザスター リカバリーはサポートされますか? 
+### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Hyper-V VM でディザスター リカバリーはサポートされますか?
 はい、Site Recovery では、オンプレミスの Hyper-V VM のディザスター リカバリーをサポートします。 Hyper-V VM のディザスター リカバリーに関する[一般的な質問を確認します](hyper-v-azure-common-questions.md)。
 
 ## <a name="is-disaster-recovery-supported-for-physical-servers"></a>物理サーバーでディザスター リカバリーはサポートされますか?
@@ -150,7 +150,7 @@ Azure Site Recovery は、パブリック エンドポイント経由で Azure �
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>VPN 経由でレプリケートできないのはなぜですか?
 
-Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage のパブリック エンドポイントに到達します。 そのため、ExpressRoute (パブリック ピアリング) を使ったパブリック インターネット経由でのみレプリケートすることができ、VPN は機能しません。
+Azure にレプリケートする場合、レプリケーション トラフィックは Azure Storage のパブリック エンドポイントに到達します。 そのため、レプリケーションは、ExpressRoute (Microsoft ピアリングまたは既存のパブリック ピアリング) を使ったパブリック インターネット経由でのみ実行することができ、VPN は機能しません。
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Riverbed SteelHeads をレプリケーションに使用できますか?
 
@@ -159,12 +159,11 @@ Microsoft のパートナーである Riverbed は、Azure Site Recovery の使�
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>ExpressRoute を使用して Azure に仮想マシンをレプリケートできますか。
 はい。[ExpressRoute を使用して](concepts-expressroute-with-site-recovery.md)オンプレミスの仮想マシンを Azure にレプリケートできます。
 
-- Azure Site Recovery は、パブリック エンドポイント経由で Azure Storage にデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering)または [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を設定する必要があります。
+- Azure Site Recovery は、パブリック エンドポイント経由で Azure Storage にデータをレプリケートします。 Site Recovery レプリケーションに ExpressRoute を使用するには、[Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を設定するか、既存の[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering) (新しい回線では非推奨) を使用する必要があります。
 - Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。
-- 仮想マシンが Azure 仮想ネットワークにフェールオーバーされた後は、その Azure 仮想ネットワークでセットアップされた[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使用して、それらのマシンにアクセスできます。
 - プライベート ピアリングを介したレプリケーションはサポートされていません。
-- VMware マシンまたは物理マシンを保護している場合、構成サーバーはレプリケーションに対する[ネットワーク要件](vmware-azure-configuration-server-requirements.md#network-requirements)に準拠していることを確認します。 
-
+- VMware マシンまたは物理マシンを保護する場合は、構成サーバーの[ネットワーク要件](vmware-azure-configuration-server-requirements.md#network-requirements)も満たしている必要があります。 Site Recovery レプリケーションを調整する場合、構成サーバーが特定の URL に接続する必要があります。 この接続には ExpressRoute は使用できません。
+- 仮想マシンが Azure 仮想ネットワークにフェールオーバーされた後は、その Azure 仮想ネットワークでセットアップされた[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#privatepeering)を使用して、それらのマシンにアクセスできます。
 
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Azure にレプリケートする場合、どの種類のストレージ アカウントまたはマネージド ディスクが必要ですか。
@@ -234,10 +233,10 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 ## <a name="componentprovider-upgrade"></a>コンポーネント/プロバイダーのアップグレード
 
-### <a name="where-can-i-find-the-release-notesupdate-rollups-of-site-recovery-upgrades"></a>Site Recovery のリリース ノートや更新プログラムのロールアップはどこで入手できますか? 
+### <a name="where-can-i-find-the-release-notesupdate-rollups-of-site-recovery-upgrades"></a>Site Recovery のリリース ノートや更新プログラムのロールアップはどこで入手できますか?
 
 新しい更新プログラムに関する[詳細](site-recovery-whats-new.md)を確認し、[ロールアップ情報を取得](service-updates-how-to.md)します。
 
 ## <a name="next-steps"></a>次の手順
-*  [Azure Site Recovery の概要](site-recovery-overview.md)
+* [Azure Site Recovery の概要](site-recovery-overview.md)
 

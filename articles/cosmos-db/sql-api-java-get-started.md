@@ -6,22 +6,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 05/22/2017
+ms.date: 12/22/2018
 ms.author: sngun
-ms.openlocfilehash: dbaafca8692b144b0032315c0b40eb02bec0e3ff
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 55bdcf9847f2194f269b92aed830a66c79c4d337
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438671"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67985661"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL チュートリアル: SQL API Java コンソール アプリケーションの作成
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET (プレビュー)](sql-api-dotnet-get-started-preview.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [.NET Core (プレビュー)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -77,9 +74,9 @@ Azure Cosmos DB Java SDK 用 SQL API の NoSQL チュートリアルへようこ
     </dependency>
 
 ## <a id="Connect"></a>手順 3: Azure Cosmos DB アカウントに接続する
-次に、[Azure Portal](https://portal.azure.com) に戻り、エンドポイントとプライマリ マスター キーを取得します。 Azure Cosmos DB のエンドポイントとプライマリ キーは、アプリケーションが接続先を認識し、Azure Cosmos DB がアプリケーションの接続を信頼するために必要です。
+次に、[Azure portal](https://portal.azure.com) に戻り、エンドポイントとプライマリ マスター キーを取得します。 Azure Cosmos DB のエンドポイントとプライマリ キーは、アプリケーションが接続先を認識し、Azure Cosmos DB がアプリケーションの接続を信頼するために必要です。
 
-Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** をクリックします。 ポータルから URI をコピーし、Program.java ファイルの `https://FILLME.documents.azure.com` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、 `FILLME`に貼り付けます。
+Azure Portal で Azure Cosmos DB アカウントに移動し、 **[キー]** をクリックします。 ポータルから URI をコピーし、Program.java ファイルの `https://FILLME.documents.azure.com` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、 `FILLME`に貼り付けます。
 
     this.client = new DocumentClient(
         "https://FILLME.documents.azure.com",
@@ -87,7 +84,7 @@ Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** を�
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
-![Java コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure Portal のスクリーン ショット。 アクティブなハブが強調表示され、[Azure Cosmos DB account]\(Azure Cosmos DB アカウント\) ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている Azure Cosmos DB アカウントを示します][keys]
+![Java コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure portal のスクリーンショット。 アクティブなハブが強調表示され、[Azure Cosmos DB account]\(Azure Cosmos DB アカウント\) ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている Azure Cosmos DB アカウントを示します][keys]
 
 ## <a name="step-4-create-a-database"></a>手順 4: データベースを作成する
 Azure Cosmos DB [データベース](databases-containers-items.md#azure-cosmos-databases)は、**DocumentClient** クラスの [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) メソッドを使用して作成できます。 データベースは、コレクションに分割された JSON ドキュメント ストレージの論理上のコンテナーです。

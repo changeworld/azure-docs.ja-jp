@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: daab3c3b2a5b756686a4867350478faaa1142279
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64726864"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Media Services を使用してライブ ストリーミングを実行し、Azure portal でマルチビットレートのストリームを作成する  
@@ -156,7 +156,7 @@ ms.locfileid: "64726864"
     イベントをストリーミングする準備ができたら、いつでも **[開始]** をクリックできます。
 
     イベントを開始すると、 **[Watch (視聴)]** をクリックしてコンテンツの再生を開始できます。
-2. この方法の代わりに、ショートカットを使用して、**[チャネル]** ページの **[起動]** ボタンをクリックすることもできます。 これにより、既定の資産、プログラム、ストリーミング ロケーターが作成されます。
+2. この方法の代わりに、ショートカットを使用して、 **[チャネル]** ページの **[起動]** ボタンをクリックすることもできます。 これにより、既定の資産、プログラム、ストリーミング ロケーターが作成されます。
 
     イベント名は **default** となり、アーカイブ ウィンドウは 8 時間に設定されます。
 
@@ -167,7 +167,7 @@ ms.locfileid: "64726864"
 ## <a name="watch-the-event"></a>イベントの視聴
 イベントを視聴するには、Azure Portal で **[Watch (視聴)]** をクリックするか、ストリーミング URL をコピーして任意のプレーヤーを使用します。 
 
-![作成日時](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
+![作成されたもの](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
 
 ライブ イベントが停止すると、イベントがオンデマンド コンテンツに自動的に変換されます。
 
@@ -179,9 +179,9 @@ ms.locfileid: "64726864"
 * ライブ イベントのアーカイブをオンデマンド ストリームとして提供し続けるのでない限り、ストリーミング エンドポイントを停止できます。 チャネルが停止状態の場合は、いかなる課金も発生しません。
 
 ## <a name="view-archived-content"></a>アーカイブ済みコンテンツを視聴する
-イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。  
+イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。 
 
-アセットを管理するには、**[設定]** を選択し、**[アセット]** をクリックします。
+アセットを管理するには、 **[設定]** を選択し、 **[アセット]** をクリックします。
 
 ![アセット](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 

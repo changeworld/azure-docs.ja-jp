@@ -10,11 +10,11 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
 ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195168"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62106302"
 ---
 # <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Azure Logic Apps で Azure Monitor ログを使用して Azure B2B メッセージを監視する
 
@@ -44,7 +44,7 @@ ms.locfileid: "57195168"
    ![統合アカウントを検索して選択し、[診断設定] を選択します。](media/logic-apps-monitor-b2b-message/find-integration-account.png)
 
 1. 次に、ご自分の統合アカウントを探して選択します。 フィルターの一覧で、ご自分の統合アカウントに適用する値を選択します。
-完了したら、**[診断設定の追加]** を選択します。
+完了したら、 **[診断設定の追加]** を選択します。
 
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------|
@@ -54,7 +54,7 @@ ms.locfileid: "57195168"
    | **リソース** | <*integration-account-name*> | ログを有効にする Azure リソースの名前 | 
    ||||  
 
-   例: 
+   例:
 
    ![統合アカウントで診断を設定する](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
 
@@ -62,16 +62,16 @@ ms.locfileid: "57195168"
 
    1. **[Log Analytics への送信]** を選択します。 
 
-   1. **[Log Analytics]** で、**[構成]** を選択します。 
+   1. **[Log Analytics]** で、 **[構成]** を選択します。 
 
    1. **[OMS ワークスペース]** で、ログに使用する Log Analytics ワークスペースを選択します。 
 
       > [!NOTE]
       > OMS ワークスペースは、Log Analytics ワークスペースに置き換えられています。 
 
-   1. **[ログ]** で、**[IntegrationAccountTrackingEvents]** カテゴリを選択し、**[保存]** を選択します。
+   1. **[ログ]** で、 **[IntegrationAccountTrackingEvents]** カテゴリを選択し、 **[保存]** を選択します。
 
-   例:  
+   例: 
 
    ![診断データをログに送信できるように Azure Monitor ログを設定する](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -81,12 +81,12 @@ ms.locfileid: "57195168"
 
 ### <a name="turn-on-logging-through-azure-monitor"></a>Azure Monitor を通じてログ記録を有効にする
 
-1. [Azure portal](https://portal.azure.com) の Azure メイン メニューで、**[監視]** を選びます。 **[設定]** で **[診断設定]** を選択します。 
+1. [Azure portal](https://portal.azure.com) の Azure メイン メニューで、 **[監視]** を選びます。 **[設定]** で **[診断設定]** を選択します。 
 
    ![[監視]、[診断設定]、ご自分の統合アカウントの順に選択します。](media/logic-apps-monitor-b2b-message/monitor-diagnostics-settings.png)
 
 1. 次に、ご自分の統合アカウントを探して選択します。 フィルターの一覧で、ご自分の統合アカウントに適用する値を選択します。
-完了したら、**[診断設定の追加]** を選択します。
+完了したら、 **[診断設定の追加]** を選択します。
 
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------|
@@ -96,7 +96,7 @@ ms.locfileid: "57195168"
    | **リソース** | <*integration-account-name*> | ログを有効にする Azure リソースの名前 | 
    ||||  
 
-   例: 
+   例:
 
    ![統合アカウントで診断を設定する](media/logic-apps-monitor-b2b-message/turn-on-diagnostics-integration-account.png)
 
@@ -104,16 +104,16 @@ ms.locfileid: "57195168"
 
    1. **[Log Analytics への送信]** を選択します。 
 
-   1. **[Log Analytics]** で、**[構成]** を選択します。 
+   1. **[Log Analytics]** で、 **[構成]** を選択します。 
 
    1. **[OMS ワークスペース]** で、ログに使用する Log Analytics ワークスペースを選択します。 
 
       > [!NOTE]
       > OMS ワークスペースは、Log Analytics ワークスペースに置き換えられています。 
 
-   1. **[ログ]** で、**[IntegrationAccountTrackingEvents]** カテゴリを選択し、**[保存]** を選択します。
+   1. **[ログ]** で、 **[IntegrationAccountTrackingEvents]** カテゴリを選択し、 **[保存]** を選択します。
 
-   例:  
+   例: 
 
    ![診断データをログに送信できるように Azure Monitor ログを設定する](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -123,10 +123,10 @@ ms.locfileid: "57195168"
 
 Azure Monitor ログと併せて、ロジック アプリの診断データを他の Azure サービスで使用する方法を次のように拡張できます。 
 
-* [Azure 診断ログを Azure Storage にアーカイブする](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [Azure 診断ログを Azure Event Hubs にストリーミングする](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
+* [Azure Diagnostics ログを Azure Storage にアーカイブする](../azure-monitor/platform/archive-diagnostic-logs.md)
+* [Azure Diagnostics ログを Azure Event Hubs にストリーミングする](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
 
-これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../azure-monitor/platform/powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 例: 
+これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../azure-monitor/platform/powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 例:
 
 * [Event Hubs からStream Analytics にデータをストリーミングする](../stream-analytics/stream-analytics-define-inputs.md)
 * [ストリーミング データを Stream Analytics で分析し、Power BI でリアルタイム分析ダッシュボードを作成する](../stream-analytics/stream-analytics-power-bi-dashboard.md)

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 4ef5354a94ae707df8dd1f2767efe04dfbacd7ad
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65799587"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Video Indexer API を使用して言語モデルをカスタマイズする
@@ -236,8 +236,8 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |accountID|string|はい|アカウントのグローバル一意識別子|
 |modelId|string|はい|言語モデルの ID (言語モデルの作成時に生成されます)|
 |accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-|modelName|string|いいえ |モデルに付けることができる新しい名前|
-|enable|ブール値|いいえ |このモデルの配下にあるすべてのファイルを有効 (true) にするか無効 (false) にするかを選択します|
+|modelName|string|いいえ|モデルに付けることができる新しい名前|
+|enable|ブール値|いいえ|このモデルの配下にあるすべてのファイルを有効 (true) にするか無効 (false) にするかを選択します|
 
 ### <a name="request-body"></a>要求本文
 
@@ -306,8 +306,8 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |modelId|string|はい|ファイルを保持している言語モデルの ID (言語モデルの作成時に生成されます)|
 |フィールド|string|はい|更新されるファイルの ID (言語モデルが作成または更新される際の、ファイルのアップロード時に生成されます)|
 |accessToken|string|はい|呼び出しに対して認証を行うアクセス トークン (対象は[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)である必要があります)。 アクセス トークンの有効期限は 1 時間です。|
-|fileName|string|いいえ |更新後のファイル名|
-|enable|ブール値|いいえ |言語モデル内でこのファイルを有効 (true) にするか無効 (false) にするかを更新します|
+|fileName|string|いいえ|更新後のファイル名|
+|enable|ブール値|いいえ|言語モデル内でこのファイルを有効 (true) にするか無効 (false) にするかを更新します|
 
 ### <a name="request-body"></a>要求本文
 

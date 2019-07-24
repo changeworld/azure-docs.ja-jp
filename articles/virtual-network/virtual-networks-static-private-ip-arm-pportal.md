@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: kumud
 ms.openlocfilehash: 31aeab946b9ad740e2f56eb1ecaafd3e76cc42b3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64723789"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する
@@ -49,19 +49,19 @@ Azure ポータルを使用して、リソース マネージャー デプロイ
 *TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、以下の手順に従います。
 
 1. ブラウザーで https://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
-2. 次の図に示すように、**[リソースの作成]** > **[Compute]** > **[Windows Server 2012 R2 Datacenter]** の順にクリックし、**[デプロイ モデルの選択]** の一覧に既に **[Resource Manager]** と表示されているのを確認してから **[作成]** をクリックします。
+2. 次の図に示すように、 **[リソースの作成]**  >  **[Compute]**  >  **[Windows Server 2012 R2 Datacenter]** の順にクリックし、 **[デプロイ モデルの選択]** の一覧に既に **[Resource Manager]** と表示されているのを確認してから **[作成]** をクリックします。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
-3. 次の図に示すように、**[基本]** ウィンドウで、作成する VM の名前 (このシナリオでは *DNS01*)、ローカル管理者のアカウント、およびパスワードを入力します。
+3. 次の図に示すように、 **[基本]** ウィンドウで、作成する VM の名前 (このシナリオでは *DNS01*)、ローカル管理者のアカウント、およびパスワードを入力します。
    
     ![[基本] ウィンドウ](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
-4. 選択されている **[場所]** が *[米国中部]* であることを確認してから、**[リソース グループ]** の下にある **[既存の選択]** をクリックし、**[リソース グループ]** を再度クリックして、*[TestRG]*、**[OK]** の順にクリックします。
+4. 選択されている **[場所]** が *[米国中部]* であることを確認してから、 **[リソース グループ]** の下にある **[既存の選択]** をクリックし、 **[リソース グループ]** を再度クリックして、 *[TestRG]* 、 **[OK]** の順にクリックします。
    
     ![[基本] ウィンドウ](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
-5. **[サイズの選択]** ウィンドウで、**[A1 標準]** を選択してから **[選択]** をクリックします。
+5. **[サイズの選択]** ウィンドウで、 **[A1 標準]** を選択してから **[選択]** をクリックします。
    
     ![[サイズの選択] ウィンドウ](./media/virtual-networks-static-ip-arm-pportal/figure04.png)    
-6. **[設定]** ウィンドウで、プロパティに以下の値が設定されていることを確認し、**[OK]** をクリックします。
+6. **[設定]** ウィンドウで、プロパティに以下の値が設定されていることを確認し、 **[OK]** をクリックします。
    
     -**ストレージ アカウント**: *vnetstorage*
    
@@ -69,7 +69,7 @@ Azure ポータルを使用して、リソース マネージャー デプロイ
    * **サブネット**:*FrontEnd*
      
      ![[サイズの選択] ウィンドウ](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
-7. **[概要]** ウィンドウで、**[OK]** をクリックします。 ダッシュ ボードに以下のタイルが表示されることを確認します。
+7. **[概要]** ウィンドウで、 **[OK]** をクリックします。 ダッシュ ボードに以下のタイルが表示されることを確認します。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
 
@@ -78,18 +78,18 @@ VM のオペレーティング システム内で Azure 仮想マシンに割り
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>VM 用の静的プライベート IP アドレス情報を取得する方法
 上記の手順で作成された VM の静的プライベート IP アドレス情報を表示するには、以下の手順を実行します。
 
-1. Azure Portal で、**[すべて参照]** > **[仮想マシン]** > **[DNS01]** > **[すべての設定]** > **[ネットワーク インターフェイス]** の順にクリックし、表示されている唯一のネットワーク インターフェイスをクリックします。
+1. Azure Portal で、 **[すべて参照]**  >  **[仮想マシン]**  >  **[DNS01]**  >  **[すべての設定]**  >  **[ネットワーク インターフェイス]** の順にクリックし、表示されている唯一のネットワーク インターフェイスをクリックします。
    
     ![VM のデプロイ タイル](./media/virtual-networks-static-ip-arm-pportal/figure07.png)
-2. **[ネットワーク インターフェイス]** ウィンドウで、**[すべての設定]** > **[IP アドレス]** の順にクリックして、**[割り当て]** と **[IP アドレス]** の値を確認します。
+2. **[ネットワーク インターフェイス]** ウィンドウで、 **[すべての設定]**  >  **[IP アドレス]** の順にクリックして、 **[割り当て]** と **[IP アドレス]** の値を確認します。
    
     ![VM のデプロイ タイル](./media/virtual-networks-static-ip-arm-pportal/figure08.png)
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>既存の VM に静的プライベート IP アドレスを追加する方法
 上記の手順を使用して作成した VM に静的プライベート IP アドレスを追加するには、以下の手順に従います。
 
-1. 上記の **[IP アドレス]** ウィンドウで、**[割り当て]** の下にある **[静的]** をクリックします。
-2. **[IP アドレス]** に「*192.168.1.101*」と入力してから、**[保存]** をクリックします。
+1. 上記の **[IP アドレス]** ウィンドウで、 **[割り当て]** の下にある **[静的]** をクリックします。
+2. **[IP アドレス]** に「*192.168.1.101*」と入力してから、 **[保存]** をクリックします。
    
     ![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
 
@@ -103,7 +103,7 @@ VM のオペレーティング システム内で Azure 仮想マシンに割り
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>VM から静的プライベート IP アドレスを削除する方法
 上記で作成した VM から静的プライベート IP アドレスを削除するには、以下の手順に従います。
 
-上記の **[IP アドレス]** ウィンドウで、**[割り当て]** の下にある **[動的]** をクリックしてから、**[保存]** をクリックします。
+上記の **[IP アドレス]** ウィンドウで、 **[割り当て]** の下にある **[動的]** をクリックしてから、 **[保存]** をクリックします。
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>オペレーティング システム内で IP アドレスを設定する
 

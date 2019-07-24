@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: cb0203e3413ab525d6885f23c5936c64e1bef189
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: d1043f254d2a2cc2804ab8a4d68770b6d57cbed4
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233708"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67295946"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
@@ -45,7 +45,6 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [API Management](#api-management-limits)
 * [App Service](#app-service-limits)
 * [Application Gateway](#application-gateway-limits)
-* [Application Insights](#application-insights-limits)
 * [Automation](#automation-limits)
 * [Azure Cache for Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
@@ -54,9 +53,11 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure DNS](#azure-dns-limits)
 * [Azure Firewall](#azure-firewall-limits)
+* [Azure Functions](#functions-limits)
 * [Azure Kubernetes Service](#azure-kubernetes-service-limits)
+* [Azure Machine Learning サービス](#azure-machine-learning-service-limits)
 * [Azure Maps](#azure-maps-limits)
-* [Azure Monitor](#monitor-limits)
+* [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
 * [Azure Search](#azure-search-limits)
 * [Azure SignalR Service](#azure-signalr-service-limits)
@@ -77,15 +78,21 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [IoT Hub](#iot-hub-limits)
 * [IoT Hub Device Provisioning Service](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
-* [Load Balancer](#load-balancer)
-* [Log Analytics](#log-analytics-limits)
 * [Media Services](#media-services-limits)
 * [Mobile Services](#mobile-services-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication-limits)
 * [ネットワーク](#networking-limits)
-* [Network Watcher](#network-watcher-limits)
+  * [Application Gateway](#application-gateway-limits)
+  * [Azure DNS](#azure-dns-limits)
+  * [Azure Front Door Service](#azure-front-door-service-limits)
+  * [Azure Firewall](#azure-firewall-limits)
+  * [ExpressRoute](#expressroute-limits)
+  * [Load Balancer](#load-balancer)
+  * [パブリック IP アドレス](#publicip-address)
+  * [Network Watcher](#network-watcher-limits)
+  * [Traffic Manager](#traffic-manager-limits)
+  * [Virtual Network](#networking-limits)
 * [Notification Hubs](#notification-hubs-limits)
-* [パブリック IP アドレス](#publicip-address)
 * [リソース グループ](#resource-group-limits)
 * [ロールベースのアクセス制御](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
@@ -97,7 +104,6 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [StorSimple System](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [サブスクリプション](#subscription-limits)
-* [Traffic Manager](#traffic-manager-limits)
 * [Virtual Machines](#virtual-machines-limits)
 * [仮想マシン スケール セット](#virtual-machine-scale-sets-limits)
 
@@ -144,6 +150,9 @@ Resource Manager API の読み取りと書き込みの制限については、�
 
 ### <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes Service の制限
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
+
+### <a name="azure-machine-learning-service-limits"></a>Azure Machine Learning サービスの制限
+Azure Machine Learning コンピューティング クォータの最新の値については、[Azure Machine Learning クォータ ページ](../articles/machine-learning/service/how-to-manage-quotas.md)をご覧ください。
 
 ### <a name="networking-limits"></a>ネットワークの制限
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
@@ -222,6 +231,9 @@ Resource Manager API の読み取りと書き込みの制限については、�
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
+### <a name="functions-limits"></a>Functions の制限
+[!INCLUDE [functions-limits](../includes/functions-limits.md)]
+
 ### <a name="scheduler-limits"></a>Scheduler の制限
 [!INCLUDE [scheduler-limits-table](../includes/scheduler-limits-table.md)]
 
@@ -234,7 +246,7 @@ Resource Manager API の読み取りと書き込みの制限については、�
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB の制限
-Azure Cosmos DB は世界規模のデータベースであり、アプリケーションで要求されることをすべて処理するようにスループットとストレージをスケールできます。 Azure Cosmos DB が提供するスケールについて質問がある場合は、askcosmosdb@microsoft.com にメールをお送りください。
+Azure Cosmos DB の制限については、「[Azure Cosmos DB の制限](cosmos-db/concepts-limits.md)」を参照してください。
 
 ### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 Azure Database for MySQL の制限については、「[Azure Database for MySQL の制限事項](mysql/concepts-limits.md)」を参照してください。
@@ -268,8 +280,26 @@ Azure Database for PostgreSQL の制限については、「[Azure Database for 
 ### <a name="mobile-services-limits"></a>Mobile Services の制限
 [!INCLUDE [mobile-services-limits](../includes/mobile-services-limits.md)]
 
-### <a name="monitor-limits"></a>監視の制限
-[!INCLUDE [monitoring-limits](../includes/monitoring-limits.md)]
+### <a name="azure-monitor-limits"></a>Azure Monitor の制限
+
+#### <a name="alerts"></a>アラート
+
+[!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-alerts.md)]
+
+#### <a name="action-groups"></a>アクション グループ
+
+[!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-action-groups.md)]
+
+#### <a name="log-analytics-workspaces"></a>Log Analytics ワークスペース
+
+[!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-workspaces.md)]
+
+#### <a name="application-insights"></a>Application Insights
+
+[!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-app-insights.md)]
+
+
+
 
 ### <a name="notification-hubs-limits"></a>Notification Hubs の制限
 [!INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
@@ -316,9 +346,6 @@ Azure Database for PostgreSQL の制限については、「[Azure Database for 
 ### <a name="storsimple-system-limits"></a>StorSimple システムの制限
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
-### <a name="log-analytics-limits"></a>Log Analytics の制限
-[!INCLUDE [operational-insights-limits](../includes/operational-insights-limits.md)]
-
 ### <a name="backup-limits"></a>Backup の制限
 [!INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
 
@@ -327,9 +354,6 @@ Azure Database for PostgreSQL の制限については、「[Azure Database for 
 
 ### <a name="site-recovery-limits"></a>Site Recovery の制限
 [!INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]
-
-### <a name="application-insights-limits"></a>Application Insights の制限
-[!INCLUDE [application-insights-limits](../includes/application-insights-limits.md)]
 
 ### <a name="api-management-limits"></a>API Management の制限
 [!INCLUDE [api-management-service-limits](../includes/api-management-service-limits.md)]

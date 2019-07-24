@@ -3,18 +3,18 @@ title: Azure Maps 内のラスター マップ上にカスタム データをレ
 description: Azure Maps 内のラスター マップ上にカスタム データをレンダリングします。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 04/03/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 46f08aaa33563f620e7a011620730249e903f7b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a9fed8464bd19c4b8a32e37c8c97698f0a2d9503
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086600"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66734300"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -38,11 +38,11 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 
 ラベルとカスタム画像を使ってプッシュピンをレンダリングするには、次の手順を実行します。
 
-1. 要求を格納するコレクションを作成します。 Postman アプリ内で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[コレクション]** を選択します。 コレクションに名前を付け、**[作成]** ボタンを選択します。 
+1. 要求を格納するコレクションを作成します。 Postman アプリ内で **[新規]** を選択します。 **[新規作成]** ウィンドウで **[コレクション]** を選択します。 コレクションに名前を付け、 **[作成]** ボタンを選択します。 
 
-2. 要求を作成するには、**[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 プッシュピンに**要求名**を入力し、前の手順で要求の保存場所として作成したコレクションを選択し、**[保存]** を選択します。
+2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 プッシュピンに**要求名**を入力し、前の手順で要求の保存場所として作成したコレクションを選択し、 **[保存]** を選択します。
     
-    ![Postman での要求の作成](./media/tutorial-geofence/postman-new.png)
+    ![Postman での要求の作成](./media/how-to-render-custom-data/postman-new.png)
 
 3. [builder]\(ビルダー\) タブで GET HTTP メソッドを選択し、次の URL を入力して GET 要求を作成します。
 
@@ -145,7 +145,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
     ```
 
-6. 結果的に生成される画像:
+    応答イメージを次に示します。
 
     ![Azure Maps データ ストレージからデータを取得する](./media/how-to-render-custom-data/uploaded-path.png)
 
@@ -164,9 +164,9 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
     &subscription-key={subscription--key}
     ```
 
-結果的に生成される画像:
+    応答イメージを次に示します。
 
-![不透明な多角形をレンダリングする](./media/how-to-render-custom-data/opaque-polygon.png)
+    ![不透明な多角形をレンダリングする](./media/how-to-render-custom-data/opaque-polygon.png)
 
 
 ## <a name="render-a-circle-and-pushpins-with-custom-labels"></a>カスタム ラベルが付いた円とプッシュピンをレンダリングする
@@ -186,9 +186,9 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co002D62||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
     ```
 
-結果的に生成される画像:
+    応答イメージを次に示します。
 
-![カスタム プッシュピンが付いた円をレンダリングする](./media/how-to-render-custom-data/circle-custom-pins.png)
+    ![カスタム プッシュピンが付いた円をレンダリングする](./media/how-to-render-custom-data/circle-custom-pins.png)
 
 ## <a name="next-steps"></a>次の手順
 

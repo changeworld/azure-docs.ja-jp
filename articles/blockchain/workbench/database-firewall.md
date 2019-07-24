@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: d56e7f4750510dc7bb50dbb316dce320b8e8d12b
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65510022"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Azure Blockchain Workbench データベース ファイアウォールを構成する
@@ -26,7 +26,7 @@ ms.locfileid: "65510022"
 ルールを構成するデータベースに接続する手順は、以下の通りです。
 
 1. Azure Blockchain Workbench リソースの**所有者**権限を持つアカウントで Azure Portal にサインインします。
-2. 左側のナビゲーション ペインで、**[リソース グループ]** を選択します。
+2. 左側のナビゲーション ペインで、 **[リソース グループ]** を選択します。
 3. Blockchain Workbench のデプロイにリソース グループの名前を選択します。
 4. **[タイプ]** を選択してリソースの一覧を並べ替えて、使用する **SQL Server** を選択します。
 5. 次の画面キャプチャのリソース リスト例は、*master* と *lsgn-sdk* の 2 つのデータベースを示しています。 ファイアウォール規則は *lsgn-sdk* で構成します。
@@ -51,7 +51,7 @@ ms.locfileid: "65510022"
    ![ファイアウォール規則の作成](./media/database-firewall/create-firewall-rule.png)
 
     > [!NOTE]
-    > お使いのコンピューターの IP アドレスのみを追加する場合は、**[+ クライアント IP の追加]** を選択します。
+    > お使いのコンピューターの IP アドレスのみを追加する場合は、 **[+ クライアント IP の追加]** を選択します。
         
 1. **[保存]** を選択して、ファイアウォールの構成を保存します。
 2. アプリケーションやツールから接続して、データベース用に構成した IP アドレス範囲をテストします。 SQL Server Management Studio などから試してみるとよいでしょう。

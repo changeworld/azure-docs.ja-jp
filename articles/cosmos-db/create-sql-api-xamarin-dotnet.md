@@ -8,18 +8,17 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: a17461a90a19d775b8c7cac86d0bc6e9a18856bd
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 079f25cf9333b7ca090b5a3390d193b757117c1c
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860886"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986385"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Xamarin で todo アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
-> * [.NET (プレビュー)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
@@ -48,7 +47,7 @@ Mac を使用している場合は、**無料**の [Visual Studio for Mac](https
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a>コレクションの追加
+## <a name="add-a-container"></a>コンテナーの追加
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
@@ -245,7 +244,7 @@ ToDoItems ソリューションのコードには、次の項目が含まれて�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコレクションを作成し、Xamarin アプリを構築およびデプロイする方法を説明しました。 これで、Azure Cosmos DB アカウントに追加のデータをインポートできるようになりました。
+このクイックスタートでは、Azure Cosmos アカウントを作成し、データ エクスプローラーを使用してコンテナーを作成し、Xamarin アプリを構築およびデプロイする方法を説明しました。 これで、Azure Cosmos アカウントに追加のデータをインポートできるようになりました。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)

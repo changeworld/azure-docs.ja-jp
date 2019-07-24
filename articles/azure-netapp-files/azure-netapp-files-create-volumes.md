@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 4/23/2019
+ms.date: 6/6/2019
 ms.author: b-juche
-ms.openlocfilehash: 53b2742cf92f3a3df346ba3557c718b8d7a11a4e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 657bacc153b5721d5a9f34792eaf4796cb477755
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719439"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66808884"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Azure NetApp Files のボリュームを作成する
 
@@ -90,34 +90,36 @@ ms.locfileid: "64719439"
 
 Azure NetApp Files は SMBv3 ボリュームをサポートしています。 SMB ボリュームを追加する前に Active Directory の接続を作成する必要があります。 
 
+### <a name="requirements-for-active-directory-connections"></a>Active Directory 接続の要件
+
+ Active Directory 接続の要件は次のとおりです。 
+
+* 使用する管理者アカウントは、指定する組織単位 (OU) パスにマシン アカウントを作成できる必要があります。  
+
+* 適切なポートは、該当する Windows Active Directory (AD) のサーバーで開く必要があります。  
+    必要なポートは次のとおりです。 
+
+    |     Service           |     Port     |     Protocol     |
+    |-----------------------|--------------|------------------|
+    |    AD Web サービス    |    9389      |    TCP           |
+    |    DNS                |    53        |    TCP           |
+    |    DNS                |    53        |    UDP           |
+    |    ICMPv4             |    該当なし       |    エコー応答    |
+    |    Kerberos           |    464       |    TCP           |
+    |    Kerberos           |    464       |    UDP           |
+    |    Kerberos           |    88        |    TCP           |
+    |    Kerberos           |    88        |    UDP           |
+    |    LDAP               |    389       |    TCP           |
+    |    LDAP               |    389       |    UDP           |
+    |    LDAP               |    3268      |    TCP           |
+    |    NetBIOS 名       |    138       |    UDP           |
+    |    SAM/LSA            |    445       |    TCP           |
+    |    SAM/LSA            |    445       |    UDP           |
+    |    セキュリティで保護された LDAP        |    636       |    TCP           |
+    |    セキュリティで保護された LDAP        |    3269      |    TCP           |
+    |    w32time            |    123       |    UDP           |
+
 ### <a name="create-an-active-directory-connection"></a>Active Directory 接続を作成する
-
-1. 次の要件が満たされていることを確認します。 
-
-    * 使用する管理者アカウントは、指定する組織単位 (OU) パスにマシン アカウントを作成できる必要があります。
-    * 適切なポートは、該当する Windows Active Directory (AD) のサーバーで開く必要があります。  
-        必要なポートは次のとおりです。 
-
-        |     Service           |     Port     |     Protocol     |
-        |-----------------------|--------------|------------------|
-        |    AD Web サービス    |    9389      |    TCP           |
-        |    DNS                |    53        |    TCP           |
-        |    DNS                |    53        |    UDP           |
-        |    ICMPv4             |    該当なし       |    エコー応答    |
-        |    Kerberos           |    464       |    TCP           |
-        |    Kerberos           |    464       |    UDP           |
-        |    Kerberos           |    88        |    TCP           |
-        |    Kerberos           |    88        |    UDP           |
-        |    LDAP               |    389       |    TCP           |
-        |    LDAP               |    389       |    UDP           |
-        |    LDAP               |    3268      |    TCP           |
-        |    NetBIOS 名       |    138       |    UDP           |
-        |    SAM/LSA            |    445       |    TCP           |
-        |    SAM/LSA            |    445       |    UDP           |
-        |    セキュリティで保護された LDAP        |    636       |    TCP           |
-        |    セキュリティで保護された LDAP        |    3269      |    TCP           |
-        |    w32time            |    123       |    UDP           |
-
 
 1. NetApp アカウントで **[Active Directory 接続]** をクリックし、 **[参加]** をクリックします。  
 
@@ -125,10 +127,10 @@ Azure NetApp Files は SMBv3 ボリュームをサポートしています。 SM
 
 2. [Active Directory に参加します] ウィンドウで、次の情報を指定します。
 
-    * **プライマリ DNS**   
-        これは、Azure NetApp Files と共に使用する優先 Active Directory Domain Services のドメイン コントローラーの IP アドレスです。 
-    * **セカンダリ DNS**  
-        これは、Azure NetApp Files と共に使用するセカンダリ Active Directory Domain Services のドメイン コントローラーの IP アドレスです。 
+    * **プライマリ DNS**  
+        これは、Active Directory ドメイン参加と SMB 認証操作に必要な DNS です。 
+    * **セカンダリ DNS**   
+        これは、冗長ネーム サービスを確保するためのセカンダリ DNS サーバーです。 
     * **ドメイン**  
         これは、参加させる Active Directory Domain Services のドメイン名です。
     * **SMB サーバー (コンピューター アカウント) プレフィックス**  

@@ -15,11 +15,11 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862864"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60935778"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory 向け Atlassian Jira および Confluence 管理ガイド
 
@@ -92,7 +92,7 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 1. 管理者として、Jira または Confluence のインスタンスにサインインします。
 
-2. Jira/Confluence の管理コンソールに移動し、**[アドオン]** を選択します。
+2. Jira/Confluence の管理コンソールに移動し、 **[アドオン]** を選択します。
 
 3. Microsoft ダウンロード センターから、[Microsoft SAML SSO Plugin for Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [Microsoft SAML SSO Plugin for Confluence](https://www.microsoft.com/download/details.aspx?id=56503) をダウンロードします。
 
@@ -100,11 +100,11 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 4. プラグインを選択すると、Universal Plug-in Manager (UPM) によりプラグインがインストールされます。
 
-プラグインがインストールされると、**[アドオンの管理]** の **[User Installed add-ons]\(ユーザーがインストールしたアドオン\)** セクションに表示されます。
+プラグインがインストールされると、 **[アドオンの管理]** の **[User Installed add-ons]\(ユーザーがインストールしたアドオン\)** セクションに表示されます。
 
 ## <a name="plug-in-configuration"></a>プラグイン構成
 
-プラグインの使用を開始する前に、プラグインを構成する必要があります。 プラグインを選択して、**[構成]** ボタンを選択し、構成の詳細を入力します。
+プラグインの使用を開始する前に、プラグインを構成する必要があります。 プラグインを選択して、 **[構成]** ボタンを選択し、構成の詳細を入力します。
 
 次の図は、Jira と Confluence 両方の構成画面です。
 
@@ -112,13 +112,13 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 * **メタデータ URL**:Azure AD からフェデレーション メタデータを取得するための URL です。
 
-* **識別子**:Azure AD が要求のソースを検証するために使用する URL です。 これは、Azure AD の**識別子**要素にマップされます。 このプラグインはこの URL を https://*\<domain:port>*/ として自動的に派生させます。
+* **識別子**:Azure AD が要求のソースを検証するために使用する URL です。 これは、Azure AD の**識別子**要素にマップされます。 このプラグインはこの URL を https:// *\<domain:port>* / として自動的に派生させます。
 
-* **応答 URL**:SAML サインインを開始する ID プロバイダー (IdP) の応答 URL です。 これは、Azure AD の**応答 URL** 要素にマップされます。 このプラグインはこの URL を https://*\<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
+* **応答 URL**:SAML サインインを開始する ID プロバイダー (IdP) の応答 URL です。 これは、Azure AD の**応答 URL** 要素にマップされます。 このプラグインはこの URL を https:// *\<domain:port>* /plugins/servlet/saml/auth として自動的に派生させます。
 
-* **サインオン URL**:SAML サインインを開始する IdP のサインオン URL です。 これは、Azure AD の**サインオン**要素にマップされます。 このプラグインはこの URL を https://*\<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
+* **サインオン URL**:SAML サインインを開始する IdP のサインオン URL です。 これは、Azure AD の**サインオン**要素にマップされます。 このプラグインはこの URL を https:// *\<domain:port>* /plugins/servlet/saml/auth として自動的に派生させます。
 
-* **IdP Entity ID (IdP エンティティ ID)**:IdP が使うエンティティ ID です。 このボックスは、メタデータ URL が解決されると設定されます。
+* **IdP Entity ID (IdP エンティティ ID)** :IdP が使うエンティティ ID です。 このボックスは、メタデータ URL が解決されると設定されます。
 
 * **ログイン URL**:IdP からのサインイン URL です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
 
@@ -126,17 +126,17 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 * **X.509 証明書**:IdP の X.509 証明書です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
 
-* **Login Button Name (ログイン ボタン名)**:組織がサインイン ページでユーザーに表示するサインイン ボタンの名前です。
+* **Login Button Name (ログイン ボタン名)** :組織がサインイン ページでユーザーに表示するサインイン ボタンの名前です。
 
-* **SAML User ID Locations (SAML ユーザー ID の場所)**:SAML の応答で Jira または Confluence のユーザー ID が必要となる場所です。 **NameID** またはカスタム属性名を使用できます。
+* **SAML User ID Locations (SAML ユーザー ID の場所)** :SAML の応答で Jira または Confluence のユーザー ID が必要となる場所です。 **NameID** またはカスタム属性名を使用できます。
 
 * **属性名**:ユーザー ID が格納されている属性の名前です。
 
-* **Enable Home Realm Discovery (ホーム領域の検出を有効にする)**:Active Directory フェデレーション サービス (AD FS) ベースのサインインを使用する場合に選択します。
+* **Enable Home Realm Discovery (ホーム領域の検出を有効にする)** :Active Directory フェデレーション サービス (AD FS) ベースのサインインを使用する場合に選択します。
 
 * **ドメイン名**:サインインが AD FS ベースの場合のドメイン名です。
 
-* **Enable Single Signout (シングル サインアウトを有効にする)**:ユーザーが Jira または Confluence からサインアウトしたときに Azure AD からサインアウトする場合に選択します。
+* **Enable Single Signout (シングル サインアウトを有効にする)** :ユーザーが Jira または Confluence からサインアウトしたときに Azure AD からサインアウトする場合に選択します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -144,7 +144,7 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 * **Azure AD で証明書の有効期限がまもなく切れる**:アドオンは、証明書の自動ロールオーバーを処理します。 証明書の有効期限が近づいたら、新しい証明書はアクティブとしてマークし、使われていない証明書を削除する必要があります。 この状況でユーザーが Jira にサインインしようとすると、プラグインは新しい証明書を取得して保存します。
 
-* **WebSudo を無効にしたい (セキュリティで保護された管理者セッションを無効にする)**:
+* **WebSudo を無効にしたい (セキュリティで保護された管理者セッションを無効にする)** :
 
   * Jira の場合、セキュリティで保護された管理者セッション (つまり、管理機能にアクセスする前のパスワードの確認) は既定で有効になります。 Jira インスタンスでこの機能を削除する場合は、jira-config.properties ファイルに次の行を指定します: `ira.websudo.is.disabled = true`
 

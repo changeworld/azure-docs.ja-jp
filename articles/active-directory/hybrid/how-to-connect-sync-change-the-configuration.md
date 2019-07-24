@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122979"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60244333"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成に変更を加える
 この記事の目的は、Azure Active Directory (Azure AD) Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -63,7 +63,7 @@ ms.locfileid: "58122979"
    * **名前**: 規則にわかりやすい名前を付けます。
    * **説明**:規則の目的が他のユーザーにもわかるように説明します。
    * **接続されたシステム**: これはオブジェクトを検出できるシステムです。 この場合、**Active Directory コネクタ**を選択します。
-   * **Connected System/Metaverse Object Type (接続されたシステム/メタバース オブジェクトの種類)**: それぞれ **[ユーザー]** と **[人]** を選択します。
+   * **Connected System/Metaverse Object Type (接続されたシステム/メタバース オブジェクトの種類)** : それぞれ **[ユーザー]** と **[人]** を選択します。
    * **リンクの種類**: この値は **[結合]** に変更できます。
    * **優先順位**: システム内で一意になる値を指定します。 指定する数値が小さいほど、優先順位が高くなることを示します。
    * **タグ**: 空のままにします。 Microsoft が提供する標準の規則の場合のみ、このボックスには値が設定されています。
@@ -71,7 +71,7 @@ ms.locfileid: "58122979"
    ![Inbound rule scoping filter](./media/how-to-connect-sync-change-the-configuration/scopingfilter.png)  
    このセクションを使用して、規則を適用するオブジェクトを定義します。 空のままにした場合は、すべてのユーザー オブジェクトに規則が適用されます。 ただし、それには、会議室、サービス アカウントなど、人以外のユーザー オブジェクトも含まれます。
 4. **[Join rules]\(結合規則\)** ページで、このフィールドを空のままにします。
-5. **[Transformations]\(変換\)** ページで、**[FlowType]** を **[式]** に変更します。 **[対象の属性]** で、**[givenName]** を選択します。 **[ソース]** に「**PCase([givenName])**」と入力します。
+5. **[Transformations]\(変換\)** ページで、 **[FlowType]** を **[式]** に変更します。 **[対象の属性]** で、 **[givenName]** を選択します。 **[ソース]** に「**PCase([givenName])** 」と入力します。
    ![Inbound rule transformations](./media/how-to-connect-sync-change-the-configuration/transformations.png)  
    同期エンジンでは、関数名と属性名の両方で大文字小文字が区別されます。 入力した内容が間違っている場合は、規則を追加するときに警告が表示されます。 保存して続行できますが、規則を再度開いて修正する必要があります。
 6. **[追加]** をクリックして規則を保存します。
@@ -90,7 +90,7 @@ ms.locfileid: "58122979"
 
    1. [Actions (操作)] の **[コネクタ]** を選択します。 前の手順で変更を加えたコネクタ (この場合は Active Directory Domain Services) を特定して選択します。 
    2. **[アクション]** から **[実行]** を選択します。
-   3. **[完全同期]** を選択し、**[OK]** を選択します。
+   3. **[完全同期]** を選択し、 **[OK]** を選択します。
    ![Full sync](./media/how-to-connect-sync-change-the-configuration/fullsync.png)  
    これで、オブジェクトはメタバースで更新されます。 メタバース内のオブジェクトを参照して、変更を確認します。
 
@@ -99,7 +99,7 @@ ms.locfileid: "58122979"
    1. [Actions (操作)] の **[コネクタ]** を選択します。 前の手順で変更を加えたコネクタ (この場合は Active Directory Domain Services) を特定して選択します。
    2. **[Search Connector Space (コネクタ スペースの検索)]** を選択します。 
    3. **スコープ**を使用して、変更のテストに使用するオブジェクトを検索します。 オブジェクトを選択し、 **[プレビュー]** をクリックします。 
-   4. 新しい画面で、**[コミット プレビュー]** を選択します。  
+   4. 新しい画面で、 **[コミット プレビュー]** を選択します。  
    ![Commit preview](./media/how-to-connect-sync-change-the-configuration/commitpreview.png)  
    これで、変更はメタバースにコミットされました。
 
@@ -107,7 +107,7 @@ ms.locfileid: "58122979"
 
 1. 値が要求されていることと規則が適用されたことを確認するために、いくつかのサンプル オブジェクトを選択します。 
 2. 上部の **[Metaverse Search (メタバース検索)]** を選択します。 関連するオブジェクトを検索するために必要なフィルターを追加します。 
-3. 検索結果からオブジェクトを開きます。 属性値を確認し、**[同期規則]** 列で、規則が適切に適用されていることを確認します。  
+3. 検索結果からオブジェクトを開きます。 属性値を確認し、 **[同期規則]** 列で、規則が適切に適用されていることを確認します。  
 ![Metaverse search](./media/how-to-connect-sync-change-the-configuration/mvsearch.png)  
 
 ### <a name="enable-the-scheduler"></a>スケジューラを有効にする
@@ -125,7 +125,7 @@ ms.locfileid: "58122979"
 他の属性フローで規則を作成するには、次の手順に従います。
 
 1. **[スタート]** メニューから **Synchronization Rules Editor** を開きます。
-2. 左側で **[受信]** を選択したまま、**[新しいルールの追加]** ボタンをクリックします。
+2. 左側で **[受信]** を選択したまま、 **[新しいルールの追加]** ボタンをクリックします。
 3. 規則の名前と説明を入力します。 オンプレミスの Active Directory インスタンスと該当するオブジェクトの種類を選択します。 **[リンクの種類]** で **[結合]** を選択します。 **[優先順位]** には、他の規則で使われていない数値を選びます。 標準の規則は 100 から始まるので、この例では 50 を使用できます。
   ![Attribute flow 2](./media/how-to-connect-sync-change-the-configuration/attributeflowjp2.png)
 4. **[スコープ フィルター]** は空のままにします (つまり、フォレスト内のすべてのユーザー オブジェクトに適用されます)。
@@ -133,7 +133,7 @@ ms.locfileid: "58122979"
 6. **[Transformations]\(変換\)** で、次のフローを作成します。  
   ![属性フロー 3](./media/how-to-connect-sync-change-the-configuration/attributeflowjp3.png)
 7. **[追加]** をクリックして規則を保存します。
-8. **Synchronization Service Manager**に移動します。 **[コネクタ]** で、先ほど規則を追加したコネクタを選択します。 **[実行]** を選択し、**[完全同期]** を選択します。 完全同期により、現在の規則を使ってすべてのオブジェクトが再計算されます。
+8. **Synchronization Service Manager**に移動します。 **[コネクタ]** で、先ほど規則を追加したコネクタを選択します。 **[実行]** を選択し、 **[完全同期]** を選択します。 完全同期により、現在の規則を使ってすべてのオブジェクトが再計算されます。
 
 このカスタム規則を同じオブジェクトに適用した後の結果は次のとおりです。  
 ![Attribute flow 4](./media/how-to-connect-sync-change-the-configuration/attributeflowjp4.png)
@@ -170,7 +170,7 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
   ![説明](./media/how-to-connect-sync-change-the-configuration/syncruledescription.png)
 2. **FlowType** の場合は **Expression**、**Source** の場合は **AuthoritativeNull** を使用して属性フローを作成します。 リテラル **AuthoritativeNull** は、低い優先度の同期規則が値を設定しようとしても、メタバースの値は空になることを示します。
   ![拡張属性の変換](./media/how-to-connect-sync-change-the-configuration/syncruletransformations.png)
-3. 同期規則を保存します。 **Synchronization Service** を起動し、コネクタを探して **[実行]**、**[完全同期]** の順に選択します。 この手順では、すべての属性フローが再計算されます。
+3. 同期規則を保存します。 **Synchronization Service** を起動し、コネクタを探して **[実行]** 、 **[完全同期]** の順に選択します。 この手順では、すべての属性フローが再計算されます。
 4. コネクタ スペースを検索して、目的の変更がエクスポート対象になっていることを確認します。
   ![段階的な削除](./media/how-to-connect-sync-change-the-configuration/deletetobeexported.png)
 
@@ -178,14 +178,14 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
 変更箇所がわずかしかない場合は、同期規則エディターで間に合います。 多くの変更を加える必要がある場合は、PowerShell を使用する方法が向いています。 一部の高度な機能は PowerShell のみで利用できます。
 
 ### <a name="get-the-powershell-script-for-an-out-of-box-rule"></a>既定の規則に対応する PowerShell スクリプトを取得する
-既定の規則を作成した PowerShell スクリプトを確認するには、同期規則エディターで規則を選択し、**[エクスポート]** をクリックします。 これで、規則を作成した PowerShell スクリプトを入手できます。
+既定の規則を作成した PowerShell スクリプトを確認するには、同期規則エディターで規則を選択し、 **[エクスポート]** をクリックします。 これで、規則を作成した PowerShell スクリプトを入手できます。
 
 ### <a name="advanced-precedence"></a>高度な優先順位
 既定の同期規則の優先順位の値は 100 から始まります。 多くのフォレストがあり、多くのカスタム変更を加える必要がある場合、99 個の同期規則では十分でないことがあります。
 
 既定の規則よりも前に他の規則を挿入するように、同期エンジンに指示できます。 この動作を設定するには、次の手順を実行します。
 
-1. Synchronization Rules Editor で最初の既定の同期規則 (**In from AD-User Join**) をマークし、**[エクスポート]** を選択します。 Copy the SR Identifier value.  
+1. Synchronization Rules Editor で最初の既定の同期規則 (**In from AD-User Join**) をマークし、 **[エクスポート]** を選択します。 Copy the SR Identifier value.  
 ![PowerShell before change](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
 2. 新しい同期規則を作成します。 Synchronization Rules Editor を使用して作成できます。 この規則を PowerShell スクリプトにエクスポートします。
 3. プロパティ **PrecedenceBefore**に、既定規則の識別子の値を挿入します。 **[優先順位]** を **0** に設定します。 識別子の属性が一意であり、別の規則の GUID を再利用していないことを確認します。 また、**ImmutableTag** プロパティが設定されていないことを確認します。 このプロパティは、既定の規則に対してのみ設定する必要があります。
@@ -234,14 +234,14 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
  1. Azure AD Connect サーバーで PowerShell セッションを開始します。
  2. `Set-ADSyncScheduler -SyncCycleEnabled $false` コマンドレットを実行して、スケジュールされた同期を無効にします。
- 3. **[スタート]** > **[Synchronization Service]** の順に移動して、Sychronization Service Manager を起動します。
+ 3. **[スタート]**  >  **[Synchronization Service]** の順に移動して、Sychronization Service Manager を起動します。
  4. **[操作]** タブに移動し、状態が "*進行中*" の操作がないことを確認します。
 
 ### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>手順 2: オンプレミス AD コネクタのスキーマにソース属性を追加する
 オンプレミス AD のコネクタ スペースには、一部の Azure AD 属性がインポートされません。 インポート対象の属性のリストにソース属性を追加するには、次の手順を実行します。
 
  1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
- 2. オンプレミス AD コネクタを右クリックし、**[プロパティ]** を選択します。
+ 2. オンプレミス AD コネクタを右クリックし、 **[プロパティ]** を選択します。
  3. ポップアップ ダイアログ ボックスで **[属性の選択]** タブに移動します。
  4. 属性の一覧でソース属性のチェック ボックスがオンになっていることを確認します。
  5. **[OK]** をクリックして保存します。
@@ -251,7 +251,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 既定では、Azure AD のコネクタ スペースに UserType 属性がインポートされません。 インポート対象の属性のリストに UserType 属性を追加するには、次の手順を実行します。
 
  1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
- 2. **Azure AD コネクタ**を右クリックし、**[プロパティ]** を選択します。
+ 2. **Azure AD コネクタ**を右クリックし、 **[プロパティ]** を選択します。
  3. ポップアップ ダイアログ ボックスで **[属性の選択]** タブに移動します。
  4. 属性の一覧で UserType 属性のチェック ボックスがオンになっていることを確認します。
  5. **[OK]** をクリックして保存します。
@@ -261,7 +261,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 ### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>手順 4: オンプレミス Active Directory から属性値を誘導する受信方向の同期規則を作成する
 受信方向の同期規則によって、属性値をオンプレミス Active Directory のソース属性からメタバースに誘導することができます。
 
-1. **[スタート]** > **[Synchronization Rules Editor]** の順に移動して、Synchronization Rules Editor を起動します。
+1. **[スタート]**  >  **[Synchronization Rules Editor]** の順に移動して、Synchronization Rules Editor を起動します。
 2. 検索フィルターの **[方向]** を **[受信]** に設定します。
 3. **[新しいルールの追加]** ボタンをクリックして受信方向の規則を新規作成します。
 4. **[説明]** タブで次の構成を指定します。
@@ -286,13 +286,13 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 6. **[変換]** タブに移動し、必要な変換規則を実装します。 たとえば、未使用のオンプレミス AD 属性 (extensionAttribute1 など) を UserType のソース属性として指定した場合は、直接属性フローを実装できます。
 
-    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
+    | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
     | 直接 | UserType | extensionAttribute1 | オフ | アップデート |
 
     他の例として、他のプロパティから UserType 属性の値を派生させる場合があります。 たとえば、オンプレミス AD UserPrincipalName 属性の末尾のドメイン部分が <em>@partners.fabrikam123.org</em> である場合、すべてのユーザーをゲストとして同期する必要があるとします。次のように式を実装することができます。
 
-    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
+    | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
     | 式 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | オフ | プライマリの |
 
@@ -329,7 +329,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 6. **[変換]** タブに移動し、次の変換規則を実装します。
 
-    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
+    | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
     | 直接 | UserType | UserType | オフ | アップデート |
 
@@ -345,8 +345,8 @@ Active Directory のスキーマと Azure AD コネクタのスキーマに新�
 1. **オンプレミス AD コネクタ**で**フル インポート**を実行します。
 
    1. Synchronization Service Manager の **[操作]** タブに進みます。
-   2. **オンプレミス AD コネクタ**を右クリックし、**[実行]** を選択します。
-   3. ポップアップ ダイアログ ボックスで **[フル インポート]** を選択し、**[OK]** をクリックします。
+   2. **オンプレミス AD コネクタ**を右クリックし、 **[実行]** を選択します。
+   3. ポップアップ ダイアログ ボックスで **[フル インポート]** を選択し、 **[OK]** をクリックします。
    4. 操作が完了するのを待ちます。
 
       > [!NOTE]
@@ -354,8 +354,8 @@ Active Directory のスキーマと Azure AD コネクタのスキーマに新�
 
 2. **Azure AD コネクタ**で **[フル インポート]** を実行します。
 
-   1. **Azure AD コネクタ**を右クリックし、**[実行]** を選択します。
-   2. ポップアップ ダイアログ ボックスで **[フル インポート]** を選択し、**[OK]** をクリックします。
+   1. **Azure AD コネクタ**を右クリックし、 **[実行]** を選択します。
+   2. ポップアップ ダイアログ ボックスで **[フル インポート]** を選択し、 **[OK]** をクリックします。
    3. 操作が完了するのを待ちます。
 
 3. 既存のユーザー オブジェクトで同期規則の変更を検証します。
@@ -366,24 +366,24 @@ Active Directory のスキーマと Azure AD コネクタのスキーマに新�
 
 4. **オンプレミス AD コネクタ**で**完全同期**を実行します。
 
-   1. **オンプレミス AD コネクタ**を右クリックし、**[実行]** を選択します。
-   2. ポップアップ ダイアログ ボックスで **[完全同期]** を選択し、**[OK]** をクリックします。
+   1. **オンプレミス AD コネクタ**を右クリックし、 **[実行]** を選択します。
+   2. ポップアップ ダイアログ ボックスで **[完全同期]** を選択し、 **[OK]** をクリックします。
    3. 操作が完了するのを待ちます。
 
 5. Azure AD に対する**保留中のエクスポート**を確認します。
 
-   1. **Azure AD コネクタ**を右クリックし、**[コネクタ スペースの検索]** を選択します。
+   1. **Azure AD コネクタ**を右クリックし、 **[コネクタ スペースの検索]** を選択します。
    2. **[Search Connector Space]\(コネクタ スペースの検索\)** ポップアップ ダイアログ ボックスで次の手順を実行します。
 
       - **[スコープ]** を **[Pending Export]\(保留中のエクスポート\)** に設定します。
-      - 次の 3 つのチェック ボックスすべてをオンにします: **[追加]**、**[変更]**、および **[削除]**。
+      - 次の 3 つのチェック ボックスすべてをオンにします: **[追加]** 、 **[変更]** 、および **[削除]** 。
       - **[検索]** ボタンをクリックすると、変更がエクスポート待ちになっているオブジェクトが一覧表示されます。 指定したオブジェクトの変更を検証するには、オブジェクトをダブルクリックします。
       - 変更が正しいことを確認します。
 
 6. **Azure AD コネクタ**で **[エクスポート]** を実行します。
 
-   1. **Azure AD コネクタ**を右クリックし、**[実行]** を選択します。
-   2. **[Run Connector]\(コネクタの実行\)** ポップアップ ダイアログ ボックスで、**[エクスポート]** を選択し、**[OK]** をクリックします。
+   1. **Azure AD コネクタ**を右クリックし、 **[実行]** を選択します。
+   2. **[Run Connector]\(コネクタの実行\)** ポップアップ ダイアログ ボックスで、 **[エクスポート]** を選択し、 **[OK]** をクリックします。
    3. Azure AD へのエクスポートが完了するまで待ちます。
 
 > [!NOTE]

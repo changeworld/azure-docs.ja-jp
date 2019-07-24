@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.openlocfilehash: be592cb6bb7c041fab0a2f96a338f4f4bb0ff00a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 2d70e1b5434b2fb263d1f4587888d4758fac2828
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510925"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66225358"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -42,8 +42,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 レプリカ作成ワークフローを開始すると、空の Azure Database for MySQL サーバーが作成されます。 新しいサーバーには、マスター サーバー上にあったデータが設定されます。 作成時間は、マスター上のデータ量と、最後の週次完全バックアップからの経過時間に依存します。 時間の範囲は、数分から数時間になる可能性があります。
 
-> [!NOTE]
-> サーバーに記憶域のアラートを設定していない場合、設定することをお勧めします。 サーバーがレプリケーションに影響を与えるその容量の上限に近づくと、アラートによって通知されます。
+すべてのレプリカでストレージの[自動拡張](concepts-pricing-tiers.md#storage-auto-grow)が有効になっています。 自動拡張機能により、レプリカはレプリケートされるデータに追従していくことができ、ストレージ不足エラーによって発生するレプリケーションの中断が防止されます。
 
 [Azure portal で読み取りレプリカを作成する](howto-read-replicas-portal.md)方法を確認してください。
 

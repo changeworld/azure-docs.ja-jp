@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 864e9586082ed95bf17135414ec4b879e3034ace
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fd8e886a78d0689ca60d8ea7c4d16639c81d5733
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267344"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65602733"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの集計
 
@@ -79,7 +79,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>サブグループの評価
-ご自身のデータのサブグループでカウントまたはその他の集計を実行するには、`by` キーワードを使用します。 たとえば、ハートビートを送信した個別の Linux コンピューターの数を国ごとにカウントするには、次を使用します。
+ご自身のデータのサブグループでカウントまたはその他の集計を実行するには、`by` キーワードを使用します。 たとえば、ハートビートを送信した個別の Linux コンピューターの数を国や地域ごとにカウントするには、次を使用します。
 
 ```Kusto
 Heartbeat 
@@ -96,7 +96,7 @@ Heartbeat
 |オランダ      | 2                   |
 
 
-ご自身のデータのさらに小さなサブグループを分析するには、追加の列名を `by` セクションに追加します。 たとえば、OSType あたりの個別のコンピューターの数を国ごとにカウントできます。
+ご自身のデータのさらに小さなサブグループを分析するには、追加の列名を `by` セクションに追加します。 たとえば、OSType あたりの個別のコンピューターの数を国や地域ごとにカウントできます。
 
 ```Kusto
 Heartbeat 

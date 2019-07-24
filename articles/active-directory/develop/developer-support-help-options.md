@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2019
+ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0741dda0aa087f21625cabe79e51d0b9e344f7ef
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962663"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66235333"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD)、Microsoft ID、または Microsoft Graph API
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
-ここで、*{Your Search Terms}* は検索するキーワードに該当します。
+ここで、 *{Your Search Terms}* は検索するキーワードに該当します。
 
 ## <a name="use-the-development-support-tools"></a>開発サポート ツールを使用する
 
@@ -81,10 +81,10 @@ Stack Overflow の次の投稿には、質問方法やソース コードの追�
 
 ライブラリに関するバグや問題が見つかった場合は、GitHub リポジトリに問題を報告してください。 ライブラリはオープンソースであるため、プル要求を送信することもできます。
 
-ライブラリの一覧と GitHub リポジトリを確認するには、次の記事を参照してください。
+ライブラリとその GitHub リポジトリの一覧については、以下を参照してください。
 
 * [ADAL](active-directory-authentication-libraries.md) ライブラリおよび GitHub リポジトリ
-* [MSAL](reference-v2-libraries.md) ライブラリおよび GitHub リポジトリ
+* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md)、[MSAL.Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)、および [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) ライブラリと GitHub リポジトリ
 
 ## <a name="open-a-support-request"></a>サポート要求をオープンする
 

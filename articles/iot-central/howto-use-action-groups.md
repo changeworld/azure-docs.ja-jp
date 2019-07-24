@@ -4,16 +4,16 @@ description: 1 つの IoT Central ルールから複数のアクションを実�
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/19/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: 857d747fa691d1ec2b386d5931a7edea08b7e609
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: d9d7b2d189c6a1533be2d1cae4989669787c3f2a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522788"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849001"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>1 つまたは複数のルールから実行する複数のアクションをグループ化する
 
@@ -43,7 +43,7 @@ IoT Central ルールでアクション グループを使用するには、IoT 
 
 ## <a name="use-an-action-group"></a>アクション グループを使用する
 
-IoT Central アプリケーションでアクション グループを使用するには、まず、テレメトリやイベントのルールを作成します。 ルールにアクションを追加するとき、**[Azure Monitor アクション グループ]** を選択します。
+IoT Central アプリケーションでアクション グループを使用するには、まず、テレメトリやイベントのルールを作成します。 ルールにアクションを追加するとき、 **[Azure Monitor アクション グループ]** を選択します。
 
 ![アクションの選択](media/howto-use-action-groups/chooseaction.png)
 
@@ -59,7 +59,7 @@ Azure サブスクリプションからアクション グループを選択し�
 
 | アクションの種類 | 出力形式 |
 | ----------- | -------------- |
-| 電子メール       | 標準 IoT Central メール テンプレート |
+| Email       | 標準 IoT Central メール テンプレート |
 | sms         | Azure IoT Central alert: ${applicationName} - "${ruleName}" triggered on "${deviceName}" at ${triggerDate} ${triggerTime} |
 | 音声       | Azure I.O.T Central alert: rule "${ruleName}" triggered on device "${deviceName}" at ${triggerDate} ${triggerTime}, in application ${applicationName} |
 | Webhook     | { "schemaId" :"AzureIoTCentralRuleWebhook", "data": {[regular webhook payload](#payload)} } |

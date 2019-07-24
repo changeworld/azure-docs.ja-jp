@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b596af8ae9fbbaee6964622df44d316a11582cb9
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 515dc8ed4a2fc9b3d2973d393c6894d8c7cef8f0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337925"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66729390"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -138,9 +138,9 @@ Azure Container Registry にコンテナー イメージを保持している場
 
 1. Azure ポータルで、自分のコンテナー レジストリに移動します。
 
-1. 管理者アカウントが有効であることを確認するには、**[アクセス キー]** を選択し、**[管理者ユーザー]** の下で **[有効化]** を選択します。
+1. 管理者アカウントが有効であることを確認するには、 **[アクセス キー]** を選択し、 **[管理者ユーザー]** の下で **[有効化]** を選択します。
 
-1. **[リポジトリ]** を選択し、次にデプロイ元のリポジトリを選択して、デプロイするコンテナー イメージのタグを右クリックし、**[実行インスタンス]** を選択します。
+1. **[リポジトリ]** を選択し、次にデプロイ元のリポジトリを選択して、デプロイするコンテナー イメージのタグを右クリックし、 **[実行インスタンス]** を選択します。
 
     ![Azure Portal の Azure Container Registry の "実行インスタンス"][acr-runinstance-contextmenu]
 
@@ -163,7 +163,7 @@ Azure コンテナー レジストリの認証について詳しくは、「[Azu
 
 <!-- LINKS - External -->
 [cloud-shell-bash]: https://shell.azure.com/bash
-[cloud-shell-powershell]: https://shell.azure.com/powershell
+[cloud-shell-try-it]: https://shell.azure.com/powershell
 
 <!-- LINKS - Internal -->
 [az-acr-show]: /cli/azure/acr#az-acr-show

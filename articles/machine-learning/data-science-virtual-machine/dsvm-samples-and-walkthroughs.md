@@ -17,11 +17,11 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
 ms.openlocfilehash: e61f0f4ba30b29fea1b2fd5f2a2ab253d3a6710c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475756"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60502866"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>データ サイエンス仮想マシンに関するサンプル
 
@@ -30,7 +30,7 @@ Azure データ サイエンス仮想マシンには、サンプル コードの
 > データ サイエンス仮想マシン上で Jupyter ノートブックを実行する方法の詳細については、「[Jupyter にアクセスする](#access-jupyter)」のセクションを参照してください。
 
 ## <a name="quick-reference-of-samples"></a>サンプルのクイック リファレンス
-| サンプル カテゴリ | 説明 | 場所 |
+| サンプル カテゴリ | 説明 | Locations |
 | ------------- | ------------- | ------------- |
 | R 言語  | R でのサンプルでは、Azure クラウド データ ストアに接続する方法などのシナリオについて説明します。 また、オープンソースの R と Microsoft R を比較する方法についても説明します。さらに、Microsoft R Server または SQL Server 上でモデルを運用化する方法について説明します。 <br/> [R 言語](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python 言語  | Python でのサンプルでは、Azure クラウド データ ストアに接続し、Azure Machine Learning を操作する方法などのシナリオについて説明します。  <br/> [Python 言語](#python-language) | <br/>`~notebooks` <br/><br/>|

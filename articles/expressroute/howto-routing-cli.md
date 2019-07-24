@@ -9,10 +9,10 @@ ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 3f27e10c47b84b6f037c0d9422e9fba40e0315f7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64717040"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線のピアリングの作成と変更
@@ -324,7 +324,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 このセクションでは、ExpressRoute 回線用の Azure パブリック ピアリング構成を作成、取得、更新、および削除します。
 
 > [!Note]
-> Azure パブリック ピアリングは、新しい回線では非推奨です。 詳細については、「[ExpressRoute peering](expressroute-circuit-peerings.md)」を参照してください。
+> Azure パブリック ピアリングは、新しい回線では非推奨です。 詳細については、[ExpressRoute のピアリング](expressroute-circuit-peerings.md)に関する記事を参照してください。
 >
 
 ### <a name="to-create-azure-public-peering"></a>Azure パブリック ピアリングを作成するには

@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.author: tomfitz
 ms.openlocfilehash: 2f3db5e6260b065c83f0e337306d38dca6e5ff51
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341404"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60389918"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>リソース プロバイダーの登録エラーの解決
 
@@ -123,7 +123,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
    ![リソース プロバイダーを登録するサブスクリプションを選択する](./media/resource-manager-register-provider-errors/select-subscription-to-register.png)
 
-1. サブスクリプションについては、**[リソース プロバイダー]** を選択します。
+1. サブスクリプションについては、 **[リソース プロバイダー]** を選択します。
 
    ![[リソース プロバイダー] を選択する](./media/resource-manager-register-provider-errors/select-resource-provider.png)
 

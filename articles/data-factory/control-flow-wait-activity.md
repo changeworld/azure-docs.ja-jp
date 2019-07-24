@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/12/2018
 ms.author: shlo
 ms.openlocfilehash: 66d79bc1597cd8f3c7e01eb8227eb7c91ba04d1d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807815"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60764753"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Data Factory での wait アクティビティの実行
 パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。 
@@ -39,7 +39,7 @@ ms.locfileid: "56807815"
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | `Wait` アクティビティの名前。 | String | はい
+name | `Wait` アクティビティの名前。 | string | はい
 type | **Wait** に設定する必要があります。 | String | はい
 waitTimeInSeconds | パイプラインが処理を続行するまでの待ち時間 (秒数)。 | 整数 | はい
 

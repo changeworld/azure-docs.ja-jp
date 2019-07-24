@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 96e3a24b0c9f9ab21652ffcd1b29deeb512581e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 144fd11e9c1ee3e00412320840e864a3190ccdb0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796935"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65833979"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
 
@@ -54,7 +54,7 @@ DevTest Labs チームが[パブリック GitHub リポジトリ](https://github
     ![主要な Azure Resource Manager テンプレート ファイル](./media/devtest-lab-create-environment-from-arm/master-template.png)
 
 - パラメーター ファイルで定義したパラメーター値を使用する場合は、パラメーター ファイルの名前を `azuredeploy.parameters.json` にする必要があります。
-- `_artifactsLocation` と `_artifactsLocationSasToken` のパラメーターを使用すると、parametersLink URI の値を構築できるため、DevTest Labs で入れ子にされたテンプレートを自動的に管理できるようになります。 詳細については、「[How Azure DevTest Labs makes nested Resource Manager template deployments easier for testing environments](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/)」(Azure DevTest Labs を使用してテスト環境での入れ子にされた Resource Manager テンプレートのデプロイを簡単にする方法) を参照してください。
+- `_artifactsLocation` と `_artifactsLocationSasToken` のパラメーターを使用すると、parametersLink URI の値を構築できるため、DevTest Labs で入れ子にされたテンプレートを自動的に管理できるようになります。 詳細については、「[テスト環境向けに入れ子になったAzure Resource Manager テンプレートをデプロイする](deploy-nested-template-environments.md)」を参照してください。
 - メタデータを定義して、テンプレートの表示名と説明を指定することができます。 このメタデータは、`metadata.json` はという名前のファイルに格納する必要があります。 次のメタデータ ファイルの例で、表示名と説明を指定する方法を示します。 
 
     ```json
@@ -69,11 +69,11 @@ DevTest Labs チームが[パブリック GitHub リポジトリ](https://github
 1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で目的のラボを選択します。   
-1. ラボの **[概要]** ウィンドウで、**[構成とポリシー]** を選択します。
+1. ラボの **[概要]** ウィンドウで、 **[構成とポリシー]** を選択します。
 
     ![構成とポリシー](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
 
-1. **[Configuration and Policies (構成とポリシー)]** の設定一覧で、**[リポジトリ]** を選択します。 **[リポジトリ]** ウィンドウには、ラボに追加されたリポジトリが一覧表示されます。 `Public Repo` という名前のリポジトリがすべてのラボに自動的に生成され、複数の VM アーティファクトを格納する [DevTest ラボ GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)に接続され、使用されます。
+1. **[Configuration and Policies (構成とポリシー)]** の設定一覧で、 **[リポジトリ]** を選択します。 **[リポジトリ]** ウィンドウには、ラボに追加されたリポジトリが一覧表示されます。 `Public Repo` という名前のリポジトリがすべてのラボに自動的に生成され、複数の VM アーティファクトを格納する [DevTest ラボ GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)に接続され、使用されます。
 
     ![Public Repo](./media/devtest-lab-create-environment-from-arm/public-repo.png)
 
@@ -82,13 +82,13 @@ DevTest Labs チームが[パブリック GitHub リポジトリ](https://github
     - **名前** - ラボで使用するリポジトリ名を入力します。
     - **Git クローン URL** - GitHub または Azure DevOps Services の GIT HTTPS クローン URL を入力します。  
     - **分岐** - Azure Resource Manager テンプレートの定義にアクセスするための分岐名を入力します。 
-    - **個人用アクセス トークン** - 個人用アクセス トークンは、リポジトリに安全にアクセスするために使用されます。 Azure DevOps Services からトークンを取得するには、**&lt;[自分の名前] > [マイ プロファイル] > [セキュリティ] > [パブリック アクセス トークン]** の順に選択します。 GitHub からトークンを入手するには、アバターを選択した後に、**[設定]、[Public access token (パブリック アクセス トークン)]** の順に選択します。 
+    - **個人用アクセス トークン** - 個人用アクセス トークンは、リポジトリに安全にアクセスするために使用されます。 Azure DevOps Services からトークンを取得するには、 **&lt;[自分の名前] > [マイ プロファイル] > [セキュリティ] > [パブリック アクセス トークン]** の順に選択します。 GitHub からトークンを入手するには、アバターを選択した後に、 **[設定]、[Public access token (パブリック アクセス トークン)]** の順に選択します。 
     - **フォルダー パス** - 2 つの入力フィールドのいずれかを使用して、アーティファクトの定義 (最初の入力フィールド) または Azure Resource Manager テンプレートの定義に、フォワード スラッシュ (/) で始まり、Git クローン URI に対して相対的なフォルダー パスを入力します。   
     
         ![Public Repo](./media/devtest-lab-create-environment-from-arm/repo-values.png)
 
 
-1. すべての必須フィールドを入力し、検証に合格したら、**[保存]** を選択します。
+1. すべての必須フィールドを入力し、検証に合格したら、 **[保存]** を選択します。
 
 次のセクションでは、Azure Resource Manager テンプレートから環境を作成する手順を説明します。
 
@@ -99,12 +99,12 @@ DevTest Labs チームが[パブリック GitHub リポジトリ](https://github
 1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で目的のラボを選択します。   
-1. ラボのウィンドウで、**[追加+]** を選択します。
+1. ラボのウィンドウで、 **[追加+]** を選択します。
 1. **[ベースの選択]** ウィンドウに、使用できるベース イメージが表示されます。Azure Resource Manager テンプレートがその先頭に表示されます。 目的の Azure Resource Manager テンプレートを選択します。
 
     ![ベースの選択](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
   
-1. **[追加]** ウィンドウで、**[環境名]** に値を入力します。 環境名は、ラボでユーザーに表示される内容です。 その他の入力フィールドは、Azure Resource Manager テンプレートで定義します。 既定値がテンプレートで定義されている場合、または `azuredeploy.parameter.json` ファイルが存在する場合は、これらの入力フィールドに既定値が表示されます。 *セキュリティで保護された文字列*型のパラメーターの場合、Azure Key Vault に格納されているシークレットを使用することができます。 キー コンテナーにシークレットを保存し、ラボ リソースの作成時に使用する方法については、[Azure Key Vault にシークレットを格納する](devtest-lab-store-secrets-in-key-vault.md)方法に関する記事を参照してください。  
+1. **[追加]** ウィンドウで、 **[環境名]** に値を入力します。 環境名は、ラボでユーザーに表示される内容です。 その他の入力フィールドは、Azure Resource Manager テンプレートで定義します。 既定値がテンプレートで定義されている場合、または `azuredeploy.parameter.json` ファイルが存在する場合は、これらの入力フィールドに既定値が表示されます。 *セキュリティで保護された文字列*型のパラメーターの場合、Azure Key Vault に格納されているシークレットを使用することができます。 キー コンテナーにシークレットを保存し、ラボ リソースの作成時に使用する方法については、[Azure Key Vault にシークレットを格納する](devtest-lab-store-secrets-in-key-vault.md)方法に関する記事を参照してください。  
 
     ![[追加] ウィンドウ](./media/devtest-lab-create-environment-from-arm/add.png)
 
@@ -116,8 +116,8 @@ DevTest Labs チームが[パブリック GitHub リポジトリ](https://github
     > - GEN-SSH-PUB-KEY
     > - GEN-PASSWORD 
  
-1. **[追加]** を選択して環境を作成します。 環境でプロビジョニングが開始され、**[仮想マシン]** の一覧に状態が即座に表示されます。 Azure Resource Manager テンプレートで定義されているすべてのリソースをプロビジョニングするために、新しいリソース グループがラボによって自動的に作成されます。
-1. 環境が作成されたら、**[仮想マシン]** の一覧で環境を選択してリソース グループ ウィンドウを開き、環境内にプロビジョニングされたすべてのリソースを参照します。
+1. **[追加]** を選択して環境を作成します。 環境でプロビジョニングが開始され、 **[仮想マシン]** の一覧に状態が即座に表示されます。 Azure Resource Manager テンプレートで定義されているすべてのリソースをプロビジョニングするために、新しいリソース グループがラボによって自動的に作成されます。
+1. 環境が作成されたら、 **[仮想マシン]** の一覧で環境を選択してリソース グループ ウィンドウを開き、環境内にプロビジョニングされたすべてのリソースを参照します。
     
     ![[仮想マシン] の一覧](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
    
@@ -273,9 +273,9 @@ DevTest Labs で Resource Manager テンプレートを使用する場合は、�
 ラボ ユーザーに共同作成者のアクセス権を付与するには、次の手順に従います。 すると、ラボ ユーザーが Resource Manager テンプレートをデプロイするときに、その環境のリソースを編集できるようになります。 
 
 
-1. ラボの **[概要]** ウィンドウで、**[構成とポリシー]** を選択します。
+1. ラボの **[概要]** ウィンドウで、 **[構成とポリシー]** を選択します。
 1. **[ラボの設定]** を選択します。
-1. [ラボの設定] ウィンドウで、**[共同作成者]** を選択してラボ ユーザーに書き込み権限を付与します。
+1. [ラボの設定] ウィンドウで、 **[共同作成者]** を選択してラボ ユーザーに書き込み権限を付与します。
 
     ![ラボ ユーザーのアクセス権の構成](./media/devtest-lab-create-environment-from-arm/configure-access-rights.png)
 

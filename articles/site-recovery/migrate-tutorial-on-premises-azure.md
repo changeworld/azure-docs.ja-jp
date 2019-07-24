@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: df4f89bd1b2e3c0423f5d758cfa637e4da9e04d0
+ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357978"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66396537"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
@@ -50,11 +50,11 @@ ms.locfileid: "59357978"
 
 レプリケートの対象とレプリケート先を選択します。
 1. **[Recovery Services コンテナー]** > [コンテナー] の順にクリックします。
-2. リソース メニューで、**[Site Recovery]** > **[インフラストラクチャの準備]** > **[保護の目標]** の順にクリックします。
+2. リソース メニューで、 **[Site Recovery]**  >  **[インフラストラクチャの準備]**  >  **[保護の目標]** の順にクリックします。
 3. **[保護の目標]** で、何を移行するかを選択します。
-    - **VMware**:**[To Azure]\(Azure へ\)** > **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere ハイパーバイザーを使用する\)** の順に選択します。
-    - **物理マシン**:**[To Azure]\(Azure へ\)** > **[非仮想化/その他]** の順に選択します。
-    - **Hyper-V**:**[To Azure]\(Azure へ\)** > **[Yes, with Hyper-V]\(はい、Hyper-V を使用する\)** の順に選択します。 Hyper-V VM が VMM で管理される場合は **[はい]** を選択します。
+    - **VMware**: **[To Azure]\(Azure へ\)**  >  **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere ハイパーバイザーを使用する\)** の順に選択します。
+    - **物理マシン**: **[To Azure]\(Azure へ\)**  >  **[非仮想化/その他]** の順に選択します。
+    - **Hyper-V**: **[To Azure]\(Azure へ\)**  >  **[Yes, with Hyper-V]\(はい、Hyper-V を使用する\)** の順に選択します。 Hyper-V VM が VMM で管理される場合は **[はい]** を選択します。
 
 
 ## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
@@ -69,7 +69,7 @@ Hyper-V | [ソース環境](hyper-v-azure-tutorial.md#set-up-the-source-environm
 
 ターゲット リソースを選択して確認します。
 
-1. **[インフラストラクチャの準備]** > **[ターゲット]** の順にクリックし、使用する Azure サブスクリプションを選択します。
+1. **[インフラストラクチャの準備]**  >  **[ターゲット]** の順にクリックし、使用する Azure サブスクリプションを選択します。
 2. Resource Manager デプロイ モデルを指定します。
 3. Azure のリソースが Site Recovery によって確認されます。
     - VMware VM または物理サーバーを移行する場合は、フェールオーバー後に作成されたときに Azure VM がデプロイされる Azure ネットワークがあることが Site Recovery によって確認されます。
@@ -102,7 +102,7 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 
 移行するマシンのフェールオーバーを実行します。
 
-1. **[設定]** > **[レプリケートされたアイテム]** で、[マシン] > **[フェールオーバー]** をクリックします。
+1. **[設定]**  >  **[レプリケートされたアイテム]** で、[マシン] > **[フェールオーバー]** をクリックします。
 2. **[フェールオーバー]** で、フェールオーバーする**復旧ポイント**を選択します。 最新の復旧ポイントを選択します。
 3. 暗号化キー設定は、このシナリオには関係しません。
 4. **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 Site Recoverty は、仮想マシンのシャットダウンを試行してからフェールオーバーをトリガーします。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 フェールオーバーの進行状況は **[ジョブ]** ページで確認できます。

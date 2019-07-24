@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 92799019d13de71d911767d8e400598513587667
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: ee901fdcae9717cc6d03d7653bcaacc0c32518e0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258399"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66254314"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要
 
@@ -20,7 +20,7 @@ Secure Sockets Layer (SSL) は、Web サーバーとブラウザー間に暗号�
 
 ## <a name="ssl-termination"></a>SSL ターミネーション
 
-Application Gateway は、ゲートウェイの SSL ターミネーションをサポートします。通常、トラフィックは、その後、暗号化されないままバックエンド サーバーに渡されます。  アプリケーション ゲートウェイでの SSL ターミネーションには多くの利点があります。
+Application Gateway は、ゲートウェイの SSL ターミネーションをサポートします。通常、トラフィックは、その後、暗号化されないままバックエンド サーバーに渡されます。 アプリケーション ゲートウェイでの SSL ターミネーションには多くの利点があります。
 
 - **パフォーマンスの向上** – SSL 解読を行っているときの最大のパフォーマンスへの影響は、初期ハンドシェイクです。 パフォーマンスを向上させるには、解読を行うサーバーで SSL セッション ID をキャッシュし、TLS セッション チケットを管理します。 これをアプリケーション ゲートウェイで行う場合は、同じクライアントからのすべての要求でキャッシュされた値を使用できます。 バックエンド サーバーで行う場合は、クライアントの要求が別のサーバーに渡されるたびに、クライアントを再認証する必要があります。 TLS チケットの使用はこの問題の軽減に役立ちますが、すべてのクライアントでサポートされているわけではなく、構成と管理は難しい場合があります。
 - **バックエンド サーバーの使用率の向上** – SSL/TLS 処理では CPU に非常に多くの負荷がかかり、キー サイズが大きくなるほど多くの負荷がかかります。 バックエンド サーバーからこの作業を取り除けば、最も効率的な作業に集中してコンテンツを配信することができます。
@@ -48,6 +48,9 @@ Application Gateway では、次の種類の証明書がサポートされてい
 - 自己署名証明書:クライアントのブラウザーではこれらの証明書は信頼されず、仮想サービスの証明書が信頼チェーンに含まれていないことがユーザーに警告されます。 自己署名証明書は、テストや、管理者がクライアントを制御していて、ブラウザーのセキュリティの警告を安全にバイパスできる環境に適しています。 運用環境のワークロードでは、自己署名証明書を使用しないでください。
 
 詳細については、[Application Gateway での SSL ターミネーションの構成に関するページ](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal) を参照してください。
+
+### <a name="size-of-the-certificate"></a>証明書のサイズ
+サポートされる SSL 証明書の最大サイズを把握するには、「[Application Gateway の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits)」セクションを確認してください。
 
 ## <a name="end-to-end-ssl-encryption"></a>エンド ツー エンド SSL 暗号化
 
@@ -90,9 +93,8 @@ Application Gateway は、既知のバックエンド インスタンスのみ�
 
    たとえば、バックエンド証明書が既知の CA により発行されて、その CN が contoso.com であり、バックエンドの http 設定の [ホスト] フィールドも contoso.com に設定されている場合、追加の手順は必要ありません。 バックエンドの http 設定のプロトコルとして HTTPS を設定すると、正常性プローブとデータ パスの両方が SSL で有効になります。 バックエンドとして Azure App Service または他の Azure の Web サービスを使用している場合は、それらも暗黙で信頼されており、エンド ツー エンド SSL にはこれ以上の手順は必要ありません。
 - 証明書が自己署名済みの場合、または不明な仲介者によって署名されている場合、 v2 SKU でエンド ツー エンド SSL を有効にするには、信頼できるルート証明書を定義する必要があります。 Application Gateway は、サーバー証明書のルート証明書がプールに関連付けられたバックエンドの HTTP 設定の信頼されたルート証明書のいずれかと一致するバックエンドとのみ通信します。
-
 - ルート証明書の一致ばかりでなく、Application Gateway はバックエンドの HTTP 設定に指定されている [ホスト] 設定がバックエンド サーバーの SSL 証明書によって提示される共通名 (CN) のホスト設定と一致するかどうかも検証します｡ バックエンドとの SSL 接続を確立しようとする場合、アプリケーション ゲートウェイは バックエンドの http 設定で指定されているホストを Server Name Indication (SNI) 拡張機能に設定します。
-- バックエンドの HTTP 設定で [ホスト] フィールドではなく､**[pick hostname from backend address]** が選択されている場合､SNI ヘッダーにはつねにバックエンド プールの FQDN が設定され､バックエンド サーバーの SSL 証明書の CN はその FDQN と一致している必要があります｡ このシナリオでは、IP アドレスを持つバックエンド プール メンバーはサポートされません。
+- バックエンドの HTTP 設定で [ホスト] フィールドではなく､ **[pick hostname from backend address]** が選択されている場合､SNI ヘッダーにはつねにバックエンド プールの FQDN が設定され､バックエンド サーバーの SSL 証明書の CN はその FDQN と一致している必要があります｡ このシナリオでは、IP アドレスを持つバックエンド プール メンバーはサポートされません。
 - このルート証明書は､バックエンド サーバーの証明書からの base64 でエンコードされたルート証明書になります｡
 
 ## <a name="next-steps"></a>次の手順

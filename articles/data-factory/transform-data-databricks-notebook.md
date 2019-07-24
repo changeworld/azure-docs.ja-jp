@@ -13,11 +13,11 @@ author: sharonlo101
 ms.author: shlo
 manager: craigg
 ms.openlocfilehash: 8036a8694bb8c8d0db236eba831f13dc2bf47d0a
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60311667"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Notebook を実行してデータを変換する
 
@@ -60,12 +60,12 @@ Databricks Notebook アクティビティのサンプルの JSON 定義を次に
 |プロパティ|説明|必須|
 |---|---|---|
 |name|パイプラインのアクティビティの名前。|はい|
-|description|アクティビティの動作を説明するテキスト。|いいえ |
+|description|アクティビティの動作を説明するテキスト。|いいえ|
 |type|Databricks Notebook アクティビティでは、アクティビティの種類は DatabricksNotebook です。|はい|
 |linkedServiceName|Databricks Notebook が実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
 |notebookPath|Databricks ワークスペースで実行するノートブックの絶対パスです。 このパスはスラッシュで始まる必要があります。|はい|
-|baseParameters|キーと値ペアの配列です。 基本パラメーターは、各アクティビティの実行に使うことができます。 指定されていないパラメーターをノートブックが受け取った場合は、ノートブックの既定値が使われます。 パラメーターについて詳しくは、[Databricks Notebook](https://docs.databricks.com/api/latest/jobs.html#jobsparampair) に関する記事をご覧ください。|いいえ |
-|libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 \<文字列, オブジェクト> の配列を指定できます。|いいえ |
+|baseParameters|キーと値ペアの配列です。 基本パラメーターは、各アクティビティの実行に使うことができます。 指定されていないパラメーターをノートブックが受け取った場合は、ノートブックの既定値が使われます。 パラメーターについて詳しくは、[Databricks Notebook](https://docs.databricks.com/api/latest/jobs.html#jobsparampair) に関する記事をご覧ください。|いいえ|
+|libraries|ジョブを実行するクラスターにインストールされるライブラリのリスト。 \<文字列, オブジェクト> の配列を指定できます。|いいえ|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks アクティビティでサポートされるライブラリ

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 3d50f96f3dea3646bb32a3a42d0248957dabf9f0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 472d7fcbca1a221b69d681ce33d39978b53a3204
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526823"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620942"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>ジョブ ダイアグラムを使用したデータ主導型デバッグ
 
@@ -30,7 +30,7 @@ Stream Analytics ジョブの使用中に、Azure Portal の **[サポート + �
 
 ![メトリック付きのジョブ ダイアグラム - 基本的なジョブ](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-2.png)
 
-Azure Event Hubs の入力をパーティション単位で確認するには、**[...]** を選択します。 コンテキスト メニューが表示されます。 入力を集合体として確認することもできます。
+Azure Event Hubs の入力をパーティション単位で確認するには、 **[...]** を選択します。 コンテキスト メニューが表示されます。 入力を集合体として確認することもできます。
 
 ![メトリック付きのジョブ ダイアグラム - パーティションの展開](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-3.png)
 
@@ -48,7 +48,7 @@ Azure Event Hubs の入力をパーティション単位で確認するには、
 
 ## <a name="troubleshoot-by-using-metrics"></a>メトリックを使用したトラブルシューティング
 
-**QueryLastProcessedTime** メトリックは、特定のステップでデータが受信された時間を示します。 トポロジを確認することで、出力プロセッサからさかのぼって、どのステップでデータが受信されていないかを参照できます。 あるステップでデータが受信されていなかった場合、その直前のクエリ ステップに移動します。 前のクエリ ステップに時間枠があるかどうかを確認し、データが出力されるのに十分な時間が経過したかどうかを確認します  (時間枠は 1 時間単位となります)。
+**QueryLastProcessedTime** メトリックは、特定のステップでデータが受信された時間を示します。 トポロジを確認することで、出力プロセッサからさかのぼって、どのステップでデータが受信されていないかを参照できます。 あるステップでデータが受信されていなかった場合、その直前のクエリ ステップに移動します。 前のクエリ ステップに時間枠があるかどうかを確認し、データが出力されるのに十分な時間が経過したかどうかを確認します (時間枠は 1 時間単位となります)。
  
 前のクエリ ステップが入力プロセッサである場合、入力メトリックを使用して、以下の目的の質問に答えるために役立てます。 これらは、ジョブが入力ソースからデータを取得しているかどうかを判断するうえで役に立ちます。 クエリがパーティション分割されている場合は、各パーティションを調べます。
  
@@ -87,5 +87,5 @@ Azure Event Hubs の入力をパーティション単位で確認するには、
 * [Stream Analytics の概要](stream-analytics-introduction.md)
 * [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
-* [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

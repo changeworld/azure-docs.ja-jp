@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) でポータルを使用して仮想ノードを作成する
 description: Azure portal を使用して、仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成してポッドを実行する方法を説明します。
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
-ms.author: iainfou
-ms.openlocfilehash: 4376db8cdfa90b8d29ecd9b210e683848b4c94b4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.author: mlearned
+ms.openlocfilehash: 8752d888e24e7135d488be6d1b377070a30fe4eb
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072602"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613842"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal で仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -69,6 +69,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * [ホストのエイリアス](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI の exec の[引数](../container-instances/container-instances-exec.md#restrictions)
 * [Daemonsets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) は仮想ノードへポッドをデプロイしない
+* [Windows Server ノード (現在は AKS でプレビュー段階)](windows-container-cli.md) を仮想ノードと併用することはサポートされていません。 仮想ノードを使用して、Windows Server コンテナーをスケジュールすることができ、AKS クラスター内の Windows Server ノードは必要ありません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -76,14 +77,14 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
-Azure portal の左上隅で、**[リソースの作成]** > **[Kubernetes Service]** を選択します。
+Azure portal の左上隅で、 **[リソースの作成]**  >  **[Kubernetes Service]** を選択します。
 
 **[基本]** ページで、次のオプションを構成します。
 
 - *プロジェクトの詳細*:サブスクリプションを選択し、Azure リソース グループ (たとえば、*myResourceGroup*) を選択または作成します。 **Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。
 - *クラスターの詳細*:AKS クラスターのリージョン、Kubernetes バージョン、および DNS 名プレフィックスを選択します。
 - *プライマリ ノード プール*:AKS ノードの VM サイズを選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは**できません**。
-     - クラスターにデプロイするノードの数を選択します。 この記事では、**[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整**できます**。
+     - クラスターにデプロイするノードの数を選択します。 この記事では、 **[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整**できます**。
 
 **[次へ: **スケール]** をクリックします。
 
@@ -95,13 +96,13 @@ Azure portal の左上隅で、**[リソースの作成]** > **[Kubernetes Servi
 
 このクラスターは高度なネットワークに対しても構成されます。 仮想ノードは、独自の Azure 仮想ネットワーク サブネットを使用するように構成されます。 このサブネットには、Azure リソースと AKS クラスター間を接続するための委任されたアクセス許可があります。 委任されたサブネットがまだない場合、Azure portal によって仮想ノードで使用するための Azure 仮想ネットワークとサブネットが作成および構成されます。
 
-**[Review + create]\(レビュー + 作成\)** を選択します。 検証が完了したら、**[作成]** を選択します。
+**[Review + create]\(レビュー + 作成\)** を選択します。 検証が完了したら、 **[作成]** を選択します。
 
 AKS クラスターを作成して、使用準備が完了するのには数分かかります。
 
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
 
-Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使います。 `kubectl` クライアントは Azure Cloud Shell に事前にインストールされています。
+Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使用します。 `kubectl` クライアントは Azure Cloud Shell に事前にインストールされています。
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/bash](https://shell.azure.com/bash) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
@@ -111,7 +112,7 @@ Kubernetes クラスターに接続するように `kubectl` を構成するに�
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使って、クラスター ノードの一覧を取得します。
+クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使用して、クラスター ノードの一覧を返します。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -129,7 +130,7 @@ aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>サンプル アプリのデプロイ
 
-Azure Cloud Shell で、`virtual-node.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするため、[nodeSelector][node-selector] と [toleration][toleration] が定義されます。 これらの設定により、仮想ノードでポッドがスケジュール設定され、機能が正常に有効化されていることを確認できます。
+Azure Cloud Shell で、`virtual-node.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするため、[nodeSelector][node-selector] and [toleration][toleration] が定義されます。 これらの設定により、仮想ノードでポッドがスケジュール設定され、機能が正常に有効化されていることを確認できます。
 
 ```yaml
 apiVersion: apps/v1
@@ -196,7 +197,7 @@ kubectl run -it --rm virtual-node-test --image=debian
 apt-get update && apt-get install -y curl
 ```
 
-次に、`curl` (*http://10.241.0.4* など) を使用して、ポッドのアドレスにアクセスします。 前の `kubectl get pods` コマンドで示された独自の内部 IP アドレスを入力します。
+次に、`curl` ( *http://10.241.0.4* など) を使用して、ポッドのアドレスにアクセスします。 前の `kubectl get pods` コマンドで示された独自の内部 IP アドレスを入力します。
 
 ```azurecli-interactive
 curl -L http://10.241.0.4
@@ -218,7 +219,7 @@ $ curl -L 10.241.0.4
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、ポッドを仮想ノードでスケジュールし、プライベートの内部 IP アドレスを割り当てました。 代わりに、サービスのデプロイを作成して、ロード バランサーまたはイングレス コントローラーを使用してトラフィックを自分のポッドにルーティングすることもできます。 詳細は、[AKS での基本的なイングレス コント ローラーの作成][aks-basic-ingress]を参照してください｡
+この記事では、ポッドを仮想ノードでスケジュールし、プライベートの内部 IP アドレスを割り当てました。 代わりに、サービスのデプロイを作成して、ロード バランサーまたはイングレス コントローラーを使用してトラフィックを自分のポッドにルーティングすることもできます。 詳細は、[AKS での基本的なイングレス コント ローラーの作成][aks-basic-ingress]を参照してください。
 
 仮想ノードは、AKS のスケーリング ソリューションの 1 つのコンポーネントです。 スケーリング ソリューションの詳細については、次の記事を参照してください。
 

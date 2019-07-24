@@ -5,21 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 06/28/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 46f3f87fac5b65229e03ee91d8f2b93b1a1590e8
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336254"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795276"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
-Azure Virtual WAN は、Azure への、または Azure 経由での、最適化および自動化されたブランチ接続を提供するネットワーク サービスです。 Azure リージョンは、ブランチの接続先として選択できるハブとして機能します。 ブランチが接続されたら、Azure バックボーンを利用して、ブランチから VNet への接続およびブランチ間の接続を確立できます。 Virtual WAN VPN をサポートするパートナーと場所の一覧については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
+Azure Virtual WAN は、Azure への、または Azure 経由での、最適化および自動化されたブランチ接続を提供するネットワーク サービスです。 Azure リージョンは、ブランチの接続先として選択できるハブとして機能します。 Azure バックボーンを利用してブランチを接続し、ブランチから VNet への接続を利用することもできます。 Azure Virtual WAN VPN による接続の自動化をサポートするパートナーの一覧があります。 詳細については、[Virtual WAN のパートナーと場所](virtual-wan-locations-partners.md)に関する記事を参照してください。
 
-Azure Virtual WAN は、サイト間 VPN (一般提供)、ExpressRoute (プレビュー)、ポイント対サイト ユーザー VPN (プレビュー) など、多数の Azure クラウド接続サービスを 1 つの操作インターフェイスにまとめたものです。 Azure VNet への接続は、仮想ネットワーク接続を使用して確立されます。
+Azure Virtual WAN は、サイト間 VPN、ExpressRoute、ポイント対サイト ユーザー VPN など、多数の Azure クラウド接続サービスを 1 つの操作インターフェイスにまとめたものです。 Azure VNet への接続は、仮想ネットワーク接続を使用して確立されます。
+
+ExpressRoute および Virtual WAN 向けポイント対サイト ユーザー VPN は現在プレビューの段階です。
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan1.png)
 

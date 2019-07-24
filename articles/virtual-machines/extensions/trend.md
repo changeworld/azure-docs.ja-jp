@@ -4,7 +4,7 @@ description: この記事では、Azure でクラシック デプロイ モデ�
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management
 ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 0bb49d3d75b88f197a42e02f03f89480563537ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0e70bc692357e9db9fa02a2f210320507b1b5824
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005483"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705901"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -44,11 +44,11 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
    ![拡張機能の追加開始][1]
 
-2. **[新しいリソース]** ウィンドウで **Deep Security Agent** を選択します。 Deep Security Agent ウィンドウで、**[作成]** をクリックします。
+2. **[新しいリソース]** ウィンドウで **Deep Security Agent** を選択します。 Deep Security Agent ウィンドウで、 **[作成]** をクリックします。
 
    ![Deep Security Agent の識別][2]
 
-3. 拡張機能の**テナント ID**と**テナント アクティべーション パスワード**を入力します。 必要に応じて、**セキュリティ ポリシー識別子**を入力できます。 次に、**[OK]** をクリックして、クライアントを追加します。
+3. 拡張機能の**テナント ID**と**テナント アクティべーション パスワード**を入力します。 必要に応じて、**セキュリティ ポリシー識別子**を入力できます。 次に、 **[OK]** をクリックして、クライアントを追加します。
 
    ![拡張機能の詳細提示][3]
 

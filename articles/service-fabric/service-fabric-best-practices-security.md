@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 3349abfb1b7cf85247b1bb5de8eb53fa09299b74
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 449dbb04d58fe7980c845b8c5bc8d837b643c1be
+ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65136483"
+ms.lasthandoff: 05/30/2019
+ms.locfileid: "66386729"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric のセキュリティ 
 
@@ -201,6 +201,14 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 ```bash
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
+## <a name="windows-security-baselines"></a>Windows のセキュリティ ベースライン
+[ベースラインを自分で作成するのではなく、Microsoft セキュリティ ベースラインのように、広く知られており、十分にテストされている業界標準の構成を実装することをお勧めします](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines)。これらを仮想マシン スケール セットにプロビジョニングするための 1 つの方法は、Azure Desired State Configuration (DSC) 拡張ハンドラーを使用して、VM をオンラインになるときに構成し、運用ソフトウェアが実行されるようにすることです。
+
+## <a name="azure-firewall"></a>Azure Firewall
+[Azure Firewall は、Azure Virtual Network リソースを保護する、クラウドベースのマネージド ネットワーク セキュリティ サービスです。これは、組み込みの高可用性とクラウドによる無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。](https://docs.microsoft.com/azure/firewall/overview)これによって、アウトバウンド HTTP/S トラフィックを、ワイルド カードを含む完全修飾ドメイン名 (FQDN) の指定した一覧に制限できます。 この機能に SSL 終了は必要ありません。 Windows Update に [Azure Firewall FQDN タグ](https://docs.microsoft.com/azure/firewall/fqdn-tags)を利用し、Microsoft Windows Update エンドポイントへのネットワーク トラフィックがファイアウォールを通過できるようにすることをお勧めします。 「[テンプレートを使用して Azure Firewall をデプロイする](https://docs.microsoft.com/azure/firewall/deploy-template)」では、Microsoft.Network/azureFirewalls リソース テンプレート定義のサンプルが提供されています。
+
+## <a name="tls-12"></a>TLS 1.2
+[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
 

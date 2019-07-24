@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: feabd055833e5f0d850138af528cce1da82cae49
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439699"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60622680"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>カスタム イメージを保存して複数のラボに配布する
 この記事では、作成済みの仮想マシン (VM) からカスタム イメージを保存する手順について説明します。 また、これらのカスタム イメージを組織内の他の DevTest Labs に配布する方法についても説明します。

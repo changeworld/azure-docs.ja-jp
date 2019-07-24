@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6cc530d2680c0410081ad3ad3e573cd59d5583d6
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431990"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341955"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -69,7 +69,7 @@ ms.locfileid: "57431990"
 
 **A**: モデルは同時要求を 20 ずつ処理するようスケールアップできます。
 
-より高いスケールが必要な場合はお問い合わせください。
+より高いスケールが必要な場合は、[音声のサポート](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text)にお問い合わせください。
 
 **Q:自分のモデルをダウンロードしてローカルで実行できますか。**
 
@@ -95,7 +95,7 @@ Custom Speech Service の使用について他にプライバシーに関する�
 
 **A**: いいえ。 現時点では圧縮されていないテキスト ファイルのみが許可されます。
 
-**Q:データ レポートが発話にエラーがあったと示しています。どのような問題が発生していますか。**"
+**Q:データ レポートが発話にエラーがあったと示しています。どのような問題が発生していますか。** "
 
 **A**: ファイル内の発話の 100% をアップロードできなくても問題ありません。 音響または言語データセット内の発話の大多数 (95% 以上など) が正常にインポートされた場合、そのデータセットは使用可能と見なされます。 ただし、発話でエラーが発生した原因を理解してその問題を修正するよう試行することをお勧めします。 フォーマット エラーなどの一般的な問題は簡単に修正できます。 
 

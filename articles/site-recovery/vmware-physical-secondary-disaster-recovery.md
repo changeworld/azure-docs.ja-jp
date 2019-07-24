@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 05/30/2019
 ms.author: raynew
-ms.openlocfilehash: 1a61a825ce223282e85c9262c613814530ba130f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 9a1cb63bd2a209c72af608d23515723a63b180e1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527304"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66417730"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
@@ -337,7 +337,7 @@ Site Recovery の更新プログラムはすべて累積的です。 更新プ�
   * 構成サーバーまたは RX サーバーに対するコンテナー登録に失敗する。
   * クラスター化された VM を再開時に再保護すると、クラスターのボリュームが適切に表示されない。
   * マスター ターゲット サーバーがオンプレミスの運用 VM とは異なる ESXi サーバーでホストされている場合、フェールバックが失敗する。
-  * 8.0.1 にアップグレードすると構成ファイルのアクセス許可が変更される。 この変更によって保護や操作に影響が出る。
+  * 8\.0.1 にアップグレードすると構成ファイルのアクセス許可が変更される。 この変更によって保護や操作に影響が出る。
   * 再同期のしきい値が適切に適用されないため、レプリケーションの動作に不整合が生じる。
   * 構成サーバー コンソールに、RPO 設定が正しく表示されない。 圧縮されないデータ値に、誤って圧縮された値が表示される。
   * vContinuum ウィザードで削除操作を行っても適切に削除されず、レプリケーションが構成サーバー コンソールから削除されない。

@@ -4,7 +4,7 @@ description: Azure portal または Azure PowerShell を使用して、Windows V
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 45c69812-d3e4-48de-a98d-39a0f5675777
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: c61e606bde4b50fa10c194c76c79a3d8a27a4b8e
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: caa0066f8020c19cecccaa0421f90188260c644b
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407693"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67710618"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする
 Windows 仮想マシン (VM) に接続できない場合は、ご自分のローカル管理者パスワードをリセットすることも、(Windows ドメイン コントローラーでサポートされていない) リモート デスクトップ サービスの構成をリセットすることもできます。 パスワードをリセットするには、Azure portal を使用するか、Azure PowerShell で VM アクセス拡張機能を使用します。 VM にサインインした後、そのローカル管理者のパスワードをリセットします。  
@@ -37,9 +37,9 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 ### <a name="reset-the-local-administrator-account-password"></a>**ローカル管理者アカウント パスワードのリセット**
 
-1. Windows VM を選択して、**[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。
+1. Windows VM を選択して、 **[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。
 
-2. **[パスワードのリセット]** を選択し、ユーザー名とパスワードを入力して、**[更新]** を選択します。 
+2. **[パスワードのリセット]** を選択し、ユーザー名とパスワードを入力して、 **[更新]** を選択します。 
 
 3. VM への接続を再度試してみます。
 
@@ -47,7 +47,7 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 このプロセスでは、VM 上でリモート デスクトップ サービスを有効にし、既定の RDP ポート 3389 のファイアウォール規則を作成します。
 
-1. Windows VM を選択して、**[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。 
+1. Windows VM を選択して、 **[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。 
 
 2. **[構成のみのリセット]** を選択して **[更新]** を選択します。 
 

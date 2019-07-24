@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 266e487a7c345f75e966afbde567c5bc4683b5c0
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65233749"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する 
@@ -44,7 +44,7 @@ Azure Sentinel にデータをストリーミングしたら、組織全体で�
 
 1. 脅威インテリジェンス プロバイダーを既に使用している場合は、TIP アプリケーションを参照し、インジケーターを Microsoft に送信するためのアクセス許可を付与して、サービスを Azure Sentinel として指定する必要があります。  
 
-2. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、**[脅威インテリジェンス]** タイルをクリックします。
+2. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[脅威インテリジェンス]** タイルをクリックします。
 
 3. **[接続]** をクリックします。 
 

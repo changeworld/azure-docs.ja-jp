@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
-ms.date: 03/22/2019
+ms.topic: quickstart
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 66bda68b1313a7c172e273671bc3a03503d08e0d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 46595cdf665158d019c9b6def19ff6609db803bc
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876582"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67602990"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>クイック スタート:Python を使用してテキスト読み上げ音声の一覧を取得する
 
@@ -98,7 +98,8 @@ def get_voices(self):
     if response.status_code == 200:
         with open('voices.json', 'wb') as voices:
             voices.write(response.content)
-            print("\nStatus code: " + str(response.status_code) + "\nvoices.json is ready to view.\n")
+            print("\nStatus code: " + str(response.status_code) +
+                  "\nvoices.json is ready to view.\n")
     else:
         print("\nStatus code: " + str(
             response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")

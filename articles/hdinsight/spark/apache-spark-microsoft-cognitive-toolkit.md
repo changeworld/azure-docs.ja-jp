@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 3462255311eaa6e418f97de5da598eb985b2a935
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: aaa690b62b44f5f21db0861d99d45734cf210db0
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64695093"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448692"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit ディープ ラーニング モデルを使用する
 
@@ -25,13 +25,13 @@ ms.locfileid: "64695093"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free)」をご覧ください。
+* **Azure サブスクリプション**。 この記事を開始する前に、Azure サブスクリプションが必要です。 「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free)」をご覧ください。
 
 * **Azure HDInsight Spark クラスター**. この記事では、Spark 2.0 クラスターを作成します。 手順については、[Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
 ## <a name="how-does-this-solution-flow"></a>このソリューションの流れ
 
-このソリューションは、この記事と、このチュートリアルの一部としてアップロードする Jupyter Notebook に分割されます。 この記事では、次の手順を完了します。
+このソリューションは、この記事と、この記事の一部としてアップロードする Jupyter Notebook に分割されます。 この記事では、次の手順を完了します。
 
 * HDInsight Spark クラスターでスクリプト アクションを実行して、Microsoft Cognitive Toolkit と Python のパッケージをインストールします。
 * HDInsight Spark クラスターに対してソリューションを実行する Jupyter Notebook をアップロードします。
@@ -73,7 +73,7 @@ Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用�
 
 1. GitHub リポジトリ [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) を複製します。 複製の手順については、「[Cloning a repository (リポジトリの複製)](https://help.github.com/articles/cloning-a-repository/)」を参照してください。
 
-2. Azure portal から、既にプロビジョニングしている Spark クラスターのブレードを開き、**[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。
+2. Azure portal から、既にプロビジョニングしている Spark クラスターのブレードを開き、 **[クラスター ダッシュボード]** をクリックし、 **[Jupyter Notebook]** をクリックします。
 
     Jupyter Notebook は URL `https://<clustername>.azurehdinsight.net/jupyter/` に移動して起動することもできます。 \<clustername> を、使用する HDInsight クラスターの名前に置き換えます。
 
@@ -83,7 +83,7 @@ Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用�
 
 4. もう 1 度 **[アップロード]** をクリックします。
 
-5. ノートブックのアップロード後、ノートブックの名前をクリックします。データ セットの読み込みとこのチュートリアルの実行方法については、ノートブック自体の指示に従います。
+5. ノートブックのアップロード後、ノートブックの名前をクリックします。データセットの読み込みとこの記事の実行方法については、ノートブック自体の指示に従います。
 
 ## <a name="see-also"></a>関連項目
 * [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)

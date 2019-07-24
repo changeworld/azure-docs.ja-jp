@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/20/2018
 ms.openlocfilehash: 0b1e3b98fe5b934b712db2a5549ebdc865523bfb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487721"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61412573"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
 
@@ -163,7 +163,7 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 ポータルとログ インターフェイスを使用して、同期グループとデータベースの正常性を定期的に監視します。
 
 
-## <a name="maintenance"></a>メンテナンス 
+## <a name="maintenance"></a>メンテナンス
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a>データベースと同期グループが古くならないようにする
 
@@ -226,8 +226,8 @@ SQL データ同期の詳細については、以下を参照してください�
 -   データ同期の設定
     - ポータル - [チュートリアル:Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
     - PowerShell の場合
-        -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
+        -  [PowerShell を使用した複数の Azure SQL Database 間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [PowerShell を使用して Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行う](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](sql-database-data-sync-agent.md)
 -   監視 - [Azure Monitor ログによる SQL データ同期の監視](sql-database-sync-monitor-oms.md)
 -   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)

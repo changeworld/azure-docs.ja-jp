@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a241f66adecbab1d0b1462f379d3765d6c1de252
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a6f872880b61a5bd9510abda2f15e2edea16e940
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995392"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67703871"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする
 
@@ -39,7 +39,7 @@ Media Services で、デジタル ファイルを資産に関連付けられて�
 
 このセクションでは、新しい資産を作成する方法を示します。
 
-1. **[Assets]\(資産\)** -> **[Create or update an Asset]\(資産を作成または更新する\)** を選択します。
+1. **[Assets]\(資産\)**  ->  **[Create or update an Asset]\(資産を作成または更新する\)** を選択します。
 2. **[送信]** をクリックします。
 
     ![資産を作成する](./media/upload-files/postman-create-asset.png)
@@ -50,7 +50,7 @@ Media Services で、デジタル ファイルを資産に関連付けられて�
 
 このセクションでは、作成された資産に対して生成された SAS URL を取得する方法を示します。 作成された SAS URL には読み取り/書き込みアクセス許可が設定されており、資産コンテナーにデジタル ファイルをアップロードするために使用できます。
 
-1. **[Assets]\(資産\)** -> **[List the Asset URLs]\(資産 URL の一覧表示\)** を選択します。
+1. **[Assets]\(資産\)**  ->  **[List the Asset URLs]\(資産 URL の一覧表示\)** を選択します。
 2. **[送信]** をクリックします。
 
     ![ファイルをアップロードする](./media/upload-files/postman-create-sas-locator.png)

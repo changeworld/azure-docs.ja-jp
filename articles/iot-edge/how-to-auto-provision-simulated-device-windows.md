@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 01247dfc0046ef722d70fe48f7ab8ee63f685962
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65153567"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Windows 上のシミュレートされた TPM Edge デバイスの作成とプロビジョニング
@@ -46,7 +46,7 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
 シミュレートされたデバイスの作成に使用する SDK の言語を選択し、個々の登録を作成するまでの手順に従います。
 
-個々の登録を作成するときに、**[有効にする]** を選択して、Windows 開発用マシンでシミュレートされている TPM デバイスが **IoT Edge デバイス**であることを宣言します。
+個々の登録を作成するときに、 **[有効にする]** を選択して、Windows 開発用マシンでシミュレートされている TPM デバイスが **IoT Edge デバイス**であることを宣言します。
 
 シミュレートされたデバイスと個々の登録ガイド:
 

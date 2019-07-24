@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: c11eeb84fe4ed1ded93cb8de7ff54b756fd36749
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4da91150999864c64ead28b74242e85d23a51ead
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65779902"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67310446"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -53,7 +53,7 @@ ms.locfileid: "65779902"
 
 アダプティブ サンプリングは ASP.NET v 2.0.0-beta3 以降の Application Insights SDK、Microsoft.ApplicationInsights.AspNetCore SDK v 2.2.0-beta1 以降で使用でき、既定で有効になります。
 
-アダプティブ サンプリングは、Web サーバー アプリから Application Insights サービス エンドポイントに送信されるテレメトリの量に適用されます。 この量は、指定されたトラフィックの最大レート内に維持されるように自動的に調整され、設定 `MaxTelemetryItemsPerSecond` を使用して制御されます。 アプリケーションが少量のテレメトリを生成している場合 (デバッグ時や使用量が少ない場合など)、量が `MaxTelemetryItemsPerSecond` を下回っている限り項目はサンプリングされません。 テレメトリの量が増えてくると、目的の量を達成するようにサンプリング レートが調整されます。
+アダプティブ サンプリングは、Web サーバー アプリから Application Insights サービス エンドポイントに送信されるテレメトリの量に適用されます。 この量は、指定されたトラフィックの最大レート内に維持されるように自動的に調整され、設定 `MaxTelemetryItemsPerSecond` を使用して制御されます。 アプリケーションが少量のテレメトリを生成している場合 (デバッグ時や使用量が少ない場合など)、量が `MaxTelemetryItemsPerSecond` を下回っている限り、サンプリング プロセッサによって項目がドロップされることはありません。 テレメトリの量が増えてくると、目的の量を達成するようにサンプリング レートが調整されます。
 
 目標の量を達成するため、生成されたテレメトリの一部は破棄されます。 他のサンプリング種類と同様に、このアルゴリズムは関連するテレメトリ項目を維持します。 たとえば、検索でテレメトリを調べているときは、特定の例外に関連する要求を検索できます。
 
@@ -313,7 +313,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
                     <Add name = "SamplingPercentage" value = "50" />
                 </Processor>
             </BuiltInProcessors>
-        <TelemetryProcessors/>
+        </TelemetryProcessors>
     ```
 
 3. プロセッサ タグ "FixedRateSamplingTelemetryProcessor" 内の次のタグを使用して、特定の種類のテレメトリをサンプリングに含めたり、サンプリングから除外したりできます。
@@ -527,3 +527,4 @@ ASP.NET バージョン 2.0.0 以降および Java SDK バージョン 2.0.1 以
 ## <a name="next-steps"></a>次の手順
 
 * [フィルター](../../azure-monitor/app/api-filtering-sampling.md) を使用して、SDK から送信される情報についてさらに厳密に制御できます。
+* [Application Insights によるテレメトリの最適化](https://msdn.microsoft.com/magazine/mt808502.aspx)に関する Developer Network の記事を読みます。

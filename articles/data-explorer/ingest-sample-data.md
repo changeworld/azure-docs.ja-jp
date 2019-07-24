@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: e80322cda671e2145cf3e65aa1457f1fa1827737
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050630"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60759291"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Azure のデータ エクスプローラーにサンプル データを取り込む
 
@@ -33,9 +33,9 @@ ms.locfileid: "59050630"
 
 1. アプリケーションの左上にある **[Add cluster]\(クラスターの追加\)** を選択します。
 
-1. **[Add cluster]** ダイアログ ボックスで `https://<ClusterName>.<Region>.kusto.windows.net/` の形式でラスターの URL を入力して､**[追加]** を選択します。
+1. **[Add cluster]** ダイアログ ボックスで `https://<ClusterName>.<Region>.kusto.windows.net/` の形式でラスターの URL を入力して､ **[追加]** を選択します。
 
-1. 次のコマンドに貼り付けて、**[実行]** を選択します。
+1. 次のコマンドに貼り付けて、 **[実行]** を選択します。
 
     ```Kusto
     .create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)
@@ -43,7 +43,7 @@ ms.locfileid: "59050630"
     .ingest into table StormEvents h'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (ignoreFirstRecord=true)
     ```
 
-1. 取り込みが完了したら、次のクエリに貼り付けて､ウィンドウでクエリを選択し､**[実行]** を選択します。
+1. 取り込みが完了したら、次のクエリに貼り付けて､ウィンドウでクエリを選択し､ **[実行]** を選択します。
 
     ```Kusto
     StormEvents

@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
 ms.openlocfilehash: 3d59fc48f1f6f6931ca18e09a420fdbccc7d53dc
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64922285"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性
@@ -26,17 +26,17 @@ ms.locfileid: "64922285"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2205917]:https://launchpad.support.sap.com/#/notes/2205917
-[1944799]:https://launchpad.support.sap.com/#/notes/1944799
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2205917]: https://launchpad.support.sap.com/#/notes/2205917
+[1944799]: https://launchpad.support.sap.com/#/notes/1944799
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
-[401162]:https://launchpad.support.sap.com/#/notes/401162
+[401162]: https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -105,15 +105,15 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
     データベース テンプレートでは、データベース用の負荷分散規則のみが作成されます。 統合テンプレートでは、ASCS/SCS および ERS (Linux のみ) インスタンス用の負荷分散規則も作成されます。 SAP NetWeaver ベースのシステムをインストールして、同じコンピューターに ASCS/SCS インスタンスをインストールする場合は、[集約型テンプレート][template-converged]を使用します。
 
 1. 次のパラメーターを入力します。
-    - **[Sap System Id]\(SAP システム ID\)**:インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使われます。
-    - **[スタックの種類]**:(このパラメーターは、集約型テンプレートを使用する場合にのみ適用されます)。SAP NetWeaver のスタックの種類を選択します。
-    - **[OS Type]\(OS の種類\)**:いずれかの Linux ディストリビューションを選択します。 この例では、**SLES 12** を選択します。
-    - **[Db Type]\(データベースの種類\)**:**[HANA]** を選択します。
-    - **[Sap System Size]\(SAP システムのサイズ\)**:新しいシステムが提供する SAPS の数を入力します。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-    - **[System Availability]\(システムの可用性\)**:**[HA]** を選択します。
-    - **[管理ユーザー名] と [管理パスワード]**:コンピューターへのサインインに使用できる新しいユーザーが作成されます。
-    - **[New Or Existing Subnet]\(新規または既存のサブネット\)**:新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、**[Existing]\(既存\)** を選択します。
-    - **[Subnet ID]\(サブネット ID\)**:VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、この ID は、**/subscriptions/\<サブスクリプション ID>/resourceGroups/\<リソース グループ名>/providers/Microsoft.Network/virtualNetworks/\<仮想ネットワーク名>/subnets/\<サブネット名>** のようになります。
+    - **[Sap System Id]\(SAP システム ID\)** :インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使われます。
+    - **[スタックの種類]** :(このパラメーターは、集約型テンプレートを使用する場合にのみ適用されます)。SAP NetWeaver のスタックの種類を選択します。
+    - **[OS Type]\(OS の種類\)** :いずれかの Linux ディストリビューションを選択します。 この例では、**SLES 12** を選択します。
+    - **[Db Type]\(データベースの種類\)** : **[HANA]** を選択します。
+    - **[Sap System Size]\(SAP システムのサイズ\)** :新しいシステムが提供する SAPS の数を入力します。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+    - **[System Availability]\(システムの可用性\)** : **[HA]** を選択します。
+    - **[管理ユーザー名] と [管理パスワード]** :コンピューターへのサインインに使用できる新しいユーザーが作成されます。
+    - **[New Or Existing Subnet]\(新規または既存のサブネット\)** :新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、 **[Existing]\(既存\)** を選択します。
+    - **[Subnet ID]\(サブネット ID\)** :VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、この ID は、 **/subscriptions/\<サブスクリプション ID>/resourceGroups/\<リソース グループ名>/providers/Microsoft.Network/virtualNetworks/\<仮想ネットワーク名>/subnets/\<サブネット名>** のようになります。
 
 ### <a name="manual-deployment"></a>手動デプロイ
 
@@ -136,7 +136,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 1. データ ディスクを追加します。
 1. ロードバランサーを構成します。 まず、フロントエンド IP プールを作成します。
 
-   1. ロード バランサーを開き、**[frontend IP pool]\(フロントエンド IP プール\)** を選択して **[Add]\(追加\)** を選択します
+   1. ロード バランサーを開き、 **[frontend IP pool]\(フロントエンド IP プール\)** を選択して **[Add]\(追加\)** を選択します
    1. 新規のフロントエンド IP プールの名前を入力します (例: **hana-frontend**)。
    1. **[Assignment]\(割り当て\)** を **[Static]\(静的\)** に設定し、IP アドレスを入力します (例: **10.0.0.13**)。
    1. **[OK]** を選択します。
@@ -144,7 +144,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 1. 次に、バックエンド プールを作成します。
 
-   1. ロードバランサーを開き、**[backend pools]\(バックエンド プール\)** を選択し、**[Add]\(追加\)** を選択します。
+   1. ロードバランサーを開き、 **[backend pools]\(バックエンド プール\)** を選択し、 **[Add]\(追加\)** を選択します。
    1. 新しいバックエンド プールの名前を入力します (例: **hana-backend**)。
    1. **[Add a virtual machine]\(仮想マシンの追加\)** を選択します。
    1. 手順 3 で作成した可用性セットを選択します。
@@ -153,14 +153,14 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 1. 次に、正常性プローブを作成します。
 
-   1. ロード バランサーを開き、**[health probes]\(正常性プローブ\)** を選択して **[Add]\(追加\)** を選択します。
+   1. ロード バランサーを開き、 **[health probes]\(正常性プローブ\)** を選択して **[Add]\(追加\)** を選択します。
    1. 新しい正常性プローブの名前を入力します (例: **hana-hp**)。
-   1. プロトコルとして **[TCP]** を選択し、ポート 625**03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、**[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
+   1. プロトコルとして **[TCP]** を選択し、ポート 625**03** を選択します。 **[Interval]\(間隔\)** の値を 5 に設定し、 **[Unhealthy threshold]\(異常しきい値\)** の値を 2 に設定します。
    1. **[OK]** を選択します。
 
 1. SAP HANA 1.0 の場合は、負荷分散規則を作成します。
 
-   1. ロード バランサーを開き、**[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
+   1. ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
    1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**15)。
    1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**)。
    1. **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3**03** 15 を入力します。
@@ -171,7 +171,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 1. SAP HANA 2.0 の場合は、システム データベースの負荷分散規則を作成します。
 
-   1. ロード バランサーを開き、**[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
+   1. ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
    1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**13)。
    1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**)。
    1. **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3**03** 13 を入力します。
@@ -182,7 +182,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 1. SAP HANA 2.0 の場合は、まずテナント データベースの負荷分散規則を作成します。
 
-   1. ロード バランサーを開き、**[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
+   1. ロード バランサーを開き、 **[load balancing rules]\(負荷分散規則\)** を選択して **[Add]\(追加\)** を選択します。
    1. 新しいロード バランサー規則の名前を入力します (例: hana-lb-3**03**40)。
    1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**)。
    1. **[Protocol]\(プロトコル\)** を **[TCP]** に設定し、ポート 3**03** 40 を入力します。
@@ -204,11 +204,11 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 ## <a name="install-sap-hana"></a>SAP HANA のインストール
 
 このセクションの手順では、次のプレフィックスを使用します。
-- **[A]**:この手順はすべてのノードに適用されます。
-- **[1]**:この手順はノード 1 にのみ適用されます。
-- **[2]**:この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
+- **[A]** :この手順はすべてのノードに適用されます。
+- **[1]** :この手順はノード 1 にのみ適用されます。
+- **[2]** :この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
 
-1. **[A]** ディスク レイアウトの設定:**論理ボリューム マネージャー (LVM)**。
+1. **[A]** ディスク レイアウトの設定:**論理ボリューム マネージャー (LVM)** 。
 
    データおよびログ ファイルを格納するボリュームには、LVM を使用することをお勧めします。 次の例は、仮想マシンに 4 つのデータ ディスクがアタッチされていて、これを使用して 2 つのボリュームを作成するということを前提としています。
 
@@ -323,14 +323,14 @@ SAP HANA システム レプリケーションをインストールするには�
    * Select additional components for installation (追加でインストールするコンポーネントの選択):**1** を入力します。
    * Enter Installation Path (インストール パスの入力) [/hana/shared]:Enter キーを押します。
    * Enter Local Host Name (ローカル ホスト名の入力) [..]:Enter キーを押します。
-   * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?)  (y/n) \[n]:Enter キーを押します。
+   * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?) (y/n) \[n]:Enter キーを押します。
    * Enter SAP HANA System ID (SAP HANA のシステム ID を入力):HANA の SID を入力します。例:**HN1**。
    * Enter Instance Number [00] \(インスタンス番号 (00) の入力):HANA のインスタンス番号を入力します。 Azure テンプレートを使用した場合、またはこの記述の手動デプロイに関するセクションに従った場合は、「**03**」を入力します。
    * Select Database Mode / Enter Index (データベース モードの選択/インデックスの入力) [1]:Enter キーを押します。
    * Select System Usage / Enter Index [4] \(システム使用率の選択/インデックス (4) の入力):システムの使用率の値を選択します。
    * Enter Location of Data Volumes (データ ボリュームの場所の入力) [/hana/data/HN1]:Enter キーを押します。
    * Enter Location of Log Volumes (ログ ボリュームの場所の入力) [/hana/log/HN1]:Enter キーを押します。
-   * Restrict maximum memory allocation? (メモリの最大割り当てを制限しますか?)  [n]:Enter キーを押します。
+   * Restrict maximum memory allocation? (メモリの最大割り当てを制限しますか?) [n]:Enter キーを押します。
    * Enter Certificate Host Name For Host '...' (ホスト '...' の証明書のホスト名を入力):Enter キーを押します。
    * Enter SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを入力):ホスト エージェントのユーザー パスワードを入力します。
    * Confirm SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを確認):確認用にホスト エージェントのユーザー パスワードを再入力します。
@@ -342,8 +342,8 @@ SAP HANA システム レプリケーションをインストールするには�
    * Enter ID of User Group (sapsys) (ユーザー グループ (sapsys) の ID を入力) [79]:Enter キーを押します。
    * Enter Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを入力):データベース ユーザーのパスワードを入力します。
    * Confirm Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを確認):確認用にデータベース ユーザーのパスワードを再入力します。
-   * Restart system after machine reboot? (コンピューターの再起動後にシステムを再起動しますか?)  [n]:Enter キーを押します。
-   * Do you want to continue? (続行してもよろしいですか?)  (y/n):概要を確認します。 「**y**」と入力して続行します。
+   * Restart system after machine reboot? (コンピューターの再起動後にシステムを再起動しますか?) [n]:Enter キーを押します。
+   * Do you want to continue? (続行してもよろしいですか?) (y/n):概要を確認します。 「**y**」と入力して続行します。
 
 1. **[A]** SAP Host Agent をアップグレードします。
 
@@ -356,9 +356,9 @@ SAP HANA システム レプリケーションをインストールするには�
 
 このセクションの手順では、次のプレフィックスを使用します。
 
-* **[A]**:この手順はすべてのノードに適用されます。
-* **[1]**:この手順はノード 1 にのみ適用されます。
-* **[2]**:この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
+* **[A]** :この手順はすべてのノードに適用されます。
+* **[1]** :この手順はノード 1 にのみ適用されます。
+* **[2]** :この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
 
 1. **[1]** テナント データベースを作成します。
 
@@ -401,9 +401,9 @@ SAP HANA システム レプリケーションをインストールするには�
 
 このセクションの手順では、次のプレフィックスを使用します。
 
-* **[A]**:この手順はすべてのノードに適用されます。
-* **[1]**:この手順はノード 1 にのみ適用されます。
-* **[2]**:この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
+* **[A]** :この手順はすべてのノードに適用されます。
+* **[1]** :この手順はノード 1 にのみ適用されます。
+* **[2]** :この手順は Pacemaker クラスターのノード 2 にのみ適用されます。
 
 1. **[1]** 必要なユーザーを作成します。
 

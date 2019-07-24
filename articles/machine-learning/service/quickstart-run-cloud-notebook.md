@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3e360b019a0c275c5ce0f9986fabd5dfc847f130
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 68f24d4d019af873a0ca45792a3cbcc3dd3c3c3f
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "66015280"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476037"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>クイック スタート:クラウドベースのノートブック サーバーを使用して Azure Machine Learning の利用を開始する
 
@@ -74,15 +74,20 @@ VM が実行中になった後、 **[ノートブック VM]** セクションを
 
 1. Jupyter ノートブックの Web ページで、最上位のフォルダー名はユーザー名です。  このフォルダーを選択します。
 
+    > [!TIP]
+    > このフォルダーは、ノートブック VM 自体ではなく、ワークスペース内の[ストレージ コンテナー](concept-workspace.md#resources)上にあります。  ノートブック VM を削除しても、すべての作業を続けることができます。  後で新しいノートブック VM を作成すると、この同じフォルダーが読み込まれます。
+
 1. サンプルのフォルダー名には、**samples-1.0.33.1** のようにバージョン番号が含まれています。  サンプル フォルダーを選択します。
 
-1. **quickstart** ノートブックを選択します。
+1. **quickstart** フォルダーを選択します。
 
 ## <a name="run-the-notebook"></a>ノートブックを実行する
 
 pi を推定し、エラーをワークスペースのログに記録するノートブックを実行します。
 
 1. **01.run-experiment.ipynb** を選択してノートブックを開きます。
+
+1. "Kernel not found (カーネルが見つかりません)" という警告が表示された場合は、(一覧の中ほどにある) カーネル **Python 3.6 - AzureML** を選択し、カーネルを設定します。
 
 1. 最初のコード セルをクリックし、 **[実行]** を選択します。
 
@@ -113,11 +118,11 @@ pi を推定し、エラーをワークスペースのログに記録するノ�
 
 1. 実行に関する情報をワークスペースで表示するために、 **[Link to Azure portal]\(Azure portal へのリンク\)** をクリックします。  このリンクにより、Azure portal のワークスペースが開きます。
 
-1. ログに記録された値のプロットが自動的に作成された、ワークスペースに表示されます。 同じ name パラメーターで複数の値をログに記録するときは常に、プロットが自動的に生成されます。
+1. ログに記録された値のプロットが自動的に作成された、ワークスペースに表示されます。 同じ name パラメーターで複数の値をログに記録するときは常に、プロットが自動的に生成されます。 たとえば次のようになります。
 
    ![履歴を表示する](./media/quickstart-run-cloud-notebook/web-results.png)
 
-Pi を概算するコードではランダムな値が使用されるため、実際のプロットには異なる値が表示されます。  
+円周率を概算するコードではランダムな値が使用されるため、実際のプロットの表示は異なる場合があります。  
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -152,7 +157,9 @@ Pi を概算するコードではランダムな値が使用されるため、�
 * ノートブックを実行する。
 * ログに記録したエラー値をワークスペースで表示します。  この例は、スクリプトで生成された情報の追跡にワークスペースがいかに役立つかを示しています。 
 
-Jupyter Notebook の Web ページで、サンプル フォルダーにある他のノートブックを参照し、Azure Machine Learning service の詳細をご確認ください。
+Jupyter Notebook Web ページの **quickstart** フォルダーで、**02.deploy-web-service.ipynb** ノートブックを開いて実行し、Web サービスをデプロイする方法を学習します。
+
+また、Jupyter Notebook の Web ページで、サンプル フォルダーにある他のノートブックを参照し、Azure Machine Learning service の詳細を確認します。
 
 ワークフローを詳しく体験するには、Machine Learning チュートリアルに従って、モデルをトレーニングし、デプロイします。  
 

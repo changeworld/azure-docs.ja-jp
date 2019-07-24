@@ -10,10 +10,10 @@ ms.date: 02/04/2019
 ms.author: mhopkins
 ms.reviewer: seguler
 ms.openlocfilehash: 7ca1eacd1add7453833b4b9ad1d4bd0fbef13ca7
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65149417"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Node.js v2 用のクライアント ライブラリを使用して BLOB をアップロード、ダウンロード、および一覧表示する方法
@@ -43,7 +43,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-node-quickstart.git
 
 ## <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
 
-アプリケーションを実行する前に、ストレージ アカウントの接続文字列を指定する必要があります。 サンプル リポジトリには、*.env.example* という名前のファイルが含まれています。 このファイル名から *.example* 拡張子を削除して、*.env* というファイル名に変更できます。 *.env* ファイル内で、*AZURE_STORAGE_CONNECTION_STRING* キーの後ろに接続文字列の値を追加します。
+アプリケーションを実行する前に、ストレージ アカウントの接続文字列を指定する必要があります。 サンプル リポジトリには、 *.env.example* という名前のファイルが含まれています。 このファイル名から *.example* 拡張子を削除して、 *.env* というファイル名に変更できます。 *.env* ファイル内で、*AZURE_STORAGE_CONNECTION_STRING* キーの後ろに接続文字列の値を追加します。
 
 ## <a name="install-required-packages"></a>必要なパッケージをインストールする
 

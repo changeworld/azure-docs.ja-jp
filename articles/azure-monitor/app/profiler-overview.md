@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c42de8cf189c0ebaf5f13ef5971ad91d14d862fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850277"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60306327"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights を使用した Azure のプロファイル運用アプリケーション
 ## <a name="enable-application-insights-profiler-for-your-application"></a>アプリケーションに対して Application Insights Profiler を有効にする
@@ -30,15 +30,15 @@ Profiler は、以下の Azure サービスにデプロイされた .NET アプ�
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines と仮想マシン スケール セット](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-* ASP.NET Core Azure Linux Web アプリ](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json)を[**プレビュー**する 
+* [ASP.NET Core Azure Linux Web アプリ](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json)を **プレビュー**する 
 
 Profiler を有効にして、トレースが表示されない場合は、[トラブルシューティング ガイド](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)を参照してください。
 
 ## <a name="view-profiler-data"></a>Profiler データを表示する
 
-Profiler がトレースをアップロードするには、アプリケーションが要求をアクティブに処理する必要があります。 実験を行っている場合は、[Application Insights パフォーマンス テスト](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)を使用して Web アプリへの要求を生成できます。 Profiler を新しく有効にした場合は、短い読み込みテストを実行することができます。 読み込みテストの実行中に、[**[Profiler Settings]\(Profiler の設定\)** ウィンドウ](profiler-settings.md#profiler-settings-pane)の **[Profile Now]\(今すぐプロファイル\)** ボタンを選択します。 Profiler が実行されると、1 時間に約 1 回、2 分間、ランダムにプロファイリングされます。 アプリケーションが要求の安定したストリームを処理している場合、Profiler から 1 時間ごとにトレースがアップロードされます。
+Profiler がトレースをアップロードするには、アプリケーションが要求をアクティブに処理する必要があります。 実験を行っている場合は、[Application Insights パフォーマンス テスト](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)を使用して Web アプリへの要求を生成できます。 Profiler を新しく有効にした場合は、短い読み込みテストを実行することができます。 読み込みテストの実行中に、[ **[Profiler Settings]\(Profiler の設定\)** ウィンドウ](profiler-settings.md#profiler-settings-pane)の **[Profile Now]\(今すぐプロファイル\)** ボタンを選択します。 Profiler が実行されると、1 時間に約 1 回、2 分間、ランダムにプロファイリングされます。 アプリケーションが要求の安定したストリームを処理している場合、Profiler から 1 時間ごとにトレースがアップロードされます。
 
-アプリケーションでトラフィックを受け取り、Profiler にトレースをアップロードする時間があった場合、表示するトレースがあります。 このプロセスには 5 分から 10 分かかる可能性があります。 トレースを表示するには、**[パフォーマンス]** ウィンドウで **[Take Actions]\(アクションの実行\)** を選択して、**[Profiler トレース]** ボタンを選択します。
+アプリケーションでトラフィックを受け取り、Profiler にトレースをアップロードする時間があった場合、表示するトレースがあります。 このプロセスには 5 分から 10 分かかる可能性があります。 トレースを表示するには、 **[パフォーマンス]** ウィンドウで **[Take Actions]\(アクションの実行\)** を選択して、 **[Profiler トレース]** ボタンを選択します。
 
 ![Application Insights の [パフォーマンス] ウィンドウの Profiler トレースのプレビュー][performance-blade]
 
@@ -75,7 +75,7 @@ Microsoft サービス プロファイラーでは、アプリのパフォーマ
 
 ### <a id="ngencold"></a>コードの読み込み ([COLD])
 
-**mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined** のように、メソッド名に **[COLD]** が含まれる場合、.NET Framework ランタイムによって、[Profile がガイドする最適化](https://msdn.microsoft.com/library/e7k32f4k.aspx)によって最適化されていないコードが初めて実行されます。 これは、メソッドごとに、その処理中に最大 1 回表示されます。
+**mscorlib.ni![COLD]System.Reflection.CustomAttribute.IsDefined** のように、メソッド名に **[COLD]** が含まれる場合、.NET Framework ランタイムによって、[Profile がガイドする最適化](/cpp/build/profile-guided-optimizations)によって最適化されていないコードが初めて実行されます。 これは、メソッドごとに、その処理中に最大 1 回表示されます。
 
 要求に対してコードの読み込みにかなり時間がかかっている場合、その要求は、そのメソッドの最適化されていない部分を実行する最初の要求です。 コードのその部分を、ユーザーがアクセスする前に実行するウォーミングアップ プロセスを使用することを検討してください。
 

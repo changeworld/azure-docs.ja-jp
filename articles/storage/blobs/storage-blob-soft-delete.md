@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8c23e429966cf9a1e93ac46ea3ecd11744761872
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f1c6f8074dab19b18f695763b160e4aeffe3ac44
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148616"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204828"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
 Azure Storage では、BLOB オブジェクトの論理的な削除が提供されるようになり、アプリケーションまたは他のストレージ アカウント ユーザーによってデータが誤って変更または削除されたときに、いっそう簡単にデータを復旧できるようになりました。
@@ -41,7 +41,7 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-"*論理的に削除されたデータはグレーで、アクティブなデータは青で示されています。上にあるデータほど書き込まれたのが古いデータです。B0 が B1 で上書きされると、B0 の論理的に削除されたスナップショットが生成されます。B1 が B2 で上書きされると、B1 の論理的に削除されたスナップショットが生成されます。*"
+"*論理的に削除されたデータはグレーで、アクティブなデータは青で示されています。上にあるデータほど書き込まれたのが古いデータです。B0 が B1 で上書きされると、B0 の論理的に削除されたスナップショットが生成されます。B1 が B2 で上書きされると、B1 の論理的に削除されたスナップショットが生成されます。* "
 
 > [!NOTE]  
 > 論理的な削除によってコピー操作の上書き保護が行われるのは、コピー先 BLOB のアカウントで機能が有効になっている場合だけです。
@@ -53,13 +53,13 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-"*論理的に削除されたデータはグレーで、アクティブなデータは青で示されています。上にあるデータほど書き込まれたのが古いデータです。**Snapshot Blob** が呼び出されると、B0 はスナップショットになり、B1 はアクティブな状態の BLOB です。B0 スナップショットが削除されると、論理的に削除済みとしてマークされます。*"
+"*論理的に削除されたデータはグレーで、アクティブなデータは青で示されています。上にあるデータほど書き込まれたのが古いデータです。 **Snapshot Blob** が呼び出されると、B0 はスナップショットになり、B1 はアクティブな状態の BLOB です。B0 スナップショットが削除されると、論理的に削除済みとしてマークされます。* "
 
 ベース BLOB (それ自体がスナップショットではないすべての BLOB) で **Delete Blob** を呼び出すと、その BLOB は論理的に削除済みとしてマークされます。 以前の動作との整合性のため、アクティブなスナップショットがある BLOB で **Delete Blob** を呼び出すと、エラーが返されます。 論理的に削除されたスナップショットのある BLOB で **Delete Blob** を呼び出すと、エラーは返されません。 論理的な削除が有効になっているときでも、BLOB とそのすべてのスナップショットを 1 回の操作で削除することができます。 これを行うと、ベース BLOB とスナップショットが論理的に削除済みとしてマークされます。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-"*論理的に削除されたデータはグレーで、アクティブなデータは青で示されています。上にあるデータほど書き込まれたのが古いデータです。ここで、**Delete Blob** を呼び出して、B2 とそれに関連付けられているすべてのスナップショットを削除します。アクティブな BLOB である B2 および関連付けられているすべてのスナップショットが、論理的に削除済みとしてマークされます。*"
+"*論理的に削除されたデータはグレーで、アクティブなデータは青で示されています。上にあるデータほど書き込まれたのが古いデータです。ここで、 **Delete Blob** を呼び出して、B2 とそれに関連付けられているすべてのスナップショットを削除します。アクティブな BLOB である B2 および関連付けられているすべてのスナップショットが、論理的に削除済みとしてマークされます。* "
 
 > [!NOTE]  
 > 論理的に削除された BLOB が上書きされると、書き込み操作前の BLOB の状態の論理的に削除されたスナップショットが、自動的に生成されます。 新しい BLOB は、上書きされた BLOB の階層を継承します。
@@ -91,7 +91,7 @@ Azure Storage では、BLOB オブジェクトの論理的な削除が提供さ�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-"*論理的に削除されたデータはグレーで、アクティブなデータは青で示されています。上にあるデータほど書き込まれたのが古いデータです。この例では、BLOB B に対して **Undelete Blob** が呼び出されており、それにより、ベース BLOB B1 と、それに関連付けられているすべてのスナップショット (ここでは B0 のみ) がアクティブとして復元されます。2 番目のステップでは、B0 がベース BLOB にコピーされます。このコピー操作では、B1 の論理的に削除されたスナップショットが生成されます。*"
+"*論理的に削除されたデータはグレーで、アクティブなデータは青で示されています。上にあるデータほど書き込まれたのが古いデータです。この例では、BLOB B に対して **Undelete Blob** が呼び出されており、それにより、ベース BLOB B1 と、それに関連付けられているすべてのスナップショット (ここでは B0 のみ) がアクティブとして復元されます。2 番目のステップでは、B0 がベース BLOB にコピーされます。このコピー操作では、B1 の論理的に削除されたスナップショットが生成されます。* "
 
 論理的に削除された BLOB および BLOB のスナップショットを表示するには、削除されたデータを **List Blobs** に含めます。 論理的に削除されたベース BLOB だけを表示することも、論理的に削除された BLOB のスナップショットを含めることもできます。 すべての論理的に削除されたデータについて、データが削除された日時と、データが完全に期限切れになるまでの日数を表示できます。
 
@@ -141,15 +141,15 @@ Copy a snapshot over the base blob:
 
 ## <a name="quickstart"></a>クイック スタート
 ### <a name="azure-portal"></a>Azure ポータル
-論理的な削除を有効にするには、**[Blob service]** の **[論理的な削除]** オプションに移動します。 **[有効]** をクリックして、論理的に削除されたデータを保持する日数を入力します。
+論理的な削除を有効にするには、 **[Blob service]** の **[論理的な削除]** オプションに移動します。 **[有効]** をクリックして、論理的に削除されたデータを保持する日数を入力します。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-論理的に削除された BLOB を表示するには、**[Show deleted blobs]\(削除された BLOB を表示する\)** チェック ボックスをオンにします。
+論理的に削除された BLOB を表示するには、 **[Show deleted blobs]\(削除された BLOB を表示する\)** チェック ボックスをオンにします。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
-特定の BLOB の論理的に削除されたスナップショットを表示するには、BLOB を選んで、**[スナップショットの表示]** をクリックします。
+特定の BLOB の論理的に削除されたスナップショットを表示するには、BLOB を選んで、 **[スナップショットの表示]** をクリックします。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
@@ -161,11 +161,11 @@ Copy a snapshot over the base blob:
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-properties.png)
 
-BLOB の削除を取り消すと、関連付けられているすべてのスナップショットの削除も取り消されることに注意してください。 アクティブな BLOB の論理的に削除されたスナップショットの削除を取り消すには、BLOB をクリックして、**[Undelete all snapshots]\(すべてのスナップショットの削除を取り消す\)** を選びます。
+BLOB の削除を取り消すと、関連付けられているすべてのスナップショットの削除も取り消されることに注意してください。 アクティブな BLOB の論理的に削除されたスナップショットの削除を取り消すには、BLOB をクリックして、 **[Undelete all snapshots]\(すべてのスナップショットの削除を取り消す\)** を選びます。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
-BLOB のスナップショットの削除を取り消した後は、**[レベル上げ]** をクリックしてスナップショットをベース BLOB にコピーすることで、BLOB をスナップショットに復元できます。
+BLOB のスナップショットの削除を取り消した後は、 **[レベル上げ]** をクリックしてスナップショットをベース BLOB にコピーすることで、BLOB をスナップショットに復元できます。
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
@@ -274,13 +274,10 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
-## <a name="should-i-use-soft-delete"></a>論理的な削除を使用する必要があるかどうか
-アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、論理的な削除を有効にすることをお勧めします。 論理的な削除はデータ保護戦略の一部であり、不注意によるデータの損失を防ぐことができます。
+## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>論理的な削除を使用するための特殊な考慮事項は何かありますか?
+アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、論理的な削除を有効にすることをお勧めします。 頻繁に上書きされるデータに対して論理的な削除を有効にすると、ストレージ容量の料金が増えたり、BLOB を一覧表示するときの待ち時間が長くなったりすることがあります。 これは、頻繁に上書きされるデータを論理的な削除が無効な別のストレージ アカウントに格納することによって緩和できます。 
 
 ## <a name="faq"></a>FAQ
-**論理的な削除を使用するための特殊な考慮事項は何かありますか?**  
-頻繁に上書きされるデータに対して論理的な削除を有効にすると、ストレージ容量の料金が増えたり、BLOB を一覧表示するときの待ち時間が長くなったりすることがあります。 これは、頻繁に上書きされるデータを論理的な削除が無効な別のストレージ アカウントに格納することによって緩和できます。 
-
 **論理的な削除を使用できるストレージの種類はどれですか?**  
 現時点では、論理的な削除を使うことができるのは BLOB (オブジェクト) ストレージだけです。
 

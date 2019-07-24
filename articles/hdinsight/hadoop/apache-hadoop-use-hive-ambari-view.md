@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
 ms.openlocfilehash: 55f8f453faf35d52c5c292e6b309194443980466
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "64719574"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する
@@ -73,11 +73,11 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
    * `SELECT`:t4 列の値が [ERROR] であるすべての行の数を選択します。
 
    > [!IMPORTANT]  
-   > __[Database]\(データベース\)__ では、__[default]\(既定\)__ が選択されたままにしておきます。 このドキュメントの例では、HDInsight に含まれている既定のデータベースを使用します。
+   > __[Database]\(データベース\)__ では、 __[default]\(既定\)__ が選択されたままにしておきます。 このドキュメントの例では、HDInsight に含まれている既定のデータベースを使用します。
 
 5. クエリを開始するには、ワークシートの下にある **[実行]** を選択します。 ボタンがオレンジ色になり、テキストが **[Stop]\(停止\)** に変わります。
 
-6. クエリが完了すると、**[Results]\(結果\)** タブに操作の結果が表示されます。 次のテキストは、クエリの結果を示します。
+6. クエリが完了すると、 **[Results]\(結果\)** タブに操作の結果が表示されます。 次のテキストは、クエリの結果を示します。
 
         loglevel       count
         [ERROR]        3
@@ -114,7 +114,7 @@ __[Tables]\(テーブル\)__ タブを使用して、Hive データベース内�
 
 ## <a name="saved-queries"></a>保存済みのクエリ
 
-**[Query]\(クエリ\)** タブでは、必要に応じてクエリを保存できます。 クエリを保存すると、__[Saved Queries]\(保存済みクエリ\)__ タブでそのクエリを再利用できます。
+**[Query]\(クエリ\)** タブでは、必要に応じてクエリを保存できます。 クエリを保存すると、 __[Saved Queries]\(保存済みクエリ\)__ タブでそのクエリを再利用できます。
 
 ![[Saved Queries]\(保存済みクエリ\) タブの画像](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
 
@@ -131,7 +131,7 @@ Hive ビューの上部にある **[UDF]** タブを使用して、UDF のセッ
 
 ![[UDF] タブの画像](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Hive ビューに UDF を追加すると、**[Insert udfs]\(UDF の挿入\)** ボタンが**クエリ エディター**の下部に表示されます。 このエントリを選択すると、Hive ビューで定義した UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
+Hive ビューに UDF を追加すると、 **[Insert udfs]\(UDF の挿入\)** ボタンが**クエリ エディター**の下部に表示されます。 このエントリを選択すると、Hive ビューで定義した UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
 
 たとえば、次のプロパティを持つ UDF を定義したとします。
 

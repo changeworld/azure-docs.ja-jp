@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 0a1ead1580f6764fec7d1d18daa38bf093f242f2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 07/11/2019
+ms.openlocfilehash: c19ec06ce353d653086fa693dde975a55f51f823
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547611"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839249"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>データを Azure Database for MariaDB にレプリケートする
 
@@ -37,7 +37,6 @@ ms.locfileid: "53547611"
 
 ### <a name="other"></a>その他
 - データイン レプリケーションは、General Purpose 価格レベルとメモリ最適化価格レベルでのみサポートされます。
-- グローバル トランザクション ID (GTID) はサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 - [データイン レプリケーションを設定する](howto-data-in-replication.md)方法を確認する。

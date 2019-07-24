@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b1244dd460196e5882caab0d4b526850da48d084
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188548"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60383391"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同期: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
@@ -53,8 +53,8 @@ Azure AD にエクスポートするようにステージングされた削除�
 1. [スタート] メニューから **[同期サービス]** を起動します。
 2. **[コネクタ]** に進みます。
 3. 種類が「 **Azure Active Directory**」のコネクタを選択します。
-4. 右にある **[アクション]** で、**[コネクタの検索領域]** を選択します。
-5. ポップアップ ウィンドウの **[Scope (範囲)]** で、**[Disconnected Since (切断時刻)]** を選択し、過去の時間を選択します。 **[Search (検索)]** をクリックします。 このページには、削除されようとしているすべてのオブジェクトが表示されます。 各項目をクリックすると、そのオブジェクトに関する追加情報を取得できます。 また、 **[Column Setting (列設定)]** をクリックして、グリッドに表示する属性を追加することもできます。
+4. 右にある **[アクション]** で、 **[コネクタの検索領域]** を選択します。
+5. ポップアップ ウィンドウの **[Scope (範囲)]** で、 **[Disconnected Since (切断時刻)]** を選択し、過去の時間を選択します。 **[Search (検索)]** をクリックします。 このページには、削除されようとしているすべてのオブジェクトが表示されます。 各項目をクリックすると、そのオブジェクトに関する追加情報を取得できます。 また、 **[Column Setting (列設定)]** をクリックして、グリッドに表示する属性を追加することもできます。
 
 ![[コネクタの検索領域]](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
@@ -63,7 +63,7 @@ Azure AD にエクスポートするようにステージングされた削除�
 1. 現在の削除のしきい値を取得するには、PowerShell コマンドレット `Get-ADSyncExportDeletionThreshold` を実行します。 Azure AD グローバル管理者のアカウントとパスワードを入力します。 既定値は 500 です。
 2. この保護を一時的に無効にし、それらの削除を行うには、PowerShell コマンドレットの `Disable-ADSyncExportDeletionThreshold`を実行します。 Azure AD グローバル管理者のアカウントとパスワードを入力します。
    ![資格情報](./media/how-to-connect-sync-feature-prevent-accidental-deletes/credentials.png)
-3. Azure Active Directory Connector が選択されている状態で、**[実行]** アクションを選択し、**[エクスポート]** を選択します。
+3. Azure Active Directory Connector が選択されている状態で、 **[実行]** アクションを選択し、 **[エクスポート]** を選択します。
 4. 保護を再度有効にするには、PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold -DeletionThreshold 500`を実行します。 現在の削除のしきい値を取得する場合、500 を通知する値に置き換えます。 Azure AD グローバル管理者のアカウントとパスワードを入力します。
 
 ## <a name="next-steps"></a>次の手順

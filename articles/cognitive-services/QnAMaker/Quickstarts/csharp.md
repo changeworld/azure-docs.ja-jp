@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 02/13/2019
+ms.topic: quickstart
+ms.date: 07/16/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: cf801b8b6b458104a469932487860285102a641b
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: cc005ee578e938311c640f7aa19f6643e7c99900
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65777631"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253883"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-c"></a>C# で QnA Maker REST API を使用する方法 
 <a name="HOLTop"></a>
@@ -42,7 +42,7 @@ ms.locfileid: "65777631"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません)。
+このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です (無料の Community Edition でかまいません)。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Microsoft QnA Maker API** を用意している必要があります。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)の有料サブスクリプション キーが必要です。
 

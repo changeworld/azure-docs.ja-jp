@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 55c7670821ee6c6f5b924bf18b5f7ad01d4b6d51
+ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946808"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "66431302"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -57,7 +57,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 - **AzureLoadBalancer** タグからのトラフィックを許可する必要があります。
 
-##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>アプリケーション ゲートウェイ アクセスを少数のソース IP に限定する
+##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Application Gateway アクセスを少数のソース IP に限定する
 
 このシナリオでは、Application Gateway サブネット上の NSG を使用します。 次の制約は、この優先順位でサブネットに適用します。
 

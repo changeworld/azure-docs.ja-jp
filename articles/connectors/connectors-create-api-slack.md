@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 675e37120b06af3add58b564495f22875647a0fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230354"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62105651"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Azure Logic Apps を使用して Slack の監視と管理を行う
 
@@ -51,12 +51,12 @@ Slack アカウントから応答を取得し、その出力を他のアクシ�
 
    または
 
-   既存のロジック アプリの場合、アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+   既存のロジック アプリの場合、アクションを追加する最後のステップの下で、 **[新しいステップ]** を選択します。 
    検索ボックスに、フィルターとして「Slack」と入力します。 
    アクションの一覧で、目的のアクションを選択します。
 
    ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
-   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]**  を選択します。
 
 1. Slack へのサインインを求められたら、Slack ワークスペースにサインインします。 
 

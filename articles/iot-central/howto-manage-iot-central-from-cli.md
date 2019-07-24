@@ -9,10 +9,10 @@ ms.date: 02/07/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 9e5d842cece316bc9c53e1e8583f40a0f222b91d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "66151955"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Azure CLI から IoT Central を管理する
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
-[az iotcentral app create](/cli/azure/iotcentral/app#az-iotcentral-app-create) コマンドを使用して、Azure サブスクリプション内に IoT Central アプリケーションを作成します。 例: 
+[az iotcentral app create](/cli/azure/iotcentral/app#az-iotcentral-app-create) コマンドを使用して、Azure サブスクリプション内に IoT Central アプリケーションを作成します。 例:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -84,7 +84,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>アプリケーションの削除
 
-[az iotcentral app delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) コマンドを使用して、IoT Central アプリケーションを削除します。 例: 
+[az iotcentral app delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) コマンドを使用して、IoT Central アプリケーションを削除します。 例:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \

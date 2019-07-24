@@ -11,11 +11,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
 ms.openlocfilehash: ffc2e5fb588ce6861f5df6cefdf810c1a015c043
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684040"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61441017"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
 
@@ -54,7 +54,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
    ![Cortana Intelligence ギャラリーで [weather prediction model] \(天気予報モデル) ページを開く](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
 1. **[実行]** をクリックしてモデルの手順を検証します。 この手順の完了までに約 2 分かかります。
    ![Azure Machine Learning Studio で天気予報モデルを開く](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. **[Web サービスの設定]** > **[予測 Web サービス]** の順にクリックします。
+1. **[Web サービスの設定]**  >  **[予測 Web サービス]** の順にクリックします。
    ![Azure Machine Learning Studio に天気予報モデルをデプロイする](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. ダイアグラムで、**Web サービスの入力**モジュールを**モデルのスコア付け**モジュールの近くにドラッグします。
 1. **Web サービスの入力**モジュールを**モデルのスコア付け**モジュールに接続します。
@@ -76,16 +76,16 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 
-1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成]**  >  **[モノのインターネット]**  >  **[Stream Analytics ジョブ]** の順にクリックします。
 1. 次の情報をジョブに入力します。
 
    **ジョブ名**:ジョブの名前。 名前はグローバルに一意である必要があります。
 
-   **[リソース グループ]**:IoT ハブと同じリソース グループを使用します。
+   **[リソース グループ]** :IoT ハブと同じリソース グループを使用します。
 
-   **[場所]**:リソース グループと同じ場所を使用します。
+   **[場所]** :リソース グループと同じ場所を使用します。
 
-   **[ダッシュボードにピン留めする]**:ダッシュボードから IoT ハブに簡単にアクセスできるようにするには、このオプションをオンにします。
+   **[ダッシュボードにピン留めする]** :ダッシュボードから IoT ハブに簡単にアクセスできるようにするには、このオプションをオンにします。
 
    ![Azure での Stream Analytics ジョブの作成](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
@@ -99,7 +99,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
    **入力のエイリアス**:入力の一意のエイリアス。
 
-   **ソース**:**[IoT ハブ]** を選択します。
+   **ソース**: **[IoT ハブ]** を選択します。
 
    **コンシューマー グループ**:作成したコンシューマー グループを選びます。
 
@@ -128,18 +128,18 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>デプロイした Web サービスを呼び出すための関数を Stream Analytics ジョブに追加する
 
-1. **[ジョブ トポロジ]** で **[関数]** > **[追加]** の順にクリックします。
+1. **[ジョブ トポロジ]** で **[関数]**  >  **[追加]** の順にクリックします。
 1. 次の情報を入力します。
 
    **関数のエイリアス**: 「 `machinelearning` 」を入力します。
 
    **関数の型**: **[Azure ML]** を選択します。
 
-   **[インポート オプション]**: **[別のサブスクリプションからインポートする]** を選択します。
+   **[インポート オプション]** : **[別のサブスクリプションからインポートする]** を選択します。
 
    **URL**: Excel ブックからメモした Web サービス URL を入力します。
 
-   **[キー]**:Excel ブックからメモしたアクセス キーを入力します。
+   **[キー]** :Excel ブックからメモしたアクセス キーを入力します。
 
    ![Azure で Stream Analytics ジョブに関数を追加する](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
@@ -167,7 +167,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
-Stream Analytics ジョブで、**[開始]** > **[現在]** > **[開始]** の順にクリックします。 ジョブが正常に開始されると、ジョブの状態が **[停止済み]** から **[実行中]** に変わります。
+Stream Analytics ジョブで、 **[開始]**  >  **[現在]**  >  **[開始]** の順にクリックします。 ジョブが正常に開始されると、ジョブの状態が **[停止済み]** から **[実行中]** に変わります。
 
 ![Stream Analytics ジョブの実行](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 

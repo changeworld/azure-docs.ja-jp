@@ -1,21 +1,21 @@
 ---
-title: 列ストア インデックスのパフォーマンスを上げる - Azure SQL Data WareHouse | Microsoft Docs
+title: Azure SQL Data Warehouse の列ストア インデックスのパフォーマンスを向上させる | Microsoft Docs
 description: メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: load data
+ms.subservice: load-data
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0b9a4ce84544beb09431e494385f3b9d8507c418
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ec85bcc764ba7a7ae6341e0490530c31fdb5a02b
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873546"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595474"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>列ストアの行グループの品質を最大限にする
 

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac65a9ac81bca942f9fcbe802fdbf8a0aa3f8248
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b69dca5abddd56b29abf3e482e51b3d2a41612e7
+ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997667"
+ms.lasthandoff: 05/17/2019
+ms.locfileid: "65864469"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -131,21 +131,28 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 カスタムの期間を選択すると、開始時刻と終了時刻を構成できます。
 
-サインイン ビューにフィールドを追加すると、これらのフィールドがフィルターの一覧に自動的に追加されます。 たとえば、**[クライアント アプリ]** フィールドを一覧に追加した場合、次のフィルターを設定できるもう 1 つのフィルター オプションが表示されます。
-
-- ブラウザー      
-- Exchange ActiveSync (supported) (Exchange ActiveSync (サポート対象))               
-- Exchange ActiveSync (unsupported) (Exchange ActiveSync (サポート外))
-- その他のクライアント               
-    - IMAP
-    - MAPI
-    - 以前のバージョンの Office クライアント
-    - POP
-    - SMTP
-
-
+サインイン ビューにフィールドを追加すると、これらのフィールドがフィルターの一覧に自動的に追加されます。 たとえば、 **[クライアント アプリ]** フィールドを一覧に追加した場合、次のフィルターを設定できるもう 1 つのフィルター オプションが表示されます。  
 ![サインイン アクティビティ](./media/concept-sign-ins/12.png "サインイン アクティビティ")
 
+- **ブラウザー**  
+    このフィルターは、サインイン試行がブラウザー フローを使用して行われたすべてのイベントを表示します。
+- **Exchange ActiveSync (サポート対象)**  
+    このフィルターは、iOS、Android、Windows Phone のようなサポートされるプラットフォームから Exchange ActiveSync (EAS) プロトコルが試行されているすべてのサインイン試行を表示します。
+- **Exchange ActiveSync (サポート対象外)**  
+    このフィルターは、Linux ディストリビューションのようなサポートされないプラットフォームから EAS プロトコルが試行されているすべてのサインイン試行を表示します。
+- **モバイル アプリとデスクトップ クライアント**。このフィルターは、ブラウザー フローを使用していなかったすべてのサインイン試行を表示します。 これは、任意のプロトコルを使用する任意のプラットフォームからのモバイル アプリの場合や、Windows や MacOS での Office のようなデスクトップ クライアントの場合があります。
+  
+- **その他のクライアント**
+    - **IMAP**  
+        IMAP を使用して電子メールを取得する従来のメール クライアント。
+    - **MAPI**  
+        Office 2013。ADAL が有効になっており、MAPI が使用されています。
+    - **以前のバージョンの Office クライアント**  
+        ADAL が有効になっておらず、MAPI が使用されている既定の構成の Office 2013。あるいは、ADAL が無効になっている Office 2016。
+    - **POP**  
+        POP3 を使用して電子メールを取得する従来のメール クライアント。
+    - **SMTP**  
+        SMTP を使用して電子メールを送信する従来のメール クライアント。
 
 ## <a name="download-sign-in-activities"></a>サインイン アクティビティのダウンロード
 
@@ -210,7 +217,7 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 * 組織内の上位 3 つのアプリケーションはどれか。
 * 最近ロールアウトしたアプリケーションは、 どのような状況か。
 
-このデータへのエントリ ポイントは、**[エンタープライズ アプリケーション]** の **[概要]** セクションにある過去 30 日間のレポートに示される、組織内の上位 3 つのアプリケーションです。
+このデータへのエントリ ポイントは、 **[エンタープライズ アプリケーション]** の **[概要]** セクションにある過去 30 日間のレポートに示される、組織内の上位 3 つのアプリケーションです。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/10.png "サインイン アクティビティ")
 

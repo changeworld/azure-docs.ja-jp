@@ -11,11 +11,11 @@ ms.date: 04/02/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797037"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61475033"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse に対して認証する
 Azure Active Directory (AAD) または SQL Server 認証を使用して Azure SQL Data Warehouse に対して認証する方法について説明します。
@@ -31,7 +31,7 @@ SQL Data Warehouse に接続するには、次の情報を提供する必要が�
 * SQL 認証の指定
 * ユーザー名
 * パスワード
-* 既定のデータベース (省略可) 
+* 既定のデータベース (省略可)
 
 既定では、ユーザー データベースではなく、 *master* データベースに接続されます。 ユーザー データベースに接続するには、次の 2 つの操作のいずれかを選択します。
 

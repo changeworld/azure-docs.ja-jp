@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: d0ef3e407fd256b4db351f86b51964cbcb16e819
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d1bad50f2d97434865bb02ad54b1643c54e01790
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905139"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65953020"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Azure Data Box を安全にインストールして操作する
 ![警告のアイコン](./media/data-box-safety/warning_icon.png)

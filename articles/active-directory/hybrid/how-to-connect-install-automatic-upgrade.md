@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003902"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60349846"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect:自動アップグレード
 この機能は、ビルド [ 1.1.105.0 (2016 年 2 月リリース) で導入されました](reference-connect-version-history.md#111050)。  この機能は[ビルド 1.1.561](reference-connect-version-history.md#115610) で更新され、以前サポートされていなかった追加のシナリオがサポートされています。
@@ -43,7 +43,7 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 | Suspended |システムによる設定だけが可能です。 システムは、自動アップグレードを**現在受け付けることができません**。 |
 | Disabled |自動アップグレードが無効です。 |
 
-`Set-ADSyncAutoUpgrade` を使用して、**有効**と**無効**を切り替えることができます。 システムだけが、状態を **保留**に設定することができます。  1.1.750.0 より前は、自動アップグレードの状態が一時停止に設定されている場合に、Set-ADSyncAutoUpgrade コマンドレットによって Autoupgrade がブロックされていました。 この機能は変更されたため、AutoUpgrade はブロックされません。
+`Set-ADSyncAutoUpgrade` を使用して、**有効**と**無効**を切り替えることができます。 システムだけが、状態を **保留**に設定することができます。  1\.1.750.0 より前は、自動アップグレードの状態が一時停止に設定されている場合に、Set-ADSyncAutoUpgrade コマンドレットによって Autoupgrade がブロックされていました。 この機能は変更されたため、AutoUpgrade はブロックされません。
 
 自動アップグレードでは、アップグレード インフラストラクチャに Azure AD Connect Health を使用しています。 自動アップグレードを動作させるには、「 **Office 365 URL および IP アドレス範囲** 」に記載されているように、 [Azure AD Connect Health](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)用にプロキシ サーバーで URL を開いておく必要があります。
 

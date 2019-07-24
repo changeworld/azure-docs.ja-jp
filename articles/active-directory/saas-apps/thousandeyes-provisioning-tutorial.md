@@ -16,10 +16,10 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f8325737a62bba71364c02a234636999b0b1b9c
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 06/13/2019
 ms.locfileid: "65964138"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>チュートリアル:ThousandEyes を構成し、自動ユーザー プロビジョニングに対応させる
@@ -60,11 +60,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Azure AD で ThousandEyes への自動ユーザー アカウント プロビジョニングを構成する
 
-1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
+1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
-2. シングル サインオンのために ThousandEyes を既に構成している場合は、検索フィールドで ThousandEyes のインスタンスを検索します。 構成していない場合は、**[追加]** を選択してアプリケーション ギャラリーで **ThousandEyes** を検索します。 検索結果から ThousandEyes を選択してアプリケーションの一覧に追加します。
+2. シングル サインオンのために ThousandEyes を既に構成している場合は、検索フィールドで ThousandEyes のインスタンスを検索します。 構成していない場合は、 **[追加]** を選択してアプリケーション ギャラリーで **ThousandEyes** を検索します。 検索結果から ThousandEyes を選択してアプリケーションの一覧に追加します。
 
-3. ThousandEyes のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
+3. ThousandEyes のインスタンスを選択してから、 **[プロビジョニング]** タブを選択します。
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
@@ -74,7 +74,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![ThousandEyes のプロビジョニング](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
-6. Azure Portal で、**[テスト接続]** をクリックして Azure AD が ThousandEyes アプリに接続できることを確認します。 接続できない場合は、使用中の ThousandEyes アカウントに管理者アクセス許可があることを確認してから、手順 5 をもう一度試します。
+6. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が ThousandEyes アプリに接続できることを確認します。 接続できない場合は、使用中の ThousandEyes アカウントに管理者アクセス許可があることを確認してから、手順 5 をもう一度試します。
 
 7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、[エラーが発生したときにメール通知を送信します] チェック ボックスをオンにします。
 
@@ -84,7 +84,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 10. **[属性マッピング]** セクションで、Azure AD から ThousandEyes に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で ThousandEyes のユーザー アカウントとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
-11. ThousandEyes に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+11. ThousandEyes に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
 12. **[Save]** をクリックします。
 

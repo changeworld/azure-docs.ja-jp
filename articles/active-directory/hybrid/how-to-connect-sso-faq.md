@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 709fb3be37850be37d6378652921ce26f4ff15fe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785744"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60242229"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -110,7 +110,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 
 #### <a name="option-a-disable-using-azure-ad-connect"></a>オプション A: Azure AD Connect を使用して無効にする
 
-1. Azure AD Connect を実行し、**[Change user sign-in page]\(ユーザー サインイン ページの変更\)** を選択して **[次へ]** をクリックします。
+1. Azure AD Connect を実行し、 **[Change user sign-in page]\(ユーザー サインイン ページの変更\)** を選択して **[次へ]** をクリックします。
 2. **[シングル サインオンを有効にする]** チェック ボックスをオフにします。 ウィザードの手順を続行します。
 
 ウィザードの完了後、シームレス SSO はテナントで無効になります。 ただし、画面に次のようなメッセージが表示されます。
@@ -130,7 +130,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 5. `Enable-AzureADSSO -Enable $false` を呼び出します。
 
 >[!IMPORTANT]
->PowerShell を使用してシームレス SSO を無効にしても、Azure AD Connect での状態は変更されません。 シームレス SSO は、**[ユーザー サインインの変更]** ページに有効と表示されます。
+>PowerShell を使用してシームレス SSO を無効にしても、Azure AD Connect での状態は変更されません。 シームレス SSO は、 **[ユーザー サインインの変更]** ページに有効と表示されます。
 
 ### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>手順 2. シームレス SSO が有効になっている AD フォレストのリストの取得
 

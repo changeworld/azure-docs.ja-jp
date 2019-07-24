@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/05/2019
+ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee54d37050991763e60a6feb96c75d80384a42ac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c17835a4155e97395e8ae1b8e9ba6d2a42433f71
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726671"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66298747"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -142,7 +142,7 @@ Batch アカウントに含まれているアプリケーションを表示す�
 
 **[新しいアプリケーション]** ウィンドウには、新しいアプリケーションとアプリケーション パッケージの設定を指定するための次のフィールドがあります。
 
-**[アプリケーション ID]**
+**アプリケーション ID**
 
 このフィールドでは、標準の Azure Batch ID 検証ルールに従って、新しいアプリケーションの ID を指定します。 アプリケーション ID を指定するためのルールは次のとおりです。
 
@@ -176,7 +176,7 @@ Batch アカウントに含まれているアプリケーションを表示す�
 
 ![Add application package blade in Azure portal][8]
 
-ご覧のように、 **[新しいアプリケーション]** ウィンドウの場合とフィールドは同じですが、 **[アプリケーション ID]** ボックスは使用できなくなっています。 新しいアプリケーションの場合と同様に、新しいパッケージの**バージョン**を指定して、**アプリケーション パッケージ**の .zip ファイルを参照し、 **[OK]** をクリックしてパッケージをアップロードします。
+ご覧のように、フィールドは **[新しいアプリケーション]** ウィンドウのそれに一致しますが、 **[アプリケーション ID]** は無効になっています。 新しいアプリケーションの場合と同様に、新しいパッケージの**バージョン**を指定して、**アプリケーション パッケージ**の .zip ファイルを参照し、 **[OK]** をクリックしてパッケージをアップロードします。
 
 ### <a name="update-or-delete-an-application-package"></a>アプリケーション パッケージの更新または削除
 既存のアプリケーション パッケージを更新または削除するには、対象アプリケーションの詳細を開き、 **[パッケージ]** をクリックします。次に、変更するアプリケーション パッケージの行の**省略記号**をクリックして、実行する操作を選択します。

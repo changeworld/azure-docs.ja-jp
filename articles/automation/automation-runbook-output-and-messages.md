@@ -4,17 +4,17 @@ description: Azure Automation で Runbook から出力とエラー メッセー�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1cbf91af4e91f41fff30a7edfa869d07a21b881e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 27dd9888d83e01ea522b2532fc1d65284f2fe8d1
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487670"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476922"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 ほとんどの Azure Automation Runbook は、何らかの形式の出力があります。 この出力には、ユーザーへのエラー メッセージや別の Runbook で使用することを目的とした複雑なオブジェクトなどがあります。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](/powershell/module/microsoft.powershell.core/about/about_redirection) が提供されます。 Azure Automation は、これらの各ストリームで異なる動作をします。 Runbook を作成するときに、それぞれの使用方法のベスト プラクティスに従ってください。
@@ -23,7 +23,7 @@ ms.locfileid: "58487670"
 
 | ストリーム | 説明 | 公開先 | テスト |
 |:--- |:--- |:--- |:--- |
-| 出力 |他の Runbook によって使用されることを目的とするオブジェクト。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
+| Output |他の Runbook によって使用されることを目的とするオブジェクト。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
 | 警告 |ユーザー向けの警告メッセージ。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
 | Error |ユーザー向けのエラー メッセージ 例外とは異なり、既定では Runbook はエラー メッセージ発行後に実行を継続します。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
 | 詳細 |一般情報またはデバッグ情報を提供するメッセージ。 |Runbook の詳細ログが有効な場合のみ、ジョブ履歴に書き込まれます。 |Runbook で $VerbosePreference が Continue に設定されている場合のみ、[テスト出力] ウィンドウに表示されます。 |
@@ -100,7 +100,7 @@ Workflow Test-Runbook
 }
  ```
 
-グラフィカル Runbook またはグラフィカル PowerShell ワークフロー Runbook で出力の種類を宣言するには、**[入力と出力]** メニュー オプションを選択し、出力の種類の名前を入力します。 親 Runbook から参照するときに簡単に識別できるように、完全な .NET クラス名を使用することをお勧めします。 これにより、そのクラスのすべてのプロパティが Runbook のデータ バスに公開され、そのプロパティを条件付きロジックやログ記録に使用したり、Runbook 内の他のアクティビティの値として参照したりする際に柔軟性が非常に高まります。<br> ![Runbook Input and Output option](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
+グラフィカル Runbook またはグラフィカル PowerShell ワークフロー Runbook で出力の種類を宣言するには、 **[入力と出力]** メニュー オプションを選択し、出力の種類の名前を入力します。 親 Runbook から参照するときに簡単に識別できるように、完全な .NET クラス名を使用することをお勧めします。 これにより、そのクラスのすべてのプロパティが Runbook のデータ バスに公開され、そのプロパティを条件付きロジックやログ記録に使用したり、Runbook 内の他のアクティビティの値として参照したりする際に柔軟性が非常に高まります。<br> ![Runbook Input and Output option](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
 次の例には、この機能を説明するために 2 つのグラフィカル Runbook があります。 モジュール式の Runbook デザイン モデルを適用する場合は、"*認証 Runbook テンプレート*" として機能する 1 つの Runbook で、実行アカウントを使用した Azure での認証を管理します。 通常は特定のシナリオを自動化するためのコア ロジックを実行する 2 つ目の Runbook は、ここでは " *認証 Runbook テンプレート* " を実行し、結果を **[テスト]** 出力ウィンドウに表示します。 通常の状況では、この Runbook で子 Runbook からの出力を利用して、リソースに対する操作を行います。
 
@@ -112,7 +112,7 @@ Workflow Test-Runbook
 
 この例の *Test-ChildOutputType* という 2 番目の Runbook には、2 つのアクティビティだけがあります。<br> ![Example Child Output Type Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png) 
 
-最初のアクティビティは **AuthenticateTo-Azure** Runbook を呼び出し、2 番目のアクティビティは **Write-Verbose** コマンドレットを実行します。その際、**[データ ソース]** は **[アクティビティの出力]**、**[フィールド パス]** の値は **Context.Subscription.SubscriptionName** にします。この値は **AuthenticateTo-Azure** Runbook からのコンテキスト出力を指定しています。<br> ![Write-Verbose cmdlet Parameter Data Source](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)    
+最初のアクティビティは **AuthenticateTo-Azure** Runbook を呼び出し、2 番目のアクティビティは **Write-Verbose** コマンドレットを実行します。その際、 **[データ ソース]** は **[アクティビティの出力]** 、 **[フィールド パス]** の値は **Context.Subscription.SubscriptionName** にします。この値は **AuthenticateTo-Azure** Runbook からのコンテキスト出力を指定しています。<br> ![Write-Verbose cmdlet Parameter Data Source](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)    
 
 結果の出力は、サブスクリプションの名前です。<br> ![Test-ChildOutputType Runbook Results](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
@@ -122,7 +122,7 @@ Workflow Test-Runbook
 出力ストリームとは異なり、メッセージ ストリームはユーザーに情報を伝えるためのものです。 さまざまな種類の情報向けに複数のメッセージ ストリームがあり、それぞれが異なる方法で Azure Automation で処理されます。
 
 ### <a name="warning-and-error-streams"></a>警告およびエラー ストリーム
-警告およびエラー ストリームは、Runbook で発生する問題をログ記録するためのものです。 それらは、Runbook が実行されたときにジョブ履歴に書き込まれ、Runbook がテストされたときに Azure Portal の [テスト出力] ウィンドウに表示されます。 既定では、Runbook は警告またはエラーの後も引き続き実行されます。 警告またはエラー時に Runbook を中断するように指定することができます。これを行うには、メッセージを作成する前に、Runbook の[ユーザー設定変数](#preference-variables)を設定します。 たとえば、Runbook を例外の場合と同様、エラーで中断するようにするには、**$ErrorActionPreference** を Stop に設定します。
+警告およびエラー ストリームは、Runbook で発生する問題をログ記録するためのものです。 それらは、Runbook が実行されたときにジョブ履歴に書き込まれ、Runbook がテストされたときに Azure Portal の [テスト出力] ウィンドウに表示されます。 既定では、Runbook は警告またはエラーの後も引き続き実行されます。 警告またはエラー時に Runbook を中断するように指定することができます。これを行うには、メッセージを作成する前に、Runbook の[ユーザー設定変数](#preference-variables)を設定します。 たとえば、Runbook を例外の場合と同様、エラーで中断するようにするには、 **$ErrorActionPreference** を Stop に設定します。
 
 警告またはエラー メッセージを作成するには、[Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) または [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) コマンドレットを使用します。 アクティビティによってストリームに書き込むことができる場合もあります。
 
@@ -160,7 +160,7 @@ Windows PowerShell では [ユーザー設定変数](https://technet.microsoft.c
 
 次の表は、Runbook で使用できるユーザー設定変数と、それらの有効値と既定値を示しています。 この表には、Runbook で有効な値のみが含まれています。 Windows PowerShell を Azure Automation の外部で使用する場合は、ユーザー設定変数で有効なその他の値があります。
 
-| 可変 | Default value | 有効な値 |
+| 変数 | Default value | 有効な値 |
 |:--- |:--- |:--- |
 | WarningPreference |Continue |Stop<br>Continue<br>SilentlyContinue |
 | ErrorActionPreference |Continue |Stop<br>Continue<br>SilentlyContinue |

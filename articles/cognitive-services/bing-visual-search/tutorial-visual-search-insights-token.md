@@ -3,29 +3,29 @@ title: ImageInsightsToken を使用して以前の検索から似た画像を見
 titleSuffix: Azure Cognitive Services
 description: Bing Visual Search SDK を使用して、ImageInsightsToken で指定されている画像の URL を取得します。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 06/18/2019
 ms.author: rosh
-ms.openlocfilehash: 39a95e877c766eb8f491c166edeb9d96f21db7dd
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 78584c2c0419bb27fb58c07eb97b1aa38501951f
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493947"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67204079"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>ImageInsightsToken を使用して以前の検索から似た画像を見つける
 
 Visual Search SDK を使用すると、前に実行された `ImageInsightsToken` を返す検索からオンラインで画像を検索できます。 このアプリケーションでは `ImageInsightsToken` を取得し、このトークンをその後の検索で使用します。 その後、`ImageInsightsToken` を Bing に送信し、Bing Search URL とオンラインで見つかった類似する画像の URL を含む結果を返します。
 
-このチュートリアルのソース コード全体は、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInisghtsTokens.cs) で入手できます。
+このチュートリアルのソース コード全体は、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
+* [Visual Studio 2019](https://www.visualstudio.com/downloads/) のいずれかのエディション。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 * NuGet Visual Search パッケージと Image Search パッケージ。
     - Visual Studio のソリューション エクスプローラーでプロジェクトを右クリックし、メニューから **[NuGet パッケージの管理]** を選択します。 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` パッケージと `Microsoft.Azure.CognitiveServices.Search.ImageSearch` パッケージをインストールします。 NuGet パッケージをインストールすると、次のものもインストールされます。
@@ -38,10 +38,10 @@ Visual Search SDK を使用すると、前に実行された `ImageInsightsToken
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>Bing Image Search SDK から ImageInsightsToken を取得する
 
-このアプリケーションでは、[Bing Image Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) によって取得された `ImageInsightsToken` を使用します。 新しい C# コンソール アプリケーションで、`ImageSearchAPI()` を使用して API を呼び出すクライアントを作成します。 その後、クエリで `SearchAsync()` を使用します。
+このアプリケーションでは、[Bing Image Search SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) によって取得された `ImageInsightsToken` を使用します。 新しい C# コンソール アプリケーションで、`ImageSearchClient()` を使用して API を呼び出すクライアントを作成します。 その後、クエリで `SearchAsync()` を使用します。
 
 ```csharp
-var client = new ImageSearchAPI(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
+var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
 var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
 Console.WriteLine("Search images for query \"canadian rockies\"");
 ```
@@ -136,8 +136,8 @@ if (visualSearchResults.Tags.Count > 0)
 |ImageById -> WebSearchUrl    |         |
 |RelatedSearches -> WebSearchUrl:    |         |
 |DocumentLevelSuggestions -> WebSearchUrl:     |         |
-|TopicResults -> WebSearchUrl    | https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
-|ImageResults -> WebSearchUrl    |  https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
+|TopicResults -> WebSearchUrl    | [https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&amp;CID=1BA795A21EAF6A63175699B71FC36B7C&amp;rd=1&amp;h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&amp;v=1&amp;r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&amp;p=DevEx](https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx ),5823.1       |
+|ImageResults -> WebSearchUrl    |  [https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&amp;CID=1BA795A21EAF6A63175699B71FC36B7C&amp;rd=1&amp;h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&amp;v=1&amp;r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&amp;p=DevEx](https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx ),5831.1       |
 
 上で示されているように、`TopicResults` タイプと `ImageResults` タイプには、関連する画像のクエリが含まれています。 URL は、Bing Search の結果にリンクしています。
 

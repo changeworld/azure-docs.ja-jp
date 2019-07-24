@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5267f81c9886e2d1d8d62c134156aedb3b2b8763
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 058b6c979346d9dcce36940432d0e222e919dba9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023718"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65540822"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 
@@ -29,7 +29,7 @@ API のバージョンによって、実現できるシェイプの深さが決�
 | REST API の 2019-05-06-Preview バージョン (.NET SDK はサポートされていません) | 複合オブジェクト、複数のレベル、1 つの **Shaper** スキル定義内 |
 | 2019-05-06** (一般提供)、2017-11-11-Preview| 複合オブジェクト、1 レベルの深さ。 複数レベルのシェイプでは、いくつかの Shaper ステップを連鎖させる必要があります|
 
-[シナリオ 3](#nested-complex-types)に示されたプレビューの **Shaper**。省略可能な新しい *sourceContext* プロパティを入力に追加します。 *source* および *sourceContext* プロパティは相互に排他的です。 入力がスキルのコンテキストにある場合は、単に *source* を使用します。 入力がスキル コンテキストとは*別の*コンテキストにある場合は、*sourceContext* を使用します。 *sourceContext* には、特定の要素がソースとして扱われる入れ子の入力を定義する必要があります。 
+[シナリオ 3](#nested-complex-types) に示された **Shaper** スキルは、`api-version=2019-05-06-Preview` によって提供され、省略可能な新しい *sourceContext* プロパティを入力に追加します。 *source* および *sourceContext* プロパティは相互に排他的です。 入力がスキルのコンテキストにある場合は、単に *source* を使用します。 入力がスキル コンテキストとは*別の*コンテキストにある場合は、*sourceContext* を使用します。 *sourceContext* には、特定の要素がソースとして扱われる入れ子の入力を定義する必要があります。 
 
 すべての API バージョンにおいて、応答内では、出力名は常に "output" です。 内部的には、パイプラインでは別の名前をマップできます (下の例では "analyzedText") が、**Shaper** スキル自体は、応答内で "output" を返します。 これは、エンリッチメントしたドキュメントのデバッグ中に名前付けの不一致に気付いた場合や、カスタム スキルを構築し、応答を自身で作成している場合に重要なことがあります。
 
@@ -196,7 +196,7 @@ Microsoft.Skills.Util.ShaperSkill
 ## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>シナリオ 3: 入れ子になったコンテキストからの入力統合
 
 > [!NOTE]
-> api-version=2019-05-06-Preview でサポートされている入れ子構造は、[ナレッジ ストア](knowledge-store-concept-intro.md)または Azure Search インデックス内で使用できます。
+> [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でサポートされている入れ子構造は、[ナレッジ ストア](knowledge-store-concept-intro.md)または Azure Search インデックス内で使用できます。
 
 本の、タイトル、章、コンテンツがあり、そのコンテンツ上でエンティティ認識とキー フレーズを実行できることを想定してください。その場合、さまざまなスキルからの結果を統合して、章の名前、エンティティ、およびキーフレーズを備えた 1 つのシェイプにまとめる必要があります。
 

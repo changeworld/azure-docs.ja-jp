@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.workload: data-services
 ms.topic: tutorial
-ms.custom: seodec18
-ms.date: 12/07/2018
-ms.openlocfilehash: 056e5a0f56e1a8998288e6a78f448f0f91777e1d
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.custom: mvc
+ms.date: 06/03/2019
+ms.openlocfilehash: d09ed0585250d078f728aa4e7272cca147a40c38
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969304"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612376"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する
 
-このチュートリアルでは、Azure Stream Analytics を使用して通話データを分析する方法について説明します。 クライアント アプリケーションによって生成される通話データには、Stream Analytics ジョブによってフィルター処理される不正な呼び出しが一部含まれています。
+このチュートリアルでは、Azure Stream Analytics を使用して通話データを分析する方法について説明します。 クライアント アプリケーションによって生成される通話データには、Stream Analytics ジョブによってフィルター処理される不正な呼び出しが含まれています。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -32,10 +32,10 @@ ms.locfileid: "65969304"
 
 ## <a name="prerequisites"></a>前提条件
 
-始める前に、以下のものを用意してください。
+開始する前に、次の操作を行います。
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
-* [Azure Portal](https://portal.azure.com/) にログインします。
+* [Azure Portal](https://portal.azure.com/) にサインインします。
 * Microsoft ダウンロード センターから通話イベント ジェネレーター アプリ [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) をダウンロードします。または、[GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) からソース コードを入手します。
 * Power BI アカウントが必要になります。
 
@@ -45,7 +45,7 @@ Stream Analytics で不正な呼び出しデータ ストリームを分析で�
 
 イベント ハブを作成して呼び出しデータをそのイベント ハブに送信するには、次の手順を使用します。
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[リソースの作成]**  >  **[モノのインターネット (IoT)]**  >  **[Event Hubs]** の順に選択します。
 
    ![Azure イベント ハブをポータルで作成する](media/stream-analytics-manage-job/find-event-hub-resource.png)
@@ -71,7 +71,7 @@ Stream Analytics で不正な呼び出しデータ ストリームを分析で�
 
 アプリケーションから Azure Event Hubs にデータを送信できるようにするには、適切なアクセスを許可するポリシーがイベント ハブに必要です。 アクセス ポリシーにより、承認情報を含む接続文字列が生成されます。
 
-1. 前の手順で作成したイベント ハブ *MyEventHub* に移動します。 **[設定]** で **[共有アクセス ポリシー]** を選択してから、 **[+ 追加]** を選択します。
+1. 前の手順で作成したイベント ハブ MyEventHub* に移動します。 **[設定]** で **[共有アクセス ポリシー]** を選択してから、 **[+ 追加]** を選択します。
 
 2. ポリシーに「**MyPolicy**」という名前を付け、 **[管理]** が選択されていることを確認します。 **[作成]** を選択します。
 
@@ -140,7 +140,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
    |サブスクリプション    |  \<該当するサブスクリプション\>   |   ジョブを作成する Azure サブスクリプションを選択します。       |
    |リソース グループ   |   MyASADemoRG      |   **[既存のものを使用]** を選択し、アカウントの新しいリソース グループ名を入力します。      |
    |Location   |    米国西部 2     |      ジョブをデプロイできる場所。 最適なパフォーマンスを実現し、リージョン間でのデータ転送の料金がかからないように、ジョブとイベント ハブを同じリージョンに配置することをお勧めします。      |
-   |ホスティング環境    | クラウド        |     Stream Analytics ジョブは、クラウドまたはエッジにデプロイすることができます。 クラウドでは Azure Cloud にデプロイすることができ、エッジでは IoT エッジ デバイスにデプロイすることができます。    |
+   |ホスティング環境    | クラウド        |     Stream Analytics ジョブは、クラウドまたはエッジにデプロイすることができます。 クラウドでは Azure Cloud にデプロイすることができ、エッジでは IoT Edge デバイスにデプロイすることができます。    |
    |[ストリーミング ユニット]     |    1       |      ストリーミング ユニットとは、ジョブの実行に必要なコンピューティング リソースのことです。 既定では、この値は 1 に設定されています。 ストリーミング ユニットのスケーリングについては、[ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md)に関する記事を参照してください。      |
 
 4. 残りの設定では既定のオプションを使用し、 **[作成]** を選択して、デプロイが成功するまで待ちます。
@@ -191,7 +191,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 ## <a name="define-a-query-to-analyze-input-data"></a>入力データを分析するようクエリを定義する
 
-次の手順では、リアルタイムでデータを分析する変換を作成します。 変換クエリの定義には、[Stream Analytics クエリ言語](https://msdn.microsoft.com/library/dn834998.aspx)を使用します。 このチュートリアルで使用されるクエリでは、電話データから不正な呼び出しを検出します。
+次の手順では、リアルタイムでデータを分析する変換を作成します。 変換クエリの定義には、[Stream Analytics クエリ言語](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を使用します。 このチュートリアルで使用されるクエリでは、電話データから不正な呼び出しを検出します。
 
 この例では、同じユーザーによって、5 秒以内に別々の場所から不正な呼び出しが行われます。 たとえば、合法的に同じユーザーが米国とオーストラリアで同時に呼び出しを行うことはできません。 Stream Analytics ジョブの変換クエリを定義するには:
 
@@ -212,7 +212,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   不正な呼び出しを確認するために、`CallRecTime` の値に基づいてストリーミング データを自己結合できます。 その後、`CallingIMSI` の値 (発信番号) は同じなのに `SwitchNum` の値 (発信国/地域) が異なる通話レコードを探すことができます。 ストリーミング データで JOIN 操作を使用する際は、一致する行と見なす最大時間差を結合で制限する必要があります。 ストリーミング データは無限であるため、リレーションシップの時間限界は、結合の **ON** 句内で [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) 関数を使用して指定されます。
+   不正な呼び出しを確認するために、`CallRecTime` の値に基づいてストリーミング データを自己結合できます。 その後、`CallingIMSI` の値 (発信番号) は同じなのに `SwitchNum` の値 (発信国/地域) が異なる通話レコードを探すことができます。 ストリーミング データで JOIN 操作を使用する際は、一致する行と見なす最大時間差を結合で制限する必要があります。 ストリーミング データは無限であるため、リレーションシップの時間限界は、結合の **ON** 句内で [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) 関数を使用して指定されます。
 
    このクエリは、**DATEDIFF** 関数を除けば、通常の SQL 結合と似ています。 このクエリで使用されている **DATEDIFF** 関数は、Stream Analytics に固有であり、`ON...BETWEEN` 句内で使用する必要があります。
 
@@ -248,7 +248,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 4. Power BI ワークスペースで **[+ 作成]** を選択し、*Fraudulent Calls* という名前の新しいダッシュボードを作成します。
 
-5. ウィンドウの上部にある **[タイルの追加]** を選択します。 次に、 **[カスタム ストリーミング データ]** と **[次に]** を選択します。 **[データセット]** の **ASAdataset** を選択します。 **[視覚化タイプ]** ドロップダウンで **[カード]** を選択し、**fraudulentcalls** を **[フィールド]** に追加します。 **[次へ]** を選択してタイルに名前を入力し、 **[適用]** を選択してタイルを作成します。
+5. ウィンドウの上部にある **[タイルの追加]** を選択します。 次に、 **[カスタム ストリーミング データ]** と **[次に]** を選択します。 **[データセット]** の **ASAdataset** を選択します。 **[視覚化タイプ]** ドロップダウンで **[カード]** を選択し、 **[フィールド]** に**不正な呼び出し**を追加します。 **[次へ]** を選択してタイルに名前を入力し、 **[適用]** を選択してタイルを作成します。
 
    ![Power BI ダッシュボードのタイルを作成する](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
@@ -258,18 +258,18 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
    * 値を追加し、 **[fraudulentcalls]** を選びます。
    * **[表示する時間枠]** で、過去 10 分間を選びます。
 
-7. 2 つのタイルが追加されると、ダッシュボードは下の例のようになります。 イベント ハブの送信側アプリケーションと Streaming Analytics アプリケーションが実行されている場合に新しいデータが到着すると PowerBI ダッシュボードが定期的に更新されることに注目してください。
+7. 2 つのタイルが追加されると、ダッシュボードは下の例のようになります。 イベント ハブの送信側アプリケーションと Streaming Analytics アプリケーションが実行されている場合に新しいデータが到着すると Power BI ダッシュボードが定期的に更新されることに注目してください。
 
    ![Power BI ダッシュボードで結果を確認する](media/stream-analytics-manage-job/power-bi-results-dashboard.png)
 
-## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>Web アプリケーションに PowerBI ダッシュボードを埋め込む
+## <a name="embedding-your-power-bi-dashboard-in-a-web-application"></a>Web アプリケーションに Power BI ダッシュボードを埋め込む
 
 チュートリアルのこの部分では、PowerBI チームが作成したサンプルの [ASP.NET](https://asp.net/) Web アプリケーションを使用して、ダッシュボードを埋め込みます。 ダッシュボードの埋め込みの詳細については、記事「[Power BI で埋め込み](https://docs.microsoft.com/power-bi/developer/embedding)」を参照してください。
 
 アプリケーションを設定するには、[PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub リポジトリに移動し、**User Owns Data** セクションの指示に従います (**integrate-dashboard-web-app** サブセクションのリダイレクト URL およびホーム ページ URL を使用します)。 ダッシュボードの例を使用しているため、[GitHub リポジトリ](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)にある **integrate-dashboard-web-app** サンプル コードを使用します。
 ブラウザーでアプリケーションが実行されるようになったら、次の手順に従って、先ほど作成したダッシュボードを Web ページに埋め込みます。
 
-1. **[Power BI にサインイン]** を選択します。これにより、PowerBI アカウントのダッシュボードへのアクセスがアプリケーションに許可されます。
+1. **[Power BI にサインイン]** を選択します。これにより、Power BI アカウントのダッシュボードへのアクセスがアプリケーションに許可されます。
 
 2. **[ダッシュボードの取得]** ボタンを選択します。これにより、アカウントのダッシュボードがテーブルに表示されます。 前に作成したダッシュボードの名前 **powerbi-embedded-dashboar** を見つけて、対応する **EmbedUrl** をコピーします。
 

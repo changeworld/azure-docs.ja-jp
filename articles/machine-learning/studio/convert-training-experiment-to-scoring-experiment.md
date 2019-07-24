@@ -10,11 +10,11 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
 ms.openlocfilehash: 2a318edada5cdc4124e221fdc8c441ab323a9289
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119617"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60751972"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法
 
@@ -42,7 +42,7 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 > 
 
 ## <a name="set-up-web-service-button"></a>[Web サービスの設定] ボタン
-(実験キャンバスの下部にある **[実行]** をクリックして) 実験を実行したら、(**[予測 Web サービス]** オプションを選択して)**[Web サービスの設定]** ボタンをクリックします。 **[Web サービスの設定]** によって、トレーニング実験を予測実験に変換する次の 3 つの手順が実行されます。
+(実験キャンバスの下部にある **[実行]** をクリックして) 実験を実行したら、( **[予測 Web サービス]** オプションを選択して) **[Web サービスの設定]** ボタンをクリックします。 **[Web サービスの設定]** によって、トレーニング実験を予測実験に変換する次の 3 つの手順が実行されます。
 
 1. トレーニング済みのモデルを、(実験キャンバスの左側にある) モジュール パレットの **[トレーニング済みのモデル]** セクションに保存します。 次に、機械学習アルゴリズムと[モデルのトレーニング][train-model] モジュールを、保存したトレーニング済みのモデルに置き換えます。
 2. 実験が分析され、明らかにトレーニングのためにのみ使用されて不要になったモジュールが削除されます。
@@ -77,7 +77,7 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 ### <a name="adjust-input-and-output-modules"></a>入力と出力のモジュールを調整する
 トレーニング実験では、トレーニング データのセットを使用して、機械学習アルゴリズムが必要とする形式でデータを取得するいくつかの処理を実行しました。 Web サービスを通じて受信することを想定しているデータでこの処理が不要な場合は、**Web サービスの入力モジュール**の出力を実験の別のノードに接続することで、これを回避できます。 この場所のモデルにユーザーのデータが届くようになります。
 
-たとえば、既定では、上の図で示すように、**[Web サービスの設定]** によって、**Web サービスの入力**モジュールがデータ フローの上部に配置されます。 ただし、**Web サービスの入力**をデータ処理モジュールの先に手動で配置することができます。
+たとえば、既定では、上の図で示すように、 **[Web サービスの設定]** によって、**Web サービスの入力**モジュールがデータ フローの上部に配置されます。 ただし、**Web サービスの入力**をデータ処理モジュールの先に手動で配置することができます。
 
 ![Web サービス入力の移動](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 

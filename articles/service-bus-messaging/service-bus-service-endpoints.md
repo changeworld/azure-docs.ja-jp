@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
 ms.openlocfilehash: 0801469d586e6f2d6514927cdc7b894900a3aa35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843571"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61471963"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Azure Service Bus で仮想ネットワーク サービス エンドポイントを使用する
 
@@ -60,7 +60,7 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 
 ## <a name="binding-service-bus-to-virtual-networks"></a>Service Bus を仮想ネットワークにバインドする
 
-"*仮想ネットワーク ルール*" は、Azure Service Bus サーバーが特定の仮想ネットワーク サブネットからの接続を許可するかどうかを制御するファイアウォール セキュリティ機能です。
+"*仮想ネットワーク規則*" は、Azure Service Bus サーバーが特定の仮想ネットワーク サブネットからの接続を許可するかどうかを制御するファイアウォール セキュリティ機能です。
 
 仮想ネットワークへの Service Bus 名前空間のバインドは、2 ステップのプロセスです。 まず、仮想ネットワーク サブネットに**仮想ネットワーク サービス エンドポイント**を作成し、[サービス エンドポイントの概要][vnet-sep]に関する記事で説明しているように、"Microsoft.ServiceBus" に対して有効にする必要があります。 サービス エンドポイントを追加した後、Service Bus 名前空間を "*仮想ネットワーク規則*" にバインドします。
 

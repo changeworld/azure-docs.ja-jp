@@ -1,21 +1,21 @@
 ---
-title: メモリおよびコンカレンシーの制限 - Azure SQL Data Warehouse | Microsoft Docs
+title: Azure SQL Data Warehouse でのメモリとコンカレンシーの制限 | Microsoft Docs
 description: Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
+ms.subservice: workload-management
 ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 024b3f9c6d1fdd0d4bcb1126e4577387a6415a59
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 0a92c032027e772020eda0b626a6dc6db024bf57
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65873467"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595575"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のメモリおよびコンカレンシーの制限
 Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。 詳細について確認し、ワークロード管理計画にこれらの機能を適用するには、「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。 

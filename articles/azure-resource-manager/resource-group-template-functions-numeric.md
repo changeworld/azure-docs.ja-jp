@@ -1,25 +1,17 @@
 ---
 title: Azure Resource Manager テンプレートの関数 - 数値 | Microsoft Docs
 description: Azure Resource Manager テンプレートで、数値を操作するために使用する関数について説明します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f63ce16369fd1ff58d5368b43c3c730008e63d9a
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66128652"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206415"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの数値関数
 
@@ -120,8 +112,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| loopName | いいえ  | string | 反復処理の取得対象となるループの名前。 |
-| offset |いいえ  |int |0 から始まる反復値に追加する整数。 |
+| loopName | いいえ | string | 反復処理の取得対象となるループの名前。 |
+| offset |いいえ |int |0 から始まる反復値に追加する整数。 |
 
 ### <a name="remarks"></a>解説
 

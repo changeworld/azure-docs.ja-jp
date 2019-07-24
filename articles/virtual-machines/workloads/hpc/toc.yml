@@ -1,0 +1,32 @@
+- name: ハイ パフォーマンス コンピューティングのドキュメント
+  items:
+    - name: 概要
+      items:
+        - name: H シリーズ VM の HPC
+          href: overview.md
+    - name: 構成
+      items:
+        - name: Linux 向けの最適化
+          href: configure.md
+        - name: InfiniBand の有効化
+          href: enable-infiniband.md
+    - name: MPI の設定
+      href: setup-mpi.md
+    - name: アプリケーションのスケーリング
+      href: compiling-scaling-applications.md
+    - name: 仮想マシン
+      items:
+        - name: HB シリーズ
+          items:
+            - name: 概要
+              href: hb-series-overview.md
+            - name: パフォーマンス
+              href: hb-series-performance.md
+        - name: HC シリーズ
+          items:
+            - name: 概要
+              href: hc-series-overview.md
+            - name: パフォーマンス
+              href: hc-series-performance.md
+        - name: HB シリーズおよび HC シリーズの VM に関する既知の問題
+          href: hb-hc-known-issues.md

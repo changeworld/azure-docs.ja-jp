@@ -1,56 +1,60 @@
 ---
 title: インクルード ファイル (デバイス ストリーム プレビュー)
 description: インクルード ファイル (デバイス ストリーム プレビュー)
-author: rezas
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
 ms.date: 03/14/2019
-ms.author: rezas
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: ede897054a6cbef254c06bd1d810b933ec09016a
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: a02c16a75bbdf4827ce6a6c5f50751caf9c5aab8
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66158667"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67445979"
 ---
-ここでは、[Azure portal](https://portal.azure.com) を使用して IoT ハブを作成する方法について説明します。
+このセクションでは、[Azure portal](https://portal.azure.com) を使用して IoT ハブを作成する方法について説明します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. [+ **リソースの作成]**、**[モノのインターネット]** の順に選択します。
+1. **[リソースの作成]** をクリックし、 **[モノのインターネット]** を選択します。
 
-3. 右側のリストにある **[Iot Hub]** をクリックします。 IoT ハブを作成するための最初の画面が表示されます。
+1. 右側にある一覧で、 **[IoT ハブ]** を選択します。 IoT ハブを作成するための最初のページが開きます。
 
-   ![Azure Portal での Hub の作成を示したスクリーンショット](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-01.png)
+   ![Azure portal での IoT ハブの作成](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-01.png)
 
    フィールドに入力します。
 
-   **サブスクリプション**:IoT ハブで使用するサブスクリプションを選択します。
+   a. **[サブスクリプション]** ボックスの一覧で、自分の IoT ハブに使用するサブスクリプションを選択します。
 
-   **リソース グループ**:新しいリソース グループを作成するか、既存のリソース グループを使用することができます。 新しいものを作成するには、**[新規作成]** をクリックして、使用する名前を入力します。 既存のグループを使用するには、**[既存のものを使用]** をクリックし、ドロップダウン リストからリソース グループを選択します。 詳しくは、[「Manage Azure Resource Manager resource groups (Azure Resource Manager のリソース グループの管理)](../articles/azure-resource-manager/manage-resource-groups-portal.md)」をご覧ください。
+   b. **[リソース グループ]** で、次のいずれかを行います。 
+      * 新しいリソース グループを作成するには、 **[新規作成]** を選択し、自分が使用したい名前を入力します。 
+      * 既存のリソース グループを使用するには、 **[既存のものを使用]** を選択し、ドロップダウン リストでリソース グループを選択します。 
+      
+        詳しくは、[「Manage Azure Resource Manager resource groups (Azure Resource Manager のリソース グループの管理)](../articles/azure-resource-manager/manage-resource-groups-portal.md)」をご覧ください。
 
-   **[リージョン]**:ハブを配置するリージョンです。 IoT Hub デバイス ストリーム (プレビュー) がサポートされているリージョンとして、米国中部または米国中部 EUAP を選択します。
+   c. **[リージョン]** ボックスの一覧で、自分のハブを配置したいリージョンを選択します。 IoT Hub デバイス ストリーム (プレビュー) がサポートされているリージョンとして、 **[米国中部]** または **[米国中部 EUAP]** を選択します。
 
-   **[IoT Hub 名]**: IoT Hub の名前を入力します。 この名前はグローバルに一意である必要があります。 入力した名前が使用可能な場合は、緑色のチェック マークが表示されます。
+   d. **[IoT ハブ名]** ボックスに IoT ハブの名前を入力します。 名前はグローバルに一意である必要があります。 入力した名前が使用可能な場合は、緑色のチェック マークが表示されます。
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-4. **[次へ: Size and scale]\(次へ: サイズとスケール\)** をクリックして、IoT ハブの作成を続けます。
+1. IoT ハブの作成を続けるには、 **[次へ: サイズとスケール]** を選択します。
 
-   ![Azure portal を使用して新しい IoT ハブ用のサイズとスケールを設定する様子を示すスクリーンショット](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-02.png)
+   ![Azure portal を使用した、新しい IoT ハブのサイズとスケールの設定](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-02.png)
 
-   この画面では、既定値を使用して、下部にある **[確認および作成]** をクリックするだけです。
+   このウィンドウでは、既定の設定をそのまま使用して、下部にある **[確認と作成]** を選択することができます。 以下のオプションを検討します。
 
-   **[価格とスケールティア]**: Standard (S1、S2、S3) のいずれかのレベルまたは Free (F1) レベルを選択します。 この選択は、フリートのサイズと、ハブで予想されるストリーミング以外のワークロード (テレメトリ メッセージなど) によっても左右されます。 たとえば、無料レベルは、テストおよび評価用です。 IoT Hub に接続できるデバイスは 500 個で、1 日に許可されるメッセージ数は最大 8,000 件です。 Azure サブスクリプションごとに、無料レベルの IoT Hub を 1 つ作成できます。 
+   * **[価格とスケールティア]** ボックスの一覧で、Standard レベルのいずれか (**S1**、**S2**、または **S3**) または **[F1: Free レベル]** を選択します。 この選択は、フリートのサイズと、ハブで予想されるストリーミング以外のワークロード (テレメトリ メッセージなど) によっても左右されます。 たとえば、無料レベルは、テストおよび評価用です。 IoT Hub に接続できるデバイスは 500 個で、1 日に許可されるメッセージ数は最大 8,000 件です。 Azure サブスクリプションごとに、Free レベルの IoT ハブを 1 つ作成できます。 
 
-   **[IoT Hub ユニット]**: この選択は、ハブで予想されるストリーミング以外のワークロードによって決まります。ここでは 1 を選択することができます。
+   * **[IoT Hub のユニット数]** : この選択は、ハブで予想されるストリーミング以外のワークロードによって決まります。 ここでは 1 を選択してかまいません。
 
-   他のレベルのオプションについて詳しくは、[適切な IoT Hub レベルの選択](../articles/iot-hub/iot-hub-scaling.md)に関するページをご覧ください。
+   レベルのオプションの詳細については、[適切な IoT Hub レベルの選択](../articles/iot-hub/iot-hub-scaling.md)に関する記事を参照してください。
 
-5. **[確認および作成]** をクリックして、選択内容を確認します。 次の画面のようになります。
+1. 選択内容を確認するには、 **[確認と作成]** タブを選択します。次のようなウィンドウが開きます。
 
-   ![新しい IoT ハブを作成するための情報を確認するスクリーンショット](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-03.png)
+   ![新しい IoT ハブを作成するための情報](./media/iot-hub-include-create-hub-device-streams/iot-hub-creation-03.png)
 
-6. **[作成]** をクリックして、新しい IoT ハブを作成します。 ハブの作成には数分かかります。
+1. 新しい IoT ハブを作成するには、 **[作成]** をクリックします。 このプロセスには数分かかります。

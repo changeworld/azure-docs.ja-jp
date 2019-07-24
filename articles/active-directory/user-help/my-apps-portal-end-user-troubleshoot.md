@@ -14,11 +14,11 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6e87ae0a8adf28176d9a97cbf1b78943179884a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339903"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60475029"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>My Apps ポータルに関する問題を解決する
 **My Apps** ポータルにサインインするとき、またはそのポータルの使用中に問題が発生した場合は、ヘルプデスクや管理者に連絡する前に、ここで示すトラブルシューティングのヒントをお試しください。
@@ -42,7 +42,7 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>**My Apps** ポータルにサインインできません
 **My Apps** ポータルにサインインできない場合、次をお試しください。
 
-- 使用している URL が正しいことを確認します。 https://myapps.microsoft.com のようになるか、 https://myapps.microsoft.com/contoso.com のような組織向けにカスタマイズされたページになるはずです。
+- 使用している URL が正しいことを確認します。 [https://myapps.microsoft.com](https://myapps.microsoft.com ) のようになるか、 https://myapps.microsoft.com/contoso.com のような組織向けにカスタマイズされたページになるはずです。
 
 - パスワードが正しいことと有効期限が切れていないことを確認します。 詳細については、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
@@ -59,11 +59,11 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 お使いのパスワードをリセットできるようにするには、まず、管理者が組織に対してその機能をオンにする必要があります。その後、必須の検証方法をご自分で更新し、確認する必要があります。 検証方法を更新する方法については、「[セルフサービスによるパスワードのリセットを登録する](active-directory-passwords-reset-register.md)」を参照してください。
 
 ## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>アプリを起動すると、アクセス拒否のメッセージが表示されます
-**My App** ポータルからアプリを起動した後、**[アクセスが拒否されました]** というメッセージが表示される場合は、次をお試しください。
+**My App** ポータルからアプリを起動した後、 **[アクセスが拒否されました]** というメッセージが表示される場合は、次をお試しください。
 
 - [マイ アプリによるセキュリティで保護されたサインイン拡張機能](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)がインストールされていることと[サポートされているブラウザー](my-apps-portal-end-user-access.md#supported-browsers)を使用していることを確認してください。
 
-- アプリの URL が正しいことと、**[インターネット プロパティ]、[セキュリティ] の順に選択して表示される、[信頼されているサイト]** の一覧にその URL が記載されていることを確認します。
+- アプリの URL が正しいことと、 **[インターネット プロパティ]、[セキュリティ] の順に選択して表示される、[信頼されているサイト]** の一覧にその URL が記載されていることを確認します。
 
 - パスワードが正しいことと有効期限が切れていないことを確認します。 詳細については、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
@@ -82,4 +82,4 @@ My Apps によるセキュリティで保護されたサインイン拡張機能
 
 - [グループ関連の情報を表示し、更新する](my-apps-portal-end-user-groups.md)。
 
-- [自分のアクセス レビューを実行する](my-apps-portal-end-user-access-reviews.md)
+- [自分のアクセス レビューを実行する](my-apps-portal-end-user-access-reviews.md)。
