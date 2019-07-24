@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 8c1733877834f82d9ee2524cf8bf54f532e7d9c4
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.author: v-mohabe
+ms.openlocfilehash: f795822d76def4a6695a4746fba7e8566041cb2b
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67571329"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295550"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Azure Security Center での Azure サービス レイヤーの脅威検出
 
