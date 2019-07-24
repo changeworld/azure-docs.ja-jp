@@ -4,19 +4,150 @@ description: 新しいリソース グループまたはサブスクリプショ
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 6/6/2019
+ms.date: 7/9/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9ab8fbd8fa0453ca6c89f3e7ad91bea95b0b9096
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 093c20407cb6210125106189f36566f539de0dcc
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331996"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721120"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
-この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 リソースの種類には、移動操作がサポートされていても、リソースが移動されることを妨げている条件がある可能性があります。 移動操作に影響する条件の詳細については、[新しいリソース グループまたはサブスクリプションへリソースを移動](resource-group-move-resources.md)を参照してください。
+この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 また、リソースを移動するときに考慮すべき特別な条件に関する情報も提供します。
 
-コンマ区切りの値のファイルと同じデータを取得するには、[move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) をダウンロードします。
+リソース プロバイダーの名前空間に移動します。
+> [!div class="op_single_selector"]
+> - [Microsoft.AAD](#microsoftaad)
+> - [microsoft.aadiam](#microsoftaadiam)
+> - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
+> - [Microsoft.AnalysisServices](#microsoftanalysisservices)
+> - [Microsoft.ApiManagement](#microsoftapimanagement)
+> - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft.AppService](#microsoftappservice)
+> - [Microsoft.Authorization](#microsoftauthorization)
+> - [Microsoft.Automation](#microsoftautomation)
+> - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
+> - [Microsoft.AzureStack](#microsoftazurestack)
+> - [Microsoft.Backup](#microsoftbackup)
+> - [Microsoft.Batch](#microsoftbatch)
+> - [Microsoft.BatchAI](#microsoftbatchai)
+> - [Microsoft.BingMaps](#microsoftbingmaps)
+> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
+> - [Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.Blueprint](#microsoftblueprint)
+> - [Microsoft.BotService](#microsoftbotservice)
+> - [Microsoft.Cache](#microsoftcache)
+> - [Microsoft.Cdn](#microsoftcdn)
+> - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
+> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
+> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
+> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
+> - [Microsoft.Compute](#microsoftcompute)
+> - [Microsoft.Container](#microsoftcontainer)
+> - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
+> - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
+> - [Microsoft.ContainerService](#microsoftcontainerservice)
+> - [Microsoft.ContentModerator](#microsoftcontentmoderator)
+> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
+> - [Microsoft.CostManagement](#microsoftcostmanagement)
+> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
+> - [Microsoft.DataBox](#microsoftdatabox)
+> - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
+> - [Microsoft.Databricks](#microsoftdatabricks)
+> - [Microsoft.DataCatalog](#microsoftdatacatalog)
+> - [Microsoft.DataConnect](#microsoftdataconnect)
+> - [Microsoft.DataExchange](#microsoftdataexchange)
+> - [Microsoft.DataFactory](#microsoftdatafactory)
+> - [Microsoft.DataLake](#microsoftdatalake)
+> - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
+> - [Microsoft.DataLakeStore](#microsoftdatalakestore)
+> - [Microsoft.DataMigration](#microsoftdatamigration)
+> - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
+> - [Microsoft.DBforMySQL](#microsoftdbformysql)
+> - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
+> - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft.Devices](#microsoftdevices)
+> - [Microsoft.DevSpaces](#microsoftdevspaces)
+> - [Microsoft.DevTestLab](#microsoftdevtestlab)
+> - [microsoft.dns](#microsoftdns)
+> - [Microsoft.DocumentDB](#microsoftdocumentdb)
+> - [Microsoft.DomainRegistration](#microsoftdomainregistration)
+> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [Microsoft.EventGrid](#microsofteventgrid)
+> - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Genomics](#microsoftgenomics)
+> - [Microsoft.HanaOnAzure](#microsofthanaonazure)
+> - [Microsoft.HDInsight](#microsofthdinsight)
+> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
+> - [Microsoft.HybridCompute](#microsofthybridcompute)
+> - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft.ImportExport](#microsoftimportexport)
+> - [microsoft.insights](#microsoftinsights)
+> - [Microsoft.IoTCentral](#microsoftiotcentral)
+> - [Microsoft.IoTSpaces](#microsoftiotspaces)
+> - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kusto](#microsoftkusto)
+> - [Microsoft.LabServices](#microsoftlabservices)
+> - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
+> - [Microsoft.LocationServices](#microsoftlocationservices)
+> - [Microsoft.Logic](#microsoftlogic)
+> - [Microsoft.MachineLearning](#microsoftmachinelearning)
+> - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
+> - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
+> - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
+> - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
+> - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
+> - [Microsoft.Maps](#microsoftmaps)
+> - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
+> - [Microsoft.Media](#microsoftmedia)
+> - [Microsoft.Migrate](#microsoftmigrate)
+> - [Microsoft.NetApp](#microsoftnetapp)
+> - [Microsoft.Network](#microsoftnetwork)
+> - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
+> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
+> - [Microsoft.Peering](#microsoftpeering)
+> - [Microsoft.Portal](#microsoftportal)
+> - [Microsoft.PortalSdk](#microsoftportalsdk)
+> - [Microsoft.PowerBI](#microsoftpowerbi)
+> - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Microsoft.ProjectOxford](#microsoftprojectoxford)
+> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
+> - [Microsoft.Relay](#microsoftrelay)
+> - [Microsoft.SaaS](#microsoftsaas)
+> - [Microsoft.Scheduler](#microsoftscheduler)
+> - [Microsoft.Search](#microsoftsearch)
+> - [Microsoft.Security](#microsoftsecurity)
+> - [Microsoft.ServerManagement](#microsoftservermanagement)
+> - [Microsoft.ServiceBus](#microsoftservicebus)
+> - [Microsoft.ServiceFabric](#microsoftservicefabric)
+> - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
+> - [Microsoft.SignalRService](#microsoftsignalrservice)
+> - [Microsoft.SiteRecovery](#microsoftsiterecovery)
+> - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft.Sql](#microsoftsql)
+> - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
+> - [Microsoft.SqlVM](#microsoftsqlvm)
+> - [Microsoft.Storage](#microsoftstorage)
+> - [Microsoft.StorageCache](#microsoftstoragecache)
+> - [Microsoft.StorageSync](#microsoftstoragesync)
+> - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
+> - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
+> - [Microsoft.StorSimple](#microsoftstorsimple)
+> - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
+> - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
+> - [Microsoft.TerraformOSS](#microsoftterraformoss)
+> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
+> - [Microsoft.Token](#microsofttoken)
+> - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
+> - [microsoft.visualstudio](#microsoftvisualstudio)
+> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft.Web](#microsoftweb)
+> - [Microsoft.WindowsIoT](#microsoftwindowsiot)
+> - [Microsoft.WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -55,6 +186,9 @@ ms.locfileid: "67331996"
 | appidentities | いいえ | いいえ |
 | gateways | いいえ | いいえ |
 
+> [!IMPORTANT]
+> [App Service move guidance (App Service の移動のガイダンス)](./move-limitations/app-service-move-limitations.md) に関する記事をご覧ください。
+
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -66,6 +200,9 @@ ms.locfileid: "67331996"
 | automationaccounts | はい | はい |
 | automationaccounts/configurations | はい | はい |
 | automationaccounts/runbooks | はい | はい |
+
+> [!IMPORTANT]
+> Runbook は Automation アカウントと同じリソース グループに存在する必要があります。
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -125,6 +262,9 @@ ms.locfileid: "67331996"
 | ------------- | ----------- | ---------- |
 | redis | はい | はい |
 
+> [!IMPORTANT]
+> 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks move limitations (仮想ネットワークの移動の制限)](./move-limitations/virtual-network-move-limitations.md) に関する記事をご覧ください。
+
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -136,11 +276,17 @@ ms.locfileid: "67331996"
 | ------------- | ----------- | ---------- |
 | certificateorders | はい | はい |
 
+> [!IMPORTANT]
+> [App Service move guidance (App Service の移動のガイダンス)](./move-limitations/app-service-move-limitations.md) に関する記事をご覧ください。
+
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
 | domainnames | はい | いいえ |
 | virtualmachines | はい | いいえ |
+
+> [!IMPORTANT]
+> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -149,10 +295,16 @@ ms.locfileid: "67331996"
 | reservedips | いいえ | いいえ |
 | virtualnetworks | いいえ | いいえ |
 
+> [!IMPORTANT]
+> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
+
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
 | storageaccounts | はい | いいえ |
+
+> [!IMPORTANT]
+> [Classic deployment move guidance (クラシック デプロイの移動のガイダンス)](./move-limitations/classic-model-move-limitations.md) に関する記事をご覧ください。 クラシック デプロイのリソースは、そのシナリオに固有の操作を使用して、サブスクリプション間で移動できます。
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -178,6 +330,9 @@ ms.locfileid: "67331996"
 | virtualmachines | はい | はい |
 | virtualmachines/extensions | はい | はい |
 | virtualmachinescalesets | はい | はい |
+
+> [!IMPORTANT]
+> [Virtual Machines move guidance (仮想マシンの移動のガイダンス)](./move-limitations/virtual-machines-move-limitations.md) に関する記事をご覧ください。
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -390,6 +545,11 @@ ms.locfileid: "67331996"
 | ------------- | ----------- | ---------- |
 | clusters | はい | はい |
 
+> [!IMPORTANT]
+> HDInsight クラスターは、新しいサブスクリプションまたはリソース グループに移動できます。 ただし、HDInsight クラスターにリンクされているネットワーク リソース (仮想ネットワーク、NIC、ロード バランサーなど) をサブスクリプション間で移動することはできません。 また、クラスターの仮想マシンに接続されている NIC を新しいリソース グループに移動することはできません。
+>
+> HDInsight クラスターを新しいサブスクリプションに移動するときは、まず、他のリソース (ストレージ アカウントなど) を移動します。 その後、HDInsight クラスターを単独で移動します。
+
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -427,6 +587,9 @@ ms.locfileid: "67331996"
 | webtests | はい | はい |
 | Workbooks | はい | はい |
 
+> [!IMPORTANT]
+> 新しいサブスクリプションへの移動によって[サブスクリプション クォータ](../azure-subscription-service-limits.md#azure-monitor-limits)を超えないようにします。
+
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -444,6 +607,9 @@ ms.locfileid: "67331996"
 | hsmpools | いいえ | いいえ |
 | vaults | はい | はい |
 
+> [!IMPORTANT]
+> ディスクの暗号化に使用されるキー コンテナーは、同じサブスクリプション内のリソース グループに移動したり、サブスクリプション間で移動したりすることはできません。
+
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -452,7 +618,7 @@ ms.locfileid: "67331996"
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
-| labaccounts | はい | はい |
+| labaccounts | いいえ | いいえ |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -566,7 +732,7 @@ ms.locfileid: "67331996"
 | expressrouteports | いいえ | いいえ |
 | frontdoors | いいえ | いいえ |
 | frontdoorwebapplicationfirewallpolicies | いいえ | いいえ |
-| loadbalancers | はい | はい |
+| loadbalancers | はい - Basic SKU<br>いいえ - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU |
 | localnetworkgateways | はい | はい |
 | natgateways | はい | はい |
 | networkintentpolicies | はい | はい |
@@ -582,7 +748,7 @@ ms.locfileid: "67331996"
 | privatednszones/virtualnetworklinks | はい | はい |
 | privateendpoints | いいえ | いいえ |
 | privatelinkservices | いいえ | いいえ |
-| publicipaddresses | はい | はい |
+| publicipaddresses | はい - Basic SKU<br>いいえ - Standard SKU | はい - Basic SKU<br>いいえ - Standard SKU |
 | publicipprefixes | はい | はい |
 | routefilters | いいえ | いいえ |
 | routetables | はい | はい |
@@ -598,6 +764,9 @@ ms.locfileid: "67331996"
 | vpnsites | いいえ | いいえ |
 | webapplicationfirewallpolicies | はい | はい |
 
+> [!IMPORTANT]
+> [Virtual Networks move guidance (仮想ネットワークの移動のガイダンス)](./move-limitations/virtual-network-move-limitations.md) に関する記事をご覧ください。
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -608,6 +777,9 @@ ms.locfileid: "67331996"
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
 | workspaces | はい | はい |
+
+> [!IMPORTANT]
+> 新しいサブスクリプションへの移動によって[サブスクリプション クォータ](../azure-subscription-service-limits.md#azure-monitor-limits)を超えないようにします。
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -651,6 +823,9 @@ ms.locfileid: "67331996"
 | ------------- | ----------- | ---------- |
 | vaults | はい | はい |
 
+> [!IMPORTANT]
+> [Recovery Services の移動のガイダンス](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)に関する記事をご覧ください。
+
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -671,6 +846,9 @@ ms.locfileid: "67331996"
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
 | searchservices | はい | はい |
+
+> [!IMPORTANT]
+> 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -720,6 +898,9 @@ ms.locfileid: "67331996"
 | ------------- | ----------- | ---------- |
 | siterecoveryvault | いいえ | いいえ |
 
+> [!IMPORTANT]
+> [Recovery Services の移動のガイダンス](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)に関する記事をご覧ください。
+
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -739,6 +920,9 @@ ms.locfileid: "67331996"
 | servers/databases | はい | はい |
 | servers/elasticpools | はい | はい |
 | virtualclusters | はい | はい |
+
+> [!IMPORTANT]
+> データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure SQL Data Warehouse データベースに適用されます。
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | リソースの種類 | リソース グループ | サブスクリプション |
@@ -786,6 +970,9 @@ ms.locfileid: "67331996"
 | ------------- | ----------- | ---------- |
 | streamingjobs | はい | はい |
 
+> [!IMPORTANT]
+> 実行中状態の Stream Analytics ジョブは移動できません。
+
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -825,6 +1012,9 @@ ms.locfileid: "67331996"
 | account/extension | はい | はい |
 | account/project | はい | はい |
 
+> [!IMPORTANT]
+> Azure DevOps のサブスクリプションを変更するには、[change the Azure subscription used for billing (課金に使用される Azure サブスクリプションの変更)](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) に関する記事をご覧ください。
+
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -845,6 +1035,9 @@ ms.locfileid: "67331996"
 | sites/premieraddons | はい | はい |
 | sites/slots | はい | はい |
 
+> [!IMPORTANT]
+> [App Service move guidance (App Service の移動のガイダンス)](./move-limitations/app-service-move-limitations.md) に関する記事をご覧ください。
+
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
@@ -863,3 +1056,5 @@ ms.locfileid: "67331996"
 
 ## <a name="next-steps"></a>次の手順
 リソースの移動のコマンドについては、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
+
+コンマ区切りの値のファイルと同じデータを取得するには、[move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) をダウンロードします。

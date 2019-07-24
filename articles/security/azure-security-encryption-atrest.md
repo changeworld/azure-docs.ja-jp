@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/07/2019
+ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: d0974b98975b8f7d09760be964024f92e9690a4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60f3bedb86304bf7d407710b07d9732afb6e8b05
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596384"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67566085"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -212,7 +212,7 @@ Microsoft Cloud サービスは、IaaS、PaaS、SaaS の3 つのクラウド モ
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>PaaS 顧客のための保存時の暗号化
 
-サービスとしてのプラットフォーム (PaaS) 顧客のデータは、通常、顧客データを格納するために使用される、アプリケーションの実行環境と、Azure リソース プロバイダーに存在します。 使用できる保存時の暗号化オプションを確認するには、下の、使用しているストレージとアプリケーション プラットフォームの表を調べてください。 サポートされている場合は、各リソース プロバイダーで保存時の暗号化を有効にする手順へのリンクが記載されています。
+サービスとしてのプラットフォーム (PaaS) 顧客のデータは通常、Blob Storage などのストレージ サービスに存在しますが、仮想マシンなどのアプリケーションの実行環境でキャッシュまたは格納される場合もあります。 使用できる保存時の暗号化オプションを確認するには、下の、使用しているストレージとアプリケーション プラットフォームの表を調べてください。
 
 ### <a name="encryption-at-rest-for-iaas-customers"></a>IaaS 顧客のための保存時の暗号化
 
@@ -220,11 +220,11 @@ Microsoft Cloud サービスは、IaaS、PaaS、SaaS の3 つのクラウド モ
 
 #### <a name="encrypted-storage"></a>暗号化されたストレージ
 
-PaaS と同様、IaaS ソリューションは、保存時のデータの暗号化を保存する他の Azure サービスを利用できます。 この場合は、それぞれ使用している Azure サービスによって提供されるように、保存時の暗号化の暗号化を有効にできます。 次の表には、保存時暗号化モデルがサポートされている主要なストレージ、サービスとアプリケーション プラットフォームおよびモデルが挙げられています。 サポートされている場合は、各リソース プロバイダーで保存時の暗号化を有効にする手順へのリンクが記載されています。
+PaaS と同様、IaaS ソリューションは、保存時のデータの暗号化を保存する他の Azure サービスを利用できます。 この場合は、それぞれ使用している Azure サービスによって提供されるように、保存時の暗号化の暗号化を有効にできます。 次の表には、保存時暗号化モデルがサポートされている主要なストレージ、サービスとアプリケーション プラットフォームおよびモデルが挙げられています。 
 
 #### <a name="encrypted-compute"></a>暗号化されたコンピューティング
 
-完全な保存時暗号化ソリューションでは、データが暗号化されていない形態で持続化されることは許されません。 データをメモリに読み込むサーバー上で、Windows ページファイル、クラッシュ ダンプ、アプリケーションで実行されるすべてのログ記録など、さまざまな方法でローカルに保持できます。 IaaS アプリケーションは、Azure IaaS 仮想マシン (Windows または Linux) および仮想ディスクで Azure Disk Encryption を使用して、このデータが保存時に暗号化されているかどうかを確認できます。
+すべてのマネージド ディスク、スナップショット、イメージは、サービス管理キーを使用する Storage Service Encryption を使って暗号化されます。 より完全な保存時暗号化ソリューションによって、暗号化されていない形式でデータが保持されることがないことが保証されます。 仮想マシン上でのデータの処理中に、Windows のページ ファイルや Linux のスワップ ファイル、クラッシュ ダンプ、またはアプリケーション ログにデータを保持することができます。 IaaS アプリケーションは、Azure IaaS 仮想マシン (Windows または Linux) および仮想ディスクで Azure Disk Encryption を使用して、このデータが保存時に暗号化されているかどうかを確認できます。
 
 #### <a name="custom-encryption-at-rest"></a>保存データのカスタム暗号化
 
@@ -240,7 +240,7 @@ IaaS アプリケーションでは、可能な限り、Azure Disk Encryption �
 
 #### <a name="azure-storage"></a>Azure Storage
 
-すべての Azure Storage サービス (Blob Storage、Queue Storage、Table Storage、Azure Files) では、サーバー側の保存データの暗号化がサポートされています。一部のサービスでは、ユーザー管理キーとクライアント側の暗号化がサポートされています。  
+すべての Azure Storage サービス (Blob Storage、Queue Storage、Table Storage、Azure Files) では、サーバー側の保存データの暗号化がサポートされます。一部のサービスではさらにユーザー管理キーとクライアント側の暗号化がサポートされます。 
 
 - サーバー側:すべての Azure Storage Services は、既定でサービス管理キーを使用してサーバー側の暗号化を有効にしています。この処理はアプリケーションに対して透過的です。 詳細については、「[保存データ向け Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption)」をご覧ください。 Azure Blob Storage と Azure Files は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーもサポートしています。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)」を参照してください。
 - クライアント側:Azure BLOB、Azure テーブル、および Azure キューは、クライアント側の暗号化をサポートしています。 クライアント側の暗号化を使用した場合、お客様は暗号化された BLOB としてデータをアップロードします。 キー管理は、ユーザーによって行われます。 詳しくは、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)」をご覧ください。
@@ -255,12 +255,12 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 
 |                                  |                    | **暗号化モデルとキーの管理** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **サービス管理キーを使用したサーバー側**     | **Key Vault でユーザー管理を使用したサーバー側**             | **クライアント管理を使用したクライアント側**      |
+|                                  | **サービス管理キーを使用したサーバー側**     | **顧客管理キーを使用したサーバー側**             | **クライアント管理を使用したクライアント側**      |
 | **AI と機械学習**      |                    |                    |                    |
 | Azure Search                     | はい                | -                  | -                  |
 | Azure Machine Learning サービス   | はい                | -                  | -                  |
 | Azure Machine Learning Studio    | はい                | プレビュー、RSA 2048 ビット | -               |
-| Power BI                         | はい                | -                  | -                  |
+| Power BI                         | はい                | プレビュー、RSA 2048 ビット | -                  |
 | **Analytics**                    |                    |                    |                    |
 | Azure Stream Analytics           | はい                | -                  | -                  |
 | Event Hubs                       | はい                | -                  | -                  |
@@ -269,12 +269,19 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | HDInsight                        | はい                | Apache Kafka のプレビュー (全 RSA 長) | -                  |
 | Azure Data Factory               | はい                | -                  | -                  |
 | Azure Data Lake Store            | はい                | はい、RSA 2048 ビット  | -                  |
+| **Containers**                   |                    |                    |                    |
+| Azure Kubernetes Service         | はい                | -                  | -                  |
+| Container Registry               | はい                | -                  | -                  |
 | **Compute**                      |                    |                    |                    |
-| Virtual Machines                 | -                  | はい、RSA 2048 ビット  | -                  |
-| 仮想マシン スケール セット        | -                  | はい、RSA 2048 ビット  | -                  |
+| Virtual Machines                 | はい                | はい、RSA 2048 ビット  | -                  |
+| 仮想マシン スケール セット        | はい                | はい、RSA 2048 ビット  | -                  |
+| SAP HANA                         | はい                | はい、RSA 2048 ビット  | -                  |
 | **データベース**                    |                    |                    |                    |
 | Virtual Machines 上の SQL Server   | はい                | はい、RSA 2048 ビット  | はい                |
 | Azure SQL Database               | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure SQL Database for MariaDB   | はい                | -                  | -                  |
+| Azure SQL Database for MySQL     | はい                | -                  | -                  |
+| Azure SQL Database for PostgreSQL | はい                | -                  | -                  |
 | Azure SQL Data Warehouse         | はい                | はい、RSA 2048 ビット  | はい                |
 | SQL Server Stretch Database      | はい                | はい、RSA 2048 ビット  | はい                |
 | Table Storage                    | はい                | -                  | はい                |
@@ -302,8 +309,9 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | File Storage                     | はい                | はい、RSA 2048 ビット  | -                  |
 | Queue Storage                    | はい                | -                  | はい                |
 | Avere vFXT                       | はい                | -                  | -                  |
+| Azure NetApp Files               | はい                | -                  | -                  |
 | Archive Storage                  | はい                | はい、RSA 2048 ビット  | -                  |
-| StorSimple                       | はい                | -                  | はい                |
+| StorSimple                       | はい                | はい、RSA 2048 ビット  | はい                |
 | Azure Backup                     | はい                | -                  | はい                |
 | Data Box                         | はい                | -                  | はい                |
 

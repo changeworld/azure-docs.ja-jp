@@ -7,19 +7,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86f8c099061cd3b75b77330c567f34dea2b34928
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563021"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67657596"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances に gitRepo ボリュームをマウントする
 
 *gitRepo ボリューム*をマウントし、Git リポジトリの複製をコンテナー インスタンスに作成する方法について説明します。
 
 > [!NOTE]
-> *gitRepo* ボリュームのマウントは現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) で確認できます。
+> *gitRepo* ボリュームのマウントは現在、Linux コンテナーに限定されています。 Microsoft ではすべての機能を Windows コンテナーにも取り入れるように取り組んでいますが、現在のプラットフォームの違いは、[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
 
 ## <a name="gitrepo-volume"></a>gitRepo ボリューム
 
@@ -35,9 +35,9 @@ ms.locfileid: "60563021"
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>gitRepo ボリュームのマウント:Azure CLI
 
-[Azure CLI](/cli/azure)を使ってコンテナー インスタンスをデプロイするときに gitRepo ボリュームをマウントするには、[az container create][az-container-create] コマンドに `--gitrepo-url` および `--gitrepo-mount-path` パラメーターを指定します。 必要に応じて、複製先となるボリューム内のディレクトリ (`--gitrepo-dir`) と複製されるリビジョンのコミット ハッシュ (`--gitrepo-revision`) を指定することもできます。
+[Azure CLI](/cli/azure) を使用してコンテナー インスタンスをデプロイするときに gitRepo ボリュームをマウントするには、[az container create][az-container-create] コマンドに `--gitrepo-url` および `--gitrepo-mount-path` パラメーターを指定します。 必要に応じて、複製先となるボリューム内のディレクトリ (`--gitrepo-dir`) と複製されるリビジョンのコミット ハッシュ (`--gitrepo-revision`) を指定することもできます。
 
-この例のコマンドは、Microsoft [aci-helloworld][aci-helloworld] サンプル アプリケーションをコンテナー インスタンス内の `/mnt/aci-helloworld` に複製しています。
+この例のコマンドでは、Microsoft [aci-helloworld][aci-helloworld] サンプル アプリケーションがコンテナー インスタンス内の `/mnt/aci-helloworld` に複製されます。
 
 ```azurecli-interactive
 az container create \

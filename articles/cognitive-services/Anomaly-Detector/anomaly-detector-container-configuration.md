@@ -1,20 +1,21 @@
 ---
-title: コンテナーの構成 - Anomaly Detector
+title: Anomaly Detector API 用のコンテナーを構成する方法
 titleSuffix: Azure Cognitive Services
-description: Anomaly Detector コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。
+description: Anomaly Detector API コンテナーのランタイム環境を構成するには、`docker run` コマンドの引数を使用します。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。
 services: cognitive-services
 author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
-ms.subservice: anomaly-detection
+ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: e6b5bcefb2a8df136d37dad062fbca651c312dc4
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: cb0a12df6696e76050d4c53bd75e07134b3dc27c
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275505"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721719"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomaly Detector コンテナーを構成する
 

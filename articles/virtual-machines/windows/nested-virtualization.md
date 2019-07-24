@@ -4,19 +4,19 @@ description: Azure Virtual Machines で入れ子になった仮想化を有効�
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.author: cynthn
 ms.date: 10/09/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: acb44a34eae84d8a5718ebcc0003d3cf50b9d43a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 843dfa64cdf0af3ad6cfd3a9f83c16f0ce85fcd0
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510060"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720215"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -120,6 +120,10 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 ## <a name="create-the-guest-virtual-machine"></a>ゲスト仮想マシンを作成する
 
+>[!IMPORTANT] 
+>
+>Azure ゲスト エージェントは入れ子になった VM ではサポートされておらず、ホスト VM と入れ子になった VM の両方で問題が発生する可能性があります。 入れ子になった VM には Azure エージェントをインストールしないでください。また、既に Azure ゲスト エージェントがインストールされている、入れ子になった VM を作成するためのイメージを使用しないでください。
+
 1. Hyper-V マネージャーを開いて、新しい仮想マシンを作成します。 作成した新しい内部ネットワークを使用するように仮想マシンを構成します。
     
     ![NetworkConfig](./media/virtual-machines-nested-virtualization/configure-networking.png)
@@ -168,7 +172,7 @@ IP アドレスがゲスト仮想マシンに動的に割り当てられるよ�
 
 2. ゲスト仮想マシンを右クリックし、[接続] をクリックします。
 
-3. ゲスト仮想マシンにログオンします。
+3. ゲスト仮想マシンにサインインします。
 
 4. ゲスト仮想マシンで、ネットワークと共有センターを開きます。
 

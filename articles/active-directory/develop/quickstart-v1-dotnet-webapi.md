@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83f5b08e5fee17c0ea5577d4d56d4d3208a818e3
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 5375d47c1b012a1c808a1115b7c902d99b05bf9d
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625306"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304715"
 ---
 # <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>クイック スタート:認証と認可のために Azure AD と連携する .NET Web API を構築する
 
@@ -59,12 +59,21 @@ ASP.NET Web アプリでは、こうした保護を、.NET Framework 4.5 に含�
 
 3. 左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-5. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。
+5. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。 たとえば、"To Do List Service" などです。
 **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 6. **[リダイレクト URI]** セクションで **[Web]** プラットフォームを選択し、値を `https://localhost:44321/` (Azure AD がトークンを返す先の場所) に設定します。
 7. 終了したら、 **[登録]** を選択します。 アプリの **[概要]** ページで、 **[Application (client) ID]\(アプリケーション (クライアント) ID\)** の値を書き留めます。
-6. **[API の公開]** を選択し、 **[設定]** をクリックしてアプリケーション ID URI を更新します。 テナント固有の識別子を入力します。 たとえば、「 `https://contoso.onmicrosoft.com/TodoListService`」のように入力します。
-7. 構成を保存します。 今後の手順でクライアント アプリケーションも登録する必要があるため、ポータルは開いたままにします。
+8. **[API の公開]** を選択し、 **[Scope の追加]** をクリックします。
+9. **[保存して続行]** を選択して、提案されたアプリケーション ID URI (api://{clientId}) を受け入れます。
+10. 次のパラメーターを入力します。
+    1. **[スコープ名]** に「access_as_user」と入力します。
+    1. **[同意できるユーザー]** で **[管理者とユーザー]** オプションが選択されていることを確認します。
+    1. **[管理者の同意の表示名]** には、「Access TodoListService as a user」と入力します。
+    1. **[管理者の同意の説明]** には、「Accesses the TodoListService Web API as a user」と入力します。
+    1. **[ユーザーの同意の表示名]** には、「Access TodoListService as a user」と入力します。
+    1. **[ユーザーの同意の説明]** には、「Accesses the TodoListService Web API as a user」と入力します。
+    1. **[状態]** で **[有効]** を選択します。
+11. **[スコープの追加]** を選択して構成を保存します。 今後の手順でクライアント アプリケーションも登録する必要があるため、ポータルは開いたままにします。
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>手順 2:OWIN 認証パイプラインを使用するようにアプリを設定する
 
@@ -73,8 +82,8 @@ ASP.NET Web アプリでは、こうした保護を、.NET Framework 4.5 に含�
 1. まず、ソリューションを開き、パッケージ マネージャー コンソールを使用して、OWIN ミドルウェア NuGet パッケージを TodoListService プロジェクトに追加します。
 
     ```
-    PM> Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
-    PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
+    Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
+    Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
     ```
 
 2. OWIN Startup クラスを TodoListService プロジェクト ( `Startup.cs`) に追加します。  プロジェクトを右クリックし、 **[追加]、[新しい項目]** の順に選択して、**OWIN** を検索します。 アプリが起動すると、OWIN ミドルウェアは `Configuration(…)` メソッドを呼び出します。
@@ -94,7 +103,7 @@ ASP.NET Web アプリでは、こうした保護を、.NET Framework 4.5 に含�
 4. ファイル `App_Start\Startup.Auth.cs` を開いて、`ConfigureAuth(…)` メソッドを実装します。 `WindowsAzureActiveDirectoryBearerAuthenticationOptions` で指定するパラメーターは、アプリが Azure AD と通信するための調整役として機能します。 それらを使用するには、`System.IdentityModel.Tokens` 名前空間のクラスを使用する必要があります。
 
     ```csharp
-    using System.IdentityModel.Tokens;
+    using Microsoft.IdentityModel.Tokens;
     ```
 
     ```csharp
@@ -148,9 +157,9 @@ ASP.NET Web アプリでは、こうした保護を、.NET Framework 4.5 に含�
 To Do List Service の動作を確認できるようにするには、AAD からトークンを取得してサービスを呼び出せるように To Do List クライアントを構成する必要があります。
 
 1. [Azure Portal](https://portal.azure.com) に戻ります。
-1. Azure AD テナントで新しいアプリケーション登録を作成します。  アプリケーションをユーザーに説明する **[名前]** を入力し、 **[リダイレクト URI]** の値として `http://TodoListClient/` と入力し、ドロップダウンから **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
+1. Azure AD テナントで新しいアプリケーション登録を作成します。  アプリケーションをユーザーに説明する **[名前]** を入力し、 **[リダイレクト URI]** の値として `https://TodoListClient/` と入力し、ドロップダウンから **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
 1. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。 この値は次の手順で必要になるので、アプリケーション ページからコピーします。
-1. **[API のアクセス許可]** 、 **[アクセス許可の追加]** の順に選択します。  To Do List Service を見つけて選択し、**user_impersonation Access TodoListService** アクセス許可を **[デリゲートされたアクセス許可]** の下に追加し、 **[アクセス許可の追加]** を選択します。
+1. **[API のアクセス許可]** 、 **[アクセス許可の追加]** の順に選択します。  **To Do List Service** を見つけて選択し、**user_impersonation Access TodoListService** アクセス許可を **[デリゲートされたアクセス許可]** の下に追加し、 **[アクセス許可の追加]** を選択します。
 1. Visual Studio で、TodoListClient プロジェクトの `App.config` を開いて、`<appSettings>` セクションに構成値を入力します。
 
     * `ida:Tenant` には、Azure AD テナントの名前 (contoso.onmicrosoft.com など) を指定します。
