@@ -356,7 +356,7 @@
     - name: エンタープライズ セキュリティ
       items:
         - name: 概要
-          href: ../domain-joined/apache-domain-joined-introduction.md
+          href: ../domain-joined/hdinsight-security-overview.md
         - name: エンタープライズ セキュリティの計画
           href: ../domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight でのエンタープライズ セキュリティの構成

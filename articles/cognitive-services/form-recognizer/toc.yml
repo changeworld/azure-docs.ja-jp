@@ -41,6 +41,10 @@
   items:
     - name: Form Recognizer API
       href: 'https://aka.ms/form-recognizer/api'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview'
 - name: リソース
   items:
     - name: 料金と制限

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: c528f37c8970380678a318ec2d63babd37f89501
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2cac2b350da5ca8738e40f9a288ecf4059e81060
+ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228040"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67673904"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -311,7 +311,7 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 
 [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) は、Hadoop クラスターにコピーを配布するための Hadoop のネイティブ コマンドライン ツールです。 Distcp コマンドを実行すると、コマンドは、コピーするすべてのファイルをリストアップした後、複数の Map ジョブを Hadoop クラスターに作成します。各 Map ジョブがソースからシンクへのバイナリ コピーを実行します。
 
-コピー アクティビティは、DistCp を使用して Azure Blob または Azure Data Lake Store にファイルをそのままコピーする ことをサポートします (Azure Blob の場合は[ステージング コピー](copy-activity-performance.md)も含みます)。この場合、セルフホステッド統合ランタイムで実行する代わりに、クラスターのパワーを十分に活用できます。 特にクラスターのパワーが非常に強い場合、コピーのスループットが向上します。 Azure Data Factory の構成に基づいて、コピー アクティビティは、distcp コマンドを自動的に作成し、Hadoop クラスターに送信し、コピー状態を監視します。
+コピー アクティビティでは、DistCp を使用して Azure BLOB ([ステージング コピー](copy-activity-performance.md)を含む) または Azure Data Lake Store にファイルをそのままコピーできます。この場合、セルフホステッド統合ランタイムで実行する代わりに、クラスターのパワーを十分に活用できます。 特にクラスターのパワーが非常に強い場合、コピーのスループットが向上します。 Azure Data Factory の構成に基づいて、コピー アクティビティは、distcp コマンドを自動的に作成し、Hadoop クラスターに送信し、コピー状態を監視します。
 
 ### <a name="prerequisites"></a>前提条件
 
