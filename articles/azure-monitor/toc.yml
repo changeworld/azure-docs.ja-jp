@@ -7,7 +7,6 @@
     - name: 用語の変更
       href: terminology.md
 - name: クイック スタート
-  expanded: true
   items:
     - name: アプリケーション
       items:
@@ -96,9 +95,9 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: インシデントへの対応
+    - name: アラート
       items:
-        - name: アラート
+        - name: 概要
           href: platform/alerts-overview.md
         - name: クラシック アラート
           href: platform/alerts-classic.overview.md
@@ -114,8 +113,6 @@
           href: platform/alerts-action-rules.md
         - name: スマート グループ
           href: platform/alerts-smartgroups-overview.md
-        - name: 自動スケール
-          href: platform/autoscale-overview.md
         - name: 変更の分析
           href: app/change-analysis.md
     - name: データの視覚化
@@ -954,6 +951,8 @@
       items:
         - name: 自動スケール
           items:
+            - name: 概要
+              href: platform/autoscale-overview.md
             - name: チュートリアル
               href: platform/autoscale-get-started.md
             - name: 設定
