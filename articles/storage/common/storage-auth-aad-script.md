@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 07/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3fe142439dc80af660d286e5913fee13d4de8e86
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 80ab896e1393d6c68b22a61d1b96acd507aa6994
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625655"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249903"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Azure AD 資格情報で Azure CLI または PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする
 
@@ -44,8 +44,8 @@ Azure CLI では、BLOB とキューのデータに対するデータ操作に�
     ```azurecli
     az login
     ```
-    
-1. 必要なサブスクリプションを指定します。 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) を使用してリソース グループを作成します。 [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)を使用して、このリソース グループ内にストレージ アカウントを作成します。 
+
+1. 必要なサブスクリプションを指定します。 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) を使用してリソース グループを作成します。 [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)を使用して、このリソース グループ内にストレージ アカウントを作成します。
 
     ```azurecli
     az account set --subscription <subscription-id>
@@ -61,12 +61,12 @@ Azure CLI では、BLOB とキューのデータに対するデータ操作に�
         --sku Standard_LRS \
         --encryption-services blob
     ```
-    
+
 1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 RBAC ロールの割り当ての詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac.md)」を参照してください。
 
     > [!IMPORTANT]
     > RBAC ロールの割り当ての反映には数分かかることがあります。
-    
+
 1. [az storage container create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) コマンドを、`--auth-mode` パラメーターに `login` を設定して呼び出し、自分の Azure AD サインイン情報を使用してコンテナーを作成します。
 
     ```azurecli
@@ -91,7 +91,7 @@ Azure PowerShell を使用してサインインし Azure Storage に対する後
     ```powershell
     Connect-AzAccount
     ```
-    
+
 1. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を呼び出して、Azure リソース グループを作成します。 
 
     ```powershell
