@@ -6,14 +6,14 @@ manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
+ms.date: 07/09/2019
 ms.author: v-adgera
-ms.openlocfilehash: 57abb005f70661d23ea90eaf801b8e5407340bb7
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: eca355a51b516311d060df09905c1df769037ec5
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462031"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67722843"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>一般的なタスクについて Azure Digital Twins API をクエリする方法
 
@@ -238,4 +238,4 @@ ms.locfileid: "67462031"
 
 Management API を使用して認証を行う方法については、[API を使用した認証](./security-authenticating-apis.md)に関するページを参照してください。
 
-すべての API エンドポイントを表示するには、[Digital Twins Swagger を使用する方法](./how-to-use-swagger.md)を参照してください。
+API エンドポイントの詳細については、「[Digital Twins Swagger の使用方法](./how-to-use-swagger.md)」に関するページをご覧ください。

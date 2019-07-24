@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 70d1f54aed5e83801b1d1e249d7a412dd6d9a49a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d69825b947af69a86525a996ed8709472846d9fe
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964028"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795674"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -119,7 +119,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**アクティブな TelemetryConfiguration に初期化子を読み込む**
+**ASP.NET アプリ: アクティブな TelemetryConfiguration に初期化子を読み込む**
 
 ApplicationInsights.config:
 
@@ -132,9 +132,6 @@ ApplicationInsights.config:
       </TelemetryInitializers>
     </ApplicationInsights>
 ```
-
-> [!NOTE]
-> `ApplicationInsights.config` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。
 
 ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコード内で初期化子をインスタンス化することです。
 
@@ -149,15 +146,20 @@ ASP.NET Web アプリのもう 1 つの方法は、Global.aspx.cs などのコ�
     }
 ```
 
+> [!NOTE]
+> `ApplicationInsights.config` または `TelemetryConfiguration.Active` を使用して初期化子を追加することは、ASP.NET Core アプリケーションでは無効です。 
+
+**ASP.NET Core アプリ: アクティブな TelemetryConfiguration に初期化子を読み込む**
+
 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) アプリケーションの場合、新しい `TelemetryInitializer` を追加するには、次に示すように Dependency Injection コンテナーに追加します。 これは `Startup.cs` クラスの `ConfigureServices` メソッドで行われます。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
  using CustomInitializer.Telemetry;
  public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddSingleton<ITelemetryInitializer, MyCustomTelemetryInitializer>();
-    }
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
 ```
 
 ### <a name="nodejs"></a>Node.js
