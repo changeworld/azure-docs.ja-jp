@@ -54,7 +54,7 @@ Amazon Redshift のリンクされたサービスでは、次のプロパティ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**AmazonRedshift** | はい |
-| サーバー |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
+| server |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
 | port |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ (既定値は 5439 です) |
 | database |Amazon Redshift データベースの名前。 |はい |
 | username |データベースへのアクセスを持つユーザーの名前。 |はい |
@@ -210,17 +210,17 @@ Amazon Redshift からデータをコピーするとき、Amazon Redshift のデ
 | Amazon Redshift のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | BIGINT |Int64 |
-| BOOLEAN |string |
-| CHAR |string |
+| BOOLEAN |String |
+| CHAR |String |
 | DATE |DateTime |
 | DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
 | REAL |Single |
 | SMALLINT |Int16 |
-| TEXT |string |
+| TEXT |String |
 | TIMESTAMP |DateTime |
-| VARCHAR |string |
+| VARCHAR |String |
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
