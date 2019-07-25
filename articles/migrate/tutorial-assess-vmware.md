@@ -243,7 +243,7 @@ Azure Migrate: Server Assessment を使用して作成できる評価には、2 
 
 ### <a name="view-an-assessment"></a>評価を表示する
 
-1. **[移行の目標]**  >   **[サーバー]** で、 **[評価]** を **[Azure Migrate: Server Assessment]** を選択します。
+1. **[移行の目標]**  >   **[サーバー]** で、 **[評価]** を **[Azure Migrate: Server Assessment]** でクリックします。
 2. **[評価]** で、評価をクリックして開きます。
 
     ![評価の概要](./media/tutorial-assess-vmware/assessment-summary.png)
