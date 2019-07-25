@@ -63,18 +63,18 @@
       href: template-best-practices.md
     - name: クラウドの一貫性を実現するテンプレート
       href: templates-cloud-consistency.md
-    - name: リソース プロバイダーと種類
-      href: resource-manager-supported-services.md
-    - name: Deployment Manager
-      displayName: adm
-      href: deployment-manager-overview.md
-    - name: Deployment Manager の正常性チェック
-      displayName: adm
-      href: deployment-manager-health-check.md
     - name: デプロイ モード
       href: deployment-modes.md
     - name: リソースの削除
       href: resource-group-delete.md
+    - name: Deployment Manager
+      items:
+        - name: 概要
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-overview.md
+        - name: 正常性チェック
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-health-check.md
     - name: Resource Manager デプロイとクラシック デプロイ
       href: resource-manager-deployment-model.md
     - name: Azure の一般的なセキュリティ属性
@@ -228,6 +228,8 @@
           href: resource-manager-sku-not-available-errors.md
         - name: Windows デプロイの問題
           href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
+    - name: リソース プロバイダーと種類
+      href: resource-manager-supported-services.md
     - name: スロットル リクエスト
       href: resource-manager-request-limits.md
     - name: 非同期操作の追跡

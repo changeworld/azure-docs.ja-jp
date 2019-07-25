@@ -6,6 +6,12 @@
       href: home.md
 - name: クイック スタート
   items:
+    - name: Web ポータルの使用
+      items:
+        - name: 分類器の構築
+          href: getting-started-build-a-classifier.md
+        - name: オブジェクト検出器の構築
+          href: get-started-build-detector.md
     - name: .NET SDK の使用
       items:
         - name: 画像の分類
@@ -42,8 +48,6 @@
       href: logo-detector-mobile.md
 - name: ハウツー ガイド
   items:
-    - name: 分類器の構築
-      href: getting-started-build-a-classifier.md
     - name: モデルのテスト
       href: test-your-model.md
     - name: 分類子の改善
