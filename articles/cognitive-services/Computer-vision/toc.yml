@@ -137,8 +137,6 @@
           href: Tutorials/java-tutorial.md
         - name: JavaScript
           href: Tutorials/javascript-tutorial.md
-        - name: Python
-          href: Tutorials/PythonTutorial.md
     - name: Computer Vision API を呼び出す
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: コンテナーの使用

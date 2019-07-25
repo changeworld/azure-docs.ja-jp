@@ -7,12 +7,12 @@ ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: ef33ff41ce78657709a497860cdbc3acb1bb24ae
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: c02f72d6a327c4dcb94ac8844005613cfe316986
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789006"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838394"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Azure Data Share プレビューでの一般的な問題のトラブルシューティング
 
@@ -34,6 +34,8 @@ ms.locfileid: "67789006"
 
 これらの手順を完了するには、[Azure 共同作成者 RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)を持っている必要があります。 
 
+それでもデータ共有の招待が表示されない場合は、データ プロバイダーに問い合わせて、招待がメール エイリアス "*ではなく*" Azure ログイン用メール アドレスに送信されていることを確認します。 
+
 > [!IMPORTANT]
 > 既に Azure Data Share の招待を承諾した後で、ストレージを構成する前にサービスを終了した場合は、[データセットのマッピングの構成](how-to-configure-mapping.md)に関するハウツー ガイドで詳しく説明されている手順に従って、受け取ったデータ共有の構成を完了し、データの受信を開始する方法を学習してください。 
 
@@ -47,12 +49,12 @@ ms.locfileid: "67789006"
 
 ![アクセス許可エラー](media/error-write-privilege.png)
 
-新しいデータ共有を作成するとき、または新しいデータ共有を受け取ったときに、上のいずれかのエラーが発生する場合は、ストレージ アカウントに対する十分なアクセス許可がないためです。 必要なアクションは "*Microsoft.Authorization/ロール割り当て/書き込み*" です。これは、ストレージ所有者ロールに存在しており、カスタム ロールに割り当てることもできます。 自分で作成したストレージ アカウントの場合でも、自分がそのストレージ アカウントの所有者に自動的になることはありません。 次の手順に従って、自分自身にストレージ アカウントの所有者を許可します。 または、このアクセス権を持つカスタム ロールを作成し、それに自分自身を追加することもできます。  
+新しいデータ共有を作成するとき、または新しいデータ共有を受け取ったときに、上のいずれかのエラーが発生する場合は、ストレージ アカウントに対する十分なアクセス許可がないためです。 必要なアクセス許可は *Microsoft.Authorization/role assignments/write* です。これは、ストレージ所有者ロールに存在しており、カスタム ロールに割り当てることもできます。 自分で作成したストレージ アカウントの場合でも、自分がそのストレージ アカウントの所有者に自動的になることはありません。 次の手順に従って、自分自身にストレージ アカウントの所有者を許可します。 または、このアクセス権を持つカスタム ロールを作成し、それに自分自身を追加することもできます。  
 
 1. Azure portal でストレージ アカウントに移動します
 1. **[アクセス制御 (IAM)]** を選択します
 1. **[追加]** をクリックします。
-1. ストレージ BLOB データ所有者として自分自身を追加します
+1. 自分自身を所有者として追加します。
 
 ## <a name="next-steps"></a>次の手順
 

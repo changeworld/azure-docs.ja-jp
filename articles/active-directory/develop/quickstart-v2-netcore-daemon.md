@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a42cfe1374f3defdf6ed8acc828e6c7e446588bc
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c5955be5670759329e42ec24999d73df977c665e
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595138"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68276841"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -126,7 +126,7 @@ ms.locfileid: "67595138"
 
 ##### <a name="standard-user"></a>標準ユーザー
 
-テナントの標準ユーザーの場合は、お使いのアプリケーションに管理者の同意を与えてもらうようにグローバル管理者に依頼する必要があります。 これを行うには、次の URL を管理者に知らせます。
+テナントの標準ユーザーの場合は、お使いのアプリケーションに管理者の同意を与えるようグローバル管理者に依頼する必要があります。 これを行うには、次の URL を管理者に知らせます。
 
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here
@@ -142,7 +142,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 #### <a name="step-5-run-the-application"></a>手順 5:アプリケーションの実行
 
-Visual Studio を使用している場合は、**F5** キーを押してアプリケーションを実行します。それ以外の場合、コマンド プロンプトまたはコンソールを使用してアプリケーションを実行します。
+Visual Studio を使用している場合は、**F5** キーを押してアプリケーションを実行します。それ以外の場合は、コマンド プロンプトまたはコンソールを使用してアプリケーションを実行します。
 
 ```console
 cd {ProjectFolder}\daemon-console
@@ -215,7 +215,7 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | 要求されるスコープが含まれています。 Confidential クライアントの場合は、`{Application ID URI}/.default` のような形式を使用して、要求されるスコープが Azure Portal 上で設定されるアプリ オブジェクト内に静的に定義されたものであることを示す必要があります (Microsoft Graph では、`{Application ID URI}` は `https://graph.microsoft.com` を指します)。 カスタム Web API の場合、`{Application ID URI}` は、Azure Portal 上で [アプリケーションの登録 (プレビュー)] の **[API の公開]** セクションに定義されます。 |
 
-詳細については、[`AcquireTokenForClient` 用の参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclientasync?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication_AcquireTokenForClientAsync_System_Collections_Generic_IEnumerable_System_String__)をご覧ください。
+詳細については、[`AcquireTokenForClient` 用の参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication_AcquireTokenForClientAsync_System_Collections_Generic_IEnumerable_System_String__)をご覧ください。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/30/2019
+ms.date: 07/15/2019
 ms.author: jowargo
-ms.openlocfilehash: f2efa9b7e1e534f93e4ea01ba52740c8c5ac7b02
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: a01a71190f6de4bd08ee306f0175b01fee3db3d5
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653896"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227876"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>チュートリアル:Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する
 
@@ -100,7 +100,6 @@ ms.locfileid: "67653896"
     ![Android SDK Manager - Google Play 開発者サービスの選択](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
 3. **[Confirm Change]\(変更の確認\)** ダイアログ ボックスが表示される場合は、 **[OK]** を選択します。 コンポーネント インストーラーによって、要求したコンポーネントがインストールされます。 コンポーネントがインストールされた後、 **[Finish]\(完了\)** を選択します。
 4. **[OK]** を選択して、 **[Settings for New Projects]\(新しいプロジェクトの設定\)** ダイアログ ボックスを閉じます。  
-5. ツール バーの **[今すぐ同期]** アイコンを選択します。
 1. AndroidManifest.xml ファイルを開き、次のタグを *application* タグに追加します。
 
     ```xml
@@ -115,7 +114,6 @@ ms.locfileid: "67653896"
 
     ```gradle
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
-    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
 2. dependencies セクションの後に次のリポジトリを追加します。
@@ -146,7 +144,7 @@ ms.locfileid: "67653896"
 
 ### <a name="update-the-androidmanifestxml-file"></a>AndroidManifest.xml ファイルの更新
 
-1. FCM 登録トークンを受信したら、それを使用して [Azure Notification Hubs に登録します](notification-hubs-push-notification-registration-management.md)。 この登録は、`RegistrationIntentService` という名前の `IntentService` を使用してバックグラウンドでサポートします。 また、このサービスは FCM 登録トークンを更新します。
+1. FCM 登録トークンを受信したら、それを使用して [Azure Notification Hubs に登録します](notification-hubs-push-notification-registration-management.md)。 この登録は、`RegistrationIntentService` という名前の `IntentService` を使用してバックグラウンドでサポートします。 また、このサービスは FCM 登録トークンを更新します。 さらに、通知の受信と処理のために、`FirebaseMessagingService` のサブクラスとして `FirebaseService` という名前のクラスを作成し、`onMessageReceived` メソッドをオーバーライドします。 
 
     次のサービス定義を AndroidManifest.xml ファイルの `<application>` タグ内に追加します。
 
@@ -155,22 +153,14 @@ ms.locfileid: "67653896"
         android:name=".RegistrationIntentService"
         android:exported="false">
     </service>
-    ```
-
-2. 通知を受信するレシーバーも定義する必要があります。 次のレシーバー定義を AndroidManifest.xml ファイルの `<application>` タグ内に追加します。 
-
-    ```xml
-    <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
-        android:permission="com.google.android.c2dm.permission.SEND">
+    <service
+        android:name=".FirebaseService"
+        android:exported="false">
         <intent-filter>
-            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            <category android:name="<your package name>" />
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
         </intent-filter>
-    </receiver>
+    </service>
     ```
-
-    > [!IMPORTANT]
-    > `<your package NAME>` プレースホルダーを、AndroidManifest.xml ファイルの先頭にある実際のパッケージ名に置き換えます。
 3. 次の必要な FCM 関連のアクセス許可を `</application>` タグの下に追加します。
 
     ```xml
@@ -307,7 +297,6 @@ ms.locfileid: "67653896"
     ```java
     import com.google.android.gms.common.ConnectionResult;
     import com.google.android.gms.common.GoogleApiAvailability;
-    import com.microsoft.windowsazure.notifications.NotificationsManager;
     import android.content.Intent;
     import android.util.Log;
     import android.widget.TextView;
@@ -373,6 +362,7 @@ ms.locfileid: "67653896"
 
         mainActivity = this;
         registerWithNotificationHubs();
+        FirebaseService.createChannelAndHandleNotifications(getApplicationContext());
     }
     ```
 
@@ -421,11 +411,14 @@ ms.locfileid: "67653896"
     android:id="@+id/text_hello"
     ```
 
-11. 次に、AndroidManifest.xml で定義したレシーバーのサブクラスを追加します。 `MyHandler`という名前の別の新しいクラスをプロジェクトに追加します。
+11. 次に、AndroidManifest.xml で定義したレシーバーのサブクラスを追加します。 `FirebaseService`という名前の別の新しいクラスをプロジェクトに追加します。
 
-12. 次の import ステートメントを `MyHandler.java` の先頭に追加します。
+12. 次の import ステートメントを `FirebaseService.java` の先頭に追加します。
 
     ```java
+    import com.google.firebase.messaging.FirebaseMessagingService;
+    import com.google.firebase.messaging.RemoteMessage;
+    import android.util.Log;
     import android.app.NotificationChannel;
     import android.app.NotificationManager;
     import android.app.PendingIntent;
@@ -436,16 +429,17 @@ ms.locfileid: "67653896"
     import android.os.Build;
     import android.os.Bundle;
     import android.support.v4.app.NotificationCompat;
-    import com.microsoft.windowsazure.notifications.NotificationsHandler;    
-    import com.microsoft.windowsazure.notifications.NotificationsManager;
     ```
 
-13. `MyHandler` クラス用に次のコードを追加して、`com.microsoft.windowsazure.notifications.NotificationsHandler` のサブクラスにします。
+13. `FirebaseService` クラス用に次のコードを追加して、`FirebaseMessagingService` のサブクラスにします。
 
-    このコードによって `OnReceive` メソッドがオーバーライドされるため、ハンドラーは受信した通知を報告します。 ハンドラーは `sendNotification()` メソッドを使用して Android の通知マネージャーにもプッシュ通知を送信します。 `sendNotification()` メソッドは、アプリが動作していないときに通知を受信した場合に呼び出します。
+    このコードでは `onMessageReceived` メソッドをオーバーライドし、受信した通知をレポートします。 また、`sendNotification()` メソッドを使用して Android の通知マネージャーにプッシュ通知を送信します。 アプリが動作していないときに通知を受信した場合は、`sendNotification()` メソッドを呼び出します。
 
     ```java
-    public class MyHandler extends NotificationsHandler {
+    public class FirebaseService extends FirebaseMessagingService
+    {
+        private String TAG = "FirebaseService";
+    
         public static final String NOTIFICATION_CHANNEL_ID = "nh-demo-channel-id";
         public static final String NOTIFICATION_CHANNEL_NAME = "Notification Hubs Demo Channel";
         public static final String NOTIFICATION_CHANNEL_DESCRIPTION = "Notification Hubs Demo Channel";
@@ -453,16 +447,33 @@ ms.locfileid: "67653896"
         public static final int NOTIFICATION_ID = 1;
         private NotificationManager mNotificationManager;
         NotificationCompat.Builder builder;
-        Context ctx;
+        static Context ctx;
     
         @Override
-        public void onReceive(Context context, Bundle bundle) {
-            ctx = context;
-            String nhMessage = bundle.getString("message");
-            sendNotification(nhMessage);
+        public void onMessageReceived(RemoteMessage remoteMessage) {
+            // ...
+    
+            // TODO(developer): Handle FCM messages here.
+            // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
+            Log.d(TAG, "From: " + remoteMessage.getFrom());
+    
+            String nhMessage;
+            // Check if message contains a notification payload.
+            if (remoteMessage.getNotification() != null) {
+                Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+    
+                nhMessage = remoteMessage.getNotification().getBody();
+            }
+            else {
+                nhMessage = remoteMessage.getData().values().iterator().next();
+            }
+    
+            // Also if you intend on generating your own notifications as a result of a received FCM
+            // message, here is where that should be initiated. See sendNotification method below.
             if (MainActivity.isVisible) {
                 MainActivity.mainActivity.ToastNotify(nhMessage);
             }
+            sendNotification(nhMessage);
         }
     
         private void sendNotification(String msg) {
@@ -490,6 +501,8 @@ ms.locfileid: "67653896"
         }
     
         public static void createChannelAndHandleNotifications(Context context) {
+            ctx = context;
+    
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel channel = new NotificationChannel(
                         NOTIFICATION_CHANNEL_ID,
@@ -500,8 +513,7 @@ ms.locfileid: "67653896"
     
                 NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
                 notificationManager.createNotificationChannel(channel);
-                NotificationsManager.handleNotifications(context, "", MyHandler.class);
-            }
+             }
         }
     }
     ```
@@ -538,7 +550,7 @@ ms.locfileid: "67653896"
 ### <a name="run-the-mobile-app-on-emulator"></a>エミュレーターでモバイル アプリを実行する
 エミュレーターの内部でプッシュ通知をテストする前に、エミュレーター イメージがアプリ用に選択した Google API レベルをサポートしていることを確認してください。 イメージでネイティブの Google API がサポートされていない場合、**SERVICE\_NOT\_AVAILABLE** 例外を受け取ることがあります。
 
-さらに、 **[設定]**  >  **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認します。 そうでない場合、FCM で登録しようとすると、**AUTHENTICATION\_FAILED** 例外が発生する可能性があります。
+また、 **[設定]**  >  **[アカウント]** で、実行中のエミュレーターに Google アカウントを追加したことを確認してください。 そうでない場合、FCM で登録しようとすると、**AUTHENTICATION\_FAILED** 例外が発生する可能性があります。
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Firebase Cloud Messaging を使用して、このサービスに登録されたすべての Android デバイスに通知をブロードキャストしました。 特定のデバイスにプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。

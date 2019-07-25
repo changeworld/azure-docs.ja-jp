@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 403e165d7ebe8365ffa0fd2f5f3779d3b4fab68f
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: fbab8502c088c2ae7a4b8e87285d7e4cac1de4c0
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543624"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807401"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う
 
@@ -42,7 +42,7 @@ ms.locfileid: "67543624"
 
 2. ページで、すべてのフィールドをクリアしてから、次の値を選択します。
 
-   | Name | 値 |
+   | EnableAdfsAuthentication | 値 |
    | --- | --- |
    | Filter Year |2019 |
    | Filter Period |January |
@@ -59,6 +59,8 @@ HDInsight クラスターに関連付けられたストレージにデータを�
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
+
+    「yes」または「no」を入力して続行するよう求められた場合は、コマンド プロンプトから「yes」と入力して Enter キーを押してください。 入力するとき、ウィンドウにテキストは表示されません。
 
 2. アップロードが完了したら、SSH を使用してクラスターに接続します。 `CLUSTERNAME` を HDInsight クラスターの名前に置き換えて、以下のコマンドを編集します。 次のコマンドを入力します。
 

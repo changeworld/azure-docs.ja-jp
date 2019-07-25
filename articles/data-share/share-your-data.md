@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: ebd60607f9a24074e0fa985973dfc35674f0d66c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 01888f3656765b922c1b646e7ca8e07d81e799f3
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788454"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838414"
 ---
 # <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>チュートリアル:Azure Data Share プレビューを使用してデータを共有する
 
@@ -29,6 +29,8 @@ ms.locfileid: "67788454"
 
 * Azure サブスクリプション: Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 * Azure Storage アカウント: まだお持ちでない場合は、[Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を作成できます。
+* ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* 権限に含まれています。 この権限は、所有者ロール内に存在します。 
+* 受信者の Azure ログイン用メール アドレス (メール エイリアスは無効です)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
@@ -48,9 +50,9 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | Name | *datashareacount* | Data Share アカウントの名前を指定します。 |
-    | サブスクリプション | 該当するサブスクリプション | Data Share アカウントに使う Azure サブスクリプションを選択します。|
-    | リソース グループ | *test-resource-group* | 既存のリソース グループを使用するか、新しいリソース グループを作成します。 |
+    | EnableAdfsAuthentication | *datashareacount* | Data Share アカウントの名前を指定します。 |
+    | Subscription | 該当するサブスクリプション | Data Share アカウントに使う Azure サブスクリプションを選択します。|
+    | Resource group | *test-resource-group* | 既存のリソース グループを使用するか、新しいリソース グループを作成します。 |
     | Location | *米国東部 2* | Data Share アカウントのリージョンを選択します。
     | | |
 
