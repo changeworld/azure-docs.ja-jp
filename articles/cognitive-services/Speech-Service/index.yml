@@ -7,7 +7,7 @@ metadata:
   description: Speech Services により、開発者はアプリケーションに強力な音声認識機能を簡単に追加できます。 例として、音声コマンド制御とダイアログ、自然な言葉での会話、文字起こしやディクテーション、音声翻訳があります。
   services: cognitive-services
   author: nitinme
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: speech-service

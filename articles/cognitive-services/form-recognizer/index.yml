@@ -6,7 +6,7 @@ metadata:
   description: Form Recognizer を使用して、フォーム ドキュメントからキーと値のデータをインテリジェントに抽出する方法について説明します。
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
   ms.tgt_pltfrm: na

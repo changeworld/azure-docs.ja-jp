@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: 98bd222212d616a5d2c608779c607bb431d184b9
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 8da50757182609402ecb035b6f3e92959758ef46
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657322"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442302"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
 
@@ -306,7 +306,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         |---|---|
         | ソース | 任意 |
         | ソース ポート範囲 | * |
-        | 宛先 | 任意 |
+        | 宛先 | Any |
         | 送信先ポート範囲 | 636 |
         | Protocol | Any |
         | Action | Allow |
@@ -380,4 +380,4 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
 ## <a name="next-steps"></a>次の手順
 
-* [Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要](apache-domain-joined-introduction.md)
+* [Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要](hdinsight-security-overview.md)
