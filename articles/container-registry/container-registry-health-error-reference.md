@@ -3,16 +3,17 @@ title: 正常性チェックのエラー リファレンス - Azure Container Re
 description: Azure Container Registry で az acr check-health 診断コマンドを実行することによって検出された問題のエラー コードと考えられる解決策
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
-ms.openlocfilehash: fc29b27cbb7eea983140c59529d981ad95c27ae8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 672d446fa8dc27612c7b046cac109bfa4ca5fec5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67552437"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309376"
 ---
 # <a name="health-check-error-reference"></a>正常性チェックのエラー リファレンス
 

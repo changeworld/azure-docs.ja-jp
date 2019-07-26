@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.date: 06/29/2019
 ms.topic: article
 ms.subservice: develop
+ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07be7d0c70193fec88782fea681e33d6b4cf4b40
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: e5e557d74ff0cb959b11e99391c47e91a90d17ef
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67486167"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325299"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>リダイレクト URI および応答 URL に関する制約と制限
 

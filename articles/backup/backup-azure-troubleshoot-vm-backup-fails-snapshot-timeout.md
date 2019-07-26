@@ -1,7 +1,6 @@
 ---
 title: Azure Backup の失敗のトラブルシューティング:ゲスト エージェントの状態を確認できない
 description: エージェント、拡張機能、ディスクに関する Azure Backup のエラーの症状、原因、解決策。
-services: backup
 author: saurabhsensharma
 manager: saurabhsensharma
 keywords: Azure Backup; VM エージェント; ネットワーク接続;
@@ -9,12 +8,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: saurse
-ms.openlocfilehash: 1bfc862a7063a023fd148e5504b3baa7fb275229
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e4337c9c89ca239bb664cbb7fb953ab9eedd3ac5
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704965"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465331"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 

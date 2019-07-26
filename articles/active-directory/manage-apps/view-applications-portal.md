@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae5e16aa00147d6ea434090720b51af06e8e0c5
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 764c7c048dd0398b495ee31421a8e2bc9f8169ee
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807566"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477195"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>Azure Active Directory テナントのアプリケーションの表示
 
@@ -79,4 +79,4 @@ Azure AD テナント アプリケーションは、Azure portal の **[エン�
 探しているアプリケーションが見つかったら、[テナントへの他のアプリケーションの追加](add-application-portal.md)に進むことができます。 または、プロパティと構成オプションを表示または編集するアプリケーションを選択できます。 たとえば、シングル サインオンを構成できます。
 
 > [!div class="nextstepaction"]
-> [シングル サインオンの構成](configure-single-sign-on-portal.md)
+> [シングル サインオンの構成](configure-single-sign-on-non-gallery-applications.md)

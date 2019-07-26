@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8bea47467d141869b1a668668bc57451a882a54b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448449"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423012"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
 
@@ -102,8 +102,6 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
 ### <a name="ocr-skill"></a>OCR スキル
 
 [OCR スキル](cognitive-search-skill-ocr.md)では、JPG、PNG、ビットマップなどの画像ファイルからテキストを抽出できます。 テキストのほかに、レイアウト情報を抽出することもできます。 このレイアウト情報によって、特定された各文字列の境界ボックスが提供されます。
-
-OCR スキルでは、画像内のテキストの検出に使用するアルゴリズムを選択できます。 現在、2 つのアルゴリズムがサポートされています。1 つは印刷されたテキスト用、もう 1 つは手書きの文字用です。
 
 ## <a name="embedded-image-scenario"></a>埋め込み画像のシナリオ
 

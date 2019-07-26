@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/09/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 2e6eb449f4e7a8dcd6c4547162a575d21f303f83
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 43d1942b1413569d77c6c17fee9fff14dc83c924
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67712554"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362559"
 ---
 ### <a name="what-is-expressroute-direct"></a>ExpressRoute Direct とは何ですか?
 
@@ -35,7 +35,6 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 * ダブリン
 * 香港特別行政区
 * ロンドン
-* ロサンゼルス
 * メルボルン
 * New York City
 * パース

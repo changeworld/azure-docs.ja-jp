@@ -3,17 +3,17 @@ title: カスタム イメージから Azure Batch プールをプロビジョ�
 description: カスタム イメージから Batch プールを作成して、アプリケーションで必要なソフトウェアとデータを含むコンピューティング ノードをプロビジョニングします。 カスタム イメージは、Batch ワークロードを実行するコンピューティング ノードを構成するための効率的な方法です。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 80cba5e1b5e38e31dea2272cc4e33b4a95940e41
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 54456ff48ca7104cc1ba10ddc47cec1bc364ddf6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565607"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323686"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>カスタム イメージを使用して仮想マシンのプールを作成する 
 

@@ -1,19 +1,18 @@
 ---
 title: Azure Backup のアーキテクチャ
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
-services: backup
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7c0a1650490a863f5b3a3cf09a5500d72359e7f1
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 44bf85eafe3f5cfa801b6c845a51e3dcd5e1262a
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272004"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466866"
 ---
 # <a name="azure-backup-architecture"></a>Azure Backup のアーキテクチャ
 

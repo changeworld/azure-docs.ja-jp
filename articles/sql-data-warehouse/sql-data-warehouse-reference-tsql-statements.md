@@ -2,7 +2,7 @@
 title: T-SQL ステートメント - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: af8aa85488240dbbe4a07811d73ebdbaafefcfef
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5704ee4bf84b396dcef5a4f9edd887128ba95fb1
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588614"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479380"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でサポートされる T-SQL ステートメント
 Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。

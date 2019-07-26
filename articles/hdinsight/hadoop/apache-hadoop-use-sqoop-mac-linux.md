@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 02b4eb6c367510e8994aa7723fe3fdd3e43af0e6
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: c839aeae77d7e75fb30d82c410c331d21f5868ae
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462176"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406043"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
@@ -87,7 +87,7 @@ SQL Server から Azure Storage へ
 
     例については、「[Connect HDInsight to your on-premises network](./../connect-on-premises-network.md)」(オンプレミス ネットワークへの HDInsight の接続) をご覧ください。
 
-    Azure Virtual Network での HDInsight の使用に関する詳細情報については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](../hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。 Azure Virtual Network の詳細については、「[Virtual Network の概要](../../virtual-network/virtual-networks-overview.md)」を参照してください。
+    Azure Virtual Network での HDInsight の使用に関する詳細情報については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](../hdinsight-plan-virtual-network-deployment.md)」をご覧ください。 Azure Virtual Network の詳細については、「[Virtual Network の概要](../../virtual-network/virtual-networks-overview.md)」を参照してください。
 
 * SQL 認証を許可するよう、SQL Server を構成する必要があります。 詳細については、[認証モードの選択](https://msdn.microsoft.com/ms144284.aspx)に関するドキュメントを参照してください。
 

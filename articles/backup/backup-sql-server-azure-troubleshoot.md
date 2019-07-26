@@ -1,19 +1,18 @@
 ---
 title: Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング | Microsoft Docs
 description: Azure VM で実行されている SQL Server データベースの Azure Backup によるバックアップに関するトラブルシューティング情報です。
-services: backup
 author: anuragm
 manager: sivan
 ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: anuragm
-ms.openlocfilehash: b2822a3c7dfa23065f2cbd35ef4e506efae026f2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c601ecb6997834aa216de094e2809670833dd9cb
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704840"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464917"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 

@@ -3,8 +3,8 @@ title: Azure AD エンタイトルメント管理 (プレビュー) での一般
 description: Azure Active Directory エンタイトルメント管理 (プレビュー) での一般的なシナリオの場合に従う必要がある、大まかな手順について説明します。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/23/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27d54d51a16f4ed94f24f9afa005c63b22778cf9
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: f8e7709abcc97baac9bf657b9fff2110cb2e72c1
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190365"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489028"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) での一般的なシナリオ
 

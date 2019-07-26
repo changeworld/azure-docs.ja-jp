@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: fe0af4ca7b6860fff19f4df3165a975c42b54a03
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: d4daa7ae9c7e58c1949dfbe4427a154c389100d4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277775"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348378"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric の容量計画とスケーリング
 
@@ -92,7 +92,7 @@ Resource Manager テンプレートの次のスニペットに、宣言するプ
 
 特定の仮想マシン スケール セットのインスタンス数を増やすことで、Service Fabric クラスターをスケールアウトします。 `AzureClient` と目的のスケール セットの ID を使用することでプログラムでスケールアウトし、容量を増やすことができます。
 
-```c#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
@@ -134,7 +134,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 プログラムでのスケーリングのためには、シャット ダウンのためにノードを準備する必要があります。 削除するノード (最上位のインスタンス ノード) を見つけます。 例:
 
-```c#
+```csharp
 using (var client = new FabricClient())
 {
     var mostRecentLiveNode = (await client.QueryManager.GetNodeListAsync())
@@ -151,7 +151,7 @@ using (var client = new FabricClient())
 
 上記のコードで使用したのと同じ `FabricClient` インスタンス (この場合は `client`) とノード インスタンス (この場合は `instanceIdString`) を使用して、ノードを非アクティブ化し、削除します。
 
-```c#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 
 // Remove the node from the Service Fabric cluster

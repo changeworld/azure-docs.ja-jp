@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9817d63990b390cfbb0002423c1ff8f19fcd27f7
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 2e22baabda901a34f624cf27c25037ff3ba94e90
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147260"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381845"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
 
@@ -172,7 +172,8 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
 
 ここで、もう一度グループを検索する場合は、Description プロパティが更新され、新しい値が反映されていることを確認します。
 
-```powershell    PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
+```powershell
+    PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
 
     DeletionTimeStamp            :
     ObjectId                     : 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
@@ -190,9 +191,9 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
     SecurityEnabled              : True
 ```
 
-## Delete groups
+## <a name="delete-groups"></a>グループを削除する
 
-To delete groups from your directory, use the Remove-AzureADGroup cmdlet as follows:
+ディレクトリからグループを削除するには、次のように、Remove-AzureADGroup コマンドレットを使用します。
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b

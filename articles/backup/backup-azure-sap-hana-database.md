@@ -1,19 +1,18 @@
 ---
 title: Azure Backup を使用して Azure に SAP HANA データベースをバックアップする | Microsoft Docs
 description: このチュートリアルでは、Azure Backup サービスを使用して、Azure に SAP HANA データベースをバックアップする方法について説明します。
-services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: raynew
-ms.openlocfilehash: 1c5c38e9af58aa9468fb0e22491327d3a35f0dda
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 6ac686484ddafc47410cddebea3f789332f9286a
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656662"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465460"
 ---
 # <a name="back-up-an-sap-hana-database"></a>SAP HANA データベースをバックアップする
 

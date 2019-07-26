@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4b4edec43d01878bbc5899487f6ee1d2816eb135
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: bc6d9e7214d2b7cd009e7562357bed420e49f185
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491829"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325105"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する
 
@@ -196,7 +196,7 @@ Traffic Manager がフェールオーバー後に可用性ポストを自動的�
 
 AD および DNS に対するテスト フェールオーバーの実行に関するガイダンスは､ [Test failover considerations for AD and DNS](site-recovery-active-directory.md#test-failover-considerations) ドキュメントを参照してください｡
 
-SQL Always ON 可用性グループのテスト フェールオーバーの実行に関するガイダンスについては､[Azure Site Recovery を使用したアプリケーションの DR の実行とテスト フェールオーバーの実行](site-recovery-sql.md#disaster-recovery-of-application) に関するドキュメントをご覧ください。
+SQL Always ON 可用性グループのテスト フェールオーバーの実行に関するガイダンスについては､[Azure Site Recovery を使用したアプリケーションの DR の実行とテスト フェールオーバーの実行](site-recovery-sql.md#disaster-recovery-of-an-application) に関するドキュメントをご覧ください。
 
 ## <a name="doing-a-failover"></a>フェールオーバーの実行
 フェールオーバーの実行については､[このガイダンス](site-recovery-failover.md)に従ってください｡

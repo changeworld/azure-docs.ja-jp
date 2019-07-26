@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 137ef1ad78548053f3c5b8f30b7d83f2370f62da
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c563278a9d23810a5e6f0adc8082c8cfc5a0510c
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442431"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358857"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
@@ -55,7 +55,7 @@ ms.locfileid: "67442431"
 
 トレーニング中、Azure Machine Learning サービスは、さまざまなアルゴリズムとパラメーターを試行する多数の並行パイプラインを作成します。 実験に定義されている終了基準に到達すると停止します。
 
-ログに記録された実行情報を調べることもできます。これには、実行中に収集した[メトリックが含まれています](how-to-understand-accuracy-metrics.md)。 トレーニングを実行すると、モデルおよびデータ前処理を含む Python シリアル化オブジェクト (`.pkl` ファイル) が生成されます。
+ログに記録された実行情報を調べることもできます。これには、実行中に収集した[メトリックが含まれています](how-to-understand-automated-ml.md)。 トレーニングを実行すると、モデルおよびデータ前処理を含む Python シリアル化オブジェクト (`.pkl` ファイル) が生成されます。
 
 モデルの構築は自動ですが、生成されたモデルにとって[特徴がどれだけ重要であるか、または関連性があるか](how-to-configure-auto-train.md#explain)を学ぶこともできます。
 
@@ -93,7 +93,7 @@ ms.locfileid: "67442431"
 ## <a name="time-series-forecasting"></a>時系列予測
 予測を行うことは、収益、在庫、販売、顧客需要にかかわらず、あらゆるビジネスに不可欠です。 自動化された ML を使用して、テクニックとアプローチを組み合わせ、推奨される高品質な時系列予測を得ることができます。 
 
-自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は「ピボット」されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。 このアプローチには、従来の時系列手法と異なり、トレーニング中に複数のコンテキスト変数とその関係を自然に取り込めるるという利点があります。 自動化された ML は、データセットおよび予測水平線のすべての項目について、単一であるがしばしば内部的に分岐するモデルを学習します。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。 
+自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は "ピボット" されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。 このアプローチには、従来の時系列手法と異なり、トレーニング中に複数のコンテキスト変数とその関係を自然に取り込めるるという利点があります。 自動化された ML は、データセットおよび予測水平線のすべての項目について、単一であるがしばしば内部的に分岐するモデルを学習します。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。 
 
 [時系列予測の自動化された機械学習](how-to-auto-train-forecast.md)について理解を深め、例を確認してください。
 
@@ -113,7 +113,7 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|ML.NET 自動 ML とともに Visual Studio および Visual Studio Code を使用した .NET アプリでの自動モデル選択およびトレーニング (プレビュー)。|
 |[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|並列にしてある HDInsight クラスターの Spark で自動化された ML トレーニング ジョブをスケールアウトします。|
-|[PowerBI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|直接 Power BI で機械学習モデルを呼び出します (プレビュー)。|
+|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|直接 Power BI で機械学習モデルを呼び出します (プレビュー)。|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|SQL Server 2019 ビッグ データ クラスターのデータに対して新しい機械学習モデルを作成します。|
 
 ## <a name="next-steps"></a>次の手順

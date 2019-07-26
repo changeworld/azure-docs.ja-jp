@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 357be801914017aceb7e827a3b49960cf7c3e386
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: ebb1723a9a2b2d069a1766d4f78151f2b684c5b9
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565401"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464676"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -159,7 +159,7 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 
-このロール割り当てを追加するには、Azure CLI 内で `az role assignemnt create` コマンドを使用するのが最も簡単な方法です。
+このロール割り当てを追加するには、Azure CLI 内で `az role assignment create` コマンドを使用するのが最も簡単な方法です。
 
 > [!NOTE]
 > このコマンドは、共同作成者ロールまたは所有者ロールを保有するユーザーによって、それらのアクセス許可が付与される場合にのみ、実行される必要があります。 `--assignee` は HDInsight クラスター オペレーター ロールの割り当て先とするユーザーの電子メール アドレスです。

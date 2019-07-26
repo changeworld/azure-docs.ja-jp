@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e9363f88db4fa44879eb8f6a6a04e23563c5ba44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 06df5d403ba10489ea9a36a79a94f4b94782e4ef
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67125726"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501327"
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 
@@ -132,7 +132,7 @@ uname -r
 1. **後続のコマンドを使用して、`/etc/fstab`** に下記の行を追加します。 **<storage_account_name>** 、 **<share_name>** 、 **<smb_version>** 、および **<mount_point>** を環境の適切な情報に置き換えることを忘れないでください。 Linux ディストリビューションで暗号化付き SMB 3.0 がサポートされている場合は (詳細については [SMB クライアントの要件の概要](#smb-client-reqs)を参照)、 **<smb_version>** として **3.0** を使用します。 暗号化付き SMB 3.0 をサポートしていない Linux ディストリビューションの場合は、 **<smb_version>** として **2.1** を使用します。 Azure ファイル共有は、SMB 3.0 がある Azure リージョン (オンプレミスを含むか、または別の Azure リージョン内にある) の外部でしかマウントできません。
 
     ```bash
-    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<STORAGE ACCOUNT NAME>.file.core.windows.net/<FILE SHARE NAME> /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME> cifs _netdev,nofail,vers=3.0,credentials=/etc/smbcredentials/<STORAGE ACCOUNT NAME>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
 
     sudo mount /mount/<STORAGE ACCOUNT NAME>/<FILE SHARE NAME>
     ```

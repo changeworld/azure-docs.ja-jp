@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 8bb077242c0a989e100c81d4dfefeb53f4bc90c4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620686"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405973"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>ファイアウォールを使用した Azure HDInsight クラスターの送信ネットワーク トラフィックの構成 (プレビュー)
 
@@ -23,7 +23,7 @@ ms.locfileid: "67620686"
 
 Azure HDInsight クラスターは、通常は独自の仮想ネットワークにデプロイされます。 クラスターには、その仮想ネットワークの外部にある、正常に機能するためにネットワーク アクセスを必要とするサービスへの依存関係があります。
 
-受信トラフィックを必要とする依存関係は複数あります。 受信管理トラフィックはファイアウォール デバイスを介して送信できません。 このトラフィックのソース アドレスは既知であり、[こちら](hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)で公開されています。 また、その情報を使用してネットワーク セキュリティ グループ (NSG) ルールを作成し、クラスターへの受信トラフィックをセキュリティで保護することもできます。
+受信トラフィックを必要とする依存関係は複数あります。 受信管理トラフィックはファイアウォール デバイスを介して送信できません。 このトラフィックのソース アドレスは既知であり、[こちら](hdinsight-management-ip-addresses.md)で公開されています。 また、その情報を使用してネットワーク セキュリティ グループ (NSG) ルールを作成し、クラスターへの受信トラフィックをセキュリティで保護することもできます。
 
 HDInsight の送信トラフィックの依存関係は、ほぼすべて、背後に静的 IP アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループ (NSG) を使用してクラスターからの送信トラフィックをロックできないことを意味します。 アドレスは頻繁に変わるので、現在の名前解決に基づいてルールを設定し、それを使用して NSG ルールを設定することができません。
 
@@ -99,7 +99,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
 次のエントリを使用してルート テーブルを作成します。
 
-1. **インターネット**を次ホップとする[こちらの必要な HDInsight 管理 IP アドレスの一覧](../hdinsight/hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)にある 6 つのアドレス:
+1. **インターネット**を次ホップとする[こちらの必要な HDInsight 管理 IP アドレスの一覧](../hdinsight/hdinsight-management-ip-addresses.md)にある 6 つのアドレス:
     1. すべてのリージョンのすべてのクラスター用の 4 つの IP アドレス
     1. クラスターが作成されるリージョンに固有の 2 つの IP アドレス
 1. 次ホップが Azure Firewall プライベート IP アドレスである、IP アドレス 0.0.0.0/0 の 1 つの仮想アプライアンス ルート。
@@ -179,7 +179,7 @@ Azure Firewall を Azure Monitor ログと統合すると、アプリケーシ�
 | **エンドポイント** | **詳細** |
 |---|---|
 | \*:123 | NTP クロック チェック。 トラフィックは、ポート 123 上の複数のエンドポイントでチェックされます |
-| [こちら](hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)で発行された IP | これらは HDInsight サービスです |
+| [こちら](hdinsight-management-ip-addresses.md)で発行された IP | これらは HDInsight サービスです |
 | ESP クラスター用の AAD DS プライベート IP |
 | \*:KMS Windows ライセンス認証の場合は 16800 |
 | \*Log Analytics の場合は 12000 |
