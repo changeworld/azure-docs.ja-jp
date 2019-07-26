@@ -63,6 +63,8 @@
           href: how-vs-code-works-with-dev-spaces.md
     - name: 方法
       items:
+        - name: Azure Dev Spaces をインストールする
+          href: how-to/install-dev-spaces.md
         - name: Azure Cloud Shell を使用して Kubernetes クラスターを作成する
           href: how-to/create-cluster-cloud-shell.md
         - name: Azure Dev Spaces を共有する
@@ -81,5 +83,7 @@
           href: ../jenkins/tutorial-jenkins-dev-spaces.md
         - name: Azure Dev Spaces の事業継続とディザスター リカバリー
           href: how-to/dev-spaces-business-continuity.md
+        - name: Windows コンテナーを操作する
+          href: how-to/run-dev-spaces-windows-containers.md
     - name: トラブルシューティング
       href: troubleshooting.md

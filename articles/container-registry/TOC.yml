@@ -101,6 +101,8 @@
           href: container-registry-tasks-scheduled.md
         - name: 複数ステップのタスク
           href: container-registry-tasks-multi-step.md
+        - name: Buildpack を使用したイメージのビルド (プレビュー)
+          href: container-registry-tasks-pack-build.md
         - name: マネージド ID との使用
           href: container-registry-tasks-authentication-managed-identity.md
     - name: レジストリと他の Azure サービス
