@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e2a807bbd6baeb2f14a6d36f5d98a28d48725449
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59a85e855c9fab9f2a3437c83c867b8076f55049
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082040"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67607221"
 ---
 # <a name="manage-sql-server-vms-in-azure-using-the-azure-portal"></a>Azure portal を使用した Azure 内の SQL Server VM の管理
 
@@ -33,7 +33,7 @@ ms.locfileid: "67082040"
 ## <a name="remarks"></a>解説
 
 - **SQL 仮想マシン** リソースは、SQL Server VM を表示および管理するための推奨される方法です。 ただし、現時点では、 **SQL 仮想マシン** リソースは、[サポート終了 (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) の SQL Server VM の管理をサポートしていません。 EOS の SQL Server VM 用の設定を管理するには、非推奨の [SQL Server 構成タブ](#access-sql-server-configuration-tab)を代わりに使用します。 
-- **SQL 仮想マシン** リソースは、[SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-the-sql-vm-resource-provider)されている SQL Server VM でのみ使用できます。 
+- **SQL 仮想マシン** リソースは、[SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-register-with-resource-provider.md)されている SQL Server VM でのみ使用できます。 
 
 
 ## <a name="access-sql-virtual-machine-resource"></a>SQL 仮想マシン リソースへのアクセス
@@ -60,7 +60,7 @@ SQL 仮想マシン リソースにアクセスするには、次の手順に従
   > **SQL 仮想マシン** リソースは専用の SQL Server 設定用のリソースです。 **[仮想マシン]** フィールドで VM の名前を選択し、その VM (ただし、SQL Server に限定されません) に固有の設定に移動します。 
 
 ## <a name="access-sql-server-configuration-tab"></a>SQL Server 構成タブへのアクセス
-SQL Server 構成タブは非推奨になりました。 現時点では、これが [サポート終了 (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) の SQL Server VM、および [SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-the-sql-vm-resource-provider)されていない SQL Server VM を管理する唯一の方法です。
+SQL Server 構成タブは非推奨になりました。 現時点では、これが [サポート終了 (EOS)](virtual-machines-windows-sql-server-2008-eos-extend-support.md) の SQL Server VM、および [SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-register-with-resource-provider.md)されていない SQL Server VM を管理する唯一の方法です。
 
 非推奨の SQL server 構成タブにアクセスするには、**仮想マシン** リソースに移動する必要があります。 そのためには、次の手順を実行します。
 
