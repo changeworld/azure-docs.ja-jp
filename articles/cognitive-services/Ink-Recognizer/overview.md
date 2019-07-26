@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 95121523c510e72894086740ad340bdfd33f3c32
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721403"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478369"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Ink Recognizer API とは
 
 
 Ink Recognizer Cognitive Service は、デジタルインク コンテンツ を分析および認識するためのクラウド ベースの REST API を提供します。 光学式文字認識 (OCR) を使用するサービスとは異なり、この API には入力としてデジタル インク ストローク データが必要になります。 デジタル インク ストロークは、デジタル ペンや指などの入力ツールの動きを表す 2D ポイント (X 座標、Y 座標) を時間順に並べたセットです。 入力から図形と手書きのコンテンツを認識し、認識されたすべてのエンティティを含む JSON 応答を返します。
 
-![API へのインク ストローク入力の送信を説明するフローチャート](media/ink-recognizer-pen-graph.png)
+![API へのインク ストローク入力の送信を説明するフローチャート](media/ink-recognizer-pen-graph.svg)
 
 ## <a name="features"></a>機能
 

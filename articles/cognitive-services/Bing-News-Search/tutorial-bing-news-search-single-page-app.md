@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Bing News Search API を使用して単一ページの Web アプリを作成する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このチュートリアルを使用して、検索クエリを Bing News API に送信し、Web ページ内に結果を表示できる単一ページの Web アプリケーションを構築します。
 services: cognitive-services
 author: aahill
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 10798b471012d53b5820b078b4be7c9c648d3233
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868356"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423607"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>チュートリアル:単一ページの Web アプリの作成
 

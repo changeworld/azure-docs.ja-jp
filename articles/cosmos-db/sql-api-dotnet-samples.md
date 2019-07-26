@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 04/04/2019
+ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: df673e4f76dcc868811a2874ff36e0ea5c1c64fc
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 3a7690ca446efa275f0854a3e35e68034fe85e7a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342090"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384008"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: SQL API の .NET のサンプル
 > [!div class="op_single_selector"]

@@ -3,19 +3,19 @@ title: クイック スタート:音声を認識する、Unity - Speech Services
 titleSuffix: Azure Cognitive Services
 description: このガイドでは、Unity と Unity 用 Speech SDK (ベータ版) を使用して音声テキスト変換アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
-ms.author: wolfma
-ms.openlocfilehash: b55c6535184a905790f575b98c1b5a60a83f5daf
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.date: 07/23/2019
+ms.author: jhakulin
+ms.openlocfilehash: 425cacb22865e64a996c653477120a5f7f410c9a
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606382"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405944"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>クイック スタート:Unity 用 Speech SDK (ベータ版) を使用して音声を認識する
 

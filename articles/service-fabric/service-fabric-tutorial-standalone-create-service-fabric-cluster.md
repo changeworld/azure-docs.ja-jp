@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: f978087a935bcf6ac78760fee5842573eb3a326e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274102"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385010"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターのインストールと作成
 

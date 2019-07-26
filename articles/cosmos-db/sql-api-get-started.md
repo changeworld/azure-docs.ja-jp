@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 07/09/2019
+ms.date: 07/23/2019
 ms.author: kirankk
-ms.openlocfilehash: 6fd7efe38aeb1f1094d240cf1675d432f3766229
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 36d172daed487372401691c7046215fb6c4a63ee
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985715"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384946"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
 

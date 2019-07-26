@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0d7ca38ecb66dbf92678eae4da7d8706f68cbaa2
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 4cc21a4dbab7d5114eed8414c6530eab5f42bb00
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273819"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478851"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Azure Maps を使用してストア ロケーターを作成する
 
@@ -139,7 +139,7 @@ ms.locfileid: "67273819"
 1. Azure Maps Services モジュールへの参照を追加します。 このモジュールは、Azure Maps の REST サービスをラップして JavaScript で使いやすいようにしている JavaScript ライブラリです。 検索機能を強化するうえで、このモジュールは役立ちます。
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
 1. *index.js* と *index.css* への参照を追加します。

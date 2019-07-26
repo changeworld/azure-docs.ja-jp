@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:最初の Bing Custom Search インスタンスの作成 | Microsoft Docs
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: この記事では、自分で定義したドメインや Web ページを検索できるカスタム Bing インスタンスを作成します。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 6949824f598194456837544526223b823dcfc3e5
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 2806ca6f7079ffac3d2222363cd5b3839ef8f97d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273351"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405019"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>クイック スタート:最初の Bing Custom Search インスタンスの作成
 

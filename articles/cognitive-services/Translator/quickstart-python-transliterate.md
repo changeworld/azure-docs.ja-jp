@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: c6c6bb526c78ce87b9ee2acca05f478fee0ae5ff
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: cafaf67cfaa07d27bf4569efbc7f76196222cc2a
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704347"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348734"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>クイック スタート: Python と Translator Text API を使用してテキストの表記を変換する
 
@@ -24,7 +24,7 @@ ms.locfileid: "67704347"
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 >[!TIP]
-> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub]() で入手できます。
+> すべてのコードを一度に見たい場合は、このサンプルのソース コードを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -272,6 +272,8 @@
         - name: ロールベースのアクセス制御
           displayName: rbac
           href: role-based-access-control.md
+        - href: cosmos-db-advanced-threat-protection.md
+          name: 高度な脅威保護
         - name: セキュリティ属性
           href: cosmos-db-security-attributes.md
     - name: エンタープライズ対応

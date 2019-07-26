@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Bing Video Search REST API と Java を使用して動画を検索する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Java を使用して Bing Video Search REST API に動画の検索要求を送信します。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: aahi
-ms.openlocfilehash: bb132aeee97da590f4e2bb7c3f96606c8c70aeaf
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 0823c115f47bb6bff0396cd154164183cf46d8e4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275917"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500698"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>クイック スタート:Bing Video Search REST API と Java を使用して動画を検索する
 

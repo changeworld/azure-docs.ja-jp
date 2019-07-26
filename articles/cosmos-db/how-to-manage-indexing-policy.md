@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/27/2019
 ms.author: thweiss
-ms.openlocfilehash: 9fe58e9d49a46fd03a2938f2860a3a5d476813af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0100be7eeacdcda5b123356e95e2510a365d0f22
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441787"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356445"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 
@@ -155,7 +155,8 @@ container = client.ReadContainer(containerPath)
 # set the indexing mode to Consistent
 container['indexingPolicy']['indexingMode'] = 'consistent'
 # add an excluded path
-container['indexingPolicy']['excludedPaths'] = [{"path" : "/headquarters/employees/?"}]
+container['indexingPolicy']['excludedPaths'] = [
+    {"path": "/headquarters/employees/?"}]
 # update the container with our changes
 response = client.ReplaceContainer(containerPath, container)
 ```

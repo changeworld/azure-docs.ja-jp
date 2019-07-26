@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3510c0505a5a3c1353642baf5060a83d13fdd43a
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 885c877f219f59ab5049cf7b8e01243077d6d3eb
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67808112"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348384"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -104,7 +104,7 @@ VM を Azure に確実に移行できるよう、Azure Migrate では VM にい�
 **アクション** | **詳細** | **手順**
 --- | --- | ---
 Azure VM 内の Windows ボリュームで、オンプレミスの VM と同じドライブ文字の割り当てが使用されるようにする。 | SAN ポリシーを Online All に構成します。 | 1.管理者アカウントで VM にサインインし、コマンド ウィンドウを開きます。<br/> 2.「**diskpart**」と入力して、Diskpart ユーティリティを実行します。<br/> 手順 3.「**SAN POLICY=OnlineAll**」と入力します<br/> 4.「Exit」と入力して Diskpart を終了し、コマンド プロンプトを閉じます。
-Azure VM で Azure シリアル アクセス コンソールを有効にする | これはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 ディスク イメージを使用して Azure VM が起動します。これは、新しい VM の再起動に相当します。 | [これらの手順](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console#enable-serial-console-in-custom-or-older-images)に従って、有効化してください。
+Azure VM で Azure シリアル アクセス コンソールを有効にする | これはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 ディスク イメージを使用して Azure VM が起動します。これは、新しい VM の再起動に相当します。 | [これらの手順](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console)に従って、有効化してください。
 Hyper-V ゲスト統合をインストールする | Windows Server 2003 を実行中のマシンを移行する場合は、Hyper-V ゲスト統合サービスを VM のオペレーティング システムにインストールしてください。 | [詳細情報](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
 リモート デスクトップ | VM でリモート デスクトップを有効にして、どのネットワーク プロファイルでも Windows ファイアウォールがリモート デスクトップ アクセスをブロックしていないことを確認します。 | [詳細情報](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。
 

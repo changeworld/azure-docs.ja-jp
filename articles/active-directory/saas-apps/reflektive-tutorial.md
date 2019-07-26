@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: ca2a7edff4b8c06b2838474449360b4b14b3e393
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d26e8a21865304b2065a28da5e241f58cb5ab34c
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092966"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383224"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>チュートリアル:Azure Active Directory と Reflektive の統合
 
@@ -138,7 +138,7 @@ Reflektive で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-reflektive-single-sign-on"></a>Reflektive シングル サインオンの構成
 
-**Reflektive** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Reflektive サポート チーム](mailto: https://support@reflektive.com/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Reflektive** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Reflektive サポート チーム](mailto:support@reflektive.com/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -192,7 +192,7 @@ Reflektive で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="create-reflektive-test-user"></a>Reflektive テスト ユーザーの作成
 
-このセクションでは、Reflektive で Britta Simon というユーザーを作成します。  [Reflektive サポート チーム](mailto: https://support@reflektive.com/)と連携し、Reflektive プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Reflektive で Britta Simon というユーザーを作成します。  [Reflektive サポート チーム](mailto:support@reflektive.com/)と連携し、Reflektive プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

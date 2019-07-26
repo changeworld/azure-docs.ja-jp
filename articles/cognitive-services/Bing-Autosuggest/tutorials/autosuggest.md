@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:Bing Autosuggest API を使用して自動提案の結果を取得する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Autosuggest の使用方法を示します。
 services: cognitive-services
 author: v-jaswel
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: nitinme
-ms.openlocfilehash: a4ea2661986272374ca7f265896d4d6cc4713dc2
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 9c5d86c6af5e8dc26dbe6877e8b34baa3cd577c2
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845785"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405238"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>チュートリアル:Web ページ上で検索候補を取得する
 

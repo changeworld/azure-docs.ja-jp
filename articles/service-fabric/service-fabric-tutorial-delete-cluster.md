@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2018
+ms.date: 07/22/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 0e5137a8183f378ee5960846e281222c6ecaaa47
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 660b8cc8ec142c1c0710480020f103215359987f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158082"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385052"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>チュートリアル:Azure で実行されている Service Fabric クラスターを削除する
 
