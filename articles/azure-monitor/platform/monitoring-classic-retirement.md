@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: fb7821b07e68459cb3d76812a12e85387b9f0f52
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 28dba8af059e24040abb254dd4ecd8e336d8221d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295103"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594291"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 
@@ -40,7 +40,7 @@ Application Insights での新しい監視とアラートの統合には、以�
 - **Application Insights プラットフォーム メトリック** – Application Insights 製品から一般的な構築済みのメトリックを提供します。 詳細については、[新しい Azure Monitor での Application Insights のプラットフォーム メトリック](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)の使用に関する記事を参照してください。
 - **Application insights の可用性と Web テスト** - Web アプリまたはサーバーの応答性と可用性を評価する機能を提供します。 詳細については、[新しい Azure Monitor での Application Insights の可用性テストとアラート](../../azure-monitor/app/monitor-web-app-availability.md)の使用に関する記事を参照してください。
 - **Application Insights カスタム メトリック** – 監視とアラート用の独自のメトリックを定義して発行できます。 詳細については、[新しい Azure Monitor での Application Insights のカスタム メトリック](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)の使用に関する記事を参照してください。
-- **Application Insights エラーの異常 (スマート検出の一部)** – Web アプリで HTTP 要求または依存する呼び出しの失敗率が異常に増加した場合に、ほぼリアルタイムで自動的に通知します。 新しい Azure Monitor の一部としての Application Insights のエラーの異常 (スマート検出の一部) は間もなく利用可能になる予定であり、数か月後に次のバージョンがロールアウトされたときに、このドキュメントもリンク付きで更新される予定です。
+- **Application Insights エラーの異常 (スマート検出の一部)** – Web アプリで HTTP 要求または依存する呼び出しの失敗率が異常に増加した場合に、ほぼリアルタイムで自動的に通知します。 詳細については、[[スマート検出 - 失敗の異常]](https://docs.microsoft.com/azure/azure-monitor/app/proactive-failure-diagnostics) の使用に関するこの記事を参照してください。
 
 ## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>他の Azure リソースでのメトリックとアラートの統合
 

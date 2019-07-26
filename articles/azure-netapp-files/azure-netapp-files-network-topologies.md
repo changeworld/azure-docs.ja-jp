@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 207fb003eb1fdaafe4f43f7cd41dd4b7662eddf9
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 087ecee053069a02e4d4dd6f636d05ea15269e2e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331977"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383487"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files のネットワーク計画のガイドライン
 
@@ -35,7 +35,7 @@ Azure NetApp Files ネットワークを計画するときは、いくつかの�
 
 次の機能は、Azure NetApp Files では現在サポートされていません。 
 
-* サブネット上のネットワーク セキュリティ グループ (NSG)
+* 委任されたサブネットに適用されるネットワーク セキュリティ グループ (NSG)
 * Azure NetApp Files サブネットとして次ホップを持つユーザー定義ルート (UDR)
 * Azure NetApp Files インターフェイス上の (カスタム名前付けポリシーなどの) Azure ポリシー
 * Azure NetApp Files トラフィック用のロード バランサー
@@ -56,7 +56,7 @@ Azure NetApp Files には、次のネットワーク制限が適用されます�
 |    ピアリングされた VNet 内のボリュームへの接続 (同じリージョン)    |    はい    |         |
 |    ピアリングされた VNet 内のボリュームへの接続 (クロス リージョンまたはグローバル ピアリング)    |    いいえ    |    なし    |
 |    ExpressRoute ゲートウェイ経由でのボリュームへの接続    |    はい    |         |
-|    ExpressRoute ゲートウェイ経由で、ゲートウェイ トランジットとの VNet ピアリングを使用して、スポーク VNet 内のボリュームにオンプレミスから接続    |    いいえ    |    委任されたサブネットをハブ VNet (Azure VNet with Gateway) に作成    |
+|    ExpressRoute ゲートウェイ経由で、ゲートウェイ トランジットとの VNet ピアリングを使用して、スポーク VNet 内のボリュームにオンプレミスから接続    |    はい    |        |
 |    VPN ゲートウェイ経由で、スポーク VNet 内のボリュームにオンプレミスから接続    |    はい    |         |
 |    VPN ゲートウェイ経由で、ゲートウェイ トランジットとの VNet ピアリングを使用して、スポーク VNet 内のボリュームにオンプレミスから接続    |    はい    |         |
 
@@ -99,7 +99,7 @@ Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルー�
 
 互いのリソースへのアクセスを必要とする追加の VNet が同じリージョンにある場合、[VNet ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を使用して VNet を接続することで、Azure インフラストラクチャを介した安全な接続を実現できます。 
 
-上図の VNet 2 と VNet 3 について考えます。 VM 1 が VM 2 とボリューム 2 に接続する必要がある場合、または VM 2 が VM 1 またはボリューム 1 に接続する必要がある場合は、VNet 2 と VNet 3 の間で VNet ピアリングを有効にする必要があります。 
+上図の VNet 2 と VNet 3 について考えます。 VM 2 が VM 3 とボリューム 2 に接続する必要がある場合、または VM 3 が VM 2 またはボリューム 1 に接続する必要がある場合は、VNet 2 と VNet 3 の間で VNet ピアリングを有効にする必要があります。 
 
 さらに、同じリージョンで VNet 1 が VNet 2 とピアリングされており、VNet 2 が VNet 3 とピアリングされているシナリオを考えます。 VNet 1 のリソースは VNet 2 のリソースに接続できますが、VNet 1 と VNet 3 がピアリングされていない限り、VNet 3 のリソースには接続できません。 
 
@@ -111,15 +111,15 @@ Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルー�
 
 ![ハイブリッド ネットワーク環境](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-ハイブリッド シナリオでは、オンプレミスのデータ センターのアプリケーションが Azure のリソースにアクセスする必要があります。  これは、データ センターを Azure に拡張したいのか、Azure ネイティブ サービスを使用したいのか、それともディザスター リカバリーが目的なのかに関係なく当てはまります。 サイト間 VPN または ExpressRoute 経由でオンプレミスの複数のリソースを Azure のリソースに接続する方法については、[VPN Gateway の計画オプション](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)に関するページを参照してください。
+ハイブリッド シナリオでは、オンプレミスのデータセンターのアプリケーションが Azure のリソースにアクセスする必要があります。  これは、データセンターを Azure に拡張したいのか、Azure ネイティブ サービスを使用したいのか、それともディザスター リカバリーが目的なのかに関係なく当てはまります。 サイト間 VPN または ExpressRoute 経由でオンプレミスの複数のリソースを Azure のリソースに接続する方法については、[VPN Gateway の計画オプション](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable)に関するページを参照してください。
 
 ハイブリッド ハブスポーク トポロジでは、Azure のハブ VNet は、オンプレミス ネットワークへの主要な接続ポイントとして機能します。 スポークはハブとピアリングされる VNet であり、ワークロードを分離するために使用できます。
 
-構成によって異なります。 オンプレミスのリソースを、ハブおよびスポークのリソースに接続できます。
+構成によっては、オンプレミスのリソースを、ハブおよびスポーク内のリソースに接続できます。
 
 上に示したトポロジでは、オンプレミス ネットワークは Azure のハブ VNet に接続されており、ハブ VNet とピアリングされているのと同じリージョンに 2 つのスポーク VNet があります。  このシナリオで、Azure NetApp Files ボリュームに対してサポートされている接続オプションは次のとおりです。
 
-* オンプレミス リソースの VM 1 と VM 2 を、サイト間 VPN または Express Route 経由でハブのボリューム 1 に接続できます。 
+* オンプレミス リソース VM 1 および VM 2 は、サイト間 VPN または ExpressRoute 回線経由でハブのボリューム 1 に接続できます。 
 * オンプレミス リソースの VM 1 と VM 2 を、サイト間 VPN とリージョンの VNet ピアリング経由でハブのボリューム 2 とボリューム 3 に接続できます。
 * ハブ VNet 内の VM 3 は、スポーク VNet 1 内のボリューム 2 と、スポーク VNet 2 内のボリューム 3 に接続できます。
 * スポーク VNet 1 の VM 4 と、スポーク VNet 2 の VM 5 は、ハブ VNet 内のボリューム 1 に接続できます。

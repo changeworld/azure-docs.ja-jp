@@ -5,14 +5,14 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 07/03/2019
 ms.author: banders
-ms.openlocfilehash: 7ffb575d7f962232604a4ad6930b804d2619b488
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: cd0a70aa0fb5096c5b0157ae078c961da03109bc
+ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490597"
+ms.lasthandoff: 07/04/2019
+ms.locfileid: "67565298"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -42,17 +42,53 @@ EA のお客様は、EA Portal で、 **[予約インスタンスを追加しま
 
 予約割引が適用されるのは、エンタープライズ、CSP、および従量課金制の個人プランを通じて購入したサブスクリプションに関連付けられたリソースのみです。
 
-## <a name="reservation-scope"></a>予約スコープ
+## <a name="scope-reservations"></a>予約のスコープ設定
 
-予約スコープは、予約割引を適用するリソースを決定します。 予約スコープには次の値を指定できます。
+予約のスコープをサブスクリプションまたはリソース グループに設定することができます。 予約のスコープを設定すると、予約の割引が適用される場所が選択されます。 予約のスコープをリソース グループに設定すると、予約割引はサブスクリプション全体ではなく、リソース グループにのみ適用されます。
 
-**共有スコープ**: 予約割引は課金コンテキスト内の有効なサブスクリプションで一致するリソースに適用されます。
+### <a name="reservation-scoping-options"></a>予約スコープのオプション
 
-- マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 従量課金制の個人プランをお持ちのお客様の場合、課金コンテキストはアカウント管理者が作成するすべての有効なサブスクリプションです。
+リソース グループのスコープ設定には、ニーズに応じて予約をスコープ設定する次の 3 つのオプションがあります。
 
-**単一サブスクリプション**: 予約割引は選択したサブスクリプションの一致するリソースに適用されます。
+- **単一のリソース グループのスコープ** — 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
+- **単一サブスクリプションのスコープ** — 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
+- **共有スコープ** — 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
 
-[スコープは予約を購入した後に更新する](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)ことができます。
+使用量に予約割引を適用しつつ、Azure では次の順序で予約が処理されます。
+
+1. リソース グループにスコープが設定されている予約
+2. 単一スコープの予約
+3. 共有スコープの予約
+
+予約にスコープを設定した方法に応じて、1 つのリソース グループが複数の予約から予約割引を受けることができます。
+
+### <a name="scope-a-reservation-to-a-resource-group"></a>予約のスコープをリソース グループに設定する
+
+リソース グループへの予約のスコープの設定は、予約の購入時に設定することも、購入後に設定することもできます。 予約のスコープをリソース グループに設定するには、サブスクリプションの所有者である必要があります。
+
+スコープを設定するには、Azure portal の [[購入予約]](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand) ページにアクセスします。 次に、購入する予約の種類を選択します。 **[Select the product that you want to purchase]\(購入する製品を選択してください\)** 選択フォームで、 **[スコープ]** の値を **[単一リソース グループ]** に変更し、リソース グループを選択します。
+
+![VM 予約購入の選択を示す例](./media/billing-save-compute-costs-reservations/select-product-to-purchase.png)
+
+仮想マシン予約のリソース グループの購入に関するレコメンデーションが表示されます。 過去 30 日間の利用状況分析に基づいたレコメンデーションが計算されます。 予約インスタンスを使用してリソースを実行するコストが、従量課金制料金でリソースを実行する場合のコストよりも安い場合は、購入のレコメンデーションが作成されます。 予約購入のレコメンデーションの詳細については、「[Get Reserved Instance purchase recommendations based on usage pattern](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations)」 (使用パターンに基づく予約インスタンス購入のレコメンデーションを取得する) のブログ記事を参照してください。
+
+スコープは、予約の購入後にいつでも更新できます。 これを行うには、予約にアクセスし、 **[構成]** をクリックして予約のスコープを再設定します。 予約のスコープの再設定は、商用トランザクションではありません。 予約期間は変更されません。 スコープの更新の詳細については、[予約購入後にスコープを更新する](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)方法に関するセクションを参照してください。
+
+![予約のスコープの変更を示す例](./media/billing-save-compute-costs-reservations/rescope-reservation-resource-group.png)
+
+### <a name="monitor-and-optimize-reservation-usage"></a>予約の使用状況を監視および最適化する
+
+予約の使用状況は、Azure portal、API、または使用状況データを使用するなど、複数の方法で監視できます。 アクセスできるすべての予約を表示するには、Azure portal の **[予約]** にアクセスします。 予約グリッドには、予約の最後に記録された使用率が表示されます。 予約をクリックすると、予約の長期的な使用率が表示されます。
+
+エンタープライズ契約のお客様の場合は、[API](billing-reservation-apis.md#see-reservation-usage) を使用して、[使用状況データ](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks)から予約使用率を取得することもできます。
+
+リソース グループにスコープ設定された予約の使用率が低いことがわかった場合は、予約のスコープを単一サブスクリプションに更新するか、課金コンテキストで共有することができます。 予約を分割し、分割した予約を別々のリソース グループに適用することもできます。
+
+### <a name="other-considerations"></a>その他の考慮事項
+
+リソース グループに一致するリソースがない場合、予約の使用率が低下します。 予約が、使用率の低い別のリソース グループやサブスクリプションに自動的に適用されることはありません。
+
+あるサブスクリプションから別のサブスクリプションにリソース グループを移動しても、予約スコープは自動的に更新されません。 予約のスコープを再設定する必要があります。 そうしないと、予約の使用率が低下します。
 
 ## <a name="discounted-subscription-and-offer-types"></a>割引サブスクリプションとオファーの種類
 

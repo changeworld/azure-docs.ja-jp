@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: bbb907a7d73036352d4f5b8f36ccefacd89681ae
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: fe470165d11b24ffb1df704ecaa9804663fc9e5c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479092"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796033"
 ---
 # <a name="custom-resource-proxy-reference"></a>カスタム リソースのプロキシのリファレンス
 
@@ -75,7 +75,7 @@ id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>pro
 
 ### <a name="create-a-custom-resource"></a>カスタム リソースの作成
 
-Azure API 受信要求:
+Azure API 着信要求:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resource-provider-name}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -92,7 +92,7 @@ Content-Type: application/json
 }
 ```
 
-この要求は次にフォーム内で**エンドポイント**に転送されます:
+この要求は、その後、次の形式で**エンドポイント**に転送されます。
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -109,7 +109,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同様に、**エンドポイント**からの応答は次に顧客に返されます。 エンドポイントからの応答は次のように返される必要があります。
+同様に、**エンドポイント**からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
@@ -154,7 +154,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="remove-a-custom-resource"></a>カスタム リソースの削除
 
-Azure API 受信要求:
+Azure API 着信要求:
 
 ``` HTTP
 Delete https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -182,7 +182,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
 
-Azure カスタム リソース プロバイダーの応答:
+Azure カスタム リソースプロバイダーの応答:
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -199,7 +199,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-この要求は次にフォーム内で**エンドポイント**に転送されます:
+この要求は、その後、次の形式で**エンドポイント**に転送されます。
 
 ``` HTTP
 GET https://{endpointURL}/?api-version=2018-09-01-preview
@@ -207,7 +207,7 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-同様に、**エンドポイント**からの応答は次に顧客に返されます。 エンドポイントからの応答は次のように返される必要があります。
+同様に、**エンドポイント**からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
@@ -260,7 +260,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-この要求は次にフォーム内で**エンドポイント**に転送されます:
+この要求は、その後、次の形式で**エンドポイント**に転送されます。
 
 ``` HTTP
 GET https://{endpointURL}/?api-version=2018-09-01-preview
@@ -268,7 +268,7 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources
 ```
 
-同様に、**エンドポイント**からの応答は次に顧客に返されます。 エンドポイントからの応答は次のように返される必要があります。
+同様に、**エンドポイント**からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
@@ -322,7 +322,8 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure カスタム リソース プロバイダーの概要](./custom-providers-overview.md)
-- [チュートリアル:Azure カスタム リソース プロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [Azure カスタム リソースプロバイダーの概要](./custom-providers-overview.md)
+- [クイック スタート:Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [チュートリアル:Azure でカスタム アクションとカスタム リソースを作成する](./tutorial-custom-providers-101.md)
 - [方法:カスタム アクションを Azure REST API に追加する](./custom-providers-action-endpoint-how-to.md)
 - [リファレンス: カスタム リソースのキャッシュのリファレンス](./custom-providers-proxy-cache-resource-endpoint-reference.md)

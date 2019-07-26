@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a745fefa5ceb0f81cf8d66e7af9e308c0ecb40b9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9e790ac8ac67478a0e7b5143a5b2f1fdd9c790c
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449866"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798674"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -69,23 +69,10 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
 ## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Azure File Sync システムの要件と相互運用性 
 このセクションでは、Windows Server の機能とロール、およびサード パーティ ソリューションとの Azure File Sync エージェント システムの要件と相互運用性について説明します。
 
-### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 そのチェックでは、以下で説明する機能のほとんどがカバーされていますが、すべてではないことに注意してください。デプロイが円滑に進むように、このセクションの残りの部分をよく読むことをお勧めします。 
+### <a name="evaluation-cmdlet"></a>評価コマンドレット
+Azure File Sync をデプロイする前に、Azure File Sync 評価コマンドレットを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このコマンドレットでは、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 そのチェックでは、以下で説明する機能のほとんどがカバーされていますが、すべてではないことに注意してください。デプロイが円滑に進むように、このセクションの残りの部分をよく読むことをお勧めします。 
 
-#### <a name="download-instructions"></a>ダウンロードの手順
-1. 最新バージョンの PackageManagement と PowerShellGet がインストールされていることを確認します (これにより、プレビュー モジュールをインストールできます)
-    
-    ```powershell
-        Install-Module -Name PackageManagement -Repository PSGallery -Force
-        Install-Module -Name PowerShellGet -Repository PSGallery -Force
-    ```
- 
-2. PowerShell を再起動します
-3. モジュールをインストールする
-    
-    ```powershell
-        Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
-    ```
+評価コマンドレットをインストールするには、Az PowerShell モジュールをインストールします。これは、次の手順に従ってインストールできます。[Azure PowerShell をインストールして構成](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
 
 #### <a name="usage"></a>使用法  
 複数の方法で評価ツールを呼び出すことができます。システム チェックとデータセット チェックのどちらか一方または両方を行うことができます。 システム チェックとデータセット チェックの両方を実行するには: 
@@ -113,13 +100,13 @@ CSV で結果を表示するには:
 ### <a name="system-requirements"></a>システム要件
 - Windows Server 2012 R2、Windows Server 2016、または Windows Server 2019 を実行しているサーバー:
 
-    | バージョン | サポートされている SKU | サポートされているデプロイ オプション |
+    | Version | サポートされている SKU | サポートされているデプロイ オプション |
     |---------|----------------|------------------------------|
-    | Windows Server 2019 | Datacenter および Standard | フル (UI ありのサーバー) |
-    | Windows Server 2016 | Datacenter および Standard | フル (UI ありのサーバー) |
-    | Windows Server 2012 R2 | Datacenter および Standard | フル (UI ありのサーバー) |
+    | Windows Server 2019 | Datacenter および Standard | 完全およびコア |
+    | Windows Server 2016 | Datacenter および Standard | 完全およびコア |
+    | Windows Server 2012 R2 | Datacenter および Standard | 完全およびコア |
 
-    Windows Server の今後のバージョンは、それらがリリースされたときに追加されます。 Windows の以前のバージョンは、ユーザーからのフィードバックに基づいて追加される場合があります。
+    Windows Server の今後のバージョンは、それらがリリースされたときに追加されます。
 
     > [!Important]  
     > Azure File Sync で使用するすべてのサーバーは、Windows Update の最新の更新プログラムを使用して常に最新の状態を保つことをお勧めします。 
@@ -169,8 +156,12 @@ Windows Server フェールオーバー クラスタリングは、Azure ファ�
 > 同期が適切に機能するには、フェールオーバー クラスターのすべてのノードに Azure File Sync エージェントをインストールする必要があります。
 
 ### <a name="data-deduplication"></a>データ重複除去
-**エージェント バージョン 5.0.2.0**   
-データ重複除去は、Windows Server 2016 および Windows Server 2019 でクラウドを使った階層化が有効になっているボリュームでサポートされます。 クラウドを使った階層化が有効なボリュームで重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。 これらのボリューム削減は、オンプレミスにのみ適用され、Azure Files 内のデータは重複除去されないことに注意してください。 
+**エージェント バージョン 5.0.2.0 以降**   
+データ重複除去は、Windows Server 2016 および Windows Server 2019 でクラウドを使った階層化が有効になっているボリュームでサポートされます。 クラウドを使った階層化が有効なボリュームでデータ重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。 
+
+クラウドを使った階層化が有効なボリュームでデータ重複除去が有効になっている場合、サーバー エンドポイントの場所にある重複除去最適化ファイルは、クラウドを使った階層化のポリシー設定に基づいて、通常のファイルと同様に階層化されます。 重複除去最適化ファイルが階層化された後、データ重複除去ガベージ コレクション ジョブが自動的に実行され、ボリューム上の他のファイルから参照されなくなった不要なチャンクを削除することによって、ディスク領域が解放されます。
+
+ボリュームの節約はサーバーにのみ適用されることに注意してください。Azure ファイル共有内のデータは重複除去されません。
 
 **Windows Server 2012 R2 またはそれよりも古いエージェント バージョン**  
 クラウドの階層化が有効ではないボリュームでは、Azure File Sync は、そのボリュームでの Windows Server のデータ重複除去の有効化をサポートします。
@@ -220,7 +211,7 @@ Azure File Sync エージェントがインストールされているサーバ�
 Microsoft の社内ウイルス対策ソリューションである Windows Defender と System Center Endpoint Protection (SCEP) では、この属性が設定されたファイルの読み取りが自動的にスキップされます。 そのテスト結果として小さな問題点がわかりました。既存の同期グループにサーバーを追加すると、新しいサーバー上で 800 バイト未満のファイルの呼び戻し (ダウンロード) が実行されるという問題です。 このようなファイルは新しいサーバー上に残り、階層化のサイズ要件 (64 KB を超えるサイズ) を満たしていないため、階層化されません。
 
 > [!Note]  
-> ウイルス対策ソフトウェア ベンダーは、その製品と Azure File Sync との間の互換性を、[Azure File Sync Antivirus Compatibility Test Suite] (https://www.microsoft.com/download/details.aspx?id=58322) を使用して確認することができます。これは、Microsoft ダウンロード センターでダウンロードできます。
+> ウイルス対策ソフトウェア ベンダーは、その製品と Azure File Sync との間の互換性を、[Azure File Sync Antivirus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322) を使用して確認することができます。これは、Microsoft ダウンロード センターでダウンロードできます。
 
 ### <a name="backup-solutions"></a>バックアップ ソリューション
 ウイルス対策ソリューションと同様に、バックアップ ソリューションでも階層化されたファイルの再呼び出しが発生することがあります。 Azure ファイル共有をバックアップするには、オンプレミスのバックアップ製品ではなく、クラウド バックアップ ソリューションを使用することをお勧めします。
@@ -263,6 +254,7 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 | 東アジア | 香港特別行政区 |
 | East US | バージニア州 |
 | 米国東部 2 | バージニア州 |
+| フランス中部 | パリ |
 | 韓国中部| ソウル |
 | 韓国南部| 釜山 |
 | 東日本 | 東京、埼玉 |
@@ -304,6 +296,7 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 | 東アジア           | 東南アジア     |
 | East US             | 米国西部            |
 | 米国東部 2           | 米国中部         |
+| フランス中部      | フランス南部       |
 | 東日本          | 西日本         |
 | 西日本          | 東日本         |
 | 韓国中部       | 韓国南部        |

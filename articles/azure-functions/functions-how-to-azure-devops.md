@@ -1,5 +1,5 @@
 ---
-title: Azure DevOps を使用して、関数コードの更新プログラムを継続的に提供する
+title: Azure DevOps を使用して、関数コードの更新プログラムを継続的に提供する - Azure Functions
 description: Azure Functions をターゲットとする、Azure DevOps パイプラインを設定する方法について学習します。
 author: ahmedelnably
 manager: jeconnoc
@@ -7,29 +7,29 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
-ms.custom: ''
-ms.openlocfilehash: 9806a982982971b1b3ac9c28454e17813b2ad2a5
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0fdad0caa2deef0d7d55b30a85632f72f4ff0ecc
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479883"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594458"
 ---
-# <a name="continuous-delivery-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
+# <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
-[Azure Pipelines](/azure/devops/pipelines/) を使用して、関数を Azure 関数アプリに自動的にデプロイできます。
-パイプラインを定義するには、次を使用することができます。
+[Azure Pipelines](/azure/devops/pipelines/) を使用して、関数を Azure Functions アプリに自動的にデプロイできます。
 
-- YAML ファイル:このファイルは、パイプラインを記述します。これにはビルド ステップ セクションとリリース セクションが含まれている場合があります。 YAML ファイルは、アプリと同じリポジトリにある必要があります。
+パイプラインを定義するには、次の 2 つのオプションがあります。
 
-- テンプレート:テンプレートは、アプリをビルドまたはデプロイする既製のタスクです。
+- **YAML ファイル**:YAML ファイルは、パイプラインを記述します。 このファイルには、ビルド ステップ セクションとリリース セクションが含まれている場合があります。 YAML ファイルは、アプリと同じリポジトリにある必要があります。
+- **テンプレート**:テンプレートは、アプリをビルドまたはデプロイする既製のタスクです。
 
 ## <a name="yaml-based-pipeline"></a>YAML ベースのパイプライン
 
+YAML ベースのパイプラインを作成するには、まずアプリをビルドしてから、アプリをデプロイします。
+
 ### <a name="build-your-app"></a>アプリの構築
 
-Azure Pipelines でのアプリのビルドは、アプリのプログラミング言語に依存します。
-言語にはそれぞれ、Azure で関数アプリのデプロイに使用できるデプロイ成果物を作成するための固有のビルド ステップがあります。
+Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure で関数アプリをデプロイするために使用されます。
 
 #### <a name="net"></a>.NET
 
@@ -92,7 +92,7 @@ steps:
 
 #### <a name="python"></a>Python
 
-次のサンプルを使用して、Python アプリをビルドする YAML ファイルを作成できます。Python は Linux の Azure Functions でのみサポートされます。
+次のサンプルを使用して、Python アプリをビルドする YAML ファイルを作成できます。 Python は Linux Azure Functions でのみサポートされています。
 
 ```yaml
 pool:
@@ -125,7 +125,7 @@ steps:
 ```
 #### <a name="powershell"></a>PowerShell
 
-次のサンプルを使用して、PowerShell アプリをパッケージ化する YAML ファイルを作成できます。PowerShell は Windows の Azure Functions でのみサポートされます。
+次のサンプルを使用して、PowerShell アプリをパッケージ化する YAML ファイルを作成できます。 PowerShell は、Windows Azure Functions でのみサポートされています。
 
 ```yaml
 pool:
@@ -145,11 +145,11 @@ steps:
 
 ### <a name="deploy-your-app"></a>アプリをデプロイする
 
-ホストしている OS によっては、YAML ファイルに次の YAML サンプルを含める必要があります。
+ホストしている OS によっては、YAML ファイルに次の YAML サンプルのいずれかを含める必要があります。
 
-#### <a name="windows-function-app"></a>Windows の関数アプリ
+#### <a name="windows-function-app"></a>Windows 関数アプリ
 
-次のスニペットは、Windows の関数アプリへのデプロイに使用できます。
+Windows 関数アプリをデプロイするには、次のスニペットを使用します。
 
 ```yaml
 steps:
@@ -164,9 +164,9 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Linux の関数アプリ
+#### <a name="linux-function-app"></a>Linux 関数アプリ
 
-次のスニペットは、Linux の関数アプリへのデプロイに使用できます。
+Linux 関数アプリをデプロイするには、次のスニペットを使用します。
 
 ```yaml
 steps:
@@ -188,57 +188,55 @@ Azure DevOps ではテンプレートは、アプリをビルドまたはデプ�
 
 ### <a name="build-your-app"></a>アプリの構築
 
-Azure Pipelines でのアプリのビルドは、アプリのプログラミング言語に依存します。 言語にはそれぞれ、Azure で関数アプリの更新に使用できるデプロイ成果物を作成するための固有のビルド ステップがあります。
+Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure で関数アプリを更新するために使用されます。
+
 新しいビルド パイプラインを作成するときに、組み込みのビルド テンプレートを使用するには、 **[従来のエディターを使用する]** を選択して、デザイナー テンプレートを使用してパイプラインを作成します。
 
-![Azure Pipelines の従来のエディター](media/functions-how-to-azure-devops/classic-editor.png)
+![Azure Pipelines の従来のエディターを選択する](media/functions-how-to-azure-devops/classic-editor.png)
 
-コードのソースを構成したら、Azure Functions のビルド テンプレートを検索し、アプリの言語と一致するテンプレートを選択します。
+コードのソースを構成したら、Azure Functions のビルド テンプレートを検索します。 お使いのアプリの言語に一致するテンプレートを選択します。
 
-![Azure Functions ビルド テンプレート](media/functions-how-to-azure-devops/build-templates.png)
+![Azure Functions のビルド テンプレートを選択する](media/functions-how-to-azure-devops/build-templates.png)
 
-場合によっては、ビルド成果物に特定のフォルダー構造があるため、 **[Prepend root folder name to archive paths]\(アーカイブ パスの前にルート フォルダー名を付加する\)** オプションをオンにする必要があります。
+場合によっては、ビルド成果物に特定のフォルダー構造があります。 **[Prepend root folder name to archive paths]\(アーカイブ パスの前にルート フォルダー名を付加する\)** チェック ボックスをオンにする必要がある場合があります。
 
-![ルート フォルダーを付加する](media/functions-how-to-azure-devops/prepend-root-folder.png)
+![ルート フォルダー名の前に付加するオプション](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
 #### <a name="javascript-apps"></a>JavaScript アプリ
 
-JavaScript アプリに Windows のネイティブ モジュールへの依存関係がある場合は、次を更新する必要があります。
+お使いの JavaScript アプリに Windows ネイティブ モジュールへの依存関係がある場合は、エージェント プールのバージョンを **Hosted VS2017** に更新する必要があります。
 
-- エージェント プールのバージョンを **Hosted VS2017** にする
-
-  ![ビルド エージェントの OS を変更](media/functions-how-to-azure-devops/change-agent.png)
+![エージェント プールのバージョンを更新する](media/functions-how-to-azure-devops/change-agent.png)
 
 ### <a name="deploy-your-app"></a>アプリをデプロイする
 
 新しいリリース パイプラインを作成するときに、Azure Functions のリリース テンプレートを検索します。
 
-![](media/functions-how-to-azure-devops/release-template.png)
+![Azure Functions のリリース テンプレートを検索する](media/functions-how-to-azure-devops/release-template.png)
 
 リリース テンプレートでは、デプロイ スロットへのデプロイはサポートされていません。
 
-## <a name="creating-an-azure-pipeline-using-the-azure-cli"></a>Azure CLI を使用して Azure パイプラインを作成する
+## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Azure CLI を使用してビルド パイプラインを作成する
 
-`az functionapp devops-pipeline create` [コマンド](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)を使用すると、リポジトリ内の任意のコード変更をビルドおよびリリースする Azure パイプラインが作成されます。 このコマンドにより、ビルドとリリース パイプラインを定義し、それをリポジトリにコミットする新しい YAML ファイルが生成されます。 デプロイ スロットへのデプロイは、Azure CLI コマンドではサポートされていません。
-このコマンドの前提条件は、コードの場所によって異なります。
+Azure でビルド パイプラインを作成するには、`az functionapp devops-pipeline create` [コマンド](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)を使用します。 ビルド パイプラインは、リポジトリに加えられたコード変更をビルドしてリリースするために作成されます。 このコマンドにより、ビルドとリリース パイプラインを定義し、それをリポジトリにコミットする新しい YAML ファイルが生成されます。 このコマンドの前提条件は、コードの場所によって異なります。
 
 - コードが GitHub にある場合:
 
     - サブスクリプションへの**書き込み**アクセス許可が必要です。
 
-    - Azure DevOps でのプロジェクト管理者になります。
+    - Azure DevOps のプロジェクト管理者である必要があります。
 
-    - 十分なアクセス許可を持つ GitHub 個人用アクセス トークンを作成するアクセス許可を持ちます。 [GitHub PAT アクセス許可の要件。](https://aka.ms/azure-devops-source-repos)
+    - 十分なアクセス許可を持つ GitHub 個人用アクセス トークン (PAT) を作成するためのアクセス許可が必要です。 詳細については、[GitHub PAT アクセス許可の要件](https://aka.ms/azure-devops-source-repos)に関するセクションを参照してください。
 
-    - 自動生成された YAML ファイルをコミットする GitHub リポジトリのマスター ブランチにコミットするためのアクセス許可を持っています。
+    - 自動生成された YAML ファイルをコミットできるように、GitHub リポジトリのマスター ブランチにコミットするためのアクセス許可が必要です。
 
 - コードが Azure Repos にある場合:
 
     - サブスクリプションへの**書き込み**アクセス許可が必要です。
 
-    - Azure DevOps でのプロジェクト管理者になります。
+    - Azure DevOps のプロジェクト管理者である必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
-+ [Azure Functions の概要](functions-overview.md)
-+ [Azure DevOps の概要](/azure/devops/pipelines/)
+- 「[Azure Functions の概要](functions-overview.md)」を確認してください。
+- [Azure DevOps の概要](/azure/devops/pipelines/)を確認してください。

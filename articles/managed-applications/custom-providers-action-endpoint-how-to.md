@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 1bfc0be81d42e922c47755543fb65aa413ec73a9
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6fbd20c201e1b141b7276e3283599b00cdefd118
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479060"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67795295"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>カスタム アクションを Azure REST API に追加する
 
@@ -65,7 +65,7 @@ Content-Type: application/json
 }
 ```
 
-この要求は次にフォーム内で**エンドポイント**に転送されます:
+この要求は、その後、次の形式で**エンドポイント**に転送されます。
 
 ``` HTTP
 POST https://{endpointURL}/?api-version=2018-09-01-preview
@@ -80,7 +80,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同様に、**エンドポイント**からの応答は次に顧客に返されます。 エンドポイントからの応答は次のように返される必要があります。
+同様に、**エンドポイント**からの応答は、その後顧客に返されます。 エンドポイントからの応答は、次のように返される必要があります。
 
 - 有効な JSON オブジェクト ドキュメント。 すべての配列と文字列は、最上位のオブジェクトの下で入れ子にする必要があります。
 - `Content-Type` ヘッダーは "application/json; charset=utf-8" に設定される必要があります。
@@ -194,6 +194,7 @@ functionValues | *いいえ* | **エンドポイント**に送信される要求
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure カスタム リソース プロバイダーの概要](./custom-providers-overview.md)
-- [チュートリアル:Azure カスタム リソース プロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [Azure カスタム リソースプロバイダーの概要](./custom-providers-overview.md)
+- [クイック スタート:Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [チュートリアル:Azure でカスタム アクションとカスタム リソースを作成する](./tutorial-custom-providers-101.md)
 - [方法:カスタム リソースを Azure REST API に追加する](./custom-providers-resources-endpoint-how-to.md)

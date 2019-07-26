@@ -3,7 +3,7 @@ title: Azure ExpressRoute を Oracle Cloud Infrastructure と接続する | Micr
 description: Azure ExpressRoute を Oracle Cloud Infrastructure (OCI) FastConnect と接続して、クロスクラウド Oracle アプリケーション ソリューションを使用できるようにします
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/24/2019
 ms.author: rogirdh
-ms.openlocfilehash: ce1f86f7594692c797aaca5008b211b96ba81fbe
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 671d7c8eb9f10e346b49056e1cc117c9882bb6e8
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454382"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67707631"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure と Oracle Cloud Infrastructure 間の直接相互接続をセットアップする  
 
@@ -60,7 +60,7 @@ ms.locfileid: "67454382"
 1. 動的ルーティング ゲートウェイ (DRG) を作成します。 これは、FastConnect 回路を作成するときに必要になります。 詳細については、[動的ルーティング ゲートウェイ](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm)のドキュメントをご覧ください。
 1. Oracle テナントに FastConnect 回路を作成します。 詳細については、[Oracle のドキュメント](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)をご覧ください。
   
-    * FastConnect の構成で、**Microsoft Azure:ExpressRoute** をプロバイダーとして選択します。
+    * FastConnect の構成で、**Microsoft Azure: ExpressRoute** をプロバイダーとして選択します。
     * 前の手順でプロビジョニングした動的ルーティング ゲートウェイを選択します。
     * プロビジョニングする帯域幅を選択します。 最適なパフォーマンスのためには、この帯域幅は、ExpressRoute 回路を作成するときに選択した帯域幅と一致している必要があります。
     * **[Provider Service Key]\(プロバイダーのサービス キー\)** に、ExpressRoute のサービス キーを貼り付けます。

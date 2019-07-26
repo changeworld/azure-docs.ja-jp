@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f7e93dc12b9932fed90c7f9fa3145e56a3488b32
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f4140754afa8de994b227dc187cd73c9ccfa86f9
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448020"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67666023"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -87,7 +87,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 更新する API Management インスタンスが含まれているリソース グループに移動します。
-3. API Management で、目的のユーザーに **API Management 共同作成者**ロールを割り当てます。
+3. API Management で、目的のユーザーに **API Management サービス共同作成者**ロールを割り当てます。
 
 新しく追加した共同作成者は Azure PowerShell [コマンドレット](https://docs.microsoft.com/powershell/azure/overview)を使用できます。 次の手順に従って、管理者としてサインインできます。
 

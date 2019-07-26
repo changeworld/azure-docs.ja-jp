@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 06/12/2019
-ms.openlocfilehash: afa575c9015cbb21386d23101b74456822dfa33c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 07/05/2019
+ms.openlocfilehash: 5a1a5ea39c9c0ed8973e1ecfa46977d2d06f83e7
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275471"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67603605"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database サーバーレス (プレビュー)
 
@@ -166,7 +166,7 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
    |パラメーター|値の選択肢|Default value|
    |---|---|---|---|
    |最小仮想コア|最大仮想コア数を超えない {0.5、1、2、4} のいずれか|0.5 仮想コア|
-   |自動一時停止遅延|最小:360 分 (6 時間)<br>最大値:10080 分 (7 日)<br>増分: 約 60 分<br>自動一時停止の無効化: -1|360 分|
+   |自動一時停止遅延|最小:60 分 (1 時間)<br>最大値:10080 分 (7 日)<br>増分: 約 60 分<br>自動一時停止の無効化: -1|約 60 分|
 
 > [!NOTE]
 > T-SQL を使用して、サーバーレスに既存データベースを移動すること、またはコンピューティング サイズを変更することは、現在はサポートされていませんが、Azure portal または PowerShell を使用して行うことができます。

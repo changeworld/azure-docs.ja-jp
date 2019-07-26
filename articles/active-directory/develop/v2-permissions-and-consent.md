@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73b832002d1c15505e8ae845ac2585548c8e080f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 032cc0edaa140d82124a7369232cb82bf6c00c10
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482138"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702706"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -167,7 +167,8 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>アプリケーションに対して静的に要求されるアクセス許可のリストを構成するには
 
 1. [Azure portal - アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスでアプリケーションに移動するか、まだ[アプリを作成](quickstart-register-app.md)していない場合は作成します。
-2. **Microsoft Graph のアクセス許可**セクションを検索し、アプリに必要なアクセス許可を追加します。
+2. **[API のアクセス許可]** セクションを見つけ、API のアクセス許可内で [アクセス許可の追加] をクリックします。
+3. 使用可能な API の一覧から **[Microsoft Graph]** を選択し、アプリに必要なアクセス許可を追加します。
 3. アプリの登録を**保存**します。
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>推奨:ユーザーをアプリにサインインさせる

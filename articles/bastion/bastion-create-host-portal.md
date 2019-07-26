@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4a52383e6ab24c6ae1e2be0b67293d65dfa04466
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 65116ebbd6a66241a5b35a39f3dfb8f826a3745f
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477881"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594268"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Azure Bastion ホスト (プレビュー) を作成する
 
@@ -57,7 +57,7 @@ Bastion ホスト リソースを作成するには、次の 2 つの方法が�
     * **サブネット**:新しい Bastion ホスト リソースがデプロイされるご利用の仮想ネットワークのサブネットです。 名前の値の **AzureBastionSubnet** を使用して、サブネットを作成する必要があります。 この値によって、Azure でリソースをデプロイするサブネットを把握できます。 これはゲートウェイ サブネットとは異なります。 /27 より大きいサブネット (/27、/26 など) で使用することを強くお勧めします。 ネットワーク セキュリティ グループ、ルート テーブル、または委任なしで **AzureBastionSubnet** を作成します。
     * **[パブリック IP アドレス]** : RDP/SSH でアクセスされる (ポート 443 経由) Bastion リソースのパブリック IP です。 新しいパブリック IP を作成するか、既存のものを使用します。 パブリック IP アドレスは、作成している Bastion リソースと同じリージョン内にある必要があります。
     * **パブリック IP アドレス名**:パブリック IP アドレス リソースの名前です。
-    * **パブリック IP アドレスの SKU**: 既定で **[標準]** に設定され、事前に作成されます。
+    * **パブリック IP アドレスの SKU**: 既定で **[標準]** に設定され、事前に作成されます。 Azure Bastion では、標準パブリック IP SKU のみが使用およびサポートされます。
     * **割り当て**: 既定で **[静的]** に設定され、事前に作成されます。
 
 1. 設定の指定が完了したら、 **[レビュー + 作成]** をクリックします。 これにより、値が検証されます。 検証をパスすると、作成プロセスを開始できます。

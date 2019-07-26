@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60eeb420c723e22b771b4b86b55c2ce7d6a23659
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 98b0ec2e1defc4701bff798b2fa93900ec8a9a64
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536821"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595156"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>方法:Azure AD アプリに省略可能な要求を提供する
 
@@ -54,7 +54,7 @@ ms.locfileid: "67536821"
 
 **表 2: v1.0 と v2.0 の省略可能な要求セット**
 
-| Name                       |  説明   | トークンの種類 | ユーザーの種類 | メモ  |
+| EnableAdfsAuthentication                       |  説明   | トークンの種類 | ユーザーの種類 | メモ  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | ユーザーが最後に認証された時刻。 OpenID Connect の仕様を参照してください。| JWT        |           |  |
 | `tenant_region_scope`      | リソースのテナントのリージョン | JWT        |           | |
@@ -83,7 +83,7 @@ ms.locfileid: "67536821"
 
 **表 3: v2.0 のみの省略可能な要求**
 
-| JWT の要求     | Name                            | 説明                                | メモ |
+| JWT の要求     | EnableAdfsAuthentication                            | 説明                                | メモ |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP アドレス                      | ログインしたクライアントの IP アドレス。   |       |
 | `onprem_sid`  | オンプレミスのセキュリティ ID |                                             |       |
@@ -168,7 +168,7 @@ ms.locfileid: "67536821"
 
 **表 5:OptionalClaims 型のプロパティ**
 
-| Name        | Type                       | 説明                                           |
+| EnableAdfsAuthentication        | Type                       | 説明                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | コレクション (OptionalClaim) | JWT ID トークンで返される省略可能な要求。 |
 | `accessToken` | コレクション (OptionalClaim) | JWT アクセス トークンで返される省略可能な要求。 |
@@ -181,7 +181,7 @@ ms.locfileid: "67536821"
 
 **表 6:OptionalClaim 型のプロパティ**
 
-| Name                 | Type                    | 説明                                                                                                                                                                                                                                                                                                   |
+| EnableAdfsAuthentication                 | Type                    | 説明                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 省略可能な要求の名前。                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | 要求のソース (ディレクトリ オブジェクト)。 定義済みの要求と、拡張プロパティのユーザー定義の要求があります。 ソース値が null の場合、この要求は定義済みの省略可能な要求です。 ソース値が user の場合、name プロパティの値はユーザー オブジェクトの拡張プロパティです。 |

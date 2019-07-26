@@ -6,12 +6,12 @@ ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: f418cd6c5470740ce123448ddbbe54cb6e89dabe
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: d25ef00adc307bae57da2c04d4472874f8d67bcd
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67475965"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67796078"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Azure カスタム リソース プロバイダーの概要
 
@@ -125,6 +125,7 @@ Azure カスタム リソース プロバイダーの開発に関する質問が
 
 この記事では、カスタム プロバイダーについて学習しました。 次の記事にアクセスしてカスタム プロバイダーを作成しましょう。
 
-- [チュートリアル:Azure カスタム リソース プロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [クイック スタート:Azure カスタム リソースプロバイダーの作成とカスタム リソースのデプロイ](./create-custom-provider.md)
+- [チュートリアル:Azure でカスタム アクションとカスタム リソースを作成する](./tutorial-custom-providers-101.md)
 - [方法:カスタム アクションを Azure REST API に追加する](./custom-providers-action-endpoint-how-to.md)
 - [方法:カスタム リソースを Azure REST API に追加する](./custom-providers-resources-endpoint-how-to.md)

@@ -8,12 +8,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: c227abce5adcefd16a41c5590e3ff490d138c424
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8b8c200979b70e145fca64746547b37dee558848
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441447"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67720436"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 
@@ -37,7 +37,7 @@ HDInsight での仮想マシン (VM) は、指定されたドメインに参加�
 
 これらの点を総合すると、次の要素から成る環境をセットアップする必要があります。
 
-- Active Directory ドメイン (Azure AD DS で管理)。
+- Active Directory ドメイン (Azure AD DS で管理)。 **Azure HDInsight で使用するドメイン名は、39 文字以下である必要があります。**
 - Azure AD DS で有効になっている Secure LDAP (LDAPS)。
 - 個別の仮想ネットワークを選ぶ場合の HDInsight 仮想ネットワークから Azure AD DS 仮想ネットワークへの適切なネットワーク接続。 HDInsight 仮想ネットワーク内の VM は、仮想ネットワーク ピアリングを使用して Azure AD DS への通信経路を持つ必要があります。 HDInsight と Azure AD DS が同じ仮想ネットワーク内にデプロイされている場合、接続は自動的に提供されるので、これ以上アクションは必要ありません。
 

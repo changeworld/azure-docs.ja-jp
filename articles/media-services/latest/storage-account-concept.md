@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services によるクラウドのアップロードとストレージ | Microsoft Docs
-description: この記事では、クラウドのアップロードとストレージの概念について説明します。
+title: Azure Media Services の Azure Storage アカウント | Microsoft Docs
+description: Media Services アカウントの作成では、Azure Storage アカウント リソースの名前を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: fc5bf052a7677d76c7128404a420f8c886cf3fe1
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5c5bfa224b87040f5142663e6adab01072c6e6ba
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439103"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67619293"
 ---
-# <a name="cloud-upload-and-storage"></a>クラウドのアップロードとストレージ
+# <a name="azure-storage-accounts"></a>Azure Storage アカウント
 
 Azure でメディア コンテンツの管理、暗号化、エンコード、分析、およびストリーミングを開始するには、Media Services アカウントを作成する必要があります。 Media Services アカウントの作成では、Azure Storage アカウント リソースの名前を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。 
 

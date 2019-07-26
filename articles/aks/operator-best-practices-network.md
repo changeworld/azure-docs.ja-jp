@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: b26af87de8a09f987d69f0441a817638e626b4af
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2bdc18ba4dc77178d5fcc5d2ba6d89aa109d923c
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
+ms.lasthandoff: 06/17/2019
 ms.locfileid: "65192231"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのネットワーク接続とセキュリティに関するベスト プラクティス
@@ -47,7 +47,7 @@ Azure CNI ネットワークを使用する場合、仮想ネットワーク リ
 
 AKS サービス プリンシパルへの委任の詳細については、[他の Azure リソースへのアクセスの委任][sp-delegation]に関するページを参照してください。
 
-各ノードとポッドは独自の IP アドレスを受け取ると、AKS サブネットのアドレス範囲を計画します。 これらのサブネットは、デプロイするすべてのノード、ポッド、およびネットワーク リソースの IP アドレスを提供するのに十分な大きさである必要があります。 各 AKS クラスターは、その独自のサブネットに配置する必要があります。 Azure でオンプレミスまたはピアリングされたネットワークへの接続を許可するには、既存のネットワーク リソースと重複する IP アドレス範囲を使用しないようにします。 各ノードが kubenet ネットワークと Azure CNI ネットワークの両方で実行するポッドの数には、既定の制限があります。 スケール アップ イベントまたはクラスター アップグレードを処理するには、割り当てられたサブネットで使用できる追加の IP アドレスも必要となります。
+各ノードとポッドは独自の IP アドレスを受け取ると、AKS サブネットのアドレス範囲を計画します。 これらのサブネットは、デプロイするすべてのノード、ポッド、およびネットワーク リソースの IP アドレスを提供するのに十分な大きさである必要があります。 各 AKS クラスターは、その独自のサブネットに配置する必要があります。 Azure でオンプレミスまたはピアリングされたネットワークへの接続を許可するには、既存のネットワーク リソースと重複する IP アドレス範囲を使用しないようにします。 各ノードが kubenet ネットワークと Azure CNI ネットワークの両方で実行するポッドの数には、既定の制限があります。 スケール アップ イベントまたはクラスター アップグレードを処理するには、割り当てられたサブネットで使用できる追加の IP アドレスも必要となります。 Windows Server コンテナー (現在 AKS でプレビュー段階) を使用している場合、これらの追加のアドレス空間は特に重要です。これらのノード プールをアップグレードして最新のセキュリティ パッチを適用する必要があるためです。 Windows Server ノードの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関する記事を参照してください。
 
 必要な IP アドレスを計算するには、[AKS での Azure CNI ネットワークの構成][advanced-networking]に関するページを参照してください。
 
@@ -101,6 +101,8 @@ spec:
 
 イングレス コントローラーは、AKS ノードで実行され、着信要求を監視するデーモンです。 その後、トラフィックは、イングレス リソースで定義されたルールに基づいて分散されます。 最も一般的なイングレス コントローラーは、[NGINX] に基づいています。 AKS では特定のコントローラーに限定されないので、[Contour][contour]、[HAProxy][haproxy]、[Traefik][traefik] などのその他のコントローラーを使用できます。
 
+イングレス コントローラーは Linux ノード上でスケジュールする必要があります。 Windows Server ノード (現在は AKS でプレビュー段階) では、イングレス コントローラーを実行しないでください。 YAML マニフェストまたは Helm グラフのデプロイでノード セレクターを使用して、リソースが Linux ベースのノード上で実行されるように指示します。 詳細については、[ノード セレクターを使用して AKS でポッドをスケジュールする場所を制御する][concepts-node-selectors]方法に関する記事を参照してください。
+
 イングレスには、次の操作方法に関するガイドを含め、さまざまなシナリオがあります。
 
 * [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成する][aks-ingress-basic]
@@ -126,7 +128,7 @@ Web アプリケーション ファイアウォール (WAF) は、着信トラ�
 
 ネットワーク ポリシーは、ポッド間のトラフィック フローを制御できる Kubernetes の機能です。 割り当てられたラベル、名前空間、トラフィック ポートなどの設定に基づいて、トラフィックを許可するか拒否するかを選択できます。 トラフィックのフローを制御するには、ネットワーク ポリシーを使用するのがクラウドネイティブな方法です。 ポッドは AKS クラスター内で動的に作成されるため、必要なネットワーク ポリシーを自動的に適用できます。 ポッド間のトラフィック制御には Azure ネットワーク セキュリティ グループを使用せず、ネットワーク ポリシーを使用してください。
 
-ネットワーク ポリシーを使用するには、AKS クラスターを作成するときにこの機能を有効にする必要があります。 既存の AKS クラスターでネットワーク ポリシーを有効にすることはできません。 クラスター上でネットワーク ポリシーを有効にして、必要に応じて使用できるように、事前に計画してください。
+ネットワーク ポリシーを使用するには、AKS クラスターを作成するときにこの機能を有効にする必要があります。 既存の AKS クラスターでネットワーク ポリシーを有効にすることはできません。 クラスター上でネットワーク ポリシーを有効にして、必要に応じて使用できるように、事前に計画してください。 ネットワーク ポリシーは、AKS の Linux ベースのノードとポッドに対してのみ使用する必要があります。
 
 ネットワーク ポリシーは、YAML マニフェストを使用して Kubernetes リソースとして作成されます。 ポリシーが定義済みのポッドに適用され、次にイングレス ルールまたはエグレス ルールによってトラフィックのフロー方法が定義されます。 次の例では、*app: backend* ラベルが適用されたポッドにネットワーク ポリシーを適用します。 次に、イングレス ルールでは、*app: frontend* ラベルが適用されたポッドからのトラフィックのみを許可します。
 
@@ -148,15 +150,15 @@ spec:
 
 ポリシーの概要については、「[Secure traffic between pods using network policies in Azure Kubernetes Service (AKS) (Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護)][use-network-policies]」を参照してください。
 
-## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>踏み台ホストを介してノードに安全に接続する
+## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>要塞ホストを介してノードに安全に接続する
 
-**ベスト プラクティス ガイダンス** - AKS ノードへのリモート接続は公開しないでください。 管理仮想ネットワーク内に踏み台ホスト (jump box) を作成します。 踏み台ホストを使用すると、AKS クラスターへのトラフィックをリモート管理タスクに安全にルーティングできます。
+**ベスト プラクティス ガイダンス** - AKS ノードへのリモート接続は公開しないでください。 管理仮想ネットワーク内に要塞ホスト (jump box) を作成します。 要塞ホストを使用すると、AKS クラスターへのトラフィックをリモート管理タスクに安全にルーティングできます。
 
-AKS のほとんどの操作は、Azure 管理ツールを使用するか Kubernetes API サーバー経由で完了することができます。 AKS ノードは、パブリック インターネットには接続されず、プライベート ネットワークでのみ使用できます。 ノードに接続し、問題のメンテナンスまたはトラブルシューティングを実行するには、踏み台ホスト (jump box) を介して接続をルーティングします。 このホストは、AKS クラスター仮想ネットワークに安全にピアリングされている別個の管理仮想ネットワーク内に存在しなければなりません。
+AKS のほとんどの操作は、Azure 管理ツールを使用するか Kubernetes API サーバー経由で完了することができます。 AKS ノードは、パブリック インターネットには接続されず、プライベート ネットワークでのみ使用できます。 ノードに接続し、問題のメンテナンスまたはトラブルシューティングを実行するには、要塞ホスト (jump box) を介して接続をルーティングします。 このホストは、AKS クラスター仮想ネットワークに安全にピアリングされている別個の管理仮想ネットワーク内に存在しなければなりません。
 
-![踏み台ホスト (jump box) を使用して AKS ノードに接続する](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
+![要塞ホスト (jump box) を使用して AKS ノードに接続する](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-踏み台ホストの管理ネットワークは、セキュリティで保護する必要もあります。 [Azure ExpressRoute][expressroute] または [VPN Gateway][vpn-gateway] を使用してオンプレミス ネットワークに接続し、ネットワーク セキュリティ グループを使用してアクセスを制御します。
+要塞ホストの管理ネットワークは、セキュリティで保護する必要もあります。 [Azure ExpressRoute][expressroute] または [VPN Gateway][vpn-gateway] を使用してオンプレミス ネットワークに接続し、ネットワーク セキュリティ グループを使用してアクセスを制御します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -186,3 +188,5 @@ AKS のほとんどの操作は、Azure 管理ツールを使用するか Kubern
 [use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
+[concepts-node-selectors]: concepts-clusters-workloads.md#node-selectors
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

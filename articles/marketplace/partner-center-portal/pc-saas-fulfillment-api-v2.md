@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: ecee1669c29d7b298741f9e5521de03da6dd7e3b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 476aaacbe6f1bf6d1920df0f12599976bfcc27b7
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67331627"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67701137"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
 
@@ -87,7 +87,7 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
 | `offerId`                | 各オファーを表す一意の文字列識別子 (例: "offer1")。  |
 | `planId`                 | 各プラン/SKU を表す一意の文字列識別子 (例: "silver")。 |
 | `operationId`            | 特定の操作の GUID 識別子。  |
-|  `action`                | リソースに対して実行されるアクション (`subscribe`、`unsubscribe`、`suspend`、`reinstate`、または `changePlan`、`changeQuantity`、`transfer`)。  |
+|  `action`                | リソースに対して実行されるアクション (`unsubscribe`、`suspend`、`reinstate`、または `changePlan`、`changeQuantity`、`transfer`)。  |
 |   |   |
 
 グローバルに一意な識別子 ([GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) は、通常、自動的に生成される 128 ビット (32 桁の 16 進数) の数値です。 
@@ -199,10 +199,16 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
               "tenantId": "<guid>"
           },
+            "term": {
+                "startDate": "2019-05-31",
+                "endDate": "2019-06-29",
+                "termUnit": "P1M"
+          },
           "allowedCustomerOperations": [
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
+          "isFreeTrial": "true", // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
@@ -271,7 +277,13 @@ Response Body:
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
+        "isFreeTrial": "true", // true – customer subscription is currently in free trial, false – customer subscription is not currently in free trial.
         "status": "Subscribed", // Indicates the status of the operation.
+          "term": { //This gives the free trial term start and end date
+            "startDate": "2019-05-31",
+            "endDate": "2019-06-29",
+            "termUnit": "P1M"
+        },
 }
 ```
 
@@ -794,7 +806,6 @@ Response body:
 }
 ```
 次のいずれかのアクションが可能です。 
-- `subscribe` (リソースがアクティブ化されているとき)
 - `unsubscribe` (リソースが削除されているとき)
 - `changePlan` (プランの変更操作が完了しているとき)
 - `changeQuantity` (数量の変更操作が完了しているとき)
@@ -804,8 +815,8 @@ Response body:
 状態は、次のいずれかになります。 
 - **NotStarted** <br>
  - **InProgress** <br>
-- **成功** <br>
-- **失敗** <br>
+- **Succeeded** <br>
+- **Failed** <br>
 - **Conflict** <br>
 
 Webhook 通知では、アクション可能な状態は、**Succeeded** と **Failed** です。 操作のライフ サイクルは、**NotStarted** から、**Succeeded**、**Failed**、**Conflict** などの最終状態までです。 **NotStarted** または **InProgress** を受信した場合は、操作が最終状態に達するまで GET API を使用して状態の要求を続行してから、アクションを実行してください。 

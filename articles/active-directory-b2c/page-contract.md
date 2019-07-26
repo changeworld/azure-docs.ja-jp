@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7098d805b0e3f1527587fc3411cd4c3b234b057
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: c3ee05096b0bfd071ea569105973097ce9727b07
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540387"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604537"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>カスタム ポリシーを使用して Azure Active Directory B2C でページ コントラクトを選択する | Microsoft Docs
 
@@ -79,7 +79,7 @@ ms.locfileid: "67540387"
   - コードの入力フィールドは、最大 6 文字の入力のみを受け取るようになりました
   - 6 桁のコードを入力すると、入力したコードの確認がページによって自動的に試行されます。ボタンをクリックする必要はありません。
   - コードが正しくない場合、入力フィールドは自動的にクリアされます
-  - 正しくないコードが 3 回試行されると、B2C からサービスにエラーが送信されます
+  - 正しくないコードが 3 回試行されると、B2C から証明書利用者にエラーが送信されます
   - アクセシビリティの修正
   - 既定の CSS が削除されました
 - セルフアサート ページ (selfasserted)

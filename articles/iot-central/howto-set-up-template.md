@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7fb0fba519a7833ac318c713dc9eb3c6ac7f8b5b
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: d27fd9460685c08a2b13936415935f5aaf893797
+ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509541"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67622410"
 ---
 # <a name="set-up-a-device-template"></a>デバイス テンプレートを設定する
 
@@ -150,7 +150,7 @@ assetloc: {
 
 ## <a name="settings"></a>設定
 
-設定はデバイスを制御します。 これらにより、オペレーターは、デバイスに入力を提供できるようになります。 オペレーターが使用する **[設定]** タブにタイルとして表示されるデバイス テンプレートには、複数の設定を追加できます。 追加できる設定にはさまざまな種類があります (数値、テキスト、日付、トグル、選択リスト、およびセクション ラベル)。
+設定はデバイスを制御します。 これらにより、オペレーターは、デバイスに入力を提供できるようになります。 オペレーターが使用する **[設定]** タブにタイルとして表示されるデバイス テンプレートには、複数の設定を追加できます。 追加できる設定にはさまざまな種類があります (数値、テキスト、日付、トグル、およびセクション ラベル)。
 
 設定は、3 つの状態のいずれかにできます。 デバイスからは次の状態が報告されます。
 
