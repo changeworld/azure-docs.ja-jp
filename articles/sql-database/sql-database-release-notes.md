@@ -10,12 +10,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: d527c4fed9c43e62d815078c049d4d8e6f8a46b7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 04c19c9a8603fee46914eb94b50c4f97e34e9c42
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787717"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67070210"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database リリース ノート
 
@@ -32,7 +32,6 @@ ms.locfileid: "65787717"
 | エラスティック データベース ジョブ | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください。 |
 | エラスティック クエリ | 詳しくは、[エラスティック クエリの概要](sql-database-elastic-query-overview.md)に関する記事をご覧ください。 |
 | エラスティック トランザクション | [クラウド データベースにまたがる分散トランザクション](sql-database-elastic-transactions-overview.md)。 |
-| マネージド インスタンスでのインスタンス照合順序 |詳しくは、「[PowerShell と Azure Resource Manager テンプレートを使用して Azure SQL Database にマネージド インスタンスを作成する](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)」をご覧ください。|
 |メモリ許可フィードバック (行モード) (互換性レベル 150)|詳しくは、「[行モード メモリ許可フィードバック](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)」をご覧ください。|
 | Azure portal のクエリ エディター |詳しくは、「[Azure portal の SQL クエリ エディターを使用した接続とデータの照会](sql-database-connect-query-portal.md)」をご覧ください。|
 | 単一データベースとエラスティック プールでの R サービス/機械学習 |詳しくは、「[Machine Learning Services in Azure SQL Database (Azure SQL Database での Machine Learning Services)](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)」をご覧ください。|
@@ -42,9 +41,20 @@ ms.locfileid: "65787717"
 |SQL Analytics|詳細については、[Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) に関するページをご覧ください。|
 |テーブル変数の遅延コンパイル (互換性レベル 150)|詳しくは、「[テーブル変数の遅延コンパイル](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)」をご覧ください。|
 | マネージド インスタンスでの脅威の検出 |詳しくは、「[Azure SQL Database Managed Instance で脅威検出を構成する](sql-database-managed-instance-threat-detection.md)」をご覧ください。|
-| マネージド インスタンスのタイム ゾーンのサポート|詳細については、「[Azure SQL Database Managed Instance のタイム ゾーン](sql-database-managed-instance-timezone.md)」を参照してください。|
 | マネージド インスタンスでの Bring Your Own Key (BYOK) の Transparent Data Encryption (TDE) |詳しくは、「[Azure Key Vault のユーザー管理キーを使用した Azure SQL Transparent Data Encryption: Bring Your Own Key のサポート](transparent-data-encryption-byok-azure-sql.md)」をご覧ください。|
 | &nbsp; |
+
+## <a name="june-2019"></a>2019 年 6 月
+
+### <a name="service-improvements"></a>サービスの機能強化
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+| Gen5 ハードウェアの世代上の 4 個の仮想コアのマネージド インスタンス| 詳細については、 https://aka.ms/four-cores-sql-mi-update を参照してください。 |
+| マネージド インスタンス - Visual Studio サブスクライバー向けの Azure の月単位のクレジット付きのサブスクリプションのサポート | 詳細については、 https://aka.ms/sql-mi-visual-studio-subscribers を参照してください。 |
+|マネージド インスタンスのより大規模なリージョン制限| 詳細については、「[リージョンのリソース制限](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)」を参照してください。
+| &nbsp; |
+
 
 ## <a name="may-2019"></a>2019 年 5 月
 
@@ -54,6 +64,8 @@ ms.locfileid: "65787717"
 | --- | --- |
 |Hyperscale サービス レベルの一般提供リリース| 詳細については、「[最大 100 TB の Hyperscale サービス レベル](sql-database-service-tier-hyperscale.md)」および「[Hyperscale を使用して Azure データベース ワークロードでハイパフォーマンス スケーリングを実現する](https://azure.microsoft.com/blog/get-high-performance-scaling-for-your-azure-database-workloads-with-hyperscale/)」を参照してください。|
 |サーバーレス コンピューティング レベルのパブリック プレビュー リリース | 詳細については、「[SQL Database serverless (preview) (SQL Database サーバーレス (プレビュー))](sql-database-serverless.md)」を参照してください。|
+|マネージド インスタンスでのタイム ゾーンのサポートの一般提供リリース |詳細については、「[Azure SQL Database Managed Instance のタイム ゾーン](sql-database-managed-instance-timezone.md)」を参照してください。|
+|マネージド インスタンスでのインスタンスの照合順序の一般提供リリース |詳しくは、「[PowerShell と Azure Resource Manager テンプレートを使用して Azure SQL Database にマネージド インスタンスを作成する](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)」をご覧ください。|
 | 仮想コアベースの購入モデルを使用するデータベースのトランザクション ログ レートおよびターゲット IOPS が向上| 詳細については、[仮想コアベースの購入モデルを使用した単一データベースに対するリソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases)に関するページ、および [DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases)を参照してください。
 | &nbsp; |
 

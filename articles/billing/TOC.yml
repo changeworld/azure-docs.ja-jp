@@ -87,11 +87,11 @@
               href: billing-reservation-discount-app-service-isolated-stamp.md
             - name: Azure ソフトウェア プラン
               href: billing-understand-suse-reservation-charges.md
-        - name: 含まれないソフトウェアのコスト
+        - name: 含まれない Windows と SQL のコスト
           href: billing-reserved-instance-windows-software-costs.md
-        - name: 個々のサブスクリプションの使用状況
+        - name: 個々のサブスクリプションの利用状況データ
           href: billing-understand-reserved-instance-usage.md
-        - name: エンタープライズの場合の使用量
+        - name: 企業顧客の利用状況データ
           href: billing-understand-reserved-instance-usage-ea.md
         - name: 予約の交換と返金
           href: billing-azure-reservations-self-service-exchange-and-refund.md

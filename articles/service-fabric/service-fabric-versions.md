@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/24/2019
+ms.date: 06/10/2019
 ms.author: aljo
-ms.openlocfilehash: 606b14fba093b6ec8039c646a49bc3bf7d24eb51
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 8a548bce6da8b3bae004b0be4f6e8f09c9894025
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66296781"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67060346"
 ---
 # <a name="supported-service-fabric-versions"></a>サポートされている Service Fabric のバージョン
 
@@ -36,7 +36,7 @@ ms.locfileid: "66296781"
 
 | クラスター内の Service Fabric ランタイム | クラスター バージョンから直接アップグレードできる |互換性のある SDK または NuGet パッケージのバージョン | サポート終了 |
 | --- | --- |--- | --- |
-| 5.3.121 より前のすべてのクラスター バージョン | 5.1.158.* |バージョン 2.3 以前 |2017 年 1 月 20 日 |
+| 5\.3.121 より前のすべてのクラスター バージョン | 5.1.158.* |バージョン 2.3 以前 |2017 年 1 月 20 日 |
 | 5.3.* | 5.1.158.* |バージョン 2.3 以前 |2017 年 2 月 24 日 |
 | 5.4.* | 5.1.158.* |バージョン 2.4 以前 |2017 年 5 月 10 日       |
 | 5.5.* | 5.4.164.* |バージョン 2.5 以前 |2017 年 8 月 10 日    |
@@ -46,7 +46,8 @@ ms.locfileid: "66296781"
 | 6.1.* | 5.7.221.* |バージョン 3.0 以前 |2018 年 7 月 15 日      |
 | 6.2.* | 6.0.232.* |バージョン 3.1 以前 |2018 年 10 月 26 日   |
 | 6.3.* | 6.1.480.* |バージョン 3.2 以前 |2019 年 3 月 31 日  |
-| 6.4.* | 6.2.301.* |バージョン 3.3 以前 |最新バージョンのため、終了日なし |
+| 6.4.* | 6.2.301.* |バージョン 3.3 以前 |2019 年 9 月 15 日 |
+| 6.5.* | 6.4.617.* |バージョン 3.4 以前 |最新バージョンのため、終了日なし |
 
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 
@@ -103,3 +104,4 @@ ms.locfileid: "66296781"
 | 6.4 CU5 | 6.4.654.9590 | 6.4.649.1 |
 | 6.4 CU6 | 6.4.658.9590 | NA |
 | 6.4 CU7 | 6.4.664.9590 | 6.4.661.1 |
+| 6.5 RTO | 6.5.639.9590 | 6.5.435.1 |

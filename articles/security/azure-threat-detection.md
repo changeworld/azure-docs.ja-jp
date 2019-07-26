@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 2a6a0e6219a45821e2a4416a4e563aa6edb86eba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245256"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127166"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
 
@@ -37,7 +37,7 @@ Identity Protection ではアダプティブな機械学習アルゴリズムと
 
 Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 リスク イベントを基にして、Identity Protection では各ユーザーのユーザー リスク レベルを計算します。これにより、リスク ベースのポリシーを構成して組織の ID を自動的に保護することができます。
 
-これらのリスクに基づくポリシーと、Azure Active Directory および [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) によって提供される他の[条件付きアクセス コントロール](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)により、自動的にブロックを行ったり、パスワードのリセットや多要素認証の適用などのアダプティブな修復アクションを提供できます。
+これらのリスクに基づくポリシーと、Azure Active Directory および [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) によって提供される他の[条件付きアクセス コントロール](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)により、パスワードのリセットや多要素認証の適用などのアダプティブ修復アクションを自動的にブロックまたは提供できます。
 
 ### <a name="identity-protection-capabilities"></a>Identity Protection の機能
 
@@ -95,7 +95,7 @@ Log Analytics の [セキュリティおよび監査] ダッシュボードは�
 
 -   **注目に値する問題**: アクティブな問題の数と問題の重要度をすばやく特定できます。
 
--   **検出 (プレビュー)**: リソースに対して攻撃が発生したときにセキュリティ アラートを表示することで、攻撃パターンを特定できます。
+-   **検出 (プレビュー)** : リソースに対して攻撃が発生したときにセキュリティ アラートを表示することで、攻撃パターンを特定できます。
 
 -   **脅威インテリジェンス**: 悪意のあるアウトバウンド IP トラフィックを持つサーバーの総数、悪意のある脅威の種類、IP の場所のマップを表示することで、攻撃パターンを特定できます。
 

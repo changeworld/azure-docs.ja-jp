@@ -398,6 +398,8 @@
               items:
                 - name: アクセス制御
                   href: app/resources-roles-access-control.md
+                - name: IP アドレスの収集
+                  href: app/ip-collection.md
                 - name: サンプリング
                   displayname: 'adaptive sampling, fixed rate sample, fixed sampling, ingestion sampling'
                   href: app/sampling.md

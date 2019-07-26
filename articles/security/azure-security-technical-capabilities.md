@@ -1,6 +1,6 @@
 ---
-title: Azure セキュリティの技術的な機能 | Microsoft Docs
-description: クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。
+title: Azure でのセキュリティの技術的な機能 | Microsoft Azure
+description: クラウド内のデータ、リソース、およびアプリケーションの保護に役立つ、Azure でのセキュリティ サービスの概要。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: c904d8306c145bad57ca7d77b139a2ad6d216b0b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: c28c87339bbfda7cc47e329c8fe6cebdee4a7843
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500255"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127184"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
-
-Azure の現在の利用者と今後の利用予定者が、Azure プラットフォーム内やその周辺で提供されるさまざまなセキュリティ関連機能について理解し、使用できるように、マイクロソフトは一連のホワイト ペーパー、セキュリティ概要、ベスト プラクティス、およびチェックリストを作成しました。 このトピックの内容は広範囲かつ詳細であることから定期的に更新されています。 このドキュメントは、以下の要約のセクションで概要を示している一連の内容の一部です。 この Azure セキュリティ シリーズについて詳しくは、(URL) をご覧ください。
+この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つセキュリティ サービスの概要を提供します。
 
 ## <a name="azure-platform"></a>Azure プラットフォーム
 
@@ -41,29 +40,19 @@ Microsoft Azure では、次のことを行うことができます。
 
 - ビジネスを保護する。
 
-## <a name="scope"></a>Scope (スコープ)
+## <a name="security-technical-capabilities-to-fulfil-your-responsibility"></a>お客様の責任を果たすためのセキュリティの技術的な機能
 
-このホワイトペーパーは主に、セキュリティや [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction)、[Microsoft Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)、[Microsoft Azure の仮想マシン モデル](https://docs.microsoft.com/azure/virtual-machines/)といった Microsoft Azure のコア コンポーネントをサポートする機能、およびそれらをすべて管理するツールやインフラストラクチャについて取り上げます。 このホワイトペーパーは、お客様のデータのセキュリティやプライバシーを保護する役割を担う、Microsoft Azure の技術的な機能に焦点を当てます。
-
-この責任共有モデルを理解することは、クラウドへの移行を進めているお客様にとって重要です。 クラウド プロバイダーはセキュリティやコンプライアンスの取り組みにおいて多大なメリットを提供しますが、これらの利点はお客様からユーザー、アプリケーション、およびサービス内容を保護する責務を解除するわけではありません。
-
-IaaS ソリューションにおいて、お客様はオペレーティング システム、ネットワーク構成、アプリケーション、ID、クライアント、およびデータのセキュリティを確保および管理する責任や共有責任を負っています。  IaaS デプロイメント上に構築されている PaaS ソリューションにおいても、お客様はアプリケーション、ID、クライアント、およびデータのセキュリティを確保および管理する責任や共有責任を負っています。 SaaS ソリューションにおいてもなお、お客様には引き続き責任があります。 データが正しく分類されていることを確認する必要があり、ユーザーおよびエンドポイント デバイスを管理する責任を共有します。
-
-このドキュメントは、Azure Web Sites、Azure Active Directory、HDInsight、Media Services などの Microsoft Azure プラットフォームの関連コンポーネント、およびコア コンポーネントの上の層にある他のサービスの詳細については取り上げません。 一般的な情報は最低限のものしか提供されていませんが、読者はマイクロソフトが提供およびこのホワイトペーパーからリンクされている他の参考資料で説明されている Azure の基本概念を理解していると見なされます。
-
-## <a name="available-security-technical-capabilities-to-fulfil-user-customer-responsibility---big-picture"></a>ユーザー (お客様) が責任を満たすために使用できるセキュリティの技術的な機能 - 全体像
-
-Microsoft Azure には、お客様がセキュリティ、プライバシー、およびコンプライアンスのニーズを満たすのに役立つサービスが用意されています。 次の図は、ユーザーが業界標準に基づいてセキュリティで保護およびコンプライアンスに準拠しているアプリケーション インフラストラクチャを構築するために使用できる、各種 Azure サービスについて説明するのに役立ちます。
+Microsoft Azure には、お客様がセキュリティ、プライバシー、およびコンプライアンスのニーズを満たす上で役立つサービスが用意されています。 次の図は、業界標準に基づいて、セキュリティで保護されたコンプライアンス準拠のアプリケーション インフラストラクチャを構築するために利用できるさまざまな Azure サービスの理解に役立ちます。
 
 ![セキュリティの技術的な機能 - 全体像](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig1.png)
 
-## <a name="manage-and-control-identity-and-user-access-protect"></a>ID とユーザーのアクセスを管理および制御する (保護)
+## <a name="manage-and-control-identity-and-user-access"></a>ID とユーザー アクセスの管理と制御
 
 Azure を使用すると、ユーザー ID や資格情報を管理し、アクセスを制御してビジネスおよび個人の情報を保護するのに役立ちます。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、他要素認証や条件付きアクセスポリシーなどの追加レベルの検証を可能にします。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。 [Azure Active Directory Premium](https://docs.microsoft.com/azure/active-directory/active-directory-editions) は、何千ものクラウドへのシングル サインオン (SaaS) アプリケーション、およびオンプレミスで実行する Web アプリケーションへのアクセスを提供します。
+Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、多要素認証や条件付きアクセス ポリシーなどの追加レベルの検証を可能にします。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。 [Azure Active Directory Premium](https://docs.microsoft.com/azure/active-directory/active-directory-editions) は、何千ものクラウド アプリへのシングル サインオン、およびオンプレミスで実行する Web アプリへのアクセスを提供します。
 
 Azure Active Directory (Azure AD) のセキュリティ上の利点は次のとおりです。
 
@@ -75,7 +64,7 @@ Azure Active Directory (Azure AD) のセキュリティ上の利点は次のと�
 
 - Azure AD アプリケーション プロキシを通じてオンプレミス Web アプリケーションへの安全なリモート アクセスをプロビジョニングする。
 
-[Azure Active Directory ポータル](https://aad.portal.azure.com/)を Azure Portal の一部として使用できます。 このダッシュボードから組織の状態の概要を確認し、ディレクトリ、ユーザー、またはアプリケーションのアクセスを簡単に管理できます。
+[Azure Active Directory ポータル](https://aad.portal.azure.com/)は、Azure portal の一部として使用できます。 このダッシュボードから組織の状態の概要を確認し、ディレクトリ、ユーザー、またはアプリケーションのアクセスを簡単に管理できます。
 
 ![Azure Active Directory](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
@@ -99,7 +88,7 @@ Azure ID 管理のコア機能は次のとおりです。
 
 [シングル サインオン (SSO)](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) とは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
 
-多くの組織では、エンド ユーザーの生産性向上のため、Office 365、Box、Salesforce などのサービスとしてのソフトウェア (SaaS) アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成し、更新する必要がありました。さらに、ユーザーは、各 SaaS アプリケーションのパスワードを覚える必要がありました。
+多くの組織は、エンド ユーザーの生産性向上に関して、Office 365、Box、Salesforce などのサービスとしてのソフトウェア (SaaS) アプリケーションに依存しています。 従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成し、更新する必要がありました。さらに、ユーザーは、各 SaaS アプリケーションのパスワードを覚える必要がありました。
 
 [Azure AD はオンプレミスの Active Directory をクラウドに拡張](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)して、ユーザーがプライマリ組織アカウントを使用してドメイン参加デバイスおよび会社のリソースにサインインするだけでなく、それぞれの業務に必要なすべての Web アプリケーションおよび SaaS アプリケーションにもサインインできるようにします。
 
@@ -107,7 +96,7 @@ Azure ID 管理のコア機能は次のとおりです。
 
 #### <a name="multi-factor-authentication"></a>多要素認証
 
-[Azure Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な 2 つ目のセキュリティ レイヤーを追加する認証方法です。 MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを[効果的に保護する](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)ことができます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OAuth トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
+[Azure Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) は、複数の検証方法の使用を要求し、ユーザーのサインインとトランザクションに、重要な第 2 のセキュリティ層を追加する認証方法です。 MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを[効果的に保護する](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)ことができます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OAuth トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
 
 #### <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>セキュリティの監視、アラート、および機械学習ベースのレポート
 
@@ -117,11 +106,11 @@ Azure ID 管理のコア機能は次のとおりです。
 
 - 異常レポート: 異常と考えられるサインイン イベントが含まれます。 この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
 
-- 統合アプリケーション レポート – 組織内のクラウド アプリケーションの使用状況を明らかにします。 Azure Active Directory は、何千ものクラウド アプリケーションとの統合を提供します。
+- 統合アプリケーション レポート - 組織内でのクラウド アプリケーションの使用方法に関する分析情報を提供します。 Azure Active Directory は、何千ものクラウド アプリケーションとの統合を提供します。
 
 - エラー レポート – 外部アプリケーションにアカウントをプロビジョニングするときに発生することがあるエラーを示します。
 
-- ユーザー固有レポート – 特定のユーザーのデバイス/サインイン アクティビティ データを示します。
+- ユーザー固有レポート - 特定のユーザーのデバイスおよびサインイン アクティビティのデータを表示します。
 
 - アクティビティ ログ: 過去 24 時間、過去 7 日間、または過去 30 日間のすべての監査イベントの記録、グループのアクティビティの変更、およびパスワードのリセットと登録のアクティビティが含まれます。
 
@@ -135,7 +124,7 @@ Azure Active Directory B2C を使用すると、コンシューマーは、既�
 
 #### <a name="device-registration"></a>デバイス登録
 
-[Azure AD Device Registration](https://docs.microsoft.com/azure/active-directory/device-management-introduction) は、デバイスに基づいて[条件付きでアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup)を許可するというシナリオの基礎となる機能です。 デバイスが登録されると、ユーザーがサインインしたときにデバイスを認証するために使用される ID が、Azure AD のデバイス登録によって指定されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
+[Azure AD device Registration](https://docs.microsoft.com/azure/active-directory/device-management-introduction) は、デバイスに基づいて[条件付きでアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup)を許可するというシナリオの基礎となる機能です。 デバイスが登録されると、ユーザーがサインインしたときにデバイスを認証するために使用される ID が、Azure AD のデバイス登録によって指定されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
 
 Intune などの[モバイル デバイス管理 (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) ソリューションと組み合わせて使用すると、Azure Active Directory のデバイスの属性は、デバイスに関する情報が追加されて更新されます。 これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。
 
@@ -159,7 +148,7 @@ Azure AD Privileged Identity Management では、次のことが可能です。
 
 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) は、リスク イベントや組織の ID に影響する潜在的な脆弱性に関する統合ビューを提供するセキュリティ サービスです。 Identity Protection は、既存の Azure Active Directory 異常検出機能 (Azure AD の異常アクティビティ レポートで利用可能) を利用し、リアルタイムで異常を検出できる新しいリスク イベントの種類が導入されています。
 
-## <a name="secured-resource-access-in-azure"></a>Azure でのセキュリティが保護されたリソース アクセス
+## <a name="secure-resource-access"></a>セキュリティで保護されたリソース アクセス
 
 Azure のアクセス制御では、最初に課金に注目します。 [Azure アカウント センター](https://account.windowsazure.com/subscriptions)からアクセスされる、Azure アカウントの所有者は、アカウント管理者 (AA) です。 サブスクリプションは課金用のコンテナーですが、セキュリティの境界としても機能します。各サブスクリプションはサービス管理者 (SA) を有し、SA は Azure Portal を使ってそのサブスクリプションの Azure リソースを追加、削除、変更することができます。 新しいサブスクリプションの既定の SA は AA ですが、AA は Azure アカウント センターで SA を変更できます。
 
@@ -175,7 +164,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 
 ![Azure でのセキュリティが確保されたリソース アクセス (RBAC)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
-## <a name="azure-data-security-and-encryption-protect"></a>Azure のデータ セキュリティと暗号化 (保護)
+## <a name="data-security-and-encryption"></a>データ セキュリティと暗号化
 
 クラウドにおけるデータ保護で重要なポイントの 1 つは、データが置かれうる状態と、その状態でどのような制御を使用できるのかを把握することです。 Azure のデータ セキュリティと暗号化のベスト プラクティスでは、次のデータの状態に関する推奨事項が定められています。
 
@@ -199,12 +188,12 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 
 **データを保存するすべての場所を特定する**
 
-保存データの暗号化の目的は、すべてのデータを暗号化することです。 これにより、重要なデータや保持されているすべての場所が失われる可能性がなくなります。 アプリケーションによって格納されたすべてのデータを列挙します。 
+保存時の暗号化の目標は、すべてのデータを暗号化することです。 これにより、重要なデータや保持されているすべての場所が失われる可能性がなくなります。 アプリケーションによって格納されたすべてのデータを列挙します。
 
-> [!Note] 
+> [!Note]
 > "アプリケーション データ" や "PII" だけでなく、アカウント メタデータ (サブスクリプション マッピング、コントラクト情報、PII) などのアプリケーションに関連するすべてのデータが対象です。
 
-データの格納に使用しているストアを検討します。 例: 
+データの格納に使用しているストアを検討します。 例:
 
 - 外部ストレージ (例: SQL Azure、Document DB、HDInsights、Data Lake など)
 
@@ -214,7 +203,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 
 ### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>Azure で既存の保存データの暗号化サポートを活用する
 
-使用する各ストアで、既存の保存データの暗号化サポートを活用します。
+使用するストアごとに、既存の保存時の暗号化サポートを活用します。
 
 - Azure Storage:[保存データに対する Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption)に関するページを参照してください
 
@@ -288,10 +277,10 @@ Azure RMS の導入を計画するときは、次の準備を行うことをお�
 > [!Note]
 > Azure RMS の詳細については、[Azure Rights Management の概要](https://technet.microsoft.com/library/jj585016.aspx)に関するページをご覧ください。
 
-## <a name="secure-your-application-protect"></a>アプリケーションをセキュリティで保護する (保護)
+## <a name="secure-your-application"></a>アプリケーションをセキュリティで保護する
 アプリケーションが実行されるインフラストラクチャとプラットフォームをセキュリティで保護することは Azure の役割ですが、アプリケーション自体をセキュリティで保護することはユーザーの役割です。 つまり、ユーザーは、アプリケーションのコードとコンテンツを安全な方法で開発、デプロイ、管理する必要があります。 これが実現されなければ、アプリケーションのコードまたはコンテンツは、脅威に対して脆弱なままになる可能性があります。
 
-### <a name="web-application-firewall-waf"></a>Web アプリケーション ファイアウォール (WAF)
+### <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 [Web アプリケーション ファイアウォール (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) の機能です。
 
 Web アプリケーション ファイアウォールは、[OWASP コア ルール セット](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 または 2.2.9 の規則に基づいています。 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 アプリケーション コードでこのような攻撃を防ぐことは困難な場合があり、厳格な保守、パッチの適用、アプリケーション トポロジの複数のレイヤーの監視が必要になることもあります。 Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、アプリケーション管理者にとっては侵入の脅威からより確実に保護されるようになります。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールに対応したアプリケーション ゲートウェイに簡単に変換できます。
@@ -343,7 +332,7 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 Azure App Service では、Azure の Cloud Services および Virtual Machines で使用されるのと同じマルウェア対策ソリューションを使用します。 詳しくは、[マルウェア対策についてのドキュメント](https://docs.microsoft.com/azure/security/azure-security-antimalware)をご覧ください。
 
-## <a name="secure-your-network-protect"></a>ネットワークをセキュリティで保護する (保護)
+## <a name="secure-your-network"></a>ネットワークをセキュリティで保護する
 Microsoft Azure には、アプリケーションとサービスの接続要件をサポートする堅牢なネットワーク インフラストラクチャが組み込まれています。 ネットワーク接続は、Azure に配置されているリソース間、オンプレミスのリソースと Azure でホストされているリソース間、インターネットと Azure 間で可能です。
 
 [Azure のネットワーク インフラストラクチャ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-networking-guidelines)では、[仮想ネットワーク (VNet)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 特定のサブスクリプション専用に Azure クラウド ネットワークが論理的に分離されています。 VNet は、オンプレミス ネットワークに接続できます。
@@ -358,7 +347,7 @@ Azure ネットワークは、Azure Virtual Network 上のネットワーク ト
 
 Azure は [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) を使用してオンプレミス ネットワークおよび Azure Virtual Network への専用の WAN リンクの接続をサポートします。 Azure とユーザー サイト間のリンクは、パブリック インターネットを経由しない専用接続を使用します。 Azure アプリケーションが複数のデータセンターで実行されている場合は、[Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) を使用して、アプリケーションのインスタンスにユーザーからの要求をインテリジェントにルーティングできます。 また、サービスがインターネットからアクセス可能な場合、Azure 内で実行されていないサービスへトラフィックをルーティングすることもできます。
 
-## <a name="virtual-machine-security-protect"></a>仮想マシンのセキュリティ (保護)
+## <a name="virtual-machine-security"></a>仮想マシンのセキュリティ
 
 [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/) を使用すると、さまざまなコンピューティング ソリューションを俊敏にデプロイできます。 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP、Azure BizTalk Services に対応しており、ほぼすべてのオペレーティング システムですべてのワークロード、すべての言語をデプロイできます。
 
@@ -370,7 +359,7 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧の調整に役立ちます。これにより、1 次拠点がダウンした場合でも 2 次拠点からワークロードとアプリを利用できます。
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist-protect"></a>コンプライアンスを確保する: クラウド サービス向けデリジェンス チェックリスト (保護)
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist"></a>コンプライアンスを確保する: クラウド サービス向けデュー デリジェンス チェックリスト
 
 マイクロソフトは、クラウドへの移行を検討している組織がデリジェンスを訓練するのに役立つ、[Cloud Services 向けデュー デリジェンス チェックリスト](https://aka.ms/cloudchecklist.download)を作成しました。 民間企業から行政機関、非営利組織などの公的機関まで、あらゆる規模および種類の組織の構造体を提供し、自社のパフォーマンス、サービス、データ管理、およびガバナンス目標や要件を特定できます。 これにより、異なるクラウド サービス プロバイダーのサービスを比較し、最終的なクラウド サービス契約の基礎を築くことができます。
 
@@ -390,7 +379,7 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 - 同じ用語、定義、メトリック、およびサービスを使用した一貫したセットの質問を各プロバイダー用に用意し、異なるクラウド サービス プロバイダーからのオファリングを比較するプロセスを簡略化する。
 
-## <a name="azure-infrastructure-and-application-security-validation-detect"></a>Azure インフラストラクチャとアプリケーション セキュリティの検証 (検出)
+## <a name="azure-infrastructure-and-application-security-validation"></a>Azure インフラストラクチャとアプリケーションのセキュリティの検証
 
 [Azure で運用可能なセキュリティ](https://docs.microsoft.com/azure/security/azure-operational-security)とは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。
 

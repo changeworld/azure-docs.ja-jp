@@ -255,6 +255,8 @@
               href: devtest-lab-guidance-prescriptive-adoption.md
             - name: 参照アーキテクチャ
               href: devtest-lab-reference-architecture.md
+            - name: 概念実証の提供
+              href: deliver-proof-concept.md
             - name: DevTest Labs デプロイのスケールアップ
               href: devtest-lab-guidance-scale.md
             - name: DevTest Labs の実装を調整する

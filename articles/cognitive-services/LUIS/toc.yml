@@ -321,6 +321,18 @@
     - name: 事前構築済みのドメインのリファレンス
       href: luis-reference-prebuilt-domains.md
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
+    - name: カスタム エンティティのリファレンス
+      items:
+        - name: 複合エンティティ
+          href: reference-entity-composite.md
+        - name: リスト エンティティ
+          href: reference-entity-list.md
+        - name: Pattern.any エンティティ
+          href: reference-entity-pattern-any.md
+        - name: 正規表現エンティティ
+          href: reference-entity-regular-expression.md
+        - name: シンプル エンティティ
+          href: reference-entity-simple.md
     - name: Azure CLI
       href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
     - name: Azure RM PowerShell

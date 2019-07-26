@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 2a669f5b46db4d5de7d1d6863b94e6c117667aee
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2b57ec7727e8f5b648bcb97e5fae26c63724411c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153238"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67127208"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 この記事では、Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスについて説明します。 このベスト プラクティスは、[Azure AD](../active-directory/fundamentals/active-directory-whatis.md) に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -143,7 +143,7 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 2 段階認証を有効にするオプションと利点を次に示します。
 
 **オプション 1**:[ユーザーの状態を変更することで Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-userstates.md)。   
-**利点**:2 段階認証を要求するための従来の方法です。 これは、[クラウド内の Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md) の両方に対応します。 この方法を使用すると、ユーザーはサインインする際に毎回 2 段階認証が求められるようになります。また、この方法は条件付きアクセス ポリシーをオーバーライドします。
+**利点**:2 段階認証を要求するための従来の方法です。 これは、[クラウド内の Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md) の両方に対応します。 この方法を使用すると、ユーザーはサインインするたびに 2 段階認証を実行するよう求められ、条件付きアクセス ポリシーがオーバーライドされます。
 
 Multi-factor Authentication を有効にする必要がある場合を判断するには、「[所属する組織に適しているのはどちらのバージョンの Azure MFA であるかを確認しましょう](../active-directory/authentication/concept-mfa-whichversion.md)」をご覧ください。
 
