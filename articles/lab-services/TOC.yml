@@ -307,6 +307,8 @@
           href: 'https://azure.microsoft.com/pricing/details/lab-services/'
         - name: スタック オーバーフロー
           href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
+        - name: よく寄せられる質問
+          href: classroom-labs/classroom-labs-faq.md
     - name: DevTest Labs
       items:
         - name: Azure の更新情報
