@@ -271,7 +271,7 @@ Jenkins パイプラインの構成と Jenkinsfile では、CI パイプライ�
 
 ![Jenkins パイプラインのフロー](media/tutorial-jenkins-dev-spaces/jenkins-pipeline-flow.png)
 
-1. https://github.com/azure-devops/mywebapi から、変更されたバージョンの *mywebapi* プロジェクトをダウンロードします。 このプロジェクトには、*Jenkinsfile*、*Dockerfile*、Helm チャートなど、パイプラインの作成に必要ないくつかのファイルが含まれています。
+1. [https://github.com/azure-devops/mywebapi](https://github.com/azure-devops/mywebapi ) から、変更されたバージョンの *mywebapi* プロジェクトをダウンロードします。 このプロジェクトには、*Jenkinsfile*、*Dockerfile*、Helm チャートなど、パイプラインの作成に必要ないくつかのファイルが含まれています。
 
 2. Jenkins にログインします。 左側のメニューで **[Add Item]\(項目の追加\)** を選択します。
 
