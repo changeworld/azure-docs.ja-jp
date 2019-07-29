@@ -28,7 +28,7 @@ ms.locfileid: "68466837"
 
 ### <a name="discover-unprotected-azure-vms"></a>保護されていない Azure VM を検出する
 
-最初に、コンテナーが Azure VM を識別できる必要があります。 これは、[refresh 操作](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 これは、現在のサブスクリプション内で保護されていないすべての VM の最新の一覧を取得し、それらが "キャッシュ" されるようにする、非同期の *POST* 操作です。 VM が ''キャッシュ" されると、Recovery Services は VM にアクセスし、それを保護できるようになります。
+最初に、コンテナーが Azure VM を識別できる必要があります。 これは、[refresh 操作](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 これは、現在のサブスクリプション内で保護されていない全ての VM の最新の一覧を取得し、それらが "キャッシュ" されるようにする非同期の *POST* 操作です。 VM が "キャッシュ" されると、Recovery Services は VM にアクセスし、それを保護できるようになります。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
