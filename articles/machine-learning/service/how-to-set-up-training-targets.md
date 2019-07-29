@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b35ef5ca3aaa7ad4169f99e2830ebea76d2759e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 267872f2036a0e697f4b2da65064805a0cfbd2b7
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074939"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358740"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する 
 
@@ -251,19 +251,23 @@ Azure Batch は、大規模な並列コンピューティングやハイパフ�
 from azureml.core.compute import ComputeTarget, BatchCompute
 from azureml.exceptions import ComputeTargetException
 
-batch_compute_name = 'mybatchcompute' # Name to associate with new compute in workspace
+# Name to associate with new compute in workspace
+batch_compute_name = 'mybatchcompute'
 
 # Batch account details needed to attach as compute to workspace
-batch_account_name = "<batch_account_name>" # Name of the Batch account
-batch_resource_group = "<batch_resource_group>" # Name of the resource group which contains this account
+batch_account_name = "<batch_account_name>"  # Name of the Batch account
+# Name of the resource group which contains this account
+batch_resource_group = "<batch_resource_group>"
 
 try:
     # check if the compute is already attached
     batch_compute = BatchCompute(ws, batch_compute_name)
 except ComputeTargetException:
     print('Attaching Batch compute...')
-    provisioning_config = BatchCompute.attach_configuration(resource_group=batch_resource_group, account_name=batch_account_name)
-    batch_compute = ComputeTarget.attach(ws, batch_compute_name, provisioning_config)
+    provisioning_config = BatchCompute.attach_configuration(
+        resource_group=batch_resource_group, account_name=batch_account_name)
+    batch_compute = ComputeTarget.attach(
+        ws, batch_compute_name, provisioning_config)
     batch_compute.wait_for_completion()
     print("Provisioning state:{}".format(batch_compute.provisioning_state))
     print("Provisioning errors:{}".format(batch_compute.provisioning_errors))

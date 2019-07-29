@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: e12cef052db6aabad94b47283eda11f60f3b2b13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49195efa54c8e6eca9186a9e2fc33da84ff34413
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063916"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625381"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Custom Speech 用のモデルをトレーニングする
 
@@ -25,12 +25,11 @@ Microsoft のベースライン モデルと、作成する予定のカスタム
 
 モデルで認識の問題が発生している場合は、追加のトレーニングに "人間" とラベルが付いた文字起こしと関連データを使用すると、正確性が向上します。 この表を使用して、問題の対処に使用するデータセットを決定します。
 
-| ユース ケース | データ型 | データの数量 |
-|----------|-----------|---------------|
-| 固有名称が誤認識されている | 関連テキスト (文/発話) | 10 MB から 500 MB |
-| アクセントのために単語が誤認識されている | 関連テキスト (発音) | 誤認識された単語を指定する |
-| 一般的な単語が削除または誤認識されている | "オーディオ + 人間" とラベルが付いたトランスクリプト | 10 から 1,000 の文字起こし時間 |
-
+| ユース ケース | データ型 |
+|----------|-----------|
+| 医療用語や IT 用語などの業界固有の語彙や文法に対する認識精度を向上させる | 関連テキスト (文/発話) |
+| 製品名や頭字語など、発音が標準ではない単語または用語の表音および表示形式を定義する。 | 関連テキスト (発音) |
+| 読み上げのスタイル、アクセント、または特定の背景ノイズの認識精度を向上させる | "オーディオ + 人間" とラベルが付いたトランスクリプト |
 > [!IMPORTANT]
 > データ セットをアップロードしていない場合は、[データの準備とテスト](how-to-custom-speech-test-data.md)に関する記事を参照してください。 このドキュメントでは、データをアップロードするための手順と、高品質のデータセットを作成するためのガイドラインについて説明します。
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.openlocfilehash: 0122f952e586d0535fc2e482c7b78266f8809272
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/25/2019
 ms.locfileid: "67062442"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Azure Database for MySQL での監視

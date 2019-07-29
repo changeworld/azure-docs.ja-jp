@@ -7,25 +7,26 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 63aa93e72d76d430fc7e026478d91e496f27eae6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82c1be335bfd39d641f0203116e68a4cb4c0a674
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055120"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654225"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Microsoft アカウントでのサインアップおよびサインインを設定する
 
 ## <a name="create-a-microsoft-account-application"></a>Microsoft アカウント アプリケーションを作成する
 
-Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directory-b2c-reference-oidc.md)として Microsoft アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ Microsoft アカウントを持っていない場合は、[https://www.live.com/](https://www.live.com/) で取得できます。
+Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directory-b2c-reference-oidc.md)として Microsoft アカウントを使用するには、Azure AD テナントにアプリケーションを作成する必要があります。 Azure AD テナントは、Azure AD B2C テナントと同じものではありません。 まだ Microsoft アカウントを持っていない場合は、[https://www.live.com/](https://www.live.com/) で取得できます。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. お使いの Azure AD テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いの Azure AD テナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
-1. **[新規登録]** を選択します
+1. **[新規登録]** を選択します。
 1. アプリケーションの **[名前]** を入力します。 たとえば、 *MSAapp1* です。
 1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** を選択します。 このオプションは、最も広範な Microsoft ID を対象にします。
 

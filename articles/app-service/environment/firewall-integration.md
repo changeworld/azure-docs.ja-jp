@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6dae2d40650b9fdb8df2d3bdb74b2df78639dc11
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b57ac43b02e8630528e7ed3f77f51befa52ed45f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058048"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498467"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -182,6 +182,8 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 |flighting.cp.wd.microsoft.com:443 |
 |dmd.metaservices.microsoft.com:80 |
 |admin.core.windows.net:443 |
+|prod.warmpath.msftcloudes.com:443 |
+|prod.warmpath.msftcloudes.com:80 |
 |azureprofileruploads.blob.core.windows.net:443 |
 |azureprofileruploads2.blob.core.windows.net:443 |
 |azureprofileruploads3.blob.core.windows.net:443 |

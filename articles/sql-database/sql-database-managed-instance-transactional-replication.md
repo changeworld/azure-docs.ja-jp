@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: bcbdd5fd8395cb0a47038595127e9b20118bdf1b
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 1c62fb466774a3599972d6a9cc340cca300eee59
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147705"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67696184"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Azure SQL Database での単一データベース、プールされたデータベース、インスタンス データベースを使用したトランザクション レプリケーション
 
@@ -139,7 +139,7 @@ ms.locfileid: "67147705"
 
 ## <a name="next-steps"></a>次の手順
 
-1. [マネージド インスタンスのトランザクション レプリケーションを構成します](replication-with-sql-database-managed-instance.md)。 
+1. [2 つのマネージド インスタンス間のレプリケーションを構成します](replication-with-sql-database-managed-instance.md)。 
 1. [パブリケーションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
 1. Azure SQL Database サーバー名をサブスクライバーとして (`N'azuresqldbdns.database.windows.net` など)、Azure SQL Database 名を宛先データベースとして (**AdventureWorks** など) 使用して、[プッシュ サブスクリプションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
 

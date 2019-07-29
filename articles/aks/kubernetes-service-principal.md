@@ -2,17 +2,17 @@
 title: Azure Kubernetes Service (AKS) 用のサービス プリンシパル
 description: Azure Kubernetes Service (AKS) のクラスター用の Azure Active Directory サービス プリンシパルを作成して管理する
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: iainfou
-ms.openlocfilehash: 82ceb332ca377da1953908abba3f7c52874b995e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 304b9dae9f3a1e134809d8959a96dc4e3ec0edd3
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066784"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67615104"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -60,7 +60,7 @@ az ad sp create-for-rbac --skip-assignment
 
 ## <a name="specify-a-service-principal-for-an-aks-cluster"></a>AKS クラスター用のサービス プリンシパルを指定する
 
-[az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに既存のサービス プリンシパルを使用するには、`--service-principal` パラメーターと `--client-secret` パラメーターを使用して、[az ad sp create-for-rbac][az-ad-sp-create] コマンドの出力からの `appId` と `password` を指定します。
+[az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに既存のサービス プリンシパルを使用するには、`--service-principal` パラメーターと `--client-secret` パラメーターを使用して、[az ad sp create-for-rbac][az-ad-sp-create] コマンドの出力の `appId` と `password` を指定します。
 
 ```azurecli-interactive
 az aks create \

@@ -1,20 +1,19 @@
 ---
 title: Azure Backup でのシステム状態のバックアップをトラブルシューティングする
 description: システム状態のバックアップに関する問題をトラブルシューティングします。
-services: backup
 author: srinathvasireddy
 manager: sivan
 keywords: バックアップ方法; システム状態のバックアップ
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/09/2019
-ms.author: srinathvasireddy
-ms.openlocfilehash: c9e5645fef952257580d74eb6e11911e2286bd79
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 07/22/2019
+ms.author: srinathv
+ms.openlocfilehash: 8996270acb1525697f29b4251bf4e11d2db62fdf
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165114"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465350"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 

@@ -3,8 +3,8 @@ title: Identity Governance - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory Identity Governance を使用すると、セキュリティや従業員の生産性に対する組織のニーズと、適切なプロセスや可視性とのバランスを取ることができます。
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 04/29/2019
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b4f1563aa0437cd45c297b95a83119318a24624
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f09a8c2f8caae3cbb182cf2dc4621deb95f7e5c
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109591"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499656"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
