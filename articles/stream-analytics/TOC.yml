@@ -148,6 +148,8 @@
               href: stream-analytics-scale-jobs.md
         - name: ML 関数を利用したスケーリング
           href: stream-analytics-scale-with-machine-learning-functions.md
+        - name: 再パーティション分割によるスケーリング
+          href: repartition.md
     - name: 自動化
       items:
         - name: .NET SDK の使用
