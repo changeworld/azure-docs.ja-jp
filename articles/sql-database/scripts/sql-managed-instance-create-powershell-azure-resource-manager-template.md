@@ -10,14 +10,13 @@ ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: e8f59faea80237be2ac0b056db4fb8b95d4ab217
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5a60e8efad41c94deeedd545e6e0c1c96ff04e25
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875350"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569730"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>PowerShell と Azure Resource Manager テンプレートを使用して Azure SQL Database にマネージド インスタンスを作成する
 

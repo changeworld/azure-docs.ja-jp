@@ -10,14 +10,13 @@ ms.topic: sample
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 9da848e9aa093b4e918ed961d58f946b2298954c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9468f5d631dd713c9e131c63de824c5e552178e3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447186"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569923"
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>CLI を使用して単一の SQL データベースを監視し、スケーリングする
 
