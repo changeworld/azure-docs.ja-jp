@@ -100,12 +100,12 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 このクイック スタートでは、マニフェストを使用して、Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。 このマニフェストには、2 つの [Kubernetes デプロイ][kubernetes-deployment]が含まれています (片方は Azure Vote Python サンプル アプリケーション用であり、他方は Redis インスタンス用です)。2 つの Kubernetes Services (Redis インスタンス用の内部サービスと、インターネットから Azure Vote アプリケーションにアクセスするための外部サービス) も作成されます。- one for the sample Azure Vote Python applications, and the other for a Redis instance. Two [Kubernetes Services][kubernetes-service]
+Kubernetes のマニフェスト ファイルでは、どのコンテナー イメージを実行するかなど、クラスターの望ましい状態を定義します。 このクイック スタートでは、マニフェストを使用して、Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。 このマニフェストには、2 つの [Kubernetes デプロイ][kubernetes-deployment]が含まれています (片方は Azure Vote Python サンプル アプリケーション用であり、他方は Redis インスタンス用です)。2 つの Kubernetes Services (Redis インスタンス用の内部サービスと、インターネットから Azure Vote アプリケーションにアクセスするための外部サービス) も作成されます。- one for the sample Azure Vote Python applications, and the other for a Redis instance. Two [Kubernetes Services][kubernetes-service] このクイック スタートでは、アプリケーション マニフェストの作成と AKS クラスターへのデプロイを手動で行います。
 
 > [!TIP]
-> このクイック スタートでは、アプリケーション マニフェストの作成と AKS クラスターへのデプロイを手動で行います。 より現実に即したシナリオでは、[Azure Dev Spaces][azure-dev-spaces] を使用して反復作業を迅速化し、AKS クラスター内で直接コードをデバッグすることができます。 Dev Spaces は、OS プラットフォームと開発環境の垣根を越えて使用でき、チーム内の他のメンバーと連携することができます。
+> より現実に即したシナリオでは、[Azure Dev Spaces][azure-dev-spaces] を使用して反復作業を迅速化し、AKS クラスター内で直接コードをデバッグすることができます。 Dev Spaces は、OS プラットフォームと開発環境の垣根を越えて使用でき、チーム内の他のメンバーと連携することができます。 `azure-vote.yaml` という名前のファイルを作成し、以下の YAML 定義をコピーします。
 
-`azure-vote.yaml` という名前のファイルを作成し、以下の YAML 定義をコピーします。 Azure Cloud Shell を使用する場合は、仮想システムまたは物理システムで作業するときと同じように、`vi` または `nano` を使用してこのファイルを作成できます。
+Azure Cloud Shell を使用する場合は、仮想システムまたは物理システムで作業するときと同じように、`vi` または `nano` を使用してこのファイルを作成できます。 [kubectl apply][kubectl-apply] コマンドを使用してアプリケーションをデプロイし、YAML マニフェストの名前を指定します。
 
 ```yaml
 apiVersion: apps/v1
@@ -192,13 +192,13 @@ spec:
     app: azure-vote-front
 ```
 
-[kubectl apply][kubectl-apply] コマンドを使用してアプリケーションをデプロイし、YAML マニフェストの名前を指定します。
+次の出力例は、正常に作成されたデプロイおよびサービスを示しています。
 
 ```azurecli-interactive
 kubectl apply -f azure-vote.yaml
 ```
 
-次の出力例は、正常に作成されたデプロイおよびサービスを示しています。
+アプリケーションをテストする
 
 ```output
 deployment "azure-vote-back" created
@@ -207,79 +207,79 @@ deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-## <a name="test-the-application"></a>アプリケーションをテストする
+## <a name="test-the-application"></a>アプリケーションが実行されると、Kubernetes サービスによってアプリケーション フロント エンドがインターネットに公開されます。
 
-アプリケーションが実行されると、Kubernetes サービスによってアプリケーション フロント エンドがインターネットに公開されます。 このプロセスが完了するまでに数分かかることがあります。
+このプロセスが完了するまでに数分かかることがあります。 進行状況を監視するには、[kubectl get service][kubectl-get] コマンドを `--watch` 引数と一緒に使用します。
 
-進行状況を監視するには、[kubectl get service][kubectl-get] コマンドを `--watch` 引数と一緒に使用します。
+最初に、*azure-vote-front* サービスの *EXTERNAL-IP* が "*保留中*" として表示されます。
 
 ```azurecli-interactive
 kubectl get service azure-vote-front --watch
 ```
 
-最初に、*azure-vote-front* サービスの *EXTERNAL-IP* が "*保留中*" として表示されます。
+*EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-*EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。 次の出力例は、サービスに割り当てられている有効なパブリック IP アドレスを示しています。
+次の出力例は、サービスに割り当てられている有効なパブリック IP アドレスを示しています。 Azure Vote アプリが動作していることを確認するには、Web ブラウザーを開いてサービスの外部 IP アドレスにアクセスします。
 
 ```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Azure Vote アプリが動作していることを確認するには、Web ブラウザーを開いてサービスの外部 IP アドレスにアクセスします。
+Azure Vote にブラウザーでアクセスしたところ
 
-![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![正常性の監視とログ](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-## <a name="monitor-health-and-logs"></a>正常性の監視とログ
+## <a name="monitor-health-and-logs"></a>AKS クラスターが作成されたとき、クラスター ノードとポッドの両方の正常性メトリックを取得するために、コンテナーに対する Azure Monitor が有効になりました。
 
-AKS クラスターが作成されたとき、クラスター ノードとポッドの両方の正常性メトリックを取得するために、コンテナーに対する Azure Monitor が有効になりました。 これらの正常性メトリックは、Azure portal で利用できます。
+これらの正常性メトリックは、Azure portal で利用できます。 Azure Vote ポッドの現在の状態、アップタイム、およびリソース使用率を確認するには、次の手順を実行します。
 
-Azure Vote ポッドの現在の状態、アップタイム、およびリソース使用率を確認するには、次の手順を実行します。
+Web ブラウザーで、Azure portal[https://portal.azure.com][azure-portal] を開きます。
 
-1. Web ブラウザーで、Azure portal[https://portal.azure.com][azure-portal] を開きます。
 1. リソース グループ (たとえば、*myResourceGroup*) を選択し、次に AKS クラスター (たとえば、*myAKSCluster*) を選択します。
 1. 左側の **[監視]** の下で、 **[Insights]** を選択します
 1. 上部の **[+ フィルターの追加]** を選択します
 1. プロパティとして "*名前空間*" を選択し、 *\<All but kube-system (kube-system 以外のすべて)\>* を選択します
 1. **コンテナー**の表示を選択します。
+1. 次の例に示されているように、*azure-vote-back* コンテナーと *azure-vote-front* コンテナーが表示されます。
 
-次の例に示されているように、*azure-vote-back* コンテナーと *azure-vote-front* コンテナーが表示されます。
+AKS で実行中のコンテナーの正常性を表示する
 
-![AKS で実行中のコンテナーの正常性を表示する](media/kubernetes-walkthrough/monitor-containers.png)
+![`azure-vote-back` ポッドのログを表示するには、**Analytics で表示する**ためのオプションを選択してから、コンテナーの一覧の右側にある **[コンテナー ログの表示]** リンクをクリックします。](media/kubernetes-walkthrough/monitor-containers.png)
 
-`azure-vote-back` ポッドのログを表示するには、**Analytics で表示する**ためのオプションを選択してから、コンテナーの一覧の右側にある **[コンテナー ログの表示]** リンクをクリックします。 これらのログには、コンテナーからの *stdout* ストリームと *stderr* ストリームが含まれます。
+これらのログには、コンテナーからの *stdout* ストリームと *stderr* ストリームが含まれます。 AKS のコンテナー ログを表示する
 
-![AKS のコンテナー ログを表示する](media/kubernetes-walkthrough/monitor-container-logs.png)
+![クラスターを削除する](media/kubernetes-walkthrough/monitor-container-logs.png)
 
-## <a name="delete-the-cluster"></a>クラスターを削除する
+## <a name="delete-the-cluster"></a>クラスターが必要なくなったら、[az group delete][az-group-delete] コマンドを使って、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除してください。
 
-クラスターが必要なくなったら、[az group delete][az-group-delete] コマンドを使って、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除してください。
+クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> クラスターを削除したとき、AKS クラスターで使用される Azure Active Directory サービス プリンシパルは削除されません。 サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。
+> サービス プリンシパルを削除する手順については、[AKS のサービス プリンシパルに関する考慮事項と削除][sp-delete]に関するページを参照してください。 コードの入手
 
-## <a name="get-the-code"></a>コードの入手
+## <a name="get-the-code"></a>このクイック スタートでは、Kubernetes のデプロイを作成するために、事前に作成したコンテナー イメージを使用しました。
 
-このクイック スタートでは、Kubernetes のデプロイを作成するために、事前に作成したコンテナー イメージを使用しました。 関連するアプリケーション コード、Dockerfile、および Kubernetes マニフェスト ファイルは、GitHub で入手できます。
+関連するアプリケーション コード、Dockerfile、および Kubernetes マニフェスト ファイルは、GitHub で入手できます。 次の手順
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>このクイック スタートでは、Kubernetes クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。
 
-このクイック スタートでは、Kubernetes クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。 また、AKS クラスターの [Kubernetes Web ダッシュボードにアクセスする][kubernetes-dashboard]こともできます。
+また、AKS クラスターの [Kubernetes Web ダッシュボードにアクセスする][kubernetes-dashboard]こともできます。 AKS の詳細を参照し、デプロイの例の完全なコードを確認するには、Kubernetes クラスター チュートリアルに進んでください。
 
-AKS の詳細を参照し、デプロイの例の完全なコードを確認するには、Kubernetes クラスター チュートリアルに進んでください。
+[AKS チュートリアル][aks-tutorial]
 
 > [!div class="nextstepaction"]
-> [AKS チュートリアル][aks-tutorial]
+> <bpt id="p1">[</bpt>AKS tutorial<ept id="p1">][aks-tutorial]</ept>
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git

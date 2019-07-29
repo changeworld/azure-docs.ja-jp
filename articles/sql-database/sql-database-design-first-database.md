@@ -8,14 +8,13 @@ ms.topic: tutorial
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: fc3b1cdfee76bbee7676170fa69a1c53a495dc53
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbd009d127eecc4df357fc1073ba4055d13a8b2c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051144"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569019"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>チュートリアル:SSMS を使用して Azure SQL Database 内の単一データベースでリレーショナル データベースを設計する
 

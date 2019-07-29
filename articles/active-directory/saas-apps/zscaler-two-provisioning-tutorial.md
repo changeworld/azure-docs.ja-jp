@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 0147f0bea30a13cea17baab8d40e550c0910a3fa
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e254cae22e3991aebc23188b8947f0e7efd9c5f5
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672832"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515413"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>チュートリアル:Zscaler Two を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -28,8 +28,6 @@ ms.locfileid: "67672832"
 
 > [!NOTE]
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスが実行する内容、しくみについての重要な情報と、よく寄せられる質問への回答については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
->
-> 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Azure 利用規約の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
