@@ -269,7 +269,7 @@
                       href: app/status-monitor-v2-api-get-status.md
                     - name: API Set-ApplicationInsightsMonitoringConfig
                       href: app/status-monitor-v2-api-set-config.md
-                    - name: API Start-ApplicationInsightsMonitoringConfig
+                    - name: API Start-ApplicationInsightsMonitoringTrace
                       href: app/status-monitor-v2-api-start-trace.md
             - name: リソースの作成
               href: app/create-new-resource.md
@@ -308,7 +308,13 @@
               displayname: 'live, quickpulse, quick pulse, live metrics'
               href: app/live-stream.md
             - name: メトリック
-              href: app/metrics-explorer.md
+              items:
+                - name: ログベースのメトリックと事前に集計されたメトリック
+                  href: app/pre-aggregated-metrics-log-metrics.md
+                - name: ログベースのメトリックの定義
+                  href: platform/app-insights-metrics.md
+                - name: クラシック メトリック エクスプローラー
+                  href: app/metrics-explorer.md
             - name: Search
               href: app/diagnostic-search.md
             - name: プロファイラー
@@ -425,8 +431,6 @@
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
                   href: app/configuration-with-applicationinsights-config.md
-                - name: ログベースのメトリックと事前に集計されたメトリック
-                  href: app/pre-aggregated-metrics-log-metrics.md
                 - name: トランザクションの診断
                   href: app/transaction-diagnostics.md
                 - name: カスタム データ ソースを関連付ける
@@ -659,15 +663,13 @@
                 - name: ログでの収集
                   href: platform/diagnostic-logs-stream-log-store.md
                 - name: Azure Storage からの収集
-                  href: platform/collect-azure-metrics-logs.md
+                  href: platform/azure-storage-iis-table.md
                 - name: ストレージへのアーカイブ
                   href: platform/archive-diagnostic-logs.md
                 - name: Event Hubs へのデータのストリーム配信
                   href: platform/diagnostic-logs-stream-event-hubs.md
                 - name: Resource Manager テンプレートを使用した有効化
                   href: platform/diagnostic-logs-stream-template.md
-                - name: サービスのログとメトリック
-                  href: platform/azure-storage-iis-table.md
             - name: Event Hubs へのデータのストリーム配信
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -736,8 +738,8 @@
               href: platform/metrics-getting-started.md
             - name: メトリックス エクスプローラーの高度な機能
               href: platform/metrics-charts.md
-            - name: ログベースのメトリック
-              href: platform/app-insights-metrics.md
+            - name: メトリック グラフの例
+              href: platform/metric-chart-samples.md
             - name: メトリック グラフのトラブルシューティング
               href: platform/metrics-troubleshoot.md
         - name: ログ

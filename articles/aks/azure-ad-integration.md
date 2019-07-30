@@ -2,17 +2,17 @@
 title: Azure Active Directory と Azure Kubernetes Service を統合する
 description: Azure Active Directory 対応の Azure Kubernetes Service (AKS) クラスターを作成する方法
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
-ms.author: iainfou
-ms.openlocfilehash: db166c82e39e9184528fde67ff868229cf9b1d57
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mlearned
+ms.openlocfilehash: 80137023643630e8472a70fcca6cb656aeba7123
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061113"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67616383"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -39,7 +39,7 @@ OpenID Connect について詳しくは、「[OpenID Connect と Azure Active Di
 
 Kubernetes クラスターの内部では、Webhook トークン認証が認証トークンに使用されます。 webhook トークン認証は、AKS クラスターの一部として構成および管理されます。
 
-Webhook トークン認証について詳しくは、Kubernetes のドキュメントの「[Webhook Token Authentication][kubernetes-webhook]」(Webhook トークン認証) セクションをご覧ください。
+Webhook トークン認証について詳しくは、Kubernetes のドキュメントの「[Webhook Token Authentication (Webhook トークン認証)][kubernetes-webhook]」セクションをご覧ください。
 
 AKS クラスターに対して Azure AD 認証を提供するため、2 つの Azure AD アプリケーションが作成されます。 1 つのアプリケーションは、ユーザー認証を提供するサーバー コンポーネントです。 もう 1 つのアプリケーションは、CLI によってユーザーに認証が要求されるときに使用されるクライアント コンポーネントです。 このクライアント アプリケーションでは、クライアントによって提供された資格情報の実際の認証には、サーバー アプリケーションが使われます。
 
@@ -175,7 +175,7 @@ AKS クラスターの作成には数分かかります。
 
 ## <a name="create-an-rbac-binding"></a>RBAC のバインドを作成する
 
-Azure Active Directory アカウントを AKS クラスターで使う前に、ロールのバインドまたはクラスター ロールのバインドを作成する必要があります。 付与するアクセス許可をロールによって定義し、それらをバインドによって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、「[Using RBAC authorization (RBAC 認可の使用)][rbac-authorization]」を参照してください。
+Azure Active Directory アカウントを AKS クラスターで使う前に、ロールのバインドまたはクラスター ロールのバインドを作成する必要があります。 付与するアクセス許可をロールによって定義し、それらをバインドによって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[RBAC 承認の使用][rbac-authorization]に関するページを参照してください。
 
 最初に、[az aks get-credentials][az-aks-get-credentials] コマンドと `--admin` 引数を使って、管理者アクセス権でクラスターにサインインします。
 
@@ -241,7 +241,7 @@ subjects:
 kubectl apply -f rbac-aad-group.yaml
 ```
 
-RBAC を使って Kubernetes クラスターをセキュリティで保護する方法について詳しくは、「[Using RBAC Authorization][rbac-authorization]」(RBAC の承認の使用) をご覧ください。
+RBAC を使って Kubernetes クラスターをセキュリティで保護する方法について詳しくは、「[Using RBAC Authorization (RBAC の承認の使用)][rbac-authorization]」をご覧ください。
 
 ## <a name="access-the-cluster-with-azure-ad"></a>Azure AD でクラスターにアクセスする
 
@@ -279,7 +279,7 @@ error: You must be logged in to the server (Unauthorized)
 
 ## <a name="next-steps"></a>次の手順
 
-Azure AD ユーザーとグループを使用してクラスター リソースへのアクセスを制御するには、「[Control access to cluster resources using role-based access control and Azure AD identities in AKS][azure-ad-rbac]」 (AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセス制御する) を参照してください。
+Azure AD ユーザーとグループを使用してクラスター リソースへのアクセスを制御するには、[AKS でロールベースのアクセス制御と Azure AD の ID を使用してクラスター リソースへのアクセスを制限する][azure-ad-rbac]方法に関するページを参照してください。
 
 Kubernetes クラスターをセキュリティで保護する方法について詳しくは、「[Azure Kubernetes Service (AKS) でのアクセスと ID オプション][rbac-authorization]」をご覧ください。
 
