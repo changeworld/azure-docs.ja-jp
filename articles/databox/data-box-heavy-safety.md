@@ -32,7 +32,7 @@ Data Box を設定および実行しているときに従うべき安全に関�
 | ![危険のアイコン](./media/data-box-heavy-safety/warning-icon.png) **危険!** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
 | ![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) **警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
 | ![警告のアイコン](./media/data-box-heavy-safety/warning-icon.png) **注意!** |回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。 |
-| ![注意のアイコン](./media/data-box-heavy-safety/notice-icon.png) **注意:** |重要だが、危険に関連するものではない情報を示します。 |
+| ![通告のアイコン](./media/data-box-heavy-safety/notice-icon.png) **通告:** |重要だが、危険に関連するものではない情報を示します。 |
 | ![感電のアイコン](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **感電の危険あり** |高電圧。 |
 | ![ヘビー ウェイト アイコン](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **ヘビー ウェイト** | |
 | ![ユーザーによる保守不可能な部品のアイコン](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **ユーザーによる保守不可能な部品** |適切な訓練を受けている場合を除き、触らないでください。 |
