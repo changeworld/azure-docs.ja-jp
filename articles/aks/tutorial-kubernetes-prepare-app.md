@@ -66,7 +66,7 @@ cd azure-voting-app-redis
 docker-compose up -d
 ```
 
-完了したら、[docker images][docker-images] コマンドを使って、作成されたイメージを確認します。 3 つのイメージがダウンロードまたは作成されました。 *azure-vote-front* イメージにはフロントエンド アプリケーションが含まれており、ベースとして `nginx-flask` イメージが使用されます。 `redis` イメージは、Redis インスタンスを起動するために使用されます。
+完了したら、[docker images][docker-images] コマンドを使って、作成されたイメージを確認します。 3 つのイメージがダウンロードまたは作成されていることを確認してください。 *azure-vote-front* イメージにはフロントエンド アプリケーションが含まれており、ベースとして `nginx-flask` イメージが使用されます。 `redis` イメージは、Redis インスタンスを起動するために使用されます。
 
 ```
 $ docker images
