@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5bdd5049b7ddeaac4425734aa6f4d633b08cd3b4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0707f08d7c1447ff9aaae919cabfe1a668b25e3d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057478"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404375"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 
@@ -160,7 +160,7 @@ HDInsight で Azure Virtual Network を使用すると、次のシナリオが�
 - HDInsight を Azure Virtual Network 内のデータ ストアに接続する。
 - インターネット公開されていない Hadoop サービスに直接アクセスする。 たとえば、Kafka Api や HBase Java API にアクセスできます。
 
-HDInsight は、新規または既存の Azure Virtual Network に追加できます。 HDInsight を既存の仮想ネットワークに追加する場合は、既存のネットワーク セキュリティ グループとユーザー定義のルートを更新して、Azure データ センター内の[いくつかの IP アドレス](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)に無制限にアクセスできるようにする必要があります。 また、HDInsight サービスによって使用中の[ポート](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports)へのトラフィックをブロックしないようにしてください。
+HDInsight は、新規または既存の Azure Virtual Network に追加できます。 HDInsight を既存の仮想ネットワークに追加する場合は、既存のネットワーク セキュリティ グループとユーザー定義のルートを更新して、Azure データ センター内の[いくつかの IP アドレス](../hdinsight-management-ip-addresses.md)に無制限にアクセスできるようにする必要があります。 また、HDInsight サービスによって使用中の[ポート](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)へのトラフィックをブロックしないようにしてください。
 
 > [!Note]  
 > HDInsight は強制トンネリングを現在サポートしていません。 強制トンネリングとは、ログ記録と検査を目的として、送信インターネット トラフィックをデバイスに強制的に向かわせるサブネット設定です。 HDInsight をサブネットにインストールする前に強制トンネリングを削除するか、HDInsight 用の新しいサブネットを作成してください。 また、HDInsight は発信ネットワーク接続を制限できません。
@@ -168,7 +168,7 @@ HDInsight は、新規または既存の Azure Virtual Network に追加でき�
 詳細については、次の記事を参照してください。
 
 - [Azure 仮想ネットワークの概要](../../virtual-network/virtual-networks-overview.md)
-- [Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight-extend-hadoop-virtual-network.md)
+- [Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight-plan-virtual-network-deployment.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Azure 仮想ネットワーク サービス エンドポイントを使用して Azure サービスに安全に接続する
 

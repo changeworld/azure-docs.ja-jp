@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a03a778b2a057235b31d02e90e5ce87e9559b38a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f886cb71d4dbc191dae317e8ea72d8c896f37c03
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058562"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442070"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
 
@@ -43,7 +43,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 
 - **グローバルに利用可能** - HDInsight は、他のあらゆるビッグ データ分析サービスよりも多くの[リージョン](https://azure.microsoft.com/regions/services/)で提供されています。 Azure HDInsight は、Azure Government、Azure China、Azure Germany でも提供されており、独自の法令が施行されている地域における企業のニーズに応えます。
 
-- **セキュリティとコンプライアンス** - HDInsight を使用すると、 [Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md)、 [暗号化](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)、 [Azure Active Directory](../domain-joined/apache-domain-joined-introduction.md) との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的な [コンプライアンス基準](https://azure.microsoft.com/overview/trusted-cloud)を満たしています。
+- **セキュリティとコンプライアンス** - HDInsight を使用すると、 [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)、 [暗号化](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)、 [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) との統合によって、企業のデータ資産を保護することができます。 また HDInsight は、業界や行政上の最も一般的な [コンプライアンス基準](https://azure.microsoft.com/overview/trusted-cloud)を満たしています。
 
 - **バージョン管理を簡略化** - Azure HDInsight は Hadoop エコシステム コンポーネントのバージョンを管理し、最新の状態に保持します。 ソフトウェアの更新は、オンプレミスの展開では一般的に複雑なプロセスです。
 

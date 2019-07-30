@@ -5,19 +5,20 @@ services: networking
 documentationcenter: ''
 author: KumudD
 manager: ''
-ms.service: networking
+ms.service: virtual-network
 ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/13/2019
-ms.author: ypitsch,kumud
-ms.openlocfilehash: ecce41878f7579862bba083f8cecf5db3cbde3e6
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.author: kumud
+ms.reviewer: ypitsch
+ms.openlocfilehash: c064a5afee8db0c747273ab1c38c901a6f10ef98
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144148"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876148"
 ---
 # <a name="microsoft-global-network"></a>マイクロソフトのグローバル ネットワーク
 

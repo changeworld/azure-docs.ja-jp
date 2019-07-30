@@ -4,15 +4,15 @@ description: アラート移行ツールのしくみと問題のトラブルシ�
 author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 015000388c5629dbd8ed8833931a809ebd738bd6
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295527"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302257"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>移行ツールの動作の理解
 
@@ -33,7 +33,8 @@ ms.locfileid: "67295527"
 - 仮想マシンのゲスト メトリックに対するクラシック アラート ルール (Windows と Linux の両方)。 この記事の後半の[新しいメトリック アラートでこれらのアラート ルールを再作成するためのガイダンス](#guest-metrics-on-virtual-machines)を参照してください。
 - クラシック ストレージ メトリックに対するクラシック アラート ルール。 [お使いのクラシック ストレージ アカウントの監視に関するガイダンス](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/)を参照してください。
 - 一部のストレージ アカウント メトリックに対するクラシック アラート ルール。 この記事の後半で[詳細](#storage-account-metrics)をご確認ください。
-- 一部の Cosmos DB メトリックに対するクラシック アラート ルール。 詳細は、今後の更新プログラムで追加される予定です。
+- 一部の Cosmos DB メトリックに対するクラシック アラート ルール。 この記事の後半で[詳細](#cosmos-db-metrics)をご確認ください。
+- すべてのクラシック仮想マシンおよびクラウド サービス メトリックに対するクラシック アラート ルール (Microsoft.ClassicCompute/virtualMachines および Microsoft.ClassicCompute/domainNames/slots/roles)。 この記事の後半で[詳細](#classic-compute-metrics)をご確認ください。
 
 お使いのサブスクリプションにこれらのクラシック ルールが含まれている場合、そのルールは手動で移行する必要があります。 自動移行を提供することができないため、これらの種類の既存のクラシック メトリック アラートは 2020年 6 月まで動作し続ける予定です。 この拡張機能により、新しいアラートに移行する時間が確保されます。 ただし、2019 年 8 月を過ぎると、新しいクラシック アラートを作成することはできません。
 
@@ -67,6 +68,44 @@ ms.locfileid: "67295527"
 パーセント メトリックに対するクラシック アラート ルールは、[従来のストレージ メトリックと新しいストレージ メトリック間のマッピング](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics)に基づいて移行する必要があります。 使用可能な新しいメトリックは絶対値であるため、しきい値を適切に変更する必要があります。
 
 AnonymousThrottlingError、SASThrottlingError、および ThrottlingError に関するクラシック アラート ルールについては、同じ機能を提供する一体型のメトリックがないため、2 つの新しいアラートに分割する必要があります。 しきい値を適切に調整する必要があります。
+
+### <a name="cosmos-db-metrics"></a>Cosmos DB のメトリック
+
+これらのメトリックに対するアラートを除いて、Cosmos DB メトリックに対するすべてのクラシック アラートを移行できます。
+
+- 1 秒あたりの平均要求数
+- 整合性レベル
+- HTTP 2xx
+- HTTP 3xx
+- HTTP 400
+- HTTP 401
+- 内部サーバー エラー
+- 1 分あたりの最大 RUPM 消費量
+- 1 秒あたりの最大 RU 数
+- 失敗した Mongo Count 要求
+- 失敗した Mongo Delete 要求
+- 失敗した Mongo Insert 要求
+- 失敗したその他の Mongo 要求
+- その他の Mongo 要求の料金
+- その他の Mongo 要求のレート
+- 失敗した Mongo Query 要求
+- 失敗した Mongo Update 要求
+- 測定された読み取り待機時間
+- 測定された書き込み待機時間
+- サービスの可用性
+- ストレージの容量
+- 調整された要求数
+- 要求の合計数
+
+1 秒あたりの平均要求数、整合性レベル、1 分あたりの最大 RUPM 消費量、1 秒あたりの最大 RU 数、測定された読み込み待機時間、測定された書き込み待機時間、ストレージ容量は現在、[新しいシステム](metrics-supported.md#microsoftdocumentdbdatabaseaccounts)で使用できません。
+
+HTTP 2xx、HTTP 3xx、HTTP 400、HTTP 401、内部サーバー エラー、サービス可用性、スロットルされた要求数、合計要求数などの要求メトリックに関するアラートは、要求のカウント方法がクラシックのメトリックと新しいメトリックの間で異なるため、移行されません。 これらに関するアラートは、しきい値を調整して手動で再作成する必要があります。
+
+失敗した Mongo 要求のメトリックに関するアラートは、同じ機能を提供する一体型のメトリックがないため、複数のアラートに分割する必要があります。 しきい値を適切に調整する必要があります。
+
+### <a name="classic-compute-metrics"></a>従来のコンピューティング メトリック
+
+クラシック コンピューティング リソースは新しいアラートでまだサポートされていないため、クラシック コンピューティング メトリックに関するアラートは移行ツールを使用しても移行されません。 これらのリソースの種類に対する新しいアラートのサポートは、今後追加される予定です。 追加されたら、お客様は 2020 年 6 月より前のクラシック アラート ルールに基づいて、新しい同等のアラート ルールを作成し直す必要があります。
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>非推奨のメトリックに対するクラシック アラート ルール
 
@@ -159,9 +198,34 @@ Application Insights の場合、同等のメトリックは以下に示すよ�
 | requestFailed.count | requests/failed| "sum" ではなく `aggregationType` "count" を使用します。   |
 | view.count | pageViews/count| "sum" ではなく `aggregationType` "count" を使用します。   |
 
+### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
+
+Cosmos DB の場合、同等のメトリックは以下に示すようになっています。
+
+| クラシック アラートでのメトリック | 新しいアラートでの同等メトリック | 説明|
+|--------------------------|---------------------------------|---------|
+| AvailableStorage     |AvailableStorage|   |
+| データ サイズ | DataUsage| |
+| ドキュメント数 | DocumentCount||
+| インデックス サイズ | IndexUsage||
+| Mongo Count 要求の料金| ディメンション "CommandName" = "count" のある MongoRequestCharge||
+| Mongo Count 要求のレート | ディメンション "CommandName" = "count" のある MongoRequestsCount||
+| Mongo Delete 要求の料金 | ディメンション "CommandName" = "delete" のある MongoRequestCharge||
+| Mongo Delete 要求のレート | ディメンション "CommandName" = "delete" のある MongoRequestsCount||
+| Mongo Insert 要求の料金 | ディメンション "CommandName" = "insert" のある MongoRequestCharge||
+| Mongo Insert 要求のレート | ディメンション "CommandName" = "insert" のある MongoRequestsCount||
+| Mongo Query 要求の料金 | ディメンション "CommandName" = "find" のある MongoRequestCharge||
+| Mongo Query 要求のレート | ディメンション "CommandName" = "find" のある MongoRequestsCount||
+| Mongo Update 要求の料金 | ディメンション "CommandName" = "update" のある MongoRequestCharge||
+| サービス利用不可| ServiceAvailability||
+| TotalRequestUnits | TotalRequestUnits||
+
 ### <a name="how-equivalent-action-groups-are-created"></a>同等のアクション グループはどのように作成されるか
 
 クラシック アラート ルールには、アラート ルール自体に関連付けられているメール、Webhook、ロジック アプリ、Runbook のアクションがあります。 新しいアラート ルールでは、複数のアラート ルールにわたって再利用できるアクション グループが使用されます。 移行ツールは、そのアクションをいくつのアラート ルールが使用しているかに関わらず、同じアクションに対して 1 つのアクション グループを作成します。 移行ツールによって作成されたアクション グループは、"Migrated_AG*" という名前付け形式を使用します。
+
+> [!NOTE]
+> 従来の管理者ロールへの通知に使用したときのクラシック アラートでは、従来の管理者のロケールに基づいて、ローカライズした電子メールを送信していました。 新しいアラート メールは、アクション グループを介して英語のみで送信されます。
 
 ## <a name="rollout-phases"></a>展開の段階
 
@@ -173,7 +237,6 @@ Application Insights の場合、同等のメトリックは以下に示すよ�
 ほとんどのサブスクリプションが、現在は移行準備完了としてマークされます。 まだ移行準備ができていないのは、以下のリソースの種類に対するクラシック アラート ルールがあるサブスクリプションのみです。
 
 - Microsoft.classicCompute/domainNames/slots/roles
-- Microsoft.documentDB/databases
 - Microsoft.insights/components
 
 ## <a name="who-can-trigger-the-migration"></a>移行をトリガーできるユーザー
@@ -184,6 +247,7 @@ Application Insights の場合、同等のメトリックは以下に示すよ�
 - Microsoft.Insights/actiongroups/*
 - Microsoft.Insights/AlertRules/*
 - Microsoft.Insights/metricAlerts/*
+- Microsoft.AlertsManagement/smartDetectorAlertRules/*
 
 > [!NOTE]
 > 上記のアクセス許可があることに加えてて、サブスクリプションはさらに、Microsoft.AlertsManagement リソース プロバイダーに登録されている必要があります。 これは、Application Insights に対する障害異常アラートを正常に移行するために必要です。 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 932d250d6685a1b905e4a03a0118d8c8f1f26418
+ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521752"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67151245"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット
 
@@ -43,6 +43,12 @@ ms.locfileid: "59521752"
 
 Azure Files と Azure File Sync のスケールおよびパフォーマンス ターゲットの詳細については、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../files/storage-files-scale-targets.md)」を参照してください。
 
+> [!IMPORTANT]
+> ストレージ アカウントの制限はすべての共有に適用されます。 ストレージ アカウントを最大までスケールアップすることは、ストレージ アカウントごとの共有が 1 つだけの場合にのみ達成できます。
+>
+> 5 TiB を超える Standard ファイル共有はプレビュー段階であり、いくつかの制限事項があります。
+> 制限事項の一覧と、これらのより大きなファイル共有サイズのプレビューへのオンボードについては、Azure Files 計画ガイドの「[Standard ファイル共有](../files/storage-files-planning.md#standard-file-shares)」セクションを参照してください。
+
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="premium-files-scale-targets"></a>Premium ファイルのスケール ターゲット
@@ -53,27 +59,7 @@ Premium ファイルについては、ストレージ アカウント、共有�
 
 #### <a name="premium-file-share-limits"></a>Premium ファイル共有の制限
 
-> [!IMPORTANT]
-> ストレージ アカウントの制限はすべての共有に適用されます。 ストレージ アカウントの最大までスケールアップすることは、ストレージ アカウントごとの共有が 1 つだけの場合にのみ達成できます。
-
-|領域  |ターゲット  |
-|---------|---------|
-|プロビジョニングされた最小サイズ                        |100 GiB      |
-|プロビジョニングされた最大サイズ                        |100 TiB      |
-|最小サイズ増減    |1 GiB      |
-|ベースライン IOPS    |GiB あたり 1 IOPS (最大 100,000)|
-|IOPS バースト    |GiB あたり 3x IOPS (最大 100,000)|
-|エグレス レート         |60 MiB/s + 0.06 * プロビジョニング済み GiB        |
-|イングレス レート| 40 MiB/s + 0.04 * プロビジョニング済み GiB |
-|スナップショットの最大数        |200       |
-
-#### <a name="premium-file-limits"></a>Premium ファイルの制限
-
-|領域  |ターゲット  |
-|---------|---------|
-|Size                  |1 TiB         |
-|ファイルあたりの最大 IOPS     |5,000         |
-|コンカレント処理数    |2,000         |
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Azure File Sync のスケール ターゲット
 

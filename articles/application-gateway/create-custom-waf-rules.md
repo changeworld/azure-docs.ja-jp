@@ -1,24 +1,24 @@
 ---
-title: Azure Web アプリケーション ファイアウォール (WAF) のカスタム規則の作成と使用
-description: この記事では、Azure Application Gateway で Web アプリケーション ファイアウォール (WAF) のカスタム規則を作成する方法について説明します。
+title: Azure Web アプリケーション ファイアウォール (WAF) v2 のカスタム規則の作成と使用
+description: この記事では、Azure Application Gateway で Web アプリケーション ファイアウォール (WAF) v2 のカスタム規則を作成する方法について説明します。
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
-ms.date: 6/5/2019
+ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: bb8c50664261814c7d994c9b879972b1e8b846e4
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: 86ddb0b608cd17814cbcbb902f0b2905fe61094a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688928"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164673"
 ---
-# <a name="create-and-use-web-application-firewall-custom-rules"></a>Web アプリケーション ファイアウォールのカスタム規則の作成と使用
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Web アプリケーション ファイアウォール v2 のカスタム規則の作成と使用
 
-Azure Application Gateway Web アプリケーション ファイアウォール (WAF) は、Web アプリケーションを保護します。 この保護は、Open Web Application Security Project (OWASP) コア規則セット (CRS) によって提供されます。 場合によっては、特定のニーズを満たすために、独自のカスタム規則を作成する必要があります。 WAF のカスタム規則の詳細については、[Web アプリケーション ファイアウォールのカスタム規則の概要](custom-waf-rules-overview.md)に関する記事を参照してください。
+Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) v2 では、Web アプリケーションが保護されます。 この保護は、Open Web Application Security Project (OWASP) コア規則セット (CRS) によって提供されます。 場合によっては、特定のニーズを満たすために、独自のカスタム規則を作成する必要があります。 WAF のカスタム規則の詳細については、[Web アプリケーション ファイアウォールのカスタム規則の概要](custom-waf-rules-overview.md)に関する記事を参照してください。
 
-この記事では、WAF で作成および使用できるカスタム規則の例を示しています。 Azure PowerShell を使用して WAF にカスタム規則をデプロイする方法については、[Azure PowerShell を使用した Web アプリケーション ファイアウォールのカスタム規則の構成](configure-waf-custom-rules.md)に関する記事を参照してください。
+この記事では、WAF v2 で作成および使用できるカスタム規則の例を示します。 Azure PowerShell を使用して WAF にカスタム規則をデプロイする方法については、[Azure PowerShell を使用した Web アプリケーション ファイアウォールのカスタム規則の構成](configure-waf-custom-rules.md)に関する記事を参照してください。
 
 >[!NOTE]
 > アプリケーション ゲートウェイが WAF レベルを使用していない場合、アプリケーション ゲートウェイを WAF レベルにアップグレードするオプションが右側のウィンドウに表示されます。

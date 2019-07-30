@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 902696e35a2447b67dab74b73794b80ad5e26511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5638710c4c01d361d108cfef69869fad1a7dad1a
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083744"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304370"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 ## <a name="overview"></a>概要
@@ -67,7 +67,6 @@ Azure AD を使ってアカウントを共有するには、次の操作が必�
 * アプリケーションを[アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/)または[カスタム アプリケーション](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)に追加する
 * パスワード シングル サインオン (SSO) に対応するようにアプリケーションを構成する
 * [グループ ベースの割り当て](groups-saasapps.md)を使い、共有資格情報を入力するオプションを選ぶ
-* オプション: Facebook、Twitter、LinkedIn などの一部のアプリケーションでは、 [Azure AD 自動パスワード ロール オーバー](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/)
 
 Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](../authentication/concept-mfa-whichversion.md)」を参照) すると共に、[Azure AD のセルフ サービス](groups-self-service-management.md) グループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
 
