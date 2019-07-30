@@ -5,6 +5,7 @@
     - name: Azure IoT Hub とは
       href: about-iot-hub.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: テレメトリを送信する
       items:
