@@ -2,18 +2,18 @@
 title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 services: container-service
-author: iainfoulds
+author: mlearned
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/03/2019
-ms.author: iainfou
-ms.openlocfilehash: d4fa365e1ed055fa8ddeb8fd475e152af84a3b71
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.date: 07/08/2019
+ms.author: mlearned
+ms.openlocfilehash: 554eba87efc56e2dadb3fb2d0cb78cd8b7ea7237
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560444"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302724"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -62,30 +62,28 @@ Windows Server ノードでは (現在、AKS ではプレビュー中)、Windows
 各 AKS デプロイは、2 つのリソース グループにまたがります。
 
 1. 最初のリソース グループを作成します。 このグループには、Kubernetes サービスのリソースのみが含まれます。 AKS リソース プロバイダーにより、デプロイの間に 2 番目のリソース グループが自動的に作成されます。 2 番目のリソース グループの例は、*MC_myResourceGroup_myAKSCluster_eastus* です。 この 2 つ目のリソース グループの名前を指定する方法については、次のセクションをご覧ください。
-1. *MC_myResourceGroup_myAKSCluster_eastus* などの 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 このリソース グループの目的は、リソースのクリーンアップを簡単にすることです。
+1. *ノード リソース グループ*と呼ばれる 2 つ目のリソース グループには、クラスターに関連付けられたインフラストラクチャ リソースがすべて含まれます。 これらのリソースには、Kubernetes ノードの VM、仮想ネットワー キング、およびストレージが含まれます。 既定では、ノード リソース グループには *MC_myResourceGroup_myAKSCluster_eastus* のような名前が付いています。 AKS は、クラスターが削除されるたびにノード リソースを自動的に削除するため、クラスターのライフサイクルを共有するリソースにのみ使用する必要があります。
 
-ストレージ アカウントや予約済みパブリック IP アドレスなど、AKS クラスターで使用するリソースを作成する場合は、自動的に生成されたリソース グループにそれらを配置します。
+## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS ノード リソース グループに独自の名前を指定できますか?
 
-## <a name="can-i-provide-my-own-name-for-the-aks-infrastructure-resource-group"></a>AKS インフラストラクチャ リソース グループに独自の名前を指定できますか?
-
-はい。 既定では、AKS リソース プロバイダーによってデプロイの間にセカンダリ リソース グループ (*MC_myResourceGroup_myAKSCluster_eastus* など) が自動的に作成されます。 企業ポリシーに準拠するために、この管理対象クラスター (*MC_* ) リソース グループに独自の名前を指定できます。
+はい。 既定では、AKS はノード リソース グループに *MC_clustername_resourcegroupname_location* という名前を設定しますが、独自の名前を指定することもできます。
 
 独自のリソース グループ名を指定するには、[aks-preview][aks-preview-cli] Azure CLI 拡張機能バージョン *0.3.2* 以降をインストールします。 [az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときに、 *--node-resource-group* パラメーターを使用してリソース グループの名前を指定します。 [Azure Resource Manager テンプレートを使用][aks-rm-template]して AKS クラスターをデプロイする場合は、*nodeResourceGroup* プロパティを使用してリソース グループ名を定義できます。
 
 * セカンダリ リソース グループは、自分のサブスクリプションの Azure リソース プロバイダーによって自動的に作成されます。
 * カスタム リソース グループの名前を指定できるのは、クラスターを作成するときだけです。
 
-*MC_* リソース グループを使うときは、次のことができないので注意してください。
+ノード リソース グループを使うときは、次のことができないので注意してください。
 
-* *MC_* グループに対して既存のリソース グループを指定すること。
-* *MC_* リソース グループに対して異なるサブスクリプションを指定すること。
-* クラスターが作成された後で、*MC_* リソース グループ名を変更すること。
-* *MC_* リソース グループ内の管理対象リソースに名前を指定すること。
-* *MC_* リソース グループ内の管理対象リソースのタグを変更または削除すること。 (詳しくは、次のセクションで追加の情報を参照してください。)
+* ノード リソース グループに対して既存のリソース グループを指定すること。
+* ノード リソース グループに対して異なるサブスクリプションを指定すること。
+* クラスターが作成された後で、ノード リソース グループ名を変更すること。
+* ノード リソース グループ内の管理対象リソースに名前を指定すること。
+* ノード リソース グループ内の管理対象リソースのタグを変更または削除すること。 (詳しくは、次のセクションで追加の情報を参照してください。)
 
-## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>MC_ リソース グループ内の AKS リソースのタグや他のプロパティを変更できますか?
+## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>ノード リソース グループ内の AKS リソースのタグや他のプロパティを変更できますか?
 
-*MC_* リソース グループ内の Azure で作成されたタグや他のリソース プロパティを変更または削除する場合、スケーリングやアップグレードのエラーなど、予期しない結果になる可能性があります。 AKS では、カスタム タグを作成および変更できます。 たとえばビジネス単位やコスト センターを割り当てるために、カスタム タグを作成または変更することがあります。 AKS クラスター内の *MC_* の下にあるリソースを変更すると、サービス レベル目標 (SLO) が中断されます。 詳細については、「[AKS でサービス レベル アグリーメントは提供されますか?](#does-aks-offer-a-service-level-agreement)」を参照してください。
+ノード リソース グループ内の Azure で作成されたタグや他のリソース プロパティを変更または削除する場合、スケーリングやアップグレードのエラーなど、予期しない結果になる可能性があります。 AKS では、カスタム タグを作成および変更できます。 たとえばビジネス単位やコスト センターを割り当てるために、カスタム タグを作成または変更することがあります。 AKS クラスター内のノード リソース グループの下にあるリソースを変更すると、サービス レベル目標 (SLO) が中断されます。 詳細については、「[AKS でサービス レベル アグリーメントは提供されますか?](#does-aks-offer-a-service-level-agreement)」を参照してください。
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS ではどのような Kubernetes アドミッション コントローラーがサポートされますか? アドミッション コントローラーの追加や削除はできますか?
 
@@ -134,6 +132,14 @@ AKS はマネージド サービスであるため、クラスターの一部と
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>自分の AKS エージェント ノードに Azure の予約割引を適用できますか?
 
 AKS エージェント ノードは、標準の Azure 仮想マシンとして課金されます。したがって、AKS で使用している VM サイズに対して [Azure の予約][reservation-discounts]を購入している場合、それらの割引が自動的に適用されます。
+
+## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Azure テナント間でクラスターを移動/移行することはできますか?
+
+`az aks update-credentials` コマンドを使用して、Azure テナント間で AKS クラスターを移動できます。 「[サービス プリンシパルの更新または作成の選択](https://docs.microsoft.com/azure/aks/update-credentials)」の指示に従って、[AKS クラスターを新しい資格情報で更新します](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials)。
+
+## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>サブスクリプション間でクラスターを移動/移行することはできますか?
+
+サブスクリプション間でのクラスターの移動は現在サポートされていません。
 
 <!-- LINKS - internal -->
 

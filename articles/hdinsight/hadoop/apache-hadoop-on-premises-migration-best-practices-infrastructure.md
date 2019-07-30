@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1bd06507bd8a20cf504c1ff4cd9fe7e3b9196a3c
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 5bdd5049b7ddeaac4425734aa6f4d633b08cd3b4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687778"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67057478"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 
@@ -25,7 +25,7 @@ HDInsight クラスターの容量計画で行うべき重要な選択内容は�
 
 - **リージョンを選択する**: Azure リージョンによって、クラスターを物理的にプロビジョニングする場所が決まります。 読み取りと書き込みの待機時間を最小限に抑えるには、クラスターをデータと同じリージョンに配置する必要があります。
 - **ストレージの場所とサイズを選択する**: 既定のストレージはクラスターと同じリージョンにある必要があります。 48 ノードのクラスターの場合は、4 つから 8 つのストレージ アカウントを持つことをお勧めします。 既に十分な数のストレージが存在する場合もありますが、各ストレージ アカウントはコンピューティング ノードに追加のネットワーク帯域幅を提供します。 複数のストレージ アカウントがある場合は、各ストレージ アカウントにプレフィックスなしのランダムな名前を使用します。 ランダムな名前付けの目的は、すべてのアカウント間でストレージのボトルネック (調整) や共通モード エラーが発生する可能性を低減することです。 パフォーマンスを向上させるために、ストレージ アカウントごとにコンテナーを 1 つだけ使用します。
-- **VM のサイズと種類を選択する (現在は G シリーズをサポート)**:各クラスターの種類には一連のノード タイプがあり、各ノード タイプには VM のサイズと種類の固有のオプションがあります。 VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワーク待ち時間によって決まります。 シミュレートされたワークロードを使用して、ノードの種類ごとに最適な VM サイズと種類を決定することができます。
+- **VM のサイズと種類を選択する (現在は G シリーズをサポート)** :各クラスターの種類には一連のノード タイプがあり、各ノード タイプには VM のサイズと種類の固有のオプションがあります。 VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワーク待ち時間によって決まります。 シミュレートされたワークロードを使用して、ノードの種類ごとに最適な VM サイズと種類を決定することができます。
 - **ワーカー ノードの数を選択する**: シミュレートされたワークロードを使用して、ワーカー ノードの最初の数を決定できます。 ピーク時の負荷要求を満たすようにワーカー ノードを追加することによって、クラスターを後でスケールアップできます。 追加のワーカー ノードが不要な場合、クラスターは後で元のスケールに戻すことができます。
 
 詳細については、「[HDInsight クラスターの容量計画](../hdinsight-capacity-planning.md)」の記事を参照してください。
@@ -36,7 +36,7 @@ HDInsight クラスターの種類ごとに推奨される仮想マシンの種�
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>HDInsight での Hadoop コンポーネントの可用性を確認する
 
-HDInsight の各バージョンは、あるバージョンの Hortonworks Data Platform (HDP) のクラウド ディストリビューションで、一連の Hadoop エコシステムのコンポーネントで構成されています。 HDInsight のすべてのコンポーネントとその現在のバージョンの詳細については、[HDInsight のコンポーネントのバージョン管理](../hdinsight-component-versioning.md)を参照してください。
+HDInsight の各バージョンは、一連の Hadoop エコシステム コンポーネントのクラウド ディストリビューションです。 HDInsight のすべてのコンポーネントとその現在のバージョンの詳細については、[HDInsight のコンポーネントのバージョン管理](../hdinsight-component-versioning.md)を参照してください。
 
 また、Apache Ambari UI または Ambari REST API を使用して、HDInsight での Hadoop コンポーネントとバージョンを確認することもできます。
 

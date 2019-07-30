@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9955ea434f7a0e48f2d1f81d2a1f57cc3cd67dcb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 0b89bd3992bd6249e0acd576fee7e1556968ad65
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277877"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334183"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
@@ -179,3 +179,8 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 > [!div class="nextstepaction"]
 > [UWP -Graph API 呼び出しチュートリアル](tutorial-v2-windows-uwp.md)
+
+Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
+
+> [!div class="nextstepaction"]
+> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

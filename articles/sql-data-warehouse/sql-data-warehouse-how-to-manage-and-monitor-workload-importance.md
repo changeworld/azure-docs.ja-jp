@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: a39d71e0f8b8072cab6a3af9a2f0913973f303ee
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: fbdab724e737b9bc223672c41ee9dde51e6cd99c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66235923"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165506"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのワークロードの重要度の管理と監視
 

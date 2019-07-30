@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/09/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3de6a2cbdfe7a6d006a3bbfab16792376eda0d07
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 466660a1e064ef41eb330b36107dbdcb1d097498
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702528"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477317"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>クイック スタート:Azure Active Directory テナントにアプリケーションを追加する
 
@@ -137,9 +137,8 @@ Azure AD テナントにギャラリー アプリケーションを追加する�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure AD テナントにギャラリー アプリケーションを追加する方法について学習しました。 アプリケーションのプロパティを編集する方法を学習しました。
+Azure AD 組織にアプリケーションを追加したので、使用する[シングル サインオン方法を選択](what-is-single-sign-on.md#choosing-a-single-sign-on-method)し、次の該当する記事を参照します。
 
-これで、シングル サインオン用にアプリケーションを構成する準備が整いました。
-
-> [!div class="nextstepaction"]
-> [シングル サインオンの構成](configure-single-sign-on-portal.md)
+- [SAML ベースのシングル サインオンの構成](configure-single-sign-on-non-gallery-applications.md)
+- [パスワード シングル サインオンの構成](configure-password-single-sign-on-non-gallery-applications.md)
+- [リンクされたサインオンの構成](configure-linked-sign-on.md)

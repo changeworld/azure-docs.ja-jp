@@ -8,18 +8,18 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 01a8e104f6d590113784db28e4bfde849d78b15f
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 945898105aab7261ee494a86aeff10337599feb3
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491911"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226005"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング
 
 以下の記事では、UK OFFICIAL および UK NHS のブループリント サンプルが、UK OFFICIAL および UK NHS コントロールにどのようにマップされるのかについて詳しく説明します。 コントロールの詳細については、[UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications) に関するページをご覧ください。
 
-以下のマッピングでは、マップ先は **UK OFFICIAL** コントロールと **UK NHS** コントロールです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 次に、 **[[プレビュー]: UK OFFICIAL コントロールと UK NHS コントールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする]** ビルトイン ポリシー イニシアチブを見つけて選択します。
+以下のマッピングでは、マップ先は **UK OFFICIAL** コントロールと **UK NHS** コントロールです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 次に、 **[\[プレビュー\]: UK OFFICIAL コントロールと UK NHS コントールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする]** ビルトイン ポリシー イニシアチブを見つけて選択します。
 
 ## <a name="1-data-in-transit-protection"></a>1 転送中のデータの保護
 
@@ -88,27 +88,27 @@ Azure では、Azure のリソースにアクセスできるユーザーの管�
 
 このブループリントでは、Linux VM のパスワード ファイルのアクセス許可を監査して、それらが正しく設定されていない場合にアラートを生成する Azure Policy 定義も割り当てられます。 この設計により、認証子が侵害されないように是正措置を講じることができます。
 
-- [プレビュー]: Audit Linux VM /etc/passwd file permissions are set to 0644
+- \[プレビュー\]:Linux VM /etc/passwd ファイルのアクセス許可が 0644 に設定されていることを監査する
 
 このブループリントでは、最低限の強度や他のパスワード要件が適用されていない Windows VM を監査する Azure Policy 定義を割り当てることで、強力なパスワード の適用を支援します。 パスワード強度のポリシーに違反している VM を把握できるようになるので、適切な是正措置を実施し、すべての VM ユーザー アカウントに対して、パスワード ポリシーへの準拠を徹底させることができます。
 
-- [プレビュー]: Deploy requirements to audit Windows VMs that do not have the password complexity setting enabled
-- [プレビュー]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
-- [プレビュー]: Deploy requirements to audit Windows VMs that do not have a minimum password age of 1 day
-- [プレビュー]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [プレビュー]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
-- [プレビュー]: Audit Windows VMs that do not have the password complexity setting enabled
-- [プレビュー]: Audit Windows VMs that do not have a maximum password age of 70 days
-- [プレビュー]: Audit Windows VMs that do not have a minimum password age of 1 day
-- [プレビュー]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [プレビュー]: Audit Windows VMs that allow re-use of the previous 24 passwords
+- \[プレビュー\]:パスワードの複雑さの設定が有効になっていない Windows VM を監査する要件をデプロイする
+- \[プレビュー\]:パスワードの有効期間が 70 日になっていない Windows VM を監査する要件をデプロイする
+- \[プレビュー\]:パスワードの変更禁止期間が 1 日になっていない Windows VM を監査する要件をデプロイする
+- \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する要件をデプロイする
+- \[プレビュー\]:以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する要件をデプロイする
+- \[プレビュー\]:パスワードの複雑さの設定が有効になっていない Windows VM を監査する
+- \[プレビュー\]:パスワードの有効期間が 70 日になっていない Windows VM を監査する
+- \[プレビュー\]:パスワードの変更禁止期間が 1 日になっていない Windows VM を監査する
+- \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する
+- \[プレビュー\]:以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する
 
 このブループリントでは、Azure Policy 定義を割り当てることで、Azure リソースへのアクセスを制御することもできます。 これらのポリシーは、リソースの種類や構成の使用状況を監査することで、リソースへのアクセスをより厳格に制限するためのものです。 これらのポリシーに違反しているリソースを把握することで、適切な是正措置を実施し、承認済みのユーザーだけが Azure リソースにアクセスできるようにすることができます。
 
-- [プレビュー]: Deploy requirements to audit Linux VMs that have accounts without passwords
-- [プレビュー]: Deploy requirements to audit Linux VMs that allow remote connections from accounts without passwords
-- [プレビュー]: Audit Linux VMs that have accounts without passwords
-- [プレビュー]: Audit Linux VMs that allow remote connections from accounts without passwords
+- \[プレビュー\]:パスワードなしのアカウントが存在する Linux VM を監査する要件をデプロイする
+- \[プレビュー\]:パスワードなしのアカウントからのリモート接続が許可されている Linux VM を監査する要件をデプロイする
+- \[プレビュー\]:パスワードなしのアカウントが存在する Linux VM を監査する
+- \[プレビュー\]:パスワードなしのアカウントからのリモート接続が許可されている Linux VM を監査する
 - ストレージ アカウントを新しい Azure Resource Manager リソースに移行する必要がある
 - 仮想マシンを新しい Azure Resource Manager リソースに移行する必要がある
 - マネージド ディスクを使用していない VM の監査
@@ -145,7 +145,7 @@ Azure では、Azure のリソースにアクセスできるユーザーの管�
 
 このブループリントでは、Linux VM のパスワード ファイルのアクセス許可を監査して、それらが正しく設定されていない場合にアラートを生成する Azure Policy 定義も割り当てられます。 この設計により、認証子が侵害されないように是正措置を講じることができます。
 
-- [プレビュー]: Audit Linux VM /etc/passwd file permissions are set to 0644
+- \[プレビュー\]:Linux VM /etc/passwd ファイルのアクセス許可が 0644 に設定されていることを監査する
 
 ## <a name="13-audit-information-for-users"></a>13 ユーザー監査情報
 
@@ -154,8 +154,8 @@ Azure では、Azure のリソースにアクセスできるユーザーの管�
 - 未監査の SQL サーバーの Azure Security Center での監視
 - 診断設定の監査
 - SQL サーバー レベルの監査設定の監査
-- [プレビュー]: Deploy Log Analytics Agent for Linux VMs
-- [プレビュー]: Deploy Log Analytics Agent for Windows VMs
+- \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ
+- \[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
 
 ## <a name="next-steps"></a>次の手順

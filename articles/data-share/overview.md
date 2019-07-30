@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 7d4e51ec9564bfb123cf73d9fe89d040f42fe650
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 11f32b1f1349ef0f9826f95832648e6949cc2f8c
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807539"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421390"
 ---
 # <a name="what-is-azure-data-share-preview"></a>Azure Data Share プレビューとは
 
@@ -24,6 +24,8 @@ ms.locfileid: "67807539"
 データ プロバイダーは、データ共有の使用条件を指定することで、データの処理方法の制御を維持できます。 データ コンシューマーは、データを受け取る前に、これらの条件に同意する必要があります。 データ プロバイダーは、データ コンシューマーが更新を受け取る頻度を指定できます。 データ プロバイダーは、新しい更新へのアクセスをいつでも取り消すことができます。 
 
 Azure Data Share を使うと、サードパーティからのデータを簡単に結合して分析と AI のシナリオを補強できるようになり、分析情報の強化に役立ちます。 Azure の分析ツールの機能を簡単に利用して、Azure Data Share を使って共有されるデータを準備、処理、分析できます。 
+
+データ プロバイダーとデータ コンシューマーは、どちらもデータを共有および受信するための Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 ## <a name="scenarios-for-azure-data-share"></a>Azure Data Share のシナリオ
 
@@ -78,6 +80,7 @@ Azure Data Share では、保存時と転送中のデータを保護するため
 Azure Data Share のリソース レベルでアクセス制御を設定し、承認されたユーザーだけによってアクセスされることを保証できます。 
 
 Azure Data Share では、Azure Active Directory での自動 ID 管理用に、Azure リソースのマネージド ID (旧称 MSI) を利用します。 Azure リソースのマネージド ID は、データ共有に使われているストレージ アカウントにアクセスするために利用されます。 データ プロバイダーとデータ コンシューマーの間で資格情報が交換されることはありません。 詳しくは、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities) に関するページをご覧ください。 
+
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 

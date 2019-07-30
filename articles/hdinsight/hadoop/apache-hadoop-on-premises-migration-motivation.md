@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: b45fb5cbfbef334b40ccadecd32f65fa9a59a610
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a03a778b2a057235b31d02e90e5ce87e9559b38a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64685665"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67058562"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
 
@@ -21,7 +21,7 @@ ms.locfileid: "64685665"
 
 ## <a name="why-to-migrate-to-azure-hdinsight"></a>Azure HDInsight に移行する理由
 
-Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/) の Hadoop コンポーネントのクラウド ディストリビューションです。 Azure HDInsight によって大量のデータを簡単かつ迅速に高いコスト効率で処理できるようになります。 HDInsight には、好評を博している次のようなオープン ソース フレームワークが含まれています。
+Azure HDInsight は、Hadoop コンポーネントのクラウド ディストリビューションです。 Azure HDInsight によって大量のデータを簡単かつ迅速に高いコスト効率で処理できるようになります。 HDInsight には、好評を博している次のようなオープン ソース フレームワークが含まれています。
 
 - Apache Hadoop
 - Apache Spark
@@ -90,7 +90,6 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 | **質問** | **例** | **回答** |
 |---|---|---|
 |**トピック**:**Environment**|||
-|クラスター ディストリビューションの種類|Hortonworks、Cloudera、MapR| |
 |クラスター ディストリビューションのバージョン|HDP 2.6.5、CDH 5.7|
 |ビッグ データ エコシステム コンポーネント|HDFS、Yarn、Hive、LLAP、Impala、Kudu、HBase、Spark、MapReduce、Kafka、Zookeeper、Solr、Sqoop、Oozie、Ranger、Atlas、Falcon、Zeppelin、R|
 |クラスターの種類|Hadoop、Spark、Confluent Kafka、Storm、Solr|
@@ -184,7 +183,7 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |いいえ。 同期する AD ユーザー数|          100||
 |パスワードをクラウドに同期しますか?|    はい||
 |クラウドのみのユーザー?|                 はい||
-|MFA が必要ですか?|                       いいえ || 
+|MFA が必要ですか?|                       いいえ|| 
 |データの承認要件ですか?|  はい||
 |ロール ベースのアクセス制御?|        はい||
 |監査が必要ですか?|                  はい||
@@ -198,8 +197,7 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 |リモート メタストアを使用するか?|はい||
 |異なるクラスター間でメタストアを共有するか?|はい||
 |ワークロードを分解するか?|Hive ジョブを Spark ジョブに置き換える||
-|データのオーケストレーションに ADF を使用するか?|いいえ ||
-|IaaS で HDInsight または Hortonworks Data Platform のどちらを指定するか?|HDInsight||
+|データのオーケストレーションに ADF を使用するか?|いいえ||
 
 ## <a name="next-steps"></a>次の手順
 

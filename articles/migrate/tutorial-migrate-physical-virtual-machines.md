@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2554501ecf6d4ef115e3283fa635c24510b8c797
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 728bf785edebcd17599b6a56edea1e26ed2d2fbc
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249591"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311790"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>物理または仮想サーバーを Azure に移行する 
 
@@ -214,7 +214,7 @@ Azure Migrate プロジェクトを設定し、それに Azure Migrate Server Mi
 4. 移行したいマシンにインストーラー ファイルをコピーします。
 5. アプライアンスをデプロイしたときに生成されたパスフレーズを持っていることを確認します。
     - マシン上の一時テキスト ファイルにファイルを格納します。
-    - レプリケーション アプライアンスのパスフレーズを取得できます。 現在のパスフレーズを表示するには、コマンド ラインで **C:\ProgramData\ASR\svsystems\bin\genpassphrase.exe -v** を実行します。
+    - レプリケーション アプライアンスのパスフレーズを取得できます。 現在のパスフレーズを表示するには、コマンド ラインで **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe -v** を実行します。
     - パスフレーズを再生成しないでください。 そうすると接続が切断され、レプリケーション アプライアンスを再登録しなければならなくなります。
 
 

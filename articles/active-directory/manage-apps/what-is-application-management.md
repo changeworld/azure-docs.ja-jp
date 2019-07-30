@@ -12,16 +12,16 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcd0338f9195afae0e326155dbc4e10dd4fc1f91
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 5d1ebb4b094ab5c03343486e7af6624273288453
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723890"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421205"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Azure Active Directory によるアプリケーションの管理
 
-Azure Active Directory (Azure AD) は、クラウドおよびオンプレミスのアプリのために単一の ID システムを提供することで、アプリケーションを管理する方法を簡素化します。 サービスとしてのソフトウェア (SaaS) アプリケーション、オンプレミス アプリケーション、および基幹業務アプリ (LOB) を Azure AD に追加できます。 その後ユーザーは 1 回サインインすることで、Office 365 や他の Microsoft のビジネス アプリケーションとともに、これらのアプリケーションに安全かつシームレスにアクセスできます。 ユーザー プロビジョニングを自動化することで、管理コストを削減できます。 多要素認証と条件付きアクセス ポリシーを使用して、安全なアプリケーション アクセスを提供することもできます。
+Azure Active Directory (Azure AD) は、クラウドおよびオンプレミスのアプリのために単一の ID システムを提供することで、アプリケーションを管理する方法を簡素化します。 サービスとしてのソフトウェア (SaaS) アプリケーション、オンプレミス アプリケーション、および基幹業務アプリ (LOB) を Azure AD に追加できます。 その後ユーザーは 1 回サインインすることで、Office 365 や他の Microsoft のビジネス アプリケーションとともに、これらのアプリケーションに安全かつシームレスにアクセスできます。 [ユーザー プロビジョニングを自動化する](user-provisioning.md)ことで、管理コストを削減できます。 多要素認証と条件付きアクセス ポリシーを使用して、安全なアプリケーション アクセスを提供することもできます。
 
 ![Azure AD を通じてフェデレーションされているアプリを示す図](media/what-is-application-management/app-management-overview.png)
 

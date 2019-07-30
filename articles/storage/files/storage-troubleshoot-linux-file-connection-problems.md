@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 97f737c8d1228bd03baf59f2ebe830f715241299
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 232b4ca2ee4f3137069ed155cc82a5c5e3251420
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449836"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807273"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
@@ -94,19 +94,30 @@ Linux では、次のようなエラー メッセージが表示されます。
 
 ハンドルをいくつか閉じて、同時に開いているハンドルの数を減らしてから、操作を再試行します。
 
+ファイル共有、ディレクトリ、またはファイルの開いているハンドルを表示するには、[Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用します。  
+
+ファイル共有、ディレクトリ、またはファイルの開いているハンドルを閉じるには、[Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用します。
+
+> [!Note]  
+> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
+
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>Linux で Azure Files との間でのファイルのコピーが遅い
 
 - 特定の最小 I/O サイズ要件がない場合は、最適なパフォーマンスを得るために I/O サイズとして 1 MiB を使用することをお勧めします。
-- 書き込みによって大きくなるファイルの最終サイズがわかっており、まだ書き込まれていないファイル末尾にゼロが含まれていてもソフトウェアに互換性の問題が発生しない場合は、書き込みごとにサイズを増やすのではなく、事前にファイル サイズを設定します。
 - 次のように適切なコピー方法を使用します。
     - 2 つのファイル共有間の転送には、[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) を使用します。
-    - Parallel と一緒に cp を使用することで、コピー速度が向上し、スレッド数はユース ケースとワークロードで決まります。 この例では、6 個使用します。`find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`
+    - Parallel と一緒に cp または dd を使用することで、コピー速度が向上し、スレッド数はユース ケースとワークロードで決まります。 次の例では、6 を使用しています。 
+    - cp の例 (cp はファイル システムの既定のブロック サイズをチャンク サイズとして使用します): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`。
+    - dd の例 (このコマンドは、チャンク サイズを明示的に 1 MiB に設定します): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`。
     - オープンソースのサード パーティ製のツールの例:
         - [GNU Parallel](https://www.gnu.org/software/parallel/)。
         - [Fpart](https://github.com/martymac/fpart) - ファイルを並べ替え、パーティションにパックします。
         - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) - Fpart、および複数のインスタンスを生成するコピー ツールを使用して、データを src_dir から dst_url に移行させます。
         - [Multi](https://github.com/pkolano/mutil) - GNU coreutils に基づくマルチスレッド cp と md5sum。
+- すべての書き込みを拡張性のある書き込みにするのではなく、事前にファイル サイズを設定すると、ファイル サイズがわかっているシナリオでコピー速度の向上に役立ちます。 拡張性のある書き込みを避ける必要がある場合は、`truncate - size <size><file>` コマンドを使用して宛先のファイル サイズを設定できます。 その後は、`dd if=<source> of=<target> bs=1M conv=notrunc` コマンドでソース ファイルをコピーする際にターゲット ファイルのサイズを繰り返し更新する必要はありません。 たとえば、コピーするすべてのファイルに対してコピー先のファイル サイズを設定できます (共有が /mnt/share の下にマウントされていると仮定します)。
+    - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
+    - その後は、並行して書き込みを拡張せずにファイルをコピーします: `$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
 ## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-30"></a>SMB 3.0 を使用して Azure Files をマウントするときの"マウント エラー (115): 操作は現在実行中です"
@@ -140,6 +151,23 @@ Azure ファイル共有が置かれたストレージ アカウントを参照�
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
 ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](https://docs.microsoft.com/azure/storage/common/storage-network-security)を参照してください。
+
+<a id="open-handles"></a>
+## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure ファイル共有のファイルまたはディレクトリを削除できない
+
+### <a name="cause"></a>原因
+この問題は、通常、ファイルまたはディレクトリのハンドルが開いている場合に発生します。 
+
+### <a name="solution"></a>解決策
+
+開いているすべてのハンドルを SMB クライアントで閉じた後も問題が引き続き発生する場合は、次の手順を実行します。
+
+- [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを表示します。
+
+- [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを閉じます。 
+
+> [!Note]  
+> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している
@@ -191,40 +219,6 @@ COPYFILE の強制フラグ **f** を使用すると、Unix 上で **cp -p -f** 
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
-
-## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Azure ファイル共有を接続またはマウントできない
-
-### <a name="cause"></a>原因
-
-この問題の一般的な原因は次のとおりです。
-
-- 互換性のない Linux ディストリビューション クライアントを使用しています。 次の Linux ディストリビューションを使用して、Azure ファイル共有に接続することをお勧めします。
-
-    |   | SMB 2.1 <br>(同じ Azure リージョン内の VM 上のマウント) | SMB 3.0 <br>(オンプレミスおよびクロスリージョンからのマウント) |
-    | --- | :---: | :---: |
-    | Ubuntu Server | 14.04+ | 16.04+ |
-    | RHEL | 7+ | 7.5+ |
-    | CentOS | 7+ |  7.5+ |
-    | Debian | 8+ |   |
-    | openSUSE | 13.2+ | 42.3 以降 |
-    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
-
-- CIFS ユーティリティ (cifs-utils) がクライアントにインストールされていません。
-- SMB/CIFS の最小バージョン 2.1 がクライアントにインストールされていません。
-- SMB 3.0 暗号化がクライアントでサポートされていません。 SMB 3.0 暗号化は、Ubuntu 16.4 以降のバージョンと SUSE 12.3 以降のバージョンで使用可能です。 他のディストリビューションの場合は、カーネル 4.11 以降のバージョンが必要です。
-- サポートされていない TCP ポート 445 経由でストレージ アカウントに接続しようとしています。
-- Azure VM から Azure ファイル共有に接続しようとしていますが、VM はストレージ アカウントと同じリージョンにありません。
-- [[安全な転送が必須]]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定がストレージ アカウントで有効になっている場合、Azure Files は暗号化付き SMB 3.0 を使った接続のみを許可します。
-
-### <a name="solution"></a>解決策
-
-この問題を解決するには、「[Troubleshooting tool for Azure Files mounting errors on Linux (Linux での Azure Files のマウント エラー用トラブルシューティング ツール)](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)」を使用します。 このツールには、以下の機能があります。
-
-* クライアントの実行環境の検証を支援します。
-* Azure Files へのアクセス エラーの原因となる、互換性のないクライアント構成を検出します。
-* 自己修正に関する規範的なガイダンスを提供します。
-* 診断トレースを収集します。
-
 
 ## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: '&lt;path&gt;' にアクセスできません入出力エラー
 

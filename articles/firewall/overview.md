@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 7/10/2019
+ms.date: 07/19/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 2894af5f253e20b32dde0ecc5f658edff4814149
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 1349e07662504564fdf48a53f24525c4a16aa477
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868421"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326902"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -32,7 +32,7 @@ Azure Firewall では次の機能が提供されます。
 
 ## <a name="availability-zones"></a>可用性ゾーン
 
-Azure Firewall は、可用性を高めるために、複数の Availability Zones にまたがるようにデプロイ時に構成できます。 Availability Zones を使用すると、可用性が高まり 99.99% のアップタイムが実現します。 詳細については、Azure Firewall の[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/) に関するページをご覧ください。 2 つ以上の Availability Zones を選択すると、稼働率 99.99% の SLA が提供されます。
+Azure Firewall は、デプロイ時に、可用性を高めるために複数の可用性ゾーンにまたがるように構成できます。 Availability Zones を使用すると、可用性が高まり 99.99% のアップタイムが実現します。 詳細については、Azure Firewall の[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/azure-firewall/v1_0/) に関するページをご覧ください。 2 つ以上の可用性ゾーンを選択すると、稼働率 99.99% の SLA が提供されます。
 
 サービス標準の 99.95% のSLA を使用して、近接性の理由から Azure Firewall を特定のゾーンに関連付けることもできます。
 
@@ -80,7 +80,7 @@ FQDN のタグにより、ファイアウォール経由の既知の Azure サ�
 ## <a name="multiple-public-ip-addresses"></a>複数のパブリック IP アドレス
 
 > [!IMPORTANT]
-> Azure PowerShell、Azure CLI、REST、およびテンプレートで、複数のパブリック IP アドレスを持つ Azure Firewall を使用できます。 ポータルのユーザー インターフェイスは、段階的にリージョンに追加されており、ロールアウトが完了すればすべてのリージョンで利用できるようになります。
+> Azure portal、Azure PowerShell、Azure CLI、REST、テンプレートで、複数のパブリック IP アドレスを持つ Azure Firewall を使用できます。
 
 
 複数のパブリック IP アドレス (最大 100) をファイアウォールに関連付けることができます。
@@ -88,7 +88,7 @@ FQDN のタグにより、ファイアウォール経由の既知の Azure サ�
 これにより、次のシナリオが実現します。
 
 - **DNAT** - 複数の標準ポート インスタンスをバックエンド サーバーに変換できます。 たとえば、2 つのパブリック IP アドレスがある場合、両方の IP アドレス用の TCP ポート 3389 (RDP) を変換できます。
-- **SNAT** -追加のポートを送信 SNAT 接続に対して使用でき、SNAT ポートが不足する可能性を低減できます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。
+- **SNAT** -送信 SNAT 接続に追加のポートを使用できるので、SNAT ポートが不足する可能性が低減されます。 現時点では、Azure Firewall は、接続に使用する送信元パブリック IP アドレスをランダムに選択します。 ネットワークにダウンストリーム フィルターがある場合、ファイアウォールに関連付けられているすべてのパブリック IP アドレスを許可する必要があります。
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 

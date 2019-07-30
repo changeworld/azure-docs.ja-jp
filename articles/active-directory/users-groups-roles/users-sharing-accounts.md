@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba9deb00b885dad1d69eb38d4977aafd3d80ab91
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 902696e35a2447b67dab74b73794b80ad5e26511
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201433"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083744"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 ## <a name="overview"></a>概要
@@ -34,7 +34,7 @@ ms.locfileid: "56201433"
 従来の共有のモデルには、以下に示すようないくつかの欠点があります。
 
 * 新しいアプリケーションへのアクセスを有効にするには、アクセスを必要としているすべてのユーザーに資格情報を配布する必要があります。
-* 各共有アプリケーションでそれぞれ固有の共有資格情報セットを必要とすることがあります。 このような場合、ユーザーは複数の資格情報セットを覚えておく必要があります  (たとえば、パスワードを書き留めるなど)。
+* 各共有アプリケーションでそれぞれ固有の共有資格情報セットを必要とすることがあります。 このような場合、ユーザーは複数の資格情報セットを覚えておく必要があります (たとえば、パスワードを書き留めるなど)。
 * どのユーザーがアプリケーションにアクセスできるのかはっきりしません。
 * アプリケーションに *アクセスした* ユーザーをはっきりさせることができません。
 * アプリケーションへのアクセス権を削除する必要がある場合は、資格情報を更新して、アプリケーションへのアクセスを必要としているすべてのユーザーに再配布する必要があります。

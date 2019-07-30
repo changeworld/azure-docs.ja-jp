@@ -14,26 +14,22 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a4900964fb6feeb4c7cb0f147d3681031cac6a7b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5eb9d0631a4d5f4221b5184198290a5109655408
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798422"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326577"
 ---
-# <a name="quickstart-create-an-azure-function-with-app-configuration"></a>クイック スタート:App Configuration で Azure Function を作成する
+# <a name="quickstart-create-an-azure-function-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration で Azure Function を作成する
 
-Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 これを使用すると、すべてのアプリケーション設定を、コードとは別の 1 つの場所に簡単に保存して管理することができます。 このクイック スタートでは、Azure 関数にサービスを組み込む方法を示します。 
-
-このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
-
-![クイック スタート完了 (ローカル)](./media/quickstarts/dotnet-core-function-launch-local.png)
+このクイック スタートでは、コードとは別にすべてのアプリケーション設定のストレージと管理を一元化するために、Azure App Configuration サービスを Azure Function に組み込みます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、[Visual Studio 2019](https://visualstudio.microsoft.com/vs) をインストールします。 **Azure 開発**ワークロードもインストールされていることを確認します。 また、[最新の Azure Functions ツール](../azure-functions/functions-develop-vs.md#check-your-tools-version)をインストールします。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) と **Azure 開発**ワークロード。
+- [Azure Functions ツール](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 

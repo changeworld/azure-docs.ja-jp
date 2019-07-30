@@ -17,12 +17,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10b5169d3f06e265b3effa3ec18ad8e4f69959d3
-ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
+ms.openlocfilehash: 328db116cebda5eb288f04cc89e2c85550c38083
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66121970"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421195"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS と ADAL JS の相違点
 
@@ -59,9 +59,9 @@ v2.0 では、`https://login.microsoftonline.com/common` 機関を使用する�
 
     v2.0 プロトコルでは、リソースではなくスコープが要求で使用されます。 つまり、アプリケーションが、MS Graph などのリソースのアクセス許可でトークンを要求する必要がある場合、ライブラリ メソッドに渡される値における差異は次のとおりです。
 
-    v1.0: リソース =https://graph.microsoft.com
+    v1.0: resource = https\://graph.microsoft.com
 
-    v2.0: スコープ = https://graph.microsoft.com/User.Read
+    v2.0: scope = https\://graph.microsoft.com/User.Read
 
     任意のリソース API のスコープを要求するには、この API の URI を appidURI/scope の形式 (例: https:\//mytenant.onmicrosoft.com/myapi/api.read) で使用します
 

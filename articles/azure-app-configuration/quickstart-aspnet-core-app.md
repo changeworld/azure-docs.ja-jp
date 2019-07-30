@@ -14,28 +14,21 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 1b2a076427d8e4e845096c40cdbdf56b62a1723e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 600c808c0bda991bb7203bbf60c098918e274da6
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795720"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326623"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
-Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 これを使用すると、すべてのアプリケーション設定を、コードとは別の 1 つの場所に簡単に保存して管理することができます。 このクイック スタートでは、ASP.NET Core Web アプリにサービスを組み込む方法を示します。 
-
-ASP.NET Core では、アプリケーションによって指定される 1 つ以上のデータ ソースからの設定を使用して、キーと値に基づく 1 つの構成オブジェクトが作成されます。 これらのデータ ソースは、"*構成プロバイダー*" と呼ばれます。 App Configuration の .NET Core クライアントはそのようなプロバイダーとして実装されるため、このサービスは他のデータ ソースと同じように表示されます。
-
-このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
-
-![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-app-launch-local.png)
+このクイック スタートでは、コードとは別にアプリケーション設定のストレージと管理を一元化するために、Azure App Configuration を ASP.NET Core アプリに組み込みます。 ASP.NET Core では、アプリケーションによって指定される 1 つ以上のデータ ソースからの設定を使用して、キーと値に基づく 1 つの構成オブジェクトが作成されます。 これらのデータ ソースは、"*構成プロバイダー*" と呼ばれます。 App Configuration の .NET Core クライアントはそのようなプロバイダーとして実装されるため、このサービスは他のデータ ソースと同じように表示されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、[.NET Core SDK](https://dotnet.microsoft.com/download) をインストールします。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- [.NET コア SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 

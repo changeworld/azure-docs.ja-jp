@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e4b2f9eaa243c0cbef66f88544be769481dd6722
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: a3d2b51824f4293dc790979ca2513d011b60fd9c
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798654"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414446"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux デバイスに展開する
 
@@ -66,7 +66,7 @@ IoT Edge デバイス:
 
    新しい仮想マシンを作成するときは、create コマンドの出力内容に含まれる **publicIpAddress** を書き留めておいてください。 このクイック スタートの中で、後からこのパブリック IP アドレスを使用して仮想マシンに接続します。
 
-* Azure IoT Edge ランタイムを自分のデバイスで実行したい場合は、「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」の手順に従います。
+* Azure IoT Edge ランタイムを自分のデバイス上で実行したい場合は、「[Linux に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-linux.md)」の手順に従います。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -130,7 +130,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
    ```
 
-IoT Edge をローカル コンピューター上または ARM32 デバイス上で実行している場合、IoT Edge ランタイムとその前提条件をデバイスにインストールする必要があります。 「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」の手順に従ってインストールしたら、このクイック スタートに戻ります。
+IoT Edge をローカル コンピューター上または ARM32 あるいは ARM64 デバイス上で実行している場合、IoT Edge ランタイムとその前提条件をデバイスにインストールする必要があります。 [Linux 上への Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge-linux.md)に関するページの手順に従ってから、このクイックスタートに戻ります。
 
 ### <a name="view-the-iot-edge-runtime-status"></a>IoT Edge ランタイムの状態を確認する
 

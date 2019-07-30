@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/12/2019
-ms.openlocfilehash: 1687a81952418c0b751fe0b9ec0ec560ae0b2b2b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c738b2d44c5faca1ef95b2da8fd1f90a1b3af919
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297611"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371014"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>クイック スタート:Azure Cosmos DB SQL API リソースを管理する .NET コンソール アプリを構築する
 
@@ -34,7 +34,7 @@ Azure Cosmos DB、Microsoft のグローバルに配布されるマルチモデ�
 * データを照会する 
 * データベースを削除する
 
-[API リファレンスのドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-cosmos-dotnet-v3) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
+[API リファレンスのドキュメント](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-cosmos-dotnet-v3) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -126,9 +126,25 @@ dotnet add package Microsoft.Azure.Cosmos
 
 アカウントの **[URI]** と **[プライマリ キー]** をコピーしたら、アプリケーションを実行しているローカル コンピューター上の新しい環境変数に保存します。 環境変数を設定するには、コンソール ウィンドウを開き、次のコマンドを実行します。 `<Your_Azure_Cosmos_account_URI>` と `<Your_Azure_Cosmos_account_PRIMARY_KEY>` の値は必ず置き換えてください。
 
+**Windows**
+
 ```console
-setx EndpointUrl <Your_Azure_Cosmos_account_URI>
-setx PrimaryKey <Your_Azure_Cosmos_account_PRIMARY_KEY>
+setx EndpointUrl "<Your_Azure_Cosmos_account_URI>"
+setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+```
+
+**Linux**
+
+```bash
+export EndpointUrl "<Your_Azure_Cosmos_account_URI>"
+export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+```
+
+**MacOS**
+
+```bash
+export EndpointUrl "<Your_Azure_Cosmos_account_URI>"
+export PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 ```
 
  ## <a id="object-model"></a>オブジェクト モデル
@@ -142,16 +158,17 @@ setx PrimaryKey <Your_Azure_Cosmos_account_PRIMARY_KEY>
 
 さまざまなエンティティの階層の詳細については、[Azure Cosmos DB のデータベース、コンテナー、および項目の操作](databases-containers-items.md)に関する記事を参照してください。 これらのリソースとやり取りするには、以下の .NET クラスを使用します。
 
-* [CosmosClient]() - このクラスは、Azure Cosmos DB サービスのクライアント側の論理表現を提供します。 このクライアント オブジェクトは、サービスに対する要求の構成と実行に使用されます。
+* [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient?view=azure-dotnet) - このクラスは、Azure Cosmos DB サービスのクライアント側の論理表現を提供します。 このクライアント オブジェクトは、サービスに対する要求の構成と実行に使用されます。
 
-* [CreateDatabaseIfNotExistsAsync]() - このメソッドによって、非同期操作としてデータベース リソースが (存在しない場合は) 作成されるか、(既に存在する場合は) 取得されます。 
+* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet) - このメソッドによって、非同期操作としてデータベース リソースが (存在しない場合は) 作成されるか、(既に存在する場合は) 取得されます。 
 
-* [CreateContainerIfNotExistsAsync]() - このメソッドによって、非同期操作としてコンテナーが (存在しない場合は) 作成されるか、(既に存在する場合は) 取得されます。 応答から状態コードを確認して、コンテナーが新しく作成された (201) か、既存のコンテナーが返された (200) かを判断できます。 
-* [CreateItemAsync]() - このメソッドによって、コンテナー内に項目が作成されます。 
+* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet) - このメソッドによって、非同期操作としてコンテナーが (存在しない場合は) 作成されるか、(既に存在する場合は) 取得されます。 応答から状態コードを確認して、コンテナーが新しく作成された (201) か、既存のコンテナーが返された (200) かを判断できます。 
+* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet) - このメソッドによって、コンテナー内に項目が作成されます。 
 
-* [QueryItemsAsync]() - 必要な項目を取得するクエリが実行されます。 このメソッド内で SQL クエリが渡されます。 
+* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
+) - このメソッドにより、SQL ステートメントとパラメーター化された値を利用して Azure Cosmos データベースのコンテナーの下でアイテムに対するクエリが作成されます。 
 
-* [DeleteAsync]() - 指定されたデータベースを Azure Cosmos アカウントから削除します。 `DeleteAsync` メソッドでは、データベースのみが削除されます。 `Cosmosclient` インスタンスの破棄は個別に行われる必要があります (DeleteDatabaseAndCleanupAsync メソッドで実行されます)。 
+* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet) - 指定されたデータベースを Azure Cosmos アカウントから削除します。 `DeleteAsync` メソッドでは、データベースのみが削除されます。 `Cosmosclient` インスタンスの破棄は個別に行われる必要があります (DeleteDatabaseAndCleanupAsync メソッドで実行されます)。 
 
  ## <a id="code-examples"></a>コード例
 

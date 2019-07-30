@@ -8,20 +8,20 @@ manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
+ms.custom: aaddev
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2182708ea459b578a2a9a94213ab41e76821aefc
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 3ca7e7f282d63160cd1f729fba00f6d7d7704270
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514339"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334136"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>クイック スタート:ユーザーをサインインさせて、JavaScript のシングルページ アプリケーションからアクセス トークンを取得する
 
@@ -60,7 +60,7 @@ ms.locfileid: "67514339"
 > 1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。
 > 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[リダイレクト URI]** セクションのドロップダウン リストで、**Web** プラットフォームを選択し、値を `http://localhost:30662/` に設定します。
-> 1. **[登録]** を選択します。 後で使用するために、アプリの **[概要]** ページで、 **[Application (client) ID]\(アプリケーション (クライアント) ID\)** の値を書き留めます。
+> 1. **[登録]** を選択します。 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
 > 1. このクイック スタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 登録済みのアプリケーションの左側のウィンドウで、 **[認証]** を選択します。
 > 1. **[詳細設定]** セクションの **[暗黙の付与]** で、 **[ID トークン]** チェック ボックスと **[アクセス トークン]** チェック ボックスをオンにします。 このアプリでは、ユーザーのサインインを実行して API を呼び出す必要があるため、ID トークンとアクセス トークンが必要です。
 > 1. ウィンドウの上部で **[保存]** を選択します。
@@ -275,3 +275,8 @@ MSAL リポジトリでドキュメント、FAQ、イシューなどを閲覧す
 
 > [!div class="nextstepaction"]
 > [MSAL.js GitHub リポジトリ](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+
+Microsoft ID プラットフォームの改善にご協力ください。 簡単な 2 つの質問からなるアンケートに記入し、ご意見をお聞かせください。
+
+> [!div class="nextstepaction"]
+> [Microsoft ID プラットフォームのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

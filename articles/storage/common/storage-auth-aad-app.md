@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 07/15/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e57291292d8957fd323f9be03bb7df0492484ea8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: ffae7467e9f94c68cf004b74c9791f2d9cda3171
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341615"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250007"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>BLOB やキューにアクセスするためにアプリケーションから Azure Active Directory で認証を行う
 
@@ -49,16 +49,16 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 次に、Azure Storage API を呼び出すためのアクセス許可をアプリケーションに付与します。 この手順によって、アプリケーションで Azure AD を使用して Azure Storage への要求を承認できるようになります。
 
 1. 登録済みアプリケーションの **[概要]** ページで、 **[API アクセス許可の表示]** を選択します。
-1. **[API のアクセス許可]** セクションで、 **[アクセス許可の追加]** を選択し、 **[所属する組織で使用している API]** を選択します。
-1. **[所属する組織で使用している API]** セクションで、"Azure Storage" を検索し、結果の一覧から **[Azure Storage]** を選択し、 **[API アクセス許可の要求]** ウィンドウを表示します。
+1. **[API のアクセス許可]** セクションで、 **[アクセス許可の追加]** を選択し、 **[Microsoft API]** を選択します。
+1. 結果の一覧から **[Azure Storage]** を選択して、 **[Request API permissions]\(API のアクセス許可を要求する\)** ウィンドウを選択します。
+1. **[アプリケーションに必要なアクセス許可の種類]** で、使用可能なアクセス許可の種類が **[委任されたアクセス許可]** になっていることを確認してください。 このオプションは既定で選択されています。
+1. **[API アクセス許可の要求]** ウィンドウの **[アクセス許可の選択]** セクションで、 **[user_impersonation]** の横のチェック ボックスをオンにし、 **[アクセス許可の追加]** をクリックします。
 
     ![ストレージのアクセス許可を示すスクリーンショット](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-1. **[アプリケーションに必要なアクセス許可の種類]** で、使用可能なアクセス許可の種類が **[委任されたアクセス許可]** になっていることを確認してください。 このオプションは既定で選択されています。
-1. **[API アクセス許可の要求]** ウィンドウの **[アクセス許可の選択]** セクションで、 **[user_impersonation]** の横のチェック ボックスをオンにし、 **[アクセス許可の追加]** をクリックします。
-1. これで、 **[API のアクセス許可]** ウィンドウに、Azure AD アプリケーションに Microsoft Graph と Azure Storage の両方へのアクセス権があることが示されます。 アプリを Azure AD に最初に登録する際に、Microsoft Graph へのアクセス許可が自動的に付与されます。
+これで、 **[API のアクセス許可]** ウィンドウに、登録済み Azure AD アプリケーションに Microsoft Graph と Azure Storage の両方へのアクセス権があることが示されます。 アプリを Azure AD に最初に登録する際に、Microsoft Graph へのアクセス許可が自動的に付与されます。
 
-    ![登録済みのアプリのアクセス許可を示すスクリーンショット](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![登録済みのアプリのアクセス許可を示すスクリーンショット](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="create-a-client-secret"></a>クライアント シークレットの作成
 
@@ -78,6 +78,22 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 
 トークンの取得がサポートされるシナリオの一覧は、[Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub リポジトリの[シナリオ](https://aka.ms/msal-net-scenarios)のセクションを参照してください。
 
+## <a name="well-known-values-for-authentication-with-azure-ad"></a>Azure AD による認証の既知の値
+
+Azure AD でセキュリティ プリンシパルの認証を行うには、いくつかの既知の値をコードに含める必要があります。
+
+### <a name="azure-ad-authority"></a>Azure AD 機関
+
+Microsoft パブリック クラウドの場合、基本 Azure AD 機関は次のとおりです。ここで、*tenant-id* は実際の Active Directory テナント ID (またはディレクトリ ID) です。
+
+`https://login.microsoftonline.com/<tenant-id>/`
+
+テナント ID は、認証に使用する Azure AD テナントを識別します。 ディレクトリ ID とも呼ばれます。 テナント ID を取得するには、Azure portal でアプリ登録の **[概要]** ページに移動し、そこから値をコピーします。
+
+### <a name="azure-storage-resource-id"></a>Azure Storage リソース ID
+
+[!INCLUDE [storage-resource-id-include](../../../includes/storage-resource-id-include.md)]
+
 ## <a name="net-code-example-create-a-block-blob"></a>.NET コード例: ブロック BLOB を作成する
 
 このコード例では、Azure AD からアクセス トークンを取得する方法を示します。 アクセス トークンは、指定されたユーザーの認証を行って、ブロック BLOB を作成する要求を承認するために使用されます。 このサンプルを動作させるには、まず前のセクションで説明されている手順に従ってください。
@@ -89,24 +105,6 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 - クライアント (またはアプリケーション) ID。 この値は、アプリ登録の **[概要]** ページから取得します。
 - クライアント リダイレクト URI。 この値は、アプリ登録の **[認証]** の設定から取得します。
 - クライアント シークレットの値。 この値は、前にコピーした場所から取得します。
-
-### <a name="well-known-values-for-authentication-with-azure-ad"></a>Azure AD による認証の既知の値
-
-Azure AD でセキュリティ プリンシパルの認証を行うには、いくつかの既知の値をコードに含める必要があります。
-
-#### <a name="azure-ad-authority"></a>Azure AD 機関
-
-Microsoft パブリック クラウドの場合、基本 Azure AD 機関は次のとおりです。ここで、*tenant-id* は実際の Active Directory テナント ID (またはディレクトリ ID) です。
-
-`https://login.microsoftonline.com/<tenant-id>/`
-
-テナント ID は、認証に使用する Azure AD テナントを識別します。 ディレクトリ ID とも呼ばれます。 テナント ID を取得するには、Azure portal でアプリ登録の **[概要]** ページに移動し、そこから値をコピーします。
-
-#### <a name="storage-resource-id"></a>ストレージ リソース ID
-
-Azure Storage への要求を承認するトークンを取得するには、Azure Storage リソース ID を使用します。
-
-`https://storage.azure.com/`
 
 ### <a name="create-a-storage-account-and-container"></a>ストレージ アカウントとコンテナーの作成
 
@@ -177,9 +175,11 @@ Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 
 #### <a name="get-an-oauth-token-from-azure-ad"></a>Azure AD から OAuth トークンを取得する
 
-次に、Azure AD に対してトークンを要求するメソッドを追加します。 要求するトークンはユーザーの代理となり、GetTokenOnBehalfOfUser メソッドが使用されます。
+次に、ユーザーの代わりに Azure AD からトークンを要求するメソッドを追加します。 このメソッドは、アクセス許可が付与されるスコープを定義します。 アクセス許可とスコープの詳細については、「[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](../../active-directory/develop/v2-permissions-and-consent.md)」を参照してください。
 
-最近ログインして、`storage.azure.com` リソース用のトークンを要求している場合、ユーザーがユーザーに代わってこのようなアクションに同意することができる UI を、ユーザーに表示することが必要になるということに注意してください。 これに円滑に行うには、次の例に示すように、`MsalUiRequiredException` をキャッチし、ユーザーの同意を要求する機能を追加する必要があります。
+リソース ID を使用して、トークンを取得するスコープを構築します。 この例では、(ユーザーの代わりにトークンが要求されることを示す) 組み込みの `user_impersonation` スコープと共にリソース ID を使用してスコープを構築します。
+
+注意点としては、自分の代わりにトークンを要求することにユーザーが同意するためのインターフェイスをユーザーに提示することが必要な場合があります。 同意が必要な場合、例では **MsalUiRequiredException** をキャッチし、別のメソッドを呼び出して同意の要求を促進します。
 
 ```csharp
 public async Task<IActionResult> Blob()
@@ -194,7 +194,8 @@ public async Task<IActionResult> Blob()
     }
     catch (MsalUiRequiredException ex)
     {
-        AuthenticationProperties properties = BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
+        AuthenticationProperties properties =
+            BuildAuthenticationPropertiesForIncrementalConsent(scopes, ex);
         return Challenge(properties);
     }
 }
@@ -205,15 +206,18 @@ public async Task<IActionResult> Blob()
 次のメソッドは、増分同意を要求する認証プロパティを作成します。
 
 ```csharp
-private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes, MsalUiRequiredException ex)
+private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalConsent(string[] scopes,
+                                                                                    MsalUiRequiredException ex)
 {
     AuthenticationProperties properties = new AuthenticationProperties();
 
-    // Set the scopes, including the scopes that ADAL.NET / MSAL.NET need for the Token cache.
+    // Set the scopes, including the scopes that ADAL.NET or MSAL.NET need for the Token cache.
     string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
-    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope, scopes.Union(additionalBuildInScopes).ToList());
+    properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
+                                                 scopes.Union(additionalBuildInScopes).ToList());
 
-    // Attempt to set the login_hint so that the logged-in user is not presented with an account selection dialog.
+    // Attempt to set the login_hint so that the logged-in user is not presented
+    // with an account selection dialog.
     string loginHint = HttpContext.User.GetLoginHint();
     if (!string.IsNullOrWhiteSpace(loginHint))
     {
@@ -235,7 +239,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 
 ## <a name="view-and-run-the-completed-sample"></a>完全なサンプルを表示して実行する
 
-サンプル アプリケーションを実行するには、最初に [GitHub](https://aka.ms/aadstorage) から複製またはダウンロードします。 その後、以下のセクションで説明するようにアプリケーションを更新します。
+サンプル アプリケーションを実行するには、最初に [GitHub](https://github.com/Azure-Samples/storage-dotnet-azure-ad-msal) から複製またはダウンロードします。 その後、以下のセクションで説明するようにアプリケーションを更新します。
 
 ### <a name="provide-values-in-the-settings-file"></a>設定ファイルで値を提供する
 

@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: a8857d62b3078d78bdd0a339ebadf766ddb2fb43
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 51d1af24a22f7ed86b01b1c7c79b204cd552a7ea
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295814"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385425"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
 
@@ -64,6 +64,8 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
   たとえば、Dynamics CRM Online の接続の場合、デザイナーは CRM インスタンスをチェックして、既定のプロパティやカスタム プロパティを確認します。
 
 * Logic Apps でサポートされるメール アカウント (Office 365 Outlook、Outlook.com、Gmail など)。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](https://docs.microsoft.com/connectors/)してください。 この例では Office 365 Outlook を使います。 別のプロバイダーを使用する場合も、全体的な手順は同じです。ただし、UI がやや異なる場合があります。
+
+<a name="create-resource-group-project"></a>
 
 ## <a name="create-azure-resource-group-project"></a>Azure リソース グループ プロジェクトを作成する
 
@@ -141,6 +143,8 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
 1. Visual Studio ソリューションを保存します。 (Ctrl + S キー)。
 
+<a name="deploy-to-Azure"></a>
+
 ## <a name="deploy-logic-app-to-azure"></a>ロジック アプリを Azure にデプロイする
 
 ロジック アプリを実行してテストする前に、Visual Studio からそのアプリを Azure にデプロイします。
@@ -173,6 +177,22 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
    ![Outlook が新しい RSS 項目ごとにメールを送信する](./media/quickstart-create-logic-apps-with-visual-studio/outlook-email.png)
 
 これで、Visual Studio でロジック アプリが正常に構築およびデプロイされました。 ロジック アプリを管理して実行履歴を確認するには、「[Manage logic apps with Visual Studio (Visual Studio でロジック アプリを管理する)](../logic-apps/manage-logic-apps-with-visual-studio.md)」を参照してください。
+
+## <a name="add-new-logic-app"></a>新しいロジック アプリを追加する
+
+既存の Azure リソース グループ プロジェクトがある場合は、[JSON アウトライン] ウィンドウを使用してそのプロジェクトに新しい空のロジック アプリを追加できます。
+
+1. ソリューション エクスプローラーで、`<logic-app-name>.json` ファイルを開きます。
+
+1. **[表示]** メニューの **[その他のウィンドウ]**  >  **[JSON アウトライン]** を選択します。
+
+1. テンプレート ファイルにリソースを追加するには、[JSON アウトライン] ウィンドウの上部にある **[リソースの追加]** を選択します。 または、[JSON アウトライン] ウィンドウで、 **[リソース]** を右クリックして、 **[新しいリソースの追加]** を選びます。
+
+   ![[JSON アウトライン] ウィンドウ](./media/quickstart-create-logic-apps-with-visual-studio/jsonoutline.png)
+
+1. **[リソースの追加]** ダイアログ ボックスで、 **[ロジック アプリ]** を探して選びます。 ロジック アプリの名前を指定し、 **[追加]** を選びます。
+
+   ![リソースの追加](./media/quickstart-create-logic-apps-with-visual-studio/addresource.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
