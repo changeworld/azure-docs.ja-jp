@@ -23,7 +23,7 @@ Azure portal では、Azure CLI、または Resource Manager テンプレート�
 
 Kubernetes の基礎の詳細については、[AKS における Kubernetes の中心概念][concepts-clusters-workloads]に関するページを参照してください。
 
-開始するには、[Azure portal で][aks-portal]、または Azure CLI を使用して、AKS のクイック スタートを完了します。
+まず、AKS のクイック スタートを完了、[Azure portal で][aks-portal] or [with the Azure CLI][aks-cli]します。
 
 ## <a name="access-security-and-monitoring"></a>アクセス、セキュリティ、および監視
 
@@ -71,7 +71,7 @@ AKS は GPU 対応ノード プールの作成をサポートしています。 
 
 詳細については、[AKS でのアプリケーションのストレージ オプション][concepts-storage]に関するページを参照してください。
 
-[Azure Disks][azure-disk] または Azure Files を使用して、動的な永続ボリュームの利用を開始します。
+使用して動的の永続ボリュームの概要[Azure Disks][azure-disk] or [Azure Files][azure-files]します。
 
 ## <a name="virtual-networks-and-ingress"></a>仮想ネットワークとイングレス
 

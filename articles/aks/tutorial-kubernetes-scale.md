@@ -70,7 +70,7 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>ポッドを自動スケールする
 
-Kubernetes では [ポッドの水平自動スケール][kubernetes-hpa]がサポートされており、CPU 使用率やその他の選択したメトリックに応じて、デプロイ内のポッドの数が調整されます。Metrics Server は Kubernetes にリソース使用率を提供するために使用され、バージョン 1.10 以降の AKS クラスターに自動的にデプロイされます。 ご利用の AKS クラスターのバージョンを確認するには、次の例に示すように、[az aks show][az-aks-show] コマンドを使用します。
+Kubernetes のサポート[ポッドの水平自動スケール][kubernetes-hpa] to adjust the number of pods in a deployment depending on CPU utilization or other select metrics. The [Metrics Server][metrics-server]を Kubernetes では、リソース使用率を提供するために使用し、AKS クラスター 1.10 以降のバージョンでは自動的にデプロイします。 ご利用の AKS クラスターのバージョンを確認するには、次の例に示すように、[az aks show][az-aks-show] コマンドを使用します。
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion

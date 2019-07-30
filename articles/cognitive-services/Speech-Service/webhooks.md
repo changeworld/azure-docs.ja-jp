@@ -133,7 +133,7 @@ POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test 
 
 ### <a name="run-a-test"></a>テストを実行する
 
-https://bin.webhookrelay.com の Web サイトを使用して、簡単なテストを行うことができます。 そこから、このドキュメントで前述した Webhook を作成するための HTTP POST にパラメーターとして渡すコールバック URL を取得できます。
+[https://bin.webhookrelay.com](https://bin.webhookrelay.com ) の Web サイトを使用して、簡単なテストを行うことができます。 そこから、このドキュメントで前述した Webhook を作成するための HTTP POST にパラメーターとして渡すコールバック URL を取得できます。
 
 [Create Bucket] (バケットの作成) をクリックし、画面の指示に従ってフックを取得します。 次に、このページで提供される情報を使用して、フックを Speech サービスに登録します。 文字起こしの完了に応答して、リレー メッセージのペイロードは次のようになります。
 

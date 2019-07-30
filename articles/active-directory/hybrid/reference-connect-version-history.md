@@ -508,7 +508,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同期
 > [!NOTE]
-> 注:同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズしようとする顧客は、組み込みスケジューラ (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) を使用する必要があります。
+> 注:同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズしようとする顧客は、[組み込みスケジューラ]https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) を使用する必要があります。
 
 #### <a name="fixed-issues"></a>修正された問題
 * Azure AD Connect ウィザードで、オンプレミス Active Directory からの変更を同期するために必要な AD Connector アカウントを作成するときに、PublicFolder オブジェクトの読み取りに必要なアクセス許可がアカウントに正しく割り当てられません。 この問題は、高速インストールとカスタム インストールの両方に影響します。 今回の変更により、この問題が修正されました。

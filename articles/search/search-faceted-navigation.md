@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c032dbc528ed5034280d0ecb4c95700b51869991
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fc1e1aaaa3b2489dd4083f56d45ab0abc2b6892
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65793620"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67165966"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Azure Search でファセット ナビゲーションを実装する方法
 ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。 「ファセット ナビゲーション」という用語は聞き慣れないかもしれませんが、気づかずに使っていることもあります。 次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。
@@ -401,5 +401,5 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 ファセット ナビゲーションの設計の原則の詳細については、次のリンクをお勧めします。
 
 * [設計パターン:ファセット ナビゲーション](https://alistapart.com/article/design-patterns-faceted-navigation)
-* [ファセット検索の実装時のフロントエンドの問題 – その 1 ](https://articles.uie.com/faceted_search2/)
+* [ファセット検索の実装時のフロントエンドの問題 – その 1](https://articles.uie.com/faceted_search2/)
 

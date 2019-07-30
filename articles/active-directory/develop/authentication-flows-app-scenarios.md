@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2019
+ms.date: 07/25/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d50019e8de1daf3d69342dcaf9eeecfba493a83
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: c3d9f96f0b61129a0f881c8fe8676bd5df7376ad
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302402"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494575"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
@@ -80,6 +80,14 @@ Microsoft ID プラットフォーム (v2.0) エンドポイントでは、さ�
 
 Microsoft ID プラットフォーム エンドポイントは、シングルページ アプリ、Web アプリ、Web API、モバイル アプリ、ネイティブ アプリ、デーモン アプリ、サーバー側アプリなど、さまざまなアプリケーション アーキテクチャの認証をサポートしています。  アプリケーションでは、さまざまな認証フローを使用してユーザーのサインインを行い、トークンを取得して保護された API を呼び出します。
 
+### <a name="single-page-application"></a>シングルページ アプリ
+
+最近の Web アプリケーションの多くは、JavaScript または SPA フレームワーク (Angular、Vue.js、React.js など) を使用して記述されたクライアント側のシングルページ アプリケーションとして構築されています。 これらのアプリケーションは、Web ブラウザーで実行され、従来のサーバー側 Web アプリケーションとは異なる認証特性を持ちます。 Microsoft ID プラットフォームにより、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするトークンを取得できます。
+
+![シングルページ アプリ](media/scenarios/spa-app.svg)
+
+詳細については、「[シングルページ アプリケーション](scenario-spa-overview.md)」を参照してください。
+
 ### <a name="web-application-signing-in-a-user"></a>ユーザーのサインインを行う Web アプリケーションのサインイン
 
 ![Web アプリによるユーザーのサインイン](media/scenarios/scenario-webapp-signs-in-users.svg)
@@ -102,17 +110,17 @@ Web アプリからユーザーに代わって **Web API を呼び出す**には
 
 ### <a name="desktop-application-calling-a-web-api-on-behalf-of-the-signed-in-user"></a>サインイン ユーザーに代わって Web API を呼び出すデスクトップ アプリケーション
 
-ユーザーのサインインを行うデスクトップ アプリケーションから Web API を呼び出すには、MSAL の PublicClientApplication の対話型トークンの取得メソッドを使用します。 これらの対話型メソッドを使用すると、サインイン UI エクスペリエンスを制御できます。 この対話を有効にするために、MSAL では Web ブラウザーが利用されます。
+ユーザーをサインインさせるデスクトップ アプリケーションから Web API を呼び出すには、MSAL の PublicClientApplication の対話型トークンの取得メソッドを使用します。 これらの対話型メソッドを使用すると、サインイン UI エクスペリエンスを制御できます。 この対話を有効にするために、MSAL では Web ブラウザーが利用されます。
 
 ![デスクトップ](media/scenarios/desktop-app.svg)
 
-Windows ドメインまたは AAD に参加しているコンピューター上で実行されている Windows ホスト アプリケーションの場合は、別の可能性があります。 [統合 Windows 認証](https://aka.ms/msal-net-iwa)を使用してトークンを自動的に取得できます。
+Windows ドメインまたは AAD に参加しているコンピューター上で実行されている Windows ホスト アプリケーションの場合は、別の可能性があります。 これらのアプリケーションでは、[統合 Windows 認証](https://aka.ms/msal-net-iwa)を使用してトークンを自動的に取得できます。
 
 ブラウザーがないデバイス上で実行されているアプリケーションでも、ユーザーに代わって API を呼び出すことができます。 認証するには、ユーザーは Web ブラウザーがある別のデバイス上でサインインする必要があります。 このシナリオを有効にするには、[デバイス コード フロー](https://aka.ms/msal-net-device-code-flow)を使用する必要があります。
 
 ![デバイス コード フロー](media/scenarios/device-code-flow-app.svg)
 
-最後に、推奨されていませんが、パブリック クライアント アプリケーションでは[ユーザー名/パスワード](https://aka.ms/msal-net-up)を使用することができます。 このフローは、一部のシナリオ (DevOps など) ではまだ必要ですが、それを使用するとアプリケーションに制約が課せされることに注意してください。 たとえば、このフローを使用するアプリでは、多要素認証 (条件付きアクセス) を実行する必要があるユーザーをサインインさせることができません。 アプリケーションでシングル サインオンを利用することもできません。 さらに、先進認証の原則に反しており、これはレガシの理由のためにのみ提供されています。
+最後に、推奨されていませんが、パブリック クライアント アプリケーションでは[ユーザー名/パスワード](https://aka.ms/msal-net-up)を使用することができます。 このフローは、一部のシナリオ (DevOps など) ではまだ必要ですが、それを使用するとアプリケーションに制約が課せされることに注意してください。 たとえば、このフローを使用するアプリでは、多要素認証 (条件付きアクセス) を実行する必要があるユーザーをサインインさせることができません。 アプリケーションでシングル サインオンを利用することもできません。 ユーザー名/パスワードを使用する認証は、先進認証の原則に反しており、これはレガシの理由のためにのみ提供されています。
 
 デスクトップ アプリケーションでトークン キャッシュを永続的にする場合は、[トークン キャッシュのシリアル化をカスタマイズする](https://aka.ms/msal-net-token-cache-serialization)必要があります。 また、[デュアル トークン キャッシュのシリアル化](https://aka.ms/msal-net-dual-cache-serialization)を実装することで、以前の世代の認証ライブラリ (ADAL.NET 3.x および 4.x) との後方および前方の互換性のあるトークン キャッシュを有効にすることもできます。
 
@@ -120,9 +128,12 @@ Windows ドメインまたは AAD に参加しているコンピューター上�
 
 ### <a name="mobile-application-calling-a-web-api-on-behalf-of-the-user-whos-signed-in-interactively"></a>対話式でサインインしたユーザーに代わって Web API を呼び出すモバイル アプリケーション
 
+デスクトップ アプリケーションと同様に、モバイル アプリケーションでは、MSAL の PublicClientApplication の対話型トークンの取得メソッドを使用して、Web API を呼び出すトークンを取得します。
+
 ![モバイル](media/scenarios/mobile-app.svg)
 
-デスクトップ アプリケーションの場合と同様に、Web API を呼び出すトークンを取得するために、モバイル アプリケーションでは MSAL の PublicClientApplication の対話型トークンの取得メソッドを使用します。 iOS と Android 上の MSAL では、既定で、システム Web ブラウザーを使用します。 ただし、埋め込みの Web ビューを使用するように指示することもできます。 モバイル プラットフォームに応じて、固有のものがあります(UWP、iOS、Android)。
+MSAL iOS と MSAL Android は、既定で、システム Web ブラウザーが使用されます。 ただし、埋め込みの Web ビューを使用するように指示することもできます。 モバイル プラットフォームに応じて、固有のものがあります(UWP、iOS、Android)。
+
 デバイス ID や登録されているデバイスに関連する条件付きアクセスを含め、一部のシナリオでは、デバイス上に[ブローカー](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS)をインストールする必要があります。 ブローカーの例として、Microsoft ポータル サイト (Android 上)、Microsoft Authenticator (Android と iOS) があります。 MSAL は、ブローカーと対話できるようになりました。
 
 > [!NOTE]
@@ -151,6 +162,8 @@ Microsoft ID プラットフォーム エンドポイントを使用すると、
 MSAL の ConfidentialClientApplication の[クライアント資格情報](https://aka.ms/msal-net-client-credentials)の取得メソッドを使用して、アプリのトークンを取得するようなアプリ (デーモン アプリ) を作成できます。 このような場合は、アプリが以前にシークレット (アプリケーションのパスワード、証明書、またはクライアント アサーション) を Azure AD に登録していることを想定しています。その後、この呼び出しと共有されます。
 
 ![デーモン アプリ](media/scenarios/daemon-app.svg)
+
+詳細については、「[Web API を呼び出すデーモン アプリケーション](scenario-daemon-overview.md)」を参照してください。
 
 ## <a name="scenarios-and-supported-authentication-flows"></a>シナリオとサポートされている認証フロー
 
@@ -183,6 +196,8 @@ MSAL の ConfidentialClientApplication の[クライアント資格情報](https
 | [Web API を呼び出すモバイル アプリ](scenario-mobile-overview.md) <br/> [![Web API を呼び出すモバイル アプリ](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/logo_xamarin.png) MSAL.NET | | | ![iOS / Objective C または Swift](media/sample-v2-code/logo_iOS.png) MSAL.iOS | ![Android](media/sample-v2-code/logo_Android.png) MSAL.Android
 | [デーモン アプリ](scenario-daemon-overview.md) <br/> [![デーモン アプリ](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
 | [Web API を呼び出す Web API](scenario-web-api-call-api-overview.md) <br/> [![Web API を呼び出す Web API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) <br/> ASP.NET + MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png) <br/> ASP.NET Core + MSAL.NET| ![.NET Core](media/sample-v2-code/logo_NETcore.png) <br/> ASP.NET Core + MSAL.NET| ![.NET Core](media/sample-v2-code/logo_NETcore.png)<br/> ASP.NET Core + MSAL.NET
+
+[OS/言語別で Microsoft がサポートするライブラリ](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)に関するセクションも参照してください
 
 ## <a name="next-steps"></a>次の手順
 [認証の基本](authentication-scenarios.md)と[アクセス トークン](access-tokens.md)の詳細を学習します。

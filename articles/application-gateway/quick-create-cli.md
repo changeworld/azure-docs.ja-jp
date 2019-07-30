@@ -1,23 +1,23 @@
 ---
 title: クイック スタート - Azure Application Gateway による Web トラフィックのルーティング - Azure CLI | Microsoft Docs
-description: Azure CLI を使用して、Web トラフィックをバックエンド プール内の仮想マシンにルーティングする Azure Application Gateway を作成する方法を説明します。
+description: Azure CLI を使用して、Web トラフィックをバックエンド プール内の仮想マシンに転送する Azure Application Gateway を作成する方法を学習します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 1/8/2019
+ms.date: 07/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 56b655b07314d5ebc2d0cb47389988f1a89e6a56
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: dd68f4a565c28f1dbac7e94442a8f8231af01328
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304345"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314905"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure CLI
 
-このクイック スタートでは、Azure CLI を使用して、アプリケーション ゲートウェイを作成する方法を示します。  アプリケーション ゲートウェイを作成してから、それをテストして正しく動作していることを確認します。 Azure Application Gateway では、ポートにリスナーを割り当て、ルールを作成し、バックエンド プールにリソースを追加することによって、お客様のアプリケーション Web トラフィックを特定のリソースに転送します。 わかりやすくするために、この記事では、パブリック フロントエンド IP、このアプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、バックエンド プールに使用される 2 つの仮想マシン、および基本要求ルーティング規則を使用する簡単な設定を使用します。
+このクイック スタートでは、Azure CLI を使用して、アプリケーション ゲートウェイを作成する方法を示します。  アプリケーション ゲートウェイを作成してから、それをテストして正しく動作していることを確認します。 Azure Application Gateway では、ポートにリスナーを割り当て、ルールを作成し、バックエンド プールにリソースを追加することによって、お客様のアプリケーション Web トラフィックを特定のリソースに転送します。 この記事では、パブリック フロントエンド IP、このアプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、バックエンド プールに使用される 2 つの仮想マシン、基本要求ルーティング規則を使用するシンプルな設定を使用します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -67,7 +67,7 @@ az network public-ip create \
 
 ### <a name="backend-servers"></a>バックエンド サーバー
 
-バックエンドは、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、完全修飾ドメイン名 (FQDN)、および Azure App Service などのマルチテナント バックエンドで構成できます。 この例では、Azure によってアプリケーション ゲートウェイのバックエンド サーバーとして使用される 2 つの仮想マシンを作成します。 また、仮想マシンに IIS をインストールして、Azure によってアプリケーション ゲートウェイが正常に作成されたことを確認します。
+バックエンドには、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、完全修飾ドメイン名 (FQDN)、Azure App Service などのマルチテナント バックエンドを含めることができます。 この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 また、アプリケーション ゲートウェイをテストするために、仮想マシン上に IIS もインストールします。
 
 #### <a name="create-two-virtual-machines"></a>2 つの仮想マシンの作成
 
@@ -181,7 +181,7 @@ az network public-ip show \
     
 ![アプリケーション ゲートウェイのテスト](./media/quick-create-cli/application-gateway-nginxtest.png)
 
-ブラウザーを更新すると、2 番目の VM の名前が表示されるはずです。 応答が有効であれば、アプリケーション ゲートウェイが正常に作成され、バックエンドと正常に接続できることが保証されます。
+ブラウザーを更新すると、2 番目の VM の名前が表示されるはずです。 これは、アプリケーション ゲートウェイが正常に作成され、バックエンドに正常に接続できることを示しています。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
