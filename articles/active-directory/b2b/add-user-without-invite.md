@@ -31,7 +31,7 @@ ms.locfileid: "67056067"
  
 この元の方法は引き続き使用できます。 ただし、動作に小さな違いがあります。 PowerShell を使用した場合、招待されたゲスト アカウントですぐに **Accepted** と表示されず、**PendingAcceptance** と表示されます。 状態は保留中になりますが、ゲスト ユーザーは、招待メールの中のリンクをクリックしなくても、引き続きサインインし、アプリケーションにアクセスできます。 保留中の状態は、ユーザーが、まだ、[同意操作](redemption-experience.md#consent-experience-for-the-guest)を実行し招待元の組織のプライバシー条項に同意していないことを意味します。 ゲスト ユーザーが最初にサインインしたときに、この同意画面が表示されます。 
 
-ディレクトリにユーザーを招待した場合、ゲスト ユーザーは、リソース テナント固有の Azure Portal URL (https://portal.azure.com/*resourcetenant* onmicrosoft.com など) に直接アクセスしてプライバシー条項を読み、これに同意する必要があります。
+ディレクトリにユーザーを招待した場合、ゲスト ユーザーは、リソース テナント固有の Azure Portal URL (https://portal.azure.com/*resourcetenant*onmicrosoft.com など) に直接アクセスしてプライバシー条項を読み、これに同意する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

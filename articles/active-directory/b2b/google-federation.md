@@ -41,7 +41,7 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 
 ## <a name="step-1-configure-a-google-developer-project"></a>手順 1:Google 開発者プロジェクトを構成する
 最初に、Google Developers Console で新しいプロジェクトを作成して、Azure AD に後で追加するクライアント ID とクライアント シークレットを取得します。 
-1. https://console.developers.google.com で Google API に移動し、Google アカウントでサインインします。 共有のチーム Google アカウントを使用することをお勧めします。
+1. [https://console.developers.google.com](https://console.developers.google.com ) で Google API に移動し、Google アカウントでサインインします。 共有のチーム Google アカウントを使用することをお勧めします。
 2. 新しいプロジェクトを作成します。ダッシュボードで **[プロジェクトを作成]** 、 **[作成]** の順に選択します。 [新しいプロジェクト] ページで、 **[プロジェクト名]** に入力を行ってから **[作成]** を選択します。
    
    ![Google の [New project] ページを示すスクリーンショット](media/google-federation/google-new-project.png)

@@ -22,7 +22,7 @@ ms.locfileid: "67466059"
 QnA Maker は、ユーザーの Azure アカウントでホストされるコンポーネントで構成されます。 デバッグを行うには、ユーザーは QnA Maker Azure リソースを操作するか、QnA Maker サポート チームに設定に関する追加情報を提供する必要がある場合があります。
 
 ## <a name="how-to-get-latest-qnamaker-runtime-updates"></a>QnA Maker ランタイムの最新の更新プログラムを取得する方法
-QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成する](./set-up-qnamaker-service-azure.md)ときにデプロイされる Azure App Service の一部です。 ランタイムの更新は定期的に行われます。 QnA Maker App Service は、2019 年 4 月のサイト拡張リリース (バージョン 5+) 以降、自動更新モードです。 これは、アップグレード中のダウンタイムがゼロになるように既に設計されています。 https://www.qnamaker.ai/UserSettings で現在のバージョンを確認できます。 ご使用のバージョンがバージョン 5.x よりも古い場合、最新の更新プログラムを QnAMaker の設定に適用するために、App Service を再起動する必要があります。
+QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成する](./set-up-qnamaker-service-azure.md)ときにデプロイされる Azure App Service の一部です。 ランタイムの更新は定期的に行われます。 QnA Maker App Service は、2019 年 4 月のサイト拡張リリース (バージョン 5+) 以降、自動更新モードです。 これは、アップグレード中のダウンタイムがゼロになるように既に設計されています。 [https://www.qnamaker.ai/UserSettings](https://www.qnamaker.ai/UserSettings ) で現在のバージョンを確認できます。 ご使用のバージョンがバージョン 5.x よりも古い場合、最新の更新プログラムを QnAMaker の設定に適用するために、App Service を再起動する必要があります。
 
 1. [Azure portal](https://portal.azure.com) で QnA Maker サービス (リソース グループ) に移動します。
 
