@@ -3,17 +3,17 @@ title: CloudSimple サービスによる VMware ソリューション
 description: CloudSimple サービスの概要と概念について説明します。
 author: sharaths-cs
 ms.author: b-shsury
-ms.date: 4/24/19
+ms.date: 04/24/2019
 ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6a4c0bc6070d372a279b74f81ac1f84f565559c3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 0bebc68129ee2ff79241bcefec1ce0c3ca0b472d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165239"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595313"
 ---
 # <a name="cloudsimple-service-overview"></a>CloudSimple サービスの概要
 
