@@ -7,6 +7,7 @@
     - name: App Service Mobile Apps との統合
       href: notification-hubs-app-service.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: 通知ハブの作成 - Azure portal
       href: create-notification-hub-portal.md

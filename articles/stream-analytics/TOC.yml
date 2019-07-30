@@ -7,6 +7,7 @@
     - name: エンドツーエンド ソリューション パターン
       href: stream-analytics-solution-patterns.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: ジョブの作成 - Azure Portal
       href: stream-analytics-quick-create-portal.md

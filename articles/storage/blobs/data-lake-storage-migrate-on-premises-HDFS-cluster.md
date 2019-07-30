@@ -4,16 +4,16 @@ description: オンプレミス HDFS ストアから Azure Storage にデータ�
 services: storage
 author: normesta
 ms.service: storage
-ms.date: 06/05/2019
+ms.date: 06/11/2019
 ms.author: normesta
 ms.topic: article
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 9a42135df38cde91cc6626a3f7d0328334af0a5d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: 4445a8566c04d30cfb8743cbd33623f2e23f0dde
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729064"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595396"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Azure Data Box を使用してオンプレミス HDFS ストアから Azure Storage にデータを移行する
 
@@ -21,37 +21,37 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
 
 この記事は、次のタスクを完了する上で役立ちます。
 
-:heavy_check_mark:データを Data Box または Data Box Heavy デバイスにコピーします。
-
-:heavy_check_mark:Microsoft にデバイスを返送します。
-
-:heavy_check_mark:Data Lake Storage Gen2 ストレージ アカウントにデータを移動します。
+> [!div class="checklist"]
+> * データの移行を準備します。
+> * データを Data Box または Data Box Heavy デバイスにコピーします。
+> * Microsoft にデバイスを返送します。
+> * データを Data Lake Storage Gen2 に移動します。
 
 ## <a name="prerequisites"></a>前提条件
 
 移行を完了するには、以下が必要です。
 
-* 階層型名前空間が有効になって**いない** Azure Storage アカウント。
-
-* Azure Data Lake Storage Gen2 アカウント (階層型名前空間が有効になって**いる**ストレージ アカウント) を使用する場合、この時点で作成できます。
+* 2 つのストレージ アカウント。階層型名前空間が有効なものと、有効ではないものです。
 
 * ソース データを含むオンプレミス Hadoop クラスター。
 
 * [Azure Data Box デバイス](https://azure.microsoft.com/services/storage/databox/)。
 
-    - [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) または [Data Box Heavy を注文します](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 デバイスを注文するときに、階層型名前空間が有効になって**いない**ストレージ アカウントを必ず選択してください。 これは、Data Box デバイスは、Azure Data Lake Storage Gen2 への直接のインジェストをサポートしていないためです。 ストレージ アカウントにコピーしてから、ADLS Gen2 アカウントへの第 2 のコピーを行う必要があります。 これに関する方法は以下の手順で与えられます。
-    - オンプレミス ネットワークに [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) または [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) をケーブル接続します。
+  * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) または [Data Box Heavy を注文します](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 デバイスを注文するときに、階層型名前空間が有効になって**いない**ストレージ アカウントを必ず選択してください。 これは、Data Box デバイスは、Azure Data Lake Storage Gen2 への直接のインジェストをサポートしていないためです。 ストレージ アカウントにコピーしてから、ADLS Gen2 アカウントへの第 2 のコピーを行う必要があります。 これに関する方法は以下の手順で与えられます。
+
+  * オンプレミス ネットワークに [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) または [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) をケーブル接続します。
 
 準備ができている場合、始めましょう。
 
 ## <a name="copy-your-data-to-a-data-box-device"></a>データを Data Box デバイスにコピーする
 
+データが 1 つの Data Box デバイスに収まる場合は、そのデータを Data Box デバイスにコピーします。 
+
+データ サイズが Data Box デバイスの容量を超える場合は、[オプションの手順を使用してデータを複数の Data Box デバイスに分割し](#appendix-split-data-across-multiple-data-box-devices)、この手順を実行します。 
+
 オンプレミス HDFS ストアから Data Box デバイスにデータをコピーするには、いくつかの事項を設定し、[DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) ツールを使用します。
 
-コピーしているデータの量が単一の Data Box の容量または Data Box Heavy 上の単一ノードの容量を超える場合は、デバイスに収まるサイズにデータ セットを分割する必要があります。
-
-以下の手順に従って、Blob/オブジェクト ストレージの REST API を介して Data Box デバイスにデータをコピーします。 REST API インターフェイスでは、デバイスはクラスターに HDFS ストアとして表示されます。 
-
+以下の手順に従って、Blob/オブジェクト ストレージの REST API を介して Data Box デバイスにデータをコピーします。 REST API インターフェイスでは、デバイスはクラスターに HDFS ストアとして表示されます。
 
 1. REST を介してデータをコピーする前に、Data Box または Data Box Heavy 上で REST インターフェイスに接続するためにセキュリティおよび接続プリミティブを識別します。 Data Box のローカル Web UI にサインインして、 **[接続とコピー]** ページに移動します。 デバイスの Azure ストレージ アカウントに対して、 **[アクセスの設定]** の下で **[REST]** を探して選択します。
 
@@ -68,94 +68,289 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
     ```
+
     DNS を他のメカニズムを使用している場合は、Data Box エンドポイントを解決できることを確認する必要があります。
-    
-4. `hadoop-azure` および `microsoft-windowsazure-storage-sdk` jar ファイルをポイントするように、シェル変数 `azjars` を設定します。 これらのファイルは、Hadoop インストール ディレクトリの下にあります (コマンド `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` を使用することにより、これらのファイルが存在しているか確認できます。ここで、`<hadoop_install_dir>` は Hadoop をインストールしたディレクトリです)。完全パスを使用してください。 
-    
-    ```
-    # azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar
-    # azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar
-    ```
 
-5. データのコピーに使用するストレージ コンテナーを作成します。 このコマンドの一部として宛先フォルダーも指定する必要があります。 これはこの時点ではダミーの宛先フォルダーでかまいません。
+4. シェル変数 `azjars` を、`hadoop-azure` および `azure-storage` jar ファイルの場所に設定します。 これらのファイルは Hadoop インストール ディレクトリ以下にあります。
+
+    これらのファイルが存在するかどうかを確認するには、次のコマンドを使用します。`ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`。 `<hadoop_install_dir>` プレースホルダーは、Hadoop をインストールしたディレクトリのパスに置き換えます。 必ず完全修飾パスを使用します。
+
+    次に例を示します。
+
+    `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
+
+5. データのコピーに使用するストレージ コンテナーを作成します。 このコマンドの一部として宛先ディレクトリも指定する必要があります。 この時点では、これはダミーの宛先ディレクトリになる可能性があります。
 
     ```
-    # hadoop fs -libjars $azjars \
+    hadoop fs -libjars $azjars \
     -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
-    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
-    -mkdir -p  wasb://[container_name]@[blob_service_endpoint]/[destination_folder]
+    -D fs.azure.account.key.<blob_service_endpoint>=<account_key> \
+    -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-6. リスト コマンドを実行してコンテナーとフォルダーが作成されたことを確認します。
+    * `<blob_service_endpoint>` プレースホルダーは、実際の BLOB サービス エンドポイントの名前に置き換えます。
+
+    * `<account_key>` プレースホルダーは、実際のアカウントのアクセス キーに置き換えます。
+
+    * `<container-name>` プレースホルダーは、実際のコンテナーの名前に置き換えます。
+
+    * `<destination_directory>` プレースホルダーは、データのコピー先であるディレクトリの名前に置き換えます。
+
+6. リスト コマンドを実行してコンテナーとディレクトリが作成されたことを確認します。
 
     ```
-    # hadoop fs -libjars $azjars \
+    hadoop fs -libjars $azjars \
     -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
-    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
-    -ls -R  wasb://[container_name]@[blob_service_endpoint]/
+    -D fs.azure.account.key.<blob_service_endpoint>=<account_key> \
+    -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-7. Data Box Blob ストレージ内の先ほど作成したコンテナーに、Hadoop HDFS からデータをコピーします。 コピー先のフォルダーが見つからない場合、コマンドにより自動的に作成されます。
+   * `<blob_service_endpoint>` プレースホルダーは、実際の BLOB サービス エンドポイントの名前に置き換えます。
+
+   * `<account_key>` プレースホルダーは、実際のアカウントのアクセス キーに置き換えます。
+
+   * `<container-name>` プレースホルダーは、実際のコンテナーの名前に置き換えます。
+
+7. Data Box Blob ストレージ内の先ほど作成したコンテナーに、Hadoop HDFS からデータをコピーします。 コピー先のディレクトリが見つからない場合、コマンドにより自動的に作成されます。
 
     ```
-    # hadoop distcp \
+    hadoop distcp \
     -libjars $azjars \
     -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
-    -D fs.azure.account.key.[blob_service_endpoint]=[account_key] \
-    -strategy dynamic -m 4 -update \
-    [source_directory] \
-           wasb://[container_name]@[blob_service_endpoint]/[destination_folder]       
+    -D fs.azure.account.key.<blob_service_endpoint<>=<account_key> \
+    -filters <exclusion_filelist_file> \
+    [-f filelist_file | /<source_directory> \
+           wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
-   `-libjars` オプションは、`hadoop-azure*.jar` と従属 `azure-storage*.jar` ファイルを `distcp` で使用できるようにするために使用されます。 これは、既に一部のクラスターに対して行われている場合があります。
-   
-   次の例は、`distcp` コマンドを使用してデータをコピーする方法を示しています。
-   
-   ```
-   # hadoop distcp \
+
+    * `<blob_service_endpoint>` プレースホルダーは、実際の BLOB サービス エンドポイントの名前に置き換えます。
+
+    * `<account_key>` プレースホルダーは、実際のアカウントのアクセス キーに置き換えます。
+
+    * `<container-name>` プレースホルダーは、実際のコンテナーの名前に置き換えます。
+
+    * `<exlusion_filelist_file>` プレースホルダーは、ファイルの除外一覧を含むファイルの名前に置き換えます。
+
+    * `<source_directory>` プレースホルダーは、コピーするデータが格納されているディレクトリの名前に置き換えます。
+
+    * `<destination_directory>` プレースホルダーは、データのコピー先であるディレクトリの名前に置き換えます。
+
+    `-libjars` オプションは、`hadoop-azure*.jar` と従属 `azure-storage*.jar` ファイルを `distcp` で使用できるようにするために使用されます。 これは、既に一部のクラスターに対して行われている場合があります。
+
+    次の例は、`distcp` コマンドを使用してデータをコピーする方法を示しています。
+
+    ```
+     hadoop distcp \
     -libjars $azjars \
     -D fs.AbstractFileSystem.wasb.Impl=org.apache.hadoop.fs.azure.Wasb \
     -D fs.azure.account.key.mystorageaccount.blob.mydataboxno.microsoftdatabox.com=myaccountkey \
-    -strategy dynamic -m 4 -update \
+    -filter ./exclusions.lst -f /tmp/copylist1 -m 4 \
     /data/testfiles \
-    wasb://hdfscontainer@mystorageaccount.blob.mydataboxno.microsoftdatabox.com/testfiles
-   ```
+    wasb://hdfscontainer@mystorageaccount.blob.mydataboxno.microsoftdatabox.com/data
+    ```
   
-コピー速度を向上させるには:
-- マッパーの数を変更してみてください。 (上記の例では `m` = 4 マッパーを使用します)。
-- 複数の `distcp` を並行して実行してみてください。
-- 大きなファイルは小さなファイルよりもパフォーマンスが向上することに注意してください。
-    
+    コピー速度を向上させるには:
+
+    * マッパーの数を変更してみてください。 (上記の例では `m` = 4 マッパーを使用します)。
+
+    * 複数の `distcp` を並行して実行してみてください。
+
+    * 大きなファイルは小さなファイルよりもパフォーマンスが向上することに注意してください。
+
 ## <a name="ship-the-data-box-to-microsoft"></a>Data Box を Microsoft に送付する
 
 これらの手順に従って、Data Box デバイスを準備し、Microsoft に送付します。
 
-1. データのコピーが完了したら、次を実行します。
-    
-    - [Data Box または Data Box Heavy 上で発送準備を行います](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)。
-    - デバイスの準備が完了した後は、BOM ファイルをダウンロードします。 後からこれらの BOM またはマニフェスト ファイルを使用して、データが Azure にアップロードされたことを確認します。 
-    - デバイスをシャット ダウンし、ケーブルを取り外します。
-2.  UPS で集荷のスケジュールを設定します。 手順に従って次の操作を行います。
+1. まず [Data Box または Data Box Heavy 上で発送準備を行います](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)。
 
-    - [Data Box を発送する](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) 
-    - [Data Box Heavy を発送する](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)。
-3.  Microsoft がデバイスを受け取ると、データセンター ネットワークに接続され、デバイスを注文したときに (階層型名前空間を無効にして) 指定したストレージ アカウントにデータがアップロードされます。 すべてのデータが Azure にアップロードされたことを BOM ファイルに対して確認します。 Data Lake Storage Gen2 ストレージ アカウントに、このデータを移動できますようになりました。
+2. デバイスの準備が完了した後は、BOM ファイルをダウンロードします。 後からこれらの BOM またはマニフェスト ファイルを使用して、データが Azure にアップロードされたことを確認します。
 
+3. デバイスをシャット ダウンし、ケーブルを取り外します。
 
-## <a name="move-the-data-onto-your-data-lake-storage-gen2-storage-account"></a>Data Lake Storage Gen2 ストレージ アカウントにデータを移動する
+4. UPS で集荷のスケジュールを設定します。
 
-この手順は、データ ストアとして Azure Data Lake Storage Gen2 を使用している場合に必要です。 階層型名前空間を持たない Blob ストレージ アカウントだけをデータ ストアとして使用している場合は、この手順を実行する必要はありません。
+    * Data Box デバイスの場合は、[Data Box の送付](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)に関するページを参照してください。
 
-これは 2 つの方法で行えます。
+    * Data Box Heavy デバイスの場合は、[Data Box Heavy の送付](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)に関するページを参照してください。
 
-- [[Azure Data Factory to move data to ADLS Gen2]](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2)(ADLS Gen2 にデータを移動するための Azure Data Factory) を使用します。 ソースとして **Azure Blob Storage** を指定する必要があります。
+5. Microsoft がデバイスを受け取ると、データ センター ネットワークに接続され、デバイスを注文したときに (階層型名前空間を無効にして) 指定したストレージ アカウントにデータがアップロードされます。 すべてのデータが Azure にアップロードされたことを BOM ファイルに対して確認します。 Data Lake Storage Gen2 ストレージ アカウントに、このデータを移動できますようになりました。
 
-- Azure ベースの Hadoop クラスターを使用します。 この DistCp コマンドを実行することができます。
+## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 にデータを移動する
+
+Azure Storage アカウントに既にデータがあります。 次は、データを Azure Data Lake ストレージ アカウントにコピーし、ファイルとディレクトリへのアクセス許可を適用します。
+
+> [!NOTE]
+> この手順は、データ ストアとして Azure Data Lake Storage Gen2 を使用している場合に必要です。 階層型名前空間を持たない BLOB ストレージ アカウントだけをデータ ストアとして使用している場合は、このセクションをスキップできます。
+
+### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Azure Data Lake Storage Gen 2 アカウントにデータをコピーする
+
+Azure Data Factory を使用するか、Azure ベースの Hadoop クラスターを使用してデータをコピーできます。
+
+* Azure Data Factory を使用するには、[Azure Data Factory で ADLS Gen2 にデータを移動する](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2)方法に関するページを参照してください。 必ずソースとして **Azure Blob Storage** を指定します。
+
+* Azure ベースの Hadoop クラスターを使用するには、次の DistCp コマンドを実行します。
 
     ```bash
-    hadoop distcp -Dfs.azure.account.key.{source_account}.dfs.windows.net={source_account_key} abfs://{source_container} @{source_account}.dfs.windows.net/[path] abfs://{dest_container}@{dest_account}.dfs.windows.net/[path]
+    hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
     ```
 
-このコマンドは、データとメタデータの両方を、ストレージ アカウントから Data Lake Storage Gen2 ストレージ アカウントにコピーします。
+    * `<source_account>` と `<dest_account>` のプレースホルダーは、ソースと宛先のストレージ アカウントの名前に置き換えます。
+
+    * `<source_container>` と `<dest_container>` のプレースホルダーは、ソースと宛先のコンテナーの名前に置き換えます。
+
+    * `<source_path>` と `<dest_path>` のプレースホルダーは、ソースと宛先のディレクトリ パスに置き換えます。
+
+    * `<source_account_key>` プレースホルダーは、データを含むストレージ アカウントのアクセス キーに置き換えます。
+
+    このコマンドは、データとメタデータの両方を、ストレージ アカウントから Data Lake Storage Gen2 ストレージ アカウントにコピーします。
+
+### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 アカウントのサービス プリンシパルを作成します。
+
+「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+
+* 記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
+
+* 記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するときは、アプリケーション ID、クライアント シークレット値をテキスト ファイルに保存します。 これらはすぐに必要になります。
+
+### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>それらのアクセス許可を使用してコピーされたファイルの一覧を生成する
+
+オンプレミスの Hadoop クラスターから、次のコマンドを実行します。
+
+```bash
+
+sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
+```
+
+このコマンドでは、それらのアクセス許可を使用してコピーされたファイルの一覧が生成されます。
+
+> [!NOTE]
+> HDFS 内のファイル数によっては、このコマンドの実行に時間がかかることがあります。
+
+### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>ID の一覧を生成し、それらを Azure Active Directory (ADD) の ID にマップする
+
+1. `copy-acls.py` スクリプトをダウンロードします。 この記事の「[ヘルパー スクリプトをダウンロードし、それらを実行するようにエッジ ノードを設定する](#download-helper-scripts)」セクションを参照してください。
+
+2. このコマンドを実行して、固有の ID の一覧を生成します。
+
+   ```bash
+   
+   ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
+   ```
+
+   このスクリプトで、ADD ベースの ID にマップする必要がある ID を含む `id_map.json` という名前のファイルが生成されます。
+
+3. テキスト エディターで `id_map.json` ファイルを開きます。
+
+4. ファイルに出現する各 JSON オブジェクトについて、マップされた適切な ID を使用して AAD ユーザー プリンシパル名 (UPN) または ObjectId (OID) のいずれかの `target` 属性を更新します。 完了したら、ファイルを保存します。 次の手順でこのファイルが必要になります。
+
+### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>コピーしたファイルにアクセス許可を適用し、ID マッピングを適用する
+
+このコマンドを実行して、Data Lake Storage Gen2 アカウントにコピーしたデータにアクセス許可を適用します。
+
+```bash
+./copy-acls.py -s ./filelist.json -i ./id_map.json  -A <storage-account-name> -C <container-name> --dest-spn-id <application-id>  --dest-spn-secret <client-secret>
+```
+
+* `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
+
+* `<container-name>` プレースホルダーは、実際のコンテナーの名前に置き換えます。
+
+* `<application-id>` と `<client-secret>` のプレースホルダーは、サービス プリンシパルの作成時に収集したアプリケーション ID とクライアント シークレットに置き換えます。
+
+## <a name="appendix-split-data-across-multiple-data-box-devices"></a>付録:複数の Data Box デバイスにデータを分割する
+
+データを Data Box デバイスに移動する前に、ヘルパー スクリプトをダウンロードし、データが Data Box に収まるように編成されていることを確認し、不要なファイルを除外する必要があります。
+
+<a id="download-helper-scripts" />
+
+### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>ヘルパー スクリプトをダウンロードし、それらを実行するようにエッジ ノードを設定する
+
+1. オンプレミス Hadoop クラスターのエッジ ノードまたはヘッド ノードから、次のコマンドを実行します。
+
+   ```bash
+   
+   git clone https://github.com/jamesbak/databox-adls-loader.git
+   cd databox-adls-loader
+   ```
+
+   このコマンドで、ヘルパー スクリプトを含む GitHub リポジトリが複製されます。
+
+2. ローカル コンピューターに [jq](https://stedolan.github.io/jq/) パッケージがインストールされていることを確認します。
+
+   ```bash
+   
+   sudo apt-get install jq
+   ```
+
+3. [Requests](http://docs.python-requests.org/en/master/) python パッケージをインストールします。
+
+   ```bash
+   
+   pip install requests
+   ```
+
+4. 必要なスクリプトに実行アクセス許可を設定します。
+
+   ```bash
+   
+   chmod +x *.py *.sh
+
+   ```
+
+### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>データが Data Box デバイスに収まるように編成されていることを確認する
+
+データのサイズが 1 台の Data Box デバイスのサイズを超える場合は、複数のグループに分割してファイルを複数の Data Box デバイスに保存できるようにします。
+
+データが 1 台の Data Box デバイスのサイズを超えない場合は、次のセクションに進むことができます。
+
+1. 管理者特権のアクセス許可を使用して、前のセクションのガイダンスに従ってダウンロードした `generate-file-list` スクリプトを実行します。
+
+   コマンド パラメーターの説明を次に示します。
+
+   ```
+   sudo -u hdfs ./generate-file-list.py [-h] [-s DATABOX_SIZE] [-b FILELIST_BASENAME]
+                    [-f LOG_CONFIG] [-l LOG_FILE]
+                    [-v {DEBUG,INFO,WARNING,ERROR}]
+                    path
+
+   where:
+   positional arguments:
+   path                  The base HDFS path to process.
+
+   optional arguments:
+   -h, --help            show this help message and exit
+   -s DATABOX_SIZE, --databox-size DATABOX_SIZE
+                        The size of each Data Box in bytes.
+   -b FILELIST_BASENAME, --filelist-basename FILELIST_BASENAME
+                        The base name for the output filelists. Lists will be
+                        named basename1, basename2, ... .
+   -f LOG_CONFIG, --log-config LOG_CONFIG
+                        The name of a configuration file for logging.
+   -l LOG_FILE, --log-file LOG_FILE
+                        Name of file to have log output written to (default is
+                        stdout/stderr)
+   -v {DEBUG,INFO,WARNING,ERROR}, --log-level {DEBUG,INFO,WARNING,ERROR}
+                        Level of log information to output. Default is 'INFO'.
+   ```
+
+2. 生成されたファイル一覧を HDFS にコピーして、[DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) ジョブにアクセスできるようにします。
+
+   ```
+   hadoop fs -copyFromLocal {filelist_pattern} /[hdfs directory]
+   ```
+
+### <a name="exclude-unnecessary-files"></a>不要なファイルを除外する
+
+DisCp ジョブからいくつかのディレクトリを除外する必要があります。 たとえば、クラスターの稼働を維持する状態情報を含むディレクトリを除外します。
+
+DistCp ジョブを開始する予定のオンプレミス Hadoop クラスター上に、除外するディレクトリの一覧を指定するファイルを作成します。
+
+次に例を示します。
+
+```
+.*ranger/audit.*
+.*/hbase/data/WALs.*
+```
 
 ## <a name="next-steps"></a>次の手順
 

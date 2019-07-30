@@ -75,7 +75,7 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 ### <a name="scenario-2-perform-local-run"></a>シナリオ 2:ローカルで実行する
 1. **SparkCore_wasbloTest** スクリプトを開き、スクリプト エディターを右クリックし、 **[Run '[Spark Job]XXX']\('[Spark Job]XXX' の実行\)** オプションを選択してローカルで実行します。
-1. ローカル実行が完了すると、現在のプロジェクト エクスプローラーの **[data]**  >  ** __[default]__** に出力ファイルが保存されていることを確認できます。
+1. ローカル実行が完了すると、現在のプロジェクト エクスプローラーの **[data]**  >  **__[default]__** に出力ファイルが保存されていることを確認できます。
 
     ![ローカル実行の結果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
 1. ローカル実行とローカル デバッグを行うと、既定のローカル実行構成が自動的に設定されます。 右上済の **[Spark on HDInsight] XXX** という構成を開くと、 **[HDInsight の Apache Spark]** の下に **[Spark on HDInsight]XXX** が既に作成されていることがわかります。 **[Locally Run]\(ローカル実行\)** タブに切り替えます。

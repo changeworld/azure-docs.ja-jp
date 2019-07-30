@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 26a5876971749a1a63447ef813219dad8485781c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd1416befb74a7299136ea497eccc8a06b7f0f6a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157947"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164862"
 ---
 # <a name="cloudsimple-node-quota-limits"></a>CloudSimple ノードのクォータ制限
 
-CloudSimple サービスのサブスクリプションが有効になったときに、購入可能な既定数量は 4 ノードです。  Azure portal から任意の[ノード タイプ](cloudsimple-node.md)を購入できます。  プライベート クラウドを作成するには、少なくとも同じ SKU の 3 つのノードが必要です。  ノードを購入済みの場合、追加のノードを購入しようとするとエラーが表示される場合があります。
+CloudSimple サービスのサブスクリプションが有効になったときに、プロビジョニング可能な既定数量は 4 ノードです。  Azure portal から任意の[ノード タイプ](cloudsimple-node.md)をプロビジョニングできます。  プライベート クラウドを作成するには、少なくとも同じ SKU の 3 つのノードが必要です。  ノードをプロビジョニング済みの場合、追加のノードをプロビジョニングしようとするとエラーが表示される場合があります。
 
 ## <a name="quota-increase"></a>クォータの増加
 
@@ -40,5 +40,5 @@ CloudSimple サービスのサブスクリプションが有効になったと�
 
 ## <a name="next-steps"></a>次の手順
 
-* [ノードを購入する](create-nodes.md)
+* [ノードをプロビジョニングする](create-nodes.md)
 * [CloudSimple ノードの概要](cloudsimple-node.md)

@@ -186,7 +186,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 - **Microsoft アカウント**: [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
-    2. 左側のブラウザーで、**subscriptions** >  ** _\<subscription\_name_**  > **resourceGroups** >  ** _\<resource\_group\_name>_**  > **providers** > **Microsoft.Web** > **sites** >  ** _\<app\_name>_**  > **config** > **authsettings** に移動します。 
+    2. 左側のブラウザーで、**subscriptions** >  **_\<subscription\_name_**  > **resourceGroups** >  **_\<resource\_group\_name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\<app\_name>_**  > **config** > **authsettings** に移動します。 
     3. **[編集]** をクリックします。
     4. 次のプロパティを変更します。 _\<app\_id>_ を、アクセスするサービスの Azure Active Directory アプリケーション ID に置き換えます。
 
@@ -233,7 +233,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Microsoft アカウントと Azure Active Directory の両方に複数のドメインからサインインできます。 たとえば、Microsoft アカウントでは _outlook.com_、_live.com_、_hotmail.com_ アカウントが許可されます。 Azure Active Directory では、サインイン アカウントに任意の数のカスタム ドメインが許可されます。 この動作は、ユーザーが _outlook.com_ アカウントでアクセスすることが望ましくない内部アプリでは望ましくない場合があります。 サインイン アカウントのドメイン名を制限するには、以下の手順に従います。
 
-[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** >  ** _\< subscription\_ name_**  > **resourceGroups** >  ** _\< resource\_ group\_ name>_**  > **providers** > **Microsoft.Web** > **sites** >  ** _\< app\_ name>_**  > **config** > **authsettings** に移動します。 
+[https://resources.azure.com](https://resources.azure.com) で、**subscriptions** >  **_\< subscription\_ name_**  > **resourceGroups** >  **_\< resource\_ group\_ name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\< app\_ name>_**  > **config** > **authsettings** に移動します。 
 
 **[Edit]** をクリックし、次のプロパティを変更し、 **[Put]** をクリックします。 _\<domain\_name>_ は使用するドメインで置き換えてください。
 

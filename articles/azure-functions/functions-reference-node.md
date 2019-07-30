@@ -110,7 +110,7 @@ JavaScript では、[バインド](functions-triggers-bindings.md)が構成さ�
 
 ### <a name="inputs"></a>入力
 Azure Functions では、入力は、トリガー入力と追加入力という 2 つのカテゴリに分けられます。 関数は、トリガーと他の入力バインド (`direction === "in"` のバインド) を 3 つの方法で読み取ることができます。
- - ** _[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
+ - **_[推奨]_ 関数に渡されるパラメーターを使用します。** それらは、*function.json* に定義されている順序で関数に渡されます。 *function.json* で定義されている `name` プロパティは、パラメーターの名前と一致する方が望ましいですが、必ずしもそうする必要はありません。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -141,7 +141,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
 
 次の方法のいずれかで (これらの方法を組み合わせることはできません)、出力バインドにデータを割り当てることができます。
 
-- ** _[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
+- **_[出力が複数の場合に推奨]_ オブジェクトを返します。** 非同期関数または Promise を返す関数を使用している場合は、割り当てられた出力データを含むオブジェクトを返すことができます。 次の例の出力バインドは、*function.json* で "httpResponse" および "queueOutput" という名前が付けられています。
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
   ```
 
   同期関数を使用している場合、[`context.done`](#contextdone-method) を使用してこのオブジェクトを返すことができます (例を参照)。
-- ** _[出力が 1 つの場合に推奨]_ 直接値を返し $return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
+- **_[出力が 1 つの場合に推奨]_ 直接値を返し $return バインド名を使用します。** これは、関数を返す非同期/Promise でのみ機能します。 「[async function をエクスポートする](#exporting-an-async-function)」の例を参照してください。 
 - **`context.bindings` に値を割り当てます。** context.bindings に直接値を割り当てることができます。
 
   ```javascript
@@ -397,9 +397,9 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ ** _[応答のみ]_ `context.res.send(body?: any)` の呼び出し。** HTTP の応答は、入力 `body` を応答本文として使用して作成されます。 `context.done()` は暗黙的に呼び出されます。
++ **_[応答のみ]_ `context.res.send(body?: any)` の呼び出し。** HTTP の応答は、入力 `body` を応答本文として使用して作成されます。 `context.done()` は暗黙的に呼び出されます。
 
-+ ** _[応答のみ]_ `context.done()` の呼び出し。** これは、`context.done()` メソッドに渡される応答を返す特殊な種類の HTTP バインディングです。 次の HTTP 出力バインディングで、`$return` 出力パラメーターを定義します。
++ **_[応答のみ]_ `context.done()` の呼び出し。** これは、`context.done()` メソッドに渡される応答を返す特殊な種類の HTTP バインディングです。 次の HTTP 出力バインディングで、`$return` 出力パラメーターを定義します。
 
     ```json
     {

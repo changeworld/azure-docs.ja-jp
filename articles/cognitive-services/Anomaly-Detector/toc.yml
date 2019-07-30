@@ -16,7 +16,7 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: Python の使用
           href: quickstarts/detect-data-anomalies-python.md
-    - name: SDK
+    - name: Client
       items:
         - name: 'C# の使用'
           href: quickstarts/detect-data-anomalies-csharp-sdk.md

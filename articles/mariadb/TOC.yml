@@ -145,6 +145,8 @@
           href: howto-data-in-replication.md
         - name: Azure portal を使用した読み取りレプリカの作成
           href: howto-read-replicas-portal.md
+        - name: 読み取りレプリカ Azure CLI の作成
+          href: howto-read-replicas-cli.md
     - name: トラブルシューティング
       items:
         - name: 接続エラーのトラブルシューティング

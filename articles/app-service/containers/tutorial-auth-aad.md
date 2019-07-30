@@ -303,7 +303,7 @@ AD アプリケーションの管理ページで、**アプリケーション ID
 
 ![Azure App Service で実行される ASP.NET Core API](./media/tutorial-auth-aad/resources-enable-write.png)
 
-左側のブラウザーで、 **[サブスクリプション]**  > ** _&lt;your\_subscription>_**  >  **[resourceGroups]**  >  **[myAuthResourceGroup]**  >  **[プロバイダー]**  >  **[Microsoft.Web]**  >  **[サイト]**  >  ** _\<front\_end\_app\_name>_**  >  **[構成]**  >  **[authsettings]** の順にクリックします。
+左側のブラウザーで、 **[サブスクリプション]**  >  **_&lt;your\_subscription>_**  >  **[resourceGroups]**  >  **[myAuthResourceGroup]**  >  **[プロバイダー]**  >  **[Microsoft.Web]**  >  **[サイト]**  >  **_\<front\_end\_app\_name>_**  >  **[構成]**  >  **[authsettings]** の順にクリックします。
 
 **[authsettings]** ビューで、 **[編集]** をクリックします。 コピーしたアプリケーション ID を使用して、`additionalLoginParams` を次の JSON 文字列に設定します。 
 

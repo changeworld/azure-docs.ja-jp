@@ -53,6 +53,8 @@
       href: use-editor-create-project.md
     - name: アプリケーションへのウィジェットの埋め込み
       href: video-indexer-embed-widgets.md
+    - name: 障害復旧
+      href: video-indexer-disaster-recovery.md
     - name: コンテンツ モデルのカスタマイズ
       items:
         - name: Person
