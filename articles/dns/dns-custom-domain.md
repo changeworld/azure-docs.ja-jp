@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/18/2019
+ms.date: 7/13/2019
 ms.author: victorh
-ms.openlocfilehash: 5c098c6c22b079d586c0bd808df9af4a737c17a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 051aabed758f80208549cf64bf5d74b1fecfbe75
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62096252"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854152"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する
 
@@ -40,7 +40,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
-|Name     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|EnableAdfsAuthentication     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -65,7 +65,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
-|Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|EnableAdfsAuthentication     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | A        | リソースは IP アドレスなので、A レコードを使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -92,7 +92,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
-|Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|EnableAdfsAuthentication     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -111,6 +111,8 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 カスタム ドメインを App Service にマッピングする方法について、詳しくは[既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)を参照してください。
 
+アクティブな DNS 名を移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](../app-service/manage-custom-dns-migrate-domain.md)」を参照してください。
+
 カスタム ドメインを購入する必要がある場合、App Service ドメインの詳細について[Buy a custom domain name for Azure Web Apps](../app-service/manage-custom-dns-buy-domain.md)を参照してください。
 
 ## <a name="blob-storage"></a>BLOB ストレージ
@@ -126,7 +128,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
-|Name     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|EnableAdfsAuthentication     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
@@ -154,7 +156,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 |プロパティ  |値  |説明  |
 |---------|---------|---------|
-|Name     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|EnableAdfsAuthentication     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
 |Type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
