@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe1324479ed3b1438e993504552c6279bcef5a15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f28c7b94a9eb8131f0638a24a0d4b3cfccf062e5
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431087"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836289"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -179,7 +179,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 ## <a name="json-example-copy-data-from-on-premises-hdfs-to-azure-blob"></a>JSON の使用例:オンプレミスの HDFS から Azure BLOB へのデータのコピー
 このサンプルは、オンプレミスの HDFS から Azure BLOB ストレージにデータをコピーする方法を示します。 Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているシンクのいずれかにデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることもできます。  
 
-この例は、次の Data Factory エンティティの JSON 定義を示しています。 [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) のいずれかで、この定義を使用して、HDFS から Azure Blob Storage にデータをコピーするためのパイプラインを作成できます。
+この例は、次の Data Factory エンティティの JSON 定義を示しています。 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) で、この定義を使用して、HDFS から Azure Blob Storage にデータをコピーするためのパイプラインを作成できます。
 
 1. [OnPremisesHdfs](#linked-service-properties)型のリンクされたサービス。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。

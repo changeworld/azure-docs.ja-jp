@@ -36,7 +36,6 @@ sections:
         items:
           - html: <a href="quickstart-run-cloud-notebook">クラウドで実験を実行する</a> (インストール不要)。
           - html: <a href="quickstart-run-local-notebook">ローカルの Notebook サーバーを使用して実験を実行する</a> (SDK のローカル インストール)。
-          - html: ビジュアル インターフェイスで<a href="ui-quickstart-run-experiment">コードを書かずにデータを用意して視覚化する</a>。
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph

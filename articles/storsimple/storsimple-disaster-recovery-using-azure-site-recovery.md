@@ -174,7 +174,7 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
    - _RecoveryPlanName_ **-ResourceGroupName**: StorSimple リソースを含む Resource Manager グループ。
    - _RecoveryPlanName_ **-ManagerName**: StorSimple デバイスを含む StorSimple リソース。
    - _RecoveryPlanName_ **-DeviceName**: フェールオーバーする必要のある StorSimple デバイス。
-   - _RecoveryPlanName_ **-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の [デバイス]** タブで見つかります)。
+   - _RecoveryPlanName_ **-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の **[デバイス]** タブで見つかります)。
    - _RecoveryPlanName_ **-VolumeContainers**: フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列 (例: volcon1、volcon2、volcon3)。
    - _RecoveryPlanName_ **-TargetDeviceName**: フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
    - _RecoveryPlanName_ **-TargetDeviceIpAddress**: ターゲット デバイスの IP アドレス (これは、 **[仮想マシン]** セクション &gt; **[設定]** グループ &gt; **[ネットワーキング]** タブで見つかります)。

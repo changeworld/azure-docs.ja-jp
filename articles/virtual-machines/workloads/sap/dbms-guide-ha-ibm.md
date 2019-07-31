@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: a74dd1a932cac41081786f76938a5b35de62d878
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 754eb063f82344e72bece8fb0ac5708dbc8ab791
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689708"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249125"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -162,7 +162,7 @@ IBM Db2 LUW のリソース エージェントは、SUSE Linux Enterprise Server
 1.  仮想マシン 2 を作成します。
     + Azure Marketplace の SLES for SAP イメージを使用します。
     + 手順 3 で作成した Azure 可用性セットを選択するか、可用性ゾーン (手順 3 と同じゾーンではない) を選択します。
-1. VM にデータ ディスクを追加してから、「[SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ][dbms-db2]」という記事のファイル システム設定に関する推奨事項を確認します。
+1. VM にデータ ディスクを追加した後、「[SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ][dbms-db2]」という記事のファイル システム設定に関する推奨事項を確認します。
 
 ## <a name="create-the-pacemaker-cluster"></a>Pacemaker クラスターを作成する
     
@@ -180,7 +180,7 @@ IBM Db2 LUW に基づく SAP 環境のインストールを開始する前に、
 
 IBM Db2 LUW での NetWeaver ベース アプリケーションのインストールについては、SAP のインストール マニュアルを確認してください。
 
-SAP ヘルプ ポータルに関するガイドは、[SAP インストール Guide Finder][sap-instfind] を使用して検索できます。
+SAP ヘルプ ポータルに関するガイドは、[SAP Installation Guide Finder][sap-instfind] を使用して検索できます。
 
 以下のフィルターを設定することで、ポータルに表示されるガイドの数を減らすことができます。
 
@@ -496,12 +496,11 @@ Db2 HADR 構成を作成する前にインストールを行った場合は、�
 
 J2EE Config ツールを使用して JDBC URL を確認または更新します。 J2EE Config ツールはグラフィカル ツールであるため、X サーバーがインストールされている必要があります。
  
-1. J2EE インスタンスのプライマリ アプリケーション サーバーにサインインし、以下を実行します。
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>
+1. J2EE インスタンスのプライマリ アプリケーション サーバーにサインインし、`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`を実行します。
 1. 左側のフレームで、**セキュリティ ストア**を選択します。
 1. 右側のフレームで、キー jdbc/pool/\<SAPSID>/url を選択します。
 1. JDBC URL のホスト名を仮想ホスト名に変更します。
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>
+     `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
 1. **[追加]** を選択します。
 1. 変更を保存するには、左上のディスク アイコンを選択します。
 1. 構成ツールを閉じます。
@@ -594,7 +593,7 @@ SAP システムにおける最初の状態は、次のイメージに示され�
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **crm resource migrate \<res_name> <host>:** 場所の制約を作成します。引き継ぎで問題が生じる場合があります
+- **crm resource migrate \<res_name> \<host>:** 場所の制約を作成します。引き継ぎで問題が生じる場合があります
 - **crm resource clear \<res_name>** :場所の制約をクリアします
 - **crm resource cleanup \<res_name>** :リソースのすべてのエラーをクリアします
 

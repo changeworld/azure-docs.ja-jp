@@ -3,7 +3,7 @@ title: Azure マイクロサービスの Windows 開発環境のセットアッ�
 description: ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを完了すると、Windows でアプリケーションを構築する準備が整います。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: peterpogorski
 manager: chackdan
 editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/24/2019
+ms.date: 07/08/2019
 ms.author: aljo
-ms.openlocfilehash: 68a91bfba07b31117f553e4d689adc51bf51824c
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 0302d8950d10d2c606fad0582079ed0c77047fbf
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297261"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68295541"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -53,11 +53,11 @@ SDK とツールをインストールするには、Web Platform Installer (Web 
 > [!NOTE]
 > ローカルな Service Fabric 開発クラスターのアップグレードはサポートされていません。
 
-### <a name="to-use-visual-studio-2017"></a>Visual Studio 2017 を使用するには
-Service Fabric ツールは、Visual Studio 2017 の Azure 開発ワークロードに含まれています。 このワークロードを Visual Studio のインストールの一環として有効にします。
+### <a name="to-use-visual-studio-2017-or-2019"></a>Visual Studio 2017 または 2019 を使用するには
+Service Fabric ツールは、Visual Studio 2017 および 2019 の Azure 開発ワークロードに含まれています。 このワークロードを Visual Studio のインストールの一環として有効にします。
 さらに、Web Platform Installer を使用して Microsoft Azure Service Fabric SDK とランタイムをインストールする必要があります。
 
-* [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
+* [Microsoft Azure Service Fabric SDK をインストールする][core-sdk]
 
 ### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Visual Studio 2015 を使用するには (Visual Studio 2015 Update 2 以降が必要)
 Visual Studio 2015 では、Service Fabric ツールは、Web Platform Installer を使用して SDK やランタイムと共にインストールされます。
@@ -66,13 +66,14 @@ Visual Studio 2015 では、Service Fabric ツールは、Web Platform Installer
 
 ### <a name="sdk-installation-only"></a>SDK のみのインストール
 SDK のみが必要な場合は、次のパッケージをインストールすることができます。
-* [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
+* [Microsoft Azure Service Fabric SDK をインストールする][core-sdk]
 
 現在のバージョンは次のとおりです。
-* Service Fabric SDK および Tools 3.3.664
-* Service Fabric ランタイム 6.4.664
-* Service Fabric Tools for Visual Studio 2015 2.4.11116.1
+* Service Fabric SDK および Tools 3.4.641
+* Service Fabric ランタイム 6.5.641
+* Service Fabric Tools for Visual Studio 2015 2.5.20615.1
 * Visual Studio 2017 15.9 には、Service Fabric Tools for Visual Studio 2.4.11024.1 が含まれています 
+* Visual Studio 2019 16.1 には、Service Fabric Tools for Visual Studio 2.5.20423.3 が含まれています
 
 サポートされているバージョンの一覧については、[Service Fabric のバージョン](service-fabric-versions.md)に関するページを参照してください
 
@@ -99,7 +100,7 @@ Service Fabric は、マシン クラスター全体にマイクロサービス�
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric キャンペーン ページ"
 [2]: https://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI のリンク"
-[full-bundle-dev15]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI のリンク"
-[core-sdk]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI のリンク"
+[full-bundle-vs2015]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI のリンク"
+[full-bundle-dev15]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI のリンク"
+[core-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI のリンク"
 [powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395

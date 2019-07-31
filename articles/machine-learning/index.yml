@@ -34,7 +34,6 @@ sections:
       - items:
           - html: <a href="service/quickstart-run-cloud-notebook">クラウドで実験を実行する</a> (インストール不要)
           - html: <a href="service/quickstart-run-local-notebook">ローカルのノートブック サーバーを使用して実験を実行する</a> (SDK のローカル インストール)
-          - html: <a href="service/ui-quickstart-run-experiment">ビジュアル インターフェイスで実験を実行する</a> (コード不要)
         style: unordered
         type: list
       - text: '<b>チュートリアル:SDK を使用した MNIST データの画像分類:</b>'

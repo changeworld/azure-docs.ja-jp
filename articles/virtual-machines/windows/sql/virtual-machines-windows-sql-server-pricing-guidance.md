@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d53c1de9678db497a20788d0cab7ee4f0e6f0c9c
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a872b8c34011247e68b0d459482c0599ac0426f2
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67607065"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228398"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM の料金ガイダンス
 
@@ -114,8 +114,7 @@ BYOL を SQL Server VM で利用するには、SQL Server Standard または Ent
 
 | BYOL のメリット | 説明 |
 |-----|-----|
-| **コスト削減** | 自分の SQL Server ライセンスの持ち込みが、使用した分だけ支払うよりもコスト効果が高くなるのは、ワークロードによって SQL Server Standard または Enterprise が "*10 か月を超えて*" 実行され続ける場合です。 |
-| **長期的なコスト削減** | 平均すると、当初 3 年間は SQL Server ライセンスを購入または更新する方が "*1 年あたり 30% のコストダ ウン*" です。 3 年経過した後は、ライセンスを更新する必要がなくなり、ソフトウェア アシュアランスのみの支払いになります。 その時点で、"*200% のコスト ダウン*" になります。 |
+| **コスト削減** | [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)により、最大 55% の節約を実現できます。 詳細については、[ライセンス モデルの切り替え](virtual-machines-windows-sql-ahb.md) に関する記事を参照してください。 |
 | **無料のパッシブ セカンダリ レプリカ** | 自分のライセンスを持ち込むもう 1 つのメリットは、高可用性を実現するために SQL Server 1 つにつき [1 つのパッシブ セカンダリ レプリカの無料ライセンス](https://azure.microsoft.com/pricing/licensing-faq/)を得られることです。 これによって、高可用性 SQL Server デプロイ (Always On 可用性グループの使用など) のライセンス コストを半減できます。 パッシブ セカンダリを実行する権限は、フェールオーバー サーバーのソフトウェア アシュアランス特典で提供されます。 |
 
 自分のライセンスを持ち込むイメージの 1 つを使用して SQL Server 2017 Azure VM を作成するには、プレフィックスに "{BYOL}" が付いた VM を参照してください。
