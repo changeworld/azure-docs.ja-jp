@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: ae632f7df34ca342a3dcc12bf5f011df0eb61973
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.date: 07/10/2019
+ms.openlocfilehash: 6c2c8457cee004bf1288656ec9746b703d41aee1
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399318"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806404"
 ---
 # <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Power BI にインポートされたクエリを使用してデータを視覚化する
 
@@ -82,4 +82,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-[Power BI にインポートされたクエリを使用してデータを視覚化する](power-bi-sql-query.md)
+[Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する](power-bi-connector.md)

@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: article
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4b41af691bb864dd11b001a6217a7b1e0318d6e0
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592320"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839775"
 ---
 # <a name="azure-data-box-heavy-system-requirements"></a>Azure Data Box Heavy のシステム要件
 
@@ -51,6 +51,12 @@ ms.locfileid: "67592320"
 ## <a name="networking-requirements"></a>ネットワーク要件
 
 お客様のデータセンターには、高速ネットワークが必要です。 最速のコピー速度を得るため、2 つの 40 GbE 接続 (ノードごとに 1 つずつ) を並列で利用できます。 40 GbE を使用できない場合は、少なくとも 2 つの 10 GbE 接続 (ノードごとに 1 つずつ) を使用することをお勧めします。
+
+### <a name="port-requirements"></a>ポートの要件
+
+SMB または NFS トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、"*イン*" ("*受信*") は、着信クライアント要求がデバイスにアクセスする方向を意味します。 "*アウト*" ("*送信*") は Data Box Heavy デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e09c4530fc6dce00e6d807908c7de598422a440b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 132dd91ba121fc5939a0f30194fe4abdd3755414
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511865"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67847048"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**ClaimsSchema**要素は、ポリシーの一部として参照可能な要求の種類を定義します。 要求スキーマは、要求を宣言する場所です。 要求は、名、姓、表示名、電話番号などを指定できます。 ClaimsSchema 要素には**ClaimType**要素の一覧が含まれています。 **ClaimType**要素に **Id**属性が含まれており、 それは要求の名前であります。 
+**ClaimsSchema**要素は、ポリシーの一部として参照可能な要求の種類を定義します。 要求スキーマは、要求を宣言する場所です。 要求は、名、姓、表示名、電話番号などを指定できます。 ClaimsSchema 要素には**ClaimType**要素の一覧が含まれています。 **ClaimType**要素に **Id**属性が含まれており、 それは要求の名前であります。
 
 ```XML
 <BuildingBlocks>
@@ -89,7 +89,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 ```
 
 その結果、Azure AD B2C によって発行された JWT トークンでは、ClaimType 名 **surname** ではなく `family_name` が出力されます。
- 
+
 ```JSON
 {
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
@@ -115,14 +115,14 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
-  <Mask Type="Simple">XXX-XXX-</Mask>  
+  <Mask Type="Simple">XXX-XXX-</Mask>
   <UserHelpText>Your telephone number.</UserHelpText>
 </ClaimType>
 ```
 
 Identity Experience Framework では、最初の 6 桁の数字を非表示し、電話番号を表示します。
 
-![マスクを使用する要求種類](./media/claimsschema/mask.png)
+![ブラウザーに表示されている最初の 6 桁が X でマスクされている電話番号要求](./media/claimsschema/mask.png)
 
 次の例では **AlternateEmail** 要求を `Regex` マスクで構成します。
 
@@ -137,7 +137,7 @@ Identity Experience Framework では、最初の 6 桁の数字を非表示し�
 
 Identity Experience Framework では、電子メールアドレスと電子メールのドメイン名の最初の文字のみを表示します。
 
-![マスクを使用する要求種類](./media/claimsschema/mask-regex.png)
+![ブラウザーに表示されている文字がアスタリスクでマスクされた電子メール要求](./media/claimsschema/mask-regex.png)
 
 
 ### <a name="restriction"></a>Restriction
@@ -179,10 +179,10 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
   </Restriction>
 </ClaimType>
 ```
+
 既定値は、ニューヨークに設定されている市区町村ドロップダウン リスト。
 
-![市区町村ドロップダウン リスト](./media/claimsschema/dropdownsingleselect.png)
-
+![ブラウザーにレンダリングされ、既定値を示しているドロップダウン コントロール](./media/claimsschema/dropdownsingleselect.png)
 
 ### <a name="pattern"></a>Pattern
 
@@ -212,7 +212,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 Identity Experience Framework は、電子メールの入力検証の形式を表示します。
 
-![パターンを使用する要求の種類](./media/claimsschema/pattern.png)
+![regex 制限によってトリガーされたエラー メッセージを示しているテキストボックス](./media/claimsschema/pattern.png)
 
 ## <a name="userinputtype"></a>UserInputType
 
@@ -222,7 +222,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 **TextBox**ユーザー入力の種類が 1 行のテキスト ボックスを表示するために使用します。
 
-![TextBoxを使用する要求種類](./media/claimsschema/textbox.png)
+![要求の種類で指定されたプロパティを示しているテキストボックス](./media/claimsschema/textbox.png)
 
 ```XML
 <ClaimType Id="displayName">
@@ -237,7 +237,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 
 **EmailBox**ユーザー入力の種類が基本的な電子メールの入力フィールドを提供するために使用します。
 
-![Emailbox を使用する要求種類](./media/claimsschema/emailbox.png)
+![要求の種類で指定されたプロパティを示している電子メール ボックス](./media/claimsschema/emailbox.png)
 
 ```XML
 <ClaimType Id="email">
@@ -297,7 +297,7 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
     <Enumeration Text="Green " Value="Green" SelectByDefault="false" />
     <Enumeration Text="Orange" Value="Orange" SelectByDefault="true" />
   </Restriction>
-</ClaimType>    
+</ClaimType>
 ```
 
 ### <a name="dropdownsingleselect"></a>DropdownSingleSelect
@@ -375,4 +375,4 @@ Azure AD B2C では、さまざまなクレームの種類の要求データを�
 </ClaimType>
 ```
 
-**列挙**値の一つを **responseMsg**要求に表示するには、`GetMappedValueFromLocalizedCollection`または`CreateStringClaim`要求の変換を使用します。 詳細については、[文字列要求の変換](string-transformations.md)をご覧ください。 
+**列挙**値の一つを **responseMsg**要求に表示するには、`GetMappedValueFromLocalizedCollection`または`CreateStringClaim`要求の変換を使用します。 詳細については、[文字列要求の変換](string-transformations.md)をご覧ください。

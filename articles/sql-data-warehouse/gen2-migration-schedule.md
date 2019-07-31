@@ -3,19 +3,19 @@ title: Gen2 への既存の Azure SQL Data Warehouse の移行 | Microsoft Docs
 description: 既存のデータ ウェアハウスを Gen2 に移行するための手順およびリージョン別の移行スケジュール。
 services: sql-data-warehouse
 author: mlee3gsd
-ms.author: anumjs
+ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3141f3a1d6a9f09261dee4113276af72168e35e8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cef3036b01709847016d9523a5770febb8ff1134
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444704"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839658"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Gen2 へのデータ ウェアハウスのアップグレード
 
@@ -39,13 +39,13 @@ Microsoft では、データ ウェアハウス運営するための初期段階
 | カナダ東部 |\* |\* |
 | 米国中部 |使用可能 |2019 年 6 月 1 日 |
 | 中国 (東部) |\* |\* |
-| 中国東部 2 |\* |Gen2 のみ |
+| 中国東部 2 |使用可能 |Gen2 のみ |
 | 中国 (北部) |\* |\* |
 | 中国北部 2 |使用可能 |Gen2 のみ |
 | 東アジア |使用可能 |2019 年 6 月 1 日 |
 | East US |使用可能 |2019 年 6 月 1 日 |
 | 米国東部 2 |使用可能 |2019 年 6 月 1 日 |
-| フランス中部 |\* |2019 年 6 月 1 日 |
+| フランス中部 |使用可能 |2019 年 6 月 1 日 |
 | ドイツ中部 |\* |\* |
 | ドイツ中西部 |2019 年 9 月 1 日|2020 年 1 月 2 日 |
 | インド中部 |使用可能 |2019 年 6 月 1 日 |
@@ -56,10 +56,12 @@ Microsoft では、データ ウェアハウス運営するための初期段階
 | 韓国南部 |使用可能 |2019 年 5 月 1 日 |
 | 米国中北部 |使用可能 |2019 年 5 月 1 日 |
 | 北ヨーロッパ |使用可能 |2019 年 6 月 1 日 |
+| 南アフリカ北部 |2019 年 7 月 12 日 |Gen2 のみ |
 | 米国中南部 |使用可能 |2019 年 6 月 1 日 |
 | 東南アジア |使用可能 |2019 年 6 月 1 日 |
-| 英国南部 |使用可能 (2019 年) |2019 年 6 月 1 日 |
-| 英国西部 |\*|\* |
+| アラブ首長国連邦北部 |2019 年 7 月 20 日 |Gen2 のみ |
+| 英国南部 |使用可能 |2019 年 6 月 1 日 |
+| 英国西部 |使用可能 |Gen2 のみ |
 | 米国中西部 |2019 年 9 月 2 日 |2020 年 1 月 2 日|
 | 西ヨーロッパ |使用可能 |2019 年 6 月 1 日 |
 | 米国西部 |使用可能 |2019 年 6 月 1 日 |

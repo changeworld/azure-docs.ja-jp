@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 573c205cd2e208a1cb2b526d96fb08ca21331c80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66129630"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する

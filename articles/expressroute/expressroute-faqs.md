@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 02f772d02f5cc6f188d69b5e79debc0013cf1faa
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: e5674ffb4325eb27af8d0673b2d6ad5ba3a6195e
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488497"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854342"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -134,6 +134,12 @@ Microsoft ピアリングを使用して Azure のパブリック サービス (
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>ExpressRoute に接続されている仮想ネットワークで高可用性を確保する方法
 
 別のピアリング場所 (例: Singapore、Singapore2) にある ExpressRoute 回線を仮想ネットワークに接続することで、高可用性を実現できます。 1 つの ExpressRoute サイトがダウンした場合、接続は別の ExpressRoute サイトにフェールオーバーされます。 仮想ネットワークを離れるトラフィックは、既定で Equal Cost Multi-path Routing (ECMP) に基づいてルーティングされます。 接続の重みを使用して、ある回線を別の回線よりも優先することができます。 詳細については、「[ExpressRoute ルーティングの最適化](expressroute-optimize-routing.md)」を参照してください。
+
+### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-or-public-peering-is-preferred-on-the-expressroute-path"></a>Microsoft ピアリングまたはパブリック ピアリングで Azure Storage や Azure SQL などの Azure パブリック サービス宛てのトラフィックが、ExpressRoute パスで確実に優先されるようにするにはどうしたらよいですか?
+
+オンプレミスから Azure へのパスが ExpressRoute 回線で確実に優先されるようにするには、お使いのルーターに *Local Preference* 属性を実装する必要があります。
+
+BGP パスの選択と一般的なルーター構成に関する追加情報については、[こちら](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-of-microsoft-and-public-peerings)を参照してください。 
 
 ### <a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を 2 つ注文する必要がありますか。
 

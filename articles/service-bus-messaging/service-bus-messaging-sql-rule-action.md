@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: aschhab
 ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60307480"
 ---
 # <a name="sqlruleaction-syntax"></a>SQLRuleAction 構文

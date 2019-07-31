@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: dde3e04dc8f30ea5657139d50dd4456e5dfb57c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935718"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868739"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>仮想マシン プランの価格
 ==================================
@@ -34,21 +34,31 @@ ms.locfileid: "64935718"
             "currency": "USD",
                 "individually": 
                 {
-                    "sharedcore": 2,
+                    "sharedcore": 1,
                     "1core": 2,
-                    "2core": 3,
-                    "4core": 4,
-                    "6core": 5,
+                    "2core": 2,
+                    "4core": 2,
+                    "6core": 2,
                     "8core": 2,
+                    "10core": 4,
                     "12core": 4,
                     "16core": 4,
                     "20core": 4,
                     "24core": 4,
-                    "32core": 4,
-                    "36core": 4,
-                    "40core": 4,
-                    "64core": 4,
-                    "128core": 4
+                    "32core": 6,
+                    "36core": 6,
+                    "40core": 6,
+                    "44core": 6,
+                    "48core": 10,
+                    "60core": 10,
+                    "64core": 10,
+                    "72core": 10,
+                    "80core": 12,
+                    "96core": 12,
+                    "120core": 15,
+                    "128core": 15,
+                    "208core": 20,
+                    "416core": 30
                 }
         }
         ...
@@ -90,6 +100,12 @@ ms.locfileid: "64935718"
      }
 ```
 
+<a name="new-core-sizes-added-on-722019"></a>2019 年 7 月 2 日に追加された新しいコア サイズ
+---------------------------
+
+2019 年 7 月 2 日に、(コア数に基づく) 新しい Azure 仮想マシン サイズに対する新しい料金の追加が VM の発行元に通知されました。  新しい料金は、コア サイズが 10、44、48、60、120、208、416 に対するものです。  既存の VM の場合、これらのコア サイズの新しい価格は、現在の価格に基づいて自動的に計算されます。  発行元は、2019 年 8 月 1 日までに追加料金を確認し、必要な変更を行う必要があります。  この日を過ぎて、発行元がまだ再パブリッシュを行っていない場合、これらの新しいコア サイズに対して自動的に計算された価格が有効になります。
+
+
 <a name="regions"></a>リージョン
 -------
 
@@ -128,7 +144,7 @@ ms.locfileid: "64935718"
 | HU         | ハンガリー              | HUF               |
 | IS         | アイスランド              | ISK               |
 | IN         | インド                | INR               |
-| ID         | インドネシア            | IDR               |
+| id         | インドネシア            | IDR               |
 | IE         | アイルランド              | EUR               |
 | IL         | イスラエル               | ILS               |
 | IT         | イタリア                | EUR               |

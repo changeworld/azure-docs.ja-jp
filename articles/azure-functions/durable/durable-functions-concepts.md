@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 95ec6a863f951a8c26abd865041c68df333a4e38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a244883f470f4906879725daf0d37bd1759e65c4
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071334"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812909"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions のパターンと技術概念 (Azure Functions)
 
@@ -374,7 +374,7 @@ module.exports = async function (context) {
 };
 ```
 
-## <a name="pattern-6-aggregator-preview"></a>パターン #6:アグリゲーター (プレビュー)
+### <a name="aggregator"></a>パターン #6:アグリゲーター (プレビュー)
 
 6 番目のパターンは、ある期間のイベント データを 1 つのアドレス可能な*エンティティ* に集計することに関連しています。 このパターンでは、集計されるデータは、複数のソースから取得されるか、バッチで配信されるか、または長期間にわたって分散される可能性があります。 アグリゲーターがイベント データの到着時にイベント データに対してアクションを行ったり、外部クライアントが集計されたデータをクエリする必要が生じたりする場合があります。
 
@@ -385,27 +385,46 @@ module.exports = async function (context) {
 [Durable Entity 関数](durable-functions-preview.md#entity-functions)を使用すれば、このパターンを 1 つの関数として簡単に実装できます。
 
 ```csharp
-public static async Task Counter(
-    [EntityTrigger(EntityClassName = "Counter")] IDurableEntityContext ctx)
+[FunctionName("Counter")]
+public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-    int operand = ctx.GetInput<int>();
 
-    switch (ctx.OperationName)
+    switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
+            int amount = ctx.GetInput<int>();
             currentValue += operand;
             break;
-        case "subtract":
-            currentValue -= operand;
-            break;
         case "reset":
-            await SendResetNotificationAsync();
             currentValue = 0;
+            break;
+        case "get":
+            ctx.Return(currentValue);
             break;
     }
 
     ctx.SetState(currentValue);
+}
+```
+
+持続エンティティは、.NET クラスとしてモデル化することもできます。 これは、操作のリストが大きくなり、そのほとんどが静的である場合に便利です。 次の例は、.NET クラスおよびメソッドを使用した `Counter` エンティティの同等の実装です。
+
+```csharp
+public class Counter
+{
+    [JsonProperty("value")]
+    public int CurrentValue { get; set; }
+
+    public void Add(int amount) => this.CurrentValue += amount;
+    
+    public void Reset() => this.CurrentValue = 0;
+    
+    public int Get() => this.CurrentValue;
+
+    [FunctionName(nameof(Counter))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<Counter>();
 }
 ```
 
@@ -426,7 +445,7 @@ public static async Task Run(
 }
 ```
 
-同様に、クライアントは、`orchestrationClient` バインディングのメソッドを使用して、エンティティ関数の状態をクエリできます。
+動的に生成されたプロキシは、タイプセーフな方法でシグナル通知エンティティにも使用できます。 シグナル通知に加えて、クライアントは、`orchestrationClient` バインディングのメソッドを使用して、エンティティ関数の状態をクエリすることもできます。
 
 > [!NOTE]
 > エンティティ関数は、現在 [Durable Functions 2.0 プレビュー](durable-functions-preview.md)でのみ使用できます。

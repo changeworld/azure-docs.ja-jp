@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0d04db6e9ccedc1e67ed0cdfd914ab42ebea0b1
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67536943"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する

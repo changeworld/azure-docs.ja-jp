@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d8637a2711c0301d9e9f409e169ed04fb3d65783
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567352"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839542"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -54,7 +54,7 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 
 データをコピーするためのパイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 コピー ウィザードを使ったパイプラインの作成に関するチュートリアルについては、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -208,7 +208,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 2. データ レイク アカウントのユーザーまたはサービス プリンシパルに、少なくとも**閲覧者**ロールが付与されていることを確認します。 具体的な方法を次に示します。
 
-    1. Azure Portal にアクセスし、Data Lake Store アカウントに移動します
+    1. Azure portal にアクセスし、ご自分の Data Lake Store アカウントに移動します
     2. Data Lake Store のブレードで、 **[アクセス制御 (IAM)]** をクリックします
     3. **[ロールの割り当ての追加]** をクリックします
     4. **[ロール]** を **[閲覧者]** に設定し、コピーに使用するユーザーまたはサービス プリンシパルを選択して、アクセス権を付与します
@@ -307,7 +307,7 @@ Data Lake Store の入力データを表すデータセットを指定するに�
 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」を参照してください。
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>Data Lake Store との間でのデータのコピーに関する JSON の例
-次の例では、JSON 定義のサンプルを示します。 これらのサンプル定義を使うと、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使ってパイプラインを作成できます。 以下の例では、Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに _直接_ コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」セクションを参照してください。
+次の例では、JSON 定義のサンプルを示します。 これらのサンプル定義を使うと、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使ってパイプラインを作成できます。 以下の例では、Data Lake Store と Azure BLOB Storage との間でデータをコピーする方法を示します。 ただし、任意のソースのデータを、サポートされている任意のシンクに _直接_ コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」セクションを参照してください。
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>例:Azure Blob Storage から Azure Data Lake Store にデータをコピーする
 このセクションのコード例では以下を示します。

@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/24/2019
+ms.date: 07/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b92bc0a6c5d51ad26e069a363619edbdf0daa7c0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: de068563e50da4510343572fd641aadd93157073
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442884"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868641"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -134,7 +134,7 @@ ms.locfileid: "67442884"
 | [SQL マネージド インスタンス共同作成者](#sql-managed-instance-contributor) | SQL マネージド インスタンスと必要なネットワーク構成を管理することができますが、他のユーザーにアクセス権を付与することはできません。 |
 | [SQL Security Manager](#sql-security-manager) | SQL サーバーとデータベースのセキュリティ関連のポリシーを管理できます。ただし、それらへのアクセスは管理できません。 |
 | [SQL Server Contributor](#sql-server-contributor) | SQL サーバーとデータベースを管理できます。ただし、それらへのアクセスや、それらのセキュリティ関連ポリシーは管理できません。 |
-| [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントの管理を許可します。 ストレージ アカウント内のデータにはアクセスできません。 |
+| [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントの管理を許可します。 アカウント キーへのアクセスを提供します。これを使用して、共有キー認証を使用してデータにアクセスすることができます。 |
 | [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント アクセス キーを一覧表示および再生成できます。 |
 | [ストレージ BLOB データ共同作成者](#storage-blob-data-contributor) | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 | [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
@@ -1270,6 +1270,7 @@ ms.locfileid: "67442884"
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.Advisor/configurations/read | 構成の取得 |
 > | Microsoft.Advisor/recommendations/read | 推奨事項を読み取ります。 |
+> | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1292,6 +1293,7 @@ ms.locfileid: "67442884"
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.Advisor/configurations/read | 構成の取得 |
 > | Microsoft.Advisor/recommendations/read | 推奨事項を読み取ります。 |
+> | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1901,6 +1903,7 @@ ms.locfileid: "67442884"
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
+> | Microsoft.AlertsManagement/smartDetectorAlertRules/* |  |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |

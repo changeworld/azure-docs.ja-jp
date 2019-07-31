@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: e1a110abf8e057034043da34455bf678277c6cb4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dceb82af73061b91676ffb7061c7495995e76667
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799939"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868717"
 ---
 # <a name="virtual-machine-skus-tab"></a>仮想マシンの SKU タブ
 
@@ -68,6 +68,11 @@ ms.locfileid: "65799939"
 ## <a name="additional-pricing-considerations"></a>価格に関する追加の考慮事項
 
 上記の価格モデルは、基本的な説明です。  これは変更中ですが、地元または地域の税法および Microsoft の価格ポリシーの影響を受ける可能性があります。 
+
+### <a name="new-core-sizes-added-on-722019"></a>2019 年 7 月 2 日に追加された新しいコア サイズ
+
+2019 年 7 月 2 日に、(コア数に基づく) 新しい Azure 仮想マシン サイズに対する新しい料金の追加が VM の発行元に通知されました。  新しい料金は、コア サイズが 10、44、48、60、120、208、416 に対するものです。  既存の VM の場合、これらのコア サイズの新しい価格は、現在の価格に基づいて自動的に計算されます。  発行元は、2019 年 8 月 1 日までに追加料金を確認し、必要な変更を行う必要があります。  この日を過ぎて、発行元がまだ再パブリッシュを行っていない場合、これらの新しいコア サイズに対して自動的に計算された価格が有効になります。
+
 
 ### <a name="simplified-currency-pricing"></a>簡略化された通貨による価格
 

@@ -1,21 +1,20 @@
 ---
-title: 各種コンテンツの扱い - Azure Logic Apps | Microsoft Docs
+title: 各種コンテンツの扱い - Azure Logic Apps
 description: Logic Apps のデザイン時と実行時における各種コンテンツの扱いについて説明します。
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 2a9318317d5a01136a42b4fb6d580bafaf53ec4e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: conceptual
+ms.date: 07/20/2018
+ms.openlocfilehash: 97897da13c70c29834b1fc276829b316416efd8d
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685743"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868924"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Azure Logic Apps における各種コンテンツの扱い
 
@@ -144,11 +143,12 @@ Logic Apps は一部のデータ型について、その型を維持するため
 * `xml()`:データを `application/xml` にキャストします
 * `binary()`:データを `application/octet-stream` にキャストします
 * `string()`:データを `text/plain` にキャストします
-* `base64()`:コンテンツを Base64 文字列に変換します
+* `base64()`:コンテンツを Base64 でエンコードされた文字列に変換します
 * `base64toString()`:Base64 でエンコードされた文字列を `text/plain` に変換します
 * `base64toBinary()`:Base64 でエンコードされた文字列を `application/octet-stream` に変換します
-* `encodeDataUri()`:文字列を dataUri のバイト配列としてエンコードします
-* `decodeDataUri()`:`dataUri` をバイト配列にデコードします
+* `dataUri()`:文字列をデータ URI に変換します
+* `dataUriToBinary()`:データ URI をバイナリ文字列に変換します
+* `dataUriToString()`:データ URI を文字列に変換します
 
 たとえば `Content-Type` が `application/xml` に設定された、次のような内容の HTTP 要求を受信したとします。
 

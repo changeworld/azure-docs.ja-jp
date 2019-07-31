@@ -6,15 +6,15 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 13cec67a690239204bfc52d04b7cf03fd571148a
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.date: 07/10/2019
+ms.openlocfilehash: 5378a49ba5a4f3770ec9d9b3f723c063b4ef1a61
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399272"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806430"
 ---
-# <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
+# <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Power BI で SQL クエリを使用して Azure Data Explorer のデータを視覚化する
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Power BI はビジネス分析ソリューションであり、データを視覚化して、組織全体で結果を共有することができます。
 
@@ -84,4 +84,4 @@ Azure Data Explorer ではネイティブの照会言語を使用するのが一
 
 ## <a name="next-steps"></a>次の手順
 
-[Power BI にインポートされたクエリを使用してデータを視覚化する](power-bi-connector.md)
+[Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する](power-bi-connector.md)

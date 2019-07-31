@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf665362e2d20f26c17e8a4ae9da29fc30cb47ce
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481286"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807682"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>方法:グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする
 
@@ -43,9 +43,11 @@ ms.locfileid: "67481286"
 1. **[サーバー マネージャー]** ウィンドウで、 **[ファイルおよび記憶域サービス]** に移動します。
 
     ![[ファイル サービスおよびストレージ サービス] を開く](./media/deploy-access-panel-browser-extension/files-services.png)
+
 1. **[共有]** タブに移動します。 **[タスク]**  >  **[新しい共有...]** の順にクリックします
 
-    ![[ファイル サービスおよびストレージ サービス] を開く](./media/deploy-access-panel-browser-extension/shares.png)
+    ![[タスク] 画面の [新しい共有] の場所を示すスクリーンショット](./media/deploy-access-panel-browser-extension/shares.png)
+
 1. **[新しい共有ウィザード]** を完了して、ユーザーのコンピューターからアクセスできるようにアクセス許可を設定します。 [共有の詳細についてはこちらを参照してください。](https://technet.microsoft.com/library/cc753175.aspx)
 1. 次の Microsoft Windows インストーラー パッケージ (.msi ファイル) をダウンロードします。[Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. インストーラー パッケージを共有上の目的の場所にコピーします。
@@ -80,6 +82,7 @@ ms.locfileid: "67481286"
 
    * `Computer Configuration/Policies/Software Settings/`
    * `User Configuration/Policies/Software Settings/`
+
 1. **[ソフトウェアのインストール]** を右クリックして、 **[新規]**  >  **[パッケージ...]** の順に選択します
 1. 「[手順 1:配布ポイントを作成する](#step-1-create-the-distribution-point)」でインストーラー パッケージを含む共有フォルダーに移動し、.msi ファイルを選択して、 **[開く]** をクリックします。
 
@@ -100,6 +103,7 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
+
 1. **[アドオンの一覧]** を右クリックし、 **[編集]** を選択します。
 
     ![[アドオンの一覧] を右クリックし、[編集] を選択します。](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
@@ -111,8 +115,8 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 1. **[表示するコンテンツ]** ウィンドウで、次の手順を実行します。
 
    1. 1 列目の **[値の名前]** フィールドには、次のクラス ID をコピーして貼り付けます。`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   2. 2 列目の **[値]** フィールドには、次の値を入力します。`1`
-   3. **[OK]** をクリックして **[表示するコンテンツ]** ウィンドウを閉じます。
+   1. 2 列目の **[値]** フィールドには、次の値を入力します。`1`
+   1. **[OK]** をクリックして **[表示するコンテンツ]** ウィンドウを閉じます。
 
       ![前の手順で指定した値を入力する](./media/deploy-access-panel-browser-extension/show-contents.png)
 

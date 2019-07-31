@@ -14,17 +14,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d9d9e68b7e74ba7725e97162d01e1a35314fdd0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 552c89cd3294567e8203b69f81c1ac24716a8b1b
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60564603"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839434"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル:Hadoop クラスターを使用してデータを変換する初めてのパイプラインを作成する
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
-> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
@@ -36,7 +35,7 @@ ms.locfileid: "60564603"
 
 このチュートリアルでは、データ パイプラインを備えた最初の Azure Data Factory を作成します。 パイプラインによって、Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行して出力データを生成することで、入力データを変換します。  
 
-この記事では、チュートリアルの概要と前提条件について説明します。 前提条件を満たせたら、Azure portal、Visual Studio、PowerShell、Resource Manager テンプレート、REST API のいずれかのツールまたは SDK を使用してチュートリアルを実行できます。 この記事の最初にあるドロップダウン リストのオプションの 1 つ、または最後にあるリンクの 1 つを選択してチュートリアルを実行します。    
+この記事では、チュートリアルの概要と前提条件について説明します。 前提条件を満たせたら、Visual Studio、PowerShell、Resource Manager テンプレート、REST API のいずれかのツールまたは SDK を使用してチュートリアルを実行できます。 この記事の最初にあるドロップダウン リストのオプションの 1 つ、または最後にあるリンクの 1 つを選択してチュートリアルを実行します。    
 
 ## <a name="tutorial-overview"></a>チュートリアルの概要
 このチュートリアルでは、以下の手順を実行します。
@@ -93,13 +92,12 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 
 前提条件を満たせたら、チュートリアルを実行するための次のいずれかのツールまたは SDK を選択します。 
 
-- [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 - [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-Azure Portal と Visual Studio では、GUI を使用してデータ ファクトリを構築します。 一方、PowerShell、Resource Manager テンプレート、および REST API のオプションでは、スクリプトやプログラミングを使用してデータ ファクトリを構築します。
+Visual Studio では、GUI を使用してデータ ファクトリを構築します。 一方、PowerShell、Resource Manager テンプレート、および REST API のオプションでは、スクリプトやプログラミングを使用してデータ ファクトリを構築します。
 
 > [!NOTE]
 > このチュートリアルのデータ パイプラインでは、入力データを変換して出力データを生成します。 データをソース データ ストアからターゲット データ ストアにコピーするのではありません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。

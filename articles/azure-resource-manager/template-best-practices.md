@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cdec216187050a449f23f72474e0265acce14c5f
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60389578"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867389"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -28,7 +28,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 ## <a name="template-limits"></a>テンプレートの制限
 
-テンプレートのサイズを 1 MB に、各パラメーター ファイルのサイズを 64 KB に制限します。 1 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。 
+テンプレートのサイズを 4 MB に、各パラメーター ファイルのサイズを 64 KB に制限します。 4 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。 
 
 また、以下のように制限されます。
 
@@ -40,7 +40,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 入れ子になったテンプレートを使用すると、一部のテンプレートの制限を超過することができます。 詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。 パラメーター、変数、出力の数を減らすために、いくつかの値を 1 つのオブジェクトに結合することができます。 詳しくは、[パラメーターとしてのオブジェクト](resource-manager-objects-as-parameters.md)に関する記事をご覧ください。
 
-## <a name="resource-group"></a>リソース グループ
+## <a name="resource-group"></a>Resource group
 
 リソース グループにリソースをデプロイすると、リソースに関するメタデータがリソース グループに格納されます。 メタデータは、リソース グループの場所に格納されます。
 

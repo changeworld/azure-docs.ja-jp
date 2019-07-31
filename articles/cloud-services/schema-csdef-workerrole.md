@@ -14,10 +14,10 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 90a11c5bb81a0d29f5f8a1c1696732453aa4b1ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "62095406"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services の定義: WorkerRole スキーマ
@@ -151,7 +151,7 @@ worker ロールが含まれるサービス定義ファイルの基本形式は�
 
 | Attribute | Type | 説明 |
 | --------- | ---- | ----------- |
-|name|string|必須。 worker ロールの名前です。 ロールの名前は一意である必要があります。|
+|名前|string|必須。 worker ロールの名前です。 ロールの名前は一意である必要があります。|
 |enableNativeCodeExecution|ブール値|省略可能。 既定値は `true` であり、ネイティブ コード実行および完全な信頼は既定で有効になっています。 worker ロールでネイティブ コード実行を無効化し、代わりに Azure 部分信頼を使用するには、この属性を `false` に設定します。|
 |vmsize|string|省略可能。 このロールに割り当てる仮想マシンのサイズを変更するには、この値を設定します。 既定値は `Small` です。 指定できる仮想マシンのサイズと属性の一覧については、[Cloud Services の仮想マシンのサイズ](cloud-services-sizes-specs.md)に関するページをご覧ください。|
 
@@ -165,7 +165,7 @@ worker ロールが含まれるサービス定義ファイルの基本形式は�
 
 | Attribute | Type | 説明 |
 | --------- | ---- | ----------- |
-|name|string|必須。 構成設定の一意の名前です。|
+|名前|string|必須。 構成設定の一意の名前です。|
 
 ロールの構成設定とは、サービス定義ファイルで宣言され、サービス構成ファイルで設定されている名前と値のペアのことです。
 
@@ -182,7 +182,7 @@ worker ロールが含まれるサービス定義ファイルの基本形式は�
 
 | Attribute | Type | 説明 |
 | --------- | ---- | ----------- |
-|name|string|必須。 ローカル ストアの一意名です。|
+|名前|string|必須。 ローカル ストアの一意名です。|
 |cleanOnRoleRecycle|ブール値|省略可能。 ロールの再起動時にローカル ストアをクリーンアップするかどうかを指定します。 既定値は `true` です。|
 |sizeInMb|int|省略可能。 ローカル ストアに割り当てるストレージ領域の容量 (MB 単位) です。 指定しない場合、既定の 100 MB のストレージ領域が割り当てられます。 割り当て可能なストレージ領域の最小量は 1 MB です。<br /><br /> ローカル リソースの最大サイズは、仮想マシンのサイズによって決まります。 詳しくは、[Microsoft Azure Cloud Services の仮想マシンのサイズ](cloud-services-sizes-specs.md)に関するページをご覧ください。|
 
@@ -205,7 +205,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 | Attribute | Type | 説明 |
 | --------- | ---- | ----------- |
-|name|string|必須。 外部エンドポイントの一意名です。|
+|名前|string|必須。 外部エンドポイントの一意名です。|
 |protocol|string|必須。 外部エンドポイントのトランスポート プロトコルです。 worker ロールで使用可能な値は、`HTTP`、`HTTPS`、`UDP`、および `TCP` です。|
 |port|int|必須。 外部エンドポイントのポートです。 任意のポート番号を指定できますが、サービス内の各ロールに対して指定するポート番号は一意である必要があります。<br /><br /> 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|
 |証明書|string|HTTPS エンドポイントの場合は必須。 `Certificate` 要素で定義される証明書の名前です。|
@@ -220,7 +220,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 | Attribute | Type | 説明 |
 | --------- | ---- | ----------- |
-|name|string|必須。 内部エンドポイントの一意名です。|
+|名前|string|必須。 内部エンドポイントの一意名です。|
 |protocol|string|必須。 内部エンドポイントのトランスポート プロトコルです。 指定できる値は、`HTTP`、`TCP`、`UDP`、および `ANY` です。<br /><br /> 値を `ANY` にすると、あらゆるプロトコルおよびポートが許可されます。|
 |port|int|省略可能。 エンドポイントでの内部負荷分散接続に使用するポートを指定します。 負荷分散エンドポイントではポートを 2 つ使用します。 パブリック IP アドレス用のポートと、プライベート IP アドレス用のポートです。 通常、これらは同じものを設定しますが、別々のポートを使用することもできます。<br /><br /> 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。<br /><br /> `Port` 属性は、Azure SDK バージョン 1.3 以上を使用している場合のみ利用可能です。|
 
@@ -233,7 +233,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 | Attribute | Type | 説明 |
 | --------- | ---- | ----------- |
-|name|string|必須。 エンドポイントの一意名です。|
+|名前|string|必須。 エンドポイントの一意名です。|
 |localPort|int|必須。 ロード バランサーから転送された受信トラフィックを受信するために、すべてのロール インスタンスがリッスンする内部ポートを指定します。 指定できる値は 1 以上 65535 以下です。|
 |protocol|string|必須。 内部エンドポイントのトランスポート プロトコルです。 指定できる値は `udp` または `tcp` です。 HTTP/HTTPS ベースのトラフィックの場合は `tcp` を使用します。|
 
@@ -278,7 +278,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 | Attribute | Type | 説明 |
 | --------- | ---- | ----------- |
-|name|string|必須。 この証明書の名前です。証明書を HTTPS `InputEndpoint` 要素に関連付けた場合に、その証明書を参照するために使用します。|
+|名前|string|必須。 この証明書の名前です。証明書を HTTPS `InputEndpoint` 要素に関連付けた場合に、その証明書を参照するために使用します。|
 |storeLocation|string|必須。 この証明書を見つけることのできるローカル マシン上の証明書ストアの場所です。 可能な値は `CurrentUser` と `LocalMachine` です。|
 |storeName|string|必須。 この証明書が存在するローカル マシン上の証明書ストアの名前です。 使用できる値は、組み込みのストア名 `My`、`Root`、`CA`、`Trust`、`Disallowed`、`TrustedPeople`、`TrustedPublisher`、`AuthRoot`、`AddressBook`、および任意のカスタム ストア名です。 カスタム ストア名を指定した場合、そのストアが自動で作成されます。|
 |permissionLevel|string|省略可能。 ロール プロセスに付与するアクセス許可を指定します。 管理者特権プロセスのみが秘密キーへアクセスできるようにするには、`elevated` 権限を指定します。 `limitedOrElevated` 権限では、すべてのロール プロセスが秘密キーにアクセスできます。 指定できる値は `limitedOrElevated` または `elevated` です。 既定値は `limitedOrElevated` です。|
@@ -322,7 +322,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 | Attribute | Type | 説明 |
 | --------- | ---- | ----------- |
-|name|string|必須。 設定する環境変数の名前です。|
+|名前|string|必須。 設定する環境変数の名前です。|
 |value|string|省略可能。 環境変数に対して設定する値です。 value 属性か `RoleInstanceValue` 要素のいずれかを指定する必要があります。|
 
 ##  <a name="RoleInstanceValue"></a> RoleInstanceValue

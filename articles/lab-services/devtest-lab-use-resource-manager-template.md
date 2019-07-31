@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 07/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c14abf3acce0084507a03f3d34fdd59566d88c28
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101569"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854276"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンを作成する 
 
@@ -51,9 +51,8 @@ Resource Manager テンプレートを使用して DevTest Labs で VM を作成
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>仮想マシンの Resource Manager テンプレートを表示し保存する
 1. 「[Azure DevTest Labs のラボに最初の VM を作成する](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)」の手順に従い、仮想マシンの作成を始めます。
 1. 仮想マシンに必要な情報を入力し、この VM に必要なすべてのアイテムを追加します。
+1. **[詳細設定]** タブに切り替えます。 
 1. [構成の設定] ウィンドウの下部で、 **[View ARM template]\(ARM テンプレートの表示\)** を選択します。
-
-   ![[View ARM template]\(ARM テンプレートの表示\) ボタン](./media/devtest-lab-use-arm-template/devtestlab-lab-view-rm-template.png)
 1. 後で別の仮想マシンの作成に使用するために、Resource Manager テンプレートをコピーして保存します。
 
    ![後から使用するために保存する Resource Manager テンプレート](./media/devtest-lab-use-arm-template/devtestlab-lab-copy-rm-template.png)
@@ -63,6 +62,11 @@ Resource Manager テンプレートを保存したら、使用する前に、テ
 ![JSON ファイルを使用してパラメーターをカスタマイズする](./media/devtest-lab-use-arm-template/devtestlab-lab-custom-params.png)
 
 これで、Resource Manager テンプレートを使用して [VM を作成する](devtest-lab-create-environment-from-arm.md)準備ができました。
+
+## <a name="set-expiration-date"></a>有効期限の設定
+トレーニング、デモ、試用版などのシナリオでは、不要なコストが発生しないように、仮想マシンを作成し、固定期間後に自動的にそれらを削除することができます。 VM の **expirationDate** プロパティを指定することで、有効期限があるラボ VM を作成できます。 [GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration)で同じ Resource Manager テンプレートを確認してください。
+
+
 
 ### <a name="next-steps"></a>次の手順
 * [Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)方法を確認します。

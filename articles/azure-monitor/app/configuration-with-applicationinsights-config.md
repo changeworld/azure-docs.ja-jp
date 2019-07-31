@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 13bf27fd58530c357e3bb83f7cbc503855d40304
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 382f43156ab450600ff0d2e5e2db763cd6bd94df
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075331"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875050"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかに対してパラメーターを設定したりできます。
 
-アプリケーションの種類に応じて、構成ファイルの名前は `ApplicationInsights.config` または `ApplicationInsights.xml` になります。 構成ファイルは、[SDK のほとんどのバージョンのインストール][start]時にプロジェクトに自動的に追加されます。 また、[IIS サーバー上の Status Monitor][redfield] によって Web アプリにも追加されます。Web アプリには、[Azure Web サイトまたは VM の Application Insights 拡張機能](azure-web-apps.md)を選択したときにも追加されます。
+アプリケーションの種類に応じて、構成ファイルの名前は `ApplicationInsights.config` または `ApplicationInsights.xml` になります。 構成ファイルは、[SDK のほとんどのバージョンのインストール][start]時にプロジェクトに自動的に追加されます。 また、[IIS サーバー上の Status Monitor][redfield] によって Web アプリに追加されます。 [Azure Web サイトの拡張機能](azure-web-apps.md)または [Azure VM の拡張機能と仮想マシン スケールセット](azure-vm-vmss-apps.md)が使用されている場合、構成ファイルは無視されます。
 
 [Web ページの SDK][client] を制御するための同等のファイルはありません。
 
@@ -38,12 +38,14 @@ Application Insights .NET SDK は、いくつかの NuGet パッケージで構�
 各モジュールの構成ファイルにノードが存在します。 モジュールを無効にするには、ノードを削除するか、コメント アウトします。
 
 ### <a name="dependency-tracking"></a>依存関係の追跡
-[依存関係の追跡](../../azure-monitor/app/asp-net-dependencies.md) により、アプリがデータベースと外部サービスに行った呼び出しに関するテレメトリが回収されます。 このモジュールを IIS サーバーで機能させるには、[Status Monitor をインストール][redfield]する必要があります。 これを Azure Web アプリまたは VM で使用するには、 [Application Insights 拡張を選択します](azure-web-apps.md)。
+[依存関係の追跡](../../azure-monitor/app/asp-net-dependencies.md) により、アプリがデータベースと外部サービスに行った呼び出しに関するテレメトリが回収されます。 このモジュールを IIS サーバーで機能させるには、[Status Monitor をインストール][redfield]する必要があります。
 
 [TrackDependency API](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)を使用して、独自の依存関係追跡コードを記述することもできます。
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) NuGet パッケージ
+
+エージェントベース (コードなし) アタッチを使用してコードを変更することなく、依存関係を自動収集できます。 これを Azure Web アプリで使用するには、[Application Insights 拡張](azure-web-apps.md)を有効にします。 Azure VM または Azure 仮想マシン スケール セットで使用するには、[VM と仮想マシン スケール セットのアプリケーション監視拡張](azure-vm-vmss-apps.md)を有効にします。
 
 ### <a name="performance-collector"></a>パフォーマンス コレクター
 CPU、メモリ、IIS インストールのネットワーク負荷など、[システム パフォーマンス カウンターを収集](../../azure-monitor/app/performance-counters.md)します。 自分で設定したパフォーマンス カウンターなど、回収するカウンターを指定できます。

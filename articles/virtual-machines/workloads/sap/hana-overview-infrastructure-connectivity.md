@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
-ms.author: rclaus
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05bd09d3ab05f3ce426126e5629523fba087dad9
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4a1df7406ab4f4d7137d12dd7131a4c26b617cb2
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707312"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869214"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>SAP HANA (L インスタンス) のデプロイ 
 
@@ -37,6 +37,7 @@ HANA L インスタンス ユニットをデプロイするためには、次の
 - Azure デプロイ リージョンごとに次の情報が必要となります。
     - Azure 仮想ネットワークを HANA L インスタンスに接続する ER-P2P 接続の /29 IP アドレス範囲。
     - HANA L インスタンスのサーバー IP プールに使用する /24 CIDR ブロック。
+    - [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用してオンプレミスから HANA L インスタンス ユニットへの直接ルーティングを有効にする場合、または異なる Azure リージョンの HANA L インスタンス ユニット間でルーティングする場合は省略できます。別の /29 IP アドレス範囲を予約する必要があります。 この特定の範囲は、以前に定義した他の IP アドレス範囲と重複しないようにする必要があります。
 - HANA L インスタンスに接続するすべての Azure 仮想ネットワークの "仮想ネットワーク アドレス空間" 属性に使用される IP アドレス範囲の値。
 - 各 HANA L インスタンス システムのデータ:
   - 適切なホスト名 (できれば完全修飾ドメイン名を含める)。

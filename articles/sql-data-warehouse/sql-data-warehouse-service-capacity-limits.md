@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/14/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 62213ca1910ff26287bcd398d89fe7f8caf3cfac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8f4412861eeaf2cbec360b13c0fe75e99d4fc1d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66514674"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839642"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 201c5cc251896efae6b9f4639818471c0f011afe
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 98171692284f5f28fb189e2658d207fb80d428ba
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514401"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807137"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring-v021-alpha"></a>Status Monitor v2 API:Disable-ApplicationInsightsMonitoring (v0.2.1-alpha)
+# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring-v040-alpha"></a>Status Monitor v2 API:Disable-ApplicationInsightsMonitoring (v0.4.0-alpha)
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 

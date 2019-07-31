@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 451a2d6e658c08823d1629270bb7503ebd236c02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5571f84de5c6dd4f5dffea5869c744b7e5c02e24
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255691"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875284"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -66,6 +66,7 @@ ms.locfileid: "66255691"
                                                     <div class="cardText">
                                                         <h3>新機能</h3>
                                                         <p>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Azure VM と Azure 仮想マシン スケール セット アプリケーションのコード不要の監視</a><br>
                                                             <a href="./app/kubernetes.md">Kubernetes アプリケーションの監視</a><br>
                                                             <a href="./app/status-monitor-v2-overview.md">IIS アプリ用の Status Monitor v2</a><br>
                                                         </p>
@@ -74,7 +75,7 @@ ms.locfileid: "66255691"
                                                         <p>
                                                             <a href="./learn/quick-monitor-portal.md">ASP.NET</a><br>
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
-                                                            <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
+                                                            <a href="./learn/nodejs-quick-start.md">Node.JS</a><br>
                                                             <a href="./learn/java-quick-start.md">Java</a><br>
                                                             <a href="./learn/mobile-center-quickstart.md">Mobile</a><br>
                                                             <a href="./app/website-monitoring.md">ブラウザー/クライアント側の監視</a>
@@ -146,6 +147,7 @@ ms.locfileid: "66255691"
                                                             <a href="./app/asp-net.md">詳細な監視構成</a><br>
                                                             <a href="./app/monitor-performance-live-website-now.md">Status Monitor</a><br>
                                                             <a href="./app/azure-web-apps.md">App Service の監視</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">VM と仮想マシン スケール セットアプリケーションの監視</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">カスタム イベントとメトリックス</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">オープン ソース .NET SDK GitHub リポジトリ</a>
                                                         </p>

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 5fc611af75a7f733576f9343a4375fb56cacc030
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67593160"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN from Verizon Premium ルール エンジンのリファレンス
@@ -66,7 +66,7 @@ Character | 説明
 特殊文字 | 説明
 ------------------|------------
 \ | バックスラッシュは、その後の文字をエスケープします。これにより、その文字は、正規表現の意味としてではなく、リテラル値として扱われます。 たとえば、次の構文では、アスタリスクをエスケープします。`\*`
-% | パーセント記号の意味は、その使用法によって異なります。<br/><br/>`%{HTTPVariable}`: この構文では、HTTP 変数を識別します。<br/>`%{HTTPVariable%Pattern}`: この構文では、区切り記号として、また HTTP 変数を識別するために、パーセント記号を使用します。<br/>`\%`: パーセント記号をエスケープすると、リテラル値として使用したり、URL エンコードを示したりすることができます (例: `\%20`).
+% | パーセント記号の意味は、その使用法によって異なります。<br/><br/> `%{HTTPVariable}`:この構文では、HTTP 変数を識別します。<br/>`%{HTTPVariable%Pattern}`:この構文では、区切り記号として、また HTTP 変数を識別するために、パーセント記号を使用します。<br />`\%`:パーセント記号をエスケープすると、リテラル値として使用したり、URL エンコードを示したりすることができます (例: `\%20`)。
 \* | アスタリスクでは、直前の文字を 0 回以上一致すことができます。
 スペース | 空白文字は一般的にリテラル文字として扱われます。
 '値' | 一重引用符は、リテラル文字として扱われます。 一重引用符のセットには、特別な意味はありません。

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
-ms.author: allclark;yaqiyang
-ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: yaya
+ms.openlocfilehash: 9dd336ef973b603108aad62c90e4dab385d20317
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411587"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67873892"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>Azure SDK for PHP をダウンロードする
 
@@ -45,11 +45,11 @@ Azure SDK for PHP には、Azure 向けの PHP アプリケーションを開発
 
 Azure 用 PHP クライアント ライブラリには、任意のオペレーティング システムからデータ管理サービスやクラウド サービスなどの Azure の機能にアクセスするためのインターフェイスが用意されています。 これらのライブラリは、Composer からインストールできます。
 
-Azure 用 PHP クライアント ライブラリを使用する方法については、「[BLOB サービスの使用方法][blob-service]」、「[テーブル サービスの使用方法][table-service]」、および「[キュー サービスの使用方法][queue-service]」を参照してください。
+Azure 用 PHP クライアント ライブラリを使用する方法については、それぞれ [BLOB サービスの使用方法][blob-service], [How to Use the Table Service][table-service]、テーブル サービスの使用方法、[キュー サービスの使用方法][queue-service]に関するページを参照してください。
 
 ### <a name="install-via-composer"></a>Composer 経由でインストールする
 
-1. [Git をインストール][install-git]します。 Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
+1. [Git をインストールします][install-git]。 Windows では、Git 実行可能ファイルを PATH 環境変数に追加する必要があります。
 
 2. プロジェクトのルートに **composer.json** という名前のファイルを作成して、次のコードを追加します。
 
@@ -69,9 +69,9 @@ Azure 用 PHP クライアント ライブラリを使用する方法につい�
 
 Azure PowerShell は、Cloud Services や Virtual Machines などの Azure サービスをデプロイおよび管理するための PowerShell コマンドレットのセットです。 Azure エミュレーターは、アプリケーションをローカルでテストできるようにするためのクラウド サービスおよびデータ管理サービスのエミュレーターです。 これらのコンポーネントは、Windows のみでサポートされています。
 
-Azure PowerShell と Azure エミュレーターは、[Microsoft Web プラットフォーム インストーラー][download-wpi]を使用してインストールすることをお勧めします。 PHP、SQL Server、Microsoft Drivers for SQL Server for PHP、WebMatrix など、他の開発用コンポーネントをインストールすることもできます。
+Azure PowerShell と Azure エミュレーターは、[Microsoft Web Platform Installer][download-wpi] を使用してインストールすることをお勧めします。 PHP、SQL Server、Microsoft Drivers for SQL Server for PHP、WebMatrix など、他の開発用コンポーネントをインストールすることもできます。
 
-Azure PowerShell の使用方法については、「[Azure PowerShell の使用方法][powershell-tools]」を参照してください。
+Azure PowerShell の使用方法については、[Azure PowerShell の使用方法][powershell-tools]に関するページを参照してください。
 
 ## <a name="azure-cli"></a>Azure CLI
 

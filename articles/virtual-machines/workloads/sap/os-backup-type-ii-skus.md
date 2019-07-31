@@ -11,24 +11,28 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dacc0a745fc387dcaf6be282b562d83e1b798ea4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3afcd429351a0d988ff0e82ecf09f524ceac70f1
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710100"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868964"
 ---
-# <a name="os-backup-and-restore-for-type-ii-skus"></a>Type II SKU の OS のバックアップと復元
+# <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>リビジョン 3 スタンプの Type II SKU の OS バックアップと復元
 
-このドキュメントでは、HANA L インスタンスの **Type II SKU** のオペレーティング システム ファイル レベルのバックアップと復元を実行する手順について説明します。 
+このドキュメントでは、リビジョン 3 の HANA L インスタンスの **Type II SKU** に対してオペレーティング システム ファイル レベルのバックアップと復元を実行する手順について説明します。 
+
+>[!Important]
+> **この記事は、リビジョン 4 HANA L インスタンス スタンプでの Type II SKU のデプロイには適用されません。** リビジョン 4 HANA L インスタンス スタンプにデプロイされている Type II HANA L インスタンス ユニットのブート LUN は、Type I SKU が既にリビジョン 3 スタンプにあるため、ストレージ スナップショットを使用してバックアップできます。
+
 
 >[!NOTE]
 >OS バックアップ スクリプトは、サーバーにプレインストールされている ReaR ソフトウェアを使用します。  
 
-Microsoft サービス管理チームによるプロビジョニングが完了すると、既定では、サーバーは、オペレーティング システムのファイル レベル バックアップを実行する 2 つのバックアップ スケジュールで構成されます。 次のコマンドを使用して、バックアップ ジョブのスケジュールを確認できます。
+Microsoft `Service Management` チームによるプロビジョニングが完了すると、既定では、サーバーは、オペレーティング システムの背後でファイル システム レベルのバックアップを実行する 2 つのバックアップ スケジュールで構成されます。 次のコマンドを使用して、バックアップ ジョブのスケジュールを確認できます。
 ```
 #crontab –l
 ```
@@ -38,7 +42,7 @@ Microsoft サービス管理チームによるプロビジョニングが完了�
 ```
 ## <a name="how-to-take-a-manual-backup"></a>手動バックアップを実行する方法
 
-オペレーティング システムのファイル システム バックアップは、既に **cron ジョブ**を使用してスケジュールされています。 ただし、オペレーティング システムのファイル レベル バックアップを手動で実行することもできます。 手動バックアップを行うには、次のコマンドを実行します。
+OS ファイル システムのバックアップは、既に **cron ジョブ**を使用してスケジュールされています。 ただし、オペレーティング システムのファイル レベル バックアップを手動で実行することもできます。 手動バックアップを行うには、次のコマンドを実行します。
 
 ```
 #rear -v mkbackup

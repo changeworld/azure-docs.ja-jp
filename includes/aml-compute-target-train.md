@@ -9,13 +9,15 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/30/2019
-ms.openlocfilehash: 50905eb987defac612f1055b450b682726f0a56f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b62d4b2ac1bb69e2270c3202d29eb595df7aac4
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752959"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806057"
 ---
+**コンピューティング ターゲットは、各トレーニング ジョブで順に再利用できます**。 たとえば、リモート VM をワークスペースにアタッチした後、複数のジョブでそれを再利用できます。
+
 |トレーニング &nbsp;ターゲット| GPU のサポート |[自動化された ML](../articles/machine-learning/service/concept-automated-ml.md) | [ML パイプライン](../articles/machine-learning/service/concept-ml-pipelines.md) | [ビジュアル インターフェイス](../articles/machine-learning/service/ui-concept-visual-interface.md)
 |----|:----:|:----:|:----:|:----:|
 |[ローカル コンピューター](../articles/machine-learning/service/how-to-set-up-training-targets.md#local)| 可能性あり | はい | &nbsp; | &nbsp; |
@@ -25,5 +27,3 @@ ms.locfileid: "66752959"
 |[Azure Data Lake Analytics](../articles/machine-learning/service/how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | はい | &nbsp; |
 |[Azure HDInsight](../articles/machine-learning/service/how-to-set-up-training-targets.md#hdinsight)| &nbsp; | &nbsp; | はい | &nbsp; |
 |[Azure Batch](../articles/machine-learning/service/how-to-set-up-training-targets.md#azbatch)| &nbsp; | &nbsp; | はい | &nbsp; |
-
-**すべてのコンピューティング ターゲットは、複数のトレーニング ジョブで再利用できます**。 たとえば、リモート VM をワークスペースにアタッチした後、複数のジョブでそれを再利用できます。

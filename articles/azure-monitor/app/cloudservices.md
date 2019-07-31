@@ -14,10 +14,10 @@ ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
 ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67443329"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights

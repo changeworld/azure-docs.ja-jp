@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4c0fdbee2c5108dd3203217cb721576703b3faca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da7ec020b6f3f4a3b1890695a78fb6bdb363d233
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512092"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849376"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でユーザー エクスペリエンスのインターフェースをカスタマイズする
 
@@ -44,11 +44,11 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. Azure サブスクリプションが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション]** フィルターを選択し、ご利用のサブスクリプションが含まれるディレクトリを選択します。 このディレクトリは、Azure B2C テナントが含まれるディレクトリとは異なります。
-3. Azure portal の左上隅の [すべてのサービス] を選択し、 **[ストレージ アカウント]** を検索して選択します。 
+3. Azure portal の左上隅の [すべてのサービス] を選択し、 **[ストレージ アカウント]** を検索して選択します。
 4. **[追加]** を選択します。
 5. **[リソース グループ]** の下で **[新規作成]** を選択し、新しいリソース グループの名前を入力し、 **[OK]** をクリックします。
 6. ストレージ アカウントの名前を入力します。 選択する名前は、Azure 全体で一意であり、長さは 3 ～ 24 文字でなければならず、数字と小文字のみを使用できます。
-7. ストレージ アカウントの場所を選択するか、既定の場所をそのまま使用します。 
+7. ストレージ アカウントの場所を選択するか、既定の場所をそのまま使用します。
 8. その他の既定値をそのまま使用し、 **[確認および作成]** を選択し、 **[作成]** をクリックします。
 9. ストレージ アカウントの作成後、 **[リソースに移動]** を選択します。
 
@@ -68,7 +68,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 5. **[公開されるヘッダー]** に、アスタリスク (*) を入力します。
 6. **[最長有効期間]** には「200」と入力します。
 
-    ![CORS を有効にする](./media/tutorial-customize-ui/enable-cors.png)
+    ![Azure portal の Azure Blob Storage の CORS 構成ページ](./media/tutorial-customize-ui/enable-cors.png)
 
 5. **[Save]** をクリックします。
 
@@ -85,14 +85,14 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
         <title>My B2C Application</title>
         <link rel="stylesheet" href="https://your-storage-account.blob.core.windows.net/your-container/style.css">
       </head>
-      <body>  
+      <body>
         <h1>My B2C Application</h1>
         <div id="api"></div>
       </body>
     </html>
     ```
 
-    ページは自由にデザインできますが、作成した HTML カスタマイズ ファイルには **api** div 要素が必須です。 
+    ページは自由にデザインできますが、作成した HTML カスタマイズ ファイルには **api** div 要素が必須です。
 
 3. *custom-ui.html* としてファイルを保存します。
 4. Azure AD B2C によって挿入される要素など、サインアップまたはサインイン ページのすべての要素を中心とする次のような簡単な CSS を作成します。
@@ -103,7 +103,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
       text-align: center;
     }
     .intro h2 {
-      text-align: center; 
+      text-align: center;
     }
     .entry {
       width: 300px ;
@@ -111,7 +111,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
       margin-right: auto ;
     }
     .divider h2 {
-      text-align: center; 
+      text-align: center;
     }
     .create {
       width: 300px ;
@@ -130,7 +130,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 2. 作成したストレージ アカウントを選択し、 **[BLOB]** を選択し、作成したコンテナーを選択します。
 3. **[アップロード]** を選択し、*custom-ui.html* ファイルに移動してそれを選択し、 **[アップロード]** をクリックします。
 
-    ![カスタマイズ ファイルをアップロードする](./media/tutorial-customize-ui/upload-blob.png)
+    ![[アップロード] ボタンと [ファイル] が強調表示されているポータルの [BLOB のアップロード] ページ](./media/tutorial-customize-ui/upload-blob.png)
 
 4. チュートリアルの後半で使用するため、アップロードしたファイルの URL をコピーしておきます。
 5. *style.css* ファイルに手順 3 と 4 を繰り返します。
@@ -149,11 +149,11 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 2. ページの上部にある **[ユーザー フローを実行します]** をクリックします。
 3. **[ユーザー フローを実行します]** ボタンをクリックします。
 
-    ![サインアップまたはサインイン ユーザー フローを実行する](./media/tutorial-customize-ui/run-user-flow.png)
+    ![サインアップまたはサインイン ユーザー フローの [ユーザー フローを実行します] ページ](./media/tutorial-customize-ui/run-user-flow.png)
 
     次の例のような、作成した CSS ファイルに基づいて要素が配置されているページが表示されるはずです。
 
-    ![ユーザー フローの結果](./media/tutorial-customize-ui/run-now.png) 
+    ![サインアップまたはサインイン ページとカスタム UI 要素を示している Web ブラウザー](./media/tutorial-customize-ui/run-now.png)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,14 +4,14 @@ description: Azure Resource Manager と Azure CLI を使用してリソースを
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d5b174dc21392df89def8e91847e8a0dd12562
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 93b1b16776bac6cb24996d6fa08a547318802f32
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206535"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853829"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ
 
@@ -145,6 +145,8 @@ az group deployment create \
   --template-file demotemplate.json \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
+
+Windows コマンド プロンプト (CMD) または PowerShell で Azure CLI を使用している場合は、`exampleArray="['value1','value2']"` という形式で配列を渡します。
 
 ファイルの内容を取得し、その内容をインライン パラメーターとして提供することもできます。
 

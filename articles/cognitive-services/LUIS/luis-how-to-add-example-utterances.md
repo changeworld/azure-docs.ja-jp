@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: dd8ed146c507d8d39ba99c6573321ee80bc891c9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: af43697dc864019c6fd86b041e231a54d8aa8b40
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442576"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827485"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>発話の例にエンティティを追加する 
 
@@ -45,7 +45,7 @@ Are there any SQL server jobs?
     > [!NOTE]
     > エンティティとしてタグ付けする単語を選択するときは:
     > * 1 つの単語の場合、単純にそれを選択します。 
-    > * 2 語以上からなる場合、先頭を選択し、それから末尾を選択します。
+    > * 2 つ以上の単語のセットについては、最初の単語を選択してから最後の単語を選択します。
 
 1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか\)** ポップアップ ボックスで、エンティティ名を確認し、エンティティの種類として**シンプル**を選択して、 **[完了]** を選択します。
 

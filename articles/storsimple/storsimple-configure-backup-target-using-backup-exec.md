@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: 85c04b6ea3e40f1f1dcd12eb5d6f4a8f53836867
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876797"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple

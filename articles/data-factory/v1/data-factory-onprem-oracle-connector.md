@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462413"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839928"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 
@@ -83,7 +83,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 パイプラインを作成する最も簡単な方法は、コピー ウィザードを使用することです。 手順については、「[チュートリアル: データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルについては、コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)に関するチュートリアルを参照してください。
 
-**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API** などのいずれかのツールを使用してパイプラインを作成することもできます。 コピー アクティビティを使用するパイプラインを作成する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
+また、次のいずれかのツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを使用するパイプラインを作成する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -187,7 +187,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Oracle データベースとの間でのデータのコピーに関する JSON の例
 
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できる、サンプルの JSON 定義です。 これらの例は、Oracle データベースと Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[サポートされるデータ ストアと形式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」で説明されているシンクのいずれかにデータをコピーすることができます。
+次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Oracle データベースと Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[サポートされるデータ ストアと形式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」で説明されているシンクのいずれかにデータをコピーすることができます。
 
 **例:Oracle から Azure Blob Storage にデータをコピーする**
 

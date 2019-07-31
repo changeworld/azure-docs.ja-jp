@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 7b0b637bdbab8f85c87d28473dda8f2e8f8a086e
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: ab82055d99401b0e7bc8aedf247fdf0d779f9f07
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312060"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875271"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
@@ -85,7 +85,7 @@ Azure IR の作成と構成については、ハウツー ガイドで Azure IR 
 ### <a name="self-hosted-ir-compute-resource-and-scaling"></a>セルフホステッド IR のコンピューティング リソースとスケーリング
 セルフホステッド IR のインストールには、オンプレミスのマシンか、プライベート ネットワーク内の仮想マシンが必要です。 現時点では、セルフホステッド IR の実行対象として Windows オペレーティング システムだけがサポートされています。  
 
-高可用性とスケーラビリティを実現するには、アクティブ/アクティブ モードで論理インスタンスをオンプレミスの複数のマシンに関連付けて、セルフホステッド IR をスケールアウトできます。  詳細については、ハウツー ガイドでセルフホステッド IR の作成と構成の方法に関する記事をご覧ください。
+高可用性とスケーラビリティを実現するには、アクティブ/アクティブ モードで論理インスタンスをオンプレミスの複数のマシンに関連付けて、セルフホステッド IR をスケールアウトできます。  詳細については、ハウツー ガイドで[セルフホステッド IR の作成と構成](create-self-hosted-integration-runtime.md)の方法に関する記事をご覧ください。
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイム
 既存の SSIS ワークロードをリフトアンドシフトするには、Azure-SSIS IR を作成して SSIS パッケージをネイティブに実行できます。

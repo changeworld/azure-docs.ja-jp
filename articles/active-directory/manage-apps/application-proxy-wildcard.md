@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd29fc00a1c25a7c092393591060ca7e2938155
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 5d3b8176566593c5c9e9ff63a6ccbafcb2a35cd5
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481265"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827987"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション
 
@@ -45,7 +45,9 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 
 > http(s)://*.\<ドメイン\>
 
-(例: `http(s)://*.adventure-works.com`)。 内部 URL と外部 URL には異なるドメインを使用できますが、同じドメインにすることがベスト プラクティスとして推奨されます。 アプリケーションの発行時、いずれかの URL にワイルドカードがないとエラーが表示されます。
+(例: `http(s)://*.adventure-works.com`)。
+
+内部 URL と外部 URL には異なるドメインを使用できますが、同じドメインにすることがベスト プラクティスとして推奨されます。 アプリケーションの発行時、いずれかの URL にワイルドカードがないとエラーが表示されます。
 
 構成設定が異なるその他のアプリケーションがある場合、これらの例外を別個のアプリケーションとして発行し、ワイルドカードに設定された既定値を上書きする必要があります。 ワイルドカードのないアプリケーションは、常にワイルドカード アプリケーションよりも優先されます。 構成上、これらは "ただの" 通常のアプリケーションです。
 
@@ -60,7 +62,7 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 [カスタム ドメイン](application-proxy-configure-custom-domain.md)は他のすべてのアプリケーションではオプションですが、ワイルドカード アプリケーションでは前提条件です。 カスタム ドメインの作成には以下が必要です。
 
 1. Azure 内で確認済みドメインを作成する。
-2. PFX 形式の SSL 証明書をアプリケーション プロキシにアップロードする。
+1. PFX 形式の SSL 証明書をアプリケーション プロキシにアップロードする。
 
 作成する予定のアプリケーションに一致するワイルドカード証明書を使用することを検討する必要があります。 または、特定のアプリケーションのみが記載された証明書を使用することもできます。 この場合、証明書に記載されているアプリケーションのみが、ワイルドカード アプリケーションを通じてアクセス可能になります。
 
@@ -82,11 +84,11 @@ CNAME を正しく構成したことを確認するには、いずれかのタ�
 
 ワイルドカード アプリケーションでは、**内部 URL** は `http(s)://*.<domain>` の形式である必要があります。
 
-![内部 URL には http(s)://*.<domain> の形式を使用する](./media/application-proxy-wildcard/22.png)
+![内部 URL には http(s)://*.\<domain> の形式を使用する](./media/application-proxy-wildcard/22.png)
 
 **外部 URL** を構成する際は、`https://*.<custom domain>` の形式を使用する必要があります。
 
-![外部 URL には https://*.<custom domain> の形式を使用する](./media/application-proxy-wildcard/21.png)
+![外部 URL には https://*.\<custom domain> の形式を使用する](./media/application-proxy-wildcard/21.png)
 
 他の位置のワイルドカード、複数のワイルドカード、または他の正規表現文字列はサポートされておらず、エラーの原因になります。
 
@@ -95,11 +97,11 @@ CNAME を正しく構成したことを確認するには、いずれかのタ�
 次の方法で、ワイルドカード アプリケーションからアプリケーションを除外できます
 
 - 例外アプリケーションを通常のアプリケーションとして発行する
-- DNS 設定を通じて、特定のアプリケーションに関してのみワイルドカードを有効にする  
+- DNS 設定を通じて、特定のアプリケーションに関してのみワイルドカードを有効にする
 
 アプリケーションを通常のアプリケーションとして発行することは、ワイルドカードからアプリケーションを除外する際に推奨される方法です。 除外されるアプリケーションをワイルドカード アプリケーションの前に発行する必要があります。これにより、最初から例外が適用されます。 最も固有なアプリケーションは常に優先されます。`budgets.finance.adventure-works.com` として発行されたアプリケーションは、アプリケーション `*.finance.adventure-works.com` より優先されます。そして、このアプリケーションはアプリケーション `*.adventure-works.com` より優先されます。
 
-DNS 管理を通じて、特定のアプリケーションに対してのみ機能するようワイルドカードを制限することもできます。 ワイルドカードが含まれており、構成した外部 URL の形式に一致する CNAME エントリを作成することがベスト プラクティスとして推奨されます。 ただし、代わりに特定のアプリケーション URL でワイルドカードを指すこともできます。 たとえば、`*.adventure-works.com` の代わりに `hr.adventure-works.com`、`expenses.adventure-works.com`、`travel.adventure-works.com individually` で `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` を指します。 
+DNS 管理を通じて、特定のアプリケーションに対してのみ機能するようワイルドカードを制限することもできます。 ワイルドカードが含まれており、構成した外部 URL の形式に一致する CNAME エントリを作成することがベスト プラクティスとして推奨されます。 ただし、代わりに特定のアプリケーション URL でワイルドカードを指すこともできます。 たとえば、`*.adventure-works.com` の代わりに `hr.adventure-works.com`、`expenses.adventure-works.com`、`travel.adventure-works.com individually` で `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` を指します。
 
 このオプションを使用する場合、同じ場所を指している、値 `AppId.domain` の別の CNAME エントリ (たとえば `00000000-1a11-22b2-c333-444d4d4dd444.adventure-works.com`) も必要です。 ワイルドカード アプリケーションのアプリケーション プロパティ ページで **AppId** を見つけることができます。
 
@@ -110,7 +112,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 [MyApps パネル](https://myapps.microsoft.com)では、ワイルドカード アプリケーションが単一のタイルで表されます。 既定では、このタイルは非表示です。 タイルを表示してユーザーを特定のページに到達させるには:
 
 1. [ホームページ URL の設定](application-proxy-configure-custom-home-page.md)に関するガイドラインに従います。
-2. アプリケーション プロパティ ページで **[Show Application]\(アプリケーションの表示\)** を **true** に設定します。
+1. アプリケーション プロパティ ページで **[Show Application]\(アプリケーションの表示\)** を **true** に設定します。
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos の制約付き委任
 

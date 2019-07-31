@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5594c1f3517bf3d3f74841493df3c683304fa3f5
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 4f296aae6c147b0d5209276dbd008a1207837cfd
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502091"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875200"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -39,7 +39,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 > [!NOTE]
 > エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 このチェックアウトの詳細については、以下の「[トラブルシューティング](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)」セクションを参照してください。
 
-## <a name="enable-agent-based-monitoring-net"></a>.NET のエージェントベースの監視を有効にする
+## <a name="enable-agent-based-monitoring-for-net-applications"></a>.NET アプリケーションのエージェントベースの監視を有効にする
 
 > [!NOTE]
 > APPINSIGHTS_JAVASCRIPT_ENABLED と urlCompression の組み合わせはサポートされていません。 詳細については、[トラブルシューティングのセクション](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)の説明を参照してください。
@@ -75,7 +75,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 
     * サポートされるアダプティブ サンプリング テレメトリ プロセッサ設定の一覧については、[コード](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs)と[関連ドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/sampling)を参照してください。
 
-## <a name="enable-agent-based-monitoring-net-core"></a>.NET Core のエージェントベースの監視を有効にする
+## <a name="enable-agent-based-monitoring-for-net-core-applications"></a>.NET Core アプリケーションのエージェントベースの監視を有効にする
 
 次のバージョンの .NET Core がサポートされます。ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2
 
@@ -96,11 +96,11 @@ Azure App Services がホストするアプリケーションについてアプ�
 
     ![プラットフォームごとのオプションを選択する](./media/azure-web-apps/choose-options-new-net-core.png)
 
-## <a name="enable-client-side-monitoring-net"></a>.NET でクライアント側の監視を有効にする
+## <a name="enable-client-side-monitoring-for-net-applications"></a>.NET アプリケーションのクライアント側の監視を有効にする
 
 ASP.NET の場合、クライアント側の監視はオプトインです。 クライアント側の監視を有効にするには:
 
-* **[設定]** 、** **[アプリケーション設定]**** の順に選択します
+* **[設定]** 、** **[アプリケーション設定]** ** の順に選択します
    * [アプリケーション設定] で、新しい**アプリ設定名**と**値**を追加します。
 
      [Name] \(名前): `APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -113,7 +113,7 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 
 クライアント側の監視を無効にするには、[アプリケーション設定] から関連付けられているキーと値のペアを削除するか、値を false に設定します。
 
-## <a name="enable-client-side-monitoring-net-core"></a>.NET Core でクライアント側の監視を有効にする
+## <a name="enable-client-side-monitoring-for-net-core-applications"></a>.NET Core アプリケーションのクライアント側の監視を有効にする
 
 アプリ設定 'APPINSIGHTS_JAVASCRIPT_ENABLED' の有無に関係なく、.NET Core アプリと**推奨収集**の組み合わせの場合、クライアント側の監視は**既定で有効**です。
 
@@ -169,7 +169,6 @@ App Services のアプリケーション設定は、[Azure Resource Manager テ�
           }
         }
       ]
-
 ```
 
 アプリケーション設定が Application Insights 用に構成されている Azure Resource Manager テンプレートの例として、この[テンプレート](https://github.com/Andrew-MSFT/BasicImageGallery)は役立ちます。[238 行目](https://github.com/Andrew-MSFT/BasicImageGallery/blob/c55ada54519e13ce2559823c16ca4f97ddc5c7a4/CoreImageGallery/Deploy/CoreImageGalleryARM/azuredeploy.json#L238)以降のセクションは特に有益です。

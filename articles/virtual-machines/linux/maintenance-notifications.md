@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: 40ae8f0fb9c0c5980c4db1471b2bbad56a57d486
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c82bacfdff1c9d939016b48735f7917e7d34b47f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410491"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849678"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Linux 仮想マシンに対する計画メンテナンスの通知の処理
 
@@ -140,7 +140,7 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 **A:** 可用性セットまたは仮想マシン スケール セットにデプロイされた仮想マシンには、更新ドメイン (UD) の概念があります。 メンテナンスを実行するときに、Azure では UD の制約が遵守され、(同じ可用性セット内の) 別の UD の仮想マシンは再起動されません。  また、Azure は仮想マシンの次のグループに移行する前に少なくとも 30 分待機します。 
 
-高可用性の詳細については、「[Azure の仮想マシンのリージョンと可用性について](regions-and-availability.MD)」を参照してください。
+高可用性の詳細については、[Azure の仮想マシンの可用性](availability.MD)に関するページを参照してください。
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 
@@ -160,7 +160,7 @@ azure compute virtual-machine initiate-maintenance --service-name myService --na
 
 **Q:Virtual Machine Scale Sets ではどのようになりますか?**
 
-**A:** Virtual Machine Scale Sets で計画メンテナンスが使用できるようになりました。 セルフサービス メンテナンスを開始する方法については、[VMSS の計画的なメンテナンス](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md)に関するドキュメントを参照してください。
+**A:** Virtual Machine Scale Sets で計画メンテナンスが使用できるようになりました。 セルフサービス メンテナンスを開始する方法については、[仮想マシン スケール セットに対する計画メンテナンス](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md)に関するドキュメントを参照してください。
 
 **Q:Cloud Services (Web/worker ロール)、および Service Fabric ではどのようになりますか?**
 

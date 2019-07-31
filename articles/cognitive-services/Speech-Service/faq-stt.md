@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 6cc530d2680c0410081ad3ad3e573cd59d5583d6
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341955"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839233"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -83,7 +83,12 @@ ms.locfileid: "67341955"
 
 **A**: REST API では、要求を 5 秒で 25 に制限しています。 詳細は、[音声テキスト変換](speech-to-text.md)に関するページを参照してください。
 
-Custom Speech Service の使用について他にプライバシーに関する懸念がある場合は、いずれかのサポート チャネルにお問い合わせください。
+**Q:デュアル チャネル オーディオの料金はどのように課金されますか。**
+
+**A**: 各チャネルを個別に送信した場合 (各チャネルは独自のファイルにあります)、各ファイルの期間ごとに課金されます。 各チャネルを多重化して 1 つのファイルを送信すると、1 つのファイルの期間に対して課金されます。
+
+> [!IMPORTANT]
+> Custom Speech Service の使用について他にプライバシーに関する懸念がある場合は、いずれかのサポート チャネルにお問い合わせください。
 
 ## <a name="importing-data"></a>データのインポート
 

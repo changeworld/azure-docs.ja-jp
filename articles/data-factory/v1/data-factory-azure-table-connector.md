@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aed341c50332b424a1149c129629cd451a4e5133
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0c4f961dda273c7f3885159818dabf228abced42
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146928"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839481"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -39,7 +39,7 @@ ms.locfileid: "66146928"
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
 
@@ -131,7 +131,7 @@ DivisionID は、パーティション キーとして指定されます。
 }
 ```
 ## <a name="json-examples"></a>JSON の使用例
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Azure Table Storage と Azure BLOB Database の間でデータをコピーする方法を示しています。 ただし、任意のソースのデータを、サポートされている任意のシンクに **直接** コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」のセクションを参照してください。
+次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Azure Table Storage と Azure BLOB Database の間でデータをコピーする方法を示しています。 ただし、任意のソースのデータを、サポートされている任意のシンクに **直接** コピーできます。 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」の「サポートされるデータ ストアと形式」のセクションを参照してください。
 
 ## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>例:Azure テーブルから Azure BLOB にデータをコピーする
 次のサンプルは以下を示しています。
@@ -538,7 +538,7 @@ Azure テーブル OData 型から .NET 型への型マッピングを所与と�
 | 列名 | Type |
 | --- | --- |
 | userid |Edm.Int64 |
-| name |Edm.String |
+| 名前 |Edm.String |
 | lastlogindate |Edm.DateTime |
 
 続いて、次のように Azure テーブルのデータセットを定義します。 基になるデータ ストアで既に指定されているため、“structure” セクションのタイプ情報を指定する必要はありません。

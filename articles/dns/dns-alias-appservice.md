@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 11/3/2018
+ms.date: 7/13/2019
 ms.author: victorh
-ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d20ef750aa4556a73852982631423d3d08271f5
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790744"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854110"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>ゾーンの頂点で負荷分散された Azure Web アプリをホストする
 
@@ -43,9 +43,9 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 次の表で示す構成情報を使用して、リソース グループに 2 つの Web App Service プランを作成します。 App Service プランの作成の詳細については、「[Azure で App Service プランを管理する](../app-service/app-service-plan-manage.md)」をご覧ください。
 
 
-|Name  |オペレーティング システム  |Location  |価格レベル  |
+|EnableAdfsAuthentication  |オペレーティング システム  |Location  |価格レベル  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|米国東部|Dev/Test D1-Shared|
+|ASP-01     |Windows|East US|Dev/Test D1-Shared|
 |ASP-02     |Windows|米国中部|Dev/Test D1-Shared|
 
 ## <a name="create-app-services"></a>App Services を作成する
@@ -58,7 +58,7 @@ App Service プランごとに 1 つずつ、2 つの Web アプリを作成し�
 4. **Create** をクリックしてください。
 5. 既定値のままにし、次の表を使用して 2 つの Web アプリを構成します。
 
-   |Name<br>(.azurewebsites.net 内で一意になっている必要があります)|リソース グループ |App Service プラン/場所
+   |EnableAdfsAuthentication<br>(.azurewebsites.net 内で一意になっている必要があります)|リソース グループ |App Service プラン/場所
    |---------|---------|---------|
    |App-01|既存のものを使用します<br>リソース グループを選択します|ASP-01(米国東部)|
    |App-02|既存のものを使用します<br>リソース グループを選択します|ASP-02(米国中部)|
@@ -87,9 +87,9 @@ Traffic Manager プロファイルの作成方法の詳細については、[Web
 3. **[追加]** をクリックします。
 4. 次の表を使用して、エンドポイントを構成します。
 
-   |Type  |Name  |ターゲット  |Location  |カスタム ヘッダーの設定|
+   |Type  |EnableAdfsAuthentication  |ターゲット  |Location  |カスタム ヘッダーの設定|
    |---------|---------|---------|---------|---------|
-   |外部エンドポイント     |End-01|App-01 について記録した IP アドレス|米国東部|host:\<App-01 について記録した URL\><br>例: **host:app-01.azurewebsites.net**|
+   |外部エンドポイント     |End-01|App-01 について記録した IP アドレス|East US|host:\<App-01 について記録した URL\><br>例: **host:app-01.azurewebsites.net**|
    |外部エンドポイント     |End-02|App-02 について記録した IP アドレス|米国中部|host:\<App-02 について記録した URL\><br>例: **host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>DNS ゾーンの作成
@@ -104,7 +104,7 @@ DNS ゾーンの準備ができたら、ゾーンの頂点に対するエイリ�
 2. **[レコード セット]** をクリックします。
 3. 次の表を使用して、レコード セットを追加します。
 
-   |Name  |Type  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
+   |EnableAdfsAuthentication  |Type  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
    |---------|---------|---------|---------|-----|
    |@     |A|はい|Azure リソース|Traffic Manager - お使いのプロファイル|
 
@@ -144,3 +144,5 @@ DNS ゾーンの準備ができたら、ゾーンの頂点に対するエイリ�
 - [チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
 - [チュートリアル:Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
 - [DNS に関する FAQ](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)
+
+アクティブな DNS 名を移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](../app-service/manage-custom-dns-migrate-domain.md)」を参照してください。

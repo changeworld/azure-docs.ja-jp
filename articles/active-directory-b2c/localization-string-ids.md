@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41a72013f1538b0a857c76bc949a7109e1cd54b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da1390de4e2eb0624032dc490416e7b6e5d61baa
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510922"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846847"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -27,7 +27,7 @@ ms.locfileid: "66510922"
 
 次の ID は、`api.signuporsignin`の ID を持つコンテンツ定義に使用されます。
 
-| ID | Default value |
+| id | Default value |
 | -- | ------------- |
 | **local_intro_email** | 自分の既存のアカウントでサインイン |
 | **logonIdentifier_email** | 電子メール アドレス |
@@ -81,21 +81,21 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ## <a name="sign-up-or-sign-in-error-messages"></a>サインアップまたはサインインのエラー メッセージ
 
-| ID | Default value |
+| id | Default value |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | パスワードが正しくありません。 |
 | **UserMessageIfClaimsPrincipalDoesNotExist** | ご利用のアカウントが見つからないようです。 |
-| **UserMessageIfOldPasswordUsed** | 古いパスワードが使用された可能性があります。 |  
-| **DefaultMessage** | ユーザー名またはパスワードが無効です。 |  
-| **UserMessageIfUserAccountDisabled** | ご使用のアカウントはロックされています。 サポート担当者に連絡してロックを解除してから、もう一度お試しください。 |  
-| **UserMessageIfUserAccountLocked** | ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。 後でもう一度やり直してください。 |  
-| **AADRequestsThrottled** | この時点でリクエストが多すぎます。 しばらく待って、もう一度やり直してください。 |  
+| **UserMessageIfOldPasswordUsed** | 古いパスワードが使用された可能性があります。 |
+| **DefaultMessage** | ユーザー名またはパスワードが無効です。 |
+| **UserMessageIfUserAccountDisabled** | ご使用のアカウントはロックされています。 サポート担当者に連絡してロックを解除してから、もう一度お試しください。 |
+| **UserMessageIfUserAccountLocked** | ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。 後でもう一度やり直してください。 |
+| **AADRequestsThrottled** | この時点でリクエストが多すぎます。 しばらく待って、もう一度やり直してください。 |
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>サインアップとセルフ アサート ページのユーザー インターフェイス要素
 
 以下は、`api.localaccountsignup`の ID を持つコンテンツ定義、または`api.selfasserted.profileupdate`や`api.localaccountpasswordreset`など、`api.selfasserted`で始まるコンテンツ定義の ID です。
 
-| ID | Default value |
+| id | Default value |
 | -- | ------------- |
 | **ver_sent** | 次の場所に確認コードが送信されました: |
 | **ver_but_default** | 既定値 |
@@ -134,7 +134,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ## <a name="sign-up-and-self-asserted-pages-error-messages"></a>サインアップとセルフ アサート ページ エラー メッセージ
 
-| ID | Default value |
+| id | Default value |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | 指定した ID を持つユーザーは既に存在します。 別の ID を選択してください。 |
 | **UserMessageIfClaimNotVerified** | 要求が確認されていません: {0} |
@@ -146,7 +146,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 次の例では、サインアップページにユーザーインターフェイス要素の一部を使用しています。
 
-![サインアップページの UX 要素](./media/localization-string-ids/localization-sign-up.png)
+![UI 要素名がラベル付けされたサインアップ ページ](./media/localization-string-ids/localization-sign-up.png)
 
 次の例は、ユーザーが [認証コードを送信する] ボタンをクリックした後に、サインアップ ページでユーザー インターフェイス要素の一部を使用する方法を示しています。
 
@@ -155,9 +155,9 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>電話ファクター認証ページのユーザー インタフェース要素
 
-以下は、`api.phonefactor`の ID を持つコンテンツ定義用の ID です。 
+以下は、`api.phonefactor`の ID を持つコンテンツ定義用の ID です。
 
-| ID | Default value |
+| id | Default value |
 | -- | ------------- |
 | **button_verify** | 電話する |
 | **country_code_label** | 国番号 |

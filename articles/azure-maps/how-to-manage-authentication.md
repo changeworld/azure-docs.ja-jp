@@ -3,17 +3,17 @@ title: Azure Maps での認証の管理 | Microsoft Docs
 description: Azure portal を使用して、Azure Maps での認証を管理することができます。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 617adbcda70799aa07248945bbc27f9d95aa77a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1dc63a2c2350ad4f1d02d0c1b22050293d7b866c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952569"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67837813"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
 
@@ -59,7 +59,7 @@ Azure Maps アカウントを作成したら、Azure AD テナントと Azure Ma
 
 ## <a name="grant-rbac-to-azure-maps"></a>Azure Maps に RBAC を付与する
 
-Azure Maps アカウントをお使いの Azure AD テナントに関連付けると、1 つまたは複数の Azure Maps のアクセス制御ロールにユーザーまたはアプリケーションを割り当てることで、アクセス制御を付与することができます。
+Azure Maps アカウントをお使いの Azure AD テナントに関連付けると、1 つまたは複数の Azure Maps のアクセス制御ロールにユーザー、グループ、またはアプリケーションを割り当てることで、アクセス制御を付与することができます。
 
 1. **[アクセス制御 (IAM)]** に移動し、 **[ロールの割り当て]** 、 **[ロールの割り当ての追加]** の順に選択します。
 

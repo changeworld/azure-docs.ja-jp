@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e473858ed02afce89313c0bfeffd95c785120d40
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824016"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839030"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -64,7 +64,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 さまざまなツールと API を使用して、オンプレミスの DB2 データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
 
 - パイプラインを作成する最も簡単な方法は、Azure Data Factory コピー ウィザードを使うことです。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用したパイプラインの作成のチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。 
-- Azure Portal、Visual Studio、Azure PowerShell、Azure Resource Manager テンプレート、.NET API、REST API などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 
+- Visual Studio、Azure PowerShell、Azure Resource Manager テンプレート、.NET API、REST API などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -112,7 +112,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 > スキーマ名とテーブル名は、大文字と小文字が区別されます。 query ステートメントでは、プロパティ名を "" (二重引用符) で囲んでください。
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON の使用例:DB2 から Azure Blob Storage にデータをコピーする
-次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 この例で紹介しているのは、DB2 データベースから Blob Storage にデータをコピーする方法ですが、 Azure Data Factory コピー アクティビティを使用すると、[サポートされている各種データ ストア シンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)にデータをコピーすることができます。
+次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 この例で紹介しているのは、DB2 データベースから Blob Storage にデータをコピーする方法ですが、 Azure Data Factory コピー アクティビティを使用すると、[サポートされている各種データ ストア シンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)にデータをコピーすることができます。
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 

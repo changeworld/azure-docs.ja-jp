@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d9420398c012b8da18e3b035cb845db6ce8c942d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2253e9f6331662f0ead0251f9affd7996e02aa31
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511061"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846876"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを通じてアクセス トークンをご自身のアプリケーションに渡す
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Active Directory (Azure AD) B2C の[カスタム ポリシー](active-directory-b2c-get-started-custom.md)は、ご自身のアプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 これが発生すると、Azure AD B2C は ID プロバイダーから[アクセス トークン](active-directory-b2c-reference-tokens.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 要求の種類を追加し、要求をカスタム ポリシーに出力して、トークンを Azure AD B2C に登録するアプリケーションに渡します。 
+Azure Active Directory (Azure AD) B2C の[カスタム ポリシー](active-directory-b2c-get-started-custom.md)は、ご自身のアプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 これが発生すると、Azure AD B2C は ID プロバイダーから[アクセス トークン](active-directory-b2c-reference-tokens.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 要求の種類を追加し、要求をカスタム ポリシーに出力して、トークンを Azure AD B2C に登録するアプリケーションに渡します。
 
 Azure AD B2C では、[OAuth 2.0](active-directory-b2c-reference-oauth-code.md) および [OpenID Connect](active-directory-b2c-reference-oidc.md) ID プロバイダーのアクセス トークンを渡すことがサポートされています。 その他すべての ID プロバイダーについては、要求が空で返されます。
 
@@ -29,7 +29,7 @@ Azure AD B2C では、[OAuth 2.0](active-directory-b2c-reference-oauth-code.md) 
 
 - 対象のカスタム ポリシーが OAuth 2.0 または OpenID Connect の ID プロバイダーを使用して構成されている。
 
-## <a name="add-the-claim-elements"></a>要求の要素を追加する 
+## <a name="add-the-claim-elements"></a>要求の要素を追加する
 
 1. ご自身の *TrustframeworkExtensions.xml* ファイルを開き、識別子が `identityProviderAccessToken` の次の **ClaimType** 要素を、**ClaimsSchema** 要素に追加します。
 
@@ -102,13 +102,8 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 
     次の例のようなコードが表示されます。
 
-    ![デコードされたトークン](./media/idp-pass-through-custom/idp-pass-through-custom-token.png)
+    ![Idp_access_token block が強調表示されている jwt.ms 内のデコードされたトークン](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
 ## <a name="next-steps"></a>次の手順
 
 [Azure Active Directory のトークン リファレンス](active-directory-b2c-reference-tokens.md)でトークンの詳細について学習する。
-
-
-
-
-

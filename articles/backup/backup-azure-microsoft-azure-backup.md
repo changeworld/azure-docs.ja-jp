@@ -1,19 +1,18 @@
 ---
 title: Azure Backup Server を使用してワークロードを Azure にバックアップする
 description: Azure Backup Server を使用してワークロードを保護し、Azure Portal にバックアップします。
-services: backup
 author: kasinh
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf0e964c46088947fa50d1eadbcc12b78978251f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62098864"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466373"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 > [!div class="op_single_selector"]
@@ -42,19 +41,18 @@ Azure Backup Server には、Data Protection Manager (DPM) のワークロード
 Azure Backup Server を準備して実行するための最初の手順は、Windows Server のセットアップです。 サーバーの設置場所は Azure でもオンプレミスでもかまいません。
 
 ### <a name="using-a-server-in-azure"></a>Azure に設置されたサーバーを使用する場合
-Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2012 R2 Datacenter、Windows Server 2016 Datacenter または Windows Server 2019 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件はA2 Standard で 2 つのコア、3.5 GB RAM です。
+Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2012 R2 Datacenter、Windows Server 2016 Datacenter または Windows Server 2019 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は4 つのコアと 8 GB の RAM を持つ Standard_A4_v2 です。
 
 Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://technet.microsoft.com/library/jj852163.aspx)」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
 ### <a name="using-an-on-premises-server"></a>オンプレミスに設置されたサーバーを使用する場合
-基本サーバーを Azure で実行したくない場合は、Hyper-V VM や VMware VM、物理ホストでサーバーを実行することができます。 サーバー ハードウェアに推奨される最小要件は 2 コア、4 GB RAM です。 サポートされるオペレーティング システムを以下の表に示します。
+基本サーバーを Azure で実行したくない場合は、Hyper-V VM や VMware VM、物理ホストでサーバーを実行することができます。 サーバー ハードウェアに推奨される最小要件は 2 コア、8 GB RAM です。 サポートされるオペレーティング システムを以下の表に示します。
 
 | オペレーティング システム | プラットフォーム | SKU |
 |:--- | --- |:--- |
 | Windows Server 2019 |64 ビット |Standard、Datacenter、Essentials (MABS V3 以降) |
 | Windows Server 2016 と最新 SP |64 ビット |Standard、Datacenter、Essentials (MABS V2 以降) |
 | Windows Server 2012 R2 と最新 SP |64 ビット |Standard、Datacenter、Foundation |
-| Windows Server 2012 と最新 SP |64 ビット |Datacenter、Foundation、Standard |
 | Windows Storage Server 2012 R2 と最新 SP |64 ビット |Standard、Workgroup |
 | Windows Storage Server 2012 と最新 SP |64 ビット |Standard、Workgroup |
 
@@ -206,7 +204,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     次の手順では、Microsoft Azure Recovery Services エージェントを構成します。 構成を行う際、マシンを Recovery Services コンテナーに登録するために、コンテナーの資格情報を提供する必要があります。 また、Azure とお客様の環境間で送信されるデータを暗号化/復号化するためのパスフレーズも提供します。 自動的にパスフレーズを生成するか、最小で 16 文字の独自のパスフレーズを指定することができます。 エージェントの構成が完了するまで、ウィザードを続行します。
 
-    ![Azure Backup Serer PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
+    ![Azure Backup Server の前提条件 2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Microsoft Azure Backup Server の登録が正常に完了すると、セットアップ ウィザードは、SQL Server と Azure Backup Server コンポーネントのインストールおよび構成を開始します。 SQL Server コンポーネントのインストールが完了すると、Microsoft Azure Backup Server コンポーネントがインストールされます。
 
     ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
@@ -248,21 +246,21 @@ MABS は、System Center Data Protection Manager 保護エージェントを使�
 
 
   > [!IMPORTANT]
-  > - 新しいサーバー名は元の Azure Backup Server インスタンスと同じ名前にする必要があります。 以前の記憶域プールと Data Protection Manager データベースを使用して復旧ポイントを保持する場合は、新しい Azure Backup Server インスタンスの名前を変更することはできません。
-  > - Data Protection Manager データベースのバックアップを用意する必要があります。 後でデータベースを復元する必要があるためです。
+  > - 新しいサーバー名は元の Azure Backup Server インスタンスと同じ名前にする必要があります。 以前の記憶域プールと MABS Database (DPMDB) を使用して復旧ポイントを保持する場合は、新しい Azure Backup Server インスタンスの名前を変更することはできません。
+  > - MABS Database (DPMDB) のバックアップを用意する必要があります。 後でデータベースを復元する必要があるためです。
 
 1. 表示ウィンドウで、保護エージェントを更新するクライアント コンピューターを選択します。
 2. 元の Azure Backup Server をシャットダウンするか、ネットワークから切り離します。
 3. Active Directory のコンピューター アカウントをリセットします。
 4. 新しいコンピューターに Server 2016 をインストールし、元の Azure Backup Server と同じコンピューター名を付けます。
 5. ドメインに参加します。
-6. Azure Backup Server V2 以降をインストールします (DPM 記憶域プールのディスクを古いサーバーから移動してインポートします)。
+6. Azure Backup Server V2 以降をインストールします (MABS 記憶域プールのディスクを古いサーバーから移動してインポートします)。
 7. 手順 1 で作成した DPMDB を復元します。
 8. 元のバックアップ サーバーの記憶域を新しいサーバーにアタッチします。
 9. SQL から DPMDB を復元します。
 10. 新しいサーバーで、管理コマンド ラインから Microsoft Azure Backup のインストール場所と bin フォルダーに cd します。
 
-    パスの例:C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\" 
+    パスの例:C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
 
 11. Azure Backup に対して、DPMSYNC -SYNC を実行します
 
@@ -271,7 +269,7 @@ MABS は、System Center Data Protection Manager 保護エージェントを使�
 ## <a name="network-connectivity"></a>ネットワーク接続
 Azure Backup Server が正常に動作するためには、Azure Backup サービスに接続されている必要があります。 マシンが Azure に接続されているかどうかを確認するには、Azure Backup Server PowerShell コンソールで ```Get-DPMCloudConnection``` コマンドレットを使用します。 コマンドレットの出力が TRUE の場合、マシンは接続されていますが、それ以外の場合は接続されていません。
 
-同時に、Azure のサブスクリプションが正常な状態である必要があります。 サブスクリプションの状態を確認および管理するには、[サブスクリプション ポータル](https://account.windowsazure.com/Subscriptions)にログインします。
+同時に、Azure のサブスクリプションが正常な状態である必要があります。 サブスクリプションの状態を確認および管理するには、[サブスクリプション ポータル](https://account.windowsazure.com/Subscriptions)にサインインします。
 
 Azure への接続と Azure サブスクリプションの状態がわかれば、以下の表から、提供されるバックアップ/復元機能に対する影響を確認することができます。
 
@@ -285,7 +283,7 @@ Azure への接続と Azure サブスクリプションの状態がわかれば�
 | 切断されている期間が 15 日を越える |プロビジョニング解除済み |停止済み |停止済み |停止され、Azure の回復ポイントが削除される |停止済み |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>接続の切断からの回復
-ファイアウォールまたはプロキシにより Azure へのアクセスが妨げられている場合、ファイアウォール/プロキシのプロファイルのホワイトリストに以下のドメイン アドレスを追加する必要があります。
+ファイアウォールまたはプロキシにより Azure へのアクセスが妨げられている場合、ファイアウォール/プロキシのプロファイルで以下のドメイン アドレスを許可する必要があります。
 
 * `http://www.msftncsi.com/ncsi.txt`
 * \*.Microsoft.com
@@ -307,7 +305,7 @@ MABS をアップグレードするには、次の手順を使用します。
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>MABS V2 から V3 にアップグレードする
 
 > [!NOTE]
-> 
+>
 > MABS V2 は MABS V3 をインストールするための前提条件ではありません。 ただし、MABS V3 にアップグレードできるのは MABS V2 からのみです。
 
 次の手順を使用して MABS をアップグレードします。
@@ -317,15 +315,15 @@ MABS をアップグレードするには、次の手順を使用します。
 2. サーバーをアップグレードします。 手順は[インストール](#install-and-upgrade-azure-backup-server)と同様です。 ただし、SQL の設定で、SQL インスタンスを SQL 2017 にアップグレードするか、SQL Server 2017 の独自のインスタンスを使用するかという選択肢があります。
 
    > [!NOTE]
-   > 
+   >
    > SQL インスタンスのアップグレード中に終了しないでください。終了すると、SQL レポート インスタンスがアンインストールされるため、MABS を再アップグレードする試みが失敗します。
 
    注意すべき重要な点を次に示します。
 
    > [!IMPORTANT]
-   > 
+   >
    >  SQL 2017 アップグレードの一環として、SQL 暗号化キーをバックアップし、レポート サービスをアンインストールします。 SQL Server のアップグレード後に、レポート サービス (14.0.6827.4788) がインストールされ、暗号化キーが復元されます。
-   > 
+   >
    > SQL 2017 を手動で構成するときは、インストール手順の下にある「*SQL 2017 の SSRS 構成*」セクションを参照してください。
 
 3. 保護サーバー上の保護エージェントを更新します。
@@ -333,7 +331,7 @@ MABS をアップグレードするには、次の手順を使用します。
 5. これで、データの保護を開始できます。 保護しながら、Modern Backup Storage にアップグレードする場合は、バックアップを格納するボリュームを選択して、プロビジョニングされた領域の下をチェックすることもできます。 [詳細情報](backup-mabs-add-storage.md)。
 
 > [!NOTE]
-> 
+>
 > MABS V1 を V2 にアップグレードする場合は、OS が Windows Server 2016 または Windows Server 2012 R2 であることを確認します。 System Center 2016 Data Protection Manager Modern Backup Storage のような新機能を利用するには、Backup Server V2 を Windows Server 2016 にインストールする必要があります。 Backup Server V2 にアップグレードまたはこれをインストールする前に、MABS に該当する[インストールの前提条件](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)を確認してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 76b6f013333113d5a24b744bc962d36b1c0e21b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de5019e0f91c92829082aed962bb9633da52b4a9
+ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731119"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67812844"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions の種類と機能 (Azure Functions)
 
@@ -27,7 +27,7 @@ Durable Functions は [Azure Functions](../functions-overview.md) の拡張機�
 
 ## <a name="types-of-durable-functions"></a>Durable Functions の種類
 
-Azure Functions では、アクティビティ、オーケストレーター、およびクライアントという 3 種類の永続関数を使用できます。
+Azure Functions では、アクティビティ、オーケストレーター、エンティティ、クライアントという 4 種類の永続関数を使用できます。
 
 ### <a name="activity-functions"></a>アクティビティ関数
 
@@ -43,7 +43,7 @@ Azure Functions では、アクティビティ、オーケストレーター、�
 
 ### <a name="orchestrator-functions"></a>オーケストレーター関数
 
-オーケストレーター関数は、アクションが実行される方法とアクセスの実行順序を記述します。 オーケストレーター関数は、「[Durable Functions のパターンおよび技術的概念](durable-functions-concepts.md)」にあるように、コード (C# または JavaScript) でオーケストレーションを記述します。 1 つのオーケストレーションに、[アクティビティ関数](#activity-functions)、[サブオーケストレーション](#sub-orchestrations)、[外部イベントの待ち受け](#external-events)、[タイマー](#durable-timers)など、さまざまな種類のアクションを設定できます。 
+オーケストレーター関数は、アクションが実行される方法とアクセスの実行順序を記述します。 オーケストレーター関数は、「[Durable Functions のパターンおよび技術的概念](durable-functions-concepts.md)」にあるように、コード (C# または JavaScript) でオーケストレーションを記述します。 1 つのオーケストレーションに、[アクティビティ関数](#activity-functions)、[サブオーケストレーション](#sub-orchestrations)、[外部イベントの待ち受け](#external-events)、[タイマー](#durable-timers)など、さまざまな種類のアクションを設定できます。 Orchestrator 関数は、[エンティティ関数](#entity-functions)とやりとりすることもできます。
 
 オーケストレーター関数は[オーケストレーション トリガー](durable-functions-bindings.md#orchestration-triggers)によって始動させる必要があります。
 
@@ -51,11 +51,18 @@ Azure Functions では、アクティビティ、オーケストレーター、�
 
 詳細と例については、「[オーケストレーション トリガー](durable-functions-bindings.md#orchestration-triggers)」を参照してください。
 
+###  <a name="entity-functions"></a>エンティティ関数 (プレビュー)
+
+エンティティ関数では、"*持続エンティティ*" と呼ばれる小さい状態の読み取りと更新のための操作が定義されています。 オーケストレーター関数と同様、エンティティ関数は特殊なトリガー型である "*エンティティ トリガー*" を含む関数です。 オーケストレーター関数とは異なり、エンティティ関数には特定のコードの制約はありません。 また、エンティティ関数では、制御フローを介して状態を表す暗黙的ではなく、明示的に状態が管理されます。
+
+> [!NOTE]
+> エンティティ関数と関連する機能は Durable Functions 2.0 以降でのみ使用できます。
+
+エンティティ関数の詳細については、[エンティティ関数](durable-functions-preview.md#entity-functions)のプレビュー機能に関するドキュメントを参照してください。
+
 ### <a name="client-functions"></a>クライアント関数
 
-クライアント関数は、オーケストレーションの新しいインスタンスを作成するトリガー関数です。 クライアント関数は、Durable Functions オーケストレーションのインスタンス作成のエントリ ポイントです。 クライアント関数はソース (HTTP、キュー、イベント ストリーム) からトリガーすることができます。 クライアント関数は、アプリでサポートされている言語で記述できます。 
-
-クライアント機能には[オーケストレーション クライアント](durable-functions-bindings.md#orchestration-client) バインディングも設定できます。 クライアント関数では、オーケストレーション クライアント バインディングを使用して持続的オーケストレーションを作成し、管理できます。 
+クライアント関数は、オーケストレーションとエンティティのインスタンスを作成および管理するトリガー関数です。 これらは、実際には Durable Functions と対話するためのエントリ ポイントです。 クライアント関数はソース (HTTP、キュー、イベント ストリームなど) からトリガーすることができます。 クライアント関数は、[オーケストレーション クライアント バインディング](durable-functions-bindings.md#orchestration-client)を使用して、持続性のあるオーケストレーションとエンティティを作成し、管理します。
 
 クライアント関数の最も基本的な例は、オーケストレーター関数を開始して状態確認応答を返す、HTTP によってトリガーされる関数です。 例については、「[HTTP API URL の検出](durable-functions-http-api.md#http-api-url-discovery)」を参照してください。
 

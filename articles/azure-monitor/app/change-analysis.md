@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: 45df8f9e57223ea60a11c6af2187d362184cae2b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3efa26a1eaea8f522d9717efb0de0ec8e1682e0e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443377"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875160"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -136,5 +136,6 @@ Azure Monitor では、現在、変更分析はセルフサービスの**問題�
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Monitor で [Application Insights 機能を有効にする](azure-web-apps.md)ことで、App Service をより効果的に監視します。
+- [Azure App Service アプリ](azure-web-apps.md)の Application Insights を有効にします。
+- [Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ](azure-vm-vmss-apps.md)の Application Insights を有効にします。
 - [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) の詳細を参照してください。変更分析の強化に役立ちます。

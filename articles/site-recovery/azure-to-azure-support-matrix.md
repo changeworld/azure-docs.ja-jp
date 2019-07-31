@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 07/07/2019
 ms.author: raynew
-ms.openlocfilehash: 55275144746dbc1a3ead7c7c12a6901ab6f9269e
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: f44cb90beb7c1c544cb135f277fc12f724769b65
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514130"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846971"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>リージョン間の Azure VM のレプリケートに関するサポート マトリックス
 
@@ -105,40 +105,40 @@ Debian 8 | [サポートされるカーネル バージョン](#supported-debian
 SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4 [(サポートされるカーネル バージョン)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> レプリケートするマシンの SP3 から SP4 へのアップグレードはサポートされません。 レプリケートされたマシンがアップグレードされた場合は、レプリケーションを無効にして、アップグレード後にレプリケーションを再度有効にする必要があります。
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5 <br/><br/> Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) のいずれかを実行している。
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6<br/><br/> Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している 
 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる Ubuntu カーネル バージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
+14.04 LTS | 9.26 | 3.13.0-24-generic から 3.13.0-170-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-148-generic、<br/>4.15.0-1023-azure から 4.15.0-1045-azure |
 14.04 LTS | 9.25 | 3.13.0-24-generic から 3.13.0-169-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-146-generic、<br/>4.15.0-1023-azure から 4.15.0-1042-azure |
 14.04 LTS | 9.24 | 3.13.0-24-generic から 3.13.0-167-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-143-generic、<br/>4.15.0-1023-azure から 4.15.0-1040-azure |
 14.04 LTS | 9.23 | 3.13.0-24-generic から 3.13.0-165-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-142-generic、<br/>4.15.0-1023-azure から 4.15.0-1037-azure |
-14.04 LTS | 9.22 | 3.13.0-24-generic から 3.13.0-164-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-140-generic、<br/>4.15.0-1023-azure から 4.15.0-1036-azure |
 |||
+16.04 LTS | 9.26 | 4.4.0-21-generic から 4.4.0-148-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-50-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1045-azure|
 16.04 LTS | 9.25 | 4.4.0-21-generic から 4.4.0-146-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-48-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1042-azure|
 16.04 LTS | 9.24 | 4.4.0-21-generic から 4.4.0-143-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-46-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1040-azure|
 16.04 LTS | 9.23 | 4.4.0-21-generic から 4.4.0-142-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-45-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1037-azure|
-16.04 LTS | 9.22 | 4.4.0-21-generic から 4.4.0-140-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-43-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1036-azure|
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる Debian カーネル バージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-Debian 7 | 9.22、9.23、9.24、9.25 | 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.23、9.24、9.25、9.26 | 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | 9.25 | 3.16.0-4-amd64 から 3.16.0-8-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.8-amd64 |
-Debian 8 | 9.22、9.23、9.24 | 3.16.0-4-amd64 から 3.16.0-7-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.8-amd64 |
+Debian 8 | 9.25、9.26 | 3.16.0-4-amd64 から 3.16.0-8-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.8-amd64 |
+Debian 8 | 9.23、9.24 | 3.16.0-4-amd64 から 3.16.0-7-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.8-amd64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる SUSE Linux Enterprise Server 12 カーネル バージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.26 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.109-default</br></br>SP3 4.4.73-5-default から 4.4.178-94.91-default</br></br>SP3 4.4.138-4.7-azure から 4.4.178-4.28-azure</br></br>SP4 4.12.14-94.41-default から 4.12.14-95.16-default</br>SP4 4.12.14-6.3-azure から 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.25 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.104-default</br></br>SP3 4.4.73-5-default から 4.4.176-94.88-default</br></br>SP3 4.4.138-4.7-azure から 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41-default から 4.12.14-95.13-default</br>SP4 4.12.14-6.3-azure から 4.12.14-6.9-azure |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.24 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.104-default</br></br>SP3 4.4.73-5-default から 4.4.176-94.88-default</br></br>SP4 4.12.14-94.41-default から 4.12.14-95.13-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4) | 9.23 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.69-default</br></br>SP4 4.12.14-94.41-default から 4.12.14-95.6-default |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.22 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.72-default |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>レプリケートされるマシン - Linux ファイル システム/ゲスト ストレージ
 

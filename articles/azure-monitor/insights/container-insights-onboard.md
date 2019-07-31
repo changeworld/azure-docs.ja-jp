@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/02/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: aff2dcebdab1ad93b8b1958164764b66eb755d1c
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 25be8f166fec8a311fdc2ed1fa3fca6339185e94
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514494"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867529"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする方法
 
@@ -45,6 +45,8 @@ ms.locfileid: "67514494"
 * AKS クラスター リソースに対する **[[所有者]](../../role-based-access-control/built-in-roles.md#owner)** ロールのメンバーである必要があります。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
+
+* 既定では、Prometheus のメトリックは収集されません。 [エージェントを構成](container-insights-agent-config.md)してそれらを収集する前に、Prometheus の[ドキュメント](https://prometheus.io/)を確認して、定義できる内容を理解しておくことが重要です。
 
 ## <a name="components"></a>コンポーネント
 

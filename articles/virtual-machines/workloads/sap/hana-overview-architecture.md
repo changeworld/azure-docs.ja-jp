@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8662ef3aa7002ede0b183d72e7278d02c551c33
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b2076778751161d5763d7bd0643cfe8f71a5f522
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707343"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869194"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) とは
 
@@ -35,6 +35,16 @@ SAP HANA on Azure (L インスタンス) は、Azure 独自のソリューショ
 
 これらのベア メタル サーバー ユニットでは、SAP HANA の実行のみがサポートされます。 SAP アプリケーション層またはワークロードのミドルウェア層は仮想マシン内で実行されます。 SAP HANA on Azure (L インスタンス) のユニットを実行しているインフラストラクチャ スタンプは、Azure ネットワーク サービスのバックボーンに接続されています。 これにより、SAP HANA on Azure (L インスタンス) のユニットと仮想マシン間の低遅延の接続が実現されます。
 
+2019 年 7 月の時点では、HANA L インスタンス スタンプの 2 つの異なるリビジョンとデプロイの場所を区別しています。
+
+- "リビジョン 3" (Rev 3):2019 年 7 月より前にお客様がデプロイに使用できたスタンプ
+- "リビジョン 4" (Rev 4):Azure VM ホストに近接する場所にデプロイされる新しいスタンプ設計。これまでに次の Azure リージョンでリリースされています。
+    -  米国西部 2 
+    -  East US 
+    -  西ヨーロッパ
+    -  北ヨーロッパ
+
+
 このドキュメントは、SAP HANA on Azure (L インスタンス) について説明する複数のドキュメントの 1 つです。 このドキュメントでは、基本的なアーキテクチャ、責任、ソリューションで提供されるサービスについて説明します。 また、ソリューションの機能の概要についても説明します。 ネットワークや接続など、他のほとんどの領域については、他の 4 つのドキュメントで詳しく説明しています。 SAP HANA on Azure (L インスタンス) のドキュメントでは、SAP NetWeaver のインストールや VM へのデプロイについては取り上げていません。 Azure における SAP NetWeaver については、同じ Azure ドキュメント コンテナーにある別のドキュメントで取り上げています。 
 
 
@@ -46,7 +56,7 @@ HANA L インスタンス ガイダンスの別のドキュメントでは、次
 - [Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [STONITH を使用した SUSE での高可用性のセットアップ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Type II SKU の OS のバックアップと復元](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [リビジョン 3 スタンプの Type II SKU の OS バックアップと復元](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 **次のステップ**
 - [用語の確認](hana-know-terms.md)を参照してください

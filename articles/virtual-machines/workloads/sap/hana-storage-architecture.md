@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/05/2019
-ms.author: rclaus
+ms.date: 07/04/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2cfe9dc02e69f3b47c99e01bc70bffc942338fd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b303a18d481ae1a682d81d87e7c14060ffdfaf14
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707264"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869192"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (Large Instances) のストレージ アーキテクチャ
 
@@ -90,9 +90,9 @@ HANA L インスタンス ユニットで複数のアクティブな SAP HANA �
 他のバリエーションもあります。 
 
 ## <a name="encryption-of-data-at-rest"></a>保存データの暗号化
-HANA L インスタンスに使用されるストレージでは、ディスクに保存されているデータを透過的に暗号化することができます。 HANA L インスタンス ユニットのデプロイ時に、この種の暗号化を有効にすることができます。 また、デプロイの実行後に暗号化されたボリュームを変更することもできます。 暗号化されていないボリュームから暗号化されたボリュームへの移行は透過的に行われ、ダウンタイムは発生しません。 
+HANA L インスタンスに使用されるストレージでは、2018 年末以降、データがディスクに格納されているため、データに対して透過的な暗号化が使用されます。 以前のデプロイでは、ボリュームを暗号化するように選択できました。 そのオプションを使用していない場合は、オンラインで暗号化されたボリュームを取得するように要求できます。 暗号化されていないボリュームから暗号化されたボリュームへの移行は透過的に行われ、ダウンタイムは発生しません。 
 
-Type I クラスの SKU では、ブート LUN が格納されているボリュームが暗号化されます。 HANA L インスタンスの Type II クラスの SKU の場合、OS 方式でブート LUN を暗号化する必要があります。 詳細については、Microsoft のサービス管理チームに問い合わせてください。
+Type I クラスの SKU では、ブート LUN が格納されているボリュームが暗号化されます。 Hana L インスタンスの SKU の Type II クラスを使用しているリビジョン 3 HANA L インスタンス スタンプでは、OS 方式でブート LUN を暗号化する必要があります。 Type II ユニットを使用しているリビジョン 4 HANA L インスタンス スタンプでは、ブート LUN が格納されているボリュームも、既定で保存時に暗号化されます。 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>HANA L インスタンス上のさらに大きい HANA インスタンスに対する必要な設定
 HANA L インスタンスで使用されるストレージには、ファイル サイズの制限があります。 ファイルごとの[サイズの制限は 16 TB です](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)。 EXT3 ファイル システムのファイル サイズ制限とは異なり、HANA は、HANA L インスタンスのストレージによって強制されるストレージ制限を暗黙的に認識しません。 そのため、HANA ではファイル サイズ制限の16 TB に達したときに新しいデータ ファイルが自動的に作成されません。 HANA は 16 TB を超えるサイズへファイルを拡大しようとするため、HANA でエラーが報告され、最終的にはインデックス サーバーがクラッシュします。

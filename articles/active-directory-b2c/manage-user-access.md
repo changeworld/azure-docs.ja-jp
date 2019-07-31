@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6aead01ec0084eb75ea385a67f7c85ea185b017a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ba36ece6b221908bfbaae58430a52b4753c2ed6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510565"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846771"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー アクセスの管理
 
@@ -30,7 +30,7 @@ ms.locfileid: "66510565"
 
 ## <a name="control-minor-access"></a>未成年者のアクセスを制御する
 
-アプリケーションおよび組織は、未成年者を対象としないアプリケーションとサービスを未成年者が使用しないようにすることができます。 または、未成年者を受け入れたうえで、保護者の同意を管理し、ビジネス ルールによる指示と法令による許可に従って、許容されるエクスペリエンスを提供することもできます。 
+アプリケーションおよび組織は、未成年者を対象としないアプリケーションとサービスを未成年者が使用しないようにすることができます。 または、未成年者を受け入れたうえで、保護者の同意を管理し、ビジネス ルールによる指示と法令による許可に従って、許容されるエクスペリエンスを提供することもできます。
 
 ユーザーが未成年者であると識別される場合に、Azure AD B2C のユーザー フローを次の 3 つのオプションのいずれかに設定できます。
 
@@ -48,7 +48,7 @@ ms.locfileid: "66510565"
 
 1. [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
 
-2. アプリケーションによって JSON トークンが処理され、この未成年者に対して、保護者の同意が必要であることを通知する画面が表示されます。また、この画面では、オンラインでの保護者の同意が求められます。 
+2. アプリケーションによって JSON トークンが処理され、この未成年者に対して、保護者の同意が必要であることを通知する画面が表示されます。また、この画面では、オンラインでの保護者の同意が求められます。
 
 3. Azure AD B2C は、ユーザーが普通にサインインできるサインインの手順を示し、**legalAgeGroupClassification = "minorWithParentalConsent"** を含むように設定されたトークンをアプリケーションに発行します。 アプリケーションは親のメール アドレスを収集し、親が成人であることを確認します。 そのためには、国内官庁での身元確認、ライセンス検証、クレジット カードでの証明などの信頼できるソースを使用します。 検証が成功した場合、アプリケーションは、Azure AD B2C ユーザー フローを使用して、未成年者にサインインするように求めるメッセージを表示します。 同意が拒否された場合 (たとえば、**legalAgeGroupClassification = "minorWithoutParentalConsent"** の場合)、Azure AD B2C は、同意プロセスを再開するためにアプリケーションに JSON トークンを返します (ログインではなく)。 必要に応じて、ユーザー フローをカスタマイズすることもできます。つまり、記録されている未成年者のメール アドレスまたは成人のメール アドレスに登録コードを送信することで、未成年者または成人が未成年者のアカウントへのアクセスを回復することができます。
 
@@ -60,7 +60,7 @@ ms.locfileid: "66510565"
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>生年月日と国/地域のデータを収集する
 
-アプリケーションでは、Azure AD B2C を利用して、登録時にすべてのユーザーの生年月日 (DOB) と国/地域の情報を収集できます。 この情報がまだ存在しない場合、アプリケーションは次回の認証 (サインイン) プロセスでユーザーに要求することができます。 ユーザーは、DOB と国/地域の情報を入力しなければ操作を続行できません。 Azure AD B2C は、この情報を使用し、その国/地域の規制基準に従って、ユーザーを未成年者と見なすかどうかを判断します。 
+アプリケーションでは、Azure AD B2C を利用して、登録時にすべてのユーザーの生年月日 (DOB) と国/地域の情報を収集できます。 この情報がまだ存在しない場合、アプリケーションは次回の認証 (サインイン) プロセスでユーザーに要求することができます。 ユーザーは、DOB と国/地域の情報を入力しなければ操作を続行できません。 Azure AD B2C は、この情報を使用し、その国/地域の規制基準に従って、ユーザーを未成年者と見なすかどうかを判断します。
 
 ユーザー フローをカスタマイズすると、DOB と国/地域の情報を収集し、Azure AD B2C の要求変換を使用して **ageGroup** を決定し、ディレクトリに結果を保存 (または DOB と国/地域の情報を直接保存) することができます。
 
@@ -74,7 +74,7 @@ ms.locfileid: "66510565"
 
     b. 実際の生年月日と最小生年月日を比較します。 最小生年月日がユーザーの生年月日より前の場合、この計算は、年齢グループの計算結果として **Minor** を返します。
 
-3. **MinorNoConsentRequired** ノードが国の要素に存在する場合、**MinorNoConsentRequired** の値を使用して手順 2a. と 2b. を繰り返します。 最小生年月日がユーザーの生年月日より前の場合、2b. の出力によって **MinorNoConsentRequired** が返されます。 
+3. **MinorNoConsentRequired** ノードが国の要素に存在する場合、**MinorNoConsentRequired** の値を使用して手順 2a. と 2b. を繰り返します。 最小生年月日がユーザーの生年月日より前の場合、2b. の出力によって **MinorNoConsentRequired** が返されます。
 
 4. どちらの計算でも true が返されない場合、計算結果として **Adult** が返されます。
 
@@ -112,11 +112,11 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
 
 次の図は、推奨されるユーザー フローを示しています。
 
-![同意のユーザー フロー](./media/manage-user-access/user-flow.png) 
+![推奨される受け入れユーザー フローを示すフロー チャート図](./media/manage-user-access/user-flow.png)
 
 要求における DateTime ベースの利用規約の同意の例を、次に示します。
 
-```
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="GetNewUserAgreeToTermsOfUseConsentDateTime" TransformationMethod="GetCurrentDateTime">
     <OutputClaims>
@@ -139,7 +139,7 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
 
 要求における Version ベースの利用規約の同意の例を、次に示します。
 
-```
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="GetEmptyTermsOfUseConsentVersionForNewUser" TransformationMethod="CreateStringClaim">
     <InputParameters>
@@ -170,7 +170,7 @@ DOB データの収集の詳細については、「[Azure AD B2C で年齢制�
       <OutputClaim ClaimTypeReferenceId="termsOfUseConsentRequired" TransformationClaimType="outputClaim" />
     </OutputClaims>
   </ClaimsTransformation>
-</ClaimsTransformations> 
+</ClaimsTransformations>
 ```
 
 ## <a name="next-steps"></a>次の手順

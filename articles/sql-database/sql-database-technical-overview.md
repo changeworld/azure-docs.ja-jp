@@ -13,39 +13,28 @@ ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: ed05748a450d8d2082476aaba0831383e5fb60a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8debd55cd1d5588a24dcd32a619ae772e499a939
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441559"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850070"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Azure SQL Database サービスとは
 
-SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database は、2 つの異なる購入モデル (仮想コアベースの購入モデルと DTU ベースの購入モデル) の中で動的かつスケーラブルなパフォーマンスを実現します。 SQL Database は、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](sql-database-in-memory.md) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。
+Azure SQL Database は、Microsoft Azure クラウドのアプリケーションとソリューションに対して高可用性で高パフォーマンスのデータ ストレージ層を作成できるようにする汎用リレーショナル データベースのマネージド サービスです。 SQL Database を使用することで、グラフ、JSON、空間、XML などのリレーショナル データと[非リレーショナル構造](sql-database-multi-model-features.md)の両方を処理するための強力な機能が使用できるようになるため、さまざまな最新のクラウド アプリケーションに適しています。 これは、[Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)の最新の安定バージョンに基づいており、[ハイ パフォーマンスのインメモリ テクノロジ](sql-database-in-memory.md)や[インテリジェントなクエリ処理](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json)などの高度なクエリ処理機能の豊富なセットを使用できます。
+Microsoft のクラウド優先戦略に基づく SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 この方法によって、修正プログラムの適用やアップグレードなしで SQL Server の最新の機能をユーザーに提供することができ、数百万のデータベースでこれらの新機能をテストすることができます。 SQL Database を使用すると、2 つの異なる購入モデル ([仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)と [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)) の中でパフォーマンスを簡単に定義してスケールすることができます。 SQL Database は、可用性、バックアップ、その他の一般的なメンテナンス操作が組み込まれた完全なマネージド サービスです。 SQL と OS コードに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。
 
 > [!NOTE]
 > Azure SQL Database の用語集については、「[SQL Database 用語集](sql-database-glossary-terms.md)」をご覧ください
 
 Azure SQL データベースには、そのデータベースのデプロイに関して次の選択肢があります。
 
-- [単一データベース](sql-database-single-database.md)としてデプロイし、それ専用の各種リソースを SQL Database サーバーを介して管理する。 単一データベースは SQL Server の[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)に似ています。
-- [エラスティック プール](sql-database-elastic-pool.md)。これは、リソースのセットを共有し SQL Database サーバーによって管理されるデータベースのコレクションです。 単一データベースはエラスティック プールの内外に移動できます。
-- [マネージド インスタンス](sql-database-managed-instance.md)。これは、リソースのセットを共有するシステム データベースとユーザー データベースのコレクションです。 マネージド インスタンスは [Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)のインスタンスに似ています。
-
-これらのデプロイの選択肢を次の図に示します。
-
 ![デプロイの選択肢](./media/sql-database-technical-overview/deployment-options.png)
 
-SQL Database は、そのコード ベースを [Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)と共有しています。 Microsoft のクラウド優先戦略に基づく SQL Server の最新機能のリリースは SQL Database から始まり、その後 SQL Server 自体に対してリリースされます。 この方法によって、修正プログラムの適用やアップグレードなしで SQL Server の最新の機能をユーザーに提供することができ、数百万のデータベースでこれらの新機能をテストすることができます。 発表される新しい機能の詳細については、以下を参照してください。
-
-- **[SQL Database の Azure ロードマップ](https://azure.microsoft.com/roadmap/?category=databases)** :
-
-  最新情報や今後の予定を知ることができます。
-
-- **[Azure SQL Database のブログ](https://azure.microsoft.com/blog/topics/database)** :
-
-  SQL Database に関するニュースと機能についての SQL Server 製品チームのメンバーのブログです。
+- [単一データベース](sql-database-single-database.md)は、完全に管理された分離データベースを表します。これは、信頼性の高い 1 つのデータ ソースを必要とする最新のクラウド アプリケーションとマイクロサービスに最適な選択肢です。 単一データベースは [Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)の[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json)に似ています。
+- [マネージド インスタンス](sql-database-managed-instance.md)は、[Microsoft SQL Server データベース エンジン](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)の完全なマネージド インスタンスで、一緒に使用できる一連のデータベースが含まれています。 これは、オンプレミスの SQL Server データベースを Azure クラウドに簡単に移行するため、および SQL Server データベース エンジンが提供する強力なデータベース機能を利用する必要があるアプリケーションにとって最適な選択肢です。
+- [エラスティック プール](sql-database-elastic-pool.md)は、CPU やメモリなどのリソースの共有セットを含む[単一データベース](sql-database-single-database.md)のコレクションです。 単一データベースはエラスティック プールの内外に移動できます。
 
 > [!IMPORTANT]
 > SQL Database と SQL Server の機能面の違い、また Azure SQL Database の各種デプロイ オプション間の違いについては、[SQL 機能](sql-database-features.md)に関するページを参照してください。
@@ -54,8 +43,9 @@ SQL Database は、パフォーマンスを予測できる複数のリソース�
 
 ## <a name="scalable-performance-and-pools"></a>スケーラブルなパフォーマンスとプール
 
-- 単一データベースでは、各データベースは互いに分離され、可搬性があり、コンピューティング、メモリ、およびストレージ リソースの容量が独自に保証されます。 SQL Database では、さまざまなニーズに応えるさまざまなコンピューティング、メモリ、およびストレージ リソースが提供され、[単一データベース リソースのスケーリング](sql-database-single-database-scale.md) (アップおよびダウン) を動的に実行できます。 単一データベース用の[ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)では、100 TB までのスケーリングが可能であり、高速バックアップおよび復元機能を備えています。
-- エラスティック プールでは、リソース プールにデータベースを新規作成または単一データベースを移動することで、リソースの使用を最大化してコストを削減できます。また、[エラスティック プール リソースのスケーリング](sql-database-elastic-pool-scale.md) (アップおよびダウン) を動的に実行できます。
+どの SQL Database でも、割り当てられるリソースの量を定義できます。 
+- 単一データベースでは、各データベースは互いに分離され、可搬性があり、コンピューティング、メモリ、およびストレージ リソースの容量が独自に保証されます。 データベースに割り当てられているリソースの量は、そのデータベース専用であり、Azure クラウド内の他のデータベースとは共有されません。 また、[単一データベース リソースのスケーリング](sql-database-single-database-scale.md) (アップおよびダウン) を動的に行うこともできます。 単一データベースは、さまざまなニーズ (1 から 80 の仮想コア、32 GB から 4 TB など) に応じて、さまざまなコンピューティング、メモリ、およびストレージ リソースを提供します。単一データベース用の[ハイパースケール サービス レベル](sql-database-service-tier-hyperscale.md)では、100 TB までのスケーリングが可能であり、高速バックアップおよび復元機能を備えています。
+- エラスティック プールを使用すると、プール内のすべてのデータベースによって共有されるリソースを割り当てることができます。 リソース プールにデータベースを新規作成または既存の単一データベースを移動することで、リソースの使用を最大化してコストを削減できます。また、[エラスティック プール リソースのスケーリング](sql-database-elastic-pool-scale.md) (アップおよびダウン) を動的に実行できます。
 - マネージド インスタンスでは、各マネージド インスタンスが他のインスタンスから分離され、リソースが保証されます。 マネージド インスタンス内で、インスタンス データベースはリソースのセットを共有します。また、[マネージド インスタンス リソースのスケーリング](sql-database-managed-instance-resource-limits.md) (アップおよびダウン) を動的に実行できます。
 
 最初に General Purpose サービス レベルで月額の安い小さなシングル データベースにアプリをビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを Business Critical サービス レベルに変更できます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
@@ -65,11 +55,8 @@ SQL Database は、パフォーマンスを予測できる複数のリソース�
 ### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>購入モデル、サービス レベル、コンピューティング サイズ、ストレージ容量
 
 SQL Database には、2 つの購入モデルが用意されています。
-
-- [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)では、軽量から重量までのデータベース ワークロードをサポートするために、コンピューティング、メモリ、IO の各リソースの組み合わせを 3 つのサービス レベルで提供します。 各レベルにおけるコンピューティング サイズでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
 - [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、仮想コアの数、メモリの量、およびストレージの容量と速度を選択できます。 また、仮想コアベースの購入モデルでは、[SQL Server 向けの Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、コストを削減することもできます。 Azure ハイブリッド特典の詳細については、[よく寄せられる質問](#sql-database-frequently-asked-questions-faq)を参照してください。
-
-  
+- [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)では、軽量から重量までのデータベース ワークロードをサポートするために、コンピューティング、メモリ、IO の各リソースの組み合わせを 3 つのサービス レベルで提供します。 各レベルにおけるコンピューティング サイズでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>リソース使用率を最大化するためのエラスティック プール
 
@@ -88,9 +75,15 @@ SQL Database には、2 つの購入モデルが用意されています。
 
 単一データベースをエラスティック プールと組み合わせると、状況に合わせて単一データベースとエラスティック プールのサービス レベルをすばやく簡単に変更することができます。 Azure の強力さと幅広さを利用して、他の Azure サービスを SQL Database とうまく組み合わせることにより、独自のアプリ設計のニーズを満たし、コストとリソースの効率性を向上させ、新たなビジネス チャンスを開くことができます。
 
-### <a name="extensive-monitoring-and-alerting-capabilities"></a>広範囲に及ぶ監視とアラートの機能
+## <a name="extensive-monitoring-and-alerting-capabilities"></a>広範囲に及ぶ監視とアラートの機能
 
-[組み込みのパフォーマンス監視](sql-database-performance.md)および[アラート](sql-database-insights-alerts-portal.md) ツールと、パフォーマンス評価とを組み合わせて使用します。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
+Azure SQL Database には、ワークロードの特性についての完全な分析情報を得るのに役立つ高度な監視機能とトラブルシューティング機能が用意されています。 機能とツールは次のように分類される場合があります。
+ - 最新バージョンの SQL Server データベース エンジンによって提供される組み込みの監視機能により、リアルタイムのパフォーマンスに関する分析情報を得ることができます。 
+ - Azure プラットフォームによって提供される PaaS 監視機能により、多数のデータベース インスタンスを簡単に監視できます。また、パフォーマンスの問題を解決するのに役立つトラブルシューティングのアドバイスも提供されます。
+
+データ ベースエンジンに組み込まれた活用すべき最も重要な監視機能は、[クエリ ストア](sql-database-operate-query-store.md) コンポーネントです。これはクエリのパフォーマンスをリアルタイムで記録して、潜在的なパフォーマンスの問題と上位のリソース コンシューマーを特定できるようにします。 自動チューニングとレコメンデーションでは、低下したパフォーマンスと欠落または重複したインデックスがあるクエリに関するアドバイスが提供されます。 Azure SQL Database で自動チューニングを使用すると、問題を修正できるスクリプトを手動で適用するか、Azure SQL Database で修正を適用して、何らかのメリットが得られるかどうかの検証を行い、結果に応じて変更を保持するか元に戻すことができます。 クエリ ストアと自動チューニング機能に加えて、標準の [DMV と XEvent](sql-database-monitoring-with-dmvs.md) を使用して、ワークロードのパフォーマンスを監視することもできます。
+
+Azure プラットフォームには、パフォーマンス評価と組み合わせた[組み込みのパフォーマンス監視](sql-database-performance.md)と[アラート](sql-database-insights-alerts-portal.md)のツールが用意されています。これにより、何千ものデータベースの状態を簡単に監視できます。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、スケールアップとスケールダウンの影響をすばやく評価することができます。 さらに、SQL Database では、監視を容易にするための[メトリックと診断ログを出力](sql-database-metrics-diag-logging.md)することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
 - **Azure Storage**:大量の利用統計情報を低価格でアーカイブします
 - **Azure Event Hub**:SQL Database の利用統計情報を、カスタム監視ソリューションまたはホット パイプラインと統合します
@@ -100,7 +93,7 @@ SQL Database には、2 つの購入モデルが用意されています。
 
 ## <a name="availability-capabilities"></a>可用性に関する機能
 
-従来の SQL Server 環境では、一般に、(少なくとも) 2 つのコンピューターをローカル環境にセットアップし、(AlwaysOn 可用性グループやフェールオーバー クラスター インスタンスなどの機能を使用して) データの正確な (同期的に維持される) コピーを使用して、1 つのコンピューター/コンポーネントの障害から保護します。  これにより、高可用性が提供されますが、データ センターが破壊されるような自然災害からは保護されません。
+従来の SQL Server 環境では、一般に、(少なくとも) 2 つのコンピューターをローカル環境にセットアップし、(AlwaysOn 可用性グループやフェールオーバー クラスター インスタンスなどの機能を使用して) データの正確な (同期的に維持される) コピーを使用して、1 つのコンピューター/コンポーネントの障害から保護します。 これにより、高可用性が提供されますが、データ センターが破壊されるような自然災害からは保護されません。
 
 ディザスター リカバリーでは、壊滅的なイベントは地理的に十分に局所的であり、データのコピーが保持されている別のコンピューター/コンピューターのセットから遠く離れているものと想定されています。  SQL Server では、非同期モードで実行されている Always On 可用性グループを使用して、この機能を実現できます。  光の速さの問題は、通常、ユーザーはトランザクションをコミットする前に遠く離れたところでレプリケーションが発生するのを待ちたくはないので、計画外のフェールオーバーを行うときはデータ損失の可能性があることを意味します。
 
@@ -137,7 +130,7 @@ SQL Database は、監視する必要があるクエリの詳細な洞察を提�
 
 ただし、データベースを常に監視することは厄介で面倒なタスクであり、多数のデータベースを処理する場合は特にそうなります。 [Intelligent Insights](sql-database-intelligent-insights.md) は、スケールで SQL Database のパフォーマンスを自動的に監視することによってこのジョブを行い、パフォーマンスの低下の問題を通知し、問題の根本原因を特定し、可能な場合にはパフォーマンスの向上の推奨事項を提供します。
 
-膨大な数のデータベースを管理することは、SQL Database と Azure ポータルが備えているすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、[自動チューニング](sql-database-automatic-tuning.md)を使用して、監視とチューニング アクションの一部を SQL Database に委任することを検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、各チューニング アクションを検証して、パフォーマンスが向上していることを確認します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較し、パフォーマンスが向上していない場合はチューニング アクションを取り消すことを意味します。
+膨大な数のデータベースを管理することは、SQL Database と Azure ポータルが備えているすべての使用可能なツールとレポートを使用しても、効率的に実行するのは不可能な場合があります。 データベースの監視とチューニングを手動で行う代わりに、[自動チューニング](sql-database-automatic-tuning.md)を使用して、監視とチューニング アクションの一部を SQL Database に委任することを検討できます。 SQL Database は、推奨事項を自動的に適用し、テストを行い、パフォーマンスが確実に向上し続けるように、各チューニング アクションを検証します。 このように、SQL Database は、制御された安全な方法で、ワークロードに自動的に適応します。 自動チューニングは、データベースのパフォーマンスを注意深く監視し、すべてのチューニング アクションの実行前と実行後のパフォーマンスを比較し、パフォーマンスが向上していない場合はチューニング アクションを取り消すことを意味します。
 
 今日、SQL Database 上で [SaaS マルチテナント アプリ](sql-database-design-patterns-multi-tenancy-saas-applications.md)を実行している当社の多数のパートナーは、パフォーマンスの自動チューニングを信頼して、アプリケーションが常に安定した予測可能なパフォーマンスで実行されるようにしています。 パートナーにとって、この機能は、真夜中にパフォーマンス上の問題が発生するリスクを大幅に軽減するものです。 さらに、顧客ベースの一部では、SQL Server も使用しているため、SQL Database が提示するのと同じインデックスに関する推奨事項を使用して、SQL Server を使用している顧客を支援しています。
 
@@ -260,3 +253,8 @@ SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特�
 - Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
   - [Azure SQL Database 用の Azure CLI サンプル](sql-database-cli-samples.md)
   - [Azure SQL Database 用の Azure PowerShell サンプル](sql-database-powershell-samples.md)
+
+ - 発表される新しい機能の詳細については、以下を参照してください。 
+   - **[SQL Database に関する Azure ロードマップ](https://azure.microsoft.com/roadmap/?category=databases)** : 最新情報や今後の予定を知ることができます。
+  - **[Azure SQL Database のブログ](https://azure.microsoft.com/blog/topics/database)** : SQL Database に関するニュースと機能についての SQL Server 製品チームのメンバーのブログです。
+

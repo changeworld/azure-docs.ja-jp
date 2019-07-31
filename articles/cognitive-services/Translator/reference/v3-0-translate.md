@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: e63670504dedf426829778e154b2d5c2b69d98a0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2b08ddb4241a9af7aee31bb51d75dd82ff8255d2
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435064"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839634"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -42,7 +42,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>from</td>
-    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストの言語を指定します。 <code>translation</code> スコープを使用して<a href="./v3-0-languages.md">サポートされている言語</a>を検索することにより、翻訳することができるソース言語を確認します。 <code>from</code> パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストの言語を指定します。 <code>translation</code> スコープを使用して<a href="./v3-0-languages.md">サポートされている言語</a>を検索することにより、翻訳することができるソース言語を確認します。 <code>from</code> パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。 <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">動的ディクショナリ</a>機能を使用する場合は、自動検出ではなく、<code>from</code> パラメーターを使用する必要があります。</td>
   </tr>
   <tr>
     <td>to</td>

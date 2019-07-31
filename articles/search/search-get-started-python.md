@@ -1,7 +1,7 @@
 ---
 title: 'Python のクイック スタート: Azure Search REST API を使用したインデックスの作成、読み込み、クエリの実行 - Azure Search'
 description: Python、Jupyter Notebook、Azure Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
-ms.date: 06/20/2019
+ms.date: 07/11/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 613879abd4c5c09450b690b793500a99428cff29
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c570549514ff5a5e7e598aa54d8e2ac4b5a5341
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485469"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849778"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -26,13 +26,13 @@ ms.locfileid: "67485469"
 > * [ポータル](search-create-index-portal.md)
 > 
 
-Python と [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して Azure Search インデックスの作成、読み込み、およびクエリを実行する Jupyter ノートブックを作成します。 この記事では、ノートブックを一から作成する方法を順を追って説明します。 あるいは、完成したノートブックを実行することもできます。 コピーをダウンロードするには、[azure-search-python-samples リポジトリ](https://github.com/Azure-Samples/azure-search-python-samples)に移動します。
+Python と [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して Azure Search インデックスの作成、読み込み、およびクエリを実行する Jupyter ノートブックを作成します。 この記事では、ノートブックを作成する方法を順番に説明します。 または、[完成した Jupyter Python ノートブックをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-python-samples)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは、次のサービスとツールを使用します。 
+このクイックスタートでは、次のサービスとツールが必要です。 
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section)。これによって、Python 3.x と Jupyter Notebooks が提供されます。
 
@@ -295,26 +295,13 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
-## <a name="clean-up"></a>クリーンアップ 
+## <a name="clean-up"></a>クリーンアップ
 
-不要になった場合は、インデックスを削除する必要があります。 無料のサービスは、3 つのインデックスに制限されています。 他のチュートリアル用の領域を確保するために、積極的に使用していないインデックスをすべて削除する必要があります。
+独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-オブジェクトを削除する最も簡単な方法は、ポータルを使用する方法ですが、これは Python のクイック スタートであるため、次の構文で同じ結果が得られます。
+ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
 
-   ```python
-  url = endpoint + "indexes/hotels-quickstart" + api_version
-  response  = requests.delete(url, headers=headers)
-   ```
-
-既存のインデックスのリストを要求することで、インデックスが削除されているか確認できます。 hotels-quickstart がなくなっていれば、自分の要求が成功したことがとわかります。
-
-```python
-url = endpoint + "indexes" + api_version + "&$select=name"
-
-response  = requests.get(url, headers=headers)
-index_list = response.json()
-pprint(index_list)
-```
+無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
 ## <a name="next-steps"></a>次の手順
 

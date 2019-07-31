@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: c72ac62b55b2b08be5aaad563933bcb2b703cba9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 836a17051aee4e6a9ac3089f60da30673783e408
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245075"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875965"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -59,7 +59,7 @@ Azure サブスクリプションを作成して仮想マシンや Web アプリ
 
 データの収集をリソースの実運用にまで拡張するには、[診断を有効](platform/diagnostic-logs-overview.md)にしてコンピューティング リソースに[エージェントを追加](platform/agent-windows.md)します。 これによって、リソースの内部操作に関する利用統計情報が収集されるようになり、さまざまな[データ ソース](platform/agent-data-sources.md)を構成して Windows および Linux ゲスト オペレーティング システムからログやメトリックを収集することができます。 
 
-[アプリケーションにインストルメンテーション パッケージを追加](app/azure-web-apps.md)すると、Application Insights が有効になり、ページ ビュー、アプリケーションの要求、例外など、アプリケーションに関する詳細情報を収集できます。 さらにアプリケーションの可用性を検証するには、ユーザー トラフィックをシミュレートする[可用性テスト](app/monitor-web-app-availability.md)を構成します。
+[App Services アプリケーション](app/azure-web-apps.md)または [VM および仮想マシン スケール セット アプリケーション](app/azure-vm-vmss-apps.md)の監視を有効にすると、Application Insights が有効になり、ページ ビュー、アプリケーションの要求、例外など、アプリケーションに関する詳細情報を収集できます。 さらにアプリケーションの可用性を検証するには、ユーザー トラフィックをシミュレートする[可用性テスト](app/monitor-web-app-availability.md)を構成します。
 
 ### <a name="custom-sources"></a>カスタム ソース
 Azure Monitor では、[Data Collector API](platform/data-collector-api.md) を使用して任意の REST クライアントからログ データを収集できます。 これにより、カスタム監視シナリオを作成し、他のソースを通じてテレメトリが公開されないリソースも監視対象に含めることができます。

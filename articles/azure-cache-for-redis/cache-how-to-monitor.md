@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: 2cfd5a99144af1120afbf06fe6222228a9332bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "65787421"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Azure Cache for Redis を監視する方法

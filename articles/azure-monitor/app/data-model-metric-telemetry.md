@@ -13,10 +13,10 @@ ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60900462"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ:Application Insights データ モデル
@@ -41,7 +41,7 @@ Application Insights でサポートされているよく知られているい�
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | 作業中... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | 平均要求実行時間
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | 作業中... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | キューで処理を待っている要求の数
 
-## <a name="name"></a>Name
+## <a name="name"></a>EnableAdfsAuthentication
 
 Application Insights ポータルと UI に表示するメトリックの名前。 
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08aebf698a7a00729a0e37b57cb15938853e4185
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 8c1251056ad816af664f95abcd18d50ceca4619d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67501621"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835280"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
 
@@ -76,12 +76,12 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 2. **[名前]** ボックスに「**ClientAuthMiddleware.cs**」と入力します。
 
-   ![新しい C# クラスを作成する](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
+   ![Visual Studio の [新しい項目の追加] ダイアログでの新しい C# クラスの作成](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup-auth2.png)
 
 3. *App_Start\ClientAuthMiddleware.cs* ファイルを開き、ファイルの内容を次のコードに置き換えます。
 
     ```csharp
-    
+
     using Microsoft.Owin;
     using System;
     using System.Collections.Generic;
@@ -91,7 +91,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
     using System.Text;
     using System.Threading.Tasks;
     using System.Web;
-    
+
     namespace Contoso.AADB2C.API
     {
         /// <summary>
@@ -101,12 +101,12 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
         {
             private static readonly string ClientID = ConfigurationManager.AppSettings["WebApp:ClientId"];
             private static readonly string ClientSecret = ConfigurationManager.AppSettings["WebApp:ClientSecret"];
-    
+
             /// <summary>
             /// Gets or sets the next owin middleware
             /// </summary>
             private Func<IDictionary<string, object>, Task> Next { get; set; }
-    
+
             /// <summary>
             /// Initializes a new instance of the <see cref="ClientAuthMiddleware"/> class.
             /// </summary>
@@ -115,7 +115,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
             {
                 this.Next = next;
             }
-    
+
             /// <summary>
             /// Invoke client authentication middleware during each request.
             /// </summary>
@@ -125,7 +125,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
             {
                 // Get wrapper class for the environment
                 var context = new OwinContext(environment);
-    
+
                 // Check whether the authorization header is available. This contains the credentials.
                 var authzValue = context.Request.Headers.Get("Authorization");
                 if (string.IsNullOrEmpty(authzValue) || !authzValue.StartsWith("Basic ", StringComparison.OrdinalIgnoreCase))
@@ -133,21 +133,21 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
                     // Process next middleware
                     return Next(environment);
                 }
-    
+
                 // Get credentials
                 var creds = authzValue.Substring("Basic ".Length).Trim();
                 string clientId;
                 string clientSecret;
-    
+
                 if (RetrieveCreds(creds, out clientId, out clientSecret))
                 {
                     // Set transaction authenticated as client
                     context.Request.User = new GenericPrincipal(new GenericIdentity(clientId, "client"), new string[] { "client" });
                 }
-    
+
                 return Next(environment);
             }
-    
+
             /// <summary>
             /// Retrieve credentials from header
             /// </summary>
@@ -159,7 +159,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
             {
                 string pair;
                 clientId = clientSecret = string.Empty;
-    
+
                 try
                 {
                     pair = Encoding.UTF8.GetString(Convert.FromBase64String(credentials));
@@ -172,16 +172,16 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
                 {
                     return false;
                 }
-    
+
                 var ix = pair.IndexOf(':');
                 if (ix == -1)
                 {
                     return false;
                 }
-    
+
                 clientId = pair.Substring(0, ix);
                 clientSecret = pair.Substring(ix + 1);
-    
+
                 // Return whether credentials are valid
                 return (string.Compare(clientId, ClientAuthMiddleware.ClientID) == 0 &&
                     string.Compare(clientSecret, ClientAuthMiddleware.ClientSecret) == 0);
@@ -195,14 +195,14 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 `Startup.cs` という名前の OWIN Startup クラスを API に追加します。 そのためには、次の手順を実行します。
 1. プロジェクトを右クリックし、 **[追加]**  >  **[新しい項目]** の順に選択して、**OWIN** を検索します。
 
-   ![OWIN Startup クラスを追加する](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
+   ![Visual Studio の [新しい項目の追加] ダイアログでの OWIN Startup クラスの作成](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
 2. *Startup.cs* ファイルを開き、ファイルの内容を次のコードに置き換えます。
 
     ```csharp
     using Microsoft.Owin;
     using Owin;
-    
+
     [assembly: OwinStartup(typeof(Contoso.AADB2C.API.Startup))]
     namespace Contoso.AADB2C.API
     {
@@ -241,7 +241,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 4. **[オプション]** には **[手動]** を選択します。
 
-5. **[名前]** には「**B2cRestClientId**」と入力します。  
+5. **[名前]** には「**B2cRestClientId**」と入力します。
     プレフィックス *B2C_1A_* が自動的に追加される場合があります。
 
 6. **[シークレット]** ボックスに、前に定義したアプリ ID を入力します。
@@ -262,7 +262,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 4. **[オプション]** には **[手動]** を選択します。
 
-5. **[名前]** には「**B2cRestClientSecret**」と入力します。  
+5. **[名前]** には「**B2cRestClientSecret**」と入力します。
     プレフィックス *B2C_1A_* が自動的に追加される場合があります。
 
 6. **[シークレット]** ボックスに、前に定義したアプリ シークレットを入力します。
@@ -297,8 +297,8 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
     ```
 
     スニペットを追加すると、技術プロファイルは次の XML コードのようになります。
-    
-    ![基本認証の XML 要素を追加する](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
+
+    ![基本認証の XML 要素を TechnicalProfile に追加する](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>手順 5:ポリシーをテナントにアップロードする
 
@@ -323,12 +323,12 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、 **[今すぐ実行]** を選択します。
 
-3. **[名]** ボックスに「**Test**」と入力して、プロセスをテストします。  
+3. **[名]** ボックスに「**Test**」と入力して、プロセスをテストします。
     ウィンドウの上部に Azure AD B2C によってエラー メッセージが表示されます。
 
-    ![ID API をテストする](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![ID API で名前の入力検証をテストする](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. **[名]** ボックスに ("Test" 以外の) 名前を入力します。  
+4. **[名]** ボックスに ("Test" 以外の) 名前を入力します。
     Azure AD B2C でユーザーがサインアップされ、アプリケーションにロイヤルティ番号が送信されます。 次の例の番号に注意してください。
 
     ```

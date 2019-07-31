@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4aba7aadbe92b6c4f0ab417785e230bb6a6823df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d043072244ede5b1d7bd28d4628ffe3cf4961d8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486585"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836323"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -45,7 +45,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 
 パイプラインを作成する最も簡単な方法は、**Data Factory コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」で、簡単なチュートリアルをご覧いただけます。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -211,7 +211,7 @@ FTP サーバーとして、同じオンプレミスのコンピューターま�
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON の使用例:FTP サーバーから Azure BLOB にデータをコピーする
 このサンプルは、FTP サーバーから Azure Blob ストレージにデータをコピーする方法を示します。 ただし、Data Factory のコピー アクティビティを使用して、[サポートされるデータ ストアと形式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)で説明されているシンクのいずれかにデータを直接コピーすることができます。
 
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。
+以下の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または[ Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。
 
 * [FtpServer](#linked-service-properties) 型のリンクされたサービス
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス

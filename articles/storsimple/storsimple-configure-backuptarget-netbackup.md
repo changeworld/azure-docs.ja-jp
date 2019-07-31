@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67876203"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup を使用したバックアップ ターゲットとしての StorSimple

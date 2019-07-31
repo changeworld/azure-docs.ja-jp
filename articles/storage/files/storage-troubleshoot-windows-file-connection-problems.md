@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 7bc7f3631748f4ac74a76e9e67aa2aef2c8f9a71
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 1241a6ee5a49504619c377fa3f7006320def14ec
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480309"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805920"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
 この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)  を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有のトラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
 
-<a id="error5"></a>
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
+<a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Azure ファイル共有をマウントするときに、エラー 5 が発生する
 
 ファイル共有をマウントしようとすると、以下のエラーが発生する場合があります。
@@ -108,7 +108,6 @@ IT 部門または ISP と連携して、ポート 445 の送信方向の通信�
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>ソリューション 4 - REST API ベースのツール (Storage Explorer や  Powershell など) を使用する
 Azure Files は、SMB だけでなく、REST もサポートしています。 REST アクセスは、ポート 443 (標準の tcp) 上で動作します。 REST API を使用して作成された、豊富な UI エクスペリエンスを可能にするさまざまなツールがあります。 [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) もその 1 つです。 [Storage Explorer をダウンロードしてインストールし](https://azure.microsoft.com/features/storage-explorer/)、Azure Files でサポートされるファイル共有に接続します。 同じく REST API を使用する [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) を使用することもできます。
 
-
 ### <a name="cause-2-ntlmv1-is-enabled"></a>原因 2:NTLMv1 が有効になっている
 
 クライアント側で NTLMv1 通信が有効になっていると、システム エラー 53 またはシステム エラー 87 が発生することがあります。 Azure Files では、NTLMv2 認証のみがサポートされています。 NTLMv1 が有効になっていると、クライアントの安全性が低下します。 そのため、Azure Files に対する通信がブロックされます。 
@@ -136,6 +135,13 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 
 ハンドルをいくつか閉じて、同時に開いているハンドルの数を減らしてから、再試行します。 詳細については、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
+ファイル共有、ディレクトリ、またはファイルの開いているハンドルを表示するには、[Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用します。  
+
+ファイル共有、ディレクトリ、またはファイルの開いているハンドルを閉じるには、[Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用します。
+
+> [!Note]  
+> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
+
 <a id="authorizationfailureportal"></a>
 ## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>ポータルで Azure ファイル共有を参照すると、"承認エラー" エラーが発生する
 
@@ -155,6 +161,23 @@ Azure ファイル共有が置かれたストレージ アカウントを参照�
 ### <a name="solution-for-cause-2"></a>原因 2 の解決策
 
 ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが適切に構成されていることを確認します。 仮想ネットワークまたはファイアウォール ルールが問題の原因となっているかどうかをテストするには、ストレージ アカウントの設定を一時的に **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** に変更する必要があります。 詳細については、[「Azure Storage ファイアウォールおよび仮想ネットワークを構成する」](https://docs.microsoft.com/azure/storage/common/storage-network-security)を参照してください。
+
+<a id="open-handles"></a>
+## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure ファイル共有のファイルまたはディレクトリを削除できない
+
+### <a name="cause"></a>原因
+この問題は、通常、ファイルまたはディレクトリのハンドルが開いている場合に発生します。 
+
+### <a name="solution"></a>解決策
+
+開いているすべてのハンドルを SMB クライアントで閉じた後も問題が引き続き発生する場合は、次の手順を行います。
+
+- [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを表示します。
+
+- [Close-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを閉じます。 
+
+> [!Note]  
+> Get-AzStorageFileHandle および Close-AzStorageFileHandle コマンドレットは、Az PowerShell モジュールのバージョン 2.4 以降に含まれています。 最新の Az PowerShell モジュールをインストールするには、「[Install the Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)」(Azure PowerShell モジュールのインストール) を参照してください。
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Windows で Azure Files との間でのファイルのコピーが遅い
@@ -183,7 +206,7 @@ Windows 8.1 または Windows Server 2012 R2 を実行しているクライア�
 > Azure Marketplace の Windows Server 2012 R2 イメージには、2015 12 月以降、既定で修正プログラム KB3114025 がインストールされています。
 
 <a id="shareismissing"></a>
-## <a name="no-folder-with-a-drive-letter-in-my-computer"></a>**マイ コンピューター**にドライブ文字を持つフォルダーがない
+## <a name="no-folder-with-a-drive-letter-in-my-computer-or-this-pc"></a>"マイ コンピューター" または "この PC" にドライブ文字を持つフォルダーがない
 
 管理者として net use を使用して Azure ファイル共有をマップすると、共有がないかのような状態になります。
 

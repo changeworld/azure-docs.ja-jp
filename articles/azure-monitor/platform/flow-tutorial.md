@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: c3732dd2fa87b00eec38f88ab828605b33567235
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46a4544b86648ee99a751d4793013f6104d1d9df
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60396598"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807031"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow のコネクタを使用して Azure Monitor ログのプロセスを自動化する
 [Microsoft Flow](https://ms.flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 あるアクションの出力は別のアクションへの入力として使用できます。これにより、さまざまなサービス間の統合を作成できます。  Microsoft Flow 用の Azure Log Analytics コネクタを使用すると、Azure Monitor の Log Analytics ワークスペースから、ログ クエリによって取得されるデータを含むワークフローを構築できます。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-たとえば、Microsoft Flow を使用して、Office 365 からの電子メール通知で Azure Monitor ログ データを使用すること、Azure DevOps でバグを作成すること、Slack のメッセージを投稿することが可能です。  簡単なスケジュールまたは接続されたサービスのアクション (メールやツイートを受信したときなど) からワークフローをトリガーできます。  
+たとえば、Microsoft Flow を使用して、Office 365 からの電子メール通知で Azure Monitor ログ データを使用したり、Azure DevOps でバグを作成したり、Slack のメッセージを投稿したりできます。  簡単なスケジュールまたは接続されたサービスのアクション (メールやツイートを受信したときなど) からワークフローをトリガーできます。  
 
 この記事のチュートリアルでは、Azure Monitor ログ クエリの結果を電子メールで自動送信するフローを作成する方法を示します。これは、Microsoft Flow で Log Analytics コネクタを利用できる方法の一例にすぎません。 
 

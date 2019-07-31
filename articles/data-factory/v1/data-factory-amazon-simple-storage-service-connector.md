@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f5064cece32cfc38f149816961e5156ff20974a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0e2468fdd44374343894416c8e39c263cecaa7d5
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335336"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839560"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -45,7 +45,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 簡単なチュートリアルについては、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」をご覧ください。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -180,7 +180,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON の使用例:Amazon S3 から Azure Blob Storage にデータをコピーする
 このサンプルは、Amazon S3 から Azure Blob Storage にデータをコピーする方法を示します。 Data Factory のコピー アクティビティを使用して、[サポートされている任意のシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)データを直接コピーすることもできます。
 
-この例は、次の Data Factory エンティティの JSON 定義を示しています。 [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) のいずれかで、この定義を使用して、Amazon S3 から Blob ストレージにデータをコピーするためのパイプラインを作成できます。   
+この例は、次の Data Factory エンティティの JSON 定義を示しています。 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) のいずれかで、この定義を使用して、Amazon S3 から Blob ストレージにデータをコピーするためのパイプラインを作成できます。   
 
 * [AwsAccessKey](#linked-service-properties)型のリンクされたサービス。
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b64fd7efb00dabd1e1758ec631e6992d68bff2ab
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 3661b3f7fd37a329857a74d32d292678d98f5aef
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481653"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499828"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
@@ -70,7 +70,7 @@ Azure AD 内の古いデバイスは、組織内のデバイスの一般的な�
 Azure AD でデバイスを更新するには、次のいずれかのロールが割り当てられているアカウントが必要です。
 
 - グローバル管理者
-- クラウド デバイス管理者 (利用可能になった新しいロール!)
+- クラウド デバイス管理者
 - Intune サービス管理者
 
 クリーンアップ ポリシーで、必要なロールが割り当てられたアカウントを選択します。 
@@ -145,6 +145,13 @@ Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, Devi
 ### <a name="why-should-i-worry-about-my-bitlocker-keys"></a>BitLocker キーに気を付ける必要があるのはなぜですか?
 
 構成されていると、Windows 10 デバイスの BitLocker キーは Azure AD 内のデバイス オブジェクトに格納されます。 古いデバイスを削除する場合、デバイスに保存されている BitLocker キーも削除します。 古いデバイスを削除する前に、クリーンアップ ポリシーがデバイスの実際のライフサイクルと整合しているかどうか判断してください。 
+
+### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Windows Autopilot デバイスに気を付ける必要があるのはなぜですか?
+
+Azure AD デバイスが Windows Autopilot オブジェクトに関連付けられている場合、デバイスが将来再利用される場合に、次の 3 つのシナリオが発生する可能性があります。
+- ホワイト グローブを使用しない Windows Autopilot のユーザー主導型のデプロイでは、新しい Azure AD デバイスが作成されますが、ZTDID にタグ付けされることはありません。
+- Windows Autopilot の自己デプロイ モードのデプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します  (これは、"なりすました" デバイスが資格情報なしで Azure AD への参加を試行しないようにするためのセキュリティ メカニズムです)。このエラーでは、ZTDID の不一致が示されます。
+- Windows Autopilot のホワイト グローブ デプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します (バックグラウンドでは、ホワイト グローブ デプロイで同じ自己デプロイ モード プロセスが使用されるため、同じセキュリティ メカニズムが適用されます)。
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>すべての参加済みデバイスのタイプを知るにはどうすればよいですか?
 

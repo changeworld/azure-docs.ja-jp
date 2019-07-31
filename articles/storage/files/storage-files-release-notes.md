@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 6/27/2019
+ms.date: 7/12/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 2399fcaa683e5807d2a5cd69d3dd3357d804fd28
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5a2ec72f835b720e0c760069b58ef8f092aedcb2
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449967"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875833"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,8 +25,9 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
-| V7 リリース - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19 日 | [フライティング](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
-| 2019 年 6 月の更新プログラム ロールアップ - [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019 年 6 月 27 日 | サポートされています (推奨されるバージョン) |
+| 2019 年 7 月の更新プログラム ロールアップ - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019 年 7 月 12 日 | サポート対象 - [フライティング](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
+| V7 リリース - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19 日 | サポートされています |
+| 2019 年 6 月の更新プログラム ロールアップ - [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019 年 6 月 27 日 | サポートされています |
 | 2019 年 6 月の更新プログラム ロールアップ - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13 日 | サポートされています |
 | 2019 年 5 月の更新プログラム ロールアップ - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019 年 5 月 7 日 | サポートされています |
 | V6 リリース - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019 年 4 月 21 日 | サポートされています |
@@ -45,6 +46,15 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-7100"></a>エージェント バージョン 7.1.0.0
+次のリリース ノートは、2019 年 7 月 12 日にリリースされた Azure File Sync エージェントのバージョン 7.1.0.0 を対象としています。 バージョン 7.0.0.0 に関して記載されているリリース ノートへの追記となります。
+
+このリリースで修正された問題は、以下のとおりです。  
+- Windows Server 2012 R2 で、SMB 経由でのサーバー エンドポイントの場所へのアクセスまたは参照に時間がかかる。 
+- Azure File Sync v6 エージェントのインストール後に、CPU 使用率が増加する。
+- クラウドを使った階層化のテレメトリの改善。
+- クラウドを使った階層化と同期に関して、さまざまな点で信頼性が向上しています。
+
 ## <a name="agent-version-7000"></a>エージェント バージョン 7.0.0.0
 次のリリース ノートは、2019 年 6 月 19 日にリリースされた Azure File Sync エージェントのバージョン 7.0.0.0 を対象としています。
 
@@ -62,7 +72,7 @@ Azure File Sync エージェントでサポートされるバージョンは次�
     - このリリースでは、信頼性とパフォーマンスが強化されています。 その一部は、クラウドを使った階層化をより効率的にし、帯域幅調整スケジュールが設定されている場合に Azure File Sync の機能を全体的に向上させることを目的としています。
 
 ### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool)」セクションを参照してください。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)」セクションを参照してください。 
 
 ### <a name="agent-installation-and-server-configuration"></a>エージェントのインストールとサーバー構成
 Windows Server で Azure File Sync エージェントをインストールして構成する方法の詳細については、「[Planning for an Azure File Sync deployment (Azure File Sync のデプロイの計画)](storage-sync-files-planning.md)」および [Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
@@ -159,7 +169,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 - クラウドを使った階層化と同期に関して、さまざまな点で信頼性が向上しています
 
 ### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool)」セクションを参照してください。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)」セクションを参照してください。 
 
 ### <a name="agent-installation-and-server-configuration"></a>エージェントのインストールとサーバー構成
 Windows Server で Azure File Sync エージェントをインストールして構成する方法の詳細については、「[Planning for an Azure File Sync deployment (Azure File Sync のデプロイの計画)](storage-sync-files-planning.md)」および [Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
@@ -256,7 +266,7 @@ Windows Server で Azure File Sync エージェントをインストールして
     - サイズの大きいファイルの転送が中断した場合、同期では再送信ではなくデータ転送の再開を試みます。 
 
 ### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool)」セクションを参照してください。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)」セクションを参照してください。 
 
 ### <a name="agent-installation-and-server-configuration"></a>エージェントのインストールとサーバー構成
 Windows Server で Azure File Sync エージェントをインストールして構成する方法の詳細については、「[Planning for an Azure File Sync deployment (Azure File Sync のデプロイの計画)](storage-sync-files-planning.md)」および [Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
@@ -339,7 +349,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 次のリリース ノートは、2018 年 11 月 13 日にリリースされた Azure File Sync エージェントのバージョン 4.0.1.0 を対象としています。
 
 ### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool)」セクションを参照してください。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)」セクションを参照してください。 
 
 ### <a name="agent-installation-and-server-configuration"></a>エージェントのインストールとサーバー構成
 Windows Server で Azure File Sync エージェントをインストールして構成する方法の詳細については、「[Planning for an Azure File Sync deployment (Azure File Sync のデプロイの計画)](storage-sync-files-planning.md)」および [Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
@@ -415,7 +425,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 次のリリース ノートは、(2018 年 7 月 19 日にリリースされた) Azure File Sync エージェントのバージョン 3.1.0.0 を対象としています。
 
 ### <a name="evaluation-tool"></a>評価ツール
-Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-tool)」セクションを参照してください。 
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)」セクションを参照してください。 
 
 ### <a name="agent-installation-and-server-configuration"></a>エージェントのインストールとサーバー構成
 Windows Server で Azure File Sync エージェントをインストールして構成する方法の詳細については、「[Planning for an Azure File Sync deployment (Azure File Sync のデプロイの計画)](storage-sync-files-planning.md)」および [Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: mayg
-ms.openlocfilehash: c005dcee78e2a9338dc7a816e06d9a78a2f355b6
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ed04c21fc5f3aecb91483dbd1eb7ca5fbf47c3e9
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491684"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805973"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -133,7 +133,63 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
 
+## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>エラー ID 78144 - 過去 "XXX" 分間に、VM 使用可能なアプリ整合性復旧ポイントはありません
 
+最も一般的な問題の一部を次に示します
+
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>原因 1:SQL Server 2008/2008 R2 での既知の問題 
+**修正方法**: SQL Server 2008/2008 R2 には、既知の問題があります。 サポート技術情報の「[Azure Site Recovery Agent or other non-component VSS backup fails for a server hosting SQL Server 2008 R2 (SQL Server 2008 R2 をホストしているサーバーで Azure Site Recovery エージェントまたはその他の非コンポーネント VSS バックアップが失敗する)](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)」を参照してください
+
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-autoclose-dbs"></a>原因 2:AUTO_CLOSE DB があるいずれかのバージョンの SQL Server インスタンスをホストするサーバーで Azure Site Recovery ジョブが失敗します 
+**修正方法**: サポート技術情報の[記事](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)を参照してください 
+
+
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3:SQL Server 2016 および 2017 での既知の問題
+**修正方法**: サポート技術情報の[記事](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)を参照してください 
+
+
+### <a name="more-causes-due-to-vss-related-issues"></a>VSS 関連の問題に起因するその他の原因:
+
+さらにトラブルシューティングを続けるには、ソース マシン上のファイルを確認して、失敗の正確なエラー コードを取得します。
+    
+    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+
+ファイル内のエラーは、どのように探せば良いでしょうか。
+エディターで vacp.log ファイルを開いて、"vacpError" という文字列を検索します
+        
+    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+
+上の例では、**2147754994** がエラー コードであり、以下のようなエラーについての情報を示しています
+
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS ライターがインストールされていません - エラー 2147221164 
+
+*修正方法*: アプリケーション整合性タグを生成するために、Azure Site Recovery では Microsoft ボリューム シャドウ コピー サービス (VSS) が使用されます。 これによって、アプリ整合性スナップショットを作成する操作のために、VSS プロバイダーがインストールされます。 この VSS プロバイダーは、サービスとしてインストールされます。 VSS プロバイダー サービスがインストールされていない場合は、アプリケーション整合性スナップショットの作成が失敗し、エラー ID 0x80040154 "クラスが登録されていません" というエラーが発生します。 </br>
+[VSS ライターのインストールのトラブルシューティングに関する記事](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)を参照してください 
+
+#### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS ライターが無効です - エラー 2147943458
+
+**修正方法**: アプリケーション整合性タグを生成するために、Azure Site Recovery では Microsoft ボリューム シャドウ コピー サービス (VSS) が使用されます。 これによって、アプリ整合性スナップショットを作成する操作のために、VSS プロバイダーがインストールされます。 この VSS プロバイダーは、サービスとしてインストールされます。 VSS プロバイダー サービスが無効になっている場合は、アプリケーション整合性スナップショットの作成が失敗し、エラー ID "指定したサービスは無効であるため、開始できません (0x80070422)" というエラーが発生します。 </br>
+
+- VSS が無効になっている場合は、
+    - VSS プロバイダー サービスのスタートアップの種類が **[自動]** に設定されていることを確認します。
+    - 次のサービスを再起動します。
+        - VSS サービス
+        - Azure Site Recovery VSS プロバイダー
+        - VDS サービス
+
+####  <a name="vss-provider-notregistered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED - エラー 2147754756
+
+**修正方法**: アプリケーション整合性タグを生成するために、Azure Site Recovery では Microsoft ボリューム シャドウ コピー サービス (VSS) が使用されます。 Azure Site Recovery VSS プロバイダー サービスがインストールされているかどうかを確認してください。 </br>
+
+- 以下のコマンドを使用して、プロバイダーのインストールを再試行します。
+- 既存のプロバイダーのアンインストール: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
+- 再インストール: C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
+ 
+VSS プロバイダー サービスのスタートアップの種類が **[自動]** に設定されていることを確認します。
+    - 次のサービスを再起動します。
+        - VSS サービス
+        - Azure Site Recovery VSS プロバイダー
+        - VDS サービス
 
 ## <a name="next-steps"></a>次の手順
 

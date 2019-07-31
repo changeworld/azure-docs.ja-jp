@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 87263d11828ff5122122ef36850fade87949bcac
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6bdbc566215fb7e68109b523fb2af9bca16c328c
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671622"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849693"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する
 
@@ -198,7 +198,7 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、可用性ゾーン内に VM を作成する方法を説明しました。 Azure VM の[リージョンと可用性](regions-and-availability.md)の詳細を確認してください。
+この記事では、可用性ゾーン内に VM を作成する方法を説明しました。 Azure VM の[可用性](availability.md)の詳細を確認してください。
 
 
 

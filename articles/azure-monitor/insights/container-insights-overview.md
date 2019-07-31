@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/25/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d6321564672097fbf901d1d33afac9f606fcb63a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d8fb7bc0e837ba78d86a39524d869c9bb01895d
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521831"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867564"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>コンテナーに対する Azure Monitor の概要
 
@@ -37,7 +37,12 @@ Azure Monitor for containers では、お使いの Kubernetes クラスターや
 * コントローラーまたはポッドのどこにコンテナーが存在するかを特定します。 この知識は、コントローラーまたはポッド全体のパフォーマンスを表示するのに役立ちます。
 * ポッドをサポートする標準プロセスと関連のない、ホスト上で実行されているワークロードのリソース使用率を確認します。
 * 平均的な負荷、および最大の負荷がかかったときのクラスターの動作を理解します。 この知識は、容量ニーズを特定し、クラスターが維持できる最大負荷を判断するのに役立ちます。 
-* ノードまたはコンテナーの CPU やメモリの使用量がしきい値を超えた場合に、事前に通知したりそのことを記録したりするように、アラートを構成します。  
+* ノードまたはコンテナーの CPU やメモリの使用量がしきい値を超えた場合に、事前に通知したりそのことを記録したりするように、アラートを構成します。
+* [Prometheus](https://prometheus.io/docs/introduction/overview/) と統合して、[クエリ](container-insights-log-search.md)を使用してノードと Kubernetes から収集したアプリケーションとワークロードのメトリックを表示し、カスタム アラート、ダッシュボード、詳細な分析を作成します。
+
+>[!NOTE]
+>現時点では、Prometheus のサポートはパブリック プレビューの機能です。
+>
 
 ## <a name="how-do-i-access-this-feature"></a>この機能にアクセスする方法
 コンテナーに対する Azure Monitor には、Azure Monitor からアクセス、または選択した AKS クラスターから直接アクセスという 2 つの方法でアクセスできます。 Azure Monitor からは、監視対象かどうかにかかわらず、デプロイされているすべてのコンテナーを全体的に把握し、サブスクリプションとリソース グループ全体を検索してフィルター処理することができます。また、選択したコンテナーからコンテナーに対する Azure Monitor を詳細に調べることができます。  それ以外にも、選択した AKS コンテナーの AKS ページから機能に直接アクセスできます。  

@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 6e979db29f4a223b61580c48101c0d242fdbebbf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a18f6b57e203c40c0f667f07e8371348cb738c9b
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616328"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827566"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Project Acoustics についてよく寄せられる質問
 
@@ -29,7 +29,7 @@ Project Acoustics のプラグイン スイートは、実行時よりも前に�
 
 ## <a name="does-project-acoustics-support-ltxgt-platform"></a>Project Acoustics は &lt;x&gt; プラットフォームをサポートしますか?
 
-Project Acoustics プラットフォームのサポートは、お客様のニーズに基づいて進化します。 追加のプラットフォームのサポートについては、[Project Acoustics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)にお問い合わせください。
+Project Acoustics プラットフォームのサポートは、お客様のニーズに基づいて進化します。 追加のプラットフォームのサポートについては、[Project Acoustics の問題のフォーラム](https://github.com/microsoft/ProjectAcoustics/issues)にお問い合わせください。
 
 ## <a name="is-azure-used-at-runtime"></a>Azure は実行時に使用されますか?
 

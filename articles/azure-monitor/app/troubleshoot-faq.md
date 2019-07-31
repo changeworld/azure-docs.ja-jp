@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: ab1327b42a76a6e76183d84cb1750cce8b85228f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604281"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875372"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights:よく寄せられる質問
 
@@ -37,6 +37,7 @@ ms.locfileid: "65604281"
 
 ## <a name="can-i-use-application-insights-with-"></a>Application Insights と共に使用できるもの
 
+* [Azure VM または Azure 仮想マシン スケール セットの IIS サーバー上の Web アプリ](azure-vm-vmss-apps.md)
 * [オンプレミスの IIS サーバーまたは VM 内で動作する Web アプリ](asp-net.md)
 * [Java Web アプリ](java-get-started.md)
 * [Node.js アプリ](nodejs.md)
@@ -104,7 +105,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 * HTTP 要求
 * [依存関係](asp-net-dependencies.md)。 SQL Database の呼び出し、外部サービスの HTTP 呼び出し、Azure Cosmos DB、テーブル、Blob Storage、およびキューの呼び出し。 
 * [例外](asp-net-exceptions.md)とスタック トレース。
-* [パフォーマンス カウンター](performance-counters.md) - [Status Monitor](monitor-performance-live-website-now.md)、[Azure 監視](azure-web-apps.md)、または [Application Insights collectd ライター](java-collectd.md)を使用している場合。
+* [パフォーマンス カウンター](performance-counters.md) - [Status Monitor](monitor-performance-live-website-now.md)、[Azure monitoring for App Services](azure-web-apps.md)、[Azure monitoring for VM または仮想マシン スケール セット](azure-vm-vmss-apps.md)、または[Application Insights collectd ライター](java-collectd.md)を使用している場合。
 * コード化する[カスタム イベントとカスタム メトリック](api-custom-events-metrics.md)。
 * [トレース ログ](asp-net-trace-logs.md) (適切なコレクターを構成する場合)。
 

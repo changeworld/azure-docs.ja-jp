@@ -10,10 +10,10 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "64922822"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure Diagnostics データをストリーム配信する

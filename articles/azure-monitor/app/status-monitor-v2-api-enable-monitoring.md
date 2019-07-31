@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: e0d5363e253e89b32b5eca14366504f0ace39043
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1e5a4ac9f159ce238149d44127fd63dcf3279623
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479640"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807100"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v031-alpha"></a>Status Monitor v2 API:Enable-ApplicationInsightsMonitoring (v0.3.1-alpha)
+# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring-v040-alpha"></a>Status Monitor v2 API:Enable-ApplicationInsightsMonitoring (v0.4.0-alpha)
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 
@@ -93,9 +93,9 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 - **MachineFilter** は、コンピューターまたは VM 名に必要な C# の正規表現です。
     - ".*" はすべてに一致します
     - "ComputerName" は、名前が指定されたものと完全に同じコンピューターとのみ一致します。
-- **AppFilter** は、コンピューターまたは VM 名に必要な C# の正規表現です。
+- **AppFilter** は、IIS サイト名に必要な C# の正規表現です。 [get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite) コマンドを実行することで、ご利用のサーバー上でサイトのリストを入手できます。
     - ".*" はすべてに一致します
-    - "ApplicationName" は、名前が指定されたものと完全に同じ IIS アプリとのみ一致します。
+    - "SiteName" は、指定されたものと完全に同じ名前を持つ IIS サイトとのみ一致します。
 - **InstrumentationKey** は上記の 2 つのフィルターに一致するアプリの監視を有効にするために必要です。
     - 監視を除外する規則を定義したい場合は、この値を null のままにします。
 

@@ -10,25 +10,25 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 80b8969ba657506705db2b1a3bbc5b389d0a992c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3be6cebafb6d0f50b5ac9a9e40e5707202ea643
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512451"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849436"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの技術プロファイルについて
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-技術プロファイルでは、Azure Active Directory (Azure AD) B2C でカスタム ポリシーを使用して、さまざまな種類の利用者と通信するためのメカニズムが組み込まれたフレームワークを提供します。 技術プロファイルは、ユーザーの作成やユーザー プロファイルの読み取りを行うために、ご利用の Azure AD B2C テナントとの通信に使用されます。 ユーザーとの相互作用を有効にするには、技術プロファイルをセルフアサートすることができます。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセット ページをレンダリングします。 
+技術プロファイルでは、Azure Active Directory (Azure AD) B2C でカスタム ポリシーを使用して、さまざまな種類の利用者と通信するためのメカニズムが組み込まれたフレームワークを提供します。 技術プロファイルは、ユーザーの作成やユーザー プロファイルの読み取りを行うために、ご利用の Azure AD B2C テナントとの通信に使用されます。 ユーザーとの相互作用を有効にするには、技術プロファイルをセルフアサートすることができます。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセット ページをレンダリングします。
 
 ## <a name="type-of-technical-profiles"></a>技術プロファイルの種類
 
 技術プロファイルでは、これらの種類のシナリオを有効にします。
 
 - [Azure Active Directory](active-directory-technical-profile.md) - Azure Active Directory B2C ユーザー管理をサポートします。
-- [JWT トークン発行者](jwt-issuer-technical-profile.md) - 証明書利用者アプリケーションに戻された JWT トークンを発行します。 
+- [JWT トークン発行者](jwt-issuer-technical-profile.md) - 証明書利用者アプリケーションに戻された JWT トークンを発行します。
 - **電話ファクター プロバイダー** - 多要素認証。
 - [OAuth1](oauth1-technical-profile.md) - 任意の OAuth 1.0 プロトコル ID プロバイダーとのフェデレーション。
 - [OAuth2](oauth2-technical-profile.md) - 任意の OAuth 2.0 プロトコル ID プロバイダーとのフェデレーション。
@@ -37,15 +37,15 @@ ms.locfileid: "66512451"
 - [RESTful プロバイダー](restful-technical-profile.md) - ユーザーの入力の検証、ユーザー データの促進、基幹業務アプリケーションとの統合など、REST API サービスを呼び出します。
 - [SAML2](saml-technical-profile.md) - 任意の SAML プロトコル ID プロバイダーとのフェデレーション。
 - [セルフアサート](self-asserted-technical-profile.md) - ユーザーとやりとりします。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセットをレンダリングします。
-- **WsFed** - 任意の WsFed プロトコル ID プロバイダーとのフェデレーション。 
-- [セッション管理](active-directory-b2c-reference-sso-custom.md) - さまざまな種類のセッションを処理します。 
+- **WsFed** - 任意の WsFed プロトコル ID プロバイダーとのフェデレーション。
+- [セッション管理](active-directory-b2c-reference-sso-custom.md) - さまざまな種類のセッションを処理します。
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>技術プロファイルのフロー
 
-技術プロファイルのすべての種類で同じ概念を共有します。 入力要求を送信し、要求変換を実行し、ID プロバイダー、REST API、Azure AD ディレクトリ サービスなど、構成されたパーティと通信します。 プロセスが完了すると、技術プロファイルによって出力要求が戻され、出力要求変換が実行される場合があります。 次の図は、技術プロファイルで参照される変換とマッピングがどのように処理されるかを示しています。 技術プロファイルでやりとりするパーティに関係なく、すべての要求変換が実行された後、技術プロファイルからの出力要求が要求バッグにすぐに格納されます。 
+技術プロファイルのすべての種類で同じ概念を共有します。 入力要求を送信し、要求変換を実行し、ID プロバイダー、REST API、Azure AD ディレクトリ サービスなど、構成されたパーティと通信します。 プロセスが完了すると、技術プロファイルによって出力要求が戻され、出力要求変換が実行される場合があります。 次の図は、技術プロファイルで参照される変換とマッピングがどのように処理されるかを示しています。 技術プロファイルでやりとりするパーティに関係なく、すべての要求変換が実行された後、技術プロファイルからの出力要求が要求バッグにすぐに格納されます。
 
-![技術プロファイルのフロー](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
+![技術プロファイルのフローを示している図](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
 1. **InputClaimsTransformation** - すべての入力[要求変換](claimstransformations.md)の入力要求が要求バッグからピックアップされます。実行後、出力要求は要求バッグに戻されます。 入力要求変換の出力要求は、後続の入力要求変換の入力要求になる場合があります。
 2. **InputClaims** - 要求は要求バッグからピックアップされ、技術プロファイルに使用されます。 たとえば、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)では、入力要求を使用して、ユーザーが提供する出力要求を事前作成します。 REST API 技術プロファイルでは、入力要求を使用し、入力パラメーターを REST API エンドポイントに送信します。 Azure Active Directory では、アカウントの読み取り、更新、削除を行うために、一意識別子として入力要求を使用します。
@@ -59,7 +59,7 @@ ms.locfileid: "66512451"
 6. **OutputClaimsTransformations** - すべての出力[要求変換](claimstransformations.md)の入力要求は、要求バッグからピックアップされます。 前の手順からの技術プロファイルの出力要求は、出力要求変換の入力要求になる場合があります。 実行後、出力要求は要求バッグに戻されます。 出力要求変換の出力要求は、後続の出力要求変換の入力要求になる場合があります。
 7. **シングル サインオン (SSO) セッションの管理** - [SSO セッションの管理](active-directory-b2c-reference-sso-custom.md)では、ユーザーが認証された後に、ユーザーとの相互作用を制御します。 たとえば、管理者は、選択した ID プロバイダーを表示するかどうか、ローカル アカウントの詳細をもう一度入力する必要があるかどうかを制御できます。
 
-技術プロファイルは、設定を変更したり、新しい機能を追加したりするために、別の技術プロファイルから継承できます。  **IncludeTechnicalProfile** 要素は、技術プロファイルの派生元の基本技術プロファイルへの参照です。  
+技術プロファイルは、設定を変更したり、新しい機能を追加したりするために、別の技術プロファイルから継承できます。  **IncludeTechnicalProfile** 要素は、技術プロファイルの派生元の基本技術プロファイルへの参照です。
 
 たとえば、**AAD-UserReadUsingAlternativeSecurityId-NoError** 技術プロファイルには、**AAD-UserReadUsingAlternativeSecurityId** が含まれます。 この技術プロファイルでは、**RaiseErrorIfClaimsPrincipalDoesNotExist** メタデータ項目が `true` に設定され、ソーシャル アカウントがディレクトリに存在しない場合にエラーが発生します。 **AAD-UserReadUsingAlternativeSecurityId-NoError** では、この動作がオーバーライドされ、ユーザーが存在しない場合のエラー メッセージが無効になります。
 
@@ -70,7 +70,7 @@ ms.locfileid: "66512451"
   </Metadata>
   <IncludeTechnicalProfile ReferenceId="AAD-UserReadUsingAlternativeSecurityId" />
 </TechnicalProfile>
-``` 
+```
 
 **AAD-UserReadUsingAlternativeSecurityId** には、`AAD-Common` 技術プロファイルが含まれます。
 

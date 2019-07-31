@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "60527311"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Diagnostics 拡張機能の構成スキーマのバージョンと履歴

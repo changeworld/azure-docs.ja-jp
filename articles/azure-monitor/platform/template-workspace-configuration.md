@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 39dbb504603544a468907d87d236338cb95e39a3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a55a4b2f3045aac8dfe9e46a50074585ab3ef491
+ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441631"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67827788"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
 
@@ -40,6 +40,7 @@ ms.locfileid: "67441631"
 この記事では、テンプレートで実行できる構成の一部を示すテンプレート サンプルを紹介しています。
 
 ## <a name="api-versions"></a>API のバージョン
+
 次の表は、この例で使用されているリソースの API バージョンの一覧です。
 
 | Resource | リソースの種類 | API バージョン |
@@ -50,16 +51,8 @@ ms.locfileid: "67441631"
 | 解決策    | solutions     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
-次の例では、ローカル マシンからテンプレートを使用してワークスペースを作成します。 JSON テンプレートは、ワークスペースの名前の入力だけをユーザーに求め、環境の標準構成として使用される可能性のある他のパラメーターには既定値を指定するように構成されています。  
 
-以下のパラメーターには、既定値が設定されます。
-
-* 場所 - 既定値は米国東部
-* SKU - 既定値は、2018 年 4 月の価格モデルでリリースされた新しい 1 GB あたりの価格レベル
-
-> [!NOTE]
->新しい 2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは **PerGB2018** のみです。  
->[2018 年 4 月より前の価格モデル](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model)のサブスクリプションがある場合、**スタンドアロン**価格レベルを指定できます。これは、2018 年 4 月の価格モデルのサブスクリプションと、新価格でのサブスクリプションの両方に対して行えます。 新しい価格モデルを採用したサブスクリプション内のワークスペースの場合、価格レベルは **PerGB2018** に設定されます。 
+次の例では、ローカル マシンからテンプレートを使用してワークスペースを作成します。 JSON テンプレートは、新しいワークスペースの名前と場所のみを必要とするように構成されています (価格レベルやリテンション期間など、他のワークスペース パラメーターには既定値が使用されます)。  
 
 ### <a name="create-and-deploy-template"></a>テンプレートの作成とデプロイ
 
@@ -79,26 +72,35 @@ ms.locfileid: "67441631"
         "location": {
             "type": "String",
             "allowedValues": [
-              "eastus",
-              "westus"
+              "australiacentral", 
+              "australiaeast", 
+              "australiasoutheast", 
+              "brazilsouth",
+              "canadacentral", 
+              "centralindia", 
+              "centralus", 
+              "eastasia", 
+              "eastus", 
+              "eastus2", 
+              "francecentral", 
+              "japaneast", 
+              "koreacentral", 
+              "northcentralus", 
+              "northeurope", 
+              "southafricanorth", 
+              "southcentralus", 
+              "southeastasia", 
+              "uksouth", 
+              "ukwest", 
+              "westcentralus", 
+              "westeurope", 
+              "westus", 
+              "westus2" 
             ],
-            "defaultValue": "eastus",
             "metadata": {
               "description": "Specifies the location in which to create the workspace."
             }
-        },
-        "sku": {
-            "type": "String",
-            "allowedValues": [
-              "Standalone",
-              "PerNode",
-              "PerGB2018"
-            ],
-            "defaultValue": "PerGB2018",
-            "metadata": {
-            "description": "Specifies the service tier of the workspace: Standalone, PerNode, Per-GB"
         }
-          }
     },
     "resources": [
         {
@@ -107,9 +109,6 @@ ms.locfileid: "67441631"
             "apiVersion": "2015-11-01-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": {
-                    "Name": "[parameters('sku')]"
-                },
                 "features": {
                     "searchVersion": 1
                 }
@@ -118,26 +117,28 @@ ms.locfileid: "67441631"
        ]
     }
     ```
-2. 要件に合わせてテンプレートを編集します。  どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)のリファレンスを参照してください。 
+
+2. 要件に合わせてテンプレートを編集します。 どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)のリファレンスを参照してください。 
 3. このファイルを **deploylaworkspacetemplate.json** としてローカル フォルダーに保存します。
-4. これでこのテンプレートをデプロイする準備が整いました。 PowerShell またはコマンド ラインを使用して、ワークスペースを作成します。
+4. これでこのテンプレートをデプロイする準備が整いました。 PowerShell またはコマンド ラインのいずれかを使用して、コマンドの一部としてワークスペースの名前と場所を指定して、ワークスペースを作成します。
 
    * PowerShell の場合は、テンプレートがあるフォルダーから以下のコマンドを使用します。
    
         ```powershell
-        New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json -workspaceName <workspace-name> -location <location>
         ```
 
    * コマンド ラインの場合は、テンプレートがあるフォルダーから以下のコマンドを使用します。
 
         ```cmd
         azure config mode arm
-        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json --workspaceName <workspace-name> --location <location>
         ```
 
 デプロイが完了するまでに数分かかる場合があります。 完了すると、次のような結果を含むメッセージが表示されます。<br><br> ![デプロイ完了時の結果の例](./media/template-workspace-configuration/template-output-01.png)
 
 ## <a name="configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースの構成
+
 次のサンプル テンプレートは、以下のタスクの実行方法を示しています。
 
 1. ソリューションをワークスペースに追加する
@@ -161,19 +162,21 @@ ms.locfileid: "67441631"
         "description": "Workspace name"
       }
     },
-    "serviceTier": {
+    "pricingTier": {
       "type": "string",
       "allowedValues": [
+        "PerGB2018",
         "Free",
         "Standalone",
         "PerNode",
-        "PerGB2018"
+        "Standard",
+        "Premium"
       ],
       "defaultValue": "PerGB2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone or PerNode) which are not available to all customers"
-    }
-      },
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+      }
+    },
     "dataRetention": {
       "type": "int",
       "defaultValue": 30,
@@ -187,17 +190,40 @@ ms.locfileid: "67441631"
     "immediatePurgeDataOn30Days": {
       "type": "bool",
       "metadata": {
-        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. This only applies when retention is being set to 30 days."
+        "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
       }
     },
     "location": {
       "type": "string",
       "allowedValues": [
-        "East US",
-        "West Europe",
-        "Southeast Asia",
-        "Australia Southeast"
-      ]
+        "australiacentral", 
+        "australiaeast", 
+        "australiasoutheast", 
+        "brazilsouth",
+        "canadacentral", 
+        "centralindia", 
+        "centralus", 
+        "eastasia", 
+        "eastus", 
+        "eastus2", 
+        "francecentral", 
+        "japaneast", 
+        "koreacentral", 
+        "northcentralus", 
+        "northeurope", 
+        "southafricanorth", 
+        "southcentralus", 
+        "southeastasia", 
+        "uksouth", 
+        "ukwest", 
+        "westcentralus", 
+        "westeurope", 
+        "westus", 
+        "westus2"
+      ],
+      "metadata": {
+        "description": "Specifies the location in which to create the workspace."
+      }
     },
     "applicationDiagnosticsStorageAccountName": {
         "type": "string",
@@ -235,7 +261,10 @@ ms.locfileid: "67441631"
       "location": "[parameters('location')]",
       "properties": {
         "sku": {
-          "Name": "[parameters('serviceTier')]"
+          "name": "[parameters('pricingTier')]"
+          "features": {
+            "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
+          }
         },
     "retentionInDays": "[parameters('dataRetention')]"
       },
@@ -494,6 +523,10 @@ ms.locfileid: "67441631"
       "type": "int",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').retentionInDays]"
     },
+    "immediatePurgeDataOn30Days": {  
+      "type": "bool",
+      "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').features.immediatePurgeDataOn30Days]"
+    },
     "portalUrl": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').portalUrl]"
@@ -503,6 +536,7 @@ ms.locfileid: "67441631"
 
 ```
 ### <a name="deploying-the-sample-template"></a>サンプル テンプレートのデプロイ
+
 上記のサンプル テンプレートをデプロイするには:
 
 1. 付属のサンプルをファイルに保存します (例: `azuredeploy.json`)。 
@@ -510,17 +544,20 @@ ms.locfileid: "67441631"
 3. PowerShell またはコマンド ラインを使用して、テンプレートをデプロイします。
 
 #### <a name="powershell"></a>PowerShell
+
 ```powershell
 New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
 ```
 
 #### <a name="command-line"></a>コマンド ライン
+
 ```cmd
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
 
 ## <a name="example-resource-manager-templates"></a>Azure Resource Manager のサンプル テンプレート
+
 Azure クイックスタート テンプレート ギャラリーに、Log Analytics 用のさまざまなテンプレートが用意されています。
 
 * [Windows を実行中の仮想マシンを Log Analytics VM 拡張機能付きでデプロイする](https://azure.microsoft.com/documentation/templates/201-oms-extension-windows-vm/)
@@ -530,5 +567,7 @@ Azure クイックスタート テンプレート ギャラリーに、Log Analy
 * [既存のストレージ アカウントの Log Analytics への追加](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>次の手順
+
 * [Resource Manager テンプレートを使用して Windows エージェントを Azure VM にデプロイします](../../virtual-machines/extensions/oms-windows.md)。
+
 * [Resource Manager テンプレートを使用して Linux エージェントを Azure VM にデプロイします](../../virtual-machines/extensions/oms-linux.md)。

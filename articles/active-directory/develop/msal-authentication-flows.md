@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 821143d39f8a4c06501ee38ef598a9d06d267d72
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b7ba6ae188c098e85573503a1518ba65480d713a
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273103"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807208"
 ---
 # <a name="authentication-flows"></a>認証フロー
 
@@ -166,7 +166,7 @@ IWA は、.NET Framework、.NET Core、およびユニバーサル Windows プ�
 
 IWA では多要素認証はバイパスされません。 多要素認証が構成されていると、多要素認証チャレンジが必要な場合に IWA が失敗する可能性があります。 多要素認証はユーザーの対話を要求します。
 
-2 要素認証の実行を ID プロバイダーが要求するタイミングは制御できません。 テナント管理者が行います。 通常、2 要素認証が必要なのは、他の国からサインインする場合、VPN 経由で企業ネットワークに接続していない場合、および、VPN 経由で接続している特定の状況下です。 Azure AD では、AI を使用して、2 要素認証が必要かどうかを継続的に学習します。 IWA が失敗した場合、ユーザー プロンプトにフォールバックする必要があります (https://aka.ms/msal-net-interactive) )。
+2 要素認証の実行を ID プロバイダーが要求するタイミングは制御できません。 テナント管理者が行います。 通常、2 要素認証が必要なのは、他の国からサインインする場合、VPN 経由で企業ネットワークに接続していない場合、および、VPN 経由で接続している特定の状況下です。 Azure AD では、AI を使用して、2 要素認証が必要かどうかを継続的に学習します。 IWA が失敗した場合、[対話ユーザー プロンプト] (#interactive) にフォール バックする必要があります。
 
 パブリック クライアント アプリケーションを構築するときに渡される機関は、次のいずれかである必要があります。
 - テナント化 (`https://login.microsoftonline.com/{tenant}/` の形式。`tenant` は、テナント ID を表す GUID またはテナントに関連付けられているドメイン)。

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db4b799aa31a4132609b0dd158b65070fb2474b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e9019699d8a81d31d2b20f674fd76fcb70021d6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510965"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846818"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローを通じてアクセス トークンをご自身のアプリケーションに渡す
 
@@ -54,12 +54,8 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 
     次の例のようなコードが表示されます。
 
-    ![デコードされたトークン](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.png)
+    ![Idp_access_token block が強調表示されている jwt.ms 内のデコードされたトークン](./media/idp-pass-through-user-flow/idp-pass-through-user-flow-token.PNG)
 
 ## <a name="next-steps"></a>次の手順
 
 [Azure AD B2C トークンの概要](active-directory-b2c-reference-tokens.md)に関する記事で詳細を参照してください。
-
-
-
-

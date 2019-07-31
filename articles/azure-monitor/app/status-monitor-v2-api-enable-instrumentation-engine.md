@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 1e30490dbd51f541afd0b7036769cfc638a75877
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 79446e6676a35a1b51e5e0839eb539d730b499da
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66514383"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807129"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine-v021-alpha"></a>Status Monitor v2 API:Enable-InstrumentationEngine (v0.2.1-alpha)
+# <a name="status-monitor-v2-api-enable-instrumentationengine-v040-alpha"></a>Status Monitor v2 API:Enable-InstrumentationEngine (v0.4.0-alpha)
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
 

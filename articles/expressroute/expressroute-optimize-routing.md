@@ -5,18 +5,49 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 07/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 65c23b05cfcb623f8e2870df813f5516b3039d5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bd8c0417b32e93a4f52b545c4d7fc532992a0b1
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883569"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854322"
 ---
 # <a name="optimize-expressroute-routing"></a>ExpressRoute ルーティングの最適化
 ExpressRoute 回線が複数あるとき、Microsoft への接続経路は複数存在します。 その結果、期待したルーティングが行われない、つまりトラフィックが貴社のネットワークから Microsoft に到達するまでの経路と、Microsoft から貴社のネットワークに到達するまでの経路が、想定よりも長くなってしまう可能性があります。 ネットワーク パスが長くなるほど、遅延は大きくなります。 遅延は、アプリケーションのパフォーマンスとユーザー エクスペリエンスに直接影響します。 この記事では、該当する問題について例示すると共に、標準のルーティング技術を使ってルーティングを最適化する方法を説明します。
+
+## <a name="path-selection-on-microsoft-and-public-peerings"></a>Microsoft ピアリングとパブリック ピアリングでのパスの選択
+Microsoft ピアリングまたはパブリック ピアリングを使用するときに、トラフィックが目的のパス (1 つ以上の ExpressRoute 回線がある場合) を確実に経由していること、およびインターネット交換 (IX) またはインターネット サービス プロバイダー (ISP) を経由したインターネットへのパスを確実に経由していることが重要です。 BGP では、最長プレフィックス一致 (LPM) を含むさまざまな要因に基づいて、最適なパス選択アルゴリズムが利用されます。 Microsoft ピアリングまたはパブリック ピアリングを介して Azure 宛てのトラフィックが ExpressRoute パスを確実に経由するようにするには、顧客が *Local Preference* 属性を実装して ExpressRoute でそのパスが常に優先されるようにする必要があります。 
+
+> [!NOTE]
+> 既定のローカル設定は、通常は 100 です。 ローカル設定が高いほど優先度が高くなります。 
+>
+>
+
+次のシナリオ例について考えてみます。
+
+![ExpressRoute ケース 1 の問題 - 顧客から Microsoft への準最適なルーティング](./media/expressroute-optimize-routing/expressroute-localPreference.png)
+
+上の例では、ExpressRoute パスを優先するには、次のように Local Preference を構成します。 
+
+**R1 の観点からの Cisco IOS-XE 構成:**
+
+    R1(config)#route-map prefer-ExR permit 10
+    R1(config-route-map)#set local-preference 150
+
+    R1(config)#router BGP 345
+    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
+    R1(config-router)#neighbor 1.1.1.2 activate
+    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+
+**R1 の観点からの Junos 構成:**
+
+    user@R1# set protocols bgp group ibgp type internal
+    user@R1# set protocols bgp group ibgp local-preference 150
+
+
 
 ## <a name="suboptimal-routing-from-customer-to-microsoft"></a>顧客から Microsoft への準最適なルーティング
 では、具体的な例を用いてルーティングの問題を詳しく見ていきましょう。 米国のロサンゼルスとニューヨークにそれぞれ 1 つオフィスがあるとします。 2 つのオフィスは、ワイド エリア ネットワーク (WAN) に接続されています。WAN は、自社のバックボーン ネットワークでも、サービス プロバイダーの IP VPN でもかまいません。 また ExpressRoute 回線が 2 つ存在します。1 つは米国西部に、もう 1 つは米国東部にあり、それらも WAN に接続されています。 オフィスから Microsoft のネットワークには、明らかに 2 とおりの接続経路があります。 このとき米国西部と米国東部の両オフィスで Azure (Azure App Service など) をデプロイしているとします。 ユーザーの接続先として意図した Azure リージョンは当然、ロサンゼルスなら米国西部、ニューヨークなら米国東部です。それぞれのオフィスのユーザーが最適なパフォーマンスを享受できるよう最寄りの Azure サービスがアクセス先となるようにサービス管理者によってアドバタイズされています。 ところが、意図した結果が得られるのは米国東部のオフィスだけで、米国西部のオフィスでは思いどおりの結果が得られません。 問題の原因は、 Azure 米国東部 (23.100.0.0/16) のプレフィックスと Azure 米国西部 (13.100.0.0/16) のプレフィックスの両方が、それぞれの ExpressRoute 回線でアドバタイズされていることにあります。 どのプレフィックスがどのリージョンに属しているかがわからなければ、両者を区別して扱うことはできません。 どちらのプレフィックスも米国西部より米国東部の方が近いと WAN ネットワークで判断される可能性があり、その場合、両オフィスのユーザーが米国東部の ExpressRoute 回線にルーティングされます。 最終的にロサンゼルス オフィスでは、満足なパフォーマンスを享受できないユーザーが続出する結果となります。

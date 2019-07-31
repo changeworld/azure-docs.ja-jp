@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bfb15e717e3cb726aba782d9a9506330d7ea39fe
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486945"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839316"
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -95,7 +95,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 
 | コピー先データ ストアの地理的な場所 | コピー先データ ストアのリージョン | データ移動に使用するリージョン |
 |:--- |:--- |:--- |
-| 米国 | 米国東部 | 米国東部 |
+| 米国 | East US | East US |
 | &nbsp; | 米国東部 2 | 米国東部 2 |
 | &nbsp; | 米国中部 | 米国中部 |
 | &nbsp; | 米国中北部 | 米国中北部 |
@@ -138,7 +138,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 Data Factory コピー ウィザードは、コピー アクティビティのあるパイプラインを作成するのに役立ちます。 このパイプラインを使用すると、リンクされたサービス、データセット、およびパイプラインの " *JSON 定義を作成しなくても* "、サポートされているソースからデータをコピーできます。 このウィザードの詳細については、「 [Data Factory コピー ウィザード](data-factory-copy-wizard.md) 」をご覧ください。  
 
 ### <a name="by-using-json-scripts"></a>JSON スクリプトを使用
-Azure ポータル、Visual Studio、または Azure PowerShell で Data Factory エディターを使用すると、パイプラインの JSON 定義を作成できます (コピー アクティビティを使用)。 その後、その定義をデプロイして、Data Factory にパイプラインを作成することができます。 手順については、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する方法](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。    
+Visual Studio または Azure PowerShell で Data Factory エディターを使用すると、パイプラインの JSON 定義を作成できます (コピー アクティビティを使用)。 その後、その定義をデプロイして、Data Factory にパイプラインを作成することができます。 手順については、「[チュートリアル: Azure Data Factory パイプラインでコピー アクティビティを使用する方法](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。    
 
 JSON プロパティ (名前、説明、入力テーブル、出力テーブル、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。 アクティビティの `typeProperties` セクションで使用できるプロパティは、各アクティビティの種類によって異なります。
 

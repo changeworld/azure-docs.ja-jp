@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b820068f7bd59941346c8d2a3e8ede15252d58b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc42ab8a8cfb0d182c69bd0940e23cffdb2be0af
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540262"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807246"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
 
@@ -56,19 +56,19 @@ OpenID Connect を使用してアプリケーションを Azure AD と統合す�
 
 ## <a name="appsource-trial-experiences"></a>AppSource の試用エクスペリエンス
 
-### <a name="free-trial-customer-led-trial-experience"></a>無料試用版 (顧客主導の試用エクスペリエンス) 
+### <a name="free-trial-customer-led-trial-experience"></a>無料試用版 (顧客主導の試用エクスペリエンス)
 
-顧客主導の試用は、アプリケーションへのシングルクリックを提供することを AppSource がお勧めするエクスペリエンスです。 次の図は、このエクスペリエンスの流れを示します。<br/><br/>
+顧客主導の試用は、アプリケーションへのシングルクリックを提供することを AppSource がお勧めするエクスペリエンスです。 このエクスペリエンスは、次の例のように表示されます。
 
 <table >
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%"/><ul><li>ユーザーが AppSource Web サイトでお客様のアプリケーションを見つけます</li><li>[無料試用版] オプションを選択します</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" /><ul><li>AppSource により、ユーザーはお客様の Web サイトの URL にリダイレクトされます</li><li>Web サイトでは<i>シングル サインオン</i> プロセスが (ページの読み込み時に) 自動的に開始されます</li></ul></td>
-    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%"/><ul><li>ユーザーは Microsoft のサインイン ページにリダイレクトされます</li><li>ユーザーはサインインに必要な資格情報を入力します</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>ユーザーが AppSource Web サイトでお客様のアプリケーションを見つけます</li><li>[無料試用版] オプションを選択します</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>AppSource により、ユーザーはお客様の Web サイトの URL にリダイレクトされます</li><li>Web サイトでは<i>シングル サインオン</i> プロセスが (ページの読み込み時に) 自動的に開始されます</li></ul></td>
+    <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>ユーザーは Microsoft のサインイン ページにリダイレクトされます</li><li>ユーザーはサインインに必要な資格情報を入力します</li></ul></td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%"/><ul><li>ユーザーはお客様のアプリケーションに同意します</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%"/><ul><li>サインインが完了し、ユーザーはお客様の Web サイトにリダイレクトされます</li><li>ユーザーが無料試用版の試用を開始します</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step4.png" width="85%" alt-text="Example: Consent page for an application"/><ul><li>ユーザーはお客様のアプリケーションに同意します</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>サインインが完了し、ユーザーはお客様の Web サイトにリダイレクトされます</li><li>ユーザーが無料試用版の試用を開始します</li></ul></td>
     <td></td>
 </tr>
 </table>
@@ -79,20 +79,20 @@ OpenID Connect を使用してアプリケーションを Azure AD と統合す�
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%"/><ul><li>ユーザーが AppSource Web サイトでお客様のアプリケーションを見つけます</li><li>[連絡する] オプションを選択します</li></ul></td>
-    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%"/><ul><li>フォームに連絡先情報を入力します</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>ユーザーが AppSource Web サイトでお客様のアプリケーションを見つけます</li><li>[連絡する] オプションを選択します</li></ul></td>
+    <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>フォームに連絡先情報を入力します</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/UserContact.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/UserContact.png" width="55%" alt-text="Shows placeholder for user information"/></td>
             <td>ユーザー情報を受け取ります</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/SetupEnv.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/SetupEnv.png" width="55%" alt-text="Shows placeholder for setup environment info"/></td>
             <td>環境をセットアップします</td>
         </tr>
         <tr>
-            <td><img src="media/active-directory-devhowto-appsource-certified/ContactCustomer.png" width="55%"/></td>
+            <td><img src="media/active-directory-devhowto-appsource-certified/ContactCustomer.png" width="55%" alt-text="Shows placeholder for trial info"/></td>
             <td>ユーザーに試用版の情報を連絡します</td>
         </tr>
         </table><br/><br/>
@@ -100,9 +100,9 @@ OpenID Connect を使用してアプリケーションを Azure AD と統合す�
     </td>
 </tr>
 <tr>
-    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%"/><ul><li>ユーザーがお客様のアプリケーションにアクセスし、シングル サインオン プロセスを完了します</li></ul></td>
-    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%"/><ul><li>ユーザーはお客様のアプリケーションに同意します</li></ul></td>
-    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%"/><ul><li>サインインが完了し、ユーザーはお客様の Web サイトにリダイレクトされます</li><li>ユーザーが無料試用版の試用を開始します</li></ul></td>
+    <td valign="top" width="33%">4.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step3.png" width="85%" alt-text="Shows the application sign-in screen"/><ul><li>ユーザーがお客様のアプリケーションにアクセスし、シングル サインオン プロセスを完了します</li></ul></td>
+    <td valign="top" width="33%">5.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step4.png" width="85%" alt-text="Shows an example consent page for an application"/><ul><li>ユーザーはお客様のアプリケーションに同意します</li></ul></td>
+    <td valign="top" width="33%">6.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png" width="85%" alt-text="Shows the experience the user sees when redirected back to your site"/><ul><li>サインインが完了し、ユーザーはお客様の Web サイトにリダイレクトされます</li><li>ユーザーが無料試用版の試用を開始します</li></ul></td>
    
 </tr>
 </table>
@@ -110,16 +110,15 @@ OpenID Connect を使用してアプリケーションを Azure AD と統合す�
 ### <a name="more-information"></a>詳細情報
 
 AppSource の試用エクスペリエンスの詳細については、[こちらの動画](https://aka.ms/trialexperienceforwebapps)をご覧ください。 
- 
+
 ## <a name="next-steps"></a>次の手順
 
 - Azure AD のサインインをサポートするアプリケーションの作成の詳細については、「[Azure AD の認証シナリオ](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)」を参照してください。
 - AppSource で SaaS アプリケーションを一覧表示する方法については、[AppSource パートナーの情報](https://appsource.microsoft.com/partners)に関するページをご覧ください
 
-
 ## <a name="get-support"></a>サポートを受ける
 
-Azure AD との統合について、Microsoft は [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) のコミュニティでサポートを提供しています。 
+Azure AD との統合について、Microsoft は [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) のコミュニティでサポートを提供しています。
 
 ご質問は最初に Stack Overflow で挙げていただき、既知の問題を検索して過去に同じ質問が挙がっていないかどうか確認することを強くお勧めします。 ご質問またはコメントに [`[azure-active-directory]` タグと `[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) タグが付けられていることを確認してください。
 
@@ -131,6 +130,5 @@ Microsoft のコンテンツ改善のため、次のコメント セクション
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started
-
 
 <!--Image references-->

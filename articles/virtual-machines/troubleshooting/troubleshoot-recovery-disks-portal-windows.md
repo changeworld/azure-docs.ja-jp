@@ -13,15 +13,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/13/2018
 ms.author: genli
-ms.openlocfilehash: f0569878d61ce83c4847867378d8e68fe0faa59b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8ab6fc75475cd99e3d803450476880175f12d2b6
+ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709407"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67881133"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure Portal で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う
-Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure Portal で仮想ハード ディスクを別の Windows VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。
+Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure Portal で仮想ハード ディスクを別の Windows VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。 
 
 ## <a name="recovery-process-overview"></a>回復プロセスの概要
 トラブルシューティングのプロセスは次のとおりです。
@@ -34,30 +34,24 @@ Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク �
 
 マネージド ディスクを使用する VM の場合、Azure PowerShell を使用して VM 用の OS ディスクを変更できるようになりました。 VM を削除して再作成する必要はもうありません。 詳細については、「[Azure PowerShell で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う](troubleshoot-recovery-disks-windows.md)」を参照してください。
 
+> [!NOTE]
+> この記事は、アンマネージド ディスクを使用する VM には適用されません。
+
 ## <a name="determine-boot-issues"></a>起動の問題を特定する
 VM が正常に起動できない理由を特定するには、ブート診断と VM のスクリーンショットを調べます。 一般的な例として、失敗したアプリケーション更新や、基になる仮想ハード ディスクが削除または移動されている場合が挙げられます。
 
-ポータルで VM を選択し、下へスクロールして **[サポート + トラブルシューティング]** セクションを表示します。 **[ブート診断]** をクリックしてスクリーンショットを表示します。 VM で問題が発生している理由を判断するのに役立つ特定のエラー メッセージまたはエラー コードに注意してください。 
+ポータルで VM を選択し、下へスクロールして **[サポート + トラブルシューティング]** セクションを表示します。 **[ブート診断]** をクリックしてスクリーンショットを表示します。 VM で問題が発生している理由を判断するのに役立つ特定のエラー メッセージまたはエラー コードに注意してください。
 
 ![VM のブート診断のコンソール ログの表示](./media/troubleshoot-recovery-disks-portal-windows/screenshot-error.png)
 
 **[スクリーン ショットのダウンロード]** をクリックして、VM スクリーン ショットのキャプチャをダウンロードすることもできます。
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>既存の仮想ハード ディスクの詳細を表示する
-仮想ハード ディスクを別の VM に接続するには、仮想ハード ディスク (VHD) の名前を確認しておく必要があります。 
+仮想ハード ディスクを別の VM に接続するには、仮想ハード ディスク (VHD) の名前を確認しておく必要があります。
 
-ポータルでリソース グループを選択し、ストレージ アカウントを選択します。 次の例のように、 **[BLOB]** をクリックします。
+問題のある VM を選択し、 **[ディスク]** を選択します。 次の例のように、OS ディスクの名前を記録します。
 
-![ストレージ BLOB を選択する](./media/troubleshoot-recovery-disks-portal-windows/storage-account-overview.png)
-
-通常は、仮想ハード ディスクを格納する **vhds** という名前のコンテナーがあります。 コンテナーを選択して、仮想ハード ディスクの一覧を表示します。 VHD の名前を書き留めます (通常、プレフィックスは VM の名前です)。
-
-![ストレージ コンテナーで VHD を特定する](./media/troubleshoot-recovery-disks-portal-windows/storage-container.png)
-
-一覧から既存の仮想ハード ディスクを選択し、以降の手順で使用できるように URL をコピーします。
-
-![既存の仮想ハード ディスクの URL をコピーする](./media/troubleshoot-recovery-disks-portal-windows/copy-vhd-url.png)
-
+![ストレージ BLOB を選択する](./media/troubleshoot-recovery-disks-portal-windows/view-disk.png)
 
 ## <a name="delete-existing-vm"></a>既存の VM を削除する
 Azure では、仮想ハード ディスクと VM は 2 つの異なるリソースです。 仮想ハード ディスクには、オペレーティング システム自体、アプリケーション、構成が格納されています。 VM 自体は、サイズや場所を定義し、仮想ハード ディスクや仮想ネットワーク インターフェイス カード (NIC) などのリソースを参照するメタデータにすぎません。 各仮想ハード ディスクには、VM に接続されたときにリースが割り当てられています。 データ ディスクは、VM の実行中でも接続および切断できますが、OS ディスクは、VM リソースを削除しない限り、切断することはできません。 VM が停止され、割り当てが解除された状態であっても、リースによって OS ディスクは引き続きその VM に関連付けられています。
@@ -70,30 +64,15 @@ VM を回復するには、まず VM リソース自体を削除します。 VM 
 
 VM の削除が完了するまで待ってから、仮想ハード ディスクを別の VM に接続します。 仮想ハード ディスクを別の VM に接続するには、仮想ハード ディスクを VM に関連付けているリースを解放しておく必要があります。
 
-
 ## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>既存の仮想ハード ディスクを別の VM に接続する
 次のいくつかの手順では、トラブルシューティングのために別の VM を使用します。 ディスクの内容を参照して編集できるように、既存の仮想ハード ディスクをこのトラブルシューティング用 VM に接続します。 このプロセスにより、構成エラーの修正や、その他のアプリケーション ログ ファイルまたはシステム ログ ファイルの確認などが可能になります。 トラブルシューティングに使用する別の VM を選択または作成します。
 
-1. ポータルでリソース グループを選択し、トラブルシューティング用 VM を選択します。 **[ディスク]** を選択し、 **[既存のディスクの接続]** をクリックします。
+1. ポータルでリソース グループを選択し、トラブルシューティング用 VM を選択します。 **[ディスク]** を選択し、 **[編集]** を選択して、 **[Add data disk]\(データ ディスクの追加\)** をクリックします。
 
     ![ポータルで既存のディスクを接続する](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. 既存の仮想ハード ディスクを選択するには、 **[VHD ファイル]** をクリックします。
-
-    ![既存の VHD を参照する](./media/troubleshoot-recovery-disks-portal-windows/select-vhd-location.png)
-
-3. ストレージ アカウントとコンテナーを選択し、既存の VHD をクリックします。 **[選択]** をクリックして選択を確定します。
-
-    ![既存の VHD を選択する](./media/troubleshoot-recovery-disks-portal-windows/select-vhd.png)
-
-4. VHD を選択したら、 **[OK]** をクリックして既存の仮想ハード ディスクを接続します。
-
-    ![既存の仮想ハード ディスクの接続を確定する](./media/troubleshoot-recovery-disks-portal-windows/attach-disk-confirm.png)
-
-5. 数秒後、VM の**ディスク** ウィンドウに、データ ディスクとして接続された既存の仮想ハード ディスクが表示されます。
-
-    ![データ ディスクとして接続された既存の仮想ハード ディスク](./media/troubleshoot-recovery-disks-portal-windows/attached-disk.png)
-
+2. **[データディスク]** の一覧で、特定した VM の OS ディスクを選択します。 OS ディスクが表示されない場合は、トラブルシューティング用の VM と OS ディスクが同じリージョン (場所) にあることを確認します。
+3. **[保存]** をクリックして変更を適用します。
 
 ## <a name="mount-the-attached-data-disk"></a>接続されたデータ ディスクをマウントする
 
@@ -125,13 +104,16 @@ VM の削除が完了するまで待ってから、仮想ハード ディスク�
 
     ![データ ディスクをサーバー マネージャーでオフラインに設定](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
-3. 仮想ハード ディスクを VM から切断します。 Azure Portal で VM を選択し、 **[ディスク]** をクリックします。 既存の仮想ハード ディスクを選択し、 **[切断]** をクリックします。
+3. 仮想ハード ディスクを VM から切断します。 Azure Portal で VM を選択し、 **[ディスク]** をクリックします。 
+4. **[編集]** を選択し、アタッチした OS ディスクを選択して、 **[デタッチ]** をクリックします。
 
     ![既存の仮想ハード ディスクを切断する](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
     VM からデータ ディスクが正常に切断されるまで待ってから、次に進みます。
 
 ## <a name="create-vm-from-original-hard-disk"></a>元のハード ディスクから VM を作成する
+
+### <a name="method-1-use-azure-resource-manager-template"></a>メソッド 1 Azure Resource Manager テンプレートの使用
 元の仮想ハード ディスクから VM を作成するには、[この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet)を使用します。 このテンプレートでは、以前のコマンドで取得した VHD の URL を使用して、VM を既存の、または新しい仮想ネットワークにデプロイします。 次のように、 **[Deploy to Azure (Azure にデプロイ)]** をクリックします。
 
 ![GitHub のテンプレートを使用して VM をデプロイする](./media/troubleshoot-recovery-disks-portal-windows/deploy-template-from-github.png)
@@ -140,6 +122,14 @@ VM の削除が完了するまで待ってから、仮想ハード ディスク�
 
 ![テンプレートを使用して VM をデプロイする](./media/troubleshoot-recovery-disks-portal-windows/deploy-from-image.png)
 
+### <a name="method-2-create-a-vm-from-the-disk"></a>メソッド 2 ディスクから VM を作成する
+
+1. Azure portal で、ポータルからリソース グループを選択し、OS ディスクを検索します。 ディスク名を使用してディスクを検索することもできます。
+
+    ![Azure portal からディスクを検索する](./media/troubleshoot-recovery-disks-portal-windows/search-disk.png)
+1. **[概要]** を選択し、 **[Create VM]\(VM の作成\)** を選択します。
+    ![Azure portal でディスクから VM を作成する](./media/troubleshoot-recovery-disks-portal-windows/create-vm-from-disk.png)
+1. ウィザードに従って VM を作成します。
 
 ## <a name="re-enable-boot-diagnostics"></a>ブート診断を再度有効にする
 既存の仮想ハード ディスクから VM を作成したときに、ブート診断が自動的に有効にならない場合があります。 ブート診断の状態を確認し、必要に応じて有効にするには、ポータルで VM を選択します。 **[監視]** の **[診断設定]** をクリックします。 状態が **[オン]** になっており、 **[ブート診断]** の横のチェック ボックスがオンになっていることを確認します。 設定を変更した場合は、 **[保存]** をクリックします。

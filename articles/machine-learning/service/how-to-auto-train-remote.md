@@ -10,18 +10,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.custom: seodec18
-ms.openlocfilehash: 6a18bdf3a2a1ccd60ff20d21ebd99f4f6e15e38f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 7/12/2019
+ms.openlocfilehash: 00e4e9d5a1fc63dd73fe5a4dba7e1f1416cd08bc
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551335"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868882"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
-Azure Machine Learning では、管理しているさまざまな種類のコンピューティング リソースに対してモデルをトレーニングします。 ローカル コンピューターまたはクラウド内のコンピューターをコンピューティング ターゲットにすることができます。
+Azure Machine Learning では、管理しているさまざまな種類のコンピューティング リソースに対してモデルをトレーニングします。 ローカル コンピューターまたはクラウド内のリソースをコンピューティング ターゲットにすることができます。
 
 Azure Machine Learning Compute (AmlCompute) などのコンピューティング ターゲットを追加することで、機械学習実験を簡単にスケールアップまたはスケールアウトすることができます。 AmlCompute は、シングルノードまたはマルチノードのコンピューティングを簡単に作成できる、マネージド コンピューティング インフラストラクチャです。
 
@@ -29,7 +28,7 @@ Azure Machine Learning Compute (AmlCompute) などのコンピューティング
 
 ## <a name="how-does-remote-differ-from-local"></a>リモートとローカルの違い
 
-[自動機械学習を使用して分類モデルをトレーニングする方法](tutorial-auto-train-models.md)に関するチュートリアルでは、ローカル コンピューターで自動 ML を使用してモデルをトレーニングする方法について説明しています。  ローカルでトレーニングするときのワークフローは、リモート ターゲットの場合にも適用できます。 ただし、リモート コンピューティングの場合、自動 ML 実験の反復処理は非同期的に実行されます。 この機能では、特定の反復を取り消したり、実行の状態を確認したりできるほか、Jupyter ノートブックで他のセルに対する作業を続行することも可能です。 リモートからトレーニングするには、まず AmlCompute などのリモート コンピューティング ターゲットを作成します。 次に、リモート ソースを構成して、そこにご自身のコードを送信します。
+[自動機械学習を使用して分類モデルをトレーニングする方法](tutorial-auto-train-models.md)に関するチュートリアルでは、ローカル コンピューターで自動 ML を使用してモデルをトレーニングする方法について説明しています。 ローカルでトレーニングするときのワークフローは、リモート ターゲットの場合にも適用できます。 ただし、リモート コンピューティングの場合、自動 ML 実験の反復処理は非同期的に実行されます。 この機能では、特定の反復を取り消したり、実行の状態を確認したりできるほか、Jupyter ノートブックで他のセルに対する作業を続行することも可能です。 リモートからトレーニングするには、まず AmlCompute などのリモート コンピューティング ターゲットを作成します。 次に、リモート ソースを構成して、そこにご自身のコードを送信します。
 
 この記事では、リモートの AmlCompute ターゲットで自動 ML 実験を実行するために必要な追加の手順について説明します。 チュートリアルのワークスペース オブジェクト `ws` は、このコード全体で使用されています。
 
@@ -39,7 +38,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>リソースを作成する
 
-まだ存在しない場合は、ワークスペース (`ws`) に AmlCompute ターゲットを作成します。  
+まだ存在しない場合は、ワークスペース (`ws`) に AmlCompute ターゲットを作成します。
 
 **推定所要時間**: AmlCompute ターゲットの作成には約 5 分かかります。
 
@@ -48,13 +47,13 @@ from azureml.core.compute import AmlCompute
 from azureml.core.compute import ComputeTarget
 
 amlcompute_cluster_name = "automlcl" #Name your cluster
-provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2", 
+provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2",
                                                             # for GPU, use "STANDARD_NC6"
                                                             #vm_priority = 'lowpriority', # optional
                                                             max_nodes = 6)
 
 compute_target = ComputeTarget.create(ws, amlcompute_cluster_name, provisioning_config)
-    
+
 # Can poll for a minimum number of nodes and for a specific timeout.
 # If no min_node_count is provided, it will use the scale settings for the cluster.
 compute_target.wait_for_completion(show_output = True, min_node_count = None, timeout_in_minutes = 20)
@@ -63,22 +62,18 @@ compute_target.wait_for_completion(show_output = True, min_node_count = None, ti
 リモート コンピューティング ターゲットとして `compute_target` オブジェクトを使用できるようになりました。
 
 クラスター名には次の制限があります。
-+ 64 文字未満にする必要があります。  
++ 64 文字未満にする必要があります。
 + 次の文字は使用できません。`\` ~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
 
-## <a name="access-data-using-getdata-file"></a>get_data ファイルを使用してデータにアクセスする
+## <a name="access-data-using-getdata-function"></a>get_data () 関数を使用してデータにアクセスする
 
-トレーニング データに対するリモート リソースのアクセスを用意します。 リモート コンピューティングで実行される自動機械学習実験の場合、`get_data()` 関数を使用してデータを取得する必要があります。  
+トレーニング データに対するリモート リソースのアクセスを用意します。 リモート コンピューティングで実行される自動機械学習実験の場合、`get_data()` 関数を使用してデータを取得する必要があります。
 
 アクセスを用意するには、次の手順を行う必要があります。
-+ `get_data()` 関数を含む get_data.py ファイルを作成します 
-+ 絶対パスとしてアクセス可能なディレクトリに、そのファイルを配置します 
++ `get_data()` 関数を含む get_data.py ファイルを作成します
++ 絶対パスとしてアクセス可能なディレクトリに、そのファイルを配置します
 
 BLOB ストレージまたはローカル ディスクからデータを読み取るコードを get_data.py ファイルにカプセル化することができます。 次のコード サンプルでは、sklearn パッケージのデータが使用されています。
-
->[!Warning]
->リモート コンピューティングを使用している場合は、`get_data()` を使用する必要があります。お使いのデータの変換はここで実行されます。 get_data() の一部としてデータ変換用の追加ライブラリをインストールする場合は、追加の手順に従う必要があります。 詳細については、[auto-ml-dataprep のサンプル ノートブック](https://aka.ms/aml-auto-ml-data-prep )を参照してください。
-
 
 ```python
 # Create a project_folder if it doesn't exist
@@ -93,7 +88,7 @@ from scipy import sparse
 import numpy as np
 
 def get_data():
-    
+
     digits = datasets.load_digits()
     X_digits = digits.data[10:,:]
     y_digits = digits.target[10:]
@@ -101,11 +96,28 @@ def get_data():
     return { "X" : X_digits, "y" : y_digits }
 ```
 
+## <a name="create-run-configuration"></a>実行構成の作成
+
+get_data.py スクリプトで依存関係を使用できるようにするには、定義された `CondaDependencies` で `RunConfiguration` オブジェクトを定義します。 `AutoMLConfig` で `run_configuration` パラメーターにこのオブジェクトを使用します。
+
+```python
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
+
+run_config = RunConfiguration(framework="python")
+run_config.target = compute_target
+run_config.environment.docker.enabled = True
+run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
+
+dependencies = CondaDependencies.create(pip_packages=["scikit-learn", "scipy", "numpy"])
+run_config.environment.python.conda_dependencies = dependencies
+```
+
+この設計パターンのその他の例については、この[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb)を参照してください。
+
 ## <a name="configure-experiment"></a>実験を構成する
 
 `AutoMLConfig` の設定を指定します  (全パラメーターの一覧と使用できる値については[こちら](how-to-configure-auto-train.md#configure-experiment)を参照してください)。
-
-この設定で、`run_configuration` は `run_config` オブジェクトに設定されます。このオブジェクトには、DSVM の設定と構成が含まれています。  
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -126,7 +138,8 @@ automl_settings = {
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = compute_target,
+                             compute_target=compute_target,
+                             run_configuration=run_config,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                             )
@@ -141,6 +154,7 @@ automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
                              compute_target = compute_target,
+                             run_configuration=run_config,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                              model_explainability=True,
@@ -154,7 +168,7 @@ automl_config = AutoMLConfig(task='classification',
 
 ```python
 from azureml.core.experiment import Experiment
-experiment=Experiment(ws, 'automl_remote')
+experiment = Experiment(ws, 'automl_remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
@@ -168,7 +182,7 @@ remote_run = experiment.submit(automl_config, show_output=True)
     METRIC: The result of computing score on the fitted pipeline.
     BEST: The best observed score thus far.
     ***********************************************************************************************
-    
+
      ITERATION     PIPELINE                               DURATION                METRIC      BEST
              2      Standardize SGD classifier            0:02:36                  0.954     0.954
              7      Normalizer DT                         0:02:22                  0.161     0.954
@@ -206,7 +220,7 @@ RunDetails(remote_run).show()
 ![ウィジェットのプロット](./media/how-to-auto-train-remote/plot.png)
 
 ウィジェットに表示される URL をクリックすると、個々の実行の詳細を表示し、探索することができます。
- 
+
 ### <a name="view-logs"></a>ログを表示する。
 
 `/tmp/azureml_run/{iterationid}/azureml-logs` にある DSVM 上のログを見つけます。
@@ -256,7 +270,7 @@ print(per_class_imp)
 
 ## <a name="example"></a>例
 
-[how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) ノートブックは、この記事の概念を示しています。 
+[how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) ノートブックは、この記事の概念を示しています。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

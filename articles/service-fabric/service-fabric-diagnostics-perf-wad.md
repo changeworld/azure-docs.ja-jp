@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "66110299"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure Diagnostics 拡張機能を使用したパフォーマンスの監視

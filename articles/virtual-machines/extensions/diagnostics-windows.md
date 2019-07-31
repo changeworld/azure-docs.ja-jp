@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
 ms.openlocfilehash: 19d30d207e67e1dfd8cdec2fe9951c763a921a0e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 07/31/2019
 ms.locfileid: "67706067"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする

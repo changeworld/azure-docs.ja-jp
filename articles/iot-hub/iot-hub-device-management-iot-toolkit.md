@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03df2ceb2df4d857e48f1790703a1d87647e43d0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5697e0b51e8349de62e71be1471beb76aa48765
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60401172"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838730"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Tools を使用する
 
@@ -63,7 +63,7 @@ ms.locfileid: "60401172"
 5. 数秒で **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** タブにデバイスの一覧が表示されます。
 
    > [!Note]
-   > **[Set IoT Hub Connection String]\(IoT Hub 接続文字列の設定\)** を選択して設定することもできます。 ポップアップ ウィンドウに、IoT デバイスの接続先 IoT ハブの接続文字列を入力します。
+   > **[Set IoT Hub Connection String]\(IoT Hub 接続文字列の設定\)** を選択して設定することもできます。 ポップアップ ウィンドウに、IoT デバイスの接続先 IoT ハブの **iothubowner** ポリシーの接続文字列を入力します。
 
 ## <a name="direct-methods"></a>ダイレクト メソッド
 

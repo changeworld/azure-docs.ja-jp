@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1016a7800ddcfd4066ec3f6d6dce00d01ad83471
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60567216"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839484"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Cosmos DB との間でのデータの移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -42,7 +42,7 @@ JSON ファイルまたは他の Cosmos DB コレクションとの間でデー�
 
 パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -147,7 +147,7 @@ Azure Cosmos DB などのスキーマのないデータ ストアの場合、Dat
 * JSON の編集を使う場合は、コピー アクティビティで、Cosmos DB データセットの "structure" セクションも Cosmos DB ソース/シンクの "nestingSeparator" プロパティも指定しないでください。 JSON ファイルに対してインポート/エクスポートを行うには、ファイル ストア データセットで形式を "JsonFormat" に指定し、"filePattern" を構成し、その他の形式設定は省略します。詳細については、「[JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)」のセクションを参照してください。
 
 ## <a name="json-examples"></a>JSON の使用例
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、Azure Cosmos DB と Azure Blob Storage の間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、**こちら**に記載されているいずれかのシンクに、任意のソースからデータを[直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)コピーすることができます。
+次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 ここでは、Azure Cosmos DB と Azure Blob Storage の間でデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、**こちら**に記載されているいずれかのシンクに、任意のソースからデータを[直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)コピーすることができます。
 
 ## <a name="example-copy-data-from-azure-cosmos-db-to-azure-blob"></a>例:Azure Cosmos DB から Azure BLOB にデータをコピーする
 下のサンプルで確認できる要素:

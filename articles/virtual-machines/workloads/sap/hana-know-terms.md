@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/20/2018
-ms.author: saghorpa
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c069203e94872452c11a7e6cebccd213e0af639c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2564e0d34383f7c1daff5b02a871778fb90546cc
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706934"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869002"
 ---
 # <a name="know-the-terms"></a>用語の確認
 
@@ -41,7 +41,10 @@ ms.locfileid: "67706934"
 - **SKU カテゴリ**:HANA L インスタンスの場合、次の 2 つの SKU のカテゴリが提供されます。
     - **Type I クラス**:S72、S72m、S96、S144、S144m、S192、S192m、S192xm
     - **Type II クラス**:S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m
-
+- **スタンプ**:HANA L インスタンスの Microsoft 内部デプロイ サイズを定義します。 HANA L インスタンス ユニットをデプロイするは、コンピューティング、ネットワーク、およびストレージ ラックで構成されている HANA L インスタンス スタンプをデータセンターの場所に事前にデプロイする必要があります。 このようなデプロイは HANA L インスタンス スタンプと呼ばれます。またはリビジョン 4 以降では (下記参照) **ラージ インスタンス行**の用語の代わりに使用しています。
+- **リビジョン**:HANA L インスタンス スタンプには、2 つの異なるスタンプ リビジョンがあります。 これらは、アーキテクチャと Azure 仮想マシン ホストとの近接性の点で異なります。
+    - "リビジョン 3" (Rev 3): 2016 年の中頃からデプロイされた元の設計
+    - "リビジョン 4" (Rev 4): Azure VM と HANA L インスタンス ユニット間のネットワーク待機時間を短縮しながら、Azure 仮想マシンのホストにより近い場所を提供できる新しい設計です 
 
 クラウドに SAP ワークロードをデプロイする方法については、他のさまざまなリソースが用意されています。 Azure への SAP HANA のデプロイを計画する場合、Azure IaaS の原則と Azure IaaS での SAP ワークロードのデプロイに関する知識と経験が必要です。 作業を続行する前に、[Azure 仮想マシンでの SAP ソリューションの使用](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事で詳細を確認してください。 
 

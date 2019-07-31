@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b42a6b667a8708aeb2edeb0c80a5ab747b6c60a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bfaf3cc9b113ff10766f7a17bd7bf09ffa619a8e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60246149"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227416"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -71,7 +71,7 @@ ms.locfileid: "60246149"
   2. Exchange GAL (グローバル アドレス一覧) で見つかる属性は Exchange Mailbox のあるフォレストから提供されます。
   3. メールボックスが見つからない場合、これらの属性はあらゆるフォレストから取得できます。
   4. Exchange 関連の属性 (GAL で表示されない技術属性) は、 `mailNickname ISNOTNULL`の条件を満たすフォレストから提供されます。
-  5. 以上の規則のいずれかを満たすフォレストが複数存在する場合、コネクタ (フォレスト) の作成順序 (日付/時刻) を利用し、属性を提供するフォレストが決定されます。
+  5. 以上の規則のいずれかを満たすフォレストが複数存在する場合、コネクタ (フォレスト) の作成順序 (日付/時刻) を利用し、属性を提供するフォレストが決定されます。 接続されている最初のフォレストが、最初に同期するフォレストになります。 
 
 ### <a name="contact-out-of-box-rules"></a>連絡先の既定のルール
 連絡先オブジェクトは次の要件を満たさないと同期されません。
@@ -220,7 +220,7 @@ NULL
 ### <a name="putting-it-all-together"></a>まとめ
 ここまでの同期規則に関する説明で、構成がさまざまな同期規則でどのように動作するかを十分理解できるようになりました。 ユーザー、メタバースに影響する属性に注目すると、規則は次の順序で適用されます。
 
-| Name | Comment (コメント) |
+| EnableAdfsAuthentication | Comment (コメント) |
 |:--- |:--- |
 | AD からの受信 - ユーザー結合 |コネクタ スペース オブジェクトをメタバースと結合するための規則。 |
 | AD からの受信 - ユーザー アカウント有効 |Azure AD と Office 365 にサインインするために必要な属性。 これらの属性は有効なアカウントから取得します。 |

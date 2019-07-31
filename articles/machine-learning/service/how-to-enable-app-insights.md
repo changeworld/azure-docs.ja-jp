@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 04/02/2019
+ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c12f55228d77656ef57598da0fb002fdea29bd4
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60820227"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871784"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Application Insights を使用して Azure Machine Learning のモデルを監視する
 
@@ -131,7 +131,7 @@ Application Insights の使用方法の詳細については、「[Application I
 
 ## <a name="example-notebook"></a>ノートブックの例
 
-[how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) ノートブックは、この記事にある概念を示しています。 
+[enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) ノートブックは、この記事の概念を示しています。 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

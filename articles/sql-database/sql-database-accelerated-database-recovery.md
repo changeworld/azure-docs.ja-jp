@@ -11,16 +11,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 77bc33747964a5f4ee1a67aba777dc3ed76b9a51
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d556c82f47868f4ee06694e23092f10029d619d
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073462"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839843"
 ---
 # <a name="accelerated-database-recovery"></a>高速データベース復旧
 
-**高速データベース復旧 (ADR)** は、SQL データベース エンジンの復旧プロセスを再設計することで、実行時間の長いトランザクションがある場合などにデータベースの可用性を大幅に向上させる、新しい SQL データベース エンジン機能です。 現在、ADR は、Azure SQL Database の単一データベースとプールされたデータベース、Azure SQL Data Warehouse のデータベースに使用できます。 ADR の主な利点は次のとおりです。
+**高速データベース復旧 (ADR)** は、SQL データベース エンジンの復旧プロセスを再設計することで、実行時間の長いトランザクションがある場合などにデータベースの可用性を大幅に向上させる、新しい SQL データベース エンジン機能です。 現在、ADR は、Azure SQL Database の単一データベースとプールされたデータベース、Azure SQL Data Warehouse (現時点ではパブリック プレビュー段階) のデータベースに使用できます。 ADR の主な利点は次のとおりです。
 
 - **高速で一貫性のあるデータベース復旧**
 

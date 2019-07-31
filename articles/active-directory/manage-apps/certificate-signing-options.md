@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1baf4af41fd5dcb6723b6ee2827ae91b43b072d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a084ceb841ea35bc62d9851f2b6c4821f4acb6fd
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780958"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807719"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory のギャラリー アプリ用の SAML トークンの詳細な証明書署名オプション
 
@@ -57,27 +57,21 @@ Azure AD では、SAML 応答に署名するための次の 2 つの署名アル
 1. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 自分のアカウントのエンタープライズ アプリケーションの一覧が表示されます。
 1. アプリケーションを選択します。 アプリケーションの概要ページが表示されます。
 
-   ![アプリケーションの概要ページ](./media/certificate-signing-options/application-overview-page.png)
+   ![例:アプリケーションの概要ページ](./media/certificate-signing-options/application-overview-page.png)
 
 次に、そのアプリケーションの SAML トークンの証明書署名オプションを変更します。
 
 1. アプリケーションの概要ページの左側のウィンドウで、 **[シングル サインオン]** を選択します。
+1. **[Set up Single Sign-On with SAML - Preview]\(SAML によるシングル サインオンの設定 - プレビュー\)** ページが表示されたら、手順 5 に進みます。
+1. **[シングル サインオン方式の選択]** ページが表示されない場合は、 **[シングル サインオン モードの変更]** を選択して表示します。
+1. **[シングル サインオン方式の選択]** ページに **[SAML]** が表示されている場合は選択します。 ( **[SAML]** が表示されていない場合、そのアプリケーションで SAML はサポートされていないため、残りの手順と記事は無視してもかまいません。)
+1. **[Set up Single Sign-On with SAML - Preview]\(SAML によるシングル サインオンの設定 - プレビュー\)** ページで、 **[SAML 署名証明書]** 見出しを探し、 **[編集]** アイコン (鉛筆) を選択します。 **[SAML 署名証明書]** ページが表示されます。
 
-2. **[Set up Single Sign-On with SAML - Preview]\(SAML によるシングル サインオンの設定 - プレビュー\)** ページが表示されたら、手順 5 に進みます。
+   ![例:[SAML 署名証明書] ページ](./media/certificate-signing-options/saml-signing-page.png)
 
-3. **[シングル サインオン方式の選択]** ページが表示されない場合は、 **[シングル サインオン モードの変更]** を選択して表示します。
-
-4. **[シングル サインオン方式の選択]** ページに **[SAML]** が表示されている場合は選択します。 ( **[SAML]** が表示されていない場合、そのアプリケーションで SAML はサポートされていないため、残りの手順と記事は無視してもかまいません。)
-
-5. **[Set up Single Sign-On with SAML - Preview]\(SAML によるシングル サインオンの設定 - プレビュー\)** ページで、 **[SAML 署名証明書]** 見出しを探し、 **[編集]** アイコン (鉛筆) を選択します。 **[SAML 署名証明書]** ページが表示されます。
-
-   ![SAML の署名のページ](./media/certificate-signing-options/saml-signing-page.png)
-
-6. **[署名オプション]** ドロップダウン リストで、 **[SAML 応答への署名]** 、 **[SAML アサーションへの署名]** 、または **[SAML 応答とアサーションへの署名]** を選択します。 これらのオプションの説明は、この記事の前半の「[証明書署名オプション](#certificate-signing-options)」で紹介しています。
-
-7. **[署名アルゴリズム]** ドロップダウン リストで、 **[SHA-1]** または **[SHA-256]** を選択します。 これらのオプションの説明は、この記事の前半の「[証明書署名アルゴリズム](#certificate-signing-algorithms)」で紹介しています。
-
-8. 選択内容に問題がなければ、 **[保存]** を選択して新しい SAML 署名証明書の設定を適用します。 それ以外の場合は、 **[X]** を選択して変更を破棄します。
+1. **[署名オプション]** ドロップダウン リストで、 **[SAML 応答への署名]** 、 **[SAML アサーションへの署名]** 、または **[SAML 応答とアサーションへの署名]** を選択します。 これらのオプションの説明は、この記事の前半の「[証明書署名オプション](#certificate-signing-options)」で紹介しています。
+1. **[署名アルゴリズム]** ドロップダウン リストで、 **[SHA-1]** または **[SHA-256]** を選択します。 これらのオプションの説明は、この記事の前半の「[証明書署名アルゴリズム](#certificate-signing-algorithms)」で紹介しています。
+1. 選択内容に問題がなければ、 **[保存]** を選択して新しい SAML 署名証明書の設定を適用します。 それ以外の場合は、 **[X]** を選択して変更を破棄します。
 
 ## <a name="next-steps"></a>次の手順
 

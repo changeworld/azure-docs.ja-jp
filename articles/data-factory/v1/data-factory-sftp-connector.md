@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe253feca6a22ee0177082e178f897c5b634bb3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d35c4f410c29bba7848dde53d206cdd2ccd980ca
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61257194"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836149"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用した SFTP サーバーからのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -44,7 +44,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 
 - パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 SFTP サーバーから Azure Blob Storage にデータをコピーする JSON サンプルについては、この記事の「[JSON の使用例:SFTP サーバーから Azure BLOB にデータをコピーする](#json-example-copy-data-from-sftp-server-to-azure-blob)」セクションを参照してください。
+- また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 SFTP サーバーから Azure Blob Storage にデータをコピーする JSON サンプルについては、この記事の「[JSON の使用例:SFTP サーバーから Azure BLOB にデータをコピーする](#json-example-copy-data-from-sftp-server-to-azure-blob)」セクションを参照してください。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、FTP のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
@@ -225,7 +225,7 @@ SSH 公開キー認証を使用するには、`authenticationType` を `SshPubli
 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」に関する記事を参照してください。
 
 ## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON の使用例:SFTP サーバーから Azure BLOB にデータをコピーする
-次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、SFTP ソースからAzure Blob Storage にデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
+次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、SFTP ソースからAzure Blob Storage にデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 **こちら** に記載されているいずれかのシンクに、任意のソースからデータを [直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats) コピーすることができます。
 
 > [!IMPORTANT]
 > このサンプルでは、JSON のスニペットを使用します。 データ ファクトリを作成する手順は含まれてません。 手順については、記事「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md) 」を参照してください。

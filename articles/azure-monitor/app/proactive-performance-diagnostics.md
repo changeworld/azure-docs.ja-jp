@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: b1a3b04427839736359c88f8ad6a8db5eedf8488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ccff22a74b0cb1edcbae40fca087fe3197cb6ca
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61294093"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67867708"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -58,7 +58,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
 ## <a name="configure-email-notifications"></a>電子メール通知の構成
 
-スマート検出による通知は既定で有効になっており、[Application Insights リソースにアクセスできる所有者、共同作成者、および閲覧者](../../azure-monitor/app/resources-roles-access-control.md)に送信されます。 これを変更するには、電子メール通知の **[構成]** をクリックするか、または Application Insights で [スマート検出の設定] を開きます。 
+スマート検出による通知は既定で有効になっており、Application Insights リソースが存在するサブスクリプションへの[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)および[監視共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)のアクセス権を持つ人に送信されます。 これを変更するには、電子メール通知の **[構成]** をクリックするか、または Application Insights で [スマート検出の設定] を開きます。 
   
   ![スマート検出の設定](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   

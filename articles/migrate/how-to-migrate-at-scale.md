@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: f90140e9464ee72e9ceae8ca140bd060c51aade8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b45a158569b3be8250728293c1bf73c1a860a0f6
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60597107"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67808020"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Azure Site Recovery を使用して VM の移行をスケーリングする
 
-この記事では、Azure Site Recovery を使用して多数の VM を移行するための、スクリプトを使ったプロセスについて説明します。 これらのスクリプトは、GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) リポジトリからダウンロードできます。 スクリプトは、VMware、AWS、GCP の VM と物理サーバーを Azure に移行したり、マネージド ディスクへの移行をサポートしたりするために使用できます。 また、VM を物理サーバーとして移行する場合は、これらのスクリプトを使用して Hyper-V VM を移行することもできます。 スクリプトでは、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)に記載されている Azure Site Recovery PowerShell が使用されます。
+この記事では、Azure Site Recovery を使用して多数の VM を移行するための、スクリプトの使用方法について説明します。 これらのスクリプトは、GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) リポジトリからダウンロードできます。 スクリプトは、VMware、AWS、GCP の VM と物理サーバーを Azure のマネージド ディスクに移行するために使用できます。 また、VM を物理サーバーとして移行する場合は、これらのスクリプトを使用して Hyper-V VM を移行することもできます。 Azure Site Recovery PowerShell を使用したスクリプトは、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)に記載されています。
 
 ## <a name="current-limitations"></a>現在の制限事項:
 - ターゲット VM のプライマリ NIC に対してのみ、静的 IP アドレスの指定がサポートされています
@@ -60,7 +60,7 @@ CSV の準備ができたら、次の手順を実行してオンプレミス VM 
 6 | asr_cleanuptestmigration.ps1 | テスト フェールオーバーされた VM を手動で検証したら、このスクリプトを使用してテスト フェールオーバー VM をクリーンアップします
 7 | asr_migration.ps1 | csv にリストされている VM の計画外フェールオーバーを実行します。このスクリプトを実行すると、各 VM のジョブ詳細を含んだ CSV 出力が作成されます。 このスクリプトでは、アプリケーションの一貫性を保つため、フェールオーバーをトリガーする前にオンプレミス VM をシャットダウンすることはしません。スクリプトを実行する前に、VM を手動でシャットダウンすることをお勧めします。
 8 | asr_completemigration.ps1 | VM 上でコミット操作を実行し、Azure Site Recovery エンティティを削除します
-9 | asr_postmigration.ps1 | NIC のポスト フェールオーバーにネットワーク セキュリティ グループを割り当てる場合は、このスクリプトを使用してその操作を実行できます。 このスクリプトを実行すると、ターゲット VM 内の 1 つの NIC に NSG が割り当てられます。
+9 | asr_postmigration.ps1 | NIC のポスト フェールオーバーにネットワーク セキュリティ グループを割り当てる場合は、このスクリプトを使用してその操作を実行できます。 これにより、ターゲット VM 内の任意の 1 つの NIC に NSG が割り当てられます。
 
 ## <a name="how-to-migrate-to-managed-disks"></a>マネージド ディスクに移行する方法
 このスクリプトは、既定で VM を Azure のマネージド ディスクに移行します。 指定されたターゲット ストレージ アカウントが Premium ストレージ アカウントの場合、移行後に Premium マネージド ディスクが作成されます。 キャッシュ ストレージ アカウントは Standard アカウントのままにすることができます。 ターゲット ストレージ アカウントが Standard ストレージ アカウントの場合、移行後に Standard ディスクが作成されます。 

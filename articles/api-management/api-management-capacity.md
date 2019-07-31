@@ -11,16 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c39c585d9947422260868734ec89814d8a510089
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60658304"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836961"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API Management インスタンスの容量
 
-**容量**は、より多くの負荷に対応できるように API Management インスタンスをスケーリングするかどうかについて情報に基づいて判断する上で、1 つの最も重要な [Azure Monitor のメトリック](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis)です。 その構造は複雑であり、特定の動作が課せられます。
+**容量**は、より多くの負荷に対応できるように API Management インスタンスをスケーリングするかどうかについて情報に基づいて判断する上で、最も重要な [Azure Monitor のメトリック](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis)です。 その構造は複雑であり、特定の動作が課せられます。
 
 この記事では、**容量**の概要とその動作について説明します。 Azure portal の**容量**メトリックにアクセスする方法を説明し、API Management インスタンスのスケーリングまたはアップグレードを検討する時期を提案します。
 
@@ -40,12 +40,14 @@ ms.locfileid: "60658304"
 
 ![容量メトリック](./media/api-management-capacity/capacity-ingredients.png)
 
-**容量**は、APIM インスタンスの負荷のインジケーターです。 リソース使用量 (CPU、メモリ) とネットワーク キューの長さを反映します。 CPU とメモリの使用量によって、以下によるリソース使用量がわかります。
+**容量**は、API Management インスタンスの負荷のインジケーターです。 リソース使用量 (CPU、メモリ) とネットワーク キューの長さを反映します。 CPU とメモリの使用量によって、以下によるリソース使用量がわかります。
 
-+ 管理アクションや要求処理などの APIM サービス (要求の転送やポリシーの実行が含まれます)
++ 管理アクションや要求処理などの API Management サービス (要求の転送やポリシーの実行が含まれます)
 + 一部のオペレーティング システム プロセス (新しい接続での SSL ハンドシェイクのコストを伴うプロセスが含まれます)
 
 合計**容量**は、API Management インスタンスの各ユニットの値の平均です。
+
+**容量メトリック**は API Management インスタンスの問題を明らかにするように設計されていますが、**容量メトリック**の変更に問題が反映されない場合もあります。
 
 ## <a name="capacity-metric-behavior"></a>容量メトリックの動作
 
@@ -63,6 +65,8 @@ ms.locfileid: "60658304"
 ![容量メトリックのスパイク](./media/api-management-capacity/capacity-spikes.png)
 
 **容量**は、要求が処理中でない場合でも、断続的にスパイクする場合や、ゼロより大きくなる場合があります。 これは、システム固有またはプラットフォーム固有のアクションが原因です。インスタンスをスケーリングするかどうかを判断する際には考慮しないでください。
+
+低い**容量メトリック**が必ずしも API Management インスタンスに問題が発生していることを意味するものではありません。
   
 ## <a name="use-the-azure-portal-to-examine-capacity"></a>Azure portal を使用して容量を調べる
   

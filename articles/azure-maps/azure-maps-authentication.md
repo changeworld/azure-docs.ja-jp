@@ -3,18 +3,18 @@ title: Azure Maps による認証 | Microsoft Docs
 description: Azure Maps サービスを使用するための認証
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 22aba19e16e4349a5b495b307c9906f7ded5a636
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4608d0631c9a590fdde583e399883a023275c30
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393668"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838054"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
@@ -31,7 +31,7 @@ Azure Maps には、要求の認証方法が 2 つあります。共有キーと
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>Azure Active Directory による認証 (プレビュー)
 
-Azure Maps では、Azure Maps サービスに対する要求の認証用に [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) の統合を提供するようになりました。 Azure AD では、[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) などの ID ベースの認証を提供して、ユーザー レベルまたはアプリケーション レベルのアクセス権を Azure Maps リソースに付与しています。 以降のセクションでは、Azure AD と Azure Maps の統合の概念とコンポーネントをわかりやすく説明します。
+Azure Maps では、Azure Maps サービスに対する要求の認証用に [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) の統合を提供するようになりました。 Azure AD では、[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) などの ID ベースの認証を提供して、ユーザー レベル、グループ レベル、またはアプリケーション レベルのアクセス権を Azure Maps リソースに付与しています。 以降のセクションでは、Azure AD と Azure Maps の統合の概念とコンポーネントをわかりやすく説明します。
 
 ## <a name="authentication-with-oauth-access-tokens"></a>OAuth アクセス トークンによる認証
 
@@ -75,9 +75,9 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="control-access-with-rbac"></a>RBAC を使用してアクセスを制御する
 
-Azure AD では、RBAC を使用してセキュリティ保護されたリソースへのアクセスを制御できます。 Azure Maps アカウントを作成し、Azure AD テナント内に Azure Maps Azure AD アプリケーションを登録した後は、Azure Maps アカウント ポータル ページ上でユーザー、アプリケーション、または Azure リソースに対して RBAC をセットアップすることが可能です。
+Azure AD では、RBAC を使用してセキュリティ保護されたリソースへのアクセスを制御できます。 Azure Maps アカウントを作成し、Azure AD テナント内に Azure Maps Azure AD アプリケーションを登録した後は、Azure Maps アカウント ポータル ページ上でユーザー、グループ、アプリケーション、または Azure リソースに対して RBAC をセットアップすることが可能です。
 
-Azure Maps では、Azure リソースのマネージド ID を使用して個々の Azure AD ユーザー、アプリケーション、および Azure サービスの読み取りアクセス制御をサポートしています。
+Azure Maps では、Azure リソースのマネージド ID を使用して個々の Azure AD ユーザー、グループ、アプリケーション、および Azure サービスの読み取りアクセス制御をサポートしています。
 
 ![Azure Maps データ閲覧者 (プレビュー)](./media/azure-maps-authentication/concept.png)
 

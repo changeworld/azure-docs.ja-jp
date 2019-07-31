@@ -11,19 +11,37 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2018
-ms.author: saghorpa
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 043ecdcb83d2ee39e3373f029c00c6237f87601c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7961578a1daf67176312d4257a4e86a7091082f0
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709703"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67869252"
 ---
 # <a name="available-skus-for-hli"></a>HLI で利用可能な SKU
 
-SAP HANA on Azure (L インスタンス) サービスは、米国西部、米国東部、オーストラリア東部、オーストラリア南東部、西ヨーロッパ、北ヨーロッパ、東日本、西日本の各 Azure リージョンで、次のような複数の構成で提供されています。
+リビジョン 3 スタンプに基づく SAP HANA on Azure (L インスタンス) サービスは、次の Azure リージョンで、複数の構成で使用できます。
+
+- 米国西部
+- East US
+- オーストラリア東部
+- オーストラリア南東部
+- 西ヨーロッパ
+- 北ヨーロッパ
+- 東日本
+- 西日本
+
+リビジョン 4 スタンプに基づく SAP HANA on Azure (L インスタンス) サービスは、次の Azure リージョンで、複数の構成で使用できます。
+
+- 米国西部 2
+- East US
+- 西ヨーロッパ
+- 北ヨーロッパ
+
+
 
 [HANA L インスタンスの SAP HANA 認定 SKU](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 一覧は次のような内容です。
 

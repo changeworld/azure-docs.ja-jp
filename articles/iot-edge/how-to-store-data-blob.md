@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: dabaa06e224c6498c0080c4546c04f40e3919bb6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c90a0351c8c71f4fcafa58a422cc3566a0b29b03
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448528"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850090"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)
 
@@ -62,13 +62,14 @@ Azure IoT Edge デバイス:
 
 - IoT Edge モジュールの Azure Blob Storage では、次のデバイスの構成がサポートされます。
 
-  | オペレーティング システム | アーキテクチャ |
-  | ---------------- | ----- | ----- |
-  | Ubuntu Server 16.04 | AMD64 |
-  | Ubuntu Server 18.04 | AMD64 |
-  | Windows 10 IoT Enterprise | AMD64 |
-  | Windows Server 2019 | AMD64 |
-  | Raspbian-stretch | ARM32 |
+  | オペレーティング システム | AMD64 | ARM32v7 | ARM64 |
+  | ---------------- | ----- | ----- | ---- |
+  | Raspbian-stretch | いいえ | はい | いいえ |  
+  | Ubuntu Server 16.04 | はい | いいえ | はい ([Azure IoT Edge 1.0.8-rc1 以降](https://github.com/Azure/azure-iotedge/releases)を使用した[インストール](how-to-install-iot-edge-linux-arm.md#install-a-specific-version)に使用可能) |
+  | Ubuntu Server 18.04 | はい | いいえ | はい ([Azure IoT Edge 1.0.8-rc1 以降](https://github.com/Azure/azure-iotedge/releases)を使用した[インストール](how-to-install-iot-edge-linux-arm.md#install-a-specific-version)に使用可能) |
+  | Windows 10 IoT Enterprise ビルド 17763 | はい | いいえ | いいえ |
+  | Windows Server 2019 ビルド 17763 | はい | いいえ | いいえ |
+  
 
 クラウド リソース:
 

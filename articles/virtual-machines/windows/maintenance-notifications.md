@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2019
 ms.author: shants
-ms.openlocfilehash: fccc99f78d038a5f96b9dfe01b575dedcdcb4cdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b388c600e5eb9331fe22d1a8e9aac8f47edb3ef2
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65405611"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849601"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Windows 仮想マシンに対する計画メンテナンスの通知の処理
 
@@ -170,7 +170,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 **A:** 可用性セットまたは仮想マシン スケール セットにデプロイされた仮想マシンには、更新ドメイン (UD) の概念があります。 メンテナンスを実行するときに、Azure では UD の制約が遵守され、(同じ可用性セット内の) 別の UD の仮想マシンは再起動されません。  また、Azure は仮想マシンの次のグループに移行する前に少なくとも 30 分待機します。 
 
-高可用性の詳細については、「[Azure の仮想マシンのリージョンと可用性について](regions-and-availability.MD)」を参照してください。
+高可用性の詳細については、[Azure の仮想マシンの可用性](availability.MD)に関するページを参照してください。
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 

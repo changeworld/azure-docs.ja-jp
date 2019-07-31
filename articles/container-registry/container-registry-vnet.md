@@ -3,16 +3,17 @@ title: 仮想ネットワークからの Azure コンテナー レジストリ�
 description: Azure コンテナー レジストリへは、Azure 仮想ネットワーク内のリソースから、またはパブリック IP アドレス範囲からのみアクセスできます。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 06e45127f940e01de5f3ceeefc354014a88014db
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514402"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310389"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure コンテナー レジストリへのアクセスを制限する
 
@@ -39,6 +40,14 @@ ms.locfileid: "67514402"
 * この記事の Azure CLI 手順を使用するには、Azure CLI バージョン 2.0.58 以降が必要です。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 * コンテナー レジストリがまだない場合は、1 つ作成し (Premium SKU が必要)、Docker Hub から `hello-world` などのサンプル イメージをプッシュします。 たとえば、[Azure portal][quickstart-portal] or the [Azure CLI][quickstart-cli] を使用してレジストリを作成します。 
+
+* 別の Azure サブスクリプションの仮想ネットワークを使用してレジストリ アクセスを制限する場合、そのサブスクリプションで Azure Container Registry のリソース プロバイダーを登録する必要があります。 例:
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of virtual network>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 ## <a name="about-network-rules-for-a-container-registry"></a>コンテナー レジストリのネットワーク規則について
 

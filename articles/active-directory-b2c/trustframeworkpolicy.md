@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5a0ba48acf6ec3d221d9c4b5e95b380a2154171f
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 904893d4881de6be2c9055fefa9a8267cb045afd
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537039"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849404"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-カスタム ポリシーは、階層型チェーンで互いを参照する 1 つ以上の XML 形式ファイルとして表されます。 XML 要素は、要求スキーマ、要求変換、コンテンツ定義、クレーム プロバイダー、技術プロファイル、ユーザー体験、およびオーケストレーション手順などの、ポリシーの要素を定義します。 各ポリシー ファイルは、ポリシー ファイルの最上位の **TrustFrameworkPolicy** 要素内で定義されます。 
+カスタム ポリシーは、階層型チェーンで互いを参照する 1 つ以上の XML 形式ファイルとして表されます。 XML 要素は、要求スキーマ、要求変換、コンテンツ定義、クレーム プロバイダー、技術プロファイル、ユーザー体験、およびオーケストレーション手順などの、ポリシーの要素を定義します。 各ポリシー ファイルは、ポリシー ファイルの最上位の **TrustFrameworkPolicy** 要素内で定義されます。
 
 ```XML
 <TrustFrameworkPolicy
@@ -68,11 +68,11 @@ ms.locfileid: "67537039"
 
 - **Base ファイル**。ほとんどの定義が含まれています。 ポリシーのトラブルシューティングおよび長期間の保守に役立つように、このファイルへの変更は最小限に抑えることをお勧めします。
 - **Extensions** ファイル。テナントの固有の構成変更を保持しています このポリシー ファイルは、Base ファイルから派生したものです。 このファイルを使用して、新しい機能を追加するか、既存の機能をオーバーライドします。 たとえば、このファイルを使用して、新しい ID プロバイダーとフェデレーションします。
-- **証明書利用者 (RP)** ファイル。証明書利用者アプリケーション (Web、モバイル、またはデスクトップ アプリケーションなど) から直接呼び出される、単一タスクに焦点を置いています。 サインアップやサインイン、パスワードのリセット、プロファイルの編集などの各自のタスクには、それぞれ独自の RP ポリシー ファイルが必要です。 このポリシー ファイルは、Extensions ファイルから派生したものです。 
+- **証明書利用者 (RP)** ファイル。証明書利用者アプリケーション (Web、モバイル、またはデスクトップ アプリケーションなど) から直接呼び出される、単一タスクに焦点を置いています。 サインアップやサインイン、パスワードのリセット、プロファイルの編集などの各自のタスクには、それぞれ独自の RP ポリシー ファイルが必要です。 このポリシー ファイルは、Extensions ファイルから派生したものです。
 
 証明書利用者アプリケーションは、RP ポリシー ファイルを呼び出して、特定のタスクを実行します。 たとえば、サインインフローを開始する場合です。 Azure AD B2C の Identity Experience Framework はまず Base ファイルから、次に Extensions ファイルから、最後に RP ポリシー ファイルからすべての要素を追加して、有効な現在のポリシーを組み立てます。 要素の種類と名前が同じ場合は RP ファイルの要素によって Extensions の要素がオーバーライドされ、Extensions によって Base がオーバーライドされます。 次の図は、ポリシー ファイルと証明書利用者アプリケーションの関係を示しています。
 
-![継承モデル](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
+![信頼フレームワーク ポリシーの継承モデルを示している図](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
 
 継承モデルは次のとおりです。
 
@@ -84,7 +84,7 @@ ms.locfileid: "67537039"
 
 ## <a name="base-policy"></a>Base ポリシー
 
-別のポリシーからポリシーを継承するには、ポリシー ファイルの **TrustFrameworkPolicy** 要素の下で **BasePolicy** 要素を宣言する必要があります。 **BasePolicy** 要素は、このポリシーの派生元である base ポリシーへの参照です。  
+別のポリシーからポリシーを継承するには、ポリシー ファイルの **TrustFrameworkPolicy** 要素の下で **BasePolicy** 要素を宣言する必要があります。 **BasePolicy** 要素は、このポリシーの派生元である base ポリシーへの参照です。
 
 **BasePolicy** 要素には、次の要素が含まれています。
 
@@ -94,7 +94,7 @@ ms.locfileid: "67537039"
 | PolicyId | 1:1 | 親ポリシーの識別子。 |
 
 
-次の例は、base ポリシーを指定する方法を示しています。 この **B2C_1A_TrustFrameworkExtensions** ポリシーは、**B2C_1A_TrustFrameworkBase** ポリシーから派生したものです。 
+次の例は、base ポリシーを指定する方法を示しています。 この **B2C_1A_TrustFrameworkExtensions** ポリシーは、**B2C_1A_TrustFrameworkBase** ポリシーから派生したものです。
 
 ``` XML
 <TrustFrameworkPolicy
@@ -136,9 +136,9 @@ B2C_1A_TrustFrameWorkBase または B2C_1A_TrustFrameworkExtensionPolicy:
   ...
 ```
 
-ユーザー体験は、ユーザーが体験する内容のビジネス ロジックを定義します。 各ユーザー体験は、認証と情報収集に関してひと続きのアクションを順番に実行する、一連のオーケストレーション ステップです。 
+ユーザー体験は、ユーザーが体験する内容のビジネス ロジックを定義します。 各ユーザー体験は、認証と情報収集に関してひと続きのアクションを順番に実行する、一連のオーケストレーション ステップです。
 
-[スターター パック](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies)の **SocialAndLocalAccounts** ポリシー ファイルには、SignUpOrSignIn、ProfileEdit、PasswordReset のユーザー体験が含まれています。 メール アドレスの変更、ソーシャル アカウントのリンクとリンク解除など、別のシナリオでさらに多くのユーザー体験を追加することができます。 
+[スターター パック](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies)の **SocialAndLocalAccounts** ポリシー ファイルには、SignUpOrSignIn、ProfileEdit、PasswordReset のユーザー体験が含まれています。 メール アドレスの変更、ソーシャル アカウントのリンクとリンク解除など、別のシナリオでさらに多くのユーザー体験を追加することができます。
 
 オーケストレーション ステップで、[技術プロファイル](technicalprofiles.md)を呼び出すことができます。 技術プロファイルは、さまざまな種類の利用者と通信するためのメカニズムが組み込まれたフレームワークを提供します。 たとえば、技術プロファイルでは、特に次のアクションを実行できます。
 
@@ -148,7 +148,7 @@ B2C_1A_TrustFrameWorkBase または B2C_1A_TrustFrameworkExtensionPolicy:
 - Azure AD B2C ID ストアとの間でデータの読み書きを行う。
 - カスタムの Restful API サービスを呼び出す。
 
-![ポリシー実行](./media/trustframeworkpolicy/custom-policy-execution.png)
+![ポリシー実行フローを示している図](./media/trustframeworkpolicy/custom-policy-execution.png)
 
  **TrustFrameworkPolicy** 要素には、次の要素が含まれます。
 

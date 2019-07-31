@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50a653648f3ae4b40e0bfe2c6f168cfb890bcc59
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825422"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839101"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 > [!NOTE]
@@ -41,7 +41,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 > [!NOTE]
 >  Azure SQL Data Warehouse との間のデータ移動に関する Data Factory の機能の一般的な情報については、「[Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](data-factory-azure-sql-data-warehouse-connector.md)」を参照してください。
 >
-> Azure ポータル、Visual Studio、PowerShell などを使用してパイプラインを構築することもできます。手順については、「[チュートリアル: Azure Data Factory でコピー アクティビティを使用するための詳細な手順を含む簡単なチュートリアルについては、Azure BLOB から Azure SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するチュートリアルを参照してください。  
+> Visual Studio、PowerShell などを使用してパイプラインを構築することもできます。手順については、「[チュートリアル: Azure Data Factory でコピー アクティビティを使用するための詳細な手順を含む簡単なチュートリアルについては、Azure BLOB から Azure SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するチュートリアルを参照してください。  
 >
 >
 

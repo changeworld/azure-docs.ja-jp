@@ -11,12 +11,12 @@ ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2c1bfd9e2659127ab77e9db661b54fde18a8d25c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 216f5413ce3dae1f2d040643a30a4d7db4a879b8
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205364"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835409"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C 監査ログへのアクセス
 
@@ -34,7 +34,7 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 |アクティビティの種類 |説明  |
 |---------|---------|
 |Authorization |B2C リソースにアクセスするユーザー (例: B2C ポリシーの一覧にアクセスする管理者) の承認に関するアクティビティ         |
-|Directory |管理者が Azure Portal を使用してサインインするときに取得されるディレクトリ属性に関連するアクティビティ |
+|Directory |管理者が Azure portal を使用してサインインするときに取得されるディレクトリ属性に関連するアクティビティ |
 |Application | B2C アプリケーションに対する CRUD 操作 |
 |キー |B2C キー コンテナーに格納されたキーに対する CRUD 操作 |
 |Resource |B2C リソース (例: ポリシーや ID プロバイダー) に対する CRUD 操作
@@ -44,13 +44,13 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 > ユーザー オブジェクトの CRUD アクティビティについては、**コア ディレクトリ** カテゴリを参照してください。
 
 ## <a name="example-activity"></a>アクティビティの例
-次の例は、外部 ID プロバイダーを使用してユーザーがサインインするときにキャプチャされたデータを示しています: ![監査ログ - 例](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+次の例は、外部 ID プロバイダーを使用してユーザーがサインインするときにキャプチャされたデータを示しています: ![Azure portal の監査ログのアクティビティの詳細ページの例](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
 アクティビティの詳細パネルには、次の関連情報が含まれています。
 
 |Section|フィールド|説明|
 |-------|-----|-----------|
-| アクティビティ | Name | 実行されたアクティビティ。 たとえば、"Issue an id_token to the application" です (これで実際のユーザー サインインが終了します)。 |
+| アクティビティ | EnableAdfsAuthentication | 実行されたアクティビティ。 たとえば、"Issue an id_token to the application" です (これで実際のユーザー サインインが終了します)。 |
 | 開始者 (アクター) | オブジェクト ID | ユーザーがサインインする B2C アプリケーションの**オブジェクト ID** (この識別子は Azure portal には表示されませんが、Graph API などを使用してアクセスすることができます)。 |
 | 開始者 (アクター) | Spn | ユーザーがサインインする B2C アプリケーションの**アプリケーション ID**。 |
 | ターゲット | オブジェクト ID | サインインするユーザーの**オブジェクト ID**。 |
@@ -58,20 +58,20 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 | 追加情報 | PolicyId | ユーザーのサインインに使用されるユーザー フロー (ポリシー) の **ポリシー ID**。 |
 | 追加情報 | ApplicationId | ユーザーがサインインする B2C アプリケーションの**アプリケーション ID**。 |
 
-## <a name="accessing-audit-logs-through-the-azure-portal"></a>Azure Portal からの監査ログへのアクセス
+## <a name="accessing-audit-logs-through-the-azure-portal"></a>Azure portal からの監査ログへのアクセス
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 [B2C] ディレクトリ内にいることを確認します。
 2. 左側のお気に入りバーで **[Azure Active Directory]** をクリックします。
-    
-    ![監査ログ - AAD のボタン](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
+
+    ![左側のポータル メニューで強調表示されている [Azure Active Directory] ボタン](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
 1. **[アクティビティ]** の下の **[監査ログ]** をクリックします
 
-    ![監査ログ - ログの選択](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
+    ![メニューの [アクティビティ] セクションで強調表示された [監査ログ] ボタン](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
 
 2. **[カテゴリ]** ドロップダウン ボックスで、 **[B2C]** を選択します
 3. **[適用]** をクリックします
 
-    ![監査ログ - カテゴリ](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
+    ![監査ログ フィルターで強調表示されている [カテゴリ] と [適用] ボタン](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
 過去 7 日間にわたってログに記録されたアクティビティの一覧が表示されます。
 - **[Activity Resource Type]\(アクティビティのリソースの種類)** ドロップダウン ボックスを使用して、前述したアクティビティの種類でフィルター処理します

@@ -4,7 +4,7 @@ description: Azure の Windows ハイ パフォーマンス コンピューテ�
 services: virtual-machines-windows
 documentationcenter: ''
 author: vermagit
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
-ms.author: jonbeck;amverma
-ms.openlocfilehash: e1eeabf66411117d700a558a2938fb8c1df0080b
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.author: amverma
+ms.reviewer: jonbeck
+ms.openlocfilehash: 6fd08ca912c14a50064f4b6da18334d8bf9df0ca
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538014"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67871585"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
 
@@ -31,11 +32,10 @@ ms.locfileid: "67538014"
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 
-* **オペレーティング システム** - Windows Server 2016、Windows Server 2012 R2、Windows Server 2012
+* **オペレーティング システム** - 上記すべての HPC シリーズ VM 上の Windows Server 2016。 また、Windows Server 2012 R2、Windows Server 2012 は、SR-IOV に対応していない VM でサポートされています (そのため、HB と HC は除く)。
 
-* **MPI** -Microsoft MPI (MS-MPI) 2012 R2 以降、Intel MPI ライブラリ 5.x
-
-  SR-IOV に対応していない VM の場合、サポートされている MPI 実装では、インスタンス間の通信に Microsoft Network Direct (ND) インターフェイスが使用されます。 Azure の SR-IOV に対応した VM のサイズ (HB および HC シリーズ) では、ほぼすべてのバージョンの MPI を Mellanox OFED と一緒に使用できます。 
+* **MPI** - Azure の SR-IOV に対応した VM のサイズ (HB、HC) では、ほぼすべてのフレーバーの MPI を Mellanox OFED と一緒に使用できます。
+SR-IOV に対応していない VM の場合、サポートされている MPI 実装では、インスタンス間の通信に Microsoft Network Direct (ND) インターフェイスが使用されます。 そのため、Microsoft MPI (MS MPI) 2012 R2 以降と Intel MPI 5.x バージョンのみがサポートされています。 Intel MPI ランタイム ライブラリの以降のバージョン (2017、2018) は、Azure RDMA ドライバーと互換性がある場合とない場合があります。
 
 * **InfiniBandDriverWindows VM 拡張** - RDMA 対応の VM で、InfiniBandDriverWindows 拡張機能を追加して InfiniBand を有効にします。 この Windows VM 拡張機能は、RDMA 接続用に Windows Network Direct ドライバーを (SR-IOV に非対応の VM 上に) インストールするか、または Mellanox OFED ドライバーを (SR-IOV 対応の VM 上に) インストールします。
 A8 インスタンスと A9 インスタンスの特定のデプロイでは、HpcVmDrivers 拡張機能は自動的に追加されます。 HpcVmDrivers VM 拡張機能は廃止される予定であり、更新されないことに注意してください。 VM に VM 拡張機能を追加するには、[Azure PowerShell](/powershell/azure/overview) コマンドレットを使用できます。 

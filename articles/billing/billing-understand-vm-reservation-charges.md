@@ -1,23 +1,21 @@
 ---
 title: Azure Reserved VM Instances の割引について | Microsoft Docs
 description: Azure Reserved VM Instance の割引が、実行中の仮想マシンにどのように適用されるのかを説明します。
-documentationcenter: ''
 author: yashesvi
 manager: yashar
-editor: ''
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 07/11/2019
 ms.author: banders
-ms.openlocfilehash: b112dd881d4b2e87e617111d00bc82c6151d7750
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 191160035f516d818d5537c5c47f9604998c46f7
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370078"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849988"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure の予約割引が仮想マシンに適用されるしくみ
 
@@ -68,9 +66,35 @@ Windows VM インスタンスの実行中は、インフラストラクチャ �
 
 予約割引は、`AdditionalInfo` の `ServiceType` の値が購入した予約と一致する VM の使用に対してのみ、適用されます。 予約割引の適用では、VM に対して使用される測定は無視され、`ServiceType` のみが評価されます。 VM を購入した対象のサービスの種類を知っておいてください。 Premium Storage 以外の VM の予約を Premium Storage の予約に、またはその逆に、交換することができます。
 
-## <a name="classic-vms-and-cloud-services"></a>クラシック VM とクラウド サービス
+## <a name="services-that-get-vm-reservation-discounts"></a>VM の予約割引が適用されるサービス
 
-インスタンス サイズの柔軟性が有効になっていると、予約 VM インスタンスは、クラシック VM とクラウド サービスの両方に自動的に適用されます。 クラウド サービスの場合、予約割引が適用されるのはコンピューティング コストのみとなります。 予約割引がクラウド サービスに適用されている場合、利用料金は、コンピューティング料金 (Linux の従量制課金) とクラウド サービス料金 (クラウド サービス管理の従量制課金) に分けられます。 詳しくは、[予約割引が Cloud Services に適用される方法](billing-reserved-instance-windows-software-costs.md#cloud-services-software-meters-not-included-in-reservation-cost)に関する記事をご覧ください。
+VM の予約は、VM のデプロイだけでなく、複数のサービスから発生する VM の使用量にも適用できます。 予約割引が適用されるリソースは、インスタンス サイズの柔軟性の設定によって変わります。
+
+### <a name="instance-size-flexibility-setting"></a>インスタンス サイズの柔軟性の設定
+
+インスタンス サイズの柔軟性の設定によって、予約インスタンスの割引が適用されるサービスが決まります。
+
+設定がオンかオフかにかかわらず、*ConsumedService* が `Microsoft.Compute` の場合は、条件に一致する VM の使用量に予約割引が自動適用されます。 そのため、*ConsumedService* の値に対応した使用量データを確認してください。 次に例をいくつか示します。
+
+- 仮想マシン
+- 仮想マシン スケール セット
+- コンテナー サービス
+- Azure Batch のデプロイ (ユーザー サブスクリプション モード)
+- Azure Kubernetes Service (AKS)
+- Service Fabric
+
+設定がオンの場合、*ConsumedService* が次の項目のいずれかであれば、条件に一致する VM の使用量に予約割引が自動適用されます。
+
+- Microsoft.Compute
+- Microsoft.ClassicCompute
+- Microsoft.Batch
+- Microsoft.MachineLearningServices
+- Microsoft.Kusto
+
+使用量データで *ConsumedService* の値を確認して、その使用量が予約割引の対象であるかどうかを判断してください。
+
+インスタンス サイズの柔軟性の詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
+
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 

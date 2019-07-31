@@ -10,24 +10,24 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 06879164c6f72891b734da077c667c6f90448fe4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6163f1cbf878f4d4678b2b66829522b0dd16ae22
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512961"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835629"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**述語**と **PredicateValidations** 要素を使用して検証プロセスを実行し、適切に形式設定されたデータのみが Azure Active Directory (Azure AD) B2C テナントに入力されるようにすることができます。  
+**述語**と **PredicateValidations** 要素を使用して検証プロセスを実行し、適切に形式設定されたデータのみが Azure Active Directory (Azure AD) B2C テナントに入力されるようにすることができます。
 
-次の図に、要素の関係を示します。  
+次の図に、要素の関係を示します。
 
-![Predicates](./media/predicates/predicates.png)
+![述語と述語の検証のリレーションシップを示す図](./media/predicates/predicates.png)
 
-## <a name="predicates"></a>Predicates  
+## <a name="predicates"></a>Predicates
 
 **Predicate**要素によって、要求タイプの値をチェックする基本的な検証が定義され、`true` または `false` が返されます。 検証は、指定された **Method** 要素と、そのメソッドに関連する **Parameter** 要素のセットを使用して行われます。 例えば、述語によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうか、または文字列要求の値に文字セットが含まれているかどうかをチェックできます。 **UserHelpText** 要素により、チェックが失敗した場合にユーザーに表示されるエラー メッセージが指定されます。 **UserHelpText** 要素の値を、[言語のカスタマイズ](localization.md)を使用してローカライズできます。
 
@@ -35,7 +35,7 @@ ms.locfileid: "66512961"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Predicate | 1:n | 述語の一覧。 | 
+| Predicate | 1:n | 述語の一覧。 |
 
 **Predicate** 要素には、次の属性が含まれています。
 
@@ -49,13 +49,13 @@ ms.locfileid: "66512961"
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | UserHelpText | 1:1 | チェックが失敗した場合に、ユーザーに表示されるエラー メッセージ。 この文字列は、[言語カスタマイズ](localization.md)を使ってローカライズすることができます。 |
-| parameters | 1:1 | 文字列検証のメソッド タイプのパラメーター。 | 
+| parameters | 1:1 | 文字列検証のメソッド タイプのパラメーター。 |
 
 **Parameters** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| Parameter | 1:n | 文字列検証のメソッド タイプのパラメーター。 | 
+| Parameter | 1:n | 文字列検証のメソッド タイプのパラメーター。 |
 
 **Parameters** 要素には、次の属性が含まれています。
 
@@ -108,7 +108,7 @@ ms.locfileid: "66512961"
 </Predicate>
 ```
 
-## <a name="predicatevalidations"></a>PredicateValidations 
+## <a name="predicatevalidations"></a>PredicateValidations
 
 述語によって、要求タイプに対してチェックを行う検証が定義されますが、**PredicateValidations** は要求タイプに適用できるユーザー入力検証を形式設定する述語セットをグループ化します。 各 **PredicateValidation** 要素には、**Predicate** をポイントする **PredicateReference** 要素のセットを含む **PredicateGroup** 要素のセットが含まれています。 検証に合格するには、要求の値が、**PredicateReference** 要素のセットを持つすべての **PredicateGroup** に基づき、すべての述語のすべてのテストに合格する必要があります。
 
@@ -134,7 +134,7 @@ ms.locfileid: "66512961"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| PredicateValidation | 1:n | 述語検証の一覧。 | 
+| PredicateValidation | 1:n | 述語検証の一覧。 |
 
 **PredicateValidation** 要素には、次の属性が含まれています。
 
@@ -146,13 +146,13 @@ ms.locfileid: "66512961"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| PredicateGroups | 1:n | 述語グループの一覧。 | 
+| PredicateGroups | 1:n | 述語グループの一覧。 |
 
 **PredicateGroups** 要素には、次の要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| PredicateGroup | 1:n | 述語の一覧。 | 
+| PredicateGroup | 1:n | 述語の一覧。 |
 
 **PredicateGroups** 要素には、次の属性が含まれています。
 
@@ -164,8 +164,8 @@ ms.locfileid: "66512961"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 |  ユーザーが入力する必要のある値を把握するのに役立つ、述語の説明。 | 
-| PredicateReferences | 1:n | 述語参照の一覧。 | 
+| UserHelpText | 1:1 |  ユーザーが入力する必要のある値を把握するのに役立つ、述語の説明。 |
+| PredicateReferences | 1:n | 述語参照の一覧。 |
 
 **PredicateReferences** 要素には、次の属性が含まれています。
 
@@ -177,7 +177,7 @@ ms.locfileid: "66512961"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| PredicateReference | 1:n | 述語への参照。 | 
+| PredicateReference | 1:n | 述語への参照。 |
 
 **PredicateReference** 要素には、次の属性が含まれています。
 
@@ -188,7 +188,7 @@ ms.locfileid: "66512961"
 
 ## <a name="configure-password-complexity"></a>パスワードの複雑さの構成
 
-**Predicates** と **PredicateValidationsInput** を使用して、アカウントを作成するときにユーザーによって指定されるパスワードの複雑さに対する要件を制御できます。 既定では、Azure AD B2C では強力なパスワードが使用されます。 Azure AD B2C では、顧客が使用できるパスワードの複雑さを制御する構成オプションもサポートしています。 これらの述語要素を使用して、パスワードの複雑さを定義できます。 
+**Predicates** と **PredicateValidationsInput** を使用して、アカウントを作成するときにユーザーによって指定されるパスワードの複雑さに対する要件を制御できます。 既定では、Azure AD B2C では強力なパスワードが使用されます。 Azure AD B2C では、顧客が使用できるパスワードの複雑さを制御する構成オプションもサポートしています。 これらの述語要素を使用して、パスワードの複雑さを定義できます。
 
 - **IsLengthBetween8And64**: `IsLengthRange` メソッドを使用して、パスワードが 8 文字から 64 文字の間であることを検証します。
 - **Lowercase**: `IncludesCharacters` メソッドを使用して、パスワードに小文字が含まれていることを検証します。
@@ -348,7 +348,7 @@ ms.locfileid: "66512961"
 
 Azure AD B2C にエラー メッセージが表示された場合に、要素がどのように編成されるかを以下に示します。
 
-![述語のプロセス](./media/predicates/predicates-pass.png)
+![述語と PredicateGroup パスワードの複雑さの例の図](./media/predicates/predicates-pass.png)
 
 ## <a name="configure-a-date-range"></a>日付範囲の構成
 
@@ -382,8 +382,8 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 </PredicateValidations>
 ```
 
-要求の種類で、**PredicateValidationReference** 要素を追加し、`CustomDateRange` に ID を指定します。 
-    
+要求の種類で、**PredicateValidationReference** 要素を追加し、`CustomDateRange` に ID を指定します。
+
 ```XML
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date of Birth</DisplayName>

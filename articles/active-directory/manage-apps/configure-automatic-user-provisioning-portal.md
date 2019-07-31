@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bf265f51f2fea16f90dd0bcf2891bd9bed5cef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b994078350aec5657659f8835d228eb907606bb8
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963572"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807630"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 
@@ -31,14 +31,11 @@ ms.locfileid: "65963572"
 Azure Active Directory ポータルを使用して、ディレクトリでのシングル サインオン用に構成されているすべてのアプリケーションを表示して管理します。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。 エンタープライズ アプリを表示して管理するには、次の手順に従います。
 
 1. [Azure Active Directory ポータル](https://aad.portal.azure.com)を開きます。
-
 1. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 ギャラリーから追加されたアプリを含む、構成済みのすべてのアプリの一覧が表示されます。
-
 1. 任意のアプリを選択し、そのリソース ウィンドウを読み込み、そこでレポートを表示したり、アプリの設定を管理したりできます。
-
 1. 選択したアプリのユーザー アカウントのプロビジョニング設定を管理するには、 **[プロビジョニング]** を選択します。
 
-   ![アプリケーション リソース ウィンドウ](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![ユーザー アカウントでのプロビジョニング設定を管理する [プロビジョニング] 画面](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>プロビジョニング モード
 
@@ -68,17 +65,17 @@ Azure Active Directory ポータルを使用して、ディレクトリでのシ
 
 Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連のマッピングが存在します。 アプリによっては、グループや連絡先といった他のタイプのオブジェクトを管理するものもあります。 テーブルでマッピングを選択すると右側にマッピング エディターが開き、それらを表示してカスタマイズできます。
 
-![アプリケーション リソース ウィンドウ](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![[属性マッピング] 画面を表示します](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 サポートされるカスタマイズは次のとおりです。
 
 * Azure AD ユーザー オブジェクトと SaaS アプリのユーザー オブジェクトなど、特定のオブジェクトのマッピングを有効および無効にする。
 * Azure AD ユーザー オブジェクトからアプリのユーザー オブジェクトにフローする属性を編集する。 属性マッピングの詳細については、「 [属性マッピングの種類について](customize-application-attributes.md#understanding-attribute-mapping-types)」を参照してください。
-* Azure AD がターゲット アプリケーションに対して実行するプロビジョニング操作をフィルター処理する。 Azure AD でオブジェクトを完全に同期するのではなく、実行される操作を制限することができます。 
+* Azure AD がターゲット アプリケーションに対して実行するプロビジョニング操作をフィルター処理する。 Azure AD でオブジェクトを完全に同期するのではなく、実行される操作を制限することができます。
 
   たとえば、 **[更新]** のみを選択すると、Azure AD はアプリケーションの既存のユーザー アカウントの更新のみを行い、新しいユーザー アカウントは作成しません。 **[作成]** のみを選択すると、Azure は新しいユーザー アカウントの作成のみを行い、既存のユーザー アカウントは更新しません。 この機能により、アカウントの作成ワークフローと更新ワークフローで異なるマッピングを作成できます。
 
-* 新しい属性マッピングを追加する。 **[属性マッピング]** ウィンドウの下部にある **[新しいマッピングの追加]** を選択します。 **[属性の編集]** フォームに記入し、 **[OK]** を選択してリストに新しいマッピングを追加します。 
+* 新しい属性マッピングを追加する。 **[属性マッピング]** ウィンドウの下部にある **[新しいマッピングの追加]** を選択します。 **[属性の編集]** フォームに記入し、 **[OK]** を選択してリストに新しいマッピングを追加します。
 
 ### <a name="settings"></a>設定
 

@@ -12,19 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6ad2ab00060528557f618eb684ccfa710c3f09b9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074177"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876436"
 ---
-# <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Application Insights Status Monitor を使用した実行時の Web アプリのインストルメント化
+# <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights コードなしアタッチを使用した実行時の Web アプリのインストルメント化
 
 Azure Application Insights を使用すれば、ライブ Web アプリケーションをインストルメント化できます。その際、コードに変更を加えたり、再デプロイしたりする必要はありません。 [Microsoft Azure](https://azure.com) サブスクリプションが必要です。
 
 Status Monitor は、オンプレミスまたは VM の IIS でホストされた .NET アプリケーションをインストルメント化するために使用されます。
 
+- お客様のアプリが Azure VM または Azure 仮想マシン スケール セットにデプロイされている場合、[こちらの手順](azure-vm-vmss-apps.md)に従ってください。
 - お客様のアプリが Azure のアプリ サービスにデプロイされている場合、[こちらの手順](azure-web-apps.md)に従ってください。
 - お客様のアプリが Azure VM にデプロイされている場合は、Azure コントロール パネルから Application Insights の監視を有効にすることができます
 - ([Azure Cloud Services](../../azure-monitor/app/cloudservices.md) のインストルメント化については、個別の記事もあります)。
@@ -63,7 +64,7 @@ Application Insights を .NET Web アプリケーションに適用する方法�
 2. Application Insights Status Monitor がまだインストールされていない場合は、[インストーラーをダウンロードして実行します](#download)。
 3. Status Monitor で、監視するインストール済みの Web アプリケーションまたは Web サイトを選択します。 Azure の資格情報でサインインします。
 
-    Application Insights ポータルで結果を表示するときに使用するリソースを構成します。 (通常は、新しいリソースを作成するのが最良です。 このアプリに対して [Web テスト][availability]や [クライアントの監視][client]を既に設定している場合は、既存のリソースを選択します。) 
+    Application Insights ポータルで結果を表示するときに使用するリソースを構成します。 (通常は、新しいリソースを作成するのが最良です。 このアプリに対して [Web テスト][availability]or [client monitoring][client]を既に設定している場合は、既存のリソースを選択します。) 
 
     ![アプリとリソースを選択します。](./media/monitor-performance-live-website-now/appinsights-036-configAIC.png)
 
@@ -311,6 +312,7 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 
 ## <a name="download"></a>Status Monitor のダウンロード
 
+- 新しい[PowerShell モジュール](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)を使用します
 - [Status Monitor インストーラー](https://go.microsoft.com/fwlink/?LinkId=506648)をダウンロードし、実行します。
 - または、[Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) を実行し、その中で Application Insights Status Monitor を検索します。
 
@@ -319,14 +321,14 @@ Status Monitor を使用して実行時にのみインストルメント化す�
 テレメトリの表示:
 
 * パフォーマンスと使用状況を監視するための[メトリックを探索](../../azure-monitor/app/metrics-explorer.md)します
-* 問題を診断するための[イベントとログを検索][diagnostic]します
+* 問題を診断するために[イベントとログを検索][diagnostic]します
 * より高度なクエリのために [Analytics](../../azure-monitor/app/analytics.md) を使用します
 
 テレメトリの追加:
 
-* サイトがライブの状態であることを確認するには、[Web テストを作成][availability]します。
-* Web ページ コードからの例外を参照してトレースの呼び出しを挿入するには、[Web クライアント テレメトリ][usage]を追加します。
-* トレースとログの呼び出しを挿入するには、[Application Insights SDK をコードに追加][greenbrown]します。
+* サイトがライブの状態であることを確認するために [Web テストを作成][availability]します。
+* Web ページ コードからの例外を参照してトレースの呼び出しを挿入するために、[Web クライアント テレメトリ][usage]を追加します。
+* トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加][greenbrown]します。
 
 <!--Link references-->
 

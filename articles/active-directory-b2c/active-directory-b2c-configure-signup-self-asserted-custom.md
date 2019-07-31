@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c15d315d186af5622d9fa988945750d93e8eb11f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae6d55180785c9407662776a95fcba31f8ba5275
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507554"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835201"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ - | Microsoft Docs
 
@@ -79,7 +79,7 @@ ms.locfileid: "66507554"
 
 #### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-![ドロップダウン リストのオプションのスクリーンショット](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![複数のオプションを表示する単一選択のドロップダウン コントロール](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -96,7 +96,7 @@ ms.locfileid: "66507554"
 
 #### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-![複数選択オプションのスクリーンショット](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![複数のオプションを表示する複数選択のチェックボックス コントロール](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -235,7 +235,7 @@ ms.locfileid: "66507554"
       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
     ```
-   
+
 4. ユーザー体験が成功した後、要求がトークンに含められてアプリケーションに送信されるように、`<OutputClaim ClaimTypeReferenceId="city" />` 要求を SignUporSignIn.xml ファイルに追加します。
 
     ```xml

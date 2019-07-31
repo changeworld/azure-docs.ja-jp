@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: dx@sendgrid.com
-ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: erikre
+ms.reviewer: dx@sendgrid.com
+ms.openlocfilehash: c3211ba9f8a8b16ad4372c82d8e50c46f3ad6897
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60444881"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876376"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>SendGrid を使用した Azure での電子メールの送信方法
 ## <a name="overview"></a>概要
-このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 サンプルは C\# で記述され、.NET Standard 1.3 をサポートしています。 紹介するシナリオは、電子メールの作成、電子メールの送信、添付ファイルの追加、さまざまな電子メールおよび追跡設定の有効化です。 SendGrid と電子メールの送信の詳細については、「[次のステップ][Next steps]」を参照してください。
+このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 サンプルは C\# で記述され、.NET Standard 1.3 をサポートしています。 紹介するシナリオは、電子メールの作成、電子メールの送信、添付ファイルの追加、さまざまな電子メールおよび追跡設定の有効化です。 SendGrid と電子メールの送信の詳細については、「 [次のステップ][Next steps] 」を参照してください。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>SendGrid 電子メール サービスとは
 SendGrid は、信頼性の高い[トランザクション メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベースの電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。 SendGrid の一般的な用途は次のとおりです。
@@ -93,10 +94,10 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
     msg.AddContent(MimeType.Text, "Hello World plain text!");
     msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
 
-**SendGrid** 型でサポートされるすべてのプロパティとメソッドの詳細については、GitHub の [sendgrid-csharp][sendgrid-csharp] に関するページを参照してください。
+**SendGrid** 型でサポートされるすべてのプロパティとメソッドの詳細については、GitHub の [sendgrid-csharp に関するページ][sendgrid-csharp] を参照してください。
 
 ## <a name="how-to-send-an-email"></a>方法:電子メールを送信する
-電子メール メッセージを作成した後で、SendGrid の API を使用してメッセージを送信することができます。 または、[.NET の組み込みライブラリ][NET-library]を使用する方法もあります。
+電子メール メッセージを作成した後で、SendGrid の API を使用してメッセージを送信することができます。 または、[.NET の組み込みライブラリ][NET-library] を使用する方法もあります。
 
 電子メールを送信するには、SendGrid API キーを指定する必要があります。 API キーを構成する方法の詳細については、SendGrid の API キーの[ドキュメント][documentation]を参照してください。
 

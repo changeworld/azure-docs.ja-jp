@@ -12,18 +12,19 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cc0b3a9a02c023678691921100443436cdf0011
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e4b073a63b5b6bec565aed67bcaec7ed014261b
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015467"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807869"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
 この記事では、送信プロキシ サーバーと連携するように Azure Active Directory (Azure AD) アプリケーション プロキシ コネクタを構成する方法について説明します。 この記事は、既存のプロキシがあるネットワーク環境のお客様を対象としています。
 
 まず、次の主なデプロイ シナリオを見ていきます。
+
 * オンプレミスの送信プロキシをバイパスするようにコネクタを構成する。
 * 送信プロキシを使用して Azure AD アプリケーション プロキシにアクセスにするようにコネクタを構成する。
 
@@ -53,6 +54,7 @@ ms.locfileid: "66015467"
   </appSettings>
 </configuration>
 ```
+
 コネクタ アップデーター サービスもプロキシをバイパスするようにするには、ApplicationProxyConnectorUpdaterService.exe.config ファイルに同じような変更を加えます。 このファイルは C:\Program Files\Microsoft AAD App Proxy Connector Updater にあります。
 
 既定の .config ファイルに戻す必要がある場合に備えて、元のファイルのコピーを作成するようにしてください。
@@ -67,8 +69,8 @@ ms.locfileid: "66015467"
 
 送信トラフィックしかないため、ファイアウォール経由で受信アクセスを構成する必要はありません。
 
->[!NOTE]
->アプリケーション プロキシは、他のプロキシに対する認証をサポートしていません。 コネクタ/アップデータのネットワーク サービス アカウントは、認証を求められることなく、プロキシに接続できる必要があります。
+> [!NOTE]
+> アプリケーション プロキシは、他のプロキシに対する認証をサポートしていません。 コネクタ/アップデータのネットワーク サービス アカウントは、認証を求められることなく、プロキシに接続できる必要があります。
 
 ### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>手順 1:送信プロキシを経由するようにコネクタと関連サービスを構成する
 
@@ -98,12 +100,14 @@ ms.locfileid: "66015467"
 ### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>手順 2:コネクタと関連サービスからのトラフィックが経由して流れることを許可するようにプロキシを構成する
 
 送信プロキシで考慮すべき点は次の 4 つです。
+
 * プロキシ送信規則
 * プロキシの認証
 * プロキシ ポート
 * SSL インスペクション
 
 #### <a name="proxy-outbound-rules"></a>プロキシ送信規則
+
 次の URL へのアクセスを許可します。
 
 | URL | 用途 |
@@ -113,7 +117,6 @@ ms.locfileid: "66015467"
 | login.windows.net<br>login.microsoftonline.com | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
 
 ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続を許可できます。 そうでない場合は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
-
 
 FQDN による接続を許可することはできず、代わりに IP 範囲を指定する必要がある場合は、これらのオプションを使用します。
 
@@ -128,13 +131,15 @@ FQDN による接続を許可することはできず、代わりに IP 範囲�
 
 コネクタは、CONNECT メソッドを使用して SSL ベースの送信接続を確立します。 このメソッドにより、送信プロキシを経由するトンネルが設定されます。 プロキシ サーバーが、ポート 443 と 80 へのトンネリングを許可するように構成します。
 
->[!NOTE]
->Service Bus を HTTPS 経由で実行する場合は、ポート 443 が使用されます。 ただし、既定では、Service Bus は直接 TCP 接続を試みて、直接接続に失敗した場合にのみ HTTPS に戻ってきます。
+> [!NOTE]
+> Service Bus を HTTPS 経由で実行する場合は、ポート 443 が使用されます。 ただし、既定では、Service Bus は直接 TCP 接続を試みて、直接接続に失敗した場合にのみ HTTPS に戻ってきます。
 
 #### <a name="ssl-inspection"></a>SSL インスペクション
-コネクタのトラフィックに問題が生じるため、コネクタのトラフィックには SSL インスペクションを使用しないでください。 コネクタは証明書を使用してアプリケーション プロキシ サービスに対する認証を行いますが、その証明書が SSLインスペクションの間に失われることがあります。 
+
+コネクタのトラフィックに問題が生じるため、コネクタのトラフィックには SSL インスペクションを使用しないでください。 コネクタは証明書を使用してアプリケーション プロキシ サービスに対する認証を行いますが、その証明書が SSLインスペクションの間に失われることがあります。
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>コネクタのプロキシの問題とサービスの接続の問題のトラブルシューティング
+
 これですべてのトラフィックがプロキシを経由します。 問題が生じた場合は、次のトラブルシューティング情報が役に立ちます。
 
 コネクタの接続の問題を特定してトラブルシューティングを行う最善の方法は、コネクタ サービスの開始時にネットワーク キャプチャを実行することです。 ネットワーク トレースをキャプチャおよびフィルター処理する際に役立つヒントを簡単に紹介します。
@@ -151,21 +156,18 @@ FQDN による接続を許可することはできず、代わりに IP 範囲�
 
    ![services.msc の Azure AD アプリケーション プロキシ コネクタ サービス](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
-2. Message Analyzer を管理者として実行します。
-3. **[Start Local Trace]\(ローカル トレースの開始\)** を選択します。
+1. Message Analyzer を管理者として実行します。
+1. **[Start Local Trace]\(ローカル トレースの開始\)** を選択します。
+1. Azure AD アプリケーション プロキシ コネクタ サービスを開始します。
+1. ネットワーク キャプチャを停止します。
 
-   ![ネットワーク キャプチャの開始](./media/application-proxy-configure-connectors-with-proxy-servers/start-local-trace.png)
-
-3. Azure AD アプリケーション プロキシ コネクタ サービスを開始します。
-4. ネットワーク キャプチャを停止します。
-
-   ![ネットワーク キャプチャの停止](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
+   ![[ネットワーク キャプチャの停止] ボタンを示すスクリーンショット](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
 
 ### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>コネクタのトラフィックが送信プロキシをバイパスするかどうかを確認する
 
-アプリケーション プロキシ コネクタがプロキシ サーバーをバイパスしてアプリケーション プロキシ サービスに直接接続するよう構成している場合は、ネットワーク キャプチャを調べて、TCP 接続が失敗していないかを確認します。 
+アプリケーション プロキシ コネクタがプロキシ サーバーをバイパスしてアプリケーション プロキシ サービスに直接接続するよう構成している場合は、ネットワーク キャプチャを調べて、TCP 接続が失敗していないかを確認します。
 
-Message Analyzer のフィルターを使用すると、これらの試みを識別できます。 フィルターのボックスに `property.TCPSynRetransmit` と入力し、 **[Apply]\(適用\)** を選択します。 
+Message Analyzer のフィルターを使用すると、これらの試みを識別できます。 フィルターのボックスに `property.TCPSynRetransmit` と入力し、 **[Apply]\(適用\)** を選択します。
 
 SYN パケットは、TCP 接続を確立するために最初に送信されるパケットです。 このパケットにより応答が返されない場合は、SYN パケットの送信が再試行されます。 前述のフィルターを使用すると、再送信されたすべての SYN パケットが表示されます。 次に、これらの SYN パケットがコネクタ関連のトラフィックに対応するかどうかを調べます。
 
@@ -173,9 +175,9 @@ SYN パケットは、TCP 接続を確立するために最初に送信される
 
 ### <a name="check-if-the-connector-traffic-uses-outbound-proxies"></a>コネクタのトラフィックが送信プロキシを使用しているかどうかを確認する
 
-アプリケーション プロキシ コネクタのトラフィックがプロキシ サーバーを経由するよう構成している場合は、プロキシへの https 接続が失敗していないかを確認します。 
+アプリケーション プロキシ コネクタのトラフィックがプロキシ サーバーを経由するよう構成している場合は、プロキシへの https 接続が失敗していないかを確認します。
 
-ネットワーク キャプチャをフィルター処理してこれらの試みを確認するには、Message Analyzer のフィルターで `(https.Request or https.Response) and tcp.port==8080` と入力し、ポート 8080 をご自身のプロキシ サービス ポートに置き換えます。 **[Apply]\(適用\)** を選択してフィルター結果を確認します。 
+ネットワーク キャプチャをフィルター処理してこれらの試みを確認するには、Message Analyzer のフィルターで `(https.Request or https.Response) and tcp.port==8080` と入力し、ポート 8080 をご自身のプロキシ サービス ポートに置き換えます。 **[Apply]\(適用\)** を選択してフィルター結果を確認します。
 
 前述のフィルターにより、プロキシ ポートとの間の HTTPS 要求と応答のみが表示されます。 プロキシ サーバーとの通信を示す CONNECT 要求を調べます。 成功すると、HTTP OK (200) の応答が表示されます。
 
@@ -183,6 +185,5 @@ SYN パケットは、TCP 接続を確立するために最初に送信される
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)
-
-- コネクタの接続に問題がある場合は、[Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD)に質問を投稿するか、サポート チケットを作成してください。
+* [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)
+* コネクタの接続に問題がある場合は、[Azure Active Directory フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD)に質問を投稿するか、サポート チケットを作成してください。

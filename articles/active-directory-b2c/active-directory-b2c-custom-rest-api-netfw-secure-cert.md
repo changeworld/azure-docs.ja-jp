@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b007aa4619effbd34e4e969e4ce7b58f3b0c4cf6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1690adfe5336ea85328e16755c5e3bc82b6d240a
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510537"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835607"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>クライアント証明書を使用して RESTful サービスをセキュリティで保護する
 
@@ -47,24 +47,24 @@ ms.locfileid: "66510537"
 >**clientCertEnabled** プロパティを設定する方法の詳細については、[Web アプリの TLS 相互認証を構成する](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)方法に関する記事をご覧ください。
 
 ## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>手順 2:証明書を Azure AD B2C ポリシー キーにアップロードする
-`clientCertEnabled` を *true* に設定すると、RESTful API との通信にクライアント証明書が求められます。 クライアント証明書を取得し、Azure AD B2C テナントにアップロードして保存するには、次の手順を実行する必要があります。 
+`clientCertEnabled` を *true* に設定すると、RESTful API との通信にクライアント証明書が求められます。 クライアント証明書を取得し、Azure AD B2C テナントにアップロードして保存するには、次の手順を実行する必要があります。
 1. Azure AD B2C テナントで、 **[B2C Settings]\(B2C 設定\)**  >  **[Identity Experience Framework]** の順に選択します。
 
 2. テナント内で使用できるキーを表示するには、 **[ポリシー キー]** を選択します。
 
-3. **[追加]** を選択します。  
+3. **[追加]** を選択します。
     **[キーの作成]** ウィンドウが開きます。
 
 4. **[オプション]** ボックスで、 **[アップロード]** を選択します。
 
-5. **[名前]** ボックスに「**B2cRestClientCertificate**」と入力します。  
+5. **[名前]** ボックスに「**B2cRestClientCertificate**」と入力します。
     プレフィックス *B2C_1A_* が自動的に追加されます。
 
 6. **[ファイルのアップロード]** ボックスで、秘密キーを備えた証明書の .pfx ファイルを選択します。
 
 7. **[パスワード]** ボックスに、証明書のパスワードを入力します。
 
-    ![ポリシー キーのアップロード](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
+    ![Azure portal の [キーの作成] ページでポリシー キーをアップロードする](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-upload.png)
 
 7. **作成** を選択します。
 
@@ -85,7 +85,7 @@ ms.locfileid: "66510537"
     <Item Key="AuthenticationType">ClientCertificate</Item>
     ```
 
-5. `<Metadata>` 要素の終了直後に、次の XML スニペットを追加します。 
+5. `<Metadata>` 要素の終了直後に、次の XML スニペットを追加します。
 
     ```xml
     <CryptographicKeys>
@@ -119,12 +119,12 @@ ms.locfileid: "66510537"
 
 2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、 **[今すぐ実行]** を選択します。
 
-3. **[名]** ボックスに「**Test**」と入力して、プロセスをテストします。  
-    ウィンドウの上部に Azure AD B2C によってエラー メッセージが表示されます。    
+3. **[名]** ボックスに「**Test**」と入力して、プロセスをテストします。
+    ウィンドウの上部に Azure AD B2C によってエラー メッセージが表示されます。
 
-    ![ID API をテストする](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
+    ![[名] テキスト ボックスが強調表示され、入力の検証エラーが表示されている](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-test.png)
 
-4. **[名]** ボックスに ("Test" 以外の) 名前を入力します。  
+4. **[名]** ボックスに ("Test" 以外の) 名前を入力します。
     Azure AD B2C でユーザーがサインアップされ、アプリケーションにロイヤルティ番号が送信されます。 この JWT の例の番号に注意してください。
 
    ```
@@ -152,7 +152,7 @@ ms.locfileid: "66510537"
    >"*この名前は有効ではありません。有効な名前を入力してください*" という内容のエラー メッセージが表示された場合は、クライアント証明書を提示するときに、Azure AD B2C が RESTful サービスの呼び出しに成功したことを意味します。 次は証明書を検証します。
 
 ## <a name="step-6-add-certificate-validation"></a>手順 6:証明書の検証を追加する
-Azure AD B2C によって RESTful サービスに送信されたクライアント証明書は、Azure App Service プラットフォームによる検証が行われていません (証明書の有無の確認を除く)。 証明書の検証は、Web アプリが実行する必要があります。 
+Azure AD B2C によって RESTful サービスに送信されたクライアント証明書は、Azure App Service プラットフォームによる検証が行われていません (証明書の有無の確認を除く)。 証明書の検証は、Web アプリが実行する必要があります。
 
 このセクションでは、認証するために証明書のプロパティを検証するサンプル ASP.NET コードを追加します。
 
@@ -171,7 +171,7 @@ Azure AD B2C によって RESTful サービスに送信されたクライアン�
 証明書の**サブジェクト名**、**発行者名**、および**証明書の拇印**の値を、ご自分の証明書の値に置き換えます。
 
 ### <a name="62-add-the-isvalidclientcertificate-function"></a>6.2 IsValidClientCertificate 関数を追加する
-*Controllers\IdentityController.cs* ファイルを開き、次の関数を `Identity` コントローラー クラスに追加します。 
+*Controllers\IdentityController.cs* ファイルを開き、次の関数を `Identity` コントローラー クラスに追加します。
 
 ```csharp
 private bool IsValidClientCertificate()
@@ -219,7 +219,7 @@ private bool IsValidClientCertificate()
         Trace.TraceError($"Subject name '{clientCertInRequest.Subject}' is not valid");
         return false;
     }
-    
+
     // 3. Check the issuer name of the certificate
     bool foundIssuerCN = false;
     string[] certIssuerData = clientCertInRequest.Issuer.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
@@ -273,7 +273,7 @@ private bool IsValidClientCertificate()
 >サービスの機密性によっては、検証をさらに追加しなければならない場合があります。 たとえば、信頼されたルート証明機関に証明書がチェーンされているかどうかをテストしたり、発行者組織名を検証したりする必要がある場合があります。
 
 ### <a name="63-call-the-isvalidclientcertificate-function"></a>6.3 IsValidClientCertificate 関数を呼び出す
-*Controllers\IdentityController.cs* ファイルを開き、`SignUp()` 関数の先頭に、次のコード スニペットを追加します。 
+*Controllers\IdentityController.cs* ファイルを開き、`SignUp()` 関数の先頭に、次のコード スニペットを追加します。
 
 ```csharp
 if (IsValidClientCertificate() == false)
@@ -299,4 +299,4 @@ if (IsValidClientCertificate() == false)
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>完全なポリシー ファイルとコードをダウンロードする (省略可能)
 * [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-cert)が提供されています。
-* 完全なコードは、[参照用のVisual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)からダウンロードできます。 
+* 完全なコードは、[参照用のVisual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)からダウンロードできます。

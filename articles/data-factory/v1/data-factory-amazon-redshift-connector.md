@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a1497211cc42c702537cbbdfea32ff71a400c7c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60335431"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836682"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -44,7 +44,7 @@ ms.locfileid: "60335431"
 
 パイプラインを作成する最も簡単な方法は、Azure Data Factory コピー ウィザードを使うことです。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用したパイプラインの作成のチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。
 
-また、Azure Portal、Visual Studio、Azure PowerShell、またはその他のツールを使用してパイプラインを作成することもできます。 Azure Resource Manager テンプレート、.NET API、または REST API を使用してパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
+また、Visual Studio、Azure PowerShell、またはその他のツールを使用してパイプラインを作成することもできます。 Azure Resource Manager テンプレート、.NET API、または REST API を使用してパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 

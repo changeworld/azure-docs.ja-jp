@@ -1,5 +1,5 @@
 ---
-title: カスタム ポリシーの概要 - Azure Active Directory B2C | Microsoft Docs
+title: カスタム ポリシーの概要 - Azure Active Directory B2C
 description: Azure Active Directory B2C でのカスタム ポリシーの概要について説明します。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 07/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2929c033b4744ea89f8e3d711a5e2e0df6301c14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83269a5ae0d2e5fb7ae2651dbc27926c910a0e03
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730020"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302490"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -31,7 +31,7 @@ ms.locfileid: "66730020"
 ## <a name="add-signing-and-encryption-keys"></a>署名および暗号化キーを追加します。
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**をクリックし、ご利用のテナントが含まれるディレクトリを選択します。 
+2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**をクリックし、ご利用のテナントが含まれるディレクトリを選択します。
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 
@@ -70,13 +70,15 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 
 ### <a name="register-the-identityexperienceframework-application"></a>IdentityExperienceFramework アプリケーションを登録します
 
-1. Azure portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure Active Directory]** を検索して選択します。
-2. メニューで、 **[アプリの登録 (レガシ)]** を選択します。
-3. **[新しいアプリケーションの登録]** を選択します。
-4. **名前**には、`IdentityExperienceFramework`を入力します。
-5. **アプリケーションの種類**については、**Web アプリケーション/ API** を選択します。
-6. **サインオン URL** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は、Azure AD B2C テナント ドメイン名です。 ここでは、すべての URL で [b2clogin.com](b2clogin.md) を使用してください。
-7. **Create** をクリックしてください。 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
+1. Azure portal の左上隅の **[すべてのサービス]** を選択します。
+1. 検索ボックスに「 `Azure Active Directory`」と入力します。
+1. 検索結果で **[Azure Active Directory]** を選択します。
+1. 左側のメニューで **[管理]** の下の **[アプリの登録 (レガシー)]** を選択します。
+1. **[新しいアプリケーションの登録]** を選択します。
+1. **名前**には、`IdentityExperienceFramework`を入力します。
+1. **アプリケーションの種類**については、**Web アプリケーション/ API** を選択します。
+1. **サインオン URL** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は、Azure AD B2C テナント ドメイン名です。 ここでは、すべての URL で [b2clogin.com](b2clogin.md) を使用してください。
+1. **Create** をクリックしてください。 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>ProxyIdentityExperienceFramework アプリケーションを登録する
 
@@ -90,57 +92,76 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 9. **[IdentityExperienceFramework にアクセスする]** の横のチェックボックスにチェックを入れて、 **[選択する]** をクリックし、 **[完了]** をクリックします。
 10. **[Grant Permissions] \(アクセス許可の付与)** を選択してから、 **[はい]** を選択して確認します。
 
-## <a name="download-starter-pack-and-modify-policies"></a>スターター パックをダウンロードしてポリシーを変更する
+## <a name="custom-policy-starter-pack"></a>カスタム ポリシー スターター パック
 
-カスタム ポリシーは、Azure AD B2C テナントにアップロードする必要のある XML ファイルのセットです。 ファイルのスターターパックが提供されているため、すぐに使えるようになります。 次の一覧の各スターター パックには、説明したシナリオを実現するために必要な最低限の技術プロファイルとユーザー体験が含まれています。
+カスタム ポリシーは、技術プロファイルとユーザー体験を定義するために Azure AD B2C テナントにアップロードされる XML ファイルのセットです。 すぐに作業を開始できるように、いくつかの事前に作成されたポリシーが含まれているスターターパックが用意されています。 これらの各スターター パックには、説明したシナリオを実現するために必要な最小数の技術プロファイルとユーザー体験が含まれています。
 
-- LocalAccounts - ローカル アカウントのみの使用を可能にします。
-- SocialAccounts - ソーシャル (フェデレーション) アカウントのみの使用を可能にします。
-- SocialAndLocalAccounts - ローカル アカウントとソーシャル アカウントの両方の使用を可能にします。
-- SocialAndLocalAccountsWithMFA - ソーシャル、ローカル、および多要素認証オプションすべての使用を可能にします。
+- **LocalAccounts** - ローカル アカウントのみの使用を可能にします。
+- **SocialAccounts** - ソーシャル (フェデレーション) アカウントのみの使用を可能にします。
+- **SocialAndLocalAccounts** - ローカル アカウントとソーシャル アカウントの両方の使用を可能にします。
+- **SocialAndLocalAccountsWithMFA** - ソーシャル、ローカル、および多要素認証オプションの使用を可能にします。
 
 各スターター パックには以下が含まれています。
 
-- 基本ファイルです。 ベースにはいくつかの変更が必要です。
-- 拡張ファイルです。  このファイルは、ほとんどの構成変更が行われる場所です。
-- 証明書利用者ファイルです。 ご使用のアプリケーションによって呼び出される、タスク固有のファイルです。
+- **ベース ファイル** - ベースにはいくつかの変更が必要です。 例:*TrustFrameworkBase.xml*
+- **拡張ファイル** - このファイルは、構成変更の大半が実行される場所です。 例:*TrustFrameworkExtensions.xml*
+- **証明書利用者ファイル** - アプリケーションによって呼び出される、タスク固有のファイルです。 次に例を示します。*SignUpOrSignin.xml*、*ProfileEdit.xml*、*PasswordReset.xml*
 
->[!NOTE]
->XML エディターが検証をサポートする場合、スターター パックのルート ディレクトリにある TrustFrameworkPolicy_0.3.0.0.xsd という XML スキーマに対してファイルを検証します。 XML スキーマ検証では、アップロードする前にエラーを識別します。
+この記事では、**SocialAndLocalAccounts** スターター パック内の XML カスタム ポリシー ファイルを編集します。 XML エディターが必要な場合は、軽量のクロスプラットフォーム エディターである [Visual Studio Code](https://code.visualstudio.com/download) をお試しください。
 
-1. [zip ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)するか、次を実行します。
+### <a name="get-the-starter-pack"></a>スターター パックを取得する
+
+GitHub からカスタム ポリシー スターター パックを取得し、SocialAndLocalAccounts スターター パック内の XML ファイルの名前を Azure AD B2C テナントの名前に更新します。
+
+1. [.zip ファイルをダウンロードする](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)か、リポジトリを複製します。
 
     ```console
     git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack
     ```
 
-2. SocialAndLocalAccounts フォルダーで、`yourtenant`をテナントの名前に置き換えたすべてのファイルを編集します。 たとえば、「 `contosoTenant.onmicrosoft.com` 」のように入力します。 XML エディターが必要な場合は、軽量のクロスプラットフォーム エディターである [Visual Studio Code](https://code.visualstudio.com/download) をお試しください。
+1. **SocialAndLocalAccounts** ディレクトリ内のすべてのファイルで、`yourtenant` 文字列を Azure AD B2C テナントの名前に置き換えます。
+
+    たとえば、B2C テナントの名前が *contosotenant*であれば、`yourtenant.onmicrosoft.com` のすべてのインスタンスは `contosotenant.onmicrosoft.com` になります。
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>カスタム ポリシーにアプリケーション ID を追加します。
 
 拡張子ファイル *TrustFrameworkExtensions.xml*  にアプリケーション ID を追加します。
 
-1. *TrustFrameworkExtensions.xml* ファイルを開き、要素`<TechnicalProfile Id="login-NonInteractive">`を検索します。
-2. `IdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した Identity Experience Framework アプリケーションのアプリケーション ID に置き換えます。 `ProxyIdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した Proxy Identity Experience Framework アプリケーションのアプリケーション ID に置き換えます。
-3. 拡張ファイルを保存します。
+1. `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** を開いて、`<TechnicalProfile Id="login-NonInteractive">` 要素を見つけます。
+1. `IdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した IdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
+1. `ProxyIdentityExperienceFrameworkAppId` の両方のインスタンスを、前に作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
+1. ファイルを保存します。
 
 ## <a name="upload-the-policies"></a>ポリシーをアップロードします。
 
-1. Identity Experience Framework のカスタム ポリシーページで、**ポリシーのアップロード**を選択します。
-1. この順序で、*TrustFrameworkBase.xml*、*TrustFrameworkExtensions.xml*、*SignUpOrSignin.xml*、*ProfileEdit.xml*、および *PasswordReset .xml* をアップロードします。 ファイルがアップロードされると、ポリシー ファイルの名前の前に `B2C_1A_` が付きます。
+1. Azure portal で B2C テナントに移動し、 **[Identity Experience Framework]** を選択します。
+1. **[カスタム ポリシーのアップロード]** を選択します。
+1. 次の順序でポリシー ファイルをアップロードします。
+    1. *TrustFrameworkBase.xml*
+    1. *TrustFrameworkExtensions.xml*
+    1. *SignUpOrSignin.xml*
+    1. *ProfileEdit.xml*
+    1. *PasswordReset.xml*
+
+ファイルをアップロードすると、Azure によって、それぞれに `B2C_1A_` が追加されます。
+
+> [!TIP]
+> XML エディターで検証がサポートされている場合は、スターター パックのルート ディレクトリにある `TrustFrameworkPolicy_0.3.0.0.xsd` という XML スキーマに対してファイルを検証します。 XML スキーマ検証では、アップロードする前にエラーを識別します。
 
 ## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
-1. 「カスタムポリシー」ページで、 **B2C_1A_signup_signin** を選択します。
-2. カスタム ポリシーの概要ページの **[アプリケーションの選択]** で、以前に登録した *webapp1* という名前の Web アプリケーションを選択します。 **[返信 URL]** が `https://jwt.ms` であることを確認します。
-3. **[今すぐ実行]** を選択します。
-4. メール アドレスを使用してサインアップできることを確認します。
-5. 同じアカウントでサインインし、構成が正しく行われていることを確認します。
+1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
+1. カスタム ポリシーの概要ページの **[アプリケーションの選択]** で、以前に登録した *webapp1* という名前の Web アプリケーションを選択します。
+1. **[返信 URL]** が `https://jwt.ms` であることを確認します。
+1. **[今すぐ実行]** を選択します。
+1. メール アドレスを使用してサインアップします。
+1. もう一度 **[今すぐ実行]** を選択します。
+1. 同じアカウントでサインインし、構成が正しく行われていることを確認します。
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Facebook を ID プロバイダーとして追加する
 
-1. [Facebook アプリケーション](active-directory-b2c-setup-fb-app.md)を構成します。
-2. *TrustFrameworkExtensions.xml* ファイルで、`client_id`の値を Facebook アプリケーション ID に置き換えます。
+1. [Facebook アカウントでのサインアップとサインインの設定](active-directory-b2c-setup-fb-app.md)に関する記事の手順を完了して、Facebook アプリケーションを構成します。
+1. `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** ファイルで、`client_id` の値を Facebook アプリケーション ID に置き換えます。
 
    ```xml
    <TechnicalProfile Id="Facebook-OAUTH">
@@ -148,9 +169,13 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
      <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
        <Item Key="client_id">00000000000000</Item>
    ```
-3. *TrustFrameworkExtensions.xml* ファイルをテナントにアップロードします。
-4. **[今すぐ実行]** を使用するか、登録済みアプリケーションからポリシーを直接呼び出してテストします。
+
+1. *TrustFrameworkExtensions.xml* ファイルをテナントにアップロードします。
+1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
+1. **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。 または、登録済みアプリケーションからポリシーを直接呼び出します。
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Active Directory を ID プロバイダーとして追加します。 このファースト ステップ ガイドで使用したベース ファイルには、他の ID プロバイダーを追加するために必要な内容の一部が既に含まれています。 サインインの設定については、[Active Directory B2C カスタム ポリシーを使用して Azure Active Directory アカウントでサインアップとサインインを設定する](active-directory-b2c-setup-aad-custom.md)記事を参照してください。
+次に、ID プロバイダーとしての Azure Active Directory (Azure AD) の追加を試してください。 このファースト ステップ ガイドで使用したベース ファイルには、Azure AD などの他の ID プロバイダーを追加するために必要な内容の一部が既に含まれています。
+
+ID プロバイダーとしての Azure AD の設定については、「[カスタム ポリシーを使用して Azure Active Directory B2C に Azure Active Directory アカウントでサインインするように設定する](active-directory-b2c-setup-aad-custom.md)」を参照してください。

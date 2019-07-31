@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a9629cd14c71a163612c2c4ba3c7b109a52b91ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1a6938bd541e316dbe9f333c670c382faab6ad21
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622441"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854260"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する
 この記事では、Azure PowerShell を使用して Azure DevTest Labs で仮想マシンを作成する方法について説明します。 PowerShell スクリプトを使用して、Azure DevTest Labs のラボで仮想マシンの作成を自動化できます。 
@@ -82,6 +82,7 @@ try {
           "labSubnetName"           = $labSubnetName;
           "notes"                   = "Windows Server 2016 Datacenter";
           "osType"                  = "windows"
+          "expirationDate"          = "2019-12-01"
           "galleryImageReference"   = @{
              "offer"     = "WindowsServer";
              "publisher" = "MicrosoftWindowsServer";
@@ -188,6 +189,39 @@ Azure portal で VM を作成するときに、Azure Resource Manager テンプ�
 5. **[実行]** を選択します。
 6. VM の作成のベースとなった**イメージのプロパティ**が表示されます。 
 
+## <a name="set-expiration-date"></a>有効期限の設定
+トレーニング、デモ、試用版などのシナリオでは、不要なコストが発生しないように、仮想マシンを作成し、固定期間後に自動的にそれらを削除することができます。 サンプルの [PowerShell スクリプト](#powershell-script) セクションに示されているように、PowerShell を使用して VM の作成時に有効期限を設定できます。
+
+ラボ内のすべての既存の VM の有効期限を設定する PowerShell スクリプトの例を次に示します。
+
+```powershell
+# Values to change
+$subscriptionId = '<Enter the subscription Id that contains lab>'
+$labResourceGroup = '<Enter the lab resource group>'
+$labName = '<Enter the lab name>'
+$VmName = '<Enter the VmName>'
+$expirationDate = '<Enter the expiration date e.g. 2019-12-16>'
+
+# Log into your Azure account
+Login-AzureRmAccount
+
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
+$VmResourceId = "subscriptions/$subscriptionId/resourcegroups/$labResourceGroup/providers/microsoft.devtestlab/labs/$labName/virtualmachines/$VmName"
+
+$vm = Get-AzureRmResource -ResourceId $VmResourceId -ExpandProperties
+
+# Get all the Vm properties
+$VmProperties = $vm.Properties
+
+# Set the expirationDate property
+If ($VmProperties.expirationDate -eq $null) {
+    $VmProperties | Add-Member -MemberType NoteProperty -Name expirationDate -Value $expirationDate
+} Else {
+    $VmProperties.expirationDate = $expirationDate
+}
+
+Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
+```
 
 
 ## <a name="next-steps"></a>次の手順

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: baca05a9c007849d813b2f4de17378e6d18da4a5
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 22d6999b2a69aceb4421cea070d784f693bdf9c4
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701737"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839294"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP ソースからデータを移動する
 
@@ -45,7 +45,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 - パイプラインを作成するための最も簡単な方法は、データのコピー ウィザードの使用です。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。
 
-- また、**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API** などのツールを使用してパイプラインを作成することもできます。 コピー アクティビティを含むパイプラインを作成する方法に関する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 HTTP ソースから Azure Blob Storage にデータをコピーする JSON サンプルについては、「[JSON の使用例](#json-examples)」を参照してください。
+- また、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API** などのツールを使用してパイプラインを作成することもできます。 コピー アクティビティを含むパイプラインを作成する方法に関する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 HTTP ソースから Azure Blob Storage にデータをコピーする JSON サンプルについては、「[JSON の使用例](#json-examples)」を参照してください。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -231,7 +231,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 ## <a name="json-examples"></a>JSON の使用例
 
-以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できる、サンプルの JSON 定義です。 これらの例は、HTTP ソースから Azure Blob Storage にデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用すると、任意のソースから[サポートされている](data-factory-data-movement-activities.md#supported-data-stores-and-formats)任意のシンクに*直接*データをコピーできます。
+次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、HTTP ソースから Azure Blob Storage にデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用すると、任意のソースから[サポートされている](data-factory-data-movement-activities.md#supported-data-stores-and-formats)任意のシンクに*直接*データをコピーできます。
 
 **例:HTTP ソースから Azure Blob Storage にデータをコピーする**
 
