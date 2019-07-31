@@ -115,6 +115,7 @@
     - name: 言語とリージョンのサポート
       href: language-support.md
     - name: Bing Image Search API 用の分析
-      href: bing-image-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

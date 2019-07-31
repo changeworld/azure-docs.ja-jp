@@ -52,7 +52,8 @@
     - name: Bing の分析情報の使用
       href: bing-insights-usage.md
     - name: Visual Search API 用の分析
-      href: bing-visual-search-stats.md
+      maintainContext: true
+      href: ../bing-web-search/bing-web-stats.md
 - name: ハウツー ガイド
   items:
     - name: トークンを使用した分析情報の取得
