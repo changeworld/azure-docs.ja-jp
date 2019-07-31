@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aba41d62df49a40d9fc3686684b39b71e1363453
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6282ce426b08c4ad9c44bead0bd4ec3d259f65fe
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296050"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501429"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -209,7 +209,7 @@ Standard ファイル共有は、すべてのリージョンで 5 TiB まで利�
 |リージョン  |サポートされる冗長性  |既存のストレージ アカウントをサポートする  |
 |---------|---------|---------|
 |東南アジア     |LRS|いいえ         |
-|西ヨーロッパ     |LRS|いいえ         |
+|西ヨーロッパ     |LRS、ZRS|いいえ         |
 |米国西部 2     |LRS、ZRS|いいえ         |
 
 この[アンケート](https://aka.ms/azurefilesatscalesurvey)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。

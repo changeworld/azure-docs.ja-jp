@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 07/16/2019
 ms.author: manayar
-ms.openlocfilehash: 007f2801efed8da4964808056563418dec7f64d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eeb689f90197830dad98c213849b2e82ba43bbf1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60328818"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296348"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
 
@@ -35,6 +35,7 @@ OS の自動アップグレードには、次の特徴があります。
 - 自動アップグレードはいつでも停止できます (OS のアップグレードは、手動でも開始できます)。
 - VM の OS ディスクが、最新バージョンのイメージで作成された新しい OS ディスクに置き換えられます。 永続化されているデータ ディスクは保持されたまま、構成済みの拡張機能とカスタム データ スクリプトが実行されます。
 - [拡張機能のシーケンス処理](virtual-machine-scale-sets-extension-sequencing.md)がサポートされています。
+- 自動 OS イメージ アップグレードは、任意の規模のスケール セットで有効にすることができます。
 
 ## <a name="how-does-automatic-os-image-upgrade-work"></a>OS イメージの自動アップグレードのしくみ
 
@@ -42,9 +43,9 @@ OS の自動アップグレードには、次の特徴があります。
 
 アップグレード プロセスは次のように実行されます。
 1. アップグレード プロセスを開始する前に、オーケストレーターは異常なインスタンスが全体的なスケール セットの 20% を超えていないことを確認します。
-2. アップグレード オーケストレーターは、アップグレードする VM インスタンスのバッチ (インスタンスの合計数の最大 20% を含む 1 つのバッチ) を識別します。
-3. 選択された VM インスタンス バッチの OS ディスクが、最新のイメージから作成された新しい OS ディスクに置き換えられ、スケール セット モデル内で指定されたすべての拡張機能と構成が、アップグレード済みのインスタンスに適用されます。
-4. 構成済みのアプリケーション正常性プローブやアプリケーション正常性拡張機能があるスケール セットの場合、アップグレードはインスタンスが正常になるまで 5 分間待機した後、次のバッチのアップグレードに進みます。
+2. アップグレード オーケストレーターは、アップグレードする VM インスタンスのバッチ (インスタンスの合計数の最大 20% を含む 1 つのバッチ) を識別します。 インスタンス数が 5 以下の小規模なスケール セットの場合、アップグレードのバッチ サイズは 1 仮想マシン インスタンスです。
+3. VM インスタンスの選択したバッチの OS ディスクは、最新のイメージから作成された新しい OS ディスクに置き換えられます。 スケール セット モデルに指定されたすべての拡張機能と構成は、アップグレードされたインスタンスに適用されます。
+4. 構成済みのアプリケーション正常性プローブやアプリケーション正常性拡張機能があるスケール セットの場合、アップグレードはインスタンスが正常になるまで 5 分間待機した後、次のバッチのアップグレードに進みます。 アップグレードから 5 分以内にインスタンスの正常性が回復しない場合は、既定でそのインスタンスの以前の OS ディスクが復元されます。
 5. また、アップグレード オーケストレーターでは、アップグレード後に異常が発生したインスタンスの割合も追跡されます。 アップグレード処理中に異常なアップグレード済みインスタンスの割合が 20% を超えた場合、アップグレードは停止します。
 6. 上記のプロセスは、スケール セット内のすべてのインスタンスがアップグレードされるまで続行されます。
 
@@ -74,7 +75,18 @@ OS の自動アップグレードには、次の特徴があります。
 
 - プラットフォーム イメージの *version* プロパティには *latest* を設定する必要があります。
 - Service Fabric 以外のスケール セットには、アプリケーション正常性プローブまたは[アプリケーション正常性拡張機能](virtual-machine-scale-sets-health-extension.md)を使用します。
+- コンピューティング API バージョン 2018-10-01 以降を使用します。
 - スケール セット モデルで指定された外部リソースが利用可能であり、更新可能であることを確認してください。 例としては、VM 拡張プロパティ内のブートストラップ ペイロードの SAS URI、ストレージ アカウント内のペイロード、モデル内のシークレットへの参照などが挙げられます。
+- Windows 仮想マシンを使用するスケール セットの場合、コンピューティング API バージョン 2019-03-01 以降、スケール セット モデル定義で *virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates* プロパティを *false* に設定する必要があります。 上記のプロパティを使用すると、OS ディスクを交換せずにオペレーティング システムの修正プログラムを "Windows Update" で適用する VM 内アップグレードを実行できます。 スケール セットで OS イメージの自動アップグレードが有効な場合は、"Windows Update" による追加の更新プログラムは不要です。
+
+### <a name="service-fabric-requirements"></a>Service Fabric の要件
+
+Service Fabric を使用している場合は、次の条件が満たされていることを確認します。
+-   Service Fabric の[持続性レベル](../service-fabric/service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)は Silver または Gold であり、Bronze ではありません。
+-   スケール セット モデル定義の Service Fabric 拡張機能には、TypeHandlerVersion 1.1 以降が必要です。
+-   持続性レベルは、スケール セット モデル定義の Service Fabric クラスターと Service Fabric 拡張機能で同じである必要があります。
+
+Service Fabric クラスターと Service Fabric 拡張機能で持続性の設定に不一致がないことを確認します。これは、一致しない場合にアップグレード エラーが発生する可能性があるためです。 持続性レベルは、[このページ](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)で説明されているガイドラインに従って変更できます。
 
 ## <a name="configure-automatic-os-image-upgrade"></a>OS イメージの自動アップグレードの構成
 OS イメージの自動アップグレードを構成するには、スケール セットのモデル定義で *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* プロパティが *true* に設定されていることを確認します。
@@ -99,17 +111,17 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Update AzVmss](/powershell/module/az.compute/update-azvmss) コマンドレットを使用して、スケール セットの OS アップグレード履歴を確認します。 次の例では、*myResourceGroup* というリソース グループ内の *myVMSS* というスケール セットの自動アップグレードを構成しています。
+[Update AzVmss](/powershell/module/az.compute/update-azvmss) コマンドレットを使用して、スケール セットの OS アップグレード履歴を確認します。 次の例では、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-[az vmss update](/cli/azure/vmss#az-vmss-update) を使用して、スケール セットの OS アップグレード履歴を確認します。 Azure CLI 2.0.47 以上を使用してください。 次の例では、*myResourceGroup* というリソース グループ内の *myVMSS* というスケール セットの自動アップグレードを構成しています。
+[az vmss update](/cli/azure/vmss#az-vmss-update) を使用して、スケール セットの OS アップグレード履歴を確認します。 Azure CLI 2.0.47 以上を使用してください。 次の例では、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
 
 ```azurecli-interactive
-az vmss update --name myVMSS --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
+az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
 ```
 
 ## <a name="using-application-health-probes"></a>アプリケーションの正常性プローブの使用
@@ -159,7 +171,7 @@ OS のアップグレード中は、スケール セット内の VM インスタ
 Azure PowerShell、Azure CLI 2.0、または REST API を使用して、スケール セットに対して実行された最新の OS のアップグレードの履歴を確認できます。 過去 2 か月間に試行された最後の 5 回の OS アップグレードの履歴を取得できます。
 
 ### <a name="rest-api"></a>REST API
-次の例では、[REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) を使用して、*myResourceGroup* という名前のリソース グループ内の *myVMSS* という名前のスケール セットの状態をチェックします。
+次の例では、[REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) を使用して、*myResourceGroup* という名前のリソース グループ内の *myScaleSet* という名前のスケール セットの状態をチェックします。
 
 ```
 GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2018-10-01`
@@ -203,22 +215,22 @@ GET 呼び出しは、次の例の出力に似たプロパティを返します�
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Get-AzVmss](/powershell/module/az.compute/get-azvmss) コマンドレットを使用して、スケール セットの OS アップグレード履歴を確認します。 次の例は、*myResourceGroup* というリソース グループ内の *myVMSS* というスケール セットの OS アップグレード状態を確認する方法を説明したものです。
+[Get-AzVmss](/powershell/module/az.compute/get-azvmss) コマンドレットを使用して、スケール セットの OS アップグレード履歴を確認します。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの OS アップグレード状態を確認する方法を説明したものです。
 
 ```azurepowershell-interactive
-Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -OSUpgradeHistory
+Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-[az vmss get-os-upgrade-history](/cli/azure/vmss#az-vmss-get-os-upgrade-history) を使用して、スケール セットの OS アップグレード履歴を確認します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、*myResourceGroup* というリソース グループ内の *myVMSS* というスケール セットの OS アップグレード状態を確認する方法を説明したものです。
+[az vmss get-os-upgrade-history](/cli/azure/vmss#az-vmss-get-os-upgrade-history) を使用して、スケール セットの OS アップグレード履歴を確認します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの OS アップグレード状態を確認する方法を説明したものです。
 
 ```azurecli-interactive
-az vmss get-os-upgrade-history --resource-group myResourceGroup --name myVMSS
+az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
 ```
 
 ## <a name="how-to-get-the-latest-version-of-a-platform-os-image"></a>プラットフォーム OS イメージの最新バージョンを取得する方法
 
-以下の例を使用して、OS の自動アップグレードがサポートされている SKU のイメージ バージョンを取得できます。
+以下の例を使用して、OS の自動アップグレードがサポートされている SKU の入手できるイメージ バージョンを取得できます。
 
 ### <a name="rest-api"></a>REST API
 ```
@@ -233,6 +245,35 @@ Get-AzVmImage -Location "westus" -PublisherName "Canonical" -Offer "UbuntuServer
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 ```azurecli-interactive
 az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServer" --sku "16.04-LTS" --all
+```
+
+## <a name="manually-trigger-os-image-upgrades"></a>OS イメージのアップグレードを手動でトリガーする
+スケール セットで OS イメージの自動アップグレードが有効な場合、スケール セットでイメージの更新を手動でトリガーする必要はありません。 OS アップグレード オーケストレーターでは、手動による操作なしで、入手できる最新バージョンのイメージを自動的にスケール セット インスタンスに適用されます。
+
+オーケストレーターによる最新イメージの適用を待ちたくない特定のケースでは、次の例を使用して OS イメージのアップグレードを手動でトリガーできます。
+
+> [!NOTE]
+> OS イメージのアップグレードの手動トリガーでは、自動ロールバック機能を利用できません。 アップグレード操作後にインスタンスの正常性が回復しない場合、その以前の OS ディスクは復元できません。
+
+### <a name="rest-api"></a>REST API
+[OS アップグレードの開始](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 呼び出しを使用してローリング アップグレードを開始し、すべての仮想マシン スケール セット インスタンスを入手できる最新のプラットフォーム イメージ OS バージョンに移動します。 入手できる最新の OS バージョンを既に実行しているインスタンスは影響を受けません。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
+
+```
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
+```
+
+### <a name="azure-powershell"></a>Azure PowerShell
+スケール セットの OS アップグレード履歴を確認するには、[Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) コマンドレットを使用します。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
+
+```azurepowershell-interactive
+Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+スケール セットの OS アップグレード履歴を確認するには、[az vmss rolling-upgrade start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) を使用します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
+
+```azurecli-interactive
+az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"
 ```
 
 ## <a name="deploy-with-a-template"></a>テンプレートを使用したデプロイ
