@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24888934d7e89a13b1b07b7138be476575fc306
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c7781651536275eba60bfde49e00a450dde6d3e1
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204611"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357031"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -26,7 +26,7 @@ ms.locfileid: "67204611"
 - ハイブリッド Azure AD 参加
 - Azure AD の登録
 
-Azure AD にデバイスを取り込んで、クラウドとオンプレミスのリソースでのシングル サインオン (SSO) を実現することで、ユーザーの生産性を最大限に高めることができます。 同時に、[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)を使用して、クラウドとオンプレミスのリソースへのアクセスを保護できます。
+Azure AD に自分のデバイスを取り込んで、クラウドとオンプレミスのリソースでのシングル サインオン (SSO) を実現することで、ユーザーの生産性を最大化できます。 同時に、[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)を使用して、クラウドとオンプレミスのリソースへのアクセスを保護できます。
 
 このチュートリアルでは、Active Directory ドメイン参加済みコンピューター デバイスのハイブリッド Azure AD 参加をマネージド環境で構成する方法について説明します。 
 
@@ -73,7 +73,7 @@ WPAD を使用せず、コンピューターでプロキシ設定を構成する
 > [!NOTE]
 > WinHTTP 設定を使用してコンピューターでプロキシ設定を構成すると、構成したプロキシに接続できないコンピューターでインターネットへの接続が失敗します。
 
-認証された送信プロキシ経由でインターネットにアクセスする必要がある組織の場合は、Windows 10 コンピューターが送信プロキシに対して正常に認証されることを確認する必要があります。 Windows 10 コンピューターではマシン コンテキストを使用してデバイス登録が実行されるため、マシン コンテキストを使用して送信プロキシ認証を構成する必要があります。 構成要件については、送信プロキシ プロバイダーに確認してください。
+組織が認証された送信プロキシ経由でのインターネットへのアクセスを必要とする場合、お使いの Windows 10 コンピューターが送信プロキシに対して正常に認証されることを確認する必要があります。 Windows 10 コンピューターではマシン コンテキストを使用してデバイス登録が実行されるため、マシン コンテキストを使用して送信プロキシ認証を構成する必要があります。 構成要件については、送信プロキシ プロバイダーに確認してください。
 
 ## <a name="configure-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成
 
@@ -134,7 +134,7 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>デバイスの登録用のローカル イントラネット設定の構成
 
-ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加を正常に完了するため、およびデバイスが Azure AD で認証を受けるときに証明書の指定を求めるメッセージが表示されないようにするために、ドメイン参加済みデバイスにポリシーをプッシュして、以下の URL を Internet Explorer のローカル イントラネット ゾーンに追加することができます。
+ダウンレベルの Windows デバイスのハイブリッド Azure AD 参加を正常に完了するため、およびデバイスが Azure AD で認証を受けるときに証明書の指定を求めるメッセージが表示されないようにするために、対象のドメイン参加済みデバイスにポリシーをプッシュして、以下の URL を Internet Explorer のローカル イントラネット ゾーンに追加することができます。
 
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com`
@@ -151,11 +151,11 @@ Azure AD クラウド認証方法として [PHS](../hybrid/whatis-phs.md) また
 
  [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) などのソフトウェア ディストリビューション システムを使用して、このパッケージをデプロイできます。 このパッケージは、`quiet` パラメーターを使用した標準のサイレント インストール オプションをサポートしています。 Configuration Manager の Current Branch には、完了した登録を追跡する機能など、以前のバージョンにはない利点が追加されています。
 
-インストーラーによって、ユーザー コンテキストで実行されるシステムにスケジュール済みタスクが作成されます。 このタスクは、ユーザーが Windows にサインインするとトリガーされます。 Azure AD で認証が行われた後、そのユーザー資格情報を使用して Azure AD へのデバイスの参加操作がサイレントに実行されます。
+インストーラーによって、ユーザー コンテキストで実行されるシステムにスケジュール済みタスクが作成されます。 このタスクは、ユーザーが Windows にサインインするとトリガーされます。 このタスクでは、デバイスは Azure AD で認証が行われた後、そのユーザー資格情報を使用してサイレントに Azure AD に参加します。
 
 ## <a name="verify-the-registration"></a>登録の確認
 
-Azure テナントのデバイス登録状態を確認するために、[Azure Active Directory PowerShell モジュール](/powershell/azure/install-msonlinev1?view=azureadps-2.0)の **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** コマンドレットを使用できます。
+Azure テナントでのデバイス登録状態を確認するために、[Azure Active Directory PowerShell モジュール](/powershell/azure/install-msonlinev1?view=azureadps-2.0)の **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** コマンドレットを使用できます。
 
 **Get-MSolDevice** コマンドレットを使用してサービスの詳細を確認する場合:
 
@@ -163,7 +163,7 @@ Azure テナントのデバイス登録状態を確認するために、[Azure A
 - **DeviceTrustType** の値は **[ドメイン参加済み]** でなければなりません。 この設定は、Azure AD ポータルの **[デバイス]** ページの **[ハイブリッド Azure AD 参加済み]** 状態に相当します。
 - 条件付きアクセスで使用されるデバイスの場合、**Enabled** の値は **True**、**DeviceTrustLevel** の値は **Managed** でなければなりません。
 
-**サービスの詳細を確認するには、次の手順に従います。**
+**サービスの詳細を確認するには**:
 
 1. Windows PowerShell を管理者として開きます。
 1. 「`Connect-MsolService`」と入力して Azure テナントに接続します。  

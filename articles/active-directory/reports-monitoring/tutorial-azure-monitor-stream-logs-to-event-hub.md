@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906da7ac6b0086e4efca7c38171668a08f687d19
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: bd55abac534407facd0cb416012767b9f2e39fd8
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995600"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360014"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>チュートリアル:Azure Active Directory ログを Azure イベント ハブにストリーム配信する
 
@@ -41,18 +41,18 @@ ms.locfileid: "59995600"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
 
-2. **[Azure Active Directory]** > **[アクティビティ]** > **[監査ログ]** の順に選択します。 
+2. **[Azure Active Directory]**  >  **[アクティビティ]**  >  **[監査ログ]** の順に選択します。 
 
 3. **[エクスポート設定]** を選択します。  
     
 4. **[診断設定]** ウィンドウで、次のいずれかの操作を実行します。
-    * 既存の設定を変更するには、**[設定の編集]** を選択します。
-    * 新しい設定を追加するには、**[診断の設定の追加]** を選択します。  
+    * 既存の設定を変更するには、 **[設定の編集]** を選択します。
+    * 新しい設定を追加するには、 **[診断の設定の追加]** を選択します。  
       最大で 3 つの設定を作成できます。
 
       ![設定のエクスポート](./media/quickstart-azure-monitor-stream-logs-to-event-hub/ExportSettings.png)
 
-5. **[Stream to an event hub]\(イベント ハブにストリーム\)** チェックボックスをオンにし、**[Event Hub/Configure]\(イベント ハブ/構成\)** を選択します。
+5. **[Stream to an event hub]\(イベント ハブにストリーム\)** チェックボックスをオンにし、 **[Event Hub/Configure]\(イベント ハブ/構成\)** を選択します。
 
 6. ログのルーティング先となる Azure サブスクリプションと Event Hubs 名前空間を選択します。  
     サブスクリプションと Event Hubs 名前空間は、両方ともログのストリーム元である Azure AD テナントと関連付けられている必要があります。 Event Hubs 名前空間内にログの送信先となるイベント ハブを指定することもできます。 イベント ハブを指定しない場合、イベント ハブは名前空間内に既定の名前 **insights-logs-audit** で作成されます。
@@ -60,8 +60,8 @@ ms.locfileid: "59995600"
 7. **[OK]** を選択してイベント ハブの構成を終了します。
 
 8. 次のいずれかまたは両方を実行します。
-    * 監査ログをストレージ アカウントに送信するには、**[AuditLogs]** チェックボックスをオンにします。 
-    * サインイン ログをストレージ アカウントに送信するには、**[SignInLogs]** チェックボックスをオンにします。
+    * 監査ログをストレージ アカウントに送信するには、 **[AuditLogs]** チェックボックスをオンにします。 
+    * サインイン ログをストレージ アカウントに送信するには、 **[SignInLogs]** チェックボックスをオンにします。
 
 9. **[保存]** を選択して設定を保存します。
 
@@ -76,6 +76,9 @@ ms.locfileid: "59995600"
 イベント ハブにデータが表示されたら、次の 2 つの方法でデータにアクセスして読み取ることができます。
 
 * **サポートされている SIEM ツールを構成する**。 ほとんどのツールは、イベント ハブからデータを読み取るために、イベント ハブ接続文字列と、Azure サブスクリプションへの特定のアクセス許可が必要です。 以下に示したのは、Azure Monitor との統合に対応したサードパーティ ツールの例です。
+    
+    * **ArcSight**: Azure AD のログと Splunk の統合の詳細については、「[Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する](howto-integrate-activity-logs-with-arcsight.md)」を参照してください。
+    
     * **Splunk**: Azure AD のログと Splunk の統合の詳細については、[Azure Monitor を使用した Azure AD のログと Splunk の統合](tutorial-integrate-activity-logs-with-splunk.md)に関するページを参照してください。
     
     * **IBM QRadar**: DSM および Azure Event Hub Protocol は、[IBM サポート](https://www.ibm.com/support)からダウンロードすることができます。 Azure との統合について詳しくは、[IBM QRadar Security Intelligence Platform 7.3.0](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) のサイトをご覧ください。
@@ -87,6 +90,7 @@ ms.locfileid: "59995600"
 
 ## <a name="next-steps"></a>次の手順
 
+* [Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する](howto-integrate-activity-logs-with-arcsight.md)
 * [Azure Monitor を使用して Azure AD のログを Splunk と統合する](tutorial-integrate-activity-logs-with-splunk.md)
 * [Azure Monitor を使用して Azure AD のログを SumoLogic と統合する](howto-integrate-activity-logs-with-sumologic.md)
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)

@@ -3,17 +3,18 @@ title: チュートリアル - Azure Container Instances にコンテナー ア�
 description: Azure Container Instances チュートリアル 3/3 - Azure Container Instances にコンテナー アプリケーションをデプロイする
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326741"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325623"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>チュートリアル:Azure Container Instances にコンテナー アプリケーションをデプロイする
 
@@ -72,7 +73,7 @@ az container show --resource-group myResourceGroup --name aci-tutorial-app --que
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-例: 
+例:
 ```console
 $ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 "aci-demo.eastus.azurecontainer.io"

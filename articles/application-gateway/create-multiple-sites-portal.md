@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 4/18/2019
+ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 3e27a79c7a6e3d39679118f532dd464a32463d69
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 73a313a6244971b65ba89fb7b676610d88acabfa
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999027"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498452"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
 
@@ -38,140 +38,188 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-作成したリソース間の通信には仮想ネットワークが必要です。 この例では 2 つのサブネットが作成されます。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。
+1. Azure portal の左側のメニューにある **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
 
-1. Azure Portal の左上にある **[新規]** をクリックします。
-2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
-3. 次のアプリケーション ゲートウェイの値を入力します。
+2. **[ネットワーク]** を選択し、**おすすめ**のリストで **[Application Gateway]** を選択します。
 
-   - *myAppGateway* - アプリケーション ゲートウェイの名前です。
-   - *myResourceGroupAG* - 新しいリソース グループの名前です。
+### <a name="basics-tab"></a>[基本] タブ
 
-     ![新しいアプリケーション ゲートウェイの作成](./media/create-multiple-sites-portal/application-gateway-create.png)
+1. **[基本]** タブで、次のアプリケーション ゲートウェイの設定に以下の値を入力します。
 
-4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
-5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
+   - **[リソース グループ]** :リソース グループには、**myResourceGroupAG** を選択します。 存在しない場合は、 **[新規作成]** を選択して作成します。
+   - **[アプリケーション ゲートウェイ名]** :アプリケーション ゲートウェイの名前として「*myAppGateway*」と入力します。
 
-   - *myVNet* - 仮想ネットワークの名前です。
-   - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
-   - *myAGSubnet* - サブネットの名前です。
-   - *10.0.0.0/24* - サブネットのアドレス空間です。
+     ![新しいアプリケーション ゲートウェイの作成:基本](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
-     ![Create virtual network](./media/create-multiple-sites-portal/application-gateway-vnet.png)
+2.  お客様が作成するリソースの間で Azure による通信が行われるには、仮想ネットワークが必要です。 新しい仮想ネットワークを作成することも、既存の仮想ネットワークを使用することもできます。 この例では、アプリケーション ゲートウェイの作成と同時に新しい仮想ネットワークを作成します。 Application Gateway インスタンスは、個別のサブネットに作成されます。 この例では 2 つのサブネットを作成します。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。
 
-6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
-7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
-8. リスナーの構成は既定値をそのまま使用し、Web アプリケーション ファイアウォールは無効のままにして、**[OK]** をクリックします。
-9. 概要ページで設定を確認し、**[OK]** をクリックして、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
+    **[仮想ネットワークの構成]** で、 **[新規作成]** を選択して新しい仮想ネットワークを作成します。 **[仮想ネットワークの作成]** ウィンドウが開いたら、次の値を入力して、仮想ネットワークと 2 つのサブネットを作成します。
 
-### <a name="add-a-subnet"></a>サブネットの追加
+    - **[名前]** :仮想ネットワークの名前として「*myVNet*」と入力します。
 
-1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myVNet]** をクリックします。
-2. **[サブネット]**、**[サブネット]** の順にクリックします。
+    - **[サブネット名]** (Application Gateway サブネット): **[サブネット]** グリッドには、 *[既定]* という名前のサブネットが表示されます。 このサブネットの名前を *myAGSubnet* に変更します。<br>アプリケーション ゲートウェイ サブネットには、アプリケーション ゲートウェイのみを含めることができます。 その他のリソースは許可されません。
 
-    ![サブネットの作成](./media/create-multiple-sites-portal/application-gateway-subnet.png)
+    - **[サブネット名]** (バックエンド サーバー サブネット): **[サブネット]** グリッドの 2 行目で、 **[サブネット名]** 列に「*myBackendSubnet*」と入力します。
 
-3. サブネットの名前として「*myBackendSubnet*」を入力し、**[OK]** をクリックします。
+    - **[アドレス範囲]** (バックエンド サーバー サブネット): **[サブネット]** グリッドの 2 行目に、*myAGSubnet* のアドレス範囲と重複しないアドレス範囲を入力します。 たとえば、*myAGSubnet* のアドレス範囲が 10.0.0.0/24 の場合は、*myBackendSubnet* のアドレス範囲として「*10.0.1.0/24*」と入力します。
 
-## <a name="create-virtual-machines"></a>仮想マシンを作成する
+    **[OK]** を選択して **[仮想ネットワークの作成]** ウィンドウを閉じ、仮想ネットワークの設定を保存します。
 
-この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 また、IIS を仮想マシンにインストールして、トラフィックが正常にルーティングされていることを確認します。
+     ![新しいアプリケーションゲートウェイの作成: 仮想ネットワーク](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+    
+3. **[基本]** タブで、その他の設定の既定値をそのまま使用し、 **[次へ:フロントエンド]** を選択します。
 
-1. **[新規]** をクリックします。
-2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
-3. 次の仮想マシンの値を入力します。
+### <a name="frontends-tab"></a>[フロントエンド] タブ
 
-    - *contosoVM* - 仮想マシンの名前です。
-    - *azureuser* - 管理者のユーザー名です。
-    - *Azure123456!* パスワードです。
-    - **[既存のものを使用]**、*[myResourceGroupAG]* の順に選択します。
+1. **[フロントエンド]** タブで、 **[フロントエンド IP アドレスの種類]** が **[パブリック]** に設定されていることを確認します。 <br>ユース ケースに従って、フロントエンド IP を [パブリック] または [プライベート] に設定できます。 この例では、パブリック フロントエンド IP を選択します。
+   > [!NOTE]
+   > Application Gateway v2 SKU では、 **[パブリック]** フロントエンド IP 構成のみを選択できます。 プライベート フロントエンド IP 構成は、この v2 SKU では現在有効になっていません。
 
-4. Click **OK**.
-5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** をクリックします。
-6. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。 
-7. **[無効]** をクリックして、ブート診断を無効にします。
-8. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
+2. **[パブリック IP アドレス]** として **[新規作成]** を選択し、パブリック IP アドレス名として「*myAGPublicIPAddress*」と入力し、 **[OK]** を選択します。 
 
-### <a name="install-iis"></a>IIS のインストール
+     ![新しいアプリケーション ゲートウェイの作成: フロントエンド](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+3. **[次へ:バックエンド]** を選択します。
 
-1. 対話型シェルを開いて、**PowerShell** に設定されていることを確認します。
+### <a name="backends-tab"></a>[バックエンド] タブ
 
-    ![カスタム拡張機能のインストール](./media/create-multiple-sites-portal/application-gateway-extension.png)
+バックエンド プールは、要求を処理するバックエンド サーバーに要求をルーティングするために使用されます。 バックエンド プールには、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、完全修飾ドメイン名 (FQDN)、および Azure App Service などのマルチテナント バックエンドがあります。 この例では、アプリケーション ゲートウェイを使用して空のバックエンド プールを作成し、バックエンド ターゲットをバックエンド プールに追加します。
+
+1. **[バックエンド]** タブで、 **[+ バックエンド プールの追加]** を選択します。
+
+2. 開いた **[バックエンド プールの追加]** ウィンドウで、次の値を入力して空のバックエンド プールを作成します。
+
+    - **[名前]** :バックエンド プールの名前として「*contosoPool*」と入力します。
+    - **[ターゲットを持たないバックエンド プールを追加します]** : **[はい]** を選択して、ターゲットを持たないバックエンド プールを作成します。 アプリケーション ゲートウェイを作成した後で、バックエンド ターゲットを追加します。
+
+3. **[バックエンド プールの追加]** ウィンドウで、 **[追加]** を選択してバックエンド プールの構成を保存し、 **[バックエンド]** タブに戻ります。
+4. 次に、*fabrikamPool* という名前の別のバックエンド プールを追加します。
+
+     ![新しいアプリケーション ゲートウェイの作成: バックエンド](./media/create-multiple-sites-portal/backend-pools.png)
+
+4. **[バックエンド]** タブで、 **[次へ:構成]** を選択します。
+
+### <a name="configuration-tab"></a>[構成] タブ
+
+**[構成]** タブで、ルーティング規則を使用して作成したフロントエンドとバックエンド プールを接続します。
+
+1. **[ルーティング規則]** 列で **[規則を追加する]** を選択します。
+
+2. 開いた **[ルーティング規則の追加]** ウィンドウで、 **[規則名]** に「*contosoRule*」と入力します。
+
+3. ルーティング規則にはリスナーが必要です。 **[ルーティング規則の追加]** ウィンドウ内の **[リスナー]** タブで、リスナーの次の値を入力します。
+
+    - **[リスナー名]** :リスナーの名前として「*contosoListener*」と入力します。
+    - **[フロントエンド IP]** : **[パブリック]** を選択して、フロントエンド用に作成したパブリック IP を選択します。
+
+   **[追加設定]** :
+   - **[リスナーの種類]** :複数のサイト
+   - **[ホスト名]** : **www.contoso.com**
+
+   **[リスナー]** タブで他の設定の既定値をそのまま使用し、 **[バックエンド ターゲット]** タブを選択して、ルーティング規則の残りの部分を構成します。
+
+   ![新しいアプリケーション ゲートウェイの作成: リスナー](./media/create-multiple-sites-portal/routing-rule.png)
+
+4. **[バックエンド ターゲット]** タブで、 **[バックエンド ターゲット]** として **[contosoPool]** を選択します。
+
+5. **[HTTP 設定]** には **[新規作成]** を選択して新しい HTTP 設定を作成します。 HTTP 設定によって、ルーティング規則の動作が決まります。 開いた **[HTTP 設定の追加]** ウィンドウで、 **[HTTP 設定名]** として「*contosoHTTPSetting*」と入力します。 **[HTTP 設定の追加]** ウィンドウで他の設定の既定値をそのまま使用し、 **[追加]** を選択して **[ルーティング規則の追加]** ウィンドウに戻ります。 
+
+6. **[ルーティング規則の追加]** ウィンドウで **[追加]** を選択してルーティング規則を保存し、 **[構成]** タブに戻ります。
+7. **[ルールの追加]** を選択し、Fabrikam 用に同様のルール、リスナー、バックエンドターゲット、および HTTP 設定を追加します。
+
+     ![新しいアプリケーションゲートウェイの作成: ルーティング規則](./media/create-multiple-sites-portal/fabrikamRule.png)
+
+7. **[次へ:タグ]** 、 **[次へ:確認と作成]** をクリックします。
+
+### <a name="review--create-tab"></a>[確認と作成] タブ
+
+**[確認と作成 ]** タブの設定を確認し、 **[作成]** を選択して、仮想ネットワーク、パブリック IP アドレス、およびアプリケーションゲートウェイを作成します。 Azure によるアプリケーション ゲートウェイの作成には数分かかる場合があります。
+
+次のセクションに進む前に、デプロイが正常に完了するまで待機します。
+
+## <a name="add-backend-targets"></a>バックエンド ターゲットの追加
+
+この例では、ターゲットのバックエンドとして仮想マシンを使用します。 既存の仮想マシンを使用することも、新しい仮想マシンを作成することもできます。 Azure がアプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。
+
+バックエンド ターゲットを追加するには、次のことを行います。
+
+1. バックエンド サーバーとして使用される 2 つの新しい VM (*contosoVM* と *fabrikamVM*) を作成します。
+2. IIS を仮想マシンにインストールして、アプリケーション ゲートウェイが正常に作成されたことを確認します。
+3. バックエンド サーバーをバックエンド プールに追加します。
+
+### <a name="create-a-virtual-machine"></a>仮想マシンの作成
+
+1. Azure portal で、 **[リソースの作成]** を選択します。 **[新規作成]** ウィンドウが表示されます。
+2. **[コンピューティング]** を選択し、 **[人気順]** の一覧で **[Windows Server 2016 Datacenter]** を選択します。 **[仮想マシンの作成]** ページが表示されます。<br>Application Gateway は、バックエンド プールで使用されているあらゆる種類の仮想マシンにトラフィックをルートできます。 この例では、Windows Server 2016 Datacenter を使用します。
+3. **[基本]** タブで、次の仮想マシンの設定に以下の値を入力します。
+
+    - **[リソース グループ]** :リソース グループ名には、**myResourceGroupAG** を選択します。
+    - **[仮想マシン名]** : 仮想マシンの名前として「*contosoVM*」と入力します。
+    - **[ユーザー名]** : 管理者のユーザー名として「*azureuser*」と入力します。
+    - **Password**:管理者パスワードとして「*Azure123456!* 」と入力します 。
+4. 他の既定値をそのまま使用し、 **[Next: ディスク]** を選択します。  
+5. **[ディスク]** タブの既定値をそのまま使用し、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
+6. **[ネットワーク]** タブで、 **[仮想ネットワーク]** に **myVNet** が選択されていること、および **[サブネット]** が **myBackendSubnet** に設定されていることを確認します。 他の既定値をそのまま使用し、 **[Next: 管理]** を選択します。<br>Application Gateway は、それが存在している仮想ネットワークの外部にあるインスタンスと通信できますが、IP 接続があることを確認する必要があります。
+7. **[管理]** タブで、 **[ブート診断]** を **[オフ]** に設定します。 他の既定値をそのまま使用し、 **[確認および作成]** を選択します。
+8. **[確認および作成]** タブで、設定を確認し、検証エラーを修正してから、 **[作成]** を選択します。
+9. 仮想マシンの作成が完了するのを待って先に進みます。
+
+### <a name="install-iis-for-testing"></a>テスト用の IIS のインストール
+
+この例では、Azure がアプリケーション ゲートウェイを正常に作成したことを確認するためにのみ、仮想マシンに IIS をインストールします。
+
+1. [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)を開きます。 そのためには、Azure portal の上部のナビゲーション バーで **[Cloud Shell]** を選択して、ドロップダウン リストで **[PowerShell]** を選択します。 
+
+    ![カスタム拡張機能のインストール](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
 2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
-      -Location eastus `
       -ExtensionName IIS `
       -VMName contosoVM `
       -Publisher Microsoft.Compute `
       -ExtensionType CustomScriptExtension `
       -TypeHandlerVersion 1.4 `
-      -Settings $publicSettings
+      -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+      -Location EastUS
     ```
 
-3. 2 番目の仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzVMExtension の VMName の値として、*fabrikamVM* という名前を入力します。
+3. 2 つ目の仮想マシンを作成し、お客様が先ほど完了した手順を使用して IIS をインストールします。 仮想マシンの名前と、**Set-AzVMExtension** コマンドレットの **VMName** 設定には、*fabrikamVM* を使用します。
 
-## <a name="create-backend-pools-with-the-virtual-machines"></a>仮想マシンでのバックエンド プールの作成
+### <a name="add-backend-servers-to-backend-pools"></a>バックエンド プールヘのバックエンド サーバーの追加
 
-1. **[すべてのリソース]**、**[myAppGateway]** の順にクリックします。
-2. **[バックエンド プール]**、**[追加]** の順にクリックします。
-3. *contosoPool* という名前を入力し、**[ターゲットの追加]** を使用して *contosoVM* を追加します。
+1. **[すべてのリソース]** を選択し、**myAppGateway** を選択します。
 
-    ![バックエンド サーバーの追加](./media/create-multiple-sites-portal/application-gateway-multisite-backendpool.png)
+2. 左側のメニューで **[バックエンド プール]** を選択します。
 
-4. Click **OK**.
-5. **[バックエンド プール]**、**[追加]** の順にクリックします。
-6. 終了したばかりの手順を使用して、*fabrikamVM* を含む *fabrikamPool* を作成します。
+3. **[contosoPool]** を選択します。
 
-## <a name="create-backend-listeners"></a>バックエンド リスナーの作成
+4. **[ターゲット]** の下のドロップダウン リストで **[仮想マシン]** を選択します。
 
-1. **[リスナー]**、**[マルチサイト]** の順にクリックします。
-2. 次のリスナーの値を入力します。
-    
-   - *contosoListener* - リスナーの名前です。
-   - *www.contoso.com* - このホスト名の例をドメイン名に置き換えます。
+5. **[仮想マシン]** と **[ネットワーク インターフェイス]** で、**contosoVM** 仮想マシンとその関連するネットワーク インターフェイスをドロップダウン リストから選択します。
 
-3. Click **OK**.
-4. *fabrikamListener* という名前を使用して 2 番目のリスナーを作成し、2 番目のドメイン名を使用します。 この例では、*www.fabrikam.com* が使用されています。
+    ![バックエンド サーバーの追加](./media/create-multiple-sites-portal/edit-backend-pool.png)
 
-![マルチサイト リスナー](media/create-multiple-sites-portal/be-listeners.png)
+6. **[保存]** を選択します。
+7. 手順を繰り返し、*fabrikamVM* とインターフェイスを *fabrikamPool* に追加します。
 
-## <a name="create-routing-rules"></a>ルーティング規則の作成
+デプロイが完了するまで待ってから次の手順に進んでください。
 
-ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールを使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも先に配置する必要があります。 
+## <a name="create-a-www-a-record-in-your-domains"></a>実際のドメイン内の www A レコードの作成
 
-この例では、2 つの新しいルールを作成し、アプリケーション ゲートウェイを作成したときに作成された既定のルールを削除します。
+パブリック IP アドレスを使用してアプリケーション ゲートウェイを作成した後は、IP アドレスを取得し、これを使用して実際のドメインに A レコードを作成できます。 
 
-1. **[ルール]**、**[基本]** の順にクリックします。
-2. 名前として「*contosoRule*」と入力します。
-3. リスナーとして *[contosoListener]* を選択します。
-4. バックエンド プールとして *[contosoPool]* を選択します。
+1. **[すべてのリソース]** 、 **[myAGPublicIPAddress]** の順にクリックします。
 
-    ![パス ベース ルールの作成](./media/create-multiple-sites-portal/application-gateway-multisite-rule.png)
+    ![アプリケーション ゲートウェイの DNS アドレスの記録](./media/create-multiple-sites-portal/public-ip.png)
 
-5. Click **OK**.
-6. *fabrikamRule*、*fabrikamListener*、および *fabrikamPool* の名前を使用して 2 番目のルールを作成します。
-7. *rule1* という名前の既定のルールをクリックし、**[削除]** をクリックしてこのルールを削除します。
-
-## <a name="create-a-cname-record-in-your-domain"></a>ドメインの CNAME レコードの作成
-
-パブリック IP アドレスを使用してアプリケーション ゲートウェイを作成した後は、DNS アドレスを取得し、これを使用してドメインに CNAME レコードを作成できます。 アプリケーション ゲートウェイを再起動すると VIP が変更される可能性があるため、A レコードの使用はお勧めしません。
-
-1. **[すべてのリソース]**、**[myAGPublicIPAddress]** の順にクリックします。
-
-    ![アプリケーション ゲートウェイの DNS アドレスの記録](./media/create-multiple-sites-portal/application-gateway-multisite-dns.png)
-
-2. DNS アドレスをコピーし、これをドメイン内の新しい CNAME レコードの値として使用します。
+2. IP アドレスをコピーし、これを実際のドメイン内の新しい *www* A レコードの値として使用します。
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-1. ブラウザーのアドレス バーにドメイン名を入力します。 http://www.contoso.com など。
+1. ブラウザーのアドレス バーにドメイン名を入力します。 [http://www.contoso.com](http://www.contoso.com ) など。
 
     ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/create-multiple-sites-portal/application-gateway-iistest.png)
 
@@ -181,14 +229,14 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除することで、アプリケーション ゲートウェイとそのすべての関連リソースも削除します。
+アプリケーション ゲートウェイと共に作成したリソースが不要になったら、リソース グループを削除します。 リソース グループを削除する際は、アプリケーション ゲートウェイとそのすべての関連リソースも削除します。
 
 リソース グループを削除するには:
 
 1. Azure portal の左側のメニューにある **[リソース グループ]** を選択します。
 2. **[リソース グループ]** ページで、リストの **myResourceGroupAG** を探して選択します。
-3. **[リソース グループ] ページ**で、**[リソース グループの削除]** を選択します。
-4. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroupAG*」と入力し、**[削除]** を選択します。
+3. **[リソース グループ] ページ**で、 **[リソース グループの削除]** を選択します。
+4. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroupAG*」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

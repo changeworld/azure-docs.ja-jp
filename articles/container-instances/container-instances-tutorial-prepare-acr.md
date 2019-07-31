@@ -3,17 +3,18 @@ title: チュートリアル - Azure Container Instances 用にコンテナー �
 description: Azure Container Instances チュートリアル 2/3 - Azure コンテナー レジストリの準備とイメージのプッシュ
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c1a4313f9a8174b9ea6e6cff694b9a0a9cf395d1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b3c907eacb14ed65410a60fcf22ebe99fd8cc3bb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538155"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325617"
 ---
 # <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>チュートリアル:Azure コンテナー レジストリをデプロイし、コンテナー イメージをプッシュする
 
@@ -42,7 +43,7 @@ Azure Container Registry は、Azure におけるプライベート Docker レ�
 az group create --name myResourceGroup --location eastus
 ```
 
-リソース グループを作成したら、[az acr create][az-acr-create] コマンドで Azure Container Registry を作成します。 コンテナー レジストリ名は、Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 `<acrName>` を、レジストリの一意の名前に置き換えます。
+リソース グループを作成したら、[az acr create][az-acr-create] コマンドを使用して Azure コンテナー レジストリを作成します。 コンテナー レジストリ名は、Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 `<acrName>` を、レジストリの一意の名前に置き換えます。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
@@ -109,7 +110,7 @@ Result
 mycontainerregistry082.azurecr.io
 ```
 
-次に、[docker images][docker-images] コマンドでローカル イメージを一覧表示します。
+次に、[docker images][docker-images] コマンドを使用して、ローカル イメージを一覧表示します。
 
 ```bash
 docker images
@@ -162,13 +163,13 @@ v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05
 
 ## <a name="list-images-in-azure-container-registry"></a>Azure Container Registry のイメージの一覧表示
 
-先ほどプッシュしたイメージが確かに Azure Container Registry に存在することを確認し、[az acr repository list][az-acr-repository-list] コマンドを使って、レジストリ内のイメージを一覧表示します。 `<acrName>` を、コンテナー レジストリの名前に置き換えます。
+先ほどプッシュしたイメージが確かに対象の Azure コンテナー レジストリに存在することを確認し、[az acr repository list][az-acr-repository-list] コマンドを使って、レジストリ内のイメージを一覧表示します。 `<acrName>` を、コンテナー レジストリの名前に置き換えます。
 
 ```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
-例: 
+例:
 
 ```console
 $ az acr repository list --name mycontainerregistry082 --output table
@@ -177,7 +178,7 @@ Result
 aci-tutorial-app
 ```
 
-特定のイメージの*タグ*を表示するには、[az acr repository show-tags][az-acr-repository-show-tags] コマンドを使用します。
+特定のイメージの "*タグ*" を表示するには、[az acr repository show-tags][az-acr-repository-show-tags] コマンドを使用します。
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table

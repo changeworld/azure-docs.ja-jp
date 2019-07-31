@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: a0ab928ef3b8551e3e20ff3c4b16533c80ee4b7d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 061bd94a839d83f75566412ac546ab3208543780
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149308"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467631"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>チュートリアル:コンテキストが関連するデータを発話から抽出する
 
@@ -57,7 +57,7 @@ ms.locfileid: "65149308"
 
 1. **[Create new intent]\(意図の新規作成\)** を選択します。 
 
-1. ポップアップ ダイアログ ボックスに「`MoveEmployeeToCity`」と入力して、**[完了]** を選択します。 
+1. ポップアップ ダイアログ ボックスに「`MoveEmployeeToCity`」と入力して、 **[完了]** を選択します。 
 
     ![新しい意図の作成ダイアログのスクリーンショット](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
@@ -86,12 +86,12 @@ ms.locfileid: "65149308"
 1. **[Add prebuilt entity]\(作成済みエンティティの追加\)** を選択し、検索バーで `geo` を選択して事前構築済みエンティティをフィルター処理します。 
 
     ![geographyV2 事前構築済みエンティティをアプリに追加する](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
-1. 該当するチェック ボックスをオンにし、**[完了]** を選択します。
-1. **[エンティティ]** の一覧で、**[geographyV2]** を選択して新しいエンティティを開きます。 
+1. 該当するチェック ボックスをオンにし、 **[完了]** を選択します。
+1. **[エンティティ]** の一覧で、 **[geographyV2]** を選択して新しいエンティティを開きます。 
 1. `Origin` と `Destination` の 2 つのロールを追加します。 
 
     ![事前構築済みエンティティにロールを追加する](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. 左側のナビゲーションから **[Intents]\(意図\)** を選択し、次に **MoveEmployeeToCity** 意図を選択します。 都市名は事前構築済みエンティティ **geogrpahyV2** のラベルが付いていることに注意してください。
+1. 左側のナビゲーションから **[Intents]\(意図\)** を選択し、次に **MoveEmployeeToCity** 意図を選択します。 都市名は、あらかじめ構築されたエンティティ **geographyV2** のラベルが付いていることに注意してください。
 1. 一覧の最初の発話で、出発地を選択します。 ドロップダウン メニューが表示されます。 一覧の **[geographyV2]** を選択し、メニューに従って **[Origin]\(出発地\)** を選択します。
 1. 前の手順の方法を使用して、すべての発話内の場所のすべてのロールをマークします。 
 

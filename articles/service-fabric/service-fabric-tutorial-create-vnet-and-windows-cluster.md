@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/13/2019
+ms.date: 07/22/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: dabbefa8ca2073e30948f1c70782f730bceae030
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e98b159443cec868040298d76e87a8de6b507ae
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158092"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385100"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>チュートリアル:Azure 仮想ネットワークに Windows を実行する Service Fabric クラスターをデプロイする
 
@@ -183,7 +183,7 @@ Azure AD での Service Fabric クラスターに関する構成の手順を簡�
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure AD アプリケーションを作成し、ユーザーをロールに割り当てる
 クラスターへのアクセスを制御するために、Web アプリケーションとネイティブ アプリケーションの 2 つの Azure AD アプリケーションを作成します。 クラスターを表すアプリケーションを作成したら、[Service Fabric によってサポートされるロール](service-fabric-cluster-security-roles.md) (読み取り専用と管理者) にユーザーを割り当てます。
 
-`SetupApplications.ps1` を実行します。パラメーターとして、テナント ID、クラスター名、および Web アプリケーション応答 URL を指定します。 ユーザーのユーザー名とパスワードを指定します。 例: 
+`SetupApplications.ps1` を実行します。パラメーターとして、テナント ID、クラスター名、および Web アプリケーション応答 URL を指定します。 ユーザーのユーザー名とパスワードを指定します。 例:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -194,7 +194,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > ナショナル クラウド (たとえば Azure Government、Azure China、Azure Germany) については、`-Location` パラメーターを指定します。
 
-*TenantId* (ディレクトリ ID) は、[Azure portal](https://portal.azure.com) で確認できます。 **[Azure Active Directory]** > **[プロパティ]** の順に選択し、**[ディレクトリ ID]** の値をコピーします。
+*TenantId* (ディレクトリ ID) は、[Azure portal](https://portal.azure.com) で確認できます。 **[Azure Active Directory]**  >  **[プロパティ]** の順に選択し、 **[ディレクトリ ID]** の値をコピーします。
 
 *ClusterName* は、スクリプトによって作成される Azure AD アプリケーションのプレフィックスとして使用されます。 実際のクラスター名と完全に一致している必要はありません。 これは、使用されている Service Fabric クラスターへの Azure AD アーティファクトのマッピングを容易にすることだけが目的です。
 
@@ -260,7 +260,7 @@ Azure AD テナント用の管理特権を持っているアカウントにサ�
 }
 ```
 
-[azuredeploy.parameters.json][parameters] パラメーター ファイルで、パラメーター値を追加します。 例: 
+[azuredeploy.parameters.json][parameters] パラメーター ファイルで、パラメーター値を追加します。 例:
 
 ```json
 "aadTenantId": {

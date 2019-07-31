@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: b6ef08be346aebd220b7234253ce45c4615e38a9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 53a46c6137c3336c405eb62dc7b254ac26c13d9e
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445523"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406003"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -58,7 +58,7 @@ ms.locfileid: "67445523"
 > 
 > 利便性のために、このドキュメントは、必要なすべての Azure リソースを作成できるテンプレートにリンクしています。 
 >
-> 仮想ネットワークでの HDInsight の使用方法の詳細については、[仮想ネットワークを使用した HDInsight の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するドキュメントをご覧ください。
+> 仮想ネットワークでの HDInsight の使用方法の詳細については、[HDInsight 用の仮想ネットワークの計画](hdinsight-plan-virtual-network-deployment.md)に関するドキュメントを参照してください。
 
 ## <a name="storm-and-kafka"></a>Storm と Kafka
 
@@ -408,8 +408,8 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
       | Setting | 値 |
       | --- | --- |
-      | サブスクリプション | お使いの Azure サブスクリプション |
-      | リソース グループ | リソースが含まれるリソース グループ。 |
+      | Subscription | お使いの Azure サブスクリプション |
+      | Resource group | リソースが含まれるリソース グループ。 |
       | Location | リソースが作成される Azure リージョン。 |
       | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 |
       | [Storm Cluster Name]\(Storm クラスター名\) | Storm クラスターの名前。 |

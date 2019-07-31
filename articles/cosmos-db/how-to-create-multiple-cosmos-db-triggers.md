@@ -1,33 +1,33 @@
 ---
-title: 複数の独立した Azure Cosmos DB トリガーを作成する方法
-description: 複数の独立した Azure Cosmos DB トリガーを構成してイベント駆動型の Azure Functions アーキテクチャを作成する方法について説明します。
+title: 複数の独立した Cosmos DB 用 Azure Functions トリガーを作成する方法
+description: 複数の独立した Cosmos DB 用 Azure Functions トリガーを構成してイベント駆動型のアーキテクチャを作成する方法について説明します。
 author: ealsur
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 722da9f0112d63af52be8c9c3a746f6da9638bac
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 315ac1025a2b05ec7b16f7f0b14b66f224905d92
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241948"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335682"
 ---
-# <a name="create-multiple-azure-cosmos-db-triggers"></a>複数の Azure Cosmos DB トリガーの作成
+# <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>複数の Cosmos DB 用 Azure Functions トリガーの作成
 
-この記事では、複数の Cosmos DB トリガーが並列で動作し、変更に対して個別に対応するよう構成する方法について説明します。
+この記事では、複数の Cosmos DB 用 Azure Functions トリガーが並列で動作し、変更に対して個別に対応するよう構成する方法について説明します。
 
-![Azure Cosmos DB トリガーと連携し、リース コンテナーを共有するサーバーレスのイベントベース Functions](./media/change-feed-functions/multi-trigger.png)
+![Cosmos DB 用 Azure Functions トリガーと連携し、リース コンテナーを共有するサーバーレスのイベントベース Functions](./media/change-feed-functions/multi-trigger.png)
 
 ## <a name="event-based-architecture-requirements"></a>イベントベースのアーキテクチャの要件
 
 [Azure Functions](../azure-functions/functions-overview.md) を使用してサーバーレス アーキテクチャを構築する際は、サイズが大きく実行時間の長い関数ではなく、連携する小さい関数のセットを作成することを[お勧めします](../azure-functions/functions-best-practices.md#avoid-long-running-functions)。
 
-[Azure Cosmos DB トリガー](./change-feed-functions.md)を使用してイベントベースのサーバーレス フローを構築する際に、特定の [Azure Cosmos コンテナー](./databases-containers-items.md#azure-cosmos-containers)に新しいイベントがあるたびに複数のことを実行したくなる状況に直面します。 トリガーするアクションが互いに独立している場合、理想的な解決策として、実行したい**アクションごとに 1 つの Cosmos DB トリガーを作成**し、すべてで同一の Azure Cosmos コンテナーに対する変更を待機します。
+[Cosmos DB 用 Azure Functions トリガー](./change-feed-functions.md)を使用してイベントベースのサーバーレス フローを構築する際に、特定の [Azure Cosmos コンテナー](./databases-containers-items.md#azure-cosmos-containers)に新しいイベントがあるたびに複数のことを実行したくなる状況に直面します。 トリガーするアクションが互いに独立している場合、理想的な解決策として、実行したい**アクションごとに 1 つの Cosmos DB 用 Azure Functions トリガーを作成**し、すべてで同一の Azure Cosmos コンテナーに対する変更をリッスンします。
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>複数のトリガーのコンテナーの最適化
 
-Cosmos DB トリガーの "*要件*" を考えると、状態を格納するための 2 番目のコンテナー ("*リース コンテナー*" とも呼ばれます) が必要です。 これは、Azure 関数ごとに個別のリース コンテナーが必要になるという意味でしょうか。
+Cosmos DB 用 Azure Functions トリガーの "*要件*" を考えると、状態を格納するための 2 番目のコンテナー ("*リース コンテナー*" とも呼ばれます) が必要です。 これは、Azure 関数ごとに個別のリース コンテナーが必要になるという意味でしょうか。
 
 ここでは、次の 2 つの選択肢があります。
 
@@ -108,6 +108,6 @@ JavaScript の場合は、`leaseCollectionPrefix` 属性を使用して `functio
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Cosmos DB トリガー](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)の全体的な構成を確認する。
+* [Cosmos DB 用 Azure Functions トリガー](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)の全体的な構成を確認する
 * すべての言語向けに拡張された[サンプルの一覧](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---example)を確認する。
 * その他のサンプルについては、Azure Cosmos DB および Azure Functions を使用したサーバーレス レシピの [GitHub リポジトリ](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios)を参照する。

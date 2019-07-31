@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: d74539ec1de8f503b0d0e423adf6273d1422fed5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592333"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325269"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Azure Data Box Heavy を使用してファイル共有のコンテンツを SharePoint Online に移行する
 
@@ -66,8 +66,8 @@ Data Box Heavy にデータをコピーするには、次の手順を実行し�
 2. Data Box Heavy を受け取ったら、[Data Box Heavy を設定](data-box-heavy-deploy-set-up.md)します。 ケーブルを接続し、デバイス上の両方のノードを構成します。
 3. [Azure Data Box Heavy にデータをコピーします](data-box-heavy-deploy-copy-data.md)。 コピーの際は、以下の点に留意してください。
 
-    - データをコピーする際は、Data Box Heavy の *AzureFile* フォルダーのみを使用します。 これは、データの最終的な場所がブロック BLOB やページ BLOB ではなく Azure ファイル共有だからです。
-    - *AzureFile* フォルダー内のフォルダーにファイルをコピーします。 *AzureFile* フォルダー内のサブフォルダーでファイル共有が作成されます。 *AzureFile* フォルダーに直接コピーされたファイルは失敗し、ブロック BLOB としてアップロードされます。 これが、次の手順で VM にマウントするファイル共有です。
+    - データをコピーする際は、Data Box Heavy の *StorageAccountName_AzFile* フォルダーのみを使用します。 これは、データの最終的な場所がブロック BLOB やページ BLOB ではなく Azure ファイル共有だからです。
+    - *StorageAccountName_AzFile* フォルダー内のフォルダーにファイルをコピーします。 *StorageAccountName_AzFile* フォルダー内のサブフォルダーでファイル共有が作成されます。 *StorageAccountName_AzFile* フォルダーに直接コピーされたファイルは失敗し、ブロック BLOB としてアップロードされます。 これが、次の手順で VM にマウントするファイル共有です。
     - Data Box Heavy の両方のノードにデータをコピーします。
 3. デバイスで [[発送準備]](data-box-heavy-deploy-picked-up.md#prepare-to-ship) を実行します。 発送準備が成功すれば、Azure へのファイルのアップロードも成功します。
 4. [デバイスを返送します](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back)。
@@ -75,7 +75,7 @@ Data Box Heavy にデータをコピーするには、次の手順を実行し�
 
 ## <a name="use-spmt-to-migrate-data"></a>SPMT を使用してデータを移行する
 
-データのコピーが完了したことを知らせる通知が Azure データ チームから届いたら、SharePoint Online へのデータの移行に進むことができます。
+データのコピーが完了したことを知らせる通知が Azure データ チームから届いたら、SharePoint Online へのデータの移行に進みます。
 
 最適なパフォーマンスと接続性を確保するため、Azure 仮想マシン (VM) を作成することをお勧めします。
 

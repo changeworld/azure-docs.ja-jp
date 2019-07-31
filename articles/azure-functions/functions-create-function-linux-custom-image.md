@@ -5,26 +5,26 @@ services: functions
 keywords: ''
 author: ggailey777
 ms.author: glenga
-ms.date: 02/25/2019
+ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 03e1ec58b0ef3ad50a04f82ced7d20119ab3ef5b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a8a216a7d2ce048ed5131997df762942998aaa88
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59491459"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444124"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>カスタム イメージを使用して Linux で関数を作成する
 
 Azure Functions を使用して、独自のカスタム コンテナー内の Linux 上で関数をホストできます。 [既定の Azure App Service コンテナー上でホストする](functions-create-first-azure-function-azure-cli-linux.md)こともできます。 この機能には [Functions 2.x ランタイム](functions-versions.md)が必要です。
 
-このチュートリアルでは、関数をカスタム Docker イメージとして Azure にデプロイする方法について説明します。 このパターンは、組み込みの App Service コンテナー イメージをカスタマイズする必要がある場合に便利です。 特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときに、カスタム イメージを使用することがあります。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。 [Python のサポート](functions-reference-python.md)は現時点でプレビュー段階です
+このチュートリアルでは、関数をカスタム Docker イメージとして Azure にデプロイする方法について説明します。 このパターンは、組み込みのコンテナー イメージをカスタマイズする必要がある場合に便利です。 特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときに、カスタム イメージを使用することがあります。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。 [Python のサポート](functions-reference-python.md)は現時点でプレビュー段階です
 
-このチュートリアルでは、Azure Functions Core Tools を使用して、カスタム Linux イメージに関数を作成する方法について説明します。 このイメージを、Azure CLI を使用して作成された Azure の関数アプリに発行します。
+このチュートリアルでは、Azure Functions Core Tools を使用して、カスタム Linux イメージに関数を作成する方法について説明します。 このイメージを、Azure CLI を使用して作成された Azure の関数アプリに発行します。 後で、Azure Queue storage に接続するように関数を更新します。 有効にすることもできます。  
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -33,12 +33,13 @@ Azure Functions を使用して、独自のカスタム コンテナー内の Li
 > * Docker を使用してカスタム イメージをビルドします。
 > * カスタム イメージをコンテナー レジストリに発行します。
 > * Azure ストレージ アカウントを作成します。
-> * Linux App Service プランを作成します。
+> * Premium ホスティング プランを作成します。
 > * Docker Hub から Function App をデプロイします。
 > * Function App にアプリケーション設定を追加します。
-> * 継続的配置を有効にする
+> * 継続的デプロイを有効にします。
+> * Application Insights の監視を追加します。
 
-次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。  
+次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,7 +66,7 @@ func init MyFunctionProj --docker
 
 メッセージが表示されたら、次の言語からワーカー ランタイムを選択します。
 
-* `dotnet`: .NET クラス ライブラリ プロジェクト (.csproj) を作成します。
+* `dotnet`: .NET Core クラス ライブラリ プロジェクト (.csproj) を作成します。
 * `node`: JavaScript プロジェクトを作成します。
 * `python`: Python プロジェクトを作成します。
 
@@ -87,8 +88,6 @@ cd MyFunctionProj
 ```
 
 [!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
-
-[!INCLUDE [functions-update-function-code](../../includes/functions-update-function-code.md)]
 
 [!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
 
@@ -189,41 +188,26 @@ v1.0.0: digest: sha256:be080d80770df71234eb893fbe4d... size: 1796
 
 [!INCLUDE [functions-create-storage-account](../../includes/functions-create-storage-account.md)]
 
-## <a name="create-a-linux-app-service-plan"></a>Linux App Service プランの作成
+## <a name="create-a-premium-plan"></a>Premium プランを作成する
 
-現在、従量課金プランでは Linux での Functions のホスティングはサポートされていません。 Linux App Service プランで Linux コンテナー アプリをホストする必要があります。 ホスティングについて詳しくは、「[Azure Functions のホスティング プランの比較](functions-scale.md)」をご覧ください。
+カスタム Functions コンテナーの Linux ホスティングは、[専用 (App Service) プラン](functions-scale.md#app-service-plan)および [Premium プラン](functions-scale.md#premium-plan)でサポートされています。 このチュートリアルでは、必要に応じて拡張できる Premium プランを使用します。 ホスティングについて詳しくは、「[Azure Functions のホスティング プランの比較](functions-scale.md)」をご覧ください。
 
-[!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
+次の例では、**Elastic Premium 1** 価格レベル (`--sku EP1`) の `myPremiumPlan` という名前の Premium プランを米国西部リージョン (`-location WestUS`) で Linux コンテナー (`--is-linux`) に作成します。
+
+```azurecli-interactive
+az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan \
+--location WestUS --number-of-workers 1 --sku EP1 --is-linux
+```
 
 ## <a name="create-and-deploy-the-custom-image"></a>カスタム イメージの作成とデプロイ
 
-Function App は関数の実行をホストします。 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用して Docker Hub イメージから Function App を作成します。
+関数アプリは、ホスティング プランでの関数の実行を管理します。 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用して Docker Hub イメージから Function App を作成します。
 
 次のコマンドでは、`<app_name>` プレースホルダーを一意の Function App 名で、`<storage_name>` をストレージ アカウント名で置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 以前と同様に、`<docker-id>` は Docker アカウント名です。
 
 ```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
---plan myAppServicePlan --deployment-container-image-name <docker-id>/mydockerimage:v1.0.0
-```
-
-Function App が作成されると、Azure CLI によって次の例のような情報が表示されます。
-
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "containerSize": 1536,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "quickstart.azurewebsites.net",
-  "enabled": true,
-  "enabledHostNames": [
-    "quickstart.azurewebsites.net",
-    "quickstart.scm.azurewebsites.net"
-  ],
-   ....
-    // Remaining output has been truncated for readability.
-}
+--plan myPremiumPlan --deployment-container-image-name <docker-id>/mydockerimage:v1.0.0
 ```
 
 _deployment-container-image-name_ パラメーターは、Function App を作成するために使用する、Docker Hub でホストされているイメージを示します。 デプロイに使用されているイメージに関する情報を表示するには、[az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) コマンドを使用します。 別のイメージからデプロイするには、[az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) コマンドを使用します。
@@ -256,16 +240,6 @@ AzureWebJobsStorage=$storageConnectionString
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 
-## <a name="enable-application-insights"></a>Application Insights を有効にする
-
-関数の実行を監視するための推奨される方法は、関数アプリを Azure Application Insights と統合することです。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Azure CLI を使用して関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
-
-関数アプリ用に Application Insights を有効にするには:
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
-
 ## <a name="enable-continuous-deployment"></a>継続的配置を有効にする
 
 コンテナーを使用する利点の 1 つは、コンテナーがレジストリで更新されたときに自動的に更新プログラムを配置できることです。 [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) コマンドを使用して、継続的配置を有効にします。
@@ -278,11 +252,21 @@ az functionapp deployment container config --enable-cd \
 
 継続的配置を有効にすると、このコマンドから配置 Webhook URL が返されます。 [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) コマンドを使用してこの URL を返すこともできます。 
 
-配置 URL をコピーし、DockerHub リポジトリを参照し、**[Webhook]** タブを選択し、Webhook の **[webhook 名]** を入力し、**[Webhook URL]** に URL を貼り付けます。次にプラス記号 (**+**) を選択します。
+配置 URL をコピーし、DockerHub リポジトリを参照し、 **[Webhook]** タブを選択し、Webhook の **[webhook 名]** を入力し、 **[Webhook URL]** に URL を貼り付けます。次にプラス記号 ( **+** ) を選択します。
 
 ![DockerHub リポジトリに Webhook を追加する](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
 Webhook を設定して、DockerHub のリンクされたイメージを更新すると、関数アプリで最新のイメージがダウンロードされ、インストールされます。
+
+## <a name="enable-application-insights"></a>Application Insights を有効にする
+
+関数の実行を監視するための推奨される方法は、関数アプリを Azure Application Insights と統合することです。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Azure CLI を使用して関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
+
+関数アプリ用に Application Insights を有効にするには:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
@@ -295,11 +279,11 @@ Webhook を設定して、DockerHub のリンクされたイメージを更新�
 > * Docker を使用してカスタム イメージをビルドします。
 > * カスタム イメージをコンテナー レジストリに発行します。
 > * Azure ストレージ アカウントを作成します。
-> * Linux App Service プランを作成します。
+> * Linux Premium プランを作成します。
 > * Docker Hub から Function App をデプロイします。
 > * Function App にアプリケーション設定を追加します。
-
-App Service のコア プラットフォームに組み込まれる継続的インテグレーション機能を有効にする方法について説明します。 関数アプリを構成して、Docker Hub 内のイメージを更新するときに、コンテナーが再デプロイされるように設定できます。
+> * 継続的デプロイを有効にします。
+> * Application Insights の監視を追加します。
 
 > [!div class="nextstepaction"] 
-> [Web App for Containers での継続的デプロイ](../app-service/containers/app-service-linux-ci-cd.md)
+> [Azure に関数をデプロイするためのオプションについて詳しく学習します](functions-deployment-technologies.md)

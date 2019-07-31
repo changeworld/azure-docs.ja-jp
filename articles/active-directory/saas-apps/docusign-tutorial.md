@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 607e5aded52375190878de6b48ffa4aa2ab49767
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c7d6116ed2925e57f094a67f27a11f9e2d61831
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104083"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499259"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>チュートリアル:Azure Active Directory と DocuSign の統合
 
@@ -47,7 +47,7 @@ Azure AD と DocuSign の統合を構成するには、次のものが必要で�
 
 * DocuSign では、**SP** Initiated SSO がサポートされます
 
-* DocuSign では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* DocuSign では、[自動ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)がサポートされます
 
 ## <a name="adding-docusign-from-the-gallery"></a>ギャラリーからの DocuSign の追加
 

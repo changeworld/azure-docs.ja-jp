@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 0fef3bffd30c19d0313e5fce7eb610ae7f6349f5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bb0e44f83e2101a7b21e7b7ec6fdc75974c6d6d8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606988"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333597"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>クイック スタート: Python で好ましくない要素を検出するためにテキストの内容を分析する
 
@@ -38,41 +38,34 @@ pip install azure-cognitiveservices-vision-contentmoderator
 
 ## <a name="import-modules"></a>モジュールをインポートする
 
-_ContentModeratorQS.py_ という名前の新しい Python スクリプトを作成して、次のコードを追加し、SDK の必要な部分をインポートします。
+_ContentModeratorQS.py_ という名前の新しい Python スクリプトを作成して、次のコードを追加し、SDK の必要な部分をインポートします。 この整形印刷モジュールは、JSON 応答を読みやすくするために用意されています。
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=1-10)]
-
-また、最終出力を処理するために、"整形出力" 関数もインポートします。
-
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=12)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=imports)]
 
 
 ## <a name="initialize-variables"></a>変数の初期化
 
-次に、お使いの Content Moderator サブスクリプション キーとエンドポイント URL のための変数を追加します。 `<your subscription key>` は、実際のキーの値に置き換える必要があります。 また、場合によっては、お使いのサブスクリプション キーに該当するリージョン識別子を使用するために、`endpoint_url` の値を変更する必要もあります。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。
+次に、お使いの Content Moderator サブスクリプション キーとエンドポイント URL のための変数を追加します。 環境変数に名前 `CONTENT_MODERATOR_SUBSCRIPTION_KEY` を追加し、その値としてサブスクリプション キーを使用します。 ベース エンドポイント URL 用に、`CONTENT_MODERATOR_ENDPOINT` を環境変数に追加し、その値としてリージョンに固有の URL を使用します (例: `https://westus.api.cognitive.microsoft.com`)。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=14-16)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=authentication)]
 
+ファイルからの複数行テキストの文字列は、調整されます。 [content_moderator_text_moderation.txt](https://github.com/Azure-Samples/cognitive-services-content-moderator-samples/blob/master/documentation-samples/python/content_moderator_text_moderation.txt) ファイルをローカル ルート フォルダーに含め、そのファイル名を変数に追加します。
 
-わかりやすくするために、スクリプトによって直接テキストを分析します。 モデレートするテキストの内容の新しい文字列を定義します。
-
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=18-21)]
-
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=textModerationFile)]
 
 ## <a name="query-the-moderator-service"></a>Moderator サービスの照会
 
-お使いのサブスクリプション キーとエンドポイント URL を使用して、**ContentModeratorClient** インスタンスを作成します。 その後、インスタンスのメンバーである **TextModerationOperations** インスタンスを使用して、モデレート API を呼び出します。 呼び出し方法の詳細については、 **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** リファレンスのドキュメントを参照してください。
+お使いのサブスクリプション キーとエンドポイント URL を使用して、**ContentModeratorClient** インスタンスを作成します。 
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=23-36)]
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=client)]
 
-## <a name="print-the-response"></a>応答の出力
+次に、クライアントをそのメンバー **TextModerationOperations** インスタンスと共に使用して、関数 `screen_text` を使用してモデレート API を呼び出します。 呼び出し方法の詳細については、 **[screen_text](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.textmoderationoperations?view=azure-python)** リファレンスのドキュメントを参照してください。
 
-最後に、呼び出しが正常に終了し、**Screen** インスタンスを返したことを確認します。 その後、返されたデータをコンソールに印刷します。
+[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/content_moderator_quickstart.py?name=textModeration)]
 
-[!code-python[](~/cognitive-services-content-moderator-samples/documentation-samples/python/text-moderation-quickstart-python.py?range=38-39)]
+## <a name="check-the-printed-response"></a>印刷された応答の確認
 
-
-このクイック スタートで使用したサンプル テキストでは、次の出力が得られます。
+サンプルを実行し、応答を確認します。 正常に完了すると、**Screen** インスタンスが返されます。 成功した場合の結果を次に示します。
 
 ```console
 {'auto_corrected_text': '" Is this a garbage email abide@ abed. com, phone: '

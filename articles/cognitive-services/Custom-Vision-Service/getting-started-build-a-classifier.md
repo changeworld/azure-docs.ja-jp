@@ -1,34 +1,35 @@
 ---
-title: 分類子を構築する - Custom Vision Service
+title: 'クイックスタート: 分類器を構築する - Custom Vision Service'
 titlesuffix: Azure Cognitive Services
-description: Custom Vision Web サイトを使用して画像分類モデルを作成する方法について説明します。
+description: このクイックスタートでは、Custom Vision Web サイトを使用して画像分類モデルを作成する方法について説明します。
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: conceptual
-ms.date: 04/03/2019
+ms.topic: quickstart
+ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 3cb67b57f406774b4bcaf57c24b8e7741068ced6
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 748336dcea580cefaf7638c86c1466bf0c16a472
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497307"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423586"
 ---
-# <a name="how-to-build-a-classifier-with-custom-vision"></a>Custom Vision で分類子を構築する方法
+# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>クイック スタート:Custom Vision で分類子を構築する方法
 
-画像分類のために Custom Vision Service を使用するには、最初に分類子モデルを構築する必要があります。 このガイドでは、Custom Vision Web サイトを通して分類子を構築する方法について説明します。
+このクイックスタートでは、Custom Vision Web サイトをとおして分類器を構築する方法について説明します。 分類器モデルを構築すると、画像分類のために Custom Vision Service を使用できます。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- 有効な Azure サブスクリプション。 無料で[アカウントを作成](https://azure.microsoft.com/free/)できます。
 - 分類子のトレーニングに使用する画像のセット。 画像の選択に関するヒントについては、以下を参照してください。
 
-
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portal で Custom Vision リソースを作成する
-Custom Vision サービスを使用するには、[Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) で Custom Vision Training リソースと Prediction リソースを作成する必要があります。 ここでは、Training リソースと Prediction リソースの両方を作成します。 
+
+Custom Vision サービスを使用するには、Azure portal で Custom Vision Training リソースと Prediction リソースを作成する必要があります。 [[Create Custom Vision]\(Custom Vision の作成\)](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) ページのダイアログ ウィンドウに入力し、Training リソースと Prediction リソースの両方を作成します。 
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
@@ -62,21 +63,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ## <a name="choose-training-images"></a>トレーニング画像を選択する
 
-最低でも、初期トレーニング セットで、タグごとに少なくとも 30 の画像を使用することをお勧めします。 トレーニングを行ったら、追加の画像をいくつか収集し、モデルをテストすることもお勧めします。
-
-モデルを効果的にトレーニングするには、視覚的に多様性のある画像を使用します。 以下の点で変化に富んだ画像を選択してください。
-* カメラのアングル
-* 照明
-* background
-* 見た目のスタイル
-* 個人またはグループになっている被写体
-* size
-* type
-
-さらに、すべてのトレーニング画像が以下の条件を満たしていることを確認します。
-* .jpg、.png、または .bmp 形式である
-* サイズが 6 MB 未満 (予測用画像は 4 MB)
-* 最短の辺が 256 ピクセル以上。これより短い画像は Custom Vision Service によって自動的にスケール アップされます
+[!INCLUDE [choose training images](includes/choose-training-images.md)]
 
 ## <a name="upload-and-tag-images"></a>画像をアップロードし、タグ付けする
 
@@ -118,9 +105,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ### <a name="probability-threshold"></a>確率しきい値
 
-**[パフォーマンス]** タブの左ウィンドウにある **確率しきい値** スライダーに注目してください。これは、精度と再現率を計算するときに正しいと見なされる、予測される確率のしきい値です。
-
-高い確率しきい値を指定した予測呼び出しの解釈は、再現率を犠牲にして高い精度で結果を返す傾向があります (見つかった分類は正しいが、多くは見つからない)。低い確率しきい値は、その逆を行います (実際の分類のほとんどが見つかるが、そのセット内には誤検知がある)。 これを念頭に置いて、プロジェクトの具体的な必要に応じて確率しきい値を設定する必要があります。 その後、クライアント側でモデルから予測結果を受け取るときには、フィルターとして同じ確率しきい値の値を使用する必要があります。
+[!INCLUDE [probability threshold](includes/probability-threshold.md)]
 
 ## <a name="manage-training-iterations"></a>トレーニングのイテレーションを管理する
 
@@ -128,7 +113,8 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ## <a name="next-steps"></a>次の手順
 
-このガイドでは、Custom Vision Web サイトを使用して、イメージ分類モデルを作成し、トレーニングする方法について説明しました。 次に、モデルを改善するための反復的プロセスについて、より多くの情報を入手してください。
+このクイックスタートでは、Custom Vision Web サイトを使用して、画像分類モデルを作成し、トレーニングする方法について説明しました。 次に、モデルを改善するための反復的プロセスについて、より多くの情報を入手してください。
 
-[モデルのテストと再トレーニング](test-your-model.md)
+> [!div class="nextstepaction"]
+> [モデルのテストと再トレーニング](test-your-model.md)
 

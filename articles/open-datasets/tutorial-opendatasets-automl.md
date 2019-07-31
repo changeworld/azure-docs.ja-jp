@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: a1df79c59ede8cd9ad72a2ebb2edb4bdb64b802a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 963e4f7e9db638450a89dd4ae0091019fc58e2a4
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588970"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359432"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>チュートリアル:自動機械学習とオープン データセットを使って回帰モデルを構築する
 
@@ -62,7 +62,7 @@ ms.locfileid: "67588970"
     ```
 1. このチュートリアルで必要なパッケージをインストールします。 これらのパッケージはサイズが大きいため、インストールに 5 - 10 分かかります。
     ```
-    pip install azureml-sdk[automl] azureml-contrib-opendatasets
+    pip install azureml-sdk[automl] azureml-opendatasets
     ```
 1. 環境内でノートブックのカーネルを起動します。
     ```
@@ -77,7 +77,7 @@ ms.locfileid: "67588970"
 
 
 ```python
-from azureml.contrib.opendatasets import NycTlcGreen
+from azureml.opendatasets import NycTlcGreen
 import pandas as pd
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
@@ -90,8 +90,8 @@ from dateutil.relativedelta import relativedelta
 
 ```python
 green_taxi_df = pd.DataFrame([])
-start = datetime.strptime("1/1/2016","%m/%d/%Y")
-end = datetime.strptime("1/31/2016","%m/%d/%Y")
+start = datetime.strptime("1/1/2016", "%m/%d/%Y")
+end = datetime.strptime("1/31/2016", "%m/%d/%Y")
 
 for sample_month in range(12):
     temp_df_green = NycTlcGreen(start + relativedelta(months=sample_month), end + relativedelta(months=sample_month)) \
@@ -401,7 +401,9 @@ def build_time_features(vector):
 
     return pd.Series((month_num, day_of_month, day_of_week, hour_of_day, country_code))
 
-green_taxi_df[["month_num", "day_of_month","day_of_week", "hour_of_day", "country_code"]] = green_taxi_df[["lpepPickupDatetime"]].apply(build_time_features, axis=1)
+
+green_taxi_df[["month_num", "day_of_month", "day_of_week", "hour_of_day", "country_code"]
+              ] = green_taxi_df[["lpepPickupDatetime"]].apply(build_time_features, axis=1)
 green_taxi_df.head(10)
 ```
 
@@ -695,11 +697,12 @@ green_taxi_df.head(10)
 columns_to_remove = ["lpepDropoffDatetime", "puLocationId", "doLocationId", "extra", "mtaTax",
                      "improvementSurcharge", "tollsAmount", "ehailFee", "tripType", "rateCodeID",
                      "storeAndFwdFlag", "paymentType", "fareAmount", "tipAmount"
-                    ]
+                     ]
 for col in columns_to_remove:
     green_taxi_df.pop(col)
 
-green_taxi_df = green_taxi_df.rename(columns={"lpepPickupDatetime": "datetime"})
+green_taxi_df = green_taxi_df.rename(
+    columns={"lpepPickupDatetime": "datetime"})
 green_taxi_df["datetime"] = green_taxi_df["datetime"].dt.normalize()
 green_taxi_df.head(5)
 ```
@@ -830,7 +833,7 @@ green_taxi_df.head(5)
 タクシー データをダウンロードして大まかに準備ができたところで、休日データを追加フィーチャーとして追加します。 主要な休日にはタクシーの需要が大幅に高まり、供給が限られるため、休日固有のフィーチャーはモデルの精度向上に役立ちます。 休日データセットは比較的小さいため、フィルターのためのパラメーターなしで `PublicHolidays` クラス コンストラクターを使用してセット全体をフェッチします。 データをプレビューして形式を確認します。
 
 ```python
-from azureml.contrib.opendatasets import PublicHolidays
+from azureml.opendatasets import PublicHolidays
 # call default constructor to download full dataset
 holidays_df = PublicHolidays().to_pandas_dataframe()
 holidays_df.head(5)
@@ -921,12 +924,14 @@ holidays_df.head(5)
 `countryRegionCode` 列と `date` 列の名前を変更して、タクシー データのそれぞれのフィールド名に対応するようにします。また、キーとして使用できるように時刻を正規化します。 次に、Pandas `merge()` 関数を使用して左結合を実行し、休日データとタクシー データを結合します。 これにより、`green_taxi_df` のすべてのレコードが保持され、対応する `datetime` と `country_code` (このケースでは常に `"US"`) に対して存在する場合は休日データが追加されます。 データをプレビューして、正しくマージされたことを確認します。
 
 ```python
-holidays_df = holidays_df.rename(columns={"countryRegionCode": "country_code", "date": "datetime"})
+holidays_df = holidays_df.rename(
+    columns={"countryRegionCode": "country_code", "date": "datetime"})
 holidays_df["datetime"] = holidays_df["datetime"].dt.normalize()
 holidays_df.pop("countryOrRegion")
 holidays_df.pop("holidayName")
 
-taxi_holidays_df = pd.merge(green_taxi_df, holidays_df, how="left", on=["datetime", "country_code"])
+taxi_holidays_df = pd.merge(green_taxi_df, holidays_df, how="left", on=[
+                            "datetime", "country_code"])
 taxi_holidays_df.head(5)
 ```
 
@@ -1068,11 +1073,11 @@ taxi_holidays_df.head(5)
 ここで、NOAA 地上気象データをタクシー データと休日データに追加します。 同様に一度に 1 か月分のダウンロードを繰り返す方法を使用して、気象データをフェッチします。 また、文字列の配列と一緒に `cols` パラメーターを指定して、ダウンロードする列をフィルター処理します。 これは、世界中の地上気象データを含む非常に大きなデータセットです。したがって、各月を追加する前に、データフレームに対して `query()` 関数を使用してニューヨーク市付近の緯度と経度のフィールドでフィルター処理します。 こうすることで、`weather_df` が大きくなりすぎません。
 
 ```python
-from azureml.contrib.opendatasets import NoaaIsdWeather
+from azureml.opendatasets import NoaaIsdWeather
 
 weather_df = pd.DataFrame([])
-start = datetime.strptime("1/1/2016","%m/%d/%Y")
-end = datetime.strptime("1/31/2016","%m/%d/%Y")
+start = datetime.strptime("1/1/2016", "%m/%d/%Y")
+end = datetime.strptime("1/31/2016", "%m/%d/%Y")
 
 for sample_month in range(12):
     tmp_df = NoaaIsdWeather(cols=["temperature", "precipTime", "precipDepth", "snowDepth"], start_date=start + relativedelta(months=sample_month), end_date=end + relativedelta(months=sample_month))\
@@ -1254,7 +1259,8 @@ weather_df.pop("latitude")
 weather_df = weather_df.query("temperature==temperature")
 
 # group by datetime
-aggregations = {"snowDepth": "mean", "precipTime": "max", "temperature": "mean", "precipDepth": "max"}
+aggregations = {"snowDepth": "mean", "precipTime": "max",
+                "temperature": "mean", "precipDepth": "max"}
 weather_df_grouped = weather_df.groupby("datetime").agg(aggregations)
 weather_df_grouped.head(10)
 ```
@@ -1370,7 +1376,8 @@ weather_df_grouped.head(10)
 新たに気象データの準備を行ったタクシー データと休日データをマージします。 ここでは `datetime` キーのみが必要です。再びデータの左結合を実行します。 新しいデータフレームに対して `describe()` 関数を実行して、各フィールドの概要の統計を確認します。
 
 ```python
-taxi_holidays_weather_df = pd.merge(taxi_holidays_df, weather_df_grouped, how="left", on=["datetime"])
+taxi_holidays_weather_df = pd.merge(
+    taxi_holidays_df, weather_df_grouped, how="left", on=["datetime"])
 taxi_holidays_weather_df.describe()
 ```
 
@@ -1569,13 +1576,16 @@ taxi_holidays_weather_df.describe()
 これらの異常値をフィルターで除外してから、最終的にトレーニングのために不必要ないくつかの列を削除します。
 
 ```python
-final_df = taxi_holidays_weather_df.query("pickupLatitude>=40.53 and pickupLatitude<=40.88")
-final_df = final_df.query("pickupLongitude>=-74.09 and pickupLongitude<=-73.72")
+final_df = taxi_holidays_weather_df.query(
+    "pickupLatitude>=40.53 and pickupLatitude<=40.88")
+final_df = final_df.query(
+    "pickupLongitude>=-74.09 and pickupLongitude<=-73.72")
 final_df = final_df.query("tripDistance>0 and tripDistance<75")
 final_df = final_df.query("passengerCount>0 and passengerCount<100")
 final_df = final_df.query("totalAmount>0")
 
-columns_to_remove_for_training = ["datetime", "pickupLongitude", "pickupLatitude", "dropoffLongitude", "dropoffLatitude", "country_code"]
+columns_to_remove_for_training = ["datetime", "pickupLongitude",
+                                  "pickupLatitude", "dropoffLongitude", "dropoffLatitude", "country_code"]
 for col in columns_to_remove_for_training:
     final_df.pop(col)
 ```
@@ -1755,7 +1765,8 @@ x_df = final_df
 ```python
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=222)
+X_train, X_test, y_train, y_test = train_test_split(
+    x_df, y_df, test_size=0.2, random_state=222)
 ```
 
 ### <a name="load-workspace-and-configure-experiment"></a>ワークスペースを読み込み実験を構成する
@@ -1767,7 +1778,8 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 from azureml.core.workspace import Workspace
 from azureml.core.experiment import Experiment
 
-workspace = Workspace.get(subscription_id="<your-subscription-id>", name="<your-workspace-name>", resource_group="<your-resource-group>")
+workspace = Workspace.get(subscription_id="<your-subscription-id>",
+                          name="<your-workspace-name>", resource_group="<your-resource-group>")
 experiment = Experiment(workspace, "opendatasets-ml")
 ```
 
@@ -1792,7 +1804,7 @@ automl_config = AutoMLConfig(task="regression",
                              primary_metric="spearman_correlation",
                              preprocess=True,
                              n_cross_validations=5
-                            )
+                             )
 ```
 
 ### <a name="submit-experiment"></a>実験を送信する
@@ -1919,7 +1931,7 @@ print(1 - mean_abs_percent_error)
     Model Accuracy:
     0.8507638035507564
 
-データセット全体 (n=11748) に比べてごく少数のサンプル データを使用したことを考慮すると、タクシー運賃を予測する際の RMSE は +- $4.00 の誤差でモデルの精度は 85% とかなり高くなっています。 精度を向上させる次の手順として考えられるのは、このノートブックの 2 番目のセルに戻り、サンプル サイズを 1 か月あたり 2,000 レコードから増やして、実験全体を再び実行して多くのデータでモデルを再トレーニングすることです。
+データセット全体 (n = 11,748) に比べてごく少数のサンプル データを使用したことを考慮すると、タクシー運賃を予測する際の RMSE は +- $4.00 の誤差でモデルの精度は 85% とかなり高くなっています。 精度を向上させる次の手順として考えられるのは、このノートブックの 2 番目のセルに戻り、サンプル サイズを 1 か月あたり 2,000 レコードから増やして、実験全体を再び実行して多くのデータでモデルを再トレーニングすることです。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

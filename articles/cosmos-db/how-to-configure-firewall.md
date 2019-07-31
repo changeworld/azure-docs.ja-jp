@@ -4,14 +4,14 @@ description: Azure Cosmos DB データベース アカウント上でファイ�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/23/2019
+ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 24ebc7eb4c9abc72a89419611e4b4b3fa2db88b4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 0b8ad6c5addbff293e9f7e9b8af6ed34d4dd274b
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241959"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494888"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
 
@@ -49,7 +49,7 @@ Azure portal へのアクセスを有効にするには、次のスクリーン 
 
 ### <a name="allow-requests-from-global-azure-datacenters-or-other-sources-within-azure"></a>世界中の Azure データ センターまたは Azure 内の他のソースからの要求を許可する
 
-Azure Stream Analytics や Azure Functions などの静的 IP を提供しないサービスから Azure Cosmos DB アカウントにアクセスする場合も、IP ファイアウォールを使用してアクセスを制限できます。 このようなサービスから Azure Cosmos DB アカウントにアクセスできるようにするには、許可された IP アドレスのリストに IP アドレス 0.0.0.0 を追加します。 0.0.0.0 のアドレスにより、Azure データセンターの IP 範囲からご利用の Azure Cosmos DB アカウントへの要求が制限されます。 この設定では、その他の IP 範囲からご利用の Azure Cosmos DB アカウントへのアクセスは許可されません。
+Azure Stream Analytics や Azure Functions などの静的 IP を提供しないサービスから Azure Cosmos DB アカウントにアクセスする場合も、IP ファイアウォールを使用してアクセスを制限できます。 このようなサービスから Azure Cosmos DB アカウントにアクセスできるようにするには、許可された IP アドレスのリストに IP アドレス 0.0.0.0 を追加します。 0\.0.0.0 のアドレスにより、Azure データセンターの IP 範囲からご利用の Azure Cosmos DB アカウントへの要求が制限されます。 この設定では、その他の IP 範囲からご利用の Azure Cosmos DB アカウントへのアクセスは許可されません。
 
 > [!NOTE]
 > このオプションでは、Azure にデプロイされた他のお客様のサブスクリプションからの要求を含む、Azure からのすべての要求を許可するようにファイアウォールが構成されます。 このオプションで許可される IP のリストは非常に範囲が広くなるので、ファイアウォール ポリシーの有効性が制限されます。 このオプションは、ご利用の要求が静的 IP または仮想ネットワーク内のサブネットから発生しない場合にのみ使用してください。 このオプションを選択すると Azure portal からのアクセスは自動的に許可されるようになります。これは、Azure portal が Azure にデプロイされているからです。
@@ -94,21 +94,24 @@ Azure Cosmos DB を使用する中間層サービスのホスティングには�
 
 ## <a id="configure-ip-firewall-arm"></a>Resource Manager テンプレートを使用して IP ファイアウォールを構成する
 
-ご利用の Azure Cosmos DB アカウントへのアクセス制御を構成するには、Resource Manager テンプレートで、許可される IP 範囲のリストを使用して **ipRangeFilter** 属性を指定します。 たとえば、次の JSON コードをご利用のテンプレートに追加します。
+ご利用の Azure Cosmos DB アカウントへのアクセス制御を構成するには、Resource Manager テンプレートで、許可される IP 範囲のリストを使用して **ipRangeFilter** 属性を指定します。 既にデプロイされている Cosmos アカウントに IP ファイアウォールを構成する場合には、配列 `locations` が現在デプロイされているものと一致していることを確認します。 配列 `locations` とそれ以外のプロパティを同時に変更することはできません。 Azure Cosmos DB 用の ARM テンプレートの詳細とサンプルについては、「[Azure Cosmos DB の Azure Resource Manager テンプレート](resource-manager-samples.md)」を参照してください。
 
 ```json
-   {
-     "apiVersion": "2015-04-08",
-     "type": "Microsoft.DocumentDB/databaseAccounts",
-     "kind": "GlobalDocumentDB",
-     "name": "[parameters('databaseAccountName')]",
-     "location": "[resourceGroup().location]",
-     "properties": {
-       "databaseAccountOfferType": "Standard",
-       "name": "[parameters('databaseAccountName')]",
-       "ipRangeFilter":"183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
-     }
-   }
+{
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "name": "[variables('accountName')]",
+  "apiVersion": "2016-03-31",
+  "location": "[parameters('location')]",
+  "kind": "GlobalDocumentDB",
+  "properties": {
+    "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+    "locations": "[variables('locations')]",
+    "databaseAccountOfferType": "Standard",
+    "enableAutomaticFailover": "[parameters('automaticFailover')]",
+    "enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]",
+    "ipRangeFilter":"183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
+  }
+}
 ```
 
 ## <a id="configure-ip-firewall-cli"></a>Azure CLI を使用して IP アクセス制御ポリシーを構成する

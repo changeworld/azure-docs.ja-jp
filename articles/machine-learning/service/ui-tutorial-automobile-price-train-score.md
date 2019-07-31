@@ -3,22 +3,26 @@ title: チュートリアル:ビジュアル インターフェイスで自動�
 titleSuffix: Azure Machine Learning service
 description: ドラッグ アンド ドロップ ビジュアル インターフェイスを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行う方法を学習します。 このチュートリアルは、線形回帰を使用した自動車価格の予測に関する 2 部構成のシリーズのパート 1 です。
 author: peterclu
-ms.author: peterclu
+ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/06/2019
-ms.openlocfilehash: 21f5a2d93b708e93f124bd44177bb7852dfbd86a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.date: 07/21/2019
+ms.openlocfilehash: 09d81e281b92b662572cefc220f2227651b69838
+ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720535"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371727"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで自動車価格を予測する
 
-このチュートリアルでは、Azure Machine Learning service のビジュアル インターフェイスでの予測分析ソリューションの開発についてさらに見ていきます。 このチュートリアルの目的は、送信の技術仕様に基づいてすべての自動車価格を予測できるソリューションを用意することです。
+この 2 部構成のチュートリアルでは、Azure Machine Learning service のビジュアル インターフェイスを使用して、自動車の価格を予測する予測分析ソリューションを開発およびデプロイする方法について説明します。 
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
+
+パート 1 では、環境を設定してから、データセットと分析モジュールを対話型のキャンバスにドラッグ アンド ドロップし、それらを相互に接続して実験を作成します。 
 
 チュートリアルのパート 1 で学習する内容は次のとおりです。
 
@@ -27,9 +31,7 @@ ms.locfileid: "67720535"
 > * 機械学習モデルのトレーニング
 > * モデルのスコア付けと評価
 
-チュートリアルの[パート 2](ui-tutorial-automobile-price-deploy.md) では、予測モデルを Azure Web サービスとしてデプロイする方法を学習します。
-
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
+チュートリアルの[パート 2](ui-tutorial-automobile-price-deploy.md) では、予測モデルを Azure Web サービスとしてデプロイし、これを使用して、送信した技術仕様に基づいて任意の自動車の価格を予測する方法を学習します。 
 
 このチュートリアルの完成版は、実験のサンプルとして使用できます。
 
@@ -37,11 +39,11 @@ ms.locfileid: "67720535"
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
-Azure Machine Learning service ワークスペースがある場合は、[次のセクション](#open-the-visual-interface-webpage)に進みます。
+Azure Machine Learning service ワークスペースがある場合は、次のセクションに進みます。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="open-the-visual-interface-webpage"></a>ビジュアル インターフェイスの Web ページを開く
+## <a name="create-new-experiment"></a>新しい実験の作成
 
 1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。
 
@@ -49,21 +51,15 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
     ![Machine Learning service ワークスペースからビジュアル インターフェイスにアクセスする方法を示す Azure portal のスクリーンショット](./media/ui-tutorial-automobile-price-train-score/launch-ui.png)
 
-## <a name="create-your-first-experiment"></a>初めての実験を作成する
-
-ビジュアル インターフェイス ツールでは、予測分析モデルを作成するための視覚的な対話型の操作に対応した場所が提供されます。 データセットと分析モジュールを対話型のキャンバスにドラッグ アンド ドロップし、それらを相互に接続して "*実験*" を作成することができます。
-
 1. ビジュアル インターフェイス ウィンドウの下部にある **[+ 新規]** を選択して、新しい実験を作成します。
-
-    ![新しい実験を追加する](./media/ui-tutorial-automobile-price-train-score/add-new.png)
 
 1. **[Blank Experiment]\(空の実験\)** を選択します。
 
-1. キャンバスの上部にある既定の実験名 "**Experimented Created on ...** " を選択し、わかりやすい名前に変更します。 たとえば、**Automobile price prediction** (自動車価格の予測) です。 名前は一意でなくてもかまいません。
+1. キャンバスの上部にある既定の実験名 "**Experiment created on ...** " を選択し、わかりやすい名前に変更します。 たとえば、"**Automobile price prediction**" (自動車価格の予測) です。 名前は一意でなくてもかまいません。
 
-## <a name="add-data"></a>データの追加
+## <a name="specify-data"></a>データの指定
 
-機械学習の実行にはまずデータが必要です。 このインターフェイスには、使用できるいくつかのサンプル データセットが含まれています。 既存のソースからデータをインポートすることもできます。 このチュートリアルでは、**Automobile price data (Raw)** というサンプル データセットを使用します。 
+機械学習は、データに依存します。 さいわい、このインターフェイスには、実験に利用できるいくつかのサンプル データセットが含まれています。 このチュートリアルでは、**Automobile price data (Raw)** というサンプル データセットを使用します。 
 
 1. 実験キャンバスの左側には、データセットとモジュールのパレットがあります。 **[Saved Datasets]\(保存されたデータセット\)** を選択し、次に **[Samples]\(サンプル\)** を選択して、利用可能なサンプル データセットを表示します。
 
@@ -71,22 +67,14 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
    ![データをキャンバスにドラッグする](./media/ui-tutorial-automobile-price-train-score/drag-data.png)
 
-## <a name="select-columns"></a>Select columns
+1. 使用するデータの列を選択します。 パレットの上部にある検索ボックスに「**Select**」と入力し、**Select Columns in Dataset** (データセットの列を選択する) モジュールを見つけます。
 
-使用するデータの列を選択します。 最初にモジュールを構成して、使用可能なすべての列を表示します。
+1. **[Select Columns in Dataset]\(データセットの列を選択する\)** モジュールをクリックし、キャンバスにドラッグします。 データセット モジュールの下のモジュールを削除します。
 
-> [!TIP]
-> 必要なデータまたはモジュールの名前がわかっている場合は、パレットの上部にある検索バーを使用してすばやく検索します。 このチュートリアルの残りの部分では、このショートカットを使用します。
-
-
-1. 検索ボックスに「**Select**」と入力して、**Select Columns in Dataset (データセットの列を選択する)** モジュールを見つけます。
-
-1. **Select Columns in Dataset (データセットの列を選択する)** をクリックし、キャンバスにドラッグします。 先ほど追加したデータセットの下のモジュールを削除します。
-
-1. データセットを **Select Columns in Dataset (データセットの列を選択する)** に接続する: データセットの出力ポートをクリックし、**Select Columns in Dataset (データセットの列を選択する)** の入力ポートにドラッグした後、マウス ボタンを離します。 これで、マウスをキャンバス上でどこに移動しても、データセットとモジュールが接続されたままになります。
+1. 前の手順で追加したデータセットをクリックし、ドラッグして **[Select Columns in Dataset]\(データセットの列を選択する\)** モジュールに接続します。 データセットの出力ポート (キャンバス上のデータセットの下部にある小さい円) から **Select Columns in Dataset (データセットの列を選択する)** の入力ポート (モジュールの上部にある小さい円) までずっとドラッグします。
 
     > [!TIP]
-    > データセットとモジュールには、小さな円で表される入力ポートと出力ポートがあります (入力ポートは上部、出力ポートは下部)。 1 つのモジュールの出力ポートを別のモジュールの入力ポートに接続するときに、実験を通じてデータのフローを作成することになります。
+    > 1 つのモジュールの出力ポートを別のモジュールの入力ポートに接続するときに、実験を通じてデータのフローを作成することになります。
     >
 
     ![モジュールの接続](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
@@ -114,9 +102,9 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 コンピューティング ターゲットが使用できるようになった後、実験が実行されます。 実行が完了したら、各モジュールに緑色のチェック マークが表示されます。
 
 
-## <a name="preview-the-data"></a>データをプレビューする
+## <a name="visualize-the-data"></a>データの視覚化
 
-最初の実験を実行したので、次にデータを視覚化して、作業する必要があるデータセットについてさらに理解することができます。
+最初の実験を実行したので、次にデータを視覚化して、データセットについてさらに理解することができます。
 
 1. **Select Columns in Dataset (データセットの列を選択する)** の下部にある出力ポートを選択し、 **[Visualize]\(可視化\)** を選択します。
 
@@ -181,8 +169,6 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 1. [Properties]\(プロパティ\) ウィンドウで、 **[Cleaning mode]\(整理モード\)** の **[Remove entire row]\(行全体を削除\)** を選択します。
 
-    これらのオプションにより、**Clean Missing Data (不足データのクリーンアップ)** では値が不足している行が削除され、データが整理されます。
-
 1. モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
  
     ![行を削除する](./media/ui-tutorial-automobile-price-train-score/remove-rows.png)
@@ -190,30 +176,6 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
     実験は以下のようになっているはずです。
     
     ![select-column](./media/ui-tutorial-automobile-price-train-score/experiment-clean.png)
-
-## <a name="visualize-the-results"></a>結果を視覚化する
-
-実験でモジュールに変更を加えたため、モジュール状態が "ドラフト" に変更されました。  新しい整理されたデータを視覚化するには、最初に実験をもう一度実行する必要があります。
-
-1. 下部の **[Run]\(実行\)** を選択して実験を実行します。
-
-    今回は、先ほど作成したコンピューティング ターゲットを再利用できます。
-
-1. ダイアログ内の **[Run]\(実行\)** を選択します。
-
-   ![実験を実行する](./media/ui-tutorial-automobile-price-train-score/select-compute.png)
-
-1. 実行が完了したら、**Clean Missing Data (不足データのクリーンアップ)** モジュールを右クリックし、新しい整理されたデータを視覚化します。
-
-    ![整理されたデータを視覚化する](./media/ui-tutorial-automobile-price-train-score/visualize-cleaned.png)
-
-1. 整理されたデータ ウィンドウで別の列をクリックし、データがどのように変更されたかを確認します。
-
-    ![整理されたデータを視覚化する](media/ui-tutorial-automobile-price-train-score/visualize-result.png)
-
-    193 の行と 25 の列があります。
-
-    **num-of-doors** をクリックすると、一意の値はまだ 2 つありますが、不足している値がは 0 であることがわかります。 残りの列をクリックスルーし、データセットに欠損値がないことを確認します。 
 
 ## <a name="train-the-model"></a>モデルをトレーニングする
 
@@ -223,13 +185,13 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
 予測したい価格は数値であるため、回帰アルゴリズムを使用できます。 この例では、線形回帰モデルを使用します。
 
-価格が含まれた一連のデータを指定して、モデルをトレーニングします。 モデルによってデータがスキャンされ、自動車のフィーチャーと価格の相関関係が検出されます。 次に、よく知られている自動車のフィーチャーのセットをモデルに与えることで、モデルのテストを行い、モデルがその既知の価格をどの程度の精度で予測できるかを確認します。
+価格が含まれた一連のデータを指定して、モデルをトレーニングします。 モデルによってデータがスキャンされ、自動車のフィーチャーと価格の相関関係が検出されます。
 
 データを別個のトレーニング データセットとテスト データセットに分割して、モデルのトレーニングとテストの両方に使用します。
 
 1. 検索ボックスに「**split data**」と入力して、**Split Data** (データの分割) モジュールを見つけ、**Clean Missing Data** (見つからないデータのクリーンアップ) モジュールの左側のポートに接続します。
 
-1. 接続した **Split Data** (データの分割) モジュールを選択します。 [Properties]\(プロパティ\) ウィンドウで、[Fraction of rows in the first output dataset]\(最初の出力データセットにおける列の割合\) を 0.7 に設定します。 このようにして、データの 70% をモデルのトレーニングに使用し、30% をテスト用に保持しておきます。
+1. **[Split Data]\(データの分割\)** モジュールを選択します。 [Properties]\(プロパティ\) ウィンドウで、[Fraction of rows in the first output dataset]\(最初の出力データセットにおける列の割合\) を 0.7 に設定します。 このようにして、データの 70% をモデルのトレーニングに使用し、30% をテスト用に保持しておきます。
 
     ![[Properties]\(プロパティ\) ウィンドウの正しい構成を示すスクリーンショット "Split Data" (データの分割) の各値は、"Split Rows" (行の分割)、0.7、Randomized split (ランダム分割)、0、False である必要があります。](./media/ui-tutorial-automobile-price-train-score/split-data.png)
 
@@ -255,10 +217,6 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
     ![Train Model (モデルのトレーニング) モジュールを追加した後の実験の正しい構成を示すスクリーンショット。](./media/ui-tutorial-automobile-price-train-score/train-graph.png)
 
-### <a name="run-the-training-experiment"></a>トレーニング実験を実行する
-
-[!INCLUDE [aml-ui-create-training-compute](../../../includes/aml-ui-create-training-compute.md)]
-
 ## <a name="score-and-evaluate-the-model"></a>モデルにスコアを付け、評価する
 
 これまでにデータの 70% を使用してモデルをトレーニングしました。ここからは残りの 30% のデータにスコアを付け、モデルの精度を確認します。
@@ -269,13 +227,13 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
     ![実験の最終的な正しい構成を示すスクリーンショット。](./media/ui-tutorial-automobile-price-train-score/final-graph.png)
 
-1. 以前に使用したのと同じコンピューティング ターゲットを使用して、実験を実行します。
+1. 前に作成したコンピューティング リソースを使用して実験を実行します。
 
 1. **Score Model** (モデルのスコア付け) の出力ポートをクリックし、 **[Visualize]\(視覚化\)** を選択すると、**Score Model** (モデルのスコア付け) モジュールの出力が表示されます。 出力に、予測された価格の値と、テスト データからの既知の値が表示されます。
 
     !["Scored Label" (スコア付けラベル) 列が強調表示された状態の出力の視覚化のスクリーンショット](./media/ui-tutorial-automobile-price-train-score/score-result.png)
 
-1. Evaluate Model (モデルの評価) モジュールの出力を表示するには、出力ポートを選択し、[Visualize]\(視覚化\) を選択します。
+1. **Evaluate Model (モデルの評価)** モジュールの出力を表示するには、出力ポートを選択し、 **[Visualize]\(視覚化\)** を選択します。
 
     ![最終的な実験の評価結果を示すスクリーンショット。](./media/ui-tutorial-automobile-price-train-score/evaluate-result.png)
 
@@ -307,7 +265,7 @@ Azure Machine Learning service ワークスペースがある場合は、[次の
 
     ![詳細な実行レポートを示すスクリーンショット](./media/ui-tutorial-automobile-price-train-score/run-details.png)
 
-    実行レポートはリアルタイムで更新されます。 実験で **Execute Python Script** (Python スクリプトの実行) モジュールを使用した場合は、 **[ログ]** タブで出力にスクリプト ログを指定できます。
+    実行レポートはリアルタイムで更新されます。 実験で **Execute Python Script (Python スクリプトの実行)** または **Execute R Script (R スクリプトの実行)** モジュールを使用した場合は、 **[ログ]** タブで出力するスクリプト ログを指定できます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

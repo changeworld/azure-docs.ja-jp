@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 6a9d6ec651cd365995ce63a8dff6d60c8b23dec1
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 52cb11b015bb231b91184a2270e333e4c9aa8303
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312637"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424282"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
@@ -147,7 +147,7 @@ WHERE [TableName] = @TableName
 END
 ```
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。 
@@ -238,7 +238,7 @@ END
 
         ![2 つ目の検索アクティビティ - 新しいデータセット](./media/tutorial-incremental-copy-portal/source-dataset-connection.png)
 17. 上部のパイプライン タブをクリックするか、左側のツリー ビューでパイプラインの名前をクリックして、パイプライン エディターに切り替えます。 **[検索]** アクティビティのプロパティ ウィンドウで、 **[Source Dataset]\(ソース データセット\)** フィールドで **[SourceDataset]** が選択されていることを確認します。 
-18. **[クエリの使用]** フィールドで **[クエリ]** を選択し、次のクエリを入力します。単に **data_source_table** で **LastModifytime** の最大値を選択しています。 また、 **[Fist row only]\(先頭行のみ\)** チェック ボックスがオンになっていることを確認してください。
+18. **[クエリの使用]** フィールドで **[クエリ]** を選択し、次のクエリを入力します。単に **data_source_table** で **LastModifytime** の最大値を選択しています。 また、 **[First row only]\(先頭行のみ\)** チェック ボックスがオンになっていることを確認してください。
 
     ```sql
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
@@ -306,7 +306,7 @@ END
     1. **[ストアド プロシージャ名]** に **[usp_write_watermark]** を選択します。 
     2. ストアド プロシージャのパラメーターの値を指定するには、 **[Import parameter]\(インポート パラメーター\)** をクリックし、各パラメーターに次の値を入力します。 
 
-        | Name | Type | 値 | 
+        | EnableAdfsAuthentication | Type | 値 | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | string | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |

@@ -3,17 +3,18 @@ title: チュートリアル - Azure Container Instances に使用するコン�
 description: Azure Container Instances チュートリアル第 1 部 (全 3 部) - Azure Container Instances にデプロイするアプリをコンテナー イメージとして準備します
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f5d6ac81cc2553cc4a2d7b86c21417aa5ab1d572
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 719237f63d387cf56ab7947f8f168e0aa4351376
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990640"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325580"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>チュートリアル: Azure Container Instances へのデプロイに使用するコンテナー イメージを作成する
 
@@ -44,11 +45,11 @@ Azure Container Instances では、仮想マシンをプロビジョニングし
 git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```
 
-GitHub から直接 [ZIP アーカイブ][aci-helloworld-zip]をダウンロードすることもできます。
+GitHub から直接 [ZIP アーカイブをダウンロード][aci-helloworld-zip]することもできます。
 
 ## <a name="build-the-container-image"></a>コンテナー イメージを構築する
 
-サンプル アプリケーションに含まれる Dockerfile は、コンテナーの構築方法を示しています。 その方法は、[Alpine Linux][alpine-linux] に基づく[公式 Node.js イメージ][docker-hub-nodeimage]から始まります。これは、コンテナーで使用するのに適した小規模なディストリビューションです。 次に、アプリケーション ファイルをコンテナーにコピーし、ノード パッケージ マネージャーを使用して依存関係をインストールして、最後にアプリケーションを起動します。
+サンプル アプリケーションに含まれる Dockerfile は、コンテナーの構築方法を示しています。 その方法は、[公式 Node.js イメージ][docker-hub-nodeimage]based on [Alpine Linux][alpine-linux]から始まります。これは、コンテナーで使用するのに適した小規模なディストリビューションです。 次に、アプリケーション ファイルをコンテナーにコピーし、ノード パッケージ マネージャーを使用して依存関係をインストールして、最後にアプリケーションを起動します。
 
 ```Dockerfile
 FROM node:8.9.3-alpine

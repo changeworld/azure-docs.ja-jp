@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 11b47483eaf39e7445ece8b9e38d81a6a2404cc6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0f0acc721fd8888953d80976234b431943985ebf
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756600"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356270"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 
@@ -56,7 +56,7 @@ Storage アカウントを作成した後は、[Microsoft Azure Cosmos DB Table 
 
 ## <a name="import-the-tableservice-and-entity-classes"></a>TableService クラスと Entity クラスをインポートする
 
-Python で Azure Table service のエンティティを扱うには、[TableService][py_TableService] クラスと [Entity][py_Entity] クラスを使います。 次のコードを Python ファイルの先頭付近に追加して、両方をインポートします。
+Python で Azure Table service のエンティティを扱うには、[TableService][py_TableService] クラスand [Entity][py_Entity] クラスを使います。 次のコードを Python ファイルの先頭付近に追加して、両方をインポートします。
 
 ```python
 from azure.cosmosdb.table.tableservice import TableService
@@ -73,7 +73,7 @@ table_service = TableService(account_name='myaccount', account_key='mykey')
 
 ## <a name="connect-to-azure-cosmos-db"></a>Azure Cosmos DB への接続
 
-Azure Cosmos DB に接続するには、Azure portal からプライマリ接続文字列をコピーし、コピーした接続文字列を使って [TableService][py_TableService] オブジェクトを作成します。
+Azure Cosmos DB に接続するには、Azure Portal からプライマリ接続文字列をコピーし、コピーした接続文字列を使って [TableService][py_TableService] オブジェクトを作成します。
 
 ```python
 table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;)
@@ -89,16 +89,17 @@ table_service.create_table('tasktable')
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
 
-エンティティを追加するには、最初にエンティティを表すオブジェクトを作成してから、そのオブジェクトを [TableService.insert_entity メソッド][py_TableService]に渡します。 エンティティ オブジェクトには、ディクショナリまたは [Entity][py_Entity] 型のオブジェクトが可能で、エンティティのプロパティの名前と値を定義します。 エンティティに定義するその他のプロパティの他に、すべてのエンティティに必須の [PartitionKey と RowKey](#partitionkey-and-rowkey) のプロパティを含める必要があります。
+エンティティを追加するには、最初にエンティティを表すオブジェクトを作成してから、そのオブジェクトを [TableService.insert_entity メソッド][py_TableService]に渡します。. The entity object can be a dictionary or an object of type [Entity][py_Entity]、エンティティのプロパティの名前と値を定義します。 エンティティに定義するその他のプロパティの他に、すべてのエンティティに必須の [PartitionKey と RowKey](#partitionkey-and-rowkey) のプロパティを含める必要があります。 この例では、エンティティを表すディクショナリ オブジェクトを作成し、それを [insert_entity][py_insert_entity] メソッドに渡してテーブルに追加します。
 
-この例では、エンティティを表すディクショナリ オブジェクトを作成し、それを [insert_entity][py_insert_entity] メソッドに渡してテーブルに追加します。
+この例では、[Entity][py_Entity] object, then passes it to the [insert_entity][py_insert_entity] メソッドに渡してテーブルに追加します。
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the trash', 'priority' : 200}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the trash', 'priority': 200}
 table_service.insert_entity('tasktable', task)
 ```
 
-この例では、[Entity][py_Entity] オブジェクトを作成し、それを [insert_entity][py_insert_entity] メソッドに渡してテーブルに追加します。
+PartitionKey と RowKey
 
 ```python
 task = Entity()
@@ -109,66 +110,73 @@ task.priority = 100
 table_service.insert_entity('tasktable', task)
 ```
 
-### <a name="partitionkey-and-rowkey"></a>PartitionKey と RowKey
+### <a name="partitionkey-and-rowkey"></a>すべてのエンティティに **PartitionKey** と **RowKey** を指定する必要があります。
 
-すべてのエンティティに **PartitionKey** と **RowKey** を指定する必要があります。 これらは共にエンティティのプライマリ キーを形成するため、エンティティの一意の識別子です。 これらのプロパティのみがインデックス付けされているため、これらの値を使用すると、他のエンティティのプロパティでクエリを実行するよりもずっと高速にクエリを実行できます。
+これらは共にエンティティのプライマリ キーを形成するため、エンティティの一意の識別子です。 これらのプロパティのみがインデックス付けされているため、これらの値を使用すると、他のエンティティのプロパティでクエリを実行するよりもずっと高速にクエリを実行できます。 Table service は **PartitionKey** を使用してインテリジェントにテーブル エンティティをストレージ ノード全体に分散させます。
 
-Table service は **PartitionKey** を使用してインテリジェントにテーブル エンティティをストレージ ノード全体に分散させます。 **PartitionKey** が同じエンティティは同じノードに格納されます。 **RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。
+**PartitionKey** が同じエンティティは同じノードに格納されます。 **RowKey** は、エンティティが属するパーティション内のエンティティの一意の ID です。 エンティティを更新する
 
-## <a name="update-an-entity"></a>エンティティを更新する
+## <a name="update-an-entity"></a>エンティティのプロパティの値をすべて更新するには、[update_entity][py_update_entity] メソッドを呼び出します。
 
-エンティティのプロパティの値をすべて更新するには、[update_entity][py_update_entity] メソッドを呼び出します。 この例は、既存のエンティティを更新されたバージョンに置き換える方法を示しています。
+この例は、既存のエンティティを更新されたバージョンに置き換える方法を示しています。 更新されるエンティティが存在しない場合、更新操作は失敗します。
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the garbage', 'priority': 250}
 table_service.update_entity('tasktable', task)
 ```
 
-更新されるエンティティが存在しない場合、更新操作は失敗します。 エンティティが存在するかどうかに関わらず、エンティティを格納する場合は、[insert_or_replace_entity][py_insert_or_replace_entity] を使用します。 次の例では、最初の呼び出しで既存のエンティティを置き換えます。 2 番目の呼び出しでは、指定された PartitionKey と RowKey を持つエンティティがテーブル内に存在しないため、新しいエンティティが挿入されます。
+エンティティが存在するかどうかにかかわらず、エンティティを格納する場合は、[insert_or_replace_entity][py_insert_or_replace_entity] を使用します。 次の例では、最初の呼び出しで既存のエンティティを置き換えます。 2 番目の呼び出しでは、指定された PartitionKey と RowKey を持つエンティティがテーブル内に存在しないため、新しいエンティティが挿入されます。 [update_entity][py_update_entity] メソッドは、既存のエンティティのすべてのプロパティと値を置き換えます。既存のエンティティからプロパティを削除するのにも使用できます。
 
 ```python
 # Replace the entity created earlier
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage again', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001',
+        'description': 'Take out the garbage again', 'priority': 250}
 table_service.insert_or_replace_entity('tasktable', task)
 
 # Insert a new entity
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '003', 'description' : 'Buy detergent', 'priority' : 300}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '003',
+        'description': 'Buy detergent', 'priority': 300}
 table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> [update_entity][py_update_entity] メソッドは、既存のエンティティのすべてのプロパティと値を置き換えます。既存のエンティティからプロパティを削除するのにも使用できます。 [merge_entity][py_merge_entity] メソッドを使用すると、エンティティを完全に置き換えることなく、既存のエンティティを新しい、または変更されたプロパティ値で置き換えることができます。
+> [merge_entity][py_merge_entity] メソッドを使用すると、エンティティを完全に置き換えることなく、既存のエンティティを新しい、または変更されたプロパティ値で置き換えることができます。 複数のエンティティを変更する
 
-## <a name="modify-multiple-entities"></a>複数のエンティティを変更する
+## <a name="modify-multiple-entities"></a>Table service による要求のアトミック処理を保証するため、複数の操作をまとめてバッチで送信できます。
 
-Table service による要求のアトミック処理を保証するため、複数の操作をまとめてバッチで送信できます。 まず、[TableBatch][py_TableBatch] クラスを使用して、1 つのバッチに複数の操作を追加します。 次に、[TableService][py_TableService].[commit_batch][py_commit_batch] を呼び出して、操作をアトミック操作で送信します。 バッチで変更されるすべてのエンティティが同じパーティション内にある必要があります。
+まず、[TableBatch][py_TableBatch] クラスを使用して、1 つのバッチに複数の操作を追加します。 次に、[TableService][py_TableService].[commit_batch][py_commit_batch] を呼び出して、操作をアトミック操作で送信します。 バッチで変更されるすべてのエンティティが同じパーティション内にある必要があります。 この例では、2 つのエンティティをバッチでまとめて追加します。
 
-この例では、2 つのエンティティをバッチでまとめて追加します。
+バッチは、コンテキスト マネージャーの構文でも使用できます。
 
 ```python
 from azure.cosmosdb.table.tablebatch import TableBatch
 batch = TableBatch()
-task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004', 'description' : 'Go grocery shopping', 'priority' : 400}
-task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005', 'description' : 'Clean the bathroom', 'priority' : 100}
+task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004',
+           'description': 'Go grocery shopping', 'priority': 400}
+task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005',
+           'description': 'Clean the bathroom', 'priority': 100}
 batch.insert_entity(task004)
 batch.insert_entity(task005)
 table_service.commit_batch('tasktable', batch)
 ```
 
-バッチは、コンテキスト マネージャーの構文でも使用できます。
+エンティティを照会する
 
 ```python
-task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006', 'description' : 'Go grocery shopping', 'priority' : 400}
-task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007', 'description' : 'Clean the bathroom', 'priority' : 100}
+task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006',
+           'description': 'Go grocery shopping', 'priority': 400}
+task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007',
+           'description': 'Clean the bathroom', 'priority': 100}
 
 with table_service.batch('tasktable') as batch:
     batch.insert_entity(task006)
     batch.insert_entity(task007)
 ```
 
-## <a name="query-for-an-entity"></a>エンティティを照会する
+## <a name="query-for-an-entity"></a>テーブル内のエンティティに対してクエリを実行するには、その PartitionKey と RowKey を [TableService][py_TableService].[get_entity][py_get_entity] メソッドに渡します。
 
-テーブル内のエンティティに対してクエリを実行するには、その PartitionKey と RowKey を [TableService][py_TableService].[get_entity][py_get_entity] メソッドに渡します。
+エンティティのセットを照会する
 
 ```python
 task = table_service.get_entity('tasktable', 'tasksSeattle', '001')
@@ -176,55 +184,57 @@ print(task.description)
 print(task.priority)
 ```
 
-## <a name="query-a-set-of-entities"></a>エンティティのセットを照会する
+## <a name="query-a-set-of-entities"></a>**filter** パラメーターにフィルター文字列を指定することで、一連のエンティティに対してクエリを実行できます。
 
-**filter** パラメーターにフィルター文字列を指定することで、一連のエンティティに対してクエリを実行できます。 この例では、PartitionKey にフィルターを適用して、Seattle 内のすべてのタスクを検索します。
+この例では、PartitionKey にフィルターを適用して、Seattle 内のすべてのタスクを検索します。 エンティティ プロパティのサブセットを照会する
 
 ```python
-tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'")
+tasks = table_service.query_entities(
+    'tasktable', filter="PartitionKey eq 'tasksSeattle'")
 for task in tasks:
     print(task.description)
     print(task.priority)
 ```
 
-## <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
+## <a name="query-a-subset-of-entity-properties"></a>クエリの各エンティティに返すプロパティを制限することもできます。
 
-クエリの各エンティティに返すプロパティを制限することもできます。 *プロジェクション*と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティや結果セットがある場合に役立ちます。 **select** パラメーターを使用して、クライアントに返すプロパティの名前を渡します。
+*プロジェクション*と呼ばれるこの方法では、帯域幅の使用が削減され、クエリのパフォーマンスが向上します。特に、大量のエンティティや結果セットがある場合に役立ちます。 **select** パラメーターを使用して、クライアントに返すプロパティの名前を渡します。 次のコードのクエリは、テーブル内のエンティティの説明だけを返します。
 
-次のコードのクエリは、テーブル内のエンティティの説明だけを返します。
+次のスニペットは、Azure Storage に対してのみ機能します。
 
 > [!NOTE]
-> 次のスニペットは、Azure Storage に対してのみ機能します。 ストレージ エミュレーターではサポートされません。
+> ストレージ エミュレーターではサポートされません。 エンティティを削除する
 
 ```python
-tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
+tasks = table_service.query_entities(
+    'tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
 for task in tasks:
     print(task.description)
 ```
 
-## <a name="delete-an-entity"></a>エンティティを削除する
+## <a name="delete-an-entity"></a>エンティティを削除するには、エンティティの **PartitionKey** と **RowKey** を [delete_entity][py_delete_entity] メソッドに渡します。
 
-エンティティを削除するには、エンティティの **PartitionKey** と **RowKey** を [delete_entity][py_delete_entity] メソッドに渡します。
+テーブルを削除する
 
 ```python
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 ```
 
-## <a name="delete-a-table"></a>テーブルを削除する
+## <a name="delete-a-table"></a>不要になったテーブルまたはテーブル内のエンティティがある場合、[delete_table][py_delete_table] メソッドを呼び出して、Azure Storage からテーブルを完全に削除します。
 
-不要になったテーブルまたはテーブル内のエンティティがある場合、[delete_table][py_delete_table] メソッドを呼び出して、Azure Storage からテーブルを完全に削除します。
+次の手順
 
 ```python
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>[Azure Cosmos DB の FAQ - Table API を使った開発](https://docs.microsoft.com/azure/cosmos-db/faq)
 
-* [Azure Cosmos DB の FAQ - Table API を使った開発](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [Azure Cosmos DB SDK for Python API のリファレンス](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)
 * [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): Windows、macOS、および Linux で Azure Storage のデータを視覚的に操作するための無料のクロス プラットフォーム アプリケーション。
 * [Visual Studio での Python の使用 (Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
+* <bpt id="p1">[</bpt>Working with Python in Visual Studio (Windows)<ept id="p1">](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)</ept>
 
 
 [py_commit_batch]: https://docs.microsoft.com/python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?view=azure-python

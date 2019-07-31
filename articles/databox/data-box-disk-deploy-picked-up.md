@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/23/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7e7a1f119a2f2b0e60645cb776b26c124910cacb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ca42532fe6ba954180ce06ed0e3561e42f1fb447
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448211"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424234"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box Disk の返送と Azure へのデータ アップロードの確認
 
 これは、Azure Data Box Disk のデプロイについて取り上げたシリーズの最後のチュートリアルです。 このチュートリアルで学習する内容は次のとおりです。
@@ -28,6 +30,7 @@ ms.locfileid: "67448211"
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、「[チュートリアル:Azure Data Box Disk へのデータのコピーと検証](data-box-disk-deploy-copy-data.md)」を参照してください。
+
 
 ## <a name="ship-data-box-disk-back"></a>Data Box Disk を返送する
 
@@ -104,7 +107,7 @@ ms.locfileid: "67448211"
 #### <a name="pick-up-in-japan"></a>日本で集荷する
 
 1. 伝票に送信元の情報としてお客様の会社名と住所の情報を記入します。
-2. 次のメール テンプレートを使用して Quantium Solutions にメールで送信します。
+2. 次のメール テンプレートを使用して Quantium Solutions にメールを送信します。
 
     - 日本郵便の着払伝票が含まれていなかった場合、または紛失した場合は、このメールにそのことを記載します。 Quantium Solutions Japan が日本郵便に集荷を依頼し、集荷時に伝票を持って行くように伝えます。
     - 複数の注文がある場合は、必ず個別に集荷するようにメールを送信します。
@@ -123,7 +126,7 @@ ms.locfileid: "67448211"
 
 3. 集荷を予約した後、Quantium Solutions からメールの確認を受信します。 確認のメールには、着払伝票に関する情報も含まれています。
 
-必要に応じて、次の情報で Quantium Solutions のサポート (日本語) に問い合わせることができます。 
+必要に応じて、次の情報で Quantium Solutions のサポート (日本語) にお問い合わせください。 
 
 - メール: Customerservice.JP@quantiumsolutions.com 
 - 電話： 03-5755-0150 
@@ -229,5 +232,41 @@ Azure にデータがアップロードされたことを確認するには、�
 
 > [!div class="nextstepaction"]
 > [Azure portal を使用して Azure Data Box Disk を管理する](./data-box-portal-ui-admin.md)
+
+::: zone-end
+
+
+::: zone target="chromeless"
+
+# <a name="return-the-disk-and-verify-upload-to-azure"></a>Azure へのディスクの返却とアップロードの確認
+
+## <a name="ship-to-azure"></a>Azure への発送
+
+1. データの検証が完了したら、ディスクの接続を解除します。 接続ケーブルを取り外してください。
+2. すべてのディスクと接続ケーブルをエアー クッションで包んで梱包箱に詰めます。 アクセサリが不足している場合は、料金がかかることがあります。
+    - 最初の配送時に使われていた梱包を再利用してください。  
+    - ディスクはエアー クッションでしっかりと包んで梱包することをお勧めします。
+    - 箱内の物があまり動かないように、すき間が少なくなるようにしてください。
+3. 次の手順は、デバイスを返送する場所によって決まります。
+    - [米国およびカナダでデバイスを返送する場合は、UPS での集荷をスケジュールします](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada)。
+    - [ヨーロッパで DHL での集荷をスケジュールする](data-box-disk-deploy-picked-up.md#pick-up-in-europe)場合は、DHL の Web サイトにアクセスし、航空貨物運送状番号を指定します。
+    - オーストラリア、日本、韓国、シンガポールなどの[オーストラリア太平洋地域の国で集荷をスケジュール](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific-region)します。
+4. 運送業者によってディスクが集荷されると、ポータルの注文状態が更新され、追跡 ID が表示されます。
+
+## <a name="verify-upload-to-azure"></a>Azure へのアップロードを確認する
+
+データが Azure にアップロードされた後、コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。 データは次の場所にあります。
+
+- お使いの Azure Storage アカウント。 データを Data Box にコピーする場合は、そのデータがタイプに応じて Azure Storage アカウントの次のいずれかのパスにアップロードされます。
+
+    - **ブロック BLOB とページ BLOB の場合**: https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt
+
+    - **Azure Files の場合**: https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt
+
+    あるいは、Azure Portal で Azure ストレージ アカウントにアクセスし、そこから移動することもできます。
+
+- マネージド ディスク リソース グループ。 マネージド ディスクを作成するとき、VHD はページ BLOB としてアップロードされた後、マネージド ディスクに変換されます。 マネージド ディスクは、注文の作成時に指定されたリソース グループに接続されています。
+
+::: zone-end
 
 

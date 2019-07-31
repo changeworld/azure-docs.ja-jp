@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: normesta
-ms.openlocfilehash: 6dd50e15c5fb11a50ddd0370ea47a5406d2a7125
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: f384fb738fe719b8e622e8d61502e6acba2bbf31
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68306018"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314367"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage のマルチプロトコル アクセス
 
@@ -22,7 +22,7 @@ ms.locfileid: "68306018"
 最近まで、オブジェクト ストレージと分析ストレージ用に別々のストレージ ソリューションを管理する必要がありました。 このため、Azure Data Lake Storage Gen2 によるエコシステムのサポートが制限されていました。 さらに、診断ログなどの BLOB サービスの機能へのアクセスも制限されていました。 さまざまなシナリオを実現するにはアカウント間でデータを移動する必要があるため、寸断されたストレージ ソリューションは管理が容易ではありません。 もう、それを行う必要はありません。
 
 > [!NOTE]
-> Data Lake Storage のマルチプロトコル アクセスはパブリック プレビュー段階であり、**米国西部 2**リージョンと**米国中部**リージョンでのみ使用できます。 制限事項を確認するには、[既知の問題](data-lake-storage-known-issues.md)に関する記事を参照してください。 プレビューに登録するには、[こちらのページ](http://aka.ms/blobinteropsignup)を参照してください。
+> Data Lake Storage のマルチプロトコル アクセスはパブリック プレビュー段階であり、**米国西部 2**リージョンと**米国中部**リージョンでのみ使用できます。 制限事項を確認するには、[既知の問題](data-lake-storage-known-issues.md)に関する記事を参照してください。 プレビューに登録するには、[こちらのページ](https://aka.ms/blobinteropsignup)を参照してください。
 
 ## <a name="use-the-entire-ecosystem-of-applications-tools-and-services"></a>アプリケーション、ツール、およびサービスのエコシステム全体を使用する
 

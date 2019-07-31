@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: f8697042ed46e0ff333f736454346908d76cf039
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 73f9ee597682cc995f3a2cc783abeee92bf11bd2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718382"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501134"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>チュートリアル:Immersive Reader の起動 (Node.js)
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* イマーシブ リーダーのサブスクリプション キー。 [こちらの手順](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に従って入手してください。
+* Azure Active Directory (Azure AD) 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](./azure-active-directory-authentication.md)に従ってください。 環境のプロパティを構成するときに、ここで作成した値の一部が必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 * [Node.js](https://nodejs.org/) と [Yarn](https://yarnpkg.com)
 * [Visual Studio Code](https://code.visualstudio.com/) などの IDE
 
@@ -55,20 +55,31 @@ yarn add request
 yarn add dotenv
 ```
 
-## <a name="acquire-an-access-token"></a>アクセス トークンの取得
+## <a name="acquire-an-azure-ad-authentication-token"></a>Azure AD 認証トークンを取得する
 
-次に、サブスクリプション キーを使用してアクセス トークンを取得する バックエンド API を記述します。 この次の手順では、サブスクリプション キーとエンドポイントが必要です。 サブスクリプション キーは、Azure portal のイマーシブ リーダー リソースの [キー] ページで確認できます。 エンドポイントは、[概要] ページで確認できます。
+次に、Azure AD 認証トークンを取得するバックエンド API を記述します。
 
-サブスクリプション キーとエンドポイントを確認したら、 _.env_ という新しいファイルを作成し、そこに次のコードを貼り付けます。`{YOUR_SUBSCRIPTION_KEY}` と `{YOUR_ENDPOINT}` はそれぞれ、ご自分のサブスクリプション キーとエンドポイントに置き換えてください。
+この部分については、上の Azure AD 認証構成の前提条件の手順におけるいくつかの値が必要です。 そのセッションで保存したテキスト ファイルを参照します。
+
+````text
+TenantId     => Azure subscription TenantId
+ClientId     => Azure AD ApplicationId
+ClientSecret => Azure AD Application Service Principal password
+Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
+````
+
+これらの値が用意できたら、 _.env_ という名前の新しいファイルを作成し、そこに次のコードを貼り付けて、上記のカスタム プロパティ値を指定します。
 
 ```text
-SUBSCRIPTION_KEY={YOUR_SUBSCRIPTION_KEY}
-ENDPOINT={YOUR_ENDPOINT}
+TENANT_ID={YOUR_TENANT_ID}
+CLIENT_ID={YOUR_CLIENT_ID}
+CLIENT_SECRET={YOUR_CLIENT_SECRET}
+SUBDOMAIN={YOUR_SUBDOMAIN}
 ```
 
 このファイルは、公開するべきでない機密情報を含んでいるため、ソース管理にはコミットしないでください。
 
-次に、_app.js_ を開いて、ファイルの先頭に次を追加します。 これにより、サブスクリプション キーとエンドポイントが環境変数として Node に読み込まれます。
+次に、_app.js_ を開いて、ファイルの先頭に次を追加します。 これにより、.env ファイル内に定義したプロパティが環境変数として Node に読み込まれます。
 
 ```javascript
 require('dotenv').config();
@@ -80,31 +91,45 @@ _routes\index.js_ ファイルを開いて、ファイルの上部に次の impo
 var request = require('request');
 ```
 
-次に、この行の直後に次のコードを追加します。 このコードにより、サブスクリプション キーを使用してアクセス トークンを取得し、その後そのトークンを返す API エンドポイントが作成されます。
+次に、この行の直後に次のコードを追加します。 このコードにより、ご自分のサービス プリンシパル パスワードを使用して Azure AD 認証トークンを取得し、その後そのトークンを返す API エンドポイントが作成されます。 サブドメインを取得するために 2 つ目のエンドポイントもあります。
 
 ```javascript
-router.get('/token', function(req, res, next) {
-  request.post({
-    headers: {
-        'Ocp-Apim-Subscription-Key': process.env.SUBSCRIPTION_KEY,
-        'content-type': 'application/x-www-form-urlencoded'
-    },
-    url: process.env.ENDPOINT
-  },
-  function(err, resp, token) {
-    return res.send(token);
-  });
+router.get('/getimmersivereadertoken', function(req, res) {
+  request.post ({
+          headers: {
+              'content-type': 'application/x-www-form-urlencoded'
+          },
+          url: `https://login.windows.net/${process.env.TENANT_ID}/oauth2/token`,
+          form: {
+              grant_type: 'client_credentials',
+              client_id: process.env.CLIENT_ID,
+              client_secret: process.env.CLIENT_SECRET,
+              resource: 'https://cognitiveservices.azure.com/'
+          }
+      },
+      function(err, resp, token) {
+          if (err) {
+              return res.status(500).send('CogSvcs IssueToken error');
+          }
+
+          return res.send(JSON.parse(token).access_token);
+      }
+  );
+});
+
+router.get('/subdomain', function (req, res) {
+    return res.send(process.env.SUBDOMAIN);
 });
 ```
 
-この API エンドポイントは、何らかの認証 ([OAuth](https://oauth.net/2/) など) で保護する必要があります。この作業はこのチュートリアルの対象外です。
+**getimmersivereadertoken** API エンドポイントはなんらかの形式の認証 ([OAuth](https://oauth.net/2/) など) の背後で保護して、未承認のユーザーがトークンを取得し、ご使用のイマーシブ リーダー サービスと請求に対して使用できないようにする必要があります。この作業は、このチュートリアルの範囲を超えています。
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>イマーシブ リーダーを起動してサンプル コンテンツを表示する
 
 1. _views\layout.pug_ を開いて、`head` タグと `body` タグの間に次のコードを追加します。 これらの `script` タグによって、[Immersive Reader SDK](https://github.com/Microsoft/immersive-reader-sdk) と jQuery が読み込まれます。
 
     ```pug
-    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.1.js')
+    script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
     script(src='https://code.jquery.com/jquery-3.3.1.min.js')
     ```
 
@@ -118,21 +143,47 @@ router.get('/token', function(req, res, next) {
       p(id='content') The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers.
       div(class='immersive-reader-button' data-button-style='iconAndText' data-locale='en-US' onclick='launchImmersiveReader()')
       script.
-        function launchImmersiveReader() {
-          // First, get a token using our /token endpoint
-          $.ajax('/token', { success: token => {
-            // Second, grab the content from the page
+
+        function getImmersiveReaderTokenAsync() {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: '/getimmersivereadertoken',
+                    type: 'GET',
+                    success: token => {
+                        resolve(token);
+                    },
+                    error: err => {
+                        console.log('Error in getting token!', err);
+                        reject(err);
+                    }
+                });
+            });
+        }
+
+        function getSubdomainAsync() {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: '/subdomain',
+                    type: 'GET',
+                    success: subdomain => { resolve(subdomain); },
+                    error: err => { reject(err); }
+                });
+            });
+        }
+
+        async function launchImmersiveReader() {
             const content = {
-              title: document.getElementById('title').innerText,
-              chunks: [ {
-                content: document.getElementById('content').innerText + '\n\n',
-                lang: 'en'
-              } ]
+                title: document.getElementById('title').innerText,
+                chunks: [{
+                    content: document.getElementById('content').innerText + '\n\n',
+                    lang: 'en'
+                }]
             };
 
-            // Third, launch the Immersive Reader
-            ImmersiveReader.launchAsync(token, content);
-          }});
+            const token = await getImmersiveReaderTokenAsync();
+            const subdomain = await getSubdomainAsync();
+
+            ImmersiveReader.launchAsync(token, subdomain, content);
         }
     ```
 
@@ -214,4 +265,4 @@ router.get('/token', function(req, res, next) {
 ## <a name="next-steps"></a>次の手順
 
 * [Immersive Reader SDK](https://github.com/Microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する
-* [GitHub](https://github.com/microsoft/immersive-reader-sdk/samples/advanced-csharp) でコード サンプルを見る
+* [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/advanced-csharp) でコード サンプルを見る

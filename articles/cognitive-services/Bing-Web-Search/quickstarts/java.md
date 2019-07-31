@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Java を使用して Web 検索を実行する - Bing Web Search REST API
+title: クイック スタート:Java を使用して Bing Web Search REST API を呼び出す
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Java を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 07/22/2019
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 8282838f778516e31080960400e5b1435f0b5673
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seodec2018, seo-java-july2019
+ms.openlocfilehash: 42cb270955846f1333b79389c3ca979dc4808f05
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57866328"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489631"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>クイック スタート:Bing Web Search REST API と Java を使用して Web を検索する
 

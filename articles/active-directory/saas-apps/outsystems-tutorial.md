@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5c689c6624a47a01e8e85c8aec33b956459981f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f631a641ab63d33d27d1e4520a000b4b01132be
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095360"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478566"
 ---
 # <a name="tutorial-integrate-outsystems-azure-ad-with-azure-active-directory"></a>チュートリアル:OutSystems Azure AD と Azure Active Directory を統合します
 
@@ -101,7 +101,7 @@ OutSystems Azure AD に対する Azure AD SSO を構成してテストするに�
 
 ### <a name="configure-outsystems-azure-ad"></a>OutSystems Azure AD の構成
 
-**OutSystems** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [OutSystems サポート チーム](mailto:support@outsystems.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+OutSystems 側でシングル サインオンを構成するには、[IdP Forge](https://www.outsystems.com/forge/component-overview/599/idp) コンポーネントをダウンロードし、[指示](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Configure_your_application_to_use_IdP_connector)に従って構成する必要があります。 コンポーネントをインストールし、必要なコード変更を行った後、次の[手順](https://success.outsystems.com/Documentation/Development_FAQs/How_to_configure_OutSystems_to_use_identity_providers_using_SAML#Azure_AD_.2F_ADFS)に従って、Azure portal からフェデレーション メタデータ XML をダウンロードして Azure AD を構成し、OutSystems IdP コンポーネントにアップロードします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -135,7 +135,7 @@ OutSystems Azure AD に対する Azure AD SSO を構成してテストするに�
 
 ### <a name="create-outsystems-azure-ad-test-user"></a>OutSystems Azure AD のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを OutSystems に作成します。 OutSystems では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 OutSystems にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、B.Simon というユーザーを OutSystems に作成します。 OutSystems では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 OutSystems にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ### <a name="test-sso"></a>SSO のテスト
 

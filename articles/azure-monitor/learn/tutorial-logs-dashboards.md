@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 93cda8680bc665055d449e86c24d6565f6fc525f
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: c859fb9b8b3509e8369559a3a9a4d45cb4e34125
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296387"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414147"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -75,7 +75,7 @@ Perf
 
 ![クエリを保存する](media/tutorial-logs-dashboards/save-query.png)
 
-**[クエリの保存]** コントロール パネルで、名前 ("*Azure VM - プロセッサ使用率*" など) とカテゴリ ("*ダッシュボード*" など) を指定し、 **[保存]** をクリックします。  このようにすることで、一般的なクエリのライブラリを作成し、使用したり変更したりできます。  最後に、ページの右上隅にある **[ピン留めする]** を選択し、ダッシュボード名を選択することで、事前に作成した共有ダッシュボードにこれをピン留めします。
+**[クエリの保存]** コントロール パネルで、名前 ("*Azure VM - プロセッサ使用率*" など) とカテゴリ ("*ダッシュボード*" など) を指定し、 **[保存]** をクリックします。  このようにすることで、一般的なクエリのライブラリを作成し、使用したり変更したりできます。  最後に、ページの右上隅にある **[ダッシュボードにピン留めする]** ボタンを選択し、ダッシュボード名を選択することで、事前に作成した共有ダッシュボードにこれをピン留めします。
 
 ダッシュボードにクエリがピン留めされ、一般的なタイトルとその下にコメントが表示されます。
 

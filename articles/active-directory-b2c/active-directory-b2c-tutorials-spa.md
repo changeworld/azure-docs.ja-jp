@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 07/08/2019
+ms.date: 07/24/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 496cf801a44638af61306b43791abce9466e2cb2
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 6884cb7b10da3996977f2aea7693625bc45c3139
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835679"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68369564"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリケーションで認証を有効にする
 
@@ -41,7 +41,7 @@ ms.locfileid: "67835679"
 さらに、ご利用のローカル開発環境には次のものが必要です。
 
 * コード エディター。例: [Visual Studio Code](https://code.visualstudio.com/) または [Visual Studio 2019](https://www.visualstudio.com/downloads/)
-* [.NET Core SDK 2.0.0](https://www.microsoft.com/net/core) 以降
+* [.NET Core SDK 2.2](https://dotnet.microsoft.com/download) 以降
 * [Node.JS](https://nodejs.org/en/download/)
 
 ## <a name="update-the-application"></a>アプリケーションの更新
@@ -115,8 +115,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
 
-1. **[Login]\(ログイン\)** をクリックし、アプリケーションのユーザーとしてサインアップします。 これにより、前の手順で指定した **B2C_1_signupsignin1** ユーザー フローが使用されます。
-1. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[今すぐサインアップ]** リンクをクリックします。
+1. **[Login]\(ログイン\)** をクリックして、前の手順で指定した *B2C_1_signupsignin1* ユーザー フローを開始します。
+1. Azure AD B2C によって、サインアップ リンクを含むサインイン ページが表示されます。 まだアカウントを持っていないため、 **[Sign up now]\(今すぐサインアップ\)** リンクをクリックします。
 1. サインアップ ワークフローによって、メール アドレスを使用してユーザーの ID を収集および確認するためのページが表示されます。 また、サインアップ ワークフローでは、ユーザー フローで定義されているユーザーのパスワードと要求された属性も収集されます。
 
     有効なメール アドレスを使用し、確認コードを使用して検証します。 パスワードを設定します。 要求された属性の値を入力します。
@@ -133,11 +133,15 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 サインイン後、このアプリでは、アクセス許可が不十分であることを示すエラーが表示されます - これには次のことが**予想されます**。
 
-`ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.`
+```Output
+ServerError: AADB2C90205: This application does not have sufficient permissions against this web resource to perform the operation.
+Correlation ID: ce15bbcc-0000-0000-0000-494a52e95cd7
+Timestamp: 2019-07-20 22:17:27Z
+```
 
-demo ディレクトリからリソースにアクセスを試みていますが、ご利用のアクセス トークンはご自分の Azure AD ディレクトリに対してしか有効ではないため、このエラーが発生します。 したがって、API 呼び出しは承認されません。
+このエラーが発生するのは、Web アプリケーションがデモ用ディレクトリ *fabrikamb2c* によって保護されている Web API にアクセスしようとしているためです。 アクセス トークンはご利用の Azure AD ディレクトリのみに有効であるため、この API 呼び出しは承認されません。
 
-このシリーズの次のチュートリアルに進み ([次の手順](#next-steps)を参照)、ご利用のディレクトリ用に保護された Web API を作成してください。
+このエラーを修正するには、このシリーズの次のチュートリアルに進み (「[次の手順](#next-steps)」を参照)、ご利用のディレクトリ用に保護された Web API を作成してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -151,4 +155,4 @@ demo ディレクトリからリソースにアクセスを試みていますが
 それでは、このシリーズの次のチュートリアルに進んで、SPA から保護された Web API へのアクセスを許可します。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリから ASP.NET Core Web API へのアクセスを許可する](active-directory-b2c-tutorials-spa-webapi.md)
+> [チュートリアル:Azure AD B2C を使用して SPA から ASP.NET Core Web API へのアクセスを許可する](active-directory-b2c-tutorials-spa-webapi.md)

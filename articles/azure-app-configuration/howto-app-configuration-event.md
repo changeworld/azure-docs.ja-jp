@@ -13,24 +13,20 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 2cb9ad28a21842987f8c0f7c75151ab8c7fe6fa0
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735811"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326598"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure App Configuration イベントを Web エンドポイントにルーティングする
 
-Azure App Configuration ユーザーは、キーと値が変更されたときに発行されるイベントにサブスクライブできます。 これらのイベントは、Webhook、Azure Functions、Azure Storage キュー、または [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers) でサポートされている他の任意のイベント ハンドラーをトリガーできます。 この記事では、Azure CLI を使用して Azure App Configuration イベントにサブスクライブする方法を説明します。
+このクイックスタートでは、Web エンドポイントにキーと値の変更イベントを送信するように Azure App Configuration のイベント サブスクリプションを設定する方法について説明します。 Azure App Configuration ユーザーは、キーと値が変更されたときに発行されるイベントにサブスクライブできます。 これらのイベントは、Webhook、Azure Functions、Azure Storage キュー、または Azure Event Grid でサポートされている他の任意のイベント ハンドラーをトリガーできます。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
 
-通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
+## <a name="prerequisites"></a>前提条件
 
-この記事の手順の最後に、イベント データが Web アプリに送信済みであることを確認できます。
-
-![サブスクリプション イベントの表示](./media/quickstarts/event-grid/view-results.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+- Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)。 Azure Cloud Shell を使用することもできます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -144,3 +140,4 @@ az group delete --name <resource_group_name>
 
 - [キーと値のイベントへの対応](concept-app-configuration-event.md)
 - [Event Grid について](../event-grid/overview.md)
+- [Azure Event Grid ハンドラー](../event-grid/event-handlers.md)

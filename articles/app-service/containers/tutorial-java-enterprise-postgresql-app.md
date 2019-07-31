@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: dcd1ef5c54885b758ac9a301616d79a163999bc9
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 2d26d9e145030e5972289c224dc2f76078d67527
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509639"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498481"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル:Azure で Java EE と Postgres の Web アプリを構築する
 
@@ -169,7 +169,7 @@ az postgres server create \
 
 - **postgresql-42.2.5.jar**:この JAR ファイルは、Postgres 用の JDBC ドライバーです。 詳細については、[公式 Web サイト](https://jdbc.postgresql.org/index.html)を参照してください。
 - **postgres-module.xml**:この XML ファイルでは、Postgres モジュール (org.postgres) の名前が宣言されます。 また、モジュールを使用するために必要なリソースと依存関係が指定されます。
-- **jboss_cli_commands.cl**:このファイルには、JBoss CLI によって実行される構成コマンドが含まれています。 これらのコマンドでは、WildFly アプリケーション サーバーへの Postgres モジュールの追加、資格情報の指定、JNDI 名の宣言、タイムアウトのしきい値の設定などを行います。JBoss CLI を使い慣れていない場合は、[公式ドキュメント](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)を参照してください。
+- **jboss_cli_commands.cli**:このファイルには、JBoss CLI によって実行される構成コマンドが含まれています。 これらのコマンドでは、WildFly アプリケーション サーバーへの Postgres モジュールの追加、資格情報の指定、JNDI 名の宣言、タイムアウトのしきい値の設定などを行います。JBoss CLI を使い慣れていない場合は、[公式ドキュメント](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)を参照してください。
 - **startup_script.sh**:最後のこのシェル スクリプトは、お客様の App Service インスタンスが起動されるたびに実行されます。 このスクリプトで実行される機能は、*jboss_cli_commands.cli* 内のコマンドを JBoss CLI にパイプ処理することの 1 つだけです。
 
 これらのファイル、特に *jboss_cli_commands.cli* の内容を読むことを強くお勧めします。
@@ -194,7 +194,7 @@ az postgres server create \
 mvn clean install -DskipTests azure-webapp:deploy
 ```
 
-お疲れさまでした。 お客様のアプリケーションで Postgres データベースが使用されるようになり、アプリケーションで作成されたすべてのレコードが、以前の H3 メモリ内データベースではなく、Postgres に格納されるようになりました。 これを確認するために、レコードを作成してお客様のアプリ サービスを再起動できます。 お客様のアプリケーションを再起動しても、レコードはなくなりません。
+お疲れさまでした。 お客様のアプリケーションで Postgres データベースが使用されるようになり、アプリケーションで作成されたすべてのレコードが、以前の H2 メモリ内データベースではなく、Postgres に格納されるようになりました。 これを確認するために、レコードを作成してお客様のアプリ サービスを再起動できます。 お客様のアプリケーションを再起動しても、レコードはなくなりません。
 
 ## <a name="clean-up"></a>クリーンアップ
 

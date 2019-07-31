@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 07/04/2019
-ms.openlocfilehash: 2ff5ebefbe379edda94dcf8ac066027398e2f3f4
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: baf3c372d0c84d4daf439fdc92fa6eeac5d12d0b
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565538"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501015"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する
 
@@ -128,6 +128,8 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
      https://blobnameurl/container?SASKEY
      ```
 
+     この BLOB コンテナーの SAS 接続文字列は Azure Storage Explorer 内で見つかります。 該当するコンテナーの SAS を作成すると、上記の要求された形式の URL が提供されます。
+     
      また、Azure ストレージの種類のダンプ情報に基づいて、次の点に注意してください。
 
      * BSON ダンプの場合、データ ファイルが collection.bson 形式の包含データベースの名前が付けられたフォルダーに配置されるように、BLOB コンテナー内のデータは bsondump 形式にする必要があります。 メタデータ ファイルがある場合は、*collection*.metadata.json の形式で名前を付けます。

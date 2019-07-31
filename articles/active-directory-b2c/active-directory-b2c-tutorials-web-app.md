@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 041bcf32035ab6cdc3ee4df06050f75186759f5e
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bcfd1ef02c68de7709cb8642b94f23a6884ea156
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835648"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464756"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Web アプリケーションで認証を有効にする
 
@@ -64,8 +64,9 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 このサンプルは、ご利用のテナントに登録されているアプリケーションを使用するように変更します。これには、以前書き留めておいたアプリケーション ID とキーが含まれます。 また、作成したユーザー フローも構成します。 このサンプルでは、Web.config ファイルの設定として構成値を定義します。 設定を変更するには:
 
 1. Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
-2. **TaskWebApp** プロジェクトの **Web.config** ファイルを開きます。 `ida:Tenant` の値は、実際に作成したテナントの名前に置き換えます。 `ida:ClientId` の値は、実際に記録したアプリケーション ID に置き換えます。 `ida:ClientSecret` の値は、実際に記録したキーに置き換えます。
+2. **TaskWebApp** プロジェクトの **Web.config** ファイルを開きます。 `ida:Tenant` の値は、実際に作成したテナントの名前に置き換えます。 `ida:ClientId` の値は、実際に記録したアプリケーション ID に置き換えます。 `ida:ClientSecret` の値は、実際に記録したキーに置き換えます。 クライアント シークレットは、Web.config に追加する前に、XML エンコードする必要があります。
 3. **Web.config** ファイルで、`ida:SignUpSignInPolicyId` の値を `b2c_1_signupsignin1` に置き換えます。 `ida:EditProfilePolicyId` の値を `b2c_1_profileediting1` に置き換えます。 `ida:ResetPasswordPolicyId` の値を `b2c_1_passwordreset1` に置き換えます。
+
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 

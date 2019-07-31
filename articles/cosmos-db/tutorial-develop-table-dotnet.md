@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 05/20/2019
-ms.openlocfilehash: dc29cc6d3cc2a07214fb638a10039a4c3ea2d92b
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 75f1554f7522723d71666633a03761d07e797e33
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65953627"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443501"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要
 
@@ -23,7 +23,7 @@ ms.locfileid: "65953627"
 
 Azure Cosmos DB Table API または Azure Table Storage を使用すると、NoSQL の構造化データをクラウドに格納し、スキーマレスのデザインでキー/属性ストアを実現できます。 Azure Cosmos DB Table API と Table Storage にはスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に適応させることができます。 Azure Cosmos DB Table API または Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、サービスに必要なその他の種類のメタデータなど、柔軟なデータセットを格納できます。 
 
-このチュートリアルでは、Azure Cosmo DB Table API と Azure Table Storage のシナリオで [.NET 用 Microsoft Azure Cosmos DB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)を使用する方法を紹介したサンプルについて説明します。 Azure サービス専用の接続を使用する必要があります。 テーブルの作成、データの挿入や更新、データの照会、テーブルの削除の方法を示した C# の例を使用して、これらのシナリオを考察しています。
+このチュートリアルでは、Azure Cosmo DB Table API と Azure Table Storage のシナリオで [.NET 用 Microsoft Azure Cosmos DB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)を使用する方を紹介したサンプルについて説明します。 Azure サービス専用の接続を使用する必要があります。 テーブルの作成、データの挿入/更新、データの照会、テーブルの削除の方法を示した C# の例を使用して、これらのシナリオを考察しています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -71,7 +71,7 @@ NuGet パッケージを取得するには、次の手順に従います。
    
 1. 接続文字列を構成するには、Visual Studio から対象のプロジェクト **[CosmosTableSamples]** を右クリックします。
 
-1. **[追加]** 、 **[新しい項目]** を順に選択します。 ファイルの種類を **[TypeScript JSON 構成ファイル]** として新しいファイル **Settings.json** を作成します。 
+1. **[追加]** を選択し、 **[新しい項目]** を選択します。 ファイルの種類を **[TypeScript JSON 構成ファイル]** として新しいファイル **Settings.json** を作成します。 
 
 1. Settings.json ファイル内のコードを次のコードに置き換え、実際のプライマリ接続文字列を割り当てます。
 
@@ -106,13 +106,23 @@ NuGet パッケージを取得するには、次の手順に従います。
 
 ## <a name="parse-and-validate-the-connection-details"></a>接続の詳細を解析して検証する 
 
-1. 対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**Common.cs** という名前のクラスを追加します。 このクラス内に、接続の詳細を検証してテーブルを作成するコードを記述します。
+1. 対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、 **[Common.cs]** という名前のクラスを追加します。 このクラス内に、接続の詳細を検証してテーブルを作成するコードを記述します。
 
-1. 以下のように、`CreateStorageAccountFromConnectionString` というメソッドを定義します。 このメソッドは、接続文字列の詳細を解析し、"Settings.json" ファイルに入力されているアカウント名とアカウント キーの詳細が有効であることを検証するものです。 
+1. 以下のように、`CreateStorageAccountFromConnectionString` というメソッドを定義します。 このメソッドは、接続文字列の詳細を解析し、"Settings.json" ファイルに入力されているアカウント名とアカウント キーの詳細が有効であることを確認するものです。 
 
-   ```csharp
-   public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+ ```csharp
+using System;
+
+namespace CosmosTableSamples
+{
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.Azure.Documents;
+
+    public class Common
     {
+        public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+        {
             CloudStorageAccount storageAccount;
             try
             {
@@ -132,6 +142,8 @@ NuGet パッケージを取得するには、次の手順に従います。
 
             return storageAccount;
         }
+    }
+}
    ```
 
 
@@ -202,7 +214,7 @@ namespace CosmosTableSamples.Model
 
 次のコード例では、エンティティ オブジェクトを作成して、それをテーブルに追加します。 エンティティの挿入とマージには、[TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) クラス内の InsertOrMerge メソッドが使用されます。 その操作は、[CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) メソッドを呼び出すことによって実行されます。 
 
-対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**SamplesUtils.cs** という名前のクラスを追加します。 エンティティに対する CRUD 操作を実行するために必要なすべてのコードが、このクラスに格納されます。 
+対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、 **[SamplesUtils.cs]** という名前のクラスを追加します。 エンティティに対する CRUD 操作を実行するために必要なすべてのコードが、このクラスに格納されます。 
 
 ```csharp
 public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
@@ -306,7 +318,7 @@ public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity dele
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>サンプル データに対して CRUD 操作を実行する
 
-テーブルの作成、エンティティの挿入やマージを行うための各メソッドを定義したら、それらのメソッドをサンプル データに対して実行します。 そのためには、対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**BasicSamples.cs** という名前のクラスを追加して、そこに以下のコードを追加してください。 このコードによってテーブルが作成されて、そこにエンティティが追加されます。 プロジェクトの最後にエンティティとテーブルを削除したい場合は、次のコードの `table.DeleteIfExistsAsync()` および `SamplesUtils.DeleteEntityAsync(table, customer)` メソッドのコメントを解除してください。
+テーブルの作成、エンティティの挿入、エンティティのマージを行うための各メソッドを定義したら、それらのメソッドをサンプル データに対して実行します。 そのためには、対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**BasicSamples.cs** という名前のクラスを追加して、そこに以下のコードを追加してください。 このコードによってテーブルが作成されてエンティティが追加されます。 プロジェクトの最後にエンティティとテーブルを削除したい場合は、次のコードの `table.DeleteIfExistsAsync()` メソッドと `SamplesUtils.DeleteEntityAsync(table, customer)` メソッドのコメントを解除してください。
 
 ```csharp
 using System;
@@ -378,6 +390,29 @@ namespace CosmosTableSamples
 このチュートリアルでは、Table API アカウントに格納されたデータに対して基本的な CRUD 操作を実行するコードを作成しました。 それ以外にも、データのバッチ挿入、特定のパーティション内の全データの照会、特定のパーティション内の一連のデータの照会、名前が特定のプレフィックスで始まるアカウント内テーブルのリストなど、高度な操作を実行することもできます。 その完全なサンプルは、GitHub リポジトリ [azure-cosmos-table-dotnet-core-getting-started](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) からダウンロードできます。 データに対して実行できるさまざまな操作が、[AdvancedSamples.cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/master/CosmosTableSamples/AdvancedSamples.cs) クラスに含まれています。  
 
 ## <a name="run-the-project"></a>プロジェクトを実行する
+
+対象のプロジェクトである **[CosmosTableSamples]** を選択します。 **Program.cs** という名前のクラスを開き、プロジェクトの実行時に BasicSamples を呼び出すために、次のコードを追加します。
+
+```csharp
+using System;
+
+namespace CosmosTableSamples
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Azure Cosmos Table Samples");
+            BasicSamples basicSamples = new BasicSamples();
+            basicSamples.RunSamples().Wait();
+           
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit");
+            Console.Read();
+        }
+    }
+}
+```
 
 ここでソリューションをビルドし、F5 キーを押してプロジェクトを実行します。 プロジェクトを実行すると、コマンド プロンプトに次の出力内容が表示されます。
 

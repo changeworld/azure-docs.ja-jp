@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: 51f84234ac35be5f60d1aaa5dac661ad9ce5e0c2
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: da31b6a880344de918a3b3e0f89f60d985db2ce7
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66257897"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406028"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>チュートリアル:HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用する
 
@@ -44,7 +44,7 @@ Spark 構造化ストリーミングは、Spark SQL を基盤とするストリ�
 > 
 > 利便性のために、このドキュメントは、必要なすべての Azure リソースを作成できるテンプレートにリンクしています。 
 >
-> 仮想ネットワークでの HDInsight の使用方法の詳細については、[仮想ネットワークを使用した HDInsight の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するドキュメントをご覧ください。
+> 仮想ネットワークでの HDInsight の使用方法の詳細については、[HDInsight 用の仮想ネットワークの計画](hdinsight-plan-virtual-network-deployment.md)に関するドキュメントを参照してください。
 
 ## <a name="structured-streaming-with-apache-kafka"></a>Apache Kafka での構造化ストリーミング
 
@@ -142,8 +142,8 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
     | Setting | 値 |
     | --- | --- |
-    | サブスクリプション | お使いの Azure サブスクリプション |
-    | リソース グループ | リソースが含まれるリソース グループ。 |
+    | Subscription | お使いの Azure サブスクリプション |
+    | Resource group | リソースが含まれるリソース グループ。 |
     | Location | リソースが作成される Azure リージョン。 |
     | [Spark Cluster Name]\(Spark クラスター名\) | Spark クラスターの名前。 最初の 6 文字は、Kafka クラスターの名前と異なるものにする必要があります。 |
     | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 最初の 6 文字は、Spark クラスターの名前と異なるものにする必要があります。 |

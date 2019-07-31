@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 75228b8c939cb5b8dd04471662ba86b46cfc808c
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65860473"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478471"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>チュートリアル:Visual Studio の接続済みサービスを使用して Text Analytics Service に接続する
 
@@ -54,7 +54,7 @@ Text Analytics Service を使用することで、豊富な情報を抽出して
    価格レベルの詳細については、リンク先を参照してください。
 
 1. **[追加]** を選択して、接続済みサービスのサポートを追加します。
-   Text Analytics Service への接続をサポートするために、Visual Studio はプロジェクトを修正し、NuGet パッケージ、構成ファイルのエントリ、およびその他の変更を追加します。 **出力ウィンドウ**には、プロジェクトに対して実行されている処理のログが表示されます。 次のように表示されます。
+   Text Analytics Service への接続をサポートするために、Visual Studio はプロジェクトを修正し、NuGet パッケージ、構成ファイルのエントリ、およびその他の変更を追加します。 **出力ウィンドウ**には、プロジェクトに対して実行されている処理のログが表示されます。 出力は次のようになります。
 
    ```output
     [6/1/2018 3:04:02.347 PM] Adding Text Analytics to the project.
@@ -90,7 +90,7 @@ Text Analytics Service を使用することで、豊富な情報を抽出して
       }
    ```
 
-1. DemoTextAnalyzeController という名前の Controllers フォルダーにクラス ファイルを追加し、その内容を次のコードに置き換えます。
+1. `DemoTextAnalyzeController` という名前の *Controllers* フォルダーにクラス ファイルを追加し、その内容を次のコードに置き換えます。
 
     ```csharp
     using System;
@@ -153,7 +153,7 @@ Text Analytics Service を使用することで、豊富な情報を抽出して
     }
     ```
     
-    コードに含まれている GetTextAnalyzeClient は、Text Analytics API の呼び出しに使用できるクライアント オブジェクトと、指定されたテキストに対して DetectLanguage を呼び出す要求ハンドラーを取得します。
+    コードに含まれている `GetTextAnalyzeClient` は、Text Analytics API を呼び出すためのクライアント オブジェクトと、指定されたテキストに対して DetectLanguage を呼び出す要求ハンドラーを取得します。
 
 1. 上記のコードで使用される MyHandler ヘルパー クラスを追加します。
 
@@ -171,7 +171,7 @@ Text Analytics Service を使用することで、豊富な情報を抽出して
         }
     ```
 
-1. Models フォルダーに、モデルのクラスを追加します。
+1. *Models* フォルダーに、モデルのクラスを追加します。
 
     ```csharp
     using System;
