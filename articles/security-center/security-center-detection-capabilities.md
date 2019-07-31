@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: d4ca08a7b757889f79fb7ea5b85d7bc5c1c72259
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.openlocfilehash: ac3d1a55a707349873132befb25a38358b563138
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569364"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875555"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure Security Center の検出機能
 このドキュメントでは、Azure Security Center の高度な検出機能について取り上げます。この機能を使用すると、Microsoft Azure リソース (Windows と Linux の両方) が今さらされている脅威を特定し、迅速に対応するうえで必要な知見を得ることができます。

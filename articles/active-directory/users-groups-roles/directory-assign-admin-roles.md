@@ -9,24 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 07/17/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73ca740a4dcca3bdbb1951e55df4061364a5c646
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24d3da81fabf55bc0c3944f0c03829dee4fcce46
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083918"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304409"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
 Azure Active Directory (Azure AD) を使用して、特権が低いロールで ID のタスクを管理する限定された管理者を指定できます。 ユーザーの追加または変更、管理ロールの割り当て、ユーザーのパスワードのリセット、ユーザーのライセンスの管理、ドメイン名の管理などの目的で管理者を割り当てることができます。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
 
 全体管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 管理者ロールを委任できるのは全体管理者と特権ロール管理者だけです。 ビジネスに対するリスクを軽減するには、このロールを、社内の少数のユーザーにのみ割り当てることをお勧めします。
-
 
 ## <a name="assign-or-remove-administrator-roles"></a>管理者ロールの割り当てまたは削除
 
@@ -42,7 +41,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[アプリケーション開発者](#application-developer)** :このロールのユーザーは、[ユーザーはアプリケーションを登録できる] 設定が [いいえ] に設定されている場合に、アプリケーション登録を作成できます。 さらにこのロールでは、[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます] 設定が [いいえ] に設定されている場合に、代わりに同意する権限を付与します。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されます。
 
-* **[認証管理者](#authentication-administrator)** :このロールのユーザーは、パスワード以外の資格情報の設定とリセットを行うことができます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに要求し、"**このデバイスに MFA を記憶する**" 機能を取り消すことができます。これによって、管理者でないユーザーや次のロールのみが割り当てられているユーザーが次回サインインするときに MFA の入力を求めることができます。
+* **[認証管理者](#authentication-administrator)** :このロールのユーザーは、パスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに要求し、"**このデバイスに MFA を記憶する**" 機能を取り消すことができます。これによって、管理者でないユーザーや次のロールのみが割り当てられているユーザーが次回サインインするときに MFA の入力を求めることができます。
   * 認証管理者
   * ディレクトリ リーダー
   * ゲスト招待元
@@ -183,7 +182,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Power BI サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Power BI 管理者" になります。
 
-* **[特権認証管理者](#privileged-authentication-administrator)** :このロールのユーザーは、グローバル管理者を含むすべてのユーザーに対して、パスワード以外の資格情報の設定やリセットを実行できます。 特権認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに強制することができます。また、"このデバイスに MFA を記憶する" 機能を取り消して、すべてのユーザーが次回ログインするときに MFA の入力を求めることができます。 特権認証管理者ができることは次のとおりです。
+* **[特権認証管理者](#privileged-authentication-administrator)** :このロールのユーザーは、グローバル管理者を含むすべてのユーザーに対して、パスワード以外の資格情報の設定やリセットを実行でき、すべてのユーザーのパスワードを更新できます。 特権認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに強制することができます。また、"このデバイスに MFA を記憶する" 機能を取り消して、すべてのユーザーが次回ログインするときに MFA の入力を求めることができます。 特権認証管理者ができることは次のとおりです。
   * パスワード以外の既存の資格情報 (例: MFA、FIDO) に対する再登録をユーザーに強制する
   * "このデバイスに MFA を記憶する" 機能を取り消し、次回ログイン時に MFA の入力を求める
 
@@ -346,6 +345,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+| microsoft.aad.directory/users/password/update | Office 365 組織内のすべてのユーザーのパスワードの更新。 詳細については、オンライン ドキュメントを参照してください。 |
 
 ### <a name="azure-information-protection-administrator"></a>Azure Information Protection 管理者
 Azure Information Protection サービスのすべての側面を管理できます。
@@ -853,7 +853,7 @@ Intune 製品のすべての側面を管理できます。
 Microsoft Kaizala の設定を管理できます。  
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >  
   
@@ -895,7 +895,7 @@ Skype for Business 製品のすべての側面を管理できます。
 メッセージ センターの投稿、データのプライバシー メッセージ、グループ、ドメイン、およびサブスクリプションを読み取ることができます。
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1013,7 +1013,7 @@ Power BI 製品のすべての側面を管理できます。
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
-
+| microsoft.aad.directory/users/password/update | Office 365 組織内のすべてのユーザーのパスワードの更新。 詳細については、オンライン ドキュメントを参照してください。 |
 ### <a name="privileged-role-administrator"></a>特権ロール管理者
 Azure AD でのロールの割り当てと、Privileged Identity Management のすべての側面を管理できます。
 
@@ -1044,14 +1044,13 @@ Azure AD でのロールの割り当てと、Privileged Identity Management の�
 | microsoft.aad.directory/auditLogs/allProperties/read | Azure Active Directory での auditLogs 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
 | microsoft.aad.directory/signInReports/allProperties/read | Azure Active Directory での signInReports 上のすべてのプロパティ (特権プロパティを含む) の読み取り。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 
 ### <a name="search-administrator"></a>Search 管理者
 Microsoft Search 設定のすべての側面を作成および管理できます。
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1068,7 +1067,7 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 ブックマーク、Q&A、場所、フロアプランなどの編集コンテンツを作成および管理することができます。
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1111,7 +1110,7 @@ Microsoft Search 設定のすべての側面を作成および管理できます
 セキュリティ イベントを作成、管理します。
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 

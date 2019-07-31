@@ -105,8 +105,14 @@
           href: container-registry-tasks-multi-step.md
         - name: Buildpack を使用したイメージのビルド (プレビュー)
           href: container-registry-tasks-pack-build.md
-        - name: マネージド ID との使用
-          href: container-registry-tasks-authentication-managed-identity.md
+        - name: マネージド ID を使用してセキュリティ保護されたリソースにアクセスする
+          items:
+            - name: タスクにおけるマネージド ID の有効化
+              href: container-registry-tasks-authentication-managed-identity.md
+            - name: タスクからのクロスレジストリ認証
+              href: container-registry-tasks-cross-registry-authentication.md
+            - name: キー コンテナーを使用した外部認証
+              href: container-registry-tasks-authentication-key-vault.md
     - name: レジストリと他の Azure サービス
       items:
         - name: Azure Container Instances

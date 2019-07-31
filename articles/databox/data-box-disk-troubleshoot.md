@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f725f38a335972ae8e0a8b8402a99202caa54a70
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147083"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67805708"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>ログを使用して Azure Data Box Disk の検証の問題をトラブルシューティングする
 
@@ -90,8 +90,8 @@ ms.locfileid: "67147083"
 | `InvalidBlobNameFormat` | Azure BLOB の名前付け規則のとおりに、ファイル パスがクラウド内の有効な BLOB パスにマップしません。|[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)に準拠するようにファイルの名前を変更してください。 検証を再試行します。 |
 | `InvalidFileNameFormat` | Azure ファイルの名前付け規則のとおりに、ファイル パスがクラウド内の有効なファイル パスにマップしません。 |[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)に準拠するようにファイルの名前を変更してください。 検証を再試行します。 |
 | `InvalidDiskNameFormat` | Azure マネージド ディスクの名前付け規則のとおりに、ファイル パスがクラウド内の有効なディスク名にマップしません。 |[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)に準拠するようにファイルの名前を変更してください。 検証を再試行します。       |
-| `NotPartOfFileShare` | アップロード パスが無効なため、ファイルをアップロードできませんでした。 Azure Files 内のフォルダーにファイルをアップロードしてください。   | エラーのあるファイルを削除し、事前に作成されたフォルダーにそれらのファイルをアップロードしてください。 検証を再試行します。 |
-| `NonVhdFileNotSupportedForManagedDisk` | VHD 以外のファイルはマネージド ディスクとしてアップロードできません。 |VHD 以外のファイルはサポートされていませんので、削除してください。 検証を再試行します。 |
+| `NotPartOfFileShare` | ファイルのアップロード パスが無効です。 Azure Files 内のフォルダーにファイルをアップロードしてください。   | エラーのあるファイルを削除し、事前に作成されたフォルダーにそれらのファイルをアップロードしてください。 検証を再試行します。 |
+| `NonVhdFileNotSupportedForManagedDisk` | VHD 以外のファイルはマネージド ディスクとしてアップロードできません。 |VHD 以外のファイルはサポートされていないため、これらのファイルを `ManagedDisk` フォルダーから削除するか、`PageBlob` フォルダーに移動します。 検証を再試行します。 |
 
 
 ## <a name="next-steps"></a>次の手順

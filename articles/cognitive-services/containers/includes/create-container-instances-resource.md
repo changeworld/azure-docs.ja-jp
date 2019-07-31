@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: 38addf4651373ba0f4df411325218a255c835508
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 05284d434e6bd22fd50957f7cc5ec966f88a4fd4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717159"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229188"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Azure コンテナー インスタンス リソースを作成する
 
@@ -24,8 +24,8 @@ ms.locfileid: "67717159"
 
     |Setting|値|
     |--|--|
-    |サブスクリプション|サブスクリプションを選択します。|
-    |リソース グループ|利用可能なリソース グループを選択するか、新しいリソース グループを作成します (`cognitive-services` など)。|
+    |Subscription|サブスクリプションを選択します。|
+    |Resource group|利用可能なリソース グループを選択するか、新しいリソース グループを作成します (`cognitive-services` など)。|
     |コンテナー名|`cognitive-container-instance` などの名前を入力します。 この名前は小文字である必要があります。|
     |Location|デプロイのためのリージョンを選択します。|
     |イメージの種類|`Public`|
@@ -39,12 +39,12 @@ ms.locfileid: "67717159"
     |--|--|
     |Port|TCP ポートを `5000` に設定します。 ポート 5000 上でコンテナーを公開します。|
 
-4. **[詳細]** タブで、ACI リソースのコンテナー[課金設定](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers#billing-arguments)に必要な**環境変数**を入力します。
+4. **[詳細]** タブで、ACI リソースのコンテナー課金設定に必要な**環境変数**を入力します。
 
     | キー | 値 |
     |--|--|
-    |`apikey`|Text Analytics リソースの **[キー]** ページからコピーされます。 スペースやダッシュを含まない 32 文字の英数字文字列 (`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`) です。|
-    |`billing`|Text Analytics リソースの **[概要]** ページからコピーされます。 例: `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |`apikey`|リソースの **[キー]** ページからコピーされます。 スペースやダッシュを含まない 32 文字の英数字文字列 (`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`) です。|
+    |`billing`|リソースの **[概要]** ページからコピーされます。|
     |`eula`|`accept`|
 
 1. **[確認と作成]** をクリックします

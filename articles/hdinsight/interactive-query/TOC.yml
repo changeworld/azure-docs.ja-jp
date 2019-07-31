@@ -22,6 +22,12 @@
     - name: 容量計画
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: トラブルシューティング
+      items:
+        - name: OutOfMemoryError 例外
+          items:
+            - name: GC オーバーヘッド制限を超過
+              href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
 - name: 方法
   items:
     - name: Hive ワークロードを HDInsight 4.0 に移行する

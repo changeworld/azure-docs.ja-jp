@@ -56,12 +56,22 @@
           items:
             - name: ヒープ メモリ不足
               href: ./apache-spark-troubleshoot-outofmemory-heap.md
+            - name: Java ヒープ スペース
+              href: ./apache-spark-troubleshoot-outofmemory-heap-space.md
+            - name: Livy Server が起動しない
+              href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
+        - name: Apache Spark ジョブが遅い - ストレージ コンテナー
+          href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: IllegalArgumentException 例外
           href: ./apache-spark-troubleshoot-illegalargumentexception.md
         - name: Apache Spark Streaming アプリケーションが停止する
           href: ./apache-spark-troubleshoot-application-stops.md
         - name: RpcTimeoutException 例外
           href: ./apache-spark-troubleshoot-rpctimeoutexception.md
+        - name: クロス オリジン API がブロックされています
+          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
+        - name: Kryo によるシリアル化に失敗しました
+          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
 - name: 方法
   items:
     - name: クラスター ストレージの使用

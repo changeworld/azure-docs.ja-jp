@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 2b0892fb107827cd9060a36855e9b8bf4416463c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3c547fbc09aeb034df5b7ed579639e1ff4bc0b4
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069434"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67705803"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限 #
 
@@ -32,7 +32,7 @@ ms.locfileid: "67069434"
 
 アクセス制限機能は、コードが実行される worker ホストの上流にある App Service フロントエンド ロールに実装されています。 そのため、アクセス制限は、事実上のネットワーク ACL です。
 
-Azure Virtual Network (VNet) から Web アプリへのアクセスを制限する機能は、[サービス エンドポイント][serviceendpoints]と呼ばれます。 サービス エンドポイントを使用すると、選択したサブネットからマルチテナント サービスへのアクセスを制限することができます。 ネットワーク側と、有効にされているサービスの両方でこれを有効にする必要があります。 App Service Environment でホストされているアプリへのトラフィックを制限することはできません。  App Service Environment 内の場合は、IP アドレス ルールでアプリへのアクセスを制御できます。
+Azure Virtual Network (VNet) からご自分の Web アプリへのアクセスを制限する機能は、[サービス エンドポイント][serviceendpoints]と呼ばれます。 サービス エンドポイントを使用すると、選択したサブネットからマルチテナント サービスへのアクセスを制限することができます。 ネットワーク側と、有効にされているサービスの両方でこれを有効にする必要があります。 App Service Environment でホストされているアプリへのトラフィックを制限することはできません。  App Service Environment 内の場合は、IP アドレス ルールでアプリへのアクセスを制御できます。
 
 ![アクセス制限のフロー](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -98,7 +98,7 @@ App Service Environment で実行されているアプリへのアクセスを�
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>アクセス制限規則のプログラムによる操作 ##
 
-現在のところ、新しいアクセス制限機能向けの CLI または PowerShell はありませんが、Resource Manager を使用したアプリ構成で PUT 操作を使用して値を手動で設定できます。 たとえば、resources.azure.com を使用して ipSecurityRestrictions ブロックを編集して、必要な JSON を追加することができます。
+現在、新しいアクセス制限機能向けの CLI または PowerShell はありませんが、Resource Manager のアプリ構成で [Azure REST API](https://docs.microsoft.com/rest/api/azure/) の PUT 操作を使用して値を手動で設定できます。 たとえば、resources.azure.com を使用して ipSecurityRestrictions ブロックを編集して、必要な JSON を追加することができます。
 
 Resource Manager におけるこの情報の場所は次のとおりです。
 
@@ -106,15 +106,19 @@ management.azure.com/subscriptions/ **<サブスクリプション ID>** /resour
 
 前の例の JSON 構文を次に示します。
 
-    "ipSecurityRestrictions": [
-      {
-        "ipAddress": "131.107.159.0/24",
-        "action": "Allow",
-        "tag": "Default",
-        "priority": 100,
-        "name": "allowed access"
+    {
+      "properties": {
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "122.133.144.0/24",
+            "action": "Allow",
+            "tag": "Default",
+            "priority": 100,
+            "name": "IP example rule"
+          }
+        ]
       }
-    ],
+    }
 
 ## <a name="function-app-ip-restrictions"></a>Function App の IP 制限
 

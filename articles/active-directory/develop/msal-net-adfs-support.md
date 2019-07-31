@@ -12,25 +12,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/03/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5963c5e83b5af3848edd934328caa1f095bd184
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 13e1f80f3a0a10466ead60d828d28aa9916fe26b
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66576641"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302686"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET での Active Directory フェデレーション サービスのサポート
-Windows Server での Active Directory フェデレーション サービス (AD FS) により、自分が開発しているアプリケーションに OpenID Connect および OAuth 2.0 ベースの認証と認可を追加して、それらのアプリケーションで AD FS に対して直接ユーザーを認証させることができます。 詳細については、「[開発者向けの AD FS のシナリオ](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)」をご覧ください。
+Windows Server で Active Directory フェデレーション サービス (AD FS) を使用して、自分が開発しているアプリケーションに OpenID Connect と OAuth 2.0 ベースの認証と承認を追加できます。 その後、これらのアプリケーションで、AD FS に対して直接ユーザーを認証することができます。 詳細については、「[開発者向けの AD FS のシナリオ](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)」をご覧ください。
 
 .NET 用 Microsoft Authentication Library (MSAL.NET) では、AD FS に対する認証について 2 つのシナリオがサポートされています。
 
 - MSAL.NET は、それ自体が AD FS と "*フェデレーションされている*" Azure Active Directory と通信します。
-- MSAL.NET は、AD FS のバージョンが OpenID Connect に準拠している (AD FS 2019 以降) AD FS 機関と "*直接*" 通信します。 AD FS に直接接続すると、MSAL.NET は [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) で実行されているアプリで認証することができます。
+- MSAL.NET は、**ADFS** 機関と直接通信します。 これは、AD FS 2019 以降でのみサポートされます。 これが強調されているシナリオの 1 つとして、[Azure Stack](https://azure.microsoft.com/overview/azure-stack/) のサポートがあります。
+
 
 ## <a name="msal-connects-to-azure-ad-which-is-federated-with-ad-fs"></a>AD FS とフェデレーションされている Azure AD への MSAL の接続
 MSAL.NET では、管理対象ユーザー (Azure AD で管理されているユーザー) またはフェデレーション ユーザー (AD FS などの別の ID プロバイダーによって管理されているユーザー) にサインインする Azure AD への接続がサポートされています。 MSAL.NET は、ユーザーがフェデレーションされていることを認識しません。 それが関係している限りでは、Azure AD と通信します。
@@ -50,6 +51,15 @@ MSAL.NET では、管理対象ユーザー (Azure AD で管理されているユ
 `AcquireTokenByIntegratedAuthentication` または `AcquireTokenByUsernamePassword` メソッドを使用してトークンを取得するときに、MSAL.NET はユーザー名に基づいて ID プロバイダーと通信します。  その ID プロバイダーと通信した後、MSAL.NET は [SAML 1.1 トークン](reference-saml-tokens.md)を受け取ります。  その後、MSAL.NET は、SAML トークンを Azure AD にユーザー アサーション ([On-Behalf-Of フロー](msal-authentication-flows.md#on-behalf-of)と同様のもの) として提供し、JWT を取得します。
 
 ## <a name="msal-connects-directly-to-ad-fs"></a>AD FS への MSAL の直接接続
-MSAL.NET では、Open ID Connect に準拠している AD FS 2019 への接続がサポートされています。 AD FS に直接接続する場合、アプリケーションの構築に使用する機関は `https://mysite.contoso.com/adfs/` のようになります。
+MSAL.NET では、Open ID Connect に準拠し、PKCE とスコープを認識する AD FS 2019 への接続がサポートされています。 このサポートでは、サービス パック [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) が Windows Server に適用されている必要があります。 AD FS に直接接続する場合、アプリケーションの構築に使用する機関は `https://mysite.contoso.com/adfs/` のようになります。
 
-現在、AD FS 2016 および AD FS v2 (これらは OpenID Connect に準拠していません) への直接接続をサポートする予定はありません。 AD FS 2016 への直接接続が必要なシナリオをサポートする必要がある場合は、最新バージョンの [Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md#microsoft-supported-client-libraries)を使用してください。 オンプレミス システムを AD FS 2019 にアップグレードすると、MSAL.NET を使用できるようになります。
+現時点では、以下への直接接続をサポートする計画はありません。
+
+- AD FS 16。これには PKCE のサポートがなく、依然としてスコープではなくリソースが使用されているためです。
+- AD FS v2。これは OIDC に準拠していません。
+
+ AD FS 2016 への直接接続が必要なシナリオをサポートする必要がある場合は、最新バージョンの [Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md#microsoft-supported-client-libraries)を使用してください。 オンプレミス システムを AD FS 2019 にアップグレードすると、MSAL.NET を使用できるようになります。
+
+## <a name="see-also"></a>関連項目
+
+フェデレーション シナリオについては、「[ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-authentication-for-federated-users-portal)」を参照してください。

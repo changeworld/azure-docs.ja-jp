@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9d3ce15ac9899fe09d907296976db15ed0babb35
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5cc6c8b4947f8c5ebeb27be2dc82f323f84a6902
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612478"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67835433"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Azure サブスクリプションを Azure Active Directory B2C テナントにリンクする
 
@@ -45,9 +45,9 @@ Azure サブスクリプションを表示する Azure AD テナントに移動�
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Azure Marketplace で Azure AD B2C を見つける
 
-**[リソースの作成]** をクリックします。 **[Marketplace を検索]** フィールドに「`B2C`」と入力します。
+**[リソースの作成]** をクリックします。 **[Marketplace を検索]** フィールドに「`Active Directory B2C`」と入力します。
 
-![強調表示された [追加] ボタンと [Marketplace を検索] フィールド内のテキスト "Azure AD B2C"](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+![Marketplace の検索で ' Active Directory B2C ' と入力したポータルのスクリーンショット](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
 結果リストで **[Azure AD B2C]** を選択します。
 
@@ -67,7 +67,7 @@ Azure AD B2C リソース名は、Azure AD B2C テナントのドメイン名に
 
 [リソース グループ] と [リソース グループの場所] を選択します。 この選択は、Azure AD B2C テナントの場所、パフォーマンス、または課金状態に影響しません。
 
-![B2C リソースの作成](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+![Azure portal の Azure AD B2C リソース作成ページ](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
 ## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Azure AD B2C テナント リソースを管理する
 
@@ -80,7 +80,7 @@ Azure サブスクリプション内に Azure AD B2C リソースが正常に作
 - サポート リクエストを送信します
 - Azure AD B2C テナント リソースを他の Azure サブスクリプション、または他のリソース グループに移動する。
 
-![B2C リソース設定](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+![Azure portal の B2C リソース設定ページ](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
 
 ## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Azure AD B2C テナントの課金サブスクリプションを変更する
 

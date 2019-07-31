@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 76889904dd89da0b44dad6b47250351c73f75653
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: a5d70b9aa611b4f939cb46b5d25655edd818cb35
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788526"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807534"
 ---
 # <a name="roles-and-requirements-for-azure-data-share-preview"></a>Azure Data Share プレビューのロールおよび要件
 
@@ -21,12 +21,12 @@ ms.locfileid: "67788526"
 
 Azure Data Share を使用してデータを共有または受信するには、Azure へのサインインに使用するユーザー アカウントが、データの共有元またはデータの受信先となるストレージ アカウントに Data Share アクセス許可を付与できる必要があります。 通常、このアクセス許可を保持しているのは、**所有者**ロールまたは Microsoft.Authorization/ロール割り当て/書き込みのアクセス許可が割り当てられているカスタム ロールです。 
 
-Azure ストレージ アカウントとのデータ共有またはデータ受信を行うには、データを受信するストレージ アカウントの所有者である必要があります。 自分で作成したストレージ アカウントの場合でも、自分がそのストレージ アカウントの所有者権限が自動的に割り当てられることはありません。 自分の Azure Storage アカウントに所有者ロールを追加するには、次の手順に従います。
+Azure ストレージ アカウントとのデータ共有またはデータ受信を行うには、ストレージ アカウントの所有者である必要があります。 自分で作成したストレージ アカウントの場合でも、自分がそのストレージ アカウントの所有者権限が自動的に割り当てられることはありません。 自分の Azure Storage アカウントに所有者ロールを追加するには、次の手順に従います。
 
 1. Azure portal でストレージ アカウントに移動します
 1. **[アクセス制御 (IAM)]** を選択します
 1. **[追加]** をクリックします。
-1. ストレージ BLOB データ所有者として自分自身を追加します
+1. 自分自身を所有者として追加します
 
 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure portal で右上隅にあるユーザー名を選択し、 **[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 
 

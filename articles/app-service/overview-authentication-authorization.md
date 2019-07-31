@@ -16,12 +16,12 @@ ms.date: 08/24/2018
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 1e8bd60eab5853b121b9c08622914b9c62449f8f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 42d925a77de20392459081e6669706da330ba7fa
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618767"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836712"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および認可
 
@@ -56,7 +56,7 @@ Azure App Service は組み込みの認証と認可のサポートを提供す�
 
 ### <a name="user-claims"></a>ユーザーの要求
 
-すべての言語フレームワークで、App Service はユーザーの要求を要求ヘッダーに挿入することによってコードで要求を使用できるようにします。 ASP.NET 4.6 アプリの場合、App Service は認証されたユーザーの要求で [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) を設定するので、標準の .NET コード パターン (`[Authorize]` 属性など) に従うことができます。 同様に、PHP アプリの場合、App Service は `_SERVER['REMOTE_USER']` 変数を設定します。
+すべての言語フレームワークで、App Service はユーザーの要求を要求ヘッダーに挿入することによってコードで要求を使用できるようにします。 ASP.NET 4.6 アプリの場合、App Service は認証されたユーザーの要求で [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) を設定するので、標準の .NET コード パターン (`[Authorize]` 属性など) に従うことができます。 同様に、PHP アプリの場合、App Service は `_SERVER['REMOTE_USER']` 変数を設定します。 Java アプリの場合、要求には [Tomcat サーブレットからアクセスできます](containers/configure-language-java.md#authenticate-users)。
 
 [Azure Functions](../azure-functions/functions-overview.md) では、`ClaimsPrincipal.Current` は .NET コードに対してハイドレートされませんが、それでも要求ヘッダー内でユーザーの要求を見つけることができます。
 

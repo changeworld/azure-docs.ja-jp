@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 138b31856e424078ae32ca2f53393f5aa13505b2
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 6d26cd809d78bf05f66c9fa03be5063ca4d2d5e4
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797601"
+ms.locfileid: "67805993"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Media Services のメトリックと診断ログの監視
 
@@ -57,7 +57,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 
 ### <a name="streaming-endpoint"></a>ストリーミング エンドポイント
 
-現在、次の Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) メトリックが Azure によって生成されます。
+次の Media Services [ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) メトリックがサポートされています。
 
 |メトリックの名前|Display name|説明|
 |---|---|---|
@@ -91,7 +91,7 @@ Media Services では、次の診断ログがサポートされています。
 
 ### <a name="key-delivery"></a>キー配信
 
-|Name|説明|
+|EnableAdfsAuthentication|説明|
 |---|---|
 |キー配信サービス要求|キー配信サービス要求の情報を表示するログ。 詳細については、[スキーマ](media-services-diagnostic-logs-schema.md)に関するページを参照してください。|
 

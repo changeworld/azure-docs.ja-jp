@@ -1,0 +1,241 @@
+---
+title: 対称キーの構成証明を使用して DPS でデバイスを自動プロビジョニングする - Azure IoT Edge |Microsoft Docs
+description: 対称キーの構成証明を使用して、デバイス プロビジョニング サービスで Azure IoT Edge の自動デバイス プロビジョニングをテストします
+author: kgremban
+manager: philmea
+ms.author: kgremban
+ms.reviewer: mrohera
+ms.date: 07/10/2019
+ms.topic: conceptual
+ms.service: iot-edge
+services: iot-edge
+ms.custom: seodec18
+ms.openlocfilehash: a91162271bf36e1d68e087a60723497e7fc261ec
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275739"
+---
+# <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする
+
+Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して、Edge に対応していないデバイスと同じように自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](../iot-dps/concepts-auto-provisioning.md)」を読んでから先に進んでください。
+
+この記事では、次の手順に従って、IoT Edge デバイスで対称キーの構成証明を使用して Device Provisioning Service の個別登録を作成する方法について説明します。
+
+* IoT Hub Device Provisioning Service (DPS) のインスタンスを作成する。
+* デバイスの個別登録を作成する。
+* IoT Edge ランタイムをインストールし、IoT Hub に接続する。
+
+対称キーの構成証明は、Device Provisioning Service インスタンスを使用してデバイスを認証する簡単なアプローチです。 この構成証明の方法では、初めてデバイスのプロビジョニングを行う開発者または厳密なセキュリティ要件がない開発者に対して、"Hello world" エクスペリエンスを提示します。 [TPM](../iot-dps/concepts-tpm-attestation.md) を使用するデバイス構成証明は、より安全であり、さらに厳格なセキュリティ要件に対して使用する必要があります。
+
+## <a name="prerequisites"></a>前提条件
+
+* アクティブな IoT Hub
+* 物理デバイスまたは仮想デバイス
+
+## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を設定する
+
+Azure 内に IoT Hub Device Provisioning Service の新しいインスタンスを作成し、それを自分の IoT Hub にリンクします。 手順については、[IoT Hub DPS の設定](../iot-dps/quick-setup-auto-provision.md)に関する記事を参照してください。
+
+Device Provisioning Service を実行した後、概要ページから **[ID スコープ]** の値をコピーします。 この値は、IoT Edge ランタイムを構成するときに使用します。
+
+## <a name="choose-a-unique-registration-id-for-the-device"></a>デバイスの一意の登録 ID を選択する
+
+各デバイスを識別する一意の登録 ID を定義する必要があります。 デバイスの MAC アドレス、シリアル番号、または何らかの固有の情報を使用できます。
+
+この例では、MAC アドレスとシリアル番号の組み合わせを使用して、次のような登録 ID の文字列を形成します。
+
+```
+sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+```
+
+デバイスの一意の登録 ID を作成します。 有効な文字は、小文字の英字、数字、ダッシュ ('-') です。
+
+## <a name="create-a-dps-enrollment"></a>DPS の登録を作成する
+
+デバイスの登録 ID を使用して、DPS で個別登録を作成します。
+
+DPS 内に登録を作成するときに、**デバイス ツインの初期状態**を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-monitor.md)を作成するために使用されます。
+
+> [!TIP]
+> 対称キーの構成証明を使用する場合、グループの登録も可能です。その場合は、個別の登録と同じ決定を行います。
+
+1. [Azure portal](https://portal.azure.com) で、IoT Hub Device Provisioning Service のインスタンスに移動します。
+
+1. **[設定]** の下の **[登録の管理]** を選択します。
+
+1. **[Add individual enrollment]\(個別登録の追加\)** を選択し、登録を構成する次の手順を完了します。  
+
+   1. **[メカニズム]** で **[対称キー]** を選択します。
+
+   1. **[キーの自動生成]** チェック ボックスをオンにします。
+
+   1. デバイス用に作成した**登録 ID** を指定します。
+
+   1. 必要に応じて、**IoT Hub のデバイス ID** を指定します。 デバイス ID を使用して、個々のデバイスをモジュール展開のターゲットにすることができます。 デバイス ID を指定しなかった場合は、登録 ID が使用されます。
+
+   1. **[True]** を選択して、その登録が IoT Edge デバイス用のものであることを宣言します。 グループ登録の場合、すべてのデバイスを IoT Edge デバイスにする必要があります。そうしない場合、いずれも IoT Edge デバイスにすることはできません。
+
+   1. **デバイスをハブに割り当てる方法**について、Device Provisioning Service の割り当てポリシーの既定値をそのまま使用するか、その登録に固有の別の値を選択します。
+
+   1. デバイスの接続先になるリンクされた **IoT Hub** を選択します。 複数のハブを選択でき、デバイスは、選択した割り当てポリシーに従ってそれらのハブの 1 つに割り当てられます。
+
+   1. デバイスが初回以降にプロビジョニングを要求したときのために、**再プロビジョニング時のデバイス データの処理方法**を選択します。
+
+   1. 必要に応じて、 **[デバイス ツインの初期状態]** にタグ値を追加します。 タグを使用して、デバイス グループをモジュール展開のターゲットにすることができます。 例:
+
+      ```json
+      {
+         "tags": {
+            "environment": "test"
+         },
+         "properties": {
+            "desired": {}
+         }
+      }
+      ```
+
+   1. **[エントリの有効化]** が **[有効]** に設定されていることを確認します。
+
+   1. **[保存]** を選択します。
+
+これで、このデバイスの登録が存在しているので、IoT Edge ランタイムによってインストール時にデバイスを自動的にプロビジョニングできます。 デバイス キーの作成時に使用できるよう、登録の**主キー**の値をコピーしておいてください。
+
+## <a name="derive-a-device-key"></a>デバイス キーを派生させる
+
+デバイスでは、プロビジョニングの間に、派生デバイス キーと一意の登録 ID を使用して、登録で対称キーの構成証明が実行されます。 デバイス キーを生成するには、DPS 登録からコピーしたキーを使用して、デバイスに対する一意の登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。
+
+デバイス コードには、登録の主キーやセカンダリ キーを含めないでください。
+
+### <a name="linux-workstations"></a>Linux ワークステーション
+
+Linux ワークステーションを使用している場合は、次の例に示すように、openssl を使用して派生デバイス キーを生成することができます。
+
+**KEY** の値を、前に書き留めた**主キー**で置き換えます。
+
+**REG_ID** の値をデバイスの登録 ID に置き換えます。
+
+```bash
+KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
+REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+```
+
+```bash
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+### <a name="windows-based-workstations"></a>Windows ベースのワークステーション
+
+Windows ベースのワークステーションを使用している場合は、次の例に示すように、PowerShell を使用して派生デバイス キーを生成することができます。
+
+**KEY** の値を、前に書き留めた**主キー**で置き換えます。
+
+**REG_ID** の値をデバイスの登録 ID に置き換えます。
+
+```powershell
+$KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
+$REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
+
+$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+$hmacsha256.key = [Convert]::FromBase64String($KEY)
+$sig = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID))
+$derivedkey = [Convert]::ToBase64String($sig)
+echo "`n$derivedkey`n"
+```
+
+```powershell
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+## <a name="install-the-iot-edge-runtime"></a>IoT Edge ランタイムをインストールする
+
+IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 そのコンポーネントはコンテナー内で実行されるため、デバイスに追加のコンテナーを展開して、Edge でコードを実行できるようにすることができます。
+
+デバイスをプロビジョニングする際には、次の情報が必要になります。
+
+* DPS の **ID スコープ**値
+* 作成したデバイス**登録 ID**
+* 対称キーの構成証明用の、デバイスの派生デバイス キー
+
+### <a name="linux-device"></a>Linux デバイス
+
+デバイスのアーキテクチャに応じた指示に従います。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。
+
+* [Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)
+* [Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)
+
+対称キーのプロビジョニングに関する構成ファイル内のセクションは次のようになります。
+
+```yaml
+# DPS symmetric key provisioning configuration
+provisioning:
+   source: "dps"
+   global_endpoint: "https://global.azure-devices-provisioning.net"
+   scope_id: "{scope_id}"
+   attestation:
+      method: "symmetric_key"
+      registration_id: "{registration_id}"
+      symmetric_key: "{symmetric_key}"
+```
+
+`{scope_id}`、`{registration_id}`、および `{symmetric_key}` のプレースホルダー値を、前に収集したデータに置き換えます。
+
+### <a name="windows-device"></a>Windows デバイス
+
+指示に従って、派生デバイスキー を生成したデバイスに IoT Edge ランタイムをインストールします。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。
+
+[IoT Edge をインストールして自動的にプロビジョニングする](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+
+## <a name="verify-successful-installation"></a>インストールの成功を確認する
+
+ランタイムが正常に起動されたら、IoT Hub にアクセスし、デバイスに IoT Edge モジュールを展開できます。 ランタイムが正常にインストールされ、起動されたことを確認するには、デバイスで次のコマンドを使用します。
+
+### <a name="linux-device"></a>Linux デバイス
+
+IoT Edge サービスの状態を確認します。
+
+```cmd/sh
+systemctl status iotedge
+```
+
+サービス ログを調べます。
+
+```cmd/sh
+journalctl -u iotedge --no-pager --no-full
+```
+
+実行中のモジュールを一覧表示します。
+
+```cmd/sh
+iotedge list
+```
+
+### <a name="windows-device"></a>Windows デバイス
+
+IoT Edge サービスの状態を確認します。
+
+```powershell
+Get-Service iotedge
+```
+
+サービス ログを調べます。
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
+
+実行中のモジュールを一覧表示します。
+
+```powershell
+iotedge list
+```
+
+Device Provisioning Service で作成した個々の登録が使用されたことを確認できます。 Azure portal で Device Provisioning Service インスタンスに移動します。 作成した個々の登録の詳細を開きます。 登録の状態が**割り当て**られており、デバイス ID が表示されています。
+
+## <a name="next-steps"></a>次の手順
+
+Device Provisioning Service の登録プロセスでは、新しいデバイスをプロビジョニングするときに、デバイス ID とデバイス ツイン タグを同時に設定できます。 これらの値を使用して、個々のデバイスまたはデバイス グループをデバイスの自動管理で使用できます。 使用方法については、「[Azure Portal を使用した大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor.md)」または「[Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視](how-to-deploy-monitor-cli.md)」を参照してください。

@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:手書きのテキストを抽出する - REST、Python
+title: クイック スタート:印刷されたテキストと手書きテキストの抽出 - REST、Python
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Python と Computer Vision API を使って、画像から手書きテキストを抽出します。
+description: このクイックスタートでは、Python と Computer Vision API を使って、印刷されたテキストと手書きテキストを画像から抽出します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ec58617556ff54bd2273160bb4af80e473ac1693
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 729228b224bdf708fbcf9caf4742f9bb7ad5cff3
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603564"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311978"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>クイック スタート:Computer Vision の REST API と Python を使用して手書きテキストを抽出する
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>クイック スタート:Computer Vision の REST API と Python を使用して印刷されたテキストと手書きテキストを抽出する
 
-このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API と[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API を使うと、画像内の手書きテキストを検出し、認識した文字をコンピューターで扱うことができる文字ストリームに抽出することができます。
+このクイックスタートでは、Computer Vision の REST API を使って、印刷されたテキストや手書きテキストを画像から抽出します。 [バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドと[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)メソッドを使うと、画像内のテキストを検出し、認識した文字をマシンで読み取り可能な文字ストリームに抽出することができます。 API では、各テキスト行に対してどの認識モデルを使用するかが決定されるため、印刷されたテキストと手書きのテキストの両方を含む画像がサポートされます。
 
 > [!IMPORTANT]
 > [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドとは異なり、[バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドは非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、バッチ読み取りメソッドでは、`Operation-Content` 応答ヘッダー フィールドの値に URI が返されます。 その後、[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API を表したこの URI を呼び出して、状態をチェックし、バッチ読み取りメソッドの呼び出しの結果を返すことができます。
@@ -43,11 +43,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. テキスト エディターに次のコードをコピーします。
 1. 必要に応じて、コードに次の変更を加えます。
     1. `subscription_key` 値を、サブスクリプション キーに置き換えます。
-    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの Computer Vision リソースのエンドポイント URL で `vision_base_url` 値を置き換えます。
-    1. 必要に応じて、手書きテキストを抽出したい別の画像の URL で `image_url` 値を置き換えます。
-1. `.py` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-handwritten-text.py` 」のように入力します。
+    1. 必要に応じて、`vision_base_url` 値を、サブスクリプション キーを取得した Azure リージョンの Computer Vision リソースのエンドポイント URL に置き換えます。
+    1. 必要に応じて、テキストを抽出したい別の画像の URL で `image_url` 値を置き換えます。
+1. `.py` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-text.py` 」のように入力します。
 1. コマンド プロンプト ウィンドウを開きます。
-1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python get-handwritten-text.py` 」のように入力します。
+1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python get-text.py` 」のように入力します。
 
 ```python
 import requests
@@ -83,7 +83,7 @@ response = requests.post(
     text_recognition_url, headers=headers, json=data)
 response.raise_for_status()
 
-# Extracting handwritten text requires two API calls: One call to submit the
+# Extracting text requires two API calls: One call to submit the
 # image for processing, the other to retrieve the text found in the image.
 
 # Holds the URI used to retrieve the recognized text.

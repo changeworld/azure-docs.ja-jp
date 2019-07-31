@@ -4,134 +4,100 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/17/2019
 ms.author: raynew
-ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0e2a8f269a98babc17f36ceff209ee2f057e6911
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60533242"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302322"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
-## <a name="troubleshoot-common-errors"></a>一般的なエラーのトラブルシューティング
+[Azure Migrate](migrate-services-overview.md) には、評価と移行のための Microsoft ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが集約されています。 このドキュメントでは、Azure Migrate、Azure Migrate: Server Assessment、Azure Migrate: Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
 
-[Azure Migrate](migrate-overview.md) は、オンプレミスのワークロードを評価することによって、Azure への移行を支援します。 この記事では、Azure Migrate をデプロイして使用する際に発生する問題のトラブルシューティングを説明します。
+## <a name="azure-migrate-project-issues"></a>Azure Migrate プロジェクトの問題
 
-### <a name="i-am-using-the-ova-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>オンプレミスの環境を継続的に検出する OVA を使用していますが、オンプレミスの環境で削除された VM がまだポータルに表示されます。
+### <a name="i-am-unable-to-find-my-existing-azure-migrate-project"></a>既存の Azure Migrate プロジェクトが見つかりません。
 
-継続的検出のアプライアンスでは、パフォーマンス データのみが継続的に収集され、オンプレミス環境での構成の変更 (VM の追加、削除、ディスクの追加など) は検出されません。 オンプレミス環境で構成の変更がある場合は、次の操作を行って、変更をポータルに反映することができます。
+Azure Migrate には [2 つのバージョン](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions)があります。 プロジェクトを作成したバージョンに応じて、次の手順に従ってプロジェクトを検索してください。
 
-- 項目 (VM、ディスク、コアなど) の追加:これらの変更を Azure portal に反映するには、アプライアンスで検出を停止してから、再開します。 これにより、Azure Migrate プロジェクトで変更が確実に更新されます。
+1. Azure Migrate の以前のバージョン (以前のエクスペリエンス) で作成されたプロジェクトを探している場合は、次の手順に従ってプロジェクトを見つけます。
 
-   ![検出の停止](./media/troubleshooting-general/stop-discovery.png)
+    1. [Azure portal](https://portal.azure.com) に移動して **Azure Migrate** を検索します。
+    2. Azure Migrate ダッシュボードに、以前のプロジェクトへのアクセスについて説明するバナーが表示されます。 このバナーが表示されるのは、以前のエクスペリエンスでプロジェクトを作成した場合だけです。 このバナーをクリックします。
 
-- VM の削除:アプライアンスの設計方法のため、検出を停止して開始しても VM の削除は反映されません。 これは、後続の検出のデータが古い検出に追加され、上書きされないためです。 この場合、VM をグループから削除し、評価を再計算して、ポータルの VM は単に無視することができます。
+    ![既存のプロジェクトにアクセスする](./media/troubleshooting-general/access-existing-projects.png)
+
+    3. 以前のバージョンの Azure Migrate で作成された既存のプロジェクトの一覧が表示されます。
+
+2. 現在のバージョン (新しいエクスペリエンス) で作成されたプロジェクトを探している場合は、次の手順に従ってプロジェクトを見つけます。
+
+    1. [Azure portal](https://portal.azure.com) に移動して **Azure Migrate** を検索します。
+    2. Azure Migrate ダッシュボードの左側のウィンドウにある **[サーバー]** ページに移動し、右上隅の **[変更]** を選択します。
+
+    ![既存の Azure Migrate プロジェクトに切り替える](./media/troubleshooting-general/switch-project.png)
+
+    3. 適切な**サブスクリプション**と **Migrate プロジェクト**を選択します。
+
+### <a name="i-am-unable-to-create-a-second-azure-migrate-project"></a>2 つ目の Azure Migrate プロジェクトを作成できません。
+
+新しい Azure Migrate プロジェクトを作成するには、以下の手順に従ってください。
+
+1. [Azure portal](https://portal.azure.com) に移動して **Azure Migrate** を検索します。
+2. Azure Migrate ダッシュボードの左側のウィンドウにある **[サーバー]** ページに移動し、右上隅の **[変更]** を選択します。
+
+   ![Azure Migrate プロジェクトを変更する](./media/troubleshooting-general/switch-project.png)
+
+3. 新しいプロジェクトを作成するには、次のスクリーンショットに示すように **[ここをクリック]** を選択します。
+
+   ![2 つ目の Azure Migrate プロジェクトを作成する](./media/troubleshooting-general/create-new-project.png)
 
 ### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Azure Migrate プロジェクトと関連 Log Analytics ワークスペースの削除
 
-Azure Migrate プロジェクトを削除すると、移行プロジェクトと共にグループと評価がすべて削除されます。 ただし、Log Analytics ワークスペースをプロジェクトに関連付けている場合は、Log Analytics ワークスペースが自動的に削除されることはありません。 これは、同じ Log Analytics ワークスペースが複数のユース ケースで使用される可能性があるためです。 Log Analytics ワークスペースも削除する場合、それは手動で行う必要があります。
+Azure Migrate プロジェクトを削除すると、移行プロジェクトと共に、検出されたマシンに関するメタデータが削除されます。 ただし、Log Analytics ワークスペースを Server Assessment ツールに関連付けている場合、Log Analytics ワークスペースが自動的に削除されることはありません。 これは、同じ Log Analytics ワークスペースが複数のユース ケースで使用される可能性があるためです。 Log Analytics ワークスペースも削除する場合、それは手動で行う必要があります。
 
 1. プロジェクトに関連付けられている Log Analytics ワークスペースを参照します。
-   a. 移行プロジェクトをまだ削除していない場合、[Essentials] セクションのプロジェクト概要ページにワークスペースのリンクがあります。
+     1. 移行プロジェクトをまだ削除していない場合は、[基本] セクションに Server Assessment の概要ページからワークスペースへのリンクが見つかります。
 
-   ![LA ワークスペース](./media/troubleshooting-general/LA-workspace.png)
+     ![LA ワークスペース](./media/troubleshooting-general/loganalytics-workspace.png)
 
-   b. 移行プロジェクトを既に削除している場合、Azure portal の左側ウィンドウにある **[リソース グループ]** をクリックし、ワークスペースが作成されたリソース グループに移動し、それを参照します。
+     2. 既に移行プロジェクトを削除した場合は、Azure portal の左側のウィンドウの **[リソース グループ]** を選択します。 ワークスペースが作成されたリソース グループに移動し、それを参照します。
 2. [こちらの記事](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace)にある指示に従い、ワークスペースを削除します。
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>"*要求にはユーザー ID ヘッダーが含まれていなければなりません*" というエラーが表示されて、移行プロジェクトの作成が失敗しました
 
 この問題は、組織の Azure Active Directory (Azure AD) テナントへのアクセス権を持たないユーザーに発生することがあります。 Azure AD テナントに初めて追加されたユーザーは、テナントへの参加を求める招待メールを受信します。 ユーザーは、テナントに正しく追加されるために、メールを開いて招待を承諾する必要があります。 メールを表示することができない場合は、既にテナントへのアクセス権を持つユーザーに連絡して、[こちら](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users)の手順を使用してご自身への招待を再送信するように依頼してもらいます。
 
-招待メールを受信したら開き、メール内のリンクをクリックして招待を承諾する必要があります。 これを行ったら、Azure portal からサインアウトし、再度サインインする必要があります。ブラウザーの更新は機能しません。 これで、移行プロジェクトの作成を試行できます。
+招待メールを受信したら開き、メール内のリンクをクリックして招待を承諾する必要があります。 これが完了したら、Azure portal からサインアウトし、再度サインインする必要があります。ブラウザーの更新は機能しません。 これで、移行プロジェクトの作成を試行できます。
 
-### <a name="i-am-unable-to-export-the-assessment-report"></a>評価レポートをエクスポートできません
+## <a name="appliance-issues"></a>アプライアンスの問題
 
-評価レポートをポータルからエクスポートできない場合は、下の REST API を使用して評価レポートのダウンロード URL を取得してみてください。
+### <a name="deployment-of-azure-migrate-appliance-for-vmware-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>VMware 用 Azure Migrate アプライアンスのデプロイが次のエラーで失敗しました: 指定されたマニフェスト ファイルが無効です: 無効な OVF マニフェストのエントリ。
 
-1. コンピューターに *armclient* をインストールします (まだインストールしていない場合)。
-
-   a. 管理者のコマンド プロンプト ウィンドウで、```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"``` のコマンドを実行します。
-
-   b. 管理者の Windows PowerShell ウィンドウで、```choco install armclient``` のコマンドを実行します。
-
-2. Azure Migrate REST API を使用して評価レポートのダウンロード URL を取得します。
-
-   a.    管理者の Windows PowerShell ウィンドウで、```armclient login``` のコマンドを実行します。
-
-        This opens the Azure login pop-up where you need to sign in to Azure.
-
-   b.    同じ PowerShell ウィンドウで、次のコマンドを実行して、評価レポートのダウンロード URL を取得します (下のサンプル API 要求で URI パラメーターを適切な値に置き換えます)。
-
-       ```armclient POST https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
-
-      サンプルの要求と出力:
-
-      ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
-   esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
-   018_12_16_21/downloadUrl?api-version=2018-02-02
-   {
-   "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
-   "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
-
-3. 応答から URL をコピーし、それをブラウザーで開いて評価レポートをダウンロードします。
-
-4. レポートをダウンロードしたら、Excel を使用して、ダウンロードしたフォルダーを参照し、Excel でファイルを開いて表示します。
-
-### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>CPU、メモリ、ディスクのパフォーマンス データがゼロと表示される
-
-Azure Migrate はオンプレミス環境を継続的にプロファイルして、オンプレミス VM のパフォーマンス データを収集します。 環境の検出を始めたばかりの場合は、パフォーマンス データの収集が完了するまで少なくとも 1 日待つ必要があります。 1 日待たずに評価を作成した場合、パフォーマンス メトリックはゼロと表示されます。 1 日待ってから、新しい評価を作成するか、評価レポートの [再計算] オプションを使用して既存の評価を更新することができます。
-
-### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>移行プロジェクトの作成時に Azure の地理を指定しましたが、検出されたメタデータが格納される Azure リージョンをどうやって探せばいいでしょうか？
-
-メタデータが格納されている場所を識別するには、プロジェクトの**概要**ページにある**Essentials**セクションをご覧ください。 場所が Azure Migrate によって地理内で任意に選択され、変更することはできません。 特定のリージョンだけでプロジェクトを作成するには、移行プロジェクトを作成し、目的のリージョンを通過する REST API を使用できます。
-
-   ![プロジェクトの場所](./media/troubleshooting-general/geography-location.png)
-
-## <a name="collector-issues"></a>コレクターの問題
-
-### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Azure Migrate Collector のデプロイが次のエラーで失敗しました: 指定されたマニフェスト ファイルが無効です: 無効な OVF マニフェストのエントリ。
-
-1. ハッシュ値をチェックして、Azure Migrate Collector の OVA ファイルが正常にダウンロードされているかどうかを確認します。 ハッシュ値の確認については、こちらの[記事](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)を参照してください。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
+1. Azure Migrate アプライアンスの OVA ファイルが正常にダウンロードされているかどうかを、そのハッシュ値をチェックして確認します。 ハッシュ値の確認については、こちらの[記事](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)を参照してください。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
 2. それでも失敗する場合、および、OVF をデプロイするのに VMware vSphere クライアントを使用している場合は、vSphere Web クライアントでデプロイしてみてください。 それでも失敗する場合は、別の Web ブラウザーをお試しください。
 3. vSphere Web クライアントを使用しており、vCenter Server 6.5 または 6.7 にそれをデプロイしようとしている場合は、次の手順に従って ESXi ホストに直接 OVA をデプロイしてみてください。
-   - Web クライアント (https:// <*ホスト IP アドレス*>/ui) を使用して、(vCenter Server ではなく) ESXi ホストに直接接続する
-   - [ホーム] > [インベントリ] に移動する
-   - [ファイル] > [OVF テンプレートのデプロイ] > [OVA を参照] をクリックして、デプロイを完了する
+   - Web クライアント (https://<*ホスト IP アドレス*>/ui) を使用して (vCenter Server ではなく) ESXi ホストに直接接続する。
+   - **[ホーム]**  >  **[インベントリ]** に移動する。
+   - **[ファイル]**  >  **[Deploy OVF template]\(OVF テンプレートのデプロイ\)** をクリックする。 OVA を参照して、デプロイを完了する。
 4. それでもデプロイが失敗する場合は、Azure Migrate のサポートにお問い合わせください。
 
-### <a name="unable-to-select-the-azure-cloud-in-the-appliance-fails-with-error-azure-cloud-selection-failed"></a>アプライアンスで Azure クラウドを選択できず、"Azure Cloud の選択に失敗しました" というエラーで失敗する
-
-これは既知の問題であり、この問題の修正プログラムが利用可能です。 アプライアンスの[最新の更新バージョン](https://docs.microsoft.com/azure/migrate/concepts-collector-upgrade#continuous-discovery-upgrade-versions)をダウンロードし、アプライアンスを更新して更新プログラムを適用してください。
-
-### <a name="collector-is-not-able-to-connect-to-the-internet"></a>コレクターがインターネットに接続できない
+### <a name="appliance-is-not-able-to-connect-to-the-internet"></a>アプライアンスからインターネットに接続できない
 
 これは、使用しているマシンがプロキシの内側にある場合に発生することがあります。 プロキシに承認資格情報が必要な場合は、これを提供してください。
-URL ベースのファイアウォール プロキシを使用して送信接続を制御している場合は、次の必須の URL を必ずホワイトリストに登録してください。
+URL ベースのファイアウォール プロキシを使用してアウトバウンド接続を制御している場合は、次の必須の URL を必ず許可リストに追加してください。
 
-**URL** | **目的**  
+シナリオ | URL リスト
 --- | ---
-*.portal.azure.com | Azure サービスとの接続性を確認し、時刻の同期の問題を検証するために必要です。
-*.oneget.org | powershell ベースの vCenter PowerCLI モジュールをダウンロードするために必要です。
+VMware のサーバー評価 | [こちら](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-url-access-requirements)
+Hyper-V のサーバー評価 | [こちら](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#assessment-appliance-url-access)
+VMware のサーバー移行 (エージェントレス) | [こちら](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-url-access-requirements)
+VMware のサーバー移行 (エージェントベース) | [こちら](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#replication-appliance-url-access)
+Hyper-V のサーバー移行 | [こちら](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#migration-hyper-v-host-url-access)
 
-**証明書の検証に失敗したためコレクターがインターネットに接続できない**
-
-この問題は、インターネットへの接続にインターセプト プロキシを使用していて、かつプロキシの証明書をまだコレクター VM にインポートしていない場合に発生することがあります。 プロキシの証明書は、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector)に説明されている手順でインポートできます。
-
-**ポータルからコピーしたプロジェクト ID とキーを使用しても、コレクターがプロジェクトに接続できません。**
-
-情報を正しくコピーして貼り付けたかどうかを確認してください。 この問題を解決するには、Microsoft Monitoring Agent (MMA) をインストールし、次のように MMA がプロジェクトに接続できるかどうかを確認します。
-
-1. コレクター VM 上に、[MMA](https://go.microsoft.com/fwlink/?LinkId=828603) をダウンロードします。
-2. インストールを開始するには、ダウンロードしたファイルをダブルクリックします。
-3. 設定の **[ようこそ]** ページで **[次へ]** をクリックします。 **[ライセンス条項]** ページで、 **[同意する]** をクリックしてライセンスに同意します。
-4. **[インストール先のフォルダー]** で、既定のインストール フォルダーをそのまま使用するか変更し、 **[次へ]** をクリックします。
-5. **[エージェントのセットアップ オプション]** で、 **[Azure Log Analytics]**  >  **[次へ]** の順にクリックします。
-6. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 コピーしたプロジェクト ID とキーを貼り付けます。 その後、 **[次へ]** をクリックします。
-7. エージェントがプロジェクトに接続できることを確認します。 できない場合は、設定を確認します。 エージェントは接続できるがコレクターは接続できないという場合は、サポートにお問い合わせください。
-
+インターネットへの接続にインターセプト プロキシを使用している場合、プロキシの証明書をアプライアンス VM にインポートする必要があります。 プロキシの証明書は、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector)に説明されている手順でインポートできます。
 
 ### <a name="error-802-date-and-time-synchronization-error"></a>エラー 802: 日付と時刻の同期エラー
 
@@ -141,57 +107,6 @@ URL ベースのファイアウォール プロキシを使用して送信接続
 2. タイム ゾーンを確認するには、w32tm /tz を実行します。
 3. 時刻を同期するには、w32tm /resync を実行します。
 
-### <a name="vmware-powercli-installation-failed"></a>VMware PowerCLI をインストールできませんでした
-
-PowerCLI は、Azure Migrate Collector によってダウンロードされ、アプライアンスにインストールされます。 PowerCLI のインストールが失敗するのは、PowerCLI リポジトリのエンドポイントに到達できないことが原因である可能性があります。 トラブルシューティングするには、次の手順を使用して、手動で PowerCLI をコレクター VM にインストールしてみてください。
-
-1. 管理者モードで Windows PowerShell を開きます
-2. C:\ProgramFiles\ProfilerService\VMWare\Scripts\ ディレクトリに移動します
-3. InstallPowerCLI.ps1 スクリプトを実行します
-
-### <a name="error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception"></a>エラー UnhandledException 内部エラーが発生しました: System.IO.FileNotFoundException
-
-VMware PowerCLI のインストールに関する問題が原因で発生する可能性があります。 この問題を解決するには、以下の手順に従ってください。
-
-1. コレクターアプライアンスのバージョンが最新でない場合は、コレクターを[最新バージョン](https://aka.ms/migrate/col/checkforupdates)にアップグレードして、問題が解決されるかどうかを確認します。
-2. 最新のコレクター バージョンを既にお持ちの場合は、次の手順に従って PowerCLI をクリーン インストールします。
-
-   a. アプライアンスで Web ブラウザーを閉じます。
-
-   b. Windows サービス マネージャーに移動して、'Azure Migrate Collector' サービスを停止します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[停止] をクリックします。
-
-   c. 次の場所から 'VMware' で始まるすべてのフォルダーを削除します。C:\Program Files\WindowsPowerShell\Modules  
-        C:\Program Files (x86)\WindowsPowerShell\Modules
-
-   d. Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
-
-   e. デスクトップのショートカット [コレクターの実行] をダブルクリックしてコレクター アプリケーションを起動します。 コレクター アプリケーションでは、PowerCLI に必要なバージョンのダウンロードとインストールが自動的に実行されます。
-
-3. それでも問題が解決しない場合は、上記の手順 a から c を実行し、次の手順に従ってアプライアンスに手動で PowerCLI をインストールしてください。
-
-   a. 上記の手順 2 の手順 a から c を実行して、不完全な PowerCLI のインストール ファイルをすべてクリーンアップします。
-
-   b. 管理者モードで [スタート] > [ファイル名を指定して実行] の順に選択し、Windows PowerShell (x86) を開きます
-
-   c. 次のコマンドを実行します。Install-Module "VMWare.VimAutomation.Core" -RequiredVersion "6.5.2.6234650" (確認を求められたら「A」と入力します)
-
-   d. Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
-
-   e. デスクトップのショートカット [コレクターの実行] をダブルクリックしてコレクター アプリケーションを起動します。 コレクター アプリケーションでは、PowerCLI に必要なバージョンのダウンロードとインストールが自動的に実行されます。
-
-4. ファイアウォールの問題のためにアプライアンスにモジュールをダウンロードできない場合は、次の手順を実行してインターネットにアクセスできるマシンにモジュールをダウンロードしてインストールします。
-
-    a. 上記の手順 2 の手順 a から c を実行して、不完全な PowerCLI のインストール ファイルをすべてクリーンアップします。
-
-    b. 管理者モードで [スタート] > [ファイル名を指定して実行] の順に選択し、Windows PowerShell (x86) を開きます
-
-    c. 次のコマンドを実行します。Install-Module "VMWare.VimAutomation.Core" -RequiredVersion "6.5.2.6234650" (確認を求められたら「A」と入力します)
-
-    d. "C:\Program Files (x86)\WindowsPowerShell\Modules" 内の "VMware" から始まるすべてのモジュールをコレクター VM 上の同じ場所にコピーします。
-
-    e. Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
-
-    f. デスクトップのショートカット [コレクターの実行] をダブルクリックしてコレクター アプリケーションを起動します。 コレクター アプリケーションでは、PowerCLI に必要なバージョンのダウンロードとインストールが自動的に実行されます。
 
 ### <a name="error-unabletoconnecttoserver"></a>エラー UnableToConnectToServer
 
@@ -206,16 +121,96 @@ vCenter Server "Servername.com:9443" に接続できません。原因となっ�
 3. 正しいポート番号を識別して vCenter に接続します。
 4. 最後に、vCenter サーバーが起動されていて実行中かどうかを確認します。
 
-### <a name="antivirus-exclusions"></a>ウイルス対策の除外
+## <a name="discovery-issues"></a>検出の問題
 
-Azure Migrate アプライアンスを強化するには、アプライアンスの次のフォルダーをウイルス対策スキャンから除外する必要があります。
+### <a name="i-started-discovery-but-i-dont-see-the-discovered-vms-on-azure-portal-server-assessment-and-server-migrate-tiles-show-a-status-of-discovery-in-progress"></a>検出を開始しましたが、検出された VM が Azure portal に表示されません。 [Server Assessment] および [Server Migrate] タイルに "検出中" という状態が表示されます。
+アプライアンスから検出を開始した後、検出されたマシンが Azure portal に表示されるまでにしばらく時間がかかります。 VMware の検出では約 15 分、Hyper-V の検出では追加されたホストごとに約 2 分かかります。 この時間が経過した後も引き続き "検出中" と表示される場合は、 **[サーバー]** タブの **[更新]** をクリックします。これで、検出されたサーバーの数が [Server Assessment] および [Server Migration] タイルに表示されるはずです。
 
-- Azure Migrate サービスのバイナリを含むフォルダー。 サブフォルダーはすべて除外します。
-  %ProgramFiles%\ProfilerService  
-- Azure Migrate Web アプリケーション。 サブフォルダーはすべて除外します。
-  %SystemDrive%\inetpub\wwwroot
-- データベースのローカル キャッシュとログ ファイル。 Azure Migrate サービスでは、このフォルダーへの読み取り/書き込みアクセスが必要です。
-  %SystemDrive%\Profiler
+
+### <a name="i-am-using-the-appliance-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>オンプレミスの環境を継続的に検出するアプライアンスを使用していますが、オンプレミスの環境で削除された VM がまだポータルに表示されます。
+
+アプライアンスによって収集された検出データがポータルに反映されるまでに最大で 30 分かかります。 30 分後になっても最新の情報が表示されない場合は、次の手順を使用してデータを最新の情報に更新してください。
+
+1. [サーバー]、[Azure Migrate: Server Assessment] で、 **[概要]** をクリックします。
+2. **[管理]** にある **[Agent Health]** をクリックします。
+3. **[エージェントを更新する]** オプションをクリックします。 このオプションは、エージェントの一覧の下に表示されます。
+4. 更新操作が完了するまで待ちます。 ご利用の VM に関する最新情報が表示されることを確認します。
+
+### <a name="i-dont-the-latest-information-on-the-on-premise-vms-on-the-portal"></a>オンプレミスの VM に関する最新情報がポータルに表示されません
+
+アプライアンスによって収集された検出データがポータルに反映されるまでに最大で 30 分かかります。 30 分後になっても最新の情報が表示されない場合は、次の手順を使用してデータを最新の情報に更新してください。
+
+1. [サーバー]、[Azure Migrate: Server Assessment] で、 **[概要]** をクリックします。
+2. **[管理]** にある **[Agent Health]** をクリックします。
+3. **[エージェントを更新する]** オプションをクリックします。 このオプションは、エージェントの一覧の下に表示されます。
+4. 更新操作が完了するまで待ちます。 これで、ご利用の VM に関する最新情報が表示されます。
+
+### <a name="unable-to-connect-to-hosts-or-cluster-as-the-server-name-cannot-be-resolved-winrm-error-code-0x803381b9-error-id-50004"></a>サーバー名を解決できないため、ホストまたはクラスターに接続できません。 WinRM エラー コード: 0x803381B9 (エラー ID: 50004)
+このエラーは、アプライアンスの要求を処理する DNS が、指定されたクラスターまたはホストの名前を解決できない場合に発生します。 クラスターでこのエラーが表示された場合は、そのクラスターの完全修飾ドメイン名を指定してみてください。 
+
+クラスター内のホストについても、このエラーが表示されることがあります。 その場合、アプライアンスからクラスターに接続することはできます。 ただし、クラスターから返されたホスト名が完全修飾ドメイン名ではありません。 
+
+このエラーを解決するには、IP アドレスとホスト名のマッピングを追加することでアプライアンス上の hosts ファイルを更新します。
+1. 管理者ユーザーとしてメモ帳を開きます。 C:\Windows\System32\Drivers\etc\hosts ファイルを開きます。
+2. IP アドレスとホスト名を 1 行で追加します。 このエラーが見られるホストまたはクラスターごとに繰り返します。
+3. hosts ファイルを保存して閉じます。
+4. アプライアンス管理アプリを使用して、アプライアンスからホストに接続できるかどうかを確認します。 30 分後、それらのホストの最新情報を Azure portal で確認できるようになります。 
+
+
+## <a name="assessment-issues"></a>評価の問題
+
+### <a name="azure-readiness-issues"></a>Azure 対応性の問題
+
+問題 | Remediation
+--- | ---
+サポートされていないブートの種類 | Azure では、ブートの種類が EFI の VM はサポートされません。 移行を実行する前に、ブートの種類を BIOS に変換することをお勧めします。 <br/><br/>Azure Migrate Server Migration を使用すると、移行中に VM のブートの種類が BIOS に変換されるので、そのような VM の移行を実行できます。
+条件付きでサポートされる Windows OS | この OS はサポート期間が終了しており、Azure のサポートのためには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要です。Azure に移行する前に OS をアップグレードすることを検討してください。
+サポートされていない Windows OS | Azure は[一部の Windows OS バージョン](https://aka.ms/WSosstatement)のみをサポートしています。Azure に移行する前にマシンの OS をアップグレードすることを検討してください。
+条件付きで動作が保証されている Linux OS | Azure は[一部の Linux OS バージョン](../virtual-machines/linux/endorsed-distros.md)のみの動作を保証しています。Azure に移行する前にマシンの OS をアップグレードすることを検討してください。
+動作が保証されていない Linux OS | マシンは Azure で起動する可能性はありますが、Azure でサポートされている OS はありません。Azure に移行する前に OS を[動作保証済みの Linux バージョン](../virtual-machines/linux/endorsed-distros.md)にアップグレードすることを検討してください
+オペレーティング システムが不明です | vCenter Server で VM のオペレーティング システムが [その他] に指定されました。そのため、Azure Migrate は VM の Azure 対応性を識別できません。 マシンを移行する前に、マシン内で実行されている OS が Azure によって[サポートされている](https://aka.ms/azureoslist)ことを確認してください。
+サポートされていないビット数版の OS | 32 ビット版 OS の VM は Azure で起動する可能性はありますが、Azure に移行する前に、VM の OS を 32 ビット版から 64 ビット版にアップグレードすることをお勧めします。
+Visual Studio サブスクリプションが必要です。 | マシン内で実行されている Windows クライアント OS は、Visual Studio サブスクリプションでのみサポートされます。
+必要なストレージ パフォーマンスの VM が見つかりませんでした。 | そのマシンに必要なストレージ パフォーマンス (IOPS/スループット) が Azure VM のサポート範囲を超えています。 移行前に、そのマシンのストレージ要件を緩和します。
+必要なネットワーク パフォーマンスの VM が見つかりませんでした。 | そのマシンに必要なネットワーク パフォーマンス (入力/出力) が Azure VM のサポート範囲を超えています。 そのマシンのネットワーク要件を緩和します。
+指定した場所で VM が見つかりませんでした。 | 移行前に、別のターゲットの場所を指定します。
+不適切なディスクが 1 つ以上あります。 | 仮想マシンに接続されている 1 つ以上のディスクが Azure の要件を満たしていません。 仮想マシンに接続されている各ディスクのサイズが 4 TB を超えていないことを確認し、超えている場合は Azure に移行する前にディスク サイズを縮小してください。 各ディスクで必要とされるパフォーマンス (IOPS/スループット) が Azure の[仮想マシンの管理ディスク](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)でサポートされていることを確認してください。   
+不適切なネットワーク アダプターが 1 つ以上あります。 | 移行前に、マシンから未使用のネットワーク アダプターを削除します。
+ディスクの数が制限を超えています | 移行前に、マシンから未使用のディスクを削除します。
+ディスクのサイズが制限を超えています | Azure は最大 4 TB のディスクをサポートしています。 移行前に、ディスクを 4 TB 未満に縮小します。
+指定した場所でディスクを使用できません | 移行前に、ディスクがターゲットの場所にあることを確認します。
+指定した冗長性でディスクを使用できません | 評価の設定 (既定では LRS) で定義されているストレージの冗長性の種類をディスクで使用する必要があります。
+内部エラーが原因でディスクの適合性を決定できませんでした | そのグループの評価を新しく作成してみます。
+必要なコアとメモリを備えた VM が見つかりません | Azure が適切な VM の種類を見つけられなかったことになります。 移行前に、オンプレミスのマシンのメモリとコアの数を削減します。
+内部エラーが原因で VM の適合性を決定できませんでした。 | そのグループの評価を新しく作成してみます。
+内部エラーが原因で 1 つ以上のディスクの適合性を決定できませんでした。 | そのグループの評価を新しく作成してみます。
+内部エラーが原因で 1 つ以上のネットワーク アダプターの適合性を決定できませんでした。 | そのグループの評価を新しく作成してみます。
+
+### <a name="i-am-unable-to-specify-enterprise-agreement-ea-as-an-azure-offer-in-the-assessment-properties"></a>評価のプロパティで Azure プランとしてマイクロソフト エンタープライズ契約 (EA) を指定できません
+Azure Migrate: Server Assessment では現在、マイクロソフト エンタープライズ契約 (EA) ベースの価格はサポートされていません。 代替策としては、Azure プランとして "従量課金制" を使い、"割引" プロパティを使って、受け取るカスタム割引を指定します。 [評価をカスタマイズする方法の詳細を確認してください](https://aka.ms/migrate/selfhelp/eapricing)。
+
+### <a name="why-does-server-assessment-mark-my-linux-vms-conditionally-ready-is-there-anything-i-need-to-do-to-fix-this"></a>Server Assessment によって Linux VM が "条件付き対応" とマークされるのはなぜですか。 これを解決するために何か行う必要がありますか。
+Server Assessment には、オンプレミスの VM にインストールされている Linux OS のマイナー バージョンを検出できない既知のギャップがあります (たとえば、RHEL 6.10 の場合、Server Assessment では現在、OS のバージョンが RHEL 6 としてのみ検出されます)。 特定のバージョンの Linux のみが Azure によって動作保証されるため、Linux VM は現在 Server Assessment において条件付き対応とマークされます。 オンプレミスの VM で実行されている Linux OS が Azure で動作保証済みかどうかは、[Azure Linux サポート ドキュメント](https://aka.ms/migrate/selfhost/azureendorseddistros)を参照して手動で確認できます。 ディストリビューションの動作保証を確認した後は、この警告を無視してかまいません。
+
+### <a name="the-vm-sku-recommended-by-server-assessment-has-more-number-of-cores-and-a-larger-memory-size-than-what-is-allocated-on-premises-why-is-that-so"></a>Server Assessment によって推奨される VM SKU のコアの数とメモリ サイズは、オンプレミスで割り当てられているものより大きい値です。 なぜですか?
+Server Assessment での VM SKU の推奨事項は、評価のプロパティに依存します。 Server Assessment では、"パフォーマンスベース" の評価と "オンプレミス" の評価の 2 種類を作成できます。 パフォーマンスベースの評価では、Server Assessment によりオンプレミスの VM の利用状況データ (CPU、メモリ、ディスク、ネットワークの利用状況) が考慮されて、オンプレミスの VM に対して適切なターゲット VM SKU が決定されます。 さらに、パフォーマンスベースのサイズ設定では、快適性係数が考慮されて効果的な使用率が特定されます。 オンプレミスのサイズ設定では、パフォーマンス データは考慮されず、オンプレミスでの割り当てに基づいてターゲット SKU が推奨されます。
+
+たとえば、4 つのコアと 8 GB のメモリを搭載した、CPU 使用率が 50%、メモリ使用率が 50% のオンプレミスの VM があり、評価で快適性係数 1.3 が指定されているとします。 評価のサイズ変更の設定基準が "オンプレミス" の場合は、4 つのコアと 8 GB のメモリを搭載した Azure VM SKU が推奨されます。一方、サイズ変更の設定基準がパフォーマンスベースの場合は、有効な CPU とメモリの使用率 (4 コアの 50% * 1.3 = 2.6 コア、8 GB メモリの 50% * 1.3 = 5.3 GB メモリ) に基づいて、最も低コストの VM SKU である 4 コア (サポートされている最も近いコア数) と 8 GB メモリ サイズ (サポートされている最も近いメモリ サイズ) が推奨されます。 [Server Assessment によってどのようにサイズ変更が行われるかを確認してください](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing)。
+
+### <a name="the-disk-sku-recommended-by-server-assessment-has-a-bigger-size-than-what-is-allocated-on-premises-why-is-that-so"></a>Server Assessment によって推奨されるディスク SKU が、オンプレミスでの割り当てより大きいサイズです。 なぜですか?
+Server Assessment でのディスクのサイズ変更は、サイズ変更の設定基準とストレージの種類という 2 つの評価プロパティに依存します。 サイズ変更の設定条件が "パフォーマンスベース" で、ストレージの種類が "自動" である場合、ディスクの IOPS とスループットの値を考慮して、ターゲット ディスクの種類 (Standard HDD、Standard SSD、または Premium ディスク) が特定されます。 その後、オンプレミスのディスクのサイズ要件を考慮して、そのディスクの種類内のディスク SKU が推奨されます。 サイズ変更の設定基準が "パフォーマンスベース" で、ストレージの種類が "Premium" である場合、オンプレミスのディスクの IOPS、スループット、サイズの要件に基づいて、Azure の Premium ディスク SKU が推奨されます。 サイズ変更の設定基準が "オンプレミス" で、ストレージの種類が "Standard HDD"、"Standard SSD"、または "Premium" である場合は、同じロジックを使ってディスクのサイズ変更が実行されます。
+
+たとえば、オンプレミスのディスクと 32 GB のメモリを使っていても、ディスクの読み取りと書き込みの集計 IOPS が 800 IOPS である場合、Server Assessment では Premium ディスクの種類 (高い IOPS 要件であるため) が推奨された後、必要な IOPS とサイズに対応できるディスク SKU が推奨されます。 この例では、適合する最も近いものは P15 (256 GB、1100 IOPS) になります。 したがって、オンプレミスのディスクで必要なサイズは 32 GB でしたが、Server Assessment では、オンプレミスのディスクの高い IOPS 要件により、さらに大きいサイズのディスクが推奨されました。
+
+### <a name="is-the-os-license-cost-of-the-vm-included-in-the-compute-cost-estimated-by-server-assessment"></a>Server Assessment が見積もったコンピューティング コストには、VM の OS ライセンス コストは含まれますか?
+現在、Server Assessment では Windows マシンの OS のコストのみが考慮され、Linux マシンの OS ライセンス コストは考慮されません。 
+
+### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>パフォーマンス履歴と百分位数での使用率は、サイズの推奨にどのような影響を与えますか?
+これらのプロパティが適用されるのは、"パフォーマンスベース" のサイズ設定の場合のみです。 Server Assessment では、オンプレミスのマシンのパフォーマンス データを継続的に収集し、それを使って Azure で VM の SKU とディスクの SKU を推奨します。 次に示すのは、Server Assessment によるパフォーマンス データの収集方法です。
+- Azure Migrate アプライアンスでは、オンプレミスの環境が継続的にプロファイリングされて、VMware VM の場合は 20 秒ごと、Hyper-V VM の場合は 30 秒ごとに、使用状況データがリアルタイムで収集されます。
+- このアプライアンスでは、20 秒または 30 秒でサンプルがロールアップされて、10 分ごとに 1 つのデータ ポイントが作成されます。 1 つのデータ ポイントを作成するために、アプライアンスでは 20 秒または 30 秒のすべてのサンプルからピーク値が選択されて、Azure に送信されます。
+- Server Assessment で評価を作成するときは、パフォーマンス期間とパフォーマンス履歴のパーセンタイル値に基づいて、代表的な使用率の値が特定されます。 たとえば、パフォーマンス履歴が 1 週間で、パーセンタイル使用率が 95 番目の場合、Azure Migrate では過去 1 週間のすべての 10 分サンプル ポイントが昇順で並べ替えられて、代表的な値として 95 番目のパーセンタイルが選択されます。
+95 番目のパーセンタイル値を設定することにより、99 番目のパーセンタイルを選択した場合に含まれる可能性がある外れ値はすべて無視されるようになります。 期間中のピーク使用率を選択し、外れ値を見逃さないようにする場合は、パーセンタイル使用率として 99 番目のパーセンタイルを選択する必要があります。
 
 ## <a name="dependency-visualization-issues"></a>依存関係の視覚化の問題
 
@@ -228,8 +223,8 @@ Azure Migrate は依存関係の視覚化機能を Service Map に依存して�
 エージェントをインストールした後、Azure Migrate ポータルで依存関係が表示されるまで 15 ~ 30 分かかります。 30分以上待っている場合、下記の要領でMMA エージェントが OMS ワークスペースとコミュニケーションできるかを確認します。
 
 Windows VM：
-1. **[コントロール パネル]** から **[Microsoft Monitoring Agent]** を起動します。
-2. MMA プロパティポップアップ にある**Azure Log Analytics (OMS)** タブに移動します。
+1. **[コントロール パネル]** に移動して **[Microsoft Monitoring Agent]** を起動します。
+2. MMA のプロパティ ポップアップにある **[Azure Log Analytics (OMS)]** タブに移動します。
 3. ワークスペースの**ステータス**が緑色であることを確認します。
 4. ステータスが緑色でない場合、ワークスペースを削除して、再度MMAへ追加してみてください。
         ![MMA のステータス](./media/troubleshooting-general/mma-status.png)
@@ -256,52 +251,11 @@ Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間で
 * 計画的なフェールオーバー、または計画外のフェールオーバーの後、オンプレミスのマシンはオフになり、同等のマシンが Azure にスピン アップされます。 これらのマシンは、別々の MAC アドレスを取得します。 ユーザーがオンプレミスの IP アドレスを保持するか保持しないかによって、異なる IP アドレスを取得する場合があります。 MAC と IP アドレスの両方が異なる場合、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
 * テスト フェールオーバー後、オンプレミスのマシンは想定どおりにオンの状態を維持します。 Azure にスピン アップされる同等のマシンは、異なる MAC アドレスを取得して、異なる IP アドレスを取得することがあります。 これらのマシンから送信される Azure Monitor ログ トラフィックをユーザーがブロックしない限り、Azure Migrate はオンプレミスのマシンと Service Map 依存関係データの関連付けを行わず、依存関係を表示する代わりにエージェントをインストールするようユーザーに要求します。
 
-## <a name="troubleshoot-azure-readiness-issues"></a>Azure の対応性に関する問題のトラブルシューティング
+## <a name="collect-azure-portal-logs"></a>Azure portal のログを収集する
 
-**問題** | **解決策**
---- | ---
-サポートされていないブートの種類 | Azure では、ブートの種類が EFI の VM はサポートされません。 移行を実行する前に、ブートの種類を BIOS に変換することをお勧めします。 <br/><br/>[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/tutorial-migrate-on-premises-to-azure) を使用すると、移行中に VM のブートの種類が BIOS に変換される、このような VM の移行を行うことができます。
-条件付きでサポートされる Windows OS | この OS はサポート期間が終了しており、Azure のサポートのためには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要です。Azure に移行する前に OS をアップグレードすることを検討してください。
-サポートされていない Windows OS | Azure は[一部の Windows OS バージョン](https://aka.ms/WSosstatement)のみをサポートしています。Azure に移行する前にマシンの OS をアップグレードすることを検討してください。
-条件付きで動作が保証されている Linux OS | Azure は[一部の Linux OS バージョン](../virtual-machines/linux/endorsed-distros.md)のみの動作を保証しています。Azure に移行する前にマシンの OS をアップグレードすることを検討してください。
-動作が保証されていない Linux OS | マシンは Azure で起動する可能性はありますが、Azure でサポートされている OS はありません。Azure に移行する前に OS を[動作保証済みの Linux バージョン](../virtual-machines/linux/endorsed-distros.md)にアップグレードすることを検討してください
-オペレーティング システムが不明です | vCenter Server で VM のオペレーティング システムが [その他] に指定されました。そのため、Azure Migrate は VM の Azure 対応性を識別できません。 マシンを移行する前に、マシン内で実行されている OS が Azure によって[サポートされている](https://aka.ms/azureoslist)ことを確認してください。
-サポートされていないビット数版の OS | 32 ビット版 OS の VM は Azure で起動する可能性はありますが、Azure に移行する前に、VM の OS を 32 ビット版から 64 ビット版にアップグレードすることをお勧めします。
-Visual Studio サブスクリプションが必要です。 | マシン内で、Visual Studio サブスクリプションでのみサポートされている Windows クライアント OS が実行されています。
-必要なストレージ パフォーマンスの VM が見つかりませんでした。 | そのマシンに必要なストレージ パフォーマンス (IOPS/スループット) が Azure VM のサポート範囲を超えています。 移行前に、そのマシンのストレージ要件を緩和します。
-必要なネットワーク パフォーマンスの VM が見つかりませんでした。 | そのマシンに必要なネットワーク パフォーマンス (入力/出力) が Azure VM のサポート範囲を超えています。 そのマシンのネットワーク要件を緩和します。
-指定した場所で VM が見つかりませんでした。 | 移行前に、別のターゲットの場所を指定します。
-不適切なディスクが 1 つ以上あります。 | 仮想マシンに接続されている 1 つ以上のディスクが Azure の要件を満たしていません。 仮想マシンに接続されている各ディスクのサイズが 4 TB を超えていないことを確認し、超えている場合は Azure に移行する前にディスク サイズを縮小してください。 各ディスクで必要とされるパフォーマンス (IOPS/スループット) が Azure の[仮想マシンの管理ディスク](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)でサポートされていることを確認してください。   
-不適切なネットワーク アダプターが 1 つ以上あります。 | 移行前に、マシンから未使用のネットワーク アダプターを削除します。
-ディスクの数が制限を超えています | 移行前に、マシンから未使用のディスクを削除します。
-ディスクのサイズが制限を超えています | Azure は最大 4 TB のディスクをサポートしています。 移行前に、ディスクを 4 TB 未満に縮小します。
-指定した場所でディスクを使用できません | 移行前に、ディスクがターゲットの場所にあることを確認します。
-指定した冗長性でディスクを使用できません | 評価の設定 (既定では LRS) で定義されているストレージの冗長性の種類をディスクで使用する必要があります。
-内部エラーが原因でディスクの適合性を決定できませんでした | そのグループの評価を新しく作成してみます。
-必要なコアとメモリを備えた VM が見つかりません | Azure が適切な VM の種類を見つけられなかったことになります。 移行前に、オンプレミスのマシンのメモリとコアの数を削減します。
-内部エラーが原因で VM の適合性を決定できませんでした。 | そのグループの評価を新しく作成してみます。
-内部エラーが原因で 1 つ以上のディスクの適合性を決定できませんでした。 | そのグループの評価を新しく作成してみます。
-内部エラーが原因で 1 つ以上のネットワーク アダプターの適合性を決定できませんでした。 | そのグループの評価を新しく作成してみます。
+**Azure portal のネットワーク トラフィック ログを収集するにはどうすればよいですか?**
 
-
-## <a name="collect-logs"></a>ログの収集
-
-**コレクター VM でのログの収集方法**
-
-ログ記録は既定で有効になっています。 ログは次の場所にあります。
-
-- C:\Profiler\ProfilerEngineDB.sqlite
-- C:\Profiler\Service.log
-- C:\Profiler\WebApp.log
-
-Windows イベント トレーシング を収集するには、次の操作を行います。
-
-1. コレクター VM で、PowerShell コマンド ウィンドウを開きます。
-2. **Get-EventLog -LogName Application | export-csv eventlog.csv** を実行します。
-
-**ポータルのネットワーク トラフィック ログの収集方法**
-
-1. ブラウザーを開き、[ポータル](https://portal.azure.com)に移動してログインします。
+1. ブラウザーを開き、[ポータル](https://portal.azure.com)に移動してサインインします。
 2. F12 キーを押して開発者ツールを起動します。 必要な場合は、 **[ナビゲーション時にエントリをクリア]** の設定をクリアします。
 3. **[ネットワーク]** タブをクリックし、ネットワーク トラフィックのキャプチャを開始します。
    - Chrome では、 **[Preserve log]\(ログの保持\)** を選択します。 自動で記録が開始されるはずです。 赤い円は、トラフィックがキャプチャされていることを示しています。 表示されない場合は、黒い円をクリックして開始します。
@@ -309,28 +263,8 @@ Windows イベント トレーシング を収集するには、次の操作を�
 4. エラーを再現してみます。
 5. 記録中にエラーが発生したら、記録を停止し、記録されたアクティビティのコピーを保存します。
    - Chrome では、右クリックして **[Save as HAR with content]\(内容を HAR ファイルに保存する\)** をクリックします。 これにより、ログが .har ファイルとして圧縮されエクスポートされます。
-   - Microsoft Edge または IE では、 **[キャプチャしたトラフィックのエクスポート]** アイコンをクリックします。 これにより、ログが圧縮されエクスポートされます。
+   - Microsoft Edge または IE では、 **[キャプチャしたトラフィックのエクスポート]** アイコンをクリックします。 これにより、ログが圧縮されてエクスポートされます。
 6. **[コンソール]** タブに移動して、いずれかの警告またはエラーを確認します。 コンソール ログを保存するには次の操作を行います。
-   - Chrome では、コンソール ログのどこかを右クリックします。 **[Save as]\(名前を付けて保存\)** を選択して、ログをエクスポートおよび圧縮します。
+   - Chrome では、コンソール ログのどこかを右クリックします。 **[名前を付けて保存]** を選択し、ログをエクスポートして zip 圧縮します。
    - Microsoft Edge または IE では、エラーを右クリックして **[すべてコピー]** を選択します。
 7. 開発者ツールを閉じます。
-
-## <a name="collector-error-codes-and-recommended-actions"></a>コレクターのエラー コードと推奨されるアクション
-
-| エラー コード | エラー名   | Message   | 考えられる原因 | 推奨される操作  |
-| --- | --- | --- | --- | --- |
-| 601       | CollectorExpired               | コレクターの有効期限が切れています。                                                        | コレクターの有効期限が切れました。                                                                                    | 新しいバージョンのコレクターをダウンロードし、再試行してください。                                                                                      |
-| 751       | UnableToConnectToServer        | vCenter Server '%Name;' に接続できません。原因となったエラー: %ErrorMessage;     | 詳細については、エラー メッセージを確認してください。                                                             | 問題を解決してから、操作をやり直してください。                                                                                                           |
-| 752       | InvalidvCenterEndpoint         | サーバー '%Name;' は vCenter Server ではありません。                                  | vCenter Server の詳細を指定してください。                                                                       | 正しい vCenter Server の詳細を指定してから、操作を再試行してください。                                                                                   |
-| 753       | InvalidLoginCredentials        | 次のエラーが原因で vCenter Server '%Name;' に接続できません: %ErrorMessage; | ログイン資格情報が無効であるため、vCenter Server への接続に失敗しました。                             | 指定されたログイン資格情報が正しいことを確認してください。                                                                                    |
-| 754       | NoPerfDataAvailable           | パフォーマンス データは利用できません。                                               | vCenter Server で統計情報のレベルを確認してください。 パフォーマンス データを利用するには 3 に設定されている必要があります。 | 統計情報のレベルを 3 (5 分、30 分、2 時間間隔) に変更し、少なくとも 1 日待ってからやり直してください。                   |
-| 756       | NullInstanceUUID               | InstanceUUID が null のマシンを検出しました                                  | vCenter Server に不適切なオブジェクトがある可能性があります。                                                      | 問題を解決してから、操作をやり直してください。                                                                                                           |
-| 757       | VMNotFound                     | 仮想マシンが見つかりません                                                  | 仮想マシンが削除されている可能性があります: %VMID;                                                                | 検出中に、vCenter のインベントリのスコーピングで選択した仮想マシンが存在することを確認してください                                      |
-| 758       | GetPerfDataTimeout             | VCenter の要求がタイムアウトしました。メッセージ %Message;                                  | vCenter Server の資格情報が正しくありません                                                              | VCenter Server の資格情報をチェックし、その vCenter Server が到達可能であることを確認して、 操作をやり直してください。 問題が解決しない場合は、サポートにお問い合わせください。 |
-| 759       | VmwareDllNotFound              | VMWare.Vim DLL が見つかりません。                                                     | PowerCLI が正しくインストールされていません。                                                                   | PowerCLI が正しくインストールされていることを確認して、 操作をやり直してください。 問題が解決しない場合は、サポートにお問い合わせください。                               |
-| 800       | ServiceError                   | Azure Migrate Collector サービスが実行されていません。                               | Azure Migrate Collector サービスが実行されていません。                                                       | services.msc を使用してサービスを開始し、操作をやり直してください。                                                                             |
-| 801       | PowerCLIError                  | VMware PowerCLI をインストールできませんでした。                                          | VMware PowerCLI をインストールできませんでした。                                                                  | 操作をやり直してください。 問題が解決しない場合は、手動でインストールしてやり直してください。                                                   |
-| 802       | TimeSyncError                  | 時刻がインターネット時刻サーバーと同期していません。                            | 時刻がインターネット時刻サーバーと同期していません。                                                    | マシンの時間がマシンのタイム ゾーンに合わせて正しく設定されていることを確認し、操作をやり直してください。                                 |
-| 702       | OMSInvalidProjectKey           | 無効なプロジェクト キーが指定されました。                                                | 無効なプロジェクト キーが指定されました。                                                                        | 正しいプロジェクト キーを指定してから、操作をやり直してください。                                                                                              |
-| 703       | OMSHttpRequestException        | 要求の送信中にエラーが発生しました。 メッセージ %Message;                                | プロジェクト ID とキーをチェックして、エンドポイントが到達可能であることを確認してください。                                       | 操作をやり直してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。                                                                     |
-| 704       | OMSHttpRequestTimeoutException | HTTP 要求がタイムアウトしました。メッセージ %Message;                                     | プロジェクト ID とキーをチェックして、エンドポイントが到達可能であることを確認してください。                                       | 操作をやり直してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。                                                                     |

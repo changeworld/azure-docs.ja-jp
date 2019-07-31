@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: d43bef902b66976c32735b6d45029f41bb5e3264
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 2568d2213d15faf66ecf606e56ea6b82bacafc3e
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514048"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233679"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -25,6 +25,74 @@ ms.locfileid: "67514048"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2019-07-09"></a>2019-07-09
+
+### <a name="visual-interface"></a>ビジュアル インターフェイス
++ **プレビュー機能**
+  + ビジュアル インターフェイスに "R スクリプトの実行" モジュールを追加しました。
+
+### <a name="azure-machine-learning-sdk-for-python-v1048"></a>Azure Machine Learning SDK for Python v1.0.48
+
++ **新機能**
+  + **azureml-opendatasets**
+    + **azureml-contrib-opendatasets** は、**azureml-opendatasets** として使用できるようになりました。 古いパッケージも引き続き機能しますが、より高度な機能と機能強化を実現するために、今後は **azureml-opendatasets** を使用することをお勧めします。
+    + この新しいパッケージを使用すると、オープン データセットを AML ワークスペースのデータセットとして登録し、そのデータセットで提供される任意の機能を活用できます。
+    + これには、オープン データセットを Pandas/SPARK データフレームとして使用したり、天気などの一部のデータセット用に場所を結合するなど、既存の機能も含まれます。
+
++ **プレビュー機能**
+    + HyperDriveConfig では、パイプライン オブジェクトをパラメーターとして受け取れるようになりました。これにより、パイプラインを使用したハイパーパラメーターのチューニングがサポートされます。
+
++ **バグの修正と機能強化**
+  + **azureml-train-automl**
+    + 変換後の列の型の損失に関するバグを修正しました。
+    + y_query を、先頭に None を含んだオブジェクト型にできるバグを修正しました。 
+    + アンサンブルの選択手順で、スコアが一定のままであっても、結果のアンサンブルが過剰に増加する問題を修正しました。
+    + AutoMLStep の whitelist_models と blacklist_models の設定に関する問題を修正しました。
+    + Azure ML パイプラインのコンテキストで AutoML が使用された場合に、前処理の使用が妨げられる問題を修正しました。
+  + **azureml-opendatasets**
+    + azureml-contrib-opendatasets を azureml-opendatasets に移動しました。
+    + オープン データセット クラスを AML ワークスペースに登録し、AML データセットの機能をシームレスに利用できるようになりました。
+    + 非 SPARK バージョンでの NoaaIsdWeather のエンリッチ パフォーマンスを大幅に改善しました。
+  + **azureml-explain-model**
+    + 解釈可能性オブジェクトのオンライン ドキュメントを更新しました。
+    + グローバル説明を一括でストリーミングして DecisionTreeExplainableModel の実行時間を向上させるために、include_local=False の場合の mimic explainer に batch_size を追加しました。
+    + `explanation.expected_values` で、float を含むリストではなく、float が返されることがあった問題を修正しました。
+    + 説明モデル ライブラリの mimic explainer の automl 出力に、予期される値が追加されました。
+    + 生の特徴の重要度を取得するために変換引数が指定された場合の、permutation feature importance を修正しました。
+    + グローバル説明を一括でストリーミングして、モデル説明ライブラリの DecisionTreeExplainableModel の実行時間を向上させるために、include_local=False の場合の mimic explainer に batch_size を追加しました。
+  + **azureml-core**
+    + AzureML CLI で DBFS データストアをアタッチする機能を追加しました。
+    + データストアのアップロードに関する問題 (`target_path` が `/` で始まる場合に空のフォルダーが作成される問題) を修正しました。
+    + 2 つのデータセットを比較できるようになりました。
+    + モデルとイメージの削除の際、アップストリームの依存関係が原因で削除が失敗した場合に、それらに依存しているアップストリーム オブジェクトの取得に関する詳細情報が提供されるようになりました。
+    + auto_prepare_environment の使用されていない RunConfiguration 設定が非推奨になりました。
+  + **azureml-mlflow**
+    + azureml.mlflow を使用するリモート実行のリソース使用率が向上しました。
+    + azureml-mlflow パッケージのドキュメントが改善されました。
+    + mlflow.log_artifacts("my_dir") で、"artifact-paths" ではなく "my_dir/artifact-paths" の下にアーティファクトが保存される問題を修正しました。
+  + **azureml-pipeline-core**
+    + すべてのパイプライン ステップの hash_paths パラメーターは非推奨となり、今後削除される予定です。 既定では、source_directory の内容はハッシュ化されます (.amlignore または .gitignore に記載されているファイルを除く)
+    + コンピューティングの種類に固有のモジュールをサポートするべく、Module および ModuleStep の改善を続けています (RunConfiguration の統合と、それらをパイプラインで自由に使用できるようにするためのさらなる変更に備えるため)。
+  + **azureml-pipeline-steps**
+    + AzureBatchStep:入力/出力に関するドキュメントが改善されました。
+    + AzureBatchStep:delete_batch_job_after_finish の既定値を true に変更しました。
+  + **azureml-train-core**
+    + 自動化されたハイパーパラメーター チューニングのコンピューティング ターゲットとして、文字列が受け入れられるようになりました。
+    + auto_prepare_environment の使用されていない RunConfiguration 設定が非推奨になりました。
+    + `conda_dependencies_file_path` および `pip_requirements_file_path` パラメーターが非推奨となり、`conda_dependencies_file` と `pip_requirements_file` がそれぞれ推奨パラメーターになりました。
+  + **azureml-opendatasets**
+    + 非 SPARK バージョンでの NoaaIsdWeather のエンリッチ パフォーマンスを大幅に改善しました。
+
+### <a name="azure-machine-learning-data-prep-sdk-v118"></a>Azure Machine Learning Data Prep SDK v1.1.8
+
++ **新機能**
+ + データフロー オブジェクトを反復処理して、一連のレコードを生成できるようになりました。 `Dataflow.to_record_iterator` のドキュメントを参照してください。
+
++ **バグの修正と機能強化**
+ + DataPrep SDK の堅牢性が向上しました。
+ + 文字列以外の列インデックスを使用した、pandas DataFrames の処理が改善されました。
+ + データセットでの `to_pandas_dataframe` のパフォーマンスが大幅に改善されました。
+ + マルチノード環境で実行した場合に、データセットの Spark 実行が失敗するバグを修正しました。
 
 ## <a name="2019-07-01"></a>2019-07-01
 
@@ -51,8 +119,6 @@ ms.locfileid: "67514048"
     + スコアリング Explainer で、より信頼性の高いシリアル化と逆シリアル化のために、必要に応じて Conda と PIP の情報を保存できるようになりました。
     + 自動機能選択のバグの修正。
     + mlflow.azureml.build_image を新しい API に更新し、新しい実装によって発生するようになったバグに修正プログラムを適用しました。
-
-+ **重大な変更**
 
 + **バグの修正と機能強化**
   + azureml-core から paramiko の依存関係が削除されました。 従来のコンピューティング先のアタッチ方法に対する非推奨の警告が追加されました。

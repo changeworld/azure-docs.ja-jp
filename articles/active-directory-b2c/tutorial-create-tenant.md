@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 711b9152f9f3fa1b3573e39d1950f18b628c268a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce389d1f434fb0eb37413873b02e3ddfff8f7fba
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056317"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67849390"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ご利用のサブスクリプションが含まれるディレクトリを必ず使用してください。 上部メニューで **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** フィルターをクリックし、ご利用のサブスクリプションが含まれるディレクトリを選択します。 このディレクトリは、Azure AD B2C テナントを含むディレクトリと異なります。
 
-    ![サブスクリプション ディレクトリに切り替える](./media/tutorial-create-tenant/switch-directory-subscription.PNG)
+    ![ディレクトリとサブスクリプションのフィルターでサブスクリプション テナントが選択された状態](./media/tutorial-create-tenant/switch-directory-subscription.PNG)
 
 3. Azure portal の左上にある **[リソースの作成]** を選択します。
 4. **Active Directory B2C** を検索して選択し、**作成**をクリックします。
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     初期ドメイン名はテナント名の一部として使用されます。 この例では、テナント名は *contoso0926Tenant.onmicrosoft.com* です。
 
-    ![テナントの作成](./media/tutorial-create-tenant/create-tenant.PNG)
+    ![Azure portal の B2C テナントの作成ページ](./media/tutorial-create-tenant/create-tenant.PNG)
 
 6. **[新しい B2C テナントの作成または既存のテナントへのリンク]** ページで、 **[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** を選択します。
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     新しい Azure B2C テナントが最初からリストに表示されない場合、ブラウザー ウィンドウを更新し、上部メニューでもう一度 **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** を選択します。
 
-    ![テナント ディレクトリに切り替える](./media/tutorial-create-tenant/switch-directories.PNG)
+    ![ディレクトリとサブスクリプションのフィルターで B2C テナントが選択された状態](./media/tutorial-create-tenant/switch-directories.PNG)
 
 ## <a name="next-steps"></a>次の手順
 

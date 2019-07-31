@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: cherylmc
-ms.openlocfilehash: e7210b2b1be072f5326070d768d5fe12c386ee0b
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 5312ad2593e732f4c84eb67ed263bc9e4666a67a
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191270"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594193"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion-preview"></a>NSG アクセスと Azure Bastion を使用する (プレビュー)
 
@@ -44,9 +44,9 @@ Azure Bastion の使用時にネットワーク セキュリティ グループ 
 
 **AzureBastionSubnet** に NSG を適用する場合、Azure コントロール プレーンおよびインフラストラクチャに対して次の 2 つサービス タグを許可します。
 
-* **GatewayManager (Resource Manager のみ)** :このタグは、Azure Gateway Manager サービスのアドレス プレフィックスを表します。 値として GatewayManager を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。
+* **GatewayManager (Resource Manager のみ)** :このタグは、Azure Gateway Manager サービスのアドレス プレフィックスを表します。 値として GatewayManager を指定した場合、GatewayManager へのトラフィックが許可または拒否されます。  AzureBastionSubnet 上に NSG を作成する場合は、インバウンド トラフィックに対して GatewayManager タグを有効にします。
 
-* **AzureCloud (Resource Manager のみ)** :このタグは、すべてのデータセンターのパブリック IP アドレスを含む Azure の IP アドレス空間を表します。 値として AzureCloud を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定のリージョンの AzureCloud に対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure AzureCloud へのアクセスのみを許可する場合は、サービス タグとして AzureCloud.EastUS と指定できます。
+* **AzureCloud (Resource Manager のみ)** :このタグは、すべてのデータセンターのパブリック IP アドレスを含む Azure の IP アドレス空間を表します。 値として AzureCloud を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定のリージョンの AzureCloud に対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure AzureCloud へのアクセスのみを許可する場合は、サービス タグとして AzureCloud.EastUS と指定できます。 AzureBastionSubnet 上に NSG を作成する場合は、アウトバウンド トラフィックに対して AzureCloud タグを有効にします。
 
 ## <a name="next-steps"></a>次の手順
 

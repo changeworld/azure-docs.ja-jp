@@ -11,19 +11,19 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 07/08/2019
-ms.openlocfilehash: c3a070eb7e1435055b47b39985cf8cb0b182a514
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 07/16/2019
+ms.openlocfilehash: 4087137a0e6f4f35c6401de67bd0bca1fe5b421b
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798078"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278100"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 
 この記事には、[SQL Database マネージド インスタンス](sql-database-managed-instance.md)について特によく寄せられる質問が数多く記載されています。
 
-## <a name="where-can-i-find-a-list-of-features-that-are-supported-on-managed-instance"></a>マネージド インスタンスでサポートされている機能の一覧はどこで確認できますか?
+## <a name="where-can-i-find-a-list-of-features-supported-on-managed-instance"></a>マネージド インスタンスでサポートされている機能の一覧はどこで確認できますか?
 
 マネージド インスタンスでサポートされている機能の一覧については、[Azure SQL Database と SQL Server の比較](sql-database-features.md)に関するページを参照してください。
 
@@ -43,13 +43,13 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>マネージド インスタンスにオンプレミスの SQL Server と同じ名前を付けることはできますか?
 
 マネージド インスタンスには、*database.windows.net* で終わる名前を付ける必要があります。 既定値の代わりに別の DNS ゾーン、たとえば **mi-another-name**.contoso.com などを使用するには、次のようにします。 
-- CliConfig を使用して別名を定義する (このツールは単なるレジストリ設定ラッパーなので、グループ ポリシーやスクリプトを使用して行うことも可能)。
+- CliConfig を使用して別名を定義する。 このツールは単なるレジストリ設定ラッパーなので、グループ ポリシーやスクリプトを使用して行うことも可能です。
 - *TrustServerCertificate=true* オプションを指定した *CNAME* を使用する。
 
 
 ## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>データベースをマネージド インスタンスから元の SQL Server や Azure SQL Database に移動するには、どうすればよいですか?
 
-[データベースを bacpac にエクスポート](sql-database-export.md)し、その [bacpac ファイルをインポート]( sql-database-import.md)することができます。 データベースが 100 GB 未満の場合は、この方法をお勧めします。
+[データベースを BACPAC にエクスポート](sql-database-export.md)し、その [BACPAC ファイルをインポート]( sql-database-import.md)できます。 データベースが 100 GB 未満の場合は、これが推奨される方法です。
 
 データベース内のすべてのテーブルに主キーがある場合は、トランザクション レプリケーションを使用できます。
 
@@ -57,7 +57,7 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>インスタンス データベースを単一の Azure SQL データベースに移行するには、どうすればよいですか?
 
-1 つのオプションとして、[データベースを bacpac にエクスポート](sql-database-export.md)し、その [bacpac ファイルをインポート]( sql-database-import.md)します。 
+1 つの方法として、[データベースを BACPAC にエクスポート](sql-database-export.md)し、その [BACPAC ファイルをインポート]( sql-database-import.md)します。 
 
 データベースが 100 GB 未満の場合は、これが推奨される方法です。 データベース内のすべてのテーブルに主キーがある場合は、トランザクション レプリケーションを使用できます。
 
@@ -67,20 +67,20 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 - Gen 4 は物理プロセッサをベースにしているので、仮想コア プロセッサ ベースの Gen 5 に比べてコンピューティングのサポートが優れています。 この点は、コンピューティング集中型ワークロードにとって有利な場合があります。
 - Gen 5 では高速ネットワークがサポートされているので、リモート ストレージへの IO 帯域幅が向上します。 これは、General Purpose サービス レベルでの IO 集中型ワークロードにとって有利な場合があります。 Gen 5 では、Gen 4 と比較してより高速の SSD ローカル ディスクが使用されます。 これは、Business Critical サービス レベルでの IO 集中型ワークロードにとって有利な場合があります。
 
-お客様には、自分のケースでどちらのハードウェアの世代がより適切に機能するのかを見極めるために、運用を目的とした実際のワークロードのパフォーマンス テストを運用開始前に実施することをお勧めします。
+特定のケースでどちらのハードウェアの世代がより適切に機能するのかを見極めるために、運用を目的とした実際のワークロードのパフォーマンス テストを運用開始前に実施することを強くお勧めします。
 
 ## <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>マネージド インスタンスのハードウェアの世代 Gen 4 と Gen 5 をオンラインで切り替えることはできますか? 
 
-マネージド インスタンスがプロビジョニングされているリージョンでハードウェアの世代が両方とも同じように利用可能になっている場合は、ハードウェアの世代間のオンライン切り替えを自動で行うことができます。 この場合は、Azure portal の価格レベルのセクションで、ハードウェアの世代を切り替えることができます。
+マネージド インスタンスがプロビジョニングされているリージョンでハードウェアの世代が両方とも利用可能になっている場合は、ハードウェアの世代間のオンライン切り替えを自動で行うことができます。 この場合は、Azure portal の価格レベルのセクションで、ハードウェアの世代を切り替えることができます。
 
-これは、新しいマネージド インスタンスがバックエンドでプロビジョニングされ、データベースが古いインスタンスと新しいインスタンスの間で自動的に転送されるため、長期にわたる操作です。 このプロセスは、お客様にとってはシームレスになります。
+これは、新しいマネージド インスタンスがバックグラウンドでプロビジョニングされ、データベースがプロセスの最後の迅速なフェールオーバーによって古いインスタンスと新しいインスタンスの間で自動的に転送されるため、時間のかかる操作です。 
 
 ハードウェアの両方の世代が同じリージョンでサポートされていない場合、ハードウェアの世代を変更することはできますが、手動で行う必要があります。 その場合は、必要なハードウェアの世代が使用可能になっているリージョンに新しいインスタンスをプロビジョニングし、古いインスタンスと新しいインスタンスの間でデータのバックアップと復元を手動で行う必要があります。
 
 
 ## <a name="how-do-i-tune-performance-of-my-managed-instance"></a>マネージド インスタンスのパフォーマンスを調整するには、どうすればよいですか? 
 
-汎用マネージド インスタンスでは、データおよびログ ファイルのサイズがパフォーマンスにとって重要であるため、リモート ストレージが使用されます。 General Purpose サービス レベルのパフォーマンスを調整するには、このブログ記事の手順に従います。
+General Purpose マネージド インスタンスでは、データおよびログ ファイルのサイズがパフォーマンスにとって重要であるため、リモート ストレージが使用されます。 General Purpose サービス レベルのパフォーマンスを調整するには、このブログ記事の手順に従います。
 
 IO 集中型のワークロードには Gen 5 ハードウェア、コンピューティング集中型のワークロードには Gen 4 ハードウェアを使用することを検討してください。 詳細については、ハードウェア世代の選択に関する FAQ セクションを参照してください。
 
@@ -113,13 +113,13 @@ IO 集中型のワークロードには Gen 5 ハードウェア、コンピュ�
 
 ネットワークのリスクを軽減するために、以下に示す一連のセキュリティ設定および制御を適用することをお勧めします。
 
-- すべてのデータベースで Transparent Data Encryption (TDE) を有効にする。
+- すべてのデータベースで [Transparent Data Encryption (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) を有効にする。
 - 共通言語ランタイム (CLR) を無効にする。 これは、オンプレミスでも推奨される設定です。
-- Azure AD アカウントのみを使用する。
-- 低特権の DBA アカウントで SQL MI にアクセスする。
+- Azure Active Directory (AAD) 認証のみを使用する。
+- 低特権の DBA アカウントでインスタンスにアクセスする。
 - sysadmin アカウント用に Jumpbox への JIT アクセスを構成する。
-- SQL 監査を有効にしてアラート メカニズムと統合する。
-- ATS スイートからの脅威の検出を有効にする。
+- [SQL 監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)を有効にしてアラート メカニズムと統合する。
+- [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) スイートから[脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)を有効にする。
 
 
 ## <a name="where-can-i-find-use-cases-and-resulting-cost-savings-with-managed-instance"></a>マネージド インスタンスのユース ケースやコスト削減の成果はどこで確認できますか?
@@ -150,6 +150,9 @@ DNS 構成は、最終的に次の場合に更新されます。
 
 このような理由から、IP アドレスの不変性を当てにすると不要なダウンタイムの発生につながるので、変更を想定しておくことを強くお勧めします。
 
+## <a name="can-i-move-a-managed-instance-or-its-vnet-to-another-resource-group"></a>マネージド インスタンスまたはその VNet を別のリソース グループに移動することはできますか?
+
+いいえ、これは現在のプラットフォームの制限事項です。 マネージド インスタンスを作成した後は、マネージド インスタンスまたは VNet を別のリソース グループまたはサブスクリプションに移動することはできません。
 
 ## <a name="can-i-change-the-time-zone-for-an-existing-managed-instance"></a>既存のマネージド インスタンスのタイム ゾーンは変更できますか?
 
@@ -160,17 +163,17 @@ DNS 構成は、最終的に次の場合に更新されます。
 
 ## <a name="how-do-i-resolve-performance-issues-with-my-managed-instance"></a>マネージド インスタンスで、どのようにパフォーマンスの問題を解決できますか?
 
-マネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL マネージド インスタンスと SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210)」をご覧ください。
+マネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL マネージド インスタンスと SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210)」の記事をご覧ください。
 
 マネージド インスタンスでのデータ読み込みは、必須の完全復旧モデルと、トランザクション ログの書き込みスループットに対する[制限](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)が原因で、SQL Server よりも遅くなることがよくあります。 これは、一時的なデータをユーザー データベースではなく tempdb に読み込むか、またはクラスター化列ストアやメモリ最適化テーブルを使用することで対処できる場合があります。
 
 
 ## <a name="can-i-restore-my-encrypted-database-to-managed-instance"></a>暗号化されたデータベースをマネージド インスタンスに復元できますか?
 
-はい。データベースを復号化しなくても、マネージド インスタンスに復元できます。 暗号化されたバックアップ ファイルからデータを読み取れるように、ソース システムで暗号化キーの保護機能として使用される証明書またはキーをマネージド インスタンスに提供する必要があります。 その方法としては、次の 2 つが考えられます。
+はい。データベースを復号化しなくても、マネージド インスタンスに復元できます。 暗号化されたバックアップ ファイルからデータを読み取れるように、ソース システムで暗号化キーの保護機能として使用される証明書またはキーをマネージド インスタンスに提供する必要があります。 その方法は次の 2 つです。
 
-- マネージド インスタンスに証明書の保護機能をアップロードする。 これを実行できるのは、PowerShell を使用した場合のみです。 このサンプル スクリプトにプロセス全体が記述されています。
-- 非対称キーの保護機能を Azure Key Vault (AKV) にアップロードし、マネージド インスタンスがその保護機能を指すよう指定する。 この方法は、暗号化キーの格納にも AKV 統合を使用する Bring Your Own Key (BYOK) TDE のユース ケースに似ています。 暗号化されたデータベースの復元のために AKV にアップロードしたキーをマネージド インスタンスで利用できるようにするだけで、そのキーを実際に暗号化キーの保護機能としては使用しない場合は、BYOK TDE の設定手順を実行し、[選択したキーを既定の TDE 保護機能にします] チェック ボックスはオフにしてください。
+- *マネージド インスタンスに証明書の保護機能をアップロードする。* これを実行できるのは、PowerShell を使用した場合のみです。 この[サンプル スクリプト](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate)にプロセス全体が記述されています。
+- *非対称キーの保護機能を Azure Key Vault (AKV) にアップロードし、マネージド インスタンスがその保護機能を指すよう指定する。* この方法は、暗号化キーの格納にも AKV 統合を使用する Bring Your Own Key (BYOK) TDE のユース ケースに似ています。 キーを暗号化キーの保護機能として使用せず、マネージド インスタンスが暗号化されたデータベースを復元するためにキーを利用できるようにするだけの場合は、[BYOK TDE の設定](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption-in-the-azure-portal)手順を実行し、 *[選択したキーを既定の TDE 保護機能にします]* チェック ボックスはオフにしてください。
 
 暗号化保護機能をマネージド インスタンスで利用できるようにしたら、標準データベース復元手順を進めることができます。
 

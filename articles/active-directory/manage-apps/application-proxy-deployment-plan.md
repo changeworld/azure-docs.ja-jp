@@ -7,7 +7,7 @@ author: barbaraselden
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 24429c5596494082b526b9648a1405bc397b9d2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d40c0604f0947abe8d536eafe87545790476a98
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108482"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625546"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -70,7 +70,8 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 * **公開証明書**:カスタム ドメイン名を使用している場合、マイクロソフト以外の信頼された証明機関によって発行された公開証明書を取得する必要があります。 組織の要件によって異なりますが、証明書の入手には時間がかかることがあります。できるだけ早くこのプロセスを開始することをお勧めします。 Azure アプリケーション プロキシでは、標準、[ワイルドカード](application-proxy-wildcard.md)、または SAN ベースの証明書がサポートされます。
 
-* **ドメインの要件**:Kerberos 制約付き委任 (KCD) を利用して発行済みアプリケーションにシングル サインオンするには、発行されるアプリケーションと同じ AD ドメインにコネクタ ホストがドメイン参加していることが必要です。 このトピックについて詳しくは、「[KCD for single sign-on with Application Proxy (アプリケーション プロキシを使用したシングル サインオンのための KCD)](application-proxy-configure-single-sign-on-with-kcd.md)」をご覧ください。 コネクタ サービスはローカル システムのコンテキストで実行します。カスタム ID を使用するように構成しないでください。
+* **ドメインの要件**:Kerberos 制約付き委任 (KCD) を利用してご自分の発行済みアプリケーションにシングル サインオンするには、コネクタを実行するサーバーとアプリを実行するサーバーがドメインに参加し、かつ同じドメインまたは信頼する側のドメインに属していることが必要です。
+このトピックについて詳しくは、「[KCD for single sign-on with Application Proxy (アプリケーション プロキシを使用したシングル サインオンのための KCD)](application-proxy-configure-single-sign-on-with-kcd.md)」をご覧ください。 コネクタ サービスはローカル システムのコンテキストで実行します。カスタム ID を使用するように構成しないでください。
 
 * **URL の DNS レコード**
 

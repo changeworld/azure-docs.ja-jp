@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/06/2019
+ms.date: 07/10/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: d7add3d509427d72e23d61d1777db7941c7550a4
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: e598cc03a1b7b4999719152540866c7168130e03
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657256"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807475"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct について
 
@@ -59,6 +59,22 @@ ExpressRoute Direct では、Azure Storage やその他のビッグ データ �
 | --- | --- |
 | **サブスクライブされた帯域幅**: 200 Gbps | **サブスクライブされた帯域幅**: 20 Gbps |
 | <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> | <ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
+
+## <a name="technical-requirements"></a>技術的な要件
+
+* Microsoft Enterprise Edge Router (MSEE) インターフェイス:
+    * 10 ギガビットまたは 100 ギガビットのデュアル イーサネット ポート (ルーター ペア間のみ)
+    * シングル モード LR ファイバー接続
+    * IPv4 および IPv6
+    * IP MTU 1500 バイト
+
+* スイッチまたはルーターのレイヤー 2 およびレイヤー 3 接続:
+    * 1 つの 802.1 Q (Dot1Q) タグまたは 2 つの Tag 802.1 Q (QinQ) タグのカプセル化をサポートする必要があります
+    * Ethertype = 0x8100
+    * Microsoft によって指定された VLAN ID に基づいて外部 VLAN タグ (STAG) を追加する必要があります - *QinQ のみに該当*
+    * ポートおよびデバイスごとに複数の BGP セッション (VLAN) をサポートする必要があります
+    * IPv4 と IPv6 の接続。 *IPv6 の場合、追加のサブインターフェイスは作成されません。IPv6 アドレスが既存のサブインターフェイスに追加されます*。 
+    * 省略可能:ExpressRoute 回線のすべてのプライベート ピアリングで既定で構成される [BFD (Bidirectional Forwarding Detection)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) のサポート
 
 ## <a name="vlan-tagging"></a>VLAN タグ付け
 

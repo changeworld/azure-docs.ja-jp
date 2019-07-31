@@ -9,12 +9,12 @@ ms.date: 05/21/2019
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: common
-ms.openlocfilehash: 43a673621aa3c114f99479a6da97153dae44990d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6902bf73707dc749da76cd32fe48911fcc88ba1e
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696088"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305717"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
@@ -57,13 +57,41 @@ ms.locfileid: "67696088"
 
 ### <a name="azure-portal"></a>Azure ポータル
 
+Azure portal を通じてポリシーを追加するには、2つの方法があります。 
+
+* [Azure portal リスト ビュー](#azure-portal-list-view)
+* [Azure portal コード ビュー](#azure-portal-code-view)
+
+#### <a name="azure-portal-list-view"></a>Azure portal リスト ビュー
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+
+2. **[すべてのリソース]** を選択してから、ストレージ アカウントを選択します。
+
+3. **[Blob service]** で、 **[ライフサイクル管理]** を選択してルールを表示または変更します。
+
+4. **[リスト ビュー]** タブを選択します。
+
+5. **[ルールの追加]** を選択し、 **[アクション セット]** フォームのフィールドに入力します。 次の例では、BLOB が 30 日間変更されない場合、BLOB はクール ストレージに移動されます。
+
+   ![Azure portal の [ライフサイクル管理] の [アクション セット] ページ](media/storage-lifecycle-management-concepts/lifecycle-management-action-set.png)
+
+6. **[フィルター セット]** を選択してオプションのフィルターを追加します。 次に、 **[参照]** を選択して、フィルターを適用するコンテナーとフォルダーを指定します。
+
+   ![Azure portal の [ライフサイクル管理] の [フィルター セット] ページ](media/storage-lifecycle-management-concepts/lifecycle-management-filter-set-browse.png)
+
+8. **[確認 + 追加]** を選択して、ポリシー設定を確認します。
+
+9. **[追加]** を選択して新しいポリシーを追加します。
+
+#### <a name="azure-portal-code-view"></a>Azure portal コード ビュー
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. **[すべてのリソース]** を選択してから、ストレージ アカウントを選択します。
 
 3. **[Blob service]** で、 **[Lifecycle management]\(ライフサイクル管理)** を選択してポリシーを表示または変更します。
 
-4. 次の JSON はルールの例です。これは、 **[ライフ サイクル管理]** ポータル ページに貼り付けることができます。
+4. 次の JSON は、 **[コード ビュー]** タブに貼り付けることができるポリシーの例です。
 
    ```json
    {
@@ -93,7 +121,9 @@ ms.locfileid: "67696088"
    }
    ```
 
-5. この JSON の例の詳細については、「[ポリシー](#policy)」セクションおよび「[ルール](#rules)」セクションを参照してください。
+5. **[保存]** を選択します。
+
+6. この JSON の例の詳細については、「[ポリシー](#policy)」セクションおよび「[ルール](#rules)」セクションを参照してください。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -397,7 +427,7 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 ライフサイクル ポリシーは、プラットフォームによって 1 日に 1 回実行されます。 ポリシーを構成した後、アクションによっては、初回実行時に最大 24 時間かかる場合があります。  
 
 **アーカイブ済み BLOB を手動でリハイドレートしました。これが一時的にアーカイブ層に戻されないようにするにはどうすればよいですか。**  
-あるアクセス層から別のアクセス層に BLOB が移動されても、その BLOB の最終変更時刻は変わりません。 アーカイブ済み BLOB を手動でホット層にリハイドレートすると、その BLOB は、ライフサイクル管理エンジンによりアーカイブ層に戻されます。 この動作が発生しないようにするには、この BLOB に一時的に影響を及ぼすルールを無効にします。 BLOB がホット層から離れないようにするには、その BLOB を他の場所にコピーします。 BLOB が安全にアーカイブ層に移動されたら、ルールを再度有効にできます。 
+あるアクセス層から別のアクセス層に BLOB が移動されても、その BLOB の最終変更時刻は変わりません。 アーカイブ済み BLOB を手動でホット層にリハイドレートすると、その BLOB は、ライフサイクル管理エンジンによりアーカイブ層に戻されます。 この BLOB に影響を与えるルールを一時的に無効にして、再びアーカイブされないようにします。 BLOB がホット層から離れないようにするには、その BLOB を他の場所にコピーします。 BLOB が安全にアーカイブ層に移動されたら、ルールを再度有効にします。 
 
 
 ## <a name="next-steps"></a>次の手順

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/17/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 9cc18c7442a55c14ad759201aaf195d2d1bf3309
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f22273a28d5e4207712bdba71ef788629d51916e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594061"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321662"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -174,7 +174,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* がカスタム ドメイン名で、*Value* が CDN エンドポイントのホスト名です。
 
-| Name            | Type  | 値                 |
+| EnableAdfsAuthentication            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -190,15 +190,11 @@ CNAME レコードが正しい形式である場合、DigiCert は自動的に�
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>カスタム ドメインが CDN エンドポイントにマップされていない
 
 >[!NOTE]
->カスタム ドメイン所有権のメール検証は現在、**Azure CDN from Akamai** のプロファイルでは利用できません。 **Azure CDN from Akamai** を使用する場合は、カスタム ドメインは前述のように CNAME レコードによって cdn エンドポイントにマップされる必要があります。  現在、この機能は未着手となっています。 
+>**Azure CDN from Akamai** を使用する場合は、カスタム ドメインは前述のように CNAME レコードによって cdn エンドポイントにマップされる必要があります。  現在、この機能は未着手となっています。 
 
 CNAME レコード エントリに cdnverify サブドメインが含まれている場合は、この手順の残りの部分に従ってください。
 
-カスタム ドメインの HTTPS を有効にする要求が送信されると、DigiCert CA は、ドメインの [WHOIS](http://whois.domaintools.com/) 登録者情報に従って、ドメインの登録者に連絡し、ドメインの所有権を検証します。 連絡は、WHOIS に登録されているメール アドレス (既定) または電話番号で行われます。 HTTPS をカスタム ドメイン上でアクティブにする前に、ドメインの検証を完了する必要があります。 ドメインの承認には 6 営業日が必要です。 6 営業日以内に承認されない要求は、自動的に取り消されます。 
-
-![WHOIS レコード](./media/cdn-custom-ssl/whois-record.png)
-
-DigiCert は、その他のメール アドレスに確認メールも送信します。 WHOIS 登録者情報がプライベートである場合は、次のアドレスのいずれかから直接承認できることを確認してください。
+DigiCert は、次のメール アドレスに確認メールを送信します。 次のアドレスのいずれかから直接承認できることを確認してください。
 
 admin@&lt;your-domain-name.com&gt;  
 administrator@&lt;your-domain-name.com&gt;  
@@ -206,7 +202,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;your-domain-name.com&gt;  
 
-数分以内に、要求の承認を求める次の例のようなメールを受け取ります。 スパム フィルターを使っている場合は、admin@digicert.com をホワイトリストに追加してください。 24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。
+数分以内に、要求の承認を求める次の例のようなメールを受け取ります。 スパム フィルターを使っている場合は、verification@digicert.com をホワイトリストに追加してください。 24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。
     
 ![ドメイン検証メール](./media/cdn-custom-ssl/domain-validation-email.png)
 

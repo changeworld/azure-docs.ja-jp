@@ -1,36 +1,38 @@
 ---
-title: Azure Logic Apps へのアクセスのセキュリティ保護
-description: トリガー、入力と出力、パラメーター、その他のサービスなど、Azure Logic Apps にセキュリティを追加します
+title: アクセスとデータのセキュリティ保護 - Azure Logic Apps
+description: Azure Logic Apps におけるパラメーターの入力、HTTP 要求トリガー、実行履歴、ロジック アプリの操作、他のサービスへの接続を保護します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: kevinlam1
-ms.author: klam
-ms.reviewer: estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/05/2019
-ms.openlocfilehash: 65369e5747f17c0e420d5775f1c5704cac9ca21b
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 06/28/2019
+ms.openlocfilehash: d69861beb5848679aa00c8b39f0caa84c7c5d847
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341099"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986819"
 ---
-# <a name="secure-access-in-azure-logic-apps"></a>Azure Logic Apps へのアクセスのセキュリティ保護
+# <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
-アクセスをセキュリティ保護できるお客様のロジック アプリの要素を次に示します。
+Azure Logic Apps におけるアクセスを制御し、データを保護するために、次の領域のセキュリティを設定できます。
 
-* [要求トリガーまたは Webhook トリガー](#secure-triggers)
-* お客様のロジック アプリの[管理、編集、表示などの操作](#secure-operations)
-* お客様のロジック アプリの実行履歴からの[入力と出力](#secure-run-history)
-* [アクション パラメーターと入力](#secure-action-parameters)
-* お客様のロジック アプリから[要求を受け取るサービス](#secure-requests)
+* [HTTP 要求トリガーへのアクセス](#secure-triggers)
+* [ロジック アプリの操作へのアクセス](#secure-operations)
+* [実行履歴の入出力へのアクセス](#secure-run-history)
+* [パラメーターの入力へのアクセス](#secure-action-parameters)
+* [ロジック アプリから呼び出されたサービスとシステムへのアクセス](#secure-requests)
 
 <a name="secure-triggers"></a>
 
-## <a name="secure-access-to-request-triggers"></a>要求トリガーへのアクセスをセキュリティ保護する
+## <a name="access-to-http-request-triggers"></a>HTTP 要求トリガーへのアクセス
 
-お客様のロジック アプリによって HTTP 要求ベースのトリガー ([要求](../connectors/connectors-native-reqres.md)または [Webhook](../connectors/connectors-native-webhook.md) のトリガー) が使用される場合、承認されたクライアントだけがお客様のロジック アプリを起動できるようにアクセスを制限できます。 ロジック アプリで受信されるすべての要求は、Secure Sockets Layer (SSL) プロトコルで暗号化され、セキュリティ保護されます。 このトリガーの種類へのアクセスをセキュリティ保護できるさまざまな方法を次に示します。
+ロジック アプリによって HTTP 要求ベースのトリガー ([要求](../connectors/connectors-native-reqres.md)または [Webhook](../connectors/connectors-native-webhook.md) のトリガー) が使用される場合、承認されたクライアントだけがそのロジック アプリを起動できるようにアクセスを制限できます。 ロジック アプリで受信されるすべての要求は、Secure Sockets Layer (SSL) プロトコルで暗号化され、セキュリティ保護されます。 
+
+このトリガーの種類へのアクセスをセキュリティ保護する方法を次に示します。
 
 * [Shared Access Signature の生成](#sas)
 * [受信 IP アドレスの制限](#restrict-incoming-ip-addresses)
@@ -38,17 +40,22 @@ ms.locfileid: "67341099"
 
 <a name="sas"></a>
 
-### <a name="generate-shared-access-signatures"></a>Shared Access Signature の生成
+### <a name="generate-shared-access-signatures-sas"></a>Shared Access Signature (SAS) の生成
 
-ロジック アプリのすべての要求エンドポイントは、エンドポイントの URL に [Shared Access Signature (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) を含みます。 各 URL には `sp`、`sv`、`sig` のクエリ パラメーターが含まれています。
+ロジック アプリの各要求エンドポイントでは、エンドポイントの URL に次の形式で [Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas) を含みます。
 
-* `sp` では、使用が許可される HTTP メソッドにマップされるアクセス許可を指定します。
-* `sv` では、署名の生成に使用されるバージョンを指定します。
-* `sig` は、トリガーへのアクセスを認証するために使用されます。
+`https://<request-endpoint-URI>sp=<permissions>sv=<SAS-version>sig=<signature>`
 
-署名は、SHA256 アルゴリズムとシークレット アクセス キーを使用してすべての URL パスとプロパティで生成されます。 この秘密鍵が公開されることはなく、ロジック アプリと共に暗号化されて格納されます。 お客様のロジック アプリでは、秘密鍵を使用して作成された有効な署名を含むそれらのトリガーのみが承認されます。 
+各 URL には、次の表で説明するように、`sp`、`sv`、`sig` のクエリ パラメーターが含まれています。
 
-Shared Access Signature によるアクセスのセキュリティ保護の詳細を以下に示します。
+| Query parameter (クエリ パラメーター) | 説明 |
+|-----------------|-------------|
+| `sp` | 使用が許可された HTTP メソッドのアクセス許可を指定します。 |
+| `sv` | 署名の生成に使用する SAS バージョンを指定します。 |
+| `sig` | トリガーへのアクセスの認証に使用する署名を指定します。 この署名は、SHA256 アルゴリズムとシークレット アクセス キーを使用してすべての URL パスとプロパティで生成されます。 このキーは決して公開されることはなく、暗号化された状態でロジック アプリと共に格納されます。 お客様のロジック アプリでは、秘密鍵を使用して作成された有効な署名を含むそれらのトリガーのみが承認されます。 |
+|||
+
+Shared Access Signature によるアクセスのセキュリティ保護の詳細については、このトピック内の次の各セクションを参照してください。
 
 * [アクセス キーを再生成する](#access-keys)
 * [有効期限付きのコールバック URL を作成する](#expiring-urls)
@@ -58,7 +65,7 @@ Shared Access Signature によるアクセスのセキュリティ保護の詳�
 
 #### <a name="regenerate-access-keys"></a>アクセス キーを再生成する
 
-新しい安全なアクセス キーを随時再生成するには、Azure REST API または Azure portal を使用します。 過去に生成され、古いキーが使用される URL はすべて無効になり、ロジック アプリのトリガーが承認されなくなります。 再生成後に取得する URL は、新しいアクセス キーで署名されます。
+新しい安全なアクセス キーを随時生成するには、Azure REST API または Azure portal を使用します。 古いキーを使用する、過去に生成された URL はすべて無効になり、ロジック アプリのトリガーが承認されなくなります。 再生成後に取得する URL は、新しいアクセス キーで署名されます。
 
 1. Azure portal で、再生成したいキーを備えたロジック アプリを開きます。
 
@@ -68,26 +75,24 @@ Shared Access Signature によるアクセスのセキュリティ保護の詳�
 
 <a name="expiring-urls"></a>
 
-#### <a name="create-callback-urls-with-expiration-dates"></a>有効期限付きのコールバック URL を作成する
+#### <a name="create-expiring-callback-urls"></a>有効期限付きのコールバック URL を作成する
 
-要求ベースのトリガー エンドポイントの URL を他の関係者と共有する場合は、必要に応じて、キーと有効期限を指定してコールバック URL を生成できます。 その後、キーをシームレスにロールしたり、お客様のロジック アプリに対するトリガーへのアクセスを特定の期間に制限したりできます。 [Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) を使用して URL の有効期限を指定できます。次に例を示します。
+HTTP 要求ベースのトリガーのエンドポイント URL を他の関係者と共有する場合は、特定のキーを使用する有効期限付きのコールバック URL を生成できます。 そうすることで、キーをシームレスに交換したり、ロジック アプリのトリガーに対するアクセスを特定の期間に基づいて制限したりできます。 URL の有効期限を指定するには、[Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) を使用します。その例を次に示します。
 
 ``` http
-POST 
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
+POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-本文では、JSON 日付文字列を使用して `NotAfter` プロパティを指定します。 このプロパティは、`NotAfter` の日付と時刻までに限って有効なコールバック URL を返します。
+本文には、JSON 日付文字列を使用して `NotAfter` プロパティを含めます。 このプロパティは、`NotAfter` の日付と時刻までに限って有効なコールバック URL を返します。
 
 <a name="primary-secondary-key"></a>
 
 #### <a name="create-urls-with-primary-or-secondary-secret-key"></a>プライマリまたはセカンダリの秘密鍵を使用して URL を作成する
 
-要求ベースのトリガーに対するコールバック URL を生成または一覧表示する場合、URL の署名に使用するキーを指定することもできます。 [Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) を使用して、特定のキーで署名された URL を生成できます。次に例を示します。
+HTTP 要求ベースのトリガーに対するコールバック URL を生成または一覧表示する場合、URL の署名に使用するキーを指定することができます。 特定のキーで署名された URL を生成するには、[Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) を使用します。その例を次に示します。
 
 ``` http
-POST 
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
+POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
 本文では、`KeyType` プロパティに `Primary` または `Secondary` を指定します。 このプロパティは、指定された安全なキーによって署名された URL を返します。
@@ -96,50 +101,63 @@ POST
 
 ### <a name="restrict-incoming-ip-addresses"></a>受信 IP アドレスの制限
 
-Shared Access Signature と共に、お客様のロジック アプリを呼び出せる特定のクライアントを制限したい場合があるかもしれません。  
-たとえば、Azure API Management を使用してお客様の要求エンドポイントを管理する場合は、API Management インスタンスの IP アドレスからのみ要求を受け取るよう、お客様のロジック アプリを制限できます。 
+Shared Access Signature と共に、ロジック アプリを呼び出すことができる特定のクライアントを制限したい場合があるかもしれません。 たとえば、Azure API Management を使用して要求エンドポイントを管理する場合は、API Management インスタンスの IP アドレスからの要求のみを受け入れるようお使いのロジック アプリを制限できます。
 
-#### <a name="set-ip-ranges---azure-portal"></a>IP 範囲を設定する - Azure portal
+#### <a name="restrict-incoming-ip-ranges-in-azure-portal"></a>Azure portal で受信 IP 範囲を制限する
 
-Azure portal でこの制限を設定するには、お客様のロジック アプリの設定に移動します。 
-
-1. Azure portal のロジック アプリ デザイナーでお客様のロジック アプリを開きます。 
+1. Azure portal のロジック アプリ デザイナーでお客様のロジック アプリを開きます。
 
 1. ロジック アプリのメニューの **[設定]** で、 **[ワークフロー設定]** を選択します。
 
-1. **[アクセス制御の構成]**  > 
- **[許可された着信 IP アドレス]** で、 **[特定の IP 範囲]** を選択します。
+1. **[アクセス制御の構成]**  >  **[許可された着信 IP アドレス]** で、 **[特定の IP 範囲]** を選択します。
 
-1. **[トリガーの IP 範囲]** で、トリガーで受け入れられる IP アドレス範囲を指定します。 有効な IP 範囲では、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。 
+1. **[トリガーの IP 範囲]** で、トリガーで受け入れられる IP アドレス範囲を指定します。
 
-お客様のロジック アプリが、入れ子にされたロジック アプリとしてのみ起動するようにしたい場合は、 **[許可された着信 IP アドレス]** の一覧で **[他のロジック アプリのみ]** を選択します。 このオプションでは、お客様のロジック アプリのリソースに空の配列を書き込みます。そのため、入れ子にされたロジック アプリをトリガーできるのが Logic Apps サービス (親ロジック アプリ) からの呼び出しだけになります。
+   有効な IP 範囲では、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
+
+お使いのロジック アプリを、入れ子にされたロジック アプリとしてのみトリガーするようにしたい場合は、 **[許可された着信 IP アドレス]** の一覧で **[他のロジック アプリのみ]** を選択します。 このオプションにより、ロジック アプリのリソースに空の配列が書き込まれます。 そのため、入れ子にされたロジック アプリをトリガーできるのは、Logic Apps サービス (親ロジック アプリ) からの呼び出しだけになります。
 
 > [!NOTE]
-> IP アドレスに関わらず、Azure REST API または API Management を通じて `/triggers/{triggerName}/run` を使用することで、要求ベースのトリガーを備えたロジック アプリを引き続き実行できます。 ただし、このシナリオでも Azure REST API に対する認証が必要であり、すべてのイベントが Azure の監査ログに表示されます。 アクセス制御ポリシーを適切に設定するようにしてください。
+> IP アドレスに関係なく、Azure REST API または API Management を通じて `/triggers/<trigger-name>/run` を使用することで、HTTP 要求ベースのトリガーを備えたロジック アプリを引き続き実行できます。 ただし、このシナリオでも Azure REST API に対する認証が必要です。 すべてのイベントが Azure の監査ログに表示されます。 アクセス制御ポリシーを適切に設定するようにしてください。
 
-#### <a name="set-ip-ranges---logic-app-deployment-template"></a>IP 範囲を設定する - ロジック アプリのデプロイ テンプレート
+#### <a name="restrict-incoming-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートで受信 IP 範囲を制限する
 
-[Azure Resource Manager デプロイ テンプレート](../logic-apps/logic-apps-create-deploy-template.md)を使用してロジック アプリのデプロイを自動化している場合、そのテンプレートで IP 範囲を設定できます。次に例を示します。
+[Azure Resource Manager テンプレート](../logic-apps/logic-apps-create-deploy-template.md)を使用してロジック アプリのデプロイを自動化する場合、ロジック アプリのリソース定義に、`triggers` セクションが含まれた `accessControl` セクションを使用して IP 範囲を指定できます。その例を次に示します。
 
 ``` json
 {
-   "properties": {
-      "definition": {},
-      "parameters": {},
-      "accessControl": {
-         "triggers": {
-            "allowedCallerIpAddresses": [
-               {
-                  "addressRange": "192.168.12.0/23"
-               },
-               {
-                  "addressRange": "2001:0db8::/64"
+   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {},
+   "variables": {},
+   "resources": [
+      {
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {
+            "displayName": "LogicApp"
+         },
+         "apiVersion": "2016-06-01",
+         "properties": {
+            "definition": {<workflow-definition>},
+            "parameters": {},
+            "accessControl": {
+               "triggers": {
+                  "allowedCallerIpAddresses": [
+                     {
+                        "addressRange": "192.168.12.0/23"
+                     },
+                     {
+                        "addressRange": "2001:0db8::/64"
+                     }
+                  ]
                }
-            ]
+            }
          }
       }
-   },
-   "type": "Microsoft.Logic/workflows",
+   ],
+   "outputs": {}
 }
 ```
 
@@ -147,88 +165,188 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
 
 ### <a name="add-azure-active-directory-oauth-or-other-security"></a>Azure Active Directory、OAuth、またはその他のセキュリティの追加
 
-お客様のロジック アプリにさらに承認プロトコルを追加するには、[Azure API Management](https://azure.microsoft.com/services/api-management/) の使用を検討してください。 このサービスでは、あらゆるエンドポイント向けの監視、セキュリティ、ポリシー、ドキュメントが豊富に提供され、お客様のロジック アプリを API として公開できます。 API Management では、お客様のロジック アプリに対して、Azure Active Directory、OAuth、証明書などのセキュリティ標準を利用可能なパブリックまたはプライベート エンドポイントを公開できます。 API Management で要求が受け取られると、サービスによって要求がお客様のロジック アプリに送信されます。さらに、必要な変換または制限もその過程で行われます。 API Management にのみお客様のロジック アプリのトリガーを許可するには、ロジック アプリの受信 IP 範囲の設定を使用できます。 
+お客様のロジック アプリにさらに承認プロトコルを追加するには、[Azure API Management](../api-management/api-management-key-concepts.md) の使用を検討してください。 このサービスでは、自分のロジック アプリを API として公開できるほか、あらゆるエンドポイント向けの監視、セキュリティ、ポリシー、ドキュメントが豊富に提供されます。 API Management では、お客様のロジック アプリに対して、Azure Active Directory、OAuth、証明書などのセキュリティ標準を利用可能なパブリックまたはプライベート エンドポイントを公開できます。 API Management で要求が受け取られると、サービスによって要求がお客様のロジック アプリに送信されます。さらに、必要な変換または制限もその過程で行われます。 API Management にのみお客様のロジック アプリのトリガーを許可するには、ロジック アプリの受信 IP 範囲の設定を使用できます。
 
 <a name="secure-operations"></a>
 
-## <a name="secure-access-to-logic-app-operations"></a>ロジック アプリの操作へのアクセスをセキュリティ保護する
+## <a name="access-to-logic-app-operations"></a>ロジック アプリの操作へのアクセス
 
-特定のユーザーまたはグループにのみお客様のロジック アプリに対する操作の実行を許可するために、管理、編集、表示などのタスクでアクセスを制限できます。 Logic Apps では、[Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) がサポートされていて、組み込みのロールをカスタマイズしてお客様のサブスクリプションのメンバーに割り当てることができます。次に例を示します。
+ロジックアプリの管理、編集、表示など、特定の操作の実行を特定のユーザーまたはグループのみに許可することができます。 これらのアクセス許可を制御するには、[Azure ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) を使用して、カスタマイズされたロールまたは組み込みロールを Azure サブスクリプションのメンバーに割り当てることができます。
 
 * [ロジック アプリの共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor): ロジック アプリを管理できますが、アクセス権を変更することはできません。
 
 * [ロジック アプリのオペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator): ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。
 
-他のユーザーがお客様のロジック アプリを変更したり削除したりしないようにするには、[Azure のリソース ロック](../azure-resource-manager/resource-group-lock-resources.md)を使用できます。 この機能は、他のユーザーが運用リソースを変更したり削除したりしないようにするのに役立ちます。
+お使いのロジック アプリを他のユーザーが変更または削除できないようにするには、[Azure のリソース ロック](../azure-resource-manager/resource-group-lock-resources.md)を使用できます。これにより、運用リソースが他のユーザーによって変更されたり削除されたりするのを防止できます。
 
 <a name="secure-run-history"></a>
 
-## <a name="secure-access-to-logic-app-run-history"></a>ロジック アプリの実行履歴へのアクセスをセキュリティ保護する
+## <a name="access-to-run-history-data"></a>実行履歴データへのアクセス
 
-過去のロジック アプリの実行から入力または出力として渡される内容を保護するには、特定の IP アドレス範囲にアクセスを制限できます。 この機能では、さらなるアクセスの制御が提供されます。 ロジック アプリの実行内のデータはすべて、転送中および保存中に暗号化されます。 ロジック アプリの実行履歴を要求すると、Logic Apps によってその要求の認証が行われ、お客様のロジック アプリのワークフローにおける要求と応答からの入力と出力にリンクが提供されます。 これらのリンクを保護して、特定の IP アドレスからの要求のみによってその内容が返されるようにできます。 たとえば、だれも入力と出力にアクセスできないように、`0.0.0.0-0.0.0.0` などの IP アドレスを指定することさえできます。 この制限を削除できるのは管理者アクセス許可を持つ人物のみであるため、お客様のロジック アプリの内容に対する "ジャストインタイム" アクセスが可能になります。
+ロジック アプリの実行中、転送中のデータと保存データはすべて暗号化されます。 ロジック アプリの実行が完了したら、実行されたステップを含め、その実行の履歴を、各アクションの状態、期間、入力、出力と共に確認できます。 この豊富な詳細情報から、ロジック アプリがどのように実行されたか、発生した問題のトラブルシューティングをどこから始めるかに関する分析情報が得られます。
 
-### <a name="set-ip-ranges---azure-portal"></a>IP 範囲を設定する - Azure portal
+ロジック アプリの実行履歴にアクセスすると、そのアクセスの認証が Logic Apps によって行われ、ロジック アプリの実行における要求と応答の入力および出力へのリンクが提供されます。 ただし、パスワード、シークレット、キーなどの秘匿性の高い情報を処理するアクションについては、他のユーザーがそのデータを表示したり利用したりできないようにします。 たとえば、ロジックアプリが HTTP アクションの認証時に使用する [Azure Key Vault](../key-vault/key-vault-whatis.md) のシークレットを取得する場合、そのシークレットが見えないようにする必要があります。
 
-Azure portal でこの制限を設定するには、お客様のロジック アプリの設定に移動します。
+ロジック アプリの実行履歴にある入力と出力へのアクセスを制御するには、次のオプションがあります。
 
-1. Azure portal のロジック アプリ デザイナーでお客様のロジック アプリを開きます。 
+* [IP アドレス範囲でアクセスを制限する](#restrict-ip)。
+
+  このオプションでは、特定の IP アドレス範囲からの要求に基づいて実行履歴へのアクセスをセキュリティで保護できます。
+
+* [難読化を使用して実行履歴の入力と出力を非表示にする](#obfuscate)。
+
+  このオプションでは、トリガーまたはアクションに基づいて、実行履歴の入力と出力を非表示にすることができます。
+
+<a name="restrict-ip"></a>
+
+### <a name="restrict-access-by-ip-address-range"></a>IP アドレス範囲でアクセスを制限する
+
+ロジック アプリの実行履歴に含まれる入力と出力へのアクセスは、特定の IP アドレス範囲からの要求のみでそのデータを表示できるように制限できます。 たとえば、すべてのユーザーが入力および出力にアクセスできないようにするには、IP アドレス範囲を「`0.0.0.0-0.0.0.0`」のように指定します。 この制限を削除できるのは管理者アクセス許可を持つ人物のみであるため、自分のロジック アプリのデータに対する "ジャストインタイム" アクセスが可能になります。 制限する IP 範囲を指定するには、Azure portal を使用するか、ロジック アプリのデプロイに使用する Azure Resource Manager テンプレートで実行することができます。
+
+#### <a name="restrict-ip-ranges-in-azure-portal"></a>Azure portal で IP 範囲を制限する
+
+1. Azure portal のロジック アプリ デザイナーでお客様のロジック アプリを開きます。
 
 1. ロジック アプリのメニューの **[設定]** で、 **[ワークフロー設定]** を選択します。
 
-1. **[アクセス制御の構成]** > 
-    **[許可された着信 IP アドレス]** で、 **[特定の IP 範囲]** を選択します。
+1. **[アクセス制御の構成]**  >  **[許可された着信 IP アドレス]** で、 **[特定の IP 範囲]** を選択します。
 
 1. **[コンテンツの IP 範囲]** で、入力と出力からの内容にアクセスできる IP アドレス範囲を指定します。 
-   有効な IP 範囲では、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。 
 
-### <a name="set-ip-ranges---logic-app-deployment-template"></a>IP 範囲を設定する - ロジック アプリのデプロイ テンプレート
+   有効な IP 範囲では、*x.x.x.x/x* または *x.x.x.x-x.x.x.x* の形式が使用されます。
 
-[Azure Resource Manager デプロイ テンプレート](../logic-apps/logic-apps-create-deploy-template.md)を使用してロジック アプリのデプロイを自動化している場合、そのテンプレートで IP 範囲を設定できます。次に例を示します。
+#### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートで IP 範囲を制限する
+
+[Azure Resource Manager テンプレート](../logic-apps/logic-apps-create-deploy-template.md)を使用してロジック アプリのデプロイを自動化する場合、ロジック アプリのリソース定義に、`contents` セクションが含まれた `accessControl` セクションを使用して IP 範囲を指定できます。その例を次に示します。
 
 ``` json
 {
-   "properties": {
-      "definition": {},
-      "parameters": {},
-      "accessControl": {
-         "contents": {
-            "allowedCallerIpAddresses": [
-               {
-                  "addressRange": "192.168.12.0/23"
-               },
-               {
-                  "addressRange": "2001:0db8::/64"
+   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {},
+   "variables": {},
+   "resources": [
+      {
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {
+            "displayName": "LogicApp"
+         },
+         "apiVersion": "2016-06-01",
+         "properties": {
+            "definition": {<workflow-definition>},
+            "parameters": {},
+            "accessControl": {
+               "contents": {
+                  "allowedCallerIpAddresses": [
+                     {
+                        "addressRange": "192.168.12.0/23"
+                     },
+                     {
+                        "addressRange": "2001:0db8::/64"
+                     }
+                  ]
                }
-            ]
+            }
          }
       }
-   },
-   "type": "Microsoft.Logic/workflows",
+   ],
+   "outputs": {}
 }
 ```
 
+<a name="obfuscate"></a>
+
+### <a name="hide-inputs-and-outputs-in-run-history-by-using-obfuscation"></a>難読化を使用して実行履歴の入力と出力を非表示にする
+
+1. [Azure portal](https://portal.azure.com) でまだロジック アプリを開いていない場合は、ロジック アプリ デザイナーでロジック アプリを開きます。
+
+   ![サンプル ロジック アプリを開く](media/logic-apps-securing-a-logic-app/sample-logic-app.png)
+
+1. データをセキュリティで保護したいトリガーまたはアクションで省略記号 ( **...** ) ボタンを選択し、 **[設定]** を選択します。
+
+   ![[設定] を開く](media/logic-apps-securing-a-logic-app/open-settings.png)
+
+1. **[セキュリティで保護された入力]** と **[セキュリティで保護された出力]** のいずれかまたは両方をオンにします。 完了したら、 **[完了]** をクリックします。
+
+   ![[セキュリティで保護された入力] または [セキュリティで保護された出力] をオンにする](media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
+
+   アクションまたはトリガーのタイトル バーにロック アイコンが表示されます。
+
+   ![タイトル バーのロック アイコン](media/logic-apps-securing-a-logic-app/title-bar-lock-icon.png)
+
+   前のアクションからのセキュリティで保護された出力を表すトークンにも、ロック アイコンが表示されます。 たとえば、そのような出力をアクションで使用するために動的コンテンツ リストから選択すると、そのトークンにロック アイコンが表示されます。
+
+   ![出力を選択する](media/logic-apps-securing-a-logic-app/select-secured-token.png)
+
+1. ロジック アプリの実行後、その実行の履歴を表示できます。
+
+   1. ロジック アプリの **[概要]** ウィンドウで、表示する実行を選択します。
+
+   1. **[ロジック アプリの実行]** ウィンドウで、確認したいアクションを展開します。
+
+      入力と出力の両方をセキュリティで保護することを選択した場合は、それらの値が非表示になります。
+
+      ![実行履歴で非表示にされたデータ](media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
+
+<a name="obfuscation-considerations"></a>
+
+#### <a name="considerations-when-securing-inputs-and-outputs"></a>入力と出力をセキュリティで保護する際の考慮事項
+
+* トリガーまたはアクションの入力または出力をセキュリティで保護すると、Logic Apps から Azure Log Analytics にそのセキュリティで保護されたデータが送信されません。 また、そのトリガーまたはアクションに[追跡対象プロパティ](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)を追加して監視することもできません。
+
+* セキュリティで保護された出力は、[ワークフロー履歴を処理するための Logic Apps API](https://docs.microsoft.com/rest/api/logic/) から返されません。
+
+* 入力をセキュリティで保護するかセキュリティで保護された出力を明示的に使用するアクションから、このセキュリティで保護されたデータを含む出力と共に応答が返される場合、それらの出力をセキュリティを保護するためには、そのアクションの **[セキュリティで保護された出力]** を手動でオンにする必要があります。
+
+* ダウンストリームのアクションで、実行履歴にそのデータのセキュリティ保護を求める場合は、 **[セキュリティで保護された入力]** または **[セキュリティで保護された出力]** を確実にオンにしてください。
+
+  **[セキュリティで保護された出力] の設定**
+
+  トリガーまたはアクションで **[セキュリティで保護された出力]** を手動でオンにすると、実行履歴において、その出力がセキュリティで保護されます。 それらのセキュリティで保護された出力がダウンストリームのアクションで明示的に入力として使用されている場合、そのアクションの入力が実行履歴では非表示となりますが、アクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。
+
+  ![入力としてのセキュリティで保護された出力とダウンストリームによるほとんどのアクションへの影響](media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
+
+  [作成]、[JSON の解析]、[応答] の各アクションには、 **[セキュリティで保護された入力]** の設定しかありません。 この設定をオンにした場合、それらのアクションの出力も非表示になります。 セキュリティで保護されたアップストリームの出力がそれらのアクションの入力として明示的に使用された場合、Logic Apps によってそれらのアクションの入力と出力は非表示となりますが、それらのアクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。 [作成]、[JSON の解析]、[応答] のいずれかのアクションからの非表示の出力がダウンストリームのアクションで明示的に入力として使用された場合、"*そのダウンストリームのアクションの入力と出力は非表示になりません*"。
+
+  ![入力としてのセキュリティで保護された出力とダウンストリームによる特定のアクションへの影響](media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
+
+  **[セキュリティで保護された入力] の設定**
+
+  トリガーまたはアクションで **[セキュリティで保護された入力]** を手動でオンにすると、Logic Apps により、実行履歴でその入力がセキュリティで保護されます。 そのトリガーまたはアクションからの表示可能な出力がダウンストリームのアクションの入力として明示的に使用されている場合、そのダウンストリームのアクションの入力が実行履歴では非表示となりますが、このアクションの **[セキュリティで保護された入力]** は "*有効にならず*"、そのアクションの出力が非表示になることもありません。
+
+  ![セキュリティで保護された入力とダウンストリームのほとんどのアクションへの影響](media/logic-apps-securing-a-logic-app/secure-inputs-flow.png)
+
+  セキュリティで保護された入力を持つトリガーまたはアクションからの表示可能な出力が、[作成]、[JSON の解析]、[応答] の各アクションで明示的に使用された場合、これらのアクションの入力と出力は非表示となりますが、そのアクションの **[セキュリティで保護された入力]** の設定は "*有効になりません*"。 [作成]、[JSON の解析]、[応答] のいずれかのアクションからの非表示の出力がダウンストリームのアクションで明示的に入力として使用された場合、"*そのダウンストリームのアクションの入力と出力は非表示になりません*"。
+
+  ![セキュリティで保護された入力とダウンストリームの特定のアクションへの影響](media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
+
 <a name="secure-action-parameters"></a>
 
-## <a name="secure-action-parameters-and-inputs"></a>アクション パラメーターと入力をセキュリティ保護する
+## <a name="access-to-parameter-inputs"></a>パラメーターの入力へのアクセス
 
-さまざまな環境全体にデプロイするとき、お客様のロジック アプリのワークフロー定義で特定の要素をパラメーター化したい場合があります。 そのようにすると、お客様が使用する環境に基づいて入力を提供し、機密情報を保護することができます。 たとえば、[Azure Active Directory](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication) で HTTP アクションを認証している場合、認証に使用されるクライアント ID とクライアント シークレットを受け入れるパラメーターを定義し、セキュリティで保護します。 これらのパラメーターについては、独自の `parameters` セクションがロジック アプリ定義にあります。
-実行中にパラメーター値にアクセスする場合は、[ワークフロー定義言語](https://aka.ms/logicappsdocs)で提供される `@parameters('parameterName')` 式を使用できます。 
+デプロイ先が複数の異なる環境にまたがる場合、環境に応じて変わる値は、ワークフロー定義内でパラメーター化することを検討してください。 そうすれば、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md#parameters)を使用してロジック アプリをデプロイし、セキュリティで保護されたパラメーターを定義して秘匿性の高い情報を保護すると共に、[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values)を使用して、テンプレートのパラメーターから、それらのパラメーターの入力を個別に与えることができます。
 
-ロジック アプリの編集時または実行履歴の表示時に表示させないパラメーターおよび値を保護するには、型が `securestring` のパラメーターを定義し、必要に応じてエンコードを使用することができます。 この型のパラメーターはリソース定義と一緒に返されず、デプロイ後にリソースを表示するときにもアクセスできません。
+たとえば、[Azure Active Directory](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication) で HTTP アクションを認証する場合、認証に使用されるクライアント ID とクライアント シークレットを受け入れるパラメーターを定義し、セキュリティで保護することができます。 お使いのロジック アプリ用にこれらのパラメーターを定義するには、ロジック アプリのワークフロー定義内の `parameters` セクションを使用します。 ロジック アプリの編集時や実行履歴の確認時に表示させたくないパラメーター値を保護するには、`securestring` または `secureobject` 型を使用してパラメーターを定義し、必要に応じてエンコードを使用してください。 この型のパラメーターはリソース定義と一緒に返されず、デプロイ後にリソースを表示するときにもアクセスできません。 それらのパラメーターの値に実行時にアクセスするには、ワークフロー定義内で `@parameters('<parameter-name>')` 式を使用します。 この式は実行時にのみ評価され、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で記述されます。
 
 > [!NOTE]
-> 要求のヘッダーまたは本文でパラメーターを使用している場合、お客様のロジック アプリの実行履歴および発信 HTTP 要求へのアクセス時にそのパラメーターが表示されることがあります。 コンテンツ アクセス ポリシーも適切に設定してください。
-> Authorization ヘッダーは入力や出力では表示されません。 そのため、ここでシークレットが使用された場合はそのシークレットを取得できません。
+> HTTP 要求のヘッダーまたは本文でパラメーターを使用している場合、ロジック アプリの実行履歴や送信 HTTP 要求を確認したときにそのパラメーターが表示されることがあります。 コンテンツ アクセス ポリシーも適切に設定するようにしてください。 Authorization ヘッダーは入力や出力では表示されません。 そのため、ここでシークレットが使用された場合はそのシークレットを取得できません。
 
-ロジック アプリ定義でパラメーターをセキュリティで保護する方法については、このページの後半の「[ロジック アプリ定義のパラメーターのセキュリティ保護](#secure-parameters-workflow)」を参照してください。
+詳細については、このトピックで後述する「[ワークフロー定義内のパラメーターをセキュリティで保護する](#secure-parameters-workflow)」を参照してください。
 
-[Azure Resource Manager デプロイ テンプレート](../azure-resource-manager/resource-group-authoring-templates.md#parameters)を使用してデプロイを自動化している場合、それらのテンプレートにあるセキュリティで保護されたパラメーターを使用することもできます。 たとえば、ロジック アプリの作成時に KeyVault シークレットを取得するためのパラメーターを使用できます。 デプロイ テンプレート定義には、ロジック アプリの `parameters` セクションとは別に、独自の `parameters` セクションがあります。 デプロイ テンプレートのパラメーターをセキュリティで保護する方法については、このページの後半の「[デプロイ テンプレートのパラメーターのセキュリティ保護](#secure-parameters-deployment-template)」を参照してください。
+[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md#parameters)を使用してデプロイを自動化する際は、デプロイ時に評価される、セキュリティで保護されたテンプレート パラメーターを `securestring` 型と `secureobject` 型を使用して定義できます。 テンプレートのパラメーターを定義するには、テンプレートの最上位の `parameters` セクションを使用します。このセクションは独立しており、ワークフロー定義の `parameters` セクションとは異なります。 テンプレートのパラメーターに値を指定するには、別途[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values)を使用します。
+
+たとえばシークレットを使用する場合、それらのシークレットをデプロイ時に [Azure Key Vault](../key-vault/key-vault-whatis.md) から取得する、セキュリティで保護されたテンプレート パラメーターを定義して使用することができます。 その後、パラメーター ファイルの中で、キー コンテナーとシークレットを参照することができます。 詳細については、以下のトピックを参照してください。
+
+* [デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* このトピックの後にある [Azure Resource Manager テンプレート内のパラメーターをセキュリティで保護する](#secure-parameters-deployment-template) (このトピックで後出)
 
 <a name="secure-parameters-workflow"></a>
 
-### <a name="secure-parameters-in-logic-app-definitions"></a>ロジック アプリ定義のパラメーターのセキュリティ保護
+### <a name="secure-parameters-in-workflow-definitions"></a>ワークフロー定義内のパラメーターをセキュリティで保護する
 
-ロジック アプリのワークフロー定義内の機密情報を保護するには、セキュリティで保護されたパラメーターを使用して、ロジック アプリを保存した後にこの情報が表示されないようにします。 たとえば、HTTP アクションの定義で `Basic` 認証を使用しているとします。 この例には、アクション定義のパラメーターを定義する `parameters` セクションに加えて、`username` および `password` パラメーターの値を受け入れる `authentication` セクションが含まれています。 これらのパラメーターの値を提供するために、次のような独立したパラメーター ファイルを使用できます。
+ロジック アプリのワークフロー定義内の秘匿性の高い情報を保護するには、その情報がロジック アプリの保存後に表示されないよう、セキュリティで保護されたパラメーターを使用します。 たとえば、基本認証を必要とする HTTP アクションがあって、ユーザー名とパスワードが使用されているとします。 ワークフロー定義の `parameters` セクションでは、`securestring` 型を使用して `basicAuthPasswordParam` パラメーターと `basicAuthUsernameParam` パラメーターを定義します。 そのうえで、これらのパラメーターをアクション定義の `authentication` セクションで参照します。
 
 ```json
 "definition": {
@@ -241,18 +359,18 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
             "uri": "https://www.microsoft.com",
             "authentication": {
                "type": "Basic",
-               "username": "@parameters('usernameParam')",
-               "password": "@parameters('passwordParam')"
+               "username": "@parameters('basicAuthUsernameParam')",
+               "password": "@parameters('basicAuthPasswordParam')"
             }
          },
          "runAfter": {}
       }
    },
    "parameters": {
-      "passwordParam": {
+      "basicAuthPasswordParam": {
          "type": "securestring"
       },
-      "userNameParam": {
+      "basicAuthUsernameParam": {
          "type": "securestring"
       }
    },
@@ -270,26 +388,36 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
 }
 ```
 
-シークレットを使用する場合、[Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) を使用してデプロイ時にそれらのシークレットを取得できます。
-
 <a name="secure-parameters-deployment-template"></a>
 
-### <a name="secure-parameters-in-azure-resource-manager-deployment-templates"></a>Azure Resource Manager デプロイ テンプレートのパラメーターのセキュリティ保護
+### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのパラメーターをセキュリティで保護する
 
-次の例では、型が `securestring` のランタイム パラメーターが複数使用される Resource Manager デプロイ テンプレートを示します。
+ロジック アプリの Resource Manager テンプレートには、複数の `parameters` セクションが存在します。 パスワード、キー、シークレットなどの秘匿性の高い情報を保護するには、テンプレート レベルおよびワークフロー定義レベルで、`securestring` または `secureobject` 型を使用して、セキュリティで保護されたパラメーターを定義します。 その後、これらの値を [Azure Key Vault](../key-vault/key-vault-whatis.md) に格納すれば、[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values)を使用して Key Vault とシークレットを参照することができます。 その後、デプロイ時にご利用のテンプレートからその情報を取得します。 詳細については、[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)方法に関するページを参照してください。
 
-* `armTemplatePasswordParam`。これはロジック アプリ定義の `logicAppWfParam` パラメーターの入力です
+次に、これらの `parameters` セクションについて詳しく説明します。
 
-* `logicAppWfParam`。これは基本認証が使用される HTTP アクションの入力です
+* テンプレートの最上位の `parameters` セクションには、そのテンプレートが "*デプロイ*" 時に使用する値のパラメーターを定義します。 たとえば、特定のデプロイ環境の接続文字列がそのような値として考えられます。 これらの値は、独立した[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values)に格納できるので、値の変更も容易に行うことができます。
 
-この例には、お客様のロジック アプリのワークフロー定義に属している内部の `parameters` セクションと、お客様のデプロイ テンプレートに属している外部の `parameters` セクションが含まれています。 パラメーターの環境値を指定するために、独立したパラメーター ファイルを使用できます。 
+* ロジック アプリのリソース定義内、かつワークフロー定義の外側にある `parameters` セクションでは、ワークフロー定義のパラメーターの値を指定します。 このセクションでは、テンプレートのパラメーターを参照するテンプレート式を使用して、それらの値を割り当てることができます。 これらの式は、デプロイ時に評価されます。
+
+* ワークフロー定義内の `parameters` セクションでは、ロジック アプリによって実行時に使用されるパラメーターを定義します。 これらのパラメーターは、ロジック アプリのワークフロー内から、実行時に評価されるワークフロー定義式を使用して参照できます。
+
+この例のテンプレートには、`securestring` 型を使用する、セキュリティで保護されたパラメーターの定義が複数存在します。
+
+| パラメーター名 | 説明 |
+|----------------|-------------|
+| `TemplatePasswordParam` | パスワードを受け取るテンプレート パラメーター。パスワードはその後、ワークフロー定義の `basicAuthPasswordParam` パラメーターに渡されます。 |
+| `TemplatePasswordParam` | ユーザー名を受け取るテンプレート パラメーター。ユーザー名はその後、ワークフロー定義の `basicAuthUserNameParam` パラメーターに渡されます。 |
+| `basicAuthPasswordParam` | HTTP アクションで基本認証用のパスワードを受け取るワークフロー定義パラメーター |
+| `basicAuthUserNameParam` | HTTP アクションで基本認証用のユーザー名を受け取るワークフロー定義パラメーター |
+|||
 
 ```json
 {
    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
    "parameters": {
-      "logicAppName": {
+      "LogicAppName": {
          "type": "string",
          "minLength": 1,
          "maxLength": 80,
@@ -297,10 +425,13 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
             "description": "Name of the Logic App."
          }
       },
-      "armTemplatePasswordParam": {
+      "TemplatePasswordParam": {
          "type": "securestring"
       },
-      "logicAppLocation": {
+      "TemplateUsernameParam": {
+         "type": "securestring"
+      },
+      "LogicAppLocation": {
          "type": "string",
          "defaultValue": "[resourceGroup().location]",
          "allowedValues": [
@@ -338,9 +469,9 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
    "variables": {},
    "resources": [
       {
-         "name": "[parameters('logicAppName')]",
+         "name": "[parameters('LogicAppName')]",
          "type": "Microsoft.Logic/workflows",
-         "location": "[parameters('logicAppLocation')]",
+         "location": "[parameters('LogicAppLocation')]",
          "tags": {
             "displayName": "LogicApp"
          },
@@ -356,18 +487,18 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
                         "uri": "https://www.microsoft.com",
                         "authentication": {
                            "type": "Basic",
-                           "username": "@parameters('usernameParam')",
-                           "password": "@parameters('logicAppWfParam')"
+                           "username": "@parameters('basicAuthUsernameParam')",
+                           "password": "@parameters('basicAuthPasswordParam')"
                         }
                      },
                   "runAfter": {}
                   }
                },
                "parameters": {
-                  "logicAppWfParam": {
+                  "basicAuthPasswordParam": {
                      "type": "securestring"
                   },
-                  "userNameParam": {
+                  "basicAuthUsernameParam": {
                      "type": "securestring"
                   }
                },
@@ -384,8 +515,11 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
                "outputs": {}
             },
             "parameters": {
-               "logicAppWfParam": {
-                  "value": "[parameters('armTemplatePasswordParam')]"
+               "basicAuthPasswordParam": {
+                  "value": "[parameters('TemplatePasswordParam')]"
+               },
+               "basicAuthUsernameParam": {
+                  "value": "[parameters('TemplateUsernameParam')]"
                }
             }
          }
@@ -395,37 +529,38 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
 }
 ```
 
-シークレットを使用する場合、[Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) を使用してデプロイ時にそれらのシークレットを取得できます。
-
 <a name="secure-requests"></a>
 
-## <a name="secure-access-to-services-receiving-requests"></a>要求を受信するサービスへのアクセスをセキュリティ保護する
+## <a name="access-to-services-and-systems-called-from-logic-apps"></a>ロジック アプリから呼び出されたサービスとシステムへのアクセス
 
-次に示すのは、お客様のロジック アプリがアクセスする必要があって要求を送信するエンドポイントをセキュリティ保護するいくつかの方法です。
+要求を送信するためにロジック アプリがアクセスする必要のあるエンドポイントをセキュリティで保護するいくつかの方法を次に示します。
 
-### <a name="add-authentication-on-outbound-requests"></a>送信要求に認証を追加する
+* アウトバウンド要求に認証を追加する。
 
-HTTP、HTTP と Swagger (Open API)、または Webhook アクションを使用する場合は、お客様のロジック アプリによって送信される要求に認証を追加できます。 たとえば、基本認証、証明書認証、または Azure Active Directory 認証を使用できます。 詳細については、「[トリガーまたはアクションを認証する](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)」を参照してください。
+  HTTP、HTTP と Swagger (Open API)、または Webhook アクションを使用する場合は、ロジック アプリによって送信される要求に認証を追加できます。 たとえば、基本認証、証明書認証、または Azure Active Directory 認証を使用できます。 詳細については、「[トリガーまたはアクションを認証する](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)」を参照してください。
 
-### <a name="restrict-access-to-logic-app-ip-addresses"></a>ロジック アプリの IP アドレスへのアクセスを制限する
+* ロジック アプリの IP アドレスからのアクセスを制限する。
 
-ロジック アプリからのすべての呼び出しは、リージョンに基づいて、指定された特定の IP アドレスから送信されます。 これらの IP アドレスからのみ要求を受け入れるフィルターを追加できます。 これらの IP アドレスについては、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#configuration)に関するページを参照してください。
+  ロジック アプリからエンドポイントへの呼び出しはすべて、ロジック アプリのリージョンに基づいて指定される特定の IP アドレスが起点となります。 これらの IP アドレスからのみ要求を受け入れるフィルターを追加できます。 これらの IP アドレスを取得するには、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#configuration)に関するページを参照してください。
 
-### <a name="secure-on-premises-connectivity"></a>オンプレミスの接続をセキュリティ保護する
+* マネージド ID として認証してリソースにアクセスする。
 
-Azure Logic Apps では、以下のサービスとの統合を行って、安全で信頼性の高いオンプレミス通信を実現できます。
+  ロジック アプリは、他の Azure Active Directory (Azure AD) テナント内のリソースにアクセスする際に、資格情報やシークレットではなくマネージド ID (以前はマネージド サービス ID (MSI) と呼ばれていました) を使用して、サインインすることなく ID の認証を行うことができます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 システム割り当てマネージド ID を設定してロジック アプリに使用する方法の詳細については、「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」を参照してください。
 
-#### <a name="on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイ
+* オンプレミス システムへの接続をセキュリティで保護する。
 
-Azure Logic Apps 用の多くのマネージド コネクタは、オンプレミス システム (ファイル システム、SQL、SharePoint、DB2 など) への安全な接続を提供します。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを送信します。 すべてのトラフィックは、ゲートウェイ エージェントからの安全な送信トラフィックとして生成されます。 [オンプレミス データ ゲートウェイのしくみ](logic-apps-gateway-install.md#gateway-cloud-service)を確認してください。
+  Azure Logic Apps では、以下のサービスとの統合を行って、安全で信頼性の高いオンプレミス通信を実現できます。
 
-#### <a name="azure-api-management"></a>Azure API Management
+  * オンプレミスのデータ ゲートウェイ
 
-[Azure API Management](https://azure.microsoft.com/services/api-management/) には、オンプレミス システムへのプロキシと通信のセキュリティ保護を実現するためのサイト間仮想プライベート ネットワークと ExpressRoute の統合など、オンプレミス接続オプションが用意されています。 ロジック アプリ デザイナーでは、API Management によって公開された API をお客様のロジック アプリのワークフローから選択して、オンプレミス システムに迅速にアクセスできます。
+    Azure Logic Apps の多くのマネージド コネクタは、オンプレミス システム (ファイル システム、SQL、SharePoint、DB2 など) への安全な接続を提供します。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを送信します。 すべてのトラフィックは、ゲートウェイ エージェントからの安全な送信トラフィックとして生成されます。 [オンプレミス データ ゲートウェイのしくみ](logic-apps-gateway-install.md#gateway-cloud-service)を確認してください。
+
+  * Azure API Management での接続
+
+    [Azure API Management](../api-management/api-management-key-concepts.md) には、オンプレミス システムへのプロキシと通信のセキュリティ保護を実現するためのサイト間仮想プライベート ネットワークと ExpressRoute の統合など、オンプレミス接続オプションが用意されています。 オンプレミスのシステムには、API Management が公開している API を介してすばやくアクセスできます。ロジック アプリ デザイナーで、ロジック アプリのワークフローからこの API を選択できます。
 
 ## <a name="next-steps"></a>次の手順
 
-* [デプロイ テンプレートを作成する](logic-apps-create-deploy-template.md)  
-* [例外処理](logic-apps-exception-handling.md)  
+* [デプロイ テンプレートの作成](logic-apps-create-deploy-template.md)  
 * [ロジック アプリを監視する](logic-apps-monitor-your-logic-apps.md)  
 * [ロジック アプリの障害と問題の診断](logic-apps-diagnosing-failures.md)  
