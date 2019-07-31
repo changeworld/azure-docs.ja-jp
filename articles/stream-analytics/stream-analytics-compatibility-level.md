@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/2/2019
-ms.openlocfilehash: c1b2875e6899d2301a4c4b564882214dc7bc4981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e3ae84242a1a9b76fbb18a8d8164c97a62a97d9
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205454"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68003908"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -84,6 +84,12 @@ Azure Stream Analytics では、地理空間参照データのインデックス
 **以前のレベル:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 型は、UTC に調整されました。
 
 **1.2 レベル:** DateTimeOffset は調整されなくなりました。
+
+### <a name="long-when-writing-to-sql-output"></a>SQL 出力に書き込むときの Long
+
+**以前のレベル:** 値はターゲットの型に基づいて切り捨てられました。
+
+**1.2 レベル:** ターゲットの型に適合しない値は、出力エラー ポリシーに従って処理されます。
 
 ### <a name="strict-validation-of-prefix-of-functions"></a>関数のプレフィックスの厳密な検証
 

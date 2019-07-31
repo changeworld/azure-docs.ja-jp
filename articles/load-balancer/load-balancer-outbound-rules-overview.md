@@ -4,21 +4,21 @@ titlesuffix: Azure Load Balancer
 description: アウトバウンド規則を使用して、アウトバウンド ネットワーク アドレス変換を定義します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/19/2018
-ms.author: kumud
-ms.openlocfilehash: 52fafa7e9dd46b6c78af3776797bae48b22ea8df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 7/17/2019
+ms.author: allensu
+ms.openlocfilehash: 39a23fa277d7bb389098674556b65b1b13676ead
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64698444"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305579"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer のアウトバウンド規則
 
@@ -208,7 +208,7 @@ disableOutboundSnat パラメーターの既定値は false です。この場�
 - 構成可能なアウトバウンド アイドル タイムアウトの範囲は、4 から 120 分 (240 から 7200 秒) です。
 - Load Balancer では、アウトバウンド NAT の ICMP はサポートされていません。
 - ポータルを使用して、アウトバウンド規則を構成または表示することはできません。  代わりに、テンプレート、REST API、Az CLI 2.0、または PowerShell を使用します。
-- アウトバウンド規則は、プライマリ NIC とプライマリ IP 構成にのみ適用できます。
+- アウトバウンド規則は、NIC のプライマリ IP 構成にのみ適用できます。  複数 NIC がサポートされています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -249,6 +249,8 @@
               href: devtest-lab-integrate-ci-cd-vsts.md
             - name: 環境を Azure DevOps CI/CD パイプラインに統合する
               href: integrate-environments-devops-pipeline.md
+            - name: Azure DevOps のビルドとリリースのパイプライン内で DevTest Labs を使用する
+              href: use-devtest-labs-build-release-pipelines.md
         - name: 企業内での DevTest Labs
           items:
             - name: エンタープライズ規模の DevTest Labs

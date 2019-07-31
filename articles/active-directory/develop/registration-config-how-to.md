@@ -1,5 +1,5 @@
 ---
-title: 指定の API のアクセス許可を選択する方法 | Microsoft Docs
+title: エンドポイントを構成する | Microsoft Docs
 description: Azure AD で開発中または登録中のカスタム アプリケーションの認証エンドポイントを見つける方法。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 07/15/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcfeec7e90f1c582a11889619811330bcf488bbf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b48e19df2ea1bbf7d09ee9a2108d0f34f01a4929
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545912"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277842"
 ---
 # <a name="how-to-configure-endpoints"></a>エンドポイントの構成方法
 

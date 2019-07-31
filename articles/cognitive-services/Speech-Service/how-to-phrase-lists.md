@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 158819d481c0ce245539d783f194b159b2b9edb6
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606517"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226346"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>音声テキスト変換用のフレーズ リスト
 
@@ -24,6 +24,9 @@ Speech Services にフレーズ リストを提供することにより、音声
 例として、"Move to" という指示があり、会話で考えられる目的地として "Ward" がある場合、"Move to Ward" というエントリーを追加できます。 フレーズを追加すると、音声認識の実行時に、"Move toward" ではなく "Move to Ward" が認識される可能性が高くなります。
 
 フレーズ リストには、単一の単語または完全なフレーズを追加できます。 認識時に音声に完全一致が含まれる場合、フレーズ リスト内のエントリーが使用されます。 前述の例の場合、フレーズ リストに "Move to Ward" が含まれており、"Move toward slowly" というフレーズがキャプチャされた場合、認識結果は "Move to Ward slowly" となります。
+
+>[!Note]
+> 現時点では、フレーズ リストの音声テキスト変換では英語のみサポートされています。
 
 ## <a name="how-to-use-phrase-lists"></a>フレーズ リストの使用方法
 

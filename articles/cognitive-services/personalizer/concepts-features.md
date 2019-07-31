@@ -7,15 +7,15 @@ author: edjez
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: concept
+ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: 2353b8c735602aff0386f44cc29d2be5eb9f90c4
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340889"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253583"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -66,9 +66,10 @@ Personalizer では、フィーチャーが名前空間で整理されます。 
 * current_time
 * NewsArticle_TextAnalytics
 
-有効な JSON キーである限り、自分の命名規則でフィーチャーの名前空間に名前を付けることができます。
+有効な JSON キーである限り、自分の命名規則でフィーチャーの名前空間に名前を付けることができます。 名前空間は、フィーチャーを個別のセットに整理したり、類似した名前のフィーチャーを明確にしたりするために使用されます。 名前空間は、フィーチャー名に追加される "接頭辞" と考えることができます。 名前空間を入れ子にすることはできません。
 
-次の JSON では、`user`、`state`、`device` がフィーチャーの名前空間です。
+
+次の JSON では、`user`、`state`、`device` がフィーチャーの名前空間です。 パブリック プレビューの注記:現在のところ、フィーチャー名前空間には、UTF-8 ベースであり、異なる文字で始まる名前の使用を強くお勧めします。 たとえば、`user`、`state`、`device` はそれぞれ、`u`、`s`、`d` で始まります。 現在のところ、名前空間の最初の文字が同じ場合、機械学習に使用されるインデックスで競合が発生することがあります。
 
 JSON オブジェクトには、入れ子にした JSON オブジェクトと単純なプロパティ/値を含めることができます。 配列は、配列の項目が数値の場合にのみ含めることができます。 
 
@@ -77,7 +78,7 @@ JSON オブジェクトには、入れ子にした JSON オブジェクトと単
     "contextFeatures": [
         { 
             "user": {
-                "name":"Doug",
+                "profileType":"AnonymousUser",
                 "latlong": [47.6, -122.1]
             }
         },

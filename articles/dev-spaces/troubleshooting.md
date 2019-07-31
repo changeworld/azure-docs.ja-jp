@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 651ae9d9f9a622724e1ee606219ba940995aa555
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2434507ac89d631bb96ae9633403075801879a37
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441746"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277399"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -439,3 +439,13 @@ azure-cli                         2.0.60 *
 
 ### <a name="try"></a>試す
 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) のインストールを 2.0.63 以降に更新します。 これにより、`az aks use-dev-spaces` の実行中に受け取るエラー メッセージが解決されます。 また、引き続き現在のバージョンの Azure CLI と Azure Dev Spaces CLI を使用することもできます。
+
+
+## <a name="horizontal-pod-autoscaling-not-working-in-a-dev-space"></a>開発スペースでポッドの水平オートスケール機能が動作しない
+
+### <a name="reason"></a>理由
+
+開発スペースでサービスを実行すると、そのサービスのポッドが[インストルメンテーション用の追加のコンテナーと共に挿入されます](how-dev-spaces-works.md#prepare-your-aks-cluster)。 このようなコンテナーにはリソースの要求または制限が定義されていないため、ポッドの水平オートスケーラーはポッドに対して無効になります。
+
+### <a name="try"></a>試す
+開発空間が有効ではない名前空間でポッドの水平オートスケーラーを実行します。

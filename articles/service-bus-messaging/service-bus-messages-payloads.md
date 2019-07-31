@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: aschhab
-ms.openlocfilehash: 3158f0255810c66605d28856133112181c2916db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26256fe968eff5f7570885278620fded5673b5a0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61315641"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249962"
 ---
 # <a name="messages-payloads-and-serialization"></a>メッセージ、ペイロード、およびシリアル化
 
@@ -77,7 +77,7 @@ Service Bus 名前空間内のルーティングは、自動転送チェーン�
 
 Java または .NET Standard バージョンとは異なり、.NET Framework バージョンの Service Bus API では、任意の .NET オブジェクトをコンストラクターに渡して **BrokeredMessage** インスタンスを作成することができます。 
 
-レガシ SBMP プロトコルを使用する場合、それらのオブジェクトは、既定のバイナリ シリアライザーまたは外部から提供されたシリアライザーを使用してシリアル化されます。 AMQP プロトコルを使用する場合、オブジェクトは AMQP オブジェクトにシリアル化されます。 受信側は、必要な型を指定して [GetBody<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) メソッドを実行することで、これらのオブジェクトを取得できます。 AMQP の場合、オブジェクトは **ArrayList** および **IDictionary<string,object>** の各オブジェクトの AMQP グラフにシリアル化され、どの AMQP クライアントでも復号化できます。 
+レガシ SBMP プロトコルを使用する場合、それらのオブジェクトは、既定のバイナリ シリアライザーまたは外部から提供されたシリアライザーを使用してシリアル化されます。 AMQP プロトコルを使用する場合、オブジェクトは AMQP オブジェクトにシリアル化されます。 受信側は、必要な型を指定して [GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) メソッドを実行することで、これらのオブジェクトを取得できます。 AMQP の場合、オブジェクトは **ArrayList** および **IDictionary<string,object>** の各オブジェクトの AMQP グラフにシリアル化され、どの AMQP クライアントでも復号化できます。 
 
 この見えないシリアル化のマジックは便利ですが、アプリケーションはオブジェクトのシリアル化を明示的に制御して、オブジェクト グラフをメッセージに含める前にストリームに変換し、受信側ではその逆の操作を行う必要があります。 これは相互運用可能な結果を生成します。 また、AMQP には強力なバイナリ エンコード モデルがありますが、このモデルは AMQP メッセージング エコシステムに関連付けられており、HTTP クライアントがそのようなペイロードをデコードすると問題が発生するという点にも注意してください。 
 

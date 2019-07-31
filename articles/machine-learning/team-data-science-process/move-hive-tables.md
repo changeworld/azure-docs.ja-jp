@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 404335ce0cd05085c79cbeea29ad95f79008289c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af9c072c428c486cab89288db4c9ee1c26513185
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681941"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250142"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 
@@ -141,7 +141,7 @@ Hive テーブルを作成する Hive クエリを次に示します。
 * **\<テーブル名\>** : 指定したデータベース内に作成するテーブルの名前。 既定のデータベースを使用する場合、テーブルは *\<テーブル名\>* で直接参照でき、\<データベース名\> は不要です。
 * **\<フィールド区切り記号\>** : Hive テーブルにアップロードするデータ ファイル内のフィールドを区切る区切り記号。
 * **\<行区切り記号\>** : データ ファイル内の行を区切る区切り記号。
-* **\<ストレージの場所\>** : Hive テーブルのデータを保存する Azure Storage の場所。 *LOCATION \<ストレージの場所\>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、" *'wasb:///<ディレクトリ 1>/'* " や " *'wasb:///<ディレクトリ 1>/<ディレクトリ 2>/'* " などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
+* **\<ストレージの場所\>** : Hive テーブルのデータを保存する Azure Storage の場所。 *LOCATION \<ストレージの場所\>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、 *'wasb:///\<directory 1>/'* や *'wasb:///\<directory 1>/\<directory 2>/'* などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
 * **TBLPROPERTIES("skip.header.line.count"="1")** :データ ファイルにヘッダー行が含まれる場合は、このプロパティを *create table* クエリの**最後に**追加する必要があります。 それ以外の場合、ヘッダー行はレコードとしてテーブルに読み込まれます。 データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
 
 ## <a name="load-data"></a>Hive テーブルへのデータの読み込み

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 121e94228ca85684b20f2ee43c0f7fa3af82fc73
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cb30b476471e140f96fa1d159e9a16898f529607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606334"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277488"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Speech Devices SDK のマイク配列の推奨事項
 
@@ -43,34 +43,34 @@ Microsoft Audio Stack で使用するために、次の配列のジオメトリ�
 
 | パラメーター                         | 推奨                       |
 |-----------------------------------|-----------------------------------|
-| SNR                               | \> 65 dB (1 kHz 信号 94 dBSPL、A で加重されたノイズ)   |
+| SNR                               | \>= 65 dB (1 kHz 信号 94 dBSPL、A で加重されたノイズ)   |
 | Amplitude Matching (振幅整合)                | ± 1 dB @ 1 kHz                     |
 | Phase Matching (位相整合)                    | ± 2° @ 1 kHz                       |
-| Acoustic Overload Point (AOP: アコースティック オーバーロード ポイント)     | \> 120 dBSPL (全高調波歪み率 = 10%)          |
+| Acoustic Overload Point (AOP: アコースティック オーバーロード ポイント)     | \>= 120 dBSPL (全高調波歪み率 = 10%)          |
 | Bit Rate (ビット レート)                          | 最小 24 ビット                    |
 | サンプリング レート                     | 最小 16 kHz\*                   |
-| Directivity (指向性)                       | 全方向性                   |
 | Frequency Response (周波数応答)                | ± 3 dB、200 - 8000 Hz フローティング マスク\*|
 | 信頼性                       | 保存温度範囲 -40°C から 70°C<br />動作温度範囲 -20°C から 55°C  |
 
-*\*高品質なコミュニケーション (VoIP) アプリケーションには、より高いサンプリング レート、または "より広い" 周波数範囲が必要になる場合があります。*
+*\* 高品質なコミュニケーション (VoIP) アプリケーションには、より高いサンプリング レート、または "より広い" 周波数範囲が必要になる場合があります*
 
 使用するコンポーネントのパフォーマンス低下を回避するには、適切なコンポーネントの選択が、優れた電子音響の統合と組み合わされている必要があります。 固有のユース ケースには、必然的に追加の要件 (動作温度範囲など) も生じます。
 
 ## <a name="microphone-array-integration"></a>マイク配列の統合
 
-デバイスに統合され、ゲインまたは EQ が修正された後の配列のパフォーマンスが、次の推奨事項を満たしている必要があります。
+デバイスに組み込まれたときのマイク配列のパフォーマンスは、コンポーネントの仕様とは異なります。 統合後にマイクが確実に一致するようにすることが重要です。 そのため、固定ゲインまたは EQ の後に測定されるデバイスのパフォーマンスは、次の推奨事項を満たす必要があります。
 
 |  パラメーター        |    推奨 |
 |--------------------|----------------------------------------------------|
-|  SNR                 | \> 65 dB (1 kHz 信号 94 dBSPL、A で加重されたノイズ) |
+|  SNR                 | \> 63 dB (1 kHz 信号 94 dBSPL、A で加重されたノイズ) |
 |  Output Sensitivity (出力感度)  | -26 dBFS/Pa @ 1 kHz (推奨) |
 |  Amplitude Matching (振幅整合)  | ± 2 dB、200-8000 Hz |
-|  Phase Matching (位相整合)      | ± 5°、200-8000 Hz |
-| THD % (全高調波歪み率)                 | ≤ 1%、200 - 8000 Hz、94 dBSPL、5 番目 |
-|  Frequency Response (周波数応答)  | ± 6 dB、200 - 8000 Hz フローティング マスク\* |
+| THD % (全高調波歪み率)\*                 | ≤ 1%、200 - 8000 Hz、94 dBSPL、5 番目 |
+|  Frequency Response (周波数応答)  | ± 6 dB、200 - 8000 Hz フローティング マスク\*\* |
 
-*\*高品質なコミュニケーション (VoIP) アプリケーションには、"より広い" 周波数範囲が必要になる場合があります。*
+*\*\* THD を測定するには低ひずみのスピーカーが必要です (例: Neumann KH120)*
+
+*\*\* 高品質なコミュニケーション (VoIP) アプリケーションには、"より広い" 周波数範囲が要になる場合があります*
 
 ## <a name="speaker-integration-recommendations"></a>スピーカーの統合に関する推奨事項
 

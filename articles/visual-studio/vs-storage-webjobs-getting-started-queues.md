@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 44206f1826fc25407d9dec3f832b70881091e187
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60391239"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248970"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -190,7 +190,7 @@ public static void GracefulShutdownDemo(
 新しいキュー メッセージを作成する関数を記述するには、 **Queue** 属性を使用します。 **QueueTrigger**のように、キューの名前を文字列として渡すことも、 [キューの名前を動的に設定する](#how-to-set-configuration-options)ことも可能です。
 
 ### <a name="string-queue-messages"></a>文字列のキュー メッセージ
-次の非 Async コード サンプルでは、"inputqueue" という名前のキューに受信したキュー メッセージと同じ内容で、"outputqueue" という名前のキューにキュー メッセージを新しく作成します (このセクションの後半に示すように、非同期関数では、**IAsyncCollector<T>** を使用します)。
+次の非 Async コード サンプルでは、"inputqueue" という名前のキューに受信したキュー メッセージと同じ内容で、"outputqueue" という名前のキューにキュー メッセージを新しく作成します (このセクションの後半に示すように、非同期関数では、**IAsyncCollector\<T>** を使用します)。
 
 ```csharp
 public static void CreateQueueMessage(
@@ -216,7 +216,7 @@ public static void CreateQueueMessage(
 SDK はオブジェクトを JSON に自動的にシリアル化します。 オブジェクトが null の場合でもキュー メッセージは常に作成されます。
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>(非同期関数での) 複数のメッセージの作成
-複数のメッセージを作成するには、次の例に示すように、パラメーターの種類を出力キュー **ICollector<T>** または **IAsyncCollector<T>** としてください。
+複数のメッセージを作成するには、次の例に示すように、パラメーターの種類を出力キュー **ICollector\<T>** または **IAsyncCollector\<T>** としてください。
 
 ```csharp
 public static void CreateQueueMessages(

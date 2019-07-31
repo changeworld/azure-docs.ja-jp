@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/18/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 9ee7422b372993d60c629524eb036b9678e5776c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cd37880be6d518105e880b93a0bd748f7c729d88
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181357"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286275"
 ---
 ## <a name="registration-of-secrets-or-certificates"></a>シークレットまたは証明書の登録
 
@@ -32,9 +32,11 @@ ms.locfileid: "67181357"
 ![image](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets-expanded.png)
 
 - アプリケーション シークレット (クライアント シークレットとも呼ばれる) は、機密クライアント アプリケーションの登録時に Azure AD によって生成されます。 この生成は、 **[新しいクライアント シークレット]** を選択すると実行されます。 **[保存]** を選択する前に、アプリで使用するために、この時点でシークレットの文字列をクリップボードにコピーする必要があります。 この文字列は、その後は表示されなくなります。
-- **[証明書のアップロード]** ボタンを使用すると、証明書がアプリケーション登録にアップロードされます。
+- **[証明書のアップロード]** ボタンを使用すると、証明書がアプリケーション登録にアップロードされます。 Azure AD は、アプリケーションで直接登録されている証明書のみをサポートし、証明書チェーンには従いません。
 
 詳細については、「[クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する」で、資格情報のアプリケーションへの追加](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application)に関するセクションを参照してください
+
+
 
 ### <a name="registering-client-secrets-using-powershell"></a>PowerShell を使用したクライアント シークレットの登録
 

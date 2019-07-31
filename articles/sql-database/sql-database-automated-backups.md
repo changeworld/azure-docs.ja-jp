@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/27/2019
-ms.openlocfilehash: 1eeb37ce74b3e2f57588197d6bb88f59944c61cf
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: c75b19fff478c14ff47996cf9159e48f3ff69724
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460676"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261188"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -54,7 +54,7 @@ SQL Database は SQL Server 技術を利用して、[完全バックアップ](h
 
 ## <a name="how-long-are-backups-kept"></a>バックアップの保持期間
 
-各 SQL Database には、7 日～ 35 日まで (購入モデルとサービス レベルによって異なります) の既定のバックアップの保持期間があります。 SQL Database サーバー上のデータベースに対するバックアップの保持期間は更新することができます。 詳細については、[バックアップのリテンション期間の変更](#how-to-change-the-pitr-backup-retention-period)に関するセクションを参照してください。
+すべての Azure SQL データベース (単一、プール、マネージド インスタンス データベース) には、**7** 日間という既定のバックアップ保持期間が設定されています。 [バックアップのリテンション期間を最大 35 日間まで変更](#how-to-change-the-pitr-backup-retention-period)できます。
 
 データベースを削除した場合、SQL Database はオンライン データベースの場合と同じようにバックアップを保持します。 たとえば、7 日間のリテンション期間のある基本的なデータベースを削除すると、4 日間保存されているバックアップはさらに 3 日間保存されます。
 
@@ -62,23 +62,6 @@ SQL Database は SQL Server 技術を利用して、[完全バックアップ](h
 
 > [!IMPORTANT]
 > SQL Database をホストする Azure SQL サーバーを削除すると、サーバーに属するすべてのエラスティック プールとデータベースも削除され、復元できなくなります。 削除されたサーバーを復元することはできません。 長期保有を構成した場合、LTR を使用したデータベースのバックアップは削除されず、これらのデータベースを復元することができます。
-
-### <a name="default-backup-retention-period"></a>既定のバックアップの保有期間
-
-#### <a name="dtu-based-purchasing-model"></a>DTU ベースの購入モデル
-
-DTU ベースの購入モデルを使用して作成されたデータベースのリテンション期間は、サービス レベルに依存します。
-
-- Basic サービスレベルの場合、**1** 週間です。
-- Standard サービスレベルの場合、**5** 週間です。
-- Premium サービスレベルの場合、**5** 週間です。
-
-#### <a name="vcore-based-purchasing-model"></a>仮想コアベースの購入モデル
-
-[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用している場合、既定のバックアップの保有期間は **7** 日間です (単一、プール、およびインスタンス データベースの場合)。 すべての Azure SQL データベース (単一、プール、およびインスタンス データベース) の場合、[バックアップの保有期間を最大 35 日に変更](#how-to-change-the-pitr-backup-retention-period)できます。
-
-> [!WARNING]
-> 現在の保持期間を短縮した場合、新しい保持期間より古いすべての既存のバックアップは使用できなくなります。 現在のリテンション期間を延長した場合、SQL Database は、より長いリテンション期間に達するまでに、既存のバックアップを保持します。
 
 ## <a name="how-often-do-backups-happen"></a>バックアップが行われる頻度
 
@@ -109,7 +92,11 @@ PITR と同じように、LTR バックアップは、geo 冗長であり、[Azu
 
 ## <a name="how-does-microsoft-ensure-backup-integrity"></a>Microsoft はどのようにバックアップの整合性を保証しているか
 
-Azure SQL Database のエンジニアリング チームは、サービス全体でデータベースの自動データベース バックアップの復元の自動テストを継続的に行っています。 復元時に、データベースは DBCC CHECKDB を使用した整合性チェックも受けます。 整合性チェック中に問題が見つかると、エンジニアリング チームにアラートが送信されます。 Azure SQL Database におけるデータ整合性の詳細については、「[Data Integrity in Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)」 (Azure SQL Database でのデータ整合性) を参照してください。
+Azure SQL Database のエンジニアリング チームは、論理サーバーとエラスティック プールに置かれているデータベースの自動データベース バックアップの復元の自動テストを継続的に行っています (これはマネージド インスタンスでは利用できません)。 特定時点への復元時に、データベースは DBCC CHECKDB を使用した整合性チェックも受けます。
+
+マネージド インスタンスでは、以降の完了後、ネイティブ `CHECKSUM` コマンドまたはデータ移行サービスを利用して復元されたデータベースの `RESTORE` を含む自動初回バックアップが受け取られます。
+
+整合性チェック中に問題が見つかると、エンジニアリング チームにアラートが送信されます。 Azure SQL Database におけるデータ整合性の詳細については、「[Data Integrity in Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)」 (Azure SQL Database でのデータ整合性) を参照してください。
 
 ## <a name="how-do-automated-backups-impact-compliance"></a>自動バックアップによるコンプライアンスへの影響
 
@@ -120,6 +107,9 @@ PITR リテンション期間が 35 日間である DTU ベースのサービス
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>PITR のバックアップの保有期間を変更する方法
 
 既定の PITR バックアップ保持期間は、Azure portal、PowerShell、または REST API を使用して変更できます。 サポートされる値は7、14、21、28、または 35 日間です。 次の例では、PITR リテンション期間を 28 日間に変更する方法を示します。
+
+> [!WARNING]
+> 現在の保持期間を短縮した場合、新しい保持期間より古いすべての既存のバックアップは使用できなくなります。 現在のリテンション期間を延長した場合、SQL Database は、より長いリテンション期間に達するまでに、既存のバックアップを保持します。
 
 > [!NOTE]
 > これらの API は PITR リテンション期間にのみ影響を与えます。 データベースの LTR を構成した場合、それには影響ありません。 LTR の保持期間を変更する方法については、[長期保有](sql-database-long-term-retention.md)に関するページを参照してください。

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: aaae84fcb7df2abfe7e78adb64c22fb19fe45f4e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 203526b23a9571f0cccf3ebed432978772282418
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606731"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226418"
 ---
 # <a name="try-speech-services-for-free"></a>Speech Services を無料で試す
 
@@ -89,7 +89,7 @@ Speech Services リソース (無料または有料レベル) を Azure アカ�
 
    * 新しいリソースの名前。 この名前は、同じサービスの複数のサブスクリプションを区別するのに役立ちます。
    * 新しいリソースが関連付けられている Azure サブスクリプションを選択して、料金の課金方法を決定します。
-   * リソースを使用するリージョンを選択します。 現時点では、Speech Services は、東アジア、北ヨーロッパ、米国西部の各リージョンで利用できます。
+   * リソースが使用される[リージョン](regions.md)を選択します。
    * 無料または有料の価格レベルのどちらかを選択します。 **[価格の詳細を表示]** をクリックすると、各レベルの価格と使用量クォータについて詳細を確認できます。
    * この Speech サブスクリプションの新しいリソース グループを作成するか、既存のリソース グループにサブスクリプションを割り当てます。 リソース グループは、さまざまな Azure サブスクリプションを整理しておくのに役立ちます。
    * 今後、サブスクリプションに簡単にアクセスできるように、 **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。

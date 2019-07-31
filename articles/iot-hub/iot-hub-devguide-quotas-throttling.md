@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/11/2019
-ms.openlocfilehash: ea9bea8b314d00db87ad7addacc49a976e0da08e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e4e1634c7180c7099f23915026d807a1e380a091
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550480"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277353"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -81,10 +81,10 @@ IoT Hub により、その他の運用上の制限が適用されます。
 | エンドポイントの追加 | 有料の SKU ハブには、エンドポイントを 10 個追加できます。 無料の SKU ハブには、エンドポイントを 1 個追加できます。 |
 | メッセージ ルーティング ルール | 有料の SKU ハブには、100 個のルーティング ルールを設定できます。 無料の SKU ハブには、5 個のルーティング ルールを設定できます。 |
 | デバイスからクラウドへのメッセージ | 最大メッセージ サイズは 256 KB |
-| cloud-to-device のメッセージング<sup>1</sup> | 最大メッセージ サイズは 64 KB。 配信の保留中のメッセージの最大数は 50。 |
+| cloud-to-device のメッセージング<sup>1</sup> | 最大メッセージ サイズは 64 KB。 デバイスあたりの配信の保留中のメッセージの最大数は 50。 |
 | ダイレクト メソッド<sup>1</sup> | ダイレクト メソッドの最大ペイロード サイズは 128 KB。 |
 | 自動デバイス構成<sup>1</sup> | 有料の SKU ハブあたり 100 構成。 無料の SKU ハブあたり 20 構成。 |
-| 自動の Edge デプロイ<sup>1</sup> | 展開あたり 20 モジュール。 有料の SKU ハブあたり 100 デプロイ。 無料の SKU ハブあたり 20 デプロイ。 |
+| IoT Edge の自動デプロイ<sup>1</sup> | 展開あたり 20 モジュール。 有料の SKU ハブあたり 100 デプロイ。 無料の SKU ハブあたり 10 デプロイ。 |
 | ツイン<sup>1</sup> | ツイン セクション (タグ、必要なプロパティ、報告されたプロパティ) あたりの最大サイズは 8 KB です |
 
 <sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。

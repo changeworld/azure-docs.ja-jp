@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: b7910ee6f58c582b824cec834d92a24c0e184bfb
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: a4726444e2103228cd26be3d3a6d516b31e315ee
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205271"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304324"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -62,9 +62,16 @@ AKS では、Kubernetes の 4 つのマイナー バージョンがサポート�
 
 新しいマイナー バージョンが導入されると、サポートされている最も古いマイナー バージョンと修正プログラムのリリースは、非推奨となり削除されます。 たとえば、現在サポートされているバージョンの一覧は次のとおりです。
 
-<a name="supported-version-list"></a>サポートされているバージョンの一覧
-----------------------
-1.12.a、1.12.b、1.11.a、1.11.b 1.10.a、1.10.b、1.9.a、1.9.b
+```
+1.12.a
+1.12.b
+1.11.a
+1.11.b
+1.10.a
+1.10.b
+1.9.a
+1.9.b
+```
 
 さらに AKS は 1.13.x をリリースします。つまり、1.9.x バージョン (1.9 のすべてのバージョン) は削除され、サポート外になります。
 
@@ -74,15 +81,19 @@ AKS では、Kubernetes の 4 つのマイナー バージョンがサポート�
 
 上記のマイナー バージョンに加え、AKS は、特定のマイナー バージョンの 2 つの最新の*修正プログラム** のリリースをサポートしています。 たとえば、次のようなサポートされているバージョンがあるとします。
 
-<a name="supported-version-list"></a>サポートされているバージョンの一覧
-----------------------
-1.12.1、1.12.2、1.11.4、1.11.5
+```
+Current Supported Version List
+------------------------------
+1.12.1, 1.12.2, 1.11.4, 1.11.5
+```
 
 Kubernetes が 1.12.3 および 1.11.6 をリリース済みで、AKS がそれらの修正プログラムのバージョンをリリースしている場合、最も古い修正プログラムのバージョンは非推奨となって削除され、サポートされているバージョンの一覧は次のようになります。
 
-<a name="supported-version-list"></a>サポートされているバージョンの一覧
+```
+New Supported Version List
 ----------------------
-1.12.*2*、1.12.*3*、1.11.*5*、1.11.*6*
+1.12.*2*, 1.12.*3*, 1.11.*5*, 1.11.*6*
+```
 
 > [!NOTE]
 > お客様は、クラスターの作成、CI またはその他の自動化されたジョブを特定の修正プログラムのリリースに固定しないでください。 

@@ -47,6 +47,8 @@
           href: functions-integrate-storage-queue-output-binding.md
         - name: ストレージ - Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
+        - name: ストレージ - Visual Studio
+          href: functions-add-output-binding-storage-queue-vs.md
 - name: チュートリアル
   items:
     - name: Functions と Logic Apps

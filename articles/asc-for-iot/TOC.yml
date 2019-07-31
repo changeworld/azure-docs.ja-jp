@@ -1,4 +1,4 @@
-- name: Azure Security Center (ASC) for IoT プレビューのドキュメント
+- name: Azure Security Center for IoT のドキュメント
   href: index.yml
 - name: 概要
   href: overview.md
@@ -11,16 +11,21 @@
       href: security-edge-architecture.md
     - name: サービスの前提条件
       href: service-prerequisites.md
-    - name: ASC for IoT を使用して作業を開始する
+    - name: Azure Security Center for IoT の使用を開始する
       href: getting-started.md
+      items:
+        - name: IoT Hub
+          href: iot-hub-integration.md
+        - name: セキュリティ エージェント
+          href: security-agents.md
 - name: クイック スタート
   expanded: true
   items:
-    - name: IoT Hub で ASC for IoT を有効にする
+    - name: IoT Hub 内で Azure Security Center for IoT を有効にする
       href: quickstart-onboard-iot-hub.md
     - name: ソリューションを構成する
       href: quickstart-configure-your-solution.md
-    - name: ASC for IoT モジュール ツインを作成する
+    - name: Azure Security Center for IoT モジュール ツインを作成する
       href: quickstart-create-security-twin.md
     - name: カスタムのセキュリティのアラートを作成する
       href: quickstart-create-custom-alerts.md
@@ -34,6 +39,8 @@
       href: concept-security-alerts.md
     - name: セキュリティに関する推奨事項
       href: concept-recommendations.md
+    - name: イベントの集計
+      href: event-aggregation.md
     - name: 価格と関連コスト
       href: concept-pricing.md
 - name: ハウツー ガイド
@@ -48,6 +55,14 @@
           href: how-to-deploy-linux-cs.md
         - name: C ベースのセキュリティ エージェントを Linux デバイスにデプロイする
           href: how-to-deploy-linux-c.md
+    - name: セキュリティ エージェントのトラブルシューティングを行う
+      items:
+        - name: Azure Security Center for IoT の Linux セキュリティ エージェントのトラブルシューティングを行う
+          href: troubleshoot-agent.md
+        - name: ローカル構成 C
+          href: azure-iot-security-local-configuration-c.md
+        - name: 'ローカル構成 C#'
+          href: azure-iot-security-local-configuration-csharp.md
     - name: Edge のセキュリティ モジュールをデプロイする
       href: how-to-deploy-edge.md
     - name: セキュリティ エージェントを構成する

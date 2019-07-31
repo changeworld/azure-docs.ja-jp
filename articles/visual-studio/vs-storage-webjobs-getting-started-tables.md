@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: a9a4475465fefb01ec53e6e0eb814f9b8f192a1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 481c2f1eaf20e317c8efa4f21f337f4073af898f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390838"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260740"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure Storage の使用 (Azure Web ジョブ プロジェクト)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -30,7 +30,7 @@ Azure テーブル ストレージ サービスを使用すると、大量の構
 一部のコード スニペットは、手動で呼び出される関数で使用される **Table** 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。
 
 ## <a name="how-to-add-entities-to-a-table"></a>エンティティをテーブルに追加する方法
-テーブルにエンティティを追加するには、**Table** 属性を **ICollector<T>** または **IAsyncCollector<T>** パラメーター (**T** は、追加するエンティティのスキーマ) に指定します。 この属性のコンストラクターは、テーブルの名前を指定する文字列パラメーターを受け取ります。
+テーブルにエンティティを追加するには、**Table** 属性を **ICollector\<T>** または **IAsyncCollector\<T>** パラメーター (**T** は、追加するエンティティのスキーマ) に指定します。 この属性のコンストラクターは、テーブルの名前を指定する文字列パラメーターを受け取ります。
 
 次のコード サンプルでは、 **Ingress** という名前のテーブルに *Person*エンティティを追加しています。
 
@@ -79,7 +79,7 @@ Azure Storage API を直接操作する場合は、メソッド シグネチャ�
 ![完了した受信関数](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>テーブルから複数のエンティティを読み取る方法
-テーブルの読み取りを行うには、**Table** 属性を **IQueryable<T>** パラメーター ( **T** は、**TableEntity** を継承する型か、 **ITableEntity** を実装する型) に指定します。
+テーブルの読み取りを行うには、**Table** 属性を **IQueryable\<T>** パラメーター (**T** は、**TableEntity** を継承する型か、**ITableEntity** を実装する型) に指定します。
 
 次のコード サンプルは、 **Ingress** テーブルからすべての行を読み取り、ログに記録します。
 

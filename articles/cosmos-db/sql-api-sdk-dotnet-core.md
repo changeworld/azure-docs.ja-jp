@@ -8,19 +8,20 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 4ec9d5e605a2319a04dac4cb52dbe49c77354479
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de712d63fa2315a85c6c0eaf392d9c17758e4999
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510633"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226176"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB .NET Core SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
+> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET Standard](sql-api-sdk-dotnet-standard.md)
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.js](sql-api-sdk-node.md)
+> * [Node.JS](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
@@ -35,20 +36,18 @@ ms.locfileid: "65510633"
 |**SDK のダウンロード**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API ドキュメント**|[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**サンプル**|[.NET コード サンプル](sql-api-dotnet-samples.md)|
-|**概要**|[Azure Cosmos DB .NET Core SDK を開始する](sql-api-dotnet-core-get-started-preview.md)|
+|**作業開始**|[Azure Cosmos DB .NET を開始する](sql-api-sdk-dotnet.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)|
 |**現在サポートされているフレームワーク**|[.NET Standard 1.6 および .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>リリース ノート
 
-Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md) と同等の機能が備わっています。
+> [!NOTE]
+> .NET Core を使用している場合は、.NET Standard をターゲットとする [.NET SDK](sql-api-sdk-dotnet-standard.md) の最新バージョン 3.x を参照してください。 
 
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1 プレビュー
-* パブリック プレビュー用の .NET SDK の[バージョン 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) のプレビュー 1。
-* 対象は .NET Standard です。.NET Framework 4.6.1 以降および .NET Core 2.0 以降をサポートします。
-* 最上位レベルの CosmosClient と関連する CosmosDatabases、CosmosContainers、および CosmosItems の各クラスとの間でメソッドが分割される新しいオブジェクト モデルです。
-* ストリームをサポートします。
-* 状態コードを返し、応答が返されない場合にのみ例外を返すようにサーバーからの CosmosResponseMessage を更新しました。
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+
+* 空のページの原因となったクエリの競合状態のトレースを修正します
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
@@ -228,7 +227,7 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
-* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](how-to-sql-query.md#Aggregates)に関するトピックを参照してください。
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](sql-query-aggregates.md)に関するトピックを参照してください。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
@@ -249,8 +248,9 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.4.1](#2.4.1) |2019 年 6 月 20 日 |--- |
 | [2.4.0](#2.4.0) |2019 年 5 月 5 日 |--- |
 | [2.3.0](#2.3.0) |2019 年 4 月 4 日 |--- |
 | [2.2.3](#2.2.3) |2019 年 3 月 11 日 |--- |

@@ -10,6 +10,8 @@
       href: quickstart-create-traffic-manager-profile.md
     - name: Traffic Manager プロファイルの作成 - PowerShell
       href: quickstart-create-traffic-manager-profile-powershell.md
+    - name: Traffic Manager プロファイルの作成 - Azure CLI
+      href: quickstart-create-traffic-manager-profile-cli.md
 - name: チュートリアル
   items:
     - name: トラフィックをルーティングして待ち時間を削減する

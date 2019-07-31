@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 06/05/2019
+ms.date: 07/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 58c5c8321e505fe2c1c7d19c58fe0d031b75b3e4
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: a67f19f0823827dad74e7aba15a92d696fbf580b
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67294859"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304279"
 ---
 # <a name="azure-disk-encryption-overview"></a>Azure Disk Encryption の概要
 
@@ -56,9 +56,9 @@ Azure Disk Encryption では、次の顧客シナリオがサポートされま�
 * Linux VM の OS ディスクとデータ ディスクで暗号化を有効にする。
 
    > [!NOTE]
-   > 一部の Linux ディストリビューションでは、OS ドライブの暗号化はサポートされていません。 詳しくは、[Azure Disk Encryption でサポートされるオペレーティング システム: Linux](azure-security-disk-encryption-prerequisites.md#linux) に関するページをご覧ください。
+   > 一部の Linux ディストリビューションでは、OS ドライブの暗号化はサポートされていません。 詳しくは、[Azure Disk Encryption でサポートされるオペレーティング システム:Linux](azure-security-disk-encryption-prerequisites.md#linux) に関するページをご覧ください。
    
-* Windows Server 2016 以降の Windows 記憶域スペースを使用して構成されている VM で暗号化を有効にする。
+* Windows Server 2016 以降の Windows 記憶域スペースを使用して構成されている VM で暗号化を有効にする。 記憶域スペースダイレクト (S2D) はまだサポートされていません。
 * キー暗号化キー (KEK) シナリオと非 KEK シナリオの両方で暗号化された VM をバックアップおよび復元する。
 
 Azure Disk Encryption は、次のシナリオ、機能、およびテクノロジには対応していません。

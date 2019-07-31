@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 89c04a55138d57fd2ff37a96f2bc92b12d1780d9
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 5cbbd507352471f5e093ef018de4b0c849aad442
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341227"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68000787"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 
@@ -151,7 +151,7 @@ SQL API の [.NET](sql-api-dotnet-samples.md)、[Java](https://github.com/Azure/
 
 ### <a name="how-do-i-create-a-database"></a>どのようにしてデータベースを作成しますか?
 
-データベースは、[Azure Portal](https://portal.azure.com) (「[コレクションの追加](create-sql-api-dotnet.md#create-collection-database)」を参照)、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) のいずれか、または [REST API](/rest/api/cosmos-db/) を使用して作成できます。
+データベースは、[Azure Portal](https://portal.azure.com) (「[コレクションの追加](create-sql-api-java.md#add-a-container)」を参照)、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) のいずれか、または [REST API](/rest/api/cosmos-db/) を使用して作成できます。
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>どのようにしてユーザーおよびアクセス許可を設定しますか?
 
@@ -742,9 +742,9 @@ CQLv3 を使用する Apache Cassandra SDK のクライアント ドライバー
 
 はい。通常の構文を使って、複合パーティション キーを作成できます。
 
-### <a name="can-i-use-stable-loader-for-data-loading"></a>データの読み込みに stable ローダーを使うことはできますか?
+### <a name="can-i-use-sstableloader-for-data-loading"></a>データの読み込みに sstableloader を使用できますか?
 
-いいえ。stable ローダーはサポートされていません。
+いいえ。sstableloader はサポートされていません。
 
 ### <a name="can-an-on-premises-apache-cassandra-cluster-be-paired-with-azure-cosmos-dbs-cassandra-api"></a>オンプレミスの Apache Cassandra クラスターを Azure Cosmos DB の Cassandra API とペアにできますか?
 

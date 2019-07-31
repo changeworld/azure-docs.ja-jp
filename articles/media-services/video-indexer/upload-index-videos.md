@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e92086ca18887b9b2c2362e97d855c33834b83bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e62eb862cf6d6760ca67b9e948a724b16303e89
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799210"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305639"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -60,22 +60,22 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 - インデックス状態の変更: 
     - プロパティ:    
     
-        |Name|説明|
+        |EnableAdfsAuthentication|説明|
         |---|---|
         |id|ビデオ ID|
         |state|ビデオの状態|  
-    - 例: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+    - 例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - ビデオで特定された人物:
-  - Properties
+  - properties
     
-      |Name|説明|
+      |EnableAdfsAuthentication|説明|
       |---|---|
       |id| ビデオ ID|
       |faceId|ビデオ インデックスに表示される顔 ID|
       |knownPersonId|顔モデル内で一意の人物 ID|
       |personName|人物の名前|
         
-    - 例: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - 例: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>メモ
 
@@ -284,7 +284,7 @@ public class AccountContractSlim
 
 アップロード操作によって返される場合がある状態コードを次の表に示します。
 
-|状態コード|ErrorType (応答本体内)|説明|
+|status code|ErrorType (応答本体内)|説明|
 |---|---|---|
 |400|VIDEO_ALREADY_IN_PROGRESS|指定されたアカウントで既に同じビデオの処理が進行中です。|
 |400|VIDEO_ALREADY_FAILED|指定されたアカウントで 2 時間以内に同じビデオの処理に失敗しました。 API クライアントは、ビデオを再アップロードする前に少なくとも 2 時間待つ必要があります。|

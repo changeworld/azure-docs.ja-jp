@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 2b9c8f1bb7407dd36623fd8ad68f9489172a1caf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a62a4d5f06856ca0fe6356ca388047679097e3f
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712227"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68004472"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 
@@ -87,6 +87,8 @@ CNAME レコード セットは、同じ名前を持つ他のレコード セッ
 SOA レコード セットは各ゾーンの頂点に自動的に作成され (名前は "\@")、ゾーンが削除されると自動的に削除されます。  SOA レコードを個別に作成または削除することはできません。
 
 SOA レコードのプロパティはすべて変更可能ですが、"host" プロパティは変更できません。このプロパティは、Azure DNS で提供されているプライマリ ネーム サーバー名を参照するよう事前構成されています。
+
+ゾーン内のレコードに変更が加えられても、SOA レコード内にあるゾーンのシリアル番号が自動的に更新されることはありません。 必要に応じて、これは SOA レコードを編集することによって、手動で更新できます。
 
 ### <a name="spf-records"></a>SPF レコード
 

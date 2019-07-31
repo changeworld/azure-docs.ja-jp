@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b3b896b2c423f2f9155ddb7803e59e719bd027cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed26c4d90738e10f3eb5a9a486cd2734090abd0e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510718"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227249"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 
@@ -64,11 +64,11 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 
 3. **[名前]** ボックスに、アプリケーションの名前 (*Contoso.AADB2C.API* など) を入力して、 **[OK]** を選択します。
 
-    ![新しい Visual Studio プロジェクトの作成](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
+    ![Visual Studio で新しい Visual Studio プロジェクトを作成する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
 4. **[新しい ASP.NET Web アプリケーション]** ウィンドウで、 **[Web API]** または **[Azure API App]** テンプレートを選択します。
 
-    ![Web API テンプレートの選択](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
+    ![Visual Studio で Web API テンプレートを選択する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
 5. 認証が **[認証なし]** に設定されていることを確認します。
 
@@ -84,7 +84,7 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 1. ソリューション エクスプローラーが開いていない場合は、 **[表示]**  >  **[ソリューション エクスプローラー]** を選択します。
 2. ソリューション エクスプローラーで、**Models** フォルダーを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。
 
-    ![Add model](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
+    ![Visual Studio で選択されたクラスの追加メニュー項目](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
 3. クラス `InputClaimsModel` に名前を付けて、次のプロパティを `InputClaimsModel` クラスに追加します。
 
@@ -138,15 +138,15 @@ Web API では、_コントローラー_ は、HTTP 要求を処理するオブ�
 
 1. ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、 **[追加]** 、 **[コントローラー]** の順に選択します。
 
-    ![新しいコントロールの追加](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
+    ![Visual Studio で新しいコントローラーを追加する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
 2. **[スキャフォールディングを追加]** ウィンドウで **[Web API コントローラー - 空]** を選択し、 **[追加]** を選択します。
 
-    ![[Web API 2 コントローラー - 空] の選択](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
+    ![Visual Studio で [Web API 2 コントローラー - 空] を選択する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
 3. **[コントローラーの追加]** ウィンドウで、コントローラーに **IdentityController** という名前を付けて、 **[追加]** を選択します。
 
-    ![コントローラーの名前の入力](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
+    ![Visual Studio でコントローラー名を入力する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
     *IdentityController.cs* という名前のファイルが *[コントローラー]* フォルダーに作成されます。
 
@@ -206,11 +206,11 @@ Web API では、_コントローラー_ は、HTTP 要求を処理するオブ�
 ## <a name="step-3-publish-the-project-to-azure"></a>手順 3:Azure にプロジェクトを発行する
 1. ソリューション エクスプローラーで **Contoso.AADB2C.API** プロジェクトを右クリックしてから、 **[発行]** を選択します。
 
-    ![Microsoft Azure App Service への発行](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
+    ![Visual Studio での Microsoft Azure App Service への発行](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
 2. **[発行]** ウィンドウで、 **[Microsoft Azure App Service]** を選択し、 **[発行]** を選択します。
 
-    ![新しい Microsoft Azure App Service の作成](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
+    ![Visual Studio での新しい Microsoft Azure App Service の作成](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
     **[App Service の作成]** ウィンドウが開きます。 このウィンドウでは、Azure で ASP.NET Web アプリを実行するために必要なすべての Azure リソースを作成します。
 
@@ -219,9 +219,9 @@ Web API では、_コントローラー_ は、HTTP 要求を処理するオブ�
 
 3. **[Web アプリ名]** ボックスに、一意のアプリ名 (有効な文字は a-z、0-9、およびハイフン (-)) を入力します。 Web アプリの URL は http://<app_name>.azurewebsites.NET です。*app_name* は、Web アプリの名前です。 自動的に生成される名前をそのまま使用してもかまいません。この名前は一意になっています。
 
-    ![App Service プロパティの入力](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
+    ![App Service プロパティの構成](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. Azure リソースの作成を開始するには、 **[作成]** を選択します。  
+4. Azure リソースの作成を開始するには、 **[作成]** を選択します。
     ASP.NET Web アプリが作成されると、ウィザードはそれを Azure に発行してから、既定のブラウザーでアプリを起動します。
 
 6. Web アプリの URL をコピーします。
@@ -262,7 +262,7 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>
-    
+
     <!-- Custom Restful service -->
     <TechnicalProfile Id="REST-API-SignUp">
       <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
@@ -347,14 +347,14 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 
 2. アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開いてから、 **[今すぐ実行]** を選択します。
 
-    ![[B2C_1A_signup_signin] ウィンドウ](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
+    ![Azure portal の B2C_1A_signup_signin カスタム ポリシー ページ](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-run.png)
 
-3. **[名]** ボックスに「**Test**」と入力して、プロセスをテストします。  
+3. **[名]** ボックスに「**Test**」と入力して、プロセスをテストします。
     ウィンドウの上部に Azure AD B2C によってエラー メッセージが表示されます。
 
-    ![ポリシーのテスト](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
+    ![サインアップ サインイン ページで名前の入力検証をテストする](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-test.png)
 
-4. **[名]** ボックスに ("Test" 以外の) 名前を入力します。  
+4. **[名]** ボックスに ("Test" 以外の) 名前を入力します。
     Azure AD B2C でユーザーがサインアップされ、アプリケーションに loyaltyNumber が送信されます。 この JWT の番号に注意してください。
 
 ```

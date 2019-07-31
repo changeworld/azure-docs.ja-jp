@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 7fd9248fd38054b7f0e1fad2888d8b0d4cf2e60c
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 968ee4c8bb5d7e09ef3c345c46f6c7b839e0e25a
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274229"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67990031"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>ログとイベントをリアルタイムで表示する方法 (プレビュー)
 コンテナー用 Azure Monitor (現在、プレビュー段階) には、kubectl コマンドを実行せずに、Azure Kubernetes Service (AKS) コンテナーのログ (stdout と stderr) とイベントのライブ ビューを提供する機能が含まれています。 いずれかのオプションを選択すると、 **[ノード]** 、 **[コントローラー]** 、 **[コンテナー]** ビューのパフォーマンス データ テーブルの下に新しいウィンドウが表示されます。 ここにはコンテナー エンジンによって生成されたライブ ログおよびイベントが表示され、リアルタイムでの問題のトラブルシューティングに一層役立てることができます。
@@ -66,7 +66,7 @@ Kubernetes RBAC 認証を有効にした場合は、クラスター ロール �
          apiGroup: rbac.authorization.k8s.io
     ```
 
-2. 初めてこれを構成する場合は、次のコマンドを実行して、クラスター ロール バインディングを作成します: `kubectl create -f LogReaderRBAC.yaml`。 ライブ イベント ログが導入される前に、あらかじめライブ ログのサポート (プレビュー) を有効にしていた場合、お使いの構成を更新するには、次のコマンドを実行します: `kubectl apply -f LogReaderRBAC.yml`。
+2. 初めてこれを構成する場合は、次のコマンドを実行することで、クラスター ロール バインディングを適用します: `kubectl create -f LogReaderRBAC.yaml`。 ライブ イベント ログが導入される前に、あらかじめライブ ログのサポート (プレビュー) を有効にしていた場合、お使いの構成を更新するには、次のコマンドを実行します: `kubectl apply -f LogReaderRBAC.yaml`。
 
 ## <a name="configure-aks-with-azure-active-directory"></a>Azure Active Directory で AKS を構成する
 
@@ -116,5 +116,7 @@ AKS クラスターが AAD を使用して SSO で構成されている場合は
 コンテナー ログの履歴を表示するには、Azure Monitor ログに移動して、 **[分析で表示する]** ドロップダウン リストから **[コンテナー ログの表示]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
+
 - Azure Monitor を使用して、AKS クラスターの他の側面を監視する方法を引き続き学習するには、[Azure Kubernetes Service の正常性の表示](container-insights-analyze.md)に関するページをご覧ください。
+
 - [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。

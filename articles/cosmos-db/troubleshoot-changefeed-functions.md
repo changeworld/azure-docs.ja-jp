@@ -7,12 +7,12 @@ ms.date: 05/23/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 09ea70ac302806b4cb0e97fde92dda4208e3d659
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c728a735e56e461e49dd3f594186c9c0192a3f0
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734513"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68250022"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Azure Functions で Azure Cosmos DB トリガーを使用するときの問題の診断とトラブルシューティングを行う
 
@@ -89,7 +89,7 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 
 このような状況を回避する簡単な方法は、`LeaseCollectionPrefix/leaseCollectionPrefix` を新しい/別の値で関数に適用するか、または新しいリース コンテナーでテストします。
 
-### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>バインディングを実行するには、IReadOnlyList<Document> または JArray を使用する必要があります。
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>バインディングを実行するには、IReadOnlyList\<Document> または JArray を使用する必要があります。
 
 このエラーは、Azure Functions プロジェクト (または任意の参照されているプロジェクト) に、[Azure Functions Cosmos DB 拡張機能](./troubleshoot-changefeed-functions.md#dependencies)で提供されているバージョンとは異なるバージョンの Azure Cosmos DB SDK への手動による NuGet の参照が含まれている場合に発生します。
 

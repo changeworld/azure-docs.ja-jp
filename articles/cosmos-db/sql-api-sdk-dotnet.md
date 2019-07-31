@@ -8,19 +8,20 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 3c420882b734883039ec95d609c155617359fa25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d68e957ece5c634ed1ce069218df717a4fe0952f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510716"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261267"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
+> * [.NET](sql-api-sdk-dotnet-standard.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.js](sql-api-sdk-node.md)
+> * [Node.JS](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
@@ -34,23 +35,28 @@ ms.locfileid: "65510716"
 |---|---|
 |**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**API ドキュメント**|[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**サンプル**|[.NET コード サンプル](sql-api-dotnet-samples.md)|
+|**サンプル**|[.NET コード サンプル](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
 |**作業開始**|[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1 プレビュー
-* パブリック プレビュー用の .NET SDK の[バージョン 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) のプレビュー 1。
-* 対象は .NET Standard です。.NET Framework 4.6.1 以降および .NET Core 2.0 以降をサポートします。
-* 最上位レベルの CosmosClient と関連する CosmosDatabases、CosmosContainers、および CosmosItems の各クラスとの間でメソッドが分割される新しいオブジェクト モデルです。 
-* ストリームをサポートします。 
-* 状態コードを返し、応答が返されない場合にのみ例外を返すようにサーバーからの CosmosResponseMessage を更新しました。 
+> [!NOTE]
+> .NET Framework を使用している場合は、.NET Standard をターゲットとする [.NET SDK](sql-api-sdk-dotnet-standard.md) の最新バージョン 3.x を参照してください。 
+
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* SDK の System.Net.Http バージョンが、NuGet パッケージで定義されているものと一致するようになりました。
+* 元の書き込み要求が失敗した場合に別のリージョンにフォールバックすることが許可されます。
+* 書き込み要求のセッションの再試行ポリシーが追加されます。
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+
+* 空のページの原因となったクエリの競合状態のトレースを修正します
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* SDK の System.Net.Http バージョンは、NuGet パッケージで定義されているものと一致します
 * LINQ クエリの小数点以下有効桁数のサイズが増えました。
 * 新しいクラス CompositePath、CompositePathSortOrder、SpatialSpec、SpatialType、PartitionKeyDefinitionVersion が追加されました
 * DocumentCollection に TimeToLivePropertyPath が追加されました
@@ -222,7 +228,7 @@ ms.locfileid: "65510716"
 * 文字列フィールドの並べ替えで、パーティションを横断する order-by クエリの継続が動作しなかった問題を修正しました。
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](how-to-sql-query.md#Aggregates)に関するトピックを参照してください。
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](sql-query-aggregates.md)に関するトピックを参照してください。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
@@ -337,7 +343,7 @@ ms.locfileid: "65510716"
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 * インデックス作成ポリシーを変更するためのサポートを追加しました。
   * DocumentClient の新しい ReplaceDocumentCollectionAsync メソッド
-  * インデックス ポリシー変更の進捗状況 (%) を追跡するための ResourceResponse<T> の新しい IndexTransformationProgress プロパティ
+  * インデックス ポリシー変更の進捗状況 (%) を追跡するための ResourceResponse\<T> の新しい IndexTransformationProgress プロパティ
   * DocumentCollection.IndexingPolicy は変化可能になりました
 * 空間インデックス作成とクエリのサポートを追加しました。
   * 点や多角形など、空間型のシリアル化/逆シリアル化するための新しい Microsoft.Azure.Documents.Spatial 名前空間
@@ -373,8 +379,10 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |2019 年 7 月 2 日 |--- |
+| [2.4.1](#2.4.1) |2019 年 6 月 20 日 |--- |
 | [2.4.0](#2.4.0) |2019 年 5 月 5 日 |--- |
 | [2.3.0](#2.3.0) |2019 年 4 月 4 日 |--- |
 | [2.2.3](#2.2.3) |2019 年 2 月 11 日 |--- |

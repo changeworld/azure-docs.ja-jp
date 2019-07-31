@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 2f3723e0a1b14edd6f516f3cc080501bea80d486
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 26b31781ae0056999eb222981b2eea3eb4595041
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442047"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68228043"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -68,7 +68,7 @@ SQL Database では、データ損失からビジネスを守るために、デ�
 
 ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。 アプリケーションを完全に復旧するために必要な時間は、目標復旧時間 (RTO) と呼ばれます。 さらに、予期しない破壊的なイベントからの復旧中にアプリケーションが損失を許容できる最大データ更新 (期間) 量についても理解しなければなりません。 潜在的なデータ損失は、目標復旧時点 (RPO) と呼ばれます。
 
-復旧方法によって、提供される RPO と RTO のレベルは異なります。 完全なアプリケーション復旧を達成するために、特定の復旧方法を選択することも、複数の方法を組み合わせて使用することもできます。 次の表で、各復旧オプションの RPO と RTO の比較を示します。
+復旧方法によって、提供される RPO と RTO のレベルは異なります。 完全なアプリケーション復旧を達成するために、特定の復旧方法を選択することも、複数の方法を組み合わせて使用することもできます。 次の表で、各復旧オプションの RPO と RTO の比較を示します。 自動フェールオーバー グループにより、geo レプリケーションのデプロイと使用が簡略化され、次の表に示す追加機能が追加されます。
 
 | 復旧方法 | RTO | RPO |
 | --- | --- | --- | 

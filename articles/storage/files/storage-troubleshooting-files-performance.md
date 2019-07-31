@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 8c35501f3afbeed519fb5304229f25be1cbd5f9b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1a5e59bd0276477bad1eab9a544dc4070e662016
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445670"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249875"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure Files のパフォーマンスに関する問題のトラブルシューティング
 
@@ -108,7 +108,7 @@ Premium 共有の既定のクォータは 100 GiB であり、これは 100 ベ�
 ### <a name="workaround"></a>対処法
 
 - 可能であれば、同じディレクトリで短時間に過剰に開く/閉じる操作を行うことを避けます。
-- Linux VM では、マウント オプションとして **actimeo=<sec>** を指定することで、ディレクトリ エントリ キャッシュのタイムアウトを増やします。 既定では 1 秒になっているので、3 や 5 のような大きな値が役立つことがあります。
+- Linux VM では、マウント オプションとして **actimeo=\<sec>** を指定することで、ディレクトリ エントリ キャッシュのタイムアウトを増やします。 既定では 1 秒になっているので、3 や 5 のような大きな値が役立つことがあります。
 - Linux VM の場合、カーネルを 4.20 以上にアップグレードします。
 
 ## <a name="low-iops-on-centosrhel"></a>CentOS/RHEL での低 IOPS

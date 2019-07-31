@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services:Azure Active Directory アプリケーション プロキシのデプロイ | Microsoft Docs
+title: Azure Active Directory Domain Services:Azure AD アプリケーション プロキシをデプロイする | Microsoft Docs
 description: Azure Active Directory Domain Services マネージド ドメインで Azure AD アプリケーション プロキシを使用します
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: e9ccbd81a8efeb69ea073d89edd6579a6d59699a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: eca421697081310b1bf245172b3ff125e11c8728
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473604"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234167"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。
@@ -86,7 +86,7 @@ Azure AD Domain Services のマネージド ドメインを有効化済みの同
     ![トラブルシューティング ツールの正常終了](./media/app-proxy/app-proxy-connector-troubleshooter.png)
 5. Azure AD ディレクトリのアプリケーション プロキシのページに、新しくインストールしたコネクタが表示されます。
 
-    ![](./media/app-proxy/app-proxy-connector-page.png)
+    ![Azure portal では、インストールされたコネクタが利用可能として表示されます。](./media/app-proxy/app-proxy-connector-page.png)
 
 > [!NOTE]
 > 複数のサーバーにコネクタをインストールして、Azure AD アプリケーション プロキシ経由で発行したアプリケーションを認証するための高可用性を保証することができます。 マネージド ドメインに参加している他のサーバーで、この記事で説明したコネクタのインストール手順を同様に実行します。

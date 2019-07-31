@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 351b6a8e056d22fa8f2d695a2722b39b9771c8b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/15/2019
+ms.openlocfilehash: a1ff1449b5cc63c16035f8785662f250a008fbc1
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299381"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305530"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 
@@ -49,7 +49,8 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 * [リソース グループ名](#resource-group-name)
 * [クラスターの種類と構成](#cluster-types) 
-* クラスター ログインと SSH ユーザー名
+* [クラスター名](#cluster-name)
+* [クラスター ログインと SSH ユーザー名](#cluster-login-and-ssh-username)
 * [Location](#location)
 
 ## <a name="resource-group-name"></a>リソース グループ名
@@ -76,12 +77,31 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 ### <a name="hdinsight-version"></a>HDInsight のバージョン
 このクラスターの HDInsight のバージョンを選択します。 詳細については、「[サポートされる HDInsight のバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」を参照してください。
 
+## <a name="cluster-name"></a>クラスター名
+
+HDInsight クラスター名には次の制限があります。
+- 使用できる文字: a-z、0-9、A-Z 
+- 最大長:59
+- 予約済みの名前: apps
+- 一意である必要があります。
+- 最初の 6 文字は VNET 内で一意である必要があります
 
 ## <a name="cluster-login-and-ssh-username"></a>クラスター ログインと SSH ユーザー名
 HDInsight クラスターでは、クラスターの作成時に次の 2 つのユーザー アカウントを構成できます。
 
 * HTTP ユーザー: 既定のユーザー名は *admin*です。Azure Portal の基本的な構成を使用します。 "クラスター ユーザー" と呼ばれることもあります。
 * SSH ユーザー:SSH を使用してクラスターに接続する際に使用します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+
+HTTP ユーザー名には次の制限があります。
+- 使用できる特殊文字: _ と @ 
+- 使用できない文字: #;."',\/:`!*?$(){}[]<>|&--=+%~^スペース
+- 最大長:20
+
+SSH ユーザー名には次の制限があります。
+- 使用できる特殊文字: _ と @ 
+- 使用できない文字: #;."',\/:`!*?$(){}[]<>|&--=+%~^スペース
+- 最大長:64
+- 予約済みの名前: hadoop、users、oozie、hive、mapred、ambari、zookeeper、tez、hdfs、sqoop、yarn、hcat、ams、hbase、storm、administrator、admin、user、user1、test、user2、test1、user3、admin1、1、123、a、actuser、adm、admin2、aspnet、backup、console、david、guest、john、owner、root、server、sql、support、support_388945a0、sys、test2、test3、user4、user5、spark
 
 Enterprise セキュリティ パッケージでは、HDInsight を Active Directory と Apache Ranger と統合することができます。 Enterprise セキュリティ パッケージを使用して、複数のユーザーを作成できます。
 

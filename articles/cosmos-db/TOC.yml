@@ -738,6 +738,12 @@
           maintainContext: true
         - name: ODBC ドライバー
           href: odbc-driver.md
+    - name: Cosmos DB にデータを移行する
+      items:
+        - name: Striim を使用して SQL API に移行する
+          href: cosmosdb-sql-api-migrate-data-striim.md
+        - name: Striim を使用して Cassandra API に移行する
+          href: cosmosdb-cassandra-api-migrate-data-striim.md
     - name: Bulk Executor ライブラリ
       items:
         - name: Bulk Executor ライブラリについて

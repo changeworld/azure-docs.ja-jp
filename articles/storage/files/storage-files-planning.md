@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d720f60bff1aa4510ac26ac092c42eb98871c851
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: aba41d62df49a40d9fc3686684b39b71e1363453
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540337"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296050"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -197,8 +197,10 @@ GRS が有効なストレージ アカウントでは、すべてのデータが
 
 ### <a name="restrictions"></a>制限
 
+- Azure プレビューの[使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)は、Azure ファイル同期デプロイでの使用を含む、プレビュー期間内の大規模なファイル共有に適用されます。
 - 新しい汎用ストレージ アカウントを作成する必要があります (既存のストレージ アカウントを拡張することはできません)。
-- LRS から GRS へのアカウント変換は、大きいファイル共有のプレビューへのサブスクリプションが承認された後に作成された新しいストレージ アカウントでは実行できません。
+- LRS/ZRS から GRS へのアカウント変換は、大きいファイル共有のプレビューへのサブスクリプションが承認された後に作成された新しいストレージ アカウントでは実行できません。
+
 
 ### <a name="regional-availability"></a>リージョン別の提供状況
 
@@ -210,10 +212,20 @@ Standard ファイル共有は、すべてのリージョンで 5 TiB まで利�
 |西ヨーロッパ     |LRS|いいえ         |
 |米国西部 2     |LRS、ZRS|いいえ         |
 
+この[アンケート](https://aka.ms/azurefilesatscalesurvey)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
 
 ### <a name="steps-to-onboard"></a>オンボードの手順
 
-大きなファイル共有プレビューにサブスクリプションを登録するには、次の PowerShell コマンドを実行します。
+大きなファイル共有プレビューにサブスクリプションを登録するには、Azure PowerShell を使用する必要があります。 [Azure Cloud Shell](https://shell.azure.com/) を使用するか、[Azure PowerShell モジュールをローカルに](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0)インストールすることで、次の PowerShell コマンドを実行できます。
+
+まず、プレビューで登録するサブスクリプションが選択されていることを確認します。
+
+```powershell
+$context = Get-AzSubscription -SubscriptionId ...
+Set-AzContext $context
+```
+
+次に、次のコマンドを利用してプレビューに登録します。
 
 ```powershell
 Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
@@ -227,7 +239,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-状態が "登録済み" に更新されるまで最大 15 分かかりますが、それでもこの機能を使用できるはずです。
+状態が "**登録済み**" に更新されるまでに最大 15 分かかる場合があります。 状態が "**登録済み**" になったら、機能を利用できるようになるはずです。
 
 ### <a name="use-larger-file-shares"></a>大きなファイル共有を使用する
 

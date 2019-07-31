@@ -1,5 +1,5 @@
 ---
-title: コンテナー サポート
+title: 感情分析コンテナー インスタンスを検証する
 titleSuffix: Azure Cognitive Services
 description: 感情分析コンテナー インスタンスを検証する方法を学びます。
 services: cognitive-services
@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: f68d9c7098f2b1ca782e2522c632c2e267b35336
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f69d573e9e70a505018e94cca354f363097cc1b8
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67455119"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68229195"
 ---
 ## <a name="verify-the-sentiment-analysis-container-instance"></a>感情分析コンテナー インスタンスを検証する
 
 1. **[概要]** タブを選択し、IP アドレスをコピーします。
-1. 新しいブラウザー タブを開き、`http://<IP-address>:5000 (http://55.55.55.55:5000` のように IP アドレスを使用します。 コンテナーのホーム ページが表示され、コンテナーが実行中であることを知らせます。
+1. 新しいブラウザー タブを開き、IP アドレスを入力します。 たとえば、「`http://<IP-address>:5000 (http://55.55.55.55:5000`)」と入力します。 コンテナーのホーム ページが表示され、コンテナーが実行中であることを知らせます。
 
-    ![コンテナーのホーム ページを表示してコンテナーが実行中であることを確認する](../media/how-tos/container-instance/swagger-docs-on-container.png)
+    ![コンテナーのホーム ページを表示してコンテナーが実行中であることを確認します](../media/how-tos/container-instance/swagger-docs-on-container.png)。
 
 1. **[Service API Description]\(サービス API の説明\)** リンクを選択して、コンテナーの Swagger ページに移動します。
 
-1. いずれかの **POST** APIを選択して **[試してみる]** を選択します。入力の例を含むパラメーターが表示されます。
+1. いずれかの **POST** APIを選択して **[試してみる]** を選択します。この入力の例を含むパラメーターが表示されます。
 
     ```json
     {
@@ -49,7 +49,7 @@ ms.locfileid: "67455119"
     }
     ```
 
-1. 入力を次の JSON に置き換えます。
+1. 入力を次の JSON コンテンツに置き換えます。
 
     ```json
     {
@@ -67,7 +67,7 @@ ms.locfileid: "67455119"
 
 1. **[実行]** を選択してテキストの感情を判定します。
 
-    コンテナーにパッケージ化されたモデルでは、0 ～ 1 のスコアが生成されます(0 は否定的、1 は肯定的)。
+    コンテナーにパッケージ化されたモデルでは、0 から 1 のスコアが生成されます (0 は否定的、1 は肯定的)。
 
     返される JSON 応答には、更新されたテキスト入力の感情が含まれます。
 
@@ -93,4 +93,4 @@ ms.locfileid: "67455119"
     }
     ```
 
-これで、応答ペイロード JSON のドキュメント `id` を、元の要求ペイロード ドキュメント `id` に関連付けて、非常に肯定的な感情を示す `.98` を超えるスコアがあったことを確認できます。
+これで、応答ペイロードの JSON データのドキュメント `id` を、元の要求ペイロード ドキュメント `id` に関連付けることができます。 `.98` を超えるスコアは、非常に肯定的な感情を示しています。

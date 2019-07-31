@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2018
-ms.openlocfilehash: 25ed66fd75301475542dbac8e8a01670ee37563c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0225a9f34e016a4b1de51c06ba982d384e41007c
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531682"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302087"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler ジョブを Azure Logic Apps に移行する
 
@@ -79,7 +79,7 @@ ms.locfileid: "60531682"
 
    ![「延期期限」の詳細を指定](./media/migrate-from-scheduler-to-logic-apps/delay-until-details.png)
 
-1. [200 を超えるコネクタ](../connectors/apis-list.md)から選択して、実行したいその他のアクションを追加することができます。 
+1. [数百単位のすぐに使えるコネクタ](../connectors/apis-list.md)から選択して、実行するその他のアクションを追加できます。 
 
    たとえば、URL に要求を送信する HTTP アクションや、Storage キュー、Service Bus キューまたは Service Bus トピックを使用するアクションを含めることができます。 
 
@@ -141,7 +141,7 @@ Logic Apps では、1 回限りのジョブはそれぞれ 1 つのロジック 
 
    詳細なスケジュール オプションの詳細については、「[定期的に実行されるタスクとワークフローを Azure Logic Apps で作成、実行する](../connectors/connectors-native-recurrence.md)」を参照してください。
 
-1. [200 を超えるコネクタ](../connectors/apis-list.md)から選択して、実行したいその他のアクションを追加します。 トリガーで、 **[次のステップ]** を選択します。 目的のアクションを探して選択します。
+1. [数百単位のすぐに使えるコネクタ](../connectors/apis-list.md)から選択し、実行するその他のアクションを追加できます。 トリガーで、 **[次のステップ]** を選択します。 目的のアクションを探して選択します。
 
    たとえば、URL に要求を送信する HTTP アクションや、Storage キュー、Service Bus キューまたは Service Bus トピックを使用するアクションを含めることができます。 
 

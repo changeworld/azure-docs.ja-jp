@@ -77,6 +77,8 @@
       items:
         - name: 仮想ネットワークでのアクセスの制限 (プレビュー)
           href: container-registry-vnet.md
+        - name: ファイアウォールの内側にアクセスする
+          href: container-registry-firewall-access-rules.md
         - name: Authentication
           items:
             - name: 認証の概要

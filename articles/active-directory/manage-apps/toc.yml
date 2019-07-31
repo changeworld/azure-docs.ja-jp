@@ -286,6 +286,8 @@
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
+        - name: 高可用性と負荷分散
+          href: application-proxy-high-availability-load-balancing.md
         - name: リモート アクセス ソリューションの比較
           href: application-proxy-migration.md
     - name: ハウツー ガイド

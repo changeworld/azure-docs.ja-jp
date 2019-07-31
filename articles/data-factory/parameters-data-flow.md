@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 0a7140f70db78c8511f3c4da00b2f9c11c368163
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 998f8080509e7ba18ea1a759dff2ed8b8742c910
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477690"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68253101"
 ---
 # <a name="mapping-data-flow-parameters"></a>Mapping Data Flow のパラメーター
 
@@ -50,7 +50,7 @@ Azure Data Factory の Mapping Data Flow では、パラメーターの使用を
 
 ![Data Flow のパラメーターを設定する](media/data-flow/parameter-assign.png "Setting a Data Flow parameter")
 
-パラメーターのデータ型が文字列の場合、テキスト ボックスをクリックしてパラメーター値を設定するときに、パイプラインまたはデータ フロー式のいずれかを入力することを選択できます。 パイプライン式を選択した場合、パイプラインの式パネルが表示されます。 '@{<expression>}' を使用して、必ず文字列補間の構文内にパイプライン関数を含めてください。たとえば、次のようになります。
+パラメーターのデータ型が文字列の場合、テキスト ボックスをクリックしてパラメーター値を設定するときに、パイプラインまたはデータ フロー式のいずれかを入力することを選択できます。 パイプライン式を選択した場合、パイプラインの式パネルが表示されます。 `'@{<expression>}'` を使用して、必ず文字列補間の構文内にパイプライン関数を含めてください。たとえば、次のようになります。
 
 ```'@{pipeline().RunId}'```
 

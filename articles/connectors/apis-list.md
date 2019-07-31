@@ -9,23 +9,25 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: c02361cf69b98da61a0f551ac037e6d35ea42efc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab2413cfce8b87fbe1899a0b7c465c6e6c27a3f5
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551864"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277638"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
 コネクタは、Azure Logic Apps からその他のアプリ、サービス、システム、プロトコル、およびプラットフォームでの、イベント、データ、およびアクションへのすばやいアクセスを提供します。 ロジック アプリでコネクタを使用して、クラウドおよびオンプレミス アプリの機能を拡張すると、タスクの実行時に、作成したデータや既に所有しているデータを使用できます。
 
-Logic Apps が提供する[コネクタは 200 を超え](https://docs.microsoft.com/connectors)ますが、この記事では、人気が高く、より多く使用されているコネクタについて説明します。これらのコネクタは、データと情報を処理するために、何千ものアプリ、および何百万もの実行で正常に使用されているものです。 すべてのコネクタと、トリガー、アクション、制限など各コネクタの参照情報については、[コネクタの概要](https://docs.microsoft.com/connectors)に関するページにあるコネクタ参照ページをご覧ください。 また、[トリガーとアクション](#triggers-actions)、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)、[Logic Apps の価格の詳細](https://azure.microsoft.com/pricing/details/logic-apps/)も確認してください。 
+Logic Apps には[数百のコネクタ](https://docs.microsoft.com/connectors)が用意されていますが、この記事では、人気が高く、より多く使用されているコネクタについて説明します。これらのコネクタは、データと情報を処理するために、何千ものアプリ、および何百万もの実行で正常に使用されているものです。 すべてのコネクタと、トリガー、アクション、制限など各コネクタの参照情報については、[コネクタの概要](https://docs.microsoft.com/connectors)に関するページにあるコネクタ参照ページをご覧ください。 また、[トリガーとアクション](#triggers-actions)、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)、[Logic Apps の価格の詳細](https://azure.microsoft.com/pricing/details/logic-apps/)も確認してください。 
 
 > [!NOTE]
 > コネクタがないサービスや API を統合するには、HTTP などのプロトコル経由で直接サービスを呼び出すか、[カスタム コネクタ](#custom)を作成します。
 
 コネクタは、組み込みトリガーおよびアクションとして、またはマネージド コネクタとして利用できます。
+
+<a name="built-in"></a>
 
 * [**組み込み**](#built-ins):これらの組み込まれているトリガーとアクションは、Azure Logic Apps に対して "ネイティブ" であり、カスタム スケジュールに基づいて実行するロジック アプリ、他のエンドポイントと通信するロジック アプリ、要求を受信して応答するロジック アプリ、さらに Azure 関数、Azure API アプリ (Web アプリ)、Azure API Management で管理および公開される独自の API、要求を受信できるネストされたロジック アプリを呼び出すロジック アプリを作成するのに役立ちます。 ロジック アプリのワークフローを編成および制御することができ、データの処理も行う組み込みアクションを使用することもできます。
 
@@ -35,6 +37,8 @@ Logic Apps が提供する[コネクタは 200 を超え](https://docs.microsoft
   >
   > ISE の作成について詳しくは、[Azure Logic Apps から Azure Virtual Network への接続](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment)に関するページをご覧ください。 
   > 価格について詳しくは、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)に関するページをご覧ください。
+
+<a name="managed-connectors"></a>
 
 * **マネージド コネクタ**: Microsoft によってデプロイおよび管理されるこれらのコネクタでは、Office 365、Azure Blob Storage、SQL Server、Dynamics、Salesforce、SharePoint など、クラウド サービスとオンプレミス システムの一方または両方にアクセスするためのトリガーとアクションが提供されます。 一部のコネクタでは特に企業間 (B2B) 通信シナリオがサポートされており、ロジック アプリにリンクされた[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)が必要です。 特定のコネクタを使う前にまず、Azure Logic Apps によって管理される接続を作成することが必要な場合があります。 
 
@@ -84,8 +88,8 @@ Logic Apps では、ロジック アプリのワークフローでアクショ�
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![組み込みアイコン][condition-icon]<br/>**条件**][condition-doc] | 条件を評価し、条件が true と false のいずれであるかに基づいて、さまざまなアクションを実行します。 | [![組み込みアイコン][for-each-icon]</br> **[For each]\(各項目に対して実行\)** ][for-each-doc] | 配列内のすべての項目に対して同じアクションを実行します。 | 
-| [![組み込みアイコン][scope-icon]<br/> **[Scope]\(スコープ\)** ][scope-doc] | アクションを*スコープ*にグループ化します。スコープ内のアクションが実行を完了すると、スコープ独自のステータスが取得されます。 | [![組み込みアイコン][switch-icon]</br>**切り替え**][switch-doc] | アクションを*ケース*にグループ化します。既定のケースを除き、ケースには、一意の値が割り当てられます。 割り当てられた値が式、オブジェクト、またはトークンの結果に一致するケースのみを実行します。 一致が存在しない場合は、既定のケースを実行します。 | 
+| [![組み込みアイコン][condition-icon]<br/>**条件**][condition-doc] | 条件を評価し、条件が true と false のいずれであるかに基づいて、さまざまなアクションを実行します。 | [![組み込みアイコン][for-each-icon]</br>**For each**][for-each-doc] | 配列内のすべての項目に対して同じアクションを実行します。 | 
+| [![組み込みアイコン][scope-icon]<br/>**スコープ**][scope-doc] | アクションを*スコープ*にグループ化します。スコープ内のアクションが実行を完了すると、スコープ独自のステータスが取得されます。 | [![組み込みアイコン][switch-icon]</br>**スイッチ**][switch-doc] | アクションを*ケース*にグループ化します。既定のケースを除き、ケースには、一意の値が割り当てられます。 割り当てられた値が式、オブジェクト、またはトークンの結果に一致するケースのみを実行します。 一致が存在しない場合は、既定のケースを実行します。 | 
 | [![組み込みアイコン][terminate-icon]<br/>**終了**][terminate-doc] | アクティブに実行中のロジック アプリ ワークフローを停止します。 | [![組み込みアイコン][until-icon]<br/>**期限**][until-doc] | 指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。 | 
 ||||| 
 
@@ -136,9 +140,9 @@ Logic Apps では、Azure の Enterprise Integration Pack (EIP) で利用可能�
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![API アイコン][as2-icon]<br/> **[AS2</br> decoding]\(AS2 のデコード\)** ][as2-doc] | [![API アイコン][as2-icon]<br/> **[AS2</br> encoding]\(AS2 のエンコード\)** ][as2-doc] | [![API アイコン][edifact-icon]<br/> **[EDIFACT</br> decoding]\(EDIFACT のデコード\)** ][edifact-decode-doc] | [![API アイコン][edifact-icon]<br/> **[EDIFACT</br> encoding]\(EDIFACT のエンコード\)** ][edifact-encode-doc] | 
-| [![API icon][flat-file-decode-icon]<br/>**フラット ファイルの</br>デコード**][flat-file-decode-doc] | [![API アイコン][flat-file-encode-icon]<br/>**フラット ファイルの</br> エンコード**][flat-file-encode-doc] | [![API アイコン][integration-account-icon]<br/>**統合<br/>アカウント**][integration-account-doc] | [![API アイコン][liquid-icon]<br/> **[Liquid**</br>**transforms]\(Liquid 変換\)** ][json-liquid-transform-doc] | 
-| [![API アイコン][x12-icon]<br/> **[X12</br> decoding]\(X12 のデコード\)** ][x12-decode-doc] | [![API アイコン][x12-icon]<br/> **[X12</br> encoding]\(X12 のエンコード\)** ][x12-encode-doc] | [![API アイコン][xml-transform-icon]<br/> **[XML**</br>**transforms]\(XML 変換\)** ][xml-transform-doc] | [![API アイコン][xml-validate-icon]<br/> **[XML <br/>validation]\(XML 検証\)** ][xml-validate-doc] |  
+| [![API アイコン][as2-icon]<br/>**AS2</br> のデコード**][as2-doc] | [![API アイコン][as2-icon]<br/>**AS2</br> のエンコード**][as2-doc] | [![API アイコン][edifact-icon]<br/>**EDIFACT</br> のデコード**][edifact-decode-doc] | [![API アイコン][edifact-icon]<br/>**EDIFACT</br> のエンコード**][edifact-encode-doc] | 
+| [![API アイコン][flat-file-decode-icon]<br/>**フラット ファイル</br> のデコード**][flat-file-decode-doc] | [![API アイコン][flat-file-encode-icon]<br/>**フラット ファイル</br> のエンコード**][flat-file-encode-doc] | [![API アイコン][integration-account-icon]<br/>**統合<br/>アカウント**][integration-account-doc] | [![API アイコン][liquid-icon]<br/>**Liquid**</br>**変換**][json-liquid-transform-doc] | 
+| [![API アイコン][x12-icon]<br/>**X12</br> のデコード**][x12-decode-doc] | [![API アイコン][x12-icon]<br/>**X12</br> のエンコード**][x12-encode-doc] | [![API アイコン][xml-transform-icon]<br/>**XML**</br>**変換**][xml-transform-doc] | [![API アイコン][xml-validate-icon]<br/>**XML <br/>検証**][xml-validate-doc] |  
 ||||| 
 
 <a name="enterprise-connectors"></a>

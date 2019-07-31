@@ -231,7 +231,9 @@
           href: cognitive-search-resources-documentation.md
     - name: ナレッジ ストア (プレビュー)
       items:
-        - name: ファースト ステップ
+        - name: Power BI を使用した接続
+          href: knowledge-store-connect-powerbi.md
+        - name: REST と Postman を使用した作成
           href: knowledge-store-howto.md
     - name: データのクエリを実行する
       items:

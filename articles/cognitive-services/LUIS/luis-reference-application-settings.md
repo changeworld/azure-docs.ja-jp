@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: a8a1f6fe9372d013d310c557161ceb813b8a478b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3682b9e0c38344be1522440290b46f8c10bd5607
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163635"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275906"
 ---
 # <a name="application-settings"></a>アプリケーションの設定
 
@@ -48,7 +48,7 @@ LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化
 
 #### <a name="brazilian-portuguese-pt-br-diacritics"></a>ポルトガル語 (ブラジル) `pt-br` の分音記号
 
-|分音記号を false に設定|分音記号を false に設定|
+|分音記号を false に設定|分音記号を true に設定|
 |-|-|
 |`á`|`a`|
 |`â`|`a`|
@@ -66,7 +66,7 @@ LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化
 
 #### <a name="dutch-nl-nl-diacritics"></a>オランダ語 `nl-nl` の分音記号
 
-|分音記号を false に設定|分音記号を false に設定|
+|分音記号を false に設定|分音記号を true に設定|
 |-|-|
 |`á`|`a`|
 |`à`|`a`|
@@ -85,7 +85,7 @@ LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化
 
 これには、フランスとカナダ両方のサブカルチャが含まれます。
 
-|分音記号を false に設定|分音記号を false に設定|
+|分音記号を false に設定|分音記号を true に設定|
 |--|--|
 |`é`|`e`|
 |`à`|`a`|
@@ -104,7 +104,7 @@ LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化
 
 #### <a name="german-de-de-diacritics"></a>ドイツ語 `de-de` の分音記号
 
-|分音記号を false に設定|分音記号を false に設定|
+|分音記号を false に設定|分音記号を true に設定|
 |--|--|
 |`ä`|`a`|
 |`ö`|`o`| 
@@ -112,7 +112,7 @@ LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化
 
 #### <a name="italian-it-it-diacritics"></a>イタリア語 `it-it` の分音記号
 
-|分音記号を false に設定|分音記号を false に設定|
+|分音記号を false に設定|分音記号を true に設定|
 |--|--|
 |`à`|`a`|
 |`è`|`e`|
@@ -129,7 +129,7 @@ LUIS JSON アプリ ファイルに対して、分音記号の発話の正規化
 
 これには、スペインとカナダ両方のメキシコ人が含まれます。
 
-|分音記号を false に設定|分音記号を false に設定|
+|分音記号を false に設定|分音記号を true に設定|
 |-|-|
 |`á`|`a`|
 |`é`|`e`|

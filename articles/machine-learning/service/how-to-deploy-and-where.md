@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 05/31/2019
+ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: dcb90eb8ee25b8b0c780006f3555a5a9b815ffdd
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: cae6039b904f3dcd19ed191dc1b5fdd2f05f0323
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514308"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260345"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -332,12 +332,12 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 次のセクションでは、デプロイ構成を作成し、それを利用して Web サービスをデプロイする方法が紹介されています。
 
 ### <a name="optional-profile-your-model"></a>省略可能:モデルをプロファイリングする
-モデルをサービスとしてデプロイする前に、最適な CPU とメモリの要件を判断するためにプロファイリングを実行できます。 SDK または CLI を使用して、ご自分のモデルをプロファイリングできます。
 
-詳細は、こちらの SDK ドキュメントで確認できます: https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-
+モデルをサービスとしてデプロイする前に、SDK または CLI を利用し、最適な CPU とメモリの要件を判断するためにプロファイリングを実行できます。  モデルのプロファイル結果は、`Run` オブジェクトとして出力されます。 [モデル プロファイル スキーマについては、API ドキュメントに](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)詳しい記述があります
 
-モデルのプロファイル結果は、実行オブジェクトとして出力されます。
-モデル プロファイル スキーマの詳細については、こちらを参照してください: https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py
+SDK を使用してモデルをプロファイリングする方法については、[こちら](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)のページを参照してください。
+
+CLI を使用してモデルをプロファイリングするには、[az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) を使用します。
 
 ## <a name="deploy-to-target"></a>ターゲットにデプロイする
 
@@ -356,9 +356,27 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 + **CLI を使用する**
 
+    CLI を使用してデプロイするには、次のコマンドを使用します。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。
+
   ```azurecli-interactive
-  az ml model deploy -m sklearn_mnist:1 -ic inferenceconfig.json -dc deploymentconfig.json
+  az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
   ```
+
+    `deploymentconfig.json` ドキュメントのエントリは、[LocalWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py) のパラメーターにマッピングされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
+
+    | JSON エンティティ | メソッド パラメーター | 説明 |
+    | ----- | ----- | ----- |
+    | `computeType` | NA | コンピューティング ターゲット。 ローカルの場合、値は `local` である必要があります。 |
+    | `port` | `port` | サービスの HTTP エンドポイントを公開するローカル ポート。 |
+
+    次の JSON は、CLI で使用するデプロイ構成の例です。
+
+    ```json
+    {
+        "computeType": "local",
+        "port": 32267
+    }
+    ```
 
 ### <a id="aci"></a> Azure Container Instances (DEVTEST)
 
@@ -379,10 +397,44 @@ ACI の利用可能なクォータとリージョンを確認するには、[Azu
 
 + **CLI を使用する**
 
-  ```azurecli-interactive
-  az ml model deploy -m sklearn_mnist:1 -n aciservice -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
+    CLI を使用してデプロイするには、次のコマンドを使用します。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。 このサービスに付ける名前に `myservice` を置き換えます。
 
+    ```azurecli-interactive
+    az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+    ```
+
+    `deploymentconfig.json` ドキュメントのエントリは、[AciWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py) のパラメーターにマッピングされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
+
+    | JSON エンティティ | メソッド パラメーター | 説明 |
+    | ----- | ----- | ----- |
+    | `computeType` | NA | コンピューティング ターゲット。 ACI の場合、値は `ACI` である必要があります。 |
+    | `containerResourceRequirements` | NA | コンテナーに割り当てられている CPU とメモリの構成要素が含まれています。 |
+    | &emsp;&emsp;`cpu` | `cpu_cores` | この Web サービスに割り当てる CPU コアの数。 既定値、`0.1` |
+    | &emsp;&emsp;`memoryInGB` | `memory_gb` | この Web サービスに割り当てるメモリの量 (GB 単位)。 既定値、`0.5` |
+    | `location` | `location` | この Web サービスのデプロイ先となる Azure リージョン。 指定されていない場合、ワークスペースの場所が使用されます。 利用できるリージョンの詳細はこちらにあります。[ACI リージョン](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
+    | `authEnabled` | `auth_enabled` | この Web サービスに対して認証を有効にするかどうか。 既定値は False です |
+    | `sslEnabled` | `ssl_enabled` | この Web サービスに対して SSL を有効にするかどうか。 既定値は False です。 |
+    | `appInsightsEnabled` | `enable_app_insights` | この Web サービスに対して AppInsights を有効にするかどうか。 既定値は False です |
+    | `sslCertificate` | `ssl_cert_pem_file` | SSL が有効な場合、証明書ファイルが必要です |
+    | `sslKey` | `ssl_key_pem_file` | SSL が有効な場合、キー ファイルが必要です |
+    | `cname` | `ssl_cname` | SSL が有効な場合の cname |
+    | `dnsNameLabel` | `dns_name_label` | スコアリング エンドポイントの dns 名ラベル。 指定されていない場合、一意の dns 名ラベルがスコアリング エンドポイントに対して生成されます。 |
+
+    次の JSON は、CLI で使用するデプロイ構成の例です。
+
+    ```json
+    {
+        "computeType": "aci",
+        "containerResourceRequirements":
+        {
+            "cpu": 0.5,
+            "memoryInGB": 1.0
+        },
+        "authEnabled": true,
+        "sslEnabled": false,
+        "appInsightsEnabled": false
+    }
+    ```
 
 + **VS コードを使用する**
 
@@ -414,9 +466,71 @@ AKS クラスターが既にアタッチされている場合は、それにデ�
 
 + **CLI を使用する**
 
+    CLI を使用してデプロイするには、次のコマンドを使用します。 AKS コンピューティング先の名前に `myaks` を置き換えます。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。 このサービスに付ける名前に `myservice` を置き換えます。
+
   ```azurecli-interactive
-  az ml model deploy -ct myaks -m mymodel:1 -n aksservice -ic inferenceconfig.json -dc deploymentconfig.json
+  az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
   ```
+
+    `deploymentconfig.json` ドキュメントのエントリは、[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) のパラメーターにマッピングされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
+
+    | JSON エンティティ | メソッド パラメーター | 説明 |
+    | ----- | ----- | ----- |
+    | `computeType` | NA | コンピューティング ターゲット。 AKS の場合、値は `aks` である必要があります。 |
+    | `autoScaler` | NA | 自動スケーリングの構成要素が含まれます。 自動スケーラー テーブルを参照してください。 |
+    | &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Web サービスの自動スケールを有効にするかどうかを指定します。 `numReplicas` = `0` の場合、`True`。それ以外の場合、`False`。 |
+    | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | この Web サービスを自動スケールするときに使用するコンテナーの最小数。 既定値、`1`。 |
+    | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | この Web サービスを自動スケールするときに使用するコンテナーの最大数。 既定値、`10`。 |
+    | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | 自動スケーラーがこの Web サービスのスケーリングを試行する頻度。 既定値、`1`。 |
+    | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | オートスケーラーがこの web サービスに対してメンテナンスを試行する目標使用率 (最大 100%)。 既定値、`70`。 |
+    | `dataCollection` | NA | データ収集の構成要素が含まれます。 |
+    | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Web サービスに対してモデル データ収集を有効にするかどうかを指定します。 既定値、`False`。 |
+    | `authEnabled` | `auth_enabled` | Web サービスに対して認証を有効にするかどうかを指定します。 既定値、`True`。 |
+    | `containerResourceRequirements` | NA | コンテナーに割り当てられている CPU とメモリの構成要素が含まれています。 |
+    | &emsp;&emsp;`cpu` | `cpu_cores` | この Web サービスに割り当てる CPU コアの数。 既定値、`0.1` |
+    | &emsp;&emsp;`memoryInGB` | `memory_gb` | この Web サービスに割り当てるメモリの量 (GB 単位)。 既定値、`0.5` |
+    | `appInsightsEnabled` | `enable_app_insights` | Web サービスに対して Application Insights ログ記録を有効にするかどうかを指定します。 既定値、`False`。 |
+    | `scoringTimeoutMs` | `scoring_timeout_ms` | Web サービス呼び出しのスコア付けに適用するタイムアウト。 既定値、`60000`。 |
+    | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | この Web サービスのノードあたり最大同時要求数。 既定値、`1`。 |
+    | `maxQueueWaitMs` | `max_request_wait_time` | 要求がキューに留まる最大時間 (ミリ秒単位)。この時間を過ぎると、503 エラーが返されます。 既定値、`500`。 |
+    | `numReplicas` | `num_replicas` | この Web サービスに割り当てるコンテナーの数。 既定値はありません。 このパラメーターが設定されていない場合、自動スケーラーは既定で有効になります。 |
+    | `keys` | NA | キーの構成要素が含まれます。 |
+    | &emsp;&emsp;`primaryKey` | `primary_key` | この Web サービスに使用するプライマリ認証キー |
+    | &emsp;&emsp;`secondaryKey` | `secondary_key` | この Web サービスに使用するセカンダリ認証キー |
+    | `gpuCores` | `gpu_cores` | この Web サービスに割り当てる GPU コアの数。 既定値は 1 です。 |
+    | `livenessProbeRequirements` | NA | liveness probe 要件の構成要素が含まれます。 |
+    | &emsp;&emsp;`periodSeconds` | `period_seconds` | liveness probe を実行する頻度 (秒単位)。 既定値は 10 秒です。 最大値は 1 です。 |
+    | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | コンテナーの起動後、liveness probe が開始するまでの秒数。 既定値は 310 です |
+    | &emsp;&emsp;`timeoutSeconds` | `timeout_seconds` | liveness probe がタイムアウトするまでの秒数既定値は 2 秒です。 最小値は 1 です |
+    | &emsp;&emsp;`successThreshold` | `success_threshold` | 失敗後、liveness probe が成功と見なされるための最小連続成功数。 既定値は 1 です。 最大値は 1 です。 |
+    | &emsp;&emsp;`failureThreshold` | `failure_threshold` | Pod が起動し、liveness probe が失敗したとき、Kubernetes では、failureThreshold 回数だけ試し、それからあきらめます。 既定値は 3 です。 最大値は 1 です。 |
+    | `namespace` | `namespace` | Web サービスのデプロイ先となる Kubernetes 名前空間。 最大 63 個の小文字の英数字 ('a'-'z'、'0'-'9') とハイフン ('-') 文字。 先頭と末尾の文字をハイフンにすることはできません。 |
+
+    次の JSON は、CLI で使用するデプロイ構成の例です。
+
+    ```json
+    {
+        "computeType": "aks",
+        "autoScaler":
+        {
+            "autoscaleEnabled": true,
+            "minReplicas": 1,
+            "maxReplicas": 3,
+            "refreshPeriodInSeconds": 1,
+            "targetUtilization": 70
+        },
+        "dataCollection":
+        {
+            "storageEnabled": true
+        },
+        "authEnabled": true,
+        "containerResourceRequirements":
+        {
+            "cpu": 0.5,
+            "memoryInGB": 1.0
+        }
+    }
+    ```
 
 + **VS コードを使用する**
 

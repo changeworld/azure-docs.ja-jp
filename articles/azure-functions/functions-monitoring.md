@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 581b7cc09089b5f48938bc9677eca6b9dc3731d3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 15fd8593f950e0f553d1b7ca34ee785692043cad
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442291"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304354"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -164,7 +164,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 |------------|---|
 |Trace       | 0 |
 |デバッグ       | 1 |
-|情報 | 2 |
+|Information | 2 |
 |警告     | 3 |
 |Error       | 4 |
 |重大    | 5 |
@@ -570,7 +570,7 @@ namespace functionapp0915
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>JavaScript 関数でカスタム テレメトリをログに記録する
 
-[Application Insights Node.js SDK](https://www.npmjs.com/package/applicationinsights) は、現在はベータ版です。 カスタム テレメトリを Application Insights に送信するサンプル コードをいくつか次に示します。
+次は、[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) でカスタム テレメトリを送信するサンプル コード スニペットです。
 
 ```javascript
 const appInsights = require("applicationinsights");

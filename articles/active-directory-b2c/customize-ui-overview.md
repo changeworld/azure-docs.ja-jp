@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6c9109cf4d6d67d3d8001a9de1d54e24622a9286
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13ae1b74acbcab8d623c24d6a7b8d7e1355b80e8
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511175"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227154"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) B2C によってアプリケーションに提
 - 顧客がサインイン前にプロファイルを編集しようとすると、Azure AD サインイン ページのカスタマイズに使用した同じ手順でカスタマイズするページにリダイレクトされます。
 - [カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集をアプリケーションで提供している場合、[ポリシー ファイルを使用して UI をカスタマイズ](active-directory-b2c-ui-customization-custom.md)します。
 - 顧客の決定に基づく動的コンテンツを提供する必要がある場合、クエリ文字列で送信されたパラメーターに基づいて[ページの内容を変更できるカスタム ポリシー](active-directory-b2c-ui-customization-custom-dynamic.md)を使用します。 たとえば、Web やモバイル アプリケーションから渡されるパラメーターに基づき、Azure AD B2C のサインアップまたはサインイン ページの背景イメージが変化します。
-- Azure AD B2C の[ユーザー フロー](user-flow-javascript-overview.md)または[カスタム ポリシー](page-contract.md)で、JavaScript のクライアント側コードを有効にすることができます。
+- Azure AD B2C の[ユーザー フロー](user-flow-javascript-overview.md)または[カスタム ポリシー](page-layout.md)で、JavaScript のクライアント側コードを有効にすることができます。
 
 Azure AD B2C によって、顧客のブラウザーでコードが実行され、[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) と呼ばれる最新の手法が使用されます。 実行時、コンテンツは、ユーザー フローまたはポリシーで指定された URL から読み込まれます。 URL はページごとに指定します。 URL から読み込まれたコンテンツが Azure AD B2C から挿入された HTML フラグメントに統合され、顧客に表示されます。
 
@@ -37,7 +37,7 @@ Azure AD B2C によって、顧客のブラウザーでコードが実行され�
 
 - Azure AD B2C によって HTML コンテンツがページに統合されます。 Azure AD B2C によって提供される既定のコンテンツをコピーしたり、変更したりしないでください。 HTML コンテンツは最初から構築し、既定のコンテンツはあくまで参考としての利用にとどめることをお勧めします。
 - カスタム コンテンツに JavaScript を含めることができるようになりました。
-- サポートされているブラウザーのバージョン: 
+- サポートされているブラウザーのバージョン:
     - Internet Explorer 11、10、Microsoft Edge
     - Internet Explorer 8 と 9 (サポートに制限あり)
     - Google Chrome 42.0 以降
@@ -50,11 +50,11 @@ v2 のユーザー フローでは、既定のページの見た目をよくし�
 
 左側のメニューで、 **[カスタマイズ]** の **[ページ レイアウト]** を選択します。 次に、 **[テンプレート (プレビュー)]** を選択します。
 
-![ページ レイアウト テンプレートを選択する](media/customize-ui-overview/template.png)
+![Azure portal のユーザー フロー ページのテンプレート選択ドロップダウン](media/customize-ui-overview/template.png)
 
 一覧からテンプレートを選択します。 たとえば、 **[オーシャン ブルー]** テンプレートでは、次のレイアウトがユーザー フロー ページに適用されます。
 
-![オーシャン ブルー テンプレート](media/customize-ui-overview/ocean-blue.png)
+![サインアップ サインイン ページ上に表示される、オーシャン ブルー テンプレートの例](media/customize-ui-overview/ocean-blue.png)
 
 テンプレートを選択すると、選択したレイアウトがユーザー フローのすべてのページに適用されて、各ページの URI が **[カスタム ページ URI]** フィールドに表示されます。
 
@@ -85,13 +85,13 @@ UI をカスタマイズするには次を行います。
 - (CORS が許可されている) HTTPS エンドポイントでコンテンツをホストします。 CORS を構成するときに、GET と OPTIONS の両方の要求メソッドを有効にする必要があります。
 - CSS を使用して、Azure AD B2C によってページに挿入される UI 要素のスタイルを設定します。 サインアップで挿入される HTML 要素の設定も含まれる単純な CSS ファイルの例を次に示します。
 
-    ```css 
+    ```css
     h1 {
       color: blue;
       text-align: center;
     }
     .intro h2 {
-      text-align: center; 
+      text-align: center;
     }
     .entry {
       width: 400px ;
@@ -99,7 +99,7 @@ UI をカスタマイズするには次を行います。
       margin-right: auto ;
     }
     .divider h2 {
-      text-align: center; 
+      text-align: center;
     }
     .create {
       width: 400px ;

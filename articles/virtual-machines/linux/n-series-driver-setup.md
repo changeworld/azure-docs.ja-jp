@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6c8bdb27e9e976a7a490c2a824e994242378641
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7e798b4316b8ccdc2f76512d4651365f5bb151ce
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671201"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278309"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -170,9 +170,9 @@ N シリーズ VM で RDMA 接続をサポートする Azure Marketplace で、�
 
 * **CentOS ベースの 7.4 HPC** - RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。
 
-## <a name="install-grid-drivers-on-nv-or-nvv2-series-vms"></a>NV または NVv2 シリーズの VM に GRID ドライバーをインストールする
+## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>NV または NVv3 シリーズの VM に GRID ドライバーをインストールする
 
-NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバーをインストールするには、各 VM への SSH 接続を作成して、Linux ディストリビューションに応じた手順に従います。 
+NV シリーズまたは NVv3 シリーズの VM に NVIDIA GRID ドライバーをインストールするには、各 VM への SSH 接続を作成して、Linux ディストリビューションに応じた手順に従います。 
 
 ### <a name="ubuntu"></a>Ubuntu 
 
@@ -188,6 +188,8 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
    sudo apt-get dist-upgrade -y
 
    sudo apt-get install build-essential ubuntu-desktop -y
+   
+   sudo apt-get install linux-azure -y
    ```
 3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします (NV または NVv2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
 
@@ -226,8 +228,15 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
  
    ```
    IgnoreSP=FALSE
+   EnableUI=FALSE
    ```
-9. VM を再起動して、インストールの確認に進みます。
+   
+9. 存在する場合、`/etc/nvidia/gridd.conf` から次を削除します。
+ 
+   ```
+   FeatureType=0
+   ```
+10. VM を再起動して、インストールの確認に進みます。
 
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS または Red Hat Enterprise Linux 
@@ -242,6 +251,8 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
  
    sudo yum install dkms
+   
+   sudo yum install hyperv-daemons
    ```
 
 2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします (NV または NV2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次の内容を含む `nouveau.conf` という名前のファイルを `/etc/modprobe.d` に作成します。
@@ -290,8 +301,15 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
  
    ```
    IgnoreSP=FALSE
+   EnableUI=FALSE 
    ```
-9. VM を再起動して、インストールの確認に進みます。
+9. 存在する場合、`/etc/nvidia/gridd.conf` から次を削除します。
+ 
+   ```
+   FeatureType=0
+   ```
+10. VM を再起動して、インストールの確認に進みます。
+
 
 ### <a name="verify-driver-installation"></a>ドライバーのインストールの確認
 

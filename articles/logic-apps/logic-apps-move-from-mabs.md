@@ -9,12 +9,12 @@ ms.author: jonfan
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: f813cb5d8d5c442fc17f126c3a2ff6de7b0bdde1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfc0aa4fa7c70ae91f25f97671b15dacfe991594
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61321255"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273193"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services から Azure Logic Apps への移行
 
@@ -52,7 +52,7 @@ BizTalk Services には、数種類のアーティファクトがあります。
 
 ## <a name="connectors"></a>Connectors
 
-BizTalk Services のコネクタにより、HTTP ベースの要求/応答の対話を可能にする双方向ブリッジを含め、各ブリッジはデータを送受信できます。 Logic Apps でも同じ用語が使用されており、さまざまなテクノロジやサービスに接続することで同じ目的を果たす 180 以上のコネクタがあります。 たとえば、クラウド SaaS および PaaS サービス (OneDrive、Office365、Dynamics CRM など) 用のコネクタに加え、オンプレミス データ ゲートウェイ (BizTalk Services の BizTalk Adapter サービスに代わるもの) を介したオンプレミス システム用のコネクタも用意されています。 BizTalk Services のソースは、FTP、SFTP、および Service Bus Queue または Topic サブスクリプションに制限されています。
+BizTalk Services のコネクタにより、HTTP ベースの要求/応答の対話を可能にする双方向ブリッジを含め、各ブリッジはデータを送受信できます。 Logic Apps でも同じ用語が使用されており、さまざまなテクノロジやサービスに接続することで同じ目的を果たす数百個のコネクタがあります。 たとえば、クラウド SaaS および PaaS サービス (OneDrive、Office365、Dynamics CRM など) 用のコネクタに加え、オンプレミス データ ゲートウェイ (BizTalk Services の BizTalk Adapter サービスに代わるもの) を介したオンプレミス システム用のコネクタも用意されています。 BizTalk Services のソースは、FTP、SFTP、および Service Bus Queue または Topic サブスクリプションに制限されています。
 
 ![](media/logic-apps-move-from-mabs/sources.png)
 

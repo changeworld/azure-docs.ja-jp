@@ -11,12 +11,12 @@ ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c5626e2ddfc24eeaeed562f3eaf73d16626eb458
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67271975"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278031"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -134,6 +134,8 @@ Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあ
 ID トークンの署名でどのユーザー フローが使用されたか (また、メタデータをどこから取得するか) を判定するには、2 つの選択肢があります。 1 つめは、ユーザー フロー名が ID トークン内の `acr` 要求に含まれています。 もう 1 つの選択肢では、要求を発行するときに `state` パラメーターの値に含まれているユーザー フローをエンコードして、それをデコードして使用されたユーザー フローを判断します。 どちらの方法も有効です。
 
 OpenID Connect メタデータ エンドポイントからメタデータ ドキュメントを取得したら、RSA 256 公開キーを利用し、ID トークンの署名を検証できます。 このエンドポイントには、それぞれが `kid` 要求によって識別されるキーが複数存在すると表示される場合があります。 また、ID トークンのヘッダーには、これらのキーのうちのどれが ID トークンの署名に使用されたかを示す `kid` 要求も含まれています。
+
+Azure AD B2C からのトークンを確認するには、指数 (e) と剰余 (n) を使用して公開キーを生成する必要があります。 各プログラミング言語でこれを行う方法をそれぞれ決定する必要があります。 RSA プロトコルを使用した公開キーの生成に関する公式ドキュメントについては、 https://tools.ietf.org/html/rfc3447#section-3.1 を参照してください。
 
 ID トークンの署名を検証した後、確認する必要のあるいくつかの要求が存在します。 次に例を示します。
 

@@ -61,7 +61,7 @@
           href: container-instances-restart-policy.md
         - name: 環境変数の設定 (env)
           href: container-instances-environment-variables.md
-        - name: コンテナーのエントリポイントのオーバーライド
+        - name: コンテナー スタートアップ コマンドの設定 (entrypoint)
           href: container-instances-start-command.md
         - name: コマンドの実行 (exec)
           href: container-instances-exec.md

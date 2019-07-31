@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ac6c56dca100ea9836158f46881c4eb12213e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0e7ae7e90642a6adfd35e71765e2753334660c56
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60285192"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261861"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Monitor での Azure AD サインイン ログ スキーマを解釈する
 
@@ -154,13 +154,18 @@ ms.locfileid: "60285192"
 | ResultType | サインイン操作の結果は、*Success* または *Failure* です。 | 
 | ResultSignature | サインイン操作にエラーがある場合は、そのエラー コードが含まれます。 |
 | ResultDescription | サインイン操作のエラーの説明を指定します。 |
-| DurationMs |  この値はマップされていないため、このフィールドを無視しても問題ありません。|
+| riskDetail | riskDetail | 危険なユーザー、サインイン、リスク イベントの特定の状態の背後にある "理由" を提供します。 値には `none`、`adminGeneratedTemporaryPassword`、`userPerformedSecuredPasswordChange`、`userPerformedSecuredPasswordReset`、`adminConfirmedSigninSafe`、`aiConfirmedSigninSafe`、`userPassedMFADrivenByRiskBasedPolicy`、`adminDismissedAllRiskForUser`、`adminConfirmedSigninCompromised`、`unknownFutureValue` があります。 値 `none` は、ユーザーまたはサインインに対してこれまで何のアクションも行われていないことを意味します。 <br>**注:** このプロパティの詳細には Azure AD Premium P2 ライセンスが必要です。 その他のライセンスからは、値 `hidden` が返されます。 |
+| riskEventTypes | riskEventTypes | サインインに関連付けられているリスク イベントの種類。 値には `unlikelyTravel`、`anonymizedIPAddress`、`maliciousIPAddress`、`unfamiliarFeatures`、`malwareInfectedIPAddress`、`suspiciousIPAddress`、`leakedCredentials`、`investigationsThreatIntelligence`、`generic`、`unknownFutureValue` があります。 |
+| riskLevelAggregated | riskLevel | 集計リスク レベル。 値には `none`、`low`、`medium`、`high`、`hidden`、`unknownFutureValue` があります。 値 `hidden` は、Azure AD Identity Protection に対してユーザーまたはサインインが有効にされなかったことを意味します。 **注:** このプロパティの詳細は、Azure AD Premium P2 のお客様のみが利用できます。 その他の顧客には、`hidden` が返されます。 |
+| riskLevelDuringSignIn | riskLevel | サインイン中のリスク レベル。 値には `none`、`low`、`medium`、`high`、`hidden`、`unknownFutureValue` があります。 値 `hidden` は、Azure AD Identity Protection に対してユーザーまたはサインインが有効にされなかったことを意味します。 **注:** このプロパティの詳細は、Azure AD Premium P2 のお客様のみが利用できます。 その他の顧客には、`hidden` が返されます。 |
+| riskState | riskState | 危険なユーザー、サインイン、リスク イベントの状態を報告します。 値には、`none`、`confirmedSafe`、`remediated`、`dismissed`、`atRisk`、`confirmedCompromised`、`unknownFutureValue` があります。 |
+| DurationMs |  この値はマップされていないため、このフィールドを無視しても問題ありません。 |
 | CallerIpAddress | 要求を行ったクライアントの IP アドレス。 | 
 | CorrelationId | クライアントから渡される省略可能な GUID。 この値は、クライアント側の操作をサーバー側の操作と関連付けるために役立ちます。また、複数のサービスにまたがるログをトレースする場合に便利です。 |
 | ID | 要求を行ったときに提示されたトークンからの ID。 ユーザー アカウント、システム アカウント、またはサービス プリンシパルです。 |
 | Level | メッセージの種類を指定します。 監査の場合は常に *Informational* です。 |
 | Location | サインイン アクティビティの場所を指定します。 |
-| Properties | サインインに関連付けられたすべてのプロパティを一覧表示します。詳しくは、[Microsoft Graph API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)をご覧ください。 読みやすくするため、このスキーマではサインイン リソースと同じ属性名を使用しています。
+| properties | サインインに関連付けられたすべてのプロパティを一覧表示します。詳しくは、[Microsoft Graph API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)をご覧ください。 読みやすくするため、このスキーマではサインイン リソースと同じ属性名を使用しています。
 
 ## <a name="next-steps"></a>次の手順
 

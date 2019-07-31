@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 211cb32298b17bb9e4023bf8bc74233c3916f58d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879108"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226092"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Store Gen1 のアクセス制御
 
@@ -166,7 +166,7 @@ def access_check( user, desired_perms, path ) :
   # Handle the owning user. Note that mask IS NOT used.
   entry = get_acl_entry( path, OWNER )
   if (user == entry.identity)
-      return ( (desired_perms & e.permissions) == desired_perms )
+      return ( (desired_perms & entry.permissions) == desired_perms )
 
   # Handle the named users. Note that mask IS used.
   entries = get_acl_entries( path, NAMED_USER )
@@ -216,7 +216,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="umask"></a>umask
 
-ファイルまたはフォルダーを作成するときに、umask を使用して、子項目に既定の ACL がどのように設定されるかを変更します。 umask は親フォルダーに設定される 9 ビットの値であり、**所有ユーザー**、**所有グループ**、および**その他**に対する RWX 値が含まれています。
+ファイルまたはフォルダーを作成するときに、umask を使用して、子項目に既定の ACL がどのように設定されるかを変更します。 umask は親フォルダーの 9 ビットの値であり、**所有ユーザー**、**所有グループ**、**その他**に対する RWX 値が含まれています。
 
 Azure Data Lake Storage Gen1 に対する umask は、007 に設定される定数値です。 この値の変換値
 

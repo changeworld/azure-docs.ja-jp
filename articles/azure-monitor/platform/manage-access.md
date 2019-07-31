@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 07/16/2019
 ms.author: magoedte
-ms.openlocfilehash: 22802950c68dc5a3cf0df8ee26ff38ccb937b551
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: fbfbd8e26ab3e92f06194322be7ec2be2fb180fd
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295518"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68254459"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースを管理する
 Azure Monitor のログ データは、Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは基本的に、データと構成情報が含まれるコンテナーです。 ログ データへのアクセスを管理するには、ワークスペースに関するさまざまな管理タスクを実行します。 組織のメンバーは、複数のワークスペースを使用して、IT インフラストラクチャの一部またはすべてから収集されるデータのさまざまなセットを管理する場合があります。
@@ -192,12 +192,18 @@ Azure Resource Manager テンプレートでアクセス モードを構成す�
 
 次のアクティビティにも、Azure のアクセス許可が必要です。
 
-| Action                                                          | 必要とされる Azure のアクセス許可 | メモ |
-|-----------------------------------------------------------------|--------------------------|-------|
-| 監視ソリューションの追加と削除                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | これらのアクセス許可は、リソース グループまたはサブスクリプション レベルで付与する必要があります。 |
-| 価格レベルの変更                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
+||Action |必要とされる Azure のアクセス許可 |メモ |
+|-------|-------------------------|------|
+| 監視ソリューションの追加と削除 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | これらのアクセス許可は、リソース グループまたはサブスクリプション レベルで付与する必要があります。 |
+| 価格レベルの変更 | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | *Backup* ソリューション タイルと *Site Recovery* ソリューション タイルのデータの表示 | 管理者/共同管理者 | クラシック デプロイ モデルを使用してデプロイされたリソースにアクセスします |
-| Azure Portal でのワークスペースの作成                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
+| Azure Portal でのワークスペースの作成 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
+| ワークスペースの基本的なプロパティを表示し、ポータルにワークスペース ブレードを入力する | `Microsoft.OperationalInsights/workspaces/read` ||
+| 任意のインターフェイスを使用し、ログにクエリを実行する | `Microsoft.OperationalInsights/workspaces/query/read` ||
+| クエリを使用し、すべてのログ タイプにアクセスする | `Microsoft.OperationalInsights/workspaces/query/*/read` ||
+| 特定のログ テーブルにアクセスする | `Microsoft.OperationalInsights/workspaces/query/<table_name>/read` ||
+| ワークスペース キーを読み取り、このワークスペースへのログ送信を許可する | `Microsoft.OperationalInsights/workspaces/sharedKeys/action` ||
+
 
 
 #### <a name="manage-access-to-log-analytics-workspace-using-azure-permissions"></a>Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセスを管理する 
@@ -215,9 +221,9 @@ Log Analytics 閲覧者ロールには、次の Azure アクションが含ま�
 
 | Type    | アクセス許可 | 説明 |
 | ------- | ---------- | ----------- |
-| Action | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定 |
-| Action | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | ログ検索 v2 クエリを実行する機能 |
-| Action | `Microsoft.OperationalInsights/workspaces/search/action` | ログ検索 v1 クエリを実行する機能 |
+| Action | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定。 <br> ワークスペースの場合、ワークスペース設定の読み取りとデータへのクエリ実行について、制限なしの完全なアクセスが許可されます。 上の詳細なオプションを参照してください。 |
+| Action | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 非推奨です。ユーザーに割り当てる必要はありません。 |
+| Action | `Microsoft.OperationalInsights/workspaces/search/action` | 非推奨です。ユーザーに割り当てる必要はありません。 |
 | Action | `Microsoft.Support/*` | サポート ケースを開く機能 |
 |非アクション | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | データ コレクション API の使用とエージェントのインストールに必要なワークスペース キーの読み取りを防ぎます。 これにより、ユーザーは新しいリソースをワークスペースに追加できなくなります |
 
@@ -242,7 +248,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 
 | アクセス許可 | 説明 |
 | ---------- | ----------- |
-| `*/read`     | すべてのリソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定 |
+| `*/read`     | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定。 <br> ワークスペースの場合、ワークスペース設定の読み取りとデータへのクエリ実行について、制限なしの完全なアクセスが許可されます。 上の詳細なオプションを参照してください。 |
 | `Microsoft.Automation/automationAccounts/*` | Runbook の追加と編集など、Azure Automation アカウントを作成および構成する機能 |
 | `Microsoft.ClassicCompute/virtualMachines/extensions/*` <br> `Microsoft.Compute/virtualMachines/extensions/*` | Microsoft Monitoring Agent 拡張機能、OMS Agent for Linux 拡張機能など、仮想マシン拡張機能を追加、更新、および削除する |
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | ストレージ アカウント キーを表示する。 Azure Storage アカウントからログを読み取るように Log Analytics を構成するために必要です |
@@ -268,7 +274,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 | アクセス許可 | 説明 |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>次に例を示します。<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | リソースのすべてのログ データを表示可能。  |
-
+| `Microsoft.Insights/diagnosticSettings/write ` | 診断設定を構成し、このリソースに設定を許可する機能。 |
 
 通常、このアクセス許可は、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールまたは[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールなど、 _\*/read or_ _\*_ アクセス許可を含むロールによって付与されます。 特定の操作を含むカスタム ロールまたは専用の組み込みロールには、このアクセス許可が含まれないことがあります。
 

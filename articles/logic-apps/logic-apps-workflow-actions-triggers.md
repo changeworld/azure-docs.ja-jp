@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 490131d1743b366b5ac51a5a0fdac4b89ffe08f2
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 76d4fbaaea987b5d935d09b7ff1c490b6003a489
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274175"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260364"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス
 
@@ -1091,7 +1091,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *例 1*
 
-このアクションは、ロジック アプリの名前を取得して、結果として "Hello world from <logic-app-name>" というテキストを返すコードを実行します。 この例では、コードは読み取り専用の `workflowContext` オブジェクトを介して `workflowContext.workflow.name` プロパティにアクセスすることで、ワークフローの名前を参照します。 `workflowContext` オブジェクトの使用方法の詳細については、「[Reference trigger and action results in your code](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)」(コード内でトリガーとアクションの結果を参照する) を参照してください。
+このアクションは、ロジック アプリの名前を取得して、結果として "Hello world from \<logic-app-name>" というテキストを返すコードを実行します。 この例では、コードは読み取り専用の `workflowContext` オブジェクトを介して `workflowContext.workflow.name` プロパティにアクセスすることで、ワークフローの名前を参照します。 `workflowContext` オブジェクトの使用方法の詳細については、「[Reference trigger and action results in your code](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)」(コード内でトリガーとアクションの結果を参照する) を参照してください。
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1634,7 +1634,7 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 | 値 | Type | 説明 | 
 |-------|------|-------------| 
-| <CSV *or* HTML>| string | 作成するテーブルの形式 | 
+| \<CSV *または* HTML>| string | 作成するテーブルの形式 | 
 | <*array*> | Array | テーブルのソース項目を渡す配列または式 <p>**メモ**:ソース配列が空の場合、アクションによって空のテーブルが作成されます。 | 
 |||| 
 

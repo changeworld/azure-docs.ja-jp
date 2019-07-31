@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e44e1980f25ede24ed31cf0d14bbe0e4157e4e45
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61324397"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305592"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
@@ -269,6 +269,25 @@ Azure Monitor ログと併せて、ロジック アプリの診断データを�
         "transactionId": "@action()['inputs']['body']['<content>']"
     }
   }
+  ```
+  **変数を初期化する**アクションの例をもう 1 つご覧に入れます。 この例では、入力がレコードではなく、配列であるアクションの入力から、追跡されたプロパティが追加されます。  
+
+  ``` json
+  "actions": {
+    "type": "InitializeVariable",
+    "Initialize_variable": {
+    "inputs": {
+        "variables": [{
+              "name": "ConnectorName",
+               "type": "String",
+               "value": "SFTP-SSH"
+         }]                
+      },
+    "trackedProperties": {
+        "Track1": "@action().inputs.variables[0].value"
+    }
+    }
+  }      
   ```
 
 ## <a name="next-steps"></a>次の手順

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c5bbd19969349965ea20fa4cfc09e10119a9a86c
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: ee216bd4d6994179e347465c30039f2f8e293c85
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295742"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233018"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 
@@ -186,7 +186,7 @@ CORS の詳細については、「 [Azure ストレージ サービスでのク
 
 アプリケーションが常に使用する構成や検索などのデータは、頻繁にキャッシュの対象とされます。  
 
-.NET を使用して BLOB のプロパティを取得し、最終更新日を確認する方法の例については、「[プロパティおよびメタデータの設定と取得](../blobs/storage-properties-metadata.md)」をご覧ください。 条件付きダウンロードの詳細については、MSDN の「 [BLOB サービス操作の条件ヘッダーの指定](https://msdn.microsoft.com/library/azure/dd179371.aspx)」を参照してください。  
+条件付きダウンロードの詳細については、「[BLOB サービス操作の条件ヘッダーの指定](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations)」を参照してください。  
 
 #### <a name="subheading8"></a>データの一括アップロード
 
@@ -293,8 +293,6 @@ Azure Storage チームは、ストレージ アカウントとの間やスト�
 ### <a name="subheading20"></a>メタデータの使用
 
 BLOB サービスは HEAD 要求をサポートしており、BLOB に関するメタデータを含めることができます。 たとえば、アプリケーションは写真の EXIF データを必要とする場合に、写真を取得してデータを抽出できます。 帯域幅の節約とパフォーマンスの向上を目的として、アプリケーションは写真をアップロードする際に、BLOB のメタデータに EXIF データを保存できます。これ以降は HEAD 要求だけを使用してメタデータの EXIF データを取得できるため、BLOB を読み取るたびに EXIF データを抽出するのに必要な、帯域幅と処理時間の大幅な削減につながります。 この方法は、BLOB のコンテンツ全体ではなくメタデータだけが必要な場合に役立ちます。  1 つの BLOB に格納できるメタデータはわずか 8 KB であり、これを超えるメタデータを格納する要求はサービスに拒否されるため、データのサイズが適合しない場合は、この方法は使用できません。  
-
-.NET を使用して BLOB のメタデータを取得する方法の例については、「[プロパティおよびメタデータの設定と取得](../blobs/storage-properties-metadata.md)」をご覧ください。  
 
 ### <a name="rapid-uploading"></a>高速アップロード
 

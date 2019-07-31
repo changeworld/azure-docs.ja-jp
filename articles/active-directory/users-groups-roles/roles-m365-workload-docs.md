@@ -1,6 +1,6 @@
 ---
-title: Microsoft 365 ワークロードの管理者ロール コンテンツ - Azure AD | Microsoft Docs
-description: Azure Active Directory で Microsoft 365 ワークロードの管理者ロールのコンテンツおよび API リファレンスを検索する
+title: Microsoft 365 サービスの管理者ロール コンテンツ - Azure AD | Microsoft Docs
+description: Azure Active Directory で Microsoft 365 サービスの管理者ロールのコンテンツおよび API リファレンスを検索する
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,20 +15,20 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7460c3a7d957634d14186d313994c65d89fa4a32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12ffa1d4f3e802b3419b31844ddd8133ceab5086
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60468183"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304392"
 ---
-# <a name="administrator-roles-for-microsoft-365-workloads"></a>Microsoft 365 ワークロードの管理者ロール
+# <a name="administrator-roles-for-microsoft-365-services"></a>Microsoft 365 サービスの管理者ロール
 
 Microsoft 365 のすべての製品は、Azure AD の管理者ロールで管理できます。 一部の製品では、その製品に固有の追加のロールも提供されます。 各製品でサポートされるロールについては、次の表を参照してください。 委任の問題に関する一般的な説明については、[Azure Active Directory でのロールの委任計画](roles-concept-delegation.md)に関するページを参照してください。
 
 ## <a name="where-to-find-content"></a>コンテンツの参照先
 
-Microsoft 365 ワークロード | ロール コンテンツ | API コンテンツ
+Microsoft 365 サービス | ロール コンテンツ | API コンテンツ
 ---------------------- | ------------------ | -----------------
 Office 365 と Microsoft 365 のビジネス プランでの管理者ロール | [Office 365 の管理者ロール](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | 使用できません。
 Azure Active Directory (Azure AD) および Azure AD Identity Protection| [Azure AD 管理者ロール](directory-assign-admin-roles.md) | [Graph API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[ロールの割り当てのフェッチ](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)

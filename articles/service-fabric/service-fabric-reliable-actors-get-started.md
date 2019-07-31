@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/16/2018
+ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: b6ca4810d86bb3c8413f0a740ac4483a848b8e10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d870690416f96a2e1c24e6de16bdc8faa060f6bd
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726334"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225167"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "60726334"
 
 ## <a name="create-a-new-project-in-visual-studio"></a>Visual Studio での新しいプロジェクトの作成
 
-Visual Studio 2015 以降を管理者として起動し、新しい **Service Fabric アプリケーション** プロジェクトを作成します。
+Visual Studio 2019 以降を管理者として起動し、新しい **Service Fabric アプリケーション** プロジェクトを作成します。
 
 ![Visual Studio 用の Service Fabric ツール - 新しいプロジェクト][1]
 

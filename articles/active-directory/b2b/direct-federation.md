@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 07/15/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4dadc68e78fbaa979751d5bcd04ef481c3ab886
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 113e178d39ec776b63a0b38c55035f3493586ea2
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544637"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233867"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 |     |
@@ -61,8 +61,11 @@ ms.locfileid: "67544637"
 
 ### <a name="signing-certificate-renewal"></a>署名証明書の更新
 ID プロバイダーの設定でメタデータ URL を指定した場合、署名証明書が有効期限切れになると、Azure AD によって自動的に更新されます。 ただし、証明書が有効期限切れになる前に何らかの理由でローテーションされた場合、またはメタデータ URL を指定しなかった場合には、Azure AD による更新はできません。 この場合、署名証明書を手動で更新する必要があります。
+
+### <a name="limit-on-federation-relationships"></a>フェデレーション リレーションシップの制限
+現在のところ、最大 1000 のフェデレーション リレーションシップがサポートされています。 この制限には、[内部フェデレーション](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)と直接フェデレーションの両方が含まれます。
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
-### <a name="can-i-set-up-direct-federation-with-an-unmanaged-email-verified-tenant"></a>アンマネージド (電子メールで検証済み) のテナントとの直接フェデレーションを設定することはできますか。 
+### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>アンマネージド (電子メールで検証) テナントが存在するドメインとの直接フェデレーションを設定することはできますか。 
 はい。 ドメインが検証されておらず、テナントで[管理者の引き継ぎ](../users-groups-roles/domains-admin-takeover.md)が実施されていない場合は、直接フェデレーションを設定することができます。 アンマネージドまたは電子メールで検証済みのテナントは、ユーザーが B2B の招待を利用したとき、または現時点で存在しないドメインを使用して Azure AD のセルフサービス サインアップを実行したときに作成されます。 これらのドメインとの直接フェデレーションを設定することができます。 Azure portal 上で、または PowerShell を使用して、DNS で検証済みのドメインとの直接フェデレーションを設定しようとすると、エラーが表示されます。
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>直接フェデレーションと電子メールのワンタイム パスコード認証の両方が有効な場合、どちらの方法が優先されますか。
 取引先組織との直接フェデレーションが確立すると、その組織に属する新しいゲスト ユーザーに対して、電子メールのワンタイム パスコード認証よりも直接フェデレーションが優先されます。 直接フェデレーションを設定する前に、ゲスト ユーザーがワンタイム パスコード認証を使用して招待を利用した場合、それらのゲスト ユーザーは引き続きワンタイム パスコード認証を使用することになります。 

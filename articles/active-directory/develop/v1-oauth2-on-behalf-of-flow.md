@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fd5c8f406ea54c7fc8e81c674e41b30d7ad406
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: eb64aa401838451191a830a5adbfb435ac5fdf25
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482414"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261936"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使用するサービス間の呼び出し
 
@@ -83,7 +83,7 @@ Azure AD で、中間層サービスとクライアント アプリケーショ�
 1. **[登録]** を選択して、アプリケーションを作成します。
 1. アプリケーション用にアクセス許可を構成します。 **[API のアクセス許可]** で、 **[アクセス許可の追加]** を選択し、 **[自分の API]** を選択します。
 1. テキスト フィールドに中間層サービスの名前を入力します。
-1. **[アクセス許可の選択]** を選択し、 **[<service name> にアクセス]** を選択します。
+1. **[アクセス許可の選択]** 、 **[\<サービス名> にアクセス]** の順に選択します。
 
 ### <a name="configure-known-client-applications"></a>既知のクライアント アプリケーションの構成
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
-ms.openlocfilehash: ad7cf3a1dfcef8795ceb378a59a1cf0b2010293e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 012d75ff6ad4acdc6612a197f274e2dfdb98370a
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595507"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249264"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Service Fabric のステートフル サービスの単体テスト
 
@@ -51,8 +51,8 @@ Service Fabric のステートフル サービスに対する単体テストに�
 状態マネージャーはリモート リソースとして扱う必要があるため、モック作成する必要があります。 状態マネージャーをモック作成するときは、状態マネージャーに保存された情報の追跡用に、その情報を読み取って確認できるよう、基になるメモリ内の記憶域が必要です。 そのための最も単純な方法は、Reliable Collections の型ごとにモック インスタンスを作成することです。 そのモック内で、対応するコレクションに対して実行される操作にちょうど合うデータ型を使用します。 以下、いくつかの推奨されるデータ型をリライアブル コレクションごとに示します。
 
 - IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
-- IReliableQueue<T> -> System.Collections.Generic.Queue<T>
-- IReliableConcurrentQueue<T> -> System.Collections.Concurrent.ConcurrentQueue<T>
+- IReliableQueue\<T> -> System.Collections.Generic.Queue\<T>
+- IReliableConcurrentQueue\<T> -> System.Collections.Concurrent.ConcurrentQueue\<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>状態マネージャーのインスタンスは多数、ストレージは単一
 前述のように、状態マネージャーとリライアブル コレクションはリモート リソースとして扱う必要があります。 したがって、単体テスト内では、これらのリソースをモック作成することになります。 しかしステートフル サービスのインスタンスを複数実行しているときに、そのさまざまなインスタンス全体で、モック作成された各状態マネージャーの同期状態を維持することは簡単ではありません。 ステートフル サービスがクラスター上で実行されているときは、Service Fabric によって、各セカンダリ レプリカの状態マネージャーとプライマリ レプリカの整合性をとるための処理が行われます。 したがって、ロールの変更をシミュレートできるよう、テストにも同じ振る舞いを持たせなければなりません。

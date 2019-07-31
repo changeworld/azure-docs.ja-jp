@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d41c8edf3985e77e0f67a54013d1b59abbaf72f1
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248297"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297560"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 
@@ -32,9 +32,9 @@ ms.locfileid: "60248297"
 ## <a name="licensing-requirements"></a>ライセンスの要件
 グループベースのライセンスを使用するには、次のいずれかのライセンスが必要です。
 
-- Azure AD Basic の有料または試用版のサブスクリプション
+- Azure AD Basic 以上の有料または試用版のサブスクリプション
 
-- Office 365 Enterprise E3 または Office 365 A3 以上の有料または試用版のエディション
+- Office 365 Enterprise E3 または Office 365 A3 または Office 365 GCC G3 以上の有料または試用版のエディション
 
 ### <a name="required-number-of-licenses"></a>必要なライセンスの数
 ライセンスが割り当てられるすべてのグループについて、個々のメンバーに対するライセンスも必要です。 グループの各メンバーにライセンスを割り当てる必要はありませんが、すべてのメンバーが含まれる十分な数のライセンスが少なくとも必要です。 たとえば、テナントのライセンス グループの一部として 1,000 人の個別メンバーがいる場合、ライセンス契約を満たすには、少なくとも 1,000 ライセンスが必要です。

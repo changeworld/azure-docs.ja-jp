@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 499aeccdf00980eeb66ac6ee06e45267fd515143
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181139"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68286307"
 ---
 共有イメージ ギャラリーでは、RBAC を使用してイメージを共有できます。 RBAC を使用すると、テナント内でイメージを共有できます。また、テナントの外部にいる個人と共有することもできます。 ただし、Azure テナントの外部で大規模にイメージを共有する場合は、共有を容易にするためにアプリ登録を作成することをお勧めします。  アプリ登録を使用すると、次のようにより複雑な共有シナリオが可能になります。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "67181139"
 
 ## <a name="give-tenant-2-access"></a>テナント 2 にアクセス権を付与する
 
-ブラウザーを使用してサインインを要求することで、テナント 2 にアプリケーションへのアクセス権を付与します。 *<Tenant2 ID>* を、イメージ ギャラリーを共有するテナントのテナント ID に置き換えます。 *<アプリケーション (クライアント) ID>* を、作成したアプリの登録のアプリケーション ID に置き換えます。 置き換えが完了したら、URL をブラウザーに貼り付け、サインイン プロンプトに従ってテナント 2 にサインインします。
+ブラウザーを使用してサインインを要求することで、テナント 2 にアプリケーションへのアクセス権を付与します。 *\<Tenant2 ID>* を、イメージ ギャラリーを共有するテナントのテナント ID に置き換えます。 *\<アプリケーション (クライアント) ID>* を、作成したアプリの登録のアプリケーション ID に置き換えます。 置き換えが完了したら、URL をブラウザーに貼り付け、サインイン プロンプトに従ってテナント 2 にサインインします。
 
 ```
 https://login.microsoftonline.com/<Tenant 2 ID>/oauth2/authorize?client_id=<Application (client) ID>&response_type=code&redirect_uri=https%3A%2F%2Fwww.microsoft.com%2F 

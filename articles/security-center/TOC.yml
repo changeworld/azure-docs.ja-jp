@@ -75,8 +75,6 @@
       href: security-center-provide-security-contact-details.md
     - name: 価格レベル
       href: security-center-pricing.md
-    - name: セキュリティ構成
-      href: security-center-customize-os-security-config.md
     - name: テナント全体の可視性
       href: security-center-management-groups.md
     - name: セキュリティの推奨事項を実装する
@@ -183,6 +181,8 @@
           href: security-center-alerts-type.md
         - name: Azure リソースおよびユーザーに対する UEBA
           href: security-center-ueba-mcas.md
+        - name: セキュリティ構成のカスタマイズ
+          href: security-center-customize-os-security-config.md
 - name: リファレンス
   items:
     - name: REST API

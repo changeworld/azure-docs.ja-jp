@@ -7,12 +7,12 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: fec6d83870e20b7622f37c52847803d4f03cbba5
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 103ec3c9ee4bd6b3b83408b0f9958a22d3a22ae1
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722678"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261056"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>更新:Azure Image Builder で Windows VM を作成する
 
@@ -140,7 +140,7 @@ az resource invoke-action \
 
 ## <a name="create-the-vm"></a>VM の作成
 
-ビルドしたイメージを使用して VM を作成します。 *<password>* を VM 上の `aibuser` の自身のパスワードに置き換えます。
+ビルドしたイメージを使用して VM を作成します。 *\<password>* を VM 上の `aibuser` の自身のパスワードに置き換えます。
 
 ```azurecli-interactive
 az vm create \

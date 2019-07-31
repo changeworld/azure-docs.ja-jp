@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: a453e82f47bb9eed25c8d5caf986bc854085e8ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3edfa1ca63560f447d2c9ea3da3588e069b7af1
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061218"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226822"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -150,7 +150,7 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 
 * インストルメンテーション キーは、テレメトリのすべての項目と共に送信されます。インストルメンテーション キーを受け取った Application Insights は、リソース内にこのキーを表示します。
 * HTTP 要求コンポーネントはオプションです。 このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
-* イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。 この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。 これにより、[診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
+* イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。 この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。 これにより、 [診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>インストルメンテーション キーの他の設定方法
 Application Insights SDK は、次の順序でキーを探します。
@@ -169,6 +169,8 @@ Application Insights SDK は、次の順序でキーを探します。
         TelemetryConfiguration.getActive().setInstrumentationKey(instrumentationKey);
     }
 ```
+
+[Live Metrics](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) では、コードからのインストルメンテーション キーの読み取りがサポートされていないことに注意してください。
 
 ## <a name="4-add-an-http-filter"></a>4.HTTP フィルターを追加する
 最後の構成手順では、HTTP 要求コンポーネントが各 Web 要求をログに記録できるようにします (単に最小限の API が必要な場合はこの手順を行う必要はありません)。
@@ -364,7 +366,7 @@ Windows で動作する Spring Boot アプリでは、 Azure App Services での
 
 その他の例外に関するデータを収集するには 2 つのオプションがあります。
 
-* [TrackException への呼び出しをコードに挿入します][apiexceptions]。
+* [trackException() への呼び出しをコードに挿入します][apiexceptions]。
 * [Java エージェントをサーバーにインストール](java-agent.md)します。 監視するメソッドを指定します。
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>メソッドの呼び出しと外部依存関係の監視
@@ -434,35 +436,11 @@ Application Insights Java SDK では、[W3C 分散トレース](https://w3c.gith
 ### <a name="unix-performance-counters"></a>Unix パフォーマンス カウンター
 * [Application Insights プラグインを使用して collectd をインストール](java-collectd.md) し、さまざまな種類のシステムとネットワークに関するデータを取得します。
 
-## <a name="local-forwarder"></a>ローカル フォワーダー
-
-[ローカル フォワーダー](https://docs.microsoft.com/azure/application-insights/local-forwarder)とは、さまざまな SDK やフレームワークから Application Insights または [OpenCensus](https://opencensus.io/) のテレメトリを収集して、それを Application Insights にルーティングするエージェントです。 これは、Windows と Linux で実行できます。
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<DeveloperMode>false</DeveloperMode>
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-SpringBoot スターターを使用する場合は、構成ファイル (application.properties) に以下を追加します。
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-SpringBoot の application.properties と applicationinsights.xml の構成の既定値は同じです。
-
 ## <a name="get-user-and-session-data"></a>ユーザーとセッションのデータを取得する
 Web サーバーからテレメトリを送信しようとしているところです。 ここで、アプリケーションの状態を完全に把握するために、監視を追加することもできます。
 
-* [Web ページにテレメトリを追加][usage]して、ページ ビューやユーザー メトリックを監視します。
-* [Web テストを設定][availability]して、アプリケーションが動作していて応答できることを確認します。
+* [Web ページにテレメトリを追加][usage] して、ページ ビューやユーザー メトリックを監視します。
+* [Web テストを設定][availability] して、アプリケーションが動作していて応答できることを確認します。
 
 ## <a name="capture-log-traces"></a>ログ トレースをキャプチャする
 Application Insights を使用すると、Log4J、Logback、またはその他のログ フレームワークのログをさまざまな側面から分析できます。 ログは、HTTP 要求やその他のテレメトリに関連付けることができます。 方法については、[こちら][javalogs]をご覧ください。
@@ -470,8 +448,8 @@ Application Insights を使用すると、Log4J、Logback、またはその他�
 ## <a name="send-your-own-telemetry"></a>独自のテレメトリを送信する
 SDK をインストールすると、API を使用して独自のテレメトリを送信できるようになります。
 
-* アプリケーションのユーザーの行動を把握するには、[カスタム イベントおよびメトリックを追跡][api]します。
-* 問題の診断に役立つ情報を得るには、[イベントおよびログを検索][diagnostic]します。
+* アプリケーションでのユーザーの行動を把握するには、[カスタム イベントおよびメトリックを追跡][api]します。
+* [イベントおよびログを検索][diagnostic] します。
 
 ## <a name="availability-web-tests"></a>可用性 Web テスト
 Application Insights では、Web サイトを定期的にテストして、Web サイトが正常に動作および応答していることを確認できます。

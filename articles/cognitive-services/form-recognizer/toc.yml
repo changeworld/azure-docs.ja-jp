@@ -7,22 +7,22 @@
 - name: クイック スタート
   expaned: true
   items:
-    - name: カスタム モデルをトレーニングしてデータを抽出する
+    - name: REST API の使用
       items:
-        - name: REST API の使用
+        - name: カスタム モデルをトレーニングしてデータを抽出する
           items:
             - name: cURL
               href: quickstarts/curl-train-extract.md
             - name: Python
               href: quickstarts/python-train-extract.md
-    - name: レシートに関する事前構築済みモデルを使用する
-      items:
-        - name: REST API の使用
+        - name: あらかじめ構築されたレシート モデルを使用する
           items:
             - name: cURL
               href: quickstarts/curl-receipts.md
             - name: Python
               href: quickstarts/python-receipts.md
+    - name: .NET SDK の使用
+      href: quickstarts/dotnet-sdk.md
 - name: ハウツー ガイド
   items:
     - name: トレーニング データ セットの作成

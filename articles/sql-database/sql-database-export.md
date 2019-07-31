@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/11/2019
-ms.openlocfilehash: c87979760730cbe8f57d8f65463c94d08888aa2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 07/16/2019
+ms.openlocfilehash: 8d795fe88721dfed65134b550eb0036c4e7310eb
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762755"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305801"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL データベースを BACPAC ファイルにエクスポートする
 
@@ -40,14 +40,16 @@ ms.locfileid: "65762755"
 
 ## <a name="export-to-a-bacpac-file-using-the-azure-portal"></a>Azure Portal を使用して BACPAC ファイルにエクスポートする
 
+現在のところ、Azure PowerShell を使用して[マネージド インスタンス](sql-database-managed-instance.md)からデータベースの BACPAC をエクスポートすることはサポートされていません。 代わりに、SQL Server Management Studio または SQLPackage を使用してください。
+
 > [!NOTE]
-> [マネージド インスタンス](sql-database-managed-instance.md)では現在、Azure portal を使用して BACPAC ファイルにデータベースをエクスポートすることはサポートされていません。 マネージド インスタンスを BACPAC ファイルにエクスポートするには、SQL Server Management Studio または SQLPackage を使用します。
+> Azure portal または PowerShell から送信されたインポート/エクスポート要求を処理するマシンは、BACPAC ファイルとデータ層アプリケーション フレームワーク (DacFX) によって生成された一時ファイルを格納する必要があります。 必要なディスク領域は、同じサイズのデータベースでも大きく異なります。データベースのサイズの最大 3 倍のディスク領域が必要になることがあります。 インポート/エクスポート要求のみを実行するマシンには、450 GB のローカル ディスク領域があります。 その結果、一部の要求がエラー `There is not enough space on the disk` で失敗することがあります。 この場合の回避策は、十分なローカル ディスク領域を持つマシンで sqlpackage.exe を実行することです。 150 GB を超えるデータベースをインポート/エクスポートする場合は、[SqlPackage](#export-to-a-bacpac-file-using-the-sqlpackage-utility) を使用してこの問題を回避することをお勧めします。
 
 1. [Azure Portal](https://portal.azure.com) を使用してデータベースをエクスポートするには、データベースのページを開き、ツールバーの **[エクスポート]** をクリックします。
 
    ![データベースのエクスポート](./media/sql-database-export/database-export1.png)
 
-2. BACPAC ファイル名を指定し、エクスポートに使用する既存の Azure ストレージ アカウントとコンテナーを選択した後、ソース データベースにアクセスするための適切な資格情報を指定します。
+2. BACPAC ファイル名を指定し、エクスポートに使用する既存の Azure ストレージ アカウントとコンテナーを選択した後、ソース データベースにアクセスするための適切な資格情報を指定します。 ここでは、Azure 管理者であっても SQL **サーバー管理者ログイン**が必要になります。Azure 管理者であることは、SQL サーバー管理者のアクセス許可を持っていることと同じではないためです。
 
     ![データベースのエクスポート](./media/sql-database-export/database-export2.png)
 

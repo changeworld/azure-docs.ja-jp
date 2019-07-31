@@ -10,12 +10,12 @@ ms.date: 11/20/2018
 ms.author: mhopkins
 ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 87651aa1fd44a831e94a00b5871faaae51f2f6a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d44dabe68900aa45b076f44cc38ed85d6938afa
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148306"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249945"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
 
@@ -80,7 +80,7 @@ Blob Storage の詳細については、「[Azure Blob Storage の概要](storag
 #import <AZSClient/AZSClient.h>
 ```
 
-Swift を使用する場合は､ブリッジヘッダーを作成し､<AZSClient/AZSClient.h> をインポートする必要があります｡
+Swift を使用する場合は、ブリッジヘッダーを作成し､\<AZSClient/AZSClient.h> をインポートする必要があります｡
 
 1. ヘッダー ファイル `Bridging-Header.h` を作成し､上記の import ステートメントを追加します｡
 2. [*Build Settings*] タブに移動し､[*Objective-C Bridging Header*] を探します｡

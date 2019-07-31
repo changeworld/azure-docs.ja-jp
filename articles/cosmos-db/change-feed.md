@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 51a554586c67842ead40cd4a1bfaaa51bbdd8a18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e450c0682a22a6e667a2bca153ce5d706a5bea96
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954401"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67986248"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB の変更フィード - 概要
 
@@ -94,7 +94,7 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 次のオプションを使用して変更フィードを操作できます。
 
 * [変更フィードと Azure Functions の併用](change-feed-functions.md)
-* [変更フィードと変更フィードプロセッサ ライブラリの併用](change-feed-processor.md) 
+* [変更フィードと変更フィード プロセッサの併用](change-feed-processor.md) 
 
 変更フィードは、コンテナー内の論理パーティション キーごとに利用できるため、次の図のように 1 つまたは複数のコンシューマーに分散して並列処理できます。
 
@@ -108,7 +108,7 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 
 * 変更フィードには、コンテナー内の項目に対して行われた挿入操作と更新操作が含まれています。 削除の代わりに、ドキュメントなどの項目内で "論理的な削除" フラグを設定することで削除をキャプチャできます。 または、[TTL 機能](time-to-live.md)を使用して項目の有効期間を設定することもできます。 たとえば、24 時間に設定し、そのプロパティの値を使用して削除をキャプチャします。 この場合は、TTL の有効期限よりも短い期間に含まれる変更を処理する必要があります。 
 
-* 項目に加えられた変更はそれぞれ変更フィード内に 1 回だけ出現し、クライアントがそれらのチェックポイント処理ロジックを管理しなければなりません。 チェックポイントの管理の複雑さを回避できるよう、変更フィード プロセッサ ライブラリは、自動チェックポイント処理と "最低 1 回" というセマンティクスを備えています。 [変更フィードと変更フィード プロセッサ ライブラリの併用](change-feed-processor.md)についてご確認ください。
+* 項目に加えられた変更はそれぞれ変更フィード内に 1 回だけ出現し、クライアントがそれらのチェックポイント処理ロジックを管理しなければなりません。 チェックポイントの管理の複雑さを回避する必要がある場合は、変更フィード プロセッサによって、自動チェックポイント処理と "最低 1 回" というセマンティクスが提供されます。 [変更フィードと変更フィード プロセッサの併用](change-feed-processor.md)に関するページを参照してください。
 
 * 変更ログには、特定の項目の最新の変更のみが含まれます。 途中の変更は利用できない場合があります。
 
@@ -126,4 +126,4 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 
 * [変更フィードを読み取るオプション](read-change-feed.md)
 * [変更フィードと Azure Functions の併用](change-feed-functions.md)
-* [Change Feed Processor ライブラリの使用](change-feed-processor.md)
+* [変更フィード プロセッサの使用](change-feed-processor.md)

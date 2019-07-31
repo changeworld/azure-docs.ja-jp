@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 4f77eafd3309d7c1d679c126b1a5eb1ff0e9a28d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 048fe0ef88e8a79e21af7bb6e39a1d7ece3ee4ae
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490096"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277456"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Mapping Data Flow のソース変換 
 
@@ -82,7 +82,7 @@ SQL Database ソースのデータをパーティション分割する必要は�
 
 ![新しいソース設定](media/data-flow/source2.png "新しい設定")
 
-* **ワイルドカードのパス**:ソース フォルダーから、パターンに一致する一連のファイルを選択します。 この設定により、データセット定義内のすべてのファイルがオーバーライドされます。
+* **ワイルドカードのパス**:ソース コンテナーから、パターンに一致する一連のファイルを選択します。 この設定により、データセット定義内のすべてのファイルがオーバーライドされます。
 
 ワイルドカードの例:
 

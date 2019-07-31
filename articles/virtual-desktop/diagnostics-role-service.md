@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 747e177b0fbbfb9049959c3194ee39c3234bba50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5869cbb51cf1c968ee8ca1e2286416fd263d647
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234022"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68224636"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>診断機能を使用して問題を特定する
 
@@ -54,6 +54,14 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityIdGuid>
+```
+
+### <a name="view-error-messages-for-a-failed-activity-by-activity-id"></a>アクティビティ ID ごとに失敗したアクティビティのエラー メッセージを表示する
+
+失敗したアクティビティのエラー メッセージを表示するには、 **-Detailed** パラメーターを指定してコマンドレットを実行する必要があります。 **Select-Object** コマンドレットを実行することで、エラーの一覧を表示できます。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
 ### <a name="filter-diagnostic-activities-by-user"></a>ユーザーによって診断アクティビティをフィルター処理する
@@ -131,7 +139,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
 |数値コード|エラー コード|推奨されている解決方法|
 |---|---|---|
 |3|UnauthorizedAccess|管理用の PowerShell コマンドレットを実行しようとしたユーザーにそれを行うためのアクセス許可がないか、ユーザー名に入力ミスがありました。|
-|1,000|TenantNotFound|入力したテナント名が既存のどのテナントとも一致しません。 テナント名に入力ミスがないことを確認し、もう一度やり直してください。|
+|1000|TenantNotFound|入力したテナント名が既存のどのテナントとも一致しません。 テナント名に入力ミスがないことを確認し、もう一度やり直してください。|
 |1006|TenantCannotBeRemovedHasSessionHostPools|オブジェクトが含まれているテナントは削除できません。 最初にセッション ホスト プールを削除してから、もう一度やり直してください。|
 |2000|HostPoolNotFound|入力したホスト プール名が既存のどのホスト プールとも一致しません。 ホスト プール名に入力ミスがないことを確認し、もう一度やり直してください。|
 |2005|HostPoolCannotBeRemovedHasApplicationGroups|オブジェクトが含まれているホスト プールは削除できません。 最初にホスト プール内のすべてのアプリ グループを削除してください。|

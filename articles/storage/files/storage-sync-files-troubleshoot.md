@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 07/16/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9cd1be26f6832fffb86dfefd0d93d9dbb393c0f0
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 1e35ef9eab841878ecc147d7b22a82860f27e7d9
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303886"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297695"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -244,6 +244,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 
 | HRESULT | HRESULT (10 進値) | エラー文字列 | 問題 | Remediation |
 |---------|-------------------|--------------|-------|-------------|
+| 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | サーバー上の階層化されたファイルにアクセスできません。 この問題は、サーバー エンドポイントを削除する前に、階層化されたファイルが取り消されなかった場合に発生します。 | この問題を解決する方法は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照してください。 |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 依存フォルダーがまだ同期されていないため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 Azure File Sync は、1 日 1 回サーバー上で一時 VSS スナップショットを作成して、開くハンドルを含むファイルを同期します。 |
@@ -253,8 +254,9 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同期中にファイルが変更されたため、再度同期する必要があります。 | 必要なアクションはありません。 |
 
+
 #### <a name="handling-unsupported-characters"></a>サポートされていない文字の処理
-**FileSyncErrorsReport.ps1** PowerShell スクリプトで、サポートされていない文字が原因のエラー (エラー コード 0x8007007b) が示されている場合は、該当するファイル名から問題のある文字を削除するか、ファイル名を変更する必要があります。 これらの文字の大部分には標準のビジュアル エンコードがないため、PowerShell はこれらの文字を疑問符または空の四角形として出力します。 [評価ツール](storage-sync-files-planning.md#evaluation-tool)を使用して、サポートされていない文字を識別できます。
+**FileSyncErrorsReport.ps1** PowerShell スクリプトで、サポートされていない文字が原因のエラー (エラー コード 0x8007007b) が示されている場合は、該当するファイル名から問題のある文字を削除するか、ファイル名を変更する必要があります。 これらの文字の大部分には標準のビジュアル エンコードがないため、PowerShell はこれらの文字を疑問符または空の四角形として出力します。 [評価ツール](storage-sync-files-planning.md#evaluation-cmdlet)を使用して、サポートされていない文字を識別できます。
 
 下の表に、Azure File Sync でまだサポートされていない Unicode 文字をすべて示します。
 
@@ -797,14 +799,14 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 次の各セクションでは、クラウド階層化の問題のトラブルシューティングを行い、問題がクラウド ストレージの問題かサーバーの問題かを確認する方法を示します。
 
-<a id="monitor-tiering-activity"></a>**サーバー上の階層化アクティビティを監視する方法**  
+### <a name="how-to-monitor-tiering-activity-on-a-server"></a>サーバー上の階層化アクティビティを監視する方法  
 サーバー上の階層化アクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの [アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] の下) にあるイベント ID 9003、9016、9029 を使用します。
 
 - イベント ID 9003 は、サーバー エンドポイントのエラー分布を示します。 たとえば、Total Error Count、ErrorCode などです。エラー コードごとに 1 つのイベントがログ記録されます。
 - イベント ID 9016 は、ボリュームの非実体化の結果を示します。 たとえば、空き領域の割合、セッション内の非実体化されたファイルの数、非実体化が失敗したファイルの数などです。
 - イベント ID 9029 では、サーバー エンドポイントの非実体化セッション情報が提供されます。 たとえば、セッション内の試行されたファイルの数、セッション内の階層化されたファイルの数、既に階層化されているファイルの数などです。
 
-<a id="monitor-recall-activity"></a>**サーバー上の呼び戻しアクティビティを監視する方法**  
+### <a name="how-to-monitor-recall-activity-on-a-server"></a>サーバー上の呼び戻しアクティビティを監視する方法
 サーバー上の呼び戻しアクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの [アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] の下) にあるイベント ID 9005、9006、9009、9059 を使用します。
 
 - イベント ID 9005 は、サーバー エンドポイントの呼び戻しの信頼性を示します。 たとえば、アクセスされた一意のファイルの合計数、アクセスが失敗した一意のファイルの合計数などです。
@@ -812,7 +814,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 - イベント ID 9009 では、サーバー エンドポイントの呼び戻しセッション情報が提供されます。 たとえば、DurationSeconds、CountFilesRecallSucceeded、CountFilesRecallFailed などです。
 - イベント ID 9059 では、サーバー エンドポイントのアプリケーション呼び戻し分布が提供されます。 たとえば、ShareId、Application Name、TotalEgressNetworkBytes です。
 
-<a id="files-fail-tiering"></a>**階層化に失敗するファイルをトラブルシューティングする**  
+### <a name="how-to-troubleshoot-files-that-fail-to-tier"></a>階層化に失敗するファイルのトラブルシューティングを行う方法
 ファイルが Azure ファイルへの階層化に失敗する場合:
 
 1. イベント ビューアーで、[アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] の下にあるテレメトリ ログ、操作イベント ログ、および診断イベント ログをレビューします。 
@@ -828,7 +830,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 > [!NOTE]
 > イベント ID 9003 は、ファイルの階層化が失敗した場合に、テレメトリ イベント ログに 1 時間に 1 回ログ記録されます (エラー コードごとに 1 つのイベントがログ記録されます)。 問題を診断するために追加情報が必要な場合は、操作イベント ログと診断イベント ログを使用する必要があります。
 
-<a id="files-fail-recall"></a>**再呼び出しに失敗するファイルをトラブルシューティングする**  
+### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>再呼び出しに失敗するファイルのトラブルシューティングを行う方法  
 ファイルが再呼び出しに失敗する場合:
 1. イベント ビューアーで、[アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] の下にあるテレメトリ ログ、操作イベント ログ、および診断イベント ログをレビューします。
     1. ファイルが Azure ファイル共有に存在することを確認します。
@@ -840,7 +842,88 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 > [!NOTE]
 > イベント ID 9006 は、ファイルの呼び戻しが失敗した場合に、テレメトリ イベント ログに 1 時間に 1 回ログ記録されます (エラー コードごとに 1 つのイベントがログ記録されます)。 問題を診断するために追加情報が必要な場合は、操作イベント ログと診断イベント ログを使用する必要があります。
 
-<a id="files-unexpectedly-recalled"></a>**サーバーで予期せず再呼び出しされるファイルをトラブルシューティングする**  
+### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない
+サーバーのエンドポイントを削除する前にファイルが再呼び出しされない場合、サーバー上の階層化ファイルはアクセスできなくなります。
+
+階層化されたファイルにアクセスできない場合にログに記録されるエラー
+- ファイルを同期すると、エラー コード -2147942467 (0x80070043 - ERROR_BAD_NET_NAME) が ItemResults イベント ログに記録されます。
+- ファイルを再呼び出しすると、エラー コード -2134376393 (0x80c80037 - ECS_E_SYNC_SHARE_NOT_FOUND) が RecallResults イベント ログに記録されます。
+
+次の条件が満たされている場合、階層化されたファイルへのアクセスを復元できます。
+- 過去 30 日以内にサーバー エンドポイントが削除されました
+- クラウド エンドポイントは削除されませんでした 
+- ファイル共有は削除されませんでした
+- 同期グループは削除されませんでした
+
+上記の条件が満たされる場合、30 日以内に同じ同期グループ内のサーバー上の同じパスにサーバー エンドポイントを再作成することで、サーバー上のファイルへのアクセスを復元できます。 
+
+上記の条件が満たされない場合、サーバー上の階層化されたファイルが孤立しているため、アクセスを復元することはできません。 孤立した階層化ファイルは下の手順で削除してください。
+
+**メモ**
+- 階層化されたファイルにサーバーでアクセスできない場合でも、Azure ファイル共有に直接アクセスするなら、完全なファイルにアクセスできます。
+- 今後、階層化されたファイルの孤立を防ぐには、サーバーエンド ポイントを削除するとき、「[サーバー エンドポイントを削除する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)」に記載されている手順に従ってください。
+
+<a id="get-orphaned"></a>**孤立した階層化ファイルの一覧を取得する方法** 
+
+1. Azure File Sync エージェント バージョン v5.1 以降がインストールされていることを確認します。
+2. 次の PowerShell コマンドを実行すると、孤立した階層化ファイルが一覧表示されます。
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+3. ファイルの削除後、バックアップから復元する必要がある場合、OrphanTieredFiles.txt 出力ファイルを保存してください。
+
+<a id="remove-orphaned"></a>**孤立した階層化ファイルを削除する方法** 
+
+*オプション 1:孤立した階層化ファイルを削除する*
+
+このオプションでは、Windows Server 上で孤立している階層化ファイルが削除されますが、サーバー エンドポイントが 30 日後の再作成に起因して存在する場合、あるいは異なる同期グループに接続されている場合、サーバー エンドポイントを削除する必要があります。 サーバー エンドポイントが再作成される前に Windows Server または Azure ファイル共有でファイルが更新された場合、ファイル競合が発生します。
+
+1. Azure File Sync エージェント バージョン v5.1 以降がインストールされていることを確認します。
+2. Azure ファイル共有とサーバーエンド ポイントの場所をバックアップします。
+3. 同期グループにサーバー エンドポイントが存在する場合、「[サーバー エンドポイントを削除する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)」に記載されている手順でそれを削除します。
+
+> [!Warning]  
+> Remove-StorageSyncOrphanedTieredFiles コマンドレットを使用する前にサーバー エンドポイントが削除されていない場合、サーバー上で孤立している階層化ファイルを削除すると、Azure ファイル共有で完全なファイルが削除されます。 
+
+4. 次の PowerShell コマンドを実行すると、孤立した階層化ファイルが一覧表示されます。
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+5. ファイルの削除後、バックアップから復元する必要がある場合、OrphanTieredFiles.txt 出力ファイルを保存してください。
+6. 次の PowerShell コマンドを実行すると、孤立した階層化ファイルが削除されます。
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFilesRemoved = Remove-StorageSyncOrphanedTieredFiles -Path <folder path containing orphaned tiered files> -Verbose
+$orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
+```
+**メモ** 
+- サーバー上で変更された階層化ファイルが Azure ファイル共有と同期していない場合、ファイルは削除されます。
+- アクセス可能な (孤立していない) 階層化ファイルは削除されません。
+- 階層化されていないファイルはサーバーに残ります。
+
+7. 省略可能:手順 3 で削除した場合、サーバー エンドポイントを再作成します。
+
+*オプション 2:Azure ファイル共有をマウントし、サーバー上で孤立しているファイルをローカルにコピーする*
+
+このオプションでは、サーバー エンドポイントを削除する必要がありませんが、完全なファイルをローカルにコピーするために十分なディスク領域が必要になります。
+
+1. Windows Server に、階層化ファイルが孤立した Azure ファイル共有を[マウント](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)します。
+2. 次の PowerShell コマンドを実行すると、孤立した階層化ファイルが一覧表示されます。
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+3. OrphanTieredFiles.txt 出力ファイルを使用し、サーバー上で孤立している階層化ファイルを特定します。
+4. Azure ファイル共有から Windows Server に完全なファイルをコピーすることで、孤立した階層化ファイルを上書きします。
+
+### <a name="how-to-troubleshoot-files-unexpectedly-recalled-on-a-server"></a>サーバーで予期せず呼び戻されるファイルのトラブルシューティング方法  
 ウイルス対策、バックアップ、および多数のファイルを読み取るその他のアプリケーションは、オフライン スキップ属性を尊重してそれらのファイルのコンテンツの読み取りをスキップする場合を除いて、意図しない再呼び出しの原因となります。 オフライン ファイルをスキップするオプションをサポートしている製品でスキップを実行すると、ウィルス対策スキャンやバックアップ ジョブなどの操作中の意図しない再呼び出しを回避できます。
 
 オフライン ファイルの読み取りをスキップするようにソリューションを構成する方法については、ソフトウェア ベンダーにお問い合わせください。

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: efb49db6cce7ba238d40bf80ddf87b2a1a83834f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479990"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68261426"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -245,7 +245,7 @@ Linux を使用してこれをダウンロードするには、次のように�
 
     ![マルチパス ID](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. ドライブをフォーマットし、新しいドライブにファイル システムを作成します。**mkfs.ext4 /dev/mapper/<リテンション ディスクのマルチパス ID>**
+3. ドライブをフォーマットし、新しいドライブにファイル システムを作成します。**mkfs.ext4 /dev/mapper/\<リテンション ディスクのマルチパス ID>**
     
     ![ファイル システム](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 

@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: c1d7b52bdce77ca108781a999a8a85b3e3fca0b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61487463"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305845"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 仮想マシンでのメインフレーム リホスト
 
@@ -86,7 +86,7 @@ Azure のコンピューティング能力は、メインフレームのキャ�
 
 Azure では、コミットメントベースのサービス レベル アグリーメント (SLA) を提供します。 複数ナインの可用性が既定になっていて、SLA は、ローカルまたは geo ベースのサービスのレプリケーションによって最適化できます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
 
-VM などの Azure IaaS の場合、特定のシステム関数によってフェールオーバー サポートが提供されます。たとえば、フェールオーバー クラスタリング インスタンスや[可用性セット](/azure/virtual-machines/windows/regions-and-availability#availability-sets)などです。 Azure PaaS (サービスとしてのプラットフォーム) リソースを使用する場合、フェールオーバーはプラットフォームで自動的に処理されます。 たとえば、[Azure SQL Database](/azure/sql-database/sql-database-technical-overview) や [Azure Cosmos DB](/azure/cosmos-db/introduction) などがあります。
+VM などの Azure IaaS の場合、特定のシステム関数によってフェールオーバー サポートが提供されます。たとえば、フェールオーバー クラスタリング インスタンスや可用性セットなどです。 Azure PaaS (サービスとしてのプラットフォーム) リソースを使用する場合、フェールオーバーはプラットフォームで自動的に処理されます。 たとえば、[Azure SQL Database](/azure/sql-database/sql-database-technical-overview) や [Azure Cosmos DB](/azure/cosmos-db/introduction) などがあります。
 
 ### <a name="scalability"></a>スケーラビリティ
 

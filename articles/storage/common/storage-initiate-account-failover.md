@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 94a385b7e41dd4a7664dc40418456b304ebef509
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51e0379607c49019590a99c9fb7304f28be2afe5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150009"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305732"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>ストレージ アカウントのフェールオーバー (プレビュー) を開始する
 
@@ -67,7 +67,7 @@ PowerShell を使用してアカウントのフェールオーバーを開始す
 1. Azure PowerShell の以前のインストールがある場合はアンインストールします。
 
     - **[設定]** の **[アプリと機能]** 設定を使用して、Windows から Azure PowerShell の以前のインストールを削除します。
-    - `%Program Files%\WindowsPowerShell\Modules` からすべての **Azure*** モジュールを削除します。
+    - `%Program Files%\WindowsPowerShell\Modules` からすべての **Azure** モジュールを削除します。
     
 1. 最新バージョンの PowerShellGet がインストールされていることを確認します。 Windows PowerShell ウィンドウを開き、次のコマンドを実行して最新バージョンをインストールします。
  

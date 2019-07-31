@@ -253,6 +253,9 @@
         - name: DSC 構成のコンパイル
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
+        - name: 準拠していない DSC サーバーを修復する
+          href: automation-dsc-remediate.md
+          displayName: 'state configuration, DSC, remediate'
         - name: 複合リソースを使用した DSC 構成の作成
           href: compose-configurationwithcompositeresources.md
         - name: Chocolatey を使用した継続的なデプロイ

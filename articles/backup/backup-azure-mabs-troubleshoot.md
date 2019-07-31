@@ -1,19 +1,18 @@
 ---
 title: Azure Backup Server のトラブルシューティング
 description: Azure Backup Server のインストールと登録、およびアプリケーション ワークロードのバックアップと復元をトラブルシューティングします。
-services: backup
 author: srinathvasireddy
 manager: sivan
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: srinathv
-ms.openlocfilehash: ee24fe4c1792f1934fcfb87a2481133631de4263
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f601901ed0cb90421dbf7254d657ef80e1769541
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705064"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466090"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -119,3 +118,33 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | Operation | エラーの詳細 | 対処法 |
 | --- | --- | --- |
 | Office 365 アカウントを使用した電子メール通知の設定 |エラー ID: 2013| **原因:**<br> Office 365 アカウントを使用しようとしています。 <br>**推奨される操作:**<ol><li> まず、Exchange で DPM サーバーが “受信コネクタで匿名のリレーを許可する” ように設定されていることを確認します。 これを構成する方法の詳細については、TechNet の「[受信コネクタの匿名の中継を許可する](https://technet.microsoft.com/library/bb232021.aspx)」をご覧ください。</li> <li> 内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、リレーとして IIS を設定することができます。 DPM サーバーが [IIS を使用して SMTP を O365 にリレーする](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx)ように設定します。<br><br> **重要:** ドメイン\ユーザー*ではなく*、必ず user\@domain.com 形式を使用してください。<br><br><li>DPM が、SMTP サーバーとしてローカル サーバー名 (およびポート 587) を使用するようにします。 次に、これを電子メールの送信元となるユーザーの電子メール アドレスに向けます。<li> DPM の SMTP セットアップ ページ上のユーザー名とパスワードは、DPM があるドメイン内のドメイン アカウントのものである必要があります。 </li><br> **注**: SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない可能性があるため、この方法でテストすることをお勧めします。<br><br>DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**。 もう一度起動したときに、UI にそれらを追加できます。
+
+
+## <a name="common-issues"></a>一般的な問題
+
+ここでは、Azure Backup Server の使用中に発生する一般的なエラーについて説明します。
+
+
+### <a name="cbpsourcesnapshotfailedreplicamissingorinvalid"></a>CBPSourceSnapshotFailedReplicaMissingOrInvalid
+
+エラー メッセージ | 推奨される操作 |
+-- | --
+ディスク バックアップ レプリカが無効または不足しているため、バックアップが失敗しました。 | この問題を解決するには、次の手順を確認し、操作を再試行してください。 <br/> 1.ディスク復旧ポイントを作成する<br/> 2.データソースで整合性チェックを実行する <br/> 手順 3.データソースの保護を停止してから、このデータ ソースの保護を再構成する
+
+### <a name="cbpsourcesnapshotfailedreplicametadatainvalid"></a>CBPSourceSnapshotFailedReplicaMetadataInvalid
+
+エラー メッセージ | 推奨される操作 |
+-- | --
+レプリカのメタデータが無効なため、ソース ボリュームのスナップショットに失敗しました。 | このデータソースのディスク復旧ポイントを作成し、オンラインバックアップをもう一度お試しください
+
+### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>CBPSourceSnapshotFailedReplicaInconsistent
+
+エラー メッセージ | 推奨される操作 |
+-- | --
+データソース レプリカに一貫性がないため、ソース ボリュームのスナップショットに失敗しました。 | このデータソースで整合性チェックを実行し、もう一度お試しください
+
+### <a name="cbpsourcesnapshotfailedreplicacloningissue"></a>CBPSourceSnapshotFailedReplicaCloningIssue
+
+エラー メッセージ | 推奨される操作 |
+-- | --
+ディスクバックアップ レプリカを複製できなかったため、バックアップに失敗しました。| 以前のディスクバックアップ レプリカ ファイル (.vhdx) がすべてマウント解除されており、オンライン バックアップ中、ディスク間のバックアップが進行していないことを確認してください

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: f9dd8a48da08f00cea1219f72940dd84dd3a97ac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e173ff54020f2d365348ae037793cfbba3f9ed7f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725513"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260435"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 - リリース ノートおよび移行ガイド
 次の情報は、C# および .NET 対応の Azure Key Vault ライブラリ 2.0 バージョンに移行するのに役立ちます。  以前のバージョン用に記述されたアプリは、最新バージョンをサポートするように更新する必要があります。  これらの変更では、**Key Vault 証明書**など、改善後の新機能を完全にサポートする必要があります。
@@ -48,12 +48,12 @@ Key Vault 証明書では x509 証明書を管理し、次の動作をサポー�
 
 * *Secret* が *SecretBundle* に変更
 * *Dictionary* が *IDictionary* に変更
-* *List<T>, string []* が *IList<T>* に変更
+* *List\<T>, string []* が *IList\<T>* に変更
 * *NextList* が *NextPageLink* に変更
 
 ## <a name="return-types"></a>戻り値の型
 
-* **KeyList** と **SecretList** は現在、*ListKeysResponseMessage* ではなく *IPage<T>* を返します。
+* **KeyList** と **SecretList** は現在、*ListKeysResponseMessage* ではなく *IPage\<T>* を返します。
 * 生成される **BackupKeyAsync** は現在、*Value* (バックアップ BLOB) を含む *BackupKeyResult* を返します。 以前は、メソッドがラップされ、値のみが返されました。
 
 ## <a name="exceptions"></a>例外

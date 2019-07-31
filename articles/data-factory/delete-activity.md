@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 606cab09debf760d1b101390b2a19a1a090bb4c3
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61346345"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234557"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
 
@@ -115,7 +115,7 @@ Delete アクティビティの結果は、次の 2 つの場所から表示お�
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete アクティビティのログ ファイル例
 
-| Name | Category | Status | Error |
+| EnableAdfsAuthentication | Category | Status | Error |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | ファイル | Deleted |  |
 | test2/hello789.txt | ファイル | Deleted |  |
@@ -563,6 +563,9 @@ Copy アクティビティによって使用されるデータ宛先のデータ
     }
 }
 ```
+
+[ここから](solution-template-move-files.md)ファイルを移動するためのテンプレートを入手することもできます。
+
 ## <a name="known-limitation"></a>既知の制限事項
 
 -   削除アクティビティでは、ワイルドカードで記述されるフォルダーの一覧は削除されません。

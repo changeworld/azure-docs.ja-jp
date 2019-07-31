@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: a7621cc80a38d9a07872a94d8e5221dc04023b86
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9620cc5f135dd7b10da5528e5dec0f5baa70350
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435031"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226251"
 ---
 # <a name="request-limits-for-translator-text"></a>Translator Text に対する要求の制限
 
@@ -54,7 +54,7 @@ ms.locfileid: "67435031"
 
 [マルチ サービス サブスクリプション](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)の制限は S1 レベルと同じです。
 
-これらの制限は、Microsoft の標準翻訳モデルに制限されます。 Custom Translator を使用するカスタム翻訳ツールは、1 秒あたり 1,800 文字に制限されます。
+これらの制限は、Microsoft の標準翻訳モデルに制限されます。 カスタム翻訳ツールを使用するカスタム翻訳モデルは、1 秒あたり 1,800 文字に制限されます。
 
 ## <a name="latency"></a>Latency
 

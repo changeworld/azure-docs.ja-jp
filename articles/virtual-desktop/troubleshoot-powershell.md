@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: v-chjenk
-ms.openlocfilehash: 06b955365ffc7c0a1dff93db95932d8696293e9f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 41c3c25962d5cb0d608a226ed77408460446bfa5
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605240"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68248198"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop PowerShell
 
@@ -58,7 +58,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **原因:** -TenantName パラメーター
 
-**解決策:** -TenantName <TenantName> を指定して Get-RdsDiagnosticActivities を実行します。
+**解決策:** -TenantName \<TenantName> を指定して Get-RdsDiagnosticActivities を実行します。
 
 ### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>エラー:Get-RdsDiagnosticActivities -- 管理サービスに問い合わせる許可がユーザーに与えられていません
 
@@ -68,7 +68,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **原因:** -Deployment スイッチの使用。
 
-**解決策:** -Deployment スイッチは、展開管理者だけが使用できます。 これらの管理者は通常、リモート デスクトップ サービス/Windows Virtual Desktop チームに属しています。 -Deployment スイッチを -TenantName <TenantName> に変更します。
+**解決策:** -Deployment スイッチは、展開管理者だけが使用できます。 これらの管理者は通常、リモート デスクトップ サービス/Windows Virtual Desktop チームに属しています。 -Deployment スイッチを -TenantName \<TenantName> に変更します。
 
 ### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>エラー:New-RdsRoleAssignment -- 管理サービスに問い合わせる許可がユーザーに与えられていません
 

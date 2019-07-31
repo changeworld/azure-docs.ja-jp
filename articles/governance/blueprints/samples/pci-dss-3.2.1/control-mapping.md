@@ -8,18 +8,18 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 38b1cc6249da98e11167416c8e18d06de1645679
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 1e85cb5c06f36e0f8c105ece2c012cfe7cb77bf4
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540947"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226023"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 ブループリント サンプルのコントロール マッピング
 
 以下の記事は、Azure Blueprints PCI-DSS v3.2.1 のブループリント サンプルが PCI-DSS v3.2.1 のコントロールにどのようにマップされているかを説明したものです。 そのコントロールについて詳しくは、[PCI-DSS v3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf) に関するページをご覧ください。
 
-以下のマッピングは、**PCI-DSS v3.2.1: 2018** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 次に、 **[[プレビュー] PCI v3.2.1:2018 コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする]** 組み込みポリシー イニシアティブを見つけて選択します。
+以下のマッピングは、**PCI-DSS v3.2.1: 2018** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 次に、 **[\[プレビュー\] PCI v3.2.1:2018 コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする]** 組み込みポリシー イニシアティブを見つけて選択します。
 
 ## <a name="132-and-134-boundary-protection"></a>1.3.2 および 1.3.4 境界保護
 
@@ -98,12 +98,12 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 このブループリントでは、最低限の強度や他のパスワード要件が適用されていない Windows VM を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、強力なパスワードの適用を支援します。 パスワード強度のポリシーに違反している VM を把握できるようになるので、適切な是正措置を実施し、すべての VM ユーザー アカウントに対して、パスワード ポリシーへの準拠を徹底させることができます。
 
-- [プレビュー]: Audit Windows VMs that do not have a maximum password age of 70 days
-- [プレビュー]: Deploy requirements to audit Windows VMs that do not have a maximum password age of 70 days
-- [プレビュー]: Audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [プレビュー]: Deploy requirements to audit Windows VMs that do not restrict the minimum password length to 14 characters
-- [プレビュー]: Audit Windows VMs that allow re-use of the previous 24 passwords
-- [プレビュー]: Deploy requirements to audit Windows VMs that allow re-use of the previous 24 passwords
+- \[プレビュー\]:パスワードの有効期間が最大の 70 日になっていない Windows VM を監査する
+- \[プレビュー\]:パスワードの有効期間が最大の 70 日になっていない Windows VM を監査する要件をデプロイする
+- \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する
+- \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する要件をデプロイする
+- \[プレビュー\]:以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する
+- \[プレビュー\]:以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する要件をデプロイする
 
 ## <a name="103-and-1054-audit-generation"></a>10.3 および 10.5.4 監査の生成
 

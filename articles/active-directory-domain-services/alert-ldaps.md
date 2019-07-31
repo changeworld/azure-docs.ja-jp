@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Domain Services:Secure LDAP の構成のトラブルシューティング | Microsoft Docs
+title: Azure Active Directory Domain Services:Secure LDAP のトラブルシューティング | Microsoft Docs
 description: Azure AD Domain Services の Secure LDAP のトラブルシューティング
 services: active-directory-ds
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 453018f486ca3fda91d8447208fe3d936722522e
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8a542f7927ddd834c7273f6ef8b251ddc35e8436
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473954"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234181"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services - Secure LDAP の構成のトラブルシューティング
 

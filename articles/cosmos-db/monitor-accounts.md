@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 02bbde9a2d744c79cc8a7e95b0732b775c4dc695
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 1c12007e04ff8cd08ddb7afdf9a3c2add9638de3
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "66241617"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277443"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する
 
@@ -48,6 +48,10 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
 4. **[メトリック]** ページには、合計要求数に関する詳細が表示されます。 
 
 ## <a name="set-up-alerts-in-the-portal"></a>ポータルでアラートを設定する
+
+> [!NOTE]
+> Azure Monitor のクラシック アラートは 2019 年 8 月 31 日までに廃止される予定です。 Azure portal には、クラシック アラート ルールを移行するための[移行ツール](../azure-monitor/platform/alerts-using-migration-tool.md)が用意されています。 ただし、Azure Cosmos DB メトリックのすべてのクラシック アラートを移行できるわけではなく、いくつかの例外があります。移行できないクラシック アラートの一覧については、[Azure Monitor](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics) の記事を参照してください。 
+
 1. [Azure Portal](https://portal.azure.com/) で、 **[すべてのサービス]** 、 **[Azure Cosmos DB]** の順にクリックし、パフォーマンス メトリック アラートを設定する Azure Cosmos DB アカウントの名前をクリックします。
 2. リソース メニューで、 **[アラート ルール]** をクリックして [アラート ルール] ページを開きます。  
    ![[アラート ルール] パーツが選択された状態のスクリーンショット](./media/monitor-accounts/madocdb10.5.png)

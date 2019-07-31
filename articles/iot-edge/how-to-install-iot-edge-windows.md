@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: f67f24cab907c3fe9998704e0a0a85d5b29f60a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f20e04fa65d0266d9e77b8bbcf2e2c4b1fd9eab
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66808864"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227451"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -58,7 +58,7 @@ Azure IoT Edge は、[OCI と互換性のある](https://www.opencontainers.org/
 
 PowerShell スクリプトは、Azure IoT Edge セキュリティ デーモンをダウンロードしてインストールします。 セキュリティ デーモンは、2 つのランタイム モジュールのうちの 1 つである IoT Edge エージェントを開始し、これによってもう 1 つモジュールのリモート デプロイが可能になります。 
 
-IoT Edge ランタイムをデバイスに初めてインストールするときは、IoT ハブからの ID を使用してデバイスをプロビジョニングする必要があります。 IoT Hub によって提供されるデバイス接続文字列を使用して、1 つの IoT Edge デバイスを手動でプロビジョニングできます。 Device Provisioning Service を使用して、複数のデバイスを自動的にプロビジョニングすることもできます。これは、セットアップするデバイスが多数ある場合に便利です。 目的にプロビジョニング方法に応じて、適切なインストール スクリプトを選択してください。 
+IoT Edge ランタイムをデバイスに初めてインストールするときは、IoT ハブからの ID を使用してデバイスをプロビジョニングする必要があります。 IoT Hub によって提供されるデバイス接続文字列を使用して、1 つの IoT Edge デバイスを手動でプロビジョニングできます。 Device Provisioning Service (DPS) を使用して、複数のデバイスを自動的にプロビジョニングすることもできます。これは、セットアップするデバイスが多数ある場合に便利です。 目的にプロビジョニング方法に応じて、適切なインストール スクリプトを選択してください。 
 
 次のセクションでは、新しいデバイス上で IoT Edge インストール スクリプトを使用する場合の一般的なユース ケースとパラメーターについて説明します。 
 
@@ -106,6 +106,7 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 7. 「[インストールの成功を確認する](#verify-successful-installation)」の手順に従って、デバイス上の IoT Edge の状態を確認します。 
 
 デバイスを手動でインストールおよびプロビジョニングするとき、追加のパラメーターを使用して、インストールを次のように変更できます。
+
 * プロキシ サーバーを経由するようトラフィックを誘導する
 * インストーラーでオフライン ディレクトリを指定する
 * 特定のエージェント コンテナー イメージを宣言し、それがプライベート レジストリに存在する場合は資格情報を提供する
@@ -114,16 +115,16 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 ### <a name="option-2-install-and-automatically-provision"></a>オプション 2:インストールして自動的にプロビジョニングする
 
-この 2 番目のオプションでは、IoT Hub Device Provisioning Service を使用してデバイスをプロビジョニングします。 Device Provisioning Service インスタンスから**スコープ ID** を指定し デバイスから**登録 ID** を指定します。
+この 2 番目のオプションでは、IoT Hub Device Provisioning Service を使用してデバイスをプロビジョニングします。 Device Provisioning Service インスタンスから**スコープ ID** を指定し デバイスから**登録 ID** を指定します。 [対称キー](how-to-auto-provision-symmetric-keys.md)を使用するときなど、DPS を使用してプロビジョニングを行う場合、使用する構成証明メカニズムに応じた追加の値が必要になることがあります。
 
-次の例は、Windows コンテナーでの自動インストールを示しています。
+次の例は、Windows コンテナーと TPM 構成証明での自動インストールを示しています。
 
 1. 「[Windows 上のシミュレートされた TPM IoT Edge デバイスの作成とプロビジョニング](how-to-auto-provision-simulated-device-windows.md)」の手順に従って、Device Provisioning Service を設定し、その**スコープ ID** を取得し、TPM デバイスをシミュレートし、その**登録 ID** を取得した後、個別の登録を作成します。 デバイスが IoT ハブに登録されたら、インストール手順をけます。  
 
    >[!TIP]
    >インストールとテストを行っている間は、TPM シミュレーターを実行しているウィンドウを開いたままにしてください。 
 
-2. PowerShell を管理者として実行します。
+1. PowerShell を管理者として実行します。
 
    >[!NOTE]
    >IoT Edge をインストールするには、PowerShell (x86) ではなく PowerShell の AMD64 セッションを使用します。 どのセッションの種類を使用しているかがわからない場合は、次のコマンドを実行します。
@@ -132,27 +133,37 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. **Deploy-IoTEdge** コマンドを使用して、ご使用の Windows コンピューターがサポートされているバージョンであることを確認し、コンテナー機能をオンに設定した後、moby ランタイムと IoT Edge ランタイムをダウンロードします。 コマンドの既定値では Windows コンテナーが使用されます。 
+1. **Deploy-IoTEdge** コマンドを使用して、ご使用の Windows コンピューターがサポートされているバージョンであることを確認し、コンテナー機能をオンに設定した後、moby ランタイムと IoT Edge ランタイムをダウンロードします。 コマンドの既定値では Windows コンテナーが使用されます。 
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-4. この時点で、IoT Core デバイスが自動的に再起動することがあります。 その他の Windows 10 または Windows Server デバイスでは、再起動が求められることがあります。 その場合、デバイスをすぐに再起動してください。 デバイスが起動されたら、管理者として PowerShell を再実行します。
+1. この時点で、IoT Core デバイスが自動的に再起動することがあります。 その他の Windows 10 または Windows Server デバイスでは、再起動が求められることがあります。 その場合、デバイスをすぐに再起動してください。 デバイスが起動されたら、管理者として PowerShell を再実行します。
 
-6. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。 手動プロビジョニングではなく Device Provisioning Service を使用するには、`-Dps` フラグを使用します。
+1. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。 手動プロビジョニングではなく Device Provisioning Service を使用するには、`-Dps` フラグを使用します。
+
+   TPM 構成証明で DPS を使用するために **Initialize-IoTEdge** コマンドを使用します。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -Dps
    ```
 
-7. 入力を求められたら、Device Provisioning Service からのスコープ ID とデバイスからの登録 ID を指定します。どちらも手順 1 で取得する必要があります。
+   対称キー構成証明で DPS を使用するために **Initialize-IoTEdge** コマンドを使用します。 `{symmetric key}` をデバイス キーで置き換えます。
 
-8. 「[インストールの成功を確認する](#verify-successful-installation)」の手順に従って、デバイス上の IoT Edge の状態を確認します。 
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Initialize-IoTEdge -Dps -SymmetricKey {symmetric key}
+   ```
+
+1. 入力を求められたら、Device Provisioning Service からのスコープ ID とデバイスからの登録 ID を指定します。どちらも手順 1 で取得する必要があります。
+
+1. 「[インストールの成功を確認する](#verify-successful-installation)」の手順に従って、デバイス上の IoT Edge の状態を確認します。 
 
 デバイスを手動でインストールおよびプロビジョニングするとき、追加のパラメーターを使用して、インストールを次のように変更できます。
+
 * プロキシ サーバーを経由するようトラフィックを誘導する
 * インストーラーでオフライン ディレクトリを指定する
 * 特定のエージェント コンテナー イメージを宣言し、それがプライベート レジストリに存在する場合は資格情報を提供する
@@ -161,7 +172,8 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 ## <a name="offline-installation"></a>オフライン インストール
 
-インストール中に、次の 2 つのファイルがダウンロードされます。 
+インストール中に、次の 2 つのファイルがダウンロードされます。
+
 * Microsoft Azure IoT Edge cab には、IoT Edge セキュリティ デーモン (iotedged)、Moby コンテナー エンジン、Moby CLI が含まれています。
 * Visual C++ 再頒布可能パッケージ (VC ランタイム) の msi
 
@@ -238,6 +250,7 @@ Update-IoTEdge
 ```
 
 IoT Edge を更新するときは、追加のパラメーターを使用して次のように更新を変更できます。
+
 * プロキシ サーバーを経由するようトラフィックを誘導する
 * インストーラーでオフライン ディレクトリを指定する 
 * 必要な場合は、プロンプトなしで再起動する
@@ -285,6 +298,7 @@ Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の�
 | **DeviceConnectionString** | 単一引用符で囲まれた、IoT Hub に登録されている IoT Edge デバイスからの接続文字列 | 手動インストールで**必須**です。 スクリプト パラメーターに接続文字列を指定しなかった場合は、インストール中にこれを指定するよう促されます。 |
 | **ScopeId** | IoT Hub に関連付けられた Device Provisioning Service のインスタンスからのスコープ ID。 | DPS インストールで**必須**です。 スクリプト パラメーターにスコープ ID を指定しなかった場合、インストール中にこれを指定するよう促されます。 |
 | **RegistrationId** | デバイスによって生成された登録 ID | DPS インストールで**必須**です。 スクリプト パラメーターに登録 ID を指定しなかった場合、インストール中にこれを指定するよう促されます。 |
+| **SymmetricKey** | DPS の使用時に IoT Edge デバイス ID をプロビジョニングするために使用される対称キー | 対称キー構成証明を使用している場合、DPS インストールで**必須**です。 |
 | **ContainerOs** | **Windows** または **Linux** | コンテナーのオペレーティング システムを指定しない場合は、Windows が既定値です。<br><br>Windows コンテナーの場合、IoT Edge ではインストールに含まれる moby コンテナー エンジンが使用されます。 Linux コンテナーの場合、インストールを開始する前にコンテナー エンジンをインストールする必要があります。 |
 | **InvokeWebRequestParameters** | パラメーターと値のハッシュ テーブル | インストール中には、いくつかの Web 要求が行われます。 それらの Web 要求のパラメーターを設定するにはこのフィールドを使用します。 このパラメーターは、プロキシ サーバーの資格情報を構成するために使用すると便利です。 詳細については、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](how-to-configure-proxy-support.md)」を参照してください。 |
 | **AgentImage** | IoT Edge エージェント イメージの URI | 既定では、新しい IoT Edge のインストールでは、IoT Edge エージェント イメージの最新のローリング タグを使用します。 イメージ バージョンについて特定のタグを設定したり、独自のエージェント イメージを提供したりするには、このパラメーターを使用します。 詳細については、[IoT Edge タグ](how-to-update-iot-edge.md#understand-iot-edge-tags)に関する記事を参照してください。 |
@@ -301,14 +315,12 @@ Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の�
 | **OfflineInstallationPath** | ディレクトリ パス | このパラメーターが含まれる場合、インストーラーはインストールに必要な IoT Edge cab ファイルと VC ランタイム MSI ファイルを、一覧で示されているディレクトリでチェックします。 ディレクトリで見つからないファイルはダウンロードされます。 両方のファイルがディレクトリにある場合は、インターネットに接続せずに IoT Edge をインストールできます。 特定のバージョンを使用するために、このパラメーターを使用することもできます。 |
 | **RestartIfNeeded** | なし | このフラグを使用すると、必要に応じて、デプロイ スクリプトでメッセージを表示せずにコンピューターを再起動できます。 |
 
-
 ### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
 | パラメーター | 指定可能な値 | 説明 |
 | --------- | --------------- | -------- |
 | **Force** | なし | このフラグは、前回のアンインストールの試行が失敗した場合に、アンインストールを強制します。 
 | **RestartIfNeeded** | なし | このフラグを使用すると、必要に応じて、アンインストール スクリプトでメッセージを表示せずにコンピューターを再起動できます。 |
-
 
 ## <a name="next-steps"></a>次の手順
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51d8bbc8b8be9679fbf024d7c51de53c430dc493
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 90687d0229d3ad74c287bb4aff4885dc26932e40
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550481"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227264"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>セキュリティで保護された Azure マネージド ワークステーションのデプロイ
 
@@ -168,7 +168,7 @@ Azure portal の Intune で次の手順を実行します。
    * 説明 - **セキュリティで保護されたワークステーションのデプロイ**
    * **[すべての対象デバイスを Autopilot に変換する]** を **[はい]** に設定します。 この設定により、リスト内のすべてのデバイスが確実に Autopilot デプロイ サービスに登録されます。 登録の処理を 48 時間できるようにします。
 1. **[次へ]** を選択します。
-   * **[配置モード]** で **[自己展開 (プレビュー)]** を選択します。 このプロファイルが割り当てられたデバイスは、デバイスを登録するユーザーに関連付けられます。 デバイスを登録するには、ユーザーの資格情報が必要です。
+   * **[配置モード]** で **[自己展開 (プレビュー)]** を選択します。 このプロファイルが割り当てられたデバイスは、デバイスを登録するユーザーに関連付けられます。 デバイスを登録するには、ユーザーの資格情報が必要です。 **自己展開**モードでデバイスを展開することで、ノート PC を共有モデルで展開できることに注意する必要があります。 デバイスのユーザーへの最初の割り当てが行われるまで、ユーザーの割り当ては行われません。 その結果、ユーザー割り当てが完了するまで、BitLocker など、いずれのユーザー ポリシーも有効になりません。 セキュリティで保護されたデバイスにログオンする方法の詳細については、[選択されたプロファイル](https://docs.microsoft.com/intune/device-profile-assign)に関する記事を参照してください。
    * **[Azure AD への参加の種類]** ボックスに **[Azure AD 参加済み]** と表示され、淡色表示されている必要があります。
    * 言語 (リージョン) を選択し、ユーザー アカウントの種類として **[Standard]** を選択します。 
 1. **[次へ]** を選択します。
@@ -177,6 +177,8 @@ Azure portal の Intune で次の手順を実行します。
 1. **[割り当て]**  >  **[割当先]**  >  **[選択したグループ]** を選択します。 **[含めるグループを選択]** で、 **[セキュリティで保護されたワークステーションのユーザー]** を選択します。
 1. **[次へ]** を選択します。
 1. **[作成]** を選択してプロファイルを作成します。 これで、Autopilot デプロイ プロファイルをデバイスに割り当てられるようになりました。
+
+Autopilot でのデバイス登録では、デバイスの種類と役割に基づいてさまざまなユーザー エクスペリエンスが提供されます。 このデプロイ例で示すモデルでは、セキュリティで保護されたデバイスを一括展開して共有できる一方、デバイスは初めて使用するときにユーザーに割り当てられます。 詳細については、[Intune Autopilot デバイス登録](https://docs.microsoft.com/intune/device-enrollment)に関する記事を参照してください。
 
 ### <a name="configure-windows-update"></a>Windows Update を構成する
 

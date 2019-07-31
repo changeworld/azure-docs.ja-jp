@@ -10,25 +10,25 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9e19df7c50ca9d2c57ab385a567f4911b200c5e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5dfc1ef732c8456356de82f7fe026476fdfc075b
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510892"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227127"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-独自の JavaScript クライアント側コードを、Azure Active Directory (Azure AD) B2C アプリケーションに追加できます。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](active-directory-b2c-overview-custom.md)に要素を追加し、[ページ コントラクト](page-contract.md)を選択して要求内に[b2clogin.com](b2clogin.md)を使用します。 このアーティクルでは、カスタム ポリシー を変更してスクリプトの実行を有効にする方法について説明します。
+独自の JavaScript クライアント側コードを、Azure Active Directory (Azure AD) B2C アプリケーションに追加できます。 アプリケーションで JavaScript を有効にするには、[カスタム ポリシー](active-directory-b2c-overview-custom.md)に要素を追加し、[ページ レイアウト](page-layout.md)を選択して、要求内で [b2clogin.com](b2clogin.md) を使用します。 このアーティクルでは、カスタム ポリシー を変更してスクリプトの実行を有効にする方法について説明します。
 
 > [!NOTE]
-> ユーザー フローに対して JavaScript を有効にする場合、「[avaScript and page contract versions in Azure Active Directory B2C](user-flow-javascript-overview.md)」(Azure Active Directory B2Cでの JavaScript とページ コントラクト バージョン) を参照してください。
+> ユーザー フローに対して JavaScript を有効にする場合、「[Azure Active Directory B2C における JavaScript とページ レイアウトのバージョン](user-flow-javascript-overview.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-アプリケーションのユーザー インターフェイスの要素にページ コントラクトを選択します。 JavaScript を使用する場合は、カスタム ポリシー内のすべてのコンテンツ定義に対してページ コントラクト バージョンを定義する必要があります。
+アプリケーションのユーザー インターフェイスの要素にページ レイアウトを選択します。 JavaScript を使用する場合は、カスタム ポリシー内のすべてのコンテンツ定義に対してページ レイアウト バージョンを定義する必要があります。
 
 ## <a name="add-the-scriptexecution-element"></a>ScriptExecution 要素を追加する
 

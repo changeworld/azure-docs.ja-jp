@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296486755f0935e4eb8dcdb663da46ef60ef38bc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 356f795a1138ac6cd94097de71623095bceb92a3
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441007"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227343"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画
 
@@ -272,7 +272,7 @@ Azure AD に対して直接認証を行わない一部の従来およびオン�
 
 * 従来のオンプレミス アプリケーションでは、アプリケーション プロキシを使用する必要があります。
 * オンプレミスの RADIUS アプリケーションでは、MFA アダプターと NPS サーバーを使用する必要があります。
-* オンプレミスの AD FS アプリケーションでは、MFA アダプターと AD FS 2016 を使用する必要があります。
+* オンプレミスの AD FS アプリケーションでは、MFA アダプターと AD FS 2016 以降を使用する必要があります。
 
 Azure AD に対して直接認証し、先進認証 (WS-Fed、SAML、OAuth、OpenID Connect) を使用するアプリケーションは、条件付きアクセス ポリシーを直接使用できます。
 
@@ -322,13 +322,13 @@ Windows Server 2012 R2 での AD FS とは異なり、AD FS 2016 の Azure MFA �
 
 AD FS 2016 で Azure MFA を使用しており、ターゲット アプリケーションが条件付きアクセス ポリシーに従っている場合は、次の追加の考慮事項があります。
 
-* アプリケーションが、AD FS 2016 とフェデレーションされた Azure AD の証明書利用者である場合は、条件付きアクセスを使用できます。
-* アプリケーションが AD FS 2016 の証明書利用者であり、AD FS 2016 と共に管理またはフェデレーションされている場合は、条件付きアクセスを使用できません。
-* AD FS 2016 がプライマリ認証方法として Azure MFA を使用するように構成されている場合も、条件付きアクセスを使用できません。
+* アプリケーションが、AD FS 2016 以降とフェデレーションされた Azure AD の証明書利用者である場合は、条件付きアクセスを使用できます。
+* アプリケーションが AD FS 2016 または AD FS 2019 の証明書利用者であり、AD FS 2016 または AD FS 2019 と共に管理またはフェデレーションされている場合は、条件付きアクセスを使用できません。
+* AD FS 2016 または AD FS 2019 がプライマリ認証方法として Azure MFA を使用するように構成されている場合も、条件付きアクセスを使用できません。
 
 #### <a name="ad-fs-logging"></a>AD FS のログ記録
 
-Windows セキュリティ ログと AD FS 管理者ログ両方の標準的な AD FS 2016 ログ記録には、認証要求とその成功または失敗に関する情報が含まれます。 これらのイベント内のイベント ログ データでは、Azure MFA が使用されたかどうかが示されます。 たとえば、AD FS の監査イベント ID 1200 には、次のような情報が含まれる場合があります。
+Windows セキュリティ ログと AD FS 管理者ログ両方の標準的な AD FS 2016 および AD FS 2019 ログ記録には、認証要求とその成功または失敗に関する情報が含まれます。 これらのイベント内のイベント ログ データでは、Azure MFA が使用されたかどうかが示されます。 たとえば、AD FS の監査イベント ID 1200 には、次のような情報が含まれる場合があります。
 
 ```
 <MfaPerformed>true</MfaPerformed>

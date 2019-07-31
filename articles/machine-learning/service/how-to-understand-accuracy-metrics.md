@@ -8,21 +8,31 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 44dfa387b289afe4dc5f030cca0b13325c04e811
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.date: 07/16/2019
+ms.openlocfilehash: dc147fd0252b2b5ec4ce334d6c1c464d9cde8ef5
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67313229"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297893"
 ---
 # <a name="evaluate-training-accuracy-in-automated-ml-with-metrics"></a>自動化された ML でメトリックを使用したトレーニング精度を評価する
 
-実行イテレーションごとのトレーニング精度メトリックを表示する方法は複数あります。
+この記事では、Azure Machine Learning の自動機械学習モデルで使用できるさまざまなメトリックについて説明します。 
 
+実行イテレーションごとのトレーニング精度メトリックを表示する方法は複数あります。
 * [Jupyter ウィジェット](how-to-track-experiments.md#view-run-details)を使用する
 * 任意の `Run` オブジェクト上で [`get_metrics()` 関数](how-to-track-experiments.md#query-run-metrics)を使用する
 * [Azure portal で実験メトリック](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)を表示する
+
+## <a name="prerequisites"></a>前提条件
+ 
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+ 
+* SDK または Azure portal で自動機械学習の実験を作成します。
+ 
+    * SDK を使用し、[分類モデル](how-to-auto-train-remote.md)または[回帰モデル](tutorial-auto-train-models.md)を作成する
+    * [Azure portal](how-to-create-portal-experiments.md) を使用し、適切なデータをアップロードすることで分類または回帰モデルを作成します。
 
 ## <a name="classification-metrics"></a>分類メトリック
 
@@ -68,3 +78,7 @@ root_mean_squared_error|平均平方二乗誤差は、ターゲットと予測�
 normalized_root_mean_squared_error|正規化された平均平方二乗誤差は、データの範囲で除算した平均平方二乗誤差です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|データの範囲で除算します|
 root_mean_squared_log_error|対数平均平方二乗誤差は、予期される対数二乗誤差の平方根です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|なし|
 normalized_root_mean_squared_log_error|正規化された対数平均平方二乗誤差は、データの範囲で除算した対数平均平方二乗誤差です|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|データの範囲で除算します|
+
+## <a name="next-steps"></a>次の手順
+
+Azure Machine Learning の[自動機械学習](concept-automated-ml.md)について学習します。

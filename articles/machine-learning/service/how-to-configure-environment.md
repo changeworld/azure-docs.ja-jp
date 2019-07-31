@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7be6c9eda6d0a70d929efe4c00f661eb67105820
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3738ffe8b3faedc328bde01173400289403652f4
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606412"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297927"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -193,16 +193,10 @@ DSVM を開発環境として使用するには、以下の手順を実行しま
     pip install azureml-sdk[notebooks,automl]
     ```
 
-    このコマンドを使用して、Azure Machine Learning Data Prep SDK 自体をインストールします。
-
-    ```shell
-    pip install azureml-dataprep
-    ```
-
    > [!NOTE]
    > PyYAML をアンインストールできないというメッセージが表示された場合は、代わりに次のコマンドを使用してください。
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+   > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
 
    SDK をインストールするには数分かかります。 インストール オプションの詳細については、[インストール ガイド](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)を参照してください。
 
@@ -231,6 +225,12 @@ Jupyter Notebook は、[Jupyter プロジェクト](https://jupyter.org/)の一�
     ```shell
     conda activate myenv
     ```
+    
+1. サンプル ノートブックのセットに対して [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
+
+    ```CLI
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
 
 1. 次のコマンドを使用して、Jupyter Notebook サーバーを起動します。
 
@@ -251,8 +251,9 @@ Jupyter Notebook は、[Jupyter プロジェクト](https://jupyter.org/)の一�
     import sys
     sys.path
     ```
-
+    
 1. Azure Machine Learning service ワークスペースを使用するよう Jupyter Notebook を構成するには、「[ワークスペース構成ファイルを作成する](#workspace)」セクションを参照してください。
+
 
 ### <a id="vscode"></a>Visual Studio Code
 

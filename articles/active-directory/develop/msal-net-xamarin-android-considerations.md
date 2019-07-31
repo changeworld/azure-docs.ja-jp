@@ -17,17 +17,15 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 357c83cfd0ae3fed8b13419e72f50fcb90c04186
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: ff55853c859008690548b161451a24941a597d3a
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550652"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277897"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>MSAL.NET での Xamarin Android に固有の考慮事項
 この記事では、.NET 用 Microsoft 認証ライブラリ (MSAL.NET) で Xamarin Android を使用する場合の固有の考慮事項について説明します。
-
-この記事は MSAL.NET 3.x 用です。 MSAL.NET 2.x に関心がある場合は、[MSAL.NET 2.x ので Xamarin Android の詳細](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Xamarin-Android-specifics-2x)に関するページをご覧ください。
 
 ## <a name="set-the-parent-activity"></a>親アクティビティを設定する
 
@@ -38,6 +36,26 @@ var authResult = AcquireTokenInteractive(scopes)
  .WithParentActivityOrWindow(parentActivity)
  .ExecuteAsync();
 ```
+コールバックを介して、PublicClientApplication レベル (MSAL 4.2 以降) でこれを設定することもできます。
+
+```CSharp
+// Requires MSAL.NET 4.2 or above
+var pca = PublicClientApplicationBuilder
+  .Create("<your-client-id-here>")
+  .WithParentActivityOrWindow(() => parentActivity)
+  .Build();
+```
+
+[ここ](https://github.com/jamesmontemagno/CurrentActivityPlugin)の CurrentActivityPlugin を使用することをお勧めします。  その場合、PublicClientApplication ビルダー コードは次のようになります。
+
+```CSharp
+// Requires MSAL.NET 4.2 or above
+var pca = PublicClientApplicationBuilder
+  .Create("<your-client-id-here>")
+  .WithParentActivityOrWindow(() => CrossCurrentActivity.Current)
+  .Build();
+```
+
 
 ## <a name="ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends"></a>認証フローの対話部分が終了したら確実に制御が MSAL に戻るようにする
 Android では、`Activity` の `OnActivityResult` メソッドをオーバーライドして、AuthenticationContinuationHelper MSAL クラスの SetAuthenticationContinuationEventArgs メソッドを呼び出す必要があります。

@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 33e1287edbca6b603d103f11636959b6fe13e578
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 5fee129e24d38da350589d5bed90123733f148c0
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798086"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68296059"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "67798086"
 
 1. オンプレミスのクライアント コンピューターで PowerShell を開きます。
 
-2. この PowerShell スクリプトをコピーします。 このスクリプトにより、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)のクイック スタートで作成したマネージド インスタンス仮想ネットワークに VPN Gateway が接続されます。 このスクリプトでは、次の処理が実行されます。
+2. この PowerShell スクリプトをコピーします。 このスクリプトにより、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)のクイック スタートで作成したマネージド インスタンス仮想ネットワークに VPN Gateway が接続されます。 このスクリプトでは Azure PowerShell Az Module が使用されます。Windows または Linux ベースのホストの場合、次に従います。
 
    - 証明書が作成され、クライアント コンピューターにインストールされます
    - 今後の VPN Gateway サブネット IP 範囲が計算されます
@@ -54,9 +54,6 @@ ms.locfileid: "67798086"
 
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
-
-     > [!IMPORTANT]
-     > Az モジュール以外の Azure PowerShell Resource Manager モジュールを使用するには、`attachVPNGatewayAz.ps1` コマンドレットではなく `attachVPNGateway.ps1` コマンドレットを使用してください。
 
 3. このスクリプトを PowerShell ウィンドウに貼り付けて、必要なパラメーターを指定します。 `<subscriptionId>`、`<resourceGroup>`、`<virtualNetworkName>` の値は、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)のクイック スタートで使用されている値に一致する必要があります。 `<certificateNamePrefix>` の値は、自分で選択した文字列にすることができます。
 

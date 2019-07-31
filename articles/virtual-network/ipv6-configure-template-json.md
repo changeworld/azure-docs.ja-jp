@@ -1,7 +1,7 @@
 ---
-title: IPv6 デュアル タスク アプリケーション - リソース マネージャーのテンプレート (プレビュー) を Azure 仮想ネットワークで展開します。
+title: IPv6 デュアル スタック アプリケーションと Basic Load Balancer を Azure 仮想ネットワークでデプロイする - リソース マネージャーのテンプレート (プレビュー)
 titlesuffix: Azure Virtual Network
-description: この記事では、Azure Resource Manager VM テンプレートを使用して Azure 仮想ネットワークで IPv6 デュアル スタック アプリケーションを展開する方法を示します。
+description: この記事では、Azure Resource Manager VM テンプレートを使用して Azure 仮想ネットワークで IPv6 デュアル スタック アプリケーションをデプロイする方法を示します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -10,16 +10,16 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 06/26/2019
 ms.author: kumud
-ms.openlocfilehash: ae90bc4a12763803f38224d917c4644a68ae7d6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e97a5a478871d94e074b59558a11df1ec752b0f9
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62131090"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249842"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure---template-preview"></a>Azure のテンプレート (プレビュー) で IPv6 デュアル スタック アプリケーションを展開します。
+# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>IPv6 デュアル スタック アプリケーションと Basic Load Balancer を Azure でデプロイする - テンプレート (プレビュー)
 
 この記事では、適用する Azure Resource Manager VM テンプレートの一部と共にIPv6 構成タスクのリストを示します。 この記事で説明されているテンプレートを使用して、Azure でデュアル スタック (IPv4 と IPv6) アプリケーションを展開します。これには、 IPv4 と IPv6 のサブネットを持つデュアル スタック仮想ネットワーク、デュアル (IPv4 と IPv6) のフロントエンド構成を持つロード バランサー、デュアル IP 構成、ネットワーク セキュリティ グループ、およびパブリック IP を持つ NIC の仮想マシンが含まれます。 
 
@@ -176,7 +176,7 @@ ms.locfileid: "62131090"
 ```
 
 ## <a name="sample-vm-template-json"></a>VM テンプレートのサンプル JSON
-Azure Resource Manager テンプレートを使用して Azure 仮想ネットワークで IPv6 デュアル スタック アプリケーションを展開するには、[こちら](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)をクリックしてください。
+Azure Resource Manager テンプレートを使用して Azure 仮想ネットワークで IPv6 デュアル スタック アプリケーションをデプロイするには、[こちら](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)のサンプル テンプレートを表示してください。
 
 ## <a name="next-steps"></a>次の手順
 
