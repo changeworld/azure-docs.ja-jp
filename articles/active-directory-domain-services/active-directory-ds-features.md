@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: e49a37ec95a8cf26a2c63bd90759da35fc537e41
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e0f38ed8367f076c9f9c4da77440bb3e9603d514
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67474243"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234204"
 ---
-# <a name="azure-ad-domain-services"></a>Azure AD Domain Services
-## <a name="features"></a>機能
+# <a name="features-provided-by-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services から提供される機能
+
 Azure AD Domain Services のマネージド ドメインでは、次の機能を使用できます。
 
 * **簡単なデプロイ操作:** わずか数回のクリックで、Azure AD ディレクトリのAzure AD Domain Services を有効にできます。 管理対象ドメインには、クラウド専用のユーザー アカウントとオンプレミスのディレクトリから同期されているユーザー アカウントが含まれています。

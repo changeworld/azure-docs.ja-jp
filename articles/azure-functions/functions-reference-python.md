@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 249e5ac33b1420ada2cda45ea729471351f21adf
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: ec42693fe42f35d728a4a5018776867f07403f81
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341987"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226866"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -171,7 +171,7 @@ def main(req: func.HttpRequest,
 
 出力バインディングの値として関数の戻り値を使用するには、バインディングの `name` プロパティを `function.json` 内の `$return` に設定する必要があります。
 
-複数の出力を生成するには、`azure.functions.Out` インターフェイスによって提供される `set()` メソッドを使用して、バインディングに値を割り当てます。 たとえば、次の関数を使用すると、キューにメッセージをプッシュすることに加え、HTTP 応答を返すこともできます。
+複数の出力を生成するには、[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) インターフェイスによって提供される `set()` メソッドを使用して、バインディングに値を割り当てます。 たとえば、次の関数を使用すると、キューにメッセージをプッシュすることに加え、HTTP 応答を返すこともできます。
 
 ```json
 {
@@ -259,7 +259,7 @@ def main():
 
 ## <a name="context"></a>Context
 
-実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに `context` 引数を含めます。 
+実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) 引数を含めます。 
 
 例:
 
@@ -272,7 +272,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-**コンテキスト** クラスには次のメソッドが含まれています。
+[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python) クラスには次のメソッドが含まれています。
 
 `function_directory`  
 関数が実行されるディレクトリです。
@@ -332,32 +332,70 @@ func azure functionapp publish <app name> --build-native-deps
 
 Core Tools では、ご利用のローカル マシン上で [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) イメージをコンテナーとして実行するためにバックグラウンドで Docker が使用されます。 この環境を使用する場合、必要なモジュールがソース配布からビルドおよびインストールされてから、Azure への最終的なデプロイに備えてそれらがパッケージ化されます。
 
-継続的デリバリー (CD) システムを使って依存関係のビルドと発行を行うには、[Azure DevOps パイプラインを使用](https://docs.microsoft.com/azure/azure-functions/functions-how-to-azure-devops)します。 
+継続的デリバリー (CD) システムを使って依存関係のビルドと発行を行うには、[Azure DevOps パイプラインを使用](functions-how-to-azure-devops.md)します。 
 
 ## <a name="unit-testing"></a>単体テスト
 
-Python で記述された関数は、標準的なテスト フレームワークを使用して、他の Python コードのようにテストできます。 ほとんどのバインドでは、`azure.functions` パッケージから適切なクラスのインスタンスを作成することにより、モック入力オブジェクトを作成できます。
+Python で記述された関数は、標準的なテスト フレームワークを使用して、他の Python コードのようにテストできます。 ほとんどのバインドでは、`azure.functions` パッケージから適切なクラスのインスタンスを作成することにより、モック入力オブジェクトを作成できます。 [`azure.functions`](https://pypi.org/project/azure-functions/) パッケージはすぐには使用できないため、上記の「[Python のバージョンとパッケージの管理](#python-version-and-package-management)」セクションの説明に従って、`requirements.txt` ファイルを介してインストールするようにしてください。
 
 たとえば、次に示すのは、HTTP によってトリガーされる関数のモック テストです。
 
-```python
-# myapp/__init__.py
-import azure.functions as func
-import logging
-
-
-def main(req: func.HttpRequest,
-         obj: func.InputStream):
-
-    logging.info(f'Python HTTP triggered function processed: {obj.read()}')
+```json
+{
+  "scriptFile": "httpfunc.py",
+  "entryPoint": "my_function",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
 ```
 
 ```python
-# myapp/test_func.py
+# myapp/httpfunc.py
+import azure.functions as func
+import logging
+
+def my_function(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}")
+    else:
+        return func.HttpResponse(
+             "Please pass a name on the query string or in the request body",
+             status_code=400
+        )
+```
+
+```python
+# myapp/test_httpfunc.py
 import unittest
 
 import azure.functions as func
-from . import my_function
+from httpfunc import my_function
 
 
 class TestFunction(unittest.TestCase):
@@ -366,7 +404,7 @@ class TestFunction(unittest.TestCase):
         req = func.HttpRequest(
             method='GET',
             body=None,
-            url='/my_function',
+            url='/api/HttpTrigger',
             params={'name': 'Test'})
 
         # Call the function.
@@ -375,7 +413,7 @@ class TestFunction(unittest.TestCase):
         # Check the output.
         self.assertEqual(
             resp.get_body(),
-            'Hello, Test!',
+            b'Hello Test',
         )
 ```
 
@@ -422,6 +460,7 @@ class TestFunction(unittest.TestCase):
 
 詳細については、次のリソースを参照してください。
 
+* [Azure Functions パッケージ API のドキュメント](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Blob Storage のバインド](functions-bindings-storage-blob.md)

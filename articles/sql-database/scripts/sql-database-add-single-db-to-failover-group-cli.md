@@ -10,14 +10,13 @@ ms.topic: sample
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
-manager: jroth
 ms.date: 07/16/2019
-ms.openlocfilehash: 77fb1e8195c60d6f62baa72bee361c016463f3c2
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: b80be0db41ea8bd3996a7b8843c80f510289545f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444642"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570057"
 ---
 # <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>CLI を使用し、SQL エラスティック プールの Azure SQL データベースを移動する
 

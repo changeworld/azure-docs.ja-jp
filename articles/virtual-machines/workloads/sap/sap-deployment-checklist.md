@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/01/2019
+ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93fae0babdee5eac87d50679fdd5b2b938c4df2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: abe04a88f3337ed26b98815b5633fd5d719b7ce3
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236903"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68234220"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロードの計画とデプロイに関するチェックリスト 
 
@@ -77,7 +77,7 @@ ms.locfileid: "65236903"
 5.  Microsoft Premier サポート契約 – MS テクニカル アカウント マネージャー (TAM) を識別します。 SAP によるサポート要件については、SAP サポート ノート [#2015553](https://launchpad.support.sap.com/#/notes/2015553) をご覧ください 
 6.  さまざまなサブスクリプションに対する Azure サブスクリプションの数とコア クォータを定義します。 必要に応じて、[Azure サブスクリプションのクォータを増やすサポート要求を開きます](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) 
 7.  Azure への SAP データの移行に関するデータの削減とデータ移行計画。 SAP NetWeaver システムについては、制限付きの膨大なデータ数のボリュームを保持する方法についてのガイドラインが SAP にあります。 SAP では、SAP ERP システムでのデータ管理に関する[こちらの広範なガイド](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF)が公開されています。 ただし、一部のコンテンツは、NetWeaver と S/4HANA システムに一般に適用されます。
-8.  自動デプロイ方法を定義して決定します。 Azure へのインフラストラクチャ デプロイの背後にある自動化の目的は、決定論的な方法でデプロイし、決定論的な結果を得ることです。 多くのお客様は、PowerShell または CLI ベースのスクリプトを使用します。 しかし、SAP 用に Azure インフラストラクチャをデプロイしたり、SAP ソフトウェアをインストールしたりすることに使用できるさまざまなオープン ソース テクノロジがあります。 例は GitHub で見つかります。
+8.  自動デプロイ方法を定義して決定します。 Azure へのインフラストラクチャ デプロイの背後にある自動化の目的は、決定論的な方法でデプロイし、決定論的な結果を得ることです。 多くのお客様は、PowerShell または CLI ベースのスクリプトを使用します。 しかしながら、SAP 用に Azure インフラストラクチャをデプロイしたり、SAP ソフトウェアをインストールしたりすることに使用できるさまざまなオープン ソース テクノロジがあります。 例は GitHub で見つかります。
     1.  [Azure Cloud での SAP の自動デプロイ](https://github.com/Azure/sap-hana)
     2.  [SAP HANA のインストール](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  お客様、システム インテグレーター、Microsoft、およびその他の関連するパーティの間での、定期的な設計およびデプロイ レビューの頻度を定義します
@@ -127,6 +127,7 @@ ms.locfileid: "65236903"
           4.   SAP サポート ノート [#500235](https://launchpad.support.sap.com/#/notes/500235) および SAP サポート ノート [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) に従って、SAP アプリケーション層 VM と DBMS VM の間のネットワーク待機時間をテストして評価します。 SAP サポート ノート [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) のネットワーク待機時間のガイダンスに照らして結果を評価します。 ネットワーク待機時間は、中程度から良好な範囲でなければなりません。 [こちら](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)に記載されているように、VM と HANA Large Instance ユニットの間のトラフィックには例外が適用されます
           5.   Direct Server Return を使用するように ILB のデプロイが設定されていることを確認します。 DBMS 層での高可用性構成用に Azure ILB が使用されている場合、この設定により待機時間が短縮されます
           6.   Azure Load Balancer を Linux ゲスト オペレーティング システムと共に使用している場合、Linux ネットワーク パラメーター **net.ipv4.tcp_timestamps** が **0** に設定されていることを確認します。 以前のバージョンの SAP Note [#2382421](https://launchpad.support.sap.com/#/notes/2382421) に記載されていた推奨情報とは矛盾します。 Azure Load Balancer と連動させるためには、このパラメーターを 0 に設定する必要があり、その点を反映するために、この SAP Note もいずれ更新されます。
+          7.   ネットワークの待ち時間を最適な状態にするために、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」の記事で説明されているように [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)の使用を検討してください。
    4. 高可用性とディザスター リカバリーのデプロイ 
       1. 特定の Azure 可用性ゾーンを定義しないで SAP アプリケーション層をデプロイする場合は、単一の SAP システムの SAP ダイアログ インスタンスまたはミドルウェア インスタンスを実行するすべての VM が、[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)にデプロイされることを確認します。 
          1.   SAP セントラル サービスと DBMS に対して高可用性が必要ない場合は、これらの VM を SAP アプリケーション層と同じ可用性セットにデプロイできます
@@ -140,6 +141,7 @@ ms.locfileid: "65236903"
       2. オンプレミスにデプロイされた SAP GUI インターフェイスと、Azure にデプロイされた SAP アプリケーション層の間での GUI のタイムアウトを回避するため、default.pfl またはインスタンス プロファイルで次のパラメーターが設定されていることを確認します。
          1.   rdisp/keepalive_timeout = 3600
          2.   rdisp/keepalive = 20
+      3. SAP エンキュー プロセスと SAP ワークプロセスの間に確立した接続が中断されるのを防ぐ目的で、パラメーター enque/encni/set_so_keepalive を "true" に設定する必要があります。 [SAP Note #2743751](https://launchpad.support.sap.com/#/notes/2743751) も参照してください  
       3. Windows フェールオーバー クラスター構成を使用する場合は、応答のないノードに対応する時間が Azure に対して正しく設定されていることを確認します。 Microsoft の記事「[Tuning Failover Cluster Network Thresholds (フェールオーバー クラスター ネットワークしきい値の調整)](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834)」では、パラメーターの一覧と、それらがフェールオーバーの感度に及ぼす影響が示されています。 クラスター ノードが同じサブネット内にあるとすると、次のパラメーターを変更する必要があります。
          1.   SameSubNetDelay = 2000
          2.   SameSubNetThreshold = 15
@@ -180,6 +182,7 @@ ms.locfileid: "65236903"
 8.  [こちら](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)で Azure の新しい HANA 認定 SKU をチェックし、計画していたものと価格を比較して、最終的によりよい価格性能比のユニットを入手するように変更します 
 9.  新しい VM の種類を利用するようにデプロイ スクリプトを調整し、使用したい Azure の新機能を組み込みます
 10. インフラストラクチャをデプロイした後、SAP サポート ノート [#500235](https://launchpad.support.sap.com/#/notes/500235) および SAP サポート ノート [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) に従って、SAP アプリケーション層 VM と DBMS VM の間のネットワーク待機時間をテストして評価します。 SAP サポート ノート [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) のネットワーク待機時間のガイダンスに照らして結果を評価します。 ネットワーク待機時間は、中程度から良好な範囲でなければなりません。 [こちら](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)に記載されているように、VM と HANA Large Instance ユニットの間のトラフィックには例外が適用されます。 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#azure-network-considerations)」および「[Azure における SAP HANA インフラストラクチャの構成と運用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)」で説明されている制限が自分のデプロイに該当しないことを確認します
+11. 「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」という記事に説明がありますが、正しい [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を使用して VM をデプロイしてください。
 11. ワークロードを適用する前に、概念実証フェーズに記載されている他のすべてのチェックを実行します
 12. ワークロードを適用したら、Azure でのこれらのシステムのリソース消費量を記録し、古いプラットフォームで取得した記録と比較します。 大きな違いがある場合は、将来のデプロイで VM のサイズを調整します。 ダウンサイズすると、VM のストレージとネットワークの帯域幅も減少することに留意してください。
     1.  「[Azure の Windows 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」。 
@@ -221,7 +224,8 @@ ms.locfileid: "65236903"
     11. SAP アプリケーションと、SAP NetWeaver、Hybris、または S/4HANA ベースの SAP システムの DBMS 層の間の通信パスに [Azure ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/)が配置されていない
     12. ASG と NSG のルールで、必要であり計画されていた通信が許可され、必要な場合は通信がブロックされる
     13. 前に説明したようにタイムアウトの設定が正しく設定されている
-    14. SAP サポート ノート [#500235](https://launchpad.support.sap.com/#/notes/500235) および SAP サポート ノート [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) に従って、SAP アプリケーション層 VM と DBMS VM の間のネットワーク待機時間をテストして評価します。 SAP サポート ノート [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) のネットワーク待機時間のガイダンスに照らして結果を評価します。 ネットワーク待機時間は、中程度から良好な範囲でなければなりません。 [こちら](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)に記載されているように、VM と HANA Large Instance ユニットの間のトラフィックには例外が適用されます
+    14. 「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」という記事に説明がありますが、正しい [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)を使用して VM をデプロイしてください。
+    15. SAP サポート ノート [#500235](https://launchpad.support.sap.com/#/notes/500235) および SAP サポート ノート [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) に従って、SAP アプリケーション層 VM と DBMS VM の間のネットワーク待機時間をテストして評価します。 SAP サポート ノート [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) のネットワーク待機時間のガイダンスに照らして結果を評価します。 ネットワーク待機時間は、中程度から良好な範囲でなければなりません。 [こちら](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)に記載されているように、VM と HANA Large Instance ユニットの間のトラフィックには例外が適用されます
     15. 必要な場所に、必要な暗号化方法で、暗号化がデプロイされていることを確認する
     16. インターフェイスおよび他のアプリケーションが、新しくデプロイされたインフラストラクチャに接続できることを確認する
 6.  Azure の計画メンテナンスに対応するためのプレイブックを作成します。 計画メンテナンスのときにシステムと VM を再起動する順序を定義します
