@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 8abe257090b5159053a37350c9e24cc27073679b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/12/2019
+ms.openlocfilehash: 8d4a7a1b176a0c232c4461c7a8cfc2b1e3faddd6
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081748"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638378"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の読み取りレプリカ
 
-読み取りレプリカ機能を使用すると、Azure Database for MariaDB サーバーから、読み取り専用サーバーにデータをレプリケートできます。 マスター サーバーからマスターと同じリージョン内の最大 5 つのレプリカにレプリケートできます。 レプリカは、グローバル トランザクション ID (GTID) による MariaDB エンジンのバイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジを使用して、非同期で更新されます。 binlog レプリケーションの詳細については、[binlog レプリケーションの概要](https://mariadb.com/kb/en/library/replication-overview/)に関する記事を参照してください。
+読み取りレプリカ機能を使用すると、Azure Database for MariaDB サーバーから、読み取り専用サーバーにデータをレプリケートできます。 マスター サーバーから最大 5 つのレプリカにレプリケートできます。 レプリカは、グローバル トランザクション ID (GTID) による MariaDB エンジンのバイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジを使用して、非同期で更新されます。 binlog レプリケーションの詳細については、[binlog レプリケーションの概要](https://mariadb.com/kb/en/library/replication-overview/)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> 同一リージョンの読み取りレプリカは、現在パブリック プレビュー段階です。
+> マスター サーバーと同じ Azure リージョン内、または選択した他の任意の Azure リージョン内に読み取りレプリカを作成できます。 読み取りレプリカ (同じリージョンおよび複数のリージョンにわたる) は、現在パブリック プレビュー段階にあります。
 
 レプリカは、通常の Azure Database for MariaDB サーバーと同様に管理する新しいサーバーです。 読み取りレプリカごとに、仮想コアおよびストレージのプロビジョニング済みコンピューティング (GB/月) に対して課金されます。
 
@@ -133,3 +133,4 @@ Azure Database for MariaDB は、Azure Monitor に**レプリケーションの�
 ## <a name="next-steps"></a>次の手順
 
 - [Azure portal を使用して読み取りレプリカの作成と管理](howto-read-replicas-portal.md)を行う方法について確認する。
+- [Azure CLI を使用して読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認する。

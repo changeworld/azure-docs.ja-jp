@@ -2,8 +2,8 @@
 title: Estimator を使用して ML モデルをトレーニングする
 titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning service の Estimator クラスを使用して従来の機械学習モデルとディープ ラーニング モデルを単一ノードおよび分散トレーニングする方法を説明します
-ms.author: minxia
-author: mx-iao
+ms.author: maxluk
+author: maxluk
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 689d7dcd57c513479c7bc08a45094670242ef6a5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0080c8ac5e957912c5fd59a7051619ee60bd914c
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075028"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68260064"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Azure Machine Learning で Estimator を使用してモデルをトレーニングする
 
@@ -59,7 +59,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 パラメーター | 説明
 --|--
 `source_directory`| トレーニング ジョブに必要なコードのすべてが含まれているローカル ディレクトリ。 このフォルダーは、ローカル コンピューターからリモート コンピューティングにコピーされています 
-`script_params`| <コマンドライン引数, 値> ペアの形式で、トレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ。 `script_params` で詳細フラグを指定するには、`<command-line argument, "">` を使用します。
+`script_params`| `<command-line argument, value>` ペアの形式で、ご利用のトレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ。 `script_params` で詳細フラグを指定するには、`<command-line argument, "">` を使用します。
 `compute_target`| トレーニング スクリプトの実行に使用するリモートのコンピューティング先 (この例では Azure Machine Learning コンピューティング ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) クラスター) (AmlCompute クラスターが共通して使用されているコンピューティング先であっても、Azure VM やローカル コンピューターなど、他のコンピューティング先の種類を選択することもできる点に注意してください)。
 `entry_script`| リモート コンピューティングで実行するトレーニング スクリプトのファイルパス (`source_directory` を基準にした相対パス)。 このファイル、およびこのファイルと依存関係があるその他のファイルはすべて、このフォルダーに置かれている必要があります
 `conda_packages`| トレーニング スクリプトで必要な、conda を使用してインストールする Python パッケージのリスト。  

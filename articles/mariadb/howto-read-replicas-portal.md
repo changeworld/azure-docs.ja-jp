@@ -5,20 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: eb228138118512c5c64574212910c5f16885ee94
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/12/2019
+ms.openlocfilehash: 902187c3462c54f728519aa1e6e60fbcc1eab20f
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081644"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876304"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB の読み取りレプリカを作成および管理する方法
 
 この記事では、Azure portal を使用して Azure Database for MariaDB サービスの読み取りレプリカを作成および管理する方法を学習します。
 
 > [!IMPORTANT]
-> 同一リージョンの読み取りレプリカは、現在パブリック プレビュー段階です。
+> マスター サーバーと同じ Azure リージョン内、または選択した他の任意の Azure リージョン内に読み取りレプリカを作成できます。 読み取りレプリカ (同じリージョンおよび複数のリージョンにわたる) は、現在パブリック プレビュー段階にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,11 @@ ms.locfileid: "67081644"
 
     ![Azure Database for MariaDB - レプリカ名](./media/howto-read-replica-portal/replica-name.png)
 
-6. **[OK]** を選択して、レプリカの作成を確認します。
+6. レプリカ サーバーの場所を選択します。 任意の Azure リージョンにレプリカを作成できます。 既定の場所は、マスター サーバーと同じです。
+
+    ![Azure Database for MariaDB - レプリカの場所](./media/howto-read-replica-portal/replica-location.png)
+
+7. **[OK]** を選択して、レプリカの作成を確認します。
 
 > [!NOTE]
 > マスターと同じサーバー構成で、読み取りレプリカが作成されます。 作成された後、レプリカ サーバーの構成を変更できます。 レプリカをマスターと維持できるようにするために、レプリカ サーバーの構成をマスターと同じかそれ以上の値にしておくようお勧めします。

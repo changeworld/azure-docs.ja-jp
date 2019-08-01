@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 7cfe19614b2107161dcce9c80690333212162045
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1a298584b2444d52f84c0e599462bc26c63a898
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061317"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302631"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス
 
@@ -42,7 +42,7 @@ Azure Active Directory のサービス プリンシパルは、一般的に Azur
 
 Data Lake Storage Gen2 には、ファイアウォールを有効にして、アクセスを Azure のサービスに限定するオプションが用意されており、外部からの攻撃ベクターを制限するためにお勧めです。 ストレージ アカウントのファイアウォールは、Azure portal の **[ファイアウォール]**  >  **[ファイアウォールを有効にする] を [オン]**  >  **[Azure サービスへのアクセスを許可]** オプションで有効にすることができます。
 
-Storage のファイアウォールを介したアクセスが許可されている可能性のある仮想ネットワークに Azure Databricks クラスターを追加するには、Databricks のプレビュー機能を使用する必要があります。 この機能を有効にするには、サポート リクエストを送信してください。
+Azure Databricks からご利用のストレージ アカウントにアクセスするには、Azure Databricks をご利用の仮想ネットワークにデプロイしてから、その仮想ネットワークをご利用のファイアウォールに追加します。 「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security)」を参照してください。
 
 ## <a name="resiliency-considerations"></a>回復性に関する考慮事項
 

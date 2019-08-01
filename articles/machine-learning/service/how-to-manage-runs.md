@@ -10,13 +10,13 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 04/05/2019
-ms.openlocfilehash: a93492b8ea97500fe3c761f3ac0c49f8c1342d09
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 07/12/2019
+ms.openlocfilehash: a33ed7e5584e216fac07c5ad6b38d3754b9bca0f
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074959"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868841"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 
@@ -41,7 +41,7 @@ ms.locfileid: "67074959"
 
     お使いの Azure Machine Learning SDK のバージョンを確認するには、次のコードを使用します。
 
-    ```Python
+    ```python
     print(azureml.core.VERSION)
     ```
 
@@ -53,7 +53,7 @@ ms.locfileid: "67074959"
 
 お使いの実験を設定するには、[azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) パッケージから [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)、[Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) および [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) クラスをインストールします。
 
-```Python
+```python
 import azureml.core
 from azureml.core import Workspace, Experiment, Run
 from azureml.core import ScriptRunConfig
@@ -64,9 +64,8 @@ exp = Experiment(workspace=ws, name="explore-runs")
 
 [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) メソッドを使用して、そのログ プロセスを開始および実行します。
 
-```Python
+```python
 notebook_run = exp.start_logging()
-
 notebook_run.log(name="message", value="Hello from run!")
 ```
 
@@ -97,7 +96,7 @@ notebook_run.log(name="message", value="Hello from run!")
     ```
 
     > [!TIP]
-    > `az ml folder attach` コマンドで、2 つのサンプル runconfig ファイルを含む `.azureml` サブディレクトリが作成されました。 
+    > `az ml folder attach` コマンドで、2 つのサンプル runconfig ファイルを含む `.azureml` サブディレクトリが作成されました。
     >
     > プログラムで実行構成オブジェクトを作成する Python スクリプトがある場合は、[RunConfig.save()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) を使用してそれを runconfig ファイルとして保存できます。
     >
@@ -111,31 +110,31 @@ notebook_run.log(name="message", value="Hello from run!")
 
 [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) メソッドを使用して実行の状態を取得します。
 
-```Python
+```python
 print(notebook_run.get_status())
 ```
 
-実行の詳細をさらに取得するには、[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) メソッドを使用します。
+実行 ID、実行時間、および実行に関する追加の詳細を取得するには、[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) メソッドを使用します。
 
-```Python
-notebook_run.get_details()
+```python
+print(notebook_run.get_details())
 ```
 
 自分の実行が正常に終了したら、[`complete()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) メソッドを使用し、それを完了とマークします。
 
-```Python
+```python
 notebook_run.complete()
 print(notebook_run.get_status())
 ```
 
-Python の `with...as` パターンを使用している場合、実行が範囲外になると、実行によって自動的に実行が完了とマークされます。 ユーザーが手動で実行を完了とマークする必要はありません。
+Python の `with...as` 設計パターンを使用している場合、実行が範囲外になると、実行によって自動的に実行が完了とマークされます。 ユーザーが手動で実行を完了とマークする必要はありません。
 
-```Python
+```python
 with exp.start_logging() as notebook_run:
     notebook_run.log(name="message", value="Hello from run!")
-    print("Is it still running?",notebook_run.get_status())
+    print(notebook_run.get_status())
 
-print("Has it completed?",notebook_run.get_status())
+print(notebook_run.get_status())
 ```
 
 ### <a name="using-the-cli"></a>CLI の使用
@@ -168,22 +167,20 @@ print("Has it completed?",notebook_run.get_status())
 
 SDK を使用して実行をキャンセルするには、[`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) メソッドを使用します。
 
-```Python
+```python
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
-
 local_script_run = exp.submit(run_config)
-print("Did the run start?",local_script_run.get_status())
+print(local_script_run.get_status())
 
 local_script_run.cancel()
-print("Did the run cancel?",local_script_run.get_status())
+print(local_script_run.get_status())
 ```
 
-実行が終了したが、実行にエラー (正しくないトレーニング スクリプトが使用されたなど) が含まれている場合、[`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#fail-error-details-none---set-status-true-) メソッドを使用して、それを失敗とマークできます。
+実行が終了したが、実行にエラー (正しくないトレーニング スクリプトが使用されたなど) が含まれている場合、[`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-) メソッドを使用して、それを失敗とマークできます。
 
-```Python
+```python
 local_script_run = exp.submit(run_config)
 local_script_run.fail()
-
 print(local_script_run.get_status())
 ```
 
@@ -206,7 +203,7 @@ az ml run cancel -r runid
 
 このコード例では、`hello_with_children.py` スクリプトで [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) メソッドを使用して、渡された実行から 5 つの子実行のバッチを作成します。
 
-```Python
+```python
 !more hello_with_children.py
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_children.py')
 
@@ -227,8 +224,8 @@ with exp.start_logging() as parent_run:
 
 特定の親の子実行をクエリするには、[`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) メソッドを使用します。
 
-```Python
-list(parent_run.get_children())
+```python
+print(parent_run.get_children())
 ```
 
 ## <a name="tag-and-find-runs"></a>実行のタグ付けおよび検索
@@ -265,7 +262,7 @@ local_script_run.tag("quality", "fantastic run")
 print(local_script_run.get_tags())
 ```
 
-単純な文字列のタグを追加することもできます。 これらのタグがタグ辞書に表示されると、値は `None` になります。
+単純な文字列のタグを追加することもできます。 これらのタグがタグ辞書にキーとして表示されると、値は `None` になります。
 
 ```Python
 local_script_run.tag("worth another look")

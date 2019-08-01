@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 03cb3f2339dda1bf1dbb510b686882e924a98d74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd34ab7cd899549962663e8cee8ee2121c39c49e
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118699"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67840400"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -59,7 +59,7 @@ Storage Explorer は、Azure リソースに接続するために必要な情報
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>管理レイヤーのアクセス許可を取得できない場合、管理者からは何が必要でしょうか?
 
-現時点で RBAC 関連の解決策はまだありません。 回避策として、SAS URI を要求して[リソースにアタッチ](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#attach-a-service-by-using-a-shared-access-signature-sas)することができます。
+現時点で RBAC 関連の解決策はまだありません。 回避策として、SAS URI を要求して[リソースにアタッチ](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri)することができます。
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>エラー:証明書チェーンの自己署名証明書 (および同様のエラー)
 
@@ -233,46 +233,76 @@ SAS URL を使用してサービスに接続し、上記のエラーが発生す
 
 ## <a name="linux-dependencies"></a>Linux の依存関係
 
-一般に、Linux で Storage Explorer を実行するには、次のパッケージが必要です。
+<!-- Storage Explorer 1.9.0 and later is available as a snap from the Snap Store. The Storage Explorer snap installs all of its dependencies with no extra hassle.
 
-* [.NET Core 2.0 ランタイム](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) 注: Storage Explorer バージョン 1.7.0 以前には .NET Core 2.0 が必要です。 新しいバージョンの .NET Core がインストールされている場合は、Storage Explorer に修正プログラムを適用する必要があります (下を参照)。 Storage Explorer 1.8.0 以降を実行している場合は、.NET Core 2.2 まで使用できます。 現時点で、2.2 を超えるバージョンは動作が検証されていません。
-* `libgnome-keyring-common` と `libgnome-keyring-dev`
+Storage Explorer requires the use of a password manager, which may need to be connected manually before Storage Explorer will work correctly. You can connect Storage Explorer to your system's password manager with the following command:
+
+```bash
+snap connect storage-explorer:password-manager-service :password-manager-service
+```
+
+You can also download the application .tar.gz file, but you'll have to install dependencies manually. -->
+
+> [!IMPORTANT]
+> .tar.gz ダウンロードで提供されている Storage Explorer は、Ubuntu ディストリビューションでのみサポートされています。 他のディストリビューションについては検証されておらず、代替または追加のパッケージが必要となる場合があります。
+
+Linux 用の Storage Explorer の場合、次のパッケージが最も一般的な要件となります。
+
+* [.NET Core 2.0 ランタイム](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
 * `libgconf-2-4`
+* `libgnome-keyring0` または `libgnome-keyring-dev`
+* `libgnome-keyring-common`
 
-ご使用のディストリビューションによっては、他のパッケージのインストールも必要な場合があります。
+> [!NOTE]
+> Storage Explorer バージョン 1.7.0 以前には .NET Core 2.0 が必要です。 新しいバージョンの .NET Core がインストールされている場合は、[Storage Explorer に修正プログラムを適用](#patching-storage-explorer-for-newer-versions-of-net-core)する必要があります。 Storage Explorer 1.8.0 以降を実行している場合は、.NET Core 2.2 まで使用できます。 現時点で、2.2 を超えるバージョンは動作が検証されていません。
 
-Storage Explorer は、Ubuntu 18.04、16.04、および 14.04 で正式にサポートされています。 クリーンな状態のコンピューターでのインストール手順は次のとおりです。
+# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
+
+1. Storage Explorer をダウンロードします。
+2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current) をインストールします。
+3. 次のコマンドを実行します。
+   ```bash
+   sudo apt-get install libgconf-2-4 libgnome-keyring0
+   ```
 
 # <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
 
-1. Storage Explorer のダウンロード
-2. .NET Core ランタイムをインストールします。検証済みの最新バージョンは、[2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-2.0.8) です (新しいバージョンが既にインストールされている場合は、Storage Explorer の修正プログラムの適用が必要な場合があります。以下を参照してください)
-3. `sudo apt-get install libgconf-2-4` を実行します。
-4. `sudo apt install libgnome-keyring-common libgnome-keyring-dev` を実行します。
+1. Storage Explorer をダウンロードします。
+2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current) をインストールします。
+3. 次のコマンドを実行します。
+   ```bash
+   sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
+   ```
 
 # <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Storage Explorer のダウンロード
-2. .NET Core ランタイムをインストールします。検証済みの最新バージョンは、[2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-2.0.8) です (新しいバージョンが既にインストールされている場合は、Storage Explorer の修正プログラムの適用が必要な場合があります。以下を参照してください)
-3. `sudo apt install libgnome-keyring-dev` を実行します。
+2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current) をインストールします。
+3. 次のコマンドを実行します。
+   ```bash
+   sudo apt install libgnome-keyring-dev
+   ```
 
 # <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. Storage Explorer のダウンロード
-2. .NET Core ランタイムをインストールします。検証済みの最新バージョンは、[2.0.8](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-2.0.8) です (新しいバージョンが既にインストールされている場合は、Storage Explorer の修正プログラムの適用が必要な場合があります。以下を参照してください)
-3. `sudo apt install libgnome-keyring-dev` を実行します。
+2. [.NET Core Runtime](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current) をインストールします。
+3. 次のコマンドを実行します。
+   ```bash
+   sudo apt install libgnome-keyring-dev
+   ```
 
----
+### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>新しいバージョンの .NET Core への Storage Explorer 修正プログラムの適用
 
-### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>新しいバージョンの .NET Core への Storage Explorer 修正プログラムの適用 
-2\.0 より新しいバージョンの .NET Core がインストールされていて、Storage Explorer バージョン 1.7.0 以前を実行している場合は、次の手順を実行して Storage Explorer の修正プログラムを適用する必要があります。
+Storage Explorer 1.7.0 以前の場合は、Storage Explorer で使用されている .NET Core のバージョンにパッチを適用することが必要な場合があります。
+
 1. [nuget から](https://www.nuget.org/packages/StreamJsonRpc/1.5.43)バージョン 1.5.43 の StreamJsonRpc をダウンロードします。 ページの右側で "パッケージのダウンロード" リンクを探します。
-2. パッケージをダウンロードした後、そのファイル拡張子を `.nupkg` から `.zip` に変更します
-3. パッケージの解凍
-4. `streamjsonrpc.1.5.43/lib/netstandard1.1/` に移動します
+2. パッケージをダウンロードした後、そのファイル拡張子を `.nupkg` から `.zip` に変更します。
+3. パッケージを解凍します。
+4. `streamjsonrpc.1.5.43/lib/netstandard1.1/` フォルダーを開きます。
 5. `StreamJsonRpc.dll` を Storage Explorer フォルダー内の次の場所にコピーします。
-    1. `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
-    2. `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
+   * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+   * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
 ## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Azure portal で [Explorer で開く] が機能しない
 

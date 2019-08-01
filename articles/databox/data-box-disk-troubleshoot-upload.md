@@ -6,22 +6,116 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 6f3ac38c3eac968bd2f7ec2aada435466d3ff279
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: deaa9a220ee4d765650779b40742225e300ffdb7
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148123"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67807520"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Azure Data Box Disk でデータのアップロードに関する問題をトラブルシューティングするためのログを理解する
 
 この記事は Microsoft Azure Data Box Disk を対象にしており、Azure にデータをアップロードするときに見られる問題について説明しています。
 
-## <a name="data-upload-logs"></a>データ アップロード ログ
+## <a name="about-upload-logs"></a>アップロード ログについて
 
-データセンターでデータが Azure にアップロードされると、`_error.xml` ファイルと `_verbose.xml` ファイルが生成されます。 これらのログは、データのアップロードに使用されたものと同じストレージ アカウントにアップロードされます。 `_error.xml` のサンプルを次に示します。
+データセンターでデータが Azure にアップロードされると、ストレージ アカウントごとに `_error.xml` ファイルと `_verbose.xml` ファイルが生成されます。 これらのログは、データのアップロードに使用されたものと同じストレージ アカウントにアップロードされます。 
+
+これらのログは両方とも同じ形式です。そして、これらにはディスクから Azure Storage アカウントへのデータのコピー中に発生したイベントの XML 記述が含まれています。
+
+詳細ログには、すべての BLOB またはファイルのコピー操作の状態に関する完全な情報が含まれています。一方、エラー ログには、アップロード中にエラーが発生した BLOB またはファイルに関する情報のみが含まれます。
+
+エラー ログの構造は詳細ログと同じですが、エラー ログでは成功した操作が除外されます。
+
+## <a name="download-logs"></a>ログのダウンロード
+
+アップロード ログを検索するには、次の手順を行います。
+
+1. Azure へのデータのアップロード時にエラーが発生した場合、診断ログがあるフォルダーへのパスがポータルに表示されます。
+
+    ![ポータル内のログへのリンク](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
+
+2. **waies** に移動します。
+
+    ![エラー ログと詳細ログ](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
+
+各ケースで、エラー ログと詳細ログを参照してください。 各ログを選択し、ローカル コピーをダウンロードします。
+
+## <a name="sample-upload-logs"></a>アップロード ログのサンプル
+
+`_verbose.xml` のサンプルを次に示します。 この場合、注文は正常に完了し、エラーは発生していません。
+
+```xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<DriveLog Version="2018-10-01">
+  <DriveId>184020D95632</DriveId>
+  <Blob Status="Completed">
+    <BlobPath>$root/botetapageblob.vhd</BlobPath>
+    <FilePath>\PageBlob\botetapageblob.vhd</FilePath>
+    <Length>1073742336</Length>
+    <ImportDisposition Status="Created">rename</ImportDisposition>
+    <PageRangeList>
+      <PageRange Offset="0" Length="4194304" Status="Completed" />
+      <PageRange Offset="4194304" Length="4194304" Status="Completed" />
+      <PageRange Offset="8388608" Length="4194304" Status="Completed" />
+      --------CUT-------------------------------------------------------
+      <PageRange Offset="1061158912" Length="4194304" Status="Completed" />
+      <PageRange Offset="1065353216" Length="4194304" Status="Completed" />
+      <PageRange Offset="1069547520" Length="4194304" Status="Completed" />
+      <PageRange Offset="1073741824" Length="512" Status="Completed" />
+    </PageRangeList>
+  </Blob>
+  <Blob Status="Completed">
+    <BlobPath>$root/botetablockblob.txt</BlobPath>
+    <FilePath>\BlockBlob\botetablockblob.txt</FilePath>
+    <Length>19</Length>
+    <ImportDisposition Status="Created">rename</ImportDisposition>
+    <BlockList>
+      <Block Offset="0" Length="19" Status="Completed" />
+    </BlockList>
+  </Blob>
+  <File Status="Completed">
+    <FileStoragePath>botetaazurefilesfolder/botetaazurefiles.txt</FileStoragePath>
+    <FilePath>\AzureFile\botetaazurefilesfolder\botetaazurefiles.txt</FilePath>
+    <Length>20</Length>
+    <ImportDisposition Status="Created">rename</ImportDisposition>
+    <FileRangeList>
+      <FileRange Offset="0" Length="20" Status="Completed" />
+    </FileRangeList>
+  </File>
+  <Status>Completed</Status>
+</DriveLog>
+```
+
+同じ注文について、`_error.xml` のサンプルを次に示します。
+
+```xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<DriveLog Version="2018-10-01">
+  <DriveId>184020D95632</DriveId>
+  <Summary>
+    <ValidationErrors>
+      <None Count="3" />
+    </ValidationErrors>
+    <CopyErrors>
+      <None Count="3" Description="No errors encountered" />
+    </CopyErrors>
+  </Summary>
+  <Status>Completed</Status>
+</DriveLog>
+```
+
+`_error.xml` のサンプルを次に示します。ここで、注文はエラーで完了しています。 
+
+この場合のエラー ファイルには、`Summary` セクションと、ファイル レベルのエラーをすべて含む別のセクションがあります。 
+
+`Summary` には、`ValidationErrors` と `CopyErrors` が含まれています。 この場合、8 個のファイルまたはフォルダーが Azure にアップロードされ、検証エラーは発生していません。 Azure Storage アカウントにデータがコピーされたときには、5 個のファイルまたはフォルダーが正常にアップロードされています。 残りの 3 個のファイルまたはフォルダーは、Azure コンテナーの名前付け規則に従って名前が変更されてから、Azure に正常にアップロードされました。
+
+ファイル レベルの状態は `BlobStatus` にあり、BLOB をアップロードするために実行されたアクションが説明されます。 この場合、データのコピー先のフォルダーがコンテナーの Azure 命名規則に準拠していないため、3 つのコンテナーの名前が変更されます。 それらのコンテナーにアップロードされた BLOB については、新しいコンテナー名、Azure 内の BLOB のパス、元の無効なファイル パス、および BLOB サイズが含まれます。
     
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
@@ -57,32 +151,17 @@ ms.locfileid: "67148123"
     </DriveLog>
 ```
 
-## <a name="download-logs"></a>ログのダウンロード
-
-診断ログを見つけてダウンロードするには、2 つの方法があります。
-
-- Azure へのデータのアップロード時にエラーが発生した場合、診断ログがあるフォルダーへのパスがポータルに表示されます。
-
-    ![ポータル内のログへのリンク](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
-
-- Data Box の注文に関連付けられているストレージ アカウントに移動します。 **[Blob service]、[BLOB の参照]** の順に移動して、ストレージ アカウントに対応する BLOB を探します。 **waies** に移動します。
-
-    ![コピー ログ 2](./media/data-box-disk-troubleshoot/data-box-disk-copy-logs2.png)
-
-各ケースで、エラー ログと詳細ログを参照してください。 各ログを選択し、ローカル コピーをダウンロードします。
-
-
 ## <a name="data-upload-errors"></a>データのアップロード エラー
 
 次の表に、データを Azure にアップロードするときに生成されるエラーをまとめます。
 
-| エラー コード | 説明                        |
+| エラー コード | 説明                   |
 |-------------|------------------------------|
 |`None` |  正常に完了しました。           |
-|`Renamed` | Blob の名前が正常に変更されました。  |                                                            |
+|`Renamed` | Blob の名前が正常に変更されました。   |
 |`CompletedWithErrors` | アップロードは完了しましたが、エラーが発生しました。 エラーが発生したファイルの詳細がログ ファイルに記載されています。  |
 |`Corrupted`|データ インジェスト中に計算された CRC が、アップロード中に計算された CRC と一致しません。  |  
-|`StorageRequestFailed` | Azure ストレージ要求が失敗しました。   |     |
+|`StorageRequestFailed` | Azure ストレージ要求が失敗しました。   |     
 |`LeasePresent` | この項目はリースされており、別のユーザーによって使用されています。 |
 |`StorageRequestForbidden` |認証の問題のため、アップロードできませんでした。 |
 |`ManagedDiskCreationTerminalFailure` | マネージド ディスクとしてアップロードできませんでした。 ファイルは、ステージング ストレージ アカウントでページ BLOB として使用できます。 ページ BLOB はマネージド ディスクに手動で変換できます。  |

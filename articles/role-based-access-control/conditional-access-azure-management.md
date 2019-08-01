@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 4ee58835a5055f5382cefa3a049424ffe97a01c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3aa24fdfc156c0197d724fd57729f5b11fa908ee
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122939"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68278159"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>条件付きアクセスを使用して Azure 管理へのアクセスを管理する
 
@@ -32,7 +32,16 @@ Azure 管理のポリシーを作成するには、ポリシーを適用する�
 
 ![Azure 管理の条件付きアクセス](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-作成したポリシーは、Azure portal、Azure Resource Manager のプロバイダー、従来の Service Management API、Azure PowerShell、および Visual Studio サブスクリプション管理者ポータルを含め、すべての Azure 管理エンドポイントに適用されます。 ポリシーは Azure Resource Manager API を呼び出す Azure PowerShell に適用されることに注意してください。 Microsoft Graph を呼び出す [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) には適用されません。
+作成したポリシーは、次のようなすべての Azure 管理エンドポイントに適用されます。
+
+- Azure ポータル
+- Azure Resource Manager プロバイダー
+- 従来の Service Management API
+- Azure PowerShell
+- Visual Studio サブスクリプション管理者ポータル
+- Azure DevOps
+
+ポリシーは Azure Resource Manager API を呼び出す Azure PowerShell に適用されることに注意してください。 Microsoft Graph を呼び出す [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) には適用されません。
 
 > [!CAUTION]
 > Azure 管理へのアクセスを管理するポリシーを設定する前に、条件付きアクセスのしくみについて理解しておくようにしてください。 ポータルへのアクセスをブロックする条件を作成しないようにしてください。

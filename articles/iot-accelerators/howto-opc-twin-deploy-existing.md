@@ -5,32 +5,32 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6eeca062bdc17ec207910b9ba4aa8cea4048f849
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fc70d140479be100e6aa52cf8105d3e466342cd7
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080499"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302658"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>既存のプロジェクトに OPC Twin をデプロイする
 
 OPC Twin モジュールは IoT Edge 上で動作し、OPC Twin およびレジストリ サービスにいくつかのエッジ サービスを提供します。
 
-OPC Twin マイクロサービスは、OPC Twin IoT Edge モジュールを介して、工場オペレーターと、工場フロアにある OPC UA サーバー デバイスの間の通信を容易にします。 マイクロサービスは、その REST API を介して OPC UA サービス (参照、読み取り、書き込み、実行) を公開します。 
+OPC Twin マイクロサービスを使用すると、OPC Twin IoT Edge モジュールを介して、工場オペレーターと、工場フロアにある OPC UA サーバー デバイスの間の通信を容易にすることができます。 マイクロサービスでは、その REST API を介して OPC UA サービス (参照、読み取り、書き込み、実行) が公開されます。 
 
-OPC UA Device Registry マイクロサービスにより、登録済みの OPC UA アプリケーションとそのエンドポイントへのアクセスが提供されます。 オペレーターと管理者は、新しい OPC UA アプリケーションを登録および登録解除したり、既存のアプリケーションをそのエンドポイントを含めて参照したりできます。 レジストリ サービスにより、アプリケーションとエンドポイントの管理のほか、登録済みの OPC Twin IoT Edge モジュールのカタログ化が行われます。 サービス API を使用して、エッジ モジュールの機能を制御できます。たとえば、サーバー検出 (スキャン サービス)を開始または停止したり、OPC Twin マイクロサービスを使用してアクセスできる新しいエンドポイント ツインをアクティブ化したりできます。
+OPC UA Device Registry マイクロサービスにより、登録済みの OPC UA アプリケーションとそのエンドポイントへのアクセスが提供されます。 オペレーターと管理者は、新しい OPC UA アプリケーションを登録および登録解除したり、既存のアプリケーションをそのエンドポイントを含めて参照したりできます。 レジストリ サービスにより、アプリケーションとエンドポイントの管理のほか、登録済みの OPC Twin IoT Edge モジュールのカタログ化が行われます。 サービス API を使用して、エッジ モジュールの機能を制御できます。たとえば、サーバー検出 (スキャン サービス) を開始または停止したり、OPC Twin マイクロサービスを使用してアクセスできる新しいエンドポイント ツインをアクティブ化したりできます。
 
-モジュールのコアはスーパーバイザー ID です。 スーパーバイザーはエンドポイント ツインを管理します。エンドポイント ツインは、対応する OPC UA レジストリ API を使用してアクティブ化される OPC UA サーバー エンドポイントに対応します。 このエンドポイント ツインは、クラウドで実行されている OPC Twin マイクロサービスから受信した OPC UA JSON を OPC UA バイナリ メッセージに変換し、このメッセージが、セキュリティで保護されたステートフル チャネル経由で管理対象エンドポイントに送信されます。 また、スーパーバイザーが提供する検出サービスにより、デバイス検出イベントが処理用に OPC UA Device Onboarding サービスに送信され、これらのイベントの結果として OPC UA レジストリが更新されます。  この記事では、既存のプロジェクトに OPC Twin モジュールをデプロイする方法を示します。
+モジュールのコアはスーパーバイザー ID です。 スーパーバイザーはエンドポイント ツインを管理します。エンドポイント ツインは、対応する OPC UA レジストリ API を使用してアクティブ化される OPC UA サーバー エンドポイントに対応します。 このエンドポイント ツインにより、クラウドで実行されている OPC Twin マイクロサービスから受信した OPC UA JSON が OPC UA バイナリ メッセージに変換されます。このメッセージは、セキュリティで保護されたステートフル チャネル経由でマネージド エンドポイントに送信されます。 また、スーパーバイザーが提供する検出サービスにより、デバイス検出イベントが処理用に OPC UA Device Onboarding サービスに送信され、これらのイベントの結果として OPC UA レジストリが更新されます。  この記事では、既存のプロジェクトに OPC Twin モジュールをデプロイする方法を示します。
 
 > [!NOTE]
 > デプロイの詳細と手順については、GitHub の[リポジトリ](https://github.com/Azure/azure-iiot-opc-twin-module)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-PowerShell および [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 拡張機能がインストールされていることを確認します。 まだの場合は、この GitHub リポジトリをクローンします。 PowerShell で次のコマンドを実行します。
+PowerShell および [AzureRM PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) 拡張機能がインストールされていることを確認します。 まだの場合は、この GitHub リポジトリをクローンします。 PowerShell で次のコマンドを実行します。
 
 ```powershell
 git clone --recursive https://github.com/Azure/azure-iiot-components.git
@@ -46,13 +46,13 @@ cd azure-iiot-components
     .\deploy.cmd
     ```
 
-2. プロンプトに従って、デプロイのリソース グループの名前と、Web サイトの名前を割り当てます。   スクリプトにより、マイクロサービスとその Azure プラットフォームの依存関係が、Azure サブスクリプションのリソース グループにデプロイされます。  また、OAUTH ベースの認証をサポートするために、スクリプトによって Azure Active Directory (AAD) テナントにアプリケーションが登録されます。  デプロイには数分かかります。  ソリューションが正常にデプロイされた後の表示の例を次に示します。
+2. プロンプトに従って、デプロイのリソース グループの名前と、Web サイトの名前を割り当てます。   スクリプトにより、マイクロサービスとその Azure プラットフォームの依存関係が、ご利用の Azure サブスクリプションのリソース グループにデプロイされます。  また、OAUTH ベースの認証をサポートするために、スクリプトによって Azure Active Directory (AAD) テナントにアプリケーションが登録されます。  デプロイには数分かかります。  ソリューションが正常にデプロイされた後の表示の例を次に示します。
 
    ![既存のプロジェクトへの産業用 IoT OPC Twin のデプロイ](media/howto-opc-twin-deploy-existing/opc-twin-deploy-existing1.png)
 
    出力には、パブリック エンドポイントの URL が含まれています。 
 
-3. スクリプトが正常に完了したら、.env ファイルを保存するかどうかを選択します。  .env 環境ファイルは、Console などのツールを使用してクラウド エンドポイントに接続する場合や、開発とデバッグのためにモジュールをデプロイする場合に必要になります。
+3. スクリプトが正常に完了したら、`.env` ファイルを保存するかどうかを選択します。  `.env` 環境ファイルは、コンソールなどのツールを使用してクラウド エンドポイントに接続する場合や、開発とデバッグのためにモジュールをデプロイする場合に必要になります。
 
 ## <a name="troubleshooting-deployment-failures"></a>デプロイ失敗のトラブルシューティング
 
