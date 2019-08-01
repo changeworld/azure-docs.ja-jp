@@ -3,16 +3,16 @@ title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure ファイル共有を保護する方法について詳しく説明します。
 author: dcurwin
 ms.author: dacurwin
-ms.date: 01/31/2019
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e3f94badb3af2e3f26a857f27f0b68a78338db92
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 35a41abb156326612c2d60829980f73457cde881
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466305"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601768"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 この記事では、Azure Files のバックアップについてよくある質問への回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -33,7 +33,7 @@ ms.locfileid: "68466305"
 ### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>ファイル共有をバックアップしようと、ストレージ アカウント内のファイル共有を検出するために、そのストレージ アカウントをクリックしました。 しかし、それらを保護することはしませんでした。 これらのファイル共有を他のコンテナーで保護するにはどうすればよいのですか?
 バックアップを試みる際、いずれかのストレージ アカウントを選択して、その中からファイル共有を検出すると、その操作を行ったストレージ アカウントがコンテナーに登録されます。 別のコンテナーでファイル共有を保護する場合は、このコンテナーから選択したストレージ アカウントを[登録解除](troubleshoot-azure-files.md#configuring-backup)してください。
 
-### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>ファイル共有のバックアップ先コンテナーを変更することはできますか?
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>自分のファイル共有のバックアップ先コンテナーを変更することはできますか?
 はい。 ただし、接続されているコンテナーからの[保護を停止](backup-azure-files.md#stop-protecting-an-azure-file-share)し、そのストレージ アカウントを[登録解除](troubleshoot-azure-files.md#configuring-backup)したうえで、別のコンテナーから保護する必要があります。
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>どの geo に Azure ファイル共有をバックアップできますか <br/>
@@ -76,6 +76,9 @@ Azure ファイル共有のバックアップは現在プレビュー段階で�
 いいえ。 1 つのストレージ アカウントに存在するすべてのファイル共有は、必ず同じコンテナーで保護する必要があります。
 
 ## <a name="backup"></a>バックアップ
+
+### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>ファイル共有につき、いくつのスケジュール済みバックアップを構成できますか?
+Azure Backup では、現在、Azure ファイル共有の 1 日 1 回のスケジュール済みバックアップの構成をサポートしています。 
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share-br"></a>ファイル共有につき、いくつのオンデマンド バックアップを作成できますか? <br/>
 どの時点でも、ファイル共有のスナップショットを 200 個まで作成することができます。 この制限には、ポリシーの定義に従って Azure Backup により作成されたスナップショットの数も含まれます。 この制限に達した後でバックアップが失敗するようになったら、将来のバックアップを正常に実行できるよう、オンデマンドの復元ポイントを削除してください。

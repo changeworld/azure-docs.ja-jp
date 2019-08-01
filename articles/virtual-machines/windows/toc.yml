@@ -108,6 +108,8 @@
           href: compute-benchmark-scores.md
         - name: vCPU のクォータ
           href: quotas.md
+    - name: 専用ホスト
+      href: dedicated-hosts.md
     - name: メンテナンスと更新
       href: maintenance-and-updates.md
     - name: Disk Storage
@@ -146,6 +148,12 @@
   items:
     - name: VM の作成
       items:
+        - name: 専用ホストの使用
+          items:
+            - name: PowerShell
+              href: dedicated-hosts-powershell.md
+            - name: ポータル
+              href: dedicated-hosts-portal.md
         - name: 'C# の使用'
           href: csharp.md
         - name: 特殊化されたディスクを使用する

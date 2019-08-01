@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: e8daaaf5b6b15eb3095f11e94c707a33b4b18e28
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d8b6b1bfcbceb1168d0f74c73e72bd42b41bb2ec
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180862"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562471"
 ---
 **[Build]\(ビルド\)** を選択します。 開かれたダイアログ ボックスで、Xcode プロジェクトをエクスポートするフォルダーを選択します。
 
@@ -18,7 +18,7 @@ ms.locfileid: "67180862"
 > [!NOTE]
 > 置き換えるか追加するかを尋ねるウィンドウが表示される場合は、 **[Append]\(追加\)** を選択することをお勧めします。 シーンのアセットを変更している場合は、 **[Replace]\(置換\)** を選択するだけで済みます (たとえば、親子関係を追加、削除、または変更する場合や、プロパティを追加、削除、または変更する場合)。ソース コードを変更するだけの場合は、 **[Append]\(追加\)** で十分です。
 
-### <a name="open-the-xcode-project"></a>Xcode プロジェクトを開く
+### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>Xcode プロジェクトを Azure Spatial Anchors 参照を含む xcworkspace に変換する
 
 エクスポートされた Xcode プロジェクトのフォルダーで、ターミナルで次のコマンドを実行して、プロジェクトに必要な CocoaPods をインストールします。
 

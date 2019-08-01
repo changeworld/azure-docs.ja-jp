@@ -258,6 +258,8 @@
           href: resource-group-template-functions-string.md
     - name: 完全モードの削除
       href: complete-mode-deletion.md
+    - name: リソース インスタンスの制限
+      href: resources-without-rg-limit.md
     - name: サービスごとのリソース プロバイダー
       href: azure-services-resource-providers.md
     - name: REST - Resource Manager

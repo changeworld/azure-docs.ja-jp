@@ -28,6 +28,8 @@
           items:
             - name: GC オーバーヘッド制限を超過
               href: ./interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+        - name: Apache Hive LLAP クエリのパフォーマンス
+          href: ./interactive-query-troubleshoot-query-performance.md
 - name: 方法
   items:
     - name: Hive ワークロードを HDInsight 4.0 に移行する

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: sngun
 ms.openlocfilehash: 85d9cbe7d0807ca0e7951e1e12d1edbbf7c921db
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67985829"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する 
@@ -132,7 +132,7 @@ ms.locfileid: "67985829"
 
    [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
 
-   **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。 この詳細と正しい実装方法の例については、[クロスサイト リクエスト フォージェリの防止][Preventing Cross-Site Request Forgery]に関するページを参照してください。. The source code provided on [GitHub][GitHub]には、完全な実装が含まれています。
+   **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 この属性を追加するだけでなく、偽造防止トークンもビューで処理する必要があります。 この詳細と正しい実装方法の例については、[クロスサイト リクエスト フォージェリの防止][Preventing Cross-Site Request Forgery]に関するページを参照してください。 [GitHub][GitHub] で提供されるソース コードには、完全な実装が組み込まれています。
 
    メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、[ASP.NET MVC での基本的な CRUD 操作][Basic CRUD Operations in ASP.NET MVC]に関するページを参照してください。
 

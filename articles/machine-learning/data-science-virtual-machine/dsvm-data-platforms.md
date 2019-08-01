@@ -4,7 +4,7 @@ description: Data Science Virtual Machine でサポートされているデー�
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 27e0deae9c35ad8fa00659e3e3e505cace6e9014
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: a0fe4ee33769a6d8cf14f60dcc0c4615bb00c5e8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516495"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565301"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 

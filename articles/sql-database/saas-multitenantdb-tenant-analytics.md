@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
-manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 4bf97c0c447bfabc1454959d457bbd50f3490299
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b36911d274a3afb3582d60ea7e85b5afd5f52ece
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242796"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570293"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - マルチテナント アプリ
  

@@ -105,10 +105,14 @@
           href: sizes-previous-gen.md
         - name: Azure コンピューティング ユニット (ACU)
           href: acu.md
+        - name: vCPU のクォータ
+          href: quotas.md
         - name: ベンチマーク スコア
           href: compute-benchmark-scores.md
     - name: 動作保証済みディストリビューション
       href: endorsed-distros.md
+    - name: 専用ホスト
+      href: dedicated-hosts.md
     - name: メンテナンスと更新
       href: maintenance-and-updates.md
     - name: Disk Storage
@@ -139,12 +143,8 @@
       href: monitor.md
     - name: バックアップと回復
       href: backup-recovery.md
-    - name: デプロイに関する考慮事項
-      items:
-        - name: インフラストラクチャのガイドライン
-          href: infrastructure-example.md
-        - name: vCPU のクォータ
-          href: quotas.md
+    - name: インフラストラクチャのガイドライン
+      href: infrastructure-example.md
     - name: セキュリティ属性
       href: virtual-machines-linux-security-attributes.md
 - name: ハウツー ガイド
@@ -160,6 +160,12 @@
           href: create-vm-rest-api.md
         - name: VM のコピーまたは複製
           href: copy-vm.md
+        - name: 専用ホストの使用
+          items:
+            - name: CLI
+              href: dedicated-hosts-cli.md
+            - name: ポータル
+              href: dedicated-hosts-portal.md
     - name: VM のセキュリティ保護
       items:
         - name: ジャストインタイム アクセス

@@ -54,6 +54,14 @@
     - name: マネージド ID とは
       href: ../hdinsight-managed-identities.md
       maintainContext: true
+    - name: トラブルシューティング
+      items:
+        - name: ノードを HDInsight クラスターに追加できない
+          href: ./hdinsight-troubleshoot-unable-add-nodes.md
+        - name: InvalidNetworkSecurityGroupSecurityRules - クラスターの作成が失敗する
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+        - name: サービス プリンシパルの証明書の変換
+          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
 - name: 方法
   items:
     - name: Apache Hadoop サンドボックスの使用

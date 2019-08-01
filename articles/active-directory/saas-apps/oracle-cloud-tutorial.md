@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 07/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456c984e577e3427ce8cd62d6f63987118f2c8ed
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e0725988ff88baea2458f0a5e459440874e66088
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164148"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596426"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>チュートリアル:Oracle Cloud Infrastructure Console と Azure Active Directory を統合する
 
@@ -165,7 +165,7 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
 
       ![構成](./media/oracle-cloud-tutorial/config09.png)
 
-   1. **[IDENTITY PROVIDER GROUP]\(ID プロバイダー グループ\)** フィールドに、Azure portal で設定したグループ名とグループ ID を入力します。 このグループを、 **[OCI GROUP]\(OCI グループ\)** フィールド内の対応するグループとマップする必要があります。
+   1. **[IDENTITY PROVIDER GROUP]\(ID プロバイダー グループ\)** では、[Custom Group]\(カスタム グループ\) が選択されている必要があります。 グループ ID は Azure Active Directory のグループの GUID である必要があります。 このグループを、 **[OCI GROUP]\(OCI グループ\)** フィールド内の対応するグループとマップする必要があります。
 
    1. Azure portal での設定と組織のニーズに応じて複数のグループをマップできます。 **[+ Add mapping]\(+ マッピングの追加\)** をクリックして、必要に応じていくつでもグループを追加してください。
 

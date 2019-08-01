@@ -3,7 +3,7 @@ title: Azure Service Fabric への既存の実行可能ファイルのデプロ�
 description: 既存のアプリケーションを Service Fabric クラスターにデプロイできるようにゲスト実行可能ファイルとしてパッケージ化する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
-ms.author: aljo
-ms.openlocfilehash: bfac14c598b405a398cad916787aa3312589bfd1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 575303cc2ec3e880187bac64da06d05721df14e6
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393575"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599654"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルのパッケージ化と Service Fabric へのデプロイ
 [ゲスト実行可能](service-fabric-guest-executables-introduction.md)ファイルを既存の実行可能ファイルとしてパッケージ化する際、Visual Studio プロジェクト テンプレートを使用するか、[アプリケーション パッケージを手動で作成する](#manually)かを選択できます。 Visual Studio を使用する場合、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト テンプレートによって作成されます。

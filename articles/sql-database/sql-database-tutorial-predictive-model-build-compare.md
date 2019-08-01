@@ -12,17 +12,17 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 3d336d6a53b6d234048c56d8492d278bef6fed64
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.date: 07/26/2019
+ms.openlocfilehash: 2c85a378dc219e8af1b6458344ee4dba0fa73e68
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65957513"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596802"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R で予測モデルを作成する
 
-この 3 部構成のチュートリアル シリーズのパート 2 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して R で 2 つの予測モデルを作成してから、最も正確なモデルを選択します。
+この 3 部構成のチュートリアル シリーズのパート 2 では、R で 2 つの予測モデルを作成し、最も正確なモデルを選択します。 このシリーズの次のパートでは、Azure SQL Database Machine Learning Services (プレビュー) を使用して、このモデルを SQL データベースにデプロイします。
 
 この記事では、以下の方法について説明します。
 
@@ -31,9 +31,9 @@ ms.locfileid: "65957513"
 > * 両方のモデルで予測を行う
 > * 結果を比較して最も正確なモデルを選択する
 
-[パート 1](sql-database-tutorial-predictive-model-prepare-data.md) では、サンプル データベースを Azure SQL データベースにインポートし、R での予測モデルのトレーニングに使用されるデータを準備する方法を学習しました。
+[パート 1](sql-database-tutorial-predictive-model-prepare-data.md) では、サンプル データベースをインポートし、R での予測モデルのトレーニングに使用されるデータを準備する方法を学習しました。
 
-[パート 3](sql-database-tutorial-predictive-model-deploy.md) では、モデルをデータベースに格納してから、新しいデータに基づいて予測を行えるストアド プロシージャを作成する方法を学習します。
+[パート 3](sql-database-tutorial-predictive-model-deploy.md) では、モデルをデータベースに格納した後、パート 1 と 2 で開発した R スクリプトからストアド プロシージャを作成する方法を学習します。 このストアド プロシージャは、SQL データベース内で実行され、新しいデータに基づいて予測を行います。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -114,8 +114,8 @@ plot(predict_dtree$RentalCount_Pred  - predict_dtree$RentalCount,  main = "Diffe
 
 Azure portal から次の手順を実行します。
 
-1. Azure portal の左側のメニューの **[すべてのリソース]** または **[SQL データベース]** を選択します。
-1. **[名前でフィルター]** フィールドに「**TutorialDB**」と入力し、自分のサブスクリプションを選択します。
+1. Azure portal の左側のメニューから、 **[すべてのリソース]** または **[SQL データベース]** を選択します。
+1. **[名前でフィルター]** フィールドに、「**TutorialDB**」と入力し、お使いのサブスクリプションを選択します。
 1. 自分の TutorialDB データベースを選択します。
 1. **[概要]** ページで **[削除]** を選択します。
 

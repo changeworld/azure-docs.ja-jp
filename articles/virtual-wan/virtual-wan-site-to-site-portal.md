@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 04/23/2019
+ms.date: 07/25/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e8e251aa5031a8eadd2d567bff2830449c7decc3
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e9be7ef5c4f37c66f7cbf2c6226936438b367108
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64689510"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515161"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -62,8 +62,13 @@ ms.locfileid: "64689510"
    * **[プライベート アドレス空間]** - これは、オンプレミスのサイトにある IP アドレス空間です。 このアドレス空間宛てのトラフィックは、ローカル サイトにルーティングされます。
    * **[サブスクリプション]** - サブスクリプションを確認します。
    * **[リソース グループ]** - 使用するリソース グループ。
-   * **場所**
-4. **[詳細設定の表示]** をクリックして追加の設定を表示します。 **[BGP]** を選択して BGP を有効にすることができます。Azure のこのサイト用に作成されたすべての接続で BGP 機能が有効になります。 **[デバイス情報]** (省略可能なフィールド) に入力することもできます。 これにより、Azure チームがお客様の環境をよりよく理解し、将来の最適化の可能性を追加したり、トラブルシューティングを行ったりするのに役立ちます。
+   * **Location**
+4. **[詳細設定の表示]** をクリックして追加の設定を表示します。 
+
+   **[BGP]** を選択して BGP を有効にすることができます。Azure のこのサイト用に作成されたすべての接続で BGP 機能が有効になります。 Virtual WAN 上で BGP を構成するのは、Azure VPN ゲートウェイ上で BGP を構成するのと同じです。 オンプレミスの BGP ピア アドレスをデバイス側のご使用の VPN および VPN サイトの VNet アドレス空間のパブリック IP アドレスと同じにすることは*できません*。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイスのループバック インターフェイスに割り当てられたアドレスを使用できます。 ただし、APIPA (169.254.*x*.*x*) アドレスにすることは*できません*。 この場所を表している、対応するローカル ネットワーク ゲートウェイにこのアドレスを指定します。 BGP の前提条件については、「[BGP と Azure VPN Gateway について](../vpn-gateway/vpn-gateway-bgp-overview.md)」を参照してください。
+
+   **[デバイス情報]** (省略可能なフィールド) に入力することもできます。 これにより、Azure チームがお客様の環境をよりよく理解し、将来の最適化の可能性を追加したり、トラブルシューティングを行ったりするのに役立ちます。
+   
 5. **[Confirm]\(確認\)** をクリックします。
 6. **[確認]** をクリックすると、VPN サイト ページに状態が表示されます。 このサイトは "**プロビジョニング中**" から "**プロビジョニング済み**" に切り替わります。
 

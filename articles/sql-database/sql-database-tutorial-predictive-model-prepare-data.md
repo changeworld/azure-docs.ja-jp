@@ -12,30 +12,32 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: aa9c41ee34a50ab9b1409357bfe7d123166601bf
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.date: 07/26/2019
+ms.openlocfilehash: c1271d5b63fa796fe44b7a40c364953464a87539
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978727"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596671"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをトレーニングするためのデータを準備する
 
-この 3 部構成のチュートリアル シリーズのパート 1 では、R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをトレーニングするための Azure SQL データベースのデータを準備します。
+この 3 部構成のチュートリアル シリーズのパート 1 では、R を使用して、Azure SQL データベースのデータをインポートして準備します。このシリーズでは、その後、このデータを利用し、R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測機械学習モデルをトレーニングしてデプロイします。
 
 このチュートリアル シリーズでは、あなたはスキー レンタル業を自ら営んでおり、今後のレンタル数を予測する必要があるとします。 この情報は、在庫、スタッフ、設備の準備に役立ちます。
+
+このシリーズのパート 1 と 2 では、使用するデータを準備し、機械学習モデルをトレーニングするために、RStudio 内でいくつかの R スクリプトを開発します。 その後、パート 3 では、ストアド プロシージャを使用して SQL データベース内でそれらの R スクリプトを実行します。
 
 この記事では、以下の方法について説明します。
 
 > [!div class="checklist"]
-> * Azure SQL データベースにサンプル データベースをインポートする
-> * R を使用して、Azure SQL データベースからデータ フレームにデータを読み込む
-> * カテゴリとしていくつかの列を識別して、データを準備する
+> * R を使用して Azure SQL データベースにサンプル データベースをインポートする
+> * Azure SQL データベースから R データ フレームにデータを読み込む
+> * R でカテゴリとしていくつかの列を識別してデータを準備する
 
-[パート 2](sql-database-tutorial-predictive-model-build-compare.md) では、複数のモデルを作成してトレーニングしてから、最も正確なものを選ぶ方法を学習します。
+[パート 2](sql-database-tutorial-predictive-model-build-compare.md) では、R で複数の機械学習モデルを作成してトレーニングしてから、最も正確なものを選ぶ方法を学習します。
 
-[パート 3](sql-database-tutorial-predictive-model-deploy.md) では、モデルをデータベースに格納した後、新しいデータに基づいて予測を行うことができるストアド プロシージャを作成する方法を学習します。
+[パート 3](sql-database-tutorial-predictive-model-deploy.md) では、モデルをデータベースに格納した後、パート 1 と 2 で開発した R スクリプトからストアド プロシージャを作成する方法を学習します。 このストアド プロシージャは、SQL データベース内で実行され、新しいデータに基づいて予測を行います。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -145,22 +147,22 @@ $ Snow       : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このチュートリアルを続行しない場合は、Azure SQL Database サーバーから TutorialDB データベースを削除します。
+このチュートリアルを続行しない場合は、自分の Azure SQL Database サーバーから TutorialDB データベースを削除します。
 
 Azure portal から次の手順を実行します。
 
 1. Azure portal の左側のメニューから、 **[すべてのリソース]** または **[SQL データベース]** を選択します。
 1. **[名前でフィルター]** フィールドに、「**TutorialDB**」と入力し、お使いのサブスクリプションを選択します。
-1. お使いの TutorialDB データベースを選択します。
+1. 自分の TutorialDB データベースを選択します。
 1. **[概要]** ページで **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルのパート 1 では、これらの手順を完了しました。
 
-* Azure SQL データベースにデータベース バックアップ ファイルをインポートする
-* R を使用して、Azure SQL データベースからデータ フレームにデータを読み込む
-* カテゴリとしていくつかの列を識別して、データを準備する
+* R を使用して Azure SQL データベースにサンプル データベースをインポートする
+* Azure SQL データベースから R データ フレームにデータを読み込む
+* R でカテゴリとしていくつかの列を識別してデータを準備する
 
 TutorialDB データベースからデータを使用する機械学習モデルを作成するには、このチュートリアル シリーズのパート 2 に従います。
 

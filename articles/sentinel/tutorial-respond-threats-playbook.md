@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 7/25/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52346e2ff9c47e58f2bd040582bee29eaf08bb13
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: cdfe22b67585221e2d7e17f47c6a09ba929d68ef
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621208"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599017"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>チュートリアル:Azure Sentinel プレビューで脅威への自動対応を設定する
 
@@ -36,6 +36,7 @@ ms.locfileid: "67621208"
 > * プレイブックについて理解する
 > * プレイブックを作成する
 > * プレイブックを実行する
+> * 脅威への対応を自動化する
 
 
 ## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Azure Sentinel のセキュリティ プレイブックとは
@@ -95,9 +96,29 @@ Azure Sentinel に新しいセキュリティ プレイブックを作成する�
 
 
 
+## <a name="automate-threat-responses"></a>脅威への対応を自動化する
+
+SIEM や SOC チームには、定期的にセキュリティ アラートが殺到することがあります。 生成されるアラートの量が非常に多いため、対応するセキュリティ管理者は途方に暮れています。 この結果、多くのアラートを調査することができず、組織は見過ごした攻撃に対して脆弱なままになっていることがほとんどです。 
+
+これらのアラートの多くは、ほとんどではないにしても、定義された特定の修復アクションで対処できる繰り返し発生するパターンに準拠しています。 Azure Sentinel では、プレイブック内で修復を定義することが既にできるようになっています。 また、プレイブック定義の一部としてリアルタイム オートメーションを設定して、特定のセキュリティ アラートに対する定義済みの対応を完全に自動化することもできます。 リアルタイム オートメーションを使用すると、対応チームは、繰り返し発生するタイプのアラートに対する所定の対応を完全に自動化することにより、作業負荷を大幅に削減できます。これにより、一般的でないアラート、パターンの分析、脅威ハンティングなどに専念することができます。
+
+対応を自動化するには:
+
+1. 対応を自動化するアラートを選択します。
+1. Azure Sentinel ワークスペースのナビゲーション メニューから、 **[分析]** を選択します。
+1. 自動化するアラートを選択します。 
+1. **[アラート ルールの編集]** ページの **[Real-time automation]\(リアルタイム オートメーション\)** で、このアラート ルールが一致したときに実行する**トリガー対象のプレイブック**を選択します。
+1. **[保存]** を選択します。
+
+   ![リアルタイム オートメーション](./media/tutorial-detect-threats/rt-configuration.png)
+
+
+
+
+
 
 ## <a name="next-steps"></a>次の手順
-この記事では、Azure Sentinel でプレイブックを実行する方法を学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。このチュートリアルでは、Azure Sentinel でプレイブックを実行する方法を学習しました。 Azure Sentinel を使用して[脅威を予防的に捜索する方法](hunting.md)に進んでください。
-> [!div class="nextstepaction"]
-> [脅威の捜索](hunting.md)により、ネットワーク上の脅威を事前に検知します。
+
+このチュートリアルでは、Azure Sentinel でプレイブックを実行する方法を学習しました。 Azure Sentinel を使用して[脅威を予防的に捜索する方法](hunting.md)に進んでください。
+
 

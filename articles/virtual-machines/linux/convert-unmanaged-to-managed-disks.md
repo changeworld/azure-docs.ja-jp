@@ -1,27 +1,18 @@
 ---
 title: Azure の Linux 仮想マシンを非管理対象ディスクからマネージド ディスクに変換する - Azure Managed Disks |Microsoft Docs
 description: Resource Manager デプロイ モデルで Azure CLI を使用して Linux VM を非管理対象からマネージド ディスクに変換する方法
-services: virtual-machines-linux
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: eb6a5ed74073a1a31fc9bb1972266e76c7bc2782
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0157e75d0c8d2c2493792bcd8d30a856f8072b6
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418472"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696072"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linux 仮想マシンを非管理対象ディスクからマネージド ディスクに変換する
 

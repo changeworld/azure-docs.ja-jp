@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57244dd9f3365b3899bcc1dde6382cc3b51719d9
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 7e7d4a542146fb8d342cce6c34f9d97e72349f84
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722937"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561380"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する詳細な手順
 
@@ -23,7 +23,7 @@ ms.locfileid: "67722937"
 
 このチュートリアルを完了するには、以下のものが必要です。
 
-1. <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017+</a>、**ユニバーサル Windows プラットフォーム開発**ワークロード、**Windows 10 SDK (10.0.17763.0 以降)** コンポーネント、および <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> がインストールされた Windows マシン。
+1. <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 以降</a>、**ユニバーサル Windows プラットフォーム開発**ワークロード、**Windows 10 SDK (10.0.18362.0 以降)** コンポーネント、および <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> がインストールされた Windows マシン。
 2. [Visual Studio Marketplace](https://marketplace.visualstudio.com/) から Visual Studio 用の [C++/WinRT Visual Studio 拡張機能 (VSIX)](https://aka.ms/cppwinrt/vsix) をインストールする必要があります。
 3. [開発者モード](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイス。 この記事では、[Windows 10 October 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (別名 RS5) が適用された HoloLens デバイスが必要です。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** ボタンをクリックします。
 
@@ -57,10 +57,10 @@ ms.locfileid: "67722937"
 > [!NOTE]
 > Windows ストア アイコンが表示されない場合は、インストールの前に Windows ストア .NET スクリプト バックエンドを選択したことをもう一度確認します。 していない場合は、適切な Windows インストールを使用して、Unity を再インストールする必要があります。
 
-**.NET 構成を確認する**
+**スクリプト バックエンド構成を検証する**
 1. **[Edit]\(編集\)**  >  **[Project Settings]\(プロジェクト設定\)**  >  **[Player]\(プレーヤー\)** の順に移動します ( **[Player]\(プレーヤー\)** は、前の手順から開いたままになっている場合があります)。
 2. **[Player Settings]\(プレーヤー設定\)** の **[Inspector]\(インスペクター\) パネル**で、**Windows ストア** アイコンを選択します。
-3. **[Other Settings]\(その他の設定\)** 構成セクションで、 **[Scripting Backend]\(スクリプト バックエンド\)** が **[.NET]** に設定されていることを確認します。
+3. **[Other Settings]\(その他の設定\)** 構成セクションで、 **[Scripting Backend]\(スクリプト バックエンド\)** が **[IL2CPP]** に設定されていることを確認します。
 
 **機能を設定する**
 1. **[Edit]\(編集\)**  >  **[Project Settings]\(プロジェクト設定\)**  >  **[Player]\(プレーヤー\)** の順に移動します ( **[Player]\(プレーヤー\)** は、前の手順から開いたままになっている場合があります)。

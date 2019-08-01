@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
-ms.date: 07/16/2019
-ms.openlocfilehash: 3a03829c39deb954a8baa908de63b9ff6f31238e
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.date: 07/26/2019
+ms.openlocfilehash: 3e07b448e73bf64a3c1ec257948b3d61415480f0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297848"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619841"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -97,7 +97,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > Azure Cosmos Emulator でサポートされているマスター キーは、エミュレーターで使用することのみを想定したものです。 Azure Cosmos Emulator で運用環境の Azure Cosmos DB アカウントとキーを使用することはできません。
 
 > [!NOTE]
-> /Key オプションを使用してエミュレーターを開始した場合は、`C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` の代わりに生成されたキーを使用します。 /Key オプションの詳細については、「[コマンドライン ツールのリファレンス](#command-line-syntax)」を参照してください。
+> /Key オプションを使用してエミュレーターを開始した場合は、`C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` の代わりに生成されたキーを使用します。 /Key オプションの詳細については、「[コマンドライン ツールのリファレンス](#command-line)」を参照してください。
 
 Azure Cosmos DB と同様に、Azure Cosmos Emulator では SSL 経由のセキュリティ保護された通信のみサポートされています。
 
@@ -122,7 +122,7 @@ DocumentClient client = new DocumentClient(
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API
 
-[Azure Cosmos DB for MongoDB の API](mongodb-introduction.md) を使用している場合は、次の接続文字列を使用します。
+ご自分のデスクトップ上で Azure Cosmos Emulator が実行中になったら、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) を使用してエミュレーターを操作できます。 コマンド プロンプトから管理者としてエミュレーターを起動します。その際、一緒に "/EnableMongoDbEndpoint" を指定します。 その後、次の接続文字列を使用して MongoDB API アカウントに接続します。
 
 ```bash
 mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true

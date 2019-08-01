@@ -10,10 +10,10 @@ ms.date: 06/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 496aa065b3b10eac546dbe41f5a2650acc112d29
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/30/2019
 ms.locfileid: "68310512"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>チュートリアル:Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する 
@@ -62,7 +62,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ## <a name="base-images"></a>基本イメージ
 
-ほとんどのコンテナー イメージを定義する Docker ファイルは、基になる親イメージを指定します。これは多くの場合、"*基本イメージ*" と呼ばれます。 通常、基本イメージにはオペレーティング システム ([Alpine Linux][base-alpine] or [Windows Nano Server][base-windows] など) が含まれます。ここには、残りのコンテナーのレイヤーが適用されます。 [Node.js][base-node] や [.NET Core][base-dotnet] などのアプリケーション フレームワークが含まれる場合もあります。
+ほとんどのコンテナー イメージを定義する Docker ファイルは、基になる親イメージを指定します。これは多くの場合、"*基本イメージ*" と呼ばれます。 通常、基本イメージにはオペレーティング システム ([Alpine Linux][base-alpine] や [Windows Nano Server][base-windows] など) が含まれます。ここでは、残りのコンテナーのレイヤーが適用されます。 [Node.js][base-node] や [.NET Core][base-dotnet] などのアプリケーション フレームワークが含まれる場合もあります。
 
 ### <a name="base-image-updates"></a>基本イメージの更新
 

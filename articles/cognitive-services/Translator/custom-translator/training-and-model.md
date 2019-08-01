@@ -3,18 +3,18 @@ title: トレーニングとモデルとは - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: モデルは、特定の言語ペアの翻訳を提供するシステムです。 適切なトレーニングの成果がモデルです。 モデルをトレーニングする際は、互いに重複のない 3 つのデータ セットが必要となります。トレーニング データセット、チューニング データセット、テスト データセットです。
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
-ms.openlocfilehash: 5d82baf3e7458a42429df9dafc9c8d5e16744716
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: af3f795dc5036b23b82562e7af4582bd90b44f47
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436116"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595435"
 ---
 # <a name="what-are-trainings-and-models"></a>トレーニングとモデルとは
 

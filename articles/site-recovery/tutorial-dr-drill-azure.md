@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4ed66e3a0237eced852c806e78a8af6bdf8d8579
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: b8c8d1a867f6872c5e3ec9e1b48dac8f80c84950
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417830"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602141"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
@@ -88,6 +88,6 @@ ms.locfileid: "66417830"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [VMware VM のフェールオーバーとフェールバックを実行する](vmware-azure-tutorial-failover-failback.md)。
-> [Hyper-V VM のフェールオーバーとフェールバックを実行する](hyper-v-azure-failover-failback-tutorial.md)。
+> [VMware VM のフェールオーバーとフェールバックを実行する](vmware-azure-tutorial-failover-failback.md)
+> [Hyper-V VM のフェールオーバーとフェールバックを実行する](hyper-v-azure-failover-failback-tutorial.md)
 > [物理マシンのフェールオーバーとフェールバックを実行する](physical-to-azure-failover-failback.md)

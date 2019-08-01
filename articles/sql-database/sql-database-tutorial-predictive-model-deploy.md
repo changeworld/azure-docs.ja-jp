@@ -12,31 +12,31 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 17b68f71f4034e5eb637d40b975cc22d94438fb7
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.date: 07/26/2019
+ms.openlocfilehash: 9fa816b2a8e736f03c99b66b898f48bd2a483b31
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978700"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596776"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをデプロイする
 
-この 3 部構成のチュートリアルのパート 3 では、R で Azure SQL Database Machine Learning Services (プレビュー) を使用して予測モデルをデプロイします。
+この 3 部構成のチュートリアルのパート 3 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して、R で開発した予測モデルを SQL データベースにデプロイします。
 
 埋め込みの R スクリプトで、モデルを使用して予測するストアド プロシージャを作成します。 モデルは Azure SQL データベースで実行されるため、データベースに格納されているデータに対して簡単にトレーニングすることができます。
 
-この記事では、以下の方法について説明します。
+この記事では、パート 1 と 2 で開発した R スクリプトを使用して、次の方法を学習します。
 
 > [!div class="checklist"]
-> * データベース テーブルに予測モデルを格納する
-> * モデルを生成するストアド プロシージャを作成する
+> * 機械学習モデルを生成するストアド プロシージャを作成する
+> * データベース テーブルにモデルを格納する
 > * モデルを使用して予測するストアド プロシージャを作成する
 > * 新しいデータでモデルを実行する
 
-[パート 1](sql-database-tutorial-predictive-model-prepare-data.md) では、サンプル データベースを Azure SQL データベースにインポートし、R での予測モデルのトレーニングに使用するデータを準備する方法を学習しました。
+[パート 1](sql-database-tutorial-predictive-model-prepare-data.md) では、サンプル データベースをインポートし、R での予測モデルのトレーニングに使用されるデータを準備する方法を学習しました。
 
-[パート 2](sql-database-tutorial-predictive-model-build-compare.md) では、複数のモデルを作成してトレーニングしてから、最も正確なものを選ぶ方法を学習しました。
+[パート 2](sql-database-tutorial-predictive-model-build-compare.md) では、R で複数の機械学習モデルを作成してトレーニングしてから、最も正確なものを選ぶ方法を学習しました。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "65978700"
 
 ## <a name="create-a-stored-procedure-that-generates-the-model"></a>モデルを生成するストアド プロシージャを作成する
 
-このチュートリアル シリーズのパート 2 では、デシジョン ツリー (dtree) モデルが最も正確であると判断しました。 ここでは、RevoScaleR パッケージの rxDTree を使用し、dtree モデルをトレーニングして生成する、ストアド プロシージャ (`generate_rental_rx_model`) を作成します。
+このチュートリアル シリーズのパート 2 では、デシジョン ツリー (dtree) モデルが最も正確であると判断しました。 ここでは、開発した R スクリプトを使用して、RevoScaleR パッケージの rxDTree を利用し、dtree モデルをトレーニングして生成するストアド プロシージャ (`generate_rental_rx_model`) を作成します。
 
 Azure Data Studio または SSMS で以下のコマンドを実行します。
 
@@ -207,15 +207,15 @@ Azure portal から次の手順を実行します。
 
 1. Azure portal の左側のメニューから、 **[すべてのリソース]** または **[SQL データベース]** を選択します。
 1. **[名前でフィルター]** フィールドに、「**TutorialDB**」と入力し、お使いのサブスクリプションを選択します。
-1. お使いの TutorialDB データベースを選択します。
+1. 自分の TutorialDB データベースを選択します。
 1. **[概要]** ページで **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアル シリーズのパート 3 では、これらの手順を完了しました。
 
-* データベース テーブルに予測モデルを格納する
-* モデルを生成するストアド プロシージャを作成する
+* 機械学習モデルを生成するストアド プロシージャを作成する
+* データベース テーブルにモデルを格納する
 * モデルを使用して予測するストアド プロシージャを作成する
 * 新しいデータでモデルを実行する
 

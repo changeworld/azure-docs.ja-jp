@@ -1,18 +1,18 @@
 ---
 title: Azure ファイル共有のバックアップ
 description: この記事では、Azure ファイル共有をバックアップおよび復元する方法について詳しく説明するほか、管理タスクについて説明します。
-author: rayne-wiselman
-ms.author: raynew
-ms.date: 01/31/2019
+author: dcurwin
+ms.author: dacurwin
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 7233db1e685c3edcdbd6a97bc2ae23706ad6f767
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 9cb0150efcb4860af98b47aa5da4cfd24d2e9de9
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466544"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602018"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 この記事では、Azure Portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を行う方法について説明します。
@@ -34,6 +34,7 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 - 現在、[ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md) (ZRS) レプリケーションを使用したストレージ アカウントでの Azure ファイル共有のバックアップのサポートは、[これらのリージョン](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-)に限定されています。
 - 仮想ネットワークまたはファイアウォールが有効になっているストレージ アカウントの Azure ファイル共有を保護することはできません。
 - Azure Backup を使用して Azure Files を保護するために利用できる CLI はありません。
+- Azure Backup では、現在、Azure ファイル共有の 1 日 1 回のスケジュール済みバックアップの構成をサポートしています。
 - スケジュール バックアップの数は、1 日につき 1 個が上限となります。
 - オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
 - ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
@@ -49,7 +50,7 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
     ![バックアップの目標として Azure ファイル共有を選択する](./media/backup-file-shares/overview-backup-page.png)
 
-2. **[バックアップの目標]** メニューの **[何をバックアップしますか?]** で [Azure ファイル共有] を選択します。
+2. **[バックアップの目標]** メニューの **[What do you want to back up?]\(何をバックアップしますか?\)** で [Azure ファイル共有] を選択します。
 
     ![バックアップの目標として Azure ファイル共有を選択する](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 

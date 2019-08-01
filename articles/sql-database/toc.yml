@@ -175,7 +175,7 @@
           href: sql-database-service-tier-hyperscale-faq.md
     - name: Single Database
       items:
-        - name: 単一データベースの概要
+        - name: 単一データベースのドキュメント
           href: sql-database-single-index.yml
         - name: 単一データベースの機能
           href: sql-database-single-database.md
@@ -215,7 +215,7 @@
           href: sql-database-elastic-pool-manage.md
     - name: マネージド インスタンス
       items:
-        - name: マネージド インスタンスの概要
+        - name: マネージド インスタンスのドキュメント
           href: sql-database-managed-instance-index.yml
         - name: マネージド インスタンスの機能
           href: sql-database-managed-instance.md
@@ -235,7 +235,7 @@
           href: sql-database-managed-instance-public-endpoint-securely.md
     - name: サービスとしてのプラットフォーム
       items:
-        - name: サービスとしてのプラットフォームの概要
+        - name: サービスとしてのプラットフォームのドキュメント
           href: sql-database-paas.yml
         - name: ビジネス継続性
           href: sql-database-business-continuity.md
@@ -324,7 +324,7 @@
           href: sql-database-feature-restrictions.md
     - name: スケーラビリティ
       items:
-        - name: スケーラビリティの概要
+        - name: スケーラビリティのドキュメント
           href: sql-database-scalability-index.yml
         - name: スケールアップ/スケールダウン
           href: sql-database-scale-resources.md
@@ -354,7 +354,7 @@
           href: sql-database-elastic-transactions-overview.md
     - name: 監視とチューニング
       items:
-        - name: 監視とチューニングの概要
+        - name: 監視とチューニングのドキュメント
           href: sql-database-monitoring-tuning-index.yml
         - name: 監視とパフォーマンスのチューニング
           href: sql-database-monitor-tune-overview.md
@@ -378,7 +378,7 @@
               href: sql-database-advisor.md
     - name: データベース機能
       items:
-        - name: 概要
+        - name: SQL Database の機能のドキュメント
           href: sql-database-features-index.yml
         - name: SQL 機能の比較
           href: sql-database-features.md

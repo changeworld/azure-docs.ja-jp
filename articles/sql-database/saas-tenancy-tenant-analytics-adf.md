@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b22a9cf8c79530fd931cbe944ef5bfc876a02243
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61485083"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570138"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Azure SQL Database、SQL Data Warehouse、Data Factory、Power BI による SaaS 分析を調べる
 

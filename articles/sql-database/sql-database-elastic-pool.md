@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-manager: craigg
 ms.date: 02/28/2019
-ms.openlocfilehash: 775e1abe1f3d6412171b8ff5427fd905e37480b5
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 31fb6eaefe557c1f135b4558b873454d4a3a01d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489687"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568630"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL データベースの管理およびスケーリング
 

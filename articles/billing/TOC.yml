@@ -71,6 +71,8 @@
               href: billing-prepay-app-service-isolated-stamp.md
             - name: Azure ソフトウェア プラン
               href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+            - name: 予約の更新
+              href: billing-reservation-renew.md
         - name: 割り引きの適用方法
           items:
             - name: 予約 VM インスタンス

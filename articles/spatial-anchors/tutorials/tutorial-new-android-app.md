@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9838add4f83434848d61f3ae86db71765efdc59a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 499b08dbdc8e798a884b721bcba51be1f6973df6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995729"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562396"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい Android アプリを作成する手順
 
@@ -23,18 +23,18 @@ ms.locfileid: "59995729"
 
 このチュートリアルを完了するには、以下のものが必要です。
 
-- <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 以降</a>がインストールされている Windows または macOS コンピューター。
+- <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 以降</a>がインストールされている Windows または macOS マシン。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
 
 ## <a name="getting-started"></a>使用の開始
 
-Android Studio を起動します。 **[Android Studio へようこそ]** ウィンドウで、**[新規 Android Studio プロジェクトの開始]** を選択します。 または、既に開かれているプロジェクトがある場合は、**[ファイル]**->**[新規プロジェクト]** を選択します。
+Android Studio を起動します。 **[Android Studio へようこそ]** ウィンドウで、 **[新規 Android Studio プロジェクトの開始]** を選択します。 または、既に開かれているプロジェクトがある場合は、 **[ファイル]** -> **[新規プロジェクト]** を選択します。
 
-**[新規プロジェクトの作成]** ウィンドウの **[スマホおよびタブレット]** セクションで、**[空のアクティビティ]** を選択し、**[次へ]** をクリックします。 次に、**[Minimum API level]\(最小 API レベル\)** で `API 26: Android 8.0 (Oreo)` を選択し、**[Language]\(言語\)** が `Java` に設定されていることを確認します。 プロジェクトの名前と場所、およびパッケージ名の変更が必要な場合があります。 他のオプションはそのままにします。 **[完了]** をクリックします。 **コンポーネント インストーラー**が実行されます。 完了したら、**[完了]** をクリックします。 いくつかの処理の後、Android Studio によって IDE が開かれます。
+**[新規プロジェクトの作成]** ウィンドウの **[スマホおよびタブレット]** セクションで、 **[空のアクティビティ]** を選択し、 **[次へ]** をクリックします。 次に、 **[Minimum API level]\(最小 API レベル\)** で `API 26: Android 8.0 (Oreo)` を選択し、 **[Language]\(言語\)** が `Java` に設定されていることを確認します。 プロジェクトの名前と場所、およびパッケージ名の変更が必要な場合があります。 他のオプションはそのままにします。 **[完了]** をクリックします。 **コンポーネント インストーラー**が実行されます。 完了したら、 **[完了]** をクリックします。 いくつかの処理の後、Android Studio によって IDE が開かれます。
 
 ## <a name="trying-it-out"></a>試してみる
 
-新しいアプリをテストするには、USB ケーブルを使用して開発用マシンに開発者向けのデバイスを接続します。 **[実行]**->**[Run 'app']\('アプリ' を実行\)** をクリックします。 **[Select Deployment Target]\(配置ターゲットの選択\)** ウィンドウで、お使いのデバイスを選択し、**[OK]** をクリックします。 Android Studio によって、接続されているデバイスにアプリがインストールされて起動されます。 "Hello World!" が、 お使いのデバイスで実行されているアプリに表示されます。 **[実行]**->**[Stop 'app']\('app' を停止\)** をクリックします。
+新しいアプリをテストするには、USB ケーブルを使用して開発用マシンに開発者向けのデバイスを接続します。 **[実行]** -> **[Run 'app']\('アプリ' を実行\)** をクリックします。 **[Select Deployment Target]\(配置ターゲットの選択\)** ウィンドウで、お使いのデバイスを選択し、 **[OK]** をクリックします。 Android Studio によって、接続されているデバイスにアプリがインストールされて起動されます。 "Hello World!" が、 お使いのデバイスで実行されているアプリに表示されます。 **[実行]** -> **[Stop 'app']\('app' を停止\)** をクリックします。
 
 ## <a name="integrating-arcore"></a>_ARCore_ との統合
 
@@ -57,12 +57,12 @@ Android Studio を起動します。 **[Android Studio へようこそ]** ウィ
 </application>
 ```
 
-次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは確実に ARCore バージョン 1.7 を対象とするようになります。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。**[Sync now]\(今すぐ同期\)** をクリックします。
+次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、ご自分のアプリは確実に ARCore バージョン 1.8 を対象とするようになります。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。 **[Sync now]\(今すぐ同期\)** をクリックします。
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.7.0'
+    implementation 'com.google.ar:core:1.8.0'
     ...
 }
 ```
@@ -71,7 +71,7 @@ dependencies {
 
 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> により、OpenGL を習得しなくても、Augmented Reality アプリ内でリアルな 3D シーンを簡単にレンダリングできます。
 
-次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは `Sceneform` に必要な Java 8 の言語コンストラクトの使用を許可されます。 また、アプリは確実に `Sceneform` バージョン 1.7 を対象とするようになります。これはアプリで使用している ARCore のバージョンと一致する必要があるためです。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。**[Sync now]\(今すぐ同期\)** をクリックします。
+次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは `Sceneform` に必要な Java 8 の言語コンストラクトの使用を許可されます。 また、ご自分のアプリは確実に `Sceneform` バージョン 1.8 を対象とするようになります。これはご自分のアプリで使用している ARCore のバージョンと一致する必要があるためです。 この変更の後に、Gradle から同期を求める通知を受け取ることがあります。 **[Sync now]\(今すぐ同期\)** をクリックします。
 
 ```
 android {
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.7.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.8.0'
     ...
 }
 ```
@@ -123,18 +123,18 @@ dependencies {
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>ローカル Azure Spatial Anchor のアタッチ
 
-次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、アプリは確実に Azure Spatial Anchors バージョン 1.0.2 を対象とするようになります。 ただし、Azure Spatial Anchors の任意の最新バージョンの参照が機能します。
+次のエントリを含むように `Gradle Scripts\build.gradle (Module: app)` を変更します。 このコードにより、ご自分のアプリは確実に Azure Spatial Anchors バージョン 1.3.0 を対象とするようになります。 ただし、Azure Spatial Anchors の任意の最新バージョンの参照が機能します。
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.0.2]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.0.2]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
     ...
 }
 ```
 
-`app\java\<PackageName>`->**[新規]**->**[Java Class]\(Java クラス\)** を右クリックします。 **[名前]** を _MyFirstApp_ に設定し、**[スーパークラス]** を _android.app.Application_ に設定します。 他のオプションはそのままにします。 Click **OK**. `MyFirstApp.java` というファイルが作成されます。 そこに次の import を追加します。
+`app\java\<PackageName>`-> **[新規]** -> **[Java Class]\(Java クラス\)** を右クリックします。 **[名前]** を _MyFirstApp_ に設定し、 **[スーパークラス]** を _android.app.Application_ に設定します。 他のオプションはそのままにします。 Click **OK**. `MyFirstApp.java` というファイルが作成されます。 そこに次の import を追加します。
 
 ```java
 import com.microsoft.CloudServices;

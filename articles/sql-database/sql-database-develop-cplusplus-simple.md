@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 00a3904bd78f3bb76266c726af28582770b23921
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c06a16071b1e22e7aa788ff5f15ce8afbf17da04
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60724096"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568939"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C と C++ を使用して SQL Database に接続する
 

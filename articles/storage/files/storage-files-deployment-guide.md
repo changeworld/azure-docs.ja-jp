@@ -1,19 +1,18 @@
 ---
 title: Azure Files のデプロイ方法 | Microsoft Docs
 description: Azure Files をデプロイする方法を開始から終了まで説明します。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 416040d91da2f6346027f738de507777f804fd1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 802b4deb91f1df784ac0aed2952d3f915b54ce73
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237730"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699712"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
