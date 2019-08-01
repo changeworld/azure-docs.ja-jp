@@ -1,18 +1,19 @@
 ---
 title: Azure Backup を使用した SAP HANA データベースのバックアップ中のエラーをトラブルシューティングする | Microsoft Docs
 description: Azure Backup を使用して SAP HANA データベースをバックアップするときに発生する可能性のある一般的なエラーをトラブルシューティングする方法について説明します。
-author: pvrk
-manager: vijayts
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: pullabhk
-ms.openlocfilehash: 221b669c141681749709d6a5a406c78499f21032
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: a2711339f5e952747adeeb6217b283770cb6cc6b
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465469"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689040"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 

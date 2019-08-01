@@ -1,6 +1,6 @@
 ---
 title: コラボレーション翻訳フレームワーク (CTF) レポート - Translator Text API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法。
 services: cognitive-services
 author: swmachan
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 79a645b0b41f200c384c165f244efa679be65171
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6a197095d97e67f7548e60375148cff57e47b797
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443456"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595940"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
 
@@ -34,7 +34,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 
 
 ## <a name="methods"></a>メソッド
-| Name |    説明|
+| EnableAdfsAuthentication |    説明|
 |:---|:---|
 | GetUserTranslationCounts メソッド | ユーザーによって作成される翻訳の数を取得します。 |
 | GetUserTranslations メソッド | ユーザーによって作成される翻訳を取得します。 |

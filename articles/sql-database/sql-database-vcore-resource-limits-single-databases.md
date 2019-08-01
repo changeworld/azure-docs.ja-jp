@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 04/22/2019
-ms.openlocfilehash: c89aa3b4ecf0c07cfbb579cdc18fac6e822bc047
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 661ac9ea3fd87268c43bf0a0eba66e30f636fc77
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536236"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566219"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>仮想コアベースの購入モデルを使用した単一データベースに対するリソース制限
 

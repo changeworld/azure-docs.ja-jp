@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6023e4bd4028cf1679051b6665297afd00b1eba7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f1ebfce2b96da51b9c33646c1626495d280d7b8a
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482651"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592250"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -30,7 +30,7 @@ ms.locfileid: "67482651"
 
 Android アプリケーションを開発している場合、Azure Active Directory (Azure AD) ユーザーには簡単にサインインできるのでお勧めです。 Azure AD を使用すると、アプリケーションから Microsoft Graph または独自の保護された Web API を介してユーザー データにアクセスできます。
 
-Azure AD Authentication Library (ADAL) Android ライブラリは業界標準の OAuth 2.0 と OpenID Connect を使用して [Microsoft Azure Active Directory アカウント](https://azure.microsoft.com/services/active-directory/)をサポートしているので、アプリから [Microsoft Azure Cloud](https://cloud.microsoft.com) と [Microsoft Graph API](https://developer.microsoft.com/graph) を使い始めることができます。
+Azure AD Authentication Library (ADAL) Android ライブラリは業界標準の OAuth 2.0 と OpenID Connect を使用して [Microsoft Azure Active Directory アカウント](https://azure.microsoft.com/services/active-directory/)をサポートしているので、アプリから [Microsoft Azure Cloud](https://azure.microsoft.com/free/cloud-services/) と [Microsoft Graph API](https://developer.microsoft.com/graph) を使い始めることができます。
 
 このクイック スタートでは、次の方法について説明します。
 

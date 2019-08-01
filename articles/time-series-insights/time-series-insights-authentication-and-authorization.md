@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 899bcffaf3a54bd541d488f99c35ec6721d751ca
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: bdf0fbfb2b40e932f9e3627c3bc0356eb0afb472
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543998"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677928"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -107,6 +107,6 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 - プレビュー Time Series Insights API コード サンプルについては、[C# を使用したプレビュー データの照会](./time-series-insights-update-query-data-csharp.md)に関する記事を参照してください。
 
-- API リファレンスについては、[API リファレンスのクエリ](/rest/api/time-series-insights/ga-query-api)に関するページをご覧ください。
+- API リファレンスについては、[API リファレンスのクエリ](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)に関するページをご覧ください。
 
 - [サービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)方法について学習します。

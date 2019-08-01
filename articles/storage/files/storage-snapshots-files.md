@@ -1,19 +1,18 @@
 ---
 title: Azure Files の共有スナップショットの概要 | Microsoft Docs
 description: 共有スナップショットは、Azure Files 共有の読み取り専用バージョンであり、共有をバックアップする手段として特定の時点で取得されます。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d83cf20c856d37d337f4eb22c30ee9b6823d096b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3cbf740016a4c162c63343be4cb9cd577f85935
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65235816"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699354"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要 
 Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショットは、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。

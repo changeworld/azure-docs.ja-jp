@@ -2,23 +2,23 @@
 title: 既存の Azure サブスクリプションをテナントに追加する - Azure Active Directory | Microsoft Docs
 description: 既存の Azure サブスクリプションを Azure Active Directory テナントに追加する方法について説明します。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2889af6000e77fba7a91392c0adb227588b5306
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: a64bad11f5b83ddd7f6d7236ffed4ff4a6e39c2c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66430798"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561867"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 

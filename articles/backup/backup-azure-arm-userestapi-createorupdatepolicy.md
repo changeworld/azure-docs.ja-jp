@@ -1,20 +1,21 @@
 ---
 title: 'Azure Backup: REST API を使用してバックアップ ポリシーを作成する'
 description: REST API を使用してバックアップ ポリシー (スケジュールと保持期間) を管理します。
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: f0729a49c3dc72a28431d711e6783abda96d2ce3
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: d81d8aa299333890de61cf0c8ee75be76ca31bf2
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466815"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688740"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API を使用して Azure Recovery Services バックアップ ポリシーを作成する
 

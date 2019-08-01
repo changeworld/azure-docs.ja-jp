@@ -1,6 +1,6 @@
 ---
 title: レビュー、ワークフロー、ジョブの概念 - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: レビュー、ワークフロー、ジョブについて説明します
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a77b93c46c9989181cf4473e8b908571a3df2f20
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607292"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565555"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>コンテンツ モデレーションのレビュー、ワークフロー、ジョブ
 

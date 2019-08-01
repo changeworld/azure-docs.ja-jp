@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: c5304c62b29d842f9beeadb34eba1cb53048d179
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: a0d47c61bf84cfb22c767fd09b3feed74f55b7fc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302289"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567482"
 ---
 # <a name="determine-the-management-endpoint-ip-address"></a>管理エンドポイント IP アドレスを確認する
 

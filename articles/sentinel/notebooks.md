@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: cc84db4bd3dc06d4e2dbecb3be8ceee37d554ae7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6372a7958caf108903321e5ee87ea6bf1a42271c
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619849"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689591"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter Notebook を使用してセキュリティの脅威を検出する
 
@@ -32,7 +32,7 @@ ms.locfileid: "67619849"
 
 Azure Sentinel の基盤となるのは、ハイ パフォーマンス クエリと動的スキーマを併用し、大量のデータ ボリュームにスケーリングできるデータ ストアです。 Azure Sentinel ポータルとすべての Azure Sentinel ツールでは、このデータ ストアにアクセスする際、共通の API が使用されます。 同じ API を [Jupyter](https://jupyter.org/) Notebook や Python などの外部ツールでも使用できます。 ポータルでは多くの一般的なタスクを実行できますが、Jupyter では、データに対して、より幅広い処理が可能です。 高度なプログラミング性と膨大なライブラリ コレクションを組み合わせて、機械学習、視覚化、データ解析を行えます。 こうした特性から、Jupyter は、セキュリティの調査や検出にうってつけのツールとなっています。
 
-![ノートブックの例](./media/notebooks/sentinel-nb-mapandtimeline.png)
+![ノートブックの例](./media/notebooks/sentinel-notebooks-map.png)
 
 Jupyter のエクスペリエンスが Azure Sentinel ポータルに統合されているため、簡単にノートブックを作成して実行し、データを解析できます。 *Kqlmagic* ライブラリは、Azure Sentinel からクエリを取得して、ノートブック内で直接実行できるようにする接着剤の働きをします。 クエリでは、[Kusto クエリ言語](https://kusto.azurewebsites.net/docs/query/index.html)が使用されます。 Azure Sentinel には、Microsoft のセキュリティ アナリストが開発した複数のノートブックがパッケージされています。 これらのノートブックの中には、特定のシナリオ向けに作成され、そのまま使用できるようになっているものがあります。 一方、技術や機能を説明するサンプルとして作成されたものもあります。これをコピーまたは改造して、独自のノートブック内で使用することができます。 Azure Sentinel コミュニティの GitHub からインポートできるノートブックもあります。
 
@@ -68,15 +68,15 @@ Azure Sentinel ノートブックでは、pandas、matplotlib、bokeh など、�
 
 1. Azure Sentinel ポータル内のナビゲーション メニューにある **[ノートブック]** をクリックします。 新しい Azure Notebooks プロジェクトを作成するには、 **[Clone Azure Sentinel Notebooks]\(Azure Sentinel Notebooks の複製\)** をクリックします。既存のノートブック プロジェクトを開くには、 **[Go to your Notebooks]\(ノートブックに移動する\)** をクリックします。
   
-   ![ノートブックを選択する](./media/notebooks/sentinel-az-notebooks-home.png)
+   ![ノートブックを選択する](./media/notebooks/sentinel-azure-notebooks-home.png)
 
 2. 前の手順で **[Clone Azure Sentinel Notebooks]\(Azure Sentinel Notebooks の複製\)** を選択すると、次のダイアログが表示されます。 **[インポート]** をクリックして、GitHub リポジトリの複製を自分の Azure Notebooks プロジェクトに作成します。 既存の Azure Notebooks アカウントを持っていない場合は、アカウントを作成してサインインするように求められます。
 
-   ![ノートブックをインポートする](./media/notebooks/sentinel-nb-signin-and-clone.png)
+   ![ノートブックをインポートする](./media/notebooks/sentinel-notebooks-clone.png)
 
 3. 新しいプロジェクトを作成するときは、プロジェクト名を設定する必要があります (既定の名前を使用するか、または新しい名前を入力します)。 **[サブモジュールを再帰的に複製]** オプションはオンにしないでください。このオプションでは、リンクされた GitHub リポジトリが参照されます。 **[インポート]** をクリックすると、GitHub コンテンツの複製が開始されます。複製が完了するまでに数分かかる場合があります。
 
-   ![ノートブックをインポートする](./media/notebooks/sentinel-create-nb-project.png)
+   ![ノートブックをインポートする](./media/notebooks/sentinel-create-project.png)
 
 4. **[Notebooks]** フォルダーを開くと、ノートブックが表示されます。 各ノートブックでは、検出や調査を実行するための手順が紹介されます。 ノートブックで必要なライブラリやその他の依存関係ファイルは、Notebook 自体からインストールすることも、簡単な構成手順を介してインストールすることもできます。 ノートブック プロジェクトを Azure Sentinel サブスクリプションに関連付ける構成は、前の手順で自動的にプロビジョニングされています。 Azure Sentinel Log Analytics ワークスペースに対してノートブックを実行する準備ができました。
 

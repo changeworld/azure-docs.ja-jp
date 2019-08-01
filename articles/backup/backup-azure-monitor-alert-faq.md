@@ -1,18 +1,19 @@
 ---
 title: Azure Backup の監視アラートに関する FAQ
 description: 一般的な質問への回答:Azure Backup の監視アラート
-author: srinathvasireddy
-manager: sivan
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.author: srinathv
-ms.openlocfilehash: dc68b68ffa0ae2ee4f1bdd8f2c7ac0d7ff5ebb8c
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 50dd4f8df11b597ca90d9f45a749c8732d7025e6
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465848"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688345"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup の監視アラート - FAQ
 この記事では、Azure の監視アラートに関する一般的な質問への回答を示します。

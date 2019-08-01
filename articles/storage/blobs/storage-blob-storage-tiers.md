@@ -9,12 +9,12 @@ ms.date: 03/23/2019
 ms.author: mhopkins
 ms.reviewer: clausjor
 ms.subservice: blobs
-ms.openlocfilehash: 8e9e27f14c4ccd6f5822033baa21aaafcf96c428
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dcfec25cd2bf01d59a7c0b3f72d8b1a618a9f699
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148512"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565996"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -35,6 +35,8 @@ Azure Storage からはさまざまなアクセス層が提供され、最もコ
 クラウド内の格納データが急激に増加しています。 ストレージのニーズが拡大する中でコストを管理するには、アクセスの頻度や予定保有期間などの属性に基づいてデータを整理し、コストを最適化する方法が効果的です。 クラウドに格納されるデータは、有効期間を通じてどのように生成、処理、アクセスされるかという点で異なる場合があります。 有効期間を通じて活発にアクセスおよび変更されるデータもあれば、 有効期間の初期に頻繁にアクセスされ、古くなるにつれて大幅にアクセスが減るデータもあります。 また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。
 
 各データ アクセス シナリオは、特定のアクセス パターン用に最適化された異なるアクセス層の利点を利用しています。 Azure Blob Storage は、ホット、クール、アーカイブの各アクセス層によって、分化されたアクセス層のニーズに異なる価格モデルで対応しています。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="storage-accounts-that-support-tiering"></a>階層制御をサポートするストレージ アカウント
 

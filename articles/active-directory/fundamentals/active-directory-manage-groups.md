@@ -2,23 +2,23 @@
 title: グループを使用したアプリとリソース アクセスの管理 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory グループを使用して、組織のクラウドベースのアプリ、オンプレミスのアプリ、およびリソースに対するアクセスを管理する方法について説明します。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c2bffad4254815d2ed51d9bbc14b32a521b5537
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: acbc19c2148a2b62ff1aa28d705591430b4fad20
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60248487"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561836"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory グループを使用したアプリとリソース アクセスの管理
 Azure Active Directory (Azure AD) は、組織のグループを使用した、クラウド ベースのアプリ、オンプレミスのアプリ、およびリソースの管理に役立ちます。 リソースは、ディレクトリ内のロールによってオブジェクトを管理するアクセス許可のように、ディレクトリの一部となっている場合と、サービスとしてのソフトウェア (SaaS) アプリ、Azure サービス、SharePoint サイト、オンプレミスのリソースのように、ディレクトリの外部リソースである場合があります。

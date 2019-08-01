@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: ab2413cfce8b87fbe1899a0b7c465c6e6c27a3f5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 126c3fb348b1d53769a818ae4b21fcdbbef65615
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277638"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517239"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
@@ -35,7 +35,7 @@ Logic Apps には[数百のコネクタ](https://docs.microsoft.com/connectors)�
   > [統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)内のロジック アプリでは、Azure 仮想ネットワーク内のリソースに直接アクセスできます。
   > ISE を使用すると、**Core** というラベルが表示される組み込みのトリガーとアクションは、ロジック アプリと同じ ISE で実行されます。 ISE 内で実行されるロジック アプリ、組み込みトリガー、組み込みアクションでは、使用量ベースの価格プランとは異なる価格プランが使用されます。
   >
-  > ISE の作成について詳しくは、[Azure Logic Apps から Azure Virtual Network への接続](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment)に関するページをご覧ください。 
+  > ISE の作成について詳しくは、[Azure Logic Apps から Azure Virtual Network への接続](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)に関するページをご覧ください。 
   > 価格について詳しくは、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)に関するページをご覧ください。
 
 <a name="managed-connectors"></a>
@@ -63,7 +63,7 @@ Logic Apps には[数百のコネクタ](https://docs.microsoft.com/connectors)�
   >
   > Azure 仮想ネットワークに接続されているオンプレミス システムの場合は、そのネットワークにお使いの ISE を挿入し、**ISE** ラベル、HTTP アクション、または[カスタム コネクタ](#custom)のあるコネクタを使用することで、ロジック アプリからそれらのシステムに直接アクセスできるようにします。 ISE で実行されるロジック アプリとコネクタでは、使用量ベースの価格プランとは異なる価格プランが使われます。 
   >
-  > ISE の作成について詳しくは、[Azure Logic Apps から Azure Virtual Network への接続](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment)に関するページをご覧ください。
+  > ISE の作成について詳しくは、[Azure Logic Apps から Azure Virtual Network への接続](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)に関するページをご覧ください。
   > 価格について詳しくは、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)に関するページをご覧ください。
 
   すべてのコネクタと、アクションやトリガーなどの OpenAPI (旧称 Swagger) の記述によって定義される各コネクタの参照情報および制限については、[コネクタの概要](/connectors/)に関するページにある一覧をご覧ください。 価格の情報については、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)および [Logic Apps の価格の詳細](https://azure.microsoft.com/pricing/details/logic-apps/)に関するページをご覧ください。 
@@ -196,7 +196,7 @@ Azure 内でカスタム API Apps またはコネクタを公開し、誰でも�
 >
 > ISE 内で作成されたカスタム コネクタは、オンプレミス データ ゲートウェイでは動作しません。 ただし、これらのコネクタでは、ISE がホストされている Azure 仮想ネットワークに接続されているオンプレミス データ ソースに直接アクセスできます。 そのため、ISE 内のロジック アプリでは、ほとんどの場合、それらのリソースと通信するときにデータ ゲートウェイは不要です。
 >
-> ISE の作成について詳しくは、[Azure Logic Apps から Azure Virtual Network への接続](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-logic-apps-environment)に関するページをご覧ください。
+> ISE の作成について詳しくは、[Azure Logic Apps から Azure Virtual Network への接続](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

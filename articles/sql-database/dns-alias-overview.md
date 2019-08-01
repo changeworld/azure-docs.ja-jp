@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: genemi, ayolubek, jrasnick
-manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: bb38f73308fb1eb67be310120cb589cb9412e737
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 3d0a4b5890ed5758f4045459815fb4ebbffe75c6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461825"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68550662"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
 

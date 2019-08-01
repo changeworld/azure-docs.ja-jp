@@ -9,14 +9,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: d3e68a5287e59c576f85491e6e5eba33fac080ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cebe6b4ca61b835e7c77f51592c20799fe271853
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65465156"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567402"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスのパブリック エンドポイントの構成
 
@@ -97,10 +96,10 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**ソース**     |任意の IP アドレスまたはサービス タグ         |<ul><li>Power BI などの Azure サービスの場合は、Azure クラウド サービス タグを選択します</li> <li>コンピューターまたは Azure VM の場合は、NAT IP アドレスを使用します</li></ul> |
     |**ソース ポート範囲**     |*         |ソース ポートは、通常、動的に割り当てられ、予測できないため、* (任意) のままにしておきます |
-    |**宛先**     |任意         |マネージド インスタンスのサブネットへのトラフィックを許可するには、宛先は [任意] のままにしておきます |
+    |**宛先**     |Any         |マネージド インスタンスのサブネットへのトラフィックを許可するには、宛先は [任意] のままにしておきます |
     |**宛先ポート範囲**     |3342         |宛先ポート野範囲を 3342 に設定します。これが、マネージド インスタンスのパブリック TDS エンドポイントです |
     |**プロトコル**     |TCP         |マネージド インスタンスは、TDS に TCP プロトコルを使用します |
-    |**アクション**     |ALLOW         |パブリック エンドポイントを介したマネージド インスタンスへの受信トラフィックを許可します |
+    |**アクション**     |Allow         |パブリック エンドポイントを介したマネージド インスタンスへの受信トラフィックを許可します |
     |**優先順位**     |1300         |この規則が **deny_all_inbound** 規則よりも優先度が高いことを確認してください |
 
     ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)

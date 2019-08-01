@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 904893d4881de6be2c9055fefa9a8267cb045afd
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b8b2cad95929d6132a4f0ae52597fb1633874ff1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849404"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592109"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase または B2C_1A_TrustFrameworkExtensionPolicy:
 
 ユーザー体験は、ユーザーが体験する内容のビジネス ロジックを定義します。 各ユーザー体験は、認証と情報収集に関してひと続きのアクションを順番に実行する、一連のオーケストレーション ステップです。
 
-[スターター パック](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies)の **SocialAndLocalAccounts** ポリシー ファイルには、SignUpOrSignIn、ProfileEdit、PasswordReset のユーザー体験が含まれています。 メール アドレスの変更、ソーシャル アカウントのリンクとリンク解除など、別のシナリオでさらに多くのユーザー体験を追加することができます。
+[スターター パック](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack)の **SocialAndLocalAccounts** ポリシー ファイルには、SignUpOrSignIn、ProfileEdit、PasswordReset のユーザー体験が含まれています。 メール アドレスの変更、ソーシャル アカウントのリンクとリンク解除など、別のシナリオでさらに多くのユーザー体験を追加することができます。
 
 オーケストレーション ステップで、[技術プロファイル](technicalprofiles.md)を呼び出すことができます。 技術プロファイルは、さまざまな種類の利用者と通信するためのメカニズムが組み込まれたフレームワークを提供します。 たとえば、技術プロファイルでは、特に次のアクションを実行できます。
 

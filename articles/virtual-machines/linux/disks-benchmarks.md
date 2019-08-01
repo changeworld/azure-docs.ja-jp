@@ -1,20 +1,18 @@
 ---
 title: Azure Disk Storage 上のアプリケーションのベンチマーク - マネージド ディスク
 description: Azure 上でアプリケーションのベンチマークを実行するプロセスについて説明します。
-services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
 ms.date: 01/11/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 21ed4e9a6b1da10d0ae4c276612459506e13d94f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5ac60811eb4fb7735feae6a62ee1b20c8983e0e
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474370"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695857"
 ---
 # <a name="benchmarking-a-disk"></a>ディスクのベンチマーク
 

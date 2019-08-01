@@ -10,14 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 6eabb65203ed8a37975e09271ce4aa11c9478498
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a16f6d6b0bf8600270fdf4e00cfa379ee4422fd0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779175"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567000"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>テストとプロトタイプ作成用の公開されているデータ セット
 

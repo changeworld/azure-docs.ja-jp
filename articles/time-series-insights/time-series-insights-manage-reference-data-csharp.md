@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a482ae44c796e1519ffad0a604510166b1ac63c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4f2bb4a6d10f9e45a27b8b5e082b3cbec475b531
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165609"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677815"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する
 
@@ -247,4 +247,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 
 ## <a name="next-steps"></a>次の手順
 
-- [参照データ API](/rest/api/time-series-insights/ga-reference-data-api) をご覧ください。
+- [参照データ API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) をご覧ください。

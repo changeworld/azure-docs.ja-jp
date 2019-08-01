@@ -16,10 +16,10 @@ ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: c8b25858556538835d6a84bf0d6699f9906f1438
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68322650"
 ---
 ### <a name="general-requirements"></a>一般的な要件
@@ -66,14 +66,14 @@ ms.locfileid: "68322650"
 
 | ソース IP アドレス | 発信元サービス タグ | ソース ポート | 変換先 | ターゲット ポート | Protocol | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| 該当なし | `BatchNodeManagement` [サービス タグ](../articles/virtual-network/security-overview.md#service-tags) | * | 任意 | 29876 から 29877 | TCP | ALLOW |
-| Linux マルチインスタンス タスクのためにコンピューティング ノードまたはコンピューティング ノード サブネット (あるいは両方) にリモート アクセスするためのユーザー ソース IP (必要な場合) | 該当なし | * | 任意 | 3389 (Windows)、22 (Linux) | TCP | ALLOW |
+| 該当なし | `BatchNodeManagement` [サービス タグ](../articles/virtual-network/security-overview.md#service-tags) | * | Any | 29876 から 29877 | TCP | Allow |
+| Linux マルチインスタンス タスクのためにコンピューティング ノードまたはコンピューティング ノード サブネット (あるいは両方) にリモート アクセスするためのユーザー ソース IP (必要な場合) | 該当なし | * | Any | 3389 (Windows)、22 (Linux) | TCP | Allow |
 
 **アウトバウンド セキュリティ規則**
 
 | source | ソース ポート | 宛先 | 宛先サービス タグ | ターゲット ポート | Protocol | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| 任意 | * | [サービス タグ](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (ご利用の Batch アカウントおよび VNET と同じリージョン内) | 443 | TCP | ALLOW |
+| Any | * | [サービス タグ](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (ご利用の Batch アカウントおよび VNET と同じリージョン内) | 443 | TCP | Allow |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>クラウド サービスの構成におけるプール
 
@@ -99,11 +99,11 @@ NSG を指定する必要はありません。Batch IP アドレスからプー�
 
 | ソース IP アドレス | ソース ポート | 変換先 | ターゲット ポート | Protocol | Action |
 | --- | --- | --- | --- | --- | --- |
-任意 <br /><br />実際上は "すべて許可" が必要ですが、Batch サービス以外の IP アドレスをすべてフィルターで除外する ACL 規則が、Batch サービスにより各ノードのレベルで適用されます。 | * | 任意 | 10100、20100、30100 | TCP | ALLOW |
-| コンピューティング ノードへの RDP アクセスを許可する場合 (省略可能) | * | 任意 | 3389 | TCP | ALLOW |
+Any <br /><br />実際上は "すべて許可" が必要ですが、Batch サービス以外の IP アドレスをすべてフィルターで除外する ACL 規則が、Batch サービスにより各ノードのレベルで適用されます。 | * | Any | 10100、20100、30100 | TCP | Allow |
+| コンピューティング ノードへの RDP アクセスを許可する場合 (省略可能) | * | Any | 3389 | TCP | Allow |
 
 **アウトバウンド セキュリティ規則**
 
 | source | ソース ポート | 変換先 | ターゲット ポート | Protocol | Action |
 | --- | --- | --- | --- | --- | --- |
-| 任意 | * | 任意 | 443  | 任意 | ALLOW |
+| Any | * | Any | 443  | Any | Allow |

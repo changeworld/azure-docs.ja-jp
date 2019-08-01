@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: joseidz
 ms.author: craigg
 ms.reviewer: ''
-manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: a6e0adc6b4abbb58504b6f56c8def72440ad370d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8711d8f7ebc00b2d0fa51ff9f420293e96766d1c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061405"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569351"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースの単一データベースに接続してレポートを作成する
 

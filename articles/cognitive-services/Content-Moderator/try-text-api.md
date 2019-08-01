@@ -1,6 +1,6 @@
 ---
 title: テキスト モデレート API を使用してテキストをモデレートする - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: オンライン コンソールでテキスト モデレート API を使用して、テキストのモデレートを試します。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: a3eb134d655f2a25acb45e0d249aa421667d1520
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 49047c21f86530aac6ed3e0138a643fd08c35af8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621381"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561182"
 ---
 # <a name="moderate-text-from-the-api-console"></a>API コンソールからテキストをモデレートする
 

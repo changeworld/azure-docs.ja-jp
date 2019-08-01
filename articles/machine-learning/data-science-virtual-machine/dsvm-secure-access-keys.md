@@ -4,7 +4,7 @@ description: Data Science Virtual Machine にアクセス資格情報を安全�
 keywords: ディープ ラーニング, AI, データ サイエンス ツール, データ サイエンス仮想マシン, 地理空間分析, チーム データ サイエンス プロセス
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: gokuma
-ms.openlocfilehash: 023e53bf17c1462c3eaedde3d6d9c1621ade27fc
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: vijetaj
+ms.openlocfilehash: 7adc968dd88ede70b18766ce2c156c23324d0c4e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358865"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557920"
 ---
 # <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>データ サイエンス仮想マシンにアクセス資格情報を安全に保存する
 

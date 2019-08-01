@@ -10,12 +10,12 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b588ebe577e61014c6c2bbeaae751b2783dd6f80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e812bf03bf2adb852becf56954e7039aa3eb0633
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153922"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565901"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -28,6 +28,8 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 ストレージ アカウントの合計の制限とは別に、Storage Analytics には、格納されたデータの量に関して 20 TB の制限があります。 ストレージ アカウントの制限の詳細については、「 [Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」を参照してください。
 
 Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="billing-for-storage-analytics"></a>Storage Analytics の課金
 

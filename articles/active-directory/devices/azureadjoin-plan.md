@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4332c921af770cb47e9a9a779d0bd148153fcd31
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 6e58762bd5bf4342804767a200c94b432dd152a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666140"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562218"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -271,7 +271,7 @@ MAM は、Azure AD 参加に適用されません。
 
 ## <a name="configure-enterprise-state-roaming"></a>企業の状態ローミングを構成する
 
-Azure AD に対して状態ローミングを有効にして、ユーザーがデバイス間で設定を同期できるようにするには、「[Azure Active Directory の Enterprise State Roaming を有効にする](https://docs.microsoft.com/azure/active-directory/devices/enterprise-state-roaming-enable)」をご覧ください。 
+Azure AD に対して状態ローミングを有効にして、ユーザーがデバイス間で設定を同期できるようにするには、「[Azure Active Directory の Enterprise State Roaming を有効にする](enterprise-state-roaming-enable.md)」をご覧ください。 
 
 **推奨事項**:この設定は、ハイブリッド Azure AD 参加済みデバイスに対しても有効にしてください。
 

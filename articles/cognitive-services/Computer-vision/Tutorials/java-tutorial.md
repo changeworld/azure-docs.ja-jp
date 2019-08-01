@@ -1,6 +1,6 @@
 ---
 title: イメージの操作を実行する - Java
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Microsoft Cognitive Services の Computer Vision API を使用する基本的な Java Swing アプリを探索します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
 author: KellyDF
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
-ms.openlocfilehash: a22308e0c7ff924205f715692d011a4572b2bdb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16f75095c7e4461c84a1fea28cc620c49b6c5bca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65232632"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565684"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>REST API と Java を使用して Computer Vision 機能を使用する
 

@@ -1,18 +1,19 @@
 ---
 title: Azure のデータを Windows サーバーまたは Windows コンピューターに復元する
 description: Azure に格納されているデータを Windows サーバーまたは Windows コンピューターに復元する方法について説明します。
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 9/7/2018
-ms.author: saurse
-ms.openlocfilehash: e22db587c698594170c3b08ea04ff6699b6a61c8
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: c8e0ddb788d5e155bfaa511b1012cc8d8e62aab5
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465678"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689103"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用してファイルを Windows に復元する
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: cfa94fc1c75bcd1eaa9a076cfe63369f60ce5f1c
-ms.sourcegitcommit: 18a0d58358ec860c87961a45d10403079113164d
+ms.openlocfilehash: 24e340d25cb57f9a35f06f6dbd5a394d60a14fad
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66693087"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566428"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 
@@ -154,7 +153,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | 1 つの同期グループ内のオンプレミス エンドポイントの最大数。 | 5                      | 複数の同期グループを作成する |
 | データベース、テーブル、スキーマ、および列名の文字数                       | 名前 1 件あたり 50 文字 |                             |
 | 同期グループ内のテーブル数                                          | 500                    | 複数の同期グループを作成する |
-| 同期グループ内のテーブルの列数                              | 1,000                   |                             |
+| 同期グループ内のテーブルの列数                              | 1000                   |                             |
 | テーブルでのデータ行のサイズ                                        | 24 Mb                  |                             |
 | 最小同期間隔                                           | 5 分              |                             |
 |||

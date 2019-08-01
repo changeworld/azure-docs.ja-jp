@@ -2,7 +2,7 @@
 title: よくあるご質問 (FAQ) - Azure Active Directory | Microsoft Docs
 description: Azure と Azure Active Directory、パスワード管理、およびアプリケーション アクセスに関する一般的な質問とその回答です。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
@@ -10,15 +10,15 @@ ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c67eec3a17e949d630bedf920c690f9f5a36424d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4c1ee5e849d8004f828a2d92d728ad7925fc05c4
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204564"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693950"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -68,7 +68,8 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 
 **Q:コラボレーターとして追加されたときにテナントから切り替えるにはどうすればよいですか?**
 
-<a name="a-when-you-are-added-to-another-organizations-tenant-as-a-collaborator-you-can-use-the-tenant-switcher-in-the-upper-right-to-switch-between-tenants--currently-there-is-no-way-to-leave-the-inviting-organization-and-microsoft-is-working-on-providing-this-functionality--until-this-feature-is-available-you-can-ask-the-inviting-organization-to-remove-you-from-their-tenant"></a>**A:** コラボレーターとして別の組織のテナントに追加されるときに、右上にある "テナント スイッチャー" を使用してテナントを切り替えることができます。  現時点では、招待元の組織から切り替える方法はありません。Microsoft では、この機能の提供に向けて取り組んでいます。  この機能が利用可能になるまでは、招待元の組織に、その組織のテナントから自分を削除するよう依頼できます。
+**A:** コラボレーターとして別の組織のテナントに追加されるときに、右上にある "テナント スイッチャー" を使用してテナントを切り替えることができます。  現時点では、招待元の組織から切り替える方法はありません。Microsoft では、この機能の提供に向けて取り組んでいます。  この機能が利用可能になるまでは、招待元の組織に、その組織のテナントから自分を削除するよう依頼できます。
+
 ---
 **Q:オンプレミスのディレクトリを Azure AD に接続するにはどうすればよいですか?**
 

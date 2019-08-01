@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 05/06/2019
-ms.openlocfilehash: 707f7f47b050d22d0bd225cf412181902ae84f50
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ce6fc5d32fc9e17499a56cec7f4db2849370a1ec
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67974464"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566728"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>最大 100 TB の Hyperscale サービス レベル
 

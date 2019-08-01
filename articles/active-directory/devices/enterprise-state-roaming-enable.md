@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45c1fc6340df6a5400864b2e1222a2c65e586232
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: f0f4a260bb52fb10147f6d6b9e74aa5cd4fd0e1a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482024"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562148"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 Enterprise State Roaming は、Azure AD Premium または Enterprise Mobility + Security (EMS) ライセンスを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細について、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。
@@ -31,7 +31,7 @@ Enterprise State Roaming を有効にすると、組織には、Azure Informatio
   
    ![[デバイス間での設定とアプリ データの同期が許可されるユーザー] のデバイス設定のイメージ](./media/enterprise-state-roaming-enable/device-settings.png)
   
-Windows 10 デバイスで Enterprise State Roaming サービスを使用するには、そのデバイスを Azure AD の ID で認証する必要があります。 デバイスが Azure AD に参加している場合、そのユーザーの主要なサインイン ID は Azure AD の ID です。追加の構成は必要ありません。 デバイスがオンプレミスの Active Directory を使用している場合、IT 管理者は [ハイブリッド Azure Active Directory 参加済みデバイスを構成する](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps)必要があります。 
+Windows 10 デバイスで Enterprise State Roaming サービスを使用するには、そのデバイスを Azure AD の ID で認証する必要があります。 デバイスが Azure AD に参加している場合、そのユーザーの主要なサインイン ID は Azure AD の ID です。追加の構成は必要ありません。 デバイスがオンプレミスの Active Directory を使用している場合、IT 管理者は [ハイブリッド Azure Active Directory 参加済みデバイスを構成する](hybrid-azuread-join-manual-steps.md)必要があります。 
 
 ## <a name="data-storage"></a>データ ストレージ
 Enterprise State Roaming のデータは、Azure Active Directory のインスタンスに設定されている国/リージョンの値と最も適合する 1 つ以上の [Azure リージョン](https://azure.microsoft.com/regions/)でホストされます。 Enterprise State Roaming データは、北米、EMEA、および APAC という主な 3 つの地域リージョンに基づいてパーティション分割されます。 テナントの Enterprise State Roaming データは、地域リージョンでローカルに配置されますが、リージョン間ではレプリケートされません。  例:

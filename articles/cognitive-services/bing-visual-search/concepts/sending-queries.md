@@ -1,6 +1,6 @@
 ---
 title: Bing Visual Search API に検索クエリを送信する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API で使用される REST API のパラメーターについて説明します。
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: aahi
-ms.openlocfilehash: bd5118b42f32a521df8e3acfffb68391d4021791
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: b0b26c771f19edeb45fd4fb6aa3f24c335d0f51e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541525"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562710"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Bing Visual Search API に検索クエリを送信する
 
@@ -73,7 +73,7 @@ Visual Search のエンドポイントは、https:\/\/api.cognitive.microsoft.co
 
 要求で指定する必要があるクエリ パラメーターを次に示します。 少なくとも、`mkt` クエリ パラメーターを含める必要があります。
 
-| Name | 値 | Type | 必須 |
+| EnableAdfsAuthentication | 値 | Type | 必須 |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | 結果の取得元を表す 2 文字の国番号です。<br /><br /> このパラメーターを設定する場合は、[Accept-Language](#acceptlanguage) ヘッダーも指定する必要があります。 Bing は、言語の一覧で見つかった最初のサポートされている言語を使用し、その言語と指定された国番号を組み合わせて、結果を返す市場を決定します。 言語一覧にサポートされている言語が含まれない場合、Bing は要求をサポートする最も近い言語と市場を検索します。 または、指定された市場ではなく、集計された市場または既定の市場を使って結果を取得する場合もあります。<br /><br /> このクエリ パラメーターと `Accept-Language` クエリ パラメーターは、複数の言語を指定する場合にのみ使う必要があります。それ以外の場合は、`mkt` および `setLang` クエリ パラメーターを使う必要があります。<br /><br /> このパラメーターと [mkt](#mkt) クエリ パラメーターは相互に排他的なので、両方指定することはできません。 | string | いいえ       |
 | <a name="mkt" />mkt   | 結果の取得元の市場。 <br /><br /> **注:** 常に市場を指定することをお勧めします (わかっている場合)。 市場を指定すると、Bing が要求をルーティングして最適な応答を返すのに役立ちます。<br /><br /> このパラメーターと [cc](#cc) クエリ パラメーターは相互に排他的なので、両方指定することはできません。 | string | はい      |

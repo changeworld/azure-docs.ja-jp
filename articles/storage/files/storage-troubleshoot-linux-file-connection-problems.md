@@ -1,20 +1,18 @@
 ---
 title: Linux での Azure Files に関する問題のトラブルシューティング | Microsoft Docs
 description: Linux での Azure Files に関する問題のトラブルシューティング
-services: storage
 author: jeffpatt24
-tags: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 232b4ca2ee4f3137069ed155cc82a5c5e3251420
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 5c501e6c2bc1a30273682352a68565ccc897ff50
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807273"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699202"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
@@ -160,7 +158,7 @@ Azure ファイル共有が置かれたストレージ アカウントを参照�
 
 ### <a name="solution"></a>解決策
 
-開いているすべてのハンドルを SMB クライアントで閉じた後も問題が引き続き発生する場合は、次の手順を実行します。
+開いているすべてのハンドルを SMB クライアントで閉じた後も問題が引き続き発生する場合は、次の手順を行います。
 
 - [Get-AzStorageFileHandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell コマンドレットを使用して、開いているハンドルを表示します。
 

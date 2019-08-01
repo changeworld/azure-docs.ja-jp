@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 36b1fb96ac1dd89375588a65063ce729f6ac825d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1dc1d2780dcaf27e0c60cfffe84581c0278491dd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65794385"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566536"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースとは
 

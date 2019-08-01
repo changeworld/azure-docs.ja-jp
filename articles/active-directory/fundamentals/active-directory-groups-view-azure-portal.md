@@ -2,23 +2,23 @@
 title: グループとメンバーを表示するためのクイック スタート - Azure Active Directory | Microsoft Docs
 description: 組織のグループとそれらに割り当てられているメンバーを検索して表示する方法に関する手順。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eef6f7a363fe7b020a3ef18ae26799d7d5452ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bd3719e63b19066d61647b90ccae03ed841f3c6c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881012"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561901"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -34,13 +34,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 - Azure Active Directory テナントを作成する。 詳細については、[Azure Active Directory ポータルにアクセスし、新しいテナントを作成](active-directory-access-create-new-tenant.md)することに関するページを参照してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインする必要があります。
 
 ## <a name="create-a-new-group"></a>新しいグループを作成する 
 _MDM policy - West_ という名前の新しいグループを作成します。 グループの作成に関する詳細については、「[基本的なグループを作成し、メンバーを追加する方法](active-directory-groups-create-azure-portal.md)」を参照してください。
 
-1. **[Azure Active Directory]**、**[グループ]**、**[新しいグループ]** と選択します。
+1. **[Azure Active Directory]** 、 **[グループ]** 、 **[新しいグループ]** と選択します。
 
 2. **[グループ]** ページの入力を完了します。
     
@@ -50,12 +50,12 @@ _MDM policy - West_ という名前の新しいグループを作成します。
     
     - **メンバーシップの種類:** **[割り当て済み]** を選択します。
 
-3. **作成**を選択します。
+3. **作成** を選択します。
 
 ## <a name="create-a-new-user"></a>新しいユーザーを作成する
 _Alain Charon_ という名前の新しいユーザーを作成します。 ユーザーは、グループ メンバーとして追加される前に存在している必要があります。 ユーザーの作成に関する詳細については、[ユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページを参照してください。
 
-1. **[Azure Active Directory]**、**[ユーザー]**、**[新しいユーザー]** と選択します。
+1. **[Azure Active Directory]** 、 **[ユーザー]** 、 **[新しいユーザー]** と選択します。
 
 2. **[ユーザー]** ページの入力を完了します。
 
@@ -63,34 +63,34 @@ _Alain Charon_ という名前の新しいユーザーを作成します。 ユ�
 
     - **ユーザー名:** 「*alain\@contoso.com*」と入力します。
 
-3. 提供される自動生成されたパスワードを **[パスワード]** ボックスにコピーし、**[作成]** を選択します。
+3. 提供される自動生成されたパスワードを **[パスワード]** ボックスにコピーし、 **[作成]** を選択します。
 
 ## <a name="add-a-group-member"></a>グループ メンバーを追加する
 これでグループとユーザーを用意したので、_Alain Charon_ をメンバーとして _MDM policy - West_ グループに追加できます。 グループ メンバーの追加に関する詳細については、[グループ メンバーを追加または削除する方法](active-directory-groups-members-azure-portal.md)に関するページを参照してください。
 
-1. **[Azure Active Directory]** > **[グループ]** を選択します。
+1. **[Azure Active Directory]**  >  **[グループ]** を選択します。
 
-2. **[グループ - すべてのグループ]** ページから、**[MDM policy - West]** グループを検索して選択します。
+2. **[グループ - すべてのグループ]** ページから、 **[MDM policy - West]** グループを検索して選択します。
 
-3. **[MDM policy - West の概要]** ページで、**[管理]** 領域から **[メンバー]** を選択します。
+3. **[MDM policy - West の概要]** ページで、 **[管理]** 領域から **[メンバー]** を選択します。
 
-4. **[メンバーの追加]** を選択してから、**[Alain Charon]** を検索して選択します。
+4. **[メンバーの追加]** を選択してから、 **[Alain Charon]** を検索して選択します。
 
 5. **[選択]** を選択します。
 
 ## <a name="view-all-groups"></a>すべてのグループを表示する
 Azure portal の **[グループ - すべてのグループ]** ページでは、組織のすべてのグループを参照できます。
 
-- **[Azure Active Directory]** > **[グループ]** を選択します。
+- **[Azure Active Directory]**  >  **[グループ]** を選択します。
 
     **[グループ - すべてのグループ]** ページが開き、アクティブなグループがすべて表示されます。
 
     ![既存のグループをすべて表示している [グループ - すべてのグループ] ページ](media/active-directory-groups-view-azure-portal/groups-all-groups-blade-with-all-groups.png)
 
 ## <a name="search-for-the-group"></a>グループを検索する
-**[グループ - すべてのグループ]** ページを検索し、**[MDM policy - West]** グループを見つけます。
+**[グループ - すべてのグループ]** ページを検索し、 **[MDM policy - West]** グループを見つけます。
 
-1. **[グループ - すべてのグループ]** ページで、**[検索]** ボックスに「_MDM_」と入力します。
+1. **[グループ - すべてのグループ]** ページで、 **[検索]** ボックスに「_MDM_」と入力します。
 
     _[MDM policy - West]_ グループを含む検索結果が **[検索]** ボックスの下に表示されます。
 

@@ -2,23 +2,23 @@
 title: アーキテクチャの概要 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory テナントの概要、および Azure Active Directory を使用して Azure を管理する方法を説明します。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed332f32fa9fdc154c72e45914e642a9dad4993
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b124475b44778ef3bb0dc9eba0c59bb3a277b85a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055702"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562044"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Azure Active Directory のアーキテクチャの概要
 Azure Active Directory (Azure AD) を使用すると、Azure のサービスやリソースへのアクセスをそのユーザーのために安全に管理することができます。 Azure AD には、必要な ID 管理機能がすべて備わっています。 Azure AD の機能については、「[Azure Active Directory とは](active-directory-whatis.md)」を参照してください。

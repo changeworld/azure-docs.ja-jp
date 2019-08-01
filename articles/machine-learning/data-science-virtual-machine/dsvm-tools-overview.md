@@ -4,7 +4,7 @@ description: Data Science Virtual Machine にプレインストールされて�
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 0a503b82c07da62b5c5c768d8e1c92cb19e75aee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: d48c2b849f875289c89201f20478deebf4c00db9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236471"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565235"
 ---
 # <a name="get-to-know-your-data-science-virtual-machine"></a>データ サイエンス仮想マシンを理解する
 
@@ -30,7 +30,7 @@ ms.locfileid: "66236471"
 DSVM には、ローカルで実行できる Jupyter Notebook 形式の複数のコード サンプルとチュートリアルも含まれています。これらのサンプルの理解を助けるためのドキュメントもあります。 
 
 > [!NOTE]
-> [Azure Notebooks](/azure/notebooks/azure-notebooks-overview) を使用して、クラウドで Jupyter Notebook を作成、実行、共有できます。 [Data Science VM を Azure Notebooks に接続して](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)、利用可能なコンピューティング能力を拡張することができます。
+> [Azure Notebooks](../../notebooks/azure-notebooks-overview.md) を使用して、クラウドで Jupyter Notebook を作成、実行、共有できます。 [Data Science VM を Azure Notebooks に接続して](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)、利用可能なコンピューティング能力を拡張することができます。
 
 データ サイエンス VM に含まれるツール、プラットフォーム、ユーティリティ、およびサンプルは、次のセクションに分類されています。
 

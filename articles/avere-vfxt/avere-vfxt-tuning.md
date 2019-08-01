@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: f5e780dcab20befe19ca34020908eee93c290516
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 17e55dbe84cda87ee902c94e0024c9a3aad8b31b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409166"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698338"
 ---
 # <a name="cluster-tuning"></a>クラスター チューニング
 
@@ -46,8 +46,6 @@ ms.locfileid: "60409166"
 クラウド NAS またはゲートウェイのシナリオ (vFXT クラスターがクラウド コンテナーへの NAS スタイルのアクセスを提供するシナリオ) で vFXT クラスターとクラウド ストレージの間のより速いデータ速度を活用するために、お客様の担当者が、より積極的にデータをキャッシュからストレージ ボリュームにプッシュするように、以下のような設定の変更を推奨する場合があります。
 
 * クラスターとストレージ コンテナーの間の TCP 接続数を増やす
-* 書き込みがすぐに成功しない場合、より早く再試行するために、クラスターとストレージ間の通信の REST タイムアウト値を減らす  
-* 各バックエンド書き込みセグメントが 1 MB ではなく 8 MB のデータ チャンクを転送するように、セグメント サイズを増やす
 
 ## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>クラウド バーストまたはハイブリッド WAN の最適化
 

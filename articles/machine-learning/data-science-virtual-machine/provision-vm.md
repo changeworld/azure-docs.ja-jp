@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: 分析と機械学習を行うために、Azure でデータ サイエンス用仮想マシンを構成および作成します。
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
@@ -12,15 +12,15 @@ ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 57768fc463f5ea1d2f1ec386f3f0975758220013
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.author: vijetaj
+ms.openlocfilehash: dfb3e9f6390d4c80b8f3c37b87f2659c671fa823
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626395"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591824"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows Data Science Virtual Machine のプロビジョニング
 
@@ -106,7 +106,7 @@ DSVM インスタンスを作成するには:
 
 VM を作成してプロビジョニングした後は、前述の **[基本]** セクションで作成した管理者アカウントの資格情報を使って、リモート デスクトップを使用できます。 VM にインストールされて構成されたツールを使い始めることができます。 多くのツールには、スタート メニューのタイルとデスクトップ アイコンからアクセスできます。
 
-また、Data Science VM を Azure Notebooks に接続して、VM で Jupyter Notebook を実行し、無料のサービス レベルの制限をバイパスすることもできます。 詳細については、[Notebooks プロジェクトの管理と構成 - コンピューティング レベル](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)に関するページを参照してください。
+また、Data Science VM を Azure Notebooks に接続して、VM で Jupyter Notebook を実行し、無料のサービス レベルの制限をバイパスすることもできます。 詳細については、[Notebooks プロジェクトの管理と構成 - コンピューティング レベル](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)に関するページを参照してください。
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Microsoft データ サイエンス仮想マシンにインストールされているツール
 

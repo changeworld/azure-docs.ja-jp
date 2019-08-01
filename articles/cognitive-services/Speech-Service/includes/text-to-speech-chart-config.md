@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
 ms.openlocfilehash: e6c7dcd3015b0b8ab5b3c719ebd2397bc814b81a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67717214"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>テキスト読み上げ (サブチャート: charts/textToSpeech)

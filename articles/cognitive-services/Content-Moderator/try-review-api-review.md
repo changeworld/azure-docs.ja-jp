@@ -1,6 +1,6 @@
 ---
 title: REST API コンソールでモデレーション レビューを作成する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Azure Content Moderator Review API を使用して、人によるモデレーションのために画像レビューまたはテキスト レビューを作成します。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 254269ccedc92b9dfc164cc4665a8a8513682773
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 581ab488337cfecae3f5dd97610c7f92c75af8b5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607544"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564339"
 ---
 # <a name="create-human-reviews-rest"></a>人によるレビューの作成 (REST)
 

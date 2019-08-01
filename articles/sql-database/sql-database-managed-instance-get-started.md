@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
-manager: craigg
 ms.date: 05/07/2019
-ms.openlocfilehash: 27439758c9e2b909bb7179b69c7aade81429f502
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 646a602d7e6c47454f039a5f4f1981a60b56fa56
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070483"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567513"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>クイック スタート:Azure SQL Database マネージド インスタンスの作成
 

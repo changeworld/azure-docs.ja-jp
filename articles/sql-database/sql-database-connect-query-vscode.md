@@ -11,14 +11,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 8901855ad68a5edb4710853dcde9311216fa2d61
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d8f12e699c17787d897a7f5ed23eccdbf3659921
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357110"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569136"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: Visual Studio Code を使って Azure SQL Database に接続して照会する
 
@@ -89,7 +88,7 @@ Visual Studio Code で、言語モードを **[SQL]** に設定し、mssql コ�
 
 3. ステータス バーの右下隅の **[プレーン テキスト]** を選択します。
 
-4. 開かれた **[言語モードの選択]** ドロップダウン メニューで、**[SQL]** を選択します。
+4. 開かれた **[言語モードの選択]** ドロップダウン メニューで、 **[SQL]** を選択します。
 
 ## <a name="connect-to-your-database"></a>データベースに接続する
 
@@ -113,7 +112,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
    | **認証** | SQL ログイン| このチュートリアルでは、SQL 認証を使用します。 |
    | **ユーザー名** | ユーザー名 | サーバーを作成するために使用するサーバー管理者アカウントのユーザー名。 |
    | **[パスワード (SQL ログイン)]** | パスワード | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
-   | **[パスワードを保存しますか?]** | はい/いいえ | パスワードを毎回入力する手間を省くには、**[はい]** を選択します。 |
+   | **[パスワードを保存しますか?]** | はい/いいえ | パスワードを毎回入力する手間を省くには、 **[はい]** を選択します。 |
    | **[このプロファイルの名前を入力してください]** | プロファイル名 (**mySampleProfile** など) | 保存されたプロファイルによって、以降のログインでは、より速く接続できるようになります。 |
 
    成功した場合、プロファイルが作成され接続されたことを示す通知が表示されます。

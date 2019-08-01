@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87de721f596eb4148939c00bc4b4db270a87c24e
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: dea54f2e692174e12cb2dc1f0e0e0ed9fca127bc
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724081"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516570"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Azure アカウントのプロファイル情報を変更する
 
@@ -28,7 +28,7 @@ Microsoft では、サービス関連の通知とアカウントのレコメン�
 
 ## <a name="change-your-profile-information"></a>プロファイルの情報を変更する
 
-1. [Azure アカウント センター](https://account.azure.com/Profile)にサインインします。
+1. [Azure アカウント センター](https://account.azure.com/subscriptions)にサインインします。
 1. **[詳細の編集]** ボタンを選択し、 **[プロファイル]** 情報を更新します。
 
    ![Azure のプロファイル情報の例](./media/billing-how-to-change-azure-account-profile/profile.png)
@@ -72,7 +72,7 @@ Microsoft では、サービス関連の通知とアカウントのレコメン�
 
 次のいずれかの方法を使って、連絡先のメール アドレスを変更できます。
 
-* [Azure アカウント センター](https://account.azure.com/Profile)にサインインします。 **[詳細の編集]** を選択し、プロファイルのメール アドレスを更新します。 プロファイルのメール アドレスを更新しても、サインイン用のメール アドレスは更新されません。
+* [Azure アカウント センター](https://account.azure.com/subscriptions)にサインインします。 **[詳細の編集]** を選択し、プロファイルのメール アドレスを更新します。 プロファイルのメール アドレスを更新しても、サインイン用のメール アドレスは更新されません。
 
 * Azure portal の [[連絡先情報]](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) 領域に移動して、メール アドレスを入力します。 指定したアドレスで、サービスとマーケティングの通信を受け取ります。 Azure アカウント センターのプロファイルのメール アドレスが、一致するように自動的に更新されます。 プロファイルのメール アドレスを更新しても、サインイン用のメール アドレスは更新されません。
 

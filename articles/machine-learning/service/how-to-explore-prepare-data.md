@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: 80137c7f1ecebab4d2da0c4b7ba0ca9292dad22e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f680a1cb15edf0141897c74da3b7c7afa01acae0
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443965"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699113"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Dataset クラス (プレビュー) でデータを探索して準備する
 
@@ -168,7 +168,7 @@ ds_def.head(3)
 |1|10516598|False| 41.744107 |-87.664494|
 |2|10519196|False| (NaN)|(NaN)|
 
-次に、[`summarize()`](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) 関数を使って、緯度列の `MEAN` 値を確認します。 この関数は、集計レベルを指定するための `group_by_columns` パラメーターで、列の配列を受け取ります。 `summary_columns` パラメーターでは、現在の列名、新しい計算フィールド名、実行する `SummaryFunction` を指定する、`SummaryColumnsValue` 関数を受け入れます。
+次に、[`summarize()`](/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-ml-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow--summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) 関数を使って、緯度列の `MEAN` 値を確認します。 この関数は、集計レベルを指定するための `group_by_columns` パラメーターで、列の配列を受け取ります。 `summary_columns` パラメーターでは、現在の列名、新しい計算フィールド名、実行する `SummaryFunction` を指定する、`SummaryColumnsValue` 関数を受け入れます。
 
 ```Python
 lat_mean = ds_def.summarize(group_by_columns = ['Arrest'],

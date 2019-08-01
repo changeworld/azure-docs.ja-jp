@@ -3,18 +3,18 @@ title: 文のペアリングとアライン - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: トレーニングの実行時に、並列ドキュメントに存在する文はペアリングまたはアラインされます。 Custom Translator では、文とその文の翻訳を読み取ることで、一度に 1 文ずつ翻訳が学習されます。 次に、2 つの文に含まれる単語とフレーズが相互にアラインされます。
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f73c40704e10a8e2368ee1eb369ee3dccdf269ee
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9bc5c876da6bd2be1b22b389b819e51330b2e50
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448306"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595460"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>並列ドキュメントの文のペアリングとアライン
 

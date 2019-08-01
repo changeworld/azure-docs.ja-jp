@@ -1,5 +1,5 @@
 ---
-title: 言語のサポート
+title: 言語サポート - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS はサービス内にさまざまな機能を備えています。 すべての機能の言語パリティが同じであるわけではありません。 関心のある機能が、自分の対象とする言語カルチャでサポートされていることをご確認ください。 LUIS アプリはカルチャ固有で、一度設定したら変更できません。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 8f067bc005c4de9ddc87ed598b1717f8fbb29a6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26127f9f6ed718e33a77b986f2edb0d2dc81b2c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072375"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563568"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -30,7 +30,7 @@ LUIS はサービス内にさまざまな機能を備えています。 すべ�
 
 LUIS が理解する発話の言語を次に示します。
 
-| 言語 |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
+| 言語 |Locale  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
@@ -99,7 +99,7 @@ Speech ディクテーション モードの言語については、Speech の�
 
 次のカルチャには、カスタム トークナイザーのバージョンがあります。
 
-|カルチャ|バージョン|目的|
+|カルチャ|Version|目的|
 |--|--|--|
 |ドイツ語<br>`de-de`|1.0.0|複合語をその単一コンポーネントに分解しようとする機械学習ベースのトークナイザーを使用して分割することによって、単語をトークン化します。<br>ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは `Ich fahre einen kranken wagen` に変換されます。 `kranken` と `wagen` を別のエンティティとして独立にマークすることが可能になります。|
 |ドイツ語<br>`de-de`|1.0.2|スペースで分割することによって、単語をトークン化します。<br> ユーザーが発話として `Ich fahre einen krankenwagen` を入力した場合、それは 1 つのトークンのままになります。 そのため、`krankenwagen` は 1 つのエンティティとしてマークされます。 |

@@ -1,6 +1,6 @@
 ---
 title: Text Analytics API を呼び出す
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Text Analytics REST API を呼び出す方法について説明します。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e98979ac43945ebc9af82d5f89db01855429ca70
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 14d3864f654dac42566441b3729de0cf88482295
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304205"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697861"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -30,7 +30,7 @@ Text Analytics はステートレスであるため、管理するデータ資�
 
 ## <a name="prerequisites"></a>前提条件
 
-Text Analytics API を使用する [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)のほか、Cognitive Services にサインアップするときに生成される[エンドポイントとアクセス キー](text-analytics-how-to-access-key.md)が必要です。 
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 <a name="json-schema"></a>
 

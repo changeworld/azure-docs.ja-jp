@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: f708e5a3cd5bc0f11f8b0cfe79a791347c7a7a2b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7adced4088b1e155d6776f71e8f23a9eceae2297
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108961"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566797"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して単一データベースおよびプールされたデータベースに対するサーバーレベルのファイアウォール規則を作成する
 
@@ -27,7 +26,7 @@ ms.locfileid: "56108961"
 
 このクイック スタートでは、[Azure portal を使用した単一データベースの作成](sql-database-single-database-get-started.md)に関するページで作成したリソースを出発点として使用します。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -38,11 +37,11 @@ SQL Database サービスでは、単一データベースおよびプールさ�
 > [!NOTE]
 > SQL Database の通信は、ポート 1433 上で行われます。 企業ネットワーク内から接続しようとしても、ポート 1433 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 1433 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
 > [!IMPORTANT]
-> 0.0.0.0 のファイアウォール規則では、すべての Azure サービスがサーバーレベルのファイアウォール規則をパススルーし、サーバーを介して単一データベースまたはプールされたデータベースへの接続を試行できます。 仮想ネットワーク規則の使用については、「[IP 規則に代わる手段としての仮想ネットワーク規則](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules)」を参照してください。
+> 0\.0.0.0 のファイアウォール規則では、すべての Azure サービスがサーバーレベルのファイアウォール規則をパススルーし、サーバーを介して単一データベースまたはプールされたデータベースへの接続を試行できます。 仮想ネットワーク規則の使用については、「[IP 規則に代わる手段としての仮想ネットワーク規則](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules)」を参照してください。
 
 以下の手順に従い、クライアントの IP アドレスに対してサーバーレベルの IP ファイアウォール規則を作成し、その IP アドレスのみが SQL Database ファイアウォールを介して外部接続できるようにします。
 
-1. [前提条件の Azure SQL データベース](#prerequisites)のデプロイが完了したら、左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで **mySampleDatabase** を選択します。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20170824.database.windows.net** など) や追加の構成オプションが表示されます。
+1. [前提条件の Azure SQL データベース](#prerequisites)のデプロイが完了したら、左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで **mySampleDatabase** を選択します。 このデータベースの概要ページが開くと、完全修飾サーバー名 (**mynewserver-20170824.database.windows.net** など) や追加の構成オプションが表示されます。
 
 2. この完全修飾サーバー名をコピーします。これは他のクイック スタートでサーバーとそのデータベースに接続するときに使用します。
 
@@ -68,7 +67,7 @@ SQL Server Management Studio やその他の任意のツールを使用して、
 
 データベースに接続してクエリを実行するためのさまざまな方法を紹介した「[次のステップ](#next-steps)」に進む場合は、これらのリソースを保存しておいてください。 一方、このクイック スタートで作成したリソースを削除する場合は、次の手順に従います。
 
-1. Azure portal の左側のメニューで、**[リソース グループ]**、**[myResourceGroup]** の順に選択します。
+1. Azure portal の左側のメニューで、 **[リソース グループ]** 、 **[myResourceGroup]** の順に選択します。
 2. リソース グループのページで **[削除]** を選択し、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順

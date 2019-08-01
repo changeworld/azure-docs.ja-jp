@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb050eb527e65b4fd31f3251d37fef7d51e867e
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: ee3309bdd3629057d174866dde58ffd95e9e5ca8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655977"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562128"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -64,7 +64,7 @@ Windows デスクトップ オペレーティング システムを実行して�
 ### <a name="windows-down-level-devices"></a>ダウンレベルの Windows デバイス
 
 - Windows 8.1
-- Windows 7。 Windows 7 のサポート情報については、この記事「[Windows 7 のサポート終了が近づいています](https://www.microsoft.com/en-us/windowsforbusiness/end-of-windows-7-support)」を参照してください
+- Windows 7。 Windows 7 のサポート情報については、この記事「[Windows 7 のサポート終了が近づいています](https://www.microsoft.com/windowsforbusiness/end-of-windows-7-support)」を参照してください
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2
@@ -87,7 +87,7 @@ Hybrid Azure AD 参加は、FIPS に準拠している TPM ではサポートさ
 
 仮想マシン (VM) のスナップショットを利用して追加の VM を作成する場合は、そのスナップショットが、既にハイブリッド Azure AD 参加として Azure AD に登録されている VM からのものではないことを確認します。
 
-Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](https://docs.microsoft.com/azure/active-directory/devices/overview#getting-devices-in-azure-ad)である場合、Hybrid Azure AD 参加を有効にする前に、その状態の削除を検討することを強くお勧めします。 Windows 10 1809 リリース以降では、この二重状態を回避するために次の変更が行われています。
+Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](overview.md#getting-devices-in-azure-ad)である場合、Hybrid Azure AD 参加を有効にする前に、その状態の削除を検討することを強くお勧めします。 Windows 10 1809 リリース以降では、この二重状態を回避するために次の変更が行われています。
 
 - デバイスが Hybrid Azure AD 参加済みになった後、既存の Azure AD 登録済み状態は自動的に削除されます。
 - レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます。
@@ -121,7 +121,7 @@ Active Directory フェデレーション サービス (AD FS) を使用して�
 > [!NOTE]
 > Azure AD は、マネージド ドメインでのスマートカードや証明書をサポートしていません。
 
-バージョン 1.1.819.0 以降の Azure AD Connect には、ハイブリッド Azure AD 参加を構成するためのウィザードが用意されています。 このウィザードを使用すると、構成プロセスを大幅に簡略化できます。 Azure AD Connect の必要なバージョンをインストールすることができない場合は、[デバイス登録を手動で構成する方法](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual)に関するページを参照してください。 
+バージョン 1.1.819.0 以降の Azure AD Connect には、ハイブリッド Azure AD 参加を構成するためのウィザードが用意されています。 このウィザードを使用すると、構成プロセスを大幅に簡略化できます。 Azure AD Connect の必要なバージョンをインストールすることができない場合は、[デバイス登録を手動で構成する方法](hybrid-azuread-join-manual.md)に関するページを参照してください。 
 
 お使いの ID インフラストラクチャと一致するシナリオに基づいて、以下を参照してください。
 

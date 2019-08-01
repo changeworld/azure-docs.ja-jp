@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 611a52f43b5b0e076ae37df9df86479ec894c6f4
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: a610a2c01a1e935c55942b621e5b3799cb002fc0
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849165"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698640"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Azure Front Door Service 用の Web アプリケーション ファイアウォールで IP 制限規則を構成する
 この記事では、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使って、Azure Front Door Service 用の Web アプリケーション ファイアウォール (WAF) で IP 制限規則を構成する方法を示します。
@@ -40,7 +40,7 @@ Azure Front Door Service プロファイルを作成するには、「[クイッ
 
 ### <a name="create-a-waf-policy"></a>WAF ポリシーを作成する
 
-[az network waf-policy create](/cli/azure/ext/front-door/network/waf-policy?view=azure-cli-latest#ext-front-door-az-network-waf-policy-create) コマンドを使用して WAF ポリシーを作成します。 次の例で、ポリシー名 *IPAllowPolicyExampleCLI* を一意のポリシー名に置き換えます。
+[az network waf-policy create](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-create) コマンドを使用して WAF ポリシーを作成します。 次の例で、ポリシー名 *IPAllowPolicyExampleCLI* を一意のポリシー名に置き換えます。
 
 ```azurecli-interactive 
 az network waf-policy create \
@@ -50,7 +50,7 @@ az network waf-policy create \
   ```
 ### <a name="add-a-custom-ip-access-control-rule"></a>カスタム IP アクセス制御規則を追加する
 
-[az network waf-policy custom-rule create](/cli/azure/ext/front-door/network/waf-policy/custom-rule?view=azure-cli-latest#ext-front-door-az-network-waf-policy-custom-rule-create) コマンドを使用して、たった今作成した WAF ポリシーのカスタム IP アクセス制御規則を追加します。
+[az network waf-policy custom-rule create](/cli/azure/ext/front-door/network/front-door/waf-policy/rule?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-rule-create) コマンドを使用して、たった今作成した WAF ポリシーのカスタム IP アクセス制御規則を追加します。
 
 次の例で以下を実行します。
 -  *IPAllowPolicyExampleCLI* を、先ほど作成した一意のポリシーに置き換えます。
@@ -82,7 +82,7 @@ az network waf-policy custom-rule create \
 ```
     
 ### <a name="find-the-id-of-a-waf-policy"></a>WAF ポリシーの ID を見つける 
-[az network waf-policy show](/cli/azure/ext/front-door/network/waf-policy?view=azure-cli-latest#ext-front-door-az-network-waf-policy-show) コマンドを使用して、WAF ポリシーの ID を見つけます。 次の例の *IPAllowPolicyExampleCLI* を、先ほど作成した一意のポリシーに置き換えます。
+[az network waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) コマンドを使用して、WAF ポリシーの ID を見つけます。 次の例の *IPAllowPolicyExampleCLI* を、先ほど作成した一意のポリシーに置き換えます。
 
    ```azurecli
    az network waf-policy show \

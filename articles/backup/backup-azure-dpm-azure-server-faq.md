@@ -1,18 +1,19 @@
 ---
 title: Azure Backup Server と DPM に関する FAQ
 description: 一般的な質問への回答:Azure Backup Server と DPM。
-author: srinathvasireddy
-manager: sivan
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: srinathv
-ms.openlocfilehash: 54727daa158172ae44379b847c70602ca998c65d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 16cf4bcb6d83d22417d83d0b20ee564431f82840
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466410"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689335"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server と DPM - FAQ
 この記事では、Azure Backup Server と DPM についてよく寄せられる質問に回答します。

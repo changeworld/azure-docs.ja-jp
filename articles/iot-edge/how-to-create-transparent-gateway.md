@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 50d91c03ac33c32577ddf3838ed6b10024133333
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: a91860e9ec8d503a01d079925466093d19bbbccf
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414542"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698602"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
@@ -50,8 +50,8 @@ ms.locfileid: "68414542"
 ## <a name="prerequisites"></a>前提条件
 
 ゲートウェイとして構成する Azure IoT Edge デバイス。 次のいずれかのオペレーティング システム用の IoT Edge のインストール手順を使用します。
-  * [Windows](/how-to-install-iot-edge-windows.md)
-  * [Linux](/how-to-install-iot-edge-linux.md)
+  * [Windows](how-to-install-iot-edge-windows.md)
+  * [Linux](how-to-install-iot-edge-linux.md)
 
 この記事では、いくつかの時点で*ゲートウェイ ホスト名*を参照します。 ゲートウェイ ホスト名は、IoT Edge ゲートウェイ デバイス上の config.yaml ファイルの **hostname** パラメーターで宣言されます。 これは、この記事で証明書を作成するために使用され、ダウンストリーム デバイスの接続文字列で参照されます。 ゲートウェイ ホスト名は、DNS または host ファイル エントリのどちらかを使用して IP アドレスに解決できる必要があります。
 

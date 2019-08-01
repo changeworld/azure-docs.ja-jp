@@ -11,14 +11,13 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/28/2019
-ms.openlocfilehash: 52041ba3c057e871b60f283f293dd79a18f3b21e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3702c88d0a5cdc7aa1f854f71e3aee8a42d9c22c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508762"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569164"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>クイック スタート:Azure portal の SQL クエリ エディターを使用した接続とデータの照会
 

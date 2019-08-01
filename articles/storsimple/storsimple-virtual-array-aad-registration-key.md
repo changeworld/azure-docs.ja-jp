@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 080f49ca1078858462264f229e9acfee6fad17d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 723d5e969ba2f635724ffa50d562a7abaf936dcf
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61387658"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517135"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>StorSimple の新しい認証を使用する
 
 ## <a name="overview"></a>概要
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple Virtual Array に接続します。 これまで、StorSimple デバイス マネージャー サービスは、StorSimple デバイスへのサービスの認証に Access Control Service (ACS) を使用しました。 ACS メカニズムは間もなく非推奨となり、Azure Active Directory (AAD) 認証に置き換えられる予定です。
 

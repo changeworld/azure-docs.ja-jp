@@ -3,19 +3,18 @@ title: Azure SQL Database リリース ノート | Microsoft Docs
 description: Azure SQL Database サービスの新機能と機能強化、および Azure SQL Database のドキュメントの改善について説明します
 services: sql-database
 author: stevestein
-manager: craigg
 ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: be39aa63cf923e74dc7ed13ef78ba554ffd3b8a4
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 55e8121152aa281ab1025f1e8ded53c4b00c3d44
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67658031"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566946"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database リリース ノート
 

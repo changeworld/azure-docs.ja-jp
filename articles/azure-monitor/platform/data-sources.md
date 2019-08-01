@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: bwren
-ms.openlocfilehash: b77fb3ab5651147c59b9f0afd22a2d6d0159c90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 673575d480b78c151e68963e4a935fc72e7e578b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357449"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564751"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor で使用する監視データのソース
 Azure Monitor は、[ログ](data-platform-logs.md)と[メトリック](data-platform-metrics.md)を含む[一般的な監視データ プラットフォーム](data-platform.md)をベースにしています。 このプラットフォームにデータを収集すれば、Azure Monitor にある共通のツール一式を使用して、複数のリソースからのデータをまとめて分析することができます。 特定のシナリオに対応するために監視データは他の場所に送信されることがあるほか、一部のリソースについては、他の場所に書き込まれた後で、ログやメトリックに収集されることもあります。
@@ -101,7 +101,7 @@ Azure サブスクリプションの正常性と運用に関連したテレメ�
 | 宛先 | 説明 | リファレンス |
 |:---|:---|:---|
 | Azure Monitor メトリック | プラットフォームのメトリックは、何も構成しなくても、Azure Monitor メトリック データベースに書き込まれます。 プラットフォームのメトリックには、メトリックス エクスプローラーからアクセスします。  | [Azure メトリックス エクスプローラーの概要](metrics-getting-started.md)<br>[Azure Monitor のサポートされるメトリック](metrics-supported.md) |
-| Azure Monitor ログ | プラットフォームのメトリックをログにコピーし、Log Analytics を使用して傾向分析など各種の分析を実行します。 | [Azure Diagnostics から Log Analytics に直接](collect-azure-metrics-logs.md#azure-diagnostics-direct-to-log-analytics) |
+| Azure Monitor ログ | プラットフォームのメトリックをログにコピーし、Log Analytics を使用して傾向分析など各種の分析を実行します。 | [Azure Diagnostics から Log Analytics に直接](diagnostic-logs-stream-log-store.md) |
 | Event Hubs | Event Hubs を使用してメトリックを他の場所にストリーム配信します。 |[外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](stream-monitoring-data-event-hubs.md) |
 
 ### <a name="diagnostic-logs"></a>診断ログ

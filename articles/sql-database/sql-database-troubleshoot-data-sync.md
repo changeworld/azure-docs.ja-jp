@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f1345c7de3ef56473b8ebd16cea20cfe76f0380e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331198"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566277"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL データ同期に関する問題のトラブルシューティング
 

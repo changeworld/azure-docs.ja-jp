@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e76b5ecd3d6401c317f6500ec376fc25d3fa55b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d18f5b77d08a55bd06656a72cbc02c040b6f127
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331130"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566251"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法
 
@@ -103,7 +102,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 | 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
-| 1,000 |128852 |102917 |
+| 1000 |128852 |102917 |
 
 **Azure から Azure へ (同じデータ センター)** :
 
@@ -112,7 +111,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 | 1 |21 |26 |
 | 10 |220 |56 |
 | 100 |2145 |341 |
-| 1,000 |21479 |2756 |
+| 1000 |21479 |2756 |
 
 > [!NOTE]
 > 結果はベンチマークではありません。 「[この記事に記載されている時間測定の結果について](#note-about-timing-results-in-this-article)」をご覧ください。
@@ -199,7 +198,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 | 1 |124 |32 |
 | 10 |131 |25 |
 | 100 |338 |51 |
-| 1,000 |2615 |382 |
+| 1000 |2615 |382 |
 | 10000 |23830 |3586 |
 
 > [!NOTE]
@@ -239,7 +238,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 | 1 |433 |57 |
 | 10 |441 |32 |
 | 100 |636 |53 |
-| 1,000 |2535 |341 |
+| 1000 |2535 |341 |
 | 10000 |21605 |2737 |
 
 > [!NOTE]
@@ -328,7 +327,7 @@ SQL Database アプリケーションでバッチ処理を使用する場合の�
 
 | バッチ サイズ | 反復回数 | テーブル値パラメーター (ミリ秒) |
 | --- | --- | --- |
-| 1,000 |1 |347 |
+| 1000 |1 |347 |
 | 500 |2 |355 |
 | 100 |10 |465 |
 | 50 |20 |630 |

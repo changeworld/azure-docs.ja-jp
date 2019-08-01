@@ -1,27 +1,18 @@
 ---
 title: 接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する | Microsoft Docs
 description: Azure CLI を使用して、接続されていない Azure 管理ディスクと非管理対象ディスク (VHD/ページ BLOB) を見つけて削除する方法
-services: virtual-machines-linux
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 21c15a943974b80469eb9bd71cbaf11a7bc34b4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e17292b3cf6edf851415efb83430331c54fbf610
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721840"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695528"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する
 Azure で仮想マシン (VM) を削除するとき、既定では、その VM に接続されているディスクはいずれも削除されません。 この機能は、意図せず VM を削除したことによるデータ損失を防ぐのに役立ちます。 VM が削除された後、接続されていないディスクに対する料金の支払いが続きます。 この記事では、接続されていないディスクを見つけて削除し、不要なコストを削減する方法を示します。 

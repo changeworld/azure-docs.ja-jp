@@ -9,14 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: ead7ea91e172f608c5364e4d5164d2a71dbf2f5f
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f6e0b55ad2fbd9b4c45dbd1facaebd4750314c63
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297622"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567539"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の削除後にサブネットを削除する
 

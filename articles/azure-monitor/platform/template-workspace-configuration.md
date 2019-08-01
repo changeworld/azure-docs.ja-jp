@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: magoedte
-ms.openlocfilehash: a55a4b2f3045aac8dfe9e46a50074585ab3ef491
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 2acaba4e82f499ce1ca08a0ce17469ccb0a7e541
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827788"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698442"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
 
@@ -186,7 +186,6 @@ ms.locfileid: "67827788"
         "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
       }
     },
-    {
     "immediatePurgeDataOn30Days": {
       "type": "bool",
       "metadata": {

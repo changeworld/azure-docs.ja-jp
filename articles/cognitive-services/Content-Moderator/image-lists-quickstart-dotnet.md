@@ -1,6 +1,6 @@
 ---
 title: C# でカスタム リストと照らして画像を確認する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Content Moderator SDK for C# を使用し、カスタム画像リストと照らして画像をモデレートする方法。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 49f87b7cf3d7f46a66c0992edf25968b1dbae073
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 915b308b0129d714e51ac50b4230d8447b5c933a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603403"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564486"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>C# でカスタム画像リストを使用してモデレートする
 

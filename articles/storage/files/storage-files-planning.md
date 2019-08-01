@@ -1,19 +1,18 @@
 ---
 title: Azure Files のデプロイの計画 | Microsoft Docs
 description: Azure Files のデプロイを計画するときの考慮事項について説明します。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6282ce426b08c4ad9c44bead0bd4ec3d259f65fe
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 1845107998bfefde4c604744c3c09f5356010f7b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501429"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699703"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -98,7 +97,7 @@ Premium ファイル共有を作成する方法については、[Azure Premium 
 > [!IMPORTANT]
 > Premium ファイル共有は LRS でのみ使用できますが、ストレージ アカウントを提供するほとんどのリージョンで使用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。
 
-### <a name="provisioned-shares"></a>プロビジョニングされた共有
+#### <a name="provisioned-shares"></a>プロビジョニングされた共有
 
 Premium ファイル共有は、固定 GiB/IOPS/スループット比に基づいてプロビジョニングされます。 プロビジョニングされた GiB ごとに、共有は、1 IOPS と 0.1 MiB/秒のスループットから、共有ごとの最大限度まで発行されます。 最小許容プロビジョニングは 100 GiB で、最小の IOPS/スループットになります。
 
@@ -135,7 +134,7 @@ Premium ファイル共有は、固定 GiB/IOPS/スループット比に基づ�
 > [!NOTE]
 > ファイル共有のパフォーマンスは、他の多くの要因の中でも特にマシン ネットワークの制限、使用可能なネットワーク帯域幅、IO サイズ、並列処理の影響を受けます。 最大のパフォーマンス スケールを達成するには、負荷を複数の VM に分散します。 一般的なパフォーマンスの問題と回避策については、[トラブルシューティング ガイド](storage-troubleshooting-files-performance.md)に関するページを参照してください。
 
-### <a name="bursting"></a>バースト
+#### <a name="bursting"></a>バースト
 
 Premium ファイル共有は、最大 3 倍の IOPS をバーストできます。 バーストは自動化され、クレジット システムに基づいて動作します。 バーストはベスト エフォートで動作し、バースト限度は保証されるものではなく、ファイル共有は限度*まで*バーストすることができます。
 
@@ -208,6 +207,7 @@ Standard ファイル共有は、すべてのリージョンで 5 TiB まで利�
 
 |リージョン  |サポートされる冗長性  |既存のストレージ アカウントをサポートする  |
 |---------|---------|---------|
+|オーストラリア東部     |LRS|いいえ         |
 |東南アジア     |LRS|いいえ         |
 |西ヨーロッパ     |LRS、ZRS|いいえ         |
 |米国西部 2     |LRS、ZRS|いいえ         |

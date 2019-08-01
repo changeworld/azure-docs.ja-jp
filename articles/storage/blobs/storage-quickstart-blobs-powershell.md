@@ -8,16 +8,18 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: tamram
-ms.openlocfilehash: c0a5f7271628e11dbc8fa8b18b21358923f567cc
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: b0e9cc37f6269c3b878e16b754ec3a49aee13f72
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149402"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699001"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 Azure PowerShell モジュールを使用して Azure リソースを作成および管理します。 Azure リソースの作成または管理は、PowerShell のコマンド ラインまたはスクリプトから行うことができます。 このガイドでは、PowerShell を使用してローカル ディスクと Azure Blob Storage の間でファイルを転送する方法について説明します。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +39,7 @@ BLOB は常にコンテナーにアップロードされます。 コンピュ�
 
 ```powershell
 $containerName = "quickstartblobs"
-new-AzStoragecontainer -Name $containerName -Context $ctx -Permission blob
+New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 ```
 
 ## <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
@@ -50,13 +52,13 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 
 ```powershell
 # upload a file
-set-AzStorageblobcontent -File "D:\_TestImages\Image001.jpg" `
+Set-AzStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
   -Container $containerName `
   -Blob "Image001.jpg" `
   -Context $ctx 
 
 # upload another file
-set-AzStorageblobcontent -File "D:\_TestImages\Image002.png" `
+Set-AzStorageBlobContent -File "D:\_TestImages\Image002.png" `
   -Container $containerName `
   -Blob "Image002.png" `
   -Context $ctx
@@ -80,13 +82,13 @@ BLOB をローカル ディスクにダウンロードします。 ダウンロ�
 
 ```powershell
 # download first blob
-Get-AzStorageblobcontent -Blob "Image001.jpg" `
+Get-AzStorageBlobContent -Blob "Image001.jpg" `
   -Container $containerName `
   -Destination "D:\_TestImages\Downloads\" `
   -Context $ctx 
 
 # download another blob
-Get-AzStorageblobcontent -Blob "Image002.png" `
+Get-AzStorageBlobContent -Blob "Image002.png" `
   -Container $containerName `
   -Destination "D:\_TestImages\Downloads\" `
   -Context $ctx

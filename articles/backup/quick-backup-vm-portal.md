@@ -1,21 +1,22 @@
 ---
 title: Azure クイック スタート - Azure portal で VM をバックアップする
 description: Azure ポータルを使用して仮想マシンをバックアップする方法を説明します
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 7/17/2018
-ms.author: saurse
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 926859ffbeaf429df60e8f478e15e41ca70e23a6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 93c96e89824eccd9f75f84549da647598fe9aec6
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467195"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688453"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure で仮想マシンをバックアップする
 Azure ポータルで Azure のバックアップを作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスで Azure のバックアップを作成し、すべての関連リソースを構成できます。 データは、定期的にバックアップすることで保護することができます。 Azure Backup によって、geo 冗長 Recovery コンテナーに保存できる復元ポイントが作成されます。 この記事では、Azure ポータルを使用して仮想マシン (VM) をバックアップする方法を説明します。 

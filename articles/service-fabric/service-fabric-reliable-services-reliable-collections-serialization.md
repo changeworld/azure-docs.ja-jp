@@ -3,7 +3,7 @@ title: Azure Service Fabric での Reliable Collection オブジェクトのシ�
 description: Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: masnider,rajak
 ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
-ms.author: aljo
-ms.openlocfilehash: 2445b37e8152d8f55dad6eff057d273851dc2209
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.author: atsenthi
+ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340690"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599299"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 Reliable Collection では項目がレプリケートおよび永続化されるため、コンピューターの不具合や電源障害が発生しても、これらの項目が影響を受けることはありません。

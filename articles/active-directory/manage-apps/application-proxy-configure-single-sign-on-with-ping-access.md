@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a99d001f8cb59af3042ce8b6849a2cd9480e99
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: 0544ed0ff217b6e37cca22a1fc1e0048b30da462
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723996"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694231"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
@@ -94,7 +94,7 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
    1. **ヘッダーの URL を変換する**: **[いいえ]** を選択します。
 
    > [!NOTE]
-   > これが最初のアプリケーションの場合は、ポート 3000 の使用から始めてください。PingAccess 構成を変更した場合は、この設定を更新してください。 後続のアプリケーションの場合、ポートは PingAccess で構成したリスナーと一致する必要があります。 詳細については、[PingAccess のリスナー](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html)に関するページを参照してください。
+   > これが最初のアプリケーションの場合は、ポート 3000 の使用から始めてください。PingAccess 構成を変更した場合は、この設定を更新してください。 後続のアプリケーションの場合、ポートは PingAccess で構成したリスナーと一致する必要があります。 詳細については、[PingAccess のリスナー](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html)に関するページを参照してください。
 
 1. **[追加]** を選択します。 新しいアプリケーションの概要ページが表示されます。
 
@@ -232,7 +232,7 @@ PingAccess でカスタム要求を使用できるようにすることは省略
 
 これで、Azure Active Directory のすべてのセットアップ手順が完了したので、PingAccess の構成に進むことができます。
 
-このシナリオの PingAccess に関連した領域の詳しい手順については、Ping Identity のドキュメントを参照してください。 Ping Identity の Web サイトの [Microsoft Azure AD アプリケーション プロキシを使用した発行されたアプリケーションを保護するための PingAccess for Azure AD の構成](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)に関するページの手順に従ってください。
+このシナリオの PingAccess に関連した領域の詳しい手順については、Ping Identity のドキュメントを参照してください。 Ping Identity の Web サイトの [Microsoft Azure AD アプリケーション プロキシを使用した発行されたアプリケーションを保護するための PingAccess for Azure AD の構成](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)に関するページの手順に従ってください。
 
 これらの手順では、PingAccess をインストールして PingAccess アカウント (まだない場合) を設定できます。 続いて Azure AD OpenID Connect (OIDC) 接続を作成するには、Azure AD ポータルからコピーした **[ディレクトリ (テナント) ID]** 値でトークン プロバイダーを設定します。 次に、PingAccess に Web セッションを作成するために、 **[アプリケーション (クライアント) ID]** および `PingAccess key` の値を使用します。 その後、ID のマッピングをセットアップし、仮想ホスト、サイト、アプリケーションを作成することができます。
 
@@ -242,6 +242,6 @@ PingAccess でカスタム要求を使用できるようにすることは省略
 
 ## <a name="next-steps"></a>次の手順
 
-- [Microsoft Azure AD アプリケーション プロキシを使用した発行されたアプリケーションを保護するための PingAccess for Azure AD の構成](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
+- [Microsoft Azure AD アプリケーション プロキシを使用した発行されたアプリケーションを保護するための PingAccess for Azure AD の構成](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)
 - [Azure Active Directory でのアプリケーションへのシングル サインオン](what-is-single-sign-on.md)
 - [アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)

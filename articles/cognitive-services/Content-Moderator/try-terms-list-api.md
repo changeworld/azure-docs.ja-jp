@@ -1,6 +1,6 @@
 ---
 title: カスタム用語リストを使用してテキストをモデレートする - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Text Moderation API で使用するカスタム用語リストを作成するには、List Management API を使用します。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 28029fe92a207dba85e2ab5a22c08879b7172925
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a4e9b7925c2309a9682156934e9d94fa83c0d4b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097948"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564391"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>API コンソールでカスタム用語リストを使用してモデレートする
 

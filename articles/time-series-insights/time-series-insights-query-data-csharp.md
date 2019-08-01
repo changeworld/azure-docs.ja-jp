@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 250dd691c3ef3146d6768123de52bf0628b10e42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28f255c66c0e4a929914d037ee9c93b509a3602b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66728959"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677783"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>C# を使用して Azure Time Series Insights GA 環境からデータを照会する
 
@@ -43,6 +43,6 @@ NuGet パッケージ `Microsoft.IdentityModel.Clients.ActiveDirectory` と `New
 
 ## <a name="next-steps"></a>次の手順
 
-- クエリの詳細については、[クエリ API リファレンス](/rest/api/time-series-insights/ga-query-api)を参照してください。
+- クエリの詳細については、[クエリ API リファレンス](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)を参照してください。
 
 - Time Series Insights への [JavaScript シングルページ アプリの接続](tutorial-create-tsi-sample-spa.md)方法を参照してください。

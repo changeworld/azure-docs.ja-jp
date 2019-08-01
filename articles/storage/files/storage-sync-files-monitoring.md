@@ -1,19 +1,18 @@
 ---
 title: Azure File Sync 監視する | Microsoft Docs
 description: Azure File Sync の監視方法。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 86c4bf328430bbc623d8e493eec5db520d50ef82
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485974"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699283"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync の監視
 

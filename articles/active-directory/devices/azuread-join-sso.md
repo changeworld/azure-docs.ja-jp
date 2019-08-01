@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64e190e3e70459846b50e1f68158b0a5c458a216
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482068"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562177"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイス上でオンプレミス リソースへの SSO が機能するしくみ
 
@@ -51,7 +51,7 @@ SSO を使用すると、Azure AD 参加済みデバイスで次のことがで�
 - AD のメンバー サーバー上の UNC パスへのアクセス
 - Windows 統合セキュリティ用に構成された AD メンバーである Web サーバーへのアクセス 
 
-Windows デバイスからオンプレミス AD を管理する場合は、[Windows 10 用リモート サーバー管理ツール](https://www.microsoft.com/en-us/download/details.aspx?id=45520)をインストールします。
+Windows デバイスからオンプレミス AD を管理する場合は、[Windows 10 用リモート サーバー管理ツール](https://www.microsoft.com/download/details.aspx?id=45520)をインストールします。
 
 使用できるもの:
 

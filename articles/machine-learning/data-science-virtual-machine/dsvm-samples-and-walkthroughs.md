@@ -4,7 +4,7 @@ description: Data Science Virtual Machine で一般的なタスクとシナリ�
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: gokuma
-ms.openlocfilehash: e61f0f4ba30b29fea1b2fd5f2a2ab253d3a6710c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 57ebefb11d23c5ea18d5859ca494944e6a845e04
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502866"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565316"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>データ サイエンス仮想マシンに関するサンプル
 

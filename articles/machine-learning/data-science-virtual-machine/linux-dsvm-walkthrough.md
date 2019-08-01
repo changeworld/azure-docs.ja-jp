@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法。
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 editor: cgronlun
 ms.custom: seodec18
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: df05b2605f3553ce26447a4f8e2440002b75ec3a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516900"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68557346"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -37,7 +37,7 @@ Linux データ サイエンス仮想マシンを使用する前に、次を用�
 * **Azure サブスクリプション**。 Azure サブスクリプションがない場合は、「 [無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
 * [**Linux データ サイエンス VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 この VM のプロビジョニング方法については、「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md)」をご覧ください。
 * [X2Go](https://wiki.x2go.org/doku.php) がコンピューターにインストールされており、XFCE セッションが開かれている。 **X2Go クライアント**のインストールと構成については、「[X2Go クライアントのインストールと構成](linux-dsvm-intro.md#installing-and-configuring-x2go-client)」をご覧ください。
-* スクロールをスムーズにするために、VM の FireFox ブラウザーで about:config の gfx.xrender.enabled フラグを切り替えます。 詳細については、[こちら](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)を参照してください。 *mousewheel.enable_pixel_scrolling* を False に切り替えることも検討してください。 手順については、[こちら](https://support.mozilla.org/en-US/questions/981140)を参照してください。
+* スクロールをスムーズにするために、VM の FireFox ブラウザーで about:config の gfx.xrender.enabled フラグを切り替えます。 詳細については、[こちら](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)を参照してください。 *mousewheel.enable_pixel_scrolling* を False に切り替えることも検討してください。 手順については、[こちら](https://support.mozilla.org/questions/981140)を参照してください。
 * **AzureML アカウント**。 AzureML アカウントがない場合は、 [AzureML ホームページ](https://studio.azureml.net/)で新しいアカウントにサインアップしてください。 開始する際に役立つ Free レベルがあります。
 
 ## <a name="download-the-spambase-dataset"></a>spambase データセットをダウンロードする

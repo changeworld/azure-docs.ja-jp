@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5f41263113568cf9f3771119135be8db37119181
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dbcb0e87159efc7cc33101cdd5eee55afbdf3c10
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442937"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516633"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
@@ -174,14 +174,10 @@ Azure Maps では、キーベースの認証スキームが使用されます。
 
 Azure Maps API シリーズは現在、以下を除くすべての国と地域で利用できます。
 
-* アルゼンチン
 * 中国
-* インド
-* モロッコ
-* パキスタン
 * 韓国
 
-ご自身の現在の IP アドレスの場所がサポートされていない国と地域に含まれていないことを確認してください。
+ご自身の現在の IP アドレスの場所が上記のサポートされていない国に含まれていないことを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

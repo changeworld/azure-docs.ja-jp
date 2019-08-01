@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c7ffa432c9311ba9d4ecf4ba82c375e2dad988d0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 850748462f0273f2dfb1522d900ce9f1b2156d2a
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478544"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517065"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure Spatial Anchors に対する認証と承認
 
@@ -83,7 +83,7 @@ auto configuration = m_cloudSession.Configuration();
 configuration.AccountKey(LR"(MyAccountKey)");
 ```
 
-***
+---
 
 これを完了すると、SDK で、アクセス トークンのためのアカウント キーの交換と、アプリのトークンの必要なキャッシュが処理されるようになります。 
 
@@ -151,7 +151,7 @@ auto configuration = m_cloudSession.Configuration();
 configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
 ```
 
-***
+---
 
 ## <a name="azure-ad-service-authentication"></a>Azure AD サービス認証
 
@@ -242,7 +242,7 @@ auto configuration = m_cloudSession.Configuration();
 configuration.AccessToken(LR"(MyAccessToken)");
 ```
 
-***
+---
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 

@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa262c1c6a091575a70c5670b1c7a7c96e8e2128
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 9fdc30df1f932a35702b01d7146017c4ca82c91a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536902"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562317"
 ---
 # <a name="protected-web-api-code-configuration"></a>保護された Web API:コード構成
 
@@ -110,7 +110,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```CSharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
 {
-    // This is a Microsoft identity platform v2.0 web API.
+    // This is a Microsoft identity platform web API.
     options.Authority += "/v2.0";
 
     // The web API accepts as audiences both the Client ID (options.Audience) and api://{ClientID}.

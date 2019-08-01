@@ -1,26 +1,17 @@
 ---
 title: Windows 仮想マシンを非管理対象ディスクからマネージド ディスクに変換する - Azure Managed Disks |Microsoft Docs
 description: Resource Manager デプロイ モデルで PowerShell を使用して Windows VM を非管理対象ディスクからマネージド ディスクに変換する方法
-services: virtual-machines-windows
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 9cbee4f9f4f694510e852fe3790c8242ef346576
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: d43ad941fe68707bca873fa969fbc27806ba96a5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416054"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698804"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクからマネージド ディスクに変換します
 

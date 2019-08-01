@@ -12,20 +12,23 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/17/2017
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a931b303e40e41bc23e8b586e1d37e600625b1a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2d93099f0f76f173cc7e77ab7f24f27d1560835
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61415094"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516775"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介してファイル サーバーとしてセットアップする
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
 ## <a name="introduction"></a>はじめに
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 この記事では、初期セットアップ、StorSimple ファイル サーバーの登録、デバイス セットアップ、および SMB 共有の作成と接続の方法について説明します。 仮想アレイをファイル サーバーまたは iSCSI サーバーとして完全にデプロイするために必要なデプロイ チュートリアル シリーズの最後の記事です。
 
 セットアップと構成のプロセスは、完了するまでに約 10 分かかることがあります。 この記事に記載されている情報は、StorSimple Virtual Array のデプロイにのみ適用されます。 StorSimple 8000 シリーズ デバイスのデプロイについては、[Update 2 を実行している StorSimple 8000 シリーズ デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)に関するページをご覧ください。

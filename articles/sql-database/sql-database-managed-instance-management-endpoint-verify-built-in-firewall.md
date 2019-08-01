@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 774455a2901782ef52b213c6a13c17636e28b1a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c98b0fd5669140559b4840e157394c2e8c6086ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699656"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567432"
 ---
 # <a name="verifying-the-managed-instance-built-in-firewall"></a>Managed Instance のビルトイン ファイアウォールを検証する
 

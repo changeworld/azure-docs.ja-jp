@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/17/2019
 ms.author: kumud
-ms.openlocfilehash: 9fb7fc9b4f0e5af0847876ff41b6a307f8a09749
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 857b38693ca85d6ab397cbe850f0cd530fefc88c
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348046"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598392"
 ---
 # <a name="azure-networking"></a>Azure のネットワーク
 
@@ -38,7 +38,7 @@ Azure のネットワーク サービスにはさまざまなネットワーク�
 |[VPN Gateway](#vpngateway)|Azure Virtual Network とオンプレミスの場所の間で、パブリック インターネットを介して暗号化されたトラフィックを送信します。|<p>[サイト間接続](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[ポイント対サイト接続](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
 |[Virtual WAN](#virtualwan)|Azure へのブランチ接続および Azure 経由のブランチ接続の最適化と自動化を行います。 Azure リージョンは、ブランチの接続先として選択できるハブとして機能します。|<p>[サイト間接続](../virtual-wan/virtual-wan-site-to-site-portal.md)、[ExpressRoute 接続](../virtual-wan/virtual-wan-expressroute-portal.md)</p>|
 |[Azure DNS](#dns)|Microsoft Azure インフラストラクチャを使用して名前解決を行う DNS ドメインをホストします。|<p>[Azure DNS でドメインをホストする](../dns/dns-delegate-domain-azure-dns.md)</p><p>[Web アプリの DNS レコードを作成する](../dns/dns-web-sites-custom-domain.md)</p> <p>[Traffic Manager のエイリアス レコードを作成する](../dns/tutorial-alias-tm.md)</p> <p>[パブリック IP アドレスのエイリアス レコードを作成する](../dns/tutorial-alias-pip.md)</p> <p>[ゾーン リソース レコードのエイリアス レコードを作成する](../dns/tutorial-alias-rr.md)</p>|
-|[Azure Bastion (プレビュー)](#bastion)|Azure portal 内で直接 SSL 経由でのご自分の仮想マシンへのセキュリティで保護されたシームレスな RDP または SSH 接続を構成します。 Azure Bastion 経由で接続する場合、仮想マシンにパブリック IP アドレスは必要ありません。|<p>[Azure Bastion ホストを作成する](../bastion/bastion-create-host-portal.md)</p><p>[SSH を使用して Linux VM に接続する](../bastion/bastion-connect-vm-ssh.md)</p><p>[RDP を使用して Windows VM に接続する](/bastion/bastion-connect-vm-rdp.md)</p>|
+|[Azure Bastion (プレビュー)](#bastion)|Azure portal 内で直接 SSL 経由でのご自分の仮想マシンへのセキュリティで保護されたシームレスな RDP または SSH 接続を構成します。 Azure Bastion 経由で接続する場合、仮想マシンにパブリック IP アドレスは必要ありません。|<p>[Azure Bastion ホストを作成する](../bastion/bastion-create-host-portal.md)</p><p>[SSH を使用して Linux VM に接続する](../bastion/bastion-connect-vm-ssh.md)</p><p>[RDP を使用して Windows VM に接続する](../bastion/bastion-connect-vm-rdp.md)</p>|
 ||||
 
 
@@ -74,7 +74,7 @@ Azure Virtual WAN は、Azure への、または Azure 経由での、最適化�
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 詳細については、「[Azure DNS とは](../dns/dns-overview.md)」を参照してください。
 
 ### <a name="bastion"></a>Azure Bastion (プレビュー)
-Azure Bastion サービスは、お使いの仮想ネットワーク内でプロビジョニングする、新しいフル プラットフォームマネージド PaaS サービスです。 これは、Azure portal 内で直接 SSL を経由して、お使いの仮想マシンへの安全かつシームレスな RDP または SSH 接続を提供します。 Azure Bastion 経由で接続する場合、ご自分の仮想マシンにパブリック IP アドレスは必要ありません。 詳細については、[Azure Bastion](/bastion/bastion-overview.md) に関するページを参照してください。
+Azure Bastion サービスは、お使いの仮想ネットワーク内でプロビジョニングする、新しいフル プラットフォームマネージド PaaS サービスです。 これは、Azure portal 内で直接 SSL を経由して、お使いの仮想マシンへの安全かつシームレスな RDP または SSH 接続を提供します。 Azure Bastion 経由で接続する場合、ご自分の仮想マシンにパブリック IP アドレスは必要ありません。 詳細については、[Azure Bastion](../bastion/bastion-overview.md) に関するページを参照してください。
 
 ![Azure Bastion のアーキテクチャ](./media/networking-overview/architecture.png)
 

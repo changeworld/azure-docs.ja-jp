@@ -11,13 +11,12 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 03/12/2019
-manager: craigg
-ms.openlocfilehash: bc7274308b8a349d16866f107eac4a57e115be9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f36dcc9953134ac5dd24d3d762ac0dde9949ab7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160858"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561372"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用して Azure SQL Database に接続する
 

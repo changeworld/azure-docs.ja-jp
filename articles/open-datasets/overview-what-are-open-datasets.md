@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: b01ad5a4fd8808c1e841ba2fb47ea06ece011010
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7fa8562c466c81ebc05360bf06cdde1ee29bed9e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051041"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598974"
 ---
 # <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>Azure オープン データセット (プレビュー) とその使用方法
 
@@ -58,4 +58,4 @@ Azure アカウントでは、コードを使用するか Azure サービス イ
 ## <a name="next-steps"></a>次の手順
 * [サンプル ノートブック](samples.md)
 * [チュートリアル:ニューヨークのタクシー データでの回帰モデリング](tutorial-opendatasets-automl.md)
-* [オープン データセット用 Python SDK](https://aka.ms/open-datasets-api)
+* [オープン データセット用 Python SDK](/python/api/azureml-opendatasets/?view=azure-ml-py)

@@ -1,6 +1,6 @@
 ---
 title: .NET を使用してビデオ トランスクリプト レビューを作成する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: .NET 用の Azure Content Moderator SDK を使用してビデオ トランスクリプト レビューを作成する
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: fa782f687979f1d32cdf1c18bd08f6672e39adfe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bbdfb995ab6c819b0782a30e2ade4df4e5e0551
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868604"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564240"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET を使用してビデオ トランスクリプト レビューを作成する
 

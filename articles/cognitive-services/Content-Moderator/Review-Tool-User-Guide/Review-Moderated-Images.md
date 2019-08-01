@@ -1,6 +1,6 @@
 ---
 title: レビュー ツールを利用してコンテンツ レビューを使用する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: レビュー ツールで、モデレート担当者が Web ポータル内の画像をレビューできる方法を説明します。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: a482ecf4a0d321525ab7e392695d2c4c0eebeadc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b73436153427019a7d0d2c641f50592a385f19c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629045"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564542"
 ---
 # <a name="create-human-reviews"></a>目視レビューを作成する
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d24b533d4335e1a6142944ad42484bbe9d2bb96
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 447aa4f5bb3c274900beddcef8c89db88d3f3ee9
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477433"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688045"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
 
@@ -179,7 +179,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 ソリューションを使用して VM を順番に起動/停止する方法の詳細および追加の手順については、[VM を順番に起動/停止する](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)方法に関するページを参照してください。
 
-## <a name="403"></a>シナリオ:VM の起動/停止ジョブが "403 許可されていません" 状態で失敗する 
+## <a name="403"></a>シナリオ:VM の起動/停止ジョブが "403 許可されていません" 状態で失敗する
 
 ### <a name="issue"></a>問題
 
@@ -208,6 +208,9 @@ Start/Stop VMs during off-hours ソリューションの使用時に、このペ
 ### <a name="cause"></a>原因
 
 使用しているソリューションのバージョンが古いと、何度もエラーが発生する可能性があります。
+
+> [!NOTE]
+> Start/Stop VMs during off-hours ソリューションは、このソリューションのデプロイ時にご使用の Automation アカウントにインポートされた Azure モジュールを使用してテストされています。 このソリューションは現在、Azure モジュールの新しいバージョンでは動作しません。 これは、Start/Stop VMs during off-hours ソリューションの実行に使用する Automation アカウントのみに影響します。 「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」で説明しているように、ご使用の他の Automation アカウントでは引き続き Azure モジュールの新しいバージョンを使用できます。
 
 ### <a name="resolution"></a>解決策
 

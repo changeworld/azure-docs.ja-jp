@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: e9d1ce3bcd3bf958be0a7837e8416300af03f5a2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e5af3803ebb4cb0a88a082d3c85d0df68da8d1b8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449745"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566611"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>仮想コア サービス レベルの中から選択し、DTU サービス レベルから移行する
 

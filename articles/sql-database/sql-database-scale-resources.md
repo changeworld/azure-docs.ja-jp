@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: d8949f63dfa9b409cc14fe9c3bbed70f23a73c86
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: abc6f8a7a2fda3578bbcf2947188752f8f3373cd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357144"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566823"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>最小限のダウンタイムでデータベースのリソースを動的にスケーリングする
 

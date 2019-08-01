@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 1c6e77f3afc90a8c018296db80253d8b9a22159e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24b7f769be3f4db3c36412e162b5cda40e3ca959
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234105"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568708"
 ---
 # <a name="building-scalable-cloud-databases"></a>スケーラブルなクラウド データベースの構築
 

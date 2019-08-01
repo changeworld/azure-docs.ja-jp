@@ -1,18 +1,19 @@
 ---
 title: Azure Backup の Azure Monitor ログのデータ モデル
 description: この記事では、Azure Backup データに使用する Azure Monitor ログのデータ モデルの詳細について説明します。
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: adigan
-ms.openlocfilehash: 6563eefffee0ed8d9ce94c3e0a1e24b0d32314f0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 878e4e7508d82f78e82f1fd8bda69079d9468e9f
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466151"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689233"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
 
@@ -329,12 +330,12 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 
 |フィールド  |データ型  | 説明  |
 |---------|---------|----------|
-|BackupManagmentServerName_s     |Text         |バックアップ管理サーバーの名前        |
+|BackupManagementServerName_s     |Text         |バックアップ管理サーバーの名前        |
 |AzureBackupAgentVersion_s     |Text         |バックアップ管理サーバーの Azure Backup エージェントのバージョン          |
-|BackupManagmentServerVersion_s     |Text         |バックアップ管理サーバーのバージョン|
-|BackupManagmentServerOSVersion_s     |Text            |バックアップ管理サーバーの OS のバージョン|
+|BackupManagementServerVersion_s     |Text         |バックアップ管理サーバーのバージョン|
+|BackupManagementServerOSVersion_s     |Text            |バックアップ管理サーバーの OS のバージョン|
 |BackupManagementServerType_s     |Text         |バックアップ管理サーバーの種類 (MABS、SC DPM)|
-|BackupManagmentServerUniqueId_s     |Text         |バックアップ管理サーバーを一意に識別するフィールド       |
+|BackupManagementServerUniqueId_s     |Text         |バックアップ管理サーバーを一意に識別するフィールド       |
 
 ### <a name="preferredworkloadonvolume"></a>PreferredWorkloadOnVolume
 

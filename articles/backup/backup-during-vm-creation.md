@@ -1,18 +1,18 @@
 ---
 title: Azure Backup を使用した Azure VM の作成時にバックアップを有効にする
 description: Azure Backup を使用した Azure VM の作成時にバックアップを有効にする方法について説明します。
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.author: raynew
-ms.openlocfilehash: a19653f7ae3900fd7999f347ef4d3ef710be1430
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: dacurwin
+ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436344"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639721"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM の作成時にバックアップを有効にする
 

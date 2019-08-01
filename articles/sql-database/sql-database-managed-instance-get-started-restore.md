@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
-manager: craigg
 ms.date: 12/14/2018
-ms.openlocfilehash: 5cf9046a26edae3e6076ee1effe32930f15f4569
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8a3a325cbfced13b6e2ac4cb842b5d5f4f764750
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59356846"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567463"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>クイック スタート:データベースをマネージド インスタンスに復元する
 
@@ -47,7 +46,7 @@ ms.locfileid: "59356846"
 SSMS で、次の手順に従って、Wide World Importers データベースをマネージド インスタンスに復元します。 データベース バックアップ ファイルは、事前構成済みの Azure Blob Storage アカウントに格納されています。
 
 1. SMSS を開き、マネージド インスタンスに接続します。
-2. 左側のメニューから、マネージド インスタンスを右クリックし、**[新しいクエリ]** を選択して新しいクエリ ウィンドウを開きます。
+2. 左側のメニューから、マネージド インスタンスを右クリックし、 **[新しいクエリ]** を選択して新しいクエリ ウィンドウを開きます。
 3. 次の SQL スクリプトを実行します。このスクリプトでは、事前構成済みのストレージ アカウントと SAS キーを使用して、マネージド インスタンスに[資格情報を作成](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql)します。
 
    ```sql

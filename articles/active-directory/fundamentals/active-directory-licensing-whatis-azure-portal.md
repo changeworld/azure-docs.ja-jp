@@ -3,23 +3,23 @@ title: グループベースのライセンスとは - Azure Active Directory | 
 description: Azure Active Directory のグループベースのライセンスについて、使用方法やベスト プラクティスなどを説明します。
 services: active-directory
 keywords: Azure AD のライセンス
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/29/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41c8edf3985e77e0f67a54013d1b59abbaf72f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a89443062f7d5cc697e83cc4039d0f3a47ad3077
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297560"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561839"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 

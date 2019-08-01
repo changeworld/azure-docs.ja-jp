@@ -9,12 +9,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: a77cf20be30361abf6590dbd53bdb07c327eb9d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e46064076fb5d38fbde94bd4bb7e5dfbcff7e3b4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204988"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68556152"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
@@ -26,6 +26,8 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
 > [!NOTE]
 >  現在、Storage Analytics のログは、BLOB、Queue、Table の各サービスでのみ使用できます。 ただし、Premium ストレージ アカウントは、サポートされません。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="requests-logged-in-logging"></a>ログで記録される要求
 ### <a name="logging-authenticated-requests"></a>認証済み要求のログ記録

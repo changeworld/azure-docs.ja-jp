@@ -1,5 +1,6 @@
 ---
 title: テキストのモデレート - Content Moderator
+titleSuffix: Azure Cognitive Services
 description: 混入が考えられる不要なテキスト、PII、および条件のカスタム一覧に対して、テキストのモデレートを使用します。
 services: cognitive-services
 author: sanjeev3
@@ -9,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e1d5224d8dc86c82624613b0d2a984ceef3ae5bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607121"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564374"
 ---
 # <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
 

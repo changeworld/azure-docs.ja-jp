@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc5f35aedd52e206433afb0f556bc1cde8296232
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fdfd39527ccd298b78ef2c4c895d1f667d8d33b
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237473"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677616"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>C# を使用して Azure Time Series Insights プレビュー環境からデータを照会する
 
@@ -42,6 +42,6 @@ ms.locfileid: "66237473"
 
 ## <a name="next-steps"></a>次の手順
 
-- クエリの詳細については、[クエリ API リファレンス](/rest/api/time-series-insights/preview-query)を参照してください。
+- クエリの詳細については、[クエリ API リファレンス](https://docs.microsoft.com/rest/api/time-series-insights/preview-query)を参照してください。
 
 - Time Series Insights への [JavaScript シングルページ アプリの接続](tutorial-create-tsi-sample-spa.md)方法を参照してください。

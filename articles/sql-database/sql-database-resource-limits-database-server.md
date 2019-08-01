@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-manager: craigg
 ms.date: 04/18/2019
-ms.openlocfilehash: 4e4c0a6cd25587b33c06526b57e6acdbebb69c8b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 175f694cbe46f871349136c9ce91888b6de48d21
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445641"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566849"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL Database サーバーの SQL Database リソース制限
 

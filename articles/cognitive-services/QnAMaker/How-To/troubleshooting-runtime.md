@@ -1,6 +1,6 @@
 ---
 title: トラブルシューティング - QnAMaker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: QnA Maker は、ユーザーの Azure アカウントでホストされるコンポーネントで構成されます。 デバッグを行うには、ユーザーは QnA Maker Azure リソースを操作するか、QnA Maker サポート チームに設定に関する追加情報を提供する必要がある場合があります。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5b65a121e895b4855c7c69d2b67e7055c88ddd08
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 94a3dfd9a3560321d7e2753ccd385fb1a5323107
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466059"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559928"
 ---
 # <a name="troubleshooting-tips-to-support-the-qna-maker-service-and-runtime"></a>QnA Maker のサービスとランタイムをサポートするためのトラブルシューティングのヒント
 QnA Maker は、ユーザーの Azure アカウントでホストされるコンポーネントで構成されます。 デバッグを行うには、ユーザーは QnA Maker Azure リソースを操作するか、QnA Maker サポート チームに設定に関する追加情報を提供する必要がある場合があります。

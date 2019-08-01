@@ -9,14 +9,13 @@ ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1d556c82f47868f4ee06694e23092f10029d619d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: d516dc51a25cbef92ff9fa22012773507b528a99
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839843"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569632"
 ---
 # <a name="accelerated-database-recovery"></a>高速データベース復旧
 

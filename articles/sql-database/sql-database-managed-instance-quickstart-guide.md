@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
-manager: craigg
 ms.date: 07/11/2019
-ms.openlocfilehash: c2a468507c598c38b0b6b3b9f9c6a58a6ef4eff2
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 97f7393622311103d94d3067205f902e3eec6843
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67826964"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567356"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスの概要
 

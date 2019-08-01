@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a5f6189ee000550c4a46d778f571a0272da491d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 27b95b82f996368bca312be1c6ada25a7219b66e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276667"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562290"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Web API を呼び出す Web API - コードの構成
 
@@ -34,7 +34,7 @@ Web API を登録した後は、アプリケーションのコードを構成す
 
 ```CSharp
 /// <summary>
-/// Protects the web API with Microsoft Identity Platform v2.0 (AAD v2.0)
+/// Protects the web API with Microsoft Identity Platform (a.k.k AAD v2.0)
 /// This supposes that the configuration files have a section named "AzureAD"
 /// </summary>
 /// <param name="services">Service collection to which to add authentication</param>

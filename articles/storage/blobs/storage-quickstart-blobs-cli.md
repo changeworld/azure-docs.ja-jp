@@ -9,16 +9,18 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
 ms.reviewer: seguler
-ms.openlocfilehash: 0b74876d153a775993678ad50ed311c524480f76
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6a0aef9b2fc7a99183ebd6991691245731e00200
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149591"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565954"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 Azure CLI は、Azure リソースを管理するための、Azure のコマンド ライン エクスペリエンスです。 ブラウザーで、Azure Cloud Shell を使用して操作することができます。 また、macOS、Linux、または Windows 上にインストールし、コマンド ラインから実行することもできます。 このクイック スタートでは、Azure CLI を使用して、Azure Blob Storage との間でデータをアップロードおよびダウンロードする方法を説明します。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -117,4 +119,4 @@ az group delete --name myResourceGroup
 このクイックスタートでは、ローカル ディスクと Azure Blob Storage のコンテナーとの間でファイルを転送する方法について学習しました。 Azure Storage の BLOB の他の処理について詳しくは、Azure Blob Storage の使用に関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [方法:Azure CLI での Blob Storage の操作](storage-how-to-use-blobs-cli.md)
+> [方法: Azure CLI での Blob Storage の操作](storage-how-to-use-blobs-cli.md)

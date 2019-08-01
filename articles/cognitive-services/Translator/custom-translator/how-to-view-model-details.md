@@ -3,18 +3,18 @@ title: モデルの詳細を表示する - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: どのプロジェクトでも、[モデル] タブには各モデルの詳細が表示されます。たとえば、モデル名、モデルの状態、BLEU スコア、トレーニング、チューニング、テストの文の数などです。
 author: swmachan
-manager: christw
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 92f5275b85b4a257e8841f43424d356db702cacd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 64f446c3b331c1aa6ddaae9081b7f61943f74ab2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442468"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595569"
 ---
 # <a name="view-model-details"></a>モデルの詳細の表示
 

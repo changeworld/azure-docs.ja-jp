@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 60839fa06d8436d3d2202d1d97735c42c5768e9e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5549d016978e8bf9491c3745e335e3c4c793212c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331480"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566329"
 ---
 # <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>単一またはプールされたデータベース用の Azure SQL Database の脅威検出
 

@@ -9,16 +9,18 @@ ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 96da1f8903896f932fa63aa8497eaff69f893559
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 12507ba87148bef6378542feb4ebde3b1c291a72
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489660"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565923"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>クイック スタート:Java Storage SDK V10 を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 このクイックスタートでは、新しい Java Storage SDK を使用して、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 この新しい Java SDK では、リアクティブ プログラミング モデルと、非同期処理が用意されている RxJava を使用します。 RxJava の詳細については、[Java VM のリアクティブ拡張機能に関するページ](https://github.com/ReactiveX/RxJava)を参照してください。 
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

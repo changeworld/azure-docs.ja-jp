@@ -1,19 +1,18 @@
 ---
 title: Azure Files の概要 | Microsoft Docs
 description: 業界標準の SMB プロトコルを使用してクラウド上にネットワーク ファイル共有を作成および使用できるサービス、Azure Files の概要。
-services: storage
 author: roygara
 ms.service: storage
 ms.topic: overview
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 075a3cea426fd5f54ef142648754fa9a9e2810b4
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 7fe95a35a6b78bae66521a09d63d376ec8757479
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508322"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699674"
 ---
 # <a name="what-is-azure-files"></a>Azure Files とは
 Azure Files はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにある Windows、macOS、および Linux に同時にマウントできます。 さらに、高速アクセスするため、Azure File Sync を使用して、データが使用されている場所の近くの Windows サーバーに Azure ファイル共有をキャッシュできます。

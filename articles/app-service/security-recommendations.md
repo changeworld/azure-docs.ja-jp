@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 53cd2b1dde1158a1c46f798e57911dad110dc87e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 71d564dac43328371e9d34684f2d13a26616a99d
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718250"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609777"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service のセキュリティに関する推奨事項
 
-この記事には、Azure App Service のセキュリティに関する推奨事項が含まれています。 これらの推奨事項を実装することにより、お客様は共同責任モデルに記載されたセキュリティに関する義務を果たすことができ、お客様の Web アプリ ソリューションの全体的なセキュリティが向上します。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みについて詳しくは、「[Azure インフラストラクチャのセキュリティ](../security/azure-security-infrastructure.md)」をご覧ください。
+この記事には、Azure App Service のセキュリティに関する推奨事項が含まれています。 これらの推奨事項を実装することにより、お客様は共同責任モデルに記載されたセキュリティに関する義務を果たすことができ、お客様の Web アプリ ソリューションの全体的なセキュリティが向上します。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みについて詳しくは、「[Azure インフラストラクチャのセキュリティ](../security/fundamentals/infrastructure.md)」をご覧ください。
 
 ## <a name="general"></a>全般
 
@@ -62,4 +62,4 @@ ms.locfileid: "67718250"
 
 ## <a name="next-steps"></a>次の手順
 
-アプリケーション プロバイダーに追加のセキュリティ要件があるかどうかを確認する。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](../security/abstract-develop-secure-apps.md)を参照してください。
+アプリケーション プロバイダーに追加のセキュリティ要件があるかどうかを確認する。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](../security/fundamentals/abstract-develop-secure-apps.md)を参照してください。

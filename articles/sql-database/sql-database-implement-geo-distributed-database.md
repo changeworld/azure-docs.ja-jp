@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a5be3efa5544e47f40ab9f0a31f6658b134977e2
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4a21fe3ed15d1dc2550f6863611b27d2b36c5c51
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444519"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568095"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>チュートリアル:地理的に分散したデータベースの実装
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
-manager: craigg
 ms.date: 07/16/2019
-ms.openlocfilehash: 4087137a0e6f4f35c6401de67bd0bca1fe5b421b
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 32da92fb3c5573d24eb18a01a4ede8fe6a0bf36a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278100"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567445"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 

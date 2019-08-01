@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f18995d46ca61ae68a7b226bbfc9a286e73a0b
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 4288ff4aba216a214d10c56ba448fc03e13b81f2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65544107"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693941"
 ---
 # <a name="logging"></a>ログの記録
 問題の診断や詳細の提示に役立つログ メッセージを生成する Microsoft Authentication Library (MSAL) アプリ。 アプリは数行のコードでログ記録を構成でき、詳細レベルと、個人データと組織のデータをログ記録するかどうかを制御するカスタム コントロールを備えています。 MSAL ログ コールバックを設定し、認証の問題が生じたときにユーザーがログを送信するための方法を提供することをお勧めします。
@@ -69,7 +69,7 @@ class Program
                       .Build();
 
     AuthenticationResult result = application.AcquireTokenInteractive(scopes)
-                                             .ExecuteAsnc();
+                                             .ExecuteAsync().Result;
   }
  }
  ```

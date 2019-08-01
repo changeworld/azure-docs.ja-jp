@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: garyericson
-ms.author: garye
+author: xiaoharper
+ms.author: amlstudiodocs
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: e29e4713cb01fcf894e09631ecca91ff07587751
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e0a355852be57a3b0869a6bf094e98a89f49f28
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751658"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514916"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>ダウンロード可能なインフォグラフィック:機械学習の基礎とアルゴリズムの使用例
 
@@ -35,7 +35,7 @@ ms.locfileid: "60751658"
 
 * 機械学習の各種アルゴリズムの詳細とその使用方法、問題解決に適したアルゴリズムの選択方法については、「[Azure Machine Learning Studio のアルゴリズムの選択方法](algorithm-choice.md)」を参照してください。
 * Machine Learning Studio で使用可能な機械学習アルゴリズムのカテゴリ別の一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの[モデルの初期化][initialize-model]に関するページを参照してください。
-* Machine Learning Studio で使用できるすべてのアルゴリズムとモジュールの一覧 (アルファベット順) については、Machine Learning Studio アルゴリズムとモジュールのヘルプの「[Machine Learning Studio モジュールの一覧 (アルファベット順)][a-z-list]」をご覧ください。
+* Machine Learning Studio で使用できるすべてのアルゴリズムとモジュールの一覧 (アルファベット順) については、Machine Learning Studio アルゴリズムとモジュールのヘルプの「[A-Z list of Machine Learning Studio modules (Machine Learning Studio モジュールの一覧 (アルファベット順))][a-z-list]」を参照してください。
 * Azure AI Gallery とそこで利用できる、コミュニティで生成された多くのリソースの概要については、「[Azure AI ギャラリーでリソースなどを共有し、発見する](gallery-how-to-use-contribute-publish.md)」をご覧ください。
 
 

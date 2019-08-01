@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02a6ddef294c4872f2d7e50e8940ecbb4b4b7bc4
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ba53049d580f3f90499dc0471b9ac981f4a374f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491594"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562167"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>セキュリティで保護された Azure マネージド ワークステーションを理解する
 
@@ -25,7 +25,7 @@ ms.locfileid: "67491594"
 このドキュメントでは、特権アクセス ワークステーション (PAW) として広く知られている、セュリティで保護されたワークステーションを構築するために必要なものについて説明します。 この記事には、最初のセキュリティ制御を設定するための詳細な手順も含まれています。 このガイダンスでは、クラウド ベースのテクノロジがどのようにサービスを管理することができるかについて説明します。 これは、Windows 10RS5、Microsoft Defender Advanced Threat Protection (ATP)、Azure Active Directory、および Intune で導入されたセキュリティ機能に依存します。
 
 > [!NOTE]
-> この記事では、セキュリティで保護されたワークステーションの概念とその重要性について説明します。 概念について既によくご存知で、デプロイにスキップする場合は、「[セキュリティで保護されたワークステーションをデプロイする](https://docs.microsoft.com/azure/active-directory/devices/howto-azure-managed-workstation)」をご覧ください。
+> この記事では、セキュリティで保護されたワークステーションの概念とその重要性について説明します。 概念について既によくご存知で、デプロイにスキップする場合は、「[セキュリティで保護されたワークステーションをデプロイする](howto-azure-managed-workstation.md)」をご覧ください。
 
 ## <a name="why-secure-workstation-access-is-important"></a>セキュリティで保護されたワークステーションのアクセスが重要な理由
 

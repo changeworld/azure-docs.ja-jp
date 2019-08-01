@@ -1,6 +1,6 @@
 ---
 title: よく寄せられる質問 - Computer Vision
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services の Computer Vision API についてよく寄せられる質問とその回答を紹介します。
 services: cognitive-services
 author: KellyDF
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: fce3242746d47809c4fbbb1448453369d6460a9b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203238"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564594"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API についてよく寄せられる質問
 

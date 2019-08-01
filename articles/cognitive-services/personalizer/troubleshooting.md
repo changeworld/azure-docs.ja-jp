@@ -2,20 +2,20 @@
 title: トラブルシューティング - Personalizer
 titleSuffix: Azure Cognitive Services
 description: この記事では、Personalizer のトラブルシューティングに関する質問を確認できます。
-author: edjez
+author: diberry
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: article
 ms.date: 06/15/2019
-ms.author: edjez
-ms.openlocfilehash: be6119d96b89622f45db1099a47e858a5893c2cb
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 7f7a6a08b86d21287c644f6a851d465d97f32e74
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722249"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663682"
 ---
 # <a name="personalizer-troubleshooting"></a>Personalizer のトラブルシューティング
 

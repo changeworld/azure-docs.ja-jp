@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 11/09/2018
-ms.openlocfilehash: 5f4a1962f90d54001f315827c1243e929344e3d7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 5a09b8e589b0d4ae9daa3bbd32c38f4946d16d0e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274004"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567623"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にアプリケーションを接続する
 
@@ -138,7 +137,7 @@ Azure App Service をマネージド インスタンスに接続する場合の�
 
 マネージド インスタンスに接続しようとする場合、ツールとドライバーの最小バージョンとして次をお勧めします。
 
-| ドライバーとツール | バージョン |
+| ドライバーとツール | Version |
 | --- | --- |
 |.NET Framework | 4.6.1 (または .NET Core) |
 |ODBC ドライバー| v17 |

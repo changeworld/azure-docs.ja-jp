@@ -1,6 +1,6 @@
 ---
 title: プロジェクトを 3.0 API に移行する方法
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 以前のバージョンの API から 3.0 API に Custom Vision のプロジェクトを移行する方法について説明します。
 services: cognitive-services
 author: areddish
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
-ms.openlocfilehash: 9dd473aadd7123cafc27209f5c34322fdbcffb71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 353fc0a2d8396def17b8e23d9a1c685c755349c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60816461"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560900"
 ---
 # <a name="migrate-to-the-30-api"></a>3\.0 API への移行
 

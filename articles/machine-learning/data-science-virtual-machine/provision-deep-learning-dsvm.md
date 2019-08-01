@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: 分析と機械学習を行うために、Azure でディープ ラーニング データ サイエンス用仮想マシンを構成および作成します。
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
@@ -12,15 +12,15 @@ ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 318df03c7c4447d051dfa396098462c0f8bbf423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: vijetaj
+ms.openlocfilehash: b9d0f9aead6e2cedd3ca0884273bac0106a925a0
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410433"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591914"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Azure でディープ ラーニング 仮想マシンをプロビジョニングする 
 
@@ -68,7 +68,7 @@ VM を作成した後は、前述の **[基本]** セクションで作成した
 
 ### <a name="linux-edition"></a>Linux エディション
 
-VM を作成したら、SSH を使用してサインインできます。 手順 3 の「[**基本**](#basics)」セクションで作成したアカウントの資格情報をテキスト シェル インターフェイスに使用します。 Azure VM への SSH 接続の詳細については、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](/azure/virtual-machines/linux/use-remote-desktop)」を参照してください。 Windows クライアントでは、[Putty](https://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。 
+VM を作成したら、SSH を使用してサインインできます。 手順 3 の「[**基本**](#basics)」セクションで作成したアカウントの資格情報をテキスト シェル インターフェイスに使用します。 Azure VM への SSH 接続の詳細については、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../../virtual-machines/linux/use-remote-desktop.md)」を参照してください。 Windows クライアントでは、[Putty](https://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。 
 
 > [!NOTE]
 > テストでは、パフォーマンスは、X11 転送よりも、X2Go クライアントの方が優れていました。 グラフィカル デスクトップ インターフェイスでは、X2Go クライアントを使用することをお勧めします。
