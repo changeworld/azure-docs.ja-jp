@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01b9f7f74077737ea95a56bbe81f440db425bf0c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66126803"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698448"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum Proof-of-Authority Consortium
 
@@ -216,7 +216,7 @@ VM ユーザー名|デプロイされた各 VM の管理者ユーザー名 (英�
 認証の種類|仮想マシンに対して認証する方法。|[パスワード] または [SSH 公開キー]|パスワード
 パスワード ([認証の種類] = [パスワード])|デプロイされた各仮想マシンの管理者アカウントのパスワード。  パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。 VM にはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|12 - 72 文字|NA
 SSH キー ([認証の種類] = [公開キー])|リモート ログインに使用される Secure Shell キー。||NA
-サブスクリプション|コンソーシアム ネットワークをデプロイするサブスクリプション||NA
+Subscription|コンソーシアム ネットワークをデプロイするサブスクリプション||NA
 リソース グループ|コンソーシアム ネットワークをデプロイするリソース グループ||NA
 Location|リソース グループの Azure リージョン。||NA
 
@@ -764,7 +764,7 @@ Truffle には、スマート コントラクトのデバッグに使用でき�
 
 #### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>送信しなかった多数のトランザクションがネットワーク上にあることに気づきました。 これはどこから生じたものですか?
 
-[パーソナル API](https://web3js.readthedocs.io/en/1.0/web3-eth-personal.html) をロック解除することは安全ではありません。 ボットはロック解除された Ethereum アカウントを待機しており、資金を流出させようと試みます。 ボットはこれらのアカウントが実際の ether を含んでいると想定し、最初に残高を奪おうとします。 ネットワーク上でパーソナル API を有効にしないでください。 その代わりに、MetaMask などのウォレットを使用して手動で、または[プログラムによるスマート コントラクトの操作](#programmatically-interacting-with-a-smart-contract)セクションの説明に従ってプログラムで、トランザクションに事前に署名します。
+[パーソナル API](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-personal.html) をロック解除することは安全ではありません。 ボットはロック解除された Ethereum アカウントを待機しており、資金を流出させようと試みます。 ボットはこれらのアカウントが実際の ether を含んでいると想定し、最初に残高を奪おうとします。 ネットワーク上でパーソナル API を有効にしないでください。 その代わりに、MetaMask などのウォレットを使用して手動で、または[プログラムによるスマート コントラクトの操作](#programmatically-interacting-with-a-smart-contract)セクションの説明に従ってプログラムで、トランザクションに事前に署名します。
 
 #### <a name="how-to-ssh-onto-a-vm"></a>VM に SSH 接続するにはどうすればよいですか?
 
