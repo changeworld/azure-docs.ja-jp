@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh
-ms.openlocfilehash: 5fa3b723b184e6c20ee678e7ef750d6a9d18f2c6
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 29418ec8ce12033dc576c61a73301dec13d457cc
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592849"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698032"
 ---
 # <a name="quickstart-url-preview-with-java"></a>クイック スタート:Java での URL Preview
 
@@ -23,7 +23,7 @@ ms.locfileid: "67592849"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
+[Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) で無料試用版のアクセス キーを取得します
 
 ## <a name="request"></a>Request 
 

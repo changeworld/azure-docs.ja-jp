@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:LUIS ポータルを使用してアプリをデプロイする
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: LUIS アプリがチャット ボットなどのクライアント アプリケーションに発話予測を返す準備ができた後にアプリを予測エンドポイントにデプロイする方法を学習します。 このクイックスタートでは、アプリケーションのデプロイ方法を学習するために、予測エンドポイント リソースを作成し、そのリソースをアプリに割り当て、アプリをトレーニングし、アプリを公開します。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: db2b543fa8e5429cc8d50d7789b03239173f563d
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154522"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564069"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
 
@@ -40,11 +40,11 @@ LUIS アプリがクライアント アプリケーション (チャット ボ�
 
    |Setting|値|目的|
    |--|--|--|
-   |Name|`my-cognitive-service-resource`|Azure リソースの名前。 LUIS ポータル内でアプリにリソースを割り当てるときに、この名前が必要です。|
-   |サブスクリプション|該当するサブスクリプション|ご自分のアカウントに関連付けられているサブスクリプションの 1 つを選択します。|
+   |EnableAdfsAuthentication|`my-cognitive-service-resource`|Azure リソースの名前。 LUIS ポータル内でアプリにリソースを割り当てるときに、この名前が必要です。|
+   |Subscription|該当するサブスクリプション|ご自分のアカウントに関連付けられているサブスクリプションの 1 つを選択します。|
    |Location|**[米国西部]**|このリソースの Azure リージョン。|
-   |価格レベル |**S0**|このリソースの既定の価格レベル。|
-   |リソース グループ|`my-cognitive-service-resource-group`|お使いのすべての Cognitive Services リソース向けに新しいリソース グループを作成します。 リソースの作業が完了したら、リソース グループを削除して、サブスクリプションをクリーンアップできます。 |
+   |価格レベル|**S0**|このリソースの既定の価格レベル。|
+   |Resource group|`my-cognitive-service-resource-group`|お使いのすべての Cognitive Services リソース向けに新しいリソース グループを作成します。 リソースの作業が完了したら、リソース グループを削除して、サブスクリプションをクリーンアップできます。 |
    | | | |
 
    ![Azure API の選択](./media/get-started-portal-deploy-app/create-cognitive-services-resource.png)
@@ -59,9 +59,9 @@ LUIS 向けの新しいリソースを作成するたびに、LUIS アプリに�
 
 1. [LUIS ポータル](https://www.luis.ai)にサインインし、アプリの一覧から **myEnglishApp** アプリを選択します。
 
-1. 右上のメニューの **[管理]** を選択し、**[Keys and endpoints]\(キーとエンドポイント\)** を選択します。
+1. 右上のメニューの **[管理]** を選択し、 **[Keys and endpoints]\(キーとエンドポイント\)** を選択します。
 
-1. LUIS を追加するには、**[Assign Resource +]\(リソースの割り当て +)** を選択します。
+1. LUIS を追加するには、 **[Assign Resource +]\(リソースの割り当て +)** を選択します。
 
    [![ご自分のアプリにリソースを割り当てる](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
 
@@ -77,9 +77,9 @@ LUIS 向けの新しいリソースを作成するたびに、LUIS アプリに�
 
 1. アプリがトレーニングされていない場合は、右上のメニューから **[Train]\(トレーニング\)** を選択します。
 
-1. 上部のメニューから **[Publish]\(公開\)** を選択します。 既定の環境設定をそのまま使用し、**[Publish]\(公開\)** を選択します。
+1. 上部のメニューから **[Publish]\(公開\)** を選択します。 既定の環境設定をそのまま使用し、 **[Publish]\(公開\)** を選択します。
 
-1. ブラウザー ウィンドウの上部に緑の成功通知バーが表示されたら、**[Refer to the list of endpoints]\(エンドポイントの一覧を参照する\)** を選択します。
+1. ブラウザー ウィンドウの上部に緑の成功通知バーが表示されたら、 **[Refer to the list of endpoints]\(エンドポイントの一覧を参照する\)** を選択します。
 
    ![ブラウザー上の正常に公開されたアプリの通知バー](./media/get-started-portal-deploy-app/successfully-published-notification.png)
 
@@ -121,7 +121,7 @@ LUIS 向けの新しいリソースを作成するたびに、LUIS アプリに�
     }
     ```
 
-    この応答からは、前のチュートリアルの既定のテスト ウィンドウよりも多くの情報が得られます。 テスト ウィンドウにこれと同じレベルの情報を表示する場合は、アプリを公開する必要があります。 アプリが公開されたら、テスト ウィンドウで、**[Compare with published]\(公開済みのものと比較\)** を選択します。 公開済みのテスト ウィンドウの **[Show JSON view]\(JSON ビューの表示\)** を使用して、前の手順と同じ JSON を表示します。 このようにして、現在作業しているアプリと、エンドポイントに公開されているアプリを比較できます。
+    この応答からは、前のチュートリアルの既定のテスト ウィンドウよりも多くの情報が得られます。 テスト ウィンドウにこれと同じレベルの情報を表示する場合は、アプリを公開する必要があります。 アプリが公開されたら、テスト ウィンドウで、 **[Compare with published]\(公開済みのものと比較\)** を選択します。 公開済みのテスト ウィンドウの **[Show JSON view]\(JSON ビューの表示\)** を使用して、前の手順と同じ JSON を表示します。 このようにして、現在作業しているアプリと、エンドポイントに公開されているアプリを比較できます。
 
     [![アプリの現在編集中のバージョンと公開済みのバージョンを比較する](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: a8a216a7d2ce048ed5131997df762942998aaa88
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 66effb095edf7927a38fca53b2ff317e9bad468e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444124"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619613"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>カスタム イメージを使用して Linux で関数を作成する
 
@@ -190,7 +190,7 @@ v1.0.0: digest: sha256:be080d80770df71234eb893fbe4d... size: 1796
 
 ## <a name="create-a-premium-plan"></a>Premium プランを作成する
 
-カスタム Functions コンテナーの Linux ホスティングは、[専用 (App Service) プラン](functions-scale.md#app-service-plan)および [Premium プラン](functions-scale.md#premium-plan)でサポートされています。 このチュートリアルでは、必要に応じて拡張できる Premium プランを使用します。 ホスティングについて詳しくは、「[Azure Functions のホスティング プランの比較](functions-scale.md)」をご覧ください。
+カスタム Functions コンテナーの Linux ホスティングは、[専用 (App Service) プラン](functions-scale.md#app-service-plan)および [Premium プラン](functions-premium-plan.md#features)でサポートされています。 このチュートリアルでは、必要に応じて拡張できる Premium プランを使用します。 ホスティングについて詳しくは、「[Azure Functions のホスティング プランの比較](functions-scale.md)」をご覧ください。
 
 次の例では、**Elastic Premium 1** 価格レベル (`--sku EP1`) の `myPremiumPlan` という名前の Premium プランを米国西部リージョン (`-location WestUS`) で Linux コンテナー (`--is-linux`) に作成します。
 

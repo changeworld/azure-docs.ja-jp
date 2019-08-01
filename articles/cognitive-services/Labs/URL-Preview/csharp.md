@@ -10,26 +10,26 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 2cb3f1de803b8549a88866da1042f4f32609a601
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: ec0c8ad06480cd596365f43f13ca57fb242d364c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65827161"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698045"
 ---
 # <a name="quickstart-url-preview-query-in-c"></a>クイック スタート:C# での URL プレビュー クエリ
 
-次の C# の例では、SwiftKey Web サイト (https://swiftkey.com/en) の URL プレビューを作成します。
+次の C# の例では、SwiftKey Web サイト (https://swiftkey.com/en ) の URL プレビューを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
 このコードを Windows 上で実行するには、[Visual Studio 2017 以降](https://www.visualstudio.com/downloads/) が必要です。 (無料の Community Edition でかまいません。)
 
-[Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
+[Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) で無料試用版のアクセス キーを取得します
 
 ## <a name="code-scenario"></a>シナリオのコードを書く
 
-次の C# コードでは、SwiftKey Web サイト (https://swiftkey.com/en) の URL プレビューを作成します。 
+次の C# コードでは、SwiftKey Web サイト (https://swiftkey.com/en ) の URL プレビューを作成します。 
 
 これは、次の手順で実装されます。
 1. エンドポイントとプレビューするクエリ URL を指定する変数を宣言します。  

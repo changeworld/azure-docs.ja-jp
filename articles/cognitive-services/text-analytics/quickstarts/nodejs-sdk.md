@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/11/2019
+ms.date: 07/30/2019
 ms.author: shthowse
-ms.openlocfilehash: 7e43d53c0916cf7fdc684c9e044e632015662c3b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b8a713d58d5753e04de050e0bc961b5e8388123
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080933"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697476"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Node.js を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
@@ -33,7 +33,7 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-また、サインアップ中に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。
+また、サインアップ中に生成された[エンドポイントとアクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)も必要です。
 
 ## <a name="create-a-nodejs-application-and-install-the-sdk"></a>Node.js アプリケーションの作成と SDK のインストール
 

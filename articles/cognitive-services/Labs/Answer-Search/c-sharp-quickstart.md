@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: dce13636cce299098c988ccea3a059f0f0e12acd
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: fe6758cb6b8d120862cbbe593574360c1bc7b17b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823259"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698118"
 ---
 # <a name="quickstart-project-answer-search-query-in-c"></a>クイック スタート:C# での Project Answer Search クエリ
 
@@ -25,7 +25,7 @@ ms.locfileid: "65823259"
 
 このコードを Windows 上で実行するには、[Visual Studio 2017 以降](https://www.visualstudio.com/downloads/) が必要です。 (無料の Community Edition でかまいません。)
 
-[Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
+[Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) で無料試用版のアクセス キーを取得します
 
 ## <a name="code-scenario"></a>シナリオのコードを書く
 

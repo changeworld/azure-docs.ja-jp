@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:ナレッジ ベースを作成する - REST (Go) - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: この Go REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: b4a399901b8bba1c97a5571d3db4ef1cbe713a6c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a6ee10c998af564630ae1aefd01ec2f4e360abf8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254192"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563046"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-go"></a>クイック スタート:Go を使用して QnA Maker のナレッジ ベースを作成する
 

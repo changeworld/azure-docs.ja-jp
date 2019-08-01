@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:ナレッジ ベースから回答を取得する - REST (Node.js) - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: この Node.js REST ベースのクイック スタートでは、ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 389d6ed369de513125a2bcd0d0de881f524dcd82
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e80f852a48d7da9480e6c0eddc675e6bcf524eb7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791544"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562965"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Node.js を使用してナレッジ ベースから質問の回答を取得する
 
@@ -23,10 +23,10 @@ ms.locfileid: "65791544"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Node.js](https://nodejs.org/en/download/)
+* [Node.JS](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、**[リソース管理]** の **[キー]** を選択します。 
-* **[発行]** ページの設定。 発行済みのナレッジ ベースがない場合は、空のナレッジ ベースを作成し、**[設定]** ページでナレッジ ベースをインポートして発行してください。 [こちらの基本的なナレッジ ベース](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)をダウンロードしてご使用ください。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、 **[リソース管理]** の **[キー]** を選択します。 
+* **[発行]** ページの設定。 発行済みのナレッジ ベースがない場合は、空のナレッジ ベースを作成し、 **[設定]** ページでナレッジ ベースをインポートして発行してください。 [こちらの基本的なナレッジ ベース](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)をダウンロードしてご使用ください。 
 
     発行ページの設定には、POST ルート値、Host 値、EndpointKey 値が含まれています。 
 
@@ -46,7 +46,7 @@ VSCode を開き、`get-answer.js` という名前の新しいファイルを作
 
 ## <a name="add-the-required-constants"></a>必要な定数を追加する
 
-次に、QnA Maker にアクセスするために必要な定数を追加します。 これらの値は、ナレッジ ベースを発行した後、**[発行]** ページにあります。 
+次に、QnA Maker にアクセスするために必要な定数を追加します。 これらの値は、ナレッジ ベースを発行した後、 **[発行]** ページにあります。 
 
 [!code-nodejs[Add the required constants](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=6-22 "Add the required constants")]
 

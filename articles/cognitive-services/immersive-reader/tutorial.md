@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 73f9ee597682cc995f3a2cc783abeee92bf11bd2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ea9728ac54ae357925bd666ffecf270172137f77
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501134"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688299"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>チュートリアル:Immersive Reader の起動 (Node.js)
 
@@ -126,7 +126,7 @@ router.get('/subdomain', function (req, res) {
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>イマーシブ リーダーを起動してサンプル コンテンツを表示する
 
-1. _views\layout.pug_ を開いて、`head` タグと `body` タグの間に次のコードを追加します。 これらの `script` タグによって、[Immersive Reader SDK](https://github.com/Microsoft/immersive-reader-sdk) と jQuery が読み込まれます。
+1. _views\layout.pug_ を開いて、`head` タグと `body` タグの間に次のコードを追加します。 これらの `script` タグによって、[Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と jQuery が読み込まれます。
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
@@ -264,5 +264,5 @@ router.get('/subdomain', function (req, res) {
 
 ## <a name="next-steps"></a>次の手順
 
-* [Immersive Reader SDK](https://github.com/Microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する
-* [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples/advanced-csharp) でコード サンプルを見る
+* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する
+* [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/advanced-csharp) でコード サンプルを見る

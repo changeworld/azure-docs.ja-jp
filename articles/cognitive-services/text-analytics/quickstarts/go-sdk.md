@@ -8,14 +8,14 @@ manager: assafi
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/23/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 44def29292bc882fdaa08ff76667742756f178b8
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: d3644022e1877369368953b9f147c64aaae2d459
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299451"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697643"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>クイック スタート:Go SDK を使用して Text Analytics サービスを呼び出す 
 <a name="HOLTop"></a>
@@ -27,8 +27,6 @@ ms.locfileid: "66299451"
 * Text Analytics [SDK for Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-また、サインアップ中に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。
 
 ## <a name="set-up-a-new-project"></a>新しいプロジェクトの設定
 

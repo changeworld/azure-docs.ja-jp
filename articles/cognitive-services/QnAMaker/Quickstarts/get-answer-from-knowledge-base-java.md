@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:ナレッジ ベースから回答を取得する - REST (Java) - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: この Java REST ベースのクイック スタートでは、ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 6d49ce71959f80a96731046475c3de5737bf7d46
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 2b888a275b08c7011c6e0b60ff1cd1d70b42f465
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796186"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559834"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Java を使用してナレッジ ベースから質問の回答を取得する
 
@@ -29,8 +29,8 @@ ms.locfileid: "65796186"
     * httpcore-4.4.6.jar
     * commons-logging-1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、**[リソース管理]** の **[キー]** を選択します。 
-* **[発行]** ページの設定。 発行済みのナレッジ ベースがない場合は、空のナレッジ ベースを作成し、**[設定]** ページでナレッジ ベースをインポートして発行してください。 [こちらの基本的なナレッジ ベース](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)をダウンロードしてご使用ください。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、 **[リソース管理]** の **[キー]** を選択します。 
+* **[発行]** ページの設定。 発行済みのナレッジ ベースがない場合は、空のナレッジ ベースを作成し、 **[設定]** ページでナレッジ ベースをインポートして発行してください。 [こちらの基本的なナレッジ ベース](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)をダウンロードしてご使用ください。 
 
     発行ページの設定には、POST ルート値、Host 値、EndpointKey 値が含まれています。 
 
@@ -60,7 +60,7 @@ public class GetAnswer {
 
 ## <a name="add-the-required-constants"></a>必要な定数を追加する
 
-`GetAnswer.java` クラスの上部に、QnA Maker にアクセスするために必要な定数を追加します。 これらの値は、ナレッジ ベースを発行した後、**[発行]** ページにあります。  
+`GetAnswer.java` クラスの上部に、QnA Maker にアクセスするために必要な定数を追加します。 これらの値は、ナレッジ ベースを発行した後、 **[発行]** ページにあります。  
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=26-42 "Add the required constants")]
 

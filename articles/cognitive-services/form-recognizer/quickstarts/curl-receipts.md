@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 0178e53e6a7fde54b988e710a1cabbb7ded69b22
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f8edb27e52d843d9a765aed8da9b75417cf357d1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592576"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552564"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>クイック スタート:cURL で Form Recognizer REST API を使用してレシートのデータを抽出する
 

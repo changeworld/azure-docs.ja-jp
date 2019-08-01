@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.author: tasharm
-ms.openlocfilehash: 688887826fa803b616ca737bc8558aa17ed80e37
-ms.sourcegitcommit: 8c49df11910a8ed8259f377217a9ffcd892ae0ae
+ms.openlocfilehash: 3f18b77fe436328e79df351b9c5edcf6dc289ad7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66297766"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697264"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-ruby-sdk"></a>クイック スタート:Ruby SDK を使用して Text Analytics サービスを呼び出す
 
@@ -32,8 +32,6 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 * Text Analytics [SDK for Ruby](https://rubygems.org/gems/azure_cognitiveservices_textanalytics)
  
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。 
 
 <a name="RubyProject"></a>
 

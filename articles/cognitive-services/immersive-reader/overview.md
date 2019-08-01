@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 4500b6213c549ab9977fe8f2d849ffa8089d04b9
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f84804fbad07357706e786fc449fce9e42a5ec4a
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718436"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688327"
 ---
 # <a name="what-is-immersive-reader"></a>Immersive Reader とは
 
@@ -60,5 +60,5 @@ Immersive Reader は、Immersive Reader SDK を使用して Web アプリケー�
 Immersive Reader を使ってみましょう。
 
 * [クイック スタート](./quickstart.md)を始める
-* [GitHub 上の Immersive Reader SDK](https://github.com/Microsoft/immersive-reader-sdk) を探索する
+* [GitHub 上の Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) を探索する
 * [Immersive Reader SDK リファレンス](./reference.md)を読む

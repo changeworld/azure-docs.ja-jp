@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 2eaf07e041998efade1091861144a2dc4d78c56d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c0da596e84ac827b55affd5545c516e7623980f5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860305"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698059"
 ---
 # <a name="quickstart-project-answer-search-with-python"></a>クイック スタート: Python での Project Answer Search
 
@@ -23,7 +23,7 @@ Python での次の例では、"Rock of Gibraltar".に関する情報の要求�
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
+[Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) で無料試用版のアクセス キーを取得します
 
 この例では Python 3.6.4 を使用しています
 

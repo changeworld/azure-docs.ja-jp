@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Custom Vision SDK for Go を使って画像分類プロジェクトを作成する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Go SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
 services: cognitive-services
 author: areddish
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: areddish
-ms.openlocfilehash: f2b43349b1060739b44ab34f463300dd62569252
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f21ab53b3beeead8cbd4ba781cd54b23420661f0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276470"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561014"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>クイック スタート:Custom Vision Go SDK を使って画像分類プロジェクトを作成する
 

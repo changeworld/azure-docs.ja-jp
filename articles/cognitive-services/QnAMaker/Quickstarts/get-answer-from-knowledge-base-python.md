@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:ナレッジ ベースから回答を取得する - REST (Python) - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: この Python REST ベースのクイック スタートでは、ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/24/2019
 ms.author: diberry
-ms.openlocfilehash: 0f40ed3d0b77662e23e4042f568b8241cef130c6
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 71f2cc3ef028d66be7049cf85003d51e6b4baef3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66256606"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559801"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Python を使用してナレッジ ベースから質問の回答を取得する
 

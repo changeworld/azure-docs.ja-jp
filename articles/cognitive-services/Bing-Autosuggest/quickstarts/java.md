@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: a789c8278abc49602db1ee58354f96a04c2d111d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 0a0fb1e8f79587223ae1f25ca8a7e0d6dc7cc5bb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405333"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565839"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>クイック スタート:Bing Autosuggest REST API と Java で検索クエリの候補を表示する
 

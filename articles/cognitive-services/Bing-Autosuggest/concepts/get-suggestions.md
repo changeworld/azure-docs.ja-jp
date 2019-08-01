@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing Autosuggest API の使用方法を説明します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 1fc2311610dd45025ddb71cdf005a6e87381ee95
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 428756588152ff2c2deb2e3a123bcffc1cb605d7
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405387"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68517029"
 ---
 # <a name="suggesting-query-terms"></a>検索語句の提案
 

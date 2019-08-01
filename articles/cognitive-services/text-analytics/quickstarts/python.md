@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/28/2019
+ms.date: 07/28/2019
 ms.author: aahi
-ms.openlocfilehash: 69f22d92cc586942d3e368a164d6e95f52aa3eea
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 3987441ea7c28136750149d3fa66afe061b7d783
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356902"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697252"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python REST API を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
@@ -27,8 +27,6 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 ## <a name="prerequisites"></a>前提条件
 
 * [Python 3.x](https://python.org)
-
-* サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)。
 
 * Python の要求ライブラリ
     

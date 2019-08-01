@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:ナレッジ ベースから回答を取得する - REST (C#) - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: この C# REST ベースのクイック スタートでは、ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 020403268665633bf3d71cf43258ced87b4f837d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: ba128f5ad87083f8d57c33011969756f3b3a8c93
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249714"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559826"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>C# を使用してナレッジ ベースから質問の回答を取得する
 

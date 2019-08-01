@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: 13d519c1814cfa1e2038efd6c3828931e8332ec8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a0e78ec35ff001b6a4ee59794a002cb3a74e90cb
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322088"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698491"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI の例:Azure Batch での Linux プールの作成と管理
 
@@ -50,7 +50,7 @@ az group delete --name myResourceGroup
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Batch アカウントを作成します。 |
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
-| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#az-batch-pool-node-agent-skus-list) | 使用できるノード エージェント SKU とイメージの情報を一覧表示します。  |
+| [az batch pool node-agent-skus list](../batch-linux-nodes.md#list-of-virtual-machine-images) | 使用できるノード エージェント SKU とイメージの情報を一覧表示します。  |
 | [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-create) | コンピューティング ノードのプールを作成します。  |
 | [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-resize) | 指定したプールで実行されている VM の数を変更します。  |
 | [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az-batch-pool-show) | プールのプロパティを表示します。  |

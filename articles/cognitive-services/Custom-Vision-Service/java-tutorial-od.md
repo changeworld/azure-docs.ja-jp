@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Custom Vision SDK for Java を使用して物体検出プロジェクトを作成する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Java SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。
 services: cognitive-services
 author: areddish
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 9ddb882658551115b05df3820e70a6b6684d563b
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c7d44efee4f6bf6ec954b015b5f34271cbca5110
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604031"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565520"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>クイック スタート:Custom Vision SDK for Java を使用して物体検出プロジェクトを作成する
 

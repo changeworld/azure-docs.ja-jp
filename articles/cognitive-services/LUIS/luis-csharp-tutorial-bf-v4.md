@@ -1,6 +1,6 @@
 ---
 title: Language Understanding ボット C# v4
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このボットは、Bot Framework バージョン 4 と Azure Web アプリ ボット サービスで作成します。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: diberry
-ms.openlocfilehash: 8a03d87441f26d3116aff8af33fd94da0ef9a909
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 210724e8a8b9b585a3e308b8e321d809e4e897a1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67438455"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560647"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>チュートリアル:C# で Language Understanding に対応した Web アプリ ボットを使用する
 
@@ -47,8 +47,8 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
     |Setting|目的|推奨される設定|
     |--|--|--|
     |ボット名|リソース名|`luis-csharp-bot-` + `<your-name>` (例: `luis-csharp-bot-johnsmith`)|
-    |サブスクリプション|サブスクリプション ボットを作成するサブスクリプション。|プライマリ サブスクリプション。
-    |リソース グループ|Azure リソースの論理グループ|このボットで使用するすべてのリソースを格納する新しいグループを作成し、グループに `luis-csharp-bot-resource-group` という名前を付けます。|
+    |Subscription|サブスクリプション ボットを作成するサブスクリプション。|プライマリ サブスクリプション。
+    |Resource group|Azure リソースの論理グループ|このボットで使用するすべてのリソースを格納する新しいグループを作成し、グループに `luis-csharp-bot-resource-group` という名前を付けます。|
     |Location|Azure リージョン - これは LUIS の作成または公開リージョンと同じである必要はありません。|`westus`|
     |価格レベル|サービス要求の制限と課金に使用されます。|`F0` は無料レベルです。
     |アプリの名前|この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (humanresourcesbot.azurewebsites.net など)。|`luis-csharp-bot-` + `<your-name>` (例: `luis-csharp-bot-johnsmith`)|
@@ -78,7 +78,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 
 |基本的なボット LUIS の意図|発話の例|
 |--|--|
-|Book flight|`Travel to Paris`|
+|航空便の予約|`Travel to Paris`|
 |Cancel|`bye`|
 |なし|アプリのドメインの外側にあるものすべて。|
 

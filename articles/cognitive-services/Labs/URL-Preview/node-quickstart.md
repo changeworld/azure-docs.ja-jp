@@ -10,20 +10,20 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 5c373505cd381108366206c21ff09f25516d7969
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 92124a53c871be7a83d7b276e31f000d7c674358
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884292"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698010"
 ---
 # <a name="quickstart-url-preview-with-nodejs"></a>クイック スタート:Node.js での URL Preview 
 
-次の Node の例では、SwiftKey Web サイト (https://swiftkey.com/en) の URL プレビューを作成します。
+次の Node の例では、SwiftKey Web サイト (https://swiftkey.com/en ) の URL プレビューを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
+[Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) で無料試用版のアクセス キーを取得します
 
 ## <a name="code-scenario"></a>シナリオのコードを書く 
 

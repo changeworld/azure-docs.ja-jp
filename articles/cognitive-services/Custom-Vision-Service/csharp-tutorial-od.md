@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Custom Vision SDK for C# を使用して物体検出プロジェクトを作成する
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: .NET SDK と C# を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。
 services: cognitive-services
 author: areddish
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 63f5853199e3ee266df298b9599c2933b7da0826
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a21c535597110b8dac823888ec2a8e689a9c57e8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606935"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561143"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>クイック スタート:Custom Vision .NET SDK を使用して物体検出プロジェクトを作成する
 

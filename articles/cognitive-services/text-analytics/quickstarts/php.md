@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/15/2019
+ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 2d3c5873c03023ceaf5b2cafa266ea627ea7df13
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 62dd04b6df465b82bb1b39e23afce410325c4248
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002432"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697333"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:PHP を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
@@ -27,8 +27,6 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。 
 
 <a name="Detect"></a>
 

@@ -9,12 +9,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: c44be9779cf2b856ac2f5e9e017fd9d1040a018b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 21dda323cf465f56fb3f43160dd04c27a81d5590
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294044"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698088"
 ---
 # <a name="quickstart-project-answer-search-with-node"></a>クイック スタート:Project Answer Search (Node)
 
@@ -22,7 +22,7 @@ ms.locfileid: "58294044"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
+[Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) で無料試用版のアクセス キーを取得します
 
 この例では、Node v8.9.4 を使用します
 

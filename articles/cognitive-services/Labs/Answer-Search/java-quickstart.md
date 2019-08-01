@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: fc0f8519644c5b9f722ab67f2e9d600a0be7960b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 26a9fc60c90f536e4ef9f03e96545e493a60f206
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883527"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698096"
 ---
 # <a name="quickstart-project-answer-search-query-in-java"></a>クイック スタート:Java での Project Answer Search クエリ
 この記事では、Java を使用して、Azure 上の Microsoft Cognitive Services の一部である Bing Answer Search API をデモンストレーションします。 API は HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある REST Web サービスです。
@@ -24,7 +24,7 @@ ms.locfileid: "55883527"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
+[Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-answer-search) で無料試用版のアクセス キーを取得します
 
 ## <a name="request"></a>Request 
 

@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:LUIS ポータルで新しいアプリを作成する
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、LUIS ポータルで新しいアプリを作成します。 アプリ、意図、エンティティの基本パーツを作成します。 インタラクティブ テスト パネルでユーザーの発話の例を入力し、予測意図を取得することにより、アプリをテストします。 アプリの構築は無料で行うことができます。Azure のサブスクリプションは不要です。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2e4ff7dc97e3ee72336bd4c081caf1aa1a62bc56
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65146526"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560881"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 
@@ -31,11 +31,11 @@ ms.locfileid: "65146526"
 
    [![LUIS ポータルで新しいアプリを作成する](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
 
-1. ポップアップ ウィンドウで、以下の設定を使用してアプリを構成した後、**[完了]** を選択します。
+1. ポップアップ ウィンドウで、以下の設定を使用してアプリを構成した後、 **[完了]** を選択します。
 
    |設定名| 値 | 目的|
    |--|--|--|
-   |Name|`myEnglishApp`|LUIS アプリの一意の名前<br>必須|
+   |EnableAdfsAuthentication|`myEnglishApp`|LUIS アプリの一意の名前<br>必須|
    |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>必須|
    |説明|`App made with LUIS Portal`|アプリの説明<br>省略可能|
    | | | |
@@ -51,18 +51,18 @@ LUIS アプリを作成したら、意図を作成する必要があります。
 
 アプリの 2 つの_目的_は次の意図に対応しています。
 
-|意図|ユーザーから発せられたテキストの例<br>"_発話_" と呼ばれる|
+|Intent|ユーザーから発せられたテキストの例<br>"_発話_" と呼ばれる|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
 
 意図を作成するには、次の手順を実行します。
 
-1. アプリの作成が完了すると、**[ビルド]** セクションに **[意図]** ページが表示されます。 **[Create new intent]\(意図の新規作成\)** を選択します。
+1. アプリの作成が完了すると、 **[ビルド]** セクションに **[意図]** ページが表示されます。 **[Create new intent]\(意図の新規作成\)** を選択します。
 
    [![[Create new intent]\(意図の新規作成\) ボタンを選択する](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. 意図の名前として `FindForm` を入力し、**[完了]** を選択します。
+1. 意図の名前として `FindForm` を入力し、 **[完了]** を選択します。
 
    ![意図の名前として「FindForm」を入力する](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 

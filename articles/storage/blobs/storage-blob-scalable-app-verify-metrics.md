@@ -1,21 +1,18 @@
 ---
 title: ストレージ アカウントのスループットと待機時間のメトリックを Azure Portal で確認する | Microsoft Docs
 description: ストレージ アカウントのスループットと待機時間のメトリックをポータルで確認する方法を説明します。
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 2fde9b2b88b4c758065ba4b38da48724bfbfcd75
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250097"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698986"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>ストレージ アカウントのスループットと待機時間のメトリックの確認
 
@@ -47,7 +44,7 @@ ms.locfileid: "55250097"
 |**イングレス**|イングレス データの量。 この値には、外部クライアントから Azure Storage へのイングレスおよび Azure 内でのイングレスが含まれます。 |
 |**エグレス**|エグレス データの量。 この値には、外部クライアントから Azure Storage へのエグレスおよび Azure 内でのエグレスが含まれます。 したがって、この値には、課金対象のエグレスが反映されません。 |
 
-**[時間]** の横の **[Last 24 hours (Automatic)]\(過去 24 時間 (自動)\)** を選択します。 **[時間の粒度]** で **[過去 1 時間]** と **[分]** を選択し、**[適用]** をクリックします。
+**[時間]** の横の **[Last 24 hours (Automatic)]\(過去 24 時間 (自動)\)** を選択します。 **[時間の粒度]** で **[過去 1 時間]** と **[分]** を選択し、 **[適用]** をクリックします。
 
 ![ストレージ アカウントのメトリック](./media/storage-blob-scalable-app-verify-metrics/figure1.png)
 
@@ -55,7 +52,7 @@ ms.locfileid: "55250097"
 
 ## <a name="dimensions"></a>Dimensions
 
-[ディメンション](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)は、グラフをさらに詳しく調べて詳細な情報を得るために使用します。 メトリックごとにさまざまなディメンションがあります。 利用可能なディメンションの 1 つに、**[API 名]** ディメンションがあります。 このディメンションは、グラフを各 API 呼び出しごとに分割します。 下の 1 番目の図は、ストレージ アカウントの合計トランザクション数のグラフの例を示しています。 2 番目の図も同じグラフですが、[API 名] ディメンションを選択した場合を示しています。 ご覧のとおり、各トランザクションが一覧表示され、API 名ごとの呼び出し回数を詳細に把握できます。
+[ディメンション](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)は、グラフをさらに詳しく調べて詳細な情報を得るために使用します。 メトリックごとにさまざまなディメンションがあります。 利用可能なディメンションの 1 つに、 **[API 名]** ディメンションがあります。 このディメンションは、グラフを各 API 呼び出しごとに分割します。 下の 1 番目の図は、ストレージ アカウントの合計トランザクション数のグラフの例を示しています。 2 番目の図も同じグラフですが、[API 名] ディメンションを選択した場合を示しています。 ご覧のとおり、各トランザクションが一覧表示され、API 名ごとの呼び出し回数を詳細に把握できます。
 
 ![ストレージ アカウントのメトリック - ディメンションを指定しない場合のトランザクション数](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 

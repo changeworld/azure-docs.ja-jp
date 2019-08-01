@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Postman を使用押してナレッジ ベースから回答を取得する - QnA Maker
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Postman を使用して、ナレッジ ベースから回答を取得する手順を紹介しています。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 7083285ac81aa8eafee8de49175e40934e5d05b4
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7c419ea7cb5c9ae1d1cc419798961ec67f250160
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253809"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563002"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>クイック スタート:Postman を使用してナレッジ ベースから回答を取得する
 

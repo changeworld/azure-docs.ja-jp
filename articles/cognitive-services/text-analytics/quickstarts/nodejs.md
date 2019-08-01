@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: 4c77477e31e7513cb806dda968a68fc1ac5030ed
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: eadac393a7224876e3cb494dd39116bd3b5b0eb7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694972"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697382"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Node.js を使用して Text Analytics Cognitive Service を呼び出す  
 <a name="HOLTop"></a>
@@ -27,8 +27,6 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-また、サインアップ中に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。
 
 <a name="Detect"></a>
 

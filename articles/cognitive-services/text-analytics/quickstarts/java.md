@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/22/2019
+ms.date: 07/30/2019
 ms.author: aahi
 ms.custom: seo-java-july2019
-ms.openlocfilehash: c5e47918cb31d127842cb7a45883cf4c47fb56e0
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 437456ecb700b2efb60f2f6269643ca39d8775e2
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489215"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697526"
 ---
 # <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Java を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
@@ -29,7 +29,7 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-また、サインアップ中に生成された[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)も必要です。
+また、サインアップ中に生成された[エンドポイントとアクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)も必要です。
 
 <a name="Detect"></a>
 

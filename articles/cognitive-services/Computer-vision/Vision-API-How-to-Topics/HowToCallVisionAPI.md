@@ -1,6 +1,6 @@
 ---
 title: 例:画像分析 API を呼び出す - Computer Vision
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services で REST を使用して Computer Vision API を呼び出す方法について説明します。
 services: cognitive-services
 author: KellyDF
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 35e6ad922ab54748165fcf8e273d93ee44bc42cc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011245"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564538"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>例:Computer Vision API を呼び出す方法
 
@@ -89,14 +89,14 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 
 **オプション 2:** "タグ" の一覧のみ、または "説明" の一覧のみを取得する
 
-###### <a name="tags-only"></a>タグのみ: 
+###### <a name="tags-only"></a>タグのみ:
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag&subscription-key=<Your subscription key>
 var analysisResult = await visionClient.GetTagsAsync("http://contoso.com/example.jpg");
 ```
 
-###### <a name="description-only"></a>説明のみ: 
+###### <a name="description-only"></a>説明のみ:
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe&subscription-key=<Your subscription key>

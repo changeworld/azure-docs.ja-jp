@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go で Translator Text API を使ってテキストに含まれる文の長さを調べます。
 services: cognitive-services
 author: swmachan
-manager: erhopf
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 574f70f8f091e0f0df65f7d52df5ca73ac00b2c0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a71e0859d7d677865cbacbf24de8b0e17861a192
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704551"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595178"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-go"></a>クイック スタート: Translator Text API と Python を使用して文の長さを調べる
 

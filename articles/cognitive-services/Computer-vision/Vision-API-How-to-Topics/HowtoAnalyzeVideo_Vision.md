@@ -1,6 +1,6 @@
 ---
 title: 例:リアルタイムのビデオ分析 - Computer Vision
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: ライブ ビデオ ストリームから取得したフレームに対して、Computer Vision API を使用して、ほぼリアルタイムに分析を実行します。
 services: cognitive-services
 author: KellyDF
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: feafb983a7b9e4aea6091753842b03a65ccd3ca5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3432ea20f9fb59524940258e13c46ee6f4c4e890
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001560"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565693"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>リアルタイムでビデオを分析する方法
 

@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:.NET 用 QnA Maker クライアント ライブラリ
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: .NET 用 QnA Maker クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。  QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: f38cbfa0efd3b9be9ca091942dca7ffcd91b6019
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: af3de85cb2d32b4828a4641318f66f91c9254e24
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828060"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563019"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>クイック スタート:.NET 用 QnA Maker クライアント ライブラリ
 
@@ -31,7 +31,7 @@ ms.locfileid: "67828060"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料で作成できます](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
 
 ## <a name="setting-up"></a>設定

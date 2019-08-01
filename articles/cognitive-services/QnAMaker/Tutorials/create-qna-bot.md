@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 07/31/2019
 ms.author: diberry
-ms.openlocfilehash: 1d475d988847bd4cc9e37b91a0c5d28678cb05f2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4bb987a5a091871bec2c0cc8cec6d9ab804bb244
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446647"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697987"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>チュートリアル:Azure Bot Service v4 を使用して QnA ボットを作成する
 
@@ -50,8 +50,8 @@ ms.locfileid: "67446647"
     |Setting|値|目的|
     |--|--|--|
     |ボット名|`my-tutorial-kb-bot`|これは、ボット用の Azure リソース名です。|
-    |サブスクリプション|目的を参照。|QnA Maker リソースを作成するために使用したのと同じサブスクリプションを選択します。|
-    |リソース グループ|`my-tutorial-rg`|ボット関連の Azure リソースすべてに使用されるリソース グループ。|
+    |Subscription|目的を参照。|QnA Maker リソースを作成するために使用したのと同じサブスクリプションを選択します。|
+    |Resource group|`my-tutorial-rg`|ボット関連の Azure リソースすべてに使用されるリソース グループ。|
     |Location|`west us`|ボットの Azure リソースの場所。|
     |価格レベル|`F0`|Azure ボット サービス用の Free レベル。|
     |アプリの名前|`my-tutorial-kb-bot-app`|これは、ご利用のボットのみをサポートする Web アプリです。 これは、ご利用の QnA Maker サービスで既に使用されている名前と同じにしないでください。 QnA Maker の Web アプリを他のリソースと共有することはサポートされていません。|
@@ -101,7 +101,7 @@ ms.locfileid: "67446647"
 
 ## <a name="related-to-qna-maker-bots"></a>QnA Maker ボット関連
 
-* [ボットのサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot)として、QnA Maker ポータルで使用されている QnA Maker ヘルプ ボットを利用できます。
+* [ボットのサンプル](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)として、QnA Maker ポータルで使用されている QnA Maker ヘルプ ボットを利用できます。
     ![QnA Maker ヘルプ ボットのアイコンは赤色のロボット](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * [Healthcare ボット](https://docs.microsoft.com/HealthBot/qna_model_howto)は、その[言語モデル](https://docs.microsoft.com/HealthBot/qna_model_howto)の 1 つとして QnA Maker を使用します。
 

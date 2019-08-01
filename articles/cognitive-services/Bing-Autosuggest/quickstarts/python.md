@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:Bing Autosuggest REST API と Python によって検索クエリの候補を表示する
 titleSuffix: Azure Cognitive Services
-description: Bing Autosuggest API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
+description: Bing Autosuggest API を使用して手軽に検索語句の候補をリアルタイムで表示する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 733b3a943c0699d4a3af6771c917849b0b0eb528
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 5f6d92037bd588f96e9345ad1c7bc2e1f49e580c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405251"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564652"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>クイック スタート:Bing Autosuggest REST API と Python によって検索クエリの候補を表示する
 
