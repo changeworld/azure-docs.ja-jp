@@ -11,27 +11,31 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 9fe6ab797eaa325ad802702e95f5a0e5b8e4fef4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 11/07/2019
+ms.openlocfilehash: 0fa65454702c67d4b0baeedc7f412ccec402ea46
+ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070422"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68302300"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance への SQL Server インスタンスの移行
 
 この記事では、SQL Server 2005 以降のバージョンのインスタンスを [Azure SQL Database Managed Instance](sql-database-managed-instance.md) に移行する方法について説明します。 単一データベースまたはエラスティック プールへの移行については、「[単一データベースまたはプールされたデータベースへの移行する](sql-database-cloud-migrate.md)」を参照してください。 他のプラットフォームからの移行に関する移行の情報については、[Azure データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
 
+> [!NOTE]
+> マネージド インスタンスをすぐに開始して試す場合は、このページではなく[クイックスタート ガイド](sql-database-managed-instance-quickstart-guide.md)に関するページを参照してください。 
+
 大まかには、データベースの移行プロセスは次のようになります。
 
 ![移行プロセス](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [マネージド インスタンスの互換性を評価する](#assess-managed-instance-compatibility)
+- [マネージド インスタンスの互換性を評価する](#assess-managed-instance-compatibility)。ここでは、移行を妨げる可能性のある、障害となっている問題がないことを確認する必要があります。
+  - この手順には、ソース SQL Server インスタンスのリソース使用率を判断するための[パフォーマンス ベースライン](#create-performance-baseline)の作成も含まれます。 この手順は、適切なサイズに設定されたマネージド インスタンスをデプロイし、移行後のパフォーマンスに影響がないことを確認する場合に必要です。
 - [アプリの接続性オプションの選択](sql-database-managed-instance-connect-app.md)
-- [最適なサイズに設定されたマネージド インスタンスにデプロイする](#deploy-to-an-optimally-sized-managed-instance)
-- [移行方法の選択と移行](#select-migration-method-and-migrate)
-- [アプリケーションの監視](#monitor-applications)
+- [最適なサイズに設定されたマネージド インスタンスにデプロイする](#deploy-to-an-optimally-sized-managed-instance)。ここでは、マネージド インスタンスの技術的特性 (仮想コア数、メモリ容量) とパフォーマンス レベル (Business Critical、General Purpose) を選択します。
+- [移行方法の選択と移行](#select-migration-method-and-migrate)。ここでは、オフライン移行 (ネイティブ バックアップ/復元、データベースのインポート/エクスポート) またはオンライン移行 (データ移行サービス、トランザクション レプリケーション) を使用してデータベースを移行します。
+- [アプリケーションの監視](#monitor-applications)を行い、期待されるパフォーマンスが得られることを確認します。
 
 > [!NOTE]
 > 個々のデータベースを単一データベースまたはエラスティック プールに移行するには、[Azure SQL Database への SQL Server データベースの移行](sql-database-single-database-migrate.md)に関する記事をご覧ください。
@@ -58,7 +62,11 @@ ms.locfileid: "67070422"
 
 ### <a name="create-performance-baseline"></a>パフォーマンスのベースラインを作成する
 
-マネージド インスタンスでのワークロードのパフォーマンスと SQL Server で実行されている元のワークロードのパフォーマンスを比較する必要がある場合は、比較に使われるパフォーマンス ベースラインを作成する必要があります。 SQL Server インスタンスで測定する必要のあるパラメーターの一部を次に示します。 
+マネージド インスタンスでのワークロードのパフォーマンスと SQL Server で実行されている元のワークロードのパフォーマンスを比較する必要がある場合は、比較に使われるパフォーマンス ベースラインを作成する必要があります。 
+
+パフォーマンス ベースラインは、平均/最大 CPU 使用率、平均/最大ディスク IO 待機時間、スループット、IOPS、ページの平均/最大予測保持期間、tempdb の平均最大サイズなどのパラメーターのセットです。 移行後に、同等またはさらに優れたパラメーターが必要になるため、これらのパラメーターのベースライン値を測定して記録することが重要です。 システム パラメーターに加えて、ワークロード内の代表的なクエリまたは最も重要なクエリのセットを選択し、選択したクエリの最小/平均/最大期間と CPU 使用率を測定する必要があります。 これらの値を使用すると、マネージド インスタンスで実行されているワークロードのパフォーマンスをソース SQL Server の元の値と比較できます。
+
+SQL Server インスタンスで測定する必要のあるパラメーターの一部を次に示します。 
 - [SQL Server インスタンスでの CPU 使用率を監視](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)し、平均とピークの CPU 使用率を記録します。
 - [SQL Server インスタンスでのメモリ使用量を監視](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage)し、バッファー プール、プラン キャッシュ、列ストア プール、[インメモリ OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017) などのさまざまなコンポーネントで使用されるメモリの量を明らかにします。さらに、ページの予測保持期間メモリ パフォーマンス カウンターの平均値とピーク値を調べる必要があります。
 - [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) ビューまたは[パフォーマンス カウンター](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)を使って、ソース SQL Server インスタンスでのディスク IO 使用率を監視ます。
@@ -72,9 +80,10 @@ ms.locfileid: "67070422"
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>最適なサイズに設定されたマネージド インスタンスにデプロイする
 
 マネージド インスタンスは、クラウドへの移行を予定しているオンプレミスのワークロード向けに調整されます。 ワークロードのリソースの適切なレベルの選択において高い柔軟性を発揮する[新しい購入モデル](sql-database-service-tiers-vcore.md)が導入されます。 オンプレミスの世界では、物理コアと IO 帯域幅を使用して、これらのワークロードのサイズを設定することがおそらく一般的です。 マネージド インスタンスの購入モデルは仮想コア ("vCore") に基づいており、追加のストレージと IO を個別に使用できます。 仮想コア モデルは、クラウドのコンピューティング要件と現在オンプレミスで使用しているものを把握するためのシンプルな方法です。 この新しいモデルにより、クラウド内の移行先環境を適切にサイズ設定することができます。 適切なサービス レベルと特性を選択するために役立ついくつかの一般的なガイドラインを次に示します。
-- [SQL Server インスタンスでの CPU 使用率を監視](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)し、現在使っているコンピューティング能力を確認します (動的管理ビュー、SQL Server Management Studio、または他の監視ツールを使用)。 SQL Server で使っているコアの数と一致するマネージド インスタンスをプロビジョニングします。そのとき、[マネージド インスタンスがインストールされている VM の特性](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics)と一致するように CPU の特性をスケーリングすることが必要になる場合があることに留意します。
-- SQL Server インスタンスで使用可能なメモリの量を確認し、[対応するメモリを備えたサービス レベル](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#hardware-generation-characteristics)を選択します。 SQL Server インスタンスでページの予測保持期間を測定して[メモリの追加が必要かどうか](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444)を判断すると役に立ちます。
-- ファイル サブシステムの IO 待機時間を測定して、General Purpose サービス レベルまたは Business Critical サービス レベルを選択します。
+- ベースラインの CPU 使用率に基づいて、SQL Server で使っているコアの数と一致するマネージド インスタンスをプロビジョニングできます。そのとき、[マネージド インスタンスがインストールされている VM の特性](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)と一致するように CPU の特性をスケーリングすることが必要になる場合があることに留意します。
+- ベースラインのメモリ使用量に基づいて、[対応するメモリを備えたサービス レベル](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)を選択します。 メモリの量は直接選択できないため、一致するメモリ (Gen5 の 5.1 GB/仮想コアなど) を備えた仮想コアの容量を持つマネージド インスタンスを選択する必要があります。 
+- ファイル サブシステムのベースライン IO 待機時間に基づいて、General Purpose (5 ミリ秒を超える待機時間) と Business Critical サービス レベル (3 ミリ秒未満の待機時間) のいずれかを選択します。
+- 予期される IO パフォーマンスを得るために、ベースラインのスループットに基づいて、データ ファイルまたはログ ファイルのサイズを事前に割り当てます。
 
 コンピューティング リソースとストレージ リソースをデプロイ時に選択し、後で [Azure portal](sql-database-scale-resources.md) を使用してアプリケーションのダウンタイムなしに変更できます。
 
@@ -169,6 +178,13 @@ SAS 資格情報を使用してデータベース バックアップをマネー
 ニーズに合ったワークロードのパフォーマンスが得られるまで、パラメーターを変更するか、サービス レベルをアップグレードして、最適な構成に近付けます。
 
 ### <a name="monitor-performance"></a>パフォーマンスの監視
+
+マネージド インスタンスには、監視とトラブルシューティングのための高度なツールが多数用意されており、それらを使用してインスタンスのパフォーマンスを監視する必要があります。 監視が必要なパラメーターには、次のようなものがあります。
+- プロビジョニングした仮想コアの数がワークロードに適したものであるかどうかを判断するための、インスタンスの CPU 使用率。
+- [メモリの追加が必要かどうか](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444)を判断するための、マネージド インスタンスのページの予測保持期間。
+- ストレージ IO の問題が発生しているかどうかを示す `INSTANCE_LOG_GOVERNOR` や `PAGEIOLATCH` などの待機統計。特に、IO パフォーマンスを向上させるためにファイルの事前割り当てが必要になる可能性がある General Purpose レベルで当てはまります。
+
+## <a name="leverage-advanced-paas-features"></a>高度な PaaS 機能を活用する
 
 フル マネージド プラットフォームに移行して、ワークロードのパフォーマンスが SQL Server のワークロードのパフォーマンスに匹敵することを確認した後、SQL Database サービスの一部として自動的に提供されるものを利用します。 
 

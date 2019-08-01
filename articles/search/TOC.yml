@@ -344,7 +344,7 @@
           href: cognitive-search-skill-textsplit.md
         - name: センチメント
           href: cognitive-search-skill-sentiment.md
-        - name: テキスト翻訳 (プレビュー)
+        - name: Text Translation
           href: cognitive-search-skill-text-translation.md
         - name: 画像分析
           href: cognitive-search-skill-image-analysis.md

@@ -11,16 +11,16 @@
       href: quick-start.md
     - name: クライアント SDK の使用
       items:
-        - name: 'C#'
+        - name: .NET SDK の使用
           items:
             - name: イメージ コンテンツの分析
               href: image-moderation-quickstart-dotnet.md
             - name: テキスト コンテンツの分析
               href: text-moderation-quickstart-dotnet.md
-        - name: Python
-          items:
-            - name: テキスト コンテンツの分析
-              href: text-moderation-quickstart-python.md
+        - name: Python SDK の使用
+          href: python-sdk-quickstart.md
+        - name: Java SDK の使用
+          href: java-sdk-quickstart.md
 - name: チュートリアル
   items:
     - name: eコマース イメージをモデレートする
