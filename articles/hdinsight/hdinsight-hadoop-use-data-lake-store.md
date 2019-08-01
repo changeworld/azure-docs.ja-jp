@@ -22,7 +22,7 @@ ms.locfileid: "65546297"
 
 HDInsight クラスターでデータを分析するには、[Azure Storage](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)、または [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md) のいずれかにデータを格納できます。 いずれのストレージ オプションでも、計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
 
-この記事では、HDInsight クラスターでの Data Lake Storage Gen1 の動作について説明します。 THDInsight クラスターでの Data Lake Store の動作については、「[Azure HDInsight クラスターで Azure Storage を使用する](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。 HDInsight クラスターの作成について詳しくは、[HDInsight での Apache Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
+この記事では、HDInsight クラスターでの Data Lake Storage Gen1 の動作について説明します。 HDInsight クラスターでの Data Lake Store の動作については、「[Azure HDInsight クラスターで Azure Storage を使用する](hdinsight-hadoop-use-blob-storage.md)」をご覧ください。 HDInsight クラスターの作成について詳しくは、[HDInsight での Apache Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
 > [!NOTE]  
 > Data Lake Storage Gen1 へのアクセスには必ずセキュリティで保護されたチャネルが使われるため、`adls` ファイルシステム スキーム名はありません。 常に `adl` を使用します。

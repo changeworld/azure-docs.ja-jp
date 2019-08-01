@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0080c8ac5e957912c5fd59a7051619ee60bd914c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 93b26b2861c5603770a954943174d6436296ad07
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260064"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668379"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Azure Machine Learning で Estimator を使用してモデルをトレーニングする
 
@@ -102,14 +102,14 @@ estimator = Estimator(source_directory='./my-keras-proj',
                       process_count_per_node=1,
                       distributed_backend='mpi',     
                       conda_packages=['tensorflow', 'keras'],
-                      custom_docker_base_image='continuumio/miniconda')
+                      custom_docker_image='continuumio/miniconda')
 ```
 
 上記のコードでは、`Estimator` コンストラクターに対して次の新しいパラメーターを公開しています。
 
 パラメーター | 説明 | 既定値
 --|--|--
-`custom_docker_base_image`| 使用するイメージの名前。 パブリックな Docker リポジトリ (この場合は Docker Hub) にあるイメージのみを指定します。 プライベートな docker リポジトリにあるイメージを使用するには、コンストラクターの `environment_definition` パラメーターを利用します｡ [例を参照](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)してください。 | `None`
+`custom_docker_image`| 使用するイメージの名前。 パブリックな Docker リポジトリ (この場合は Docker Hub) にあるイメージのみを指定します。 プライベートな docker リポジトリにあるイメージを使用するには、コンストラクターの `environment_definition` パラメーターを利用します｡ [例を参照](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)してください。 | `None`
 `node_count`| トレーニング ジョブに使用するノードの数。 | `1`
 `process_count_per_node`| 各ノードで実行するプロセス (つまり "worker") の数。 この場合は、ノード 1 つあたり `2` 個の GPU を使用します｡| `1`
 `distributed_backend`| 分散トレーニングを起動するためのバックエンド。Estimator によって MPI 経由で提供されます。  並列または分散トレーニングを実行するには (例えば `node_count`>1 か `process_count_per_node`>1、またはその両方)､`distributed_backend='mpi'` を設定します。 AML が使用する MPI 実装は [Open MPI](https://www.open-mpi.org/) です｡| `None`
