@@ -3,9 +3,8 @@ title: Azure Service Fabric クラスターのスケーリング | Microsoft Doc
 description: Azure Service Fabric クラスターのスケールインまたはスケールアウトと、スケールアップまたはスケールダウンについて説明します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: aljo
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
-ms.author: aljo
-ms.openlocfilehash: cb9cb3998ed8208ff7b19aee8a984e4c057408ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: c4d7027438f19cd16fd87d629364cdf725e91607
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66302261"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599850"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric クラスターのスケーリング
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 クラスターには、場合によっては数千のノードを含めることができます。 Service Fabric クラスターの作成後は、クラスターを水平方向 (ノードの数を変更する) または垂直方向 (ノードのリソースを変更する) にスケーリングすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -67,7 +66,7 @@ Azure API を使用すると、アプリケーションがプログラムで仮�
 ## <a name="scaling-up-and-down-or-vertical-scaling"></a>スケールアップとスケールダウン (垂直方向のスケーリング) 
 クラスター内のノードのリソース (CPU、メモリ、またはストレージ) を変更します。
 - 長所:ソフトウェアやアプリケーションのアーキテクチャは変わりません。
-- 短所:スケーリングには限度があります。個々のノード上でリソースをどれだけ増加できるかに制限があるためです。 リソースを追加または削除するために物理または仮想のマシンをオフラインにする必要があるため、ダウンタイムが生じます。
+- 短所:スケーリングには限度があります。個々のノード上でリソースをどれだけ増加できるかに制限があるためです。 リソースを追加または削除するために物理マシンまたは仮想マシンをオフラインにする必要があるため、ダウンタイムが生じます。
 
 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。  ある種類のノードをスケールアップまたはスケールダウンするには、スケール セットの仮想マシン インスタンスの SKU を変更する必要があります。 
 

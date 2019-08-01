@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: f1eac83f2b5460bf56ddff1bf15d9180adb49a48
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 63ed2c5c334aef8f6281ee34ec4ed6e47ca8521a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66382274"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569100"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>クイック スタート:Azure SQL Database の接続とクエリ
 
@@ -35,7 +34,7 @@ ms.locfileid: "66382274"
 |[.NET core](sql-database-connect-query-dotnet-core.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会する C# プログラムを Windows/Linux/macOS 上の .NET Core を使って作成する方法について説明します。|
 |[Go](sql-database-connect-query-go.md)|このクイック スタートでは、Go を使用して Azure SQL データベースに接続する方法を紹介します。 Transact-SQL ステートメントを使用してデータを照会および変更する方法についても説明します。|
 |[Java](sql-database-connect-query-java.md)|このクイック スタートでは、Java を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータを照会する方法について説明します。|
-|[Node.js](sql-database-connect-query-nodejs.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを Node.js を使って作成する方法について説明します。|
+|[Node.JS](sql-database-connect-query-nodejs.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを Node.js を使って作成する方法について説明します。|
 |[PHP](sql-database-connect-query-php.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを PHP を使って作成する方法について説明します。|
 |[Python](sql-database-connect-query-python.md)|このクイック スタートでは、Python を使って Azure SQL データベースに接続した後、Transact-SQL ステートメントを使ってデータを照会する方法について説明します。 |
 |[Ruby](sql-database-connect-query-ruby.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会するプログラムを Ruby を使って作成する方法について説明します。|

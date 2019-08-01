@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 5e36a4691c485472b1e0b43b9d8c551790bc68e9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 0c1aaa86726465dee5e12416d999c70245ea0844
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442126"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598080"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Azure HDInsight の Apache Hadoop の概要
 
@@ -86,7 +86,7 @@ HDInsight には、特定のクラスターの種類のほか、コンポーネ�
 
 |クラスターの種類 | 説明 |
 |---|---|
-|[Apache Hadoop](https://wiki.apache.org/hadoop)|HDFS、YARN によるリソース管理、およびシンプルな MapReduce プログラミング モデルを使用して、バッチ データを同時に処理および分析するフレームワークです。|
+|[Apache Hadoop](https://hadoop.apache.org/)|HDFS、YARN によるリソース管理、およびシンプルな MapReduce プログラミング モデルを使用して、バッチ データを同時に処理および分析するフレームワークです。|
 |[Apache Spark](https://spark.apache.org/)|ビッグ データ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。 [HDInsight での Apache Spark の概要](../spark/apache-spark-overview.md)に関する記事を参照してください。|
 |[Apache HBase](https://hbase.apache.org/)|Hadoop 上に構築された NoSQL データベースです。数十億行 x 数百万列に達する可能性のある大量の非構造化データや半構造化データへのランダム アクセスと厳密な整合性を実現します。 [HDInsight での HBase の概要](../hbase/apache-hbase-overview.md)に関する記事を参照してください。|
 |[ML サービス](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|並列分散 R プロセスをホストおよび管理するためのサーバーです。 データ サイエンティスト、統計学者、R プログラマーは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。 [HDInsight の ML サービスの概要](../r-server/r-server-overview.md)に関するページを参照してください。|

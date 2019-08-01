@@ -3,18 +3,18 @@ title: Azure Maps を使ってシェイプを追加する | Microsoft Docs
 description: Javascript マップにシェイプを追加する方法
 author: jingjing-z
 ms.author: jinzh
-ms.date: 10/30/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f61c7a939902ee5d02b2e9ba896c7555968f9d0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0696eba4f3cca7beedc2efcda0182ab82b3d69d9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769517"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638699"
 ---
 # <a name="add-a-shape-to-a-map"></a>マップにシェイプを追加する
 
@@ -142,7 +142,7 @@ Azure Maps は、[ここ](extend-geojson.md#circle)に示されている円の�
 }  
 ```
 
-Azure Maps の Web SDK は、これらの `Pooint` フィーチャーを内部的に `Polygon` に変換し、次に示すように多角形レイヤーと線レイヤーを使用してマップ上にレンダリングすることができます。
+Azure Maps の Web SDK は、これらの `Point` フィーチャーを内部的に `Polygon` に変換し、次に示すように多角形レイヤーと線レイヤーを使用してマップ上にレンダリングすることができます。
 
 <iframe height='500' scrolling='no' title='マップに円を追加する' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Add a circle to a map</a>」Pen を表示します。
 </iframe>

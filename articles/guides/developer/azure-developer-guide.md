@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 665eeb60012d5cec08b8a3ad919d7ddfdadc2d23
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64570556"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609582"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -170,7 +170,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
   > 
   > **作業開始**:App Service の認証の詳細については、「[Azure App Service での認証および承認](../../app-service/overview-authentication-authorization.md)」を参照してください。
 
-Azure でのセキュリティのベスト プラクティスについては、「[Azure セキュリティのベスト プラクティスとパターン](../../security/security-best-practices-and-patterns.md)」を参照してください。
+Azure でのセキュリティのベスト プラクティスについては、「[Azure セキュリティのベスト プラクティスとパターン](../../security/fundamentals/best-practices-and-patterns.md)」を参照してください。
 
 ### <a name="monitoring"></a>監視
 

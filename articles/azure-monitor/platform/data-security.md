@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: dd4efcd2f1d4cbf497ad1fde6936088513cb5fd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 407aaf15808d1d1420fd1a3804651d29a407d4b3
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759954"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68606669"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
-このドキュメントでは、[Azure セキュリティ センター](../../security/security-microsoft-trust-center.md)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
+このドキュメントでは、[Azure セキュリティ センター](../../security/fundamentals/trust-center.md)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
 
 この記事は、Log Analytics によるデータの収集、処理、および保護の方法について説明します。 エージェントを使用して Web サービスに接続し、System Center Operations Manager を使用して運用データを収集し、Azure Diagnostics からデータを取得して Log Analytics に使用することができます。 
 

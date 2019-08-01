@@ -3,7 +3,7 @@ title: Azure Service Fabric クラスター ノードへのリモート接続 | 
 description: スケール セット インスタンス (Service Fabric クラスター ノード) にリモートで接続する方法を説明します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
-ms.author: aljo
-ms.openlocfilehash: 4cc2d6355a0147c33048f1c2c27a3648b9223db4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 12508fd5297691f06bce46e056527672083c3a91
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110925"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599933"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>仮想マシン スケール セット インスタンスまたはクラスター ノードにリモート接続する
 Azure で実行される Service Fabric クラスターでは、定義するクラスター ノードの種類ごとに、[仮想マシンの個別のスケールを設定](service-fabric-cluster-nodetypes.md)します。  特定のスケール セット インスタンス (クラスター ノード) にリモート接続することができます。  単一インスタンス VM とは異なり、スケール セット インスタンスには独自の仮想 IP アドレスがありません。 そのため、特定のインスタンスにリモート接続するために使用できる IP アドレスとポートの検索が難しい場合があります。

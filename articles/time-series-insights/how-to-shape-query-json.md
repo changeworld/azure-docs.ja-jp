@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/09/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 089285637bb740fea47f1fd07de0906dfe46662b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 421e25570cd4c4495769530e4072cd8e0219f752
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244456"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666277"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>クエリのパフォーマンスを最大化するための JSON の調整 
 
@@ -195,5 +195,5 @@ Time Series Insights にイベントを送信する方法を検討します。 �
 
 ## <a name="next-steps"></a>次の手順
 
-- Time Series Insights データ アクセス REST API のクエリ構文の詳細については、[Azure Time Series Insights のクエリの構文](/rest/api/time-series-insights/ga-query-syntax)に関する記事を参照してください。
+- Time Series Insights データ アクセス REST API のクエリ構文の詳細については、[Azure Time Series Insights のクエリの構文](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax)に関する記事を参照してください。
 - [イベントを調整する方法](./time-series-insights-send-events.md)について説明します。

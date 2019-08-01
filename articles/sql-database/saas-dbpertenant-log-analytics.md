@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6380488faa9a4554df5df5ea67e11dbeb8853fff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b9b2239cfdf0f214ed2f2b179978fe2828d1be3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61390554"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570506"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>マルチテナントの SQL Database SaaS アプリで Azure Monitor ログを設定して使用する
 

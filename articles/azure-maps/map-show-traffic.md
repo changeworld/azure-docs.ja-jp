@@ -3,18 +3,18 @@ title: Azure Maps でのトラフィックの表示 | Microsoft Docs
 description: Javascript マップ上にトラフィック データを表示する方法
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/10/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7cd7c0dbb375dad78927183dbaffe574a0dc10c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55bfc434082b2d5b7de193e969fc34f710657cdb
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768837"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638632"
 ---
 # <a name="show-traffic-on-the-map"></a>マップ上にトラフィックを表示する
 

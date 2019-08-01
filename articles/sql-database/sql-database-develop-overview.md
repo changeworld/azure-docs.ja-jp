@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: efb6d932e616ada6b8dfff637af469c16fc2f293
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 42fc73b5557fba91cc132a0abe8561f0a72bbb64
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723410"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568866"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 

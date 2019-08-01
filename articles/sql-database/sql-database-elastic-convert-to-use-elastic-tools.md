@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 49686e407b2d733c04bad31706c6c4f315bf28bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d6d5c51cb381c089633ba010a1d64c8486ddcd8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61075209"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568725"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>既存のデータベースを移行してスケール アウト
 Azure SQL Database のデータベース ツール ( [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)など) を使用して、既存のスケールアウトされたシャード化されたデータベースを簡単に管理できます。 最初に、 [シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)を使用するように既存のデータベース セットを変換します。 

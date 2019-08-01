@@ -3,7 +3,7 @@ title: クラスターの Azure Load Balancer 規則の作成
 description: Azure Service Fabric クラスターのポートを開くように Azure Load Balancer を構成します。
 services: service-fabric
 documentationcenter: na
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 440d5e37e03e58a39275e715ebce4fa07961cc84
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66147466"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598569"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric クラスターのポートを開く
 

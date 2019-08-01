@@ -9,14 +9,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: c1ecd298afb7b4e955ec1633fc19162917ee8726
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: a7da65438ffd7db6c43cf2ede7cc52378af056f1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792171"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569217"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>クイック スタート: PHP を使用して Azure SQL データベースに照会する
 

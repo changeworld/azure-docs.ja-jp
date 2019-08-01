@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 5dc2587a0c127106d5afb41e20eca43919065f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66a0b98e2cae14c3708cf8a6aa3f8bd498f41c9f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118779"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609646"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure Digital Twins で監視を構成する方法
 
@@ -123,7 +123,7 @@ Azure Monitor には強力な Log Analytics サービスが含まれており、
 
 ## <a name="other-options"></a>その他のオプション
 
-Azure Digital Twins はアプリケーション固有のログ記録やセキュリティ監査もサポートします。 Azure Digital Twins インスタンスで利用できる Azure のすべてのログ記録オプションの概要については、[Azure のログの監査](../security/azure-log-audit.md)に関する記事をご覧ください。
+Azure Digital Twins はアプリケーション固有のログ記録やセキュリティ監査もサポートします。 Azure Digital Twins インスタンスで利用できる Azure のすべてのログ記録オプションの概要については、[Azure のログの監査](../security/fundamentals/log-audit.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

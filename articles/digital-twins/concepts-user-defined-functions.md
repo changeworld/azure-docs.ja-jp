@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: 4db515a931bc7f423eb11ae31b7304a602f0da46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60925879"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638462"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>データ処理とユーザー定義関数
 

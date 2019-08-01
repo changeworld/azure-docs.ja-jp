@@ -1,20 +1,21 @@
 ---
 title: 'Azure Backup: REST API を使用して Azure VM を復元する'
 description: REST API を使用して Azure VM Backup の復元操作を管理します
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 1b2e7994fa52e8fcbbd4fa32a6203181ad9735e5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 6525be97d9317791f39cb51a8fa819d38bd49c73
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466748"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689443"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 

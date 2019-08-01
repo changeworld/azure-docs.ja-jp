@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: dd0a33364ed9395a85478798e47352c533bd47dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027657"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608527"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Blockchain Service のセキュリティ
 
@@ -23,7 +23,7 @@ Azure Blockchain Service では、Azure の複数の機能を使用して、デ�
 
 ## <a name="isolation"></a>分離:
 
-Azure Blockchain Service のリソースは、プライベート仮想ネットワーク内に分離されます。 各トランザクション ノードと検証ノードは、仮想マシン (VM) です。 ある仮想ネットワーク内の VM は、別の仮想ネットワーク内の VM とは直接通信できません。 分離により、通信は仮想ネットワーク内でプライベートの状態を維持されます。 Azure 仮想ネットワークの分離について詳しくは、「[Azure Public Cloud での分離](../../security/azure-isolation.md#networking-isolation)」をご覧ください。
+Azure Blockchain Service のリソースは、プライベート仮想ネットワーク内に分離されます。 各トランザクション ノードと検証ノードは、仮想マシン (VM) です。 ある仮想ネットワーク内の VM は、別の仮想ネットワーク内の VM とは直接通信できません。 分離により、通信は仮想ネットワーク内でプライベートの状態を維持されます。 Azure 仮想ネットワークの分離について詳しくは、「[Azure Public Cloud での分離](../../security/fundamentals/isolation-choices.md#networking-isolation)」をご覧ください。
 
 ![VNET の図](./media/data-security/vnet.png)
 

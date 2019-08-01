@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/06/2019
-ms.openlocfilehash: 2682f98628f3c1cf22a2c3767f52bedbc148fa62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24bd2cca2e4ed053d51f618d90274e8988a09c26
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723496"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568901"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題
 

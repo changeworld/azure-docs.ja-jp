@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd29c24aa0da83b67f0c0d943312adc5c2558f8f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 4ac39b741ba6e070c056a10f30d6e27882be64fa
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335586"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592272"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -215,7 +215,7 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | 要求されるスコープが含まれています。 Confidential クライアントの場合は、`{Application ID URI}/.default` のような形式を使用して、要求されるスコープが Azure Portal 上で設定されるアプリ オブジェクト内に静的に定義されたものであることを示す必要があります (Microsoft Graph では、`{Application ID URI}` は `https://graph.microsoft.com` を指します)。 カスタム Web API の場合、`{Application ID URI}` は、Azure Portal 上で [アプリケーションの登録 (プレビュー)] の **[API の公開]** セクションに定義されます。 |
 
-詳細については、[`AcquireTokenForClient` 用の参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication_AcquireTokenForClientAsync_System_Collections_Generic_IEnumerable_System_String__)をご覧ください。
+詳細については、[`AcquireTokenForClient` 用の参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet)をご覧ください。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

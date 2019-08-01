@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b425db761375c705d3c810002234a937bac46d78
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487084"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610170"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -50,7 +50,7 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 ## <a name="cloud-scenarios"></a>クラウド シナリオ
 ### <a name="securing-data-store-credentials"></a>データ ストアの資格情報の保護
-Azure Data Factory では、データ ストアの資格情報を保護するために、**Microsoft が管理する証明書**を使用して**暗号化**します。 証明書は、**2 年**ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、**Azure Data Factory 管理サービスによって管理される Azure Storage** に安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../../security/security-storage-overview.md)」を参照してください。
+Azure Data Factory では、データ ストアの資格情報を保護するために、**Microsoft が管理する証明書**を使用して**暗号化**します。 証明書は、**2 年**ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、**Azure Data Factory 管理サービスによって管理される Azure Storage** に安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../../security/fundamentals/storage-overview.md)」を参照してください。
 
 ### <a name="data-encryption-in-transit"></a>転送中のデータの暗号化
 クラウド データ ストアが HTTPS または TLS をサポートしている場合、Data Factory のデータ移動サービスとクラウド データ ストア間のデータ転送はすべて、セキュリティで保護されたチャネル HTTPS または TLS を介して行われます。

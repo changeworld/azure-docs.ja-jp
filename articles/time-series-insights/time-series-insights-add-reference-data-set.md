@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 99933fa36cc822598ec9c173a470f90264d06d54
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 5b48a41f025ef06c69e6de126e0a64ad359ce09a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461228"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666378"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境の参照データ セットを作成する
 
@@ -100,4 +100,4 @@ ms.locfileid: "67461228"
 
 * プログラムで[参照データを管理](time-series-insights-manage-reference-data-csharp.md)する。
 
-* 詳細な API リファレンスについては、[参照データ API](/rest/api/time-series-insights/ga-reference-data-api) に関するドキュメントを参照してください。
+* 詳細な API リファレンスについては、[参照データ API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) に関するドキュメントを参照してください。

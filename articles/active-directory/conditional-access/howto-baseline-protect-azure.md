@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203b752f9da67ebf60e373fe7ce0893b4fd7fcb5
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: aab2aa4415345747a0e87b90ef0a7ee770ef3465
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67560960"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608127"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>ベースライン ポリシー:サービス管理のために MFA を要求する (プレビュー)
 
@@ -69,5 +69,5 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 詳細については、次を参照してください。
 
 * [条件付きアクセス ベースライン保護ポリシー](concept-baseline-protection.md)
-* [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/azure-ad-secure-steps.md)
+* [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/fundamentals/steps-secure-identity.md)
 * [Azure Active Directory の条件付きアクセスとは](overview.md)

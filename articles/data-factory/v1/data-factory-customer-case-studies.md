@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 952a8aa2dbfdabfb7f0df198a7453b847c33f7e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c636032766b90af78e7794b3d515b924fa31d6cd
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486976"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596032"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory - お客様導入事例
 Data Factory は、データの移動や変換を自動化するクラウド ベースの情報管理サービスです。 さまざまな業種のお客様が、Data Factory をはじめとする Azure のサービスを利用して分析パイプラインを構築し、ビジネス上の問題を解決しています。  Data Factory を使用する方法と理由について、お客様の生の声をご覧ください。
 
 ## <a name="milliman"></a>Milliman
-[業界をリードする保険企業による保険業界の変革](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
+[業界をリードする保険企業による保険業界の変革](https://customers.microsoft.com/en-us/story/732463-top-actuarial-firm-transforms-the-insurance-industry-w)
 
 ## <a name="rockwell-automation"></a>Rockwell Automation
-[産業オートメーション企業がビッグ データ ソリューションによりコストを最大 90% 削減](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)
+[産業オートメーション企業がビッグ データ ソリューションによりコストを最大 90% 削減](https://customers.microsoft.com/en-us/story/726192-industrial-automation-firm-cuts-costs-up-to-90-percent)
 
 ## <a name="ziosk"></a>Ziosk
 [そのハンバーガーを食べながらするゲームは? Ziosk なら答えがわかる](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)

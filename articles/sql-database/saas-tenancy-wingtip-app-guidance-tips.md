@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 758cb47760f4a15e262a4d682089ac7d9fee64e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c14fd69521be85dbda5ec4ceda991dfdff54ae0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326279"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570094"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip Tickets サンプル SaaS アプリを使用する場合の一般的なガイダンス
 

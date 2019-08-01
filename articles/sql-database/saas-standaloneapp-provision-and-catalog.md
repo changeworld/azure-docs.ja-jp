@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 28deb9b7ba15744b9bd3d273d02db4398d2b2ef3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9087ff33bccb54497ec8d781a47469553683d65
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61484592"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570272"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>テナントごとのアプリケーション SaaS パターンを使用して、新しいテナントのプロビジョニングとカタログ化を行います
 

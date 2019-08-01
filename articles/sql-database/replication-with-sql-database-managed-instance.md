@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e4d056aacf8f3969b645747e2303574f3fea3bda
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 96571b55158733f8189ddf87402fb634330ca80d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67357118"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570456"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL Database マネージド インスタンス データベースにレプリケーションを構成する
 

@@ -3,7 +3,7 @@ title: Azure Service Fabric でコンテナー ログを表示する | Microsoft
 description: Service Fabric Explorer を使用して実行中の Service Fabric コンテナー サービスのコンテナー ログを表示する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
-ms.author: aljo
-ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 3fa40d794d02da08d29b6cac652edf493977f8e1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60881490"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599734"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric コンテナー サービスのログを表示する
 Azure Service Fabric はコンテナー オーケストレーターであり、[Linux コンテナーと Windows コンテナー](service-fabric-containers-overview.md)の両方をサポートします。  この記事では、問題を診断してトラブルシューティングできるように、実行中のコンテナー サービスまたはデッド コンテナー (クラッシュしたコンテナー) のコンテナー ログを表示する方法について説明します。

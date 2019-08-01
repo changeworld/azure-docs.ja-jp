@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
-manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e8e0c69c93c992f31c515c2033a9ae57d2ee3e0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61485982"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570301"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>シャード マルチテナント Azure SQL データベースを使用した SaaS アプリケーションの新しいテナントのプロビジョニングとカタログ化
 

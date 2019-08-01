@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cb93c29ae4cb8d365cd128c52ee726c10c94bc19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eadba5397655809dc4f3e6d5f9d6c79addde68a6
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023576"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619284"
 ---
 # <a name="connect-with-power-bi"></a>Power BI を使用した接続
 

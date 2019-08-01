@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 05/21/2019
-ms.openlocfilehash: 6824a7151a0c007d6fe4ba021f274886a3cf0dcb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a1475188d2e1ab0db3dfd9775fc37d3fc0a17158
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447820"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567269"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 24ee419e5c6eb4b8c148c61c232d2ab7ab07c74b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2d0c8cfb5e146694304d32eca27836f49d82e887
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449587"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618692"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
@@ -58,14 +58,14 @@ ms.locfileid: "67449587"
 
 Azure SQL Data Warehouse のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
-|:--- |:--- |:--- |
-| type | type プロパティは **AzureSqlDW** に設定する必要があります。 | はい |
-| connectionString | **connectionString** プロパティには、Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワード/サービス プリンシパル キーを Azure Key Vault に格納して、それが SQL 認証の場合は接続文字列から `password` 構成をプルすることもできます。 詳しくは、表の下の JSON の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事をご覧ください。 | はい |
-| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
+| プロパティ            | 説明                                                  | 必須                                                     |
+| :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| type                | type プロパティは **AzureSqlDW** に設定する必要があります。             | はい                                                          |
+| connectionString    | **connectionString** プロパティには、Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワード/サービス プリンシパル キーを Azure Key Vault に格納して、それが SQL 認証の場合は接続文字列から `password` 構成をプルすることもできます。 詳しくは、表の下の JSON の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事をご覧ください。 | はい                                                          |
+| servicePrincipalId  | アプリケーションのクライアント ID を取得します。                         | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
-| tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ |
+| tenant              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
+| connectVia          | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ                                                           |
 
 さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
 
@@ -111,13 +111,13 @@ Azure SQL Data Warehouse のリンクされたサービスでは、次のプロ�
                 "type": "SecureString",
                 "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             },
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -231,9 +231,9 @@ Azure SQL Data Warehouse のリンクされたサービスでは、次のプロ�
 
 Azure SQL Data Warehouse をコピー元またはコピー先にしたデータ コピーについては、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
-|:--- |:--- |:--- |
-| type | データセットの **type** プロパティは、**AzureSqlDWTable** を設定する必要があります。 | はい |
+| プロパティ  | 説明                                                  | 必須                    |
+| :-------- | :----------------------------------------------------------- | :-------------------------- |
+| type      | データセットの **type** プロパティは、**AzureSqlDWTable** を設定する必要があります。 | はい                         |
 | tableName | リンクされたサービスが参照する Azure SQL Data Warehouse インスタンスのテーブルまたはビューの名前。 | ソースの場合はいいえ、シンクの場合ははい |
 
 #### <a name="dataset-properties-example"></a>データセットのプロパティの例
@@ -264,12 +264,12 @@ Azure SQL Data Warehouse をコピー元またはコピー先にしたデータ 
 
 Azure SQL Data Warehouse からデータをコピーする場合は、コピー アクティビティのソースで **type** プロパティを **SqlDWSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
-|:--- |:--- |:--- |
-| type | コピー アクティビティのソースの **type** プロパティは **SqlDWSource** に設定する必要があります。 | はい |
-| sqlReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. | いいえ |
-| sqlReaderStoredProcedureName | ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 | いいえ |
-| storedProcedureParameters | ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ |
+| プロパティ                     | 説明                                                  | 必須 |
+| :--------------------------- | :----------------------------------------------------------- | :------- |
+| type                         | コピー アクティビティのソースの **type** プロパティは **SqlDWSource** に設定する必要があります。 | はい      |
+| sqlReaderQuery               | カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. | いいえ       |
+| sqlReaderStoredProcedureName | ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 | いいえ       |
+| storedProcedureParameters    | ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ       |
 
 ### <a name="points-to-note"></a>注意する点
 
@@ -367,18 +367,18 @@ GO
 
 Azure SQL Data Warehouse にデータをコピーする場合は、コピー アクティビティのシンクの種類を **SqlDWSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
-|:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの **type** プロパティは、**SqlDWSink** に設定する必要があります。 | はい |
-| allowPolyBase | BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> SQL Data Warehouse へのデータの読み込みには、PolyBase を使うことをお勧めします。 制約と詳細については、「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse)」をご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。  | いいえ |
-| polyBaseSettings | **allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 | いいえ |
-| rejectValue | クエリが失敗するまでに拒否できる行の数または割合を指定します。<br/><br/>PolyBase の拒否オプションについて詳しくは、「[CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)」の「引数」セクションをご覧ください。 <br/><br/>使用可能な値は、0 (既定値)、1、2 などです。 |いいえ |
-| rejectType | **rejectValue** オプションがリテラル値か割合かを指定します。<br/><br/>使用可能な値は、**Value** (既定値) と **Percentage** です。 | いいえ |
+| プロパティ          | 説明                                                  | 必須                                      |
+| :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
+| type              | コピー アクティビティのシンクの **type** プロパティは、**SqlDWSink** に設定する必要があります。 | はい                                           |
+| allowPolyBase     | BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> SQL Data Warehouse へのデータの読み込みには、PolyBase を使うことをお勧めします。 制約と詳細については、「[PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse)」をご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。 | いいえ                                            |
+| polyBaseSettings  | **allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 | いいえ                                            |
+| rejectValue       | クエリが失敗するまでに拒否できる行の数または割合を指定します。<br/><br/>PolyBase の拒否オプションについて詳しくは、「[CREATE EXTERNAL TABLE (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)」の「引数」セクションをご覧ください。 <br/><br/>使用可能な値は、0 (既定値)、1、2 などです。 | いいえ                                            |
+| rejectType        | **rejectValue** オプションがリテラル値か割合かを指定します。<br/><br/>使用可能な値は、**Value** (既定値) と **Percentage** です。 | いいえ                                            |
 | rejectSampleValue | 拒否された行の割合が PolyBase で再計算されるまでに取得する行数を決定します。<br/><br/>使用可能な値は、1、2 などです。 | はい (**rejectType** が **percentage** の場合)。 |
-| useTypeDefault | PolyBase がテキスト ファイルからデータを取得する場合にどのように区切りテキスト ファイル内の不足値を処理するかを、指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) Arguments セクションをご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。<br><br>**この設定に関連する[トラブルシューティングのヒント](#polybase-troubleshooting)に関する記事をご覧ください。** | いいえ |
-| writeBatchSize | SQL テーブルに挿入する**バッチあたりの**行数。 PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **integer** (行数) です。 既定では、Data Factory は、行のサイズに基づいて適切なバッチ サイズを動的に決定します。 | いいえ |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ |
-| preCopyScript | コピー アクティビティの毎回の実行で、データを Azure SQL Data Warehouse に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ |
+| useTypeDefault    | PolyBase がテキスト ファイルからデータを取得する場合にどのように区切りテキスト ファイル内の不足値を処理するかを、指定します。<br/><br/>このプロパティの詳細については、[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) Arguments セクションをご覧ください。<br/><br/>使用可能な値: **True**、および **False** (既定値)。<br><br> | いいえ                                            |
+| writeBatchSize    | SQL テーブルに挿入する**バッチあたりの**行数。 PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **integer** (行数) です。 既定では、Data Factory は、行のサイズに基づいて適切なバッチ サイズを動的に決定します。 | いいえ                                            |
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。PolyBase が使われていない場合にのみ適用されます。<br/><br/>使用可能な値は **timespan** です。 例:"00:30:00" (30 分)。 | いいえ                                            |
+| preCopyScript     | コピー アクティビティの毎回の実行で、データを Azure SQL Data Warehouse に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse のシンクの例
 
@@ -419,10 +419,10 @@ SQL Data Warehouse の PolyBase では、Azure Blob、Azure Data Lake Storage Ge
 
 1. **ソース リンク サービス**では、次の種類と認証方法が使用されます。
 
-    | サポートされるソース データ ストアの種類 | サポートされる認証の種類 |
-    |:--- |:--- |
-    | [Azure BLOB](connector-azure-blob-storage.md) | アカウント キー認証、マネージド ID 認証 |
-    | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | サービス プリンシパルの認証 |
+    | サポートされるソース データ ストアの種類                             | サポートされる認証の種類                        |
+    | :----------------------------------------------------------- | :---------------------------------------------------------- |
+    | [Azure BLOB](connector-azure-blob-storage.md)                | アカウント キー認証、マネージド ID 認証 |
+    | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | サービス プリンシパルの認証                            |
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | アカウント キー認証、マネージド ID 認証 |
 
     >[!IMPORTANT]
@@ -545,8 +545,6 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 
 **その他**
 
-PolyBase の既知の問題の詳細については、[Azure SQL Data Warehouse の PolyBase の読み込みのトラブルシューティング](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md#polybase)に関する記事を参照してください。
-
 ### <a name="sql-data-warehouse-resource-class"></a>SQL Data Warehouse リソース クラス
 
 可能な限りスループットを最大化するには、PolyBase で SQL Data Warehouse にデータを読み込むユーザーに、より大きなリソース クラスを割り当てます。
@@ -555,12 +553,12 @@ PolyBase の既知の問題の詳細については、[Azure SQL Data Warehouse 
 
 次の表は、JSON データセットで **tableName** プロパティを指定する方法の例です。 スキーマとテーブル名の複数の組み合わせを示します。
 
-| DB スキーマ | テーブル名 | **tableName** JSON プロパティ |
-| --- | --- | --- |
-| dbo | MyTable | MyTable、dbo.MyTable、または [dbo].[MyTable] |
-| dbo1 | MyTable | dbo1.MyTable または [dbo1].[MyTable] |
-| dbo | My.Table | [My.Table] または [dbo].[My.Table] |
-| dbo1 | My.Table | [dbo1].[My.Table] |
+| DB スキーマ | テーブル名 | **tableName** JSON プロパティ               |
+| --------- | ---------- | ----------------------------------------- |
+| dbo       | MyTable    | MyTable、dbo.MyTable、または [dbo].[MyTable] |
+| dbo1      | MyTable    | dbo1.MyTable または [dbo1].[MyTable]          |
+| dbo       | My.Table   | [My.Table] または [dbo].[My.Table]            |
+| dbo1      | My.Table   | [dbo1].[My.Table]                         |
 
 次のエラーが表示される場合は、**tableName** プロパティに指定した値に問題がある可能性があります。 **tableName** JSON プロパティの値を指定する正しい方法については、上の表を参照してください。
 
@@ -589,35 +587,35 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 >[!TIP]
 >SQL DW でサポートされるデータ型と、サポートされていないものの対処法については、「[Azure SQL Data Warehouse でのテーブルのデータ型](../sql-data-warehouse/sql-data-warehouse-tables-data-types.md)」の記事を参照してください。
 
-| Azure SQL Data Warehouse のデータ型 | Data Factory の中間データ型 |
-|:--- |:--- |
-| bigint | Int64 |
-| binary | Byte[] |
-| bit | Boolean |
-| char | String, Char[] |
-| date | DateTime |
-| DateTime | DateTime |
-| datetime2 | DateTime |
-| Datetimeoffset | DateTimeOffset |
-| Decimal | Decimal |
-| FILESTREAM attribute (varbinary(max)) | Byte[] |
-| Float | Double |
-| image | Byte[] |
-| int | Int32 |
-| money | Decimal |
-| nchar | String, Char[] |
-| numeric | Decimal |
-| nvarchar | String, Char[] |
-| real | Single |
-| rowversion | Byte[] |
-| smalldatetime | DateTime |
-| smallint | Int16 |
-| smallmoney | Decimal |
-| time | TimeSpan |
-| tinyint | Byte |
-| uniqueidentifier | Guid |
-| varbinary | Byte[] |
-| varchar | String, Char[] |
+| Azure SQL Data Warehouse のデータ型    | Data Factory の中間データ型 |
+| :------------------------------------ | :----------------------------- |
+| bigint                                | Int64                          |
+| binary                                | Byte[]                         |
+| bit                                   | Boolean                        |
+| char                                  | String, Char[]                 |
+| date                                  | DateTime                       |
+| DateTime                              | DateTime                       |
+| datetime2                             | DateTime                       |
+| Datetimeoffset                        | DateTimeOffset                 |
+| Decimal                               | Decimal                        |
+| FILESTREAM attribute (varbinary(max)) | Byte[]                         |
+| Float                                 | Double                         |
+| image                                 | Byte[]                         |
+| int                                   | Int32                          |
+| money                                 | Decimal                        |
+| nchar                                 | String, Char[]                 |
+| numeric                               | Decimal                        |
+| nvarchar                              | String, Char[]                 |
+| real                                  | Single                         |
+| rowversion                            | Byte[]                         |
+| smalldatetime                         | DateTime                       |
+| smallint                              | Int16                          |
+| smallmoney                            | Decimal                        |
+| time                                  | TimeSpan                       |
+| tinyint                               | Byte                           |
+| uniqueidentifier                      | Guid                           |
+| varbinary                             | Byte[]                         |
+| varchar                               | String, Char[]                 |
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストアと形式](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

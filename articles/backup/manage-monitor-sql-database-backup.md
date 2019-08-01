@@ -1,18 +1,18 @@
 ---
 title: Azure Backup によってバックアップされる Azure VM 上の SQL Server データベースを管理および監視する | Microsoft Docs
 description: この記事では、Azure VM 上で実行されている SQL Server データベースを管理し、監視する方法について説明します。
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
-ms.author: raynew
-ms.openlocfilehash: 0a864382e54f5c8641aa6da2369eb914011c712c
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464868"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639585"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 

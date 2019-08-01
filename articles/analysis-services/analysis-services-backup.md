@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 31e8e65b382a3a6bcad2998a0babdf9605dc4968
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15d2d0a043271da18d7884b684ffe8cf5c1f4dc8
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023909"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619209"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 

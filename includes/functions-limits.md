@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: f2470f937d2d812bf79cea3c23d89a50717a5a92
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: aa43fe6c7999b8fa73419916870f9dfca0c01e3d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277333"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601346"
 ---
 | Resource | [従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium プラン](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service プラン](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
@@ -33,6 +33,6 @@ ms.locfileid: "67277333"
 <sup>2</sup> 既定では、App Service プランでの Functions 1.x ランタイムのタイムアウトは無制限です。  
 <sup>3</sup> App Service プランが [Always On](../articles/azure-functions/functions-scale.md#always-on) に設定されている必要があります。 標準[料金](https://azure.microsoft.com/pricing/details/app-service/)でのお支払い。  
 <sup>4</sup> これらの制限は[ホストで設定](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config)されます。  
-<sup>5</sup> 実際にホストできる関数アプリの数は、アプリのアクティビティ、マシン インスタンスのサイズ、対応するリソース使用量によって異なります。
+<sup>5</sup> 実際にホストできる関数アプリの数は、アプリのアクティビティ、マシン インスタンスのサイズ、対応するリソース使用量によって異なります。  
 <sup>6</sup> ストレージの上限は、同じ App Service プランのすべてのアプリにまたがる一時ストレージ内の合計コンテンツ サイズです。 従量課金プランでは、Azure Files を一時ストレージに使用します。  
 <sup>7</sup> 関数アプリが[従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan)でホストされている場合、CNAME オプションのみがサポートされます。 [Premium プラン](../articles/azure-functions/functions-scale.md#premium-plan)または [App Service プラン](../articles/azure-functions/functions-scale.md#app-service-plan)の関数アプリでは、CNAME または A レコードを使用してカスタム ドメインをマップできます。

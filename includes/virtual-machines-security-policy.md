@@ -4,18 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f289da08c63f655006801d89f82640c6e3c6b7be
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181140"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68622699"
 ---
 実行するアプリケーションの仮想マシン (VM) は常に安全な状態に保つ必要があります。 VM の安全を確保する手段としては、Azure のサービスや機能を通じて、VM へのアクセスやデータのストレージにセキュリティを確保する方法が挙げられます。 この記事では、VM とアプリケーションのセキュリティを維持するうえで役に立つ情報を提供します。
 
 ## <a name="antimalware"></a>マルウェア対策
 
-最近のクラウド環境に対する脅威は変化が激しく、コンプライアンスとセキュリティの要件を満たすために効果的な保護を維持しなければならないという圧力はますます大きくなっています。 [Azure に対する Microsoft マルウェア対策](../articles/security/azure-security-antimalware.md)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。 悪意のあることまたは望ましくないことが確認されているソフトウェアが VM 上で実行されようとしていたり、自らインストールを試みたりした場合に、その事実を把握できるようにアラートを構成することができます。
+最近のクラウド環境に対する脅威は変化が激しく、コンプライアンスとセキュリティの要件を満たすために効果的な保護を維持しなければならないという圧力はますます大きくなっています。 [Azure に対する Microsoft マルウェア対策](../articles/security/fundamentals/antimalware.md)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。 悪意のあることまたは望ましくないことが確認されているソフトウェアが VM 上で実行されようとしていたり、自らインストールを試みたりした場合に、その事実を把握できるようにアラートを構成することができます。
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
@@ -53,4 +53,4 @@ VM に接続するときは、公開キー暗号化を使用して、より安�
 
 
 ## <a name="next-steps"></a>次の手順
-- Azure Security Center を使って [Linux](../articles/virtual-machines/linux/tutorial-azure-security.md) または [Windows](../articles/virtual-machines/windows/tutorial-azure-security.md) の仮想マシンのセキュリティを監視する手順を参照します。
+- Azure Security Center を使って [Linux](../articles/security/fundamentals/overview.md) または [Windows](../articles/virtual-machines/windows/tutorial-azure-security.md) の仮想マシンのセキュリティを監視する手順を参照します。

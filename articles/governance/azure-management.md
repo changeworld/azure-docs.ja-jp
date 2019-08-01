@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: d68e7d9ec3b60b93f0050250d7e7d718db7aa5b8
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 520b84722d9434b309d3eb6da0baa3c1e4da33d0
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488479"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608196"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Azure の管理サービスの概要
 
@@ -44,7 +44,7 @@ Azure におけるガバナンスは、主に 2 つのサービスで実装さ�
 
 ## <a name="secure"></a>セキュリティ保護
 
-リソースおよびデータのセキュリティを管理する セキュリティ プログラムには、脅威の評価、データの収集と分析、およびアプリケーションとリソースの準拠が必要になります。 セキュリティの監視と脅威の分析は、[Azure Security Center](../security-center/security-center-intro.md) によって提供されます。Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を備えています。 Azure リソースのセキュリティ保護に関する包括的な情報とガイダンスについては、「[Azure Security の概要](../security/azure-security.md)」を参照してください。
+リソースおよびデータのセキュリティを管理する セキュリティ プログラムには、脅威の評価、データの収集と分析、およびアプリケーションとリソースの準拠が必要になります。 セキュリティの監視と脅威の分析は、[Azure Security Center](../security-center/security-center-intro.md) によって提供されます。Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を備えています。 Azure リソースのセキュリティ保護に関する包括的な情報とガイダンスについては、「[Azure Security の概要](../security/fundamentals/overview.md)」を参照してください。
 
 ## <a name="protect"></a>保護
 

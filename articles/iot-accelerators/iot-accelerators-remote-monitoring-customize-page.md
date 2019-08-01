@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec0b9fbdfdb96317e1e7f6fe00384ba4f8c42bcc
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447082"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607955"
 ---
 # <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>リモート監視ソリューション アクセラレータの Web UI にカスタム ページを追加する
 
@@ -29,7 +29,7 @@ ms.locfileid: "61447082"
 このハウツー ガイドの手順を最後まで行うには、ローカル開発マシンに次のソフトウェアがインストールされている必要があります。
 
 - [Git](https://git-scm.com/downloads)
-- [Node.js](https://nodejs.org/download/)
+- [Node.JS](https://nodejs.org/download/)
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>UI のローカル開発環境を準備する
 
@@ -160,7 +160,7 @@ Web UI のローカル インスタンスをソリューション アクセラ�
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    テストと開発時にのみ、SSH アクセスを有効にします。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../security/azure-security-network-security-best-practices.md)。
+    テストと開発時にのみ、SSH アクセスを有効にします。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](../security/fundamentals/network-best-practices.md)。
 
 1. Azure Portal または [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例:
 

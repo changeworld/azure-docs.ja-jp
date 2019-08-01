@@ -3,7 +3,7 @@ title: Service Fabric とコンテナーの概要 | Microsoft Docs
 description: Service Fabric に関する説明と、コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法の概要を示します。 この記事では、コンテナーの使い方と、Service Fabric で利用可能な機能の概要について説明しています。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/8/2018
-ms.author: aljo
-ms.openlocfilehash: 5a45f14e5ac1da5152f320bd92b1ebb42be1d214
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 2ed3a9d4b1ec219d22a9e01e7acec5d7e950289b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60881429"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599766"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 

@@ -3,18 +3,18 @@ title: Azure Maps でのポイント データのクラスタリング | Microso
 description: Web SDK でポイント データをクラスター化する方法
 author: rbrundritt
 ms.author: richbrun
-ms.date: 03/27/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 6dbd4461e7b8382ec3c4075b9688de59678f98f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69e95a9e6c76da5d502314a7190e99fc10e968f7
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957317"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639069"
 ---
 # <a name="clustering-point-data"></a>ポイント データのクラスタリング
 

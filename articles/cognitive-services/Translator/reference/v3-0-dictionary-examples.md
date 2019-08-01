@@ -1,6 +1,6 @@
 ---
 title: Translator Text API の Dictionary Examples メソッド
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Translator Text API の Dictionary Examples メソッドを使用します。
 services: cognitive-services
 author: swmachan
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: e4665157803409b884c3333d9a3514403e5630bd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 15d23016df9b0c85b9d252b4c4a9ea48d3608f75
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435122"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595053"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: 辞書の例
 

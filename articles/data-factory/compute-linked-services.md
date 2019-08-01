@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 0e7405e48307091ff5df12096d49a00c011e2de3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d0fd26da81c4f59f16b5f0364cf165ec36a6ea39
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480432"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516331"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 この記事では、データの処理または変換に利用できるさまざまなコンピューティング環境について説明します。 これらのコンピューティング環境を Azure Data Factory にリンクする「リンクされたサービス」の構成時に Data Factory でサポートされるさまざまな構成 (オンデマンドと Bring Your Own の比較) に関する詳細も提供します。
@@ -95,7 +95,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 >
 > 
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 | プロパティ                     | 説明                              | 必須 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | type プロパティは **HDInsightOnDemand**に設定されます。 | はい      |
@@ -283,7 +283,7 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
   }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 | プロパティ          | 説明                                                  | 必須 |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | type プロパティは **HDInsight**に設定されます。            | はい      |
@@ -291,7 +291,7 @@ Azure HDInsight の「リンクされたサービス」を作成し、独自の 
 | username          | 既存の HDInsight クラスターに接続するために使用されるユーザーの名前を指定します。 | はい      |
 | password          | ユーザー アカウントのパスワードを指定します。                       | はい      |
 | linkedServiceName | HDInsight クラスターで使われる Azure Blob Storage を参照する Azure Storage のリンクされたサービスの名前です。 <p>現在は、Azure Data Lake Store のリンクされたサービスをこのプロパティに指定することはできません。 HDInsight クラスターが Data Lake Store にアクセスできる場合、Hive/Pig スクリプトから Azure Data Lake Store 内のデータにアクセスできます。 </p> | はい      |
-| isEspEnabled      | HDInsight クラスターが [Enterprise セキュリティ パッケージ](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)対応の場合は、'*true*' を指定します。 既定値は '*false*' です。 | いいえ       |
+| isEspEnabled      | HDInsight クラスターが [Enterprise セキュリティ パッケージ](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture)対応の場合は、'*true*' を指定します。 既定値は '*false*' です。 | いいえ       |
 | connectVia        | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 <br />Enterprise セキュリティ パッケージ (ESP) 対応の HDInsight クラスターには、クラスターへの通信経路があるセルフホステッド統合ランタイムを使用するか、ESP HDInsight クラスターと同じ仮想ネットワーク内にデプロイする必要があります。 | いいえ       |
 
 > [!IMPORTANT]
@@ -343,7 +343,7 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
 ```
 
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | type プロパティは **AzureBatch**に設定されます。 | はい      |
@@ -379,7 +379,7 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 | プロパティ               | 説明                              | 必須                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Type                   | type プロパティは次の値に設定されます。**AzureML**。 | はい                                      |
@@ -421,7 +421,7 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
 | プロパティ             | 説明                              | 必須                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
@@ -481,11 +481,11 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
 | プロパティ             | 説明                              | 必須                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| name                 | リンクされたサービスの名前               | はい   |
+| 名前                 | リンクされたサービスの名前               | はい   |
 | type                 | type プロパティは次の値に設定されます。**AzureDatabricks**。 | はい                                      |
 | domain               | Databricks ワークスペースのリージョンに基づき Azure リージョンを指定します。 例: https://eastus.azuredatabricks.net | はい                                 |
 | accessToken          | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)を参照してください。  | はい                                       |

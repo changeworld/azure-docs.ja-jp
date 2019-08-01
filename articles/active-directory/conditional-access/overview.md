@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 370771d44e2fbbf0fca7af453f7425ebc1b1bdcd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 99d17b354e267d003e23e507ca190b951e3ed4a0
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612611"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608099"
 ---
 # <a name="what-is-conditional-access"></a>条件付きアクセスとは
 
@@ -73,7 +73,7 @@ Azure AD の条件付きアクセスを使うと、承認されたユーザー�
 
 ## <a name="azure-ad-conditional-access-and-federated-authentication"></a>Azure AD の条件付きアクセスとフェデレーション認証
 
-条件付きアクセス ポリシーは、[フェデレーション認証](../../security/azure-ad-choose-authn.md#federated-authentication)とシームレスに連動します。 このサポートには、サポートされているすべての条件と制御の他に、[Azure AD レポート](../reports-monitoring/concept-sign-ins.md)を使用した、アクティブなユーザー サインインへのポリシーの適用状況の可視化が含まれます。
+条件付きアクセス ポリシーは、[フェデレーション認証](../../security/fundamentals/choose-ad-authn.md#federated-authentication)とシームレスに連動します。 このサポートには、サポートされているすべての条件と制御の他に、[Azure AD レポート](../reports-monitoring/concept-sign-ins.md)を使用した、アクティブなユーザー サインインへのポリシーの適用状況の可視化が含まれます。
 
 "*Azure AD を使用したフェデレーション認証*" とは、信頼された認証サービスによって Azure AD に対するユーザー認証が処理されることを意味します。 信頼された認証サービスとは、たとえば Active Directory フェデレーション サービス (AD FS) などのフェデレーション サービスです。 この構成では、プライマリ ユーザー認証がサービスで実行された後、個々のアプリケーションへのサインインに Azure AD が使用されます。 ユーザーがアクセスしようとしているアプリケーションへのアクセスが許可される前に、Azure AD の条件付きアクセスが適用されます。 
 

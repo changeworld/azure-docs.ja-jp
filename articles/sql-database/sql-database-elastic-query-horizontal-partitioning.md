@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 3b2b472407175df307c569704d4c7611737c4ea1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1416cbdc29d355e2ed83737140b46306de734127
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60694360"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568572"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体をレポートする (プレビュー)
 

@@ -4,8 +4,8 @@ titleSuffix: Azure
 description: 分析と機械学習を行うために、Azure で Linux (Ubuntu) データ サイエンス用仮想マシンの構成と作成を行います。
 services: machine-learning
 documentationcenter: ''
-author: gopitk
-ms.author: gokuma
+author: vijetajo
+ms.author: vijetaj
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
@@ -14,14 +14,14 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.openlocfilehash: 5a9fdebc8db0c2a1acc20a894f80cfcc87fb89d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a19f414f31c307111edad876ed973ff4027d907
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236487"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591920"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
@@ -121,7 +121,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
 1. グラフィカル セッションの場合の X2Go
 1. Jupyter Notebook の場合の JupyterHub と JupyterLab
 
-また、Data Science VM を Azure Notebooks に接続して、VM で Jupyter Notebook を実行し、無料のサービス レベルの制限をバイパスすることもできます。 詳細については、[Notebooks プロジェクトの管理と構成 - コンピューティング レベル](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)に関するページを参照してください。
+また、Data Science VM を Azure Notebooks に接続して、VM で Jupyter Notebook を実行し、無料のサービス レベルの制限をバイパスすることもできます。 詳細については、[Notebooks プロジェクトの管理と構成 - コンピューティング レベル](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)に関するページを参照してください。
 
 ### <a name="ssh"></a>SSH
 

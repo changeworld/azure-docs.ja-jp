@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: kfollis
 ms.author: kfollis
-ms.date: 06/13/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 87ec600a2f6c4a560ec7cbb064b561fa76e2b615
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 3747ca7504e1a8a6bbeb6237c1b3cb2e5e4afb5b
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304831"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667468"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する
 
@@ -44,6 +44,7 @@ ms.locfileid: "67304831"
 * *.vortex.data.microsoft.com
 * *.vscommerce.visualstudio.com
 * *.vssps.visualstudio.com
+* *.windows.net
 * *.wpc.azureedge.net
 
 > [!NOTE]

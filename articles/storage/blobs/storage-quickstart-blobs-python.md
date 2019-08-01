@@ -9,16 +9,18 @@ ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: mhopkins
 ms.reviewer: seguler
-ms.openlocfilehash: 5fe011d740b1c08ae3b9cf4e3ea67d2cdd4fee66
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: f96d1956fececbe00bf9f33bd146056836c2c4c0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360100"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564989"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>クイック スタート:Python を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 このクイック スタートでは、Python を使用して、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 BLOB は、任意のサイズのテキストまたはバイナリ データ (画像、ドキュメント、ストリーミング メディア、アーカイブ データなど) を格納できるオブジェクトであり、Azure Storage において、ファイル共有、スキーマレス テーブル、メッセージ キューとは明確に区別されます。 詳細については、[Azure Storage の概要](/azure/storage/common/storage-introduction)に関するページを参照してください。
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

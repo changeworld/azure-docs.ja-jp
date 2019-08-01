@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 07/16/2019
-ms.openlocfilehash: 8d795fe88721dfed65134b550eb0036c4e7310eb
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9b4770f565f256d444ab6a6f06bb369b8417eb18
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305801"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568258"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL データベースを BACPAC ファイルにエクスポートする
 

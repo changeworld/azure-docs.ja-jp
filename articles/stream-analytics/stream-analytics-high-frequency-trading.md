@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 33a7b27d065fc0383e4693053f7bfb6d56e2d33b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae82c0e72287ee4c89cb3fb2294bf4bd79aec8c3
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61480070"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598645"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Stream Analytics による高頻度取引のシミュレーション
 Azure Stream Analytics では、SQL 言語に JavaScript のユーザー定義関数 (UDF) とユーザー定義集計 (UDA) を組み合わせることで高度な分析を行うことができます。 高度な分析には、オンライン機械学習のトレーニングやスコアリングのほか、ステートフル プロセス シミュレーションが含まれます。 この記事では、高頻度取引を例に、Azure Stream Analytics ジョブで線形回帰を実行し、継続的にトレーニングとスコア付けを行う方法について説明します。
@@ -65,7 +65,7 @@ socket.On(Socket.EVENT_CONNECT, () =>
 >イベントのタイムスタンプは **lastUpdated** で、エポック時間で表現されます。
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>高頻度取引の予測モデル
-デモンストレーションの目的上、ここでは Darryl Shen 氏がその[論文](http://eprints.maths.ox.ac.uk/1895/1/Darryl%20Shen%20%28for%20archive%29.pdf)の中で説明している線形モデルを使用します。
+デモンストレーションの目的上、ここでは Darryl Shen 氏がその[論文](https://docplayer.net/23038840-Order-imbalance-based-strategy-in-high-frequency-trading.html)の中で説明している線形モデルを使用します。
 
 Volume Order Imbalance (VOI) は、現在の買い気配値/売り気配値/売買高と前回のティックの買い気配値/売り気配値/売買高との関数です。 同論文では、VOI と将来の値動きの間には相関があると考えています。 過去の 5 つの VOI 値とそれに続く 10 ティックの価格変動との間で線形モデルを構築しています。 このモデルのトレーニングには、前日のデータと線形回帰が使用されます。 
 

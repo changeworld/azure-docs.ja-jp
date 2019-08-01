@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: fcc26d0d42576e8d39407f2af5bafe6de24db19f
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: b088b4d0e21819411c7329f3cb1e6ca9761665fd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154497"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610207"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -215,7 +215,7 @@ Vnet は、他の VNet から、および Azure インフラストラクチャ�
 はい。 Azure Marketplace を通じて複数のベンダーから提供されている[ファイアウォール ネットワーク仮想アプライアンス](https://azure.microsoft.com/marketplace/?term=firewall)をデプロイできます。
 
 ### <a name="is-there-information-available-about-securing-vnets"></a>VNet のセキュリティ保護に関する情報はありますか。
-はい。 詳細については、「[Azure のネットワーク セキュリティの概要](../security/security-network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
+はい。 詳細については、「[Azure のネットワーク セキュリティの概要](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
 ## <a name="apis-schemas-and-tools"></a>API、スキーマ、およびツール
 

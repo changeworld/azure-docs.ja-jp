@@ -1,18 +1,19 @@
 ---
 title: Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します
-author: utraghuv
-manager: vijayts
+ms.reviewer: utraghuv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.author: utraghuv
-ms.openlocfilehash: 1e643e74f35b381dfb329453d81615bc69785ed7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 2c1890089bcb713d8ef80bca25b123b425d96607
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465416"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688666"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
 マルウェア、ランサムウェア、侵入などのセキュリティ問題への懸念が高まっています。 これらのセキュリティ問題は、金銭とデータの両方の観点からコストがかかる可能性があります。 このような攻撃を防ぐために、Azure Backup にはハイブリッド バックアップを保護するセキュリティ機能が用意されています。 この記事では、Azure Recovery Services エージェントと Azure Backup Server を使用して、これらの機能を有効にして使用する方法について説明します。 次のような機能が該当します。

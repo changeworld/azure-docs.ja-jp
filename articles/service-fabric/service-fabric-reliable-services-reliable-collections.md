@@ -3,7 +3,7 @@ title: Azure Service Fabric ステートフル サービスの Reliable Collecti
 description: Service Fabric ステートフル サービスは、可用性と拡張性が高く、待機時間が短いクラウド アプリケーションの作成を可能にする Reliable Collection を提供します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: masnider,rajak,zhol
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 1/3/2019
-ms.author: aljo
-ms.openlocfilehash: 4ed76b207db4712058b5524cd1b31fd65b0e19a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: a7b30003fd02f8ab2e367311cdb3f56c80dbb4b2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773647"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599268"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric ステートフル サービスの Reliable Collection の概要
 

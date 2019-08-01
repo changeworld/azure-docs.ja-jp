@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 3dab2da2d54efe73b7b782800b190ea8aac2b5cd
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: c42e70efc8543e1d255690070ffb51b865e1754f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460685"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608587"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -59,7 +59,7 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 ### <a name="securing-data-store-credentials"></a>データ ストアの資格情報の保護
 
-- **Azure Data Factory で管理されたストアに暗号化された資格情報を格納します**。 Data Factory では、データ ストアの資格情報の保護を容易にするために、Microsoft が管理する証明書を使用して暗号化します。 証明書は、2 年ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、Azure Data Factory 管理サービスによって管理される Azure ストレージ アカウントに安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../security/security-storage-overview.md)」を参照してください。
+- **Azure Data Factory で管理されたストアに暗号化された資格情報を格納します**。 Data Factory では、データ ストアの資格情報の保護を容易にするために、Microsoft が管理する証明書を使用して暗号化します。 証明書は、2 年ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、Azure Data Factory 管理サービスによって管理される Azure ストレージ アカウントに安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../security/fundamentals/storage-overview.md)」を参照してください。
 - **Azure Key Vault に資格情報を格納します**。 データ ストアの資格情報は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に格納することもできます。 Data Factory は、アクティビティの実行中に資格情報を取得します。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。
 
 ### <a name="data-encryption-in-transit"></a>転送中のデータの暗号化

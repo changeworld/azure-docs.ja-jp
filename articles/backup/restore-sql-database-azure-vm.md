@@ -1,18 +1,18 @@
 ---
 title: Azure Backup を使用して Azure VM 上でバックアップ済みの SQL Server データベースを復元する | Microsoft Docs
 description: この記事では、Azure VM 上で実行されており、Azure Backup でバックアップしてある SQL Server データベースを復元する方法について説明します。
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: raynew
-ms.openlocfilehash: f6bd9ea70a3334fbf3843a6b5d44d10a929e20ae
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 71867e520d9c98b4af4d4f18f3d08c9e8cc4a8c4
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467209"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639551"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 上の SQL Server データベースを復元する
 

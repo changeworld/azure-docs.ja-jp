@@ -3,7 +3,7 @@ title: Reliable Collection での作業 | Microsoft Docs
 description: Reliable Collection で作業するためのベスト プラクティスについて説明します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/22/2019
-ms.author: aljo
-ms.openlocfilehash: bb99e5984f91edb0cf40f3bdc485624b9ec59833
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 2d1284115a35881087e0ced0ee735ea38ce3f5ce
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60506741"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598710"
 ---
 # <a name="working-with-reliable-collections"></a>Reliable Collection での作業
 Service Fabric は、Reliable Collection を使用して .NET 開発者が利用できるステートフルなプログラミング モデルを提供します。 具体的には、Service Fabric は Reliable Dictionary と Reliable Queue のクラスを提供します。 これらのクラスを使用すると、状態がパーティション分割され (拡張性のため)、レプリケートされ (可用性のため)、パーティション内でトランザクションが行われます (ACID セマンティックのため)。 リライアブル ディクショナリ オブジェクトの一般的な使い方と、実際の動作を見てみましょう。

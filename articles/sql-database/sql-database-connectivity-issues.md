@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 06/14/2019
-ms.openlocfilehash: adbe8dfd41725c11516f820656b0476ed1aa8881
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: da2107a0573fafd10394931be21fb446f83fd5f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144048"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569072"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL Database の接続に関する問題と一時的なエラーに対応する
 

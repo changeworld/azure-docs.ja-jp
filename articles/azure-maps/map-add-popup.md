@@ -3,18 +3,18 @@ title: Azure Maps を使用してポップアップを追加する | Microsoft D
 description: JavaScript マップにポップアップを追加する方法
 author: jingjing-z
 ms.author: jinzh
-ms.date: 11/09/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92d44ef3d0db8e93d4babd7441238c7fa105dbd5
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769551"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639009"
 ---
 # <a name="add-a-popup-to-the-map"></a>マップにポップアップを追加する
 

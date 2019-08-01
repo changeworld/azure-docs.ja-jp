@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dbcc05093d801261493745c61dc5f68878d338b0
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60296459"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607670"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
 Azure Active Directory (Azure AD) Connect では、ユーザーは同じパスワードを使用して、クラウドとオンプレミス両方のリソースにサインインできます。 この記事では、Azure AD へのサインインに使用する ID を選択できるようにするために、各 ID モデルの主要な概念について説明します。
@@ -49,7 +49,7 @@ Azure AD は、次の認証方法をサポートします。
 
 Office 365、SaaS アプリケーション、およびその他の Azure AD ベースのリソースへのユーザー サインインのみを有効にするほとんどの組織では、既定のパスワード ハッシュの同期オプションをお勧めします。
  
-認証方法の選択の詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../../security/azure-ad-choose-authn.md)」を参照してください。
+認証方法の選択の詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../../security/fundamentals/choose-ad-authn.md)」を参照してください。
 
 ### <a name="password-hash-synchronization"></a>パスワード ハッシュの同期
 パスワード ハッシュの同期では、ユーザー パスワードのハッシュがオンプレミスの Active Directory から Azure AD に同期されます。 オンプレミスでパスワードが変更またはリセットされると、ユーザーが常にクラウドのリソースとオンプレミスのリソースに同じパスワードを使用できるように、新しいパスワード ハッシュが直ちに Azure AD に同期されます。 パスワードがクリア テキストの状態で Azure AD に送信されたり Azure AD に格納されたりすることはありません。 パスワード ハッシュの同期をパスワードの書き戻しと共に使用すると、Azure AD でセルフサービスのパスワード リセットを有効にできます。

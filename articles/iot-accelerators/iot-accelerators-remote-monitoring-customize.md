@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: aed63e332375be4f8ed939cf162545c9f366f329
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb3d5fea68b5b1b6e648943cb3dbaab5857e9e07
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143453"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608003"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをカスタマイズする
 
@@ -37,7 +37,7 @@ UI を変更するために、そのコピーをローカルで実行できま�
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    SSH アクセスを有効にするのはテストおよび開発中のみにしてください。 SSH を有効にした場合、[使用し終えたらできるだけ早く無効にする必要があります](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
+    SSH アクセスを有効にするのはテストおよび開発中のみにしてください。 SSH を有効にした場合、[使用し終えたらできるだけ早く無効にする必要があります](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines)。
 
 1. Azure Portal または Azure Cloud Shell を使用して、仮想マシンの名前とパブリック IP アドレスを検索します。 例:
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: d4bbc83a101ba6b110ec97d5107ba3f79dd10843
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 195bbb70ac5062c6bbf6034e6a6e9abac018c62f
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870952"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677973"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standard Encoder の形式およびコーデック
 
@@ -40,10 +40,6 @@ ms.locfileid: "67870952"
 | Matroska/WebM (.mkv) |はい |
 | WAVE/WAV (.wav) |はい |
 | QuickTime (.mov) |はい |
-
-> [!NOTE]
-> 
-> 
 
 ### <a name="audio-formats-in-input-containers"></a>入力コンテナーのオーディオ形式
 

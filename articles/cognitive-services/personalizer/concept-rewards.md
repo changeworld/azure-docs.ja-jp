@@ -3,19 +3,19 @@ title: 報酬スコア - Personalizer
 titleSuffix: Azure Cognitive Services
 description: 報酬スコアは、パーソナル化の選択肢である RewardActionID がユーザーに対してどれほどの結果を生み出したかを示します。 報酬スコアの値は、ユーザーの動作の観測値に基づくビジネス ロジックによって判断されます。 Personalizer は、報酬を評価することにより、機械学習モデルをトレーニングします。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 39db28cd7e11d77362a2aefcf4ad8d2748db59c2
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 72c425a1ec9fb83cc2e9dd1bae2c4f521109f162
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722512"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663373"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>報酬スコアは、パーソナル化の成功を示します
 

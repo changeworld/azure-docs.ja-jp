@@ -3,7 +3,7 @@ title: Azure Service Fabric Reliable Collection のトランザクションと�
 description: Azure Service Fabric Reliable State Manager と Reliable Collection トランザクションとロック。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: masnider,rajak
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: aljo
-ms.openlocfilehash: 9785a09a3ac3e119507b4ac28075d887c7edc619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 8e77e488a3c0a40a714a0e8efffba0a2947454bf
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60774065"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599314"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collection のトランザクションとロック モード
 

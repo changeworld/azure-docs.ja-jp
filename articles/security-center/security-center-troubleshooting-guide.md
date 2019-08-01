@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 63275db36bdb64985625c3789d558bd09e2d47bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93656578fac52e4ba5ff96e655ea51678f2292cd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60912061"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609910"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -101,7 +101,7 @@ Security Center に接続して登録するエージェントには、ドメイ�
 
 ## <a name="troubleshooting-endpoint-protection-not-working-properly"></a>Endpoint Protection が正しく動作していない場合のトラブルシューティング
 
-ゲスト エージェントは、[Microsoft マルウェア対策](../security/azure-security-antimalware.md)拡張機能によって実行されるすべての処理の親プロセスです。 ゲスト エージェント プロセスが失敗すると、ゲスト エージェントの子プロセスとして実行されている Microsoft マルウェア対策も失敗する可能性があります。  このようなシナリオでは、次の点を確認することをお勧めします。
+ゲスト エージェントは、[Microsoft マルウェア対策](../security/fundamentals/antimalware.md)拡張機能によって実行されるすべての処理の親プロセスです。 ゲスト エージェント プロセスが失敗すると、ゲスト エージェントの子プロセスとして実行されている Microsoft マルウェア対策も失敗する可能性があります。  このようなシナリオでは、次の点を確認することをお勧めします。
 
 - ターゲット VM がカスタム イメージであり、VM の作成者がゲスト エージェントをインストールしていない場合。
 - ターゲットが Windows VM ではなく Linux VM の場合、Linux VM に Windows バージョンのマルウェア対策拡張機能をインストールすると、インストールは失敗します。 Linux ゲスト エージェントには、OS バージョンと必要なパッケージに関して固有の要件があります。それらの要件が満たされていない場合、VM エージェントも機能しません。

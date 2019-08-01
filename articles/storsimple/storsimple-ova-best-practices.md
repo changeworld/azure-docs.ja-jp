@@ -12,17 +12,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/08/2018
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b5ffc16a7c9dacef3036ca5ce225265252dcdf5d
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630140"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516758"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array のベスト プラクティス
+
 ## <a name="overview"></a>概要
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 Microsoft Azure StorSimple Virtual Array は、ハイパーバイザーで実行されるオンプレミスの仮想デバイスと Microsoft Azure のクラウド ストレージとの間でストレージ タスクを管理する統合ストレージ ソリューションです。 8000 シリーズの物理アレイに代わる効率的かつ経済的な選択肢となります。 仮想アレイは、既存のハイパーバイザー インフラストラクチャ上で動作し、iSCSI と SMB の両方のプロトコルをサポートします。仮想アレイは、リモート オフィス/ブランチ オフィスのシナリオに適しています。 StorSimple ソリューションの詳細については、[Microsoft Azure StorSimple の概要](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx)のページをご覧ください。
 
 この記事では、StorSimple Virtual Array の初期セットアップ時、デプロイ時、管理時に実施するベスト プラクティスについて説明します。 仮想アレイのセットアップと管理を対象とした検証済みのガイドラインとなっています。 この記事は、データセンターで仮想アレイのデプロイと管理を担当する IT 管理者を対象としています。

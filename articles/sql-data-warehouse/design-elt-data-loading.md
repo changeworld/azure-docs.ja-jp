@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 05/10/2019
+ms.date: 07/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fa688f40f8eb968f2c388601b387e4f584951a91
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c90deefba75cd8bbeda126c9da8a05e1069831d4
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595596"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597477"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 用の PolyBase データ読み込み戦略をデザインする
 
@@ -73,8 +73,8 @@ PolyBase は、UTF-8 と UTF-16 でエンコードされた区切りテキスト
 |       timestamp       |                          datetime2                           |
 |       timestamp       |                           Datetime                           |
 |       timestamp       |                             time                             |
-|       date        | 1) int として読み込んで date にキャストする </br> 2) [以下で Azure Databricks SQL DW コネクタを使用する](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse) </br> spark.conf.set( "spark.sql.parquet.writeLegacyFormat", "true" ) </br> (**近日公開予定**) |
-|        decimal        | [以下で Azure Databricks SQL DW コネクタを使用する](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse) </br> spark.conf.set( "spark.sql.parquet.writeLegacyFormat", "true" ) </br> (**近日公開予定**) |
+|       date            |                             date                             |
+|        decimal        |                            decimal                           |
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2.データを Azure Blob Storage または Azure Data Lake Store に配置する
 

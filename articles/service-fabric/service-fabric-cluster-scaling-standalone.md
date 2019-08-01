@@ -5,7 +5,6 @@ services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: chackdan
-editor: aljo
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: dekapur
-ms.openlocfilehash: 05049b9b08b4630c4299a6d3054c7815b082af52
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eedf80ec82a748f5da8e51aed8b4d403dffe4169
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516036"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599867"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>Service Fabric スタンドアロン クラスターのスケーリング
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 クラスターには、場合によっては数千のノードを含めることができます。 Service Fabric クラスターの作成後は、クラスターを水平方向 (ノードの数を変更する) または垂直方向 (ノードのリソースを変更する) にスケーリングすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -49,7 +48,7 @@ Service Fabric クラスターは、ネットワークで接続された一連�
 ## <a name="scaling-up-and-down-or-vertical-scaling"></a>スケールアップとスケールダウン (垂直方向のスケーリング) 
 クラスター内のノードのリソース (CPU、メモリ、またはストレージ) を変更します。
 - 長所:ソフトウェアやアプリケーションのアーキテクチャは変わりません。
-- 短所:スケーリングには限度があります。個々のノード上でリソースをどれだけ増加できるかに制限があるためです。 リソースを追加または削除するために物理または仮想のマシンをオフラインにする必要があるため、ダウンタイムが生じます。
+- 短所:スケーリングには限度があります。個々のノード上でリソースをどれだけ増加できるかに制限があるためです。 リソースを追加または削除するために物理マシンまたは仮想マシンをオフラインにする必要があるため、ダウンタイムが生じます。
 
 ## <a name="next-steps"></a>次の手順
 * [アプリケーションのスケーラビリティ](service-fabric-concepts-scalability.md)について学習します。

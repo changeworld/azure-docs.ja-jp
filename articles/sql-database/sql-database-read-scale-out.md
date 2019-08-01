@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-manager: craigg
 ms.date: 06/03/2019
-ms.openlocfilehash: 3d9da312f86128dc738b367371016d03da2c1629
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: aefd3da1908b2be879b5ba500746fab48e43d5bd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228242"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566962"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する
 

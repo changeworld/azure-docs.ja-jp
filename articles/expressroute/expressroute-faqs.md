@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e5674ffb4325eb27af8d0673b2d6ad5ba3a6195e
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854342"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592060"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -139,7 +139,7 @@ Microsoft ピアリングを使用して Azure のパブリック サービス (
 
 オンプレミスから Azure へのパスが ExpressRoute 回線で確実に優先されるようにするには、お使いのルーターに *Local Preference* 属性を実装する必要があります。
 
-BGP パスの選択と一般的なルーター構成に関する追加情報については、[こちら](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-of-microsoft-and-public-peerings)を参照してください。 
+BGP パスの選択と一般的なルーター構成に関する追加情報については、[こちら](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings)を参照してください。 
 
 ### <a name="onep2plink"></a>クラウド エクスチェンジで併置しておらず、サービス プロバイダーがポイント ツー ポイント接続を提供している場合は、オンプレミス ネットワークと Microsoft 間の物理接続を 2 つ注文する必要がありますか。
 

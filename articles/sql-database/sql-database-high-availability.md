@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-manager: craigg
 ms.date: 06/10/2019
-ms.openlocfilehash: a88842802759a5c3ae7af7334bbe125344c978ea
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 226b0c1cb11fc872cb7759e0d0e49275b9c2d9bf
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066911"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568145"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性と Microsoft Azure SQL Database
 

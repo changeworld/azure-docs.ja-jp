@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e61207ea23b9b9560668b58b33e3f32f5f70ab2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c5a08677759f0ed1a39f5507d936c777516b237
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083936"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608101"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -135,7 +135,7 @@ Azure AD Privileged Identity Management を有効にした後、グローバル�
 
 #### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>サービス、所有者、管理者のインベントリを実施する
 
-個人所有機器の持ち込み (BYOD) と自宅からの作業のポリシーの増加や、ビジネスにおけるワイヤレス接続の拡大に伴い、ネットワークに接続するユーザーを監視することが重要です。 多くの場合、効果的なセキュリティ監査は、IT でサポートされていないため安全ではない可能性のあるネットワーク上で実行されているデバイス、アプリケーション、プログラムを明らかにします。 詳しくは、「[Azure セキュリティの管理と監視の概要](../../security/security-management-and-monitoring-overview.md)」をご覧ください。 インベントリ プロセスには、次のすべてのタスクを含めてください。 
+個人所有機器の持ち込み (BYOD) と自宅からの作業のポリシーの増加や、ビジネスにおけるワイヤレス接続の拡大に伴い、ネットワークに接続するユーザーを監視することが重要です。 多くの場合、効果的なセキュリティ監査は、IT でサポートされていないため安全ではない可能性のあるネットワーク上で実行されているデバイス、アプリケーション、プログラムを明らかにします。 詳しくは、「[Azure セキュリティの管理と監視の概要](../../security/fundamentals/management-monitoring-overview.md)」をご覧ください。 インベントリ プロセスには、次のすべてのタスクを含めてください。 
 
 * 管理者ロールを持つユーザーと、それらのユーザーが管理できるサービスを識別します。
 * Azure AD PIM を使用して、ステージ 1 に示されているロール以外の追加ロールなど、Azure AD への管理者アクセス権を持つ組織内のユーザーを確認します。
@@ -291,7 +291,7 @@ Azure AD 管理者ロールと共に Privileged Identity Management を使用し
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Azure ログ統合を使用して、関連する Azure ログを SIEM システムに送信する 
 
-Azure ログ統合を使用すると、未加工のログを、Azure リソースから組織の既存のセキュリティ情報イベント管理 (SIEM) システムに統合できます。 [Azure ログ統合](../../security/security-azure-log-integration-overview.md)では、Windows イベント ビューアー ログの Windows イベントと、Azure アクティビティ ログの Azure リソース、Azure Security Center アラート、Azure 診断ログを収集します。 
+Azure ログ統合を使用すると、未加工のログを、Azure リソースから組織の既存のセキュリティ情報イベント管理 (SIEM) システムに統合できます。 [Azure ログ統合](../../security/fundamentals/azure-log-integration-overview.md)では、Windows イベント ビューアー ログの Windows イベントと、Azure アクティビティ ログの Azure リソース、Azure Security Center アラート、Azure 診断ログを収集します。 
 
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Azure AD を介して他のクラウド アプリへのアクセスを管理する組織における追加の手順

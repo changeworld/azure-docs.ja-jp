@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2644e0e35139ac470b89f6af1b95cf510f60a0a
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561015"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608140"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>ベースライン ポリシー:エンド ユーザーの保護 (プレビュー)
 
@@ -75,5 +75,5 @@ Azure AD Premium ライセンスが割り当てられているユーザーは、
 詳細については、次を参照してください。
 
 * [条件付きアクセス ベースライン保護ポリシー](concept-baseline-protection.md)
-* [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/azure-ad-secure-steps.md)
+* [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/fundamentals/steps-secure-identity.md)
 * [Azure Active Directory の条件付きアクセスとは](overview.md)

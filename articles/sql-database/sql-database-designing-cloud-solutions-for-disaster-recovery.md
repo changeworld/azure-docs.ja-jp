@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 46232afcaf9504d4cfbd80160e2d7e7ea958d600
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a79fa40568502a73194e467de2227d54931d0100
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61488190"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568943"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL Database を使用して世界規模の可用性を備えたサービスを設計する
 

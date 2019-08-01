@@ -1,6 +1,6 @@
 ---
 title: .NET を使用してモデレーション ジョブを使用する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Content Moderator .NET SDK を使用して、Azure Content Moderator で画像コンテンツまたはテキスト コンテンツのエンド ツー エンドのコンテンツ モデレーション ジョブを開始します。
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 24d5483cf3b418cada3c5b7f03eedbff13cc36d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d98c88a6e1d6dfa23f53c32c85c013b4cf2c468d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62113870"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565600"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>モデレーション ジョブを定義して使用する (.NET)
 

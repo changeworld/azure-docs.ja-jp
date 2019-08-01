@@ -4,7 +4,7 @@ titleSuffix: Azure
 description: ディープ ラーニング データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法。
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 0609cabd5a9898900580580d1f5f412722637bcf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: 20d5e603d54654b626722fd42e442a4e9c5e86b7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407037"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68556814"
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>ディープ ラーニング仮想マシンの使用
 

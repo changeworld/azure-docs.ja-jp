@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 06/27/2019
-ms.openlocfilehash: c75b19fff478c14ff47996cf9159e48f3ff69724
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 1afe8a2e9179c768fd639b4a208de98b0789a53f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261188"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569451"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 

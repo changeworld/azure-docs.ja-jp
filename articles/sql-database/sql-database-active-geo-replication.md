@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
 ms.date: 07/09/2019
-ms.openlocfilehash: 4b525c3cbea600859106062ed34dc6df9622dec5
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 4b1a551ea2dd62d428fee6a7be475472235a3994
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807307"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569604"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>アクティブ geo レプリケーションの作成と使用
 

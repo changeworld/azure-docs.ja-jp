@@ -3,18 +3,18 @@ title: Azure Maps にタイル レイヤーを追加する | Microsoft Docs
 description: JavaScript マップにタイル レイヤーを追加する方法
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/3/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3a773c24993d229f20df698113ff7535fea634ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e288e03b9e2c02ba963595f192dea7225c6d5762
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769228"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638990"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>マップにタイル レイヤーを追加する
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 21d4e7bd3bf7453d2c770034728aedfdaa5ab85e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02d57c297926ef375eecaa76af55ffed60668cf1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65790170"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566764"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL Database サーバーとその管理
 

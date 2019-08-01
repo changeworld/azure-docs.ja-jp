@@ -9,14 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-manager: craigg
 ms.date: 07/05/2019
-ms.openlocfilehash: 05ec49c98c5bcfe40346550f5570c03a8fb3f881
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 33c844374d6d2b8e64cde6c7c9633e54a292d95f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657990"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567284"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のタイム ゾーン
 

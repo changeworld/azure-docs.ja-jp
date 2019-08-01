@@ -1,18 +1,18 @@
 ---
 title: Azure Backup を使用した Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターのバックアップのサポート マトリックス
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターをバックアップする場合の Azure Backup のサポートを要約しています。
-author: rayne-wiselman
+author: dcurwin
 ms.service: backup
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.author: raynew
+ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: d9f3c9b94a093df539a6ca4660383837becf1709
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 46863b2eed8e5c5c4074a713b50739820a1e5bc9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464845"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639538"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 

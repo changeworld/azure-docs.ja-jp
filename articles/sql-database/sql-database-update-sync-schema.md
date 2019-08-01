@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 712ccfa71c85629111428a4e0c7acaea050942b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b1c3f49808a59576f02178dee1107b4019e34b5e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331344"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566269"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Azure SQL データ同期でスキーマ変更のレプリケートを自動化する
 

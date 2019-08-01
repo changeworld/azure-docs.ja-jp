@@ -4,7 +4,7 @@ description: ディープ ラーニング仮想マシンの主要な分析シナ
 keywords: ディープ ラーニング、AI、データ サイエンス ツール、データ サイエンス仮想マシン、データ サイエンス用ツール、Linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
@@ -12,15 +12,15 @@ ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 03/16/2018
-ms.author: gokuma
-ms.openlocfilehash: 879f5939f110fb841ad160bf09f597edcdd86d31
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: vijetaj
+ms.openlocfilehash: ddf1169d94c3e71b92e8b1835040ab5738bf94b8
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60502198"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68591894"
 ---
 # <a name="introduction-to-the-deep-learning-virtual-machine"></a>ディープ ラーニング仮想マシンの概要
 

@@ -1,6 +1,6 @@
 ---
 title: C# で好ましくない要素を検出するためにビデオ コンテンツを分析する - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Content Moderator SDK for .NET を使用してさまざまな好ましくない要素を検出するためにビデオ コンテンツを分析する方法
 services: cognitive-services
 author: sanjeev3
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 7e987c1249360b14fddf8af57c61fdd1a46ee6c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1742db702a899d47110177532f5e85e74a59d91c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60605312"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564306"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C# で好ましくない要素を検出するためにビデオ コンテンツを分析する
 

@@ -12,20 +12,23 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5104d630e2b4e97b80a6fedfb6d863061c2722fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61416336"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516788"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>StorSimple Virtual Array をデプロイする - Hyper-V でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
 
 ## <a name="overview"></a>概要
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 このチュートリアルでは、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングする方法について説明します。 この記事は、Azure Portal および Microsoft Azure Government Cloud での StorSimple Virtual Array のデプロイに適用されます。
 
 仮想アレイをプロビジョニングして構成するには、管理者特権が必要です。 プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。

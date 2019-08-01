@@ -3,19 +3,19 @@ title: 探索 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: 探索により、Personalizer は、ユーザー動作が変更しても良好な結果を提供し続けることができます。 探索設定の選択は、モデルを改善するために、探索に使用するユーザー操作の比率に関するビジネス上の意思決定です。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: edjez
-ms.openlocfilehash: ebb59b6bb7c36f4558b2bd63d2d55fa95823c4c3
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: cfecea6a64301d86aa657420dc300c26d4ed6f1e
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722468"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663396"
 ---
 # <a name="exploration-and-exploitation"></a>探索とエクスプロイト
 

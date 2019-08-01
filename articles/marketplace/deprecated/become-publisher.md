@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dd9aa28703003d2e286197d57e9f00361e2b460d
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 11ab9f6bb4ab61a669c9c898ee9f5668b7cd568f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654001"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598666"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
 
@@ -22,7 +22,7 @@ ms.locfileid: "67654001"
 
 |  | 登録手順 | Duration | 詳細 |  
 |:--- |:--- |:--- |:--- |  
-| 1 | Microsoft Partner Network に登録する | 15 分 | [Microsoft Partner Network に登録する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#register-for-an-account-using-the-enrollment-page) |  
+| 1 | Microsoft Partner Network に登録する | 15 分 | [Microsoft Partner Network に登録する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
 | 2 | Microsoft アカウントを作成する <ul>(Azure Marketplace トランザクションのオファーでは必須、それ以外では推奨)</ul> | 15 分 | [Microsoft ID を作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) |  
 | 3 | パートナー センター アカウントを作成する | 15 分 | [パートナー センター アカウントを作成する](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) |  
 | 4 |  Cloud パートナー ポータルにサインインする | 1 ～ 3 日 | [Cloud パートナー ポータルにサインインする](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account#sign-in-with-a-work-account) |  

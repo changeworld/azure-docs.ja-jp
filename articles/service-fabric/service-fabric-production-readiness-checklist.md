@@ -3,7 +3,7 @@ title: Azure Service Fabric の運用環境の準備状況チェックリスト 
 description: ベスト プラクティスに従って、Service Fabric アプリケーションとクラスターの運用準備をします。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chakdan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/05/2019
-ms.author: aljo
-ms.openlocfilehash: a75b02b8173507a28204a3ec2030ce7ed9838495
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: atsenthi
+ms.openlocfilehash: 9e86f7306ee70bee2e084b967867e2a9be5b66e1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729863"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599356"
 ---
 # <a name="production-readiness-checklist"></a>運用環境の準備状況チェックリスト
 

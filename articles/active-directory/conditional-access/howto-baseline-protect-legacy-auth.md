@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a313240685e539b613dee1c7ff8bd56bb24eb2ba
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 91cc2707034eabf85afae70278f2448b77d3ee14
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227323"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608073"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>ベースライン ポリシー:レガシ認証をブロックする (プレビュー)
 
@@ -117,5 +117,5 @@ Exchange Server と Skype for Business をオンプレミスで使用してい�
 詳細については、次を参照してください。
 
 * [条件付きアクセス ベースライン保護ポリシー](concept-baseline-protection.md)
-* [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/azure-ad-secure-steps.md)
+* [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/fundamentals/steps-secure-identity.md)
 * [Azure Active Directory の条件付きアクセスとは](overview.md)

@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a833c255e7a4e83c003fbef72367c5e271f380c5
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 924ec20b9922d12da7291dc4f44b7413c68728c6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347214"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569581"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Azure Key Vault 内で機密データを保護し、暗号化キーを格納する
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: b56993b9ad03f2ab50fe3954ab5e8855d0d8bc0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a0d3ea3f4a63e7c69a190cf856929437d6f0b9d8
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371643"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608296"
 ---
 # <a name="azure-management---monitoring"></a>Azure の管理 - 監視
 
@@ -43,7 +43,7 @@ Azure の管理には、その一部として監視が含まれています。  
 ガバナンスは、Azure のアプリケーションとリソースに対するコントロールを維持するメカニズムとプロセスを提供します。  これには、イニシアチブの計画と戦略的な優先順位の設定が含まれます。  Azure におけるガバナンスは、主に 2 つのサービスで実装されます。  [Azure Policy](../governance/policy/overview.md) では、ポリシー定義を作成、割り当て、管理できます。このポリシー定義で、リソースにさまざまなルールとアクションを適用し、会社の標準とサービス レベル アグリーメントへのリソースの準拠が維持されるようにします。 [Azure Cost Management by Cloudyn](../cost-management/overview.md) では、クラウドの使用状況と、Azure リソースおよび AWS や Google などの他のクラウド プロバイダーに対する支出を追跡することができます。
 
 ## <a name="secure"></a>セキュリティ保護
-アプリケーション、リソース、データのセキュリティを管理するには、脅威を評価し、セキュリティ データの収集と分析を行うと同時に、アプリケーションおよびリソースの設計と構成の安全性を確保する必要があります。  セキュリティの監視と脅威の分析は、[Azure Security Center](../security-center/security-center-intro.md) によって提供されます。Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を備えています。  また、Azure のセキュリティに関する包括的な情報と、Azure リソースを安全に構成するためのガイダンスについて、「[Azure Security の概要](../security/azure-security.md)」を参照することをお勧めします。
+アプリケーション、リソース、データのセキュリティを管理するには、脅威を評価し、セキュリティ データの収集と分析を行うと同時に、アプリケーションおよびリソースの設計と構成の安全性を確保する必要があります。  セキュリティの監視と脅威の分析は、[Azure Security Center](../security-center/security-center-intro.md) によって提供されます。Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を備えています。  また、Azure のセキュリティに関する包括的な情報と、Azure リソースを安全に構成するためのガイダンスについて、「[Azure Security の概要](../security/fundamentals/overview.md)」を参照することをお勧めします。
 
 
 ## <a name="protect"></a>保護

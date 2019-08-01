@@ -4,17 +4,17 @@ titleSuffix: Azure Cognitive Services
 description: このガイドでは、Azure Cognitive Service の診断ログを有効にするための詳細な手順について説明します。 これらのログでは、問題の識別やデバッグに使用されるリソースの操作に関する豊富で頻繁なデータが提供されます。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 3be912f053bf206999546678e1e407548af181bf
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: cd380b4e2a7c05f0beedc2ab102b268aa4068f66
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657677"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516370"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure Cognitive Services の診断ログを有効にする
 

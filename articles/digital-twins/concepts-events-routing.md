@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: 7dfda00aca403f7f95f0c56d1db28c3c609bebd2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a013525109fe85ad70e5aaa5895da20f5abc3237
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080656"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638537"
 ---
 # <a name="routing-events-and-messages"></a>ルーティング イベントおよびメッセージ
 

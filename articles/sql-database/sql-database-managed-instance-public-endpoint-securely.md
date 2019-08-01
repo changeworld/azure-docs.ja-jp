@@ -9,14 +9,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
-manager: craigg
 ms.date: 05/08/2019
-ms.openlocfilehash: f06677b66c8f6586fec8cc5dfe97b1515b741e9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7f57a636e95bb137dd4285b8f9ce8343b27d2a0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65470305"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567361"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>パブリック エンドポイントで安全に Azure SQL Database マネージド インスタンスを使用する
 

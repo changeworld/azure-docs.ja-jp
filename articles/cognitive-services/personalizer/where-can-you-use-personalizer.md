@@ -3,19 +3,19 @@ title: シナリオの評価 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: Personalizer は、エクスペリエンスの向上、業績の向上、または生産性の向上を実現するために、表示する適切な項目、アクション、または製品をアプリケーションが選択できるあらゆる状況で適用できます。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: a5bf0d7d0478ad836ed1921b302ab01b004ec73c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 465fba3a466aceaf9ef7b71e4b1957bfdbcad766
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722223"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663651"
 ---
 # <a name="where-can-you-use-personalizer"></a>Personalizer を使用できる状況
 

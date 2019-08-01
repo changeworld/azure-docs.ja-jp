@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 1ec7fd4116aa848a9c431df386997cb23f405f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c156e30f4fa0270082cd1108958c3472130a460
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925410"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640820"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -76,8 +76,6 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ログのバージョン 2 ではフロー状態が導入されます。 受信するフロー ログのバージョンを構成することができます。 フロー ログを有効にする方法については、[フロー ログ記録の有効化](network-watcher-nsg-flow-logging-portal.md)に関するページをご覧ください。
 
 フローが開始されると、フロー状態 *B* が記録されます。 フロー状態 *C* およびフロー状態 *E* は、それぞれフローの継続とフローの終了を示す状態です。 *C* 状態と *E* 状態のどちらにも、トラフィックの帯域幅情報が含まれます。
-
-継続の *C* と終了の *E* の各フロー状態では、バイト数とパケット数は、前のフロー タプル レコードの時点から集計した数です。 前の例の通信では、転送されたパケットの総数は 1021+52+8005+47 = 9125 です。 転送された合計バイト数は 588096+29952+4610880+27072 = 5256000 です。
 
 **例**:185.170.185.105:35370 と 10.2.0.4:23 間の TCP 通信のフロー タプル:
 

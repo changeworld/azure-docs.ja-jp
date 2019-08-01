@@ -3,7 +3,7 @@ title: Azure Service Fabric ノード タイプのセットアップ | Microsoft
 description: 仮想マシン スケール セットを追加することで Service Fabric クラスターをスケーリングする方法を説明します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/13/2019
-ms.author: aljo
-ms.openlocfilehash: e6b429189491af71f6215f1c7660be5965741bf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 272bc571a0ea71fd6e7bd45a426460d2e0faf1d7
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66154869"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599287"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric クラスターのプライマリ ノード タイプをスケールアップする
 この記事では、仮想マシンのリソースを増やして、Service Fabric クラスターのプライマリ ノード タイプをスケールアップする方法について説明します。 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用する Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。 Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) するか、そのノード タイプの VM のオペレーティング システムをアップグレードすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -27,7 +27,7 @@ ms.locfileid: "66154869"
 > [!WARNING]
 > クラスターの正常性が異常である場合、プライマリ ノードタイプ VM SKU の変更を開始しないでください。 クラスターの正常性が異常である場合は、VM SKU を変更しようとすると、クラスターがさらに不安定になります。
 >
-> [Silver 以上の耐久性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)で実行されている場合を除き、スケール セット/特定の種類のノードの VM SKU は変更しないことをお勧めします。 VM SKU サイズの変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅らせたり監視したりする機能がないと、この操作により、ステートレス サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。 つまり、ステートフルなサービス ファブリック システム サービスを実行しているプライマリ ノード タイプまたはステートフルなアプリケーション ワークロードを実行している任意のノード タイプです。
+> [Silver 以上の耐久性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)で実行されている場合を除き、スケール セット/特定の種類のノードの VM SKU は変更しないことをお勧めします。 VM SKU サイズの変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅らせたり監視したりする機能がないと、この操作により、ステートフル サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。 つまり、ステートフルなサービス ファブリック システム サービスを実行しているプライマリ ノード タイプまたはステートフルなアプリケーション ワークロードを実行している任意のノード タイプです。
 >
 
 

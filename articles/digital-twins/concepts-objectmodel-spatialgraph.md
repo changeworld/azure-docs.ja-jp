@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: e7efe1a8632643e2a299b6c9a1b1407414deee4b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bb7309ae452b2885be279d1ab38b8467397f2f8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60925824"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638495"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する
 
@@ -82,7 +82,7 @@ Digital Twins オブジェクト モデルでは、オブジェクトの以下�
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name | 置換後の文字列 |
+| EnableAdfsAuthentication | 置換後の文字列 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | お客様の Digital Twins インスタンスの名前 |
 | YOUR_LOCATION | インスタンスをホストするサーバーのリージョン |

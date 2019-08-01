@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 93337e39a117c1f8d38f24dc416ff8ae95513a34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9468dbd71ee8da88cbabc3ca9f76c77d47adc221
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035979"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567927"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Azure Portal を使用して Azure SQL Database および Data Warehouse のアラートを作成する
 

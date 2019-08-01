@@ -2,21 +2,18 @@
 title: Azure Maps でアクセス可能なアプリケーションを作成 | Microsoft Docs
 description: Azure Maps を使用してアクセス可能なアプリケーションをビルドする方法
 services: azure-maps
-keywords: ''
 author: chgennar
 ms.author: chgennar
-ms.date: 09/17/2018
-ms.topic: article
+ms.date: 07/29/2019
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
 manager: timlt
-ms.devlang: na
-ms.openlocfilehash: ef948b4dca3d3800a81ac52f3a73beee2558d21c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8865027c895be09150797608e43184f1fdefb267
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60769704"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638790"
 ---
 # <a name="building-an-accessible-application"></a>アクセス可能なアプリケーションをビルド
 
