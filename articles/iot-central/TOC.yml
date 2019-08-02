@@ -101,15 +101,19 @@
       items:
         - name: アプリケーションの管理
           href: howto-administer.md
+        - name: ユーザーとロールを管理する
+          href: howto-manage-users-roles.md
+        - name: 課金状況の表示
+          href: howto-view-bill.md
+        - name: アプリケーション UI のカスタマイズ
+          href: howto-customize-ui.md
         - name: イメージの準備とアップロード
           href: howto-prepare-images.md
         - name: アプリケーション ダッシュボードの構成
           href: howto-configure-homepage.md
         - name: ダッシュボード タイルの使用
           href: howto-use-tiles.md
-        - name: アプリケーション UI のカスタマイズ
-          href: howto-customize-ui.md
-        - name: アプリケーション テンプレートの使用
+        - name: アプリケーション テンプレートを使用する
           href: howto-use-app-templates.md
         - name: Azure portal からの管理
           href: howto-manage-iot-central-from-portal.md
