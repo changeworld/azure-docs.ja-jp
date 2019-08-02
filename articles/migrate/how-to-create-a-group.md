@@ -1,5 +1,5 @@
 ---
-title: Azure Migrate でのアセスメントのためにマシンをグループ化する | Microsoft Docs
+title: Azure Migrate での評価のためにマシンをグループ化する | Microsoft Docs
 description: Azure Migrate サービスでアセスメントを実行する前にマシンをグループ化する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate

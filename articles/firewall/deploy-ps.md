@@ -39,7 +39,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 > * テスト ネットワーク環境を設定する
 > * ファイアウォールをデプロイする
 > * 既定のルートを作成する
-> * [www.google.com](www.google.com) へのアクセスを許可するようにアプリケーションを構成する
+> * [www.google.com]\(www.google.com) へのアクセスを許可するようにアプリケーションを構成する
 > * 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
 > * ファイアウォールをテストする
 
@@ -242,7 +242,7 @@ $NIC | Set-AzNetworkInterface
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   www.google.com の要求は成功し、www.microsoft.com の要求は失敗します。 これは、ファイアウォール ルールが予想どおりに動作していることを示します。
+   [www.google.com]\(www.google.com) の要求は成功し、[www.microsoft.com]\(www.microsoft.com) の要求は失敗します。 これは、ファイアウォール ルールが予想どおりに動作していることを示します。
 
 これで、ファイアウォール ルールが動作していることを確認できました。
 
