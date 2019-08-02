@@ -17,9 +17,9 @@
           href: time-series-insights-update-quickstart.md
 - name: チュートリアル
   items:
-    - name: Time Series Insights JavaScript クライアント ライブラリを調べる
+    - name: Time Series Insights JavaScript クライアント ライブラリ
       href: tutorial-explore-js-client-lib.md
-    - name: Time Series Insights シングルページ Web アプリの作成
+    - name: 単一ページの Web アプリの作成
       href: tutorial-create-tsi-sample-spa.md
     - name: Azure Time Series Insights GA
       items:

@@ -150,6 +150,8 @@
       items:
         - name: X-EC-Debug ヘッダー
           href: cdn-http-debug-headers.md
+    - name: Microsoft 固有 HTTP ヘッダー
+      href: cdn-msft-http-debug-headers.md
     - name: Azure PowerShell
       href: /powershell/module/az.cdn
     - name: .NET

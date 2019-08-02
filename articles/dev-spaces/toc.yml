@@ -9,18 +9,18 @@
       items:
         - name: チーム開発
           href: quickstart-team-development.md
-        - name: アプリケーションの実行
+        - name: デバッグと反復
+          items:
+            - name: Visual Studio Code と Java を使用する
+              href: quickstart-java.md
+            - name: Visual Studio Code と .NET Core を使用する
+              href: quickstart-netcore.md
+            - name: Visual Studio Code と Node.js を使用する
+              href: quickstart-nodejs.md
+            - name: Visual Studio と .NET Core を使用する
+              href: quickstart-netcore-visualstudio.md
+        - name: CLI を使用して開発する
           href: quickstart-cli.md
-        - name: Dockerfile を使用してアプリケーションを実行する
-          href: quickstart-cli-dockerfile.md
-        - name: VS Code を使用して Java を実行およびデバッグする
-          href: quickstart-java.md
-        - name: VS Code を使用して .NET Core を実行およびデバッグする
-          href: quickstart-netcore.md
-        - name: VS Code を使用して Node.js を実行およびデバッグする
-          href: quickstart-nodejs.md
-        - name: Visual Studio を使用して .NET Core を実行およびデバッグする
-          href: quickstart-netcore-visualstudio.md
     - name: チュートリアル
       items:
         - name: Java (VS Code と CLI)

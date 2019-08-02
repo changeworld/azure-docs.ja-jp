@@ -18,3 +18,17 @@
           href: secure-develop.md
         - name: セキュリティで保護されたアプリをデプロイする
           href: secure-deploy.md
+- name: 解決方法
+  expanded: true
+  items:
+    - name: Microsoft Security Code Analysis
+      expanded: true
+      items:
+        - name: 概要
+          href: security-code-analysis-overview.md
+        - name: オンボードとインストール
+          href: security-code-analysis-onboard.md
+        - name: 構成
+          href: security-code-analysis-customize.md
+        - name: FAQ
+          href: security-code-analysis-faq.md

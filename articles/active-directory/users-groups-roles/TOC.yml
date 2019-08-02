@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: ユーザー、グループ、ライセンス、およびロール
+    - name: Azure AD のユーザー、グループ、ライセンス、およびロール
       href: directory-overview-user-model.md
 - name: クイック スタート
   items:
@@ -10,6 +10,8 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: ユーザーへのライセンスの割り当て
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: ロールへのリソース スコープの割り当て
+      href: roles-quickstart-app-registration-limits.md
     - name: グループの有効期限の設定
       href: groups-quickstart-expiration.md
     - name: グループの名前付けポリシーの設定
@@ -126,10 +128,24 @@
           href: directory-assign-admin-roles.md
         - name: ロールの表示と割り当て
           href: directory-manage-roles-portal.md
-        - name: PowerShell を使用してロールを割り当てる
+        - name: Graph API でのカスタム ロールの割り当て
           href: roles-assign-powershell.md
-        - name: アプリの管理者ロールを委任する
-          href: roles-delegate-app-roles.md
+        - name: カスタム ロール (プレビュー)
+          items:
+            - name: カスタム ロール (プレビュー)
+              href: roles-custom-overview.md
+            - name: カスタム ロールの作成
+              href: roles-create-custom.md
+            - name: カスタム ロールの割り当ての表示
+              href: roles-view-assignments.md
+            - name: Azure AD 管理センターでのロールの割り当て
+              href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+            - name: Graph API でのカスタム ロールの割り当て
+              href: roles-assign-graph.md
+            - name: カスタム ロール (プレビュー) のアクセス許可
+              href: roles-custom-available-permissions.md
+            - name: アプリ管理者のアクセス許可を委任する
+              href: roles-delegate-app-roles.md
         - name: タスク別の最小特権ロール
           href: roles-delegate-by-task.md
         - name: Microsoft 365 のロール

@@ -584,6 +584,12 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング
           href: ssis-integration-runtime-ssis-activity-faq.md
+- name: シナリオ
+  items:
+    - name: データ レイクおよび EDW のデータ移行
+      items:
+        - name: Azure Data Factory を選ぶ理由
+          href: data-migration-guidance-overview.md
 - name: リファレンス
   items:
     - name: .NET

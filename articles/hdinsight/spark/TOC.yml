@@ -62,6 +62,8 @@
               href: ./apache-spark-troubleshoot-outofmemory-native-thread.md
         - name: Apache Spark ジョブが失敗する - NoClassDefFoundError
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+        - name: Apache Spark ジョブが失敗する - InvalidClassException
+          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
         - name: Apache Spark ジョブが遅い - listStatus
           href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Apache Spark ジョブが遅い - ストレージ コンテナー

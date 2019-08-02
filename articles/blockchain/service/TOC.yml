@@ -21,7 +21,7 @@
           href: connect-truffle.md
 - name: チュートリアル
   items:
-    - name: トランザクションを送信する
+    - name: スマート コントラクトの使用
       href: send-transaction.md
 - name: 概念
   items:

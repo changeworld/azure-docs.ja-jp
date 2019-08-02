@@ -12,45 +12,46 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
 abstract:
-  description: Azure Dev Spaces では、Azure Kubernetes Service (AKS) で実行されるマイクロサービス アプリケーション全体をテストして反復的に開発でき、依存関係を複製したりモックしたりする必要がありません。 Azure Dev Spaces では、Azure Kubernetes Service (AKS) 共有クラスターでのチームとのコラボレーションや、AKS でのコンテナーの直接的な実行およびデバッグについて、手間と複雑さを減らすことができます。 これらのクイック スタートを使って、Azure Dev Spaces の使用方法をご確認ください。
+  description: Azure Dev Spaces では、Azure Kubernetes Service (AKS) で実行することでマイクロサービス アプリケーション全体をテストして反復的に開発でき、依存関係を複製したりモックしたりする必要がありません。 Azure Dev Spaces では、Azure Kubernetes Service (AKS) 共有クラスターでのチームとのコラボレーションや、AKS でのコンテナーの直接的な実行およびデバッグにより、手間と複雑さを減らすことができます。 これらのクイックスタートを使って、Azure Dev Spaces の使用方法をご確認ください。
 sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: AKS での Azure Dev Spaces の使用方法を学習します。
+        text: Azure Dev Spaces を使用して、AKS でマイクロサービスを共同開発する方法について説明します。
       - type: list
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: チームの一員として開発する
+              src: 'https://docs.microsoft.com/media/common/i_configure-teams.svg'
+            text: チームの一員としてマイクロサービスを開発する
             href: quickstart-team-development.md
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: アプリケーションの実行
-            href: quickstart-cli.md
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Dockerfile を使用してアプリケーションを実行する
-            href: quickstart-cli-dockerfile.md
       - type: paragraph
-        text: Azure Dev Spaces を使用して AKS で直接、反復的な開発とデバッグを行う方法について説明します。
+        text: Azure Dev Spaces を使用し、反復とデバッグを高速で行って内部ループ開発エクスペリエンスを実現する方法について説明します。
       - type: list
         style: icon48
         items:
           - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-            text: Java を使用した開発
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Visual Studio Code と Java を使用する
             href: quickstart-java.md
           - image:
               src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: .NET と VS Code を使用した開発
+            text: Visual Studio Code と .NET Core を使用する
             href: quickstart-netcore.md
           - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: .NET と Visual Studio を使用した開発
-            href: quickstart-netcore-visualstudio.md
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-            text: Node.js を使用した開発
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Visual Studio Code と Node.js を使用する
             href: quickstart-nodejs.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: Visual Studio と .NET Core を使用する
+            href: quickstart-netcore-visualstudio.md
+      - type: paragraph
+        text: Azure CLI と Azure Dev Spaces を使用して、ほとんどすべての言語向けにマイクロサービスを開発する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Azure CLI を使用して開発する
+            href: quickstart-cli.md

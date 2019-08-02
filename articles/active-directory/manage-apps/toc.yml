@@ -221,6 +221,8 @@
           items:
             - name: ギャラリー アプリに対するユーザー プロビジョニング
               href: application-provisioning-config-how-to.md
+            - name: マルチテナント アプリの自動ユーザー プロビジョニングの有効化
+              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: 自動ユーザー プロビジョニングの構成
               href: configure-automatic-user-provisioning-portal.md
             - name: アプリケーション属性のカスタマイズ
