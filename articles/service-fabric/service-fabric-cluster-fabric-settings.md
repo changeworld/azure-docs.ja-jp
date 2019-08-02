@@ -3,7 +3,7 @@ title: Azure Service Fabric クラスター設定の変更 | Microsoft Docs
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 7ced36bf-bd3f-474f-a03a-6ebdbc9677e2
@@ -13,13 +13,13 @@ ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/12/2019
-ms.author: aljo
-ms.openlocfilehash: a309b30fc9438ded280109691afd3bde0883dc3c
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.author: atsenthi
+ms.openlocfilehash: c20e782423c60985adb9e18e275fde59e57e00a2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144391"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599884"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -75,6 +75,7 @@ ms.locfileid: "67144391"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
+|AllowCustomUpgradeSortPolicies | ブール値、既定値は false |動的|カスタム アップグレード並べ替えポリシーが許可されているかどうかです。 これは、この機能を有効にする 2 段階アップグレードを実行するために使用されます。 Service Fabric 6.5 では、クラスター アップグレードまたはアプリケーション アップグレード時にアップグレード ドメイン用の並べ替えポリシーを指定することが追加でサポートされています。 サポートされているポリシーは、Numeric、Lexicographical、ReverseNumeric、ReverseLexicographical です。 既定値は Numeric です。 この機能を使用できるようにするには、SF 6.5 コードによってアップグレードが完了された後、2 番目の構成アップグレード手順として、クラスター マニフェスト設定 ClusterManager/AllowCustomUpgradeSortPolicies を True に設定する必要があります。 これを 2 段階で行うことが重要です。そうしないと、コードのアップグレードでは、最初のアップグレード時にアップグレードの順序について混乱が生じる可能性があります。|
 |EnableDefaultServicesUpgrade | ブール値、既定値は false |動的|アプリケーションのアップグレード時に既定のサービスのアップグレードを有効にします。 アップグレード後、既定のサービスの記述が上書きされます。 |
 |FabricUpgradeHealthCheckInterval |秒単位。既定値は 60 |動的|監視対象 Fabric をアップグレードしているときに、正常性状態をチェックする頻度 |
 |FabricUpgradeStatusPollInterval |秒単位。既定値は 60 |動的|Fabric アップグレード状態をポーリングする頻度。 この値により、GetFabricUpgradeProgress 呼び出しの更新レートが決まります |
@@ -92,10 +93,10 @@ ms.locfileid: "67144391"
 |MinReplicaSetSize |int、既定値は 3 |禁止|ClusterManager の MinReplicaSetSize。 |
 |PlacementConstraints | string、既定値は "" |禁止|ClusterManager の PlacementConstraints。 |
 |QuorumLossWaitDuration |時間 (秒単位)、既定値は MaxValue |禁止| timespan を秒単位で指定します。 ClusterManager の QuorumLossWaitDuration。 |
-|ReplicaRestartWaitDuration |時間 (秒単位)、既定値は (60.0 * 30)|禁止|timespan を秒単位で指定します。 ClusterManager の ReplicaRestartWaitDuration。 |
+|ReplicaRestartWaitDuration |時間 (秒単位)、既定値は (60.0 \* 30)|禁止|timespan を秒単位で指定します。 ClusterManager の ReplicaRestartWaitDuration。 |
 |ReplicaSetCheckTimeoutRollbackOverride |時間 (秒単位)、既定値は 1200 |動的| timespan を秒単位で指定します。 ReplicaSetCheckTimeout が DWORD の最大値に設定されている場合、ロールバックのためにこの構成の値でオーバーライドされます。 ロールフォワードに使用する値がオーバーライドされることはありません。 |
 |SkipRollbackUpdateDefaultService | ブール値、既定値は false |動的|CM は、アプリケーションのアップグレードのロールバック時に、更新された既定のサービスを元に戻す操作をスキップします。 |
-|StandByReplicaKeepDuration | 時間 (秒単位)、既定値は (3600.0 * 2)|禁止|timespan を秒単位で指定します。 ClusterManager の StandByReplicaKeepDuration。 |
+|StandByReplicaKeepDuration | 時間 (秒単位)、既定値は (3600.0 \* 2)|禁止|timespan を秒単位で指定します。 ClusterManager の StandByReplicaKeepDuration。 |
 |TargetReplicaSetSize |int、既定値は 7 |禁止|ClusterManager の TargetReplicaSetSize。 |
 |UpgradeHealthCheckInterval |秒単位。既定値は 60 |動的|監視対象アプリケーションをアップグレードしているときに、正常性状態をチェックする頻度 |
 |UpgradeStatusPollInterval |秒単位。既定値は 60 |動的|アプリケーションのアップグレード状態をポーリングする頻度。 この値により、GetApplicationUpgradeProgress 呼び出しの更新レートが決まります |
@@ -119,7 +120,7 @@ ms.locfileid: "67144391"
 ## <a name="defragmentationmetricspercentornumberofemptynodestriggeringthreshold"></a>DefragmentationMetricsPercentOrNumberOfEmptyNodesTriggeringThreshold
 | **パラメーター** | **使用できる値** |**アップグレード ポリシー**| **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|PropertyGroup|KeyDoubleValueMap、既定値は None|動的|クラスターを最適化済みと見なすうえで必要な空きノード数を決定します。それには、空きノード数をパーセンテージの範囲 (0.0 ～ 1.0) または数値 (1.0 以上) として指定します |
+|PropertyGroup|KeyDoubleValueMap、既定値は None|動的|クラスターを最適化済みと見なすうえで必要な空きノード数を決定します。それには、空きノード数をパーセンテージの範囲 (0.0 から 1.0) または数値 (1.0 以上) として指定します |
 
 ## <a name="diagnostics"></a>診断
 
@@ -135,6 +136,7 @@ ms.locfileid: "67144391"
 |ConsumerInstances |string | 動的 |DCA コンシューマー インスタンスのリスト。 |
 |DiskFullSafetySpaceInMB |int、既定値は 1024 | 動的 |DCA によって使用されないようにする残りのディスク領域 (MB)。 |
 |EnableCircularTraceSession |ブール値、既定値は false | 静的 |循環トレース セッションを使用する必要があるかどうかを示すフラグ。 |
+|EnablePlatformEventsFileSink |ブール値、既定値は false | 静的 |ディスクに書き込まれるプラットフォーム イベントを有効または無効にします |
 |EnableTelemetry |ブール値、既定値は true | 動的 |テレメトリを有効または無効にします。 |
 |FailuresOnlyHttpTelemetry | ブール値、既定値は true | 動的 | HTTP テレメトリのキャプチャが有効な場合、失敗した要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
 |HttpTelemetryCapturePercentage | int、既定値は 50 | 動的 | HTTP テレメトリのキャプチャが有効な場合、ランダムな割合の要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
@@ -214,25 +216,26 @@ ms.locfileid: "67144391"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
+|AllowNodeStateRemovedForSeedNode|ブール値、既定値は FALSE |動的|シード ノードのノード状態を削除することが許可されているかどうかを示すフラグ |
 |BuildReplicaTimeLimit|TimeSpan、既定値は Common::TimeSpan::FromSeconds(3600)|動的|timespan を秒単位で指定します。 ステートフル レプリカ作成の制限時間。この時間が経過した後、警告の正常性レポートが開始されます |
 |ClusterPauseThreshold|int、既定値は 1|動的|システム内のノードの数がこの値を下回ると、配置、負荷分散、およびフェールオーバーが停止します。 |
 |CreateInstanceTimeLimit|TimeSpan、既定値は Common::TimeSpan::FromSeconds(300)|動的|timespan を秒単位で指定します。 ステートレス インスタンス作成の制限時間。この時間が経過した後、警告の正常性レポートが開始されます |
 |ExpectedClusterSize|int、既定値は 1|動的|クラスターが最初に起動するとき、FM は、ここで指定した数のノードの起動が報告されてから、他のサービス (名前付けなどのシステム サービスを含む) の提供を開始します。 この値を大きくすると、クラスターの起動に時間がかかりますが、ノードが早い段階で過負荷になるのを防ぐことができます。また、オンラインのノードが増えたときに必要になる追加の移動も回避できます。 この値は、一般的に、初期クラスター サイズの何分の一かに設定する必要があります。 |
-|ExpectedNodeDeactivationDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 * 30)|動的|timespan を秒単位で指定します。 これは、ノードの非アクティブ化の予想完了時間です。 |
-|ExpectedNodeFabricUpgradeDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 * 30)|動的|timespan を秒単位で指定します。 これは、Windows Fabric アップグレード中の、ノードの予想アップグレード時間です。 |
-|ExpectedReplicaUpgradeDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 * 30)|動的|timespan を秒単位で指定します。 これは、アプリケーション アップグレード中の、ノード上のすべてのレプリカの予想アップグレード時間です。 |
+|ExpectedNodeDeactivationDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 \* 30)|動的|timespan を秒単位で指定します。 これは、ノードの非アクティブ化の予想完了時間です。 |
+|ExpectedNodeFabricUpgradeDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 \* 30)|動的|timespan を秒単位で指定します。 これは、Windows Fabric アップグレード中の、ノードの予想アップグレード時間です。 |
+|ExpectedReplicaUpgradeDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 \* 30)|動的|timespan を秒単位で指定します。 これは、アプリケーション アップグレード中の、ノード上のすべてのレプリカの予想アップグレード時間です。 |
 |IsSingletonReplicaMoveAllowedDuringUpgrade|ブール値、既定値は TRUE|動的|true に設定すると、ターゲット レプリカ セット サイズが 1 のレプリカに対して、アップグレード中の移動が許可されます。 |
 |MinReplicaSetSize|int、既定値は 3|禁止|これは FM のレプリカ セットの最小サイズです。 アクティブな FM レプリカ数がこの値を下回ると、FM は、少なくともレプリカの最小数が復旧するまでは、クラスターへの変更を拒否します |
 |PlacementConstraints|string、既定値は ""|禁止|フェールオーバー マネージャー レプリカの任意の配置の制約 |
 |PlacementTimeLimit|TimeSpan、既定値は Common::TimeSpan::FromSeconds(600)|動的|timespan を秒単位で指定します。 ターゲット レプリカ数到達の制限時間。この時間が経過した後、警告の正常性レポートが開始されます |
 |QuorumLossWaitDuration |時間 (秒単位)、既定値は MaxValue |動的|timespan を秒単位で指定します。 パーティションがクォーラム損失の状態であることを許可する最長期間。 この期間を過ぎてもパーティションが引き続きクォーラム損失の状態である場合、ダウンしたレプリカは失われたと見なされ、パーティションをクォーラム損失から回復させます。 この場合、データ損失が発生する可能性があります。 |
 |ReconfigurationTimeLimit|TimeSpan、既定値は Common::TimeSpan::FromSeconds(300)|動的|timespan を秒単位で指定します。 再構成の制限時間。この時間が経過した後、警告の正常性レポートが開始されます |
-|ReplicaRestartWaitDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 * 30)|禁止|timespan を秒単位で指定します。 これは FMService の ReplicaRestartWaitDuration です |
-|StandByReplicaKeepDuration|Timespan、既定値は Common::TimeSpan::FromSeconds(3600.0 * 24 * 7)|禁止|timespan を秒単位で指定します。 これは FMService の StandByReplicaKeepDuration です |
+|ReplicaRestartWaitDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 \* 30)|禁止|timespan を秒単位で指定します。 これは FMService の ReplicaRestartWaitDuration です |
+|StandByReplicaKeepDuration|Timespan、既定値は Common::TimeSpan::FromSeconds(3600.0 \* 24 \* 7)|禁止|timespan を秒単位で指定します。 これは FMService の StandByReplicaKeepDuration です |
 |TargetReplicaSetSize|int、既定値は 7|禁止|これは、Windows Fabric によって保持されるターゲット FM レプリカ数です。 値が大きいほど、小さなパフォーマンスのトレードオフで FM データの信頼性が向上します。 |
 |UserMaxStandByReplicaCount |int、既定値は 1 |動的|ユーザー サービス用にシステムが保持するスタンバイ レプリカの既定の最大数。 |
-|UserReplicaRestartWaitDuration |時間 (秒単位)、既定値は 60.0 * 30 |動的|timespan を秒単位で指定します。 永続化されたレプリカがダウンすると、Windows Fabric はレプリカが復帰するまでこの期間待機します。この期間が過ぎると、(状態のコピーを必要とする) 新しい代替レプリカが作成されます。 |
-|UserStandByReplicaKeepDuration |秒単位。既定値は 3600.0 * 24 * 7 |動的|timespan を秒単位で指定します。 永続化されたレプリカがダウン状態から復帰したときに、既に置き換えられている場合があります。 このタイマーは、FM がスタンバイ レプリカを破棄するまでに保持する時間を決定します。 |
+|UserReplicaRestartWaitDuration |時間 (秒単位)、既定値は 60.0 \* 30 |動的|timespan を秒単位で指定します。 永続化されたレプリカがダウンすると、Windows Fabric はレプリカが復帰するまでこの期間待機します。この期間が過ぎると、(状態のコピーを必要とする) 新しい代替レプリカが作成されます。 |
+|UserStandByReplicaKeepDuration |時間 (秒単位)、既定値は 3600.0 \* 24 \* 7 |動的|timespan を秒単位で指定します。 永続化されたレプリカがダウン状態から復帰したときに、既に置き換えられている場合があります。 このタイマーは、FM がスタンバイ レプリカを破棄するまでに保持する時間を決定します。 |
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -271,6 +274,11 @@ ms.locfileid: "67144391"
 |CommonName2Ntlmx509StoreLocation|string、既定値は "LocalMachine"| 静的|NTLM 認証を使用するときに、CommonName2NtlmPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの場所 |
 |CommonName2Ntlmx509StoreName|string、既定値は "MY"|静的| NTLM 認証を使用するときに、CommonName2NtlmPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの名前 |
 |CommonNameNtlmPasswordSecret|SecureString、既定値は Common::SecureString("")| 静的|NTLM 認証を使用するときに、生成された同じパスワードに対するシードとして使用するパスワード シークレット |
+|DiskSpaceHealthReportingIntervalWhenCloseToOutOfDiskSpace |TimeSpan、既定値は Common::TimeSpan::FromMinutes(5)|動的|timespan を秒単位で指定します。 ディスクの空き容量がもう少しでなくなりそうなときに正常性イベントを報告することを目的としてディスク容量をチェックする間隔。 |
+|DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan、既定値は Common::TimeSpan::FromMinutes(15)|動的|timespan を秒単位で指定します。 ディスク上に十分な空き容量がある場合に正常性イベントを報告することを目的としてディスク容量をチェックする間隔。 |
+|EnableImageStoreHealthReporting |ブール値、既定値は TRUE |静的|ファイル ストア サービスからその正常性が報告される必要があるかどうかを決定するための構成。 |
+|FreeDiskSpaceNotificationSizeInKB|int64、既定値は 25\*1024 |動的|下回ると正常性に関する警告が発生する可能性がある空きディスク領域のサイズ。 この構成の最小値と FreeDiskSpaceNotificationThresholdPercentage 構成を使用して、正常性に関する警告を送信するかどうかが決定されます。 |
+|FreeDiskSpaceNotificationThresholdPercentage|double、既定値は 0.02 |動的|下回ると正常性に関する警告が発生する可能性がある空きディスク領域のパーセンテージ。 この構成の最小値と FreeDiskSpaceNotificationInMB 構成を使用して、正常性に関する警告を送信するかどうかが決定されます。 |
 |GenerateV1CommonNameAccount| ブール値、既定値は TRUE|静的|ユーザー名 V1 生成アルゴリズムを使用したアカウントを生成するかどうかを指定します。 Service Fabric バージョン 6.1 以降では、常に v2 生成を使用したアカウントが作成されます。 V1 アカウントは、V2 生成をサポートしていないバージョン (6.1 以前) からのアップグレード (またはそれらのバージョンへのアップグレード) に必要となります。|
 |MaxCopyOperationThreads | uint、既定値は 0 |動的| セカンダリがプライマリからコピーできる並列ファイルの最大数。 '0' == コア数です。 |
 |MaxFileOperationThreads | uint、既定値は 100 |静的| プライマリで FileOperations (コピー/移動) を実行する際に使用できる並列スレッドの最大数。 '0' == コア数です。 |
@@ -327,7 +335,6 @@ ms.locfileid: "67144391"
 |ActivationRetryBackoffInterval |秒単位。既定値は 5 |動的|アクティブ化失敗のバックオフ間隔。アクティブ化が連続して失敗するたびに、MaxActivationFailureCount で指定された回数までアクティブ化が再試行されます。 各試行の再試行間隔は、継続的なアクティブ化失敗とアクティブ化バックオフ間隔の積になります。 |
 |ActivationTimeout| TimeSpan、既定値は Common::TimeSpan::FromSeconds(180)|動的| timespan を秒単位で指定します。 アプリケーションのアクティブ化、非アクティブ化、アップグレードのタイムアウト。 |
 |ApplicationHostCloseTimeout| TimeSpan、既定値は Common::TimeSpan::FromSeconds(120)|動的| timespan を秒単位で指定します。 セルフ アクティブ化されたプロセスで Fabric の終了が検出された場合、FabricRuntime は、ユーザーのホスト (applicationhost) プロセスですべてのレプリカを閉じます。 これは、閉じる操作のタイムアウトです。 |
-|ApplicationUpgradeTimeout| TimeSpan、既定値は Common::TimeSpan::FromSeconds(360)|動的| timespan を秒単位で指定します。 アプリケーション アップグレードのタイムアウト。 タイムアウトが "ActivationTimeout" を下回る場合、デプロイ機能は失敗します。 |
 |ContainerServiceArguments|string、既定値は "-H localhost:2375 -H npipe://"|静的|Service Fabric (SF) が Docker デーモンを管理します (Win10 のような Windows クライアント コンピューターを除く)。 この構成により、ユーザーは Docker デーモンの起動時に渡す必要があるカスタム引数を指定できます。 カスタム引数が指定された場合、Service Fabric は、他の引数を一切 Docker エンジンに渡しませんが、'--pidfile' 引数は例外です。 そのため、ユーザーはカスタム引数の一部として '--pidfile' 引数を指定することはできません。 また、Service Fabric が Docker デーモンと通信できるようにするために、Docker デーモンに既定の名前付きパイプ (Windows の場合) または UNIX ドメイン ソケット (Linux の場合) でリッスンさせるようにカスタム引数で指定する必要があります。|
 |ContainerServiceLogFileMaxSizeInKb|int、既定値は 32768|静的|Docker コンテナーで生成されるログ ファイルの最大ファイル サイズ。  Windows のみ。|
 |ContainerImageDownloadTimeout|int、秒数、既定値は 1,200 (20 分)|動的|イメージのダウンロードがタイムアウトするまでの秒数。|
@@ -387,8 +394,8 @@ ms.locfileid: "67144391"
 |MinReplicaSetSize | int、既定値は 3 |静的|ImageStoreService の MinReplicaSetSize。 |
 |PlacementConstraints | string、既定値は "" |静的| ImageStoreService の PlacementConstraints。 |
 |QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的| timespan を秒単位で指定します。 ImageStoreService の QuorumLossWaitDuration。 |
-|ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は 60.0 * 30 |静的|timespan を秒単位で指定します。 ImageStoreService の ReplicaRestartWaitDuration。 |
-|StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 3600.0 * 2 |静的| timespan を秒単位で指定します。 ImageStoreService の StandByReplicaKeepDuration。 |
+|ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は 60.0 \* 30 |静的|timespan を秒単位で指定します。 ImageStoreService の ReplicaRestartWaitDuration。 |
+|StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 3600.0 \* 2 |静的| timespan を秒単位で指定します。 ImageStoreService の StandByReplicaKeepDuration。 |
 |TargetReplicaSetSize | int、既定値は 7 |静的|ImageStoreService の TargetReplicaSetSize。 |
 
 ## <a name="ktllogger"></a>KtlLogger
@@ -432,6 +439,11 @@ ms.locfileid: "67144391"
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap、既定値は None|動的|クラスター内のメトリックの MetricBalancingThresholds セットを決定します。 maxNodeLoad/minNodeLoad が MetricBalancingThresholds より大きい場合、分散が機能します。 少なくとも 1 つの FD または UD の maxNodeLoad/minNodeLoad が MetricBalancingThresholds より小さい場合、最適化が機能します。 |
 
+## <a name="metricloadstickinessforswap"></a>MetricLoadStickinessForSwap
+| **パラメーター** | **使用できる値** |**アップグレード ポリシー**| **ガイダンスまたは簡単な説明** |
+| --- | --- | --- | --- |
+|PropertyGroup|KeyDoubleValueMap、既定値は None|動的|交換時にレプリカに固定される負荷の部分を決定します。0 (負荷はレプリカに固定されない) から 1 (負荷はレプリカに固定される - 既定値) の間の値を取ります。 |
+
 ## <a name="namingservice"></a>NamingService
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
@@ -445,7 +457,7 @@ ms.locfileid: "67144391"
 |MaxOperationTimeout |時間 (秒単位)、既定値は 600 |動的|timespan を秒単位で指定します。 クライアント操作で許容される最大タイムアウト。 これよりも長いタイムアウトを指定した要求は拒否されます。 |
 |MaxOutstandingNotificationsPerClient |int、既定値は 1000 |動的|クライアント登録がゲートウェイによって強制終了されるまでの未処理の通知の最大数。 |
 |MinReplicaSetSize | int、既定値は 3 |禁止| 更新の完了のために書き込みを行う必要があるネーム サービス レプリカの最小数。 システム内のアクティブなレプリカがこの数よりも少ない場合、信頼性システムはレプリカが復元されるまでネーム サービス ストアの更新を拒否します。 この値は、TargetReplicaSetSize の値を超えることはできません。 |
-|PartitionCount |int、既定値は 3 |禁止|作成するネーム サービス ストアのパーティションの数。 各パーティションは、インデックスに対応する 1 つのパーティション キーを所有します。そのため、パーティション キー [0; PartitionCount) が存在します。 ネーム サービスのパーティション数が増えると、バックアップ レプリカ セットで保持される平均データ量が減るため、ネーム サービスが実行できるスケールが増加します。ただし、その代償として (PartitionCount*ReplicaSetSize のサービス レプリカを保持する必要があるため) リソース使用率が増加します。|
+|PartitionCount |int、既定値は 3 |禁止|作成するネーム サービス ストアのパーティションの数。 各パーティションは、インデックスに対応する 1 つのパーティション キーを所有します。そのため、パーティション キー [0; PartitionCount] が存在します。 ネーム サービスのパーティション数が増えると、バックアップ レプリカ セットで保持される平均データ量が減るため、ネーム サービスが実行できるスケールが増加します。ただし、その代償として (PartitionCount*ReplicaSetSize のサービス レプリカを保持する必要があるため) リソース使用率が増加します。|
 |PlacementConstraints | string、既定値は "" |禁止| ネーム サービスの配置制約。 |
 |QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |禁止| timespan を秒単位で指定します。 ネーム サービスがクォーラム損失の状態になると、このタイマーが開始されます。 タイマーの有効期限が切れると、FM はダウンしたレプリカを失われたと見なし、クォーラムの回復を試みます。 この回復によりデータが失われる可能性があることに注意してください。 |
 |RepairInterval | 時間 (秒単位)、既定値は 5 |静的| timespan を秒単位で指定します。 機関所有者と名前所有者間での名前付けの不一致の修復が開始される間隔。 |
@@ -514,6 +526,7 @@ ms.locfileid: "67144391"
 |DetailedNodeListLimit | int、既定値は 15 |動的| 未配置レプリカ レポートでの切り捨て前に含める、制約ごとのノードの数を定義します。 |
 |DetailedPartitionListLimit | int、既定値は 15 |動的| 診断での切り捨て前に含める、制約の診断エントリごとのパーティションの数を定義します。 |
 |DetailedVerboseHealthReportLimit | int、既定値は 200 | 動的|未配置レプリカが永続的に未配置の状態になった回数がここで定義した回数に達すると、詳細な正常性レポートが出力されます。 |
+|EnforceUserServiceMetricCapacities|ブール値、既定値は FALSE | 静的 |ファブリック サービス保護を有効にします。すべてのユーザー サービスは 1 つのジョブオブジェクト/cgroup の下にあり、指定されたリソース量に制限されます。ユーザー ジョブ オブジェクトおよび設定の制限の作成/削除は Fabric Host が開いている間に行われるため、これは静的である必要があります (FabricHost の再起動が必要)。 |
 |FaultDomainConstraintPriority | int、既定値は 0 |動的| 障害ドメインの制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
 |GlobalMovementThrottleCountingInterval | 時間 (秒単位)、既定値は 600 |静的| timespan を秒単位で指定します。 ドメイン レプリカの移動ごとに追跡する、過去の間隔の長さを示します (GlobalMovementThrottleThreshold と共に使用)。 0 に設定すると、グローバルな調整を完全に無視できます。 |
 |GlobalMovementThrottleThreshold | uint、既定値は 1000 |動的| 均衡化フェーズにおいて、GlobalMovementThrottleCountingInterval で示される過去の間隔での移動の最大許容数。 |
@@ -550,6 +563,7 @@ ms.locfileid: "67144391"
 |UseMoveCostReports | ブール値、既定値は false | 動的|よりバランスの取れた配置を実現するために多数の移動が発生する可能性のある、スコア付け関数のコスト要素を無視するよう LB に指示します。 |
 |UseSeparateSecondaryLoad | ブール値、既定値は true | 動的|別のセカンダリ負荷を使用するかどうかを指定します。 |
 |ValidatePlacementConstraint | ブール値、既定値は true |動的| サービスの ServiceDescription が更新されたときに、サービスの PlacementConstraint 式を検証するかどうかを指定します。 |
+|ValidatePrimaryPlacementConstraintOnPromote| ブール値、既定値は TRUE |動的|フェイルオーバー時にプライマリ設定について、サービスの PlacementConstraint 式が評価されるかどうかを指定します。 |
 |VerboseHealthReportLimit | int、既定値は 20 | 動的|レプリカが未配置の状態になった回数がここで定義した回数に達すると、正常性の警告が報告されます (詳細な正常性レポートが有効になっている場合)。 |
 
 ## <a name="reconfigurationagent"></a>ReconfigurationAgent
@@ -699,6 +713,7 @@ ms.locfileid: "67144391"
 |GetClusterConfiguration | string、既定値は "Admin\|\|User" | 動的|パーティションで GetClusterConfiguration を誘発します。 |
 |GetClusterConfigurationUpgradeStatus | string、既定値は "Admin\|\|User" |動的| パーティションで GetClusterConfigurationUpgradeStatus を誘発します。 |
 |GetFabricUpgradeStatus |string、既定値は "Admin\|\|User" |動的| クラスターのアップグレード状態をポーリングするためのセキュリティ構成。 |
+|GetFolderSize |string、既定値は "Admin" |動的|FileStoreService の取得フォルダー サイズに対するセキュリティ構成 |
 |GetNodeDeactivationStatus |string、既定値は "Admin" |動的| 非アクティブ化の状態を確認するためのセキュリティ構成。 |
 |GetNodeTransitionProgress | string、既定値は "Admin\|\|User" |動的| ノード切り替えコマンドの進行状況を取得するためのセキュリティ構成。 |
 |GetPartitionDataLossProgress | string、既定値は "Admin\|\|User" | 動的|データ損失を発生させる API 呼び出しの進行状況を取得します。 |
@@ -883,6 +898,11 @@ ms.locfileid: "67144391"
 |X509SecondaryFindValue | string、既定値は "" |動的| UpgradeService の X509SecondaryFindValue。 |
 |X509StoreLocation | string、既定値は "" |動的| UpgradeService の X509StoreLocation。 |
 |X509StoreName | string、既定値は "My"|動的|UpgradeService の X509StoreName。 |
+
+## <a name="userservicemetriccapacities"></a>UserServiceMetricCapacities
+| **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
+| --- | --- | --- | --- |
+|PropertyGroup| UserServiceMetricCapacitiesMap、既定値は None | 静的 | ユーザー サービスのリソース ガバナンスに関する制限のコレクション。AutoDetection ロジックに影響するので静的である必要があります |
 
 ## <a name="next-steps"></a>次の手順
 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)および[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。

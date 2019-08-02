@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 111196388d0e17ecde8a2055959f2f573e43ade8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 130186af13b9207326cd52b46b880c1f13a16100
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056358"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848088"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する
 
@@ -43,25 +43,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 
-    ![サブスクリプション ディレクトリに切り替える](./media/tutorial-create-user-flows/switch-directories.PNG)
+    ![ディレクトリとサブスクリプションのフィルターで B2C テナントが選択された状態](./media/tutorial-create-user-flows/switch-directories.PNG)
 
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. 左側のメニューで、 **[ポリシー]** の下の **[ユーザー フロー (ポリシー)]** を選択し、 **[新しいユーザー フロー]** を選択します。
 
-    ![新しいユーザー フローを選択する](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
+    ![[新しいユーザー フロー] ボタンが強調表示されているポータル内の [ユーザー フロー] ページ](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
 1. **[推奨]** タブで **[サインアップとサインイン]** ユーザー フローを選択します。
 
-    ![サインアップとサインイン ユーザー フローを選択する](./media/tutorial-create-user-flows/signup-signin-type.png)
+    ![サインアップとサインイン フローが強調表示されている [ユーザー フローの選択] ページ](./media/tutorial-create-user-flows/signup-signin-type.png)
 
 1. ユーザー フローの **[名前]** を入力します。 たとえば、「*signupsignin1*」と入力します。
 1. **[ID プロバイダー]** の **[電子メールのサインアップ]** を選択します。
 
-    ![フローのプロパティを設定する](./media/tutorial-create-user-flows/signup-signin-properties.png)
+    ![プロパティが強調表示されている、Azure portal 内の [ユーザー フローの作成] ページ](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
 1. **[ユーザー属性と要求]** で、サインアップ中にユーザーから収集して送信する要求と属性を選択します。 たとえば、 **[Show more]\(さらに表示\)** を選択し、 **[国/リージョン]** 、 **[表示名]** 、 **[郵便番号]** の属性と要求を選択します。 Click **OK**.
 
-    ![属性と要求を選択する](./media/tutorial-create-user-flows/signup-signin-attributes.png)
+    ![3 つの要求が選択されている [属性と要求の選択] ページ](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
 1. **[作成]** をクリックして、ユーザー フローを追加します。 *B2C_1* というプレフィックスが自動的に名前に追加されます。
 
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[アプリケーション]** で、以前に登録した *webapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[ユーザー フローを実行します]** をクリックしてから、 **[今すぐサインアップ]** を選択します。
 
-    ![ユーザー フローを実行する](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
+    ![[ユーザー フローを実行します] ボタンが強調表示されているポータル内の [ユーザー フローを実行します] ページ](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
 
 1. 有効なメール アドレスを入力し、 **[確認コードの送信]** をクリックします。受信した確認コードを入力し、 **[コードの確認]** を選択します。
 1. 新しいパスワードを入力し、そのパスワードを確認します。

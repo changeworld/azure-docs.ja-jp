@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2019
 ms.author: magoedte
-ms.openlocfilehash: afa4483677336e9a887908a8cccf9590eed27af3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9df389b6e6a73530c9bbf5a2187d6735946e309f
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67120795"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249772"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -53,7 +53,7 @@ Azure Government に必要なファイアウォールの情報については、
 
 - ワークスペースで [[Azure Log Analytics Agent Health assessment]\(Azure Log Analytics の Agent Health の評価\)](../insights/solution-agenthealth.md)を有効にします。 Agent Health ダッシュボードで **[Count of unresponsive agents]\(応答していないエージェントの数\)** 列を表示すると、エージェントが一覧にあるかどうかを簡単に確認できます。  
 
-- 次のクエリを実行して、レポート先に構成されているワークスペースにエージェントからハートビートが送信されていることを確認します。 <ComputerName> は、マシンの実際の名前に置き換えます。
+- 次のクエリを実行して、レポート先に構成されているワークスペースにエージェントからハートビートが送信されていることを確認します。 `<ComputerName>` は、マシンの実際の名前に置き換えます。
 
     ```
     Heartbeat 
@@ -77,7 +77,7 @@ Azure Government に必要なファイアウォールの情報については、
     |2127 |Health Service Modules |データ送信失敗によるエラー コードの受信 |1 日にときおり発生するだけの場合は、無視することができる単なる偶然の異常の可能性があります。 監視して発生する頻度を把握します。 1 日中頻繁に発生する場合は、まずネットワーク構成とプロキシ設定を確認します。 説明に HTTP エラー コード 404 が含まれていて、エージェントからサービスにデータを送信しようとしたのが初めての場合、内部 404 エラー コードには 500 エラーが含まれます。 404 は見つからないことを意味します。つまり、新しいワークスペース用のストレージ領域がまだプロビジョニング中であることを示します。 次回の再試行時に、データはワークスペースに正常に書き込まれます。 HTTP エラー 403 は、アクセス許可または資格情報の問題を示している可能性があります。 403 エラーには、問題の解決に役立つ詳しい情報が含まれています。|
     |4000 |Service Connector |DNS の名前解決に失敗しました |マシンで、サービスにデータを送信するときに使用されるインターネット アドレスを解決できませんでした。 これは、マシン上の DNS リゾルバーの設定、不適切なプロキシの設定、またはプロバイダーとの一時的な DNS 問題の場合があります。 ときおり発生する場合は、一時的なネットワーク関連の問題が原因の可能性があります。|
     |4001 |Service Connector |サービスへの接続に失敗しました。 |このエラーは、エージェントが Azure Monitor サービスと直接またはファイアウォール/プロキシ サーバーを介して通信できない場合に発生する可能性があります。 エージェントのプロキシ設定、またはネットワーク ファイアウォール/プロキシでコンピューターからサービスへの TCP トラフィックが許可されていることを確認します。|
-    |4002 |Service Connector |クエリに応答してサービスから HTTP 状態コード 403 が返されました。 サービスの状態についてサービス管理者に確認してください。 クエリは後で再試行されます。 |このエラーはエージェントの初期登録フェーズ中に書き込まれ、*https://<workspaceID>.oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest* のような URL が表示されます。 エラー コード 403 は禁止されていることを意味し、誤入力されたワークスペース ID またはキー、またはコンピューターの日時が不適切なことが原因で発生する可能性があります。 時刻が現在の時刻より 15 分後または前である場合、オンボードは失敗します。 これを修正するには、Windows コンピューターの日付やタイムゾーンを更新します。|
+    |4002 |Service Connector |クエリに応答してサービスから HTTP 状態コード 403 が返されました。 サービスの状態についてサービス管理者に確認してください。 クエリは後で再試行されます。 |このエラーはエージェントの初期登録の段階で書き込まれ、*https://\<workspaceID>.oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest* のような URL が表示されます。 エラー コード 403 は禁止されていることを意味し、誤入力されたワークスペース ID またはキー、またはコンピューターの日時が不適切なことが原因で発生する可能性があります。 時刻が現在の時刻より 15 分後または前である場合、オンボードは失敗します。 これを修正するには、Windows コンピューターの日付やタイムゾーンを更新します。|
 
 ## <a name="data-collection-issues"></a>データ収集の問題
 

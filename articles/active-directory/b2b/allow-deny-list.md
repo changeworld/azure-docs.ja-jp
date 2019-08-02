@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 07/15/2018
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa975446c19db3176fdb89ccfb1a987b1fda049d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62cbe68bcf191c7ee6fc906bc8ba8ea66e3efb31
+ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113217"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68233878"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>B2B ユーザーに対する特定組織からの招待を許可またはブロックする
 
@@ -27,6 +27,7 @@ B2B ユーザーに対する特定組織からの招待を許可またはブロ�
 
 - 許可リストまたは拒否リストのいずれかを作成できます。 両方の種類のリストを設定することはできません。 既定では、許可リストに含まれないドメインはすべて拒否リストに含まれます。また、その逆も言えます。 
 - 各組織に作成できるポリシーは 1 つだけです。 ポリシーを更新してより多くのドメインを含めることも、ポリシーを削除して新規に作成することもできます。 
+- 許可リストまたは拒否リストに追加できるドメインの数は、ポリシーのサイズによってのみ制限されます。 ポリシー全体の最大サイズは 25 KB (25,000 文字) です。これには、許可リストまたは拒否リストと、他の機能向けに構成された他のパラメーターが含まれます。
 - このリストは、OneDrive for Business や SharePoint Online の許可/ブロック リストとは無関係に機能します。 SharePoint Online で個々のファイルの共有を制限する場合は、OneDrive for Business および SharePoint Online の許可リストまたは拒否リストを設定する必要があります。 詳細については、「[SharePoint Online と OneDrive for Business の制限付きドメイン共有](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9)」を参照してください。
 - このリストは、招待を既に使用した外部ユーザーには適用されません。 リストは、リストの設定後に適用されます。 ユーザーの招待が保留中の状態にあり、ドメインをブロックするポリシーを設定した場合、ユーザーが招待の使用を試みると失敗します。
 
