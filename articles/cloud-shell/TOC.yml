@@ -7,9 +7,7 @@
     - name: PowerShell - クイック スタート
       href: quickstart-powershell.md
 - name: 機能とツール
-  items:
-    - name: 機能とツール
-      href: features.md
+  href: features.md
 - name: チュートリアル
   items:
     - name: Ansible
