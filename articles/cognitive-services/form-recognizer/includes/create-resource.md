@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: a37087c90b6c9b3629402c7a8c2fa5861e46ae9a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: dce9b4ffa05b48fc1789859328b221ac1a0f3a27
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592530"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594445"
 ---
 Form Recognizer を使用するためのアクセスが認められている場合、複数のリンクおよびリソースを含むウェルカム メールを受信します。 そのメッセージ内の "Azure portal" リンクを使用して、Azure portal を開き、Form Recognizer リソースを作成します。 **[作成]** ウィンドウには以下の情報が表示されます。
 
@@ -25,4 +25,4 @@ Form Recognizer を使用するためのアクセスが認められている場�
 > [!IMPORTANT]
 > 通常、Azure portal で Cognitive Service リソースを作成するときに、マルチ サービスのサブスクリプション キー (複数の Cognitive Services で使用) または 単一サービスのサブスクリプション キー (特定の Cognitive Services でのみ使用) を作成するオプションがあります。 ただし、Form Recognizer はプレビュー リリースなので、複数のサービス サブスクリプションに含まれず、ウェルカム メールに記載されているリンクを使用しない限り、単一サービスのサブスクリプションを作成できません。
 
-Form Recognizer リソースがデプロイが完了すると、ポータルの **[すべてのリソース]** の一覧からこれを検索して選択します。 続いて、 **[キー]** タブを選択してサブスクリプション キーを表示します。 どちらのキーも、リソースへのアクセス権をアプリに与えます。 **KEY 1** の値をコピーします。 これは、次のセクションで使用します。
+Form Recognizer リソースがデプロイが完了すると、ポータルの **[すべてのリソース]** の一覧からこれを検索して選択します。 続いて、 **[キー]** タブを選択してサブスクリプション キーを表示します。 どちらのキーも、リソースへのアクセス権をアプリに与えます。 **KEY 1** の値をコピーします。

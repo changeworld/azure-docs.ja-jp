@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 9037c7b5498a5e0a37b05e5ee09891bf8066393d
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 3cfbbdc5b95d1607738b132980320d2ff7c99788
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417492"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698396"
 ---
 # <a name="tutorial-send-transactions-using-azure-blockchain-service"></a>チュートリアル:Azure Blockchain Service を使用してトランザクションを送信する
 
@@ -52,7 +52,7 @@ ms.locfileid: "66417492"
 
     | Setting | 値 | 説明 |
     |---------|-------|-------------|
-    | Name | `alpha` | トランザクション ノードの名前。 名前は、トランザクション ノードのエンドポイントの DNS アドレスを作成するために使われます。 たとえば、「 `alpha-mymanagedledger.blockchain.azure.com` 」のように入力します。 |
+    | EnableAdfsAuthentication | `alpha` | トランザクション ノードの名前。 名前は、トランザクション ノードのエンドポイントの DNS アドレスを作成するために使われます。 たとえば、「 `alpha-mymanagedledger.blockchain.azure.com` 」のように入力します。 |
     | パスワード | 強力なパスワード | パスワードは、基本認証でトランザクション ノードのエンドポイントにアクセスするために使われます。
 
 1. **作成** を選択します。
@@ -72,30 +72,17 @@ ms.locfileid: "66417492"
     cd truffledemo
     ```
 
-1. Truffle の対話型開発コンソールを起動します。
+1. Truffle コンソールを使用して、既定のトランザクション ノードに接続します。
 
     ``` bash
-    truffle develop
+    truffle console --network defaultnode
     ```
 
-    Truffle では、ローカルの開発用ブロックチェーンが作成されて、対話型コンソールが提供されます。
+    Truffle では既定のトランザクション ノードに接続され、対話型コンソールが提供されます。
 
 ## <a name="create-ethereum-account"></a>Ethereum アカウントを作成する
 
-Web3 を使って既定のトランザクション ノードに接続し、Ethereum アカウントを作成します。 Web3 の接続文字列は、Azure portal から取得できます。
-
-1. Azure portal で既定のトランザクション ノードに移動し、 **[Transaction nodes]\(トランザクション ノード\) > [Sample code]\(サンプル コード\) > [Web3]** の順に選択します。
-1. **[HTTPS (Access key 1)]\(HTTPS (アクセス キー 1)\)** から JavaScript をコピーします ![Web3 サンプル コード](./media/send-transaction/web3-code.png)
-
-1. 既定のトランザクション ノードの Web3 JavaScript コードを、Truffle の対話型開発コンソールに貼り付けます。 そのコードでは、Azure Blockchain Service のトランザクション ノードに接続される Web3 オブジェクトが作成されます。
-
-    ```bash
-    truffle(develop)> var Web3 = require("Web3");
-    truffle(develop)> var provider = new Web3.providers.HttpProvider("https://myblockchainmember.blockchain.azure.com:3200/hy5FMu5TaPR0Zg8GxiPwned");
-    truffle(develop)> var web3 = new Web3(provider);
-    ```
-
-    Web3 オブジェクトでメソッドを呼び出して、トランザクション ノードと対話することができます。
+Web3 を使って既定のトランザクション ノードに接続し、Ethereum アカウントを作成します。 Web3 オブジェクトでメソッドを呼び出して、トランザクション ノードと対話することができます。
 
 1. 既定のトランザクション ノードで新しいアカウントを作成します。 パスワード パラメーターは、独自の強力なパスワードに置き換えます。
 
@@ -159,21 +146,21 @@ Truffle プロジェクトを構成するには、Azure portal からいくつ�
           })(),
     
           network_id: "*",
-          gas: 0,
           gasPrice: 0,
           from: myAccount
         },
         alpha: {
           provider: new Web3.providers.HttpProvider(alpha),
           network_id: "*",
-          gas: 0,
-          gasPrice: 0
         },
         beta: {
           provider: new Web3.providers.HttpProvider(beta),
           network_id: "*",
-          gas: 0,
-          gasPrice: 0
+        }
+      },
+      compilers: {
+        solc: {
+          evmVersion: "byzantium"
         }
       }
     }

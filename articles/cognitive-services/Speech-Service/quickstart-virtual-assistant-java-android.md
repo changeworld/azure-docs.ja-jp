@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:カスタムの音声優先仮想アシスタント (プレビュー)、Java (Android) - Speech Services
+title: クイック スタート:カスタムの音声優先仮想アシスタント (プレビュー)、Java (Android) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用して Android 上で Java を使用して音声優先仮想アシスタント アプリケーションを作成する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: c62402faa1995e1e992c8251ed87160a8f33d3a7
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1c203bb39a90fdb1c77c3a2c844318a748df7c63
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602741"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559213"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート:Speech SDK を使用して Android 上で Java を使用して音声優先仮想アシスタントを作成する
 

@@ -1,6 +1,6 @@
 ---
-title: ナレッジ ベースの公開、REST、Java
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: クイック スタート:ナレッジ ベースを公開する、REST、Java - QnA Maker
+titleSuffix: Azure Cognitive Services
 description: この Java REST ベースのクイック スタートでは、ナレッジ ベースを公開する手順を紹介しています。公開時に、テスト済みのナレッジ ベースの最新バージョンが、公開済みのナレッジ ベースを表す専用の Azure Search インデックスにプッシュされます。 また、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: ae94d02b93880b7c81d359e5b2606b720b38b554
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4252ce3e0dfdaf9033221d86b0aacc728783b75b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787940"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559772"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート: Java を使用して QnA Maker のナレッジ ベースを公開する
 
@@ -33,7 +33,7 @@ ms.locfileid: "65787940"
     * httpcore-4.4.6.jar
     * commons-logging-1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、**[リソース管理]** の **[キー]** を選択します。 。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、QnA Maker リソースの Azure ダッシュボードで、 **[リソース管理]** の **[キー]** を選択します。 。 
 * URL の kbid クエリ文字列パラメーターに含まれている QnA Maker ナレッジ ベース (KB) ID (下図)。
 
     ![QnA Maker ナレッジ ベース ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)

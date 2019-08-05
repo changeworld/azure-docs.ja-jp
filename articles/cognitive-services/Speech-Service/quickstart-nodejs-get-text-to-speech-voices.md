@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:テキスト読み上げ音声の表示、Node.js - Speech Services
+title: クイック スタート:テキスト読み上げ音声を一覧表示する、Node.js - Speech Service
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js を使用してリージョンまたはエンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 この一覧は JSON として返されます。利用可能な音声はリージョンによって異なります。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d64f59b6b4439d79d64ee92cf23676ab1275c45a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1044519110d8b0ae7b5a50860c8116d73b6b70bc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602997"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559379"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>クイック スタート:Node.js を使用してテキスト読み上げ音声の一覧を取得する
 

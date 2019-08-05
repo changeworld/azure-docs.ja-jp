@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:テキスト読み上げ音声を表示する、Python - Speech Services
+title: クイック スタート:テキスト読み上げ音声を一覧表示する、Python - Speech Service
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python を使用してリージョン/エンドポイントの標準音声およびニューラル音声の完全な一覧を取得する方法について説明します。 一覧は JSON として返されます。音声の可用性はリージョンによって異なります。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 46595cdf665158d019c9b6def19ff6609db803bc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: ac96c3ce3924b8b2fe834e2b350e95ce23c52e1f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602990"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559354"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>クイック スタート:Python を使用してテキスト読み上げ音声の一覧を取得する
 

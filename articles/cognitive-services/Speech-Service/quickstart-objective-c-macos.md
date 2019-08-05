@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 音声を認識する (Objective-C) - 音声サービス'
+title: クイック スタート:音声を認識する、Objective-C - Speech Service
 titleSuffix: Azure Cognitive Services
 description: macOS で Objective-C と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 25f341d167cecd765fd89d9286708d0bd8df6dd2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 45cd1210ee6af3c456171a427729f6e16caf2d58
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603030"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559360"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>クイック スタート:macOS で Objective-C と Speech SDK を使用して音声を認識する
 
@@ -67,7 +67,8 @@ Xcode を起動し、 **[File]**  >  **[New]**  >  **[Project]** の順にクリ
 ## <a name="install-the-sdk-as-a-cocoapod"></a>SDK を CocoaPod としてインストールする
 
 1. CocoaPod 依存関係マネージャーをその[インストールの手順](https://guides.cocoapods.org/using/getting-started.html)に従ってインストールします。
-1. サンプル アプリのディレクトリに移動します (`helloworld`)。 そのディレクトリに、次の内容を含んだ `Podfile` という名前のテキスト ファイルを配置します。[!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
+1. サンプル アプリのディレクトリに移動します (`helloworld`)。 そのディレクトリに、次の内容を含んだ `Podfile` という名前のテキスト ファイルを配置します。  
+   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-macos/helloworld/Podfile)]
 1. ターミナルで `helloworld` ディレクトリに移動して、`pod install` コマンドを実行します。 これにより、サンプル アプリと依存関係としての Speech SDK の両方を含んだ、`helloworld.xcworkspace` という Xcode ワークスペースが生成されます。 以降、このワークスペースを使用します。
 
 ## <a name="add-the-sample-code"></a>サンプル コードを追加する
