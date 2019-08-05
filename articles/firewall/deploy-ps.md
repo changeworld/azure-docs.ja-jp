@@ -242,7 +242,7 @@ $NIC | Set-AzNetworkInterface
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   [www.google.com]\(www.google.com) の要求は成功し、[www.microsoft.com]\(www.microsoft.com) の要求は失敗します。 これは、ファイアウォール ルールが予想どおりに動作していることを示します。
+   [www.google.com](www.google.com) の要求は成功し、[www.microsoft.com](www.microsoft.com) の要求は失敗します。 これは、ファイアウォール ルールが予想どおりに動作していることを示します。
 
 これで、ファイアウォール ルールが動作していることを確認できました。
 
