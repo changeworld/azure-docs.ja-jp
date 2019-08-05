@@ -209,10 +209,6 @@
           href: /azure/active-directory/saas-apps/
     - name: 概念
       items:
-        - name: 初期プロビジョニングの同期
-          href: user-provisioning.md
-        - name: 増分プロビジョニングの同期
-          href: user-provisioning.md
         - name: SCIM 対応アプリに対する自動プロビジョニング
           href: use-scim-to-provision-users-and-groups.md
     - name: ハウツー ガイド

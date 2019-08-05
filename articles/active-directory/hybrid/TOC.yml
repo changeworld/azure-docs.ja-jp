@@ -29,7 +29,7 @@
         - name: Azure AD Connect と Connect Health とは
           href: whatis-azure-ad-connect.md
         - name: 適切な認証の選択
-          href: 'https://docs.microsoft.com/azure/security/azure-ad-choose-authn'
+          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
         - name: ID 同期と重複属性の回復性
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: パスワード ハッシュの同期
