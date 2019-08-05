@@ -179,7 +179,7 @@
           items:
             - name: Azure VM のモビリティ サービスを更新する
               href: azure-to-azure-autoupdate.md
-            - name: Azure Site Recovery での更新
+            - name: Site Recovery の更新プログラムの管理
               href: service-updates-how-to.md
             - name: サーバーの削除と保護の無効化
               href: site-recovery-manage-registration-and-protection.md
@@ -263,7 +263,7 @@
               href: vmware-azure-manage-process-server.md
             - name: vCenter サーバーの管理
               href: vmware-azure-manage-vcenter.md
-            - name: Azure Site Recovery での更新
+            - name: Site Recovery の更新プログラムの管理
               href: service-updates-how-to.md
             - name: サーバーの削除と保護の無効化
               href: site-recovery-manage-registration-and-protection.md
@@ -281,6 +281,8 @@
               href: concepts-on-premises-to-azure-networking.md
         - name: ディザスター リカバリーを設定する
           items:
+            - name: 'チュートリアル: ディザスター リカバリーを設定する'
+              href: physical-azure-disaster-recovery.md
             - name: ソース環境をセットアップする
               href: physical-azure-set-up-source.md
             - name: ターゲット環境をセットアップする
@@ -293,8 +295,6 @@
                   href: vmware-azure-install-mobility-service.md
                 - name: System Center Configuration Manager を使用してモビリティ サービスをデプロイする
                   href: vmware-azure-mobility-install-configuration-mgr.md
-                - name: 'チュートリアル: ディザスター リカバリーを設定する'
-                  href: physical-azure-disaster-recovery.md
         - name: フェールオーバーとフェールバックを実行する
           href: physical-to-azure-failover-failback.md
         - name: 管理
@@ -307,7 +307,7 @@
               href: vmware-azure-manage-process-server.md
             - name: サーバーの削除と保護の無効化
               href: site-recovery-manage-registration-and-protection.md
-            - name: Azure Site Recovery での更新
+            - name: Site Recovery の更新プログラムの管理
               href: service-updates-how-to.md
             - name: コンテナーの削除
               href: delete-vault.md
@@ -361,10 +361,12 @@
               href: upgrade-2012R2-to-2016.md
             - name: サーバーの削除と保護の無効化
               href: site-recovery-manage-registration-and-protection.md
-            - name: Azure Site Recovery での更新
+            - name: Site Recovery の更新プログラムの管理
               href: service-updates-how-to.md
             - name: コンテナーの削除
               href: delete-vault.md
+            - name: コンテナーを別のリージョンに移動する
+              href: move-vaults-across-regions.md
     - name: アプリのディザスター リカバリー
       items:
         - name: オンプレミス アプリで Azure へのディザスター リカバリーを設定する
@@ -423,39 +425,45 @@
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: フェールオーバーを調整するための復旧計画に Azure Automation Runbook を追加する
       href: site-recovery-runbook-automation.md
-- name: 監視とトラブルシューティング
+- name: 監視
   items:
-    - name: Azure Site Recovery の監視
+    - name: 監視についてよく寄せられる質問
+      href: monitoring-common-questions.md
+    - name: Site Recovery の監視
       href: site-recovery-monitor-and-troubleshoot.md
-    - name: Azure VM
+    - name: Azure Monitor ログを使用した Site Recovery の監視
+      href: monitor-log-analytics.md
+    - name: プロセス サーバーの監視
+      href: vmware-physical-azure-monitor-process-server.md
+- name: トラブルシューティング
+  items:
+    - name: Azure VM のトラブルシューティング
       items:
-        - name: Azure VM のレプリケーション エラーのトラブルシューティング
+        - name: Azure VM レプリケーションのトラブルシューティング
           href: azure-to-azure-troubleshoot-errors.md
-        - name: Azure VM の継続中のレプリケーションのトラブルシューティング
+        - name: 実行中のレプリケーションのトラブルシューティング
           href: azure-to-azure-troubleshoot-replication.md
-        - name: Azure VM のモビリティ サービスに関するトラブルシューティング
+        - name: モビリティ サービスの問題のトラブルシューティング
           href: site-recovery-extension-troubleshoot.md
-    - name: VMware および物理サーバー
+    - name: VMware VM/物理サーバーのトラブルシューティング
       items:
-        - name: プロセス サーバーの監視
-          href: vmware-physical-azure-monitor-process-server.md
-        - name: VMware から Azure へのレプリケーションに関するトラブルシューティング
+        - name: VMware VM/物理サーバーのレプリケーションのトラブルシューティング
           href: vmware-azure-troubleshoot-replication.md
         - name: 構成サーバーのトラブルシューティング
           href: vmware-azure-troubleshoot-configuration-server.md
         - name: プロセス サーバーのトラブルシューティング
           href: vmware-physical-azure-troubleshoot-process-server.md
-        - name: VMware VM および物理サーバーのモビリティ サービスのプッシュ インストールに関するトラブルシューティング
+        - name: モビリティ サービスのプッシュ インストールのトラブルシューティング
           href: vmware-azure-troubleshoot-push-install.md
         - name: Azure へのフェールオーバーに関するトラブルシューティング
           href: site-recovery-failover-to-azure-troubleshoot.md
         - name: VMware VM の再保護とフェールバックに関するトラブルシューティング
           href: vmware-azure-troubleshoot-failback-reprotect.md
-        - name: Microsoft Azure Site Recovery プロバイダーのアップグレード エラーのトラブルシューティング
+        - name: プロバイダーのアップグレード エラーのトラブルシューティング
           href: vmware-azure-troubleshoot-upgrade-failures.md
         - name: vCenter の検出エラーのトラブルシューティング
           href: vmware-azure-troubleshoot-vcenter-discovery-failures.md
-    - name: Hyper-V
+    - name: Hyper-V のトラブルシューティング
       items:
         - name: Hyper-V レプリケーションのトラブルシューティング
           href: hyper-v-azure-troubleshoot.md

@@ -36,6 +36,26 @@ sections:
           - html: <a href="service/quickstart-run-local-notebook">ローカルのノートブック サーバーを使用して実験を実行する</a> (SDK のローカル インストール)
         style: unordered
         type: list
+      - text: '<b>チュートリアル:Azure portal で自動化された最初の ML モデルをトレーニングしてデプロイする</b>'
+        type: paragraph
+      - items:
+          - html: <a href="service/tutorial-first-experiment-automated-ml">自動化された機械学習を使用して最初の分類モデルのトレーニングとデプロイを行う</a>
+        style: unordered
+        type: list
+      - text: '<b>チュートリアル:SDK を使用して最初の ML モデルをトレーニングする</b>'
+        type: paragraph
+      - items:
+          - html: 'パート 1:<a href="service/tutorial-1st-experiment-sdk-setup">環境とワークスペースを設定する</a>'
+          - html: 'パート 2:<a href="service/tutorial-1st-experiment-sdk-train">最初のモデルをトレーニングする</a>'
+        style: unordered
+        type: list
+      - text: '<b>チュートリアル:ビジュアル インターフェイスを使用して最初の実験のトレーニングとデプロイを行う</b>'
+        type: paragraph
+      - items:
+          - html: 'パート 1:<a href="service/ui-tutorial-automobile-price-train-score">回帰モデルをトレーニングする</a>'
+          - html: 'パート 2:<a href="service/ui-tutorial-automobile-price-deploy">モデルをデプロイする</a>。'
+        style: unordered
+        type: list
       - text: '<b>チュートリアル:SDK を使用した MNIST データの画像分類:</b>'
         type: paragraph
       - items:

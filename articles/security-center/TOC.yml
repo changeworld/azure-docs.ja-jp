@@ -43,6 +43,8 @@
       href: security-center-incident.md
     - name: インシデント対応
       href: security-center-incident-response.md
+    - name: テナント間の管理
+      href: security-center-cross-tenant-management.md
 - name: ハウツー ガイド
   items:
     - name: セキュリティ スコアを向上させる
@@ -81,6 +83,8 @@
       items:
         - name: セキュリティに関する推奨事項とは
           href: security-center-recommendations.md
+        - name: 推奨事項の修復
+          href: security-center-remediate-recommendations.md
         - name: セキュリティ体制の強化
           href: security-center-monitoring.md
         - name: マシンとアプリの保護

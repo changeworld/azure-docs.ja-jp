@@ -43,6 +43,9 @@ sections:
       - type: list
         style: unordered
         items:
+          - html: 作業を開始しましょう。Azure portal で自動化された最初の ML モデルを<a href="tutorial-first-experiment-automated-ml">トレーニングしてデプロイする</a>。
+          - html: 作業を開始しましょう。Jupyter ノートブックを使用して<a href="tutorial-1st-experiment-sdk-setup">開発環境の設定</a>と<a href="tutorial-1st-experiment-sdk-train">最初の ML モデルのトレーニング</a>を行う (<b>2 部構成のシリーズ</b>)。
+          - html: 作業を開始しましょう。ドラッグアンドドロップのビジュアル インターフェイスを使用して最初の ML 実験の<a href="ui-tutorial-automobile-price-train-score">トレーニング</a>と<a href="ui-tutorial-automobile-price-deploy">デプロイ</a>を行う (<b>2 部構成のシリーズ</b>)。
           - html: 画像分類モデルの<a href="tutorial-train-models-with-aml">トレーニング</a>と<a href="tutorial-deploy-models-with-aml">デプロイ</a> (<b>2 部構成</b>)。
           - html: 回帰モデルのトレーニングとチューニングのための<a href="tutorial-data-prep">データの準備</a>と<a href="tutorial-auto-train-models">自動化された機械学習の活用</a> (<b>2 部構成</b>)。
           - html: ビジュアル インターフェイスでの<a href="ui-tutorial-automobile-price-train-score">自動車価格の予測</a>と回帰モデルの<a href="ui-tutorial-automobile-price-deploy">デプロイ</a>。

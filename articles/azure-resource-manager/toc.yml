@@ -87,6 +87,8 @@
       items:
         - name: テンプレートの作成
           href: how-to-create-template.md
+        - name: 子リソースの名前と種類
+          href: child-resource-name-type.md
         - name: サブスクリプションでリソース グループとリソースを作成する
           displayName: subscription level deployment
           href: deploy-to-subscription.md

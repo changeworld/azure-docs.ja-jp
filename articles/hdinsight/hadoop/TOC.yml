@@ -56,6 +56,8 @@
       maintainContext: true
     - name: トラブルシューティング
       items:
+        - name: HDInsight クラスターにログインできない
+          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: ノードを HDInsight クラスターに追加できない
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
         - name: InvalidNetworkSecurityGroupSecurityRules - クラスターの作成が失敗する

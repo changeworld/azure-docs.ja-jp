@@ -68,6 +68,8 @@
       items:
         - name: SQL Server データベースを移行する
           href: virtual-machines-windows-migrate-sql.md
+        - name: VM を新しいリージョンへ
+          href: virtual-machines-windows-sql-move-different-region.md
     - name: 高可用性の構成
       items:
         - name: Azure Storage を使用したバックアップと復元

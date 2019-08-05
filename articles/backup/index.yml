@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Backup のドキュメント
+title: Azure Backup サービスのドキュメント
 metadata:
   title: Azure Backup のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: Azure Backup では、オンプレミス サーバー、仮想マシン、仮想化されたワークロード、SQL Server、SharePoint サーバーなどのデータをバックアップできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、データをバックアップおよび復元する方法を確認してください。

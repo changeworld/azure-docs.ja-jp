@@ -305,6 +305,8 @@
           href: logic-apps-enterprise-integration-accounts.md
         - name: 統合サービス環境を管理する
           href: ise-manage-integration-service-environment.md
+        - name: ロジック アプリのリソースを移動する
+          href: move-logic-app-resources.md
         - name: 最新のスキーマに移行する
           href: ../connectors/connectors-schema-migration.md
     - name: テスト
