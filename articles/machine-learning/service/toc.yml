@@ -4,26 +4,16 @@
   expanded: true
   items:
     - name: Azure Machine Learning サービスの概要
-      displayName: AML services overview
+      displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: サービスのしくみ
-      displayName: architecture concepts definitions
+      displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: セットアップ
   items:
     - name: ワークスペースの作成
       displayName: install sdk workspace
       href: setup-create-workspace.md
-- name: クイック スタート
-  items:
-    - name: Python SDK
-      items:
-        - name: クラウドで実験を実行する
-          displayName: workspace
-          href: quickstart-run-cloud-notebook.md
-        - name: ローカルで実験を実行する
-          displayName: 'workspace, install, sdk'
-          href: quickstart-run-local-notebook.md
 - name: チュートリアル
   items:
     - name: Python SDK
@@ -52,10 +42,10 @@
     - name: ビジュアル インターフェイス
       items:
         - name: 回帰モデルをトレーニングする
-          displayName: experiment drag-and-drop visual interface Tutorial 1
+          displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
         - name: 回帰モデルをデプロイする
-          displayName: experiment drag-and-drop visual interface Tutorial 2
+          displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: 自動化された機械学習
       items:
@@ -65,27 +55,27 @@
 - name: サンプル
   items:
     - name: Notebooks
-      displayName: 'example, examples, jupyter, azure notebooks, python, notebook, github'
+      displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
     - name: ビジュアル インターフェイスの実験
       items:
         - name: 価格を予測する
-          displayName: 'Basic Sample, training, regression, sample 1'
+          displayName: 'regression, studio'
           href: ui-sample-regression-predict-automobile-price-basic.md
         - name: 価格を予測する (詳細設定)
-          displayName: 'Advanced Sample, training, regression, sample 2'
+          displayName: 'regression, studio'
           href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
         - name: 信用リスクの予測
-          displayName: 'Basic Sample, training, classification, sample 3'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-credit-risk-basic.md
         - name: 信用リスクを予測する (詳細設定)
-          displayName: 'Advanced Sample, training, classification, sample 4'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
         - name: 顧客離れを予測する
-          displayName: 'Basic Sample, training, classification, sample 5'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-churn.md
         - name: フライトの遅延を予測する
-          displayName: 'Basic Sample, training, classification, sample 6'
+          displayName: 'classification, studio'
           href: ui-sample-classification-predict-flight-delay.md
     - name: Azure Open Datasets
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
@@ -97,7 +87,7 @@
     - name: ワークスペース
       href: concept-workspace.md
     - name: コンピューティング ターゲット
-      displayName: 'compute, resource, target, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
     - name: ビジュアル インターフェイス
       displayName: studio
@@ -106,7 +96,7 @@
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
     - name: モデル管理 (MLOps)
-      displayName: 'deploy, deployment, mlops, operationalize, operationalization'
+      displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
     - name: ML パイプライン
       href: concept-ml-pipelines.md
@@ -157,15 +147,15 @@
           href: how-to-vscode-tools.md
     - name: データの処理
       items:
+        - name: データストアからデータを取得する
+          displayName: 'blob, get, fileshare, access storage'
+          href: how-to-access-data.md
         - name: データセットを追加および登録する
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
         - name: データを調査する
           displayName: 'data, eda, exploratory, analysis, etl, dataset, summary statistics, profile, explore, data preparation, dataprep'
           href: how-to-explore-prepare-data.md
-        - name: データストアからデータを取得する
-          displayName: blob get fileshare access storage
-          href: how-to-access-data.md
         - name: azureml.dataprep で準備する
           items:
             - name: データを読み込む
@@ -229,7 +219,7 @@
     - name: モデルをデプロイおよび提供する
       items:
         - name: デプロイする場所と方法
-          displayName: publish web service
+          displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
         - name: Azure Container Instances
           href: how-to-deploy-azure-container-instance.md
@@ -285,13 +275,13 @@
 - name: リファレンス
   items:
     - name: Machine Learning SDK
-      displayName: api core package python data prep
-      href: 'https://aka.ms/aml-sdk'
+      displayName: 'api, core, package, python, class'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
     - name: Machine Learning CLI
-      displayName: 'cli, extension, command line, command-line, az, ci/cd, automate, automated'
+      displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: ビジュアル インターフェイス モジュール
-      displayName: module reference
+      displayName: 'module, reference, algorithm, studio'
       items:
         - name: モジュール リファレンスの概要
           href: ../algorithm-module-reference/module-reference.md
@@ -384,7 +374,7 @@
 - name: リソース
   items:
     - name: リリース ノート
-      displayName: what's new issues bugs
+      displayName: 'what''s, new, issues, bugs'
       href: azure-machine-learning-release-notes.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
@@ -393,7 +383,7 @@
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 既知の問題
-      displayName: bugs errors troubleshoot
+      displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: ユーザー フォーラム
       href: 'https://aka.ms/aml-forum-service'
@@ -402,5 +392,5 @@
     - name: Microsoft の ML 製品の比較
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Workbench の変更点
-      displayName: desktop ui Workbench upgrade update transfer
+      displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md

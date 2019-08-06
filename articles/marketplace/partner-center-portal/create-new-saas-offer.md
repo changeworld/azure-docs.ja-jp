@@ -6,13 +6,13 @@ manager: evansma
 ms.author: mattwoj
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 9c8b8a6ad8a10a65a05b46bf433d00b4e3ecb402
-ms.sourcegitcommit: ec7b0bf593645c0d1ef401a3350f162e02c7e9b8
+ms.date: 06/27/2019
+ms.openlocfilehash: a4947349e64d5f9bf95a9213701dc62a0e018b8f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2019
-ms.locfileid: "66455642"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501302"
 ---
 # <a name="create-a-new-saas-offer"></a>新しい SaaS オファーを作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "66455642"
 
 ![パートナー センターの商業マーケットプレース ダッシュボード](./media/new-offer-overview.png)
 
-\+ **[新規作成]** ボタン、 **[サービスとしてのソフトウェア]** メニュー項目の順に選択します。 
+**[+ 新しいオファー]** ボタン、 **[サービスとしてのソフトウェア]** メニュー項目の順に選択します。 
 
 他の種類のオファーを選択すると、以前の [Cloud パートナー ポータル](https://cloudpartner.azure.com/)にリダイレクトされます。  現時点では、パートナー センターの商業マーケットプレース ポータルで利用できるのは SaaS オファーだけです。 
 
@@ -31,18 +31,21 @@ ms.locfileid: "66455642"
 ![[新しいオファー] ダイアログ ボックス](./media/new-offer-popup.png)
 
 
-## <a name="offer-id-and-name"></a>オファーの ID と名前
+## <a name="offer-id-and-alias"></a>オファーの ID と別名
 
-- **プラン ID**: 自分のアカウントで各オファーの一意識別子を作成します。 この ID は、マーケットプレース オファーの URL アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。 オファー ID は、小文字の英数字 (ハイフンとアンダースコアは含むが空白は含まない) である必要があります。 これは、50 文字以下にする必要があるほか、[作成] を選択した後に更新することができません。  
+- **プラン ID**: 自分のアカウントでの各オファーの一意識別子。 この ID は、マーケットプレース オファーの URL アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。 オファー ID は、小文字の英数字 (ハイフンとアンダースコアは含むが空白は含まない) である必要があります。 これは、50 文字以下にする必要があるほか、 *[作成]* を選択した後に変更することができません。  
 例: test-offer-1
 <br>`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` という URL になります。
 
-- **[Offer name]\(オファー名\)** :パブリケーション、広告、Web サイトの全体で一貫している SaaS アプリケーション オファーの正式名称。  この名前は商標登録されている場合があります。  オファー名は、空白および絵文字 (商標または著作権マークの場合を除く) を含むことができず、50 文字以下にする必要があります。
+- **オファーの別名**:パートナー センター ポータル内でオファーを参照するために使用される名前。 この名前はマーケットプレースでは使用されず、顧客に表示される*オファー名*やその他の値とは異なります。 *[作成]* の選択後にこの値を変更することはできません。
+
 <br>例:Test Offer 1&#8482;
 
 **作成** を選択します。  このオファーのために、 **[オファーの概要]** ページが作成されます。  
 
-![パートナー センターの [オファーの概要]](./media/commercial-marketplace-offer-overview.png)
+<!---
+![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
+-->
 
 ## <a name="offer-overview"></a>オファーの概要
 
@@ -72,12 +75,12 @@ Microsoft を通じた販売では、顧客による発見率と購入率が高�
 
 パートナー センターの商業マーケットプレースを使用してサービスとしてのソフトウェア (SaaS) オファーをリスト登録するには、次の基準を満たす必要があります。
 
-- オファーが Azure クライアントとの互換性を備えている必要があります (SaaS アプリは最高のパフォーマンスと互換性を実現するために Azure 上でホストされることも多いですが、それは要件ではありません)。 
 - オファーで ID の管理と認証に [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) が使用されている必要があります。
-- Azure Marketplace と統合するために [SaaS Fulfillment API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2) シリーズがオファーで使用されている必要があります。
+- Azure Marketplace と統合するために [SaaS Fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) シリーズがオファーで使用されている必要があります。
+- 広範な要件については、「[SaaS アプリケーションのオファー発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)」をご覧ください。
 
-#### <a name="billing-infrastructure-costs"></a>インフラストラクチャ コストの課金
-SaaS オファーの場合、公開元は Azure インフラストラクチャの使用料金とソフトウェアのライセンス料金を 1 つのコスト項目として処理する必要があります。 このコストは定額の月額料金として顧客に提示されます。 Azure インフラストラクチャの使用量は、お客様 (パートナー) が直接管理し、お客様に直接課金されます。 実際のインフラストラクチャの使用料金は、顧客には提示されません。 公開元は、Azure インフラストラクチャの使用料金をソフトウェア ライセンス料金にバンドルするように選択することが一般的です。 
+#### <a name="saas-on-azure-billing-infrastructure-costs"></a>Azure での SaaS のインフラストラクチャ コストの課金
+SaaS オファーが Azure でホストされている場合、公開元は Azure インフラストラクチャの使用料金とソフトウェアのライセンス料金を 1 つのコスト項目として処理する必要があります。 このコストは定額の月額料金として顧客に提示されます。 Azure インフラストラクチャの使用量は、お客様 (パートナー) が直接管理し、お客様に直接課金されます。 実際のインフラストラクチャの使用料金は、顧客には提示されません。 公開元は、Azure インフラストラクチャの使用料金をソフトウェア ライセンス料金にバンドルするように選択することが一般的です。 
 
 ソフトウェア ライセンス料金は、従量制でも消費量ベースでもなく、毎月発生するサイトベースの定額サブスクリプション料金として提示されます。
 
@@ -111,10 +114,13 @@ SaaS オファーの場合、公開元は Azure インフラストラクチャ�
 - **潜在顧客がこの登録オファーとやり取りする方法について選択してください。**
 
 ##### <a name="get-it-now-free"></a>Get it now (今すぐ入手する) (無料)
-顧客に対して、オファーを無料で使用できるものとしてリスト登録します。そのために、アプリにアクセスできる有効な (http または https で始まる) URL を指定します。  次に例を示します。`https://contoso.com/saas-app`
+顧客に対して、プランを無料で使用できるものとしてリスト登録します。そのために、アプリにアクセスできる有効な (*http* または *https* で始まる) URL を指定します。  次に例を示します。`https://contoso.com/saas-app`
 
-##### <a name="free-trial"></a>無料試用版
-顧客に対して、オファーを無料試用版ベースで使用できるものとしてリスト登録します。そのために、アプリにアクセスできる有効な (http または https で始まる) URL を指定します。  次に例を示します。`https://contoso.com/trial/saas-app`
+##### <a name="free-trial-listing"></a>Free trial (無料試用版) (一覧)
+有効な (*http* または *https* で始まる) URL を示すことにより、無料試用版へのリンクを使用して顧客にプランを一覧表示します。顧客は、その URL から、[Azure Active Directory (Azure AD) を使用したワンクリック認証](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)で試用版を入手することができます。  (例: `https://contoso.com/trial/saas-app`)。 オファー登録情報の無料試用版がご利用のサービスによって作成、管理、および構成され、Microsoft によって管理されるサブスクリプションはありません。
+
+> [!NOTE]
+> 試用版リンクからアプリケーションが受信するトークンは、そのアプリのアカウント作成を自動化するためのユーザー情報を Azure AD を介して取得するためだけに使用できます。 このトークンを使用した認証には、Microsoft アカウント (MSA) はサポートされません。
 
 ##### <a name="contact-me"></a>[Contact me (お問い合わせ)]
 顧客関係管理 (CRM) システムに接続して、顧客の連絡先情報を収集します。 顧客は、自分の情報を共有する許可を求められます。 これらの顧客の詳細は、オファーの名前と ID のほか、顧客がオファーを見つけたマーケットプレース ソースと一緒に、お客様が構成した CRM システムに送信されます。 CRM の構成の詳細については、「[リード管理の接続](#connect-lead-management)」を参照してください。 
@@ -167,7 +173,7 @@ SaaS オファーの場合、公開元は Azure インフラストラクチャ�
 
 次のセクションに進む前に、必ず**保存**してください。
 
-## <a name="properties"></a>Properties
+## <a name="properties"></a>properties
 **[プロパティ]** タブでは、マーケットプレース上でオファーをグループ分けするために使用されるカテゴリと業界、オファーのための法的契約、アプリのバージョンを定義するよう求められます。 
 
 これらのフィールドに入力した後、 **[保存]** を選択します。 
@@ -203,6 +209,9 @@ Azure Marketplace の発行元は、カスタムの使用条件を作成する�
 
 [オファー登録情報] タブには、お客様のオファーが利用可能な言語 (と市場) が表示されます。現在、利用可能な唯一の場所は英語 (米国) です。 さらに、このページには、言語固有のリスト登録の状態と、それが追加された日付および時刻が表示されます。 言語および市場ごとにマーケットプレースの詳細 (オファーの名前、説明、検索語句など) を定義する必要があります。
 
+> [!NOTE]
+> オファー登録情報のコンテンツ (オファーの説明、ドキュメント、スクリーンショット、使用条件、プライバシーポリシーなど) は、オファーの説明が "このアプリケーションは、[英語以外の言語] でのみ利用可能です。" という文言で始まっていれば英語である必要はありません。 また、オファー登録情報のコンテンツで使用されている言語以外の言語でコンテンツを提供するための*役に立つリンクの URL* を提供することもできます。
+
 ### <a name="offer-listings"></a>オファーの一覧情報
 
 オファーの説明やマーケティング資産など、マーケットプレースで表示される詳細を入力します。
@@ -213,6 +222,92 @@ Azure Marketplace の発行元は、カスタムの使用条件を作成する�
 このフィールドには、最大で 3,000 文字のテキストを入力できます。 その他のヒントについては、記事「[Write a great app description (アプリの優れた説明を書く)](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)」を参照してください。
 - **検索キーワード**: マーケットプレースで顧客がお客様のオファーを見つけるために使用できる検索キーワードを最大 3 つ入力します。
 - **作業を開始するための手順** (必須): お客様のアプリを構成して使用を開始する方法を潜在顧客に対して説明します。  このクイック スタートには、より詳細なオンライン ドキュメントへのリンクを含めることができます。 このフィールドには、最大で 3,000 文字のテキストを入力できます。 
+
+#### <a name="description"></a>**説明**
+
+これは必須フィールドです。 説明に含める項目は次のとおりです。 
+
+* 説明の先頭の数文で、オファーの価値提案を明確に説明します。  
+* 先頭の数文は、検索エンジンの結果に表示される可能性があることを留意してください。  
+* 特徴や機能に頼って製品を販売しようとせずに、 提供する価値に焦点を当ててください。  
+* できるだけ業界固有の語彙や利益に基づく表現を使用します。 
+
+価値提案の中心の要素には、以下の情報を含めるようにします。 
+
+* 製品の説明。 
+* 製品から利益を得られるユーザーの種類。 
+* 製品が対応する顧客のニーズや問題。 
+
+プランの説明をより魅力的なものにするために、説明には、HTML タグを使用して書式を設定することができます。 
+
+1. 段落を作成したい場合は、テキストの先頭に `<p>` を追加し、最後に `</p>` を追加します。
+
+    **例**: 
+
+    `<p>` これは第 1 段落です。 `</p>` <br>
+    `<p>` これは第 2 段落です。 `</p>` <br>
+
+    これは次のように表示されます。
+
+    <p> これは第 1 段落です。 </p>
+    <p> これは第 2 段落です。 </p>
+
+1. **箇条書きの項目**を追加したい場合は、次のように `<li>` タグ内にテキストを配置します。 `<ul>` タグと `</ul>` タグの間に、さらに多くの箇条書き項目 (`<li>` タグと `</li>` タグで囲まれた項目) をコピーして貼り付けることができます。 必ず `<ul></ul>` を追加してください。 
+
+    **例**:
+
+    ```
+    <ul> 
+        <li>add text here</li> 
+        <li> add text here </li> 
+        <li> add text here </li> 
+    </ul> 
+    ```
+
+    これは次のように表示されます。
+    <ul> 
+        <li>ここにテキストを追加</li> 
+        <li> ここにテキストを追加 </li> 
+        <li> ここにテキストを追加 </li> 
+    </ul> 
+
+1. コンテンツを**太字**にするには、太字にしたいテキストの先頭に `<b>` を追加し、その最後に `</b>` を追加します。 
+
+    **例**:`<b>` 無料試用版`</b>`
+    
+    この場合、ネットショップのプランの説明にある "無料試用版" という語句が太字で表示されます。 
+
+    **無料試用版**
+
+1. コンテンツ間に**改行**を追加するには、新しい行を開始したいコンテンツの前に `<br>` を追加します。 間隔を置いて新しい行を開始するには、コンテンツの前に `<br><br>` を追加します。 
+
+    **例**:
+
+    これはテキスト行です。 `<br>` これは、改行に続くテキスト行です。 `<br><br>` これは 2 行下から開始される行です。 
+
+    これは次のように表示されます。
+
+    これはテキスト行です。 <br> これは、改行に続くテキスト行です。 <br><br> これは 2 行下から開始される行です。 
+
+1. **テキストのサイズを大きく**したい場合は、まず、テキストをどのくらい大きくするかを決めます。 以下の例を参考にしてください。 テキストのサイズを選択したら、それに対応する `<H*></H*>` タグをテキストの先頭と最後に追加します。 
+
+    **例**:
+
+    `<h1>`これは見出し 1 です`</h1>` <br>
+    `<h2>`これは見出し 2 です`</h2>` <br>
+    `<h3>`これは見出し 3 です`</h3>` <br>
+    `<h4>`これは見出し 4 です`</h4>` <br>
+    `<h5>`これは見出し 5 です`</h5>` <br>
+    `<h6>`これは見出し 6 です`</h6>` 
+
+    これは次のように表示されます。
+
+    <h1>これは見出し 1 です</h1> 
+    <h2>これは見出し 2 です</h2> 
+    <h3>これは見出し 3 です</h3> 
+    <h4>これは見出し 4 です</h4> 
+    <h5>これは見出し 5 です</h5> 
+    <h6>これは見出し 6 です</h6> 
 
 #### <a name="links"></a>リンク
 
@@ -253,22 +348,22 @@ Azure Marketplace の発行元は、カスタムの使用条件を作成する�
 
 - **Define a Preview Audience: Add a single AAD/MSA account email per line, along with an optional description. (プレビュー対象ユーザーを定義します: 1 行あたり 1 つの AAD または MSA アカウント メールと説明 (任意) を追加してください。)**
 
-既存の Microsoft アカウント (MSA) または Azure Active Directory (AAD) アカウントが一般公開前にオファーの検証を手伝えるように、最大で 10 個のメール アドレスを手動で追加します (CSV ファイルをアップロードする場合は 20 個)。 これらのアカウントを追加することで、マーケットプレースに公開される前のオファーへのプレビュー アクセスを許可される対象ユーザーを定義します。 オファーが既に公開されている場合も、オファーの変更や更新をテストするためにプレビュー対象ユーザーを定義することができます。
+既存の Microsoft アカウント (MSA) または Azure Active Directory アカウントが一般公開前にプランの検証を手伝えるように、最大で 10 個のメール アドレスを手動で追加します (CSV ファイルをアップロードする場合は 20 個)。 これらのアカウントを追加することで、マーケットプレースに公開される前のオファーへのプレビュー アクセスを許可される対象ユーザーを定義します。 オファーが既に公開されている場合も、オファーの変更や更新をテストするためにプレビュー対象ユーザーを定義することができます。
 
 > [!NOTE]
 > プレビュー対象ユーザーはプライベート対象ユーザーとは異なります。 プレビュー対象ユーザーは、マーケットプレースで一般公開される "_前に_" オファーにアクセスすることを許可されます。 また、プランを作成してそれをプライベート対象ユーザーだけに公開することもできます。 **[プランのリスト]** タブでは、 **[This is a private plan]\(これはプライベート プランです\)** チェック ボックスを使用してプライベート対象ユーザーを定義できます。 その後、Azure テナント ID を使用し、最大で 20,000 人の顧客をプライベート対象ユーザーとして定義できます。
 
 ## <a name="technical-configuration"></a>技術的な構成
 
-**[技術的な構成]** タブでは、お客様のオファーへの接続に使用される技術的な詳細 (URL パス、Webhook、テナント ID、アプリ ID) を定義します。 この接続によって、顧客がお客様のオファーを取得することを選択した場合に、Microsoft がそれを顧客の Azure サブスクリプションのリソースとしてプロビジョニングできます。
+**[技術的な構成]** タブでは、お客様のオファーへの接続に使用される技術的な詳細 (URL パス、Webhook、テナント ID、アプリ ID) を定義します。 この接続によって、最終顧客がオファーを取得することを選択した場合、Microsoft は最終顧客向けにオファーをプロビジョニングできます。 収集されたフィールドの使用方法が説明されている図については、「[SaaS Fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)」のドキュメントをご覧ください。
 
-- **ランディング ページの URL** (必須): 顧客がマーケットプレースからお客様のオファーを取得した後に到達する転送先のサイト URL を定義します。 この URL は、Microsoft との取引を容易にするための接続 API を受信するエンドポイントにもなります。
+- **ランディング ページの URL** (必須): 顧客がマーケットプレースからお客様のオファーを取得した後で移動するサイトの URL を定義します。 この URL は、顧客がページにルーティングされるときにトークンを受け取るエンドポイントです。 そのトークンを交換し、Fulfillment API での解決を使って詳細をプロビジョニングできます。 それらの詳細およびお客様が収集した他の情報を、エクスペリエンスに構築される顧客対話型 Web ページの一部として使って、購入の登録とアクティブ化を完了できます。
 
-- **Connection Webhook (接続 Webhook)** (必須): Microsoft が顧客に代わってパートナーに送信する必要があるすべての非同期イベント (例:Azure サブスクリプションが無効になりました) のために、Microsoft に接続 Webhook を提供する必要があります。 Webhook システムをまだ導入していない場合、最も簡単な構成は、ポストされているイベントをリッスンして、それらを適切に処理する HTTP エンドポイント ロジック アプリを用意することです (例: https:\//prod-1westus.logic.azure.com:443/work)。 詳しくは、「[ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)」をご覧ください。
+- **Connection Webhook (接続 Webhook)** (必須): Microsoft が顧客に代わってパートナーに送信する必要があるすべての非同期イベント (例:SaaS サブスクリプションが無効になりました) のために、Microsoft に接続 Webhook を提供する必要があります。 Webhook システムをまだ導入していない場合、最も簡単な構成は、ポストされているイベントをリッスンして、それらを適切に処理する HTTP エンドポイント ロジック アプリを用意することです (例: https:\//prod-1westus.logic.azure.com:443/work)。 詳しくは、「[ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint)」をご覧ください。
 
-- **Azure AD テナント ID** (必須): Azure portal 内では、Microsoft の 2 つのサービス間の接続が認証済みの通信の背後で行われることを Microsoft が検証できるように、[Azure Active Directory (AD) アプリを作成](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)する必要があります。 [テナント ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id) を見つけるには、Azure Active Directory に移動して **[プロパティ]** を選択し、表示される**ディレクトリ ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。
+- **Azure AD テナント ID** (必須): Azure portal 内では、Microsoft の 2 つのサービス間の接続が認証済みの通信の背後で行われることを Microsoft が検証できるように、[Azure Active Directory (AD) アプリを作成](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)する必要があります。 [テナント ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) を見つけるには、Azure Active Directory に移動して **[プロパティ]** を選択し、表示される**ディレクトリ ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。
 
-- **Azure AD app ID (Azure AD アプリ ID)** (必須): また、自分の[アプリケーション ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) と認証キーも必要です。 これらの値を取得するには、Azure Active Directory に移動して **[アプリの登録]** を選択し、表示される**アプリケーション ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。 認証キーを見つけるには、 **[設定]** に移動して **[キー]** を選択します。 説明と期間を入力する必要があります。その後、数値が提供されます。
+- **Azure AD app ID (Azure AD アプリ ID)** (必須): また、自分の[アプリケーション ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) と認証キーも必要です。 これらの値を取得するには、Azure Active Directory に移動して **[アプリの登録]** を選択し、表示される**アプリケーション ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。 認証キーを見つけるには、 **[設定]** に移動して **[キー]** を選択します。 説明と期間を入力する必要があります。その後、数値が提供されます。
 
  Azure アプリケーション ID が自分の公開元 ID に関連付けられていることに注意し、自分のすべてのオファーで同じアプリケーション ID が使用されるようにしてください。
 
@@ -305,6 +400,22 @@ Azure Marketplace の発行元は、カスタムの使用条件を作成する�
 
 **[価格と提供の状況]** タブでは、このプランが利用可能になる市場、目的の収益化モデル、価格、請求期間を構成できます。 さらに、プランがすべてのユーザーに表示されるようにするのか、それとも特定の顧客 (プライベート対象ユーザー) だけに表示されるようにするのかを指定できます。
 
+##### <a name="enabling-free-trials"></a>無料試用版を有効にする
+
+商業マーケットプレース経由で提供される SaaS オファーでは、Microsoft を通じて販売した場合に 1 か月間の無料試用版を提供できます。 従量制課金プランを除くすべての課金モデルと課金条件で、無料試用版がサポートされます。 このオプションにより、1 か月間の無料アクセスが得られるため、お客様の負担が軽減されます。  オファー内のプランの無料試用版を有効にすることを選択した場合、お客様は最初の 1 か月の期間が終了する前に有料サブスクリプションに変換することはできません。  この期間中、オファーを購入したお客様は、無料試用が有効なサポートされるすべてのプランを試すことができ、別のプランに変換できます。  有料サブスクリプションへの変換は、期間の終了時に自動的に実行されます。
+
+>[!Note]
+>お客様が無料試用版を使用しないプランに変換する場合、変換は行われますが、無料試用は直ちに無効になります。  また、お客様がプランの支払いを開始した後は、無料試用版をサポートする SKU に変換した場合でも、同じサブスクリプションで無料試用版を再取得することはできなくなります。
+
+無料試用版の構成は、オファーのプランごとに行うことができます。 オファーごとの [Pricing and Availability]\(価格と使用可能状況\) に移動し、1 か月の試用版の使用を許可するボックスをオンにします。
+
+![1 か月間の無料試用版チェックボックス](./media/free-trial-enable.png)
+
+無料試用版に現在参加しているお客様のサブスクリプションに関する情報を取得するには、新しい API プロパティの `isFreeTrial` を使用します。このプロパティは、true または false としてマークされます。 詳細については、[SaaS サブスクリプションの取得 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) に関する記事を参照してください。
+
+>[!Note]
+>マーケットプレース測定サービスを利用するプランでは、無料試用版はサポートされていません。
+
 #### <a name="markets"></a>市場
 
 - **Edit markets (市場の編集)** (省略可能)
@@ -318,7 +429,7 @@ Azure Marketplace の発行元は、カスタムの使用条件を作成する�
 
 - **価格モデル**: [Flat rate]\(定額\) または [Seat based]\(シート ベース\)
 
-**Flat rate (定額):** 月額制または年額制の単一の定額料金で、オファーにアクセスできるようにします。 これはサイトベースの価格とも呼ばれます。
+**Flat rate (定額):** 月額制または年額制の単一の定額料金で、オファーにアクセスできるようにします。 これはサイトベースの価格とも呼ばれます。 この価格モデルでは、必要に応じてマーケットプレースの測定サービス API を使用して非標準ユニットに従ってお客様に課金する従量制課金プランを定義できます。  従量制課金の詳細については、「[マーケットプレース測定サービスを使用した従量制課金](./saas-metered-billing.md)」を参照してください。
 
 **Seat based (シート ベース):** オファーにアクセスする (つまり、"*シート*" を所有する) ユーザーの数に基づいた価格で、オファーにアクセスできるようにします。 このシートベースのモデルでは、価格に基づいて許可される最小および最大のシート数を設定できます。 そのため、複数のプランを構成することで、ユーザーの数に基づいてさまざまな価格ポイントを構成できます。  これらのフィールドは省略できます。 空のままにした場合、シート数は制限がないものとして解釈されることになります (最小は 1、最大はシステムでサポートできる数)。 これらのフィールドは、プランを更新する一環として編集できます。
 
@@ -432,13 +543,13 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 - **Azure サブスクリプション ID** (Azure Resource Manager とロジック アプリでは必須): リソースの使用状況レポート用および課金用の Azure アカウント サービスへのアクセス権を付与するサブスクリプション ID を入力します。 まだお持ちでない場合、体験版に使用するために[別個の Azure サブスクリプションの作成](https://docs.microsoft.com/azure/billing/billing-create-subscription)を検討することをお勧めします。 Azure サブスクリプション ID は、[Azure portal](https://portal.azure.com/) にログインし、左側にあるメニューの **[サブスクリプション]** タブに移動して見つけることができます。 このタブを選択すると、自分のサブスクリプション ID (例: "a83645ac-1234-5ab6-6789-1h234g764ghty") が表示されます。
 
-- **Azure AD テナント ID** (必須): 自分の Azure Active Directory (AD) [テナント ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-id) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[プロパティ]** を選択してから、表示される**ディレクトリ ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。 また、[https://www.whatismytenantid.com](https://www.whatismytenantid.com) で URL のドメイン名を使用して、組織のテナント ID を検索することもできます。
+- **Azure AD テナント ID** (必須): 自分の Azure Active Directory (AD) [テナント ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[プロパティ]** を選択してから、表示される**ディレクトリ ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。 また、[https://www.whatismytenantid.com](https://www.whatismytenantid.com) で URL のドメイン名を使用して、組織のテナント ID を検索することもできます。
 
 - **Azure AD tenant name (Azure AD テナント名)** (Dynamic 365 で必須): 自分の Azure Active Directory (AD) 名を入力します。 この名前を見つけるには、[Azure portal](https://portal.azure.com/) にサインインします。右上隅にある自分のアカウント名の下に、テナント名が表示されます。
 
-- **Azure AD app ID (Azure AD アプリ ID)** (必須): 自分の Azure Active Directory (AD) [アプリケーション ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[アプリの登録]** を選択してから、表示される**アプリケーション ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。
+- **Azure AD app ID (Azure AD アプリ ID)** (必須): 自分の Azure Active Directory (AD) [アプリケーション ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューで [Active Directory] タブを選択し、 **[アプリの登録]** を選択してから、表示される**アプリケーション ID** 番号 (例: 50c464d3-4930-494c-963c-1e951d15360e) を探します。
 
-- **Azure AD app key (Azure AD アプリ キー)** (必須): 自分の Azure Active Directory (AD) [アプリケーション キー](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key)を入力します。 この ID を見つけるには、[Azure portal](https://portal.azure.com/) にサインインして左側のメニューにある [Active Directory] タブを選択し、 **[アプリの登録]** を選択してから **[設定]**  >  **[キー]** を選択します。
+- **Azure AD アプリ クライアントのシークレット** (必須): Azure AD アプリケーションの[クライアント シークレット](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)を入力します。 この値を探すには、[Azure portal](https://portal.azure.com/) にサインインします。 左側のメニューにある **[Azure Active Directory]** タブを選択し、 **[アプリの登録]** を選択してから、体験版アプリを選択します。 次に、 **[Certificates and secrets]\(証明書とシークレット\)** 、 **[New client secret]\(新しいクライアント シークレット\)** の順に選択し、説明を入力し、 **[Expires]\(有効期限\)** で **[Never]\(なし\)** を選択してから、 **[追加]** を選択します。 必ず値をコピーしておいてください。 (これを行う前にページから移動しないでください。移動すると、値にアクセスできなくなります。)
 
 次のセクションに進む前に、必ず**保存**してください。
 

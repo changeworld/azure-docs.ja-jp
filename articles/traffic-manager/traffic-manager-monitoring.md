@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: allensu
-ms.openlocfilehash: 8df1c29bc5230e925d05be9fd356de050a9b0f06
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: e06d2ce93ac7c534f2c729dce794e66e3ee894d8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67550370"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333802"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
@@ -152,6 +152,46 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 > どのエンドポイントも返されない場合、Traffic Manager の正常性チェックが正しく構成されていなくても、トラフィック ルーティングの観点では Traffic Manager が正常に動作 *している* ように見える場合があります。 ただし、この場合、エンドポイントのフェールオーバーが行われず、アプリケーション全体の可用性に影響を与えます。 プロファイルに低下状態ではなくオンライン状態を表示することが重要になります。 オンライン状態は、Traffic Manager の正常性チェックが正常に動作していることを示しています。
 
 失敗した正常性チェックのトラブルシューティングについての詳細については、「 [Azure Traffic Managerでの機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)」を参照してください。
+
+## <a name="faqs"></a>FAQ
+
+* [Traffic Manager には、Azure リージョンの障害に対する回復性がありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-traffic-manager-resilient-to-azure-region-failures)
+
+* [リソース グループの場所の選択は Traffic Manager にどのような影響を与えますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-choice-of-resource-group-location-affect-traffic-manager)
+
+* [各エンドポイントの現在の正常性を確認するには、どうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-determine-the-current-health-of-each-endpoint)
+
+* [HTTPS エンドポイントを監視できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-monitor-https-endpoints)
+
+* [エンドポイントを追加する際には、IP アドレスと DNS 名のどちらを使用しますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint)
+
+* [エンドポイントを追加するときに、どの種類の IP アドレスを使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint)
+
+* [1 つのプロファイル内で異なる種類のエンドポイント アドレス指定方法を使用することはできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-different-endpoint-addressing-types-within-a-single-profile)
+
+* [受信クエリのレコード タイプが、エンドポイントのアドレス指定方法に関連付けられているレコード タイプと異なる場合はどうなりますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
+
+* [入れ子になったプロファイル内で、IPv4/IPv6 アドレスでエンドポイントが指定されているプロファイルを使用することはできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile)
+
+* [Web アプリケーションのエンドポイントを Traffic Manager プロファイルで停止しましたが、それを再起動した後でもトラフィックを受信していません。どうしたらいいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this)
+
+* [アプリケーションが HTTP または HTTPS をサポートしていなくても Traffic Manager を使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https)
+
+* [TCP 監視を使用する場合、エンドポイントからどのような応答が必要ですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring)
+
+* [Traffic Manager は、どの程度迅速に異常なエンドポイントからユーザーを移動させますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint)
+
+* [プロファイル内のエンドポイントごとに異なる監視設定を指定するにはどうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile)
+
+* [エンドポイントに対する Traffic Manager の正常性チェックに HTTP ヘッダーを割り当てるにはどうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints)
+
+* [エンドポイントの正常性チェックには、どのようなホストヘッダーが使用されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-host-header-do-endpoint-health-checks-use)
+
+* [正常性チェックはどの IP アドレスから発信されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-ip-addresses-from-which-the-health-checks-originate)
+
+* [Traffic Manager では、エンドポイントに対して正常性チェックが何回実行されるのですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager)
+
+* [いずれかのエンドポイントがダウンした場合に通知を受ける方法を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -29,7 +29,7 @@ sections:
             image:
               src: ../media/index/i_overview.svg
             title: Text Analytics とは
-          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
+          - href: /azure/cognitive-services/cognitive-services-apis-create-account
             html: <p>Text Analytics API へのサインアップ方法について説明します。</p>
             image:
               src: ../media/index/i_get-started.svg
