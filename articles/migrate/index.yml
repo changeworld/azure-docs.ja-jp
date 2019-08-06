@@ -14,7 +14,7 @@ metadata:
   ms.date: 11/22/2017
   ms.author: raynew
 abstract:
-  description: Azure Migrate は、Azure クラウドへの移行に役立ちます。 Azure Migrate では、オンプレミスのワークロードとクラウド VM の検出、評価、および移行を追跡するための中央ハブが提供されます。 このハブには、評価および移行のための Azure Migrate ツールと、独立系ソフトウェア ベンダー (ISV) からの統合ツールが用意されています。
+  description: Azure Migrate は、Azure クラウドへの移行に役立ちます。 Azure Migrate では、オンプレミスのワークロードとクラウド VM の検出、評価、および移行を追跡するため中心に存在するハブが提供されます。 このハブには、評価および移行のための Azure Migrate ツールと、独立系ソフトウェア ベンダー (ISV) からの統合ツールが用意されています。
 sections:
   - title: ステップバイステップのチュートリアル
     items:
