@@ -10,29 +10,31 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: dab7561db8f223bff87f41ef756605359c3478e4
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 8ad09550e572c98931346b44a6c6f84da29a85e4
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66492712"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443985"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions の Premium プラン (プレビュー)
 
 Azure Functions の Premium プランは、関数アプリのホスティング オプションです。 Premium プランでは、VNet 接続、コールド スタートなし、プレミアム ハードウェアなどの機能が提供されます。  複数の関数アプリを同じ Premium プランにデプロイできます。プランでは、コンピューティング インスタンス サイズ、基本プラン サイズ、および最大プラン サイズを構成できます。  Premium プランと、他のプランおよびホスティング タイプの比較については、[関数のスケールとホスティング オプション](functions-scale.md)に関するページを参照してください。
 
-> [!NOTE]
-> Premium プラン (プレビュー) では現在、Windows インフラストラクチャを介して、.NET、Node、または Java で実行する関数がサポートされています。
-
-## <a name="create-a-premium-plan"></a>Premium プランの作成
+## <a name="create-a-premium-plan"></a>Premium プランを作成する
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-Azure CLI から Premium プランを作成することもできます
+Premium プランは、Azure CLI から [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) を使用して作成することもできます。 次の例では、_Elastic Premium 1_ レベルのプランを作成しています。
 
 ```azurecli-interactive
-az functionapp plan create -g <resource-group> -n <plan-name> -l <region> --number-of-workers 1 --sku EP1
+az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
+--location <REGION> --sku EP1
 ```
+
+この例の `<RESOURCE_GROUP>` と `<PLAN_NAME>` は、それぞれ実際のリソース グループおよびリソース グループ内で一意となる実際のプランの名前に置き換えてください。 [サポートされる `<REGION>`](#regions) を指定します。 Linux をサポートする Premium プランを作成するには、`--is-linux` オプションを指定します。
+
+プランが作成されたら、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) を使用して関数アプリを作成できます。 ポータルで、プランとアプリの両方が同時に作成されます。 
 
 ## <a name="features"></a>機能
 
@@ -101,28 +103,30 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 ## <a name="regions"></a>リージョン
 
-パブリック プレビューで現在サポートされているリージョンは次のとおりです。
+以下に、パブリック プレビューで現在サポートされているリージョンを OS ごとに示します。
 
-|リージョン|
-|--|
-|オーストラリア東部|
-|オーストラリア南東部|
-|カナダ中部|
-|米国中部|
-|東アジア|
-|米国東部 2|
-|フランス中部|
-|西日本|
-|韓国中部|
-|米国中北部|
-|北ヨーロッパ|
-|米国中南部|
-|インド南部|
-|東南アジア|
-|英国西部|
-|西ヨーロッパ|
-|インド西部|
-|米国西部|
+|リージョン| Windows | Linux |
+|--| -- | -- |
+|オーストラリア東部| ✔ | |
+|オーストラリア南東部 | ✔ | ✔ |
+|カナダ中部| ✔ |  |
+|米国中部| ✔ |  |
+|東アジア| ✔ |  |
+|East US | | ✔ |
+|米国東部 2| ✔ |  |
+|フランス中部| ✔ |  |
+|東日本|  | ✔ |
+|西日本| ✔ | |
+|韓国中部| ✔ |  |
+|米国中北部| ✔ |  |
+|北ヨーロッパ| ✔ | ✔ |
+|米国中南部| ✔ |  |
+|インド南部 | ✔ | |
+|東南アジア| ✔ | ✔ |
+|英国西部| ✔ |  |
+|西ヨーロッパ| ✔ | ✔ |
+|インド西部| ✔ |  |
+|米国西部| ✔ | ✔ |
 
 ## <a name="known-issues"></a>既知の問題
 

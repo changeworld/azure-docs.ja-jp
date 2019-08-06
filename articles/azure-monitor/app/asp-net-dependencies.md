@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: a233299b86100c7e43291ffb6448d576ef6072f0
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: c2f115564c81f38dd437f1d3ff1e33d7d162a42f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302562"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326439"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -103,7 +103,7 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 | プラットフォーム | 完全な SQL クエリを取得するために必要な手順 |
 | --- | --- |
 | Azure Web アプリ |Web アプリのコントロール パネルで [Application Insights ブレードを開き](../../azure-monitor/app/azure-web-apps.md)、SQL コマンドを .NET |
-| IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | [アプリケーションが実行されているサーバーに Status Monitor をインストールし](../../azure-monitor/app/monitor-performance-live-website-now.md)、IIS を再起動します。
+| IIS Server (Azure VM やオンプレミスなど) の下で有効にします。 | Status Monitor PowerShell モジュールを使用して[インストルメンテーション エンジンをインストール](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md)し、IIS を再起動します。 |
 | Azure Cloud Services | [StatusMonitor をインストールするスタートアップ タスク](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional)を追加します <br> ビルド時に [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) または [ASP.NET Core アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)用の NuGet パッケージをインストールすることで、アプリを ApplicationInsights SDK にオンボードする必要があります。 |
 | IIS Express | サポートされていません
 

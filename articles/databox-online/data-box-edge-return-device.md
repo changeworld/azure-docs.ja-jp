@@ -1,23 +1,23 @@
 ---
-title: Azure Data Box Edge デバイスを返却する | Microsoft Docs
-description: Azure Data Box Edge デバイスを返却して、デバイスに対する注文を削除する方法について説明します。
+title: Azure Data Box Edge デバイスを返却または交換する | Microsoft Docs
+description: Azure Data Box Edge デバイスを返却または交換する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 07/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 9aeae0ab68d809b36a3316054f12a5a9657721f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5fee604a529e9ca6153f6c189f199577ae65426
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65468460"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68356150"
 ---
-# <a name="return-your-azure-data-box-edge-device"></a>Azure Data Box Edge を返却する
+# <a name="return-or-replace-your-azure-data-box-edge-device"></a>Azure Data Box Edge デバイスを返却または交換する
 
-この記事では、データをワイプして、ご利用の Azure Data Box Edge デバイスを返却する方法について説明します。 デバイスを返却した後、デバイスと関連付けられたリソースを削除することもできます。
+この記事では、データをワイプして、ご利用の Azure Data Box Edge デバイスを返却する方法について説明します。 デバイスを返却した後、デバイスに関連付けられたリソースを削除、または交換用デバイスを注文することもできます。
 
 この記事では、次のことについて説明します。
 
@@ -26,6 +26,7 @@ ms.locfileid: "65468460"
 > * サポート チケットを開いてデバイスを返却する
 > * デバイスを選択して集荷をスケジュールする
 > * Azure portal でリソースを削除する
+> * 交換用デバイスを入手する
 
 ## <a name="erase-data-from-the-device"></a>デバイスからデータを消去する
 
@@ -105,6 +106,21 @@ Azure portal でデバイスとリソースを削除するには、次の手順�
     ![削除の確定](media/data-box-edge-return-device/delete-resource-2.png)
 
 デバイスと関連付けられたリソースが正常に削除されたら、通知されます。
+
+## <a name="get-a-replacement-device"></a>交換用デバイスを入手する
+
+既存のデバイスにハードウェア障害があるかアップグレードが必要な場合、交換用デバイスが必要です。 デバイスにハードウェアの問題がある場合、次の手順を実行します。
+
+1. [ハードウェアの問題のサポート チケットを開きます](#open-a-support-ticket)。 Microsoft サポートによって、このインスタンスにはフィールド交換ユニット (FRU) が利用できない、またはデバイスのハードウェア アップグレードが必要であると判断されます。 どちらの場合も、サポートは交換用デバイスを発注します。
+2. 交換用デバイスのための[新しいリソースを作成](data-box-edge-deploy-prep.md#create-a-new-resource)します。 必ず、 **[I have a Data Box Edge device]\(Data Box Edge を持っています\)** チェック ボックスをオンにしてください。 
+3. 交換用デバイスを受け取ったら、新しいリソースに対して交換用デバイスを[インストール](data-box-edge-deploy-install.md)および[アクティブ化](data-box-edge-deploy-connect-setup-activate.md)します。
+4. 元のデバイスを返却するためのすべての手順に従います。
+    1. 元のデバイスを返却するために、別のチケットを開きます。
+    2. [デバイス上のデータを消去します](#erase-data-from-the-device)。
+    3. [集荷をスケジュールします](#schedule-a-pickup)。
+    5. 返却するデバイスに関連付けられている[リソースを削除します](#delete-the-resource)。
+
+
 
 ## <a name="next-steps"></a>次の手順
 

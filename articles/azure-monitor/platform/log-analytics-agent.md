@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 07/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 583845b2ea63efd42f382c9c150de650f34bafed
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 653355af7dcb0b30c3deb444fcfe4b4ff76e7e77
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514114"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424119"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してログ データを収集する
 
 Azure Log Analytics エージェント (旧称 Microsoft Monitoring Agent (MMA) または OMS Linux エージェント) は、オンプレミスのマシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) によって監視されるコンピューター、および任意のクラウドの仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、Azure Monitor にアタッチし、さまざまなソースから収集したログ データを、Log Analytics ワークスペースや、さらには任意の固有ログや、監視ソリューションで定義されているメトリックに格納します。 
 
-この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。   
+この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
 
 ## <a name="overview"></a>概要
 
@@ -45,10 +45,14 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 
 * Windows Server 2019
 * Windows Server 2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
-* Windows 7 SP1 以降
+* Windows 7 SP1、Windows 8 Enterprise および Pro、Windows 10 Enterprise および Pro
+
+>[!NOTE]
+>Windows 用 Log Analytics エージェントはサーバー監視シナリオをサポートするように設計されていましたが、Windows クライアントを実行して、サーバーのオペレーティング システム用に構成および最適化されたワークロードをサポートできることがわかっています。 エージェントは Windows クライアントをサポートしますが、Microsoft の監視ソリューションは、明示的に示されていない限り、クライアント監視シナリオを重視しません。
 
 ## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
-このセクションでは、サポートされている Linux ディストリビューションの詳細について説明します。    
+
+このセクションでは、サポートされている Linux ディストリビューションの詳細について説明します。
 
 2018 年 8 月以降にリリースされたバージョンからは、サポート モデルに次の変更を加えています。  
 
@@ -90,9 +94,11 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 >syslog メッセージを収集するには、rsyslog または syslog-ng が必要となります。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、rsyslog デーモンをインストールし、sysklog を置き換えるように構成する必要があります。
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
+
 Azure Monitor ログに転送中のデータのセキュリティを確保するには、エージェントを、少なくともトランスポート層セキュリティ (TLS) 1.2 を使用するように構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
 
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
+
 以下の情報は、Linux および Windows エージェントが Azure Monitor ログと通信するために必要なプロキシとファイアウォール構成情報の一覧です。  
 
 |エージェントのリソース|Port |Direction |バイパス HTTPS 検査|
@@ -128,7 +134,8 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 > [!NOTE]
 > パスワードに "\@" などの特殊文字を使用した場合、値が正しく解析されないためにプロキシ接続エラーが発生します。  この問題を回避するには、[URLDecode](https://www.urldecoder.org/) などのツールを使用して、URL 内にパスワードをエンコードします。  
 
-## <a name="install-and-configure-agent"></a>エージェントをインストールして構成する 
+## <a name="install-and-configure-agent"></a>エージェントをインストールして構成する
+
 Azure Monitor ログを直接、Azure サブスクリプションまたはハイブリッド環境内のマシンに接続することは、要件に応じてさまざまな方法を使用して実現できます。 次の表は、どの方法が組織で最も効果的であるかを判断できるように、各方法について説明しています。
 
 |source | Method | 説明|

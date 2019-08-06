@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 722d77bf27e3cd7eb921b09e0a1d4732a5b5f874
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 6bad74d33f5d50bb7a35de69927bf97daad07798
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514416"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326877"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリをアラートおよび監視する
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 この知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
@@ -234,7 +234,9 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ## <a name="schema-of-logs--events"></a>ログとイベントのスキーマ
 
-### <a name="activity-run-logs-attributes"></a>アクティビティ実行ログ属性
+### <a name="azure-monitor-schema"></a>Azure Monitor スキーマ
+
+#### <a name="activity-run-logs-attributes"></a>アクティビティ実行ログ属性
 
 ```json
 {
@@ -289,7 +291,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |start| string | Timespan でのアクティビティ実行の開始、UTC 形式 | `2017-06-26T20:55:29.5007959Z`|
 |end| string | Timespan でのアクティビティ実行の終了、UTC 形式 アクティビティがまだ終了していない場合 (アクティビティ開始の診断ログ)、既定値 `1601-01-01T00:00:00Z` が設定されます。  | `2017-06-26T20:55:29.5007959Z` |
 
-### <a name="pipeline-run-logs-attributes"></a>パイプライン実行ログ属性
+#### <a name="pipeline-run-logs-attributes"></a>パイプライン実行ログ属性
 
 ```json
 {
@@ -334,7 +336,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |end| string | Timespan でのアクティビティ実行の終了、UTC 形式 アクティビティがまだ終了していない場合 (アクティビティ開始の診断ログ)、既定値 `1601-01-01T00:00:00Z` が設定されます。  | `2017-06-26T20:55:29.5007959Z` |
 |status| string | パイプライン実行の最終的な状態 (成功または失敗) | `Succeeded`|
 
-### <a name="trigger-run-logs-attributes"></a>トリガー実行ログ属性
+#### <a name="trigger-run-logs-attributes"></a>トリガー実行ログ属性
 
 ```json
 {
@@ -379,11 +381,33 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |start| string | Timespan でのトリガーの開始、UTC 形式 | `2017-06-26T20:55:29.5007959Z`|
 |status| string | トリガーが正常に起動したかどうかを示す最終的な状態 (成功または失敗) | `Succeeded`|
 
+### <a name="log-analytics-schema"></a>Log Analytics のスキーマ
+
+Log Analytics は、Azure Monitor からスキーマを継承します。ただし、次の例外があります。
+
+* 各列名の先頭文字は大文字になります。たとえば、Azure Monitor の *correlationId* が、Log Analytics では *CorrelationId* になります。
+* 列の "*レベル*" はドロップされます。
+* 動的列の *properties* は、次の動的 JSON BLOB タイプとして維持されます。
+
+    | Azure Monitor の列 | Log Analytics の列 | Type |
+    | --- | --- | --- |
+    | $.properties.UserProperties | UserProperties | 動的 |
+    | $.properties.Annotations | 注釈 | 動的 |
+    | $.properties.Input | 入力 | 動的 |
+    | $.properties.Output | Output | 動的 |
+    | $.properties.Error.errorCode | ErrorCode | int |
+    | $.properties.Error.message | ErrorMessage | string |
+    | $.properties.Error | Error | 動的 |
+    | $.properties.Predecessors | Predecessors | 動的 |
+    | $.properties.Parameters | parameters | 動的 |
+    | $.properties.SystemParameters | SystemParameters | 動的 |
+    | $.properties.Tags | Tags | 動的 |
+    
 ## <a name="metrics"></a>メトリック
 
 Azure Monitor では、テレメトリを使用して、Azure のワークロードのパフォーマンスと正常性を視覚的に確認できます。 Azure テレメトリ データの種類の中でも最も重要なのは、Azure リソースのほとんどから出力されるメトリックであり、これはパフォーマンス カウンターとも呼ばれます。 Azure Monitor では、このメトリックを複数の方法で構成して使用し、監視やトラブルシューティングを行うことができます。
 
-ADFV2 は、次のメトリックを出力します
+ADFV2 は、次のメトリックを出力します。
 
 | **メトリック**           | **メトリックの表示名**         | **単位** | **集計の種類** | **説明**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
@@ -394,7 +418,7 @@ ADFV2 は、次のメトリックを出力します
 | TriggerSucceededRuns | 成功したトリガー実行の回数メトリック  | Count    | 合計                | 分の枠内で成功したトリガー実行の合計回数   |
 | TriggerFailedRuns    | 失敗したトリガー実行の回数メトリック     | Count    | 合計                | 分の枠内で失敗したトリガー実行の合計回数      |
 
-メトリックにアクセスするには、記事 https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics の手順に従います。
+メトリックにアクセスするには、「[Azure Monitor データ プラットフォーム](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)」に記載された手順に従います。
 
 ## <a name="monitor-data-factory-metrics-with-azure-monitor"></a>Azure Monitor でデータ ファクトリ メトリックスを監視する
 
@@ -412,13 +436,28 @@ Azure Monitor と Azure Data Factory の統合を使用して、データを Azu
 
 自分のデータ ファクトリに対して診断設定を有効にします。
 
-1.  **[Azure Monitor]**  ->  **[診断設定]** を選択し、データ ファクトリを選択して診断をオンにします。
+1. ポータルで、Azure Monitor に移動し、 **[設定]** メニューの **[診断設定]** をクリックします。
 
-    ![monitor-oms-image1.png](media/data-factory-monitor-oms/monitor-oms-image1.png)
+2. 診断設定の対象となるデータ ファクトリを選択します。
+    
+3. 選択したデータ ファクトリの設定が存在しない場合は、設定を作成するように求められます。 [診断を有効にする] をクリックします。
 
-2.  ワークスペースの構成を含めて、診断設定を指定します。
+   ![診断設定の追加 - 既存の設定が存在しない](media/data-factory-monitor-oms/monitor-oms-image1.png)
+
+   データ ファクトリに既存の設定が存在する場合は、このデータ ファクトリで構成済みの設定の一覧が表示されます。 [診断設定の追加] をクリックします。
+
+   ![診断設定の追加 - 既存の設定が存在する](media/data-factory-monitor-oms/add-diagnostic-setting.png)
+
+4. 設定に名前を付け、 **[Log Analytics への送信]** チェック ボックスをオンにして、Log Analytics ワークスペースを選択します。
 
     ![monitor-oms-image2.png](media/data-factory-monitor-oms/monitor-oms-image2.png)
+
+5. **[Save]** をクリックします。
+
+しばらくすると、このデータ ファクトリの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログがそのワークスペースにストリーム配信されます。 イベントが生成されてから、それが Log Analytics に表示されるまでに最大 15 分かかる可能性があります。
+
+> [!NOTE]
+> Azure Log のテーブルの列数は 500 を超えないという明示的な制限があるため、**リソース固有モードの使用を強くお勧めします**。 詳細については、[Log Analytics の既知の制限](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics)に関するセクションを参照してください。
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Azure Marketplace から Azure Data Factory Analytics をインストールする
 
@@ -462,7 +501,7 @@ Azure Monitor と Azure Data Factory の統合を使用して、データを Azu
 
 ## <a name="alerts"></a>アラート
 
-Azure portal にログインし、 **[モニター] -&gt; [アラート]** の順に選択してアラートを作成します。
+Azure portal にサインインし、 **[モニター]**  >  **[アラート]** の順にクリックしてアラートを作成します。
 
 ![ポータル メニューのアラート](media/monitor-using-azure-monitor/alerts_image3.png)
 

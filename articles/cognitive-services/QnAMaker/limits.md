@@ -8,22 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 07/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 43d0e7566102c882d4a2819237a795fdff425f75
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446503"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423461"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
-QnA Maker における制限の包括的な一覧です。
+
+以下に示す QnA Maker の制限は、[Azure Search の価格レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)と [QnA Maker の価格レベルの制限](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)を組み合わせたものです。 リソースごとにどの程度の数のナレッジベースを作成できて、各ナレッジベースをどこまで拡張できるかを理解するには、両方の制限をセットで知っておく必要があります。
 
 ## <a name="knowledge-bases"></a>ナレッジ ベース
 
-* [Azure Search 層の制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に基づくナレッジ ベースの最大数
+ナレッジ ベースの最大数は、[Azure Search レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に基づきます。
 
 |**Azure Search 層** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -32,11 +33,18 @@ QnA Maker における制限の包括的な一覧です。
  たとえば、レベルに 15 個の許可されたインデックスがある場合、14 個のナレッジ ベースを発行できます (発行されたナレッジ ベースあたり 1 インデックス)。 15 番目のインデックス `testkb` は、作成およびテスト用にすべてのナレッジ ベースで使用されます。 
 
 ## <a name="extraction-limits"></a>抽出の制限
-* 抽出できるファイルの最大数と最大のファイル サイズ: [QnA Maker の価格](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)に関するページを参照してください。
-* よくあるご質問の HTML ページから QnA を抽出するためにクロールできるディープリンクの最大数: 20
+
+### <a name="maximum-number-of-files"></a>ファイルの最大数
+
+抽出できるファイルの最大数と最大ファイル サイズは、 **[QnA Maker の価格レベルの制限](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** に基づきます。
+
+### <a name="maximum-number-of-deep-links-from-url"></a>URL からのディープリンクの最大数
+
+URL ページから QnA を抽出するためにクロールできるディープリンクの最大数は **20** です。
 
 ## <a name="metadata-limits"></a>メタデータの制限
-* [Azure Search 層の制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に基づくナレッジ ベースごとのメタデータ フィールドの最大数
+
+ナレッジ ベースごとのメタデータ フィールドの最大数は、 **[Azure Search レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** に基づきます。
 
 |**Azure Search 層** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -52,7 +60,8 @@ QnA Maker における制限の包括的な一覧です。
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
 * 代替の質問の最大数: 300
-* 質問と回答のペアの最大数: 選択した [Azure Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 質問と回答のペアは、Azure Search インデックスのドキュメントにマップされます。 
+* 質問と回答のペアの最大数: 選択した **[Azure Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** によって異なります。 質問と回答のペアは、Azure Search インデックスのドキュメントにマップされます。 
+* URL/HTML ページ: 100 万文字
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
 これらは、ナレッジ ベース作成操作 (つまり、 *[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。

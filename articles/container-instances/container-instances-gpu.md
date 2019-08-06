@@ -3,17 +3,17 @@ title: GPU 対応 Azure コンテナー インスタンスをデプロイする
 description: GPU リソースで実行する Azure コンテナー インスタンスをデプロイする方法について説明します。
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 300e9b82d578663a4d2ada3889a07d8b03051cc5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60583822"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325951"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -118,7 +118,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Resource Manager テンプレートの例
 
-GPU リソースでコンテナー グループをデプロイするには、[Resource Manager テンプレート](container-instances-multi-container-group.md)を使用する方法もあります。 まず、`gpudeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。 この例では、[MNIST データセット](http://yann.lecun.com/exdb/mnist/)に対して [TensorFlow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) トレーニング ジョブを実行する V100 GPU を搭載したコンテナー インスタンスをデプロイします。 ワークロードを実行するには、リソース要求だけで十分です。
+GPU リソースでコンテナー グループをデプロイするには、[Resource Manager テンプレート](container-instances-multi-container-group.md)を使用する方法もあります。 まず、`gpudeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。 この例では、MNIST データセットに対して [TensorFlow](https://www.tensorflow.org/) トレーニング ジョブを実行する V100 GPU を搭載したコンテナー インスタンスをデプロイします。 ワークロードを実行するには、リソース要求だけで十分です。
 
 ```JSON
 {

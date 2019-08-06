@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 12fd1b03e58d1c62157c6652ce96d8f0172dadb2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6a41830dcb7f681713db7a7802ab430581dc844f
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606108"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371157"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -356,6 +356,20 @@ if ($cloudTieringDesired) {
 ```
 
 ---
+
+## <a name="configure-firewall-and-virtual-network-settings"></a>ファイアウォールと仮想ネットワークの設定を構成する
+
+### <a name="portal"></a>ポータル
+ファイアウォールと仮想ネットワークの設定で動作するように Azure File Sync を構成したい場合、次の手順を実行します。
+
+1. Azure portal から、セキュリティを確保するストレージ アカウントに移動します。
+1. 左側のメニューにある **[ファイアウォールと仮想ネットワーク]** ボタンを選択します。
+1. **[許可するアクセス元]** の **[選択されたネットワーク]** を選択します。
+1. ご利用のサーバーの IP または仮想ネットワークが、対応するセクションに一覧表示されていることを確認します。
+1. **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** チェック ボックスがオンになっていることを確認します。
+1. **[Save]\(保存\)** を選択して設定を保存します。
+
+![Azure File Sync が動作するようにファイアウォールと仮想ネットワークの設定を構成する](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
 
 ## <a name="onboarding-with-azure-file-sync"></a>Azure File Sync でのオンボード
 Azure File Sync での最初のオンボードで完全なファイル忠実性とアクセス制御リスト (ACL) を維持しながらダウンタイムをゼロにするための推奨手順を以下に示します。

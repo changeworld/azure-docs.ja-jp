@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 6d9b68bda2a6cff533286d9ee944abf1c92cc2bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 903673e2c953328e90029938a9b7446271411646
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523241"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422992"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 
 光学式文字認識 (OCR) スキルは、画像ファイルに印字された手書きテキストを認識します。 このスキルでは、[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Cognitive Services によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
 
-+ textExtractionAlgorithm が "handwritten" に設定されている場合は、["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) 機能が使用されます。
-+ textExtractionAlgorithm が "printed" に設定されている場合、英語以外の言語には ["OCR"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) 機能が使用されます。 英語については、印刷されたテキスト用の新しい ["Recognize Text"](../cognitive-services/computer-vision/concept-recognizing-text.md) 機能が使用されます。
++ 英語以外の言語には ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) API が使用されます。 
++ 英語には、新しい ["Read"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API が使用されます。
 
 **OCR** スキルはイメージファイルからテキストを抽出します｡ サポートされているファイル形式は以下の通りです｡
 
@@ -49,8 +49,9 @@ ms.locfileid: "65523241"
 |--------------------|-------------|
 | detectOrientation | イメージの向きの自動検出を有効にします。 <br/> 有効な値: true / false｡|
 |defaultLanguageCode | <p>  入力テキストの言語コード。 以下の言語がサポートされています。 <br/> zh-Hans (簡体字中国語) <br/> zh-Hant (繁体字中国語) <br/>cs (チェコ語) <br/>da (デンマーク語) <br/>nl (オランダ語) <br/>en (英語) <br/>fi (フィンランド語)  <br/>fr (フランス語) <br/>  de (ドイツ語) <br/>el (ギリシア語) <br/> hu (ハンガリー語) <br/> it (イタリア語) <br/>  ja (日本語) <br/> ko (韓国語) <br/> nb (ノルウェー語) <br/>   pl (ポーランド語) <br/> pt (ポルトガル語) <br/>  ru (ロシア語) <br/>  es (スペイン語) <br/>  sv (スウェーデン語) <br/>  tr (トルコ語) <br/> ar (アラビア語) <br/> ro (ルーマニア語) <br/> sr-Cyrl (セルビア語キリル文字) <br/> sr-Latn (セルビア語ローマ字) <br/>  sk (スロバキア語) <br/>  unk (不明) <br/><br/> 言語コードが指定されないか null の場合､言語は英語に設定されます。 言語が明示的に "unk" に設定されている場合、言語は自動検出されます。 </p> |
-| textExtractionAlgorithm | "printed" または "handwritten"｡ "handwritten" テキスト認識の OCR アルゴリズムは現在プレビュー段階であり､英語でのみサポートされます｡ |
 |lineEnding | 検出された各行の間で使用される値。 指定できる値'Space'、'CarriageReturn'、'LineFeed'。  既定は 'Space' です |
+
+以前は、スキルで "印刷" テキストまたは "手書き" テキストを抽出するかどうかを指定する "textExtractionAlgorithm" というパラメーターがありました。  最新の Read API アルゴリズムはどちらのタイプのテキストも一度に抽出できるようになっているため、このパラメーターは非推奨となり、不要になりました。  スキル定義に既にこのパラメーターが含まれている場合、削除する必要はありませんが、今後は不使用となります。今後は、その設定に関係なく、両方のタイプのテキストが抽出されます。
 
 ## <a name="skill-inputs"></a>スキルの入力
 

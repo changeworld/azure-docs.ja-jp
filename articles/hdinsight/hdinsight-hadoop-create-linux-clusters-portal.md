@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: cf1a6ffa61b41af5abd20dac13b85024001d2ed2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d4593cd3602c5324e9cffd5eff8564c09aceaf46
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393990"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406277"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -69,7 +69,7 @@ Azure Portal には、ほとんどのクラスターのプロパティが公開�
 
     * **[次へ]** を選択して、次のページに進みます。
 
-4. **[2 セキュリティとネットワーク]** で、表示されているドロップダウン メニューを使用してクラスターを仮想ネットワークに接続できます。 クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。 仮想ネットワークでの HDInsight の使用については、[Azure Virtual Network を使用した HDInsight の機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関する記事をご覧ください。 その記事には、仮想ネットワークの具体的な構成要件が含まれます。 
+4. **[2 セキュリティとネットワーク]** で、表示されているドロップダウン メニューを使用してクラスターを仮想ネットワークに接続できます。 クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。 仮想ネットワークでの HDInsight の使用については、[Azure HDInsight クラスター用の仮想ネットワーク デプロイの計画](hdinsight-plan-virtual-network-deployment.md)に関するページを参照してください。 その記事には、仮想ネットワークの具体的な構成要件が含まれます。 
 
     **Enterprise セキュリティ パッケージ**を使用する場合は、「[Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)」の手順に従うこともできます。
 

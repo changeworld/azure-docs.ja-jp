@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 5e2790515e172ec14e2180f9dfcac6c97b2e135a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 26766be8b2468da0df44fa42655db0ee04db45a2
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723164"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68327077"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
@@ -114,7 +114,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 - **可用性セット** - Azure Resource Manager に移行する仮想ネットワーク (vNet) では、クラシック デプロイメント (クラウド サービス) に含まれている VM がすべて 1 つの可用性セットに属しているか、または VM がどの可用性セットにも属していません。 クラウド サービスに複数の可用性セットがある場合は、Azure Resource Manager との互換性がなく、移行が停止します。  また、1 つの可用性セットに複数の VM を含めることはできず、1 つの可用性セットに複数の VM が含まれることもありません。 この問題を解決するには、クラウド サービスを修復または再シャッフルする必要があります。  この処理には時間がかかる可能性があるため、状況に応じた計画を行ってください。
 
-- **Web/ワーカー ロール デプロイメント** - Web およびワーカー ロールを含む Cloud Services を Azure Resource Manager に移行することはできません。 移行を開始するには、最初に Web/worker ロールを仮想ネットワークから削除する必要があります。  一般的な解決策として、ExpressRoute 回線にもリンクされている別のクラシック仮想ネットワークに Web/worker ロール インスタンスを移動するか、コードを新しい PaaS App Services (このドキュメントでは説明しません) に移行します。 前者の再デプロイの場合は、新しいクラシック仮想ネットワークを作成し、Web/worker ロールをその新しい仮想ネットワークに移動/再デプロイして、移動元の仮想ネットワークからデプロイメントを削除します。 コードの変更が不要な方法。 新しい[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)機能を使用すると、Web/worker ロールを含むクラシック仮想ネットワークと、Azure リージョン内の他の仮想ネットワーク (移行対象の仮想ネットワークなど) をピアリングできます (**ピアリングした仮想ネットワークは移行できないため、仮想ネットワークの移行の完了後**)。そのため、同じ機能を提供しても、パフォーマンスが失われたり、待ち時間や帯域幅のペナルティが発生したりすることはありません。 [仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)の追加により、Web/worker ロールのデプロイメントを簡単に移行できるようになりました。また、Azure Resource Manager への移行がブロックされることもありません。
+- **Web/ワーカー ロール デプロイメント** - Web およびワーカー ロールを含む Cloud Services を Azure Resource Manager に移行することはできません。 Web のコンテンツと worker ロールを移行するには、コードそのものを新しい PaaS App Service に移行する必要があります (この点については、このドキュメントの範囲を超えます)。 Web ロールと worker ロールをそのまま残しつつ、クラシック VM を Resource Manager デプロイ モデルに移行したい場合は、Web ロールまたは worker ロールを仮想ネットワークから最初に削除したうえで、移行を開始する必要があります。  一般的な解決策として、ExpressRoute 回線にもリンクされている別のクラシック仮想ネットワークに Web ロール インスタンスと worker ロール インスタンスを移動します。 前者の再デプロイの場合は、新しいクラシック仮想ネットワークを作成し、Web ロールと worker ロールをその新しい仮想ネットワークに移動または再デプロイして、移動元の仮想ネットワークからデプロイメントを削除します。 コードの変更が不要な方法。 新しい[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)機能を使用すると、Web/worker ロールを含むクラシック仮想ネットワークと、Azure リージョン内の他の仮想ネットワーク (移行対象の仮想ネットワークなど) をピアリングできます (**ピアリングした仮想ネットワークは移行できないため、仮想ネットワークの移行の完了後**)。そのため、同じ機能を提供しても、パフォーマンスが失われたり、待ち時間や帯域幅のペナルティが発生したりすることはありません。 [仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)の追加により、Web/worker ロールのデプロイメントを簡単に移行できるようになりました。また、Azure Resource Manager への移行がブロックされることもありません。
 
 - **Azure Resource Manager のクォータ** - Azure リージョンには、クラシックと Azure Resource Manager の両方に個別のクォータ/制限があります。 移行シナリオにおいて新しいハードウェアを使用していない " *(クラシックの既存の VM を Azure Resource Manager に交換した)* " としても、移行の開始前には、十分な容量を持つ Azure Resource Manager のクォータが必要です。 問題となる主要な制限を以下に示します。  制限を引き上げるためのサポート チケットを開いてください。
 

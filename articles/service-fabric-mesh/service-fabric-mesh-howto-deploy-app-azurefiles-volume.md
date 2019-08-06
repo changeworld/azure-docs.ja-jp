@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fa078f17768d4885403f2f3e3d6b91251f0aaced
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9f21ad737fdcd0bcdc77394096308e47a4fb5a00
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60419375"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371124"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームをマウントする 
 
@@ -29,6 +29,17 @@ ms.locfileid: "60419375"
 サービスにボリュームをマウントするには、Service Fabric Mesh アプリケーションでボリューム リソースを作成し、サービスでそのボリュームを参照します。  ボリューム リソースを宣言し、それをサービス リソースで参照する作業は、[YAML ベースのリソース ファイル](#declare-a-volume-resource-and-update-the-service-resource-yaml)か [JSON ベースのデプロイ テンプレート](#declare-a-volume-resource-and-update-the-service-resource-json)で行うことができます。 ボリュームをマウントする前に、最初に Azure ストレージ アカウントと[ファイル共有を Azure Files](/azure/storage/files/storage-how-to-create-file-share) で作成します。
 
 ## <a name="prerequisites"></a>前提条件
+> [!NOTE]
+> **Windows RS5 開発マシンへのデプロイに関する既知の問題:** RS5 Windows マシンの PowerShell コマンドレット New-SmbGlobalMapping には、Azurefile ボリュームのマウントに支障をきたす未解決のバグがあります。 以下に示したのは、AzureFile ベースのボリュームをローカル開発マシンにマウントしているときに発生したエラーの例です。
+```
+Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
+There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
+Failed to start Container. ContainerName=sf-2-63fc668f-362d-4220-873d-85abaaacc83e_6d6879cf-dd43-4092-887d-17d23ed9cc78, ApplicationId=SingleInstance_0_App2, ApplicationName=fabric:/counterApp. DockerRequest returned StatusCode=InternalServerError with ResponseBody={"message":"error while mounting volume '': mount failed"}
+```
+この問題を回避するには、1) 次のコマンドを PowerShell 管理者として実行し、2) マシンを再起動します。
+```powershell
+PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
+```
 
 Azure Cloud Shell または Azure CLI のローカル インストールを使用し、この記事の作業を完了できます。 
 

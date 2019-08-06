@@ -4,14 +4,14 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 07/22/2019
 ms.author: raynew
-ms.openlocfilehash: 0e2a8f269a98babc17f36ceff209ee2f057e6911
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 15d3809b9a028fd2495c504e9bf19251dd051520
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302322"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372587"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -54,6 +54,10 @@ Azure Migrate には [2 つのバージョン](https://docs.microsoft.com/azure/
 
    ![2 つ目の Azure Migrate プロジェクトを作成する](./media/troubleshooting-general/create-new-project.png)
 
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Azure Migrate でサポートされている Azure の地域を教えてください。
+
+[VMware の場合はこちら](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects)から、また [Hyper-V の場合はこちら](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects)からご覧いただけます。
+
 ### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Azure Migrate プロジェクトと関連 Log Analytics ワークスペースの削除
 
 Azure Migrate プロジェクトを削除すると、移行プロジェクトと共に、検出されたマシンに関するメタデータが削除されます。 ただし、Log Analytics ワークスペースを Server Assessment ツールに関連付けている場合、Log Analytics ワークスペースが自動的に削除されることはありません。 これは、同じ Log Analytics ワークスペースが複数のユース ケースで使用される可能性があるためです。 Log Analytics ワークスペースも削除する場合、それは手動で行う必要があります。
@@ -76,7 +80,7 @@ Azure Migrate プロジェクトを削除すると、移行プロジェクトと
 
 ### <a name="deployment-of-azure-migrate-appliance-for-vmware-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>VMware 用 Azure Migrate アプライアンスのデプロイが次のエラーで失敗しました: 指定されたマニフェスト ファイルが無効です: 無効な OVF マニフェストのエントリ。
 
-1. Azure Migrate アプライアンスの OVA ファイルが正常にダウンロードされているかどうかを、そのハッシュ値をチェックして確認します。 ハッシュ値の確認については、こちらの[記事](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)を参照してください。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
+1. Azure Migrate アプライアンスの OVA ファイルが正常にダウンロードされているかどうかを、そのハッシュ値をチェックして確認します。 ハッシュ値の確認については、こちらの[記事](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware)を参照してください。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
 2. それでも失敗する場合、および、OVF をデプロイするのに VMware vSphere クライアントを使用している場合は、vSphere Web クライアントでデプロイしてみてください。 それでも失敗する場合は、別の Web ブラウザーをお試しください。
 3. vSphere Web クライアントを使用しており、vCenter Server 6.5 または 6.7 にそれをデプロイしようとしている場合は、次の手順に従って ESXi ホストに直接 OVA をデプロイしてみてください。
    - Web クライアント (https://<*ホスト IP アドレス*>/ui) を使用して (vCenter Server ではなく) ESXi ホストに直接接続する。
@@ -121,9 +125,31 @@ vCenter Server "Servername.com:9443" に接続できません。原因となっ�
 3. 正しいポート番号を識別して vCenter に接続します。
 4. 最後に、vCenter サーバーが起動されていて実行中かどうかを確認します。
 
+
+### <a name="the-appliance-could-not-be-registered-successfully-to-the-azure-migrate-project-error-id-60052"></a>The appliance could not be registered successfully to the Azure Migrate project (Error ID: 60052) (Azure Migrate プロジェクトにアプライアンスを正常に登録できませんでした (エラー ID: 60052))
+
+アプライアンスの登録に使用された Azure アカウントにアクセス許可が不足していることが原因で発生したエラーです。 アプライアンスを登録するために使用する Azure ユーザー アカウントが、少なくともサブスクリプションの "共同作成者" のアクセス権を持つようにします。 必要な Azure ロールとアクセス許可の[詳細を参照](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements)してください。
+
+### <a name="the-appliance-could-not-be-registered-successfully-to-the-azure-migrate-project-error-id-60039"></a>The appliance could not be registered successfully to the Azure Migrate project (Error ID: 60039) (Azure Migrate プロジェクトにアプライアンスを正常に登録できませんでした (エラー ID: 60039))
+
+アプライアンスを登録するために選択された Azure Migrate プロジェクトが見つからないため、登録に失敗しています。 Azure portal に移動して、ご利用のリソース グループにプロジェクトが存在するかどうかを確認してください。 プロジェクトが存在しない場合は、ご利用のリソース グループに新しい Azure Migrate プロジェクトを作成して、アプライアンスをもう一度登録してください。 新しい Azure Migrate プロジェクトの作成についての[詳細を参照](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool)してください。
+
+### <a name="azure-key-vault-management-operation-failed-error-id-60030-60031"></a>Azure Key Vault 管理操作に失敗しました (エラー ID: 60030、60031)
+
+アプライアンスを登録するために使用する Azure ユーザー アカウントが、少なくともサブスクリプションの "共同作成者" のアクセス権を持つようにします。 また、エラー メッセージに指定された Key Vault へのアクセス権がアカウントにあるかどうかを確認してから、操作を再試行してください。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 必要な Azure ロールとアクセス許可の[詳細を参照](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements)してください。
+
+### <a name="discovery-could-not-be-initiated-due-to-the-error-the-operation-failed-for-the-given-list-of-hosts-or-clusters-error-id-60028"></a>Discovery could not be initiated due to the error. The operation failed for the given list of hosts or clusters (Error ID: 60028) (エラーが発生したため、検出を開始できませんでした。指定された一連のホストまたはクラスターに対する操作に失敗しました (エラー ID: 60028))
+
+エラーに記載されている一連のホストで検出を開始できませんでした。VM 情報へのアクセス時または取得時に問題が発生しました。追加されたそれ以外のホストについては、正常に追加されています。 **[ホストの追加]** オプションを使用して、エラーに記載されているホストをもう一度追加してください。 検証エラーが発生している場合は、修復のガイダンスを確認してエラーを修正し、 **[保存して検出を開始]** をもう一度試行してください。
+
+### <a name="azure-active-directory-aad-operation-failed-the-error-occurred-while-creating-or-updating-the-aad-application-error-id-60025"></a>Azure Active Directory (AAD) operation failed. The error occurred while creating or updating the AAD application (Error ID: 60025) (Azure Active Directory (AAD) 操作に失敗しました。AAD アプリケーションを作成または更新しているときにエラーが発生しました (エラー ID: 60025))
+
+アプライアンスの登録に使用された Azure ユーザー アカウントには、エラー メッセージに記載された AAD アプリケーションへのアクセス権がありません。 ご自身が AAD アプリケーションの所有者であるかどうかを確認してください。 AAD アプリケーションのアクセス許可の[詳細を参照](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements)してください。
+
+
 ## <a name="discovery-issues"></a>検出の問題
 
-### <a name="i-started-discovery-but-i-dont-see-the-discovered-vms-on-azure-portal-server-assessment-and-server-migrate-tiles-show-a-status-of-discovery-in-progress"></a>検出を開始しましたが、検出された VM が Azure portal に表示されません。 [Server Assessment] および [Server Migrate] タイルに "検出中" という状態が表示されます。
+### <a name="i-started-discovery-but-i-dont-see-the-discovered-vms-on-azure-portal-server-assessment-and-server-migration-tiles-show-a-status-of-discovery-in-progress"></a>検出を開始しましたが、検出された VM が Azure portal に表示されません。 [Server Assessment] および [Server Migration] タイルに "検出中" という状態が表示されます。
 アプライアンスから検出を開始した後、検出されたマシンが Azure portal に表示されるまでにしばらく時間がかかります。 VMware の検出では約 15 分、Hyper-V の検出では追加されたホストごとに約 2 分かかります。 この時間が経過した後も引き続き "検出中" と表示される場合は、 **[サーバー]** タブの **[更新]** をクリックします。これで、検出されたサーバーの数が [Server Assessment] および [Server Migration] タイルに表示されるはずです。
 
 
@@ -146,15 +172,15 @@ vCenter Server "Servername.com:9443" に接続できません。原因となっ�
 4. 更新操作が完了するまで待ちます。 これで、ご利用の VM に関する最新情報が表示されます。
 
 ### <a name="unable-to-connect-to-hosts-or-cluster-as-the-server-name-cannot-be-resolved-winrm-error-code-0x803381b9-error-id-50004"></a>サーバー名を解決できないため、ホストまたはクラスターに接続できません。 WinRM エラー コード: 0x803381B9 (エラー ID: 50004)
-このエラーは、アプライアンスの要求を処理する DNS が、指定されたクラスターまたはホストの名前を解決できない場合に発生します。 クラスターでこのエラーが表示された場合は、そのクラスターの完全修飾ドメイン名を指定してみてください。 
+このエラーは、アプライアンスの要求を処理する DNS が、指定されたクラスターまたはホストの名前を解決できない場合に発生します。 クラスターでこのエラーが表示された場合は、そのクラスターの完全修飾ドメイン名を指定してみてください。
 
-クラスター内のホストについても、このエラーが表示されることがあります。 その場合、アプライアンスからクラスターに接続することはできます。 ただし、クラスターから返されたホスト名が完全修飾ドメイン名ではありません。 
+クラスター内のホストについても、このエラーが表示されることがあります。 その場合、アプライアンスからクラスターに接続することはできます。 ただし、クラスターから返されたホスト名が完全修飾ドメイン名ではありません。
 
 このエラーを解決するには、IP アドレスとホスト名のマッピングを追加することでアプライアンス上の hosts ファイルを更新します。
 1. 管理者ユーザーとしてメモ帳を開きます。 C:\Windows\System32\Drivers\etc\hosts ファイルを開きます。
 2. IP アドレスとホスト名を 1 行で追加します。 このエラーが見られるホストまたはクラスターごとに繰り返します。
 3. hosts ファイルを保存して閉じます。
-4. アプライアンス管理アプリを使用して、アプライアンスからホストに接続できるかどうかを確認します。 30 分後、それらのホストの最新情報を Azure portal で確認できるようになります。 
+4. アプライアンス管理アプリを使用して、アプライアンスからホストに接続できるかどうかを確認します。 30 分後、それらのホストの最新情報を Azure portal で確認できるようになります。
 
 
 ## <a name="assessment-issues"></a>評価の問題
@@ -202,8 +228,11 @@ Server Assessment でのディスクのサイズ変更は、サイズ変更の�
 
 たとえば、オンプレミスのディスクと 32 GB のメモリを使っていても、ディスクの読み取りと書き込みの集計 IOPS が 800 IOPS である場合、Server Assessment では Premium ディスクの種類 (高い IOPS 要件であるため) が推奨された後、必要な IOPS とサイズに対応できるディスク SKU が推奨されます。 この例では、適合する最も近いものは P15 (256 GB、1100 IOPS) になります。 したがって、オンプレミスのディスクで必要なサイズは 32 GB でしたが、Server Assessment では、オンプレミスのディスクの高い IOPS 要件により、さらに大きいサイズのディスクが推奨されました。
 
+### <a name="why-does-my-assessment-report-say-percentageofcoresutilizedmissing-or-percentageofmemoryutilizedmissing-for-some-vms"></a>評価レポートで一部の VM に対して "PercentageOfCoresUtilizedMissing" または "PercentageOfMemoryUtilizedMissing" と示されるのはなぜですか?
+上の問題は、Azure Migrate アプライアンスでオンプレミス VM のパフォーマンス データを収集できない場合に表示されます。 VM の電源がオフになっているとアプライアンスで VM のパフォーマンス データを収集できないため、評価を作成している期間 (過去 1 日、1 週間、または 1 か月) に VM の電源がオフになっていた場合、このようなことが発生する可能性があります。 メモリ カウンターのみが取得されず、Hyper-V VM を評価しようとしている場合は、これらの VM で動的メモリが有効になっているかどうかを確認してください。 現在、既知の問題のため、動的メモリが有効になっていない VM のメモリ使用率は、Azure Migrate アプライアンスで収集できません。 その問題は、Hyper-V VM の場合にのみ発生し、VMware VM では発生しないことに注意してください。 いずれかのパフォーマンス カウンターを取得できない場合、Azure Migrate: Server Assessment は割り当てられたコアまたはメモリにフォールバックし、それに応じて VM サイズが推奨されます。
+
 ### <a name="is-the-os-license-cost-of-the-vm-included-in-the-compute-cost-estimated-by-server-assessment"></a>Server Assessment が見積もったコンピューティング コストには、VM の OS ライセンス コストは含まれますか?
-現在、Server Assessment では Windows マシンの OS のコストのみが考慮され、Linux マシンの OS ライセンス コストは考慮されません。 
+現在、Server Assessment では Windows マシンの OS のコストのみが考慮され、Linux マシンの OS ライセンス コストは考慮されません。
 
 ### <a name="what-impact-does-performance-history-and-percentile-utilization-have-on-the-size-recommendations"></a>パフォーマンス履歴と百分位数での使用率は、サイズの推奨にどのような影響を与えますか?
 これらのプロパティが適用されるのは、"パフォーマンスベース" のサイズ設定の場合のみです。 Server Assessment では、オンプレミスのマシンのパフォーマンス データを継続的に収集し、それを使って Azure で VM の SKU とディスクの SKU を推奨します。 次に示すのは、Server Assessment によるパフォーマンス データの収集方法です。

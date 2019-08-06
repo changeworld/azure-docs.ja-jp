@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 52fe8c05101f9647549acec276f0bdb9fa52d1c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ced0655d2e8ff012b3043dd123a8483674b4c472
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60537904"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404550"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -73,8 +73,8 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
   
     | フィールド | 値 |
     | --- | --- |
-    |サブスクリプション |適切なサブスクリプションを選択します。|
-    |リソース グループ |前に作成した仮想ネットワークが含まれているリソース グループを選択します。|
+    |Subscription |適切なサブスクリプションを選択します。|
+    |Resource group |前に作成した仮想ネットワークが含まれているリソース グループを選択します。|
     |仮想マシン名 | この仮想マシンを特定するフレンドリ名を入力します。 この例では、**DNSProxy** を使用します。|
     |リージョン | 前に作成した仮想ネットワークと同じリージョンを選択します。  すべてのリージョンですべての VM サイズを使用できるわけではありません。  |
     |可用性のオプション |  必要な可用性のレベルを選択します。  Azure は、アプリケーションの可用性と耐障害性を管理するためのさまざまなオプションを提供しています。  可用性ゾーンまたは可用性セット内のレプリケートされた VM を使用して、データセンターの障害やメンテナンス イベントからアプリやデータを保護するためのソリューションを設計します。 この例では、 **[インフラストラクチャ冗長は必要ありません]** を使用します。 |
@@ -275,14 +275,14 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 > [!WARNING]  
 > HDInsight では、Azure クラウド内の特定の IP アドレスからの着信アクセスと、制限のない発信アクセスが必要です。 NSG または UDR を使用してトラフィックを制御する場合は、次の手順を実行する必要があります。
 
-1. 仮想ネットワークがある場所の IP アドレスを調べます。 場所ごとの必須 IP アドレスの一覧については、「[必須 IP アドレス](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)」を参照してください。
+1. 仮想ネットワークがある場所の IP アドレスを調べます。 場所ごとの必須 IP アドレスの一覧については、「[必須 IP アドレス](./hdinsight-management-ip-addresses.md)」を参照してください。
 
 2. 手順 1 で識別された IP アドレスについて、その IP アドレスからの受信トラフィックを許可します。
 
    * __NSG__ を使用している場合:IP アドレスについて、__443__ ポートでの __受信__ トラフィックを許可します。
    * __UDR__ を使用している場合:IP アドレスについて、ルートの __[次ホップ]__ の種類を __[インターネット]__ に設定します。
 
-Azure PowerShell または Azure CLI を使用して NSG を作成する例については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg)」を参照してください。
+Azure PowerShell または Azure CLI を使用して NSG を作成する例については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-create-virtual-network.md#hdinsight-nsg)」を参照してください。
 
 ## <a name="create-the-hdinsight-cluster"></a>HDInsight クラスターを作成する
 
@@ -334,7 +334,7 @@ HDInsight のほとんどのドキュメントでは、インターネット経�
 
 ## <a name="next-steps"></a>次の手順
 
-* 仮想ネットワークでの HDInsight の使用の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](./hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
+* 仮想ネットワークにおける HDInsight の使用方法の詳細については、[Azure HDInsight クラスター用の仮想ネットワークのデプロイ計画](./hdinsight-plan-virtual-network-deployment.md)に関するページを参照してください。
 
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 

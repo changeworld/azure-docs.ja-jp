@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 13e35ab93fc37541548785c6355489eaf3a3efc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e24489ad2909879b035a08316e66788034e99bc
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754556"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377202"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント (プレビュー)
 
@@ -35,9 +35,14 @@ ms.locfileid: "66754556"
 
 * 任意の静的文字列。 条件、ロジック、演算、関数などの動的な値は使用できません。 たとえば、複数の顧客によって使用される SaaS アプリケーションを開発する場合、それぞれの顧客に識別子を割り当て、その識別子をアプリケーション内で利用可能にすることができます。 アプリケーションを実行すると、IoT Hub によってデバイス テレメトリ メッセージに顧客の識別子のスタンプが適用され、顧客ごとに異なる処理をメッセージに適用することができます。
 
+* メッセージを送信する IoT ハブの名前。 この値は *$iothubname* です。
+
 * デバイス ツインの情報 (そのパスなど)。 *$twin.tags.field* や *$twin.tags.latitude* などが考えられます。
 
-* メッセージを送信する IoT ハブの名前。 この値は *$iothubname* です。
+   > [!NOTE]
+   > 現時点では、メッセージ エンリッチメントのためにサポートされている変数は、$iothubname、$twin.tags、$twin.properties.desired、および $twin.properties.reported のみです。
+
+メッセージ エンリッチメントは、選択したエンドポイントに送信されるメッセージにアプリケーション プロパティとして追加されます。  
 
 ## <a name="applying-enrichments"></a>エンリッチメントを適用する
 

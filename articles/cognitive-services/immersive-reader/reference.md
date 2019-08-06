@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 485e8626af4266492e02d4f9fbe4af486e10c082
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718394"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688309"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Immersive Reader SDK リファレンス
 
@@ -23,22 +23,22 @@ Immersive Reader SDK は、イマーシブ リーダーを Web アプリケー�
 
 ## <a name="functions"></a>Functions
 
-SDK は 1 つの関数 `ImmersiveReader.launchAsync(token, resourceName, content, options)` を公開します。
+SDK は 1 つの関数 `ImmersiveReader.launchAsync(token, subdomain, content, options)` を公開します。
 
 ### <a name="launchasync"></a>launchAsync
 
 Web アプリケーションの `iframe` 内でイマーシブ リーダーを起動します。
 
 ```typescript
-launchAsync(token: string, resourceName: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
 #### <a name="parameters"></a>parameters
 
 | EnableAdfsAuthentication | Type | 説明 |
 | ---- | ---- |------------ |
-| `token` | string | `issueToken` エンドポイントの呼び出しで取得したアクセス トークン。 |
-| `resourceName` | string | 予約済み。 `null` に設定する必要があります。 |
+| `token` | string | Azure AD 認証トークン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |
+| `subdomain` | string | Azure 内のイマーシブ リーダー リソースのカスタム サブドメイン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |
 | `content` | [コンテンツ](#content) | イマーシブ リーダーで表示するコンテンツを含むオブジェクト。 |
 | `options` | [オプション](#options) | イマーシブ リーダーの特定の動作を構成するオプション。 省略可能。 |
 
@@ -136,5 +136,5 @@ SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイ
 
 ## <a name="next-steps"></a>次の手順
 
-* [GitHub 上の Immersive Reader SDK](https://github.com/Microsoft/immersive-reader-sdk) を探索する
+* [GitHub 上の Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) を探索する
 * [クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (C#)](./quickstart.md)

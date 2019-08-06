@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 3e66bf61caf786473d89eab9a6567bb05aff0d19
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1fd08efd12e723a16445eba1d341f017a86a212e
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67457421"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68481488"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
@@ -29,6 +29,8 @@ ms.locfileid: "67457421"
 | 仮想ネットワークごとのプライベート IP アドレス |65,536 |
 | ネットワーク インターフェイスごとのプライベート IP アドレス |256 |
 | 仮想マシンごとのプライベート IP アドレス |256 |
+| ネットワーク インターフェイスごとのパブリック IP アドレス |256 |
+| 仮想マシンごとのパブリック IP アドレス |256 |
 | 仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数 |500,000 |
 | ネットワーク インターフェイス カード |65,536 |
 | ネットワーク セキュリティ グループ |5,000 |

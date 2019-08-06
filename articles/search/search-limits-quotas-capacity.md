@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b6940be7f64aa9ae16258fa936d197e2715235ab
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 35beb55d7326b954a568a377b73696fe598742c5
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485409"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348299"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、または**ストレージ最適化**の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -137,7 +137,7 @@ QPS の見積もりは、すべての顧客ごとに個別に開発する必要�
 
 ## <a name="data-limits-cognitive-search"></a>データの制限 (コグニティブ検索)
 
-[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment.md)、および[言語検出](cognitive-search-skill-language-detection.md)の Text Analytics リソースに対して呼び出しを行う[コグニティブ検索パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードの最大サイズは、`String.Length` によって測定されるため、50,000 文字にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
+[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment.md)、および[言語検出](cognitive-search-skill-language-detection.md)の Text Analytics リソースに対して呼び出しを行う[コグニティブ検索パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードの最大サイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) によって測定されるため、50,000 文字にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
 
 ## <a name="api-request-limits"></a>API 要求の制限
 * 要求あたりの最大値: 16 MB<sup>1</sup>

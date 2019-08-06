@@ -10,25 +10,28 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c90a0351c8c71f4fcafa58a422cc3566a0b29b03
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c5a27a8016202f7f8c9e256eaf6b3077fbef295b
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850090"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414519"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)
 
-IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) ストレージのソリューションが提供されます。 ご利用の IoT Edge デバイス上の BLOB ストレージ モジュールは Azure のブロック BLOB サービスのように動作しますが、そのブロック BLOB はご利用の IoT Edge デバイス上でローカルに格納されます。 同じ Azure Storage SDK メソッドまたは既に慣れているブロック BLOB API 呼び出しを使用して、ご自分の BLOB にアクセスできます。
+IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) ストレージのソリューションが提供されます。 ご利用の IoT Edge デバイス上の BLOB ストレージ モジュールは Azure のブロック BLOB サービスのように動作しますが、そのブロック BLOB はご利用の IoT Edge デバイス上でローカルに格納されます。 同じ Azure Storage SDK メソッドまたは既に慣れているブロック BLOB API 呼び出しを使用して、ご自分の BLOB にアクセスできます。 この記事では、ご利用の IoT Edge デバイス上で Blob service を実行する IoT Edge コンテナー上の Azure Blob Storage に関連する概念について説明します。
 
-このモジュールには、**deviceToCloudUpload** 機能と **deviceAutoDelete** 機能が付属しています。
+このモジュールは、データを処理するかクラウドに転送できる状態になるまでデータをローカルに格納する必要のあるシナリオで役立ちます。 そうしたデータには、動画、画像、ファイナンス データ、病院データなど、あらゆる非構造化データが考えられます。
+
 > [!NOTE]
 > IoT Edge の Azure Blob Storage は、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中です。
 
 概要紹介のビデオを見る
 > [!VIDEO https://www.youtube.com/embed/QhCYCvu3tiM]
 
-**deviceToCloudUpload** は構成可能な機能で、断続的なインターネット接続のサポートによりローカルの Blob Storage から Azure にデータを自動的にアップロードすることができます。 これにより次の操作を行うことができます。
+このモジュールには、**deviceToCloudUpload** 機能と **deviceAutoDelete** 機能が付属しています。
+
+**deviceToCloudUpload** は構成可能な機能です。 この機能は、断続的なインターネット接続のサポートによりローカルの Blob Storage から Azure にデータを自動的にアップロードすることができます。 これにより次の操作を行うことができます。
 
 - deviceToCloudUpload 機能のオン/オフを切り替える。
 - データを Azure にコピーする順序 (NewestFirst や OldestFirst など) を選択する。
@@ -44,15 +47,12 @@ IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https:/
 
 BLOB のアップロード中に予期しないプロセスの終了 (電源障害など) が発生すると、モジュールがオンラインに戻ったときに、アップロード予定だったすべてのブロックが再度アップロードされます。
 
-**deviceAutoDelete** は構成可能な機能です。この機能では、指定した期限 (分単位) が過ぎると、モジュールによって BLOB がローカル ストレージから自動的に削除されます。 これにより次の操作を行うことができます。
+**deviceAutoDelete** は構成可能な機能です。 この機能では、指定した期限 (分単位) が過ぎると、モジュールによって BLOB がローカル ストレージから自動的に削除されます。 これにより次の操作を行うことができます。
 
 - deviceAutoDelete 機能のオン/オフを切り替える。
 - BLOB が自動的に削除されるまでの分単位の時間 (deleteAfterMinutes) を指定する。
 - deleteAfterMinutes 値が期限切れになった場合に、アップロード中は BLOB を保持する機能を選択する。
 
-ビデオ、画像、財務データ、病院データなど、ローカルに格納する必要があるデータで、後でローカルで処理またはクラウドに転送できるシナリオは、このモジュールを使用するよい例です。
-
-この記事では、ご利用の IoT Edge デバイス上で Blob service を実行する IoT Edge コンテナー上の Azure Blob Storage に関連する概念について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,8 +65,8 @@ Azure IoT Edge デバイス:
   | オペレーティング システム | AMD64 | ARM32v7 | ARM64 |
   | ---------------- | ----- | ----- | ---- |
   | Raspbian-stretch | いいえ | はい | いいえ |  
-  | Ubuntu Server 16.04 | はい | いいえ | はい ([Azure IoT Edge 1.0.8-rc1 以降](https://github.com/Azure/azure-iotedge/releases)を使用した[インストール](how-to-install-iot-edge-linux-arm.md#install-a-specific-version)に使用可能) |
-  | Ubuntu Server 18.04 | はい | いいえ | はい ([Azure IoT Edge 1.0.8-rc1 以降](https://github.com/Azure/azure-iotedge/releases)を使用した[インストール](how-to-install-iot-edge-linux-arm.md#install-a-specific-version)に使用可能) |
+  | Ubuntu Server 16.04 | はい | いいえ | はい |
+  | Ubuntu Server 18.04 | はい | いいえ | はい |
   | Windows 10 IoT Enterprise ビルド 17763 | はい | いいえ | いいえ |
   | Windows Server 2019 ビルド 17763 | はい | いいえ | いいえ |
   
@@ -77,7 +77,7 @@ Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-port
 
 ## <a name="devicetocloudupload-and-deviceautodelete-properties"></a>deviceToCloudUpload および deviceAutoDelete のプロパティ
 
-必要なプロパティを使用して、deviceToCloudUploadProperties と deviceAutoDeleteProperties を設定します。 これらは、デプロイ中に設定したり、モジュール ツインを編集することで、再デプロイすることなく後で変更したりできます。 値が確実に正しく反映されるよう、`reported configuration` と `configurationValidation` の "モジュール ツイン" をチェックすることをお勧めします。
+このモジュールの必要なプロパティを使用して、**deviceToCloudUploadProperties** と **deviceAutoDeleteProperties** を設定します。 必要なプロパティは、デプロイ中に設定したり、モジュール ツインを編集することで、再デプロイすることなく後で変更したりできます。 値が確実に正しく反映されるよう、`reported configuration` と `configurationValidation` の "モジュール ツイン" をチェックすることをお勧めします。
 
 ### <a name="devicetoclouduploadproperties"></a>deviceToCloudUploadProperties
 
@@ -85,7 +85,7 @@ Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-port
 
 | フィールド | 指定できる値 | 説明 | 環境変数 |
 | ----- | ----- | ---- | ---- |
-| uploadOn | true、false | 既定では `false` に設定されていて、有効にする場合は `true` に設定します| `deviceToCloudUploadProperties__uploadOn={false,true}` |
+| uploadOn | true、false | 既定では `false` に設定されています。 この機能をオンにする場合は、このフィールドを `true` に設定します。 | `deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst、OldestFirst | データを Azure にコピーする順序を選択できます。 既定では `OldestFirst` に設定されています。 順序は Blob の最終更新時刻によって決定されます | `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
 | cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` は、データのアップロード先の Azure Storage アカウントを選択するための接続文字列です。 `Azure Storage Account Name`、`Azure Storage Account Key`、`End point suffix` を指定します。 データのアップロード先の Azure の適切な EndpointSuffix を追加します。これはグローバル Azure、政府機関向け Azure、および Microsoft Azure Stack ごとに異なります。 | `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Azure にアップロードするコンテナーの名前を指定できます。 このモジュールでは、ソースとターゲットの両方のコンテナー名を指定できます。 ターゲット コンテナー名を指定しない場合、コンテナー名は自動的に `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` として割り当てられます。 ターゲット コンテナー名のテンプレート文字列を作成して、使用可能な値の列をチェックアウトできます。 <br>* %h -> IoT Hub 名 (3 ～ 50 文字)。 <br>* %d -> IoT Edge デバイス ID (1 ～ 129 文字)。 <br>* %m -> モジュール名 (1 ～ 64 文字)。 <br>* %c -> ソース コンテナー名 (3 ～ 63 文字)。 <br><br>コンテナー名の最大サイズは 63 文字です。ターゲット コンテナー名を自動的に割り当てる場合は、コンテナーのサイズが 63 文字を超えると、各セクション (IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName) が 15 文字まで削除されます。 | `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
@@ -98,7 +98,7 @@ Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-port
 
 | フィールド | 指定できる値 | 説明 | 環境変数 |
 | ----- | ----- | ---- | ---- |
-| deleteOn | true、false | 既定では `false` に設定されていて、有効にする場合は `true` に設定します| `deviceAutoDeleteProperties__deleteOn={false,true}` |
+| deleteOn | true、false | 既定では `false` に設定されています。 この機能をオンにする場合は、このフィールドを `true` に設定します。 | `deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | 時間を分単位で指定します。 この値が期限切れになると、モジュールが自動的にローカル ストレージから BLOB を削除します | `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
 | retainWhileUploading | true、false | 既定では `true` に設定されていて、deleteAfterMinutes が期限切れになった場合に、クラウド ストレージへのアップロード中は BLOB が保持されます。 `false` に設定することができ、その場合は deleteAfterMinutes が期限切れになるとすぐにデータが削除されます。 注:このプロパティを機能させるには、UploadOn が true に設定されている必要があります| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
 
@@ -113,7 +113,7 @@ Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-port
 作成する任意のストレージ要求に対する BLOB エンドポイントとして、ご利用の IoT Edge デバイスを指定します。 構成した IoT Edge デバイス情報とアカウント名を使用して、[明示的なストレージ エンドポイントへの接続文字列を作成](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint)できます。
 
 - Azure Blob Storage on IoT Edge モジュールが実行されているデバイスにデプロイされているモジュールの場合、BLOB エンドポイントは `http://<module name>:11002/<account name>` になります。
-- 外部モジュールまたはアプリケーションが、Azure Blob Storage on IoT Edge モジュールが実行されている場所とは異なるデバイスで実行されている場合は、ネットワーク設定に応じて、外部モジュールまたはアプリケーションからのデータ トラフィックが Azure Blob Storage on IoT Edge モジュールを実行しているデバイスに到達できるようにします。BLOB エンドポイントは次のいずれかです。
+- 別のデバイスで実行されているモジュールまたはアプリケーションの場合、実際のネットワークの適切なエンドポイントを選択する必要があります。 ネットワーク設定に応じて、外部モジュールまたはアプリケーションからのデータ トラフィックが Azure Blob Storage on IoT Edge モジュールを実行しているデバイスに到達できるようにエンドポイントの形式を選択します。 このシナリオの BLOB エンドポイントは次のいずれかです。
   - `http://<device IP >:11002/<account name>`
   - `http://<IoT Edge device hostname>:11002/<account name>`
   - `http://<fully qualified domain name>:11002/<account name>`
@@ -147,11 +147,11 @@ Azure Blob Storage のドキュメントには、複数の言語のクイック 
    > [!NOTE]
    > このモジュールでは、ページ BLOB はサポートされていません。
 
-1. データをアップロードする Azure ストレージ アカウントの接続を選択することができます。 これにより、1 つのビューにローカル ストレージ アカウントと Azure ストレージ アカウントの両方を表示できます。
+1. Storage Explorer で Azure Storage アカウントを接続するように選択することもできます。 この構成により、1 つのビューにローカル ストレージ アカウントと Azure ストレージ アカウントの両方を表示できます。
 
 ## <a name="supported-storage-operations"></a>サポートされるストレージ操作
 
-IoT Edge 上の BLOB ストレージ モジュールでは同じ Azure Storage SDK が使用され、ブロック BLOB エンドポイント用の 2017-04-17 バージョンの Azure Storage API と一貫性があります。 今後のリリースは、顧客のニーズに依存します。
+IoT Edge 上の BLOB ストレージ モジュールでは Azure Storage SDK が使用され、ブロック BLOB エンドポイント用の 2017-04-17 バージョンの Azure Storage API と一貫性があります。 
 
 すべての Azure Blob Storage の操作が、IoT Edge の Azure Blob Storage でサポートされるわけではないため、このセクションでは、それぞれの状態の一覧を示します。
 

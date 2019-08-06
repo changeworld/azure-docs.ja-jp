@@ -3,19 +3,19 @@ title: オフライン評価 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: Personalizer サービスを使用するこの C# のクイック スタートではフィードバック ループを作成します。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 3fdedd1af9b683b221dfa4aebad7a30559b7abff
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: 5e9e745d73623e03e2530e1712a50e6670ee7ed3
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722493"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662844"
 ---
 # <a name="offline-evaluation"></a>オフライン評価
 
@@ -48,7 +48,7 @@ ms.locfileid: "67722493"
 
 Personalizer では、オフライン評価プロセスを使用して、最適な学習ポリシーを自動的に発見できます。
 
-オフライン評価を実行した後に、現在のオンライン ポリシーと比較したその新しいポリシーを使用する Personalizer の比較有効性を確認できます。 その後、その学習ポリシーを適用して Personalizer ですぐに有効にすることも、将来の分析または使用のためにダウンロードすることもできます。
+オフライン評価を実行した後に、現在のオンライン ポリシーと比較したその新しいポリシーを使用する Personalizer の比較有効性を確認できます。 その後、その学習ポリシーをダウンロードし、[Models and Policy]\(モデルとポリシー\) パネルでアップロードすることによって、そのポリシーを適用し、Personalizer ですぐに有効にすることができます。 将来の分析または使用のためにダウンロードすることもできます。
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>オフライン評価の結果の関連性を理解する
 
@@ -98,4 +98,5 @@ Personalizer は、ユーザーの動作 (および報酬) が遡及的に予測
 
 ## <a name="next-steps"></a>次の手順
 
-[Personalizer を構成する](how-to-settings.md)
+[Personalizer の構成](how-to-settings.md)
+[オフライン評価の実行](how-to-offline-evaluation.md) [Personalizer のしくみ](how-personalizer-works.md)を理解する

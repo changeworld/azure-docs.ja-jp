@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: fceea6273f00fdf16d8934533f08bc3494795bc4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f75933940aa97606ca33ab6bfc18fe5871811eef
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433281"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441968"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
@@ -56,12 +56,12 @@ Hadoop コマンドを使用するには、最初に [SSH または PuTTY](hdins
 接続したら、次の構文を使用してファイルをストレージにアップロードすることができます。
 
 ```bash
-hadoop -copyFromLocal <localFilePath> <storageFilePath>
+hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 ```
 
 たとえば、`hadoop fs -copyFromLocal data.txt /example/data/data.txt` のように指定します。
 
-HDInsight の既定のファイル システムは Azure Storage にあるため、/example/data.txt は実際は Azure Storage 上にあります。 このファイルは次のように表すこともできます。
+HDInsight の既定のファイル システムは Azure Storage 内にあるため、/example/data/data.txt は実際には Azure Storage 内にあります。 このファイルは次のように表すこともできます。
 
     wasbs:///example/data/data.txt
 

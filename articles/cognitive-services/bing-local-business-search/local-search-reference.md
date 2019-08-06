@@ -1,7 +1,7 @@
 ---
-title: Bing Local Business Search API v7 リファレンス | Microsoft Docs
-description: Bing Local Business Search API のプログラミング要素について説明します。
+title: Bing Local Business Search API v7 リファレンス
 titleSuffix: Azure Cognitive Services
+description: Bing Local Business Search API のプログラミング要素について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: e96b1959d9e03273a9ca4c549c0f8b0bda6a708b
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 36d87ee9db68c47ee96519cb6b04ff24478427d6
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592805"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423408"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing Local Business Search API v7 リファレンス
 
@@ -70,7 +70,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 要求には次のクエリ パラメーターを含めることができます。 必須のパラメーターについては、必須の列を参照してください。 クエリ パラメーターは URL エンコードする必要があります。  
   
   
-|Name|値|Type|必須|  
+|EnableAdfsAuthentication|値|Type|必須|  
 |----------|-----------|----------|--------------|
 |<a name="count" />count|`offset` パラメーターで指定されたインデックスから始まる、返す結果の数。|string|いいえ|   
 |<a name="localCategories" />localCategories|ビジネス カテゴリ別に検索を定義するオプションの一覧。  [地元企業のカテゴリ検索](local-categories.md)についてのページを参照してください|string|いいえ|  
@@ -107,7 +107,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="errorresponse"></a>ErrorResponse  
 要求が失敗したときの応答に含まれている最上位レベルのオブジェクト。  
   
-|Name|値|Type|  
+|EnableAdfsAuthentication|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。|string|  
 |<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[エラー](#error)[]|  
@@ -117,7 +117,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="license"></a>License  
 テキストまたは写真の使用が許可されるライセンスを定義します。  
   
-|Name|値|Type|  
+|EnableAdfsAuthentication|値|Type|  
 |----------|-----------|----------|  
 |名前|ライセンスの名前。|string|  
 |url|ライセンスに関する詳しい情報を取得できる Web サイトへの URL。<br /><br /> 名前と URL を使用してハイパーリンクを作成します。|string|  
@@ -126,7 +126,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="link"></a>Link  
 ハイパーリンクのコンポーネントを定義します。  
   
-|Name|値|Type|  
+|EnableAdfsAuthentication|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。|string|  
 |text|表示テキスト。|string|  
@@ -140,7 +140,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 公開元は、名前、Web サイト、またはその両方を提供する場合があることに注意してください。  
   
-|Name|値|Type|  
+|EnableAdfsAuthentication|値|Type|  
 |----------|-----------|----------|  
 |名前|公開元の名前。|string|  
 |url|公開元の Web サイトへの URL。<br /><br /> 公開元が Web サイトを提供しない場合があることに注意してください。|string|  
@@ -150,7 +150,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="place"></a>場所  
 レストランやホテルなどの地元企業に関する情報を定義します。  
   
-|Name|値|Type|  
+|EnableAdfsAuthentication|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒントは、次のいずれかに設定される可能性があります。<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>レストラン</ul><li>|string|  
 |address|エンティティがある場所の住所。|PostalAddress|  
@@ -174,21 +174,21 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
 
 ### <a name="identifiable"></a>Identifiable
 
-|Name|値|Type|  
+|EnableAdfsAuthentication|値|Type|  
 |-------------|-----------------|----------|
 |id|リソース識別子|string|
  
 ### <a name="rankinggroup"></a>RankingGroup
 検索結果グループ (メインラインなど) を定義します。
 
-|Name|値|Type|  
+|EnableAdfsAuthentication|値|Type|  
 |-------------|-----------------|----------|
 |items|グループで表示される検索結果の一覧。|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 表示される検索結果項目を定義します。
 
-|Name|値|Type|  
+|EnableAdfsAuthentication|値|Type|  
 |-------------|-----------------|----------|
 |resultIndex|表示される回答内の項目のゼロベース インデックス。 このフィールドが項目に含まれていない場合、回答のすべての項目が表示されます。 たとえば、News 回答ではすべてのニュース記事が表示されます。|整数|
 |answerType|表示される項目が含まれている回答。 たとえば、News などです。<br /><br />種類を使用して SearchResponse オブジェクト内の回答を探します。 種類は SearchResponse フィールドの名前です。<br /><br /> ただし、このオブジェクトに value フィールドが含まれている場合にのみ回答の種類を使用し、そうでない場合は無視します。|string|
@@ -198,7 +198,7 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
 ### <a name="rankingresponse"></a>RankingResponse  
 検索結果ページでコンテンツが配置される場所と順序を定義します。  
   
-|Name|値|  
+|EnableAdfsAuthentication|値|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|メインラインに表示される検索結果。|  
 |<a name="ranking-pole" />pole|最も目立つ処理を受ける検索結果 (たとえば、メインラインとサイドバーの上に表示されます)。|  
@@ -209,7 +209,7 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
   
 サービスによってサービス拒否攻撃が疑われている場合、要求は成功する (HTTP 状態コードは 200 OK) ものの、応答の本文は空になることに注意してください。  
   
-|Name|値|Type|  
+|EnableAdfsAuthentication|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。これは SearchResponse に設定されます。|string|  
 |places|検索クエリに関連するエンティティの一覧。|JSON オブジェクト|  

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: snehaa
-ms.openlocfilehash: e5b4777adfcbb5babbf5db792a10d025c79b1a8b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 0708502087ae6880d9559cf17f0ba9982b2ba040
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302368"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372491"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -20,20 +20,8 @@ ms.locfileid: "68302368"
 ## <a name="general"></a>全般
 
 ### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Azure Migrate でサポートされている Azure の地域を教えてください。
-Azure Migrate では現在、複数の地域で Azure Migrate プロジェクトを作成することができます。 プロジェクトを作成できるのはこれらの地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
 
-
-**地理的な場所** | **メタデータ ストレージの場所**
---- | ---
-Azure Government | 米国政府バージニア州
-アジア | 東南アジアまたは東アジア
-ヨーロッパ | 南ヨーロッパまたは西ヨーロッパ
-イギリス | 英国南部または英国西部
-米国 | 米国中部または米国西部 2
-
-
-> [!NOTE]
-> Azure Government は現在、[古いバージョン](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions)の Azure Migrate でのみサポートされます。
+[VMware の場合はこちら](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects)から、また [Hyper-V の場合はこちら](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects)からご覧いただけます。
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Azure Migrate と Azure Site Recovery の違いは何ですか。
 

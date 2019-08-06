@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: bbbc2bc5c47821469ecf15a27195b1bf0c12e6e5
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190618"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404610"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -127,7 +127,18 @@ Azure Data Factory の Mapping Data Flow では、大規模なデータ変換の
 * この一般的なオプションを選択する場合は、この点に注意してください。 多数の大きなソース ファイルを単一の出力ファイル パーティションに結合する場合、クラスター ノードのリソースが不足することがあります。
 * 計算ノードのリソースを使い果たさないように、パフォーマンスを最適化する既定または明示的なパーティション分割スキームを ADF で保持し、その後、すべての PART ファイルを出力フォルダーから単一の新しいファイルにマージする後続のコピー アクティビティをパイプラインに追加できます。 基本的には、この手法は、変換の動作をファイルのマージから切り離し、"単一ファイルへの出力" を設定するのと同じ結果が得られます。
 
+### <a name="looping-through-file-lists"></a>ファイル リストのループ処理
+
+ほとんどの場合、ADF のデータ フローは、Data Flow のソース変換で複数のファイルを反復処理するパイプラインから実行した方が高速です。 つまりパイプラインで ForEach を使用し、反復のたびにデータ フローの実行を呼び出しながら大量のファイルを反復処理するよりも、Data Flow のソース内でワイルドカードやファイル リストを使用することが推奨されます。 ループ処理を Data Flow 内で行うことにより、Data Flow プロセスの実行速度を上げることができます。
+
+たとえば Blob Storage 内のフォルダーに、処理対象となる 2019 年 7 月の一連のデータ ファイルがある場合、データ フローの実行アクティビティをパイプラインから 1 回呼び出して、次のようにソース内でワイルドカードを使用した方がパフォーマンスが高くなります。
+
+```DateFiles/*_201907*.txt```
+
+パイプラインで BLOB ストアを検索し、ForEach を使用して、その内側でデータ フローの実行アクティビティを使用しながら、一致するすべてのファイルを反復処理するよりも、この方が効率よく実行することができます。
+
 ## <a name="next-steps"></a>次の手順
+
 パフォーマンスに関連した他のデータ フローの記事を参照してください。
 
 - [データ フローの [最適化] タブ](concepts-data-flow-optimize-tab.md)

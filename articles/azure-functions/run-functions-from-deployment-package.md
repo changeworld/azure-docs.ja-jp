@@ -4,27 +4,27 @@ description: 関数アプリのプロジェクト ファイルが含まれたデ
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/15/2019
 ms.author: glenga
-ms.openlocfilehash: 83a98a493068d3427e34f3ac2ca5c24baa48dda1
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 96dbe9b15831a349afc0e68c15c39c1cb31b1032
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508250"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444065"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions をパッケージ ファイルから実行する
-
-> [!NOTE]
-> この記事で説明されている機能は、[App Service プラン](functions-scale.md#app-service-plan)において Linux 上で実行される関数アプリではご利用いただけません。
 
 Azure では、関数アプリのデプロイ パッケージ ファイルから、関数を直接実行できます。 他のオプションは、関数アプリの `d:\home\site\wwwroot` ディレクトリ内のファイルをデプロイすることです。
 
 この記事では、パッケージから関数を実行するメリットについて説明します。 関数アプリでこの機能を有効にする方法も示します。
+
+> [!IMPORTANT]
+> [Premium プラン](functions-scale.md#premium-plan)で Linux 関数アプリに関数をデプロイするときは、常にパッケージ ファイルから実行し、[Azure Functions Core Tools を使用してアプリを発行](functions-run-local.md#project-file-deployment)する必要があります。
 
 ## <a name="benefits-of-running-from-a-package-file"></a>パッケージ ファイルから実行することのメリット
   
@@ -61,7 +61,7 @@ Azure Blob torage でホストされている .zip ファイルから実行す�
 
 [Zip デプロイ][Zip deployment for Azure Functions]は、関数アプリ プロジェクトを `wwwroot` ディレクトリに配置することを可能にする Azure App Service の機能です。 プロジェクトは、.zip デプロイ ファイルとしてパッケージ化されます。 同じ API を使用して、パッケージを `d:\home\data\SitePackages` フォルダーに配置できます。 `WEBSITE_RUN_FROM_PACKAGE` アプリ設定が値 `1` の場合、zip デプロイ API は、ファイルを `d:\home\site\wwwroot` 抽出する代わりに、パッケージを `d:\home\data\SitePackages` フォルダーにコピーします。 それは、`packagename.txt` ファイルも作成します。 再起動後に関数アプリがパッケージから実行され、`wwwroot` が読み取り専用になります。 zip デプロイの詳細については、[Azure Functions の zip デプロイ](deployment-zip-push.md)に関する記事を参照してください。
 
-## <a name="adding-the-websiterunfrompackage-setting"></a>WEBSITE_RUN_FROM_PACKAGE 設定の追加
+## <a name="adding-the-website_run_from_package-setting"></a>WEBSITE_RUN_FROM_PACKAGE 設定の追加
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 

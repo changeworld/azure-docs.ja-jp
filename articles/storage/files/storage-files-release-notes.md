@@ -4,16 +4,16 @@ description: Azure File Sync エージェントのリリース ノート。
 services: storage
 author: wmgries
 ms.service: storage
-ms.topic: article
-ms.date: 7/12/2019
+ms.topic: conceptual
+ms.date: 7/24/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5a2ec72f835b720e0c760069b58ef8f092aedcb2
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bccc52fbc953ce77257a9a7f120e11a4000ea8c7
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875833"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699611"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,6 +25,7 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
+| 2019 年 7 月の更新プログラム ロールアップ - [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | サポート対象 - [フライティング](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
 | 2019 年 7 月の更新プログラム ロールアップ - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019 年 7 月 12 日 | サポート対象 - [フライティング](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
 | V7 リリース - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19 日 | サポートされています |
 | 2019 年 6 月の更新プログラム ロールアップ - [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019 年 6 月 27 日 | サポートされています |
@@ -45,6 +46,14 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-7200"></a>エージェント バージョン 7.2.0.0
+次のリリース ノートは、2019 年 7 月 24 日にリリースされた Azure File Sync エージェントのバージョン 7.2.0.0 を対象としています。 バージョン 7.0.0.0 に関して記載されているリリース ノートへの追記となります。
+
+このリリースで修正された問題は、以下のとおりです。  
+- プロキシの構成が null である場合、ストレージ同期エージェント (FileSyncSvc) がクラッシュします。
+- サーバー上の複数のエンドポイントに同じ名前が使用されている場合、サーバーのエンドポイントで BCDR が開始されます (エラー 0x80c80257 - ECS_E_BCDR_IN_PROGRESS)。
+- クラウドを使った階層化の信頼性が向上しました。
 
 ## <a name="agent-version-7100"></a>エージェント バージョン 7.1.0.0
 次のリリース ノートは、2019 年 7 月 12 日にリリースされた Azure File Sync エージェントのバージョン 7.1.0.0 を対象としています。 バージョン 7.0.0.0 に関して記載されているリリース ノートへの追記となります。

@@ -9,14 +9,14 @@ ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: jairoc
+ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8802f9e5c84078725675d961ada7f8183c91c0ec
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: fbba3f1b753738de57aa311387e522bae1b7b523
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481750"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499794"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -48,23 +48,50 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 ---
 
-### <a name="q-i-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered"></a>Q:Azure portal で、または Windows PowerShell を使用してデバイスを削除しました。 しかし、デバイスのローカル状態にはまだ登録済みと表示されます。
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>Q:Windows 10 デバイスに "Your organization has deleted the device (組織がデバイスを削除しました)" または "Your organization has disabled the device (組織がデバイスを無効にしました)" というエラー メッセージが表示されるのはなぜですか?
 
-**A:** この操作は設計によるものです。 デバイスは、クラウドのリソースにアクセスできません。 
+**A:** Azure AD に参加または登録した Windows 10 デバイスで、シングル サインオンを有効にする[プライマリ更新トークン (PRT)](concept-primary-refresh-token.md) がユーザーに発行されます。 PRT の有効性は、デバイス自体の有効性に基づきます。 デバイス自体からアクションを開始せずに、Azure AD でデバイスが削除または無効にされている場合に、このメッセージがユーザーに表示されます。 デバイスは、次のいずれかのシナリオで Azure AD で削除または無効にすることができます。 
 
-再登録する場合は、デバイスで手動操作を実行する必要があります。 
+- ユーザーが、マイ アプリ ポータルからデバイスを無効にする。 
+- 管理者 (またはユーザー) が、Azure portal で、または PowerShell を使用して、デバイスを削除または無効化する
+- Hybrid Azure AD 参加済みのみ:管理者が同期スコープからデバイス OU を削除し、その結果デバイスが Azure AD から削除される
 
-オンプレミスの Active Directory ドメインに参加済みの Windows 10 および Windows Server 2016 の参加状態をクリアするには、次の手順を実行します。
+これらのアクションを修正する方法については、以下を参照してください。
 
-1. 管理者としてコマンド プロンプトを開きます。
-1. 「 `dsregcmd.exe /debug /leave` 」を入力します。
-1. サインアウトしてからサインインして、デバイスを Azure AD に再登録するスケジュール済みタスクをトリガーします。 
+---
 
-オンプレミスの Active Directory ドメインに参加済みのダウンレベルの Windows OS バージョンの場合は、次の手順を実行します。
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>Q:Azure portal で、または Windows PowerShell を使用してデバイスを無効化または削除しました。 しかし、デバイスのローカル状態にはまだ登録済みと表示されます。 どうすればよいですか。
 
-1. 管理者としてコマンド プロンプトを開きます。
-1. 「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` 」を入力します。
-1. 「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` 」を入力します。
+**A:** この操作は設計によるものです。 この場合、デバイスは、クラウドのリソースにアクセスできません。 管理者は、不正なアクセスを防ぐため、古いデバイス、紛失したデバイス、または盗難されたデバイスに対してこのアクションを実行できます。 このアクションを意図せずに実行した場合は、次に示すように、デバイスを再度有効にするか再登録する必要があります
+
+- デバイスが Azure AD で無効になっている場合は、十分な特権を持つ管理者が Azure AD ポータルからデバイスを有効にすることができます  
+
+ - デバイスが Azure AD で削除された場合は、デバイスを再登録する必要があります。 再登録するには、デバイスで手動操作を実行する必要があります。 デバイスの状態に基づいて再登録する手順については、以下を参照してください。 
+
+      ハイブリッド Azure AD 参加済み Windows 10 および Windows Server 2016/2019 デバイスを再登録するには、次の手順を実行します。
+
+      1. 管理者としてコマンド プロンプトを開きます。
+      1. 「 `dsregcmd.exe /debug /leave` 」を入力します。
+      1. サインアウトしてからサインインして、デバイスを Azure AD に再登録するスケジュール済みタスクをトリガーします。 
+
+      ハイブリッド Azure AD に参加済みのダウンレベルの Windows OS バージョンの場合は、次の手順を実行します。
+
+      1. 管理者としてコマンド プロンプトを開きます。
+      1. 「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` 」を入力します。
+      1. 「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` 」を入力します。
+
+      Azure AD 参加済み Windows 10 デバイスの場合、次の手順を実行します。
+
+      1. 管理者としてコマンド プロンプトを開きます。
+      1. `dsregcmd /forcerecovery` と入力します (注: このアクションを実行できるのは管理者だけです)。
+      1. 開いたダイアログで "サインイン" をクリックし、サインイン プロセスを続行します。
+      1. サインアウトし、デバイスにサインインし直して、復旧を完了します。
+
+      Azure AD 登録済み Windows 10 デバイスの場合、次の手順を実行します。
+
+      1. **[設定]**  >  **[アカウント]**  >  **[職場または学校にアクセスする]** に移動します。 
+      1. アカウントを選択し、 **[切断]** を選択します。
+      1. "+ 接続" をクリックし、サインイン プロセスを実行してデバイスを再度登録します。
 
 ---
 

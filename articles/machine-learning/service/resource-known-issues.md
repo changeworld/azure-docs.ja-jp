@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 80bb7af0f7ed20336ab08d4f3ca9639057b9c67f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 206a8d9ba45dcb948dfffff86bab17b58a33e464
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149770"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358618"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
 
@@ -117,6 +117,14 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 1. クラスターをデタッチし、次にクラスターをノートブックに再アタッチします。 
 
 これらの手順で問題が解決しない場合は、クラスターを再起動してみてください。
+
+### <a name="failtosendfeather"></a>FailToSendFeather
+
+Azure Databricks クラスター上のデータの読み取り時に `FailToSendFeather` エラーが表示された場合は、次の解決策を参照してください。
+
+* `azureml-sdk[automl_databricks]` パッケージを最新バージョンにアップグレードします。
+* `azure-dataprep` バージョン 1.1.8 以降を追加します。
+* `pyarrow` バージョン 0.11 以降を追加します。
 
 ## <a name="azure-portal"></a>Azure ポータル
 

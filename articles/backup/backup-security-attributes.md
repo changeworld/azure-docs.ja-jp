@@ -1,19 +1,18 @@
 ---
-title: Azure Backup の一般的なセキュリティ属性
-description: Azure Backup を評価するための一般的なセキュリティ属性のチェックリスト
-services: backup
+title: Azure Backup のセキュリティ属性
+description: Azure Backup を評価するためのセキュリティ属性のチェックリスト
 author: utraghuv
 manager: barbkess
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 595cc4eff70e2df4cb6d7f1d6a0c1a2748b34bf2
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: c2500c6c9ff6882e521f4edce02426a92a0bd39f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565635"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464938"
 ---
 # <a name="security-attributes-for-azure-backup"></a>Azure Backup のセキュリティ属性
 
@@ -25,8 +24,8 @@ ms.locfileid: "67565635"
 
 | セキュリティ属性 | はい/いいえ | メモ |
 |---|---|--|
-| 保存時の暗号化:<ul><li>サーバー側暗号化</li><li>ユーザーが管理するキーによるサーバー側暗号化</li><li>その他の暗号化機能 (クライアント側や常に暗号化など)</ul>| はい | ストレージ アカウントに対して Storage Service Encryption を使用します。 |
-| 転送中の暗号化:<ul><li>Express Route 暗号化</li><li>VNet 内の暗号化</li><li>VNet 間暗号化</ul>| いいえ | HTTPS を使用します。 |
+| 保存時の暗号化 (サーバー側暗号化、お客様が管理するキーによるサーバー側暗号化、およびその他の暗号化機能)| はい | ストレージ アカウントに対して Storage Service Encryption を使用します。 |
+| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| いいえ | HTTPS を使用します。 |
 | 暗号化キーの処理 (CMK や BYOK など)| いいえ |  |
 | 列レベルの暗号化 (Azure Data Services)| いいえ |  |
 | API 呼び出しの暗号化| はい |  |

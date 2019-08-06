@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: bwren
-ms.openlocfilehash: be9d3a14d5b242ba8c331cdd1f4c558e7a080af5
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 0386700c238c213fd9cde3ca1b49e5e598d05bfd
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296857"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405674"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor サービスの制限
 
@@ -30,6 +30,10 @@ ms.locfileid: "67296857"
 ## <a name="action-groups"></a>アクション グループ
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-action-groups.md)]
+
+## <a name="log-queries-and-language"></a>ログ クエリと言語
+
+[!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-log-queries.md)]
 
 ## <a name="log-analytics-workspaces"></a>Log Analytics ワークスペース
 

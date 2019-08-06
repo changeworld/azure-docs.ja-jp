@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 84960e82e25f4b6cc59324f17ce46de7f9f7ac23
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f4abf17c774fb75a0314c8890f5f4383058e37fd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704688"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321375"
 ---
 # <a name="install-and-run-face-containers"></a>Face コンテナーのインストールと実行
 
@@ -32,7 +32,7 @@ Face API コンテナーを使用する前に、次の前提条件を満たす�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> Windows では、Linux コンテナーをサポートするように Docker を構成しておく必要もあります。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の基本的概念を理解しておく必要があります。 また、基本的な `docker` コマンドの知識も必要です。| 
-|Azure `Cognitive Services` リソース |コンテナーを使用するには、以下が必要です。<br><br>Azure Cognitive Services リソースおよび関連する課金キーと課金エンドポイント URI。 どちらの値も、対象リソースの **[概要]** ページと **[キー]** ページで確認できます。 これらは、コンテナーの起動に必要です。 次の BILLING_ENDPOINT_URI の例に示すように、`face/v1.0` ルーティングをエンドポイント URI に追加してください。 <br><br>**{BILLING_KEY}** : リソース キー<br><br>**{BILLING_ENDPOINT_URI}** : エンドポイント URI は `https://westus.api.cognitive.microsoft.com/face/v1.0` のようになります|
+|Face リソース |コンテナーを使用するには、以下が必要です。<br><br>Azure **Face** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの **[概要]** ページと **[キー]** ページで確認できます。 これらは、コンテナーの起動に必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つのリソース キーのうちのどちらか。<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント。
 
 ## <a name="request-access-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのアクセスの要求
 
@@ -84,10 +84,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 | プレースホルダー | 値 |
 |-------------|-------|
-|{BILLING_KEY} | このキーは、コンテナーを起動するために使用され、Azure の `Cognitive Services` の **[キー]** ページで確認できます。 |
-|{BILLING_ENDPOINT_URI} | 課金エンドポイント URI 値は、Azure の `Cognitive Services` の **[概要]** ページで確認できます。 例: `https://westus.api.cognitive.microsoft.com/face/v1.0`。|
+|{API_KEY} | このキーは、コンテナーを起動するために使用され、Azure の `Cognitive Services` の **[キー]** ページで確認できます。 |
+|{ENDPOINT_URI} | 課金エンドポイント URI 値は、Azure の `Cognitive Services` の **[概要]** ページで確認できます。 例: `https://westus.api.cognitive.microsoft.com/face/v1.0`。|
 
-前の BILLING_ENDPOINT_URI の例に示すように、`face/v1.0` ルーティングをエンドポイント URI に追加します。 
+前の ENDPOINT_URI の例に示すように、`face/v1.0` ルーティングをエンドポイント URI に追加します。 
 
 次の例の `docker run` コマンドでは、これらのパラメーターをお客様独自の値で置き換えてください。
 
@@ -95,8 +95,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-face \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 このコマンドは、次の操作を行います。

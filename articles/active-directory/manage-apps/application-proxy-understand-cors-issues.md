@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: afc0bb990f69521efb2557a6a086c0de5126f82c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 265458066a528246cbfa7876bf61b02a0382581b
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440416"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499601"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory アプリケーション プロキシの CORS の問題を理解して解決する
 
@@ -101,7 +101,7 @@ Content-Type: text/plain; charset=utf-8\
 Expires: -1\
 Vary:Accept-Encoding\
 サーバー: Microsoft-IIS/8.5 Microsoft-HTTPAPI/2.0\
-**Access-Control-Allow-Origin: https://corswebclient-contoso.msappproxy.net** \
+**Access-Control-Allow-Origin: https\://corswebclient-contoso.msappproxy.net**\
 X-AspNet-Version:4.0.30319\
 X-Powered-By:ASP.NET\
 Content-Length:17

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/8/2019
+ms.date: 7/18/2019
 ms.author: raiye
-ms.openlocfilehash: 88c3cd0e07e207a8b5ae1c07d39c8829a531c743
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721131"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405544"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 ロールを構成して、「 *Azure ゲスト OS の更新設定* 」に説明されているゲスト OS の [自動][Azure Guest OS Update Settings]更新を使用する場合、このページを読むことは必須ではありません。
@@ -81,7 +81,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-6-releases"></a>ファミリ 6 のリリース
 **Windows Server 2019**
 
-インストールされている .NET Framework:3.5、4.7.2、4.8
+インストールされている .NET Framework:3.5、4.7.2
 
 > [!NOTE]
 > Windows Azure SDK for .NET - 3.0 は、[こちら][Windows Azure SDK]からダウンロードできます。
@@ -110,7 +110,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-5-releases"></a>ファミリ 5 のリリース
 **Windows Server 2016**
 
-インストールされている .NET Framework:3.5、4.6.2、4.7.2、4.8
+インストールされている .NET Framework:3.5、4.6
 
 > [!NOTE]
 > OS ファミリ 5 用の RDP パスワードは、10 文字以上にする必要があります。

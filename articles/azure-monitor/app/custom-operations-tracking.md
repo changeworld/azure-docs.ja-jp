@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 2c33c481d96a9edecc6360a9a91c095c2bca220b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 841c55e9aa05e6b627716b084ad7685683f9faec
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798344"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498349"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -484,6 +484,13 @@ public async Task RunAllTasks()
     await Task.WhenAll(task1, task2);
 }
 ```
+
+## <a name="applicationinsights-operations-vs-systemdiagnosticsactivity"></a>ApplicationInsights 操作と System.Diagnostics.Activity
+`System.Diagnostics.Activity` は、分散トレース コンテキストを表し、プロセスの内部および外部でコンテキストを作成および伝達し、テレメトリ項目を関連付けるために、フレームワークおよびライブラリで使用されます。 アクティビティは、`System.Diagnostics.DiagnosticSource` と連携します。これは、興味深いイベント (受信または送信要求、例外など) について通知するフレームワーク/ライブラリ間の通知メカニズムです。
+
+アクティビティは Application Insights で非常に重要であり、自動依存関係と要求コレクションは `DiagnosticSource` イベントと共にそれらに大きく依存します。 アプリケーションでアクティビティを作成する場合、Application Insights テレメトリが作成される結果にはなりません。 Application Insights は、アクティビティをテレメトリに変換するために、DiagnosticSource イベントを受信し、イベントの名前とペイロードを把握している必要があります。
+
+各 Application Insights 操作 (要求または依存関係) には `Activity` が含まれます。`StartOperation` が呼び出されるときに、その下にアクティビティが作成されます。 `StartOperation` は、要求または依存関係テレメトリを追跡し、すべてが関連付けられていることを確認する推奨の方法です。
 
 ## <a name="next-steps"></a>次の手順
 

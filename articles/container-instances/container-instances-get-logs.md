@@ -3,22 +3,22 @@ title: Azure Container Instances でコンテナーのログとイベントを�
 description: Azure Container Instances でコンテナーのログとイベントを使用してデバッグを行う方法を学習する
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f286e2136b12a88e65e40f8fb956542233f71715
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ae7ab3f53f480f46165800504fbb1eb6649c3e2
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60579784"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325963"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Azure Container Instances でコンテナーのログとイベントを取得する
 
-コンテナーが正常に動作しない場合、[az container logs][az-container-logs] でそのログを確認することから始めます。次に、[az container attach][az-container-attach] でその標準出力と標準エラーをストリーミングします。
+コンテナーが正常に動作しない場合、[az container logs][az-container-logs] でそのログを確認することから始めます。, and streaming its standard out and standard error with [az container attach][az-container-attach]
 
 ## <a name="view-logs"></a>ログを表示する。
 

@@ -2,21 +2,21 @@
 title: Azure Application Gateway でバックエンドをホワイトリスト登録するために必要な証明書
 description: この記事では、SSL 証明書を、Azure Application Gateway でバックエンド インスタンスをホワイトリスト登録するために必要な認証証明書と信頼されたルート証明書に変換する方法を説明します。
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/14/2019
+ms.date: 07/23/2019
 ms.author: absha
-ms.openlocfilehash: 72ee9123ad959c0c7240d4f7a906adc1a4dd1a93
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d808548ef91ed416f27b0dbb3e3e93d79ade30c
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831730"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382044"
 ---
-# <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>Azure Application Gateway でのバックエンドをホワイトリスト登録するための証明書の作成
+# <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway でバックエンドを許可する証明書を作成する
 
-エンド ツー エンド SSL を実行するために、Application Gateway では、認証証明書/信頼されたルート証明書をアップロードしてバックエンド インスタンスをホワイトリスト登録する必要があります。 証明書のホワイトリスト登録のために、v1 SKU の場合は認証証明書が必要ですが、v2 SKU の場合は信頼されたルート証明書が必要です。
+エンド ツー エンド SSL を実行するために、Application Gateway では、認証証明書または信頼されたルート証明書をアップロードしてバックエンド インスタンスを許可する必要があります。 証明書を許可するために、v1 SKU の場合は認証証明書が必要ですが、v2 SKU の場合は信頼されたルート証明書が必要です。
 
 この記事では、次のことについて説明します。
 
@@ -27,11 +27,11 @@ ms.locfileid: "60831730"
 
 ## <a name="prerequisites"></a>前提条件
 
-Application Gateway に対してバックエンド インスタンスをホワイトリスト登録するために必要な認証証明書または信頼されたルート証明書を生成するには、既存のバックエンド証明書が必要です。 バックエンド証明書は、SSL 証明書と同じにすることも、セキュリティを強化するために別のものにすることもできます。 Application Gateway では、SSL 証明書を作成または購入するためのメカニズムは提供されません。 テストの目的で自己署名証明書を作成できますが、運用環境ワークロードでは使用しないでください。 
+Application Gateway に対してバックエンド インスタンスを許可するために必要な認証証明書または信頼されたルート証明書を生成するには、既存のバックエンド証明書が必要です。 バックエンド証明書は、SSL 証明書と同じにすることも、セキュリティを強化するために別のものにすることもできます。 Application Gateway では、SSL 証明書を作成または購入するためのメカニズムは提供されません。 テストの目的で自己署名証明書を作成できますが、運用環境ワークロードでは使用しないでください。 
 
 ## <a name="export-authentication-certificate-for-v1-sku"></a>認証証明書をエクスポートする (v1 SKU の場合)
 
-認証証明書は、Application Gateway v1 SKU でバックエンド インスタンスをホワイトリスト登録するために必要です。 認証証明書は、Base-64 エンコード X.509(.CER) 形式の バックエンド サーバー証明書の公開キーです。 この例では、バックエンド証明書として SSL 証明書を使用し、認証証明書として使用するためにその公開キーをエクスポートします。 また、この例では、Windows 証明書マネージャー ツールを使用して必要な証明書をエクスポートします。 ご都合に応じて他の任意のツールを使用できます。
+認証証明書は、Application Gateway v1 SKU でバックエンド インスタンスを許可するために必要です。 認証証明書は、Base-64 エンコード X.509(.CER) 形式のバックエンド サーバー証明書の公開キーです。 この例では、バックエンド証明書として SSL 証明書を使用し、認証証明書として使用するためにその公開キーをエクスポートします。 また、この例では、Windows 証明書マネージャー ツールを使用して必要な証明書をエクスポートします。 ご都合に応じて他の任意のツールを使用できます。
 
 SSL 証明書から公開キー .cer ファイルをエクスポートします (秘密キーではありません)。 次の手順で、証明書のために Base-64 エンコード X.509(.CER) 形式の .cer ファイルをエクスポートします。
 
@@ -73,7 +73,7 @@ SSL 証明書から公開キー .cer ファイルをエクスポートします 
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>信頼されたルート証明書をエクスポートする (V2 SKU の場合)
 
-信頼されたルート証明書は、Application Gateway v2 SKU でバックエンド インスタンスをホワイトリスト登録するために必要です。 このルート証明書は､バックエンド サーバー証明書からの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 この例では、バックエンド証明書の SSL 証明書を使用し、その公開キーをエクスポートし、base64 エンコード形式の公開キーから信頼された CA のルート証明書をエクスポートして、信頼されたルート証明書を取得します。 
+信頼されたルート証明書は、Application Gateway v2 SKU でバックエンド インスタンスを許可するために必要です。 このルート証明書は､バックエンド サーバー証明書からの Base-64 エンコード X.509(.CER) 形式のルート証明書です。 この例では、バックエンド証明書として SSL 証明書を使用し、その公開キーをエクスポートします。 その後、base64 エンコード形式の公開キーから信頼された CA のルート証明書をエクスポートして、信頼されたルート証明書を取得します。 
 
 次の手順で、証明書のための .cer ファイルをエクスポートします。
 
@@ -105,4 +105,4 @@ SSL 証明書から公開キー .cer ファイルをエクスポートします 
 
 ## <a name="next-steps"></a>次の手順
 
-Base-64 エンコード X.509(.CER) 形式の認証証明書/信頼されたルート証明書を入手しました。 これを Application Gateway に追加して、エンド ツー エンド SSL 暗号化に対してバックエンド サーバーをホワイトリスト登録できます。 [エンド ツー エンド SSL 暗号化の構成方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)に関するページをご覧ください。
+Base-64 エンコード X.509(.CER) 形式の認証証明書/信頼されたルート証明書を入手しました。 これを Application Gateway に追加して、エンド ツー エンド SSL 暗号化に対してバックエンド サーバーを許可できます。 [エンド ツー エンド SSL 暗号化の構成方法](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell)に関するページをご覧ください。

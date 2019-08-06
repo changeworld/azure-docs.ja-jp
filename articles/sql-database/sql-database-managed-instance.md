@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Advanced Data Security の概要 | Microsoft Docs
-description: このトピックでは、Azure SQL Database Advanced Data Security について、そのしくみと Azure SQL Database の単一データベースまたはプールされたデータベースとの相違点について説明します。
+title: Azure SQL Database Managed Instance の概要 | Microsoft Docs
+description: この記事では、Azure SQL Database Managed Instance について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,15 +11,15 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 06/26/2019
-ms.openlocfilehash: b03f546b992bd9de6092dc0da8ef72aa69aa1da2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 07/18/2019
+ms.openlocfilehash: f4dc00623694fa1fd218f43e7bbd19edef48dec4
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447784"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348114"
 ---
-# <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>SQL Database Advanced Data Security の仮想ネットワークでの使用と 100% に近い互換性
+# <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance とは
 
 マネージド インスタンスは、Azure SQL Database の新しいデプロイ オプションです。最新の SQL Server オンプレミス (Enterprise Edition) Database Engine との 100% 近い互換性を備えています。また、セキュリティに関する一般的な懸念事項に対処するネイティブの[仮想ネットワーク](../virtual-network/virtual-networks-overview.md) (VNet) 実装を提供し、オンプレミスの SQL Server の顧客に有利な[ビジネス モデル](https://azure.microsoft.com/pricing/details/sql-database/)を提供します。 マネージド インスタンス デプロイ モデルにより、既存の SQL Server の顧客は最小限のアプリケーションおよびデータベース変更のみで、オンプレミスのアプリケーションをクラウドに移行 (リフト アンド シフト) することができます。 これと同時に、マネージド インスタンス デプロイ オプションでは、管理のオーバーヘッドと TCO を大幅に削減するすべての PaaS 機能 (自動的な修正プログラムの適用およびバージョン更新、[自動バックアップ](sql-database-automated-backups.md)、[高可用性](sql-database-high-availability.md)) が維持されます。
 
@@ -77,7 +77,7 @@ Azure SQL Database デプロイ オプションの単一データベース、プ
 
 仮想コア モデルでは、ハードウェアの世代を選択できます。
 
-- **Gen4** 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4-GHz プロセッサ、接続された SSD、物理コア、コアあたり 7 GB の RAM、8 - 24 仮想コアのコンピューティング サイズに基づいています。
+- **Gen4** 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4-GHz プロセッサ、接続された SSD、物理コア、コアあたり 7 GB の RAM、8 から 24 個の仮想コアのコンピューティング サイズに基づいています。
 - **Gen5** 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3-GHz プロセッサ、高速 NVMe SSD、ハイパースレッド論理コア、4 - 80 コアのコンピューティング サイズに基づいています。
 
 ハードウェアの世代の違いについて詳しくは、[マネージド インスタンスのリソース制限](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)に関する記事をご覧ください。
@@ -120,6 +120,70 @@ Business Critical サービス レベルは、IO 要件の高いアプリケー�
 
 サービス レベルの違いについて詳しくは、[マネージド インスタンスのリソース制限](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)に関する記事をご覧ください。
 
+
+## <a name="managed-instance-management-operations"></a>マネージド インスタンスの管理操作
+
+Azure SQL Database には、新しいマネージド インスタンスを自動的にデプロイしたり、インスタンスのプロパティを更新したり、不要になったインスタンスを削除したりする際に使用できる管理操作が用意されています。 このセクションでは、管理操作とその標準的な所要時間について説明します。
+
+[Azure Virtual Network (VNet) 内へのデプロイ](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks)をサポートし、顧客に分離性とセキュリティを提供するために、マネージド インスタンスは[仮想クラスター](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)を基盤としています。仮想クラスターは、分離された仮想マシンがある特定の目的のために集められて、顧客の仮想ネットワーク サブネット内にデプロイされたものです。 基本的に、空のサブネットにマネージド インスタンスをデプロイするとその都度、新しい仮想クラスターが構築されます。
+
+それ以降、デプロイ済みのマネージド インスタンスに対して実行された操作は、その基盤となる仮想クラスターにも影響する可能性があります。 このことは管理操作の所要時間に影響を及ぼします。新たな仮想マシンのデプロイにはオーバーヘッドが伴うためです。新たなデプロイや既存のマネージド インスタンスに対する更新を計画する際には、このオーバーヘッドを考慮する必要があります。
+
+すべての管理操作は次のように分類できます。
+
+- インスタンスのデプロイ (新しいインスタンスの作成)。 
+- インスタンスの更新 (仮想コア、予約済み記憶域など、インスタンスのプロパティの変更)。
+- インスタンスの削除。
+
+通常、最も時間がかかるのは仮想クラスターに対する操作です。 仮想クラスターに対する操作の所要時間はさまざまです。既存のサービス利用統計情報に基づいて一般的に見込まれる値を以下に示します。
+
+- 仮想クラスターの作成。 これはインスタンス管理操作で同期的に実行されるステップです。 **操作の 90% は 4 時間以内に完了します**。
+- 仮想クラスターのサイズ変更 (拡張または縮小)。 拡張は同期的に実行されるステップです。一方、縮小は非同期的に実行されます (インスタンス管理操作の所要時間には影響しません)。 **クラスター拡張の 90% は 2.5 時間未満で終了します**。
+- 仮想クラスターの削除。 削除は非同期で実行されるステップですが、空の仮想クラスターに対して[手動で開始](sql-database-managed-instance-delete-virtual-cluster.md)することもでき、その場合は同期的に実行されます。 **仮想クラスターの削除の 90% は 1.5 時間以内に完了します**。
+
+加えて、インスタンスの管理には、ホストされたデータベースに対するいずれかの操作が伴うこともあり、その場合、所要時間はさらに長くなります。
+
+- Azure Storage からのデータベース ファイルのアタッチ。 これは同期的に実行されるステップです。General Purpose サービス レベルにおけるコンピューティング (仮想コア) やストレージのスケールアップやスケールダウンなどがあります。 **これらの操作の 90% は 5 分以内に完了します**。
+- Always On 可用性グループのシード処理。 これは同期的に実行されるステップです。Business Critical サービス レベルにおけるコンピューティング (仮想コア) やストレージのスケーリング、General Purpose から Business Critical (またはその逆) へのサービス レベルの変更などがあります。 この操作の所要時間は、合計データベース サイズおよび現在のデータベース アクティビティ (アクティブなトランザクションの数) に比例します。 インスタンスを更新しているときのデータベース アクティビティによって、総所要時間は大きく変動する場合があります。 **これらの操作の 90% は毎時 220 GB 以上で実行されます**。
+
+次の表は、操作と標準的な総所要時間をまとめたものです。
+
+|Category  |Operation  |実行時間の長いセグメント  |推定所要時間  |
+|---------|---------|---------|---------|
+|**Deployment** |空のサブネットへの最初のインスタンス|仮想クラスターの作成|操作の 90% は 4 時間以内に完了|
+|Deployment |空ではないサブネットへの別のハードウェア世代の最初のインスタンス (Gen 4 インスタンスを含んだサブネットへの初の Gen 5 インスタンスなど)|仮想クラスターの作成*|操作の 90% は 4 時間以内に完了|
+|Deployment |空のサブネットまたは空ではないサブネットに 4 仮想コアの最初のインスタンスを作成|仮想クラスターの作成**|操作の 90% は 4 時間以内に完了|
+|Deployment |空ではないサブネットに後続のインスタンス (第 2、第 3 のインスタンスなど) を作成|仮想クラスターのサイズ変更|操作の 90% は 2.5 時間以内に完了|
+|**Update** |インスタンスのプロパティ変更 (管理者パスワード、AAD ログイン、Azure ハイブリッド特典フラグ)|該当なし|最大 1 分|
+|アップデート |インスタンスのストレージのスケールアップとスケールダウン (General Purpose サービス レベル)|- 仮想クラスターのサイズ変更<br>- データベース ファイルのアタッチ|操作の 90% は 2.5 時間以内に完了|
+|アップデート |インスタンスのストレージのスケールアップとスケールダウン (Business Critical サービス レベル)|- 仮想クラスターのサイズ変更<br>- Always On 可用性グループのシード処理|操作の 90% は 2.5 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
+|アップデート |インスタンスのコンピューティング (仮想コア) のスケールアップとスケールダウン (General Purpose)|- 仮想クラスターのサイズ変更<br>- データベース ファイルのアタッチ|操作の 90% は 2.5 時間以内に完了|
+|アップデート |インスタンスのコンピューティング (仮想コア) のスケールアップとスケールダウン (Business Critical)|- 仮想クラスターのサイズ変更<br>- Always On 可用性グループのシード処理|操作の 90% は 2.5 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
+|アップデート |4 仮想コアへのインスタンスのスケールダウン (General Purpose)|- 仮想クラスターのサイズ変更 (初回実行の場合、仮想クラスターの作成が必要になる場合があります**)<br>- データベース ファイルのアタッチ|操作の 90% は 4 時間 5 分以内に完了**|
+|アップデート |4 仮想コアへのインスタンスのスケールダウン (General Purpose)|- 仮想クラスターのサイズ変更 (初回実行の場合、仮想クラスターの作成が必要になる場合があります**)<br>- Always On 可用性グループのシード処理|操作の 90% は 4 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
+|アップデート |インスタンスのサービス レベルの変更 (General Purpose から Business Critical、またはその逆へ)|- 仮想クラスターのサイズ変更<br>- Always On 可用性グループのシード処理|操作の 90% は 2.5 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
+|**削除**|インスタンスの削除|すべてのデータベースに対するログ テールのバックアップ|操作の 90% は最長でも 1 分以内に完了。<br>メモ: この操作では、サブネットの最後のインスタンスが削除された場合、12 時間後に仮想クラスターを削除するようにスケジュールされます***|
+|削除|(ユーザーによって開始された操作としての) 仮想クラスターの削除|仮想クラスターの削除|操作の 90% は最長でも 1.5 時間以内に完了|
+
+\* 仮想クラスターは、ハードウェアの世代ごとに構築されます。
+
+\*\* 4 仮想コアのデプロイ オプションは 2019 年 6 月にリリースされたものであり、新しい仮想クラスター バージョンが必要となります。 6 月 12 日より前に作成されたインスタンスが対象サブネットに存在する場合、4 仮想コアのインスタンスをホストするための新しい仮想クラスターが自動的にデプロイされます。
+
+\*\*\* 12 時間は現在の構成です。将来は変更される可能性があるので、この時間に強く依存することは避けてください。 もっと早く仮想クラスターを削除する必要がある場合は (サブネットを解放するためなど)、「[Azure SQL Database Managed Instance の削除後にサブネットを削除する](sql-database-managed-instance-delete-virtual-cluster.md)」を参照してください。
+
+### <a name="instance-availability-during-management"></a>管理中のインスタンス可用性
+
+デプロイおよび削除の操作中は、クライアント アプリケーションからマネージド インスタンスを利用できません。
+
+更新操作中はマネージド インスタンスを利用できますが、更新の最後に実行されるフェールオーバーにより短いダウンタイムが発生します。通常、これは最長で 10 秒です。
+
+> [!IMPORTANT]
+> 実行時間の長いトランザクションがデータベースがあると、[復旧に長時間](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process)を要するため、フェールオーバーの所要時間は大きく変化する場合があります。 そのような理由から、実行時間の長いトランザクション (データのインポート、データ処理ジョブ、インデックスの再構築など) と同時に、Azure SQL Database Managed Instance のコンピューティングやストレージをスケーリングしたりサービス レベルを変更したりすることは推奨されません。 実行中のトランザクションは、操作の最後に実行されるデータベースのフェールオーバーによってキャンセルされ、復旧時間が長くなります。
+
+Azure SQL Database Managed Instance では現在、[高速化データベース復旧](sql-database-accelerated-database-recovery.md)は利用できません。 この機能が利用できるようになれば、実行時間の長いトランザクションのケースであっても、フェールオーバー時間のばらつきは大幅に軽減されます。
+
+
+
 ## <a name="advanced-security-and-compliance"></a>高度なセキュリティとコンプライアンス
 
 マネージド インスタンス デプロイ オプションでは、Azure クラウドと SQL Server Database Engine によって提供される高度な機能が組み合わされています。
@@ -156,7 +220,7 @@ Azure Database Migration Service (DMS) またはネイティブの復元を使�
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory の統合
 
-マネージド インスタンス デプロイ オプションでは、従来の SQL サーバー データベース エンジン ログインと、Azure Active Directory (AAD) に統合されたログインがサポートされています。 Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) は、オンプレミス環境で使用されているオンプレミス データベース ログインの Azure クラウド版です。 Azure AD サーバー プリンシパル (ログイン) を使用すると、まさにインスタンス スコープのプリンシパルとして、Azure Active Directory テナントからユーザーとグループを指定でき、同じマネージド インスタンス内の複数データベース間のクエリなど、インスタンス レベルの任意の操作を実行できます。
+マネージド インスタンス デプロイ オプションでは、従来の SQL サーバー データベース エンジン ログインと、Azure Active Directory (AAD) に統合されたログインがサポートされています。 Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) は、オンプレミス環境で使用されているオンプレミス データベース ログインの Azure クラウド版です。 Azure AD サーバー プリンシパル (ログイン) を使用すると、まさにインスタンス スコープのプリンシパルとして、Azure Active Directory テナントからユーザーとグループを指定でき、同じマネージド インスタンス内の複数データベース間のクエリなど、インスタンスレベルの任意の操作を実行できます。
 
 Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) を作成するための新しい構文 **FROM EXTERNAL PROVIDER** が導入されます。 構文の詳細については、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> を参照し、「[マネージド インスタンスの Azure Active Directory 管理者をプロビジョニングする](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)」の記事を確認してください。
 

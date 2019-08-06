@@ -7,12 +7,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 6ffce339fe7b1a434c8f007b417ee81a42529dfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2234a2c6cd42be45a2b2e7784c1dd5aec8839cb9
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66142446"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311733"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps を使用した更新
 
@@ -66,7 +66,7 @@ Azure Analysis Services での REST API の使用に関する詳細について�
 |プロパティ  |値  |
 |---------|---------|
 |**メソッド**     |POST         |
-|**URI**     | https://*サーバーのリージョン*/servers/*aas サーバー名*/models/*データベース名*/ <br /> <br /> 例: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/|
+|**URI**     | https://*サーバーのリージョン*/servers/*aas サーバー名*/models/*データベース名*/refreshes <br /> <br /> 例:  https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
 |**ヘッダー**     |   Content-Type, application/json <br /> <br />  ![headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**本文**     |   要求本体の形成の詳細については、[POST/refreshes - REST API を使用した非同期更新](analysis-services-async-refresh.md#post-refreshes)に関するセクションを参照してください。 |
 |**認証**     |Active Directory OAuth         |

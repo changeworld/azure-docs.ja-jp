@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3ba8a8e5922c012b93ab19a5859aab5c31d35b2b
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831794"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424150"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -171,6 +171,7 @@ public static void Run(
 
 `QueueTrigger` 属性は、キュー メッセージが `myqueue-items` キューに出現するたびに関数を呼び出すようランタイムに通知します。 `Blob` 属性は、キュー メッセージを使用して *sample-workitems* コンテナー内の BLOB を読み取るようランタイムに通知します。 `myQueueItem` パラメーターで関数に渡されるキュー メッセージの内容は、BLOB の名前です。
 
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ### <a name="manual-triggers"></a>手動トリガー
 
@@ -370,7 +371,7 @@ class Program
 
 * [Azure CosmosDB トリガー](#azure-cosmosdb-trigger-configuration-version-3x)
 * [Event Hubs トリガー](#event-hubs-trigger-configuration-version-3x)
-* Queue ストレージ トリガー
+* [Queue ストレージ トリガー](#queue-storage-trigger-configuration)
 * [SendGrid バインド](#sendgrid-binding-configuration-version-3x)
 * [Service Bus トリガー](#service-bus-trigger-configuration-version-3x)
 
@@ -837,7 +838,7 @@ ASP.NET 用に開発されたログ記録フレームワークをお勧めしま
 |------------|---|
 |Trace       | 0 |
 |デバッグ       | 1 |
-|情報 | 2 |
+|Information | 2 |
 |警告     | 3 |
 |Error       | 4 |
 |重大    | 5 |

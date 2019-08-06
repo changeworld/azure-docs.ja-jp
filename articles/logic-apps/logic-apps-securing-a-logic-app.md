@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: d69861beb5848679aa00c8b39f0caa84c7c5d847
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: f27dfd1f907d106ddb3b1b9dd7534d56380149c2
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986819"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385501"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -193,9 +193,9 @@ Shared Access Signature と共に、ロジック アプリを呼び出すこと�
 
   このオプションでは、特定の IP アドレス範囲からの要求に基づいて実行履歴へのアクセスをセキュリティで保護できます。
 
-* [難読化を使用して実行履歴の入力と出力を非表示にする](#obfuscate)。
+* [難読化を使用して実行履歴のデータを非表示にする](#obfuscate)。
 
-  このオプションでは、トリガーまたはアクションに基づいて、実行履歴の入力と出力を非表示にすることができます。
+  多くのトリガーおよびアクションでは、ロジック アプリの実行履歴から、入力と出力のどちらかまたは両方を非表示にすることができます。
 
 <a name="restrict-ip"></a>
 
@@ -258,7 +258,11 @@ Shared Access Signature と共に、ロジック アプリを呼び出すこと�
 
 <a name="obfuscate"></a>
 
-### <a name="hide-inputs-and-outputs-in-run-history-by-using-obfuscation"></a>難読化を使用して実行履歴の入力と出力を非表示にする
+### <a name="hide-data-from-run-history-by-using-obfuscation"></a>難読化を使用して実行履歴のデータを非表示にする。
+
+多くのトリガーおよびアクションには、ロジック アプリの実行履歴から、入力と出力のどちらかまたは両方を非表示にするための設定があります。 ここでは、それらの設定を使用してこのデータのセキュリティを保護する際に[確認すべきいくつかの考慮事項](#obfuscation-considerations)について取り上げます。
+
+#### <a name="secure-inputs-and-outputs-in-the-designer"></a>デザイナーで入力と出力のセキュリティを保護する
 
 1. [Azure portal](https://portal.azure.com) でまだロジック アプリを開いていない場合は、ロジック アプリ デザイナーでロジック アプリを開きます。
 
@@ -290,9 +294,38 @@ Shared Access Signature と共に、ロジック アプリを呼び出すこと�
 
       ![実行履歴で非表示にされたデータ](media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
+<a name="secure-data-code-view"></a>
+
+#### <a name="secure-inputs-and-outputs-in-code-view"></a>コード ビューで入力と出力のセキュリティを保護する
+
+基になるトリガーまたはアクションの定義で、次の値のいずれかまたは両方を含んだ `runtimeConfiguration.secureData.properties` 配列を追加または更新します。
+
+* `"inputs"`:実行履歴における入力のセキュリティを保護します。
+* `"outputs"`:実行履歴における出力のセキュリティを保護します。
+
+ここでは、それらの設定を使用してこのデータのセキュリティを保護する際に[確認すべきいくつかの考慮事項](#obfuscation-considerations)について取り上げます。
+
+```json
+"<trigger-or-action-name>": {
+   "type": "<trigger-or-action-type>",
+   "inputs": {
+      <trigger-or-action-inputs>
+   },
+   "runtimeConfiguration": {
+      "secureData": {
+         "properties": [
+            "inputs",
+            "outputs"
+         ]
+      }
+   },
+   <other-attributes>
+}
+```
+
 <a name="obfuscation-considerations"></a>
 
-#### <a name="considerations-when-securing-inputs-and-outputs"></a>入力と出力をセキュリティで保護する際の考慮事項
+#### <a name="considerations-when-hiding-inputs-and-outputs"></a>入力と出力を非表示にする際の考慮事項
 
 * トリガーまたはアクションの入力または出力をセキュリティで保護すると、Logic Apps から Azure Log Analytics にそのセキュリティで保護されたデータが送信されません。 また、そのトリガーまたはアクションに[追跡対象プロパティ](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)を追加して監視することもできません。
 
@@ -564,3 +597,4 @@ Shared Access Signature と共に、ロジック アプリを呼び出すこと�
 * [デプロイ テンプレートの作成](logic-apps-create-deploy-template.md)  
 * [ロジック アプリを監視する](logic-apps-monitor-your-logic-apps.md)  
 * [ロジック アプリの障害と問題の診断](logic-apps-diagnosing-failures.md)  
+* [ロジック アプリ デプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)

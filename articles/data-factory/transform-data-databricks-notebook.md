@@ -12,12 +12,12 @@ ms.date: 03/15/2018
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 8036a8694bb8c8d0db236eba831f13dc2bf47d0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2bc8b84d4b98036acc93788dee88444786df139e
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311667"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335843"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Notebook を実行してデータを変換する
 
@@ -59,7 +59,7 @@ Databricks Notebook アクティビティのサンプルの JSON 定義を次に
 
 |プロパティ|説明|必須|
 |---|---|---|
-|name|パイプラインのアクティビティの名前。|はい|
+|名前|パイプラインのアクティビティの名前。|はい|
 |description|アクティビティの動作を説明するテキスト。|いいえ|
 |type|Databricks Notebook アクティビティでは、アクティビティの種類は DatabricksNotebook です。|はい|
 |linkedServiceName|Databricks Notebook が実行されている Databricks リンク サービスの名前です。 このリンクされたサービスの詳細については、 [コンピューティングのリンクされたサービス](compute-linked-services.md) に関する記事をご覧ください。|はい|
@@ -70,7 +70,7 @@ Databricks Notebook アクティビティのサンプルの JSON 定義を次に
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks アクティビティでサポートされるライブラリ
 
-前述の Databricks アクティビティ定義では、*jar*、*egg*、*maven*、*pypi*、*cran* というライブラリの種類を指定しています。
+前述の Databricks アクティビティ定義では、*jar*、*egg*、*whl*、*maven*、*pypi*、*cran* というライブラリの種類を指定しています。
 
 ```json
 {
@@ -80,6 +80,12 @@ Databricks Notebook アクティビティのサンプルの JSON 定義を次に
         },
         {
             "egg": "dbfs:/mnt/libraries/library.egg"
+        },
+    {
+            "whl": "dbfs:/mnt/libraries/mlflow-0.0.1.dev0-py2-none-any.whl"
+        },
+        {
+            "whl": "dbfs:/mnt/libraries/wheel-libraries.wheelhouse.zip"
         },
         {
             "maven": {

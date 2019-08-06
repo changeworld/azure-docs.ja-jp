@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: f84f1bab048630d6dd45085b3d082004d10bb6a8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 8d107aed75904c27b9ed231d50c884f96318a324
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721711"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321428"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Anomaly Detector コンテナーのインストールと実行
 
@@ -38,7 +38,7 @@ Anomaly Detector コンテナーを使用する前に、次の前提条件を満
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Anomaly Detector リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Anomaly Detector_ Azure リソース。 どちらの値も、Azure portal の Anomaly Detector の概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{BILLING_KEY}** : リソース キー<br><br>**{BILLING_ENDPOINT_URI}** : エンドポイントURI の例: `https://westus2.api.cognitive.microsoft.com`|
+|Anomaly Detector リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure _Anomaly Detector_ リソース。 どちらの値も、Azure portal の **Anomaly Detector** の概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つのリソース キーのうちのどちらか。<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント。|
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
@@ -60,8 +60,8 @@ Anomaly Detector コンテナーを使用する前に、次の前提条件を満
 
 | QPS (秒間クエリ) | 最小値 | 推奨 |
 |-----------|---------|-------------|
-| 10 QPS | 4 コア、1 GB メモリ | 8 コア 2 GB メモリ |
-| 20 QPS | 8 コア、2 GB メモリ | 16 コア 4 GB メモリ |
+| 10 QPS | 4 コア、1 GB メモリ | 8 コア、2 GB メモリ |
+| 20 QPS | 8 コア、2 GB メモリ | 16 コア、4 GB メモリ |
 
 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
 
@@ -100,8 +100,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-det
 
 | プレースホルダー | 値 |
 |-------------|-------|
-|{BILLING_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の Anomaly Detector の [キー] ページで入手できます。  |
-|{BILLING_ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure portal の Anomaly Detector の [概要] ページで入手できます。|
+|{API_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の Anomaly Detector の [キー] ページで入手できます。  |
+|{ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure portal の Anomaly Detector の [概要] ページで入手できます。|
 
 次の例の `docker run` コマンドでは、これらのパラメーターをお客様独自の値に置き換えてください。
 
@@ -109,8 +109,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-det
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector:latest \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 このコマンドは、次の操作を行います。
@@ -135,8 +135,8 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 ポート 5001 上で 2 番目のコンテナーを実行します。
@@ -146,8 +146,8 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5001 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 後続の各コンテナーは、別のポート上になっている必要があります。 

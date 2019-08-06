@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e2e43f13352c56f947f5e560049ab0acf871599
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3e8b7cc1f3a8431986ffbaac604ec5863236f112
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509476"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357112"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>条件付きアクセスを使用してクラウド アプリへのアクセスにアプリ保護ポリシーを要求する (プレビュー)
 
@@ -39,6 +39,9 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 ポリシーで保護されたクライアント アプリの一覧については、[アプリ保護ポリシーの要件](technical-reference.md#approved-client-app-requirement)に関するページを参照してください。
 
 アプリ保護ベースの条件付きアクセス ポリシーは、[デバイス ベースの条件付きアクセス ポリシー](require-managed-devices.md)などの他のポリシーと組み合わせることができます。 これにより、個人デバイスと会社のデバイスの両方のデータを柔軟に保護することができます。
+
+> [!NOTE]
+> 招待側の組織は B2B ユーザーのホーム組織内を認識できない、条件付きアクセス アプリ保護ポリシーを B2B ユーザーに適用することはできません。
 
 ## <a name="benefits-of-app-protection-based-conditional-access-requirement"></a>アプリ保護ベースの条件付きアクセスを要求する利点
 

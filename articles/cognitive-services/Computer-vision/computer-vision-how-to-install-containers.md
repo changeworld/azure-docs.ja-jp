@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: d72b47d375b8e50cde43e263261551d3010ba013
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: efde223061a873a57595bc4a577b7de55b1d8a46
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704715"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68321466"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>テキスト認識コンテナーをインストールして実行する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Azure `Cognitive Services` リソース |コンテナーを使用するためには、以下が必要です。<br><br>_Cognitive Services_ Azure リソースおよび関連する課金キー (課金エンドポイント URI)。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。 `vision/v2.0` ルーティングをエンドポイント URI に追加する必要があります。次の BILLING_ENDPOINT_URI の例を参照してください。 <br><br>**{BILLING_KEY}** : リソース キー<br><br>**{BILLING_ENDPOINT_URI}** : エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|Computer Vision リソース |コンテナーを使用するためには、以下が必要です。<br><br>Azure **Computer Vision** リソースとその関連する API キーおよびエンドポイント URI。 どちらの値も、対象リソースの概要ページとキー ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つのリソース キーのうちのどちらか。<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント。|
 
 ## <a name="request-access-to-the-private-container-registry"></a>プライベート コンテナー レジストリへのアクセスの要求
 
@@ -43,7 +43,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
-
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
@@ -90,8 +89,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 | プレースホルダー | 値 |
 |-------------|-------|
-|{BILLING_KEY} | このキーは、コンテナーを起動するために使用され、Azure `Cognitive Services` のキー ページ上で使用できます。  |
-|{BILLING_ENDPOINT_URI} | 課金エンドポイント URI の値。 例: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
+|{API_KEY} | このキーは、コンテナーを起動するために使用され、Azure `Cognitive Services` のキー ページ上で使用できます。  |
+|{ENDPOINT_URI} | 課金エンドポイント URI の値。 例: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
 `vision/v2.0` ルーティングをエンドポイント URI に追加する必要があります。次の BILLING_ENDPOINT_URI の例を参照してください。
 
@@ -101,8 +100,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 このコマンドは、次の操作を行います。
@@ -132,7 +131,7 @@ Computer Vision サービスで該当する REST 操作を使用する方法と�
 
 ### <a name="synchronous-text-recognition"></a>同期のテキスト認識
 
-`POST /vision/v2.0/recognizeTextDirect` 操作を使用し、イメージ内の印刷されたテキストが同期認識されます。 この操作は同期のため、この操作の要求本文は `POST /vision/v2.0/recognizeText` 操作のそれと同じになりますが、この操作の応答本文は `GET /vision/v2.0/textOperations/*{id}*` 操作によって返されるそれと同じになります。
+`POST /vision/v2.0/recognizeTextDirect` 操作を使用し、イメージ内の印刷されたテキストが同期認識されます。 この操作は同期のため、この操作の要求本文は `POST /vision/v2.0/recognizeText` 操作と同じになりますが、この操作の応答本文は `GET /vision/v2.0/textOperations/*{id}*` 操作によって返されるそれと同じになります。
 
 <!--  ## Validate container is running -->
 
@@ -156,7 +155,7 @@ Computer Vision サービスで該当する REST 操作を使用する方法と�
 
 これらのオプションの詳細については、「[コンテナーの構成](./computer-vision-resource-container-config.md)」を参照してください。
 
-<!--blogs/samples/video coures -->
+<!--blogs/samples/video course -->
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 

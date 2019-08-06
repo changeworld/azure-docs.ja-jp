@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: fdfd7794961b0254526b124525c6e978d13b0114
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 109ecc671b43365c433a626ff8d9fe55a5a626b5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65800276"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310291"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 
@@ -26,7 +26,7 @@ ms.locfileid: "65800276"
 
 キューおよびトピックがアプリケーションの部分的実行、またはアプリケーションの一部の実行の文脈で使用されることが多い開発およびテスト環境では、次のテストを何もない状態で開始できるよう、保留中のテスト メッセージをガベージ コレクションで自動的に回収する必要もあります。
 
-各メッセージの有効期限は、相対的な期間を指定する、[TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) システム プロパティを設定することで制御できます。 メッセージがエンティティにエンキューされると、有効期限は、絶対瞬間になります。 その時点で、[ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) プロパティに [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) の値が設定されます。 ブローカー メッセージの有効期限 (TTL) 設定は、クライアントがアクティブにリッスンしていない場合は適用されません。
+各メッセージの有効期限は、相対的な期間を指定する、[TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) システム プロパティを設定することで制御できます。 メッセージがエンティティにエンキューされると、有効期限は、絶対瞬間になります。 その時点で、[ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) プロパティに [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) の値が設定されます。 ブローカー メッセージの有効期限 (TTL) 設定は、アクティブにリッスンしているクライアントが存在しない場合は適用されません。
 
 **ExpiresAtUtc** 瞬間を過ぎると、メッセージは取得できなくなります。 有効期限設定は、現在配信がロックされているメッセージには影響しません。これらのメッセージは、引き続き正常に処理されます。 ロックの有効期限が切れた、またはメッセージが破棄されると、有効期限切れは直ちに有効になります。
 

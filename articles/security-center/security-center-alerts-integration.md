@@ -1,5 +1,5 @@
 ---
-title: Azure Security 製品と Security Center の統合 | Microsoft Docs
+title: Azure Security Center における Azure Security 製品の統合 | Microsoft Docs
 description: このトピックでは、Azure Security Center と統合されている Azure Security 製品について説明します。
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/02/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 64a636cc4452de1ef4a2d0e94629e7d8e3a5878d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 847748d1c56221119d8f74a2aee716ee08448e28
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295731"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335821"
 ---
-# <a name="security-center-integration-with-azure-security-products-in-asc"></a>ASC での Azure Security 製品と Security Center の統合
+# <a name="integration-of-azure-security-products-in-azure-security-center"></a>Azure Security Center における Azure Security 製品の統合
 
 Security Center は、調査結果を Security Center にオンボードし、それらを統合された方法で表示するための追加の Microsoft ライセンスをお客様に提供します。
 

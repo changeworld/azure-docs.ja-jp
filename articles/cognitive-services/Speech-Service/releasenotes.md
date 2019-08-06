@@ -3,30 +3,30 @@ title: リリース ノート - Speech Services
 titlesuffix: Azure Cognitive Services
 description: Azure Speech Services に関する機能リリース、改善、バグ修正、既知の問題を時系列で掲載しています。
 services: cognitive-services
-author: wolfma61
+author: BrianMouncer
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 609443a4926fabd991846faee4a0a7dffe3a696b
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: e641051b75620ef5308bc81bca21b3ceda105d09
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490190"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404834"
 ---
 # <a name="release-notes"></a>リリース ノート
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: 2019-June リリース
 
 **サンプル**
-*   UWP および Unity 上の Text to Speech 用のクイック スタート サンプル
-*   iOS 上の Swift 用のクイック スタート サンプル
+*   UWP および Unity 上の Text to Speech 用のクイックスタート サンプル
+*   iOS 上の Swift 用のクイックスタート サンプル
 *   音声および意図の認識と翻訳用の Unity サンプル
-*   DialogServiceConnector 用のクイック スタート サンプルを更新
+*   DialogServiceConnector 用のクイックスタート サンプルを更新
 
 **機能強化/変更**
 * Dialog 名前空間:

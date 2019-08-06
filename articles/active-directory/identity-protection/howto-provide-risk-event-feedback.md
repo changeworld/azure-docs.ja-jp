@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 07/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66d53590e89afb1a903b22ff60e32871a1502ada
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6bd0984a78860192f507323491952e895c8de8bf
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65828079"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370206"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>方法:Azure AD Identity Protection でリスクに関するフィードバックを提供する
 
@@ -33,13 +33,13 @@ ID 保護の検出とは、ID リスクの観点から疑わしいアクティ�
 
 Azure AD のリスクに関するフィードバックを提供すべき理由をいくつか挙げます。
 
-1. **Azure AD のユーザーまたはサインインのリスク評価が正しくないことがわかった場合**。 たとえば、"危険なサインイン" レポートに表示されるサインインに問題がなく、そのサインインに関するすべての検出が偽陽性であった場合。
-1. **Azure AD のユーザーまたはサインインのリスク評価が正しいことを検証した場合**。 たとえば、"危険なサインイン" レポートに表示されるサインインが実際に悪意のあるもので、そのサインインに関するすべての検出が真陽性であったことを Azure AD に通知したい場合。
-1. **そのユーザーに対するリスクを Azure AD Identity Protection の外部で修復し**、そのユーザーのリスク レベルを更新する必要がある場合。
+- **Azure AD のユーザーまたはサインインのリスク評価が正しくないことがわかった場合**。 たとえば、"危険なサインイン" レポートに表示されるサインインに問題がなく、そのサインインに関するすべての検出が偽陽性であった場合。
+- **Azure AD のユーザーまたはサインインのリスク評価が正しいことを検証した場合**。 たとえば、"危険なサインイン" レポートに表示されるサインインが実際に悪意のあるもので、そのサインインに関するすべての検出が真陽性であったことを Azure AD に通知したい場合。
+- **そのユーザーに対するリスクを Azure AD Identity Protection の外部で修復し**、そのユーザーのリスク レベルを更新する必要がある場合。
 
 ## <a name="how-does-azure-ad-use-my-risk-feedback"></a>Azure AD でリスクに関するフィードバックを使用する方法
 
-Azure AD ではフィードバックを使用して、基になるユーザーやサインインのリスクを更新します。 このフィードバックはエンド ユーザーの保護に役立ちます。 たとえば、サインインのセキュリティが侵害されたことを確認したら、Azure AD はすぐにユーザーのリスクとサインインの集約リスク (リアルタイム リスクではない) を "高" に引き上げます。 このユーザーが、危険性の高いユーザーにパスワードを安全にリセットさせることを強制するというユーザー リスク ポリシーに含まれる場合、ユーザーは次回サインインするときに自分自身を自動的に修復します。
+Azure AD ではフィードバックを使用して、基になるユーザーやサインインのリスク、それらのイベントの正確性を更新します。 このフィードバックはエンド ユーザーの保護に役立ちます。 たとえば、サインインのセキュリティが侵害されたことを確認したら、Azure AD はすぐにユーザーのリスクとサインインの集約リスク (リアルタイム リスクではない) を "高" に引き上げます。 このユーザーが、危険性の高いユーザーにパスワードを安全にリセットさせることを強制するというユーザー リスク ポリシーに含まれる場合、ユーザーは次回サインインするときに自分自身を自動的に修復します。
 
 ## <a name="how-should-i-give-risk-feedback-and-what-happens-under-the-hood"></a>リスクに関するフィードバックを提供する方法および内部的な動作
 

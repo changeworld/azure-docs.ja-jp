@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 32352a857f0a74dc008dc1ad76b4a5951a36b956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4578e26df5a6c29e80a0bbd2e0a30725e3733ee
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024547"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370645"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Azure Search でのパフォーマンスの最適化のためのデプロイ戦略とベスト プラクティス
 
@@ -88,7 +88,7 @@ ms.locfileid: "65024547"
    ![分散したインデクサーとサービスの組み合わせを使用する単一のデータ ソース][2]
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>複数のサービスでコンテンツの更新をプッシュするための REST API を使用する
-[Azure Search インデックスの内容をプッシュ](https://docs.microsoft.com/rest/api/searchservice/update-index)するために、Azure Search REST API を使用している場合は、更新が必要になるたびにすべての Search サービスに変更をプッシュすることで、さまざまな Search サービスの同期を維持できます。 コードでは、ある Search サービスの更新が失敗した場合でも、他のサービスでの失敗は必ず処理してください。
+[Azure Search インデックスの内容をプッシュ](https://docs.microsoft.com/rest/api/searchservice/update-index)するために、Azure Search REST API を使用している場合は、更新が必要になるたびにすべての Search サービスに変更をプッシュすることで、さまざまな Search サービスの同期を維持できます。 コードでは、ある Search サービスの更新が失敗した場合でも、他のサービスでの成功は必ず処理してください。
 
 ## <a name="leverage-azure-traffic-manager"></a>Azure Traffic Manager の活用
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用すると、複数の Azure Search サービスが支援する地理的に配置された複数の Web サイトに要求をルーティングできます。 Traffic Manager の利点の 1 つは、Azure Search をプローブしてサービスが利用可能であることを確認し、ダウンタイムが発生した場合にユーザーを別の Search サービスにルーティングできることです。 また、Azure Websites を使用して検索要求をルーティングしている場合、Azure Traffic Manager を使用すると、Websites は稼働していても Azure Search が稼働していない場合に負荷を分散できます。 Traffic Manager を活用したアーキテクチャの例を次に示します。

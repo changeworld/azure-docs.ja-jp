@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a8dac6f38052f176c7a3741a664e174d0a66cbc5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 26fea4322df625b2e38028a3b7121fb41f2acf81
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612700"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311856"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Media Services v3 API シリーズを使用した開発
 
@@ -85,20 +85,26 @@ Azure Media Services の [Swagger ファイル](https://github.com/Azure/azure-r
 
 Media Services には、次のような長期操作があります。
 
-* LiveEvent の作成
-* LiveEvent の更新
-* LiveEvent の削除
-* LiveEvent の開始
-* LiveEvent の停止
-* LiveEvent のリセット
-* LiveOutput の作成
-* LiveOutput の削除
-* StreamingEndpoint の作成
-* StreamingEndpoint の更新
-* StreamingEndpoint の削除
-* StreamingEndpoint の開始
-* StreamingEndpoint の停止
-* StreamingEndpoint のスケーリング
+* [ライブ イベントの作成](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [ライブ イベントの更新](https://docs.microsoft.com/rest/api/media/liveevents/update)
+* [ライブ イベントの削除](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [ライブ イベントの開始](https://docs.microsoft.com/rest/api/media/liveevents/start)
+* [LiveEvent の停止](https://docs.microsoft.com/rest/api/media/liveevents/stop)
+
+  イベントの停止時に、関連付けられているライブ出力をすべて削除するには `removeOutputsOnStop` パラメーターを使用します。  
+* [LiveEvent のリセット](https://docs.microsoft.com/rest/api/media/liveevents/reset)
+* [LiveOutput の作成](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [LiveOutput の削除](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [StreamingEndpoint の作成](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
+* [StreamingEndpoint の更新](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
+* [StreamingEndpoint の削除](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
+* [StreamingEndpoint の開始](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
+* [StreamingEndpoint の停止](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
+* [StreamingEndpoint のスケーリング](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
+
+長い操作の送信に成功すると、"202 Accepted" を受け取ります。返された操作 ID を使用して、操作の完了をポーリングする必要があります。
+
+実行時間の長い操作は、特定のライブ イベントまたはそれに関連付けられているライブ出力に対して 1 つだけサポートされます。 実行時間の長い操作が開始したら、それが完了してからでないと、同じ LiveEvent または関連付けられているライブ出力に対して、実行時間の長い操作を続けて開始できません。 複数のライブ出力があるライブ イベントの場合は、あるライブ出力に対して長時間実行されている操作の完了を待ってから、別のライブ出力に対して長時間実行される操作をトリガーする必要があります。 
 
 ## <a name="sdks"></a>SDK
 

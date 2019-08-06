@@ -8,16 +8,16 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0e58e7b3f77d9bb673e300aa60ad07ca9dba5153
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c355f70975f441609304a4c9ee2ead75f0e0ce25
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082168"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444600"
 ---
 # <a name="security-attributes-for-azure-vpn-gateway"></a>Azure VPN Gateway のセキュリティ属性
 
-この記事では、Azure VPN Gateway に組み込まれている一般的なセキュリティ属性について説明します。
+この記事では、Azure VPN Gateway に組み込まれているセキュリティ属性について説明します。
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 

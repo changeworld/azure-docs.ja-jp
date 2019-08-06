@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 2a46879a6882e6d45e4a7ccce59e4a02feea9005
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 513803adec71e0e2c9578d762c5f4c110ed7086f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61432961"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384498"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題:よく寄せられる質問 (FAQ)
 
@@ -72,7 +72,7 @@ IIS の URL の書き換えモジュールを使って、クラウド サービ�
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか。
 
-クラウド サービスの既定の URL または名前 (例: \*.cloudapp.net) への着信トラフィックを防ぐことができます。 そのためには、次のように、クラウド サービス定義 (*.csdef) ファイル内のサイト バインド構成でホスト ヘッダーをカスタムの DNS 名 (例: www.MyCloudService.com) に設定します。
+クラウド サービスの既定の URL または名前 (例: \*.cloudapp.net) への着信トラフィックを防ぐことができます。 次に示すように、クラウド サービス定義 (*.csdef) ファイル内のサイト バインド構成でホスト ヘッダーをカスタム DNS 名 (www\.MyCloudService.com など) に設定します。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse への接続 (VSTS) | Microsoft Docs
 description: Visual Studio で SQL Data Warehouse に対してクエリを実行します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6aa707d3c63b7ead6db94f84ebd9214302cc7367
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c0867252023378347e55d673260f28a7bf2ccc4
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873726"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479457"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Visual Studio および SSDT を使用して SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]
@@ -32,9 +32,9 @@ Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に�
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の SQL Data Warehouse。 作成方法については、[SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照してください。
-* Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既に SSDT を所有していると思われます。 インストールの手順とオプションの詳細については、[Visual Studio と SSDT のインストール][Installing Visual Studio and SSDT]に関するページを参照してください。
-* 完全修飾 SQL サーバー名。 これを特定するには、[SQL Data Warehouse への接続][Connect to SQL Data Warehouse]に関するページを参照してください。
+* 既存の SQL Data Warehouse。 その作成方法については、 [SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照してください。
+* Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既に SSDT を所有していると思われます。 インストールの手順とオプションの詳細については、 [Visual Studio と SSDT のインストール][Installing Visual Studio and SSDT]に関するページを参照してください。
+* 完全修飾 SQL サーバー名。 これを特定するには、 [SQL Data Warehouse への接続][Connect to SQL Data Warehouse]に関するページを参照してください。
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1.SQL Data Warehouse への接続
 1. Visual Studio 2013 または 2015 を開きます。
@@ -78,7 +78,7 @@ Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に�
 ## <a name="next-steps"></a>次の手順
 これで接続してクエリを実行することができます。[Power BI でデータを視覚化][visualizing the data with PowerBI]してみてください。
 
-Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL Data Warehouse の認証][Authenticate to SQL Data Warehouse]に関するページを参照してください。
+Azure Active Directory 認証を使用するために環境を構成する方法については、 [SQL Data Warehouse の認証][Authenticate to SQL Data Warehouse]に関するページを参照してください。
 
 <!--Arcticles-->
 [Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md

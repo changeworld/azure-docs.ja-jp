@@ -1,10 +1,12 @@
 ---
-title: Azure AD テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (パブリック プレビュー)
+title: Azure AD テナントのアプリに対する要求のカスタマイズ (パブリック プレビュー)
 description: このページでは、Azure Active Directory の要求のマッピングについて説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b770ee476fc5c1c334f53904539cc34cf962c62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97de45ef94afa9da8a5e928a3d4a8911db052107
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546197"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381072"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -284,7 +286,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3:ソースごとに有効な ID 値
 
-| source | ID | 説明 |
+| source | id | 説明 |
 |-----|-----|-----|
 | User | surname | 姓 |
 | User | givenname | 名 |
@@ -384,7 +386,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5:SAML NameID のデータ ソースとして許可されている属性
 
-|source|ID|説明|
+|source|id|説明|
 |-----|-----|-----|
 | User | mail|電子メール アドレス|
 | User | userprincipalname|ユーザー プリンシパル名|

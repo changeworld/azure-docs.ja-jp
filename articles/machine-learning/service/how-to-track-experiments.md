@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 269568c172ff6c65c9877f9ad22067a11125b339
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: edc0da77fc1c2813c2485fca18d50952e3060db8
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847590"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370479"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Azure Machine Learning 内でトレーニングの実行中にメトリックを記録する
 
@@ -58,7 +58,7 @@ ms.locfileid: "67847590"
    ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-startlogging"></a>オプション 1:start_logging を使用する
+## <a name="option-1-use-start_logging"></a>オプション 1:start_logging を使用する
 
 **start_logging** では、ノートブックなどのシナリオで使用するための対話型の実行が作成されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。
 
@@ -225,8 +225,8 @@ ms.locfileid: "67847590"
 
 ## <a name="view-run-details"></a>実行の詳細を表示する
 
-### <a name="monitor-run-with-jupyter-notebook-widgets"></a>Jupyter Notebook ウィジェットで実行を監視する
-**ScriptRunConfig** メソッドを使用して実行を送信するときに、Jupyter Notebook ウィジェットを使用して実行の進行状況を見ることができます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
+### <a name="monitor-run-with-jupyter-notebook-widget"></a>Jupyter Notebook ウィジェットで実行を監視する
+**ScriptRunConfig** メソッドを使用して実行を送信するときに、[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用して実行の進行状況を見ることができます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
 
 1. 実行が完了するのを待っている間、Jupyter ウィジェットを表示します。
 
@@ -236,6 +236,12 @@ ms.locfileid: "67847590"
    ```
 
    ![Jupyter Notebook ウィジェットのスクリーンショット](./media/how-to-track-experiments/run-details-widget.png)
+
+ワークスペース内の同じ表示へのリンクを取得することもできます。
+
+```python
+print(run.get_portal_url())
+```
 
 2. **[自動化された機械学習の実行の場合]** 前回の実行のグラフにアクセスするには。 `<<experiment_name>>` を適切な実験名に置き換えます。
 
@@ -257,7 +263,8 @@ ms.locfileid: "67847590"
 ### <a name="get-log-results-upon-completion"></a>完了時にログの結果を取得する
 
 モデルのトレーニングと監視はバックグラウンドで行われるので、待機中に他のタスクを実行できます。 また、モデルのトレーニングが完了するまで待ってから、さらにコードを実行することもできます。 **ScriptRunConfig** を使用するときは、```run.wait_for_completion(show_output = True)``` を使用してモデルのトレーニングの完了を表示できます。 ```show_output``` フラグを指定すると、詳細な出力が提供されます。 
-  
+
+
 ### <a name="query-run-metrics"></a>実行のメトリックのクエリを行う
 
 ```run.get_metrics()``` を使用して、トレーニング済みモデルのメトリックを表示できます。 上の例でログに記録されたすべてのメトリックを取得して、最適なモデルを決定できます。
@@ -287,140 +294,6 @@ ms.locfileid: "67847590"
 |2 つの数値列が繰り返し含まれる 1 行をログに記録します|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|変数が 2 つの折れ線グラフ|
 |2 つの数値列を含むテーブルをログに記録します|`run.log_table(name='Sine Wave', value=sines)`|変数が 2 つの折れ線グラフ|
 
-<a name="auto"></a>
-## <a name="understanding-automated-ml-charts"></a>自動 ML グラフの説明
-
-ノートブックで自動 ML ジョブを送信した後は、機械学習サービス ワークスペースで実行履歴を確認できます。 
-
-各項目の詳細情報
-+ [分類モデルのグラフと曲線](#classification)
-+ [回帰モデルのチャートとグラフ](#regression)
-+ [モデル説明能力](#model-explain-ability-and-feature-importance)
-
-
-### <a name="view-the-run-charts"></a>実行のグラフを表示する
-
-1. ワークスペースに移動します。 
-
-1. ワークスペースの左側のパネルで **[実験]** を選択します。
-
-   ![実験メニューのスクリーンショット](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-menu.png)
-
-1. 興味のある実験を選択します。
-
-   ![実験リスト](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-list.png)
-
-1. テーブルで実行番号を選択します。
-
-   ![実験の実行](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-run.png)
-
-1. テーブルで、さらに調べるモデルの繰り返し番号を選択します。
-
-   ![実験モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment-model.png)
-
-
-
-### <a name="classification"></a>分類
-
-Azure Machine Learning の自動機械学習機能を使って作成されたすべての分類モデルについて、次のグラフを見ることができます。 
-+ [混同行列](#confusion-matrix)
-+ [精度/再現率グラフ](#precision-recall-chart)
-+ [受信者操作特性 (ROC)](#roc)
-+ [リフト曲線](#lift-curve)
-+ [ゲイン曲線](#gains-curve)
-+ [調整プロット](#calibration-plot)
-
-#### <a name="confusion-matrix"></a>混同行列
-
-混同行列は、分類モデルのパフォーマンスの記述に使用します。 各行には true クラスのインスタンスが表示され、各列は予測されたクラスのインスタンスを表します。 混同行列では、特定のモデルで正しく分類されたラベルと、間違って分類ラベルが示されます。
-
-分類問題の場合、Azure Machine Learning では作成された各モデルに対して混同行列が自動的に提供されます。 自動 ML では、混同行列ごとに、正しく分類されたラベルは緑で、間違って分類されたラベルは赤で示されます。 円のサイズは、そのビンのサンプルの数を表します。 さらに、各予測ラベルと各 true ラベルの頻度の数が、隣の棒グラフで提供されます。 
-
-例 1:精度の低い分類モデル![精度の低い分類モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix1.png)
-
-例 2:精度の高い分類モデル (理想的)![精度の高い分類モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion-matrix2.png)
-
-
-#### <a name="precision-recall-chart"></a>精度/再現率グラフ
-
-このグラフでは、各モデルの精度/再現率曲線を比較して、特定のビジネスの問題に対して精度と再現率の間の関係が許容できるモデルを特定できます。 このグラフでは、マクロ平均精度/再現率、ミクロ平均精度/再現率、およびモデルのすべてのクラスに関連付けられた精度/再現率が示されます。
-
-精度という用語は、分類子がすべてのインスタンスに正しくラベルを付ける能力を表します。 再現率は、分類子が特定のラベルのすべてのインスタンスを見つける能力を表します。 精度/再現率曲線は、これら 2 つの概念の間の関係を示します。 理想的なモデルでは、100% の精度と 100% の再現率になります。
-
-例 1:精度と再現率が低い分類モデル![精度と再現率が低い分類モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall1.png)
-
-例 2:精度と再現率がほぼ 100% の分類モデル (理想的)![精度と再現率がほぼ 100% の分類モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision-recall2.png)
-
-#### <a name="roc"></a>ROC
-
-受信者操作特性 (ROC) は、特定のモデルについて正しく分類されたラベルと間違って分類されたラベルを対比したプロットです。 ROC 曲線は、誤検知のラベルが示されないため、高バイアスのデータセットでモデルをトレーニングするときは、あまり役に立たないことがあります。
-
-例 1:正しいラベルが少なく間違ったラベルが多い分類モデル![正しいラベルが少なく間違ったラベルが多い分類モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-1.png)
-
-例 2:正しいラベルが多く間違ったラベルが少ない分類モデル![正しいラベルが多く間違ったラベルが少ない分類モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc-2.png)
-
-#### <a name="lift-curve"></a>リフト曲線
-
-Azure Machine Learning で自動的に作成されたモデルのリフトとベースラインを比較して、その特定のモデルでの値のゲインを確認できます。
-
-リフト チャートは、分類モデルのパフォーマンスの評価に使用されます。 モデルを使用しない場合と比較して、モデルを使用するとどの程度の向上が予想されるかがわかります。 
-
-例 1:ランダムに選択されたモデルよりパフォーマンスが悪いモデル![ランダムに選択されたモデルより悪い分類モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve1.png)
-
-例 2:ランダムに選択されたモデルよりパフォーマンスがよいモデル![パフォーマンスがよい分類モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift-curve2.png)
-
-#### <a name="gains-curve"></a>ゲイン曲線
-
-ゲイン チャートでは、データの各部分によって分類モデルのパフォーマンスが評価されます。 データ セットの各パーセンタイルについて、ランダムに選択されたモデルと比較してパフォーマンスがどの程度向上すると予想されるかがわかります。
-
-モデルからの望ましいゲインに対応するパーセンテージを使用して分類カットオフを選択するには、累積ゲイン チャートを使用します。 この情報では、付随するリフト チャートの結果を調べる別の方法が提供されます。
-
-例 1:ゲインが最小限の分類モデル![ゲインが最小限の分類モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve1.png)
-
-例 2:ゲインが大きい分類モデル![ゲインが大きい分類モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains-curve2.png)
-
-#### <a name="calibration-plot"></a>調整プロット
-
-すべての分類の問題について、マイクロ平均、マクロ平均、および特定の予測モデルの各クラスに対する調整ラインを確認できます。 
-
-調整プロットは、予測モデルの信頼度を示すために使用されます。 これを行うため、予測される確率と実際の確率の間の関係が示されます。"確率" は、特定のインスタンスがいくつかのラベルに属する可能性を表します。 適切に調整されたモデルは y=x の線と一致し、予測の信頼性は妥当です。 過剰信頼モデルは y=0 の線と一致し、予測確率はありますが、実際の確率はありません。
-
-例 1:適切に調整されたモデル![適切に調整されたモデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve1.png)
-
-例 2:過剰に信頼されたモデル![過剰に信頼されたモデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib-curve2.png)
-
-### <a name="regression"></a>回帰
-Azure Machine Learning の自動機械学習機能を使って作成されたすべての回帰モデルについて、次のグラフを見ることができます。 
-+ [予測とTrue](#pvt)
-+ [残差のヒストグラム](#histo)
-
-<a name="pvt"></a>
-
-#### <a name="predicted-vs-true"></a>予測とTrue
-
-予測とTrue では、回帰問題に対する予測値とそれに相関する True 値の間の関係が示されます。 このグラフを使用してモデルのパフォーマンスを測定できます。予測値が y=x の線に近いほど、予測モデルの精度が高いことを示します。
-
-各実行の後で、各回帰モデルの予測と True のグラフを表示できます。 データのプライバシーを保護するため、値はビンにまとめられており、各ビンのサイズはグラフ領域の下部に棒グラフとして示されます。 許容誤差を示す明るい網掛け領域で、予測モデルをモデルの理想値と比較できます。
-
-例 1:予測の精度が低い回帰モデル![予測の精度が低い回帰モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.png)
-
-例 2:予測の精度が高い回帰モデル![予測の精度が高い回帰モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.png)
-
-<a name="histo"></a>
-
-#### <a name="histogram-of-residuals"></a>残差のヒストグラム
-
-残差は、観察された y から予測された y を引いた値を表します。 低バイアスでの許容誤差を示すため、残差のヒストグラムは 0 を中心とするベル曲線として成形する必要があります。 
-
-例 1:エラーにバイアスがある回帰モデル![エラーにバイアスがある SA 回帰モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.png)
-
-例 2:エラーがより均等に分布している回帰モデル![エラーがより均等に分布している回帰モデル](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.png)
-
-### <a name="model-explain-ability-and-feature-importance"></a>モデル説明能力と特徴の重要度
-
-特徴の重要度では、モデルの構築における各特徴の価値を示すスコアが提供されます。 モデル全体および予測モデルの各クラスについて、特徴の重要度のスコアを確認できます。 特徴ごとに、各クラスおよび全体との重要度の比較を確認できます。
-
-![特徴説明能力](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature-explain1.png)
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
 次の Notebook は、この記事の概念を示しています。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: jeconnoc
-ms.openlocfilehash: be78fd35f7c4f5079b30e53c740bce91e515643a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 46ca46c99187b14974b78ccc4acc134a5f716b05
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871933"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326699"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>大規模な仮想マシン スケール セットの使用
 現在、最大 1,000 個の VM を容量とした Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)を作成できるようになりました。 このドキュメントの "_大規模な仮想マシン スケール セット_" は、100 個を超える VM にスケーリングできるスケール セットとして定義されています。 この機能はスケール セット プロパティで設定されています (_singlePlacementGroup=False_)。 
@@ -42,7 +42,7 @@ ms.locfileid: "67871933"
 - 複数の配置グループで構成されたスケール セットでのレイヤー 4 の負荷分散には、[Azure Load Balancer Standard SKU](../load-balancer/load-balancer-standard-overview.md) が必要です。 Load Balancer Standard SKU には、複数のスケール セットの間で負荷分散を行えるなど、他にもメリットがあります。 また Standard SKU では、スケール セットにネットワーク セキュリティ グループが関連付けられていることも必要です。そうでない場合、NAT プールは正常に機能しません。 Azure Load Balancer Basic SKU を使用する必要がある場合は、スケール セットが 1 つの配置グループを使用するよう構成されていることを確認してください。これは既定の設定です。
 - Azure Application Gateway によるレイヤー 7 の負荷分散は、すべてのスケール セットでサポートされています。
 - 1 つのスケール セットは 1 つのサブネットで定義されます。サブネットには、必要なすべての VM にとって十分な規模のアドレス空間があることを確認してください。 既定では、スケール セットはオーバープロビジョニングされ (デプロイ時またはスケールアウト時に追加の VM が作成されますが、これについては課金されません)、デプロイの信頼性とパフォーマンスが向上します。 スケールする予定の VM の数よりもアドレス空間が 20% 大きくなることを考慮に入れておいてください。
-- 配置グループ内で一貫性があるのは、障害ドメインとアップグレード ドメインのみです。 VM が個別の物理ハードウェアで均等に分散されているため、このアーキテクチャでは、スケール セットの全体的な可用性が変更されることはありません。ただし、これは、2 つの VM が異なるハードウェア上にあることを保証する必要がある場合、これらの VM が同じ配置グループ内の別々の障害ドメインに配置されるようにすることを意味します。 [Azure のリージョンと可用性](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability/)に関するこちらのリンクを参照してください。 
+- 配置グループ内で一貫性があるのは、障害ドメインとアップグレード ドメインのみです。 VM が個別の物理ハードウェアで均等に分散されているため、このアーキテクチャでは、スケール セットの全体的な可用性が変更されることはありません。ただし、これは、2 つの VM が異なるハードウェア上にあることを保証する必要がある場合、これらの VM が同じ配置グループ内の別々の障害ドメインに配置されるようにすることを意味します。 [可用性オプション](/azure/virtual-machines/windows/availability)に関するこちらのリンクを参照してください。 
 - 障害ドメインと配置グループ ID は、スケール セット VM の "_インスタンス ビュー_" に表示されます。 スケール セット VM のインスタンス ビューは、[Azure リソース エクスプローラー](https://resources.azure.com/)で表示できます。
 
 ## <a name="creating-a-large-scale-set"></a>大規模なスケール セットを作成する

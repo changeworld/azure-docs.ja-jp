@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3125de0d1fd784b30c000bb287b457397c0fbebb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c464874708c7b93ec5620cc9ae253912ce1a4790
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703033"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357139"
 ---
 # <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしの電話によるサインイン (パブリック プレビュー)
 
@@ -29,8 +29,6 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ## <a name="enable-my-users"></a>ユーザーを有効にする
 
-パブリック プレビューでは、管理者は、テナントで資格情報を使用できるように、最初に powershell を使用してポリシーを追加する必要があります。 この手順を実行する前に、「既知の問題」セクションを確認してください。
-
 ### <a name="tenant-prerequisites"></a>テナントの前提条件
 
 * Azure Active Directory
@@ -40,6 +38,10 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 ### <a name="steps-to-enable"></a>有効にする手順
 
 ディレクトリでパスワードなしの認証方法を有効にするには、「[Azure AD に対してパスワードなしのサインインを有効にする](howto-authentication-passwordless-enable.md#enable-new-passwordless-authentication-methods)」の記事の手順に従います。
+
+> [!NOTE]
+> PowerShell スクリプトを使用して、テナントでこの機能を以前に有効にしていた場合、ユーザーとグループに新しいポリシーを設定すると、既存のテナント全体のポリシーが上書きされます。 
+>
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>エンド ユーザーは電話によるサインインをどのように有効にするのですか。
 

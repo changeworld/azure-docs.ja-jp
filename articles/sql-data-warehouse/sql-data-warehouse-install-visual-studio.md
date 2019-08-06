@@ -4,7 +4,7 @@ description: Azure SQL Data Warehouse 用に Visual Studio と SQL Server Develo
 services: sql-data-warehouse
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.subservice: development
 ms.date: 04/05/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: b2e34f1f72b1b0aa76d4a3031102d052118dae5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa904ac62ce41cc89945ddfdef2e426143e42bb4
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304124"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479486"
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>SQL Data Warehouse 用に Visual Studio と SSDT をインストールする
 SQL Data Warehouse のアプリケーションを開発するには、Visual Studio 2019 を使用します。 現在 Visual Studio 2019 SSDT は、SQL Data Warehouse ではサポートされていません。 
@@ -33,7 +33,7 @@ SSDT がインストールされている Visual Studio を使用すると、SQL
 Visual Studio をダウンロードしてインストールするには、以下のリンクをクリックしてください。 既に Visual Studio 2013 以降がインストールされている場合は、手順 2. に進んで SSDT をインストールします。
 
 1. [Visual Studio をダウンロードします][]。
-2. MSDN の [Visual Studio のインストール][Installing Visual Studio] ガイドに従ってインストールし、既定の構成を選択します。
+2. MSDN の [Visual Studio のインストール][Installing Visual Studio] に関するガイドに従ってインストールし、既定の構成を選択します。
 
 ## <a name="step-2-install-ssdt"></a>手順 2:SSDT のインストール
 SSDT for Visual Studio をインストールするには、まず、次の手順に従って Visual Studio 内から SSDT の更新プログラムをチェックします。

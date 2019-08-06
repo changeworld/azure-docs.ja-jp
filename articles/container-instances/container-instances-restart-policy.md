@@ -3,16 +3,17 @@ title: Azure Container Instances でコンテナー化タスクに再起動ポ�
 description: Azure Container Instances を使用して、ビルド、テスト、イメージ レンダリングのジョブなど、完了まで実行するタスクを実行する方法を説明します。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4fe5d9a20249a17030e0ccfa34f6a4f183be0d82
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60608128"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325673"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>再起動ポリシーによるコンテナー化タスクの実行
 
@@ -20,7 +21,7 @@ Azure Container Instances ではコンテナー デプロイを簡単にすば�
 
 構成可能な再起動ポリシーを使用して、プロセスが完了したらコンテナーが停止するように指定できます。 コンテナーのインスタンスは秒単位で課金されるため、タスクを実行するコンテナーの実行中に使用されるコンピューティング リソースのみが課金されます。
 
-この記事にある例では、Azure CLI を使用します。 Azure CLI バージョン 2.0.21 以上が[ローカルにインストールされている][azure-cli-install]か、[Azure Cloud Shell](../cloud-shell/overview.md) で CLI を使用する必要があります。
+この記事にある例では、Azure CLI を使用します。 Azure CLI バージョン 2.0.21 以上が[ローカルにインストール][azure-cli-install]されているか、[Azure Cloud Shell](../cloud-shell/overview.md) で CLI を使用する必要があります。
 
 ## <a name="container-restart-policy"></a>コンテナー再起動ポリシー
 

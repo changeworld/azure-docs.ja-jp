@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: fed658d3f672d6116d7c2b0f3e2e9ad989dd67c6
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: a5f77120c1d4e8a6721f3bc207132bee19a7772f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490640"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383546"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Microsoft 顧客契約の請求書の用語
 
@@ -90,7 +90,7 @@ ms.locfileid: "67490640"
 
 ### <a name="how-to-pay"></a>支払い方法
 
-請求書の下部に、請求額の支払い手順が表示されます。 小切手、電信送金、オンライン決済による支払いが可能です。 オンライン決済の場合は、クレジット/デビット カードまたは Azure クレジット (該当する場合) を使用できます。
+請求書の下部に、請求額の支払い手順が表示されます。 小切手、電信送金、オンライン決済による支払いが可能です。 オンライン決済の場合は、クレジット カードまたは Azure クレジット (該当する場合) を使用できます。
 
 ### <a name="publisher-information"></a>パブリッシャー情報
 

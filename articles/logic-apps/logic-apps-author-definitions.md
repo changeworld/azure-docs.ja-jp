@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 121e2d2595b63a313d9307f7d47f90adacc30fc2
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 89a77c25c75617be0e1ef92b73eec28263f53f82
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296117"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385575"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Azure Logic Apps でのロジック アプリ定義の JSON の作成、編集、拡張
 
@@ -62,108 +62,21 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
 ## <a name="parameters"></a>parameters
 
-パラメーターを使用すると、ロジック アプリ全体にわたって値を再利用できるので、頻繁に変更する可能性のある値の置き換えに適しています。 たとえば、複数の場所で使用する電子メール アドレスがある場合、その電子メール アドレスをパラメーターとして定義します。
+デプロイ ライフサイクルには通常、開発、テスト、ステージング、および運用のためのさまざまな環境があります。 ハードコーディングせずにロジック アプリ全体にわたって再利用したい値や、デプロイ ニーズによって異なる値がある場合は、ワークフロー定義のための [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)を作成できます。それにより、ロジック アプリ デプロイも自動化できます。 
 
-パラメーターは、さまざまな環境でパラメーターをオーバーライドする必要がある場合にも役立ちます。[デプロイのパラメーター](#deployment-parameters)の詳細と、[Azure Logic Apps 用 REST API のドキュメント](https://docs.microsoft.com/rest/api/logic)をご覧ください。
+これらの値を*パラメーター化する*次の一般的な手順に従うか、または代わりにこれらの値のパラメーターを定義して使用します。 その後、これらの値をテンプレートに渡す個別のパラメーター ファイルで値を指定できます。 それにより、ロジック アプリを更新して再デプロイしなくても、これらの値をより簡単に変更できます。 詳細については、[概要: Azure Resource Manager テンプレートを使用したロジック アプリのデプロイの自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)に関するページを参照してください。
 
-> [!NOTE]
-> パラメーターはコード ビューでのみ使用できます。
+1. テンプレートで、それぞれ、デプロイ時と実行時に使用する値を受け入れるためのテンプレート パラメーターとワークフロー定義パラメーターを定義します。
 
-[最初のロジック アプリの例](../logic-apps/quickstart-create-first-logic-app-workflow.md)では、Web サイトの RSS フィードに 新しい投稿が表示されたときに電子メールを送信するワークフローを作成しました。 フィードの URL はハードコードされているので、この例では、フィードの URL をより簡単に変更できるように、クエリ値をパラメーターに置き換える方法を説明します。
+   テンプレート パラメーターがワークフロー定義の外部にある parameters セクションで定義されるのに対して、ワークフロー定義パラメーターは、ワークフロー定義の内部にある parameters セクションで定義されます。
 
-1. コード ビューで、`parameters : {}` オブジェクトを見つけて、`currentFeedUrl` オブジェクトを追加します。
+1. ハードコードされた値を、これらのパラメーターを参照する式に置き換えます。 テンプレート式では、ワークフロー定義式とは異なる構文を使用します。
 
-   ``` json
-   "currentFeedUrl" : {
-      "type" : "string",
-      "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
-   }
-   ```
+   実行時に評価されるワークフロー定義式の内部で、デプロイ時に評価されるテンプレート式を使用しないようにして、コードが複雑にならないようにします。 テンプレート式は、ワークフロー定義の外部でのみ使用します。 ワークフロー定義式は、ワークフロー定義の内部でのみ使用します。
 
-2. `When_a_feed-item_is_published` アクションで、`queries` セクションを見つけて、クエリ値を `"feedUrl": "#@{parameters('currentFeedUrl')}"` に置き換えます。
+   ワークフロー定義パラメーターの値を指定する場合は、ワークフロー定義の外部にあるが、引き続きロジック アプリのリソース定義の内部にある parameters セクションを使用してテンプレート パラメーターを参照できます。 それにより、テンプレート パラメーター値をワークフロー定義パラメーターに渡すことができます。
 
-   **変更前**
-   ``` json
-   }
-      "queries": {
-          "feedUrl": "https://s.ch9.ms/Feeds/RSS"
-       }
-   },
-   ```
-
-   **変更後**
-   ``` json
-   }
-      "queries": {
-          "feedUrl": "#@{parameters('currentFeedUrl')}"
-       }
-   },
-   ```
-
-   2 つ以上の文字列を結合する場合、`concat` 関数を使用することもできます。 
-   たとえば、`"@concat('#',parameters('currentFeedUrl'))"` は上記の例と同様に動作します。
-
-3.  完了したら、 **[保存]** を選択します。
-
-これで、`currentFeedURL` オブジェクトから別の URL を渡すことで、Web サイトの RSS フィードを変更できるようになりました。
-
-<a name="deployment-parameters"></a>
-
-## <a name="deployment-parameters-for-different-environments"></a>さまざまな環境のデプロイ パラメーター
-
-通常、デプロイのライフサイクルには、開発、ステージング、運用の各環境があります。 たとえば、これらのすべての環境で同じロジック アプリ定義を使用する一方で、異なるデータベースをご利用いただけます。 同様に、高可用性を確保するためにさまざまなリージョンで同じ定義を使用し、各ロジック アプリ インスタンスではそのリージョンのデータベースを使用することもできます。
-
-> [!NOTE]
-> このシナリオは、`trigger()` 関数を使用する必要があるため、"*実行時*" にパラメーターを受け取る方法とは異なります。
-
-基本的な定義を次に示します。
-
-``` json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "uri": {
-            "type": "string"
-        }
-    },
-    "triggers": {
-        "request": {
-          "type": "request",
-          "kind": "http"
-        }
-    },
-    "actions": {
-        "readData": {
-            "type": "Http",
-            "inputs": {
-                "method": "GET",
-                "uri": "@parameters('uri')"
-            }
-        }
-    },
-    "outputs": {}
-}
-```
-ロジック アプリの実際の `PUT` 要求で、`uri` パラメーターを指定できます。 それぞれの環境で、`connection` パラメーターに異なる値を指定できます。 既定値は存在しないため、ロジック アプリのペイロードではこのパラメーターが必要です。
-
-``` json
-{
-    "properties": {},
-        "definition": {
-          /// Use the definition from above here
-        },
-        "parameters": {
-            "connection": {
-                "value": "https://my.connection.that.is.per.enviornment"
-            }
-        }
-    },
-    "location": "westus"
-}
-```
-
-詳細については、[Azure Logic Apps 用 REST API のドキュメント](https://docs.microsoft.com/rest/api/logic/)をご覧ください。
+1. パラメーターの値を個別の[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)に格納し、そのファイルをデプロイに含めます。
 
 ## <a name="process-strings-with-functions"></a>関数を使用して文字列を処理する
 

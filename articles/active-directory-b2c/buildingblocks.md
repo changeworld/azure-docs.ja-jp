@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 67770661f0660b9a84d16bbbc7d86cfcbca2cfdf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ab2b11749aa57065a1a4d688b02fed97731ab7c
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511586"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464742"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -67,6 +67,8 @@ ms.locfileid: "66511586"
     - ポリシーで指定されているパラメーターから文字列要求を作成する｡
     - 乱数ジェネレーターを使用してランダム文字列を作成する｡
     - 指定された書式文字列に従って要求の書式を設定する｡ この変換では､C# の `String.Format` メソッドを使用します。
+    
+- InputValidation - この要素により、 *and* や *or* に似たブール値の集計を実行できます。
 
 - [ContentDefinitions](contentdefinitions.md) - ユーザー体験に使用する HTML5 テンプレートの URL を定義します｡ カスタム ポリシーのコンテンツ定義では、ユーザー体験中の指定した手順に使用する HTML5 ページの URI を定義します｡ たとえば、サインインまたはサインアップ、パスワード リセット、またはエラー ページなどです。 HTML5 ファイルの LoadUri をオーバーライドすることで、外観を変更できます。 あるいは、必要に応じて新しいコンテンツの定義を作成することもできます。 この要素には、ローカリゼーション ID を使用してローカライズされたリソース参照を含めることができます。
 

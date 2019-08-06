@@ -8,16 +8,16 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1892b918ed35221bc73d5070d5a73ecc359aa4c2
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 7d40618d5f4fde4a2b3fdfbde8a6de0a049ce3b6
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799860"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68440862"
 ---
 # <a name="security-attributes-for-azure-load-balancer"></a>Azure Load Balancer のセキュリティ属性
 
-この記事では、Azure Load Balancer に組み込まれている一般的なセキュリティ属性について説明します。
+この記事では、Azure Load Balancer に組み込まれているセキュリティ属性について説明します。
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 

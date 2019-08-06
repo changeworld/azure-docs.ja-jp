@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 970fdaba1870097e253b51c70e523e399bc88dfc
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440795"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608169"
 ---
 # <a name="what-are-baseline-policies"></a>ベースライン ポリシーとは?
 
@@ -58,7 +58,10 @@ ms.locfileid: "67440795"
 
 高い特権を持つ管理者だけが攻撃の標的になるわけではありません。 悪意のあるアクターは通常のユーザーをターゲットにする傾向があります。 これらの悪意のあるアクターは、アクセス権を取得した後、元々のアカウント所有者に代わって機密性の高い情報へのアクセスを要求したり、ディレクトリ全体をダウンロードして組織全体にフィッシング攻撃を仕掛けたりする可能性があります。 すべてのユーザーを対象にした保護を向上するための一般的な方法の 1 つは、危険なサインインが検出されたときに、より強力な形式のアカウント検証を要求することです。
 
-**エンド ユーザーの保護 (プレビュー)** は、ディレクトリ内のすべてのユーザーを保護するベースライン ポリシーです。 このポリシーを有効にすると、すべてのユーザーが 14 日以内に Azure Multi-Factor Authentication に登録することを求められます。 登録されると、ユーザーはリスクの高いサインインの試行中にのみ、MFA を求められます。 侵害されたユーザー アカウントは、パスワードがリセットされてリスクがなくなるまでブロックされます。
+**エンド ユーザーの保護 (プレビュー)** は、ディレクトリ内のすべてのユーザーを保護するベースライン ポリシーです。 このポリシーを有効にすると、すべてのユーザーが 14 日以内に Azure Multi-Factor Authentication に登録することを求められます。 登録されると、ユーザーはリスクの高いサインインの試行中にのみ、MFA を求められます。 侵害されたユーザー アカウントは、パスワードがリセットされてリスクがなくなるまでブロックされます。 
+
+[!NOTE]
+ポリシーをアクティブ化すると、以前にリスクのフラグが付けられたユーザーは、パスワードがリセットされてリスクがなくなるまでブロックされます。
 
 ### <a name="block-legacy-authentication-preview"></a>レガシ認証をブロックする (プレビュー)
 
@@ -94,7 +97,7 @@ ms.locfileid: "67440795"
 
 詳細については、次を参照してください。
 
-* [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/azure-ad-secure-steps.md)
+* [ID インフラストラクチャをセキュリティ保護する 5 つのステップ](../../security/fundamentals/steps-secure-identity.md)
 * [Azure Active Directory の条件付きアクセスとは](overview.md)
 * [管理者に MFA を要求する (プレビュー)](howto-baseline-protect-administrators.md)
 * [エンド ユーザーの保護 (プレビュー)](howto-baseline-protect-end-users.md)

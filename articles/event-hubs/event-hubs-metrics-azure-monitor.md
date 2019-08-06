@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: b5df69e9670c01b576afe242b39532acb1e1c526
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4caa9e78d72df37bec2351fa86ae6e60630d6047
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685898"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370769"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor での Azure Event Hubs メトリック
 
@@ -63,34 +63,34 @@ Azure Monitor でのメトリックの使用は現在無料です。 ただし�
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-| 受信要求 (プレビュー) | 指定された期間にわたって Azure Event Hubs サービスに対して実行された要求の数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName |
-| 成功した要求 (プレビュー)   | 指定された期間にわたって Azure Event Hubs サービスに対して実行された成功した要求の数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName |
-| サーバー エラー (プレビュー) | 指定された期間にわたって Azure Event Hubs サービスでエラーのために処理されなかった要求の数。 <br/><br/>単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName |
-|ユーザー エラー (プレビュー)|指定された期間にわたってユーザー エラーのために処理されなかった要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|クォータを超過したエラー (プレビュー)|使用可能なクォータを超えた要求の数。 Event Hubs クォータの詳細については、[この記事](event-hubs-quotas.md)を参照してください。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+| 受信要求  | 指定された期間にわたって Azure Event Hubs サービスに対して実行された要求の数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName |
+| 成功した要求    | 指定された期間にわたって Azure Event Hubs サービスに対して実行された成功した要求の数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName |
+| サーバー エラー  | 指定された期間にわたって Azure Event Hubs サービスでエラーのために処理されなかった要求の数。 <br/><br/>単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName |
+|User Errors (ユーザー エラー) |指定された期間にわたってユーザー エラーのために処理されなかった要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|クォータ超過エラー数 |使用可能なクォータを超えた要求の数。 Event Hubs クォータの詳細については、[この記事](event-hubs-quotas.md)を参照してください。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="throughput-metrics"></a>スループットのメトリック
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|調整された要求 (プレビュー)|スループット ユニットの使用量を超えたため調整された要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|調整された要求数 |スループット ユニットの使用量を超えたため調整された要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="message-metrics"></a>メッセージのメトリック
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|受信メッセージ (プレビュー)|指定された期間にわたって Event Hubs に送信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|送信メッセージ (プレビュー)|指定された期間にわたって Event Hubs から取得されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|受信バイト数 (プレビュー)|指定された期間にわたって Azure Event Hubs サービスに送信されたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|送信バイト数 (プレビュー)|指定された期間にわたって Azure Event Hubs サービスから取得されたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|受信メッセージ |指定された期間にわたって Event Hubs に送信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|送信メッセージ |指定された期間にわたって Event Hubs から取得されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|着信バイト数 |指定された期間にわたって Azure Event Hubs サービスに送信されたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|発信バイト数 |指定された期間にわたって Azure Event Hubs サービスから取得されたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="connection-metrics"></a>接続のメトリック
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|ActiveConnections (プレビュー)|名前空間およびエンティティ上のアクティブな接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|開かれた接続 (プレビュー)|開かれている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|閉じられた接続 (プレビュー)|閉じられている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|ActiveConnections |名前空間およびエンティティ上のアクティブな接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|開かれている接続数 |開かれている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|切断された接続数 |閉じられている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="event-hubs-capture-metrics"></a>Event Hubs Capture メトリック
 
@@ -98,9 +98,9 @@ Azure Monitor でのメトリックの使用は現在無料です。 ただし�
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|キャプチャのバックログ (プレビュー)|選択された宛先にまだキャプチャされていないバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|キャプチャされたメッセージ (プレビュー)|指定された期間にわたって選択された宛先にキャプチャされたメッセージまたはイベントの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|キャプチャされたバイト数 (プレビュー)|指定された期間にわたって選択された宛先にキャプチャされたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|バックログのキャプチャ |選択された宛先にまだキャプチャされていないバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|キャプチャされたメッセージ数 |指定された期間にわたって選択された宛先にキャプチャされたメッセージまたはイベントの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|キャプチャされたバイト数 |指定された期間にわたって選択された宛先にキャプチャされたバイト数。<br/><br/> 単位:Bytes <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
 
 ## <a name="metrics-dimensions"></a>メトリックのディメンション
 

@@ -3,16 +3,17 @@ title: Azure Container Registry マルチ ステップ タスクによってイ�
 description: Azure Container Registry の ACR タスクの機能である、マルチ ステップ タスクの概要。これは、クラウド上でコンテナー イメージのビルド、テスト、および修正プログラムの適用を行うためのタスク ベースのワークフローを提供するものです。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89962fbce6863b16a0d8b229047eb19a821e37bb
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829584"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310566"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>ACR タスクでビルド、テスト、および修正プログラムの適用を行うマルチ ステップ タスクを実行する
 

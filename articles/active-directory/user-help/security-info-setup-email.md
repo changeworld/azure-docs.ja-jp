@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 720aafac79a67f64b0974dba0dd60c6aa24a8c54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ec93574a8da051b5cf77a37af1030d0c22dfc4a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480595"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382901"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>メール アドレスを使用するようにセキュリティ情報 (プレビュー) を設定する
+
 次の手順に従って、パスワードのリセット メソッドを追加できます。 これを初回に設定したら、 **[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
 
 パスワードのリセット メソッドを設定した後、[Authenticator アプリ](security-info-setup-auth-app.md)、[テキスト メッセージ](security-info-setup-text-msg.md)、または[電話呼び出し](security-info-setup-phone-number.md)を使用して、2 要素認証メソッドも設定する必要があります。
@@ -27,6 +28,7 @@ ms.locfileid: "60480595"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 ## <a name="set-up-your-email-address-from-the-security-info-page"></a>[セキュリティ情報] ページからメール アドレスを設定する
+
 組織の設定に応じて、セキュリティ情報メソッドの 1 つとしてメール アドレスを使用できます。
 
 >[!Note]
@@ -60,6 +62,7 @@ ms.locfileid: "60480595"
     セキュリティ情報が更新され、パスワードのリセットを使用するときに、自分のメール アドレスを使用して本人確認をできるようになります。
 
 ## <a name="delete-your-email-address-from-your-security-info-methods"></a>セキュリティ情報メソッドからメール アドレスを削除する
+
 セキュリティ情報メソッドとしてメール アドレスを使用しなくなった場合は、 **[セキュリティ情報]** ページから削除できます。
 
 >[!Important]
@@ -74,16 +77,19 @@ ms.locfileid: "60480595"
 2. 確認ボックスで **[はい]** を選択して、**メール アドレス**を削除します。 電子メール アカウントを削除すると、セキュリティ情報から削除され、 **[セキュリティ情報]** ページから消去されます。
 
 ## <a name="additional-security-info-methods"></a>追加のセキュリティ情報メソッド
+
 操作内容に基づき、本人確認のために組織から連絡が届きますが、その方法には追加の選択肢があります。 選択肢は次のようになっています。
 
 - **認証アプリ。** 認証アプリをダウンロードして使用する場合、2 段階認証やパスワード リセットのために承認通知かランダムに生成された承認コードを取得できます。 Microsoft Authenticator アプリの設定方法と使用方法に関する段階的な説明が必要な場合は、「[Set up security info to use an authenticator app](security-info-setup-auth-app.md)」(認証アプリを使用するようにセキュリティ情報を設定する) を参照してください。
 
 - **モバイル デバイスのテキスト。** モバイル デバイスの番号を入力し、2 段階認証やパスワード リセットに使用するテキスト コードを取得します。 テキスト メッセージ (SMS) による本人確認方法に関する段階的な説明が必要な場合は、「[Set up security info to use text messaging (SMS)](security-info-setup-text-msg.md)」(テキスト メッセージ (SMS) を使用するようにセキュリティ情報を設定する) を参照してください。
 
-- **モバイル デバイスまたは職場の電話の呼び出し。** モバイル デバイスの番号を入力し、電話の呼び出しで 2 段階認証やパスワード リセットを行います。 電話番号による本人確認方法に関する段階的な説明が必要な場合は、「[Set up security info to use phone calls](security-info-setup-phone-number.md)」 (電話を使用するようにセキュリティ情報を設定する) を参照してください。
+- **モバイル デバイスまたは職場の電話の呼び出し。** モバイル デバイスの番号を入力し、電話の呼び出しで 2 段階認証やパスワード リセットを行います。 電話番号による本人確認方法に関する段階的説明が必要な場合、「[電話を使用するようにセキュリティ情報を設定する](security-info-setup-phone-number.md)」を参照してください。
+
+- **セキュリティ キー。** Microsoft と互換性のあるセキュリティ キーを登録し、それを PIN と一緒に使用して、2 段階認証またはパスワードのリセットを行います。 セキュリティ キーによる本人確認方法に関する段階的説明が必要な場合、[セキュリティ キーを使用するようにセキュリティ情報を設定する](security-info-setup-security-key.md)方法に関するページを参照してください。
 
 - **セキュリティの質問。** 管理者が組織のために作成したいくつかのセキュリティの質問に答えます。 この選択肢はパスワード リセットの場合にのみ選択できます。2 段階認証には選択できません。 セキュリティの質問の設定方法に関する段階的な説明が必要な場合は、「[Set up security info to use security questions ](security-info-setup-questions.md)」(セキュリティの質問を使用するようにセキュリティ情報を設定する) を参照してください。
-    
+
     >[!Note]
     >一部の選択肢が表示されない場合、おそらく、組織がその方法を許可していません。 その場合、選択できる方法を選択するか、管理者に支援を要請する必要があります。
 

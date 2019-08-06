@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b2e9bf7fbe7d5940b517d97dcc15d21c30835001
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b000610b5cba6f768a629ad797500a57597f2569
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449210"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335700"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption 対応仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -28,21 +28,17 @@ Site Recovery では、ユーザーが、ターゲット リージョン内に�
 Azure portal から Disk Encryption 対応 VM のレプリケーションを有効にするには、ユーザーに次のアクセス許可が必要です。
 
 - Key Vault のアクセス許可
-    - List
-    - Create
-    - 取得
-
--   Key Vault シークレットのアクセス許可
-    - List
-    - Create
-    - 取得
-
+    - List、Create、Get
+    
+- Key Vault シークレットのアクセス許可
+    - シークレットの管理操作
+        - 取得、リスト、設定
+    
 - キー コンテナー キーのアクセス許可 (ディスク暗号化キーを暗号化するために VM でキー暗号化キーが使用される場合にのみ必須)
-    - List
-    - 取得
-    - Create
-    - 暗号化
-    - 復号化
+    - キーの管理操作
+        - 取得、リスト、作成
+    - 暗号化操作
+        - 暗号化と復号化
 
 アクセス許可を管理するには、ポータル内でキー コンテナー リソースに移動します。 ユーザーに必要なアクセス許可を追加します。 次の例は、ソース リージョンにあるキー コンテナー *ContosoWeb2Keyvault* へのアクセス許可を有効にする方法を示しています。
 

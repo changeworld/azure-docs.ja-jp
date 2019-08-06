@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 5a34cf3e41e04367b1cf38015861518fb74dd3f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 39d6090b14a16f505413154df2a78d42b3fb3f3c
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070943"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333702"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager の Traffic View
 
@@ -68,6 +68,25 @@ Azure Portal ポータルでは、トラフィック ビューのデータが表
 
 Traffic View を使用する場合は、提示される洞察の作成に使用されたデータ ポイントの数に基づいて課金されます。 現在使用されている唯一のデータ ポイントの種類は、Traffic Manager プロファイルに対して受信したクエリです。 価格の詳細については、[Traffic Manager の価格ページ](https://azure.microsoft.com/pricing/details/traffic-manager/)をご覧ください。
 
+## <a name="faqs"></a>FAQ
+
+* [トラフィック ビューは何をしますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+
+* [トラフィック ビューを使用することには、どのようなメリットがありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+
+* [トラフィック ビューは、Azure Monitor で使用できる Traffic Manager メトリックとは、どのように異なりますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+
+* [トラフィック ビューは EDNS クライアント サブネット情報を使用しますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+
+* [トラフィック ビューは何日分のデータを使用しますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+
+* [トラフィック ビューは外部エンドポイントをどのように処理しますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
+
+* [サブスクリプションのプロファイルごとにトラフィック ビューを有効にする必要がありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+
+* [トラフィック ビューをオフにするには、どうすればよいですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+
+* [トラフィック ビューはどのように課金されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
 
 ## <a name="next-steps"></a>次の手順
 

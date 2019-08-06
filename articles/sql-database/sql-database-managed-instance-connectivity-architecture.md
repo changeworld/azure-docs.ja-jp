@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: dbb5ee122e715aeaa66d786f02966beedd2447c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 960320e280a613a537f1918d93e4584a13a0b374
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522326"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309973"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ
 
@@ -97,7 +97,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-inbound-security-rules"></a>必須の受信セキュリティ規則
 
-| Name       |Port                        |Protocol|source           |宛先|Action|
+| EnableAdfsAuthentication       |Port                        |Protocol|source           |宛先|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |ALLOW |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
@@ -105,7 +105,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="mandatory-outbound-security-rules"></a>必須の送信セキュリティ規則
 
-| Name       |Port          |Protocol|source           |宛先|Action|
+| EnableAdfsAuthentication       |Port          |Protocol|source           |宛先|Action|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |ALLOW |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
@@ -122,7 +122,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 ### <a name="user-defined-routes"></a>ユーザー定義のルート
 
-|Name|アドレス プレフィックス|次ホップ|
+|EnableAdfsAuthentication|アドレス プレフィックス|次ホップ|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|仮想ネットワーク|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|インターネット|
@@ -228,7 +228,7 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 また、オンプレミスのプライベート IP 範囲が宛先として含まれるトラフィックを、仮想ネットワーク ゲートウェイまたは仮想ネットワーク アプライアンス (NVA) 経由でルーティングするルート テーブルにエントリを追加することもできます。
 
-仮想ネットワークにカスタム DNS が含まれる場合、カスタム DNS サーバーは \*.core.windows.net ゾーンのホスト名を解決できる必要があります。 Azure AD Authentication などの追加機能を使用するには、追加の FQDN 解決が必要になる可能性があります。 詳細については、[カスタム DNS の設定](sql-database-managed-instance-custom-dns.md)に関する記事を参照してください。
+仮想ネットワークにカスタム DNS が含まれる場合、カスタム DNS サーバーはパブリック DNS レコードを解決できる必要があります。 Azure AD Authentication などの追加機能を使用するには、追加の FQDN 解決が必要になる可能性があります。 詳細については、[カスタム DNS の設定](sql-database-managed-instance-custom-dns.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

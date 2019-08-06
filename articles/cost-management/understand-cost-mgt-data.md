@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 44b95c92f51ca9782fca492f3dec3142087ecc91
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 8aaaa6465b501cee83f4c2d8cb60729282651967
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797015"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384858"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -51,13 +51,13 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 
 _<sup>**1**</sup> 2014 年 5 月よりも前のデータについては、[Azure エンタープライズ ポータル](https://ea.azure.com)にアクセスしてください。_
 
-_<sup>**2**</sup> 2018 年 10 月 2 日より前のデータについては、[Azure アカウント センター](https://account.azure.com/subscriptions)にアクセスしてください。_
+_<sup>**2**</sup> 2018 年 10 月 2 日よりも前のデータについては、[Azure アカウント センター](https://account.azure.com/subscriptions)にアクセスしてください。_
 
 _<sup>**3**</sup> Microsoft 顧客契約は 2019 年 5 月に開始したため、これ以前の履歴データはありません。_
 
 _<sup>**4**</sup>クレジットベースの前払い制サブスクリプションの履歴データは、請求書と一致しない場合があります。以下の「[履歴データが請求書と一致しない場合がある](#historical-data-might-not-match-invoice)」をご覧ください。_
 
-次の表は、まだサポートされていないプランを示しています。
+次のプランはまだサポートされていません。
 
 | Category  | **プラン名** | **クォータ ID** | **プラン番号** |
 | --- | --- | --- | --- |
@@ -92,10 +92,11 @@ Cost Management に含まれるデータと含まれないデータを次の表�
 | Marketplace サービスの使用状況<sup>6</sup> | 税金 - 詳細については、[請求書の用語の説明](../billing/billing-understand-your-invoice.md)に関する記事を参照してください。 |
 | マーケットプレースでの購入<sup>6</sup>      | クレジット - 詳細については、[請求書の用語の説明](../billing/billing-understand-your-invoice.md)に関する記事を参照してください。 |
 | 予約購入<sup>7</sup>      |  |
+| 予約購入の償却額<sup>7</sup>      |  |
 
 _<sup>**5**</sup> Azure サービスの使用状況は、予約および交渉済みの価格に基づきます。_
 
-_<sup>**6**</sup> Marketplace サービスの使用状況は、現時点では従量課金制、MSDN、Visual Studio プランではご利用いただけません。_
+_<sup>**6**</sup> マーケットプレースでの購入は、現時点では従量課金制、MSDN、Visual Studio プランではご利用いただけません。_
 
 _<sup>**7**</sup> 現時点では、予約購入はエンタープライズ契約 (EA) アカウントでのみご利用いただけます。_
 

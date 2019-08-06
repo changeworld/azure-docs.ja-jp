@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/02/2019
-ms.openlocfilehash: 5eb3e94ff65e8a8b74f357a4cb8a517fd3837c5a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1bfc415b2e4dbc66e2afeae73b78079fb027a60c
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871810"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358832"
 ---
 # <a name="create-and-explore-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Azure portal で自動化された機械学習の実験を作成および参照する (プレビュー)
 
@@ -180,7 +180,7 @@ ms.locfileid: "67871810"
 
 ### <a name="view-training-run-details"></a>トレーニング実行の詳細の表示
 
-トレーニングのパフォーマンス メトリックと分布グラフと同様に、出力モデルのいずれかをドリル ダウンして、実行の詳細を表示します。 [グラフの詳細については、こちらを参照してください](how-to-track-experiments.md#understanding-automated-ml-charts)。
+トレーニングのパフォーマンス メトリックと分布グラフと同様に、出力モデルのいずれかをドリル ダウンして、実行の詳細を表示します。 [グラフの詳細については、こちらを参照してください](how-to-understand-automated-ml.md)。
 
 ![イテレーションの詳細](media/how-to-create-portal-experiments/iteration-details.png)
 
@@ -243,4 +243,5 @@ ms.locfileid: "67871810"
 ## <a name="next-steps"></a>次の手順
 
 * [自動化された機械学習の詳細](concept-automated-ml.md)と Azure Machine Learning について学習します。
+* [自動化された機械学習の結果を解釈します](how-to-understand-automated-ml.md)。
 * [Web サービスを使用する方法を学習します](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service)。

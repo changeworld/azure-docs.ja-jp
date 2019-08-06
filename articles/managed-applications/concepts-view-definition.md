@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: 6735787f9b43f98ab611584f3c7191c9f927dbc2
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: ff96bddef1b34f5a8bf743ccaaccba2da01534dc
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67479056"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335090"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure Managed Applications のビュー定義アーティファクト
 
@@ -32,6 +32,8 @@ ms.locfileid: "67479056"
 
 ```json
 {
+    "$schema": "https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#",
+    "contentVersion": "0.0.0.1",
     "views": [
         {
             "kind": "Overview",
@@ -84,7 +86,7 @@ ms.locfileid: "67479056"
                         "displayName": "Custom Context Action",
                         "path": "testCustomResource/testContextAction",
                         "icon": "Stop",
-                        "createUIDefinition": { },
+                        "createUIDefinition": { }
                     }
                 ],
                 "columns": [
@@ -126,6 +128,8 @@ ms.locfileid: "67479056"
 |header|いいえ|概要のヘッダー。|
 |description|いいえ|マネージド アプリケーションの説明。|
 |commands|いいえ|概要ページの追加のツールバーのボタンの配列。「[commands](#commands)」を参照してください。|
+
+![概要](./media/view-definition/overview.png)
 
 ## <a name="metrics"></a>メトリック
 
@@ -182,6 +186,8 @@ ms.locfileid: "67479056"
 |resourceTagFilter|いいえ|メトリックが表示されるリソース タグの配列 (単語 `or` で区切られます)。 リソースの種類のフィルターの上に適用されます。|
 |resourceType|はい|メトリックが表示されるリソースの種類。|
 
+![メトリック](./media/view-definition/metrics.png)
+
 ## <a name="custom-resources"></a>カスタム リソース
 
 `"kind": "CustomResources"`
@@ -228,6 +234,8 @@ ms.locfileid: "67479056"
 |commands|いいえ|CustomResources ビューの追加のツールバーのボタンの配列。「[commands](#commands)」を参照してください。|
 |columns|いいえ|カスタム リソースの列の配列。 定義されていない場合、`name` 列が既定で表示されます。 この列には `"key"` と `"displayName"` を含める必要があります。 キーについては、ビューに表示するプロパティのキーを指定します。 入れ子になっている場合は、`"key": "name"` や `"key": "properties.property1"` のように、ドットを区切り記号として使用します。 表示名については、ビューに表示するプロパティの表示名を指定します。 `"optional"` プロパティを指定することもできます。 true に設定すると、列がビュー内で既定で非表示となります。|
 
+![CustomResources](./media/view-definition/customresources.png)
+
 ## <a name="commands"></a>command
 
 コマンドは、ページ上に表示される追加のツールバーのボタンの配列です。 各コマンドは、**mainTemplate.json** で定義された Azure Custom Provider からの POST アクションを示します。 カスタム プロバイダーの概要については、「[Azure Custom Providers プレビューの概要](custom-providers-overview.md)」を参照してください。
@@ -252,7 +260,12 @@ ms.locfileid: "67479056"
 |icon|いいえ|コマンド ボタンのアイコン。 サポートされているアイコンの一覧は、[JSON スキーマ](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#)で定義されています。|
 |createUIDefinition|いいえ|コマンド用の UI 定義作成スキーマ。 UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。|
 
+## <a name="looking-for-help"></a>ヘルプを探しています
+
+Azure Managed Applications に関して不明な点がある場合には、[Stack Overflow](http://stackoverflow.com/questions/tagged/azure-managedapps) で質問してみてください。 同様の質問が既に質問され回答されているため、投稿する前にまず確認してください。 `azure-managedapps` タグを追加して早く応答を受け取りましょう。
+
 ## <a name="next-steps"></a>次の手順
 
 - マネージド アプリケーションの概要については、「[Azure マネージド アプリケーションの概要](overview.md)」を参照してください。
 - カスタム プロバイダーの概要については、「[Azure Custom Providers プレビューの概要](custom-providers-overview.md)」を参照してください。
+- Azure カスタム プロバイダーを使用した Azure マネージド アプリケーションの作成については、[カスタム プロバイダー アクションとリソースの種類を備えたマネージド アプリケーションを作成する方法に関するチュートリアル](tutorial-create-managed-app-with-custom-provider.md)を参照してください。

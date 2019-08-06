@@ -4,14 +4,14 @@ description: この記事では、Azure Cosmos DB の Azure Cosmos DB 内の変�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: e008b44ee2859f319d0250658d7c2beb190af1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d52ba1abc22aae6121ea6a36f943851dfcca7a0
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967163"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467664"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB の変更フィードの読み取り
 
@@ -23,7 +23,7 @@ ms.locfileid: "65967163"
 
 ## <a name="using-azure-functions"></a>Azure Functions の使用
 
-Azure Functions は、最も簡単で推奨されるオプションです。 Azure Functions のアプリケーション内で Azure Cosmos DB トリガーを作成するときに、接続先のコンテナーを選択できます。これにより、コンテナーに変更が加えられるたびに Azure Functions がトリガーされます。 トリガーを作成するには、Azure Functions ポータル、Azure Cosmos DB ポータル、または SDK を使用したプログラムを使用します。 Visual Studio と VS Code では、Azure Functions の作成がサポートされ、クロスプラットフォーム開発のために Azure Functions CLI を使用することもできます。 デスクトップでコードを記述してデバッグを行い、1 回のクリック操作で関数をデプロイできます。 詳しくは、[Azure Functions を使用したサーバーレス データベース コンピューティング](serverless-computing-database.md)および[変更フィードと Azure Functions の使用](change-feed-functions.md)に関する記事をご覧ください。
+Azure Functions は、最も簡単で推奨されるオプションです。 Cosmos DB 用の Azure Functions トリガーを作成するときに、接続先のコンテナーを選択でき、コンテナーに変更が加えられるたびに Azure Function がトリガーされます。 トリガーを作成するには、Azure Functions ポータル、Azure Cosmos DB ポータル、または SDK を使用したプログラムを使用します。 Visual Studio と VS Code では、Azure Functions の作成がサポートされ、クロスプラットフォーム開発のために Azure Functions CLI を使用することもできます。 デスクトップでコードを記述してデバッグを行い、1 回のクリック操作で関数をデプロイできます。 詳しくは、[Azure Functions を使用したサーバーレス データベース コンピューティング](serverless-computing-database.md)および[変更フィードと Azure Functions の使用](change-feed-functions.md)に関する記事をご覧ください。
 
 ## <a name="using-the-change-feed-processor-library"></a>変更フィード プロセッサ ライブラリの使用
 

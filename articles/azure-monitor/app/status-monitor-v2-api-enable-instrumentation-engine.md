@@ -12,21 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 79446e6676a35a1b51e5e0839eb539d730b499da
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: d4683a1cad5172f7104e745433bd141bcf36d56f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807129"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326371"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine-v040-alpha"></a>Status Monitor v2 API:Enable-InstrumentationEngine (v0.4.0-alpha)
+# <a name="status-monitor-v2-api-enable-instrumentationengine"></a>Status Monitor v2 API:Enable-InstrumentationEngine
 
 この記事では、[Az.ApplicationMonitor PowerShell モジュール](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)のメンバーであるコマンドレットについて説明します。
-
-> [!IMPORTANT]
-> 現在、Status Monitor v2 はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 一部の機能は、サポートされていなかったり、制限されていたりする場合があります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="description"></a>説明
 
@@ -34,7 +29,7 @@ ms.locfileid: "67807129"
 変更を有効にするために IIS を再起動してください。
 
 インストルメンテーション エンジンは、.NET SDK によって収集されたデータを補完できます。
-これは、マネージド プロセスの実行を説明するイベントおよびメッセージを収集します。 これらのイベントとメッセージには、依存関係の結果コード、HTTP 動詞、SQL コマンド テキストが含まれます。
+これは、マネージド プロセスの実行を説明するイベントおよびメッセージを収集します。 これらのイベントとメッセージには、依存関係の結果コード、HTTP 動詞、[SQL コマンド テキスト](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)が含まれます。
 
 インストルメンテーション エンジンは、次の場合に有効にします。
 - Enable コマンドレットを使用して監視を既に有効にしているが、インストルメンテーション エンジンは有効にしていなかった場合。

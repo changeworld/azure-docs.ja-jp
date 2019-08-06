@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 7e8b4480911f00afa8524ef4b81d697bb8ee5bcc
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6a9363472e1d5770232ca9a0b151fb309d9c4c75
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877454"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377445"
 ---
 ## <a name="create-a-cognitive-services-text-analytics-resource"></a>Cognitive Services Text Analytics リソースを作成する
 
@@ -25,16 +25,16 @@ ms.locfileid: "67877454"
 
     |Setting|値|
     |--|--|
-    |EnableAdfsAuthentication|名前 (2 から 64 文字) を入力します|
-    |Subscription|適切なサブスクリプションを選択します|
-    |Location|近くの場所を選択します|
-    |価格レベル| **S** (Standard 価格レベル) を入力します|
-    |Resource group|使用可能なリソース グループを選択します|
+    |EnableAdfsAuthentication|名前 (2 から 64 文字) を入力します。|
+    |Subscription|適切なサブスクリプションを選択します。|
+    |Location|近くの場所を選択します。|
+    |価格レベル| **S** (Standard 価格レベル) を入力します。|
+    |Resource group|使用可能なリソース グループを選択します。|
 
 1. **[作成]** を選択して、リソースが作成されるまで待ちます。 ブラウザーが、新たに作成されたリソースのページに自動的にリダイレクトされます。
 1. 構成された `endpoint` と API キーを収集します。
 
     |ポータルでの [リソース] タブ|Setting|値|
     |--|--|--|
-    |**概要**|エンドポイント|エンドポイントをコピーします。 `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0` のように表示されます|
+    |**概要**|エンドポイント|エンドポイントをコピーします。 `https://northeurope.api.cognitive.microsoft.com/text/analytics/v2.0` のように表示されます。|
     |**キー**|API キー|2 つのキーのうちの 1 つをコピーします。 スペースやダッシュを含まない 32 文字の英数字文字列 <`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`> です。|

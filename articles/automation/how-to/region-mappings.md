@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9faa261f4b6293d778c5da685f630a21fd88f600
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cd4500b4ef6492f0b6499bb1e9aa1a773313e860
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478574"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498366"
 ---
 # <a name="workspace-mappings"></a>ワークスペースのマッピング
 
@@ -66,7 +66,7 @@ Update Management、Change Tracking と Inventory、Start/Stop VMs during off-ho
 
 * スケジュールの更新 - 各スケジュールには、作成した更新のデプロイに一致する名前が付いています。
 
-* ソリューションに作成されたハイブリッド worker グループ - 各グループの名前は machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8 のようになります。
+* ソリューション用に作成されたハイブリッド ワーカー グループ -  それぞれ `machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8` のような名前が付いています。
 
 勤務時間外の VM の開始/停止ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
 

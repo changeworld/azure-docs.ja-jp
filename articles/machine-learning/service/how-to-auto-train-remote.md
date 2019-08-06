@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 00e4e9d5a1fc63dd73fe5a4dba7e1f1416cd08bc
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 852190f7b66c0d2c527d1784c72f963e11620064
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868882"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371110"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
@@ -46,17 +46,19 @@ ws = Workspace.from_config()
 from azureml.core.compute import AmlCompute
 from azureml.core.compute import ComputeTarget
 
-amlcompute_cluster_name = "automlcl" #Name your cluster
-provisioning_config = AmlCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2",
+amlcompute_cluster_name = "automlcl"  # Name your cluster
+provisioning_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2_V2",
                                                             # for GPU, use "STANDARD_NC6"
-                                                            #vm_priority = 'lowpriority', # optional
-                                                            max_nodes = 6)
+                                                            # vm_priority = 'lowpriority', # optional
+                                                            max_nodes=6)
 
-compute_target = ComputeTarget.create(ws, amlcompute_cluster_name, provisioning_config)
+compute_target = ComputeTarget.create(
+    ws, amlcompute_cluster_name, provisioning_config)
 
 # Can poll for a minimum number of nodes and for a specific timeout.
 # If no min_node_count is provided, it will use the scale settings for the cluster.
-compute_target.wait_for_completion(show_output = True, min_node_count = None, timeout_in_minutes = 20)
+compute_target.wait_for_completion(
+    show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
 リモート コンピューティング ターゲットとして `compute_target` オブジェクトを使用できるようになりました。
@@ -65,7 +67,7 @@ compute_target.wait_for_completion(show_output = True, min_node_count = None, ti
 + 64 文字未満にする必要があります。
 + 次の文字は使用できません。`\` ~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \\\\ | ; : \' \\" , < > / ?.`
 
-## <a name="access-data-using-getdata-function"></a>get_data () 関数を使用してデータにアクセスする
+## <a name="access-data-using-get_data-function"></a>get_data () 関数を使用してデータにアクセスする
 
 トレーニング データに対するリモート リソースのアクセスを用意します。 リモート コンピューティングで実行される自動機械学習実験の場合、`get_data()` 関数を使用してデータを取得する必要があります。
 
@@ -109,7 +111,8 @@ run_config.target = compute_target
 run_config.environment.docker.enabled = True
 run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
 
-dependencies = CondaDependencies.create(pip_packages=["scikit-learn", "scipy", "numpy"])
+dependencies = CondaDependencies.create(
+    pip_packages=["scikit-learn", "scipy", "numpy"])
 run_config.environment.python.conda_dependencies = dependencies
 ```
 
@@ -142,7 +145,7 @@ automl_config = AutoMLConfig(task='classification',
                              run_configuration=run_config,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
-                            )
+                             )
 ```
 
 ### <a name="enable-model-explanations"></a>モデル説明を有効にする
@@ -153,13 +156,13 @@ automl_config = AutoMLConfig(task='classification',
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
-                             compute_target = compute_target,
+                             compute_target=compute_target,
                              run_configuration=run_config,
                              data_script=project_folder + "/get_data.py",
                              **automl_settings,
                              model_explainability=True,
-                             X_valid = X_test
-                            )
+                             X_valid=X_test
+                             )
 ```
 
 ## <a name="submit-training-experiment"></a>トレーニング実験を送信する
@@ -208,24 +211,33 @@ remote_run = experiment.submit(automl_config, show_output=True)
 
 ## <a name="explore-results"></a>結果を探索する
 
-[トレーニングのチュートリアル](tutorial-auto-train-models.md#explore-the-results)と同じ Jupyter ウィジェットを使用して、結果のグラフと表を表示することができます。
+[トレーニングのチュートリアル](tutorial-auto-train-models.md#explore-the-results)で紹介したものと同じ [Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用して、結果のグラフと表を表示することができます。
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
+
 ウィジェットの静的画像を次に示します。  ノートブックで表内の任意の行をクリックすると、その実行の実行プロパティと出力ログが表示されます。   また、グラフの上のドロップダウンを使用して、各繰り返しについて使用できる各メトリックのグラフを表示することもできます。
 
 ![ウィジェットの表](./media/how-to-auto-train-remote/table.png)
 ![ウィジェットのプロット](./media/how-to-auto-train-remote/plot.png)
 
-ウィジェットに表示される URL をクリックすると、個々の実行の詳細を表示し、探索することができます。
+ウィジェットに表示される URL をクリックすると、個々の実行の詳細を表示し、探索することができます。  
+
+Jupyter Notebook を使用していない場合は、実行自体の URL を表示できます。
+
+```
+remote_run.get_portal_url()
+```
+
+ご利用のワークスペースで同じ情報にアクセスすることができます。  これらの結果の詳細については、「[自動機械学習の結果について](how-to-understand-automated-ml.md)」を参照してください。
 
 ### <a name="view-logs"></a>ログを表示する。
 
 `/tmp/azureml_run/{iterationid}/azureml-logs` にある DSVM 上のログを見つけます。
 
-## <a name="best-model-explanation"></a>最適なモデル説明
+## <a name="explain"></a> 最適なモデル説明
 
 モデル説明データを取得すると、モデルに関する詳細情報を表示して、バックエンドで実行されている機能に対して透明性を高めることができます。 この例では、最適なモデルに対してのみモデル説明を実行します。 パイプライン内のすべてのモデルに対して実行する場合は、実行時間が大幅に長くなります。 モデル説明情報には次が含まれます。
 

@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/19/2019
+ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 26637468f44e12f7ad66f907e0f6be3d907e578f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719311"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385716"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
 
@@ -30,7 +30,25 @@ ms.locfileid: "64719311"
 
 デバイス上で実行されているクライアント コードは、IoT ハブに送信するすべてのテレメトリ メッセージ上にアプリケーション プロパティ `temperatureAlert` を設定します。 30 C を超える温度を検出すると、クライアント コードはこのプロパティを `true` に、それ以外の場合は `false` に設定します。
 
-このトピックでは、`temperatureAlert = true` であるメッセージを Service Bus エンドポイントに送信するように IoT ハブ上のルーティングを設定した後、Service Bus エンドポイントに到着したメッセージでトリガーされ、ユーザーに電子メール通知を送信するロジック アプリを設定します。
+IoT ハブに到着したメッセージは次のような内容です。本文にテレメトリ データが含まれ、アプリケーション プロパティに `temperatureAlert` プロパティが含まれています (システム プロパティは示されていません)。
+
+```json
+{
+  "body": {
+    "messageId": 18,
+    "deviceId": "Raspberry Pi Web Client",
+    "temperature": 27.796111770668457,
+    "humidity": 66.77637926438427
+  },
+  "applicationProperties": {
+    "temperatureAlert": "false"
+  }
+}
+```
+
+IoT Hub メッセージ形式の詳細については、「[IoT Hub メッセージを作成し、読み取る](iot-hub-devguide-messages-construct.md)」を参照してください。
+
+このトピックでは、`temperatureAlert` プロパティが `true` であるメッセージを Service Bus エンドポイントに送信するように IoT ハブ上のルーティングを設定します。 次に、Service Bus エンドポイントに到着したメッセージでトリガーされ、ユーザーに電子メール通知を送信するロジック アプリを設定します。
 
 ## <a name="what-you-do"></a>作業内容
 

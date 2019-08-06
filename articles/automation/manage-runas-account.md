@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 49b8554f6064f036d4305cf7a5c1450c2f18c48d
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 318a9c2df7902ae89a731ca45b24b8bb6241faa1
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798472"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498389"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -34,7 +34,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
   * 指定された Automation アカウントに *AzureClassicRunAsCertificate* という名前の Automation 証明書資産を作成します。 この証明書資産には、管理証明書によって使用される証明書の秘密キーが格納されます。
   * 指定された Automation アカウントに *AzureClassicRunAsConnection* という名前の Automation 接続資産を作成します。 この接続資産には、サブスクリプション名、サブスクリプション ID、証明書の資産名が格納されます。
   * 作成または更新するには、サブスクリプションの共同管理者である必要があります
-  
+
   > [!NOTE]
   > Azure Cloud Solution Provider (Azure CSP) サブスクリプションは、Azure Resource Manager モデルのみをサポートしているため、Azure Resource Manager サービス以外のサービスはこのプログラムでは利用できません。 CSP サブスクリプションを使用する場合、Azure クラシック実行アカウントは作成されません。 Azure 実行アカウントは引き続き作成されます。 CSP サブスクリプションの詳細については、[CSP サブスクリプションで利用可能なサービス](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)に関するページを参照してください。
 
@@ -64,14 +64,14 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>ポータルで実行アカウントを作成する
 
-このセクションでは、以下の手順に従って、Azure Portal で Azure Automation アカウントを更新します。 実行アカウントとクラシック実行アカウントをそれぞれ作成します。 クラシック リソースを管理する必要がない場合は、Azure 実行アカウントのみを作成できます。  
+このセクションでは、以下の手順に従って、Azure Portal で Azure Automation アカウントを更新します。 実行アカウントとクラシック実行アカウントをそれぞれ作成します。 クラシック リソースを管理する必要がない場合は、Azure 実行アカウントのみを作成できます。
 
 1. サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用して、Azure Portal にサインインします。
 2. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]** を選択します。
 3. **[Automation アカウント]** ページで、Automation アカウントの一覧からご使用の Automation アカウントを選択します。
-4. 左側のウィンドウの **[アカウント設定]** セクションで、 **[実行アカウント]** を選択します。  
-5. 必要なアカウントに応じて、 **[Azure 実行アカウント]** または **[Azure クラシック実行アカウント]** を選択します。 **[Azure 実行アカウントを追加する]** または **[Azure クラシック実行アカウントを追加する]** のどちらかを選択すると、ウィンドウが表示されます。概要情報を確認してから、 **[作成]** をクリックして実行アカウントの作成を進めます。  
-6. Azure によって実行アカウントが作成されている間、メニューの **[通知]** で進行状況を追跡できます。 アカウントの作成中であることを示すバナーも表示されます。 このプロセスが完了するまでに数分かかることがあります。  
+4. 左側のウィンドウの **[アカウント設定]** セクションで、 **[実行アカウント]** を選択します。
+5. 必要なアカウントに応じて、 **[Azure 実行アカウント]** または **[Azure クラシック実行アカウント]** を選択します。 **[Azure 実行アカウントを追加する]** または **[Azure クラシック実行アカウントを追加する]** のどちらかを選択すると、ウィンドウが表示されます。概要情報を確認してから、 **[作成]** をクリックして実行アカウントの作成を進めます。
+6. Azure によって実行アカウントが作成されている間、メニューの **[通知]** で進行状況を追跡できます。 アカウントの作成中であることを示すバナーも表示されます。 このプロセスが完了するまでに数分かかることがあります。
 
 ## <a name="create-run-as-account-using-powershell"></a>PowerShell を使用して実行アカウントを作成する
 
@@ -87,7 +87,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 スクリプトの必須パラメーターである *SubscriptionID*、*ResourceGroup*、*AutomationAccountName* の値を取得するには、次の手順を実行します。
 
 1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]** を選択します。
-1. [Automation アカウント] ページで自分の Automation アカウントを選択し、 **[アカウント設定]** で **[プロパティ]** を選択します。  
+1. [Automation アカウント] ページで自分の Automation アカウントを選択し、 **[アカウント設定]** で **[プロパティ]** を選択します。
 1. **[プロパティ]** ページの **[サブスクリプション ID]** 、 **[名前]** 、および **[リソース グループ]** の値をメモします。
 
    ![Automation アカウントの [プロパティ] ページ](media/manage-runas-account/automation-account-properties.png)
@@ -158,18 +158,18 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
         Export-Certificate -Cert ("Cert:\localmachine\my\" + $Cert.Thumbprint) -FilePath $certPathCer -Type CERT | Write-Verbose
     }
 
-    function CreateServicePrincipal([System.Security.Cryptography.X509Certificates.X509Certificate2] $PfxCert, [string] $applicationDisplayName) {  
+    function CreateServicePrincipal([System.Security.Cryptography.X509Certificates.X509Certificate2] $PfxCert, [string] $applicationDisplayName) {
         $keyValue = [System.Convert]::ToBase64String($PfxCert.GetRawCertData())
         $keyId = (New-Guid).Guid
 
         # Create an Azure AD application, AD App Credential, AD ServicePrincipal
 
         # Requires Application Developer Role, but works with Application administrator or GLOBAL ADMIN
-        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $keyId) 
+        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $keyId)
         # Requires Application administrator or GLOBAL ADMIN
         $ApplicationCredential = New-AzureRmADAppCredential -ApplicationId $Application.ApplicationId -CertValue $keyValue -StartDate $PfxCert.NotBefore -EndDate $PfxCert.NotAfter
         # Requires Application administrator or GLOBAL ADMIN
-        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId
         $GetServicePrincipal = Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id
 
         # Sleep here for a few seconds to allow the service principal application to become active (ordinarily takes a few seconds)
@@ -187,7 +187,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
     }
 
     function CreateAutomationCertificateAsset ([string] $resourceGroup, [string] $automationAccountName, [string] $certifcateAssetName, [string] $certPath, [string] $certPlainPassword, [Boolean] $Exportable) {
-        $CertPassword = ConvertTo-SecureString $certPlainPassword -AsPlainText -Force   
+        $CertPassword = ConvertTo-SecureString $certPlainPassword -AsPlainText -Force
         Remove-AzureRmAutomationCertificate -ResourceGroupName $resourceGroup -AutomationAccountName $automationAccountName -Name $certifcateAssetName -ErrorAction SilentlyContinue
         New-AzureRmAutomationCertificate -ResourceGroupName $resourceGroup -AutomationAccountName $automationAccountName -Path $certPath -Name $certifcateAssetName -Password $CertPassword -Exportable:$Exportable  | write-verbose
     }
@@ -212,7 +212,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
     # Enable-AzureRmAlias
 
 
-    Connect-AzureRmAccount -Environment $EnvironmentName 
+    Connect-AzureRmAccount -Environment $EnvironmentName
     $Subscription = Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
     # Create a Run As account by using a service principal
@@ -289,29 +289,29 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
     > これで、**Connect-AzureRmAccount** のエイリアスは **Add-AzureRMAccount** に設定されました。 ライブラリ項目を検索して **Connect-AzureRMAccount** が表示されない場合は、**Add-AzureRmAccount** を使用するか、Automation アカウントで[モジュールを更新](automation-update-azure-modules.md)できます。
 
 1. コンピューターの**スタート**画面から、昇格されたユーザー権限で **Windows PowerShell** を起動します。
-1. 昇格されたコマンドライン シェルから、手順 1. で作成したスクリプトがあるフォルダーに移動します。  
+1. 昇格されたコマンドライン シェルから、手順 1. で作成したスクリプトがあるフォルダーに移動します。
 1. 必要な構成に応じたパラメーター値を使ってスクリプトを実行します。
 
-    **自己署名証明書を使用して実行アカウントを作成する**  
+    **自己署名証明書を使用して実行アカウントを作成する**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false
     ```
 
-    **自己署名証明書を使用して実行アカウントとクラシック実行アカウントを作成する**  
+    **自己署名証明書を使用して実行アカウントとクラシック実行アカウントを作成する**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true
     ```
 
-    **エンタープライズ証明書を使用して実行アカウントとクラシック実行アカウントを作成する**  
+    **エンタープライズ証明書を使用して実行アカウントとクラシック実行アカウントを作成する**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>
     ```
 
     **Azure Government クラウドで自己署名証明書を使用して実行アカウントとクラシック実行アカウントを作成する**
-  
+
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment
     ```
@@ -368,9 +368,46 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 1. 証明書が書き換えられている間、メニューの **[通知]** で進行状況を追跡できます。
 
+## <a name="auto-cert-renewal"></a>Automation Runbook を使用して証明書の自動更新をセットアップする
+
+証明書を自動的に更新するには、Automation Runbook を使用します。 [GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) で次のスクリプトを使用すると、Automation アカウントでこの機能が有効になります。
+
+- `GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1` スクリプトは、実行アカウントの証明書を更新する週単位のスケジュールを作成します。
+- このスクリプトは、**AutomationRunAsCredential** Runbook を Automation アカウントに追加します。
+  - 次のスクリプトでは、GitHub で Runbook コードを表示することもできます。[Update-AutomationRunAsCredential.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1)。
+  - ファイルで PowerShell コードを使用して、必要に応じて証明書を手動で更新することもできます。
+
+更新プロセスをすぐにテストするには、次の手順に従います。
+
+1. **Update-AutomationRunAsCredential** Runbook を編集し、次に示すように、122 行目の `Exit(1)` コマンドの前にコメント文字 (`#`) を配置します。
+
+   ```powershell
+   #Exit(1)
+   ```
+
+2. Runbook を発行します。
+3. Runbook を開始します。
+4. 次のコードを使用して、正常に更新されたことを確認します。
+
+   ```powershell
+   (Get-AzAutomationCertificate -AutomationAccountName TestAA
+                                -Name AzureRunAsCertificate
+                                -ResourceGroupName TestAutomation).ExpiryTime.DateTime
+   ```
+
+   ```Output
+   Thursday, November 7, 2019 7:00:00 PM
+   ```
+
+5. テスト後、Runbook を編集し、**手順 1** で追加したコメント文字を削除します。
+6. Runbook を**発行**します。
+
+> [!NOTE]
+> スクリプトを実行するには、Azure Active Directory の**全体管理者**または**会社の管理者**である必要があります。
+
 ## <a name="limiting-run-as-account-permissions"></a>実行アカウントのアクセス許可の制限
 
-Azure 内のリソースに対する自動化の対象を制御するために、PowerShell ギャラリーの [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) スクリプトを実行し、既存の実行アカウントのサービス プリンシパルを変更して、カスタム ロールの定義を作成および使用できます。 このロールには、[Key Vault](https://docs.microsoft.com/azure/key-vault/) を除くすべてのリソースへのアクセス許可があります。 
+Azure 内のリソースに対する自動化の対象を制御するために、PowerShell ギャラリーの [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) スクリプトを実行し、既存の実行アカウントのサービス プリンシパルを変更して、カスタム ロールの定義を作成および使用できます。 このロールには、[Key Vault](https://docs.microsoft.com/azure/key-vault/) を除くすべてのリソースへのアクセス許可があります。
 
 > [!IMPORTANT]
 > `Update-AutomationRunAsAccountRoleAssignments.ps1` スクリプトの実行後、実行アカウントを使用して key Vault にアクセスする Runbook は機能しなくします。 Azure key Vault を呼び出すには、アカウント内の Runbook を見直す必要があります。
@@ -385,7 +422,7 @@ $roleDefinition.NotActions.Add("Microsoft.Compute/*")
 $roleDefinition | Set-AzureRMRoleDefinition
 ```
 
-実行アカウントによって使用されるサービス プリンシパルが**共同作成者**に含まれるか、あるいはカスタム ロール定義であるかを確認するには、Automation アカウントに移動し、 **[アカウント設定]** で **[実行アカウント]**  >  **[Azure 実行アカウント]** を選択します。 **[ロール]** の下に、使用されているロール定義が見つかります。 
+実行アカウントによって使用されるサービス プリンシパルが**共同作成者**に含まれるか、あるいはカスタム ロール定義であるかを確認するには、Automation アカウントに移動し、 **[アカウント設定]** で **[実行アカウント]**  >  **[Azure 実行アカウント]** を選択します。 **[ロール]** の下に、使用されているロール定義が見つかります。
 
 [![](media/manage-runas-account/verify-role.png "実行アカウントのロールを確認する")](media/manage-runas-account/verify-role-expanded.png#lightbox)
 

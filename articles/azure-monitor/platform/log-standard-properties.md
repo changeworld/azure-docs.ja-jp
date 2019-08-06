@@ -10,22 +10,25 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: 50804e1f6ab4f352239d3f405e5b41e4e0c58d14
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: b9a4a0a18e120a2843e23d44b03c0fe53b0d84fc
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67292823"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370682"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor ログ レコードの標準プロパティ
 Azure Monitor ログ内のデータは、[Log Analytics ワークスペースまたは Application Insights アプリケーションのいずれかにレコード セットとして格納され](../log-query/logs-structure.md)、それぞれが独自のプロパティ セットを備えた特定のデータ型を持っています。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。
 
-これらのプロパティの一部は、まだ実装の途中ですので、いくつかのデータ型では表示され、他のデータ型では表示されない可能性があります。
+> [!NOTE]
+> 標準プロパティのいくつかは、Log Analytics のスキーマ ビューや IntelliSense に表示されず、また、出力でプロパティを明示的に指定しない限り、クエリ結果にも表示されません。
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated と timestamp
-**TimeGenerated** プロパティ (Log Analytics ワークスペース) と **timestamp** プロパティ (Application Insights アプリケーション) には、レコードが作成された日時が含まれています。 これは、時間でフィルター処理または集計するために使用する一般的なプロパティを提供します。 Azure portal でビューまたはダッシュボードの時間範囲を選択した場合は、TimeGenerated または timestamp を使用して結果がフィルター処理されます。
+**TimeGenerated** プロパティ (Log Analytics ワークスペース) と **timestamp** プロパティ (Application Insights アプリケーション) には、データ ソースによってレコードが作成された日時が含まれています。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](data-ingestion-time.md)」を参照してください。
+
+**TimeGenerated** と **timestamp** は、時間でフィルター処理または集計するために使用する一般的なプロパティを提供します。 Azure portal でビューまたはダッシュボードの時間範囲を選択した場合は、TimeGenerated または timestamp を使用して結果がフィルター処理されます。 
 
 ### <a name="examples"></a>例
 
@@ -48,6 +51,20 @@ exceptions
 | sort by timestamp asc 
 ```
 
+## <a name="_timereceived"></a>\_TimeReceived
+**\_TimeReceived** プロパティには、Azure クラウドにある Azure Monitor のインジェスト ポイントでレコードが受信された日時が格納されます。 データ ソースとクラウドとの間における待ち時間の問題の特定に役立てることができます。 たとえば、エージェントから送信されているデータの遅延を引き起こしているネットワークの問題が考えられます。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](data-ingestion-time.md)」を参照してください。
+
+次のクエリは、エージェントからのイベント レコードについて、1 時間ごとの平均待ち時間を返します。 これには、エージェントからクラウドまでの時間と、レコードがログ クエリで利用できるようになるまでの合計時間が含まれます。
+
+```Kusto
+Event
+| where TimeGenerated > ago(1d) 
+| project TimeGenerated, TimeReceived = _TimeReceived, IngestionTime = ingestion_time() 
+| extend AgentLatency = toreal(datetime_diff('Millisecond',TimeReceived,TimeGenerated)) / 1000
+| extend TotalLatency = toreal(datetime_diff('Millisecond',IngestionTime,TimeGenerated)) / 1000
+| summarize avg(AgentLatency), avg(TotalLatency) by bin(TimeGenerated,1hr)
+``` 
+
 ## <a name="type-and-itemtype"></a>Type と itemType
 **Type** プロパティ (Log Analytics ワークスペース) と **itemType** プロパティ (Application Insights アプリケーション) では、レコードの取得元であり、レコード型と考えることもできるテーブルの名前が保持されます。 このプロパティは、複数のテーブルからのレコードを結合するクエリ (`search` オペレーターを使用するクエリなど) で、異なる種類のレコードを区別するために役立ちます。 場所によっては、**Type** の代わりに **$table** を使用できます。
 
@@ -58,9 +75,13 @@ exceptions
 search * 
 | where TimeGenerated > ago(1h)
 | summarize count() by Type
-```
 
-## <a name="resourceid"></a>\_ResourceId
+```
+## <a name="_itemid"></a>\_ItemId
+**\_ItemId** プロパティは、レコードの一意識別子を保持します。
+
+
+## <a name="_resourceid"></a>\_ResourceId
 **\_ResourceId** プロパティは、レコードが関連付けられているリソースの一意識別子を保持します。 これにより、ご自分のクエリを特定のリソースからのレコードのみに範囲を絞り込んだり、複数のテーブルにわたって関連するデータを結合したりするために使用する標準プロパティが提供されます。
 
 Azure リソースの場合、 **_ResourceId** の値は [Azure リソース ID の URL](../../azure-resource-manager/resource-group-template-functions-resource.md) です。 現在、プロパティは Azure リソースに制限されていますが、オンプレミスのコンピューターなど、Azure 外のリソースに拡張される予定です。
@@ -106,7 +127,7 @@ union withsource = tt *
 
 複数の種類のデータにわたるスキャンは、実行コストが高いため、これらの `union withsource = tt *` クエリは多用しないようにします。
 
-## <a name="isbillable"></a>\_IsBillable
+## <a name="_isbillable"></a>\_IsBillable
 **\_IsBillable** プロパティでは、取り込まれたデータが課金対象かどうかを指定します。 **\_IsBillable** が _false_ のデータは無料で収集され、Azure アカウントには課金されません。
 
 ### <a name="examples"></a>例
@@ -133,8 +154,9 @@ union withsource = tt *
 | summarize dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
 ```
 
-## <a name="billedsize"></a>\_BilledSize
+## <a name="_billedsize"></a>\_BilledSize
 **\_BilledSize** プロパティでは、 **\_IsBillable** が true の場合に Azure アカウントに課金されるデータのサイズをバイト単位で指定します。
+
 
 ### <a name="examples"></a>例
 コンピューターごとに、取り込まれた課金可能イベントのサイズを表示するには `_BilledSize` プロパティを使用します。サイズはバイト単位で示されます。

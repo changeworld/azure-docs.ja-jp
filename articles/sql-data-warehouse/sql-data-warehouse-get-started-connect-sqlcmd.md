@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse への接続 (sqlcmd) | Microsoft Docs
 description: sqlcmd コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に接続し、クエリを実行します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 72760c5123703a664695c1be4d286a38e96ecc3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873320"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479507"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>sqlcmd で SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "65873320"
 [sqlcmd][sqlcmd] コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に接続し、クエリを実行します。  
 
 ## <a name="1-connect"></a>1.接続
-[sqlcmd][sqlcmd] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL Data Warehouse データベースの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
+[sqlcmd][sqlcmd]の使用を開始するには、コマンド プロンプトを開いて「 **sqlcmd** 」と入力し、続けて SQL Data Warehouse データベースの接続文字列を入力します。 接続文字列では、次のパラメーターが必要になります。
 
 * **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します。
 * **データベース (-d):** データベース名。

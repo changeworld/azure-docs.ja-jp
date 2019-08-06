@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 7/3/2019
 ms.author: dapine
-ms.openlocfilehash: ab7ce8b4a538e6a286a00285069a22878c5d88d9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5e442f38a8e81170eeeac2f31f00a7d0eeb08d2b
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877465"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377399"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Azure Kubernetes Service クラスター リソースの作成
 
@@ -24,14 +24,14 @@ ms.locfileid: "67877465"
 
     |Setting|値|
     |--|--|
-    |Subscription|適切なサブスクリプションを選択します|
-    |Resource group|使用可能なリソース グループを選択します|
-    |Kubernetes クラスター名|名前 (小文字) を入力します|
-    |リージョン|近くの場所を選択します|
-    |Kubernetes バージョン|1.12.8 (既定値)|
-    |DNS 名プレフィックス|自動的に作成されますが、オーバーライドできます|
+    |Subscription|適切なサブスクリプションを選択します。|
+    |Resource group|使用可能なリソース グループを選択します。|
+    |Kubernetes クラスター名|名前 (小文字) を入力します。|
+    |リージョン|近くの場所を選択します。|
+    |Kubernetes バージョン|1.12.8 (既定値)。|
+    |DNS 名プレフィックス|自動的に作成されますが、オーバーライドできます。|
     |ノード サイズ|Standard DS2 v2:<br>`2 vCPUs`、`7 GB`|
-    |ノード数|スライダーを既定値のままにします|
+    |ノード数|スライダーを既定値のままにします。|
 
 1. **[スケール]** タブで、 **[Virtual nodes]\(仮想ノード\)** および **[Virtual Machine Scale Sets (プレビュー)]** は既定値のままにします。
 1. **[認証]** タブで、 **[サービス プリンシパル]** と **[Enable RBAC]\(RBAC を有効にする\)** のセットは既定値のままにします。

@@ -13,14 +13,15 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaed7357221f5b766bfb8b9e1a9031c08854ac9a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 901067e198616dba390e0e1162ec26a0b11768f1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60477288"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383142"
 ---
 # <a name="access-and-use-apps-on-the-my-apps-portal"></a>マイ アプリ ポータルでアプリにアクセスして使用する
+
 Web ベースの**マイ アプリ** ポータルでは、職場または学校アカウントを使用して、社内にあるクラウドベースのアプリを表示して起動したり、一部のプロフィール情報とアカウント情報を更新したり、**グループ**情報を確認したり、アプリとグループの**アクセス レビュー**を実行したりすることができます。 **マイ アプリ** ポータルにアクセスできない場合は、ヘルプデスクに連絡してアクセス許可を得る必要があります。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
@@ -29,6 +30,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 >このコンテンツはユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
 
 ## <a name="supported-browsers"></a>サポートされているブラウザー
+
 次の Web ブラウザーのいずれかから、**マイ アプリ** ポータルにアクセスできます。
 
 - Google Chrome
@@ -40,9 +42,10 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 - Internet Explorer、バージョン 11 (制限付きサポート)
 
 ## <a name="download-and-install-the-my-apps-secure-sign-in-extension"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能をダウンロードしてインストールする
+
 求められた場合は、マイ アプリによるセキュリティで保護されたサインイン拡張機能をダウンロードしてインストールします。 この拡張機能は、シングル サインオン プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。 既に組織によりシングル サインオンが設定されている場合は、拡張機能は自動的にインストールされ、このセクションをスキップできます。
 
-この拡張機能は次の場合に役立ちます。 
+この拡張機能は次の場合に役立ちます。
 
 - サインイン ページから直接アプリにサインインする。
 
@@ -53,6 +56,7 @@ Web ベースの**マイ アプリ** ポータルでは、職場または学校�
 - リモート時に[アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)を利用して社内 URL を使用する。
 
 ### <a name="to-download-and-install-the-extension"></a>拡張機能をダウンロードしてインストールするには
+
 使用しているブラウザーに基づいて、拡張機能をダウンロードしてインストールします。
 
 - **Google Chrome。** Chrome Web ストアから、[マイ アプリによるセキュリティで保護されたサインイン拡張](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)機能に移動して、 **[Add to Chrome]** (Chrome に追加) を選択します。
@@ -82,17 +86,18 @@ Intune で管理されるブラウザーから、または iOS または Android
 ### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>コンピューター上のマイ アプリ ポータルにアクセスして使用する
 組織のクラウドベースのアプリにアクセスして使用するアクセス許可がある場合、**マイ アプリ** ポータルを通じてそれらに到達できます。
 
-1.  職場または学校のアカウントにサインインします。
+1. 職場または学校のアカウントにサインインします。
 
-2.  Web ブラウザーを開いて https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
+2. Web ブラウザーを開いて https://myapps.microsoft.com に移動するか、組織から与えられたリンクを使用します。 たとえば、 https://myapps.microsoft.com/contoso.com など、組織のカスタマイズされたページに転送されることがあります。
 
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
 3. **[アプリ]** ページから、使用開始するアプリを選択します。
-    
+
     アプリの新しいページが開きます。このページでサインインしたり (必要な場合)、アプリを使用し始められます。
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-intune-managed-browser"></a>Intune Managed Browser でマイ アプリ ポータルにアクセスして使用する
+
 iOS および Android デバイスで Intune Managed Browser から組織のアプリを表示し使用します。
 
 1. モバイル デバイス上では、[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) および [Google Play ストア](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)から Intune Managed Browser アプリをダウンロードしインストールします。
@@ -102,10 +107,11 @@ iOS および Android デバイスで Intune Managed Browser から組織のア�
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
 3. **[アプリ]** ページから、使用開始するアプリを選択します。
-    
+
     アプリの新しいページが開きます。このページでサインインしたり (必要な場合)、アプリを使用し始められます。
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>iOS デバイス上のマイ アプリ ポータルにアクセスして使用する
+
 iOS バージョン 7 以降を実行している iPhone または iPad デバイスから **マイ アプリ** ポータルを表示および使用します。 [マイ アプリ モバイル アプリ](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)をインストールして、iOS デバイス上の組織のアプリにアクセスすることもできます。 
 
 1. モバイル デバイスでは、Safari などの Web ブラウザー アプリを起動します。
@@ -115,10 +121,11 @@ iOS バージョン 7 以降を実行している iPhone または iPad デバ�
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
 3. **[アプリ]** ページから、使用開始するアプリを選択します。
-    
+
     アプリの新しいページが開きます。このページでサインインしたり (必要な場合)、アプリを使用し始められます。
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-android-device"></a>Android デバイス上のマイ アプリ ポータルにアクセスして使用する
+
 Android デバイス上の**マイ アプリ** ポータルを表示して使用します。
 
 1. モバイル デバイスでは、Google Chrome などの Web ブラウザー アプリを起動します。
@@ -128,10 +135,11 @@ Android デバイス上の**マイ アプリ** ポータルを表示して使用
     **[アプリ]** ページが表示され、組織が所有し、お客様が利用できるクラウドベースのアプリがすべて示されます。
 
 3. **[アプリ]** ページから、使用開始するアプリを選択します。
-    
+
     アプリの新しいページが開きます。このページでサインインしたり (必要な場合)、アプリを使用し始められます。
 
 ## <a name="add-a-new-app-to-the-my-apps-portal"></a>マイ アプリ ポータルに新しいアプリを追加する
+
 管理者からアクセス許可が与えられている場合は、新しいアプリを **[アプリ]** ページに追加できます。
 
 1. **[アプリ]** ページから **[アプリの追加]** を選択します。
@@ -147,10 +155,11 @@ Android デバイス上の**マイ アプリ** ポータルを表示して使用
     アプリの中には、追加される前に管理者の承認が必要なものがあります。 このような状況では、アプリは、管理者が承認するまで、**アプリ** ページに追加されません。
 
 ## <a name="next-steps"></a>次の手順
-**アプリ** ページに到達した後、次のアクションを実行できます。
 
-- [プロファイル情報を変更する](my-apps-portal-end-user-update-profile.md)。
+**アプリ** ページに到達した後、次の操作を実行できます。
 
-- [グループ関連の情報を表示し、更新する](my-apps-portal-end-user-groups.md)。
+- [プロファイルの情報を変更する](my-apps-portal-end-user-update-profile.md)
 
-- [自分のアクセス レビューを実行する](my-apps-portal-end-user-access-reviews.md)。
+- [グループ関連の情報を表示し、更新する](my-apps-portal-end-user-groups.md)
+
+- [自分のアクセス レビューを実行する](my-apps-portal-end-user-access-reviews.md)

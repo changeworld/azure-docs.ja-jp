@@ -4,7 +4,7 @@ description: クラウド プールで自動スケールを有効にして、プ
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118113"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68500031"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードを拡張するための自動スケールの数式の作成
 
@@ -40,7 +40,7 @@ Azure Batch は定義したパラメーターに基づいてプールを自動�
 >
 
 ## <a name="automatic-scaling-formulas"></a>自動スケールの数式
-自動スケーリングの数式は、ユーザーが定義する文字列値であり、1 つまたは複数のステートメントが含まれています。 自動スケールの数式は、プールの [autoScaleFormula][rest_autoscaleformula] 要素 (Batch REST) または [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] プロパティ (Batch .NET) に割り当てられます。 Batch サービスは、定義された数式を使用して、次の処理期間中のプール内の計算ノードの目標数を決定します。 この数式は 8 KB 以下の文字列で、最大 100 個のステートメントをセミコロンで区切って指定できます。また、改行やコメントを使用することもできます。
+自動スケーリングの数式は、ユーザーが定義する文字列値であり、1 つまたは複数のステートメントが含まれています。 自動スケーリングの数式は、プールの [autoScaleFormula][rest_autoscaleformula] 要素 (Batch REST) または [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] プロパティ (Batch .NET) に割り当てられます。 Batch サービスは、定義された数式を使用して、次の処理期間中のプール内の計算ノードの目標数を決定します。 この数式は 8 KB 以下の文字列で、最大 100 個のステートメントをセミコロンで区切って指定できます。また、改行やコメントを使用することもできます。
 
 自動スケールの数式は、Batch 自動スケール "言語" と捉えることができます。 数式は自由形式のステートメントになっていて、サービス定義の変数 (Batch サービスによって定義された変数) とユーザー定義の変数 (ユーザーによって定義された変数) の両方を含めることができます。 組み込みの型、演算子、関数を使用して、これらの値に対する各種の操作を実行できます。 たとえば、ステートメントは次の形式を使用する場合があります。
 
@@ -59,10 +59,11 @@ $variable2 = function2($OtherServiceDefinedVariable, $variable1);
 
 ノードの目標数は、現在のプール内のその種類のノードの数より多くなることも、少なくなることも、同じになることもあります。 プールの自動スケールの数式は、Batch によって一定間隔で評価されます (「[自動スケールの間隔](#automatic-scaling-interval)」をご覧ください)。 Batch はプール内の各種類のノードの目標数を、自動スケールの数式の評価時に割り出されたノード数と一致するように調整します。
 
-### <a name="sample-autoscale-formula"></a>自動スケールの数式の例
+### <a name="sample-autoscale-formulas"></a>自動スケールの数式の例
 
-ほとんどのシナリオで機能するように調整できる自動スケールの数式の例を次に示します。 必要に応じて、例の式の `startingNumberOfVMs` 変数と `maxNumberofVMs`変数を調整できます。 この数式は専用ノードをスケールしますが、優先順位の低いノードのスケールにも適用されるように変更できます。 
+ほとんどのシナリオで機能するように調整できる 2 つの自動スケールの数式の例を次に示します。 必要に応じて、例の式の `startingNumberOfVMs` 変数と `maxNumberofVMs` 変数を調整できます。
 
+#### <a name="pending-tasks"></a>保留中のタスク
 ```
 startingNumberOfVMs = 1;
 maxNumberofVMs = 25;
@@ -72,6 +73,17 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 ```
 
 この自動スケールの数式では、プールは最初は 1 つの VM で作成されます。 `$PendingTasks` メトリックにより、実行中またはキューに置かれているタスクの数が定義されます。 この数式により、最後の 180 秒間の保留タスク平均数が判明し、`$TargetDedicatedNodes` 変数が適宜設定されます。 この数式により、専用ノードの目標数が 25 台の VM を超えることはありません。 新しいタスクが送信されると、プールは自動的に拡大します。 タスクが完了すると、VM が 1 台ずつ解放され、自動スケーリングの数式によってプールが縮小します。
+
+この数式は専用ノードをスケールしますが、優先順位の低いノードのスケールにも適用されるように変更できます。
+
+#### <a name="preempted-nodes"></a>Preempted Node (割り込まれたノード) 
+```
+maxNumberofVMs = 25;
+$TargetDedicatedNodes = min(maxNumberofVMs, $PreemptedNodeCount.GetSample(180 * TimeInterval_Second));
+$TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicatedNodes);
+```
+
+この例では、25 個の優先順位の低いノードから始まるプールを作成します。 優先順位の低いノードが割り込まれるたびに、専用のノードに置き換えられます。 最初の例と同様に、`maxNumberofVMs` 変数は、プールが 25 台の VM を超過することを防ぎます。 この例は、優先順位の低い VM を活用する場合に役立ちます。また、プールの有効期間中、割り込みが一定数に留まるようにします。
 
 ## <a name="variables"></a>変数
 自動スケールの数式には、**サービス定義**の変数と**ユーザー定義**の変数の両方を使用できます。 サービス定義の変数は Batch サービスに組み込まれています。 サービス定義の変数には、読み取り/書き込み可能な変数と読み取り専用の変数があります。 ユーザー定義の変数は、ユーザーが定義する変数です。 前のセクションで示した例の数式では、`$TargetDedicatedNodes` と`$PendingTasks` がサービス定義の変数です。 `startingNumberOfVMs` と `maxNumberofVMs` がユーザー定義の変数です。
@@ -280,7 +292,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
             <li>$TargetLowPriorityNodes</li>
             <li>$CurrentDedicatedNodes</li>
             <li>$CurrentLowPriorityNodes</li>
-            <li>$preemptedNodeCount</li>
+            <li>$PreemptedNodeCount</li>
             <li>$SampleNodeCount</li>
     </ul></p>
     <p>次のサービス定義の変数は、ノード リソースの使用状況に基づいて調整を行う場合に有用です。</p>
@@ -352,15 +364,19 @@ $totalDedicatedNodes =
 $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 ```
 
-## <a name="create-an-autoscale-enabled-pool-with-net"></a>.NET で自動スケール対応のプールを作成する
+## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Batch の SDK で自動スケーリング対応のプールを作成する
+
+プールの自動スケーリングは、[Batch の SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch REST API](https://docs.microsoft.com/rest/api/batchservice/)、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)、[Batch CLI](batch-cli-get-started.md) を使用して構成できます。 このセクションでは、.NET と Python の両方の例を紹介します。
+
+### <a name="net"></a>.NET
 
 .NET で自動スケール対応のプールを作成するには、次の手順を実行します。
 
 1. [BatchClient.PoolOperations.CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool) でプールを作成します。
-2. [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) プロパティを `true` に設定します。
-3. [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) プロパティを自動スケールの数式で設定します。
-4. (省略可能) [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) プロパティを設定します (既定では 15 分)。
-5. [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) または [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) で、プールをコミットします。
+1. [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) プロパティを `true` に設定します。
+1. [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) プロパティを自動スケールの数式で設定します。
+1. (省略可能) [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) プロパティを設定します (既定では 15 分)。
+1. [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) または [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) で、プールをコミットします。
 
 次のコード スニペットを使用すると、.NET で自動スケール対応のプールを作成できます。 このプールでは、自動スケールの数式によって、専用ノードの目標数を月曜日は 5 に、それ以外の曜日は 1 に設定しています。 [自動スケールの間隔](#automatic-scaling-interval)は、30 分に設定されます。 次に示す C# スニペットまたはこの記事で示すその他の C# スニペットでは、`myBatchClient` は適切に初期化された [BatchClient][net_batchclient] クラスのインスタンスです。
 
@@ -380,10 +396,8 @@ await pool.CommitAsync();
 >
 >
 
-Batch .NET のほか、その他の [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch REST](https://docs.microsoft.com/rest/api/batchservice/)、[Batch PowerShell コマンドレット](batch-powershell-cmdlets-get-started.md)、[Batch CLI](batch-cli-get-started.md) のいずれかを使用して自動スケールを構成できます。
+#### <a name="automatic-scaling-interval"></a>自動スケールの間隔
 
-
-### <a name="automatic-scaling-interval"></a>自動スケールの間隔
 既定では、Batch サービスは自動スケールの数式に従って 15 分ごとにプールのサイズを調整します。 この間隔は、次のプール プロパティを使用して構成できます。
 
 * [CloudPool.AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .NET)
@@ -396,12 +410,56 @@ Batch .NET のほか、その他の [Batch SDK](batch-apis-tools.md#azure-accoun
 >
 >
 
+### <a name="python"></a>Python
+
+同様に、自動スケーリング対応のプールを Python SDK で作成できます。
+
+1. プールを作成してその構成を指定します。
+1. サービス クライアントにプールを追加します。
+1. 作成した数式でプールの自動スケーリングを有効にします。
+
+```python
+# Create a pool; specify configuration
+new_pool = batch.models.PoolAddParameter(
+    id="autoscale-enabled-pool",
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
+          publisher="Canonical",
+          offer="UbuntuServer",
+          sku="18.04-LTS",
+          version="latest"
+            ),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
+    vm_size="STANDARD_D1_v2",
+    target_dedicated_nodes=0,
+    target_low_priority_nodes=0
+)
+batch_service_client.pool.add(new_pool) # Add the pool to the service client
+
+formula = """$curTime = time();
+             $workHours = $curTime.hour >= 8 && $curTime.hour < 18; 
+             $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5; 
+             $isWorkingWeekdayHour = $workHours && $isWeekday; 
+             $TargetDedicated = $isWorkingWeekdayHour ? 20:10;""";
+
+# Enable autoscale; specify the formula
+response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formula=formula,
+                                            auto_scale_evaluation_interval=datetime.timedelta(minutes=10), 
+                                            pool_enable_auto_scale_options=None, 
+                                            custom_headers=None, raw=False)
+```
+
+> [!TIP]
+> その他の Python SDK の使用例については、GitHub の [Batch Python クイックスタート リポジトリ](https://github.com/Azure-Samples/batch-python-quickstart)を参照してください。
+>
+>
+
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>既存のプールでの自動スケールの有効化
 
 各 Batch SDK には自動スケールを有効にする方法が用意されています。 例:
 
 * [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
-* [プールの自動スケーリングを有効にする][rest_enableautoscale] (REST API)
+* [プールで自動スケールを有効にする][rest_enableautoscale] (REST API)
 
 既存のプールで自動スケールを有効にする際には、次の点に注意してください。
 
@@ -416,7 +474,7 @@ Batch .NET のほか、その他の [Batch SDK](batch-apis-tools.md#azure-accoun
 >
 >
 
-次の C# コード スニペットでは、[Batch .NET][net_api] ライブラリを使用して、既存のプールの自動スケールを有効にします。
+この C# コード スニペットでは、[Batch .NET][net_api] ライブラリを使用し、既存のプールで自動スケールを有効にします。
 
 ```csharp
 // Define the autoscaling formula. This formula sets the target number of nodes

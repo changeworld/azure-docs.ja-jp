@@ -11,18 +11,18 @@ ms.date: 10/18/2018
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 94c9c3f997143d72262c1ba3d8dbfea90d6f920c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf4dc55d0ec17daf4c611563dd7aee3a06aa192b
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61347731"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384695"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>イベントに応答してパイプラインを実行するトリガーを作成する
 
 この記事では、Data Factory のパイプラインで作成できるイベントベースのトリガーについて説明します。
 
-イベントドリブン アーキテクチャ (EDA) は、イベントの運用、検出、使用、および応答を含む一般的なデータ統合パターンです。 多くの場合、データ統合シナリオでは、Data Factory ユーザーがイベントに基づいてパイプラインをトリガーする必要があります。 Data Factory は [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) と統合され、イベントに対してパイプラインをトリガーすることができるようになりました。
+イベントドリブン アーキテクチャ (EDA) は、イベントの運用、検出、使用、および応答を含む一般的なデータ統合パターンです。 多くの場合、データ統合シナリオでは、Data Factory ユーザーが、Azure Storage アカウントのファイルの到着や削除などのイベントに基づいてパイプラインをトリガーする必要があります。 Data Factory は [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) と統合され、イベントに対してパイプラインをトリガーすることができるようになりました。
 
 この機能の概要とデモンストレーションについては、以下の 10 分間の動画を視聴してください。
 
@@ -34,34 +34,46 @@ ms.locfileid: "61347731"
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 
-### <a name="create-a-new-event-trigger"></a>新しいイベント トリガーを作成する
+このセクションでは、Azure Data Factory ユーザー インターフェイス内でイベント トリガーを作成する方法について説明します。
 
-一般的なイベントは、Azure Storage アカウントでのファイルの到着、またはファイルの削除です。 Data Factory のパイプラインでこのイベントに応答するトリガーを作成できます。
+1. **作成キャンバス**に移動します
 
-> [!NOTE]
-> この統合では、バージョン 2 のストレージ アカウント (汎用) のみがサポートされます。
+2. 左下隅にある **[トリガー]** ボタンをクリックします
+
+3. **[+ 新規]** をクリックして、トリガーの作成サイド ナビゲーションを開きます
+
+4. **[イベント]** のトリガーの種類を選択します
 
 ![新しいイベント トリガーを作成する](media/how-to-create-event-trigger/event-based-trigger-image1.png)
 
-### <a name="configure-the-event-trigger"></a>イベント トリガーを構成する
+5. [Azure サブスクリプション] ドロップダウンからストレージ アカウントを選択するか、ストレージ アカウントのリソース ID を使用して手動で選択します。 イベントを発生させるコンテナーを選択します。 コンテナーの選択は省略可能ですが、すべてのコンテナーを選択すると、多数のイベントが発生する可能性があることに注意してください。
 
-**[Blob path begins with]\(Blob パスの先頭\)** と **[Blob path ends with]\(Blob パスの末尾\)** のプロパティでは、イベントを受け取るコンテナー、フォルダー、および BLOB の名前を指定できます。 この記事で後述する例に示すように、 **[Blob path begins with]\(Blob パスの先頭\)** と **[Blob path ends with]\(Blob パスの末尾\)** のプロパティにはさまざまなパターンを使用できます。 これらのプロパティの少なくとも 1 つを指定する必要があります。
+   > [!NOTE]
+   > イベント トリガーでは現在、バージョン 2 のストレージ アカウント (汎用) のみがサポートされています。
 
-![イベント トリガーを構成する](media/how-to-create-event-trigger/event-based-trigger-image2.png)
+   > [!NOTE]
+   > Azure Event Grid の制限により、Azure Data Factory は、ストレージ アカウントあたり最大 500 のイベント トリガーのみをサポートします。
 
-### <a name="select-the-event-trigger-type"></a>イベント トリガーの種類を選択する
+6. **[Blob path begins with]** (次で始まる BLOB パス) と **[Blob path ends with]** (次で終わる BLOB パス) のプロパティでは、イベントを受け取るコンテナー、フォルダー、および BLOB の名前を指定できます。 イベント トリガーでは、これらのプロパティの少なくとも 1 つを定義する必要があります。 この記事で後述する例に示すように、 **[Blob path begins with]\(Blob パスの先頭\)** と **[Blob path ends with]\(Blob パスの末尾\)** のプロパティにはさまざまなパターンを使用できます。
 
-ファイルがストレージの場所に到着し、対応する BLOB が作成されるとすぐに、このイベントがトリガーされ、Data Factory パイプラインが実行されます。 Data Factory のパイプラインで、BLOB 作成イベント、BLOB 削除イベント、または両方のイベントに応答するトリガーを作成できます。
+    * **次で始まる BLOB パス:** BLOB パスはフォルダーパスで始める必要があります。 有効な値として、`2018/` および `2018/april/shoes.csv` があります。 コンテナーが選択されていない場合、このフィールドを選択することはできません。
+    * **次で終わる BLOB パス:** BLOB パスは、ファイル名または拡張子で終わる必要があります。 有効な値として、`shoes.csv` および `.csv` があります。 コンテナーとフォルダー名は省略可能ですが、指定する場合は、`/blobs/` セグメントで区切る必要があります。 たとえば、'orders' という名前のコンテナーには、`/orders/blobs/2018/april/shoes.csv` の値を指定できます。 任意のコンテナー内のフォルダーを指定するには、先頭の '/' 文字を省略します。 たとえば、`april/shoes.csv` は、任意のコンテナーの 'april' というフォルダー内の `shoes.csv` という名前の任意のファイルでイベントをトリガーします。 
 
-![イベントとしてトリガーの種類を選択する](media/how-to-create-event-trigger/event-based-trigger-image3.png)
+7. トリガーが **[Blob created]** (作成された BLOB) イベント、 **[Blob deleted]** (削除された BLOB) イベント、またはその両方に応答するかどうかを選択します。 指定されたストレージの場所で、各イベントは、トリガーに関連付けられている Data Factory パイプラインをトリガーします。
 
-### <a name="map-trigger-properties-to-pipeline-parameters"></a>トリガー プロパティをパイプライン パラメーターにマップする
+    ![イベント トリガーを構成する](media/how-to-create-event-trigger/event-based-trigger-image2.png)
 
-特定の BLOB に対してイベント トリガーが発生した場合、イベントはその BLOB のフォルダー パスとファイル名を、プロパティ `@triggerBody().folderPath` および `@triggerBody().fileName` にキャプチャします。 パイプラインでこれらのプロパティの値を使用するには、プロパティをパイプライン パラメーターにマップする必要があります。 プロパティをパラメーターにマップしたら、パイプライン全体で `@pipeline().parameters.parameterName` 式を使用して、トリガーでキャプチャされた値にアクセスできます。
+8. トリガーを構成したら、 **[次へ: データのプレビュー]** をクリックします。 この画面には、イベント トリガーの構成に一致する既存の BLOB が表示されます。 特定のフィルターがあることを確認します。 対象範囲が広くなりすぎるフィルターを構成すると、多数のファイルに一致する場合があり、コストに相当の影響が及ぶ可能性があります。 フィルター構成が確認されたら、 **[完了]** をクリックします。
 
-![パイプライン パラメーターへのプロパティのマッピング](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+    ![イベント トリガー データのプレビュー](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
-たとえば、前のスクリーンショットでは、 `.csv` で終わる BLOB パスがストレージ アカウントで作成されたときに発生するようにトリガーが構成されています。 その結果、`.csv` 拡張子を持つ BLOB がストレージ アカウント内の任意の場所で作成されたときに、`folderPath` および `fileName` プロパティでは新しい BLOB の場所がキャプチャされます。 たとえば、`@triggerBody().folderPath` が `/containername/foldername/nestedfoldername` などの値を持ち、`@triggerBody().fileName` が `filename.csv` などの値を持つとします。 この例では、これらの値はパイプライン パラメーターの `sourceFolder` および `sourceFile` にマップされます。 これらをそれぞれ `@pipeline().parameters.sourceFolder` および `@pipeline().parameters.sourceFile` として、パイプライン全体で使用することができます。
+9. このトリガーにパイプラインをアタッチするには、パイプライン キャンバスにアクセスし、 **[トリガーの追加]** をクリックして **[新規作成/編集]** を選択します。 サイド ナビゲーションが表示されたら、 **[Choose trigger...]** (トリガーの選択...) ドロップダウンをクリックし、作成したトリガーを選択します。 **[次へ: データのプレビュー]** をクリックして構成が正しいことを確認し、 **[次へ]** をクリックして [データのプレビュー] が正しいことを確認します。
+
+10. パイプラインにパラメーターがある場合は、トリガー実行パラメーター サイド ナビゲーションで指定できます。 イベント トリガーは、BLOB のフォルダー パスとファイル名を、プロパティ `@triggerBody().folderPath` および `@triggerBody().fileName` にキャプチャします。 パイプラインでこれらのプロパティの値を使用するには、プロパティをパイプライン パラメーターにマップする必要があります。 プロパティをパラメーターにマップしたら、パイプライン全体で `@pipeline().parameters.parameterName` 式を使用して、トリガーでキャプチャされた値にアクセスできます。 終了したら **[完了]** をクリックします。
+
+    ![パイプライン パラメーターへのプロパティのマッピング](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+
+前の例では、トリガーは .csv で終わる BLOB パスがコンテナー sample-data のフォルダー event-testing で作成されたときに起動するように構成されています。 **folderPath** と **fileName** のプロパティは、新しい BLOB の場所をキャプチャします。 たとえば、MoviesDB.csv が sample-data/event-testing のパスに追加された場合、`@triggerBody().folderPath` には `sample-data/event-testing` の値が、`@triggerBody().fileName` には `moviesDB.csv` の値が含まれます。 これらの値は、例では、パイプライン パラメーター `sourceFolder` および `sourceFile` にマップされ、それぞれ `@pipeline().parameters.sourceFolder` および `@pipeline().parameters.sourceFile` としてパイプライン全体で使用できます。
 
 ## <a name="json-schema"></a>JSON スキーマ
 
@@ -79,7 +91,7 @@ ms.locfileid: "61347731"
 このセクションでは、イベントベースのトリガー設定の例を示します。
 
 > [!IMPORTANT]
-> 以下の例に示すように、コンテナーとフォルダー、コンテナーとファイル、またはコンテナー、フォルダー、およびファイルを指定するたびに、パスの `/blobs/` セグメントを含める必要があります。
+> 以下の例に示すように、コンテナーとフォルダー、コンテナーとファイル、またはコンテナー、フォルダー、およびファイルを指定するたびに、パスの `/blobs/` セグメントを含める必要があります。 **blobPathBeginsWith** の場合、Azure Data Factory UI は、トリガー JSON のフォルダーとコンテナー名の間に自動的に `/blobs/` を追加します。
 
 | プロパティ | 例 | 説明 |
 |---|---|---|

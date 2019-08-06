@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault の一般的なセキュリティ属性
-description: Azure Key Vault を評価するための一般的なセキュリティ属性のチェックリスト
+title: Azure Key Vault のセキュリティ属性
+description: Azure Key Vault を評価するためのセキュリティ属性のチェックリスト
 services: key-vault
 author: msmbaldwin
 manager: barbkess
@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1c2265ff5f4c444121bf70c35145703f1b9fe981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 836d025c5bc69da9606c9a6172ac6a43caaaf29b
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66000193"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444012"
 ---
 # <a name="security-attributes-for-azure-key-vault"></a>Azure Key Vault のセキュリティ属性
 
@@ -25,8 +25,8 @@ ms.locfileid: "66000193"
 
 | セキュリティ属性 | はい/いいえ | メモ |
 |---|---|--|
-| 保存時の暗号化:<ul><li>サーバー側暗号化</li><li>ユーザーが管理するキーによるサーバー側暗号化</li><li>その他の暗号化機能 (クライアント側や常に暗号化など)</ul>| はい | すべてのオブジェクトが暗号化されます。 |
-| 転送中の暗号化:<ul><li>Express Route 暗号化</li><li>VNet 内の暗号化</li><li>VNet 間暗号化</ul>| はい | すべての通信が暗号化された API 呼び出しを介して行われます。 |
+| 保存時の暗号化 (サーバー側暗号化、お客様が管理するキーによるサーバー側暗号化、およびその他の暗号化機能)| はい | すべてのオブジェクトが暗号化されます。 |
+| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | すべての通信が暗号化された API 呼び出しを介して行われます。 |
 | 暗号化キーの処理 (CMK や BYOK など)| はい | ユーザーが Key Vault 内のすべてのキーを制御します。 ハードウェア セキュリティ モジュール (HSM) バックアップ キーが指定されている場合、FIPS レベル 2 HSM により、キー、証明書、またはシークレットが保護されます。 |
 | 列レベルの暗号化 (Azure Data Services)| 該当なし |  |
 | API 呼び出しの暗号化| はい | HTTPS を使用します。 |

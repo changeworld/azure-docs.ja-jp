@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/02/2019
+ms.date: 07/22/2019
 ms.author: raynew
-ms.openlocfilehash: f6edbe19429b38d68aea1f1ecfe426c9b2d194d0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 507ca6daa30a19b73848d6d3cf253390baf496af
+ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810082"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68372461"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V の評価と移行のサポート マトリックス
 
@@ -24,21 +24,36 @@ ms.locfileid: "67810082"
 
 この表は、Hyper-V VM に関してサポートされるシナリオをまとめたものです。
 
-**Deployment** | **詳細*** 
---- | --- 
+**Deployment** | **詳細***
+--- | ---
 **オンプレミスの Hyper-V VM を評価する** | 最初の評価を[設定](tutorial-prepare-hyper-v.md)します。<br/><br/> 大規模な評価を[実行](scale-hyper-v-assessment.md)します。
 **Hyper-V VM を Azure に移行する** | Azure への移行を[試します](tutorial-migrate-hyper-v.md)。
 
-    
+
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate プロジェクト
 
 **サポート** | **詳細**
 --- | ---
 Azure のアクセス許可 | Azure Migrate プロジェクトを作成するには、サブスクリプションの共同作成者または所有者のアクセス許可が必要です。
-Hyper-V VM | 単一のプロジェクトで最大 10,000 個の Hyper-V VM を評価します。
+Hyper-V VM | 1 つのプロジェクトで最大 10,000 の Hyper-V VM を評価します。
 
-評価の上限に達するまでは、プロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
+評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
+
+**地理的な場所:** Azure Migrate プロジェクトは、さまざまな地域で作成することができます。 プロジェクトを作成できるのはこれらの地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
+
+
+ **地理的な場所** | **メタデータ ストレージの場所**
+ --- | ---
+ Azure Government | 米国政府バージニア州
+ アジア太平洋 | 東南アジアまたは東アジア
+ ヨーロッパ | 南ヨーロッパまたは西ヨーロッパ
+ イギリス | 英国南部または英国西部
+ 米国 | 米国中部または米国西部 2
+
+
+ > [!NOTE]
+ > Azure Government は現在、[古いバージョン](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions)の Azure Migrate でのみサポートされます。
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>評価 - Hyper-V ホストの要件
@@ -59,12 +74,12 @@ Hyper-V VM | 単一のプロジェクトで最大 10,000 個の Hyper-V VM を�
 | **オペレーティング システム** | Azure でサポートされているすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システム。 |
 | **アクセス許可**           | 評価する各 Hyper-V VM に対する管理者のアクセス許可が必要です。 |
 | **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
-| **Azure に必要な変更** | 一部の VM では、Azure で実行できるように変更が必要になる場合があります。 次のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。<br/> - Red Hat Enterprise Linux 6.5+、7.0+<br/> - CentOS 6.5+、7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8<br/><br/> その他のオペレーティング システムでは、手動で調整してから移行する必要があります。 関連する記事にその手順が含まれています。 |
-| **Linux ブート**                 | /boot が専用パーティション上にある場合、OS ディスク上に存在する必要があり、複数のディスクにまたがることはできません。<br/> /boot がルート (/) パーティションの一部である場合、‘/’ パーティションは OS ディスク上にある必要があり、他のディスクにまたがることはできません。 |
+| **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 次のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。<br/> - Red Hat Enterprise Linux 6.5+、7.0+<br/> - CentOS 6.5+、7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8<br/><br/> その他のオペレーティング システムについては、移行前に手動で調整する必要があります。 関連する記事には、その手順が記載されています。 |
+| **Linux ブート**                 | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。 |
 | **UEFI ブート**                  | UEFI ブートを使用した VM の移行はサポートされません。 |
-| **暗号化されたディスク/ボリューム**    | 暗号化されたディスク/ボリュームを含む VM の移行はサポートされません。 |
-| **RDM/パススルー ディスク**      | RDM またはパススルー ディスクが VM にある場合、これらのディスクは Azure にレプリケートされません。 |
-| **NFS**                        | VM 上のボリュームとしてマウントされた NFS ボリュームは、レプリケートされません。 |
+| **暗号化されたディスクまたはボリューム**    | 暗号化されたディスクまたはボリュームを含む VM の移行はサポートされません。 |
+| **RDM またはパススルー ディスク**      | RDM またはパススルー ディスクが VM に存在する場合、これらのディスクは Azure にレプリケートされません。 |
+| **NFS**                        | VM 上のボリュームとしてマウントされた NFS ボリュームはレプリケートされません。 |
 | **ターゲット ディスク**                | Azure Migrate の評価では、マネージド ディスクのみを含む Azure VM への移行が推奨されます。 |
 
 
@@ -86,16 +101,16 @@ VM を評価するには、Azure Migrate アプライアンスがインターネ
 
 - アプライアンスをデプロイするときに、以下の表にまとめた URL への接続チェックが Azure Migrate によって実行されます。
 - URL ベースの firewall.proxy を使用している場合は、表の URL へのアクセスを許可し、URL の検索中に受信されるすべての CNAME レコードがプロキシによって解決されることを確認してください。
-- インターセプト プロキシがある場合は、プロキシ サーバーからアプライアンスへのサーバー証明書のインポートが必要になる場合があります。 
+- インターセプト プロキシがある場合は、プロキシ サーバーからアプライアンスへのサーバー証明書のインポートが必要になる場合があります。
 
-    
+
 **URL** | **詳細**  
---- | --- 
+--- | ---
 *.portal.azure.com | Azure portal への移動
 *.windows.net | Azure サブスクリプションにサインインします。
 *.microsoftonline.com | アプライアンスからサービスへの通信のための Azure Active Directory アプリケーションの作成。
 management.azure.com | アプライアンスからサービスへの通信のための Azure Active Directory アプリケーションの作成。
-dc.services.visualstudio.com | ログ記録と監視 
+dc.services.visualstudio.com | ログ記録と監視
 *.vault.azure.net | アプライアンスとサービス間の通信時の Azure Key Vault のシークレットを管理します。
 
 
@@ -104,8 +119,8 @@ dc.services.visualstudio.com | ログ記録と監視
 次の表は、評価のためのポート要件をまとめたものです。
 
 **デバイス** | **Connection**
---- | --- 
-**アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/> https://<appliance-ip-or-name>:44368 という URL を使用し、ポート 44368 で、アプライアンス管理アプリにリモート アクセスするための受信接続<br/> ポート 443 で、検出とパフォーマンスのメタデータを Azure Migrate に送信するための送信接続。
+--- | ---
+**アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/> https://<appliance-ip-or-name>:44368 という URL を使用して、ポート 44368 でアプライアンス管理アプリにリモートでアクセスするインバウンド接続。<br/> ポート 443 で、検出とパフォーマンスのメタデータを Azure Migrate に送信するための送信接続。
 **Hyper-V ホスト/クラスター** | Common Information Model (CIM) セッションを使用し、WinRM ポート 5985 (HTTP) と 5986 (HTTPS) で、Hyper-V VM の構成とパフォーマンスのメタデータをプルするための受信接続。
 
 ## <a name="migration-hyper-v-host-requirements"></a>移行 - Hyper-V ホストの要件
@@ -123,12 +138,12 @@ dc.services.visualstudio.com | ログ記録と監視
 | **オペレーティング システム** | Azure でサポートされているすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システム。 |
 | **アクセス許可**           | 評価する各 Hyper-V VM に対する管理者のアクセス許可が必要です。 |
 | **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
-| **Azure に必要な変更** | 一部の VM では、Azure で実行できるように変更が必要になる場合があります。 次のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。<br/> - Red Hat Enterprise Linux 6.5+、7.0+<br/> - CentOS 6.5+、7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8<br/><br/> その他のオペレーティング システムでは、手動で調整してから移行する必要があります。 関連する記事にその手順が含まれています。 |
-| **Linux ブート**                 | /boot が専用パーティション上にある場合、OS ディスク上に存在する必要があり、複数のディスクにまたがることはできません。<br/> /boot がルート (/) パーティションの一部である場合、‘/’ パーティションは OS ディスク上にある必要があり、他のディスクにまたがることはできません。 |
+| **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 次のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。<br/> - Red Hat Enterprise Linux 6.5+、7.0+<br/> - CentOS 6.5+、7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8<br/><br/> その他のオペレーティング システムについては、移行前に手動で調整する必要があります。 関連する記事には、その手順が記載されています。 |
+| **Linux ブート**                 | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。 |
 | **UEFI ブート**                  | UEFI ブートを使用した VM の移行はサポートされません。 |
-| **暗号化されたディスク/ボリューム**    | 暗号化されたディスク/ボリュームを含む VM の移行はサポートされません。 |
-| **RDM/パススルー ディスク**      | RDM またはパススルー ディスクが VM にある場合、これらのディスクは Azure にレプリケートされません。 |
-| **NFS**                        | VM 上のボリュームとしてマウントされた NFS ボリュームは、レプリケートされません。 |
+| **暗号化されたディスクまたはボリューム**    | 暗号化されたディスクまたはボリュームを含む VM の移行はサポートされません。 |
+| **RDM またはパススルー ディスク**      | RDM またはパススルー ディスクが VM に存在する場合、これらのディスクは Azure にレプリケートされません。 |
+| **NFS**                        | VM 上のボリュームとしてマウントされた NFS ボリュームはレプリケートされません。 |
 | **ターゲット ディスク**                | マネージド ディスクのみを含む Azure VM に移行することができます。 |
 
 
@@ -152,22 +167,17 @@ time.windows.com | システム時刻とグローバル時刻間の時刻同期�
 次の表は、VM 移行用の Hyper-V ホストと VM のポート要件をまとめたものです。
 
 **デバイス** | **Connection**
---- | --- 
+--- | ---
 Hyper-V ホスト/VM | HTTPS ポート 443 で、VM レプリケーション データを Azure Migrate に送信するための送信接続。
 
-  
-## <a name="migration-vm-disk-support"></a>移行 - VM ディスクのサポート 
+
+## <a name="migration-vm-disk-support"></a>移行 - VM ディスクのサポート
 
 **サポート** | **詳細**
 --- | ---
 移行されたディスク | VM は、Azure 内のマネージド ディスク (Standard HHD、Premium SSD) にのみ移行できます。
-   
+
 
 ## <a name="next-steps"></a>次の手順
 
 移行のために [Hyper-V VM の評価を準備](tutorial-prepare-hyper-v.md)します。
-
-
-
-
- 

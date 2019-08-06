@@ -1,19 +1,19 @@
 ---
 title: Spark の設定を構成する - Azure HDInsight
 description: Azure HDInsight クラスター用に Spark を構成する方法。
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: d5dca3f4517f3d24b765652f420a38c258ad9a2e
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: eb948aa2b683f426831e1b0d34b44f814eab6b9f
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190918"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441929"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 
@@ -57,7 +57,7 @@ Apache Spark のシステム構成には 3 つの場所があります。
 
 ## <a name="view-cluster-configuration-settings"></a>クラスターの構成設定を表示する
 
-クラスターでパフォーマンスの最適化を実行する前に、現在の HDInsight クラスターの構成設定を確認します。 Azure Portal で Spark クラスター ウィンドウの **[ダッシュボード]** リンクをクリックして、HDInsight ダッシュボードを起動します。 クラスター管理者のユーザー名とパスワードでログインします。
+クラスターでパフォーマンスの最適化を実行する前に、現在の HDInsight クラスターの構成設定を確認します。 Azure Portal で Spark クラスター ウィンドウの **[ダッシュボード]** リンクをクリックして、HDInsight ダッシュボードを起動します。 クラスター管理者のユーザー名とパスワードでサインインします。
 
 Apache Ambari Web UI に、主要なクラスター リソースの使用率メトリックのダッシュボード ビューが表示されます。  Ambari ダッシュボードには、Apache Spark の構成と、インストールされているその他のサービスが表示されます。 ダッシュボードには **[Config History]\(構成履歴\)** タブがあり、Spark を含むインストールされているすべてのサービスの構成情報を見ることができます。
 

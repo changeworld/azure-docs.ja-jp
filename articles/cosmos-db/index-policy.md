@@ -4,14 +4,14 @@ description: Azure Cosmos DB でのインデックス作成の自動化とパフ
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 07/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 3f19668cc4fb4f4f4a900c157aa79de83ad1b79b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 01e3e1f1c9bffee0604de1260e8e466f5b1d229d
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163724"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467868"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
@@ -73,6 +73,8 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 - インデックスを作成する必要があるパスを選択的に含めるためにルート パスを除外する。
 
 - 英数字や _ (アンダースコア) を含む通常文字から成るパスの場合は、パス文字列を二重引用符で囲んでエスケープする必要はありません ("/path/?" など)。 他の特殊文字を含むパスの場合は、パス文字列を二重引用符で囲んでエスケープする必要があります ("/\"path-abc\"/?" など)。 パスの中に特殊文字が予測される場合は、安全のために、すべてのパスをエスケープすることができます。 機能的には、すべてのパスをエスケープしても、特殊文字を含むパスだけをエスケープしても何も違いはありません。
+
+- システム プロパティ "etag" は、インデックス作成の対象となるパスに etag が追加されていない限り、既定でインデックス作成から除外されます。
 
 インデックス作成ポリシーの例については、[こちらのセクション](how-to-manage-indexing-policy.md#indexing-policy-examples)を参照してください。
 

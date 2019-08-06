@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 07/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: e20f6fc0dc8dbe02b09490f62ce84af12aa31b87
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ad9c752898733286701db2d0f0b1fc40029b7521
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621226"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68370712"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>チュートリアル:Azure Sentinel プレビューを使用して脅威を検出する
 
@@ -33,7 +33,7 @@ Azure Sentinel に[データ ソースを接続した](quickstart-onboard.md)後
 このチュートリアルは、Azure Sentinel で脅威を検出するためのものです。
 > [!div class="checklist"]
 > * 検出ルールの作成
-> * 脅威に対応する
+> * 脅威への対応を自動化する
 
 ## <a name="create-detection-rules"></a>検出ルールの作成
 
@@ -83,14 +83,24 @@ Azure Sentinel に[データ ソースを接続した](quickstart-onboard.md)後
 
 
 
-## <a name="respond-to-threats"></a>脅威に対応する
+## <a name="automate-threat-responses"></a>脅威への対応を自動化する
 
-Azure Sentinel には、プレイブックを使用して脅威に対応するための 2 つの主要なオプションが用意されています。 アラートがトリガーされたときに自動的に実行するようにプレイブックを設定することも、アラートに応答してプレイブックを手動で実行することもできます。
+SIEM や SOC チームには、定期的にセキュリティ アラートが殺到することがあります。 生成されるアラートの量が非常に多いため、対応するセキュリティ管理者は途方に暮れています。 この結果、多くのアラートを調査することができず、組織は見過ごした攻撃に対して脆弱なままになっていることがほとんどです。 
 
-- プレイブックを構成するときに、アラートのトリガー時に自動的に実行するようにプレイブックを設定します。 
+これらのアラートの多くは、ほとんどではないにしても、定義された特定の修復アクションで対処できる繰り返し発生するパターンに準拠しています。 Azure Sentinel では、プレイブック内で修復を定義することが既にできるようになっています。 また、プレイブック定義の一部としてリアルタイム オートメーションを設定して、特定のセキュリティ アラートに対する定義済みの対応を完全に自動化することもできます。 リアルタイム オートメーションを使用すると、対応チームは、繰り返し発生するタイプのアラートに対する所定の対応を完全に自動化することにより、作業負荷を大幅に削減できます。これにより、一般的でないアラート、パターンの分析、脅威ハンティングなどに専念することができます。
 
-- **[プレイブックの表示]** をクリックし、続いて実行するプレイブックを選択することにより、アラート内部からプレイブックを手動で実行します。
+対応を自動化するには:
 
+1. 対応を自動化するアラートを選択します。
+1. Azure Sentinel ワークスペースのナビゲーション メニューから、 **[分析]** を選択します。
+1. 自動化するアラートを選択します。 
+1. **[アラート ルールの編集]** ページの **[Real-time automation]\(リアルタイム オートメーション\)** で、このアラート ルールが一致したときに実行する**トリガー対象のプレイブック**を選択します。
+1. **[保存]** を選択します。
+
+   ![リアルタイム オートメーション](./media/tutorial-detect-threats/rt-configuration.png)
+
+
+さらに、 **[プレイブックの表示]** をクリックし、続いて実行するプレイブックを選択してアラート内部からプレイブックを実行することにより、アラートを手動で修復することができます。 新しいプレイブックを作成する方法や既存のプレイブックを編集する方法については、[Azure Sentinel でのプレイブックの使用方法](tutorial-respond-threats-playbook.md)に関するページを参照してください。
 
 
 

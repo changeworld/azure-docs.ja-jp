@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse への接続 | Microsoft Docs
 description: Azure SQL Data Warehouse に接続します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2c937285b9c54072c6d1e1b0628c3d5fbfe786f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71f5c8ca56bc188c0664604a78c38a05be3c3b01
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873665"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479741"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse への接続
 Azure SQL Data Warehouse に接続します。
@@ -23,7 +23,7 @@ Azure SQL Data Warehouse に接続します。
 ## <a name="find-your-server-name"></a>サーバー名を検索する
 次の例の場合、サーバー名は samplesvr.database.windows.net です。 完全修飾サーバー名を検索するには、次の手順に従います。
 
-1. [Azure Portal][Azure portal] にアクセスします。
+1. [Azure ポータル][Azure portal]にアクセスします。
 2. **[SQL Data Warehouse]** をクリックします。
 3. 接続先のデータ ウェアハウスをクリックします。
 4. サーバーの完全名を見つけます。
@@ -31,7 +31,7 @@ Azure SQL Data Warehouse に接続します。
     ![Full server name][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>サポートされるドライバーと接続文字列
-Azure SQL Data Warehouse では、[ADO.NET][ADO.NET]、[ODBC][ODBC]、[PHP][PHP]、[JDBC][JDBC] がサポートされています。 最新のバージョンとドキュメントを確認するには、これらドライバーのいずれかをクリックしてください。 使用しているドライバーの接続文字列を Azure Portal から自動的に生成するには、上の例にある **[データベース接続文字列の表示]** をクリックします。 以下に、各ドライバーの接続文字列の例を示します。
+Azure SQL Data Warehouse は、[ADO.NET][ADO.NET], [ODBC][ODBC]、[PHP][PHP]、および [JDBC][JDBC] をサポートしています。 最新のバージョンとドキュメントを確認するには、これらドライバーのいずれかをクリックしてください。 使用しているドライバーの接続文字列を Azure Portal から自動的に生成するには、上の例にある **[データベース接続文字列の表示]** をクリックします。 以下に、各ドライバーの接続文字列の例を示します。
 
 > [!NOTE]
 > 断続的に切断された場合でも接続を保持できるように、接続のタイムアウトを 300 秒に設定することを検討してください。
@@ -69,7 +69,7 @@ SQL Data Warehouse では、接続とオブジェクトの作成中にいくつ�
 | [DATEFIRST][DATEFIRST] |7 |
 
 ## <a name="next-steps"></a>次の手順
-Visual Studio を使用して接続とクエリの実行を行うには、[Visual Studio を使用したクエリ][Query with Visual Studio]に関するページをご覧ください。 認証オプションの詳細については、「[Azure SQL Data Warehouse への認証][Authentication to Azure SQL Data Warehouse]」をご覧ください。
+Visual Studio を使用して接続したりクエリを実行したりするには、[Visual Studio を使用したクエリ][Query with Visual Studio]. To learn more about authentication options, see [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse]に関するページを参照してください。 To learn more about authentication options, see <bpt id="p1">[</bpt>Authentication to Azure SQL Data Warehouse<ept id="p1">][Authentication to Azure SQL Data Warehouse]</ept>.
 
 <!--Articles-->
 [Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md

@@ -3,18 +3,18 @@ title: タスクとノードの状態をカウントする - Azure Batch | Micro
 description: Azure Batch タスクと計算ノードの状態をカウントし、Batch ソリューションを容易に管理および監視できるようにします。
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 09/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 574cdea61a474dda5d20254bfae9ff2f06044cca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7b41be8c325cd238592f33369499348885de1778
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775374"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323538"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>タスクとノードを状態別にカウントして、Batch ソリューションを監視する
 
@@ -24,7 +24,7 @@ ms.locfileid: "60775374"
 
   各状態のタスクをカウントすると、より簡単にジョブの進行状況をユーザーに表示したり、ジョブに影響を与える恐れのある予期しない遅延や失敗を検出したりできます。 [Get Task Counts]\(タスク数の取得\) は、Batch サービス API バージョン 2017-06-01.5.1 とそれに関連する SDK およびツールで使用できます。
 
-* [[List Pool Node Counts]\(プール ノード数の一覧表示\)][rest_get_node_counts]。各プール内の専用の計算ノードと低優先度の計算ノードの数を状態別に取得します (状態には、作成中、アイドル、オフライン、 割り込み、リブート中、再イメージ化中、起動中などがあります)。 
+* [[List Pool Node Counts]\(プール ノード数の一覧表示\)][rest_get_node_counts]。各プール内の専用の計算ノードと低優先度の計算ノードの数を状態別に取得します (状態には、作成中、アイドル、オフライン、割り込み、リブート中、再イメージ化中、起動中などがあります)。 
 
   各状態のノードをカウントすると、ジョブの実行に適した計算リソースをいつ用意するかを判断したり、プールに関する潜在的な問題を識別したりできます。 [List Pool Node Counts]\(プール ノード数の一覧表示\) は、Batch サービス API バージョン 2018-03-01.6.1 とそれに関連する SDK およびツールで使用できます。
 
@@ -71,7 +71,7 @@ REST やその他のサポートされている言語で同様のパターンを
 - **再イメージ化中 (Reimaging)** - オペレーティング システムが再インストールされているノードです。
 - **実行中 (Running)** - 1 つ以上のタスク (起動タスク以外) を実行しているノードです。
 - **起動中 (Starting)** - Batch サービスが起動中のノードです。 
-- **起動タスクが失敗 (StartTaskFailed)** - [起動タスク][rest_start_task]が失敗して再試行回数をすべてを使い切り、起動タスク上で `waitForSuccess` が設定されているノードです。 このノードは、タスクの実行に使用できません。
+- **起動タスクが失敗 (StartTaskFailed)** - [起動タスク][rest_start_task]が失敗して再試行回数をすべて使い切り、起動タスク上で `waitForSuccess` が設定されているノードです。 このノードは、タスクの実行に使用できません。
 - **不明 (Unknown)** - Batch サービスへの接続を失い、状態が不明なノードです。
 - **使用不可 (Unusable)** - エラーのためタスクの実行に使用できないノードです。
 - **起動タスクの待機中 (WaitingForStartTask)** - 起動タスクが実行を開始したが、`waitForSuccess` が設定されており、起動タスクが完了していないノードです。

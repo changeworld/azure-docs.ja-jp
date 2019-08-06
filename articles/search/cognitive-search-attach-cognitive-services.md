@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: ffce8a2bd8a04e73acdeac037be0b10ba1a9a887
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 56453891289654e65f8077542fca40876099061e
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672384"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68347252"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Azure Search で Cognitive Services リソースをスキルセットにアタッチする 
 
@@ -33,6 +33,9 @@ Azure Search でのドキュメント エンリッチメントに使用される
 Azure Search と Azure Cognitive Services は同一リージョン内に存在することが要求されます。 そうでない場合は、実行時に `"Provided key is not a valid CognitiveServices type key for the region of your search service."` のメッセージが表示されます。 
 
 リージョン間でサービスを移動する方法はありません。 このエラーが表示される場合、Azure Search と同じリージョンに、新しい Cognitive Services リソースを作成する必要があります。
+
+> [!NOTE]
+> 一部の組み込みスキルは、非リージョンの Cognitive Services ([テキスト翻訳スキル](cognitive-search-skill-text-translation.md)など) をベースとしています。 そうしたスキルをスキルセットに追加すると、Azure Search または Cognitive Services リソースと同じリージョンにデータが留まることが保証されないことに注意してください。 詳細については、[サービスの状態に関するページ](https://aka.ms/allinoneregioninfo)を参照してください。
 
 ## <a name="use-free-resources"></a>無料リソースを使用する
 

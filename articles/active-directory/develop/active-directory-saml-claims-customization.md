@@ -1,5 +1,5 @@
 ---
-title: Azure AD のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ | Microsoft Docs
+title: Azure AD のエンタープライズ アプリの SAML トークン要求をカスタマイズする | Microsoft Docs
 description: Azure AD のエンタープライズ アプリケーションの SAML トークンで発行された要求をカスタマイズする方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 636086ce0d055ab8de1d1b95dbbf7e5d96c7d7ef
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 3f5930f2d3db94f615321eda480aed0d4d196911
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483061"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380834"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -73,7 +73,7 @@ NameIDPolicy 属性について詳しくは、「[シングル サインオン�
 
 `NameIdentifier` (または NameID) 要求の必要なソースを選択します。 次のオプションから選択できます。
 
-| Name | 説明 |
+| EnableAdfsAuthentication | 説明 |
 |------|-------------|
 | Email | ユーザーの電子メール アドレス |
 | userprincipalName | ユーザーのユーザー プリンシパル名 (UPN) |

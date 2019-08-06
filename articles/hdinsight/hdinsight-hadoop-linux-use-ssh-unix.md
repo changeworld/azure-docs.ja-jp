@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: cc60a8ca0e0b04a5fcec5300fbeb1a0f34d1c7b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91104b36b4821d8b1e0350d4eeb20d652de1242b
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686380"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406238"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>SSH を使用して HDInsight (Apache Hadoop) に接続する
 
-[Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) を使って Azure HDInsight の Apache Hadoop に安全に接続する方法について説明します。 仮想ネットワークを介した接続については、「[Azure HDInsight 仮想ネットワーク アーキテクチャ](./hdinsight-virtual-network-architecture.md)」および「[Azure Virtual Network を使用した Azure HDInsight の拡張](./hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
+[Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) を使って Azure HDInsight の Apache Hadoop に安全に接続する方法について説明します。 仮想ネットワーク経由の接続については、「[Azure HDInsight 仮想ネットワーク アーキテクチャ](./hdinsight-virtual-network-architecture.md)」および [Azure HDInsight クラスター用の仮想ネットワーク デプロイの計画](./hdinsight-plan-virtual-network-deployment.md)に関するページを参照してください。
 
 次の表に、SSH クライアントを使用して HDInsight に接続する際に必要なアドレスとポートの情報を示します。
 
@@ -182,7 +182,7 @@ SSH アカウントが __SSH キー__ を使用してセキュリティで保護
 > [!NOTE]  
 > 別の方法でクラスター内のすべてのノードに直接アクセスするには、Azure 仮想ネットワークに HDInsight をインストールします。 次に、リモート マシンを同じ仮想ネットワーク内に参加させることで、クラスター内のすべてのノードに直接アクセスできます。
 >
-> 詳細については、[HDInsight での仮想ネットワークの使用](hdinsight-extend-hadoop-virtual-network.md)に関する記事を参照してください。
+> 詳細については、[HDInsight 用の仮想ネットワークの計画](hdinsight-plan-virtual-network-deployment.md)に関するページを参照してください。
 
 ### <a name="configure-ssh-agent-forwarding"></a>SSH エージェント転送を構成する
 
@@ -246,5 +246,5 @@ scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight で SSH トンネリングを使用する](hdinsight-linux-ambari-ssh-tunnel.md)
-* [HDInsight で仮想ネットワークを使用する](hdinsight-extend-hadoop-virtual-network.md)
+* [HDInsight で仮想ネットワークを計画する](hdinsight-plan-virtual-network-deployment.md)
 * [HDInsight でエッジ ノードを使用する](hdinsight-apps-use-edge-node.md#access-an-edge-node)
