@@ -145,7 +145,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | EnableAdfsAuthentication | 1 |
 | Type | REG_SZ (文字列) |
-| データ | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
+| Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
 **Windows 8.1 および 7** で Chrome をサポートするには、次のレジストリ キーを作成してください。
 
@@ -154,7 +154,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | EnableAdfsAuthentication | 1 |
 | Type | REG_SZ (文字列) |
-| データ | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 これらのブラウザーはデバイス認証をサポートしており、デバイスを識別してポリシーで検証することができます。 ブラウザーがプライベート モードで実行している場合、デバイス チェックは失敗します。
 
