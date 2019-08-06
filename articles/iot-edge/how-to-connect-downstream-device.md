@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4e13075eabcdb482616f1e500fd739ca58a39003
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: f739bdbd295662006a964f890147ad67c373d7b5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501218"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698630"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -39,7 +39,7 @@ ms.locfileid: "68501218"
 [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) クラウド サービスを使って作成された ID を持つ任意のアプリケーションまたはプラットフォームを、ダウンストリーム デバイスにすることもできます。 多くの場合、これらのアプリケーションでは [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) が使用されます。 ダウンストリーム デバイスは、IoT Edge ゲートウェイ デバイスそのもので実行されているアプリケーションの場合もあります。 ただし、別の IoT Edge デバイスを IoT Edge ゲートウェイのダウンストリームにすることはできません。 
 
 >[!NOTE]
->IoT Hub に登録されている ID を持つ IoT デバイスでは、[モジュール ツイン](/iot-hub/iot-hub-devguide-module-twins.md)を使用して、1 つのデバイス上のさまざまなプロセス、ハードウェア、または機能を分離できます。 IoT Edge ゲートウェイでは、x.509 証明書認証ではなく、対称キー認証を使用したダウンストリーム モジュール接続がサポートされます。 
+>IoT Hub に登録されている ID を持つ IoT デバイスでは、[モジュール ツイン](../iot-hub/iot-hub-devguide-module-twins.md)を使用して、1 つのデバイス上のさまざまなプロセス、ハードウェア、または機能を分離できます。 IoT Edge ゲートウェイでは、x.509 証明書認証ではなく、対称キー認証を使用したダウンストリーム モジュール接続がサポートされます。 
 
 ダウンストリーム デバイスを IoT Edge ゲートウェイに接続するには、次の 2 つのものが必要です。
 

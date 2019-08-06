@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
-manager: jroth
 ms.date: 06/19/2019
-ms.openlocfilehash: a9c4fb43717788703184522109301e88d4c94f0e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 0507b3cb64b4b12bac92cc6bc90120ab4ec56dee
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68445097"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568740"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>チュートリアル:フェールオーバー グループに Azure SQL Database エラスティック プールを追加する
 
@@ -70,7 +69,7 @@ Azure SQL Database エラスティック プールのフェールオーバー �
 
 1. [Azure portal](https://portal.azure.com) の左上隅にある **[すべてのサービス]** を選択します。 
 1. 検索ボックスに、「`sql servers`」と入力します。 
-1. (省略可能) SQL Server の横にある星のアイコンを選択して **SQL サーバー**をお気に入りに追加し、左側のナビゲーション ウィンドウに追加します。 
+1. (省略可能) SQL Server の横にある星のアイコンを選択して **[SQL サーバー]** をお気に入りに追加し、左側のナビゲーション ウィンドウに追加します。 
     
     ![SQL サーバーを見つける](media/sql-database-single-database-create-failover-group-tutorial/all-services-sql-servers.png)
 
@@ -120,7 +119,7 @@ Azure SQL Database エラスティック プールのフェールオーバー �
 リソース グループを削除して、リソースをクリーンアップします。 
 
 1. [Azure Portal](https://portal.azure.com) で、リソース グループに移動します。
-1. グループ内のすべてのリソースとリソース グループそのものを削除するには、 **[リソース グループの削除]** を選択します。 
+1. グループ内のすべてのリソースと、リソース グループ自体を削除するには、 **[リソースグループの削除]** を選択します。 
 1. リソース グループの名前 (`myResourceGroup`) をテキストボックスに入力し、 **[削除]** を選択してリソース グループを削除します。  
 
 

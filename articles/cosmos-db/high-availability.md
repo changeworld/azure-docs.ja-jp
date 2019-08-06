@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB で高可用性を実現する
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 07/31/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4dde41479c05151fa4e14c9fe4b534b9f7edf9b4
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4b039e777748499e1b9a2a120e9498d94066b735
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467737"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688278"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB での高可用性
 
@@ -81,6 +81,8 @@ Azure Cosmos アカウントに複数リージョンの書き込みを構成す�
 * East US
 * 米国東部 2 
 * 米国中部
+* 西ヨーロッパ
+* 米国西部 2
 
 > [!NOTE] 
 > 1 つのリージョンの Azure Cosmos アカウントに対して可用性ゾーンを有効にすると、アカウントにリージョンを追加することと同等の課金が発生します。 価格の詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)と[Azure Cosmos DB における複数リージョンのコスト](optimize-cost-regions.md)に関する記事を参照してください。 

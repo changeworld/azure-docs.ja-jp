@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0b97f2f6df87255e10faaf58c40ea9136354bff6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 9966164ec1b6a37538a24d2ef8cb80007e6f6d29
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386668"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698228"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する
 
@@ -161,7 +161,7 @@ SSL バインドの手順については、「[How to Set Up SSL on IIS 7](https
    ![信頼されたルート証明書](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > Web サーバー名 (この例では www.fabrikam.com) が Web サーバーの IP アドレスを指すように DNS が構成されていることを前提としています。 そうでない場合は、[ホスト ファイル](https://answers.microsoft.com/windows/forum/windows_10-other_settings-winpc/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d)を編集して名前を解決することができます。
+   > Web サーバー名 (この例では www.fabrikam.com) が Web サーバーの IP アドレスを指すように DNS が構成されていることを前提としています。 そうでない場合は、[ホスト ファイル](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d)を編集して名前を解決することができます。
 1. Web サイトを参照し、ブラウザーのアドレス ボックスにあるロック アイコンをクリックして、サイトと証明書の情報を確認します。
 
 ## <a name="verify-the-configuration-with-openssl"></a>OpenSSL を使用して構成を検証する
