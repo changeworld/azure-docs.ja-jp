@@ -12,12 +12,12 @@ ms.date: 07/17/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3b23aa7db29390ef50a72f73fb153fef5301b92
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304830"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477175"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションへのシングル サインオン
 
@@ -71,9 +71,9 @@ SAML ベースのシングル サインオンは、以下のいずれかのプ�
 - SAML 2.0
 - WS-Federation
 
-SAML ベースのシングル サインオンのために SaaS アプリケーションを構成するには、[SAML ベースのシングル サインオンを構成する](configure-single-sign-on-portal.md)ことに関するページを参照してください。 また、多くのサービスとしてのソフトウェア (SaaS) アプリケーションには[アプリケーション固有のチュートリアル](../saas-apps/tutorial-list.md)が用意されており、SAML ベースのシングル サインオンの構成が順を追って説明されています。
+SAML ベースのシングル サインオンのために SaaS アプリケーションを構成するには、[SAML ベースのシングル サインオンを構成する](configure-single-sign-on-non-gallery-applications.md)ことに関するページを参照してください。 また、多くのサービスとしてのソフトウェア (SaaS) アプリケーションには[アプリケーション固有のチュートリアル](../saas-apps/tutorial-list.md)が用意されており、SAML ベースのシングル サインオンの構成が順を追って説明されています。
 
-WS-Federation のためにアプリケーションを構成するには、SAML ベースのシングル サインオンのためにアプリケーションを構成する場合と同じガイダンスに従って、「[SAML ベースのシングル サインオンを構成する](configure-single-sign-on-portal.md)」を参照してください。 Azure AD を使用するようにアプリケーションを構成する手順では、WS-Federation エンドポイントの Azure AD ログイン URL `https://login.microsoftonline.com/<tenant-ID>/wsfed` と置き換える必要があります。
+WS-Federation のためにアプリケーションを構成するには、SAML ベースのシングル サインオンのためにアプリケーションを構成する場合と同じガイダンスに従って、「[SAML ベースのシングル サインオンを構成する](configure-single-sign-on-non-gallery-applications.md)」を参照してください。 Azure AD を使用するようにアプリケーションを構成する手順では、WS-Federation エンドポイントの Azure AD ログイン URL `https://login.microsoftonline.com/<tenant-ID>/wsfed` と置き換える必要があります。
 
 SAML ベースのシングル サインオンのためにオンプレミス アプリケーションを構成するには、「[アプリケーション プロキシを使用したオンプレミスのアプリケーションに対する SAML シングル サインオン](application-proxy-configure-single-sign-on-on-premises-apps.md)」を参照してください。
 
@@ -100,7 +100,7 @@ SAML プロトコルの詳細については、「[シングル サインオン�
 - Chrome - Windows 7 以降、MacOS X 以降
 - Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
 
-パスワード ベースのシングル サインオンのためにクラウド アプリケーションを構成するには、「[パスワード シングル サインオンに対応するようにアプリケーションを構成する](application-sign-in-problem-password-sso-gallery.md#configure-the-app-for-password-sso)」を参照してください。
+パスワードベースのシングル サインオン用にクラウド アプリケーションを構成するには、「[パスワードベースのシングル サインオンの構成](configure-password-single-sign-on-non-gallery-applications.md)」を参照してください。
 
 アプリケーション プロキシ経由のシングル サインオンのためにオンプレミス アプリケーションを構成するには、「[アプリケーション プロキシを使用したシングル サインオン用のパスワードの保管](application-proxy-configure-single-sign-on-password-vaulting.md)」を参照してください
 
@@ -127,8 +127,7 @@ Azure AD 管理者が資格情報を管理する場合:
 - 管理者は、この場合も、アプリケーションの新しい資格情報を設定できます。
 
 ## <a name="linked-sign-on"></a>リンクされたサインオン
-
-Azure AD は、リンクされたサインオンによって、既に別のサービスでのシングル サインオンのために構成されているシングル サインオンをアプリケーションに提供できます。 リンクされたアプリケーションは、Office 365 ポータルまたは Azure AD の MyApps ポータルで、エンドユーザーに表示できます。 たとえばユーザーは、Active Directory フェデレーション サービス 2.0 (AD FS) でシングル サインオン用に構成されているアプリケーションを、Office 365 ポータルから起動できます。 Office 365 ポータルまたは Azure AD の MyApps ポータルから起動される、リンクされたアプリケーションについても、追加のレポートが用意されています。
+Azure AD は、リンクされたサインオンによって、既に別のサービスでのシングル サインオンのために構成されているシングル サインオンをアプリケーションに提供できます。 リンクされたアプリケーションは、Office 365 ポータルまたは Azure AD の MyApps ポータルで、エンドユーザーに表示できます。 たとえばユーザーは、Active Directory フェデレーション サービス 2.0 (AD FS) でシングル サインオン用に構成されているアプリケーションを、Office 365 ポータルから起動できます。 Office 365 ポータルまたは Azure AD の MyApps ポータルから起動される、リンクされたアプリケーションについても、追加のレポートが用意されています。 リンクされたサインオン用にアプリケーションを構成するには、「[リンクされたサインオンの構成](configure-linked-sign-on.md)」を参照してください。
 
 ### <a name="linked-sign-on-for-application-migration"></a>アプリケーション移行の場合のリンクされたサインオン
 
@@ -189,8 +188,9 @@ IWA のためのオンプレミス アプリの構成については、[アプ�
 詳細については、「 [Azure Active Directory のエディション](../fundamentals/active-directory-whatis.md)」をご覧ください。
 
 ## <a name="related-articles"></a>関連記事
-
-- [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](../saas-apps/tutorial-list.md)
-- [シングル サインオンの構成に関するチュートリアル](configure-single-sign-on-portal.md)
-- [アプリケーションへのアクセスの管理の概要](what-is-access-management.md)
-- ダウンロード リンク:[シングル サインオンのデプロイ計画](https://aka.ms/SSODeploymentPlan)
+* [SaaS アプリケーションと Azure Active Directory との統合に関するチュートリアル](../saas-apps/tutorial-list.md)
+* [SAML ベースのシングル サインオンの構成](configure-single-sign-on-non-gallery-applications.md)
+* [パスワードベースのシングル サインオンの構成](configure-password-single-sign-on-non-gallery-applications.md)
+* [リンクされたサインオンの構成](configure-linked-sign-on.md)
+* [アプリケーションへのアクセスの管理の概要](what-is-access-management.md)
+* ダウンロード リンク:[シングル サインオンのデプロイ計画](https://aka.ms/SSODeploymentPlan)。

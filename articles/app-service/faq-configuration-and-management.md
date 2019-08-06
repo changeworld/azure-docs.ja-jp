@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ec2580f0c71c98c7a03f3326cb1b8ff539109ee0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720032"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489432"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -152,12 +152,9 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 修正されたハイブリッド接続マネージャーの問題によって、例外が発生しました。 この問題を解決するために [ハイブリッド接続マネージャーを更新](https://go.microsoft.com/fwlink/?LinkID=841308)してください。
 
-## <a name="how-do-i-add-or-edit-a-url-rewrite-rule"></a>URL Rewrite (URL 書き換え) ルールを追加または編集する方法を教えてください?
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>URL 書き換え規則を追加する方法を教えてください。
 
-URL Rewrite (URL 書き換え) ルールを追加または編集するには、次の手順を実行します。
-
-1. App Service Web アプリに接続するように、インターネット インフォメーション サービス (IIS) マネージャーを設定します。 App Service に IIS マネージャーを接続する方法については、「[Remote administration of Azure websites by using IIS Manager](https://azure.microsoft.com/blog/remote-administration-of-windows-azure-websites-using-iis-manager/)」(IIS マネージャーを使用した Azure Web サイトのリモート管理) を参照してください。
-2. IIS マネージャーで、URL Rewrite (URL 書き換え) ルールを追加または編集します。 URL Rewrite (URL 書き換え) ルールを追加または編集または追加する方法については、「[Create rewrite rules for the URL rewrite module](https://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)」(URL 書き換えモジュールの書き換えルールの作成) を参照してください。
+URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot**　フォルダーに作成します。 詳細については、「[Azure App Services:URL 書き換えについて](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)」を参照してください。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>App Service への受信トラフィックを制御するにはどうすればいいですか?
 

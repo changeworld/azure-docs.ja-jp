@@ -3,16 +3,15 @@ title: Mapping Data Flow の集計変換 - Azure Data Factory | Microsoft Docs
 description: Azure Data Factory で Mapping Data Flow の集計変換を使用して、大規模なデータ集計を行う方法について説明します。
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 21135b26d4bc840b3fcb091e675e5e6bd24d8548
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 778aefc05a9b12648e60d752a3c281cb18323125
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312107"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314223"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Mapping Data Flow の集計変換 
 
@@ -39,6 +38,12 @@ ms.locfileid: "67312107"
 > [!NOTE]
 > デバッグ モードでは、式ビルダーで集計関数を使用したデータのプレビューを生成することはできません。 集計変換のデータのプレビューを表示するには、式ビルダーを終了し、[データ のプレビュー] タブで確認します。
 
+## <a name="reconnect-rows-and-columns"></a>行と列の再接続
+集計変換は、SQL 集計の SELECT クエリとほぼ同じです。 Group By 句または集計関数に含まれていない列は、集計変換の出力にフローしません。 集計行の出力に含める列が他にもある場合は、次のいずれかを実行する必要があります。
+
+* その追加の列を含めるには、Last () や First () などの集計関数を使用します。
+* [自己結合パターン](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)を使用して、集計の前に列を再結合します。
+
 ## <a name="next-steps"></a>次の手順
 
-\- [ウィンドウ変換](data-flow-window.md)を使用してウィンドウベースの集計を定義する
+* [ウィンドウ変換](data-flow-window.md)を使用してウィンドウベースの集計を定義する

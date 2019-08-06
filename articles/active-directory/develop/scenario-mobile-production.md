@@ -3,7 +3,7 @@ title: Web API を呼び出すモバイル アプリ (運用環境への移行) 
 description: Web API を呼び出すモバイル アプリを構築する方法について説明します (運用環境への移行)
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.reviwer: brandwe
+ms.reviwer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8b6a5c2a29228de806088ea93e197d42bf1ab47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67788dd9257a0a4685313dce44c6a3dfb5e514df
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962357"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413613"
 ---
 # <a name="mobile-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すモバイル アプリ - 運用環境への移行
 
@@ -47,3 +47,5 @@ ms.locfileid: "65962357"
 ## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+
+「[サンプル | デスクトップおよびモバイルのパブリック クライアント アプリ](sample-v2-code.md#desktop-and-mobile-public-client-apps)」から利用できる追加のサンプルをお試しください。

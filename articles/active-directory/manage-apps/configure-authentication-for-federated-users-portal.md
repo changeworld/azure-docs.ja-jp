@@ -1,5 +1,5 @@
 ---
-title: ホーム領域検出ポリシーを使用して、アプリケーションのサインイン自動高速化を構成する | Microsoft Docs
+title: ホーム領域検出ポリシーを使用してサインイン自動高速化を構成する | Microsoft Docs
 description: 自動高速化やドメインのヒントを含む、フェデレーション ユーザーのための Azure Active Directory 認証のホーム領域検出ポリシーを構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0534037393f4634364b927020595aa21d8e1b7b3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8f8f51fcd69a7115879aad97bbf696833e87877b
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440366"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477215"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
 
@@ -270,5 +270,5 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>次の手順
 - Azure AD での認証のしくみについて詳しくは、「[Azure AD の認証シナリオ](../develop/authentication-scenarios.md)」をご覧ください。
-- ユーザー シングル サインオンについて詳しくは、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](configure-single-sign-on-portal.md)」をご覧ください。
+- ユーザー シングル サインオンについて詳しくは、「[Azure Active Directory でのアプリケーションへのシングル サインオン](what-is-single-sign-on.md)」をご覧ください。
 - 開発者向けのすべての関連コンテンツの概要については、[Active Directory 開発者ガイド](../develop/v1-overview.md)を参照してください。

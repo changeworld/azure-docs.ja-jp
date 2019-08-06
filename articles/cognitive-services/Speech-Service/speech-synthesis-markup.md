@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 8285a76f8cd07863874f9c8e8eebe96f1cb968dd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e2b1e02a622dfe4ae488e372e44c8440f20d7034
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604813"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501160"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML)
 
@@ -351,6 +351,78 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
+    </voice>
+</speak>
+```
+
+## <a name="add-recorded-audio"></a>録音されたオーディオを追加する
+
+`audio` は、MP3 オーディオを SSML ドキュメントに挿入できるようにする省略可能な要素です。 オーディオ要素の本文には、オーディオ ファイルが使用不可の場合や再生できない場合に読み上げられるプレーン テキストや SSML マークアップが含まれていることがあります。 さらに、`audio` 要素には、テキストと、要素 `audio`、`break`、`p`、`s`、`phoneme`、`prosody`、`say-as`、および `sub` を含めることができます。
+
+SSML ドキュメントに含まれるオーディオは、次の要件を満たしている必要があります。
+
+* MP3 は、インターネットからアクセス可能な HTTPS エンドポイントでホストされている必要があります。 HTTPS は必須であり、MP3 ファイルをホストしているドメインは信頼できる有効な SSL 証明書を提示する必要があります。
+* MP3 は有効な MP3 ファイル (MPEG v2) である必要があります。
+* ビット レートは 48 kbps である必要があります。
+* サンプル レートは 16000 Hz である必要があります。
+* 1つの応答に含まれるすべてのテキスト ファイルとオーディオ ファイルの合計時間は、90 秒以下でなければなりません。
+* MP3 には、顧客固有情報またはその他の機密情報を含めることはできません。
+
+**構文**
+
+```xml
+<audio src="string"/></audio>
+```
+
+**属性**
+
+| Attribute | 説明 | 必須/省略可能 |
+|-----------|-------------|---------------------|
+| src | オーディオ ファイルの場所/URL を指定します。 | SSML ドキュメントで audio 要素を使用している場合は必須です。 |
+
+**例**
+
+```xml
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <p>
+        <audio src="https://contoso.com/opinionprompt.wav"/>
+        Thanks for offering your opinion. Please begin speaking after the beep.
+        <audio src="https://contoso.com/beep.wav">
+        Could not play the beep, please voice your opinion now. </audio>
+    </p>
+</speak>
+```
+
+## <a name="add-background-audio"></a>バックグラウンド オーディオを追加する
+
+`mstts:backgroundaudio` 要素を使用すると、バックグラウンド オーディオを SSML ドキュメントに追加できます (またはオーディオ ファイルをテキスト読み上げと組み合わせることができます)。 `mstts:backgroundaudio` を使用すると、バックグラウンドでオーディオ ファイルをループ処理し、テキスト読み上げの開始時にフェードインし、テキスト読み上げの終了時にフェードアウトできます。
+
+指定されたバックグラウンド オーディオがテキスト読み上げまたはフェードアウトより短い場合は、ループします。 テキスト読み上げより長い場合は、フェードアウトが終了したときに停止します。
+
+1 つの SSML ドキュメントにつき 1 つのバックグラウンド オーディオ ファイルのみが許可されます。 ただし、`voice` 要素内に `audio` タグを配置することで、SSML ドキュメントにオーディオを追加できます。
+
+**構文**
+
+```XML
+<mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
+```
+
+**属性**
+
+| Attribute | 説明 | 必須/省略可能 |
+|-----------|-------------|---------------------|
+| src | バックグラウンド オーディオ ファイルの場所/URL を指定します。 | SSML ドキュメントでバックグラウンド オーディオを使用している場合は必須です。 |
+| ボリューム | バックグラウンド オーディオ ファイルのボリュームを指定します。 **指定可能な値**: `0` から `100`。 既定値は `1` です。 | 省略可能 |
+| fadein | バックグラウンド オーディオのフェードインの期間を指定します。 **指定可能な値**: `0` から `10000`。  | 省略可能 |
+| fadeout | バックグラウンド オーディオのフェードアウトの期間を指定します。**指定可能な値**: `0` から `10000`。  | 省略可能 |
+
+**例**
+
+```xml
+<speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
+    <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)">
+        The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>
 ```

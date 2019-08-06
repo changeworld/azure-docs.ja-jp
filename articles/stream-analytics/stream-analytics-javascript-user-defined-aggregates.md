@@ -9,20 +9,20 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: b6b61ee44d252f76cd1aa5e1790456acb3d7bae5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6c590ae62e080a6681e49c87264089f9a5f4ce2f
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620910"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489533"
 ---
-# <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics の JavaScript ユーザー定義集計 (プレビュー)
+# <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics の JavaScript ユーザー定義集計
  
 Azure Stream Analytics は JavaScript で記述されたユーザー定義集計 (UDA) をサポートしています。これを使用すると複雑なステートフルのビジネス ロジックを実装できます。 UDA 内では、状態のデータ構造、状態の蓄積、状態の処分および集計結果の計算を完全にコントロールできます。 この記事では、2 つの異なる JavaScript UDA インターフェイスと UDA の作成手順、および Stream Analytics クエリのウィンドウ ベースの操作を介して UDA を使用する方法について説明します。
 
 ## <a name="javascript-user-defined-aggregates"></a>JavaScript ユーザー定義集計
 
-ユーザー定義集計は、タイム ウィンドウの仕様を利用して、そのウィンドウ内のイベントを集計し単一の結果値を生成するのに使用されます。 現在、Stream Analytics がサポートしている UDA インターフェイスには、AccumulateOnly と AccumulateDeaccumulate の 2 種類があります。 どちらの種類の UDA も、タンブリング ウィンドウ、ホッピング ウィンドウ、スライディング ウィンドウで使用できます。 AccumulateDeaccumulate UDA をホッピング ウィンドウおよびスライディング ウィンドウと共に使用する場合は、AccumulateOnly UDA に比べて良いパフォーマンスを発揮します。 使用するアルゴリズムに基づいて 2 種類のいずれかを選択します。
+ユーザー定義集計は、タイム ウィンドウの仕様を利用して、そのウィンドウ内のイベントを集計し単一の結果値を生成するのに使用されます。 現在、Stream Analytics がサポートしている UDA インターフェイスには、AccumulateOnly と AccumulateDeaccumulate の 2 種類があります。 どちらの種類の UDA も、タンブリング、ホッピング、スライディング、およびセッションの各ウィンドウで使用できます。 AccumulateDeaccumulate UDA をホッピング、スライディング、およびセッションの各ウィンドウと共に使用する場合は、AccumulateOnly UDA に比べて良いパフォーマンスを発揮します。 使用するアルゴリズムに基づいて 2 種類のいずれかを選択します。
 
 ### <a name="accumulateonly-aggregates"></a>AccumulateOnly 集計
 
@@ -92,7 +92,7 @@ Stream Analytics ジョブでサポートされる特定の型です。クエリ
 
 ### <a name="function-name"></a>関数名
 
-この関数オブジェクトの名前です。 関数名は UDA エイリアスと正確に一致する必要があります (プレビュー版の動作です。GA では匿名関数のサポートが検討されています)。
+この関数オブジェクトの名前です。 関数名は UDA エイリアスと一致している必要があります。
 
 ### <a name="method---init"></a>メソッド - init()
 
@@ -100,11 +100,11 @@ Init() メソッドは集計の状態を初期化します。 このメソッド
 
 ### <a name="method--accumulate"></a>メソッド - accumulate()
 
-accumulate() メソッドは、以前の状態とイベントの現在の値に基づいて UDA の状態を計算します。 このメソッドは、イベントがタイム ウィンドウ (TUMBLINGWINDOW、HOPPINGWINDOW、または SLIDINGWINDOW) に入る時に呼び出されます。
+accumulate() メソッドは、以前の状態とイベントの現在の値に基づいて UDA の状態を計算します。 このメソッドは、イベントがタイム ウィンドウ (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW、または SESSIONWINDOW) に入る時に呼び出されます。
 
 ### <a name="method--deaccumulate"></a>メソッド - deaccumulate()
 
-deaccumulate() メソッドは、以前の状態とイベントの現在の値に基づいて状態を再計算します。 このメソッドは、イベントが SLIDINGWINDOW を離れるときに呼び出されます。
+deaccumulate() メソッドは、以前の状態とイベントの現在の値に基づいて状態を再計算します。 このメソッドは、イベントが SLIDINGWINDOW または SESSIONWINDOW を離れるときに呼び出されます。
 
 ### <a name="method--deaccumulatestate"></a>メソッド – deaccumulateState()
 
@@ -112,7 +112,7 @@ deaccumulateState() メソッドは、以前の状態とホップの状態に基
 
 ### <a name="method--computeresult"></a>メソッド – computeResult()
 
-computeResult() メソッドは、現在の状態に基づいて集計の結果を返します。 このメソッドは、タイム ウィンドウ (TUMBLINGWINDOW、HOPPINGWINDOW、および SLIDINGWINDOW) の最後に呼び出されます。
+computeResult() メソッドは、現在の状態に基づいて集計の結果を返します。 このメソッドは、タイム ウィンドウ (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW、または SESSIONWINDOW) の最後に呼び出されます。
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA がサポートする入力と出力のデータ型
 JavaScript UDA のデータ型については、[JavaScript UDF の統合](stream-analytics-javascript-user-defined-functions.md)に関するページの「**Stream Analytics と JavaScript の型変換**」のセクションをご覧ください。

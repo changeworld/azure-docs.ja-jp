@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: a5f8735df2b230de2b0ddcdcccff09430bada9e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f33b25112b5c4ee77f1f7d2a419ffb8e926a27d9
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684686"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501357"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric のノードの種類と仮想マシン スケール セット
 [仮想マシン スケール セット](/azure/virtual-machine-scale-sets)は、Azure コンピューティング リソースです。 スケール セットを使用すると、仮想マシンのコレクションをセットとしてデプロイおよび管理できます。 Azure Service Fabric クラスターで定義するノードの種類ごとに別個のスケールが設定されます。  Service Fabric ランタイムは、Microsoft.Azure.ServiceFabric 仮想マシン拡張機能により設定されたスケール セットでの各仮想マシンにインストールされます。 各ノードの種類を個別にスケールアップまたはスケールダウンしたり、各クラスター ノードで実行されている OS SKU を変更したり、異なるポートのセットを開いたり、別の容量メトリックを使用したりできます。
@@ -60,6 +60,7 @@ Service Fabric 仮想マシン拡張機能は、Service Fabric を　Azure 仮�
          "durabilityLevel": "Silver",
          "enableParallelJobs": true,
          "nicPrefixOverride": "[variables('subnet0Prefix')]",
+         "dataPath": "D:\\\\SvcFab",
          "certificate": {
            "commonNames": [
              "[parameters('certificateCommonName')]"
@@ -76,7 +77,7 @@ Service Fabric 仮想マシン拡張機能は、Service Fabric を　Azure 仮�
 
 | **Name** | **使用できる値** | ** --- ** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-| name | string | --- | 拡張機能の一意な名前 |
+| 名前 | string | --- | 拡張機能の一意な名前 |
 | type | "ServiceFabricLinuxNode" または "ServiceFabricWindowsNode | --- | OS の Service Fabric が次に対してブートストラップすることを識別します。 |
 | autoUpgradeMinorVersion | true または false | --- | SF ランタイムのマイナー バージョンの自動アップグレードを有効にします。 |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Service Fabric 拡張機能のパブリッシャー名 |
@@ -88,6 +89,7 @@ Service Fabric 仮想マシン拡張機能は、Service Fabric を　Azure 仮�
 | commonNames | string[] | --- | インストール済みのクラスター証明書の共通名 |
 | x509StoreName | string | --- | インストールされているクラスター証明書が配置されているストアの名前 |
 | typeHandlerVersion | 1.1 | --- | 拡張機能のバージョン。 拡張機能のクラシック バージョン 1.0 を 1.1 にアップグレードすることをお勧めします |
+| dataPath | string | --- | Service Fabric システムのサービスおよびアプリケーション データの状態を保存するために使用されるドライブへのパス。 
 
 ## <a name="next-steps"></a>次の手順
 * ["任意の場所にデプロイ" 機能の概要と Azure で管理されるクラスターとの比較](service-fabric-deploy-anywhere.md)に関するページを参照します。

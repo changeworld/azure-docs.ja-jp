@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 05/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 638d7bfb0e396874415c1055c4b707a65caffa4e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 97a4bc20394553b97211763cedaa76c3711306f2
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67269306"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68319327"
 ---
 # <a name="access-data-from-your-datastores"></a>データストアからデータにアクセスする
 
@@ -240,6 +240,18 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[ds1.as_download(), ds2.path('./foo').as_download(), ds3.as_upload(path_on_compute='./bar.pkl')])
 ```
+
+## <a name="access-datastores-during-for-scoring"></a>スコアリング中のデータストアへのアクセス
+
+Azure Machine Learning service には、スコアリングにモデルを使用する方法が複数用意されています。 これらの方法の一部では、データストアへのアクセスは提供されていません。 次の表を使用して、スコアリング中にデータストアへのアクセスが許可されるのはどの方法かを理解します。
+
+| Method | データストア アクセス | 説明 |
+| ----- | :-----: | ----- |
+| [バッチ予測](how-to-run-batch-predictions.md) | ✔ | 大量のデータの予測を非同期的に行います。 |
+| [Web サービス](how-to-deploy-and-where.md) | &nbsp; | モデルを Web サービスとしてデプロイします。 |
+| [IoT Edge モジュール](how-to-deploy-and-where.md) | &nbsp; | モデルを IoT Edge デバイスにデプロイします。 |
+
+データストアへのアクセスが SDK から提供されない場合は、関連する Azure SDK を使用してデータにアクセスするカスタム コードを作成できる場合があります。 たとえば、[Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) を使用して、BLOB に格納されているデータにアクセスします。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 7/24/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 1cafd8a3c766e57aed67634d7da8498c9a6ee120
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: f33b69ac443a1bb8f6b7d6e1b19f2f077bf38f58
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295818"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501477"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Azure Security Center でのデータ サービスの脅威検出
 
@@ -27,6 +27,7 @@ ms.locfileid: "68295818"
 
 * [Azure SQL Database と SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
+* [Cosmos DB](#cosmos-db)
 
 ## Azure SQL Database と SQL Data Warehouse <a name="data-sql"></a>
 
@@ -46,7 +47,7 @@ SQL 脅威検出アラートについて詳しくは、「[Azure SQL Database �
 ## Azure Storage<a name="azure-storage"></a>
 
 >[!NOTE]
-> Azure Storage の Advanced Threat Protection は、現時点では BLOB ストレージでのみ使用できます。 
+> Azure Storage の Advanced Threat Protection は、現時点では BLOB ストレージでのみ使用できます。
 
 Advanced Threat Protection for Azure Storage では、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンスが強化されます。 この保護層により、セキュリティの専門家でなくても脅威に対処し、セキュリティ監視システムを管理できます。
 
@@ -70,3 +71,14 @@ Security Center では、脅威を検出するために、BLOB ストレージ�
 >Advanced Threat Protection for Azure Storage は、現在のところ Azure Government およびソブリン クラウドのリージョンでは使用できません。
 
 ストレージのアラートについて詳しくは、「[Advanced Threat Protection for Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)」記事を参照し、保護アラートに関するセクションをご覧ください。
+
+## Cosmos DB<a name="cosmos-db"></a>
+
+次のアラートは、Azure Cosmos DB アカウントに対して、通常と異なる潜在的に有害なアクセスやエクスプロイトが試行されると生成されます。
+
+|アラート:|説明|
+|---|---|
+|**通常と異なる場所からのアクセス**|Cosmos DB アカウントへのアクセス パターンに変化があったことを示します。 最近のアクティビティと比較して、誰かが未知の IP アドレスからこのアカウントにアクセスしました。 攻撃者が Cosmos DB アカウントにアクセスしたか、または正当なユーザーが通常と異なる新しい地理的場所から Cosmos DB アカウントにアクセスしました。 たとえば、新しいアプリケーションまたは開発者によるリモート メンテナンスなどです。|
+|**通常と異なるデータの流出**|Cosmos DB アカウントからのデータ抽出パターンに変化があったことを示します。 最近のアクティビティと比較して、誰かが通常と異なる量のデータを抽出しました。 攻撃者が Cosmos DB データベースから大量のデータを抽出しました。 たとえば、データの流出/漏えい、データの不正転送などです。 あるいは、正当なユーザーまたはアプリケーションが、コンテナーから通常と異なる量のデータを抽出しました。 たとえばメンテナンス バックアップ アクティビティなどです。|
+
+詳細については、「[Azure Cosmos DB の Advanced Threat Protection](../cosmos-db/cosmos-db-advanced-threat-protection.md)」を参照してください。

@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/05/2019
+ms.date: 7/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 7ff05421222ff0f4312d703366cfd443eee06450
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551716"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314917"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -71,7 +71,7 @@ Security Center でセキュリティ ポリシーを表示するには:
    **[ポリシー管理]** 画面には、管理グループ、サブスクリプション、およびワークスペースの数、および管理グループの構造が表示されます。
 
    > [!NOTE]
-   > - Security Center のダッシュボードの **[サブスクリプションの対象範囲]** に表示されるサブスクリプション数が、 **[ポリシー管理]** に表示されるサブスクリプション数より多い場合があります。 [サブスクリプションの対象範囲] は、Standard、Free、および "対象外の" サブスクリプションの数を示します。 "対象外の" サブスクリプションでは、Security Center が有効になっておらず、 **[ポリシー管理]** に表示されません。
+   > Security Center のダッシュボードの **[サブスクリプションの対象範囲]** に表示されるサブスクリプション数が、 **[ポリシー管理]** に表示されるサブスクリプション数より多い場合があります。 [サブスクリプションの対象範囲] は、Standard、Free、および "対象外の" サブスクリプションの数を示します。 "対象外の" サブスクリプションでは、Security Center が有効になっておらず、 **[ポリシー管理]** に表示されません。
    >
 
 2. ポリシーを参照するサブスクリプションまたは管理グループを選択します。
@@ -84,10 +84,10 @@ Security Center でセキュリティ ポリシーを表示するには:
    ![ポリシー画面](./media/security-center-policies/policy-screen.png)
 
 > [!NOTE]
-> - 割り当てられているポリシーを確認すると、複数の割り当てが表示され、各割り当てのそれぞれの構成を参照できます。
+> 割り当てられているポリシーを確認すると、複数の割り当てが表示され、各割り当てのそれぞれの構成を参照できます。
 
 ## <a name="edit-security-policies"></a>セキュリティ ポリシーの編集
-[Azure Policy](../governance/policy/tutorials/create-and-manage.md) では、各 Azure サブスクリプションおよび管理グループの既定のセキュリティ ポリシーを編集できます。 セキュリティ ポリシーを変更するには、サブスクリプションまたはそれが含まれる管理グループの所有者、共同作成者、セキュリティ管理者のいずれかである必要があります。
+[Azure Policy](../governance/policy/tutorials/create-and-manage.md) では、各 Azure サブスクリプションおよび管理グループの既定のセキュリティ ポリシーを編集できます。 セキュリティ ポリシーを変更するには、サブスクリプションまたはそれが含まれる管理グループの所有者またはセキュリティ管理者のいずれかである必要があります。
 
 Azure Policy でセキュリティ ポリシーを編集する方法の詳細については、「[コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)」を参照してください。
 
@@ -145,6 +145,7 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
 
 この例では、サブスクリプションまたは管理グループで組み込み Security Center イニシアティブを割り当てる方法を示します
  
+ ```
     PUT  
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
@@ -169,6 +170,7 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
     } 
 
     } 
+ ```
 
 この例では、次のポリシーを無効にして、サブスクリプションで組み込み Security Center イニシアティブを割り当てる方法を示します。 
 
@@ -178,7 +180,7 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
 
 - エンドポイント保護 ("endpointProtectionMonitoringEffect") 
 
-
+ ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
     
     Request Body (JSON) 
@@ -210,12 +212,12 @@ Security Center では、そのセキュリティ ポリシーをすべて含ん
      } 
     
     } 
-
+ ```
 この例では、割り当てを削除する方法を示します。
-
+ ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
-
+ ```
 
 ### ポリシー名参照<a name="policy-names"></a>
 

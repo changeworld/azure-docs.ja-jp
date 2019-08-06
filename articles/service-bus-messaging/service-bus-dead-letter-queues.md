@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: aschhab
-ms.openlocfilehash: af67b27dacf3bb86c2dd5c878a2751e027a53acb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 79bc5e640498788ef805d07a26dd29e943117b58
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66003135"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68476972"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -49,7 +49,7 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 | !TopicDescription.<br />EnableFilteringMessagesBeforePublishing and SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
 | EnableDeadLetteringOnMessageExpiration |TTLExpiredException |メッセージの有効期限が切れているため、配信不能です。 |
 | SubscriptionDescription.RequiresSession |セッション id は Null です。 |セッションが有効なエンティティではセッション ID が Null のメッセージは許可されません。 |
-| !dead letter queue |MaxTransferHopCountExceeded |Null |
+| !dead letter queue | MaxTransferHopCountExceeded | キュー間で転送するときに許容される最大ホップ数。 値は 4 に設定されています。 |
 | Application での明示的な配信不能処理 |アプリケーションで指定 |アプリケーションで指定 |
 
 ## <a name="exceeding-maxdeliverycount"></a>MaxDeliveryCount の超過

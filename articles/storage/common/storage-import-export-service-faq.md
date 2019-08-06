@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 07/18/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 109f541157716ae4f9b195d0a3ed02a1d8c91960
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478574"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314108"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export サービス: よく寄せられる質問 
 以下では、Azure Import/Export サービスを使用してデータを Azure Storage に転送するときによくある質問と、それに対する回答を示します。 質問と回答は次の各カテゴリに分類されます。
@@ -66,7 +66,7 @@ ms.locfileid: "61478574"
 完了したジョブの状態は、最大 90 日間、表示されます。 90 日が経過すると、完了したジョブは削除されます。
 
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>10 台を超えるドライブでインポートまたはエクスポートするには、どうすればよいでしょうか?
-1 つのインポート ジョブまたはエクスポート ジョブが参照できるのは、10 台のドライブまでです。 10 台を超えるドライブを発送するには、複数のジョブを作成する必要があります。 同じジョブに関連付けられているドライブは、同じパッケージにまとめて発送する必要があります。 データ容量が複数ディスクのインポート ジョブにわたるときの詳細とガイダンスについては、Microsoft (bulkimport@microsoft.com) に問い合わせてください。 
+1 つのインポート ジョブまたはエクスポート ジョブが参照できるのは、10 台のドライブまでです。 10 台を超えるドライブを発送するには、複数のジョブを作成する必要があります。 同じジョブに関連付けられているドライブは、同じパッケージにまとめて発送する必要があります。 データ容量が複数ディスクのインポート ジョブにわたるときの詳細とガイダンスについては、Microsoft サポートに問い合わせてください。 
 
 ### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>アップロードした BLOB の状態が "Lease expired (リースの有効期限切れ)" として表示されます。 どうすればよいですか。
 "Lease Expired (リースの有効期限切れ)" フィールドは無視してかまいません。 Import/Export は、アップロード中、他のプロセスが BLOB を並列に更新できないよう BLOB をリースする必要があります。 "Lease Expired (リースの有効期限切れ)" は、Import/Export によるアップロードが今は行われておらず、BLOB が利用可能な状態にあることを暗に意味しています。 

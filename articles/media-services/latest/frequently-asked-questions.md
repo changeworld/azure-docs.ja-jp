@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: b060e2c8a7353dd8145ced8c6e89d9b666a4212c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703893"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501253"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
@@ -60,6 +60,12 @@ Media Services v3 のライブ エンコードでは、ライブ ストリーミ
 
 ## <a name="content-protection"></a>コンテンツ保護
 
+### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>AES-128 クリア キー暗号化と DRM システムのどちらを使用すべきでしょぅか。
+
+AES 暗号化と DRM システムのどちらを使えばよいか迷うことがあります。 2 つのシステムの主な違いは、AES 暗号化ではコンテンツ キーが TLS でクライアントに送信されるため、キーが送信中に暗号化されますが、それ以外の暗号化は行われないことです (クリア)。 その結果、コンテンツの復号化に使用されるキーは、クライアント プレーヤーがアクセスでき、クライアントのネットワーク トレースでプレーンテキストとして表示できます。 AES-128 クリア キー暗号化は、閲覧者が信頼できる相手である場合 (従業員が見るために社内で配信される企業ビデオの暗号化など) に適しています。
+
+PlayReady、Widevine、FairPlay など DRM システムではすべて、コンテンツの復号化に使用されるキーの暗号化のレベルが、AES-128 クリア キーと比較して高くなります。 TLS によって提供されるトランスポート レベルの暗号化に加え、コンテンツ キーが暗号化され、DRM ランタイムによって保護されるキーになります。 さらに、解読はオペレーティング システム レベルのセキュリティで保護された環境で行われるため、悪意のあるユーザーによる攻撃はより難しくなります。 閲覧者が信頼できない可能性があり、最高レベルのセキュリティを必要とするユース ケースでは、DRM をお勧めします。
+
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>JWT トークンを使用してライセンスまたはキーを要求する前に、JWT トークンを入手する方法と入手できる場所を教えてください。
 
 1. 運用環境では、HTTPS 要求時に JWT トークンを発行する Secure Token Services (STS) (Web サービス) が必要です。 テスト環境では、[Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) で定義されている **GetTokenAsync** メソッドに示されているコードを使用できます。
@@ -80,6 +86,30 @@ Azure Media Services API シリーズを使用して、ライセンス/キー配
 
 - [コンテンツ保護の概要](content-protection-overview.md)
 - [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)
+
+### <a name="http-or-https"></a>HTTP か HTTPS か
+ASP.NET MVC プレーヤー アプリケーションは、以下をサポートする必要があります。
+
+* Azure AD によるユーザー認証 (HTTPS の場合)。
+* クライアントと Azure AD 間での JWT の交換 (HTTPS の場合)。
+* クライアントによる DRM ライセンスの取得。ライセンス配信が Media Services によって提供される場合は、HTTPS で必要です。 PlayReady 製品スイートでは、ライセンス配信に HTTPS を必要としません。 PlayReady ライセンス サーバーが Media Services の外部にある場合は、HTTP または HTTPS を使うことができます。
+
+ASP.NET のプレーヤー アプリケーションはベスト プラクティスとして HTTPS を使うので、Media Player はページの HTTPS の下にあります。 ただし、ストリーミングには HTTP が優先されるので、混合コンテンツの問題を考慮する必要があります。
+
+* ブラウザーでは混合コンテンツは許可されません。 ただし、Silverlight や、Smooth および DASH 用の OSMF プラグインでは許可されます。 顧客データが危険にさらされる可能性がある悪意のある JavaScript を挿入する機能の脅威にため、混合コンテンツにはセキュリティ上の問題があります。 ブラウザーは、既定でこの機能をブロックします。 これを回避する唯一の方法は、サーバー (配信元) 側で (HTTPS か HTTP かに関係なく) すべてのドメインを許可することです。 これはおそらくよい方法ではありません。
+* 混合コンテンツは避ける必要があります。 プレーヤー アプリケーションと Media Player の両方で、HTTP または HTTPS を使う必要があります。 混合コンテンツを再生するとき、silverlightSS テクノロジは混合コンテンツの警告をクリアする必要があります。 flashSS テクノロジは、混合コンテンツ警告なしで混合コンテンツを処理します。
+* 2014 年 8 月より前に作成されたストリーミング エンドポイントは、HTTPS をサポートしません。 その場合は、HTTPS 用に新しいストリーミング エンドポイントを作成して使います。
+
+### <a name="what-about-live-streaming"></a>ライブ ストリーミングの場合
+
+プログラムに関連付けられた資産を VOD 資産として扱うことにより、Media Services のライブ ストリーミングでもまったく同じ設計と実装を使用できます。 ライブ コンテンツのマルチ DRM 保護を提供するには、資産をライブ出力に関連付ける前に、あたかもそれが VOD 資産であるかのように、その資産に対して同じセットアップ/処理を適用します。
+
+### <a name="what-about-license-servers-outside-media-services"></a>Media Services の外部にあるライセンス サーバーの場合
+
+多くの場合、ユーザーは自前のデータ センター内にあるライセンス サーバー ファーム、または DRM サービス プロバイダーによってホストされているライセンス サーバー ファームを運用しています。 Media Services コンテンツ保護の場合、ハイブリッド モードで運用できます。 コンテンツは Media Services でホストして動的に保護することができ、DRM ライセンスは Media Services の外部のサーバーによって配信されます。 この例では、次のように変更することを考えます。
+
+* STS は、ライセンス サーバー ファームによって許容可能で検証できるトークンを発行する必要があります。 たとえば、Axinom によって提供される Widevine ライセンス サーバーには、権利メッセージを含む特定の JWT が必要です。 そのため、STS でそのような JWT を発行する必要があります。 
+* Media Services でライセンス配信サービスを構成する必要はもうありません。 必要なのは、ContentKeyPolicies を構成するときに、ライセンス取得 URL を (PlayReady、Widevine、FairPlay に) 提供することです。
 
 ## <a name="media-services-v2-vs-v3"></a>Media Services v2 対 v3 
 

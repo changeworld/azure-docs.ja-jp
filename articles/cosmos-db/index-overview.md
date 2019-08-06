@@ -4,14 +4,14 @@ description: Azure Cosmos DB のインデックス作成のしくみを説明し
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 07/22/2019
 ms.author: thweiss
-ms.openlocfilehash: 633d0f619132ee93951cfe0dc329a7514a38ef57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8e21ea89f3e23709d636ab8af4716bff76d7217
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240732"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479285"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 
@@ -62,25 +62,34 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 ## <a name="index-kinds"></a>インデックスの種類
 
-現在、Azure Cosmos DB では 2 種類のインデックスがサポートされています。
+現在、Azure Cosmos DB では 3 種類のインデックスがサポートされています。
 
 **範囲**インデックスの種類は、以下のために使用されます。
 
-- 等値クエリ: 
+- 等値クエリ:
 
-   ```sql SELECT * FROM container c WHERE c.property = 'value'```
+    ```sql
+   SELECT * FROM container c WHERE c.property = 'value'
+    ```
 
-- 範囲クエリ: 
+- 範囲クエリ:
 
-   ```sql SELECT * FROM container c WHERE c.property > 'value'``` (`>`、`<`、`>=`、`<=`、`!=` に適しています)
+   ```sql
+   SELECT * FROM container c WHERE c.property > 'value'
+   ``` 
+  (`>`、`<`、`>=`、`<=`、`!=` に適しています)
 
 - `ORDER BY` クエリ:
 
-   ```sql SELECT * FROM container c ORDER BY c.property```
+   ```sql 
+   SELECT * FROM container c ORDER BY c.property
+   ```
 
-- `JOIN` クエリ: 
+- `JOIN` クエリ:
 
-   ```sql SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'```
+   ```sql
+   SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
+   ```
 
 範囲インデックスは、スカラー値 (文字列または数値) に使用できます。
 
@@ -88,11 +97,15 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 - 地理空間距離クエリ: 
 
-   ```sql SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40```
+   ```sql
+   SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
+   ```
 
 - クエリ内の地理空間: 
 
-   ```sql SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })```
+   ```sql
+   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
+   ```
 
 空間インデックスは、正しい形式の [GeoJSON](geospatial.md) オブジェクトに対して使用できます。 現在、Point、LineString、Polygon がサポートされています
 
@@ -100,7 +113,9 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
 - 複数のプロパティに対する `ORDER BY` クエリ: 
 
-   ```sql SELECT * FROM container c ORDER BY c.firstName, c.lastName```
+   ```sql
+   SELECT * FROM container c ORDER BY c.firstName, c.lastName
+   ```
 
 ## <a name="querying-with-indexes"></a>インデックスを使用してクエリを実行する
 

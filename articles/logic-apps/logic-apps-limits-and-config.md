@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 06/19/2019
-ms.openlocfilehash: 735bf2802bcf55ed87de2ffd2f52539898302b00
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 07/19/2019
+ms.openlocfilehash: b649ea1c69f82840a663cf32391e4c74ac6cc33e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275080"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68319504"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -26,7 +26,7 @@ ms.locfileid: "67275080"
 
 1 つのロジック アプリ定義の制限を次に示します。
 
-| Name | 制限 | メモ |
+| EnableAdfsAuthentication | 制限 | メモ |
 | ---- | ----- | ----- |
 | ワークフローごとのアクション数 | 500 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
 | アクションで許可される入れ子の深さ | 8 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
@@ -48,7 +48,7 @@ ms.locfileid: "67275080"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| EnableAdfsAuthentication | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | 実行継続時間 | 90 日間 | 365 日 | 既定の制限を変更するには、[実行継続時間の変更](#change-duration)に関する記事を参照してください。 |
 | ストレージのリテンション期間 | 実行の開始時刻から 90 日間 | 365 日 | 既定の制限を変更するには、[ストレージのリテンション期間の変更](#change-retention)に関する記事を参照してください。 |
@@ -75,7 +75,7 @@ ms.locfileid: "67275080"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| Name | 制限 | メモ |
+| EnableAdfsAuthentication | 制限 | メモ |
 | ---- | ----- | ----- |
 | トリガーのコンカレンシー | * コンカレンシー制御がオフの場合は無制限 <p><p>* コンカレンシー制御がオンの場合、25 が既定値の制限となります。制御をオンにした後、元に戻すことはできません。 既定値は、1 から 50 までの値に変更することができます。 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
 | 待機中の実行の最大数 | コンカレンシー制御がオンの場合、待機中の実行の最大数は 10 にコンカレンシー (トリガーのコンカレンシー) の数を加えたものになります。 最大数は 100 以下で変更することができます。 | この制限は、ロジック アプリで最大数の同時実行インスタンスが既に実行されている場合に、実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 |
@@ -93,7 +93,7 @@ ms.locfileid: "67275080"
 
 ### <a name="multi-tenant-logic-apps-service"></a>マルチテナント Logic Apps サービス
 
-| Name | 制限 | メモ |
+| EnableAdfsAuthentication | 制限 | メモ |
 | ---- | ----- | ----- |
 | アクション:5 分あたりの実行数 | 既定の制限は 100,000、上限は 300,000 です。 | 既定の制限を変更するには、["高スループット" モードでのロジック アプリの実行](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)に関する記事をご覧ください。 または、必要に応じて複数のロジック アプリにワークロードを分散できます。 |
 | アクション:同時発信呼び出し数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 |
@@ -105,7 +105,7 @@ ms.locfileid: "67275080"
 
 ### <a name="integration-service-environment-ise"></a>統合サービス環境 (ISE)
 
-| Name | 制限 | メモ |
+| EnableAdfsAuthentication | 制限 | メモ |
 |------|-------|-------|
 | 基本単位の実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 1 分あたり最大 4,000 回のアクション実行 (1 か月あたり最大 1 億 6,000 万回のアクション実行) が提供されます | |
 | スケール ユニットの実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 各スケール ユニットでは、1 分あたり最大 2,000 回の追加アクション実行 (1 か月あたり最大 8,000 万回の追加アクション実行) を提供できます | |
@@ -124,7 +124,7 @@ ms.locfileid: "67275080"
 
 コネクタ操作の中には、非同期呼び出しを行うものや webhook 要求をリッスンするものがあるため、これらの操作のタイムアウトはこれらの制限より長くなる場合があります。 詳細については、特定のコネクタの技術詳細をご覧ください。「[Workflow triggers and actions](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)」もご覧ください。
 
-| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| EnableAdfsAuthentication | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | 送信要求 | 120 秒 | 240 秒 | これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern)または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 |
 | 同期応答 | 120 秒 | 240 秒 | 元の要求で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
@@ -132,7 +132,7 @@ ms.locfileid: "67275080"
 
 #### <a name="message-size"></a>メッセージ サイズ
 
-| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| EnableAdfsAuthentication | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | メッセージ サイズ | 100 MB | 200 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 |
 | チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p>統合サービス環境の場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。[Azure Blob Storage コネクタ](/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいサイズのメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
@@ -141,7 +141,7 @@ ms.locfileid: "67275080"
 
 #### <a name="retry-policy"></a>再試行ポリシー
 
-| Name | 制限 | メモ |
+| EnableAdfsAuthentication | 制限 | メモ |
 | ---- | ----- | ----- |
 | 再試行 | 90 | 既定値は 4 です。 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
 | 再試行の最大間隔 | 1 日 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
@@ -154,7 +154,7 @@ ms.locfileid: "67275080"
 
 次に示すのは、Web API から作成できるカスタム コネクタの制限です。
 
-| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| EnableAdfsAuthentication | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | カスタム コネクタの数 | Azure サブスクリプションあたり 1,000 | Azure サブスクリプションあたり 1,000 ||
 | カスタム コネクタの 1 分あたりの要求数 | 接続ごとに、1 分あたり 500 の要求 | *カスタム コネクタ*ごとに、1 分あたり 2,000 の要求 ||
@@ -164,7 +164,7 @@ ms.locfileid: "67275080"
 
 ## <a name="managed-identities"></a>マネージド ID
 
-| Name | 制限 |
+| EnableAdfsAuthentication | 制限 |
 | ---- | ----- |
 | マネージド ID が自動割り当てされているロジック アプリの数 (Azure サブスクリプションあたり) | 100 |
 |||
@@ -173,13 +173,29 @@ ms.locfileid: "67275080"
 
 ## <a name="integration-account-limits"></a>統合アカウントの制限
 
+各 Azure サブスクリプションには、次の統合アカウントの制限があります。
+
+* 1 個の [Free レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)の統合アカウント
+
+* [Developer SKU と Premium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) の両方にわたる任意の[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内の統合アカウントを含む、合計 1,000 個の統合アカウント。
+
+* [Developer か Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) かに関係なく、各 ISE は、合計 5 個の統合アカウントに制限されています。
+
+  | ISE SKU | 制限 |
+  |---------|-------|
+  | **Premium** | 合計 5 個 - [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) のみ。Free または Basic は不可。 |
+  | **開発者** | 合計 5 個 - Free (1 個に制限)、Standard、または両方。ただし、Basic は不可。 |
+  |||
+
+ISE に含まれている統合アカウント以外に追加する統合アカウントには、追加コストが適用されます。 ISE の価格と課金のしくみについては、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)に関する記事を参照してください。 価格については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」を参照してください。
+
 <a name="artifact-number-limits"></a>
 
 ### <a name="artifact-limits-per-integration-account"></a>統合アカウントごとのアーティファクトの制限
 
-次に示すのは、各統合アカウントのアーティファクト数の制限です。 詳細については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」をご覧ください。
+次に示すのは、各統合アカウント レベルのアーティファクト数の制限です。 価格については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」を参照してください。 統合アカウントの価格と課金のしくみについては、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts)に関する記事を参照してください。
 
-> [!NOTE] 
+> [!NOTE]
 > Free レベルは、調査シナリオでのみ使用し、運用シナリオでは使用しないでください。 このレベルでは、スループットと使用率が制限され、サービス レベル アグリーメント (SLA) はありません。
 
 | アーティファクト | 無料 | Basic | Standard |
@@ -218,7 +234,7 @@ ms.locfileid: "67275080"
 
 B2B プロトコルに適用されるメッセージ サイズの制限を次に示します。
 
-| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| EnableAdfsAuthentication | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | デコードおよびエンコードに適用 |
 | X12 | 50 MB | 50 MB | デコードおよびエンコードに適用 |

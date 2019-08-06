@@ -9,16 +9,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ffeb60f5476a540e3da46a82c240b0dda9aa6be2
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 50711f8675e1b8aca6b9f90925ea921d22020ddd
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480468"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442551"
 ---
 # <a name="security-attributes-for-azure-cosmos-db"></a>Azure Cosmos DB のセキュリティ属性
 
-この記事では、Azure Cosmos DB に組み込まれている一般的なセキュリティ属性について説明します。
+この記事では、Azure Cosmos DB に組み込まれているセキュリティ属性について説明します。
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "66480468"
 
 | セキュリティ属性 | はい/いいえ | メモ |
 |---|---|--|
-| 保存時の暗号化 (サーバー側暗号化、ユーザーが管理するキーによるサーバー側暗号化、およびその他の暗号化機能) | はい | すべての Cosmos DB データベースとバックアップは、既定で暗号化されます。「[Azure Cosmos DB でのデータの暗号化](database-encryption-at-rest.md)」を参照してください。 カスタマー マネージド キーによるサーバー側での暗号化はサポートされていません。 |
+| 保存時の暗号化 (サーバー側暗号化、お客様が管理するキーによるサーバー側暗号化、およびその他の暗号化機能) | はい | すべての Cosmos DB データベースとバックアップは、既定で暗号化されます。「[Azure Cosmos DB でのデータの暗号化](database-encryption-at-rest.md)」を参照してください。 カスタマー マネージド キーによるサーバー側での暗号化はサポートされていません。 |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | Azure Cosmos DB のすべてのデータは、転送中に暗号化されます。 |
 | 暗号化キーの処理 (CMK や BYOK など)| いいえ |  |
 | 列レベルの暗号化 (Azure Data Services)| はい | Tables API Premium でのみ。 この機能は、すべての API でサポートされるわけではありません。 「[Azure Cosmos DB の概要:Table API](table-introduction.md)」を参照してください。 |
@@ -37,9 +37,9 @@ ms.locfileid: "66480468"
 | セキュリティ属性 | はい/いいえ | メモ |
 |---|---|--|
 | サービス エンドポイントのサポート| はい |  |
-| VNet インジェクションのサポート| はい | VNet サービス エンドポイントを使用して、仮想ネットワーク (VNet) の特定のサブネットからのアクセスのみを許可するように Azure Cosmos DB アカウントを構成できます。 VNet へのアクセスとファイアウォール規則を組み合わせることもできます。  「[仮想ネットワークから Azure Cosmos DB にアクセスする](vnet-service-endpoint.md)」を参照してください。 |
+| VNet インジェクションのサポート| はい | VNet サービス エンドポイントを使用して、仮想ネットワーク (VNet) の特定のサブネットからのアクセスのみを許可するように Azure Cosmos DB アカウントを構成できます。 VNet へのアクセスとファイアウォール規則を組み合わせることもできます。  「[仮想ネットワークから Azure Cosmos DB にアクセスする](VNet-service-endpoint.md)」を参照してください。 |
 | ネットワークの分離とファイアウォールのサポート| はい | ファイアウォールのサポートを使用して、承認された IP アドレスのセット、IP アドレスの範囲、およびクラウド サービスからのアクセスのみを許可するように Azure Cosmos アカウントを構成できます。 「[Azure Cosmos DB で IP ファイアウォールを構成する](how-to-configure-firewall.md)」を参照してください。|
-| 強制トンネリングのサポート | はい | 仮想マシンが配置されている VNET のクライアント側で構成できます。   |
+| 強制トンネリングのサポート| はい | 仮想マシンが配置されている VNet のクライアント側で構成できます。   |
 
 ## <a name="detection"></a>検出
 
@@ -59,7 +59,7 @@ ms.locfileid: "66480468"
 
 | セキュリティ属性 | はい/いいえ | メモ|
 |---|---|--|
-| コントロール/管理プレーンのログ記録と監査| はい | ファイアウォール、VNet、キー アクセス、IAM などのアカウント レベルの操作の Azure アクティビティ ログ。 |
+| コントロールと管理プレーンのログ記録と監査| はい | ファイアウォール、VNet、キー アクセス、IAM などのアカウント レベルの操作の Azure アクティビティ ログ。 |
 | データ プレーンのログ記録と監査 | はい | コンテナーの作成、スループットのプロビジョニング、インデックス作成ポリシー、ドキュメントの CRUD 操作などのコンテナー レベルの診断監視のログ記録。 |
 
 ## <a name="configuration-management"></a>構成管理

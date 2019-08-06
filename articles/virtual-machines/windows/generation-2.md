@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 7abc1b7cd3be775af03aeaf558f631060cc6f81c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 7cd938369cdc4f4ca711a442d89cd6ef3d6d08e8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722736"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477071"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure での第 2 世代 VM (プレビュー) のサポート
 
@@ -38,12 +38,15 @@ ms.locfileid: "67722736"
 
 第 1 世代 VM は、Azure のすべての VM サイズでサポートされています。 Azure は現在、次の選択された VM シリーズに対して第 2 世代のプレビュー サポートを提供しています。
 
+* [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [Dsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) および [Dsv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
 * [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
 * [Mv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
+* [NCv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series)と [NCv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
+* [ND シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
 

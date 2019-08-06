@@ -8,19 +8,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: c92762b53b0f5b50ea08f2f78998a3ccecbed990
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061057"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381837"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する
 
 GPU (Graphical processing units) は、多くの場合に、グラフィックや視覚化ワークロードなど、コンピューティングを集中的に使用するワークロードに使用とされます。 AKS では、Kubernetes でこれらのコンピューティングを集中的に使用するワークロードを実行する GPU 対応ノード プールの作成をサポートしています。 使用可能な GPU 対応 VM の詳細については、[Azure での GPU 最適化済み VM サイズ][gpu-skus]に関する記事を参照してください。 AKS ノードには、最小サイズの *Standard_NC6* をお勧めします。
 
 > [!NOTE]
-> GPU 対応 VM には、より高い価格が適用され、利用可能なリージョンが限られる特殊なハードウェアが含まれます。 詳細については、[価格][azure-pricing]ツールと[利用可能なリージョン][azure-availability]を参照してください。
+> GPU 対応 VM には、より高い価格が適用され、利用可能なリージョンが限られる特殊なハードウェアが含まれます。 詳細については、[価格][azure-pricing]tool and [region availability][azure-availability]に関するページを参照してください。
 
 現在、GPU 対応ノード プールの使用は Linux ノード プールでのみ使用できます。
 
@@ -121,7 +121,7 @@ daemonset "nvidia-device-plugin" created
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>GPU がスケジュール可能であることを確認する
 
-AKS クラスターが作成されたら、Kubernetes で GPU がスケジュール可能であることを確認します。 まず、[kubectl get nodes][ kubectl-get] コマンドを使用して、クラスター内のノードを一覧表示します。
+AKS クラスターが作成されたら、Kubernetes で GPU がスケジュール可能であることを確認します。 まず、[kubectl get nodes][kubectl-get] コマンドを使用して、クラスター内のノードを一覧表示します。
 
 ```console
 $ kubectl get nodes
@@ -184,7 +184,7 @@ Non-terminated Pods:         (9 in total)
 
 ## <a name="run-a-gpu-enabled-workload"></a>GPU 対応ワークロードの実行
 
-GPU が機能していることを確認するには、適切なリソース要求を指定して GPU 対応ワークロードをスケジュールします。 この例では、[MNIST データセット](http://yann.lecun.com/exdb/mnist/)に対して [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) ジョブを実行します。
+GPU が機能していることを確認するには、適切なリソース要求を指定して GPU 対応ワークロードをスケジュールします。 この例では、[MNIST データセット](http://yann.lecun.com/exdb/mnist/)に対して [Tensorflow](https://www.tensorflow.org/) ジョブを実行します。
 
 *samples-tf-mnist-demo.yaml* という名前のファイルを作成し、次の YAML マニフェストを貼り付けます。 次のジョブ マニフェストには `nvidia.com/gpu: 1` のリソース制限が含まれています。
 

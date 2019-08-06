@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/17/2019
+ms.date: 07/19/2019
 ms.author: victorh
-ms.openlocfilehash: 6dbc855fb1eb2ee9bcd292c896706b31f819aa5a
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 239998f29ac9a578174c5dba547bb24ba0755505
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253129"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68318180"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>SQL FQDN を使用して Azure Firewall アプリケーション規則を構成する
 
@@ -32,8 +32,7 @@ SQL FQDN では、以下のトラフィックをフィルター処理できま�
 プレビュー期間中、SQL FQDN のフィルター処理は、[プロキシ モード](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)でのみサポートされます (ポート 1433)。 既定のリダイレクト モードで SQL を使用する場合、[ネットワーク ルール](overview.md#network-traffic-filtering-rules)の一部として SQL サービス タグを使用してアクセスをフィルター処理することができます。
 SQL IaaS のトラフィックに既定以外のポートを使用する場合は、ファイアウォール アプリケーション規則でこれらのポートを構成できます。
 
-> [!NOTE]
-> 現在、SQL FQDN を使用するアプリケーション規則は、すべてのリージョンの Azure CLI、REST、およびテンプレートで使用できます。 ポータルのユーザー インターフェイスは、段階的にリージョンに追加されており、ロールアウトが完了すればすべてのリージョンで利用できるようになります。
+現在、SQL FQDN を使用するアプリケーション規則は、Azure portal、Azure CLI、REST、およびテンプレートを介してすべてのリージョンで使用できます。
 
 ## <a name="configure-using-azure-cli"></a>Azure CLI を使用して構成する
 

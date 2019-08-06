@@ -3,18 +3,18 @@ title: Azure Container Instances のコンテナー グループ
 description: Azure Container Instances の複数コンテナー グループのしくみを理解します
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cba57875daf9b570d274ec8c4e9c4146af0dc045
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b17004e7821bcac61ca98afdbeaf87644da2a441
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072828"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326052"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -41,13 +41,13 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 
 ## <a name="deployment"></a>Deployment
 
-複数コンテナー グループをデプロイするには、一般的な方法が 2 つあります: [Resource Manager テンプレート][resource-manager template]または [YAML ファイル][yaml-file]を使用します。 コンテナー インスタンスのデプロイ時に追加の Azure サービス リソース ([Azure Files 共有][azure-files]など) をデプロイする必要がある場合は、Resource Manager テンプレートをお勧めします。 YAML フォーマットは簡潔であるため、デプロイにコンテナー インスタンスのみが含まれている場合は、YAML ファイルをお勧めします。
+複数コンテナー グループをデプロイするには、一般的な方法が 2 つあります。[Resource Manager テンプレートまたは ][resource-manager template]or a [YAML file][yaml-file] を使用します。 コンテナー インスタンスのデプロイ時に追加の Azure サービス リソース ([Azure Files 共有][azure-files] など) をデプロイする必要がある場合は、Resource Manager テンプレートをお勧めします。 YAML フォーマットは簡潔であるため、デプロイにコンテナー インスタンスのみが含まれている場合は、YAML ファイルをお勧めします。
 
 コンテナー グループの構成を保持するために、Azure CLI の [az container export][az-container-export] コマンドを使用して、YAML ファイルに構成をエクスポートできます。 エクスポートによって、バージョン コントロールでコンテナー グループの構成を「コードとしての構成」として格納できます。 または、エクスポートしたファイルを YAML で新しい構成を作成する際の出発点として使用します。
 
 ## <a name="resource-allocation"></a>リソースの割り当て
 
-Azure Container Instances では、グループにインスタンスの[リソース要求][resource-requests]を追加することで、CPU、メモリ、必要に応じて [GPU][gpus] (プレビュー) などのリソースをコンテナー グループに割り当てます。 たとえば、CPU リソースを例に挙げると、それぞれが 1 CPU を要求する 2 つのインスタンスを持つ 1 つのコンテナー グループを作成すると、コンテナー グループに 2 CPU が割り当てられます。
+Azure Container Instances は、 CPU、メモリ、必要に応じて [GPU][gpus] などのリソースを割り当てます。グループ内のインスタンスの (preview) to a container group by adding the [resource requests][resource-requests]。 たとえば、CPU リソースを例に挙げると、それぞれが 1 CPU を要求する 2 つのインスタンスを持つ 1 つのコンテナー グループを作成すると、コンテナー グループに 2 CPU が割り当てられます。
 
 コンテナー グループに利用できる最大リソースは、デプロイに使用した [Azure リージョン][region-availability]によって異なります。
 

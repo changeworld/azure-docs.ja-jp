@@ -3,16 +3,17 @@ title: Classic Azure コンテナー レジストリのアップグレード
 description: 管理対象外の Classic コンテナー レジストリをアップグレードして、Basic、Standard、Premium の管理対象コンテナー レジストリの拡張機能セットを利用しましょう。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
-ms.openlocfilehash: a5099feee34eb5497b68987485412e29ad5d5365
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 05c227e7de078c6bb371049f16e191598b9ca4e5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480338"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310373"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Classic コンテナー レジストリのアップグレード
 
@@ -52,7 +53,7 @@ Classic レジストリを管理対象のレジストリにアップグレード
 
 ## <a name="how-to-upgrade"></a>アップグレードする方法
 
-管理対象外の Classic レジストリをいずかれの管理対象 SKU にアップグレードする方法は、いくつかあります。 次のセクションで、[Azure CLI][azure-cli] と [Azure Portal][azure-portal] を使用するプロセスをご説明します。
+管理対象外の Classic レジストリをいずかれの管理対象 SKU にアップグレードする方法は、いくつかあります。 次のセクションで、[Azure CLI][azure-cli] および and the [Azure portal][azure-portal] を使用するプロセスをご説明します。
 
 ## <a name="upgrade-in-azure-cli"></a>Azure CLI でのアップグレード
 

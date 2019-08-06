@@ -1,5 +1,5 @@
 ---
-title: カスタム ポリシーを使用して LinkedIn アカウントでのサインインを設定する - Azure Active Directory B2C | Microsoft Docs
+title: カスタム ポリシーを使用して LinkedIn アカウントでのサインインを設定する - Azure Active Directory B2C
 description: カスタム ポリシーを使用して Azure Active Directory B2C で LinkedIn アカウントでのサインインを設定する
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b336428592a4897319725782c994c3fae26bfae0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f854e1771eec1d02fd14e040510688bf33c59c8
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510414"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442427"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して LinkedIn アカウントでのサインインを設定する
 
@@ -26,25 +26,34 @@ ms.locfileid: "66510414"
 ## <a name="prerequisites"></a>前提条件
 
 - 「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
-- まだ LinkedIn アカウントを持っていない場合は、[LinkedIn のサインアップ ページ](https://www.linkedin.com/start/join)でこのアカウントを作成します。
-- LinkedIn アプリケーションでは、アプリケーションを表す 80 X 80 ピクセルのロゴ イメージを指定する必要があります。
+- LinkedIn アカウント - まだお持ちでない場合は、[アカウントを作成](https://www.linkedin.com/start/join)します。
+- Linkedin ページ - 次のセクションで作成する LinkedIn アプリケーションに関連付ける [LinkedIn ページ](https://www.linkedin.com/company/setup/new/)が必要です。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
 Azure AD B2C で ID プロバイダーとして LinkedIn を使用するには、LinkedIn アプリケーションを作成する必要があります。
 
+### <a name="create-app"></a>アプリを作成する
+
 1. LinkedIn アカウントの資格情報を使用して、[LinkedIn アプリケーション管理](https://www.linkedin.com/secure/developer?newapp=) の Web サイトにサインインします。
-2. **[アプリケーションの作成]** を選択します。
-3. **[会社名]** 、 **[アプリケーション名]** 、および **[アプリケーションの説明]** を入力します。
-4. 作成した **[アプリケーションのロゴ]** をアップロードします。
-5. 提供される一覧から **[Application Use] (アプリケーションの用途)** を選択します。
-6. **[Web サイトの URL]** には「`https://your-tenant.b2clogin.com`」と入力します。  `your-tenant`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「contoso.b2clogin.com」とします。
-7. **[勤務先の電子メール]** のアドレスおよび **[勤務先電話番号]** を入力します。
-8. ページ下部の使用条件を確認して同意し、 **[送信]** を選択します。
-9. **[認証]** を選択し、 **[クライアント ID]** と **[クライアント シークレット]** の値を後で使用するために記録します。
-10. **[Authorized Redirect URLs] (認証済みのリダイレクト URL)** に「`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。 
-11. **[Update]\(更新\)** を選択します。
-12. **[設定]** を選択して、 **[アプリケーションの状態]** を **[ライブ]** に変更し、 **[更新]** を選択します。
+1. **[Create app]\(アプリの作成\)** を選択します。
+1. **アプリ名**を入力します。
+1. LinkedIn ページ名に対応する**会社**名を入力します。 LinkedIn ページがまだない場合は、作成します。
+1. (省略可能) **プライバシー ポリシーの URL** を入力します。 これは、有効な URL である必要がありますが、到達可能なエンドポイントである必要はありません。
+1. **勤務先の電子メール**を入力します。
+1. **アプリ ロゴ**の画像をアップロードします。 ロゴの画像は正方形である必要があり、その大きさは 100 x 100 ピクセル以上である必要があります。
+1. **[Products]\(製品\)** セクションは既定値のままにしておいてください。
+1. **[Legal terms]\(法律条項\)** に記載されている情報を確認します。 条項に同意する場合は、チェック ボックスをオンにします。
+1. **[Create app]\(アプリの作成\)** を選択します。
+
+### <a name="configure-auth"></a>auth を構成する
+
+1. **[Auth]\(認証\)** タブを選択します。
+1. **クライアント ID** を書き留めます。
+1. **クライアント シークレット**を表示して記録します。
+1. **[OAuth 2.0 settings]\(OAuth 2.0 設定\)** で、次の**リダイレクト URL** を追加します。 `your-tenant` をテナントの名前に置き換えます。 テナント名には、Azure AD B2C に大文字で定義されている場合でも、**すべて小文字**を使用します。
+
+    `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
@@ -56,20 +65,20 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 6. **オプション**については、`Manual`を選択します。
-7. ポリシー キーの**名前**を入力します。 たとえば、「 `LinkedInSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+7. ポリシー キーの**名前**を入力します。 たとえば、「 `LinkedInSecret` 」のように入力します。 プレフィックス *B2C_1A_* がキーの名前に自動的に追加されます。
 8. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
 9. **[キー使用法]** として [`Signature`] を選択します。
 10. **Create** をクリックしてください。
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
-ユーザーが LinkedIn アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。 
+ユーザーが LinkedIn アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
-LinkedIn アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
+LinkedIn アカウントをクレーム プロバイダーとして定義するには、それをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
-1. *TrustFrameworkExtensions.xml* を開きます。
-2. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
-3. 新しい **ClaimsProvider** を次のように追加します。
+1. エディターで *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml*** ファイルを開きます。 このファイルは、前提条件の 1 つの一部としてダウンロードした[カスタム ポリシー スターター パック][starter-pack]に含まれています。
+1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
+1. 新しい **ClaimsProvider** を次のように追加します。
 
     ```xml
     <ClaimsProvider>
@@ -84,6 +93,8 @@ LinkedIn アカウントをクレーム プロバイダーとして定義する�
             <Item Key="authorization_endpoint">https://www.linkedin.com/oauth/v2/authorization</Item>
             <Item Key="AccessTokenEndpoint">https://www.linkedin.com/oauth/v2/accessToken</Item>
             <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
+            <Item Key="scope">r_emailaddress r_liteprofile</Item>
+            <Item Key="HttpBinding">POST</Item>
             <Item Key="external_user_identity_claim_id">id</Item>
             <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
             <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
@@ -93,12 +104,13 @@ LinkedIn アカウントをクレーム プロバイダーとして定義する�
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_LinkedInSecret" />
           </CryptographicKeys>
+          <InputClaims />
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName.localized" />
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="linkedin.com" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="linkedin.com" AlwaysUseDefaultValue="true" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="ExtractGivenNameFromLinkedInResponse" />
@@ -114,14 +126,14 @@ LinkedIn アカウントをクレーム プロバイダーとして定義する�
     </ClaimsProvider>
     ```
 
-4. **client_id** の値を前に記録したクライアント ID に置き換えます。
-5. ファイルを保存します。
+1. **client_id** の値を、前に記録した LinkedIn アプリケーションのクライアント ID に置き換えます。
+1. ファイルを保存します。
 
 ### <a name="add-the-claims-transformations"></a>要求変換の追加
 
-LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse** と **ExtractSurNameFromLinkedInResponse** 要求変換が ClaimsTransformations のリストに追加されている必要があります。 ファイルに **ClaimsTransformations** 要素が定義されていない場合、親 XML 要素を次のように追加します。 要求変換では、**nullStringClaim** という名前の新しい要求の種類が定義されている必要があります。 
+LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse** と **ExtractSurNameFromLinkedInResponse** 要求変換が ClaimsTransformations のリストに追加されている必要があります。 ファイルに **ClaimsTransformations** 要素が定義されていない場合、親 XML 要素を次のように追加します。 要求変換では、**nullStringClaim** という名前の新しい要求の種類が定義されている必要があります。
 
-**BuildingBlocks** 要素をファイルの先頭付近に追加する必要があります。 例として、*TrustframeworkBase.xml* を参照します。
+*TrustFrameworkExtensions.xml* ファイルの先頭付近に **BuildingBlocks** 要素を追加します。 例として、*TrustFrameworkBase.xml* を参照します。
 
 ```XML
 <BuildingBlocks>
@@ -158,9 +170,10 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
   </ClaimsTransformations>
 </BuildingBlocks>
 ```
+
 ### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
 
-ここまでで、Azure AD B2C が LinkedIn アカウントと通信する方法を認識できるようにポリシーを構成しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
+これで、Azure AD B2C が LinkedIn アカウントと通信する方法を認識できるようにポリシーが構成されました。 ポリシーの拡張ファイルをアップロードしてみて、現時点で問題がないことを確認します。
 
 1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
 2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
@@ -170,7 +183,7 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
 
 この時点で、ID プロバイダーは設定されていますが、まだどのサインアップまたはサインイン画面でも使用できません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、それを LinkedIn ID プロバイダーも含まれるように変更します。
 
-1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
+1. スターター パック内の *TrustFrameworkBase.xml* ファイルを開きます。
 2. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
 3. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
 4. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
@@ -181,7 +194,7 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
 **ClaimsProviderSelection** 要素は、サインアップまたはサインイン画面の ID プロバイダーのボタンに類似しています。 LinkedIn アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
 
 1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
-2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`LinkedInExchange` など) に設定します。
+2. **ClaimsProviderSelections** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`LinkedInExchange` など) に設定します。
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
@@ -197,7 +210,7 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
     ```XML
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     ```
-    
+
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの ID に更新します。 たとえば、「 `LinkedIn-OAUTH` 」のように入力します。
 
 3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
@@ -225,9 +238,9 @@ Azure AD B2C との通信は、テナントで作成したアプリケーショ�
 5. 変更を保存し、ファイルをアップロードしてから、一覧内の新しいポリシーを選択します。
 6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、 **[今すぐ実行]** をクリックしてテストします。
 
-## <a name="migration-from-v10-to-v20"></a>v1.0 から v2.0 への移行
+## <a name="migration-from-v10-to-v20"></a>v1.0 から v2.0 に移行する
 
-LinkedIn では最近、[API が v1.0 から v2.0](https://engineering.linkedin.com/blog/2018/12/developer-program-updates) に更新されました。 既存の構成を新しい構成に移行するには、次のセクションに記載された情報を使用して技術プロファイル内の要素を更新します。
+LinkedIn では最近、[API が v1.0 から v2.0 に更新](https://engineering.linkedin.com/blog/2018/12/developer-program-updates)されました。 既存の構成を新しい構成に移行するには、次のセクションに記載された情報を使用して技術プロファイル内の要素を更新します。
 
 ### <a name="replace-items-in-the-metadata"></a>Metadata 内の項目を置き換える
 
@@ -282,7 +295,7 @@ LinkedIn では最近、[API が v1.0 から v2.0](https://engineering.linkedin.
 
 ### <a name="define-the-new-claims-transformations-and-claim-type"></a>新しい要求変換と要求の種類を定義する
 
-前の手順で、新しい要求変換を追加しました。この要求変換を定義する必要があります。 要求変換を定義するには、**ClaimsTransformations** のリストにその要求変換を追加します。 ファイルに **ClaimsTransformations** 要素が定義されていない場合、親 XML 要素を次のように追加します。 要求変換では、**nullStringClaim** という名前の新しい要求の種類が定義されている必要があります。 
+前の手順で、新しい要求変換を追加しました。この要求変換を定義する必要があります。 要求変換を定義するには、**ClaimsTransformations** のリストにその要求変換を追加します。 ファイルに **ClaimsTransformations** 要素が定義されていない場合、親 XML 要素を次のように追加します。 要求変換では、**nullStringClaim** という名前の新しい要求の種類が定義されている必要があります。
 
 **BuildingBlocks** 要素をファイルの先頭付近に追加する必要があります。 例として、*TrustframeworkBase.xml* を参照します。
 
@@ -331,7 +344,7 @@ LinkedIn の v1.0 から v2.0 への移行の一部として、メール アド�
 3. LinkedIn の `/emailAddress` API への要求を作成する次のクレーム プロバイダーを追加します。 この要求を承認するために、LinkedIn アクセス トークンが必要です。
 
     ```XML
-    <ClaimsProvider> 
+    <ClaimsProvider>
       <DisplayName>REST APIs</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="API-LinkedInEmail">
@@ -381,3 +394,6 @@ LinkedIn の v1.0 から v2.0 への移行の一部として、メール アド�
 サインアップ中の LinkedIn からのメール アドレス取得は、オプションです。 メール アドレスを LinkedIn から取得せず、サインアップ中に必要になるように選択した場合、ユーザーはメール アドレスを手動で入力して検証する必要があります。
 
 LinkedIn ID プロバイダーを使用するポリシーの完全なサンプルについては、[カスタム ポリシー スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/linkedin-identity-provider)に関するページを参照してください。
+
+<!-- Links - EXTERNAL -->
+[starter-pack]: https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack

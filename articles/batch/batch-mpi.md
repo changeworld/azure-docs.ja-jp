@@ -4,7 +4,7 @@ description: Azure Batch でマルチインスタンス タスクを使用して
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
 ms.service: batch
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.date: 03/13/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a4184fa361ba863cdaf916ef4853eda8b6e8188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d816236cfda1513734f5cdf63800543f227aef9
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595946"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68323432"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行
 
@@ -44,7 +44,7 @@ Batch では、通常、各タスクは単一のコンピューティング ノ�
 5. プライマリ タスクとすべてのサブタスクで調整コマンドが "*正常に完了した後*"、プライマリ タスクがマスター ノード上で**アプリケーション コマンド**を実行します。 アプリケーション コマンド (マルチインスタンス タスクに指定したコマンド ライン) は、プライマリ タスクでのみ実行されます。 [MS-MPI][msmpi_msdn] ベースのソリューションでは、このコマンド ラインで `mpiexec.exe` を使用して MPI 対応アプリケーションを実行します。
 
 > [!NOTE]
-> "マルチインスタンス タスク" は機能的には異なりますが、[StartTask][net_starttask] や [JobPreparationTask][net_jobprep] のような一意のタスクの種類ではありません。 マルチインスタンス タスクは、マルチインスタンス設定が構成されている標準の Batch タスク (Batch .NET の [CloudTask][net_task]) です。 この記事では、これを **マルチインスタンス タスク**と呼んでいます。
+> "マルチインスタンス タスク" は機能的には異なりますが、[StartTask][net_starttask] や or [JobPreparationTask][net_jobprep] のような一意のタスクの種類ではありません。 マルチインスタンス タスクは、マルチインスタンス設定が構成されている標準の Batch タスク (Batch .NET の [CloudTask][net_task]) です。 この記事では、これを **マルチインスタンス タスク**と呼んでいます。
 >
 >
 
@@ -76,7 +76,7 @@ myCloudPool.MaxTasksPerComputeNode = 1;
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>StartTask を使用した MPI のインストール
-MPI アプリケーションをマルチインスタンス タスクで実行するには、まず、プール内のコンピューティング ノードに MPI 実装 (例: MS-MPI または Intel MPI) をインストールする必要があります。 [StartTask][net_starttask] を使用するのに適した機会です。StartTask は、ノードがプールに参加するたびに実行され、ノードの再起動時にも実行されます。 次のコード スニペットでは、[リソース ファイル][net_resourcefile]として MS-MPI セットアップ パッケージを指定する StartTask を作成しています。 このスタート タスクのコマンド ラインは、リソース ファイルがノードにダウンロードされた後で実行されます。 この場合、コマンド ラインにより MS-MPI の無人インストールが実行されます。
+MPI アプリケーションをマルチインスタンス タスクで実行するには、まず、プール内のコンピューティング ノードに MPI 実装 (例: MS-MPI または Intel MPI) をインストールする必要があります。 [StartTask][net_starttask] を使用するのに適した機会です。StartTask は、ノードがプールに参加するたびに実行され、ノードの再起動時にも実行されます。次のコード スニペットでは、リソース ファイルとして MS-MPI セットアップ パッケージを指定する StartTask を作成しています。, which executes whenever a node joins a pool, or is restarted. This code snippet creates a StartTask that specifies the MS-MPI setup package as a [resource file][net_resourcefile] このスタート タスクのコマンド ラインは、リソース ファイルがノードにダウンロードされた後で実行されます。 この場合、コマンド ラインにより MS-MPI の無人インストールが実行されます。 リモート ダイレクト メモリ アクセス (RDMA)
 
 ```csharp
 // Create a StartTask for the pool which we use for installing MS-MPI on
@@ -95,25 +95,25 @@ myCloudPool.StartTask = startTask;
 await myCloudPool.CommitAsync();
 ```
 
-### <a name="remote-direct-memory-access-rdma"></a>リモート ダイレクト メモリ アクセス (RDMA)
-Batch プールのコンピューティング ノードのサイズとして [RDMA 対応サイズ](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (A9 など) を選択した場合、MPI アプリケーションは Azure の高パフォーマンスで待機時間の短いリモート ダイレクト メモリ アクセス (RDMA) ネットワークを利用できます。
-
+### <a name="remote-direct-memory-access-rdma"></a>Batch プールのコンピューティング ノードのサイズとして [RDMA 対応サイズ](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (A9 など) を選択した場合、MPI アプリケーションは Azure の高パフォーマンスで待機時間の短いリモート ダイレクト メモリ アクセス (RDMA) ネットワークを利用できます。
 次の記事で、"RDMA 対応" として指定されたサイズを確認してください。
 
-* **CloudServiceConfiguration** プール
+**CloudServiceConfiguration** プール
 
-  * [Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md) (Windows のみ)
-* **VirtualMachineConfiguration** プール
+* [Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md) (Windows のみ)
 
-  * [Azure の仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+  * **VirtualMachineConfiguration** プール
+* [Azure の仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+
   * [Azure の仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
+  * [Linux のコンピューティング ノード](batch-linux-nodes.md)で RDMA を利用するには、ノード上で **Intel MPI** を使用する必要があります。
 
 > [!NOTE]
-> [Linux のコンピューティング ノード](batch-linux-nodes.md)で RDMA を利用するには、ノード上で **Intel MPI** を使用する必要があります。 
+> Batch .NET を使用したマルチインスタンス タスクの作成 
 >
 
-## <a name="create-a-multi-instance-task-with-batch-net"></a>Batch .NET を使用したマルチインスタンス タスクの作成
-プールの要件と MPI パッケージのインストールについて説明しました。次に、マルチインスタンス タスクを作成します。 次のスニペットでは、標準の [CloudTask][net_task] を作成し、[MultiInstanceSettings][net_multiinstance_prop] プロパティを構成しています。 前述のように、マルチインスタンス タスクはタスクの種類ではなく、マルチインスタンス設定で構成された標準の Batch タスクです。
+## <a name="create-a-multi-instance-task-with-batch-net"></a>プールの要件と MPI パッケージのインストールについて説明しました。次に、マルチインスタンス タスクを作成します。
+次のスニペットでは、標準の [CloudTask][net_task] を作成し、, then configure its [MultiInstanceSettings][net_multiinstance_prop] プロパティを構成しています。 前述のように、マルチインスタンス タスクはタスクの種類ではなく、マルチインスタンス設定で構成された標準の Batch タスクです。 プライマリ タスクとサブタスク
 
 ```csharp
 // Create the multi-instance task. Its command line is the "application command"
@@ -138,48 +138,48 @@ myMultiInstanceTask.MultiInstanceSettings =
 await myBatchClient.JobOperations.AddTaskAsync("mybatchjob", myMultiInstanceTask);
 ```
 
-## <a name="primary-task-and-subtasks"></a>プライマリ タスクとサブタスク
-タスクのマルチインスタンス設定を作成するときは、タスクを実行するコンピューティング ノードの数を指定します。 タスクをジョブに送信すると、Batch サービスによって、1 つの**プライマリ** タスクと、指定したノードの数に対応する十分な数の**サブタスク**が作成されます。
+## <a name="primary-task-and-subtasks"></a>タスクのマルチインスタンス設定を作成するときは、タスクを実行するコンピューティング ノードの数を指定します。
+タスクをジョブに送信すると、Batch サービスによって、1 つの**プライマリ** タスクと、指定したノードの数に対応する十分な数の**サブタスク**が作成されます。 これらのタスクには、0 ～ *numberOfInstances* - 1の範囲の整数 ID が割り当てられます。
 
-これらのタスクには、0 ～ *numberOfInstances* - 1の範囲の整数 ID が割り当てられます。 ID が 0 のタスクがプライマリ タスクで、他のすべての ID がサブタスクです。 たとえば、タスクに対して次のマルチインスタンス設定を作成した場合、プライマリ タスクには ID として 0 が割り当てられ、サブタスクには 1 ～ 9 が割り当てられます。
+ID が 0 のタスクがプライマリ タスクで、他のすべての ID がサブタスクです。 たとえば、タスクに対して次のマルチインスタンス設定を作成した場合、プライマリ タスクには ID として 0 が割り当てられ、サブタスクには 1 ～ 9 が割り当てられます。 マスター ノード
 
 ```csharp
 int numberOfNodes = 10;
 myMultiInstanceTask.MultiInstanceSettings = new MultiInstanceSettings(numberOfNodes);
 ```
 
-### <a name="master-node"></a>マスター ノード
-マルチインスタンス タスクを送信すると、Batch サービスによって、いずれかのコンピューティング ノードがマスター ノードと指定され、マスター ノード上でプライマリ タスクを実行するようにスケジュールされます。 サブタスクは、マルチインスタンス タスクに割り当てられたマスター以外のノード上で実行されるようにスケジュールされます。
+### <a name="master-node"></a>マルチインスタンス タスクを送信すると、Batch サービスによって、いずれかのコンピューティング ノードがマスター ノードと指定され、マスター ノード上でプライマリ タスクを実行するようにスケジュールされます。
+サブタスクは、マルチインスタンス タスクに割り当てられたマスター以外のノード上で実行されるようにスケジュールされます。 調整コマンド
 
-## <a name="coordination-command"></a>調整コマンド
-**調整コマンド** は、プライマリ タスクとサブタスクの両方で実行されます。
+## <a name="coordination-command"></a>**調整コマンド** は、プライマリ タスクとサブタスクの両方で実行されます。
+調整コマンドの呼び出しはブロックされています。すべてのサブタスクで調整コマンドから正常に制御が返されるまで、アプリケーション コマンドは実行されません。
 
-調整コマンドの呼び出しはブロックされています。すべてのサブタスクで調整コマンドから正常に制御が返されるまで、アプリケーション コマンドは実行されません。 そのため、調整コマンドは必要なバックグラウンド サービスを開始し、それらのサービスの使用準備ができていることを確認してから終了する必要があります。 たとえば、MS-MPI バージョン 7 を使用するソリューションの次の調整コマンドは、ノードで SMPD サービスを開始してから終了します。
+そのため、調整コマンドは必要なバックグラウンド サービスを開始し、それらのサービスの使用準備ができていることを確認してから終了する必要があります。 たとえば、MS-MPI バージョン 7 を使用するソリューションの次の調整コマンドは、ノードで SMPD サービスを開始してから終了します。 この調整コマンドでは、 `start` を使用していることに注意してください。
 
 ```
 cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 ```
 
-この調整コマンドでは、 `start` を使用していることに注意してください。 `smpd.exe` アプリケーションは実行後すぐに制御を返さないため、これが必須となります。 [start][cmd_start] コマンドを使用していない場合、この調整コマンドは制御を返さないため、アプリケーション コマンドを実行できません。
+`smpd.exe` アプリケーションは実行後すぐに制御を返さないため、これが必須となります。 [start][cmd_start] コマンドを使用していない場合、この調整コマンドは制御を返さないため、アプリケーション コマンドを実行できません。 アプリケーション コマンド
 
-## <a name="application-command"></a>アプリケーション コマンド
-プライマリ タスクとすべてのサブタスクで調整コマンドの実行が完了すると、マルチインスタンス タスクのコマンド ラインがプライマリ タスクで " *のみ*" 実行されます。 調整コマンドと区別するために、これを **アプリケーション コマンド** と呼びます。
+## <a name="application-command"></a>プライマリ タスクとすべてのサブタスクで調整コマンドの実行が完了すると、マルチインスタンス タスクのコマンド ラインがプライマリ タスクで " *のみ*" 実行されます。
+調整コマンドと区別するために、これを **アプリケーション コマンド** と呼びます。 MS-MPI アプリケーションでは、アプリケーション コマンドを使用して、 `mpiexec.exe`で MPI 対応のアプリケーションを実行します。
 
-MS-MPI アプリケーションでは、アプリケーション コマンドを使用して、 `mpiexec.exe`で MPI 対応のアプリケーションを実行します。 たとえば、MS-MPI バージョン 7 を使用するソリューションのアプリケーション コマンドは、次のようになります。
+たとえば、MS-MPI バージョン 7 を使用するソリューションのアプリケーション コマンドは、次のようになります。 MS-MPI の `mpiexec.exe` は既定で `CCP_NODES` 変数を使用するため (「[環境変数](#environment-variables)」を参照)、上記のアプリケーション コマンド ラインの例では、この変数が除外されています。
 
 ```
 cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe
 ```
 
 > [!NOTE]
-> MS-MPI の `mpiexec.exe` は既定で `CCP_NODES` 変数を使用するため (「[環境変数](#environment-variables)」を参照)、上記のアプリケーション コマンド ラインの例では、この変数が除外されています。
+> 環境変数
 >
 >
 
-## <a name="environment-variables"></a>環境変数
-Batch は、マルチインスタンス タスク固有の複数の[環境変数][msdn_env_var] を、マルチインスタンス タスクに割り当てられたコンピューティング ノード上に作成します。 調整コマンド ラインとアプリケーション コマンド ラインは、これらの環境変数、スクリプト、および実行するプログラムを参照できます。
+## <a name="environment-variables"></a>Batch は、マルチインスタンス タスク固有の複数の[環境変数][msdn_env_var] を、マルチインスタンス タスクに割り当てられたコンピューティング ノード上に作成します。
+調整コマンド ラインとアプリケーション コマンド ラインは、これらの環境変数、スクリプト、および実行するプログラムを参照できます。 Batch サービスによって、マルチインスタンス タスクで使用される次の環境変数が作成されます。
 
-Batch サービスによって、マルチインスタンス タスクで使用される次の環境変数が作成されます。
+これらの変数とその他の Batch コンピューティング ノードの環境変数のコンテンツと可視性を含む詳細については、[コンピューティング ノードの環境変数][msdn_env_var]に関する記事をご覧ください。
 
 * `CCP_NODES`
 * `AZ_BATCH_NODE_LIST`
@@ -188,45 +188,45 @@ Batch サービスによって、マルチインスタンス タスクで使用�
 * `AZ_BATCH_TASK_SHARED_DIR`
 * `AZ_BATCH_IS_CURRENT_NODE_MASTER`
 
-これらの変数とその他の Batch コンピューティング ノードの環境変数のコンテンツと可視性を含む詳細については、[コンピューティング ノードの環境変数][msdn_env_var]に関する記事をご覧ください。
+Batch Linux MPI コード サンプルには、さまざまな環境変数をどのように使用できるかの例が含まれています。
 
 > [!TIP]
-> Batch Linux MPI コード サンプルには、さまざまな環境変数をどのように使用できるかの例が含まれています。 [coordination-cmd][coord_cmd_example] Bash スクリプトは、共通アプリケーションと入力ファイルを Azure Storage からダウンロードし、Network File System (NFS) 共有をマスター ノード上で有効にし、マルチインスタンス タスクに割り当てられているその他のノードを NFS クライアントとして構成します。
+> [coordination-cmd][coord_cmd_example] Bash スクリプトは、共通アプリケーションと入力ファイルを Azure Storage からダウンロードし、Network File System (NFS) 共有をマスター ノード上で有効にし、マルチインスタンス タスクに割り当てられているその他のノードを NFS クライアントとして構成します。 リソース ファイル
 >
 >
 
-## <a name="resource-files"></a>リソース ファイル
-マルチインスタンス タスクには、考慮すべきリソース ファイルのセットが 2 つあります。"*すべてのタスク*" (プライマリ タスクとサブタスクの両方) でダウンロードされる**共通リソース ファイル**と、マルチインスタンス タスク自体に指定され、"*プライマリ タスクでのみ*" ダウンロードされる**リソース ファイル**です。
+## <a name="resource-files"></a>マルチインスタンス タスクには、考慮すべきリソース ファイルのセットが 2 つあります。"*すべてのタスク*" (プライマリ タスクとサブタスクの両方) でダウンロードされる**共通リソース ファイル**と、マルチインスタンス タスク自体に指定され、"*プライマリ タスクでのみ*" ダウンロードされる**リソース ファイル**です。
+タスクのマルチインスタンス設定で 1 つ以上の **共通リソース ファイル** を指定できます。
 
-タスクのマルチインスタンス設定で 1 つ以上の **共通リソース ファイル** を指定できます。 これらの共通リソース ファイルは、プライマリ タスクとすべてのサブタスクで、[Azure Storage](../storage/common/storage-introduction.md) から各ノードの**タスク共有ディレクトリ**にダウンロードされます。 タスク共有ディレクトリには、 `AZ_BATCH_TASK_SHARED_DIR` 環境変数を使用して、アプリケーション コマンド ラインと調整コマンド ラインからアクセスできます。 `AZ_BATCH_TASK_SHARED_DIR` パスは、マルチインスタンス タスクに割り当てられたすべてのノードで同じであり、そのため、プライマリ タスクとすべてのサブタスクで 1 つの調整コマンドを共有できます。 Batch は、リモート アクセスという意味ではディレクトリを "共有" しませんが、環境変数に関するヒントとして示したように、マウントまたは共有ポイントとして使用できます。
+これらの共通リソース ファイルは、プライマリ タスクとすべてのサブタスクで、[Azure Storage](../storage/common/storage-introduction.md) から各ノードの**タスク共有ディレクトリ**にダウンロードされます。 タスク共有ディレクトリには、 `AZ_BATCH_TASK_SHARED_DIR` 環境変数を使用して、アプリケーション コマンド ラインと調整コマンド ラインからアクセスできます。 `AZ_BATCH_TASK_SHARED_DIR` パスは、マルチインスタンス タスクに割り当てられたすべてのノードで同じであり、そのため、プライマリ タスクとすべてのサブタスクで 1 つの調整コマンドを共有できます。 Batch は、リモート アクセスという意味ではディレクトリを "共有" しませんが、環境変数に関するヒントとして示したように、マウントまたは共有ポイントとして使用できます。 マルチインスタンス タスク自体に指定したリソース ファイルは、既定では、タスクの作業ディレクトリである `AZ_BATCH_TASK_WORKING_DIR` にダウンロードされます。
 
-マルチインスタンス タスク自体に指定したリソース ファイルは、既定では、タスクの作業ディレクトリである `AZ_BATCH_TASK_WORKING_DIR` にダウンロードされます。 既に説明したように、共通リソース ファイルとは異なり、マルチインスタンス タスク自体に指定したリソース ファイルは、プライマリ タスクのみがダウンロードします。
+既に説明したように、共通リソース ファイルとは異なり、マルチインスタンス タスク自体に指定したリソース ファイルは、プライマリ タスクのみがダウンロードします。 コマンド ラインでこれらのディレクトリを参照するときは、環境変数 `AZ_BATCH_TASK_SHARED_DIR` と `AZ_BATCH_TASK_WORKING_DIR` を常に使用します。
 
 > [!IMPORTANT]
-> コマンド ラインでこれらのディレクトリを参照するときは、環境変数 `AZ_BATCH_TASK_SHARED_DIR` と `AZ_BATCH_TASK_WORKING_DIR` を常に使用します。 パスを手動で作成しないでください。
+> パスを手動で作成しないでください。 タスクの有効期間
 >
 >
 
-## <a name="task-lifetime"></a>タスクの有効期間
-プライマリ タスクの有効期間によって、マルチインスタンス タスク全体の有効期間が制御されます。 プライマリ タスクが終了すると、すべてのサブタスクが終了します。 プライマリ タスクの終了コードがタスクの終了コードになるため、再試行のためにタスクが成功したかどうかを判断する際に使用されます。
+## <a name="task-lifetime"></a>プライマリ タスクの有効期間によって、マルチインスタンス タスク全体の有効期間が制御されます。
+プライマリ タスクが終了すると、すべてのサブタスクが終了します。 プライマリ タスクの終了コードがタスクの終了コードになるため、再試行のためにタスクが成功したかどうかを判断する際に使用されます。 サブタスクのいずれかが失敗した場合 (ゼロ以外のリターン コードでの終了など)、マルチインスタンス タスク全体が失敗します。
 
-サブタスクのいずれかが失敗した場合 (ゼロ以外のリターン コードでの終了など)、マルチインスタンス タスク全体が失敗します。 この場合、マルチインスタンス タスクが終了し、再試行制限回数に達するまで再試行されます。
+この場合、マルチインスタンス タスクが終了し、再試行制限回数に達するまで再試行されます。 マルチインスタンス タスクを削除すると、Batch サービスによってプライマリ タスクとすべてのサブタスクも削除されます。
 
-マルチインスタンス タスクを削除すると、Batch サービスによってプライマリ タスクとすべてのサブタスクも削除されます。 標準タスクの場合と同様に、サブタスクのすべてのディレクトリとファイルがコンピューティング ノードから削除されます。
+標準タスクの場合と同様に、サブタスクのすべてのディレクトリとファイルがコンピューティング ノードから削除されます。 [TaskConstraints][net_taskconstraints] (for a multi-instance task, such as the [MaxTaskRetryCount][net_taskconstraint_maxretry]、[MaxWallClockTime][net_taskconstraint_maxwallclock]、[RetentionTime][net_taskconstraint_retention] の各プロパティなど) は、標準タスクの場合と同様に優先され、プライマリ タスクとすべてのサブタスクに適用されます。
 
-マルチインスタンス タスクの [TaskConstraints][net_taskconstraints] ([MaxTaskRetryCount][net_taskconstraint_maxretry]、[MaxWallClockTime][net_taskconstraint_maxwallclock]、[RetentionTime][net_taskconstraint_retention] の各プロパティなど) は、標準タスクの場合と同様に優先され、プライマリ タスクとすべてのサブタスクに適用されます。 ただし、マルチインスタンス タスクをジョブに追加した後に [RetentionTime][net_taskconstraint_retention] プロパティを変更した場合、この変更はプライマリ タスクにのみ適用されます。 すべてのサブタスクで引き続き元の [RetentionTime][net_taskconstraint_retention] が使用されます。
+ただし、マルチインスタンス タスクをジョブに追加した後に [RetentionTime][net_taskconstraint_retention] プロパティを変更した場合、この変更はプライマリ タスクにのみ適用されます。 すべてのサブタスクで引き続き元の [RetentionTime][net_taskconstraint_retention] が使用されます。 最近のタスクがマルチインスタンス タスクの一部である場合、コンピューティング ノードの最近のタスク リストにそのサブタスクの ID が示されます。
 
-最近のタスクがマルチインスタンス タスクの一部である場合、コンピューティング ノードの最近のタスク リストにそのサブタスクの ID が示されます。
+サブタスクに関する情報の取得
 
-## <a name="obtain-information-about-subtasks"></a>サブタスクに関する情報の取得
-Batch .NET ライブラリを使用してサブタスクの情報を取得するには、[CloudTask.ListSubtasks][net_task_listsubtasks] メソッドを呼び出します。 このメソッドは、すべてのサブタスクの情報と、それらのタスクが実行されたコンピューティング ノードの情報を返します。 この情報から、各サブタスクのルート ディレクトリ、プール ID、現在の状態、終了コードなどを確認できます。 この情報を [PoolOperations.GetNodeFile][poolops_getnodefile] メソッドと共に使用して、サブタスクのファイルを取得できます。 このメソッドは、プライマリ タスク (ID 0) の情報を返さないことに注意してください。
+## <a name="obtain-information-about-subtasks"></a>Batch .NET ライブラリを使用してサブタスクの情報を取得するには、[CloudTask.ListSubtasks][net_task_listsubtasks] メソッドを呼び出します。このメソッドは、すべてのサブタスクの情報と、それらのタスクが実行されたコンピューティング ノードの情報を返します。この情報から、各サブタスクのルート ディレクトリ、プール ID、現在の状態、終了コードなどを確認できます。この情報を PoolOperations.GetNodeFile メソッドと共に使用して、サブタスクのファイルを取得できます。method. This method returns information on all subtasks, and information about the compute node that executed the tasks. From this information, you can determine each subtask's root directory, the pool id, its current state, exit code, and more. You can use this information in combination with the [PoolOperations.GetNodeFile][poolops_getnodefile]
+このメソッドは、プライマリ タスク (ID 0) の情報を返さないことに注意してください。 特に記載のない限り、[CloudTask][net_task] マルチインスタンス自体に影響する Batch .NET のメソッドは、プライマリ タスクに "*のみ*" 適用されます。 たとえば、マルチインスタンス タスクで [CloudTask.ListNodeFiles][net_task_listnodefiles] メソッドを呼び出すと、プライマリ タスクのファイルだけが返されます。 次のコード スニペットは、サブタスクの情報と、サブタスクが実行されたノードの要求ファイルの内容を取得する方法を示しています。 サンプル コード
 
 > [!NOTE]
-> 特に記載のない限り、[CloudTask][net_task] マルチインスタンス自体に影響する Batch .NET のメソッドは、プライマリ タスクに "*のみ*" 適用されます。 たとえば、マルチインスタンス タスクで [CloudTask.ListNodeFiles][net_task_listnodefiles] メソッドを呼び出すと、プライマリ タスクのファイルだけが返されます。
+> GitHub の [MultiInstanceTasks][github_mpi] コード サンプルでは、マルチインスタンス タスクを使用して Batch コンピューティング ノード上で MS-MPI アプリケーションを実行する方法を紹介しています。code sample on GitHub demonstrates how to use a multi-instance task to run an [MS-MPI][msmpi_msdn] 「[準備](#preparation)」セクションと「[実行](#execution)」セクションの手順に従い、サンプルを実行してください。
 >
 >
 
-次のコード スニペットは、サブタスクの情報と、サブタスクが実行されたノードの要求ファイルの内容を取得する方法を示しています。
+準備
 
 ```csharp
 // Obtain the job and the multi-instance task from the Batch service
@@ -265,35 +265,35 @@ await subtasks.ForEachAsync(async (subtask) =>
 });
 ```
 
-## <a name="code-sample"></a>サンプル コード
-GitHub の [MultiInstanceTasks][github_mpi] コード サンプルでは、マルチインスタンス タスクを使用して Batch コンピューティング ノード上で [MS-MPI][msmpi_msdn] アプリケーションを実行する方法を紹介しています。 「[準備](#preparation)」セクションと「[実行](#execution)」セクションの手順に従い、サンプルを実行してください。
+## <a name="code-sample"></a>「[単純な MS-MPI プログラムのコンパイルと実行の方法][msmpi_howto]」の最初の 2 つの手順に従います。
+これで、次の手順の前提条件が満たされます。 [MPIHelloWorld][helloworld_proj] サンプル MPI プログラムの "*リリース*" バージョンをビルドします。
 
-### <a name="preparation"></a>準備
-1. 「[How to compile and run a simple MS-MPI program (単純な MS-MPI プログラムのコンパイルと実行の方法)][msmpi_howto]」の最初の 2 つの手順に従います。 これで、次の手順の前提条件が満たされます。
-2. [MPIHelloWorld][helloworld_proj] サンプル MPI プログラムの "*リリース*" バージョンをビルドします。 このプログラムは、マルチインスタンス タスクによりコンピューティング ノードで実行されます。
-3. `MPIHelloWorld.exe` (手順 2. でビルドしたもの) と `MSMpiSetup.exe` (手順 1. でダウンロードしたもの) を含む zip ファイルを作成します。 この zip ファイルは、次の手順でアプリケーション パッケージとしてアップロードします。
-4. [Azure Portal][portal] を使用して "MPIHelloWorld" という名前の Batch [アプリケーション](batch-application-packages.md)を作成し、前の手順で作成した zip ファイルをアプリケーション パッケージのバージョン "1.0" として指定します。 詳細については、「[アプリケーションのアップロードと管理](batch-application-packages.md#upload-and-manage-applications)」を参照してください。
+### <a name="preparation"></a>このプログラムは、マルチインスタンス タスクによりコンピューティング ノードで実行されます。
+1. `MPIHelloWorld.exe` (手順 2. でビルドしたもの) と `MSMpiSetup.exe` (手順 1. でダウンロードしたもの) を含む zip ファイルを作成します。 この zip ファイルは、次の手順でアプリケーション パッケージとしてアップロードします。
+2. [Azure Portal][portal] を使用して "MPIHelloWorld" という名前の Batch [アプリケーション](batch-application-packages.md)を作成し、前の手順で作成した zip ファイルをアプリケーション パッケージのバージョン "1.0" として指定します。 詳細については、「[アプリケーションのアップロードと管理](batch-application-packages.md#upload-and-manage-applications)」を参照してください。
+3. アプリケーション パッケージに追加の依存関係 (たとえば `msvcp140d.dll` または `vcruntime140d.dll`) を含める必要がないように、`MPIHelloWorld.exe` の "*リリース*" バージョンをビルドします。 Execution
+4. GitHub から [azure-batch-samples][github_samples_zip] をダウンロードします。 Visual Studio 2019 で MultiInstanceTasks **ソリューション**を開きます。
 
 > [!TIP]
-> アプリケーション パッケージに追加の依存関係 (たとえば `msvcp140d.dll` または `vcruntime140d.dll`) を含める必要がないように、`MPIHelloWorld.exe` の "*リリース*" バージョンをビルドします。
+> `MultiInstanceTasks.sln` ソリューション ファイルの保存先は次のとおりです。
 >
 >
 
-### <a name="execution"></a>Execution
-1. GitHub から [azure-batch-samples][github_samples_zip] をダウンロードします。
-2. Visual Studio 2019 で MultiInstanceTasks **ソリューション**を開きます。 `MultiInstanceTasks.sln` ソリューション ファイルの保存先は次のとおりです。
+### <a name="execution"></a>**Microsoft.Azure.Batch.Samples.Common** プロジェクトの `AccountSettings.settings` に、Batch と Storage のアカウント資格情報を入力します。
+1. MultiInstanceTasks ソリューションを**ビルドおよび実行**して、Batch プール内のコンピューティング ノード上で MPI サンプル アプリケーションを実行します。
+2. *省略可能*: リソースを削除する前に、[Azure portal][portal]or [Batch Explorer][batch_labs] を使用して、サンプル プール、ジョブ、タスク ("MultiInstanceSamplePool"、"MultiInstanceSampleJob"、"MultiInstanceSampleTask") を確認します。 Visual Studio をお持ちでない場合は、[Visual Studio Community][visual_studio] を無料でダウンロードできます。
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
-3. **Microsoft.Azure.Batch.Samples.Common** プロジェクトの `AccountSettings.settings` に、Batch と Storage のアカウント資格情報を入力します。
-4. MultiInstanceTasks ソリューションを**ビルドおよび実行**して、Batch プール内のコンピューティング ノード上で MPI サンプル アプリケーションを実行します。
-5. *省略可能*: [Azure portal][portal] または [Batch Explorer][batch_labs] を使用して、リソースを削除する前に、サンプル プール、ジョブ、タスク ("MultiInstanceSamplePool"、"MultiInstanceSampleJob"、"MultiInstanceSampleTask") を確認します。
+3. `MultiInstanceTasks.exe` からの出力は、次の例のようになります。
+4. 次の手順
+5. Microsoft HPC & Azure Batch チームのブログに、[Azure Batch での Linux 上の MPI のサポート][blog_mpi_linux]の説明があります。, and includes information on using [OpenFOAM][openfoam] での Batch に関する情報が含まれています。
 
 > [!TIP]
-> Visual Studio をお持ちでない場合は、[Visual Studio Community][visual_studio] を無料でダウンロードできます。
+> [OpenFOAM] での Python コード サンプルをGitHub[github_mpi] で見つけることができます。
 >
 >
 
-`MultiInstanceTasks.exe` からの出力は、次の例のようになります。
+[Linux コンピューティング ノードのプールを作成](batch-linux-nodes.md)して Azure Batch MPI ソリューションで使用する方法を確認します。
 
 ```
 Creating pool [MultiInstanceSamplePool]...
@@ -328,9 +328,9 @@ Delete pool? [yes] no: yes
 Sample complete, hit ENTER to exit...
 ```
 
-## <a name="next-steps"></a>次の手順
-* Microsoft HPC & Azure Batch チームのブログに、[Azure Batch での Linux 上の MPI のサポート][blog_mpi_linux]の説明があります。[OpenFOAM][openfoam] での Batch の使用に関する情報が含まれています。 [OpenFOAM][github_mpi] での Python コード サンプルを GitHub で見つけることができます。
-* [Linux コンピューティング ノードのプールを作成](batch-linux-nodes.md)して Azure Batch MPI ソリューションで使用する方法を確認します。
+## <a name="next-steps"></a>[1]: ./media/batch-mpi/batch_mpi_01.png "マルチインスタンスの概要"
+* The Microsoft HPC &amp; Azure Batch Team blog discusses <bpt id="p1">[</bpt>MPI support for Linux on Azure Batch<ept id="p1">][blog_mpi_linux]</ept>, and includes information on using <bpt id="p2">[</bpt>OpenFOAM<ept id="p2">][openfoam]</ept> with Batch. You can find Python code samples for the <bpt id="p1">[</bpt>OpenFOAM example on GitHub<ept id="p1">][github_mpi]</ept>.
+* Learn how to <bpt id="p1">[</bpt>create pools of Linux compute nodes<ept id="p1">](batch-linux-nodes.md)</ept> for use in your Azure Batch MPI solutions.
 
 [helloworld_proj]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks/MPIHelloWorld
 
@@ -374,4 +374,4 @@ Sample complete, hit ENTER to exit...
 [portal]: https://portal.azure.com
 [rest_multiinstance]: https://msdn.microsoft.com/library/azure/mt637905.aspx
 
-[1]: ./media/batch-mpi/batch_mpi_01.png "マルチインスタンスの概要"
+<bpt id="p1">[</bpt><ept id="p1">1]: ./media/batch-mpi/batch_mpi_01.png</ept><bpt id="p2"> "</bpt>Multi-instance overview<ept id="p2">"</ept>

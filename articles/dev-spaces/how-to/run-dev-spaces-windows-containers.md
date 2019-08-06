@@ -1,0 +1,188 @@
+---
+title: Azure Dev Spaces を使用した Windows コンテナーの操作
+titleSuffix: Azure Dev Spaces
+services: azure-dev-spaces
+ms.service: azure-dev-spaces
+author: zr-msft
+ms.author: zarhoads
+ms.date: 07/25/2019
+ms.topic: conceptual
+description: Windows コンテナーを持つ既存のクラスターでの Azure Dev Spaces の実行方法について説明します
+keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Windows コンテナー
+ms.openlocfilehash: 2110636b331f0cf4e74c77f41726ead5bf80a64f
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501597"
+---
+# <a name="use-azure-dev-spaces-to-interact-with-windows-containers"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
+
+Azure Dev Spaces は、新規と既存の両方の Kubernetes 名前空間で有効にすることができます。 Azure Dev Spaces は、Linux コンテナーで実行されるサービスを実行し、インストルメント化します。 それらのサービスは、同じ名前空間で Windows コンテナーで実行されるアプリケーションを操作することもできます。 この記事では、既存の Windows コンテナーを持つ名前空間で Dev Spaces を使用してサービスを実行する方法について説明します。
+
+## <a name="set-up-your-cluster"></a>クラスターのセットアップ
+
+この記事では、Linux と Windows の両方のノード プールを持つクラスターが既にあることを前提としています。 Linux と Windows のノード プールを持つクラスターを作成する必要がある場合は、[こちら][windows-container-cli]の手順に従ってください。
+
+Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使ってクラスターに接続します。 Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials][az-aks-get-credentials] コマンドを使用します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
+
+```azurecli-interactive
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+```
+
+クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使用して、クラスター ノードの一覧を返します。
+
+```azurecli-interactive
+kubectl get nodes
+```
+
+次の出力例は、Windows と Linux の両方のノードを持つクラスターを示しています。 次に進む前に、各ノードの状態が *Ready* であることを確認してください。
+
+```console
+NAME                                STATUS   ROLES   AGE    VERSION
+aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
+aksnpwin987654                      Ready    agent   108s   v1.14.1
+```
+
+Windows ノードに [taint][using-taints] を適用します。 Windows ノードに taint があると、Dev Spaces がその Windows ノードで Linux コンテナーの実行をスケジューリングしなくなります。 次のコマンド例では、前の例の Windows ノード *aksnpwin987654* に taint を適用しています。
+
+```azurecli-interactive
+kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
+```
+
+## <a name="run-your-windows-service"></a>Windows サービスの実行
+
+AKS クラスターで Windows サービスを実行し、状態が *Running* であることを確認します。 この記事では、[サンプル アプリケーション][sample-application]を使用して、クラスターで実行される Windows サービスと Linux サービスのデモンストレーションを行います。
+
+このサンプル アプリケーションを GitHub から複製し、`dev-spaces/samples/existingWindowsBackend/mywebapi-windows` ディレクトリに移動します。
+
+```console
+git clone https://github.com/Azure/dev-spaces
+cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
+```
+
+サンプル アプリケーションでは、クラスターで Windows サービスを実行するために [Helm][helm-installed] が使用されます。 クラスターに Helm をインストールし、適切なアクセス許可を付与します。
+
+```console
+helm init --wait
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+``` 
+
+`charts` ディレクトリに移動し、Windows サービスを実行します。
+
+```console
+cd charts/
+helm install . --namespace dev
+```
+
+上のコマンドでは、Helm を使用して *dev* 名前空間で Windows サービスを実行しています。 *dev* という名前空間がない場合は作成されます。
+
+`kubectl get pods` コマンドを使用して、Windows サービスがクラスターで実行されていることを確認します。 
+
+```console
+$ kubectl get pods --namespace dev --watch
+NAME                     READY   STATUS              RESTARTS   AGE
+myapi-4b9667d123-1a2b3   0/1     ContainerCreating   0          47s
+...
+myapi-4b9667d123-1a2b3   1/1     Running             0          98s
+```
+
+## <a name="enable-azure-dev-spaces"></a>Azure Dev Spaces の有効化
+
+Windows サービスの実行に使用した名前空間と同じ名前空間で Dev Spaces を有効にします。 次のコマンドを実行すると、*dev* 名前空間で Dev Spaces が有効になります。
+
+```console
+az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
+```
+
+## <a name="update-your-windows-service-for-dev-spaces"></a>Dev Spaces 向けに Windows サービスを更新
+
+コンテナーが既に実行されている既存の名前空間で Dev Spaces を有効にすると、既定では Dev Spaces がその名前空間で実行される新しいコンテナーをすべてインストルメント化しようとします。 また Dev Spaces は、名前空間で既に実行されているサービス用に作成された新しいコンテナーもすべてインストルメント化しようとします。 名前空間で実行されているコンテナーが Dev Spaces によってインストルメント化されないようにするには、`deployment.yaml` に *no-proxy* ヘッダーを追加します。
+
+`existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` ファイルに `azds.io/no-proxy: "true"` を追加します。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  ...
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    ...
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ include "mywebapi.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        azds.io/no-proxy: "true"
+```
+
+`helm list` を使用して、Windows サービスのデプロイを一覧表示します。
+
+```cmd
+$ helm list
+NAME            REVISION    UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
+gilded-jackal   1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+```
+
+上の例では、デプロイの名前が *gilded-jackal* となっています。 `helm upgrade` を使用して Windows サービスを新しい構成で更新します。
+
+```cmd
+$ helm upgrade gilded-jackal . --namespace dev
+Release "gilded-jackal" has been upgraded.
+```
+
+`deployment.yaml` を更新したため、Dev Spaces がサービスをインストルメント化しようとすることはありません。
+
+## <a name="run-your-linux-application-with-azure-dev-spaces"></a>Azure Dev Spaces を使用した Linux アプリケーションの実行
+
+`webfrontend` ディレクトリに移動し、コマンド `azds prep` と `azds up` を使用してクラスターで Linux アプリケーションを実行します。
+
+```console
+cd ../../webfrontend-linux/
+azds prep --public
+azds up
+```
+
+`azds prep --public` コマンドでは、アプリケーションの Helm チャートと Dockerfile が生成されます。 `azds up` コマンドでは、名前空間でサービスが実行されます。
+
+```console
+$ azds up
+Using dev space 'dev' with target 'myAKSCluster'
+Synchronizing files...4s
+Installing Helm chart...11s
+Waiting for container image build...6s
+Building container image...
+Step 1/12 : FROM mcr.microsoft.com/dotnet/core/sdk:2.2
+...
+Step 12/12 : ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+Built container image in 36s
+Waiting for container...2s
+Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0123.eus.azds.io/
+Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
+```
+
+azds up コマンドの出力に示されているパブリック URL を開くと、サービスが実行されていることを確認できます。 この例のパブリック URL は `http://dev.webfrontend.abcdef0123.eus.azds.io/` です。 ブラウザーでサービスに移動し、上部の *[バージョン情報]* をクリックします。 コンテナーが使用している Windows のバージョンが記載されたメッセージが、*mywebapi* サービスから表示されることを確認します。
+
+![mywebapi から Windows のバージョンを通知するサンプル アプリ](../media/run-dev-spaces-windows-containers/sample-app.png)
+
+## <a name="next-steps"></a>次の手順
+
+Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
+
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces でのチーム開発][team-development-qs]
+
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[helm-installed]: https://github.com/helm/helm/blob/master/docs/install.md
+[sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
+[team-development-qs]: ../quickstart-team-development.md
+
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[team-development]: ../team-development-netcore.md
+[using-taints]: ../../aks/use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
+[windows-container-cli]: ../../aks/windows-container-cli.md

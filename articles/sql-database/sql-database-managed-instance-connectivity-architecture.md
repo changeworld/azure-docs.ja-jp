@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: 960320e280a613a537f1918d93e4584a13a0b374
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: aac328806e2570bd124626e916c250d481a11311
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309973"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567593"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Database マネージド インスタンス用の接続アーキテクチャ
 
@@ -99,16 +98,16 @@ Microsoft の管理およびデプロイ サービスは、仮想ネットワー
 
 | EnableAdfsAuthentication       |Port                        |Protocol|source           |宛先|Action|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|management  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |ALLOW |
-|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
-|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |ALLOW |
+|management  |9000、9003、1438、1440、1452|TCP     |Any              |MI SUBNET  |Allow |
+|mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
+|health_probe|Any                         |Any     |AzureLoadBalancer|MI SUBNET  |Allow |
 
 ### <a name="mandatory-outbound-security-rules"></a>必須の送信セキュリティ規則
 
 | EnableAdfsAuthentication       |Port          |Protocol|source           |宛先|Action|
 |------------|--------------|--------|-----------------|-----------|------|
-|management  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |ALLOW |
-|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |ALLOW |
+|management  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |Allow |
+|mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
 
 > [!IMPORTANT]
 > ポート 9000、9003、1438、1440、1452 に対するインバウンド規則が 1 つだけあり、ポート 80、443、12000 に対するアウトバウンド規則が 1 つあることを確認します。 インバウンド規則とアウトバウンド規則がポートごとに別々に構成されていると、Azure Resource Manager デプロイによる Managed Instance のプロビジョニングは失敗します。 これらのポートが別々の規則に含まれている場合、デプロイはエラー コード `VnetSubnetConflictWithIntendedPolicy` で失敗します

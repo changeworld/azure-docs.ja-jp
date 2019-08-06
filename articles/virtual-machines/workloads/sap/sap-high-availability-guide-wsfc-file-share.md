@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d26df6aeb09934408b9081ac077af52ffc24d66
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709057"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479189"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -292,9 +292,11 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 
 記憶域スペース ダイレクトは、スケールアウト ファイル共有のための共有ディスクとして使われます。 記憶域スペース ダイレクトを使うと、ローカル記憶域を含むサーバーを使って高可用性でスケーラブルな記憶域を構築できます。 SAP グローバル ホスト ファイルのようなスケールアウト ファイル共有に使われる共有記憶域は、単一障害点ではありません。
 
-> [!IMPORTANT]
->ディザスター リカバリーのセットアップを計画して "*いない*" 場合は、Azure での高可用性ファイル共有のソリューションとしてスケールアウト ファイル共有を使うことをお勧めします。
->
+記憶域スペース ダイレクトを選択する場合は、次のユースケースを検討してください。
+
+- 記憶域スペース ダイレクト クラスターを構築するために使用する仮想マシンは、Azure 可用性セットにデプロイする必要があります。
+- 記憶域スペース ダイレクト クラスターのディザスター リカバリーには、[Azure Site Recovery Services](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage) を使用できます。
+- 記憶域スペース ダイレクト クラスターを異なる Azure Availability Zones に拡張することはサポートされていません。
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure でのスケールアウト ファイル共有に対する SAP の前提条件
 
@@ -316,7 +318,6 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 * 記憶域スペース ダイレクトのディスク同期に必要な VM 間の高いネットワーク パフォーマンスを得るには、少なくとも "高" ネットワーク帯域幅の VM タイプを使う必要があります。
     詳しくは、[DSv2 シリーズ][dv2-series]and [DS-Series][ds-series]の仕様をご覧ください。
 * 記憶域プールに未割り当ての容量を若干確保しておくことをお勧めします。 記憶域プールに未割り当て容量を残しておくと、ドライブで障害が発生した場合に "その場で" 修復するためのボリューム領域が用意されます。 これにより、データの安全性とパフォーマンスが向上します。  詳しくは、「[ボリュームのサイズの選択][choosing-the-size-of-volumes-s2d]」をご覧ください。
-* スケールアウト ファイル共有の Azure VM は、専用の Azure 可用性セットにデプロイする必要があります。
 * スケールアウト ファイル共有のネットワーク名 (\<SAP グローバル ホスト\> など) に対して、Azure 内部ロード バランサーを構成する必要はありません。 これは、SAP ASCS/SCS インスタンスの \<ASCS/SCS 仮想ホスト名\> または DBMS に対して行われます。 スケールアウト ファイル共有は、すべてのクラスター ノード間に負荷をスケールアウトします。 \<SAP グローバル ホスト\> は、すべてのクラスター ノードのローカル IP アドレスを使います。
 
 
@@ -338,17 +339,11 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 _**図 5:** 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスとスケールアウト ファイル共有_
 
 > [!IMPORTANT]
-> Azure クラウドでは、SAP およびスケールアウト ファイル共有に使われる各クラスターを、専用の Azure 可用性セットにデプロイする必要があります。 このようにすると、クラスターの VM が基になっている Azure インフラストラクチャ全体に分散して配置されます。
+> Azure クラウドでは、SAP およびスケールアウト ファイル共有に使われる各クラスターを、専用の Azure 可用性セットまたは Azure Availability Zones をまたいでデプロイする必要があります。 このようにすると、クラスターの VM が基になっている Azure インフラストラクチャ全体に分散して配置されます。 可用性ゾーンのデプロイは、このテクノロジでサポートされています。
 >
 
 ## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>クラスター共有ディスクとして SIOS DataKeeper を使う汎用ファイル共有
 
-
-> [!IMPORTANT]
-> 高可用性のファイル共有にはスケールアウト ファイル共有ソリューションをお勧めします。
->
-> 高可用性のファイル共有にディザスター リカバリーも設定する場合は、クラスター共有ディスク用に汎用ファイル共有と SISO DataKeeper を使う必要があります。
->
 
 汎用ファイル共有は、高可用性ファイル共有を実現するためのもう 1 つのオプションです。
 

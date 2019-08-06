@@ -3,16 +3,17 @@ title: Azure Container Instances で実行中のコンテナーでコマンド�
 description: Azure Container Instances で現在実行されているコンテナーでコマンドを実行する方法について説明します
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: danlep
-ms.openlocfilehash: 577e2386c352798bc21a2c78b22726128ac7cf0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a8583cf605891631a2bce6914b24525aebd59ea0
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60579748"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325977"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>実行中の Azure Container Instances でコマンドを実行する
 
@@ -20,7 +21,7 @@ Azure Container Instances は、実行中のコンテナーでのコマンドの
 
 ## <a name="run-a-command-with-azure-cli"></a>Azure CLI でコマンドを実行する
 
-[Azure CLI][azure-cli] で [az container exec][az-container-exec] を使用して、実行中のコンテナーでコマンドを実行します。
+in the [Azure CLI][azure-cli] で [az container exec][az-container-exec] を使用して、実行中のコンテナーでコマンドを実行します。
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"

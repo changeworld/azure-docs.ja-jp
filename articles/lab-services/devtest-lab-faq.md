@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: a46d816c04d9f5629c2ee9538016d42c53f9a331
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f38502cc543f19855dbca32c4724a5651b1a3f2
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244402"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68318117"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -390,6 +390,19 @@ VM のデプロイ エラーは、アクティビティ ログに記録されま
 
 VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、 **[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)」を参照してください。
 
+### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>ラボを作成しようとすると、"location is not available for resource type" (リソースの種類に使用できる場所がありません) というエラーが表示されるのはなぜですか。
+ラボを作成しようとすると、次のようなエラー メッセージが表示される場合があります。 
 
+```
+The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
+```
+
+このエラーを解決するには、次のいずれかの手順を実行します。
+
+#### <a name="option-1"></a>方法 1
+「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで、Azure リージョンでのリソースの種類の可用性を確認します。 リソースの種類が特定のリージョンで使用不可の場合、DevTest Labs では、そのリージョンでのラボの作成をサポートしていません。 ラボを作成するときに別のリージョンを選択してください。 
+
+#### <a name="option-2"></a>方法 2
+リソースの種類がご利用のリージョンで使用可能な場合は、お使いのサブスクリプションに登録されているかどうかを確認します。 [この記事](../azure-resource-manager/resource-manager-supported-services.md)で説明されているように、これはサブスクリプション所有者のレベルで実行できます。 
 
 

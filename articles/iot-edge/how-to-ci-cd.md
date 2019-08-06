@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: f449449c542ce6ac04daa58ff37a3577f0d75aee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 659a6f5acaac848084ed1e9590a414191542b54a
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61222064"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414621"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge に対する継続的インテグレーションと継続的配置
 
@@ -73,7 +73,7 @@ Azure Repos の詳細については、[Visual Studio と Azure Repos でのコ�
 
    * Windows 1809 コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合は、[Windows 上にセルフホステッド エージェントを設定](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)する必要があります。
 
-   * Linux コンテナー用にプラットフォーム arm32v7 でモジュールをビルドする場合は、[Linux 上にセルフホステッド エージェントを設定](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)する必要があります。
+   * Linux コンテナー用にプラットフォーム arm32v7 または arm64 でモジュールをビルドする場合は、[Linux 上にセルフホステッド エージェントを設定](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)する必要があります。
     
      ![ビルド エージェント プールの構成](./media/how-to-ci-cd/configure-env.png)
 

@@ -1,6 +1,6 @@
 ---
 title: コンテナーをインストールして実行する方法 - Computer Vision
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このチュートリアルでの Computer Vision のコンテナーのダウンロード、インストール、および実行方法。
 services: cognitive-services
 author: IEvangelist
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: efde223061a873a57595bc4a577b7de55b1d8a46
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321466"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564584"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>テキスト認識コンテナーをインストールして実行する
 

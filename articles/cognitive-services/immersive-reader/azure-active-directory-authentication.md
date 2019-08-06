@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 8af56d0d7c0f320e607421f12effdb9b37d5f78d
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: de6a29e1c4c102aa7d4038185c1635544ba9dfe2
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444604"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688788"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>イマーシブ リーダー サービスで Azure Active Directory (Azure AD) 認証を使用する
 
@@ -29,7 +29,7 @@ ms.locfileid: "68444604"
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
-2. 次に、[カスタム サブドメインを含むイマーシブ リーダー リソースを作成](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0)します。 
+2. 次に、[カスタム サブドメインを含むイマーシブ リーダー リソースを作成](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0)します。
 
    >[!NOTE]
    > サブドメイン名は、launchAsync 関数でリーダーを起動するときに Immersive Reader SDK で使用されます。
@@ -37,7 +37,7 @@ ms.locfileid: "68444604"
    -SkuName は F0 (Free レベル) または S0 (Standard レベル、パブリック プレビュー期間中も無料) に設定できます。 S0 レベルの方が呼び出しレートの上限が高く、呼び出し回数に月単位のクォータはありません。
 
    -Location は次のいずれかに設定できます: `eastus`、`westus`、`australiaeast`、`centralindia`、`japaneast`、`northeurope`、`westeurope`
-   
+
    -CustomSubdomainName は、グローバルに一意である必要があります。また、"."、"!"、"," などの特殊文字を含めることはできません。
 
 
@@ -63,7 +63,7 @@ ms.locfileid: "68444604"
 
    // Display the Resource info
    $resource
-   ```   
+   ```
 
 ## <a name="assign-a-role-to-a-service-principal"></a>サービス プリンシパルにロールを割り当てる
 
@@ -83,7 +83,7 @@ ms.locfileid: "68444604"
    $aadApp
    ```
 
-   ここでは、次の手順で使用するために、新しく作成した Azure AD アプリ オブジェクトを **$aadApp** 変数にキャプチャします。   
+   ここでは、次の手順で使用するために、新しく作成した Azure AD アプリ オブジェクトを **$aadApp** 変数にキャプチャします。
 
 2. 次に、Azure AD アプリケーションの[サービス プリンシパルを作成](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0)する必要があります。
 
@@ -128,11 +128,11 @@ ms.locfileid: "68444604"
    ```
 
    >[!NOTE]
-   > Immersive Reader SDK はトークンの AccessToken プロパティを使用します (例: $token.AccessToken)。 詳細については、SDK [リファレンス](reference.md)およびコード [サンプル](https://github.com/microsoft/immersive-reader-sdk/tree/master/samples)を参照してください。
+   > Immersive Reader SDK はトークンの AccessToken プロパティを使用します (例: $token.AccessToken)。 詳細については、SDK [リファレンス](reference.md)およびコード [サンプル](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples)を参照してください。
 
 または、証明書を使用してサービス プリンシパルを認証することもできます。 サービス プリンシパルに加えて、別の Azure AD アプリケーションから委任されたアクセス許可を持つことで、ユーザー プリンシパルもサポートされます。 この場合、パスワードまたは証明書の代わりに、ユーザーはトークンを取得するときに 2 要素認証が求められます。
 
 ## <a name="next-steps"></a>次の手順
 
 * [チュートリアル](./tutorial.md)を見て、Immersive Reader SDK で他にできることを確認する
-* [Immersive Reader SDK](https://github.com/Microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する
+* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する

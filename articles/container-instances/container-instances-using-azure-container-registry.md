@@ -3,17 +3,18 @@ title: Azure Container Registry から Azure Container Instances へのデプロ
 description: Azure コンテナー レジストリのコンテナー イメージを使用して、Azure Container Instances のコンテナーをデプロイする方法を紹介します。
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 515dc8ed4a2fc9b3d2973d393c6894d8c7cef8f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 502f178b66e7ba233552d7db4e095363c8bb8628
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66729390"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325558"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -49,7 +50,7 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 今度は、サービス プリンシパルを作成し、その資格情報をキー コンテナーに格納する必要があります。
 
-次のコマンドは、[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] を使用してサービス プリンシパルを作成し、[az keyvault secret set][az-keyvault-secret-set] を使用してコンテナーにサービス プリンシパルの**パスワード**を格納します。
+以下のコマンドは [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] サービス プリンシパルを作成し、to create the service principal, and [az keyvault secret set][az-keyvault-secret-set]を使用して資格情報コンテナーにサービス プリンシパルの**パスワード**を格納します。
 
 ```azurecli
 # Create service principal, store its password in AKV (the registry *password*)

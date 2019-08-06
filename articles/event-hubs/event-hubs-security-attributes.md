@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs の一般的なセキュリティ属性
-description: Azure Event Hubs を評価するための一般的なセキュリティ属性のチェックリスト
+title: Azure Event Hubs のセキュリティ属性
+description: Azure Event Hubs を評価するためのセキュリティ属性のチェックリスト
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 50f19d50f211972c2042c69a1e3177ffb4a47624
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2262609de774eb2b1334215bf46968b5554ed691
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245472"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442445"
 ---
-# <a name="common-security-attributes-for-azure-event-hubs"></a>Azure Event Hubs の一般的なセキュリティ属性
+# <a name="security-attributes-for-azure-event-hubs"></a>Azure Event Hubs のセキュリティ属性
 
-この記事では、Azure Event Hubs に組み込まれている一般的なセキュリティ属性について説明します。
+この記事では、Azure Event Hubs に組み込まれているセキュリティ属性について説明します。
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,8 +26,8 @@ ms.locfileid: "66245472"
 
 | セキュリティ属性 | はい/いいえ | メモ |
 |---|---|--|
-| 保存時の暗号化:<ul><li>サーバー側暗号化</li><li>ユーザーが管理するキーによるサーバー側暗号化</li><li>その他の暗号化機能 (クライアント側や常に暗号化など)</ul>|  はい | |
-| 転送中の暗号化:<ul><li>Express Route 暗号化</li><li>VNet 内の暗号化</li><li>VNet 間暗号化</ul>| はい | |
+| 保存時の暗号化 (サーバー側暗号化、お客様が管理するキーによるサーバー側暗号化、およびその他の暗号化機能)|  はい | |
+| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | |
 | 暗号化キーの処理 (CMK や BYOK など)| いいえ |  |
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |
 | API 呼び出しの暗号化| はい |  |

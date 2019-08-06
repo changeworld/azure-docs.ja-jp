@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: 4c08c95a05d4f22e2338a7264409aec0f64a4755
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a61f196a509c3e84b518fffb4eb78f5f7430cb28
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442522"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667579"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>更新:LUIS アプリの API バージョン 3.x への移行
 
@@ -54,6 +54,11 @@ V3 エンドポイントの HTTP 呼び出しの形式が変更されました�
 |POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>v3.0-preview</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
 |||
 
+スロットの有効な値:
+
+* `production`
+* `staging`
+
 ## <a name="endpoint-url-changes-by-version-id"></a>バージョン ID によるエンドポイント URL の変更
 
 バージョンによってクエリを実行する場合、まず `"directVersionPublish":true` を使用して [API 経由で発行](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)する必要があります。 スロット名の代わりにバージョン ID を参照して、エンドポイントのクエリを実行します。
@@ -75,11 +80,11 @@ V3 の応答オブジェクトの変更には、[事前構築済みエンティ�
 
 V3 API には異なるクエリ文字列パラメーターがあります。
 
-|パラメーター名|Type|バージョン|既定値|目的|
+|パラメーター名|Type|Version|既定値|目的|
 |--|--|--|--|--|
 |`log`|ブール値|V2 および V3|false|ログ ファイルにクエリを格納します。| 
 |`query`|string|V3 のみ|既定値なし - GET 要求では必須|**V2 では**、予測される発話は `q` パラメーター内にあります。 <br><br>**V3 では**、この機能は `query` パラメーターで渡されます。|
-|`show-all-intents`|Boolean|V3 のみ|false|すべての意図と対応するスコアを **prediction.intents** オブジェクトに返します。 意図は、親の `intents` オブジェクト内のオブジェクトとして返されます。 これにより、配列 `prediction.intents.give` 内で意図を探す必要はなく、プログラムによるアクセスが可能になります。 V2 では、これらは配列で返されていました。 |
+|`show-all-intents`|ブール値|V3 のみ|false|すべての意図と対応するスコアを **prediction.intents** オブジェクトに返します。 意図は、親の `intents` オブジェクト内のオブジェクトとして返されます。 これにより、配列 `prediction.intents.give` 内で意図を探す必要はなく、プログラムによるアクセスが可能になります。 V2 では、これらは配列で返されていました。 |
 |`verbose`|ブール値|V2 および V3|false|**V2 では**、true に設定した場合、予測されたすべての意図が返されていました。 予測されたすべての意図が必要な場合は、V3 の `show-all-intents` パラメーターを使用します。<br><br>**V3 では**、このパラメーターではエンティティ予測のエンティティ メタデータの詳細のみが提供されます。  |
 
 
@@ -103,11 +108,11 @@ V3 API には異なるクエリ文字列パラメーターがあります。
 }
 ```
 
-|プロパティ|Type|バージョン|既定値|目的|
+|プロパティ|Type|Version|既定値|目的|
 |--|--|--|--|--|
 |`dynamicLists`|array|V3 のみ|不要。|[動的リスト](#dynamic-lists-passed-in-at-prediction-time)を使用すると、既に LUIS アプリに存在し、トレーニングおよび発行済みの既存のリスト エンティティを拡張することができます。|
 |`externalEntities`|array|V3 のみ|不要。|[外部エンティティ](#external-entities-passed-in-at-prediction-time)を使用すると、LUIS アプリが実行時にエンティティを特定してラベル付けを行い、それを既存のエンティティの特徴として使用できるようになります。 |
-|`options.datetimeReference`|string|V3 のみ|既定値なし|[datetimeV2 オフセット](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)を決定するために使用されます。|
+|`options.datetimeReference`|string|V3 のみ|既定値なし|[datetimeV2 オフセット](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)を決定するために使用されます。 datetimeReference の形式は [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) です。|
 |`options.overridePredictions`|ブール値|V3 のみ|false|予測にユーザーの[外部エンティティ (既存のエンティティと同じ名前)](#override-existing-model-predictions) を使用するか、それともモデル内の既存のエンティティを使用するかを指定します。 |
 |`query`|string|V3 のみ|必須。|**V2 では**、予測される発話は `q` パラメーター内にあります。 <br><br>**V3 では**、この機能は `query` パラメーターで渡されます。|
 
@@ -144,6 +149,10 @@ V3 の最上位の JSON プロパティは次のようになります。
     }
 }
 ```
+
+<!--
+The `alteredQuery` contains spelling corrections. This corresponds to the V2 API property `alteredQuery`.  
+-->
 
 `intents` オブジェクトは順不同のリストです。 `intents` の最初の子が `topIntent` になるとは限りません。 代わりに、`topIntent` の値を使ってスコアを探します。
 
