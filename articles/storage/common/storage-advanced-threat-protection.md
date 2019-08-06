@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 8cea4b3fb78f3430fdd92e40552d687501af4be8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bb2d5733704b0b31dc010cec2a90e99e1be07b56
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621975"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592035"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
@@ -43,14 +43,24 @@ Azure Storage の Advanced Threat Protection は、脅威の検出のため、BL
 ![Azure Storage Advanced Threat Protection をオンにする](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="using-azure-security-center"></a>Azure セキュリティ センターの使用
-Azure Security Center で Standard レベルにサブスクライブすると、Advanced Threat Protection がご使用のストレージ アカウントで設定されます。 詳細については、「[Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化](https://docs.microsoft.com/azure/security-center/security-center-pricing)」を参照してください。 (画像内の価格はあくまでも例です。)
 
-![ASC の Standard レベル](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing.png)
+Azure Security Center で Standard レベルにサブスクライブすると、Advanced Threat Protection がご利用のすべてのストレージ アカウントで自動的に設定されます。 次のようにして、特定のサブスクリプションのストレージ アカウントで Advanced Threat Protection を有効または無効にすることができます。
+
+1. [Azure portal](https://portal.azure.com) で **Azure Security Center** を起動します。
+1. メイン メニューで、 **[Pricing & settings]\(価格と設定\)** をクリックします。
+1. ストレージ アカウントの脅威の防止を有効または無効にするサブスクリプションをクリックします。
+
+    ![サブスクリプションを選択します。](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
+
+1. **[価格レベル]** をクリックします。
+1. **[リソースの種類ごとに価格レベルを選択]** セクションの **[ストレージアカウント]** 行で、 **[有効]** または **[無効]** をクリックします。
+
+    ![Security Center で ATP を有効にする](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
+1. **[Save]** をクリックします。
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
 
-Azure Resource Manager テンプレートを使用して、Advanced Threat Protection が有効になっている Azure Storage アカウントをデプロイします。
-詳細については、[Advanced Threat Protection でのストレージ アカウント](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)に関するページを参照してください。
+Azure Resource Manager テンプレートを使用して、Advanced Threat Protection が有効になっている Azure Storage アカウントをデプロイします。 詳細については、[Advanced Threat Protection でのストレージ アカウント](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)に関するページを参照してください。
 
 ### <a name="using-azure-policy"></a>Azure Policy の使用
 

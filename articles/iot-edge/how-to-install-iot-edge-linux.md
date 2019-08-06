@@ -1,57 +1,59 @@
 ---
 title: Linux 上への Azure IoT Edge のインストール | Microsoft Docs
-description: Ubuntu を実行している Linux AMD64 デバイス上に Azure IoT Edge をインストールする手順
+description: Ubuntu または Raspbian を実行している Linux AMD64 デバイス上に Azure IoT Edge をインストールする手順
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 822efe2534d49c0995a672232107cc322e547989
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: bb23ee1e51be178f93e05b728f7b8c2e9bb18e0d
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227503"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414494"
 ---
-# <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Linux に Azure IoT Edge ランタイムをインストールする (x64)
+# <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする
 
-Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 このランタイムは、Raspberry Pi のような小型デバイスにも、産業用サーバーのような大型デバイスにもデプロイすることができます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。
+Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 このランタイムは、Raspberry Pi のような小型デバイスにも、産業用サーバーのような大型デバイスにもデプロイすることができます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。 詳細については、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
 
-詳細については、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
+この記事では、X64、ARM32、または ARM64 Linux デバイス上に Azure IoT Edge ランタイムをインストールする手順について説明します。 Ubuntu Server 16.04、Ubuntu Server 18.04、および Raspbian Stretch 用のインストール パッケージが用意されています。 サポートされている Linux オペレーティング システムおよびアーキテクチャの一覧については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。
 
-この記事では、Ubuntu Linux x64 (Intel/AMD) IoT Edge デバイスに Azure IoT Edge ランタイムをインストールする手順を示します。 サポートされている AMD64 オペレーティング システムの一覧については、「[Azure IoT Edge のサポートされるシステム](support.md#operating-systems)」を参照してください。
+>[!NOTE]
+>ARM64 デバイスのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)にあります。
 
 > [!NOTE]
 > Linux ソフトウェア リポジトリ内のパッケージは、各パッケージ (/usr/share/doc/*パッケージ名*) 内にあるライセンス条項の対象となります。 パッケージを使用する前に、ライセンス条項をお読みください。 インストールし、パッケージを使用すると、これらの条項に同意したものと見なされます。 ライセンス条項に同意しない場合は、パッケージを使用しないでください。
 
-## <a name="install-the-latest-version"></a>最新バージョンをインストールする
+## <a name="install-the-latest-runtime-version"></a>最新のランタイム バージョンをインストールする
 
-以下のセクションを使用して、最新バージョンの Azure IoT Edge サービスをデバイスにインストールします。 
+以下のセクションを使用して、最新バージョンの Azure IoT Edge ランタイムをデバイスにインストールします。 
 
 ### <a name="register-microsoft-key-and-software-repository-feed"></a>Microsoft キーとソフトウェア リポジトリ フィードを登録する
 
 IoT Edge ランタイムをインストールできるようにデバイスを準備します。
 
+リポジトリ構成をインストールします。 デバイスのオペレーティング システムに対応する **16.04** または **18.04** コマンドを選択します。
 
-リポジトリ構成をインストールします。 Ubuntu のリリースに適した **16.04** または **18.04** コード スニペットのどちらかを選択します。
-
-> [!NOTE]
-> 使用しているバージョンの Ubuntu の正しいコード ボックスからコード スニペットを選択するようにしてください。
-
-* **Ubuntu 16.04** の場合:
+* **Ubuntu Server 16.04**:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* **Ubuntu 18.04** の場合:
+* **Ubuntu Server 18.04**:
    ```bash
-   curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
+   curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
-   
+
+* **Raspbian Stretch**:
+   ```bash
+   curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
+   ```
+
 生成された一覧をコピーします。
 
    ```bash
@@ -87,17 +89,7 @@ Moby コマンドライン インターフェイス (CLI) をインストール�
    sudo apt-get install moby-cli
    ```
 
-#### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Linux カーネルを確認して Moby の互換性を確保する
-
-組み込みデバイスの多くの製造元が、カスタム Linux カーネルを含むデバイス イメージを提供しています。これらのカーネルには、コンテナー ランタイムの互換性を確保するために必要な機能が欠けている場合があります。 推奨される [Moby](https://github.com/moby/moby) コンテナー ランタイムのインストール時に問題が発生した場合は、デバイスで次のコマンドを実行し、公式の [Moby GitHub リポジトリ](https://github.com/moby/moby)で提供されている [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) スクリプトを使って Linux カーネル構成のトラブルシューティングを行うことができます。
-
-   ```bash
-   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
-   chmod +x check-config.sh
-   ./check-config.sh
-   ```
-
-これにより、Moby ランタイムで使用されるカーネルの機能の状態が含まれた詳細な出力が提供されます。 カーネルと Moby ランタイムの完全な互換性を確保するには、`Generally Necessary` と `Network Drivers` の下のすべての項目が有効になっていることを確認します。  欠けている機能を特定したら、カーネルをソースから再構築し、カーネルの適切な .config に含める関連モジュールを選択することで、それらを有効にすることができます。同様に、defconfig や menuconfig などのカーネル構成ジェネレーターを使用している場合は、それぞれの機能を見つけて有効にし、カーネルを適宜再構築する必要があります。  新たに変更されたカーネルを展開したら、check-config スクリプトをもう一度実行して、特定された機能が正常に有効になっていることを確認します。
+Moby コンテナー ランタイムをインストールするときにエラーが発生した場合は、この記事の後半にある「[Linux カーネルを確認して Moby の互換性を確保する](#verify-your-linux-kernel-for-moby-compatibility)」の手順に従ってください。 
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>Azure IoT Edge セキュリティ デーモンのインストール
 
@@ -117,17 +109,17 @@ apt update を実行します。
    sudo apt-get install iotedge
    ```
 
-IoT Edge が正常にインストールされると、構成ファイルを更新するよう求められます。 「[Azure IoT Edge セキュリティ デーモンを構成する](#configure-the-azure-iot-edge-security-daemon)」の手順に従って、デバイスのプロビジョニングを完了します。 
+IoT Edge が正常にインストールされると、構成ファイルを更新するよう求められます。 「[Azure IoT Edge セキュリティ デーモンを構成する](#configure-the-security-daemon)」の手順に従って、デバイスのプロビジョニングを完了します。 
 
-## <a name="install-a-specific-version"></a>特定のバージョンをインストールする
+## <a name="install-a-specific-runtime-version"></a>特定のランタイム バージョンをインストールする
 
-特定のバージョンの Azure IoT Edge をインストールする場合は、IoT Edge GitHub リポジトリから直接コンポーネント ファイルを対象にすることができます。 次の手順に従って、すべての IoT Edge コンポーネントをデバイスに取得します。Moby エンジンと CLI、libiothsm、IoT Edge セキュリティ デーモンの順に取得します。
+特定のバージョンの Azure IoT Edge ランタイムをインストールする場合は、IoT Edge GitHub リポジトリから直接コンポーネント ファイルを対象にすることができます。 次の手順に従って、すべての IoT Edge コンポーネントをデバイスに取得します。Moby エンジンと CLI、libiothsm、IoT Edge セキュリティ デーモンの順に取得します。
 
 1. [Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に移動し、対象とするリリース バージョンを見つけます。 
 
 2. そのバージョンの **[Assets]** セクションを展開します。
 
-3. どのリリースでも、Moby エンジンの更新プログラムがある場合とない場合があります。 **moby-engine** および **moby-cli** で始まるファイルが表示されている場合は、以下のコマンドを使用して、それらのコンポーネントを更新します。 Moby ファイルが表示されず、Moby がデバイスにまだインストールされていない場合は、それらが見つかるまで古いリリース資産を順番に調べます。 
+3. どのリリースでも、Moby エンジンの更新プログラムがある場合とない場合があります。 **moby-engine** および **moby-cli** で始まるファイルが表示されている場合は、以下のコマンドを使用して、それらのコンポーネントを更新します。 Moby ファイルが表示されない場合は、最新バージョンが見つかるまで古いリリース資産を順番に調べます。 
 
    1. IoT Edge デバイスのアーキテクチャに対応する **moby-engine** ファイルを見つけます。 ファイル リンクを右クリックし、リンクのアドレスをコピーします。
 
@@ -165,7 +157,7 @@ IoT Edge が正常にインストールされると、構成ファイルを更�
 
 IoT Edge が正常にインストールされると、構成ファイルを更新するよう求められます。 次のセクションの手順に従って、デバイスのプロビジョニングを完了します。 
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Azure IoT Edge セキュリティ デーモンを構成する
+## <a name="configure-the-security-daemon"></a>セキュリティ デーモンを構成する
 
 IoT Edge ランタイムを構成して、物理デバイスを Azure IoT ハブに存在するデバイス ID にリンクします。
 
@@ -271,13 +263,26 @@ journalctl -u iotedge --no-pager --no-full
 sudo iotedge list
 ```
 
-## <a name="tips-and-suggestions"></a>ヒントと検索候補
+## <a name="tips-and-troubleshooting"></a>ヒントとトラブルシューティング
 
 `iotedge` コマンドの実行には、昇格された特権が必要です。 ランタイムをインストールしたら、マシンからサインアウトした後サインインし直して、自動的にアクセス許可を更新します。 それまでは、すべての `iotedge` コマンドの前に **sudo** を使用します。
 
 リソースに制約のあるデバイスでは、[トラブルシューティング ガイド](troubleshoot.md)に示されているように、*OptimizeForPerformance* 環境変数を *false* に設定することを強くお勧めします。
 
 ネットワークにプロキシ サーバーがある場合は、「[Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md)」(プロキシ サーバー経由で通信するように IoT Edge デバイスを構成する) の手順に従ってください。
+
+### <a name="verify-your-linux-kernel-for-moby-compatibility"></a>Linux カーネルを確認して Moby の互換性を確保する
+
+組み込みデバイスの多くの製造元が、カスタム Linux カーネルを含むデバイス イメージを提供しています。これらのカーネルには、コンテナー ランタイムの互換性を確保するために必要な機能がありません。 推奨される Moby コンテナー ランタイムのインストール中に問題が発生した場合は、デバイスで次のコマンドを実行し、公式の [Moby GitHub リポジトリ](https://github.com/moby/moby)にある [check-config](https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh) スクリプトを使って Linux カーネル構成のトラブルシューティングを行うことができます。 デバイスで次のコマンドを実行して、カーネル構成を確認します。
+
+   ```bash
+   curl -sSL https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
+   chmod +x check-config.sh
+   ./check-config.sh
+   ```
+
+これにより、Moby ランタイムで使用されるカーネルの機能の状態が含まれた詳細な出力が提供されます。 カーネルと Moby ランタイムの完全な互換性を確保するには、`Generally Necessary` と `Network Drivers` の下のすべての項目が有効になっていることを確認します。  欠けている機能を特定したら、カーネルをソースから再構築し、カーネルの適切な .config に含める関連モジュールを選択することで、それらを有効にします。同様に、defconfig や menuconfig などのカーネル構成ジェネレーターを使用している場合は、それぞれの機能を見つけて有効にし、カーネルを適宜再構築します。  新たに変更されたカーネルを展開したら、check-config スクリプトをもう一度実行して、必要なすべての機能が正常に有効になっていることを確認します。
+
 
 ## <a name="uninstall-iot-edge"></a>IoT Edge をアンインストールする
 

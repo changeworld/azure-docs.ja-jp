@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 67faf268d265fd045c21b75b6f64840511a371d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 86f22864c416ad2a90bea09c02675d6eb3322308
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067312"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385645"
 ---
 # <a name="configure-usage-settings-and-policies"></a>使用設定とポリシーを構成する
 この記事では、ラボへのユーザーの追加、それらのユーザーのラボへの登録、ユーザーが VM を使用できる時間数の制御などの方法について説明します。 
@@ -76,18 +76,18 @@ Azure Lab Services を使用すると、教師はすべての学生または選�
 
 ![ラボに登録されているユーザーの一覧](../media/how-to-configure-student-usage/users-list-new.png)
 
-## <a name="set-quotas-per-user"></a>ユーザーごとのクォータを設定する
+## <a name="set-quotas-for-users"></a>ユーザーのクォータを設定する
 次の手順を使用して、ユーザーごとのクォータを設定できます。 
 
-1. 左側のメニューの **[ユーザー]** を選択します。
-2. ツールバーの **[ユーザーあたりのクォータ:]** を選択します。 
+1. ページがまだアクティブになっていない場合は、左側のメニューで **[ユーザー]** を選択します。 
+2. ツールバーの **[ユーザーあたりのクォータ: 10 時間]** を選択します。 
 3. **[ユーザーあたりのクォータ:]** ページで、各ユーザー (学生) に付与する時間数を指定します。 
+    1. **[Total number of lab hours per user]\(ユーザーごとのラボ時間の合計数\)** 。 ユーザーは、**スケジュールされた時間に加え**、設定された時間数 (このフィールドに指定された時間) の間、各自の VM を使用できます。 このオプションを選ぶ場合は、テキスト ボックスに**時間数**を入力します。 
+
+        ![ユーザーあたりの時間数](../media/how-to-configure-student-usage/number-of-hours-per-user.png)。 
     1. **[0 hours (schedule only)]\(0 時間 (スケジュールされた時間のみ)\)** 。 ユーザーは、スケジュールされた時間、またはラボの所有者がユーザーのために VM をオンにしたときのみ、各自の VM を使用できます。
 
         ![0 時間 - スケジュールされた時間のみ](../media/how-to-configure-student-usage/zero-hours.png)
-    1. **[Total number of lab hours per user]\(ユーザーごとのラボ時間の合計数\)** 。 ユーザーは、**スケジュールされた時間に加え**、設定された時間数 (このフィールドに指定された時間) の間、各自の VM を使用できます。 このオプションを選ぶ場合は、テキスト ボックスに**時間数**を入力します。 
-
-        ![ユーザーあたりの時間数](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
     4. **[保存]** を選択します。 
 5. ツールバーに変更後の値が表示されます。 **[Quota per user: &lt;number of hours&gt;]\(ユーザーあたりのクォータ: <時間数>\)** 。 
 

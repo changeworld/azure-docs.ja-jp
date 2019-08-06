@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 1a26950f355fd10d9dd502851886a8b8101d4a83
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ef02c8120775aa119aff44ff7a06bccf2bc70a21
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508283"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377330"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -319,7 +319,8 @@ CRON 式とは異なり、`TimeSpan` の値は各関数呼び出しの間の時�
 |---------|---------|
 |"01:00:00" | 1 時間ごと        |
 |"00:01:00"|1 分ごと         |
-|"24:00:00" | 毎日        |
+|"24:00:00" | 1 日ごと        |
+|"1.00:00:00" | 毎日        |
 
 ## <a name="scale-out"></a>スケールアウト
 

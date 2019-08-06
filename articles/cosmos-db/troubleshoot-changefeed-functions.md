@@ -1,26 +1,26 @@
 ---
-title: Azure Functions で Azure Cosmos DB トリガーを使用するときの問題の診断とトラブルシューティングを行う
-description: Azure Functions で Azure Cosmos DB トリガーを使用するときの一般的な問題、回避策、診断手順です
+title: Cosmos DB 用 Azure Functions トリガーを使用するときの問題の診断とトラブルシューティングを行う
+description: Cosmos DB 用 Azure Functions トリガーを使用するときの一般的な問題、回避策、診断手順です
 author: ealsur
 ms.service: cosmos-db
-ms.date: 05/23/2019
+ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9c728a735e56e461e49dd3f594186c9c0192a3f0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b90986e449df7e81f97f9ef86ce3cf69621c76d6
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250022"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335754"
 ---
-# <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>Azure Functions で Azure Cosmos DB トリガーを使用するときの問題の診断とトラブルシューティングを行う
+# <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーを使用するときの問題の診断とトラブルシューティングを行う
 
-この記事では、Azure Functions で [Azure Cosmos DB トリガー](change-feed-functions.md)を使用するときの一般的な問題、回避策、診断手順について説明します。
+この記事では、[Azure Cosmos 用 Azure Functions トリガー](change-feed-functions.md)を使用するときの一般的な問題、回避策、診断手順について説明します。
 
 ## <a name="dependencies"></a>依存関係
 
-Azure Cosmos DB トリガーとバインドは、基になる Azure Functions Runtime に対する拡張機能パッケージに依存します。 これらのパッケージを常に最新の状態にしておいてください。発生する可能性のある問題に対処する新機能や修正プログラムが含まれている場合があります。
+Cosmos DB 用 Azure Functions トリガーとバインドは、基になる Azure Functions Runtime に対する拡張機能パッケージに依存します。 これらのパッケージを常に最新の状態にしておいてください。発生する可能性のある問題に対処する新機能や修正プログラムが含まれている場合があります。
 
 * Azure Functions V2 の場合は、[Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) をご覧ください。
 * Azure Functions V1 の場合は、[Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) をご覧ください。
@@ -29,7 +29,7 @@ Azure Cosmos DB トリガーとバインドは、基になる Azure Functions Ru
 
 ## <a name="consume-the-azure-cosmos-db-sdk-independently"></a>Azure Cosmos DB SDK を個別に使用する
 
-拡張機能パッケージの重要な機能は、Azure Cosmos DB のトリガーとバインドのサポートを提供することです。 また、[Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md) も含まれており、トリガーやバインドを使わずにプログラムで Azure Cosmos DB とやり取りする場合に便利です。
+拡張機能パッケージの重要な機能は、Cosmos DB 用 Azure Functions のトリガーとバインドのサポートを提供することです。 また、[Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md) も含まれており、トリガーやバインドを使わずにプログラムで Azure Cosmos DB とやり取りする場合に便利です。
 
 Azure Cosmos DB SDK を使う場合は、別の NuGet パッケージの参照をプロジェクトに追加しないでください。 代わりに、**Azure Functions の拡張機能パッケージによって SDK の参照が解決されるようにします**。 トリガーおよびバインドとは別に Azure Cosmos DB SDK を使用する
 
@@ -81,7 +81,7 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 このシナリオでの最善の対応策は、コードに `try/catch blocks` を追加し、変更を処理している可能性があるループ内で、項目の特定のサブセットに対する障害を検出して、それらを適切に処理することです (さらに分析するために別のストレージに送信するか、再試行します)。 
 
 > [!NOTE]
-> 既定の Azure Cosmos DB トリガーでは、コードの実行中にハンドルされない例外が発生した場合、変更のバッチの再試行は行われません。 つまり、宛先に変更が到達しなかった理由は、それらを処理していないためです。
+> 既定の Cosmos DB 用 Azure Functions トリガーでは、コードの実行中にハンドルされない例外が発生した場合、変更のバッチの再試行は行われません。 つまり、宛先に変更が到達しなかった理由は、それらを処理していないためです。
 
 一部の変更がトリガーによってまったく受信されない場合、最もよくあるシナリオは、**別の Azure 関数が実行されている**ことです。 **まったく同じ構成** (監視対象コンテナーとリース コンテナーが同じ) を持つ別の Azure 関数が、Azure にデプロイされているか、または開発者のコンピューター上でローカルに実行されていて、この Azure 関数により、自分の Azure 関数で処理されるはずの変更のサブセットが盗まれている可能性があります。
 

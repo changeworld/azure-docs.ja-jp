@@ -4,14 +4,14 @@ description: Azure Resource Manager テンプレートを使用して SQL (コ�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5683fd072961c7793d8f4bbeb9ecc16a93dd7373
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cd66c9da0650c9eb9de5b51ce82b48fe781c6f4
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242588"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500517"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB SQL (コア) API リソースを管理する
 
@@ -20,7 +20,9 @@ ms.locfileid: "66242588"
 Azure Resource Manager テンプレートを使用して Azure Cosmos DB リソースを作成します。 このテンプレートは、データベース レベルで 400 RU/秒のスループットを共有する 2 つのコンテナーを含む Azure Cosmos アカウントを作成します。 テンプレートをコピーして次に示すようにデプロイするか、[Azure クイック スタート ギャラリー](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)にアクセスして Azure portal からデプロイします。 テンプレートをローカル コンピューターにダウンロードするか、新しいテンプレートを作成して、`--template-file` パラメーターでローカル パスを指定することもできます。
 
 > [!NOTE]
-> 現時点では、Resource Manager テンプレートを使用してユーザー定義関数 (UDF)、ストアド プロシージャおよびトリガーをデプロイすることはできません。 
+>
+> - 現時点では、Resource Manager テンプレートを使用してユーザー定義関数 (UDF)、ストアド プロシージャおよびトリガーをデプロイすることはできません。
+> - Azure Cosmos アカウントの場所の追加または削除と他のプロパティの変更を同時に行うことはできません。 これらは別の操作として行う必要があります。
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
 

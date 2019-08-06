@@ -6,24 +6,115 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.author: larryfr
-author: Blackmist
-ms.date: 05/14/2019
+ms.author: jmartens
+author: j-martens
+ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2568d2213d15faf66ecf606e56ea6b82bacafc3e
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: f39c914bce3fbc47775a76f1c3a1fb64de560505
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233679"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498332"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
-この記事では、Azure Machine Learning service の各リリースについて説明します。  各 SDK の詳細については、以下に関するリファレンス ドキュメントを参照してください。
-+ Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk)
-+ Azure Machine Learning の[**Data Prep SDK**](https://aka.ms/data-prep-sdk)
+この記事では、Azure Machine Learning service の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk) のリファレンス ページを参照してください。
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2019-07-23"></a>2019-07-23
+
+### <a name="azure-machine-learning-sdk-for-python-v1053"></a>Azure Machine Learning SDK for Python v1.0.53
+
++ **新機能**
+    + 自動化された機械学習で、リモート コンピューティング ターゲットでの ONNX モデルのトレーニングがサポートされるようになりました
+  + Azure Machine Learning で、以前の実行、チェックポイント、またはモデル ファイルからトレーニングを再開できるようになりました。
+    + [推定器を使用して前回の実行からトレーニングを再開する](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb)方法を確認してください
+
++ **バグの修正と機能強化**
+  + **automl-client-core-nativeclient**
+    + 変換後の列の型の損失に関するバグを修正します (リンクされているバグ)。 
+    + y_query を、先頭に None を含んだオブジェクト型にできるようにします (#459519)。
+  + **azure-cli-ml**
+    + CLI コマンド "model deploy" と "service update" は、パラメーター、構成ファイル、またはこれらの 2 つの組み合わせを受け入れるようになりました。 パラメーターは、ファイル内の属性よりも優先されます。
+    + 登録後にモデルの説明を更新できるようになりました
+  + **azureml-automl-core**
+    + NimbusML 依存関係を 1.2.0 バージョン (現在の最新バージョン) に更新します。
+    + AutoML 推定器内で使用される Nimbus ML 推定器とパイプラインのサポートの追加。
+    + アンサンブルの選択手順で、スコアが一定のままであっても、結果のアンサンブルが過剰に増加するバグの修正。
+    + 予測タスクのための CV 分割全体での一部の特徴付けを再利用できるようにします。 これにより、遅延やローリング時間帯のような負荷の高い特徴付けで、セットアップ実行の実行時間がほぼ n_cross_validations 倍高速になります。
+    + 時間が Pandas でサポートされている時間の範囲外である場合の問題への対処。 時間が pd.Timestamp.min より小さいか pd.Timestamp.max より大きい場合、DataException を発生させるようになりました
+    + 予測で、調整可能な場合は、トレーニングとテストのセットで異なる周波数を使用できるようになりました。 たとえば、"1 月に開始される四半期" と "10 月に開始される四半期" を調整できます。
+    + プロパティ "parameters" が TimeSeriesTransformer に追加されました。
+    + 古い例外クラスを削除します。
+    + 予測タスクで、パラメーター `target_lags` が 1 つの整数値または整数のリストを受け入れるようになりました。 整数が指定されている場合は、1 つのラグだけが作成されます。 リストが指定されている場合は、ラグの一意の値が取得されます。 target_lags=[1, 2, 2, 4] では、1、2、および 4 つの期間のラグが作成されます。
+    + 変換後の列の型の損失に関するバグを修正します (リンクされているバグ)。
+    + `model.forecast(X, y_query)` では、y_query を、先頭に None を含んだオブジェクト型にできるようにします (#459519)。
+    + automl 出力に予期される値を追加します
+  + **azureml-contrib-datadrift**
+    +  azureml-contrib-opendatasets の代わりに azureml-opendatasets への切り替えを含むノートブックの例の向上と、データを強化する際のパフォーマンスの向上
+  + **azureml-contrib-explain-model**
+    + azureml-contrib-explain-model パッケージの生の特徴の重要度のための LIME Explainer の変換引数を修正しました
+    + AzureML-contrib-explain-model パッケージの Image Explainer のイメージの説明にセグメント化を追加しました
+    + LimeExplainer の scipy sparse のサポートを追加します
+    + グローバル説明を一括でストリーミングして DecisionTreeExplainableModel の実行時間を向上させるために、include_local=False の場合の mimic explainer に batch_size を追加します
+  + **azureml-contrib-featureengineering**
+    + set_featurizer_timeseries_params () の呼び出しを修正しました: dict 値の型変更と null チェック - 時系列特徴抽出器のノートブックを追加しました
+    + NimbusML 依存関係を 1.2.0 バージョン (現在の最新バージョン) に更新します。
+  + **azureml-core**
+    + AzureML CLI で DBFS データストアをアタッチする機能を追加しました 
+    + データストアのアップロードに関する問題 (`target_path` が `/` で始まる場合に空のフォルダーが作成されるバグ) を修正しました
+    + ServicePrincipalAuthentication の deepcopy の問題を修正しました。
+    + "az ml environment show" コマンドと "az ml environment list" コマンドを CLI に追加しました。
+    + 環境で、already-built base_image の代わりに base_dockerfile をサポートするようになりました。
+    + 使用されていない RunConfiguration 設定、auto_prepare_environment は非推奨としてマークされるようになっています。
+    + 登録後にモデルの説明を更新できるようになりました
+    + バグの修正:モデルとイメージの削除の際、アップストリームの依存関係が原因で削除が失敗した場合に、それらに依存しているアップストリーム オブジェクトの取得に関する詳細情報が提供されるようになりました。
+    + 一部の環境でワークスペースの作成時に発生する、デプロイの空白の期間が出力されたバグを修正しました。
+    + ワークスペースの作成エラーの例外が改善されました。 そのようなユーザーには、メッセージとして "ワークスペースを作成できません。 検索できません..." は表示されず、代わりに実際の作成エラーが表示されます。
+    + AKS Web サービスのトークン認証のサポートが追加されました。 
+    + `Webservice` オブジェクトに `get_token()` メソッドを追加します。
+    + 機械学習データセットを管理するための CLI サポートを追加しました。
+    + `Datastore.register_azure_blob_container` は、必要に応じて、このデータストアのキャッシュの有効期限を有効にする blobfuse のマウント パラメーターを構成する `blob_cache_timeout` 値 (秒単位) を取得するようになりました。 既定では、タイムアウトはありません。つまり、BLOB が読み込まれると、ジョブが完了するまでローカル キャッシュにとどまります。 ほとんどのジョブでこの設定が優先されますが、一部のジョブは、そのノードに収まりきらない大きなデータセットからデータを読み取る必要があります。 このようなジョブでは、このパラメーターを調整すると成功します。 このパラメーターを調整する場合は注意が必要です。値を小さく設定すると、エポックで使用されるデータが再度使用される前に期限切れになる場合があるため、パフォーマンスが低下する可能性があります。 つまり、すべての読み取りがローカル キャッシュではなく BLOB ストレージ (ネットワークなど) から実行され、これがトレーニング時間に悪影響を及ぼします。
+    + 登録後にモデルの説明を適切に更新できるようになりました
+    + モデルとイメージの削除の際、削除に失敗する原因となるアップストリーム オブジェクトに依存依存しているアップストリーム オブジェクトの取得に関する詳細情報が提供されるようになりました
+    + azureml.mlflow を使用するリモート実行のリソース使用率を向上させます。
+  + **azureml-dataprep**
+    + データフロー オブジェクトを反復処理して、一連のレコードを生成できるようになりました。
+    + 実験的な機能として `_summarize_each` を `azureml.dataprep.Dataflow` に追加します。
+  + **azureml-explain-model**
+    + azureml-contrib-explain-model パッケージの生の特徴の重要度のための LIME Explainer の変換引数を修正しました
+    + LimeExplainer の scipy sparse のサポートを追加します
+    + SHAP Explainer ラッパーと、線形モデルを説明するための Tabular Explainer へのもう 1 つのレベルを追加しました
+    + 説明モデル ライブラリの Mimic Explainer で、スパース データ入力で include_local = False の場合のエラーを修正しました
+    + automl 出力に予期される値を追加します
+    + 生の特徴の重要度を取得するために変換引数が指定された場合の、permutation feature importance を修正しました
+    + グローバル説明を一括でストリーミングして DecisionTreeExplainableModel の実行時間を向上させるために、include_local=False の場合の mimic explainer に batch_size を追加します
+    + モデル説明ライブラリで、予測のために Pandas データフレーム入力が必要な Blackbox Explainer を修正しました
+    + `explanation.expected_values` で、float を含むリストではなく、float が返されることがあったバグを修正しました。
+  + **azureml-mlflow**
+    + mlflow.set_experiment(experiment_name) のパフォーマンスを向上させます
+    + mlflow tracking_uri の InteractiveLoginAuthentication の使用に関するバグを修正します
+    + azureml.mlflow を使用するリモート実行のリソース使用率を向上させます。
+    + azureml-mlflow パッケージのドキュメントが改善されます
+    + mlflow.log_artifacts("my_dir") で、"<artifact-paths>" ではなく "my_dir/<artifact-paths>" の下にアーティファクトが保存されるバグにパッチを適用します
+  + **azureml-opendatasets**
+    + 新たに発生したメモリの問題により、opendatasets の pyarrow を古いバージョン (< 0.14.0) に固定します。
+    +  azureml-contrib-opendatasets を azureml-opendatasets に移動します。 - オープン データセット クラスを AML ワークスペースに登録し、AML データセットの機能をシームレスに利用できるようにします。 - 非 SPARK バージョンでの NoaaIsdWeather のエンリッチ パフォーマンスを大幅に改善します。
+  + **azureml-pipeline-steps**
+    + DatabricksStep の入力と出力に対して DBFS Datastore がサポートされるようになりました。
+    + Azure Batch Step の入力/出力に関するドキュメントが更新されました。
+    + AzureBatchStep で、*delete_batch_job_after_finish* の既定値を *true* に変更しました。
+  + **azureml-telemetry**
+    +  azureml-contrib-opendatasets を azureml-opendatasets に移動します。 - オープン データセット クラスを AML ワークスペースに登録し、AML データセットの機能をシームレスに利用できるようにします。 - 非 SPARK バージョンでの NoaaIsdWeather のエンリッチ パフォーマンスを大幅に改善します。
+  + **azureml-train-automl**
+    + 実際の戻り値の型を反映し、主なプロパティの取得に関する注意事項を追加するために、get_output のドキュメントを更新しました。
+    + NimbusML 依存関係を 1.2.0 バージョン (現在の最新バージョン) に更新します。
+    + automl 出力に予期される値を追加します
+  + **azureml-train-core**
+    + 自動化されたハイパーパラメーター チューニングのコンピューティング ターゲットとして、文字列が受け入れられるようになりました
+    + 使用されていない RunConfiguration 設定、auto_prepare_environment は非推奨としてマークされるようになっています。
 
 ## <a name="2019-07-09"></a>2019-07-09
 
@@ -622,7 +713,7 @@ Azure Machine Learning コンピューティングは、Python、Azure portal、
 + Azure Machine Learning コンピューティング クラスターの状態をリアルタイムで表示します。
 + Azure Machine Learning コンピューティングと Azure Kubernetes Service の作成用に仮想ネットワークのサポートが追加されました。
 + 既存のパラメーターを使用してお客様のパブリッシュ済みのパイプラインを再実行します。
-+ 分類モデル (リフト、ゲイン、キャリブレーション、モデルの説明可能性を備えた特徴重要度グラフ) と回帰モデル (残差、およびモデルの説明可能性を備えた特徴重要度グラフ) のための新しい[自動化された機械学習グラフ](how-to-track-experiments.md#auto)。 
++ 分類モデル (リフト、ゲイン、キャリブレーション、モデルの説明可能性を備えた特徴重要度グラフ) と回帰モデル (残差、およびモデルの説明可能性を備えた特徴重要度グラフ) のための新しい[自動化された機械学習グラフ](how-to-understand-automated-ml.md)。 
 + パイプラインを Azure portal で表示できます
 
 

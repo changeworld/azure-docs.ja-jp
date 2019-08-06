@@ -17,12 +17,12 @@ ms.date: 05/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 760eb5a37a09687cd98ca7abbdcb0bc42667f830
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6972c91a18f9deb240871d8c64a14647474d9d78
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107619"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377264"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>サインイン アクティビティ レポートのエラー コード 
 

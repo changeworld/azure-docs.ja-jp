@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: bcaa990cc2186a5f1eecdbbca91804c92370277c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cfbbd0b353699c4b04ede07df0450e66bd59612f
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357179"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311963"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストの認識
 
@@ -36,7 +36,7 @@ Read API では、最新の認識モデルを使用して画像内のテキス�
 Read API は、次の要件を満たす画像で動作します。
 
 - 画像は、JPEG、PNG、BMP、PDF、または TIFF 形式である必要があります。
-- 画像の寸法は、50 x 50 から 4200 x 4200 ピクセルの間である必要があります。 PDF ページは、17 x 17 インチ以下である必要があります。
+- 画像の寸法は、50 x 50 から 10000 x 10000 ピクセルの間である必要があります。 PDF ページは、17 x 17 インチ以下である必要があります。
 - 画像のファイル サイズは、20 メガバイト (MB) 未満である必要があります。
 
 ### <a name="limitations"></a>制限事項

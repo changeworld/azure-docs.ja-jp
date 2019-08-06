@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 0fc1b65a4ba1c8a3d76b48206d6a4703035e05bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0057815bee46d6708886302ff5b598c89b47e8f
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055331"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335735"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -43,7 +43,7 @@ IoT ハブ サービスでは、デバイスにメッセージを送信すると
 
 * メッセージの*破棄*。この場合、IoT ハブによってメッセージがキューに戻され、状態が*エンキュー* に設定されます。 MQTT プロトコル経由で接続するデバイスでは、cloud-to-device メッセージを破棄することはできません。
 
-スレッドでは、IoT ハブに通知することなく、メッセージの処理に失敗することもあります。 この場合、*表示* がタイムアウト (または*ロック* がタイムアウト) になった後で、メッセージの状態が自動的に*非表示* から*エンキュー* に戻ります。 このタイムアウトの既定値は 1 分です。
+スレッドでは、IoT ハブに通知することなく、メッセージの処理に失敗することもあります。 この場合、*表示* がタイムアウト (または*ロック* がタイムアウト) になった後で、メッセージの状態が自動的に*非表示* から*エンキュー* に戻ります。 このタイムアウトの値は 1 分であり、変更することはできません。
 
 IoT ハブの**最大配信数**プロパティによって、メッセージの状態を*エンキュー* と*非表示* の間で切り替えることができる最大数が決まります。 その切り替えの回数に達した後、IoT ハブによってメッセージの状態が*配信不能* に設定されます。 同様に、有効期限が切れた後も、IoT ハブによってメッセージの状態が*配信不能* に設定されます。 詳細については、[有効期限](#message-expiration-time-to-live)に関する記述を参照してください。
 

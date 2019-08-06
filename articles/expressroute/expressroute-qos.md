@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9bdeb91b145f8c7f31be8c1dcd5c5158d50ff2f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eed6113442b4080341ff08b3983880f3afe66c00
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712315"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385130"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS の要件
 Skype for Business には、特化した QoS 処理を必要とするさまざまなワークロードがあります。 ExpressRoute で音声サービスを使用する場合、以下の要件に従う必要があります。
@@ -29,7 +29,7 @@ Skype for Business には、特化した QoS 処理を必要とするさまざ�
 
 | **トラフィック クラス** | **処理 (DSCP マーキング)** | **Microsoft チームと Skype for Business のワークロード** |
 | --- | --- | --- |
-| **音声** |EF (46) |Skype / Lync 音声 |
+| **音声** |EF (46) |Skype/Microsoft Teams/Lync 音声 |
 | **対話** |AF41 (34) |ビデオ、VBSS |
 | |AF21 (18) |アプリ共有 | 
 | **既定値** |AF11 (10) |ファイル転送 |

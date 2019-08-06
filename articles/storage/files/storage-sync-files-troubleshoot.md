@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 07/16/2019
+ms.date: 07/24/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 1e35ef9eab841878ecc147d7b22a82860f27e7d9
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: b4df5f58fc91d30c734800e531e4bd7c129d58b2
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297695"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489590"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -42,13 +42,22 @@ installer.log をレビューして、インストールが失敗した原因を
 
 この問題を解決するには、Windows Server 2012 R2 以降を実行している別のドメイン コントローラーに PDC ロールを転送してから、同期エージェントをインストールします。
 
-<a id="server-registration-missing"></a>**Azure Portal の [登録済みサーバー] にサーバーが表示されない**  
-サーバーがストレージ同期サービスの **[登録済みサーバー]** に表示されない場合:
-1. 登録するサーバーにサインインします。
-2. ファイル エクスプローラーを開き、ストレージ同期エージェントのインストール ディレクトリ (既定の場所は C:\Program Files\Azure\StorageSyncAgent) に移動します。 
+<a id="server-registration-prerequisites"></a> **[サーバー登録] に"前提条件が見つからない" というメッセージが表示される**
+
+このメッセージは、Az または AzureRM PowerShell モジュールが PowerShell 5.1 にインストールされていない場合に表示されます。 
+
+> [!Note]  
+> ServerRegistration.exe では、PowerShell 6.x はサポートされていません。 サーバーを登録するには、PowerShell 6.x で AzStorageSyncServer コマンドレットを使用できます。
+
+PowerShell 5.1 に Az または AzureRM モジュールをインストールするには、次の手順を実行します。
+
+1. 管理者特権のプロンプトで「**powershell**」と入力して、Enter キーを押します。
+2. 次のドキュメントに従って、最新の Az または AzureRM モジュールをインストールします。
+    - [Az モジュール (.NET 4.7.2 が必要)](https://go.microsoft.com/fwlink/?linkid=2062890)
+    - [AzureRM モジュール]( https://go.microsoft.com/fwlink/?linkid=856959)
 3. ServerRegistration.exe を実行し、ストレージ同期サービスにサーバーを登録するウィザードを完了します。
 
-<a id="server-already-registered"></a>**Azure File Sync エージェントのインストール中に [サーバー登録] に"このサーバーは既に登録されています" というメッセージが表示される** 
+<a id="server-already-registered"></a> **[サーバー登録] に"このサーバーは既に登録されています" というメッセージが表示される** 
 
 !["server is already registered" (このサーバーは既に登録されています) エラー メッセージが表示された [サーバーの登録] ダイアログのスクリーンショット](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
@@ -66,6 +75,12 @@ Reset-StorageSyncServer
 
 <a id="web-site-not-trusted"></a>**サーバーの登録時に多数の "Web サイトが信頼されていない" という応答が表示されます。なぜですか?**  
 このエラーは、サーバーの登録中に **Enhanced Internet Explorer Security** ポリシーが有効になった場合に発生します。 **Enhanced Internet Explorer Security** ポリシーを適切に無効にする方法の詳細については、「[Azure File Sync で使用する Windows Server の準備](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync)」および[Azure File Sync のデプロイ方法](storage-sync-files-deployment-guide.md)に関する記事をご覧ください。
+
+<a id="server-registration-missing"></a>**Azure Portal の [登録済みサーバー] にサーバーが表示されない**  
+サーバーがストレージ同期サービスの **[登録済みサーバー]** に表示されない場合:
+1. 登録するサーバーにサインインします。
+2. ファイル エクスプローラーを開き、ストレージ同期エージェントのインストール ディレクトリ (既定の場所は C:\Program Files\Azure\StorageSyncAgent) に移動します。 
+3. ServerRegistration.exe を実行し、ストレージ同期サービスにサーバーを登録するウィザードを完了します。
 
 ## <a name="sync-group-management"></a>同期グループ管理
 <a id="cloud-endpoint-using-share"></a>**クラウド エンドポイントの作成が "The specified Azure FileShare is already in use by a different CloudEndpoint (指定された Azure ファイル共有は別の CloudEndpoint で既に使用されています)" というエラーで失敗する**  
@@ -250,7 +265,9 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 Azure File Sync は、1 日 1 回サーバー上で一時 VSS スナップショットを作成して、開くハンドルを含むファイルを同期します。 |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | ファイルが変更されましたが、まだ同期によって変更が検出されていません。この変更が検出された後に同期が復旧します。 | 必要なアクションはありません。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure ファイル共有の制限に達したため、ファイルを同期できません。 | この問題を解決するには、トラブルシューティング ガイドの「[Azure のファイル共有ストレージの上限に到達しました](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)」をご覧ください。 |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | このエラーは、次の理由で発生する可能性があります: ファイルがサポートされていないソリューション (NTFS EFS など) によって暗号化されている場合、ファイルが削除保留中状態の場合、またはファイルが DFS-R 読み取り専用レプリケーション フォルダーにある場合 | ファイルがサポートされていないソリューションによって暗号化されている場合は、ファイルの暗号化を解除し、サポートされている暗号化ソリューションを使用します。 サポートされているソリューションの一覧については、計画ガイドの「[暗号化ソリューション](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)」セクションをご覧ください。 ファイルが削除保留中状態の場合は、開いているファイルのすべてのハンドルが閉じられると、ファイルは削除されます。 ファイルが DFS-R 読み取り専用レプリケーション フォルダーにある場合、Azure Files Sync は DFS-R 読み取り専用レプリケーション フォルダーにおけるサーバー エンドポイントをサポートしません。 詳細については、[計画ガイド](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)を参照してください。
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | ファイルは、サポートされていないソリューション (NTFS EFS など) によって暗号化されています。 | ファイルの暗号化を解除し、サポートされている暗号化ソリューションを使用します。 サポートされているソリューションの一覧については、計画ガイドの「[暗号化ソリューション](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)」セクションをご覧ください。 |
+| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | ファイルは、DFS-R 読み取り専用レプリケーション フォルダーにあります。 | ファイルは、DFS-R 読み取り専用レプリケーション フォルダーにあります。 Azure Files Sync は DFS-R 読み取り専用レプリケーション フォルダーにおけるサーバー エンドポイントをサポートしません。 詳細については、[計画ガイド](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)を参照してください。 |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | ファイルには削除保留中の状態があります | 開いているファイルのすべてのハンドルが閉じられると、ファイルは削除されます。 |
 | 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同期中にファイルが変更されたため、再度同期する必要があります。 | 必要なアクションはありません。 |
 
@@ -325,7 +342,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 このエラーは、Azure File Sync エージェントが Azure ファイル共有にアクセスできないために発生します。原因としては、Azure ファイル共有またはそれをホストしているストレージ アカウントが存在しなくなったことが考えられます。 次の手順を実行すると、このエラーを解決できます。
 
 1. [ストレージ アカウントが存在することを確認します。](#troubleshoot-storage-account)
-2. [ストレージ アカウントにネットワーク ルールが含まれていないことを確認します。](#troubleshoot-network-rules)
+2. [ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定が適切に構成されていることを確認します (有効な場合)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 3. [Azure ファイル共有が存在することを確認します。](#troubleshoot-azure-file-share)
 4. [Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します。](#troubleshoot-rbac)
 
@@ -344,7 +361,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
     Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 443
     ```
 2. [ストレージ アカウントが存在することを確認します。](#troubleshoot-storage-account)
-3. [ストレージ アカウントにネットワーク ルールが含まれていないことを確認します。](#troubleshoot-network-rules)
+3. [ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定が適切に構成されていることを確認します (有効な場合)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
 <a id="-1906441138"></a>**同期データベースの問題により、同期が失敗しました。**  
 
@@ -430,12 +447,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **エラー文字列** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
 | **修復が必要か** | はい |
 
-このエラーは、ストレージ アカウントにファイアウォールがあるか、またはストレージ アカウントが仮想ネットワークに属しているという理由により、Azure ファイル共有にアクセスできない場合に発生します。 Azure File Sync では、この機能がまだサポートされていません。 トラブルシューティング方法は次のとおりです。
-
-1. [ストレージ アカウントが存在することを確認します。](#troubleshoot-storage-account)
-2. [ストレージ アカウントにネットワーク ルールが含まれていないことを確認します。](#troubleshoot-network-rules)
-
-この問題を解決するには、これらのルールを削除します。 
+このエラーは、ストレージ アカウントにファイアウォールがあるか、またはストレージ アカウントが仮想ネットワークに属しているという理由により、Azure ファイル共有にアクセスできない場合に発生します。 ストレージ アカウントに対するファイアウォールと仮想ネットワークの設定が適切に構成されていることを確認します。 詳細については、「[ファイアウォールと仮想ネットワークの設定を構成する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)」を参照してください。 
 
 <a id="-2134375911"></a>**同期データベースの問題により、同期が失敗しました。**  
 
@@ -613,6 +625,33 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 
 このエラーは、同期データベースに関する内部的な問題が原因で発生します。 このエラーは、Azure File Sync が同期を再試行すると自動的に解決されます。 このエラーが長期間にわたって続く場合は、サポート要求を作成してください。問題解決のために Microsoft からご連絡を差し上げます。
 
+<a id="-2134364024"></a>**Azure Active Directory テナントでの変更が原因で同期が失敗しました**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83088 |
+| **HRESULT (10 進値)** | -2134364024 | 
+| **エラー文字列** | ECS_E_INVALID_AAD_TENANT |
+| **修復が必要か** | はい |
+
+このエラーは、Azure File Sync では現時点で別の Azure Active Directory テナントへのサブスクリプションの移動がサポートされていないために発生します。
+ 
+この問題を解決するには、次のいずれかのオプションを実行してください。
+
+- オプション 1 (推奨)：サブスクリプションを元の Azure Active Directory テナントに戻します
+- オプション 2:現在の同期グループを削除して再作成します。 サーバー エンドポイントでクラウドの階層化が有効になっている場合は、同期グループを削除してから、[「クラウドの階層化」セクション]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)に記載されている手順を実行して、同期グループを再作成する前に孤立した階層化されたファイルを削除します。 
+
+<a id="-2134364010"></a>**ファイアウォールと仮想ネットワークの例外が構成されていないことが原因で同期が失敗しました**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83096 |
+| **HRESULT (10 進値)** | -2134364010 | 
+| **エラー文字列** | ECS_E_MGMT_STORAGEACLSBYPASSNOTSET |
+| **修復が必要か** | はい |
+
+このエラーは、ストレージ アカウントに対してファイアウォールと仮想ネットワークの設定が有効になっていて、[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します] 例外のチェック ボックスがオンになっていない場合に発生します。 この問題を解決するには、デプロイ ガイドの「[ファイアウォールと仮想ネットワークの設定を構成する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)」セクションに記載されている手順に従います。
+
 ### <a name="common-troubleshooting-steps"></a>一般的なトラブルシューティング手順
 <a id="troubleshoot-storage-account"></a>**ストレージ アカウントが存在することを確認します。**  
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
@@ -693,22 +732,6 @@ $storageAccount = Get-AzStorageAccount | Where-Object {
 
 if ($storageAccount -eq $null) {
     throw [System.Exception]::new("The storage account referenced in the cloud endpoint does not exist.")
-}
-```
----
-
-<a id="troubleshoot-network-rules"></a>**ストレージ アカウントにネットワーク ルールが含まれていないことを確認します。**  
-# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
-1. ストレージ アカウントにサインインし、ストレージ アカウントの左側にある **[Firewalls and virtual networks]\(ファイアウォールと仮想ネットワーク\)** を選択します。
-2. ストレージ アカウント内で、 **[Allow access from all networks]\(すべてのネットワークからのアクセスを許可する\)** オプション ボタンがオンになっている必要があります。
-    ![ストレージ アカウントのファイアウォールとネットワーク ルールが無効になっていることを示すスクリーンショット](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```powershell
-if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
-    [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
-    throw [System.Exception]::new("The storage account referenced contains network " + `
-        "rules which are not currently supported by Azure File Sync.")
 }
 ```
 ---

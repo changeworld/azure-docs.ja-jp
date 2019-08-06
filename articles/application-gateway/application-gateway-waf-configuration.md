@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 7/17/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e13884fb0c39beabf543fd04c9808373a68ec26a
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9e9472fbcd01cf40204063174b159638369d7429
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304299"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326664"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web アプリケーション ファイアウォール要求サイズ制限と除外リスト
 
@@ -91,10 +91,10 @@ $exclusion1 = New-AzApplicationGatewayFirewallExclusionConfig `
 ```azurepowershell
 $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -MatchVariable "RequestArgNames" `
-   -SelectorMatchOperator "Equals" `
+   -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-したがって、URL **http://www.contoso.com/?user=fdafdasfda** が WAF に渡された場合、文字列 **fdafdasfda** を評価しません。
+したがって、URL **http://www.contoso.com/?user%281%29=fdafdasfda** が WAF に渡された場合、文字列 **fdafdasfda** を評価しませんが、パラメーター名 **user%281%29** は引き続き評価します。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,7 +1,6 @@
 ---
 title: 'Azure Backup: Azure Monitor での Azure Backup の監視'
 description: Azure Monitor を使用して、Azure Backup ワークロードを監視し、カスタム アラートを作成します。
-services: backup
 author: pvrk
 manager: shivamg
 keywords: Log Analytics; Azure Backup; アラート; 診断設定; アクション グループ
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: e2d4a235737789f2f5852c00218427613db3d558
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 15b701a9ccc469636875736b6e316c150615aa16
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786313"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68465940"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -31,7 +30,7 @@ Azure Backup では、Recovery Services コンテナーに[組み込みの監視
 > [!NOTE]
 > Azure VM バックアップ、Azure Backup エージェント、System Center Data Protection Manager、Azure VM の SQL バックアップ、および Azure Files 共有のバックアップのデータは、診断設定によって Log Analytics ワークスペースに送られます。 
 
-大規模な監視のためには、2 つの Azure サービスの機能が必要です。 "*診断設定*" では、複数の Azure Resource Manager リソースから別のリソースにデータを送信します。 "*Log Analytics*" では、アクション グループを使用して他の通知チャネルを定義できるカスタム アラートが生成されます。 
+大規模な監視/レポートのためには、2 つの Azure サービスの機能が必要です。 "*診断設定*" では、複数の Azure Resource Manager リソースから別のリソースにデータを送信します。 "*Log Analytics*" では、アクション グループを使用して他の通知チャネルを定義できるカスタム アラートが生成されます。 
 
 以下のセクションでは、Log Analytics を使用して Azure Backup の大規模な監視を行う方法を詳しく説明します。
 
@@ -50,50 +49,33 @@ Recovery Services コンテナーなどの Azure Resource Manager リソース�
 
 ### <a name="deploy-a-solution-to-the-log-analytics-workspace"></a>Log Analytics ワークスペースにソリューションをデプロイする
 
-データが Log Analytics ワークスペース内に入れられたら、データを可視化するために、Log Analytics に [GitHub テンプレートをデプロイ](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/)します。 ワークスペースを正しく識別するために、必ず同じリソース グループ、ワークスペース名、およびワークスペースの場所を指定してください。 次に、このテンプレートをワークスペースにインストールします。
+> [!IMPORTANT]
+> Azure Backup で、LA ベースの監視とレポート用に更新されたマルチビュー [テンプレート](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/)をリリースしました。 [以前のソリューション](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/)を使用していたユーザーは、新しいソリューションをデプロイした後も引き続きそれがワークスペースに表示されることに注意してください。 ただし、前のソリューションでは、いくつかのマイナーなスキーマ変更により、不正確な結果が得られる場合があります。 そのため、ユーザーは新しいテンプレートをデプロイする必要があります。
 
-> [!NOTE]
-> Log Analytics ワークスペースにアラート、バックアップ ジョブ、または復元ジョブがない場合、ポータルに "BadArgumentError" というエラー コードが表示されることがあります。 このエラーを無視し、ソリューションの使用を続けます。 関連するデータ型がワークスペースに流入し始めた後は、視覚化によって同じ内容が反映されて、このエラーは表示されなくなります。
+データが Log Analytics ワークスペース内に入れられたら、データを可視化するために、Log Analytics に [GitHub テンプレートをデプロイ](https://azure.microsoft.com/resources/templates/101-backup-la-reporting/)します。 ワークスペースを正しく識別するために、必ず同じリソース グループ、ワークスペース名、およびワークスペースの場所を指定してください。 次に、このテンプレートをワークスペースにインストールします。
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Log Analytics を使用して Azure Backup データを表示する
 
-テンプレートがデプロイされた後、Azure Backup を監視するためのソリューションがワークスペースの概要の領域に表示されます。 概要に移動するには、次のいずれかのパスに従います。
+テンプレートがデプロイされると、Azure Backup の監視およびレポートのためのソリューションがワークスペースの概要の領域に表示されます。 概要に移動するには、次のいずれかのパスに従います。
 
 - **Azure Monitor**: **[分析情報]** セクションで **[その他]** を選択し、関連するワークスペースを選択します。
 - **Log Analytics ワークスペース**: 関連するワークスペースを選択し、 **[全般]** の **[ワークスペースの概要]** を選択します。
 
-![Log Analytics の監視タイル](media/backup-azure-monitoring-laworkspace/la-azurebackup-azuremonitor-tile.png)
+![Log Analytics の監視とレポートのタイル](media/backup-azure-monitoring-laworkspace/la-azurebackup-overview-dashboard.png)
 
-監視タイルを選択すると、デザイナー テンプレートが開いて、Azure Backup の基本的な監視データについての一連のグラフが表示されます。 表示されるグラフの一部を次に示します。
+概要タイルのいずれかを選択すると、さらに詳しい情報を表示できます。 表示されるレポートの一部を次に示します。
 
-* すべてのバックアップ ジョブ
+* ログ バックアップ以外のジョブ
 
-   ![バックアップ ジョブの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-allbackupjobs.png)
+   ![バックアップ ジョブの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-backupjobsnonlog.png)
 
-* 復元ジョブ
+* Azure リソース バックアップからのアラート
 
-   ![復元ジョブの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-restorejobs.png)
+   ![復元ジョブの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertsazure.png)
 
-* Azure リソースのための組み込み Azure Backup アラート
-
-   ![Azure リソースのための組み込み Azure Backup アラートの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-activealerts.png)
-
-* オンプレミス リソースのための組み込み Azure Backup アラート
-
-   ![オンプレミス リソースのための組み込み Azure Backup アラートの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-activealerts-onprem.png)
-
-* アクティブなデータ ソース
-
-   ![アクティブなバックアップ エンティティの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-activedatasources.png)
-
-* Recovery Services コンテナーのクラウド ストレージ
-
-   ![Recovery Services コンテナーのクラウド ストレージの Log Analytics グラフ](media/backup-azure-monitoring-laworkspace/la-azurebackup-cloudstorage-in-gb.png)
-
+同様に、他のタイルをクリックすると、復元ジョブ、クラウド ストレージ、バックアップ項目、オンプレミス リソース バックアップからのアラート、およびログ バックアップ ジョブに関するレポートを表示できます。
+ 
 これらのグラフは、テンプレートで提供されています。 必要に応じて、グラフを編集したり、グラフを追加したりできます。
-
-> [!IMPORTANT]
-> テンプレートをデプロイすると、基本的に読み取り専用ロックが作成されます。 テンプレートを編集して保存するには、ロックを解除する必要があります。 ロックの解除は、Log Analytics ワークスペースの **[設定]** セクションの **[ロック]** ウィンドウで行うことができます。
 
 ### <a name="create-alerts-by-using-log-analytics"></a>Log Analytics を使用してアラートを作成する
 

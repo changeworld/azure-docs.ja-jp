@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 6df29543df2b7b2609582f7e8dd9a0629182760c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0558c309cc22f39c2ed439b7930443ca0adb071e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995801"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385378"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps のスキーマの更新 - 2016 年 6 月 1 日
 
@@ -175,8 +175,9 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 * [ロジック アプリのワークフロー定義の作成](../logic-apps/logic-apps-author-definitions.md)
-* [ロジック アプリのデプロイ テンプレートの作成](../logic-apps/logic-apps-create-deploy-template.md)
+* [ロジック アプリ デプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->
 [1]: ./media/logic-apps-schema-2016-04-01/upgradeButton.png

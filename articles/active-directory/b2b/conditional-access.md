@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c012ebfb00b57079e43b74b4f6570744db980860
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a54e5006a268347148945fbe7fc5f18cfa41036
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113154"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357119"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの条件付きアクセス
 
@@ -92,6 +92,10 @@ Contoso に App1 が有効で App2 が有効ではない MFA ポリシーが設�
 Contoso が会社のデータに対するデバイス ベースの条件付きアクセス ポリシーを有効にした場合、Contoso の管理対象外であり、Contoso のデバイス ポリシーに準拠していないデバイスからのアクセスは禁止されます。
 
 B2B ユーザーのデバイスが Contoso によって管理されていない場合、このポリシーが適用される環境では、常にパートナー組織の B2B ユーザーのアクセスはブロックされます。 ただし、Contoso は、デバイス ベースの条件付きアクセス ポリシーから除外する特定のパートナー ユーザーを含む除外リストを作成できます。
+
+#### <a name="mobile-application-management-policies-for-b2b"></a>B2B 向けのモバイル アプリケーション管理ポリシー
+
+招待側の組織は B2B ユーザーのホーム組織内を認識できないため、条件付きアクセス アプリ保護ポリシーを B2B ユーザーに適用することはできません。
 
 #### <a name="location-based-conditional-access-for-b2b"></a>B2B 向けの場所ベースの条件付きアクセス
 

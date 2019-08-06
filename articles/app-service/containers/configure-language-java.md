@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: af6fd7b99147396a70fccc7b2b11dfef3def15a8
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 1488dbdcc042b29880560e7255de96b8d0409779
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786307"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498505"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service 向けの Linux Java アプリを構成する
 
@@ -90,6 +90,12 @@ Zulu Flight Recorder を使うと、ランタイムのパフォーマンスに�
 
 ```azurecli
 az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
+```
+
+記録が開始されたら、`JFR.dump` コマンドを使用して、いつでも現在の記録データをダンプできます。
+
+```shell
+jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 ```
 
 詳しくは、[Jcmd コマンド リファレンス](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190)をご覧ください。
@@ -179,13 +185,13 @@ Tomcat アプリケーションのパフォーマンスを向上させるには�
 
 App Service for Linux で実行される Java アプリケーションは、他のアプリケーションと同じ一連の[セキュリティのベスト プラクティス](/azure/security/security-paas-applications-using-app-services)を備えています。
 
-### <a name="authenticate-users"></a>ユーザーを認証する
+### <a name="authenticate-users-easy-auth"></a>ユーザーを認証する (Easy Auth)
 
 **[認証/承認]** オプションを使用して、Azure portal でアプリ認証を設定します。 そこから、Azure Active Directory、または Facebook、Google、GitHub などのソーシャル ログインを使用して、認証を有効にすることができます。 Azure portal の構成は、1 つの認証プロバイダーを構成するときにのみ機能します。 詳細については、「[Azure Active Directory ログインを使用するよう App Service アプリを構成する](../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)」と、他の ID プロバイダーの関連記事を参照してください。 複数のサインイン プロバイダーを有効にする必要がある場合は、[App Service 認証のカスタマイズ](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関する記事の手順に従います。
 
-#### <a name="tomcat"></a>Tomcat
+#### <a name="tomcat-and-wildfly"></a>Tomcat と Wildfly
 
-ご利用の Tomcat アプリケーションでは、Principal オブジェクトを Map オブジェクトにキャストすることで、Tomcat サーブレットから直接ユーザーの要求にアクセスできます。 Map オブジェクトによって、各要求の種類がその種類の要求のコレクションにマップされます。 以下のコードで、`request` は `HttpServletRequest` のインスタンスです。
+Tomcat または Wildfly アプリケーションでは、Principal オブジェクトを Map オブジェクトにキャストすると、サーブレットから直接ユーザーの要求にアクセスできます。 Map オブジェクトによって、各要求の種類がその種類の要求のコレクションにマップされます。 以下のコードで、`request` は `HttpServletRequest` のインスタンスです。
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -205,7 +211,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-ユーザーをサインアウトさせ、他のアクションを実行するには、[App Service の認証と承認の使用方法](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)に関するドキュメントを参照してください。 Tomcat の [HttpServletRequest インターフェイス](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)とそのメソッドに関する公式ドキュメントもあります。 次のサーブレット メソッドも、ご利用の App Service 構成に基づいてハイドレートされます。
+ユーザーをサインアウトさせるには、`/.auth/ext/logout` パスを使用します。 他のアクションを実行する場合は、「[Azure App Service 上での認証と承認の高度な使用方法](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)」を参照してください。 Tomcat の [HttpServletRequest インターフェイス](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)とそのメソッドに関する公式ドキュメントもあります。 次のサーブレット メソッドも、ご利用の App Service 構成に基づいてハイドレートされます。
 
 ```java
 public boolean isSecure()

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b1461999679935587370f66349a440d588465cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 399fccf9aaaeb9e252527e80a6549ee286bb1898
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052540"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68369350"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication プロバイダーをいつ使用するか
 
@@ -42,6 +42,35 @@ MFA プロバイダーの作成後に使用モデル (有効化されたユー�
 MFA が有効化されているすべてのユーザーに対応できる、十分な数のライセンスを購入している場合は、MFA プロバイダーをすべて削除することもできます。
 
 MFA プロバイダーが Azure AD テナントにリンクされていない場合、または新しい MFA プロバイダーを別の Azure AD テナントにリンクする場合、ユーザー設定と構成オプションは転送されません。 また、既存の Azure MFA サーバーは、MFA プロバイダーによって生成されるアクティブ化資格情報を使用して再アクティブ化する必要があります。 MFA Server を MFA プロバイダーにリンクするために再アクティブ化しても、電話呼び出しやテキスト メッセージによる認証には影響ありませんが、モバイル アプリ通知は、各ユーザーがモバイル アプリを再アクティブ化するまで機能しなくなります。
+
+### <a name="removing-an-authentication-provider"></a>認証プロバイダーの削除
+
+> [!CAUTION]
+> 認証プロバイダーを削除するときに確認は行われません。 **[削除]** の選択は永続的な処理です。
+
+認証プロバイダーは、**Azure portal** >  **[Azure Active Directory]**  >  **[MFA]**  >  **[プロバイダー]** で見つけられます。 一覧表示されたプロバイダーをクリックすると、そのプロバイダーに関連付けられている詳細と構成が表示されます。
+
+認証プロバイダーを削除する前に、プロバイダーで構成されているカスタマイズされた設定を記録しておいてください。 ご利用のプロバイダーから一般的な MFA の設定に移行する必要がある設定を決定し、それらの設定の移行を完了します。 
+
+プロバイダーにリンクされている Azure MFA サーバーを、**Azure portal** >  **[Azure Active Directory]**  >  **[MFA]**  >  **[サーバーの設定]** で生成される資格情報を使って、再アクティブ化する必要があります。 再アクティブ化する前に、環境内の Azure MFA サーバーの `\Program Files\Multi-Factor Authentication Server\Data\` ディレクトリから次のファイルを削除する必要があります。
+
+- caCert
+- cert
+- groupCACert
+- groupKey
+- groupName
+- licenseKey
+- pkey
+
+![Azure portal から認証プロバイダーを削除する](./media/concept-mfa-authprovider/authentication-provider-removal.png)
+
+すべての設定が移行されたことを確認した後、**Azure portal** >  **[Azure Active Directory]**  >  **[MFA]**  >  **[プロバイダー]** を参照し、省略記号 **[...]** を選択して、 **[削除]** を選択できます。
+
+> [!WARNING]
+> 認証プロバイダーを削除すると、そのプロバイダーに関連付けられているすべてのレポート情報が削除されます。 プロバイダーを削除する前に、アクティビティ レポートを保存することができます。
+
+> [!NOTE]
+> 古いバージョンの Microsoft Authenticator アプリと Azure MFA Server を使用しているユーザーは、アプリの再登録が必要な場合があります。
 
 ## <a name="next-steps"></a>次の手順
 

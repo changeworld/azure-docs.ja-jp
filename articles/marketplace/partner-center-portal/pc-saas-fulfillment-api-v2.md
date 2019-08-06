@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 476aaacbe6f1bf6d1920df0f12599976bfcc27b7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701137"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358582"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
 
@@ -111,7 +111,7 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |  クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 |  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 例: "`Bearer <access_token>`"。 |
 |  x-ms-marketplace-token  |  ユーザーが Azure から SaaS パートナーの Web サイトにリダイレクトされるときの URL 内のトークン クエリ パラメーター (例: `https://contoso.com/signup?token=..`)。 *注:* ブラウザーからのトークン値は、使用前に URL によってデコードされます。  |
 
 *応答コード:*
@@ -175,7 +175,7 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
 | Content-Type       |  `application/json`  |
 | x-ms-requestid     |  クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 | x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-| authorization      |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+| authorization      |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 例: "`Bearer <access_token>`"。  |
 
 *応答コード:*
 
@@ -253,7 +253,7 @@ Azure SaaS では、SaaS サブスクリプション購入のライフ サイク
 |  Content-Type      |  `application/json`  |
 |  x-ms-requestid    |  クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 |  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 例: "`Bearer <access_token>`"。  |
 
 *応答コード:*
 
@@ -323,7 +323,7 @@ Response Body:
 |   Content-Type     |  `application/json` |
 |   x-ms-requestid   |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 |  x-ms-correlationid  | クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
-|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例: "`Bearer <access_token>`"。 |
 
 *応答コード:*
 
@@ -375,7 +375,7 @@ Response Body:
 |  Content-Type      | `application/json`  |
 |  x-ms-requestid    | クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  x-ms-correlationid  | クライアントでの操作に対する一意の文字列値。 この文字列によって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例: "`Bearer <access_token>`"。 |
 
 *要求ペイロード:*
 
@@ -432,7 +432,7 @@ Response Body:
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  x-ms-correlationid  |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。    |
-| authorization      |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+| authorization      |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例: "`Bearer <access_token>`"。  |
 
 *要求ペイロード:*
 
@@ -498,7 +498,7 @@ Request Body:
 |  Content-Type      | `application/json` |
 |  x-ms-requestid    |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  x-ms-correlationid  |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。    |
-| authorization      |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+| authorization      |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例: "`Bearer <access_token>`"。  |
 
 *要求ペイロード:*
 
@@ -565,7 +565,7 @@ Request Body:
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。   |
 |  x-ms-correlationid  |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。   |
-|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例: "`Bearer <access_token>`"。  |
 
 *応答コード:*
 
@@ -618,7 +618,7 @@ SaaS サブスクリプションを登録解除するための呼び出しを開
 |   Content-Type     |  `application/json` |
 |  x-ms-requestid    |  クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例: "`Bearer <access_token>`"。  |
 
 *応答コード:*
 
@@ -681,7 +681,7 @@ SaaS サブスクリプションを登録解除するための呼び出しを開
 |  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
 |  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。  |
-|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。 例: "`Bearer <access_token>`"。  |
 
 *応答コード:*<br>
 
@@ -745,7 +745,7 @@ Response body:
 |   Content-Type     | `application/json`   |
 |   x-ms-requestid   |   クライアントからの要求を追跡するための一意の文字列値 (GUID を推奨)。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
 |  x-ms-correlationid |  クライアントでの操作に対する一意の文字列値。 このパラメーターによって、クライアント操作からのすべてのイベントがサーバー側のイベントに関連付けられます。 この値を指定しないと、値が生成され、応答ヘッダーに指定されます。 |
-|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  |
+|  authorization     |  [JSON Web トークン (JWT) ベアラー トークンを取得します](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-registration#get-a-token-based-on-the-azure-ad-app)。  例: "`Bearer <access_token>`"。  |
 
 *要求ペイロード:*
 

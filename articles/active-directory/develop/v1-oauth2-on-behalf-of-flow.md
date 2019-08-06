@@ -1,5 +1,5 @@
 ---
-title: OAuth2.0 On-Behalf-Of ドラフト仕様を使用する Azure Active Directory サービス間認証 | Microsoft Docs
+title: Azure AD サービス間認証の OAuth2.0 On-Behalf-Of のドラフト仕様 | Microsoft Docs
 description: この記事では、HTTP メッセージを使用して、OAuth2.0 On-Behalf-Of フローを使用するサービス間の認証を実装する方法について説明します。
 services: active-directory
 documentationcenter: .net
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb64aa401838451191a830a5adbfb435ac5fdf25
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 7381a0dfb8f780900d8c2c8ba0637dcd232bdb9f
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261936"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380893"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使用するサービス間の呼び出し
 

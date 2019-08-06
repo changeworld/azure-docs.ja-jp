@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 606cab09debf760d1b101390b2a19a1a090bb4c3
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: e749138cd28f7bd8faf10ca1087a73f323533a25
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234557"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335671"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
 
@@ -86,7 +86,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 | maxConcurrentConnections | フォルダーまたはファイルを削除するために同時にストレージ ストアに接続する接続の数。   |  いいえ。 既定では、 `1`です。 |
 | enablelogging | 削除されたフォルダーまたはファイルの名前を記録する必要があるかどうかを示します。 true の場合は、さらに、ログ ファイルを保存するストレージ アカウントを指定する必要があります。それにより、ログ ファイルを読み取って Delete アクティビティの動作を追跡することができます。 | いいえ |
 | logStorageSettings | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルの保存場所を指定できるストレージ プロパティのグループ。 | いいえ |
-| linkedServiceName | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルを格納するための [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)、または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービス。 | いいえ |
+| linkedServiceName | enablelogging = true の場合にのみ適用されます。<br/><br/>Delete アクティビティによって削除されたフォルダーまたはファイルの名前を含むログ ファイルを格納するための [Azure Storage](connector-azure-blob-storage.md#linked-service-properties)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)、または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービス。 ファイルを削除するには、delete アクティビティによって使用されるものと同じ種類の Integration Runtime で構成する必要があることに注意してください。 | いいえ |
 | path | enablelogging = true の場合にのみ適用されます。<br/><br/>ストレージ アカウント内のログ ファイルを保存するパス。 パスを指定しないと、サービスによってコンテナーが作成されます。 | いいえ |
 
 ## <a name="monitoring"></a>監視

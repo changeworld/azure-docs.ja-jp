@@ -1,6 +1,6 @@
 ---
-title: Azure ExpressRoute の一般的なセキュリティ属性
-description: Azure ExpressRoute を評価するための一般的なセキュリティ属性のチェックリスト
+title: Azure ExpressRoute のセキュリティ属性
+description: Azure ExpressRoute を評価するためのセキュリティ属性のチェックリスト
 services: expressroute
 ms.service: expressroute
 documentationcenter: ''
@@ -9,16 +9,16 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6156715fb87831d465197fd8eec59d245221e48
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9a46497c18b99ad7774036fd92e63d024b47045
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67082212"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442194"
 ---
-# <a name="common-security-attributes-for-azure-expressroute"></a>Azure ExpressRoute の一般的なセキュリティ属性
+# <a name="security-attributes-for-azure-expressroute"></a>Azure ExpressRoute のセキュリティ属性
 
-セキュリティは、Azure サービスのすべての要素に統合されています。 この記事では、Azure ExpressRoute に組み込まれている一般的なセキュリティ属性について説明します。
+この記事では、Azure ExpressRoute に組み込まれているセキュリティ属性について説明します。
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
@@ -26,8 +26,8 @@ ms.locfileid: "67082212"
 
 | セキュリティ属性 | はい/いいえ | メモ |
 |---|---|--|
-| 保存時の暗号化:<ul><li>サーバー側暗号化</li><li>ユーザーが管理するキーによるサーバー側暗号化</li><li>その他の暗号化機能 (クライアント側や常に暗号化など)</ul>|  該当なし | ExpressRoute は顧客データを格納しません。 |
-| 転送中の暗号化:<ul><li>Express Route 暗号化</li><li>VNet 内の暗号化</li><li>VNet-VNet 暗号化</ul>| いいえ | |
+| 保存時の暗号化 (サーバー側暗号化、お客様が管理するキーによるサーバー側暗号化、およびその他の暗号化機能)|  該当なし | ExpressRoute は顧客データを格納しません。 |
+| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| いいえ | |
 | 暗号化キーの処理 (CMK や BYOK など)| 該当なし |  |
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |
 | API 呼び出しの暗号化| はい | [Azure Resource Manager](../azure-resource-manager/index.yml) と HTTPS を使用します。 |

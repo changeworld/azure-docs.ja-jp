@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 640d36649f59842a740b4c12b4e3ab39a6d98c13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 37f1a0d9c70afc0a3a86ac76b682ee7b2adb253d
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050953"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335796"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -438,7 +438,7 @@ Traffic Manager の監視設定は、プロファイル レベルで行われま
 Traffic Manager では、エンドポイントに対して開始される HTTP(S) 正常性チェックにカスタム ヘッダーを指定することができます。 カスタム ヘッダーを指定する場合は、プロファイル レベルで指定する (すべてのエンドポイントに適用する) か、エンドポイント レベルで指定することができます。 ヘッダーが両方のレベルで定義されている場合は、エンドポイント レベルで指定されている方が、プロファイル レベルで指定されている方をオーバーライドします。
 この一般的なユース ケースの 1 つは、マルチテナント環境でホストされているエンドポイントに Traffic Manager の要求が正しくルーティングされるように、ホスト ヘッダーを指定することです。 もう 1 つのユース ケースは、エンドポイントの HTTP (S) 要求ログからの Traffic Manager の要求を識別することです
 
-## <a name="what-host-header-do-endpoint-health-checks-use"></a>エンドポイントの正常性チェックには、どのようなホストヘッダーが使用されますか。
+### <a name="what-host-header-do-endpoint-health-checks-use"></a>エンドポイントの正常性チェックには、どのようなホストヘッダーが使用されますか。
 
 カスタム ホスト ヘッダー設定が指定されていない場合、Traffic Manager によって使用されるホスト ヘッダーは、プロファイルで構成されているエンドポイント ターゲットの DNS 名です (それが利用可能な場合)。
 

@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 6de5711ca977612f01943f6aaf2c9d7061116090
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b69bd39e97cc97830142c8b1911f1116927643b2
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435928"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467540"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
@@ -23,12 +23,13 @@ Azure Cognitive Service に対する各要求には、認証ヘッダーが含�
 * [単一サービスのサブスクリプション キーによる認証](#authenticate-with-a-single-service-subscription-key)
 * [マルチサービスのサブスクリプション キーによる認証](#authenticate-with-a-multi-service-subscription-key)
 * [トークンによる認証](#authenticate-with-an-authentication-token)
+* [Azure Cognitive Services に対する要求の認証](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>前提条件
 
 要求を実行する前に、Azure アカウントと Azure Cognitive Services サブスクリプションが必要です。 既にアカウントをお持ちの場合は、次のセクションまでスキップして進んでください。 アカウントをお持ちでない場合は、数分で設定を行えるガイドをご覧ください。[Azure の Cognitive Services アカウントの作成](cognitive-services-apis-create-account.md)に関するページを参照してください。
 
-アカウントを作成した後、または[無料試用版](https://azure.microsoft.com/try/cognitive-services/my-apis)を有効にした後、[Azure portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-subscription) からサブスクリプション キーを取得できます。
+アカウントを作成した後、または[無料試用版](https://azure.microsoft.com/try/cognitive-services/my-apis)を有効にした後、[Azure portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) からサブスクリプション キーを取得できます。
 
 ## <a name="authentication-headers"></a>認証ヘッダー
 
@@ -158,8 +159,10 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+[!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
+
 ## <a name="see-also"></a>関連項目
 
 * [Cognitive Services とは](welcome.md)
 * [Cognitive Services の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [アカウントの作成](cognitive-services-apis-create-account.md)
+* [カスタム サブドメイン](cognitive-services-custom-subdomains.md)

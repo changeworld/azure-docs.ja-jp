@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: mialdrid
+ms.date: 07/23/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: afe8d3971a51d57498e3e32b7e1cf5bf5a3263d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f16f797afca6d60029c1f39fea7235ce84e4f954
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883271"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442215"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、次のセクションにある前提条件を満たしていることを確認する必要があります。
@@ -50,10 +50,7 @@ ExpressRoute で Office 365 を有効にする予定がある場合は、以下�
 * [Office 365 での ExpressRoute に関する高度なトレーニング ビデオ](https://channel9.msdn.com/series/aer/)
 
 ## <a name="dynamics-365"></a>Dynamics 365
-ExpressRoute で Dynamics 365 を有効にする予定がある場合は、以下のドキュメントで Dynamics 365 の詳細について確認してください。
-
-* [Dynamics 365 と ExpressRoute のホワイト ペーパー](https://download.microsoft.com/download/B/2/8/B2896B38-9832-417B-9836-9EF240C0A212/Microsoft%20Dynamics%20365%20and%20ExpressRoute.pdf)
-* [Dynamics 365 URL](https://support.microsoft.com/kb/2655102) および [IP アドレス範囲](https://support.microsoft.com/kb/2728473)
+ExpressRoute で Dynamics 365 を有効にする予定がある場合は、[Dynamics 365 の URL](https://support.microsoft.com/kb/2655102) と [IP アドレスの範囲](https://support.microsoft.com/kb/2728473)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 * ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

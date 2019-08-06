@@ -3,8 +3,8 @@ title: アクセス レビューとは - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory アクセス レビューを使用すると、組織のガバナンス、リスク管理、コンプライアンスの取り組みを満たすように、グループ メンバーシップとアプリケーションのアクセスを制御することができます。
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 06/05/2019
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fcc804db66430598e72e9ebf31a8837eda1cca6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da9bc3906e6f39b2d943708eb6a1b930ac8cc5a5
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67204604"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68401942"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD アクセス レビューとは
 
@@ -82,6 +82,25 @@ Azure AD を使用すると、組織内での共同作業、およびパート�
 | 管理者は、ユーザーが 5 人とゲスト ユーザーが 28 人のグループ A のアクセス レビューを作成します。<br/>自己レビューにします。 | 1 管理者 + 5 ユーザー (自己レビュー担当者として) + 1 ユーザー (必須の 1:5 比率のゲスト ユーザー対応用) | 7 |
 
 お客様のユーザーにライセンスを割り当てる方法については、「[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)」を参照してください。
+
+## <a name="onboard-access-reviews"></a>アクセス レビューの配布準備
+
+アクセス レビューをオンボードするには、次の手順に従います。
+
+1. グローバル管理者またはユーザー管理者として、アクセス レビューを使用する [Azure portal](https://portal.azure.com) にサインインします。
+
+1. 左側のナビゲーションで、 **[Azure Active Directory]** をクリックします。
+
+1. 左側のメニューで、 **[Identity Governance]** をクリックします。
+
+1. **[アクセス レビュー]** をクリックします。
+ 
+    ![アクセス レビューの開始ページ](./media/access-reviews-overview/access-reviews-overview-onboard.png)
+
+1. このページで、 **[今すぐオンボード]** ボタンをクリックします。
+    
+      ![アクセス レビューの配布準備](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
+
 
 ## <a name="learn-about-access-reviews"></a>アクセス レビューの詳細情報
 

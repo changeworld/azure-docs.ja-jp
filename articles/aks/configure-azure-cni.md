@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: a0da8b932d2efe88391991286ede2858440e4465
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 1cc2849ffe55fff737993140a1d0f18182820eff
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68232642"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68498578"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -106,7 +106,7 @@ AKS クラスターを作成するときに、Azure CNI ネットワーク用に
 
 **Kubernetes DNS サービスの IP アドレス**:クラスターの DNS サービスの IP アドレス。 *[Kubernetes service address range]\(Kubernetes サービス アドレスの範囲\)* 内に含まれるアドレスを指定する必要があります。 アドレス範囲内の最初の IP アドレス (.1 など) は使用しないでください。 サブネット範囲の最初のアドレスは、*kubernetes.default.svc.cluster.local* アドレスに使用されます。
 
-**Docker ブリッジのアドレス**:Docker ブリッジに割り当てる IP アドレスとネットマスク。 Docker ブリッジを使用することで、AKS ノードは基になる管理プラットフォームと通信できます。 この IP アドレスは、クラスターの仮想ネットワーク IP アドレス範囲に含まれていてはならず、ネットワークで使用されている他のアドレス範囲と重複していてもなりません。
+**Docker ブリッジのアドレス**:Docker ブリッジのネットワーク アドレスは、すべての Docker インストールに存在する既定の *docker0* ブリッジのネットワーク アドレスを表します。 *docker0* ブリッジは AKS クラスターまたはポッド自体では使用されませんが、AKS クラスター内の *docker ビルド*などのシナリオを引き続きサポートするには、このアドレスを設定する必要があります。 Docker ブリッジのネットワーク アドレスの CIDR を選択する必要があります。そうしないと、他の CIDR と競合する可能性のあるサブネットが Docker によって自動的に選択されます。 ネットワーク上の残りの CIDR と競合しないアドレス空間を選択する必要があります。これには、クラスターのサービス CIDR とポッド CIDR が含まれます。
 
 ## <a name="configure-networking---cli"></a>ネットワークを構成する - CLI
 
@@ -186,7 +186,7 @@ AKS のネットワークの詳細については、次の記事を参照して�
 
 [Azure Kubernetes Service Engine (AKS Engine)][aks-engine] は、Azure に Kubernetes クラスターをデプロイする場合に使用できる Azure Resource Manager テンプレートを生成するオープンソース プロジェクトです。
 
-AKS Engine で作成された Kubernetes クラスターは、両方の [kubenet][kubenet]and [Azure CNI][cni-networking] プラグインをサポートしています。 そのため、AKS Engine では両方のネットワーク シナリオがサポートされています。
+AKS Engine で作成された Kubernetes クラスターは、[kubenet][kubenet] および [Azure CNI][cni-networking] プラグインの両方をサポートしています。 そのため、AKS Engine では両方のネットワーク シナリオがサポートされています。
 
 <!-- IMAGES -->
 [advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png

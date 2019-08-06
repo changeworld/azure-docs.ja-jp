@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: b245661ab8f26c1f529a049d326d2c72838c7a17
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f3a0fa1ecdb2db94b43a5380f9497b4b1c266e47
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056730"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68441941"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -38,7 +38,7 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 
 次の手順に従って、Azure HDInsight の Spark および対話型クエリ クラスターの間で Hive Warehouse Connector を設定します。
 
-1. Azure portal を使用し、ストレージ アカウントとカスタム Azure 仮想ネットワークを使って HDInsight Spark 4.0 クラスターを作成します。 Azure 仮想ネットワークでのクラスターの作成については、「[既存の仮想ネットワークへの HDInsight の追加](../../hdinsight/hdinsight-extend-hadoop-virtual-network.md#existingvnet)」を参照してください。
+1. Azure portal を使用し、ストレージ アカウントとカスタム Azure 仮想ネットワークを使って HDInsight Spark 4.0 クラスターを作成します。 Azure 仮想ネットワークでのクラスターの作成については、「[既存の仮想ネットワークへの HDInsight の追加](../../hdinsight/hdinsight-plan-virtual-network-deployment.md#existingvnet)」を参照してください。
 1. Azure portal を使用し、Spark クラスターと同じストレージ アカウントと Azure 仮想ネットワークを使って HDInsight 対話型クエリ (LLAP) 4.0 クラスターを作成します。
 1. 自分の対話型クエリ クラスターの headnode0 にある `/etc/hosts` ファイルの内容を、自分の Spark クラスターの headnode0 にある `/etc/hosts` ファイルにコピーします。 この手順によって、自分の Spark クラスターが対話型クエリ クラスター内のノードの IP アドレスを解決できるようになります。 `cat /etc/hosts` を使用して、更新されたファイルの内容を表示します。 出力は、次のスクリーンショットに示されている内容のようになります。
 
@@ -119,7 +119,7 @@ spark-shell セッションを開始するには、次の手順を実行しま�
 
 ### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Enterprise セキュリティ パッケージ (ESP) クラスター上でのクエリの接続と実行
 
-Enterprise セキュリティ パッケージ (ESP) を使用すると、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御など、エンタープライズレベルの機能を Azure HDInsight の Apache Hadoop クラスターで利用できます。 ESP の詳細については、「[Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要](../domain-joined/apache-domain-joined-introduction.md)」を参照してください。
+Enterprise セキュリティ パッケージ (ESP) を使用すると、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御など、エンタープライズレベルの機能を Azure HDInsight の Apache Hadoop クラスターで利用できます。 ESP に関する詳細については、「[HDInsight で Enterprise セキュリティ パッケージを使用する](../domain-joined/apache-domain-joined-architecture.md)」を参照してください。
 
 1. 「[クエリの接続と実行](#connecting-and-running-queries)」の最初の手順 1 と 2 に従います。
 1. 「`kinit`」と入力して、ドメイン ユーザーでログインします。

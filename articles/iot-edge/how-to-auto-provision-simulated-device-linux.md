@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1a13c130c45c746a42c0acf1ec2646f3c8f9bc51
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b48455b6ea9c1cd74e94c10d8f9f938c20512c02
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227527"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414574"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Linux 仮想マシン上で、仮想 TPM を使用する IoT Edge デバイスを作成し、プロビジョニングする
 
@@ -162,8 +162,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 デバイスの種類に合った記事を参照する前に、DPS の **ID スコープ**とデバイスの**登録 ID** を確認してください。 Ubuntu サーバーの例をインストールした場合は、**x64** の手順を使用してください。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。 
 
-* [Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)
-* [Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)
+[Linux に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-linux.md)
 
 ## <a name="give-iot-edge-access-to-the-tpm"></a>IoT Edge に TPM へのアクセス権を付与する
 

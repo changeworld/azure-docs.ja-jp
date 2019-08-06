@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6507c39faecfa0e56fc19597e414e9d25d368567
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 619a4de993f052f143e4117f0100ed1e0aa77b03
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460872"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498587"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -178,7 +178,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   分析レポートの生成に使用される**使用状況データ**は、バックアップに**含まれません**。 [Azure API Management REST API][azure api management rest api] を使用して、分析レポートを保管用に定期的に取り出します。
 -   サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。 その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
 -   バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われた**変更**は、**バックアップ対象から除外され、その結果失われる可能性があります**。
-
+-   コントロール プレーンから Azure Storage アカウントへのアクセスを**許可**します。 顧客は、自分のバックアップ用のストレージ アカウントで次の一連の受信 IP を開く必要があります。 
+    > 13.84.189.17/32、13.85.22.63/32、23.96.224.175/32、23.101.166.38/32、52.162.110.80/32、104.214.19.224/32、13.64.39.16/32、40.81.47.216/32、51.145.179.78/32、52.142.95.35/32、40.90.185.46/32、20.40.125.155/32
 ### <a name="step2"> </a>API Management サービスの復元
 
 以前に作成されたバックアップから API Management サービスを復元するには、次の HTTP 要求を行います。

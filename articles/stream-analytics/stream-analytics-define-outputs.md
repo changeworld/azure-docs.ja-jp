@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 854fd5ca2bb6c27b7f8815bf85e19c6cf147e475
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: a0da13e82811d500dee50c2231500245c7e011a6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278048"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383438"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 
@@ -70,7 +70,7 @@ Stream Analytics からの Azure Data Lake Storage 出力は現在、Azure China
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>BLOB ストレージと Azure Data Lake Gen2
 
-Azure Data Lake Gen2 へのエグレスは、パブリック プレビュー機能として提供されています。
+Azure Data Lake Gen2 へのエグレスは、世界中の限られたリージョンでパブリック プレビュー機能として提供されています。 [要求フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)に追加の詳細情報を入力することで、プレビューへのアクセスを要求することができます。
 
 Azure Blob Storage を使用すると、大量の非構造化データをクラウドに保存する場合に、コスト効果の高いスケーラブルなソリューションを実現できます。 BLOB ストレージとその使用法の概要については、[Azure Portal を使用した BLOB のアップロード、ダウンロード、および一覧表示](../storage/blobs/storage-quickstart-blobs-portal.md)に関するページを参照してください。
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4ab30f5f737b0f5188958c4686f82a0084c3ac35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 301ad4f940e6bd4eedb3a4df64e4740d29effe03
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059362"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68406228"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -161,7 +161,7 @@ $respObj.host_components.HostRoles.host_name
 
 このセクションの例によって返される IP アドレスは、インターネット経由で直接アクセスすることはできません。 HDInsight クラスターが含まれている Azure Virtual Network 内からだけアクセスできます。
 
-HDInsight と仮想ネットワークの操作の詳細については、[カスタム Azure Virtual Network による HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するページを参照してください。
+HDInsight と仮想ネットワークの操作の詳細については、「[Plan a virtual network for HDInsight](hdinsight-plan-virtual-network-deployment.md)」 (HDInsight 用の仮想ネットワークの計画) を参照してください。
 
 IP アドレスを検索するには、クラスター ノードの内部完全修飾ドメイン名 (FQDN) が必要です。 FQDN の取得後、ホストの IP アドレスを取得できます。 次の例は、まず、すべてのホスト ノードの FQDN を Ambari に照会し、次に Ambari に各ホストの IP アドレスを照会します。
 

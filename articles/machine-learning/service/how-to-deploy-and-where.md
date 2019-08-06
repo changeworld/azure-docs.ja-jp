@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cae6039b904f3dcd19ed191dc1b5fdd2f05f0323
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6b9ebb2f7ef46fd2900d036f178201863ecbc8d4
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260345"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358826"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -115,6 +115,10 @@ Azure Machine Learning service 以外でトレーニングされたモデルの�
 
 Web サービスとしてデプロイするには、推論構成 (`InferenceConfig`) とデプロイ構成を作成する必要があります。 推論、つまりモデル スコアリングとは、最も一般的には運用環境のデータについて、デプロイしたモデルを使用して予測を行うフェーズです。 推論構成には、モデルにサービスを提供するために必要なスクリプトと依存関係を指定します。 デプロイ構成には、コンピューティング ターゲットのモデルにサービスを提供する方法を詳しく指定します。
 
+> [!IMPORTANT]
+> Azure Machine Learning SDK には、データストアまたはデータセットにアクセスするための Web サービスまたは IoT Edge のデプロイの手段は用意されていません。 デプロイの外部に格納されているデータにアクセスするためにデプロイされたモデルが必要な場合 (Azure Storage アカウントの場合など)、関連する SDK を使用してカスタム コード ソリューションを開発する必要があります。 たとえば、[Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) です。
+>
+> シナリオに適したもう 1 つの方法として[バッチ予測](how-to-run-batch-predictions.md)があります。これにより、スコアリング時にデータストアにアクセスすることができます。
 
 ### <a id="script"></a> 1.エントリ スクリプトと依存関係を定義する
 
@@ -126,7 +130,7 @@ Web サービスとしてデプロイするには、推論構成 (`InferenceConf
 
 * `run(input_data)`:この関数では、モデルを使用して、入力データに基づいて値が予測されます。 実行に対する入力と出力は、通常、JSON を使用してシリアル化およびシリアル化解除が実行されます。 また、未加工のバイナリ データも使用できます。 モデルに送信する前、またはクライアントに返す前のデータを変換することができます。
 
-#### <a name="what-is-getmodelpath"></a>Get_model_path とは何か
+#### <a name="what-is-get_model_path"></a>Get_model_path とは何か
 
 モデルを登録するときに、レジストリ内のモデルを管理するために使用されるモデル名を指定します。 この名前は、ローカル ファイル システム上のモデル ファイルのパスを取得する [Model.get_model_path()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) で使用します。 フォルダーまたはファイルのコレクションを登録した場合、この API では、これらのファイルを含むディレクトリのパスが返されます。
 
@@ -136,7 +140,7 @@ Web サービスとしてデプロイするには、推論構成 (`InferenceConf
 
 ```python
 model_path = Model.get_model_path('sklearn_mnist')
-``` 
+```
 
 #### <a name="optional-automatic-swagger-schema-generation"></a>(任意) Automatic Swagger スキーマ生成
 
@@ -186,6 +190,7 @@ from azureml.core.model import Model
 from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 
+
 def init():
     global model
     # note here "sklearn_regression_model.pkl" is the name of the model registered under
@@ -194,8 +199,10 @@ def init():
     # deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-input_sample = np.array([[10,9,8,7,6,5,4,3,2,1]])
+
+input_sample = np.array([[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]])
 output_sample = np.array([3726.995])
+
 
 @input_schema('data', NumpyParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
@@ -226,19 +233,27 @@ from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 from inference_schema.parameter_types.pandas_parameter_type import PandasParameterType
 
+
 def init():
     global model
-    model_path = Model.get_model_path('model_name')   # replace model_name with your actual model name, if needed
+    # replace model_name with your actual model name, if needed
+    model_path = Model.get_model_path('model_name')
     # deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-input_sample = pd.DataFrame(data=[{
-              "input_name_1": 5.1,         # This is a decimal type sample. Use the data type that reflects this column in your data
-              "input_name_2": "value2",    # This is a string type sample. Use the data type that reflects this column in your data
-              "input_name_3": 3            # This is a integer type sample. Use the data type that reflects this column in your data
-            }])
 
-output_sample = np.array([0])              # This is a integer type sample. Use the data type that reflects the expected result
+input_sample = pd.DataFrame(data=[{
+    # This is a decimal type sample. Use the data type that reflects this column in your data
+    "input_name_1": 5.1,
+    # This is a string type sample. Use the data type that reflects this column in your data
+    "input_name_2": "value2",
+    # This is a integer type sample. Use the data type that reflects this column in your data
+    "input_name_3": 3
+}])
+
+# This is a integer type sample. Use the data type that reflects the expected result
+output_sample = np.array([0])
+
 
 @input_schema('data', PandasParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
@@ -264,7 +279,7 @@ def run(data):
 推論構成では、予測するモデルを構成する方法が説明されます。 次の例では、推論構成を作成する方法が示されています。 この構成では、ランタイム、エントリ スクリプト、および (必要に応じて) Conda 環境ファイルを指定します。
 
 ```python
-inference_config = InferenceConfig(runtime= "python",
+inference_config = InferenceConfig(runtime="python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
 ```
@@ -275,30 +290,7 @@ inference_config = InferenceConfig(runtime= "python",
 
 ### <a name="cli-example-of-inferenceconfig"></a>InferenceConfig の CLI の例
 
-次の JSON ドキュメントは、Machine Learning CLI で使用する推定構成の例です。
-
-```JSON
-{
-   "entryScript": "x/y/score.py",
-   "runtime": "python",
-   "condaFile": "env/myenv.yml",
-   "sourceDirectory":"C:/abc",
-}
-```
-
-このファイルでは次のエンティティが有効です。
-
-* __entryScript__:イメージに対して実行するコードを含むローカル ファイルのパス。
-* __runtime__:イメージに使用するランタイム。 現在サポートされているランタイムは "spark-py" と "python" です。
-* __condaFile__ (省略可能):イメージに使用する Conda 環境定義を含むローカル ファイルのパス。
-* __extraDockerFileSteps__ (省略可能):イメージを設定するときに実行する追加の Docker 手順を含むローカル ファイルのパス。
-* __sourceDirectory__ (省略可能):イメージを作成するためのファイルをすべて含むフォルダーのパス。
-* __enableGpu__ (省略可能):イメージで GPU サポートを有効にするかどうか。 GPU イメージは、Azure Container Instances、Azure Machine Learning コンピューティング、Azure Virtual Machines、Azure Kubernetes Service などの Microsoft Azure サービス上で使用する必要があります。 既定値は False です。
-* __baseImage__ (省略可能):基本イメージとして使用するカスタム イメージ。 基本イメージが指定されていない場合、指定されたランタイム パラメーターに基づいた基本イメージが使用されます。
-* __baseImageRegistry__ (省略可能):基本イメージを含むイメージ レジストリ。
-* __cudaVersion__ (省略可能):GPU のサポートが必要なイメージにインストールする CUDA のバージョン。 GPU イメージは、Azure Container Instances、Azure Machine Learning コンピューティング、Azure Virtual Machines、Azure Kubernetes Service などの Microsoft Azure サービス上で使用する必要があります。 サポートされているバージョンは 9.0、9.1、10.0 です。 "enable_gpu" が設定されている場合、既定値は "9.1" です。
-
-これらのエンティティは [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) クラスのパラメーターにマップされています。
+[!INCLUDE [inferenceconfig](../../../includes/machine-learning-service-inference-config.md)]
 
 次のコマンドでは、CLI を使用してモデルをデプロイする方法を示します。
 
@@ -308,7 +300,6 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 この例では、構成に次の項目が含まれています。
 
-* 推論に必要なアセットが含まれるディレクトリ
 * このモデルには Python が必要であるということ
 * [エントリ スクリプト](#script)。デプロイされたサービスに送信される Web 要求の処理に必要です。
 * 推論を行うために必要な Python パッケージを記述する conda ファイル
@@ -362,21 +353,7 @@ CLI を使用してモデルをプロファイリングするには、[az ml mod
   az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
   ```
 
-    `deploymentconfig.json` ドキュメントのエントリは、[LocalWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py) のパラメーターにマッピングされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
-
-    | JSON エンティティ | メソッド パラメーター | 説明 |
-    | ----- | ----- | ----- |
-    | `computeType` | NA | コンピューティング ターゲット。 ローカルの場合、値は `local` である必要があります。 |
-    | `port` | `port` | サービスの HTTP エンドポイントを公開するローカル ポート。 |
-
-    次の JSON は、CLI で使用するデプロイ構成の例です。
-
-    ```json
-    {
-        "computeType": "local",
-        "port": 32267
-    }
-    ```
+    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-local-deploy-config.md)]
 
 ### <a id="aci"></a> Azure Container Instances (DEVTEST)
 
@@ -403,38 +380,7 @@ ACI の利用可能なクォータとリージョンを確認するには、[Azu
     az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
     ```
 
-    `deploymentconfig.json` ドキュメントのエントリは、[AciWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py) のパラメーターにマッピングされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
-
-    | JSON エンティティ | メソッド パラメーター | 説明 |
-    | ----- | ----- | ----- |
-    | `computeType` | NA | コンピューティング ターゲット。 ACI の場合、値は `ACI` である必要があります。 |
-    | `containerResourceRequirements` | NA | コンテナーに割り当てられている CPU とメモリの構成要素が含まれています。 |
-    | &emsp;&emsp;`cpu` | `cpu_cores` | この Web サービスに割り当てる CPU コアの数。 既定値、`0.1` |
-    | &emsp;&emsp;`memoryInGB` | `memory_gb` | この Web サービスに割り当てるメモリの量 (GB 単位)。 既定値、`0.5` |
-    | `location` | `location` | この Web サービスのデプロイ先となる Azure リージョン。 指定されていない場合、ワークスペースの場所が使用されます。 利用できるリージョンの詳細はこちらにあります。[ACI リージョン](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
-    | `authEnabled` | `auth_enabled` | この Web サービスに対して認証を有効にするかどうか。 既定値は False です |
-    | `sslEnabled` | `ssl_enabled` | この Web サービスに対して SSL を有効にするかどうか。 既定値は False です。 |
-    | `appInsightsEnabled` | `enable_app_insights` | この Web サービスに対して AppInsights を有効にするかどうか。 既定値は False です |
-    | `sslCertificate` | `ssl_cert_pem_file` | SSL が有効な場合、証明書ファイルが必要です |
-    | `sslKey` | `ssl_key_pem_file` | SSL が有効な場合、キー ファイルが必要です |
-    | `cname` | `ssl_cname` | SSL が有効な場合の cname |
-    | `dnsNameLabel` | `dns_name_label` | スコアリング エンドポイントの dns 名ラベル。 指定されていない場合、一意の dns 名ラベルがスコアリング エンドポイントに対して生成されます。 |
-
-    次の JSON は、CLI で使用するデプロイ構成の例です。
-
-    ```json
-    {
-        "computeType": "aci",
-        "containerResourceRequirements":
-        {
-            "cpu": 0.5,
-            "memoryInGB": 1.0
-        },
-        "authEnabled": true,
-        "sslEnabled": false,
-        "appInsightsEnabled": false
-    }
-    ```
+    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aci-deploy-config.md)]
 
 + **VS コードを使用する**
 
@@ -472,65 +418,7 @@ AKS クラスターが既にアタッチされている場合は、それにデ�
   az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
   ```
 
-    `deploymentconfig.json` ドキュメントのエントリは、[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) のパラメーターにマッピングされます。 次の表は、JSON ドキュメントのエントリとメソッド用パラメーターの間のマッピングについてまとめたものです。
-
-    | JSON エンティティ | メソッド パラメーター | 説明 |
-    | ----- | ----- | ----- |
-    | `computeType` | NA | コンピューティング ターゲット。 AKS の場合、値は `aks` である必要があります。 |
-    | `autoScaler` | NA | 自動スケーリングの構成要素が含まれます。 自動スケーラー テーブルを参照してください。 |
-    | &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Web サービスの自動スケールを有効にするかどうかを指定します。 `numReplicas` = `0` の場合、`True`。それ以外の場合、`False`。 |
-    | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | この Web サービスを自動スケールするときに使用するコンテナーの最小数。 既定値、`1`。 |
-    | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | この Web サービスを自動スケールするときに使用するコンテナーの最大数。 既定値、`10`。 |
-    | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | 自動スケーラーがこの Web サービスのスケーリングを試行する頻度。 既定値、`1`。 |
-    | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | オートスケーラーがこの web サービスに対してメンテナンスを試行する目標使用率 (最大 100%)。 既定値、`70`。 |
-    | `dataCollection` | NA | データ収集の構成要素が含まれます。 |
-    | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Web サービスに対してモデル データ収集を有効にするかどうかを指定します。 既定値、`False`。 |
-    | `authEnabled` | `auth_enabled` | Web サービスに対して認証を有効にするかどうかを指定します。 既定値、`True`。 |
-    | `containerResourceRequirements` | NA | コンテナーに割り当てられている CPU とメモリの構成要素が含まれています。 |
-    | &emsp;&emsp;`cpu` | `cpu_cores` | この Web サービスに割り当てる CPU コアの数。 既定値、`0.1` |
-    | &emsp;&emsp;`memoryInGB` | `memory_gb` | この Web サービスに割り当てるメモリの量 (GB 単位)。 既定値、`0.5` |
-    | `appInsightsEnabled` | `enable_app_insights` | Web サービスに対して Application Insights ログ記録を有効にするかどうかを指定します。 既定値、`False`。 |
-    | `scoringTimeoutMs` | `scoring_timeout_ms` | Web サービス呼び出しのスコア付けに適用するタイムアウト。 既定値、`60000`。 |
-    | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | この Web サービスのノードあたり最大同時要求数。 既定値、`1`。 |
-    | `maxQueueWaitMs` | `max_request_wait_time` | 要求がキューに留まる最大時間 (ミリ秒単位)。この時間を過ぎると、503 エラーが返されます。 既定値、`500`。 |
-    | `numReplicas` | `num_replicas` | この Web サービスに割り当てるコンテナーの数。 既定値はありません。 このパラメーターが設定されていない場合、自動スケーラーは既定で有効になります。 |
-    | `keys` | NA | キーの構成要素が含まれます。 |
-    | &emsp;&emsp;`primaryKey` | `primary_key` | この Web サービスに使用するプライマリ認証キー |
-    | &emsp;&emsp;`secondaryKey` | `secondary_key` | この Web サービスに使用するセカンダリ認証キー |
-    | `gpuCores` | `gpu_cores` | この Web サービスに割り当てる GPU コアの数。 既定値は 1 です。 |
-    | `livenessProbeRequirements` | NA | liveness probe 要件の構成要素が含まれます。 |
-    | &emsp;&emsp;`periodSeconds` | `period_seconds` | liveness probe を実行する頻度 (秒単位)。 既定値は 10 秒です。 最大値は 1 です。 |
-    | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | コンテナーの起動後、liveness probe が開始するまでの秒数。 既定値は 310 です |
-    | &emsp;&emsp;`timeoutSeconds` | `timeout_seconds` | liveness probe がタイムアウトするまでの秒数既定値は 2 秒です。 最小値は 1 です |
-    | &emsp;&emsp;`successThreshold` | `success_threshold` | 失敗後、liveness probe が成功と見なされるための最小連続成功数。 既定値は 1 です。 最大値は 1 です。 |
-    | &emsp;&emsp;`failureThreshold` | `failure_threshold` | Pod が起動し、liveness probe が失敗したとき、Kubernetes では、failureThreshold 回数だけ試し、それからあきらめます。 既定値は 3 です。 最大値は 1 です。 |
-    | `namespace` | `namespace` | Web サービスのデプロイ先となる Kubernetes 名前空間。 最大 63 個の小文字の英数字 ('a'-'z'、'0'-'9') とハイフン ('-') 文字。 先頭と末尾の文字をハイフンにすることはできません。 |
-
-    次の JSON は、CLI で使用するデプロイ構成の例です。
-
-    ```json
-    {
-        "computeType": "aks",
-        "autoScaler":
-        {
-            "autoscaleEnabled": true,
-            "minReplicas": 1,
-            "maxReplicas": 3,
-            "refreshPeriodInSeconds": 1,
-            "targetUtilization": 70
-        },
-        "dataCollection":
-        {
-            "storageEnabled": true
-        },
-        "authEnabled": true,
-        "containerResourceRequirements":
-        {
-            "cpu": 0.5,
-            "memoryInGB": 1.0
-        }
-    }
-    ```
+    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
 
 + **VS コードを使用する**
 
@@ -562,12 +450,12 @@ prov_config = AksCompute.provisioning_configuration()
 
 aks_name = 'myaks'
 # Create the cluster
-aks_target = ComputeTarget.create(workspace = ws,
-                                    name = aks_name,
-                                    provisioning_configuration = prov_config)
+aks_target = ComputeTarget.create(workspace=ws,
+                                  name=aks_name,
+                                  provisioning_configuration=prov_config)
 
 # Wait for the create process to complete
-aks_target.wait_for_completion(show_output = True)
+aks_target.wait_for_completion(show_output=True)
 ```
 
 Azure Machine Learning SDK の外部で AKS クラスターを作成する方法の詳細については、次の記事を参照してください。
@@ -605,8 +493,8 @@ cluster_name = 'mycluster'
 # attach_config = AksCompute.attach_configuration(resource_group = resource_group,
 #                                         cluster_name = cluster_name,
 #                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
-attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-                                         cluster_name = cluster_name)
+attach_config = AksCompute.attach_configuration(resource_group=resource_group,
+                                                cluster_name=cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
 ```
 
@@ -625,19 +513,20 @@ Python でサービスを呼び出す方法の例:
 import requests
 import json
 
-headers = {'Content-Type':'application/json'}
+headers = {'Content-Type': 'application/json'}
 
 if service.auth_enabled:
     headers['Authorization'] = 'Bearer '+service.get_keys()[0]
 
 print(headers)
-    
+
 test_sample = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10], 
-    [10,9,8,7,6,5,4,3,2,1]
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 ]})
 
-response = requests.post(service.scoring_uri, data=test_sample, headers=headers)
+response = requests.post(
+    service.scoring_uri, data=test_sample, headers=headers)
 print(response.status_code)
 print(response.elapsed)
 print(response.json())
@@ -664,18 +553,18 @@ from azureml.core.webservice import Webservice
 from azureml.core.model import Model
 
 # register new model
-new_model = Model.register(model_path = "outputs/sklearn_mnist_model.pkl",
-                       model_name = "sklearn_mnist",
-                       tags = {"key": "0.1"},
-                       description = "test",
-                       workspace = ws)
+new_model = Model.register(model_path="outputs/sklearn_mnist_model.pkl",
+                           model_name="sklearn_mnist",
+                           tags={"key": "0.1"},
+                           description="test",
+                           workspace=ws)
 
 service_name = 'myservice'
 # Retrieve existing service
-service = Webservice(name = service_name, workspace = ws)
+service = Webservice(name=service_name, workspace=ws)
 
 # Update to new model(s)
-service.update(models = [new_model])
+service.update(models=[new_model])
 print(service.state)
 print(service.get_logs())
 ```

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 4ba9840d745995fdf7b8b14889a0c021917f0ec3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 72f34d9711e1ba4658288bfdeb847632d32d0fcf
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278165"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478339"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>プレビュー: Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -145,7 +145,9 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 
 ## <a name="upgrade-a-node-pool"></a>ノード プールのアップグレード
 
-最初の手順でご自分の AKS クラスターを作成したとき、`--kubernetes-version` として *1.13.5* を指定しました。 *mynodepool* を Kubernetes *1.13.7* にアップグレードしましょう。 次の例のように、[az aks node pool upgrade][az-aks-nodepool-upgrade] コマンドを使用してノード プールをアップグレードします。
+最初の手順でご自分の AKS クラスターを作成したとき、`--kubernetes-version` として *1.13.5* を指定しました。 これにより、コントロール プレーンと初期ノード プールの両方の Kubernetes バージョンが設定されます。 コントロール プレーンとノード プールの Kubernetes バージョンをアップグレードするためのさまざまなコマンドがあります。 `az aks upgrade` コマンドは、`az aks nodepool upgrade` を使用して個々のノード プールをアップグレードする際に、コントロール プレーンをアップグレードするために使用します。
+
+*mynodepool* を Kubernetes *1.13.7* にアップグレードしましょう。 次の例のように、[az aks node pool upgrade][az-aks-nodepool-upgrade] コマンドを使用してノード プールをアップグレードします。
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -155,6 +157,9 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.7 \
     --no-wait
 ```
+
+> [!Tip]
+> コントロール プレーンを *1.13.7* にアップグレードするには、`az aks upgrade -k 1.13.7` を実行します。
 
 [az aks node pool list][az-aks-nodepool-list] コマンドを使用し、再度お使いのノード プールの状態を一覧表示します。 次の例では、*mynodepool* が *1.13.7* への *Upgrading* 状態であることを示しています。
 
@@ -170,6 +175,15 @@ VirtualMachineScaleSets  1        110        nodepool1   1.13.5                 
 ノードを指定したバージョンにアップグレードするには数分かかります。
 
 AKS クラスター内のノード プールは、すべて同じ Kubernetes のバージョンにアップグレードするのがベスト プラクティスです。 個々のノード プールをアップグレードできる機能によりローリング アップグレードの実行が可能になり、アプリケーションのアップタイムを維持するノード プール間のポッドをスケジュールできます。
+
+> [!NOTE]
+> Kubernetes は、標準の[セマンティック バージョニング](https://semver.org/)のバージョン管理スキームを使用します。 バージョン番号は *x.y.z* として表されます。ここで、*x* はメジャー バージョン、*y* はマイナー バージョン、*z* は修正プログラムのバージョンです。 たとえば、バージョン *1.12.6* の場合は、1 がメジャー バージョン、12 がマイナー バージョン、6 が修正プログラムのバージョンです。 コントロール プレーンの Kubernetes バージョンと初期ノード プールは、クラスター作成時に設定されます。 その他のすべてのノード プールには、クラスターに追加されるときに Kubernetes バージョンが設定されます。 Kubernetes バージョンは、ノード プール間、およびノード プールとコントロール プレーンの間では異なる場合がありますが、次の制限が適用されます。
+> 
+> * ノード プールのバージョンは、コントロール プレーンと同じメジャー バージョンである必要があります。
+> * ノード プールのバージョンは、コントロール プレーンの 1 つ前のメジャー バージョンである可能性があります。
+> * ノード プールのバージョンは、他の 2 つの制約に従っている限り、任意の修正プログラムのバージョンにすることができます。
+> 
+> コントロール プレーンの Kubernetes バージョンをアップグレードするには、`az aks upgrade` を使用します。 クラスターにノード プールが 1 つしかない場合は、`az aks upgrade` コマンドによってノード プールの Kubernetes バージョンもアップグレードされます。
 
 ## <a name="scale-a-node-pool"></a>ノード プールのスケーリング
 

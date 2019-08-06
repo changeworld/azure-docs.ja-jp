@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: e44e1980f25ede24ed31cf0d14bbe0e4157e4e45
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 840124a35ed4389699757e011aaf5d05a9400836
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305592"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385533"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
@@ -273,25 +273,26 @@ Azure Monitor ログと併せて、ロジック アプリの診断データを�
   **変数を初期化する**アクションの例をもう 1 つご覧に入れます。 この例では、入力がレコードではなく、配列であるアクションの入力から、追跡されたプロパティが追加されます。  
 
   ``` json
-  "actions": {
-    "type": "InitializeVariable",
-    "Initialize_variable": {
-    "inputs": {
-        "variables": [{
-              "name": "ConnectorName",
-               "type": "String",
-               "value": "SFTP-SSH"
-         }]                
+  "actions": { 
+   "Initialize_variable": { 
+      "inputs": { 
+         "variables": [{ 
+            "name": "ConnectorName", 
+            "type": "String", 
+            "value": "SFTP-SSH" 
+         }]
       },
-    "trackedProperties": {
-        "Track1": "@action().inputs.variables[0].value"
-    }
-    }
-  }      
+      "runAfter": {},
+      "trackedProperties": { 
+         "Track1": "@action().inputs.variables[0].value"
+      },
+      "type": "InitializeVariable"
+   } 
+  }
   ```
 
 ## <a name="next-steps"></a>次の手順
 
-* [ロジック アプリのデプロイとリリースの管理用にテンプレートを作成する](../logic-apps/logic-apps-create-deploy-template.md)
+* [ロジック アプリ デプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Enterprise Integration Pack を使用した B2B シナリオ](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [B2B メッセージを監視する](../logic-apps/logic-apps-monitor-b2b-message.md)

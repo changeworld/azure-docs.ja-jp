@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0ec64a5ae412fb4a1900021fefcb7d9112b1b019
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c681b58b01979b95e35ae57cefde38c56a787543
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255337"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68360252"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 
@@ -30,17 +30,16 @@ Windows には、CPU 占有率や、メモリ、ディスク、ネットワー�
 ![Application Insights で表示されるパフォーマンス カウンター](./media/performance-counters/performance-counters.png)
 
 ASP.NET/ASP.NET Core Web アプリケーションについて収集するように構成されている現在の既定カウンターは次のとおりです。
-
-         - % Process\\Processor Time
-         - % Process\\Processor Time Normalized
-         - Memory\\Available Bytes
-         - ASP.NET Requests/Sec
-         - .NET CLR Exceptions Thrown / sec
-         - ASP.NET ApplicationsRequest Execution Time
-         - Process\\Private Bytes
-         - Process\\IO Data Bytes/sec
-         - ASP.NET Applications\\Requests In Application Queue
-         - Processor(_Total)\\% Processor Time
+- % Process\\Processor Time
+- % Process\\Processor Time Normalized
+- Memory\\Available Bytes
+- ASP.NET Requests/Sec
+- .NET CLR Exceptions Thrown / sec
+- ASP.NET ApplicationsRequest Execution Time
+- Process\\Private Bytes
+- Process\\IO Data Bytes/sec
+- ASP.NET Applications\\Requests In Application Queue
+- Processor(_Total)\\% Processor Time
 
 ## <a name="add-counters"></a>カウンターを追加する
 
@@ -56,16 +55,15 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
    * 開発中にアプリに Application Insights を追加した場合は、プロジェクトで ApplicationInsights.config を編集して、サーバーに再デプロイします。
 3. パフォーマンス コレクター ディレクティブを編集します。
 
-```XML
+    ```XML
 
-    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
-      <Counters>
-        <Add PerformanceCounter="\Objects\Processes"/>
-        <Add PerformanceCounter="\Sales(photo)\# Items Sold" ReportAs="Photo sales"/>
-      </Counters>
-    </Add>
-
-```
+        <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
+          <Counters>
+            <Add PerformanceCounter="\Objects\Processes"/>
+            <Add PerformanceCounter="\Sales(photo)\# Items Sold" ReportAs="Photo sales"/>
+          </Counters>
+        </Add>
+    ```
 
 > [!NOTE]
 > ASP.NET Core アプリケーションには `ApplicationInsights.config` がないため、上記の方法は ASP.NET Core アプリケーションには無効です。
@@ -82,8 +80,7 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
 システム パフォーマンス カウンターを収集し、それらを Application Insights に送信する場合は、次のスニペットを使用できます。
 
 
-``` C#
-
+```csharp
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\Process([replace-with-application-process-name])\Page Faults/sec", "PageFaultsPerfSec")));
@@ -92,7 +89,7 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
 
 作成したカスタム メトリックの場合も同様です。
 
-``` C#
+```csharp
     var perfCollectorModule = new PerformanceCollectorModule();
     perfCollectorModule.Counters.Add(new PerformanceCounterCollectionRequest(
       @"\Sales(photo)\# Items Sold", "Photo sales"));

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 9f38502cc543f19855dbca32c4724a5651b1a3f2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318117"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565327"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -46,7 +46,7 @@ Twitter ハンドル: [@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 ご自分の質問がここに表示されていない場合はご連絡ください。答えを見つけるお手伝いをします。
 
-- この FAQ の末尾で質問を投稿してください。 この記事について、Azure Cache チームや他のコミュニティ メンバーと情報交換できます。
+- この FAQ の末尾で質問を投稿してください。 
 - さらに多くの人々と交流するには、[Azure DevTest Labs MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs)に質問を投稿してください。 Azure DevTest Labs チームや他のコミュニティ メンバーと情報交換できます。
 - 機能を要求する場合は、要求とアイデアを [Azure DevTest Labs のユーザーの声](https://feedback.azure.com/forums/320373-azure-devtest-labs)に送信してください。
 

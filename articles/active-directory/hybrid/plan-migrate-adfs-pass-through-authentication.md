@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27f5a7d8bb6dc347414d84d8cf536f1c2d7a9910
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ba63f9c04e062741eded9c39e44ba64281931387
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109353"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311347"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパススルー認証に移行する
 
@@ -77,8 +77,8 @@ Azure AD Connect を更新するには、「[Azure AD Connect:旧バージョン
    ![[追加のタスク] ページの [現在の構成を表示する] オプションのスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
 3. **[ソリューションのレビュー]** ページで、 **[Active Directory Federation Services (AD FS)]** までスクロールします。<br />
 
-   * このセクションに AD FS 構成が表示される場合は、AD FS が最初に Azure AD Connect を使用して構成されたと見なすことができます。 Azure AD Connect の **[ユーザー サインインの変更]** オプションを使用して、ドメインをフェデレーション ID からマネージド ID に変換できます。 このプロセスの詳細については、「**オプション 1:Azure AD Connect を使用してパススルー認証を構成する**」セクションを参照してください。
-   * AD FS が現在の設定の一覧に表示されていない場合は、PowerShell を使用して、手動でドメインをフェデレーション ID からマネージド ID に変換する必要があります。 このプロセスの詳細については、「**オプション 2:Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える**」セクションを参照してください。
+   * このセクションに AD FS 構成が表示される場合は、AD FS が最初に Azure AD Connect を使用して構成されたと見なすことができます。 Azure AD Connect の **[ユーザー サインインの変更]** オプションを使用して、ドメインをフェデレーション ID からマネージド ID に変換できます。 このプロセスの詳細については、「**オプション A: Azure AD Connect を使用してパススルー認証を構成する**」セクションを参照してください。
+   * AD FS が現在の設定の一覧に表示されていない場合は、PowerShell を使用して、ドメインをフェデレーション ID からマネージド ID に手動で変換する必要があります。 このプロセスの詳細については、次のセクションを参照してください。「**オプション B:Azure AD Connect と PowerShell を使用してフェデレーションからパススルー認証に切り替える**」セクションはスキップします。
 
 ### <a name="document-current-federation-settings"></a>現在のフェデレーション設定をドキュメント化する
 
@@ -140,7 +140,7 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 
 認証を行うユーザーが企業ネットワーク内に存在する場合、AD FS によって **InsideCorporateNetwork** 要求が発行されます。 その後、この要求を Azure AD に渡すことができます。 要求は、ユーザーのネットワークの場所に基づいて多要素認証をバイパスするために使用されます。 現在、AD FS でこの機能を利用できるかどうかを判断する方法については、「[フェデレーション ユーザー用の信頼できる IP](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud)」を参照してください。
 
-ドメインがパススルー認証に変換された後、**InsideCorporateNetwork** 要求は使用できません。 この機能の代わりに、[Azure AD の名前付きの場所](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations)を使用できます。
+ドメインがパススルー認証に変換された後、**InsideCorporateNetwork** 要求は使用できません。 この機能の代わりに、[Azure AD のネームド ロケーション](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations)を使用できます。
 
 ネームド ロケーションを構成した後は、ネットワークの **[すべての信頼できる場所]** または **[MFA の信頼できる IP]** の値を含めるか除外するために構成されたすべての条件付きアクセス ポリシーを、新しいネームド ロケーションを反映するように更新する必要があります。
 

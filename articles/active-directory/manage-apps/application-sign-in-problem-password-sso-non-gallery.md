@@ -1,5 +1,5 @@
 ---
-title: アクセス パネルでパスワードベースのシングル サインオン (SSO) を使用する | Microsoft Docs
+title: アクセス パネルでのパスワードベースのシングル サインオン (SSO) | Microsoft Docs
 description: パスワード シングル サインオン用に構成された Azure AD ギャラリー アプリケーションへのサインインに関連する問題をトラブルシューティングするガイダンスを提供する問題領域について説明します。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c020f3ab3ea7ed96b72d0490b717225d44c4fac1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 9ca192c28757df189e531aee0ba2d8da288ba7e6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277744"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381241"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>パスワード シングル サインオン用に構成された、Azure AD ギャラリー アプリケーションにサインインできない問題
 

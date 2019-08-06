@@ -1,19 +1,18 @@
 ---
 title: Azure VM のバックアップに関する Azure Backup のサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
-ms.author: raynew
-ms.openlocfilehash: 1be9d7ecc996063ee41319628cfc7c81f76bb8ca
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: dacurwin
+ms.openlocfilehash: 2556887008ecbe081168d3fc81fa07b45cda4bcb
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296776"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639602"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 [Azure Backup サービス](backup-overview.md)を使用すると、オンプレミスのコンピューターとワークロード、および Azure 仮想マシン (VM) をバックアップできます。 この記事では、Azure Backup を使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
@@ -44,7 +43,7 @@ Windows Azure VM の作成時にバックアップを有効にする | サポー
 Linux VM の作成時にバックアップを有効にする | サポート対象:<br/><br/> - Ubuntu Server: 18.04、17.10、17.04、16.04 (LTS)、14.04 (LTS)<br/><br/> - Red Hat: RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server: 11 SP4、12 SP2、12 SP3、15 <br/><br/> - Debian: 8、9<br/><br/> - CentOS: 6.9、7.3<br/><br/> - Oracle Linux:6.7、6.8、6.9、7.2、7.3
 シャットダウン状態/オフライン状態の VM をバックアップする | サポートされています。<br/><br/> スナップショットは、アプリ整合性ではなく、クラッシュ整合性のみです。
 マネージド ディスクへの移行後にディスクをバックアップする | サポートされています。<br/><br/> バックアップは引き続き機能します。 操作は必要ありません。
-リソース グループのロックを有効にした後、マネージド ディスクをバックアップする | サポートされていません。<br/><br/> Azure Backup は古いリソース ポイントを削除できないので、復元ポイントの上限に達するとバックアップが失敗するようになります。
+リソース グループのロックを有効にした後、マネージド ディスクをバックアップする | サポートされていません。<br/><br/> Azure Backup は古い復元ポイントを削除できないので、復元ポイントの上限に達するとバックアップが失敗するようになります。
 VM のバックアップ ポリシーを変更する | サポートされています。<br/><br/> VM は、新しいポリシーのスケジュールおよびリテンション期間の設定を使用してバックアップされます。 リテンション期間の設定が延長されている場合、既存の復旧ポイントがマークされ、保持されます。 短縮されている場合、既存の復旧ポイントは次のクリーンアップ ジョブで取り除かれ、最終的に削除されます。
 バックアップ ジョブを取り消す | スナップショットの処理中にサポートされます。<br/><br/> スナップショットがコンテナーに転送されているときはサポートされません。
 別のリージョンまたはサブスクリプションに VM をバックアップする |  サポートされていません。
@@ -144,8 +143,7 @@ VM がマネージド ディスクに移行されたときよりも前の復元�
 **Compute** | **サポート**
 --- | ---
 VM サイズ |   少なくとも 2 つの CPU コアと 1 GB の RAM を備えた任意の Azure VM サイズ。<br/><br/> [詳細情報。](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability#availability-sets)で VM をバックアップする | サポートされています。<br/><br/> VM をすばやく作成するオプションを使用して、可用性セットで VM を復元することはできません。 代わりに、VM を復元する場合は、ディスクを復元し、それを使用して VM をデプロイするか、ディスクを復元し、それを使用して既存のディスクを交換します。
-[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview)で VM をバックアップする |  サポートされていません。
+[可用性セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets)で VM をバックアップする | サポートされています。<br/><br/> VM をすばやく作成するオプションを使用して、可用性セットで VM を復元することはできません。 代わりに、VM を復元する場合は、ディスクを復元し、それを使用して VM をデプロイするか、ディスクを復元し、それを使用して既存のディスクを交換します。
 [Hybrid Use Benefit (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) を使用してデプロイ済みの VM をバックアップする | サポートされています。
 [スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)でデプロイ済みの VM をバックアップする |  サポートされていません。
 [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images) からデプロイ済みの VM をバックアップする<br/><br/> (Microsoft、サード パーティによって公開) |  サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。 VM としてバックアップされた Azure Marketplace VM は、購入情報が必要ですがディスクとしてのものに限られるため、復元しません。

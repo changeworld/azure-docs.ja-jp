@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: dd4690e27be38c3fef3053562ebee773698a70d7
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 2ec3b620138c4ae0487c29e38062c044a5210572
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154775"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314804"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -50,6 +50,7 @@ Application Insights SDK の参照がまだない場合:
 * Application Insights SDK をプロジェクトに追加します。
 
   * [ASP.NET プロジェクト](../../azure-monitor/app/asp-net.md)
+  * [ASP.NET Core プロジェクト](../../azure-monitor/app/asp-net-core.md)
   * [Java プロジェクト](../../azure-monitor/app/java-get-started.md)
   * [Node.js プロジェクト](../../azure-monitor/app/nodejs.md)
   * [各 Web ページの JavaScript](../../azure-monitor/app/javascript.md) 
@@ -85,7 +86,7 @@ Private Dim telemetry As New TelemetryClient
 private TelemetryClient telemetry = new TelemetryClient();
 ``` 
 
-*Node.js*
+*Node.JS*
 
 ```javascript
 var telemetry = applicationInsights.defaultClient;
@@ -143,7 +144,7 @@ telemetry.TrackEvent("WinGame")
 telemetry.trackEvent("WinGame");
 ```
 
-*Node.js*
+*Node.JS*
 
 ```javascript
 telemetry.trackEvent({name: "WinGame"});
@@ -286,7 +287,7 @@ telemetryClient.TrackMetric(sample);
 telemetry.trackMetric("queueLength", 42.0);
 ```
 
-*Node.js*
+*Node.JS*
 
  ```javascript
 telemetry.trackMetric({name: "queueLength", value: 42.0});
@@ -492,7 +493,7 @@ catch (ex)
 }
 ```
 
-*Node.js*
+*Node.JS*
 
 ```javascript
 try
@@ -563,7 +564,7 @@ telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 telemetry.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-*Node.js*
+*Node.JS*
 
 ```javascript
 telemetry.trackTrace({
@@ -730,7 +731,7 @@ telemetry.flush();
 Thread.sleep(5000);
 ```
 
-*Node.js*
+*Node.JS*
 
 ```javascript
 telemetry.flush();
@@ -833,7 +834,7 @@ var metrics = new Dictionary <string, double>
 telemetry.TrackEvent("WinGame", properties, metrics);
 ```
 
-*Node.js*
+*Node.JS*
 
 ```javascript
 // Set up some properties and metrics:
@@ -950,7 +951,7 @@ long startTime = System.currentTimeMillis();
 
 long endTime = System.currentTimeMillis();
 Map<String, Double> metrics = new HashMap<>();
-metrics.put("ProcessingTime", endTime-startTime);
+metrics.put("ProcessingTime", (double)endTime-startTime);
 
 // Setup some properties
 Map<String, String> properties = new HashMap<>();
@@ -999,7 +1000,7 @@ context.getProperties().put("Game", currentGame.Name);
 gameTelemetry.TrackEvent("WinGame");
 ```
 
-*Node.js*
+*Node.JS*
 
 ```javascript
 var gameTelemetry = new applicationInsights.TelemetryClient();
@@ -1046,7 +1047,7 @@ telemetry.getConfiguration().setTrackingDisabled(true);
 
 *選択されている標準のコレクターを無効にする*には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 内の該当する行を削除するか、コメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
-*Node.js*
+*Node.JS*
 
 ```javascript
 telemetry.config.disableAppInsights = true;
@@ -1082,7 +1083,7 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 ```
 
-*Node.js*
+*Node.JS*
 
 Node.js の場合は、`setInternalLogging` 経由で内部ログを有効にし、`maxBatchSize` を 0 に設定することによって開発者モードを有効にすることができます。これにより、テレメトリは、収集されるとすぐに送信されます。
 

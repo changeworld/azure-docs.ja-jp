@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9f854e1771eec1d02fd14e040510688bf33c59c8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9465c1991418c7ebef8c4eed825affc7b1d93492
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442427"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693338"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して LinkedIn アカウントでのサインインを設定する
 
@@ -27,7 +27,7 @@ ms.locfileid: "68442427"
 
 - 「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
 - LinkedIn アカウント - まだお持ちでない場合は、[アカウントを作成](https://www.linkedin.com/start/join)します。
-- Linkedin ページ - 次のセクションで作成する LinkedIn アプリケーションに関連付ける [LinkedIn ページ](https://www.linkedin.com/company/setup/new/)が必要です。
+- Linkedin ページ - 次のセクションで作成する LinkedIn アプリケーションに関連付ける [LinkedIn ページ](https://www.linkedin.com/help/linkedin/answer/710/creating-a-linkedin-company-page)が必要です。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 

@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 25434360bcc0155411451dbac065e0b7fad9c3bf
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c1ea306d8a6b5c1876ac6a9288820e1592dbfda6
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617480"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498527"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service 向けの Windows Java アプリを構成する
 
@@ -35,7 +35,7 @@ Azure App Service を使用すると、Java 開発者は、完全に管理され
 Tomcat の `server.xml` または他の構成ファイルを編集するには、最初にポータルで Tomcat のメジャー バージョンを確認してメモします。
 
 1. `env` コマンドを実行して、ご使用のバージョンの Tomcat ホーム ディレクトリを見つけます。 `AZURE_TOMCAT`で始まり、ご使用のメジャー バージョンに一致する環境変数を検索します。 たとえば、`AZURE_TOMCAT85_HOME` は Tomcat 8.5 を指しています。
-1. ご使用のバージョンの Tomcat ホーム ディレクトリを特定したら、構成ディレクトリを `D:\home` にコピーします。 たとえば、`AZURE_TOMCAT85_HOME` の値が `D:\Program Files (x86)\apache-tomcat-8.5.37` の場合、コピーした構成ディレクトリの完全なパスは `D:\home\tomcat\conf` になります。
+1. ご使用のバージョンの Tomcat ホーム ディレクトリを特定したら、構成ディレクトリを `D:\home` にコピーします。 たとえば、`AZURE_TOMCAT85_HOME` の値が `D:\Program Files (x86)\apache-tomcat-8.5.37` の場合、コピーされたディレクトリの新しいパスは `D:\home\apache-tomcat-8.5.37` になります。
 
 最後に、お客様のアプリ サービスを再起動します。 デプロイメントの場所は、以前と同様に `D:\home\site\wwwroot\webapps` になります。
 

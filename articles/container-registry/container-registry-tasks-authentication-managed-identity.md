@@ -3,16 +3,17 @@ title: Azure Container Registry タスクでマネージド ID を使用する
 description: Azure リソースのマネージド ID を割り当てることで、他のプライベート コンテナー レジストリなどの Azure リソースに対するアクセスを Azure Container Registry タスクに提供します。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 5b60727472a06aaac8ccd3dce8609461e8972311
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 46351af375ab4c6e59a3ddfba3c05c1e517fab0d
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148039"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311534"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>ACR タスクで Azure マネージド ID を使用する 
 

@@ -6,14 +6,14 @@ author: bwren
 manager: carmonm
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 06/25/2019
 ms.author: bwren
-ms.openlocfilehash: a948b80f6524339f0908a2fb19c4a83d70b3b140
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: e67dcb1236fd5ef113835dfe99de444fc2594481
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296858"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405747"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics のログ クエリのスコープと時間範囲
 [Azure portal の [Log Analytics]](get-started-portal.md) で[ログ クエリ](log-query-overview.md)を実行するとき、クエリによって評価されるデータのセットは、選択したスコープと時間範囲によって異なります。 この記事では、スコープと時間範囲、および要件に応じてそれぞれを設定する方法について説明します。 さまざまな種類のスコープの動作についても説明します。
@@ -32,8 +32,8 @@ ms.locfileid: "67296858"
 |:---|:---|:---|:---|
 | Log Analytics ワークスペース | Log Analytics ワークスペース内のすべてのレコード。 | **[Azure Monitor]** メニューまたは **[Log Analytics ワークスペース]** メニューの **[ログ]** を選択します。  | スコープを他のリソースの種類に変更できます。 |
 | Application Insights アプリケーション | Application Insights アプリケーション内のすべてのレコード。 | Application Insights の **[概要]** ページから **[分析]** を選択します。 | スコープを別の Application Insights アプリケーションにのみ変更できます。 |
-| リソース グループ | リソース グループ内のすべてのリソースによって作成されるレコード。 複数の Log Analytics ワークスペースからのデータを含めることができます。 | リソース グループ メニューから **[ログ]** を選択します。 | スコープは変更できません。|
-| サブスクリプション | サブスクリプション内のすべてのリソースによって作成されたレコード。 複数の Log Analytics ワークスペースからのデータを含めることができます。 | サブスクリプション メニューから **[ログ]** を選択します。   | スコープは変更できません。 |
+| Resource group | リソース グループ内のすべてのリソースによって作成されるレコード。 複数の Log Analytics ワークスペースからのデータを含めることができます。 | リソース グループ メニューから **[ログ]** を選択します。 | スコープは変更できません。|
+| Subscription | サブスクリプション内のすべてのリソースによって作成されたレコード。 複数の Log Analytics ワークスペースからのデータを含めることができます。 | サブスクリプション メニューから **[ログ]** を選択します。   | スコープは変更できません。 |
 | その他の Azure リソース | リソースによって作成されるレコード。 複数の Log Analytics ワークスペースからのデータを含めることができます。  | リソース メニューから **[ログ]** を選択します。<br>または<br>**[Azure Monitor]** メニューから **[ログ]** を選択し、新しいスコープを選択します。 | スコープを同じリソースの種類にのみ変更できます。 |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>リソースをスコープにしたときの制限
@@ -49,6 +49,19 @@ ms.locfileid: "67296858"
 - [app](app-expression.md)
 - [workspace](workspace-expression.md)
  
+
+## <a name="query-limits"></a>クエリの制限
+複数の Log Analytics ワークスペースにデータを書き込む Azure リソースのビジネス要件がある場合があります。 ワークスペースはリソースと同じリージョンに存在する必要はなく、1 つのワークスペースでさまざまなリージョンのリソースからデータを収集できます。  
+
+スコープをリソースまたはリソース セットに設定する機能は、分散データを自動的に 1 つのクエリに統合できるため、Log Analytics の非常に強力な機能です。 しかし、複数の Azure リージョンにわたるワークスペースからデータを取得する必要があると、パフォーマンスが大幅に低下する可能性があります。
+
+Log Analytics は、特定の数のリージョンが使用されているときに警告またはエラーを発行して、複数のリージョンのワークスペースにまたがるクエリから過剰なオーバーヘッドを防ぐのに役立ちます。 スコープに 5 つ以上のリージョンのワークスペースが含まれている場合、クエリで警告が表示されます。 それでも実行されますが、完了するまでに時間がかかることがあります。
+
+![クエリ警告](media/scope/query-warning.png)
+
+スコープに 20 以上のリージョンのワークスペースが含まれている場合、クエリの実行はブロックされます。 この場合、ワークスペース リージョンの数を減らし、クエリを再実行するように求められます。 ドロップダウンには、クエリのスコープ内のすべてのリージョンが表示されます。クエリの実行を再試行する前に、リージョンの数を減らす必要があります。
+
+![クエリ失敗](media/scope/query-failed.png)
 
 
 ## <a name="time-range"></a>時間範囲
@@ -79,5 +92,5 @@ Log Analytics ウィンドウの上部にあるタイム ピッカーから選�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure portal 内での Log Analytics の使用に関するチュートリアル](get-started-portal.md)を参照します。
-- [クエリの作成に関するチュートリアル](get-started-queries.md)を参照します。
+- [Azure portal 内での Log Analytics の使用に関するチュートリアル](get-started-portal.md)を進めます。
+- [クエリの作成に関するチュートリアル](get-started-queries.md)を進めます。

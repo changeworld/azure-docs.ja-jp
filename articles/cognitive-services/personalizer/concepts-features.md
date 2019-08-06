@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: edjez
-ms.openlocfilehash: c317cbec02b82743c233bf36f743cea808c30c69
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 2dab7447e6051d4559f7f3985579cac9376ac7be
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253583"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423288"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -34,8 +34,8 @@ Personalizer では、アクションとコンテキストに対して送信で�
 * あるフィーチャーを一部のアクションに対して送信できても、他のアクションに対しては、それが与えられていなければ送信できません。 たとえば、テレビ シリーズには映画に与えられていない属性が与えられていることがあります。
 * 一部のフィーチャーは利用できる時間帯が限られていることがあります。 たとえば、モバイル アプリケーションの場合、Web ページより提供する情報が多いことがあります。 
 * 時間の経過と共に、コンテキストやアクションに関するフィーチャーを追加したり、削除したりすることができます。 Personalizer では、利用可能な情報から学習が継続されます。
-* コンテキストに対してはフィーチャーが少なくとも 1 つ存在する必要があります。 Personalizer では、空のコンテキストはサポートされていません。 毎回、決まったコンテキストばかり送信する場合、Personalizer は、アクション内のフィーチャーに関してのみ、ランキングのアクションを選択します。 
-* Personalizer は常に、誰に対しても最適に機能するアクションを選択するように努めます。
+* コンテキストに対してはフィーチャーが少なくとも 1 つ存在する必要があります。 Personalizer では、空のコンテキストはサポートされていません。 毎回、決まったコンテキストばかり送信する場合、Personalizer は、アクション内のフィーチャーに関してのみ、ランキングのアクションを選択します。
+* カテゴリの特徴の場合、指定可能な値を定義する必要はなく、数値の範囲を事前定義する必要はありません。
 
 ## <a name="supported-feature-types"></a>サポートされているフィーチャーの種類
 

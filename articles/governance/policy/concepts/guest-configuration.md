@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c79a4907e277c337509bd362653cfb100c4bd39c
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 74e36d944450e1ce2c61481b2cb7e345860212af
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137436"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326881"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成を理解します。
 
@@ -69,7 +69,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
 
-|Publisher|Name|バージョン|
+|Publisher|EnableAdfsAuthentication|バージョン|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -118,6 +118,10 @@ Azure Policy は、ゲスト構成リソースプロバイダーの **compliance
 > **DeployIfNotExists** がない場合、**Audit** ポリシーは状態として"0 of 0" のリソースを示します。
 
 割り当てで使用するための定義をグループ化するためのイニシアティブには、ゲストの構成のすべての組み込みポリシーが含まれます。 *[プレビュー]: Linux および Windows の仮想マシン内での監査のパスワード セキュリティ設定*という名前の組み込みイニシアティブには 18 のポリシーが含まれています。 Windows 用に **DeployIfNotExists** と **Audit** の 6 つのペアがあり、Linux 用に 3 つのペアがあります。 いずれの場合も、定義内のロジックは、[ポリシー規則](definition-structure.md#policy-rule)の定義に基づいてターゲット オペレーティング システムのみが評価されることを検証します。
+
+## <a name="multiple-assignments"></a>複数の割り当て
+
+ポリシー割り当てが別のパラメーターを使用する場合でも、ゲスト構成ポリシーは現在、仮想マシンごとに 1 度、同じゲスト割り当てを割り当てることのみをサポートしています。
 
 ## <a name="client-log-files"></a>クライアントのログ ファイル
 

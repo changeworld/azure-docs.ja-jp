@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C で使用できるアプリケーションの種類 | Microsoft Docs
+title: Azure Active Directory B2C で使用できるアプリケーションの種類
 description: Azure Active Directory B2C で使用できるアプリケーションの種類について説明します。
 services: active-directory-b2c
 author: mmacy
@@ -7,26 +7,26 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9ae2894f9f442bca1e6029b7e7d8e07824abf7fb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 09cdc2fb5dba152e467164fd757225c7a9183264
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051729"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68369406"
 ---
-# <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Azure Active Directory B2C で使用できるアプリケーションの種類
+# <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C で使用できるアプリケーションの種類
 
-Azure Active Directory (Azure AD) B2C は、さまざまな最新アプリケーション アーキテクチャの認証をサポートします。 すべての認証は、業界標準のプロトコルである [OAuth 2.0](active-directory-b2c-reference-protocols.md) または [OpenID Connect](active-directory-b2c-reference-protocols.md) に基づいています。 このドキュメントでは、利用する言語やプラットフォームを問わず、作成できるアプリの種類について説明します。 また、アプリケーションの構築を始める前にシナリオの概要を理解することもできます。
+Azure Active Directory (Azure AD) B2C は、さまざまな最新アプリケーション アーキテクチャの認証をサポートします。 すべての認証は、業界標準のプロトコルである [OAuth 2.0](active-directory-b2c-reference-protocols.md) または [OpenID Connect](active-directory-b2c-reference-protocols.md) に基づいています。 この記事では、選択する言語またはプラットフォームには関係なく、構築できるアプリケーションの種類について説明します。 また、アプリケーションの構築を始める前にシナリオの概要を理解することもできます。
 
 Azure AD B2C を使用しているすべてのアプリケーションは、[Azure portal](https://portal.azure.com/) を使用して [Azure AD B2C テナント](active-directory-b2c-get-started.md)に登録する必要があります。 アプリケーション登録プロセスでは、次のような値が収集されて割り当てられます。
 
 * アプリケーションを一意に識別する **アプリケーション ID**。
 * 応答をアプリケーションにリダイレクトして戻すために使用できる**応答 URL**。
 
-Azure AD B2C に送信される各要求で**ユーザー フロー**が指定されます。これは、Azure AD の動作を制御するポリシーです。 これらのエンドポイントを使用して、高度にカスタマイズ可能なユーザー エクスペリエンスのセットを作成することもできます。 サインアップ、サインイン、プロファイル編集のポリシーなど、一般的なポリシーの設定に役立つユーザー フローのセットが提供されています。 ただし、独自のカスタム ポリシーを作成することもできます。 これらのポリシーを詳しく理解していない場合は、先に進む前に Azure AD B2C の「 [拡張可能ポリシー フレームワーク](active-directory-b2c-reference-policies.md) 」を参照する必要があります。
+Azure AD B2C に送信される各要求では、Azure AD B2C の動作を制御する**ユーザー フロー** (組み込みのポリシー) または**カスタム ポリシー**が指定されます。 どちらのポリシーの種類でも、高度にカスタマイズ可能な一連のユーザー エクスペリエンスを作成できます。
 
 すべてのアプリケーションによるやり取りは、次のような大まかなパターンに従って行われます。
 
@@ -43,7 +43,7 @@ Azure AD B2C に送信される各要求で**ユーザー フロー**が指定�
 
 サーバーでホストされ、ブラウザーを通じてアクセスされる Web アプリケーション (.NET、PHP、Java、Ruby、Python、Node.js など) に対して、Azure AD B2C は、すべてのユーザー エクスペリエンスで [OpenID Connect](active-directory-b2c-reference-protocols.md) をサポートします。 Azure AD B2C の OpenID Connect の実装では、Web アプリケーションは、Azure AD に認証要求を発行してユーザー エクスペリエンスを開始します。 要求の結果は `id_token`です。 このセキュリティ トークンは、ユーザーの ID を表します。 また、要求の形式でユーザーに関する情報も提供します。
 
-```
+```json
 // Partial raw id_token
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
@@ -106,19 +106,19 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 
 ## <a name="mobile-and-native-applications"></a>モバイルおよびネイティブ アプリケーション
 
-モバイル アプリケーションやデスクトップ アプリケーションなどのデバイスにインストールされているアプリケーションは、多くの場合、ユーザーの代わりにバックエンド サービスや Web API にアクセスする必要があります。 カスタマイズされた ID 管理エクスペリエンスをネイティブ アプリケーションに追加し、Azure AD B2C と [OAuth 2.0 の承認コード フロー](active-directory-b2c-reference-oauth-code.md)を使用して、バックエンド サービスを安全に呼び出すことができます。  
+モバイル アプリケーションやデスクトップ アプリケーションなどのデバイスにインストールされているアプリケーションは、多くの場合、ユーザーの代わりにバックエンド サービスや Web API にアクセスする必要があります。 カスタマイズされた ID 管理エクスペリエンスをネイティブ アプリケーションに追加し、Azure AD B2C と [OAuth 2.0 の承認コード フロー](active-directory-b2c-reference-oauth-code.md)を使用して、バックエンド サービスを安全に呼び出すことができます。
 
 このフローでは、アプリケーションが[ポリシー](active-directory-b2c-reference-policies.md)を実行し、ユーザーがポリシーを完了した後、Azure AD から `authorization_code` を受け取ります。 `authorization_code` は、現在サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリケーションのアクセス許可を表します。 これにより、アプリケーションはバックグラウンドで `authorization_code` を `access_token` および `refresh_token` と交換できます。  アプリケーションは `access_token` を使用し、HTTP 要求でバックエンド Web API への認証を行うことができます。 また、古い `access_token` の有効期限が切れたときは、`refresh_token` を使用して新しいものを取得できます。
 
 ## <a name="current-limitations"></a>現時点での制限事項
 
-### <a name="application-not-supported"></a>サポートされないアプリケーション 
+### <a name="unsupported-application-types"></a>サポートされていないアプリケーションの種類
 
 #### <a name="daemonsserver-side-applications"></a>デーモン/サーバー側アプリケーション
 
 長時間実行されるプロセスを含んだアプリケーションや、ユーザーの介入なしで動作するアプリケーションも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。 これらのアプリケーションは、OAuth 2.0 クライアント資格情報フローを使用することで、(ユーザーの委任 ID ではなく) アプリケーションの ID を使って認証を行い、トークンを取得することができます。 クライアント資格情報フローは、On-Behalf-Of フローと同じではなく、On-Behalf-Of フローは、サーバー対サーバー認証には使用しないようにする必要があります。
 
-クライアント資格情報フローは現在 Azure AD B2C によってサポートされていませんが、Azure AD を使用してクライアント資格情報フローを設定することができます。 Azure AD B2C テナントは、Azure AD のエンタープライズ テナントと同じいくつかの機能を持っています。  クライアント資格情報フローは、Azure AD B2C テナントの Azure AD の機能を使用してサポートされています。 
+クライアント資格情報フローは現在 Azure AD B2C によってサポートされていませんが、Azure AD を使用してクライアント資格情報フローを設定することができます。 Azure AD B2C テナントは、Azure AD のエンタープライズ テナントと同じいくつかの機能を持っています。  クライアント資格情報フローは、Azure AD B2C テナントの Azure AD の機能を使用してサポートされています。
 
 クライアント資格情報フローを設定するには、「[Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)」を参照してください。 認証に成功した結果として、書式設定されたトークンを受信し、「[Azure AD トークン リファレンス](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)」で説明されているように Azure AD でそれを使用することができます。
 
@@ -139,3 +139,6 @@ Azure portal の外部で Azure AD B2C アプリケーションを編集する�
 
 アプリケーションを削除するには、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/)に移動し、そこでアプリケーションを削除します。 アプリケーションを表示するためには、そのアプリケーションの所有者である必要があります (テナントの管理者であるだけでは不十分です)。
 
+## <a name="next-steps"></a>次の手順
+
+「[Azure Active Directory B2C のユーザー フロー](active-directory-b2c-reference-policies.md)」によって提供される組み込みのポリシーの詳細について学習します。

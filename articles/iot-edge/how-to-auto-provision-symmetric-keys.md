@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91162271bf36e1d68e087a60723497e7fc261ec
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275739"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414595"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -165,8 +165,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 デバイスのアーキテクチャに応じた指示に従います。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。
 
-* [Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)
-* [Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)
+[Linux に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-linux.md)
 
 対称キーのプロビジョニングに関する構成ファイル内のセクションは次のようになります。
 
@@ -188,7 +187,7 @@ provisioning:
 
 指示に従って、派生デバイスキー を生成したデバイスに IoT Edge ランタイムをインストールします。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。
 
-[IoT Edge をインストールして自動的にプロビジョニングする](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+[Windows に IoT Edge をインストールして自動的にプロビジョニングする](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 

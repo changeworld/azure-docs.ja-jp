@@ -1,7 +1,7 @@
 ---
-title: Docker Compose コンテナーのレシピ
+title: Docker Compose を使用して複数のコンテナーをデプロイする
 titleSuffix: Azure Cognitive Services
-description: 複数の Cognitive Services コンテナーをデプロイする方法について説明します。 この手順では、Docker Compose を使用して複数の Docker コンテナー イメージを調整する方法について説明します。
+description: 複数の Cognitive Services コンテナーをデプロイする方法について説明します。 この記事では、Docker Compose を使用して複数の Docker コンテナー イメージをオーケストレーションする方法について説明します。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,35 +10,35 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 8afb7e866bc2a5fefe28a71653c4a2a87fdc7a5b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 95ec80af88e0b89f61bebed08f4b96a09947f401
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445791"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311549"
 ---
-# <a name="use-multiple-containers-in-a-private-network-with-docker-compose"></a>Docker Compose でプライベート ネットワークに複数のコンテナーを使用する
+# <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose を使用して複数のコンテナーをデプロイする
 
-複数の Cognitive Services コンテナーをデプロイする方法について説明します。 この手順では、Docker Compose を使用して複数の Docker コンテナー イメージを調整する方法について説明します。
+この記事では、複数の Azure Cognitive Services コンテナーをデプロイする方法について説明します。 具体的には、Docker Compose を使用して複数の Docker コンテナー イメージをオーケストレーションする方法について説明します。
 
-> [Docker Compose](https://docs.docker.com/compose/) は、マルチコンテナー Docker アプリケーションを定義して実行するためのツールです。 Compose では、YAML ファイルを使用してアプリケーションのサービスを構成します。 次に、1 つのコマンドを使用して、構成からすべてのサービスを作成して開始します。
+> [Docker Compose](https://docs.docker.com/compose/) は、マルチコンテナー Docker アプリケーションを定義して実行するためのツールです。 Compose では、YAML ファイルを使用してアプリケーションのサービスを構成します。 次に、1 つのコマンドを実行することによって、構成からすべてのサービスを作成して開始します。
 
-状況によっては、1 つのホスト コンピューター上で複数のコンテナー イメージを調整する方法が適している場合があります。 この記事では、テキスト認識サービスと Form Recognizer サービスの両方を取り上げます。
+1 台のホスト コンピューター上で複数のコンテナー イメージをオーケストレーションすると便利な場合があります。 この記事では、テキスト認識コンテナーと Form Recognizer コンテナーの両方を取り上げます。
 
 ## <a name="prerequisites"></a>前提条件
 
 この手順には、ローカルでインストールして実行する必要があるいくつかのツールが必要です。
 
-* Azure サブスクリプションを使用してください。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-* [Docker エンジン](https://www.docker.com/products/docker-engine)。Docker CLI がコンソール ウィンドウで動作することを確認します。
-* 適切な価格レベルの Azure リソース。 すべての価格レベルでこのコンテナーを使用するわけではありません。
+* Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+* [Docker エンジン](https://www.docker.com/products/docker-engine)。 Docker CLI がコンソール ウィンドウで動作することを確認します。
+* 適切な価格レベルの Azure リソース。 このコンテナーでは次の価格レベルのみが有効です。
   * F0 または Standard 価格レベルのみの **Computer Vision** リソース。
   * F0 または Standard 価格レベルのみの **Form Recognizer** リソース。
   * S0 価格レベルの **Cognitive Services** リソース。
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
-コンテナーへのアクセスを要求するには、[Cognitive Services Speech コンテナー要求フォーム](https://aka.ms/speechcontainerspreview/)に記入して送信します。 
+[Cognitive Services Speech コンテナー要求フォーム](https://aka.ms/speechcontainerspreview/)に記入して送信します。 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "67445791"
 
 ## <a name="docker-compose-file"></a>Docker Compose ファイル
 
-YAML ファイルには、デプロイされるすべてのサービスが定義されています。 これらのサービスは `DockerFile` または既存のコンテナー イメージのいずれかに依存しています。ここでは 2 つのプレビュー イメージを使用します。 次の YAML ファイルをコピーして貼り付け、*docker-compose.yaml* という名前で保存します。 次の _docker-compose.yml_ ファイルに適切な _apikey_、_billing_、および _endpoint URI_ の値を指定します。
+YAML ファイルには、デプロイされるすべてのサービスが定義されています。 これらのサービスは、`DockerFile` または既存のコンテナー イメージのどちらかに依存します。 この例では、2 つのプレビュー イメージを使用します。 次の YAML ファイルをコピーして貼り付け、*docker-compose.yaml* という名前で保存します。 ファイルで適切な **apikey**、**billing**、および **EndpointUri** の値を指定します。
 
 ```yaml
 version: '3.7'
@@ -61,10 +61,10 @@ services:
        FormRecognizer__ComputerVisionEndpointUri: # < Your form recognizer URI >
     volumes:
        - type: bind
-         source: e:\publicpreview\output
+         source: E:\publicpreview\output
          target: /output
        - type: bind
-         source: e:\publicpreview\input
+         source: E:\publicpreview\input
          target: /input
     ports:
       - "5010:5000"
@@ -80,22 +80,22 @@ services:
 ```
 
 > [!IMPORTANT]
-> ホスト マシン上に、`volumes` ノード以下に指定されているディレクトリを作成します。 これが必要な理由は、ボリューム バインディングを使用してイメージをマウントする前にディレクトリが存在する必要があるためです。
+> ホスト マシン上に、**volumes** ノード以下に指定されているディレクトリを作成します。 ボリューム バインドを使用してイメージをマウントする前にディレクトリが存在している必要があるので、この方法が必要です。
 
 ## <a name="start-the-configured-docker-compose-services"></a>構成された Docker Compose サービスを開始する
 
-Docker Compose ファイルを使用すると、定義されたすべてのサービスのライフサイクル (サービスの開始/停止と再構築、サービス状態の表示、ストリーミングのログ記録) を管理できます。 プロジェクト ディレクトリ (*docker-compose.yaml* ファイルがある場所) からコマンドライン インターフェイスを開きます。
+Docker Compose ファイルを使用すると、定義されたサービスのライフ サイクルのすべての段階 (サービスの開始、停止、再構築、サービス状態の表示、ログのストリーミング) を管理できます。 プロジェクト ディレクトリ (docker-compose.yaml ファイルがある場所) からコマンドライン インターフェイスを開きます。
 
 > [!NOTE]
-> エラーを回避するために、ホスト マシンと **Docker エンジン**がドライブを適切に共有していることを確認します。 たとえば、*e:\publicpreview* が *docker-compose.yaml* のディレクトリとして使用されている場合、"*E ドライブ*" を Docker と共有します。
+> エラーを避けるために、ホスト マシンと Docker エンジンがドライブを適切に共有していることを確認します。 たとえば、E:\publicpreview が docker-compose.yaml ファイルのディレクトリとして使用されている場合、ドライブ E を Docker と共有します。
 
-コマンドライン インターフェイスから次のコマンドを実行して、*docker-compose.yaml* に定義されているすべてのサービスを開始 (または再開) します。
+コマンドライン インターフェイスから次のコマンドを実行して、docker-compose.yaml ファイルに定義されているすべてのサービスを開始 (または再開) します。
 
 ```console
 docker-compose up
 ```
 
-この構成で `docker-compose up` コマンドを初めて実行すると、**Docker** では `services` ノード以下に構成されたイメージがプルされます。つまり、ダウンロード/マウントされます。
+この構成を使用して **docker-compose up** コマンドを初めて実行するとき、Docker は **services** ノード下に構成されているイメージを取得してから、それらをダウンロードしてマウントします。
 
 ```console
 Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
@@ -126,7 +126,7 @@ c56511552241: Waiting
 e91d2aa0f1ad: Downloading [==============================================>    ]  162.2MB/176.1MB
 ```
 
-イメージがダウンロードされ、次にイメージ サービスが開始されます。
+イメージがダウンロードされると、イメージ サービスが開始されます。
 
 ```console
 Starting docker_ocr_1   ... done
@@ -172,15 +172,15 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-the-recognize-text-container"></a>テキスト認識コンテナーをテストする
 
-ホスト コンピューター上でブラウザーを開き、*docker-compose.yaml* から指定されたポートを使用して `localhost` に移動します (たとえば、`http://localhost:5021/swagger/index.html`)。 API のテスト機能を使用して、テキスト認識エンドポイントをテストできます。
+ホスト コンピューター上でブラウザーを開き、 http://localhost:5021/swagger/index.html のように、docker-compose.yaml ファイルで指定されたポートを使用して **localhost** にアクセスします。 API の "テスト" 機能を使用して、テキスト認識エンドポイントをテストできます。
 
-![テキスト認識 Swagger](media/recognize-text-swagger-page.png)
+![テキスト認識コンテナー](media/recognize-text-swagger-page.png)
 
 ### <a name="test-the-form-recognizer-container"></a>Form Recognizer コンテナーをテストする
 
-ホスト コンピューター上でブラウザーを開き、*docker-compose.yaml* から指定されたポートを使用して `localhost` に移動します (たとえば、`http://localhost:5010/swagger/index.html`)。 API のテスト機能を使用して、Form Recognizer エンドポイントをテストできます。
+ホスト コンピューター上でブラウザーを開き、 http://localhost:5010/swagger/index.html のように、docker-compose.yaml ファイルで指定されたポートを使用して **localhost** にアクセスします。 API の "テスト" 機能を使用して、Form Recognizer エンドポイントをテストできます。
 
-![Form Recognizer Swagger](media/form-recognizer-swagger-page.png)
+![Form Recognizer コンテナー](media/form-recognizer-swagger-page.png)
 
 ## <a name="next-steps"></a>次の手順
 

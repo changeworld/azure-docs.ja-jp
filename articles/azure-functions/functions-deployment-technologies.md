@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 47d8bf33fd686942326db3b1cc606978bf47a1bb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7f931a72eab534bc2856e9e545b684d2b8ae7a60
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594390"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444039"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
@@ -23,8 +23,13 @@ ms.locfileid: "67594390"
 
 ## <a name="deployment-technology-availability"></a>デプロイ テクノロジの利用可否
 
-> [!IMPORTANT]
-> Azure Functions は、クロス プラットフォームのローカル開発と、Windows と Linux でのホスティングをサポートしています。 現時点では、次の 3 つのホスティング プランを利用できます。[従量課金](functions-scale.md#consumption-plan)、[Premium](functions-scale.md#premium-plan)、[Dedicated (Azure App Service)](functions-scale.md#app-service-plan) です。 各プランの動作は異なります。 各種の Azure Functions に対してすべてのデプロイ テクノロジが使用できるわけではありません。
+Azure Functions は、クロス プラットフォームのローカル開発と、Windows と Linux でのホスティングをサポートしています。 現時点では、次の 3 つのホスティング プランを利用できます。
+
++ [従量課金プラン](functions-scale.md#consumption-plan)
++ [Premium](functions-scale.md#premium-plan)
++ [専用 (App Service) プラン](functions-scale.md#app-service-plan)
+
+各プランの動作は異なります。 各種の Azure Functions に対してすべてのデプロイ テクノロジが使用できるわけではありません。 次の表は、オペレーティング システムとホスティング プランの各組み合わせでサポートされるデプロイ テクノロジを示しています。
 
 | デプロイ テクノロジ | Windows Consumption | Windows Premium (プレビュー) | Windows Dedicated  | Linux 従量課金 (プレビュー) | Linux Dedicated |
 |-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
@@ -39,7 +44,7 @@ ms.locfileid: "67594390"
 | ポータルでの編集 |✔|✔|✔| |✔<sup>2</sup>|
 
 <sup>1</sup> [トリガーの手動同期](#trigger-syncing)が必要なデプロイ テクノロジ。  
-<sup>2</sup> ポータルでの編集は、Dedicated プランを使用する Linux 上の Functions の HTTP トリガーとタイマー トリガーに対してのみ使用できます。
+<sup>2</sup> ポータルでの編集は、Premium プランと専用プランを使用する Linux 上の Functions の HTTP トリガーとタイマー トリガーに対してのみ使用できます。
 
 ## <a name="key-concepts"></a>主要な概念
 
@@ -75,13 +80,13 @@ ZIP デプロイを使用して、関数アプリが含まれる ZIP ファイ�
 >
 >ZIP デプロイを使用してデプロイする場合は、[Run From Package](run-functions-from-deployment-package.md) モードで実行されるようにアプリを設定できます。 Run From Package モードを設定するには、`WEBSITE_RUN_FROM_PACKAGE` アプリケーションの設定値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。
 
->__いつ使用するか:__ ZIP デプロイは、Windows で実行される Azure Functions と Linux で実行される Azure Functions (Dedicated プラン) に対して推奨されるデプロイ テクノロジです。
+>__いつ使用するか:__ Zip デプロイは、Premium プランまたは専用プランの Windows および Linux で実行される Functions にお勧めするデプロイ テクノロジです。
 
 ### <a name="docker-container"></a>Docker コンテナー
 
 関数アプリが含まれる Linux コンテナー イメージをデプロイできます。
 
->__使用方法:__ Dedicated プランで Linux 関数アプリを作成し、実行元のコンテナー イメージを指定します。 次の 2 つの方法で行います。
+>__使用方法:__ Premium プランまたは専用プランで Linux 関数アプリを作成し、実行元のコンテナー イメージを指定します。 次の 2 つの方法で行います。
 >
 >* Azure portal を使用して、Azure App Service プランで Linux 関数アプリを作成します。 **[発行]** で、 **[Docker イメージ]** を選択し、コンテナーを構成します。 イメージがホストされている場所を入力します。
 >* Azure CLI を使用して、App Service プランで Linux 関数アプリを作成します。 作成方法については、「[カスタム イメージを使用して Linux で関数を作成する](functions-create-function-linux-custom-image.md#create-and-deploy-the-custom-image)」をご覧ください。
@@ -104,7 +109,7 @@ Web デプロイは、Azure の Windows で実行される関数アプリを含�
 
 ソース管理を使用して、関数アプリを Git リポジトリに接続します。 そのリポジトリ内のコードへの更新が、デプロイをトリガーします。 詳細については、「[Kudu Wiki](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments)」をご覧ください。
 
->__使用方法:__ Azure Functions ポータルでデプロイ センターを使用して、ソース管理からのパブリッシュを設定します。 詳細については、「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」を参照してください。
+>__使用方法:__ ポータルの Functions 領域でデプロイ センターを使用して、ソース管理からのパブリッシュを設定します。 詳細については、「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」を参照してください。
 
 >__いつ使用するか:__ 関数アプリで共同作業を行うチームにとっては、ソース管理を使用することがベスト プラクティスです。 ソース管理は、より高度なデプロイ パイプラインを可能にする優れたデプロイ オプションです。
 
@@ -138,26 +143,26 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 >__使用方法:__ Azure portal で関数を編集できるようにするために、[ポータルで関数を作成](functions-create-first-azure-function.md)しておく必要があります。 単一の信頼できるソースを保持するため、他のデプロイ方法を使用して、関数を読み取り専用にし、ポータルで編集できないようにします。 Azure portal でファイルを編集できる状態に戻すには、編集モードを `Read/Write` に手動で戻し、デプロイ関連のアプリケーション設定 (`WEBSITE_RUN_FROM_PACKAGE` など) をすべて削除します。 
 
->__いつ使用するか:__ Azure Functions の使用を開始するには、ポータルが適しています。 より集中的な開発作業には、クライアント ツールを使用することをお勧めします。
+>__いつ使用するか:__ Azure Functions の使用を開始するには、ポータルが適しています。 より集中的な開発作業には、次のクライアント ツールのいずれかを使用することをお勧めします。
 >
->* [VS Code を使用して開始する](functions-create-first-function-vs-code.md)
->* [Azure Functions Core Tools を使用して開始する](functions-run-local.md)
->* [Visual Studio を使用して開始する](functions-create-your-first-function-visual-studio.md)
+>* [Visual Studio Code](functions-create-first-function-vs-code.md)
+>* [Azure Functions Core Tools (コマンド ライン)](functions-run-local.md)
+>* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
 次の表に、ポータルでの編集をサポートしているオペレーティング システムと言語を示します。
 
-| | Windows Consumption | Windows Premium (プレビュー) | Windows Dedicated | Linux Consumption (プレビュー) | Linux Dedicated |
-|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
+| | Windows Consumption | Windows Premium (プレビュー) | Windows Dedicated | Linux 従量課金 (プレビュー) | Linux Premium (プレビュー)| Linux Dedicated |
+|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
-| C# スクリプト |✔|✔|✔| |✔<sup>*</sup>|
-| F# | | | | | |
-| Java | | | | | |
-| JavaScript (Node.js)JavaScript (Node.js) |✔|✔|✔| |✔<sup>*</sup>|
-| Python (プレビュー) | | | | | |
-| PowerShell (プレビュー) |✔|✔|✔| | |
-| TypeScript (Node.js) | | | | | |
+| C# スクリプト |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
+| F# | | | | | | |
+| Java | | | | | | |
+| JavaScript (Node.js)JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
+| Python (プレビュー) | | | | | | |
+| PowerShell (プレビュー) |✔|✔|✔| | | |
+| TypeScript (Node.js) | | | | | | |
 
-<sup>*</sup> ポータルでの編集は、Dedicated プランを使用する Linux 上の Functions の HTTP トリガーとタイマー トリガーに対してのみ使用できます。
+<sup>*</sup> ポータルでの編集は、Premium プランと専用プランを使用する Linux 上の Functions の HTTP トリガーとタイマー トリガーに対してのみ使用できます。
 
 ## <a name="deployment-slots"></a>デプロイ スロット
 
@@ -176,6 +181,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 | Windows Premium (プレビュー) | プレビュー |
 | Windows Dedicated | 一般公開 |
 | Linux Consumption | サポートされていません |
+| Linux Premium (プレビュー) | プレビュー |
 | Linux Dedicated | 一般公開 |
 
 ## <a name="next-steps"></a>次の手順

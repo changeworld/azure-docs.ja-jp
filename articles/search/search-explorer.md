@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 392699182859a090c13304f63d28a78b95a65ec7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87e5ec82299ef9ddc8bc8756196bb2ace3d1f6f3
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65024019"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414227"
 ---
 # <a name="search-explorer-for-querying-data-in-azure-search"></a>Azure Search でデータを問い合わせるための Search エクスプローラー 
 
@@ -85,7 +85,7 @@ ms.locfileid: "65024019"
 Azure Search は、検索順位に基づいて上位 50 の一致を返します。 一致するドキュメントの次のセットを取得するには、「 **$top=100,&$skip=50**」を追加して、結果セットを 100 個のドキュメントに増やし (既定値は 50、最大は 1,000)、最初の 50 個のドキュメントをスキップします。 順位付けされた結果を取得するには、クエリ語句や式など、検索条件を指定する必要があることを思い出してください。 取得する検索結果が低位になるほど検索スコアが減少することに注目してください。
 
    ```Input
-   search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100,&$skip=50
+   search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100&$skip=50
    ```
 
    **結果**
@@ -94,13 +94,25 @@ Azure Search は、検索順位に基づいて上位 50 の一致を返します
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>フィルター式 (より大きい、より小さい、等しい)
 
-フリー テキスト検索ではなく正確な条件を指定したい場合は **$filter** パラメーターを使用します。 この例では、`search=seattle condo&$filter=beds gt 3&$count=true` を使用して 3 より大きいベッドルームを検索します。
+フリー テキスト検索ではなく正確な条件を指定したい場合は **$filter** パラメーターを使用します。 この例では、3 より大きいベッドルームを検索します。
+
+   ```Input
+   search=seattle condo&$filter=beds gt 3&$count=true
+   ```
+   
+   **結果**
 
    ![フィルター式](./media/search-explorer/search-explorer-example-filter.png "条件によるフィルター")
 
 ## <a name="order-by-expressions"></a>orderby 式
 
-**$orderby** を追加して、検索スコアに加えて別のフィールドを基準に結果を並べ替えます。 これをテストするために使用できる式の例は、`search=seattle condo&$select=listingId,beds,price&$filter=beds gt 3&$count=true&$orderby=price asc` です。
+**$orderby** を追加して、検索スコアに加えて別のフィールドを基準に結果を並べ替えます。 これをテストするために使用できる式の例:
+
+   ```Input
+   search=seattle condo&$select=listingId,beds,price&$filter=beds gt 3&$count=true&$orderby=price asc
+   ```
+   
+   **結果**
 
    ![orderby 式](./media/search-explorer/search-explorer-example-ordery.png "並べ替え順序の変更")
 

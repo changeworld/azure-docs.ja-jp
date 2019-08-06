@@ -10,14 +10,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 manager: craigg
-ms.date: 03/13/2019
+ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 2ca2e4e98f56f7df5e81217bcda00179f05ff69e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c9b481e63ecf7a92af679c0f32d4b3ab71486021
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070351"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360798"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -293,13 +293,13 @@ Managed Instance はファイルにアクセスできないため、暗号化プ
   - SQL Server Analysis Services はサポートされていません。
 - 通知は部分的にサポートされています。
 - 電子メール通知がサポートされていますが、データベース メール プロファイルを構成する必要があります。 SQL Server エージェントで使用できるデータベース メール プロファイルは 1 つだけであり、`AzureManagedInstance_dbmail_profile` という名前である必要があります。 
-  - Pager はサポートされていません。 
+  - Pager はサポートされていません。
   - NetSend はサポートされていません。
   - アラートはまだサポートされていません。
-  - プロキシはサポートされていません。 
+  - プロキシはサポートされていません。
 - EventLog はサポートされていません。
 
-次の機能は現在サポートされていませんが、今後有効になります。
+現在、次の SQL エージェント機能はサポートされていません。
 
 - プロキシ
 - アイドル状態の CPU でのジョブのスケジューリング
@@ -398,7 +398,13 @@ HDFS または Azure BLOB ストレージ内のファイルを参照する外部
 
 ### <a name="replication"></a>レプリケーション
 
-マネージド インスタンスのパブリック プレビューで、レプリケーションを使用できます。 レプリケーションについては、「[SQL Server のレプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)」をご覧ください。
+[トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)は Managed Instance のパブリック プレビューで使用できますが、制約がいくつかあります。
+- すべての種類のレプリケーション参加者 (パブリッシャー、ディストリビューター、プル サブスクライバー、プッシュ サブスクライバー) を Managed Instance に配置できますが、パブリッシャーとディストリビューターを異なるインスタンスに配置することはできません。
+- トランザクション、スナップショット、および双方向のレプリケーションの種類がサポートされています。 マージ レプリケーション、ピア ツー ピア レプリケーション、および更新可能サブスクリプションはサポートされていません。
+- Managed Instance は、最新バージョンの SQL Server と通信できます。 サポートされているバージョンについては、[こちら](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)をご覧ください。
+- トランザクション レプリケーションには、いくつかの[追加のネットワーク要件](sql-database-managed-instance-transactional-replication.md#requirements)があります。
+
+レプリケーションの構成について詳しくは、[レプリケーションに関するチュートリアル](replication-with-sql-database-managed-instance.md)をご覧ください。
 
 ### <a name="restore-statement"></a>RESTORE ステートメント 
 
@@ -468,6 +474,7 @@ HDFS または Azure BLOB ストレージ内のファイルを参照する外部
 
 ### <a name="vnet"></a>VNet
 - VNet はリソース モデルを使用してデプロイできます。VNet のクラシック モードはサポートされていません。
+- マネージド インスタンスを作成した後は、マネージド インスタンスまたは VNet を別のリソース グループまたはサブスクリプションに移動することはできません。
 - VNet が[グローバル ピアリング](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)を使用して接続されている場合、App Service Environment、ロジック アプリ、Managed Instance (geo レプリケーション、トランザクション レプリケーション、またはリンクされたサーバー経由で使用) など、一部のサービスでは、さまざまなリージョンにある Managed Instance にアクセスできません。 ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
 
 ## <a name="Changes"></a>動作の変更
@@ -486,7 +493,7 @@ HDFS または Azure BLOB ストレージ内のファイルを参照する外部
 
 ### <a name="tempdb-size"></a>TEMPDB のサイズ
 
-`tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズはインスタンス ストレージ サイズで制限されます。 `tempdb` は常に 12 個のデータ ファイルに分割されます。 ファイルあたりのこの最大サイズは変更できず、`tempdb` に新しいファイルを追加することはできません。 一部のクエリで `tempdb` のサイズがコアあたり 24 GB を超える必要がある場合は、エラーが返されます。 `tempdb` は、インスタンスが開始またはフェールオーバーしたときに、常に空のデータベースとして再作成され、`tempdb` で行われたどの変更も保持されません。 
+`tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズはインスタンス ストレージ サイズで制限されます。 `tempdb` ログ ファイルのサイズは、General Purpose レベルでも Business Critical レベルでも 120 GB に制限されています。 `tempdb` は常に 12 個のデータ ファイルに分割されます。 ファイルあたりのこの最大サイズは変更できず、`tempdb` に新しいファイルを追加することはできません。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログが生成される場合は、一部のクエリでエラーが返されます。 `tempdb` は、インスタンスが開始またはフェールオーバーしたときに、常に空のデータベースとして再作成され、`tempdb` で行われたどの変更も保持されません。 
 
 ### <a name="cant-restore-contained-database"></a>包含データベースを復元できない
 
@@ -547,7 +554,7 @@ Managed Instance では、エラー ログに詳細情報が書き込まれ、�
 
 `TransactionScope` クラス (.NET) は、同じトランザクション スコープ下では、同一インスタンス内にある 2 つのデータベースに対して 2 つのクエリが送信された場合に機能しません。
 
-```C#
+```csharp
 using (var scope = new TransactionScope())
 {
     using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
@@ -585,6 +592,11 @@ Managed Instance に配置された CLR モジュールと、現在のインス�
 サービス管理 Transparent Data Encryption (TDE) を使用して暗号化されたデータベースでは、`BACKUP DATABASE ... WITH COPY_ONLY` は実行できません。 サービス管理 TDE では、バックアップを内部の TDE のキーで暗号化するように強制します。 キーはエクスポートできないので、バックアップを復元することはできません。
 
 **対処法:** 自動バックアップとポイントインタイム リストアを使用するか、代わりに[顧客管理 (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) を使用します。 また、データベースで暗号化を無効にすることができます。
+
+### <a name="point-in-time-restore-follows-time-by-the-time-zone-set-on-the-source-instance"></a>ポイントインタイム リストアは、ソース インスタンスで設定されているタイム ゾーンによる時刻に従う
+
+現在、ポイントインタイム リストアでは、復元する時刻は、UTC ではなく、ソース インスタンスのタイム ゾーンに従って解釈されます。
+詳細については、[Managed Instance のタイムゾーンの既知の問題](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone#known-issues)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,5 +1,5 @@
 ---
-title: 暗黙的フローを使用するシングルページ サインイン - Azure Active Directory B2C | Microsoft Docs
+title: 暗黙的フローを使用するシングルページ サインイン - Azure Active Directory B2C
 description: Azure Active Directory B2C で OAuth 2.0 暗黙的フローを使用して、シングルページ サインインを追加する方法を説明します。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 07/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1d415686e4d8a10043df59aa6bf58a5ed4be0149
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 1196f3b186abcd914c409db06b52654f82f4158b
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154026"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377326"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン
 
@@ -25,13 +25,13 @@ ms.locfileid: "67154026"
 - 多くの承認サーバーや ID プロバイダーでは、クロス オリジン リソース共有 (CORS) 要求をサポートしていません。
 - アプリからブラウザーにフル ページがリダイレクトされると、ユーザー エクスペリエンスに悪影響が及ぶ場合があります。
 
-これらのアプリケーションをサポートするために、Azure Active Directory B2C (Azure AD B2C) は OAuth 2.0 暗黙的フローを使用します。 OAuth 2.0 承認の暗黙的許可フローは、[OAuth 2.0 仕様のセクション 4.2](https://tools.ietf.org/html/rfc6749) で説明されています。 暗黙的フローでは、アプリは Azure Active Directory (Azure AD) 承認エンドポイントから直接トークンを受け取るため、サーバー間の交換は実行されません。 すべての認証ロジックとセッション処理は、追加のページ リダイレクトなしに、JavaScript クライアント内ですべて行うことができます。
+これらのアプリケーションをサポートするために、Azure Active Directory B2C (Azure AD B2C) は OAuth 2.0 暗黙的フローを使用します。 OAuth 2.0 承認の暗黙的許可フローは、[OAuth 2.0 仕様のセクション 4.2](https://tools.ietf.org/html/rfc6749) で説明されています。 暗黙的フローでは、アプリは Azure Active Directory (Azure AD) 承認エンドポイントから直接トークンを受け取るため、サーバー間の交換は実行されません。 すべての認証ロジックとセッション処理は、ページ リダイレクトまたはポップアップ ボックスを使って、JavaScript クライアント内ですべて行われます。
 
 Azure AD B2C によって、標準の OAuth 2.0 暗黙的フローが、単純な認証と承認以上まで拡張されます。 Azure AD B2C には、[ポリシー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ポリシー パラメーターと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理のユーザー フローなどのポリシーをアプリに追加できます。 この記事の HTTP 要求例では、**fabrikamb2c.onmicrosoft.com** を例として使用します。 実際のテナントがあり、既にユーザー フローを作成済みである場合は、`fabrikamb2c` を実際のテナントの名前に置き換えてください。
 
 暗黙的サインイン フローは、次の図のようになっています。 各手順については、この記事の後の方で詳しく説明します。
 
-![OpenID Connect のスイムレーン](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
+![OpenID Connect の暗黙的なフローを示すスイムレーン スタイルの図](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
 ## <a name="send-authentication-requests"></a>認証要求を送信する
 
@@ -173,10 +173,9 @@ Web アプリで必要なのはユーザー フローを実行することだけ
 
 ユーザーをシングル ページ アプリにサインインさせたので、Azure AD によってセキュリティ保護されている Web API を呼び出すためのアクセス トークンを取得できます。 応答の種類として `token` を使用して既にトークンを取得済みの場合でも、このメソッドを使用してその他のリソースのトークンを取得できます。再度のサインインのためにユーザーをリダイレクトする必要はありません。
 
-一般的な Web アプリ フローでは、`/token` エンドポイントに対して要求を行います。 ただし、エンドポイントは CORS 要求をサポートしていないため、AJAX 呼び出しではトークンの取得や更新を行えません。 代わりに、非表示の HTML iframe 要素で暗黙的フローを使用して、他の Web API 用の新しいトークンを取得できます。 次に例を示します (読みやすいように改行してあります)。
+一般的な Web アプリ フローでは、`/token` エンドポイントに対して要求を行います。 ただし、エンドポイントでは CORS 要求はサポートされていないため、AJAX 呼び出しを行って更新トークンを取得することはできません。 代わりに、非表示の HTML iframe 要素で暗黙的フローを使用して、他の Web API 用の新しいトークンを取得できます。 次に例を示します (読みやすいように改行してあります)。
 
 ```
-
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=token
@@ -186,8 +185,6 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
 &prompt=none
-&domain_hint=organizations
-&login_hint=myuser@mycompany.com
 &p=b2c_1_sign_in
 ```
 
@@ -201,8 +198,8 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | state |推奨 |要求に含まれ、トークンの応答として返される値。  使用したい任意の内容の文字列を指定できます。  通常、クロスサイト リクエスト フォージェリ攻撃を防ぐために、ランダムに生成された一意の値が使用されます。  この状態は、認証要求の前にアプリ内のユーザーの状態に関する情報をエンコードする目的にも使用されます。 たとえば、ユーザーがいるページまたはビューです。 |
 | nonce |必須 |要求に追加する (アプリによって生成された) 値。この値が、最終的な ID トークンに要求として追加されます。  アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値は、要求の送信元を特定する、ランダム化された一意の文字列です。 |
 | prompt |必須 |非表示の iframe のトークンを更新および取得するには、`prompt=none` を使用して、iframe がサインイン ページに停滞せずにすぐに応答できるようにします。 |
-| login_hint |必須 |非表示の iframe のトークンを更新および取得するには、ある時点でそのユーザーが持っている可能性がある複数のセッションを区別できるように、このヒントにそのユーザーのユーザー名を含めます。 `preferred_username` 要求を使用すると、以前のサインインからユーザー名を抽出できます。 |
-| domain_hint |必須 |`consumers` または `organizations` を指定できます。  非表示の iframe のトークンを更新および取得するには、要求に `domain_hint` 値を含めます。  使用する値を決定するには、以前のサインイン時の ID　トークンから `tid` 要求を抽出します。  `tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用します。  それ以外の場合は、 `domain_hint=organizations`を指定します。 |
+| login_hint |必須 |非表示の iframe のトークンを更新および取得するには、ある時点でそのユーザーが持っている可能性がある複数のセッションを区別できるように、このヒントにそのユーザーのユーザー名を含めます。 `preferred_username` 要求を使って、以前のサインインからユーザー名を抽出できます (`preferred_username` 要求を受け取るには、`profile` スコープが必要です)。 |
+| domain_hint |必須 |`consumers` または `organizations` を指定できます。  非表示の iframe のトークンを更新および取得するには、要求に `domain_hint` 値を含めます。  使用する値を決定するには、以前のサインイン時の ID トークンから `tid` 要求を抽出します (`tid` 要求を受け取るには、`profile` スコープが必要です)。 `tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用します。  それ以外の場合は、 `domain_hint=organizations`を指定します。 |
 
 `prompt=none` パラメーターを設定することによって、この要求はすぐに成功または失敗のいずれかになり、アプリケーションに戻ります。  成功すると、`response_mode` パラメーターで指定された方法を使用して、指定されたリダイレクト URI でアプリに応答が送信されます。
 
@@ -262,6 +259,17 @@ p=b2c_1_sign_in
 | post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C はユーザーに一般的なメッセージを表示します。 |
 
 > [!NOTE]
-> ユーザーを `end_session_endpoint` にリダイレクトすると、ユーザーの Azure AD B2C でのシングル サインオン状態の一部が消去されます。 ただしそれによって、そのユーザーが自分のソーシャル ID プロバイダー セッションからサインアウトされることはありません。 ユーザーがその後のサインインで同じ ID プロバイダー を選択した場合は、そのユーザーは資格情報を入力しなくても再認証されます。 ユーザーが Azure AD B2C アプリケーションからサインアウトする場合、たとえば、Facebook アカウントから完全なサインアウトするのを望んでいるとは限りません。 ただしローカル アカウントについては、そのユーザーのセッションは適切に終了されます。
-> 
+> ユーザーを `end_session_endpoint` にリダイレクトすると、ユーザーの Azure AD B2C でのシングル サインオン状態の一部が消去されます。 ただしそれによって、そのユーザーが自分のソーシャル ID プロバイダー セッションからサインアウトされることはありません。 ユーザーがその後のサインインで同じ ID プロバイダーを選択した場合は、そのユーザーは資格情報を入力しなくても再認証されます。 ユーザーが Azure AD B2C アプリケーションからサインアウトする場合、たとえば、Facebook アカウントから完全なサインアウトするのを望んでいるとは限りません。 ただしローカル アカウントについては、そのユーザーのセッションは適切に終了されます。
+>
 
+## <a name="next-steps"></a>次の手順
+
+### <a name="code-sample-hellojs-with-azure-ad-b2c"></a>コード サンプル: hello.js で Azure AD B2C を使用する
+
+[hello.js 上に構築するシングルページ アプリケーションで Azure AD B2C を使用する][github-hello-js-example] (GitHub)
+
+GitHub のこのサンプルは、[hello js][github-hello-js] 上に構築し、ポップアップ形式の認証を使用する簡単な Web アプリケーションで Azure AD B2C を使い始めことができるようにすることを目的としています。
+
+<!-- Links - EXTERNAL -->
+[github-hello-js-example]: https://github.com/azure-ad-b2c/apps/tree/master/spa/javascript-hellojs-singlepageapp-popup
+[github-hello-js]: https://github.com/MrSwitch/hello.js

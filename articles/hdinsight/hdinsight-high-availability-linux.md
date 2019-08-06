@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6cb72730ef3dbef81e2b2c9bc1c5cfd3bbd88b65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1828efb410849677e859d341e4e16e4f5d4ca681
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704931"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405994"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight における Apache Hadoop クラスターの可用性と信頼性
 
@@ -94,7 +94,7 @@ Ambari REST API の使用方法の詳細については、[Apache Ambari REST AP
 
 * **SSH トンネル**: インターネットに公開されていないいずれかのノードでホストされている Web サービスにアクセスするには、SSH トンネルを使用する必要があります。 詳細については、[HDInsight での SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するドキュメントを参照してください。
 
-* **Azure Virtual Network**: HDInsight クラスターが Azure Virtual Network に含まれる場合、同じ Virtual Network 上にあるリソースから、クラスター内のすべてのノードに直接アクセスできます。 詳細については、[Azure Virtual Network を使用した HDInsight の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するドキュメントを参照してください。
+* **Azure Virtual Network**: HDInsight クラスターが Azure Virtual Network に含まれる場合、同じ Virtual Network 上にあるリソースから、クラスター内のすべてのノードに直接アクセスできます。 詳細については、[HDInsight 用の仮想ネットワークの計画](hdinsight-plan-virtual-network-deployment.md)に関するドキュメントを参照してください。
 
 ## <a name="how-to-check-on-a-service-status"></a>サービスの状態を確認する方法
 
@@ -247,7 +247,7 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 
 ノードのサイズを選択できるのは、クラスターの作成中のみです。 「[HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できるまざまな VM サイズの一覧を確認できます。
 
-クラスターを作成するときに、ノードのサイズを指定できます。 次の情報では、[Azure Portal][preview-portal]、[Azure PowerShell モジュール Az][azure-powershell]、[Azure CLI][azure-cli] を使用してサイズを指定する方法について説明します。
+クラスターを作成するときに、ノードのサイズを指定できます。 次の情報は、[Azure portal][preview-portal], [Azure PowerShell module Az][azure-powershell] と [Azure CLI][azure-cli] を使用してサイズを指定する方法に関するガイダンスを提供します。
 
 * **Azure ポータル**:クラスターを作成するときに、クラスターによって使用されるノードのサイズを設定できます。
 

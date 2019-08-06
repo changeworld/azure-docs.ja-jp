@@ -1,34 +1,34 @@
 ---
-title: Azure portal で Cognitive Services アカウントを作成する
+title: Azure portal で Cognitive Services リソースを作成する
 titlesuffix: Azure Cognitive Services
-description: Azure portal で Cognitive Services APIs アカウントを作成する方法。
+description: Azure portal でリソースを作成し、サブスクライブすることによって、Azure Cognitive Services の使用を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: b857ee0395c447c8699b8f6a812853528812a7bd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e9616f3014288e4b2580f474c49c646928db5a08
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445852"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68334230"
 ---
-# <a name="create-a-cognitive-services-account-using-the-azure-portal"></a>Azure portal を使用して Cognitive Services アカウントを作成する
+# <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Azure portal を使用して Cognitive Services リソースを作成する
 
-このクイックスタートでは、Azure Cognitive Services にサインアップし、単一サービスまたはマルチサービス サブスクリプションを持つアカウントを作成する方法を学習します。 これらのサービスは Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表され、Azure Cognitive Services APIs の中の 1 つまたは多くの API に接続できます。
+このクイック スタートでは、Azure portal を使用した Azure Cognitive Services の基本操作について説明します。 Cognitive Services は、ご利用の Azure サブスクリプションに作成した Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表されます。 リソースの作成後、自動的に生成されたキーとエンドポイントを使用して、自分のアプリケーションの認証を行います。 
 
 ## <a name="prerequisites"></a>前提条件
 
-* 有効な Azure サブスクリプション。 無料で[アカウントを作成](https://azure.microsoft.com/free/)できます。
+* 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>新しい Azure Cognitive Services リソースを作成する
 
-リソースを作成する前に、Azure リソース グループを用意する必要があります。 すべての Cognitive Services アカウント (およびそれに関連付けられている Azure リソース) は、Azure リソース グループに属している必要があります。 アカウントを作成するときに、新しいリソース グループを作成するか、既存のものを使用するかを選択できます。 この記事では、新しいリソース グループを作成する方法を示します。
+Cognitive Services リソースを作成する前に、リソースを格納するための Azure リソース グループを用意する必要があります。 新しいリソースを作成するときに、新しいリソース グループを作成するか、既存のものを使用するかを選択できます。 この記事では、新しいリソース グループを作成する方法を示します。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[+リソースの作成]** をクリックします。
 
@@ -36,7 +36,7 @@ ms.locfileid: "67445852"
 
 2. 使用できる Cognitive Services は次の方法で確認できます。
     * 検索バーを使用して、サブスクライブするサービスの名前を入力します。
-        * マルチサービス サブスクリプションのリソースを作成するには、検索バーに「**Cognitive Services**」と入力し、**Cognitive Services** リソースを選択します。
+        * マルチサービス リソースを作成するには、検索バーに「**Cognitive Services**」と入力し、**Cognitive Services** リソースを選択します。
 
         ![Cognitive Services を検索する](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "67445852"
 
     |    |    |
     |--|--|
-    | **Name** | Cognitive Sservices リソースのわかりやすい名前。 わかりやすい名前を使用することをお勧します (*MyCognitiveServicesAccount* など)。 |
+    | **Name** | Cognitive Sservices リソースのわかりやすい名前。 たとえば、*MyCognitiveServicesAccount* のようにします。 |
     | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
     | **Location** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
     | **[価格レベル]** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
@@ -60,7 +60,7 @@ ms.locfileid: "67445852"
     ![リソース作成画面](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
 
-## <a name="get-the-keys-for-your-subscription"></a>サブスクリプションのキーを取得する
+## <a name="get-the-keys-for-your-resource"></a>リソースのキーを取得する
 
 リソースを作成した後、Azure ダッシュ ボードにピン留めした場合は、そこからアクセスできます。 それ以外の場合は、 **[リソース グループ]** 内で検索できます。 リソースを選択した後は、 **[リソース管理]** の **[キー]** を選択してキーを取得できます。
 
@@ -68,7 +68,7 @@ ms.locfileid: "67445852"
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
+Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのグループに含まれている他のリソースも削除されます。
 
 Azure Portal を使用してリソース グループを削除するには:
 

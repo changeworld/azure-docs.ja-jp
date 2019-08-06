@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory アプリケーション プロキシ (プレビュー) を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン | Microsoft Docs
+title: Azure AD アプリ プロキシを使用したオンプレミスのアプリに対する SAML シングル サインオン | Microsoft Docs
 description: SAML 認証でセキュリティ保護されているオンプレミスのアプリケーションにシングル サインオンを提供する方法を説明します。 アプリケーション プロキシを使用したオンプレミス アプリへのリモート アクセスを提供します。
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f4ab79a9fc9b8fec26cce98d9a878b6fa2a0c3
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: ff5152a2d65ea3921f0fef7f3a020bcea80d1769
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853745"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421257"
 ---
-# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>アプリケーション プロキシ (プレビュー) を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
+# <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>アプリケーション プロキシ を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 
 SAML 認証でセキュリティ保護されているオンプレミスのアプリケーションに対してシングル サインオン (SSO) を提供し、アプリケーション プロキシを通じてこれらのアプリケーションへのリモート アクセスを提供できます。 SAML によるシングル サインオンでは、ユーザーの Azure Active Directory (Azure AD) アカウントを使用して、Azure AD がアプリケーションに対する認証を行います。 Azure AD は、接続プロトコルを通してアプリケーションにシングル サインオンの情報を伝達します。 また、SAML 要求で定義するルールに基づいて、ユーザーを特定のアプリケーション ロールにマップできます。 SAML SSO に加えてアプリケーション プロキシを有効にすると、ユーザーには、アプリケーションへの外部アクセスと、シームレスな SSO エクスペリエンスが提供されます。
 
@@ -49,7 +49,7 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 5. シングル サインオンの方法として、 **[SAML]** を選択します。
 
-6. まず、企業ネットワーク上で動作するように SAML SSO を設定します。 **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の見出しに移動し、その **[編集]** アイコン (鉛筆の形) を選択します。 [基本的な SAML 構成の入力](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on)に関するページに記載されている手順に従って、アプリケーションに対する SAML ベースの認証を構成します。
+6. まず、企業ネットワーク上で動作するように SAML SSO を設定します。 **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の見出しに移動し、その **[編集]** アイコン (鉛筆の形) を選択します。 [基本的な SAML 構成の入力](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration)に関するページに記載されている手順に従って、アプリケーションに対する SAML ベースの認証を構成します。
 
 7. アプリケーションに少なくとも 1 人のユーザーを追加し、テスト アカウントにアプリケーションへのアクセス権があることを確認します。 企業ネットワークに接続しているときに、テスト アカウントを使用して、アプリケーションへのシングル サインオンがあるかどうかを確認します。 
 

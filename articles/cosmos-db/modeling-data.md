@@ -5,15 +5,15 @@ description: NoSQL データベースでのデータのモデル化、リレー�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: 47d519523c7ffd1c0b6329d6b4eb12b052466b35
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: da119b2858c6b6c7bbc99b40d340f79964e0fae3
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657374"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467890"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB のデータ モデリング
 
@@ -417,3 +417,5 @@ Azure Cosmos DB でよく使われる方法は、すべてを非正規化して�
 Azure Cosmos DB の詳細については、サービスの[ドキュメント](https://azure.microsoft.com/documentation/services/cosmos-db/)のページを参照してください。
 
 複数のパーティション間でデータをシャーディングする方法については、[Azure Cosmos DB でのデータのパーティション分割](sql-api-partition-data.md)に関するページを参照してください。
+
+現実の例を使用して Azure Cosmos DB でデータをモデル化し、パーティション分割する方法については、「[現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法](how-to-model-partition-example.md)」を参照してください。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 22be5509a93d0713b8113ba17debfda3cf576006
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 9a42028891f0a8677127221c8ed4cff73a22103a
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508962"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498535"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事で説明するポリシー式の構文は C# 7 です。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。
@@ -156,7 +156,7 @@ ms.locfileid: "67508962"
 |System.Security.Cryptography.SymmetricAlgorithm|All|
 |System.Security.Cryptography.X509Certificates.PublicKey|All|
 |System.Security.Cryptography.X509Certificates.RSACertificateExtensions|All|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|EnableAdfsAuthentication|
 |System.Security.Cryptography.X509Certificates.X509Certificate|All|
 |System.Security.Cryptography.X509Certificates.X509Certificate2|All|
 |System.Security.Cryptography.X509Certificates.X509ContentType|All|
@@ -224,7 +224,7 @@ ms.locfileid: "67508962"
 |<a id="ref-context-user"></a>context.User|Email: 文字列<br /><br /> FirstName: 文字列<br /><br /> Groups:IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id: 文字列<br /><br /> Identities:IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: 文字列<br /><br /> Note: 文字列<br /><br /> RegistrationDate:DateTime|
 |<a id="ref-iapi"></a>IApi|Id: 文字列<br /><br /> Name: 文字列<br /><br /> Path: 文字列<br /><br /> Protocols:IEnumerable<string\><br /><br /> ServiceUrl:[IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames:[ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|Id: 文字列<br /><br /> Name: 文字列|
-|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):T の値: string、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` メソッドと `context.Response.Body.As<T>` メソッドは、指定した型 `T` で要求および応答のメッセージ本文を読み取るのに使用します。 メソッドでは既定で元のメッセージ本文のストリームが使用され、制御が戻ると使用不可になります。 本文ストリームのコピーでメソッドを実行することでこれを回避するには、`preserveContent` パラメーターを `true` に設定します。 例については、[こちら](api-management-transformation-policies.md#SetBody)を参照してください。|
+|<a id="ref-imessagebody"></a>IMessageBody|As<T\>(preserveContent: bool = false):T の値: string、byte[]、JObject、JToken、JArray、XNode、XElement、XDocument<br /><br /> `context.Request.Body.As<T>` メソッドと `context.Response.Body.As<T>` メソッドは、指定した型 `T` で要求および応答のメッセージ本文を読み取るのに使用します。 メソッドでは既定で元のメッセージ本文のストリームが使用され、制御が戻ると使用不可になります。 本文ストリームのコピーでメソッドを実行することでこれを回避するには、`preserveContent` パラメーターを `true` に設定します。 例については、[こちら](api-management-transformation-policies.md#SetBody)を参照してください。|
 |<a id="ref-iurl"></a>IUrl|Host: 文字列<br /><br /> Path: 文字列<br /><br /> Port: 整数<br /><br /> [Query](#ref-iurl-query): IReadOnlyDictionary<string, string[]><br /><br /> QueryString: 文字列<br /><br /> Scheme: 文字列|
 |<a id="ref-iuseridentity"></a>IUserIdentity|Id: 文字列<br /><br /> Provider: 文字列|
 |<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Header: 文字列<br /><br /> Query: 文字列|

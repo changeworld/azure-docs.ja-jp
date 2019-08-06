@@ -3,7 +3,7 @@ title: Web API を呼び出すモバイル アプリ - Web API の呼び出し |
 description: Web API を呼び出すモバイル アプリの構築方法について説明します (Web API の呼び出し)
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc8c21db0f42bbb6804c00e27e82f840d7038c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 76f0cddfa889376d3795726e74d82e53417b31f1
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111171"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413576"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Web API を呼び出すモバイル アプリ - Web API の呼び出し
 
@@ -114,17 +114,7 @@ MSAL には次のような値があります。
 
 ### <a name="xamarin"></a>Xamarin
 
-```CSharp
-httpClient = new HttpClient();
-
-// Put access token in HTTP request.
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-
-// Call Graph.
-HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
-...
-}
-```
+[!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 ## <a name="making-several-api-requests"></a>複数の API 要求を行う
 
@@ -132,6 +122,40 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 - **増分同意**:Microsoft ID プラットフォームでは、すべて開始時にではなく、必要に応じて、アプリがユーザーの同意をアクセス許可として得られるようにしています。 アプリが API を呼び出す準備ができたら、毎回、使用する必要があるスコープのみを要求します。
 - **条件付きアクセス**:特定のシナリオでは、複数の API 要求を行うときに、追加の条件付きアクセスの要件が課される場合があります。 これは、最初の要求に条件付きアクセス ポリシーが適用されておらず、アプリが条件付きアクセスを必要とする新しい API にサイレントでアクセスしようとする場合に発生することがあります。 このシナリオを処理するため、必ずサイレント要求からのエラーをキャッチし、対話型の要求を行えるように準備します。  詳細については、[条件付きアクセスについてのガイダンス](conditional-access-dev-guide.md)のページを参照してください。
+
+## <a name="calling-several-apis-in-xamarin-or-uwp---incremental-consent-and-conditional-access"></a>Xamarin または UWP での複数の API の呼び出し - 増分同意と条件付きアクセス
+
+同じユーザーに対して複数の API を呼び出す必要がある場合、ユーザーのトークンを取得した後、続けて `AcquireTokenSilent` を呼び出してトークンを取得すれば、ユーザーに何度も資格情報の入力を求める必要がなくなります。
+
+```CSharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+```
+
+対話が必要になるのは、以下のようなケースです。
+
+- ユーザーが最初の API については同意したが、より多くのスコープ (増分同意) について同意する必要が生じた。
+- 最初の API は多要素認証を必要としなかったが、次の API は多要素認証を必要とする。
+
+```CSharp
+var result = await app.AcquireTokenXX("scopeApi1")
+                      .ExecuteAsync();
+
+try
+{
+ result = await app.AcquireTokenSilent("scopeApi2")
+                  .ExecuteAsync();
+}
+catch(MsalUiRequiredException ex)
+{
+ result = await app.AcquireTokenInteractive("scopeApi2")
+                  .WithClaims(ex.Claims)
+                  .ExecuteAsync();
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 

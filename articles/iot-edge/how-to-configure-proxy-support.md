@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 1c0da1a768b894f543b9089643622c31d6a8758d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 47d3018015d05d0587e841c216a5eb89f2a0ae20
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730157"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414550"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -52,7 +52,7 @@ IoT Edge デバイスでは、HTTPS 要求を送信して IoT Hub と通信し�
 
 プロキシ URL の形式は、**protocol**://**proxy_host**:**proxy_port** です。
 
-* **protocol** は HTTP または HTTPS のいずれかです。 Docker デーモンはコンテナー レジストリの設定に応じてどちらのプロトコルでも使用できますが、IoT Edge デーモンとランタイム コンテナーは常に HTTPS を使用する必要があります。
+* **protocol** は HTTP または HTTPS のいずれかです。 Docker デーモンはコンテナー レジストリの設定に応じてどちらのプロトコルも使用できますが、IoT Edge デーモンとランタイム コンテナーは常に HTTP を使用してプロキシに接続する必要があります。
 
 * **proxy_host** は、プロキシ サーバーのアドレスです。 プロキシ サーバーで認証が必要な場合は、プロキシ ホストの一部として、**user**:**password**\@**proxy_host** の形式で資格情報を指定できます。
 
@@ -64,7 +64,7 @@ IoT Edge デバイスが Windows または Linux のどちらで動作してい�
 
 ### <a name="linux"></a>Linux
 
-Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり 「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」の手順に従います。
+Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」の手順に従います。
 
 ### <a name="windows"></a>Windows
 
@@ -82,8 +82,9 @@ Windows デバイス上に IoT Edge ランタイムをインストールして�
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
+   ```
 
-If you have complicated credentials for the proxy server that can't be included in the URL, use the `-ProxyCredential` parameter within `-InvokeWebRequestParameters`. For example,
+プロキシ サーバーの資格情報が複雑で URL に含めることができない場合は、`-InvokeWebRequestParameters` 内で `-ProxyCredential` パラメーターを使用してください。 たとえば、次のように入力します。
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
@@ -250,7 +251,7 @@ Visual Studio Code のテンプレートを使用するか、または手動で 
     },
     "env": {
         "https_proxy": {
-            "value": "https://proxy.example.com:3128"
+            "value": "http://proxy.example.com:3128"
         }
     },
     "status": "running",

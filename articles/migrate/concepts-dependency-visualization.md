@@ -1,37 +1,47 @@
 ---
 title: Azure Migrate の依存関係の視覚化 | Microsoft Docs
-description: Azure Migrate サービスにおけるアセスメントの計算の概要を説明します。
+description: Azure Migrate の Server Assessment Service における評価の計算の概要を説明します
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.author: raynew
-ms.openlocfilehash: a0ceffbf4666ebc6bb5f95a6f3e2501f86095232
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.date: 07/18/2019
+ms.author: hamusa
+ms.openlocfilehash: 8934306efadc4ec732afbb658c081ada30f232cd
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305671"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312217"
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 
-[Azure Migrate](migrate-overview.md) サービスは、Azure への移行についてオンプレミスのマシンのグループを評価します。 Azure Migrate の依存関係可視化機能を使用して、グループを作成することができます。 この記事では、次の機能に関する情報を提供します。
+Azure Migrate: Server Assessment では、Azure への移行についてオンプレミス マシンのグループが評価されます。 Server Assessment の依存関係可視化機能を使用して、グループを作成することができます。 この記事では、次の機能に関する情報を提供します。
 
 > [!NOTE]
 > 依存関係可視化機能は、Azure Government では使用できません。
 
 ## <a name="overview"></a>概要
 
-Azure Migrate の依存関係可視化機能を使用すると、移行評価用の信頼性の高いグループを作成できます。 依存関係の可視化を使用すると、マシンのネットワーク依存関係を表示したり、Azure に一緒に移行するために必要な関連するマシンを特定することができます。 この機能は、アプリケーションが導入されているマシンのノーハウをまったく持っておらず、そのアプリケーションを一緒にAzureに移行する必要がある状況で役立ちます。
+Server Assessment の依存関係可視化機能を使用すると、移行評価用の信頼性の高いグループを作成できます。 依存関係の可視化を使用すると、マシンのネットワーク依存関係を表示したり、Azure に一緒に移行するために必要な関連するマシンを特定したりすることができます。 この機能は、アプリケーションが導入されているマシンのノーハウをまったく持っておらず、そのアプリケーションを一緒にAzureに移行する必要がある状況で役立ちます。
+
+## <a name="before-you-start"></a>開始する前に
+
+- Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
+- プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールです。
+- マシンが Azure Migrate で検出されていることを確認します。これは、[VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用に Azure Migrate アプライアンスを設定することで実行できます。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment を使用して作成できる評価には、2 つの種類があります。 [詳細情報](migrate-appliance.md)。
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
 Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)の [Service Map](../operations-management-suite/operations-management-suite-service-map.md) ソリューションを使用します。
 - 依存関係の視覚化を利用するために、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。
-- 移行プロジェクトが作成された同じサブスクリプション内にのみ、ワークスペースを作成またはアタッチできます。
-- プロジェクトに Log Analytics ワークスペースをアタッチするには、 **プロジェクト概要ページで** Essentials **セクションに遷移し**、 **「構成が必要です」** をクリックします
-
-    ![Log Analytics ワークスペースを関連付ける](./media/concepts-dependency-visualization/associate-workspace.png)
+- Azure Migrate プロジェクトが作成されている同じサブスクリプションのみに、ワークスペースを作成するか、アタッチすることができます。
+- Log Analytics ワークスペースをプロジェクトにアタッチするには:
+    1. **[サーバー]** タブの **[Azure Migrate: Server Assessment]** タイルで、 **[概要]** をクリックします。
+    2. **[概要]** で下矢印をクリックして、 **[Essentials]** を展開します。
+    3. **[OMS ワークスペース]** で、 **[構成が必要]** をクリックします。
+    4. **[ワークスペースの構成]** で、新しいワークスペースを作成するか、または既存のものを使用するかを指定します。
+    
+    ![ワークスペースの追加](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 - ワークスペースを関連付けるときに、新しいワークスペースを作成するか、既存のワークスペースをアタッチするかを選択できます。
   - 新しいワークスペースを作成する場合は、ワークスペースの名前を指定する必要があります。 移行プロジェクトと同様の [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンでワークスペースが作成されます。
@@ -47,15 +57,15 @@ Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](
 
 依存関係の視覚化を使用するには、分析するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。  
 
-- 各マシンに [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) をインストールする必要があります。
-- 各マシンに [Dependency Agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) をインストールする必要があります。
+- 各マシンに [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) をインストールする必要があります。 MMA エージェントのインストール方法の詳細については、[こちら](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma)をご覧ください。
+- 各マシンに [Dependency Agent](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) をインストールする必要があります。 依存関係エージェントのインストール方法の詳細については、[こちら](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)をご覧ください。
 - また、インターネットに接続されていないマシンの場合、それらに Log Analytics ゲートウェイをダウンロードしてインストールする必要があります。
 
 依存関係の視覚化を使用している場合を除き、評価するマシンにこれらのエージェントは不要です。
 
 ## <a name="do-i-need-to-pay-for-it"></a>使用料金が必要になる場合
 
-Azure Migrate は、追加料金なしで利用できます。 Azure Migrate で依存関係可視化機能を使用するには、サービス マップが必要であり、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。 Azure Migrate の依存関係可視化機能は、Azure Migrate の最初の 180 日間無料です。
+依存関係可視化機能は、追加料金なしで利用できます。 Server Assessment で依存関係可視化機能を使用するには、Service Map が必要であり、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。 Server Assessment の依存関係可視化機能は、最初の 180 日間は無料です。
 
 1. この Log Analytics ワークスペース内で Service Map 以外のソリューションを使用すると、[標準の Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/)料金が適用されます。
 2. 追加コストなしの移行シナリオをサポートするため、Service Map ソリューションでは、Azure Migrate プロジェクトを Log Analyticsワークスペースに関連付けした後の最初の 180 日間は料金が発生しません。 180 日が経過すると、Log Analytics の標準の料金が適用されます。
@@ -71,9 +81,9 @@ Azure Migrate の価格については、[こちら](https://azure.microsoft.com
 
 ## <a name="how-do-i-manage-the-workspace"></a>ワークスペースの管理方法
 
-Azure Migrate 以外で Log Analytics ワークスペースを使用できます。 作成した移行プロジェクトを削除しても、ワークスペースは削除されません。 ワークスペースが不要になった場合は手動で[削除](../azure-monitor/platform/manage-access.md)します。
+Azure Migrate 以外で Log Analytics ワークスペースを使用できます。 作成した Azure Migrate プロジェクトを削除しても、ワークスペースは削除されません。 ワークスペースが不要になった場合は手動で[削除](../azure-monitor/platform/manage-access.md)します。
 
-移行プロジェクトを削除する場合を除き、Azure Migrate で作成されたワークスペースは削除しないでください。 削除した場合は、依存関係可視化機能は、期待どおりに機能しません。
+Azure Migrate プロジェクトを削除しない場合は、Azure Migrate で作成されたワークスペースは削除しないでください。 削除した場合は、依存関係可視化機能は、期待どおりに機能しません。
 
 ## <a name="next-steps"></a>次の手順
 - [マシンの依存関係マッピングを使用したマシンのグループ化](how-to-create-group-machine-dependencies.md)

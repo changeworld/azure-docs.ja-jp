@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 77e7aec1797a4b33068430371ba0969d1737746e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 34ab49378f9237a42bed869a6f6d67249b5238f9
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508798"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68464684"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上の Apache Hadoop サービスで使用されるポート
 
@@ -28,7 +28,7 @@ Linux ベースの HDInsight クラスターでは、22、23、443 の 3 つの�
 > [!IMPORTANT]  
 > HDInsight の構成オプションとして Azure Virtual Network を指定しないと、Azure Virtual Network が自動的に作成されます。 ただし、この仮想ネットワークに他のマシン (他の Azure Virtual Machine やクライアント開発用コンピューターなど) を参加させることはできません。
 
-仮想ネットワークに他のマシンを参加させるには、まず仮想ネットワークを作成し、HDInsight クラスターの作成時にその仮想ネットワークを指定する必要があります。 詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)
+仮想ネットワークに他のマシンを参加させるには、まず仮想ネットワークを作成し、HDInsight クラスターの作成時にその仮想ネットワークを指定する必要があります。 詳細については、「[Plan a virtual network for HDInsight](hdinsight-plan-virtual-network-deployment.md)」 (HDInsight 用の仮想ネットワークの計画) を参照してください。
 
 ## <a name="public-ports"></a>パブリック ポート
 
@@ -105,7 +105,7 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | NodeManager |すべての worker ノード |30050 |&nbsp; |コンテナー マネージャーのアドレス |
 | NodeManager Web UI |すべての worker ノード |30060 |HTTP |Resource Manager インターフェイス |
 | Timeline アドレス |ヘッド ノード |10200 |RPC |Timeline サービスの RPC サービス |
-| Timeline Web UI |ヘッド ノード |8181 |HTTP |Timeline サービス Web UI |
+| Timeline Web UI |ヘッド ノード |8188 |HTTP |Timeline サービス Web UI |
 
 ### <a name="hive-ports"></a>Hive ポート
 

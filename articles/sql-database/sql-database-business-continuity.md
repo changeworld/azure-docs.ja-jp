@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 06/25/2019
-ms.openlocfilehash: 26b31781ae0056999eb222981b2eea3eb4595041
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 361613c52c00b7a7e468eccbb52bf113b6adb434
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228043"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444505"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -58,7 +58,23 @@ SQL Database では、データ損失からビジネスを守るために、デ�
 
 ポイントインタイム リストア (PITR) のサポートされている最大バックアップ保有期間がアプリケーションにとって十分でない場合は、データベースの長期保有期間 (LTR) ポリシーを構成することで、保有期間を延長できます。 詳細については、「[Long-term backup retention](sql-database-long-term-retention.md)」(長期バックアップ リテンション) をご覧ください。
 
-## <a name="recover-a-database-to-another-azure-region"></a>別の Azure リージョンにデータベースを復旧する
+## <a name="compare-geo-replication-with-failover-groups"></a>geo レプリケーションとフェールオーバー グループを比較する
+
+[自動フェールオーバー グループ](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities)により、[geo レプリケーション](sql-database-active-geo-replication.md)のデプロイと使用が簡略化され、次の表に示す追加機能が追加されます。
+
+|                                              | geo レプリケーション | フェールオーバー グループ  |
+|:---------------------------------------------| :-------------- | :----------------|
+| 自動フェールオーバー                           |     いいえ          |      はい         |
+| 複数のデータベースを同時にフェールオーバーする  |     いいえ          |      はい         |
+| フェールオーバー後に接続文字列を更新する      |     はい         |      いいえ          |
+| Managed Instance のサポート                   |     いいえ          |      はい         |
+| プライマリと同じリージョンに存在できる             |     はい         |      いいえ          |
+| 複数のレプリカ                            |     はい         |      いいえ          |
+| 読み取りスケールをサポートする                          |     はい         |      はい         |
+| &nbsp; | &nbsp; | &nbsp; |
+
+
+## <a name="recover-a-database-to-the-existing-server"></a>既存のサーバーにデータベースを復旧する
 
 まれではありますが、Azure データ センターが停止することもあります。 停止が発生すると、ビジネスが中断します。この中断はわずか数分で解消されることもありますが、数時間に及ぶ場合もあります。
 

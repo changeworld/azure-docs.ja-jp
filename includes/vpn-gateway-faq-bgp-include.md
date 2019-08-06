@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7c1f3fc7861f5e1b895423d502218b9b07302c1c
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 23386139364a72b0275936cdc458c8cd2a5771c9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659848"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68386913"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP はすべての Azure VPN Gateway SKU でサポートされていますか。
 いいえ、BGP は Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、**Standard**、**HighPerformance** の各 VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。
@@ -88,7 +88,7 @@ Azure VPN ゲートウェイでは、オンプレミスの BGP デバイスに�
 Azure VPN ゲートウェイは、GatewaySubnet 範囲から 1 つの IP アドレスをアクティブ/スタンバイ VPN ゲートウェイに割り当てるか、2 つの IP アドレスをアクティブ/アクティブ VPN ゲートウェイに割り当てます。 PowerShell (Get-AzVirtualNetworkGateway、"bgpPeeringAddress" プロパティを探してください) を使用して、または Azure portal ([ゲートウェイの構成] ページの [BGP ASN の構成] プロパティの下) で、割り当てられた実際の BGP IP アドレスを取得できます。
 
 ### <a name="what-are-the-requirements-for-the-bgp-peer-ip-addresses-on-my-vpn-device"></a>VPN デバイスの BGP ピア IP アドレスに関する要件はどんなものですか。
-オンプレミスの BGP ピア アドレスを VPN デバイスのパブリック IP アドレスと **同じにすることはできません** 。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイス上のループバック インターフェイスに割り当てられたアドレスを使用することもできますが、APIPA (169.254.x.x) アドレスは使用できません。 この場所を表している、対応するローカル ネットワーク ゲートウェイにこのアドレスを指定します。
+オンプレミスの BGP ピア アドレスをご使用の VPN デバイスまたは VPN Gateway の Vnet アドレス空間のパブリック IP アドレスと同じにすることは**できません**。 VPN デバイスでは BGP ピア IP に別の IP アドレスを使用してください。 デバイス上のループバック インターフェイスに割り当てられたアドレスを使用することもできますが、APIPA (169.254.x.x) アドレスは使用できません。 この場所を表している、対応するローカル ネットワーク ゲートウェイにこのアドレスを指定します。
 
 ### <a name="what-should-i-specify-as-my-address-prefixes-for-the-local-network-gateway-when-i-use-bgp"></a>BGP を使用する際、ローカル ネットワーク ゲートウェイのアドレス プレフィックスとして何を指定する必要がありますか。
 Azure のローカル ネットワーク ゲートウェイでは、オンプレミス ネットワークに初期アドレス プレフィックスが指定されます。 BGP を使用する際は、BGP ピア IP アドレスのホスト プレフィックス (/32 プレフィックス) をオンプレミス ネットワークのアドレス空間として割り当てる必要があります。 BGP ピア IP アドレスが 10.52.255.254 の場合は、このオンプレミス ネットワークを表しているローカル ネットワーク ゲートウェイの localNetworkAddressSpace として "10.52.255.254/32" を指定します。 これにより、Azure VPN ゲートウェイで S2S VPN トンネルを経由する BGP セッションが確立されます。

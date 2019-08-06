@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: f69d573e9e70a505018e94cca354f363097cc1b8
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 1303d753b1cbfabe7ddd3442e0880b0bffe089b3
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68229195"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377391"
 ---
 ## <a name="verify-the-sentiment-analysis-container-instance"></a>感情分析コンテナー インスタンスを検証する
 
@@ -25,7 +25,7 @@ ms.locfileid: "68229195"
 
 1. **[Service API Description]\(サービス API の説明\)** リンクを選択して、コンテナーの Swagger ページに移動します。
 
-1. いずれかの **POST** APIを選択して **[試してみる]** を選択します。この入力の例を含むパラメーターが表示されます。
+1. いずれかの **POST** APIを選択して **[試してみる]** を選択します。次の入力の例を含むパラメーターが表示されます。
 
     ```json
     {

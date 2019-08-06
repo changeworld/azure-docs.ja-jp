@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: b21cf99a5a1d458abfb742eb61a838d885e83c06
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 96e939f8e3da58a123d9a6733b71b74c2ff0ba87
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227390"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311907"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -33,7 +33,7 @@ Advisor は、プロバイダーの状態が 1 か月以上 "*未プロビジョ
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>アイドル状態の仮想ネットワーク ゲートウェイを削除または再構成してコストを削減する
 
-Advisor は、90 日以上アイドル状態にあった仮想ネットワークのゲートを特定します。 これらのゲートウェイは 1 時間単位で課金されるので、もう使用しない予定の場合は、再構成または削除を検討する必要がありあす。 
+Advisor は、90 日以上アイドル状態にあった仮想ネットワークのゲートウェイを特定します。 これらのゲートウェイは 1 時間単位で課金されるので、もう使用しない予定の場合は、再構成または削除を検討する必要がありあす。 
 
 ## <a name="buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs"></a>従量課金のコストより費用を節約するために、予約された仮想マシン インスタンスを購入する
 

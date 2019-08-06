@@ -4,14 +4,14 @@ description: タグを適用して、課金や管理のために Azure リソー
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 77175738a0cae5c6185a8ac74e51e9b91b685235
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: e18fc040249954ce7ea6a8a686e121a4b56fb54a
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827929"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312136"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>タグを使用した Azure リソースの整理
 
@@ -250,7 +250,148 @@ done
 
 ## <a name="templates"></a>テンプレート
 
-[!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
+デプロイ中にリソースにタグを付けるには、デプロイするリソースに `tags` 要素を追加します。 タグの名前と値を指定します。
+
+### <a name="apply-a-literal-value-to-the-tag-name"></a>タグ名へのリテラル値の適用
+
+次の例は、2 つのタグ (`Dept` と `Environment`) をリテラル値に設定するストレージ アカウントを示しています。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Dept": "Finance",
+                "Environment": "Production"
+            },
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
+
+タグに datetime 値を設定するには、[utcNow 関数](resource-group-template-functions-string.md#utcnow)を使用します。
+
+### <a name="apply-an-object-to-the-tag-element"></a>タグ要素へのオブジェクトの適用
+
+複数のタグを格納するオブジェクト パラメーターを定義し、そのオブジェクトをタグ要素に適用できます。 オブジェクト内の各プロパティがリソースの個々のタグになります。 次の例は、タグ要素に適用される `tagValues` という名前のパラメーターを示しています。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "tagValues": {
+            "type": "object",
+            "defaultValue": {
+                "Dept": "Finance",
+                "Environment": "Production"
+            }
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('tagValues')]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
+
+### <a name="apply-a-json-string-to-the-tag-name"></a>タグ名への JSON 文字列の適用
+
+1 つのタグに複数の値を格納するには、値を表す JSON 文字列を適用します。 JSON 文字列全体は、1 つのタグとして格納されます。256 文字以下にする必要があります。 次の例は、JSON 文字列で複数の値を格納する `CostCenter` という名前の 1 つのタグを示しています。  
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
+            },
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
+
+### <a name="apply-tags-from-resource-group"></a>リソース グループからタグを適用する
+
+リソース グループからリソースにタグを適用するには、[resourceGroup](resource-group-template-functions-resource.md#resourcegroup) 関数を使います。 タグの値を取得するときは、`tags.tag-name` 構文ではなく `tags.[tag-name]` 構文を使います。これは、ドット表記では一部の文字が正しく解析されないためです。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2019-04-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "Dept": "[resourceGroup().tags['Dept']]",
+                "Environment": "[resourceGroup().tags['Environment']]"
+            },
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {}
+        }
+    ]
+}
+```
 
 ## <a name="portal"></a>ポータル
 

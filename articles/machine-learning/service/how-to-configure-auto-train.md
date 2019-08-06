@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d9019a6b4a32066480a70f72562bc5a7a9a1e8b
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3a316de54600d18f7ab839b8459bfe4eb0ff86e8
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797647"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479786"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -97,50 +97,46 @@ automl_config = AutoMLConfig(task="classification")
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>リモート コンピューティング上で実行している実験にデータをフェッチする
 
-リモート コンピューティングを使用して実験を実行している場合、データのフェッチを別の Python スクリプト `get_data()` でラップする必要があります。 このスクリプトは、自動機械学習の実験が実行されているリモート コンピューティングで実行されます。 `get_data` を使用すると、各イテレーションに対してネットワーク経由でデータをフェッチする必要がなくなります。 `get_data` を使用しないと、リモート コンピューティングで実行している場合は実験が失敗します。
+リモート実行の場合は、リモート コンピューティングからデータにアクセスできるようにする必要があります。 これは、データをデータストアにアップロードして行うことができます。
 
-`get_data` の例を以下に示します。
-
-```python
-%%writefile $project_folder/get_data.py
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
-def get_data(): # Burning man 2016 data
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
-    # get integer labels
-    le = LabelEncoder()
-    le.fit(df["Label"].values)
-    y = le.transform(df["Label"].values)
-    df = df.drop(["Label"], axis=1)
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
-    return { "X" : df, "y" : y }
-```
-
-`AutoMLConfig` オブジェクト内では、`data_script` パラメーターを指定し、次のように `get_data` スクリプト ファイルへのパスを指定します。
+以下は `datastore` の使用例です。
 
 ```python
-automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", **** )
+    import pandas as pd
+    from sklearn import datasets
+    
+    data_train = datasets.load_digits()
+
+    pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
+    pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
+
+    ds = ws.get_default_datastore()
+    ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
 ```
 
-`get_data` スクリプトは次のものを返すことができます。
+### <a name="define-deprep-references"></a>deprep 参照を定義する
 
-キー | Type | 相互に排他的    | 説明
----|---|---|---
-X | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |  トレーニングするすべての機能
-y | Pandas データフレームまたは Numpy 配列 |   label   | トレーニングするラベル データ。 分類の場合、整数の配列にする必要があります。
-X_valid | Pandas データフレームまたは Numpy 配列   | data_train、label | "_省略可能_" 検証セットを構成する特徴データ。 指定しない場合、X はトレーニング間で分割されて検証されます
-y_valid |   Pandas データフレームまたは Numpy 配列 | data_train、label | "_省略可能_" 検証するラベル データ。 指定しない場合、y はトレーニング間で分割されて検証されます
-sample_weight | Pandas データフレームまたは Numpy 配列 |   data_train、label、columns| "_省略可能_" 各サンプルの重み値。 データ ポイントに異なる重みを割り当てる場合に使用します
-sample_weight_valid | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |    "_省略可能_" 各検証サンプルの重み値。 指定しない場合、sample_weight はトレーニング間で分割されて検証されます
-data_train |    Pandas データフレーム |  X、y、X_valid、y_valid |    トレーニングするすべてのデータ (機能 + ラベル)
-label | string  | X、y、X_valid、y_valid |  data_train 内のどの列がラベルを表すか
-columns | 文字列の配列  ||  "_省略可能_" 機能に使用する列のホワイトリスト
-cv_splits_indices   | 整数の配列 ||  "_省略可能_" クロス検証用にデータを分割するためのインデックスのリスト
+X と y を dprep 参照として定義します。これは、自動機械学習の以下のような `AutoMLConfig` オブジェクトに渡されます。
+
+```python
+
+    X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
+    y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
+    
+    
+    automl_config = AutoMLConfig(task = 'classification',
+                                 debug_log = 'automl_errors.log',
+                                 path = project_folder,
+                                 run_configuration=conda_run_config,
+                                 X = X,
+                                 y = y,
+                                 **automl_settings
+                                )
+```
 
 ## <a name="train-and-validation-data"></a>データをトレーニングして検証する
 
-get_data() を使用して、または `AutoMLConfig` メソッドで直接、個別のトレーニングと検証セットを指定できます。
+`AutoMLConfig` メソッドでは、個別のトレーニングと検証セットを直接指定できます。
 
 ### <a name="k-folds-cross-validation"></a>K フォールド クロス検証
 
@@ -392,17 +388,21 @@ preprocess=True の場合に実行される前処理および[自動化された
 
 ```python
 from pprint import pprint
+
+
 def print_model(model, prefix=""):
     for step in model.steps:
         print(prefix + step[0])
         if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
-            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            pprint({'estimators': list(
+                e[0] for e in step[1].estimators), 'weights': step[1].weights})
             print()
             for estimator in step[1].estimators:
-                print_model(estimator[1], estimator[0]+ ' - ')
+                print_model(estimator[1], estimator[0] + ' - ')
         else:
             pprint(step[1].get_params())
             print()
+
 
 print_model(fitted_model)
 ```
@@ -492,12 +492,19 @@ LogisticRegression
     print(per_class_summary)
     ```
 
-Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの Jupyter ウィジェットを使用して表示することもできます。 グラフの詳細については、[Azure Machine Learning service ノートブックのサンプルに関する記事](samples-notebooks.md)をご覧ください。
+Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 run オブジェクトを使用して URL を表示します。
+
+```
+automl_run.get_portal_url()
+```
+
+Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの `RunDetails` [Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用する場合も表示されます。 グラフの詳細については、「[Understand automated machine learning results](how-to-understand-automated-ml.md)」 (自動機械学習の結果について) を参照してください。
 
 ```Python
 from azureml.widgets import RunDetails
-RunDetails(local_run).show()
+RunDetails(automl_run).show()
 ```
+
 ![特徴の重要度のグラフ](./media/how-to-configure-auto-train/feature-importance.png)
 
 自動機械学習外の SDK の他の領域で、モデルの説明と特徴の重要度を有効にする方法については、解釈可能性の[概念](machine-learning-interpretability-explainability.md)に関する記事を参照してください。

@@ -12,15 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: 7edaa4c673c2cb94dc5bd0245ce66c9fe6a7dd3c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6153bf1162eaa1c7eab2c358977d754695b64fd
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764290"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325390"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
 Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
+
+> [!NOTE]
+> Web アクティビティでは、公開されている URL のみを呼び出すことができます。 プライベート仮想ネットワークでホストされている URL についてはサポートされていません。
 
 ## <a name="syntax"></a>構文
 
@@ -63,7 +66,7 @@ Web アクティビティを使用すると、Data Factory パイプラインか
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | Web アクティビティの名前 | String | はい
+名前 | Web アクティビティの名前 | String | はい
 type | **WebActivity** に設定する必要があります。 | String | はい
 method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされている型"GET"、"POST"、"PUT" | はい
 url | ターゲット エンドポイントおよびパス | 文字列 (または文字列の resultType を含む式)。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。 | はい

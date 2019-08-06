@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 716c60cf5155bf0583b2d602e8f46f8ba7c1cfcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 641fc41c25746a67b4b1fe3d5316df17f14f113c
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726824"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377249"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>拡張された Apache Spark History Server を使用して Apache Spark アプリケーションのデバッグと診断を行う
 
@@ -319,7 +319,7 @@ History Server エラーが発生した場合は、次の手順に従ってイ�
 
 ## <a name="known-issues"></a>既知の問題
 
-1.  現時点では、Spark 2.3 クラスターのみで機能します。
+1.  現在は、Spark 2.3 および 2.4 のクラスターでのみ動作します。
 
 2.  RDD を使用している入力/出力データは、[データ] タブには表示されません。
 

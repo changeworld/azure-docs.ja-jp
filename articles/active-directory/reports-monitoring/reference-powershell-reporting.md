@@ -17,21 +17,18 @@ ms.date: 07/12/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27fa3d7be5238527f86e9dfde3be70ae09259d69
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 2d9d5fdb9091d51c67fd5d778bac189c08647741
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302749"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359755"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>レポート用の Azure AD PowerShell コマンドレット
 
-環境の動作状況を判断するために必要な情報は、Azure Active Directory (Azure AD) レポートで入手できます。 レポート用の Azure AD PowerShell コマンドレットを使用してレポート データを取得できます。
+Azure Active Directory (Azure AD) レポートを使用すると、自分の方向のすべての書き込み操作 (監査ログ) および認証データ (サインイン ログ) に関するアクティビティの詳細を取得できます。 この情報は MS Graph API を使用して入手できますが、レポート用の Azure AD PowerShell コマンドレットを使用して、同じデータを取得できるようになりました。
 
-この記事では、このコマンドレットの概要について説明します。
-
-
-
+この記事では、監査ログとサインイン ログに使用する PowerShell コマンドレットの概要について説明します。
 
 ## <a name="audit-logs"></a>監査ログ
 

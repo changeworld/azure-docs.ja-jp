@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecf5b874345a94e8fd3d3a0783f8e48c7484377d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05596365dfa011675f38beda2435fdda1a53a5a3
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111267"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488858"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ - トークンの取得
 
@@ -58,7 +58,7 @@ catch(MsalUiRequiredException ex)
 次の例は、Microsoft Graph を使用してユーザーのプロファイルを読み取るためにトークンを対話形式で取得する最小限のコードを示しています。
 
 ```CSharp
-string[] scopes = new string["user.read"];
+string[] scopes = new string[] {"user.read"};
 var app = PublicClientApplicationBuilder.Create(clientId).Build();
 var accounts = await app.GetAccountsAsync();
 AuthenticationResult result;
@@ -179,7 +179,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 - IWA は、.NET Framework、.NET Core、および UWP プラットフォーム用に記述されたアプリを対象としています。
 - IWA では MFA (多要素認証) をバイパスしません。 MFA が構成されている状況では、MFA チャレンジが必要な場合に IWA が失敗する可能性があります。これは、MFA でユーザーの操作が必要になるためです。
   > [!NOTE]
-  > これには注意が必要です。 IWA は非対話型ですが、2FA にはユーザーの操作が必要です。 ID プロバイダーが 2FA の実行を要求するタイミングの制御は、ユーザーではなくテナント管理者が行います。 当社の観測によると、2FA が必要なのは、他の国からログインする場合と VPN 経由で企業ネットワークに接続されていない場合です。ただし、VPN 経由で接続されている場合であっても 2FA が必要になる可能性があります。 確定的なルール セットを想定しないでください。Azure Active Directory では AI を使用して、2FA が必要かどうかを継続的に学習します。 IWA が失敗した場合は、ユーザー プロンプト (対話型認証またはデバイス コード フロー) にフォールバックする必要があります。
+  > これには注意が必要です。 IWA は非対話型ですが、MFA にはユーザーの操作が必要です。 ID プロバイダーが MFA の実行を要求するタイミングの制御は、ユーザーではなくテナント管理者が行います。 弊社の観測によると、MFA が必要なのは、他の国からログインする場合と VPN 経由で企業ネットワークに接続されていない場合です。ただし、VPN 経由で接続されている場合であっても MFA が必要になる可能性があります。 決定論的なルール セットを想定しないでください。Azure Active Directory では AI を使用して、MFA が必要かどうかを継続的に学習します。 IWA が失敗した場合は、ユーザー プロンプト (対話型認証またはデバイス コード フロー) にフォールバックする必要があります。
 
 - `PublicClientApplicationBuilder` で渡される機関の要件は次のとおりです。
   - tenant-ed (`https://login.microsoftonline.com/{tenant}/` の形式。`tenant` は、テナント ID を表す GUID またはテナントに関連付けられているドメイン)
@@ -293,8 +293,9 @@ AcquireTokenByIntegratedWindowsAuthentication で使用可能な修飾子の一�
 
 ユーザーにパスワードをたずねるアプリケーションは安全でないため、このフローは**推奨されません**。 この問題の詳細については、[この記事](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)を参照してください。 Windows ドメイン参加済みマシン上でトークンを自動的に取得するために推奨されるフローは、[統合 Windows 認証](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)です。 それ以外の場合は、[デバイス コード フロー](https://aka.ms/msal-net-device-code-flow)を使用することもできます。
 
+> [!NOTE] 
 > これが役立つケース (DevOps のシナリオ) もありますが、独自の UI を提供する対話形式のシナリオでユーザー名/パスワードを使用する場合は、別の方法について検討してください。 ユーザー名/パスワードを使用すると、いくつかのことを利用できなくなります。
-
+>
 > - 最新の ID のコア テナント: パスワードがフィッシングされて再生されます。 インターセプトできる共有シークレットのこの概念を使用しているためです。
 > これは、パスワードなしとは互換性がありません。
 > - MFA を実行する必要のあるユーザーがサインインできない (対話式操作がないため)
@@ -324,7 +325,7 @@ static async Task GetATokenForGraph()
  string authority = "https://login.microsoftonline.com/contoso.com";
  string[] scopes = new string[] { "user.read" };
  IPublicClientApplication app;
- app = PublicClientApplicationBuild.Create(clientId)
+ app = PublicClientApplicationBuilder.Create(clientId)
        .WithAuthority(authority)
        .Build();
  var accounts = await app.GetAccountsAsync();
@@ -365,7 +366,7 @@ static async Task GetATokenForGraph()
  string authority = "https://login.microsoftonline.com/contoso.com";
  string[] scopes = new string[] { "user.read" };
  IPublicClientApplication app;
- app = PublicClientApplicationBuild.Create(clientId)
+ app = PublicClientApplicationBuilder.Create(clientId)
                                    .WithAuthority(authority)
                                    .Build();
  var accounts = await app.GetAccountsAsync();
@@ -649,9 +650,9 @@ MSAL.NET では、既定でメモリ内のトークン キャッシュが提供�
   ![image](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 
 > [!IMPORTANT]
-> MSAL.NET により、トークン キャッシュが自動的に作成され、アプリケーションの `GetUserTokenCache` メソッドと `GetAppTokenCache` メソッドを呼び出すと `IToken` キャッシュが提供されます。 インターフェイスを自分で実装することはできません。 カスタムのトークン キャッシュのシリアル化を実装する際には、お客様の責任で次の処理を行います。
+> アプリケーションの `UserTokenCache` プロパティと `AppTokenCache` プロパティを呼び出すと、MSAL.NET によりトークン キャッシュが自動的に作成され、`IToken` キャッシュが提供されます。 インターフェイスを自分で実装することはできません。 カスタムのトークン キャッシュのシリアル化を実装する際には、お客様の責任で次の処理を行います。
 >
-> - `BeforeAccess` と `AfterAccess` の各 "イベント" に対応します。 `BeforeAccess` デリゲートではキャッシュの逆シリアル化を行い、`AfterAccess` デリゲートではキャッシュのシリアル化を行います。
+> - `BeforeAccess` と `AfterAccess` の各 "イベント" (または同等の*非同期*イベント) に対応します。 `BeforeAccess` デリゲートではキャッシュの逆シリアル化を行い、`AfterAccess` デリゲートではキャッシュのシリアル化を行います。
 > - これらのイベントの一部では、BLOB が格納されるか、または読み込まれ、イベント引数を介して任意のストレージに渡されます。
 
 パブリック クライアント アプリケーション (デスクトップ) と機密クライアント アプリケーション (Web アプリ/Web API、デーモン アプリ) のどちらに対してトークン キャッシュのシリアル化を作成しているかに応じて、戦略は異なります。
@@ -724,6 +725,7 @@ static class TokenCacheHelper
 
 パブリック クライアント アプリケーション (Windows、Mac、Linux で実行されているデスクトップ アプリケーション) 用の製品品質トークン キャッシュ ファイル ベースのシリアライザーのプレビューは、[Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) オープン ソース ライブラリで入手できます。 これを、次の NuGet パッケージからアプリケーションに追加することができます。[Microsoft.Identity.Client.Extensions.Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/)。
 
+> [!NOTE]
 > 免責事項: Microsoft.Identity.Client.Extensions.Msal ライブラリは MSAL.NET の拡張機能です。 これらのライブラリ内のクラスは、今後 MSAL.NET に現状のまま、または破壊的変更が適用された状態で追加される可能性があります。
 
 ### <a name="dual-token-cache-serialization-msal-unified-cache--adal-v3"></a>トークン キャッシュのデュアル シリアル化 (MSAL 統一キャッシュと ADAL v3)
@@ -775,18 +777,12 @@ namespace CommonCacheMsalV3
   /// <returns></returns>
   public static void EnableSerialization(ITokenCache cache, string unifiedCacheFileName, string adalV3CacheFileName)
   {
-   usertokenCache = cache;
    UnifiedCacheFileName = unifiedCacheFileName;
    AdalV3CacheFileName = adalV3CacheFileName;
 
-   usertokenCache.SetBeforeAccess(BeforeAccessNotification);
-   usertokenCache.SetAfterAccess(AfterAccessNotification);
+   cache.SetBeforeAccess(BeforeAccessNotification);
+   cache.SetAfterAccess(AfterAccessNotification);
   }
-
-  /// <summary>
-  /// Token cache
-  /// </summary>
-  static ITokenCache usertokenCache;
 
   /// <summary>
   /// File path where the token cache is serialized with the unified cache format

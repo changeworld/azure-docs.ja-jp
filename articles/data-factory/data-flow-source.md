@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 048fe0ef88e8a79e21af7bb6e39a1d7ece3ee4ae
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f6aed5d2ac1c4672d8d8868fe127ead053512e42
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277456"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314835"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Mapping Data Flow のソース変換 
 
@@ -38,8 +38,12 @@ Data Factory は、約 80 個のネイティブ コネクタにアクセスで�
 
 データのスキーマとサンプリング オプションを選択します。
 
-### <a name="allow-schema-drift"></a>[Allow Schema Drift] (スキーマの誤差を許可)
-ソース列が頻繁に変更される場合は、 **[Allow Schema Drift]\(スキーマの誤差を許可\)** を選択します。 この設定により、すべての受信ソース フィールドが変換を通してシンクに流れることができます。
+### <a name="schema-drift"></a>スキーマの誤差
+[スキーマの誤差](concepts-data-flow-schema-drift.md)は、データ フロー内の柔軟なスキーマをネイティブに処理する ADF の機能であり、列の変更を明示的に定義する必要はありません。
+
+* ソース列が頻繁に変更される場合は、 **[Allow Schema Drift]\(スキーマの誤差を許可\)** を選択します。 この設定により、すべての受信ソース フィールドが変換を通してシンクに流れることができます。
+
+* **[Infer drifted column types]\(誤差のある列の型を推論\)** を選択することで、検出された新しい列ごとにデータ型を定義するよう ADF に指示します。 この機能を無効にすると、ADF は文字列を想定します。
 
 ### <a name="validate-schema"></a>[スキーマの検証]
 

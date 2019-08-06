@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.date: 07/22/2019
 ms.author: magoedte
-ms.openlocfilehash: a370dcb349b61f3dda544d9c5a2030b6789e34c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bbfc8cc61571de8b76ef1f7f0216501ef6d2cdee
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075421"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377475"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する 
 コンテナーの Azure Monitor を使用している場合、パフォーマンスのグラフと正常性状態を使用して、AKS クラスターから直接、または Azure Monitor からサブスクリプション内のすべての AKS クラスターという 2 つの観点から Azure Kubernetes Service (AKS) クラスターのワークロードを監視することができます。 Azure Container Instances (ACI) の表示は、特定の AKS クラスターを監視するときにも可能です。
@@ -31,16 +31,18 @@ Azure Monitor には、サブスクリプション内のリソース グルー�
 
 コンテナーの Azure Monitor を使用して Windows Server クラスターを監視する場合の、Linux クラスターとの主な相違点は以下のとおりです。
 
-- Windows ノードとコンテナーではメモリ RSS メトリックを使用できません 
-- Windows ノードではディスク ストレージ容量の情報を使用できません
+- Windows ノードとコンテナーではメモリ RSS メトリックを使用できません。
+- Windows ノードではディスク ストレージ容量の情報を使用できません。
 - ライブ ログのサポートは Windows コンテナーのログを除き使用可能です。
 - ポッド環境のみが監視され、Docker 環境は対象外です。
 - プレビュー リリースでは、最大 30 の Windows Server コンテナーがサポートされます。 この制限は、Linux コンテナーには適用されません。  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+
 [Azure Portal](https://portal.azure.com) にサインインします。 
 
-## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Monitor の複数クラスター ビュー 
+## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Monitor の複数クラスター ビュー
+
 展開されているすべての AKS クラスターの正常性状態を表示するには、Azure portal で左側のウィンドウから **[モニター]** を選択します。  **[分析情報]** セクションで **[コンテナー]** を選択します。  
 
 ![Azure Monitor の複数クラスター ダッシュボードの例](./media/container-insights-analyze/azmon-containers-multiview.png)
@@ -89,6 +91,7 @@ Azure Monitor には、サブスクリプション内のリソース グルー�
 クラスターの一覧からは、クラスターの名前をクリックして **[クラスター]** ページに、特定のクラスターの **[ノード]** 列のノードのロールアップをクリックして **[ノード]** パフォーマンス ページに、あるいは **[ユーザー ポッド]** 列または **[システム ポッド]** 列のロールアップをクリックして **[コントローラー]** パフォーマンス ページに、ドリルダウンできます。   
 
 ## <a name="view-performance-directly-from-an-aks-cluster"></a>AKS クラスターから直接、パフォーマンスを確認する
+
 コンテナーの Azure Monitor へは、左側のパネルの **[Insights]** を選択することにより、AKS クラスターから直接アクセスできます。 AKS クラスターに関する情報は 4 つの観点から確認できます。
 
 - クラスター
@@ -112,6 +115,7 @@ Azure Monitor には、サブスクリプション内のリソース グルー�
 Azure Monitor for containers では Azure Monitor の[メトリックス エクスプローラー](../platform/metrics-getting-started.md)もサポートされており、独自のプロット グラフの作成、傾向の関連付けと調査、ダッシュボードへのピン留めを行うことができます。 メトリックス エクスプローラーでは、[メトリック ベースの警告ルール](../platform/alerts-metric.md)の基準として、メトリックを視覚化するために設定した条件を使用することもできます。  
 
 ## <a name="view-container-metrics-in-metrics-explorer"></a>メトリックス エクスプローラーでコンテナーのメトリックを表示する
+
 メトリックス エクスプローラーでは、Azure Monitor for containers からのノードとポッドの使用率のメトリックを集計して表示できます。 次の表は、メトリックのグラフを使用してコンテナーのメトリックを視覚化する方法の理解に役立つ詳細情報をまとめたものです。
 
 |名前空間 | メトリック |
@@ -163,7 +167,9 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 展開されたノードでは、ノード上で実行されているポッドまたはコンテナーからコントローラーにドリルダウンして、そのコントローラーでフィルター処理されたパフォーマンス データを見ることができます。 特定のノードの **[コントローラー]** 列の値をクリックします。   
 ![パフォーマンス ビューでのノードからコントローラーへのドリルダウンの例](./media/container-insights-analyze/drill-down-node-controller.png)
 
-ページ上部のコントローラーまたはコンテナーを選択し、それらのオブジェクトの状態やリソース使用率を確認できます。  また、 **[メトリック]** ドロップダウン リストで **[Memory RSS]\(使用メモリ (RSS)\)** または **[メモリ ワーキング セット]** を選択すると、メモリ使用率を確認することもできます。 **[Memory RSS]\(使用メモリ (RSS)\)** は、Kubernetes 1.8 以降でのみサポートされています。 それ以外のバージョンでは、**Min&nbsp;%** の値が、未定義または表示できない値を示す数値データ型である、*NaN&nbsp;%* として示されます。 
+ページ上部のコントローラーまたはコンテナーを選択し、それらのオブジェクトの状態やリソース使用率を確認できます。  また、 **[メトリック]** ドロップダウン リストで **[Memory RSS]\(使用メモリ (RSS)\)** または **[メモリ ワーキング セット]** を選択すると、メモリ使用率を確認することもできます。 **[Memory RSS]\(使用メモリ (RSS)\)** は、Kubernetes 1.8 以降でのみサポートされています。 それ以外のバージョンでは、**Min&nbsp;%** の値が、未定義または表示できない値を示す数値データ型である、*NaN&nbsp;%* として示されます。
+
+メモリ ワーキング セットは、含まれている常駐メモリと仮想メモリ (キャッシュ) の両方を示し、アプリケーションが使用している合計になります。 メモリ RSS はメイン メモリだけを示し、常駐メモリになります。 このメトリックは、使用可能なメモリの実際の容量を示しています。
 
 ![コンテナー ノード パフォーマンス ビュー](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -200,7 +206,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 ここでは、コントローラー、およびコントローラーに接続されていない ACI 仮想ノード コントローラーまたは仮想ノード ポッドのパフォーマンスの正常性を確認できます。
 
-![<名前> コントローラーのパフォーマンス ビュー](./media/container-insights-analyze/containers-controllers-view.png)
+![\<名前> コントローラーのパフォーマンス ビュー](./media/container-insights-analyze/containers-controllers-view.png)
 
 行階層はコントローラーから開始し、コントローラーを展開すると、1 つまたは複数のポッドが表示されます。  ポッドを展開すると、ポッドにグループ化されているコンテナーが最後の行に表示されます。 展開されたコントローラーからは、それが実行されているノードにドリルダウンして、そのノードでフィルター処理されたパフォーマンス データを見ることができます。 コントローラーに接続されていない ACI ポッドは一覧の最後に表示されます。
 
@@ -241,7 +247,7 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 ここでは、Azure Kubernetes および Azure Container Instances コンテナーのパフォーマンスの正常性を確認できます。  
 
-![<名前> コントローラーのパフォーマンス ビュー](./media/container-insights-analyze/containers-containers-view.png)
+![\<名前> コントローラーのパフォーマンス ビュー](./media/container-insights-analyze/containers-containers-view.png)
 
 コンテナーからは、ポッドまたはノードにドリルダウンして、そのオブジェクトでフィルター処理されたパフォーマンス データを見ることができます。 特定のコンテナーの **[ポッド]** または **[ノード]** 列の値をクリックします。   
 
@@ -271,20 +277,36 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 | ![終了状態アイコン](./media/container-insights-analyze/containers-terminated-icon.png) | 正常に停止したか、停止に失敗した|  
 | ![失敗状態アイコン](./media/container-insights-analyze/containers-failed-icon.png) | 失敗の状態 |  
 
-## <a name="disk-capacity-workbook"></a>ディスク容量ブック
+## <a name="workbooks"></a>Workbooks
+
 ブックでは、テキスト、 [ログ クエリ](../log-query/query-language.md)、[メトリック](../platform/data-platform-metrics.md)、パラメーターが、内容豊富な対話型レポートに組み合わされます。 ブックは、同じ Azure リソースにアクセスできる他のチーム メンバーが編集できます。
 
-Azure Monitor for containers には、開始するためのブックである**ディスク容量**が含まれています。  このブックでは、次の観点で、コンテナー内のノードに提供される各ディスクの対話型のディスク使用状況グラフが示されます。
+Azure Monitor for containers には、開始するための次の 4 つのブックが含まれています。
 
-- すべてのディスクのディスク使用率 (%)
-- すべてのディスクの空きディスク領域
-- ノードのディスクごとに、その使用済み領域 (%)、使用済み領域 (%) のトレンド、空きディスク領域 (GiB)、空きディスク領域 (GiB) のトレンドを示すテーブル。 テーブルで行を選択すると、使用済み領域 (%) と空きディスク領域 (GiB) が下に表示されます 
+- **ディスク容量**:次の観点で、コンテナー内のノードに提供される各ディスクの対話型のディスク使用状況グラフが示されます。
 
-このブックにアクセスするには、 **[ブックの表示]** ドロップダウン リストから **[ディスク容量]** を選択します。  
+    - すべてのディスクのディスク使用率 (%)
+    - すべてのディスクの空きディスク領域
+    - ノードのディスクごとに、その使用済み領域 (%)、使用済み領域 (%) のトレンド、空きディスク領域 (GiB)、空きディスク領域 (GiB) のトレンドを示すグリッド。 テーブルで行を選択すると、使用済み領域 (%) と空きディスク領域 (GiB) が下に表示されます 
+
+- **ディスク IO**:次の観点で、コンテナー内のノードに提供される各ディスクの対話型のディスク使用率グラフが示されます。
+
+    - 読み取りバイト数/秒、書き込みバイト数/秒、および読み書きバイト数/秒で、すべてのディスクにわたって集計されたディスク I/O の傾向 
+    - ディスク I/O のボトルネックの測定および特定に役立つ主要業績評価指標を示す 8 つのパフォーマンス グラフ。
+
+- **Kubelet**:キー ノードの動作統計を示す 2 つのグリッドが含まれています。
+
+    - ノード グリッドによる概要では、ノードごとの割合および傾向による、合計操作数、合計エラー数、および成功した操作数を要約します。
+    - 操作の種類ごとの概要では、割合および傾向による、合計操作数、合計エラー数、および成功した操作数を操作ごとに要約します。
+
+- **ネットワーク**:それぞれのノード ネットワーク アダプターごとの、対話形式のネットワーク使用率グラフと、ネットワーク アダプターのパフォーマンスの測定に役立つ主要パフォーマンス指標を表すグリッドを示します。  
+
+**[ブックの表示]** ドロップダウン リストからそれぞれを選択することにより、これらのブックにアクセスします。  
 
 ![[ブックの表示] ドロップダウン リスト](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
-
 ## <a name="next-steps"></a>次の手順
+
 - [Azure Monitor for containers を使用したパフォーマンス アラートの作成](container-insights-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合にアラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。 
+
 - [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。

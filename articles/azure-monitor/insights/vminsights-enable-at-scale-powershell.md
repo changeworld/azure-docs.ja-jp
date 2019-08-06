@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2019
+ms.date: 07/09/2019
 ms.author: magoedte
-ms.openlocfilehash: ff284ea0adf6021ace84cd6a41f0a0e4e987a9c8
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 1025041ae69f2048a6c5396aaebb50b5fa884f86
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67144246"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444165"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする
 
@@ -206,7 +206,7 @@ provisioningState       : Succeeded
 
 このスクリプトでは、各 VM または仮想マシン スケール セットに対して、VM 拡張機能が既にインストールされているかどうかが確認されます。 VM 拡張機能がインストールされていない場合、スクリプトで再インストールが試みられます。 VM 拡張機能がインストールされている場合、スクリプトでは Log Analytics と Dependency Agent の VM 拡張機能がインストールされます。
 
-このスクリプトには、Azure PowerShell モジュール Az バージョン 1.0.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+`Enable-AzureRM` 互換性エイリアスを有効にした Azure PowerShell モジュール Az バージョン 1.0.0 以降を使用していることを確認します。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 スクリプトの引数の詳細と使用例の一覧を取得するには、`Get-Help` を実行します。
 

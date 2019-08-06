@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 76d4fbaaea987b5d935d09b7ff1c490b6003a489
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c109627d2a2e9190afb2c27b9fb202e93baa68cb
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260364"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689666"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス
 
@@ -1014,7 +1014,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 | 値 | Type | 説明 | 
 |-------|------|-------------| 
-| <*inputs-to-compose*> | 任意 | 単一の出力を作成するための入力 | 
+| <*inputs-to-compose*> | Any | 単一の出力を作成するための入力 | 
 |||| 
 
 *例 1*
@@ -1645,7 +1645,7 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 | 値 | Type | 説明 | 
 |-------|------|-------------| 
 | <*column-name*> | string | 列のヘッダー名 | 
-| <*column-value*> | 任意 | その列に含まれる値 | 
+| <*column-value*> | Any | その列に含まれる値 | 
 |||| 
 
 *例 1*
@@ -2317,7 +2317,7 @@ ID,Product_Name
  "Run_until_loop_succeeds_or_expires": {
     "type": "Until",
     "actions": {
-        "Http": {
+        "HTTP": {
             "type": "Http",
             "inputs": {
                 "method": "GET",
@@ -2326,7 +2326,7 @@ ID,Product_Name
             "runAfter": {}
         }
     },
-    "expression": "@equals(outputs('Http')['statusCode', 200])",
+    "expression": "@equals(outputs('HTTP')['statusCode'], 200)",
     "limit": {
         "count": 60,
         "timeout": "PT1H"
@@ -2380,6 +2380,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | 整数 | ワークフローが最大数の同時実行インスタンスを既に実行しているときに実行を待機できるワークフロー インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 `concurrency.runs` プロパティでコンカレンシーの制限を変更できます。 <p>既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | すべてのトリガー | 
 | `runtimeConfiguration.concurrency.repetitions` | 整数 | 同時に (並行して) 実行できる "for each" ループ繰り返し回数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 <p>`repetitions` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「["for each" のコンカレンシーを変更する](#change-for-each-concurrency)」、または「["for each" ループを順次実行する](#sequential-for-each)」を参照してください。 | アクション: <p>[Foreach](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | 整数 | 改ページ位置の自動修正をサポートし、これが有効になっている特定のアクションの場合、この値により、取得する結果の*最小*数を指定します。 <p>改ページ位置の自動修正を有効にするには、[改ページ位置の自動修正によるデータ、アイテム、または結果の一括取得](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)に関する記事を参照してください | アクション:多様 |
+| `runtimeConfiguration.secureData.properties` | Array | 多くのトリガーおよびアクションでは、これらの設定により、ロジック アプリの実行履歴から入力と出力のどちらかまたは両方が非表示になります。 <p>このデータをセキュリティで保護するには、[実行履歴からの入力と出力の非表示](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view)に関するページを参照してください。 | ほとんどのトリガーとアクション |
 | `runtimeConfiguration.staticResult` | JSON オブジェクト | [静的結果](../logic-apps/test-logic-apps-mock-data-static-results.md)をサポートし、その設定が有効になっているアクションの場合、`staticResult` オブジェクトには以下の属性があります。 <p>- `name`。現在のアクションの静的結果の定義名を参照します。この名前は、ロジック アプリ ワークフローの `definition` 属性の `staticResults` 属性内に表示されます。 詳細については、[静的結果 - ワークフロー定義言語のスキーマ参照](../logic-apps/logic-apps-workflow-definition-language.md#static-results)に関するページを参照してください。 <p> - `staticResultOptions`。現在のアクションに対して静的結果が `Enabled` であるかどうかを指定します。 <p>静的結果を有効にするには、「[静的な結果を設定してモック データでロジック アプリをテストする](../logic-apps/test-logic-apps-mock-data-static-results.md)」を参照してください。 | アクション:多様 |
 ||||| 
 

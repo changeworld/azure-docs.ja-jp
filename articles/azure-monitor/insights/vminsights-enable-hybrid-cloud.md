@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/07/2019
+ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: bc26cc0654aac9416bf31ffccf426648e3a8b8d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8241069a8671919b70dfbe44fe28c99a05358c5
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122565"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489730"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>ハイブリッド環境での Azure Monitor for VMs (プレビュー) の有効化
 
@@ -44,6 +44,7 @@ ms.locfileid: "67122565"
 4. Azure Monitor for VMs をデプロイします。
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Windows に Dependency Agent をインストールする
+
 `InstallDependencyAgent-Windows.exe` を実行することで、Dependency Agent を Windows コンピューターに手動でインストールできます。 オプションを指定せずにこの実行可能ファイルを実行すると、セットアップ ウィザードが起動します。ここで、指示に従って対話形式でエージェントをインストールできます。
 
 >[!NOTE]
@@ -61,6 +62,7 @@ ms.locfileid: "67122565"
 Windows Dependency Agent のファイルは、既定で *C:\Program Files\Microsoft Dependency Agent* にインストールされます。 セットアップの完了後に Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 ログ ディレクトリは、 *%Programfiles%\Microsoft Dependency Agent\logs* にあります。
 
 ## <a name="install-the-dependency-agent-on-linux"></a>Linux に Dependency Agent をインストールする
+
 Dependency Agent は、*InstallDependencyAgent-Linux64.bin* (自己解凍バイナリ ファイルを含むシェル スクリプト) から Linux サーバーにインストールされます。 `sh` を使用してファイルを実行するか、実行アクセス許可をファイル自体に追加します。
 
 >[!NOTE]
@@ -89,12 +91,69 @@ Dependency Agent のファイルは、次のディレクトリに保存されま
 | サービス実行可能ファイル | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
 | バイナリ ストレージ ファイル | /var/opt/microsoft/dependency-agent/storage |
 
+## <a name="installation-script-examples"></a>インストール スクリプトの例
+
+Dependency Agent を同時に多数のサーバーに対して簡単にデプロイするために、次のスクリプトの例が提供されています。このスクリプトを使用すると、Dependency Agent をダウンロードして Windows または Linux にインストールできます。
+
+### <a name="powershell-script-for-windows"></a>Windows 用 PowerShell スクリプト
+
+```powershell
+Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
+
+.\InstallDependencyAgent-Windows.exe /S
+```
+
+### <a name="shell-script-for-linux"></a>Linux 用シェル スクリプト
+
+```
+wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
+sudo sh InstallDependencyAgent-Linux64.bin -s
+```
+
+## <a name="desired-state-configuration"></a>Desired State Configuration
+
+Desired State Configuration (DSC) を使用して Dependency Agent をデプロイするには、xPSDesiredStateConfiguration モジュールと次に示すコード例を使用できます。
+
+```powershell
+configuration ServiceMap {
+
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+
+    $DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
+
+    Node localhost
+    {
+        # Download and install the Dependency agent
+        xRemoteFile DAPackage 
+        {
+            Uri = "https://aka.ms/dependencyagentwindows"
+            DestinationPath = $DAPackageLocalPath
+        }
+
+        xPackage DA
+        {
+            Ensure="Present"
+            Name = "Dependency Agent"
+            Path = $DAPackageLocalPath
+            Arguments = '/S'
+            ProductId = ""
+            InstalledCheckRegKey = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent"
+            InstalledCheckRegValueName = "DisplayName"
+            InstalledCheckRegValueData = "Dependency Agent"
+            DependsOn = "[xRemoteFile]DAPackage"
+        }
+    }
+}
+```
+
 ## <a name="enable-performance-counters"></a>パフォーマンス カウンターを有効にする
+
 ソリューションによって参照されている Log Analytics ワークスペースが、ソリューションで必要なパフォーマンス カウンターを収集するようにまだ構成されていない場合は、カウンターを有効にする必要があります。 次の 2 つの方法のいずれかでこれを行うことができます。
 * 「[Log Analytics での Windows および Linux のパフォーマンス データ ソース](../../azure-monitor/platform/data-sources-performance-counters.md)」の説明に従って、手動で行います
 * [Azure PowerShell ギャラリー](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)で入手できる PowerShell スクリプトをダウンロードして実行します
 
 ## <a name="deploy-azure-monitor-for-vms"></a>Azure Monitor for VMs をデプロイする
+
 この方法には、Log Analytics ワークスペースでソリューション コンポーネントを有効にするための構成を指定する JSON テンプレートが含まれています。
 
 テンプレートを使用してリソースをデプロイする方法がわからない場合は、以下を参照してください。
@@ -185,6 +244,35 @@ Azure CLI を使用するには、まず、ローカルに CLI をインスト�
     provisioningState       : Succeeded
     ```
    監視を有効にしてから、ハイブリッド コンピューターの正常性の状態とメトリックが表示されるまで、約 10 分かかる場合があります。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="vm-doesnt-appear-on-the-map"></a>VM がマップに表示されない
+
+Dependency Agent のインストールに成功しても、マップにご利用のコンピューターが表示されない場合は、次の手順に従って問題を診断してください。
+
+1. Dependency Agent は正しくインストールされているのでしょうか? これについては、サービスがインストールされているか、実行中かを確認することで検証できます。
+
+    **Windows**:"Microsoft Dependency Agent" というサービスを探します。 
+
+    **Linux**:"microsoft-dependency-agent" という実行中のプロセスを探します。
+
+2. 現在、利用されているのは[無料の価格レベルの Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) ですか? 無料プランでは、一意のコンピューターを最大 5 台まで使用できます。 前の 5 台からデータが送信されなくなった場合でも、以降のコンピューターはマップに表示されません。
+
+3. コンピューターからログとパフォーマンス データが Azure Monitor ログに送信されていますか? コンピューターに対して次のクエリを実行します。 
+
+    ```Kusto
+    Usage | where Computer == "computer-name" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+    1 つ以上の結果が返されましたか? そのデータは最近のものですか? そうである場合は、Log Analytics エージェントは正しく動作しており、サービスと通信しています。 そうでない場合は、ご利用のサーバー上でエージェントを確認してください ([Windows 用 Log Analytics エージェントのトラブルシューティング](../platform/agent-windows-troubleshoot.md) または [Linux 用 Log Analytics エージェントのトラブルシューティング](../platform/agent-linux-troubleshoot.md)に関するページを参照)。
+
+#### <a name="computer-appears-on-the-map-but-has-no-processes"></a>マップにコンピューターは表示されるがプロセスが表示されない
+
+マップにサーバーは表示されるがプロセスや接続データが表示されない場合は、Dependency Agent がインストールされて実行されているがカーネル ドライバーがロードされなかったことを意味しています。 
+
+C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log ファイル (Windows) または /var/opt/microsoft/dependency-agent/log/service.log ファイル (Linux) を確認します。 ファイルの最後の行に、カーネルがロードされなかった原因が示されています。 たとえば、カーネルを更新した場合にそのカーネルが Linux でサポートされないことがあります。
+
 
 ## <a name="next-steps"></a>次の手順
 

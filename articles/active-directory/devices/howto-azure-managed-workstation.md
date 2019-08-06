@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90687d0229d3ad74c287bb4aff4885dc26932e40
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: be9e6374d92fbb7bb1c4b5a2a9e154119c5baf87
+ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227264"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68377495"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>セキュリティで保護された Azure マネージド ワークステーションのデプロイ
 
@@ -245,7 +245,7 @@ Windows Defender ATP と Intune の統合を構成するには、Azure portal �
 * スクリプトによって作成された Intune デバイス構成プロファイルは、**Azure portal** >  **[Microsoft Intune]**  >  **[デバイスの構成]**  >  **[プロファイル]** で確認できます。
 * スクリプトによって作成された Intune デバイス コンプライアンス ポリシーは、**Azure portal** >  **[Microsoft Intune]**  >  **[デバイスのポリシー準拠]**  >  **[ポリシー]** で確認できます。
 
-スクリプトによって行われた変更を確認するために、プロファイルをエクスポートできます。 これにより、SECCON のドキュメントで概説されているように、必要になる可能性のある追加のセキュリティ強化を確認できます。
+スクリプトによって行われた変更を確認するために、プロファイルをエクスポートできます。 これにより、[SECCON のドキュメント](https://docs.microsoft.com/windows/security/threat-protection/windows-security-configuration-framework/windows-security-configuration-framework)で概説されているように、必要になる可能性のある追加のセキュリティ強化を確認できます。
 
 [DeviceConfiguration GiuHub リポジトリ](https://github.com/microsoftgraph/powershell-intune-samples/tree/master/DeviceConfiguration)の Intune データ エクスポート スクリプト `DeviceConfiguration_Export.ps1` を実行して、現在のすべての Intune プロファイルをエクスポートします。
 

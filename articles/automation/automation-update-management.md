@@ -9,18 +9,21 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3bfec413430de588be6c4423702d41779a8426d0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 4bd0b6f0652f49c16bd67bbca5a89d19e17a8b2c
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477978"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498413"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
 Azure Automation の Update Management ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーで、Windows コンピューターと Linux コンピューターに対してオペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
 
 仮想マシンの Update Management は、Azure Automation アカウントから直接有効にすることができます。 Automation アカウントから仮想マシンの Update Management を有効にする方法については、[複数の仮想マシンの更新管理](manage-update-multi.md)に関するページを参照してください。 また、Azure portal の仮想マシン ページから仮想マシンの Update Management を有効にすることもできます。 このシナリオは、[Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) および [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) の仮想マシンに対して使用できます。
+
+> [!NOTE]
+> Update Management ソリューションでは、Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 サポートされているリージョンの確定的な一覧については、「ワークスペースのマッピング」 [./how-to/region-mappings.md] を参照してください。 リージョン マッピングは、Automation アカウントとは別のリージョンの仮想マシンを管理する機能には影響しません。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -54,7 +57,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 更新が必要なコンピューターへのソフトウェア更新プログラムのデプロイとインストールに、スケジュールされたデプロイを使用できます。 Windows コンピューターの場合、"*オプション*" に分類されている更新プログラムはデプロイの範囲に含まれません。 デプロイの範囲には、必須の更新プログラムのみが含まれています。
 
-スケジュールされたデプロイでは、適用可能な更新プログラムを受け取る対象コンピューターを定義する際に、コンピューターを明示的に指定するか、特定のコンピューター セットのログ検索、または指定した条件に基づいて動的に Azure VM を選択する [Azure クエリ](#azure-machines)に基づいた[コンピューター グループ](../azure-monitor/platform/computer-groups.md)を選択します。 これらのグループは[スコープ構成](../azure-monitor/insights/solution-targeting.md)とは異なります。これは、ソリューションを有効にする管理パックを取得するマシンを決定するためにのみ使用されます。 
+スケジュールされたデプロイでは、適用可能な更新プログラムを受け取る対象コンピューターを定義する際に、コンピューターを明示的に指定するか、特定のコンピューター セットのログ検索、または指定した条件に基づいて動的に Azure VM を選択する [Azure クエリ](#azure-machines)に基づいた[コンピューター グループ](../azure-monitor/platform/computer-groups.md)を選択します。 これらのグループは[スコープ構成](../azure-monitor/insights/solution-targeting.md)とは異なります。これは、ソリューションを有効にする管理パックを取得するマシンを決定するためにのみ使用されます。
 
 また、スケジュールを指定するときは、更新プログラムのインストールを許可する期間を承認し、設定します。 この期間は、メンテナンス期間と呼ばれます。 再起動が必要な場合、適切な再起動オプションを選択していれば、再起動のために 10 分間のメンテナンス期間が予約されます。 パッチ適用に予想よりも時間がかかり、メンテナンス期間の残りが 10 分を切った場合、再起動は行われません。
 
@@ -73,11 +76,14 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降 (Windows Server 2012 および 2016 を含む)    |.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします  ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 以降。  |.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします  ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための "yum" が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux での分類の更新](#linux-2)に関するページを参照してください。          |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |Ubuntu 14.04 LTS、16.04 LTS、18.04 (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
+
+> [!NOTE]
+> Azure 仮想マシン スケール セットは、Update Management で管理できます。 Update Management は、基本イメージではなくインスタンス自体で動作します。 一度にすべての VM インスタンスを更新しない場合、段階的に更新をスケジュールする必要があります。
 
 ### <a name="unsupported-client-types"></a>サポートされていないクライアントの種類
 
@@ -140,7 +146,7 @@ System Center Operations Manager 管理グループが Log Analytics ワーク�
 * [複数のマシンを参照することから](automation-onboard-solutions-from-browse.md)
 * [お使いの Automation アカウントから](automation-onboard-solutions-from-automation-account.md)
 * [Azure Automation Runbook によって](automation-onboard-solutions.md)
-  
+
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure 以外のマシンが配布準備済みであることを確認する
 
 直接接続されたマシンが Azure Monitor ログと通信していることを確認するには、数分経ってから、次のログ検索を実行します。
@@ -282,7 +288,7 @@ REST API から更新プログラムのデプロイを表示する方法につ�
 |ツール     | 1 つまたは複数のタスクを完了するのに役立つユーティリティまたは機能です。        |
 |更新プログラム     | 現在インストールされているアプリケーションまたはファイルに対する更新プログラムです。        |
 
-### <a name="linux"></a>Linux
+### <a name="linux-2"></a>Linux
 
 |分類  |説明  |
 |---------|---------|
@@ -578,7 +584,7 @@ Update Management では、Azure または Azure 以外の VM の動的グルー
 
 これらのグループはクエリによって定義され、更新プログラムのデプロイが開始するときに、そのグループのメンバーが評価されます。 動的なグループは、クラシック VM では動作しません。 クエリを定義するときに、次の項目をまとめて使用して動的グループを設定できます。
 
-* サブスクリプション
+* Subscription
 * リソース グループ
 * Locations
 * Tags

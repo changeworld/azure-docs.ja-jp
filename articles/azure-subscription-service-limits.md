@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: d1043f254d2a2cc2804ab8a4d68770b6d57cbed4
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 1c30d9e70facaf9ab47bd33e5ca1fc1d35c6c979
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295946"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405856"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
@@ -289,6 +289,10 @@ Azure Database for PostgreSQL の制限については、「[Azure Database for 
 #### <a name="action-groups"></a>アクション グループ
 
 [!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-action-groups.md)]
+
+#### <a name="log-queries-and-language"></a>ログ クエリと言語
+
+[!INCLUDE [monitoring-limits](../includes/azure-monitor-limits-log-queries.md)]
 
 #### <a name="log-analytics-workspaces"></a>Log Analytics ワークスペース
 

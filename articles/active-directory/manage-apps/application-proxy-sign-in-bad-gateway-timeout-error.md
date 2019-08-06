@@ -1,5 +1,5 @@
 ---
-title: アプリケーション プロキシ アプリケーション使用時に企業アプリケーションにアクセスできないエラー | Microsoft Docs
+title: アプリ プロキシ アプリ使用時のこの企業アプリケーションにアクセスできないというエラー | Microsoft Docs
 description: Azure AD アプリケーション プロキシ アプリケーションのアクセスに関する一般的な問題の解決方法。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 734aeac1f4f2850d73dcdc9f9cc6ceac45708884
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6e54b54f592082ad998e1f5dfbdcb5ed30e6dc4a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807729"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381406"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 

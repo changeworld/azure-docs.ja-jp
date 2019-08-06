@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: 4a9f7762b7960c74acad8203f70bc1e7c7cbd90f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7858d94b6e2a9ef07da9121cb84ffaf6adaa24d3
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063222"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360538"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
 
@@ -67,7 +67,7 @@ ms.locfileid: "67063222"
 次の表に示したように、URL には、忘れずに `luis/v2.0` ルーティングを含めてください。
 
 
-|必須| Name | データ型 | 説明 |
+|必須| EnableAdfsAuthentication | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
@@ -76,7 +76,6 @@ ms.locfileid: "67063222"
 [!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
 ## <a name="fluentd-settings"></a>Fluentd の設定
-
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
@@ -88,7 +87,6 @@ ms.locfileid: "67063222"
  
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-
 ## <a name="mount-settings"></a>マウントの設定
 
 コンテナーとの間でデータを読み書きするには、バインド マウントを使用します。 入力マウントまたは出力マウントは、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドで `--mount` オプションを指定することによって指定できます。 
@@ -99,7 +97,7 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 
 次の表で、サポートされる設定について説明します。
 
-|必須| Name | データ型 | 説明 |
+|必須| EnableAdfsAuthentication | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |はい| `Input` | string | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
 |いいえ| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 LUIS のクエリ ログやコンテナー ログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -118,8 +116,8 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
-|{ENDPOINT_KEY} | トレーニング済み LUIS アプリケーションのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT} | 課金エンドポイントの値は、Azure `Cognitive Services` の [概要] ページで確認できます。 |https://westus.api.cognitive.microsoft.com/luis/v2.0|
+|{API_KEY} | トレーニング済み LUIS アプリケーションのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{ENDPOINT_URL} | 課金エンドポイントの値は、Azure `Cognitive Services` の [概要] ページで確認できます。 |https://westus.api.cognitive.microsoft.com/luis/v2.0|
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](luis-container-howto.md#billing)」を参照してください。
@@ -135,8 +133,8 @@ docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 ^
 --mount type=bind,src=c:\output,target=/output ^
 mcr.microsoft.com/azure-cognitive-services/luis:latest ^
 Eula=accept ^
-Billing={BILLING_ENDPOINT} ^
-ApiKey={ENDPOINT_KEY}
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY}
 ```
 
 ### <a name="applicationinsights-example"></a>ApplicationInsights の例
@@ -149,8 +147,8 @@ docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
 --mount type=bind,src=c:\output,target=/output ^
 mcr.microsoft.com/azure-cognitive-services/luis:latest ^
 Eula=accept ^
-Billing={BILLING_ENDPOINT} ^
-ApiKey={ENDPOINT_KEY} ^
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY} ^
 InstrumentationKey={INSTRUMENTATION_KEY}
 ```
 
@@ -164,8 +162,8 @@ docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
 --mount type=bind,src=c:\output,target=/output ^
 mcr.microsoft.com/azure-cognitive-services/luis:latest ^
 Eula=accept ^
-Billing={BILLING_ENDPOINT} ^
-ApiKey={ENDPOINT_KEY} ^
+Billing={ENDPOINT_URL} ^
+ApiKey={API_KEY} ^
 Logging:Console:LogLevel:Default=Information
 ```
 

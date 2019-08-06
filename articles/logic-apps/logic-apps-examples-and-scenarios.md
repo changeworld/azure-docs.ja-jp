@@ -10,16 +10,16 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/2018
-ms.openlocfilehash: 6d9a2929d7b8b1687b602093d0e9de35508dbd8c
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 95eca4c7f3e8170f6559799fc4c706e95df70e9e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273082"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385510"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps の一般的なシナリオ、例、チュートリアル、手順
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) には、オンプレミスの SQL Server または SAP から Microsoft Cognitive Services まで、[すぐに使用できるコネクタが数百個](../connectors/apis-list.md)用意されているため、さまざまなサービスの調整と統合に使用できます。 Logic Apps サービスは "サーバーレス" なので、スケールやインスタンスに関する心配は不要です。 必要なことは、ワークフローが実行するトリガーとアクションに関するワークフローの定義のみです。 拡張性、可用性、およびパフォーマンスは、基になるプラットフォームによって処理されます。 Logic Apps は、複数のシステム全体で複数のアクションを調整する必要があるユース ケースやシナリオに特に適しています。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) には、オンプレミスの SQL Server または SAP から Azure Cognitive Services まで、[すぐに使用できるコネクタが数百個](../connectors/apis-list.md)用意されているため、さまざまなサービスの調整と統合に使用できます。 Logic Apps サービスは "サーバーレス" なので、スケールやインスタンスに関する心配は不要です。 必要なことは、ワークフローが実行するトリガーとアクションに関するワークフローの定義のみです。 拡張性、可用性、およびパフォーマンスは、基になるプラットフォームによって処理されます。 Logic Apps は、複数のシステム全体で複数のアクションを調整する必要があるユース ケースやシナリオに特に適しています。
 
 ここでは、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) がサポートする数多くのパターンと機能を理解するうえで役立つ、一般的な例とシナリオを紹介します。
 
@@ -80,7 +80,7 @@ Visual Studio、Azure DevOps、またはその他のソース管理および自�
 
 * [Visual Studio でロジック アプリを作成してデプロイする](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [既存のロジック アプリで監視、ログ記録、アラートをオンにする](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [自動デプロイ テンプレートを作成する](../logic-apps/logic-apps-create-deploy-template.md)
+* [ロジック アプリ デプロイを自動化する](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>実行時のコンテンツ タイプ、変換
 
@@ -98,7 +98,7 @@ Azure Logic Apps [ワークフロー定義言語](https://aka.ms/logicappsdocs)�
 * [ロジック アプリから Azure Functions を呼び出す](../logic-apps/logic-apps-azure-functions.md)
 * [チュートリアル:Azure Functions でロジック アプリをトリガーする](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [チュートリアル:Azure Event Grid と Logic Apps で仮想マシンの変更を監視する](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
-* [チュートリアル:Azure Logic Apps および Microsoft Cognitive Services と統合して Twitter の投稿のセンチメントを分析する関数を作成する](../azure-functions/functions-twitter-email.md)
+* [チュートリアル:Azure Logic Apps および Azure Cognitive Services と統合して Twitter の投稿のセンチメントを分析する関数を作成する](../azure-functions/functions-twitter-email.md)
 * [チュートリアル:Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [ブログ:ロジック アプリから SOAP エンドポイントを呼び出す](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 

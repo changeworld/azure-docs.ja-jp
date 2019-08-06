@@ -3,16 +3,17 @@ title: Azure Container Registry タスク (ACR) でコンテナー イメージ�
 description: クラウド内でのコンテナー イメージの安全で自動化されたビルド、管理、修正プログラム適用を提供する、Azure Container Registry の機能スイートである ACR タスクの概要。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 5089650996693b81e548bba8d89c0de29a8afd93
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147979"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311881"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -49,7 +50,7 @@ ACR タスクの[クイック タスク](container-registry-tutorial-quick-task.
 | GitHub のサブフォルダー | GitHub リポジトリのサブフォルダー内のファイル 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
 
-ACR タスクは、コンテナー ライフサイクル プリミティブとして設計されています。 たとえば、ACR タスクを CI/CD ソリューションに統合します。 [az login][az-login] を[サービス プリンシパル][az-login-service-principal]で実行することにより、CI/CD ソリューションは [az acr build][az-acr-build] コマンドを発行してイメージ ビルドを開始できます。
+ACR タスクは、コンテナー ライフサイクル プリミティブとして設計されています。 たとえば、ACR タスクを CI/CD ソリューションに統合します。 [az login][az-login] を with a [service principal][az-login-service-principal]実行することにより、CI/CD ソリューションは [az acr build][az-acr-build] コマンドを発行してイメージ ビルドを開始できます。
 
 クイック タスクを使用する方法については、[Azure Container Registry タスクを使用してクラウドでコンテナー イメージをビルドする](container-registry-tutorial-quick-task.md)ことに関する ACR タスクの最初のチュートリアルを参照してください。
 
@@ -66,7 +67,7 @@ ACR タスクを使用して、コードが Git リポジトリにコミット�
 
 ACR タスクがコンテナー ビルド ワークフローを真に強化する能力は、基本イメージに対する更新を検出する機能に由来します。 更新された基本イメージがレジストリにプッシュされると、または基本イメージが Docker Hub などのパブリック リポジトリで更新されると、ACR タスクではそれに基づいてすべてのアプリケーション イメージを自動的にビルドできます。
 
-コンテナー イメージは、"*基本*" イメージと "*アプリケーション*" イメージに大きく分類できます。 通常、基本イメージには、アプリケーションのビルドとその他のカスタマイズの基になるオペレーティング システムとアプリケーション フレームワークが含まれます。 通常、これらの基本イメージ自体はパブリック アップストリーム イメージに基づいています。たとえば、[Alpine Linux][base-alpine]、[Windows][base-windows]、[.NET][base-dotnet]、[Node.js][base-node] です。 いくつかのアプリケーション イメージは、共通の基本イメージを共有することがあります。
+コンテナー イメージは、"*基本*" イメージと "*アプリケーション*" イメージに大きく分類できます。 通常、基本イメージには、アプリケーションのビルドとその他のカスタマイズの基になるオペレーティング システムとアプリケーション フレームワークが含まれます。 通常、これらの基本イメージ自体はパブリック アップストリーム イメージに基づいています。たとえば、[Alpine Linux][base-alpine], [Windows][base-windows]、[.NET][base-dotnet]、または [Node.js][base-node]。 いくつかのアプリケーション イメージは、共通の基本イメージを共有することがあります。
 
 重要な OS セキュリティ更新プログラムなどによって OS またはアプリ フレームワークのイメージが更新された場合は、基本イメージも更新して重要な修正を組み込む必要があります。 各アプリケーション イメージもリビルドして、基本イメージに組み込まれたこれらのアップストリームの修正プログラムを組み込む必要があります。
 

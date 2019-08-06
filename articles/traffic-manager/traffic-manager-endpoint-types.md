@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: allensu
-ms.openlocfilehash: 469b6543b380cb6b3b10c3def8484bed944f8556
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1b72fc510543ff57f5fac1b03e76df7ffed3fbfe
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071204"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333829"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager エンドポイント
 
@@ -91,6 +91,17 @@ Traffic Manager ポータル、PowerShell、CLI、または REST API を使用�
 
 プロファイル内のすべてのエンドポイントまたはプロファイル自体が無効になっている場合、Traffic Manager は 'NXDOMAIN' 応答を新しい DNS クエリに送信します。
 
+## <a name="faqs"></a>FAQ
+
+* [複数のサブスクリプションのエンドポイントで Traffic Manager を使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
+
+* [クラウド サービス 'Staging' スロットで Traffic Manager を使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-cloud-service-staging-slots)
+
+* [Traffic Manager では IPv6 エンドポイントはサポートされていますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-ipv6-endpoints)
+
+* [同じリージョン内の複数の Web アプリで Traffic Manager を使用できますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
+
+* [Traffic Manager プロファイルの Azure エンドポイントを別のリソース グループに移動する操作方法を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group)
 
 ## <a name="next-steps"></a>次の手順
 

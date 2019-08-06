@@ -4,23 +4,25 @@ description: Azure AD Identity Protection 多要素認証登録ポリシーを�
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2019
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 434d07163713a139b42a5dbe1664f81dafc2a1ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27ff7512bb3f9422ed4c8edd7ab50fce23f0ed07
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108936"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499560"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>方法:Azure Multi-Factor Authentication 登録ポリシーを構成する
 
-Azure AD Identity Protection は、MFA 登録を要求する条件付きアクセス ポリシーを構成することによって、サインインするアプリに関係なく、多要素認証 (MFA) 登録の展開を管理するのに役立ちます。 この記事では、このポリシーの使用目的およびその構成方法について説明します。
+Azure AD Identity Protection は、MFA 登録を要求する条件付きアクセス ポリシーを構成することによって、サインインする先進認証アプリに関係なく、多要素認証 (MFA) 登録の展開を管理するのに役立ちます。 この記事では、このポリシーの使用目的およびその構成方法について説明します。
+
+
 
 ## <a name="what-is-the-azure-multi-factor-authentication-registration-policy"></a>Azure Multi-Factor Authentication 登録ポリシーとは
 
@@ -58,6 +60,8 @@ MFA 登録ポリシーを構成する場合、次の構成の変更を行う必�
 - ポリシーを**保存**します
 
 ## <a name="user-experience"></a>ユーザー エクスペリエンス
+
+Azure Active Directory Identity Protection は、次回対話形式でサインインするときに、ユーザーに登録を求めるプロンプトを表示します。
 
 関連するユーザー エクスペリエンスの概要については、以下を参照してください。
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2019
+ms.date: 07/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: bdfa11b8b8d16c4d00d94cc74c8c7a0f02ad26b5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ff747e7bc3329d3665b52f6fa8e72e1ca308a87e
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226135"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310341"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -83,7 +83,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |サポートされています |サポートされています |モントリオール、トロント、ケベック シティ |
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/bt-compute-for-microsoft-azure)** |サポートされています |サポートされています |アムステルダム、香港特別行政区、ヨハネスブルグ、ロンドン、ニューポート (ウェールズ)、サンパウロ、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
-| **C3ntro** |近日対応予定 |近日対応予定 |マイアミ |
+| **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |サポートされています |サポートされています |マイアミ |
 | **CDC** | サポートされています | サポートされています | キャンベラ、キャンベラ2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |サポートされています |サポートされています |アムステルダム 2、シカゴ、香港、ラスベガス、ニューヨーク、パリ、サンアントニオ、シリコン バレー、東京、トロント、ワシントン DC |
 | **Chief Telecom** |サポートされています |サポートされています |香港、台北 |
@@ -134,6 +134,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |サポートされています |サポートされています |チェンナイ、ムンバイ 2 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |サポートされています |サポートされています |シンガポール、シンガポール 2 |
 | **[Softbank](https://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |サポートされています |サポートされています |大阪、東京 |
+| **[Spark NZ](https://www.sparkdigital.co.nz/solutions/connectivity/cloud-connect/)** |サポートされています |サポートされています |シドニー |
 | **[Sprint](https://business.sprint.com/solutions/cloud-networking/)** |サポートされています |サポートされています |シカゴ、シリコン バレー、ワシントン DC |
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |サポートされています |サポートされています |アムステルダム、チェンナイ、香港特別行政区、ロンドン、ムンバイ、サンパウロ、シリコン バレー、シンガポール、ワシントン DC |
 | **Telecity Group** |サポートされています |サポートされています |アムステルダム |

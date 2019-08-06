@@ -11,37 +11,37 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 07/25/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b269c75be7fec55fb77afecc6d04b86266c74a6f
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 20ef71f98817a57f884e9c5a3cef4ceeaebe74eb
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147298"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498430"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークに統合する
-このドキュメントでは、Azure App Service の仮想ネットワーク統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネット以外のルーティング可能なネットワークに配置できます。  
+このドキュメントでは、Azure App Service の仮想ネットワーク統合機能と、それを [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) のアプリで設定する方法について説明します。 [Azure Virtual Network][VNETOverview] (VNet) を使用すると、多くの Azure リソースをインターネットでルーティングできないネットワークに配置できます。  
 
-Azure App Service には、2 つの形式があります。 
+Azure App Service には、次の 2 つのバリエーションがあります。 
 
 1. Isolated を除くすべての価格プランをサポートするマルチテナント システム
 2. VNet にデプロイされ、Isolated 価格プランのアプリをサポートする App Service Environment (ASE)
 
-このドキュメントでは、マルチテナント App Service で使用される 2 つの VNet 統合機能について説明します。 アプリが [App Service Environment][ASEintro] 内にある場合は、既に VNet 内にアプリが存在しているので、同じ VNet 内のリソースに到達するために VNet 統合機能を使用する必要はありません。 App Service のすべてのネットワーク機能の詳細については、[App Service のネットワーク機能](networking-features.md)に関するページを参照してください。
+このドキュメントでは、マルチテナント App Service で使用される 2 つの VNet 統合機能について説明します。 アプリが [App Service Environment][ASEintro] 内にある場合、そのアプリは既に VNet 内に存在するため、同じ VNet 内のリソースに到達するために VNet 統合機能を使用する必要はありません。 App Service のすべてのネットワーク機能の詳細については、[App Service のネットワーク機能](networking-features.md)に関するページを参照してください。
 
 VNet 統合機能には、次の 2 つの形式があります。
 
 1. 1 つのバージョンでは、同じリージョン内の VNet との統合を有効にします。 この形式の機能では、同じリージョン内の VNet 内にサブネットが必要です。 この機能はまだプレビュー段階ですが、Windows アプリケーションの運用環境ワークロードではサポートされており、以下に注意点がいくつかあります。
-2. もう 1 つのバージョンでは、他のリージョン内の VNet またはクラシック VNet との統合を有効にします。 このバージョンの機能では、VNet への Virtual Network ゲートウェイのデプロイが必要です。 これは、ポイントツーサイトの VPN ベースの機能です。
+2. もう 1 つのバージョンでは、他のリージョン内の VNet またはクラシック VNet との統合を有効にします。 このバージョンの機能では、VNet への Virtual Network ゲートウェイのデプロイが必要です。 これはポイント対サイト VPN ベースの機能であり、Windows アプリでのみサポートされています。
 
 アプリが同時に使用できる VNet 統合機能の形式は 1 つだけです。 そのため、どちらの機能を使用すべきかが問題になります。 これらはどちらも多くの目的に使用できます。 ただし、明確な差別化要素を次に示します。
 
 | 問題点  | 解決策 | 
 |----------|----------|
 | 同じリージョン内の RFC 1918 アドレス (10.0.0.0/8、172.16.0.0/12、192.168.0.0/16) に到達する必要がある | リージョン Vnet 統合 |
-| クラシック VNet または別のリージョン内の VNet に到達する必要がある | ゲートウェイが必要な Vnet 統合 |
+| クラシック VNet または別のリージョン内の VNet にあるリソースに到達する必要がある | ゲートウェイが必要な Vnet 統合 |
 | ExpressRoute にまたがる RFC 1918 エンドポイントに到達する必要がある | リージョン Vnet 統合 |
 | サービス エンドポイントにまたがるリソースに到達する必要がある | リージョン Vnet 統合 |
 
@@ -78,12 +78,16 @@ Vnet 統合がアプリと同じリージョン内の VNet で使用される場
 * グローバル ピアリング接続にまたがるリソースには到達できません。
 * アプリから VNet に来るトラフィックに関するルートは設定できません。
 * この機能は、PremiumV2 の App Service プランをサポートする新しい App Service スケール ユニットからのみ使用できます。
+* 統合サブネットは、1 つの App Service プランでしか使用できません。
 * この機能は、App Service Environment にある Isolated プランのアプリでは使用できません。
-* この機能では、Resource Manager VNet 内に少なくとも 32 個のアドレスを含む未使用のサブネットが必要です。
+* この機能では、Resource Manager VNet 内に 32 個以上のアドレスを含む /27 である未使用のサブネットが必要です。
 * アプリと VNet は同じリージョンに存在する必要があります。
-* App Service プランのインスタンスごとに 1 つのアドレスが使用されます。 サブネットのサイズは割り当て後に変更できないため、最大スケール サイズに余裕を持って対応できるサブネットを使用します。 20 インスタンスまでスケーリングする App Service プランに対応できるので、32 アドレスの /27 が推奨サイズです。
 * 統合アプリで VNet を削除することはできません。 まず、その統合を削除する必要があります。 
 * App Service プランごとに 1 リージョンの VNet 統合のみを持つことができます。 同じ App Service プラン内の複数のアプリが同じ VNet を使用できます。 
+
+App Service プランのインスタンスごとに 1 つのアドレスが使用されます。 アプリを 5 つのインスタンスにスケーリングした場合は、5 つのアドレスが使用されます。 割り当てた後はサブネット サイズを変更できないため、アプリが到達する可能性のあるスケールに対応できるだけの十分な大きさを持つサブネットを使用する必要があります。 32 個のアドレスを含む /27 は、20 個のインスタンスにスケーリングされる Premium App Service プランに対応できるため、推奨されるサイズです。
+
+別の App Service プランのアプリで、別の App Service プランのアプリから既に接続されている VNet に到達するようにしたい場合は、既存の VNet 統合によって使用されているものとは異なるサブネットを選択する必要があります。  
 
 この機能は Linux でもプレビュー段階です。 同じリージョン内の Resource Manager VNet で VNet 統合機能を使用するには:
 
@@ -101,11 +105,15 @@ Vnet 統合がアプリと同じリージョン内の VNet で使用される場
 
 VNet からアプリを切断するには、 **[切断]** を選択します。 これにより、Web アプリが再起動されます。 
 
-新しい VNet 統合機能では、サービス エンドポイントを使用できます。  アプリでサービス エンドポイントを使用するには、新しい VNet 統合を使用し、選択した VNet に接続してから、統合に使用したサブネット上のサービス エンドポイントを構成します。 
 
 #### <a name="web-app-for-containers"></a>Web App for Containers
 
 Linux 上の App Service を組み込みイメージで使用する場合、リージョンの VNet 統合機能は追加の変更なしで機能します。 Web App for Containers を使用している場合は、VNet 統合を使用するために docker イメージを変更する必要があります。 docker イメージで、ハードコーディングされたポート番号を使用するのではなく、メイン Web サーバーのリスニング ポートとして PORT 環境変数を使用します。 PORT 環境変数は、コンテナーの起動時に App Service プラットフォームによって自動的に設定されます。
+
+### <a name="service-endpoints"></a>サービス エンドポイント
+
+新しい VNet 統合機能では、サービス エンドポイントを使用できます。  アプリでサービス エンドポイントを使用するには、新しい VNet 統合を使用し、選択した VNet に接続してから、統合に使用したサブネット上のサービス エンドポイントを構成します。 
+
 
 ### <a name="how-vnet-integration-works"></a>VNet 統合の動作
 
@@ -153,7 +161,7 @@ Vnet 統合が有効になっても、アプリは引き続き、通常と同じ
 
 1. [VPN ゲートウェイを作成][creategateway]します。 VPN の種類はルート ベースを選択します。
 
-1. [ポイントからサイトへアドレスを設定][setp2saddresses]します。 ゲートウェイが Basic SKU 内にない場合は、ポイント対サイトの構成で IKEV2 を無効にする必要があり、SSTP を選択する必要があります。 アドレス空間は、RFC 1918 アドレス ブロック 10.0.0.0/8、172.16.0.0/12、192.168.0.0/16 内に存在する必要があります。
+1. [ポイント対サイト アドレスを設定][setp2saddresses]します。 ゲートウェイが Basic SKU 内にない場合は、ポイント対サイトの構成で IKEV2 を無効にする必要があり、SSTP を選択する必要があります。 アドレス空間は、RFC 1918 アドレス ブロック 10.0.0.0/8、172.16.0.0/12、192.168.0.0/16 内に存在する必要があります。
 
 App Service の VNet 統合で使用するゲートウェイを作成しているだけの場合は、証明書をアップロードする必要はありません。 ゲートウェイの作成には 30 分かかることがあります。 ゲートウェイがプロビジョニングされるまで、アプリを VNet に統合することはできません。 
 
@@ -217,7 +225,7 @@ ASP VNet 統合 UI には、ASP でアプリが使用しているすべての VN
 VNet 経由でオンプレミスに到達するために、リージョン Vnet 統合機能に追加の構成は必要ありません。 必要なのは、単に ExpressRoute またはサイト間 VPN を使用して VNet をオンプレミスに接続することだけです。 
 
 > [!NOTE]
-> ゲートウェイが必要な Vnet 統合機能では、アプリは ExpressRoute ゲートウェイを含む VNet とは統合されません。 ExpressRoute ゲートウェイが[共存モード][VPNERCoex]で構成されている場合であっても、VNet 統合は機能しません。 ExpressRoute 接続経由でリソースにアクセスする必要がある場合は、VNet で実行されるリージョン Vnet 統合機能または [App Service Environment][ASE] を使用できます。 
+> ゲートウェイが必要な Vnet 統合機能では、アプリは ExpressRoute ゲートウェイを含む VNet とは統合されません。 ExpressRoute ゲートウェイが[共存モード][VPNERCoex]で構成されている場合であっても、VNet 統合は機能しません。 ExpressRoute 接続経由でリソースにアクセスする必要がある場合は、VNet で実行されるリージョン VNet 統合機能または [App Service Environment][ASE] を使用できます。 
 > 
 > 
 
@@ -237,8 +245,8 @@ VNet 経由でオンプレミスに到達するために、リージョン Vnet 
 ゲートウェイが必要な Vnet 統合機能の使用に関連する料金には、次の 3 つがあります。
 
 * ASP の価格レベルの料金 - アプリは Standard、Premium、または PremiumV2 の App Service プランに属している必要があります。 これらのコストの詳細については、「[App Service の価格][ASPricing]」を参照してください。 
-* データ転送のコスト - VNet が同じデータ センター内に存在する場合でも、データ エグレスの料金が発生します。 それらの料金については、[データ転送の価格の詳細][DataPricing]に関するページを参照してください。 
-* VPN Gateway のコスト - ポイント対サイト VPN に必要な VNet ゲートウェイに対してコストが発生します。 詳細については、[VPN Gateway の価格][VNETPricing]に関するページを参照してください。
+* データ転送のコスト - VNet が同じデータ センター内に存在する場合でも、データ エグレスの料金が発生します。 これらの料金は、「[帯域幅の料金詳細][DataPricing]」で説明されています。 
+* VPN Gateway のコスト - ポイント対サイト VPN に必要な VNet ゲートウェイに対してコストが発生します。 これらの詳細は、「[VPN Gateway の価格][VNETPricing]」のページに記載されています。
 
 
 ## <a name="troubleshooting"></a>トラブルシューティング

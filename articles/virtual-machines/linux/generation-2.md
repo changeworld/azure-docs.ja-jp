@@ -4,7 +4,7 @@ description: 第 2 世代 VM に対する Azure のサポートの概要
 services: virtual-machines-linux
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 352df275742c38307065252d2f65bb4253d78e5d
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: e551f23c833a5ed88fe14a2f61b03581be0c74fc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151268"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479997"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure での第 2 世代 VM (プレビュー) のサポート
 
@@ -37,12 +37,15 @@ ms.locfileid: "67151268"
 
 第 1 世代 VM は、Azure のすべての VM サイズでサポートされています。 Azure では現在、次の選択された VM シリーズに対して第 2 世代のプレビュー サポートが提供されています。
 
+* [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
 * [Dsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series)および [Dsv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
 * [Esv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
 * [Fsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
-* [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#gs-series)
+* [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
 * [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
 * [Mv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series)
+* [NCv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series)と [NCv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
+* [ND シリーズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
 

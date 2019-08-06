@@ -3,16 +3,17 @@ title: Azure Container Registry のイメージをロックする
 description: コンテナー イメージまたはリポジトリの属性を設定して、Azure コンテナー レジストリで削除や上書きができないようにします。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: danlep
-ms.openlocfilehash: ebbfaba158e7ddb669111f097eb1adde2373aa6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a313353ee1c7afae10fd7af84570565037e40ab
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60828649"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310642"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure コンテナー レジストリのコンテナー イメージをロックする
 

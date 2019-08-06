@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5919eebccad8d7f9e048ae07be296eaaaf8428eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 316c5b6b52c30b51fb2f177a0ae2bd9758fc91d9
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112108"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68442475"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -57,7 +57,6 @@ Microsoft から、次のクラウド アプリに条件付きアクセス ポ�
 - Microsoft Intune
 - Microsoft Intune Enrollment
 - Microsoft Planner
-- Microsoft Power BI
 - Microsoft PowerApps
 - Microsoft Search in Bing
 - Microsoft StaffHub
@@ -69,6 +68,7 @@ Microsoft から、次のクラウド アプリに条件付きアクセス ポ�
 - Office Delve
 - Office Sway
 - Outlook Groups
+- Power BI サービス
 - Project Online
 - Skype for Business Online
 - 仮想プライベート ネットワーク (VPN)
@@ -97,11 +97,13 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 ![クライアント OS にアクセス ポリシーを関連付ける](./media/technical-reference/41.png)
 
+**他のクライアント**条件を使用してレガシ認証をブロックする場合は、デバイスのプラットフォーム条件も設定できます。
+
 ## <a name="client-apps-condition"></a>クライアント アプリの条件
 
 条件付きアクセス ポリシー内で、[クライアント アプリ](conditions.md#client-apps)の条件を構成して、アクセス試行を開始したクライアント アプリにポリシーを関連付けることができます。 クライアント アプリの条件を設定し、次の種類のクライアント アプリからアクセス試行が行われたときに、アクセスを許可またはブロックします。
 
-- ブラウザー
+- Browser
 - モバイル アプリとデスクトップ アプリ
 
 ![クライアント アプリのアクセスの制御](./media/technical-reference/03.png)
@@ -134,23 +136,23 @@ Windows 7、iOS、Android、および macOS では、Azure AD によって、デ
 
 #### <a name="chrome-support"></a>Chrome のサポート
 
-**Windows 10 Creators Update (バージョン 1703)** 以降で Chrome をサポートするには、[この拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールしてください。
+**Windows 10 Creators Update (バージョン 1703)** 以降で Chrome をサポートするには、[Windows 10 Accounts 拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールしてください。 条件付きアクセス ポリシーでデバイス固有の詳細が必要な場合は、この拡張機能が必要です。
 
 Chrome ブラウザーにこの拡張機能を自動的に展開するには、次のレジストリ キーを作成します。
 
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
+| EnableAdfsAuthentication | 1 |
 | Type | REG_SZ (文字列) |
-| データ | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
+| データ | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
 **Windows 8.1 および 7** で Chrome をサポートするには、次のレジストリ キーを作成してください。
 
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
+| EnableAdfsAuthentication | 1 |
 | Type | REG_SZ (文字列) |
 | データ | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
@@ -202,6 +204,8 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 
 - Microsoft Azure Information Protection
 - Microsoft Bookings
+- Microsoft Cortana
+- Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
@@ -240,8 +244,11 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 
 この設定は、以下のクライアント アプリに適用されます。
 
+- Microsoft Cortana
+- Microsoft Edge
 - Microsoft OneDrive
 - Microsoft Outlook
+- Microsoft Planner
 
 **解説**
 

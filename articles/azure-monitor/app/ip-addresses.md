@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 07/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: e59b82c3b1000d679e6faa0fc3c55c624a255443
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 3d2aefa7040ca2082e0e584d250d99f1ca00edf7
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302531"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326419"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights および Log Analytics によって使用される IP アドレス
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
@@ -52,7 +52,7 @@ Status Monitor の構成 - 変更を加える場合にのみ必要です。
 | 構成 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
 | 構成 |`auth.gfx.ms` | |`443` |
 | 構成 |`login.live.com` | |`443` |
-| インストール |`packages.nuget.org`、`nuget.org`、`api.nuget.org`、`az320820.vo.msecnd.net` (NuGet ダウンロード) | |`443` |
+| インストール | `globalcdn.nuget.org`、`packages.nuget.org`、`api.nuget.org/v3/index.json` `nuget.org`、`api.nuget.org`、`dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>可用性テスト
 これは [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md) の実行元のアドレスの一覧です。 アプリで Web テストを実行しようとするが、Web サーバーが特定のクライアントの処理に制限されている場合は、可用性テスト サーバーからの着信トラフィックを許可する必要があります。

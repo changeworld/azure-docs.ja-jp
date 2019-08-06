@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: allensu
-ms.openlocfilehash: a74af002dfdad5df9640be4b5fdd7f657b183bd4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 281e1e591d7c3cc31b77a116fb42af49dc27798c
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071183"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68312147"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager のしくみ
 
@@ -69,6 +69,29 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
 
 再帰 DNS サービスでは、受信した DNS 応答をキャッシュします。 クライアント デバイス上の DNS リゾルバーも、結果をキャッシュします。 キャッシュのデータを使用することで、後続の DNS クエリに対する応答が迅速になります。他のネーム サーバーにクエリを実行する必要はありません。 キャッシュの期間は、各 DNS レコードの "Time-to-Live" (TTL) プロパティによって決まります。 値を小さくすると、キャッシュの有効期限が短くなるため、Traffic Manager ネーム サーバーとのラウンドトリップが増加します。 値を大きくすると、失敗したエンドポイントからトラフィックを転送するときにより時間がかかる可能性があります。 Traffic Manager では、Traffic Manager の DNS 応答で使用する TTL を 0 ～ 2,147,483,647 秒に構成できるため (最大範囲は [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt) に準拠している)、アプリケーションのニーズの最適なバランスを実現する値を選択できます。
 
+## <a name="faqs"></a>FAQ
+
+* [Traffic Manager ではどの IP アドレスが使用されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
+
+* [Traffic Manager を使用して、どのような種類のトラフィックをルーティングできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
+
+* [Traffic Manager では "スティッキー" セッションはサポートされていますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+
+* [Traffic Manager を使用していると HTTP エラーが表示されたのはなぜですか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
+
+* [Traffic Manager を使用すると、パフォーマンスにどのような影響がありますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
+
+* [Traffic Manager ではどのようなアプリケーション プロトコルを使用できますか](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+
+* ["ネイキッド" ドメイン名で Traffic Manager を使用することはできますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+
+* [Traffic Manager では、DNS クエリを処理するときにクライアントのサブネット アドレスは考慮されますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+
+* [DNS TTL とは何ですか。DNS TTL はユーザーにどのような影響を及ぼしますか。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+
+* [Traffic Manager の応答に設定できる TTL の値を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+
+* [マイ プロファイルへのクエリの量を把握する方法を教えてください。](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
 ## <a name="next-steps"></a>次の手順
 

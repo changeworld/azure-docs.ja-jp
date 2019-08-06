@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6cbda7d9be1617617e173c68c3d2a4a95c255ae0
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d3d4679703f6d98cb2062144cfde7d11fe44130c
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673407"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68386911"
 ---
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -239,7 +239,7 @@ Premium Storage ディスクは、Standard Storage ディスクよりも高い�
 Azure Premium Storage を利用する高スケール VM には、BlobCache と呼ばれる多層キャッシュ テクノロジがあります。 BlobCache では、仮想マシンの RAM とローカル SSD を組み合わせてキャッシュに使用します。 このキャッシュは、Premium Storage の永続ディスクと VM のローカル ディスクで使用できます。 既定では、このキャッシュは、OS ディスクでは Read/Write に設定され、Premium Storage でホストされるデータ ディスクでは ReadOnly に設定されます。 Premium Storage ディスクでディスク キャッシュを有効にすると、高スケール VM は基になるディスクのパフォーマンスを上回るきわめて高いレベルのパフォーマンスを実現できます。
 
 > [!WARNING]
-> 4 TiB を超えるディスクでは、ディスク キャッシュはサポートされていません。 複数のディスクが VM に接続されている場合、4 TiB 以下の各ディスクでは、キャッシュがサポートされます。
+> 4 TiB 以上のディスクでは、ディスク キャッシュはサポートされていません。 複数のディスクが VM に接続されている場合、4 TiB 未満の各ディスクでは、キャッシュがサポートされます。
 >
 > Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。 オペレーティング システム ディスクの場合は、VM が再起動されます。 ディスク キャッシュの設定を変更する前に、この中断の影響を受ける可能性があるすべてのアプリケーションまたはサービスを停止します。
 
@@ -291,7 +291,7 @@ Premium SSD では、次の Linux ディストリビューションが検証さ�
 
 バージョンによっては、Azure 向けの最新の Linux Integration Services (LIS) v4.0 が必要になります。 ディストリビューションをダウンロードしてインストールするには、次の表に記載されているリンクを参照してください。 検証が完了すると、イメージが一覧に追加されます。 イメージごとにパフォーマンスが変動することが Microsoft の検証によって判明しています。 パフォーマンスは、ワークロードの特性やイメージの設定に応じて異なります。 ワークロードの種類に応じて、異なるイメージをチューニングします。
 
-| ディストリビューション | バージョン | サポートされるカーネル | 詳細 |
+| ディストリビューション | Version | サポートされるカーネル | 詳細 |
 | --- | --- | --- | --- |
 | Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |

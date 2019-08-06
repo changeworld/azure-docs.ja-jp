@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 0239111ca56dfe431a00eee83c79eedccc66c927
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b0cf6eab86b0b932e44b6824305c23df01f35808
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226147"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383824"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターに適した VM SKU を選択する 
 
@@ -39,11 +39,11 @@ Azure Data Explorer には、次の 2 種類のクラスターが用意されて
 
 Azure Data Explorer クラスターを作成するときに、計画されたワークロードに "*最適な*" VM SKU を選択します。 Azure Data Explorer では、次の 2 つの SKU ファミリから選択できます。
 
-* **D_V2**: **D** SKU は、コンピューティングに最適化されており、2 つのフレーバーで提供されます。
+* **D_V2**: D SKU は、コンピューティングに最適化されており、2 つのフレーバーで提供されます。
     * VM 自体
     * Premium Storage ディスクにバンドルされた VM
 
-* **LS**: **L** SKU は、ストレージに最適化されています。 同程度の価格の **D** SKU より、SSD サイズがかなり大きくなります。
+* **LS**: L SKU は、ストレージに最適化されています。 同程度の価格の **D** SKU より、SSD サイズがかなり大きくなります。
 
 次の表では、使用可能な SKU の種類の主な違いを示します。
  

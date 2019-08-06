@@ -2,17 +2,17 @@
 title: 'ネットワーク パートナー: Azure のネットワーク | Microsoft Docs'
 description: この記事では、MSP ネットワーク パートナーの一覧を示します
 services: networking
-author: cherylmc
+author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.author: cherylmc
-ms.openlocfilehash: a28f787ba7796185112b7293b91688d2572f5e22
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.date: 07/22/2019
+ms.author: sukishen
+ms.openlocfilehash: ffcfd48d9a93ee7c73e2597ff9bea704e0378440
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799944"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385200"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ネットワーク MSP パートナーについて
 
@@ -28,7 +28,7 @@ Azure ネットワーク MSP は、クラウドおよびハイブリッド ネ�
 
 Azure ネットワーク MSP パートナーによって提供されるマネージド クラウド ネットワーク サービスの詳細については、このセクションのリンクを使用してください。 お客様のクラウド ネットワーク サービス パートナーが下のセクションに記載されていない場合は、プロバイダーから Microsoft に問い合わせるようお伝えください。 パートナーは ManagedVirtualWAN@microsoft.com にメールを送信して Microsoft に問い合わせることができます。 
 
-[Aryka](https://www.aryaka.com/)
+[Aryaka Networks](https://www.aryaka.com/)
 
 [BT](https://www.bt.com/)
 
@@ -38,7 +38,7 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 
 [InterCloud](https://www.intercloud.com/)
 
-[IIJ](https://www.riverbed.com/go/steelconnect-azurewan.html)
+[IIJ](https://www.iij.ad.jp/en/)
 
 [Megaport](https://www.megaport.com/)
 

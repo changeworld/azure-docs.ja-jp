@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 0d44e38343d6f7113b296b57353080e2de068bb6
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: a3009c9863d8322e3fe34bd99d64b93f0aa3d858
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278293"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385735"
 ---
 # <a name="preview-deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>更新:Azure CLI を使用して近接通信配置グループに VM をデプロイする
 
@@ -61,6 +61,12 @@ az vm create \
    --generate-ssh-keys \
    --size Standard_D1_v2  \
    -l westus
+```
+
+[az ppg show](/cli/azure/ppg#az-ppg-show) を使用して、近接通信配置グループ内の VM を表示できます。
+
+```azurecli-interactive
+az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>可用性セット

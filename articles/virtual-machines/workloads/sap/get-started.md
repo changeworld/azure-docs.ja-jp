@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 07/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df12d4f7b2a06b89df1bfd7d7d904943e341ccd2
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 8f4352a1f6a065d1e9be78f01bde95c8f00593a3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234262"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479772"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -34,8 +34,9 @@ Azure for SAP HANA の独自性は、Azure を一線を画すものにしてい�
 
 また、Azure で SAP ワークロード シナリオをホストすると、ID の統合およびシングル サインオンの要件を作成できます。 この状況は、さまざまな SAP コンポーネントおよび SAP のサービスとしてのソフトウェア (SaaS) またはサービスとしてのプラットフォーム (PaaS) のオファーに接続するために Azure Active Directory (Azure AD) を使用した場合に、発生する可能性があります。 Azure AD と SAP のエンティティを使用したこのような統合とシングル サインオンのシナリオについては、「AAD SAP ID 統合およびシングル サインオン」セクションに一覧と説明があります。
 
-## <a name="latest-changes"></a>最新の変更
+## <a name="change-log"></a>変更履歴
 
+- [Azure のファイル共有を使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスター化](sap-high-availability-guide-wsfc-file-share.md)での、Azure Site Recovery による記憶域スペース ダイレクトのサポートを反映するための変更
 - [SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)のリリース
 - [Red Hat Enterprise Server の IBM Db2 HADR](high-availability-guide-rhel-ibm-db2-luw.md) に関する新しいガイドのリリース
 - [SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines](high-availability-guide-rhel-netapp-files.md) のリリース

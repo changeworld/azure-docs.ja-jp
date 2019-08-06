@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ff03316a1f9409d4d6e4b7ddf52d0c8cc7a909
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: b249b99faa62e73b9aa3247f71f88767fca96f01
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551540"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488848"
 ---
 # <a name="protected-web-api-adding-authorization-to-your-api"></a>保護された Web API: API への承認の追加
 
@@ -29,6 +29,12 @@ ms.locfileid: "67551540"
 
 - 適切なスコープを持つユーザーに代わるアプリケーション。
 - 適切なアプリケーション ロールを持つデーモン アプリ。
+
+> [!NOTE]
+> この記事のコード スニペットは、完全に機能する次のサンプルから抽出されています
+>
+> - GitHub の [ASP.NET Core Web API 増分チュートリアル](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs#L37)
+> - [ASP.NET Web API のサンプル](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/dfd0115533d5a230baff6a3259c76cf117568bd9/TodoListService/Controllers/TodoListController.cs#L48)
 
 ASP.NET および ASP.NET Core Web API を保護するには、以下のいずれかに `[Authorize]` 属性を追加する必要があります。
 
@@ -107,7 +113,7 @@ public class TodoListController : Controller
     }
 ```
 
-このサンプル コードは、ASP.NET Core 用です。 ASP.NET の場合は、`HttpContext.User` を `ClaimsPrincipal.Current` に置き換え、要求の種類 `"http://schemas.microsoft.com/identity/claims/scope"` を `"scp"` に置き換えるだけです (この記事の後の方のコード スニペットも参照してください)。
+この[サンプル コード](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47)は、ASP.NET Core 用です。 ASP.NET の場合は、`HttpContext.User` を `ClaimsPrincipal.Current` に置き換え、要求の種類 `"http://schemas.microsoft.com/identity/claims/scope"` を `"scp"` に置き換えるだけです (この記事の後の方のコード スニペットも参照してください)。
 
 ## <a name="verifying-app-roles-in-apis-called-by-daemon-apps"></a>デーモン アプリによって呼び出される API のアプリ ロールの確認
 
@@ -146,7 +152,7 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-このサンプル コードは、ASP.NET 用です。 ASP.NET Core の場合は、`ClaimsPrincipal.Current` を `HttpContext.User` に置き換え、要求の名前 `"roles"` を `"http://schemas.microsoft.com/identity/claims/roles"` に置き換えるだけです (この記事の前の方のコード スニペットも参照してください)。
+今回は、このコード スニペットは ASP.NET 用です。 ASP.NET Core の場合は、`ClaimsPrincipal.Current` を `HttpContext.User` に置き換え、要求の名前 `"roles"` を `"http://schemas.microsoft.com/identity/claims/roles"` に置き換えるだけです (この記事の前の方のコード スニペットも参照してください)。
 
 ### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>Web API がデーモン アプリのみによって呼び出される必要がある場合のアプリ専用トークンの受け入れ
 
@@ -155,8 +161,8 @@ private void ValidateAppRole(string appRole)
 デーモン アプリのみに Web API の呼び出しを許可する場合は、アプリ ロールを検証するときに、トークンがアプリ専用トークンであるという条件を追加します。
 
 ```CSharp
-string oid = ClaimsPrincipal.Current.FindFirst("oid");
-string sub = ClaimsPrincipal.Current.FindFirst("sub");
+string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
+string sub = ClaimsPrincipal.Current.FindFirst("sub")?.Value;
 bool isAppOnlyToken = oid == sub;
 ```
 

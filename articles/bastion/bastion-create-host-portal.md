@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 65116ebbd6a66241a5b35a39f3dfb8f826a3745f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 881d89170c82731fca3f6977da486eac5be772f8
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594268"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68466989"
 ---
 # <a name="create-an-azure-bastion-host-preview"></a>Azure Bastion ホスト (プレビュー) を作成する
 
@@ -54,7 +54,7 @@ Bastion ホスト リソースを作成するには、次の 2 つの方法が�
     * **[名前]** :新しい Bastion リソースの名前です。
     * **[リージョン]** :リソースが作成される Azure パブリック リージョンです。
     * **仮想ネットワーク**:Bastion リソースが作成される仮想ネットワークです。 既存の仮想ネットワークがない場合、または既存の仮想ネットワークを使用する場合は、このプロセス中にポータルで新しい仮想ネットワークを作成できます。 既存の仮想ネットワークを使用している場合、Bastion サブネットの要件を反映するために、既存の仮想ネットワークに十分な空きアドレス空間があることを確認してくます。
-    * **サブネット**:新しい Bastion ホスト リソースがデプロイされるご利用の仮想ネットワークのサブネットです。 名前の値の **AzureBastionSubnet** を使用して、サブネットを作成する必要があります。 この値によって、Azure でリソースをデプロイするサブネットを把握できます。 これはゲートウェイ サブネットとは異なります。 /27 より大きいサブネット (/27、/26 など) で使用することを強くお勧めします。 ネットワーク セキュリティ グループ、ルート テーブル、または委任なしで **AzureBastionSubnet** を作成します。
+    * **サブネット**:新しい Bastion ホスト リソースがデプロイされるご利用の仮想ネットワークのサブネットです。 名前の値の **AzureBastionSubnet** を使用して、サブネットを作成する必要があります。 この値によって、Azure でリソースをデプロイするサブネットを把握できます。 これはゲートウェイ サブネットとは異なります。 /27 より大きいサブネット (/27、/26 など) で使用することを強くお勧めします。 ルート テーブルまたは委任なしで **AzureBastionSubnet** を作成します。 **AzureBastionSubnet** でネットワーク セキュリティ グループを使用する場合は、「[NSG アクセスと Azure Bastion を使用する (プレビュー)](bastion-nsg.md)」を参照してください。
     * **[パブリック IP アドレス]** : RDP/SSH でアクセスされる (ポート 443 経由) Bastion リソースのパブリック IP です。 新しいパブリック IP を作成するか、既存のものを使用します。 パブリック IP アドレスは、作成している Bastion リソースと同じリージョン内にある必要があります。
     * **パブリック IP アドレス名**:パブリック IP アドレス リソースの名前です。
     * **パブリック IP アドレスの SKU**: 既定で **[標準]** に設定され、事前に作成されます。 Azure Bastion では、標準パブリック IP SKU のみが使用およびサポートされます。

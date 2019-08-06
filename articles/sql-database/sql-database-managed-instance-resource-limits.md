@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 manager: craigg
 ms.date: 06/26/2019
-ms.openlocfilehash: f4e19b916553912e36f2c3beee3f6a518b244e4d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 29ece0677c71a2cb423e541cf2e9f4a06947e44c
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706999"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68413393"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database マネージド インスタンスのリソース制限の概要
 
@@ -40,8 +40,7 @@ Azure SQL Database マネージド インスタンスは、2 つのハードウ�
 | 仮想コアの数 | 8、16、24 の仮想コア | 4、8、16、24、32、40、64、80 の仮想コア |
 | 最大メモリ (メモリ/コア比) | 仮想コアあたり 7 GB<br/>メモリ量を増やすには、仮想コアを追加します。 | 仮想コアあたり 5.1 GB<br/>メモリ量を増やすには、仮想コアを追加します。 |
 | 最大インメモリ OLTP メモリ | インスタンスの制限:仮想コアあたり 3 GB<br/>データベースの制限:<br/> - 8 コア:データベースあたり 8 GB<br/> - 16 コア:データベースあたり 20 GB<br/> - 24 コア:データベースあたり 36 GB | インスタンスの制限:仮想コアあたり 2.5 GB<br/>データベースの制限:<br/> - 8 コア:データベースあたり 13 GB<br/> - 16 コア:データベースあたり 32 GB |
-| インスタンスの予約済み最大ストレージ (汎用) |  8 TB | 8 TB |
-| インスタンスの予約済み最大ストレージ (Business Critical) | 1 TB (テラバイト) | コアの数に応じて 1 TB、2 TB 、または 4 TB |
+| インスタンスの予約済み最大ストレージ |  汎用: 8 TB<br/>Business Critical:1 TB | 汎用:8 TB<br/> Business Critical: コアの数に応じて 1 TB、2 TB、または 4 TB |
 
 > [!IMPORTANT]
 > 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。

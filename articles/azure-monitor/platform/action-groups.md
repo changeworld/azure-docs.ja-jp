@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/08/2019
+ms.date: 7/22/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 842965aa49ae4cd546fe9c107107d2a2ceebebbb
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 52d7b84fe6210d8a4d46814ad6749bed0463478e
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705252"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405652"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -126,6 +126,7 @@ Webhook は、次のルールを使用して再試行されます。 Webhook の
  - 13.106.38.142
  - 13.106.38.148
  - 13.106.57.196
+ - 13.106.57.197
  - 52.244.68.117
  - 52.244.65.137
  - 52.183.31.0

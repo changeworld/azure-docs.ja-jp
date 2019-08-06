@@ -4,7 +4,7 @@ description: Azure にアップロードする Windows VHD または VHDX の準
 services: virtual-machines-windows
 documentationcenter: ''
 author: glimoli
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 7802489d-33ec-4302-82a4-91463d03887a
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: cc942aeb34d17e8dff064c6a21a3c7b2099c742a
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: ad30bd4f77c5f4314956e39f26a30b72d72a208a
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151025"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68361162"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
@@ -31,10 +31,24 @@ Windows 仮想マシン (VM) をオンプレミスから Azure にアップロ�
 Azure VM のサポート ポリシーについては、「[Microsoft Azure 仮想マシンのマイクロソフト サーバー ソフトウェアのサポート](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)」を参照してください。
 
 > [!NOTE]
-> この記事の手順は、Windows Server 2008 R2 以降 (64 ビット版) の Windows サーバー オペレーティング システムに適用されます。 Azure での 32 ビットのオペレーティング システムの実行については、「[Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)」を参照してください。
+> この記事の手順は以下に適用されます。
+>1. Windows Server (64 ビット版) 2008 R2 以降の Windows Server オペレーティング システム。 Azure での 32 ビットのオペレーティング システムの実行については、「[Azure 仮想マシンでの 32 ビット オペレーティング システムのサポート](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)」を参照してください。
+>2. Azure Site Recovery や Azure Migrate など、何らかのディザスター リカバリー ツールをワークロードの移行に使用する場合でも、移行前にゲスト OS でこのプロセスを実行してイメージを準備する必要があります。
 
-## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>仮想ディスクを容量固定および VHD に変換する 
-仮想ディスクを Azure に必要な形式に変換する必要がある場合は、このセクションのいずれかのメソッドを使用します。 仮想ディスクを変換する前に VM をバックアップします。 Windows VHD がローカル サーバーで正しく動作していることを確認します。 次に、Azure に変換またはアップロードする前に、VM 自体に発生しているすべてのエラーを解決します。
+## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>仮想ディスクを容量固定および VHD に変換する
+
+仮想ディスクを Azure に必要な形式に変換する必要がある場合は、このセクションのいずれかの方法を使用します。
+
+1. 仮想ディスクの変換処理を実行する前に、VM をバックアップします。
+
+1. Windows VHD がローカル サーバーで正しく動作していることを確認します。 Azure に変換またはアップロードする前に、VM 自体に発生しているすべてのエラーを解決します。
+
+1. VHD のサイズについて:
+
+   1. Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 メガバイトの端数があると、アップロードされた VHD からイメージが作成されるときにエラーが発生します。
+
+   2. OS VHD のサイズの上限は、2 TB です。
+
 
 ディスクを変換した後は、そのディスクを使用する VM を作成します。 VM を起動してサインインし、アップロードの準備を完了します。
 
@@ -395,7 +409,7 @@ Sysprep は通常、特定の構成を持つ他の複数の VM のデプロイ�
 - [特殊化されたディスクからの VM の作成](create-vm-specialized.md)
 - [特殊化された VHD ディスクからの VM の作成](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-一般化されたイメージを作成する場合は、Sysprep を実行する必要があります。 詳細については、「[Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。 
+一般化されたイメージを作成する場合は、Sysprep を実行する必要があります。 詳しくは、「[How to use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx)」 (Sysprep の使用方法: 概要) をご覧ください。 
 
 Windows ベースのコンピューターにインストールされているロールまたはアプリケーションには、一般化されたイメージをサポートしていないものもあります。 したがって、この手順を実行する前に、Sysprep でお使いのコンピューターのロールがサポートされていることを確認してください。 詳しくは、「[Sysprep Support for Server Roles (サーバー ロールの sysprep サポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」を参照してください。
 

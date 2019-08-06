@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 8699533cd64e6b1778c5e78b8c51eb1efe518c75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ad3c446df2f2ce62024dfdda589669653f65ef4
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67126215"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68488705"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する
 
@@ -34,6 +34,8 @@ Enterprise セキュリティ パッケージ (ESP) のクラスターでは、A
 前提条件として、ESP の HDInsight クラスターを作成する前に Azure AD-DS を有効にします。 詳細については、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/create-instance.md)」を参照してください。 
 
 Azure AD-DS が有効の場合、すべてのユーザーとオブジェクトについて、Azure Active Directory (AAD) から Azure AD-DS への同期が既定で開始されます。 同期操作の長さは、Azure AD 内のオブジェクトの数によって異なります。 数十万のオブジェクトがある場合、同期には数日かかる場合があります。 
+
+Azure AD-DS で使用するドメイン名は、HDInsight で動作するように、39 文字以下である必要があります。
 
 必要に応じて、アクセスが必要なグループのみを HDInsight クラスターと同期させることができます。 特定のグループのみを同期するこのオプションは、"*範囲指定された同期*" と呼ばれます。 手順については、「[Configure scoped synchronization from Azure AD to your managed domain (Azure AD からマネージド ドメインまで範囲指定された同期を構成する)](../../active-directory-domain-services/scoped-synchronization.md)」を参照してください。
 
@@ -80,11 +82,11 @@ Azure AD-DS VNET の DNS サーバーの構成を変更し、 **[設定]** カ�
 
 Azure AD-DS インスタンスと HDInsight クラスターの両方を同じ Azure 仮想ネットワークに配置する方が簡単です。 別の VNet を使用する場合は、ドメイン コント ローラーが HDI VM に表示されるように、これらの仮想ネットワークをピアリングする必要があります。 詳細については、「[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)」をご覧ください。 
 
-VNET がピアリングされたら、HDInsight VNET を カスタム DNS サーバーを使用するように構成し、Azure AD-DS のプライベート IP を DNS サーバーのアドレスとして入力します。 両方の VNET が同じ DNS サーバーを使用したとき、カスタム ドメイン名は、正しい IP に解決され、HDInsight から到達可能になります。 たとえば、ドメイン名が "contoso.com" の場合、この手順の後に "contoso.com" ping すると、正しい Azure AD-DS IP に解決されます。 
+VNET がピアリングされたら、HDInsight VNET を カスタム DNS サーバーを使用するように構成し、Azure AD-DS のプライベート IP を DNS サーバーのアドレスとして入力します。 両方の VNET が同じ DNS サーバーを使用したとき、カスタム ドメイン名は、正しい IP に解決され、HDInsight から到達可能になります。 たとえば、ドメイン名が `contoso.com` の場合、この手順の後の `ping contoso.com` で正しい Azure AD-DS IP に解決されるはずです。
 
 ![ピアリングされた VNET のカスタム DNS サーバーを構成する](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-お客様の HDInsight サブネットでネットワーク セキュリティ グループ (NSG) 規則を使用している場合は、インバウンド トラフィックとアウトバウンド トラフィックの両方に対して[必須 IP](../hdinsight-extend-hadoop-virtual-network.md) を許可する必要があります。 
+お客様の HDInsight サブネットでネットワーク セキュリティ グループ (NSG) 規則を使用している場合は、インバウンド トラフィックとアウトバウンド トラフィックの両方に対して[必須 IP](../hdinsight-management-ip-addresses.md) を許可する必要があります。 
 
 ネットワークが正しく設定されているかどうかを**テストする**には、Windows VM を HDInsight VNET/サブネットに参加させて、ドメイン名に対して ping を実行し (IP に解決されます)、**ldp.exe** を実行して、Azure AD-DS ドメインにアクセスします。 次に、**この Windows VM をドメインに参加**させて、必要なすべての RPC 呼び出しがクライアントとサーバー間で成功していることを確認します。 **nslookup** を使って、ストレージ アカウント、または使用する任意の外部 DB (外部の Hive metastore、Ranger DB など) へのネットワーク アクセスを確認することもできます。
 AAD-DS が NSG によって保護されている場合、[必須ポート](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)がすべて、AAD-DS サブネット ネットワーク セキュリティ グループ ルールのホワイトリストに含まれていることを確認してください。 この Windows VM のドメイン参加に成功した場合、次の手順に進んで ESP クラスターを作成することができます。
@@ -108,7 +110,7 @@ ESP で HDInsight クラスターを作成するときは、次のパラメー�
 
 - **クラスターのアクセス グループ**: ユーザーをクラスターに同期させてアクセスさせるセキュリティ グループが、Azure AD-DS で使用できる必要があります。 たとえば、HiveUsers グループです。 詳細については、「[Azure Active Directory でグループを作成し、メンバーを追加する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
 
-- **LDAPS URL**: たとえば、ldaps://contoso.com:636 です。
+- **LDAPS URL**: 例: `ldaps://contoso.com:636`。
 
 次のスクリーンショットは、Azure portal における適切な構成を示しています。
 

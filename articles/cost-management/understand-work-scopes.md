@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 699707953ae06afa9cbf3cc7286f94917ba0efca
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 66bad9c9c647fe87fdcf6b99a8d17f319b1ef9fc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490106"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479974"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -142,6 +142,18 @@ Azure サブスクリプションは、EA 登録アカウントの下に入れ�
 
 課金ユーザーは、課金アカウントに明示的に属しているわけではないため、管理グループにアクセスすることはできません。 ただし、組織で管理グループが有効になっている場合、すべてのサブスクリプションのコストは、課金アカウントおよびルート管理グループにロールアップされます (どちらも 1 つのディレクトリに制限されているため)。 管理グループには、使用量ベースの購入のみが含まれます。 予約やサード パーティの Marketplace オファリングなどの購入は、管理グループには含まれません。 そのため、課金アカウントとルート管理グループで合計額が異なる場合があります。 これらのコストを表示するには、課金アカウントまたはそれぞれの課金プロファイルを使用します。
 
+## <a name="aws-scopes"></a>AWS スコープ
+
+AWS 統合が完了した後、「[AWS のコストと使用状況レポートの統合を設定して構成する](aws-integration-set-up-configure.md)」を参照してください。 次のスコープを使用できます。
+
+- **外部課金アカウント** - サードパーティ ベンダーとの顧客契約を表します。 これは EA 請求アカウントに似ています。
+
+    リソースの種類: `Microsoft.CostManagement/externalBillingAccounts`
+    
+- **外部サブスクリプション** - サードパーティ ベンダーの顧客運用アカウントを表します。 これは、Azure サブスクリプションに似ています。
+
+    リソースの種類: `Microsoft.CostManagement/externalSubscriptions`
+
 ## <a name="cloud-solution-provider-csp-scopes"></a>クラウド ソリューション プロバイダー (CSP) のスコープ
 
 クラウド ソリューション プロバイダー (CSP) パートナーは、現在 Cost Management ではサポートされていません。 代わりに、[パートナー センター](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)を使用できます。
@@ -204,7 +216,7 @@ Cost Management API を使用するときは、スコープを特定すること
 3. 管理グループ ID を表からコピーします。
 4. スコープは次のようになります。`"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>サブスクリプション
+### <a name="subscription"></a>Subscription
 
 1. Azure portal を開き、サービスの一覧にある **[サブスクリプション]** に移動します。
 2. サブスクリプション ID を表からコピーします。
