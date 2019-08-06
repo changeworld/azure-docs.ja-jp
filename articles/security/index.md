@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/11/2019
 ms.author: angrobe
-ms.openlocfilehash: d921e529140bc7446e3c9f97b33ba226431d7b91
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 7c41b09c35de7ef8694f9215b8f3dc271e243de2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143513"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780489"
 ---
 # <a name="azure-security-documentation"></a>Azure のセキュリティのドキュメント
 
@@ -70,7 +70,7 @@ ms.locfileid: "67143513"
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-infrastructure">
+        <a href="/azure/security/fundamentals/infrastructure">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -88,7 +88,7 @@ ms.locfileid: "67143513"
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">ストレージ セキュリティの概要</p>
+                            <p style="font-size: 1.12rem;">Storage のセキュリティの概要</p>
                         </div>
                     </div>
                 </div>
@@ -135,12 +135,12 @@ ms.locfileid: "67143513"
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-encryption-atrest">
+        <a href="/azure/security/fundamentals/encryption-atrest">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Azure では、どのような方法で保存データをセキュリティ保護しているのですか?</p>
+                            <p style="font-size: 1.12rem;">Azure では保存データをどのようにセキュリティで保護しているのですか?</p>
                         </div>
                     </div>
                 </div>
@@ -192,13 +192,13 @@ ms.locfileid: "67143513"
                                 <a class="barLink" href="https://aka.ms/SecurityResponsepaper">クラウドでの Azure のセキュリティへの対応</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-threat-detection">Azure の高度な脅威の検出</a>
+                                <a class="barLink" href="/azure/security/fundamentals/threat-detection">Azure の高度な脅威の検出</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-azure-network-security">Azure のネットワーク セキュリティ</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-network-security>Azure network security"</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-develop-secure-apps">セキュリティで保護されたアプリケーションを Azure 上で開発する</a>
+                                <a class="barLink" href="/azure/security/fundamentals/abstract-develop-secure-apps">セキュリティで保護されたアプリケーションを Azure 上で開発する</a>
                             </li>
                         </ul>
                     </div>
@@ -218,25 +218,25 @@ ms.locfileid: "67143513"
                                 <a class="barLink" href="https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/">Azure のセキュリティに関するベスト プラクティス</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-network-security-best-practices">ネットワークのセキュリティ</a>
+                                <a class="barLink" href="/azure/security/fundamentals/network-best-practices">ネットワークのセキュリティ</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-data-encryption-best-practices">データのセキュリティ</a>
+                                <a class="barLink" href="/azure/security/fundamentals/data-encryption-best-practices">データのセキュリティ</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/azure-security-best-practices-vms">仮想マシンのセキュリティ</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-identity-management-best-practices">ID とアクセス</a>
+                                <a class="barLink" href="/azure/security/fundamentals/identity-management-best-practices">ID とアクセス</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-iaas">IaaS のセキュリティ</a>
+                                <a class="barLink" href="/azure/security/fundamentals/iaas">IaaS のセキュリティ</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/security-paas-deployments">PaaS デプロイのセキュリティ保護</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-security-global-admin">Azure 管理者アカウントのセキュリティ保護</a>
+                                <a class="barLink" href="/azure/security/fundamentals/global-admin">Azure 管理者アカウントのセキュリティ保護</a>
                             </li>
                         </ul>
                     </div>
@@ -380,7 +380,7 @@ ms.locfileid: "67143513"
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-cyber-services">
+        <a href="/azure/security/fundamentals/cyber-services">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -393,7 +393,7 @@ ms.locfileid: "67143513"
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-security-pen-testing">
+        <a href="/azure/security/fundamentals/pen-testing">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
@@ -437,7 +437,7 @@ ms.locfileid: "67143513"
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">ディスクの暗号化</p>
+                            <p style="font-size: 1.12rem;">Disk Encryption</p>
                         </div>
                     </div>
                 </div>

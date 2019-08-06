@@ -50,7 +50,7 @@
         - name: IaaS VM のディスク暗号化
           items:
             - name: Azure Disk Encryption について
-              displayName: 'Bitlocker, bek'
+              displayName: 'BitLocker, bek'
               href: azure-security-disk-encryption-overview.md
             - name: クイック スタート
               items:
@@ -70,7 +70,7 @@
                   href: azure-security-disk-encryption-windows.md
                 - name: Linux VM のディスク暗号化
                   href: azure-security-disk-encryption-linux.md
-                - name: VMSS 拡張機能のシーケンス処理によるディスク暗号化
+                - name: Disk Encryption を仮想マシン スケール セットの拡張機能のシーケンス処理と共に使用する
                   href: azure-security-disk-encryption-extension-sequencing.md
                 - name: ディスク暗号化に関する付録
                   href: azure-security-disk-encryption-appendix.md
@@ -332,49 +332,3 @@
     - name: 侵入テスト
       displayName: penetration
       href: ./fundamentals/pen-testing.md
-    - name: Microsoft Threat Modeling Tool
-      displayName: stride
-      href: ./develop/threat-modeling-tool.md
-      items:
-        - name: 使用の開始
-          href: ./develop/threat-modeling-tool-getting-started.md
-        - name: 機能の概要
-          href: ./develop/threat-modeling-tool-feature-overview.md
-        - name: 脅威
-          href: ./develop/threat-modeling-tool-threats.md
-        - name: リリース
-          href: ./develop/threat-modeling-tool-releases.md
-          items:
-            - name: Threat Modeling Tool GA リリース 7.1.5091.2 - 2018 年 9 月 12 日
-              href: ./develop/threat-modeling-tool-releases-71509112.md
-            - name: Threat Modeling Tool 更新プログラム リリース 7.1.51023.1 - 2018 年 11 月 1 日
-              href: ./develop/threat-modeling-tool-releases-71510231.md
-            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 2019 年 1 月 29 日
-              href: ./develop/threat-modeling-tool-releases-71601261.md
-            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60408.1 - 2019 年 4 月 9 日
-              href: ./develop/threat-modeling-tool-releases-71604081.md
-            - name: Threat Modeling Tool 更新プログラム リリース 7.1.60702.1 - 7/02/2019
-              href: ./develop/threat-modeling-tool-releases-71607021.md
-        - name: 軽減策
-          href: ./develop/threat-modeling-tool-mitigations.md
-          items:
-            - name: 監査とログ記録
-              href: ./develop/threat-modeling-tool-auditing-and-logging.md
-            - name: Authentication
-              href: ./develop/threat-modeling-tool-authentication.md
-            - name: Authorization
-              href: ./develop/threat-modeling-tool-authorization.md
-            - name: 通信のセキュリティ
-              href: ./develop/threat-modeling-tool-communication-security.md
-            - name: 構成管理
-              href: ./develop/threat-modeling-tool-configuration-management.md
-            - name: 暗号化
-              href: ./develop/threat-modeling-tool-cryptography.md
-            - name: 例外管理
-              href: ./develop/threat-modeling-tool-exception-management.md
-            - name: 入力の検証
-              href: ./develop/threat-modeling-tool-input-validation.md
-            - name: 機微なデータ
-              href: ./develop/threat-modeling-tool-sensitive-data.md
-            - name: セッションの管理
-              href: ./develop/threat-modeling-tool-session-management.md

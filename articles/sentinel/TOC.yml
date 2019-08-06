@@ -13,7 +13,7 @@
   items:
     - name: 不審な脅威を検出する
       href: tutorial-detect-threats.md
-    - name: 問題を調査する
+    - name: インシデントの調査
       href: tutorial-investigate-cases.md
     - name: 脅威に対応する
       href: tutorial-respond-threats-playbook.md

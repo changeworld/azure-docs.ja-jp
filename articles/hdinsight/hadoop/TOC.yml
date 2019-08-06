@@ -64,6 +64,8 @@
           href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: サービス プリンシパルの証明書の変換
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: Apache Ambari のハートビートの問題
+          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: 方法
   items:
     - name: Apache Hadoop サンドボックスの使用
