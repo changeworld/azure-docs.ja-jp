@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc86943924cd0c47c465e9d3bac4ca91b73a3ff5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bf6ae32a61504dc344e140a0e27c5a17b5422073
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171551"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609875"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>マネージド アプリケーション定義を作成して発行する
 
@@ -85,20 +85,20 @@ ms.locfileid: "66171551"
 
 mainTemplate.json ファイルを保存します。
 
-## <a name="create-the-user-interface-definition"></a>ユーザー インターフェイス定義を作成する
+## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>CreateUiDefinition.json を使用した作成エクスペリエンスの定義
 
-Azure Portal で **createUiDefinition.json** ファイルを使用して、マネージド アプリケーションを作成するユーザー用のユーザー インターフェイスを生成します。 ユーザーが各パラメーターの入力をどのように提供するかを定義します。 各種のオプション (ドロップダウン リストなど) やテキスト ボックス、パスワード ボックスなどの入力手段を利用することができます。 マネージド アプリケーションの UI 定義ファイルの作成する方法については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
+発行元として、**createUiDefinition.json** ファイルを使用して作成エクスペリエンスを定義します。これにより、マネージド アプリケーションを作成するユーザーのインターフェイスが生成されます。 ドロップダウン、テキスト ボックス、パスワード ボックスなどの[コントロール要素](create-uidefinition-elements.md)を使用して、各パラメーターの入力をユーザーがどのように提供するかを定義します。
 
-**createUiDefinition.json** というファイルを作成します。 名前は大文字と小文字が区別されます。
+**createUiDefinition.json** というファイルを作成します (この名前の大文字と小文字は区別されます)
 
-次の JSON をファイルに追加します。
+次のスターター JSON をファイルに追加し、保存します。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-    "handler": "Microsoft.Compute.MultiVm",
-    "version": "0.1.2-preview",
-    "parameters": {
+   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+   "handler": "Microsoft.Azure.CreateUIDef",
+   "version": "0.1.2-preview",
+   "parameters": {
         "basics": [
             {}
         ],
@@ -139,10 +139,9 @@ Azure Portal で **createUiDefinition.json** ファイルを使用して、マ�
             "location": "[location()]"
         }
     }
-}
 ```
 
-createUiDefinition.json ファイルを保存します。
+詳細については、[CreateUiDefinition の概要](create-uidefinition-overview.md)に関するページを参照してください。
 
 ## <a name="package-the-files"></a>ファイルのパッケージ化
 

@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/17/2018
+ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a4421b87aa094306a42212f76f7590d4f139047
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463006"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607976"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -30,6 +30,7 @@ ms.locfileid: "61463006"
 [2562184]: https://launchpad.support.sap.com/#/notes/2562184
 [2628497]: https://launchpad.support.sap.com/#/notes/2628497
 [2445033]: https://launchpad.support.sap.com/#/notes/2445033
+[2815988]: https://launchpad.support.sap.com/#/notes/2815988
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -66,8 +67,8 @@ SAP LaMa は、SAP ランドスケープの操作と監視のために多くの�
 * 新しい VM および SAP インスタンスのデプロイが準備解除された場合は、IP アドレスが "盗まれる" のを防ぐために、個別のサブネットを使用して、動的 IP アドレスは使用しないでください。  
   サブネットで使用する動的 IP アドレスの割り当てが SAP LaMa でも使用されている場合は、SAP LaMa による SAP システムの準備が失敗することがあります。 SAP システムが準備解除された場合は、IP アドレスが予約されず、他の仮想マシンに割り当てられる可能性があります。
 
-* マネージド ホストにログオンする場合は、ファイル システムのマウント解除がブロックされないようにしてください。  
-  Linux 仮想マシンにログオンして作業ディレクトリをマウント ポイント内のディレクトリ (/usr/sap/AH1/ASCS00/exe など) に変更する場合は、ボリュームをマウント解除できず、再配置または準備解除が失敗します。
+* マネージド ホストにサインインする場合は、ファイル システムのマウント解除がブロックされないようにしてください。  
+  Linux 仮想マシンにサインインして作業ディレクトリをマウント ポイント内のディレクトリ (/usr/sap/AH1/ASCS00/exe など) に変更する場合は、ボリュームをマウント解除できず、再配置または準備解除が失敗します。
 
 ## <a name="set-up-azure-connector-for-sap-lama"></a>SAP LaMa 用の Azure コネクタの設定
 
@@ -226,7 +227,7 @@ SAP LaMa は SQL Server 自体を再配置できないため、データベー�
 
 以下の例では、システム ID が HN1 の SAP HANA およびシステム ID が AH1 の SAP NetWeaver システムをインストールしていることを前提としています。 仮想ホスト名は、HANA インスタンスについては hn1-db、SAP NetWeaver システムで使用される HANA テナントについては ah1-db、SAP NetWeaver ASCS については ah1-ascs、1 台目の SAP NetWeaver アプリケーション サーバーについては ah1-di-0 です。
 
-#### <a name="install-sap-netweaver-ascs-for-sap-hana"></a>SAP HANA 用の SAP NetWeaver ASCS のインストール
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-using-azure-managed-disks"></a>Azure Managed Disks を使用して SAP NetWeaver ASCS for SAP HANA をインストールする
 
 SAP Software Provisioning Manager (SWPM) を起動する前に、ASCS の仮想ホスト名の IP アドレスをマウントする必要があります。 sapacext を使用することをお勧めします。 sapacextを使用して IP アドレスをマウントする場合は、再起動後に IP アドレスを再マウントしてください。
 
@@ -251,6 +252,93 @@ SWPM を実行し、 *[ASCS Instance Host Name]\(ASCS インスタンス ホス�
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 ```
+
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>Azure NetAppFiles (ANF) BETA にSAP NetWeaver ASCS for SAP HANA をインストールする
+
+> [!NOTE]
+> この機能はまだ GA ではありません。 詳細については、SAP Note [2815988] を参照してください (プレビュー版のお客様にのみ表示されます)。
+コンポーネント BC-VCM-LVM-HYPERV 上の SAP インシデントを開き、Azure NetApp Files 用の LaMa ストレージ アダプターへの参加を要求します
+
+ANF は Azure に NFS を提供します。 SAP LaMa のコンテキストでは、これによりABAP Central Services (ASCS) インスタンスの作成とそれ以降のアプリケーション サーバーのインストールが簡単になります。 以前は、ASCS インスタンスは NFS サーバーとしても動作する必要がありました。また、パラメーター acosprep/nfs_paths を SAP Hostagent の host_profile に追加する必要がありました。
+
+#### <a name="anf-is-currently-available-in-these-regions"></a>現在 ANF を使用できるリージョン:
+
+オーストラリア東部、米国中部、米国東部、米国東部 2、北ヨーロッパ、米国中南部、西ヨーロッパ、米国西部 2。
+
+#### <a name="network-requirements"></a>ネットワークの要件
+
+ANF には、SAP サーバーと同じ VNET に属している必要がある委任サブネットが必要です。 そのような構成の例を次に示します。
+この画面は、VNET と最初のサブネットの作成を示しています。
+
+![SAP LaMa で Azure ANF 用の仮想ネットワークを作成する ](media/lama/sap-lama-createvn-50.png)
+
+次の手順では、Microsoft.NetApp/ボリューム用の委任サブネットを作成します。
+
+![SAP LaMa で委任サブネットを追加する ](media/lama/sap-lama-addsubnet-50.png)
+
+![SAP LaMa のサブネット一覧 ](media/lama/sap-lama-subnets.png)
+
+次は、NetApp アカウントを Azure portal で作成する必要があります。
+
+![SAP LaMa で NetApp アカウントを作成する ](media/lama/sap-lama-create-netappaccount-50.png)
+
+![作成された SAP LaMa NetApp アカウント ](media/lama/sap-lama-netappaccount.png)
+
+NetApp アカウント内で、容量プールには各プールのディスクのサイズと種類を指定します。
+
+![SAP LaMa で NetApp 容量プールを作成する ](media/lama/sap-lama-capacitypool-50.png)
+
+![作成された SAP LaMa NetApp 容量プール ](media/lama/sap-lama-capacitypool-list.png)
+
+これで NFS ボリュームを定義できるようになります。 1 つのプールに複数のシステムのボリュームがあるため、わかりやすい名前付けスキームを選択するようにします。 SID を追加すると、関連するボリュームをグループ化しやすくなります。 ASCS および AS インスタンスの場合、/sapmnt/\<SID\>、/usr/sap/\<SID\>、および /home/\<sid\>adm のマウントが必要です。 少なくとも 1 つのランドスケープのすべてのシステムで使用される一元的なトランスポート ディレクトリ用の省略可能な /usr/sap/trans。
+
+> [!NOTE]
+> ベータ段階では、ボリュームの名前はサブスクリプション内で一意にする必要があります。
+
+![SAP LaMa でボリューム 1 を作成する ](media/lama/sap-lama-createvolume-80.png)
+
+![SAP LaMa でボリューム 2 を作成する ](media/lama/sap-lama-createvolume2-80.png)
+
+![SAP LaMa でボリューム 3 を作成する ](media/lama/sap-lama-createvolume3-80.png)
+
+他のボリュームについてもこれらの手順を繰り返す必要があります。
+
+![SAP LaMa の作成されたボリュームの一覧 ](media/lama/sap-lama-volumes.png)
+
+これらのボリュームは、SAP SWPM を使用した最初のインストールが実行されるシステムにマウントする必要があります。
+
+まずマウント ポイントを作成する必要があります。 この場合、SID は AN1 なので、次のコマンドを実行する必要があります。
+
+```bash
+mkdir -p /home/an1adm
+mkdir -p /sapmnt/AN1
+mkdir -p /usr/sap/AN1
+mkdir -p /usr/sap/trans
+```
+次に、次のコマンドを使用して ANF ボリュームをマウントします。
+
+```bash
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-home-sidadm /home/an1adm
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-sapmnt-sid /sapmnt/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-usr-sap-sid /usr/sap/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/global-usr-sap-trans /usr/sap/trans
+```
+マウント コマンドはポータルからも取得できます。 ローカル マウント ポイントを調整する必要があります。
+
+確認するには、df -h コマンドを使用します。
+
+![SAP LaMa マウント ポイントの OS レベル ](media/lama/sap-lama-mounts.png)
+
+次は、SWPM を使用したインストールを実行する必要があります。
+
+少なくとも 1 つの AS インスタンスに対して同じ手順を実行する必要があります。
+
+インストールが成功したら、SAP LaMa 内で システムを検出する必要があります。
+
+ASCS および AS インスタンスのマウント ポイントは次のようになります。
+
+![LaMa の SAP LaMa マウント ポイント](media/lama/sap-lama-ascs.png) (これは例です。 IP アドレスとエクスポート パスは、以前のものとは異なります)
+
 
 #### <a name="install-sap-hana"></a>SAP HANA のインストール
 

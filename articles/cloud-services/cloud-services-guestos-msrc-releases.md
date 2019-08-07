@@ -11,65 +11,158 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/23/2019
+ms.date: 7/26/2019
 ms.author: raiye
-ms.openlocfilehash: 4c0f364e596fbe2bf9083cbcf521902523c92a70
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: dd0adbe7cc27389e3b1d6533b038042824daea22
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241324"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592435"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
 
-## <a name="may-2019-guest-os"></a>2019 年 5 月のゲスト OS
-
->[!NOTE]
->5 月のゲスト OS は現在、自動更新が構成されているクラウド サービス VM にロールアウトされています。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 5 月のゲスト OS には、次の修正プログラムが含まれています。 この一覧は変更されることがあります。
+## <a name="july-2019-guest-os"></a>2019 年 7 月のゲスト OS
 
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
-|  Rel 19-05   |  [4498206 ]  |  5 月の IE ロールアップ   |  2,86、3.73、4.66  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4505050 ]  |  5 月の IE ロールアップ   |  2,86、3.73、4.66  |  2019 年 5 月 18 日  |
-|  Rel 19-05   |  [4497932 ]  |  5 月のフラッシュの更新プログラム   |  3.73、4.66、5.31  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4499175 ]  |  5 月のセキュリティ ロールアップ   |  2.86  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4495612 ]  |  5 月のセキュリティ ロールアップ .NET 3.5   |  2.86  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4495593 ]  |  5 月のセキュリティ ロールアップ .NET 4.5.2   |  2.86  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4499158 ]  |  5 月のセキュリティ ロールアップ   |  3.73  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4495607 ]  |  5 月のセキュリティ ロールアップ .NET 3.5   |  3.73  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4495591 ]  |  5 月のセキュリティ ロールアップ .NET 4.5.2   |  3.73  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4492872 ]  |  IE ロールアップ   |  3.73  |  2019 年 4 月 16 日  |
-|  Rel 19-05   |  [4499165 ]  |  3 月のセキュリティ ロールアップ   |  4.66  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4495615 ]  |  5 月のセキュリティ ロールアップ .NET 3.5   |  4.66  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4495589 ]  |  5 月のセキュリティ ロールアップ .NET 4.5.2   |  4.66  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4498947 ]  |  5 月 SSU   |  5.31  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4494175 ]  |  5 月のマイクロコードの更新プログラム   |  5.31  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4505052 ]  |  5 月のセキュリティ ロールアップ   |  5.31  |  2019 年 5 月 19 日  |
-|  Rel 19-05   |  [4499728 ]  |  5 月 SSU   |  6.7  |  2019 年 5 月 19 日  |
-|  Rel 19-05   |  [4505056 ]  |  5 月のセキュリティ ロールアップ   |  6.7  |  2019 年 5 月 19 日  |
-|  Rel 19-05   |  [4494174 ]  |  5 月のマイクロコードの更新プログラム   |  6.7  |  2019 年 5 月 14 日  |
-|  Rel 19-05   |  [4495590 ]  |  5 月のセキュリティ ロールアップ .NET   |  6.7  |  2019 年 5 月 14 日  |
+|  Rel 19-07   |  [4507434]  |  Internet Explorer   |  2.88、3.75、4.68  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506621]  |  Windows セキュリティ   |  2.88、3.75、4.68  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506966]  |  .NET 4.5.2 セキュリティ   |  2.88  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506976]  |  .NET 3.5.1 セキュリティ   |  2.88  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4507456]  |  Windows セキュリティ   |  2.88  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506965]  |  .NET 4.5.2 セキュリティ   |  3.75  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506974]  |  .NET 3.5 セキュリティ   |  3.75  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4507464]  |  Windows セキュリティ   |  3.75  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506964]  |  .NET 4.5.2 セキュリティ   |  4.68  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506977]  |  .NET 3.5 セキュリティ   |  4.68  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4507457]  |  Windows セキュリティ   |  4.68  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4507460]  |  Windows セキュリティ   |  5.33  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4506998]  |  .NET 3.5 および 4.7.2 セキュリティ   |  6.9  |  2019 年 7 月 9 日  |
+|  Rel 19-07   |  [4507469]  |  Windows セキュリティ   |  6.9  |  2019 年 7 月 9 日  |
+|  該当なし  |  [4503537]  |  2019 年 6 月サービス スタック更新プログラム (Server 2016)   |  5.33  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4504369]  |  2019 年 6 月サービス スタック更新プログラム (Server 2019)   |  6.9  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4503292]  |  2019 年 6 月 セキュリティ以外 (Server 2008 R2)   |  2.88  |  2019 年 5 月 20 日  |
+|  該当なし  |  [4503285]  |  2019 年 6 月 セキュリティ以外 (Server 2012)   |  3.75  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4503276]  |  2019 年 6 月 セキュリティ以外 (Server 2012 R2)   |  4.68  |  2019 年 5 月 14 日  |
 
-[KB4493510]: https://support.microsoft.com/kb/KB4493510
-[KB4493472]: https://support.microsoft.com/kb/KB4493472
-[KB4493451]: https://support.microsoft.com/kb/KB4493451
-[KB4493446]: https://support.microsoft.com/kb/KB4493446
+[4507434]: https://support.microsoft.com/kb/4507434
+[4506621]: https://support.microsoft.com/kb/4506621
+[4506966]: https://support.microsoft.com/kb/4506966
+[4506976]: https://support.microsoft.com/kb/4506976
+[4507456]: https://support.microsoft.com/kb/4507456
+[4506965]: https://support.microsoft.com/kb/4506965
+[4506974]: https://support.microsoft.com/kb/4506974
+[4507464]: https://support.microsoft.com/kb/4507464
+[4506964]: https://support.microsoft.com/kb/4506964
+[4506977]: https://support.microsoft.com/kb/4506977
+[4507457]: https://support.microsoft.com/kb/4507457
+[4507460]: https://support.microsoft.com/kb/4507460
+[4506998]: https://support.microsoft.com/kb/4506998
+[4507469]: https://support.microsoft.com/kb/4507469
+[4503537]: https://support.microsoft.com/kb/4503537
+[4504369]: https://support.microsoft.com/kb/4504369
+[4503292]: https://support.microsoft.com/kb/4503292
+[4503285]: https://support.microsoft.com/kb/4503285
+[4503276]: https://support.microsoft.com/kb/4503276
 
 
+## <a name="june-2019-guest-os"></a>2019 年 6 月のゲスト OS
 
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-06   |  [4503327]  |  Windows 10 セキュリティ   |  6.8  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4503267]  |  Windows 10 セキュリティ   |  5.32  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4503290]  |  Windows セキュリティ   |  4.67  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4503263]  |  Windows セキュリティ   |  3.74  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4503269]  |  Windows セキュリティ   |  2.87  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4494174]  |  マイクロコードの更新プログラム   |  6.8  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4494175]  |  マイクロコードの更新プログラム   |  5.32  |  2019 年 6 月 3 日  |
+|  Rel 19-06   |  [4503308]  |  点滅   |  3.74、4.67、5.32、6.8  |  2019 年 6 月 11 日  |
+|  Rel 19-06   |  [4503259]  |  Internet Explorer   |  2.87、3.74、4.67  |  2019 年 6 月 13 日  |
+|  該当なし  |  [4499164]  |  2019 年 5 月、セキュリティ以外  |  2.87  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4495606]  |  2019 年 5 月、.NET 3.5、セキュリティ以外  |  2.87  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4495596]  |  2019 年 5 月、.NET 4.5、セキュリティ以外  |  2.87  |  2019 年 5 月 20 日  |
+|  該当なし  |  [4499171]  |  2019 年 5 月、セキュリティ以外  |  3.74  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4495602]  |  2019 年 5 月、.NET 3.5、セキュリティ以外  |  3.74  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4495594]  |  2019 年 5 月、.NET 4.x、セキュリティ以外  |  4.67  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4499151]  |  2019 年 5 月、セキュリティ以外  |  4.67  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4495608]  |  2019 年 5 月、.NET 3.5、セキュリティ以外  |  4.67  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4495592]  |  2019 年 5 月、.NET 4.5.2、セキュリティ以外  |  4.67  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4495610]  |  2019 年 5 月、.NET 4.8、累積的  |  6.8  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4495618]  |  2019 年 5 月、.NET 4.8、累積的  |  6.8  |  2019 年 5 月 14 日  |
+|  該当なし  |  [4501226]  |  モロッコおよびパレスチナ自治政府向けの DST タイムゾーンの更新プログラム  |  2.87、3.74、4.67  |  2019 年 5 月 23 日  |
+|  該当なし  |  [4490128]  |  サントメ・プリンシペおよびクズロルダ向けの DST タイムゾーンの更新プログラム  |  2.87、3.74、4.67  |  2019 年 4 月 17 日  |
 
+[4503327]: https://support.microsoft.com/kb/4503327
+[4503267]: https://support.microsoft.com/kb/4503267
+[4503290]: https://support.microsoft.com/kb/4503290
+[4503263]: https://support.microsoft.com/kb/4503263
+[4503269]: https://support.microsoft.com/kb/4503269
+[4494174]: https://support.microsoft.com/kb/4494174
+[4494175]: https://support.microsoft.com/kb/4494175
+[4503308]: https://support.microsoft.com/kb/4503308
+[4503259]: https://support.microsoft.com/kb/4503259
+[4499164]: https://support.microsoft.com/kb/KB4499164
+[4495606]: https://support.microsoft.com/kb/KB4495606
+[4495596]: https://support.microsoft.com/kb/KB4495596
+[4499171]: https://support.microsoft.com/kb/KB4499171
+[4495602]: https://support.microsoft.com/kb/KB4495602
+[4495594]: https://support.microsoft.com/kb/KB4495594
+[4499151]: https://support.microsoft.com/kb/KB4499151
+[4495608]: https://support.microsoft.com/kb/KB4495608
+[4495592]: https://support.microsoft.com/kb/KB4495592
+[4495610]: https://support.microsoft.com/kb/KB4495610
+[4495618]: https://support.microsoft.com/kb/KB4495618
+[4501226]: https://support.microsoft.com/kb/KB4501226
+[4490128]: https://support.microsoft.com/kb/KB4490128
 
+## <a name="may-2019-guest-os"></a>2019 年 5 月のゲスト OS
 
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-05   |  [4498206]  |  5 月の IE ロールアップ   |  2.86、3.73、4.66  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4505050]  |  5 月の IE ロールアップ   |  2.86、3.73、4.66  |  2019 年 5 月 18 日  |
+|  Rel 19-05   |  [4497932]  |  5 月のフラッシュの更新プログラム   |  3.73、4.66、5.31  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4499175]  |  5 月のセキュリティ ロールアップ   |  2.86  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495612]  |  5 月のセキュリティ ロールアップ .NET 3.5   |  2.86  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495593]  |  5 月のセキュリティ ロールアップ .NET 4.5.2   |  2.86  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4499158]  |  5 月のセキュリティ ロールアップ   |  3.73  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495607]  |  5 月のセキュリティ ロールアップ .NET 3.5   |  3.73  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495591]  |  5 月のセキュリティ ロールアップ .NET 4.5.2   |  3.73  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4492872]  |  IE ロールアップ   |  3.73  |  2019 年 4 月 16 日  |
+|  Rel 19-05   |  [4499165]  |  3 月のセキュリティ ロールアップ   |  4.66  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495615]  |  5 月のセキュリティ ロールアップ .NET 3.5   |  4.66  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495589]  |  5 月のセキュリティ ロールアップ .NET 4.5.2   |  4.66  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4498947]  |  5 月 SSU   |  5.31  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4494175]  |  5 月のマイクロコードの更新プログラム   |  5.31  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4505052]  |  5 月のセキュリティ ロールアップ   |  5.31  |  2019 年 5 月 19 日  |
+|  Rel 19-05   |  [4499728]  |  5 月 SSU   |  6.7  |  2019 年 5 月 19 日  |
+|  Rel 19-05   |  [4505056]  |  5 月のセキュリティ ロールアップ   |  6.7  |  2019 年 5 月 19 日  |
+|  Rel 19-05   |  [4494174]  |  5 月のマイクロコードの更新プログラム   |  6.7  |  2019 年 5 月 14 日  |
+|  Rel 19-05   |  [4495590]  |  5 月のセキュリティ ロールアップ .NET   |  6.7  |  2019 年 5 月 14 日  |
 
-
-
-
-
-
-
-
-
+[4498206]: https://support.microsoft.com/kb/4498206
+[4505050]: https://support.microsoft.com/kb/4505050
+[4497932]: https://support.microsoft.com/kb/4497932
+[4499175]: https://support.microsoft.com/kb/4499175
+[4495612]: https://support.microsoft.com/kb/4495612
+[4495593]: https://support.microsoft.com/kb/4495593
+[4499158]: https://support.microsoft.com/kb/4499158
+[4495607]: https://support.microsoft.com/kb/4495607
+[4495591]: https://support.microsoft.com/kb/4495591
+[4492872]: https://support.microsoft.com/kb/4492872
+[4499165]: https://support.microsoft.com/kb/4499165
+[4495615]: https://support.microsoft.com/kb/4495615
+[4495589]: https://support.microsoft.com/kb/4495589
+[4498947]: https://support.microsoft.com/kb/4498947
+[4494175]: https://support.microsoft.com/kb/4494175
+[4505052]: https://support.microsoft.com/kb/4505052
+[4499728]: https://support.microsoft.com/kb/4499728
+[4505056]: https://support.microsoft.com/kb/4505056
+[4494174]: https://support.microsoft.com/kb/4494174
+[4495590]: https://support.microsoft.com/kb/4495590
 
 
 ## <a name="april-2019-guest-os"></a>2019 年 4 月のゲスト OS
@@ -83,11 +176,11 @@ ms.locfileid: "66241324"
 | Rel 19-04 | [4493448] | Windows セキュリティ | 2.85 | 2019 年 4 月 9 日 |
 | Rel 19-04 | [4493478] | 点滅 | 3.72、4.65、5.30、6.6 | 2019 年 4 月 9 日 |
 | Rel 19-04 | [4493435] | Internet Explorer | 2.85、3.72、4.65 | 2019 年 4 月 9 日 |
-| Rel 19-04 | [KB4490628] | サービス スタック更新プログラム | 2.85 | 2019 年 3 月 12 日 |
-| Rel 19-04 | [KB4474419] | SHA2 のサポート | 2.85 | 2019 年 3 月 12 日 |
-| Rel 19-04 | [KB4489878] | 3 月のセキュリティ以外のロールアップ | 2.85 | 2019 年 3 月 12 日 |
-| Rel 19-04 | [KB4489891] | 3 月のセキュリティ以外のロールアップ | 3.72 | 2019 年 3 月 12 日 |
-| Rel 19-04 | [KB4489881] | 3 月のセキュリティ以外のロールアップ | 4.65 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [4490628] | サービス スタック更新プログラム | 2.85 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [4474419] | SHA2 のサポート | 2.85 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [4489878] | 3 月のセキュリティ以外のロールアップ | 2.85 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [4489891] | 3 月のセキュリティ以外のロールアップ | 3.72 | 2019 年 3 月 12 日 |
+| Rel 19-04 | [4489881] | 3 月のセキュリティ以外のロールアップ | 4.65 | 2019 年 3 月 12 日 |
 
 [4493509]: https://support.microsoft.com/kb/4493509
 [4493470]: https://support.microsoft.com/kb/4493470
@@ -96,11 +189,11 @@ ms.locfileid: "66241324"
 [4493448]: https://support.microsoft.com/kb/4493448
 [4493478]: https://support.microsoft.com/kb/4493478
 [4493435]: https://support.microsoft.com/kb/4493435
-[KB4490628]: https://support.microsoft.com/kb/KB4490628
-[KB4474419]: https://support.microsoft.com/kb/KB4474419
-[KB4489878]: https://support.microsoft.com/kb/KB4489878
-[KB4489891]: https://support.microsoft.com/kb/KB4489891
-[KB4489881]: https://support.microsoft.com/kb/KB4489881
+[4490628]: https://support.microsoft.com/kb/KB4490628
+[4474419]: https://support.microsoft.com/kb/KB4474419
+[4489878]: https://support.microsoft.com/kb/KB4489878
+[4489891]: https://support.microsoft.com/kb/KB4489891
+[4489881]: https://support.microsoft.com/kb/KB4489881
 
 ## <a name="march-2019-guest-os"></a>2019 年 3 月のゲスト OS
 
@@ -1717,36 +1810,36 @@ ms.locfileid: "66241324"
 [3002657]: https://support.microsoft.com/kb/3002657
 [3035126]: https://support.microsoft.com/kb/3035126
 
-[3049563]:https://support.microsoft.com/kb/3049563
-[3057110]:https://support.microsoft.com/kb/3057110
-[3046002]:https://support.microsoft.com/kb/3046002
-[3057134]:https://support.microsoft.com/kb/3057134
-[3055642]:https://support.microsoft.com/kb/3055642
-[3057191]:https://support.microsoft.com/kb/3057191
-[3050514]:https://support.microsoft.com/kb/3050514
-[3057263]:https://support.microsoft.com/kb/3057263
-[3051768]:https://support.microsoft.com/kb/3051768
-[3061518]:https://support.microsoft.com/kb/3061518
+[3049563]: https://support.microsoft.com/kb/3049563
+[3057110]: https://support.microsoft.com/kb/3057110
+[3046002]: https://support.microsoft.com/kb/3046002
+[3057134]: https://support.microsoft.com/kb/3057134
+[3055642]: https://support.microsoft.com/kb/3055642
+[3057191]: https://support.microsoft.com/kb/3057191
+[3050514]: https://support.microsoft.com/kb/3050514
+[3057263]: https://support.microsoft.com/kb/3057263
+[3051768]: https://support.microsoft.com/kb/3051768
+[3061518]: https://support.microsoft.com/kb/3061518
 
-[3038314]:https://support.microsoft.com/kb/3038314
-[3042553]:https://support.microsoft.com/kb/3042553
-[3046306]:https://support.microsoft.com/kb/3046306
-[3046269]:https://support.microsoft.com/kb/3046269
-[3049576]:https://support.microsoft.com/kb/3049576
-[3046482]:https://support.microsoft.com/kb/3046482
-[3045711]:https://support.microsoft.com/kb/3045711
-[3048010]:https://support.microsoft.com/kb/3048010
-[3047234]:https://support.microsoft.com/kb/3047234
-[3045755]:https://support.microsoft.com/kb/3045755
-[3030377]:https://support.microsoft.com/kb/3030377
-[3039976]:https://support.microsoft.com/kb/3039976
+[3038314]: https://support.microsoft.com/kb/3038314
+[3042553]: https://support.microsoft.com/kb/3042553
+[3046306]: https://support.microsoft.com/kb/3046306
+[3046269]: https://support.microsoft.com/kb/3046269
+[3049576]: https://support.microsoft.com/kb/3049576
+[3046482]: https://support.microsoft.com/kb/3046482
+[3045711]: https://support.microsoft.com/kb/3045711
+[3048010]: https://support.microsoft.com/kb/3048010
+[3047234]: https://support.microsoft.com/kb/3047234
+[3045755]: https://support.microsoft.com/kb/3045755
+[3030377]: https://support.microsoft.com/kb/3030377
+[3039976]: https://support.microsoft.com/kb/3039976
 
-[3058515]:https://support.microsoft.com/kb/3058515
-[3033890]:https://support.microsoft.com/kb/3033890
-[3059317]:https://support.microsoft.com/kb/3059317
-[3057839]:https://support.microsoft.com/kb/3057839
-[3062577]:https://support.microsoft.com/kb/3062577
-[3063858]:https://support.microsoft.com/kb/3063858
+[3058515]: https://support.microsoft.com/kb/3058515
+[3033890]: https://support.microsoft.com/kb/3033890
+[3059317]: https://support.microsoft.com/kb/3059317
+[3057839]: https://support.microsoft.com/kb/3057839
+[3062577]: https://support.microsoft.com/kb/3062577
+[3063858]: https://support.microsoft.com/kb/3063858
 
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx
