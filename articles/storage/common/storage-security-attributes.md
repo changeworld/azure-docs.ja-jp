@@ -1,6 +1,6 @@
 ---
-title: Azure Storage の一般的なセキュリティ属性
-description: Azure Storage を評価するための一般的なセキュリティ属性のチェックリスト
+title: Azure Storage のセキュリティ属性
+description: Azure Storage を評価するためのセキュリティ属性のチェックリスト
 services: storage
 documentationcenter: ''
 author: msmbaldwin
@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 922273e3805004f6af068ea748c16f5675810144
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16ec2757955b53a8bfa73ba724100f7fa61d2867
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001456"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444301"
 ---
 # <a name="security-attributes-for-azure-storage"></a>Azure Storage のセキュリティ属性
 
@@ -26,8 +26,8 @@ ms.locfileid: "66001456"
 
 | セキュリティ属性 | はい/いいえ | メモ |
 |---|---|--|
-| 保存時の暗号化:<ul><li>サーバー側暗号化</li><li>ユーザーが管理するキーによるサーバー側暗号化</li><li>その他の暗号化機能 (クライアント側や常に暗号化など)</ul>| はい |  |
-| 転送中の暗号化:<ul><li>Express Route 暗号化</li><li>VNet 内の暗号化</li><li>VNet 間暗号化</ul>| はい | 標準の HTTPS/TLS 機構をサポートします。  サービスに転送するデータは、ユーザーが事前に暗号化することもできます。 |
+| 保存時の暗号化 (サーバー側暗号化、お客様が管理するキーによるサーバー側暗号化、およびその他の暗号化機能)| はい |  |
+| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | 標準の HTTPS/TLS 機構をサポートします。  サービスに転送するデータは、ユーザーが事前に暗号化することもできます。 |
 | 暗号化キーの処理 (CMK や BYOK など)| はい | 「[Azure Key Vault で顧客が管理するキーを Storage Service Encryption に使用する](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。|
 | 列レベルの暗号化 (Azure Data Services)| 該当なし |  |
 | API 呼び出しの暗号化| はい |  |

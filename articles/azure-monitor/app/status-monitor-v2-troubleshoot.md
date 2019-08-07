@@ -12,24 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: df59766ce38ac81568570cd6544ee28808ff8249
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: e34beba32eace370664893225dd85b6f4b79c886
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807027"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68424103"
 ---
 # <a name="troubleshooting-status-monitor-v2"></a>Status Monitor v2 のトラブルシューティング
 
 監視を有効にしたとき、データ収集を妨げる問題が発生する可能性があります。
 この記事では、既知の問題をすべて一覧にまとめ、トラブルシューティングの例を示します。
 この一覧にない問題が発生した場合は、[GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues) でお問い合わせください。
-
-
-> [!IMPORTANT]
-> 現在、Status Monitor v2 はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 一部の機能は、サポートされていなかったり、制限されていたりする場合があります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -81,6 +75,19 @@ Enable コマンドを実行した後、次の手順を実行します。
         <add name="ManagedHttpModuleHelper" type="Microsoft.AppInsights.IIS.ManagedHttpModuleHelper.ManagedHttpModuleHelper, Microsoft.AppInsights.IIS.ManagedHttpModuleHelper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" preCondition="managedHandler,runtimeVersionv4.0" />
     </modules>
     ```
+
+### <a name="iis-nested-applications"></a>IIS の入れ子になったアプリケーション
+
+バージョン 1.0 では、IIS の入れ子になったアプリケーションをインストルメント化しません。
+[こちら](https://github.com/microsoft/ApplicationInsights-Home/issues/369)でこの問題を追跡しています。
+
+### <a name="advanced-sdk-configuration-isnt-available"></a>高度な SDK 構成を使用できません。
+
+バージョン 1.0 では SDK 構成はエンド ユーザーに公開されていません。
+[こちら](https://github.com/microsoft/ApplicationInsights-Home/issues/375)でこの問題を追跡しています。
+
+    
+    
 ## <a name="troubleshooting"></a>トラブルシューティング
     
 ### <a name="troubleshooting-powershell"></a>PowerShell のトラブルシューティング
@@ -111,7 +118,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 ```
 
 #### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Status Monitor v2 モジュールの現在のバージョンを確認する
-モジュールに関する以下の情報を表示するには、`Get-ApplicationInsightsMonitoringStatus` コマンドを実行します。
+モジュールに関する以下の情報を表示するには、`Get-ApplicationInsightsMonitoringStatus -PowerShellModule` コマンドを実行します。
    - PowerShell モジュールのバージョン
    - Application Insights SDK のバージョン
    - PowerShell モジュールのファイル パス

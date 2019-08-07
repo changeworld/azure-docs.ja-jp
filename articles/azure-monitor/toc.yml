@@ -131,6 +131,8 @@
   items:
     - name: Azure Monitor の管理
       items:
+        - name: ワークスペース デプロイの設計
+          href: platform/design-logs-deployment.md
         - name: ロールのアクセス許可とセキュリティ
           href: platform/roles-permissions-security.md
         - name: IP アドレス

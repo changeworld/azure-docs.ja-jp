@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: c8b0d6febbffb80cb4e8bcbf62febb51d059282c
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 69659e700ee47c8961ec21f0fb23573e13d72588
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490313"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383631"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Microsoft Azure の課金内容を確認する
 Azure の請求書を理解するには、詳細な毎日の使用状況ファイルおよび Azure portal のコスト管理レポートと、請求書を比較します。
@@ -42,7 +42,7 @@ Azure の請求書を理解するには、詳細な毎日の使用状況ファ�
  | 請求書 (PDF) | 使用状況の詳細 (CSV)|
  | --- | --- |
 |請求サイクル | 請求期間 |
- |Name |測定カテゴリ |
+ |EnableAdfsAuthentication |測定カテゴリ |
  |Type |測定サブカテゴリ |
  |Resource |測定名 |
  |リージョン |測定リージョン |
@@ -115,9 +115,9 @@ VM が作成されると、各メーターが使用状況レコードの出力�
 
 ## <a name="payment"></a>請求金額を支払う
 
-支払い方法としてクレジット カードまたはデビット カードを設定している場合、支払いは、請求期間の終了後、10 日以内に自動的に行われます。 クレジット カードの明細には、**MSFT Azure** と表記されます。
+支払い方法としてクレジット カードを設定している場合、支払いは、請求期間の終了後、10 日以内に自動的に行われます。 クレジット カードの明細には、**MSFT Azure** と表記されます。
 
-請求されるクレジットまたはデビット カードを変更する方法については、「[Azure のクレジット カードまたはデビット カードを追加、更新、または削除する](billing-how-to-change-credit-card.md)」を参照してください。
+請求されるクレジット カードを変更する方法については、「[Azure 用にクレジット カードを追加、更新、または削除する](billing-how-to-change-credit-card.md)」を参照してください。
 
 [請求書による支払い](billing-how-to-pay-by-invoice.md)を利用している場合は、請求書の下部に記載されている場所に送金します。
 

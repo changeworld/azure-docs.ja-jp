@@ -8,16 +8,16 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 71e87a3295a9cd73dca2f97b3fa04a5d5ff76f84
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 1318b3e433224b009b76458b12e82c9bcf94bb7a
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798689"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444388"
 ---
 # <a name="security-attributes-for-azure-sql-database"></a>Azure SQL Database のセキュリティ属性
 
-この記事では、Azure SQL Database に組み込まれている一般的なセキュリティ属性について説明します。
+この記事では、Azure SQL Database に組み込まれているセキュリティ属性について説明します。
 
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 

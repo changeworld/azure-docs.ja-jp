@@ -114,6 +114,9 @@
     - name: ベスト プラクティス
       href: luis-concept-best-practices.md
       displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
+    - name: LUIS と QnA Maker の使用
+      href: choose-natural-language-processing-service.md
+      displayName: 'nlp, qna maker'
     - name: アプリの計画
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md

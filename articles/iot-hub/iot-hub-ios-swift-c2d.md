@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 6bb95bf887837fffc4196bca8d761239ac430a1a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: af1b331836cd025bbe15665aa03faee000e7c4f0
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620172"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404246"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) を使用した cloud-to-device メッセージの送信
 
@@ -99,7 +99,13 @@ pod install
 
 6. デバイス エミュレーターで、 **[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。
 
-   ![プロジェクトの実行](media/iot-hub-ios-swift-c2d/run-sample.png)
+   ![プロジェクトを実行する](media/iot-hub-ios-swift-c2d/run-sample.png)
+
+## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
+
+この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-ios.md)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続**のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
+
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="simulate-a-service-device"></a>サービス デバイスのシミュレート
 
@@ -125,31 +131,25 @@ pod install
 
 ### <a name="run-the-sample-service-application"></a>サンプル サービス アプリケーションの実行
 
-1. IoT ハブのサービス接続文字列を取得します。 [Azure Portal](https://portal.azure.com) で **[共有アクセス ポリシー]** ブレードの **iothubowner** ポリシーからこの文字列をコピーするか、次の CLI コマンドを使用して取得できます。  
-
-    ```azurecli-interactive
-    az iot hub show-connection-string --name {YourIoTHubName} --output table
-    ```
-
-2. XCode で、サンプル ワークスペースを開きます。
+1. XCode で、サンプル ワークスペースを開きます。
 
    ```sh
    open AzureIoTServiceSample.xcworkspace
    ```
 
-3. **AzureIoTServiceSample** プロジェクトを展開し、同じ名前のフォルダーを展開します。  
+2. **AzureIoTServiceSample** プロジェクトを展開し、同じ名前のフォルダーを展開します。  
 
-4. XCode で編集するために **ViewController.swift** を開きます。 
+3. XCode で編集するために **ViewController.swift** を開きます。 
 
-5. **connectionString** 変数を検索し、前にコピーしたサービス接続文字列で値を更新します。
+4. **connectionString** 変数を検索し、「[Get the IoT hub connection string](#get-the-iot-hub-connection-string)」で前にコピーしたサービス接続文字列で値を更新します。
 
-6. 変更を保存します。
+5. 変更を保存します。
 
-7. Xcode で、エミュレーターの設定を、IoT デバイスの実行に使用したのとは異なる iOS デバイスに変更します。 XCode では、同じ種類の複数のエミュレーターを実行できません。
+6. Xcode で、エミュレーターの設定を、IoT デバイスの実行に使用したのとは異なる iOS デバイスに変更します。 XCode では、同じ種類の複数のエミュレーターを実行できません。
 
    ![エミュレーター デバイスの変更](media/iot-hub-ios-swift-c2d/change-device.png)
 
-8. デバイス エミュレーターで、 **[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。
+7. デバイス エミュレーターで、 **[ビルド/実行]** ボタンまたは **Command + r** キーの組み合わせを使用してプロジェクトを実行します。
 
    ![プロジェクトを実行する](media/iot-hub-ios-swift-c2d/run-app.png)
 

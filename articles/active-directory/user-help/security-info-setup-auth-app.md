@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4757be00a3633f56aed52dd7af22923e49b0b62
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 912bda010ddcf9b02506df14f06fb0650271a53b
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60475672"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382985"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>認証アプリを使用するようにセキュリティ情報 (プレビュー) を設定する
+
 次の手順に従って、2 要素認証とパスワードのリセット メソッドを追加できます。 これを初回に設定したら、 **[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
 
 職場または学校アカウントにサインイン後すぐにこれを設定するように求められた場合、[サインイン ページ プロンプトからセキュリティ情報を設定する](security-info-setup-signin.md)方法に関する記事の詳細な手順を参照してください。
@@ -30,7 +31,8 @@ ms.locfileid: "60475672"
 >認証アプリ オプションが表示されない場合、検証に認証アプリを使用することを組織が許可していない可能性があります。 この場合、別の方法を選択するか、管理者に支援を要請する必要があります。
 
 ## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>[セキュリティ情報] ページから Microsoft Authenticator アプリを設定する
-組織の設定に応じて、セキュリティ情報メソッドの 1 つとして認証アプリを使用できます。 Microsoft Authenticator アプリを使用することは必須ではなく、設定プロセス時に別のアプリを選択することもできます。 ただし、この記事では、Microsoft Authenticator アプリを使用します。 
+
+組織の設定に応じて、セキュリティ情報メソッドの 1 つとして認証アプリを使用できます。 Microsoft Authenticator アプリを使用することは必須ではなく、設定プロセス時に別のアプリを選択することもできます。 ただし、この記事では、Microsoft Authenticator アプリを使用します。
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを設定するには
 
@@ -54,7 +56,7 @@ ms.locfileid: "60475672"
 
    > [!Note]
    > Microsoft Authenticator アプリ以外の認証アプリを使用する場合は、 **[別の認証アプリを使用します]** リンクを選択します。
-   > 
+   >
    > 組織で、認証アプリのほかに別の方法を選択できる場合は、 **[I want to set up a different method]\(別の方法を設定します\)** リンクを選択できます。
 
 5. モバイル デバイスでの Microsoft Authenticator アプリの設定中に、 **[アカウントのセットアップ]** ページに留まります。
@@ -69,23 +71,24 @@ ms.locfileid: "60475672"
 
     ![認証アプリを使用して QR コードをスキャンする](media/security-info/securityinfo-myprofile-qrcodeauthapp.png)
 
-6. 手順 6 で職場または学校アカウントを作成した後に、モバイル デバイスに表示された、提供されたコードを Microsoft Authenticator アプリの QR コード リーダーでスキャンします。
+8. 手順 6 で職場または学校アカウントを作成した後に、モバイル デバイスに表示された、提供されたコードを Microsoft Authenticator アプリの QR コード リーダーでスキャンします。
 
     認証アプリによって、ユーザーからの追加情報を必要とせずに、職場または学校アカウントが正常に追加されるはずです。 ただし、QR コード リーダーで、コードを読み取れない場合は、 **[QR コードをスキャンできませんか?]** リンクを選択し、コードと URL を Microsoft Authenticator アプリに手動で入力します。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
 
-7. **[QR コードをスキャンします]** ページで、 **[次へ]** を選択します。
+9. **[QR コードをスキャンします]** ページで、 **[次へ]** を選択します。
 
     モバイル デバイスの Microsoft Authenticator アプリに、アカウントをテストするための通知が送信されます。
 
     ![認証アプリでアカウントをテストする](media/security-info/securityinfo-myprofile-tryitauthapp.png)
 
-8. Microsoft Authenticator アプリで通知を承認し、 **[次へ]** を選択します。
+10. Microsoft Authenticator アプリで通知を承認し、 **[次へ]** を選択します。
 
      ![アプリとアカウントの接続の成功通知](media/security-info/securityinfo-myprofile-successauthapp.png)
 
      2 段階認証またはパスワード リセットを使用するときに、既定で Microsoft Authenticator アプリを使用して本人確認をするようにセキュリティ情報が更新されます。
 
 ## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>セキュリティ情報メソッドから認証アプリを削除する
+
 セキュリティ情報メソッドとして認証 アプリを使用しなくなった場合は、 **[セキュリティ情報]** ページから削除できます。 これは、Microsoft Authenticator アプリだけでなく、すべての認証アプリに対して機能します。 アプリの削除後、モバイル デバイスの認証アプリに移動し、アカウントを削除する必要があります。
 
 >[!Important]
@@ -104,6 +107,7 @@ ms.locfileid: "60475672"
     アカウントは 2 要素検証およびパスワード リセット要求用の認証アプリから完全に削除されます。
 
 ## <a name="change-your-default-security-info-method"></a>既定のセキュリティ情報メソッドを変更する
+
 2 要素検証を使用して職場または学校アカウントにサインインする場合、またはパスワード リセット要求に、認証アプリを既定の方法として使用する場合は、 **[セキュリティ情報]** ページから設定できます。
 
 ### <a name="to-change-your-default-security-info-method"></a>既定のセキュリティ情報メソッドを変更するには
@@ -121,16 +125,19 @@ ms.locfileid: "60475672"
     サインインに使用される既定の方法が Microsoft Authenticator アプリに変更されます。
 
 ## <a name="additional-security-info-methods"></a>追加のセキュリティ情報メソッド
+
 操作内容に基づき、本人確認のために組織から連絡が届きますが、その方法には追加の選択肢があります。 選択肢は次のようになっています。
 
 - **モバイル デバイスのテキスト。** モバイル デバイスの番号を入力し、2 段階認証やパスワード リセットに使用するテキスト コードを取得します。 テキスト メッセージ (SMS) による本人確認方法に関する段階的な説明が必要な場合は、「[Set up security info to use text messaging (SMS)](security-info-setup-text-msg.md)」(テキスト メッセージ (SMS) を使用するようにセキュリティ情報を設定する) を参照してください。
 
 - **モバイル デバイスまたは職場の電話の呼び出し。** モバイル デバイスの番号を入力し、電話の呼び出しで 2 段階認証やパスワード リセットを行います。 電話番号による本人確認方法に関する段階的説明が必要な場合、「[電話を使用するようにセキュリティ情報を設定する](security-info-setup-phone-number.md)」を参照してください。
 
+- **セキュリティ キー。** Microsoft と互換性のあるセキュリティ キーを登録し、それを PIN と一緒に使用して、2 段階認証またはパスワードのリセットを行います。 セキュリティ キーによる本人確認方法に関する段階的説明が必要な場合、[セキュリティ キーを使用するようにセキュリティ情報を設定する](security-info-setup-security-key.md)方法に関するページを参照してください。
+
 - **メール アドレス。** 職場または学校のメール アドレスを入力して、パスワードをリセットするためのメールを受け取ります。 このオプションは、2 段階認証用には使用できません。 メールの設定方法に関する段階的説明が必要な場合、「[Set up security info to use email (メールを使用するようにセキュリティ情報を設定する)](security-info-setup-email.md)」を参照してください。
 
 - **セキュリティの質問。** 管理者が組織のために作成したいくつかのセキュリティの質問に答えます。 この選択肢はパスワード リセットの場合にのみ選択できます。2 段階認証には選択できません。 セキュリティの質問の設定方法に関する段階的な説明が必要な場合は、「[Set up security info to use security questions ](security-info-setup-questions.md)」(セキュリティの質問を使用するようにセキュリティ情報を設定する) を参照してください。
-    
+
     >[!Note]
     >一部の選択肢が表示されない場合、おそらく、組織がその方法を許可していません。 その場合、選択できる方法を選択するか、管理者に支援を要請する必要があります。
 

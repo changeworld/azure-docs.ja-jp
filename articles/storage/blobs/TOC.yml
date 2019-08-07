@@ -292,6 +292,8 @@
               href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ストレージ アカウントのアップグレード
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: アカウントの種類と SKU 名の取得 (.NET)
+              href: ../common/storage-account-get-info.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: コンテナーの作成と管理
           items:
             - name: コンテナーの作成または削除 (.NET)

@@ -4,29 +4,30 @@ description: セキュリティ情報での各種本人確認方法を使った�
 services: active-directory
 author: eross-msft
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: librown
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 07/18/2019
 ms.author: lizross
-ms.custom: user-help, seo-update-azuread-jan
+ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60e4d9a4cb555dfbc9f05961487a8f794d19e1bf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b20ea1131ceda0527ed35d1a1082d05f25da6bac
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472981"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382308"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>2 段階認証またはセキュリティ情報を使ったサインイン方法
+
 2 段階認証またはセキュリティ情報を設定したら、指定した認証方法を使って、アカウントにサインインできるようになります。
 
 > [!Note]
 > 引き続き 2 段階認証を使用している場合は、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」の手順に従って認証方法を設定する必要があります。
-> 
-> 管理者によってセキュリティ情報エクスペリエンスが有効化されている場合は、次のステップ バイ ステップ記事を使用して認証方法を設定する必要があります。<ul><li>[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)</li><li>[テキスト メッセージを使用するようにセキュリティ情報を設定する](security-info-setup-text-msg.md)</li><li>[電話呼び出しを使用するようにセキュリティ情報を設定する](security-info-setup-phone-number.md)</li></ul>
+>
+> 管理者によってセキュリティ情報エクスペリエンスが有効化されている場合は、次のステップ バイ ステップ記事を使用して認証方法を設定する必要があります。<ul><li>[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)</li><li>[テキスト メッセージを使用するようにセキュリティ情報を設定する](security-info-setup-text-msg.md)</li><li>[電話呼び出しを使用するようにセキュリティ情報を設定する](security-info-setup-phone-number.md)</li><li>[セキュリティ キーを使用するようにセキュリティ情報を設定する](security-info-setup-security-key.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>モバイル デバイスの認証アプリの通知を使ってサインインする
 
@@ -52,7 +53,27 @@ ms.locfileid: "60472981"
 
 2. テキスト メッセージを開き、テキスト メッセージにあるコードを **[コードの入力]** ボックスに入力します。
 
+## <a name="sign-in-using-a-security-key-at-the-lock-screen"></a>ロック画面でセキュリティ キーを使用してサインインする
+
+1. セキュリティ キーを登録したら、Windows 10 のロック画面からセキュリティ キーの画像を選択します。
+
+2. セキュリティ キーをデバイスの USB ポートに挿入し、セキュリティ キーの PIN を使用して Windows にサインインします。
+
+    ![Windows 10 のロック画面でのセキュリティ キーによるサインイン](./media/security-info/security-info-windows-10-lock-screen-security-key.png)
+
+## <a name="sign-in-using-a-security-key-and-the-microsoft-edge-browser"></a>セキュリティ キーと Microsoft Edge ブラウザーを使用してサインインする
+
+1. セキュリティ キーを登録したら、Microsoft Edge ブラウザーを開きます。
+
+2. サインインするように求められたら、セキュリティ キーをデバイスの USB ポートに挿入し、セキュリティ キーの PIN を使用して Windows にサインインします。
+
+    ![Microsoft Edge ブラウザーを使用したセキュリティ キーのサインイン](./media/security-info/security-info-edge-security-key.png)
+
+    >[!NOTE]
+    >Microsoft Authenticator アプリを使用するサインインについては、「[Sign in to your accounts using the Microsoft Authenticator app](user-help-auth-app-sign-in.md)」 (Microsoft Authenticator アプリを使用してアカウントにサインインする) の記事を参照してください。
+
 ## <a name="sign-in-using-another-verification-method"></a>別の認証方法を使用してサインインする
+
 なんらかの理由で主要なサインイン方法を使用できない場合は、事前に設定した別の認証方法を使用することができます。
 
 1. 通常どおりアカウントにサインインし、 **[2 段階認証]** ページで **[別の方法でサインイン]** リンクを選択します。
@@ -61,7 +82,7 @@ ms.locfileid: "60472981"
 
     >[!Note]
     >**[別の方法でサインイン]** リンクが表示されない場合、別の認証方法の設定が済んでいないことを意味します。アカウントにサインインするには、管理者に連絡してサポートを受ける必要があります。 管理者のサポートの下でサインインした後に、必ず新たに認証方法を追加してください。 検証方法を追加する方法の詳細については、[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)に関する記事を参照してください。
-    > 
+    >
     >**[別の方法でサインイン]** リンクは表示されるが他の認証方法が表示されない場合、アカウントにサインインするには、管理者に連絡してサポートを受ける必要があります。
 
 2. 他の認証方法を選択し、2 段階認証を続行します。
@@ -72,7 +93,7 @@ ms.locfileid: "60472981"
 
 - 「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」の記事でセキュリティ情報について学習する。
 
-- 「[2 段階認証の概要](user-help-two-step-verification-overview.md)」の記事で 2 段階認証について学習する。 
+- 「[2 段階認証の概要](user-help-two-step-verification-overview.md)」の記事で 2 段階認証について学習する。
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)でパスワードをリセットする (パスワードをなくしたか忘れた場合)
 

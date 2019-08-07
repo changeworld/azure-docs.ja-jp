@@ -56,14 +56,20 @@
       maintainContext: true
     - name: トラブルシューティング
       items:
+        - name: ソフトのロックアップ - CPU
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: InvalidNetworkConfigurationErrorCode - クラスターの作成が失敗する
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: InvalidNetworkSecurityGroupSecurityRules - クラスターの作成が失敗する
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: HDInsight クラスターにログインできない
           href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
         - name: ノードを HDInsight クラスターに追加できない
           href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: InvalidNetworkSecurityGroupSecurityRules - クラスターの作成が失敗する
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
         - name: サービス プリンシパルの証明書の変換
           href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: ローカルの HDFS がセーフ モードでスタックする
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: Apache Ambari のハートビートの問題
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
 - name: 方法

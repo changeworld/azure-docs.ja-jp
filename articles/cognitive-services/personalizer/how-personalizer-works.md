@@ -2,19 +2,19 @@
 title: Personalizer のしくみ - Personalizer
 titleSuffix: Azure Cognitive Services
 description: Personalizer は、機械学習を使用して、コンテキスト内で使用するアクションを発見します。 各学習ループには、Rank 呼び出しと Reward 呼び出しを介して送信したデータについてのみトレーニングされたモデルがあります。 すべての学習ループは、互いに完全に独立しています。
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.author: edjez
-ms.openlocfilehash: 38480d3cc32d53084b79af627e4f7e6ae7dcc03d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722362"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663911"
 ---
 # <a name="how-personalizer-works"></a>Personalizer のしくみ
 
@@ -79,6 +79,8 @@ Personalizer は、論文、研究活動、および現在進行中の Microsoft
 * **非アクティブなイベント**: 非アクティブなイベントとは、Rank が呼び出されたときにクライアント アプリケーションによる決定によりユーザーに結果が表示されるかどうかが不明なイベントを表します。 非アクティブなイベントを使用すると、パーソナル化の結果を作成して保存した後、機械学習モデルに影響を与えることなくそれらを破棄することを決定できます。
 
 * **モデル**:Personalizer モデルは、ユーザーの動作に関して学習したすべてのデータを取得し、Rank と Reward の呼び出しに送信した引数と学習ポリシーで決定されたトレーニング動作の組み合わせからトレーニング データを取得します。 
+
+* **学習ポリシー**:Personalizer によるすべてのイベントに対するモデルのトレーニング方法は、機械学習アルゴリズムの動作方法に影響するいくつかのメタパラメーターによって決まります。 新しい Personalizer ループは既定の学習ポリシーから始まります。これにより、適度なパフォーマンスが得られます。 [評価](concepts-offline-evaluation.md)を実行すると、Personalizer では、ループのユース ケースに合わせて最適化された新しい学習ポリシーを作成できます。 評価時に生成された特定のループごとに最適化されたポリシーを使用すると、Personalizer ははるかに優れたパフォーマンスを発揮します。
 
 ## <a name="example-use-cases-for-personalizer"></a>Personalizer のユース ケース例
 
@@ -182,3 +184,4 @@ Personalizer は、レコメンデーション エンジンと併用できます
 ## <a name="next-steps"></a>次の手順
 
 [Personalizer を使用できる場所](where-can-you-use-personalizer.md)について理解します。
+[オフライン評価](how-to-offline-evaluation.md)を実行します

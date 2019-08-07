@@ -27,64 +27,31 @@ sections:
         style: cards
         type: list
   - items:
-      - text: 'Azure Machine Learning サービスを設定して使用を開始する:'
+      - text: Azure Machine Learning service を設定して使用を開始します。
         type: paragraph
-      - text: '<b>クイック スタート:</b>'
-        type: paragraph
-      - items:
-          - html: <a href="service/quickstart-run-cloud-notebook">クラウドで実験を実行する</a> (インストール不要)
-          - html: <a href="service/quickstart-run-local-notebook">ローカルのノートブック サーバーを使用して実験を実行する</a> (SDK のローカル インストール)
-        style: unordered
-        type: list
-      - text: '<b>チュートリアル:Azure portal で自動化された最初の ML モデルをトレーニングしてデプロイする</b>'
+      - text: ML モデルをトレーニング、デプロイ、管理するために、使いやすいコード不要のインターフェイス、Azure portal を使用します。
         type: paragraph
       - items:
+          - html: <a href="service/ui-tutorial-automobile-price-train-score">ビジュアル インターフェイスのドラッグ アンド ドロップ UI で最初の実験をトレーニングする</a>
           - html: <a href="service/tutorial-first-experiment-automated-ml">自動化された機械学習を使用して最初の分類モデルのトレーニングとデプロイを行う</a>
         style: unordered
         type: list
-      - text: '<b>チュートリアル:SDK を使用して最初の ML モデルをトレーニングする</b>'
+      - text: ML モデルをトレーニング、デプロイ、管理するために、スクリプトおよびノートブックで Python SDK を使用します。
         type: paragraph
       - items:
-          - html: 'パート 1:<a href="service/tutorial-1st-experiment-sdk-setup">環境とワークスペースを設定する</a>'
-          - html: 'パート 2:<a href="service/tutorial-1st-experiment-sdk-train">最初のモデルをトレーニングする</a>'
+          - html: <a href="service/tutorial-1st-experiment-sdk-setup">環境を設定して、最初の ML 実験をトレーニングする</a>
+          - html: <a href="service/tutorial-train-models-with-aml">画像分類モデルをトレーニングしてデプロイする</a>
+          - html: <a href="service/tutorial-data-prep">データを準備し、自動化された ML を使用してタクシー料金を予測する</a>
         style: unordered
         type: list
-      - text: '<b>チュートリアル:ビジュアル インターフェイスを使用して最初の実験のトレーニングとデプロイを行う</b>'
-        type: paragraph
-      - items:
-          - html: 'パート 1:<a href="service/ui-tutorial-automobile-price-train-score">回帰モデルをトレーニングする</a>'
-          - html: 'パート 2:<a href="service/ui-tutorial-automobile-price-deploy">モデルをデプロイする</a>。'
-        style: unordered
-        type: list
-      - text: '<b>チュートリアル:SDK を使用した MNIST データの画像分類:</b>'
-        type: paragraph
-      - items:
-          - html: 'パート 1:<a href="service/tutorial-train-models-with-aml">自分で用意したモデルを使用する</a>'
-          - html: 'パート 2:<a href="service/tutorial-deploy-models-with-aml">そのモデルをデプロイする</a>'
-        style: unordered
-        type: list
-      - text: '<b>チュートリアル:SDK を使用してタクシーの乗車料金を予測する:</b>'
-        type: paragraph
-      - items:
-          - html: 'パート 1:<a href="service/tutorial-data-prep">モデリング用にデータを準備する</a>'
-          - html: 'パート 2:<a href="service/tutorial-auto-train-models">ML によりモデルを自動的にトレーニングさせる</a>'
-        style: unordered
-        type: list
-      - text: '<b>チュートリアル:ビジュアル インターフェイスを使用して自動車価格を予測する:</b>'
-        type: paragraph
-      - items:
-          - html: 'パート 1:<a href="service/ui-tutorial-automobile-price-train-score">自動車価格を予測する</a>'
-          - html: 'パート 2:<a href="service/ui-tutorial-automobile-price-deploy">回帰モデルをデプロイする</a>'
-        style: unordered
-        type: list
-      - text: '<b>モデルを使用する:</b>'
+      - text: 自分のモデルを使用します。
         type: paragraph
       - items:
           - html: <a href="service/how-to-consume-web-service">要求 - 応答モデルの使用</a>
           - html: <a href="service/how-to-run-batch-predictions">ML パイプラインを使用したバッチ予測</a>
         style: unordered
         type: list
-    title: クイック スタートとチュートリアル
+    title: ステップバイステップのチュートリアル
   - items:
       - className: cardsM
         columns: 2

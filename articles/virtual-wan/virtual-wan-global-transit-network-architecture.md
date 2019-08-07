@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 07/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 114d11f98c6181a03f5ce52527b5e2efea468c42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2376c77ecc328788c842e045aafb618cbad39b0e
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965972"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68421429"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 
@@ -48,7 +48,7 @@ Azure Virtual WAN のアーキテクチャでは、Azure リージョンがハ�
 
 ## <a name="crossregion"></a>リージョン間の接続
 
-大きな企業では、通常、クラウドのフットプリントは物理的なフットプリントに従います。 ほとんどの企業では、物理的なサイトやユーザーに最も近いリージョンからクラウドにアクセスします。 グローバル ネットワーク アーキテクチャの重要な原則の 1 つは、ネットワーク エンティティとエンドポイントの間のリージョン間接続を有効にすることです。 クラウドのフットプリントは、複数のリージョンにまたがることができます。 つまり、あるリージョンのクラウドに接続されているブランチからのトラフィックは、現在プレビュー段階のハブ間接続を使用して、異なるリージョンにある別のブランチまたは VNet に到達できます。
+大きな企業では、通常、クラウドのフットプリントは物理的なフットプリントに従います。 ほとんどの企業では、物理的なサイトやユーザーに最も近いリージョンからクラウドにアクセスします。 グローバル ネットワーク アーキテクチャの重要な原則の 1 つは、ネットワーク エンティティとエンドポイントの間のリージョン間接続を有効にすることです。 クラウドのフットプリントは、複数のリージョンにまたがることができます。 つまり、あるリージョンのクラウドに接続されているブランチからのトラフィックは、現在ロードマップに記載されているハブ間接続を使用して、異なるリージョンにある別のブランチまたは VNet に到達できます。
 
 ## <a name="any"></a>Any-to-Any 接続
 
@@ -106,5 +106,4 @@ ExpressRoute は、複数のオンプレミス ネットワークを Microsoft C
 Virtual WAN を使って接続を作成します。
 
 * [Virtual WAN を使用するサイト間接続](virtual-wan-site-to-site-portal.md)
-* [Virtual WAN を使用するポイント対サイト接続](virtual-wan-point-to-site-portal.md)
 * [Virtual WAN を使用する ExpressRoute 接続](virtual-wan-expressroute-portal.md)

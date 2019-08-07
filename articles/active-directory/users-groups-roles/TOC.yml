@@ -128,8 +128,6 @@
           href: directory-assign-admin-roles.md
         - name: ロールの表示と割り当て
           href: directory-manage-roles-portal.md
-        - name: Graph API でのカスタム ロールの割り当て
-          href: roles-assign-powershell.md
         - name: カスタム ロール (プレビュー)
           items:
             - name: カスタム ロール (プレビュー)
@@ -142,6 +140,8 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: Graph API でのカスタム ロールの割り当て
               href: roles-assign-graph.md
+            - name: PowerShell でのカスタム ロールの割り当て
+              href: roles-assign-powershell.md
             - name: カスタム ロール (プレビュー) のアクセス許可
               href: roles-custom-available-permissions.md
             - name: アプリ管理者のアクセス許可を委任する

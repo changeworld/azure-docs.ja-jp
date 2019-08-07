@@ -23,7 +23,7 @@
           href: azure-to-azure-tutorial-failover-failback.md
         - name: フェールバックを実行する
           href: azure-to-azure-tutorial-failback.md
-    - name: Azure VM の移動
+    - name: Move
       items:
         - name: Azure VM を別のリージョンに移動する
           href: azure-to-azure-tutorial-migrate.md
@@ -31,6 +31,8 @@
           href: move-Azure-VMs-AVset-Azone.md
         - name: Government とパブリック リージョンの間で Azure VM を移動する
           href: region-move-cross-geos.md
+        - name: コンテナーを別のリージョンに移動する
+          href: move-vaults-across-regions.md
     - name: Azure への VMware VM のディザスター リカバリー
       items:
         - name: Azure を準備する
@@ -365,8 +367,6 @@
               href: service-updates-how-to.md
             - name: コンテナーの削除
               href: delete-vault.md
-            - name: コンテナーを別のリージョンに移動する
-              href: move-vaults-across-regions.md
     - name: アプリのディザスター リカバリー
       items:
         - name: オンプレミス アプリで Azure へのディザスター リカバリーを設定する
@@ -441,6 +441,8 @@
       items:
         - name: Azure VM レプリケーションのトラブルシューティング
           href: azure-to-azure-troubleshoot-errors.md
+        - name: Azure VM の接続性に関する問題のトラブルシューティング
+          href: azure-to-azure-troubleshoot-network-connectivity.md
         - name: 実行中のレプリケーションのトラブルシューティング
           href: azure-to-azure-troubleshoot-replication.md
         - name: モビリティ サービスの問題のトラブルシューティング

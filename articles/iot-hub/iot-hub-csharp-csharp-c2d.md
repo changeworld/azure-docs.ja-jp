@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: robinsh
-ms.openlocfilehash: 629342e44af16b6d23f9ed85f8c5306c807b8bfc
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5a7cb4ecde599a76b2d42cf874420d9cbcfda3d5
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621894"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68402634"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 
@@ -95,19 +95,9 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
 
-最初に、ポータルから IoT ハブ接続文字列を取得します。
+この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続**のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、 **[リソース グループ]** を選択します。
-
-2. このハウツー記事で使用しているリソース グループを選択します。
-
-3. 使用している IoT ハブを選択します。
-
-4. ハブ用のウィンドウで、 **[共有アクセス ポリシー]** を選択します。
-
-5. **[iothubowner]** を選びます。 **[iothubowner]** パネルに接続文字列が表示されます。 **[接続文字列--主キー]** のコピー アイコンを選択します。 後で使用できるように接続文字列を保存します。
-
-   ![IoT ハブ接続文字列を取得する](./media/iot-hub-csharp-csharp-c2d/get-iot-hub-connection-string.png)
+[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 
@@ -131,7 +121,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
    using Microsoft.Azure.Devices;
    ```
 
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値を、このセクションで保存した IoT ハブ接続文字列に置き換えます。 
+5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えます。
 
    ``` csharp
    static ServiceClient serviceClient;
@@ -145,7 +135,7 @@ cloud-to-device メッセージの詳細については、[IoT Hub における 
    {
         var commandMessage = new
          Message(Encoding.ASCII.GetBytes("Cloud to device message."));
-        await serviceClient.SendAsync("myDevice", commandMessage);
+        await serviceClient.SendAsync("myFirstDevice", commandMessage);
    }
    ```
 

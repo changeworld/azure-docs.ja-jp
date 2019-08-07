@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager の一般的なセキュリティ属性
-description: Azure Resource Manager を評価するための一般的なセキュリティ属性のチェックリスト
+title: Azure Resource Manager のセキュリティ属性
+description: Azure Resource Manager を評価するためのセキュリティ属性のチェックリスト
 services: azure-resource-manager
 author: msmbaldwin
 manager: barbkess
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a771d4c2ae22b7bf149c13c80fe5286ef52a4545
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3bfb79c54ff57adfa947f2dd0100f6c05c7af9f
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002253"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444146"
 ---
 # <a name="security-attributes-for-azure-resource-manager"></a>Azure Resource Manager のセキュリティ属性
 
@@ -25,8 +25,8 @@ ms.locfileid: "66002253"
 
 | セキュリティ属性 | はい/いいえ | メモ |
 |---|---|--|
-| 保存時の暗号化:<ul><li>サーバー側暗号化</li><li>ユーザーが管理するキーによるサーバー側暗号化</li><li>その他の暗号化機能 (クライアント側や常に暗号化など)</ul>| はい |  |
-| 転送中の暗号化:<ul><li>Express Route 暗号化</li><li>VNet 内の暗号化</li><li>VNet 間暗号化</ul>| はい | HTTPS/TLS。 |
+| 保存時の暗号化 (サーバー側暗号化、お客様が管理するキーによるサーバー側暗号化、およびその他の暗号化機能)| はい |  |
+| 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | HTTPS/TLS。 |
 | 暗号化キーの処理 (CMK や BYOK など)| 該当なし | Azure Resource Manager では、制御データのみが格納され、お客様のコンテンツは格納されません。 |
 | 列レベルの暗号化 (Azure Data Services)| はい | |
 | API 呼び出しの暗号化| はい | |

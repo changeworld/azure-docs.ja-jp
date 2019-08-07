@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c3bd2480853f5c4134cd560c20a6007b044e138
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2096b6c5ddb72c8ab5c5d3203a05c94db51f6c5
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924648"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444330"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -129,7 +129,7 @@ ms.locfileid: "64924648"
 
 すべてのサブスクリプションは Azure AD ディレクトリと関連付けられています。 サブスクリプションが関連付けられているディレクトリを検索するには、Azure portal で **[サブスクリプション]** を開き、ディレクトリを表示するサブスクリプションを選択します。
 
-職場または学校アカウントを使用してサインインした場合、組織内の他のアカウントをサービス管理者として追加することができます。 たとえば、abby@contoso.com はサービス管理者として bob@contoso.com を追加できますが、john@notcontoso.com が contoso.com ディレクトリ内にない限り john@notcontoso.com は追加できません。 職場または学校アカウントでサインインしているユーザーは、引き続き Microsoft アカウント ユーザーをサービス管理者として追加できます。
+職場または学校アカウントを使用してサインインした場合、組織内の他のアカウントをサービス管理者として追加することができます。 たとえば、abby@contoso.com はサービス管理者として bob@contoso.com を追加できますが、john@notcontoso.com が contoso.com ディレクトリ内にない限り john@notcontoso.com は追加できません。 職場または学校アカウントでサインインしているユーザーは、引き続き Microsoft アカウント ユーザーをサービス管理者として追加できます。 Azure サブスクリプションごとに 1 人のサービス管理者のみを設定できます。
 
   | サインイン方法 | サービス管理者として Microsoft アカウント ユーザーを追加できる | 同じ組織内の職場または学校アカウントをサービス管理者として追加できる | 別の組織内の職場または学校アカウントをサービス管理者として追加できる |
   | --- | --- | --- | --- |

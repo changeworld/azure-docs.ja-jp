@@ -11,28 +11,26 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/21/2019
-ms.openlocfilehash: a879fa17244977277dab3e2e66c5888a44759764
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 473bf87e1961c3c7687b0867885adef40c14d71f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444025"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694323"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Azure Machine Learning でデータ セット (プレビュー) を作成してアクセスする
 
-この記事では、Azure Machine Learning データセット (プレビュー) を作成する方法と、ローカルおよびリモートの実験からデータにアクセスする方法について説明します。
+この記事では、Azure Machine Learning データセット (プレビュー) を作成する方法と、ローカルまたはリモートの実験からデータにアクセスする方法について説明します。
 
-マネージド データセットを使用すると、以下を行うことができます。 
-* 基になるストアに再接続することなく**モデル トレーニング中にデータに簡単にアクセスする**
+Azure Machine Learning データセットを使用すると、次のことを実行できます。 
 
-* ノートブック、自動化された ML、パイプライン、ビジュアル インターフェイスの実験間で同じポインターを使用して、**データの一貫性と再現性を確保する**
+* データセットから参照される**データの 1 つのコピーをストレージに保存する**
+
+* 探索的データ分析を使用して**データを分析する** 
+
+* 接続文字列やデータ パスを気にせずに、**モデルのトレーニング中にデータに簡単にアクセスする**。
 
 * 他のユーザーと**データ共有と共同作業を行う**
-
-* **データを調査**して、データのスナップショットとバージョンのライフサイクルを管理する
-
-* トレーニングと運用環境の**データを比較する**
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,22 +47,22 @@ ms.locfileid: "67444025"
 
 ## <a name="data-formats"></a>データ形式
 
-Azure Machine Learning Dataset は次のデータから作成できます。
-+ [delimited](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset#from-delimited-files-path--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-no-rows--0---comment-none--include-path-false--archive-options-none-)
+Azure Machine Learning Dataset は次の形式から作成できます。
++ [delimited](/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-delimited-files-path--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---encoding--fileencoding-utf8--0---quoting-false--infer-column-types-true--skip-rows-0--skip-mode--skiplinesbehavior-no-rows--0---comment-none--include-path-false--archive-options-none--partition-format-none-)
++ [json](/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false--partition-format-none-)
++ [Excel](/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true--partition-format-none-)
++ [Parquet](/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false--partition-format-none-)
++ [pandas DataFrame](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-pandas-dataframe-dataframe--path-none--in-memory-false-)
++ [SQL query](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
 + [binary](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-binary-files-path-)
-+ [json](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-json-files-path--encoding--fileencoding-utf8--0---flatten-nested-arrays-false--include-path-false-)
-+ [Excel](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-excel-files-path--sheet-name-none--use-column-headers-false--skip-rows-0--include-path-false--infer-column-types-true-)
-+ [Parquet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-parquet-files-path--include-path-false-)
-+ [Azure SQL Database](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
-+ [Azure Data Lake gen.1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#from-sql-query-data-source--query-)
 
 ## <a name="create-datasets"></a>データセットを作成する 
 
-[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 内のazureml-datasets パッケージ、特に [`Dataset` クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py)を使用してデータセットと対話できます。
+データセットを作成することにより、データ ソースの場所への参照とそのメタデータのコピーを作成します。 データは既存の場所に残るので、追加のストレージ コストは発生しません。
 
 ### <a name="create-from-local-files"></a>ローカル ファイルから作成する
 
-`Dataset` クラスの [`auto_read_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#auto-read-files-path--include-path-false-) メソッドを使用してファイルまたはフォルダーのパスを指定し、ローカル コンピューターからファイルを読み込みます。  このメソッドは、ファイルの種類の指定や引数の解析を必要とせずに、次の手順を実行します。
+`Dataset` クラスの [`auto_read_files()`](/python/api/azureml-core/azureml.core.dataset(class)?view=azure-ml-py#auto-read-files-path--include-path-false--partition-format-none-) メソッドを使用してファイルまたはフォルダーのパスを指定し、ローカル コンピューターからファイルを読み込みます。  このメソッドは、ファイルの種類の指定や引数の解析を必要とせずに、次の手順を実行します。
 
 * 区切り記号の推測と設定。
 * ファイルの先頭にある空のレコードのスキップ。
@@ -82,11 +80,11 @@ dataset = Dataset.auto_read_files('./data/crime.csv')
 
 ### <a name="create-from-azure-datastores"></a>Azure データストアから作成する
 
-Azure データストアからデータセットを作成するには、以下のようにします。
+[Azure データストア](how-to-access-data.md)からデータセットを作成するには、以下のようにします。
 
 * 登録された Azure データストアへの `contributor` または `owner` アクセス権を持っていることを確認します。
 
-* SDK から [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)、[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#definition)、`Dataset` の各パッケージをインポートします。
+* データストア内のパスを参照してデータセットを作成します。 
 
 ```Python
 from azureml.core.workspace import Workspace
@@ -97,20 +95,16 @@ datastore_name = 'your datastore name'
 
 # get existing workspace
 workspace = Workspace.from_config()
-```
 
- `get()` メソッドは、ワークスペース内の既存のデータストアを取得します。
-
-```
+# retrieve an existing datastore in the workspace by name
 dstore = Datastore.get(workspace, datastore_name)
 ```
 
-`from_delimited_files()` メソッドを使用して、区切りファイルを読み取り、未登録のデータセットを作成します。
+`from_delimited_files()` メソッドを使用して [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) から区切られたファイルを読み取り、未登録のデータセットを作成します。
 
 ```Python
 # create an in-memory Dataset on your local machine
-datapath = dstore.path('data/src/crime.csv')
-dataset = Dataset.from_delimited_files(datapath)
+dataset = Dataset.from_delimited_files(dstore.path('data/src/crime.csv'))
 
 # returns the first 5 rows of the Dataset as a pandas Dataframe.
 dataset.head(5)
@@ -135,16 +129,19 @@ dataset = dataset.register(workspace = workspace,
 
 ## <a name="access-data-in-datasets"></a>データセット内のデータにアクセスする
 
-登録されたデータセットは、ローカル、リモート、コンピューティング クラスター (Azure Machine Learning コンピューティングなど) でアクセスおよび利用できます。 実験とコンピューティング環境で登録済みデータセットを再利用するには、次のコードを使用してワークスペースと登録済みデータセットを名前で取得します。
+登録されたデータセットは、ローカル、リモート、コンピューティング クラスター (Azure Machine Learning コンピューティングなど) でアクセスできます。 実験で登録済みデータセットにアクセスするには、次のコードを使用してワークスペースと登録済みデータセットを名前で取得します。
 
 ```Python
 workspace = Workspace.from_config()
 
 # See list of datasets registered in workspace.
-Dataset.list(workspace)
+print(Dataset.list(workspace))
 
 # Get dataset by name
-dataset = workspace.datasets['dataset_crime']
+dataset = Dataset.get(workspace, 'dataset_crime')
+
+# Load data into pandas DataFrame
+dataset.to_pandas_dataframe()
 ```
 
 ## <a name="next-steps"></a>次の手順

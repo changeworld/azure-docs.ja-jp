@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: c6ea5e72f70620004b4b00be0c779893a3b2ad90
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706183"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422963"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
 
@@ -36,7 +36,7 @@ ms.locfileid: "67706183"
 [名前空間](relay-create-namespace-portal.md)とは、アプリケーション内で Relay リソースをアドレス指定するために使用できるスコープ コンテナーです。 Relay を使用するには、名前空間を作成する必要があります。 これは、最初に実行する手順の 1 つです。
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>Service Bus Relay サービスはどうなりましたか?
-以前は Service Bus Relay サービスという名称でしたが、現在では [WCF リレー](relay-wcf-dotnet-get-started.md)と呼ばれています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続機能は、Azure BizTalk Services から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらもサポートが継続されます。
+以前は Service Bus Relay サービスという名称でしたが、現在では [WCF リレー](service-bus-relay-tutorial.md)と呼ばれています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続機能は、Azure BizTalk Services から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらもサポートが継続されます。
 
 ## <a name="pricing"></a>価格
 このセクションでは、Relay の価格体系についてよく寄せられる質問とその回答を紹介します。 Azure の価格に関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。 Relay の価格の詳細については、 [Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。
@@ -128,7 +128,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 一般的な例外と、それを解決するための推奨されるアクションの説明については、[Relay の例外][Relay exceptions]に関する記事を参照してください。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Shared Access Signature とは何ですか? また、どの言語で署名を生成できますか?
-Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node、PHP、Java、C、C# で独自の署名を生成する方法については、「[Shared Access Signature による Service Bus の認証][Shared Access Signatures]」を参照してください。
+Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node.js、PHP、Python、Java、C、C# で独自の署名を生成する方法については、「[Shared Access Signature による Service Bus の認証][Shared Access Signatures]」を参照してください。
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Relay エンドポイントをホワイトリストに登録することはできますか?
 はい。 リレー クライアントは、完全修飾ドメイン名を使用して Azure Relay サービスへの接続を確立します。 お客様は、DNS ホワイトリスト登録をサポートするファイアウォールで、`*.servicebus.windows.net` のエントリを追加できます。

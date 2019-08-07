@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 07/19/2019
 ms.author: spelluru
-ms.openlocfilehash: e681652c13e521bd33524e247db65088f47a794c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82ab8ef2e444b71f41fbbd87e4e9f8669e83e508
+ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394990"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68371176"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Azure DevTest Labs から個人データをエクスポートまたは削除する
 この記事では、Azure DevTest Labs サービスから個人データを削除およびエクスポートする手順を説明します。 
@@ -55,6 +55,12 @@ DevTest Labs サービスでは、運用の目的で個人データを使用し�
 たとえば、VM を削除するか、電子メール アドレスを削除した場合、DevTest Labs サービスでは、リソースの削除から 30 日後にこのデータが匿名化されます。 削除後 30 日間のアイテム保持ポリシーによって、ラボ管理者には正確な前月比コスト予測が確実に提供されます。
 
 ## <a name="how-can-i-request-an-export-on-my-personal-data"></a>個人データのエクスポートを要求する方法
+Azure portal または PowerShell を使用して個人用およびラボ用の使用状況データをエクスポートできます。 データは 2 つの異なる CSV ファイルとしてエクスポートされます。
+
+- **disks.csv** - さまざまな VM で使用されているディスクに関する情報が含まれています。
+- **virtualmachines.csv** - ラボ内の VM に関する情報が含まれています。
+
+### <a name="azure-portal"></a>Azure ポータル
 ラボ ユーザーは、DevTest Labs サービスによって保存される個人データのエクスポートを要求できます。 エクスポートを要求するには、ラボの **[概要]** ページで **[個人データ]** オプションに移動します。 **[エクスポートの要求]** を選択すると、ラボ管理者のストレージ アカウント内でダウンロード可能な excel ファイルの作成が開始します。 ラボ管理者に連絡して、このデータを表示できます。
 
 1. 左側のメニューの **[個人データ]** を選択します。 
@@ -73,6 +79,138 @@ DevTest Labs サービスでは、運用の目的で個人データを使用し�
 6. ラボにちなんだ名前の**フォルダー**を選択します。 このフォルダー内に、ラボ内の**ディスク**と**仮想マシン**の **csv** ファイルが見つかります。 これらの csv ファイルをダウンロードし、アクセスを要求しているラボ ユーザーのコンテンツをフィルター処理して、それらのユーザーと共有できます。
 
     ![CSV ファイルのダウンロード](./media/personal-data-delete-export/download-csv-file.png)
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+```powershell
+Param (
+    [Parameter (Mandatory=$true, HelpMessage="The storage account name where to store usage data")]
+    [string] $storageAccountName,
+
+    [Parameter (Mandatory=$true, HelpMessage="The storage account key")]
+    [string] $storageKey,
+
+    [Parameter (Mandatory=$true, HelpMessage="The DevTest Lab name to get usage data from")]
+    [string] $labName,
+
+    [Parameter (Mandatory=$true, HelpMessage="The DevTest Lab subscription")]
+    [string] $labSubscription
+    )
+
+#Login
+Login-AzureRmAccount
+
+# Set the subscription for the lab
+Get-AzureRmSubscription -SubscriptionId $labSubscription  | Select-AzureRmSubscription
+
+# DTL will create this container in the storage when invoking the action, cannot be changed currently
+$containerName = "labresourceusage"
+
+# Get the storage context
+$Ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey 
+$SasToken = New-AzureStorageAccountSASToken -Service Blob, File -ResourceType Container, Service, Object -Permission rwdlacup -Protocol HttpsOnly -Context $Ctx
+
+# Generate the storage blob uri
+$blobUri = $Ctx.BlobEndPoint + $SasToken
+
+# blobStorageAbsoluteSasUri and usageStartDate are required
+$actionParameters = @{
+    'blobStorageAbsoluteSasUri' = $blobUri    
+}
+
+$startdate = (Get-Date).AddDays(-7)
+
+$actionParameters.Add('usageStartDate', $startdate.Date.ToString())
+
+# Get the lab resource group
+$resourceGroupName = (Find-AzureRmResource -ResourceType 'Microsoft.DevTestLab/labs' | Where-Object { $_.Name -eq $labName}).ResourceGroupName
+    
+# Create the lab resource id
+$resourceId = "/subscriptions/" + $labSubscription + "/resourceGroups/" + $resourceGroupName + "/providers/Microsoft.DevTestLab/labs/" + $labName + "/"
+
+# !!!!!!! this is the new resource action to get the usage data.
+$result = Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
+ 
+# Finish up cleanly
+if ($result.Status -eq "Succeeded") {
+    Write-Output "Telemetry successfully downloaded for " $labName
+    return 0
+}
+else
+{
+    Write-Output "Failed to download lab: " + $labName
+    Write-Error $result.toString()
+    return -1
+}
+```
+
+上記のサンプルの主要なコンポーネントは次のとおりです。
+
+- Invoke-AzureRmResourceAction コマンド。
+   
+    ```
+    Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
+    ```
+- 2 つのアクション パラメーター
+    - **blobStorageAbsoluteSasUri** - Shared Access Signature (SAS) トークンを含むストレージ アカウントの URI。 PowerShell スクリプトでは、ストレージ キーの代わりにこの値を渡すことができます。
+    - **usageStartDate** - データを取得する開始日。終了日は、アクションが実行された現在の日付です。 粒度は日単位なので、時間情報を追加しても無視されます。
+
+### <a name="exported-data---a-closer-look"></a>エクスポートされるデータ - 詳細
+それでは、エクスポートされたデータを詳しく見てみましょう。 前述のように、データが正常にエクスポートされると、2 つの CSV ファイルが作成されます。 
+
+**virtualmachines.csv** には、次のデータ列が含まれています。
+
+| 列名 | 説明 |
+| ----------- | ----------- | 
+| SubscriptionId | ラボが存在するサブスクリプション識別子。 |
+| LabUId | ラボの一意の GUID 識別子。 |
+| LabName | ラボの名前。 |
+| LabResourceId | 完全修飾ラボ リソース ID。 |
+| ResourceGroupName | VM が含まれているリソース グループの名前 | 
+| ResourceId | VM の完全修飾リソース ID。 |
+| ResourceUId | VM の GUID |
+| EnableAdfsAuthentication | 仮想マシン名。 |
+| CreatedTime | VM が作成された日時。 |
+| DeletedDate | VM が削除された日時。 空の場合は、まだ削除されていません。 |
+| ResourceOwner | VM の所有者。 値が空の場合、これはクレーム可能 VM です。または、サービス プリンシパルによって作成されます。 |
+| PricingTier | VM の価格レベル |
+| ResourceStatus | VM の可用性の状態。 まだ存在する場合は Active、VM が削除されている場合は Inactive です。 |
+| ComputeResourceId | 完全修飾仮想マシン コンピューティング リソース識別子。 |
+| Claimable | VM がクレーム可能 VM の場合は true に設定します | 
+| EnvironmentId | 仮想マシンが作成された環境リソース識別子。 VM が環境リソースの一部として作成されていなかった場合は空です。 |
+| ExpirationDate | VM の有効期限。 有効期限が設定されていない場合は、空に設定されます。
+| GalleryImageReferenceVersion |  VM 基本イメージのバージョン。 |
+| GalleryImageReferenceOffer | VM 基本イメージのオファー。 |
+| GalleryImageReferencePublisher | VM 基本イメージのパブリッシャー。 |
+| GalleryImageReferenceSku | VM 基本イメージの SKU。 |
+| GalleryImageReferenceOsType | VM 基本イメージの OS の種類 |
+| CustomImageId | VM 基本カスタム イメージの完全修飾 ID。 |
+
+**disks.csv** に含まれるデータ列は次のとおりです。
+
+| 列名 | 説明 | 
+| ----------- | ----------- | 
+| SubscriptionId | ラボを含むサブスクリプションの ID |
+| LabUId | ラボの GUID |
+| LabName | ラボの名前 | 
+| LabResourceId | ラボの完全修飾リソース ID | 
+| ResourceGroupName | ラボが含まれているリソース グループの名前 | 
+| ResourceId | VM の完全修飾リソース ID。 |
+| ResourceUId | VM の GUID |
+ |EnableAdfsAuthentication | 接続されたディスクの名前 |
+| CreatedTime |データ ディスクが作成された日時。 |
+| DeletedDate | データ ディスクが削除された日時。 |
+| ResourceStatus | リソースの状態。 リソースが存在する場合はアクティブ。 削除された場合は非アクティブ。 |
+| DiskBlobName | データ ディスクの BLOB 名。 |
+| DiskSizeGB | データ ディスクのサイズ。 |
+| DiskType | データ ディスクの種類。 Standard の場合は 0、Premium の場合は 1。 |
+| LeasedByVmId | データ ディスクが接続されている VM のリソース ID。 |
+
+
+> [!NOTE]
+> 複数のラボを扱っていて全体的な情報を取得する場合、2 つのキー列は **LabUID** と **ResourceUId** です。これらはサブスクリプション全体で一意の ID です。
+
+エクスポートされたデータは、SQL Server、Power BI などのツールを使用して操作および視覚化できます。この機能は、実行時に同じ Azure サブスクリプションを使用していない可能性がある管理チームにラボの使用状況を報告する場合に特に便利です。
 
 ## <a name="next-steps"></a>次の手順
 次の記事を参照してください。 

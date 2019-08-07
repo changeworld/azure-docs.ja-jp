@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: a5c367402bd1e61485095fd1d565a8582acc3a9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff6fd45e0a68a3e93e4c62eb31a566a6dffa2344
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824909"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494943"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ネットワーク ポリシーの概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "60824909"
 Azure ネットワーク ポリシーは、VNet 統合をコンテナーに提供する Azure CNI と連携して動作します。 現在、このポリシーは Linux ノードでのみサポートされています。 実装によって Linux IP テーブルの規則が定義済みポリシーに基づいて構成され、トラフィックのフィルター処理が強制されます。
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>Kubernetes クラスターのセキュリティの計画
-ご自身のクラスターにセキュリティを実装する場合は、ネットワーク セキュリティ グループ (NSG) を使用して、南北のトラフィック、つまりクラスター サブネットを出入りするトラフィックをフィルター処理します。また、Kubernetes ネットワーク ポリシーを使用して、東西のトラフィック、つまり クラスター内のポッド間のトラフィックをフィルター処理します。
+ご自身のクラスターにセキュリティを実装する場合は、ネットワーク セキュリティ グループ (NSG) を使用して、南北のトラフィック、つまりクラスター サブネットを出入りするトラフィックをフィルター処理します。また、Kubernetes ネットワーク ポリシーを使用して、東西のトラフィック、つまりクラスター内のポッド間のトラフィックをフィルター処理します。
 
 ## <a name="using-azure-kubernetes-network-policies"></a>Azure Kubernetes ネットワーク ポリシーの使用
 次の方法で Azure ネットワーク ポリシーを使用して、ポッドにマイクロセグメンテーションを提供できます。

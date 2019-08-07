@@ -70,6 +70,8 @@
     - name: ナレッジ ベース
       href: Concepts/knowledge-base.md
       displayName: 'metadata, pair'
+    - name: LUIS と QnA Maker の使用
+      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
     - name: ナレッジ ベースの開発ライフサイクル
       href: Concepts/development-lifecycle-knowledge-base.md
     - name: ベスト プラクティス

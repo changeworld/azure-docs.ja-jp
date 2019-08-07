@@ -203,7 +203,7 @@
         - name: Azure SQL Database
           href: connector-azure-sql-database.md
         - name: Azure SQL Database マネージド インスタンス
-          href: connector-azure-sql-database-managed-insance.md
+          href: connector-azure-sql-database-managed-instance.md
         - name: Azure SQL Data Warehouse
           href: connector-azure-sql-data-warehouse.md
         - name: Azure Table Storage
@@ -592,6 +592,8 @@
       items:
         - name: Azure Data Factory を選ぶ理由
           href: data-migration-guidance-overview.md
+        - name: データを AWS S3 から Azure に移行する
+          href: data-migration-guidance-s3-azure-storage.md
 - name: リファレンス
   items:
     - name: .NET

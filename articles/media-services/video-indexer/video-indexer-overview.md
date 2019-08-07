@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 07/22/2019
 ms.author: juliako
-ms.openlocfilehash: 2c72c7c493c0a887adab147054c725a2e1c0659f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0d0df5d113b1d75602022085b8bb17133f07333
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799136"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68422970"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 
@@ -38,7 +38,7 @@ Azure Video Indexer は、Azure Media Analytics、Azure Search、Cognitive Servi
 
 ## <a name="audio-insights"></a>オーディオの分析情報
 
-- **自動言語検出**:主な音声言語を自動的に識別します。 サポートされている言語には、英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (簡体字)、日本語、ロシア語、およびポルトガル語 (ブラジル) が含まれます。言語が検出されない場合は英語にフォールバックします。
+- **自動言語検出**:主な音声言語を自動的に識別します。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (簡体字)、日本語、ロシア語、ポルトガル語 (ブラジル) などの言語がサポートされています。 言語を確実に識別できない場合、Video Indexer では音声言語が英語と想定されます。 詳細については、[言語識別モデル](language-identification-model.md)に関する記事を参照してください。
 - **音声の文字起こし**:12 の言語で音声をテキストに変換します。拡張機能を使用できます。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (簡体字)、日本語、アラビア語、ロシア語、ポルトガル語 (ブラジル)、ヒンディー語、韓国語などの言語がサポートされています。
 - **字幕**:VTT、TML、SRT という 3 つの形式で字幕を作成します。
 - **2 チャネル処理**:自動検出、トランスクリプトの分離、1 つのタイムラインへの結合を行います。

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ddff9ffb00f4167cb8f64a75b129711467de739d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 395bb01247efde82dbb39733c1915bc989b1729d
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297062"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68402769"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Apache Kafka に接続する
 
@@ -56,7 +56,7 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
      > * 各クライアントは、VPN ソフトウェア クライアントを使用して接続する必要があります。
      > * この VPN クライアントは仮想ネットワークに名前解決要求を渡さないため、Kafka との通信には IP アドレスを使用する必要があります。 IP で通信を行うには、Kafka クラスターで追加の構成を行う必要があります。
 
-仮想ネットワークでの HDInsight の使用の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](../hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
+仮想ネットワークにおける HDInsight の使用方法の詳細については、[Azure HDInsight クラスター用の仮想ネットワークの計画](../hdinsight-plan-virtual-network-deployment.md)に関するページを参照してください。
 
 ## <a id="on-premises"></a> オンプレミス ネットワークから Apache Kafka に接続する
 
@@ -368,7 +368,7 @@ Kafka への接続を検証するには、次の手順に従って Python プロ
 
 ## <a name="next-steps"></a>次の手順
 
-仮想ネットワークでの HDInsight の使用の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](../hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
+仮想ネットワークでの HDInsight の使用については、[Azure HDInsight クラスター用の仮想ネットワーク デプロイの計画](../hdinsight-plan-virtual-network-deployment.md)に関するドキュメントを参照してください。
 
 ポイント対サイト VPN ゲートウェイを使用する Azure Virtual Network の作成の詳細については、次のドキュメントを参照してください。
 

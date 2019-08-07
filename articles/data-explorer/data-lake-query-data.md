@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/25/2019
-ms.openlocfilehash: d6a58d144482e17f7e4b615134115d1da46af6f0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 07/17/2019
+ms.openlocfilehash: cd53e1386d9d6f2a38beb1661554c8cc9116169d
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454390"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494867"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する (プレビュー)
 
@@ -31,6 +31,9 @@ Azure Data Explorer は、Azure BLOB ストレージおよび Azure Data Lake St
 
 ## <a name="create-an-external-table"></a>外部テーブルの作成
 
+ > [!NOTE]
+ > 現在サポートされているストレージ アカウントは、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2 です。 現在サポートされているデータ形式は、json、csv、tsv、および txt です。
+
 1. `.create external table` コマンドを使用して、Azure Data Explorer に外部テーブルを作成します。 `.show`、`.drop`、および `.alter` などの追加の外部テーブル コマンドについては、「[外部テーブル コマンド](/azure/kusto/management/externaltables)」に記載されています。
 
     ```Kusto
@@ -45,13 +48,37 @@ Azure Data Explorer は、Azure BLOB ストレージおよび Azure Data Lake St
 
     このクエリでは、日単位のパーティション *container1/yyyy/MM/dd/all_exported_blobs.csv* が作成されます。 細かいパーティション分割を使用することでパフォーマンスの向上が期待されます。 たとえば、上記のような日単位のパーティションを使用する外部テーブルでのクエリは、月単位のパーティション テーブルを使用したクエリよりもパフォーマンスが良くなります。
 
-    > [!NOTE]
-    > 現在サポートされているストレージ アカウントは、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2 です。 現在サポートされているデータ形式は、csv、tsv、および txt です。
-
 1. 外部テーブルは Web UI の左側のウィンドウに表示されます
 
     ![Web UI の外部テーブル](media/data-lake-query-data/external-tables-web-ui.png)
+
+### <a name="create-an-external-table-with-json-format"></a>json 形式で外部テーブルを作成する
+
+json 形式で外部テーブルを作成することができます。 詳細については、[外部テーブルのコマンド](/azure/kusto/management/externaltables)に関する記事を参照してください。
+
+1. `.create external table` コマンドを使用して、*ExternalTableJson* という名前のテーブルを作成します。
+
+    ```kusto
+    .create external table ExternalTableJson (rownumber:int, rowguid:guid) 
+    kind=blob
+    dataformat=json
+    ( 
+       h@'http://storageaccount.blob.core.windows.net/container1;secretKey'
+    )
+    with 
+    (
+       docstring = "Docs",
+       folder = "ExternalTables",
+       namePrefix="Prefix"
+    ) 
+    ```
  
+1. json 形式では、次に示すように列へのマッピングを作成する 2 番目の手順が必要です。 次のクエリでは、*mappingName* という名前の特定の json マッピングを作成します。
+
+    ```kusto
+    .create external table ExternalTableJson json mapping "mappingName" '[{ "column" : "rownumber", "datatype" : "int", "path" : "$.rownumber"},{ "column" : "rowguid", "path" : "$.rowguid" }]' 
+    ```
+
 ### <a name="external-table-permissions"></a>外部テーブルのアクセス許可
  
 * データベース ユーザーは外部テーブルを作成できます。 テーブルの作成者は、自動的にそのテーブルの管理者になります。
@@ -68,6 +95,14 @@ external_table("ArchivedProducts") | take 100
 
 > [!TIP]
 > Intellisense は、現在、外部テーブルのクエリではサポートされていません。
+
+### <a name="query-an-external-table-with-json-format"></a>json 形式で外部テーブルのクエリを実行する
+
+json 形式で外部テーブルのクエリを実行するには、`external_table()` 関数を使用し、関数の引数としてテーブル名とマッピング名の両方を指定します。 以下のクエリでは、*mappingName* が指定されていない場合は、以前に作成したマッピングが使用されます。
+
+```kusto
+external_table(‘ExternalTableJson’, ‘mappingName’)
+```
 
 ## <a name="query-external-and-ingested-data-together"></a>外部データと取り込んだデータのクエリをまとめて実行する
 
@@ -151,7 +186,7 @@ T1 | join T on ProductId | take 10
     partition by bin(pickup_datetime, 1d)
     dataformat=csv
     ( 
-    h@'https://externalkustosamples.blob.core.windows.net/taxiridesbyday?st=2019-06-18T14%3A59%3A00Z&se=2029-06-19T14%3A59%3A00Z&sp=rl&sv=2016-05-31&sr=c&sig=yEaO%2BrzFHzAq7lvd4d9PeQ%2BTi3AWnho8Rn8hGU0X30M%3D'
+        h@'http://storageaccount.blob.core.windows.net/container1;secretKey''
     )
     ```
 1. 結果のテーブルが *ヘルプ* クラスターに作成されました。

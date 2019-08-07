@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: dd6259173792585a83effd42c75ff9a7a7d572e4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cee91de9e0a5d75be258705f636248a6a6213664
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448372"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68444049"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -107,7 +107,7 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
     sudo apt-get update
     ```
 
-    | Linux ディストリビューション | バージョン |
+    | Linux ディストリビューション | Version |
     | --------------- | ----------- |
     | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
@@ -397,7 +397,7 @@ Azure で ローカル コードを関数アプリに発行するには、`publi
 func azure functionapp publish <FunctionAppName>
 ```
 
-このコマンドは、Azure で既存の関数アプリに公開されるコマンドです。 サブスクリプションに存在しない `<FunctionAppName>` に発行しようとすると、エラーが表示されます。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。 既定では、このコマンドにより、アプリが[パッケージから実行](run-functions-from-deployment-package.md)モードで実行できるようになります。
+このコマンドは、Azure で既存の関数アプリに公開されるコマンドです。 サブスクリプションに存在しない `<FunctionAppName>` に発行しようとすると、エラーが表示されます。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。 既定では、このコマンドによって、アプリがデプロイされ、[デプロイ パッケージから実行されます](run-functions-from-deployment-package.md)。 この推奨されるデプロイ モードを無効にするには、`--nozip` オプションを使用します。
 
 >[!IMPORTANT]
 > Azure portal で関数アプリを作成すると、既定でバージョン 2.x の Function ランタイムが使用されます。 関数アプリにバージョン 1.x のランタイムを使用させるには、[バージョン 1.x での実行](functions-versions.md#creating-1x-apps)に関するページの説明に従ってください。
@@ -447,8 +447,6 @@ func deploy
 ## <a name="monitoring-functions"></a>関数の監視
 
 関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Azure CLI を使用して関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
-
-関数アプリ用に Application Insights を有効にするには:
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
