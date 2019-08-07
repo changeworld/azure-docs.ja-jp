@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: e064faf3017b95cb3a5f3d9b89f178fb7f846766
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592623"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594543"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -26,17 +26,28 @@ Form Recognizer のカスタム モデルでは、独自のデータでトレー
 
 教師なし学習では、手作業によるデータのラベル付けまたは集中的なコーディングとメンテナンスを行うことなく、モデルはフィールドとエントリ間のレイアウトと関係を理解できます。 これに対し、事前トレーニング済みの機械学習モデルでは、標準化されたデータが必要です。 これらは、業界固有のフォームなど、従来の形式から逸脱する入力素材を使用するため、精度が低くなります。
 
-## <a name="pre-built-receipt-model"></a>構築済みのレシート モデル
+## <a name="prebuilt-receipt-model"></a>あらかじめ構築されたレシート モデル
 
-Form Recognizer には、レシートを読み取るためのモデルもあります。 このモデルでは、取引日時、販売店情報、税金と合計金額などの主要な情報が抽出されます。 さらに、構築済みのレシート モデルは、レシート内のすべてのテキストを認識して返すようにトレーニングされています。
+Form Recognizer には、レシートを読み取るためのモデルもあります。 このモデルでは、取引日時、販売店情報、税金と合計金額などの主要な情報が抽出されます。 さらに、あらかじめ構築されたレシート モデルは、レシート内のすべてのテキストを認識して返すようにトレーニングされています。
 
 ## <a name="what-it-includes"></a>備えている機能
 
-Form Recognizer は、REST API として利用できます。 カスタム モデルを作成してトレーニングし、スコア付けをするか、これらの API を呼び出すことによって構築済みのモデルにアクセスすることができます。 必要な場合は、カスタム モデルをローカルの Docker コンテナー内でトレーニングおよび実行できます。
+Form Recognizer は、REST API として利用できます。 これらの API を呼び出すことによって、カスタム モデルを作成、トレーニング、およびスコア付けしたり、あらかじめ構築されたモデルにアクセスしたりできます。 必要な場合は、カスタム モデルをローカルの Docker コンテナー内でトレーニングおよび実行できます。
 
-## <a name="input-requirements-custom-model"></a>入力の要件 (カスタム モデル)
+## <a name="input-requirements"></a>入力の要件
+### <a name="custom-model"></a>カスタム モデル
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
+
+### <a name="prebuilt-receipt-model"></a>あらかじめ構築されたレシート モデル
+
+レシート モデルの入力要件は少し異なります。
+
+* 形式は、JPEG、PNG、BMP、PDF (テキストまたはスキャン)、または TIFF である必要があります。
+* ファイル サイズは 20 MB 未満である必要があります。
+* 画像の寸法は、50 x 50 ピクセルから 10,000 x 10,000 ピクセルの間である必要があります。 
+* PDF の寸法は、最大で 17 x 17 インチにする必要があります (リーガル サイズまたは A3 サイズ以下の用紙に対応します)。
+* PDF および TIFF の場合、最初の 200 ページのみが処理されます (Free レベルのサブスクリプションでは、最初の 2 ページのみが処理されます)。
 
 ## <a name="request-access"></a>アクセスの要求
 

@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824d24b97f192583a42192b3bb90eb1818e1aa18
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273002"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677880"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
 
@@ -23,14 +23,21 @@ ms.locfileid: "67273002"
 
 このチュートリアルでは、以下の内容を学習します。
 
-* Azure Time Series Insights プレビューの環境を作成する。
-* Azure Time Series Insights プレビュー環境を Azure Event Hubs のイベント ハブに接続する。
-* ソリューション アクセラレータのサンプルを実行して、Azure Time Series Insights プレビュー環境にデータをストリーム配信する。
-* データの基本的な分析を実行する。
-* 時系列モデルの種類と階層を定義して、インスタンスに関連付ける。
+> [!div class="checklist"]
+> * Azure Time Series Insights プレビューの環境を作成する。
+> * Azure Time Series Insights プレビュー環境を Azure Event Hubs のイベント ハブに接続する。
+> * ソリューション アクセラレータのサンプルを実行して、Azure Time Series Insights プレビュー環境にデータをストリーム配信する。
+> * データの基本的な分析を実行する。
+> * 時系列モデルの種類と階層を定義して、インスタンスに関連付ける。
 
 >[!TIP]
 > [IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/Accelerators)によって、カスタム IoT ソリューションの開発を高速化するために使用できる、エンタープライズ レベルのあらかじめ構成されたソリューションが提供されます。
+
+お持ちでない場合は、[無料の Azure サブスクリプション](https://azure.microsoft.com/free/)にサインアップしてください。
+
+## <a name="prerequisites"></a>前提条件
+
+* また、Azure のサインイン アカウントは、サブスクリプションの**所有者**ロールのメンバーである必要があります。 詳細については、[ロールベースのアクセス制御と Azure portal を使用したアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
 ## <a name="create-a-device-simulation"></a>デバイス シミュレーションを作成する
 
@@ -321,6 +328,14 @@ ms.locfileid: "67273002"
 1. イベントの詳細を表示するには、リージョンを選択してからグラフを右クリックします。
 
    [![イベントの詳細なリスト](media/v2-update-provision/define-eighteen.png)](media/v2-update-provision/define-eighteen.png#lightbox)
+
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+チュートリアルを完了したので、作成したリソースをクリーンアップします。
+
+1. [Azure portal](https://portal.azure.com) の左側のメニューにある **[すべてのリソース]** を選択し、目的の Azure Time Series Insights リソース グループを見つけます。
+1. **[削除]** を選択してリソース グループ全体 (およびその中に含まれるすべてのリソース) を削除するか、各リソースを個別に削除します。
 
 ## <a name="next-steps"></a>次の手順
 

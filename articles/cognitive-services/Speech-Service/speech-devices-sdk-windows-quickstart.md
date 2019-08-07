@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Windows 上で Speech Devices SDK を実行する - Speech Services
+title: クイック スタート:Windows 上で Speech Devices SDK を実行する - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Windows Speech Devices SDK の使用を開始するための前提条件と手順です。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: erhopf
-ms.openlocfilehash: ac0ed218aa27a36b3b8cd8ed8123e2baef6948c6
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: ad90a6443cc1c94bcdb730e783b82dfdd4798676
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723294"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553119"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>クイック スタート:Windows 上で Speech Devices SDK サンプル アプリを実行する
 

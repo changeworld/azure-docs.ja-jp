@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/03/2019
+ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 4836ec4bb66bbf8ced921dd1095665d004f8a28b
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 5979e34e7c186a0484c8db2d432a3c57a5ed1d15
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542575"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679150"
 ---
 # <a name="dynamic-packaging"></a>動的パッケージ
 
@@ -26,7 +26,7 @@ Microsoft Azure Media Services を使用して、多数のメディア ソース
 
 Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md)は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリケーションに直接配信できます。 ダイナミック パッケージは、すべての**ストリーミング エンドポイント** (Standard または Premium) に標準で付属する機能です。 
 
-ダイナミック パッケージを利用するには、アダプティブ ビットレート MP4 ファイルのセットを持つ**資産**と、Media Services ダイナミック パッケージで必要とされるストリーミング構成ファイルが必要です。 これらのファイルを取得する方法の 1 つは、Media Services を使用してお使いの中間 (ソース) ファイルをエンコードすることです。 エンコードされたアセット内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター**を作成し、ストリーミング URL をビルドする必要があります。 その後、ストリーミング クライアント マニフェスト (HLS、DASH、または Smooth) で指定した形式に基づいて、選択したプロトコルでストリームを受信します。
+ダイナミック パッケージを利用するには、アダプティブ ビットレート MP4 ファイルのセットを持つ[資産](assets-concept.md)と、ストリーミング構成ファイル (.ism、.ismc、.mpi など) が必要です。 これらのファイルを取得する方法の 1 つは、Media Services を使用してお使いの中間 (ソース) ファイルをエンコードすることです。 エンコードされた資産内のビデオをクライアントが再生できるようにするには、[ストリーミング ロケーター](streaming-locators-concept.md)を作成し、ストリーミング URL をビルドする必要があります。 その後、ストリーミング クライアント マニフェスト (HLS、DASH、または Smooth) で指定した形式に基づいて、選択したプロトコルでストリームを受信します。
 
 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。 
 
@@ -41,12 +41,22 @@ Media Services でダイナミック パッケージは、ストリーミング�
 
 1. 入力またはソース ファイル (*mezzanine* ファイルと呼ばれます) をアップロードします。 たとえば、MP4、MOV、MXF ファイルなどです。 
 1. Mezzanine ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードします。 
-1. アダプティブ ビットレート MP4 セットが含まれる資産を発行します。 ストリーミング ロケーターを作成して発行します。
+1. アダプティブ ビットレート MP4 セットが含まれる出力資産を発行します。 ストリーミング ロケーターを作成して発行します。
 1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 さまざまな形式の正しいマニフェストおよび要求の処理は、ストリーミング エンドポイントが行います。
 
 次の図は、ダイナミック パッケージを使用したオンデマンド ストリーミングのワークフローを示しています。
 
 ![ダイナミック パッケージを使用したオンデマンド ストリーミングのワークフローの図](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+
+### <a name="encoding-to-adaptive-bitrate-mp4s"></a>アダプティブ ビットレート MP4 へのエンコード
+
+[Media Services を使用してビデオをエンコードする方法](encoding-concept.md)の例については、以下の記事を参照してください。
+
+* [組み込みのプリセットを使用して HTTPS の URL をエンコードする](job-input-from-http-how-to.md)
+* [組み込みのプリセットを使用してローカル ファイルをエンコードする](job-input-from-local-file-how-to.md)
+* [自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](customize-encoder-presets-how-to.md)
+
+Media Encoder Standard の[形式とコーデック](media-encoder-standard-formats.md)の一覧を参照してください。
 
 ## <a name="live-streaming-workflow"></a>ライブ ストリーミング ワークフロー
 
@@ -83,30 +93,23 @@ Media Services のダイナミック パッケージのコンテンツには、�
 |MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |スムーズ ストリーミング| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
-## <a name="encode-to-adaptive-bitrate-mp4s"></a>アダプティブ ビットレート MP4 へのエンコード
+## <a name="delivery-codecs-support"></a>デリバリー コーデックのサポート 
 
-[Media Services を使用してビデオをエンコードする方法](encoding-concept.md)の例については、以下の記事を参照してください。
-
-* [組み込みのプリセットを使用して HTTPS の URL をエンコードする](job-input-from-http-how-to.md)
-* [組み込みのプリセットを使用してローカル ファイルをエンコードする](job-input-from-local-file-how-to.md)
-* [自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](customize-encoder-presets-how-to.md)
-
-Media Encoder Standard の[形式とコーデック](media-encoder-standard-formats.md)の一覧を参照してください。
-
-## <a name="video-codecs"></a>ビデオ コーデック
+### <a name="video-codecs"></a>ビデオ コーデック
 
 ダイナミック パッケージでは、以下のビデオ コーデックがサポートされています。
 * [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC または AVC1) または [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC、hev1、または hvc1) でエンコードされたビデオの MP4 ファイル。
 
-## <a name="audio-codecs"></a>オーディオ コーデック
+### <a name="audio-codecs"></a>オーディオ コーデック
 
-ダイナミック パッケージでは、以下のオーディオ プロトコルがサポートされています。
+ダイナミック パッケージでは、以下に説明するオーディオ プロトコルがサポートされています。
+
 * MP4 ファイル
 * 複数のオーディオ トラック
 
 ダイナミック パッケージでは、[Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) オーディオ (古いコーデック) を含むファイルはサポートされていません。
 
-### <a name="mp4-files"></a>MP4 ファイル
+#### <a name="mp4-files"></a>MP4 ファイル
 
 ダイナミック パッケージでは、以下のプロトコルでエンコードされたオーディオが含まれている MP4 ファイルがサポートされています。 
 
@@ -123,21 +126,19 @@ Media Encoder Standard の[形式とコーデック](media-encoder-standard-form
     * DTS Express (dtse)
     * DTS-HD Lossless (コアなし) (dtsl)
 
-### <a name="multiple-audio-tracks"></a>複数のオーディオ トラック
+#### <a name="multiple-audio-tracks"></a>複数のオーディオ トラック
 
 ダイナミック パッケージでは、複数のコーデックと言語を使用する複数のオーディオ トラックを持つ資産をストリーミングするとき、HLS 出力 (バージョン 4 以降) 用の複数のオーディオ トラックがサポートされます。
 
-## <a name="dynamic-encryption"></a>動的な暗号化
-
-"*動的暗号化*" を使用すると、AES-128 または次の 3 つの主要なデジタル著作権管理 (DRM) システムのいずれかを用いて、ライブまたはオンデマンドのコンテンツを動的に暗号化できます。コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM ライセンスを配信するためのサービスも提供しています。 詳細については、[動的暗号化](content-protection-overview.md)に関するページを参照してください。
-
-## <a name="manifest-examples"></a>マニフェストの例 
+## <a name="manifests"></a>マニフェスト 
  
 Media Services のダイナミック パッケージでは、HLS、MPEG-DASH、および Smooth Streaming のストリーミング クライアント マニフェストが、URL 内の形式セレクターに基づいて動的に生成されます。 詳細については、[配信プロトコル](#delivery-protocols)に関するページを参照してください。 
 
 マニフェスト ファイルには、トラックの種類 (オーディオ、ビデオ、またはテキスト)、トラック名、開始時刻と終了時刻、ビットレート (品質)、トラック言語、プレゼンテーション ウィンドウ (固定時間のスライディング ウィンドウ)、ビデオ コーデック (FourCC) などの、ストリーミング メタデータが含まれます。 また、次に再生可能なビデオ フラグメントとその場所の情報を通知して、次のフラグメントを取得するようにプレイヤーに指示します。 フラグメント (またはセグメント) とは、ビデオ コンテンツの実際の "チャンク" です。
 
-### <a name="hls"></a>HLS
+### <a name="examples"></a>例
+
+#### <a name="hls"></a>HLS
 
 以下に示すのは、HLS マニフェスト ファイル (HLS マスター プレイリストとも呼ばれます) の例です。 
 
@@ -164,7 +165,7 @@ QualityLevels(3579827)/Manifest(video,format=m3u8-aapl)
 QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ```
 
-### <a name="mpeg-dash"></a>MPEG-DASH
+#### <a name="mpeg-dash"></a>MPEG-DASH
 
 以下に示すのは、MPEG-DASH マニフェスト ファイル (MPEG-DASH Media Presentation Description (MPD) とも呼ばれます) の例です。
 
@@ -197,7 +198,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
    </Period>
 </MPD>
 ```
-### <a name="smooth-streaming"></a>スムーズ ストリーミング
+#### <a name="smooth-streaming"></a>スムーズ ストリーミング
 
 以下に示すのは、Smooth Streaming マニフェスト ファイルの例です。
 
@@ -221,9 +222,37 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 </SmoothStreamingMedia>
 ```
 
+### <a name="naming-of-tracks-in-the-manifest"></a>マニフェスト内のトラックの名前付け
+
+.ism ファイルにオーディオ トラック名が指定されている場合、Media Services によって、特定のオーディオ トラックのテクスチャ情報を指定するための `Label` 要素が `AdaptationSet` 内に追加されます。出力 DASH マニフェストの例:
+
+```xml
+<AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
+  <Label>audio_track_name</Label>
+  <Role schemeIdUri="urn:mpeg:dash:role:2011" value="main"/>
+  <Representation audioSamplingRate="48000" bandwidth="131152" id="German_Forest_Short_Poem_english-en-68s-2-lc-128000bps_seg">
+    <BaseURL>German_Forest_Short_Poem_english-en-68s-2-lc-128000bps_seg.mp4</BaseURL>
+  </Representation>
+</AdaptationSet>
+```
+
+プレーヤーは、`Label` 要素を使用して UI に表示できます。
+
+### <a name="signaling-audio-description-tracks"></a>オーディオ説明トラックのシグナル通知
+
+お客様は、マニフェストのオーディオ説明としてオーディオ トラックに注釈を付けることができます。 そのためには、"accessibility" パラメーターと "role" パラメーターを .ism ファイルに追加します。 オーディオ トラックに値が "description" の "accessibility" パラメーターと値が "alternate" の "role" パラメーターがあると、Media Services はオーディオ説明を認識します。 Media Services によって .ism ファイル内にオーディオ説明が検出されると、オーディオ説明情報が `StreamIndex` 要素の `Accessibility="description"` および `Role="alternate"` 属性としてクライアント マニフェストに渡されます。
+
+"accessibility" = "description" と "role" = "alternate" の組み合わせが .ism ファイルに設定されている場合、DASH マニフェストと Smooth マニフェストは、"accessibility" パラメーターと "role" パラメーターに設定されている値を保持します。 これら 2 つの値を適切に設定し、オーディオ トラックをオーディオ説明としてマークすることはお客様の責任です。 DASH に指定された "accessibility" = "description" と "role" = "alternate" は、オーディオ トラックがオーディオ説明であることを意味します。
+
+HLS v7 以降 (`format=m3u8-cmaf`) では、.ism ファイルに "accessibility" = "description" と "role" = "alternate" の組み合わせが設定されている場合にのみ、プレイリストに `CHARACTERISTICS="public.accessibility.describes-video"` が保持されます。 
+
 ## <a name="dynamic-manifest"></a>動的マニフェスト
 
 プレーヤーに送信されるトラック数、形式、ビットレート、およびプレゼンテーション時間枠を制御するために、Media Services ダイナミック パッケージャーで動的フィルターを使用できます。 詳細については、[ダイナミック パッケージャーでの事前フィルター処理マニフェスト](filters-dynamic-manifest-overview.md)に関するページを参照してください。
+
+## <a name="dynamic-encryption"></a>動的な暗号化
+
+"*動的暗号化*" を使用すると、AES-128 または次の 3 つの主要なデジタル著作権管理 (DRM) システムのいずれかを用いて、ライブまたはオンデマンドのコンテンツを動的に暗号化できます。コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM ライセンスを配信するためのサービスも提供しています。 詳細については、[動的暗号化](content-protection-overview.md)に関するページを参照してください。
 
 ## <a name="more-information"></a>詳細情報
 

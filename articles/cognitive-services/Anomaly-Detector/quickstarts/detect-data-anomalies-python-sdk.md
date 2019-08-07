@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Anomaly Detector ライブラリと Python を使用してデータの異常を検出する
+title: クイック スタート:Python 用 Anomaly Detector クライアント ライブラリを使用してデータの異常を検出する
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出します。
 services: cognitive-services
@@ -8,20 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 9176ab84dd3f493604bd655e0498f5ad476776d0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: b78d19841bdca100211378f71e45a41dd37aad28
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721513"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639353"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>クイック スタート:Python 用 Anomaly Detector クライアント ライブラリ
 
-.NET 用 Anomaly Detector クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Anomaly Detector サービスにより、業界、シナリオ、データ量に関係なく、最適なモデルを自動的に使用することで、時系列データの異常を検出できます。
-
-## <a name="key-concepts"></a>主要な概念
+.NET 用 Anomaly Detector クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Anomaly Detector サービスにより、業界、シナリオ、データ量に関係なく、最適なモデルを自動的に使用することで、時系列データ内の異常を検出できます。
 
 Python 用 Anomaly Detector クライアント ライブラリは、次の目的で使用することができます。
 
@@ -42,6 +40,18 @@ Python 用 Anomaly Detector クライアント ライブラリは、次の目的
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
+試用版のサブスクリプションまたはリソースからキーを取得した後、`ANOMALY_DETECTOR_KEY` という名前のキーの[環境変数を作成](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)します。
+
+### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
+
+ お気に入りのエディターまたは IDE で、新しい Python アプリケーションを作成します。 次に、次のライブラリをインポートします。
+
+[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
+
+環境変数としてのキーの変数、時系列データ ファイルへのパスの変数、サブスクリプションの Azure の場所の変数を作成します。 たとえば、「 `westus2` 」のように入力します。 
+
+[!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
+
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
 Python をインストールしたら、次を使用してクライアント ライブラリをインストールすることができます。
@@ -57,19 +67,6 @@ Anomaly Detector クライアントは、キーを使用して Azure に対す�
 時系列データは、[Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) オブジェクト内の一連の [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) として送信されます。 `Request` オブジェクトには、データを説明するプロパティ (たとえば、[細分性](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python)など) と異常検出のパラメーターが含まれます。 
 
 Anomaly Detector の応答は、使用する方法に応じて、[LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) オブジェクトまたは [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) オブジェクトになります。 
-
-## <a name="getting-started"></a>使用の開始
-
-お気に入りのエディターまたは IDE で、新しい Python アプリケーションを作成します。 次に、以下の import 宣言をファイルに追加します。 
-
-[!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
-
-> [!NOTE]
-> このクイックスタートでは、`ANOMALY_DETECTOR_KEY` という名前の Anomaly Detector キーの[環境変数が作成](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)されていることを前提とします。
-
-環境変数としてのキーの変数、時系列データ ファイルへのパスの変数、サブスクリプションの Azure の場所の変数を作成します。 たとえば、「 `westus2` 」のように入力します。 
-
-[!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
 
 ## <a name="code-examples"></a>コード例 
 
@@ -90,7 +87,7 @@ Azure の場所の変数をエンドポイントに追加し、キーを使用�
 
 このクイックスタートのサンプル データを [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv) からダウンロードします。
 1. ブラウザーで、 **[Raw]\(未加工\)** を右クリックします。
-2. **[名前を付けてリンク先を保存]** をクリックします。
+2. **[Save link as]\(名前を付けてリンク先を保存\)** をクリックします。
 3. ファイルを .csv ファイルとしてアプリケーション ディレクトリに保存します。
 
 この時系列データは、.csv ファイル形式として Anomaly Detector API に送信されます。
@@ -125,12 +122,6 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 * [ポータル](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
-
-次のクラウド シェル コマンドを実行して、リソース グループとそれに関連付けられているリソースを削除することもできます。 これは完了するまでに数分かかる場合があります。 
-
-```azurecli-interactive
-az group delete --name example-anomaly-detector-resource-group
-```
 
 ## <a name="next-steps"></a>次の手順
 

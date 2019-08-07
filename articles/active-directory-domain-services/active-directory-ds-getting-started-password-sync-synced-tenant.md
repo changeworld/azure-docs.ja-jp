@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: e252774d99eecac3623fcbae4ce9fdc0e1591672
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3ea4ebe652679ee9e4c0a165493fa86756ca7868
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67474106"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494566"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード同期を有効にする
 前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要な資格情報ハッシュを Azure AD Domain Services との間で同期できるようにします。 資格情報の同期が設定されると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。
@@ -41,7 +41,7 @@ ms.locfileid: "67474106"
 同期対象の Azure AD テナントは、Azure AD Connect を使用して組織のオンプレミス ディレクトリと同期するように設定されます。 Azure AD Connect は、既定では NTLM および Kerberos 資格情報ハッシュを Azure AD と同期しません。 Azure AD Domain Services を使用するには、NTLM および Kerberos 認証に必要な資格情報ハッシュを同期するように Azure AD Connect を構成する必要があります。 以下の手順では、必要な資格情報ハッシュをオンプレミス ディレクトリから Azure AD テナントに対して同期できるようにします。
 
 > [!NOTE]
-> **オンプレミス ディレクトリとの間で同期されたユーザー アカウントが組織に存在する場合、マネージド ドメインを使用するためには、NTLM と Kerberos のハッシュ同期を有効にする必要があります。** 同期の対象となるユーザー アカウントは、オンプレミス ディレクトリで作成されたアカウントであり、Azure AD テナントとの間で Azure AD Connect を使って同期されます。
+> **オンプレミス ディレクトリとの間で同期されたユーザー アカウントが組織に存在する場合、マネージド ドメインを使用するためには、NTLM と Kerberos のハッシュ同期を有効にする必要があります。** 同期の対象となるユーザー アカウントは、オンプレミス ディレクトリで作成されたアカウントであり、Azure AD テナントとの間で Azure AD Connect を使って同期されます。  パスワード ハッシュの同期は、ユーザー/オブジェクトの同期とは別のプロセスです。完全なパスワード同期を取得するには、パスワード ハッシュの同期を無効/有効にする必要があります。そうすると、アプリケーション イベント ログにパスワード ハッシュのバッチ更新が表示されます。
 >
 >
 
@@ -77,6 +77,9 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 ```
 
 ディレクトリのサイズ (ユーザーやグループの数など) によっては、資格情報ハッシュが Azure AD と同期されるまでに時間がかかります。 資格情報ハッシュが Azure AD と同期されるとすぐに、Azure AD Domain Services のマネージド ドメインでパスワードを使用できるようになります。
+
+> [!NOTE]
+> **パスワード ハッシュの同期**は、ユーザー/オブジェクトの同期とは別のプロセスです。完全なパスワード同期を取得するには、パスワード ハッシュの同期を無効/有効にする必要があります。そうすると、アプリケーション イベント ログにパスワード ハッシュのバッチ更新が表示されます。
 
 ## <a name="related-content"></a>関連コンテンツ
 * [AAD ドメイン サービスとのパスワード同期を有効にする (クラウド専用 Azure AD ディレクトリの場合)](active-directory-ds-getting-started-password-sync.md)

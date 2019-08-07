@@ -1,21 +1,21 @@
 ---
-title: クイック スタート:.NET 用 Anomaly Detector SDK を使用して時系列データ内の異常を検出する
+title: クイック スタート:.NET 用 Anomaly Detector クライアント ライブラリを使用して時系列データ内の異常を検出する
 titleSuffix: Azure Cognitive Services
-description: Anomaly Detector サービスを使用して、時系列データ内の異常の検出を開始します。
+description: Anomaly Detector API を使用して、データ系列の異常をバッチとして、またはストリーミング データで検出します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: a75196e035585a7501cdd842fb5b80ceff424dcc
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: c65b64608ade76a65dca42b72844d42ddc1b14fd
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721575"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639363"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>クイック スタート:.NET 用 Anomaly Detector クライアント ライブラリ
 
@@ -23,10 +23,10 @@ ms.locfileid: "67721575"
 
 .NET 用 Anomaly Detector クライアント ライブラリは、次の目的で使用することができます。
 
-* バッチとして異常を検出する
-* 最新のデータ ポイントの異常状態を検出する
+* バッチ要求として、時系列データセット全体で異常を検出する
+* 時系列で最新のデータ ポイントの異常状態を検出する
 
-[API のリファレンスのドキュメント](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [サンプル](https://github.com/Azure-Samples/anomalydetector)
+[ライブラリのリファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [サンプル](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,11 +39,13 @@ ms.locfileid: "67721575"
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
-### <a name="create-a-new-c-app"></a>新しい C# アプリを作成する
+試用版のサブスクリプションまたはリソースからキーを取得した後、`ANOMALY_DETECTOR_KEY` という名前のキーの[環境変数を作成](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)します。
+
+### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
 好みのエディターまたは IDE で、新しい .NET Core アプリケーションを作成します。 
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、dotnet `new` コマンドを使用し、`anomaly-detector-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。**Program.cs**。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、dotnet `new` コマンドを使用し、`anomaly-detector-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。*Program.cs*。 
 
 ```console
 dotnet new console -n anomaly-detector-quickstart
@@ -64,6 +66,14 @@ Build succeeded.
  0 Error(s)
 ...
 ```
+
+プロジェクト ディレクトリから、好みのエディターまたは IDE で *program.cs* ファイルを開きます。 `directives` を使用して以下を追加します。
+
+[!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=usingStatements)]
+
+アプリケーションの `main()` メソッド内で、ご自分のリソースの Azure の場所用の変数と、環境変数としてのキーを作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、再読み込みしなければならない場合があります。
+
+[!code-csharp[Main method](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=mainMethod)]
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
@@ -92,22 +102,6 @@ Anomaly Detector の応答は、使用する方法に応じて、[EntireDetectRe
 * [データ セット全体で異常を検出する](#detect-anomalies-in-the-entire-data-set) 
 * [最新のデータ ポイントの異常状態を検出する](#detect-the-anomaly-status-of-the-latest-data-point)
 
-### <a name="add-the-main-method"></a>main メソッドを追加する
-
-プロジェクト ディレクトリで次の操作を行います。
-
-1. 好みのエディターまたは IDE で、Program.cs ファイルを開きます
-2. 次の `using` ディレクティブを追加します
-
-[!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=usingStatements)]
-
-> [!NOTE]
-> このクイックスタートでは、`ANOMALY_DETECTOR_KEY` という名前で Anomaly Detector キーの[環境変数が作成](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)されていることを前提とします。
-
-アプリケーションの `main()` メソッド内で、ご自分のリソースの Azure の場所用の変数と、環境変数としてのキーを作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、再読み込みしなければならない場合があります。
-
-[!code-csharp[Main method](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=mainMethod)]
-
 ### <a name="authenticate-the-client"></a>クライアントを認証する
 
 新しいメソッドで、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 キーを使用して [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.apikeyserviceclientcredentials?view=azure-dotnet-preview) オブジェクトを作成し、それをエンドポイントと共に使用して、[AnomalyDetectorClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-dotnet-preview) オブジェクトを作成します。 
@@ -117,8 +111,8 @@ Anomaly Detector の応答は、使用する方法に応じて、[EntireDetectRe
 ### <a name="load-time-series-data-from-a-file"></a>ファイルから時系列データを読み込む
 
 このクイックスタートのサンプル データを [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv) からダウンロードします。
-1. ブラウザーで、 **[Raw]\(生\)** を右クリックします。
-2. **[名前を付けてリンク先を保存]** をクリックします。
+1. ブラウザーで、 **[Raw]\(未加工\)** を右クリックします。
+2. **[Save link as]\(名前を付けてリンク先を保存\)** をクリックします。
 3. ファイルを .csv ファイルとしてアプリケーション ディレクトリに保存します。
 
 この時系列データは、.csv ファイル形式として書式設定され、Anomaly Detector API に送信されます。

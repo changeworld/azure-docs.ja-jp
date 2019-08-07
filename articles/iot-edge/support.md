@@ -4,21 +4,23 @@ description: Azure IoT Edge デーモンとランタイムを実行できるオ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/12/2019
+ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 178cbf930c946170834eb1f7de17e6d5bc0dda48
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 62b8ed553e3b4cec3750dae4f0426b6f0dd38855
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058296"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414391"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge のサポートされるシステム
 
-Azure IoT Edge 製品のサポートを受ける方法は複数あります。
+この記事では、公式またはプレビューの IoT Edge によってサポートされるシステムおよびコンポーネントについて、詳しく説明します。 
+
+Azure IoT Edge サービスの使用中に問題が発生した場合は、いくつかの方法でサポートを求めることができます。 サポートについては、次のいずれかのチャネルをお試しください。
 
 **バグの報告** – Azure IoT Edge 製品に関する開発の大多数は、IoT Edge のオープン ソース プロジェクトで発生します。 バグはプロジェクトの[問題ページ](https://github.com/azure/iotedge/issues)で報告できます。 修正プログラムはプロジェクトが製品の更新プログラムになるまでの時間を早めます。
 
@@ -27,7 +29,8 @@ Azure IoT Edge 製品のサポートを受ける方法は複数あります。
 **機能の要望** – Azure IoT Edge 製品はその製品の[ユーザーの声のページ](https://feedback.azure.com/forums/907045-azure-iot-edge)を介して機能の要望を追跡します。
 
 ## <a name="container-engines"></a>コンテナー エンジン
-Azure IoT Edge には、モジュールを起動するためのコンテナー エンジンが必要です。これは、モジュールがコンテナーとして実装されるためです。 Microsoft には、この要件を満たすために、moby-engine というコンテナー エンジンが用意されています。 これは Moby オープン ソース プロジェクトをベースとします。 他にも有名なコンテナー エンジンとして、Docker CE や Docker EE が挙げられます。 これらも Moby オープン ソース プロジェクトをベースとし、Azure IoT Edge と互換性があります。 Microsoft はこれらのコンテナー エンジンを使用するシステムに対してベスト エフォート サポートを提供しています。ただし、Microsoft はそれらの問題について修正プログラムを発行することができません。 この理由から、Microsoft では運用システムで moby-engine を使用することを推奨しています。
+
+Azure IoT Edge モジュールはコンテナーとして実装されているため、IoT Edge にはモジュールを起動するためのコンテナー エンジンが必要です。 Microsoft には、この要件を満たすために、moby-engine というコンテナー エンジンが用意されています。 このコンテナー エンジンは、Moby オープンソース プロジェクトをベースとします。 他にも有名なコンテナー エンジンとして、Docker CE や Docker EE が挙げられます。 これらも Moby オープンソース プロジェクトをベースとし、Azure IoT Edge と互換性があります。 Microsoft はこれらのコンテナー エンジンを使用するシステムに対してベスト エフォート サポートを提供しています。ただし、Microsoft はそれらで発生した問題の修正プログラムを配布することができません。 この理由から、Microsoft では運用システムで moby-engine を使用することを推奨しています。
 
 <br>
 <center>
@@ -37,10 +40,10 @@ Azure IoT Edge には、モジュールを起動するためのコンテナー �
 
 ## <a name="operating-systems"></a>オペレーティング システム
 Azure IoT Edge はコンテナーを実行できるほとんどのオペレーティング システムで実行できます。ただし、それらのすべてのシステムが均等にサポートされているわけではありません。 オペレーティング システムは、ユーザーが受けられるサポートのレベルを表す階層別にグループ化されています。
-* レベル 1 のシステムは公式にサポートされていると見なされます。 レベル 1 のシステムでは、
+* レベル 1 のシステムはサポートされています。 レベル 1 のシステムでは、
     * Microsoft がそのオペレーティング システムに対して自動テストを実施している
     * Microsoft がそれらのインストール パッケージを提供している
-* レベル 2 のシステムは Azure IoT Edge と互換性があり、比較的簡単に使用できると見なされます。 レベル 2 のシステムでは、
+* レベル 2 のシステムは Azure IoT Edge と互換性があり、比較的簡単に使用できます。 レベル 2 のシステムでは、
     * Microsoft がそのプラットフォームでアドホック テストを実施している、またはパートナーがそのプラットフォーム上で Azure IoT Edge を正常に実行していることを把握している
     * 他のプラットフォーム用のインストール パッケージがそれらのプラットフォームで機能することがある
     
@@ -53,39 +56,44 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
 </center>
 
 ### <a name="tier-1"></a>レベル 1
-一般公開
 
-| オペレーティング システム | AMD64 | ARM32v7 |
-| ---------------- | ----- | ----- |
-| Raspbian-stretch | いいえ | はい|
-| Ubuntu Server 16.04 | はい | いいえ |
-| Ubuntu Server 18.04 | はい | いいえ |
-| Windows 10 IoT Enterprise ビルド 17763 | はい | いいえ |
-| Windows Server 2019 ビルド 17763 | はい | いいえ |
-| Windows Server IoT 2019 ビルド 17763 | はい | いいえ |
+次の表に示すシステムは、一般提供またはパブリック プレビューにおいて、Microsoft によってサポートされており、新しいリリースごとにテストされています。 
 
-パブリック プレビュー
-
-| オペレーティング システム | AMD64 | ARM32v7 |
-| ---------------- | ----- | ----- |
-| Windows 10 IoT Core ビルド 17763 | はい | いいえ |
+| オペレーティング システム | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Raspbian-stretch |  | ![Raspbian Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) | パブリック プレビュー |
+| Ubuntu Server 16.04 | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Enterprise ビルド 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server 2019 ビルド 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server IoT 2019 ビルド 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT Core ビルド 17763 | パブリック プレビュー |  |  |
 
 
 上記の Windows オペレーティング システムは、Windows 上で Windows コンテナーを実行するデバイスの要件です。 この構成は、運用環境でサポートされる唯一の構成です。 Windows 用の Azure IoT Edge インストール パッケージを使用すると、Windows 上で Linux コンテナーを使用できます。ただし、この構成は開発およびテスト専用です。 Windows 上で Linux コンテナーを使用することは、運用環境でサポートされる構成ではありません。 この開発シナリオに使用できるのは、Windows 10 ビルド 14393 以降と、Windows Server 2016 以降のバージョンです。
 
 ### <a name="tier-2"></a>レベル 2
 
-| オペレーティング システム | AMD64 | ARM32v7 |
-| ---------------- | ----- | ----- |
-| CentOS 7.5 | はい | はい |
-| Debian 8 | はい | はい |
-| Debian 9 | はい | はい |
-| RHEL 7.5 | はい | はい |
-| Ubuntu 18.04 | はい | はい |
-| Ubuntu 16.04 | はい | はい |
-| Wind River 8 | はい | いいえ |
-| Yocto | はい | いいえ |
+次の表に示すシステムは、Azure IoT Edge と互換性があると見なされますが、アクティブにテストまたは管理されてはいません。 
 
+| オペレーティング システム | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| CentOS 7.5 | ![CentOS + AMD64](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM64](./media/tutorial-c-module/green-check.png) |
+| Debian 8 | ![Debian 8 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 8 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 8 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Debian 9 | ![Debian 9 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Debian 10<sup>1</sup> | ![Debian 10 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM64](./media/tutorial-c-module/green-check.png) |
+| RHEL 7.5 | ![RHEL 7.5 + AMD64](./media/tutorial-c-module/green-check.png) | ![RHEL 7.5 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![RHEL 7.5 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Ubuntu 16.04 | ![Ubuntu 16.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 16.04 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Ubuntu 18.04 | ![Ubuntu 18.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18.04 + ARM64](./media/tutorial-c-module/green-check.png) |
+| Wind River 8 | ![Wind River 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Yocto | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
+| Raspbian Buster<sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
+
+<sup>1</sup> Debian 10 システム (Raspian Buster を含む) は、IoT Edge がサポートしていないバージョンの OpenSSL を使用します。 IoT Edge をインストールする前に、次のコマンドを実行して以前のバージョンをインストールしてください。 
+
+```bash
+sudo apt-get install libssl1.0.2
+```
 
 ## <a name="virtual-machines"></a>Virtual Machines
 Azure IoT Edge は仮想マシンで実行できます。 仮想マシンを IoT Edge デバイスとして使用することは、エッジ インテリジェンスで既存のインフラストラクチャを拡張しようとする場合によく行われます。 ホスト VM OS のファミリは、モジュールのコンテナー内で使用されるゲスト OS のファミリと一致する必要があります。 この要件は、Azure IoT Edge がデバイス上で直接実行されるときと同じです。 Azure IoT Edge は基盤となる仮想化テクノロジに依存しており、Hyper-V や vSphere などのプラットフォームを使用した VM で動作します。

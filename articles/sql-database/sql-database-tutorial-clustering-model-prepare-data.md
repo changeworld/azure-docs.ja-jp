@@ -12,32 +12,34 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/17/2019
-ms.openlocfilehash: 83ef25f04012933c2665e63e4617d480eb336f7b
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.date: 07/29/2019
+ms.openlocfilehash: 800dbfc05c47a949bf024e9a5c671979b49ad201
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66419800"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639975"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリングを実行するためのデータを準備する
 
-この 3 部構成のチュートリアル シリーズのパート 1 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリングを実行するために Azure SQL データベースのデータを準備します。
+この 3 部構成のチュートリアル シリーズのパート 1 では、R を使用して、Azure SQL データベースのデータをインポートして準備します。このシリーズでは、その後、このデータを利用し、R で Azure SQL Database Machine Learning Services (プレビュー) を使用してクラスタリング モデルをトレーニングしてデプロイします。
 
 "*クラスタリング*" とは、データをグループに整理することと説明できます。この場合、グループのメンバーはある点で類似しています。
 商品の購入と返品のデータセットで顧客のクラスタリングを実行するには、**K-Means** アルゴリズムを使用します。 顧客のクラスタリングにより、特定のグループがターゲットになるため、より効果的にマーケティング活動に集中することができます。
 K-Means クラスタリングは、"*教師なし学習*" アルゴリズムで、類似性に基づいてデータにおけるパターンを探します。
 
+このシリーズのパート 1 と 2 では、使用するデータを準備し、機械学習モデルをトレーニングするために、RStudio 内でいくつかの R スクリプトを開発します。 その後、パート 3 では、ストアド プロシージャを使用して SQL データベース内でそれらの R スクリプトを実行します。
+
 この記事では、以下の方法について説明します。
 
 > [!div class="checklist"]
 > * Azure SQL データベースにサンプル データベースをインポートする
-> * さまざまな特徴に従って顧客を分類する
-> * R を使用して、Azure SQL データベースからデータ フレームにデータを読み込む
+> * R を使用してさまざまな特徴に従って顧客を分類する
+> * Azure SQL データベースから R データ フレームにデータを読み込む
 
-[パート 2](sql-database-tutorial-clustering-model-build.md) では、K-Means クラスタリング モデルを作成してトレーニングする方法について説明します。
+[パート 2](sql-database-tutorial-clustering-model-build.md) では、R で K-Means クラスタリング モデルを作成してトレーニングする方法について説明します。
 
-[パート 3](sql-database-tutorial-clustering-model-deploy.md) では、新しいデータに基づいてクラスタリングを実行できるストアド プロシージャを Azure SQL データベースで作成する方法について説明します。
+[パート 3](sql-database-tutorial-clustering-model-deploy.md) では、R で新しいデータに基づいてクラスタリングを実行できるストアド プロシージャを Azure SQL データベースで作成する方法について学習します。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -207,8 +209,8 @@ Azure portal から次の手順を実行します。
 このチュートリアルのパート 1 では、これらの手順を完了しました。
 
 * Azure SQL データベースにサンプル データベースをインポートする
-* さまざまな特徴に従って顧客を分類する
-* R を使用して、Azure SQL データベースからデータ フレームにデータを読み込む
+* R を使用してさまざまな特徴に従って顧客を分類する
+* Azure SQL データベースから R データ フレームにデータを読み込む
 
 この顧客データを使用する機械学習モデルを作成するには、このチュートリアル シリーズのパート 2 に従ってください。
 

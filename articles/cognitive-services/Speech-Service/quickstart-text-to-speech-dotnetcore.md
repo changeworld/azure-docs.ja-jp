@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する (C# (.NET Core)) - Speech Services
+title: クイック スタート:音声を合成する、C# (.NET Core) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Windows の .NET Core で C# と Speech SDK を使用して音声を合成する方法について説明します
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 7b4a018e38ca625e38dc1658a95d3ce0e677f711
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: ccb6ec5b6f29c57a6136c571558d4126d0607710
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67467195"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607680"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-core"></a>クイック スタート:.NET Core 用 Speech SDK を使用して音声を合成する
 
 クイック スタートは[音声認識](quickstart-csharp-dotnetcore-windows.md)と[音声翻訳](quickstart-translate-speech-dotnetcore-windows.md)にも使用できます。
 
-この記事では、Cognitive Services [Speech SDK](speech-sdk.md) を使用してWindows の .NET Core 用の C# コンソール アプリケーションを作成します。 リアルタイムでテキストから音声を合成し、PC のスピーカーに出力します。 このアプリケーションの構築には、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 (任意のエディション) を使用します。
+この記事では、Cognitive Services [Speech SDK](speech-sdk.md) を使用してWindows の .NET Core 用の C# コンソール アプリケーションを作成します。 リアルタイムでテキストから音声を合成し、PC のスピーカーに出力します。 このアプリケーションの構築には、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 以降 (任意のエディション) を使用します。
 
 > [!NOTE]
 > .NET Core は、[.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) 仕様を実装した、オープン ソース、クロスプラットフォームの .NET プラットフォームです。
@@ -33,8 +33,8 @@ ms.locfileid: "67467195"
 このクイック スタートでは以下が必要です。
 
 * [.NET コア SDK](https://dotnet.microsoft.com/download)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Speech Service の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 以降
+* Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 9108c52529319288fba48dbad3c6f8aa6cb5f725
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18dea8e8e4cfcabec63e35dd302f6a5259721a8a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822515"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68320304"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
 
-Azure [Event Hubs Capture][capture-overview] を使用すると、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) アカウントまたは [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) アカウントを選んで、Event Hubs のストリーミング データを自動的に配布することができます。
+Azure [Event Hubs Capture][capture-overview] を使用すると、Event Hubs のストリーミング データを任意の [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) アカウントまたは [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) アカウントに自動的に配信することができます。
 
 [Azure Portal](https://portal.azure.com) を使用して、イベント ハブの作成時に Capture を構成することができます。 データは、Azure [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) コンテナーまたは [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) アカウントにキャプチャすることができます。
 
@@ -47,10 +47,8 @@ Azure Data Lake Store にデータをキャプチャするには、次の手順�
 
 ### <a name="create-an-azure-data-lake-store-account-and-folders"></a>Azure Data Lake Store アカウントとフォルダーの作成
 
-> [!NOTE]
-> 現在、Event Hubs Capture 機能では、Azure Data Lake Store の Gen 1 のみをサポートしています。Gen 2 はサポートしていません。 
 
-1. [Azure portal を使用した Azure Data Lake Store の使用開始](../data-lake-store/data-lake-store-get-started-portal.md)に関するページの手順に従って Data Lake Store Gen 1 アカウントを作成します。
+1. 「[Azure Portal で Azure Data Lake Store の使用を開始する](../data-lake-store/data-lake-store-get-started-portal.md)」の手順に従って Data Lake Store アカウントを作成します。
 2. 「[Event Hubs にアクセス許可を割り当てる](../data-lake-store/data-lake-store-archive-eventhub-capture.md#assign-permissions-to-event-hubs)」セクションの手順に従って、Event Hubs からのデータをキャプチャするフォルダーを Data Lake Store アカウントに作成し、Event Hubs にアクセス許可を割り当てて、Data Lake Store アカウントにデータを書き込むことができるようにします。  
 
 

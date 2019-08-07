@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d222936f93f90573a46cd7f6216fbde8043332c7
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 1ea736b560e2e910ede203e8ce8c0b157ebbce71
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261407"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640877"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
@@ -56,7 +56,7 @@ Azure Migrate Server Migration ツールを使用して、VMware VM を Azure �
 エージェントレスとエージェントベース、いずれの移行を使用するかを決定するには、これらの記事を確認してください。
 
 - VMware の移行オプション[について学習](server-migrate-overview.md)してください。
-- エージェントレス移行の[制限事項を確認](server-migrate-overview.md#agentless-migration-limitations)してください。
+- [移行方法を比較](server-migrate-overview.md#compare-migration-methods)します。
 - エージェントレス移行を試すには、[こちらの記事に従って](tutorial-migrate-vmware.md)ください。
 
 

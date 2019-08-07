@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:Python SDK を使用して Bing Custom Search エンドポイントを呼び出す | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: Bing Custom Search SDK for Python を使用してカスタム検索結果を取得します。
+description: このクイックスタートでは、Python SDK を使用して、Bing Custom Search インスタンスに検索結果を要求します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/05/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: c4c5059bc57ea33357145f6b119456dc6c5bdb7b
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 7a9d0d6619878299768e1f17b4da3280ea1ec1fc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571815"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564618"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>クイック スタート:Python SDK を使用して Bing Custom Search エンドポイントを呼び出す 
 
@@ -59,7 +59,7 @@ from msrest.authentication import CognitiveServicesCredentials
     client = CustomSearchClient(CognitiveServicesCredentials(subscription_key))
     ```
 
-3. `client.custom_instance.search()` を含む検索要求を送信します。 検索語句を `query` パラメーターに追加し、検索インスタンスを使用するためにカスタム構成 ID に `custom_config` を設定します。 ID を [Bing Custom Search ポータル](https://www.customsearch.ai/)から取得するには、**[運用]** タブをクリックします。
+3. `client.custom_instance.search()` を含む検索要求を送信します。 検索語句を `query` パラメーターに追加し、検索インスタンスを使用するためにカスタム構成 ID に `custom_config` を設定します。 ID を [Bing Custom Search ポータル](https://www.customsearch.ai/)から取得するには、 **[運用]** タブをクリックします。
 
     ```python
     web_data = client.custom_instance.search(query="xbox", custom_config="your-configuration-id")

@@ -1,5 +1,5 @@
 ---
-title: Application Insights (Node.js)
+title: Application Insights、Node.js - LUIS
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ボットおよび Language Understanding の情報を Application Insights テレメトリ データ ストレージに追加します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: cfed5477df75350f24e77786117e85b9c728c49a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 72ce681b6b0e4109151b987a5f8cc4bc050aafa0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657753"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563286"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>Node.js でボットから Application Insights に LUIS の結果を追加する
 このチュートリアルでは、ボットおよび Language Understanding の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 そのデータを用意したら、Kusto 言語または Power BI でそれのクエリを実行し、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートすることができます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
@@ -29,8 +29,8 @@ ms.locfileid: "67657753"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Application Insights を有効にして作成された Azure Bot Service ボット
-* 前のボット **[チュートリアル](luis-nodejs-tutorial-bf-v4.md)** からダウンロードしたボット コード 
+* Application Insights を有効にして作成された Azure Bot Service ボット。
+* 前のボットの **[チュートリアル](luis-nodejs-tutorial-bf-v4.md)** からダウンロードしたボット コード。 
 * [ボット エミュレーター](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
@@ -177,7 +177,7 @@ Web アプリ ボットで LUIS 情報をキャプチャするためには、 **
 
 Application Insights にデータを追加するには、インストルメンテーション キーが必要です。
 
-1. ブラウザーで [Azure portal](https://portal.azure.com) にアクセスし、ボットの **Application Insights** リソースを探します。 その名前は、大部分がボットの名前で、その末尾にランダムな文字列が付きます (例: `luis-nodejs-bot-johnsmithxqowom`)。 
+1. ブラウザーで [Azure portal](https://portal.azure.com) にアクセスし、ボットの **Application Insights** リソースを探します。 その名前は、大部分がボットの名前で、その末尾にランダムな文字列があります (例: `luis-nodejs-bot-johnsmithxqowom`)。 
 1. Application Insights リソースの **[概要]** ページで、 **[インストルメンテーション キー]** をコピーします。
 1. VSCode で、ボット プロジェクトのルートにある **.env** ファイルを開きます。 すべての環境変数は、このファイルに保持されています。  
 1. 新しい変数 `MicrosoftApplicationInsightsInstrumentationKey` を、実際のインストルメンテーション キーの値と共に追加します。 値を引用符で囲まないでください。 
@@ -190,9 +190,9 @@ Application Insights にデータを追加するには、インストルメン�
     npm start
     ```
 
-1. ボット エミュレーターを起動してボットを開きます。 その[手順](luis-nodejs-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot)については、前のチュートリアルを参照してください。
+1. ボット エミュレーターを起動してボットを開きます。 この[手順](luis-nodejs-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot)については、前のチュートリアルを参照してください。
 
-1. ボットに質問します。 その[手順](luis-nodejs-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent)については、前のチュートリアルを参照してください。
+1. ボットに質問します。 この[手順](luis-nodejs-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent)については、前のチュートリアルを参照してください。
 
 ## <a name="view-luis-entries-in-application-insights"></a>Application Insights の LUIS エントリの表示
 

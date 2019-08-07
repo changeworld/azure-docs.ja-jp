@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.topic: overview
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 7cabedaec1190437aa9f225397afa8871cb06e88
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: f76f5d4dc84d1f8827248ab8399c1ae450a643a0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306369"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620163"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -38,7 +38,7 @@ Azure Red Hat OpenShift ノードは Azure 仮想マシン上で実行されま�
 
 ## <a name="virtual-networks-and-ingress"></a>仮想ネットワークとイングレス
 
-既存の仮想ネットワークに Azure Red Hat OpenShift クラスターをピアリングを介して接続できます。 この構成では、ポッドは [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) やサイト間 (S2S) VPN 接続を経由してピアリングされた仮想ネットワーク内の他のサービスや、オンプレミス ネットワークとも接続できます。
+ピアリングを介して[既存の仮想ネットワークに Azure Red Hat OpenShift クラスターを接続](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)できます。 この構成では、ポッドはピアリングされた仮想ネットワーク内の他のサービスに接続できます。
 
 詳細については、「[クラスターの仮想ネットワークを既存の仮想ネットワークに接続する](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)」を参照してください。
 

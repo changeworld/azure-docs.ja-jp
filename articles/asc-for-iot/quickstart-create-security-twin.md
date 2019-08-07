@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center for IoT プレビューのセキュリティ モジュール ツインを作成する | Microsoft Docs
-description: Azure Security Center for IoT と併用するための ASC for IoT モジュール ツインを作成する方法について説明します。
+title: Azure Security Center for IoT のセキュリティ モジュール ツインを作成する | Microsoft Docs
+description: Azure Security Center for IoT と併用するための Azure Security Center for IoT モジュール ツインを作成する方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,33 +15,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0e042942be63fdcd97c7cda6003e6d55376ca1a1
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 92bf79aa5ae55bad16d68a26dc13d292285a4d46
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616653"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597081"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
 
-> [!IMPORTANT]
-> Azure Security Center for IoT は現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-このクイック スタートでは、新しいデバイス用に個々の _azureiotsecurity_ モジュール ツインを作成する方法と、IoT Hub 内のすべてのデバイス用にモジュール ツインをバッチ作成する方法について説明します。  
+このクイックスタートでは、新しいデバイス用に個々の _azureiotsecurity_ モジュール ツインを作成する方法と、IoT Hub 内のすべてのデバイス用にモジュール ツインをバッチ作成する方法について説明します。  
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>azureiotsecurity モジュール ツインについて 
 
 Azure に構築された IoT ソリューションでは、デバイス ツインが、デバイスの管理とプロセスの自動化の両方で主要な役割を果たします。 
 
-Azure Security Center (ASC) for IoT は、既存の IoT デバイス管理プラットフォームと完全に統合されるため、デバイスのセキュリティ状態を管理したり、既存のデバイス制御機能を利用したりすることができます。
-ASC for IoT の統合は、IoT Hub ツイン メカニズムを利用することによって実現されます。  
+Azure Security Center for IoT は、既存の IoT デバイス管理プラットフォームと完全に統合されるため、デバイスのセキュリティ状態を管理したり、既存のデバイス制御機能を利用したりすることができます。
+Azure Security Center for IoT の統合は、IoT Hub ツイン メカニズムを利用することによって実現されます。  
 
 Azure IoT Hub でのモジュール ツインの一般的な概念の詳細については、[IoT Hub モジュール ツイン](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)に関するページを参照してください。 
  
-ASC for IoT では、モジュール ツイン メカニズムを利用して、各デバイス用の _azureiotsecurity_ というセキュリティ モジュール ツインが管理されます。
+Azure Security Center for IoT では、モジュール ツイン メカニズムを利用して、各デバイス用の _azureiotsecurity_ というセキュリティ モジュール ツインが管理されます。
+
 セキュリティ モジュール ツインでは、各デバイスのデバイス セキュリティに関連するすべての情報が保持されます。 
  
-ASC for IoT の機能を最大限に活用するには、サービス内のすべてのデバイスに対してこれらのセキュリティ モジュール ツインを作成、構成、および使用する必要があります。  
+Azure Security Center for IoT の機能を最大限に活用するには、サービス内のすべてのデバイスに対してこれらのセキュリティ モジュール ツインを作成、構成、および使用する必要があります。  
 
 ## <a name="create-azureiotsecurity-module-twin"></a>azureiotsecurity モジュール ツインを作成する 
 
@@ -74,7 +72,7 @@ _azureiotsecurity_ モジュール ツインは、次の 2 つの方法で作成
     ![デバイスに関連付けられているモジュール](./media/quickstart/verify-security-module-twin-3.png)
 
 
-ASC for IoT モジュール ツインのプロパティに対するカスタマイズの詳細については、「[Agent configuration (エージェントの構成)](how-to-agent-configuration.md)」を参照してください。
+Azure Security Center for IoT モジュール ツインのプロパティに対するカスタマイズの詳細については、[エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

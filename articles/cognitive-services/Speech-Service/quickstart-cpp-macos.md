@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を認識する (C++ (macOS)) - Speech Services
+title: クイック スタート:音声を認識する、C++ (macOS) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: macOS で C++ と macOS を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: de170955ced45040541565800fc9853edea322f5
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: d7d35c251848af5cfd5852080d01831085401227
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603075"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554127"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>クイック スタート:macOS で C++ と Speech SDK を使用して音声を認識する
 

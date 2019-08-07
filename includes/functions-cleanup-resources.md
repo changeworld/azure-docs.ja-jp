@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 51c0d6dcb2ebc6bec567fee84b88d7bba8a873bf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 35bbef698bdb676774d9863ca1bd2306857b4a0f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180953"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639161"
 ---
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -18,4 +18,4 @@ ms.locfileid: "67180953"
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
-確認を求められたら `y` と入力します。
+メッセージが表示されたら、`y` を選択します。

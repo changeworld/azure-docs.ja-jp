@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e4337f0593933a4e877f391df8132a9b2cd4af
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 12027581ae62588550407c8350f3b74f1e743561
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702695"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601824"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft ID プラットフォーム (v2.0) の概要
 
@@ -43,7 +43,7 @@ Microsoft ID プラットフォームでは、一度コードを記述すれば�
 
 ## <a name="getting-started"></a>使用の開始
 
-ID の処理は難しくありません。 自身に当てはまるシナリオを選択します。それぞれのシナリオ パスにはクイックスタートと概要ページが用意されており、数分で起動し実行できます。
+ID の処理は難しくありません。 自身に当てはまる[シナリオ](authentication-flows-app-scenarios.md)を選択します。それぞれのシナリオ パスにはクイックスタートと概要ページが用意されており、数分で起動し実行できます。
 
 - [単一ページのアプリを構築する](scenario-spa-overview.md)
 - [ユーザーをサインインさせる Web アプリを構築する](scenario-web-app-sign-user-overview.md)
@@ -62,6 +62,7 @@ ID の処理は難しくありません。 自身に当てはまるシナリオ�
 
 コア認証の概念の詳細については、以下の各トピックから始めることをお勧めします。
 
+- [認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)
 - [認証の基本](authentication-scenarios.md)
 - [アプリケーションとサービス プリンシパル](app-objects-and-service-principals.md)
 - [対象ユーザー](v2-supported-account-types.md)

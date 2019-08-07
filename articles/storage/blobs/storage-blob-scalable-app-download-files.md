@@ -1,21 +1,18 @@
 ---
 title: Azure Storage から大量のランダム データをダウンロードする | Microsoft Docs
 description: Azure SDK を使用して Azure Storage アカウントから大量のランダム データをダウンロードする方法を説明します。
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 541d406d7416ff5f50fdcca7e85b8f87f6f377df
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65794579"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699017"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Azure Storage から大量のランダム データをダウンロードする
 
@@ -30,7 +27,7 @@ ms.locfileid: "65794579"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、前の Storage のチュートリアル「[Azure Storage に大量のランダム データを並行でアップロードする][previous-tutorial]」を完了している必要があります。
+このチュートリアルを完了するには、前の Storage のチュートリアル「[Azure Storage に大量のランダム データを並列でアップロードする][previous-tutorial]」を完了している必要があります。
 
 ## <a name="remote-into-your-virtual-machine"></a>仮想マシンへのリモート接続
 

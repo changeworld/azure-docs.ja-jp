@@ -1,7 +1,7 @@
 ---
-title: Azure Speech Service とは
+title: Speech Service とは
 titleSuffix: Azure Cognitive Services
-description: Azure Speech Services は、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 Speech SDK、Speech Devices SDK、または REST API を使用して、アプリケーション、ツール、デバイスに音声を簡単に追加できます。 既存のチャット ボットに音声機能を追加したり、翻訳アプリケーションでテキストを音声に変換したり、コール センターの大量のデータを文字起こししたりします。
+description: Speech Service は、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 Speech SDK、Speech Devices SDK、または REST API を使用して、アプリケーション、ツール、デバイスに音声を簡単に追加できます。 既存のチャット ボットに音声機能を追加したり、翻訳アプリケーションでテキストを音声に変換したり、コール センターの大量のデータを文字起こししたりします。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d9664ac9fb72a5f094674856a20230199270f01d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1d722d7e2886008aa5aa3acff8095fcf35ac38d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603148"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554176"
 ---
 # <a name="what-are-the-speech-services"></a>Speech Service とは
 

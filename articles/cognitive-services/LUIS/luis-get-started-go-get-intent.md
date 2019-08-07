@@ -1,6 +1,6 @@
 ---
-title: 意図の取得、Go
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 意図の取得、Go - LUIS
+titleSuffix: Azure Cognitive Services
 description: この Go クイック スタートでは、提供されているパブリック LUIS アプリを使って、会話形式のテキストからユーザーの意図を判断します。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 6c74e16c55a1b4050ee02c96a1728a07261ff6c3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c4c2d94544739b0611d19705a669d124295947d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276123"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563828"
 ---
 # <a name="quickstart-get-intent-using-go"></a>クイック スタート: Go による意図の取得
 

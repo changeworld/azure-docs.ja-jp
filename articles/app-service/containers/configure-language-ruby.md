@@ -16,12 +16,12 @@ ms.date: 03/28/2019
 ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 95a848ff7d74d35203c7e8377405c709f7fc7bd7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 222ded620610957e752e2081bda638d78eba4867
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617388"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619444"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Azure App Service 向けの Linux Ruby アプリを構成する
 
@@ -122,7 +122,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 Ruby コンテナー内の Rails サーバーは、既定では実稼働モードで実行され、また、[アセットがプリコンパイル済みで Web サーバーから提供されることを想定](https://guides.rubyonrails.org/asset_pipeline.html#in-production)しています。 Rails サーバーから静的アセットを提供するには、次の 2 つのことを行う必要があります。
 
 - **アセットをプリコンパイルする** - [静的アセットをローカルでプリコンパイル](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation)し、それらを手動でデプロイします。 または、その処理をデプロイ エンジンで行います (「[アセットをプリコンパイルする](#precompile-assets)」を参照)。
-- **静的ファイルの提供を有効にする** - Ruby コンテナーから静的アセットを提供するには、`RAILS_SERVE_STATIC_FILES` [`RAILS_SERVE_STATIC_FILES` アプリ設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)を `true` に設定します。 例:
+- **静的ファイルの提供を有効にする** - Ruby コンテナーから静的アセットを提供するには、[`RAILS_SERVE_STATIC_FILES` アプリ設定を `true` に設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)します。 例:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true

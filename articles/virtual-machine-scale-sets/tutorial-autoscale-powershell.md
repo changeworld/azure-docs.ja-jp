@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7a592a7d0d8c9d32de83c92b258c4678dc3f8166
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d743b53f5ca74299c865d381f0832729fc956f4
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188286"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677588"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
 
@@ -137,7 +137,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
 ```
 
 
-## <a name="apply-autoscale-rules-to-a-scale-set"></a>自動スケール ルールをスケール セットに適用
+## <a name="apply-autoscale-profile-to-a-scale-set"></a>スケール セットへの自動スケーリング プロファイルの適用
 最後の手順では、自動スケールのプロファイルをスケール セットに適用します。 これでアプリケーションの需要に基づいて、スケール セットを自動的にスケールインまたはスケールアウトすることができます。 次のように [Add-AzureRmAutoscaleSetting](/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting) を使用して自動スケール プロファイルを適用します。
 
 ```azurepowershell-interactive
@@ -188,7 +188,7 @@ IpAddress
 52.168.121.216
 ```
 
-最初の VM インスタンスへのリモート接続を作成します。 必要な VM インスタンスの独自のパブリック IP アドレスとポート番号を、前のコマンドで示されたとおりに指定します。 メッセージが表示されたら、スケール セットを作成するときに使用した資格情報 (サンプル コマンドでは、既定の *azureuser* と *P\@ssw0rd!*) を入力します。 Azure Cloud Shell を使用する場合は、ローカルの PowerShell プロンプトまたはリモート デスクトップ クライアントからこの手順を実行します。 次の例では、VM インスタンス *0* に接続します。
+最初の VM インスタンスへのリモート接続を作成します。 必要な VM インスタンスの独自のパブリック IP アドレスとポート番号を、前のコマンドで示されたとおりに指定します。 メッセージが表示されたら、スケール セットを作成するときに使用した資格情報 (サンプル コマンドでは、既定の *azureuser* と *P\@ssw0rd!* ) を入力します。 Azure Cloud Shell を使用する場合は、ローカルの PowerShell プロンプトまたはリモート デスクトップ クライアントからこの手順を実行します。 次の例では、VM インスタンス *0* に接続します。
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -196,10 +196,10 @@ mstsc /v 52.168.121.216:50001
 
 ログインしたら、タスク バーから Internet Explorer を開きます。
 
-- **[OK]** を選択して、*[お勧めのセキュリティ、プライバシー、互換性の設定を使う]* のプロンプトを受け入れます
+- **[OK]** を選択して、 *[お勧めのセキュリティ、プライバシー、互換性の設定を使う]* のプロンプトを受け入れます
 - アドレス バーに「 *http://download.sysinternals.com/files/CPUSTRES.zip* 」と入力します。
-- Internet Explorer の強化されたセキュリティ構成が有効になっているので、**[追加]** を選択し、*http://download.sysinternals.com* ドメインを信頼できるサイトの一覧に追加します。
-- ファイルのダウンロードのプロンプトが表示されたら、**[開く]** を選択し、*CPUSTRES.EXE* ツールを選択して**実行**します。
+- Internet Explorer の強化されたセキュリティ構成が有効になっているので、 **[追加]** を選択し、 *http://download.sysinternals.com* ドメインを信頼できるサイトの一覧に追加します。
+- ファイルのダウンロードのプロンプトが表示されたら、 **[開く]** を選択し、*CPUSTRES.EXE* ツールを選択して**実行**します。
 
 ある程度の CPU 負荷を生成するために、2 つのスレッドの **[Active]\(アクティブ\)** チェック ボックスをオンにします。 両方のスレッドの **[Activity]\(アクティビティ\)** ドロップダウン メニューから *[Maximum]\(最大\)* を選択します。 タスク マネージャーを開き、VM の CPU 負荷が 100% になっていることを確認できます。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6d2b9c8dd8fb89e201cff5155b1dec0857204752
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400046"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663493"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -96,8 +96,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 6. **[リソース グループ]** で **[既存のものを使用]** を選択し、**migrationRG** を選択します。
 7. **[場所]** には **[西ヨーロッパ]** を選択します。
 8. **[サブネット]** の **[名前]** と **[IP 範囲]** は、既定値のままにします。
-9. **[サービス エンドポイント]** オプションは無効のままにします。
-10. 完了したら **[作成]** を選択します。
+9. DDoS 保護設定の手順を追加します。
+10. **[サービス エンドポイント]** オプションは無効のままにします。
+11. ファイアウォール設定の手順を追加します。
+12. 完了したら **[作成]** を選択します。
 
 ## <a name="prepare-the-infrastructure"></a>インフラストラクチャの準備
 
@@ -115,7 +117,7 @@ Azure portal のコンテナー ページで、 **[作業の開始]** セクシ�
 
 完了したら、 **[OK]** を選択して次のセクションに進みます。
 
-### <a name="2-select-deployment-planning"></a>2.デプロイ計画を選択する
+### <a name="2-select-deployment-planning"></a>2\.デプロイ計画を選択する
 
 **[Have you completed deployment planning]\(デプロイ計画は完了していますか\)** でドロップダウンから **[I will do it later]\(後で実行する\)** を選択し、 **[OK]** を選択します。
 
@@ -157,7 +159,7 @@ Azure portal のコンテナー ページで、 **[作業の開始]** セクシ�
 
 レプリケーションを有効にする前に、レプリケーション ポリシーを作成する必要があります。
 
-1. **[Replicate and Associate]\(レプリケートと関連付け\)** を選択します。
+1. **[作成と関連付け]** を選択します。
 2. **[名前]** に「**myReplicationPolicy**」と入力します。
 3. その他の設定は既定のままにして、 **[OK]** を選択してポリシーを作成します。 この新しいポリシーは自動的に構成サーバーに関連付けられます。
 
@@ -179,7 +181,7 @@ Azure portal のコンテナー ページで、 **[作業の開始]** セクシ�
      |マシンの種類: | **[物理マシン]** を選択します。|
      | プロセス サーバー: | ドロップダウン一覧から構成サーバーを選択します。|
 
-   - 2.ターゲットを構成する
+   - 2\.ターゲットを構成する
 
      |  |  |
      |-----|-----|

@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Azure Time Series Insights JavaScript クライアント ライブラリを調べる | Microsoft Docs
-description: Azure Time Series Insights JavaScript クライアント ライブラリと、関連するプログラミング モデルについて説明します。
+description: Azure Time Series Insights JavaScript クライアント ライブラリと、関連するプログラミング モデルについて学習するためのチュートリアル。
 author: ashannon7
 manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 05/06/2019
+ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: c6cfd2069851138d738b1533eaab74d9d7aedda6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2c1013829a7e6e94712e22ae235a47490c8c5eaa
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243980"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677658"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>チュートリアル:Azure Time Series Insights JavaScript クライアント ライブラリを調べる
 
@@ -34,16 +34,18 @@ JavaScript D3 ベースの Azure Time Series Insights クライアント ライ�
 > * Time Series Insights サンプル アプリのソース ファイルは、[GitHub サンプル リポジトリ](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)に用意されています。
 > * [Time Series Insights クライアント](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)のリファレンス ドキュメントを参照してください。
 
+お持ちでない場合は、[無料の Azure サブスクリプション](https://azure.microsoft.com/free/)にサインアップしてください。
+
+## <a name="prerequisites"></a>前提条件
+
+* このチュートリアルでは、ブラウザーの**開発者ツール**機能を使用します。 最新の Web ブラウザー ([Microsoft Edge](/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/)、その他) では、通常、キーボード上の F12 ホット キーを使用して **Web インスペクター ビュー**にアクセスできます。 ビューにアクセスする別の方法として、Web ページを右クリックして **[要素の検査]** を選択します。
+
 ## <a name="video"></a>ビデオ
 
 このビデオでは、オープン ソースの Time Series Insights JavaScript SDK を紹介しています。
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
-
-## <a name="prerequisites"></a>前提条件
-
-このチュートリアルでは、ブラウザーの**開発者ツール**機能を使用します。 最新の Web ブラウザー ([Microsoft Edge](/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/)、その他) では、通常、キーボード上の F12 ホット キーを使用して **Web インスペクター ビュー**にアクセスできます。 ビューにアクセスする別の方法として、Web ページを右クリックして **[要素の検査]** を選択します。
 
 ## <a name="time-series-insights-sample-application"></a>Time Series Insights のサンプル アプリケーション
 
@@ -100,7 +102,7 @@ JavaScript D3 ベースの Azure Time Series Insights クライアント ライ�
 
 ## <a name="time-series-insights-javascript-client-library-concepts"></a>Time Series Insights JavaScript クライアント ライブラリの概念
 
-Time Series Insights クライアント ライブラリ (*tsclient.js*) は、2 つの重要な JavaScript 機能用の抽象化を提供します。
+Time Series Insights クライアント ライブラリ (*tsiclient.js*) は、2 つの重要な JavaScript 機能用の抽象化を提供します。
 
 * **Time Series Insights Query API を呼び出すためのラッパー メソッド**: 集計式を使用して Time Series Insights データを照会するために使用できる REST API。 メソッドは、ライブラリの TsiClient.Server 名前空間の下に整理されています。
 
@@ -307,6 +309,13 @@ Time Series Insights クライアント ライブラリには、データ視覚�
 [!code-javascript[code-sample-brushes](~/samples-javascript/pages/tutorial/index.html?range=526-540&highlight=1,13)]
 
 [![ブラシを使用して円グラフと棒グラフを作成するためのコンテキスト メニューを含む折れ線グラフ](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png#lightbox)
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+チュートリアルを完了したので、作成したリソースをクリーンアップします。
+
+1. [Azure portal](https://portal.azure.com) の左側のメニューにある **[すべてのリソース]** を選択し、目的の Azure Time Series Insights リソース グループを見つけます。
+1. **[削除]** を選択してリソース グループ全体 (およびその中に含まれるすべてのリソース) を削除するか、各リソースを個別に削除します。
 
 ## <a name="next-steps"></a>次の手順
 

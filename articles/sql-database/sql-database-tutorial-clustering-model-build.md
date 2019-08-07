@@ -12,17 +12,17 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/17/2019
-ms.openlocfilehash: 12738b63be92420c5f3afea6c133522cbd97f849
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.date: 07/29/2019
+ms.openlocfilehash: 9f16ebc5acff7bbccc9de28e2fab0d223c6e244b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420230"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640010"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリング モデルを作成する
 
-この 3 部構成のチュートリアル シリーズのパート 2 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して、R でクラスタリングを実行する K-Means モデルを作成します。
+この 3 部構成のチュートリアル シリーズのパート 2 では、クラスタリングを実行する K-Means モデルを R で作成します。 このシリーズの次のパートでは、Azure SQL Database Machine Learning Services (プレビュー) を使用して、このモデルを SQL データベースにデプロイします。
 
 この記事では、以下の方法について説明します。
 
@@ -31,9 +31,9 @@ ms.locfileid: "66420230"
 > * クラスタリングを実行する
 > * 結果を分析する
 
-[パート 1](sql-database-tutorial-clustering-model-prepare-data.md) では、Azure SQL データベースからデータを準備して、R でクラスタリングを実行する方法を学習しました。
+[パート 1](sql-database-tutorial-clustering-model-prepare-data.md) では、クラスタリングを実行するために Azure SQL データベースのデータを準備する方法を学習しました。
 
-[パート 3](sql-database-tutorial-clustering-model-deploy.md) では、新しいデータに基づいてクラスタリングを実行するストアド プロシージャを Azure SQL データベースで作成する方法について説明します。
+[パート 3](sql-database-tutorial-clustering-model-deploy.md) では、R で新しいデータに基づいてクラスタリングを実行できるストアド プロシージャを Azure SQL データベースで作成する方法について学習します。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 

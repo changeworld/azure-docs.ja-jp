@@ -4,9 +4,9 @@ titleSuffix: Azure Machine Learning Studio
 description: Azure Machine Learning Studio は、そのまま使うことのできるアルゴリズムやモジュールを含んだライブラリから、ドラッグ アンド ドロップでモデルをすばやく構築できるツールです。
 services: machine-learning
 documentationcenter: ''
-author: garyericson
+author: xiaoharper
+ms.author: amlstudiodocs
 ms.custom: seodec18
-ms.author: garye
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.subservice: studio
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/20/2019
-ms.openlocfilehash: dd1eaa95a23deed0bf2098995be43402c605defc
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 4ec9cff652bf1badf526d490547ad78de31ac5da
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024215"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677999"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio とは
 Microsoft Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 Machine Learning Studio でモデルを Web サービスとして公開すれば、カスタム アプリや BI ツール (Excel など) からそのモデルを簡単に利用することができます。
@@ -40,15 +40,15 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 ## <a name="download-the-machine-learning-studio-overview-diagram"></a>Machine Learning Studio 概要図のダウンロード
 **Microsoft Azure Machine Learning Studio 機能の概要** 図をダウンロードして、Machine Learning Studio の機能の概要を確認します。 図をタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。
 
-**ここから図をダウンロード:[Microsoft Azure Machine Learning Studio の機能の概要](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+**ここから図をダウンロード:[Microsoft Azure Machine Learning Studio の機能の概要](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)** 
 ![Microsoft Azure Machine Learning Studio の機能の概要](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>Machine Learning Studio の概要
-Machine Learning Studio (https://studio.azureml.net)) を初めて起動したときには、**ホーム** ページが表示されます。 そこからドキュメントやビデオ、ウェビナーなど、有益なリソースにアクセスすることができます。
+[Machine Learning Studio](https://studio.azureml.net) を初めて起動したときには、**ホーム** ページが表示されます。 ここから、ドキュメント、ビデオ、ウェビナーを表示したり、その他の有益なリソースを見つけたりすることができます。
 
-左上のメニュー  ![メニュー](./media/what-is-ml-studio/menu.png) をクリックすると、いくつかのオプションが表示されます。
+左上のメニュー ![メニュー](./media/what-is-ml-studio/menu.png) をクリックすると、いくつかのオプションが表示されます。
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
-ここには、**[ホーム]** (最初のページ) と **[Studio]** の 2 つのオプションがあります。
+ここには、 **[ホーム]** (最初のページ) と **[Studio]** の 2 つのオプションがあります。
 
 **[Studio]** をクリックすると、**Azure Machine Learning Studio** に移動します。 最初に、Microsoft アカウントを使用するか職場または学校アカウントを使用してサインインするように求められます。 サインインすると、次のタブが左側に表示されます。
 
@@ -61,7 +61,7 @@ Machine Learning Studio (https://studio.azureml.net)) を初めて起動した�
 * **設定** - アカウントとリソースを構成するための各種設定がまとめられています。
 
 ### <a name="gallery"></a>[ギャラリー]
-**[ギャラリー]** をクリックすると、**[Azure AI ギャラリー](https://gallery.azure.ai/)** に移動します。 ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用して作成したソリューションを共有する場です。
+**[ギャラリー]** をクリックすると、 **[Azure AI ギャラリー](https://gallery.azure.ai/)** に移動します。 ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用して作成したソリューションを共有する場です。
 
 ギャラリーの詳細については、[Azure AI ギャラリーでのソリューションの共有と発見](gallery-how-to-use-contribute-publish.md)に関するページを参照してください。
 
@@ -94,10 +94,10 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 ### <a name="modules"></a>モジュール
 モジュールとは、データに対して実行できるアルゴリズムのことです。 Machine Learning Studio には、データの受信機能や、データのトレーニング、スコア付け、検証などに対応したさまざまなモジュールが用意されています。 提供されるモジュールには以下のようなものがあります。
 
-* [ARFF への変換][convert-to-arff] - .NET でシリアル化されたデータセットを属性関係ファイル フォーマット (ARFF) に変換します。
+* [ARFF への変換][convert-to-arff] - .NET のシリアル化されたデータセットを属性関係ファイル形式 (ARFF) に変換します。
 * [基本統計値の計算][elementary-statistics] - 平均や標準偏差などの基本的な統計値を計算します。
 * [線形回帰][linear-regression] - オンライン傾斜降下に基づく線形回帰モデルを作成します。
-* [モデルのスコア付け][score-model] - トレーニングされた分類か回帰モデルをスコア付けします。
+* [モデルのスコア付け][score-model] - トレーニングされた分類または回帰モデルをスコア付けします。
 
 利用可能なモジュールは、実験を作成するときにキャンバスの左側の一覧から選択できます。
 
@@ -111,19 +111,19 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 <a name="compare"></a>
 ## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Machine Learning Studio と Azure Machine Learning service の違い
 
-[Azure Machine Learning service](../service/overview-what-is-azure-ml.md) には、機械学習モデルのデータ準備、トレーニング、デプロイを迅速に行うための SDK **と**ビジュアル インターフェイス (プレビュー) の両方が用意されています。 このビジュアル インターフェイス (プレビュー) では、Studio へのドラッグ アンド ドロップに似た操作が可能です。 ただし、Studio の専用コンピューティング プラットフォームとは異なり、ビジュアル インターフェイスは独自のコンピューティング リソースを使用し、Azure Machine Learning service に完全に統合されています。
+[Azure Machine Learning service](../service/overview-what-is-azure-ml.md) には、機械学習モデルのデータ準備、トレーニング、デプロイを迅速に行うための SDK **と**ビジュアル インターフェイス (プレビュー) の両方が用意されています。 このビジュアル インターフェイス (プレビュー) では、Studio へのドラッグ アンド ドロップに似た操作が可能です。 ただし、Studio の専用コンピューティング プラットフォームとは異なり、ビジュアル インターフェイスではユーザー独自のコンピューティング リソースが使用され、Azure Machine Learning service に完全に統合されています。
 
 以下で簡単に比較します。
 
 || Machine Learning Studio | Azure Machine Learning service:<br/>ビジュアル インターフェイス|
 |---| --- | --- |
-|| 一般公開 (GA) | プレビュー段階|
+|| 一般提供 (GA) | プレビュー段階|
 |インターフェイスのモジュール| 多数 | 人気のあるモジュールの初期セット|
 |コンピューティング ターゲットのトレーニング| 独自のコンピューティング ターゲット、CPU のサポートのみ| Azure Machine Learning コンピューティング、GPU または CPU をサポート。<br/>(他のコンピューティングは、SDK でサポート)|
 |デプロイのコンピューティング ターゲット| 独自の Web サービス形式 (カスタマイズ不可) | Enterprise セキュリティ オプションおよび Azure Kubernetes Service。 <br/>([他のコンピューティング](../service/how-to-deploy-and-where.md)は SDK でサポート) |
-|自動化されたモデル トレーニングとハイパーパラメーター調整 | いいえ  | ビジュアル インターフェイスではまだサポート対象外。 <br/> (SDK と Azure portal でサポート)。 | 
+|自動化されたモデル トレーニングとハイパーパラメーター調整 | いいえ | ビジュアル インターフェイスではまだサポート対象外。 <br/> (SDK と Azure portal でサポート)。 | 
 
-「[クイックスタート: コードを書かずにデータを準備および視覚化する](../service/ui-quickstart-run-experiment.md)」でビジュアル インターフェイス (プレビュー) をお試しください
+ビジュアル インターフェイス (プレビュー) をお試しください ([チュートリアル: ビジュアル インターフェイスで自動車価格を予測する](../service/ui-tutorial-automobile-price-train-score.md)
 
 > [!NOTE]
 > Studio で作成したモデルを Azure Machine Learning service でデプロイおよび管理することはできません。 ただし、ビジュアル インターフェイスで作成およびデプロイしたモデルは、Azure Machine Learning service ワークスペースから管理できます。

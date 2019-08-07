@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 57e66d449b194662bfc03f7e130cf49c02a15793
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 05e2375998b3bce4320b2d66ab7fce44cd911dcc
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275709"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479127"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure での AWS のコストと使用状況の管理
 
@@ -151,13 +151,23 @@ AWS のリンクされたアカウントのコストへのアクセス許可を�
 - **[MFA を要求]** 選択項目はクリアされます。
 - AWS ロールの信頼される AWS アカウントは、_432263259397_ です。
 
-### <a name="collection-failed-with-access-denied"></a>アクセス拒否で収集が失敗
+### <a name="collection-failed-with-access-denied---cur-report-definitions"></a>アクセス拒否で収集が失敗 - CUR レポート定義
 
-- **エラー コード:** _AccessDeniedReportDefinitions_ 
-- **エラー コード:** _AccessDeniedReportDefinitions_ 
-- **エラー コード:** _AccessDeniedDownloadReport_ 
+**エラー コード:** _AccessDeniedReportDefinitions_ 
 
-このエラー メッセージは、Cost Management で Amazon S3 バケットに格納されている CUR ファイルにアクセスできないことを意味します。 ロールに関連付けられている AWS JSON ポリシーが、「[AWS でのロールとポリシーの作成](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)」セクションの下部に示されている例と似たものであることを確認してください。
+このエラーは、Cost Management でコストと使用状況レポートの定義を表示できないことを意味しています。 このアクセス許可は、Azure Cost Management が想定するとおりに CUR が定義されていることを検証するために使用されます。 「[AWS でコストと使用状況レポートを作成する](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)」を参照してください。
+
+### <a name="collection-failed-with-access-denied---list-reports"></a>アクセス拒否で収集が失敗 - レポートの一覧表示
+
+**エラー コード:** _AccessDeniedReportDefinitions_ 
+
+このエラーは、Cost Management で、CUR が配置されている S3 バケット内のオブジェクトを一覧表示できないことを意味します。 AWS IAM ポリシーでは、バケットおよびバケット内のオブジェクトに対するアクセス許可が必要です。 「[AWS でロールとポリシーを作成する](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)」を参照してください。
+
+### <a name="collection-failed-with-access-denied---download-report"></a>アクセス拒否で収集が失敗 - レポートのダウンロード 
+
+**エラー コード:** _AccessDeniedDownloadReport_ 
+
+このエラーは、Cost Management で Amazon S3 バケットに格納されている CUR ファイルにアクセスおよびダウンロードできないことを意味します。 ロールに関連付けられている AWS JSON ポリシーが、「[AWS でのロールとポリシーの作成](aws-integration-set-up-configure.md#create-a-role-and-policy-in-aws)」セクションの下部に示されている例と似たものであることを確認してください。
 
 ### <a name="collection-failed-since-we-did-not-find-the-cost-and-usage-report"></a>コストと使用状況レポートが見つからないための収集の失敗
 

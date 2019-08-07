@@ -10,20 +10,19 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-manager: craigg
-ms.date: 04/23/2019
-ms.openlocfilehash: 470dca235b9a3212c09052f7535fa90d076fe4d3
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.date: 07/29/2019
+ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444461"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640045"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>クイック スタート:Azure portal、PowerShell、Azure CLI を使用して Azure SQL Database で単一データベースを作成します
 
 [単一データベース](sql-database-single-database.md)の作成は、Azure SQL Database でデータベースを作成する場合の最も迅速かつ簡単なデプロイ オプションです。 このクイック スタートでは、Azure portal を使用して単一データベースを作成した後、クエリを実行する方法について説明します。
 
-Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。 
 
 このクイック スタートのすべての手順では、[Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -37,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 単一データベースを作成するときは、それを管理するための [SQL Database サーバー](sql-database-servers.md)も定義し、指定したリージョンの [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内にそれを配置します。
 
 > [!NOTE]
-> このクイックスタートでは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)と[サーバーレス](sql-database-serverless.md) コンピューティング レベルを使用しますが、[DTU ベースの購入モデル](sql-database-service-tiers-DTU.md)も利用できます。
+> このクイックスタートでは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用しますが、[DTU ベースの購入モデル](sql-database-service-tiers-DTU.md)も利用できます。
 
 Adventure Works LT サンプル データを含む単一データベースを作成するには:
 

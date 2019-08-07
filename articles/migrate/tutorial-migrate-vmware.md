@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 885c877f219f59ab5049cf7b8e01243077d6d3eb
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 7fba9cbbaa15359e7e4dd95e66645dd5f4022431
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348384"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640776"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -34,14 +34,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="migration-methods"></a>移行の方法
 
-Azure Migrate Server Migration ツールを使用して、VMware VM を Azure に移行できます。 このツールには、VMware VM の移行に関していくつかのオプションが用意されています。
+Azure Migrate Server Migration ツールを使用して、VMware VM を Azure に移行できます。 このツールには、VMware VM の移行のためのいくつかのオプションが用意されています。
 
-- エージェントレス レプリケーションを使用した移行。 何もインストールすることなく VM を移行します。
+- エージェントレス レプリケーションを使用した移行。 VM 上に何もインストールすることなく、その VM を移行します。
 - レプリケーション用のエージェントを使用した移行。 レプリケーションのためにエージェントを VM にインストールします。
 
 エージェントレスとエージェントベース、いずれの移行を使用するかを決定するには、これらの記事を確認してください。
 
-- エージェントレス移行の[しくみを学習](server-migrate-overview.md)し、[制限事項を確認](server-migrate-overview.md#agentless-migration-limitations)してください。
+- エージェントレス移行の[しくみを学習](server-migrate-overview.md)し、[移行方法を比較](server-migrate-overview.md#compare-migration-methods)してください。
 - エージェントベースの方法を使用したい場合は、[この記事をお読みください](tutorial-migrate-vmware-agent.md)。
 
 ## <a name="prerequisites"></a>前提条件
@@ -93,7 +93,7 @@ Azure Migrate Server Migration では、軽量の VMware VM アプライアン�
 
 VM を Azure に確実に移行できるよう、Azure Migrate では VM にいくつかの変更を行う必要があります。
 
-- 一部の[オペレーティング システム](server-migrate-overview.md#agentless-migration-limitations)では、これらの変更が Azure Migrate によって自動的に行われます。
+- 一部のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。 [詳細情報](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements)
 - これらのいずれのオペレーティング システムも備えていない VM を移行する場合は、手順に従って VM を準備してください。
 - 移行を開始する前にこれらの変更を行うことが重要です。 変更を行う前に VM を移行すると、Azure で VM が起動しない可能性があります。
 - オンプレミスの VM に対して行う構成変更は、VM のレプリケーションが有効になった後に、Azure にレプリケートされます。 変更が確実にレプリケートされるよう、移行先の復旧ポイントは、オンプレミスで行われた構成変更の時点よりも後にしてください。

@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Azure Time Series Insights 環境の作成 | Microsoft Docs
-description: シミュレートされたデバイスからのデータが入力された Time Series Insights 環境を作成する方法について説明します。
+description: シミュレートされたデバイスからのデータが入力される Time Series Insights 環境を作成する方法について学習するためのチュートリアル。
 services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 06a450c47c7264bdecb663c9f71e3a9753df5e1e
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 921528c50bae03b67800bf3ccab8b5cd9bb704f6
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273622"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677743"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル:Azure Time Series Insights 環境を作成する
 
@@ -27,16 +27,18 @@ ms.locfileid: "67273622"
 > * デバイス シミュレーションを実行して Time Series Insights 環境にデータをストリーミングする。
 > * シミュレートされたテレメトリ データを確認する。
 
+> [!IMPORTANT]
+> お持ちでない場合は、[無料の Azure サブスクリプション](https://azure.microsoft.com/free/)にサインアップしてください。
+
+## <a name="prerequisites"></a>前提条件
+
+* また、Azure のサインイン アカウントは、サブスクリプションの**所有者**ロールのメンバーである必要があります。 詳細については、[ロールベースのアクセス制御と Azure portal を使用したアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
+
 ## <a name="video"></a>ビデオ
 
 ### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>Azure IoT ソリューション アクセラレータを使用して、データを生成し、Time Series Insights の使用を開始する方法について説明します。 </br>
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
-
-## <a name="prerequisites"></a>前提条件
-
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
-* また、Azure のサインイン アカウントは、サブスクリプションの**所有者**ロールのメンバーである必要があります。 詳細については、[ロールベースのアクセス制御と Azure portal を使用したアクセスの管理](/azure/role-based-access-control/role-assignments-portal)に関するページをご覧ください。
 
 ## <a name="overview"></a>概要
 

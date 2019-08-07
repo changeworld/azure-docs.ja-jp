@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2019
 ms.author: banders
-ms.openlocfilehash: 6d63f9a393dbb40c3b0952eba9ab9449fd7b558d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20ed2bcf793ab5c3913ccf66d338e71c1a99a003
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702618"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478935"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 
@@ -104,7 +104,7 @@ EA のお客様の場合、組織の予約がどのように使用されてい�
 
 ## <a name="change-scope-for-a-reservation"></a>予約の範囲を変更する
 
-予約のスコープは、単一のサブスクリプションになることもあれば、課金コンテキスト内のすべてのサブスクリプションになることもあります。 単一のサブスクリプションにスコープを設定した場合、選択したサブスクリプション内の実行中のリソースに対して予約が照合されます。 スコープを "共有" に設定した場合、課金コンテキスト内の全サブスクリプションで実行されるリソースに対して予約が照合されます。 課金コンテキストは、予約の購入に使用したサブスクリプションによって決まります。 詳細については、予約の管理に関する記事の「[予約のスコープを変更する](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)」をご覧ください。
+予約のスコープは、単一のサブスクリプションや単一のリソース グループになることもあれば、課金コンテキスト内のすべてのサブスクリプションになることもあります。 単一のサブスクリプションまたは単一のリソース グループにスコープを設定した場合、選択したサブスクリプション内の実行中のリソースに対して予約が照合されます。 サブスクリプションまたはリソース グループを削除または移動した場合、予約は利用できなくなります。  スコープを "共有" に設定した場合、課金コンテキスト内の全サブスクリプションで実行されるリソースに対して予約が照合されます。 課金コンテキストは、予約の購入に使用したサブスクリプションによって決まります。 スコープは購入時に選択できます。また、購入後いつでも変更することもできます。 詳細については、予約の管理に関する記事の「[予約のスコープを変更する](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)」をご覧ください。
 
 プログラムで範囲を変更するには、[予約更新](/rest/api/reserved-vm-instances/reservation/update) API を使用します。
 

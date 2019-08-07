@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 6/7/2019
+ms.date: 07/19/2019
 ms.author: victorh
-ms.openlocfilehash: 5dfc00b1193117c22ba1c763bb0e75d9c4712222
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 89b50cff2d46f8c92c09653aeaac49551c97e9c6
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275738"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314461"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS エイリアス レコードの概要
 
@@ -30,6 +30,8 @@ Azure DNS ゾーンでは、エイリアス レコード セットとして、�
 ## <a name="capabilities"></a>機能
 
 - **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする**。 A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。 パブリック IP アドレスが変更されるか削除されると、DNS レコード セットが自動的に変更されます。 正しくない IP アドレスをポイントする未解決の DNS レコードは回避されます。
+
+   現在、リソースあたりのエイリアス レコード セット数は 20 に制限されています。
 
 - **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントする**。 A/AAAA または CNAME レコード セットを作成し、エイリアス レコードを使用して Traffic Manager プロファイルをポイントすることができます。 従来の CNAME レコードはゾーンの頂点に対してサポートされていないため、ゾーンの頂点でトラフィックをルーティングする必要がある場合に特に便利です。 たとえば、Traffic Manager プロファイルが myprofile.trafficmanager.net で、ビジネスの DNS ゾーンが contoso.com であるものとします。 contoso.com (ゾーンの頂点) に対して A/AAAA の種類のエイリアス レコード セットを作成し、それで myprofile.trafficmanager.net をポイントすることができます。
 - **Azure Content Delivery Network (CDN) エンドポイントをポイントする**。 これは、Azure Storage と Azure CDN を使って静的な Web サイトを作成する場合に便利です。

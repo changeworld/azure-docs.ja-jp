@@ -10,12 +10,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9ebacd8caf992874969106df58531538ea399ed
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: c1ec9db2b026dd1853eceb1f110878d6b2beb4d4
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510429"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678013"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
 
@@ -32,13 +32,13 @@ Azure Machine Learning service とは、機械学習モデルのトレーニン�
 Azure Machine Learning service には、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、および追跡に使用できるクラウドベースの環境が用意されています。 ローカル コンピューターでトレーニングを開始し、その後、クラウドにスケールアウトします。 このサービスは、PyTorch、TensorFlow、scikit-learn などのオープンソース テクノロジを完全にサポートしており、古典的な ml からディープ ラーニング、教師あり学習および教師なし学習まで、あらゆる種類の機械学習に使用できます。 
 
 データの調査と準備、モデルのトレーニングとテストを行い、以下のような豊富なツールを使用してそれらをデプロイします。
-+ モジュールをドラッグ アンド ドロップして実験を構築し、その後でモデルをデプロイできる[ビジュアル インターフェイス](ui-quickstart-run-experiment.md)
++ モジュールをドラッグ アンド ドロップして実験を構築し、その後でモデルをデプロイできる[ビジュアル インターフェイス](ui-tutorial-automobile-price-train-score.md)
 + [SDK](https://docs.microsoft.com/azure/machine-learning/service/#reference) を使用して、[これらのサンプル ノートブック](https://aka.ms/aml-notebooks)のような独自のコードを記述する [Jupyter ノートブック](https://jupyter.org)
 + [Visual Studio Code 拡張機能](how-to-vscode-tools.md)
 
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Azure Machine Learning サービスでできること
 
-<a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Python SDK</a> とオープンソースの Python パッケージを使用するか、[ビジュアル インターフェイス (プレビュー)](ui-quickstart-run-experiment.md) を使用すると、Azure Machine Learning service ワークスペースで、きわめて正確な機械学習およびディープ ラーニング モデルを自分で構築し、トレーニングすることができます。
+<a href="https://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Python SDK</a> とオープンソースの Python パッケージを使用するか、[ビジュアル インターフェイス (プレビュー)](ui-tutorial-automobile-price-train-score.md) を使用すると、Azure Machine Learning service ワークスペースで、きわめて正確な機械学習およびディープ ラーニング モデルを自分で構築し、トレーニングすることができます。
 
 オープンソースの Python パッケージで使用できる多くの機械学習コンポーネントの中から、いずれかを選択できます。たとえば、<a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>、<a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>、<a href="https://pytorch.org" target="_blank">PyTorch</a>、<a href="https://mxnet.io" target="_blank">MXNet</a> などがあります。
 
@@ -86,9 +86,9 @@ Azure Machine Learning service には、機械学習モデルのデータ準備�
 |インターフェイスのモジュール| 多数 | 人気のあるモジュールの初期セット|
 |コンピューティング ターゲットのトレーニング| 独自のコンピューティング ターゲット、CPU のサポートのみ| Azure Machine Learning コンピューティング、GPU または CPU をサポート。<br/>(他のコンピューティングは、SDK でサポート)|
 |デプロイのコンピューティング ターゲット| 独自の Web サービス形式 (カスタマイズ不可) | Enterprise セキュリティ オプションおよび Azure Kubernetes Service。 <br/>([他のコンピューティング](how-to-deploy-and-where.md)は SDK でサポート) |
-|自動化されたモデル トレーニングとハイパーパラメーター調整 | いいえ  | ビジュアル インターフェイスではまだサポート対象外。 <br/> (SDK と Azure portal でサポート)。 | 
+|自動化されたモデル トレーニングとハイパーパラメーター調整 | いいえ | ビジュアル インターフェイスではまだサポート対象外。 <br/> (SDK と Azure portal でサポート)。 | 
 
-ビジュアル インターフェイス (プレビュー) をお試しください ([クイック スタート: コードを書かずにデータを準備および視覚化する](ui-quickstart-run-experiment.md))
+ビジュアル インターフェイス (プレビュー) をお試しください ([チュートリアル: ビジュアル インターフェイスで自動車価格を予測する](ui-tutorial-automobile-price-train-score.md)」を参照してください。
 
 > [!NOTE]
 > Studio で作成したモデルを Azure Machine Learning service でデプロイおよび管理することはできません。 ただし、ビジュアル インターフェイスで作成およびデプロイしたモデルは、Azure Machine Learning service ワークスペースから管理できます。

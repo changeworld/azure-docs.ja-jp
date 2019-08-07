@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 05/18/2019
-ms.openlocfilehash: 11b3e7724f34a7929d9851dbc8034829f020868b
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.date: 07/18/2019
+ms.openlocfilehash: bd68909f51ff6cead8484ae4ab9f2557e9d6554e
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190711"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443317"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
-自動フェールオーバー グループは SQL Database 機能の 1 つです。これを使用して、SQL Database サーバー上のデータベースのグループや、マネージド インスタンス内のすべてのデータベースの別のリージョンへのレプリケーションとフェールオーバーを管理できます。 [アクティブ geo レプリケーション](sql-database-active-geo-replication.md)と同じ基礎となるテクノロジが使用されます。 フェールオーバーは、手動で開始することも、ユーザー定義ポリシーに基づいて SQL Database サービスにデリゲートすることもできます。 後者のオプションの場合、プライマリ リージョンで発生した致命的な障害やその他の計画外のイベントにより SQL データベース サービスの可用性がすべてまたは一部失われたときに、セカンダリ リージョンの複数の関連データベースを自動的に復元できます。 さらに、読み取り可能なセカンダリ データベースを使用して、読み取り専用クエリ ワークロードをオフロードできます。 自動フェールオーバー グループには複数のデータベースが関与するため、これらのデータベースをプライマリ サーバーに構成する必要があります。 フェールオーバー グループ内にあるデータベース用のプライマリ サーバーとセカンダリ サーバーは両方とも、同一のサブスクリプションである必要があります。 自動フェールオーバー グループでは、グループ内のすべてのデータベースを別のリージョンの 1 つのセカンダリ サーバーにのみレプリケートできます。
+自動フェールオーバー グループは SQL Database 機能の 1 つです。これを使用して、SQL Database サーバー上のデータベースのグループや、マネージド インスタンス内のすべてのデータベースの別のリージョンへのレプリケーションとフェールオーバーを管理できます。 これは、既存の[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)機能に基づく宣言型の抽象化であり、geo レプリケーション対応データベースの大規模なデプロイと管理を簡素化するように設計されています。 フェールオーバーは、手動で開始することも、ユーザー定義ポリシーに基づいて SQL Database サービスにデリゲートすることもできます。 後者のオプションの場合、プライマリ リージョンで発生した致命的な障害やその他の計画外のイベントにより SQL データベース サービスの可用性がすべてまたは一部失われたときに、セカンダリ リージョンの複数の関連データベースを自動的に復元できます。 フェールオーバー グループには、通常同じアプリケーションによって使用される、1 つまたは複数のデータベースを含めることができます。 さらに、読み取り可能なセカンダリ データベースを使用して、読み取り専用クエリ ワークロードをオフロードできます。 自動フェールオーバー グループには複数のデータベースが関与するため、これらのデータベースをプライマリ サーバーに構成する必要があります。 フェールオーバー グループ内にあるデータベース用のプライマリ サーバーとセカンダリ サーバーは両方とも、同一のサブスクリプションである必要があります。 自動フェールオーバー グループでは、グループ内のすべてのデータベースを別のリージョンの 1 つのセカンダリ サーバーにのみレプリケートできます。
 
 > [!NOTE]
 > SQL Database サーバー上の単一またはプールされたデータベースの操作時に、同じまたは異なるリージョンで複数のセカンダリが必要な場合は、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使用します。
@@ -31,7 +31,7 @@ ms.locfileid: "67190711"
 自動フェールオーバー グループ ポリシーで自動フェールオーバー グループを使用しているときに、SQL Database サーバーまたはマネージド インスタンス内のデータベースに影響する機能停止が発生すると、自動フェールオーバーが行われます。 自動フェールオーバー グループは、以下を使用して管理できます。
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
-- [PowerShell:フェールオーバー グループ](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+- [PowerShell:フェールオーバー グループ](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - [REST API:フェールオーバー グループ](https://docs.microsoft.com/rest/api/sql/failovergroups)。
 
 フェールオーバー後は、サーバーおよびデータベースの認証要件が新しいプライマリで構成されていることを確認してください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。
@@ -79,11 +79,11 @@ ms.locfileid: "67190711"
 
 - **フェールオーバー グループの読み取り/書き込みリスナー**
 
-  現在のプライマリの URL を指す、形成された DNS CNAME レコード。 これにより、フェールオーバー後にプライマリが変更されたときに、読み取り/書き込み SQL アプリケーションがプライマリ データベースに透過的に再接続できます。 SQL Database サーバーでフェールオーバー グループが作成されたとき、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.database.windows.net` になります。 マネージド インスタンスでフェールオーバー グループが作成されたとき、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.zone_id.database.windows.net` になります。
+  現在のプライマリの URL を指す、DNS CNAME レコード。 フェールオーバー グループの作成時に自動的に作成され、フェールオーバー後、プライマリ データベースの変更時に読み取り/書き込み SQL ワークロードが透過的にプライマリに再接続できるようにします。 SQL Database サーバーでフェールオーバー グループが作成されたとき、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.database.windows.net` になります。 マネージド インスタンスでフェールオーバー グループが作成されたとき、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.zone_id.database.windows.net` になります。
 
 - **フェールオーバー グループの読み取り専用リスナー**
 
-  セカンダリの URL を指す読み取り専用リスナーを指す、形成された DNS CNAME レコード。 これにより、指定された負荷分散規則を使用して、読み取り専用 SQL アプリケーションをセカンダリに透過的に接続できます。 SQL Database サーバーでフェールオーバー グループが作成されたとき、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.secondary.database.windows.net` になります。 マネージド インスタンスでフェールオーバー グループが作成されたとき、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.zone_id.secondary.database.windows.net` になります。
+  セカンダリの URL を指す読み取り専用リスナーを指す、形成された DNS CNAME レコード。 フェールオーバー グループの作成時に自動的に作成され、指定された負荷分散規則を使用して、読み取り専用 SQL ワークロードが透過的にセカンダリに接続できるようにします。 SQL Database サーバーでフェールオーバー グループが作成されたとき、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.secondary.database.windows.net` になります。 マネージド インスタンスでフェールオーバー グループが作成されたとき、リスナー URL の DNS CNAME レコードの形式は `<fog-name>.zone_id.secondary.database.windows.net` になります。
 
 - **自動フェールオーバー ポリシー**
 
@@ -279,6 +279,9 @@ ms.locfileid: "67190711"
 > [!NOTE]
 > セカンダリ データベースをフェールオーバー グループ構成の一部として作成した場合、セカンダリ データベースをダウングレードすることは推奨されません。 これは、フェールオーバーがアクティブ化された後にデータ層に通常のワークロードを処理するのに十分な容量を確保するためです。
 
+> [!IMPORTANT]
+> フェールオーバー グループのメンバーである Managed Instance のアップグレードまたはダウングレードは、現在サポートされていません。
+
 ## <a name="preventing-the-loss-of-critical-data"></a>重要なデータの損失の防止
 
 ワイド エリア ネットワークの遅延は大きいため、連続コピーでは非同期のレプリケーション メカニズムが使用されます。 非同期レプリケーションでは、障害が発生した場合に部分的なデータ損失が避けられません。 しかし、データ損失が許されないアプリケーションもあります。 重要な更新情報を保護するには、アプリケーション開発者は、トランザクションがコミットされた直後に [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) ステム プロシージャを呼び出すことができます。 **sp_wait_for_database_copy_sync** を呼び出すと、最後にコミットされたトランザクションがセカンダリ データベースに転送されるまで、呼び出しスレッドがブロックされます。 ただし、転送されたトランザクションがセカンダリで再生およびコミットされるのを待つことはありません。 **sp_wait_for_database_copy_sync** の対象は、特定の連続コピー リンクです。 プライマリ データベースへの接続権限を持つユーザーが、このプロシージャを呼び出すことができます。
@@ -307,7 +310,7 @@ ms.locfileid: "67190711"
 |  | |
 
 > [!IMPORTANT]
-> サンプル スクリプトについては、[単一データベース用のフェールオーバー グループの構成とフェールオーバー](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)に関するページを参照してください。
+> サンプル スクリプトについては、[単一データベース用のフェールオーバー グループの構成とフェールオーバー](scripts/sql-database-add-single-db-to-failover-group-powershell.md)に関するページを参照してください。
 >
 
 ### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>PowerShell:マネージド インスタンスでのフェールオーバー グループの管理 (プレビュー)
@@ -368,7 +371,7 @@ ms.locfileid: "67190711"
 - サンプル スクリプトは、以下を参照してください。
   - [アクティブ geo レプリケーションを使用して、単一のデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [アクティブ geo レプリケーションを使用して、プールされたデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-  - [単一データベースのフェールオーバー グループを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+  - [単一データベースのフェールオーバー グループを構成およびフェールオーバーする](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
 - ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)を参照してください。
 - Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください
 - 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。

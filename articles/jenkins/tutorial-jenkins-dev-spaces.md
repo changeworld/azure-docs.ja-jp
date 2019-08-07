@@ -6,13 +6,13 @@ ms.author: tarcher
 ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/18/2019
-ms.openlocfilehash: f5f74ebeb803a5c493f1dbedb6501adf3a88c215
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.date: 07/31/2019
+ms.openlocfilehash: 10ff8f4645ee1e7023c96174236243a3b85de938
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785667"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679119"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
@@ -175,7 +175,7 @@ Azure Dev Spaces の使用、および Azure Dev Spaces を使用したマルチ
 * Helm と Kubernetes の CLI をインストールする
 * 資格情報を追加する
 
-### <a name="install-plugins"></a>プラグインをインストールする
+### <a name="install-plug-ins"></a>プラグインをインストールする
 
 1. 自分の Jenkins サーバーにサインインします。 **[Manage Jenkins]\(Jenkins の管理\)、[Manage Plugins]\(プラグインの管理\)** の順に選択します。
 2. **[Available]\(利用可能\)** タブで、次のプラグインを選択します。
@@ -184,7 +184,7 @@ Azure Dev Spaces の使用、および Azure Dev Spaces を使用したマルチ
     * [Environment Injector](https://plugins.jenkins.io/envinject)
     * [GitHub Integration](https://plugins.jenkins.io/github-pullrequest)
 
-    これらのプラグインが一覧に表示されない場合、 **[Installed]\(インストール済み\)** タブをチェックして、これらが既にインストール済みであるかどうかを確認してください。
+    これらのプラグインが一覧に表示されない場合、 **[Installed]\(インストール済み\)** タブで、これらが既にインストール済みであるかどうかを確認してください。
 
 3. プラグインをインストールするには、 **[Download now and install after restart]\(今すぐダウンロードし、再起動後にインストール\)** を選択します。
 

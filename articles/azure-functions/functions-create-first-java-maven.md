@@ -1,5 +1,5 @@
 ---
-title: Java と Maven を使用して Azure で初めての関数を作成する | Microsoft Docs
+title: Java と Maven を使用して関数を発行する - Azure Functions
 description: Java と Maven を使用して、HTTP によってトリガーされる簡単な関数作成し、Azure に発行します。
 services: functions
 documentationcenter: na
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 20327e64080182518fd28b1d367ffe37be5ce9a4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: mvc, devcenter, seo-java-july2019
+ms.openlocfilehash: 9ed954eaf96196fdaa944778db8ea47dd5e6da9f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323965"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564798"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Java と Maven を使用して初めての関数を作成する
 

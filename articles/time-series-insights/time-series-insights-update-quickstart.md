@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Azure Time Series Insights プレビューのデモ環境を探索する | Microsoft Docs
-description: Azure Time Series Insights プレビューのデモ環境を理解します。
+description: Azure Time Series Insights プレビューのデモ環境を理解するためのクイックスタート。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,13 +10,13 @@ ms.reviewer: dpalled
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 04/22/2019
-ms.openlocfilehash: 547edb194ffdf52a805f573d338f61edff80623a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 07/29/2019
+ms.openlocfilehash: 3d098b1806e4fdf5b45030dfebf3dfe5959b7d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164883"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677709"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>クイック スタート:Azure Time Series Insights プレビューのデモ環境を探索する
 
@@ -26,11 +26,12 @@ Time Series Insights プレビューのデモ環境には、2 つの風力ター
 
 このクイックスタートでは、Time Series Insights を使用して Contoso データから実用的な分析情報を見つける方法を説明します。 重大な障害をより的確に予測し、メンテナンスを実行するために、簡単な根本原因分析も実施します。
 
+> [!IMPORTANT]
+> まだ作成していない場合、 [無料の Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成します。
+
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>デモ環境で Time Series Insights エクスプローラーを調べる
 
 Time Series Insights プレビュー エクスプ ローラーでは、履歴データと根本原因分析が示されます。 作業を開始するには:
-
-1. まだ作成していない場合、 [無料の Azure アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成します。
 
 1.  [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)環境に移動します。  
 
@@ -73,10 +74,9 @@ Time Series Insights プレビュー エクスプ ローラーでは、履歴デ
 
 Time Series Insights とセンサー テレメトリを使用して、履歴データに隠れていた、問題のある長期的な傾向が見つかりました。 これらの新しい分析情報を使用して、次のことができます。
 
-> [!div class="checklist"]
-> * 実際に起こったことを明らかにする。
-> * その問題を修正する。
-> * より優れたアラート通知システムを導入する。
+* 実際に起こったことを明らかにする。
+* その問題を修正する。
+* より優れたアラート通知システムを導入する。
 
 ## <a name="root-cause-analysis"></a>根本原因分析
 
@@ -115,6 +115,13 @@ Time Series Insights とセンサー テレメトリを使用して、履歴デ�
     * 同じグラフ スケール上に **Generator System** のセンサーをすべてオーバーレイ表示するように変更します。
 
       [![すべてを含めるように表示を変更](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+チュートリアルを完了したので、作成したリソースをクリーンアップします。
+
+1. [Azure portal](https://portal.azure.com) の左側のメニューにある **[すべてのリソース]** を選択し、目的の Azure Time Series Insights リソース グループを見つけます。
+1. **[削除]** を選択してリソース グループ全体 (およびその中に含まれるすべてのリソース) を削除するか、各リソースを個別に削除します。
 
 ## <a name="next-steps"></a>次の手順
 

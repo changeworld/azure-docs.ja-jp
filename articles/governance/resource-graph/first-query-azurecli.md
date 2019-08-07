@@ -3,17 +3,16 @@ title: Azure CLI を使用して初めてのクエリを実行する
 description: この記事では、Azure CLI の Resource Graph 拡張機能を有効にして、最初のクエリを実行する手順について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 07/26/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 592b2c611888623c2753d7c4abc9fe57c28af30e
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: afe32c197b5eab24ba298395bb2c9e83f847d6c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65823161"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562570"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して最初の Resource Graph クエリを実行します
 
@@ -36,7 +35,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
    az extension add --name resource-graph
    ```
 
-1. 拡張機能がインストールされており、必要なバージョンである (**0.1.7** 以降) ことを検証します。
+1. 拡張機能がインストールされていて、必要なバージョン (**0.1.11** 以降) であることを検証します。
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -89,9 +88,6 @@ Resource Graph 拡張機能を Azure CLI 環境から削除する場合は、次
 # Remove the Resource Graph extension from the Azure CLI environment
 az extension remove -n resource-graph
 ```
-
-> [!NOTE]
-> これにより、以前にダウンロードした拡張ファイルは削除されません。 実行中の Azure CLI 環境から削除されるだけです。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 628a96c4e912341226d67a7ed8f241194e7b7825
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5a3ba8c25107317e7c47ee358f9a6ebe7d4556f
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080048"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479110"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>LUIS におけるエンティティの種類とその目的
 
@@ -135,59 +135,15 @@ Pattern.any エンティティは、意図のユーザー例内ではなく、[�
 
 ## <a name="composite-entity"></a>複合エンティティ
 
-複合エンティティは、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。 
-
-このエンティティは、次のようなデータに最適です。
-
-* 相互に関連している。 
-* 発話のコンテキストで相互に関連する。
-* さまざまなエンティティ型を使用する。
-* クライアント アプリケーションによって情報の単位としてグループ化され、処理される必要がある。
-* 機械学習を必要とするさまざまなユーザー発話がある。
-
-![複合エンティティ](./media/luis-concept-entities/composite-entity.png)
-
-[チュートリアル](luis-tutorial-composite-entity.md)<br>
-[エンティティの JSON 応答例](luis-concept-data-extraction.md#composite-entity-data)<br>
+[複合エンティティ](reference-entity-composite.md)は、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。 
 
 ## <a name="list-entity"></a>リスト エンティティ
 
-リスト エンティティは、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、 **[Recommend] (推奨)** 機能を使用します。 同じ値を持つリスト エンティティが複数存在する場合は、エンドポイント クエリに各エンティティが返されます。 
-
-エンティティは、次のようなテキスト データに最適です。
-
-* 既知のセットである。
-* あまり変化しない。 リストを頻繁に変更する必要がある、またはリストを自己拡張させたい場合、フレーズ リストで強化したシンプル エンティティの方が良い選択肢です。 
-* セットがこのエンティティ型の最大 LUIS [境界](luis-boundaries.md)を超えていない。
-* 発話内のテキストがシノニムまたは正規名に完全に一致している。 LUIS では、完全なテキストの一致以外にリストは使用されません。 あいまい一致、大文字と小文字の区別なし、語幹抽出、複数形、その他のバリエーションは、リスト エンティティでは解決されません。 バリエーションを管理するには、オプションのテキスト構文で[パターン](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance)を使用することを検討します。
-
-![リスト エンティティ](./media/luis-concept-entities/list-entity.png)
-
-[チュートリアル](luis-quickstart-intent-and-list-entity.md)<br>
-[エンティティの JSON 応答例](luis-concept-data-extraction.md#list-entity-data)
+[リスト エンティティ](reference-entity-list.md)は、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、 **[Recommend] (推奨)** 機能を使用します。 同じ値を持つリスト エンティティが複数存在する場合は、エンドポイント クエリに各エンティティが返されます。 
 
 ## <a name="patternany-entity"></a>Pattern.any エンティティ
 
-Pattern.any は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。  
-
-エンティティは、次のような場合に最適です。
-
-* エンティティの末尾を発話の残りのテキストと混同する可能性がある。 
-[チュートリアル](luis-tutorial-pattern.md)<br>
-[エンティティの JSON 応答例](luis-concept-data-extraction.md#patternany-entity-data)
-
-**例**  
-タイトルに基づいて書籍を検索するクライアント アプリケーションでは、pattern.any によって完全なタイトルが抽出されます。 この書籍検索に対して pattern.any を使用するテンプレート発話は `Was {BookTitle} written by an American this year[?]` です。 
-
-次の表では、各行に 2 つのバージョンの発話があります。 上の発話は、LUIS によって発話が最初にどのように認識されるかを示したもので、書籍のタイトルの始まりと終わりが明確ではありません。 下の発話は、抽出のためのパターンが配置された場合に LUIS によって書籍のタイトルがどのように認識されるかを示しています。 
-
-|発話|
-|--|
-|The Man Who Mistook His Wife for a Hat and Other Clinical Tales (自分の妻を帽子と間違える男やその他の臨床例) は、アメリカ人によって今年執筆されましたか?<br><br>「**The Man Who Mistook His Wife for a Hat and Other Clinical Tales (自分の妻を帽子と間違える男やその他の臨床例)** 」は、アメリカ人によって今年執筆されましたか?|
-|Half Asleep in Frog Pajamas (カエルのパジャマで夢うつつ) は、アメリカ人によって今年執筆されましたか?<br><br>「**Half Asleep in Frog Pajamas (カエルのパジャマで夢うつつ)** 」は、アメリカ人によって今年執筆されましたか?|
-|The Particular Sadness of Lemon Cake:A Novel (悲しきレモン ケーキ: 小説) は、アメリカ人によって今年執筆されましたか?<br><br>「**The Particular Sadness of Lemon Cake:A Novel (悲しきレモン ケーキ: 小説)** 」は、アメリカ人によって今年執筆されましたか?|
-|There's A Wocket In My Pocket! (ポケットにウォケットが!) は、アメリカ人によって今年執筆されましたか?<br><br>「**There's A Wocket In My Pocket! (ポケットにウォケットが!)** 」 は、アメリカ人によって今年執筆されましたか?|
-||
+[Pattern.any](reference-entity-pattern-any.md) は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。  
 
 ## <a name="prebuilt-entity"></a>事前構築済みのエンティティ
 
@@ -240,43 +196,11 @@ LUIS ポータルでは、事前構築済みエンティティがご自分のカ
 
 ## <a name="regular-expression-entity"></a>正規表現エンティティ 
 
-生の発話テキストには正規表現をお勧めします。 大文字小文字とカルチャのバリアントは無視されます。  正規表現の照合は、スペルチェックによる変更後に、トークン レベルではなく文字レベルで適用されます。 角かっこが多用されているなど、正規表現が複雑すぎる場合は、このモデルに式を追加できません。 [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) ライブラリの全体ではなく一部が使用されます。 
+[正規表現エンティティ](reference-entity-regular-expression.md)は、指定した正規表現パターンに基づいてエンティティを抽出します。
 
-エンティティは、次のような場合に最適です。
+## <a name="simple-entity"></a>シンプル エンティティ
 
-* データが一貫して書式設定され、バリエーションにも一貫性がある。
-* 正規表現では、2 レベルを超える入れ子は必要ありません。 
-
-![正規表現エンティティ](./media/luis-concept-entities/regex-entity.png)
-
-[チュートリアル](luis-quickstart-intents-regex-entity.md)<br>
-[エンティティの JSON 応答例](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
-
-正規表現は予想を超えて一致する場合があります。 `one` や `two` のような、数字を表す単語の一致がその例です。 次に示すのは、他の数字と共に数字 `one` に一致する正規表現の例です。
-
-```javascript
-(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
-
-この正規表現は、`phone` のように、これらの数字で終わる単語にも一致します。 このような問題を修正するには、正規表現の一致が必ず、単語の境界を考慮に入れるようにします。 この例で単語の境界を使用するための正規表現は、次の正規表現で使用されます。
-
-```javascript
-\b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
-```
-
-## <a name="simple-entity"></a>シンプル エンティティ 
-
-シンプル エンティティとは、1 つの概念について説明し、機械学習コンテキストから学習した汎用的エンティティです。 シンプル エンティティは、一般に会社名、製品名、その他のカテゴリの名前などの名前なので、使用する名前のシグナルの強化にシンプル エンティティを使用する場合は、[フレーズ リスト](luis-concept-feature.md)を追加します。 
-
-エンティティは、次のような場合に最適です。
-
-* データが一貫して書式設定されていないが、同じことを示している。 
-
-![シンプル エンティティ](./media/luis-concept-entities/simple-entity.png)
-
-[チュートリアル](luis-quickstart-primary-and-secondary-data.md)<br/>
-[エンティティの応答例](luis-concept-data-extraction.md#simple-entity-data)<br/>
-
+[シンプル エンティティ](reference-entity-simple.md)は、機械学習された値です。 これは、単語またはフレーズです。
 ## <a name="entity-limits"></a>エンティティの制限
 
 [制限](luis-boundaries.md#model-boundaries)を確認して、モデルに追加できるエンティティの種類ごとの数を把握してください。

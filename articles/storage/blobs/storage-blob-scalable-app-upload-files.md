@@ -1,21 +1,18 @@
 ---
 title: Azure Storage に大量のランダム データを並行でアップロードする | Microsoft Docs
 description: Azure SDK を使用して Azure Storage アカウントに大量のランダム データを並行でアップロードする方法を説明します。
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 83a888a28c1d1e51a1fe59649dfb956cd0f72203
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e5c1a78bf2f482e99d8ff13590a8bb81f9601991
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071424"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698966"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
 
@@ -57,7 +54,7 @@ setx storageconnectionstring "<storageConnectionString>" /m
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-[https://test-cors.org](`D:\git\storage-dotnet-perf-scale-app`) に移動します。
+`D:\git\storage-dotnet-perf-scale-app` に移動します。
 
 `dotnet run` キーを押してアプリケーションを実行します。 `dotnet` を初めて実行するときは、復元速度を向上させてオフライン アクセスを有効にするために、ローカル パッケージ キャッシュを設定します。 このコマンドを完了するには最大 1 分がかかり、処理は一度だけ実行されます。
 

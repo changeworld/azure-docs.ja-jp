@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 4a27e4d8f2fbaafe6d27a3e3cabd31aa715b9d80
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 6cbf8dfe51e8b553fd84e9eb81a2ea37a65c387e
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65540745"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668274"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Azure Search 内のナレッジ ストアとは
 
@@ -22,11 +22,13 @@ ms.locfileid: "65540745"
 > ナレッジ ストアはプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で .NET SDK のサポートはありません。
 >
 
-ナレッジ ストアは、Azure Search のオプション機能であり、エンリッチメントされたドキュメントと、AI ベースのインデックス作成パイプライン [(コグニティブ検索)](cognitive-search-concept-intro.md) によって作成されたメタデータを保存します。 ナレッジ ストアは、パイプラインの一部として構成する Azure ストレージ アカウントによってサポートされます。 有効にすると、検索サービスでは、エンリッチメントされた各ドキュメントの表現をキャッシュするためにこのストレージ アカウントが使用されます。 
+ナレッジ ストアは、Azure Search の機能であり、AI ベースのインデックス作成パイプライン [(コグニティブ検索)](cognitive-search-concept-intro.md) によって作成される、エンリッチメントされたドキュメントとメタデータを保存します。 エンリッチメントされたドキュメントとは、Cognitive Services のリソースを使用して抽出、構造化、および分析されたコンテンツから作成される、パイプラインの出力のことです。 標準的な AI ベースのパイプラインでは、エンリッチメントされたドキュメントは一時的なものであり、インデックス作成時にのみ使用され、その後破棄されます。 ナレッジ ストアを使用すると、ドキュメントは後続の評価や探索のために保存され、下流のデータ サイエンス ワークロードへの入力になる可能性があります。 
 
-過去にコグニティブ検索を使用していた場合は、スキルセットを使用して、一連のエンリッチメントを通じてドキュメントを移動できることは既にわかっています。 結果は、Azure Search インデックスまたは (このプレビューの新機能である) ナレッジ ストア内のプロジェクションです。
+過去にコグニティブ検索を使用したことがある場合は、スキルセットを使用して、一連のエンリッチメントを通じてドキュメントを移動することは既にわかっています。 結果は、Azure Search インデックスまたは (このプレビューの新機能である) ナレッジ ストア内のプロジェクションです。 2 つの出力 (検索インデックスとナレッジ ストア) は、互いに物理的に異なります。 同じコンテンツを共有していますが、まったく異なる方法で格納および使用されます。
 
-プロジェクションは、ダウンストリーム アプリ内で使用するためにデータを構造化するメカニズムです。 Azure ストレージ用に構築された [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) を使用するか、Azure ストレージに接続する任意のアプリを使用できます。これにより、エンリッチメントされたドキュメントの使用について新たな可能性が開かれます。 いくつかの例として、データ サイエンス パイプラインとカスタム分析があります。
+物理的には、ナレッジ ストアはパイプラインの構成方法に応じて、Azure Table Storage または Blob Storage として Azure Storage アカウントで作成されます。 Azure Storage に接続できるすべてのツールまたはプロセスは、ナレッジ ストアのコンテンツを使用できます。
+
+プロジェクションとは、ナレッジ ストア内にデータを構築するためのメカニズムのことです。 たとえば、プロジェクションを使用して、出力を 1 つの BLOB として保存するのか、関連するテーブルのコレクションとして保存するのかを選択できます。 ナレッジ ストアのコンテンツを表示する簡単な方法は、Azure Storage の組み込みの [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) を使用することです。
 
 ![パイプライン ダイアグラム内のナレッジ ストア](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "パイプライン ダイアグラム内のナレッジ ストア")
 

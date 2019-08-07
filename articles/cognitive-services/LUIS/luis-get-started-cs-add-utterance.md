@@ -1,6 +1,6 @@
 ---
-title: 変更、アプリのトレーニング、C#
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 変更、アプリのトレーニング、C# - LUIS
+titleSuffix: Azure Cognitive Services
 description: この C# クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: d44877e35687745ddba51d4d015729e62106c9ca
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 55251a553921e947e7c6522677e51e4eb1d3fa5b
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348438"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619954"
 ---
 # <a name="quickstart-change-model-using-c"></a>クイック スタート: C# を使ってモデルを変更する
 
@@ -115,7 +115,7 @@ LUIS ID と文字列を **Program** クラスに追加します。
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>utterances.json を出力ディレクトリにコピーします。
 
-ソリューション エクスプローラーで、ソリューション エクスプローラーのプロジェクト名を右クリックして `utterances.json` を追加し、 **[追加]** 、 **[既存の項目]** の順に選択します。 `utterances.json` ファイルを選択します。 これで、ファイルがプロジェクトに追加されます。 次に、これを出力方向に追加する必要があります。 `utterances.json` を右クリックし、 **[プロパティ]** を選択します。 プロパティ ウィンドウで、`Content` の **[ビルド アクション]** と、`Copy Always` の **[出力ディレクトリにコピー]** をマークします。  
+ソリューション エクスプローラーで、ソリューション エクスプローラーのプロジェクト名を右クリックして `utterances.json` を追加し、 **[追加]** 、 **[既存の項目]** の順に選択します。 `utterances.json` ファイルを選択します。 これで、ファイルがプロジェクトに追加されます。 次に、これを出力ディレクトリに追加する必要があります。 `utterances.json` を右クリックし、 **[プロパティ]** を選択します。 プロパティ ウィンドウで、`Content` の **[ビルド アクション]** と、`Copy Always` の **[出力ディレクトリにコピー]** をマークします。  
 
 ![JSON ファイルをコンテンツとしてマークする](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を認識する、Java (Windows、Linux) - Speech Services
+title: クイック スタート:音声を認識する、Java (Windows、Linux) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャしてテキストに文字起こしする単純な Java アプリケーションの作成について説明します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: dce0a1b2adf20b2301402f37307e7ee1284c9aee
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605166"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554102"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を認識する
 

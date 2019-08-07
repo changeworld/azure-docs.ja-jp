@@ -11,20 +11,20 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: c2565a5549cbca08b987883e5905f09070b5ab2c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 34ec7c678410b2e0814f8dbb7a69257886cb891d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443197"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639100"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python 関数に Azure Storage キュー バインドを追加する
 
-Azure Functions を使用すると、独自の統合コードを記述しなくても、Azure サービスやその他のリソースを関数に接続できます。 これらの*バインド*は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 トリガーは、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
+Azure Functions を使用すると、独自の統合コードを記述しなくても、Azure サービスやその他のリソースを関数に接続できます。 これらの*バインド*は、入力と出力の両方を表し、関数定義内で宣言されます。 バインドからのデータは、パラメーターとして関数に提供されます。 "*トリガー*" は、特殊な種類の入力バインドです。 関数はトリガーを 1 つしか持てませんが、複数の入力および出力バインドを持つことができます。 詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
 
-この記事では、[前のクイック スタートの記事](functions-create-first-function-python.md)で作成した関数を Azure Storage キューと統合する方法を説明します。 この関数に追加する出力バインドは、HTTP 要求のデータをキュー内のメッセージに書き込みます。 
+この記事では、[前のクイック スタートの記事](functions-create-first-function-python.md)で作成した関数を Azure Storage キューと統合する方法を説明します。 この関数に追加する出力バインドは、HTTP 要求のデータをキュー内のメッセージに書き込みます。
 
-ほとんどのバインドでは、バインドされているサービスにアクセスするために関数が使用する、保存されている接続文字列が必要です。 作業を簡単にするために、関数アプリで作成したストレージ アカウントを使用します。 このアカウントへの接続は、既に `AzureWebJobsStorage` という名前のアプリ設定に保存されています。  
+ほとんどのバインドでは、バインドされているサービスにアクセスするために関数が使用する、保存されている接続文字列が必要です。 この接続を簡単にするために、関数アプリで作成したストレージ アカウントを使用します。 このアカウントへの接続は、既に `AzureWebJobsStorage` という名前のアプリ設定に保存されています。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,13 +32,13 @@ Azure Functions を使用すると、独自の統合コードを記述しなく�
 
 ## <a name="download-the-function-app-settings"></a>関数アプリの設定をダウンロードする
 
-前のクイックスタートの記事では、必要なストレージ アカウントと、Azure での関数アプリを作成しました。 このアカウントの接続文字列は、Azure のアプリ設定に安全に格納されています。 この記事では、同じアカウントのストレージ キューにメッセージを書き込みます。 関数をローカルで実行しているときにストレージ アカウントに接続するには、アプリ設定を local.settings.json ファイルにダウンロードする必要があります。 次の Azure Functions Core Tools コマンドを実行して、設定を local.settings.json にダウンロードし、`<APP_NAME>` を前の記事の関数アプリの名前に置き換えます。
+前のクイックスタートの記事では、必要なストレージ アカウントと共に Azure で関数アプリを作成しました。 このアカウントの接続文字列は、Azure のアプリ設定に安全に格納されています。 この記事では、同じアカウントのストレージ キューにメッセージを書き込みます。 関数をローカルで実行しているときにストレージ アカウントに接続するには、アプリ設定を local.settings.json ファイルにダウンロードする必要があります。 次の Azure Functions Core Tools コマンドを実行して、設定を local.settings.json にダウンロードし、`<APP_NAME>` を前の記事の関数アプリの名前に置き換えます。
 
 ```bash
 func azure functionapp fetch-app-settings <APP_NAME>
 ```
 
-Azure アカウントへのサインインを求められる場合があります。
+場合によっては Azure アカウントにサインインする必要があります。
 
 > [!IMPORTANT]  
 > local.settings.json ファイルは、機密情報が含まれているため、決して公開されず、ソース管理から除外される必要があります。
@@ -49,20 +49,20 @@ Azure アカウントへのサインインを求められる場合がありま�
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-これで、プロジェクトに Storage 出力バインディングを追加できるようになります。
+これで、Storage の出力バインドをプロジェクトに追加できるようになります。
 
 ## <a name="add-an-output-binding"></a>出力バインディングを追加する
 
-Functions では、各種のバインドで、`direction`、`type`、および固有の `name` が function.json ファイル内で定義される必要があります。 バインドの種類によっては、追加のプロパティが必要になることもあります。 [キュー出力構成](functions-bindings-storage-queue.md#output---configuration)では、Azure Storage キュー バインドに必要なフィールドについて説明されています。
+Functions では、各種のバインドで、`direction`、`type`、および固有の `name` を function.json ファイル内で定義する必要があります。 バインドの種類によっては、追加のプロパティが必要になることもあります。 [キュー出力構成](functions-bindings-storage-queue.md#output---configuration)では、Azure Storage キュー バインドに必要なフィールドについて説明されています。
 
-バインドを作成するには、バインド構成オブジェクトを `function.json` ファイルに追加します。 HttpTrigger フォルダー内の function.json ファイルを編集して、以下のプロパティを持つオブジェクトを `bindings` 配列に追加します。
+バインドを作成するには、バインド構成オブジェクトを function.json ファイルに追加します。 HttpTrigger フォルダー内の function.json ファイルを編集して、以下のプロパティを持つオブジェクトを `bindings` 配列に追加します。
 
 | プロパティ | 値 | 説明 |
 | -------- | ----- | ----------- |
 | **`name`** | `msg` | コードで参照されているバインド パラメーターを識別する名前。 |
 | **`type`** | `queue` | バインドは Azure Storage キュー バインドです。 |
 | **`direction`** | `out` | バインドは出力バインドです。 |
-| **`queueName`** | `outqueue` | バインドが書き込むキューの名前。 *queueName* が存在しない場合は、バインドによって最初に使用されるときに作成されます。 |
+| **`queueName`** | `outqueue` | バインドが書き込むキューの名前。 `queueName` が存在しない場合は、バインドによって最初に使用されるときに作成されます。 |
 | **`connection`** | `AzureWebJobsStorage` | ストレージ アカウントの接続文字列を含むアプリ設定の名前。 `AzureWebJobsStorage` 設定には、関数アプリで作成したストレージ アカウントの接続文字列が含まれています。 |
 
 function.json ファイルは、次の例のようになっているはずです。
@@ -99,7 +99,7 @@ function.json ファイルは、次の例のようになっているはずです
 
 ## <a name="add-code-that-uses-the-output-binding"></a>出力バインディングを使用するコードを追加する
 
-構成が済んだら、バインドの `name` を関数シグネチャのメソッド属性として使用して、バインドにアクセスできるようになります。 次の例では、`msg` は [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest) のインスタンスです。
+`name` の構成後、これを関数シグネチャのメソッド属性として使用して、バインドにアクセスできるようになります。 次の例では、`msg` は [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest) のインスタンスです。
 
 ```python
 import logging
@@ -139,7 +139,7 @@ func host start
 ```
 
 > [!NOTE]  
-> 前の記事では host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#packages---functions-2x)が他の Microsoft バインディング拡張機能と共に自動的にダウンロードされ、インストールされました。
+> 前のクイックスタートでは host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#packages---functions-2x)が他の Microsoft バインド拡張機能と共に自動的にダウンロードされ、インストールされました。
 
 ランタイム出力から `HttpTrigger` 関数の URL をコピーして、それをブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `?name=<yourname>` を追加して、要求を実行します。 前の記事のときと同じ応答がブラウザーに表示されるはずです。
 
@@ -188,7 +188,7 @@ echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{M
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-[ストレージ キュー メッセージ](#query-the-storage-queue)を調べて、出力バインドがキューに新しいメッセージを再度生成することを確認できます。
+[ストレージ キュー メッセージを調べて](#query-the-storage-queue)、出力バインドがキューに新しいメッセージを再度生成することを確認できます。
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 

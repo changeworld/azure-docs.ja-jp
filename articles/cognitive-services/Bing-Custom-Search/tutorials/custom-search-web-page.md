@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:カスタム検索 Web ページを作成する - Bing Custom Search
 titleSuffix: Azure Cognitive Services
-description: カスタム検索インスタンスを構成して、Web ページに統合する方法について説明します。
+description: カスタム Bing Search インスタンスを構成して、Web ページに統合する方法について学習します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 07/26/2019
 ms.author: aahi
-ms.openlocfilehash: 3a8d6a831adf24212191a103dcf356bbe74d7962
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: aee84a4d9203d80b81f773df30d68c3539e5ec7c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405217"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564706"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル:Custom Search Web ページの作成
 

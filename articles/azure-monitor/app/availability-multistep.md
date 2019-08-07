@@ -9,22 +9,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 07/25/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: d8bfe92af4e8afc4edae76efb2e1cb7b287c7aa9
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 150c41dce06c81f2e9e07605ab6d5afa9e424453
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304783"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494496"
 ---
 # <a name="multi-step-web-tests"></a>複数手順の Web テスト
 
 複数ステップ Web テストを使用して、記録された一連の URL と Web サイトとのインタラクションを監視することができます。 この記事では、Visual Studio Enterprise を使用した複数ステップ Web テストを作成するプロセスについて説明します。
 
 > [!NOTE]
-> 複数ステップ Web テストには、それらに関連付けられている追加のコストがあります。 詳細については、[価格の公式ガイド](https://azure.microsoft.com/pricing/details/application-insights/)をご覧ください。
+> 複数ステップ Web テストは、Visual Studio の Web テスト ファイルに依存します。 Visual Studio 2019 が Web テスト機能を備えた最後のバージョンとなることが[発表](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)されました。 新しい機能は追加されませんが、Visual Studio 2019 の Web テスト機能は現在もサポートされており、製品のサポート ライフサイクルの間は引き続きサポートされることを理解しておくことが重要です。 Azure Monitor 製品チームでは、複数ステップ可用性テストの今後に関するご質問に対して、[こちら](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)で回答しています。  
 
 ## <a name="pre-requisites"></a>前提条件
 
@@ -34,6 +34,9 @@ ms.locfileid: "67304783"
 前提条件であるテスト ツールを見つけるために、 **[Visual Studio インストーラー]**  >  **[個別のコンポーネント]**  >  **[デバッグとテスト]**  >  **[Web パフォーマンスとロード テスト ツール]** を起動します。
 
 ![Web パフォーマンスとロード テスト ツール用の項目の横のチェックボックスを使用して個別のコンポーネントが選択されている Visual Studio インストーラー UI のスクリーンショット](./media/availability-multistep/web-performance-load-testing.png)
+
+> [!NOTE]
+> 複数ステップ Web テストには、それらに関連付けられている追加のコストがあります。 詳細については、[価格の公式ガイド](https://azure.microsoft.com/pricing/details/application-insights/)をご覧ください。
 
 ## <a name="record-a-multi-step-web-test"></a>複数ステップ Web テストを記録する
 
@@ -159,7 +162,7 @@ Visual Studio を使用して Web テストを記録します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-専用の[トラブルシューティング](troubleshoot-availability.md)に関する記事をご覧ください。
+専用の[トラブルシューティングに関する記事](troubleshoot-availability.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

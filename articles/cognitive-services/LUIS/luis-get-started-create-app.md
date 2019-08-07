@@ -1,6 +1,6 @@
 ---
-title: 'クイック スタート: アプリを作成する'
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'クイックスタート: アプリの作成 - LUIS'
+titleSuffix: Azure Cognitive Services
 description: 照明やアプライアンスの電源をオンにしたりオフにしたりする用途を想定し、事前構築済みのドメイン `HomeAutomation` を使用した LUIS アプリを作成します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6d3b4d23ae1ad04142b0dec01a1abccbd2f81942
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e53f8d6e08b345d417ce54deacd658275cb1cd00
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150218"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563915"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート: 事前構築済みの Home Automation アプリを使用する
 
@@ -27,7 +27,7 @@ ms.locfileid: "65150218"
 この記事には、LUIS ポータル ([https://www.luis.ai](https://www.luis.ai)) で作成された無料の LUIS アカウントが必要です。 
 
 ## <a name="create-a-new-app"></a>新しいアプリの作成
-アプリケーションは、**[マイ アプリ]** で作成および管理できます。 
+アプリケーションは、 **[マイ アプリ]** で作成および管理できます。 
 
 1. LUIS ポータルにサインインします。
 
@@ -50,7 +50,7 @@ ms.locfileid: "65150218"
 
 [![事前構築済みドメイン メニューで呼び出された Home Automation ドメインのスクリーンショット](media/luis-quickstart-new-app/home-automation.png "事前構築済のドメイン メニューで呼び出された Home Automation ドメインのスクリーンショット")](media/luis-quickstart-new-app/home-automation.png)
 
-ドメインが正常に追加されると、事前構築済みドメインのボックスに、**[Remove domain]\(ドメインの削除\)** ボタンが表示されます。
+ドメインが正常に追加されると、事前構築済みドメインのボックスに、 **[Remove domain]\(ドメインの削除\)** ボタンが表示されます。
 
 [![削除 ボタンがある Home Automation ドメインのスクリーンショット](media/luis-quickstart-new-app/remove-domain.png "削除 ボタンがある Home Automation ドメインのスクリーンショット")](media/luis-quickstart-new-app/remove-domain.png)
 

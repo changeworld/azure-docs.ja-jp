@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d10588e3df3932f5749093170e7e76fc029053ff
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150695"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479102"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
@@ -48,7 +48,7 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 |データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|
-|意図|string|topScoringIntent.intent|"GetStoreInfo"|
+|Intent|string|topScoringIntent.intent|"GetStoreInfo"|
 
 チャットボットまたは LUIS 呼び出し元アプリが複数の意図のスコアに基づいて決定を行う場合、querystring パラメーター `verbose=true` を設定して、すべての意図のスコアを返します。 エンドポイントの応答は次のとおりです。
 
@@ -77,8 +77,8 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 |データ オブジェクト|データ型|データの場所|値|Score|
 |--|--|--|--|:--|
-|意図|string|intents[0].intent|"GetStoreInfo"|0.984749258|
-|意図|string|intents[1].intent|"None"|0.0168218873|
+|Intent|string|intents[0].intent|"GetStoreInfo"|0.984749258|
+|Intent|string|intents[1].intent|"None"|0.0168218873|
 
 事前構築済みのドメインを追加する場合、意図の名前は、`Utilties` や`Communication` などのドメインと、意図を表します。
 
@@ -108,9 +108,9 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 |Domain|データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|--|
-|Utilities|意図|string|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|Communication|意図|string|intents[1].intent|<b>Communication</b>.StartOver"|
-||意図|string|intents[2].intent|"None"|
+|Utilities|Intent|string|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|Communication|Intent|string|intents[1].intent|<b>Communication</b>.StartOver"|
+||Intent|string|intents[2].intent|"None"|
 
 
 ## <a name="data-from-entities"></a>エンティティからのデータ
@@ -148,141 +148,15 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 ## <a name="simple-entity-data"></a>シンプル エンティティ データ
 
-[シンプル エンティティ](luis-concept-entity-types.md)は、機械学習された値です。 これは、単語またはフレーズです。
-
-`Bob Jones wants 3 meatball pho`
-
-前の発話では、`Bob Jones` は、シンプルな `Customer` エンティティとしてラベルが付けられています。
-
-エンドポイントから返されるデータには、エンティティ名、発話から検出されたテキスト、検出されたテキストの場所、およびスコアが含まれます。
-
-```JSON
-"entities": [
-  {
-  "entity": "bob jones",
-  "type": "Customer",
-  "startIndex": 0,
-  "endIndex": 8,
-  "score": 0.473899543
-  }
-]
-```
-
-|データ オブジェクト|エンティティ名|値|
-|--|--|--|
-|シンプル エンティティ|`Customer`|`bob jones`|
+[シンプル エンティティ](reference-entity-simple.md)は、機械学習された値です。 これは、単語またはフレーズです。
 
 ## <a name="composite-entity-data"></a>複合エンティティ データ
-[複合](luis-concept-entity-types.md)エンティティは、機械学習され、単語またはフレーズを含めることができます。 たとえば、次の発話で、事前構築済みの `number` と `Location::ToLocation` の複合エンティティを考えてみましょう。
 
-`book 2 tickets to paris`
-
-number の `2` と ToLocation `paris` の間には、どのエンティティにも属さない単語があります。 [LUIS](luis-reference-regions.md) Web サイトの、ラベルの付いた発話で使用される緑色の下線が複合エンティティを示します。
-
-![複合エンティティ](./media/luis-concept-data-extraction/composite-entity.png)
-
-複合エンティティは、`compositeEntities` 配列で返され、その複合内のすべてのエンティティも、`entities` 配列で返されます。
-
-```JSON
-
-"entities": [
-    {
-    "entity": "2 tickets to cairo",
-    "type": "ticketInfo",
-    "startIndex": 0,
-    "endIndex": 17,
-    "score": 0.67200166
-    },
-    {
-    "entity": "2",
-    "type": "builtin.number",
-    "startIndex": 0,
-    "endIndex": 0,
-    "resolution": {
-        "subtype": "integer",
-        "value": "2"
-    }
-    },
-    {
-    "entity": "cairo",
-    "type": "builtin.geographyV2",
-    "startIndex": 13,
-    "endIndex": 17
-    }
-],
-"compositeEntities": [
-    {
-    "parentType": "ticketInfo",
-    "value": "2 tickets to cairo",
-    "children": [
-        {
-        "type": "builtin.geographyV2",
-        "value": "cairo"
-        },
-        {
-        "type": "builtin.number",
-        "value": "2"
-        }
-    ]
-    }
-]
-```    
-
-|データ オブジェクト|エンティティ名|値|
-|--|--|--|
-|事前構築済みのエンティティ - number|"builtin.number"|"2"|
-|事前構築済みエンティティ - GeographyV2|"Location::ToLocation"|"paris"|
+[複合エンティティ](reference-entity-composite.md)は、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。 
 
 ## <a name="list-entity-data"></a>リスト エンティティ データ
 
-[リスト](luis-concept-entity-types.md) エンティティでは、機械学習は行われません。 完全なテキスト一致です。 リストは、リスト内の項目と、その項目のシノニムを表します。 LUIS では、応答内のエンティティとして、任意のリスト内の項目に対してあらゆる一致がマークされます。 シノニムは、複数のリストに存在する可能性があります。
-
-アプリに `Cities` いう名前のリストがあり、空港がある都市 (Sea-tac)、空港コード (SEA)、郵便番号 (98101)、および電話の市外局番 (206) など、都市名のバリエーションに対応しています。
-
-|リスト項目|項目のシノニム|
-|---|---|
-|`Seattle`|`sea-tac`、`sea`、`98101`、`206`、`+1` |
-|`Paris`|`cdg`、`roissy`、`ory`、`75001`、`1`、`+33`|
-
-`book 2 tickets to paris`
-
-前の発話では、単語 `paris` は、`Cities` リスト エンティティの一部として、パリ項目にマップされます。 このリスト エンティティは、項目のシノニムだけでなく、項目の正規化された名前と一致します。
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 22,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
-
-別の発話の例では、パリのシノニムを使用します。
-
-`book 2 tickets to roissy`
-
-```JSON
-"entities": [
-  {
-    "entity": "roissy",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 23,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
+[リスト エンティティ](reference-entity-list.md)は、固定かつ限定された関連単語セットとそのシノニムを表します。 LUIS では、リスト エンティティの追加の値は検出されません。 現在のリストに基づいて新しい単語の候補を表示するには、 **[Recommend] (推奨)** 機能を使用します。 同じ値を持つリスト エンティティが複数存在する場合は、エンドポイント クエリに各エンティティが返されます。 
 
 ## <a name="prebuilt-entity-data"></a>事前構築済みのエンティティ データ
 [事前構築済み](luis-concept-entity-types.md)のエンティティは、オープン ソースの [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) プロジェクトを使用して、正規表現の一致に基づき検出されます。 事前構築済みのエンティティは、エンティティ配列で返され、`builtin::` というプレフィックスが付加された種類の名前が使用されます。 次のテキストは、返される事前構築済みのエンティティを含む発話の例です。
@@ -369,35 +243,8 @@ number の `2` と ToLocation `paris` の間には、どのエンティティに
 ```
 
 ## <a name="regular-expression-entity-data"></a>正規表現エンティティ データ
-[正規表現](luis-concept-entity-types.md)エンティティは、エンティティの作成時に指定する式を使用して、正規表現の一致に基づき検出されます。 正規表現エンティティの定義として `kb[0-9]{6}` を使用した場合、次の JSON 応答が、クエリ `When was kb123456 published?` に対して返される正規表現エンティティを含む発話の例です。
 
-```JSON
-{
-  "query": "when was kb123456 published?",
-  "topScoringIntent": {
-    "intent": "FindKBArticle",
-    "score": 0.933641255
-  },
-  "intents": [
-    {
-      "intent": "FindKBArticle",
-      "score": 0.933641255
-    },
-    {
-      "intent": "None",
-      "score": 0.04397359
-    }
-  ],
-  "entities": [
-    {
-      "entity": "kb123456",
-      "type": "KB number",
-      "startIndex": 9,
-      "endIndex": 16
-    }
-  ]
-}
-```
+[正規表現エンティティ](reference-entity-regular-expression.md)は、指定した正規表現パターンに基づいてエンティティを抽出します。
 
 ## <a name="extracting-names"></a>名前の抽出
 名前は、文字と単語のほぼすべての組み合わせが考えられるため、発話から名前を取得することは困難です。 抽出する名前の種類に応じて、複数のオプションがあります。 次の推奨事項はルールではなく、詳細なガイドラインです。
@@ -482,49 +329,8 @@ number の `2` と ToLocation `paris` の間には、どのエンティティに
 ```
 
 ## <a name="patternany-entity-data"></a>Pattern.any エンティティ データ
-Pattern.any エンティティは、[パターン](luis-concept-patterns.md)のテンプレート発話で使用される可変長のエンティティです。
 
-```JSON
-{
-  "query": "where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.999999464
-  },
-  "intents": [
-    {
-      "intent": "FindForm",
-      "score": 0.999999464
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 4.883697E-06
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 9.278342E-07
-    },
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 9.278342E-07
-    }
-  ],
-  "entities": [
-    {
-      "entity": "understand your responsibilities as a member of the community",
-      "type": "FormName",
-      "startIndex": 18,
-      "endIndex": 78,
-      "role": ""
-    }
-  ]
-}
-```
-
+[Pattern.any](reference-entity-pattern-any.md) は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。  
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 センチメント分析が構成されている場合、LUIS の json 応答には、センチメント分析が含まれます。 センチメント分析の詳細については、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) のドキュメントを参照してください。

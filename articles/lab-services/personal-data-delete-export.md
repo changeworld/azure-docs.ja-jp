@@ -200,7 +200,7 @@ else
  |EnableAdfsAuthentication | 接続されたディスクの名前 |
 | CreatedTime |データ ディスクが作成された日時。 |
 | DeletedDate | データ ディスクが削除された日時。 |
-| ResourceStatus | リソースの状態。 リソースが存在する場合はアクティブ。 削除された場合は非アクティブ。 |
+| ResourceStatus | リソースの状態。 リソースが存在する場合は Active です。 削除された場合は Inactive です。 |
 | DiskBlobName | データ ディスクの BLOB 名。 |
 | DiskSizeGB | データ ディスクのサイズ。 |
 | DiskType | データ ディスクの種類。 Standard の場合は 0、Premium の場合は 1。 |

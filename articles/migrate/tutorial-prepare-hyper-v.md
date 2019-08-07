@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 07/24/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9e0d29770aa36f8e79bf08b7c5435ea2dbc4ae38
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 514905bf2db1c0c58faa131eeb916af033b2c830
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840382"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640846"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM の評価および Azure への移行を準備する
 
@@ -30,7 +30,7 @@ ms.locfileid: "67840382"
 
 
 > [!NOTE]
-> チュートリアルでは、概念実証をすばやく設定できるように、シナリオの最も簡単なデプロイ パスを示します。 チュートリアルではできるだけ既定のオプションを使用しており、使用可能な設定とパスをすべて示しているわけではありません。 詳細な手順については、Hyper-V の評価と移行に関するハウツーを参照してください。
+> チュートリアルでは、概念実証をすばやく設定できるように、シナリオの最も簡単なデプロイ パスを示します。 チュートリアルではできるだけ既定のオプションを使用しており、使用可能な設定とパスをすべて示しているわけではありません。 詳細な手順については、Hyper-V の評価と移行に関する手引きを参照してください。
 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
@@ -40,20 +40,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="azure-permissions"></a>Azure のアクセス許可
 
-Azure Migrate をデプロイするには、いくつかのアクセス許可が必要です。
+Azure Migrate のデプロイに対するアクセス許可を設定する必要があります。
 
-- 評価および移行用の Azure Migrate プロジェクトを作成するためのアクセス許可が自分の Azure アカウントに必要です。 
-- Azure Migrate アプライアンスを登録するためのアクセス許可が自分の Azure アカウントに必要です。
-    - Azure Migrate では評価のために軽量アプライアンスを実行します。これが Hyper-V VM を検出し、VM メタデータとパフォーマンス データを Azure Migrate に送信します。
-    - アプライアンスの登録時に、Azure Migrate によって、アプライアンスを一意に識別する 2 つの Azure Active Directory (Azure AD) アプリが作成されます。
-        - 1 つ目のアプリは、Azure Migrate サービス エンドポイントと通信します。
-        - 2 つ目のアプリは、登録時に作成された Azure キー コンテナーにアクセスし、Azure AD アプリ情報とアプライアンス構成設定を格納します。
-    - 次のいずれかの方法を使用して、これらの Azure AD アプリを作成するためのアクセス許可を Azure Migrate に割り当てることができます。
-        - テナントおよびグローバル管理者は、Azure AD アプリを作成および登録するためのアクセス許可を、テナント内のユーザーに付与できます。
-        - テナントおよびグローバル管理者は、アプリケーション開発者ロール (アクセス許可が含まれています) をアカウントに割り当てることができます。
-    - 次の点に注意してください。
-        - アプリには、上記で説明した以外に、サブスクリプションに対するアクセス許可はありません。
-        - 新しいアプライアンスを登録するときに必要なのは、これらのアクセス許可だけです。 アクセス許可はアプライアンスを設定した後で削除できます。 
+- お使いの Azure アカウントで Azure Migrate プロジェクトを作成するためのアクセス許可。 
+- お使いの Azure アカウントで Azure Migrate アプライアンスを登録するためのアクセス許可。 アプライアンスは、Hyper-V の検出と移行に使用されます。 アプライアンスの登録時に、Azure Migrate によって、アプライアンスを一意に識別する 2 つの Azure Active Directory (Azure AD) アプリが作成されます。
+    - 1 つ目のアプリは、Azure Migrate サービス エンドポイントと通信します。
+    - 2 つ目のアプリは、登録時に作成された Azure キー コンテナーにアクセスし、Azure AD アプリ情報とアプライアンス構成設定を格納します。
+
 
 
 ### <a name="assign-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を割り当てる
@@ -69,14 +62,10 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>アプライアンスを登録するためのアクセス許可を割り当てる
 
-VM を評価する Azure Migrate アプライアンスをデプロイする際には、それを登録する必要があります。
+次のいずれかの方法を使用して、アプライアンスの登録時に Azure AD アプリを作成するためのアクセス許可を Azure Migrate に割り当てることができます。
 
-- アプライアンスの登録時に、Azure Migrate によって、アプライアンスを一意に識別する 2 つの Azure Active Directory (Azure AD) アプリが作成されます
-    - 1 つ目のアプリは、Azure Migrate サービス エンドポイントと通信します。
-    - 2 つ目のアプリは、登録時に作成された Azure キー コンテナーにアクセスし、Azure AD アプリ情報とアプライアンス構成設定を格納します。
-- 次のいずれかの方法を使用して、これらの Azure AD アプリを作成するためのアクセス許可を Azure Migrate に割り当てることができます。
-    - テナントおよびグローバル管理者は、Azure AD アプリを作成および登録するためのアクセス許可を、テナント内のユーザーに付与できます。
-    - テナントおよびグローバル管理者は、アプリケーション開発者ロール (アクセス許可が含まれています) をアカウントに割り当てることができます。
+- テナントおよびグローバル管理者は、Azure AD アプリを作成および登録するためのアクセス許可を、テナント内のユーザーに付与できます。
+- テナントおよびグローバル管理者は、アプリケーション開発者ロール (アクセス許可が含まれています) をアカウントに割り当てることができます。
 
 次の点に注意してください。
 
@@ -105,7 +94,63 @@ VM を評価する Azure Migrate アプライアンスをデプロイする際�
 
 ## <a name="prepare-for-hyper-v-assessment"></a>Hyper-V の評価の準備
 
-Hyper-V の評価を準備するには、Hyper-V ホストと VM の設定を確認し、アプライアンスのデプロイの設定を確認します。
+Hyper-V の評価を準備するには、次の手順を実行します。
+
+1. Hyper-V ホストの設定を確認します。
+2. 各ホスト上で PowerShell リモート処理を設定して、Azure Migrate アプライアンスが WinRM 接続を介してホスト上で PowerShell コマンドを実行できるようにします。
+3. VM ディスクがリモート SMB ストレージに配置されている場合は、資格情報の委任が必要になります。 
+    - Azure Migrate アプライアンスがクライアントとして機能し、資格情報をホストに委任できるように、CredSSP 委任を有効にします。 T
+    - 次に示すように、各ホストがアプライアンスの代理として機能できるようにします。
+    - 後でアプライアンスを設定するときに、アプライアンス上で委任を有効にします。
+4. アプライアンスの要件と、アプライアンスに必要な URL またはポート アクセスを確認します。
+5. アプライアンスで VM の検出に使用されるアカウントを設定します。
+6. 検出と評価を行いたい各 VM で Hyper-V 統合サービスを設定します。
+
+
+これらの設定は、下記の手順を使用して手動で構成できます。 または、Hyper-V の前提条件の構成スクリプトを実行します。
+
+### <a name="hyper-v-prerequisites-configuration-script"></a>Hyper-V の前提条件の構成スクリプト
+
+このスクリプトを使用して、Hyper-V ホストを検証し、Hyper-V VM を検出して評価するために必要な設定を構成します。 これは次のように動作します。
+
+- サポートされている PowerShell バージョンでスクリプトが実行されていることを確認します。
+- 自分 (スクリプトを実行しているユーザー) が Hyper-V ホストの管理特権を持っていることを確認します。
+- Azure Migrate サービスが Hyper-V ホストと通信するために使用されるローカル ユーザー アカウント (管理者ではありません) を作成できるようにします。 このユーザー アカウントは、ホスト上のこれらのグループに追加されます。
+    - リモート管理ユーザー
+    - Hyper-V 管理者
+    - パフォーマンス モニター ユーザー
+- サポートされているバージョンの Hyper-V がホストで実行されていることを確認し、Hyper-V ロールを確認します。
+- WinRM サービスを有効にし、ホスト上のポート 5985 (HTTP) と 5986 (HTTPS) を開きます (メタデータの収集に必要)。
+- ホストでの PowerShell リモート処理を有効にします。
+- ホストによって管理されているすべての VM で Hyper-V 統合サービスが有効になっていることを確認します。 
+- 必要に応じて、ホスト上で CredSSP を有効にします。
+
+次のようにスクリプトを実行します。
+
+1. Hyper-V ホストに PowerShell バージョン 4.0 以降がインストールされていることを確認します。
+2. [Microsoft ダウンロード センター](https://aka.ms/migrate/script/hyperv)からスクリプトをダウンロードします。 このスクリプトは、Microsoft によって暗号的に署名されています。
+3. MD5 または SHA256 ハッシュ ファイルを使用して、スクリプトの整合性を検証します。 このコマンドを実行して、スクリプトのハッシュを生成します。
+    ```
+    C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
+    ```
+    使用例: 
+    ```
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
+    SHA256
+    ```
+    
+    ハッシュ値は次のとおりです。
+    Hash | 値
+    --- | ---
+    **MD5 ハッシュ** | 0ef418f31915d01f896ac42a80dc414e
+    **SHA256 ハッシュ** | 0ef418f31915d01f896ac42a80dc414e0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
+
+
+4.  スクリプトの整合性を検証した後、この PowerShell コマンドを使用して、各 Hyper-V ホストでスクリプトを実行します。
+    ```
+    PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
+    ```
+
 
 ### <a name="verify-hyper-v-host-settings"></a>Hyper-V ホストの設定の確認
 
@@ -125,7 +170,12 @@ Hyper-V の評価を準備するには、Hyper-V ホストと VM の設定を確
 
 ### <a name="enable-credssp-on-hosts"></a>ホスト上での CredSSP の有効化
 
-VM ディスクが SMB 共有上にある場合は、関連するすべての Hyper-V ホストでこの手順を完了します。 この手順は、SMB 共有上にディスクがある Hyper-V VM について構成情報を検出するために使用されます。 SMB 共有上に VM ディスクがない場合は、この手順を省略できます。
+ホストに VM があり、ディスクが SMB 共有上にある場合は、ホスト上でこの手順を実行します。
+
+- このコマンドは、すべての Hyper-V ホスト上でリモートで実行できます。
+- クラスターに新しいホスト ノードを追加すると、自動的に検出用に追加されますが、必要に応じて新しいノード上で CredSSP を手動で有効にする必要があります。
+
+次のように有効にします。
 
 1. SMB 共有上にディスクがある Hyper-V VM を実行している Hyper-V ホストを特定します。
 2. 特定された各 Hyper-V ホスト上で、次のコマンドを実行します。
@@ -134,9 +184,8 @@ VM ディスクが SMB 共有上にある場合は、関連するすべての Hy
     Enable-WSManCredSSP -Role Server -Force
     ```
 
-- CredSSP 認証を使用すると、Hyper-V ホストは Azure Migrate クライアントの代わりに資格情報を委任できます。
-- このコマンドは、すべての Hyper-V ホスト上でリモートで実行できます。
-- クラスターに新しいホスト ノードを追加すると、自動的に検出用に追加されますが、必要に応じて新しいノード上で CredSSP を手動で有効にする必要があります。
+アプライアンスを設定したら、[アプライアンス上で CredSSP を有効にして](tutorial-assess-hyper-v.md#delegate-credentials-for-smb-vhds)その設定を終了します。 これについては、このシリーズの次のチュートリアルで説明します。
+
 
 ### <a name="verify-appliance-settings"></a>アプライアンスの設定の確認
 
@@ -165,7 +214,7 @@ Azure Migrate には、オンプレミスの VM を検出するためのアク�
 
 Azure Migrate が VM 上のオペレーティング システム情報をキャプチャできるように、各 VM で統合サービスを有効にする必要があります。
 
-- 検出と評価を行う VM については、各 VM で [Hyper-V 統合サービス](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)を有効にします。 
+検出と評価を行う VM については、各 VM で [Hyper-V 統合サービス](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)を有効にします。 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Hyper-V の移行の準備
 

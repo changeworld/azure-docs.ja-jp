@@ -1,5 +1,6 @@
 ---
-title: Language Understanding (LUIS) とは - Azure Cognitive Services | Microsoft Docs
+title: Language Understanding (LUIS) とは
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースの API サービスです。
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 06/11/2019
 ms.author: diberry
-ms.openlocfilehash: 569b33d299f52f0da50d8a8992420754aa85b533
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41c5e2f01678996406c586eb20043516beaf2184
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062159"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563193"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -57,7 +58,7 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 
 LUIS モデルの出発点は、ユーザーの目的のカテゴリです。これを " **[意図](luis-concept-intent.md)** " といいます。 意図にはそれぞれ、ユーザー **[発話](luis-concept-utterance.md)** の例が必要です。 それぞれの発話からさまざまなデータが得られますが、それらのデータは、 **[エンティティ](luis-concept-entity-types.md)** を使って抽出する必要があります。 
 
-|ユーザーの発話例|意図|エンティティ|
+|ユーザーの発話例|Intent|エンティティ|
 |-----------|-----------|-----------|
 |"Book a flight to __Seattle__?" (シアトル行きの便を予約できる?)|BookFlight|シアトル|
 |"When does your store __open__?" (お店は何時に開店しますか?)|StoreHoursAndLocation|open (開店)|

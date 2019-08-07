@@ -12,17 +12,17 @@ author: garyericson
 ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
-ms.date: 05/17/2019
-ms.openlocfilehash: 1fe9df6378884ba55cb1017da87522ae66edaff0
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.date: 07/29/2019
+ms.openlocfilehash: 6f4d237d5e923aab61ae34a235d2e1f759399e6d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66420220"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640912"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>チュートリアル:Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリング モデルをデプロイする
 
-この 3 部構成のチュートリアル シリーズのパート 3 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して R でクラスタリング モデルをデプロイします。
+この 3 部構成のチュートリアル シリーズのパート 3 では、Azure SQL Database Machine Learning Services (プレビュー) を使用して、R で開発したクラスタリング モデルを SQL データベースにデプロイします。
 
 クラスタリングを実行する埋め込みの R スクリプトを含むストアド プロシージャを作成します。 モデルは Azure SQL データベースで実行されるため、データベースに格納されているデータに対して簡単にトレーニングすることができます。
 
@@ -33,9 +33,9 @@ ms.locfileid: "66420220"
 > * SQL データベースでクラスタリングを実行する
 > * クラスタリング情報を使用する
 
-[パート 1](sql-database-tutorial-clustering-model-prepare-data.md) では、R でクラスタリングを実行するために Azure SQL データベースのデータを準備する方法を学習しました。
+[パート 1](sql-database-tutorial-clustering-model-prepare-data.md) では、クラスタリングを実行するために Azure SQL データベースのデータを準備する方法を学習しました。
 
-[パート 2](sql-database-tutorial-clustering-model-build.md) では、クラスタリングを実行するための K-Means モデルを構築する方法を学習しました。
+[パート 2](sql-database-tutorial-clustering-model-build.md) では、R で K-Means クラスタリング モデルを作成してトレーニングする方法について学習しました。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -45,7 +45,7 @@ ms.locfileid: "66420220"
 
 ## <a name="create-a-stored-procedure-that-generates-the-model"></a>モデルを生成するストアド プロシージャを作成する
 
-次の T-SQL スクリプトを実行してストアド プロシージャを作成します。 このプロシージャにより、このチュートリアル シリーズのパート 1 と 2 で行われた手順が再度実行されます。
+次の T-SQL スクリプトを実行してストアド プロシージャを作成します。 このプロシージャにより、このチュートリアル シリーズのパート 1 と 2 で開発した手順が再作成されます。
 
 * 購入履歴と返品履歴に基づいて顧客を分類する
 * K-Means アルゴリズムを使用して顧客のクラスターを 4 つ生成する

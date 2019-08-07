@@ -10,18 +10,20 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
-ms.date: 03/25/2019
-ms.openlocfilehash: 8ca2346de84a97bff370a7d5bacb006130cb5116
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 07/29/2019
+ms.openlocfilehash: 1c6fdc6f6d2e642db8b57745573260c819c6c307
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792468"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640930"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>クイック スタート:.NET Core (C#) を使用して Azure SQL データベースに照会する
 
 このクイック スタートでは、[.NET Core](https://www.microsoft.com/net/) と C# コードを使用して、Azure SQL データベースに接続します。 その後、Transact-SQL ステートメントを実行して、データの照会を行います。
+
+> [!TIP]
+> 次の Microsoft Learn モジュールは、[Azure SQL Database に対してクエリを行う ASP.NET アプリケーションを開発および構成する](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)方法を無料で学習するのに役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -60,7 +62,7 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 
 ## <a name="get-adonet-connection-information-optional"></a>ADO.NET の接続情報を取得する (省略可能)
 
-1. **mySampleDatabase** のページに移動し、**[設定]** で **[接続文字列]** を選択します。
+1. **mySampleDatabase** のページに移動し、 **[設定]** で **[接続文字列]** を選択します。
 
 2. 完全な **ADO.NET** 接続文字列を確認します。
 

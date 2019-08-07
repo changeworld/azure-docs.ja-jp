@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 10f559295ff0598dea26fb30b089f020e2985889
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 993b0249bdcc8e0e54dbe0c222aa2335c3bf8d4a
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840338"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679137"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>評価および Azure への移行のために VMware VM を準備する
 
@@ -102,11 +102,11 @@ VM のエージェントレス移行を評価または実行するために Azur
 
 ## <a name="prepare-for-vmware-vm-assessment"></a>VMware VM の評価の準備
 
-VMware VM の評価を準備するには、Hyper-V ホストと VM の設定を確認し、アプライアンスのデプロイの設定を確認する必要があります。
+VMware VM の評価を準備するには、VMware ホストと VM の設定を確認し、アプライアンスのデプロイの設定を確認する必要があります。
 
 ### <a name="verify-vmware-settings"></a>VMware の設定の確認
 
-1. VM の評価に関する VMware サーバーの要件を[確認](migrate-support-matrix-vmware.md#assessment-vmware-server-requirements)します。
+1. VM の評価に関する VMware サーバーの要件を[確認](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements)します。
 2. 必要なポートが vCenter サーバー上で開かれていることを[確認](migrate-support-matrix-vmware.md#assessment-port-requirements)します。
 
 

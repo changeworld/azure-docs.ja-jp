@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を翻訳する、Java (Windows、Linux) - Speech Services
+title: クイック スタート:音声を翻訳する、Java (Windows、Linux) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、ユーザーの音声をキャプチャし、別の言語に変換してコマンド ラインにテキストを出力する、単純な Java アプリケーションを作成します。 このガイドは、Windows および Linux ユーザー向けに設計されています。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 68567e673cf6fb53b8d9b6f7b9ef96aee691ac3a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604951"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553394"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を翻訳する
 

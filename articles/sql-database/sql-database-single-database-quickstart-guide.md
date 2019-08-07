@@ -10,14 +10,13 @@ ms.topic: quickstart
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 7b52453bab661531461a2bec2f15f7659ec15a1c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 07/29/2019
+ms.openlocfilehash: 45b0b2bc7a2ef5c3cb6ca801668f7b5be7c8ac73
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441717"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639998"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL Database の単一データベースの概要
 
@@ -43,6 +42,14 @@ ms.locfileid: "67441717"
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>最小限のダウンタイムで単一データベースに移行する
 
 これらのクイック スタートを使用すると、`.bacpac` でデータベースを簡単に作成し、Azure にインポートできます。 ただし、`.bacpac` および `.dacpac` ファイルは、Azure SQL Database 内のさまざまなバージョンの SQL Server およびデプロイ オプション間でデータベースをすばやく移動したり、DevOps パイプラインで継続的な統合を実装したりするように設計されています。 しかし、この方法は、最小限のダウンタイムで運用データベースを移行するためには設計されていません。新しいデータの追加を中止し、`.bacpac` ファイルへのソース データベースのエクスポートが完了するのを待機し、さらに Azure SQL Database へのインポートが完了するのを待機する必要があるためです。 このような待機の結果、特に大規模なデータベースでは、アプリケーションにダウンタイムが発生します。 運用データベースを移動する場合は、最小限のダウンタイムが保証される、より優れた移行方法が必要です。 そのためには、[データ移行サービス (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) を使用して、最小限のダウンタイムでデータベースを移行します。 DMS は、ソース データベースで行われた変更を、復元中の単一データベースに増分的にプッシュすることで、これを実現します。 この方法であれば、最小限のダウンタイムでアプリケーションをソース データベースからターゲット データベースにすばやく切り替えることができます。
+
+## <a name="hands-on-learning-modules"></a>ハンズオン ラーニング モジュール
+
+次の Microsoft Learn モジュールは、Azure SQL Database について無料で学習するのに役立ちます。
+
+- [アプリケーション データを格納する Azure SQL Database をプロビジョニングする](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
+- [Azure SQL データベースのクエリを実行する ASP.NET アプリケーションを開発して構成する](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+- [Azure SQL Database のセキュリティ保護](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 02/08/2019
+ms.date: 07/29/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ce9ba7c197bb604b9d71e2bf501ca67d32865f38
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566866"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640128"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>チュートリアル:単一データベースまたはプールされたデータベースをセキュリティで保護する
 
@@ -38,6 +38,9 @@ Azure SQL Database では、次の操作を行うことで、単一データベ�
 > マネージド インスタンス上の Azure SQL データベースは、[Azure SQL Database Managed Instance](sql-database-managed-instance-index.yml) と[接続アーキテクチャ](sql-database-managed-instance-connectivity-architecture.md)に関するページに記載されているように、ネットワーク セキュリティ規則とプライベート エンドポイントを使用してセキュリティで保護されます。
 
 詳細については、[Azure SQL Database のセキュリティの概要](/azure/sql-database/sql-database-security-index)と[機能](sql-database-security-overview.md)に関する記事を参照してください。
+
+> [!TIP]
+> 次の Microsoft Learn モジュールは、[Azure SQL Database をセキュリティで保護する](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)方法を無料で学習するのに役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
 

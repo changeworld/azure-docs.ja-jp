@@ -3,8 +3,8 @@ title: Azure の予約ソフトウェアのコスト | Microsoft Docs
 description: Azure Reserved VM Instance のコストに含まれないソフトウェアのメーターについて説明します。
 services: billing
 documentationcenter: ''
-author: manish-shukla01
-manager: manshuk
+author: yashar
+manager: yashar
 editor: ''
 tags: billing
 ms.service: billing
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 52e2e2503303c2a7525a3a6c156f648c097b27dd
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371174"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478622"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれないソフトウェアのコスト
 
-ご使用の予約仮想マシン インスタンスに Azure ハイブリッド特典がない場合、以下のセクションに記載されているソフトウェアのメーターに関して料金が発生します。
+予約仮想マシン インスタンスと SQL 予約容量の割引は、インフラストラクチャのコストにのみ適用され、ソフトウェアのコストには適用されません。 Windows VM をご使用で、かつご使用の予約仮想マシン インスタンスに Azure ハイブリッド特典がない場合、以下のセクションに記載されているソフトウェアのメーターに関して料金が発生します。 SQL PaaS デプロイで、Azure ハイブリッド特典が選択されていない場合、IP コストは個別のメーターを使用して引き続き課金されます。
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>予約のコストに含まれない Windows ソフトウェアの測定
 

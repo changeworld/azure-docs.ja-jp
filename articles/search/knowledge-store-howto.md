@@ -1,5 +1,5 @@
 ---
-title: ナレッジ マイニングの使用を開始する方法 (プレビュー) - Azure Search
+title: ナレッジ ストアの使用を開始する方法 (プレビュー) - Azure Search
 description: Azure Search 内で AI インデックス作成パイプラインによって作成されるエンリッチメントされたドキュメントを Azure ストレージ アカウント内のナレッジ ストアに送信する手順について説明します。 そこから、Azure Search および他のアプリケーション内のエンリッチメントされたドキュメントを表示、整形、および使用することができます。
 manager: cgronlun
 author: HeidiSteen
@@ -8,19 +8,19 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 06/29/2019
 ms.author: heidist
-ms.openlocfilehash: e50dfcdc5ac2fbe2435066546a340874e1b8f682
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 5794a24931b613bf1bdddd983799367bb02cf44d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551069"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641013"
 ---
-# <a name="how-to-get-started-with-knowledge-mining-in-azure-search"></a>Azure Search でナレッジ マイニングの使用を開始する方法
+# <a name="how-to-get-started-with-knowledge-store-in-azure-search"></a>Azure Search でナレッジ ストアの使用を開始する方法
 
 > [!Note]
 > ナレッジ ストアはプレビュー段階にあり、運用環境での使用は意図していません。 [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でこの機能を提供します。 現時点で .NET SDK のサポートはありません。
 >
-[ナレッジ ストア](knowledge-store-concept-intro.md)には、他のアプリでのダウンストリーム ナレッジ マイニング用に Azure ストレージ アカウントにインデックスを付けている間に作成される、AI でエンリッチメントされたドキュメントが保存されます。 保存されているエンリッチメントを使用して、Azure Search インデックス作成パイプラインを理解し、絞り込むこともできます。 
+[ナレッジ ストア](knowledge-store-concept-intro.md)には、他のアプリでのダウンストリーム データ マイニング用に Azure ストレージ アカウントにインデックスを付けている間に作成される、AI でエンリッチメントされたドキュメントが保存されます。 保存されているエンリッチメントを使用して、Azure Search インデックス作成パイプラインを理解し、絞り込むこともできます。 
 
 ナレッジ ストアは、"*スキルセット*" によって定義され、"*インデクサー*" によって作成されます。 ナレッジ ストアの物理表現は、ストレージ内のデータ構造を決定する "*プロジェクション*" を通じて指定されます。 このチュートリアルを完了すると、これらのオブジェクトの作成がすべて終わり、それらすべてがどのように組み合わされるのかがわかります。 
 

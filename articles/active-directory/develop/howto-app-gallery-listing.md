@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 07/04/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41b407b4343db4f594049c4b1027fe4279dab840
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0198e5f5df3d25ef825248ff78db95326dc755c2
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482945"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477058"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>方法:アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -49,6 +49,8 @@ ms.locfileid: "67482945"
 - パスワード SSO の場合、シングル サインオンが期待どおりに動作するように、アプリケーションがフォーム認証をサポートしてパスワード保管を実行できることを確認してください。
 
 - 自動ユーザー プロビジョニング要求の場合、SAML 2.0/WS-Fed を使用して、シングル サインオン機能を有効にして、アプリケーションをギャラリーに一覧表示する必要があります。 ポータルで SSO とユーザー プロビジョニングを一緒に要求することができます (まだ一覧表示されていない場合)。
+
+- テストには、少なくとも 2 人のユーザーが登録されている永続的なアカウントが必要です。
 
 >[!NOTE]
 >SCIM コネクタに関する多数の要求に取り組んでいるため、ポータルでの新しい要求の受け取りを停止しました。 今後、通知があるまでは要求を控えてください。 この遅延により、ご不便をおかけして申し訳ありません。

@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 6fd610afc0a21a97a8544b9e4b173f207f5fb50f
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722886"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314819"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Mapping Data Flow のスキーマの誤差
 
@@ -25,7 +25,8 @@ ms.locfileid: "67722886"
 * フィールドおよび値をハードコーディングするのではなく、データのパターンを操作できる変換パラメーターを定義する。
 * 名前付きフィールドを使用するのではなく、受信フィールドに一致するパターンを認識する式を定義する。
 
-## <a name="how-to-implement-schema-drift"></a>スキーマの誤差を実装する方法
+## <a name="how-to-implement-schema-drift-in-adf-mapping-data-flows"></a>ADF マッピング データ フローにスキーマの誤差を実装する方法
+ADF は、実行ごとに変わる柔軟なスキーマをネイティブでサポートしているため、データ フローを再コンパイルしなくても、汎用的なデータ変換ロジックを構築できます。
 
 * ソース変換内で、[Allow Schema Drift]\(スキーマの誤差を許可\) を選択します。
 
@@ -33,11 +34,13 @@ ms.locfileid: "67722886"
 
 * このオプションを選択した場合は、データ フローを実行するたびに、すべての受信フィールドがソースから読み取られ、フロー全体を通じてシンクに渡されます。
 
-* 必ず "自動マップ" を使用してシンク変換内のすべての新規フィールドをマップし、それらのフィールドが取得され、宛先に送信されるようにします。
+* 新しく検出されたすべての列 (誤差の列) は、既定では文字列データ型として受信されます。 ソース変換で、ADF が自動的にソースのデータ型を推論するようにする場合は、[Infer drifted column types]\(誤差のある列のデータ型を推論\) を選択します。
+
+* 必ず "自動マップ" を使用してシンク変換内のすべての新規フィールドをマップし、それらのフィールドが取得され、宛先に送信されるようにします。また、シンクでは [Allow Schema Drift]\(スキーマの誤差を許可\) を設定します。
 
 <img src="media/data-flow/automap.png" width="400">
 
-* [ソース] -> [シンク] (別名 [コピー]) の簡単なマッピングによって、新規フィールドがそのシナリオに取り込まれると、すべての処理が正常に実行されます。
+* [ソース] -> [シンク] ([コピー]) の単純なマッピングによって、新規フィールドがそのシナリオに取り込まれると、すべての処理が正常に実行されます。
 
 * スキーマの誤差を処理するそのワークフロー内に変換を追加するには、パターン マッチングを使用して、名前、型、および値で列を一致させます。
 
@@ -67,9 +70,11 @@ Azure Data Factory のデータ フローの構文の場合、一致するパタ
 <img src="media/data-flow/taxidrift2.png" width="800">
 
 ## <a name="access-new-columns-downstream"></a>下流の新しい列にアクセスする
+列パターンを使用して新しい列を生成すると、これらのメソッドを使用してデータ フロー変換で後からそれらの新しい列にアクセスできます。
 
-列パターンを使用して新しい列を生成すると、後から "byName" 式関数を使用してデータ フロー変換でそれらの新しい列にアクセスできます。
+* "byPosition" を使用して、位置番号で新しい列を識別します。
+* "byName" を使用して、名前で新しい列を識別します。
+* 列パターンでは、"Name"、"Stream"、"Position"、または "Type" を使用するか、新しい列に一致するようにこれらの組み合わせを使用します。
 
 ## <a name="next-steps"></a>次の手順
-
 [データ フロー式言語](data-flow-expression-functions.md)には、"byName" や "byPosition" など、列パターンとスキーマ誤差用の追加機能があります。

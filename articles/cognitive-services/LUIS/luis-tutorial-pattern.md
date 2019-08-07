@@ -1,5 +1,5 @@
 ---
-title: パターン
+title: パターン - LUIS
 titleSuffix: Azure Cognitive Services
 description: パターンを使用して意図とエンティティの予測を改善しますが、提供する発話の例は減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例によって提供されます。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: e559d4a3366c45bd054cbf3a235805e048de3493
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 96c58e18abce85354db0d3bdf579600506cf2d86
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68276045"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563306"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>チュートリアル:一般的なパターン テンプレート発話フォーマットを追加する
 
@@ -357,7 +357,7 @@ ms.locfileid: "68276045"
 
 発話の例は次のようになります。
 
-|意図|省略可能なテキストと事前構築済みエンティティを含む発話の例|
+|Intent|省略可能なテキストと事前構築済みエンティティを含む発話の例|
 |:--|:--|
 |OrgChart-Manager|`Who was Jill Jones manager on March 3?`|
 |OrgChart-Manager|`Who is Jill Jones manager now?`|
@@ -368,7 +368,7 @@ ms.locfileid: "68276045"
 
 この省略可能な情報を考慮したテンプレート発話の例: 
 
-|意図|省略可能なテキストと事前構築済みエンティティを含む発話の例|
+|Intent|省略可能なテキストと事前構築済みエンティティを含む発話の例|
 |:--|:--|
 |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?`|
 |OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
@@ -397,7 +397,7 @@ ms.locfileid: "68276045"
 
 1. **[Build]\(ビルド\)** の **[Patterns]\(パターン\)** セクションで、複数の新しいパターン テンプレート発話を追加します。 [Intent]\(意図\) ドロップダウン メニューから **OrgChart-Manager** を選択し、次のテンプレート発話を入力します。
 
-    |意図|省略可能なテキストと事前構築済みエンティティを含む発話の例|
+    |Intent|省略可能なテキストと事前構築済みエンティティを含む発話の例|
     |--|--|
     |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
@@ -428,7 +428,7 @@ ms.locfileid: "68276045"
 
 次の 2 つのパターンは、グループ `()` と OR `|` の構文を使用して 1 つのパターンに結合することができます。
 
-|意図|省略可能なテキストと事前構築済みエンティティを含む発話の例|
+|Intent|省略可能なテキストと事前構築済みエンティティを含む発話の例|
 |--|--|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:カスタムの音声優先仮想アシスタント (プレビュー)、Java (Windows、Linux) - Speech Services
+title: クイック スタート:カスタムの音声優先仮想アシスタント (プレビュー)、Java (Windows、Linux) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Cognitive Services Speech ソフトウェア開発キット (SDK) を Java コンソール アプリケーションで使用する方法を学習します。 クライアント アプリケーションを、Direct Line Speech チャネルを使用するように構成されている作成済みの Bot Framework ボットに接続して、音声優先仮想アシスタント エクスペリエンスを有効にする方法を学習します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 78e80b276a13ee6e27fdf0515f2901fdeaa20c5d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b1be09a2af712277ccaad827b8e84e24ed9f5c5c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604921"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553261"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>クイック スタート:Speech SDK (Java) を使用して音声優先仮想アシスタントを作成する
 
@@ -480,5 +480,5 @@ F11 キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
 - [音声優先仮想アシスタントの概要](voice-first-virtual-assistants.md)
 - [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
 - [カスタム ウェイク ワード](speech-devices-sdk-create-kws.md)
-- [ボットを Direct Line Speech に接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Direct Line Speech をボットに接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [GitHub で Java のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)

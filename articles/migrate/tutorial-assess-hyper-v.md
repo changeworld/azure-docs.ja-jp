@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 83567a45980b29931f9b68bd6d60df0d427b09de
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: c790667c73adfed061b97b14ebb7df4c68461786
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67813019"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663798"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure Migrate Server Assessment を使用して Hyper-V VM を評価する
 
@@ -75,7 +75,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 7. **[次へ]** をクリックします。
 8. **[評価ツールの選択]** で、次を選択します: **[Azure Migrate: Server Assessment]**  >  **[次へ]** 。
 
-    ![Azure Migrate プロジェクトの作成](./media/tutorial-assess-hyper-v/assessment-tool.png)
+    ![Azure Migrate プロジェクトを作成する](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
 9. **[移行ツールの選択]** で、 **[今は移行ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
 10. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** をクリックします。
@@ -90,11 +90,11 @@ Azure Migrate Server Assessment では、軽量の Hyper-V VM アプライアン
 
 - このアプライアンスは VM の検出を実行し、VM のメタデータとパフォーマンス データを Azure Migrate: Server Assessment に送信します。
 - アプライアンスを設定するには:
-    - Azure portal から、圧縮された Hyper-V VHD をダウンロードします。
+    - Azure portal から圧縮された Hyper-V VHD をダウンロードします。
     - アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。
     - アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
 
-### <a name="download-the-vhd"></a>VHD のダウンロード
+### <a name="download-the-vhd"></a>VHD をダウンロードする
 
 アプライアンス用の圧縮された VHD テンプレートをダウンロードします。
 
@@ -102,117 +102,131 @@ Azure Migrate Server Assessment では、軽量の Hyper-V VM アプライアン
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。Hyper-V を使用します]** をクリックします。
 3. **[ダウンロード]** をクリックして、VHD ファイルをダウンロードします。
 
-    ![VM のダウンロード](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
+    ![VM をダウンロードする](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
 
 
-### <a name="verify-security"></a>セキュリティの確認
+### <a name="verify-security"></a>セキュリティを確認する
 
 圧縮されたファイルをデプロイする前に、それが安全であることを確認します。
 
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
-2. 次のコマンドを実行して、VHD のハッシュを生成します
-    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+
+2. 次の PowerShell コマンドを実行して、ZIP ファイルのハッシュを生成します
+    - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
+    - 使用例: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
+
 3.  アプライアンス バージョン 1.19.06.27 の場合、生成されたハッシュはこれらの設定と一致する必要があります。
 
   **アルゴリズム** | **ハッシュ値**
   --- | ---
-  MD5 | 3681f745fa2b0a0a6910707d85161ec5
-  SHA256 | e6ca109afab9657bdcfb291c343b3e3abced9a273d25273059171f9954d25832
+  MD5 | 3681F745FA2B0A0A6910707D85161EC5
+  SHA256 | E6CA109AFAB9657BDCFB291C343B3E3ABCED9A273D25273059171F9954D25832
 
 
 
-### <a name="create-the-appliance-vm"></a>アプライアンス VM の作成
+### <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する
 
 ダウンロードしたファイルをインポートし、VM を作成します。
 
-1. アプライアンス VM をホストする Hyper-V ホスト上のフォルダーに、圧縮された VHD ファイルを展開します。 3 つのフォルダーが展開されます。
+1. アプライアンス VM をホストする Hyper-V ホスト上のフォルダーに、圧縮された VHD ファイルを抽出します。 3 つのフォルダーが抽出されます。
 2. Hyper-V マネージャーを開きます。 **[アクション]** で **[仮想マシンのインポート]** をクリックします。
 
-    ![VHD のデプロイ](./media/tutorial-assess-hyper-v/deploy-vhd.png)
+    ![VHD をデプロイする](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
-2. 仮想マシンのインポート ウィザードの **[開始する前に]** で **[次へ]** をクリックします。
-3. **[フォルダーの検索]** で、展開された VHD が含まれているフォルダーを指定します。 その後、 **[次へ]** をクリックします。
+2. 仮想マシンのインポート ウィザードの **[開始する前に]** で、 **[次へ]** をクリックします。
+3. **[フォルダーの検索]** で、抽出された VHD が含まれているフォルダーを指定します。 その後、 **[次へ]** をクリックします。
 1. **[仮想マシンを選択します]** で、 **[次へ]** をクリックします。
-2. **[インポートの種類の選択]** で **[仮想マシンをコピーする (新しい一意な ID を作成する)]** をクリックします。 その後、 **[次へ]** をクリックします。
+2. **[インポートの種類の選択]** で、 **[仮想マシンをコピーする (新しい一意な ID を作成する)]** をクリックします。 その後、 **[次へ]** をクリックします。
 3. **[移動先の選択]** は、既定の設定のままにします。 **[次へ]** をクリックします。
 4. **[保存フォルダー]** は、既定の設定のままにします。 **[次へ]** をクリックします。
 5. **[ネットワークの選択]** で、VM によって使用される仮想スイッチを指定します。 このスイッチには、Azure にデータを送信するためのインターネット接続が必要です。
-6. **[概要]** で設定を確認します。 **[完了]** をクリックします。
-7. Hyper-V マネージャーの **[仮想マシン]** で、VM を開始します。
+6. **[概要]** で、設定を確認します。 **[完了]** をクリックします。
+7. Hyper-V マネージャーの **[仮想マシン]** で、VM を起動します。
 
 
-### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスの確認
+### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
 アプライアンス VM が [Azure URL](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) に接続できることを確認します。
 
-### <a name="configure-the-appliance"></a>アプライアンスの構成
+### <a name="configure-the-appliance"></a>アプライアンスを構成する
 
 アプライアンスを初めて設定します。
 
-1. Hyper-V マネージャーの **[仮想マシン]** で VM を右クリックし、 **[接続]** を選択します。
-2. アプライアンスの言語、タイム ゾーン、およびパスワードを指定します。
-3. VM に接続できる任意のマシン上でブラウザーを開き、アプライアンスの Web アプリの URL を開きます (**https://<*アプライアンス名または IP アドレス*>: 44368**)。
+1. Hyper-V マネージャーの **[仮想マシン]** で、VM を右クリックして **[接続]** を選択します。
+2. アプライアンスの言語、タイム ゾーン、パスワードを指定します。
+3. VM に接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
 
    または、アプリ ショートカットをクリックして、アプライアンス デスクトップからアプリを開くこともできます。
 1. Web アプリの **[前提条件のセットアップ]** で、以下を実行します。
-    - **[ライセンス]** : ライセンス条項に同意し、サード パーティの情報を確認します。
-    - **[接続]** : VM がインターネットにアクセスできることをアプリがチェックします。 VM でプロキシを使用する場合:
-        - **[プロキシの設定]** をクリックし、 http://ProxyIPAddress または http://ProxyFQDN の形式で、プロキシ アドレスとリスニング ポートを指定します。
-        - プロキシで認証が必要な場合は、資格情報を指定します。
-        - サポートされるのは HTTP プロキシのみです。
-    - **[時刻同期]** : 時刻が検証されます。 VM の検出が正常に機能するには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-    - **[更新プログラムのインストール]** : Azure Migrate Server Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。
+    - **ライセンス**:ライセンス条項に同意し、サード パーティの情報を確認します。
+    - **接続**:VM でインターネットにアクセスできることが、アプリによって確認されます。 VM でプロキシを使用する場合:
+      - **[プロキシの設定]** をクリックし、 http://ProxyIPAddress または http://ProxyFQDN の形式で、プロキシ アドレスとリスニング ポートを指定します。
+      - プロキシで認証が必要な場合は、資格情報を指定します。
+      - サポートされるのは HTTP プロキシのみです。
+    - **時刻同期**:時刻が確認されます。 VM の検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
+    - **更新プログラムのインストール**:Azure Migrate Server Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。
 
-### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate へのアプライアンスの登録
+### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
 1. **[ログイン]** をクリックします。 表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
 2. 新しいタブで、自分の Azure 資格情報を使用してサインインします。
     - 自分のユーザー名とパスワードを使用してサインインします。
     - PIN を使用したサインインはサポートされていません。
-3. 正常にサインインしたら、Web アプリに戻ります。
-4. Azure Migrate プロジェクトが作成されたサブスクリプションを選択します。 次に、プロジェクトを選択します。
+3. 正常にサインインした後、Web アプリに戻ります。
+4. Azure Migrate プロジェクトが作成されたサブスクリプションを選択します。 その後、プロジェクトを選択します。
 5. アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
 6. **[登録]** をクリックします。
 
 
-### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD の資格情報の委任
+### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD の資格情報を委任する
 
-SMB 上で VHD を実行している場合は、アプライアンスから Hyper-V ホストへの資格情報の委任を有効にする必要があります。 [前のチュートリアル](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)の各ホスト上でそうしていなかった場合は、ここでアプライアンスからそれを実行します。
+SMB 上で VHD を実行している場合は、アプライアンスから Hyper-V ホストへの資格情報の委任を有効にする必要があります。 これには、以下が必要です。
 
-1. アプライアンス VM 上で、このコマンドを実行します。 HyperVHost1 と HyperVHost2 は、ホスト名の例です。
+- 各ホストがアプライアンスの代理として機能できるようにします。 この操作は、前のチュートリアルで評価と移行のために Hyper-V を準備した時点で完了しています。 ホストの CredSSP を、[手動で](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)設定しているか、[Hyper-V の前提条件の構成スクリプトを実行](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script)して設定しているはずです。
+- Azure Migrate アプライアンスがクライアントとして機能し、資格情報をホストに委任できるように、CredSSP 委任を有効にします。
 
-    ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
-    ```
+次のようにアプライアンス上で有効にします。
 
-2. または、アプライアンス上のローカル グループ ポリシー エディターでこれを実行します。
-    - **[ローカル コンピューター ポリシー]**  >  **[コンピューターの構成]** で、 **[管理用テンプレート]**  >  **[システム]**  >  **[資格情報の委任]** の順にクリックします。
-    - **[新しい資格情報の委任を許可する]** をダブルクリックし、 **[有効]** を選択します。
-    - **[オプション]** で **[表示]** をクリックし、検出したい各 Hyper-V ホストを、プレフィックスとして **wsman/** を付けて、一覧に追加します。
-    - **[資格情報の委任]** で **[NTLM のみのサーバー認証で新しい資格情報の委任を許可する]** をダブルクリックします。 もう一度、検出したい各 Hyper-V ホストを、プレフィックスとして **wsman/** を付けて、一覧に追加します。
+#### <a name="option-1"></a>方法 1
 
-## <a name="start-continuous-discovery"></a>継続的な検出の開始
+アプライアンス VM 上で、このコマンドを実行します。 HyperVHost1/HyperVHost2 は、ホスト名の例です。
+
+```
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+```
+
+例: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `
+
+#### <a name="option-2"></a>方法 2
+
+または、アプライアンス上のローカル グループ ポリシー エディターでこれを行います。
+
+1. **[ローカル コンピューター ポリシー]**  >  **[コンピューターの構成]** で、 **[管理用テンプレート]**  >  **[システム]**  >  **[資格情報の委任]** の順にクリックします。
+2. **[新しい資格情報の委任を許可する]** をダブルクリックし、 **[有効]** を選択します。
+3. **[オプション]** で **[表示]** をクリックし、検出したい各 Hyper-V ホストを、プレフィックスとして **wsman/** を付けて、一覧に追加します。
+4. 次に、 **[資格情報の委任]** で、 **[NTLM のみのサーバー認証で新しい資格情報の委任を許可する]** をダブルクリックします。 もう一度、検出したい各 Hyper-V ホストを、プレフィックスとして **wsman/** を付けて、一覧に追加します。
+
+## <a name="start-continuous-discovery"></a>継続的な検出を開始する
 
 アプライアンスから Hyper-V ホストまたはクラスターに接続し、VM の検出を開始します。
 
 1. **[ユーザー名]** と **[パスワード]** に、VM を検出するためにアプライアンスによって使用されるアカウント資格情報を指定します。 資格情報のフレンドリ名を指定し、 **[詳細の保存]** をクリックします。
-2. **[ホストの追加]** をクリックし、Hyper-V のホストおよびクラスターの詳細を指定します。
-3. **[Validate (検証)]** をクリックします。 検証後、各ホストおよびクラスター上で検出できる VM の数が表示されます。
+2. **[ホストの追加]** をクリックし、Hyper-V のホスト/クラスターの詳細を指定します。
+3. **[Validate (検証)]** をクリックします。 検証後、各ホスト/クラスター上で検出できる VM の数が表示されます。
     - ホストで検証が失敗した場合は、 **[状態]** 列のアイコンをポイントしてエラーを確認します。 問題を修正し、もう一度検証します。
     - ホストまたはクラスターを削除するには、 **[削除]** を選択します。
-    - クラスターから特定のホストを削除することはできません。 クラスター全体を削除することだけができます。
+    - クラスターから特定のホストを削除することはできません。 削除できるのは、クラスター全体のみです。
     - クラスター内の特定のホストに問題がある場合でも、クラスターを追加できます。
 4. 検証後、 **[保存して検出を開始]** をクリックして、検出プロセスを開始します。
 
-これで、検出が開始されます。 検出された VM のメタデータが Azure portal に表示されるまでに、約 15 分かかります。
+これで検出が開始されます。 検出された VM のメタデータが Azure portal に表示されるまでに、約 15 分かかります。
 
 ### <a name="verify-vms-in-the-portal"></a>ポータル内での VM の特定
 
-検出が完了したら、VM がポータルに表示されることを確認できます。
+検出の完了後、VM がポータルに表示されることを確認できます。
 
 1. Azure Migrate ダッシュボードを開きます。
-2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、**検出されたサーバー**の数を表示するアイコンをクリックします。
+2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。
 
 ## <a name="set-up-an-assessment"></a>評価の設定
 
@@ -227,7 +241,7 @@ Azure Migrate Server Assessment を使用して実行できる評価には、2 �
 
 ### <a name="run-an-assessment"></a>評価を実行する
 
-次のとおりに評価を実行します。
+評価を実行するには次のようにします。
 
 1. 評価を作成するための[ベスト プラクティス](best-practices-assessment.md)を確認します。
 2. **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[評価]** をクリックします。
@@ -245,11 +259,11 @@ Azure Migrate Server Assessment を使用して実行できる評価には、2 �
 
     ![評価を作成する](./media/tutorial-assess-hyper-v/assessment-create.png)
 
-6. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]** を選択します。
+6. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]** でクリックします。
 7. **[評価のエクスポート]** をクリックし、Excel ファイルとしてダウンロードします。
 
 
-## <a name="review-an-assessment"></a>評価の確認
+## <a name="review-an-assessment"></a>評価を確認する
 
 評価には以下が記述されています。
 
@@ -270,10 +284,10 @@ Azure Migrate Server Assessment を使用して実行できる評価には、2 �
 
 1. **[Azure 対応性]** で、VM が Azure への移行の準備ができているかどうかを確認します。
 2. VM の状態を確認します。
-    - **Azure に対応**: Azure Migrate によって、評価内の VM の VM サイズとコスト見積もりが推奨されます。
-    - **条件付きで対応**: 問題と推奨される修復方法が示されます。
-    - **Azure に未対応**: 問題と推奨される修復方法が示されます。
-    - **Readiness 不明**: データの可用性の問題により、Azure Migrate が対応性を評価できない場合に使用されます。
+    - **[Azure に対応]** : Azure Migrate によって、評価内の VM の VM サイズとコスト見積もりが推奨されます。
+    - **[条件付きで対応]** : 問題と推奨される修復方法が示されます。
+    - **[Azure に未対応]** : 問題と推奨される修復方法が示されます。
+    - **[Readiness 不明]** : データの可用性の問題により、Azure Migrate が対応性を評価できない場合に使用されます。
 
 2. **[Azure 対応性]** の状態をクリックします。 VM 対応性の詳細を表示し、ドリルダウンして、コンピューティング、ストレージ、ネットワークの設定など、VM の詳細を表示できます。
 
@@ -322,7 +336,7 @@ Azure Migrate Server Assessment を使用して実行できる評価には、2 �
 このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]
-> * Azure Migrate アプライアンスの設定
+> * Azure Migrate アプライアンスを設定する
 > * 評価の作成と確認
 
 このシリーズの 3 番目のチュートリアルに進み、Azure Migrate Server Migration を使用して Hyper-V VM を Azure に移行する方法について学習します。

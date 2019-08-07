@@ -1,7 +1,7 @@
 ---
-title: R を使用して Azure SQL データベースに照会する
+title: Machine Learning service で R を使用して Azure SQL Database にクエリを実行する
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: このトピックでは、R スクリプトを使用して、Azure SQL データベースに接続し Transact-SQL ステートメントを使用してデータベースに照会する方法について説明します。
+description: このトピックでは、Azure SQL Database Machine Learning service で R スクリプトを使用して、Azure SQL データベースに接続し、Transact-SQL ステートメントを使用してデータベースに照会する方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,16 +13,16 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 1d4b17cf1e0349bf877c676cb4e591fc20ad4113
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: ff38346a9b3bd14db51383c116240b030d3ee42a
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66416368"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68514854"
 ---
-# <a name="quickstart-use-r-to-query-an-azure-sql-database-preview"></a>クイック スタート:R を使用して Azure SQL データベースに照会する (プレビュー)
+# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>クイック スタート:Machine Learning service で R を使用して Azure SQL データベースにクエリを実行する (プレビュー)
 
- このクイック スタートでは、Machine Learning Services で [R](https://www.r-project.org/) を使用して Azure SQL データベースに接続し、Transact-SQL ステートメントを使用してデータを照会する方法について説明します。 Machine Learning Services は、データベース内の R スクリプトを実行するために使用される、Azure SQL Database の機能です。 詳細については、「[Azure SQL Database Machine Learning Services と R (プレビュー)](sql-database-machine-learning-services-overview.md)」を参照してください。
+このクイック スタートでは、Machine Learning Services で [R](https://www.r-project.org/) を使用して Azure SQL データベースに接続し、Transact-SQL ステートメントを使用してデータを照会する方法について説明します。 Machine Learning Services は、データベース内の R スクリプトを実行するために使用される、Azure SQL Database の機能です。 詳細については、「[Azure SQL Database Machine Learning Services と R (プレビュー)](sql-database-machine-learning-services-overview.md)」を参照してください。
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 

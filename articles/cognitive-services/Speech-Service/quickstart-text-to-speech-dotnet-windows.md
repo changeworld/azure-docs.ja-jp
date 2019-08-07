@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する (.NET Framework (Windows)) - Speech Services
+title: クイック スタート:音声を合成する、.NET Framework (Windows) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: このガイドでは、.NET framework for Windows と Speech SDK を使用してテキスト読み上げのコンソール アプリケーションを作成します。 完了すると、テキストから音声を合成し、その音声をスピーカーからリアルタイムで聞くことができます。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: 352d3f5f34bd46d8ee1ba2ed45dcc28af2b430ef
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 3c925e0160a4c57f7e43c3463fc1db7098a6e606
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605024"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553598"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>クイック スタート:.NET Framework (Windows) 用 Speech SDK を使用して音声を合成する
 

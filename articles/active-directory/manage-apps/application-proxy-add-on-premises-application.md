@@ -12,12 +12,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecff60d1a1f808c4021476d136fe014175451672
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: c890288539a8abebe688ca4571ffa6c152e992ee
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723968"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694054"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -85,8 +85,6 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
    | 443 | アプリケーション プロキシ サービスとのすべての送信通信 |
 
 ファイアウォールが送信元ユーザーに応じてトラフィックを処理している場合は、ネットワーク サービスとして実行されている Windows サービスからのトラフィック用にポート 80 と 443 も開きます。
-
-既にアプリケーション プロキシを使用している場合、古いバージョンのコネクタがインストールされている可能性があります。 このチュートリアルに従って、最新バージョンのコネクタをインストールしてください。 1\.5.132.0 より前のバージョンでは、次のポートも開く必要があります。5671、8080、9090 ～ 9091、9350、9352、10100 ～ 10120。
 
 ### <a name="allow-access-to-urls"></a>URL へのアクセスを許可する
 
@@ -180,7 +178,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 
     | フィールド | 説明 |
     | :---- | :---------- |
-    | **バックエンド アプリケーションのタイムアウト** | アプリケーションの認証と接続に時間がかかる場合のみ、この値を **[遅い]** に設定します。 |
+    | **バックエンド アプリケーションのタイムアウト** | アプリケーションの認証と接続に時間がかかる場合のみ、この値を **[遅い]** に設定します。 既定では、バックエンド アプリケーションのタイムアウトは 85 秒です。 [Long]\(長\) に設定すると、バックエンドのタイムアウトは 180 秒に増加します。 |
     | **HTTP 専用 Cookie を使用する** | アプリケーション プロキシ Cookie に HTTP 応答ヘッダーの HTTPOnly フラグを含めるには、この値を **[はい]** に設定します。 リモート デスクトップ サービスを使用している場合は、この値を **[いいえ]** に設定します。|
     | **セキュリティで保護された Cookie を使用します**| 暗号化された HTTPS 要求などのセキュリティ保護されたチャネル経由で Cookie を送信するために、この値を **[はい]** に設定します。
     | **永続 Cookie を使用**| この値は、 **[いいえ]** のままにしておきます。 この設定は、プロセス間で Cookie を共有できないアプリケーションにのみ使用してください。 Cookie の設定の詳細については、「[Azure Active Directory でオンプレミスのアプリケーションにアクセスするための Cookie 設定](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings)」を参照してください。

@@ -1,5 +1,5 @@
 ---
-title: Application Insights、C#
+title: Application Insights、C# - LUIS
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ボットおよび Language Understanding の情報を Application Insights テレメトリ データ ストレージに追加します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/16/2019
 ms.author: diberry
-ms.openlocfilehash: 720352403fd5f5937669f9838f3974cb0d3f8797
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: bc8cf9973ed6889b0820e5ada5565d0541532fa3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657802"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560063"
 ---
 # <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>C# でボットから Application Insights に LUIS の結果を追加する
 

@@ -9,20 +9,20 @@ keywords: Azure Functions, 関数, イベント処理, コンピューティン�
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: quickstart
-ms.date: 11/07/2018
+ms.date: 07/19/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0288d9c0932d012bc83f23053b661c5a7ea2ef82
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 966be2d16615ba120287974201de5dd264fbbbcf
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65872966"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68594110"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C\# で最初の Durable Functions を作成する
 
 *Durable Functions* は、サーバーレス環境でステートフル関数を記述できる [Azure Functions](../functions-overview.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。
 
-この記事では、Visual Studio 2019 Tools for Azure Functions を使用して、"hello world" の Durable Functions をローカルで作成してテストする方法を学習します。  この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2019 の Azure の開発ワークロードの一部として使用できます。
+この記事では、Visual Studio 2019 を使用して、"hello world" 持続的関数をローカルで作成してテストする方法を学習します。  この関数は、他の関数の呼び出しを調整し、連結します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2019 の Azure の開発ワークロードの一部として使用できます。
 
 ![Azure で Durable Functions を実行する](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
@@ -30,9 +30,7 @@ ms.locfileid: "65872966"
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Visual Studio 2019](https://azure.microsoft.com/downloads/) をインストールします。 **Azure 開発**ワークロードもインストールされていることを確認します。
-
-* [最新の Azure Functions ツール](../functions-develop-vs.md#check-your-tools-version)があることを確認します。
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) をインストールします。 **Azure 開発**ワークロードもインストールされていることを確認します。 Visual Studio 2017 でも Durable Functions 開発はサポートされていますが、UI と手順は異なります。
 
 * [Azure Storage Emulator](../../storage/common/storage-use-emulator.md) がインストールされ、実行されていることを確認します。
 
@@ -44,13 +42,15 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
 
 1. Visual Studio で、 **[ファイル]** メニューから **[新規]**  >  **[プロジェクト]** の順に選択します。
 
-2. **[新しいプロジェクト]** ダイアログで、 **[インストール済み]** を選択し、 **[Visual C#]**  >  **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの**名前**を入力して、 **[OK]** をクリックします。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
+1. **[新しいプロジェクトの追加]** ダイアログ ボックスで `functions` を検索して **[Azure Functions]** テンプレートを選択し、 **[次へ]** を選択します。 
 
     ![Visual Studio で関数を作成するための [新しいプロジェクト] ダイアログ](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
-3. 図の下の表に示した設定を使用してください。
+1. プロジェクトの**プロジェクト名**を入力し、 **[OK]** を選択します。 プロジェクト名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
 
-    ![Visual Studio の [新しい関数] ダイアログ](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
+1. **[新しい Azure Functions アプリケーションの作成]** で、図の下の表に示されている設定を使用してください。
+
+    ![Visual Studio の [新しい Azure Functions アプリケーションの作成] ダイアログ](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
     | Setting      | 推奨値  | 説明                      |
     | ------------ |  ------- |----------------------------------------- |
@@ -58,7 +58,7 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
     | **テンプレート** | Empty | 空の関数アプリを作成します。 |
     | **ストレージ アカウント**  | ストレージ エミュレーター | Durable Functions の状態管理にはストレージ アカウントが必要です。 |
 
-4. **[OK]** をクリックして、空の関数プロジェクトを作成します。 このプロジェクトには、関数を実行するために必要な基本的な構成ファイルがあります。
+4. **[作成]** を選択して、空の関数プロジェクトを作成します。 このプロジェクトには、関数を実行するために必要な基本的な構成ファイルがあります。
 
 ## <a name="add-functions-to-the-app"></a>アプリに関数を追加する
 
@@ -68,9 +68,9 @@ Azure Functions テンプレートでは、Azure の関数アプリに発行で�
 
     ![新しい関数を追加する](./media/durable-functions-create-first-csharp/functions-vs-add-new-function.png)
 
-2. 追加メニューから **[Azure Function]** が選択されていることを確認し、C# ファイルに名前を付けます。  **[追加]** をクリックします。
+1. 追加メニューから **[Azure Function]** が選択されていることを確認し、C# ファイルの名前を入力してから **[追加]** を選択します。
 
-3. **[Durable Functions Orchestration]** テンプレートを選択し、 **[OK]** をクリックします。
+1. **[Durable Functions のオーケストレーション]** テンプレートを選択し、 **[OK]** を選択します。
 
     ![Durable Functions Orchestration テンプレートを選択する](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 

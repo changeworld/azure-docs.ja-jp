@@ -1,5 +1,5 @@
 ---
-title: 完全なテキスト一致
+title: 完全なテキスト一致 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 事前に定義された項目の一覧に一致するデータを取得します。 一覧の各項目には、同様に完全に一致するシノニムを含めることができます。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: df37e7aad2420d0bc280121634d49675ae29ee5a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a5aeeb74d26ce633beb0e9feef20a2315bc0ff1d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236426"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560400"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>チュートリアル:発話から完全なテキスト一致データを取得する
 
@@ -59,7 +59,7 @@ ms.locfileid: "65236426"
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。 
 
-3. ポップアップ ダイアログ ボックスに「`TransferEmployeeToDepartment`」と入力して、**[完了]** を選択します。 
+3. ポップアップ ダイアログ ボックスに「`TransferEmployeeToDepartment`」と入力して、 **[完了]** を選択します。 
 
     ![新しい意図の作成ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-ddl.png)
 

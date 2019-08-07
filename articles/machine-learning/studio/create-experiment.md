@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: quickstart
-author: garyericson
-ms.author: garye
+author: xiaoharper
+ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 0819c232412e1619f82a25476a8318d26c8087da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e5c004b69f24b50ed2eb3a10dbd0a7915c0773ce
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105728"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515110"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>クイック スタート:Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "58105728"
 [アルゴリズムを選択して、適用する]: #choose-and-apply-an-algorithm
 [新しい自動車の価格を予測する]: #predict-new-automobile-prices
 
-Studio アカウントを持っていない場合は、[Studio ホームページ](https://studio.azureml.net)に移動し、**[Sign up here]\(ここでサインアップ\)** を選択して無料アカウントを作成します。 無料のワークスペースには、このクイック スタートに必要なすべての機能があります。
+Studio アカウントを持っていない場合は、[Studio ホームページ](https://studio.azureml.net)に移動し、 **[Sign up here]\(ここでサインアップ\)** を選択して無料アカウントを作成します。 無料のワークスペースには、このクイック スタートに必要なすべての機能があります。
 
 ## <a name="get-the-data"></a>データを取得する
 
@@ -49,11 +49,11 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 このデータセットには、製造仕様、モデル仕様、技術仕様、価格などの情報を含む、さまざまな個別の自動車のエントリが含まれています。
 
 > [!TIP]
-> [Azure AI Gallery](https://gallery.azure.ai)には、次の実験の作業コピーがあります。 「**[初めてのデータ サイエンス実験 - 自動車価格の予測 ](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**」 にアクセスし、**[Open in Studio]\(Studio で開く\)** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
+> [Azure AI Gallery](https://gallery.azure.ai)には、次の実験の作業コピーがあります。 「 **[初めてのデータ サイエンス実験 - 自動車価格の予測 ](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** 」 にアクセスし、 **[Open in Studio]\(Studio で開く\)** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
 
 データセットを実験に取得する方法を次に示します。
 
-1. Machine Learning Studio ウィンドウの下部にある **[+NEW]\(+新規)** をクリックして新しい実験を作成します。 **[EXPERIMENT]\(実験\)** >  **[Blank Experiment]\(空の実験\)** の順に選択します。
+1. Machine Learning Studio ウィンドウの下部にある **[+NEW]\(+新規)** をクリックして新しい実験を作成します。 **[EXPERIMENT]\(実験\)**  >   **[Blank Experiment]\(空の実験\)** の順に選択します。
 
 1. 実験には既定の名前が付いており、キャンバスの上部で確認できます。 このテキストを選択し、「**Automobile price prediction**」(自動車価格の予測) など意味のある名前に変更します。 名前は一意でなくてもかまいません。
 
@@ -63,7 +63,7 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
     ![automobile データセットの検索と実験キャンバスへのドラッグ](./media/create-experiment/type-automobile.png)
 
-このデータの中身を確認するには、automobile データセットの下部にある出力ポートをクリックし、**[Visualize]\(視覚化\)** を選択します。
+このデータの中身を確認するには、automobile データセットの下部にある出力ポートをクリックし、 **[Visualize]\(視覚化\)** を選択します。
 
 ![出力ポートをクリックし、[Visualize]\(視覚化\) を選択](./media/create-experiment/select-visualize.png)
 
@@ -93,10 +93,10 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
     ![実験キャンバスへの "Select Columns in Dataset" モジュールの追加と接続](./media/create-experiment/type-select-columns.png)
 
-1. [Select Columns in Dataset][select-columns] モジュールを選択し、**[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** をクリックします。
+1. [Select Columns in Dataset][select-columns] モジュールを選択し、 **[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** をクリックします。
 
    - 左側の **[With rules]\(規則を使用\)** をクリックします
-   - **[Begin With]\(次で始まる\)** の **[All columns]\(すべての列\)** をクリックします。 これらの規則により、[Select Columns in Dataset][select-columns] では、すべての列がフィルターを通過します (これから除外する列を除く)。
+   - **[Begin With]\(次で始まる\)** の **[All columns]\(すべての列\)** をクリックします。 これらの規則により、[Select Columns in Dataset][select-columns] (データセット内の列の選択) では、すべての列がフィルターを通過します (これから除外する列を除く)。
    - ドロップダウンから **[Exclude]\(除外\)** と **[column names]\(列名\)** を選択し、テキスト ボックスの内側をクリックします。 列の一覧が表示されます。 **[normalized-losses]** を選択すると、テキスト ボックスに追加されます。
    - (右下の) チェック マーク (OK) ボタンをクリックして列セレクターを閉じます。
 
@@ -111,7 +111,7 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
      ![モジュールをダブルクリックしてコメントを追加](./media/create-experiment/add-comment.png)
 
-1. [Clean Missing Data][clean-missing-data] (不足しているデータを整理する) モジュールを実験キャンバスにドラッグして、[Select Columns in Dataset][select-columns] モジュールに接続します。 **[Properties]\(プロパティ\)** ウィンドウで、**[Cleaning mode]\(整理モード\)** の下の **[Remove entire row]\(行全体を削除\)** を選択します。 これらのオプションにより、[Clean Missing Data][clean-missing-data] では値が不足している行が削除され、データが整理されます。 モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
+1. [Clean Missing Data (不足データのクリーンアップ)][clean-missing-data] モジュールを実験キャンバスにドラッグして、[Select Columns in Dataset (データセットの列を選択する)][select-columns] モジュールに接続します。 **[Properties]\(プロパティ\)** ウィンドウで、 **[Cleaning mode]\(整理モード\)** の下の **[Remove entire row]\(行全体を削除\)** を選択します。 これらのオプションにより、[Clean Missing Data][clean-missing-data] (見つからないデータのクリーンアップ) では値が不足している行が削除され、データがクリーンアップされます。 モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
 
     !["Clean Missing Data" モジュールの [Cleaning Mode]\(整理モード\) を [Remove entire row]\(行全体を削除\) に設定](./media/create-experiment/set-remove-entire-row.png)
 
@@ -122,9 +122,9 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
     ![実行後の実験の状態](./media/create-experiment/early-experiment-run.png)
 
 > [!TIP]
-> ここで実験を実行したのはなぜでしょうか。 実験を実行することで、データの列の定義がデータセットから[Select Columns in Dataset][select-columns] モジュールと[Clean Missing Data][clean-missing-data] モジュールを介して渡されます。 これにより、[Clean Missing Data][clean-missing-data] に接続するすべてのモジュールに、この同じ情報が設定されることになります。
+> ここで実験を実行したのはなぜでしょうか。 実験を実行することで、データの列の定義がデータセットから [Select Columns in Dataset][select-columns] モジュールと [Clean Missing Data][clean-missing-data] モジュールを介して渡されます。 これにより、[Clean Missing Data][clean-missing-data] に接続するすべてのモジュールに、この同じ情報が設定されることになります。
 
-これで、データが整理されました。 整理したデータセットを表示するには、[Clean Missing Data][clean-missing-data] モジュールの左側の出力ポートをクリックし、**[Visualize]\(視覚化\)** を選択します。 **normalized-losses** 列がもう含まれていないことと、値が不足していないことが確認できます。
+これで、データが整理されました。 整理したデータセットを表示するには、[Clean Missing Data][clean-missing-data] モジュールの左側の出力ポートをクリックし、 **[Visualize]\(視覚化\)** を選択します。 **normalized-losses** 列がもう含まれていないことと、値が不足していないことが確認できます。
 
 データが整理できたので、予測モデルで使用する特徴を指定する準備が整いました。
 
@@ -138,17 +138,17 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
     make, body-style, wheel-base, engine-size, horsepower, peak-rpm, highway-mpg, price
 
-1. 別の[Select Columns in Dataset][select-columns] モジュールを、実験キャンバスにドラッグします。 [Clean Missing Data][clean-missing-data] モジュールの左側の出力ポートを、[Select Columns in Dataset][select-columns] モジュールの入力に接続します。
+1. 別の [Select Columns in Dataset][select-columns] モジュールを、実験キャンバスにドラッグします。 [Clean Missing Data][clean-missing-data] モジュールの左側の出力ポートを、[Select Columns in Dataset][select-columns] モジュールの入力に接続します。
 
     !["Select Columns in Dataset" モジュールを "Clean Missing Data" モジュールに接続](./media/create-experiment/connect-clean-to-select.png)
 
 1. モジュールをダブルクリックして、「Select features for prediction」と入力します。
 
-1. **[Properties]\(プロパティ\)** ウィンドウで、**[Launch column selector]\(列セレクターの起動\)** をクリックします。
+1. **[Properties]\(プロパティ\)** ウィンドウで、 **[Launch column selector]\(列セレクターの起動\)** をクリックします。
 
 1. **[With rules]\(規則を使用\)** をクリックします。
 
-1. **[Begin With]\(次で始まる\)** の **[No columns]\(列なし\)** をクリックします。 フィルター行で、**[Include]\(含める\)** と **[column names]\(列名\)** を選択してから、テキスト ボックス中の列名の一覧を選択します。 このフィルターによりこのモジュールでは、指定した列を除いて列 (特徴) が渡されなくなります。
+1. **[Begin With]\(次で始まる\)** の **[No columns]\(列なし\)** をクリックします。 フィルター行で、 **[Include]\(含める\)** と **[column names]\(列名\)** を選択してから、テキスト ボックス中の列名の一覧を選択します。 このフィルターによりこのモジュールでは、指定した列を除いて列 (特徴) が渡されなくなります。
 
 1. チェック マーク (OK) ボタンをクリックします。
 
@@ -170,7 +170,7 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 データは別個のトレーニング データセットとテスト データセットに分割して、モデルのトレーニングとテストの両方に使用します。
 
-1. [Split Data][split] (データを分割する) モジュールを選択して実験キャンバスにドラッグし、最後の[Select Columns in Dataset][select-columns] モジュールに接続します。
+1. [Split Data][split] (データを分割する) モジュールを選択して実験キャンバスにドラッグし、最後の [Select Columns in Dataset][select-columns] モジュールに接続します。
 
 1. [Split Data][split] モジュールをクリックして選択します。 (キャンバス右側の **[Properties]\(プロパティ\)** ウィンドウにある) **[Fraction of rows in the first output dataset]\(最初の出力データセットにおける列の割合\)** を探して 0.75 に設定します。 このようにして、データの 75% をモデルのトレーニングに使用し、25% をテスト用に保持しておきます。
 
@@ -179,15 +179,15 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
     > [!TIP]
     > **[Random seed]\(ランダム シード\)** パラメーターを変更して、トレーニング用とテスト用に異なるランダムなサンプルを作成できます。 このパラメーターでは、擬似乱数ジェネレーターによる生成を制御できます。
 
-1. 実験を実行します。 実験を実行すると、[Select Columns in Dataset][select-columns] モジュールと[Split Data][split] モジュールによって、次に追加するモジュールに列定義が渡されます。  
+1. 実験を実行します。 実験を実行すると、[Select Columns in Dataset][select-columns] モジュールと [Split Data][split] モジュールによって、次に追加するモジュールに列定義が渡されます。  
 
-1. 学習アルゴリズムを選ぶには、キャンバスの左側にあるモジュールのパレットの **[Machine Learning]\(機械学習\)** カテゴリを展開してから、**[Initialize Model]\(モデルの初期化\)** を展開します。 これにより、機械学習アルゴリズムの初期化に使用できるモジュールのカテゴリが複数表示されます。 この実験では、**[Regression]\(回帰\)** カテゴリにある[Linear Regression][linear-regression] (線形回帰) モジュールを選択し、実験キャンバスにドラッグします  (パレットの検索ボックスで「linear regression」と入力してモジュールを探すこともできます)。
+1. 学習アルゴリズムを選ぶには、キャンバスの左側にあるモジュールのパレットの **[Machine Learning]\(機械学習\)** カテゴリを展開してから、 **[Initialize Model]\(モデルの初期化\)** を展開します。 これにより、機械学習アルゴリズムの初期化に使用できるモジュールのカテゴリが複数表示されます。 この実験では、 **[Regression]\(回帰\)** カテゴリにある [Linear Regression][linear-regression] (線形回帰) モジュールを選択し、実験キャンバスにドラッグします (パレットの検索ボックスで「linear regression」と入力してモジュールを探すこともできます)。
 
-1. [Train Model][train-model] (モデルをトレーニングする) モジュールを見つけて、実験にドラッグします。 [Linear Regression][linear-regression] モジュールの出力を、[Train Model][train-model] モジュールの左側の入力に接続します。次に、[Split Data][split]モジュールのトレーニング データ出力 (左側のポート) を、[Train Model][train-model] モジュールの右側の入力に接続します。
+1. [Train Model][train-model] (モデルのトレーニング) モジュールを見つけて、実験にドラッグします。 [Linear Regression][linear-regression] (線形回帰) モジュールの出力を、[Train Model][train-model] (モデルのトレーニング) モジュールの左側の入力に接続します。次に、[Split Data][split] (データの分割) モジュールのトレーニング データ出力 (左側のポート) を、[Train Model][train-model] (モデルのトレーニング) モジュールの右側の入力に接続します。
 
     !["Linear Regression" モジュールと "Split Data" モジュールの両方に "Train Model" モジュールを接続](./media/create-experiment/connect-train-model.png)
 
-1. [Train Model][train-model] モジュールを選択して、**[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** をクリックし、**price** 列を選択します。 **price** が、作成しているモデルで予測する値です。
+1. [Train Model][train-model] モジュールをクリックして、 **[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** をクリックし、**price** 列を選択します。 **price** が、作成しているモデルで予測する値です。
 
     列セレクターで **[Available columns]\(使用できる列\)** の一覧から **[Selected columns]\(選択した列\)** の一覧に **price** 列を移動させることで選択します。
 
@@ -203,11 +203,11 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 これまでにデータの 75% を使用してモデルをトレーニングしました。ここからは残りの 25% のデータにスコアを付け、モデルの精度を確認します。
 
-1. [Score Model][score-model] (モデルをスコア付けする) モジュールを探して、実験キャンバスにドラッグします。 [Train Model][train-model] モジュールの出力を、[Score Model][score-model] の左側の入力ポートに接続します。 [Split Data][split] モジュールのテスト データの出力 (右側のポート) を[Score Model][score-model] の右側の入力ポートに接続します。
+1. [Score Model][score-model] (モデルをスコア付けする) モジュールを探して、実験キャンバスにドラッグします。 [Train Model][train-model] (モデルのトレーニング) モジュールの出力を、[Score Model][score-model] (モデルのスコア付け) の左側の入力ポートに接続します。 [Split Data][split] (データの分割) モジュールのテスト データの出力 (右側のポート) を、[Score Model][score-model] (モデルのスコア付け) の右側の入力ポートに接続します。
 
     !["Train Model" モジュールと "Split Data" モジュールの両方に "Score Model" モジュールを接続](./media/create-experiment/connect-score-model.png)
 
-1. 実験を実行し、[Score Model][score-model] の出力ポートをクリックして、**[Visualize]\(視覚化\)** を選択します。[Score Model][score-model] モジュールの出力が表示されます。 出力に、予測された価格の値と、テスト データからの既知の値が表示されます。  
+1. 実験を実行し、[Score Model][score-model] の出力ポートをクリックして、 **[Visualize]\(視覚化\)** を選択します。[Score Model][score-model] モジュールの出力が表示されます。 出力に、予測された価格の値と、テスト データからの既知の値が表示されます。  
 
     !["Score Model" モジュールの出力](./media/create-experiment/score-model-output.png)
 
@@ -217,7 +217,7 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 1. 実験を実行します。
 
-[Evaluate Model][evaluate-model] モジュールの出力を表示するには、出力ポートをクリックして、**[Visualize]\(視覚化\)** を選択します。
+[Evaluate Model][evaluate-model] モジュールの出力を表示するには、出力ポートをクリックして、 **[Visualize]\(視覚化\)** を選択します。
 
 ![実験の評価結果](./media/create-experiment/evaluation-results.png)
 

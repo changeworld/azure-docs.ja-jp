@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 07/01/2019
+ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 953a549a44d224f9d196c6d6842bdcae04cca975
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 3c9fd286fd28d55318221177f69948c20ed1b935
+ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485912"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68414471"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
 
@@ -27,10 +27,7 @@ Azure IoT Edge Tools for Visual Studio の利点は次のとおりです。
 - Visual Studio での開発のすべての利点を利用しながら、C または C# で Azure IoT モジュールをコーディングできます。
 - Azure IoT Edge デバイスとモジュールを UI で管理できます。
 
-この記事では、Azure IoT Edge Tools for Visual Studio 2019 を使用して、IoT Edge モジュールを開発する方法を示します。 Azure IoT Edge デバイスにプロジェクトをデプロイする方法についても説明します。
-
-> [!TIP]
-> Visual Studio によって作成された IoT Edge プロジェクト構造は、Visual Studio Code と同じではありません。
+この記事では、Azure IoT Edge Tools for Visual Studio 2019 を使用して、IoT Edge モジュールを開発する方法を示します。 Azure IoT Edge デバイスにプロジェクトをデプロイする方法についても説明します。 現在、Visual Studio 2019 では、C および C# で記述されたモジュールをサポートしています。 サポートされるデバイス アーキテクチャは、Windows X64 と、Linux X64 または ARM32 です。 サポートされているオペレーティング システム、言語、およびアーキテクチャの詳細については、「[Language and architecture support (言語とアーキテクチャのサポート)](module-development.md#language-and-architecture-support)」を参照してください。
   
 ## <a name="prerequisites"></a>前提条件
 
@@ -95,11 +92,14 @@ Visual Studio 2019 の準備ができたら、次のツールとコンポーネ�
 
 Visual Studio の Azure IoT Edge プロジェクト テンプレートでは、Azure IoT Hub の Azure IoT Edge デバイスにデプロイできるプロジェクトが作成されます。 最初に Azure IoT Edge ソリューションを作成した後、そのソリューションで最初のモジュールを生成します。 各 IoT Edge ソリューションには、複数のモジュールを含めることができます。
 
+> [!TIP]
+> Visual Studio によって作成された IoT Edge プロジェクト構造は、Visual Studio Code と同じではありません。
+
 1. Visual Studio の新しいプロジェクト ダイアログで、 **[Azure IoT Edge]** プロジェクトを検索して選択し、 **[次へ]** をクリックします。 プロジェクトの構成ウィンドウで、プロジェクトの名前を入力し、場所を指定して、 **[作成]** を選択します。 既定のプロジェクト名は **AzureIoTEdgeApp1** です。
 
    ![新しいプロジェクトの作成](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. **[IoT Edge アプリケーションとモジュールの追加]\(Add IoT Edge Application and Module\)** ウィンドウで、 **[C# Module]\(C# モジュール\)** または **[C Module]\(C モジュール\)** を選択し、モジュール名とモジュール イメージ リポジトリを指定します。 Visual Studio により、モジュール名には自動的に **localhost:5000/<対象のモジュール名\>** が設定されます。 独自のレジストリ情報に置き換えます。 テスト用に Docker のローカル レジストリを使用する場合、**localhost** で問題ありません。 Azure Container Registry を使用する場合、お使いのレジストリの設定のログイン サーバーを使用します。 ログイン サーバーは * **\<レジストリ名\>*.azurecr.io** のようになります。 この文字列の **localhost:5000** 部分だけを置き換えて、最終的な結果が * *\<* レジストリ名 *\>.azurecr.io/\<* 対象のモジュール名*\>** になるようにします。 既定のモジュール名は **IoTEdgeModule1** です。
+1. **[IoT Edge アプリケーションとモジュールの追加]\(Add IoT Edge Application and Module\)** ウィンドウで、 **[C# Module]\(C# モジュール\)** または **[C Module]\(C モジュール\)** を選択し、モジュール名とモジュール イメージ リポジトリを指定します。 Visual Studio により、モジュール名には自動的に **localhost:5000/<対象のモジュール名\>** が設定されます。 独自のレジストリ情報に置き換えます。 テスト用に Docker のローカル レジストリを使用する場合、**localhost** で問題ありません。 Azure Container Registry を使用する場合、お使いのレジストリの設定のログイン サーバーを使用します。 ログイン サーバーは **_\<レジストリ名\>_ .azurecr.io** のようになります。 この文字列の **localhost:5000** 部分だけを置き換えて、最終的な結果が **\<*レジストリ名*\>.azurecr.io/ _\<対象のモジュール名\>_** になるようにします。 既定のモジュール名は **IoTEdgeModule1** です。
 
    ![アプリケーションとモジュールの追加](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 

@@ -6,16 +6,16 @@ author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fafa7bd95801be46025727b2261fc95bc539988
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c3087f0ac69126c6d509eee77abe15cc35319dfb
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440544"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693918"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 
@@ -41,16 +41,14 @@ Azure AD は、次の方を対象としています。
 
 Office 365 や Microsoft Azure などの Microsoft Online ビジネス サービスでは、サインインと ID 保護の支援のために Azure AD が必要になります。 Microsoft Online ビジネス サービスにサブスクライブすると、自動的に Azure AD が提供されて、すべての無料機能を利用できるようになります。
 
-Azure AD の実装を強化するために、Azure Active Directory Basic、Premium P1、または Premium P2 ライセンスにアップグレードして、有料機能を追加することもできます。 Azure AD の有料ライセンスは、既存の無料ディレクトリをベースに構築され、セルフサービス、拡張された監視機能、セキュリティ レポート、モバイル ユーザーを対象とするセキュリティで保護されたアクセスなどの機能を提供します。
+Azure AD の実装を強化するために、Azure Active Directory Premium P1 または Premium P2 ライセンスにアップグレードして、有料機能を追加することもできます。 Azure AD の有料ライセンスは、既存の無料ディレクトリをベースに構築され、セルフサービス、拡張された監視機能、セキュリティ レポート、モバイル ユーザーを対象とするセキュリティで保護されたアクセスなどの機能を提供します。
 
 >[!Note]
 >これらのライセンスの価格オプションについては、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
 >
->Azure Active Directory Premium P1、Premium P2、Azure Active Directory Basic は、現在、中国ではサポートされていません。 Azure AD の価格の詳細については、[Azure Active Directory フォーラム](https://azure.microsoft.com/support/community/?product=active-directory)にお問い合わせください。
+>Azure Active Directory Premium P1 および Premium P2 は、現在、中国ではサポートされていません。 Azure AD の価格の詳細については、[Azure Active Directory フォーラム](https://azure.microsoft.com/support/community/?product=active-directory)にお問い合わせください。
 
 - **Azure Active Directory Free。** ユーザーとグループの管理、オンプレミス ディレクトリ同期、基本レポート、クラウド ユーザー向けのセルフサービスのパスワード変更のほか、Azure、Office 365、および多くの一般的な SaaS アプリ全体のシングル サインオンを提供します。
-
-- **Azure Active Directory Basic。** Basic では、Free の機能に加えて、クラウド中心のアプリ アクセス、グループベースのアクセス管理、クラウド アプリ向けのセルフサービスのパスワード リセットのほか、Azure AD を使用してオンプレミスの Web アプリを発行できる Azure AD アプリケーション プロキシも提供されます。
 
 - **Azure Active Directory Premium P1。** P1 では、Free と Basic の機能に加えて、ハイブリッド ユーザーがオンプレミスとクラウドの両方のリソースにアクセスすることもできます。 さらに、動的グループ、セルフサービス グループ管理、Microsoft Identity Manager (オンプレミスの ID およびアクセス管理スイート)、オンプレミス ユーザーによるセルフサービスのパスワード リセットを可能にするクラウドの書き戻し機能など、高度な管理機能もサポートしています。
 

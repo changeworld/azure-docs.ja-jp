@@ -1,5 +1,5 @@
 ---
-title: センチメント分析
+title: 感情分析 - LUIS
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から取得する方法を示すアプリを作成します。 感情は発話全体から決定されます。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: diberry
-ms.openlocfilehash: 1408e29793fdac77b89e3f0cc0a7be525f7fa1d2
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: ad1dba3c35c0f1fa5640e484319b584731843dd8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479780"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563586"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>チュートリアル:発話の感情を取得する
 
@@ -107,7 +107,7 @@ ms.locfileid: "66479780"
 
 1. 右上のナビゲーションで **[管理]** を選択し、左側のメニューから **[Publish settings]\(発行設定\)** を選択します。
 
-1. **[Use sentiment analysis to determine if a user's utterance is positive, negative, or neutral.]\(感情分析を使用して、ユーザーの発話がポジティブか、ネガティブか、ニュートラルかを判別する\)** を選択して、この設定を有効にします。 
+1. **[Use sentiment analysis to determine if a user's utterance is positive, negative, or neutral.]\(感情分析を使用して、ユーザーの発話がポジティブか、ネガティブか、ニュートラルかを判別する\)** を選択して、 この設定を有効にします。 
 
     ![感情分析を発行設定として有効にする](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 

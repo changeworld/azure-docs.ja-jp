@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 37856c0833ecde1478d4bd588b8e3122e8eac0ca
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: be478a3f77996276f248d9b385954af813ac0397
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "67135212"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562474"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Unity iOS アプリを作成する
 
@@ -24,7 +24,6 @@ ms.locfileid: "67135212"
 > [!div class="checklist"]
 > * Spatial Anchors アカウントを作成する
 > * Unity のビルド設定を準備する
-> * Unity ARKit プラグインをダウンロードしてインポートする
 > * Spatial Anchors アカウント識別子とアカウント キーを構成する
 > * Xcode プロジェクトをエクスポートする
 > * iOS デバイスに展開して実行する
@@ -35,7 +34,7 @@ ms.locfileid: "67135212"
 
 このクイック スタートを実行するには、以下が必要です。
 
-- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 以降</a>、<a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a>、<a href="https://cocoapods.org" target="_blank">CocoaPods</a> がインストールされている macOS コンピューター。
+- <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 以降</a>、<a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a>、<a href="https://cocoapods.org" target="_blank">CocoaPods</a> がインストールされている macOS マシン。
 - HomeBrew を介してインストールされた Git。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 次に、`brew install git` を実行します。
 - 開発者向けの <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit 対応</a> iOS デバイス。
 
@@ -51,7 +50,7 @@ ms.locfileid: "67135212"
 
 ## <a name="configure-account-identifier-and-key"></a>アカウント識別子とキーを構成する
 
-**[Project]\(プロジェクト\)** ウィンドウで `Assets/AzureSpatialAnchorsPlugin/Examples` に移動し、シーン ファイル `AzureSpatialAnchorsBasicDemo.unity` を開きます。
+**[Project]\(プロジェクト\)** ウィンドウで `Assets/AzureSpatialAnchors.Examples/Scenes` に移動し、シーン ファイル `AzureSpatialAnchorsBasicDemo.unity` を開きます。
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
@@ -65,10 +64,11 @@ ms.locfileid: "67135212"
 
 アプリの指示に従って、アンカーを配置し、呼び戻します。
 
-> [!NOTE]
-> アプリを実行したとき、背景としてカメラが表示されない場合は (たとえば、代わりに空白、青、または他のテクスチャが表示される場合)、Unity に資産を再インポートすることが必要な場合があります。 アプリを停止します。 Unity の上部のメニューで、 **[Assets]\(資産\) -> [Re-import all]\(すべて再インポート\)** を選択します。 その後、アプリをもう一度実行します。
+完了したら、Xcode で **[Stop]\(停止\)** を押してアプリを停止します。
 
-Xcode で、 **[Stop]\(停止\)** をクリックしてアプリを停止します。
+## <a name="troubleshooting"></a>トラブルシューティング
+
+アプリを実行したとき、背景としてカメラが表示されない場合は (たとえば、代わりに空白、青、または他のテクスチャが表示される場合)、Unity に資産を再インポートすることが必要な場合があります。 アプリを停止します。 Unity の上部のメニューで、 **[Assets]\(資産\) -> [Re-import all]\(すべて再インポート\)** を選択します。 その後、アプリをもう一度実行します。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

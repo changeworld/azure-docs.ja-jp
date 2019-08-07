@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c78a951258e3c279f96f44ceac469e4c38cf22c
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 2ad995908ff20d123a77b511d127652aa17c4634
+ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785572"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68494519"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出す Web アプリ - コードの構成
 
@@ -29,6 +29,12 @@ ms.locfileid: "67785572"
 - ASP.NET または ASP.NET Core で認証コードを要求できるようにします。 これを行うことで、ASP.NET/ASP.NET Core によってユーザーをサインインおよび同意させることができます。
 - Web アプリによって認証コードの受信をサブスクライブします。
 - 認証コードを受信すると、MSAL ライブラリを使用して、コードと結果のアクセス トークンを引き換え、トークン キャッシュに格納されたトークンを更新します。 そこから、アプリケーションの他の部分でキャッシュを使用し、その他のトークンを通知せずに取得することができます。
+
+> [!NOTE]
+> この記事のコード スニペットは、完全に機能する次の GitHub のサンプルから抽出されています。
+>
+> - [ASP.NET Core Web アプリの増分チュートリアル](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)
+> - [ASP.NET Web アプリのサンプル](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)
 
 ## <a name="libraries-supporting-web-app-scenarios"></a>Web アプリをサポートするライブラリのシナリオ
 
@@ -42,7 +48,12 @@ Web アプリの認証コード フローをサポートするライブラリは
 
 ## <a name="aspnet-core-configuration"></a>ASP.NET Core 構成
 
-ASP.NET Core では、`Startup.cs` ファイルで物事が行われます。 `OnAuthorizationCodeReceived` Open ID Connect イベントをサブスクライブし、このイベントから、MSAL.NET のメソッド `AcquireTokenFromAuthorizationCode` を呼び出します。これには、トークン キャッシュに格納する影響と、要求されたスコープに対するアクセス トークン、期限に近づいたときにアクセスを更新したり、別のリソースがない場合に同じユーザーの代理でトークンを取得したりするために使用される更新トークンがあります。
+ASP.NET Core では、`Startup.cs` ファイルで物事が行われます。 `OnAuthorizationCodeReceived` Open ID Connect イベントをサブスクライブし、このイベントから、MSAL.NET のメソッド `AcquireTokenFromAuthorizationCode` を呼び出します。これには、要求された `scopes` に対するアクセス トークンや、アクセス トークンの有効期限に近づいたときにアクセス トークンを更新したり、別のリソースがない場合に同じユーザーの代理でトークンを取得したりするために使用される更新トークンをトークン キャッシュに格納する効果があります。
+
+```CSharp
+string[] scopes = new string[]{ "user.read" };
+string[] scopesRequestedByMsalNet = new string[]{ "openid", "profile", "offline_access" };
+```
 
 以下のコードのコメントは、MSAL.NET と ASP.NET Core を組み込む難しい側面を理解するのに役立ちます。 完全な詳細は、[ASP.NET Core Web アプリ増分チュートリアルの第 2 章](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)で提供されています
 
@@ -56,7 +67,7 @@ ASP.NET Core では、`Startup.cs` ファイルで物事が行われます。 `O
    // their Microsoft personal accounts
    // (it's required by MSAL.NET and automatically provided by Azure AD when users
    // sign in with work or school accounts, but not with their Microsoft personal accounts)
-   options.Scope.Add(OidcConstants.ScopeOfflineAccess);
+   options.Scope.Add("offline_access");
    options.Scope.Add("user.read"); // for instance
 
    // Handling the auth redemption by MSAL.NET so that a token is available in the token cache
@@ -88,7 +99,12 @@ ASP.NET Core では、`Startup.cs` ファイルで物事が行われます。 `O
    };
 ```
 
-ASP.NET Core では、Confidential クライアント アプリケーションのビルドで、HttpContext にある情報を使用します。 この HttpContext では、Web アプリの URL とサインインしているユーザー (`ClaimsPrincipal` 内) について把握します。 ASP.NET Core 構成も使用します。これには、"AzureAD" セクションがあり、`_applicationOptions` データ構造にバインドされます。 最後に、アプリケーションではトークン キャッシュを保持する必要があります。
+ASP.NET Core では、Confidential クライアント アプリケーションのビルドで、HttpContext にある情報を使用します。 この `HttpContext` では、Web アプリの URL とサインインしているユーザー (`ClaimsPrincipal` 内) について把握します。 
+
+ASP.NET Core 構成も使用します。これには、"AzureAD" セクションがあり、次の両方にバインドされます。
+
+- [ConfidentialClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationoptions?view=azure-dotnet) 型の `_applicationOptions` データ構造体
+- ASP.NET Core `Authentication.AzureAD.UI` で定義されている [AzureAdOptions](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/AzureADOptions.cs) 型の `azureAdOptions` インスタンス。 最後に、アプリケーションではトークン キャッシュを保持する必要があります。
 
 ```CSharp
 /// <summary>
@@ -102,7 +118,7 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
  var request = httpContext.Request;
 
  // Find the URI of the application)
- string currentUri = UriHelper.BuildAbsolute(request.Scheme, request.Host, request.PathBase, azureAdOptions.CallbackPath ?? string.Empty);
+ string currentUri = UriHelper.BuildAbsolute(request.Scheme, request.Host, request.PathBase, _applicationOptions.CallbackPath ?? string.Empty);
 
  // Updates the authority from the instance (including national clouds) and the tenant
  string authority = $"{azureAdOptions.Instance}{azureAdOptions.TenantId}/";
@@ -116,19 +132,22 @@ private IConfidentialClientApplication BuildConfidentialClientApplication(HttpCo
  // Initialize token cache providers. In the case of Web applications, there must be one
  // token cache per user (here the key of the token cache is in the claimsPrincipal which
  // contains the identity of the signed-in user)
- if (this.UserTokenCacheProvider != null)
+ if (UserTokenCacheProvider != null)
  {
-  this.UserTokenCacheProvider.Initialize(app.UserTokenCache, httpContext, claimsPrincipal);
+  UserTokenCacheProvider.Initialize(app.UserTokenCache, httpContext, claimsPrincipal);
  }
- if (this.AppTokenCacheProvider != null)
+ if (AppTokenCacheProvider != null)
  {
-  this.AppTokenCacheProvider.Initialize(app.AppTokenCache, httpContext);
+  AppTokenCacheProvider.Initialize(app.AppTokenCache, httpContext);
  }
  return app;
 }
 ```
 
-`AcquireTokenByAuthorizationCode` では、実際に ASP.NET によって要求される認証コードを引き換え、MSAL.NET ユーザー トークン キャッシュに追加されるトークンを取得します。 そこから、これらが ASP.NET Core コントローラーで使用されます。
+トークン キャッシュ プロバイダーの詳細については、[ASP.NET Core Web アプリのチュートリアルのトークン キャッシュ](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/455d32f09f4f6647b066ebee583f1a708376b12f/2-WebApp-graph-user/2-2-TokenCache)に関するページをご覧ください
+
+> [!NOTE]
+> `AcquireTokenByAuthorizationCode` では、実際に ASP.NET によって要求される認証コードを引き換え、MSAL.NET ユーザー トークン キャッシュに追加されるトークンを取得します。 そこから、これらが ASP.NET Core コントローラーで使用されます。
 
 ## <a name="aspnet-configuration"></a>ASP.NET 構成
 
@@ -179,6 +198,9 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
                                               .ExecuteAsync();
 }
 ```
+
+最後に、機密クライアント アプリケーションでは、クライアント シークレットではなく、クライアント証明書またはクライアント アサーションを使用してその ID を証明することもできます。
+クライアント アサーションの使用は高度なシナリオであり、詳細については[クライアント アサーション](msal-net-client-assertions.md)に関するページをご覧ください
 
 ### <a name="msalnet-token-cache-for-a-aspnet-core-web-app"></a>ASP.NET (Core) Web アプリ用の MSAL.NET トークン キャッシュ
 

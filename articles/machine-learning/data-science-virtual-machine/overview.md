@@ -4,7 +4,7 @@ description: Windows および Linux 用のデータ サイエンス仮想マシ
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
-author: gopitk
+author: vijetajo
 manager: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
 ms.service: machine-learning
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 02/22/2019
-ms.author: gokuma
-ms.openlocfilehash: 384cb274496670e0b0b5a33e001e78a0babed3f0
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.author: vijetaj
+ms.openlocfilehash: 5816f53115f3ec54cbd9784894a5262b68dd6e95
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427796"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565179"
 ---
-# <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
+# <a name="what-is-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure Data Science Virtual Machine とは
 
 データ サイエンス仮想マシン (DSVM) とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 Windows Server と Linux で使用できます。 Windows エディションの DSVM は、Windows Server 2016 と Windows Server 2012 で提供しています。 Linux エディションの DSVM は、Ubuntu 16.04 LTS と CentOS 7.4 で提供しています。
 
@@ -48,7 +48,7 @@ Data Science Virtual Machine (DSVM) の目標は、業界を越えてすべて�
 
 ### <a name="custom-compute-power-for-azure-notebooks"></a>Azure Notebooks のカスタム コンピューティング能力
 
-[Azure Notebooks](/azure/notebooks/azure-notebooks-overview) は、インストールせずに、クラウドで Jupyter ノートブックを開発、実行、および共有するための無料のホストされるサービスです。 ただし、無料のサービス レベルは 4GB のメモリと 1GB のデータに制限されています。 すべての制限を解放するには、その後 Notebooks プロジェクトを Data Science VM か、または Jupyter サーバーを実行している他の任意の VM に接続できます。 Azure Active Directory を使用してアカウント (会社のアカウントなど) で Azure Notebooks にサインインすると、Notebooks には、そのアカウントに関連付けられたいずれかのサブスクリプションの Data Science VM が自動的に表示されます。 詳細については、「プロジェクトの管理と構成」の「[Compute tier (コンピューティング レベル)](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)」を参照してください。
+[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) は、インストールせずに、クラウドで Jupyter ノートブックを開発、実行、および共有するための無料のホストされるサービスです。 ただし、無料のサービス レベルは 4GB のメモリと 1GB のデータに制限されています。 すべての制限を解放するには、その後 Notebooks プロジェクトを Data Science VM か、または Jupyter サーバーを実行している他の任意の VM に接続できます。 Azure Active Directory を使用してアカウント (会社のアカウントなど) で Azure Notebooks にサインインすると、Notebooks には、そのアカウントに関連付けられたいずれかのサブスクリプションの Data Science VM が自動的に表示されます。 詳細については、「プロジェクトの管理と構成」の「[Compute tier (コンピューティング レベル)](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)」を参照してください。
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期的な実験と評価
 データ サイエンス VM は、Microsoft ML Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 Data Science VM は短時間で設定できるため、他の短期的な使用シナリオに適用できます。 これらのシナリオには、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルが含まれます。
@@ -64,7 +64,7 @@ Data Science VM は、GPU (グラフィック処理装置) ベースのハード
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | 人気のパッケージがプレインストールされた [Microsoft R Open](https://mran.microsoft.com/open/)   |Y                      | Y             |
 | [Microsoft ML Server (R、Python)](https://docs.microsoft.com/machine-learning-server/) Developer エディションには次のものが含まれます。 <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) の並列および分散型の高機能フレームワーク (R および Python)<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package) - Microsoft の新しい最先端 ML アルゴリズム <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R および Python の運用化](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |Y                      | Y |
-| [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) Pro-Plus (共有アクティベーション付き) - Excel、Word、PowerPoint   |Y                      |N              |
+| [Microsoft Office](https://products.office.com/business/office-365-proplus-business-software) Pro-Plus (共有アクティベーション付き) - Excel、Word、PowerPoint   |Y                      |N              |
 | 人気のパッケージがプレインストールされた [Anaconda Python](https://www.continuum.io/) 2.7、3.5    |Y                      |Y              |
 | Julia 言語用の人気のパッケージがプレインストールされた [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |Y                      |Y              |
 | リレーショナル データベース                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer エディション| [PostgreSQL](https://www.postgresql.org/) (CentOS)、<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer エディション (Ubuntu) |
