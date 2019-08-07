@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: ee901fdcae9717cc6d03d7653bcaacc0c32518e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 199fcdf2ebf10852906b842f09fe7beafd2acdb5
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66254314"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326619"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要
 
@@ -92,7 +92,17 @@ Application Gateway は、既知のバックエンド インスタンスのみ�
 - 既知の CA 機関によって署名され､バックエンドの HTTP 設定のホスト名と一致する CN を持つ証明書は、エンド ツー エンド SSL が機能するため、追加の手順は必要ありません。 
 
    たとえば、バックエンド証明書が既知の CA により発行されて、その CN が contoso.com であり、バックエンドの http 設定の [ホスト] フィールドも contoso.com に設定されている場合、追加の手順は必要ありません。 バックエンドの http 設定のプロトコルとして HTTPS を設定すると、正常性プローブとデータ パスの両方が SSL で有効になります。 バックエンドとして Azure App Service または他の Azure の Web サービスを使用している場合は、それらも暗黙で信頼されており、エンド ツー エンド SSL にはこれ以上の手順は必要ありません。
+   
+> [!NOTE] 
+>
+> SSL 証明書を信頼するためには、バックエンド サーバーのその証明書が Applicatin Gateway の信頼されているストアに含まれている CA によって発行されている必要があります。証明書が信頼されている CA によって発行されていない場合は、Application Gateway によって、証明書を発行している CA の証明書が信頼されている CA によって発行されているかどうかがチェックされます。信頼されている CA が見つかる (この時点で信頼できる安全な接続が確立されます) か、信頼されている CA を見つけることができなくなる (この時点で、Applicatin Gateway によってバックエンドが正常でないとマークされます) まで、この操作が続行されます。 そのため、バックエンド サーバーの証明書には、ルート CA と中間 CA の両方を含めることをお勧めします。
+
 - 証明書が自己署名済みの場合、または不明な仲介者によって署名されている場合、 v2 SKU でエンド ツー エンド SSL を有効にするには、信頼できるルート証明書を定義する必要があります。 Application Gateway は、サーバー証明書のルート証明書がプールに関連付けられたバックエンドの HTTP 設定の信頼されたルート証明書のいずれかと一致するバックエンドとのみ通信します。
+
+> [!NOTE] 
+>
+> 自己署名証明書は、証明書チェーンの一部である必要があります。 チェーンがない単一の自己署名証明書は、V2 SKU ではサポートされていません。
+
 - ルート証明書の一致ばかりでなく、Application Gateway はバックエンドの HTTP 設定に指定されている [ホスト] 設定がバックエンド サーバーの SSL 証明書によって提示される共通名 (CN) のホスト設定と一致するかどうかも検証します｡ バックエンドとの SSL 接続を確立しようとする場合、アプリケーション ゲートウェイは バックエンドの http 設定で指定されているホストを Server Name Indication (SNI) 拡張機能に設定します。
 - バックエンドの HTTP 設定で [ホスト] フィールドではなく､ **[pick hostname from backend address]** が選択されている場合､SNI ヘッダーにはつねにバックエンド プールの FQDN が設定され､バックエンド サーバーの SSL 証明書の CN はその FDQN と一致している必要があります｡ このシナリオでは、IP アドレスを持つバックエンド プール メンバーはサポートされません。
 - このルート証明書は､バックエンド サーバーの証明書からの base64 でエンコードされたルート証明書になります｡

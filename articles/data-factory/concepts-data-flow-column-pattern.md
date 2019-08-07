@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory の Mapping Data Flow の列パターン
-description: Mapping Data Flow でAzure Data Factory の 列パターンを使用して汎用のテンプレート パターンを作成し、基礎となるスキーマ メタデータにかかわらず、データ フロー内のフィールドを変換する方法について説明します
+description: Azure Data Factory の Mapping Data Flows の列パターンを使用して一般化されたデータ変換パターンを作成する
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 08cdaafe00b7dc586ea75f6ff03fdb89107edee9
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.openlocfilehash: 076c3318a68a50e6bd1b4f9f2a4a4b9a034533c6
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66430758"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68346575"
 ---
 # <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure Data Factory の Mapping Data Flow の列パターン
 
@@ -30,3 +30,13 @@ Azure Data Factory のデータ フロー変換によっては、"列パター�
 式ビルダーの正規表現のいずれかの関数を使用する場合は、その後に $1、$2、$3 ... を使用して、正規表現の式から一致したサブパターンを参照できます。
 
 列パターンのシナリオの例では、一連の受信フィールドで SUM が使用されています。 集計の SUM 計算は、集計変換内にあります。 一致したすべてのフィールド型のうち、"integer" に一致するフィールド型に対して SUM を使用し、$$ を使用して式内の各一致を参照します。
+
+## <a name="match-columns"></a>列の一致
+![列パターンの種類](media/data-flow/pattern2.png "パターンの種類")
+
+列に基づくパターンを作成するには、列の名前、型、ストリーム、または位置で一致させることができ、これらを式関数と正規表現と組み合わせて使用できます。
+
+![列の位置](media/data-flow/position.png "列の位置")
+
+## <a name="next-steps"></a>次の手順
+ADF Mapping Data Flow の[式言語](https://aka.ms/dataflowexpressions)に関する記事で、データ変換の詳細を確認します。

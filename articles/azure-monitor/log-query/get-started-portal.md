@@ -6,14 +6,14 @@ author: bwren
 manager: carmonm
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: 2e2d13e6923535a8993a6477cbbfb921f6092d66
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565603"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348089"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Monitor で Log Analytics の使用を開始する
 
@@ -178,6 +178,9 @@ x 軸や y 軸などのビューのさまざまなプロパティ、またはグ
 クエリ ページ全体または 1 つのクエリを関数として保存することができます。 関数は他のクエリからも参照できるクエリです。 クエリを関数として保存するには、関数のエイリアスを指定する必要があります。このエイリアスは、別のクエリから参照されるときに、このクエリの呼び出しに使用される名前です。
 
 ![関数を保存する](media/get-started-portal/save-function.png)
+
+>[!NOTE]
+>クエリを保存するか保存されたクエリを編集するとき、 **[名前]** フィールドでは次の文字がサポートされます。`a–z, A–Z, 0-9, -, _, ., <space>, (, ), |`
 
 Log Analytics のクエリは、常に選択したワークスペースに保存され、そのワークスペースの他のユーザーと共有されます。
 

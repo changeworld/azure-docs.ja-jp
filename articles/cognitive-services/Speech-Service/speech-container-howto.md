@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 8f395788d4dd3c845155a52bd6b4666998838fcd
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 089b9030debc7489e123d49b5c78052f597ca469
+ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490232"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68348401"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
 
@@ -38,7 +38,7 @@ Speech コンテナーを使用する前に、次の前提条件を満たす必�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Speech リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Speech_ Azure リソース。 これらの値は、どちらも Azure portal の **Speech** の [概要] ページと [キー] ページで入手でき、コンテナーを起動するために必要です。<br><br>**{BILLING_KEY}** : リソース キー<br><br>**{BILLING_ENDPOINT_URI}** : エンドポイントURI の例: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Speech リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure _Speech_ リソース。 どちらの値も、Azure portal の **Speech** の [概要] ページと [キー] ページで確認できます。 コンテナーを起動するには、両方が必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
@@ -66,8 +66,8 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 | コンテナー | 最小値 | 推奨 |
 |-----------|---------|-------------|
-|cognitive-services-speech-to-text | 2 コア<br>2 GB メモリ  | 4 コア<br>4 GB メモリ  |
-|cognitive-services-text-to-speech | 1 コア、0.5 GB メモリ| 2 コア、1 GB メモリ |
+|cognitive-services-speech-to-text | 2 コア<br>2 GB のメモリ  | 4 コア<br>4 GB のメモリ  |
+|cognitive-services-text-to-speech | 1 コア、0.5 GB のメモリ| 2 コア、1 GB のメモリ |
 
 * 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
 
@@ -180,8 +180,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 | プレースホルダー | 値 |
 |-------------|-------|
-|{BILLING_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の Speech の [キー] ページで入手できます。  |
-|{BILLING_ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure portal の Speech の [概要] ページで入手できます。|
+|{API_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の Speech の [キー] ページで入手できます。  |
+|{ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure portal の Speech の [概要] ページで入手できます。|
 
 次の例の `docker run` コマンドでは、これらのパラメーターをお客様独自の値に置き換えてください。
 
@@ -191,8 +191,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
 containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 ### <a name="speech-to-text"></a>音声テキスト変換
@@ -201,8 +201,8 @@ ApiKey={BILLING_KEY}
 docker run --rm -it -p 5000:5000 --memory 2g --cpus 2 \
 containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text \
 Eula=accept \
-Billing={BILLING_ENDPOINT_URI} \
-ApiKey={BILLING_KEY}
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
 ```
 
 このコマンドは、次の操作を行います。
@@ -232,13 +232,13 @@ ApiKey={BILLING_KEY}
 
 この Azure クラウド初期化呼び出しを使用する方法を
 
-```C#
+```csharp
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
 次のようにコンテナー エンドポイントを使用する呼び出しに変更します。
 
-```C#
+```csharp
 var config = SpeechConfig.FromEndpoint(
     new Uri("ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1"),
     "YourSubscriptionKey");
@@ -262,7 +262,7 @@ speech_config = speechsdk.SpeechConfig(
 
 ### <a name="text-to-speech"></a>テキスト読み上げ
 
-コンテナーは、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)にある REST エンドポイント API シリーズを提供します。サンプルについては、[こちら](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/)を参照してください。
+コンテナーでは、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)に記載されている REST エンドポイント API が提供されます。サンプルについては、[こちら](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/)を参照してください。
 
 [!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
@@ -294,7 +294,7 @@ Speech コンテナーは、Azure アカウントの _Speech_ リソースを使
 * コンテナー イメージは、Azure のプライベート コンテナー レジストリからダウンロードされます。
 * コンテナー イメージを Docker で実行します。
 * REST API または SDK を使用して、コンテナーのホスト URI を指定することによって、Speech コンテナーの操作を呼び出すことができます。
-* コンテナーをインスタンス化するときは、課金情報を指定する必要があります。
+* コンテナーをインスタンス化するときは、課金情報を指定するように要求されます。
 
 > [!IMPORTANT]
 >  Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーが、顧客データ (解析対象の画像やテキストなど) を Microsoft に送信することはありません。

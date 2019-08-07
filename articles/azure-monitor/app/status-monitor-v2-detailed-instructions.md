@@ -12,23 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c8199c960229f9cc53cf57f9da3e1f17ebd9f5c7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 02f4fa45cbfa619825478520961b6411459973e4
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074155"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326272"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Status Monitor v2:詳しい手順
 
 この記事では、ApplicationMonitor モジュールを PowerShell ギャラリーにオンボードしてダウンロードする方法を詳しく説明します。
-始めるために必要になる最も一般的なパラメーターについて説明します。
-インターネットにアクセスできない場合のための手動の説明も含まれています。
-
-> [!IMPORTANT]
-> 現在、Status Monitor v2 はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 一部の機能は、サポートされていなかったり、制限されていたりする場合があります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+始めるために必要になる最も一般的なパラメーターが含まれています。
+インターネットにアクセスできない場合の手動によるダウンロード手順も説明されています。
 
 ## <a name="get-an-instrumentation-key"></a>インストルメンテーション キーを取得する
 
@@ -36,11 +31,10 @@ ms.locfileid: "67074155"
 
 ## <a name="run-powershell-as-admin-with-an-elevated-execution-policy"></a>管理者として昇格された実行ポリシーで PowerShell を実行します。
 
-**管理者として実行**
+### <a name="run-as-admin"></a>管理者として実行
 
 PowerShell でコンピューターに対して変更を行うには、管理者レベルのアクセス許可が必要です。
-
-**実行ポリシー**
+### <a name="execution-policy"></a>実行ポリシー
 - 説明:既定では、PowerShell スクリプトの実行は無効になっています。 RemoteSigned スクリプトは現在のスコープに対してのみ許可することをお勧めします。
 - リファレンス: 「[About Execution Policies (実行ポリシーの概要)](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)」と「[Set-ExecutionPolicy](
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
@@ -167,7 +161,7 @@ SerializationVersion           1.1.0.1
 
 ### <a name="manually-download-the-latest-nupkg-file"></a>最新の nupkg ファイルを手動でダウンロードする
 
-1. https://www.powershellgallery.com/packages/Az.ApplicationMonitor にアクセスします。
+1. [https://aka.ms/MFASetup](https://www.powershellgallery.com/packages/Az.ApplicationMonitor ) にアクセスします。
 2. 「**Version History (バージョン履歴)** 」一覧から最新バージョンのファイルを選択します。
 3. 「**Installation Options (インストール オプション)** 」の「**Manual Download (手動ダウンロード)** 」を選択します。
 

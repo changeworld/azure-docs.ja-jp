@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 59b44dcc9ec3a1f7c274f426a19aa8ed2258db3e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 9eb03be5cd9704c3b124bfb16fd30c5c3466890d
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509298"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326139"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
 
@@ -72,6 +72,16 @@ Azure API Management サービス インスタンスを作成すると、Azure �
     > 証明書を割り当てる処理は、デプロイのサイズによっては、15 分以上かかる場合があります。 Developer SKU にはダウンタイムがありますが、Basic SKU と上位の SKU にはダウンタイムはありません。
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
+
+## <a name="dns-configuration"></a>DNS の構成
+
+カスタム ドメイン名の DNS を構成するときは、次の 2 つのオプションがあります。
+
+- 構成したカスタム ドメイン名のエンドポイントを指す CNAME レコードを構成する。
+- API Management ゲートウェイの IP アドレスを指す A レコードを構成する。
+
+> [!NOTE]
+> API Management インスタンスの IP アドレスは静的ですが、いくつかのシナリオで変更される可能性があります。 このため、カスタム ドメインを構成するときは CNAME を使用することをお勧めします。 DNS 構成方法を選択するときは、このことを考慮してください。 詳細については、「[API Mananagement の FAQ](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
