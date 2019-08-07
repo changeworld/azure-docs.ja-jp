@@ -138,8 +138,6 @@
               href: roles-view-assignments.md
             - name: Azure AD 管理センターでのロールの割り当て
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-            - name: Graph API でのカスタム ロールの割り当て
-              href: roles-assign-graph.md
             - name: PowerShell でのカスタム ロールの割り当て
               href: roles-assign-powershell.md
             - name: カスタム ロール (プレビュー) のアクセス許可
