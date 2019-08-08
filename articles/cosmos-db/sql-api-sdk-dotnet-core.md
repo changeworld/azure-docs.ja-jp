@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: ce22efd6eccdc067b05697b8389c821c4c01a347
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638598"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779168"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB .NET Core SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -45,13 +45,18 @@ ms.locfileid: "68638598"
 > [!NOTE]
 > .NET Core を使用している場合は、.NET Standard をターゲットとする [.NET SDK](sql-api-sdk-dotnet-standard.md) の最新バージョン 3.x を参照してください。 
 
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* SDK の System.Net.Http バージョンが、NuGet パッケージで定義されているものと一致するようになりました。
+* 元の書き込み要求が失敗した場合に別のリージョンにフォールバックすることが許可されます。
+* 書き込み要求のセッションの再試行ポリシーが追加されます。
+
 ### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
 
 * 空のページの原因となったクエリの競合状態のトレースを修正します
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 
-* SDK の System.Net.Http バージョンは、NuGet パッケージで定義されているものと一致します
 * LINQ クエリの小数点以下有効桁数のサイズが増えました。
 * 新しいクラス CompositePath、CompositePathSortOrder、SpatialSpec、SpatialType、PartitionKeyDefinitionVersion が追加されました
 * DocumentCollection に TimeToLivePropertyPath が追加されました
@@ -250,6 +255,7 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |2019 年 7 月 2 日 |--- |
 | [2.4.1](#2.4.1) |2019 年 6 月 20 日 |--- |
 | [2.4.0](#2.4.0) |2019 年 5 月 5 日 |--- |
 | [2.3.0](#2.3.0) |2019 年 4 月 4 日 |--- |

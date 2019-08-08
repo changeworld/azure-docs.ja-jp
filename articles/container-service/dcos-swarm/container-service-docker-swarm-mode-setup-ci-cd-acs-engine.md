@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: fd502a308d6298dc2941461632a2832ac336c45c
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: fe24ab21a9a7d227d58e50c58f9aff2bd91e767f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849863"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598555"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(非推奨) Azure DevOps で ACS エンジンと Docker Swarm Mode を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
 
@@ -251,6 +251,6 @@ Azure DevOps を使用すると、[複数の環境のリリースを管理](http
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure DevOps を使用した CI/CD の詳細については、[Azure DevOps Build overview](https://www.visualstudio.com/docs/build/overview)\(Azure DevOps ビルドの概要\) を参照してください。
+* Azure DevOps を使用した CI/CD の詳細については、[Azure Pipelines に関するドキュメント](/azure/devops/pipelines/?view=azure-devops)の記事を参照してください。
 * ACS エンジンの詳細については、[ACS エンジンの GitHub リポジトリ](https://github.com/Azure/acs-engine)に関するページを参照してください。
 * Docker Swarm Mode の詳細については、[Docker Swarm Mode の概要](https://docs.docker.com/engine/swarm/)に関するページを参照してください。

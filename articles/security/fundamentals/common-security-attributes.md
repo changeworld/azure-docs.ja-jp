@@ -6,15 +6,16 @@ documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 ms.service: security
+ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: caac311930f2ce4e0ecdf89b5e3a980019e38381
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 43eb7e5c4cab722eb97f9e2fe819c9c79bae45d9
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611770"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828770"
 ---
 # <a name="security-attributes-for-azure-services"></a>Azure サービスのセキュリティ属性
 
@@ -645,7 +646,7 @@ SQL Database には、[単一データベース](/azure/sql-database/sql-databas
 | サービス エンドポイントのサポート| はい | [単一データベース](/azure/sql-database/sql-database-single-index)のみに適用。 |
 | Azure Virtual Network の挿入のサポート| はい | [マネージド インスタンス](/azure/sql-database/sql-database-managed-instance)のみに適用。 |
 | ネットワークの分離とファイアウォールのサポート| はい | データベースとサーバーの両方のレベルでのファイアウォール。 ネットワークの分離は、[マネージド インスタンス](/azure/sql-database/sql-database-managed-instance)のみです。 |
-| 強制トンネリングのサポート| はい | [ExpressRoute](/azure/expressroute/index.yml) VPN による[マネージド インスタンス](/azure/sql-database/sql-database-managed-instance)。 |
+| 強制トンネリングのサポート| はい | [ExpressRoute](/azure/expressroute/index) VPN による[マネージド インスタンス](/azure/sql-database/sql-database-managed-instance)。 |
 
 ### <a name="detection"></a>検出
 
