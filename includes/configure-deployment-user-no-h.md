@@ -19,7 +19,7 @@ FTP およびローカルの Git では、"*デプロイ ユーザー*" を使�
 
 デプロイ ユーザーを構成するには、Azure Cloud Shell で [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) コマンドを実行します。 \<username> と \<password> を、デプロイ ユーザーのユーザー名とパスワードで置き換えます。 
 
-- ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュの場合は "@" シンボルを含めることはできません。 
+- ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュの場合は "\@" シンボルを含めることはできません。 
 - パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。 
 
 ```azurecli-interactive

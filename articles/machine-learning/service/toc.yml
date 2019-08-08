@@ -9,11 +9,6 @@
     - name: サービスのしくみ
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
-- name: セットアップ
-  items:
-    - name: ワークスペースの作成
-      displayName: install sdk workspace
-      href: setup-create-workspace.md
 - name: チュートリアル
   items:
     - name: Python SDK

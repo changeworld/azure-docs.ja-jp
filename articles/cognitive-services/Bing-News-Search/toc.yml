@@ -47,7 +47,8 @@
 - name: ハウツー ガイド
   items:
     - name: 検索結果の強調表示の処理
-      href: hit-highlighting.md
+      href: ../Bing-Web-Search/hit-highlighting.md
+      maintainContext: true
     - name: ニュースのページング
       href: paging-news.md
     - name: サムネイルのサイズ変更とトリミング
