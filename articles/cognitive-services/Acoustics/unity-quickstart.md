@@ -10,12 +10,13 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1c790e0fa726c719d5b888d42b5f59739777566b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ROBOTS: NOINDEX
+ms.openlocfilehash: 93eb44bf91bc2c8346660a4d770ee6d83501c3ae
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917117"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706604"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Project Acoustics Unity クイック スタート
 Unity のProject Acoustics サンプル コンテンツを使用して、シミュレーション機能付きの設計 コントロールを試します。
@@ -70,7 +71,7 @@ Project Acoustics は、プレイヤーの位置を中心とした「シミュ�
 * 壁通過伝送を有効にするには、 **[Transmission (dB)]\(伝送 (dB)\)** スライダーを最下位レベルまで下げます。 
 
 ### <a name="modify-wetness-for-a-source"></a>ソースのウェットネスを変更する
-* ウェットネスが距離に従ってどれだけ高速に変化するかを変更するには、**知覚距離ワープ**を使用します。 **Project Acoustics** は、シミュレーションからスペース全体でのウェット レベルを計算します。これは距離に応じてならだかに変化し、知覚距離の手がかりを提供します。距離に関連するウェット レベルを増やすことで距離ワープを増やすと、この効果が誇張されます。 ワープ値を 1 未満にすると、距離ベースの残響の変化はわずかになります。 また、この効果は、 **[Wetness (dB)]\(ウェットネス (dB)\)** を調整して、きめ細かく調整することもできます。
+* ウェットネスが距離に従ってどれだけ高速に変化するかを変更するには、**知覚距離ワープ**を使用します。 **Project Acoustics** は、シミュレーションからスペース全体でのウェット レベルを計算します。これは距離に応じてならだかに変化し、知覚距離の手がかりを提供します。距離に関連するウエット レベルを増やすことで距離ワープを増やすと、この効果が誇張されます。 ワープ値を 1 未満にすると、距離ベースの残響の変化はわずかになります。 また、この効果は、 **[Wetness (dB)]\(ウェットネス (dB)\)** を調整して、きめ細かく調整することもできます。
 
 * **[Decay Time Scale]\(減衰時間スケール\)** を調整して、スペース全体にわたって減衰時間を長くします。 特定のソースとリスナーの位置ペアのシミュレーションの結果が 1.5 秒の減衰時間であり、 **[Decay Time Scale]\(減衰時間スケール\)** が 2 に設定されている場合、ソースに適用される減衰時間は 3 秒です。
 

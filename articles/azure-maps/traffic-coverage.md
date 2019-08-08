@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ad7d4dceefcaa06effa6b2974b0a8a03ad641372
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9a3c4875f01c650485034fe46f53bb5aa1fd75b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60794048"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722648"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps の交通情報の対象範囲
 
@@ -62,7 +62,9 @@ Azure Maps は、交通の**流れ**と**事故**の形式で豊富な交通情�
 |---------|:---------:|:---------:|
 |アンドラ   |✓         |✓         |
 |オーストリア     |✓         |✓         |
+|ベラルーシ    |✓         |✓         |
 |ベルギー     |✓         |✓         |
+|ボスニア・ヘルツェゴビナ    |✓         |✓         |
 |ブルガリア     |✓         |✓         |
 |クロアチア     |✓         |✓         |
 |チェコ共和国     |✓         |✓         |
@@ -78,6 +80,7 @@ Azure Maps は、交通の**流れ**と**事故**の形式で豊富な交通情�
 |アイスランド     |✓         |✓         |
 |アイルランド     |✓         |✓         |
 |イタリア     |✓         |✓        |
+|カザフスタン    |✓         |✓        |
 |ラトビア     |✓         |✓         |
 |レソト     |✓         |✓         |
 |リヒテンシュタイン      |✓         |✓         |
@@ -93,6 +96,7 @@ Azure Maps は、交通の**流れ**と**事故**の形式で豊富な交通情�
 |ルーマニア     |✓         |✓         |
 |ロシア     |✓         |✓         |
 |サンマリノ    |✓         |✓         |
+|セルビア   |✓         |✓         |
 |スロバキア     |✓         |✓         |
 |スロベニア     |✓         |✓         |
 |スペイン     |✓         |✓         |

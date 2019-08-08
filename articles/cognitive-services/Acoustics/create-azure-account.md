@@ -10,12 +10,13 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: db4f96ff7c355f3582966e4daa945f54a6e5b847
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ROBOTS: NOINDEX
+ms.openlocfilehash: f11dfda62ebb53aba6254f2db4eace7c524141d4
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616545"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704896"
 ---
 # <a name="project-acoustics-azure-batch-account-setup"></a>Project Acoustics の Azure Batch アカウントの設定
 このハウツー記事では、Project Acoustics Unity と Unreal エンジンの統合に使用する Azure Batch アカウントの設定について説明します。

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/14/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: e96aafe61c0d8547ffca9e97bfd9e90c9529155f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7ef4a9d5f63282736b010e67b467f82474bcf409
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237280"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782652"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM/物理サーバーの大規模なディザスター リカバリーを設定する
 
@@ -129,7 +129,7 @@ Azure へのフェールオーバー後は、オンプレミスと同様に動�
 
 **CPU** | **メモリ** | **キャッシュ ディスク** | **レプリケーション対象のマシンの制限**
  --- | --- | --- | ---
-8 vCPU<br> 2 ソケット * 4 コア @ 2.5 GHz | 16 GB | 600 TB | 最大 550 台のマシン<br> 各ソース マシンは、それぞれ 100 GB のディスクを 3 個備えていることを前提としています。
+8 vCPU<br> 2 ソケット * 4 コア @ 2.5 GHz | 16 GB | 600 GB | 最大 550 台のマシン<br> 各ソース マシンは、それぞれ 100 GB のディスクを 3 個備えていることを前提としています。
 
 - これらの制限は、OVF テンプレートを使用して設定された構成サーバーに基づいています。
 - この制限は、構成サーバーで既定で実行されているプロセス サーバーは使用していないことを前提としています。

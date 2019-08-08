@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: cbb18212f70343d8b9933bd2c787ce6aae8b145d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61cdcb98fc5c0947a25954161676c55ebf902688
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61400999"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720725"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Jira からデータをコピーする (プレビュー)
 
@@ -47,7 +47,7 @@ Jira のリンクされたサービスでは、次のプロパティがサポー
 | type | type プロパティは、次のように設定する必要があります。**Jira** | はい |
 | host | Jira サービスの IP アドレスまたはホスト名。 (たとえば、jira.example.com)  | はい |
 | port | Jira サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は、HTTPS 経由で接続する場合は 443、HTTP 経由で接続する場合は 8080 です。  | いいえ |
-| username | Jira サービスへのアクセスに使用するユーザー名。  | はい |
+| userName | Jira サービスへのアクセスに使用するユーザー名。  | はい |
 | password | username フィールドに指定したユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ |
@@ -91,11 +91,12 @@ Jira からデータをコピーするには、データセットの type プロ
     "name": "JiraDataset",
     "properties": {
         "type": "JiraObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Jira linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 903673e2c953328e90029938a9b7446271411646
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.subservice: cognitive-search
+ms.openlocfilehash: 653fbfe8c20150b2aca3e0a45b2877af35e01fff
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422992"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840995"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 

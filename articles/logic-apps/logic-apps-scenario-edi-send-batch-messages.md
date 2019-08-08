@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: d6d3a7111f3a5e49e32eba8ca4f09d692538cb87
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: c2b0e2ed801724b682e0c4a60d6d7dff9645aab3
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64715789"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827421"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Azure Logic Apps を使用して取引先パートナーに EDI メッセージをバッチで送信する
 
@@ -114,7 +114,7 @@ ms.locfileid: "64715789"
 
 ### <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
-バッチ受信アプリが期待どおりに動作するように、テスト用の HTTP アクションを追加し、バッチ処理されたメッセージを[要求ビン サービス](https://requestbin.fullcontact.com/)に送信することができます。 
+バッチ受信アプリが期待どおりに動作するように、テスト用の HTTP アクションを追加し、バッチ処理されたメッセージを[要求ビン サービス](https://requestbin.com/)に送信することができます。 
 
 1. X12 エンコード アクションで、 **[新しいステップ]** を選択します。 
 

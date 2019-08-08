@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 6293b13f-55d0-4d85-a993-4f1cd3c103c0
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 117df5b1b1a80d9e0a39c6f0114f97a4dae5ceda
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 0d5f135d2b5679f5974c8b5674e6419a690d38d7
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610758"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726648"
 ---
 # <a name="microsoft-security-response-center"></a>Microsoft Security Response Center
 

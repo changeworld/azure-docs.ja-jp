@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 4350cc215c776317d3bde24c7561c317a31fb4c3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 53f8742df0a03327069da083e6cb46a7c03118c1
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321872"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68773073"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル:.NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -175,7 +175,7 @@ CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 
 `Program.cs` 内の 2 つのメソッドは、ファイルのアップロードに関連しています。
 
-* `UploadResourceFilesToContainerAsync`:ResourceFile オブジェクトのコレクションを返し、内部的に `UploadResourceFileToContainerAsync` を呼び出して、`inputFilePaths` パラメーターで渡される各ファイルをアップロードします。
+* `UploadFilesToContainerAsync`:ResourceFile オブジェクトのコレクションを返し、内部的に `UploadResourceFileToContainerAsync` を呼び出して、`inputFilePaths` パラメーターで渡される各ファイルをアップロードします。
 * `UploadResourceFileToContainerAsync`:各ファイルを BLOB として入力用コンテナーにアップロードします。 ファイルのアップロード後、BLOB の Shared Access Signature (SAS) を取得し、それを表す ResourceFile オブジェクトを返します。
 
 ```csharp
@@ -184,7 +184,7 @@ string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
     SearchOption.TopDirectoryOnly));
 
-List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
   blobClient,
   inputContainerName,
   inputFilePaths);

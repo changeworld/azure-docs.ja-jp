@@ -11,14 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 33e738f31be493d5890fc972ec71e7c6cd733bf4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3c1721454c0b3c96071c685a764f34d4fa540b9
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736451"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775267"
 ---
 # <a name="http2-support-in-azure-front-door-service"></a>Azure Front Door Service の HTTP/2 サポート
+
+現在、HTTP/2 サポートは、すべての Front Door 構成に対してアクティブです。 顧客からのそれ以上のアクションは必要ありません。
+
 HTTP/2 は HTTP/1.1 に対するメジャー リビジョンです。 これにより、Web パフォーマンスの高速化、応答時間の短縮、ユーザー エクスペリエンスの向上が実現される一方で、使い慣れた HTTP メソッド、状態コード、およびセマンティクスは維持されます。 HTTP/2 は HTTP および HTTPS と連携して動作するように設計されていますが、多くのクライアント Web ブラウザーは HTTP/2 over TLS (トランスポート層セキュリティ) のみをサポートしています。
 
 ### <a name="http2-benefits"></a>HTTP/2 の利点
@@ -42,17 +45,13 @@ HTTP/2 の利点には、次のものがあります。
 
 主要なブラウザーはすべて、現在のバージョンで HTTP/2 サポートを実装しています。 サポートされていないブラウザーは、自動的に HTTP/1.1 にフォールバックします。
 
-|ブラウザー|最小バージョン|
+|Browser|最小バージョン|
 |-------------|------------|
 |Microsoft Edge| 12|
 |Google Chrome| 43|
 |Mozilla Firefox| 38|
 |Opera| 32|
 |Safari| 9|
-
-## <a name="enabling-http2-support-in-azure-front-door-service"></a>Azure Front Door Service の HTTP/2 サポートの有効化
-
-現在、HTTP/2 サポートは、すべての Front Door 構成に対してアクティブです。 顧客からのそれ以上のアクションは必要ありません。
 
 ## <a name="next-steps"></a>次の手順
 

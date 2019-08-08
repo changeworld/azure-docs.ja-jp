@@ -1,22 +1,19 @@
 ---
 title: Azure クイック スタート - ブラウザーで JavaScript と HTML を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
 description: BlobService のインスタンスを使用し、HTML ページで JavaScript を使用して BLOB をアップロード、一覧表示、および削除する方法について説明します。
-services: storage
 keywords: ストレージ, JavaScript, HTML
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
 ms.author: mhopkins
-ms.reviewer: seguler
 ms.date: 11/14/2018
-ms.topic: quickstart
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: df697ab31875c8f806456c1e60820e7e8d752539
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.topic: quickstart
+ms.openlocfilehash: c9951a5fcfb30ed229b2bc7286b6d274649e6136
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149576"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722074"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 

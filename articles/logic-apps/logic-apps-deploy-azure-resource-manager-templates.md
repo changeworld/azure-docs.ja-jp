@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: dbc92502cdab6e76ba6b8730fca7e0aed3966a43
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ce0ebd29427092ddc99929674735bab798d38190
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494931"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562553"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする
 
@@ -35,7 +35,7 @@ ms.locfileid: "68494931"
 
 [![Azure へのデプロイ](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-たとえば、Azure portal にサインインした後にこの情報の入力を求められます。
+たとえば、Azure portal にサインインした後に次の情報の入力を求められます。
 
 * Azure サブスクリプション名
 * 使用するリソース グループ
@@ -59,7 +59,7 @@ Visual Studio を使用して作成した Azure Resource Group プロジェク�
 
 ## <a name="deploy-with-azure-powershell"></a>Azure PowerShell でのデプロイ
 
-特定の Azure リソース グループにデプロイするには、次のコマンドを使用します。
+特定の "*Azure リソース グループ*" にデプロイするには、次のコマンドを使用します。
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -74,7 +74,7 @@ New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -Te
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ
 
-特定の *Azure リソース グループ*にデプロイするには、次のコマンドを使用します。
+特定の "*Azure リソース グループ*" にデプロイするには、次のコマンドを使用します。
 
 ```azurecli
 az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json

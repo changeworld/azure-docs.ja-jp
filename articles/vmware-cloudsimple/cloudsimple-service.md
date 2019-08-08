@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/24/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bebc68129ee2ff79241bcefec1ce0c3ca0b472d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: a43fbebb21be82fd751778d6fec95e0ee9c346ad
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595313"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812511"
 ---
 # <a name="cloudsimple-service-overview"></a>CloudSimple サービスの概要
 

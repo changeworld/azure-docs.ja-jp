@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 861c2e86d623c46c14366f19457d1f689386a316
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d25aa9252f061cee7f4cffdca42f00d84f719a3
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64576859"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812660"
 ---
 # <a name="firewall-tables-overview"></a>ファイアウォール テーブルの概要
 
@@ -53,12 +53,12 @@ ms.locfileid: "64576859"
 
 すべてのファイアウォールの表で、次の既定のルールが作成されます。
 
-|優先順位|Name|状態の追跡|Direction|トラフィックのタイプ|Protocol|source|発信元ポート|変換先|宛先ポート|Action|
+|優先度|EnableAdfsAuthentication|状態の追跡|Direction|トラフィックのタイプ|Protocol|source|発信元ポート|変換先|宛先ポート|Action|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|allow-all-to-internet (インターネットへの発信をすべて許可)|ステートフル|送信|パブリック IP またはインターネットのトラフィック|All|任意|任意|任意|任意|ALLOW|
-|65001|deny-all-from-internet (インターネットからの受信はすべて拒否)|ステートフル|受信|パブリック IP またはインターネットのトラフィック|All|任意|任意|任意|任意|拒否|
-|65002|allow-all-to-intranet (イントラネットへの発信をすべて許可)|ステートレス|送信|プライベート クラウド内部または VPN トラフィック|All|任意|任意|任意|任意|ALLOW|
-|65003|allow-all-from-intranet (イントラネットからの受信をすべて許可)|ステートレス|受信|プライベート クラウド内部または VPN トラフィック|All|任意|任意|任意|任意|ALLOW|
+|65000|allow-all-to-internet (インターネットへの発信をすべて許可)|ステートフル|送信|パブリック IP またはインターネットのトラフィック|All|Any|Any|Any|Any|Allow|
+|65001|deny-all-from-internet (インターネットからの受信はすべて拒否)|ステートフル|受信|パブリック IP またはインターネットのトラフィック|All|Any|Any|Any|Any|拒否|
+|65002|allow-all-to-intranet (イントラネットへの発信をすべて許可)|ステートレス|送信|プライベート クラウド内部または VPN トラフィック|All|Any|Any|Any|Any|Allow|
+|65003|allow-all-from-intranet (イントラネットからの受信をすべて許可)|ステートレス|受信|プライベート クラウド内部または VPN トラフィック|All|Any|Any|Any|Any|Allow|
 
 ## <a name="next-steps"></a>次の手順
 

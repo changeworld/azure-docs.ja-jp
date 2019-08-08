@@ -10,12 +10,13 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: a18f6b57e203c40c0f667f07e8371348cb738c9b
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ROBOTS: NOINDEX
+ms.openlocfilehash: a965fc020c5c534616459ad661b71ac67dbc2425
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827566"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704802"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Project Acoustics についてよく寄せられる質問
 

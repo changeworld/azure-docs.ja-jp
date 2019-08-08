@@ -5,15 +5,15 @@ author: dikamath
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 33de07663c91f12d4e10c4661b841cd2dbe5a162
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9eb02f04b5873e5906782a27ce833a724ceecfe3
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165254"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812368"
 ---
 # <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>CloudSimple による VMware ソリューション用のノードをプロビジョニングする - Azure
 

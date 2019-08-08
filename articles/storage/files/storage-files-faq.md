@@ -7,12 +7,12 @@ ms.date: 01/02/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 83a13af1d3a17929591ac636add8d0eb7bc61ef3
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 622a033b73ace93e98cfa0d5179002c78ec49b35
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699658"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704480"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -275,10 +275,6 @@ ms.locfileid: "68699658"
 * <a id="where-are-snapshots-stored"></a>
 **共有スナップショットはどこに格納されていますか。**  
     共有スナップショットは、ファイル共有と同じストレージ アカウントに格納されています。
-
-* <a id="snapshot-perf-impact"></a>
-**共有スナップショットを使用することに関してパフォーマンス上の影響はありますか。**  
-    共有スナップショットには、パフォーマンスのオーバーヘッドはありません。
 
 * <a id="snapshot-consistency"></a>
 **共有スナップショットにアプリケーション整合性はありますか。**  

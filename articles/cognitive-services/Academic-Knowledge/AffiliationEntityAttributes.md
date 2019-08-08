@@ -10,18 +10,19 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 82e6a5b66342e58e62da029d617cbd1d74c28149
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 333875472d9b859196c4d828061301b9d32c4d5a
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61340521"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705111"
 ---
 # <a name="affiliation-entity"></a>所属エンティティ
 
 <sub> *次の属性は、所属エンティティに固有です。(Ty = '5') </sub>
 
-Name    |説明                            |Type       | Operations
+EnableAdfsAuthentication    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 AfN     |所属の標準化名        |string     |等しい
@@ -31,6 +32,6 @@ ECC     |所属の引用の推定総数 |Int32      |なし
 
 ## <a name="extended-metadata-attributes"></a>拡張メタデータの属性 ##
 
-Name    | 説明               
+EnableAdfsAuthentication    | 説明               
 --------|---------------------------    
 PC      |所属の論文数

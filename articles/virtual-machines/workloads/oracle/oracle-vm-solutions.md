@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 70e87a38373688c1b364a079cd07934309662e3e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f13c7e6db2bf13c0547ee8689e22c9f04fe6d511
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707430"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826764"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle VM イメージとそのデプロイ
 
@@ -87,7 +87,7 @@ Oracle RAC では、オンプレミスのマルチノード クラスター構�
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性とディザスター リカバリーに関する考慮
 Azure で Oracle データベースを使用する場合、いかなるダウンタイムも回避するために高可用性とディザスター リカバリー ソリューションを実装する責任があります。 
 
-Azure の Oracle Database Enterprise Edition (Oracle RAC を使用しない) では、Azure で [Data Guard, Active Data Guard](https://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性とディザスター リカバリーを実現できます。 両方の仮想マシンを同じ[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。  さらに、Azure が仮想マシンを個別の障害ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ可用性セットに配置することをお勧めします。 地理的冗長性を実現する必要がある場合は、2 つの異なるリージョン間でレプリケートするように 2 つのデータベースをセットアップし、2 つのインスタンスを VPN Gateway で接続することができます。
+Azure の Oracle Database Enterprise Edition (Oracle RAC を使用しない) では、Azure で [Data Guard, Active Data Guard](https://www.oracle.com/database/technologies/high-availability/dataguard.html) または [Oracle GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性とディザスター リカバリーを実現できます。 両方の仮想マシンを同じ[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。  さらに、Azure が仮想マシンを個別の障害ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ可用性セットに配置することをお勧めします。 地理的冗長性を実現する必要がある場合は、2 つの異なるリージョン間でレプリケートするように 2 つのデータベースをセットアップし、2 つのインスタンスを VPN Gateway で接続することができます。
 
 [Azure での Oracle Data Guard の実装](configure-oracle-dataguard.md)に関するチュートリアルでは、Azure での基本的なセットアップ手順を説明しています。  
 

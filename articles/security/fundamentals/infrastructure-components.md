@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 431f99ad711f464ee45c5db42435c3c8a23f2ad3
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611654"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727209"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure 情報システムのコンポーネントと境界
 この記事では、Azure のアーキテクチャと管理について、一般的な説明を行います。 Azure システムの環境は、次のネットワークで構成されています。

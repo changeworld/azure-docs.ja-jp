@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 08/01/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 80d4fff03422beacccd3aff3cdd8cb1047d5f5af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c574578e6ed6ee032be01718eb3e8afd27fdf6f
+ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61344642"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68708003"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムの有料 (ライセンスあり) カスタム コンポーネントをインストールする
 
@@ -76,7 +76,7 @@ Azure SSIS 統合ランタイムは、その性質上、いくつかの難題を
 
 ## <a name="isv-partners"></a>ISV パートナー
 
-[ADF での SSIS の Enterprise Edition、カスタム セットアップ、およびサード パーティ機能拡張](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)に関するブログ記事の最後で、コンポーネントおよび拡張機能を Azure SSIS IR に適応させている ISV パートナーの一覧を検索できます。
+[ADF での SSIS の Enterprise Edition、カスタム セットアップ、およびサード パーティ機能拡張](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Enterprise-Edition-Custom-Setup-and-3rd-Party-Extensibility-for/ba-p/388360)に関するブログ記事の最後で、コンポーネントおよび拡張機能を Azure SSIS IR に適応させている ISV パートナーの一覧を検索できます。
 
 ## <a name="next-steps"></a>次の手順
 

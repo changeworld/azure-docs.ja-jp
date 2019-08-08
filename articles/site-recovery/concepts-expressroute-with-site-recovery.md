@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: mayg
-ms.openlocfilehash: 35fa26112a6026ab05bd59b38621de7ee802c715
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: eb29f8280ac1da3cd366b0c54cc6e2ce92b06286
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491904"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726469"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 
@@ -56,7 +56,7 @@ Azure VM のディザスター リカバリーの場合、既定では、レプ�
 
 既に ExpressRoute を使用してオンプレミスのデータ センターからソース リージョンの Azure VM に接続している場合は、フェールオーバーのターゲット リージョンで ExpressRoute 接続を再確立することを計画できます。 同じ ExpressRoute 回線を使用して新しい仮想ネットワーク接続経由でターゲット リージョンに接続することも、ディザスター リカバリー用の別個の ExpressRoute 回線と接続を利用することもできます。 考えられるさまざまなシナリオの説明については、[ここ](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute)をご覧ください。
 
-[ここ](../site-recovery/azure-to-azure-support-matrix.md#region-support)で説明しているように、同じ地理クラスター内で、Azure 仮想マシンを任意の Azure リージョンにレプリケートできます。 選択したターゲット Azure リージョンがソースと同じ地理的リージョン内にない場合は、ExpressRoute Premium を有効にすることが必要な場合があります。 詳しくは、「[ExpressRoute の場所](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region)」と「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」をご覧ください。
+[ここ](../site-recovery/azure-to-azure-support-matrix.md#region-support)で説明しているように、同じ地理クラスター内で、Azure 仮想マシンを任意の Azure リージョンにレプリケートできます。 選択したターゲット Azure リージョンがソースと同じ地理的リージョン内にない場合は、ExpressRoute Premium を有効にすることが必要な場合があります。 詳しくは、「[ExpressRoute の場所](../expressroute/expressroute-locations.md)」と「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 - [ExpressRoute 回線](../expressroute/expressroute-circuit-peerings.md)について詳しく学習する。
