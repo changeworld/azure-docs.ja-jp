@@ -56,6 +56,8 @@
       items:
         - name: 'C#'
           href: ./Quickstarts/create-publish-kb-csharp-sdk.md
+        - name: Node.js
+          href: ./Quickstarts/create-publish-kb-nodejs-sdk.md
 - name: チュートリアル
   items:
     - name: KB を作成して回答する
