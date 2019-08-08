@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
-ms.openlocfilehash: f0929f5988c9241d5bc0b00a4c0421f60f9ba4ef
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 88d9abda7d56deefc5880eb50799ac89a89ac44f
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668083"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780950"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>デバイス管理の開始 (Node.js)
 
@@ -42,6 +42,8 @@ ms.locfileid: "68668083"
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 

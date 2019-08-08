@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: daba6601c0da2bd6d1b76897e7ce1ff75da67b5b
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 52651ca592c4da9883768cd87e090985e17be47b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667961"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780915"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
 
@@ -42,6 +42,8 @@ ms.locfileid: "68667961"
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
