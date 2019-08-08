@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 963d7d44ef3ef77604fc5a9faac479a9e4c91ee6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca534d3ffcfd1d4caeb9cf755934a846fafae26e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61487370"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570097"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS アプリケーション
 
@@ -42,7 +41,7 @@ ms.locfileid: "61487370"
 
 テナントごとデータベースのパターンが効果的なのは、テナントの分離を考慮し、共有リソースの費用対効果の高い使用ができる一元的なサービスを実行したいサービス プロバイダーです。 場所またはテナントごとにデータベースが作成され、すべてのデータベースが一元的に管理されます。 データベースはエラスティック プールにホストされて、高い費用対効果と簡単なパフォーマンス管理を実現できますが、これはテナントの予期できないワークロード パターンを活用しています。 カタログ データベースには、テナントとそのデータベースの間のマッピングが格納されます。 このマッピングは、[エラスティック データベース クライアント ライブラリ](sql-database-elastic-database-client-library.md)のシャード マップ管理機能を使用して管理されており、アプリケーションへの効率的な接続管理を提供します。
 
-[チュートリアル][docs-tutorials-for-wingtip-dpt]および GitHub  [.../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt] 上のコードを確認してください。
+[チュートリアル][docs-tutorials-for-wingtip-dpt]および GitHub [.../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt] 上のコードを確認してください。
 
 ## <a name="sharded-multi-tenant-database-pattern"></a>シャード マルチテナント データベース パターン
 
@@ -50,7 +49,7 @@ ms.locfileid: "61487370"
 
 このパターンでは*ハイブリッド* モデルも可能で、1 つのデータベース内の複数テナントでコストを最適化したり、独自のデータベース内の 1 つのテナントで分離を最適化したりすることもできます。 この選択は、テナントのプロビジョニング時あるいはその後のどちらでも、アプリケーションに影響を与えずに、テナントごとに可能です。  このモデルは、テナントのグループを異なる方法で処理する必要がある場合に効果的に使用できます。 たとえば、低コストのテナントを共有データベースに割り当て、プレミアム テナントを独自のデータベースに割り当てることができます。 
 
-[チュートリアル][docs-tutorials-for-wingtip-mt]および GitHub  [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt] 上のコードを確認してください。
+[チュートリアル][docs-tutorials-for-wingtip-mt]および GitHub [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt] 上のコードを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,12 +9,12 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 11dda62a7d8a92b17eb1d431e61086680f356195
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cf063311e5559ddf5706df397ce744a726610000
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476616"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667342"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
 
@@ -46,6 +46,8 @@ Azure Portal で**仮想マシン**に移動します。
 ### <a name="resource-group-limit"></a> オンボードの制限事項
 
 オンボードのために使用できるリソース グループの数は、[Resource Manager のデプロイメントの制限](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)によって制限されます。 Resource Manager のデプロイメントは、更新プログラムの展開と混同してはならず、デプロイあたり 5 つのリソース グループに制限されています。 オンボードの整合性を確保するため、それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 これで、デプロイのために選択するリソース グループは 3 つ残ります。
+
+また、Runbook をオンボードに使用することもできます。 詳細については、「[Update と Change Tracking ソリューションの Azure Automation への配布準備をする](automation-onboard-solutions.md)」を参照してください。
 
 フィルター コントロールを使用して、異なるサブスクリプション、場所、およびリソース グループから仮想マシンを選択します。
 

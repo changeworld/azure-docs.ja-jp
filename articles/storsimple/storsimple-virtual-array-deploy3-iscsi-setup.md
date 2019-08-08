@@ -12,20 +12,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/27/2017
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61417309"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516810"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介して iSCSI サーバーとしてセットアップする
 
 ![iscsi セットアップ プロセス フロー](./media/storsimple-virtual-array-deploy3-iscsi-setup/iscsi4.png)
 
 ## <a name="overview"></a>概要
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 このデプロイ チュートリアルは、Microsoft Azure StorSimple Virtual Array に適用されます。 このチュートリアルでは、初期セットアップを実行し、StorSimple iSCSI サーバーを登録し、デバイス セットアップを完了した後、iSCSI サーバーとして構成された StorSimple Virtual Array でボリュームを作成、マウント、初期化、およびフォーマットする方法を説明します。 
 
@@ -195,7 +197,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
 4. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[ターゲット]** タブで、 **[検出されたターゲット]** を見つけます。 (各ボリュームが検出されたターゲットになります。)デバイスの状態が **[非アクティブ]** になっています。
    
     ![[検出されたターゲット]](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
-5. ターゲット デバイスを選択し、 **[接続]** をクリックします。 デバイスが接続されると、状態が **[接続]** に変わります (Microsoft iSCSI イニシエーターの使用方法の詳細については、「[Installing and Configuring Microsoft iSCSI Initiator (Microsoft iSCSI イニシエーターのインストールと構成)][1]」をご覧ください)。
+5. ターゲット デバイスを選択し、 **[接続]** をクリックします。 デバイスが接続されると、状態が **[接続]** に変わります (Microsoft iSCSI イニシエーターの使用方法の詳細については、[Microsoft iSCSI イニシエーターのインストールと構成][1]に関する記事を参照してください)。
    
     ![ターゲット デバイスの選択](./media/storsimple-virtual-array-deploy3-iscsi-setup/image25.png)
 6. Windows ホスト上で、Windows ロゴ キーを押しながら X キーを押し、 **[ファイル名を指定して実行]** をクリックします。

@@ -1,5 +1,5 @@
 ---
-title: よく寄せられる質問 (FAQ)
+title: よく寄せられる質問 (FAQ) - LUIS
 titleSuffix: Azure Cognitive Services
 description: この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
 author: diberry
@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7e1e61d96b066c395668ce1dd9cdba4cb4ecb2be
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 5122a5a88f5a0d67799930999236f2993bc43f8f
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204097"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609765"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -123,7 +123,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>昨日は動いていた LUIS アプリで、今日は 403 エラーが発生します。 アプリは変更していません。 どのように修正すればよいですか
-[こちらの FAQ の説明](#how-do-i-create-and-assign-a-luis-endpoint-key)に従って LUIS エンドポイント キーを作成し、それをアプリに割り当てます。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md#use-endpoint-key-in-query)必要があります。
+こちらの[説明](#how-do-i-create-and-assign-a-luis-endpoint-key)に従って LUIS エンドポイント キーを作成し、それをアプリに割り当てます。 その後、エンドポイントへのクライアント アプリケーションの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md#use-endpoint-key-in-query)必要があります。 別のリージョンに新しいリソースを作成した場合、HTTP クライアント要求のリージョンも変更します。
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>LUIS エンドポイントをセキュリティで保護するにはどうすればよいですか?
 「[Securing the endpoint](luis-concept-security.md#securing-the-endpoint)」(エンドポイントのセキュリティ保護) をご覧ください。

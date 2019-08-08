@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 7cde18f2da764a055443900e7daf160f72e2eeb5
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68301654"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598948"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>評価のために依存関係の視覚化を設定する
 
-この記事では、Azure Migrate:Server Assessment での依存関係マッピングの設定方法について説明します。
+この記事では、依存関係マッピングを Azure Migrate:Server Assessment を使用して作成する方法について説明します。
 
 依存関係マッピングは、評価および移行するマシン間の依存関係を視覚化するのに役立ちます。
 
@@ -29,8 +29,8 @@ ms.locfileid: "68301654"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)済みであることを確認します。
-- プロジェクトを既に作成している場合は、Azure Migrate:Server Assessment ツールを[追加](how-to-assess.md)済みであることを確認してください。
+- Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
+- プロジェクトを既に作成している場合は、[Azure Migrate](how-to-assess.md):Server Assessment ツールを追加済みであることを確認してください。
 - マシンが Azure Migrate で検出されていることを確認します。これは、[VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用に Azure Migrate アプライアンスを設定することで実行できます。 アプライアンスは、オンプレミス マシンを検出して、Azure Migrate:Server Assessment にメタデータとパフォーマンス データを送信します。 [詳細情報](migrate-appliance.md)。
 
 
@@ -39,7 +39,7 @@ ms.locfileid: "68301654"
 可用性 | 依存関係の視覚化は、Azure Government では使用できません。
 サービス マップ | 依存関係の視覚化では、Azure Monitor ログで Service Map ソリューションが使用されます。 [Service Map](../azure-monitor/insights/service-map-configure.md) は、サーバー間の接続を自動的に検出して表示します。
 エージェント | 依存関係の視覚化を使用するには、マップするマシン上にいくつかのエージェントをインストールします。<br/> - [Azure Log Analytics](../azure-monitor/platform/log-analytics-agent.md) エージェント (以前は Microsoft Monitoring Agent (MMA) と呼ばれていました)。<br/> - Service Map の依存関係エージェント。<br/><br/> エージェントのインストールを自動化するには、デプロイ ツール (System Center Configuration Manager など) を使用するか、または Azure Migrate 用のエージェント デプロイ ソリューションを備えたパートナー ツール ([Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) など) を使用します。
-依存関係エージェント | [Windows](/azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) および [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) での依存関係エージェントのサポートを確認します。<br/><br/> スクリプトを使用した依存関係エージェントのインストールの[詳細情報](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)を確認します。
+依存関係エージェント | [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) および [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) での依存関係エージェントのサポートを確認します。<br/><br/> スクリプトを使用した依存関係エージェントのインストールの[詳細情報](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)を確認します。
 Log Analytics エージェント (MMA) | MMA のインストール方法の[詳細情報](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)を確認します。<br/><br/> System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)のガイダンスを参照してください。 ただし、このようなマシンには、依存関係エージェントをインストールする必要がある点に注意してください。<br/><br/> Log Analytics エージェントでサポートされている Linux オペレーティング システムを[確認](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)します。
 評価グループ | 依存関係を視覚化するグループには、10 個を超えるマシンを含めないでください。 マシンが 10 台を超える場合は、小さいグループに分割して依存関係を視覚化してください。
 
@@ -70,7 +70,7 @@ Log Analytics エージェント (MMA) | MMA のインストール方法の[詳�
 
 依存関係マッピングを使用して視覚化するオンプレミスの各マシンにエージェントをダウンロードしてインストールします。
 
-1. **Azure Migrate:Server Assessment** で、 **[Discovered Servers]\(検出済みサーバー\)** をクリックします。
+1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
 2. 依存関係の視覚化を使用するマシンごとに、 **[エージェントをインストールする必要があります]** をクリックします。
 3. マシンの **[依存関係]** ページで **MMA をダウンロードしてインストール**し、適切なエージェントをダウンロードし、以下の説明に従ってインストールします。
 4. **[Download and install Dependency agent]\(依存関係エージェントのダウンロードとインストール\)** で、適切なエージェントをダウンロードし、以下の説明に従ってインストールします。
@@ -105,7 +105,7 @@ Linux マシンにエージェントをインストールするには、次の�
 
 ## <a name="create-a-group-using-dependency-visualization"></a>依存関係の視覚化を使用してグループを作成する
 
-1. **Azure Migrate:Server Assessment** で、 **[Discovered Servers]\(検出済みサーバー\)** をクリックします。
+1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
 2. **[依存関係]** 列で、確認するマシンごとに **[依存関係の表示]** をクリックします。
 3. 依存関係マップでは、以下を確認できます。
     - マシンとの間の受信 (クライアント) と送信 (サーバー) の TCP 接続。

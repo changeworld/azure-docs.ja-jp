@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 07/17/2019
+ms.date: 07/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: cbf642b47e4233cec2e2d860288b3bb35b419cf2
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 7bb775184a0d567fedf9da07cee60e5ba5a2097f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304167"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562378"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake Storage から Azure SQL Data Warehouse へのデータの読み込み
 PolyBase 外部テーブルを使用して Azure Data Lake Storage から Azure SQL Data Warehouse にデータを読み込みます。 Data Lake Storage の格納データに対してアドホック クエリを実行できますが、最高のパフォーマンスを得るには、SQL Data Warehouse にデータをインポートすることをお勧めします。
@@ -32,20 +32,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを実行するには、次のものが必要です。
 
-* Gen1 から読み込む場合は、サービス間認証に使用する Azure Active Directory アプリケーション。 作成方法については、[Azure Active Directory 認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
-
->[!NOTE] 
-> Azure Data Lake Stroage Gen1 から読み込む場合は、SQL Data Warehouse からストレージ アカウントに接続するために、Active Directory アプリケーションのクライアント ID、キー、OAuth2.0 トークン エンドポイント値が必要です。 これらの値を取得する方法の詳細については、上記のリンクを参照してください。 Azure Active Directory アプリの登録では、アプリケーション ID をクライアント ID として使います。
-> 
+* サービス間認証に使用する Azure Active Directory アプリケーション。 作成方法については、[Azure Active Directory 認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
 
 * Azure SQL Data Warehouse。 [Azure SQL Data Warehouse の作成とクエリ](create-data-warehouse-portal.md)に関するページをご覧ください。
 
 * Data Lake Storage アカウント。 [Azure Data Lake Storage の使用開始](../data-lake-store/data-lake-store-get-started-portal.md)に関する記事を参照してください。 
 
 ##  <a name="create-a-credential"></a>資格情報を作成する
-Data Lake Storage アカウントにアクセスするには、次の手順で使用する資格情報シークレットを暗号化するためのデータベース マスター キーを作成する必要があります。 その後、データベース スコープ資格情報を作成します。 Gen1 の場合、AAD のサービス プリンシパルの資格情報設定が格納されたデータベース スコープ資格情報を作成します。 Gen2 のデータベース スコープ資格情報のストレージ アカウント キーを使用する必要があります。 
+Data Lake Storage アカウントにアクセスするには、次の手順で使用する資格情報シークレットを暗号化するためのデータベース マスター キーを作成する必要があります。 その後、データベース スコープ資格情報を作成します。 サービス プリンシパルを使用して認証する場合、データベース スコープ資格情報には AAD 内で設定されたサービス プリンシパル資格情報が格納されます。 Gen2 のデータベース スコープ資格情報のストレージ アカウント キーを使用することもできます。 
 
-Data Lake Store Gen1 に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、アプリケーションのアクセス許可を Data Lake Storage Gen1 のリソースに付与する必要があります。 手順については、[Active Directory を使用した Azure Data Lake Storage Gen1 での認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。
+サービス プリンシパルを使用して Data Lake Store に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、そのアプリケーションに Data Lake Storage アカウントへのアクセス許可を付与する必要があります。 手順については、[Active Directory を使用した Azure Data Lake Storage に対する認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。
 
 ```sql
 -- A: Create a Database Master Key.
@@ -56,7 +52,7 @@ Data Lake Store Gen1 に接続するには、**最初に** Azure Active Director
 CREATE MASTER KEY;
 
 
--- B (for Gen1): Create a database scoped credential
+-- B (for service principal authentication): Create a database scoped credential
 -- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
@@ -67,7 +63,7 @@ WITH
     SECRET = '<key>'
 ;
 
--- B (for Gen2): Create a database scoped credential
+-- B (for Gen2 storage key authentication): Create a database scoped credential
 -- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
 -- SECRET: Provide your Azure storage account key.
 
@@ -77,7 +73,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this for Gen1:
+-- It should look something like this when authenticating using service principals:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -109,7 +105,7 @@ WITH (
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
-    LOCATION='abfss://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfs endpoint
+    LOCATION='abfs[s]://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfss endpoint for when your account has secure transfer enabled
     CREDENTIAL = ADLSCredential
 );
 ```
@@ -221,13 +217,9 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 > * Data Lake Store Gen1 から読み込む必要のあるデータベース オブジェクトを作成しました。
 > * Data Lake Storage Gen1 ディレクトリに接続しました。
 > * Azure SQL Data Warehouse にデータを読み込みました。
-> 
+>
 
 データの読み込みは、SQL Data Warehouse を使ってデータ ウェアハウス ソリューションを開発する際の最初の手順です。 開発リソースを確認してください。
 
 > [!div class="nextstepaction"]
->[SQL Data Warehouse でテーブルを開発する方法を学習する](sql-data-warehouse-tables-overview.md)
-
-
-
-
+> [SQL Data Warehouse でテーブルを開発する方法を学習する](sql-data-warehouse-tables-overview.md)

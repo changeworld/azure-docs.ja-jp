@@ -10,10 +10,10 @@ ms.topic: conceptual
 description: Visual Studio Code と Azure Dev Spaces が連動するしくみ
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 ms.openlocfilehash: 0d80643b366b6d7313f24e73258056e492eb56fc
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68297865"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Visual Studio Code と Azure Dev Spaces が連動するしくみ
@@ -41,7 +41,7 @@ Dockerfile、Helm グラフ、`azds.yaml` ファイルは `azds prep` の実行�
 
 AKS クラスターを作成し、Visual Studio Code の外でクラスターの Azure Dev Spaces を有効にする必要があります。 たとえば、Azure CLI または Azure portal を利用してこの設定を行うことができます。 `azds prep` を実行することで生成されたアセットなど、Visual Studio Code の外で作成された既存の Dockerfile、Helm グラフ、`azds.yaml` ファイルを再利用できます。 Visual Studio Code の外で生成されたアセットを再利用する場合も、`.vscode` ディレクトリを用意する必要があります。 この `.vscode` ディレクトリは Visual Studio コードと Azure Dev Spaces 拡張機能で再生成できます。既存のアセットを上書きすることはありません。
 
-.NET Core プロジェクトの場合、Visual Studio Code から .NET サービスを実行するには、[C# 拡張機能][csharp-extension]installed to run your .NET service from Visual Studio Code. Also for Java projects using Maven, you must have the [Java Debugger for Azure Dev Spaces extension][java-extension]をインストールする必要があります。Maven を使用する Java プロジェクトの場合も、Visual Studio Code から .NET サービスを実行するには、Azure Dev Spaces 拡張機能向け Java Debugger をインストールし、[Maven をインストールして構成する][maven]必要があります。
+.NET Core プロジェクトの場合、Visual Studio Code から .NET サービスを実行するには、[C# 拡張機能][csharp-extension]をインストールする必要があります。 Maven を使用する Java プロジェクトの場合も、Visual Studio Code から Java サービスを実行するには、[Java Debugger for Azure Dev Spaces 拡張機能][java-extension]をインストールし、[Maven をインストールして構成する][maven]必要があります。
 
 ## <a name="debug-your-service-in-aks"></a>AKS でサービスをデバッグする
 

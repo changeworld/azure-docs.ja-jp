@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c962e95b3d213c4089b51f58139cab17a3332cbd
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: a96d17ae7fbe94877032e7b4b2aacb63f6e070ca
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853063"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562249"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>ユーザーをサインインさせる Web アプリ - コードの構成
 
@@ -110,7 +110,7 @@ Azure portal では、アプリケーションの **[認証]** ページに登�
 
 ### <a name="initialization-code"></a>初期化コード
 
-ASP.NET Core Web アプリ (および Web API) では、アプリケーションの初期化を実行するコードは `Startup.cs` ファイルにあり、Microsoft ID プラットフォーム (以前の Azure AD) v2.0 を使用して認証を追加するには、次のコードを追加する必要があります。 コード内のコメントは、見てすぐにわかるものにする必要があります。
+ASP.NET Core Web アプリ (および Web API) では、アプリケーションの初期化を実行するコードは `Startup.cs` ファイルにあり、Microsoft ID プラットフォーム (以前の Azure AD v2.0) を使用して認証を追加するには、次のコードを追加する必要があります。 コード内のコメントは、見てすぐにわかるものにする必要があります。
 
   > [!NOTE]
   > Visual Studio 内または `dotnet new mvc` を使用して、既定の ASP.NET Core Web プロジェクトから、プロジェクトを開始する場合、関連パッケージが自動的に読み込まれるため、メソッド `AddAzureAD` を既定で使用できます。 しかし、最初からプロジェクトをビルドし、下記のコードを使用しようとする場合は、NuGet パッケージ **"Microsoft.AspNetCore.Authentication.AzureAD.UI"** をプロジェクトに追加して、`AddAzureAD` メソッドを使用できるようにすることをお勧めします。
@@ -122,7 +122,7 @@ ASP.NET Core Web アプリ (および Web API) では、アプリケーション
  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =>
  {
   // The ASP.NET core templates are currently using Azure AD v1.0, and compute
-  // the authority (as {Instance}/{TenantID}). We want to use the Microsoft Identity Platform v2.0 endpoint
+  // the authority (as {Instance}/{TenantID}). We want to use the Microsoft identity platform endpoint
   options.Authority = options.Authority + "/v2.0/";
 
   // If you want to restrict the users that can sign-in to specific organizations
@@ -133,7 +133,7 @@ ASP.NET Core Web アプリ (および Web API) では、アプリケーション
 
   // Set the nameClaimType to be preferred_username.
   // This change is needed because certain token claims from Azure AD v1.0 endpoint
-  // (on which the original .NET core template is based) are different in Azure AD v2.0 endpoint.
+  // (on which the original .NET core template is based) are different in Microsoft identity platform endpoint.
   // For more details see [ID Tokens](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)
   // and [Access Tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
   options.TokenValidationParameters.NameClaimType = "preferred_username";
@@ -176,7 +176,7 @@ ASP.NET Web アプリ / Web API での認証に関連したコードは `App_Sta
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+     // The `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0
      // The `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
      ClientId = clientId,

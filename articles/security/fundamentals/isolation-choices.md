@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c9332af5f758a9213b0e36044d7aefac23b9c2b2
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 0c07cbd9fef865f3fc7b782210ef44094df9f629
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611002"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779826"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -239,7 +240,7 @@ Azure では、データを保護するために次の種類の暗号化が提�
 -   [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
 
 #### <a name="encryption-at-rest"></a>保存時の暗号化
-多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://docs.microsoft.com/azure/security/azure-isolation) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
+多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
 
 -   [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
 

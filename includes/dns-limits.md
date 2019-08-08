@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 6/15/2019
 ms.author: victorh
-ms.openlocfilehash: 520a403fcfed3bb96278f4a82fcfeb41abb2ee42
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e8e65c0c1302523af5aefab297ffbafe2a90d2b4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277332"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68589975"
 ---
 **パブリック DNS ゾーン**
 
@@ -18,6 +18,7 @@ ms.locfileid: "67277332"
 | サブスクリプションあたりのパブリック DNS ゾーン数 |250 <sup>1</sup> |
 | パブリック DNS ゾーンあたりのレコード セット数 |10,000 <sup>1</sup> |
 | パブリック DNS ゾーン内のレコード セットあたりのレコード数 |20 |
+| 1 つの Azure リソースのエイリアス レコードの数 |20|
 | サブスクリプションあたりのプライベート DNS ゾーン数 |1000|
 | プライベート DNS ゾーンあたりのレコード セット数 |25000|
 | プライベート DNS ゾーン用のレコード セットあたりのレコード数 |20|

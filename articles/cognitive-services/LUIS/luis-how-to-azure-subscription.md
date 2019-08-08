@@ -1,6 +1,6 @@
 ---
-title: サブスクリプション キー
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: サブスクリプション キー - LUIS
+titleSuffix: Azure Cognitive Services
 description: 無料の最初の 1000 のエンドポイント クエリの使用には、サブスクリプション キーを作成する必要がありません。 HTTP 403 または 429 の形式で _クォータ不足_ エラーが表示される場合、キーを作成して、アプリに割り当てる必要があります。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: diberry
-ms.openlocfilehash: dedc498ebc910b448b1684136c288b2045780e00
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: c7e23c78b5d03b834d593bd2b53958c3379c51f2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797950"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560512"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>LUIS アプリでのサブスクリプション キーの使用
 
@@ -149,7 +149,7 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
     |ヘッダー|`Ocp-Apim-Subscription-Key`|実際の[オーサリング キー](luis-how-to-account-settings.md)。|
     |ヘッダー|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS アプリ ID。 
-    |本文||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
+    |Body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
     この API は、成功した場合、201 - created 状態を返します。 
 

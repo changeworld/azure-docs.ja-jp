@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e3da856efd7d44f15f9de27c9e38375d40dc211d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 10b661f0c4b7dc45284b907e83df3c0372f97cab
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60850961"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561534"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "60850961"
 
 ## <a name="register-microsoft-account"> </a>Microsoft アカウントにアプリを登録する
 1. [Azure Portal]にログオンし、アプリケーションに移動します。 **URL** をコピーします。この URL は、後でアプリを Microsoft アカウントで構成するために使用します。
-2. Microsoft アカウント デベロッパー センターの [マイ アプリケーション] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
+2. [ **[アプリの登録]** ](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) に移動し、要求された場合は Microsoft アカウントでサインインします。
 3. **[アプリの追加]** をクリックし、アプリケーション名を入力して、 **[作成]** をクリックします。
 4. **アプリケーション ID** をメモします。この情報は後で必要になります。 
 5. [プラットフォーム] で **[プラットフォームの追加]** をクリックし、[Web] を選択します。
@@ -69,5 +69,5 @@ ms.locfileid: "60850961"
 
 <!-- URLs. -->
 
-[マイ アプリケーション]: https://go.microsoft.com/fwlink/p/?LinkId=262039
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure Portal]: https://portal.azure.com/

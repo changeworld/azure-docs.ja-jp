@@ -1,18 +1,19 @@
 ---
 title: Azure のインスタント リストア機能
 description: Azure のインスタント リストア機能と、VM バックアップ スタック、Resource Manager デプロイ モデルに関する FAQ
-author: sogup
-manager: vijayts
+ms.reviewer: sogup
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: sogup
-ms.openlocfilehash: 8bbf24fdd05fa0d70bcadae4f21e599dc8bef3a5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 0f31320a638dd4741d940d0b459575b66149b829
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465107"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698406"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup のインスタント リストア機能を使用してバックアップと復元のパフォーマンスを改善する
 
@@ -25,7 +26,8 @@ ms.locfileid: "68465107"
 * スナップショットを既定で 2 日間ローカルに保持することで、バックアップと復元の時間が短縮されます。 この既定のスナップショット リテンション期間の値は、1 から 5 日の間の任意の値に構成できます。
 * 最大 4 TB のディスク サイズがサポートされます。 Azure Backup では、ディスクのサイズ変更は推奨されません。
 * Standard HDD ディスクおよび Premium SSD ディスクと共に Standard SSD ディスクがサポートされます。
-*   復元時に、(ディスクごとの) アンマネージド VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります。
+* 復元時に、(ディスクごとの) アンマネージド VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります。
+* インスタント リストアで Premium Storage を使用している VM のバックアップについては、割り当てられた合計ストレージ領域の *50%* の空き領域 (最初のバックアップに**のみ**必要) を割り当てることをお勧めします。 最初のバックアップが完了すると、バックアップに 50% の空き領域は不要になります。
 
 
 ## <a name="whats-new-in-this-feature"></a>この機能の更新点
@@ -103,4 +105,4 @@ VM の変化によって異なります。 安定状態では、コストの増�
 新しいモデルでは、スナップショット (階層 1) を削除しない限り、復元ポイント (階層 2) を削除することはできません。 復元ポイント (階層 2) の保持期間がスナップショットの保持期間より長くなるようスケジュール設定することをお勧めします。
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>バックアップ ポリシーに設定されている保有期間が過ぎても、スナップショットが存在するのはなぜですか。
-回復ポイントにスナップショットがあり、それが利用可能な最新の RP である場合、次のバックアップが成功するまで保持されます。 これは現在、設計されている GC ポリシーに従ったものです。このポリシーでは、VM での問題によって、今後のすべてのバックアップが失敗した場合に、1 つ以上の最新の RP が常に存在することが要求されます。 通常のシナリオでは、有効期限後、最大 24 時間で RP がクリーンアップされます。
+回復ポイントにスナップショットがあり、それが利用可能な最新の RP である場合、次のバックアップが成功するまで保持されます。 これは現在、設計されている "ガベージ コレクション" (GC) ポリシーに従ったものです。このポリシーでは、VM での問題によって、今後のすべてのバックアップが失敗した場合に、1 つ以上の最新の RP が常に存在することが要求されます。 通常のシナリオでは、有効期限後、最大 24 時間で RP がクリーンアップされます。

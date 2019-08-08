@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: b68bdb6d1c349df67943889b511eac87c940b531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f7f78dbde9810c8786e2344555444efabcc989b0
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571251"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779322"
 ---
 # <a name="system-monitoring-for-security-in-azure-australia"></a>Azure Australia におけるセキュリティのシステム監視
 
@@ -108,7 +108,7 @@ Azure で収集されるログは、次の 3 つのカテゴリに分類され�
 
 Windows と Linux のどちらの場合も、仮想マシン エージェントのデプロイによって Azure 仮想マシンの監視が強化されます。 これにより、収集されるログ情報の幅が大きく広がります。 このエージェントのデプロイが Azure Security Center から自動的に行われるように構成できます。
 
-Microsoft では、Azure リソース固有のログとその[スキーマ](https://docs.microsoft.com/azure/security/azure-log-audit)に関する詳細情報を提供しています。
+Microsoft では、Azure リソース固有のログとその[スキーマ](https://docs.microsoft.com/azure/security/fundamentals/log-audit)に関する詳細情報を提供しています。
 
 ### <a name="log-retention-and-protection"></a>ログのリテンション期間と保護
 

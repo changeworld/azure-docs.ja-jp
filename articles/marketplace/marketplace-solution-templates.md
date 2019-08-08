@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/15/2018
 ms.author: ellacroi
-ms.openlocfilehash: c2393b6ea9f1a2c2b35be63272743e081f4ae240
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d02d942fce7bd51a116cc4c19eac9faca0060ef
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937745"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561496"
 ---
 # <a name="azure-applications-solution-template-offer-publishing-guide"></a>Azure アプリケーション:ソリューション テンプレートのオファー発行ガイド
 
@@ -31,7 +31,7 @@ ms.locfileid: "64937745"
 |請求/メータリング    |  リソースが顧客の Azure サブスクリプションでプロビジョニングされます。 従量課金制 (PAYGO) の仮想マシンが Microsoft 経由で顧客とトランザクション処理され、顧客の Azure サブスクリプション (PAYGO) により課金されます。  <br/> ライセンス持ち込み (BYOL) の場合、Microsoft が顧客サブスクリプションで生じるインフラストラクチャ コストを請求し、ユーザーが顧客に対して直接ソフトウェア ライセンス料金を処理します。   |
 |Azure と互換性がある仮想ハード ディスク (VHD)  |   VM は、Windows または Linux 上に構築されている必要があります。  詳細については、「[Azure と互換性のある VHD の作成](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)」をご覧ください。 |
 | 顧客の利用状況属性 | Azure Marketplace に発行されるすべてのソリューション テンプレートで、顧客の利用状況属性を有効にする必要があります。 顧客の利用状況属性とそれを有効にする方法の詳細については、「[Azure パートナーの顧客の利用状況の属性](./azure-partner-customer-usage-attribution.md)」をご覧ください。  |
-|  |  |
+| Managed Disks を使用する | [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) は、Azure における IaaS VM の永続化ディスクの既定のオプションです。 Managed Disks は、ソリューション テンプレートで使用する必要があります。 <br> <br> 1.Azure ARM テンプレートで Managed Disks を使用するための[ガイダンス](https://docs.microsoft.com/azure/virtual-machines/windows/using-managed-disks-template-deployments)と[サンプル](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)に従って、ソリューション テンプレートを更新します。 <br> <br> 2.次の手順に従って、Managed Disks の基盤となる VHD をストレージ アカウントにインポートし、VHD をイメージとして Marketplace に発行します。 <br> <ul> <li> [PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd?toc=%2fpowershell%2fmodule%2ftoc.json) </li> <li> [CLI](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd?toc=%2fcli%2fmodule%2ftoc.json) </li> </ul> |
 
 ## <a name="next-steps"></a>次の手順
 まだ行っていない場合は、Marketplace で[登録](https://azuremarketplace.microsoft.com/sell)します。

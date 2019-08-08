@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 4834688496330210b273f40f1d6f11230a6ae1c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 996d4e2ba62c06992b0433fd255800ba8cea0af3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234126"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570178"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 
-[エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)と[行レベル セキュリティ (RLS)][rls] を組み合わせることで、Azure SQL Database を使用するマルチテナント アプリケーションのデータ層のスケーリングが可能になります。 これらのテクノロジの連携によって、データ層のスケーラビリティを高めたアプリケーションを効率よく作成することができます。 データ層では、マルチテナント シャードがサポートされ、**ADO.NET SqlClient** または **Entity Framework** が使用されます。 詳細については、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)」をご覧ください。
+[エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)と[行レベルのセキュリティ (RLS)][rls] を組み合わせることで、Azure SQL Database を使用するマルチテナント アプリケーションのデータ層のスケーリングが可能になります。 これらのテクノロジの連携によって、データ層のスケーラビリティを高めたアプリケーションを効率よく作成することができます。 データ層では、マルチテナント シャードがサポートされ、**ADO.NET SqlClient** または **Entity Framework** が使用されます。 詳細については、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)」をご覧ください。
 
 - **エラスティック データベース ツール**を使用すると、開発者は .NET ライブラリと Azure のサービス テンプレートを使用することにより、標準的なシャーディング手法に従ってデータ層をスケールアウトすることができます。 [Elastic Database クライアント ライブラリ][s-d-elastic-database-client-library]を使用してシャードを管理することは、一般的にシャーディングに関連するインフラストラクチャ タスクの多くを自動化および効率化するうえで役立ちます。
 - **行レベル セキュリティ**を使用すると、開発者は、同じデータベースに複数のテナントのデータを安全に格納することができます。 クエリを実行しているテナントに属さない行は、RLS セキュリティ ポリシーによって除外されます。 フィルターのロジックをデータベース内に集約することで、メンテナンスが簡素化され、セキュリティ エラーのリスクが軽減されます。 これをクライアント コードだけで行ってセキュリティを確保しようとするとリスクが伴います。
@@ -57,7 +56,7 @@ RLS はシャード データベースでまだ有効になっていないため
 1. **アプリケーション層**:接続を開いた後に常に現在の TenantId を SESSION\_CONTEXT に設定するようにアプリケーション コードを変更します。 サンプル プロジェクトでは、あらかじめそのように TenantId が設定されています。
 2. **データ層**:各シャード データベースで、SESSION\_CONTEXT に格納されている TenantId に基づいて行をフィルター処理するための RLS セキュリティ ポリシーを作成します。 ポリシーは、それぞれのシャード データベースに対して作成する必要があります。そうでないと、マルチテナント シャード内の行がフィルター処理されません。
 
-## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1.アプリケーション層:TenantId を SESSION\_CONTEXT に設定する
+## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1.アプリケーション層:TenantId を SESSION\_CONTEXT に設定する
 
 まず、エラスティック データベース クライアント ライブラリのデータ依存ルーティング API を使用してシャード データベースに接続します。 その場合でも、接続に使用している TenantId をアプリケーションからデータベースに伝える必要があります。 RLS セキュリティ ポリシーは、他のテナントに属している除外すべき行を TenantId によって判別します。 接続の [SESSION\_CONTEXT](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) に現在の TenantId を格納します。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f33b52255b1401e3595687612610a4688ad026d
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 7f64beb80d1a11930fee74e669675b39087cade0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461454"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562243"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal を使用してデバイス ID を管理する
 
@@ -91,13 +91,19 @@ Azure AD ポータルを使ってデバイス ID を管理するには、デバ�
 
 どちらのオプションでも、次のようなビューが表示されます。
 
-- 表示名をフィルターとして使用してデバイスを検索できる。
+- 表示名またはデバイス ID をフィルターとして使用してデバイスを検索できる。
 - 登録済みおよび参加済みデバイスの概要情報を確認できる
 - 一般的なデバイス管理タスクを実行できる
 
 ![すべてのデバイス](./media/device-management-azure-portal/51.png)
 
-一部の iOS デバイスの名前で使用されているアポストロフィは、アポストロフィに見える別の文字である可能性があります。 このため、このようなデバイスを検索するときは少し注意が必要です。正しい検索結果が表示されない場合は、検索文字列のアポストロフィが、正しいアポストロフィ文字であることを確認してください。
+>[!TIP]
+>
+>* [登録済み] 列の下の状態が "保留中" である "ハイブリッド Azure AD 参加済み" のデバイスが表示されている場合、そのデバイスが Azure AD 接続から同期されており、クライアントからの登録の完了を待機していることを示します。 [Hybrid Azure AD 参加の実装を計画する](hybrid-azuread-join-plan.md)方法について詳細を参照してください。 追加情報については、[デバイスについてよく寄せられる質問](faq.md)に関する記事を参照してください。
+>
+>   ![保留中のデバイス](./media/device-management-azure-portal/75.png)
+>
+>* 一部の iOS デバイスの名前で使用されているアポストロフィは、アポストロフィに見える別の文字である可能性があります。 このため、このようなデバイスを検索するときは少し注意が必要です。正しい検索結果が表示されない場合は、検索文字列のアポストロフィが、正しいアポストロフィ文字であることを確認してください。
 
 ## <a name="device-identity-management-tasks"></a>デバイス ID 管理タスク
 
@@ -151,7 +157,7 @@ Intune 管理者の場合は、**Microsoft Intune** としてマークされて�
    - Windows デバイスの BitLocker キーなど、デバイスに関連付けられているすべての詳細が削除されます。  
    - 削除は回復不可能な操作であり、必須の場合以外は推奨されません。
 
-デバイスが別の管理機関 (Microsoft Intune など) によって管理されている場合は、Azure AD でデバイスを削除する前に、デバイスがワイプ/使用中止されているかどうかを確認してください。
+デバイスが別の管理機関 (Microsoft Intune など) によって管理されている場合は、Azure AD でデバイスを削除する前に、デバイスがワイプ/使用中止されているかどうかを確認してください。 デバイスを削除する前に、[古いデバイスを管理する](device-management-azure-portal.md)方法を確認してください。
 
 ### <a name="view-or-copy-device-id"></a>デバイス ID を表示またはコピーする
 
@@ -167,11 +173,12 @@ Intune 管理者の場合は、**Microsoft Intune** としてマークされて�
 
 BitLocker キーを表示またはコピーするには、デバイスの所有者であるか、次のロールが 1 つ以上割り当てられているユーザーである必要があります。
 
+- クラウド デバイス管理者
 - グローバル管理者
 - ヘルプデスク管理者
+- Intune サービス管理者
 - セキュリティ管理者
 - セキュリティ閲覧者
-- Intune サービス管理者
 
 > [!NOTE]
 > ハイブリッド Azure AD 参加済みの Windows 10 デバイスには、所有者がありません。 そのため、所有者でデバイスを検索していて、見つからなかった場合は、デバイス ID で検索してください。

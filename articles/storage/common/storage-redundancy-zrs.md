@@ -9,12 +9,12 @@ ms.date: 10/24/2018
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 111167584fb2e0e2ee5977e0e24b3ebf07b170c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fefe469bfac4816a67c6ceb344f12c1e52de60c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66238003"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68550453"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長ストレージ (ZRS):高可用 Azure Storage アプリケーション
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -38,6 +38,11 @@ ZRS は、次のリージョンで一般公開されています。
 - 米国西部 2
 
 Microsoft は、今後も ZRS が有効な Azure リージョンを増やす予定です。 新しいリージョンの情報については、[Azure サービスの更新情報](https://azure.microsoft.com/updates/)に関するページを定期的に参照してください。
+
+**既知の制限事項**
+
+- アーカイブ層は、ZRS アカウントでは現在サポートされていません。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)」を参照してください。
+- マネージド ディスクでは ZRS はサポートされていません。 Standard SSD Managed Disks のスナップショットとイメージを、Standard HDD ストレージに保存できます。また、[LRS オプションと ZRS オプションから選択](https://azure.microsoft.com/pricing/details/managed-disks/)できます。
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>ゾーンが利用不可になった場合
 データは、ゾーンが使用できなくなった場合でも読み取り操作と書き込み操作の両方にアクセスできます。 一時的な障害の処理の方法に従うことをお勧めします。 これらの方法には、指数バックオフを使用した再試行ポリシーの実行などがあります。
@@ -75,7 +80,8 @@ ZRS に移行するとき、主に 2 つの選択肢があります。
 - 同じリージョン内のデータのみ移行できます。 ソース アカウントとは異なるリージョンにある ZRS アカウントにデータを移行する場合は、手動の移行を実行する必要があります。
 - Standard ストレージ アカウントの種類のみがライブ マイグレーションをサポートします。 Premium ストレージ アカウントは手動で移行する必要があります。
 - ZRS から LRS、GRS、RA-GRS にライブ マイグレーションすることはできません。 新しいストレージ アカウントか既存のストレージ アカウントにデータを手動で移動する必要があります。
-- マネージド ディスクは LRS にのみ使用できます。ZRS に移行することはできません。 可用性セットとの統合については、[Azure マネージド ディスクの概要](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)に関する記事を参照してください。 Standard SSD Managed Disks のスナップショットとイメージを、Standard HDD ストレージに保存できます。また、[LRS オプションと ZRS オプションから選択](https://azure.microsoft.com/pricing/details/managed-disks/)できます。 
+- マネージド ディスクは LRS にのみ使用できます。ZRS に移行することはできません。 Standard SSD Managed Disks のスナップショットとイメージを、Standard HDD ストレージに保存できます。また、[LRS オプションと ZRS オプションから選択](https://azure.microsoft.com/pricing/details/managed-disks/)できます。 可用性セットとの統合については、[Azure マネージド ディスクの概要](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)に関する記事を参照してください。
+- アーカイブ データを含む LRS アカウントまたは GRS アカウントは ZRS に移行できません。
 
 ライブ マイグレーションは [Azure サポート ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)から要求できます。 ポータルから、ZRS に変換するストレージ アカウントを選択します。
 1. **[新しいサポート要求]** を選択します

@@ -3,7 +3,7 @@ title: Azure Service Fabric アプリケーションのデプロイ | Microsoft 
 description: PowerShell を使用して Service Fabric でアプリケーションをデプロイおよび削除する方法
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
-ms.author: aljo
-ms.openlocfilehash: f0f66cd32721e277cbd6e4578b0e58bb201ee966
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 3cfebadf6dadeb81b1b57e671b19594b75645e31
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393272"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599616"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell を使用してアプリケーションのデプロイと削除を実行する
 
@@ -143,7 +143,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 |100|100|00:00:03.3547592|60|
 |512|100|00:00:16.3850303|307|
 |1024|500|00:00:32.5907950|615|
-|2048|1,000|00:01:04.3775554|1,231|
+|2048|1000|00:01:04.3775554|1,231|
 |5,012|100|00:02:45.2951288|3,074|
 
 圧縮したパッケージは、必要に応じて 1 つまたは複数の Service Fabric クラスターにアップロードできます。 デプロイのメカニズムは、圧縮されているパッケージでも圧縮されていないパッケージでも変わりません。 圧縮したパッケージは、クラスターのイメージ ストアなどに格納されます。 パッケージは、アプリケーションの実行前に、ノードで圧縮解除されます。

@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4c4933847a39a56084894e5bbd40e166e6b73b6
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: e4e21fdef5be09148f001ab6f66f87dd270ccf54
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798627"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618269"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でのタスクの委任
 
@@ -136,9 +136,9 @@ ms.locfileid: "67798627"
 
 カタログまたはカタログ内のアクセス パッケージの管理を委任する場合は、ユーザーをカタログ所有者またはアクセス パッケージ マネージャーのロールに追加します。 どのユーザーでも、カタログを作成すると、最初のカタログ所有者になります。 カタログ所有者またはアクセス パッケージ マネージャーのロールにユーザーを割り当てるには、これらの手順に従います。
 
-**事前に必要なロール:** ユーザー管理者またはカタログ所有者
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、またはカタログ所有者
 
-1. Azure portal で **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
+1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
 1. 左側のメニューで **[カタログ]** をクリックし、管理者を追加するカタログを開きます。
 

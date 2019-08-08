@@ -1,6 +1,6 @@
 ---
-title: Node.js を使用して発話をインポートする
-titleSuffix: Azure
+title: Node.js を使用して発話をインポートする - LUIS
+titleSuffix: Azure Cognitive Services
 description: LUIS Authoring API を使用して、CSV 形式の既存のデータからプログラムで LUIS アプリを作成する方法を説明します。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 314d121e8964ba1cdbb457260826d85bf8505fbc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 79a372087e162fedc5b2e014a5cd4976df3cb2ce
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60494899"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637811"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js を使用したプログラムによる LUIS アプリの作成
 
@@ -24,23 +24,35 @@ LUIS は、[LUIS](luis-reference-regions.md) Web サイトによって実行さ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [LUIS](luis-reference-regions.md) Web サイトにログインし、[アカウント設定] で [ オーサリング キー ](luis-concept-keys.md#authoring-key) を見つけます。 このキーを使用して、Authoring API を呼び出します。
+* [LUIS](luis-reference-regions.md) Web サイトにサインインし、[アカウント設定] で[オーサリング キー](luis-concept-keys.md#authoring-key)を見つけます。 このキーを使用して、Authoring API を呼び出します。
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * このチュートリアルでは、架空の会社のユーザー要求のログが含まれた CSV ファイルをまず使用します。 [こちら](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)でダウンロードできます。
 * NPM を使用して最新の Node.js をインストールします。 これは、[こちら](https://nodejs.org/en/download/)からダウンロードできます。
 * **[推奨]** IntelliSense およびデバッグ用の Visual Studio Code。[こちら](https://code.visualstudio.com/)から無料でダウンロードできます。
 
+このチュートリアルのコードはすべて、[Azure-Samples Language Understanding GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)で入手できます。 
+
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>既存のデータを意図とエンティティにマップする
 LUIS を念頭に置いて作成されていないシステムがあっても、ユーザーが実行したいさまざまなことにマップされるテキスト データが含まれていれば、ユーザー入力の既存のカテゴリから LUIS の意図へのマッピングを考えることができます。 ユーザーの発話内の重要な単語やフレーズを特定できる場合、これらの単語はエンティティにマップできます。
 
-`IoT.csv` ファイルを開きます。 このファイルには、架空のホーム オートメーション サービスに対するユーザー クエリのログが含まれています。ログには、クエリの分類方法、ユーザーの発話、クエリから引き出された有用な情報を含む列が含まれています。 
+[`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) ファイルを開きます。 このファイルには、架空のホーム オートメーション サービスに対するユーザー クエリのログが含まれています。ログには、クエリの分類方法、ユーザーの発話、クエリから引き出された有用な情報を含む列が含まれています。 
 
 ![既存のデータの CSV ファイル](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
 **RequestType** 列は意図として使用でき、**Request** 列は発話の例を示していることがわかります。 その他のフィールドは、発話に出現した場合にエンティティとして使用できます。 意図、エンティティ、発話の例があるため、単純なサンプル アプリの要件が揃っています。
 
 ## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>LUIS 以外のデータから LUIS アプリを作成する手順
-ソース ファイルから新しい LUIS アプリを作成するには、まず CSV ファイルのデータを解析し、このデータを、Authoring API を使用して LUIS にアップロードできる形式に変換します。 解析されたデータから、どのような意図とエンティティがあるかに関する情報を収集します。 次に、API 呼び出しを行ってアプリを作成し、解析されたデータから収集された意図とエンティティを追加します。 LUIS アプリを作成したら、解析されたデータから発話の例を追加できます。 このフローは、次のコードの最後の部分で確認できます。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js)し、`index.js` に保存します。
+CSV ファイルから新しい LUIS アプリを生成するには、次のようにします。
+
+* CSV ファイルのデータを解析します。
+    * オーサリング API を使用して、LUIS にアップロードできる形式に変換します。 
+    * 解析されたデータから、意図およびエンティティに関する情報を収集します。 
+* オーサリング API を呼び出して、次のことを行います。
+    * アプリを作成します。
+    * 解析済みのデータから収集された意図およびエンティティを追加します。 
+    * LUIS アプリを作成したら、解析されたデータから発話の例を追加できます。 
+
+このプログラム フローは、`index.js` ファイルの最後の部分で確認できます。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js)し、`index.js` に保存します。
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
@@ -119,7 +131,7 @@ index.js ファイルを開き、ファイルの先頭にあるこれらの値�
 
 ```javascript
 // Change these values
-const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
+const LUIS_programmaticKey = "YOUR_AUTHORING_KEY";
 const LUIS_appName = "Sample App";
 const LUIS_appCulture = "en-us"; 
 const LUIS_versionId = "0.1";
@@ -167,7 +179,7 @@ upload done
 
 
 ## <a name="open-the-luis-app"></a>LUIS アプリを開く
-スクリプトが完了したら、[LUIS](luis-reference-regions.md) にログインし、作成した LUIS アプリを **[マイ アプリ]** で確認できます。 **TurnOn**、**TurnOff**、**None** の各意図で、追加した発話を確認できます。
+スクリプトが完了したら、[LUIS](luis-reference-regions.md) にサインインし、作成した LUIS アプリを **[マイ アプリ]** で確認できます。 **TurnOn**、**TurnOff**、**None** の各意図で、追加した発話を確認できます。
 
 ![意図 TurnOn](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 

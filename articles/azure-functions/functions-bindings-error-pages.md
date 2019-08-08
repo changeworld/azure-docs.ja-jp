@@ -12,18 +12,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: cshoe
-ms.openlocfilehash: ef8f2d5a63f7924097362f6aa0ebc78cc0f6455f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bc0ffec1bfe55ee81573feffc58e1adb11421eec
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480705"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667442"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions のエラー処理
 
 このトピックでは、関数の実行時に発生するエラーの処理に関する一般的なガイダンスを提供します。 さらに、発生する可能性があるバインド固有のエラーについて説明されているトピックへのリンクを提供します。 
 
-## <a name="handing-errors-in-functions"></a>関数のエラーの処理
+## <a name="handling-errors-in-functions"></a>関数のエラーの処理
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
  

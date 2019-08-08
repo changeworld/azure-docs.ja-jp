@@ -1,5 +1,5 @@
 ---
-title: Swagger ドキュメント - Speech Services
+title: Swagger ドキュメント - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Swagger ドキュメントを使用して、さまざまなプログラミング言語の SDK を自動生成できます。 Microsoft のサービスの操作はすべて Swagger によってサポートされています
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f6420ea8918816f7356e567ec48cb0f7456065e0
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 232435a424d2461bce4598356a986473cb1d3644
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67604762"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552575"
 ---
 # <a name="swagger-documentation"></a>Swagger ドキュメント
 

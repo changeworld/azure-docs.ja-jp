@@ -1,7 +1,7 @@
 ---
-title: カスタム音声の正確性を評価する - Speech Services
-titlesuffix: Azure Cognitive Services
-description: このドキュメントでは、Microsoft の音声テキスト変換モデルまたはカスタム モデルの品質を定量的に測定する方法を説明します。 正確性をテストするには、オーディオ + ヒューマン ラベル付け文字起こしデータが必要であり、30 分から 5 時間の典型的な音声を用意する必要があります。
+title: カスタム音声の正確性を評価する - Speech Service
+titleSuffix: Azure Cognitive Services
+description: このドキュメントでは、音声テキスト変換モデルまたはカスタム モデルの品質を定量的に測定する方法を説明します。 正確性をテストするには、オーディオ + ヒューマン ラベル付け文字起こしデータが必要であり、30 分から 5 時間の典型的な音声を用意する必要があります。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 2e9818fad9a0b5d04cc50a293b16d838c319dd86
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606569"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562873"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>カスタム音声の正確性を評価する
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8cbf0e45ac368f0d2dd1678984bd14392452e63a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61484456"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570197"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>マルチテナント SaaS データベース テナント パターン
 
@@ -116,7 +115,7 @@ Azure SQL Database プラットフォームには、100,000 台を大きく超�
 
 #### <a name="automation"></a>Automation
 
-管理操作は、[DevOps][http-visual-studio-devops-485m]モデルを使って、スクリプト化して提供できます。  操作を自動化して、アプリケーションに公開することもできます。
+管理操作は、[DevOps][http-visual-studio-devops-485m] モデルを使って、スクリプト化して提供できます。  操作を自動化して、アプリケーションに公開することもできます。
 
 たとえば、単一のテナントを以前のポイント イン タイムまで自動的に復旧できます。  復旧するには、テナントを格納する 1 つの単一テナント データベースを復元するだけでかまいません。  この復元が他のテナントに影響を及ぼすことはなく、必ず個々のテナントごとに極めて詳細なレベルで管理操作が行われます。
 
@@ -126,7 +125,7 @@ Azure SQL Database プラットフォームには、100,000 台を大きく超�
 
 #### <a name="tenant-isolation-is-sacrificed"></a>テナントの分離が犠牲になる
 
-*データ:* &nbsp;マルチ テナント データベースでは必然的に、テナントの分離が犠牲になります。  複数のテナントのデータが、1 つのデータベースに一緒に格納されます。  開発時には、クエリによって複数のテナントのデータを公開しないようにしてください。  SQL Database では、[行レベルのセキュリティ][docu-sql-svr-db-row-level-security-947w]をサポートしています。これにより、1 つのクエリから返されたデータのスコープを強制的に単一のテナントにすることが可能です。
+*データ:* &nbsp;マルチ テナント データベースでは必然的に、テナントの分離が犠牲になります。  複数のテナントのデータが、1 つのデータベースに一緒に格納されます。  開発時には、クエリによって複数のテナントのデータを公開しないようにしてください。  SQL Database では、[行レベルのセキュリティ][docu-sql-svr-db-row-level-security-947w]をサポートしています。これにより、1 つのクエリから返されるデータのスコープを強制的に単一のテナントにすることが可能です。
 
 *処理:* &nbsp;マルチテナント データベースでは、全テナントでコンピューティング リソースおよびストレージ リソースが共有されます。  データベースが許容できる状態で実行されるように、データベース全体を監視できます。  ただし、Azure システムは、これらのリソースの使用を個々のテナントごとに監視または管理するための組み込みの方法を備えていません。  そのため、過稼働状態の 1 つのテナントのワークロードが、同じデータベース内の他のテナントのパフォーマンス エクスペリエンスに影響を及ぼすことで、マルチテナント データベースが "迷惑な隣人" に遭遇するリスクは高まります。  追加のアプリケーション レベルの監視を使用すると、テナントレベルのパフォーマンスを監視できます。
 
@@ -198,7 +197,7 @@ SQL Database は、シャーディング ライブラリとカタログ デー�
 
 - [テナント単位データベースの SaaS モデルを使用するマルチテナント Wingtip アプリケーションのデプロイと操作 - Azure SQL Database][docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]
 
-- [Wingtip Tickets サンプル SaaS Azure SQL Database のテナント アプリへようこそ][docu-saas-tenancy-welcome-wingtip-tickets-app-384w]
+- [Wingtip Tickets サンプル SaaS Azure SQL Database のテナント アプリの利用][docu-saas-tenancy-welcome-wingtip-tickets-app-384w]
 
 
 <!--  Article link references.  -->

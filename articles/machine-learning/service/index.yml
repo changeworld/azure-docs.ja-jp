@@ -45,7 +45,7 @@ sections:
         items:
           - html: <a href="tutorial-1st-experiment-sdk-setup">環境を設定して、最初の ML 実験をトレーニングする。</a>
           - html: <a href="tutorial-train-models-with-aml">画像分類モデルをトレーニングしてデプロイする</a>。
-          - html: <a href="tutorial-data-prep">データと自動化された ML を準備してタクシー料金を予測する</b>)。</a>
+          - html: <a href="tutorial-data-prep">データを準備し、自動化された ML を使用してタクシー料金を予測する</b>。</a>
   - title: サンプル
     items:
       - type: paragraph

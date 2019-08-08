@@ -1,6 +1,6 @@
 ---
-title: Custom Voice とは - Speech Services
-titlesuffix: Azure Cognitive Services
+title: Custom Voice とは - Speech Service
+titleSuffix: Azure Cognitive Services
 description: Custom Voice は、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。 以下のリンクに従って、カスタム音声テキスト変換エクスペリエンスの作成を開始しましょう。
 services: cognitive-services
 author: erhopf
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: ed5428da28ebea8b1c7f925696f88e3f3f898942
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 10d76bc1dd52f04cceb9f0952a755c55d90c6896
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606713"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562797"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 

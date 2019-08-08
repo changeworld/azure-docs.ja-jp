@@ -1,5 +1,5 @@
 ---
-title: Azure Container Instances の実行
+title: Azure Container Instances の実行 - Text Analytics
 titleSuffix: Azure Cognitive Services
 description: Text Analytics コンテナーを感情分析イメージと一緒に Azure Container Instance にデプロイし、それを Web ブラウザーでテストします。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: 9f174d54fcc74eed613eb69412bc0e515f15897b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9ef529c9d505e5b305602c80a8dbef906f52269c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711336"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552530"
 ---
 # <a name="deploy-a-sentiment-analysis-container-to-azure-container-instances"></a>Azure Container Instances への感情分析コンテナーのデプロイ
 

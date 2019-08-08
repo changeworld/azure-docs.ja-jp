@@ -7,17 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
+author: rohitnayakmsft
+ms.author: rohitna
 ms.reviewer: vanto, genemi
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 8c33cd7fe702f46f9c88643895b96445a9aa6a78
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b28a8efcc09954d9046ad1dda3ba5f10f45bdfa
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331421"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840462"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>データベース サーバー用の仮想ネットワーク サービス エンドポイントおよび規則を使用する
 
@@ -60,7 +59,7 @@ ms.locfileid: "60331421"
 
 SQL Database のファイアウォールでは、SQL Database への通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 しかし、Azure プライベート ネットワーク内にある多数のノードは、*動的* IP アドレスで構成されています。 動的 IP アドレスは、VM が再起動されたときなどに変更される場合があります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
 
-お使いの VM 用に*静的* IP アドレスを取得することで、IP のオプションを復旧することができます。 詳細については、「[Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]」をご覧ください。
+お使いの VM 用に*静的* IP アドレスを取得することで、IP のオプションを復旧することができます。 詳細については、「[Azure portal を使用して仮想マシンのプライベート IP アドレスを構成する][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]」をご覧ください。
 
 ただし、静的 IP の方法は管理が困難になる場合があり、まとめて実行すると負荷がかかります。 仮想ネットワーク規則を確立して管理するほうが簡単です。
 
@@ -116,7 +115,7 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 
 - 各 Azure SQL Database サーバーは、指定された仮想ネットワークに対して最大 128 個までの ACL エントリを保持できます。
 
-- 仮想ネットワーク規則は[クラシック デプロイ モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
+- 仮想ネットワーク規則は[クラシック デプロイ モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークにのみ適用されます。
 
 - Azure SQL Database に対する仮想ネットワーク サービス エンドポイントを有効にすると、MySQL および PostgreSQL Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントを有効にすると、エンドポイントから MySQL または PostgreSQL インスタンスへの接続の試行は失敗します。
   - 根本的な理由は、MySQL および PostgreSQL には仮想ネットワーク規則が構成されていない可能性があるためです。 接続を成功させるには、Azure Database for MySQL と Azure Database for PostgreSQL の仮想ネットワーク規則を構成する必要があります。
@@ -240,7 +239,7 @@ BLOB 監査では、監査ログをユーザー独自のストレージ アカ�
 
 単にファイアウォール規則を設定するだけでは、サーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントをオンにする必要もあります。 サービス エンドポイントをオンにする場合、オフからオンへの切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingVNetServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減するか、なくすことができます。
 
-PowerShell を使用して、**IgnoreMissingVNetServiceEndpoint** フラグを設定できます。 詳細については、「[PowerShell を使用して、Azure SQL Database 用の仮想サービス エンドポイントと規則を作成する][sql-db-vnet-service-endpoint-rule-powershell-md-52d]」をご覧ください。
+PowerShell を使用して、**IgnoreMissingVNetServiceEndpoint** フラグを設定できます。 詳細については、[PowerShell での仮想ネットワーク サービス エンドポイントと Azure SQL Database の規則の作成][sql-db-vnet-service-endpoint-rule-powershell-md-52d]に関する記事をご覧ください。
 
 ## <a name="errors-40914-and-40615"></a>エラー 40914 および 40615
 
@@ -268,7 +267,7 @@ SQL Database のエラー メッセージの一覧については、[こちら][
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portal で仮想ネットワーク規則を作成する
 
-このセクションでは、[Azure Portal][http-azure-portal-link-ref-477t] を使用して、お使いの Azure SQL Database に*仮想ネットワーク規則*を作成する方法を説明します。 規則では、*仮想ネットワーク サービス エンドポイント*としてタグ付けされた特定のサブネットからの通信を許可するように、お使いの SQL Database に指示します。
+このセクションでは、[Azure portal][http-azure-portal-link-ref-477t] を使用して、お使いの Azure SQL Database に*仮想ネットワーク規則*を作成する方法を説明します。 規則では、*仮想ネットワーク サービス エンドポイント*としてタグ付けされた特定のサブネットからの通信を許可するように、お使いの SQL Database に指示します。
 
 > [!NOTE]
 > Azure SQL Database サーバーの VNet ファイアウォール規則にサービス エンドポイントを追加する場合は、まず、そのサブネットに対するサービス エンドポイントを有効にする必要があります。
@@ -277,7 +276,7 @@ SQL Database のエラー メッセージの一覧については、[こちら][
 
 ## <a name="powershell-alternative"></a>PowerShell による代替
 
-PowerShell スクリプトでも、仮想ネットワーク規則を作成できます。 重要なコマンドレットは **New-AzSqlServerVirtualNetworkRule** です。 ご興味がある方は、「[PowerShell to create a Virtual Network service endpoint and rule for Azure SQL Database (PowerShell で Azure SQL Database の仮想ネットワーク サービス エンドポイントと規則を作成する)][sql-db-vnet-service-endpoint-rule-powershell-md-52d]」をご覧ください。
+PowerShell スクリプトでも、仮想ネットワーク規則を作成できます。 重要なコマンドレットは **New-AzSqlServerVirtualNetworkRule** です。 ご興味がある方は、[PowerShell での仮想ネットワーク サービス エンドポイントと Azure SQL Database の規則の作成][sql-db-vnet-service-endpoint-rule-powershell-md-52d]に関する記事をご覧ください。
 
 ## <a name="rest-api-alternative"></a>REST API の代替手段
 
@@ -290,7 +289,7 @@ PowerShell スクリプトでも、仮想ネットワーク規則を作成でき
 保持している 1 つのサブネットが、Azure SQL Database に関連する特定の Virtual Network エンドポイントの*種類名*で既にタグ付けされている必要があります。
 
 - 関連するエンドポイントの種類名は **Microsoft.Sql** です。
-- サブネットが種類名でタグ付けされていない場合は、「[Verify your subnet is an endpoint (サブネットが 1 つのエンドポイントであることを確認する)][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]」をご覧ください。
+- サブネットが種類名でタグ付けされていない場合は、「[自分のサブネットがエンドポイントであることを確認する][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]」をご覧ください。
 
 <a name="a-portal-steps-for-vnet-rule-200" />
 
@@ -341,8 +340,8 @@ Azure SQL Database の仮想ネットワーク規則機能は、2017 年 9 月�
 
 ## <a name="next-steps"></a>次の手順
 
-- [PowerShell を使用して、仮想ネットワーク サービス エンドポイントと、Azure SQL Database の仮想ネットワーク規則を作成する][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
-- [仮想ネットワーク規則:][rest-api-virtual-network-rules-operations-862r]REST API を使用した操作
+- [PowerShell を使用して、仮想ネットワーク サービス エンドポイントと、Azure SQL Database の仮想ネットワーク規則を作成する。][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
+- [仮想ネットワーク規則:REST API を使用した操作][rest-api-virtual-network-rules-operations-862r]
 
 <!-- Link references, to images. -->
 

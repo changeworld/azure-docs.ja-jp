@@ -10,10 +10,10 @@ ms.date: 07/08/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 25cac6a66baeb1587e4b5ba3f0923ca9c4394706
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325500"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances に Azure ファイル共有をマウントする
@@ -83,13 +83,13 @@ az container create \
 
 ## <a name="manage-files-in-mounted-volume"></a>マウントしたボリューム内のファイルの管理
 
-コンテナーが起動したら、Microsoft [aci-hellofiles][aci-hellofiles] image to create small text files in the Azure file share at the mount path you specified. Obtain the web app's fully qualified domain name (FQDN) with the [az container show][az-container-show] コマンドを使用してデプロイされる単純な Web アプリを使用できます。
+コンテナーが起動したら、Microsoft [aci-hellofiles][aci-hellofiles] イメージ経由でデプロイされる単純な Web アプリを使用して、指定したマウント パスにある Azure ファイル共有内に小さいテキスト ファイルを作成できます。 [az container show][az-container-show] コマンドを使用して、Web アプリの完全修飾ドメイン名 (FQDN) を取得します。
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-アプリを使用してテキストを保存したら、[Azure portal][portal] or a tool like the [Microsoft Azure Storage Explorer][storage-explorer] を使用して、ファイル共有に書き込まれるファイルを取得して検査することができます。
+アプリを使用してテキストを保存したら、[Azure portal][portal] または [Microsoft Azure Storage Explorer][storage-explorer] などのツールを使用して、ファイル共有に書き込まれるファイルを取得および検査することができます。
 
 ## <a name="deploy-container-and-mount-volume---yaml"></a>コンテナーのデプロイとボリュームのマウント - YAML
 

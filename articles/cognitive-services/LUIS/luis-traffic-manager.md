@@ -1,5 +1,5 @@
 ---
-title: エンドポイント クォータを増やす
+title: エンドポイント クォータを増やす- LUIS
 titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **公開** ページの **リソースとキー** セクションで LUIS アプリケーションに追加します。
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10ddbed710d3055e66bd3cb0b06cfa7949a9a1c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66123539"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563372"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager を使用した複数のキーにわたるエンドポイント クォータの管理
 Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **[Publish]\(公開\)** ページの **[Resources and Keys]\(リソースとキー\)** セクションで LUIS アプリケーションに追加します。 
@@ -82,7 +82,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     |--|--|--|
     |-Name|luis-profile-eastus|Azure portal での Traffic Manager 名|
     |-ResourceGroupName|luis-traffic-manager|前のセクションで作成済み|
-    |-TrafficRoutingMethod|パフォーマンス|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」をご覧ください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
+    |-TrafficRoutingMethod|パフォーマンス|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」を参照してください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
     |-RelativeDnsName|luis-dns-eastus|サービスのサブドメイン (luis-dns-eastus.trafficmanager.net)|
     |-Ttl|30|ポーリング間隔 (30 秒)|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|LUIS のプロトコルとポートは HTTPS/443 です。|
@@ -101,7 +101,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     |--|--|--|
     |-EndpointName|luis-east-endpoint|プロファイルの下で表示されるエンドポイント名|
     |-TrafficManagerProfile|$eastprofile|手順 1. で作成したプロファイル オブジェクトを使用します。|
-    |-Type|ExternalEndpoints|詳細については、「[Traffic Manager エンドポイント][traffic-manager-endpoints]」をご覧ください。 |
+    |-Type|ExternalEndpoints|詳細については、「[Traffic Manager エンドポイント][traffic-manager-endpoints]」をご覧ください |
     |-Target|eastus.api.cognitive.microsoft.com|LUIS エンドポイントのドメイン|
     |-EndpointLocation|"eastus"|エンドポイントのリージョン|
     |-EndpointStatus|Enabled|作成時にエンドポイントを有効にします。|
@@ -150,7 +150,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     |--|--|--|
     |-Name|luis-profile-westus|Azure portal での Traffic Manager 名|
     |-ResourceGroupName|luis-traffic-manager|前のセクションで作成済み|
-    |-TrafficRoutingMethod|パフォーマンス|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」をご覧ください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
+    |-TrafficRoutingMethod|パフォーマンス|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」を参照してください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
     |-RelativeDnsName|luis-dns-westus|サービスのサブドメイン (luis-dns-westus.trafficmanager.net)|
     |-Ttl|30|ポーリング間隔 (30 秒)|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|LUIS のプロトコルとポートは HTTPS/443 です。|
@@ -170,7 +170,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     |--|--|--|
     |-EndpointName|luis-west-endpoint|プロファイルの下で表示されるエンドポイント名|
     |-TrafficManagerProfile|$westprofile|手順 1. で作成したプロファイル オブジェクトを使用します。|
-    |-Type|ExternalEndpoints|詳細については、「[Traffic Manager エンドポイント][traffic-manager-endpoints]」をご覧ください。 |
+    |-Type|ExternalEndpoints|詳細については、「[Traffic Manager エンドポイント][traffic-manager-endpoints]」をご覧ください |
     |-Target|westus.api.cognitive.microsoft.com|LUIS エンドポイントのドメイン|
     |-EndpointLocation|"westus"|エンドポイントのリージョン|
     |-EndpointStatus|Enabled|作成時にエンドポイントを有効にします。|
@@ -217,7 +217,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
     |--|--|--|
     |-Name|luis-profile-parent|Azure portal での Traffic Manager 名|
     |-ResourceGroupName|luis-traffic-manager|前のセクションで作成済み|
-    |-TrafficRoutingMethod|パフォーマンス|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」をご覧ください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
+    |-TrafficRoutingMethod|パフォーマンス|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」を参照してください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
     |-RelativeDnsName|luis-dns-parent|サービスのサブドメイン (luis-dns-parent.trafficmanager.net)|
     |-Ttl|30|ポーリング間隔 (30 秒)|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|LUIS のプロトコルとポートは HTTPS/443 です。|

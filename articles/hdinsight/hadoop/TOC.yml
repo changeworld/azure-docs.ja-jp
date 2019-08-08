@@ -56,6 +56,8 @@
       maintainContext: true
     - name: トラブルシューティング
       items:
+        - name: ディスク領域の不足
+          href: ./hdinsight-troubleshoot-out-disk-space.md
         - name: ソフトのロックアップ - CPU
           href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
         - name: InvalidNetworkConfigurationErrorCode - クラスターの作成が失敗する
@@ -72,6 +74,8 @@
           href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
         - name: Apache Ambari のハートビートの問題
           href: ./apache-ambari-troubleshoot-heartbeat-issues.md
+        - name: Apache Ambari でダウンしたホストとサービスが表示される
+          href: ./apache-ambari-troubleshoot-down-hosts-services.md
 - name: 方法
   items:
     - name: Apache Hadoop サンドボックスの使用

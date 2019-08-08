@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 9a02a56df85c5c6aa9fd177ad42a2f9bfb303e44
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: efa8a92ca9861c0280237ba07f4304b5c7dbbb88
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491951"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68609996"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Traffic Analytics のスキーマとデータ集計
 
@@ -32,12 +32,12 @@ Traffic Analytics は、クラウド ネットワークでのユーザーとア�
 
 ### <a name="data-aggregation"></a>データの集計
 
-1. "FlowIntervalStartTime_t" から "FlowIntervalEndTime_t" までの間に NSG で記録されるすべてのフロー ログは、Traffic Analytics によって処理される前に、ストレージ アカウント内で 1 分間おきに BLOB としてキャプチャされます。
-2. Traffic Analytics の既定の処理間隔は 60 分です。 つまり、Traffic Analytics は 60 分ごとに、集計のための BLOB をストレージから取得します。
+1. "FlowIntervalStartTime_t" から "FlowIntervalEndTime_t" までの間に NSG で記録されるすべてのフロー ログは、Traffic Analytics によって処理される前に、ストレージ アカウント内で 1 分間おきに BLOB としてキャプチャされます。 
+2. Traffic Analytics の既定の処理間隔は 60 分です。 つまり、Traffic Analytics は 60 分ごとに、集計のための BLOB をストレージから取得します。 選択した処理間隔が 10 分の場合、Traffic Analytics は 10 分ごとにストレージ アカウントから BLOB を取得します。
 3. ソース IP、宛先 IP、宛先ポート、NSG 名、NSG ルール、フロー方向、およびトランスポート層プロトコル (TCP または UDP) が同じであるフロー (注:ソース ポートは集計から除外されます) は、Traffic Analytics によって 1 つのフローにまとめられます
 4. この単一レコードは Traffic Analytics によって修飾され (詳しくは下記のセクションを参照)、Log Analytics に取り込まれます。このプロセスには最大で 1 時間かかります。
 5. FlowStartTime_t フィールドは、"FlowIntervalStartTime_t" から "FlowIntervalEndTime_t" までのフロー ログ処理間隔の間に集計されたフロー (同じ 4 タプル) の、最初の発生日時を示します。
-6. TA 内のリソースについては、UI に示されるフローは NSG から見たフロー総数ですが、Log Anlaytics のユーザーには 1 つのレコードのみが表示されます。 すべてのフローを表示するには、blob_id フィールドを使用します (これはストレージから参照できます)。 そのレコードの合計フロー数は、BLOB 内にある個々 のフローと一致します。
+6. TA 内のリソースについては、UI に示されるフローは NSG から見たフロー総数ですが、Log Analytics のユーザーには 1 つのレコードのみが表示されます。 すべてのフローを表示するには、blob_id フィールドを使用します (これはストレージから参照できます)。 そのレコードの合計フロー数は、BLOB 内にある個々 のフローと一致します。
 
 次のクエリは、過去 30 日間のオンプレミスからのすべてのフロー ログを調べるのに役立ちます。
 ```
@@ -92,7 +92,7 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 
 | フィールド | 形式 | 説明 |
 |:---   |:---    |:---  |
-| TableName | AzureNetworkAnalytics_CL | Traffic Anlaytics データのテーブル
+| TableName | AzureNetworkAnalytics_CL | Traffic Analytics データのテーブル
 | SubType_s | FlowLog | フロー ログのサブタイプ。 "FlowLog" のみを使用します。SubType_s の他の値は製品の内部動作用です。 |
 | FASchemaVersion_s |   1   | スキーマ バージョン。 NSG フロー ログ バージョンは反映されません |
 | TimeProcessed_t   | 日付と時刻 (UTC)  | Traffic Analytics がストレージ アカウントから未加工のフロー ログを処理した時刻 |

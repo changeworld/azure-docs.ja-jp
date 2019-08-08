@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa4f5dc7a5aceaf81f71eacd36d131471a57e5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a5f15aa5264c0abf87cb15f0468e8a3a924e0b5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080167"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562363"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデーモン アプリ - トークンを取得する
 
@@ -61,10 +61,10 @@ public final static String KEYVAULT_DEFAULT_SCOPE = "https://vault.azure.net/.de
 
 クライアント資格情報に使用するスコープは常に resourceId+"/.default" にする必要があります。
 
-### <a name="case-of-v10-resources"></a>v1.0 リソースの場合
+### <a name="case-of-azure-ad-v10-resources"></a>Azure AD (v1.0) リソースの場合
 
 > [!IMPORTANT]
-> v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (v2.0 エンドポイント) の場合、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープから目的の対象ユーザーを解析します。
+> v1.0 アクセス トークンを受け入れるリソースのためにアクセス トークンを要求する MSAL (Microsoft ID プラットフォーム エンドポイント) の場合、Azure AD では、最後のスラッシュの前のすべてを取得し、それをリソース ID として使用することで、要求されたスコープから目的の対象ユーザーを解析します。
 > そのため、Azure SQL ( **https://database.windows.net** ) のようにリソースによってスラッシュで終わる対象ユーザー (Azure SQL の場合: `https://database.windows.net/` ) が要求されている場合は、`https://database.windows.net//.default` のスコープを要求する必要があります(二重スラッシュに注意してください)。 次も参照してください。MSAL.NET の問題 [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747):リソース URL の末尾のスラッシュが省略されたため、SQL 認証エラーが発生した。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
@@ -161,7 +161,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 ### <a name="learn-more-about-the-protocol"></a>プロトコルに関する詳細情報
 
-詳細については、プロトコルのドキュメント:「[Azure Active Directory v2.0 と OAuth 2.0 クライアント資格情報フロー](v2-oauth2-client-creds-grant-flow.md)」を参照してください。
+詳細については、プロトコルのドキュメント:[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](v2-oauth2-client-creds-grant-flow.md)。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -1,6 +1,6 @@
 ---
-title: フレーズ リスト - Speech Services
-titlesuffix: Azure Cognitive Services
+title: フレーズ リスト - Speech Service
+titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換の認識結果を向上させるために、`PhraseListGrammar` オブジェクトを使用して Speech Services にフレーズ リストを提供する方法について説明します。
 services: cognitive-services
 author: rhurey
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: d73a63a8f58e14149121d0860268fc23930001bf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 0e552d502184d1b537263c2c1f6b2a8562cdf791
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226346"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562779"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>音声テキスト変換用のフレーズ リスト
 

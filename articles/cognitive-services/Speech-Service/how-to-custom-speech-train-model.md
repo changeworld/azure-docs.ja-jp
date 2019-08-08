@@ -1,6 +1,6 @@
 ---
-title: Custom Speech 用のモデルをトレーニングする - Speech Services
-titlesuffix: Azure Cognitive Services
+title: Custom Speech 用のモデルをトレーニングする - Speech Service
+titleSuffix: Azure Cognitive Services
 description: Microsoft のベースライン モデルと、作成する予定のカスタム モデルの両方の認識の正確性を向上するには、音声変換のトレーニングが必要です。 モデルは、"人間" とラベルが付いた文字起こしと関連するテキストを使用してトレーニングされます。 これらのデータセットと以前にアップロードされたオーディオ データは、音声変換モデルを改良してトレーニングし、単語、語句、略語、名前、およびその他の製品固有の用語を認識するために使用されます。
 services: cognitive-services
 author: erhopf
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 49195efa54c8e6eca9186a9e2fc33da84ff34413
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: b5893b4f07444b07bf142971a5df4776e549d307
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625381"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562808"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Custom Speech 用のモデルをトレーニングする
 

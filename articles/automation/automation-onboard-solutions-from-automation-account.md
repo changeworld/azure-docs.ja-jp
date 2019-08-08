@@ -9,12 +9,12 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 114ddf8f545f3f8d1f6c1a80725668d7875774f8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3c27c268ed2a1c369c9b42bd1cd5a2365547c52f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476640"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667458"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -65,7 +65,7 @@ Update Management ソリューションでは、Azure Windows VM の更新プロ
 
 使用している Automation アカウントに移動し、 **[全般]** の **[保存した検索条件]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|Name     |Category  |エイリアス  |
+|EnableAdfsAuthentication     |Category  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |
@@ -103,6 +103,8 @@ Azure に存在しないマシンは手動で追加する必要があります�
 ### <a name="all-available-and-future-machines"></a>使用可能なすべてのマシンと今後のすべてのマシン
 
 使用可能なすべてのマシンと今後のマシンに対してソリューションを有効にするには、 **[Enable on all available and future machines]\(使用可能なマシンと今後のマシンすべてで有効にします\)** を選択します。 このオプションにより、保存した検索条件とスコープ構成がワークスペースから削除されます。 このアクションにより、ワークスペースへのレポートを行うすべての Azure マシンと Azure 以外のマシンに対してソリューションが開かれます。 選択された場合は、残されたスコープ構成がないため、 **[マシンの管理]** ボタンが永続的に無効になります。
+
+最初に保存した検索条件を追加して戻すことで、スコープ構成を追加し直すことができます。 詳細については、「[保存した検索条件](#saved-searches)」を参照してください。
 
 ### <a name="selected-machines"></a>選択したマシン
 

@@ -3,7 +3,7 @@ title: Azure に Linux Service Fabric クラスターを作成する | Microsoft
 description: Azure CLI を使用して Linux Service Fabric クラスターを既存の Azure 仮想ネットワークにデプロイする方法を学習します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 00d7e510fa43865f1427092f2f20b9847f1afa9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ba157d7bf2e6effbaf7ab129dbbbfd1ca8b9667
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60863786"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598838"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
@@ -97,7 +97,7 @@ ms.locfileid: "60863786"
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>仮想ネットワークとクラスターのデプロイ
 
-次に、ネットワーク トポロジを設定し、Service Fabric クラスターをデプロイします。 [AzureDeploy.json] [template] Resource Manager テンプレートでは、Service Fabric 用の仮想ネットワーク (VNET) とサブネットが作成されます。 このテンプレートを使用すると、証明書セキュリティが有効なクラスターもデプロイできます。  運用環境クラスターの場合は、証明機関 (CA) から取得した証明書をクラスター証明書として使用します。 自己署名証明書を使用して、テスト クラスターを保護することができます。
+次に、ネットワーク トポロジを設定し、Service Fabric クラスターをデプロイします。 [AzureDeploy.json][template] Resource Manager テンプレートでは、Service Fabric 用の仮想ネットワーク (VNET) とサブネットが作成されます。 このテンプレートを使用すると、証明書セキュリティが有効なクラスターもデプロイできます。  運用環境クラスターの場合は、証明機関 (CA) から取得した証明書をクラスター証明書として使用します。 自己署名証明書を使用して、テスト クラスターを保護することができます。
 
 この記事のテンプレートでは、クラスター証明書を識別するために証明書の拇印を使用するクラスターがデプロイされます。  2 つの証明書が同じ拇印を持つことはできず、そのことが証明書の管理をより困難にしています。 デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。  証明書の管理に証明書共通名を使用するようにクラスターを更新する方法については、[証明書共通名管理へのクラスターの変更](service-fabric-cluster-change-cert-thumbprint-to-cn.md)に関するページを参照してください。
 

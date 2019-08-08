@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
-manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: 350e67f5a1e7e1eab7abe27a6ca851ed2420af84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ddb1fe40507da5caa218f73284a1095035df951
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978523"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570373"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>シャード化されたマルチテナント アプリケーションをデプロイおよび操作する
 
@@ -51,7 +50,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-- 最新の Azure PowerShell がインストールされていること。 詳しくは、「[Azure PowerShell を使ってみる][link-azure-get-started-powershell-41q]」をご覧ください。
+- 最新の Azure PowerShell がインストールされていること。 詳細については、「[Azure PowerShell を使ってみる][link-azure-get-started-powershell-41q]」をご覧ください。
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>Wingtip Tickets アプリのデプロイ
 
@@ -68,7 +67,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 1. **[Deploy to Azure]\(Azure にデプロイ\)** という青いボタンをクリックします。
    - Wingtip Tickets SaaS デプロイ テンプレートが指定された状態で Azure Portal が開きます。
 
-     [![Deploy to Azure\(Azure にデプロイ\) ボタン。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+     [![[Deploy to Azure]\(Azure にデプロイ\) ボタン。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 1. デプロイに必須のパラメーター値を入力します。
 

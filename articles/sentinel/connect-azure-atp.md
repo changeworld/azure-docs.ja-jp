@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 07/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 77f745f92133f4f43cd2a65f2b69ded1eff9e8ed
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 6f41a5704c783ba8aeab7bc2e82ef731c6a257ac
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620626"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599144"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Azure Advanced Threat Protection (ATP) からデータを接続する
 
@@ -34,14 +34,15 @@ ms.locfileid: "67620626"
 ## <a name="prerequisites"></a>前提条件
 
 - グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー
-- Azure ATP のプライベート プレビューのお客様であること
+- Azure ATP のプレビューのお客様であること
 
 ## <a name="connect-to-azure-atp"></a>Azure ATP への接続
 
-Azure ATP プライベート プレビューのバージョンが、[ネットワーク上で有効になっていること](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1) を確認します。
+Azure ATP のプレビュー バージョンが、[ネットワーク上で有効になっていること](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1) を確認します。
 Azure ATP がデプロイされていて、データを取り込んでいる場合、不審なアラートの Azure Sentinel へのストリーミングは簡単に実行できます。 アラートが Azure Sentinel へのストリーミングを開始するには、最大で 24 時間かかる場合があります。
 
 
+1. Azure ATP を Azure Sentinel に接続するには、まず Azure ATP と Microsoft Cloud App Security の統合を有効にする必要があります。 この方法の詳細については、「[Azure Advanced Threat Protection の統合](https://docs.microsoft.com/cloud-app-security/aatp-integration)」を参照してください。
 
 1. Azure Sentinel で **[データ コネクタ]** を選択し、 **[Azure ATP]** タイルをクリックします。
 

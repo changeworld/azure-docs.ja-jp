@@ -1,5 +1,5 @@
 ---
-title: アプリケーションの設定
+title: アプリケーションの設定 - LUIS
 titleSuffix: Azure Cognitive Services
 description: Language Understanding アプリのアプリケーション設定について理解します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 3682b9e0c38344be1522440290b46f8c10bd5607
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 7dec738fca6991cbcbd822c192b96bf6b1cc6d87
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275906"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563514"
 ---
 # <a name="application-settings"></a>アプリケーションの設定
 

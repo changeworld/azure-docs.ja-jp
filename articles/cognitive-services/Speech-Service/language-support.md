@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 031367a8a05defad475ae077f9b38b7294837460
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559399"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815261"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Speech Services の言語とリージョンのサポート
 
@@ -31,12 +31,12 @@ Microsoft 音声認識 SDK と REST API は、どちらも以下の言語 (ロ�
  ar-EG | アラビア語 (エジプト)、現代標準 | いいえ | はい | いいえ
  ca-ES | カタルニア語 | いいえ | いいえ | いいえ
  da-DK | デンマーク語 (デンマーク) | いいえ | いいえ | いいえ
- de-DE | ドイツ語 (ドイツ) | はい | はい | いいえ
- en-AU | 英語 (オーストラリア) | いいえ | 可能 | はい
- en-CA | 英語 (カナダ) | いいえ | 可能 | はい
- en-GB | 英語 (イギリス) | いいえ | 可能 | はい
- en-IN | 英語 (インド) | はい | はい | はい
- en-NZ | 英語 (ニュージーランド) | いいえ | 可能 | はい  
+ de-DE | ドイツ語 (ドイツ) | はい | はい | はい
+ en-AU | 英語 (オーストラリア) | いいえ | はい | いいえ
+ en-CA | 英語 (カナダ) | いいえ | はい | いいえ
+ en-GB | 英語 (イギリス) | いいえ | はい | いいえ
+ en-IN | 英語 (インド) | はい | はい | いいえ
+ en-NZ | 英語 (ニュージーランド) | いいえ | はい | いいえ 
  en-US | 英語 (米国) | はい | はい | はい
  es-ES | スペイン語 (スペイン) | はい | はい | いいえ
  es-MX | スペイン語 (メキシコ) | いいえ | はい | いいえ

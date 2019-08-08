@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
 ms.openlocfilehash: 247665f58dd064565f0e9aebc9859e97ce0ab0c0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67836972"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes Service で CoreDNS をカスタマイズする
@@ -27,7 +27,7 @@ AKS はマネージド サービスであるため、CoreDNS のメイン構成 
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、AKS のクイックスタートの、[Azure CLI を使用][aks-quickstart-cli]に関するページと、Azure portal に関するページor [using the Azure portal][aks-quickstart-portal]を参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 ## <a name="what-is-supportedunsupported"></a>サポート対象/サポート対象外
 
@@ -91,7 +91,7 @@ data:
     }
 ```
 
-前の例と同様に、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、ご自分の YAML マニフェストの名前を指定します。次に、CoreDNS で kubectl delete pod を使用して ConfigMap を作成し、Kubernetes スケジューラでそれらを再作成できるようにします。command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete]
+前述の例のように、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、YAML マニフェストの名前を指定します。 次に、Kubernetes スケジューラで再作成するために、[kubectl delete pod][kubectl delete] を使用して ConfigMap の再読み込みを CoreDNS に強制します。
 
 ```console
 kubectl apply -f corednsms.yaml
@@ -119,7 +119,7 @@ data:
     }
 ```
 
-前の例と同様に、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、ご自分の YAML マニフェストの名前を指定します。次に、CoreDNS で kubectl delete pod を使用して ConfigMap を作成し、Kubernetes スケジューラでそれらを再作成できるようにします。command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete]
+前述の例のように、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、YAML マニフェストの名前を指定します。 次に、Kubernetes スケジューラで再作成するために、[kubectl delete pod][kubectl delete] を使用して ConfigMap の再読み込みを CoreDNS に強制します。
 
 ```console
 kubectl apply -f corednsms.yaml
@@ -151,7 +151,7 @@ data:
 
 ```
 
-前の例と同様に、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、ご自分の YAML マニフェストの名前を指定します。次に、CoreDNS で kubectl delete pod を使用して ConfigMap を作成し、Kubernetes スケジューラでそれらを再作成できるようにします。command and specify the name of your YAML manifest. Then, force CoreDNS to reload the ConfigMap using the [kubectl delete pod][kubectl delete]
+前述の例のように、[kubectl apply configmap][kubectl-apply] コマンドを使用して ConfigMap を作成し、YAML マニフェストの名前を指定します。 次に、Kubernetes スケジューラで再作成するために、[kubectl delete pod][kubectl delete] を使用して ConfigMap の再読み込みを CoreDNS に強制します。
 
 ```console
 kubectl apply -f corednsms.yaml

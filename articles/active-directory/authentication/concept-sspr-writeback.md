@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dbf27301e738978e7f03d2423a4d23fd63c97b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07069d22d57540c6a16472bc7278821e14f1f18e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113497"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561278"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 
@@ -43,7 +43,7 @@ ms.locfileid: "67113497"
 * **受信ファイアウォール規則は不要**: パスワード ライトバックは、基盤の通信チャネルとして Azure Service Bus リレーを使います。 すべての通信はポート 443 経由で送信されます。
 
 > [!NOTE]
-> オンプレミスの Active Directory の保護グループ内に存在するユーザー アカウントをパスワード ライトバックに使用することはできません。 オンプレミスの AD の保護グループ内に存在する管理者アカウントは、パスワード ライトバックに使用できます。 保護グループについて詳しくは、「[Protected Accounts and Groups in Active Directory (Active Directory の保護アカウントとグループ)](https://technet.microsoft.com/library/dn535499.aspx)」をご覧ください。
+> オンプレミスの AD の保護グループ内に存在する管理者アカウントは、パスワード ライトバックに使用できます。 管理者はクラウドでパスワードを変更することはできますが、パスワードのリセットを使用して、忘れたパスワードをリセットすることはできません。 保護グループについて詳しくは、「[Protected Accounts and Groups in Active Directory (Active Directory の保護アカウントとグループ)](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory)」をご覧ください。
 
 ## <a name="licensing-requirements-for-password-writeback"></a>パスワード ライトバックに必要なライセンス
 

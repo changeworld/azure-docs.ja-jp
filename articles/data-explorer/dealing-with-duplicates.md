@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60ec2b86e0205060f907f1fe39d084dca3aac1cd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445772"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608233"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>Azure Data Explorer で重複データを処理する
 
@@ -70,7 +70,7 @@ DeviceEventsAll
 
 ### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>対応策 #3:取り込みプロセスの最中にフィルター処理により重複を除去する
 
-取り込みプロセスの最中にフィルター処理を使って重複を除去するという方法もあります。 Kusto テーブルへの取り込みの際に、重複したデータが無視されます。 データはステージング テーブルに取り込まれ、重複した行が削除された後、別のテーブルにコピーされます。 この方法のメリットは、1 つ前の方法よりもクエリのパフォーマンスが劇的に高まるという点です。 デメリットとしては、取り込みにかかる時間が増えるほか、データのストレージに追加のコストが発生することが挙げられます。
+取り込みプロセスの最中にフィルター処理を使って重複を除去するという方法もあります。 Kusto テーブルへの取り込みの際に、重複したデータが無視されます。 データはステージング テーブルに取り込まれ、重複した行が削除された後、別のテーブルにコピーされます。 この方法のメリットは、1 つ前の方法よりもクエリのパフォーマンスが劇的に高まるという点です。 デメリットとしては、取り込みにかかる時間が増えるほか、データのストレージに追加のコストが発生することが挙げられます。 さらに、このソリューションは、重複が同時に取り込まれない場合にのみ機能します。 重複するレコードを含む複数の取り込みが同時実行される場合、重複除去プロセスによってテーブル内の既存の一致レコードが検出されないため、すべて取り込まれる可能性があります。    
 
 次の例では、この方法を説明します。
 

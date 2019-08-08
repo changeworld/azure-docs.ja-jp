@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 6713182003a280c1d53e904209159b55b4ad01c6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd8cabb14ad65b4da562c7d6048a52b574513b26
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60331147"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566179"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: SQL の Virtual Service エンドポイントと VNet 規則を作成する
 
@@ -55,7 +54,7 @@ ms.locfileid: "60331147"
 
 ## <a name="prerequisites-for-running-powershell"></a>PowerShell を実行するための前提条件
 
-- [Azure Portal][http-azure-portal-link-ref-477t] を通じて、既に Azure にログインできます。
+- [Azure portal][http-azure-portal-link-ref-477t] の使用などにより、既に Azure にログインできます。
 - 既に、PowerShell スクリプトを実行できます。
 
 > [!NOTE]
@@ -470,7 +469,7 @@ Completed script 4, the "Clean-Up".
 
 ## <a name="verify-your-subnet-is-an-endpoint"></a>自分のサブネットがエンドポイントであることを確認する
 
-既に **Microsoft.Sql** という種類名が割り当てられたサブネットがある場合、それは既に仮想サービス エンドポイントであることを意味します。 [Azure Portal][http-azure-portal-link-ref-477t] を使用して、エンドポイントから仮想ネットワーク規則を作成できます。
+既に **Microsoft.Sql** という種類名が割り当てられたサブネットがある場合、それは既に仮想サービス エンドポイントであることを意味します。 [Azure portal][http-azure-portal-link-ref-477t] を使用して、エンドポイントから仮想ネットワーク規則を作成できます。
 
 また、**Microsoft.Sql** という種類名のサブネットがあるかどうかわからない場合もあります。 次の PowerShell スクリプトを実行して、次の操作を行います。
 
