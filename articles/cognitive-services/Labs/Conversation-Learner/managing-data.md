@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 7ea0b246a16ff196a4160d9822b5db15cd39a4a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 857e899764d284e2d78f1172fa8eeac04c57d618
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385197"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705194"
 ---
 # <a name="managing-user-data"></a>ユーザー データの管理
 

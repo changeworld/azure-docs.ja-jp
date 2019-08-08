@@ -10,18 +10,19 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 183a307159adb5dfdb248eb0cf4862462a626db6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 37a353fbb86ca199b2316dcfba5904f4b46b0276
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60498748"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705052"
 ---
 # <a name="conference-instance-entity"></a>会議 (インスタンス) エンティティ
 
 <sub> *次の属性は、会議 (インスタンス) エンティティに固有です。(Ty = '4') </sub>
 
-Name    |説明                            |Type       | Operations
+EnableAdfsAuthentication    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 CIN     |会議 (インスタンス) の標準化名 ({ConferenceSeriesNormalizedName} {ConferenceInstanceYear})        |string     |等しい
@@ -43,6 +44,6 @@ ECC     |会議 (インスタンス) の引用の推定総数 |Int32      |な�
 
 ## <a name="extended-metadata-attributes"></a>拡張メタデータの属性 ##
 
-Name    | 説明               
+EnableAdfsAuthentication    | 説明               
 --------|---------------------------    
 FN      | 会議 (インスタンス) のフル ネーム

@@ -7,16 +7,17 @@ manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 985c6eadbc1ef4da4a15825d263b3ebe95de8107
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 01ab4f6f0535f137c7ffeb99c36ecd1e831de6f7
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611790"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727658"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure Log Integration のチュートリアル:Event Hubs を使用して Azure Key Vault のイベントを処理する
 

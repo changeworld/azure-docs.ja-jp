@@ -10,12 +10,13 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 43254db734a48f3e7aaa5a26a7fbf3981c9e9d87
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ef5ebd4ec88deac8c49430f36956d3711c8c535
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592863"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706950"
 ---
 # <a name="project-url-preview-endpoint"></a>Project URL Preview エンドポイント
 
@@ -31,7 +32,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ```
 
 ### <a name="query-parameters"></a>クエリ パラメーター
-|Name|値|Type|必須|  
+|EnableAdfsAuthentication|値|Type|必須|  
 |----------|-----------|----------|--------------|  
 |q|プレビューする URL|string |はい|
 |safeSearch|違法な成人向けコンテンツや海賊版コンテンツはエラー コード 400 でブロックされ、*isFamilyFriendly* フラグは返されません。 <p>合法的な成人向けコンテンツの場合は、次のような動作になります。 状態コード 200 が返され、*isFamilyFriendly* フラグが false に設定されます。<ul><li>safeSearch=strict:タイトル、説明、URL、画像は返されません。</li><li>safeSearch=moderate: タイトル、URL、説明は取得しますが、説明的な画像は取得しません。</li><li>safeSearch=off: すべての応答オブジェクト/要素 (タイトル、URL、説明、画像) を取得します。</li></ul> |string|不要。 </br> 既定値は safeSearch=strict です。| 

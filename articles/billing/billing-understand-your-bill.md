@@ -2,28 +2,28 @@
 title: Azure の課金内容の確認
 description: Azure サブスクリプションの使用量と請求書を確認して理解する方法について説明します。
 author: bandersmsft
-manager: jureid
+manager: dougeby
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/22/2019
+ms.date: 07/28/2019
 ms.author: banders
-ms.openlocfilehash: 69659e700ee47c8961ec21f0fb23573e13d72588
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 51143644a62a77a61c4540d9f2ad3dce401c496b
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383631"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610138"
 ---
 # <a name="understand-your-microsoft-azure-bill"></a>Microsoft Azure の課金内容を確認する
 Azure の請求書を理解するには、詳細な毎日の使用状況ファイルおよび Azure portal のコスト管理レポートと、請求書を比較します。
 
-この記事は、Enterprise Agreement (EA) をお持ちの Azure カスタマーには適用されません。 EA カスタマーの場合、「[Understand your bill for Azure customers with an Enterprise Agreement](billing-understand-your-bill-ea.md)」 (Enterprise Agreement をお持ちの Azure カスタマーに対する請求について) を参照してください。
-
-この記事は、[Microsoft 顧客契約](#check-access-to-a-microsoft-customer-agreement)をされている Azure カスタマーには適用されません。 Microsoft 顧客契約をお持ちの場合は、「[Microsoft 顧客契約の請求書での料金を理解する](billing-mca-understand-your-bill.md)」を参照してください。
+この記事は、次のお客様には適用されません。
+- Enterprise Agreement (EA カスタマー) をお持ちの Azure カスタマー。 EA カスタマーの場合、「[Understand your bill for Azure customers with an Enterprise Agreement](billing-understand-your-bill-ea.md)」 (Enterprise Agreement をお持ちの Azure カスタマーに対する請求について) を参照してください。
+- [Microsoft 顧客契約](#check-access-to-a-microsoft-customer-agreement)をお持ちの Azure カスタマー。 Microsoft 顧客契約をお持ちの場合は、「[Microsoft 顧客契約の請求書での料金を理解する](billing-mca-understand-your-bill.md)」を参照してください。
 
 請求サイクル、価格、使用量など、Azure Cloud Solution Provider (Azure CSP) プログラムで請求がどのように行われるかの説明については、「[Azure CSP の請求の概要](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/)」を参照してください。
 
@@ -88,7 +88,7 @@ Azure ポータルで料金を確認することもできます。 請求の使�
 
 ## <a name="external"></a>個別に請求される外部サービス
 
-外部サービス (マーケットプレース) 料金は、サード パーティ ソフトウェア ベンダーによって作成されたリソースに対する金額です。 このようなリソースは Azure Marketplace から入手し、利用できます。 たとえば、Barracuda Firewall はサード パーティによって提供される Azure Marketplace リソースです。 このファイアウォールと対応する測定に関するすべての料金は、外部サービス料金として表示されます。
+外部サービス (マーケットプレース) 料金は、サードパーティ ソフトウェア ベンダーによって作成されたリソースに対する金額です。 このようなリソースは Azure Marketplace から入手して利用できます。 たとえば、Barracuda Firewall はサードパーティによって提供される Azure Marketplace リソースです。 このファイアウォールと対応する測定に関するすべての料金は、外部サービス料金として表示されます。
 
 外部サービスの料金は個別に請求されます。 これらの料金は、Azure の請求書には表示されません。 詳細については、「[Azure 外部サービスの課金について](billing-understand-your-azure-marketplace-charges.md)」を参照してください。
 
@@ -130,7 +130,7 @@ VM が作成されると、各メーターが使用状況レコードの出力�
   - [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
   - [総保有コスト計算ツール](https://aka.ms/azure-tco-calculator)
   - [各サービスの詳細な価格情報](https://azure.microsoft.com/pricing/)
-- [Azure ポータルで使用状況とコストを定期的に確認します](billing-getting-started.md#costs)。
+- [Azure portal で使用状況とコストを定期的に確認する](billing-getting-started.md#costs)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

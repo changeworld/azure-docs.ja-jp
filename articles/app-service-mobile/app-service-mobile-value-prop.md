@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 55f33821a748789fb11b44dc08c367961b4258f4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 72614a7f804f404e3e560d944db7b3d2e496c383
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440287"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705665"
 ---
 # <a name="getting-started"> </a>Azure App Service の Mobile Apps について
 
 > [!NOTE]
-> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーとかかわることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-value-prop) を今すぐチェックしてください。
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-value-prop) を今すぐチェックしてください。
 >
 
 Azure App Service は、プロの開発者のためのフル マネージドの[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 製品であり、 Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。 
@@ -88,7 +88,7 @@ Mobile Apps の機能を使ってできることを次に示します。
 Azure App Service の Mobile Apps の使用を開始するには、[作業の開始]に関するチュートリアルに従ってください。 このチュートリアルでは、モバイル バックエンドと各種クライアントを作成する方法についての基礎を取り上げています。 また、認証、オフライン同期、プッシュ通知の統合についても取り上げています。 このチュートリアルは、クライアント アプリケーションごとに 1 回ずつ、複数回行うことができます。
 
 Mobile Apps の詳細については、[学習マップ]を確認してください。
-Azure App Service プラットフォームの詳細については、[Azure App Service] に関するページを参照してください。
+Azure App Service プラットフォームの詳細については、 [Azure App Service]に関するページを参照してください。
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
@@ -111,3 +111,4 @@ Azure App Service プラットフォームの詳細については、[Azure App 
 [ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
 [App Service 環境]: ../app-service/environment/intro.md
 [学習マップ]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
+[Azure App Service]: ../app-service/overview.md

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: a997f1d0fd304b43f56953c51e6a8944a4c93ce0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 70f3471b22027bbf5ece87897e678370767f6743
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257182"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717080"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB:Azure プラットフォームでラムダ アーキテクチャを実装する 
 

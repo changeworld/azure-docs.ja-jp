@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: d6abf266d4af5c79333819f5077009124fa28247
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 7bfe586294aec5938e2245c38fbe88aa5e57a66c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348227"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839504"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Microsoft Flow、Logic Apps、Functions、および WebJobs の概要
 
@@ -89,7 +89,7 @@ Azure Functions は、WebJobs SDK の上に構築されているため、同じ�
 |[従量課金制の価格](functions-scale.md#consumption-plan)|✔||
 |[Logic Apps との統合](functions-twitter-email.md)|✔||
 | トリガー イベント |[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[ファイル システム](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| サポートされている言語  |C#<br>F#<br>JavaScript<br>Java (プレビュー)<br>Python (プレビュー) |C#<sup>1</sup>|
+| サポートされている言語  |C#<br>F#<br>JavaScript<br>Java<br>Python (プレビュー) |C#<sup>1</sup>|
 |パッケージ マネージャー|NPM と NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> (WebJobs SDK なしの) WebJobs では、C#、Java、JavaScript、Bash、.cmd、.bat、PowerShell、PHP、TypeScript、Python などがサポートされます。 これは、包括的な一覧ではありません。 WebJobs は、App Service のサンドボックス内で動作するあらゆるプログラムまたはスクリプトを実行できます。

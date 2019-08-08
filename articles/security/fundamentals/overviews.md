@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/16/2018
 ms.author: tomsh
-ms.openlocfilehash: 11a5309e71064c419ed7fcbd225fb708f7b89637
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: fdb9fb71d25c3932ca43912c9fd12408001ac914
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610818"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726831"
 ---
 # <a name="azure-security-technical-overviews"></a>Azure セキュリティの技術的な概要
 

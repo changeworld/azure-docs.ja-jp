@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/23/2019
 ms.author: jowargo
-ms.openlocfilehash: cd6d22e7c689bce5c325863b914c5ee8abcbf40a
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ba392f69c0c5803768a04b94d9f9c0ed4f032fbf
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66240772"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775017"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Xamarin.iOS アプリにプッシュ通知を送信する
 
@@ -31,7 +31,7 @@ ms.locfileid: "66240772"
 
 このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。 [Apple Push Notification Service (APNS)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) を使用してプッシュ通知を受信する空の Xamarin.iOS アプリを作成します。
 
-完了すると、通知ハブを使用して、アプリを実行しているすべてのデバイスにプッシュ通知をブロードキャストできます。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
+完了すると、通知ハブを使用して、アプリを実行しているすべてのデバイスにプッシュ通知をブロードキャストできます。 完成したコードは、[NotificationHubs アプリ][GitHub] サンプルで参照できます。
 
 このチュートリアルでは、次のタスクを実行するコードを作成および更新します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "66240772"
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-* 最新バージョンの [Xcode][Install Xcode]
+* [Xcode][Install Xcode]
 * iOS 10 以降のバージョンに対応するデバイス
 * [Apple Developer Program](https://developer.apple.com/programs/) メンバーシップ
 * [Visual Studio for Mac]
@@ -56,25 +56,6 @@ ms.locfileid: "66240772"
 このチュートリアルを完了することは、Xamarin.iOS アプリの他のすべての Notification Hubs チュートリアルの前提条件です。
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
-
-## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>iOS プッシュ通知向けに通知ハブを構成する
-
-このセクションでは、以前に作成した **.p12** プッシュ証明書を使用して、新しい通知ハブを作成し、APNs での認証を構成する手順について説明します。 既に作成した通知ハブを使用する場合は、手順 5. に進んでください。
-
-[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
-
-### <a name="configure-ios-settings-for-the-notification-hub"></a>iOS の設定を通知ハブ用に構成する
-
-1. **[通知設定]** グループで、 **[Apple (APNS)]** を選択します。
-2. **[証明書]** を選択し、**ファイル** アイコンをクリックして、前にエクスポートした **.p12** ファイルを選択します。
-3. 証明書の**パスワード**を指定します。
-4. **[サンドボックス]** モードを選択します。 **[Production] (運用)** モードは、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。
-
-    ![Azure portal で APNs を構成する][6]
-
-    ![Azure portal で APNs 証明書を構成する][7]
-
-これで、通知ハブが APNs と連動するように構成されました。接続文字列にアプリケーションを登録し、プッシュ通知を送信できます。
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>通知ハブにアプリケーションを接続する
 
@@ -124,7 +105,7 @@ ms.locfileid: "66240772"
     {
         if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
         {
-            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound | UNAuthorizationOptions.Sound,
+            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
                                                                     (granted, error) =>
             {
                 if (granted)

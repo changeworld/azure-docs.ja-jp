@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 86c38818ee1632bf2d2f3fb1e1240954f3267887
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce9a1d0fb9a5e8b242db26c433a08c2426df39d9
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123705"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720751"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Azure Data Factory を使用して HubSpot からデータをコピーする (プレビュー)
 
@@ -97,11 +97,12 @@ HubSpot からデータをコピーするには、データセットの type プ
     "name": "HubspotDataset",
     "properties": {
         "type": "HubspotObject",
+        "typeProperties": {},
+        "schema": [],        
         "linkedServiceName": {
             "referenceName": "<Hubspot linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

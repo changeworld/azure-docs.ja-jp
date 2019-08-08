@@ -1,20 +1,18 @@
 ---
 title: Azure ストレージ エミュレーターを使用した開発とテスト | Microsoft Docs
 description: Azure ストレージ エミュレーターは、Azure Storage アプリケーションを開発およびテストするのための無料のローカル開発環境を提供します。 要求の承認方法、アプリケーションからエミュレーターへの接続方法、コマンド ライン ツールの使用方法について説明します。
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: article
-ms.date: 08/10/2018
 ms.author: mhopkins
-ms.reviewer: seguler
+ms.date: 08/10/2018
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 5f55228c80142b2a21af585cb04d16f148460af0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.openlocfilehash: 8737e3b2445f5b89c62cead5fae34b8ad076113a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65149096"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721727"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 

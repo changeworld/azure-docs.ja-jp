@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: dd073d040e6e7f149109c9988580dcd889f7c62f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b87a4e2889e9e65a3173a4c11d9c92a33e8e70b7
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65157945"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816251"
 ---
 # <a name="activity-management-overview"></a>アクティビティ管理の概要
 

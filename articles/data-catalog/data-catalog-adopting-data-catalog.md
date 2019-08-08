@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 3943332179a6d283a8ed3ca66ea559d5cea53a10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 38a9f3a7020e866ccb000ed0c54499258f5e651a
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65953198"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734677"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Azure Data Catalog 導入のためのアプローチとプロセス
 

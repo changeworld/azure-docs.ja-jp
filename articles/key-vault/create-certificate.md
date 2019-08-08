@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 67720256cfac68c350c800291653a4a0c1d7ee46
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 63768b83baafe00348a28c5c9c99e5f16619ac99
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66427820"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815927"
 ---
 # <a name="certificate-creation-methods"></a>証明書の作成方法
 
@@ -82,7 +82,7 @@ KV 証明書の作成要求が完了すると、保留中オブジェクトの�
 |プロバイダー|証明書の種類|  
 |--------------|----------------------|  
 |DigiCert|Key Vault は、DigiCert による OV または EV SSL 証明書を提供します。|
-|GlobalCert|Key Vault は、Globaltrust による OV または EV SSL 証明書を提供します |
+|GlobalSign|Key Vault は、GlobalSign による OV または EV SSL 証明書を提供します。|
 
  証明書の発行者は、Azure Key Vault (KV) で CertificateIssuer リソースとして表示されるエンティティです。 これは、KV 証明書のソースに関する情報 (発行者名、プロバイダー、資格情報、その他の管理ための詳細情報) の提供に使用されます。
 

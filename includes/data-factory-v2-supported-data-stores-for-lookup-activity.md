@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 05/24/2019
+ms.date: 08/06/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 2b250f9f722bb1992d72b0555207a64dbc2dd972
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b7a44a0707a3680aff7d93354f616c5d8ee7cd4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66271582"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843259"
 ---
 | Category | データ ストア |
 |:--- |:--- |
@@ -27,7 +27,7 @@ ms.locfileid: "66271582"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
-| &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |
+| &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |
 | **データベース** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
@@ -38,9 +38,9 @@ ms.locfileid: "66271582"
 | &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |
 | &nbsp; |[Hive](../articles/data-factory/connector-hive.md) |
 | &nbsp; |[Apache Impala (プレビュー)](../articles/data-factory/connector-impala.md) |
-| &nbsp; |[Informix](../articles/data-factory/connector-odbc.md#ibm-informix-source) 
+| &nbsp; |[Informix](../articles/data-factory/connector-informix.md) 
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |
-| &nbsp; |[Microsoft Access](../articles/data-factory/connector-odbc.md#microsoft-access-source) |
+| &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |
 | &nbsp; |[MySQL](../articles/data-factory/connector-mysql.md) |
 | &nbsp; |[Netezza](../articles/data-factory/connector-netezza.md) |
 | &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |
@@ -84,7 +84,7 @@ ms.locfileid: "66271582"
 | &nbsp; |[Paypal (プレビュー)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (プレビュー)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |
-| &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce.md) |
+| &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce-service-cloud.md) |
 | &nbsp; |[Salesforce Marketing Cloud (プレビュー)](../articles/data-factory/connector-salesforce-marketing-cloud.md) |
 | &nbsp; |[SAP Cloud for Customer (C4C)](../articles/data-factory/connector-sap-cloud-for-customer.md) |
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |

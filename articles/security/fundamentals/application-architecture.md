@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 4f2d9386-bda3-4ec8-8b1a-cd0c11242ffc
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 76f5627a28c2c0ab326197893a9b9739628af0fb
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 1d2cf7af59049475feff2e3d50b1f7a41fe268d4
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611858"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727636"
 ---
 # <a name="application-architecture-on-azure"></a>Azure のアプリケーション アーキテクチャ
 Microsoft Azure 上のクラウド ベースのソリューションをセキュリティ保護するには、アーキテクチャの強力な基盤が不可欠です。 アーキテクト、デザイナー、および実装者は、アプリケーションとサービスのアーキテクチャに関する強力な知識を利用します。 この基礎知識は、クラウド ベースのソリューションのすべてのコンポーネントを理解するのに役立ち、設計および実装のすべての側面にセキュリティを統合しやすくします。

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 0674d8c98f4bf37bbf9417de60ff4c60910d802a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258285"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779423"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -174,7 +174,7 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
 az sf cluster create -h
 ```
 
-証明機関によって提供される分散型の信頼を自己署名証明書を使用して実現することはできません。エンタープライズ運用ソリューションのホストとして使用することを目的とした Service Fabric クラスターに自己署名証明書は使用しないでください。Service Fabric の詳しいセキュリティ ガイダンスについては、「[Azure Service Fabric セキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)」と「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」を参照してください。
+証明機関によって提供される分散型の信頼を自己署名証明書を使用して実現することはできません。エンタープライズ運用ソリューションのホストとして使用することを目的とした Service Fabric クラスターに自己署名証明書は使用しないでください。Service Fabric の詳しいセキュリティ ガイダンスについては、「[Azure Service Fabric セキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)」と「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」を参照してください。
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Resource Manager テンプレートから、Linux 仮想マシン スケール セットで SSH 認証に使用する SSH キー ペアを指定することはできますか。
 

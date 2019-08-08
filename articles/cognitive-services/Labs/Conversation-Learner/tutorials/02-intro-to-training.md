@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 0bf5b71a4b0f51a586febbdaeaf8caba03c5b25a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: c657025ce588363cf76ce10868d809a9aff69222
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387912"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705624"
 ---
 # <a name="introduction-to-training"></a>トレーニングの概要
 

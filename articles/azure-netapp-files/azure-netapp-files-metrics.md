@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 08/06/2019
 ms.author: b-juche
-ms.openlocfilehash: 1563b60ef26ac5e4d40f45095d0109dd9dd71570
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a56fb27fdf9e196291942041d68b249d7f16648
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61084941"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839235"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files のメトリック
 
@@ -27,19 +27,25 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
 
 ## <a name="capacity_pools"></a>容量プールの使用状況メトリック
 
-- *ボリューム プールの割り当てサイズ*  
-    これは、プロビジョニングされた容量プールのサイズ (GiB) です。  
+<!-- 
+- *Volume pool allocated size*  
+    This is the size (GiB) of the provisioned capacity pool.  
+--> 
 - *ボリューム プールの使用済みの割り当て*  
     これは、特定の容量プールのボリューム クォータ (GiB) の合計です (つまり、容量プールでのボリュームのプロビジョニング済みサイズの合計)。 これは、ボリュームの作成中に選択したサイズです。  
 - *ボリューム プールの論理サイズの合計*  
     これは、容量プールのボリューム全体で使用される論理領域 (GiB) の合計です。  
-- *ボリューム プールのスナップショット サイズの合計*  
-    これは、スナップショットで使用される増分の論理領域の合計です。  
+<!-- 
+- *Volume pool total snapshot size*  
+    This is the total of incremental logical space used by the snapshots.  
+-->
 
 ## <a name="volumes"></a>ボリュームの使用状況メトリック
 
-- *ボリュームの割り当てサイズ*   
-    これは、プロビジョニングされたボリュームのサイズ (クォータ) です (GiB)。  
+<!-- 
+- *Volume allocated size*   
+    This is the volume size (quota) provisioned in GiB.  
+--> 
 - *ボリュームの論理サイズ*   
     これは、ボリュームで使用される論理領域の合計です (GiB)。 このサイズには、アクティブなファイル システムとスナップショットで使用される論理領域が含まれます。  
 - *ボリューム スナップショットのサイズ*   

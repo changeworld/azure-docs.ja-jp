@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 085cb20e4dad92ed55b5ba0914c677aa50f3ac97
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2b42d61fd887f166a08b78510d5eaacb8a7cdcb8
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345755"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706704"
 ---
 # <a name="project-answer-search-use-and-display-requirements"></a>Project Answer Search の使用と表示に関する要件
 

@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f2ab82b6c1b4b373c186019eaf96f9864861b9d9
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: a8e99da05f71cb01744111b41c301b11a0969057
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497620"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812715"
 ---
 # <a name="azure-network-connections-overview"></a>Azure ネットワーク接続の概要
 

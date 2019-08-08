@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fb82e31d58d9955efc3b147eccf2b82b8768aeee
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 346bd046810ebae5142bc23400419857000d0c8e
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165793"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812576"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple ノードの概要
 

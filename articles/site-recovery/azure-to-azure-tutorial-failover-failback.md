@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/01/2019
+ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 836b6bb76ff608fed0f34e40fe450d593fec540a
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 9bc0d25e19ad3412e62eb3386b0faf3ae5d2a444
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514161"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782590"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>リージョン間での Azure VM のフェールオーバーと再保護
 

@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 06ae18fa2217d7e7cfef7924473520d8d21a8a3e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610774"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726678"
 ---
 # <a name="azure-customer-data-protection"></a>Azure での顧客データの保護   
 Microsoft の運用担当者が顧客データに定期的にアクセスする操作は、既定で拒否される設定になっています。 顧客データへのアクセス権を付与する場合、リーダーの承認が必要になり、アクセスは慎重に管理されて、ログに記録されます。 アクセス制御の要件は、次のような Azure セキュリティ ポリシーによって確立されています。

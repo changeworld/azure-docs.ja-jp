@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7dadd9c56c0ec85843748df741ad2fa8c55720af
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611022"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727230"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure インフラストラクチャの可用性
 この記事では、Azure インフラストラクチャをセキュリティで保護し、顧客データの可用性を最大限にするために Microsoft が行っている事柄についての情報を提供します。 Azure は、仮想化テクノロジで実現される広範囲の冗長性に基づいた堅牢な可用性を提供します。

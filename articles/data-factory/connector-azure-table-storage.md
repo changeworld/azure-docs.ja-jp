@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 7ef8f80f44c921cc1f2524351c8acb78ebd713bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4ea3c93daac1ebb88bae2b8cb01485d955be2bb
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153548"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726207"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -205,12 +205,13 @@ Azure Table をコピー先またはコピー元としてデータをコピー�
     "properties":
     {
         "type": "AzureTable",
+        "typeProperties": {
+            "tableName": "MyTable"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Table storage linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "MyTable"
         }
     }
 }
@@ -334,7 +335,7 @@ Azure テーブル間でデータの移動時に、次の [Azure Table により
 |:--- |:--- |:--- |
 | Edm.Binary |byte[] |バイトの配列 (最大 64 KB)。 |
 | Edm.Boolean |bool |ブール値。 |
-| Edm.DateTime |DateTime |世界協定時刻 (UTC) を表す 64 ビット値。 サポートされている DateTime 範囲は西暦 1601 年 1 月 1 日 UTC 深夜 12:00 から 始まります。 この範囲は 9999 年 12 月 31 日に終了します。 |
+| Edm.DateTime |Datetime |世界協定時刻 (UTC) を表す 64 ビット値。 サポートされている DateTime 範囲は西暦 1601 年 1 月 1 日 UTC 深夜 12:00 から 始まります。 この範囲は 9999 年 12 月 31 日に終了します。 |
 | Edm.Double |double |64 ビットの浮動小数点値。 |
 | Edm.Guid |Guid |グローバルで一意となる 128 ビットの識別子。 |
 | Edm.Int32 |Int32 |32 ビットの整数。 |

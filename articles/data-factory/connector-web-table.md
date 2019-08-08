@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: e578b3a6b3905569567b568b0130c1ed1b90d915
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 09de2919b22ebb088b23c1ab59f60d182657a2f1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557768"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720406"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブルからデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -97,13 +97,14 @@ Web テーブルからデータをコピーするには、データセットの 
     "name": "WebTableInput",
     "properties": {
         "type": "WebTable",
-        "linkedServiceName": {
-            "referenceName": "<Web linked service name>",
-            "type": "LinkedServiceReference"
-        },
         "typeProperties": {
             "index": 1,
             "path": "AFI's_100_Years...100_Movies"
+        },
+        "schema": [],
+        "linkedServiceName": {
+            "referenceName": "<Web linked service name>",
+            "type": "LinkedServiceReference"
         }
     }
 }

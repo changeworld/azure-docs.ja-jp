@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 9e5e6594a74219a22d67af18827bfe2b7cbd0fb8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: a18d4c31da4ffeefebd4bda9aa441fdfec062be9
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385269"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705264"
 ---
 # <a name="how-to-teach-with-conversation-learner"></a>Conversation Learner で学習させる方法 
 

@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2c11e3f623817894cea801173239cc386c6c3313
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1e0fee903372668d30db0686f6a23dd913428454
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165835"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828175"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA 環境の計画
 

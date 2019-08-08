@@ -5,18 +5,19 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 637edc0e45daa37a753fbaa15313b076e8af4d7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1868e9fd3a7dde5d6302753986019f481a577007
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023869"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841308"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>コグニティブ検索スキルセットで注釈を参照する方法
 

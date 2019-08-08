@@ -8,6 +8,7 @@ manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ums.workload: na
 ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 99801e8900e8cb0a03f676cddb662d7ce1b90c5f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 0820ca227a4d0e8c71ed3f35cd8fa2841163d38f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611290"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727646"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログの統合
 

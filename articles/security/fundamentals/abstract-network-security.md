@@ -6,12 +6,13 @@ ms.author: TomSh
 ms.date: 08/08/2018
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: fc7bd2c8e492ee338d279ddb44bb1093d153c360
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.subservice: security-fundamentals
+ms.openlocfilehash: 96a59e93f387429313a95f5dc0d075660f9b8f4e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611306"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727749"
 ---
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 ## <a name="abstract"></a>要約

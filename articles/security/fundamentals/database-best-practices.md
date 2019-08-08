@@ -8,18 +8,19 @@ manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a035b97da46cbc0ef44da484f63d2c54283ef343
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: dd703420f6a02dba589d8e5ace20cbd1e384adfb
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611118"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727437"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
 この記事では、データベース セキュリティに関するベスト プラクティスについて説明します。

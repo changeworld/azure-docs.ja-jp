@@ -6,14 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 562daa024985a546ffb49c4da11eace3bc81a659
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: b5777300f5033569caf3868218e747df3ff83a76
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314819"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640234"
 ---
-# <a name="mapping-data-flow-schema-drift"></a>Mapping Data Flow のスキーマの誤差
+# <a name="mapping-data-flow-schema-drift"></a>マッピング データ フローのスキーマの誤差
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -65,7 +65,7 @@ Azure Data Factory のデータ フローの構文の場合、一致するパタ
 
 ```round(sum ($$))```
 
-これは、Azure Data Factory のデータ フローのサンプル "タクシー デモ" を使用してテストできます。 データ フロー デザイン サーフェイスの上部にあるデバッグ トグルを使用して、デバッグ セッションをオンにすると、結果を対話的に確認できます。
+このスキーマの誤差の機能の動作については、Azure Data Factory Data Flow のサンプル "タクシー デモ" をご覧ください。 データ フロー デザイン サーフェイスの上部にあるデバッグ トグルを使用して、デバッグ セッションをオンにすると、結果を対話的に確認できます。
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
@@ -75,6 +75,9 @@ Azure Data Factory のデータ フローの構文の場合、一致するパタ
 * "byPosition" を使用して、位置番号で新しい列を識別します。
 * "byName" を使用して、名前で新しい列を識別します。
 * 列パターンでは、"Name"、"Stream"、"Position"、または "Type" を使用するか、新しい列に一致するようにこれらの組み合わせを使用します。
+
+## <a name="rule-based-mapping"></a>ルールベースのマッピング
+選択変換とシンク変換では、ルールベースのマッピングを介したパターン マッチングがサポートされています。 これにより、誤差の列を列の別名にマップするためのルールを作成したり、これらの列を変換先にシンクしたりするためのルールを作成できます。
 
 ## <a name="next-steps"></a>次の手順
 [データ フロー式言語](data-flow-expression-functions.md)には、"byName" や "byPosition" など、列パターンとスキーマ誤差用の追加機能があります。

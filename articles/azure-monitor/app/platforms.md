@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: dd2fb0c9ef157e3706ca3d902f7feebaf4c2f279
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b2670ec844df192bb73e8b1e76b1ebf611b2539e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478905"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619379"
 ---
 # <a name="supported-languages"></a>サポートされている言語
 
@@ -39,7 +39,6 @@ ms.locfileid: "68478905"
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Android](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
-* [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
@@ -57,6 +56,5 @@ ms.locfileid: "68478905"
 * [Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 * [Stream Analytics](../../azure-monitor/app/export-power-bi.md)
 
-## <a name="unsupported-community-sdks"></a>サポートされていないコミュニティ SDK
-
-多くのコミュニティ Application Insights SDK があります。 Microsoft では、正式にはコミュニティ SDK をサポート/管理していません。 正式にサポートされている一覧にない SDK については、サポートを提供することはできません。 
+## <a name="unsupported-sdks"></a>サポートされていない SDK
+Microsoft は、コミュニティでサポートされている他の SDK がいくつか存在することを認識しており、その一部に寄稿も行ってきました。 ただし、Azure Monitor では、このページに記載されているサポート対象の SDK を使用した場合のサポートのみが提供されます。 Microsoft は、他の言語のサポートを拡大する機会を常に評価していますので、[GitHub のお知らせ](https://github.com/microsoft/ApplicationInsights-Announcements/issues)ページに従って、最新の SDK ニュースをぜひ受信してください。

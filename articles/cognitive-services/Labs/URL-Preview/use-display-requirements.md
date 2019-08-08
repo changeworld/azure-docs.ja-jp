@@ -10,12 +10,13 @@ ms.subservice: url-preview
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 8078fe17ae3b282887f4bceb1bb10b34d6a007f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 38707a0914a48b6a13f519d5e076457319363a92
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60832168"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707030"
 ---
 # <a name="project-url-preview-use-and-display-requirements"></a>Project URL Preview の使用と表示に関する要件
 

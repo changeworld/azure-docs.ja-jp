@@ -8,18 +8,19 @@ manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: c5b5f80a43530fe6d0b90e65c3aef89a815157e4
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 75888d9da0d8a6e76e787b7d3867e94eefff337e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611454"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726574"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric セキュリティの概要
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における課題に対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高い、ミッション クリティカルで要求の厳しいワークロードの実装に注力できます。

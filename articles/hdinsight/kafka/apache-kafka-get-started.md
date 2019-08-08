@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 61ae6cdf7c31c9a6e40860eb1dc4628bb2d37496
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150909"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779521"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -45,7 +45,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
     | Setting | 値 |
     | --- | --- |
     | クラスター名 | HDInsight クラスターの一意の名前。 |
-    | サブスクリプション | サブスクリプションを選択します。 |
+    | Subscription | サブスクリプションを選択します。 |
     
    __[クラスターの種類]__ を選択して **[クラスターの構成]** を表示します。
    
@@ -56,7 +56,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
     | Setting | 値 |
     | --- | --- |
     | クラスターの種類 | Kafka |
-    | バージョン | Kafka 1.1.0 (HDI 3.6) |
+    | Version | Kafka 1.1.0 (HDI 3.6) |
 
     **[選択]** を選択してクラスターの種類の設定を保存し、 __[基本]__ に戻ります。
 
@@ -122,7 +122,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
     接続されると、次のテキストのような情報が表示されます。
     
-    ```text
+    ```output
     Authorized uses only. All activity may be monitored and reported.
     Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
     
@@ -140,7 +140,6 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
     Welcome to Apache Kafka on HDInsight.
     
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-    ssuhuser@hn0-mykafk:~$
     ```
 
 ## <a id="getkafkainfo"></a>Apache Zookeeper およびブローカーのホスト情報を取得する

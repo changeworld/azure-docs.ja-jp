@@ -1,21 +1,19 @@
 ---
 title: Java から Queue Storage を使用する方法 - Azure Storage
 description: Azure Queue サービスを使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。 コード サンプルは Java で記述されています。
-services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.devlang: java
-ms.topic: article
-ms.date: 12/08/2016
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 12/08/2016
 ms.subservice: queues
-ms.openlocfilehash: 3cbd1445640f37cbc63d74d1366c390c774aecd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: 5d2bd94f6b95ff993ae367b99f48746c091f5739
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65151112"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721424"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -25,7 +23,7 @@ ms.locfileid: "65151112"
 ## <a name="overview"></a>概要
 このガイドでは、Azure キュー ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Java で記述され、 [Azure Storage SDK for Java][Azure Storage SDK for Java]を利用しています。 キュー メッセージの**挿入**、**ピーク**、**取得**、**削除**と、キューの**作成**と**削除**の各シナリオについて説明します。 キューの詳細については、「[次のステップ](#next-steps)」のセクションを参照してください。
 
-注:SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。 詳細については、「[Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android]｣をご覧ください。
+注:SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。 詳細については、 [Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android]を参照してください。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -393,9 +391,9 @@ catch (Exception e)
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
 * [Azure Storage SDK for Java][Azure Storage SDK for Java]
-* [Azure ストレージ クライアント SDK リファレンス][Azure ストレージ クライアント SDK リファレンス]
+* [Azure ストレージ クライアント SDK リファレンス][Azure Storage Client SDK Reference]
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)][Azure Storage Services REST API]
-* [Azure Storage チーム ブログ][Azure Storage Team Blog]
+* [Azure のストレージ チーム ブログ][Azure Storage Team Blog]
 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java

@@ -9,15 +9,15 @@ ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
 ms.date: 05/08/2019
-ms.author: msmimart
+ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2d9035adb70ab4a5877f3e55dc4115a5ec1f7f5
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: cc1e26a3c7d284a60b830f6f66cdcecef97db4d6
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68425850"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834621"
 ---
 # <a name="configure-linked-sign-on"></a>リンクされたサインオンの構成
 

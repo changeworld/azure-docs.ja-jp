@@ -10,13 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: f10ac45266eefac41f3ba9ac442c3be3f5106ef3
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.subservice: cognitive-search
+ms.openlocfilehash: ebff47360aa78a7774be50bcce8518f6e30ca073
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388408"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841065"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Image Analysis の認知スキル
 
@@ -39,7 +39,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 |--------------------|-------------|
 | defaultLanguageCode   |  結果を返す言語を示す文字列｡ サービスは､指定された言語で認識結果を返します｡ このプロパティが指定されていない場合の既定値は "en" です｡ <br/><br/>サポートされている言語は以下の通りです｡ <br/>*en* - 英語 (既定) <br/> *zh* - 簡体字中国語|
 |visualFeatures |   結果として返すビジュアル フィーチャー型を示す文字列の並び｡ 有効なビジュアル フィーチャー型には以下があります｡  <ul><li> *categories* - 認知サービス関係の[ドキュメント](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy) で定義されている分類学に従ったイメージのコンテンツの分類です</li><li> *tags* - イメージのコンテンツに関係する単語の詳細な一覧のタグです｡</li><li>*description* - 英文でのイメージのコンテンツの説明です｡</li><li>*faces* - 顔の有無を検出します｡ 存在する場合は､座標と性別､年齢を生成します｡</li><li> *imageType* - 画像がクリップ アートか線画かを検出します｡</li><li>  *color* - アクセント カラー、主要カラー､白黒画像か否かを判定します｡</li><li>*adult* - イメージが事実上のポルノ (裸または性行為を表す) かどうかを検出します｡ セックスを連想されるコンテンツも検出されます｡</li></ul> ビジュアル フィーチャー名は大文字と小文字が区別されます｡|
-| 詳細   | 結果として返すドメイン固有の詳細を示す文字列の並び. 有効なビジュアル フィーチャー型には以下があります｡ <ul><li>*celebrities* - イメージ内でセレブリティが検出された場合に、そのセレブリティを特定します｡</li><li>*landmarks* - イメージ内でランドマークが検出された場合に、そのランドマークを特定します｡</li></ul>
+| details   | 結果として返すドメイン固有の詳細を示す文字列の並び. 有効なビジュアル フィーチャー型には以下があります｡ <ul><li>*celebrities* - イメージ内でセレブリティが検出された場合に、そのセレブリティを特定します｡</li><li>*landmarks* - イメージ内でランドマークが検出された場合に、そのランドマークを特定します｡</li></ul>
  |
 
 ## <a name="skill-inputs"></a>スキルの入力
@@ -333,7 +333,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
                     "originalWidth": 5000,
                     "originalHeight": 3000,
                     "rotationFromOriginal": 90,
-                    "contentOffset": 500
+                    "contentOffset": 500,
+                    "pageNumber": 2
                 }
             }
         }

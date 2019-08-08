@@ -10,12 +10,13 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: fca459291fbf25c5404427fdcfc96947c52a1e74
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 05b870fb0d836a89be2a7212436c5c6f91982837
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544309"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705450"
 ---
 # <a name="quickstart-query-for-facts"></a>クイック スタート:ファクトのクエリ
 
@@ -31,7 +32,7 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
 ```
 
-**応答:**`subjectName` フィールドには、ファクトを表示するときにラベルとして使用できる、ユーザーのクエリの表示バージョンが含まれます。 クエリ文字列が valentines+2016 の場合、Bing ではこれを Valentine's Day 2016 に変換できます。 [説明] フィールドには、ファクトが含まれます。
+**応答:** `subjectName` フィールドには、ファクトを表示するときにラベルとして使用できる、ユーザーのクエリの表示バージョンが含まれます。 クエリ文字列が valentines+2016 の場合、Bing ではこれを Valentine's Day 2016 に変換できます。 [説明] フィールドには、ファクトが含まれます。
 
 ```
 {
@@ -69,7 +70,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 
 ```
 
-**応答:**`value/description` フィールドには、クエリで要求された知識または情報が含まれます。
+**応答:** `value/description` フィールドには、クエリで要求された知識または情報が含まれます。
 
 ```
   "facts": {

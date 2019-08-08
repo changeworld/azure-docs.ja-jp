@@ -1,19 +1,17 @@
 ---
 title: Azure Data Catalog 開発者の概念
 description: Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 3cfd6bd453cd06be4676a806997697a71afb0b59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 81e17e1e450e45e4c163ca8231a47deeb8b9ed2c
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727395"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734697"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog 開発者の概念
 Microsoft **Azure Data Catalog** は、データ ソース検出およびデータ ソース メタデータのクラウド ソーシングの機能を提供する、フル マネージドのクラウド サービスです。 開発者は、REST API を介してサービスを使用できます。 開発者が **Azure Data Catalog**を使いこなすには、サービスに実装されている概念を理解することが重要です。
@@ -78,7 +76,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 「主要な概念」セクションで説明したように、 **Azure Data Catalog** オブジェクト モデルには、資産または注釈を指定できる項目が含まれます。 項目には、省略可能または必須のプロパティがあります。 一部のプロパティは、すべての項目に適用されます。 一部のプロパティは、すべての資産に適用されます。 一部のプロパティは、特定の資産の型のみに適用されます。
 
 ### <a name="system-properties"></a>システム プロパティ
-<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>項目が最後に変更された日時。 このフィールドは、項目が挿入されたときと、項目が更新されるたびに、サーバーによって生成されます。 公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>id</td><td>Uri</td><td>項目の絶対 URL (読み取り専用)。 項目に対する一意のアドレス可能 URI です。  公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>type</td><td>string</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>etag</td><td>string</td><td>カタログ内の項目を更新する操作を実行するときに、オプティミスティック コンカレンシーに使用できる項目のバージョンに対応する文字列。 *" を使用して任意の値と照合することができます。</td></tr></table>
+<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>項目が最後に変更された日時。 このフィールドは、項目が挿入されたときと、項目が更新されるたびに、サーバーによって生成されます。 公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>id</td><td>Uri</td><td>項目の絶対 URL (読み取り専用)。 項目に対する一意のアドレス可能 URI です。  公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>type</td><td>string</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>etag</td><td>string</td><td>カタログ内の項目を更新する操作を実行するときに、オプティミスティック コンカレンシーに使用できる項目のバージョンに対応する文字列。 *" を使用して任意の値と照合することができます。</td></tr></table>
 
 ### <a name="common-properties"></a>共通のプロパティ
 これらのプロパティは、すべてのルート資産の型とすべての注釈の型に適用されます。
@@ -92,7 +90,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <p>
 これらのプロパティは、すべてのルート資産の型に適用されます。
 
-<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>name</td><td>string</td><td>データ ソースの場所の情報から派生した名前。</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>データ ソースを一意に説明するもので、資産の識別子の 1 つです (デュアル ID のセクションを参照してください)。  dsl の構造は、プロトコルとソースの種類によって異なります。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>資産の型の詳細な説明。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>この資産を最後に登録したユーザーを説明します。  ユーザーの一意の ID (upn) と、表示名 (lastName および firstName) の両方が含まれています。</td></tr><tr><td>containerId</td><td>string</td><td>データ ソースのコンテナーの資産の ID です。 このプロパティは、コンテナー型ではサポートされていません。</td></tr></table>
+<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>名前</td><td>string</td><td>データ ソースの場所の情報から派生した名前。</td></tr><tr><td>dsl</td><td>DataSourceLocation</td><td>データ ソースを一意に説明するもので、資産の識別子の 1 つです (デュアル ID のセクションを参照してください)。  dsl の構造は、プロトコルとソースの種類によって異なります。</td></tr><tr><td>dataSource</td><td>DataSourceInfo</td><td>資産の型の詳細な説明。</td></tr><tr><td>lastRegisteredBy</td><td>SecurityPrincipal</td><td>この資産を最後に登録したユーザーを説明します。  ユーザーの一意の ID (upn) と、表示名 (lastName および firstName) の両方が含まれています。</td></tr><tr><td>containerId</td><td>string</td><td>データ ソースのコンテナーの資産の ID です。 このプロパティは、コンテナー型ではサポートされていません。</td></tr></table>
 
 ### <a name="common-non-singleton-annotation-properties"></a>シングルトン以外の注釈の共通プロパティ
 これらのプロパティは、シングルトン以外のすべての注釈の型に適用されます (1 つの資産に対して複数の注釈を適用できます)。
@@ -185,7 +183,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <tr><td></td><td>lastName</td><td>string</td><td>ユーザーの姓 (表示用)。 省略可能。 "lastRegisteredBy" プロパティのコンテキストでのみ有効です。 "roles"、"permissions"、および "experts" のセキュリティ プリンシパルを指定するときに、この値を指定することはできません。</td></tr>
 
 <tr><td>列</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>string</td><td>列または属性の名前。</td></tr>
+<tr><td></td><td>名前</td><td>string</td><td>列または属性の名前。</td></tr>
 <tr><td></td><td>type</td><td>string</td><td>列または属性のデータ型。 使用可能な型は、資産の sourceType データによって異なります。  型のサブセットのみがサポートされます。</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
 <tr><td></td><td>precision</td><td>byte</td><td>列または属性の有効桁数。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
@@ -217,18 +215,18 @@ Azure Data Catalog には、組み込みのデータ ソース プロトコル�
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>namespace</td><td>string</td><td>プロトコルの名前空間。 名前空間の長さは 1 ～ 255 文字で、ドット (.) で区切られた 1 つ以上の空ではない部分を含める必要があります。 各部分の長さは 1 ～ 255 文字で、先頭には英字を指定し、英数字のみを使用する必要があります。</td></tr>
-<tr><td></td><td>name</td><td>string</td><td>プロトコルの名前。 名前の長さは 1 ～ 255 文字で、先頭には英字を指定し、英数字とダッシュ (-) 文字のみを使用する必要があります。</td></tr>
+<tr><td></td><td>名前</td><td>string</td><td>プロトコルの名前。 名前の長さは 1 ～ 255 文字で、先頭には英字を指定し、英数字とダッシュ (-) 文字のみを使用する必要があります。</td></tr>
 <tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>ID プロパティの一覧。プロパティは 1 個以上 20 個以下にする必要があります。 たとえば、"server"、"database"、"schema"、"object" は "tds" プロトコルの ID プロパティです。</td></tr>
 <tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>ID セットの一覧。 有効な資産の ID を示す ID プロパティのセットを定義します。 1 個以上 20 個以下のセット数を含める必要があります。 例: {"server"、"database"、"schema"、"object"} は、"tds" プロトコルの ID セットです。"tds" には、SQL Server Table 資産の ID が定義されています。</td></tr>
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>string</td><td>プロパティの名前。 名前の長さは 1 ～ 100 文字で、先頭には英字を指定し、英数字のみを使用する必要があります。</td></tr>
+<tr><td></td><td>名前</td><td>string</td><td>プロパティの名前。 名前の長さは 1 ～ 100 文字で、先頭には英字を指定し、英数字のみを使用する必要があります。</td></tr>
 <tr><td></td><td>type</td><td>string</td><td>プロパティの型。 サポートされる値: "bool"、boolean"、"byte"、"guid"、"int"、"integer"、"long"、"string"、"url"</td></tr>
 <tr><td></td><td>ignoreCase</td><td>bool</td><td>プロパティ値を使用するときに大文字と小文字の区別を無視するかどうかを指定します。 "string" 型のプロパティにのみ指定できます。 既定値は false です。</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool[]</td><td>URL のパスの各セグメントで大文字と小文字の区別を無視するかどうかを指定します。 "url" 型のプロパティにのみ指定できます。 既定値は [false] です。</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>string</td><td>ID セットの名前。</td></tr>
+<tr><td></td><td>名前</td><td>string</td><td>ID セットの名前。</td></tr>
 <tr><td></td><td>properties</td><td>string[]</td><td>この ID セットに含まれる ID プロパティの一覧。 重複を含めることはできません。 ID セットから参照されている各プロパティは、プロトコルの "identityProperties" の一覧で定義されている必要があります。</td></tr>
 
 </table>

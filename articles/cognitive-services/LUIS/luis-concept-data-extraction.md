@@ -1,6 +1,6 @@
 ---
-title: データの抽出
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: データの抽出 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 意図とエンティティが含まれる発話テキストからデータを抽出します。 Language Understanding (LUIS) から抽出できるデータの種類について説明します。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: d10588e3df3932f5749093170e7e76fc029053ff
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 055cd25f534de5d3cc3ccbe44df88e7111e101a3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479102"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560753"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。

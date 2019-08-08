@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 07/29/2019
-ms.openlocfilehash: 0a91db15fcf77a936905a68c6b69b507d4e32a78
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 04bd4378a0820444ab31c9c696e58fccf3026d14
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677694"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720889"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>クイック スタート:Azure Time Series Insights の探索
 

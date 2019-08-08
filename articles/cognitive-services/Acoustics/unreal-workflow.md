@@ -10,12 +10,13 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1692032b093cd6189cac3ea3f63c563d9accd8ed
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5061370f43947341bb05bc30fa596604bc27ce74
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477825"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706565"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Project Acoustics Unreal/Wwise のデザイン チュートリアル
 このチュートリアルでは、Unreal と Wwiseにおける Project Acoustics のデザイン セットアップとワークフローについて説明します。

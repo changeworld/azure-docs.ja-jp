@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 2d5598c5-4c30-481d-b8f4-51ee024ea9a7
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: eb84bce28266445861be76e900f9a749b20d482a
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 14f1905b1acd60acdf7b3dad0686e3fa34629953
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610894"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727051"
 ---
 # <a name="internet-of-things-security-best-practices"></a>モノのインターネットのセキュリティのベスト プラクティス
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 7440a08bd8ceb85cc569e1bb6d7c4ee1e52178a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6a9e31b6b1869496e499cb7d6f02b55f495adfb
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60405904"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720657"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Oracle Responsys からデータをコピーする (プレビュー)
 
@@ -93,11 +93,12 @@ Oracle Responsys からデータをコピーするには、データセットの
     "name": "OracleResponsysDataset",
     "properties": {
         "type": "ResponsysObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Oracle Responsys linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 

@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 22a2a3472a54188f9298c580a95d53ac681822aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ec839c1a930ffbe73989149360f1b02866a3c50
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385427"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705310"
 ---
 ## <a name="control-flow"></a>制御フロー
 

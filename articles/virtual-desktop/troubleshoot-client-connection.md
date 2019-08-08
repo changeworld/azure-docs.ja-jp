@@ -2,17 +2,17 @@
 title: Windows Virtual Desktop でのリモート デスクトップ クライアント接続 - Azure
 description: Windows Virtual Desktop テナント環境でクライアント接続を設定するときの問題を解決する方法です。
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
-ms.author: v-chjenk
-ms.openlocfilehash: b7a6daa791e44227fd146c9c328a939560ebb3b1
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.author: helohr
+ms.openlocfilehash: 9cd754b1810595c3ae82a7e4edfd9a3abe145b3f
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605297"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816418"
 ---
 # <a name="remote-desktop-client-connections"></a>リモート デスクトップ クライアントの接続
 
@@ -135,7 +135,7 @@ Windows 7 および Windows 10 用のリモート デスクトップ クライ�
     Time              : <Timestampt>
     ```
 
-### <a name="error-oaddusertogroupfailed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32errornosuchmember"></a>エラー:O_ADD_USER_TO_GROUP_FAILED / グループ Remote Desktop Users へのユーザー ≤username≥ の追加に失敗しました。 理由:Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>エラー:O_ADD_USER_TO_GROUP_FAILED / グループ Remote Desktop Users へのユーザー ≤username≥ の追加に失敗しました。 理由:Win32.ERROR_NO_SUCH_MEMBER
 
 **原因:** VM がユーザー オブジェクトのドメインに参加していません。
 

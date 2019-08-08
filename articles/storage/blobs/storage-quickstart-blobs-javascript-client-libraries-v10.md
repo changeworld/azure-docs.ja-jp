@@ -11,12 +11,12 @@ ms.reviewer: seguler
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: a971f2b4b63b3fd35777d1d890da8451b84bb086
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 742e270ae84604e8d5389c0b2982642f56105fcc
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544040"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828214"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -292,7 +292,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-このコードでは、すべてのセグメントが確実に取得されるよう、[containerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#listblobflatsegment-aborter--string--icontainerlistblobssegmentoptions-) 関数をループ内で呼び出しています。 各セグメントについて、含まれる BLOB 項目の一覧をループ処理し、**ファイル**一覧を更新しています。
+このコードでは、すべてのセグメントが確実に取得されるよう、[containerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL?view=azure-node-preview#listblobflatsegment-aborter--undefined---string--icontainerlistblobssegmentoptions-) 関数をループ内で呼び出しています。 各セグメントについて、含まれる BLOB 項目の一覧をループ処理し、**ファイル**一覧を更新しています。
 
 ### <a name="upload-blobs"></a>BLOB をアップロードする
 

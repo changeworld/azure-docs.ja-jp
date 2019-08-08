@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 02/23/2019
-ms.openlocfilehash: bd8fa10ca0a9809891efc67ff930ab01d502eda9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1ee5a8d5f55422c9f8a0f20f3c6eb039f080dc2d
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117083"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815740"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Jenkins Azure Functions プラグインを使用した Azure Functions へのデプロイ
 
@@ -49,12 +49,6 @@ Java ランタイム スタックを備えた Java 関数を作成するには�
 
     ```cli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
-    ```
-    
-1. プレースホルダーを適切な値に置き換えて、バージョン 2.x ランタイムに更新します。
-
-    ```cli
-    az functionapp config appsettings set --name <function_app> --resource-group <resource_group> --settings FUNCTIONS_EXTENSION_VERSION=~2
     ```
 
 ## <a name="prepare-jenkins-server"></a>Jenkins サーバーの準備
@@ -113,7 +107,7 @@ Java ランタイム スタックを備えた Java 関数を作成するには�
     FUNCTION_NAME=<function_name>
     ```
     
-1. **[Pipeline]\(パイプライン\)、[Definition]\(定義\)** セクションの順に移動し、**[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** を選択します。
+1. **[Pipeline]\(パイプライン\)、[Definition]\(定義\)** セクションの順に移動し、 **[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** を選択します。
 
 1. GitHub フォークの URL とスクリプト パス ("doc/resources/jenkins/JenkinsFile") を入力し、[JenkinsFile の例](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile)で使用します。
 

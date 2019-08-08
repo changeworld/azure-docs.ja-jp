@@ -10,18 +10,19 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: ffb159dc684b4b6663dcb966706d4745ab88a403
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 93868bb014809693e7614e74bde7db864de95c04
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61337807"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704964"
 ---
 # <a name="journal-entity"></a>定期刊行物エンティティ
 
 <sub> *次の属性は、定期刊行物エンティティに固有です。(Ty = '2') </sub>
 
-Name    |説明                            |Type       | Operations
+EnableAdfsAuthentication    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 DJN     |定期刊行物の標準化名                |string     |なし

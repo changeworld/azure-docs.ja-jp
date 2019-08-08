@@ -1,19 +1,17 @@
 ---
 title: Azure Data Catalog でのデータ ソースの登録
 description: この記事では、Azure Data Catalog でデータ ソースを登録する方法について、登録中に抽出されるメタデータ フィールドを含め重点的に説明しています。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 57b9a040b875c584b126e2062e4938b37875a31b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61001295"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736318"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でのデータ ソースの登録
 ## <a name="introduction"></a>はじめに

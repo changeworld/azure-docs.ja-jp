@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2019
 ms.author: magoedte
-ms.openlocfilehash: 46ac6794272728069d50479f8cd097185bfeeb1a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b1ee0e56b5a133e65a25b5d9af645f351d039c0
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072386"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722691"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor でパフォーマンスの問題に関するアラートを設定する方法
 コンテナーに対する Azure Monitor は、Azure Container Instances にデプロイされているか、Azure Kubernetes Service (AKS) でホストされているマネージド Kubernetes クラスターにデプロイされている、コンテナー ワークロードのパフォーマンスを監視します。
@@ -274,7 +274,7 @@ InsightsMetrics
 | where TimeGenerated < endDateTime
 | where TimeGenerated >= startDateTime
 | where Origin == 'container.azm.ms/telegraf'            
-| where Namespace == 'disk'            
+| where Namespace == 'container.azm.ms/disk'            
 | extend Tags = todynamic(Tags)            
 | project TimeGenerated, ClusterId = Tags['container.azm.ms/clusterId'], Computer = tostring(Tags.hostName), Device = tostring(Tags.device), Path = tostring(Tags.path), DiskMetricName = Name, DiskMetricValue = Val   
 | where ClusterId =~ clusterId       

@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: efda996e03d46a2f97d19558f7c2930b623a639e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 1bf721f35500d2ff1344996e7750c5e574f40f31
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332215"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816270"
 ---
 # <a name="map-resource-pools-from-your-private-cloud-to-your-azure-subscription"></a>プライベート クラウドのリソース プールを Azure サブスクリプションにマップする
 

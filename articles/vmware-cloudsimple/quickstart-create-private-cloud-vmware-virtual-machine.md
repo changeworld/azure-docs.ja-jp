@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/03/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 33354ce09ad6ba1a9a7c08a8cd3b945f3788011a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7d21035fc3e9e80344264b9fde21820162f376d3
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595685"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816709"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>プライベート クラウドに VMware 仮想マシンを作成する
 

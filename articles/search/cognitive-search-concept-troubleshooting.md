@@ -5,18 +5,18 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: c0de4d2b9ad0d009b9cd363d19a2de3f29d810d4
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: b85fb5417b014041024dd83ca62572282c6edf81
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303450"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841273"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>コグニティブ検索のトラブルシューティングのヒント
 

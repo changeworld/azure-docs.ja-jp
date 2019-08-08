@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07d07f73412e889b018c1f667a500d7625912751
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c53cb7ee7bc76b07059d68962c606cdcf866196
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546144"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835274"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD で SAML プロトコルを使用する方法
 

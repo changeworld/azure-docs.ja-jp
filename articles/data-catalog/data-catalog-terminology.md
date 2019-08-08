@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: a6f2cf1dcee6a85376c8d767e57c504b6b246e5d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/01/2019
+ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60580461"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736287"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog の用語集
 

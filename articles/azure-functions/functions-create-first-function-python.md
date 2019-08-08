@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 5ef30fbf647492f79c64508d8306868aa1f6b278
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 58f5cfd3718720cafc922bbd7b974a353e0d9d02
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444574"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722794"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure で HTTP によってトリガーされる関数を作成する
 
@@ -42,7 +42,7 @@ ms.locfileid: "67444574"
 
 ## <a name="create-and-activate-a-virtual-environment"></a>仮想環境を作成してアクティブにする
 
-Python 関数をローカルで開発し、テストするには、Python 3.6 環境で作業する必要があります。 次のコマンドを実行して、`.env` という名前の仮想環境を作成してアクティブにします。
+Python 関数をローカルで開発し、テストするには、Python 3.6 環境で作業する必要があります。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
 
 ### <a name="bash"></a>Bash:
 

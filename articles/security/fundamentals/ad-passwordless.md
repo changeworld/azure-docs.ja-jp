@@ -1,20 +1,20 @@
 ---
 title: Azure Active Directory でのパスワードなしの環境を理解する | Microsoft Docs
 description: このガイドでは、Azure Active Directory 実装にパスワードなしの認証方法を選択することに責任を持つ、CEO、CIO、CISO、チーフ ID アーキテクト、エンタープライズ アーキテクト、セキュリティおよび IT の意思決定者を支援します。
-services: active-directory
 keywords: パスワードなし、azuread
 author: martincoetzer
 ms.author: martinco
 ms.date: 07/09/2019
 ms.topic: article
-ms.service: active-directory
+ms.service: security
+ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 09a3c14734d86738a521cf765fcfac2880eee177
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 30c2eb2964f11b729b0ffaf58c532d5189cdc2cd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611878"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727767"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory でのパスワードなしの環境
 

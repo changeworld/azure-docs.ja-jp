@@ -10,12 +10,13 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
-ms.openlocfilehash: 2b356e2f0fe9235d49dffa7417cd3894059f9caf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 28ad4681242765bf2da9b1f13dc828e23cce1794
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829159"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707264"
 ---
 # <a name="call-api-from-a-browser"></a>ブラウザーから API を呼び出す
 

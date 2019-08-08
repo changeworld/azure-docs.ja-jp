@@ -7,17 +7,18 @@ ms.author: terrylan
 ms.date: 06/11/2019
 ms.topic: article
 ms.service: security
+ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 12b9793cabb261368c437bd2ae2dbb39cf078bef
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: e31db74807b850b3d8cb8fc057e94e98db18fca2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653277"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780621"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -155,7 +156,7 @@ Azure は、Web サイトと Web アプリケーションのホストに使用�
 | なりすまし               | Authentication        | [HTTPS 接続を要求する](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
 | 改ざん              | 整合性             | SSL/TLS 証明書を検証する。 SSL/TLS を使用するアプリケーションは、接続先エンティティの X.509 証明書を完全に検証する必要があります。 [x509 証明書を管理](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)するには、Azure Key Vault 証明書を使用します。 |
 | 否認            | 否認防止       | Azure の[監視と診断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)を有効にする。|
-| 情報漏えい | 機密情報       | [保存中](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)と[転送中](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit)の機密データを暗号化する。 |
+| 情報漏えい | 機密情報       | [保存中](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)と[転送中](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit)の機密データを暗号化する。 |
 | サービス拒否      | 可用性          | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 [Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps) をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
 | 特権の昇格 | Authorization         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) を使用します。|
 
@@ -266,7 +267,7 @@ Azure Key Vault は*シークレット ストア*であり、アプリケーシ�
 #### <a name="use-encryption"></a>暗号化を使用する
 
 データの保護は、セキュリティ戦略の重要な部分である必要があります。
-データがデータベースに格納されている場合、または異なる場所の間で行き来する場合は、[保存データ](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)の暗号化 (データベース内にある場合) と[転送中のデータ](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices#protect-data-in-transit)の暗号化 (ユーザー、データベース、API、またはサービス エンドポイントの間で転送中の場合) を使用します。 データの交換には、常に SSL/TLS プロトコルを使うことをお勧めします。 暗号化には必ず最新バージョンの TLS (現時点ではバージョン 1.2) を使用してください 。
+データがデータベースに格納されている場合、または異なる場所の間で行き来する場合は、[保存データ](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)の暗号化 (データベース内にある場合) と[転送中のデータ](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit)の暗号化 (ユーザー、データベース、API、またはサービス エンドポイントの間で転送中の場合) を使用します。 データの交換には、常に SSL/TLS プロトコルを使うことをお勧めします。 暗号化には必ず最新バージョンの TLS (現時点ではバージョン 1.2) を使用してください 。
 
 #### <a name="avoid-hard-coding"></a>ハード コーディングしない
 

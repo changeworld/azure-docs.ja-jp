@@ -10,13 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: fd49cdf1bd6a49e8f89f8b805cbaa50276527de3
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.subservice: cognitive-search
+ms.openlocfilehash: 316cfb228050030b15e791e1d890c9048eadc109
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698872"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841097"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>非推奨の認知検索スキル
 

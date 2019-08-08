@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 2fd82e9f-7072-4548-a888-82bd7e9c729c
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: cd29ec2f2d27a01abeb001cb49cb2c3cd372497d
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: cd4c18d79cf24d5a06689c3c5cea8fff07a805e1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611094"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727322"
 ---
 # <a name="azure-security-overview"></a>Azure セキュリティの概要
 

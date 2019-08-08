@@ -2,14 +2,14 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 05/24/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 70ffc91477d4a77619ba7df3b2ab121fea5f8bac
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: a2815961f6afb0032aa6011cce5d59ab37f81303
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509879"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843258"
 ---
 | Category | データ ストア | [コピー アクティビティ](../articles/data-factory/copy-activity-overview.md) ソースとしてサポート | [コピー アクティビティ](../articles/data-factory/copy-activity-overview.md) シンクとしてサポート | [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) がサポート | [セルフホステッド IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) がサポート | [Data Flow](../articles/data-factory/concepts-data-flow-overview.md) がサポート
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -24,7 +24,7 @@ ms.locfileid: "67509879"
 | &nbsp; |[Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |✓  |
-| &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-insance.md) |✓ |✓ |✓ |✓  ||
+| &nbsp; |[Azure SQL Database マネージド インスタンス](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |✓  |
 | &nbsp; |[Azure Search インデックス](../articles/data-factory/connector-azure-search.md) | |✓ |✓ |✓  ||
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  ||
@@ -36,9 +36,9 @@ ms.locfileid: "67509879"
 | &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Hive](../articles/data-factory/connector-hive.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Apache Impala (プレビュー)](../articles/data-factory/connector-impala.md) |✓ | |✓ |✓  ||
-| &nbsp; |[Informix](../articles/data-factory/connector-odbc.md#ibm-informix-source) |✓ | | |✓  ||
+| &nbsp; |[Informix](../articles/data-factory/connector-informix.md) |✓ | | |✓  ||
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |✓ | |✓ |✓  ||
-| &nbsp; |[Microsoft Access](../articles/data-factory/connector-odbc.md#microsoft-access-source) |✓ | | |✓  ||
+| &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |✓ | | |✓  ||
 | &nbsp; |[MySQL](../articles/data-factory/connector-mysql.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Netezza](../articles/data-factory/connector-netezza.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |✓ |✓ |✓ |✓  ||
@@ -85,7 +85,7 @@ ms.locfileid: "67509879"
 | &nbsp; |[Paypal (プレビュー)](../articles/data-factory/connector-paypal.md) |✓ | |✓ |✓  ||
 | &nbsp; |[QuickBooks (プレビュー)](../articles/data-factory/connector-quickbooks.md) |✓ | |✓ |✓  ||
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  ||
-| &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce.md) |✓ |✓ |✓ |✓  ||
+| &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce-service-cloud.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[Salesforce Marketing Cloud (プレビュー)](../articles/data-factory/connector-salesforce-marketing-cloud.md) |✓ | |✓ |✓  ||
 | &nbsp; |[SAP Cloud for Customer (C4C)](../articles/data-factory/connector-sap-cloud-for-customer.md) |✓ |✓ |✓ |✓  ||
 | &nbsp; |[SAP ECC](../articles/data-factory/connector-sap-ecc.md) |✓ | |✓ |✓ ||

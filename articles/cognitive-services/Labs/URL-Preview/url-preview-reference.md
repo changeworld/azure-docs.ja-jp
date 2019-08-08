@@ -10,12 +10,13 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: f92c0faaaa3aa0cd2af16a031f3bed4c6b41fc22
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60462590"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706838"
 ---
 # <a name="project-url-preview-v7-reference"></a>Project URL Preview v7 のリファレンス
 
@@ -73,7 +74,7 @@ q - プレビューされる URL を特定するクエリ
 ## <a name="query-parameters"></a>クエリ パラメーター
 要求には次のクエリ パラメーターを含めることができます。 必須のパラメーターについては、必須の列を参照してください。 クエリ パラメーターは URL エンコードする必要があります。 クエリは、HTTP または HTTPS スキームを備えた絶対 URL である必要があります。Microsoft は相対 URL や他のスキーム (ftp:// など) をサポートしません。
 
-|Name|値|Type|必須|
+|EnableAdfsAuthentication|値|Type|必須|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 URL Preview API でサポートされるのは米国地域および英語のみです。<br /><br />|string|はい|
 |<a name="query" />q|プレビューする URL|string|はい|
@@ -102,7 +103,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="errorresponse"></a>ErrorResponse
 要求が失敗したときの応答に含まれている最上位レベルのオブジェクト。
 
-|Name|値|Type|
+|EnableAdfsAuthentication|値|Type|
 |----------|-----------|----------|
 |_type|種類のヒント。|string|
 |<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[エラー](#error)[]|
@@ -110,16 +111,16 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="webpage"></a>WebPage
 プレビューの Web ページに関する情報を定義します。
 
-|Name|値|Type|
+|EnableAdfsAuthentication|値|Type|
 |----------|-----------|----------|
-|name|ページ タイトル (必ずしも HTML タイトルではありません)|string|
+|名前|ページ タイトル (必ずしも HTML タイトルではありません)|string|
 |url|実際にクロールされた URL (要求はリダイレクトされた可能性があります)|string|
 |description|ページとコンテンツの簡単な説明|string|
 |isFamilyFriendly|Web インデックスの項目で最も正確です。この検出は、ページのコンテンツではなく URL のみに基づいて、リアルタイム フェッチによって実行されます|ブール値|
 |primaryImageOfPage/contentUrl|プレビューに含まれる代表的な画像への URL|string|
 
 ### <a name="identifiable"></a>Identifiable
-|Name|値|Type|
+|EnableAdfsAuthentication|値|Type|
 |-------------|-----------------|----------|
 |id|リソース識別子|string|
 

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: ''
-ms.openlocfilehash: 949628fa52b4b020d70b75f4a0e7895f1e0f8bba
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9d4494cb46bece7402b1284ee6324ca9ff86e0f3
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485314"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779101"
 ---
 # <a name="azure-search-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Azure Key Vault でユーザーが管理するキーを Azure Search 暗号化に使用する
 
@@ -23,7 +23,7 @@ ms.locfileid: "67485314"
 >
 > この機能は、無料のサービスには使用できません。 2019-01-01 以降に作成された課金対象の検索サービスを使用する必要があります。 現時点では、ポータルはサポートされていません。
 
-既定では、Azure Search では[サービス管理キー](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest#data-encryption-models)を使用してユーザー コンテンツを保存時に暗号化します。 Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この記事では、その手順について説明します。
+既定では、Azure Search では[サービス管理キー](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)を使用してユーザー コンテンツを保存時に暗号化します。 Azure Key Vault 内で作成して管理するキーを使用すると、既定の暗号化を追加の暗号化レイヤーで補完することができます。 この記事では、その手順について説明します。
 
 サーバー側暗号化は、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) との統合によってサポートされます。 独自の暗号化キーを作成してキー コンテナーに格納したり、Azure Key Vault の API を使って暗号化キーを生成したりすることができます。 Azure Key Vault を使用してキー使用法を監査することもできます。 
 
@@ -239,4 +239,4 @@ REST API を使用した新しいシノニム マップの作成方法の詳細�
 Azure セキュリティ アーキテクチャを使い慣れていない場合は、[Azure のセキュリティのドキュメント](https://docs.microsoft.com/azure/security/)を確認してください。具体的には次の記事です。
 
 > [!div class="nextstepaction"]
-> [保存時のデータ暗号化](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+> [保存時のデータ暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

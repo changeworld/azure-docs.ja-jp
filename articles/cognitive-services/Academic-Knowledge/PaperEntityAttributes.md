@@ -10,19 +10,20 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 92844b5faf691b67617c9f3424a1322aa05429bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4b9431469a7925d26003ad9c34f6b401e5767f6d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64875738"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704932"
 ---
 # <a name="paper-entity"></a>論文エンティティ
 
 <sub> *次の属性は、論文エンティティに固有です。(Ty = '0') </sub>
 
 
-Name    |説明                                        |Type       | Operations
+EnableAdfsAuthentication    |説明                                        |Type       | Operations
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                                          |Int64      |等しい
 Ti      |論文のタイトル                                        |string     |Equals、<br/>StartsWith
@@ -50,7 +51,7 @@ E       |拡張メタデータ (次の表を参照)                |string     |
 
 ## <a name="extended-metadata-attributes"></a>拡張メタデータの属性 ##
 
-Name    | 説明               
+EnableAdfsAuthentication    | 説明               
 --------|---------------------------    
 DN      | 論文の表示名 
 S       | ソース - 静的ランク順になった論文の Web ソースの一覧

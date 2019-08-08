@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 593f07b27fec16c3df90a073479effb130bc5721
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf512f802e0e4944e6ce949830719b87301adfc4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545277"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834810"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
@@ -49,8 +49,8 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | パラメーター |  | 説明 |
 | --- | --- | --- |
-| ID | 必須 | Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、 `id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
-| バージョン | 必須 | このパラメーターは **2.0** に設定する必要があります。 |
+| id | 必須 | Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、 `id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
+| Version | 必須 | このパラメーターは **2.0** に設定する必要があります。 |
 | IssueInstant | 必須 | これは、UTC 値と [ラウンドトリップ書式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)の DateTime 文字列です。 Azure AD はこの型の DateTime 値を期待しますが、値を評価または使用することはありません。 |
 | AssertionConsumerServiceUrl | 省略可能 | 指定する場合、このパラメーターは Azure AD でのクラウド サービスの `RedirectUri` と一致する必要があります。 |
 | ForceAuthn | 省略可能 | これはブール値です。 true の場合は、ユーザーが Azure AD で有効なセッションを持っている場合であっても、再認証を強制されることを意味します。 |

@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 5f2a959bcea533174feedb324cecf20ca12bd39b
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 75b774a59d3a2a94f1f1132a79c26dcca7b4b6f7
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137198"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780778"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -40,8 +40,8 @@ SSH クライアント 詳細については、[SSH を使用して HDInsight (A
 
     | プロパティ | 値 |
     | --- | --- |
-    | サブスクリプション | Azure サブスクリプション。 |
-    | リソース グループ | クラスターを作成するリソース グループ。 |
+    | Subscription | Azure サブスクリプション。 |
+    | Resource group | クラスターを作成するリソース グループ。 |
     | Location | クラスターを作成する Azure リージョン。 |
     | クラスター名 | Kafka クラスターの名前。 |
     | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターでホストされている HTTPS ベースのサービスにログインするために使うアカウント名。 |
@@ -67,7 +67,7 @@ SSH クライアント 詳細については、[SSH を使用して HDInsight (A
 
     接続されると、次のテキストのような情報が表示されます。
     
-    ```text
+    ```output
     Authorized uses only. All activity may be monitored and reported.
     Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
     
@@ -85,7 +85,6 @@ SSH クライアント 詳細については、[SSH を使用して HDInsight (A
     Welcome to Kafka on HDInsight.
     
     Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
-    ssuhuser@hn0-mykafk:~$
     ```
 
 ## <a id="getkafkainfo"></a>Apache Zookeeper およびブローカーのホスト情報を取得する

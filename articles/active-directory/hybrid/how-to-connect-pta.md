@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb5733f43a2b2800d5eb5031dddaaeb7d59aadc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 814c81b6092c4af3778617e165a0bdbce09d71d7
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109413"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779123"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-この機能は、組織にクラウド認証を同じメリットをもたらす、[Azure AD のパスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)の代わりです。 ただし、自身のオンプレミスの Active Directory のセキュリティとパスワード ポリシーを適用する必要がある特定の組織は、代わりにパススルー認証を使用することを選択できます。 Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)をご覧ください。
+この機能は、組織にクラウド認証を同じメリットをもたらす、[Azure AD のパスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)の代わりです。 ただし、自身のオンプレミスの Active Directory のセキュリティとパスワード ポリシーを適用する必要がある特定の組織は、代わりにパススルー認証を使用することを選択できます。 Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)をご覧ください。
 
 ![Azure AD パススルー認証](./media/how-to-connect-pta/pta1.png)
 

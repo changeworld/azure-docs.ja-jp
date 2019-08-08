@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/06/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 293a09c57ca95e2774e44ff4bc9f9f2c31be2f49
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332288"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816162"
 ---
 # <a name="expand-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの拡張
 

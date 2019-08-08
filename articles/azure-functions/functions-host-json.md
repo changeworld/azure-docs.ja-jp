@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: ecb2059e529347b7eff72bf6af74b82558a4c251
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: 4688cf6fb82eb8f726205d54d0c852fd3daf8dfb
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371697"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564783"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
 
@@ -147,7 +147,10 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-すべての関数のタイムアウト期間を示します。 サーバーレス従量課金プランの有効な範囲は 1 秒から 10 分であり、既定値は 5 分です。 App Service プランでは、全体的な制限はなく、既定値はランタイムのバージョンによって異なります。 バージョン 2.x では、App Service プランの既定値は 30 分です。 バージョンでは 1.x では *null* であり、タイムアウトしないことを示します。 無限に設定することはできません。 この値を明示的に設定していない場合は、既定値の 30 分の値が使用されます。
+すべての関数のタイムアウト期間を示します。 これは、期間文字列形式に従います。 サーバーレス従量課金プランの有効な範囲は 1 秒から 10 分であり、既定値は 5 分です。  
+専用の (App Service) プランでは、全体的な制限はなく、既定値はランタイムのバージョンによって異なります。 
++ バージョン 1.x: 既定値は *null* であり、タイムアウトしないことを示します。   
++ バージョン 2.x: 既定値は 30 分です。 値 `-1` は、無制限の実行を示します。
 
 ```json
 {

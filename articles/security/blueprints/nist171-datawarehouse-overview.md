@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: a1850ecfbb21eb9495bb0e6de362dc8dee3026a2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5a308dfd5467aecb8b0ff6c661de1cb8b1740590
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60609584"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780729"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-warehouse-for-nist-sp-800-171"></a>Azure のセキュリティとコンプライアンスのブループリント - NIST SP 800-171 のためのデータ ウェアハウス
 
@@ -80,7 +80,7 @@ VM の 1 つは管理踏み台ホストとして機能します。 踏み台ホ�
 **踏み台ホスト**:要塞ホストは、この環境にデプロイされているリソースへのアクセスに利用できる単一エントリ ポイントです。 踏み台ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
 
 このソリューションでは、次の構成を使用して､1 つの仮想マシンがドメイン参加済み踏み台ホストとして作成されます。
--   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
+-   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 -   [Azure Diagnostics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 -   未使用時の仮想マシン リソースの消費を抑えるための[自動シャットダウン ポリシー](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)。
@@ -139,7 +139,7 @@ VM の 1 つは管理踏み台ホストとして機能します。 踏み台ホ�
 
 **更新プログラムの管理**: この参照アーキテクチャの一部としてデプロイされる Windows VM は既定で、Windows Update サービスから自動的に更新プログラムを受信するように構成されています。 このソリューションには、[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)サービスも含まれます。このサービスによって、更新されたデプロイを作成し､必要に応じて仮想マシンにパッチを適用することができます｡
 
-**マルウェア対策**: VM 用の [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) は、ウイルスやスパイウェアなどの悪意のあるソフトウェアの特定や削除に役立つリアルタイムの保護機能を提供します。 お客様は、既知の悪意のあるまたは望ましくないソフトウェアによって仮想マシンにインストールや実行が試みられたときに生成するアラートを構成できます。
+**マルウェア対策**: VM 用の [Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) は、ウイルスやスパイウェアなどの悪意のあるソフトウェアの特定や削除に役立つリアルタイムの保護機能を提供します。 お客様は、既知の悪意のあるまたは望ましくないソフトウェアによって仮想マシンにインストールや実行が試みられたときに生成するアラートを構成できます。
 
 **Azure Security Center**:[Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) を使用すると、お客様はワークロード全体へのセキュリティ ポリシーの一元的な適用と管理、脅威にさらされる状態の制限、攻撃の検出とその対応を行うことができます。 Security Center はまた、Azure サービスの既存の構成にアクセスして、セキュリティ状況の改善とデータの保護に役立つ、構成とサービスに関する推奨事項を提供します。
 

@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 69e701d6727e5410b71e6cf8fbe20a1cd038ddb0
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61339097"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705003"
 ---
 # <a name="evaluate-method"></a>Evaluate メソッド
 
@@ -30,7 +31,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 
 ## <a name="request-parameters"></a>要求パラメーター  
 
-Name     | 値 | 必須  | 説明
+EnableAdfsAuthentication     | 値 | 必須  | 説明
 -----------|-----------|---------|--------
 **expr**       | テキスト文字列 | はい | エンティティが返す必要のあるエンティティを指定するクエリ式。
 **model**      | テキスト文字列 | いいえ  | クエリを実行するモデルの名前。  現時点では、既定値は *latest* です。        
@@ -43,7 +44,7 @@ Name     | 値 | 必須  | 説明
 
 ## <a name="response-json"></a>応答 (JSON)
 
-Name | 説明
+EnableAdfsAuthentication | 説明
 -------|-----   
 **expr** |  要求からの *expr* パラメーター。
 **entities** |  クエリ式に一致する 0 個以上のエンティティの配列。 各エンティティには、自然対数確率値と、要求されたその他の属性の値が含まれています。

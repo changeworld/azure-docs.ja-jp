@@ -1,19 +1,17 @@
 ---
 title: Azure Data Catalog でデータ ソースを文書化する方法
 description: この記事では、Azure Data Catalog でデータ資産を文書化する方法について重点的に説明しています。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 9049e0b25db37f296e27476fbb93418d13c4dcc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 46e3780c7fc6e6a2481e774b89bfb69510865db3
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61001551"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734626"
 ---
 # <a name="document-data-sources"></a>データ ソースの文書化
 ## <a name="introduction"></a>はじめに

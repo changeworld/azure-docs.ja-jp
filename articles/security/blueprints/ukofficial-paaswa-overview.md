@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: e3ee5a0aa22d1231dca7d02a77d39e0a2b569314
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54bf4512785941ae1d09ae1436deefc032ec0037
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66753857"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780667"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント:UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
@@ -95,7 +95,7 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) は、ベスト プラクティスに従って Azure デプロイメントを最適化できるようにする、個人用に設定されたクラウド コンサルタントです。 Azure のリソースの構成と利用統計情報を分析し、Azure リソースの費用対効果、パフォーマンス、高可用性、およびセキュリティを向上させるために役立つソリューションを推奨します。
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。 この機能は、既定で基礎となる PaaS 仮想マシン インフラストラクチャにインストールされます。Azure のファブリックによって管理されるので、ユーザーが意識することはありません。
+[Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。 この機能は、既定で基礎となる PaaS 仮想マシン インフラストラクチャにインストールされます。Azure のファブリックによって管理されるので、ユーザーが意識することはありません。
 
 ### <a name="paas-services-in-this-blueprint"></a>このブループリントの PaaS サービス
 

@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 10e2608b8fb7eca8e3dd45eadb6e8046ee0efbf1
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611470"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726702"
 ---
 # <a name="the-azure-production-network"></a>Azure 実稼働環境のネットワーク
 Azure 実稼働環境のネットワークのユーザーには、独自の Azure アプリケーションにアクセスする外部のお客様と実稼働環境のネットワークを管理する内部の Azure サポート担当者の両方が含まれます。 この記事では、Azure 実稼働環境のネットワークへの接続を確立するための、セキュリティ アクセスの方法とセキュリティ保護のメカニズムについて説明します。

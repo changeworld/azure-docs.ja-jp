@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/21/2019
-ms.openlocfilehash: 912c064fb5ca4e7ca311f60ed04a0122809cb0ff
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fc3f88e627e0ce19195f6df947d4f11f5f8a73ae
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442372"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772749"
 ---
 # <a name="what-is-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースとは
 
@@ -30,7 +30,7 @@ ms.locfileid: "67442372"
 
 この図は、ワークスペースの次のコンポーネントを示しています。
 
-+ ワークスペースには、Azure Machine Learning の実行に必要な Python 環境で構成されたクラウド リソース、[Notebook VM](quickstart-run-cloud-notebook.md) を含めることができます。
++ ワークスペースには、Azure Machine Learning の実行に必要な Python 環境で構成されたクラウド リソース、[Notebook VM](tutorial-1st-experiment-sdk-setup.md) を含めることができます。
 + [ユーザー ロール](how-to-assign-roles.md)を使用すると、お使いのワークスペースを、他のユーザー、チーム、またはプロジェクトと共有できます。
 + [コンピューティング ターゲット](concept-azure-machine-learning-architecture.md#compute-targets)は、ご自身の実験の実行に使用されます。
 + ワークスペースを作成すると、[関連するリソース](#resources)も自動的に作成されます。

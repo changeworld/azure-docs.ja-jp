@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
-ms.date: 06/13/2019
-ms.openlocfilehash: ed74e90e5e8ed55b75968f51cb50e6a1b4cdd75d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 08/01/2019
+ms.openlocfilehash: f37110138ae62272e56b155b7e8a9aac2f80cdf8
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203503"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734595"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Azure Data Catalog のトラブルシューティング
 

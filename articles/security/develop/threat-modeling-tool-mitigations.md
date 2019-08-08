@@ -8,18 +8,19 @@ manager: jegeib
 editor: jegeib
 ms.assetid: na
 ms.service: security
+ms.subservice: security-develop
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 989d479df4ddfad3511c8b1138c59e87f631d1de
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620731"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728045"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool の軽減策
 

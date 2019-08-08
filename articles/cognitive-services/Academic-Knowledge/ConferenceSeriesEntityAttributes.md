@@ -10,18 +10,19 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 38b4aa4c899668a68041f042ce6981ddd8c58219
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: feed324202f6a75ceb7e9089875b899c51cd8ae6
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61340198"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705038"
 ---
 # <a name="conference-series-entity"></a>会議 (シリーズ) エンティティ
 
 <sub> *次の属性は、会議 (シリーズ) エンティティに固有です。(Ty = '3') </sub>
 
-Name    |説明                            |Type       | Operations
+EnableAdfsAuthentication    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 CN      |会議 (シリーズ) の標準化名      |string     |等しい

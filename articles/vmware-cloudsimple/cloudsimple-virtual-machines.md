@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 77a2901ae2d81f42780110b1576c1f32c7ff397b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f4967bbd12107bf6a04cb80537d4425c75c5f46
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209484"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812499"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple 仮想マシンの概要
 

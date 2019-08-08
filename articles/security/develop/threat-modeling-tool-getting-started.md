@@ -8,18 +8,19 @@ manager: jegeib
 editor: jegeib
 ms.assetid: na
 ms.service: security
+ms.subservice: security-develop
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 9fcbf9680713af151df9a98cb704979d36fcafe0
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620747"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728269"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool の概要
 

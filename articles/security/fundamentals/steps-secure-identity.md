@@ -1,21 +1,21 @@
 ---
 title: Azure Active Directory で ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 description: このドキュメントでは、管理者が Azure AD 機能を使って組織をセキュリティで保護するうえで実行すべき一連の重要なアクションについて概説します
-services: active-directory
 author: martincoetzer
 manager: manmeetb
 tags: azuread
-ms.service: active-directory
+ms.service: security
+ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 78d26dffa1d60ad41c46ed449f35d82b6dedb82e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: c5cdd12c3075d48ff32c40d686b32a650ec43d8e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611434"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779783"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -74,7 +74,7 @@ Azure AD で直接 ID を作成した場合、[PowerShell を使用してユー�
 組織がパススルー認証またはフェデレーションによるハイブリッド ID ソリューションを使用する場合、次の 2 つの理由から、パスワード ハッシュ同期を有効にする必要があります。
 
 * Azure AD 管理の[資格情報が漏洩したユーザー](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) レポートでは、"闇サイト" で公開されているユーザー名とパスワードのペアについて、警告を受け取れます。 驚くほど大量のパスワードが、後にセキュリティ侵害されるサードパーティ サイトでのパスワードの再利用、フィッシング、マルウェアによって漏洩しています。 Microsoft は、これらの漏洩した資格情報の多くを発見し、それらがお客様の組織の資格情報に一致する場合に、このレポートでお客様に報告します。しかしそのためには、[パスワード ハッシュの同期を有効にしておく](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)必要があります。
-* (たとえばランサムウェア攻撃で) オンプレミスの障害が発生した場合、[パスワード ハッシュ同期を使用するクラウド認証](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)に切り替えることができます。このバックアップ認証方法では、Azure Active Directory による認証が構成されたアプリ (Office 365 など) へのアクセスを継続できます。 この場合、IT スタッフはオンプレミスの停止が解決されるまで、個人のメール アカウントに頼ってデータを共有する必要はありません。
+* (たとえばランサムウェア攻撃で) オンプレミスの障害が発生した場合、[パスワード ハッシュ同期を使用するクラウド認証](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)に切り替えることができます。このバックアップ認証方法では、Azure Active Directory による認証が構成されたアプリ (Office 365 など) へのアクセスを継続できます。 この場合、IT スタッフはオンプレミスの停止が解決されるまで、個人のメール アカウントに頼ってデータを共有する必要はありません。
 
 [パスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)のしくみについて、詳しくご確認ください。
 
@@ -146,7 +146,7 @@ Azure Active Directory には、検出と対応に時間差が生じないよう
 
 ### <a name="monitor-azure-ad"></a>Azure AD を監視する
 
-Microsoft Azure のサービスや機能が提供する構成可能なセキュリティ監査およびログのオプションは、セキュリティ ポリシーやセキュリティ メカニズムのギャップを識別してセキュリティ侵害を防止するための対策を講じるうえで役立ちます。 [Azure のログと監査](https://docs.microsoft.com/azure/security/azure-log-audit)を使用できるほか、[Azure Active Directory ポータルの監査アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)を使用できます。
+Microsoft Azure のサービスや機能が提供する構成可能なセキュリティ監査およびログのオプションは、セキュリティ ポリシーやセキュリティ メカニズムのギャップを識別してセキュリティ侵害を防止するための対策を講じるうえで役立ちます。 [Azure のログと監査](https://docs.microsoft.com/azure/security/fundamentals/log-audit)を使用できるほか、[Azure Active Directory ポータルの監査アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)を使用できます。
 
 ### <a name="monitor-azure-ad-connect-health-in-hybrid-environments"></a>ハイブリッド環境で Azure AD Connect Health を監視する
 

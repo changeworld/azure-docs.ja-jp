@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
-ms.date: 04/05/2019
-ms.openlocfilehash: f00e9eaf56f3973b357792a8d1923a4b5998e0a2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: df2f536dc95dd74dbae1c8bda1a9934a73fd1fe0
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997735"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736488"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>クイック スタート:Azure データ カタログを作成する
 
@@ -34,7 +34,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
 組織 (Azure Active Directory ドメイン) ごとにプロビジョニングできるデータ カタログは 1 つだけです。 そのため、この Azure Active Directory ドメインに属している、Azure サブスクリプションの所有者または共同所有者が既にカタログを作成している場合、複数の Azure サブスクリプションを所有していても、もう一度カタログを作成することはできません。 データ カタログが Azure Active Directory ドメイン内のユーザーによって作成されているかどうかをテストするには、 [Azure Data Catalog ホーム ページ](http://azuredatacatalog.com) に移動し、カタログが表示されるかどうかを確認してください。 カタログが既に作成されている場合は、以下の手順をスキップし、次のセクションに進んでください。
 
-1. [Azure portal](https://portal.azure.com) > **[リソースの作成]** の順に移動し、**[データ カタログ]** を選択します。
+1. [Azure portal](https://portal.azure.com) >  **[リソースの作成]** の順に移動し、 **[データ カタログ]** を選択します。
 
     ![データ カタログの作成](media/data-catalog-get-started/data-catalog-create.png)
 
@@ -56,19 +56,19 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
     ![Azure Data Catalog--エディションの選択](media/data-catalog-get-started/data-catalog-create-catalog-select-edition.png)
 
-6. 価格レベルとして *Standard* エディションを選択した場合は、**[セキュリティ グループ]** を展開し、Active Directory セキュリティ グループが Data Catalog にアクセスできるように承認を有効にしたり、請求の自動調整を有効にしたりすることができます。
+6. 価格レベルとして *Standard* エディションを選択した場合は、 **[セキュリティ グループ]** を展開し、Active Directory セキュリティ グループが Data Catalog にアクセスできるように承認を有効にしたり、請求の自動調整を有効にしたりすることができます。
 
     ![Azure Data Catalog のセキュリティ グループ](media/data-catalog-get-started/data-catalog-standard-security-groups.png)
 
-7. **[カタログ ユーザー]** を展開し、**[追加]** をクリックしてデータ カタログのユーザーを追加します。 自身はこのグループに自動的に追加されます。
+7. **[カタログ ユーザー]** を展開し、 **[追加]** をクリックしてデータ カタログのユーザーを追加します。 自身はこのグループに自動的に追加されます。
 
     ![Azure Data Catalog--ユーザー](media/data-catalog-get-started/data-catalog-add-catalog-user.png)
 
-8. 価格レベルとして *Standard* エディションを選択した場合は、**[用語集の管理者]** を展開し、**[追加]** をクリックして、用語集の管理者ユーザーを追加できます。 自身はこのグループに自動的に追加されます。
+8. 価格レベルとして *Standard* エディションを選択した場合は、 **[用語集の管理者]** を展開し、 **[追加]** をクリックして、用語集の管理者ユーザーを追加できます。 自身はこのグループに自動的に追加されます。
 
     ![Azure Data Catalog の用語集の管理者](media/data-catalog-get-started/data-catalog-standard-glossary-admin.png)
 
-9. **[カタログの管理者]** を展開し、**[追加]** をクリックしてデータ カタログの他の管理者を追加します。 自身はこのグループに自動的に追加されます。
+9. **[カタログの管理者]** を展開し、 **[追加]** をクリックしてデータ カタログの他の管理者を追加します。 自身はこのグループに自動的に追加されます。
 
     ![Azure Data Catalog--管理者](media/data-catalog-get-started/data-catalog-add-catalog-admins.png)
 
@@ -76,7 +76,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
     ![Azure Data Catalog--ポータルのタイトル](media/data-catalog-get-started/data-catalog-portal-title.png)
 
-11. **[設定]** ページの作業を完了したら、**[発行]** ページに移動します。
+11. **[設定]** ページの作業を完了したら、 **[発行]** ページに移動します。
 
     ![Azure Data Catalog--作成完了](media/data-catalog-get-started/data-catalog-created.png)
 
@@ -84,7 +84,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
 1. Web ブラウザーの別のタブまたは別の Web ブラウザー ウィンドウで、 [Azure Portal](https://portal.azure.com) に移動し、前の手順でデータ カタログを作成する際に使用したのと同じアカウントでサインインします。
 
-2. **[すべてのサービス]** を選択し、**[Data Catalog]** をクリックします。
+2. **[すべてのサービス]** を選択し、 **[Data Catalog]** をクリックします。
 
     ![Azure Data Catalog--browse Azure](media/data-catalog-get-started/data-catalog-browse-azure-portal.png)
 

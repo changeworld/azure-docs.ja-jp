@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: d03abee7c7a4adb65e1d6146501ee5b7d9e1534c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 3db63be8856b5bd57323ecd0be767d09032404e9
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348666"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741886"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Form Recognizer コンテナーのインストールと実行
 
@@ -97,7 +97,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recogn
 
 コンテナーを[ホスト コンピューター](#the-host-computer)上に用意できたら、次の手順を使用してコンテナーを操作します。
 
-1. 必要でありながら使用されていない課金設定を使用して[コンテナーを実行](#run-the-container-by-using-the-docker-run-command)します。 `docker run` コマンドの他の[例](form-recognizer-container-configuration.md#example-docker-run-commands)もご覧いただけます。
+1. 必要な課金設定を使用して[コンテナーを実行](#run-the-container-by-using-the-docker-run-command)します。 `docker run` コマンドの他の[例](form-recognizer-container-configuration.md#example-docker-run-commands)もご覧いただけます。
 1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-by-using-the-docker-run-command"></a>docker run コマンドを使用してコンテナーを実行する

@@ -3,16 +3,17 @@ title: Microsoft Azure 用カスタマー ロックボックス
 description: Microsoft Azure 用カスタマー ロックボックスの技術の概要。Microsoft が顧客データにアクセスする必要がある場合にクラウド プロバイダーのアクセスを制御する機能があります。
 author: cabailey
 ms.service: security
+ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
 ms.date: 06/20/2019
-ms.openlocfilehash: 6aa57e7b53beda4315df2198942dce5e66aa9f09
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7ca5c890b1f3161923cd808c5ecec0ccf0165d64
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611190"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727506"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス
 

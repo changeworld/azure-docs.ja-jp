@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 51f74f504f0ad70c8c7f73be8ee6a05add685824
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ROBOTS: NOINDEX
+ms.openlocfilehash: 60c4abf1590cb91fd460cc6a2a5ba75a225ebd80
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475742"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704037"
 ---
 # <a name="entity-resolvers"></a>エンティティ リゾルバー
 

@@ -10,12 +10,13 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: nolachar
-ms.openlocfilehash: 086858f88a1b058e0e94fb356fbd06cf299b14f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ROBOTS: NOINDEX
+ms.openlocfilehash: cce40c53fdfb052cc6c1f2941b2e3b4ae710ae21
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60580059"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707193"
 ---
 # <a name="custom-decision-service-workflow"></a>Custom Decision Service のワークフロー
 

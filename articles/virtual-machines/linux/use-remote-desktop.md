@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 63f66d345b88984a49b8eb18b02fd79fb0603022
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 64f287a98af6cb353117ec1de1f9f0d55b367085
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695515"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774357"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する
 Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイ モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](https://www.xrdp.org)) をインストールして構成する方法を詳しく説明します。
@@ -56,7 +56,7 @@ sudo apt-get install xfce4
 デスクトップ環境がインストールできましたので、リモート デスクトップ サービスを構成して着信接続をリッスンします。 [xrdp](http://xrdp.org) はオープン ソースのリモート デスクトップ プロトコル (RDP) サーバーであり、ほとんどの Linux ディストリビューションで使用でき、xfce も問題なく使用できます。 Ubuntu VM に次のように xrdp をインストールします。
 
 ```bash
-sudo apt-get install xrdp
+sudo apt-get install xrdp=0.6.1-2
 sudo systemctl enable xrdp
 ```
 

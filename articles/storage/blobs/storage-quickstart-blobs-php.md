@@ -1,20 +1,18 @@
 ---
 title: Azure クイック スタート - PHP を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
 description: PHP を使って Azure Blob Storage との間で双方向にオブジェクトを転送する方法を説明します
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.devlang: php
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 790c6a372021542daa1098e94209c91b7bcecfd5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149455"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726384"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>PHP を使用して Azure Blob Storage との間でオブジェクトを転送する
 このクイック スタートでは、PHP を使って、Azure Blob Storage のコンテナー内のブロック BLOB をアップロード、ダウンロード、および一覧表示する方法を説明します。 

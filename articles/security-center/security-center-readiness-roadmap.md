@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 7de085766ae700b5c76d9eca49c1127aabdddb9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1527dbd1df3e4a10a68a5949d9e0bca11628bdd2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703406"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781133"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center の対応準備ロードマップ
 このドキュメントでは、Azure Security Center の導入を支援する対応準備ロードマップについて取り上げます。
@@ -114,8 +114,8 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 * [Security Center REST API ドキュメント ページ](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Azure Security Center のよく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/security-center/security-center-faq)
 * [Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)
-* [ID に関するセキュリティのベスト プラクティス](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices)
-* [ネットワーク セキュリティのベスト プラクティス](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices)
+* [ID に関するセキュリティのベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
+* [ネットワーク セキュリティのベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS に関する推奨情報](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [コンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/due-diligence-checklist)
 * [Log Analytics のお客さまが Azure Security Center を使用してハイブリッド クラウド ワークロードを保護できるようになりました](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)

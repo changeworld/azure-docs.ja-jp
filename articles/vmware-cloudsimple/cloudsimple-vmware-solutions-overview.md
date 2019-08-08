@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e84801875cf0a77990a63db5c28eedc2128c504
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01fd132b3e43d15c5f2eee0114ef09dbac6df2a6
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866828"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812457"
 ---
 # <a name="what-is-vmware-solution-on-azure-by-cloudsimple"></a>CloudSimple による Azure VMware ソリューションとは
 

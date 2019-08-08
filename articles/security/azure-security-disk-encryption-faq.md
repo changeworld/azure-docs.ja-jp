@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c28cf4326593897dcbc90902737fc4846356078d
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 4f2a34e63a870814c8d2a3ffe24c60083c9d7bb2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653382"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781108"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -110,7 +110,7 @@ Linux で最適な結果を得るには、次のワークフローが推奨さ�
 
 このワークフローが可能でない場合は、DM-Crypt を使用したディスク全体の暗号化に代わる方法として、プラットフォームのストレージ アカウント レイヤーで [Storage Service Encryption](../storage/common/storage-service-encryption.md) (SSE) を使用することができます。
 
-## <a name="what-is-the-disk-bek-volume-or-mntazurebekdisk"></a>ディスク "Bek ボリューム" または "/mnt/azure_bek_disk" とは何ですか。
+## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>ディスク "Bek ボリューム" または "/mnt/azure_bek_disk" とは何ですか。
 
 Windows の "Bek ボリューム" または Linux の "/mnt/azure_bek_disk" は、暗号化された Azure IaaS VM の暗号化キーを安全に格納するローカルのデータ ボリュームです。
 > [!NOTE]
@@ -140,4 +140,4 @@ Azure Backup には、同じサブスクリプションおよびリージョン�
 
 - [Azure Disk Encryption の概要](azure-security-disk-encryption-overview.md)
 - [Azure Security Center でディスクの暗号化を適用する](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+- [保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

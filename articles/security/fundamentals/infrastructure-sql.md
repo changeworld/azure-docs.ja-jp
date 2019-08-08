@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: d883a9672ce8e33a1c13c96bca727b925bfbd84f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610990"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727099"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database のセキュリティ機能    
 Azure SQL Database は、Azure でリレーショナル データベース サービスを提供しています。 顧客データを保護し、お客様がリレーショナル データベース サービスに期待する強力なセキュリティ機能を提供するために、SQL Database には独自のセキュリティ機能があります。 これらの機能は、Azure から継承されたコントロールに基づいて構築されています。

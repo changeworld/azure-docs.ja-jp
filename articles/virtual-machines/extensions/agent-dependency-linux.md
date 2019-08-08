@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 5faeebe799bd8cc0ba9a148508ac5b3a6d4b803a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b78bea88149d05067cf849000fef48f7b4dc5815
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67120212"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774403"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux 用 Azure Monitor Dependency 仮想マシン拡張機能
 
@@ -74,7 +74,7 @@ Linux 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs の�
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 |
+| EnableAdfsAuthentication | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
@@ -85,7 +85,7 @@ Linux 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs の�
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Azure VM Dependency Agent 拡張機能を実行できます。
 
-仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることができます。 または、Resource Manager JSON テンプレートのルートまたは最上位に配置することができます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)に関する記事を参照してください。
+仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることができます。 または、Resource Manager JSON テンプレートのルートまたは最上位に配置することができます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/child-resource-name-type.md)に関する記事を参照してください。
 
 次の例では、Dependency Agent 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
 

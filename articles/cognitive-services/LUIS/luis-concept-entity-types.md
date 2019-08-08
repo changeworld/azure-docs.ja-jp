@@ -1,6 +1,6 @@
 ---
-title: エンティティの種類
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: エンティティの種類 - LUIS
+titleSuffix: Azure Cognitive Services
 description: エンティティは、発話からデータを抽出します。 エンティティの種類では、データの予測可能な抽出が提供されます。 エンティティには、機械学習と非機械学習の 2 種類があります。 発話で使用しているエンティティの種類を把握していることが重要です。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: a5a3ba8c25107317e7c47ee358f9a6ebe7d4556f
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 9919b6d07e874bd306bdba9da2cd3357bedc48f0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479110"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564006"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>LUIS におけるエンティティの種類とその目的
 
@@ -44,7 +44,7 @@ ms.locfileid: "68479110"
 
 エンティティは、発話から引き出す必要があるデータです。 名前、日付、製品名、任意の単語のグループを指定できます。 
 
-|発話|エンティティ|データ|
+|発話|エンティティ|Data|
 |--|--|--|
 |ニューヨーク行きのチケットを 3 枚購入する|事前構築済みの数値<br>場所.目的地|3<br>ニューヨーク|
 |3 月 5 日のニューヨーク発ロンドン行きのチケットを購入する|場所.出発地<br>場所.目的地<br>事前構築済みの datetimeV2|ニューヨーク<br>ロンドン<br>2018 年 3 月 5 日|

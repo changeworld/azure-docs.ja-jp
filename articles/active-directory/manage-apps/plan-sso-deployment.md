@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0602de13fefbf105e69ba42651216fb479c4c86
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 733b0d7650d68bddae60cf524947590c2b689968
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477127"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779378"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
@@ -95,7 +95,7 @@ Microsoft では、パスワード保管のための Web アプリケーショ�
 
 正しい認証方法の選択は、Azure AD ハイブリッド ID ソリューションのセットアップにおける最初の重要な決定です。 Azure AD Connect (クラウドでのユーザーのプロビジョニングも行います) を使用することで構成される認証方法を実装します。
 
-認証方法を選ぶには、時間、既存のインフラストラクチャ、複雑さ、および選んだ方法の実装にかかるコストを考慮する必要があります。 これらの要因は組織ごとに異なり、時間の経過とともに変化する場合があります。 特定のシナリオに最も合うものを選択する必要があります。 詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)」を参照してください。
+認証方法を選ぶには、時間、既存のインフラストラクチャ、複雑さ、および選んだ方法の実装にかかるコストを考慮する必要があります。 これらの要因は組織ごとに異なり、時間の経過とともに変化する場合があります。 特定のシナリオに最も合うものを選択する必要があります。 詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)」を参照してください。
 
 ## <a name="plan-your-security-and-governance"></a>セキュリティとガバナンスを計画する 
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13cec6f53af460a9e9372eedf3b7e17798d1c653
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7cbddc4b7af546396a1a5a4c86d349a96054a6f3
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610393"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726273"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Azure Disk Encryption に関する付録 
 
@@ -104,7 +104,7 @@ ms.locfileid: "68610393"
      ```
 
 ### <a name="bkmk_prereq-script"></a>Azure Disk Encryption の前提条件となる PowerShell スクリプトの使用
-Azure Disk Encryption の前提条件に既に精通している場合は、[Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )を使用できます。 この PowerShell スクリプトの使用例については、[VM の暗号化のクイック スタート](fundamentals/quick-encrypt-vm-powershell.md)に関するページを参照してください。 既存のリソース グループ内の既存の VM のすべてのディスクを暗号化するために、スクリプトの 211 行目から始まるセクションのコメントを削除することができます。 
+Azure Disk Encryption の前提条件に既に精通している場合は、[Azure Disk Encryption の前提条件となる PowerShell スクリプト](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )を使用できます。 この PowerShell スクリプトの使用例については、[VM の暗号化のクイック スタート](azure-disk-encryption-linux-powershell-quickstart.md)に関するページを参照してください。 既存のリソース グループ内の既存の VM のすべてのディスクを暗号化するために、スクリプトの 211 行目から始まるセクションのコメントを削除することができます。 
 
 次の表は、PowerShell スクリプトでどのパラメーターを使用することができるかを示しています。 
 

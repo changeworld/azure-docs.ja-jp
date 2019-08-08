@@ -8,18 +8,19 @@ manager: jegeib
 editor: jegeib
 ms.assetid: na
 ms.service: security
+ms.subservice: security-develop
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 4843828c89b04e36b0bcc73dcedf9c5735b73729
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: c9d20b3259cf4ea7af263d5e31145ad372db0c77
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620807"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728408"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>セキュリティ フレーム:監査とログ記録 | 対応策 
 

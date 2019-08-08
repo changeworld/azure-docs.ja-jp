@@ -10,12 +10,13 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: b5f8c853218a1db53f4dd23e7254b35990a7132b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: e6e8e7d0d5b969464ba9183ccae9080f58f786a0
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60829176"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707279"
 ---
 # <a name="experimentation"></a>実験
 

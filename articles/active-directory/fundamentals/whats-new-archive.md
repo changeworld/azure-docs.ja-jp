@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 07/31/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 490a4fa2fa05c688f5bfc1534d1508a87e9589ea
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b338ad90c01c109cc9b2e222f1d7bcaa09f20346
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693981"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812956"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -775,8 +775,6 @@ Azure AD アクティビティ ログは、Azure Monitor (Azure のプラット�
  
 Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。 2018 年 7 月、Azure AD アプリ ギャラリーの次のアプリケーションに対して、ユーザー プロビジョニング サポートが追加されました。
 
-- [Cisco Spark](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial)
-
 - [Cisco WebEx](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)
 
 - [Bonusly](https://docs.microsoft.com/azure/active-directory/saas-apps/bonusly-provisioning-tutorial)
@@ -1221,7 +1219,7 @@ AADConnect の 5 月のリリースには、PingFederate との統合のパブ�
 
 ---
 
-### <a name="id-tokens-can-no-longer-be-returned-using-the-query-responsemode-for-new-apps"></a>新しいアプリでは query response_mode を使用して ID トークンを返すことはできません。 
+### <a name="id-tokens-can-no-longer-be-returned-using-the-query-response_mode-for-new-apps"></a>新しいアプリでは query response_mode を使用して ID トークンを返すことはできません。 
 
 **タイプ:** 変更された機能  
 **サービス カテゴリ:** 認証 (ログイン)  
@@ -1553,7 +1551,7 @@ Azure AD のドキュメントが更新されて、PKCE のサポートが記述
  
 ---
  
-### <a name="support-for-provisioning-all-user-attribute-values-available-in-the-workday-getworkers-api"></a>Workday Get_Workers API で使用可能なすべてのユーザー属性値のプロビジョニングのサポート
+### <a name="support-for-provisioning-all-user-attribute-values-available-in-the-workday-get_workers-api"></a>Workday Get_Workers API で使用可能なすべてのユーザー属性値のプロビジョニングのサポート
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** アプリ プロビジョニング  
@@ -2362,7 +2360,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 
 ### <a name="access-reviews"></a>アクセス レビュー
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** アクセス レビュー  
 **製品の機能:** コンプライアンス  
 

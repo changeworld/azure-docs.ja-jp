@@ -7,16 +7,17 @@ author: barclayn
 manager: barbkess
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: fa521b81c95f7c0556b082e5487848ef4d7ecaf7
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b574f7c4f30c3bce8bd7d0e234cb523c965772e1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611786"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727578"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Marketplace イメージのセキュリティに関する推奨事項
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8d1f0f6ae3ffc123f1ae8318a6fbce4a9a3024fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a58e408feadd10e6dbc9d6878b82a4d045918ea6
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66814924"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781469"
 ---
 ## <a name="access-the-virtual-machine"></a>仮想マシンにアクセスする
 
@@ -35,7 +35,7 @@ ms.locfileid: "66814924"
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    SSH アクセスを有効にするのはテストおよび開発中のみにしてください。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices#disable-rdpssh-access-to-virtual-machines)。
+    SSH アクセスを有効にするのはテストおよび開発中のみにしてください。 SSH を有効にした場合、[できるだけ早く無効にする必要があります](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines)。
 
 1. 仮想マシン上の **azureuser** アカウントのパスワードを既知のパスワードに更新します。 次のコマンドを実行するときに自分のパスワードを選択してください。
 

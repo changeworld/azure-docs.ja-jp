@@ -8,18 +8,19 @@ manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 5d4083aaeb3286202bfdff5bcd75e9ed1d15db62
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b3209d287989f8bee2ab4b50c11b810e754d079b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610670"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726442"
 ---
 # <a name="azure-security-white-papers"></a>Azure セキュリティ ホワイト ペーパー
 | | |

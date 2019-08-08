@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5b4be7464a4c19cd0a71d5a786b46091cdbc074b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407634"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780263"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure Portal でサイト間接続を作成する
 
@@ -42,11 +42,11 @@ ms.locfileid: "60407634"
 
 この記事の例では、次の値を使用します。 この値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。 VPN ゲートウェイの一般的な設定の詳細については、[VPN Gateway の設定](vpn-gateway-about-vpn-gateway-settings.md)に関するページを参照してください。
 
-* **VNet 名:** TestVNet1
+* **VNet 名:** VNet1
 * **アドレス空間:** 10.1.0.0/16
 * **サブスクリプション:** 使用するサブスクリプション
 * **リソース グループ:** TestRG1
-* **[場所]:** 米国東部
+* **[場所]:** East US
 * **サブネット:** FrontEnd:10.1.0.0/24、BackEnd:10.1.1.0/24 (この演習では省略可能)
 * **ゲートウェイ サブネット名:** GatewaySubnet (ポータルではこの名前が自動入力されます)
 * **ゲートウェイ サブネットのアドレス範囲**:10.1.255.0/27
@@ -66,9 +66,11 @@ ms.locfileid: "60407634"
 
 ## <a name="dns"></a>2.DNS サーバーの指定
 
-サイト間接続の作成では DNS は不要です。 ただし仮想ネットワークにデプロイされたリソースで名前解決を使用する場合は、DNS サーバーを指定する必要があります。 この設定では、この仮想ネットワークの名前解決に使用する DNS サーバーを指定することができます。 この設定で、DNS サーバーは作成されません。 名前解決の詳細については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。
+サイト間接続の作成では DNS は不要です。
 
-[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-specify-dns-portal-include.md)]
+ただし仮想ネットワークにデプロイされたリソースで名前解決を使用する場合は、DNS サーバーを指定する必要があります。 この設定では、この仮想ネットワークの名前解決に使用する DNS サーバーを指定することができます。 この設定で、DNS サーバーは作成されません。 名前解決の詳細については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。
+
+[!INCLUDE [Specify a dns server - optional](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
 ## <a name="gatewaysubnet"></a>3.ゲートウェイ サブネットを作成する
 

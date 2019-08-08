@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 05/20/2019
 ms.author: shvija
-ms.openlocfilehash: 4e6f16a15547583baab63f452504d36eb2e43b85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dbef1db94d7835bd9326102bd62921c6b3d88d74
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65978458"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707062"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Event Hubs での Azure リソースのマネージド ID
 
@@ -80,7 +80,7 @@ ms.locfileid: "65978458"
 
 ### <a name="run-the-app"></a>アプリの実行
 
-次に、作成した ASP.NET アプリケーションの既定のページを変更します。 [こちらの GitHub リポジトリ](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/MSI/EventHubsMSIDemoWebApp)の Web アプリケーション コードを使用することもできます。 
+次に、作成した ASP.NET アプリケーションの既定のページを変更します。 [こちらの GitHub リポジトリ](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp)の Web アプリケーション コードを使用することもできます。 
 
 アプリを開始した後、ブラウザーで EventHubsMSIDemo.aspx を参照します。 スタート ページとして設定することもできます。 コードは EventHubsMSIDemo.aspx.cs ファイルにあります。 いくつかの入力フィールドと、Event Hubs に接続してイベントを送受信するための **send** ボタンおよび **receive** ボタンを備えた最小限の Web アプリケーションが作成されます。 
 

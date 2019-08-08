@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 05bd4fdd220b47b11dfed9857dbc8dbe25b236df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2b1e8b9829bab56f0e49eafc50b7c56594de96b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61347781"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720813"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Dynamics AX からデータをコピーする (プレビュー)
 
@@ -113,6 +113,7 @@ Dynamics AX からデータをコピーするには、データセットの **ty
         "typeProperties": {
             "path": "<entity path e.g. dd04tentitySet>"
         },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Dynamics AX linked service name>",
             "type": "LinkedServiceReference"

@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7214cf4c16cc4ee5e76d479d153395085a7e3a6e
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 25e511a1596c1119d1db8c9270ce216cd5186e72
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688952"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735471"
 ---
-# <a name="back-up-files-on-azure-stack"></a>Azure Stack のファイルのバックアップ
+# <a name="back-up-files-and-applications-on-azure-stack"></a>Azure Stack 上のファイルとアプリケーションのバックアップ
 Azure Backup を使用して、Azure Stack 上のファイルとアプリケーションを保護 (バックアップ) することができます。 ファイルとアプリケーションをバックアップするには、Microsoft Azure Backup Server を Azure Stack 上で動作する仮想マシンとしてインストールします。 同じ仮想ネットワーク内の任意の Azure Stack サーバー上のファイルを保護できます。 Azure Backup Server をインストールしたら、Azure ディスクを追加して、短期バックアップ データに使用できるローカル ストレージを増やしてください。 Azure Backup Server は、長期保有には Azure Storage を使用します。
 
 > [!NOTE]

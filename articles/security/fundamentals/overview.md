@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e269981c97f226ea43c745311238c4578f3d3dd4
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 527c9cfa64eab9fe2286098d2c10186391bdde4d
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611498"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780574"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -113,7 +114,7 @@ Azure Monitor ログは、フォレンジック分析などのセキュリティ
 [App Service アプリ](https://docs.microsoft.com/azure/app-service/overview)の脆弱性のテストを開始する最も簡単な方法の 1 つは、[Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用して 1 回のクリックでアプリに対する脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
 
 ### <a name="penetration-testing"></a>侵入テスト
-独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
+独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://docs.microsoft.com/azure/security/fundamentals/pen-testing ) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
 
 ### <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) の Web アプリケーション ファイアウォール (WAF) は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護するのに役立ちます。 このファイアウォールには、[Open Web Application Security Project (OWASP) により一般的な脆弱性の上位 10 種](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)と特定された脅威からの保護が事前に構成されています。
@@ -312,7 +313,7 @@ Security Center は、脅威の回避、検出、対応に役立つサービス�
 このセクションでは、この領域の重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="antimalware--antivirus"></a>マルウェア対策とウイルス対策ソフトウェア
-Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 Azure Cloud Services および Azure Virtual Machines に対する [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つ保護機能です。 Microsoft Antimalware は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。 Microsoft Antimalwareは、Azure Security Center を使用してデプロイすることもできます。
+Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 Azure Cloud Services および Azure Virtual Machines に対する [Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つ保護機能です。 Microsoft Antimalware は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。 Microsoft Antimalwareは、Azure Security Center を使用してデプロイすることもできます。
 
 ### <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
 暗号化と認証は、キー自体が保護されない限り、セキュリティを向上させません。 大切な秘密情報とキーを [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に格納することで、それらの管理とセキュリティ保護をシンプルにできます。 Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。 バックアップまたは [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。 保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。

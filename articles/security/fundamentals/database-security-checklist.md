@@ -8,18 +8,19 @@ manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 424453e70e5b62e408f408cd5ae8169cddb14dd7
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: bf11d7a9dbaa37db521da67deddbed977cc1d251
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611718"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780551"
 ---
 # <a name="azure-database-security-checklist"></a>Azure のデータベース セキュリティのチェックリスト
 
@@ -40,7 +41,7 @@ Azure データベースには、セキュリティ向上を促進するため�
 クラウド コンピューティングには新しいセキュリティ パラダイムが必要ですが、これは多くのアプリケーション ユーザー、データベース管理者、およびプログラマにとって馴染みのないものです。 そのため、把握されているセキュリティ リスクを理由にデータ管理用のクラウド インフラストラクチャを実装することを躊躇している組織もあります。 ただし、この懸念の多くは、Microsoft Azure および Microsoft Azure SQL Database に組み込まれているセキュリティ機能への理解を深めることで緩和できます。
 
 ## <a name="checklist"></a>チェック リスト
-このチェックリストを確認する前に、「[Azure Database Security Best Practices (Azure データベース セキュリティのベスト プラクティス)](https://docs.microsoft.com/azure/security/azure-database-security-best-practices)」の記事をお読みになることをお勧めします。 このベスト プラクティスを理解しておくことで、チェックリストを最大限に活用できます。 このチェックリストを使用して、Azure のデータベース セキュリティの重要な問題に対処しているかどうかを確認することができます。
+このチェックリストを確認する前に、「[Azure Database Security Best Practices (Azure データベース セキュリティのベスト プラクティス)](https://docs.microsoft.com/azure/security/fundamentals/database-best-practices)」の記事をお読みになることをお勧めします。 このベスト プラクティスを理解しておくことで、チェックリストを最大限に活用できます。 このチェックリストを使用して、Azure のデータベース セキュリティの重要な問題に対処しているかどうかを確認することができます。
 
 
 |チェックリストのカテゴリ| 説明|

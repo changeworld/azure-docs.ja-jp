@@ -1,19 +1,17 @@
 ---
 title: Azure Data Catalog で "ビッグ データ" のデータ ソースを操作する方法
 description: Azure Blob Storage、Azure Data Lake、Hadoop HDFS などの "ビッグ データ" のデータ ソースと共に Azure Data Catalog を使用するためのパターンを説明する、操作方法に関する記事。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 626d1568-0780-4726-bad1-9c5000c6b31a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: b6b419d575e2164fc683b8e6b5020572db74d1b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 5b213ebabc2d849587590ba295498d24737dbde7
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61001743"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734650"
 ---
 # <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でビッグ データ ソースを操作する方法
 ## <a name="introduction"></a>はじめに

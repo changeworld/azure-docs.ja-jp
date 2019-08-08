@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce9c0c6d4f9002b061afd2ad09f02266d452979
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b291f2243dfe28a8e866796e0b7375f94fa4f2e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109264"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779440"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する
 
@@ -151,7 +151,7 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 
 認証を行うユーザーが企業ネットワーク内に存在する場合、AD FS によって **InsideCorporateNetwork** 要求が発行されます。 その後、この要求を Azure AD に渡すことができます。 要求は、ユーザーのネットワークの場所に基づいて多要素認証をバイパスするために使用されます。 現在、AD FS でこの機能が有効になっているかどうかを判断する方法については、「[フェデレーション ユーザー用の信頼できる IP](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud)」を参照してください。
 
-**InsideCorporateNetwork** 要求は、ドメインがパスワード ハッシュ同期に変換された後は使用できません。 この機能の代わりに、[Azure AD の名前付きの場所](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations)を使用できます。
+**InsideCorporateNetwork** 要求は、ドメインがパスワード ハッシュ同期に変換された後は使用できません。 この機能の代わりに、[Azure AD のネームド ロケーション](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations)を使用できます。
 
 ネームド ロケーションを構成した後は、ネットワークの **[すべての信頼できる場所]** または **[MFA の信頼できる IP]** の値を含めるか除外するために構成されたすべての条件付きアクセス ポリシーを、新しいネームド ロケーションを反映するように更新する必要があります。
 
@@ -474,5 +474,5 @@ Azure AD Connect を実行しているオンプレミス サーバーで、シ�
 ## <a name="next-steps"></a>次の手順
 
 * [Azure AD Connect の設計概念](plan-connect-design-concepts.md)について学習する。
-* [適切な認証](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)を選択する。
+* [適切な認証](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)を選択する。
 * [サポートされているトポロジ](plan-connect-design-concepts.md)について学習する。

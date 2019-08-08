@@ -8,18 +8,19 @@ manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2019
 ms.author: terrylan
-ms.openlocfilehash: 710d7a12db3b38a6cecffb33ade6b60eb50d03c7
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: cc48392c8f604fbfdbb0b803b29f9dc47dd4f24c
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611886"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727793"
 ---
 # <a name="develop-secure-cloud-applications-on-azure"></a>セキュリティで保護されたクラウド アプリケーションを Azure 上で開発する
 ## <a name="abstract"></a>要約

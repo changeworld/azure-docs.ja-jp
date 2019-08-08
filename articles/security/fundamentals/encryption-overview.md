@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 0120a64305d2cb207b812fa25ffeb456cf92ea23
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 62fcc19f3cfe9109097d1f2a70d785060b5bdc53
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611098"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727366"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 

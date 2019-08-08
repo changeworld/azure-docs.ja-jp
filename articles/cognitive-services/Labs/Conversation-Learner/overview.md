@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: f8bc7590f2d7a622b4b1ffb21bfeccef89691fd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 725a1d3628fb320a58e073fe2d825af23b02c0bd
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389495"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707016"
 ---
 # <a name="what-is-conversation-learner"></a>Conversation Learner とは
 

@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: d4724672510d6ccbbc819691d621400cb00d8c9a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405446"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827225"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Gen2 へのデータ ウェアハウスのアップグレード
 
@@ -88,7 +88,7 @@ Microsoft では、上記の利用可能表に基づいて、Gen1 インスタ�
 - [インプレース アップグレード](upgrade-to-latest-generation.md) - このオプションでは、既存の Gen1 データ ウェアハウスが Gen2 にアップグレードされます。 アップグレード プロセスでは、データ ウェアハウスを再起動する際に接続が短時間 (約 5 分) 切断されます。  データ ウェアハウスは、再起動後に完全に使用できるようになります。 アップグレード中に問題が発生した場合は、[サポート リクエスト](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)を作成し、考えられる原因として "Gen2 アップグレード" と記載してください。
 - [復元ポイントからのアップグレード](sql-data-warehouse-restore.md) - 現在の Gen1 データ ウェアハウスに対してユーザー定義の復元ポイントを作成し、その後、Gen2 インスタンスに直接復元します。 既存の Gen1 データ ウェアハウスはそのまま残ります。 復元が完了すると、Gen2 データ ウェアハウスは完全に使用できるようになります。  復元された Gen2 インスタンスに対してテストおよび検証プロセスをすべて実行した後、元の Gen1 インスタンスは削除してかまいません。
 
-   - 手順 1:Azure portal から、[ユーザー定義の復元ポイントを作成](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal)します。
+   - 手順 1:Azure portal から、[ユーザー定義の復元ポイントを作成](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal)します。
    - 手順 2:ユーザー定義の復元ポイントから復元する場合、"パフォーマンス レベル" は優先する Gen2 レベルに設定します。
 
 アップグレード プロセスがバックグラウンドでデータ ファイルをアップグレードしている間にパフォーマンスの低下の期間が発生する場合があります。 パフォーマンス低下の合計時間は、ご使用のデータ ファイルのサイズによって異なります。
@@ -155,6 +155,6 @@ Microsoft では、上記の利用可能表に基づいて、Gen1 インスタ�
 - [リソース正常性の監視](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [移行開始前の確認](upgrade-to-latest-generation.md#before-you-begin)
 - [インプレース アップグレードと復元ポイントからのアップグレード](upgrade-to-latest-generation.md)
-- [ユーザー定義の復元ポイントの作成](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
-- [Gen2 に復元する方法](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [ユーザー定義の復元ポイントの作成](sql-data-warehouse-restore-points.md)
+- [Gen2 に復元する方法](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal)
 - [SQL Data Warehouse サポート リクエストのオープン](https://go.microsoft.com/fwlink/?linkid=857950)

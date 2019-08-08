@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 831ba47ea4e999219a6d8cf34cb5fb0fdcd1ead8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c9be48d8f403d3ddde993ebdcf0142b55e52afce
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594953"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779675"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -210,7 +210,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 - 組織で、パススルー認証またはフェデレーションによるハイブリッド ID ソリューションが使用されている。
 - オンプレミスの ID システム (Active Directory、AD FS、依存コンポーネントなど) を使用できない。 
  
-回復性を向上させるには、組織で[パスワード ハッシュ同期を有効にする](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)必要があります。そうすれば、オンプレミスの ID システムがダウンした場合は、[パスワード ハッシュ同期の使用に切り替える](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin)ことができます。
+回復性を向上させるには、組織で[パスワード ハッシュ同期を有効にする](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)必要があります。そうすれば、オンプレミスの ID システムがダウンした場合は、[パスワード ハッシュ同期の使用に切り替える](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin)ことができます。
 
 #### <a name="microsoft-recommendations"></a>Microsoft の推奨事項
  組織でフェデレーションまたはパススルー認証が使用されているかどうかにかかわらず、Azure AD Connect ウィザードを使用してパスワード ハッシュ同期を有効にします。

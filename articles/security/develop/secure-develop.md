@@ -7,17 +7,18 @@ ms.author: terrylan
 ms.date: 06/12/2019
 ms.topic: article
 ms.service: security
+ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f4add4bf07178aa616e86f8a64b313630466824f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 1b2e6e0aa74c06afea09a67dbdf65ca47727b72e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653267"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780555"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -98,9 +99,9 @@ ID フレームワークを使用して、パスワード ポリシーを作成�
 
 アプリケーションで[ファイルのアップロード](https://www.owasp.org/index.php/Unrestricted_File_Upload)を許可する場合は、この危険なアクティビティのために実行できる予防策を検討してください。 多くの攻撃において最初のステップになるのは、攻撃対象のシステムに悪意のあるコードを取り込むことです。 ファイル アップロードを使用すると、攻撃者がこれを達成しやすくなります。 OWASP では、ファイルを検証し、アップロードされているファイルが安全であることを確認するするためのソリューションが提供されます。
 
-マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および[System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) をインストールします。
+マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および[System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) をインストールします。
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) と統合できます。
+[Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) と統合できます。
 
 ### <a name="dont-cache-sensitive-content"></a>機密性の高いコンテンツをキャッシュしない
 
@@ -127,7 +128,7 @@ Azure App Service Web Apps では、[Tinfoil Security](https://www.tinfoilsecuri
 
 DAST は、静的アプリケーション セキュリティ テスト (SAST) とは異なるものです。 SAST ツールでは、セキュリティ上の欠陥を見つけるため、コードが実行されていないときに、ソース コードまたはコンパイル済みバージョンのコードが分析されます。
 
-できればセキュリティ専門家 ([侵入テスト担当者](https://docs.microsoft.com/azure/security/azure-security-pen-testing)または脆弱性の審査機関) の支援を得て、DAST を実行してください。 セキュリティの専門家を手配できない場合は、Web プロキシ スキャナーを使用し、トレーニングした後、自分で DAST を実行してもかまいません。 早い段階で DAST スキャナーに接続し、コードに明らかなセキュリティの問題が発生しないことを確認します。 Web アプリケーション脆弱性スキャナーの一覧については、[OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) のサイトをご覧ください。
+できればセキュリティ専門家 ([侵入テスト担当者](https://docs.microsoft.com/azure/security/fundamentals/pen-testing)または脆弱性の審査機関) の支援を得て、DAST を実行してください。 セキュリティの専門家を手配できない場合は、Web プロキシ スキャナーを使用し、トレーニングした後、自分で DAST を実行してもかまいません。 早い段階で DAST スキャナーに接続し、コードに明らかなセキュリティの問題が発生しないことを確認します。 Web アプリケーション脆弱性スキャナーの一覧については、[OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) のサイトをご覧ください。
 
 ### <a name="perform-fuzz-testing"></a>ファジー テストを実行する
 
@@ -143,7 +144,7 @@ DAST は、静的アプリケーション セキュリティ テスト (SAST) �
 
 ### <a name="perform-security-penetration-testing"></a>セキュリティ侵入テストを実施する
 
-アプリケーションのセキュリティを確保することは、他の機能をテストすることと同じくらい大切です。 [侵入テスト](https://docs.microsoft.com/azure/security/azure-security-pen-testing)を、標準的なビルドおよびデプロイ プロセスの一環として実施してください。 デプロイしたアプリケーションに対して定期的なセキュリティ テストと脆弱性スキャンをスケジュールし、開放ポート、エンドポイント、攻撃を監視します。
+アプリケーションのセキュリティを確保することは、他の機能をテストすることと同じくらい大切です。 [侵入テスト](https://docs.microsoft.com/azure/security/fundamentals/pen-testing)を、標準的なビルドおよびデプロイ プロセスの一環として実施してください。 デプロイしたアプリケーションに対して定期的なセキュリティ テストと脆弱性スキャンをスケジュールし、開放ポート、エンドポイント、攻撃を監視します。
 
 ### <a name="run-security-verification-tests"></a>セキュリティ確認テストを実行する
 

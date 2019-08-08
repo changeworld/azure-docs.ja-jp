@@ -8,6 +8,7 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 5aa0a7ac-8f18-4ede-92a1-ae0dfe585e28
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 71531956fb129d6a85612e1b9b48f9ccb6e8a5c1
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 1081fa8c9c7cc64418515aabbb755ecf056196ca
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611666"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68826294"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
@@ -163,7 +164,7 @@ Azure AD Identity Protection は、リスク イベントや組織の ID に影�
 
 詳細情報:
 
-* [Azure AD Identity Protection](/azure/active-directory/active-directory-identityprotection.md)
+* [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
 * [Channel 9:Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>ハイブリッド ID 管理/Azure AD Connect

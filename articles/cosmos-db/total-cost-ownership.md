@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB の総保有コストを、Iaa
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 861aacb3e4c288ea7f55c5906534b728e9cd22b6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 911f5fa9985fc5e34f758dfb739d84521f91f5c0
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447214"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716930"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>総保有コスト (TCO) と Azure Cosmos DB
 

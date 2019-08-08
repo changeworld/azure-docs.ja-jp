@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/03/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c4f3053063ce33d2777387da2c53effd61b05f1a
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 33e485e4fcee665e810c42bca6b38aac065ff668
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399874"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841438"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>エクスプローラー プレビューでデータを視覚化する
 
@@ -208,7 +208,7 @@ Time Series Insights プレビュー条件編集パネルには、次のパラ�
 | `<`、`>`、`<=`, `>=` | Double、DateTime、TimeSpan | |
 | `=`、`!=`、`<>` | String、Bool、Double、DateTime、TimeSpan、NULL |
 | `IN` | String、Bool、Double、DateTime、TimeSpan、NULL | すべてのオペランドは同じ型か NULL 定数である必要があります。 |
-| `HAS` | String | 右側で使用できるのは定数文字列リテラルのみです。 空の文字列や NULL は許可されません。 |
+| `HAS` | string | 右側で使用できるのは定数文字列リテラルのみです。 空の文字列や NULL は許可されません。 |
 
 サポートされているクエリ操作とデータ型の詳細については、[タイム シリーズ式 (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx) に関する記事を参照してください。
 

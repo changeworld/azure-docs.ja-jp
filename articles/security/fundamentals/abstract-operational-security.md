@@ -6,12 +6,13 @@ ms.author: TomSh
 ms.date: 09/05/2018
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: 834210e3416d30c4001214c0d3108709e910513e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.subservice: security-fundamentals
+ms.openlocfilehash: 3009c0a30425a51d15886e3968ec8422c135c5c0
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611854"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727712"
 ---
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
 ## <a name="abstract"></a>要約

@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: 6ab5c67129b16cde5ca74e72effdf56ec0a22711
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.date: 08/01/2019
+ms.openlocfilehash: 754e967a1be0b00f7ce7448744ec90690fd9f0c3
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508892"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736425"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。

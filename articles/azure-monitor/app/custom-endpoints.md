@@ -9,14 +9,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: c086f94a161853cba3a9ed2b98f13ea17b90dd20
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 662594f3ef0e4d5598b52cb07006b513e7f3c35a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478812"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564972"
 ---
  # <a name="application-insights-overriding-default-endpoints"></a>既定のエンドポイントをオーバーライドする Application Insights
 
@@ -158,6 +158,14 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 | Azure Government | テレメトリ チャネル |`https://dc.applicationinsights.us/v2/track` |
 | Azure Government | QuickPulse (Live Metrics) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
 | Azure Government | Profile Query |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+
+現在、一般的に `api.applicationinsights.io' によってアクセスされる [Application Insights REST API](https://dev.applicationinsights.io/
+) をお使いの場合、お客様のリージョンのローカルのエンドポイントを使用する必要があります。
+
+|リージョン |  エンドポイント名 | 値 |
+|-----------------|:------------|:-------------|
+| Azure China | REST API | `api.applicationinsights.azure.cn` |
+| Azure Government | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
 > Azure App Services のコードレス エージェント/拡張機能ベースの監視は、これらのリージョンでは**現在サポートされていません**。 この機能を利用できるようになり次第、この記事は更新される予定です。

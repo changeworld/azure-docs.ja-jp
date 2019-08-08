@@ -1,20 +1,19 @@
 ---
 title: Azure キューの概要 - Azure Storage
 description: Azure キューの概要
-services: storage
 author: mhopkins-msft
-ms.service: storage
-ms.topic: overview
-ms.date: 06/07/2019
 ms.author: mhopkins
-ms.reviewer: cbrooks
+ms.date: 06/07/2019
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: bc3045e3d3b6977555818fcdb3dcaf3246ebd200
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.topic: overview
+ms.reviewer: cbrooks
+ms.openlocfilehash: 67e4874fcca93633140b7630ceadd273d1646f86
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754817"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721168"
 ---
 # <a name="what-are-azure-queues"></a>Azure キューとは
 

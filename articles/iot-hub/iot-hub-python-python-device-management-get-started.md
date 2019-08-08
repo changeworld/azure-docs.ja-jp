@@ -1,20 +1,19 @@
 ---
 title: Azure IoT Hub デバイス管理の開始 (Python) | Microsoft Docs
 description: IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 Azure IoT SDK for Python を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリと、ダイレクト メソッドを呼び出すサービス アプリを実装します。
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: c4c8957e8d9b355216e10503d58915977c3b9b1a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 07/30/2019
+ms.author: robinsh
+ms.openlocfilehash: daba6601c0da2bd6d1b76897e7ce1ff75da67b5b
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68403412"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667961"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
 
@@ -34,17 +33,11 @@ ms.locfileid: "68403412"
 
 * **dmpatterns_getstarted_service.py**: シミュレートされたデバイス アプリでダイレクト メソッドを呼び出し、応答を表示し、更新された報告されるプロパティを表示します。
 
-このチュートリアルを完了するには、以下が必要です。
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-* [Python 2.x または 3.x](https://www.python.org/downloads/)。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。 Python 2.x を使用している場合は、[*pip* (Python パッケージ管理システム) のインストールまたはアップグレード](https://pip.pypa.io/en/stable/installing/)が必要な場合があります。
+前提条件のインストール手順は次のとおりです。
 
-* `pip install azure-iothub-device-client` コマンドを使用して [azure-iothub-device-client](https://pypi.org/project/azure-iothub-device-client/) パッケージをインストールする
-
-* `pip install azure-iothub-service-client` コマンドを使用して  [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) パッケージをインストールする
-
-* Windows OS を使用している場合は、[Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/confirmation.aspx?id=48145)によって、Python からネイティブ DLL を使用できます。
-
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 

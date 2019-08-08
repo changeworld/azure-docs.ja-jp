@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 14ab1988f28de214036fa80fa36a4006a3359f30
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6ab500fe6a7f288bcfbdc9168ada8bdad5bdb6ea
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67435893"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772947"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
@@ -82,7 +82,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |マレー語| `ms`    |統計のみ   |統計|
 |マルタ語|   `mt`    |統計のみ|  統計|
 |ノルウェー語| `nb`    |ニューラルが利用可能|  ニューラル|
-|ペルシャ語|   `fa`    |統計のみ|  統計|
+|ペルシャ語|   `fa`    |ニューラルが利用可能|  ニューラル|
 |ポーランド語|    `pl`    |ニューラルが利用可能|  ニューラル|
 |ポルトガル語|    `pt`    |ニューラルが利用可能|  ニューラル|
 |オトミ語|   `otq`   |統計のみ|  統計|

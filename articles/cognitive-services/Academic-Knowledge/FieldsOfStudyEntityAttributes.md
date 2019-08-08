@@ -10,18 +10,19 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: e9d6badf76efd03c0520a728af7b3e47b25f200a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: d54f3c72462e6702b09068092b7c18ea50f12048
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61339587"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704991"
 ---
 # <a name="field-of-study-entity"></a>研究分野エンティティ
 
 <sub> *次の属性は、研究分野エンティティに固有です。(Ty = '6') </sub>
 
-Name    |説明                            |Type       | Operations
+EnableAdfsAuthentication    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 FN      |研究分野の標準化名         |string     |等しい

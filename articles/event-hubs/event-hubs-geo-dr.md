@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a1dafb8e4c16a59bfed51016ce9ccb0ec3eb7d6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754753"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704373"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
@@ -84,7 +84,7 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 
 ## <a name="samples"></a>サンプル
 
-[GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)には、フェールオーバーの設定と開始の方法が紹介されています。 このサンプルで紹介されている概念は次のとおりです。
+[GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)には、フェールオーバーの設定と開始の方法が紹介されています。 このサンプルで紹介されている概念は次のとおりです。
 
 - Azure Resource Manager を Event Hubs で使用するために Azure Active Directory に必要な設定。 
 - サンプル コードを実行するために必要な手順。 
@@ -115,7 +115,7 @@ Azure Portal を使用して、新しい名前空間でのみ Availability Zones
 
 ## <a name="next-steps"></a>次の手順
 
-* [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)で、geo ペアリングを作成してディザスター リカバリー シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
+* [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)で、geo ペアリングを作成してディザスター リカバリー シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
 * [REST API リファレンス](/rest/api/eventhub/disasterrecoveryconfigs)で、geo ディザスター リカバリーの構成を実行するための API について説明します。
 
 Event Hubs の詳細については、次のリンクを参照してください。

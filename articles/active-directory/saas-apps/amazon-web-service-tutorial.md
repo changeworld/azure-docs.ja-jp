@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f897653442a3e1b2d6098b3be60c85e75ca54f9a
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: f6640708905abc266b07b7b66f5da09aeb890f01
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551491"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823877"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>チュートリアル:Azure Active Directory とアマゾン ウェブ サービス (AWS) の統合
 
@@ -111,7 +111,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 7. その他に、アマゾン ウェブ サービス (AWS) アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name  | ソース属性  | 名前空間 |
+    | EnableAdfsAuthentication  | ソース属性  | 名前空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
@@ -328,7 +328,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-このセクションでは、Azure portal で B.Simon というテスト ユーザーを作成します。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。

@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: d960aff109e0eca70cb87463770620093e563f63
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61338454"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706672"
 ---
 # <a name="interpret-method"></a>Interpret メソッド
 
@@ -29,7 +30,7 @@ ms.locfileid: "61338454"
 
 ## <a name="request-parameters"></a>要求パラメーター
 
-Name     | 値 | 必須  | 説明
+EnableAdfsAuthentication     | 値 | 必須  | 説明
 ---------|---------|---------|---------
 **query**    | テキスト文字列 | はい | ユーザーが入力したクエリ。  complete が 1 に設定されている場合、クエリは、クエリのオートコンプリートの候補を生成するためのプレフィックスとして解釈されます。        
 **model**    | テキスト文字列 | いいえ  | クエリを実行するモデルの名前。  現時点では、既定値は *latest* です。        
@@ -42,7 +43,7 @@ Name     | 値 | 必須  | 説明
   
 ## <a name="response-json"></a>応答 (JSON)
 
-Name     | 説明
+EnableAdfsAuthentication     | 説明
 ---------|---------
 **query** |要求からの *query* パラメーター。
 **interpretations** |ユーザー入力を文法と照合する 0 以上の異なる方法の配列。

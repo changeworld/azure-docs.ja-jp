@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: bedf411a-0781-47b9-9742-d524cf3dbfc1
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 18bad1b0be7514d0c15834f1cccc5e12b35abbbe
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 746994585dfa968a8d8d982908ad424b08c06066
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611526"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726916"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 

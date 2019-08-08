@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: cc071d59a387c8ae4982eacbce6812526f447788
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7ab32fb421a2c0db72652d1bbf12d312bffd5d1e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388764"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706530"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Node.js を使用して Conversation Learner モデルを作成する
 

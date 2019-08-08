@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819f61f5391eef0c5f3d314d3b199dfe8e1a3560
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 33704c3392726ccd12ca0fd74f26465a54697e11
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562033"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68722145"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory でのヨーロッパの顧客のための ID データ ストレージ
 Office 365 や Azure などの Microsoft Online サービスをサブスクライブしている場合、ID データは Azure AD により、組織によって提供されるアドレスに基づいて地理的な場所に格納されます。 ID データの格納場所については、Microsoft Trust Center の「[データの保管場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」のセクションを参照してください。
@@ -29,6 +29,8 @@ Office 365 や Azure などの Microsoft Online サービスをサブスクラ�
 - 電話または米国データセンターからの SMS を使用するすべての 2 要素認証は、グローバル プロバイダーによってもルーティングされます。
 - Microsoft Authenticator アプリを使用するプッシュ通知は、米国内データセンターから発信されます。 さらに、デバイス ベンダー固有のサービスも機能することができ、それらのサービスもヨーロッパの外部からである場合があります。
 - OATH コードは常に米国で検証されます。 
+
+Azure Multi-Factor Authentication Server (MFA Server) およびクラウドベースの Azure MFA によって収集されるユーザー情報の詳細については、「[Azure Multi-Factor Authentication によるユーザー データの収集](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection)」を参照してください。
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 

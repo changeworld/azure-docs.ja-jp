@@ -2,17 +2,17 @@
 title: Windows Virtual Desktop でのテナントとホスト プールの作成 - Azure
 description: Windows Virtual Desktop 環境でテナントやセッション ホスト仮想マシン (VM) を構成しているときに発生する問題を解決する方法。
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.author: v-chjenk
-ms.openlocfilehash: 96a9d8fc7495ea473b0a3250b34251afc5f30c13
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.author: helohr
+ms.openlocfilehash: 4e5c5f14042f7059f3d802a5e72cbf5c6a126614
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786717"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816339"
 ---
 # <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
 
@@ -193,7 +193,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
     Server\ClusterSettings\"SessionDirectoryListener":rdp-sxs
 ```
 
-### <a name="error-oreverseconnectstackfailure"></a>エラー:O_REVERSE_CONNECT_STACK_FAILURE
+### <a name="error-o_reverse_connect_stack_failure"></a>エラー:O_REVERSE_CONNECT_STACK_FAILURE
 
 ![O_REVERSE_CONNECT_STACK_FAILURE エラー コード。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 

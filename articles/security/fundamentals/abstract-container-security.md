@@ -6,12 +6,13 @@ ms.author: TomSh
 ms.date: 09/05/2018
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: 0f892767bb7ab8202a27f298b1cb708d9802aaa4
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.subservice: security-fundamentals
+ms.openlocfilehash: b70744f403c483448a844d3f3decf6ce26f48f06
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611314"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727780"
 ---
 # <a name="container-security-in-microsoft-azure"></a>Microsoft Azure におけるコンテナーのセキュリティ
 ## <a name="abstract"></a>要約

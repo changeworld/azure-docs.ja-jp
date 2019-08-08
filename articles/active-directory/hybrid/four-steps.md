@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a20a1a1009949aa2e6de8586040e918ae15c8d39
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 0630e62a08314612cb08b5cb26b5a1563de4f40b
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655942"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779694"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -111,7 +111,7 @@ Azure AD Connect のプライマリ サーバーがオフラインになった�
 
 ### <a name="enable-cloud-authentication"></a>クラウド認証を有効にする
 
-オンプレミスの Active Directory を使用している組織は、Azure AD Connect を使って Azure AD にディレクトリを拡張し、適切な認証方法を構成する必要があります。 組織にとって[正しい認証方法を選択する](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)ことは、アプリをクラウドに移行する過程の第一歩です。 それによりクラウドのすべてのデータとリソースへのアクセスが制御されるため、これは重要なコンポーネントです。
+オンプレミスの Active Directory を使用している組織は、Azure AD Connect を使って Azure AD にディレクトリを拡張し、適切な認証方法を構成する必要があります。 組織にとって[正しい認証方法を選択する](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)ことは、アプリをクラウドに移行する過程の第一歩です。 それによりクラウドのすべてのデータとリソースへのアクセスが制御されるため、これは重要なコンポーネントです。
 
 Azure AD でオンプレミス ディレクトリ オブジェクトのクラウド認証を有効にするための最も単純で推奨される方法は、[パスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) を有効にすることです。 または、組織によっては、[パススルー認証](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) の有効化を検討することもできます。
 

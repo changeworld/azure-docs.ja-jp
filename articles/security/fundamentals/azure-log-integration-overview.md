@@ -8,6 +8,7 @@ manager: barbkess
 editor: TerryLanfear
 ms.assetid: 9c1346e1-baf8-4975-b2f2-42ae05b2dc0a
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.workload: na
 ms.date: 05/28/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 31d6512d7fd24a1a0abafb3b653b6d031176b274
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 9ba4a64268bcc57f04e92be83edb2ac71f18bcaf
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611294"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727594"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Azure Log Integration の概要
 

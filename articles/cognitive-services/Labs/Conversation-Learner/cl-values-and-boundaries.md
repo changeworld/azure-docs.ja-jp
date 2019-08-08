@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: ebdc1e1c100329e95bd19359408cb138d233b1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: aaef6f5498e5a8da65d1c829feae8b3e85dba0fd
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66385438"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705289"
 ---
 # <a name="default-values-and-boundaries"></a>既定値と境界
 

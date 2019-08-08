@@ -8,6 +8,7 @@ manager: MBaldwin
 editor: TerryLanfear
 ms.assetid: d06d1ac5-5c3b-49de-800e-4d54b3064c64
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.workload8: na
 ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 17a617abb5b241f0fc1c840e101ead967c24ea10
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7ed63364a9dc4b96470a23af3a4bff832d42621b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611806"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727622"
 ---
 # <a name="azure-log-integration-faq"></a>Azure ログ統合 のFAQ
 

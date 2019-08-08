@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a894052e54bd1ca9f8316342f714074c92753448
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 312e39ff1b699bb3c7f2baea3c66cbf8999ee44b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806337"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68814522"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Jupyter Notebook と Kqlmagic 拡張機能を使用して、Azure Data Explorer 内のデータを分析します。
 
@@ -37,7 +37,7 @@ Jupyter Notebook はオープン ソースの Web アプリケーションであ
 1. KQL magic を読み込みます。
 
     ```python
-    reload_ext Kqlmagic
+    %reload_ext Kqlmagic
     ```
 
 ## <a name="connect-to-the-azure-data-explorer-help-cluster"></a>Azure Data Explorer のヘルプ クラスターに接続する

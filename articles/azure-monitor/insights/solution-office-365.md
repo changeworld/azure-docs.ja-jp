@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: bwren
-ms.openlocfilehash: 3f4b0ad8b7aad01472a76db67f2c07e03e978e41
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673041"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741660"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -571,12 +571,12 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectoryAccountLogon |
-| Application | アカウント ログイン イベントをトリガーするアプリケーション (Office 15 など)。 |
-| Client | アカウント ログイン イベントで使用されたクライアント デバイス、デバイス OS、およびデバイス ブラウザーの詳細。 |
-| LoginStatus | このプロパティは OrgIdLogon.LoginStatus に直接由来します。 アルゴリズムを変えることにより、さまざまな興味深いログオン失敗のマッピングを実行できます。 |
-| UserDomain | テナント ID 情報 (TII)。 | 
+| `OfficeWorkload` | AzureActiveDirectory |
+| `RecordType`     | AzureActiveDirectoryAccountLogon |
+| `Application` | アカウント ログイン イベントをトリガーするアプリケーション (Office 15 など)。 |
+| `Client` | アカウント ログイン イベントで使用されたクライアント デバイス、デバイス OS、およびデバイス ブラウザーの詳細。 |
+| `LoginStatus` | このプロパティは OrgIdLogon.LoginStatus に直接由来します。 アルゴリズムを変えることにより、さまざまな興味深いログオン失敗のマッピングを実行できます。 |
+| `UserDomain` | テナント ID 情報 (TII)。 | 
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory

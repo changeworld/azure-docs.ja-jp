@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 9e5e14aa-11d7-4242-8b7e-49fd0e79817a
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: a5dfecd1dd004486a119122192eecac3e03fba80
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 145fc994cfe168e0d650fac3e6342a0139e8295f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611774"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727529"
 ---
 # <a name="azure-security-videos-on-channel-9"></a>Channel 9 で配信中の Azure セキュリティに関するビデオ
 [Channel 9](https://channel9.msdn.com/) は製品を提供する側とお客様を結び付けるコミュニティです。

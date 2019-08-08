@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9df592272b97bded9eba64249aa7608c72f8abdf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a82571260f5da679202e96f5e6f72aa2db6788a
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121537"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834691"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect と Azure Active Directory を使用する Web アプリケーションへのアクセスの承認
 
@@ -153,7 +153,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 | temporarily_unavailable |サーバーが一時的にビジー状態であるため、要求を処理できません。 |要求をやり直してください。 クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明する場合があります。 |
 | invalid_resource |対象のリソースは、存在しない、Azure AD が見つけられない、または正しく構成されていないために無効です。 |これは、リソース (存在する場合) がテナントで構成されていないことを示します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
 
-## <a name="validate-the-idtoken"></a>id_token を検証する
+## <a name="validate-the-id_token"></a>id_token を検証する
 
 単に `id_token` を受け取るだけでは、ユーザーを認証するには不十分です。`id_token` の署名を検証し、要求をアプリの要件に従って確認する必要があります。 Azure AD エンドポイントは、JSON Web トークン (JWT) と公開キー暗号を使用してトークンに署名し、それらが有効であることを確認します。
 

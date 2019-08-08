@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f57a83fb83152055692e6f614b7958d099b6c70d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48ebdca1b6abf57a84927e25bca1f85b023fa208
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808920"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726176"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 
@@ -49,7 +49,7 @@ Concur のリンクされたサービスでは、次のプロパティがサポ�
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Concur** | はい |
 | clientId | Concur App Management によって提供されるアプリケーションの client_id。  | はい |
-| username | Concur サービスへのアクセスに使用するユーザー名。  | はい |
+| userName | Concur サービスへのアクセスに使用するユーザー名。  | はい |
 | password | username フィールドに指定したユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ |
@@ -93,11 +93,12 @@ Concur からデータをコピーするには、データセットの type プ�
     "name": "ConcurDataset",
     "properties": {
         "type": "ConcurObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Concur linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

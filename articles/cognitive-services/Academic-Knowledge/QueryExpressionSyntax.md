@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 95c2e9d3f54f967b3ebb434c742f69251b80573e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3b87e04c2d6380a0ee4157e73db0cd4057fadee1
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61336758"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704924"
 ---
 # <a name="query-expression-syntax"></a>クエリ式の構文
 

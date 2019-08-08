@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0e2ca67e33a87ca97b6bbafd4516718c03ffb376
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 249380b5bd9d95e969a9c7a812102b694b9d1e3b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610754"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726544"
 ---
 # <a name="azure-storage-security-overview"></a>Azure Storage のセキュリティの概要
 

@@ -6,16 +6,15 @@ manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
-ms.topic: tutorial
+ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: laobri
-ms.custom: seodec2018
-ms.openlocfilehash: 2a4d7435383f740dc386a740062e66cd2d3585b0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: e8baa2ae5f60926f46be577a02d3c23ad6b77b79
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798862"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828468"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>クイック スタート:Azure portal を利用して Azure Search インデックスを作成する
 > [!div class="op_single_selector"]

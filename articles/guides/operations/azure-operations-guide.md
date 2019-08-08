@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 1f8972c89ecb0fc7d8cc7ceb9bfdeab9e905e862
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b6f5534bc4127e11d7be4b1a52b92a22b75cbb5a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570608"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828095"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -73,7 +73,7 @@ Azure で提供される PaaS コンピューティング サービスには、A
 
 #### <a name="saas-software-as-a-service"></a>SaaS: サービスとしてのソフトウェア
 
-SaaS は、1 か所でまとめてホストし、管理するソフトウェアです。 通常、マルチテナント アーキテクチャを基盤とします。すべての顧客に対して 1 つのバージョンのアプリケーションが利用されます。 複数のインスタンスに拡張することで、すべての場所で最良のパフォーマンスが得られます。 SaaS ソフトウェアは通常、月間または年間サブスクリプションでライセンス供与されます。 SaaS ソフトウェアは通常、月間または年間サブスクリプションでライセンス供与されます。 SaaS ソフトウェア ベンダーは、ソフトウェア スタックのすべてのコンポーネントに対して責任を担うため、利用者が管理するのは提供されているサービスだけです。
+SaaS は、1 か所でまとめてホストし、管理するソフトウェアです。 通常、マルチテナント アーキテクチャを基盤とします。すべての顧客に対して 1 つのバージョンのアプリケーションが利用されます。 複数のインスタンスに拡張することで、すべての場所で最良のパフォーマンスが得られます。 SaaS ソフトウェアは通常、月間または年間サブスクリプションでライセンス供与されます。 SaaS ソフトウェア ベンダーは、ソフトウェア スタックのすべてのコンポーネントに対して責任を担うため、利用者が管理するのは提供されているサービスだけです。
 
 SaaS サービスの最もわかりやすい例が Microsoft Office 365 です。 サブスクライバーは月間または年間サブスクリプションの利用料を支払い、Microsoft Exchange、Microsoft OneDrive、Microsoft Office スイートの残りのアプリケーションをサービスとして利用します。 サブスクライバーには常に最新版が与えられます。Exchange サーバーは自分で管理する必要がありません。 Office を毎年インストールしたり、アップグレードしたりする場合と比較し、安価で簡単です。
 

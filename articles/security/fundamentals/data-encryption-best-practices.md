@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 78f03e495ad8a02599d26a7db7e8950857a39be6
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4df024f9ff37121df4d9be51ae1fa540028ddd3d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611754"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727429"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
 この記事では、データ セキュリティと暗号化のベスト プラクティスについて説明します。

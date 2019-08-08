@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 1cbbf8dc-ea94-4a7e-8fa0-c2cb198956c5
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: 64c2459a903da3a215c461b13a3e6290f2a832ca
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 64cac3d200a2cfc3b826dc75bfacc6457a01f294
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611162"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727568"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure セキュリティのベスト プラクティスとパターン
 

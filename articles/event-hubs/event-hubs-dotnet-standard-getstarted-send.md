@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 001abd15c88ae717fa0fb91605b2f0822a38973d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 736612398861cc7a168fd24e83bc28e3815a8a28
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65603551"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742148"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>.NET Core を使用して Azure Event Hubs との間でイベントを送受信する
 Event Hubs は、接続されているデバイスとアプリケーションからの大量のイベント データ (テレメトリ) を処理するサービスです。 Event Hubs にデータを収集した後、ストレージ クラスターを使用してデータを格納したり、リアルタイムの分析プロバイダーを使用して転送できます。 この大規模なイベントの収集と処理の機能は、モノのインターネット (IoT) など最新アプリケーション アーキテクチャの重要なコンポーネントです。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -97,7 +97,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 4. 次のように、`Program` クラスに `SendMessagesToEventHub` という名前の新しいメソッドを追加します。
 
     ```csharp
-    // Creates an event hub client and sends 100 messages to the event hub.
+    // Uses the event hub client to send 100 messages to the event hub.
     private static async Task SendMessagesToEventHub(int numMessagesToSend)
     {
         for (var i = 0; i < numMessagesToSend; i++)
@@ -167,7 +167,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
                 Console.ReadLine();
             }
 
-            // Creates an event hub client and sends 100 messages to the event hub.
+            // Uses the event hub client to send 100 messages to the event hub.
             private static async Task SendMessagesToEventHub(int numMessagesToSend)
             {
                 for (var i = 0; i < numMessagesToSend; i++)

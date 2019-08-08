@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 787445d5186a173b2cba674b36cd95879cc863e5
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 726fc2d2f53e904fdf7f50be5aef7b274dcc51ac
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389989"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736153"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 

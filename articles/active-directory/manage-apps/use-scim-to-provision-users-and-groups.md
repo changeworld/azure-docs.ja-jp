@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 07/31/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7e28e92da319580baa9b4cadc4bc17f862b69e2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 48eb36151948dc6e39edd4ae0fd863c63e83a52b
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68494507"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741363"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -73,7 +73,7 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
    ![例:Azure portal のアプリのプロビジョニング ページ][2]<br/>
    "*図 3:Azure portal でのプロビジョニングの構成*
 
-1. **[テナント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。 例: https://api.contoso.com/scim/v2/
+1. **[テナント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。 例: https://api.contoso.com/scim/
 1. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD では各要求に Azure AD を発行元とする OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリは、この Azure AD によって発行されたトークンを検証できます。
 1. **[テスト接続]** を選択して、Azure Active Directory による SCIM エンドポイントへの接続を試みます。 試行に失敗した場合は、エラー情報が表示されます。  
 
@@ -678,7 +678,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 1. アプリケーションの名前を入力し、 **[追加]** を選択してアプリ オブジェクトを作成します。 作成されるアプリケーション オブジェクトは、単なる SCIM エンドポイントではなく、シングル サインオンのプロビジョニングと実装の対象であるアプリケーションを表しています。
 1. アプリの管理画面で、左側のパネルにある **[プロビジョニング]** を選択します。
 1. **[プロビジョニング モード]** メニューの **[自動]** を選択します。    
-1. **[テナント URL]** フィールドに、インターネットに公開されている URL と SCIM エンドポイントのポートを入力します。 この入力は、 http://testmachine.contoso.com:9000 または http://\< IP アドレス>:9000/ のようになります。ここで、\< IP アドレス> はインターネットに公開されている IP アドレスです。
+1. **[テナント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。 例: https://api.contoso.com/scim/
 
 1. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD では各要求に Azure AD を発行元とする OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリは、この Azure AD によって発行されたトークンを検証できます。
 1. **[テスト接続]** を選択して、Azure Active Directory による SCIM エンドポイントへの接続を試みます。 試行に失敗した場合は、エラー情報が表示されます。  

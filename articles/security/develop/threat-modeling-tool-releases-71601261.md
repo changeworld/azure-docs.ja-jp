@@ -8,18 +8,19 @@ manager: jegeib
 editor: jegeib
 ms.assetid: na
 ms.service: security
+ms.subservice: security-develop
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: jegeib
-ms.openlocfilehash: 1ef923f9a5edee173b510ffe808ba9be9dd2820d
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 3f857fd50fcaf926486b6ea480f87bcc4c690f45
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620695"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727966"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 1/29/2019
 

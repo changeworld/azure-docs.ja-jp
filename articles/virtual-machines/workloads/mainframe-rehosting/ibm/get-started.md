@@ -2,6 +2,7 @@
 title: Azure 上での IBM ワークロード | Microsoft Docs
 description: メインフレーム エミュレーターや Microsoft パートナーからの他のサービスを利用して、Microsoft Azure を使用する IBM z/OS ワークロードをリホストします。
 services: virtual-machines-linux
+ms.service: virtual-machines-linux
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -11,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 4acf2fe1bc63061f17f90d6737f586408520dc13
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 13c83c53cdad719d6a4bed4cc1852b85d62082e8
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621322"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834584"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 上での IBM ワークロード
 

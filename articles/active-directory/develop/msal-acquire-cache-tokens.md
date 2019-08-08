@@ -9,7 +9,7 @@ editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2019
@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca011ec7185b084de6d1d346556c1c270c7aee3
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: e6148f6f9d449dc5aa55da2f041119a8b706491b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65546087"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835104"
 ---
 # <a name="acquiring-and-caching-tokens-using-msal"></a>MSAL を使用したトークンの取得とキャッシュ
 [アクセス トークン](access-tokens.md)により、クライアントは Azure によって保護された Web API を安全に呼び出すことができます。 Microsoft Authentication Library (MSAL) を使用してトークンを取得する方法はたくさんあります。 一部の方法では、Web ブラウザーを通じたユーザー操作が必要です。 ユーザー操作の必要がない方法もあります。 一般に、トークンを取得する方法は、アプリケーションがパブリック クライアント アプリケーション (デスクトップ アプリまたはモバイル アプリ) か、機密クライアント アプリケーション (Web アプリ、Web API、または Windows サービスのようなデーモン アプリケーション) かによって異なります。
@@ -39,11 +39,11 @@ MSAL のトークン取得メソッドの多くでは、*scopes* パラメータ
 MSAL で v1.0 のリソースにアクセスすることもできます。 詳細については、[Scopes for a v1.0 application (v1.0 アプリケーションのスコープ)](msal-v1-app-scopes.md) に関する記事を参照してください。
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>Web API に対して特定のスコープを要求する
-アプリケーションでリソース API に対する特定のアクセス許可を備えたトークンを要求する必要がある場合、API のアプリ ID URI を含むスコープを、 *&lt;アプリ ID URI&gt;/&lt;スコープ&gt;* という形式で渡すことが必要になります。
+アプリケーションでリソース API に対する特定のアクセス許可を備えたトークンを要求する必要がある場合、API のアプリ ID URI を含むスコープを、 *&lt;アプリ ID URI&gt;/&lt;スコープ&gt;* という形式で渡すことが必要になります
 
-たとえば、Microsoft Graph API のスコープは `https://graph.microsoft.com/User.Read` です。
+たとえば、Microsoft Graph API のスコープは `https://graph.microsoft.com/User.Read` です
 
-または、たとえばカスタム Web API のスコープは `api://abscdefgh-1234-abcd-efgh-1234567890/api.read` です。
+または、たとえばカスタム Web API のスコープは `api://abscdefgh-1234-abcd-efgh-1234567890/api.read` です
 
 Microsoft Graph API の場合のみ、スコープの値 `user.read` は `https://graph.microsoft.com/User.Read` という形式にマップされ、区別なく使用できます。
 
@@ -75,7 +75,7 @@ MSAL は、1 つのトークン キャッシュ (または、機密クライア�
 - 承認コード フローを使用してトークンを取得します
 
 ## <a name="acquiring-tokens"></a>トークンの取得
-一般に、トークンを取得する方法は、アプリケーションがパブリック クライアントか機密クライアントかによって決まります。
+一般に、トークンを取得する方法は、パブリック クライアント アプリケーションか機密クライアント アプリケーションかによって決まります。
 
 ### <a name="public-client-applications"></a>パブリック クライアント アプリケーション
 パブリック クライアント アプリケーション (デスクトップまたはモバイルのアプリ) の場合は、次のようにします。

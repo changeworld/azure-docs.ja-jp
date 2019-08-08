@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: f99a96f1b886f9f426c5dac64ac852368544475a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fdaef319235b90d05dc6ddc6d8eb1c5bb7ba294
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401271"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720706"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Azure Data Factory を使用して MariaDB のデータをコピーする
 
@@ -110,11 +110,12 @@ MariaDB からデータをコピーするには、データセットの type プ
     "name": "MariaDBDataset",
     "properties": {
         "type": "MariaDBTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<MariaDB linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

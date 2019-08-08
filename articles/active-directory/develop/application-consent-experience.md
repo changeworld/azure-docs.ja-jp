@@ -12,17 +12,17 @@ ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac9d278053f05f9041a002b1c6ef3f873b0d9efb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 012a79969f2fa72589ba6b70aa5398b6f4e7e811
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324857"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835253"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Azure AD アプリケーションの同意エクスペリエンスについて
 

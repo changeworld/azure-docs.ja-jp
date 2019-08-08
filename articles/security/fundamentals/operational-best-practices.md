@@ -8,18 +8,19 @@ manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 2acfa65ff45b94b7ca0990b79f5c3f128334829c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611522"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828718"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -117,7 +118,7 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 **詳細**: SIEM を使用している組織のほどんとは、アナリストの応答を必要とするセキュリティ アラートに関する中央情報センターとして SIEM を使用しています。 Security Center によって生成されて処理されたイベントは、Azure Monitor で利用可能なログの 1 つである Azure アクティビティ ログに発行されます。 Azure Monitor では、任意の監視データを SIEM ツールにルーティングするための統合パイプラインが提供されています。 手順については、「[Azure Security Center でのセキュリティ ソリューションの統合](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem)」を参照してください。 Azure Sentinel を使用している場合は、[Azure Security Center への接続](../../sentinel/connect-azure-security-center.md)に関する記事を参照してください。
 
 **ベスト プラクティス**: Azure ログを SIEM に統合します。   
-**詳細**: [データの収集とエクスポートに Azure Monitor](/azure/azure-monitor/overview.md#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Azure Sentinel を使用している場合、「[データ ソースの接続](../../sentinel/connect-data-sources.md)」を参照してください。
+**詳細**: [データの収集とエクスポートに Azure Monitor](/azure/azure-monitor/overview#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Azure Sentinel を使用している場合、「[データ ソースの接続](../../sentinel/connect-data-sources.md)」を参照してください。
 
 **ベスト プラクティス**: Endpoint Detection and Response (EDR) 機能を攻撃の調査に統合することで、調査と検出プロセスを高速化し、誤検出を減らします。   
 **詳細**: Security Center のセキュリティ ポリシーを使用して、[Windows Defender ATP の統合を有効](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration)にします。 脅威の検出とインシデント対応には、Azure Sentinel の使用を検討してください。

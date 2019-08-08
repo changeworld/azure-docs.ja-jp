@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60777011"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741277"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
@@ -87,28 +87,28 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 
 アラートは System Center Operations Manager からインポートされ、タイプを **Alert**、SourceSystem を **OpsManager** として、それぞれ対応するレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:--- |:--- |
-| Type |*アラート:* |
-| SourceSystem |*OpsManager* |
-| AlertContext |アラートが生成されるきっかけとなったデータ項目の詳細 (XML 形式)。 |
-| AlertDescription |アラートの詳しい説明。 |
-| AlertId |アラートの GUID。 |
-| AlertName |アラートの名前。 |
-| AlertPriority |アラートの優先度。 |
-| AlertSeverity |アラートの重大度。 |
-| AlertState |アラートの最新の解決状態。 |
-| LastModifiedBy |アラートを最後に変更したユーザーの名前。 |
-| ManagementGroupName |アラートが生成された管理グループの名前。 |
-| RepeatCount |同じ監視対象オブジェクトについて、同じアラートが前回の解決以降に生成された回数。 |
-| ResolvedBy |アラートを解決したユーザーの名前。 アラートが未解決の場合は空になります。 |
-| SourceDisplayName |アラートの生成元となった監視オブジェクトの表示名。 |
-| SourceFullName |アラートの生成元となった監視オブジェクトの完全名。 |
-| TicketId |アラートのチケット ID (System Center Operations Manager 環境がアラートのチケット割り当てプロセスに統合されている場合)。  チケット ID が割り当てられていない場合は空になります。 |
-| TimeGenerated |アラートが作成された日付と時刻。 |
-| TimeLastModified |アラートが最後に変更された日付と時刻。 |
-| TimeRaised |アラートが生成された日付と時刻。 |
-| TimeResolved |アラートが解決された日付と時刻。 アラートが未解決の場合は空になります。 |
+| `Type` |*アラート:* |
+| `SourceSystem` |*OpsManager* |
+| `AlertContext` |アラートが生成されるきっかけとなったデータ項目の詳細 (XML 形式)。 |
+| `AlertDescription` |アラートの詳しい説明。 |
+| `AlertId` |アラートの GUID。 |
+| `AlertName` |アラートの名前。 |
+| `AlertPriority` |アラートの優先度。 |
+| `AlertSeverity` |アラートの重大度。 |
+| `AlertState` |アラートの最新の解決状態。 |
+| `LastModifiedBy` |アラートを最後に変更したユーザーの名前。 |
+| `ManagementGroupName` |アラートが生成された管理グループの名前。 |
+| `RepeatCount` |同じ監視対象オブジェクトについて、同じアラートが前回の解決以降に生成された回数。 |
+| `ResolvedBy` |アラートを解決したユーザーの名前。 アラートが未解決の場合は空になります。 |
+| `SourceDisplayName` |アラートの生成元となった監視オブジェクトの表示名。 |
+| `SourceFullName` |アラートの生成元となった監視オブジェクトの完全名。 |
+| `TicketId` |アラートのチケット ID (System Center Operations Manager 環境がアラートのチケット割り当てプロセスに統合されている場合)。  チケット ID が割り当てられていない場合は空になります。 |
+| `TimeGenerated` |アラートが作成された日付と時刻。 |
+| `TimeLastModified` |アラートが最後に変更された日付と時刻。 |
+| `TimeRaised` |アラートが生成された日付と時刻。 |
+| `TimeResolved` |アラートが解決された日付と時刻。 アラートが未解決の場合は空になります。 |
 
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 以下の表は、このソリューションによって収集されたアラート レコードを探すログ検索の例です。 

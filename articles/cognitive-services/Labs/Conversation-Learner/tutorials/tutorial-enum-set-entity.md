@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nolachar
-ms.openlocfilehash: ed18d30a0c3f5d51cb3a07b8948863cdda16c1ae
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5443b97febd6bf3831690531bceb540181e7676c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845965"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706977"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>ENUM エンティティと SET ENTITY アクションを使用する場合
 
@@ -52,7 +53,7 @@ ms.locfileid: "67845965"
 
 このような場合は、ENUM エンティティと SET_ENTITY アクションを使用する必要があります。
 
-## <a name="when-to-use-enums-or-setentity-actions"></a>ENUM または SET_ENTITY アクションを使用する場合
+## <a name="when-to-use-enums-or-set_entity-actions"></a>ENUM または SET_ENTITY アクションを使用する場合
 
 ENUM エンティティと SET_ENTITY アクションを使用する場合を理解するには、次の規則を使用します。
 

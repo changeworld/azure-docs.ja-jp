@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: robinsh
-ms.openlocfilehash: aceb90dbaf87ba621837c047eb114bc9be4b822e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: c4f2994413fca07f4a168cf12ba7967b00b6b0e2
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402670"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668108"
 ---
-# <a name="schedule-and-broadcast-jobs-netnet"></a>ジョブのスケジュールとブロードキャスト (.NET/.NET)
+# <a name="schedule-and-broadcast-jobs-net"></a>ジョブのスケジュールとブロードキャスト (.NET)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 

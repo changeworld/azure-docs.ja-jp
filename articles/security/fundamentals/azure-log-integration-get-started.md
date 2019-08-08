@@ -8,6 +8,7 @@ manager: barbkess
 editor: TomShinder
 ms.assetid: 53f67a7c-7e17-4c19-ac5c-a43fabff70e1
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ums.workload: na
 ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: d88df6fe7a4ef36fb066bac880f2c4a393a8639d
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 861a72b6abdc3d06cc4737630c92d34eee2e8545
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611218"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727688"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure Log Integration と Azure Diagnostics ログおよび Windows イベント転送
 

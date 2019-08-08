@@ -1,20 +1,18 @@
 ---
 title: Azure クイック スタート - Go を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
 description: このクイック スタートでは、ストレージ アカウントとコンテナーをオブジェクト (BLOB) ストレージ内に作成します。 その後、Go 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
-services: storage
 author: mhopkins-msft
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
-ms.date: 11/14/2018
 ms.author: mhopkins
-ms.reviewer: seguler
-ms.openlocfilehash: 5b5d0663166c6889d25c0fdd578aadbac3436931
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/14/2018
+ms.service: storage
+ms.subservice: blobs
+ms.topic: quickstart
+ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65152776"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726453"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>クイック スタート:Go を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 5508a1dbd105fc47a4ed7b3484f55532904956ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce5701d4125123798c6b6a654e4fa4a4887778a3
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407112"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717265"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Azure CLI を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する
 
@@ -227,7 +227,7 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-ブラウザーのアドレス バーにドメイン名を入力します。 http://www.contoso.com など。
+ブラウザーのアドレス バーにドメイン名を入力します。 http\://www.contoso.com などです。
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/tutorial-multisite-cli/application-gateway-nginxtest1.png)
 

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
-manager: craigg
 ms.date: 05/10/2019
-ms.openlocfilehash: 5bdbd9bebfb819ae18de884a014c574e12c53ebf
-ms.sourcegitcommit: 83a89c45253b0d432ce8dcd70084c18e9930b1fd
+ms.openlocfilehash: 3f991d90dfdd5d31d1a7cf7119356f40458e7614
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371713"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568230"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>機能の比較:Azure SQL Database と SQL Server
 
@@ -89,9 +88,10 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [JSON データのサポート](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [はい](sql-database-json-features.md) | [はい](sql-database-json-features.md) |
 | [言語要素](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | ほとんどの場合 - 個々の要素に関する記事を参照してください |  はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
 | [リンク サーバー](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | × - [エラスティック クエリ](sql-database-elastic-query-horizontal-partitioning.md)に関する記事を参照してください | はい。 分散トランザクションなしの [SQL Server と SQL Database](sql-database-managed-instance-transact-sql-information.md#linked-servers) のみ。 |
+| ファイル (CSV、Excel) から読み取られる[リンク サーバー](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine)| いいえ。 CSV 形式の代わりとして、[BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) または [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) を使用します。 | いいえ。 CSV 形式の代わりとして、[BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) または [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) を使用します。 この要求は、[Managed Instance フィードバック項目](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)で追跡します。|
 | [ログ配布](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください | DMS 移行プロセスの一部としてネイティブに組み込まれます。 高可用性ソリューションとしては使用できません。その理由は、他の[高可用性](sql-database-high-availability.md)メソッドがすべてのデータベースに含まれており、HA の代替手段としてログ配布を使用することは推奨されないからです。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。 データベースの間のレプリケーション メカニズムとしては使用できません。[Business Critical レベル](sql-database-service-tier-business-critical.md)、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)、または[トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)では、代替手段としてセカンダリ レプリカを使用してください。 |
 | [ログインとユーザー](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) | はい、ただし、`CREATE` および `ALTER` ログイン ステートメントでは、すべてのオプションが提供されるわけではありません (Windows およびサーバーレベルの Azure Active Directory ログインはありません)。 `EXECUTE AS LOGIN` はサポートされていません。代わりに `EXECUTE AS USER` を使用してください。  | はい、ただし、いくつかの[相違点](sql-database-managed-instance-transact-sql-information.md#logins-and-users)があります。 Windows ログインはサポートされておらず、Azure Active Directory ログインに置き換える必要があります。 |
-| [一括インポートでの最小ログ記録](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | いいえ | いいえ |
+| [一括インポートでの最小ログ記録](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | いいえ、完全復旧モデルのみがサポートされています。 | いいえ、完全復旧モデルのみがサポートされています。 |
 | [システム データの変更](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | いいえ | はい |
 | [OLE オートメーション](https://docs.microsoft.com/sql/database-engine/configure-windows/ole-automation-procedures-server-configuration-option) | いいえ | いいえ |
 | [オンライン インデックス操作](https://docs.microsoft.com/sql/relational-databases/indexes/perform-index-operations-online) | はい | はい |
@@ -108,6 +108,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [述語](https://docs.microsoft.com/sql/t-sql/queries/predicates) | はい | はい |
 | [クエリ通知](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | いいえ | はい |
 | [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | はい、[パブリック プレビュー](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)中  | いいえ |
+| [復旧モデル](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) | 高可用性が保証される完全復旧のみがサポートされています。 単純復旧モデルと一括ログ復旧モデルは利用できません。 | 高可用性が保証される完全復旧のみがサポートされています。 単純復旧モデルと一括ログ復旧モデルは利用できません。 | 
 | [リソース ガバナー](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | いいえ | はい |
 | [RESTORE ステートメント](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | いいえ | はい、Azure Blob Storage に配置されているバックアップ ファイルでは、`FROM URL` オプションが必須となります。 [復元の相違点](sql-database-managed-instance-transact-sql-information.md#restore-statement)に関する記述を参照してください |
 | [バックアップからデータベースを復元する](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | 自動バックアップからのみ - [SQL Database の復旧](sql-database-recovery-using-backups.md)に関する記事をご覧ください | 自動バックアップから - [SQL Database の復旧](sql-database-recovery-using-backups.md)に関するページを参照してください。Azure Blob Storage に配置されている完全バックアップから - [バックアップの相違点](sql-database-managed-instance-transact-sql-information.md#backup)に関する記述を参照してください |
@@ -148,6 +149,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | [自動フェールオーバー グループ](sql-database-auto-failover-group.md) | はい - ハイパースケール以外のすべてのサービス レベル | はい、[パブリック プレビュー](sql-database-auto-failover-group.md)中|
 | [Azure Resource Health](/azure/service-health/resource-health-overview) | はい | いいえ |
 | [データ移行サービス (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | はい | はい |
+| ファイル システムへのアクセス | いいえ。 代わりとして [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) または [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) を使用して、Azure Blob Storage のデータにアクセスし、Azure Blob Storage からデータを読み込みます。 | いいえ。 代わりとして [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) または [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) を使用して、Azure Blob Storage のデータにアクセスし、Azure Blob Storage からデータを読み込みます。 |
 | [geo リストア](sql-database-recovery-using-backups.md#geo-restore) | はい - ハイパースケール以外のすべてのサービス レベル | はい - [Azure PowerShell](https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa) を使用。 |
 | [Hyperscale アーキテクチャ](sql-database-service-tier-hyperscale.md) | はい | いいえ |
 | [長期的なバックアップ保有期間 - (LTR)](sql-database-long-term-retention.md) | はい、自動的に取られたバックアップを最大 10 年間保持します。 | まだありません。 一時的な回避策として `COPY_ONLY` [手動バックアップ](sql-database-managed-instance-transact-sql-information.md#backup)を使用してください。 |
@@ -167,7 +169,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | [VNet](../virtual-network/virtual-networks-overview.md) | 部分的、[VNet エンドポイント](sql-database-vnet-service-endpoint-rule-overview.md)を使用して制限付きアクセスを有効にします | はい、Managed Instance は顧客の VNet に組み込まれます。 [サブネット](sql-database-managed-instance-transact-sql-information.md#subnet)と [VNet](sql-database-managed-instance-transact-sql-information.md#vnet) を参照してください |
 
 ## <a name="tools"></a>ツール
-Azure SQL データベースは、データの管理に役立つさまざまなデータ ツールをサポートしています。
+Azure SQL データベースでは、データの管理に役立つさまざまなデータ ツールがサポートされています。
 
 | **SQL ツール** | **単一データベースとエラスティック プール** | **マネージド インスタンス** |
 | --- | --- | --- |

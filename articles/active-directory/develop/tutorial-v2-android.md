@@ -3,7 +3,7 @@ title: Android の概要 - Microsoft ID プラットフォーム | Azure
 description: Android アプリがアクセス トークンを取得し、Microsoft ID プラットフォームからのアクセス トークンを必要とする Microsoft Graph API を呼び出す方法。
 services: active-directory
 documentationcenter: dev-center-name
-author: danieldobalian
+author: tylermsft
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd19b6094d68277130916b5cda565ba9e633c59
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 76547fd708f880bdf5167d71db121e69fc5b1d30
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334112"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823803"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Android アプリケーションからユーザーにサインインし、Microsoft Graph を呼び出す
 

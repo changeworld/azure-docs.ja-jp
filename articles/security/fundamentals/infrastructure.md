@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 1dd9d9d4fc47f13f275e3be87ad282640840f873
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 3da9fef8c7de248f30100f94724cd5dcdb7db8e3
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611622"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68727077"
 ---
 # <a name="azure-infrastructure-security"></a>Azure インフラストラクチャのセキュリティ
 Microsoft Azure は、Microsoft によって管理および運用されているデータセンター内で実行されます。 これらの地理的に分散したデータセンターは、セキュリティおよび信頼性のための、ISO/IEC 27001:2013 や NIST SP 800-53 などの主要な業界標準に準拠しています。 これらのデータセンターは、Microsoft の運用担当者によって管理および監視されます。 これらの運用担当者には、世界最大のオンライン サービスを週 7 日 24 時間体制の継続性で提供することについての数年にわたる経験があります。
@@ -44,7 +45,7 @@ Microsoft Azure は、Microsoft によって管理および運用されている
 
 デプロイの種類に関係なく、お客様は常に以下に対する責任を負います。
 
-- データ
+- Data
 - エンドポイント
 - Account
 - アクセス管理

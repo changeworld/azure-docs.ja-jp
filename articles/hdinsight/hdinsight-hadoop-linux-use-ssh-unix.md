@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 91104b36b4821d8b1e0350d4eeb20d652de1242b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 934300351c05b1709dc9df38909edb1bb4ae73ea
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406238"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779581"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>SSH を使用して HDInsight (Apache Hadoop) に接続する
 
@@ -171,7 +171,9 @@ worker ノードと Zookeeper ノードには、インターネットから直�
 
 2. ヘッド ノードまたはエッジ ノードへの SSH 接続から、`ssh` コマンドを使用してクラスター内のワーカー ノードに接続します。
 
+        ```bash
         ssh sshuser@wn0-myhdi
+        ```
 
     ノード名の一覧を取得するには、[Apache Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)に関するページを参照してください。
 

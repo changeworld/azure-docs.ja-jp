@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/24/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: bccc52fbc953ce77257a9a7f120e11a4000ea8c7
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: ad0927c551f331a3a6f719797dae7598961d78c1
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699611"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721671"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -26,7 +26,7 @@ Azure File Sync エージェントでサポートされるバージョンは次�
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
 | 2019 年 7 月の更新プログラム ロールアップ - [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | サポート対象 - [フライティング](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
-| 2019 年 7 月の更新プログラム ロールアップ - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019 年 7 月 12 日 | サポート対象 - [フライティング](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#automatic-agent-lifecycle-management) |
+| 2019 年 7 月の更新プログラム ロールアップ - [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019 年 7 月 12 日 | サポートされています |
 | V7 リリース - [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019 年 6 月 19 日 | サポートされています |
 | 2019 年 6 月の更新プログラム ロールアップ - [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019 年 6 月 27 日 | サポートされています |
 | 2019 年 6 月の更新プログラム ロールアップ - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019 年 6 月 13 日 | サポートされています |

@@ -8,18 +8,19 @@ manager: jegeib
 editor: jegeib
 ms.assetid: na
 ms.service: security
+ms.subservice: security-develop
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3b170a214c7c3c464f7ea645fa1dc42cce0a0580
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: d7fb9fadcfac0b57fb98dc54f40ff0d2f07c6827
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620791"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728388"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム: 認証 | 対応策 
 

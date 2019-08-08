@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: b26133c64877bcac07d2e8ba10dbee05d4e36d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 762e5ae1782ee037b33156e16a0503ed1e7391ff
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102276"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823728"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-floqast"></a>チュートリアル:Azure Active Directory と FloQast の統合
 
@@ -112,13 +112,13 @@ FloQast で Azure AD シングル サインオンを構成するには、次の�
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://go.floqast.com/login/sso`」と入力します。
 
-6. FloQast アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして属性を追加します。
+6. FloQast アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして属性を追加します。
 
     ![image](common/edit-attribute.png)
 
 7. その他に、FloQast アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性|
+    | EnableAdfsAuthentication | ソース属性|
     | ------------------- | -------------------- |    
     | FirstName           | User.givenname |
     | LastName            | User.surname |
@@ -223,7 +223,7 @@ FloQast で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-floqast-test-user"></a>FloQast テスト ユーザーの作成
 
-このセクションでは、FloQast で Britta Simon というユーザーを作成します。  [FloQast サポート チーム](mailto:support@floqast.com)と協力して、FloQast プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、FloQast で Britta Simon というユーザーを作成します。 [FloQast サポート チーム](mailto:support@floqast.com)と連携し、FloQast プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

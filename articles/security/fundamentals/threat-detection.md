@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 5bcd17c841c3c8d981e7540172d9ca691f6ee9e8
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4e33b22c5bc931685f5848db55fc4b9b8fc6eafe
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610678"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780620"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
 
@@ -215,7 +216,7 @@ Azure Security Center は、世界中のセキュリティ リサーチ チー�
 
 ### <a name="virtual-machines-microsoft-antimalware"></a>仮想マシン:Microsoft マルウェア対策
 
-Azure の [Microsoft マルウェア対策](https://docs.microsoft.com/azure/security/azure-security-antimalware)は、アプリケーションやテナント環境のための単一エージェント ソリューションであり、ユーザーの介入なしにバック グラウンドで実行するように設計されています。 アプリケーションのワークロードのニーズに基づいて、マルウェア対策監視など、基本的な既定のセキュリティまたは高度なカスタム構成で、保護をデプロイできます。 Azure のマルウェア対策は、Azure Virtual Machines のセキュリティ オプションであり、すべての Azure PaaS 仮想マシンに自動的にインストールされます。
+Azure の [Microsoft マルウェア対策](https://docs.microsoft.com/azure/security/fundamentals/antimalware)は、アプリケーションやテナント環境のための単一エージェント ソリューションであり、ユーザーの介入なしにバック グラウンドで実行するように設計されています。 アプリケーションのワークロードのニーズに基づいて、マルウェア対策監視など、基本的な既定のセキュリティまたは高度なカスタム構成で、保護をデプロイできます。 Azure のマルウェア対策は、Azure Virtual Machines のセキュリティ オプションであり、すべての Azure PaaS 仮想マシンに自動的にインストールされます。
 
 #### <a name="microsoft-antimalware-core-features"></a>Microsoft マルウェア対策の主な機能
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: a6b1e4e1571e6ce3cee1658907efd35e9c73ca1a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 7ac87000a6bbe7515106b42f57f9184396ed4168
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903401"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735681"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 
@@ -43,11 +43,11 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
 ## <a name="create-a-timer-triggered-function"></a>タイマーによってトリガーされる関数の作成
 
-1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、**[ポータル内]**、**[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
+1. Function App を展開し、 **[関数]** の横にある **[+]** ボタンをクリックします。 これが関数アプリの初めての関数の場合は、 **[ポータル内]** 、 **[続行]** の順に選択します。 それ以外の場合は、手順 3 に進みます。
 
    ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
-2. **[その他のテンプレート]**、**[Finish and view templates]\(終了してテンプレートを表示\)** の順に選択します。
+2. **[その他のテンプレート]** 、 **[Finish and view templates]\(終了してテンプレートを表示\)** の順に選択します。
 
     ![Functions のクイック スタート: [その他のテンプレート] を選択する](./media/functions-create-scheduled-function/add-first-function.png)
 
@@ -58,7 +58,7 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
     | Setting | 推奨値 | Description |
     |---|---|---|
     | **Name** | 既定値 | タイマーによってトリガーされる関数の名前を定義します。 |
-    | **スケジュール** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](functions-bindings-timer.md#cron-expressions)。 |
+    | **スケジュール** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](functions-bindings-timer.md#ncrontab-expressions)。 |
 
 4. **Create** をクリックしてください。 選択した言語で、毎分実行する関数が作成されます。
 
@@ -70,9 +70,9 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
 ## <a name="update-the-timer-schedule"></a>タイマー スケジュールの更新
 
-1. 関数を展開し、**[統合]** をクリックします。 ここでは、関数の入力および出力バインドを定義し、スケジュールも設定します。 
+1. 関数を展開し、 **[統合]** をクリックします。 ここでは、関数の入力および出力バインドを定義し、スケジュールも設定します。 
 
-2. `0 0 */1 * * *` の新しい 1 時間ごとの **[スケジュール]** 値を入力し、**[保存]** をクリックします。  
+2. `0 0 */1 * * *` の新しい 1 時間ごとの **[スケジュール]** 値を入力し、 **[保存]** をクリックします。  
 
 ![関数が、Azure Portal のタイマー スケジュールを更新します。](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 

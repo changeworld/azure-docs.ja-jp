@@ -10,7 +10,7 @@ ms.assetid: 4804f3d4-0ff1-4280-b663-f8f10d54d184
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2019
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d369891624256e98ba8d46168cc9c10c41d37b8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a665f2ffe3ac2d27fb4e4403922c72520dfb37e8
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235237"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834882"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 

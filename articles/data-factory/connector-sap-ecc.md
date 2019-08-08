@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 7ccd2e7a804c6495f6caf5e264b1f7c2a36cb02e
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: c92c1b87de1b728fd79c1ef02b32135463c7124f
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827780"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720682"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
 
@@ -113,6 +113,7 @@ SAP ECC からデータをコピーするには、データセットの `type` �
         "typeProperties": {
             "path": "<entity path, e.g., dd04tentitySet>"
         },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP ECC linked service name>",
             "type": "LinkedServiceReference"
@@ -195,4 +196,4 @@ SAP ECC からデータをコピーするとき、次の SAP ECC データの OD
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事を参照してください。
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。

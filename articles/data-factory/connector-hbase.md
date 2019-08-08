@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 3bc91b1c20bb4cf4ae755ca47c8d8e0581eb3a1f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc13a1d0a7710a9f96110f1516fe2e48d538fe7e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400713"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720761"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Azure Data Factory を使用して HBase からデータをコピーする 
 
@@ -46,7 +46,7 @@ HBase のリンクされたサービスでは、次のプロパティがサポ�
 | port | HBase インスタンスがクライアント接続のリッスンに使用する TCP ポート。 既定値は 9090 です。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | いいえ |
 | httpPath | `/hbaserest0`HDInsights クラスターを使用している場合など、HBase サーバーに対応する部分的な URL。 | いいえ |
 | authenticationType | HBase サーバーへの接続に使用する認証メカニズム。 <br/>使用できる値は、以下のとおりです。**Anonymous**、**Basic** | はい |
-| username | HBase インスタンスへの接続に使用されるユーザー名。  | いいえ |
+| userName | HBase インスタンスへの接続に使用されるユーザー名。  | いいえ |
 | password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
 | enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ |
 | trustedCertPath | SSL 経由で接続するときにサーバーを検証するための信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド IR で SSL を使用する場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ |
@@ -132,11 +132,12 @@ HBase からデータをコピーするには、データセットの type プ�
     "name": "HBaseDataset",
     "properties": {
         "type": "HBaseObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<HBase linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

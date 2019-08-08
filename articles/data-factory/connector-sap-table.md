@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 9216f5c00cbdac273b562736abdd1c812d172237
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 18b5b941716fd2c6664c37f9e7c1ab2a37d07a88
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827751"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720644"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -185,12 +185,13 @@ SAP BW オープン ハブのリンクされたサービスとの間でデータ
     "name": "SAPTableDataset",
     "properties": {
         "type": "SapTableResource",
+        "typeProperties": {
+            "tableName": "<SAP table name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP table linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "tableName": "<SAP table name>"
         }
     }
 }

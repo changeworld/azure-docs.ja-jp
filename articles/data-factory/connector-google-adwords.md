@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 0f68627e2db3c08049f0273045906057526bd6aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 615a2dedd8a4698bab5eaa237184266e5bef1a1b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61094920"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720783"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Google AdWords からデータをコピーする (プレビュー)
 
@@ -110,11 +110,12 @@ Google AdWords からデータをコピーするには、データセットの t
     "name": "GoogleAdWordsDataset",
     "properties": {
         "type": "GoogleAdWordsObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<GoogleAdWords linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 

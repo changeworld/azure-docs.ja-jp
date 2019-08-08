@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3517f90d97a19740f5be8c2a755532d305522d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46abe367c9047616174a1e43dffd57861e6278e8
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65228166"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68811833"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -93,9 +93,7 @@ Office 365 ユーザー向けの Multi-Factor Authentication では、一部の 
 
 **Q:ユーザーごとと認証ごとの使用量課金モデルは、組織でいつでも切り替えることができますか。**
 
-使用量ベースの課金方法により、スタンドアロン サービスとして組織で MFA を購入する場合は、MFA プロバイダーを作成する際に課金モデルを選択します。 MFA プロバイダーの作成後に課金モデルを変更することはできません。 ただし、MFA プロバイダーを削除すれば、新しい MFA プロバイダーを別の課金モデルで作成できます。
-
-MFA プロバイダーは、作成時に Azure Active Directory (別名 "Azure AD テナント") にリンクすることができます。 現在の MFA プロバイダーが Azure AD テナントにリンクされている場合は、その MFA プロバイダーを安全に削除し、同じ Azure AD テナントにリンクされた新しい MFA プロバイダーを作成することができます。 また、MFA が有効化されているすべてのユーザーに対応できる、十分な数の MFA、Azure AD Premium、または Enterprise Mobility + Security (EMS) ライセンスを購入している場合は、MFA プロバイダーをすべて削除することもできます。
+使用量ベースの課金方法により、スタンドアロン サービスとして組織で MFA を購入する場合は、MFA プロバイダーを作成する際に課金モデルを選択します。 MFA プロバイダーの作成後に課金モデルを変更することはできません。 
 
 MFA プロバイダーが Azure AD テナントにリンクされて*いない*場合、または新しい MFA プロバイダーを別の Azure AD テナントにリンクする場合、ユーザー設定と構成オプションは転送されません。 また、既存の Azure MFA サーバーは、新しい MFA プロバイダーによって生成されるアクティブ化資格情報を使用して再アクティブ化する必要があります。 MFA Server を新しい MFA プロバイダーにリンクするために再アクティブ化しても、電話呼び出しやテキスト メッセージによる認証には影響ありませんが、モバイル アプリ通知は、各ユーザーがモバイル アプリを再アクティブ化するまで機能しなくなります。
 

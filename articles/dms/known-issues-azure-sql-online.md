@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: afafaa86988905329a0e4ff45f29bea9d1d57820
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.date: 07/27/2019
+ms.openlocfilehash: 7cd8b7c2accae097c971aec4b92cf38ed5d3af08
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501035"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561502"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -27,7 +27,9 @@ ms.locfileid: "68501035"
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>テンポラル テーブルの移行はサポートされていません
 
-**現象** ソース データベースが 1 つ以上のテンポラル テーブルで構成されている場合、"全体のデータの読み込み" 操作中にデータベースの移行が失敗し、次のメッセージが表示されることがあります。
+**症状:**
+
+ソース データベースが 1 つ以上のテンポラル テーブルで構成されている場合、"全体のデータの読み込み" 操作中にデータベースの移行が失敗し、次のメッセージが表示されることがあります。
 
 ```
 { "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line: 1 Column: -1 "]" }
@@ -35,7 +37,9 @@ ms.locfileid: "68501035"
 
  ![テンポラル テーブルのエラーの例](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
-**対処法** 次の手順を実行します。
+**対処法**
+
+次の手順に従います。
 
 1. 次のクエリを使用して、ソース スキーマ内のテンポラル テーブルを検索します。
 
@@ -47,15 +51,21 @@ ms.locfileid: "68501035"
 
 3. 移行アクティビティを再実行します。
 
-**リソース** 詳細については、「[テンポラル テーブル](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)」を参照してください。
+**リソース**
+
+詳細については、「[テンポラル テーブル](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017)」を参照してください。
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>テーブルの移行には、hierarchyid データ型を持つ 1 つまたは複数の列が含まれます
 
-**現象** "全体のデータの読み込み" 操作中に、"ntext が hierarchyid と非互換である" ことを示す SQL 例外が表示されることがあります。
+**症状:**
+
+"全体のデータの読み込み" 操作中に、"ntext が hierarchyid と非互換である" ことを示す SQL 例外が表示されることがあります。
 
 ![hierarchyid のエラーの例](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
-**対処法** 次の手順を実行します。
+**対処法**
+
+次の手順に従います。
 
 1. 次のクエリを使用して、hierarchyid データ型の列を含むユーザー テーブルを検索します。
 
@@ -69,7 +79,9 @@ ms.locfileid: "68501035"
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>"全体のデータの読み込み" または "増分データ同期" 中のスキーマ内のアクティブ トリガーに関する各種の整合性違反による移行エラー
 
-**対処法** 次の手順を実行します。
+**対処法**
+
+次の手順に従います。
 
 1. 次のクエリを使用して、ソース データベースで現在アクティブなトリガーを検索します。
 
@@ -83,17 +95,23 @@ ms.locfileid: "68501035"
 
 ### <a name="support-for-lob-data-types"></a>LOB データ型のサポート
 
-**現象** ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
+**症状:**
+
+ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
 
 ``` 
 SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 ```
 
-[対処法](mailto:AskAzureDatabaseMigrations@service.microsoft.com) 32 KB を超える LOB 列がある場合は、**Ask Azure Database Migrations** でエンジニアリング チームに相談してください。
+**対処法**
+
+32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
 ### <a name="issues-with-timestamp-columns"></a>タイムスタンプ列に関する問題
 
-**現象** Azure Database Migration Service によって、ソース タイムスタンプ値が移行されるのではなく、ターゲット テーブルに新しいタイムスタンプ値が生成されます。
+**症状:**
+
+Azure Database Migration Service によって、ソース タイムスタンプ値が移行されるのではなく、ターゲット テーブルに新しいタイムスタンプ値が生成されます。
 
 **対処法**
 
@@ -101,11 +119,15 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>データ移行エラーが発生した場合、データベースの詳細な状態ブレードに詳細が表示されません
 
-**現象** データベースの詳細状態ビューに移行エラーが表示された場合、上部のリボンの **[Data migration errors]\(データ移行エラー\)** リンクを選択しても移行エラーに関する詳細が表示されないことがあります。
+**症状:**
+
+データベースの詳細状態ビューに移行エラーが表示された場合、上部のリボンの **[Data migration errors]\(データ移行エラー\)** リンクを選択しても移行エラーに関する詳細が表示されないことがあります。
 
 ![データ移行エラー時に詳細が表示されない例](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
-**対処法** 特定のエラーの詳細を表示するには、次の手順を実行します。
+**対処法**
+
+特定のエラーの詳細を表示するには、次の手順を実行します。
 
 1. データベースの詳細状態ブレードを閉じて、移行アクティビティ画面を表示します。
 
@@ -115,16 +137,24 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>geography データ型が SQLDB オンライン移行でサポートされていません
 
-**現象** 移行が失敗し、次のテキストを含むエラー メッセージが表示されます。
+**症状:**
 
- “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
+移行が失敗し、次のテキストを含むエラー メッセージが表示されます。
 
-**対処法** Azure Database Migration Service では Azure SQL Database へのオフライン移行で geography データ型がサポートされているのに対し、オンライン移行では、geography データ型がサポートされていません。 このデータベースのオンライン移行に Azure Database Migration Service を使用するには、ソースのデータ型をサポートされている型に変更するための代替手段を試してください。
+     “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
+
+**対処法**
+
+Azure Database Migration Service では Azure SQL Database へのオフライン移行で geography データ型がサポートされているのに対し、オンライン移行では、geography データ型がサポートされていません。 このデータベースのオンライン移行に Azure Database Migration Service を使用するには、ソースのデータ型をサポートされている型に変更するための代替手段を試してください。
 
 ### <a name="supported-editions"></a>サポートされているエディション
 
-**現象** 移行が失敗し、次のテキストを含むエラー メッセージが表示されます。
+**症状:**
 
- Migration settings validation error:The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+移行が失敗し、次のテキストを含むエラー メッセージが表示されます。
 
-**対処法** Azure Database Migration Service を使用した Azure SQL Database へのオンライン移行のサポートは、Enterprise、Standard、Developer の各エディションにのみ拡張されています。 移行プロセスを開始する前に、サポートされているエディションを使用していることを確認してください。
+    Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+
+**対処法**
+
+Azure Database Migration Service を使用した Azure SQL Database へのオンライン移行のサポートは、Enterprise、Standard、Developer の各エディションにのみ拡張されています。 移行プロセスを開始する前に、サポートされているエディションを使用していることを確認してください。

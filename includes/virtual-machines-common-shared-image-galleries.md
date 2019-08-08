@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 3ea41a16f79f903b5ff7d2b93f74f7d3d2a0dd83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e43b8c951d8c7d5d60904fe49d8639efaba5c89f
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67132987"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775895"
 ---
 共有イメージ ギャラリーは、マネージド イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -73,14 +73,14 @@ ms.locfileid: "67132987"
 
 ## <a name="regional-support"></a>リージョン サポート
 
-ソース リージョンを次の表に示します。 すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションがホワイトリストに登録されている必要があります。 ホワイトリストへの登録を申請するには、 https://www.microsoft.com/en-au/central-regions-eligibility/ にアクセスしてください。
+ソース リージョンを次の表に示します。 すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションがホワイトリストに登録されている必要があります。 ホワイトリストへの登録を申請するには、 https://azure.microsoft.com/en-au/global-infrastructure/australia/contact/ にアクセスしてください。
 
 
 | ソース リージョン |
 |---------------------|-----------------|------------------|-----------------|
 | オーストラリア中部   | 米国中部 EUAP | 韓国中部    | 米国中西部 |
 | オーストラリア中部 2 | 東アジア       | 韓国南部      | 西ヨーロッパ     |
-| オーストラリア東部      | 米国東部         | 米国中北部 | インド西部      |
+| オーストラリア東部      | East US         | 米国中北部 | インド西部      |
 | オーストラリア南東部 | 米国東部 2       | 北ヨーロッパ     | 米国西部         |
 | ブラジル南部        | 米国東部 2 EUAP  | 米国中南部 | 米国西部 2       |
 | カナダ中部      | フランス中部  | インド南部      |                 |

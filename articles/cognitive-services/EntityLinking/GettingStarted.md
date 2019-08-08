@@ -10,12 +10,13 @@ ms.subservice: entity-linking-intelligence
 ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: fc1bdd5c6ad4829e22af9922c6749e60f842abaf
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4b283103920230a0d2aae98c83f75fb03679a675
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594034"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706806"
 ---
 # <a name="tutorial-build-an-entity-linking-app-with-c"></a>チュートリアル:C# を使用してエンティティ リンク アプリを構築する
 
@@ -37,18 +38,18 @@ Entity Linking Intelligence Service を使用する前に、API キーにサイ�
 
 ### <a name="step-2-create-a-new-project-in-visual-studio">手順 2: Visual Studio で新しいプロジェクトを作成する</a>
 
-Visual Studio で新しいプロジェクトを作成することから始めましょう。 まず、スタート メニューから Visual Studio 2015 を起動します。 次に、**[インストール済み]、[テンプレート]、[Visual C#]、[Windows ユニバーサル] の順に選択し、プロジェクト テンプレートとして [空のアプリ]** を選択して、新しいプロジェクトを作成します。
+Visual Studio で新しいプロジェクトを作成することから始めましょう。 まず、スタート メニューから Visual Studio 2015 を起動します。 次に、 **[インストール済み]、[テンプレート]、[Visual C#]、[Windows ユニバーサル] の順に選択し、プロジェクト テンプレートとして [空のアプリ]** を選択して、新しいプロジェクトを作成します。
 
  ![ユニバーサル アプリを作成する](./Images/CreateUWP.png)
 
 ### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">手順 3:プロジェクトに Entity Linking NuGet パッケージを追加する</a>
 
 Cognitive Services の Entity Linking は NuGet.org パッケージとしてリリースされており、使用する前にインストールする必要があります。
-プロジェクトに追加するには、**[ソリューション エクスプローラー]** タブに移動し、プロジェクトを右クリックして **[NuGet パッケージの管理]** を選択します。
+プロジェクトに追加するには、 **[ソリューション エクスプローラー]** タブに移動し、プロジェクトを右クリックして **[NuGet パッケージの管理]** を選択します。
 
-まず、**[NuGet パッケージ マネージャー]** ウィンドウで、右上の **[パッケージ ソース]** として NuGet.org を選択します。 左上の **[参照]** を選択し、検索ボックスに「ProjectOxford.EntityLinking」と入力します。 **Microsoft.ProjectOxford.EntityLinking** NuGet パッケージを選択し、**[インストール]** をクリックします。
+まず、 **[NuGet パッケージ マネージャー]** ウィンドウで、右上の **[パッケージ ソース]** として NuGet.org を選択します。 左上の **[参照]** を選択し、検索ボックスに「ProjectOxford.EntityLinking」と入力します。 **Microsoft.ProjectOxford.EntityLinking** NuGet パッケージを選択し、 **[インストール]** をクリックします。
 
-次に、Newtonsoft.Json を探してインストールします。 変更を確認するプロンプトが表示されたら、**[OK]** をクリックします。 EntityLinking のライセンス条項が表示された場合は、**[同意する]** をクリックします。
+次に、Newtonsoft.Json を探してインストールします。 変更を確認するプロンプトが表示されたら、 **[OK]** をクリックします。 EntityLinking のライセンス条項が表示された場合は、 **[同意する]** をクリックします。
 
 以上で Entity Linking がアプリケーションの一部としてインストールされました。 ソリューション エクスプローラーでプロジェクトの一部として **Microsoft.ProjectOxford.EntityLinking** の参照が存在することで、インストールを確認できます。
 
@@ -59,7 +60,7 @@ Cognitive Services の Entity Linking は NuGet.org パッケージとしてリ�
 
  ![プロジェクトに含まれる NuGet ライブラリ](./Images/UWPMainPage.png)
  
-テキスト サービスとして、機能を視覚化する最適な方法は、入力と出力のテキスト ブロックを作成することです。 これを行うには、**[グリッド]** に次の XAML を追加します。 このコードで、入力テキスト ボックス、出力テキスト ブロック、および開始ボタンという 3 つのコンポーネントが追加されます。
+テキスト サービスとして、機能を視覚化する最適な方法は、入力と出力のテキスト ブロックを作成することです。 これを行うには、 **[グリッド]** に次の XAML を追加します。 このコードで、入力テキスト ボックス、出力テキスト ブロック、および開始ボタンという 3 つのコンポーネントが追加されます。
  
  ```XAML
  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">

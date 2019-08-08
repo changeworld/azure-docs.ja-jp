@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: b65bcfa5252a150c8101322eaf6d84ce46eef755
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 33c73bffc6c8ddac3a6465093d1994fcbfe14a9b
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60546354"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726068"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Oracle Service Cloud からデータをコピーする (プレビュー)
 
@@ -46,7 +46,7 @@ Oracle Service Cloud のリンクされたサービスには、次のプロパ�
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります。**OracleServiceCloud** | はい |
 | host | Oracle Service Cloud インスタンスの URL。  | はい |
-| username | Oracle Service Cloud サーバーにアクセスするために使用するユーザー名。  | はい |
+| userName | Oracle Service Cloud サーバーにアクセスするために使用するユーザー名。  | はい |
 | password | username キーに指定したユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ |
@@ -93,11 +93,12 @@ Oracle Service Cloud からデータをコピーするには、データセッ�
     "name": "OracleServiceCloudDataset",
     "properties": {
         "type": "OracleServiceCloudObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<OracleServiceCloud linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 

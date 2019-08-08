@@ -10,12 +10,13 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
-ms.openlocfilehash: fe5d21fadef8f4452ba36259dbf89cefc78230de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ROBOTS: NOINDEX
+ms.openlocfilehash: bb1d053af8813f05872c56d3b5609f2d7d7d5d8c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388057"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705635"
 ---
 # <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>Conversation Learner で "Hello World" モデルを作成する方法
 

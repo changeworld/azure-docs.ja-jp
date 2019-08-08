@@ -1,18 +1,17 @@
 ---
 title: Azure Data Catalog でサポートされるデータ ソース
 description: この記事では、現在サポートされているデータ ソースの仕様を示します。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 85753e788284396262053aad8cf567ad5cd71fee
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.date: 08/01/2019
+ms.openlocfilehash: 6b5c75e928b62181f2ea2b51a11cd997a9942bca
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509291"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736449"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 

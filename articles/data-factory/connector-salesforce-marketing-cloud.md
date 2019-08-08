@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 70ce03834910447e92f0272fc67034caa59c43f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6548f4add8a794276bd4e7f7fa3c0bd7e24a2d5c
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074084"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726021"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Salesforce Marketing Cloud からデータをコピーする (プレビュー)
 
@@ -94,11 +94,12 @@ Salesforce Marketing Cloud からデータをコピーするには、データ�
     "name": "SalesforceMarketingCloudDataset",
     "properties": {
         "type": "SalesforceMarketingCloudObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SalesforceMarketingCloud linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
