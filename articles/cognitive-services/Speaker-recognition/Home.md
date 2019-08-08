@@ -10,12 +10,13 @@ ms.subservice: speaker-recognition
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 15fc320a5b76a50def634d937a02fa639dce3739
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9cdfd5d09451968487bafbcad643e179ffe82aa7
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67845870"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707162"
 ---
 # <a name="speaker-recognition-api"></a>Speaker Recognition API
 

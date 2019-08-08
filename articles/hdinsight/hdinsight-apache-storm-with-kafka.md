@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 53a46c6137c3336c405eb62dc7b254ac26c13d9e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 181d052501b9c418fad10a2069dde928a7ff9f38
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406003"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840242"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -130,7 +130,7 @@ Apache Storm には、Apache Kafka を操作するためのコンポーネント
     >
     > このスクリプト アクションは [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) にあり、Storm クラスターのスーパーバイザー ノードと Nimbus ノードに適用されます。 スクリプト アクションの使用方法の詳細については、[スクリプト アクションを使用した HDInsight のカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するドキュメントをご覧ください。
 
-これらのトポロジは、[Flux](https://storm.apache.org/releases/1.1.2/flux.html) で定義されています。 Flux は Storm 0.10.x で導入されており、これによりトポロジ構成とコードを切り離すことができます。 Flux フレームワークを使用するトポロジの場合、YAML ファイルでトポロジを定義します。 YAML ファイルはトポロジの一部として含めることができるほか、 トポロジを送信するときに使用するスタンドアロン ファイルにもなります。 Flux では実行時の変数代入もサポートされており、以下の例ではこれを使用しています。
+これらのトポロジは、[Flux](https://storm.apache.org/releases/current/flux.html) で定義されています。 Flux は Storm 0.10.x で導入されており、これによりトポロジ構成とコードを切り離すことができます。 Flux フレームワークを使用するトポロジの場合、YAML ファイルでトポロジを定義します。 YAML ファイルはトポロジの一部として含めることができるほか、 トポロジを送信するときに使用するスタンドアロン ファイルにもなります。 Flux では実行時の変数代入もサポートされており、以下の例ではこれを使用しています。
 
 これらのトポロジの実行時に、次のパラメーターが設定されます。
 
@@ -144,7 +144,7 @@ Apache Storm には、Apache Kafka を操作するためのコンポーネント
 
 * `${hdfs.write.dir}`:データの書き込み先のディレクトリ。
 
-Flux トポロジの詳細については、[https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html) を参照してください。
+Flux トポロジの詳細については、[https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html) を参照してください。
 
 ### <a name="kafka-writer"></a>Kafka-writer
 
@@ -471,7 +471,9 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
     次のテキストのような値が返されます。
 
+        ```output
         wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+        ```
 
     > [!IMPORTANT]  
     > クラスターに 2 つ以上のブローカー ホストがある場合でも、すべてのホストの完全な一覧をクライアントに提供する必要はありません。 1 つまたは 2 つで十分です。

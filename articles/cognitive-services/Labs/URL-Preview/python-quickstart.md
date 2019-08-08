@@ -10,12 +10,13 @@ ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 19a226fb580f3d4215b7c3f04f17c3f92505987e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ROBOTS: NOINDEX
+ms.openlocfilehash: e9b145b0786b2ab59552e5dfda6f0db63677443e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697972"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706878"
 ---
 # <a name="quickstart-url-preview-with-python"></a>クイック スタート:Python での URL Preview
 

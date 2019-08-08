@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:JSON BLOB で半構造化されたデータのインデックスを作成する - Azure Search
+title: REST チュートリアル:JSON BLOB で半構造化されたデータのインデックスを作成する - Azure Search
 description: Azure Search REST API と Postman を使用して、半構造化された Azure JSON BLOB のインデックスを作成し、検索する方法について説明します。
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3184b839087944d8d4335927810ec31d8876866e
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 6362e3cccd3c306a210f0241214206204b5ee96e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485332"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840713"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST チュートリアル:Azure Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索
 

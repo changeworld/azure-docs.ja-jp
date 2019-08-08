@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 697f5c06d2c1d6b669cfa244f0328f4fb86aeea2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d628b12171cd67455ea308a2ca2b29e67855cccc
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086830"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825602"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workteam"></a>チュートリアル:Azure Active Directory と Workteam の統合
 
@@ -101,7 +101,7 @@ Workteam で Azure AD シングル サインオンを構成するには、次の
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4.  **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
+4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
 
     ![[Workteam のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 

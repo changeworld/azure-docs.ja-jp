@@ -10,12 +10,13 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: d8ddafe20ff93e7ae4d51e2180bbd40447729234
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ROBOTS: NOINDEX
+ms.openlocfilehash: f7eafed9db25fba904d98ddea652671dc45aa01d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983034"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68707218"
 ---
 # <a name="tutorial-article-personalization-for-contextual-decision-making"></a>チュートリアル:コンテキストに応じた意思決定のための記事のパーソナル化
 
@@ -52,7 +53,7 @@ Custom Decision Service は、顧客によって提供される RSS フィード
 
 1. [Microsoft アカウント](https://portal.ds.microsoft.com/)を使用してサインインします。 リボンの **[My Portal]\(マイ ポータル\)** をクリックします。
 
-2. 新しいアプリケーションを登録するために、**[新しいアプリ]** ボタンをクリックします。
+2. 新しいアプリケーションを登録するために、 **[新しいアプリ]** ボタンをクリックします。
 
     ![Custom Decision Service ポータル](./media/custom-decision-service-tutorial/portal.png)
 
@@ -66,7 +67,7 @@ Custom Decision Service は、顧客によって提供される RSS フィード
 
     **[アプリ]** ボタンをクリックすると、この一覧に戻ることができます。
 
-4. **[新しいアプリ]** ダイアログ ボックスで、アクション フィードを指定します。 アクション フィードは、**[フィード]** ボタンをクリックし、**[新しいフィード]** ボタンをクリックすることで指定することもできます。 フィードの**名前**を入力し、提供元の **URL** を入力します。さらに、**更新時間**を入力します。 更新時間は、Custom Decision Service がフィードを更新する頻度を指定します。
+4. **[新しいアプリ]** ダイアログ ボックスで、アクション フィードを指定します。 アクション フィードは、 **[フィード]** ボタンをクリックし、 **[新しいフィード]** ボタンをクリックすることで指定することもできます。 フィードの**名前**を入力し、提供元の **URL** を入力します。さらに、**更新時間**を入力します。 更新時間は、Custom Decision Service がフィードを更新する頻度を指定します。
 
     ![[新しいフィード] ダイアログ ボックス](./media/custom-decision-service-tutorial/new-feed-dialog.png)
 

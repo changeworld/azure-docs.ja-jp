@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: b15ed5e2b31ed817d3f6558858e2b7285f98a70f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 305d73ba4b1b955b731e34ee5da0b1dced6acddc
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551723"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704968"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge API
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:複数のデータ ソースにインデックスを付ける - Azure Search
+title: 'C# のチュートリアル: 複数のデータ ソースにインデックスを付ける - Azure Search'
 description: 複数のデータ ソースから 1 つの Azure Search インデックスにデータをインポートする方法を学習します。
 author: RobDixon22
 manager: HeidiSteen
@@ -7,14 +7,13 @@ services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.author: v-rodixo
-ms.custom: seodec2018
-ms.openlocfilehash: 8ce3c66432f3d2d0cb973886498aa46e7820698c
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.author: heidist
+ms.openlocfilehash: 2776bcd095c570be500fa6ddb2675820b2259716
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485253"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840676"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C# のチュートリアル: 複数のデータ ソースのデータを 1 つの Azure Search インデックスに結合する
 
