@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fb7fbba7ec48da580d2a630ae51aa20b3307848
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be7801515355452306cd5e7afa709a0681c7c314
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080067"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562206"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>ユーザーをサインインさせる Web アプリ - サインイン
 
@@ -33,9 +33,9 @@ ms.locfileid: "65080067"
 ## <a name="what-sign-out-involves"></a>サインアウトの関連事項
 
 Web アプリからのサインアウトでは、サインインしたアカウントに関する情報が Web アプリの状態から削除されるだけではありません。
-サインアウトするには、Web アプリによってユーザーが Microsoft ID プラットフォーム v2.0 `logout` エンドポイントにリダイレクトされる必要もあります。Web アプリによってユーザーが `logout` エンドポイントにリダイレクトされると、このエンドポイントでは、ユーザーのセッションがブラウザーから消去されます。 アプリで `logout` エンドポイントに移動しない場合、ユーザーは資格情報を再入力しなくてもアプリで再認証されることがあります。Microsoft ID プラットフォーム v2.0 エンドポイントのシングル サインイン セッションが有効であるためです。
+サインアウトするには、Web アプリによってユーザーが Microsoft ID プラットフォーム `logout` エンドポイントにリダイレクトされる必要もあります。Web アプリによってユーザーが `logout` エンドポイントにリダイレクトされると、このエンドポイントでは、ユーザーのセッションがブラウザーから消去されます。 アプリで `logout` エンドポイントに移動しない場合、ユーザーは資格情報を再入力しなくてもアプリで再認証されることがあります。Microsoft ID プラットフォーム エンドポイントのシングル サインイン セッションが有効であるためです。
 
-詳細については、概念に関するドキュメント「[Microsoft ID プラットフォーム v2.0 と OpenID Connect プロトコル](v2-protocols-oidc.md)」の「[サインアウト要求を送信する](v2-protocols-oidc.md#send-a-sign-out-request)」セクションを参照してください。
+詳細については、概念に関するドキュメント「[Microsoft ID プラットフォーム と OpenID Connect プロトコル](v2-protocols-oidc.md)」の「[サインアウト要求を送信する](v2-protocols-oidc.md#send-a-sign-out-request)」セクションを参照してください。
 
 ## <a name="application-registration"></a>アプリケーションの登録
 

@@ -1,5 +1,5 @@
 ---
-title: Speech SDK を使用してコーデック圧縮オーディオをストリーミングする - Speech Services
+title: Speech SDK を使用してコーデック圧縮オーディオをストリーミングする - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用して圧縮オーディオを Azure Speech サービスにストリーミングする方法について説明します。 Linux 用の C++、C#、および Java で使用可能です。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: d23190dc8f7980cb8a94ba295f45ae67fc7d4678
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b29b42dea9522526d49c1bda017a522855946def
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605083"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559546"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Speech SDK でコーデック圧縮オーディオを使用する
 

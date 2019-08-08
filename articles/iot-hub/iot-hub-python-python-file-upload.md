@@ -1,22 +1,21 @@
 ---
 title: Python を使用してデバイスから Azure IoT Hub にファイルをアップロードする | Microsoft Docs
 description: Azure IoT device SDK for Python を使用して、デバイスからクラウドにファイルをアップロードする方法。 アップロードしたファイルは Azure Storage Blob コンテナーに格納されます。
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.author: kgremban
-ms.openlocfilehash: 23b0a2ac8e0264ddc1592479759cc8398d9ef5f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 07/30/2019
+ms.author: robinsh
+ms.openlocfilehash: a529933cf4af572deacab1ae3c615ec0a0eca68f
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621264"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667867"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (Python)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -35,18 +34,11 @@ ms.locfileid: "67621264"
 
 * **FileUpload.py** は、Python デバイス SDK を使用してファイルをストレージにアップロードします。
 
-> [!NOTE]
-> IoT Hub は、Azure IoT Device SDK を介して多数のデバイス プラットフォームと言語 (C、.NET、Javascript、Python、および Java) をサポートしています。 Azure IoT Hub にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot)を参照してください。
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-このチュートリアルを完了するには、以下が必要です。
+前提条件のインストール手順は次のとおりです。
 
-* [Python 2.x または 3.x](https://www.python.org/downloads/)。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。 Python 2.x を使用している場合は、[*pip* (Python パッケージ管理システム) のインストールまたはアップグレード](https://pip.pypa.io/en/stable/installing/)が必要な場合があります。
-
-* Windows OS を使用している場合は、[Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/confirmation.aspx?id=48145)によって、Python からネイティブ DLL を使用できます。
-
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
-
-* ファイル アップロード機能をテストするためのデバイス ID を含む、Azure アカウント内の IoT Hub。 
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 

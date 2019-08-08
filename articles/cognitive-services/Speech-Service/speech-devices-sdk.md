@@ -1,7 +1,7 @@
 ---
-title: Speech Devices SDK について - Speech Services
+title: Speech Devices SDK について - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Speech Devices SDK を使ってみましょう。 Speech Services は、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
+description: Speech Devices SDK を使ってみましょう。 Speech Service は、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 341f35d04c7f3f591198acbbf05ac32afe84e95c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f2819dd2194193ffa8171034fdbe01ac4cb26174
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718551"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558929"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Speech Devices SDK について
 

@@ -1,5 +1,5 @@
 ---
-title: 会話の文字起こし - Speech Services
+title: 会話の文字起こし - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 会話の文字起こしとは、Speech Services の高度な機能の 1 つであり、リアルタイムの音声認識、話者識別、およびダイアライゼーションを 1 つに結合したものです。 会話の文字起こしは、対面会議の文字起こしに最適です。話者を区別することができるため、だれがいつ何を発言したかを知ることができ、参加者は会議に集中して次のステップにすばやく進むことができます。 この機能により、アクセシビリティも向上します。 文字起こしがあると、聴覚に障碍がある人が積極的に参加できます。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 18de3e52d61afd8e1ef20f80c020c8b7d96b9757
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: acbf82335523ee226f4b899180f0f22cb94cca5e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603263"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562876"
 ---
 # <a name="what-is-conversation-transcription"></a>会話の文字起こしとは
 

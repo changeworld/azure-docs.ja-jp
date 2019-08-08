@@ -11,10 +11,10 @@ ms.date: 07/23/2018
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4348a634fd5b2b33f36d8e79f28caf659b82ccf4
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67626147"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 6 月
@@ -51,7 +51,7 @@ Msg 230, Level 14, State 1, Line 12
 The SELECT permission was denied on the column 'SSN' of the object 'Membership', database 'CLS_TestDW', schema 'dbo'.
 ```
 
-## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
+## <a name="object_schema_name"></a>OBJECT_SCHEMA_NAME
 [OBJECT_SCHEMA_NAME()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) 関数は、スキーマ スコープ オブジェクトのデータベース スキーマ名を返します。 この関数は、オブジェクト スキーマの検証を実行するときに ETL ツールの共通関数となります。 
 
 ```sql
@@ -72,7 +72,7 @@ dbo               nation
 dbo               orders
 ```
 
-## <a name="support-for-the-systimezoneinfo-view"></a>Sys.time_zone_info ビューのサポート
+## <a name="support-for-the-systime_zone_info-view"></a>Sys.time_zone_info ビューのサポート
 [Sys.time_zone_info](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) ビューは、Azure SQL Data Warehouse 内でサポートされているタイム ゾーンに関する情報を返します。
 
 ```sql
@@ -89,7 +89,7 @@ Mountain Standard Time (Mexico)   -06:00               1
 Central Standard Time             -05:00               1
 ```
 
-## <a name="auto-stats-operations-appear-in-sysdmpdwexecrequests-behavior-change"></a>sys.dm_pdw_exec_requests に表示される Auto Stats 操作 (動作変更)
+## <a name="auto-stats-operations-appear-in-sysdm_pdw_exec_requests-behavior-change"></a>sys.dm_pdw_exec_requests に表示される Auto Stats 操作 (動作変更)
 
 [統計の自動作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)の導入に伴い、Azure SQL Data Warehouse ではクエリの実行を最適化するために統計を生成します。 2018 年 6 月リリースには、 [CREATE STATISTICS](https://docs.microsoft.com/sql/t-sql/statements/create-statistics-transact-sql) 操作が実行されたときにレコードを [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) に追加することによって、統計が自動生成されるタイミングを監視する機能が追加されています。
 
@@ -111,7 +111,7 @@ start_time                | end_time                | command
 ```
 
 ## <a name="next-steps"></a>次の手順
-SQL Data Warehouse の概要については学習したので、次は [SQL Data Warehouse の迅速な作成方法について学習してください。][create a SQL Data Warehouse]. If you are new to Azure, you may find the [Azure glossary][Azure glossary] が新しい用語を調べるには役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
+SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成する][create a SQL Data Warehouse]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、 [Azure 用語集][Azure glossary] が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  
 
 * [顧客の成功事例]
 * [ブログ]

@@ -1,6 +1,6 @@
 ---
-title: ordinal 作成済みエンティティ
-titleSuffix: Azure
+title: ordinal 作成済みエンティティ - LUIS
+titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) での ordinal 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 16529c8334ae9f2eed5715abb22dcbcdbebec7c4
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8070f614e84dd4c328d7451103c0850826704e60
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485110"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560213"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの ordinal 作成済みエンティティ
 序数は、セット内のオブジェクトの数値表現 `first`、`second`、`third` です。 このエンティティは既にトレーニングされているので、序数メールを含む発話の例をアプリケーション意図に追加する必要はありません。 ordinal エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされます。 

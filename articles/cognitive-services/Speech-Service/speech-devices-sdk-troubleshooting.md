@@ -1,5 +1,5 @@
 ---
-title: Speech Devices SDK のトラブルシューティング - Speech Services
+title: Speech Devices SDK のトラブルシューティング - Speech Service
 titleSuffix: Azure Cognitive Services
 description: この記事では、Speech Devices SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: f55171a177dfcbebb9bc6df5ce125a8f29494946
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 9a757402360b4b69e760315a809482be9b4e04d4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606293"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558897"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>Speech Devices SDK のトラブルシューティング
 

@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
 ms.openlocfilehash: 30f25ad9152bc722b54a834ef0ed037ac1666014
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615288"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成する
 
 イングレス コントローラーは、リバース プロキシ、構成可能なトラフィック ルーティング、および Kubernetes サービスの TLS 終端を提供するソフトウェアです。 個別の Kubernetes サービスのイングレス ルールとルートを構成するには、Kubernetes イングレス リソースが使われます。 イングレス コントローラーとイングレス ルールを使用すれば、1 つの IP アドレスで Kubernetes クラスター内の複数のサービスにトラフィックをルーティングできます。
 
-この記事では、Azure Kubernetes Service (AKS) クラスターに [NGINX イングレス コントローラー][nginx-ingress] in an Azure Kubernetes Service (AKS) cluster. The [cert-manager][cert-manager] をデプロイする方法を紹介します。cert-manager プロジェクトは、[Let's Encrypt][lets-encrypt] 証明書を自動的に生成し、構成するために使用されます。 最後に、それぞれが 1 つの IP アドレスでアクセスできる、2 つのアプリケーションを AKS クラスターで実行します。
+この記事では、Azure Kubernetes Service (AKS) クラスターに [NGINX イングレス コントローラー][nginx-ingress]を展開する方法について説明します。 [Let's Encrypt][lets-encrypt] 証明書を自動的に生成して構成するには、[cert-manager][cert-manager] プロジェクトを使用します。 最後に、それぞれが 1 つの IP アドレスでアクセスできる、2 つのアプリケーションを AKS クラスターで実行します。
 
 さらに、以下を実行できます。
 
@@ -30,9 +30,9 @@ ms.locfileid: "67615288"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、AKS のクイックスタートの、[Azure CLI を使用][aks-quickstart-cli]に関するページと、Azure portal に関するページor [using the Azure portal][aks-quickstart-portal]を参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
-この記事では、Helm を使用し、NGINX イングレス コントローラー、cert-manager およびサンプル Web アプリをインストールします。 Helm は、AKS クラスター内で初期化され、Tiller 用のサービス アカウントが使用されている必要があります。 最新リリースの Helm を使用していることを確認します。 アップグレード手順については、「[Helm のインストール ドキュメント][helm-install]」を参照してください。Helm の構成と使用について詳しくは、「Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール」を参照してください。. For more information on configuring and using Helm, see [Install applications with Helm in Azure Kubernetes Service (AKS)][use-helm]
+この記事では、Helm を使用し、NGINX イングレス コントローラー、cert-manager およびサンプル Web アプリをインストールします。 Helm は、AKS クラスター内で初期化され、Tiller 用のサービス アカウントが使用されている必要があります。 最新リリースの Helm を使用していることを確認します。 アップグレード手順については、[Helm のインストール ドキュメント][helm-install]を参照してください。Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。
 
 この記事ではまた、Azure CLI バージョン 2.0.64 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -98,7 +98,7 @@ FQDN 経由でイングレス コントローラーにアクセスできるよ�
 
 ## <a name="install-cert-manager"></a>cert-manager をインストールする
 
-NGINX イングレス コントローラーは、TLS の終端をサポートしています。 HTTPS の証明書を取得および構成するには、いくつかの方法があります。 この記事では、[cert-manager][cert-manager] の使用を実演します。cert-manager は、Lets Encrypt 証明書を自動的に生成し、管理する機能を提供します。, which provides automatic [Lets Encrypt][lets-encrypt]
+NGINX イングレス コントローラーは、TLS の終端をサポートしています。 HTTPS の証明書を取得および構成するには、いくつかの方法があります。 この記事では、[Lets Encrypt][lets-encrypt] 証明書を自動的に作成および管理する機能を提供する [cert-manager][cert-manager] の使用方法を説明します。
 
 > [!NOTE]
 > この記事では、Let's Encrypt に `staging` 環境を使用します。 運用環境の展開では、リソースの定義と Helm チャートのインストールに `letsencrypt-prod` と `https://acme-v02.api.letsencrypt.org/directory` を使用します。
@@ -133,7 +133,7 @@ cert-manager の構成の詳細については、[cert-manager プロジェク�
 
 ## <a name="create-a-ca-cluster-issuer"></a>CA クラスター発行者を作成する
 
-証明書を発行する前に、cert-manager には [Issuer][cert-manager-issuer] リソース、または ClusterIssueror [ClusterIssuer][cert-manager-cluster-issuer] リソースが必要です。 これらの Kubernetes リソースは機能面では同一ですが、`Issuer` は単一の名前空間で機能し、`ClusterIssuer` はすべての名前空間にわたって機能します。 詳細については、[cert-manager issuer][cert-manager-issuer] についてのページを参照してください。
+証明書を発行する前に、cert-manager には [Issuer][cert-manager-issuer] リソースまたは [ClusterIssuer][cert-manager-cluster-issuer] リソースが必要です。 これらの Kubernetes リソースは機能面では同一ですが、`Issuer` は単一の名前空間で機能し、`ClusterIssuer` はすべての名前空間にわたって機能します。 詳細については、[cert-manager issuer][cert-manager-issuer] についてのページを参照してください。
 
 次のマニフェスト例を使用して、`cluster-issuer.yaml` などのクラスター発行者を作成します。 メール アドレスを実際の組織の有効なアドレスで置き換えてください。
 

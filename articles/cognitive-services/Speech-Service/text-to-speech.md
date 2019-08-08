@@ -1,7 +1,7 @@
 ---
-title: Azure Speech Services によるテキスト読み上げ
+title: テキスト読み上げ - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Azure Speech Services のテキスト読み上げは、アプリケーション、ツール、デバイスは、テキストを人間のような自然な合成音声に変換できるサービスです。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。
+description: Speech Service のテキスト読み上げは、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できるようにする機能です。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: da7259585ad66ac9b58131ce834d82e7b3d4bcf2
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 3d2c3e2bf693f763db13d90961a31e871aa25235
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466961"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558873"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 

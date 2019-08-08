@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
 ms.openlocfilehash: 459c11448280b63bafdfd54c13a6cad5983ef1b5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615893"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
@@ -148,7 +148,7 @@ AKS では、NGINX などを使用してイングレス リソースを作成す
 
 ## <a name="next-steps"></a>次の手順
 
-AKS ネットワークの使用を開始するために、[kubenet][aks-configure-kubenet-networking] or [Azure CNI][aks-configure-advanced-networking] を使用して、独自の IP アドレス範囲で AKS クラスターを作成および構成します。
+AKS ネットワークの使用を開始するために、[kubenet][aks-configure-kubenet-networking] または [Azure CNI][aks-configure-advanced-networking] を使用して、独自の IP アドレス範囲で AKS クラスターを作成および構成します。
 
 関連付けられているベスト プラクティスについては、[AKS でのネットワーク接続とセキュリティに関するベスト プラクティス][operator-best-practices-network]に関するページを参照してください。
 

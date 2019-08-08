@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
 ms.openlocfilehash: bd099b9d76e17eda36be1650ef5081e5aaa7e53a
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 07/30/2019
 ms.locfileid: "67303540"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>クイック スタート:Draft を使用して Azure Kubernetes Service (AKS) で開発する
@@ -25,7 +25,7 @@ Draft は、Kubernetes クラスターでアプリケーション コンテナ�
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
 * [Azure CLI がインストールされていること](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-* Docker がインストールされ構成されていること。 Docker では、[Mac][docker-for-mac]、, [Windows][docker-for-windows]、または [Linux][docker-for-linux] システム上に Docker を構成するパッケージが提供されています。
+* Docker がインストールされ構成されていること。 Docker では、[Mac][docker-for-mac]、[Windows][docker-for-windows]、または [Linux][docker-for-linux] システム上に Docker を構成するパッケージが提供されています。
 * [Helm がインストールされていること](https://github.com/helm/helm/blob/master/docs/install.md)。
 * [Draft がインストールされていること][draft-documentation]。
 

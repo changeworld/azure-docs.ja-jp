@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81b7030d0f45222a1641e34b341885d2ecc051e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6121ca6c1636c8839110712310a1b94fe7fada49
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107663"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619224"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -89,18 +89,11 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 > すべてのサインイン レポートで、条件付きアクセス ポリシーのトラブルシューティングを実行できるようになりました。 サインイン レコードの **[条件付きアクセス]** タブをクリックして、条件付きアクセスの状態を確認し、サインインに適用されたポリシーの詳細と各ポリシーの結果を調べることができます。
 > 詳細については、「[Frequently asked questions about CA information in all sign-ins](reports-faq.md#conditional-access)」 (すべてのサインインの CA 情報に関してよく寄せられる質問) を参照してください。
 
-![サインイン アクティビティ](./media/concept-sign-ins/ConditionalAccess.png "サインイン アクティビティ")
 
 
 ## <a name="filter-sign-in-activities"></a>サインイン アクティビティのフィルター処理
 
-報告されるデータを有用なものだけに絞り込むために、次の既定のフィールドを使用してサインイン データをフィルター処理できます。
-
-- User
-- Application
-- サインインの状態
-- 条件付きアクセス
-- Date
+報告されるデータを有用なものだけに絞り込むために、データ フィールドを既定のフィルターとして使用してサインイン データをフィルター処理できます。 さらに、Azure AD には、ユーザーが設定可能な追加のフィルターが各種用意されています。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/04.png "サインイン アクティビティ")
 
@@ -221,7 +214,7 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 
 ![サインイン アクティビティ](./media/concept-sign-ins/10.png "サインイン アクティビティ")
 
-アプリ使用状況グラフは、特定の期間の上位 3 つのアプリへのサインインを週ごとに集計します。 期間の既定値は 30 日です。
+アプリ使用状況グラフは、特定の期間の上位 3 つのアプリケーションへのサインインを週ごとに集計します。 期間の既定値は 30 日です。
 
 ![サインイン アクティビティ](./media/concept-sign-ins/47.png "サインイン アクティビティ")
 
@@ -239,7 +232,7 @@ Azure AD の他にも、Azure portal にはサインイン データに対する
 
 Office 365 のアクティビティ ログは、[Microsoft 365 管理センター](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターのみです。 
 
-[Office 365 Management API シリーズ](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
+[Office 365 Management API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次の手順
 

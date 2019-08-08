@@ -1,5 +1,5 @@
 ---
-title: Speech SDK でアプリを開発する - Speech Services
+title: Speech SDK でアプリを開発する - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用してアプリを作成する方法について説明します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 8fc27002af4ebef0825b23c806cfedbe7adf9642
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 8192a2d731104fe898ca128a1d989783698567da
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404815"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559165"
 ---
 # <a name="ship-an-application"></a>アプリケーションの出荷
 

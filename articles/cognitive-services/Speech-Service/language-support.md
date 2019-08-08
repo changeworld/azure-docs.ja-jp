@@ -1,7 +1,7 @@
 ---
-title: 言語サポート - Speech Services
+title: 言語サポート - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Azure Speech Services では、音声翻訳に加え、音声テキスト変換と音声合成変換のためのさまざまな言語がサポートされます。 この記事では、サービスによってサポートされている言語の包括的な一覧を示します。
+description: Speech Service では、音声翻訳に加え、音声からテキストへの変換とテキストから音声への変換のためのさまざまな言語がサポートされます。 この記事では、サービス機能によってサポートされている言語の包括的な一覧を示します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 006b9401a3418e3b2b3803fa0b7897b28887d14a
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 031367a8a05defad475ae077f9b38b7294837460
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606607"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559399"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Speech Services の言語とリージョンのサポート
 
@@ -75,7 +75,7 @@ Text to Speech REST API ではこれらの音声がサポートされ、その�
 
 ニューラル音声の完全な一覧とリージョン別の提供状況については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
 
-ロケール | 言語 | 性別 | 完全なサービス名のマッピング | 短い音声名
+Locale | 言語 | 性別 | 完全なサービス名のマッピング | 短い音声名
 --------|----------|--------|---------|------------
 de-DE | ドイツ語 (ドイツ) | 女性 | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" | "de-DE-KatjaNeural"
 en-US | 英語 (米国) | 男性 | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" | "en-US-GuyNeural"
@@ -90,7 +90,7 @@ zh-CN | 中国語 (大陸) | 女性 | "Microsoft Server Speech Text to Speech Vo
 
 テキストから合成音声への変換用に、45 を超える言語とロケールで 75 を超える標準的な音声が用意されています。 リージョン別の提供状況の詳細については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
 
-ロケール | 言語 | 性別 | 完全なサービス名のマッピング | 短い音声名
+Locale | 言語 | 性別 | 完全なサービス名のマッピング | 短い音声名
 -------|----------|---------|----------|----------
 ar-EG\* | アラビア語 (エジプト) | 女性 | "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)" | "ar-EG-Hoda"
 ar-SA | アラビア語 (サウジアラビア) | 男性 | "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)" | "ar-SA-Naayf"

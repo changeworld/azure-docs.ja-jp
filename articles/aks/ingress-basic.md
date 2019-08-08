@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
 ms.openlocfilehash: 1e5c3aa7ed4ec990dba07fb24830fae243141ad5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615592"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でイングレス コントローラーを作成する
@@ -25,7 +25,7 @@ ms.locfileid: "67615592"
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
 - [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
 - [ご自身の TLS 証明書を使用するイングレス コントローラーを作成する][aks-ingress-own-tls]
-- Let's Encrypt を使用して[動的パブリック IP アドレス付き][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]の TLS 証明書を自動的に生成するイングレス コントローラーを作成する
+- Let's Encrypt を使用して、[動的パブリック IP アドレスを指定][aks-ingress-tls]または[静的パブリック IP アドレスを指定][aks-ingress-static-tls]して TLS 証明書を自動的に作成する、イングレス コントローラーを作成する
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -215,7 +215,7 @@ kubectl delete namespace ingress-basic
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
 - [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
 - [ご自身の TLS 証明書を使用するイングレス コントローラーを作成する][aks-ingress-own-tls]
-- Let's Encrypt を使用して[動的パブリック IP アドレス付き][aks-ingress-tls] or [with a static public IP address][aks-ingress-static-tls]の TLS 証明書を自動的に生成するイングレス コントローラーを作成する
+- Let's Encrypt を使用して、[動的パブリック IP アドレスを指定][aks-ingress-tls]または[静的パブリック IP アドレスを指定][aks-ingress-static-tls]して TLS 証明書を自動的に作成する、イングレス コントローラーを作成する
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm

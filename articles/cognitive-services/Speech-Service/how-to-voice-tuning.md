@@ -1,5 +1,5 @@
 ---
-title: テキスト読み上げの出力を微調整する - Speech Services
+title: テキスト読み上げの出力を微調整する - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech SDK のログを有効にします。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 94b58279b1a9fd4d9acdb4183f59b0a8579c17fd
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4cf2338d76ce31f44eaf3fb235e5f8796602d819
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606456"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562747"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>テキスト読み上げの出力を微調整する
 

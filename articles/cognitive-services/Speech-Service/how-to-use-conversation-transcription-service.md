@@ -1,5 +1,5 @@
 ---
-title: Speech SDK で複数参加者の会話を文字起こしする - Speech Services
+title: Speech SDK で複数参加者の会話を文字起こしする - Speech Service
 titleSuffix: Azure Cognitive Services
 description: 会話の文字起こしを Speech SDK とともに使用する方法を説明します。 C++、C#、および Java で使用できます。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 215209a5b8e3ed46b25fbfa492c305785a9a0070
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606464"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559457"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Speech SDK で複数参加者の会話を文字起こしする
 

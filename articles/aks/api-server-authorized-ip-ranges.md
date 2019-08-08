@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
 ms.openlocfilehash: 6516bbcb4ea879279812d61d9fe31f1ea4268280
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67616252"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
@@ -34,7 +34,7 @@ Azure CLI バージョン 2.0.61 以降がインストールされて構成さ�
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-API サーバーの許可された IP 範囲を構成するには、*aks-preview* CLI 拡張機能バージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールしてから、az extension update コマンドを使用して使用可能な更新プログラムを確認します。
+API サーバーの許可された IP 範囲を構成するには、*aks-preview* CLI 拡張機能バージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -131,7 +131,7 @@ az network vnet subnet create \
     --address-prefixes 10.200.0.0/16
 ```
 
-Azure Firewall を作成するには、[az extension add][az-extension-add] コマンドを使用して *azure-firewall* CLI 拡張機能をインストールします。次に、az network firewall create コマンドを使用してファイアウォールを作成します。 次の例では、*myAzureFirewall* という名前の Azure Firewall を作成します。
+Azure Firewall を作成するには、[az extension add][az-extension-add] コマンドを使用して *azure-firewall* CLI 拡張機能をインストールします。 次に、[az network firewall create][az-network-firewall-create] コマンドを使用してファイアウォールを作成します。 次の例では、*myAzureFirewall* という名前の Azure Firewall を作成します。
 
 ```azurecli-interactive
 # Install the CLI extension for Azure Firewall
@@ -143,7 +143,7 @@ az network firewall create \
     --name myAzureFirewall
 ```
 
-Azure Firewall には、エグレス トラフィックに使用されるパブリック IP アドレスが割り当てられます。 [az network public-ip create][az-network-public-ip-create] コマンドを使用してパブリック アドレスを作成した後、az network firewall ip-config create を使用して、パブリック IP を適用するファイアウォール上の IP 構成を作成します。
+Azure Firewall には、エグレス トラフィックに使用されるパブリック IP アドレスが割り当てられます。 [az network public-ip create][az-network-public-ip-create] コマンドを使用してパブリック アドレスを作成した後、[az network firewall ip-config create][az-network-firewall-ip-config-create] を使用して、パブリック IP を適用するファイアウォール上の IP 構成を作成します。
 
 ```azurecli-interactive
 # Create a public IP address for the firewall
@@ -242,7 +242,7 @@ az aks update \
 
 この記事では、API サーバーの許可された IP 範囲を有効にしました。 このアプローチは、セキュリティで保護された AKS クラスターをどのように実行できるかの一部です。
 
-詳細については、[AKS でのアプリケーションとクラスターのセキュリティの概念][concepts-security]に関するページおよび AKS でのクラスターのセキュリティとアップグレードのベスト プラクティスに関するページを参照してください。
+詳細については、[AKS でのアプリケーションとクラスターのセキュリティの概念][concepts-security]に関するページおよび [AKS でのクラスターのセキュリティとアップグレードのベスト プラクティス][operator-best-practices-cluster-security]に関するページを参照してください。
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: mlearned
 ms.openlocfilehash: b42cdae634a6c2d8d994225d4cb6b440a99918e5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67614592"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) のストレージとバックアップに関するベスト プラクティス
@@ -82,7 +82,7 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 
 ボリュームを動的に作成して使用する方法の概念については、「[永続ボリューム要求][aks-concepts-storage-pvcs]」を参照してください。
 
-これらのボリュームの動作を確認する場合は、[Azure ディスク][dynamic-disks] or [Azure Files][dynamic-files]を含む永続ボリュームを動的に作成して使用する方法を参照してください。
+これらのボリュームの動作を確認する場合は、[Azure ディスク][dynamic-disks]または [Azure Files][dynamic-files] で動的に永続ボリュームを作成して使用する方法を参照してください。
 
 ストレージ クラス定義の一部として、適切な *reclaimPolicy* を設定します。 この reclaimPolicy が、ポッドが削除されて永続ボリュームが不要になる可能性がある場合の、基礎となる Azure Storage リソースの動作を制御します。 基礎となるストレージ リソースは削除することも、将来のポッドで使用するために保持しておくこともできます。 reclaimPolicy は、*retain* または *delete* に設定できます。 アプリケーションのニーズを理解し、使用および課金される未使用ストレージの量を最小限に抑えるために保持されるストレージの定期チェックを実装します。
 
@@ -92,7 +92,7 @@ AKS ノードは Azure VM として実行されます。 さまざまな種類�
 
 **ベスト プラクティス ガイダンス** - Velero や Azure Site Recovery など、ご利用のストレージの種類に適したツールを使って、データをバックアップします。 それらのバックアップの整合性とセキュリティを確認します。
 
-アプリケーションでディスク上またはファイル内に保持されているデータを格納して使用する場合、定期的にそのデータのバックアップまたはスナップショットを作成する必要があります。 Azure ディスクでは、組み込みのスナップショット テクノロジを使用できます。 スナップショット操作を実行する前に、アプリケーションでディスクにフラッシュ書き込みを行うためのフックが必要になる場合があります。 [Velero][velero] can back up persistent volumes along with additional cluster resources and configurations. If you can't [remove state from your applications][remove-state]では、永続ボリュームからデータをバックアップし、復元操作を定期的にテストしてデータの整合性と必要なプロセスが確認されます。
+アプリケーションでディスク上またはファイル内に保持されているデータを格納して使用する場合、定期的にそのデータのバックアップまたはスナップショットを作成する必要があります。 Azure ディスクでは、組み込みのスナップショット テクノロジを使用できます。 スナップショット操作を実行する前に、アプリケーションでディスクにフラッシュ書き込みを行うためのフックが必要になる場合があります。 [Velero][velero] では、追加のクラスター リソースおよび構成と共に永続ボリュームをバックアップできます。 [アプリケーションから状態を削除][remove-state]できない場合は、永続ボリュームからデータをバックアップし、復元操作を定期的にテストしてデータの整合性と必要なプロセスを確認します。
 
 データ バックアップのさまざまな方法の制限事項、またスナップショットを作成する前にデータを静止する必要がある場合の制限事項を理解します。 データ バックアップで、クラスター デプロイのアプリケーション環境を必ずしも復元できるとは限りません。 このようなシナリオの詳細については、「[Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス][best-practices-multi-region]」を参照してください。
 

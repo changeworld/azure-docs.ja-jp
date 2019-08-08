@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/06/2019
+ms.date: 07/29/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: bcfefc9698f7f251e99531750e19e7c06395e064
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 5e325f7766e7b0d9764949eb3fbf9753d65db8b3
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67655699"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619387"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する
 
@@ -110,12 +110,15 @@ Log Analytics の課金は Azure の課金内容に加えられます。 Azure P
 
 ## <a name="legacy-pricing-tiers"></a>レガシ価格レベル
 
-2018 年 4 月 2 日より前に Log Analytics ワークスペースまたはその中の Application Insights リソースがあったサブスクリプション、あるいは 2019 年 2 月 1 日より前に開始したマイクロソフト エンタープライズ契約にリンクされているサブスクリプションは、引き続きレガシ価格レベルにアクセスできます: **Free**、**スタンドアロン (GB あたり)** 、**ノードごと (OMS)** 。  Free 価格レベルのワークスペースでは、毎日のデータ インジェストの上限が 500 MB になります (Azure Security Center によって収集されるセキュリティ データの種類を除く)。また、データの保持は 7 日に制限されます。 Free 価格レベルでは、評価のみが目的として意図されています。 スタンドアロンまたはノードごとの価格レベルのワークスペースには、最大 2 年のユーザーが構成可能な保持が含まれています。 2016 年 4 月より前に作成されたワークスペースでは、元の **Standard** と **Premium** の価格レベルにもアクセスできます。 価格レベルの制限の詳細は、[ここ](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)で利用できます。
+2018 年 4 月 2 日より前に Log Analytics ワークスペースまたはその中の Application Insights リソースがあったサブスクリプション、あるいは 2019 年 2 月 1 日より前に開始したマイクロソフト エンタープライズ契約にリンクされているサブスクリプションは、引き続きレガシ価格レベルにアクセスして利用できます: **Free**、**スタンドアロン (GB あたり)** 、**ノードごと (OMS)** 。  Free 価格レベルのワークスペースでは、毎日のデータ インジェストの上限が 500 MB になります (Azure Security Center によって収集されるセキュリティ データの種類を除く)。また、データの保持は 7 日に制限されます。 Free 価格レベルでは、評価のみが目的として意図されています。 スタンドアロンまたはノードごとの価格レベルのワークスペースには、最大 2 年のユーザーが構成可能な保持が含まれています。 
+
+2016 年 4 月より前に作成されたワークスペースの場合、元の **Standard** と **Premium** の価格レベルにもアクセスできます。これは、それぞれ 30 日と 365 日のデータ保持に固定されています。 **Standard** または **Premium** の価格レベルに新しいワークスペースを作成することはできません。ワークスペースをこれらのレベルから移動した場合、元に戻すことはできません。 
+
+価格レベルの制限の詳細は、[ここ](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)で利用できます。
 
 > [!NOTE]
 > OMS E1 Suite、OMS E2 Suite、または OMS Add-On for System Center のいずれかを購入することによって得られる資格を使用するには、OMS Log Analytics の*ノード単位*の価格レベルを選択します。
 
-Log Analytics の最早採用者は、元の価格レベル **Standard** と **Premium** にもアクセスできます。これは、それぞれ 30 日と 365 日のデータ保持に固定されています。 
 
 ## <a name="changing-pricing-tier"></a>価格レベルの変更
 

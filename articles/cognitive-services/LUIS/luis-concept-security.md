@@ -1,6 +1,6 @@
 ---
-title: 共同作業時のセキュリティ
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 共同作業時のセキュリティ - LUIS
+titleSuffix: Azure Cognitive Services
 description: オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: b52b0fffe9c32ab14600a3e296852faa626d794d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25f6b675846f028b4ba9d49cce9e075bc79eece9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058522"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560676"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>オーサリングとエンドポイントのユーザー アクセス
 オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。 パブリック アプリについては、エンドポイント アクセスは、自分の Azure [Cognitive Service](../cognitive-services-apis-create-account.md) または [LUIS](luis-how-to-azure-subscription.md#create-prediction-endpoint-runtime-resource-in-the-azure-portal) リソースを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。 

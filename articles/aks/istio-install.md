@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
 ms.openlocfilehash: 9d973cb2ac210e912d93941a2f81889557379f43
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67625986"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
-[Istio][istio-github] is an open-source service mesh that provides a key set of functionality across the microservices in a Kubernetes cluster. These features include traffic management, service identity and security, policy enforcement, and observability. For more information about Istio, see the official [What is Istio?][istio-docs-concepts] ドキュメント。
+[Istio][istio-github] はオープンソースのサービス メッシュであり、Kubernetes クラスターのマイクロサービスに対して重要な機能のセットが提供されます。 これらの機能には、トラフィック管理、サービスの ID とセキュリティ、ポリシー適用、可観測性などがあります。 Istio について詳しくは、公式ドキュメント「[Istio とは][istio-docs-concepts]」をご覧ください。
 
 この記事では、Istio をインストールする方法について説明します。 Istio `istioctl` クライアント バイナリはクライアント コンピューターにインストールされます。それから、Istio コンポーネントが AKS の Kubernetes クラスターにインストールされます。
 
 > [!NOTE]
 > これらの手順は Istio バージョン `1.1.3` を参考にしています。
 >
-> Istio `1.1.x` リリースは、Istio チームによって Kubernetes バージョン `1.11`、`1.12`、`1.13` に対してテストされています。 他の Istio バージョンは [GitHub - Istio Releases][istio-github-releases] and information about each of the releases at [Istio - Release Notes][istio-release-notes] で確認できます。
+> Istio `1.1.x` リリースは、Istio チームによって Kubernetes バージョン `1.11`、`1.12`、`1.13` に対してテストされています。 Istio のその他のバージョンは[GitHub の Istio リリース][istio-github-releases]に関するページにあります。また、各リリースに関する情報は[Istio のリリース ノート][istio-release-notes]を参照してください。
 
 この記事では、次のことについて説明します。
 
@@ -215,7 +215,7 @@ Powershell
 > [!IMPORTANT]
 > このセクションの手順は、必ずダウンロードして展開した Istio リリースの最上位フォルダーから実行してください。
 
-[Grafana][grafana] and [Kiali][kiali] を Istio インストールの一部としてインストールします。 Grafana では分析と監視のダッシュボードが提供され、Kiali ではサービス メッシュ監視ダッシュボードが提供されます。 このセットアップでは、これらのコンポーネントそれぞれに資格情報が必要であり、[シークレット][kubernetes-secrets] として提供する必要があります。
+[Grafana][grafana] と [Kiali][kiali] を Istio インストールの一部としてインストールします。 Grafana では分析と監視のダッシュボードが提供され、Kiali ではサービス メッシュ監視ダッシュボードが提供されます。 ご使用のセットアップでは、これらのコンポーネントそれぞれに資格情報が必要であり、[シークレット][kubernetes-secrets]として提供する必要があります。
 
 Istio コンポーネントをインストールするには、前もって Grafana と Kiali 両方のシークレットを作成する必要があります。 ご使用の環境で適切なコマンドを実行してこれらのシークレットを作成します。
 

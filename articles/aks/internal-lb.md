@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: mlearned
 ms.openlocfilehash: 5842003d43d4268d0f663e8a57e40562a480e252
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615154"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する
@@ -23,7 +23,7 @@ Azure Kubernetes Service (AKS) でアプリケーションへのアクセスを�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、AKS のクイックスタート ([Azure CLI を使用][aks-quickstart-cli]、or [using the Azure portal][aks-quickstart-portal]) を参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
@@ -96,7 +96,7 @@ internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 
 ## <a name="use-private-networks"></a>プライベート ネットワークを使用する
 
-AKS クラスターを作成するときに、高度なネットワーク設定を指定できます。 このアプローチでは、既存の Azure 仮想ネットワークとサブネットにクラスターをデプロイできます。 1 つのシナリオは、オンプレミス環境に接続されたプライベート ネットワークに AKS クラスターをデプロイし、内部的にのみアクセスできるサービスを実行することです。 詳細については、[Kubenet][use-kubenet] or [Azure CNI][advanced-networking] での仮想ネットワーク サブネットの構成を参照してください。
+AKS クラスターを作成するときに、高度なネットワーク設定を指定できます。 このアプローチでは、既存の Azure 仮想ネットワークとサブネットにクラスターをデプロイできます。 1 つのシナリオは、オンプレミス環境に接続されたプライベート ネットワークに AKS クラスターをデプロイし、内部的にのみアクセスできるサービスを実行することです。 詳細については、[Kubenet][use-kubenet] または [Azure CNI][advanced-networking] での仮想ネットワーク サブネットの構成を参照してください。
 
 プライベート ネットワークを使用する AKS クラスターに内部ロード バランサーをデプロイする場合、前の手順を変更する必要はありません。 ロード バランサーは、AKS クラスターと同じリソース グループ内に作成されますが、次の例に示すように、プライベート仮想ネットワークとサブネットに接続されます。
 

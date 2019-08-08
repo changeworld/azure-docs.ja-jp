@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
 ms.openlocfilehash: c398567dd3383f4b0b4fd2eaa4b474d1e95b7575
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67613887"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシーを使用してクラスターのセキュリティを保護する
@@ -26,13 +26,13 @@ AKS クラスターのセキュリティを向上させるには、どのポッ�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用][aks-quickstart-cli] or [using the Azure portal][aks-quickstart-portal]して、AKS のクイックスタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 Azure CLI バージョン 2.0.61 以降がインストールされて構成されている必要があります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-ポッド セキュリティ ポリシーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
+ポッド セキュリティ ポリシーを使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli-interactive
 # Install the aks-preview extension

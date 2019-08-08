@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
 ms.openlocfilehash: 6ddd1b160110e7a751f54f89b387a62d94e9308e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67614477"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
@@ -22,13 +22,13 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用][aks-quickstart-cli]するか、Azure portal を使用して AKS のクイックスタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 また、Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ## <a name="add-your-public-ssh-key"></a>SSH 公開キーを追加する
 
-既定では、SSH キーが取得または生成され、AKS クラスターを作成するときにノードに追加されます。 AKS クラスターを作成したときに使用したものとは異なる SSH キーを指定する必要がある場合は、お使いの SSH 公開キーを Linux AKS ノードに追加します。 必要に応じて、[macOS、Linux][ssh-nix]、または or [Windows][ssh-windows] を使用して、SSH キーを作成できます。 PuTTY を使用してキーの組を作成する場合、そのキーの組は、既定の PuTTy 秘密キー形式 (.ppk ファイル) ではなく、OpenSSH 形式で保存します。
+既定では、SSH キーが取得または生成され、AKS クラスターを作成するときにノードに追加されます。 AKS クラスターを作成したときに使用したものとは異なる SSH キーを指定する必要がある場合は、お使いの SSH 公開キーを Linux AKS ノードに追加します。 必要に応じて、[macOS または Linux][ssh-nix]、あるいは [Windows][ssh-windows] を使用して、SSH キーを作成できます。 PuTTY を使用してキーの組を作成する場合、そのキーの組は、既定の PuTTy 秘密キー形式 (.ppk ファイル) ではなく、OpenSSH 形式で保存します。
 
 > [!NOTE]
 > 現時点では、SSH キーは Azure CLI を使用して Linux ノードにのみ追加できます。 Windows Server ノードを使用する場合は、AKS クラスターを作成したときに指定した SSH キーを使用して、[AKS ノード アドレスを取得する方法](#get-the-aks-node-address)の手順に進みます。 または、[リモート デスクトップ プロトコル (RDP) 接続を使用して、Windows Server ノードに接続][aks-windows-rdp]します。
@@ -117,7 +117,7 @@ AKS ノードは、インターネットにパブリックに公開されてい�
 
 ### <a name="ssh-to-regular-aks-clusters"></a>通常の AKS クラスターに SSH 接続する
 
-[az vm list-ip-addresses][az-vm-list-ip-addresses] コマンドを使用して、AKS クラスター ノードのプライベート IP アドレスを表示します。前の az-aks-show を使用した手順で取得された独自の AKS クラスター リソース グループ名を指定します。
+[az vm list-ip-addresses][az-vm-list-ip-addresses] コマンドを使用して、AKS クラスター ノードのプライベート IP アドレスを表示します。 前の [az aks show][az-aks-show] のステップで取得した独自の AKS クラスター リソース グループ名を指定します。
 
 ```azurecli-interactive
 az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
@@ -224,7 +224,7 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 
 ## <a name="next-steps"></a>次の手順
 
-トラブルシューティングのデータがさらに必要な場合は、[kubelet ログを表示する][view-kubelet-logs]か、Kubernetes マスター ノードのログを表示できます。
+トラブルシューティングのデータがさらに必要な場合は、[kubelet ログを表示][view-kubelet-logs]するか、[Kubernetes マスター ノードのログを表示][view-master-logs]することができます。
 
 <!-- EXTERNAL LINKS -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

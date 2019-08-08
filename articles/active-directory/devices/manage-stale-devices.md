@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3661b3f7fd37a329857a74d32d292678d98f5aef
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 3c6793581b797892c0bb468906d4f8ae72182618
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499828"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562124"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
@@ -47,7 +47,7 @@ Azure AD 内の古いデバイスは、組織内のデバイスの一般的な�
 - Azure AD 参加済みまたはハイブリッド Azure AD 参加済みのどちらかである Windows 10 デバイスがネットワーク上でアクティブである。 
 - Intune マネージド デバイスがサービスにチェックイン済みである。
 
-アクティビティ タイムスタンプの既存の値と現在の値の差が 14 日を超えている場合、既存の値は新しい値に置き換えられます。
+アクティビティ タイムスタンプの既存の値と現在の値の差が 14 日を超えている場合 (+/-5 日の差異)、既存の値は新しい値に置き換えられます。
 
 ## <a name="how-do-i-get-the-activity-timestamp"></a>アクティビティ タイムスタンプを取得する方法は?
 
@@ -77,7 +77,7 @@ Azure AD でデバイスを更新するには、次のいずれかのロール�
 
 ### <a name="timeframe"></a>期間
 
-古いデバイスの指標である期間を定義します。 期間の値を定義するときは、アクティビティ タイムスタンプが更新される 14 日の期間を考慮に入れてください。 たとえば、古いデバイスの指標である 14 日よりも短いタイムスタンプを検討しないでください。 デバイスが古いように見えるが実際はそうではないシナリオが存在します。 たとえば、影響を受けるデバイスの所有者が休暇中または病欠中である可能性があります。  古いデバイスの期間を超えています。
+古いデバイスの指標である期間を定義します。 期間の値を定義するときは、アクティビティ タイムスタンプの更新に関して言及されている期間を考慮に入れてください。 たとえば、21 日 (差異を含む) よりも短いタイムスタンプを古いデバイスの指標と見なさないでください。 デバイスが古いように見えるが実際はそうではないシナリオが存在します。 たとえば、影響を受けるデバイスの所有者が休暇中または病欠中である可能性があります。  古いデバイスの期間を超えています。
 
 ### <a name="disable-devices"></a>デバイスの無効化
 
@@ -98,15 +98,30 @@ Azure AD でデバイスを更新するには、次のいずれかのロール�
 Azure AD をクリーンアップするには:
 
 - **Windows 10 デバイス** - オンプレミス AD で Windows 10 デバイスを無効化または削除し、Azure AD Connect によって、変更されたデバイス ステータスを Azure AD に同期します。
-- **Windows 7/8** - Azure AD で Windows 7/8 デバイスを無効化または削除します。 Azure AD Connect を使用して Azure AD で Windows 7/8 デバイスを無効化または削除することはできません。
+- **Windows 7/8** - 最初にオンプレミス AD で Windows 7/8 デバイスを無効化または削除します。 Azure AD Connect を使用して Azure AD で Windows 7/8 デバイスを無効化または削除することはできません。 代わりに、オンプレミスで変更を行う場合は、Azure AD で無効化または削除する必要があります。
+
+> [!NOTE]
+>* オンプレミス AD または Azure AD でデバイスを削除しても、クライアント上の登録は削除されません。 これは、デバイスを ID として使用してリソースにアクセスすること (条件付きアクセスなど) ができなくなるだけです。 [クライアン上の登録を削除する](faq.md#hybrid-azure-ad-join-faq)方法の詳細をご覧ください。
+>* Azure AD でのみ Windows 10 デバイスを削除すると、Azure AD Connect を使用してオンプレミスのデバイスと再同期されますが、新しいオブジェクトとして "保留中" 状態になります。 このデバイスで再登録が必要です。
+>* Windows 10/Server 2016 デバイスの同期スコープからデバイスを削除すると、Azure AD デバイスが削除されます。 それを同期スコープに追加しなおすと、新しいオブジェクトが "保留中" 状態になります。 このデバイスの再登録が必要です。
+>* Windows 10 デバイスの同期に Azure AD Connect を使用していない場合 (たとえば、登録に AD FS のみを使用している場合) は、Windows 7/8 デバイスと同様のライフサイクルを管理する必要があります。
+
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 
 Azure AD 内の Azure AD 参加済みデバイスを無効化または削除します。
 
+> [!NOTE]
+>* Azure AD デバイスを削除しても、クライアント上の登録は削除されません。 これは、デバイスを ID として使用してリソースにアクセスすること (条件付きアクセスなど) ができなくなるだけです。 
+>* [Azure AD で参加解除する方法](faq.md#azure-ad-join-faq)の詳細をご覧ください 
+
 ### <a name="azure-ad-registered-devices"></a>Azure AD 登録済みデバイス
 
 Azure AD 内の Azure AD 登録済みデバイスを無効化または削除します。
+
+> [!NOTE]
+>* Azure AD で Azure AD 登録済みデバイスを削除しても、クライアント上の登録は削除されません。 これは、デバイスを ID として使用してリソースにアクセスすること (条件付きアクセスなど) ができなくなるだけです。
+>* [クライアント上の登録を削除する方法](faq.md#azure-ad-register-faq)の詳細をご覧ください
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Azure portal での古いデバイスのクリーンアップ  
 
@@ -148,7 +163,7 @@ Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, Devi
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Windows Autopilot デバイスに気を付ける必要があるのはなぜですか?
 
-Azure AD デバイスが Windows Autopilot オブジェクトに関連付けられている場合、デバイスが将来再利用される場合に、次の 3 つのシナリオが発生する可能性があります。
+Azure AD デバイスが Windows Autopilot オブジェクトに関連付けられていた場合、デバイスが将来再利用される場合に、次の 3 つのシナリオが発生する可能性があります。
 - ホワイト グローブを使用しない Windows Autopilot のユーザー主導型のデプロイでは、新しい Azure AD デバイスが作成されますが、ZTDID にタグ付けされることはありません。
 - Windows Autopilot の自己デプロイ モードのデプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します  (これは、"なりすました" デバイスが資格情報なしで Azure AD への参加を試行しないようにするためのセキュリティ メカニズムです)。このエラーでは、ZTDID の不一致が示されます。
 - Windows Autopilot のホワイト グローブ デプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します (バックグラウンドでは、ホワイト グローブ デプロイで同じ自己デプロイ モード プロセスが使用されるため、同じセキュリティ メカニズムが適用されます)。

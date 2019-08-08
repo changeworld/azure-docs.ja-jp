@@ -1,6 +1,6 @@
 ---
-title: 電話番号の作成済みエンティティ
-titleSuffix: Azure
+title: 電話番号の作成済みエンティティ - LUIS
+titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) での phonenumber 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 43d0b855c25ed10b074d99b247ee56dc2ba7769b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a640412fb98fb1d4215bd34c205d4fba253cd7e0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65146192"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560163"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの電話番号の事前構築済みエンティティ
 `phonenumber` エンティティは、国番号を含むさまざまな電話番号を抽出します。 このエンティティは既にトレーニングされているので、発話の例をアプリケーションに追加する必要はありません。 `phonenumber` エンティティは、`en-us` カルチャでのみサポートされます。 

@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
 ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615752"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
@@ -62,7 +62,7 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>仮想ネットワーク ピアリングと ExpressRoute 接続
 
-オンプレミスの接続を提供するため、*kubenet* および *Azure CNI* のどちらのネットワーク アプローチでも、[Azure 仮想ネットワーク ピアリング][vnet-peering]or [ExpressRoute connections][express-route]を使用できます。 重複および正しくないトラフィック ルーティングが発生しないように、慎重に IP アドレス範囲を計画する必要があります。 たとえば、多くのオンプレミス ネットワークでは、ExpressRoute 接続経由でアドバタイズされる *10.0.0.0/8* のアドレス範囲が使用されます。 AKS クラスターをこのアドレス範囲外の Azure 仮想ネットワーク サブネット (*172.16.0.0/16* など) に作成することをお勧めします。
+オンプレミスの接続を提供するため、*kubenet* および *Azure CNI* のどちらのネットワーク アプローチでも、[Azure 仮想ネットワーク ピアリング][vnet-peering]または [ExpressRoute 接続][express-route]を使用できます。 重複および正しくないトラフィック ルーティングが発生しないように、慎重に IP アドレス範囲を計画する必要があります。 たとえば、多くのオンプレミス ネットワークでは、ExpressRoute 接続経由でアドバタイズされる *10.0.0.0/8* のアドレス範囲が使用されます。 AKS クラスターをこのアドレス範囲外の Azure 仮想ネットワーク サブネット (*172.16.0.0/16* など) に作成することをお勧めします。
 
 ### <a name="choose-a-network-model-to-use"></a>使用するネットワーク モデルを選択する
 
@@ -127,7 +127,7 @@ $ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-後の手順で正しい委任を割り当てるため、[az network vnet show][az-network-vnet-show]and [az network vnet subnet show][az-network-vnet-subnet-show] コマンドを使用して、必要なリソース ID を取得します。 これらのリソース ID を変数に格納し、後の手順で参照します。
+後の手順で正しい委任を割り当てるため、[az network vnet show][az-network-vnet-show] コマンドと [az network vnet subnet show][az-network-vnet-subnet-show] コマンドを使用して、必要なリソース ID を取得します。 これらのリソース ID を変数に格納し、後の手順で参照します。
 
 ```azurecli-interactive
 VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet --query id -o tsv)
@@ -176,7 +176,7 @@ AKS クラスターを作成すると、ネットワーク セキュリティ �
 
 ## <a name="next-steps"></a>次の手順
 
-既存の仮想ネットワーク サブネットに AKS クラスターをデプロイしたので、通常どおりクラスターを使用できます。 [Azure Dev Spaces を使用してアプリの構築][dev-spaces]or [using Draft][use-draft]に着手するか、[Helm][use-helm] を使用してアプリをデプロイします。
+既存の仮想ネットワーク サブネットに AKS クラスターをデプロイしたので、通常どおりクラスターを使用できます。 [Azure Dev Spaces を使用したアプリの構築][dev-spaces]や [Draft の使用][use-draft]を始めたり、[Helm を使用してアプリをデプロイ][use-helm]したりできます。
 
 <!-- LINKS - External -->
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/

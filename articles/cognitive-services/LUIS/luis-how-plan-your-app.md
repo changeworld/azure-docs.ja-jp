@@ -1,6 +1,6 @@
 ---
-title: アプリの計画
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: アプリの計画 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 関連するアプリの意図とエンティティについて概説し、Language Understanding Intelligent Service (LUIS) でアプリケーション プランを作成します。
 services: cognitive-services
 author: diberry
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 9d54cff81f39f41b60800e9b33f3b4da1a735d85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dc648b30dc1236080be06044f510557ae0ce9476
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60196237"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638317"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>主題の領域、意図、エンティティによって LUIS アプリを計画します
 
-アプリを計画することが重要です。 アプリケーションに関連する可能性のある意図やエンティティなど、ドメインを特定します。  
+アプリを計画するには、主題領域ドメインを特定します。 これには、アプリケーションに関連する可能性のある意図やエンティティが含まれます。  
 
 ## <a name="identify-your-domain"></a>ドメインの特定
 
@@ -39,11 +39,13 @@ LUIS アプリは、ドメイン固有のトピックを中心としています
 
 ## <a name="create-example-utterances-for-each-intent"></a>各意図の発話の例の作成
 
-意図を特定したら、意図ごとに 10 から 15 個の発話の例を作成します。 まず、発話をこの数より少なくしたり、各意図に対して多くの発話を作成したりしないでください。 各発話は、前の発話とは異なるものにする必要があります。 全体の単語数、単語の選択、動詞の時制、句読点など、発話に多様性を持たせることをお勧めします。 
+意図を特定したら、意図ごとに 15 個から 30 個の発話の例を作成します。 まず、各意図に対して発話をこの数より少なくしたり、多すぎる数の発話を作成したりしないでください。 各発話は、前の発話とは異なるものにする必要があります。 全体の単語数、単語の選択、動詞の時制、句読点など、発話に多様性を持たせることをお勧めします。 
+
+詳細については、[発話](luis-concept-utterance.md)に関するページを確認してください。
 
 ## <a name="identify-your-entities"></a>エンティティの特定
 
-発話の例では、抽出するエンティティを特定します。 フライトを予約するには、目的地、日付、航空会社、チケットの種類、搭乗クラスなどの情報が必要です。 これらは意図を実現するうえで重要であるため、これらのデータの種類のエンティティを作成し、発話の例で[エンティティ](luis-concept-entity-types.md)をマークします。 
+発話の例では、抽出するエンティティを特定します。 フライトを予約するには、目的地、日付、航空会社、チケットの種類、搭乗クラスなどの情報が必要です。 これらのデータの種類のエンティティを作成し、発話の例で[エンティティ](luis-concept-entity-types.md)をマークしてください。これらのエンティティは意図を実現するうえで重要であるためです。 
 
 どのエンティティをアプリで使用するかを判断するときは、オブジェクト間の関係を把握するための多種多様なエンティティがあることに注意してください。 「[LUIS のエンティティ](luis-concept-entity-types.md)」では、各種エンティティについて詳しく説明しています。
 

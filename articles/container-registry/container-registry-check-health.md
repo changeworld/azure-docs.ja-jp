@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 07/02/2019
 ms.author: danlep
 ms.openlocfilehash: 3511655d220ee85ce6b5744612e5d6fddafbe877
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68309735"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure コンテナー レジストリの正常性のチェック
 
 Azure コンテナー レジストリを使用しているときに、問題が発生する場合があります。 たとえば、ローカル環境の Docker に問題があるために、コンテナー イメージをプルできない場合があります。 また、ネットワークの問題により、レジストリに接続できない場合もあります。 
 
-最初の診断手順として、[az acr check-health][az-acr-check-health] を実行します。command to get information about the health of the environment and optionally access to a target registry. This command is available in Azure CLI version 2.0.67 or later. If you need to install or upgrade, see [Install Azure CLI][azure-cli]
+最初の診断手順として、[az acr check-health][az-acr-check-health] コマンドを実行して、環境の正常性に関する情報を取得し、必要に応じてターゲット レジストリにアクセスします。 このコマンドは Azure CLI バージョン 2.0.67 以降で使用できます。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 ## <a name="run-az-acr-check-health"></a>az acr check-health を実行する
 

@@ -1,5 +1,5 @@
 ---
-title: PersonName 作成済みエンティティ
+title: PersonName 作成済みエンティティ - LUIS
 titleSuffix: Azure Cognitive Services
 description: この記事では、Language Understanding (LUIS) での personName 作成済みエンティティについて説明します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 3b12c69b7c6710e774d50e631d2423fd72ce828a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63e32fe79d1f3f6d2573d9a8f94f937cb9eb31ef
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072168"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560185"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの PersonName 作成済みエンティティ
 作成済みの personName エンティティは、人の名前を検出します。 このエンティティは既にトレーニングされているので、personName を含む発話の例をアプリケーション意図に追加する必要はありません。 personName エンティティは、英語および中国語の[カルチャ](luis-reference-prebuilt-entities.md)でサポートされます。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: dd8335442cd370e0478c029a927c71e26fe6ef1b
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: d88aae8887cbfd872a8d3e82fb2166043c312e5a
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672866"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68515395"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>チュートリアル:Zscaler を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -30,15 +30,13 @@ ms.locfileid: "67672866"
 > このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
 >
 
-> 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-* Azure AD テナント
-* Zscaler テナント
-* 管理者アクセス許可がある Zscaler のユーザー アカウント
+* Azure AD テナント。
+* Zscaler テナント。
+* 管理者アクセス許可がある Zscaler のユーザー アカウント。
 
 > [!NOTE]
 > Azure AD プロビジョニング統合では、Enterprise パッケージを含むアカウントについて Zscaler 開発者が使用できる Zscaler SCIM API が必要です。

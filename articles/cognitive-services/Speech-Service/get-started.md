@@ -1,7 +1,7 @@
 ---
-title: Speech Services を無料で試す
+title: Speech Service を無料で試す
 titleSuffix: Azure Cognitive Services
-description: Speech Services は、低コストで簡単に使い始めることができます。 30 日間の無料試用版でサービスの機能を確認し、アプリケーションのニーズに適しているかどうかを判断できます。
+description: Speech Service は、低コストで簡単に使い始めることができます。 30 日間の無料試用版でサービスの機能を確認し、アプリケーションのニーズに適しているかどうかを判断できます。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 203526b23a9571f0cccf3ebed432978772282418
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a8797afdfacfcfc75445c7f35083aeb9bb847ac1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226418"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562930"
 ---
 # <a name="try-speech-services-for-free"></a>Speech Services を無料で試す
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT エージェント (プレビュー) を選択してデプロイする | Microsoft Docs
+title: Azure Security Center for IoT エージェントを選択してデプロイする | Microsoft Docs
 description: IoT デバイスに Azure Security Center for IoT セキュリティ エージェントを選択してデプロイする方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,22 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: c549e5ccbda9b364b3e7d20c9572eb777c32299e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ffc6ea447ae90649be0455abbed6245c078e518d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616828"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596348"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT デバイスにセキュリティ エージェントを選択してデプロイする
 
-> [!IMPORTANT]
-> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-Azure Security Center (ASC) for IoT では、IoT デバイスを監視してデータを収集するセキュリティ エージェントの参照アーキテクチャが提供されます。
+Azure Security Center for IoT では、IoT デバイスを監視してデータを収集するセキュリティ エージェントの参照アーキテクチャが提供されます。
 詳しくは、「[セキュリティ エージェントの参照アーキテクチャ](security-agent-architecture.md)」をご覧ください。
 
 エージェントはオープン ソース プロジェクトとして開発されており、2 つのフレーバーがあります。 <br> それは、[C](https://aka.ms/iot-security-github-c) と [C#](https://aka.ms/iot-security-github-cs) です。
@@ -41,13 +37,13 @@ Azure Security Center (ASC) for IoT では、IoT デバイスを監視してデ�
 
 ## <a name="understand-security-agent-options"></a>セキュリティ エージェントのオプションを理解する
 
-すべての ASC for IoT セキュリティ エージェントのフレーバーでは、同じ機能のセットが提供され、似た構成オプションがサポートされています。 
+すべての Azure Security Center for IoT セキュリティ エージェントのフレーバーでは、同じ機能のセットが提供され、似た構成オプションがサポートされています。 
 
 C ベースのセキュリティ エージェントはメモリ占有領域が小さく、使用できるリソースが少ないデバイスに最適です。 
 
 |     | C ベースのセキュリティ エージェント | C# ベースのセキュリティ エージェント |
 | --- | ----------- | --------- |
-| オープン ソース | [GitHub](https://aka.ms/iot-security-github-cs) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 | [GitHub](https://aka.ms/iot-security-github-c) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 |
+| オープンソース | [GitHub](https://aka.ms/iot-security-github-cs) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 | [GitHub](https://aka.ms/iot-security-github-c) の [MIT ライセンス](https://en.wikipedia.org/wiki/MIT_License)で使用可能 |
 | 開発言語    | C | C# |
 | Windows プラットフォームのサポート | いいえ | はい |
 | Windows の前提条件 | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
@@ -59,6 +55,13 @@ C ベースのセキュリティ エージェントはメモリ占有領域が�
 | セキュリティ データ[収集](how-to-agent-configuration.md#supported-security-events) | はい | はい |
 | イベントの集計 | はい | はい |
 | [セキュリティ モジュール ツイン](concept-security-module.md)によるリモート構成 | はい | はい |
+|
+
+## <a name="security-agent-installation-guidelines"></a>セキュリティ エージェントのインストール ガイドライン
+
+**Windows** の場合:InstallSecurityAgent.ps1 スクリプトは、管理者の PowerShell ウィンドウから実行する必要があります。 
+
+**Linux** の場合:InstallSecurityAgent.sh はスーパーユーザーとして実行する必要があります。 インストール コマンドの前に "sudo" を付けることをお勧めします。
 
 
 ## <a name="choose-an-agent-flavor"></a>エージェントのフレーバーを選択する 
@@ -85,7 +88,7 @@ IoT デバイスに関する次の質問に答えて、適切なエージェン�
 
 次の一覧には、現在サポートされているすべてのプラットフォームが含まれています。
 
-|ASC for IoT エージェント |オペレーティング システム |アーキテクチャ |
+|Azure Security Center for IoT のエージェント |オペレーティング システム |アーキテクチャ |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |   x64|
 |C|Ubuntu 18.04 |   x64|
@@ -95,6 +98,7 @@ IoT デバイスに関する次の質問に答えて、適切なエージェン�
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
 |C#|Windows 10 IoT Core ビルド 17763 |x64|
+|
 
 ## <a name="next-steps"></a>次の手順
 

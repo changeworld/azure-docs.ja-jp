@@ -1,6 +1,6 @@
 ---
-title: 発話の良い例
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 発話の良い例 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 発話は、アプリが解釈する必要のあるユーザーからの入力です。 ユーザーが入力すると思われる語句を収集します。 同じことを意味しますが、異なる単語の長さと単語の配置で構成されている発話を含めるようにします。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: fdf5508475d868ccb8c271daaac7449d3c940301
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c3c54faa882a38fb6c55c9fc0476a569f25cb98
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073153"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638329"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
@@ -108,7 +108,11 @@ LUIS JSON アプリ ファイルに対して、分音記号または句読点の
 
 ### <a name="punctuation-marks"></a>句読点
 
+句読点は、LUIS 内の個別のトークンです。 末尾にピリオドを含む発話と末尾にピリオドを含まない発話は 2 つの個別の発話であり、2 つの異なる予測が得られる可能性があります。 
+
 既定では、句読点を正規化しない場合、LUIS で句読点は無視されません。これは、クライアント アプリケーションによっては、句読点が重要視されるものがあるためです。 どちらの形式でも同じ相対スコアが返されるように、発話の例では必ず、句読点があるケースとないケースの両方を使用してください。 
+
+モデルが[発話の例](luis-concept-utterance.md) (句読点がある場合とない場合) か、または[パターン](luis-concept-patterns.md) (特殊な構文 `I am applying for the {Job} position[.]` を使用して句読点を簡単に無視できる場合) のどちらかで句読点を処理することを確認してください。
 
 クライアント アプリケーションで句読点が特別な意味を持たない場合は、句読点を正規化して[句読点を無視](#utterance-normalization)することを検討してください。 
 

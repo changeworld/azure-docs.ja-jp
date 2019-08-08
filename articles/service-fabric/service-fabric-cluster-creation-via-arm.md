@@ -3,7 +3,7 @@ title: Azure Service Fabric クラスターを作成する | Microsoft Docs
 description: Azure で Azure Resource Manager を使用してセキュリティで保護された Service Fabric クラスターを設定する方法について説明します。  既定のテンプレートを使用して、または独自のクラスター テンプレートを使用して、クラスターを作成することができます。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
-ms.author: aljo
-ms.openlocfilehash: 709b59d257dd974e81d8b4058983f6e264ba0708
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 4a865102cbc33da4140f3e25e4b4926eade8e162
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925854"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599964"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 
 > [!div class="op_single_selector"]

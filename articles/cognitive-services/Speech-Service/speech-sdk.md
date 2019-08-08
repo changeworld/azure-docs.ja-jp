@@ -1,5 +1,5 @@
 ---
-title: Speech SDK について - Speech Services
+title: Speech SDK について - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech ソフトウェア開発キット (SDK) は、Speech サービスの機能に対するネイティブ アクセス権をアプリケーションに提供します。これによりソフトウェアの開発が容易になります。 この記事では、Windows、Linux、Android 向けの SDK について、さらに詳しく取り上げます。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 120dd4a6a342732f3e07d87786009779d23be829
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c5e12812a4305493be2cdc234946796b21dd26d8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606420"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558930"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 

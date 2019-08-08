@@ -12,12 +12,12 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: f3d0aaee624bdba169f13313bb57a3ebe8075592
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 1e55d1878b1a5616d467f2fa27b1b20132d5e77c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490069"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516998"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
 
@@ -160,34 +160,23 @@ Azure SQL Database Managed Instance は、ADF のマネージド ID によるデ
 
 4.  **マスター** データベースを右クリックし、 **[新しいクエリ]** を選択します。
 
-5.  ADF のマネージド ID を取得します。 「[Data Factory のマネージド ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」の記事に従って、プリンシパル マネージド ID アプリケーション ID を取得できます (ただし、この目的にマネージド ID オブジェクト ID を使用しないでください)。
-
-6.  クエリ ウィンドウで、次の T-SQL スクリプトを実行して、ADF のマネージド ID をバイナリ型に変換します。
+5.  クエリ ウィンドウで、次の T-SQL スクリプトを実行して、ADF のマネージド ID をユーザーとして追加します
 
     ```sql
-    DECLARE @applicationId uniqueidentifier = '{your Managed Identity Application ID}'
-    select CAST(@applicationId AS varbinary)
-    ```
-    
-    このコマンドは正常に完了し、ADF のマネージド ID がバイナリとして表示されます。
-
-7.  クエリ ウィンドウをクリアし、次の T-SQL スクリプトを実行して、ADF のマネージド ID をユーザーとして追加します。
-
-    ```sql
-    CREATE LOGIN [{a name for the managed identity}] FROM EXTERNAL PROVIDER with SID = {your Managed Identity Application ID as binary}, TYPE = E
-    ALTER SERVER ROLE [dbcreator] ADD MEMBER [{the managed identity name}]
-    ALTER SERVER ROLE [securityadmin] ADD MEMBER [{the managed identity name}]
+    CREATE LOGIN [{your ADF name}] FROM EXTERNAL PROVIDER
+    ALTER SERVER ROLE [dbcreator] ADD MEMBER [{your ADF name}]
+    ALTER SERVER ROLE [securityadmin] ADD MEMBER [{your ADF name}]
     ```
     
     このコマンドは正常に完了し、ADF のマネージド ID にデータベース (SSISDB) を作成する権限が与えられます。
 
-8.  SQL 認証を使用して作成された SSISDB を、Azure-SSIS IR でアクセスするために Azure AD 認証を使用するように切り替えたい場合は、**SSISDB** データベースを右クリックして、 **[新しいクエリ]** を選択します。
+6.  SQL 認証を使用して作成された SSISDB を、Azure-SSIS IR でアクセスするために Azure AD 認証を使用するように切り替えたい場合は、**SSISDB** データベースを右クリックして、 **[新しいクエリ]** を選択します。
 
-9.  クエリ ウィンドウで、次の T-SQL コマンドを入力し、ツールバーの **[実行]** を選択します。
+7.  クエリ ウィンドウで、次の T-SQL コマンドを入力し、ツールバーの **[実行]** を選択します。
 
     ```sql
-    CREATE USER [{the managed identity name}] FOR LOGIN [{the managed identity name}] WITH DEFAULT_SCHEMA = dbo
-    ALTER ROLE db_owner ADD MEMBER [{the managed identity name}]
+    CREATE USER [{your ADF name}] FOR LOGIN [{your ADF name}] WITH DEFAULT_SCHEMA = dbo
+    ALTER ROLE db_owner ADD MEMBER [{your ADF name}]
     ```
 
     このコマンドは正常に完了し、ADF のマネージド ID に SSISDB にアクセスする権限が与えられます。

@@ -11,10 +11,10 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: b96b65b7dd38900fccb8d5d3a9133f37ee93949f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67595519"
 ---
 # <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Contoso Retail データを Azure SQL Data Warehouse に読み込む
@@ -213,7 +213,7 @@ GO
 ```
 
 ### <a name="42-load-the-data-into-new-tables"></a>4.2. データを新しいテーブルに読み込む
-Azure Blob Storage からデータ ウェアハウス テーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL) ステートメントを使用します。CTAS による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。新しいテーブルにデータを読み込む場合は、テーブルごとに 1 つの CTAS ステートメントを使用してください。][CREATE TABLE AS SELECT (Transact-SQL)] statement. Loading with CTAS leverages the strongly typed external tables you've created. To load the data into new tables, use one [CTAS][CTAS] 
+Azure Blob Storage からデータ ウェアハウス テーブルにデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使用します。 CTAS による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。 新しいテーブルにデータを読み込む場合は、テーブルごとに 1 つの [CTAS][CTAS] ステートメントを使用してください。 
  
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 

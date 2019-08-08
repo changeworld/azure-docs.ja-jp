@@ -1,6 +1,6 @@
 ---
-title: number 作成済みエンティティ
-titleSuffix: Azure
+title: number 作成済みエンティティ - LUIS
+titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) での number 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: d4f707d4bf9bac5e2208eadb94983af368b9f521
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88f36fb6d73e2ec88940e7eb53d982824e194074
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072260"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560204"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの number 作成済みエンティティ
 情報の定量化、表現、説明に数値を使用する方法はたくさんあります。 この記事では、可能な例の一部についてのみ説明します。 LUIS はユーザーの発話のバリエーションを解釈し、一貫性のある数値を返します。 このエンティティは既にトレーニングされているので、数値を含む発話の例をアプリケーション意図に追加する必要はありません。 

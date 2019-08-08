@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
-manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 73bc2d9889727a1633986e12642bd06cf2714632
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2edd12435643f88a0923abf0927149993d49e424
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66357327"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567810"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database での単一データベースとプールされたデータベースの管理
 

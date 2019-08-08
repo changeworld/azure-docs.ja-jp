@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: a4e176552fcbab9d54da696439c7e46750be3944
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ab42ee29e508bfa62e2dba7a6e6a06baa0da2489
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522359"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560307"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
 バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)と[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API に移行する方法について説明します。 

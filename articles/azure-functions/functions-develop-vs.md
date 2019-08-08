@@ -10,71 +10,70 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 8ed3b42c61456f110925e34473dbb326dafc1b80
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6040552ccee5269e4a04d8b7a1ee072400a8506d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447724"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68593272"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
-Azure Functions Tools は、C# 関数の開発、テスト、Azure へのデプロイを可能にする Visual Studio の拡張機能です。 Azure Functions を初めて使用する場合は、詳細について、「[Azure Functions の概要](functions-overview.md)」を参照してください。
+Visual Studio で、C# クラス ライブラリ関数を開発して、テストし、Azure にデプロイすることができます。 Azure Functions を初めて使用する場合は、詳細について、「[Azure Functions の概要](functions-overview.md)」を参照してください。
 
-Azure Functions Tools には、次のような利点があります。 
+Visual Studio には、関数の開発時の利点として次のようなことがあります。 
 
 * ローカル開発用コンピューターで関数を編集、作成、および実行できます。 
-* Azure に直接 Azure Functions プロジェクトを発行できます。 
-* WebJobs 属性を使用して、定義をバインドするために個別に function.json を維持するのではなく、C# コードで直接関数バインディングを宣言できます。
+* Azure Functions プロジェクトを Azure に直接発行し、必要に応じて Azure リソースを作成します。 
+* C# 属性を使用して、C# コードで直接、関数のバインドを宣言できます。
 * コンパイル済み C# 関数を開発およびデプロイできます。 コンパイル済み関数では、C# スクリプト ベースの関数より優れたコールド スタート パフォーマンスが得られます。 
 * Visual Studio 開発のすべての利点を得ながら、C# で関数をコーディングできます。 
 
-この記事では、Azure Functions Tools for Visual Studio 2019 を使用して C# 関数を開発し、それを Azure に発行する方法に関する詳細情報を提供します。 この記事を読む前に、[Visual Studio 用の関数クイック スタート](functions-create-your-first-function-visual-studio.md)に関するページを完了する 必要があります。 
+この記事では、Visual Studio を使って C# クラス ライブラリ関数を開発して Azure に発行する方法に関する詳細情報を提供します。 この記事を読む前に、[Visual Studio 用の関数クイック スタート](functions-create-your-first-function-visual-studio.md)に関するページを完了する 必要があります。 
 
-> [!IMPORTANT]
-> 同じ関数アプリにローカル開発とポータル開発を混在させないでください。 ローカル プロジェクトから関数アプリに発行すると、ポータルで開発した関数がデプロイ プロセスによって上書きされます。
+特に明記されていない限り、ここで示す手順と例は Visual Studio 2019 のものです。 
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Functions Tools は、[Visual Studio 2017 ](https://www.visualstudio.com/vs/) 以降のバージョンの Azure 開発ワークロードに含まれています。 Visual Studio 2019 のインストールには、必ず **Azure 開発**ワークロードを含めてください。
-
-![Visual Studio 2019 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
-
-Visual Studio が最新であり、Azure Functions ツールの[最新バージョン](#check-your-tools-version)を使用していることを確認します。
-
-### <a name="azure-resources"></a>Azure リソース
+Azure Functions Tools は、Visual Studio 2017 以降の Visual Studio の Azure 開発ワークロードに含まれています。 Visual Studio のインストールには、必ず **Azure 開発**ワークロードを含めてください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 Azure Storage アカウントなど、他の必要なリソースは、発行プロセス中にサブスクリプションに作成されます。
 
-### <a name="check-your-tools-version"></a>ツールのバージョンを確認する
+> [!NOTE]
+> Visual Studio 2017 では、Azure 開発ワークロードによって Azure Functions Tools が別個の拡張機能としてインストールされます。 Visual Studio 2017 を更新する場合、Azure Functions ツールの[最新バージョン](#check-your-tools-version)を使用していることも確認してください。 以下のセクションでは、Visual Studio 2017 の Azure Functions Tools 拡張機能を確認し、必要に応じて更新する方法について説明します。 
+
+### <a name="check-your-tools-version"></a>Visual Studio 2017 でツールのバージョンを確認する
 
 1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み]**  >  **[ツール]** メニューを展開し、 **[Azure Functions と Web ジョブ ツール]** を選択します。
 
     ![Functions ツールのバージョンを確認する](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
-2. インストールされている**バージョン**を確認します。 このバージョンと[リリース ノート](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)に記載されている最新バージョンを比較します。 
+1. インストールされている**バージョン**を確認します。 このバージョンと[リリース ノート](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)に記載されている最新バージョンを比較します。 
 
-3. インストールされているバージョンが古い場合は、次のセクションの説明に従って Visual Studio でツールを更新します。
+1. インストールされているバージョンが古い場合は、次のセクションの説明に従って Visual Studio でツールを更新します。
 
-### <a name="update-your-tools"></a>ツールを更新する
+### <a name="update-your-tools-in-visual-studio-2017"></a>Visual Studio 2017 のツールを更新する
 
 1. **[拡張機能と更新プログラム]** ダイアログで、 **[更新プログラム]**  >  **[Visual Studio Marketplace]** を展開し、 **[Azure Functions と Web ジョブ ツール]** 、 **[更新]** の順に選択します。
 
     ![Functions ツールのバージョンを更新する](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
-2. ツールの更新プログラムをダウンロードしたら、Visual Studio を終了し、VSIX インストーラーを使用してツールの更新プログラムを起動します。
+1. ツールの更新プログラムをダウンロードしたら、Visual Studio を終了し、VSIX インストーラーを使用してツールの更新プログラムを起動します。
 
-3. インストーラーで **[OK]** を選択して開始し、 **[変更]** を選択してツールを更新します。 
+1. インストーラーで **[OK]** を選択して開始し、 **[変更]** を選択してツールを更新します。 
 
-4. 更新が完了したら、 **[閉じる]** を選択して Visual Studio を再起動します。
+1. 更新が完了したら、 **[閉じる]** を選択して Visual Studio を再起動します。
+
+> [!NOTE]  
+Visual Studio 2019 以降では、Azure Functions ツールの拡張機能が Visual Studio の一部として更新されます。  
 
 ## <a name="create-an-azure-functions-project"></a>Azure Functions プロジェクトを作成する
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-プロジェクト テンプレートでは、C# プロジェクトの作成、`Microsoft.NET.Sdk.Functions` NuGet パッケージのインストール、およびターゲット フレームワークの設定が行われます。 Functions 1.x の対象は .NET Framework で、Functions 2.x の対象は .NET Standard です。 新しいプロジェクトには次のファイルが含まれます。
+プロジェクト テンプレートでは、C# プロジェクトの作成、`Microsoft.NET.Sdk.Functions` NuGet パッケージのインストール、およびターゲット フレームワークの設定が行われます。 新しいプロジェクトには次のファイルが含まれます。
 
 * **host.json**:Functions のホストを構成できます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
 
@@ -95,19 +94,19 @@ Azure Storage アカウントなど、他の必要なリソースは、発行プ
 
 ## <a name="configure-the-project-for-local-development"></a>ローカル開発用のプロジェクトを構成する
 
-Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と webhook 以外のすべてのトリガーの種類については、**Values.AzureWebJobsStorage** キーを有効な Azure Storage アカウントの接続文字列に設定する必要があります。 関数アプリで、プロジェクトに必要な **AzureWebJobsStorage** 接続設定に [Azure Storage エミュレーター](../storage/common/storage-use-emulator.md)を使用することもできます。 エミュレーターを使用するには、**AzureWebJobsStorage** の値を `UseDevelopmentStorage=true` に設定します。 この設定は、デプロイの前に実際のストレージ接続に変更します。
+Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と webhook 以外のすべてのトリガーの種類については、**Values.AzureWebJobsStorage** キーを有効な Azure Storage アカウントの接続文字列に設定する必要があります。 関数アプリで、プロジェクトに必要な **AzureWebJobsStorage** 接続設定に [Azure Storage エミュレーター](../storage/common/storage-use-emulator.md)を使用することもできます。 エミュレーターを使用するには、**AzureWebJobsStorage** の値を `UseDevelopmentStorage=true` に設定します。 この設定は、デプロイ前に実際のストレージ アカウント接続文字列に変更します。
 
 ストレージ アカウントの接続文字列を設定するには、次のようにします。
 
-1. Visual Studio で **Cloud Explorer** を開き、 **[ストレージ アカウント]**  >  **[Your Storage Account]\(ストレージ アカウント\)** を展開し、 **[プロパティ]** を選択し、 **[プライマリ接続文字列]** 値をコピーします。
+1. Visual Studio で **Cloud Explorer** を開き、 **[ストレージ アカウント]**  >  **[Your Storage Account]\(ストレージ アカウント\)** を展開してから、 **[プロパティ]** タブで **[プライマリ接続文字列]** 値をコピーします。
 
 2. プロジェクトで、local.settings.json ファイルを開き、コピーした接続文字列に **AzureWebJobsStorage** キーの値を設定します。
 
-3. 前の手順を繰り返し、関数に必要なその他のすべての接続について、**Values** 配列に一意のキーを追加します。
+3. 前の手順を繰り返し、関数に必要なその他のすべての接続について、**Values** 配列に一意のキーを追加します。 
 
 ## <a name="add-a-function-to-your-project"></a>プロジェクトに関数を追加する
 
-コンパイル済みの関数では、関数で使用されるバインディングはコードで属性を適用することで定義されます。 Azure Functions Tools を使用して提供されているテンプレートから関数を作成する場合は、これらの属性が適用されます。 
+C# クラス ライブラリ関数では、関数で使用されるバインドはコードで属性を適用することで定義されます。 提供されているテンプレートから関数トリガーを作成する場合は、トリガー属性が適用されます。 
 
 1. **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、 **[追加]**  >  **[新しいアイテム]** の順に選択します。 **[Azure 関数]** を選択し、クラスの **[名前]** を入力して **[追加]** をクリックします。
 
@@ -132,7 +131,8 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
         public static class Function1
         {
             [FunctionName("QueueTriggerCSharp")]
-            public static void Run([QueueTrigger("myqueue-items", Connection = "QueueStorage")]string myQueueItem, ILogger log)
+            public static void Run([QueueTrigger("myqueue-items", 
+                Connection = "QueueStorage")]string myQueueItem, ILogger log)
             {
                 log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
             }

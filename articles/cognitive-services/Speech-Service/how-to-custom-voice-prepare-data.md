@@ -1,7 +1,7 @@
 ---
-title: カスタム音声用にデータを準備する方法 - Speech Services
-titlesuffix: Azure Cognitive Services
-description: Azure Speech Services を使用して自社ブランドに合わせたカスタム音声を作成します。 スタジオでの録音と関連するスクリプトを提供すると、このサービスは、録音された音声に合わせて調整された一意の音声モデルを生成します。 この音声は、お使いの製品、ツール、アプリケーションでの音声の合成に使用します。
+title: カスタム音声用にデータを準備する方法 - Speech Service
+titleSuffix: Azure Cognitive Services
+description: Speech Service を使用して自社ブランドに合わせたカスタム音声を作成します。 スタジオでの録音と関連するスクリプトを提供すると、このサービスは、録音された音声に合わせて調整された一意の音声モデルを生成します。 この音声は、お使いの製品、ツール、アプリケーションでの音声の合成に使用します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4b49e7453079b848a273aa8c1c706b2d00fff921
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 6a29117ff6e5173063bc2aced87f08f1a6aea425
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606538"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559581"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>カスタム音声を作成するためのデータを準備する
 

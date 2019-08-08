@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
 ms.openlocfilehash: 1d100f17130594ace6169f5840915c88435cb9a8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "67615774"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
@@ -36,7 +36,7 @@ AKS では、Kubernetes マスター コンポーネントは、Microsoft で提
 
 AKS ノードは、ユーザーが管理および保守する Azure 仮想マシンです。 Linux ノードは、Moby コンテナー ランタイムを使用して、最適化された Ubuntu ディストリビューションを実行します。 Windows Server ノード (現在 AKS でプレビュー中) は、最適化された Windows Server 2019 リリースを実行し、同様に Moby コンテナー ランタイムを使用します。 AKS クラスターを作成またはスケールアップすると、ノードは自動的に、最新の OS セキュリティ更新プログラムと構成でデプロイされます。
 
-Azure プラットフォームでは、OS セキュリティ修正プログラムが夜間スケジュールで Linux ノードに自動的に適用されます。 Linux OS セキュリティ更新プログラムがホストの再起動を必要とする場合、再起動は自動的には実行されません。 Linux ノードを手動で再起動することができます。また、一般的な方法は [Kured][kured], an open-source reboot daemon for Kubernetes. Kured runs as a [DaemonSet][aks-daemonsets] を使用することで、再起動が必要であることを示すファイルの存在を各ノードで監視します。 再起動は、クラスター アップグレードと同じ[切断およびドレイン プロセス](#cordon-and-drain)を使用するクラスターで管理されます。
+Azure プラットフォームでは、OS セキュリティ修正プログラムが夜間スケジュールで Linux ノードに自動的に適用されます。 Linux OS セキュリティ更新プログラムがホストの再起動を必要とする場合、再起動は自動的には実行されません。 Linux ノードは手動で再起動できますが、一般的な方法は [Kured][kured] (Kubernetes 用のオープン ソースの再起動デーモン) を使用する方法です。 Kured は [DaemonSet][aks-daemonsets] として実行され、再起動が必要であることを示すファイルの存在を各ノードで監視します。 再起動は、クラスター アップグレードと同じ[切断およびドレイン プロセス](#cordon-and-drain)を使用するクラスターで管理されます。
 
 Windows Server ノード (現在、AKS でプレビュー中) では、Windows Update が自動的に実行されて最新の更新プログラムを適用することはありません。 Windows Update のリリース サイクルと独自の検証プロセス周辺の定期的スケジュールで、AKS クラスター内の Windows Server ノード プールでアップグレードを実行する必要があります。 このアップグレード プロセスでは、最新の Windows Server イメージと修正プログラムを実行するノードが作成されて、古いノードが削除されます。 このプロセスの詳細については、[AKS でのノード プールのアップグレード][nodepool-upgrade]に関するページを参照してください。
 

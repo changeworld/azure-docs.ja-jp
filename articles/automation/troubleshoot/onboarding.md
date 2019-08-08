@@ -8,16 +8,47 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 3687a2fdcba9c2078bbbd9344089b5a22467682c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 8b4ee999bb23abdcea3411720bde244b2da4e89f
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477482"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516398"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>ソリューションをオンボードする際のエラーをトラブルシューティングする
 
 Update Management または Change Tracking や Inventory などのソリューションをオンボードする際にエラーが発生することがあります。 この記事では、発生する可能性があるさまざまなエラーと、その解決方法について説明します。
+
+## <a name="known-issues"></a>既知の問題
+
+### <a name="node-rename"></a>シナリオ:登録されたノードの名前を変更するには、登録を解除して再登録する必要があります
+
+#### <a name="issue"></a>問題
+
+ノードが Azure Automation に登録された後、オペレーティング システムのコンピューター名が変更されました。  そのノードからのレポートは、引き続き元の名前で表示されます。
+
+#### <a name="cause"></a>原因
+
+登録されたノードの名前を変更しても、Azure Automation 内のノード名は更新されません。
+
+#### <a name="resolution"></a>解決策
+
+Azure Automation State Configuration からノードの登録を解除し、再度登録してください。  それより前にサービスに発行されたレポートは、使用できなくなります。
+
+
+### <a name="resigning-cert"></a>シナリオ:https プロキシ経由の証明書の再署名がサポートされていません
+
+#### <a name="issue"></a>問題
+
+お客様から、https トラフィックを終了してから新しい証明書を使用してトラフィックを再暗号化するプロキシ ソリューションを使用して接続する場合に、サービスで接続が許可されない、という報告がありました。
+
+#### <a name="cause"></a>原因
+
+Azure Automation では、トラフィックの暗号化に使用される証明書の再署名はサポートされていません。
+
+#### <a name="resolution"></a>解決策
+
+この問題の回避策はありません。
 
 ## <a name="general-errors"></a>一般エラー
 

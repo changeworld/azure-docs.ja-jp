@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Bulk Executor Java API、SDK およびリソース'
+title: Azure Cosmos DB:Bulk Executor Java API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB Bulk Executor Java SDK の各バージョン間の変更など、Bulk Executor Java API と SDK に関するあらゆる詳細を提供します。
 author: tknandu
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: 51499b86aa44b89442f84a345cba6e9093f8c274
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 134a4e42b779c199b7846dabd1f5158c86c5a146
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62129487"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638619"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java Bulk Executor ライブラリ:ダウンロード情報
 
@@ -21,7 +21,7 @@ ms.locfileid: "62129487"
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.js](sql-api-sdk-node.md)
+> * [Node.JS](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)

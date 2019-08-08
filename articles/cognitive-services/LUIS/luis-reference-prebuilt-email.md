@@ -1,6 +1,6 @@
 ---
-title: LUIS 作成済みエンティティ email リファレンス - Azure | Microsoft Docs
-titleSuffix: Azure
+title: LUIS 作成済みエンティティ email リファレンス
+titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) での email 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 2b11446c84ede0e8ecfce23eda1026919777fc66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c9c7b373f820dd23c70a67a1de8545935a1d93c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65072073"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560253"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの email 作成済みエンティティ
 email の抽出には、発話からのメール アドレス全体が含まれます。 このエンティティは既にトレーニングされているので、メールを含む発話の例をアプリケーション意図に追加する必要はありません。 email エンティティは、`en-us` カルチャでのみサポートされます。 
