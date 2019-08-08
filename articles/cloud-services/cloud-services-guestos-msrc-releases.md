@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/26/2019
+ms.date: 8/2/2019
 ms.author: raiye
-ms.openlocfilehash: dd0adbe7cc27389e3b1d6533b038042824daea22
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 534a77ad29338ca1cdba22a3adeb8113521a6246
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592435"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780084"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
@@ -28,7 +28,6 @@ ms.locfileid: "68592435"
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
 |  Rel 19-07   |  [4507434]  |  Internet Explorer   |  2.88、3.75、4.68  |  2019 年 7 月 9 日  |
-|  Rel 19-07   |  [4506621]  |  Windows セキュリティ   |  2.88、3.75、4.68  |  2019 年 7 月 9 日  |
 |  Rel 19-07   |  [4506966]  |  .NET 4.5.2 セキュリティ   |  2.88  |  2019 年 7 月 9 日  |
 |  Rel 19-07   |  [4506976]  |  .NET 3.5.1 セキュリティ   |  2.88  |  2019 年 7 月 9 日  |
 |  Rel 19-07   |  [4507456]  |  Windows セキュリティ   |  2.88  |  2019 年 7 月 9 日  |

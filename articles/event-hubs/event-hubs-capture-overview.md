@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 4ba3109460616be98b5330ec7175f161a6a3b750
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326177"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする
@@ -73,7 +73,7 @@ Event Hubs Capture によって生成されたファイルには、次の Avro �
 
 ![Avro スキーマ][3]
 
-Avro ファイルは、Apache の [Avro ツール][Avro Tools] jar を使用することで簡単に調べることができます。また、軽量 SQL 主導のエクスペリエンス向けの jar from Apache. You can also use [Apache Drill][Apache Drill] または [Apache Spark][Apache Spark] を使用して、取り込まれたデータに対する複雑な分散処理を実行することもできます。 
+Avro ファイルを調べるには、Apache の [Avro Tools][Avro Tools] jar を使うと簡単です。 また、軽量 SQL 主導のエクスペリエンス向けの [Apache Drill][Apache Drill] または [Apache Spark][Apache Spark] を使用して、取り込まれたデータに対する複雑な分散処理を実行することもできます。 
 
 ### <a name="use-apache-drill"></a>Apache Drill を使用する
 
@@ -129,7 +129,7 @@ java -jar avro-tools-1.8.2.jar getschema <name of capture file>
 
 より高度な処理を実行するには、お好みのプラットフォーム用の Avro をダウンロードしてインストールしてください。 この記事の執筆時点では、C、C++、C\#、Java、NodeJS、Perl、PHP、Python、Ruby 向けの実装があります。
 
-Apache Avro には、[Java][Java] and [Python][Python] 向けの完全な入門ガイドが用意されています。 [Event Hubs Capture の概要](event-hubs-capture-python.md)に関する記事を読むこともできます。
+Apache Avro には、[Java][Java] と [Python][Python] 向けの完全な入門ガイドが用意されています。 [Event Hubs Capture の概要](event-hubs-capture-python.md)に関する記事を読むこともできます。
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Event Hubs Capture に対する課金方法
 

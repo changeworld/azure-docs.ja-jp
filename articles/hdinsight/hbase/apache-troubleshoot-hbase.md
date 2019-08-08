@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 6ba17a3839390ed5fe503a6fe57b63d8fb119138
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13a4831d946eb7e25e586cafae4cae51b49fd8a7
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713501"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780772"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache HBase のトラブルシューティング
 
@@ -68,7 +68,7 @@ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 コマンドを実行しようとしたときに、次のようなエラーが発生します。
 
 ```apache
-hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
+hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
 org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
 It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
@@ -132,7 +132,7 @@ HDInsight クラスターが少数のノードにスケールダウンされて�
    ```
 
    ```apache
-   hdiuser@hn0-spark2:~$ hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
+   hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
    Safe mode is ON
    Configured Capacity: 3372381241344 (3.07 TB)
    Present Capacity: 3138625077248 (2.85 TB)
@@ -169,7 +169,7 @@ HDInsight クラスターが少数のノードにスケールダウンされて�
 2. 次のコマンドを使用して、HDInsight クラスター上の HDFS の整合性をチェックすることもできます。
 
    ```apache
-   hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
+   hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
    ```
 
    ```apache
@@ -219,7 +219,7 @@ Apache Phoenix に接続するには、アクティブな Apache ZooKeeper ノ�
    ```
 
    > [!Note] 
-   > アクティブな Zookeeper ノードの IP アドレスは、Ambari UI から取得できます。 **[HBase]** > **[Quick Links]\(クイック リンク\)** > **[ZK\* (Active)]\(ZK (アクティブ)\)** > **[Zookeeper Info]\(Zookeeper 情報\)** に移動します。 
+   > アクティブな Zookeeper ノードの IP アドレスは、Ambari UI から取得できます。 **[HBase]**  >  **[Quick Links]\(クイック リンク\)**  >  **[ZK\* (Active)]\(ZK (アクティブ)\)**  >  **[Zookeeper Info]\(Zookeeper 情報\)** に移動します。 
 
 3. sqlline.py が Phoenix に接続し、タイムアウトしていない場合は、次のコマンドを実行して Phoenix の可用性と正常性を検証します。
 
@@ -248,7 +248,7 @@ Apache Phoenix に接続するには、アクティブな Apache ZooKeeper ノ�
    ```
 6. Apache Ambari UI で、次の手順に従って、すべての ZooKeeper ノード上で HMaster サービスを再起動します。
 
-    1. HBase の **[Summary]\(概要\)** セクションで、**[HBase]** > **[Active HBase Master]** に移動します。 
+    1. HBase の **[Summary]\(概要\)** セクションで、 **[HBase]**  >  **[Active HBase Master]** に移動します。 
     2. **[Components]\(コンポーネント\)** セクションで、HBase Master サービスを再起動します。
     3. 残りのすべての **Standby HBase Master** サービスに対して、上記の手順を繰り返します。 
 
@@ -271,11 +271,11 @@ An atomic renaming failure occurs. (アトミックな名前変更エラーが�
 
 ### <a name="probable-cause"></a>考えられる原因
 
-リージョン サーバー ログで、問題のファイルが作成された時間帯を特定し、ファイルの作成前後にプロセスのクラッシュが発生していないかどうかを確認します  (この作業で支援が必要な場合は、HBase サポートに連絡してください)。このバグを回避し、プロセスを正常にシャットダウンできるように、より堅牢なメカニズムを提供するためにこの情報を活用させていただきます。
+リージョン サーバー ログで、問題のファイルが作成された時間帯を特定し、ファイルの作成前後にプロセスのクラッシュが発生していないかどうかを確認します (この作業で支援が必要な場合は、HBase サポートに連絡してください)。このバグを回避し、プロセスを正常にシャットダウンできるように、より堅牢なメカニズムを提供するためにこの情報を活用させていただきます。
 
 ### <a name="resolution-steps"></a>解決手順
 
-呼び出し履歴を確認し、問題の原因となっていフォルダーを特定します (たとえば、WALs フォルダーや .tmp フォルダーが原因の場合があります)。 次に、Cloud Explorer または HDFS コマンドを使用して問題のファイルを特定します。 通常、これは \*-renamePending.json ファイルです  (\*-renamePending.json ファイルは、WASB ドライバーでアトミックな名前変更操作を実装するために使用されるジャーナル ファイルです。 この実装のバグが原因で、プロセスのクラッシュ後にこれらのファイルが残されることがあります)。Cloud Explorer または HDFS コマンドを使用して、このファイルを強制的に削除します。 
+呼び出し履歴を確認し、問題の原因となっていフォルダーを特定します (たとえば、WALs フォルダーや .tmp フォルダーが原因の場合があります)。 次に、Cloud Explorer または HDFS コマンドを使用して問題のファイルを特定します。 通常、これは \*-renamePending.json ファイルです (\*-renamePending.json ファイルは、WASB ドライバーでアトミックな名前変更操作を実装するために使用されるジャーナル ファイルです。 この実装のバグが原因で、プロセスのクラッシュ後にこれらのファイルが残されることがあります)。Cloud Explorer または HDFS コマンドを使用して、このファイルを強制的に削除します。 
 
 また、この場所に *$$$.$$$* のような名前の一時ファイルが存在する場合もあります。 このファイルを表示するには、HDFS `ls` コマンドを使用する必要があります。Cloud Explorer で表示することはできません。 このファイルを削除するには、HDFS コマンド `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$` を使用します。  
 
@@ -330,7 +330,7 @@ HMaster times out with a fatal exception similar to "java.io.IOException: Timedo
   
 ### <a name="resolution-steps"></a>解決手順
 
-1. Apache Ambari UI 内で、**[HBase]** > **[Configs]\(構成\)** に移動します。 カスタム hbase-site.xml ファイルに次の設定を追加します。 
+1. Apache Ambari UI 内で、 **[HBase]**  >  **[Configs]\(構成\)** に移動します。 カスタム hbase-site.xml ファイルに次の設定を追加します。 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
