@@ -53,7 +53,7 @@ python3 - -version
 az extension add --name azure-cli-iot-ext
 ```
 
-https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip からサンプル Python プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
+[https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip ) からサンプル Python プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -113,7 +113,7 @@ https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip か
 
     ![シミュレートされたデバイスを実行する](media/quickstart-send-telemetry-python/SimulatedDevice.png)
     
-### <a name="to-avoid-the-import-iothubclient-error"></a>import iothub_client エラーを回避するには
+### <a name="to-avoid-the-import-iothub_client-error"></a>import iothub_client エラーを回避するには
 Azure IoT SDK for Python の最新のバージョンは、[Microsoft の C SDK](https://github.com/azure/azure-iot-sdk-c) のラッパーです。 これは、[Boost](https://www.boost.org/) ライブラリを使用して生成されます。 そのため、いくつかの重要な制限事項があります。 詳細については、[こちら](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)を参照してください
 
 1. 適切なバージョンの [Python](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues) を使用していることを確認します。 このサンプルは特定のバージョンでのみ正常に機能することに注意してください。 
