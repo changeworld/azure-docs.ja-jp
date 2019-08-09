@@ -105,6 +105,8 @@
               href: clustering-point-data-web-sdk.md
             - name: データドリブンのスタイルの式を使用する
               href: data-driven-style-expressions-web-sdk.md
+            - name: イメージ テンプレートの使用方法
+              href: how-to-use-image-templates-web-sdk.md
             - name: イメージをオーバーレイする
               href: map-add-image-layer.md
             - name: タイル レイヤーを追加する

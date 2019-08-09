@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: 47db174042f7dd2e9d1bd1503c8e8b8f635b4dbe
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1db5829abd52a1b010d38dd8e9151ab2df3f1de5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705744"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854404"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure Virtual Machines のトラブルシューティング
 
@@ -34,10 +34,14 @@ ms.locfileid: "67705744"
     - [SSH のトラブルシューティング](troubleshoot-ssh-connection.md)
     - [SSH のトラブルシューティングの詳細](detailed-troubleshoot-ssh-connection.md)
     - [一般的なエラー メッセージ](error-messages.md)
-    - [Windows VM のパフォーマンスの問題](performance-diagnostics.md  )
-    - [PerfInsights を使用する方法](how-to-use-perfInsights.md)
-    - [パフォーマンス診断拡張機能](performance-diagnostics-vm-extension.md)
 - [Windows VM エージェントのオフライン インストール](install-vm-agent-offline.md)
+- VM のパフォーマンスのトラブルシューティング
+    - [VM のパフォーマンスの問題](performance-diagnostics.md)
+    - Windows
+        - [PerfInsights を使用する方法](how-to-use-perfinsights.md)
+        - [パフォーマンス診断拡張機能](performance-diagnostics-vm-extension.md)
+    - Linux
+        - [PerfInsights を使用する方法](how-to-use-perfinsights-linux.md)
 - VM を再デプロイする
     - [Linux](redeploy-to-new-node-linux.md)
     - [Windows](redeploy-to-new-node-windows.md)
