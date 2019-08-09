@@ -133,12 +133,14 @@
       items:
         - name: Android マップ コントロールの概要
           href: how-to-use-android-map-control-library.md
+        - name: マップのスタイルを変更する
+          href: set-android-map-styles.md
         - name: シンボル レイヤーを追加する
           href: how-to-add-symbol-to-android-map.md
         - name: 図形を追加する
           href: how-to-add-shapes-to-android-map.md
-        - name: マップのスタイルを変更する
-          href: set-android-map-styles.md
+        - name: タイル レイヤーを追加する
+          href: how-to-add-tile-layer-android-map.md
 - name: リファレンス
   items:
     - name: API とパラメーターの拡張子

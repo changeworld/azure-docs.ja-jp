@@ -14,7 +14,6 @@
     - name: Apache Spark クラスターの作成 - Azure CLI
       href: apache-spark-create-cluster-cli.md
     - name: Apache Spark クラスターの作成 - テンプレート
-      displayName: 'resource manager template, arm template, resource manager group'
       href: apache-spark-jupyter-spark-sql.md
 - name: チュートリアル
   items:
@@ -50,30 +49,6 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
-    - name: トラブルシューティング
-      items:
-        - name: OutOfMemoryError 例外
-          href: ./apache-spark-troubleshoot-outofmemory.md
-        - name: Apache Spark ジョブが失敗する - NoClassDefFoundError
-          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
-        - name: Apache Spark ジョブが失敗する - InvalidClassException
-          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: Apache Spark ジョブが遅い - listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
-        - name: Apache Spark ジョブが遅い - ストレージ コンテナー
-          href: ./apache-spark-troubleshoot-job-slowness-container.md
-        - name: IllegalArgumentException 例外
-          href: ./apache-spark-troubleshoot-illegalargumentexception.md
-        - name: Apache Spark Streaming アプリケーションが停止する
-          href: ./apache-spark-troubleshoot-application-stops.md
-        - name: RpcTimeoutException 例外
-          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
-        - name: クロス オリジン API がブロックされています
-          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
-        - name: Kryo によるシリアル化に失敗しました
-          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
-        - name: Apache Spark のイベント ログ - RequestBodyTooLarge
-          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: 方法
   items:
     - name: クラスター ストレージの使用
@@ -226,7 +201,6 @@
                 - name: Azure ポータルの使用
                   href: ../hdinsight-hadoop-create-linux-clusters-portal.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Azure リソース マネージャー テンプレートの使用
-                  displayName: 'resource manager template, arm template, resource manager group'
                   href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: .NET 用 SDK の使用
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster'
@@ -329,6 +303,30 @@
                   href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
                 - name: Apache Hive クエリの最適化
                   href: ../hdinsight-hadoop-optimize-hive-query.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: トラブルシューティング
+      items:
+        - name: OutOfMemoryError 例外
+          href: ./apache-spark-troubleshoot-outofmemory.md
+        - name: Apache Spark ジョブが失敗する - NoClassDefFoundError
+          href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+        - name: Apache Spark ジョブが失敗する - InvalidClassException
+          href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
+        - name: Apache Spark ジョブが遅い - listStatus
+          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
+        - name: Apache Spark ジョブが遅い - ストレージ コンテナー
+          href: ./apache-spark-troubleshoot-job-slowness-container.md
+        - name: IllegalArgumentException 例外
+          href: ./apache-spark-troubleshoot-illegalargumentexception.md
+        - name: Apache Spark Streaming アプリケーションが停止する
+          href: ./apache-spark-troubleshoot-application-stops.md
+        - name: RpcTimeoutException 例外
+          href: ./apache-spark-troubleshoot-rpctimeoutexception.md
+        - name: クロス オリジン API がブロックされています
+          href: ./apache-spark-troubleshoot-blocking-cross-origin.md
+        - name: Kryo によるシリアル化に失敗しました
+          href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+        - name: Apache Spark のイベント ログ - RequestBodyTooLarge
+          href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
 - name: リファレンス
   items:
     - name: コード サンプル
@@ -350,7 +348,6 @@
     - name: REST API (Apache Spark)
       href: /rest/api/hdinsightspark/
     - name: Resource Manager テンプレート
-      displayName: 'resource manager template, arm template, resource manager group'
       href: /azure/templates/microsoft.hdinsight/allversions
 - name: リソース
   items:

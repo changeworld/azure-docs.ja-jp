@@ -166,6 +166,8 @@
       items:
         - name: データ ファクトリの視覚的な作成
           href: author-visually.md
+        - name: ソース管理
+          href: source-control.md
         - name: 継続的インテグレーションと配信
           href: continuous-integration-deployment.md
         - name: 反復開発とデバッグ

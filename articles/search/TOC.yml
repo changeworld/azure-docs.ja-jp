@@ -17,6 +17,8 @@
           href: cognitive-search-quickstart-blob.md
     - name: 'C#'
       href: search-get-started-dotnet.md
+    - name: Node.js
+      href: search-get-started-nodejs.md
     - name: postman
       href: search-get-started-postman.md
     - name: PowerShell
@@ -113,8 +115,6 @@
           href: search-api-versions.md
         - name: .NET での開発
           href: search-howto-dotnet-sdk.md
-        - name: Node.js での開発
-          href: search-get-started-nodejs.md
         - name: Java での開発
           href: search-get-started-java.md
         - name: SDK をアップグレードする
