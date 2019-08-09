@@ -1,6 +1,6 @@
 ---
-title: パターンは予測に役立つ
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 予測に役立つパターン - LUIS
+titleSuffix: Azure Cognitive Services
 description: パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bad3bdc2b4508c082ca50647d5de5e7265c763a1
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813575"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639198"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。  パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。 

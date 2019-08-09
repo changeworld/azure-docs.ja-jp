@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: yagup
-ms.openlocfilehash: ca3174ad69185da88bf89c843f641dd2b20d9ac5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 03c0106d793fc7b77ccc8a9176f158a9928ab291
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872488"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620123"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -55,7 +55,7 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 
 ![NSG フロー ログの処理のデータ フロー](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
-## <a name="supported-regions"></a>サポートされているリージョン
+## <a name="supported-regions-nsg"></a>サポートされているリージョン:NSG 
 
 NSG のトラフィック分析は、次のサポートされているどのリージョンでも使用できます。
 
@@ -84,6 +84,8 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
 * 東日本 
 * 西日本
 * 米国政府バージニア州
+
+## <a name="supported-regions-log-analytics-workspaces"></a>サポートされているリージョン:Log Analytics ワークスペース
 
 Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
 * カナダ中部
@@ -137,7 +139,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ### <a name="enable-network-watcher"></a>Network Watcher を有効にする
 
-トラフィックを分析するには、トラフィックの分析対象となる NSG がある各リージョンで、既存の Network Watcher を使用するか、[Network Watcher を有効にする](network-watcher-create.md)必要があります。 トラフィック分析は、[サポートされているリージョン](#supported-regions)のいずれかでホストされている NSG に対して有効にすることができます。
+トラフィックを分析するには、トラフィックの分析対象となる NSG がある各リージョンで、既存の Network Watcher を使用するか、[Network Watcher を有効にする](network-watcher-create.md)必要があります。 トラフィック分析は、[サポートされているリージョン](#supported-regions-nsg)のいずれかでホストされている NSG に対して有効にすることができます。
 
 ### <a name="select-a-network-security-group"></a>ネットワーク セキュリティ グループを選択する
 
@@ -147,7 +149,7 @@ Azure Portal の左側にある **[監視]** を選択し、 **[Network Watcher]
 
 ![NSG フロー ログを有効にする必要がある NSG の選択](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
-[サポートされているリージョン](#supported-regions)以外のリージョンでホストされている NSG に対してトラフィック分析を有効にしようとすると、"見つかりません" というエラーが表示されます。
+[サポートされているリージョン](#supported-regions-nsg)以外のリージョンでホストされている NSG に対してトラフィック分析を有効にしようとすると、"見つかりません" というエラーが表示されます。
 
 ## <a name="enable-flow-log-settings"></a>フロー ログ設定の有効化
 
@@ -174,17 +176,18 @@ New-AzStorageAccount `
 
 1. *[状態]* で、 **[オン]** を選択します。
 2. **[フロー ログ バージョン]** で、 *[バージョン 2]* を選択します。 バージョン 2 には、フローセッションの統計 (バイトおよびパケット) が含まれます。
-3. フロー ログを保存する既存のストレージ アカウントを選択します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。
+3. フロー ログを保存する既存のストレージ アカウントを選択します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。 ストレージの [Data Lake Storage Gen2 Hierarchical Namespace Enabled]\(Data Lake Storage Gen2 の階層型名前空間の有効化\) が確実に true には設定されていないようにします。 また、NSG フロー ログは、ファイアウォールが設定されたストレージ アカウントに格納することはできません。 
 4. **[リテンション期間]** を、データを保存する日数に設定します。
 5. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、 **[オン]** を選択します。
-6. 既存の Log Analytics (OMS) ワークスペースを選択するか、 **[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#supported-regions)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
+6. 処理間隔を選択します。 選択内容に基づいて、フロー ログがストレージ アカウントから収集され、Traffic Analytics によって処理されます。 処理間隔は、1 時間ごとまたは 10 分ごとを選択できます。
+7. 既存の Log Analytics (OMS) ワークスペースを選択するか、 **[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#supported-regions-log-analytics-workspaces)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
 
     トラフィック分析ソリューションをホストするログ分析ワークスペースと NSG は、同じリージョンに存在する必要はありません。 たとえば、西ヨーロッパ リージョンのワークスペースにトラフィック分析があり、米国東部と米国西部に NSG があっても構いません。 同じワークスペースに複数の NSG を構成できます。
-7. **[保存]** を選択します。
+8. **[保存]** を選択します。
 
-    ![ストレージ アカウント、Log Analytics ワークスペース、Traffic Analytics の有効化の選択](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
+    ![ストレージ アカウント、Log Analytics ワークスペース、Traffic Analytics の有効化の選択](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国/地域の法律や規制で許可されていることを確認してください。
+トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国の法律や規制で許可されていることを確認してください。 NSG ごとに異なる処理間隔を設定した場合、データは異なる間隔で収集されます。 例: 重大な VNET には 10 分、重要でない VNET には 1 時間の処理間隔を有効にするように選択できます。
 
 また、Azure PowerShell で [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell コマンドレットを使用して、トラフィック分析を構成できます。 `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを見つけます。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 

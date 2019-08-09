@@ -3,18 +3,18 @@ title: Azure Maps 内のラスター マップ上にカスタム データをレ
 description: Azure Maps 内のラスター マップ上にカスタム データをレンダリングします。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 04/03/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a9fed8464bd19c4b8a32e37c8c97698f0a2d9503
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6343931287ed59363db2715641ca63a814a9c32
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734300"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638804"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -133,13 +133,27 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
     }
     ```
 
-4. **[送信]** を選択し、応答ヘッダーを確認します。 今後使用するためにデータにアクセスしたり、データをダウンロードしたりするために使用する URI は、location ヘッダーに格納されます。 また、アップロードされたデータの一意の `udId` もそこに格納されます。  
+4. **[送信]** を選択し、応答ヘッダーを確認します。 要求が成功すると、Location ヘッダーには、アップロード要求の現在の状態を確認するための状態 URI が格納されます。 状態 URI は次の形式になります。  
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-5. マップ上にフィーチャーをレンダリングするには、Data Upload API から受け取った `udId` 値を使用します。 これを行うには、前のセクションで作成したコレクションの新しいタブを開きます。 [builder]\(ビルダー\) タブで GET HTTP メソッドを選択し、この URL を入力して GET 要求を行います。
+5. 状態 URI をコピーし、データのアップロードに使用した Azure Maps アカウントのサブスクリプション キーを値として持つ subscription-key パラメーターを追加します。 状態 URI の形式は次のようになります。
+
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
+
+6. udId を取得するには、Postman アプリで新しいタブを開き、[ビルダー] タブで GET HTTP メソッドを選択し、状態 URI で GET 要求を行います。 データのアップロードが成功した場合は、応答本文で udId が返されます。 udId をコピーします。
+
+   ```JSON
+   {
+      "udid" : "{udId}"
+   }
+   ```
+
+7. マップ上にフィーチャーをレンダリングするには、Data Upload API から受け取った `udId` 値を使用します。 これを行うには、前のセクションで作成したコレクションの新しいタブを開きます。 [builder]\(ビルダー\) タブで GET HTTP メソッドを選択し、この URL を入力して GET 要求を行います。
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -161,7 +175,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
     
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&sku=S1&zoom=14&height=500&Width=500&center=-74.040701, 40.698666&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.50||-74.03995513916016 40.70090237454063|-74.04082417488098 40.70028420372218|-74.04113531112671 40.70049568385827|-74.04298067092896 40.69899904076542|-74.04271245002747 40.69879568992435|-74.04367804527283 40.6980961582905|-74.04364585876465 40.698055487620714|-74.04368877410889 40.698022951066996|-74.04168248176573 40.696444909137|-74.03901100158691 40.69837271818651|-74.03824925422668 40.69837271818651|-74.03809905052185 40.69903971085914|-74.03771281242369 40.699340668780984|-74.03940796852112 40.70058515602143|-74.03948307037354 40.70052821920425|-74.03995513916016 40.70090237454063
-    &subscription-key={subscription--key}
+    &subscription-key={subscription-key}
     ```
 
     応答イメージを次に示します。

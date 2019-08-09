@@ -3,19 +3,19 @@ title: 倫理と責任ある使用 - Personalizer
 titleSuffix: Azure Cognitive Services
 description: これらのガイドラインは、会社およびサービスへの信頼の構築を助けるようなパーソナル化の実装を支援することを目的としています。 必ず、パーソナル化が人々の生活に与える影響を調査し、学び、慎重に検討してください。 疑問がある場合は、ガイダンスを求めてください。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: edjez
-ms.openlocfilehash: ceb32e9e378ba1e58db11e55be8bd551faf08c2a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.author: diberry
+ms.openlocfilehash: f565d95f8270612a8d83dd44a1e1bb895d1a4373
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722397"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662786"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Personalizer の責任ある実装のガイドライン
 

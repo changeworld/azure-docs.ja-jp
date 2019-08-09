@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 030259f7773435760c09afd25ca674b63bb1b3ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 743f15c13a2e4fe7215229145b49fd87a32a1f18
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67073235"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663276"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -51,7 +51,7 @@ Application Insights は、分散しているテレメトリを相関付ける�
 
 結果において、すべてのテレメトリ項目がルートの `operation_Id` を共有していることに注目してください。 このページから Ajax の呼び出しが行われると、新しい一意の ID (`qJSXU`) が依存関係テレメトリに割り当てられ、pageView の ID が `operation_ParentId` として使用されます。 その後、サーバー要求で Ajax の ID が `operation_ParentId` として使用されます。
 
-| itemType   | name                      | ID           | operation_ParentId | operation_Id |
+| itemType   | 名前                      | id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Stock page                |              | STYz               | STYz         |
 | dependency | GET /Home/Stock           | qJSXU        | STYz               | STYz         |
@@ -85,6 +85,14 @@ Microsoft では、[W3C 分散トレース形式](https://w3c.github.io/trace-co
 
 - `RequestTrackingTelemetryModule` の下に、値が `true` に設定されている `EnableW3CHeadersExtraction` 要素を追加します。
 - `DependencyTrackingTelemetryModule` の下に、値が `true` に設定されている `EnableW3CHeadersInjection` 要素を追加します。
+- `TelemetryInitializers` の下に次のような `W3COperationCorrelationTelemetryInitializer` を追加します 
+
+```xml
+<TelemetryInitializers>
+  <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
+   ...
+</TelemetryInitializers> 
+```
 
 #### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>ASP.NET Core アプリの W3C 分散トレース サポートを有効にする
 

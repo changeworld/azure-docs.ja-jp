@@ -1,18 +1,18 @@
 ---
 title: Azure VM バックアップについて
 description: Azure VM バックアップについて、また、いくつかのベスト プラクティスについて説明します。
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: raynew
-ms.openlocfilehash: bf6aa07319b8029744a5c8898a4104d330fbb1d1
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7a470674fa9ccdde2b33bb33bfb52bead1822895
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465229"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639734"
 ---
 # <a name="about-azure-vm-backup"></a>Azure VM バックアップについて
 
@@ -111,8 +111,8 @@ Azure Backup では、バックアップ スケジュールに従ってスナッ
 VM バックアップを構成するときは、次のプラクティスに従うことをお勧めします。
 
 - ポリシーで設定されている既定のスケジュール時間を変更します。 たとえば、ポリシーで既定の時間が午前 0 時の場合、リソースが最適に使用されるよう、数分時間を進めることを検討してください。
-- Premium Storage を使用する VM のバックアップでは、Azure Backup の最新バージョン ([インスタント リストア](backup-instant-restore-capability.md)) を実行することをお勧めします。 最新バージョンを実行しない場合、Backup では合計ストレージ スペースの約 50% が割り当てられます。 バックアップ サービスでは、スナップショットを同じストレージ アカウントにコピーし、それをコンテナーに転送するために、この容量が必要になります。
 - 1 つのコンテナーから複数の VM を復元する場合は、ターゲットのストレージ アカウントがスロットルされないようにするために、それぞれ異なる[汎用 v2 ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用することを強くお勧めします。 たとえば、VM ごとに異なるストレージ アカウントが必要です。 たとえば、10 個の VM を復元する場合は、10 個の異なるストレージ アカウントを使用します。
+- インスタント リストアで Premium Storage を使用している VM のバックアップについては、割り当てられた合計ストレージ領域の *50%* の空き領域 (最初のバックアップに**のみ**必要) を割り当てることをお勧めします。 最初のバックアップが完了すると、バックアップに 50% の空き領域は不要になります。
 - 汎用 v1 ストレージ レイヤー (スナップショット) からの復元は、スナップショットが同じストレージ アカウントにあるため、分単位で完了します。 汎用 v2 ストレージ レイヤー (コンテナー) からの復元には、数時間かかります。 データが汎用 v1 ストレージで使用できる場合は、復元を高速化するため[インスタント リストア](backup-instant-restore-capability.md)機能を使用することをお勧めします。 (データをコンテナーから復元する必要がある場合、さらに時間がかかります。)
 - ストレージ アカウントあたりのディスク数の制限は、サービスとしてのインフラストラクチャ (IaaS) VM で実行されているアプリケーションがディスクにどれくらいアクセスするかによって決まります。 通常、1 つのストレージ アカウント上に 5 ～ 10 個以上のディスクが存在する場合は、一部のディスクを別のストレージ アカウントに移動して負荷を分散します。
 

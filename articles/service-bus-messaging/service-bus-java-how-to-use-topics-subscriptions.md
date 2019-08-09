@@ -1,5 +1,5 @@
 ---
-title: Java で Azure Service Bus トピックを使用する方法 | Microsoft Docs
+title: Java で Azure Service Bus のトピックとサブスクリプションを使用する
 description: Azure で Service Bus のトピックとサブスクリプションを使用する方法を説明します。
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 578fd0caa8986c48b3fd50a7890bb66b14bee2f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-java-july2019
+ms.openlocfilehash: 822fadb661fd9fcdde8ff75fa4f9e60dfa44c97b
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991722"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663419"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Java で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -38,7 +39,7 @@ ms.locfileid: "65991722"
 3. [Azure SDK for Java][Azure SDK for Java]。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
-このサンプルを作成する前に、[Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。
+このサンプルを作成する前に [Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。
 
 ![Eclipse ビルド パス内のライブラリ](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
 

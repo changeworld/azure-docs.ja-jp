@@ -2,26 +2,22 @@
 title: Azure Stream Analytics でのリアルタイム Twitter 感情分析
 description: この記事では、リアルタイム Twitter 感情分析に Stream Analytics を使う方法について説明します。 イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: jasonh
-manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/29/2017
-ms.openlocfilehash: f24ad348c681609392f83af894bf774dbee226bc
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 07/9/2019
+ms.openlocfilehash: a0dd2499f3ddfaa1cd22a58e058c6adb7e40fd7e
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620840"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620042"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
-> [!IMPORTANT] 
-> Twitter アプリケーションを [apps.twitter.com](https://apps.twitter.com/) で作成することはできなくなりました。 このチュートリアルは、新しい Twitter API を反映するための更新作業が進行中です。
-
-Azure Event Hubs に Twitter イベントをリアルタイム入力することで、ソーシャル メディア分析のためのセンチメント分析ソリューションを構築する方法について説明します。 Azure Stream Analytics クエリを作成してデータを分析し、後で使用できるように結果を保存したり、ダッシュボードや [Power BI](https://powerbi.com/) を使用してリアルタイムで洞察を提供したりできます。
+Azure Event Hubs に Twitter イベントをリアルタイム入力することで、ソーシャル メディア分析のためのセンチメント分析ソリューションを構築する方法について説明します。 次に、Azure Stream Analytics クエリを作成してデータを分析し、後で使用できるように結果を保存したり、[Power BI](https://powerbi.com/) ダッシュボードを作成してリアルタイムで分析情報を提供したりすることができます。
 
 ソーシャル メディア分析ツールは、組織がトレンド トピックを把握するのに役立ちます。 トレンド トピックとは、ソーシャル メディアにおいて大量の投稿が行われているテーマや考え方のことです。 センチメント分析 (*意見マイニング*ともいう) ではソーシャル メディア分析ツールを使用して、製品やアイデアに対する考え方を特定します。 
 
@@ -31,23 +27,21 @@ Azure Event Hubs に Twitter イベントをリアルタイム入力すること
 
 ニュース メディア Web サイトを運営している会社は、その閲覧者に直接関係するサイト コンテンツを際立たせることで、競合他社より優位に立つことに着目しています。 そのため、会社は、Twitter データのリアルタイム感情分析を実行することで、閲覧者に関連するトピックのソーシャル メディア分析を使用します。
 
-Twitter のトレンド トピックをリアルタイムで特定するには、主要なトピックのツイートの量とセンチメントに関するリアルタイム分析が必要です。 つまり、このソーシャル メディア フィードに基づいた感情分析エンジンが必要となります。
+Twitter のトレンド トピックをリアルタイムで特定するには、主要なトピックのツイートの量とセンチメントに関するリアルタイム分析が必要です。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルでは、Twitter に接続し、特定のハッシュタグ (設定可能) が付いたツイートを検索するクライアント アプリケーションを使用します。 アプリケーションを実行し、Azure Stream Analytics を使用してツイートを分析するには、次のものが必要です。
+この攻略ガイドでは、Twitter に接続し、特定のハッシュタグ (設定可能) が付いたツイートを検索するクライアント アプリケーションを使用します。 アプリケーションを実行し、Azure Stream Analytics を使用してツイートを分析するには、次のものが必要です。
 
-* Azure サブスクリプション
-* Twitter アカウント 
-* Twitter アプリケーションと、そのアプリケーションの [OAuth アクセス トークン](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)。 Twitter アプリケーションを作成する大まかな手順については後ほど説明します。
+* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+* [Twitter](https://twitter.com) アカウント。
 * Twitter フィードを読み取る TwitterWPFClient アプリケーション。 このアプリケーションを入手するには、GitHub から [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) ファイルをダウンロードし、コンピューター上のフォルダーにパッケージを解凍します。 ソース コードを確認し、デバッガーでアプリケーションを実行する場合は、[GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TwitterClient) からソース コードを入手できます。 
 
 ## <a name="create-an-event-hub-for-streaming-analytics-input"></a>Stream Analytics の入力用のイベント ハブの作成
 
 サンプル アプリケーションでは、イベントを生成し、Azure イベント ハブにプッシュします。 Azure イベント ハブは、Stream Analytics に推奨されるイベント取り込み方法です。 詳細については、[Azure Event Hubs のドキュメント](../event-hubs/event-hubs-what-is-event-hubs.md)をご覧ください。
 
-
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>イベント ハブの名前空間とイベント ハブを作成する
-この手順では、まずイベント ハブの名前空間を作成し、その名前空間にイベント ハブを追加します。 イベント ハブの名前空間は、関連するイベント バス インスタンスを論理的にグループ化するために使われます。 
+イベント ハブの名前空間を作成し、その名前空間にイベント ハブを追加します。 イベント ハブの名前空間は、関連するイベント バス インスタンスを論理的にグループ化するために使われます。 
 
 1. Azure Portal にログインし、 **[リソースの作成]**  >  **[モノのインターネット]**  >  **[イベント ハブ]** をクリックします。 
 
@@ -113,27 +107,26 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 クライアント アプリケーションは、Twitter からツイート イベントを直接取得します。 そのために、クライアント アプリケーションには Twitter ストリーミング API を呼び出すためのアクセス許可が必要です。 このアクセス許可を構成するために、Twitter でアプリケーションを作成し、一意の資格情報 (OAuth トークンなど) を生成します。 次に、API 呼び出しを行うときにこれらの資格情報を使用するようにクライアント アプリケーションを構成します。 
 
 ### <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
-このチュートリアルで使用できる Twitter アプリケーションがまだない場合は、アプリケーションを作成できます。 Twitter アカウントを既に持っている必要があります。
+この攻略ガイドで使用できる Twitter アプリケーションがまだない場合は、アプリケーションを作成できます。 Twitter アカウントを既に持っている必要があります。
 
 > [!NOTE]
 > Twitter でアプリケーションを作成し、キー、シークレット、トークンを取得するための正確なプロセスが変更されている場合があります。 以下の手順が Twitter サイトで表示される内容と一致しない場合は、Twitter の開発者向けドキュメントを参照してください。
 
-1. [Twitter のアプリケーション管理ページ](https://apps.twitter.com/)に移動します。 
+1. Web ブラウザーで [Twitter の開発者用ページ](https://developer.twitter.com/en/apps)に移動して、 **[Create an app]\(アプリの作成\)** を選択します。 Twitter 開発者アカウントを申請する必要があるというメッセージが表示される場合があります。 お気軽にお申し込みください。申請が承認されると、確認メールを受け取ります。 開発者アカウントの承認には、数日かかることがあります。
 
-2. 新しいアプリケーションを作成します。 
+   ![Twitter 開発者アカウントの確認](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-dev-confirmation.png "Twitter 開発者アカウントの確認")
 
-   * Web サイトの URL に有効な URL を指定します。 これはライブ サイトである必要はありません (`localhost` だけを指定することはできません)。
-   * コールバック フィールドは空白のままにしておきます。 このチュートリアルで使用するクライアント アプリケーションではコールバックは不要です。
+   ![Twitter アプリケーションの詳細](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Twitter アプリケーションの詳細")
 
-     ![Twitter でのアプリケーションの作成](./media/stream-analytics-twitter-sentiment-analysis-trends/create-twitter-application.png)
+2. **[Create an application]\(アプリケーションの作成\)** ページで新しいアプリの詳細を入力し、 **[Create your Twitter application]\(Twitter アプリケーションの作成\)** を選択します。
 
-3. 必要に応じて、アプリケーションのアクセス許可を読み取り専用に変更します。
+   ![Twitter アプリケーションの詳細](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Twitter アプリケーションの詳細")
 
-4. アプリケーションが作成されたら、 **[Keys and Access Tokens]** ページに移動します。
+3. アプリケーションのページで **[Keys and Tokens]\(キーとトークン\)** タブを選択し、 **[Consumer API Key]\(コンシューマー API キー\)** と **[Consumer API Secret Key]\(コンシューマー API シークレット キー\)** の値をコピーします。 さらに、 **[Access Token and Access Token Secret]\(アクセス トークンとアクセス トークン シークレット\)** の下の **[Create]\(作成\)** を選択して、アクセス トークンを生成します。 **[Access Token]\(アクセス トークン\)** と **[Access Token Secret]\(アクセス トークン シークレット\)** の値をコピーします。
 
-5. アクセス トークンとアクセス トークン シークレットを生成するボタンをクリックします。
+    ![Twitter アプリケーションの詳細](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-app-key-secret.png "Twitter アプリケーションの詳細")
 
-この情報は次の手順で必要になるため、手元に置いておいてください。
+Twitter アプリケーションについて取得した値を保存します。 値は、この操作方法で後ほど必要になります。
 
 >[!NOTE]
 >Twitter アプリケーションのキーとシークレットにより、Twitter アカウントにアクセスできるようになります。 Twitter のパスワードと同様に、この情報は機密情報として扱ってください。 たとえば、他のユーザーに提供するアプリケーションにこの情報を埋め込まないでください。 
@@ -232,7 +225,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
 ## <a name="specify-the-job-query"></a>ジョブ クエリの指定
 
-Stream Analytics は、変換を記述するための単純な宣言型のクエリのモデルをサポートします。 言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を参照してください。  このチュートリアルでは、Twitter データに対するいくつかのクエリを作成してテストすることができます。
+Stream Analytics は、変換を記述するための単純な宣言型のクエリのモデルをサポートします。 言語に関する詳細については、 [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)を参照してください。  この攻略ガイドでは、Twitter データに対するいくつかのクエリを作成してテストすることができます。
 
 トピック間のメンション数を比較するには、[タンブリング ウィンドウ](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)を使用して、5 秒ごとにトピック別のメンション数を取得します。
 
@@ -292,7 +285,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 イベント ストリーム、イベントを取り込むためのイベント ハブ入力、ストリームに対して変換を実行するためのクエリを定義しました。 最後に、ジョブの出力シンクを定義します。  
 
-このチュートリアルでは、ジョブ クエリから Azure Blob Storage に集計済みのツイート イベントを書き込みます。  アプリケーションのニーズに応じて、Azure SQL Database、Azure Table Storage、Event Hubs、または Power BI に結果をプッシュすることもできます。
+この攻略ガイドでは、ジョブ クエリから Azure Blob Storage に集計済みのツイート イベントを書き込みます。  アプリケーションのニーズに応じて、Azure SQL Database、Azure Table Storage、Event Hubs、または Power BI に結果をプッシュすることもできます。
 
 ## <a name="specify-the-job-output"></a>ジョブの出力の指定
 
@@ -350,7 +343,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 Twitter のセンチメントを理解するために使用できるもう 1 つのクエリは、[スライディング ウィンドウ](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)に基づいています。 トレンド トピックを特定するには、指定された期間にメンションのしきい値を超えるトピックを検索します。
 
-このチュートリアルでは、直近の 5 秒間で 20 回を超えてメンションされたトピックをチェックします。
+この攻略ガイドでは、直近の 5 秒間で 20 回を超えてメンションされたトピックをチェックします。
 
 1. ジョブ ブレードで **[停止]** をクリックしてジョブを停止します。 
 

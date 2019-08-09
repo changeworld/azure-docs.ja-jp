@@ -2,18 +2,18 @@
 title: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする
 description: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする方法について説明します
 service: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: raynew
-ms.openlocfilehash: 0835c3af52a16e7549698e35b3fded0f64c71dc4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: dacurwin
+ms.openlocfilehash: 9a6ea961f7433f511ef22a6ac9aaefa51b5df8aa
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447708"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663704"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -228,9 +228,9 @@ VM のアクセス権が NSG によって管理される場合は、バックア
 4. **[ソース ポート範囲]** で、任意のポートからの発信アクセスを許可するアスタリスク (*) を入力します。
 5. **[宛先]** で **[サービス タグ]** を選択します。 一覧から、**Storage.region** を選択します。 リージョンはコンテナーと、バックアップする VM が配置されている場所です。
 6. **[宛先ポート範囲]** でポートを選択します。
-    - アンマネージド VM と暗号化されていないストレージ アカウント:80
-    - アンマネージド VM と暗号化されているストレージ アカウント:443 (既定の設定)
-    - マネージド VM:8443
+    - アンマネージド ディスクと暗号化されていないストレージ アカウントを使用する VM: 80
+    - アンマネージド ディスクと暗号化されているストレージ アカウントを使用する VM: 443 (既定の設定)
+    - マネージド ディスクを使用する VM: 8443
 7. **[プロトコル]** で、 **[TCP]** を選択します。
 8. **[優先度]** で、上位の拒否ルールより低い優先度値を指定します。
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 62d359494050b188869d51d1e3975c823b9c0a76
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 50056d4d05d2426ff644518aea04a2c9f4d817f3
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204934"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667165"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -25,7 +25,7 @@ ms.locfileid: "67204934"
 
 [host.json](functions-host-json.md) ファイルと [local.settings.json](functions-run-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
 
-## <a name="appinsightsinstrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
+## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
 Application Insights を使用している場合の Application Insights インストルメンテーション キーです。 「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
@@ -33,9 +33,9 @@ Application Insights を使用している場合の Application Insights イン�
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
 
-## <a name="azurefunctionsenvironment"></a>AZURE_FUNCTIONS_ENVIRONMENT
+## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-Functions ランタイムのバージョン 2.x では、ランタイム環境に基づいてアプリの動作を構成します。 この値は、[初期化中に読み取られます](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)。 `AZURE_FUNCTIONS_ENVIRONMENT` は任意の値に設定することができますが、次の [3 つの値](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)がサポートされています。[Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)、[Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 `AZURE_FUNCTIONS_ENVIRONMENT` が設定されていない場合、既定値は `Production` です。 この設定は、ランタイム環境を設定するために、`ASPNETCORE_ENVIRONMENT` の代わりに使用する必要があります。 
+Functions ランタイムのバージョン 2.x では、ランタイム環境に基づいてアプリの動作を構成します。 この値は、[初期化中に読み取られます](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)。 `AZURE_FUNCTIONS_ENVIRONMENT` は任意の値に設定することができますが、次の [3 つの値](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)がサポートされています。[Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)、[Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 `AZURE_FUNCTIONS_ENVIRONMENT` が設定されていない場合、既定では、ローカル環境では `Development` になり、Azure では `Production` になります。 この設定は、ランタイム環境を設定するために、`ASPNETCORE_ENVIRONMENT` の代わりに使用する必要があります。 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -92,7 +92,7 @@ Azure Functions ランタイムは、HTTP によってトリガーされる関�
 |---|------------|
 |AzureWebJobsStorage|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
-## <a name="azurewebjobstypescriptpath"></a>AzureWebJobs_TypeScriptPath
+## <a name="azurewebjobs_typescriptpath"></a>AzureWebJobs_TypeScriptPath
 
 Typescript で使用されるコンパイラへのパスです。 必要に応じて、既定値はオーバーライドできます。
 
@@ -100,7 +100,7 @@ Typescript で使用されるコンパイラへのパスです。 必要に応�
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%HOME%\typescript|
 
-## <a name="functionappeditmode"></a>FUNCTION\_APP\_EDIT\_MODE
+## <a name="function_app_edit_mode"></a>FUNCTION\_APP\_EDIT\_MODE
 
 Azure portal での編集が有効になっているかどうかを決定します。 有効な値は "readwrite" および "readonly" です。
 
@@ -108,7 +108,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |---|------------|
 |FUNCTION\_APP\_EDIT\_MODE|readonly|
 
-## <a name="functionsextensionversion"></a>FUNCTIONS\_EXTENSION\_VERSION
+## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
 
 この関数アプリで使用する Functions ランタイムのバージョンです。 メジャー バージョンのチルダ (例: "~2") は、そのメジャー バージョンの最新バージョンを使用することを意味します。 同じメジャー バージョンの新しいバージョンが使用できる場合、それらは関数アプリに自動的にインストールされています。 特定のバージョンにアプリを固定するには、完全なバージョン番号 (例: "2.0.12345") を使用します。 既定値は "~2" です。 `~1` の値は、アプリをバージョン 1.x のランタイムに固定します。
 
@@ -116,7 +116,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
 
-## <a name="functionsworkerruntime"></a>FUNCTIONS\_WORKER\_RUNTIME
+## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
 ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、`powershell` (PowerShell)、`python` (Python) です。
 
@@ -124,23 +124,23 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |---|------------|
 |FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
-## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
+## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
-従量課金プラン用のみです。 関数アプリのコードと構成が格納されているストレージ アカウントの接続文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
+使用量および Premium プランのみ。 関数アプリのコードと構成が格納されているストレージ アカウントの接続文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
 
 |キー|値の例|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
-## <a name="websitecontentshare"></a>WEBSITE\_CONTENTSHARE
+## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
-従量課金プラン用のみです。 関数アプリ コードと構成へのファイル パスです。 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING と共に使用されます。 既定は、関数アプリ名で始まる一意文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
+使用量および Premium プランのみ。 関数アプリ コードと構成へのファイル パスです。 WEBSITE_CONTENTAZUREFILECONNECTIONSTRING と共に使用されます。 既定は、関数アプリ名で始まる一意文字列です。 「[Function App を作成する](functions-infrastructure-as-code.md#create-a-function-app)」を参照してください。
 
 |キー|値の例|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-## <a name="websitemaxdynamicapplicationscaleout"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
+## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
 関数アプリがスケールアウトできる最大のインスタンス数です。 既定は無制限です。
 
@@ -151,7 +151,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |---|------------|
 |WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|5|
 
-## <a name="websitenodedefaultversion"></a>WEBSITE\_NODE\_DEFAULT_VERSION
+## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
 既定値は "8.11.1" です。
 
@@ -159,7 +159,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |---|------------|
 |WEBSITE\_NODE\_DEFAULT_VERSION|8.11.1|
 
-## <a name="websiterunfrompackage"></a>WEBSITE\_RUN\_FROM\_PACKAGE
+## <a name="website_run_from_package"></a>WEBSITE\_RUN\_FROM\_PACKAGE
 
 マウントされたパッケージ ファイルから関数アプリを実行できるようにします。
 
@@ -169,7 +169,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 有効な値は、展開パッケージ ファイルの場所に解決される URL、または `1` です。 `1` に設定した場合、パッケージは `d:\home\data\SitePackages` フォルダーに存在する必要があります。 この設定で zip デプロイを使用すると、パッケージは自動的にこの場所にアップロードされます。 プレビューでは、この設定は `WEBSITE_RUN_FROM_ZIP` という名前でした。 詳細については、[パッケージ ファイルからの関数の実行](run-functions-from-deployment-package.md)に関するページを参照してください。
 
-## <a name="azurefunctionproxydisablelocalcall"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 
 既定では、Functions プロキシは新しい HTTP 要求を作成するのではなく、同じ Function App 内の関数にプロキシから直接 API 呼び出しを送信するためのショートカットを使用します。 この設定を使用すると、その動作を無効にすることができます。
 
@@ -179,7 +179,7 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|これが既定値です。 ローカル Function App 内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されるようになります|
 
 
-## <a name="azurefunctionproxybackendurldecodeslashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
 この設定は、スラッシュがバックエンド URL に挿入されたときに、%2F をルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
 

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 07/12/2019
 ms.author: dech
-ms.openlocfilehash: 01645e66907e01b2e8fcb771976b50e5bbc8abf4
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 0368e99135dd6e377dd2820b3e673c55182319b9
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228954"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663805"
 ---
 # <a name="azure-cosmos-db-net-standard-sdk-for-sql-api-download-and-release-notes"></a>SQL API 用の Azure Cosmos DB .NET Standard SDK:ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -28,8 +28,8 @@ ms.locfileid: "68228954"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
@@ -41,6 +41,25 @@ ms.locfileid: "68228954"
 |**現在サポートされているフレームワーク**|[Microsoft .NET Standard 2.0](/dotnet/standard/net-standard)|
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="a-name310310"></a><a name="3.1.0"/>3.1.0
+#### <a name="added"></a>追加済み
+- [#541](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/541) クライアントおよびクエリ オプションに整合性レベルが追加されました
+- [#544](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/544) LINQ に対する継続トークンのサポートが追加されました
+- [#557](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/557) 項目要求オプションにトリガー オプションが追加されました
+- [#571](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/571) オプションの設定を含む既定の JSON.net シリアライザーが追加されました
+- [#572](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/572) CreateContainerIfNotExistsAsync にパーティション キーの検証が追加されました
+- [#581](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/581) QueryDefinition API に LINQ が追加されました
+- [#592](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/592) コンテナー ビルダーに CreateIfNotExistsAsync が追加されました
+- [#597](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/597) ResponseMessage に継続トークン プロパティが追加されました
+- [#604](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/604) LINQ ToStreamIterator 拡張メソッドが追加されました
+
+#### <a name="fixed"></a>固定
+- [#548](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/548) CosmosException.ToString() のメッセージの誤りを修正しました
+- [#558](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/558) LocationCache ConcurrentDict のロックの競合を修正しました
+- [#561](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/561) GetItemLinqQueryable が null クエリで動作するようになりました
+- [#567](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/567) クエリで異なる言語カルチャが正しく処理されるようになりました
+- [#574](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/574) 予期しない例外でクエリ解析が失敗した場合の空のエラー メッセージを修正しました
+- [#576](https://github.com/Azure/azure-cosmos-dotnet-v3/pull/576) クエリで入力がストリームに正しくシリアル化されるようになりました
 
 ### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0 
 * .NET SDK の[バージョン 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) の一般提供
@@ -67,7 +86,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [3.1.0](#3.1.0) |2019 年 7 月 29 日 |--- |
 | [3.0.0](#3.0.0) |2019 年 7 月 15 日 |--- |
+
 
 ## <a name="faq"></a>FAQ
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

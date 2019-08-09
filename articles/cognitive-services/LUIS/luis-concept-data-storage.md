@@ -1,6 +1,6 @@
 ---
-title: データ ストレージ
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: データストレージ - LUIS
+titleSuffix: Azure Cognitive Services
 description: LUIS では、キーによって指定された領域に対応する Azure のデータ ストアに、データが暗号化されて格納されます。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: a1093c2a6303b453a17a52058303913de5ecfa8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812941"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639224"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUIS) Cognitive Services でのデータの格納と削除
 LUIS では、キーによって指定された領域に対応する Azure のデータ ストアに、データが暗号化されて格納されます。 このデータは 30 日間保存されます。 
@@ -34,6 +34,7 @@ LUIS では、キーによって指定された領域に対応する Azure の�
 <a name="utterances-in-an-intent"></a>
 
 ### <a name="delete-example-utterances-from-an-intent"></a>意図からの発話例の削除
+
 [LUIS](luis-reference-regions.md) のトレーニングに使用された発話の例を削除します。 LUIS アプリから発話の例を削除すると、LUIS Web サービスから削除されて、エクスポートに使用できなくなります。
 
 <a name="utterances-in-review"></a>

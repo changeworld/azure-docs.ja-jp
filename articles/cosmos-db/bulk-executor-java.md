@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 68c83809cba0585d99751760c0e4f51893806170
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257210"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619816"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
 このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos DB コンテナーに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
 
-現在、Bulk Executor ライブラリは、Azure Cosmos DB SQL API および Gremlin API アカウントによってのみサポートされています。 この記事では、SQL API アカウントで Bulk Executor .NET ライブラリを使用する方法について説明します。 Gremlin API での Bulk Executor .NET ライブラリの使用の詳細については、[Azure Cosmos DB Gremlin API での一括操作の実行](bulk-executor-graph-dotnet.md)に関するページを参照してください。
+現在、Bulk Executor ライブラリは、Azure Cosmos DB SQL API および Gremlin API アカウントによってのみサポートされています。 この記事では、SQL API アカウントで Bulk Executor Java ライブラリを使用する方法について説明します。 Gremlin API での Bulk Executor .NET ライブラリの使用の詳細については、[Azure Cosmos DB Gremlin API での一括操作の実行](bulk-executor-graph-dotnet.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。  
 
-* Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` エンドポイントで [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。  
+* Azure サブスクリプションを必要とせず、課金や契約もなく [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` エンドポイントで [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。  
 
 * [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)  
   - Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。  

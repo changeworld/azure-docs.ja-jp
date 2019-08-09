@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c2c9ca3082aa9c2067a63f8d6304e8a229dac14a
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6537bfe5df8de298593428fb21448181ad8075fc
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810114"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663465"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -32,7 +32,7 @@ Hyper-V VM | Azure Migrate Assessment ツールを使用した Hyper-V VM の評
 
 ## <a name="appliance-access"></a>アプライアンスへのアクセス
 
-アプライアンスを構成した後、TCP ポート 3389 を介してアプライアンス VM にリモート アクセスできます。 また、URL: ``` https://<appliance-ip-or-name>:44368 ``` を使用して、ポート 44368 でアプライアンスの Web 管理アプリにリモート アクセスすることもできます。
+アプライアンスを構成した後、TCP ポート 3389 を介してアプライアンス VM にリモート アクセスできます。 また、URL: `https://<appliance-ip-or-name>:44368` を使用して、ポート 44368 でアプライアンスの Web 管理アプリにリモート アクセスすることもできます。
 
 ## <a name="appliance-license"></a>アプライアンスのライセンス
 アプライアンスには、180 日間有効な Windows Server 2016 評価版ライセンスが付属します。 評価期間が期限切れ間近の場合は、新しいアプライアンスをダウンロードしてデプロイするか、アプライアンス VM のオペレーティング システムのライセンスをアクティブ化することをお勧めします。
@@ -152,7 +152,7 @@ VM のバージョン | Msvm_ProcessorSettingData | VirtualQuantity
 メモリ (バイト) | Msvm_MemorySettingData | VirtualQuantity
 VM が使用できる最大メモリ | Msvm_MemorySettingData | 制限
 動的メモリの有効化 | Msvm_MemorySettingData | DynamicMemoryEnabled
-オペレーティング システムの名前/バージョン/FQDN | Msvm_KvpExchangeComponent | GuestIntrinsciExchangeItems 名前データ
+オペレーティング システムの名前/バージョン/FQDN | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems 名前データ
 VM の電源状態 | Msvm_ComputerSystem | EnabledState
 **各ディスクの詳細** | 
 ディスク識別子 | Msvm_VirtualHardDiskSettingData | VirtualDiskId

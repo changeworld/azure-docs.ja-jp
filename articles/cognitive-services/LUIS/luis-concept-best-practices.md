@@ -1,6 +1,6 @@
 ---
-title: ベスト プラクティス
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: ベスト プラクティス - LUIS
+titleSuffix: Azure Cognitive Services
 description: LUIS アプリのモデルから最良の結果を得るための LUIS のベスト プラクティスについて説明します。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812916"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639279"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Cognitive Services を使用して Language Understanding アプリを構築するためのベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。 
@@ -27,7 +27,7 @@ ms.locfileid: "60812916"
 * エンドポイントからテストする 
 * 機能を追加する
 
-ご自身のアプリが[公開](luis-how-to-publish-app.md)されたら、機能を追加する、公開する、エンドポイントからテストする、という作成サイクルを使用します。 発話の例を追加することによって、次の作成サイクルを開始しないでください。 そうすると、実際のユーザーの発話を使用して LUIS にモデルを学習させることができなくなります。 
+ご自身のアプリが[公開](luis-how-to-publish-app.md)されたら、作成サイクルを使用して、機能を追加し、公開し、エンドポイントからテストします。 発話の例を追加することによって、次の作成サイクルを開始しないでください。 そうすると、実際のユーザーの発話を使用して LUIS にモデルを学習させることができなくなります。 
 
 LUIS による学習効率を高めるには、現在の発話の例とエンドポイント発話の両方が、高い予測スコアを確実に返すまでは、発話を増やさないようにします。 スコアを上げるには、[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)、[パターン](luis-concept-patterns.md)、および[フレーズ リスト](luis-concept-feature.md)を使用します。 
 
@@ -78,7 +78,7 @@ LUIS の予測データを使用して、意図が重複していないかどう
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>すべきこと: 後のイテレーションでフレーズ リストとパターンを追加する
 
-アプリのテストが済むまではこれらのプラクティスを適用しないのがベスト プラクティスです。 フレーズ リストやパターンを追加する前に、アプリがどのように動作するかを理解しておく必要があります。これらの機能は、発話の例よりも重く重み付けされており、信頼性を歪めることになるためです。 
+アプリのテストが済むまではこれらのプラクティスを適用しないのがベスト プラクティスです。 [フレーズ リスト](luis-concept-feature.md)や[パターン](luis-concept-patterns.md)を追加する前に、アプリがどのように動作するかを理解しておく必要があります。これらの機能は、発話の例よりも重く重み付けされており、信頼性を歪めることになるためです。 
 
 これらがないときにアプリがどのように動作するかを理解したら、これらの機能がアプリに適用されるときに各機能を追加します。 これらの機能を[繰り返し](luis-concept-app-iteration.md)のたびに追加したり、バージョンが変わるたびに変更したりする必要はありません。 
 

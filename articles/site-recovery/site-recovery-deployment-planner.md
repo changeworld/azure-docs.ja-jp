@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 07/29/2019
 ms.author: mayg
-ms.openlocfilehash: 42ef6087663c48cad965be768f14920efa777a62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e1d27d133b2eb4e0d4d45a5de563e119513c79f
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244325"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620062"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware から Azure 用の Azure Site Recovery Deployment Planner について
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -41,10 +41,9 @@ Azure Site Recovery を使用して VMware 仮想マシン (VM) を保護する�
 
 **Azure インフラストラクチャの要件**
 
-* VM ごとに必要なストレージの種類 (Standard ストレージ アカウントまたは Premium ストレージ アカウント)
-* レプリケーション用にセットアップする Standard ストレージ アカウントと Premium ストレージ アカウントの総数
+* VM ごとに必要なストレージの種類 (Standard ストレージまたは Premium ストレージ)
+* レプリケーション用に設定する Standard ストレージ アカウントと Premium ストレージ アカウントの総数 (キャッシュ ストレージ アカウントを含む)
 * ストレージ アカウントの命名に関する推奨事項 (Storage ガイダンスに基づく)
-* 全 VM のストレージ アカウントの配置
 * サブスクリプションのテスト フェールオーバー (またはフェールオーバー) の前にセットアップする Azure コアの数
 * Azure VM の推奨サイズ (オンプレミスの VM ごと)
 
@@ -120,7 +119,7 @@ Site Recovery Deployment Planner の実行中のインスタンスごとにプ�
 
 
 ## <a name="version-history"></a>バージョン履歴
-Site Recovery Deployment Planner ツールの最新バージョンは 2.4 です。
+Site Recovery Deployment Planner ツールの最新バージョンは 2.5 です。
 各更新で追加された修正については、「[Site Recovery Deployment Planner version history (Site Recovery Deployment Planner のバージョン履歴)](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順

@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 57047069e196ab887824311374719cf2b210fe1d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 3f0b764b16c1b550c9afa4107449c1b02815e8d1
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361038"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668497"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Azure Machine Learning SDK を使用して機械学習パイプラインを作成および実行する
 
@@ -58,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="set-up-a-datastore"></a>データストアをセットアップする
 データストアには、パイプラインでアクセスするデータが格納されます。 各ワークスペースに既定のデータストアがあります。 データストアを追加登録できます。 
 
-ワークスペースを作成すると、[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) と [Azure BLOB ストレージ](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)が既定でワークスペースに接続されます。 Azure ファイル ストレージがワークスペースの既定のデータストアですが、BLOB ストレージをデータストアとして使用することもできます。 詳細については、[Azure Files、Azure BLOB、Azure ディスクの使い分け](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関するページを参照してください。 
+ワークスペースを作成すると、[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) と [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) がワークスペースに接続されます。 既定のデータストアが、Azure Blob Storage に接続するために登録されています。 詳細については、[Azure Files、Azure BLOB、Azure ディスクの使い分け](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)に関するページを参照してください。 
 
 ```python
 # Default datastore (Azure blob storage)
@@ -68,7 +68,7 @@ def_data_store = ws.get_default_datastore()
 def_data_store = Datastore(ws, "workspaceblobstore")
 
 # Get file storage associated with the workspace
-def_file_store = Datastore(ws, "workspacefileblobstore")
+def_file_store = Datastore(ws, "workspacefilestore")
 ```
 
 パイプラインからアクセスできるように、データ ファイルまたはディレクトリをデータストアにアップロードします。 この例では、BLOB ストレージ バージョンのデータストアを使用します。

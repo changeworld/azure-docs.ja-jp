@@ -6,18 +6,27 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 04/24/2019
+ms.date: 07/29/2019
 ms.author: dapatil
-ms.openlocfilehash: 2edf7ce3be1402a497ceab5b826a89ee43c5c39b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64928672"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620108"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery Deployment Planner のバージョン履歴
 
 この記事では、Azure Site Recovery Deployment Planner のすべてのバージョンの履歴と修正、それぞれの既知の制限とそのリリース日を紹介します。
+
+## <a name="version-25"></a>バージョン 2.5
+
+**リリース日:2019 年 7 月 29 日**
+
+**修正:**
+
+- VMware 仮想マシンと物理マシンの場合、Managed Disks のレプリケーションに基づいてレコメンデーションが更新されます。
+- Windows 10 (x64)、Windows 8.1 (x64)、Windows 8 (x64)、Windows 7 (x64) SP1 以降のサポートが追加されました。
 
 ## <a name="version-24"></a>バージョン 2.4
 
@@ -28,8 +37,8 @@ ms.locfileid: "64928672"
 - 特にローカライズベースのエラーを処理する場合の、オペレーティング システムの互換性を向上しました。
 - 互換性チェックリストに最大 20 Mbps のデータ変更率 (チャーン) の VM を追加しました。
 - エラー メッセージを改善しました
-  - vCenter 6.7 のサポートを追加しました。
-  - Windows Server 2019 および Red Hat Enterprise Linux (RHEL) ワークステーションのサポートを追加しました。
+- vCenter 6.7 のサポートを追加しました。
+- Windows Server 2019 および Red Hat Enterprise Linux (RHEL) ワークステーションのサポートを追加しました。
 
 
 

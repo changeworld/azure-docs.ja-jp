@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 344479a270119137a256620304d88f139d0b0322
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938252"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619974"
 ---
 # <a name="geographic-availability-and-currency-support"></a>利用可能な地域と通貨サポート
 
-Azure Marketplace オファリングは、顧客の請求先住所で定義されている 141 の地域で購入でき、トランザクションは 17 の通貨で行うことができます。 次の表は、サポートされている地理的な場所、その [ISO 3166 の 2 桁のアルファ コード](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)、割り当てられている通貨の一覧です。
+Azure Marketplace と AppSource のオファリングは、顧客の請求先住所で定義されている 141 の地域で購入でき、トランザクションは 17 の通貨で行うことができます。 次の表は、サポートされている地理的な場所、その [ISO 3166 の 2 桁のアルファ コード](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)、割り当てられている通貨の一覧です。
 
 |   国/地域名               |   ISO-2   |   通貨   |
 |-------------------------------------|-----------|--------------|
@@ -76,7 +76,7 @@ Azure Marketplace オファリングは、顧客の請求先住所で定義さ�
 | ハンガリー                             | HU        | EUR          |
 | アイスランド                             | IS        | EUR          |
 | インド                               | IN        | INR          |
-| インドネシア                           | ID        | USD          |
+| インドネシア                           | id        | USD          |
 | イラク                                | IQ        | USD          |
 | アイルランド                             | IE        | EUR          |
 | イスラエル                              | IL        | USD          |

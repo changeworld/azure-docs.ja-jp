@@ -1,6 +1,6 @@
 ---
-title: バッチ テスト
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: バッチ テスト - LUIS
+titleSuffix: Azure Cognitive Services
 description: バッチ テストを使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
 services: cognitive-services
 author: diberry
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b962fc32cdcde0509cfa60d105022bb208633ae3
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813293"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639291"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>LUIS ポータルで 1000 件の発話をバッチ テストする
 
-バッチ テストによって、[アクティブ](luis-concept-version.md#active-version)なトレーニング済みモデルを検証し、その予測精度を測定します。 バッチ テストは、現在のトレーニング済みモデルに含まれるそれぞれの意図とエンティティの精度をグラフで表示する助けになります。 バッチ テストの結果を確認して、精度を向上させるために適切なアクションを実行します。アプリが頻繁に失敗する場合は意図に発話の例をより多く追加し、正しい意図を明らかにする、といったアクションです。
+バッチ テストによって、[アクティブ](luis-concept-version.md#active-version)なトレーニング済みモデルを検証し、その予測精度を測定します。 バッチ テストは、結果をグラフで表示することで、現在のトレーニング済みモデルに含まれるそれぞれの意図とエンティティの精度を確認することに役立ちます。 バッチ テストの結果を確認して、精度を向上させるために適切なアクションを実行します。アプリが頻繁に失敗する場合は意図に発話の例をより多く追加し、正しい意図を明らかにする、といったアクションです。
 
 ## <a name="group-data-for-batch-test"></a>バッチ テスト用のグループ データ
 
-バッチ テストに使用される発話が、LUIS にとって初めてであることが重要です。 発話のデータセットがある場合は、発話を 3 つのセットに分割します。意図に追加される発話、公開されているエンドポイントから受信した発話、およびトレーニング後に LUIS をバッチ テストするために使用される発話です。 
+バッチ テストに使用される発話が、LUIS にとって初めてであることが重要です。 発話のデータ セットがある場合は、発話を 3 つのセットに分割します。意図に追加されるサンプルの発話、公開されているエンドポイントから受信した発話、およびトレーニング後に LUIS をバッチ テストするために使用される発話です。 
 
-## <a name="a-dataset-of-utterances"></a>発話のデータセット
+## <a name="a-data-set-of-utterances"></a>発話のデータ セット
 
-バッチ テストのために、*データセット*と呼ばれる発話のバッチ ファイルを送信します。 データセットは JSON 形式のファイルで、ラベル付きの**重複していない**発話が最大 1,000 件含まれます。 アプリでは、最大 10 個のデータセットをテストできます。 さらにテストする必要がある場合は、データセットを削除し、新しいものを追加します。
+バッチ テストのために、*データ セット*と呼ばれる発話のバッチ ファイルを送信します。 データ セットは JSON 形式のファイルで、ラベル付きの**重複していない**発話が最大 1,000 件含まれます。 アプリでは、最大 10 個のデータ セットをテストできます。 さらにテストする必要がある場合は、データ セットを削除し、新しいものを追加します。
 
 |**規則**|
 |--|
@@ -106,7 +106,7 @@ ms.locfileid: "60813293"
 
 ## <a name="batch-test-state"></a>バッチ テストの状態
 
-LUIS は、各データセットの最後のテストの状態を追跡します。 これには、サイズ (バッチ内の発話の数)、最終実行日、最後の結果 (正常に予測された発話の数) が含まれます。
+LUIS は、各データ セットの最後のテストの状態を追跡します。 これには、サイズ (バッチ内の発話の数)、最終実行日、最後の結果 (正常に予測された発話の数) が含まれます。
 
 <a name="sections-of-the-results-chart"></a>
 
@@ -114,7 +114,7 @@ LUIS は、各データセットの最後のテストの状態を追跡します
 
 バッチ テストの結果は、エラー マトリックスと呼ばれる散布図です。 このグラフは、バッチ ファイル内の発話と、現在のモデルの予測された意図およびエンティティを 4 つの方法で比較したものです。 
 
-**False Positive** セクション上と **False Negative** セクション上のデータ ポイントは、調査が必要なエラーを示しています。 すべてのデータ ポイントが **True Positive** セクション上と **True Negative** セクション上にある場合、アプリの精度はこのデータセットに関しては理想的です。
+**False Positive** セクション上と **False Negative** セクション上のデータ ポイントは、調査が必要なエラーを示しています。 すべてのデータ ポイントが **True Positive** セクション上と **True Negative** セクション上にある場合、アプリの精度はこのデータ セットに関しては理想的です。
 
 ![グラフの 4 つのセクション](./media/luis-concept-batch-test/chart-sections.png)
 

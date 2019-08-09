@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: ea7e4757aac0fccf60a44c70e9de6a63c1ec9498
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3338bed8cd8067d58eb2600854de6c0d8e34d1a3
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147004"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668457"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Azure Storage での Azure CLI の使用
 
@@ -26,6 +26,8 @@ ms.locfileid: "65147004"
 ガイド内の例では、Ubuntu 上での Bash シェルの使用を想定していますが、その他のプラットフォームでも同様に動作します。 
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 このガイドでは、Azure Storage の基本概念を理解していることを前提としています。 また、以下で指定されている、Azure および Storage サービスのアカウント作成要件を満たせることも前提としています。
@@ -323,6 +325,17 @@ BLOB を削除するには、`blob delete` コマンドを使用します。
 
 ```azurecli
 az storage blob delete --container-name <container_name> --name <blob_name>
+```
+
+### <a name="set-the-content-type"></a>コンテンツの種類の設定
+
+BLOB 内のデータの形式は、コンテンツの種類 (MIME の種類) によって識別されます。 ブラウザーをはじめとするソフトウェアは、コンテンツの種類に基づいてデータの処理方法を判断します。 たとえば、PNG 画像のコンテンツの種類は `image/png` です。 コンテンツの種類を設定するには、`blob update` コマンドを使います。
+
+```azurecli
+az storage blob update
+    --container-name <container_name> 
+    --name <blob_name>
+    --content-type <content_type>
 ```
 
 ## <a name="create-and-manage-file-shares"></a>ファイル共有を作成および管理する

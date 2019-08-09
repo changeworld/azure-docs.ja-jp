@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 07/28/2019
 ms.author: jowargo
-ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f83afa62859dee5963749daf2555af08cf6a0e0b
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60873174"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663820"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の iOS デバイスにプッシュ通知を送信する
 
@@ -41,7 +41,7 @@ ms.locfileid: "60873174"
 
 ## <a name="prerequisites"></a>前提条件
 
-このトピックは、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」で作成したアプリに基づいています。 このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」を完了している必要があります。
+このトピックは、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」で作成したアプリに基づいています。 このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する][get-started]」で作成したアプリに基づいています。
 
 ## <a name="add-category-selection-to-the-app"></a>アプリケーションにカテゴリ選択を追加する
 
@@ -177,7 +177,7 @@ ms.locfileid: "60873174"
 10. [Notification Hubs の使用の開始][get-started]に関するチュートリアルを完了していれば、次のメソッドが既に `AppDelegate.m` に含まれています。 ない場合は、それらを追加します。
 
     ```objc
-    -(void)MessageBox:(NSString *)title message:(NSString *)messageText
+    - (void)MessageBox:(NSString *)title message:(NSString *)messageText
     {
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
@@ -185,7 +185,7 @@ ms.locfileid: "60873174"
         [alert show];
     }
 
-    * (void)application:(UIApplication *)application didReceiveRemoteNotification:
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification:
        (NSDictionary *)userInfo {
        NSLog(@"%@", userInfo);
        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
@@ -212,7 +212,9 @@ ms.locfileid: "60873174"
 
     [notifications storeCategoriesAndSubscribeWithCategories:categories completion: ^(NSError* error) {
         if (!error) {
-            [(AppDelegate*)[[UIApplication sharedApplication]delegate] MessageBox:@"Notification" message:@"Subscribed!"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:"Notification" message:"Subscribed" delegate:self
+            cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
         } else {
             NSLog(@"Error subscribing: %@", error);
         }

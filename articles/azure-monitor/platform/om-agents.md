@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 07/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 336a9d9c76114920e92de2000152e500f7dce46f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2ea17a4363218351eb6e5ba0678435f3707e4ab9
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445319"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663731"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Operations Manager と Log Analytics ワークスペースを統合することで、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) への既存の投資を維持しながら、Azure Monitor で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら､Azure Monitor のログを利用することができます。
+Operations Manager と Log Analytics ワークスペースを統合することで、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) への既存の投資を維持しながら、Azure Monitor で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら、Azure Monitor のログを利用することができます。
 
 * Operations Manager で IT サービスの正常性を監視する
 * インシデントおよび問題の管理をサポートする ITSM ソリューションとの統合を維持する
@@ -143,7 +143,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 1. [Operations Management Suite] ノードを展開し、 **[接続]** をクリックします。
 1. ウィンドウの右側の [アクション] 見出しの下にある **[コンピューター/グループの追加]** リンクをクリックします。
-1. **[コンピューターの検索]** ダイアログ ボックスでは、Operations Manager で監視するコンピューターまたはグループを検索できます。 Azure Monitor にオンボードするコンピューターまたはグループを選択し、 **[追加]** をクリックして、 **[OK]** をクリックします。
+1. **[コンピューターの検索]** ダイアログ ボックスでは、Operations Manager で監視するコンピューターまたはグループを検索できます。 Azure Monitor にオンボードする Operations Manager 管理サーバーが含まれるコンピューターまたはグループを選択し、 **[追加]** をクリックして、 **[OK]** をクリックします。
 
 オペレーション コンソールの **[管理]** ワークスペースにある [Operations Management Suite] の下に、マネージド コンピューター ノードからデータを収集するように構成されたコンピューターとグループが表示されます。 ここから、必要に応じて、コンピューターおよびグループの追加または削除ができます。
 

@@ -5,26 +5,21 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/14/2019
+ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 8a36a80903a47bb4163666baf86ed8dac13a00de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f825b67baf36c9a1a9187d555522f5a5955d1c7
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471133"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620073"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する
 
 Deployment Planner のレポートでは、コスト見積もりの概要が [[Recommendations]\(推奨事項\)](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) シートに、詳しいコスト分析が [Cost Estimation]\(コスト見積もり\) シートに表示されます。 コスト分析は、VM ごとに詳しく表示されます。 
 
 >[!Note]
->現在のバージョンの Deployment Planner ツールでは、マネージド ディスクにレプリケートする VM 用のコスト見積もりは提供されません。
->* DR ドリルのコスト見積もりは、ストレージ アカウントとマネージド ディスクで同じです ([コンピューティングとネットワーク] ブレードで [Managed Disks を使用] パラメーターが [はい] に設定されている場合)。
->* レプリケーション用におおよその年間コスト見積もりを取得するには、 **[コスト見積もり]** シートで次の一時設定を行います。
->    * **[設定]** テーブルの [Cost duration]\(コスト期間\) パラメーターを [年] に設定します
->    * **[Detailed cost analysis]\(詳細コスト分析\)** テーブルで、[Number of DR-Drills in a year]\(年間 DR ドリル数\) 列を 12 に設定し、[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\) を 30 に設定します 
->    * レプリケーション コストは、列 "R" に入力されたコスト (つまり、 **[DR-Drill cost per year]\(年間の DR ドリル コスト\)** サブセクションの年間 DR ドリル ストレージ コスト) と類似したものになります。
+>Deployment Planner ツールの現行バージョンの v2.5 では、Managed Disks にレプリケートする VM 用のコスト見積もりは提供されません。
 
 ### <a name="cost-estimation-summary"></a>コスト見積もりの概要 
 このグラフは、選択したターゲット リージョンの Azure に対するディザスター リカバリー (DR) の総コスト見積もりの概要と、レポート生成に関して指定された通貨を示しています。
@@ -94,7 +89,6 @@ Azure の料金総額に対して何らかの割引を受ける資格のある A
 このテーブルには、Windows VM の数と非 Windows VM の数、さらに、それぞれの DR ドリルのコンピューティング コストが表示されます。
 
 ### <a name="settings"></a>設定 
-**[Using managed disk]\(マネージド ディスクの使用\)** : DR ドリル時にマネージド ディスクが使用されているかどうかを指定します。 既定値は [Yes]\(はい\) です。 -UseManagedDisks を [No]\(いいえ\) に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
 
 **Currency**:レポートの生成に使用される通貨です。 [Cost duration]\(コスト期間\): すべてのコストは、月単位または年単位で表示できます。 
 
@@ -107,7 +101,7 @@ VM を手動で追加するには、次の手順に従います。
 
 * [Number of VMs]\(VM の数\)、[IaaS size (Your selection)]\(IaaS サイズ (ユーザーが選択)\)
 * [Storage Type (Standard/Premium)]\(ストレージの種類 (Standard/Premium)\)
-* [VM total storage size (GB)]\(VM 合計ストレージ サイズ (GB)\)
+* ソース マシンの VM 合計ストレージ サイズ (GB)
 * [Number of DR drills in a year]\(年間 DR ドリル数\) 
 * [Each DR drill duration (Days)]\(各 DR ドリル期間 (日数)\) 
 * [OS Type]\(OS の種類\)
@@ -128,9 +122,9 @@ VM を手動で追加するには、次の手順に従います。
 
 **[ストレージの種類]** : VM によって使用されるストレージの種類です。 Standard と Premium のどちらかのストレージになります。
 
-**[VM total storage size (GB)]\(VM 合計ストレージ サイズ (GB)\)** : VM の合計ストレージ。
+**[VM total storage size (GB)]\(VM 合計ストレージ サイズ (GB)\)** :ソース VM の合計ストレージ。
 
-**[Number of DR Drills in a year]\(年間 DR ドリル数\)** : 1 年間に実行する DR ドリルの回数です。 既定では、年間 4 回です。 特定の VM の期間を変更できるほか、一番上の行に新しい値を入力し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、すべての VM に新しい値を適用することができます。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。  
+**[Number of DR-Drills in a year]\(年間 DR ドリル数\)** :1 年間に実行する DR ドリルの回数です。 既定では、年間 4 回です。 特定の VM の期間を変更できるほか、一番上の行に新しい値を入力し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、すべての VM に新しい値を適用することができます。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。  
 
 **[Each DR Drill duration (Days)]\(各 DR ドリル期間 (日数)\)** : 各 DR ドリルの期間です。 [ディザスター リカバリーのソフトウェア アシュアランス特典](https://azure.microsoft.com/pricing/details/site-recovery)により、90 日ごとに 7 日が既定値となります。 特定の VM の期間を変更できるほか、一番上の行に新しい値を入力し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、すべての VM に新しい値を適用することができます。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。
   
@@ -156,7 +150,7 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>サポートされる通貨
 Azure Site Recovery Deployment Planner は、次のいずれかの通貨でコスト レポートを生成できます。
 
-|通貨|Name||通貨|Name||通貨|Name|
+|通貨|EnableAdfsAuthentication||通貨|EnableAdfsAuthentication||通貨|EnableAdfsAuthentication|
 |---|---|---|---|---|---|---|---|
 |ARS|アルゼンチン ペソ ($)||AUD|オーストラリア ドル ($)||BRL|ブラジル レアル (R$)|
 |CAD|カナダ ドル ($)||CHF|スイス フラン (chf)||DKK|デンマーク クローネ (kr)|

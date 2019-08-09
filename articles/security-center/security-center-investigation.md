@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 55def52d248babd439227cdcd4170c0a3ca91bb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 476bdd50a56b953585a8a4e9cea05975c9922e0f
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569833"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662955"
 ---
-# <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Azure Security Center でのインシデントとアラートの調査 (プレビュー)
-このドキュメントは、Azure Security Center の調査機能を使用して、セキュリティ インシデントとアラートを調査する際に役立ちます。
+# <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Azure Security Center でのインシデントとアラートの調査 (廃止)
+このドキュメントは、Azure Security Center の調査機能 (プレビュー) を使用して、セキュリティ インシデントとアラートを調査するときに役立ちます。
 
 > [!NOTE]
-> アラートとインシデントの調査エクスペリエンスは、2019 年 7 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_investigate)」を参照してください。
+> アラートとインシデントの調査 (プレビュー) エクスペリエンスは、2019 年 7 月 31 日に廃止されました。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_investigate)」を参照してください。
 
 ## <a name="what-is-investigation-in-security-center"></a>Security Center の調査とは
 Security Center の調査機能を使用すると、潜在的な[セキュリティ インシデント](https://docs.microsoft.com/azure/security-center/security-center-incident)について、トリアージ、範囲の把握、根本原因の特定を行うことできます。

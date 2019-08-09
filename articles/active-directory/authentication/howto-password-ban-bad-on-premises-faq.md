@@ -11,14 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4879093ed80a554219b053cc5a2bc895126725
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9f1f2e06eb6b5f8d402515ff1c07a4163174495d
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702891"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666355"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
+
+このセクションでは、Azure AD パスワード保護に関してよく寄せられる質問への回答を示します。
 
 ## <a name="general-questions"></a>一般的な質問
 
@@ -47,6 +49,10 @@ ms.locfileid: "67702891"
 **Q:Active Directory ユーザーとコンピューター管理スナップインを利用して弱いパスワードを設定しようとすると、重複パスワード拒否イベントがログに記録されるのはなぜですか。**
 
 Active Directory ユーザーとコンピューター管理スナップインではまず、Kerberos プロトコルを利用して新しいパスワードを設定しようとします。 エラーが発生すると、このスナップインでは次に、レガシ (SAM RPC) プロトコル (使用される特定のプロトコルは重要ではありません) を利用してパスワードを設定しようとします。 新しいパスワードが Azure AD パスワード保護で弱いと見なされると、その結果、2 セットのパスワード リセット拒否イベントがログに記録されます。
+
+**Q:Azure AD パスワード保護のパスワード検証イベントが空のユーザー名でログに記録されるのはなぜですか。**
+
+Active Directory では、パスワードをテストして、ドメインの現在のパスワード複雑さ要件が満たされているかどうかを確認する機能がサポートされています (たとえば、[NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API を使用して)。 この方法でパスワードが検証されるとき、テストには、Azure AD パスワード保護などのパスワード フィルター DLL ベースの製品による検証も含まれます。ただし、特定のパスワード フィルター DLL に渡されるユーザー名は空になります。 このシナリオの Azure AD パスワード保護でも、現在有効なパスワード ポリシーを使用してパスワードが検証され、結果をキャプチャするためのイベント ログ メッセージが発行されますが、イベント ログ メッセージのユーザー名フィールドは空になります。
 
 **Q:その他のパスワード フィルター ベースの製品とサイド バイ サイドで Azure AD パスワード保護をインストールすることはサポートされていますか?**
 

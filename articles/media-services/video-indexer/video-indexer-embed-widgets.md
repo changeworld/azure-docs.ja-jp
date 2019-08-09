@@ -8,20 +8,20 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 06/30/2019
+ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 937dc6eefbbfc37aaeee0801f410f9f99cb0c787
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: ec3c7379c8c7f28765fbc4396d3e9804a6c127f6
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67488682"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663743"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 
-この記事では、どのようにするとアプリケーションに Video Indexer ウィジェットを埋め込むことができるかを示します。 Video Indexer では、次の 2 種類のウィジェットのアプリケーションへの埋め込みがサポートされています:**コグニティブな分析情報**と**プレーヤー**。 
+この記事では、どのようにするとアプリケーションに Video Indexer ウィジェットを埋め込むことができるかを示します。 Video Indexer では、次の 3 種類のウィジェットのアプリケーションへの埋め込みがサポートされています: **コグニティブな分析情報**、**プレーヤー**、**エディター**。 
 
-バージョン 2 以降、ウィジェットのベース URL に、アカウントのリージョンが含まれています。 たとえば、米国西部リージョンのアカウントでは、`https://wus2.videoindexer.ai/embed/insights/...` が生成されます。
+バージョン 2 以降、ウィジェットのベース URL には、指定されたアカウントのリージョンが含まれています。 たとえば、米国西部リージョンのアカウントでは、`https://wus2.videoindexer.ai/embed/insights/...` が生成されます。
 
 ## <a name="widget-types"></a>ウィジェットの種類
 
@@ -29,24 +29,36 @@ ms.locfileid: "67488682"
 
 **コグニティブな分析情報**ウィジェットには、ビデオのインデックス作成プロセスから抽出されたビジュアルな分析情報がすべて含まれます。 分析情報ウィジェットでは、次の省略可能な URL パラメーターがサポートされています。
 
-|Name|定義|説明|
+|EnableAdfsAuthentication|定義|説明|
 |---|---|---|
-|widgets|コンマで区切られた文字列|レンダリングする分析情報を制御できます。 <br/>例: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` の場合、人物とブランドの UI 分析情報のみがレンダリングされます<br/>使用可能なオプション: people、keywords、annotations、brands、sentiments、transcript、search。<br/>version=2 の場合は URL からはサポートされません<br/><br/>**注:** バージョン 2 では、widgets での URL パラメーターはサポートされません。 |
-|locale|省略形の言語コード|分析情報言語を制御します。 既定値は `en` です。 (例: `language=de`)。|
-|タブ|既定で選択されるタブ|既定で表示される [insights] タブを制御します。 `tab=timeline` では、選択されたタイムライン タブで分析情報が表示されます。|
+|`widgets`|コンマで区切られた文字列|レンダリングする分析情報を制御できます。 <br/>例: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` の場合、人物とブランドの UI 分析情報のみがレンダリングされます<br/>使用可能なオプション: people、keywords、annotations、brands、sentiments、transcript、search。<br/>version=2 の場合は URL からはサポートされません<br/><br/>**注:** バージョン 2 では、widgets での URL パラメーターはサポートされません。 |
+|`locale`|省略形の言語コード|分析情報言語を制御します。 既定値は `en` です。 (例: `language=de`)。|
+|`tab`|既定で選択されるタブ|既定で表示される [insights] タブを制御します。 `tab=timeline` では、選択されたタイムライン タブで分析情報が表示されます。|
 
 ### <a name="player-widget"></a>プレーヤー ウィジェット
 
 **プレーヤー** ウィジェットでは、アダプティブ ビット レートを使用してビデオをストリームできます。 プレーヤー ウィジェットでは、次の省略可能な URL パラメーターがサポートされています。
 
-|Name|定義|説明|
+|EnableAdfsAuthentication|定義|説明|
 |---|---|---|
-|t|開始からの秒数|プレーヤーで、指定した時点から再生を開始します。<br/>例: `t=60`.|
-|captions|言語コード|ウィジェットを読み込むときに指定された言語のキャプションを取り込んで、キャプション メニューで使用できるようにします。<br/>例: `captions=en-US`.|
-|showCaptions|ブール値|既に有効になっているキャプションとともにプレーヤーを読み込みます。<br/>例: `showCaptions=true`.|
-|type||オーディオ プレーヤーのスキンをアクティブにします (ビデオ部分は削除されます)。<br/>例: `type=audio`.|
-|autoplay|ブール値|プレーヤーがビデオの読み込み時に、その再生を開始する必要があるかどうかを示します (既定値は true)。<br/>例: `autoplay=false`.|
-|language|言語コード|プレーヤーの言語を制御します (既定値は EN-US)<br/>例: `language=de-DE`.|
+|`t`|開始からの秒数|プレーヤーで、指定した時点から再生を開始します。<br/>例: `t=60`.|
+|`captions`|言語コード|ウィジェットを読み込むときに指定された言語のキャプションを取り込んで、キャプション メニューで使用できるようにします。<br/>例: `captions=en-US`.|
+|`showCaptions`|ブール値|既に有効になっているキャプションとともにプレーヤーを読み込みます。<br/>例: `showCaptions=true`.|
+|`type`||オーディオ プレーヤーのスキンをアクティブにします (ビデオ部分は削除されます)。<br/>例: `type=audio`.|
+|`autoplay`|ブール値|プレーヤーがビデオの読み込み時に、その再生を開始する必要があるかどうかを示します (既定値は true)。<br/>例: `autoplay=false`.|
+|`language`|言語コード|プレーヤーの言語を制御します (既定値は EN-US)<br/>例: `language=de-DE`.|
+
+### <a name="editor-widget"></a>エディター ウィジェット 
+
+**エディター** ウィジェットを使うと、新しいプロジェクトを作成し、ビデオの分析情報を管理できます。
+
+|EnableAdfsAuthentication|定義|説明|
+|---|---|---|
+|`accessToken`<sup>*</sup>|string|エディター ウィジェットを使うときは、`accessToken` パラメーターが必要です。<br/>アクセス トークンでは、ウィジェットの埋め込みに使われているアカウント内にあるビデオへのアクセスだけが提供されます。 |
+|`language`|言語コード|プレーヤーの言語を制御します (既定値は EN-US)<br/>例: `language=de-DE`.|
+|`locale`|省略形の言語コード|分析情報言語を制御します。 既定値は `en` です。 (例: `language=de`)。|
+
+<sup>*</sup>所有者は、注意して `accessToken` を提供する必要があります。 
 
 ## <a name="embedding-public-content"></a>パブリック コンテンツの埋め込み
 
@@ -57,9 +69,9 @@ ms.locfileid: "67488682"
     ![ウィジェット](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
     ボタンをクリックすると、画面に埋め込みモーダルが表示され、アプリケーションに埋め込むウィジェットを選択できます。
-    ウィジェット (**プレーヤー**または**コグニティブな分析情報**) を選択すると、アプリケーションに貼り付けるための埋め込みコードが生成されます。
+    ウィジェット (**コグニティブな分析情報**、**プレーヤー**、**エディター**) を選択すると、アプリケーションに貼り付けるための埋め込みコードが生成されます。
  
-4. 目的のウィジェットの種類 (**コグニティブな分析情報**または**プレーヤー**) を選択します。
+4. 目的のウィジェットの種類 (**コグニティブな分析情報**、**プレーヤー**、**エディター**) を選択します。
 5. 埋め込みコードをコピーし、アプリケーションに追加します。 
 
     ![ウィジェット](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
@@ -94,7 +106,7 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
 
 独自のプレーヤー コードを実装して**コグニティブな分析情報**ウィジェットとの統合を行う場合は、VideoIndexer.ai からのメッセージの発生元をお客様の責任で検証する必要があります。
 
-### <a name="embed-both-types-of-widgets-in-your-application--blog-recommended"></a>両方の種類のウィジェットをアプリケーション/ブログに埋め込む (推奨) 
+### <a name="embed-widgets-in-your-application--blog-recommended"></a>ウィジェットをアプリケーション/ブログに埋め込む (推奨) 
 
 このセクションでは、2 つの Video Indexer ウィジェット間の対話を実現して、ユーザーがアプリケーションで分析情報コントロールをクリックしたときにプレーヤーが関連する場面にジャンプするようにする方法を示します。
 
@@ -213,7 +225,7 @@ Video Indexer ウィジェットが他のコンポーネントと通信できる
 
 ## <a name="adding-subtitles"></a>字幕の追加
 
-Video Indexer の分析情報と独自の AMP プレーヤーを埋め込む場合は、**GetVttUrl** メソッドを使用してクローズド キャプション (字幕) を取得できます。 (前に示した) Video Indexer の AMP プラグイン **getSubtitlesUrl** から javascript メソッドを呼び出すこともできます。 
+Video Indexer の分析情報と独自の [Azure Media Player](https://aka.ms/azuremediaplayer) を埋め込む場合は、**GetVttUrl** メソッドを使用してクローズド キャプション (字幕) を取得できます。 (前に示した) Video Indexer の AMP プラグイン **getSubtitlesUrl** から javascript メソッドを呼び出すこともできます。 
 
 ## <a name="customizing-embeddable-widgets"></a>埋め込み可能なウィジェットのカスタマイズ
 

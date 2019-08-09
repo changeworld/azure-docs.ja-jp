@@ -1,6 +1,6 @@
 ---
-title: 機能
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: フィーチャー - LUIS
+titleSuffix: Azure Cognitive Services
 description: フィーチャーを言語モデルに追加することで、ラベル付けまたは分類する必要がある入力を認識する方法についてのヒントが提供されます。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7889f223b607912fd88c798b31ec028f97dfbbd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812925"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639218"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS アプリのフレーズ リストのフィーチャー
 
@@ -35,7 +35,7 @@ ms.locfileid: "60812925"
 
 ## <a name="how-to-use-phrase-lists"></a>フレーズ リストを使用する方法
 
-アプリに、次のようなアプリにとって重要な単語またはフレーズが含まれている場合は、フレーズ リストを作成します。
+アプリに、次のようなアプリにとって重要な単語またはフレーズが含まれている場合は、[フレーズ リストを作成](luis-how-to-add-features.md)します。
 
 * 業界用語
 * スラング
@@ -88,7 +88,7 @@ ms.locfileid: "60812925"
 フレーズ リストの追加は、意図への発話例の追加に代わる手段として利用することができます。 
 
 ## <a name="when-to-use-phrase-lists-versus-list-entities"></a>使用するタイミング: フレーズ リストとリスト エンティティ
-フレーズ リストとリスト エンティティの両方がすべての意図の発話に影響を及ぼしますが、どのように影響するかはそれぞれ異なります。 フレーズ リストを使用すると、意図予測スコアが影響を受けます。 リスト エンティティを使用すると、完全なテキスト一致に対するエンティティ抽出が影響を受けます。 
+フレーズ リストと[リスト エンティティ](reference-entity-list.md)の両方がすべての意図の発話に影響を及ぼしますが、どのように影響するかはそれぞれ異なります。 フレーズ リストを使用すると、意図予測スコアが影響を受けます。 リスト エンティティを使用すると、完全なテキスト一致に対するエンティティ抽出が影響を受けます。 
 
 ### <a name="use-a-phrase-list"></a>フレーズ リストの使用
 フレーズ リストを使用しても、LUIS では引き続きコンテキストが考慮され、リスト内の項目と類似しているが、完全には一致していない項目が法則化され特定されます。 ご自身の LUIS アプリでカテゴリ内の新しい項目を法則化し、特定する必要がある場合は、フレーズ リストを使用します。 

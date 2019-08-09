@@ -1,6 +1,6 @@
 ---
-title: 意図
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 意図 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 1 つの意図は、ユーザーが実行しようとしているタスクまたはアクションを表します。 ユーザーの発話で表明される目的や目標です。 ユーザーがアプリケーションで実行しようとしているアクションに対応する、意図のセットを定義します。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb7fa9d930f4c1ab3c241048804060e17fe5a8e4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813464"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619927"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>LUIS アプリにおける意図の概念
 
@@ -42,12 +42,15 @@ ms.locfileid: "60813464"
 ## <a name="intent-compared-to-entity"></a>意図とエンティティの比較
 意図は、チャットボットがユーザーに対して実行する必要のあるアクションを表し、発話全体に基づきます。 エンティティは、発話内に含まれる単語またはフレーズを表します。 発話は最上位スコアの意図を 1 つのみ持つことができますが、エンティティは多数持つことができます。 
 
-<a name="how-do-intents-relate-to-entities"></a>ユーザーの "_意図_" によって、checkweather() 関数の呼び出しなど、クライアント アプリケーションでアクションをトリガーする場合に、意図を作成します。 次に、アクションの実行に必要なパラメーターを表すエンティティを作成します。 
+<a name="how-do-intents-relate-to-entities"></a>
+
+ユーザーの_意図_によって、checkweather() 関数の呼び出しなど、クライアント アプリケーションでアクションをトリガーする場合に、意図を作成します。 次に、アクションの実行に必要なパラメーターを表すエンティティを作成します。 
 
 |意図の例   | エンティティ | 発話例でのエンティティ   | 
 |------------------|------------------------------|------------------------------|
 | CheckWeather | { "型": "場所", "エンティティ": "シアトル" }<br>{ "型": "builtin.datetimeV2.date","エンティティ": "明日","解像度":"2018-05-23" } | `Seattle` の `tomorrow` の天気はどうですか |
 | CheckWeather | { "型": "日付の範囲", "エンティティ": "今週末" } | `this weekend` の天気予報を教えてください | 
+||||
 
 ## <a name="custom-intents"></a>カスタムの意図
 

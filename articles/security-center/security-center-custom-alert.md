@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 984bd4d5db210679884655721be0cbcdac8c1705
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8845cb0a91edefa0350558f35488519ec37d064d
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485277"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663585"
 ---
-# <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure Security Center のカスタム アラート ルール (プレビュー)
-このドキュメントは、Azure Security Center でカスタム アラート ルールを作成する際に役立ちます。
+# <a name="custom-alert-rules-in-azure-security-center-retired"></a>Azure Security Center のカスタム アラート ルール (廃止)
+このドキュメントは、Azure Security Center でカスタム アラート ルール (プレビュー) を作成する際に役立ちます。
 
 > [!NOTE]
-> Security Center のカスタム アラートは廃止されました。 
+> カスタム アラートは、2019 年 6 月 30 日に Azure Security Center から廃止されました。 
 
 ## <a name="retirement-of-custom-alert-rules-in-azure-security-center"></a>Azure Security Center のカスタム アラート ルールの提供終了
 
@@ -40,7 +40,7 @@ ms.locfileid: "67485277"
 > [!NOTE]
 > [Search](https://docs.microsoft.com/azure/azure-monitor/log-query/search-queries) または [Union](https://docs-analytics-eus.azurewebsites.net/queryLanguage/query_language_unionoperator.html) ステートメント クエリを使用したカスタム アラートは、Azure Sentinel でサポートされていません。 移行を実行する前に、これらのアラートを編集してください。
 
-Azure Monitor ログ アラートを使用してアラートを再作成するには、次を参照してください。ログ アラートを作成する方法の手順については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)」を参照してください。 Azure Monitor のログ アラートの一般的な概要については、[ここ](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)をクリックしてください。
+Azure Monitor ログ アラートを使ってアラートを再作成する方法については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)」をご覧ください。 一般的な概要については、「[Azure Monitor でのログ アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)」をご覧ください。
 
 ## <a name="what-are-custom-alert-rules-in-security-center"></a>Security Center のカスタム アラート ルールとは
 

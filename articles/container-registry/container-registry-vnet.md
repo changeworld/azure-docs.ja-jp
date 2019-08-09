@@ -8,22 +8,25 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 2030496548df312b4f4cfab60c216d5f332c7ac2
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310389"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619887"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure コンテナー レジストリへのアクセスを制限する
 
 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) では、Azure リソースやオンプレミス リソースのセキュアなプライベート ネットワーキングが提供されます。 Azure 仮想ネットワークからプライベート Azure コンテナー レジストリへのアクセスを制限することで、仮想ネットワーク内のリソースのみがレジストリにアクセスするようにすることができます。 クロスプレミスのシナリオでは、特定の IP アドレスからのレジストリ アクセスだけを許可するファイアウォール規則を構成することもできます。
 
-この記事では、Azure コンテナー レジストリへのアクセスを制限するネットワーク アクセス規則を作成する 2 つのシナリオ (仮想ネットワークにデプロイされている仮想マシンから、または VM のパブリック IP アドレスから) を示します。
+この記事では、コンテナー レジストリで受信ネットワーク アクセス規則を構成する 2 つのシナリオ (仮想ネットワークにデプロイされている仮想マシンから、または VM のパブリック IP アドレスから) を示します。
 
 > [!IMPORTANT]
 > この機能は現在プレビュー段階であり、一定の[制限事項が適用されます](#preview-limitations)。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 >
+
+代わりに、ファイアウォールの内側からコンテナー レジストリにアクセスするためのリソースのアクセス規則を設定する必要がある場合は、「[ファイアウォールの内側の Azure コンテナー レジストリにアクセスするための規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
+
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
@@ -39,7 +42,7 @@ ms.locfileid: "68310389"
 
 * この記事の Azure CLI 手順を使用するには、Azure CLI バージョン 2.0.58 以降が必要です。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
-* コンテナー レジストリがまだない場合は、1 つ作成し (Premium SKU が必要)、Docker Hub から `hello-world` などのサンプル イメージをプッシュします。 たとえば、[Azure portal][quickstart-portal] or the [Azure CLI][quickstart-cli] を使用してレジストリを作成します。 
+* コンテナー レジストリがまだない場合は、1 つ作成し (Premium SKU が必要)、Docker Hub から `hello-world` などのサンプル イメージをプッシュします。 たとえば、[Azure portal][quickstart-portal] または [Azure CLI][quickstart-cli] を使用してレジストリを作成します。 
 
 * 別の Azure サブスクリプションの仮想ネットワークを使用してレジストリ アクセスを制限する場合、そのサブスクリプションで Azure Container Registry のリソース プロバイダーを登録する必要があります。 例:
 

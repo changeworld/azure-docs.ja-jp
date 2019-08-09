@@ -1,6 +1,6 @@
 ---
-title: データの変更
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: データの変更 - LUIS
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) での予測前にデータを変更する方法について説明します。
 services: cognitive-services
 author: diberry
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 0648dd9bc93097d3c2433943f983b5e9d22f0279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 198ce98808c8a62a839d154c365518c9e8263056
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66473513"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619899"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>予測前または予測中に発話データに変更を加える
-LUIS では、予測前または予測中に発話を操作する方法が用意されています。 これらには、スペルの修正や、事前構築済み datetimeV2 でのタイム ゾーンの問題の修正が含まれます。 
+LUIS では、予測前または予測中に発話を操作する方法が用意されています。 これらには、[スペルの修正](luis-tutorial-bing-spellcheck.md)や、事前構築済み [datetimeV2](luis-reference-prebuilt-datetimev2.md) でのタイム ゾーンの問題の修正が含まれます。 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>発話内のスペル ミスの修正
-LUIS では、[Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) を使用して、発話内のスペル ミスを修正します。 LUIS には、このサービスに関連付けられているキーが必要です。 キーを作成し、[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)にクエリ文字列パラメーターとして追加します。 
+LUIS では、[Bing Spell Check API V7](../Bing-Spell-Check/overview.md) を使用して、発話内のスペル ミスを修正します。 LUIS には、このサービスに関連付けられているキーが必要です。 キーを作成し、[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)にクエリ文字列パラメーターとして追加します。 
 
 スペル ミスは、 **[Test]\(テスト\)** パネルで、[キーを入力する](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)ことで修正することもできます。 キーは、[Test]\(テスト\) パネルのブラウザーで、セッション変数として保持されます。 スペルを修正する各ブラウザー セッションで、[Test]\(テスト\) パネルにキーを追加します。 
 
@@ -49,11 +49,11 @@ LUIS では、[Bing Spell Check API V7](https://azure.microsoft.com/services/cog
 }
 ```
  
-### <a name="whitelist-words"></a>単語をホワイトリストに登録する
-LUIS で使用される Bing スペル チェック API は、スペル チェックの変更中に無視する単語のホワイトリストをサポートしていません。 単語または頭字語をホワイトリストに登録する必要がある場合、発話を意図予測のために LUIS に送信する前に、クライアント アプリケーションでホワイトリストを使用して発話を処理します。
+### <a name="list-of-allowed-words"></a>使用可能な単語の一覧
+LUIS で使用される Bing スペル チェック API では、スペル チェックの変更中に無視する単語のリスト (ホワイトリストとも呼ばれます) はサポートされていません。 単語または頭字語のリストを許可する必要がある場合は、クライアント アプリケーションで発話を処理してから、意図予測のために発話を LUIS に送信します。
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>事前構築済み datetimeV2 エンティティのタイム ゾーンの変更
-LUIS アプリで事前構築済み datetimeV2 エンティティを使用している場合、予測の応答で datetime 値が返されることがあります。 要求のタイム ゾーンを使用して、返すべき正しい datetime が決定されます。 要求元がボットであったり、LUIS の前段階の集約化された他のアプリケーションであったりする場合は、LUIS で使用するタイム ゾーンを修正します。 
+LUIS アプリで事前構築済み [datetimeV2](luis-reference-prebuilt-datetimev2.md) エンティティを使用している場合、予測の応答で datetime 値が返されることがあります。 要求のタイム ゾーンを使用して、返すべき正しい datetime が決定されます。 要求元がボットであったり、LUIS の前段階の集約化された他のアプリケーションであったりする場合は、LUIS で使用するタイム ゾーンを修正します。 
 
 ### <a name="endpoint-querystring-parameter"></a>エンドポイントのクエリ文字列パラメーター
 タイム ゾーンは、`timezoneOffset` パラメーターを使用してユーザーのタイム ゾーンを[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356)に追加することで修正します。 時刻を変更するためは、`timezoneOffset` の値は正または負の数値 (分単位) である必要があります。  

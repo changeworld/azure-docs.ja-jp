@@ -1,6 +1,6 @@
 ---
-title: Custom Speech 用のテスト データを準備する - Speech Services
-titlesuffix: Azure Cognitive Services
+title: Custom Speech 用のテスト データを準備する - Speech Service
+titleSuffix: Azure Cognitive Services
 description: Microsoft 音声認識の精度をテストしているか、または独自のモデルをトレーニングしているかどうかにかかわらず、(オーディオ形式またはテキスト形式の) データが必要になります。 このページでは、データの種類、使用方法、および管理方法について説明します。
 services: cognitive-services
 author: erhopf
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6e1ffa11456fc6a021e370d674624d297463ac73
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603193"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68663594"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -29,7 +29,7 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 |-----------|-----------------|----------|-------------------|----------|
 | [オーディオ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ | 該当なし |
 | [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-testingtraining) | はい<br>精度を評価するために使用 | 0.5 - 5 時間のオーディオ | はい | 1 - 1,000 時間のオーディオ |
-| [関連するテキスト](##related-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
+| [関連するテキスト](#related-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
 
 ファイルは種類別にデータセットにグループ化し、ZIP ファイルとしてアップロードする必要があります。 各データセットには、1 つのデータの種類のみを含めることができます。
 

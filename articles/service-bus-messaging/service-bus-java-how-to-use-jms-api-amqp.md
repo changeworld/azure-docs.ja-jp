@@ -1,5 +1,5 @@
 ---
-title: Java JMS Service Bus API で AMQP 1.0 を使用する方法 | Microsoft Docs
+title: Java Message Service API と Azure Service Bus で AMQP 1.0 を使用する
 description: Java Message Service (JMS) API を Azure Service Bus と Advanced Message Queuing Protodol (AMQP) 1.0 と共に使用する方法。
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 47b077dbb62088093c60a588660045529678c58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.custom: seo-java-july2019
+ms.openlocfilehash: f816a5c84416b7f40e3062bf22dd70cbb356c6f1
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318452"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662881"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Service Bus と AMQP 1.0 で Java Message Service (JMS) API を使用する方法に関するページ
 Advanced Message Queuing Protocol (AMQP) 1.0 は、堅牢なクロスプラットフォーム メッセージング アプリケーションを作成するために使用できる、効率的で信頼性の高い回線レベルのメッセージング プロトコルです。
@@ -374,6 +375,7 @@ JMS を AMQP 1.0 と Service Bus で使用する場合は、次の制限があ�
 | createBrowser               | サポートされていません。 Service Bus API の Peek() 機能を使用してください                         |
 | createQueue                 | management API/tools/portal 経由でキューを作成します                                           | 
 | createTemporaryQueue        | *AutoDeleteOnIdle* に有効期間を設定して、management API/tools/portal 経由でキューを作成します |
+| receiveNoWait               | Service Bus SDK によって提供される receive() メソッドを利用し、非常に短いタイムアウトまたはゼロ タイムアウトを指定します |
 
 ## <a name="summary"></a>まとめ
 このガイドでは、一般的な JMS API と AMQP 1.0 を使って Java から Service Bus の仲介型メッセージング機能 (キューおよびトピック発行/サブスクライブ) を使用する方法について説明しました。

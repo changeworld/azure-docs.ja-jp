@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 11a6fdad187670bcb5af4c56198fd7343680690d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b0e9c751d46f805af75196da464a39783c95ae6a
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343176"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619982"
 ---
 # <a name="system-functions"></a>システム関数
 
@@ -30,7 +30,7 @@ ms.locfileid: "67343176"
 
 | 関数グループ | Operations |
 |---------|----------|
-| 数学関数 | ABS、CEILING、EXP、FLOOR、LOG、LOG10、POWER、ROUND、SIGN、SQRT、SQUARE、TRUNC、ACOS、ASIN、ATAN、ATN2、COS、COT、DEGREES、PI、RADIANS、SIN、TAN |
+| 数学関数 | ABS、CEILING、EXP、FLOOR、LOG、LOG10、POWER、ROUND、SIGN、SQRT、SQUARE、TRUNC、ACOS、ASIN、ATAN、ATN2、COS、COT、DEGREES、PI、RADIANS、RAND、SIN、TAN |
 | 型チェック関数 | IS_ARRAY、IS_BOOL、IS_NULL、IS_NUMBER、IS_OBJECT、IS_STRING、IS_DEFINED、IS_PRIMITIVE |
 | 文字列関数 | CONCAT、CONTAINS、ENDSWITH、INDEX_OF、LEFT、LENGTH、LOWER、LTRIM、REPLACE、REPLICATE、REVERSE、RIGHT、RTRIM、STARTSWITH、SUBSTRING、UPPER |
 | 配列関数 | ARRAY_CONCAT、ARRAY_CONTAINS、ARRAY_LENGTH、ARRAY_SLICE |
@@ -66,9 +66,9 @@ Cosmos DB 関数と ANSI SQL 関数の主な違いとして、Cosmos DB 関数�
 |[COS](#bk_cos)|[COT](#bk_cot)|[DEGREES](#bk_degrees)|  
 |[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
-|[RADIANS](#bk_radians)|[ROUND](#bk_round)|[SIN](#bk_sin)|  
-|[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|[SIGN](#bk_sign)|  
-|[TAN](#bk_tan)|[TRUNC](#bk_trunc)||  
+|[RADIANS](#bk_radians)|[ROUND](#bk_round)|[RAND](#bk_rand)|
+|[SIN](#bk_sin)|[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|
+|[SIGN](#bk_sign)|[TAN](#bk_tan)|[TRUNC](#bk_trunc)||  
   
 ####  <a name="bk_abs"></a> ABS  
  指定された数値式の絶対値 (正の値) を返します。  
@@ -555,13 +555,7 @@ SELECT LOG10(100) AS log10
 ```  
 PI ()  
 ```  
-  
- **引数**  
-  
-- `numeric_expression`  
-  
-   数値式です。  
-  
+   
   **戻り値の型**  
   
   数値式を返します。  
@@ -699,7 +693,34 @@ SELECT ROUND(2.4) AS r1, ROUND(2.6) AS r2, ROUND(2.5) AS r3, ROUND(-2.4) AS r4, 
 ```  
 [{r1: 2, r2: 3, r3: 3, r4: -2, r5: -3}]  
 ```  
+
+#### <a name="bk_rand"></a> RAND
+ [0,1) からランダムに生成された数値を返します。
+ 
+ **構文**  
   
+```  
+RAND ()  
+```  
+
+  **戻り値の型**  
+  
+  数値式を返します。  
+  
+  **例**  
+  
+  次の例では、ランダムに生成された数値を返します。  
+  
+```  
+SELECT RAND() AS rand 
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+[{"rand": 0.87860053195618093}]  
+``` 
+
 ####  <a name="bk_sign"></a> SIGN  
  指定された数値式の正 (+1)、ゼロ (0)、または負 (-1) の符号を返します。  
   

@@ -5,15 +5,15 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 07/29/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 1ee4f89885bd10a116963d42e87766bcd05cc0b4
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: f4d3a4d9a5785ae350874c400384477da1a6c22e
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67852737"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774711"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -58,7 +58,7 @@ ms.locfileid: "67852737"
 
    > [!NOTE]
    > 
-   > アラート リストは上の図に示すように、分析クエリをシグナルの種類 - **[Log (Saved Query)]\(ログ (保存されたクエリ)\)** としてインポートできます。 したがって、ユーザーは Analytics でクエリを完成させ、将来使用するためにクエリをアラートに保存することができます。保存クエリの使用について詳しくは、[Azure Monitor でのログ クエリの使用](../log-query/log-query-overview.md)または [Application Insights 分析 での共有クエリ](../log-query/log-query-overview.md)に関する記事を参照してください。
+   > アラート リストは上の図に示すように、分析クエリをシグナルの種類 - **[Log (Saved Query)]\(ログ (保存されたクエリ)\)** としてインポートできます。 したがって、ユーザーは Analytics でクエリを完成させ、将来使用するためにクエリをアラートに保存することができます。保存クエリの使用について詳しくは、[Azure Monitor でのログ クエリの使用](../log-query/log-query-overview.md)または [Application Insights 分析 での共有クエリ](../app/app-insights-overview.md)に関する記事を参照してください。
 
 1. *ログ アラート*: 選択すると、アラート設定のクエリを **[検索クエリ]** フィールドで指定できます。クエリ構文が正しくない場合は、フィールドに赤い文字でエラーが表示されます。 クエリ構文が正しい場合は、直近の 6 時間から最後の週までさまざまな時間枠を微調整するオプションとともに、宣言されたクエリの履歴データが参考としてグラフで表示されます。
 
@@ -321,6 +321,23 @@ Azure Monitor - [スケジュール済みクエリ ルール API](https://docs.m
 
 > [!NOTE]
 > ScheduledQueryRules PowerShell コマンドレットは、コマンドレット自体によって、または Azure Monitor - [Scheduled Query Rules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) を使用して作成されたルールのみを管理できます。 従来の [Log Analytics Alert API](api-alerts.md) と、[Log Analytics 保存済み検索およびアラート](../insights/solutions-resources-searches-alerts.md)の従来のテンプレートを使用して作成されたログ アラート ルールは、ユーザーが [Log Analytics アラート用に API 基本設定を切り替えた](alerts-log-api-switch.md)後に限り、ScheduledQueryRules PowerShell コマンドレットを使用して管理できます。
+
+次に示すのは、scheduledQueryRules PowerShell コマンドレットを使用してサンプル ログ アラート ルールを作成する手順です。
+```powershell
+$source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews"
+
+$schedule = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes 15 -TimeWindowInMinutes 30
+
+$metricTrigger = New-AzScheduledQueryRuleLogMetricTrigger -ThresholdOperator "GreaterThan" -Threshold 2 -MetricTriggerType "Consecutive" -MetricColumn "_ResourceId"
+
+$triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator "LessThan" -Threshold 5 -MetricTrigger $metricTrigger
+
+$aznsActionGroup = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.insights/actiongroups/sampleAG" -EmailSubject "Custom email subject" -CustomWebhookPayload "{ \"alert\":\"#alertrulename\", \"IncludeSearchResults\":true }"
+
+$alertingAction = New-AzScheduledQueryRuleAlertingAction -AznsAction $aznsActionGroup -Severity "3" -Trigger $triggerCondition
+
+New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name for your Application Insights App or Log Analytics Workspace" -Action $alertingAction -Enabled $true -Description "Alert description" -Schedule $schedule -Source $source -Name "Alert Name"
+```
 
 ## <a name="managing-log-alerts-using-cli-or-api"></a>CLI または API を使用したログ アラートの管理
 

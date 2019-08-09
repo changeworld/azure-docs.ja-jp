@@ -10,13 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 1a970bb2c33db1ad78dca088b7d9b2430984df96
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.subservice: cognitive-search
+ms.openlocfilehash: 16bb7d84bbf19081c146aaac13ecc798610bc4bc
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698860"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840956"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 

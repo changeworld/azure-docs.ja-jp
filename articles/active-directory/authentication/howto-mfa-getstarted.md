@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa2254ff3223be4312f4e9b3db4d9d83da443c0
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 182b9da402e633033411f85eb59b31f76749f3cd
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311326"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666247"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画
 
@@ -360,6 +360,9 @@ Windows セキュリティ ログと AD FS 管理者ログ両方の標準的な 
    1. [Identity Protection](../identity-protection/howto-mfa-policy.md) の場合
 1. ユーザーに通知を送り、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でユーザーに登録させます
 1. [登録したユーザーを追跡します](#identify-non-registered-users)
+
+> [!TIP]
+> 政府機関クラウド ユーザーは、[https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup) で登録できます
 
 ## <a name="manage-your-solution"></a>ソリューションを管理する
 

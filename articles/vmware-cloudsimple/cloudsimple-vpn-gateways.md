@@ -5,15 +5,15 @@ author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 47d61f80cae926965dd71342980302c2b3045c52
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: d922f87e9a915bd5af9d2b1257dee8044773797e
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689641"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816142"
 ---
 # <a name="vpn-gateways-overview"></a>VPN ゲートウェイの概要
 
