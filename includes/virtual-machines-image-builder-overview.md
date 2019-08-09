@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: 55d73b2602a9a862375ca3e72dee4597c1d6f1d6
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: fa34baa7569b0552708cd1a9b57d79186e5acd57
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659849"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669727"
 ---
 組織で標準化された仮想マシン (VM) イメージを使用すると、クラウドに移行し、デプロイの一貫性を保つことができます。 通常、イメージには、事前に定義されたセキュリティと構成設定と、必要なソフトウェアが含まれています。 独自のイメージング パイプラインを設定するには、時間、インフラストラクチャ、設定が必要ですが、Azure VM Image Builder を使用すると、イメージを説明する単純な構成を用意し、それをサービスに送信するだけで、イメージが構築され、配布されます。
  
@@ -47,6 +47,7 @@ AIB は Azure Marketplace のベース OS イメージをサポートします�
 - Ubuntu 16.04
 - RHEL 7.6
 - CentOS 7.6
+- Windows 10 RS5 Enterprize/Professional/Enterprise for Virtual Desktop (EVD) 
 - Windows 2016
 - Windows 2019
 

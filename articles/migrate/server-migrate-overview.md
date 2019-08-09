@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: raynew
-ms.openlocfilehash: f8bfbe26dc4c6ddbcf622f91938ba060de00b2ec
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f27982b4e310d9865e497a3e1e10be9948beb928
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810150"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640732"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware 移行オプションを選択する
 
@@ -21,28 +21,22 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 - レプリケーション用のエージェントを使用した移行。 レプリケーションのために VM 上にエージェントをインストールします。
 
 
-デプロイの観点からはエージェントレス レプリケーションの方が簡単ですが、それには現在、いくつかの制限があります。
 
-## <a name="agentless-migration-limitations"></a>エージェントレス移行の制限
 
-制限は次のとおりです。
+## <a name="compare-migration-methods"></a>移行方法を比較する
 
-- **同時レプリケーション**: vCenter Server から最大 50 の VM を同時にレプリケートできます。<br/> 移行する VM が 50 を超える場合は、VM の複数のバッチを作成します。<br/> それを超える数を一度にレプリケートすると、パフォーマンスに影響を与えます。
-- **VM ディスク**: 移行する VM のディスクは 60 以下である必要があります。
-- **VM オペレーティング システム**: 一般に、Azure Migrate は任意の Windows Server または Linux オペレーティング システムを移行できますが、Azure で実行できるように VM に変更が必要になる場合があります。 Azure Migrate は、次のオペレーティング システムの場合、これらの変更を自動的に行います。
-    - Red Hat Enterprise Linux 6.5+、7.0+
-    - CentOS 6.5+、7.0+
-    - SUSE Linux Enterprise Server 12 SP1+
-    - Ubuntu 14.04LTS、16.04LTS、18.04LTS
-    - Debian 7、8
-    - その他のオペレーティング システムの場合は、移行の前に手動で調整を行う必要があります。 [移行に関するチュートリアル](tutorial-migrate-vmware.md)では、これを行う方法について説明しています。
-- **Linux ブート**: /boot が専用のパーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションの一部である場合、'/' パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。
-- **UEFI ブート**: UEFI ブートを使用した VM の移行はサポートされません。
-- **暗号化されたディスク/ボリューム (BitLocker、cryptfs)** : 暗号化されたディスク/ボリュームを含む VM の移行はサポートされません。
-- **RDM/パススルー ディスク**: VM に RDM またはパススルー ディスクが含まれている場合、これらのディスクは Azure にレプリケートされません。
-- **NFS**: VM 上のボリュームとしてマウントされた NFS ボリュームはレプリケートされません。
-- **ターゲット ストレージ**: VMware VM は、マネージド ディスク (Standard HDD、Premium SSD) を含む Azure VM にのみ移行できます。
+これらの一部の比較を使用して、使用する方法を決定します。 [エージェントレス](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements)および[エージェント ベース](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)の移行についての完全なサポート要件を確認することもできます。
 
+**設定** | **エージェントレス** | **エージェント ベース**
+--- | --- | ---
+**Azure のアクセス許可** | Azure Migrate プロジェクトを作成するためのアクセス許可、および Azure Migrate アプライアンスをデプロイするときに作成される Azure AD アプリを登録するためのアクセス許可が必要です。 | Azure サブスクリプションに対する共同作成者のアクセス許可が必要です。 
+**同時レプリケーション** | vCenter Server から最大 100 の VM を同時にレプリケートできます。<br/> 移行する VM が 50 を超える場合は、VM の複数のバッチを作成します。<br/> それを超える数を一度にレプリケートすると、パフォーマンスに影響を与えます。 | NA
+**アプライアンスのデプロイ** | [Azure Migrate アプライアンス](migrate-appliance.md)がオンプレミスにデプロイされます。 | [Azure Migrate レプリケーション アプライアンス](migrate-replication-appliance.md)がオンプレミスにデプロイされます。
+**Site Recovery の互換性** | 互換性あり。 | Site Recovery を使用してコンピューターのレプリケーションを設定している場合は、Azure Migrate Server Migration を使用してレプリケートすることはできません。
+**ターゲット ディスク** | マネージド ディスク | マネージド ディスク
+**ディスクの制限** | OS ディスク:2 TB<br/><br/> データ ディスク:4 TB<br/><br/> 最大ディスク数:60 | OS ディスク:2 TB<br/><br/> データ ディスク:4 TB<br/><br/> 最大ディスク数:63
+**パススルー ディスク** | サポートされていません | サポートされています
+**UEFI ブート** | サポートされていません | Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。<br/><br/> OS ディスクには最大 4 つのパーティションが必要で、ボリュームは NTFS でフォーマットされている必要があります。
 
 
 ## <a name="deployment-steps-comparison"></a>デプロイ手順の比較
@@ -65,7 +59,7 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 
 ## <a name="next-steps"></a>次の手順
 
-エージェントレス移行を使用して [VMware VM を移行します](tutorial-migrate-vmware.md)。
+エージェントレス移行で [VMware VM を移行する](tutorial-migrate-vmware.md)。
 
 
 

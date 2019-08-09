@@ -3,23 +3,21 @@ title: SSL 終了でのアプリケーション ゲートウェイの作成 - Az
 description: Azure CLI を使用して、アプリケーション ゲートウェイを作成し、SSL 終了の証明書を追加する方法について説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 5/20/2019
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d9007b3f1d4eee436452a3fa75b2880b9e5be461
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: d6df504d46a829298d0fff8d69b05019c26baa75
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955687"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688129"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Azure CLI を使用して SSL 終了でアプリケーション ゲートウェイを作成する
 
-Azure CLI を使用して、バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する [SSL 終了](ssl-overview.md)の証明書で、[アプリケーション ゲートウェイ](overview.md)を作成することができます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
+Azure CLI を使用して、[SSL 終了](ssl-overview.md)の証明書を使って[アプリケーション ゲートウェイ](overview.md)を作成できます。 バックエンド サーバーの場合は、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用できます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。
 
 この記事では、次のことについて説明します。
 
@@ -84,7 +82,9 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
@@ -101,7 +101,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 443 \
   --http-settings-port 80 \
@@ -183,4 +183,4 @@ az group delete --name myResourceGroupAG --location eastus
 
 ## <a name="next-steps"></a>次の手順
 
-* [複数の Web サイトをホストするアプリケーション ゲートウェイを作成する](./tutorial-multiple-sites-cli.md)
+[複数の Web サイトをホストするアプリケーション ゲートウェイを作成する](./tutorial-multiple-sites-cli.md)

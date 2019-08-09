@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f78d1853194cad000aa2e54b40d1ac5003544
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489042"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678096"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD のエンタイトルメント管理 (プレビュー) でアクセス パッケージへのアクセスを要求する
 
@@ -44,7 +44,7 @@ ms.locfileid: "68489042"
 
 1. マイ アクセス ポータルにサインインします。
 
-    必ず、組織のアカウントを使用してください。 わからない場合は、プロジェクトまたはビジネス マネージャーに確認してください。
+    必ず、組織 (職場または学校) のアカウントを使用してください。 わからない場合は、プロジェクトまたはビジネス マネージャーに確認してください。
 
 ## <a name="request-an-access-package"></a>アクセス パッケージを要求する
 
@@ -52,6 +52,9 @@ ms.locfileid: "68489042"
 
 **前提となるロール:** 要求元
 
+1. リストでアクセス パッケージを見つけます。  必要に応じて、検索文字列を入力して、 **[名前]** 、 **[カタログ]** 、または **[リソース]** フィルターを選択すると検索できます。
+
+    ![マイ アクセス ポータル - リソース検索](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
 1. チェックマークをクリックして、アクセス パッケージを選択します。
 
     ![マイ アクセス ポータル - [アクセス パッケージ]](./media/entitlement-management-shared/my-access-access-packages.png)

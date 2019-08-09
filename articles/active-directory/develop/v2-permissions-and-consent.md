@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 032cc0edaa140d82124a7369232cb82bf6c00c10
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2c0fcb748262b20fd4550d08d74056c0219dbc09
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702706"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693999"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -93,7 +93,7 @@ OpenID Connect の Microsoft ID プラットフォーム実装には、特定の
 
 `profile` スコープは `openid` スコープやその他のスコープと共に使用できます。 これにより、アプリはユーザーの多くの情報にアクセスできます。 アプリがアクセスできる情報には、ユーザーの名、姓、希望するユーザー名、オブジェクト ID などがありますが、これらに限定されるものではありません。 特定のユーザーに対して id_tokens パラメーターで使用できるプロファイル要求の完全な一覧については、[`id_tokens` のリファレンス](id-tokens.md)をご覧ください。
 
-### <a name="offlineaccess"></a>offline_access
+### <a name="offline_access"></a>offline_access
 
 [ `offline_access`スコープ](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess)を使用すると、アプリはユーザーの代わりに、長期間にわたってリソースにアクセスできます。 同意ページで、このスコープは、"アクセス権を与えたデータへのアクセスを管理する" アクセス許可として表示されます。 ユーザーが `offline_access` スコープを承認すると、アプリは Microsoft ID プラットフォーム トークン エンドポイントから更新トークンを取得できます。 更新トークンの有効期間は長期です。 アプリは、古いアクセス トークンの有効期限が切れると、新しいアクセス トークンを取得できます。
 
@@ -153,6 +153,9 @@ Microsoft のエコシステムにおける高い権限には、*管理者によ
 アプリケーションがアプリケーションのアクセス許可を要求していて、管理者が管理者の同意エンドポイントを介してこれらのアクセス許可を付与する場合、この許可は特定のユーザーに代わっては行われません。 代わりに、クライアント アプリケーションはアクセス許可を "*直接*" 付与されます。 これらの種類のアクセス許可は、バックグラウンドで実行されるデーモン サービスと他の非対話型アプリケーションでのみ使用されます。
 
 ## <a name="using-the-admin-consent-endpoint"></a>管理者の同意エンドポイントを使用する
+
+> [!NOTE] 
+> 管理者の同意エンドポイントを使って管理者の同意を付与した後は、管理者の同意の付与は終わっており、ユーザーはそれ以上のアクションを実行する必要がないことに注意してください。 管理者の同意を付与した後、ユーザーは一般的な認証フローを使ってアクセス トークンを取得でき、結果のアクセス トークンには同意されたアクセス許可が付与されます。 
 
 会社の管理者がアプリケーションを使用していて、承認エンドポイントに送られた場合、Microsoft ID プラットフォームは、ユーザーのロールを検出し、アプリケーションで要求されたアクセス許可に対してテナント全体の代わりに同意するかどうかを管理者に確認します。 ただし、テナント全体に代わって管理者がアクセス許可を付与することを事前に要求する必要がある場合に使用できる、専用の管理者の同意エンドポイントもあります。 アプリケーションのアクセス許可を要求する場合も、このエンドポイントを使用する必要があります (これは、承認エンドポイントでは要求できません)。
 

@@ -3,25 +3,23 @@ title: SSL 終了でアプリケーション ゲートウェイを作成する -
 description: Azure PowerShell を使用して、アプリケーション ゲートウェイを作成し、SSL 終了の証明書を追加する方法について説明します。
 services: application-gateway
 author: vhorne
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.topic: article
+ms.date: 7/31/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a5f9797572e0f78ce8cc83c5c1a1aadd46a234a1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 70447e01fc248e889662c5ec15cb65b1c0cc4848
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198359"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688098"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Azure PowerShell を使用して SSL 終了でアプリケーション ゲートウェイを作成する
 
 Azure PowerShell を使用して、バックエンド サーバーに[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用する [SSL 終了](ssl-overview.md)の証明書で、[アプリケーション ゲートウェイ](overview.md)を作成することができます。 この例では、アプリケーション ゲートウェイの既定のバックエンド プールに追加された 2 つの仮想マシン インスタンスがスケール セットに含まれています。 
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * 自己署名証明書の作成
@@ -33,11 +31,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-このチュートリアルには、Azure PowerShell モジュール バージョン 1.0.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzAccount` を実行して Azure との接続を作成することも必要です。
+この記事では、Azure PowerShell モジュール バージョン 1.0.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
-実際の運用では、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 このチュートリアルでは、[New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) を使用して、自己署名証明書を作成します。 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートできます。
+実際の運用では、信頼できるプロバイダーによって署名された有効な証明書をインポートする必要があります。 この記事では、[New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) を使用して、自己署名証明書を作成します。 [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートできます。
 
 ```powershell
 New-SelfSignedCertificate `
@@ -98,7 +96,8 @@ $pip = New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
-  -AllocationMethod Dynamic
+  -AllocationMethod Static `
+  -Sku Standard
 ```
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
@@ -183,8 +182,8 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
-  -Name Standard_Medium `
-  -Tier Standard `
+  -Name Standard_v2 `
+  -Tier Standard_v2 `
   -Capacity 2
 
 $appgw = New-AzApplicationGateway `
@@ -299,13 +298,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、以下の内容を学習しました。
-
-> [!div class="checklist"]
-> * 自己署名証明書の作成
-> * ネットワークの設定
-> * 証明書でのアプリケーション ゲートウェイの作成
-> * 既定のバックエンド プールでの仮想マシン スケール セットの作成
-
-> [!div class="nextstepaction"]
-> [複数の Web サイトをホストするアプリケーション ゲートウェイを作成する](./tutorial-multiple-sites-powershell.md)
+[複数の Web サイトをホストするアプリケーション ゲートウェイを作成する](./tutorial-multiple-sites-powershell.md)

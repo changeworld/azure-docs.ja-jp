@@ -3,34 +3,23 @@ title: Web アプリケーション ファイアウォールで Web トラフィ
 description: Azure PowerShell を使用して、アプリケーション ゲートウェイ上の Web アプリケーション ファイアウォールで Web トラフィックを制限する方法について説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 03/25/2019
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e962d76bc82edabf750af52c50ec45ed9ed76e17
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 219c2a36d1a241db8361ae1f8f2f74b9a68780ca
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596838"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688261"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールを有効にする
 
-> [!div class="op_single_selector"]
->
-> - [Azure Portal](application-gateway-web-application-firewall-portal.md)
-> - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
-> - [Azure CLI](tutorial-restrict-web-traffic-cli.md)
->
-> 
-
 [Web アプリケーション ファイアウォール](waf-overview.md) (WAF) で[アプリケーション ゲートウェイ](overview.md)上のトラフィックを制限できます。 WAF は、[OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) ルールを使用してアプリケーションを保護します。 こうしたルールには、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの攻撃に対する保護が含まれます。 
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ
@@ -40,7 +29,7 @@ ms.locfileid: "68596838"
 
 ![Web アプリケーション ファイアウォールの例](./media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-好みに応じて、[Azure CLI](tutorial-restrict-web-traffic-cli.md) を使ってこのチュートリアルの手順を実行することもできます。
+好みに応じて、[Azure portal](application-gateway-web-application-firewall-portal.md) または [Azure CLI](tutorial-restrict-web-traffic-cli.md) を使ってこの記事の手順を行うこともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -48,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をローカルにインストールして使用することを選択する場合、この記事では Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -82,7 +71,8 @@ $pip = New-AzPublicIpAddress `
   -ResourceGroupName myResourceGroupAG `
   -Location eastus `
   -Name myAGPublicIPAddress `
-  -AllocationMethod Dynamic
+  -AllocationMethod Static `
+  -Sku Standard
 ```
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
@@ -160,8 +150,8 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
-  -Name WAF_Medium `
-  -Tier WAF `
+  -Name WAF_v2 `
+  -Tier WAF_v2 `
   -Capacity 2
 
 $wafConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration `
@@ -258,7 +248,7 @@ Update-AzVmss `
 
 ## <a name="create-a-storage-account-and-configure-diagnostics"></a>ストレージ アカウントの作成と診断の構成
 
-このチュートリアルでは、アプリケーション ゲートウェイは、検出および防止の目的で、ストレージ アカウントを使用してデータを格納します。 Azure Monitor ログまたはイベント ハブを使用して、データを記録することもできます。
+この記事では、アプリケーション ゲートウェイは、検出および防止の目的で、ストレージ アカウントを使用してデータを格納します。 Azure Monitor ログまたはイベント ハブを使用して、データを記録することもできます。
 
 ### <a name="create-the-storage-account"></a>ストレージ アカウントの作成
 
@@ -314,13 +304,4 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、以下の内容を学習しました。
-
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * WAF 対応のアプリケーション ゲートウェイの作成
-> * 仮想マシン スケール セットを作成する
-> * ストレージ アカウントの作成と診断の構成
-
-> [!div class="nextstepaction"]
-> [SSL 終了でアプリケーション ゲートウェイを作成する](./tutorial-ssl-powershell.md)
+[SSL 終了でアプリケーション ゲートウェイを作成する](./tutorial-ssl-powershell.md)

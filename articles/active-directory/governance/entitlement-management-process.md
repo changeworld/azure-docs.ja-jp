@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ad17f4c4d338e1d0b8118c1a172e0aaad7118e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: eb5f322d8bc974274f7f2da7811b124499224635
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489099"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678141"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) の要求プロセスと電子メール通知
 
@@ -47,7 +47,7 @@ ms.locfileid: "68489099"
 | 有効期限切れ | 承認要求タイムアウト期間内に要求を承認する承認者がいなかった場合、要求は期限切れになります。 再試行するには、ユーザーはその要求を再送信する必要があります。 |
 | 拒否 | 承認者は、要求を拒否します。 |
 | Approved | 承認者は、要求を承認します。 |
-| 配信 | ユーザーには、アクセス パッケージ内のすべてのリソースへのアクセスが割り当てられて**いません**。 これが外部ユーザーの場合は、ユーザーはまだリソース ディレクトリにアクセスしておらず、許可プロンプトを受け入ています。 |
+| 配信 | ユーザーには、アクセス パッケージ内のすべてのリソースへのアクセスが割り当てられて**いません**。 これが外部ユーザーの場合は、ユーザーはまだリソース ディレクトリにアクセスしておらず、同意プロンプトを受け入れていない可能性があります。 |
 | 配信済み | ユーザーには、アクセス パッケージ内のすべてのリソースへのアクセスが割り当てられています。 |
 | 拡張アクセス | ポリシーで拡張が許可されている場合、ユーザーは割り当てを拡張しています。 |
 | アクセス有効期限切れ | ユーザーのアクセス パッケージへのアクセスの有効期限が切れています。 アクセスを取得するには、ユーザーはもう一度要求を送信する必要があります。 |

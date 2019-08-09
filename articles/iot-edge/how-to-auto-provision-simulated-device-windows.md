@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 01247dfc0046ef722d70fe48f7ab8ee63f685962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0236491f9ebc8e3ecf7df8b74db4fd5ff441c7f8
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65153567"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677434"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Windows 上のシミュレートされた TPM Edge デバイスの作成とプロビジョニング
 
@@ -46,14 +46,14 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
 シミュレートされたデバイスの作成に使用する SDK の言語を選択し、個々の登録を作成するまでの手順に従います。
 
-個々の登録を作成するときに、 **[有効にする]** を選択して、Windows 開発用マシンでシミュレートされている TPM デバイスが **IoT Edge デバイス**であることを宣言します。
+個々の登録を作成するときに、 **[True]** を選択して、Windows 開発用マシンでシミュレートされている TPM デバイスが **IoT Edge デバイス**であることを宣言します。
 
 シミュレートされたデバイスと個々の登録ガイド:
 
 * [C](../iot-dps/quick-create-simulated-device.md)
 * [Java](../iot-dps/quick-create-simulated-device-tpm-java.md)
 * [C#](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
-* [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
+* [Node.JS](../iot-dps/quick-create-simulated-device-tpm-node.md)
 * [Python](../iot-dps/quick-create-simulated-device-tpm-python.md)
 
 個別登録を作成したら、**登録 ID** の値を保存します。 この値は、IoT Edge ランタイムを構成するときに使用します。

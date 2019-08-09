@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 7f20e04fa65d0266d9e77b8bbcf2e2c4b1fd9eab
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 1af6ed2743807f75e96bed0ae67d0070aa55c0ef
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227451"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677460"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -142,23 +142,21 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 1. この時点で、IoT Core デバイスが自動的に再起動することがあります。 その他の Windows 10 または Windows Server デバイスでは、再起動が求められることがあります。 その場合、デバイスをすぐに再起動してください。 デバイスが起動されたら、管理者として PowerShell を再実行します。
 
-1. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。 手動プロビジョニングではなく Device Provisioning Service を使用するには、`-Dps` フラグを使用します。
+1. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。 手動プロビジョニングではなく Device Provisioning Service を使用するには、`-Dps` フラグを使用します。 `{scope ID}` を Device Provisioning Service からのスコープ ID に置き換え、`{registration ID}` をデバイスからの登録 ID に置き換えます。どちらも手順 1 で取得済みのはずです。
 
    TPM 構成証明で DPS を使用するために **Initialize-IoTEdge** コマンドを使用します。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID}
    ```
 
    対称キー構成証明で DPS を使用するために **Initialize-IoTEdge** コマンドを使用します。 `{symmetric key}` をデバイス キーで置き換えます。
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -Dps -SymmetricKey {symmetric key}
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
    ```
-
-1. 入力を求められたら、Device Provisioning Service からのスコープ ID とデバイスからの登録 ID を指定します。どちらも手順 1 で取得する必要があります。
 
 1. 「[インストールの成功を確認する](#verify-successful-installation)」の手順に従って、デバイス上の IoT Edge の状態を確認します。 
 
@@ -297,7 +295,7 @@ Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の�
 | **Dps** | なし | **スイッチ パラメーター**。 プロビジョニングの種類を指定しない場合、既定値は手動です。<br><br>Device Provisioning Service (DPS) 経由でプロビジョニングするために、DPS のスコープ ID とデバイスの登録 ID を指定することを宣言します。  |
 | **DeviceConnectionString** | 単一引用符で囲まれた、IoT Hub に登録されている IoT Edge デバイスからの接続文字列 | 手動インストールで**必須**です。 スクリプト パラメーターに接続文字列を指定しなかった場合は、インストール中にこれを指定するよう促されます。 |
 | **ScopeId** | IoT Hub に関連付けられた Device Provisioning Service のインスタンスからのスコープ ID。 | DPS インストールで**必須**です。 スクリプト パラメーターにスコープ ID を指定しなかった場合、インストール中にこれを指定するよう促されます。 |
-| **RegistrationId** | デバイスによって生成された登録 ID | DPS インストールで**必須**です。 スクリプト パラメーターに登録 ID を指定しなかった場合、インストール中にこれを指定するよう促されます。 |
+| **RegistrationId** | デバイスによって生成された登録 ID | DPS インストールで**必須**です。 |
 | **SymmetricKey** | DPS の使用時に IoT Edge デバイス ID をプロビジョニングするために使用される対称キー | 対称キー構成証明を使用している場合、DPS インストールで**必須**です。 |
 | **ContainerOs** | **Windows** または **Linux** | コンテナーのオペレーティング システムを指定しない場合は、Windows が既定値です。<br><br>Windows コンテナーの場合、IoT Edge ではインストールに含まれる moby コンテナー エンジンが使用されます。 Linux コンテナーの場合、インストールを開始する前にコンテナー エンジンをインストールする必要があります。 |
 | **InvokeWebRequestParameters** | パラメーターと値のハッシュ テーブル | インストール中には、いくつかの Web 要求が行われます。 それらの Web 要求のパラメーターを設定するにはこのフィールドを使用します。 このパラメーターは、プロキシ サーバーの資格情報を構成するために使用すると便利です。 詳細については、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](how-to-configure-proxy-support.md)」を参照してください。 |

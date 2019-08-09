@@ -4,16 +4,16 @@ description: Azure CLI を使用して、アプリケーション ゲートウ�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: tutorial
-ms.date: 5/20/2019
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 1822fe032a7c7a6382dbae2cb9f7095d1d076008
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 698191355ab9e014693b01cfb6546fb764a2b647
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955496"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688202"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Azure CLI を使用して Web アプリケーション ファイアウォールを有効にする
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -47,7 +47,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-仮想ネットワークとサブネットは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) と [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) で、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 *myAGPublicIPAddress* という名前のパブリック IP アドレスを [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) で作成します。
+仮想ネットワークとサブネットは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。 "*myVNet*" という名前の仮想ネットワークと "*myAGSubnet*" という名前のサブネットを作成します。 次に、"*myAGPublicIPAddress*" という名前のパブリック IP アドレスを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -66,12 +66,14 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>WAF を含んだアプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、キャパシティ、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。
+[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 アプリケーション ゲートウェイは、"*myAGSubnet*" と "*myAGPublicIPAddress*" に割り当てられます。
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -81,7 +83,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGSubnet \
   --capacity 2 \
-  --sku WAF_Medium \
+  --sku WAF_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -155,7 +157,7 @@ az storage account create \
 
 ### <a name="configure-diagnostics"></a>診断の構成
 
-ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog、および ApplicationGatewayFirewallLog ログにデータが記録されるように診断を構成します。 `<subscriptionId>` を実際のサブスクリプション ID に置き換えて、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) で診断を構成します。
+ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog、および ApplicationGatewayFirewallLog ログにデータが記録されるように診断を構成します。 `<subscriptionId>` を実際のサブスクリプション ID に置き換えてから、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) で診断を構成します。
 
 ```azurecli-interactive
 appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)
@@ -191,4 +193,4 @@ az group delete --name myResourceGroupAG
 
 ## <a name="next-steps"></a>次の手順
 
-* [SSL 終了でアプリケーション ゲートウェイを作成する](./tutorial-ssl-cli.md)
+[SSL 終了でアプリケーション ゲートウェイを作成する](./tutorial-ssl-cli.md)

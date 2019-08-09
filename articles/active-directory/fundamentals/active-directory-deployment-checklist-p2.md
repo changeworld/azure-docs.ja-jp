@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 07/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: ''
+ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e668a5238859d8cd8c2a7797200a12197ce72be9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 767e3caf577bc1b7a49bd56570b8aeedbe307edc
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67110471"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693888"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 
@@ -28,7 +28,7 @@ ms.locfileid: "67110471"
 
 ## <a name="prerequisites"></a>前提条件
 
-このガイドの推奨事項の多くは、Azure AD Free や Basic で、またはまったくライセンスがなくても、実施することができます。 ライセンスが必要な場合は、タスクを遂行するために最小限どのライセンスが必要であるかを示します。
+このガイドの推奨事項の多くは、Azure AD Free で、またはまったくライセンスがなくても、実装することができます。 ライセンスが必要な場合は、タスクを遂行するために最小限どのライセンスが必要であるかを示します。
 
 ライセンスに関する追加の情報については、以下のページをご覧ください。
 
@@ -46,12 +46,12 @@ ms.locfileid: "67110471"
 | [複数のグローバル管理者を指定する](../users-groups-roles/directory-emergency-access.md) | 緊急事態があった場合に使用するため、クラウド専用の永続的なグローバル管理者アカウントを少なくとも 2 つ割り当てます。 これらのアカウントは日常は使用されないもので、長く複雑なパスワードにする必要があります。 | Azure AD Free |
 | [可能な場合は非グローバル管理者ロールを使用する](../users-groups-roles/directory-assign-admin-roles.md) | 管理者には、アクセスする必要がある領域だけに必要なアクセスのみを付与します。 すべての管理者がグローバル管理者である必要はありません。 | Azure AD Free |
 | [管理者ロールの使用の追跡について Privileged Identity Management を有効にする](../privileged-identity-management/pim-getting-started.md) | Privileged Identity Management を有効にして、管理者ロールの使用状況の追跡を開始します。 | Azure AD Premium P2 |
-| [セルフサービスによるパスワードのリセットをロール アウトする](../authentication/howto-sspr-deployment.md) | ユーザーに管理者権限を付与するポリシーを使用して、スタッフによる各自のパスワードのリセットを許可することで、パスワードのリセットに関するヘルプデスクの呼び出しを削減します。 | Azure AD Basic |
-| [組織固有の禁止パスワードのカスタム リストを作成する](../authentication/howto-password-ban-bad-configure.md) | ユーザーが、お客様の組織や分野において一般的な単語や語句を含むパスワードを作成しないようにします。 | Azure AD Basic |
+| [セルフサービスによるパスワードのリセットをロール アウトする](../authentication/howto-sspr-deployment.md) | ユーザーに管理者権限を付与するポリシーを使用して、スタッフによる各自のパスワードのリセットを許可することで、パスワードのリセットに関するヘルプデスクの呼び出しを削減します。 | |
+| [組織固有の禁止パスワードのカスタム リストを作成する](../authentication/howto-password-ban-bad-configure.md) | ユーザーが、お客様の組織や分野において一般的な単語や語句を含むパスワードを作成しないようにします。 | |
 | [Azure AD のパスワード保護とのオンプレミス統合を有効にする](../authentication/concept-password-ban-bad-on-premises.md) | 禁止パスワード リストをオンプレミスのディレクトリまで拡張して、オンプレミスで設定されるパスワードが、グローバルでテナント固有の禁止パスワード リストにも確実に準拠するようにします。 | Azure AD Premium P1 |
 | [Microsoft のパスワードのガイダンスを有効にする](https://www.microsoft.com/research/publication/password-guidance/) | 設定したスケジュールでのパスワード変更をユーザーに要求することをやめ、複雑さに関する要件を無効にします。ユーザーは自分のパスワードを、より覚えやすく安全な何かのままにしておきやすくなります。 | Azure AD Free |
 | [クラウド ベースのユーザー アカウントの定期的なパスワード リセットを無効にする](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | 定期的なパスワード リセットでは、ユーザーに、既存のパスワードを増やすことが推奨されています。 Microsoft のパスワードのガイダンス ドキュメントに記載されたガイドラインを使用し、オンプレミスのポリシーをクラウドのみのユーザーにミラー化します。 | Azure AD Free |
-| [Azure Active Directory のスマート ロックアウトをカスタマイズする](../authentication/howto-password-smart-lockout.md) | オンプレミスの Active Directory ユーザーにレプリケートされないように、クラウド ベースのユーザーからのロックアウトを停止します | Azure AD Basic |
+| [Azure Active Directory のスマート ロックアウトをカスタマイズする](../authentication/howto-password-smart-lockout.md) | オンプレミスの Active Directory ユーザーにレプリケートされないように、クラウド ベースのユーザーからのロックアウトを停止します | |
 | [AD FS のエクストラネット スマート ロックアウトを有効にする](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS のエクストラネット ロックアウトは、ブルート フォース パスワード推測攻撃からの保護を行います。同時に、有効な AD FS ユーザーには引き続き自分のアカウントを使用させます。 | |
 | [条件付きアクセス ポリシーを使用して Azure AD Multi-Factor Authentication をデプロイする](../authentication/howto-mfa-getstarted.md) | 条件付きアクセス ポリシーを使用して、機密性の高いアプリケーションにアクセスするときには 2 段階認証を実行するようユーザーに要求します。 | Azure AD Premium P1 |
 | [Azure Active Directory Identity Protection を有効にする](../identity-protection/enable.md) | 組織内のユーザーについて、リスクのあるサインインや侵害された資格情報の追跡を有効にします。 | Azure AD Premium P2 |
@@ -71,7 +71,8 @@ ms.locfileid: "67110471"
 | [Azure Active Directory のグループ メンバーシップでユーザーにライセンスを割り当てる](../users-groups-roles/licensing-groups-assign.md) | ユーザーごとの設定ではなく、グループ別に機能を有効または無効にするライセンス グループを作成することで、時間と労力を節約します。 | |
 | [ゲスト ユーザー アクセスの計画を作成する](../b2b/what-is-b2b.md) | ゲスト ユーザーが各自の職場 ID、学校 ID、またはソーシャル ID を使用してアプリやサービスにサインインできるようにして、共同作業を行います。 | [Azure AD B2B のライセンスに関するガイダンス](../b2b/licensing-guidance.md) |
 | [デバイス管理戦略を決定する](../devices/overview.md) | デバイスに関して組織が何を許可するかを決定します。 登録か参加か、Bring Your Own Device か会社支給かなどです。 | |
-| [組織に Windows Hello for Business を配置する](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Windows Hello を使用するパスワードのない認証のための準備を行います | |
+| [組織に Windows Hello for Business を配置する](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Windows Hello を使用するパスワードなしの認証のための準備を行います | |
+| [ユーザー用にパスワードなしの認証方法をデプロイする](../authentication/concept-authentication-passwordless.md) | ユーザーに便利なパスワードなしの認証方法を提供します | Azure AD Premium P1 |
 
 ## <a name="phase-3-manage-applications"></a>フェーズ 3: アプリケーションの管理
 
@@ -81,7 +82,7 @@ ms.locfileid: "67110471"
 | ---- | ------ | ---------------- |
 | アプリケーションを特定する | オンプレミス アプリケーション、クラウドの SaaS アプリケーション、その他の基幹業務アプリケーションなど、組織で使用中のアプリケーションを特定します。 これらのアプリケーションの Azure AD での管理が、可能であるか、する必要があるかを判断します。 | ライセンス不要 |
 | [ギャラリーのサポートされている SaaS アプリケーションを統合する](../manage-apps/add-application-portal.md) | Azure AD には、あらかじめ統合された何千ものアプリケーションが含まれるギャラリーがあります。 組織で使用しているアプリケーションの一部は、おそらく、Azure portal から直接アクセスできるギャラリーにあります。 | Azure AD Free |
-| [アプリケーション プロキシを使用してオンプレミス アプリケーションを統合する](../manage-apps/application-proxy-add-on-premises-application.md) | アプリケーション プロキシを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 | Azure AD Basic |
+| [アプリケーション プロキシを使用してオンプレミス アプリケーションを統合する](../manage-apps/application-proxy-add-on-premises-application.md) | アプリケーション プロキシを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 | |
 
 ## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>フェーズ 4: 特権 ID の監査、アクセス レビューの完了、ユーザー ライフ サイクルの管理
 

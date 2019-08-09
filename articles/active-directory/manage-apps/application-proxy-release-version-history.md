@@ -16,15 +16,17 @@ ms.date: 04/05/2019
 ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97b54d57a13f0f2b47633a25f1a44efdfa17d11a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: b9ecd193282ed9b7333df44689530b4d057ad7f8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595057"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68693895"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD アプリケーション プロキシは:バージョンのリリース履歴
-この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、新しいバージョンがリリースされると自動的に更新されます。
+この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、新しいバージョンがリリースされると自動的に更新されます。 
+
+最新の機能とバグの修正が適用されるように、コネクタの自動更新が有効になっていることを確認することをお勧めします。 Microsoft では、コネクタの最新バージョンと 1 つ前のバージョンを直接サポートしています。
 
 以下は、関連リソースの一覧です。
 

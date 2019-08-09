@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7402778ec8170e60a623255d0d331f12d8389227
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8163b2261601b701913e07d703f5db0ac6fa7c0
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824301"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688087"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションにユーザーとグループを割り当てる
 この記事では、Azure Active Directory (Azure AD) においてユーザーまたはグループをアプリケーションに割り当てる方法を説明します。 管理者が次の操作を実行するためのアクセス権をユーザーに付与する前に、最初にアプリケーションにユーザーを割り当てる必要があります。
@@ -32,7 +32,7 @@ ms.locfileid: "65824301"
 
 -   [Office 365 アプリケーション起動プログラム](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)にアプリケーションが表示されていることを確認する。
 
-グループベースの割り当ての可用性は、お持ちのライセンス契約によって決定されます。 グループベースの割り当てはセキュリティ グループのみでサポートされます。入れ子になったグループ メンバーシップは現在のところサポートされていません。
+グループベースの割り当ての可用性は、お持ちのライセンス契約によって決定されます。 グループ ベースの割り当てがサポートされるのはセキュリティ グループのみです。 入れ子になったグループ メンバーシップと O365 グループは、現在サポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 ユーザーとグループをアプリケーションに割り当てる前に、ユーザー割り当てを要求する必要があります。 ユーザー割り当てを要求する手順は、次のとおりです。

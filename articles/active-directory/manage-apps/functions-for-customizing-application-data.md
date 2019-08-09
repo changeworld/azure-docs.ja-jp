@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2019
+ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12b75c2df7d11b0e90c5dccc3bc2aae4e0fb0c1e
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e741e8d4d68c9862aaabffaccb86740a3e1e9b8a
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204486"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694178"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -48,7 +48,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
 | **suffix** |必須 |string |source 値の末尾に追加する文字列。 |
@@ -61,7 +61,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
 | **inputFormat** |必須 |string |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
@@ -77,7 +77,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **separator** |必須 |string |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
 | **source1  … sourceN** |必須、回数は可変 |string |結合する文字列値。 |
@@ -90,7 +90,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常、属性の名前。 |
 | **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
@@ -104,7 +104,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string | 通常は、名または姓の属性です。 |
 
@@ -116,7 +116,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
@@ -129,29 +129,32 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 * **oldValue** と **replacementValue** が指定された場合:
   
-  * source に含まれるすべての OldValue を replacementValue に置換します。
+  * **source** に含まれるすべての **oldValue** を **replacementValue** に置換します。
 * **oldValue** と **template** が指定された場合:
   
   * **template** に含まれるすべての **OldValue** を **source** 値に置換します。
+* **regexPattern** と **replacementValue** が指定された場合:
+
+  * この関数で **regexPattern** が **source** の文字列に適用され、regex グループ名を使って **replacementValue** の文字列を作成できます。
 * **regexPattern**、**regexGroupName**、**replacementValue** が指定された場合:
   
-  * source 文字列に含まれる OldValueRegexPattern に一致するすべての値を replacementValue に置換します。
-* **regexPattern**、**regexGroupName**、**replacementPropertyName** が指定された場合:
+  * この関数で **regexPattern** が **source** の文字列に適用され、**regexGroupName** と一致するすべての値が **replacementValue** に置き換えられます
+* **regexPattern**、**regexGroupName**、**replacementAttributeName** が指定された場合:
   
   * **source** に値が指定されていない場合は、**source** を返します。
-  * **source** に値が指定されている場合は、**regexPattern** と **regexGroupName** を使用して、**replacementPropertyName** を持つプロパティから置換値を抽出します。 置換値を、結果として返します。
+  * **source** に値がある場合、この関数で **regexPattern** が **source** の文字列に適用され、**regexGroupName** と一致するすべての値が **replacementAttributeName** に関連付けられた値に置き換えられます
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
-| **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
+| **source セクション** |必須 |string |通常は、**source** オブジェクトの属性の名前。 |
 | **oldValue** |省略可能 |string |**source** または **template** に含まれる置換前の値。 |
-| **regexPattern** |省略可能 |string |**source**に含まれる置換前の値の正規表現パターン。 または、replacementPropertyName を使用するときは、置換プロパティから値を抽出するパターン。 |
-| **regexGroupName** |省略可能 |string |**regexPattern**内のグループの名前。 ReplacementPropertyName を使用した場合にのみ、置換プロパティから replacementValue としてこのグループの値を抽出します。 |
+| **regexPattern** |省略可能 |string |**source**に含まれる置換前の値の正規表現パターン。 または、**replacementPropertyName** が使われるときは、**replacementPropertyName** から値を抽出するパターン。 |
+| **regexGroupName** |省略可能 |string |**regexPattern**内のグループの名前。 **replacementPropertyName** を使用した場合にのみ、このグループの値が **replacementPropertyName** から **replacementValue** として抽出されます。 |
 | **replacementValue** |省略可能 |string |古い値を置き換える新しい値。 |
-| **replacementAttributeName** |省略可能 |string |source に値を指定しないときに、置換値に使用する属性の名前。 |
-| **template** |省略可能。 |string |**template** 値が指定されている場合は、template 内の **oldValue** を検索し、source 値で置換します。 |
+| **replacementAttributeName** |省略可能 |string |置換値に使用する属性の名前 |
+| **template** |省略可能。 |string |**template** の値を指定した場合、template 内で **oldValue** が検索され、**source** の値で置換されます。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
@@ -166,7 +169,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |string | 評価する一意値生成ルールの一覧。 |
 
@@ -179,7 +182,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |必須 |string |**[appRoleAssignments]** オブジェクト |
 
@@ -191,7 +194,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |**source** 値。 |
 | **delimiter** |必須 |string |文字列の分割に使用される文字を指定します (例: ",") |
@@ -204,7 +207,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |**source セクション セクション** 値。 |
 
@@ -216,7 +219,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |**Source** 値。 |
 | **defaultValue** |省略可能 |string |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
@@ -231,7 +234,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
 | **culture** |省略可能 |string |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
@@ -244,7 +247,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| Name | 必須/繰り返し | Type | メモ |
+| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
 | **culture** |省略可能 |string |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|

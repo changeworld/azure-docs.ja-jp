@@ -9,16 +9,38 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 53fef426c927c690a3b697055f467f6cd35c532c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6de348a19081eba685deafebd8a7c9b9d6556444
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477516"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688108"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする
 
 この記事では、Desired State Configuration (DSC) の問題のトラブルシューティングに関する情報を説明します。
+
+## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする手順
+
+Azure State Configuration で構成をコンパイルまたはデプロイするときにエラーが発生した場合は、以下の手順が問題を診断するのに役立ちます。
+
+1. **ローカル コンピューターで構成が正常にコンパイルされていることを確認する:** Azure State Configuration は、PowerShell DSC 上に構築されます。 DSC の言語と構文については、[PowerShell DSC のドキュメント](/powershell/dsc/overview/overview)を参照してください。
+
+   ローカル コンピューターで DSC の構成をコンパイルすると、次のような一般的なエラーを検出して解決できます。
+
+   - **モジュールの不足**
+   - **構文エラー**
+   - **論理エラー**
+2. **ノードで DSC のログを表示する:** 構成のコンパイルは正常に行われても、ノードに適用されるときに失敗する場合は、ログで詳細情報を確認できます。 DSC ログを探す場所については、「[DSC イベント ログの場所](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)」を参照してください。
+
+   さらに、[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) は、DSC ログから詳細な情報を解析するのに役立ちます。 サポートに問い合わせる場合、サポートでは問題を診断するのにこれらのログが必要です。
+
+   ご利用のローカル コンピューターに **xDscDiagnostics** をインストールする手順については、[安定バージョンのモジュールのインストール](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)に関するページをご覧ください。
+
+   ご利用の Azure マシンに **xDscDiagnostics** をインストールするには、[az vm run-command](/cli/azure/vm/run-command) または [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) を使用できます。 また、「[実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する](../../virtual-machines/windows/run-command.md)」の手順に従って、ポータルから **[実行コマンド]** オプションを使うこともできます。
+
+   **xDscDiagnostics** の使い方については、「[xDscDiagnostics を使用した DSC ログの分析](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)」と [xDscDiagnostics のコマンドレット](https://github.com/PowerShell/xDscDiagnostics#cmdlets)に関するページをご覧ください。
+3. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** Desired State Configuration は、ノードにインストールされているモジュールに依存します。  Azure Automation State Configuration を使うときは、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」の手順に従って、必要なモジュールを Automation アカウントにインポートします。 構成が特定のバージョンのモジュールに依存することもあります。  詳細については、「[共有リソースのエラーをトラブルシューティングする](shared-resources.md#modules)」を参照してください。
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) の使用時に発生する一般的なエラー
 
@@ -86,7 +108,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 * ノードに "構成名" ではなく、"ノード構成名" が割り当てられていることを確認してください。
 * ノード構成は、Azure ポータルまたは PowerShell コマンドレットを使用してノードに割り当てることができます。
 
-  * Azure Portal を使用してノードにノード構成を割り当てるには、 **[DSC ノード]** ページを開き、ノードを選択し、 **[ノード構成の割り当て]** ボタンをクリックします。  
+  * Azure Portal を使用してノードにノード構成を割り当てるには、 **[DSC ノード]** ページを開き、ノードを選択し、 **[ノード構成の割り当て]** ボタンをクリックします。
   * PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、**Set-AzureRmAutomationDscNode** コマンドレットを使用します。
 
 ### <a name="no-mof-files"></a>シナリオ:構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった

@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 896cc495d6f369c034171833a9b90aa53e6477b6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 12452b4e9cc6caa64d4c81a310fbccb5d1717817
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234654"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678156"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理とは (プレビュー)
 
@@ -90,7 +90,7 @@ Azure AD セキュリティ グループまたは Office 365 グループに依�
 
 - リソース
 - ユーザーがリソースに対して必要とするロール
-- アクセスを要求する資格がある内部ユーザーと外部ユーザー
+- アクセスを要求する資格がある内部ユーザーと外部ユーザー (取引先組織)
 - 承認プロセスと、アクセスを承認または拒否できるユーザー
 - ユーザーのアクセス権の継続時間
 
@@ -123,11 +123,11 @@ Azure AD セキュリティ グループまたは Office 365 グループに依�
 | policy | ユーザーがアクセスする方法、承認担当者、ユーザーがアクセスできる期間など、アクセスのライフサイクルを定義する一連の規則。 ポリシーの例には、従業員アクセスや外部アクセスがあります。 |
 | catalog | 関連リソースとアクセス パッケージのコンテナー。 |
 | 一般カタログ | 常に使用できる組み込みのカタログ。 一般カタログにリソースを追加するには、特定のアクセス許可が必要です。 |
-| resource | ユーザーがアクセス許可の付与を受けることができる資産またはサービス (グループ、アプリケーション、サイトなど)。 |
+| resource | ユーザーにアクセス許可を付与できる、アセットまたはサービス (Office グループ、セキュリティ グループ、アプリケーション、SharePoint Online サイトなど)。 |
 | リソースの種類 | グループ、アプリケーション、SharePoint Online サイトを含むリソースの種類。 |
 | リソース ロール | リソースに関連付けられているアクセス許可のコレクション。 |
 | リソース ディレクトリ | 共有する 1 つ以上のリソースがあるディレクトリ。 |
-| 割り当てられたユーザー | ユーザーまたはグループへのアクセス パッケージの割り当て。 |
+| 割り当てられたユーザー | ユーザーへのアクセス パッケージの割り当て。ユーザーはそのアクセス パッケージのリソース ロールをすべて持つことができるようになります。 |
 | enable | アクセス パッケージをユーザーが要求できるようにするプロセス。 |
 
 ## <a name="license-requirements"></a>ライセンスの要件

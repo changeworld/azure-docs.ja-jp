@@ -11,27 +11,20 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 058b6c979346d9dcce36940432d0e222e919dba9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a970bb2c33db1ad78dca088b7d9b2430984df96
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540822"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698860"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 
 **Shaper** スキルは、複数の入力を、エンリッチメント パイプラインの後の部分で参照できる[複合型](search-howto-complex-data-types.md)に統合します。 **Shaper** スキルでは、基本的に、構造を作成し、その構造のメンバーの名前を定義して、各メンバーに値を割り当てることができます。 統合されたフィールドが検索のシナリオで役立つ例として、姓と名を組み合わせて 1 つの構造体にする、市と県を組み合わせて 1 つの構造体にする、名前と誕生日を組み合わせて 1 つの構造体にする、などの操作を行って一意の ID を確立することが挙げられます。
 
-API のバージョンによって、実現できるシェイプの深さが決まります。 
+さらに、[シナリオ 3](#nested-complex-types) で示されている **Shaper** スキルにより、オプションの "*sourceContext*" プロパティが入力に追加されます。 *source* および *sourceContext* プロパティは相互に排他的です。 入力がスキルのコンテキストにある場合は、単に *source* を使用します。 入力がスキル コンテキストとは*別の*コンテキストにある場合は、*sourceContext* を使用します。 *sourceContext* には、特定の要素がソースとして扱われる入れ子の入力を定義する必要があります。 
 
-| API バージョン | シェイプの動作 | 
-|-------------|-------------------|
-| REST API の 2019-05-06-Preview バージョン (.NET SDK はサポートされていません) | 複合オブジェクト、複数のレベル、1 つの **Shaper** スキル定義内 |
-| 2019-05-06** (一般提供)、2017-11-11-Preview| 複合オブジェクト、1 レベルの深さ。 複数レベルのシェイプでは、いくつかの Shaper ステップを連鎖させる必要があります|
-
-[シナリオ 3](#nested-complex-types) に示された **Shaper** スキルは、`api-version=2019-05-06-Preview` によって提供され、省略可能な新しい *sourceContext* プロパティを入力に追加します。 *source* および *sourceContext* プロパティは相互に排他的です。 入力がスキルのコンテキストにある場合は、単に *source* を使用します。 入力がスキル コンテキストとは*別の*コンテキストにある場合は、*sourceContext* を使用します。 *sourceContext* には、特定の要素がソースとして扱われる入れ子の入力を定義する必要があります。 
-
-すべての API バージョンにおいて、応答内では、出力名は常に "output" です。 内部的には、パイプラインでは別の名前をマップできます (下の例では "analyzedText") が、**Shaper** スキル自体は、応答内で "output" を返します。 これは、エンリッチメントしたドキュメントのデバッグ中に名前付けの不一致に気付いた場合や、カスタム スキルを構築し、応答を自身で作成している場合に重要なことがあります。
+出力の名前は常に "output" です。 内部的には、パイプラインでは別の名前をマップできます (下の例では "analyzedText") が、**Shaper** スキル自体は、応答内で "output" を返します。 これは、エンリッチメントしたドキュメントのデバッグ中に名前付けの不一致に気付いた場合や、カスタム スキルを構築し、応答を自身で作成している場合に重要なことがあります。
 
 > [!NOTE]
 > **Shaper** スキルは Cognitive Services API にバインドされていないため、使用に対しては課金されません。 ただし、1 日あたりの毎日のエンリッチメントの数を少数に制限する**無料**リソースのオプションをオーバーライドするには、引き続き [Cognitive Services リソースをアタッチ](cognitive-search-attach-cognitive-services.md)する必要があります。
@@ -195,9 +188,6 @@ Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>シナリオ 3: 入れ子になったコンテキストからの入力統合
 
-> [!NOTE]
-> [REST API バージョン 2019-05-06-Preview](search-api-preview.md) でサポートされている入れ子構造は、[ナレッジ ストア](knowledge-store-concept-intro.md)または Azure Search インデックス内で使用できます。
-
 本の、タイトル、章、コンテンツがあり、そのコンテンツ上でエンティティ認識とキー フレーズを実行できることを想定してください。その場合、さまざまなスキルからの結果を統合して、章の名前、エンティティ、およびキーフレーズを備えた 1 つのシェイプにまとめる必要があります。
 
 このシナリオの **Shaper** スキルの定義は、次の例のようになります。
@@ -237,7 +227,7 @@ Microsoft.Skills.Util.ShaperSkill
 ```
 
 ### <a name="skill-output"></a>スキルの出力
-この場合、**Shaper** では複合型を作成します。 この構造体はメモリ内に存在します。 ナレッジ ストアに保存する場合は、ストレージの特性を定義しているスキルセット内にプロジェクションを作成する必要があります。
+この場合、**Shaper** では複合型を作成します。 この構造体はメモリ内に存在します。 [ナレッジ ストア](knowledge-store-concept-intro.md)に保存する場合は、ストレージの特性が定義されているスキルセット内にプロジェクションを作成する必要があります。
 
 ```json
 {

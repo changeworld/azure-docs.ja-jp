@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: be07e0f3438ea93312d4eb440e7e63b8f98e11b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1cb56386f52d1c7b1ec357b912c648c1961b4c1d
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077375"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68677985"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Azure Machine Learning service 用のビジュアル インターフェイスとは 
 
@@ -54,9 +54,8 @@ Azure Machine Learning service 用のビジュアル インターフェイス (�
 * モジュールのすべての入力ポートに、データ フローへの何らかの接続がある
 * 各モジュールの必須パラメーターがすべて設定されている
 
-シンプルな実験の例については、「[クイック スタート: Azure Machine Learning でコードを書かずにデータを準備して視覚化する](ui-quickstart-run-experiment.md)」を参照してください。
 
-予測分析ソリューションのより完全なチュートリアルについては、「[チュートリアル: ビジュアル インターフェイスで自動車価格を予測する](ui-tutorial-automobile-price-train-score.md)」を参照してください。
+ビジュアル インターフェイスの使用を開始する方法については、「[チュートリアル: ビジュアル インターフェイスで自動車価格を予測する](ui-tutorial-automobile-price-train-score.md)」を参照してください。
 
 ## <a name="dataset"></a>Dataset
 
@@ -94,7 +93,7 @@ Web サービスでは、アプリケーションと自分のスコアリング 
 
 ## <a name="next-steps"></a>次の手順
 
-* 予測分析と機械学習の基本について、「[クイック スタート: Azure Machine Learning でコードを書かずにデータを準備して視覚化する](ui-quickstart-run-experiment.md)」で学習します。
+* 予測分析と機械学習の基本について学習する: [チュートリアル: ビジュアル インターフェイスで自動車価格を予測する](ui-tutorial-automobile-price-train-score.md)
 * いずれかのサンプルを使用して、ニーズに合わせて変更します。
     * [サンプル 1 - 回帰: 価格を予測する](ui-sample-regression-predict-automobile-price-basic.md)
     * [サンプル 2 - 回帰: 価格を予測し、アルゴリズムを比較する](ui-sample-regression-predict-automobile-price-compare-algorithms.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: vmware
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2eae81f357904bd5034d7409ef42b681d1085930
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 47d61f80cae926965dd71342980302c2b3045c52
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695218"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689641"
 ---
 # <a name="vpn-gateways-overview"></a>VPN ゲートウェイの概要
 
@@ -48,25 +48,26 @@ VPN ゲートウェイでは、プライベート クラウド上のオンプレ
 
 #### <a name="phase-1-proposals"></a>フェーズ 1 の提案
 
-| パラメーター | 提案 1 | 提案 2 | 提案 3 |
-|-----------|------------|------------|------------|
-| IKE のバージョン | IKEv1 | IKEv1 | IKEv1 |
-| 暗号化 | AES 128 | AES 256 | AES 256 |
-| ハッシュ アルゴリズム| SHA 256 | SHA 256 | SHA 1 |
-| Diffie Hellman グループ (DH グループ) | 2 | 2 | 2 |
-| 有効期間 | 28,800 秒 | 28,800 秒 | 28,800 秒 |
-| データ サイズ | 4 GB | 4 GB | 4 GB |
+| パラメーター                       | 提案 1     | 提案 2     | 提案 3     |
+|---------------------------------|----------------|----------------|----------------|
+| IKE のバージョン                     | IKEv1          | IKEv1          | IKEv1          |
+| 暗号化                      | AES 128        | AES 256        | AES 256        |
+| ハッシュ アルゴリズム                  | SHA 256        | SHA 256        | SHA 1          |
+| Diffie Hellman グループ (DH グループ) | 2              | 2              | 2              |
+| 有効期間                       | 28,800 秒 | 28,800 秒 | 28,800 秒 |
+| データ サイズ                       | 4 GB           | 4 GB           | 4 GB           |
+| Dead Peer Detection (DPD)       | 無効/オフ   | 無効/オフ   | 無効/オフ   |
 
 
 #### <a name="phase-2-proposals"></a>フェーズ 2 の提案 
 
-| パラメーター | 提案 1 | 提案 2 | 提案 3 |
-|-----------|------------|------------|------------|
-| 暗号化 | AES 128 | AES 256 | AES 256 |
-| ハッシュ アルゴリズム| SHA 256 | SHA 256 | SHA 1 |
-| Perfect Forward Secrecy グループ (PFS グループ) | なし | なし | なし |
-| 有効期間 | 1,800 秒 | 1,800 秒 | 1,800 秒 |
-| データ サイズ | 4 GB | 4 GB | 4 GB |
+| パラメーター                                 | 提案 1    | 提案 2    | 提案 3    |
+|-------------------------------------------|---------------|---------------|---------------|
+| 暗号化                                | AES 128       | AES 256       | AES 256       |
+| ハッシュ アルゴリズム                            | SHA 256       | SHA 256       | SHA 1         |
+| Perfect Forward Secrecy グループ (PFS グループ) | なし          | なし          | なし          |
+| 有効期間                                 | 1,800 秒 | 1,800 秒 | 1,800 秒 |
+| データ サイズ                                 | 4 GB          | 4 GB          | 4 GB          |
 
 ## <a name="point-to-site-vpn-gateway"></a>ポイント対サイト VPN ゲートウェイ
 
