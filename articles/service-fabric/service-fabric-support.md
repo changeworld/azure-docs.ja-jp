@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: 667ee6a49238c1ecaabec631cb72804b0c4b2323
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: ac36b1a538d5899613e19f157695d0bc333d9ece
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304251"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679055"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
 
@@ -35,7 +35,7 @@ Azure にデプロイされた Service Fabric クラスター上の問題を報�
 - [Microsoft プレミア サポート](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> ブロンズの信頼性レベルで実行されているクラスターでは、テスト ワークロードのみを実行できます。 ブロンズの信頼性で実行されているクラスターで問題が発生した場合は、Microsoft サポート チームによって問題を軽減するための支援が提供されますが、根本原因分析は実行されません。 詳細については、「[クラスターの信頼性の特徴](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)」を参照してください。
+> ブロンズの信頼性レベルで実行されているクラスターまたは単一ノード クラスターでは、テスト ワークロードのみを実行できます。 ブロンズの信頼性で実行されているクラスターまたは単一ノード クラスターで問題が発生した場合は、Microsoft サポート チームによって問題を軽減するための支援が提供されますが、根本原因分析は実行されません。 詳細については、「[クラスターの信頼性の特徴](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)」を参照してください。
 >
 > 運用の準備が整ったクラスターで必要なものの詳細については、「[運用環境の準備状況チェックリスト](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)」を参照してください。
 
@@ -60,7 +60,7 @@ Azure Service Fabric の問題は、[Service-Fabric-issues git リポジトリ](
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow と MSDN フォーラム
 
-[StackOverflow の Service Fabric タグ][stackoverflow]と and the [Service Fabric forum on MSDN][msdn-forum]は、プラットフォームのしくみやそのプラットフォームで特定のタスクを実行する方法について質問する場合に最適です。
+[StackOverflow の Service Fabric タグ][stackoverflow]と [MSDN の Service Fabric フォーラム][msdn-forum]は、プラットフォームのしくみやそのプラットフォームで特定のタスクを実行する方法について質問する場合に最適です。
 
 ### <a name="azure-feedback-forum"></a>Azure フィードバック フォーラム
 

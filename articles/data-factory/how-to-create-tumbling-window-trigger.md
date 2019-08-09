@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: 6fbdee71ab1123c258a5191a78e38f51eb41cbab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f78136edf58e76ed478bef9c255791d256c34a5
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152920"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678478"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 この記事では、タンブリング ウィンドウ トリガーを作成、起動、および監視する手順について説明します。 トリガーとサポートされる種類の全般的な情報については、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関する記事をご覧ください。
@@ -40,16 +40,32 @@ ms.locfileid: "66152920"
         "type": "TumblingWindowTrigger",
         "runtimeState": "<<Started/Stopped/Disabled - readonly>>",
         "typeProperties": {
-            "frequency": "<<Minute/Hour>>",
+            "frequency": <<Minute/Hour>>,
             "interval": <<int>>,
             "startTime": "<<datetime>>",
-            "endTime: "<<datetime – optional>>"",
-            "delay": "<<timespan – optional>>",
+            "endTime: <<datetime – optional>>,
+            "delay": <<timespan – optional>>,
             “maxConcurrency”: <<int>> (required, max allowed: 50),
             "retryPolicy": {
                 "count": <<int - optional, default: 0>>,
                 “intervalInSeconds”: <<int>>,
-            }
+            },
+            "dependsOn": [
+                {
+                    "type": "TumblingWindowTriggerDependencyReference",
+                    "size": <<timespan – optional>>,
+                    "offset": <<timespan – optional>>,
+                    "referenceTrigger": {
+                        "referenceName": "MyTumblingWindowDependency1",
+                        "type": "TriggerReference"
+                    }
+                },
+                {
+                    "type": "SelfDependencyTumblingWindowTriggerReference",
+                    "size": <<timespan – optional>>,
+                    "offset": <<timespan>>
+                }
+            ]
         },
         "pipeline": {
             "pipelineReference": {
@@ -86,6 +102,9 @@ ms.locfileid: "66152920"
 | **maxConcurrency** | 準備ができているウィンドウに対して発生する同時トリガー実行の数。 たとえば、前日の実行を 1 時間ごとにバックフィルすると、24 ウィンドウになります。 **maxConcurrency** = 10 の場合、トリガー イベントは最初の 10 ウィンドウ (00:00-01:00 - 09:00-10:00) に対してのみ発生します。 最初の 10 回がトリガーされたパイプライン実行が完了すると、次の 10 ウィンドウ (10:00-11:00 - 19:00-20:00) に対してトリガー実行が発生します。 **maxConcurrency** = 10 のこの例を続けると、準備ができているウィンドウが 10 個ある場合、パイプライン実行は合計 10 回になります。 準備ができているウィンドウが 1 つしかない場合、パイプライン実行は 1 回だけになります。 | 整数 | 1 ～ 50 の整数。 | はい |
 | **retryPolicy:Count** | パイプライン実行前の再試行回数は "Failed" とマークされます。  | 整数 | 整数。既定値は 0 (再試行なし) です。 | いいえ |
 | **retryPolicy: intervalInSeconds** | 秒単位で指定された再試行の間の遅延。 | 整数 | 秒数。既定値は 30 です。 | いいえ |
+| **dependsOn: type** | TumblingWindowTriggerReference の種類。 依存関係が設定されている場合は必須です。 | string |  "TumblingWindowTriggerDependencyReference"、"SelfDependencyTumblingWindowTriggerReference" | いいえ |
+| **dependsOn: size** | 依存関係のタンブリング ウィンドウのサイズ。 | Timespan<br/>(hh:mm:ss)  | 正の timespan 値。既定値は子トリガーのウィンド ウサイズです。  | いいえ |
+| **dependsOn: offset** | 依存関係トリガーのオフセット。 | Timespan<br/>(hh:mm:ss) |  自己依存関係内の負の値を指定する必要がある timespan 値。 値が指定されていない場合、ウィンドウはトリガーそのものと同じになります。 | 自己依存関係:はい<br/>その他:いいえ  |
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart および WindowEnd システム変数
 
@@ -127,6 +146,10 @@ ms.locfileid: "66152920"
 
 * トリガーの **frequency** 要素の値 (またはウィンドウ サイズ) が変更されても、既に処理されたウィンドウの状態はリセット*されません*。 トリガーは、新しいウィンドウ サイズを使用して実行された最後のウィンドウから、ウィンドウに対して引き続き発生します。
 * トリガーの **endTime** 要素の値が変更 (追加または更新) されても、既に処理されたウィンドウの状態はリセット*されません*。 トリガーは新しい **endTime** 値に従います。 新しい **endTime** 値が既に実行されたウィンドウよりも前の場合、トリガーは停止します。 それ以外の場合は、新しい **endTime** 値に達すると、トリガーは停止します。
+
+### <a name="tumbling-window-trigger-dependency"></a>タンブリング ウィンドウ トリガーの依存関係
+
+データ ファクトリ内の別のタンブリング ウィンドウ トリガーの実行が成功した後でのみ、タンブリング ウィンドウ トリガーが実行されることを確認する場合は、[タンブリング ウィンドウ トリガーの依存関係を作成](tumbling-window-trigger-dependency.md)します。 
 
 ## <a name="sample-for-azure-powershell"></a>Azure PowerShell のサンプル
 
@@ -203,4 +226,6 @@ ms.locfileid: "66152920"
 Azure Portal でトリガー実行とパイプライン実行を監視するには、[パイプライン実行の監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)に関するセクションをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#triggers)」をご覧ください。
+
+* トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#triggers)」をご覧ください。
+* [タンブリング ウィンドウ トリガーの依存関係の作成](tumbling-window-trigger-dependency.md)

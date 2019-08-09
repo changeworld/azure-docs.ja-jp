@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 1a67846889b43d582a7a7d477a33f0e2168fd760
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 3773f9a8464dc94436d6d2503b173d4674033ab1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147863"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565044"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -28,7 +28,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 ## <a name="configure-proxy-settings"></a>プロキシ設定の構成
 
-AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変数を設定します。
+AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変数を設定します。 Windows で AzCopy を実行すると、AzCopy によって自動的にプロキシ設定が検出されるため、Windows でこの設定を使用する必要はありません。 Windows でこの設定を使用することを選択した場合は、自動検出がオーバーライドされます。
 
 | オペレーティング システム | command  |
 |--------|-----------|
@@ -40,7 +40,13 @@ AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変�
 
 ## <a name="optimize-throughput"></a>スループットを最適化する
 
-同時要求の数を構成し、スループットのパフォーマンスとリソースの消費量を制御するには、`AZCOPY_CONCURRENCY_VALUE` 環境変数を設定します。 コンピューターの CPU が 5 個未満の場合、この変数の値は `32` に設定されます。 それ以外の場合、既定値は CPU の数に 16 を掛けた数です。 この変数の最大の既定値は `300` ですが、この値は手動で高い値または低い値に設定できます。
+`cap-mbps` フラグを使用して、スループット データ速度の上限を設定できます。 たとえば、次のコマンドはスループットを 1 秒あたり `10` メガビット (MB) に制限します。
+
+```azcopy
+azcopy cap-mbps 10
+```
+
+小さいファイルを転送すると、スループットが低下することがあります。 `AZCOPY_CONCURRENCY_VALUE` 環境変数を設定することにより、スループットを向上させることができます。 この変数は、同時に発生することができる要求の数を指定します。  コンピューターの CPU が 5 個未満の場合、この変数の値は `32` に設定されます。 それ以外の場合、既定値は CPU の数に 16 を掛けた数です。 この変数の最大の既定値は `300` ですが、この値は手動で高い値または低い値に設定できます。
 
 | オペレーティング システム | command  |
 |--------|-----------|
@@ -83,7 +89,7 @@ AzCopy は、ジョブごとにログ ファイルとプラン ファイルを�
 
 次のコマンドでは、`04dc9ca9-158f-7945-5933-564021086c79` ログから状態が `UPLOADFAILED` であるすべてのエラーが取得されます。
 
-**Windows**
+**Windows (PowerShell)**
 
 ```
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log

@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/26/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61065050"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596104"
 ---
 # <a name="monitor-server-metrics"></a>サーバー メトリックの監視
 
-Analysis Services は、サーバーのパフォーマンスと正常性を監視するためのメトリックを提供します。 たとえば、メモリと CPU 使用率、クライアント接続数、およびクエリのリソース消費を監視します。 Analysis Services では、他のほとんどの Azure サービスと同じ監視フレームワークを使用します。 詳細については、[Microsoft Azure のメトリック](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)に関するページをご覧ください。
+Analysis Services は、ポータルの無料ツールの Azure メトリックス エクスプローラーで、サーバーのパフォーマンスと正常性を監視するために役立つメトリックを提供します。 たとえば、メモリと CPU 使用率、クライアント接続数、およびクエリのリソース消費を監視します。 Analysis Services では、他のほとんどの Azure サービスと同じ監視フレームワークを使用します。 詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
 
-詳細な診断の実行、パフォーマンスの追跡、リソース グループまたはサブスクリプションで複数のサービス リソース全体の傾向を特定するには、[Azure Monitor](https://azure.microsoft.com/services/monitor/) を使用します。 Azure Monitor (サービス) には、課金対象のサービスがあります。
+詳細な診断の実行、パフォーマンスの追跡、リソース グループまたはサブスクリプションで複数のサービス リソース全体の傾向を特定するには、[Azure Monitor](../azure-monitor/overview.md) を使用します。 Azure Monitor (サービス) には、課金対象のサービスがあります。
 
 
 ## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>Analysis Services サーバーのメトリックを監視するには
@@ -85,6 +85,6 @@ Analysis Services は、サーバーのパフォーマンスと正常性を監�
 |TotalConnectionRequests|合計接続要求数|Count|平均|合計接続要求数。 |
 
 ## <a name="next-steps"></a>次の手順
-[Microsoft Azure での監視](../monitoring-and-diagnostics/monitoring-overview.md)   
-[Microsoft Azure のメトリック](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)   
+[Azure Monitor の概要](../azure-monitor/overview.md)      
+[Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)      
 [Azure Monitor REST API のメトリック](/rest/api/monitor/metrics)

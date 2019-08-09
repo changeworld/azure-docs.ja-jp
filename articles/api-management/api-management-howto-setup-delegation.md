@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 2fad585e1d37694e37c219be210f9521dbbda3a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd7b2cecce443e821e233d97a260b7dfb3471752
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241645"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667238"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 
@@ -38,7 +38,7 @@ ms.locfileid: "66241645"
 3. 委任エンドポイントにより、ユーザーにサインインまたはサインアップを求める UI にリダイレクトされるか、ユーザーにサインインまたはサインアップを求める UI が表示されます。
 4. サインインまたはサインアップが成功すると、ユーザーが最初の API Management 開発者ポータル ページにリダイレクトされます。
 
-これを実現するには、最初に委任エンドポイント経由で要求をルーティングするように API Management を設定します。 API Management パブリッシャー ポータルで、 **[セキュリティ]** をクリックし、 **[委任]** タブをクリックします。チェックボックスをクリックして、[Delegate sign in & sign up]\(サインインおよびサインアップ処理の委任\) を有効にします。
+これを実現するには、最初に委任エンドポイント経由で要求をルーティングするように API Management を設定します。 Azure portal で API Management リソースの **[セキュリティ]** を探し、 **[委任]** 項目をクリックします。 チェックボックスをクリックして、[Delegate sign in & sign up]\(サインインおよびサインアップ処理の委任\) を有効にします。
 
 ![[委任] ページ][api-management-delegation-signin-up]
 

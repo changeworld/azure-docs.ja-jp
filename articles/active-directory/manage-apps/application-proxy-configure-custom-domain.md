@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bae13de156d502cdd731005d460641ca452448d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108667"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618815"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでのカスタム ドメインの使用
 
@@ -73,7 +73,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 ワイルドカード証明書は、そのワイルドカードが目的の外部 URL と一致する場合に限って使用できます。
 
-セキュリティ上の理由から、ご自身の公開キー基盤 (PKI) によって発行された証明書を使用することはできません。
+証明書チェーンがクライアント デバイスにインストールされている場合、独自の公開キー基盤 (PKI) によって発行された証明書を使用できます。 Intune を使用して、これらの証明書をマネージド デバイスにデプロイすることができます。 非マネージド デバイスの場合、これらの証明書を手動でインストールする必要があります。
 
 ### <a name="changing-the-domain"></a>ドメインを変更する
 検証済みのドメインはすべて、アプリケーションの外部 URL ドロップダウン リストに表示されます。 ドメインを変更するには、アプリケーションのそのフィールドだけを更新します。 必要なドメインが一覧にない場合、[検証済みのドメインとしてそれを追加](../fundamentals/add-custom-domain.md)します。 証明書が関連付けられていないドメインを選択する場合、手順 5. ～ 7. を行い、証明書を追加します。 次に、新しい外部 URL からリダイレクトするように DNS レコードを更新します。 

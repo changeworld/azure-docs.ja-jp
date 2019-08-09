@@ -1,32 +1,32 @@
 ---
-title: 用語集
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 用語集 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/23/2019
+ms.topic: reference
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: a88d7de69158a54995106d45683094c9b976896b
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 0bf7fe649a5a604c610307b9be0717dce01cb238
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302523"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638292"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
 
 ## <a name="active-version"></a>アクティブなバージョン
 
-アクティブな LUIS バージョンは、モデルへの変更が受け入れられるバージョンです。 [LUIS](luis-reference-regions.md) Web サイトで、変更を加えたいバージョンがアクティブでない場合は、最初にそのバージョンをアクティブとして設定する必要があります。
+アクティブな LUIS バージョンは、モデルへの変更が受け入れられるバージョンです。 [LUIS](luis-reference-regions.md) ポータルで、変更を加えたいバージョンがアクティブでない場合は、最初にそのバージョンをアクティブとして設定する必要があります。
 
 ## <a name="authoring"></a>オーサリング
 
-[LUIS](luis-reference-regions.md) Web サイトまたは[オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) のいずれかを使用して、[LUIS アプリ](#luis-app)を作成、管理、およびデプロイする機能です。
+オーサリングは、[LUIS](luis-reference-regions.md) ポータルまたは[オーサリング API](https://go.microsoft.com/fwlink/?linkid=2092087) のいずれかを使用して、[LUIS アプリ](#luis-app)を作成、管理、およびデプロイする機能です。
 
 ## <a name="authoring-key"></a>オーサリング キー
 
@@ -34,30 +34,12 @@ Language Understanding (LUIS) 用語集では、LUIS API サービスの使用�
 
 ## <a name="batch-test-json-file"></a>バッチ テキストの JSON ファイル
 
-バッチ ファイルは JSON 配列です。 配列内の各要素に、`text`、`intent`、`entities` の 3 つのプロパティがあります。 `entities` プロパティは配列です。 配列は空にできます。 `entities` 配列が空でない場合、この配列では、エンティティを正しく特定する必要があります。
+バッチ テストは、ユーザー発話の一貫性のある既知のテスト セットを使用して、現在の LUIS アプリのモデルを検証する機能です。 バッチ テストは、[JSON 形式のファイル](luis-concept-batch-test.md#batch-file-format)に定義されます。
 
-```JSON
-[
-    {
-        "text": "drive me home",
-        "intent": "None",
-        "entities": []
-    },
-    {
-        "text": "book a flight to orlando on the 25th",
-        "intent": "BookFlight",
-        "entities": [
-            {
-                "entity": "orlando",
-                "type": "Location",
-                "startIndex": 18,
-                "endIndex": 25
-            }
-        ]
-    }
-]
-
-```
+関連項目: 
+* [概念](luis-concept-batch-test.md)
+* [方法](luis-how-to-batch-test.md)
+* [Tutorial]luis-tutorial-batch-testing.md)
 
 
 ## <a name="collaborator"></a>コラボレーター
@@ -114,7 +96,7 @@ LUIS のコンテキストでは、**ドメイン**はナレッジの一領域�
 
 ## <a name="labeling"></a>ラベル付け
 
-ラベル付けは、意図の[発話](#utterance)の単語またはフレーズを、[エンティティ](#entity) (データ型) に関連付けるプロセスです。
+ラベル付けまたはマーキングは、意図の[発話](#utterance)の単語またはフレーズを、[エンティティ](#entity) (データ型) に関連付けるプロセスです。
 
 ## <a name="luis-app"></a>LUIS アプリ
 

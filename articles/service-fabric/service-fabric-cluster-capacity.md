@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/09/2019
 ms.author: chackdan
-ms.openlocfilehash: 6b11a3ba4fbffe1d35b590f2e5c47f19b6fb028c
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 2d13364093776028f96b75c5bfef252e2fdfc790
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718119"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679398"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
 
 * クラスターで最初に必要となるノード タイプの数
-* ノード タイプごとの特性 (サイズ、プライマリ/非プライマリ、インターネット接続、VM 数など)
+* ノード タイプごとの特性 (サイズ、プライマリ、インターネット接続、VM 数など)
 * クラスターの信頼性と耐久性の特徴
 
 > [!NOTE]

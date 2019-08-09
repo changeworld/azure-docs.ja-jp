@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c38b11ceda010c122e17a7fad3df1684e0a1cf42
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023612"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696287"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -26,10 +26,10 @@ model データベース レベルでは、すべてのユーザーがロール�
 *  **Process (プロセス)** - ユーザーは、データベースに接続し、データベースでのプロセス操作を実行し、model データベースのデータを分析できます。
 *  **Read (読み取り)** - ユーザーは、クライアント アプリケーションを使用して model データベースに接続し、このデータを分析できます。
 
-表形式のモデル プロジェクトを作成する場合、SSDT のロール マネージャーを使用してロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SSMS、[Analysis Services PowerShell コマンドレット](/sql/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
+表形式のモデル プロジェクトを作成する場合、SQL Server Data Tools (SSDT) のロール マネージャーを使用してロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SQL Server Management Studio (SSMS)、[Analysis Services PowerShell コマンドレット](/sql/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
 
-> [!NOTE]
-> セキュリティ グループでは、`MailEnabled` プロパティが `True` に設定されている必要があります。
+**セキュリティ グループ**は、`MailEnabled` プロパティが `True` に設定された[メール対応](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)である必要があります。 メール アドレスでグループを指定する場合は、`obj:groupid@tenantid` を使用します。
+
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>SSDT でロールおよびユーザーを追加または管理する方法  
   

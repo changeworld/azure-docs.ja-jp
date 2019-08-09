@@ -7,12 +7,12 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2966a1803d0664312d71ba992a5ba65f73b27370
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1bac04bbb67c7472de92c6da322121bafc20a560
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667521"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695431"
 ---
 # <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>更新:Azure Image Builder で Linux VM を作成する
 
@@ -22,6 +22,7 @@ ms.locfileid: "67667521"
 - シェル (インライン) - 特定のコマンドを実行します。 この例では、インライン コマンドには、ディレクトリの作成や OS の更新が含まれます。
 - ファイル - [ファイルを GitHub から](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) VM 上のディレクトリにコピーします。
 
+`buildTimeoutInMinutes` を指定することもできます。 既定値は 240 分で、実行時間の長いビルド用にビルド時間を長くすることができます。
 
 サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateLinux.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json) です。 
 
@@ -113,7 +114,7 @@ sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
 ```
 
-必要に応じて、このサンプル .json を変更できます。 たとえば、ビルドの実行時間を長くするために、`buildTimeoutInMinutes` の値を増やすことができます。 Cloud Shell で `vi` を使用してファイルを編集できます。
+必要に応じて、このサンプル .json を変更できます。 たとえば、ビルドの実行時間を長くするために、`buildTimeoutInMinutes` の値を増やすことができます。 `vi` のようなテキスト エディターを使って、Cloud Shell でファイルを編集できます。
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2019
+ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: f3ab4861e874074e7de059c7c50064d53749748c
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 339b8c1b59720989016f68fdb94fae30c26b42f0
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611297"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679279"
 ---
 # <a name="connect-your-fortinet-appliance"></a>お使いの Fortinet アプライアンスを接続する
 
@@ -35,70 +35,38 @@ ms.locfileid: "67611297"
 
 ## <a name="step-1-connect-your-fortinet-appliance-by-using-an-agent"></a>手順 1:エージェントを使用して Fortinet アプライアンスを接続する
 
-Fortinet アプライアンスを Azure Sentinel に接続するには、エージェントを、アプライアンスと Azure Sentinel の間の通信をサポートするための専用の VM またはオンプレミス マシンにデプロイします。 エージェントのデプロイは、自動または手動で行うことができます。 自動デプロイは、専用マシンが Azure 内に作成する新しい VM である場合にのみ使用できます。
+Fortinet アプライアンスを Azure Sentinel に接続するには、エージェントを、アプライアンスと Azure Sentinel の間の通信をサポートするための専用の VM またはオンプレミス マシンにデプロイします。 
 
 既存の Azure VM、別のクラウド内の VM、またはオンプレミスのマシンに手動でエージェントをデプロイすることもできます。
 
+> [!NOTE]
+> 組織のセキュリティ ポリシーに従って、コンピューターのセキュリティを構成してください。 たとえば、企業のネットワーク セキュリティ ポリシーに合わせてネットワークを構成し、デーモンのポートとプロトコルを要件に合わせて変更することができます。 
+
 両方のオプションのネットワーク図を表示するには、「[データ ソースの接続](connect-data-sources.md#agent-options)」を参照してください。
 
-### <a name="deploy-the-agent-in-azure"></a>Azure でエージェントを展開する
+### <a name="deploy-the-agent"></a>エージェントをデプロイする
 
-1. Azure Sentinel portal で、 **[Data connectors]\(データ コネクタ\)** を選択して、お使いのアプライアンスの種類を選択します。
+1. Azure Sentinel ポータルで、 **[Data connectors]\(データ コネクタ\)** をクリックし、 **[Fortinet]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。 
 
-1. **[Linux Syslog agent configuration]** (Linux Syslog エージェント構成) の下で:
-   - Azure Sentinel エージェントが事前にインストールされ、必要な構成がすべて含まれる新しいマシンを作成する場合は、前に説明したように、 **[Automatic deployment]\(自動展開\)** を選択します。 **[自動展開]**  >  **[Automatic agent deployment]\(エージェントの自動展開\)** を選択します。 ワークスペースに自動的に接続される専用 VM の購入ページが表示されます。 VM は**標準 D2s v3 (2 vCPU、8 GB メモリ)** であり、パブリック IP アドレスを持っています。
-      1. **[カスタム デプロイ]** ページで詳細を指定し、ユーザー名とパスワードを入力して、使用条件に同意する場合は、VM を購入します。
-      1. 接続ページに一覧表示されている設定を使用して、ログを送信するようにアプライアンスを構成します。 標準の共通イベント形式コネクタの場合、以下の設定を使用します。
-         - プロトコル = UDP
-         - ポート = 514
-         - ファシリティ = Local-4
-         - 形式 = CEF
-   - 既存の VM を、Azure Sentinel エージェントをインストールする専用の Linux マシンとして使用する場合、 **[Manual deployment]\(手動配置\)** を選択します。 
-      1. **[Download and install the Syslog agent]\(Syslog エージェントのダウンロードとインストール\)** の下で、 **[Azure Linux virtual machine]\(Azure Linux 仮想マシン\)** を選択します。 
-      1. **[仮想マシン]** 画面で、使用するマシンを選択し、 **[接続]** を選択します。
-      1. コネクタ画面の **[Configure and forward Syslog]\(Syslog の構成と転送\)** の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
-      1. これらのコマンドをコピーし、アプライアンス上で実行します。
-          - rsyslog.d を選択した場合:
-              
-            1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに指示します。 次のコマンドを使用します。`sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            1. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 次のコマンドを実行します。`sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`: {0} はワークスペース GUID に置き換える必要があります。
-            1. 次のコマンドを使用して syslog デーモンを再起動します。`sudo service rsyslog restart`
-             
-          - syslog-ng を選択した場合:
+1. **[Download and install the Syslog agent]\(Syslog エージェントのダウンロードとインストール\)** で、マシンの種類として Azure またはオンプレミスを選択します。 
+1. 開いた **[仮想マシン]** 画面で、使用するマシンを選択し、 **[接続]** をクリックします。
+1. **[Download and install agent for Azure Linux virtual machines]\(Azure Linux 仮想マシン用のエージェントをダウンロードしてインストールする\)** を選択した場合は、マシンを選択し、 **[接続]** をクリックします。 **[Download and install agent for non-Azure Linux virtual machines]\(Azure Linux 以外の仮想マシン用のエージェントをダウンロードしてインストールする\)** を選択した場合は、 **[ダイレクトエージェント]** 画面で、 **[Linux 用エージェントのダウンロードとオンボード]** の下にあるスクリプトを実行します。
+1. コネクタ画面の **[Configure and forward Syslog]\(Syslog の構成と転送\)** の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。 
+1. これらのコマンドをコピーし、アプライアンス上で実行します。
+   - rsyslog.d を選択した場合:
+            
+     1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに指示します。 次のコマンドを使用します。`sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
+     1. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 次のコマンドを実行します。`sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`: {0} はワークスペース GUID に置き換える必要があります。
+     1. 次のコマンドを使用して syslog デーモンを再起動します。`sudo service rsyslog restart`
+            
+   - syslog-ng を選択した場合:
 
-              1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに指示します。 次のコマンドを使用します。`sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-              1. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 次のコマンドを実行します。`sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`: {0} はワークスペース GUID に置き換える必要があります。
-              1. 次のコマンドを使用して syslog デーモンを再起動します。`sudo service syslog-ng restart`
-      1. 次のコマンドを使用して Syslog エージェントを再起動します。`sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します。`tail /var/opt/microsoft/omsagent/log/omsagent.log`
+      1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに指示します。 次のコマンドを使用します。`sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
+      1. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 次のコマンドを実行します。`sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`: {0} はワークスペース GUID に置き換える必要があります。
+      1. 次のコマンドを使用して syslog デーモンを再起動します。`sudo service syslog-ng restart`
+1. 次のコマンドを使用して Syslog エージェントを再起動します。`sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します。`tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>オンプレミス Linux サーバーにエージェントをデプロイする
-
-Azure を使用していない場合は、専用の Linux サーバーで実行するように Azure Sentinel エージェントを手動でデプロイします。
-
-1. Azure Sentinel portal で、 **[Data connectors]\(データ コネクタ\)** を選択して、お使いのアプライアンスの種類を選択します。
-1. 専用の Linux VM を作成するには、 **[Linux Syslog agent configuration]** \(Linux Syslog エージェント構成\) の下で **[Manual deployment]\(手動配置\)** を選択します。
-
-    1. **[Download and install the Syslog agent]\(Syslog エージェントのダウンロードとインストール\)** の下で、 **[Non-Azure Linux machine]\(Azure ではない Linux マシン\)** を選択します。
-    1. 開いた **[ダイレクト エージェント]** 画面で、 **[Linux 用エージェント]** を選択して、エージェントをダウンロードするか、次のコマンドを実行してエージェントを Linux マシンにダウンロードします。`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
-
-       1. コネクタ画面の **[Configure and forward Syslog]\(Syslog の構成と転送\)** の下で、お使いの Syslog デーモンが **rsyslog.d** であるか **syslog-ng** であるかを設定します。
-       1. これらのコマンドをコピーし、お使いのアプライアンス上で実行します。
-
-          - rsyslog を選択した場合:
-
-            1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに伝えます。 次のコマンドを使用します。`sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Fortinet\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
-            1. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 次のコマンドを実行します。`sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`: {0} はワークスペース GUID に置き換える必要があります。
-            1. 次のコマンドを使用して syslog デーモンを再起動します。`sudo service rsyslog restart`
-
-          - syslog-ng を選択した場合:
-
-            1. ファシリティ local_4 をリッスンし、ポート 25226 を使用して Syslog メッセージを Azure Sentinel エージェントに送信するように、Syslog デーモンに指示します。 次のコマンドを使用します。`sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Fortinet\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
-            1. ポート 25226 でリッスンするように Syslog エージェントを構成する [security_events 構成ファイル](https://aka.ms/asi-syslog-config-file-linux)をダウンロードしてインストールします。 次のコマンドを実行します。`sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"`: {0} はワークスペース GUID に置き換える必要があります。
-            1. 次のコマンドを使用して syslog デーモンを再起動します。`sudo service syslog-ng restart`
-
-      1. 次のコマンドを使用して Syslog エージェントを再起動します。`sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. 次のコマンドを実行して、エージェント ログにエラーがないことを確認します。`tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
 ## <a name="step-2-forward-fortinet-logs-to-the-syslog-agent"></a>手順 2:Fortinet のログを Syslog エージェントに転送する
 
@@ -134,7 +102,7 @@ Syslog エージェントを介して、CEF 形式で Syslog メッセージを 
 
 2. Syslog エージェントで、自分のログが正しいポートに到達していることを確認します。 Syslog エージェント マシンで次のコマンドを実行します: `tcpdump -A -ni any  port 514 -vv`。 このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。 ソース アプライアンスからのログを、正しいポートと正しいファシリティで受信していることを確認します。
 
-3. 送信するログが [RFC 5424](https://tools.ietf.org/html/rfc542) に準拠していることを確認します。
+3. 送信するログが [RFC 3164](https://tools.ietf.org/html/rfc3164) に準拠していることを確認します。
 
 4. Syslog エージェントを実行しているコンピューターで、コマンド `netstat -a -n:` を使用して、ポート 514 および 25226 が開き、リッスン中であることを確認します。 このコマンドの詳しい使用方法については、[netstat(8) - Linux man ページ](https://linux.die.net/man/8/netstat)を参照してください。 正しくリッスンしている場合、次のように表示されます。
 

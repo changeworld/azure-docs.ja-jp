@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: jureid
-ms.openlocfilehash: cf325b93c626e0c7f9584449154e2d531995cdc5
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 701b35d99cb98009ec0116c23eaeab94ff967f51
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204343"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678932"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションをプログラムで作成する (プレビュー)
 
@@ -201,8 +201,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Azure Enterprise のサブスクリプション作成 API の制限事項
 
 - この API を使用して作成できるのは、Azure Enterprise サブスクリプションのみです。
-- 登録アカウントごとのサブスクリプションの初期制限は 50 ですが、[サポート リクエストを作成する](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)ことにより、制限を 200 に増やすことができます。 その後、サブスクリプションはアカウント センターからのみ作成することができます。
-- アカウント内に 1 つ以上の EA または EA Dev/Test サブスクリプションがある必要があり、つまり、アカウント所有者が 1 回以上手動でサインアップしている必要があります。
+- 登録アカウントあたり作成できるサブスクリプションの上限数は 200 です。 その後、サブスクリプションはアカウント センターからのみ作成することができます。 API を使用してさらにサブスクリプションを作成する場合は、別の登録アカウントを作成します。
 - アカウント所有者ではないが、RBAC 経由で登録アカウントに追加されたユーザーは、アカウント センターを使用してサブスクリプションを作成できません。
 - サブスクリプションが作成されるテナントを選択することはできません。 サブスクリプションは常に、アカウント所有者のホーム テナント内に作成されます。 サブスクリプションを別のテナントに移動する場合は、[テナントのサブスクリプションの変更](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)に関する記事を参照してください。
 

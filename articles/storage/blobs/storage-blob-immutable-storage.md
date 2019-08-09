@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: d58c596421cec2e69210dd39a5d4a9708c154b44
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: c0b4a83b2c950683926be7fb3be3b0cbe977fef8
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66492754"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618405"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
@@ -91,7 +91,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 - ストレージ アカウントで、ロック済み時間ベースの不変ポリシーが適用されたコンテナーの最大数は 1,000 です。
 - 最小保持間隔は 1 日です。 最大保持間隔は 146,000 日 (400 年) です。
 - コンテナーで、ロック済み時間ベースの不変ポリシーのリテンション期間を延長する編集の最大回数は 5 です。
-- コンテナーで、ポリシーの有効期間中に保持される時間ベースのアイテム保持ポリシー監査ログの最大数は 7 です。
+- コンテナーで、ロックされたポリシーに対して保持される時間ベースのアイテム保持ポリシー監査ログの最大数は 7 です。
 
 ### <a name="legal-hold"></a>訴訟ホールド
 - ストレージ アカウントで、訴訟ホールドが設定されたコンテナーの最大数は 1000 です。

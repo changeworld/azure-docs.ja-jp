@@ -1,5 +1,5 @@
 ---
-title: 既存モデルの使用方法
+title: 既存のモデルを使用してデプロイする
 titleSuffix: Azure Machine Learning service
 description: サービスの外部でトレーニングされたモデルと共に Azure Machine Learning service を使用する方法について説明します。 Azure Machine Learning service の外部で作成されたモデルを登録してから、それらを Web サービスまたは Azure IoT Edge モジュールとしてデプロイできます。
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: 332129c9847c317369d5631c3af584da9430e9dd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4534f7e5bba2e34316be3376e2627c15c20ba81f
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454546"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694380"
 ---
-# <a name="how-to-use-an-existing-model-with-azure-machine-learning-service"></a>Azure Machine Learning service で既存のモデルを使用する方法
+# <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Azure Machine Learning service で既存のモデルを使用する
 
 Azure Machine Learning service で既存の機械学習モデルを使用する方法について説明します。
 
@@ -211,7 +211,7 @@ dependencies:
 
 ## <a name="define-deployment"></a>デプロイを定義する
 
-[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py) パッケージには、デプロイに使用されるクラスが含まれています。 使用するクラスによって、モデルのデプロイ場所が決まります。 たとえば、Azure Kubernetes Service に Web サービスとしてデプロイするには、[AksWebService.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none-) を使用してデプロイ構成を作成します。
+[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py) パッケージには、デプロイに使用されるクラスが含まれています。 使用するクラスによって、モデルのデプロイ場所が決まります。 たとえば、Azure Kubernetes Service に Web サービスとしてデプロイするには、[AksWebService.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none-) を使用してデプロイ構成を作成します。
 
 次の Python コードでは、ローカル デプロイ用のデプロイ構成を定義します。 この構成では、モデルを Web サービスとしてローカル コンピューターに展開します。
 

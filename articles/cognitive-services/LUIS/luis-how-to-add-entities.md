@@ -1,6 +1,6 @@
 ---
-title: 複数エンティティの追加
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: エンティティの追加 - LUIS
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) アプリでユーザーの発話から重要なデータを抽出するエンティティを作成します。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 241e89ac7fa78184e7c55f9e8065e1534cea9143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b42ab9155f5b9719ef6477934722021e3fbac99
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148726"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638234"
 ---
 # <a name="create-entities-without-utterances"></a>発話なしでエンティティを作成する
 
@@ -114,13 +114,13 @@ LUIS アプリ内のエンティティは、 **[エンティティ]** ページ�
 
 ロールは、文脈に基づいた名前付きサブタイプです。 事前構築済みエンティティや非マシン学習エンティティを含む、すべてのエンティティで使用できます。 
 
-ロールの構文は **`{Entityname:Rolename}`** であり、エンティティ名の後にコロンとロール名を指定します。 たとえば、「 `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}` 」のように入力します。
+ロールの構文は **`{Entityname:Rolename}`** であり、エンティティ名の後にコロンとロール名を指定します。 たとえば、「 `Move {personName} from {Location:Origin} to {Location:Destination}` 」のように入力します。
 
 1. **[ビルド]** セクションから、左パネル内の **[エンティティ]** を選択します。
 
-1. **[Create new entity]\(新しいエンティティの作成\)** を選択します。 `LocationUsingRoles` の名前を入力します。 **[簡易]** の型を選択して **[完了]** を選択します。 
+1. **[Create new entity]\(新しいエンティティの作成\)** を選択します。 `Location` の名前を入力します。 **[簡易]** の型を選択して **[完了]** を選択します。 
 
-1. 左側のパネルから **[エンティティ]** を選択し、前の手順で作成した新しいエンティティ **LocationUsingRoles** を選択します。
+1. 左側のパネルから **[エンティティ]** を選択し、前の手順で作成した新しいエンティティ **Location** を選択します。
 
 1. **[ロール名]** テキスト ボックスに、ロール `Origin` の名前を入力して Enter キーを押します。 `Destination` の 2 番目のロール名を追加します。 
 

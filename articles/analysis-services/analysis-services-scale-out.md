@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5524645153db0468076cc9b567965bff79d915cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8297a2b1e78da6685b3129071612dc4457990bc1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65192314"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696397"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -73,7 +73,7 @@ ms.locfileid: "65192314"
 
 ### <a name="in-azure-portal"></a>Azure Portal
 
-1. ポータルで、 **[スケールアウト]** をクリックします。スライダーを使用してクエリ レプリカ サーバーの数を選択します。 選択したレプリカの数は既存のサーバーの数に追加されます。
+1. ポータルで、 **[スケールアウト]** をクリックします。スライダーを使用してクエリ レプリカ サーバーの数を選択します。 選択したレプリカの数は既存のサーバーの数に追加されます。  
 
 2. **[処理中のサーバーと照会中のプールを分けてください]** で、[はい] を選択してクエリ サーバーから処理中のサーバーを除外します。 既定の接続文字列 (`:rw` なし) を利用するクライアント[接続](#connections)は、クエリ プールのレプリカにリダイレクトされます。 
 
@@ -142,6 +142,10 @@ Power BI Desktop、Excel、カスタム アプリなどのエンドユーザー 
 SSMS、SSDT、および PowerShell、Azure 関数アプリ、AMO の接続文字列については、 **[管理サーバー名]** を使用します。 管理サーバー名は特殊な `:rw` (読み取り/書き込み) 修飾子を含みます。 すべての処理操作は (プライマリ) 管理サーバーで発生します。
 
 ![サーバー名](media/analysis-services-scale-out/aas-scale-out-name.png)
+
+## <a name="scale-up--down-vs-scale-out"></a>スケールアップ/スケールダウンとスケールアウト
+
+複数のレプリカを持つサーバーではサーバーの価格レベルを変更できます。 同じ価格レベルがすべてのレプリカに適用されます。 スケールアップとスケールダウンの操作では、まずすべてのレプリカが一度に停止されてから、新しい価格レベルですべてのレプリカが起動されます。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 

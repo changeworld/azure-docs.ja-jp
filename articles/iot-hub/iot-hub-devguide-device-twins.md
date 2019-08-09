@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: fbc68b551db1f68fe253a833ad26c88de1b92f30
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f4db353e3c2f625478df6a547d1b67c5d074d18a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67055370"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640622"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -180,9 +180,9 @@ ms.locfileid: "67055370"
 
 * **ツイン通知の受信** この操作は、ソリューション バックエンドでツインが変更されたときに通知できるようにします。 そのためには、IoT ソリューションでルートを作成し、データ ソースの値を *twinChangeEvents* に設定する必要があります。 既定では、このようなルートは事前に存在しません。このため、ツイン通知は送信されません。 変化率が高すぎる場合、または内部エラーなどの理由のために、IoT Hub はすべての変更を含む 1 つの通知のみを送信する場合があります。 そのため、アプリケーションに信頼性の高い監査とすべての中間状態のログ記録が必要な場合は、device-to-cloud メッセージを使用する必要があります。 ツイン通知メッセージには、プロパティおよび本文が含まれます。
 
-  - Properties
+  - properties
 
-    | Name | 値 |
+    | EnableAdfsAuthentication | 値 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  通知が送信された時刻 |
@@ -196,7 +196,7 @@ ms.locfileid: "67055370"
 
     メッセージのシステム プロパティには、`$` シンボルが付きます。
 
-  - 本文
+  - Body
         
     このセクションには、すべてのツイン変更が JSON 形式で含まれています。 修正プログラムと同じ形式を使用しますが、すべてのツイン セクション (タグ、properties.reported、properties.desired) を含めることができ、"$metadata" 要素を含みます。 たとえば、次のように入力します。
 
@@ -231,7 +231,7 @@ ms.locfileid: "67055370"
 
 デバイス アプリは、次のアトミック操作を使用して、デバイス ツインを操作します。
 
-* **デバイス ツインを取得する**。 この操作は、タグ、必要なシステム プロパティ、報告されるシステム プロパティを含む、現在接続されているデバイスのデバイス ツインのドキュメントを返します。
+* **デバイス ツインを取得する**。 この操作によって、必要なシステム プロパティと報告されるシステム プロパティを含む、現在接続されているデバイスのデバイス ツインのドキュメントが返されます。 (タグは、デバイス アプリには表示されません。)
 
 * **報告されるプロパティの部分的な更新** この操作では、現在接続されているデバイスの報告されるプロパティを部分的に更新できます。 この操作には、必要なプロパティを部分的に更新する際にソリューション バックエンドで使用されるものと同じ JSON 更新フォーマットが使用されます。
 

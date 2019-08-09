@@ -1,5 +1,5 @@
 ---
-title: カスタム Docker イメージを使用してモデルをデプロイする方法
+title: カスタム Docker イメージを使用してモデルをデプロイする
 titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning service モデルをデプロイするときにカスタム Docker イメージを使用する方法について説明します。 トレーニング済みモデルをデプロイすると、Docker イメージが作成され、サービスを実行するために必要なイメージ、Web サーバー、およびその他のコンポーネントがホストされます。 Azure Machine Learning service には既定のイメージが用意されていますが、独自のイメージを使用することもできます。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/11/2019
-ms.openlocfilehash: b8591fe750d4bb1441cdc28c488b2c860eb0bccb
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f51c6bdc6cb2e381d5d5b855bf2f87b07d7fc180
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840061"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638429"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをデプロイする
 

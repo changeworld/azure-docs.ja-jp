@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 94aca33b2f12c1c39297221a856296dcca052b0f
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 7ad5be0c7774beacaa15fcca0646c78e2d328ba4
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565794"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699845"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -28,11 +28,13 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 ## <a name="download-azcopy"></a>AzCopy をダウンロードする
 
-まず、お使いのコンピューター上の任意のディレクトリに AzCopy V10 実行可能ファイルをダウンロードします。 
+まず、お使いのコンピューター上の任意のディレクトリに AzCopy V10 実行可能ファイルをダウンロードします。
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
+
+AzCopy V10 は単に実行可能ファイルなので、インストールするものはありません。
 
 > [!NOTE]
 > [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) サービスとの間でデータをコピーする場合、[AzCopy バージョン 7.3](https://aka.ms/downloadazcopynet) をインストールしてください。
@@ -68,19 +70,21 @@ AzCopy ディレクトリをご自分のパスに追加しないことを選択�
 
 Azure AD を使用すると、各コマンドに SAS トークンを追加する代わりに、資格情報を 1 回入力するだけで済みます。  
 
+> [!NOTE]
+> 現在のリリースでは、ストレージ アカウント間で BLOB をコピーする場合は、各ソース URL に SAS トークンを追加する必要があります。 コピー先 URL からのみ、SAS トークンを省略できます。 例については、「[ストレージ アカウント間で BLOB をコピーする](storage-use-azcopy-blobs.md)」をご覧ください。
+
 必要な認証レベルは、ファイルをアップロードする予定か、ファイルをダウンロードするだけなのかによって異なります。
 
-ファイルをダウンロードするだけの場合は、ご自分のユーザー ID またはサービス プリンシパルに[ストレージ BLOB データ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)が割り当てられていることを確認します。 
+ファイルをダウンロードするだけの場合は、ユーザー ID、マネージド ID、またはサービス プリンシパルに[ストレージ BLOB データ閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)が割り当てられていることを確認します。
 
-> [!NOTE]
-> ユーザー ID とサービス プリンシパルはそれぞれ*セキュリティ プリンシパル*の種類です。そのため、この記事の残りの部分では、*セキュリティ プリンシパル*という用語を使用します。
+> ユーザー ID、マネージド ID、およびサービス プリンシパルはそれぞれ "*セキュリティ プリンシパル*" の種類です。そのため、この記事の残りの部分では、"*セキュリティ プリンシパル*" という用語を使います。
 
 ファイルをアップロードする場合は、これらのロールのいずれかがご自分のセキュリティ プリンシパルに割り当てられていることを確認します。
 
 - [ストレージ BLOB データ共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
 - [ストレージ BLOB データ所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
-これらのロールは、以下のいずれかの範囲でご自分の ID に割り当てることができます。
+これらのロールは、以下のいずれかの範囲でセキュリティ プリンシパルに割り当てることができます。
 
 - コンテナー (ファイル システム)
 - ストレージ アカウント
@@ -89,7 +93,7 @@ Azure AD を使用すると、各コマンドに SAS トークンを追加する
 
 ロールを確認し、割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
-> [!NOTE] 
+> [!NOTE]
 > RBAC ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。
 
 ターゲット コンテナーまたはディレクトリのアクセス制御リスト (ACL) にご自分のセキュリティ プリンシパルが追加されている場合は、これらのロールのいずれかがご自分のセキュリティ プリンシパルに割り当てられている必要はありません。 ACL では、ご自分のセキュリティ プリンシパルには、ターゲット ディレクトリの書き込みアクセス許可と、コンテナーおよび各親ディレクトリの実行アクセス許可が必要になります。
@@ -122,11 +126,11 @@ azcopy login --tenant-id=<tenant-id>
 
 #### <a name="authenticate-a-service-principal"></a>サービス プリンシパルの認証
 
-ユーザーの介入なしで実行されるスクリプト内で AzCopy を使用する予定の場合、これは優れたオプションです。 
+ユーザーの介入なしで実行されるスクリプト内で AzCopy を使用する予定の場合、これは優れたオプションです (特にオンプレミスで実行するとき)。 Azure で実行されている VM で AzCopy を実行する場合、マネージド サービス ID を管理しやすくなります。 詳しくは、この記事の「[マネージド ID を認証する](#managed-identity)」セクションを参照してください。
 
 そのスクリプトを実行する前に、少なくとも 1 回対話的にサインインする必要があります。そうすることで、ご自分のサービス プリンシパルの資格情報を AzCopy に渡すことができます。  それらの資格情報は暗号化された安全なファイルに格納されます。そのため、実際のスクリプトでその機密情報を渡す必要がありません。
 
-クライアント シークレットを使用して、またはご自分のサービス プリンシパルのアプリ登録に関連付けられている証明書のパスワードを使用して、ご自分のアカウントにサインインできます。 
+クライアント シークレットを使用して、またはご自分のサービス プリンシパルのアプリ登録に関連付けられている証明書のパスワードを使用して、ご自分のアカウントにサインインできます。
 
 サービス プリンシパルの作成の詳細については、「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
@@ -134,7 +138,7 @@ azcopy login --tenant-id=<tenant-id>
 
 ##### <a name="using-a-client-secret"></a>クライアント シークレットの使用
 
-まず、`AZCOPY_SPA_CLIENT_SECRET` 環境変数を、ご自分のサービス プリンシパルのアプリ登録のクライアント シークレットに設定します。 
+まず、`AZCOPY_SPA_CLIENT_SECRET` 環境変数を、ご自分のサービス プリンシパルのアプリ登録のクライアント シークレットに設定します。
 
 > [!NOTE]
 > この値は、必ず、ご使用のオペレーティング システムの環境変数の設定ではなく、ご使用のコマンド プロンプトから設定します。 そうすることで、この値を現在のセッションでのみ使用できるようになります。
@@ -184,6 +188,50 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file>
 > [!NOTE]
 > この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。 
 
+<a id="managed-identity" />
+
+#### <a name="authenticate-a-managed-identity"></a>マネージド ID を認証する
+
+ユーザーの介入なしで実行されるスクリプト内で AzCopy を使用し、スクリプトが Azure 仮想マシン (VM) から実行される場合、これは優れたオプションです。 このオプションを使用する場合、資格情報を VM に保存する必要はありません。
+
+VM で有効にしたシステム全体のマネージド ID を使用して、または VM に割り当てたユーザー割り当てのマネージド ID のクライアント ID、オブジェクト ID、またはリソース ID を使用して、アカウントにサインインできます。
+
+システム全体のマネージド ID を有効にする方法、またはユーザー割り当てのマネージド ID を作成したりする方法について詳しくは、「[Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)」をご覧ください。
+
+##### <a name="using-a-system-wide-managed-identity"></a>システム全体のマネージド ID の使用
+
+まず、VM でシステム全体のマネージド ID が有効になっていることを確認します。 「[システム割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)」をご覧ください。
+
+次に、コマンド コンソールで、次のコマンドを入力して Enter キーを押します。
+
+```azcopy
+azcopy login --identity
+```
+
+##### <a name="using-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID の使用
+
+まず、VM でユーザー割り当てマネージド ID が有効になっていることを確認します。 「[ユーザー割り当てマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity)」をご覧ください。
+
+次に、コマンド コンソールで、次のいずれかのコマンドを入力して Enter キーを押します。
+
+```azcopy
+azcopy login --identity --identity-client-id "<client-id>"
+```
+
+`<client-id>` プレースホルダーは、ユーザー割り当てのマネージド ID のクライアント ID に置き換えます。
+
+```azcopy
+azcopy login --identity --identity-object-id "<object-id>"
+```
+
+`<object-id>` プレースホルダーは、ユーザー割り当てのマネージド ID のオブジェクト ID に置き換えます。
+
+```azcopy
+azcopy login --identity --identity-resource-id "<resource-id>"
+```
+
+`<resource-id>` プレースホルダーは、ユーザー割り当てのマネージド ID のリソース ID に置き換えます。
+
 ### <a name="option-2-use-a-sas-token"></a>オプション 2:SAS トークンを使用する
 
 AzCopy コマンドで使用する各コピー元または各コピー先の URL に SAS トークンを追加できます。
@@ -211,8 +259,6 @@ ID を認証し、SAS トークンを取得したら、ファイルの転送を�
 - [AzCopy と Azure Stack ストレージを使用してデータを転送する](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#azcopy)
 
 ## <a name="use-azcopy-in-a-script"></a>スクリプト内で AzCopy を使用する
-
-そのスクリプトを実行する前に、少なくとも 1 回対話的にサインインする必要があります。そうすることで、ご自分のサービス プリンシパルの資格情報を AzCopy に渡すことができます。  それらの資格情報は暗号化された安全なファイルに格納されます。そのため、実際のスクリプトでその機密情報を渡す必要がありません。 例については、この記事の「[サービス プリンシパルの認証](#service-principal)」セクションを参照してください。
 
 時間と共に、AzCopy の[ダウンロード リンク](#download-and-install-azcopy)は AzCopy の新しいバージョンを指します。 実際のスクリプトで AzCopy をダウンロードする場合、実際のスクリプトで使用する機能が新しいバージョンの AzCopy で変更されていると、スクリプトの動作が停止する可能性があります。 
 

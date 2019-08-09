@@ -10,14 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 683297e32c40f73c64dc40b18f279d92e2396e8d
-ms.sourcegitcommit: 3107874d7559ea975e4d55ae33cdf45f4b5485e4
+ms.openlocfilehash: d1123affa79f401b5142af604adbd757bdfb7d73
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568269"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68641046"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
@@ -1195,7 +1194,7 @@ GO
 
 |表示  |説明  |
 |---------|---------|
-|[jobs_executions](#jobs_executions-view)     |  ジョブの実行履歴を表示します。      |
+|[job_executions](#job_executions-view)     |  ジョブの実行履歴を表示します。      |
 |[jobs](#jobs-view)     |   すべてのジョブを表示します。      |
 |[job_versions](#job_versions-view)     |   すべてのジョブのバージョンを表示します。      |
 |[jobsteps](#jobsteps-view)     |     各ジョブの現在のバージョンのすべてのステップを表示します。    |
@@ -1204,9 +1203,9 @@ GO
 |[target_group_members](#target_groups_members-view)     |   すべてのターゲット グループのすべてのメンバーを表示します。      |
 
 
-### <a name="jobs_executions-view"></a>jobs_executions ビュー
+### <a name="job_executions-view"></a>job_executions view
 
-[jobs].[jobs_executions]
+[jobs].[job_executions]
 
 ジョブの実行履歴を表示します。
 

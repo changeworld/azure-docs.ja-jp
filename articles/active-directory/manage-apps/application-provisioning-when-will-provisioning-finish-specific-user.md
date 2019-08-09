@@ -16,18 +16,18 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd6b70e7a4542a4cad2ee95fa280ddf8fbe6553
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310026"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667155"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>ユーザー プロビジョニングの状態を確認する
 
 Azure AD プロビジョニング サービスは、ソース システムとターゲット システムに対して初回プロビジョニング サイクルを実行した後、増分サイクルを定期的に行います。 アプリのプロビジョニングを構成するときに、現在のプロビジョニング サービスの状態をチェックすることで、ユーザーがいつ頃アプリにアクセスできるようになるかを予想できます。
 
-## <a name="view-the-provisioning-progress-bar-preview"></a>プロビジョニング進行状況バー (プレビュー) を確認する
+## <a name="view-the-provisioning-progress-bar"></a>プロビジョニング進行状況バーを確認する
 
  アプリの **[プロビジョニング]** ページで、Azure AD プロビジョニング サービスの状態を確認できます。 プロビジョニング サイクルによってユーザー アカウントのプロビジョニングが開始されたかどうかは、ページ下部の **[現在の状態]** セクションに表示されます。 サイクルの進行状況を監視して、プロビジョニング済みのユーザーとグループの数を確認したり、作成されたロールの数を確認したりすることができます。
 

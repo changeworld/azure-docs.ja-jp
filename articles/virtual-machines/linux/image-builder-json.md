@@ -3,16 +3,16 @@ title: Azure Image Builder テンプレートを作成する (プレビュー)
 description: Azure Image Builder で使用するテンプレートを作成する方法について説明します。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/10/2019
+ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 065962614d0b85c4c50f86bef0b610c9b3577e07
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: a623aa98cd26e1636e47cb0e2831eeced17935b9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248145"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695396"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>更新:Azure Image Builder テンプレートを作成する 
 
@@ -185,6 +185,19 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 `imageVersionId` は、イメージ バージョンの ResourceId にする必要があります。 イメージ バージョンの一覧を表示するには、[az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list) を使います。
 
+## <a name="properties-buildtimeoutinminutes"></a>プロパティ: buildTimeoutInMinutes
+既定では、Image Builder は 240 分間実行されます。 その後、イメージのビルドが完了しているかどうかにかかわらず、タイムアウトして停止します。 タイムアウトに達した場合は、次のようなエラーが表示されます。
+
+```text
+[ERROR] Failed while waiting for packerizer: Timeout waiting for microservice to
+[ERROR] complete: 'context deadline exceeded'
+```
+
+buildTimeoutInMinutes の値を指定しなかった場合、または 0 に設定した場合は、既定値が使用されます。 値は、最大で 960 分 (16 時間) まで増減できます。 Windows の場合、この値を 60 分未満に設定することはお勧めしません。 タイムアウトに達していることがわかった場合は、[ログ](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)を確認し、カスタマイズの手順がユーザー入力などで待機しているかどうかを確認します。 
+
+カスタマイズを完了するためにより多くの時間が必要な場合は、オーバーヘッドが小さい必要と思われるものに設定します。 ただし、エラーが表示される前にタイムアウトするまで待機する必要があるため、設定値を大きくしすぎないでください。 
+
+
 ## <a name="properties-customize"></a>プロパティ: customize
 
 
@@ -194,7 +207,6 @@ Image Builder では、複数の "カスタマイザー" がサポートされ�
 - 複数のカスタマイザーを使用できますが、一意の `name` を持っている必要があります。
 - カスタマイザーは、テンプレートで指定されている順序で実行されます。
 - 1 つのカスタマイザーが失敗した場合、カスタマイズ コンポーネント全体が失敗し、エラーが報告されます。
-- イメージ ビルドに要する時間を考慮し、Image Builder が完了するのに十分な時間があるように "buildTimeoutInMinutes" プロパティを調整します。
 - テンプレートで使う前に、スクリプトを十分にテストすることを強くお勧めします。 独自の VM でスクリプトをデバッグする方が簡単です。
 - スクリプト内には機密データを記述しないでください。 
 - [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage) を使っていない場合は、パブリックにアクセスできる場所にスクリプトを置く必要があります。

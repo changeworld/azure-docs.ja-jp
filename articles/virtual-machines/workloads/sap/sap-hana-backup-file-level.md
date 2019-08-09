@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 02ee65020f72fb9c3262db82e035e628f780e2cf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 86a0633a433623c2b43bb26721e5fcee08d4301f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709992"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640814"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>ファイル レベルの SAP HANA Azure バックアップ
 
@@ -50,7 +50,7 @@ Azure Backup には、VM を丸ごとバックアップする方法だけでな�
 
 ## <a name="azure-blobxfer-utility-details"></a>Azure blobxfer ユーティリティの詳細
 
-ディレクトリとファイルを Azure ストレージに格納するには、CLI または PowerShell を使用できます。また、いずれかの [Azure SDK](https://azure.microsoft.com/downloads/) を使用してツールを作成できます。 Azure ストレージへのデータ コピーにすぐに使用できるユーティリティ (AzCopy) もありますが、使用できるのは Windows のみです (「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../../../storage/common/storage-use-azcopy.md)」を参照)。
+ディレクトリとファイルを Azure ストレージに格納するには、CLI または PowerShell を使用できます。また、いずれかの [Azure SDK](https://azure.microsoft.com/downloads/) を使用してツールを作成できます。 Azure Storage にデータをコピーするための、すぐに使用できるユーティリティ AzCopy もあります。 ([AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../../../storage/common/storage-use-azcopy.md)方法に関するページを参照してください)。
 
 そのため、SAP HANA バックアップ ファイルのコピーには blobxfer を使用しました。 blobxfer は、多くのお客様が運用環境で使用しているオープン ソース ツールであり、[GitHub](https://github.com/Azure/blobxfer) で入手できます。 このツールでは、Azure Blob Storage と Azure ファイル共有のどちらにもデータを直接コピーできます。 さらに、md5 ハッシュや、複数のファイルが含まれたディレクトリをコピーする際の自動並列処理など、さまざまな便利な機能があります。
 

@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e563d86abe3817e4c77cc0d5c8df928e41563f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 1654e0a8cd11ac1c7a2f4ef0667d0e99187c2374
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489089"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618316"
 ---
 # <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でカタログを作成および管理する
 
@@ -34,7 +34,7 @@ ms.locfileid: "68489089"
 
 カタログは、リソースとアクセス パッケージのコンテナーです。 関連するリソースとアクセス パッケージをグループ化するときは、カタログを作成します。 どのユーザーでも、カタログを作成すると、最初のカタログ所有者になります。 カタログ所有者は、別のカタログ所有者を追加できます。
 
-**前提となるロール:** ユーザー管理者またはカタログ作成者
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、またはカタログ管理者
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -102,9 +102,9 @@ ms.locfileid: "68489089"
 
 カタログの名前と説明を編集できます。 この情報は、アクセス パッケージの詳細に表示されます。
 
-**前提となるロール:** ユーザー管理者またはカタログ所有者
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、またはカタログ所有者
 
-1. Azure portal で **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
+1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
 1. 左側のメニューで **[カタログ]** をクリックし、編集するカタログを開きます。
 
@@ -118,9 +118,9 @@ ms.locfileid: "68489089"
 
 カタログを削除できるのは、そのカタログにどのアクセス パッケージも含まれていない場合に限られます。
 
-**前提となるロール:** ユーザー管理者またはカタログ所有者
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、またはカタログ所有者
 
-1. Azure portal で **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
+1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 
 1. 左側のメニューで **[カタログ]** をクリックし、削除するカタログを開きます。
 

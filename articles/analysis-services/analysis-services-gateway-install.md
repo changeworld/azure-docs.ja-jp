@@ -1,23 +1,25 @@
 ---
-title: オンプレミスのデータ ゲートウェイをインストールする | Microsoft Docs
+title: Azure Analysis Services にオンプレミス データ ゲートウェイをインストールする | Microsoft Docs
 description: オンプレミスのデータ ゲートウェイをインストールして構成する方法について説明します。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 55f68d777d291c7d12fcbae93884a5596b84c8ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e87a8221a4db4dfab132a91a31a9ba5b5602a3db
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062252"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678423"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 
-同じリージョン内の 1 つまたは複数の Azure Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合は、オンプレミスのデータ ゲートウェイが必要です。 ゲートウェイの詳細については、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)に関する記事を参照してください。
+同じリージョン内の 1 つまたは複数の Azure Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合は、オンプレミスのデータ ゲートウェイが必要です。  インストールするゲートウェイは、Power BI、Power Apps、Logic Apps などの他のサービスで使用されているものと同じですが、Azure Analysis Services にインストールするときは、いくつかの追加手順を実行する必要があります。 このインストール記事は、**Azure Analysis Services** に固有のものです。
+
+ゲートウェイの詳細と Azure Analysis Services での使用方法については、[オンプレミスのデータ ソースへの接続](analysis-services-gateway.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,11 +49,15 @@ ms.locfileid: "67062252"
 
 ## <a name="download"></a>ダウンロード
 
- [ゲートウェイをダウンロードする](https://aka.ms/azureasgateway)
+ [ゲートウェイをダウンロードする](https://go.microsoft.com/fwlink/?LinkId=820925&clcid=0x409)
 
 ## <a name="install"></a>インストール
 
 1. セットアップを実行します。
+
+2. **[オンプレミスのデータ ゲートウェイ]** を選択します。
+
+   ![選択](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. 場所を選択し、条項に同意し、 **[インストール]** をクリックします。
 
@@ -84,7 +90,7 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
 ゲートウェイをインストールして登録した後、Azure サブスクリプションにゲートウェイ リソースを作成する必要があります。 ゲートウェイを登録するときに使用したのと同じアカウントを使用して Azure にサインインします。
 
-1. Azure portal で、 **[リソースの作成]**  >  **[統合]**  >  **[オンプレミスのデータ ゲートウェイ]** の順にクリックします。
+1. Azure portal で、 **[リソースの作成]** をクリックし、 **[オンプレミスのデータ ゲートウェイ]** を探して、 **[作成]** をクリックします。
 
    ![ゲートウェイ リソースを作成する](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
@@ -100,7 +106,7 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 
    * **[場所]** :お客様がゲートウェイを登録したリージョンを選択します。
 
-   * **インストール名**: お客様のゲートウェイのインストールが既に選択されていない場合は、登録済みのゲートウェイを選択します。 
+   * **インストール名**: ゲートウェイのインストールをまだ選択していない場合は、お使いのコンピューターにインストールして登録したゲートウェイを選択します。 
 
      完了したら、 **[作成]** をクリックします。
 
@@ -115,7 +121,12 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
    ![サーバーをゲートウェイ リソースに接続する](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
 
     > [!NOTE]
-    > ゲートウェイが一覧に表示されない場合、ゲートウェイの登録時に指定したのと同じリージョンにサーバーが存在していない可能性があります。 
+    > ゲートウェイが一覧に表示されない場合、ゲートウェイの登録時に指定したのと同じリージョンにサーバーが存在していない可能性があります。
+
+    サーバーとゲートウェイ リソース間の接続が成功すると、状態が **[接続]** と表示されます。
+
+
+    ![成功したゲートウェイ リソースへのサーバーの接続](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
 これで終了です。 ポートを開くか、トラブルシューティングを実行する必要がある場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)に関する記事を必ず確認してください。
 

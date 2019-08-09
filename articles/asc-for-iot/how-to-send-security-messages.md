@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT のプレビューにセキュリティ メッセージを送信する | Microsoft Docs
+title: Azure Security Center for IoT にセキュリティ メッセージを送信する | Microsoft Docs
 description: Azure Security Center for IoT を使用してセキュリティ メッセージを送信する方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,35 +13,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 73335773695059b3c2afd121a0dd39ada8d28bb0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c780eea15b9f064d3279c75ac2f967e8b6099ecb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618089"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596210"
 ---
 # <a name="send-security-messages-sdk"></a>セキュリティ メッセージの送信 SDK
 
-> [!IMPORTANT]
-> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-この攻略ガイドでは、Azure Security Center (ASC) for IoT エージェントを使用せずにデバイス セキュリティ メッセージを収集して送信する場合の ASC for IoT サービスの機能と、それを行う方法を説明します。  
+この攻略ガイドでは、Azure Security Center (ASC) for IoT エージェントを使用せずにデバイス セキュリティ メッセージを収集して送信する場合の Azure Security Center for IoT サービスの機能と、それを行う方法を説明します。  
 
 このガイドでは、以下の方法について説明します。 
 > [!div class="checklist"]
 > * C# 用のセキュリティ メッセージの送信 API を使用する
 > * C 用のセキュリティ メッセージの送信 API を使用する
 
-## <a name="asc-for-iot-capabilities"></a>ASC for IoT の機能
+## <a name="azure-security-center-for-iot-capabilities"></a>Azure Security Center for IoT の機能
 
-ASC for IoT では、送信されるデータが [ASC for IoT スキーマ](https://aka.ms/iot-security-schemas)に準拠していて、メッセージがセキュリティ メッセージとして設定されていれば、すべての種類のセキュリティ メッセージ データを処理および分析できます。
+Azure Security Center for IoT では、送信されるデータが [Azure Security Center for IoT スキーマ](https://aka.ms/iot-security-schemas)に準拠していて、メッセージがセキュリティ メッセージとして設定されていれば、すべての種類のセキュリティ メッセージ データを処理および分析できます。
 
 ## <a name="security-message"></a>セキュリティ メッセージ
 
-ASC for IoT では、次の条件を使用してセキュリティ メッセージが定義されています。
+Azure Security Center for IoT では、次の条件を使用してセキュリティ メッセージが定義されています。
 - メッセージが Azure IoT C/C# SDK で送信された場合
 - メッセージが[セキュリティ メッセージ スキーマ](https://aka.ms/iot-security-schemas)に準拠している場合
 - メッセージが送信前にセキュリティ メッセージとして設定されている場合
@@ -49,15 +45,17 @@ ASC for IoT では、次の条件を使用してセキュリティ メッセー�
 各セキュリティ メッセージには、`AgentId`、`AgentVersion`、`MessageSchemaVersion`、セキュリティ イベントのリストなど、送信者のメタデータが含まれています。
 スキーマでは、イベントの種類など、セキュリティ メッセージの有効で必要なプロパティが定義されています。
 
-[!NOTE]
+>[!Note]
 > スキーマに準拠していない、送信されたメッセージは、無視されます。 現在、無視されたメッセージは保存されないため、データの送信を開始する前にスキーマを確認してください。 
-> Azure IoT C/C# SDK を使用してセキュリティ メッセージとして設定されずに送信されたメッセージは、ASC for IoT パイプラインにルーティングされません
+
+>[!Note]
+> Azure IoT C/C# SDK を使用してセキュリティ メッセージとして設定されずに送信されたメッセージは、Azure Security Center for IoT パイプラインにルーティングされません
 
 ## <a name="valid-message-example"></a>有効なメッセージの例
 
 次の例では、有効なセキュリティ メッセージ オブジェクトを示します。 この例には、メッセージ メタデータと 1 つの `ProcessCreate` セキュリティ イベントが含まれています。
 
-セキュリティ メッセージとして設定されて送信されると、このメッセージは ASC for IoT によって処理されます。
+セキュリティ メッセージとして設定されて送信されると、このメッセージは Azure Security Center for IoT によって処理されます。
 
 ```json
 "AgentVersion": "0.0.1",
@@ -76,11 +74,11 @@ ASC for IoT では、次の条件を使用してセキュリティ メッセー�
         "Payload":
             [
                 {
-                    "Executable": "/usr/bin/echo",
+                    "Executable": "/usr/bin/myApp",
                     "ProcessId": 11750,
                     "ParentProcessId": 1593,
-                    "UserName": "nginx",
-                    "CommandLine": "./backup .htaccess"
+                    "UserName": "aUser",
+                    "CommandLine": "myApp -a -b"
                 }
             ]
     }
@@ -89,11 +87,11 @@ ASC for IoT では、次の条件を使用してセキュリティ メッセー�
 
 ## <a name="send-security-messages"></a>セキュリティ メッセージの送信 
 
-[Azure IoT C# デバイス SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) または [Azure IoT C デバイス SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) を使用して、ASC for IoT エージェントを使用せずにセキュリティ メッセージを送信します。
+[Azure IoT C# デバイス SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) または [Azure IoT C デバイス SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) を使用して、Azure Security Center for IoT エージェントを使用せずにセキュリティ メッセージを送信します。
 
-ASC for IoT で処理するためにデバイスからデバイス データを送信するには、以下のいずれかの API を使用して、ASC for IoT 処理パイプラインへの正しいルーティングが行われるようにメッセージをマークします。 このようにして送信されたメッセージは、ASC for IoT のセキュリティ分析情報として処理され、IoT Hub 内および Azure Security Center 内の両方に表示されます。 
+Azure Security Center for IoT で処理するためにデバイスからデバイス データを送信するには、以下のいずれかの API を使用して、Azure Security Center for IoT 処理パイプラインへの正しいルーティングが行われるようにメッセージをマークします。 
 
-送信されるすべてのデータは、正しいヘッダーでマークされている場合でも、[ASC for IoT メッセージ スキーマ](https://aka.ms/iot-security-schemas)にも準拠する必要があります。 
+送信されるすべてのデータは、正しいヘッダーでマークされている場合でも、[Azure Security Center for IoT メッセージ スキーマ](https://aka.ms/iot-security-schemas)にも準拠する必要があります。 
 
 ### <a name="send-security-message-api"></a>セキュリティ メッセージの送信 API
 
@@ -158,8 +156,8 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
 ```
 
 ## <a name="next-steps"></a>次の手順
-- ASC for IoT サービスの[概要](overview.md)を読みます
-- ASC for IoT の[アーキテクチャ](architecture.md)についてさらに学習します
+- Azure Security Center for IoT サービスの[概要](overview.md)を読みます
+- Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします
 - [FAQ](resources-frequently-asked-questions.md) を読みます
 - [未加工のセキュリティ データ](how-to-security-data-access.md)にアクセスする方法を学習します

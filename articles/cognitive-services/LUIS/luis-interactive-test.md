@@ -1,6 +1,6 @@
 ---
 title: LUIS ポータルでアプリをテストする
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) を使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
 services: cognitive-services
 author: diberry
@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 31d979b92bdf050f28ac5d7549218016dc5e473c
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199160"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638039"
 ---
+<a name="train-your-app"></a>
+
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
-アプリの<a name="train-your-app"></a>
-[テスト](luis-concept-test.md)は反復処理です。 ご自身の LUIS アプリをトレーニングした後、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。 
+
+アプリの[テスト](luis-concept-test.md)は反復処理です。 ご自身の LUIS アプリをトレーニングした後、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。 
 
 <!-- anchors for H2 name changes -->
 <a name="test-your-app"></a>
@@ -31,13 +33,13 @@ ms.locfileid: "60199160"
 
 1. **[My Apps]\(マイ アプリ\)** ページでご自身のアプリの名前を選択して、アプリにアクセスします。 
 
-2. スライド式の **[Test]\(テスト\)** パネルにアクセスするには、アプリケーションの上部パネルにある **[Test]\(テスト\)** を選択します。
+1. スライド式の **[Test]\(テスト\)** パネルにアクセスするには、アプリケーションの上部パネルにある **[Test]\(テスト\)** を選択します。
 
     ![アプリのトレーニングとテストのページ](./media/luis-how-to-interactive-test/test.png)
 
-3. テキスト ボックスに発話を入力し、Enter キーを押します。 **[Test]\(テスト\)** にはテスト用の発話を必要な数だけ入力できますが、同時に入力できる発話は 1 つだけです。
+1. テキスト ボックスに発話を入力し、Enter キーを押します。 **[Test]\(テスト\)** にはテスト用の発話を必要な数だけ入力できますが、同時に入力できる発話は 1 つだけです。
 
-4. 発話とその最上位の意図、およびスコアが、テキスト ボックスの下の発話の一覧に追加されています。
+1. 発話とその最上位の意図、およびスコアが、テキスト ボックスの下の発話の一覧に追加されています。
 
     ![対話型テストによる間違った意図の特定](./media/luis-how-to-interactive-test/test-weather-1.png)
 
@@ -49,7 +51,7 @@ ms.locfileid: "60199160"
 
     ![テスト結果の詳細を確認するには、[検査] ボタンを選択します。](./media/luis-how-to-interactive-test/inspect.png)
 
-2. **[検査]** パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。
+1. **[検査]** パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。
 
     ![このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。](./media/luis-how-to-interactive-test/inspect-panel.png)
 
@@ -57,7 +59,7 @@ ms.locfileid: "60199160"
 
 1. 上部スコアの意図が間違っている場合は、 **[編集]** をクリックします。
 
-2.  ドロップダウン リストで、発話の正しい意図を選択します。
+1.  ドロップダウン リストで、発話の正しい意図を選択します。
 
     ![正しい意図の選択](./media/luis-how-to-interactive-test/intent-select.png)
 
@@ -103,16 +105,14 @@ LUIS エンドポイントが複数ある場合は、テストの [公開済み]
 
 1. **[Test]\(テスト\)** ウィンドウで、発話を入力します。 発話が予測されるときに、入力した発話の下で **[[検査]](#inspect-score)** を選択します。 
 
-2. **[検査]** パネルが開いたら、 **[[Compare with published]\(公開済みのものと比較\)](#compare-with-published-version)** を選択します。 
+1. **[検査]** パネルが開いたら、 **[[Compare with published]\(公開済みのものと比較\)](#compare-with-published-version)** を選択します。 
 
-3. **[公開済み]** パネルが開いたら、 **[[追加設定]](#additional-settings-in-test-panel)** を選択します。
+1. **[公開済み]** パネルが開いたら、 **[[追加設定]](#additional-settings-in-test-panel)** を選択します。
 
-4. ポップアップ ダイアログで、ご自身の **Bing Spell Check** サービス キーを入力します。 
-    ![Bing Spell Check サービス キーの入力](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+1. ポップアップ ダイアログで、 **[Enable Bing Spell Check]\(Bing Spell Checkを有効にする\)** チェックボックスをオンにし、キーを入力して、 **[完了]** を選択します。 
+    ![Bing Spell Check サービス キーの入力](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-5. `book flite to seattle` など、間違っているスペルを含むクエリを入力し、Enter キーを入力します。 LUIS に送信されたクエリ内で、スペルが間違っている単語 `flite` が置き換えられ、結果の JSON の `query` には元のクエリが、`alteredQuery` にはクエリ内の修正されたスペルが表示されます。
-
-    ![修正されたスペルの JSON](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
+1. `book flite to seattle` など、間違っているスペルを含むクエリを入力し、Enter キーを入力します。 LUIS に送信されたクエリ内で、スペルが間違っている単語 `flite` が置き換えられ、結果の JSON の `query` には元のクエリが、`alteredQuery` にはクエリ内の修正されたスペルが表示されます。
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>

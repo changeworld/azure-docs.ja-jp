@@ -7,12 +7,12 @@ ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: a47c7fd60ec9ddd3fd5e5accae8849bd62bf894c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9fc624ab24cd98d0025fe2a34bf48c29b47c50e9
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671474"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68695421"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>更新:Linux イメージを作成して共有イメージ ギャラリーに配布する 
 
@@ -105,7 +105,9 @@ az role assignment create \
 
 ## <a name="create-an-image-definition-and-gallery"></a>イメージ定義およびギャラリーの作成
 
-イメージ ギャラリーを作成します。 
+共有イメージ ギャラリーで Image Builder を使用するには、既存のイメージ ギャラリーとイメージ定義が必要です。 Image Builder では、イメージ ギャラリーとイメージ定義は自動的には作成されません。
+
+使用するギャラリーとイメージ定義がまだない場合は、最初に作成します。 最初に、イメージ ギャラリーを作成します。
 
 ```azurecli-interactive
 az sig create \
@@ -113,7 +115,7 @@ az sig create \
     --gallery-name $sigName
 ```
 
-イメージ定義を作成します。
+次に、イメージ定義を作成します。
 
 ```azurecli-interactive
 az sig image-definition create \

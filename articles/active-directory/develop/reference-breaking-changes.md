@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2018
+ms.date: 07/26/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ea3ec9024e4ea6a254fb6fe80f93886dc31a0ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c0bc7f5d4890ae494c6c6616b42eddc2445b159
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545797"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666488"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能 
 
@@ -41,7 +41,46 @@ ms.locfileid: "65545797"
 
 ## <a name="upcoming-changes"></a>今後の変更
 
-現時点ではスケジュールされていません。 
+2019 年 8 月: URL 解析規則に従って POST セマンティクスを適用する - 重複するパラメーターによってエラーがトリガーされ、パラメーターをまたがる引用符は無視されなくなり、[BOM](https://www.w3.org/International/questions/qa-byte-order-mark) は無視されます。
+
+## <a name="july-2019"></a>2019 年 7 月
+
+### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>シングルテナント アプリケーションのアプリ専用トークンは、クライアント アプリがリソース テナントに存在する場合にのみ発行される
+
+**発効日**:2019 年 7 月 26 日
+
+**影響を受けるエンドポイント**:[v1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) と [v2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow) の両方
+
+**影響を受けるプロトコル**:[クライアント資格情報 (アプリ専用トークン)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+
+(クライアント資格情報の付与による) アプリ専用トークンの発行方法を変更するセキュリティの変更が、7 月 26 日に行われました。 以前は、テナント内の存在またはそのアプリケーションに対して同意されているロールに関係なく、アプリケーションではトークンを取得して他のアプリを呼び出すことができました。  この動作が更新され、シングルテナント (既定) に設定されているリソース (Web API と呼ばれることもあります) の場合、クライアント アプリケーションはリソース テナント内に存在する必要があります。  クライアントと API の間の既存の同意は依然として必須ではなく、アプリでは、`roles` 要求が存在し、API に必要な値が含まれていることを確認するために、独自の承認チェックを実行する必要があることに注意してください。
+
+現在、このシナリオのエラー メッセージは次のようになっています。 
+
+`The service principal named <appName> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.`
+
+この問題を解決するには、管理者の同意エクスペリエンスを使ってテナントにクライアント アプリケーション サービス プリンシパルを作成するか、手動で作成します。  この要件により、テナントによってアプリケーションにテナント内で動作するアクセス許可が付与されていることが確認されます。  
+
+#### <a name="example-request"></a>要求の例
+
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` この例では、リソース テナント (機関) は contoso.com、リソース アプリは Contoso テナントに対する `gateway.contoso.com/api` という名前のシングルテナント アプリ、クライアント アプリは `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` です。  クライアント アプリが Contoso.com 内にサービス プリンシパルを持っている場合は、この要求を続行できます。  そうでない場合、要求は上記のエラーで失敗します。  
+
+ただし、Contoso ゲートウェイ アプリがマルチテナント アプリケーションの場合は、クライアント アプリのサービス プリンシパルが Contoso.com 内にあるかどうかに関係なく、要求は続行されます。  
+
+### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>リダイレクト URI にクエリ文字列パラメーターを含めることができるようになった
+
+**発効日**:2019 年 7 月 22 日
+
+**影響を受けるエンドポイント**:v1.0 と v2.0 の両方
+
+**影響を受けるプロトコル**:すべてのフロー
+
+[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) に従って、Azure AD アプリケーションでは、OAuth 2.0 要求に対する静的クエリ パラメーター (https://contoso.com/oauth2?idp=microsoft) など) でリダイレクト (応答) URI を登録して使用できるようになりました。  動的リダイレクト URI は、セキュリティ上のリスクがあり、認証要求全体で状態情報を保持するために使用できないため、引き続き許可されません。そのためには、`state` パラメーターを使用します。
+
+静的クエリ パラメーターは、リダイレクト URI の他の部分と同様に、リダイレクト URI の文字列照合の対象になります。URI でデコードされたリダイレクト URI に一致する文字列が登録されていない場合、要求は拒否されます。  アプリの登録で URI が見つかった場合は、静的クエリ パラメーターを含む文字列全体が、ユーザーをリダイレクトするために使われます。 
+
+現時点 (2019 年 7 月末) では、Azure portal のアプリ登録 UX では、クエリ パラメーターが引き続きブロックされることに注意してください。  ただし、アプリケーション マニフェストを手動で編集して、クエリ パラメーターを追加し、アプリでこれをテストすることができます。  
+
 
 ## <a name="march-2019"></a>2019 年 3 月
 

@@ -1,6 +1,6 @@
 ---
-title: アカウントとキーの管理
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: アカウントとキーの管理 - LUIS
+titleSuffix: Azure Cognitive Services
 description: LUIS アカウントの 2 つの重要な情報は、ユーザー アカウントとオーサリング キーです。 ログイン情報は account.microsoft.com で管理されます。 オーサリング キーは、LUIS ポータルの [設定] ページから管理されます。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: d5a1d7ee3b8b16631f7b919f3aece0848d662e62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28f8a15922a3a3e4e3b464b86bdfea07d329a848
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65523514"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638275"
 ---
 # <a name="manage-account-and-authoring-key"></a>アカウントとオーサリング キーを管理する
 

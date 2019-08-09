@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4b63cfc67e20158e434e1a401d47144c3e0f90c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61472610"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618737"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する
 
@@ -41,9 +41,6 @@ ms.locfileid: "61472610"
 **[Observed typical data churn per day (GB)]\(観察された 1 日あたりの標準的なデータの変更頻度 (GB\))** : プロファイリングの全日数にわたって観察されたデータ変更頻度の平均値です。 この数は、デプロイ後の環境で使用する構成サーバー数と追加プロセス サーバー数を決定するための入力値の 1 つとして使用されます。
 
 ## <a name="recommendations"></a>Recommendations
-
->[!Note]
->マネージド ディスクに直接レプリケートする場合は、ストレージ アカウントの数に関する推奨値を無視します。
 
 VMware to Azure レポートの [Recommendations]\(推奨事項\) シートには、[Desired RPO]\(必要な RPO\) の選択内容に応じて、次の情報が表示されます。
 
@@ -95,7 +92,7 @@ VMware to Azure レポートの [Recommendations]\(推奨事項\) シートに�
 企業による Site Recovery のデプロイでは、常に [ExpressRoute](https://aka.ms/expressroute) を使用することをお勧めします。
 
 ### <a name="required-storage-accounts"></a>必要なストレージ アカウント
-次のグラフは、すべての適合 VM を保護するうえで必要なストレージ アカウントの総数です (Standard と Premium)。 使用するストレージ アカウントを VM ごとに把握するには、「VM-Storage placement (VM<->ストレージの配置)」セクションを参照してください。
+次のグラフは、すべての適合 VM を保護するうえで必要なストレージ アカウントの総数です (Standard と Premium)。 使用するストレージ アカウントを VM ごとに把握するには、「VM-Storage placement (VM<->ストレージの配置)」セクションを参照してください。 Deployment Planner の v2.5 を使用している場合、データが Managed Disks に直接書き込まれるため、このレコメンデーションには、レプリケーションに必要な標準キャッシュ ストレージ アカウントの数のみが表示されます。
 
 ![必要なストレージ アカウント (Deployment Planner)](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
@@ -160,21 +157,19 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 ## <a name="vm-storage-placement"></a>VM-Storage placement (VM<->ストレージの配置)
 
 >[!Note]
->マネージド ディスクに直接レプリケートする場合は、ストレージ アカウントの数について心配する必要はありません。 ストレージについては、ストレージの種類 (Standard または Premium) に関する推奨事項のみを使用します。 同じ型がマネージド ディスクに適用されます。
+>Deployment Planner v 2.5 以降では、マネージド ディスクに直接レプリケートするマシンへのストレージの配置を推奨しています。
 
 ![VM-Storage placement (VM<->ストレージの配置)](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**[Disk Storage Type]\(ディスク ストレージの種類\)** : **[VMs to Place]\(配置する VM\)** 列に示されている該当 VM をすべてレプリケートするために使用される Standard または Premium のストレージ アカウントです。
+**Replication Storage Type (レプリケーション ストレージの種類)** : **[VMs to Place]\(配置する VM\)** 列に示されている該当 VM をすべてレプリケートするために使用される Standard または Premium のマネージド ディスクです。
 
-**[Suggested Prefix]\(推奨プレフィックス\)** : ストレージ アカウントに名前を付ける場合に使用できる 3 文字の推奨プレフィックスです。 独自のプレフィックスを使用することもできますが、[ストレージ アカウントのパーティションの名前付け規則](https://aka.ms/storage-performance-checklist)に準拠したプレフィックスがツールから提案されます。
+**Log Storage Account Type (ログ ストレージ アカウントの種類)** :レプリケーションのログはすべて Standard ストレージ アカウントに格納されます。
 
-**[Suggested Account Name]\(推奨アカウント名\)** : 推奨されるプレフィックスを付けた後のストレージ アカウント名です。 山かっこ (< と >) で囲まれた名前は、カスタムの入力値に置き換えてください。
+**Suggested Prefix for Storage Account (ストレージ アカウントに推奨されるプレフィックス)** :キャッシュ ストレージ アカウントに名前を付ける場合に使用できる 3 文字の推奨プレフィックスです。 独自のプレフィックスを使用することもできますが、[ストレージ アカウントのパーティションの名前付け規則](https://aka.ms/storage-performance-checklist)に準拠したプレフィックスがツールから提案されます。
 
-**[Log Storage Account]\(ログ ストレージ アカウント\)** : レプリケーションのログはすべて Standard ストレージ アカウントに格納されます。 レプリケーション先が Premium ストレージ アカウントである VM については、ログの格納用として別途 Standard ストレージ アカウントをセットアップしてください。 1 つの Standard ログ ストレージ アカウントを複数の Premium レプリケーション ストレージ アカウントで使用できます。 レプリケーション先が Standard ストレージ アカウントである VM では、同じストレージ アカウントがログに使用されます。
+**[Suggested Log Account Name]\(推奨ログ アカウント名\)** : 推奨されるプレフィックスを付けた後のストレージ アカウント名です。 山かっこ (< と >) で囲まれた名前は、カスタムの入力値に置き換えてください。
 
-**[Suggested Log Account Name]\(推奨ログ アカウント名\)** : 推奨されるプレフィックスを付けた後のストレージ ログ アカウント名です。 山かっこ (< と >) で囲まれた名前は、カスタムの入力値に置き換えてください。
-
-**[Placement Summary]\(配置の概要\)** : レプリケーションとテスト フェールオーバー (またはフェールオーバー) 時にストレージ アカウントにかかる VM の総負荷の概要が表示されます。 たとえばストレージ アカウントに関連付けられた VM の総数や、そのストレージ アカウントに配置されている全 VM における読み取り/書き込み IOPS の合計、書き込み (レプリケーション) IOPS の合計、全ディスクの合計セットアップ サイズ、ディスクの総数が表示されます。
+**[Placement Summary]\(配置の概要\)** : ストレージの種類別に保護された VM に必要なディスクの概要。 これには、VM の合計数、全ディスクのプロビジョニング済み合計サイズ、ディスクの総数が含まれます。
 
 **[VMs to Place (配置する VM)]** : パフォーマンスと稼働率を最大限に引き出すために、指定のストレージ アカウントに配置すべき全 VM の一覧です。
 
@@ -195,9 +190,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[ストレージの種類]** : Standard または Premium です。
 
-**[Suggested Prefix]\(推奨プレフィックス\)** : ストレージ アカウントの 3 文字のプレフィックスです。
-
-**[ストレージ アカウント]** : ストレージ アカウントの推奨プレフィックスを使用した名前です。
+**Asrseeddisk (Managed Disk) created for replication (レプリケーション用に作成された Asrseeddisk (マネージド ディスク))** :レプリケーションを有効にしたときに作成されるディスクの名前。 データとそのスナップショットが Azure に格納されます。
 
 **[Peak R/W IOPS (with Growth Factor)]\(ピーク読み取り/書き込み IOPS (増加率を考慮)\)** : 将来的な増加率 (既定では 30%) を加味した、ディスクに対するピーク ワークロードの読み取り/書き込み IOPS (既定では 95 パーセンタイル) です。 VM のトータルな読み取り/書き込み IOPS は、必ずしもその個々のディスクの読み取り/書き込み IOPS を足した値になるとは限りません。VM の読み取り/書き込みのピーク IOPS が、プロファイリングの全期間を通じての、その各ディスクにおける読み取り/書き込み IOPS の合計のピークであるためです。
 
@@ -238,7 +231,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 * レプリケーション元の IOPS が、ストレージでサポートされている IOPS の上限 (VM あたり 80,000 IOPS) を超えている。
 
-* 平均データ変更頻度が、Site Recovery でサポートされているデータ変更頻度の上限 (ディスクの平均 I/O サイズで 10 MB/秒) を超えている。
+* 平均データ変更頻度が、Site Recovery でサポートされているデータ変更頻度の上限 (ディスクの平均 I/O サイズで 20 MB/秒) を超えている。
 
 * 平均データ変更頻度が、Site Recovery でサポートされているデータ変更頻度の上限 (VM の平均 I/O サイズで 25 MB/秒 (全ディスクの合計の変更頻度)) を超えている。
 

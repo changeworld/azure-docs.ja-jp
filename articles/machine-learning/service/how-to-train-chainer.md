@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 06/15/2019
-ms.openlocfilehash: 8ecefccbdf5f02652e935858b6ae8fb4cdfde640
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 7cf5650708cd951e872e3df6ea533a62bde0389d
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840035"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618327"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して Chainer モデルを大規模にトレーニングし、登録する
 
@@ -29,9 +29,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-次のいずれかの環境で、このコードを実行してください。
+このコードは、次の環境のいずれかで実行してください。
 
-- Azure Machine Learning Notebook VM - ダウンロードとインストールが不要
+- Azure Machine Learning Notebook VM - ダウンロードやインストールは必要なし
 
     - [クラウドベースのノートブックによるクイック スタート](quickstart-run-cloud-notebook.md)に従って、SDK とサンプル リポジトリが事前に読み込まれた専用の Notebook サーバーを作成します。
     - Notebook サーバー上の samples フォルダー内で、**how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer** フォルダーから完了済みのノートブックとファイルを見つけます。  このノートブックには、インテリジェント ハイパーパラメーター チューニング、モデル デプロイ、ノートブック ウィジェットを取り上げた拡張セクションがあります。
@@ -62,7 +62,7 @@ print("SDK version:", azureml.core.VERSION)
 
 [Azure Machine Learning service ワークスペース](concept-workspace.md)は、本サービスの最上位レベルのリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
 
-[前提条件のセクション](#prerequisites)で作成した `config.json` ファイルからワークスペース オブジェクトを作成します。
+[前提条件のセクション](#prerequisites)で作成した `config.json` ファイルを読み取ることによって、ワークスペース オブジェクトを作成します。
 
 ```Python
 ws = Workspace.from_config()
@@ -82,7 +82,9 @@ os.makedirs(project_folder, exist_ok=True)
 
 このチュートリアルでは、トレーニング スクリプトの **chainer_mnist.py** は既に用意されています。 実際には、コードを変更しなくても、あらゆるカスタム トレーニング スクリプトをそのまま Azure ML で実行できるはずです。
 
-Azure ML の追跡およびメトリック機能を利用するには、トレーニング スクリプト内に少量の Azure ML コードを追加する必要があります。  トレーニング スクリプト **chainer_mnist.py** には、Azure ML 実行に一部のメトリックをログ記録する方法があります。 それを行うには、スクリプト内で Azure ML `Run` オブジェクトにアクセスします。
+Azure ML の追跡およびメトリック機能を利用するには、トレーニング スクリプト内に少量の Azure ML コードを追加します。  トレーニング スクリプト **chainer_mnist.py** には、スクリプト内の `Run` オブジェクトを使用して Azure ML 実行に一部のメトリックをログ記録する方法があります。
+
+指定されたトレーニング スクリプトでは、Chainer の `datasets.mnist.get_mnist` 関数のサンプル データを使用します。  独自のデータについては、[データセットやスクリプトのアップロード](how-to-train-keras.md#upload-dataset-and-scripts)などの手順を使用して、トレーニング中にデータを使用できるようにすることが必要になる場合があります。
 
 トレーニング スクリプト **chainer_mnist.py** をプロジェクト ディレクトリにコピーします。
 
@@ -94,7 +96,7 @@ shutil.copy('chainer_mnist.py', project_folder)
 
 ### <a name="create-an-experiment"></a>実験の作成
 
-トレーニング スクリプトを保存するための実験とフォルダーを作成します。 この例では、"chainer-mnist" という実験を作成します。
+実験を作成します。 この例では、"chainer-mnist" という実験を作成します。
 
 ```
 from azureml.core import Experiment
@@ -106,7 +108,7 @@ experiment = Experiment(ws, name=experiment_name)
 
 ## <a name="create-or-get-a-compute-target"></a>コンピューティング先を作成または取得する
 
-モデルをトレーニングするには[コンピューティング先](concept-compute-target.md)が必要です。 このチュートリアルでは、リモート トレーニング コンピューティング リソースに Azure ML マネージド コンピューティング (AmlCompute) を使用します。
+モデルをトレーニングするには[コンピューティング先](concept-compute-target.md)が必要です。 この例では、リモート トレーニング コンピューティング リソースに Azure ML マネージド コンピューティング (AmlCompute) を使用します。
 
 **AmlCompute の作成には約 5 分かかります**。 その名前の AmlCompute がワークスペースに既にある場合、このコードの作成プロセスはスキップされます。  
 
@@ -172,7 +174,7 @@ run.wait_for_completion(show_output=True)
 
 - **準備**:docker イメージは Chainer エスティメーターに従って作成されます。 イメージはワークスペースのコンテナー レジストリにアップロードされ、後で実行するためにキャッシュされます。 ログは実行履歴にもストリーミングされ、進行状況を監視するために表示することができます。
 
-- **拡大縮小**:Batch AI クラスターで実行の実施に現在使用できる数よりも多くのノードが必要な場合、スケールアップが試行されます。
+- **拡大縮小**:Batch AI クラスターでの実行に現在使用可能な数より多くのノードが必要な場合、クラスターはスケールアップを試みます。
 
 - **Running**: script フォルダー内のすべてのスクリプトがコンピューティング先にアップロードされ、データ ストアがマウントまたはコピーされ、entry_script が実行されます。 stdout および ./logs フォルダーの出力は実行履歴にストリーミングされ、実行を監視するために使用できます。
 
@@ -182,19 +184,28 @@ run.wait_for_completion(show_output=True)
 
 モデルのトレーニングが終わったら、それをワークスペースに保存して登録できます。 モデルの登録を使用すると、モデルをワークスペースに格納し、バージョン管理して、[モデルの管理とデプロイ](concept-model-management-and-deployment.md)を簡単にすることができます。
 
-モデルを保存するには、トレーニング スクリプト **chainer_mnist.py** に次のコードを追加します。 
 
-``` Python
-    serializers.save_npz(os.path.join(args.output_dir, 'model.npz'), model)
-```
-
-次のコードでワークスペースにモデルを登録します。
+モデルのトレーニングが完了したら、次のコードでワークスペースにモデルを登録します。  
 
 ```Python
 model = run.register_model(model_name='chainer-dnn-mnist', model_path='outputs/model.npz')
 ```
 
+> [!TIP]
+> モデルが見つからないというエラーが表示された場合は、1 分ほど待ってから、もう一度やり直してください。  場合によっては、トレーニングの実行が終了してから出力ディレクトリでモデルが利用できるようになるまでの間に若干の遅延が発生することがあります。
 
+モデルのローカル コピーをダウンロードすることもできます。 これは、追加のモデル検証作業をローカルで実行するのに役立つ場合があります。 トレーニング スクリプト `chainer_mnist.py` では、セーバー オブジェクトにより、モデルがローカル フォルダー (コンピューティング先に対してローカル) に永続化されます。 実行オブジェクトを使用して、データストアからコピーをダウンロードできます。
+
+```Python
+# Create a model folder in the current directory
+os.makedirs('./model', exist_ok=True)
+
+for f in run.get_file_names():
+    if f.startswith('outputs/model'):
+        output_file_path = os.path.join('./model', f.split('/')[-1])
+        print('Downloading from {} to {} ...'.format(f, output_file_path))
+        run.download_file(name=f, output_file_path=output_file_path)
+```
 
 ## <a name="next-steps"></a>次の手順
 

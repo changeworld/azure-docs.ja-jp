@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 468e4fca5e67850949e7d5826e4bc88fa504b9d6
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 4511510dec6f488e1a6ea9a6842b771d2a298fec
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295184"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640665"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
 
@@ -86,7 +86,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
    - コンテナーのオペレーティング システムに応じて `<storage directory bind>` を置き換えます。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。 ストレージ ディレクトリのバインドは、提供したデバイス上の位置をモジュール内の設定された位置にマップします。
 
      - Linux コンテナーの場合、形式は *\<ストレージのパス>:/blobroot* です。 例: **/srv/containerdata:/blobroot** または **my-volume:/blobroot**。
-     - Windows コンテナーの場合、形式は *\<ストレージのパス>:C:/BlobRoot* です。 例: **C:/ContainerData:C:/BlobRoot** または **my-volume:C:/blobroot**。
+     - Windows コンテナーの場合、形式は *\<ストレージのパス>:C:/BlobRoot* です。 例: **C:/ContainerData:C:/BlobRoot** または **my-volume:C:/blobroot**。 ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、[SMB 共有をローカル ストレージとして使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)方法に関するページを参照してください
 
      > [!IMPORTANT]
      > モジュールの特定の位置を指す、ストレージ ディレクトリのバインド値の後半を変更しないでください。 ストレージ ディレクトリ バインドは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
@@ -194,7 +194,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
 1. コンテナーのオペレーティング システムに応じて `<storage directory bind>` を置き換えます。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。 ストレージ ディレクトリのバインドは、提供したデバイス上の位置をモジュール内の設定された位置にマップします。  
 
       - Linux コンテナーの場合、形式は *\<ストレージのパス>:/blobroot* です。 例: **/srv/containerdata:/blobroot** または **my-volume:/blobroot**。
-      - Windows コンテナーの場合、形式は *\<ストレージのパス>:C:/BlobRoot* です。 例: **C:/ContainerData:C:/BlobRoot** または **my-volume:C:/blobroot**。
+      - Windows コンテナーの場合、形式は *\<ストレージのパス>:C:/BlobRoot* です。 例: **C:/ContainerData:C:/BlobRoot** または **my-volume:C:/blobroot**。  ローカル ドライブを使用する代わりに、SMB ネットワークの場所をマップすることができます。詳細については、[SMB 共有をローカル ストレージとして使用する](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)方法に関するページを参照してください
 
       > [!IMPORTANT]
       > モジュールの特定の位置を指す、ストレージ ディレクトリのバインド値の後半を変更しないでください。 ストレージ ディレクトリ バインドは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
@@ -249,5 +249,8 @@ IoT Edge モジュールで Azure Blob Storage の複数のインスタンスを
 追加の BLOB ストレージ モジュールに接続すると、更新されたホスト ポートをポイントするエンドポイントを変更します。
 
 ## <a name="next-steps"></a>次の手順
+[IoT Edge 上のAzure Blob Storage ](how-to-store-data-blob.md)の詳細を確認する
+
+[IoT Edge 上のAzure Blob Storage ブログ](https://aka.ms/abs-iot-blogpost)の最新の更新とお知らせによって最新情報を得る
 
 配置マニフェストのしくみとその作成方法について詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。

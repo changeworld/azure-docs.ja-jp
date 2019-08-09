@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 6b1029c5532e106c269b47e6e184b9c93faf8d09
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 93efd6e53470fb78bb6d823652437e7a37c33732
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399625"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640577"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
 
@@ -33,7 +33,7 @@ ms.locfileid: "60399625"
 | デバイス ツインの必要なプロパティ    | デバイスを特定の状態にします (LED を緑に設定したり、テレメトリの送信間隔を 30 分に設定したりします)。         |
 | デバイス ツインの報告されるプロパティ   | デバイスの報告される状態を取得します。 たとえば、デバイスは、現在 LED が点滅していることを報告します。                                    |
 | デバイス ツインのタグ                  | デバイス固有のメタデータをクラウドに格納します。 例: 自動販売機の設置場所。                         |
-| デバイス ツイン クエリ        | すべてのデバイス ツインをクエリして、任意の条件と一致するデバイスを取得します (例: 使用可能なデバイスを識別する)。 |
+| デバイス ツイン クエリ        | すべてのデバイス ツインをクエリして、任意の条件 (使用可能なデバイスを識別するなど) でそれらのツインを取得します。 |
 
 これらのオプションの相違点の詳細な説明と使用するためのガイダンスについては、「[device-to-cloud 通信に関するガイダンス](iot-hub-devguide-d2c-guidance.md)」と「[cloud-to-device 通信に関するガイダンス](iot-hub-devguide-c2d-guidance.md)」を参照してください。
 
@@ -41,7 +41,7 @@ ms.locfileid: "60399625"
 
 ## <a name="what-you-learn"></a>学習内容
 
-開発マシン上で Azure CLI 向けの IoT 拡張機能をさまざまな管理オプションで使用します。
+開発マシン上で Azure CLI 向けの IoT 拡張機能をさまざまな管理オプションで使用することを学習します。
 
 ## <a name="what-you-do"></a>作業内容
 
@@ -49,7 +49,7 @@ Azure CLI と Azure CLI 向けの IoT 拡張機能をさまざまな管理オプ
 
 ## <a name="what-you-need"></a>必要なもの
 
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 次の要件について取り上げられています。
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 これらの項目では、次の要件について取り上げています。
 
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
@@ -59,13 +59,16 @@ Azure CLI と Azure CLI 向けの IoT 拡張機能をさまざまな管理オプ
 
 * [Python 2.7x または Python 3.x](https://www.python.org/downloads/)
 
-* Azure CLI インストールが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –version` を使用します。 
+<!-- I'm not sure we need all this info, so comment out this include for now. Robin 7.26.2019
+[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)] -->
+
+* Azure CLI インストールが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –version` を使用します。
 
 * IoT 拡張機能をインストールします。 最も簡単な方法は、`az extension add --name azure-cli-iot-ext` を実行することです。 [IoT 拡張機能の readme](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) に、拡張機能をインストールするためのいくつかの方法が説明されています。
 
-## <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
+## <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 
-次のコマンドを実行して Azure アカウントにログインします。
+次のコマンドを実行して Azure アカウントにサインインします。
 
 ```bash
 az login
@@ -99,7 +102,7 @@ az iot hub device-twin update -n <your hub name> \
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-ツインの reported プロパティの 1 つは $metadata.$lastUpdated です。これは、デバイス アプリがその reported プロパティのセットを最後に更新した時刻を示します。
+ツインの報告されるプロパティの 1 つは $metadata.$lastUpdated です。これは、デバイス アプリによって、その報告されるプロパティのセットが最後に更新された時刻を示します。
 
 ## <a name="device-twin-tags"></a>デバイス ツインのタグ
 

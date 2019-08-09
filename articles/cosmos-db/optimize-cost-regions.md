@@ -4,14 +4,14 @@ description: この記事では、Azure Cosmos DB の複数リージョン デ�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 07/31/2019
 ms.author: rimman
-ms.openlocfilehash: 478714f48782adb138f1ed803d53c81ec48f2efd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 233eab1fc49d7ce4cbb1e5b98b67eda9a64aa195
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967278"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68667595"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョンのコストを最適化する
 
@@ -35,9 +35,9 @@ ms.locfileid: "65967278"
 |----|----|----|----|
 |米国西部のコンテナーのスループット料金 (複数の書き込みリージョン) |10,000 RU/秒 * 24 * 31 |100 RU/秒で 1 時間あたり $0.016 |$1,190.40 |
 |追加された 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) のスループット料金 (複数の書き込みリージョン) |(3 + 1) * 10,000 RU/秒 * 24 * 31 |100 RU/秒で 1 時間あたり $0.016 |$4,761.60 |
-|米国西部のコンテナーのストレージ料金 |100 GB |$0.25/GB |$25 |
-|追加された 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) のストレージ料金 |3 * 1 TB |$0.25/GB |$75 |
-|**合計**|||**$6,052** |
+|米国西部のコンテナーのストレージ料金 |1 TB (または 1,024 GB) |$0.25/GB |$256 |
+|追加された 3 つのリージョン (米国東部、北ヨーロッパ、東アジア) のストレージ料金 |3 * 1 TB (または 3,072 GB) |$0.25/GB |$768 |
+|**合計**|||**$6,976** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>リージョン単位でスループット利用率を向上させる
 
