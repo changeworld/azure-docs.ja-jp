@@ -25,6 +25,10 @@
           href: sdk-csharp-quickstart-authoring-app.md
         - name: 予測エンドポイントに対するクエリの実行
           href: sdk-csharp-quickstart-query-prediction-endpoint.md
+    - name: Python SDK の使用
+      items:
+        - name: アプリの作成と管理
+          href: sdk-python-quickstart-authoring-app.md
     - name: REST API の使用
       items:
         - name: 意図の取得
