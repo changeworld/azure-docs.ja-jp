@@ -48,7 +48,7 @@ Azure Monitor では、[クラシック アラート](../../azure-monitor/platfo
 
 ## <a name="creating-metric-alert-for-log-analytics"></a>Log Analytics のメトリック アラートの作成
 
-一般的なログのメトリック データは、Log Analytics で処理される前に Azure Monitor のメトリックにパイプ処理されます。 これにより、ユーザーはメトリック プラットフォームとメトリック アラートの機能 (1 分という低頻度のアラートの使用など) を活用できます。
+一般的なログのメトリック データは、Log Analytics で処理される前に Azure Monitor のメトリックにパイプ処理されます。 これにより、ユーザーはメトリック プラットフォームとメトリック アラートの機能 (1 分という短時間の頻度でのアラートの使用など) を活用できます。
 ログのメトリック アラートを作成する方法を以下に示します。
 
 ## <a name="prerequisites-for-metric-alert-for-logs"></a>ログのメトリック アラートの前提条件
