@@ -59,7 +59,7 @@ SAP HANA のリンクされたサービスでは、次のプロパティがサ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**SapHana** | はい |
-| サーバー | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | はい |
+| server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | はい |
 | authenticationType | SAP HANA データベースへの接続に使用される認証の種類。<br/>使用できる値は、以下のとおりです。**Basic** および **Windows** | はい |
 | userName | SAP サーバーにアクセスできるユーザーの名前。 | はい |
 | password | ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
