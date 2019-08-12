@@ -1,6 +1,6 @@
 ---
-title: Azure Container Registry タスクの外部認証
-description: Azure Container Registry (ACR) タスクで Azure Key Vault に格納されている Docker Hub の資格情報を読み取ることができるようにするには、その ACR タスクで Azure リソースのマネージド ID を有効にします。
+title: Azure Container Registry タスクでの外部認証
+description: Azure Container Registry (ACR) タスクで Azure キー コンテナーに格納されている Docker Hub の資格情報を読み取れるようにするには、そのタスクで Azure リソースのマネージド ID を有効にします。
 services: container-registry
 author: dlepow
 ms.service: container-registry
@@ -14,29 +14,29 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 07/30/2019
 ms.locfileid: "68641544"
 ---
-# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR タスクの Azure マネージド ID を使用した外部認証 
+# <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure マネージド ID を使用した、ACR タスクでの外部認証 
 
-[ACR タスク](container-registry-tasks-overview.md)では、[Azure リソースのマネージド ID を有効にする](container-registry-tasks-authentication-managed-identity.md)ことができます。 その ID をタスクから使用すれば、資格情報を渡したり管理したりしなくても、他の Azure リソースにアクセスすることができます。 
+[ACR タスク](container-registry-tasks-overview.md)では、[Azure リソースのマネージド ID を有効にする](container-registry-tasks-authentication-managed-identity.md)ことができます。 その ID をタスクで使用すれば、資格情報を渡したり管理したりしなくても、他の Azure リソースにアクセスすることができます。 
 
-この記事では、Azure Key Vault に格納されたシークレットにアクセスするタスクのマネージド ID を有効にする方法を説明します。 
+この記事では、Azure キー コンテナーに格納されたシークレットにアクセスするタスクでマネージド ID を有効にする方法を説明します。 
 
 Azure リソースを作成するために、この記事では Azure CLI バージョン 2.0.68 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 ## <a name="scenario-overview"></a>シナリオの概要
 
-この例のタスクでは、Azure Key Vault に格納されている Docker Hub の資格情報を読み取ります。 この資格情報は、Docker Hub のプライベート リポジトリに対する書き込み (プッシュ) アクセス許可を持つ Docker Hub アカウント用です。 資格情報を読み取るために、マネージド ID を使用してタスクを構成し、そこに適切なアクセス許可を割り当てます。 この ID を関連付けるタスクは、イメージを作成し、Docker Hub にサインインして、そのイメージをプライベート リポジトリにプッシュするものです。 
+この例のタスクでは、Azure キー コンテナーに格納されている Docker Hub の資格情報を読み取ります。 この資格情報は、Docker Hub のプライベート リポジトリに対する書き込み (プッシュ) アクセス許可を持つ Docker Hub アカウント用です。 資格情報を読み取るために、マネージド ID を使用してタスクを構成し、それに適切なアクセス許可を割り当てます。 この ID を関連付けるタスクでは、イメージを作成し、Docker Hub にサインインして、そのイメージをプライベート リポジトリにプッシュします。 
 
 この例では、ユーザー割り当てのマネージド ID またはシステム割り当てのマネージド ID を使用する手順について取り上げます。 どちらの ID を選ぶかは、自分が所属する組織のニーズによって異なります。
 
-実際のシナリオでは、企業がビルド プロセスの過程で、Docker Hub のプライベート リポジトリにイメージを発行することが考えられます。 
+実際のシナリオでは、企業がビルド プロセスの一環として、Docker Hub のプライベート リポジトリにイメージを発行することが考えられます。 
 
 ## <a name="prerequisites"></a>前提条件
 
-タスクの実行場所となる Azure Container Registry が必要です。 この記事では、このレジストリの名前を *myregistry* にします。 後のステップで、独自のレジストリ名に置き換えてください。
+タスクの実行場所となる Azure コンテナー レジストリが必要です。 この記事では、このレジストリの名前を *myregistry* にします。 後のステップで、独自のレジストリ名に置き換えてください。
 
 まだ Azure コンテナー レジストリがない場合は、「[クイック スタート: Azure CLI を使用したプライベート コンテナー レジストリの作成](container-registry-get-started-azure-cli.md)」を参照してください。 まだレジストリにイメージをプッシュする必要はありません。
 
-また、Docker Hub のプライベート リポジトリと、そのリポジトリへの書き込みアクセス許可を持った Docker Hub アカウントが必要となります。 この例では、このリポジトリの名前を *hubuser/hubrepo* にします。 
+また、Docker Hub のプライベート リポジトリと、そのリポジトリへの書き込みアクセス許可のある Docker Hub アカウントが必要となります。 この例では、このリポジトリの名前を *hubuser/hubrepo* にします。 
 
 ## <a name="create-a-key-vault-and-store-secrets"></a>キー コンテナーを作成してシークレットを格納する
 
@@ -72,7 +72,7 @@ az keyvault secret set \
 
 ## <a name="define-task-steps-in-yaml-file"></a>タスクのステップを YAML ファイルで定義する
 
-このタスク例のステップは、[YAML ファイル](container-registry-tasks-reference-yaml.md)で定義されています。 ローカル作業ディレクトリに `dockerhubtask.yaml` という名前のファイルを作成し､次の内容を貼り付けます。 ファイル内のキー コンテナーの名前を、実際のキー コンテナーの名前に置き換えてください。
+このタスク例のステップは、[YAML ファイル](container-registry-tasks-reference-yaml.md)で定義されています。 ローカル作業ディレクトリに `dockerhubtask.yaml` という名前のファイルを作成し、次の内容を貼り付けます。 ファイル内のキー コンテナーの名前を、実際のキー コンテナーの名前に置き換えてください。
 
 ```yml
 version: v1.0.0
@@ -96,7 +96,7 @@ steps:
 
 * Docker Hub に対して認証を行うためのシークレットの資格情報を管理します。
 * シークレットを `docker login` コマンドに渡して Docker Hub に対して認証を行います。
-* [Azure-Samples/acr-tasks](https://github.com/Azure-Samples/acr-tasks.git) リポジトリのサンプル Dockerfile を使用してイメージを作成します。
+* [Azure-Samples/acr-tasks](https://github.com/Azure-Samples/acr-tasks.git) リポジトリ内のサンプル Dockerfile を使用してイメージを作成します。
 * プライベート Docker Hub リポジトリにイメージをプッシュします。
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>オプション 1:ユーザー割り当て ID を使用してタスクを作成する
@@ -206,8 +206,8 @@ Run ID: cf24 was successful after 15s
 
 ## <a name="next-steps"></a>次の手順
 
-* [ACR タスクにおけるマネージド ID の有効化](container-registry-tasks-authentication-managed-identity.md)について学習します
-* [ACR タスクの YAML 参照](container-registry-tasks-reference-yaml.md)に関するページを参照してください。
+* [ACR タスクにおけるマネージド ID の有効化](container-registry-tasks-authentication-managed-identity.md)について学習する。
+* [ACR タスクの YAML 参照](container-registry-tasks-reference-yaml.md)に関するページを参照する
 
 
 <!-- LINKS - Internal -->

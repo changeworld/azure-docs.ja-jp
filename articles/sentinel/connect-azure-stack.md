@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 仮想マシンを Azure Sentinel にオンボードする | Microsoft Docs
-description: この記事では、Azure Monitor, Update, and Configuration Management 仮想マシン拡張機能を Azure Stack 仮想マシンにプロビジョニングし、Sentinel での監視を開始する方法を示します。
+description: この記事では、Azure Monitor, Update, and Configuration Management 仮想マシン拡張機能を Azure Stack 仮想マシン上にプロビジョニングし、Sentinel を使用したそれらの監視を開始する方法を示します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -26,7 +26,7 @@ ms.locfileid: "68600502"
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 
-Azure Sentinel では、Azure で稼動する VM と Azure Stack で稼動する VM を 1 か所で監視できます。 Azure Stack マシンを Azure Sentinel にオンボードするにはまず、既存の Azure Stack 仮想マシンに仮想マシン拡張機能を追加する必要があります。 
+Azure Sentinel では、Azure 上で稼動する VM と Azure Stack で稼動する VM を 1 か所で監視できます。 Azure Stack マシンを Azure Sentinel にオンボードするにはまず、既存の Azure Stack 仮想マシンに仮想マシン拡張機能を追加する必要があります。 
 
 Azure Stack マシンを接続したら、データに基づく分析情報を可視化したダッシュボードをギャラリーから選択します。 これらのダッシュボードは、お客様のニーズに合わせて簡単にカスタマイズすることができます。
 
@@ -37,7 +37,7 @@ Azure Stack マシンを接続したら、データに基づく分析情報を�
 Azure Stack で動作している仮想マシンに **Azure Monitor, Update and Configuration Management** 仮想マシン拡張機能を追加します。 
 
 1. 新しいブラウザー タブで、[Azure Stack ポータル](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal)にログインします。
-2. **[仮想マシン]** ページに移動し、Azure Sentinel で保護したい仮想マシンを選択します。 Azure Stack で仮想マシンを作成する方法については、「[Azure Stack ポータルを使用して Windows サーバー VM を作成する](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal)」または「[Azure Stack ポータルを使用して Linux サーバー VM を作成する](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)」を参照してください。
+2. **[仮想マシン]** ページに移動し、Azure Sentinel を使用して保護したい仮想マシンを選択します。 Azure Stack で仮想マシンを作成する方法については、「[Azure Stack ポータルを使用して Windows サーバー VM を作成する](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal)」または「[Azure Stack ポータルを使用して Linux サーバー VM を作成する](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)」を参照してください。
 3. **[拡張機能]** を選択します。 この仮想マシンにインストールされている仮想マシン拡張機能の一覧が表示されます。
 4. **[Add (追加)]** タブをクリックします。 **[新しいリソース]** メニュー ブレードが開かれ、使用可能な仮想マシン拡張機能の一覧が表示されます。 
 5. **Azure Monitor, Update, and Configuration Management** 拡張機能を選択し、 **[作成]** をクリックします。 **[拡張機能のインストール]** 構成ウィンドウが開きます。
@@ -45,7 +45,7 @@ Azure Stack で動作している仮想マシンに **Azure Monitor, Update and 
    ![Azure Monitor, Update, and Configuration Management の設定](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
 
    >[!NOTE]
-   > **Azure Monitor, Update and Configuration Management** 拡張機能が Marketplace に一覧表示されていない場合は、該当の Azure Stack オペレーターに連絡して使用可能にしてください。
+   > **Azure Monitor, Update and Configuration Management** 拡張機能が Marketplace に一覧表示されていない場合は、担当の Azure Stack オペレーターに連絡して使用可能にしてください。
 
 6. Azure Sentinel メニューで、 **[ワークスペースの設定]** 、 **[Advanced]\(詳細\)** の順に選択し、 **[ワークスペース ID]** と **[ワークスペース キー (主キー)]** をコピーします。 
 1. Azure Stack の **[拡張機能のインストール]** ウィンドウで、指定されたフィールドにそれらを貼り付け、 **[OK]** をクリックします。
