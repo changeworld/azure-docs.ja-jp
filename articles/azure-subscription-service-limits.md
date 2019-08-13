@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 1c30d9e70facaf9ab47bd33e5ca1fc1d35c6c979
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405856"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698268"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
@@ -48,6 +48,7 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [Automation](#automation-limits)
 * [Azure Cache for Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
+* [Azure Cognitive Services](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
@@ -186,7 +187,7 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 ストレージ アカウントの制限について詳しくは、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage/common/storage-scalability-targets.md)」をご覧ください。
 
-#### <a name="storage-resource-provider-limits"></a>ストレージ リソース プロバイダーの制限 
+#### <a name="storage-resource-provider-limits"></a>ストレージ リソース プロバイダーの制限
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -225,6 +226,9 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 ### <a name="azure-cloud-services-limits"></a>Azure Cloud Services の制限
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
+
+### <a name="azure-cognitive-services-limits"></a>Azure Cognitive Services の制限
+[!INCLUDE [azure-cloud-services-limits](../includes/azure-cognitive-services-limits.md)]
 
 ### <a name="app-service-limits"></a>App Service の制限
 次の App Service の制限には、Web Apps、Mobile Apps、および API Apps の制限が含まれます。

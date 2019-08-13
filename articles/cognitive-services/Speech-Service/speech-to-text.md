@@ -1,7 +1,7 @@
 ---
-title: Azure Speech Services による音声変換
+title: 音声テキスト変換 - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Azure Speech Services の音声変換 (音声テキスト変換とも呼ばれる) を使用すると、音声ストリームをリアルタイムでテキストに変換できます。アプリケーション、ツール、デバイスでは、そのテキストを利用または表示したり、コマンド入力としてアクションを実行したりできます。 このサービスは、Microsoft が Cortana や Office 製品で使用するのと同じ認識テクノロジが採用されており、翻訳やテキスト読み上げの機能とシームレスに連携します。
+description: Speech Service の音声変換機能 (音声テキスト変換とも呼ばれる) を使用すると、音声ストリームをリアルタイムでテキストに変換できます。アプリケーション、ツール、デバイスでは、そのテキストを利用または表示したり、コマンド入力としてアクションを実行したりできます。 このサービスは、Microsoft が Cortana や Office 製品で使用するのと同じ認識テクノロジが採用されており、翻訳やテキスト読み上げの機能とシームレスに連携します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cb9362c4d58deb5472c8d5adab39cdd1cc4e2600
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333570"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558861"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
 

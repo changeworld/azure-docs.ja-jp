@@ -3,16 +3,17 @@ title: Azure Container Instances で開始コマンド ラインを使用する
 description: Azure コンテナー インスタンスのデプロイ時にコンテナー イメージに構成されているエントリポイントをオーバーライドする
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: da94a4c79694f511d41e5c8dda8c786fc7049726
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40d946db48a65452d2da529098c07d0d0c60d472
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64569643"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619666"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>コンテナー インスタンスにコマンド ラインを設定して既定のコマンド ライン操作をオーバーライドする
 
@@ -22,7 +23,7 @@ ms.locfileid: "64569643"
 
 ## <a name="command-line-guidelines"></a>コマンドラインのガイドライン
 
-* 既定では、このコマンド ラインでは、コンテナーで*シェルを使用せずに開始する単一のプロセス*を指定します。 たとえば、コマンド ラインにより Python スクリプトまたは実行ファイルを実行できます。 
+* 既定では、このコマンド ラインでは、コンテナーで*シェルを使用せずに開始する単一のプロセス*を指定します。 たとえば、コマンド ラインにより Python スクリプトまたは実行ファイルを実行できます。 このプロセスでは、追加のパラメーターまたは引数を指定できます。
 
 * 複数のコマンドを実行するには、コンテナーのオペレーティング システムでサポートされるシェル環境を設定することで、コマンド ラインを開始します。 次に例を示します。
 

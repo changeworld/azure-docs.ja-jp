@@ -1,6 +1,6 @@
 ---
-title: ユーザーの発話をレビューする
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: ユーザーの発話をレビューする - LUIS
+titleSuffix: Azure Cognitive Services
 description: アクティブ ラーニングによって、エンドポイント発話の意図とエンティティが正しいことをレビューします。 LUIS が確証を持てないエンドポイント発話が LUIS によって選択されます。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2af11d7776a29288801e5db049262481ae27c102
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6b89b315c4cdb1438fc8256cfc01793b3c0f920
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813338"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619749"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>エンドポイント発話のレビューによるアクティブ ラーニング実現の概念
 アクティブ ラーニングは、3 つの予測精度の改善戦略の 1 つで、最も簡単に実装できます。 アクティブ ラーニングによって、エンドポイント発話の意図とエンティティが正しいことをレビューします。 LUIS が確証を持てないエンドポイント発話が LUIS によって選択されます。

@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7095992253fbbe5aafce1eab889965250f5d59a8
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 8216aee1c27fd5bcb722648aa6380044e1431452
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551393"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662476"
 ---
-# <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Azure Security Center での OS セキュリティ構成のカスタマイズ (プレビュー)
+# <a name="customize-os-security-configurations-in-azure-security-center-retired"></a>Azure Security Center での OS セキュリティ構成のカスタマイズ (廃止)
 
-このチュートリアルでは、Azure Security Center で OS セキュリティ構成の評価をカスタマイズする方法について説明します。
+このチュートリアルでは、Azure Security Center で OS セキュリティ構成の評価をカスタマイズする (プレビュー) 方法について説明します。
 
 > [!NOTE]
-> OS セキュリティ構成をカスタマイズする機能は、2019 年 7 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_securityconfigurations)」を参照してください。
+> OS セキュリティ構成をカスタマイズする機能 (プレビュー機能) は、2019 年 7 月 31 日に廃止されました。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_securityconfigurations)」を参照してください。
 
 ## <a name="what-are-os-security-configurations"></a>OS セキュリティ構成とは
 

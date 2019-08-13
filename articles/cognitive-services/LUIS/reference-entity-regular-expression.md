@@ -1,6 +1,6 @@
 ---
-title: 正規表現エンティティ型
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 正規表現エンティティ型 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 生の発話テキストには正規表現をお勧めします。 大文字小文字とカルチャのバリアントは無視されます。  正規表現の照合は、スペルチェックによる変更後に、トークン レベルではなく文字レベルで適用されます。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: dfffea26ccd8dfcecea2c6a2e07234f3ab27f72b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 82cce359f2161800c53ccce7cdb0342bba759d43
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480139"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559943"
 ---
 # <a name="regular-expression-entity"></a>正規表現エンティティ 
 

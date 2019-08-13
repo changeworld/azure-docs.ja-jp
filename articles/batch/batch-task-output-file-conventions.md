@@ -16,10 +16,10 @@ ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8be42399d9919d0ed410f1503353568c86a75f5a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68322886"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持
@@ -135,7 +135,7 @@ await jobOutputStorage.SaveAsync(JobOutputKind.JobPreview, "mymovie_preview.mp4"
 
 ### <a name="store-task-logs"></a>タスクのログの格納
 
-タスクまたはジョブの完了時に、永続的なストレージでファイルを保持するだけでなく、タスクの実行中に更新されたファイルの保持も必要になる可能性があります。たとえば、ログ ファイル、`stdout.txt`、`stderr.txt` などです。 Azure Batch ファイル規則ライブラリでは、この目的で使用する [TaskOutputStorage][net_taskoutputstorage].[SaveTrackedAsync][net_savetrackedasync] メソッドを提供しています。 [SaveTrackedAsync][net_savetrackedasync] では、ノード上のファイルの更新を (指定した間隔で) 追跡し、それを Azure Storage で保持することができます。
+タスクまたはジョブの完了時に、永続的なストレージでファイルを保持するだけでなく、タスクの実行中に更新されたファイルの保持も必要になる可能性があります。たとえば、ログ ファイル、`stdout.txt`、`stderr.txt` などです。 Azure Batch ファイル規則ライブラリでは、この目的で使用する [TaskOutputStorage][net_taskoutputstorage].[SaveTrackedAsync][net_savetrackedasync] メソッドを提供しています。 [SaveTrackedAsync][net_savetrackedasync] では、ノード上のファイルの更新を (指定した間隔で) 追跡し、それを Azure Storage で保持できます。
 
 次のコード スニペットでは、タスクの実行中、15 秒ごとに Azure Storage で `stdout.txt` を更新するために [SaveTrackedAsync][net_savetrackedasync] を使用しています。
 
@@ -198,35 +198,35 @@ Azure Portal では、[Batch ファイル規則の標準](https://github.com/Azu
 ポータルで出力ファイルの表示を有効にするには、次の要件を満たす必要があります。
 
 1. Azure ストレージ アカウントを Batch アカウントにリンクします。
-1. 出力を保持する際は、ストレージ コンテナーとファイルの事前定義された名前付け規則に準拠します。 これらの規則の定義は、ファイル規則ライブラリの [README][github_file_conventions_readme] に記載されています。. If you use the [Azure Batch File Conventions][nuget_package] ライブラリを使用して出力を保持する場合、ファイルはファイル規則の標準に従って保持されます。 Azure Portal でタスク出力ファイルとログを表示するには、目的の出力を行ったタスクに移動し、 **[保存された出力ファイル]** または **[保存されたログ]** をクリックします。
+1. 出力を保持する際は、ストレージ コンテナーとファイルの事前定義された名前付け規則に準拠します。 これらの規則の定義は、ファイル規則ライブラリの [README][github_file_conventions_readme] に記載されています。 出力の保持に [Azure Batch ファイル規則][nuget_package]ライブラリを使用した場合、ファイルはファイル規則の標準に従って保持されます。
 
-次の図は、IDが "007" のタスクの **保存された出力ファイル** を示しています。 ![Task outputs blade in the Azure portal][2]
+Azure Portal でタスク出力ファイルとログを表示するには、目的の出力を行ったタスクに移動し、 **[保存された出力ファイル]** または **[保存されたログ]** をクリックします。 次の図は、IDが "007" のタスクの **保存された出力ファイル** を示しています。
 
-サンプル コード
+![Task outputs blade in the Azure portal][2]
 
-## <a name="code-sample"></a>[PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub にある Azure Batch コード サンプルの 1 つです。sample project is one of the [Azure Batch code samples][github_samples]
+## <a name="code-sample"></a>サンプル コード
 
-この Visual Studio ソリューションは、Azure Batch ファイル規則ライブラリを使用して永続的なストレージでタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。 **Visual Studio 2019** でプロジェクトを開きます。
+[PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio ソリューションは、Azure Batch ファイル規則ライブラリを使用して永続的なストレージでタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
 
-1. Microsoft.Azure.Batch.Samples.Common プロジェクトの **AccountSettings.settings** に、Batch と Storage の**アカウント資格情報**を追加します。
-2. **ビルド** します (ただし実行はしないでください)。
-3. NuGet パッケージの復元を求められた場合は、復元します。 Azure ポータルを使用して、 [アプリケーション パッケージ](batch-application-packages.md) を **PersistOutputsTask**としてアップロードします。
-4. `PersistOutputsTask.exe` とそれに依存するアセンブリを .zip パッケージに含め、アプリケーション ID を "PersistOutputsTask"、アプリケーション パッケージのバージョンを "1.0" に設定します。 **PersistOutputs** プロジェクトを**開始** (実行) します。
-5. サンプルの実行に使用する保持テクノロジを選択するよう求められた場合は、「**1**」を入力し、ファイル規則ライブラリをタスク出力の保持に使用してサンプルを実行します。
-6. 次の手順 
+1. **Visual Studio 2019** でプロジェクトを開きます。
+2. Microsoft.Azure.Batch.Samples.Common プロジェクトの **AccountSettings.settings** に、Batch と Storage の**アカウント資格情報**を追加します。
+3. **ビルド** します (ただし実行はしないでください)。 NuGet パッケージの復元を求められた場合は、復元します。
+4. Azure ポータルを使用して、 [アプリケーション パッケージ](batch-application-packages.md) を **PersistOutputsTask**としてアップロードします。 `PersistOutputsTask.exe` とそれに依存するアセンブリを .zip パッケージに含め、アプリケーション ID を "PersistOutputsTask"、アプリケーション パッケージのバージョンを "1.0" に設定します。
+5. **PersistOutputs** プロジェクトを**開始** (実行) します。
+6. サンプルの実行に使用する保持テクノロジを選択するよう求められた場合は、「**1**」を入力し、ファイル規則ライブラリをタスク出力の保持に使用してサンプルを実行します。 
 
-## <a name="next-steps"></a>.NET 用 Batch ファイル規則ライブラリの入手
+## <a name="next-steps"></a>次の手順
 
-### <a name="get-the-batch-file-conventions-library-for-net"></a>.Net 用 Batch ファイル規則ライブラリは、[NuGet][nuget_package] にあります。このライブラリでは、新しいメソッドによって . The library extends the [CloudJob][net_cloudjob] および [CloudTask][net_cloudtask] クラスが拡張されています。
+### <a name="get-the-batch-file-conventions-library-for-net"></a>.NET 用 Batch ファイル規則ライブラリの入手
 
-ファイル規則ライブラリについての[リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files)も参照してください。 ファイル規則ライブラリの[ソース コード][github_file_conventions]は、GitHub の Microsoft Azure SDK for .NET リポジトリ内にあります。 出力データを保持するその他のアプローチ
+.NET 用 Batch ファイル規則ライブラリは [NuGet][nuget_package] にあります。 このライブラリでは、新しいメソッドによって [CloudJob][net_cloudjob] クラスと [CloudTask][net_cloudtask] クラスが拡張されています。 ファイル規則ライブラリについての[リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files)も参照してください。
 
-タスクおよびジョブのデータ保持の概要については、「[Azure Storage への完了したジョブおよびタスクの結果の保持](batch-task-output.md)」を参照してください。 
+ファイル規則ライブラリの[ソース コード][github_file_conventions]は、GitHub の Microsoft Azure SDK for .NET リポジトリ内にあります。 
 
-### <a name="explore-other-approaches-for-persisting-output-data"></a>Batch サービス API を使用して出力データを保持する方法については、「[Persist task data to Azure Storage with the Batch service API](batch-task-output-files.md)」(Batch サービス API を使用した Azure Storage へのタスク データの保持) を参照してください。
+### <a name="explore-other-approaches-for-persisting-output-data"></a>出力データを保持するその他のアプローチ
 
-- [1]: ./media/batch-task-output/task-output-01.png "Saved output files and Saved logs selectors in portal"
-- [2]: ./media/batch-task-output/task-output-02.png "Task outputs blade in the Azure portal"
+- タスクおよびジョブのデータ保持の概要については、「[Azure Storage への完了したジョブおよびタスクの結果の保持](batch-task-output.md)」を参照してください。
+- Batch サービス API を使用して出力データを保持する方法については、「[Persist task data to Azure Storage with the Batch service API](batch-task-output-files.md)」(Batch サービス API を使用した Azure Storage へのタスク データの保持) を参照してください。
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Batch/FileConventions
@@ -252,5 +252,5 @@ Azure Portal では、[Batch ファイル規則の標準](https://github.com/Azu
 [portal]: https://portal.azure.com
 [storage_explorer]: https://storageexplorer.com/
 
-<bpt id="p1">[</bpt><ept id="p1">1]: ./media/batch-task-output/task-output-01.png</ept><bpt id="p2"> "</bpt>Saved output files and Saved logs selectors in portal<ept id="p2">"</ept>
-<bpt id="p1">[</bpt><ept id="p1">2]: ./media/batch-task-output/task-output-02.png</ept><bpt id="p2"> "</bpt>Task outputs blade in the Azure portal<ept id="p2">"</ept>
+[1]: ./media/batch-task-output/task-output-01.png "Saved output files and Saved logs selectors in portal"
+[2]: ./media/batch-task-output/task-output-02.png "Task outputs blade in the Azure portal"

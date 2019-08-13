@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 36201bad64e5516375afe1ec9ce141c3fd311d48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0740beb3b1ffc200c36ca4b5c15b25017821587e
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574358"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662337"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>セキュリティ アラート マップと脅威インテリジェンス
 この記事は、Azure Security Center のセキュリティ アラート マップとセキュリティ イベント ベースの脅威インテリジェンス マップを使用して、セキュリティ関連の問題を解決するのに役立ちます。
 
 > [!NOTE]
-> セキュリティ "*イベント*" マップ ボタンは 2019 年 7 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_securityeventsmap)」を参照してください。
+> セキュリティ "*イベント*" マップ ボタンは 2019 年 7 月 31 日に廃止されました。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_securityeventsmap)」を参照してください。
 
 
 ## <a name="how-the-security-alerts-map-works"></a>セキュリティ アラート マップのしくみ
@@ -55,51 +55,6 @@ Security Center のセキュリティ アラート マップを使用して、�
 マップ上のアラートは、発生元として検出された場所の地理的な位置に基づいて表示され、重大度によって色分けされます。 
     ![脅威インテリジェンス情報](./media/security-center-threat-intel/security-center-alert-map.png)
 
-## <a name="viewing-the-event-based-threat-intelligence-dashboard"></a>イベント ベースの脅威インテリジェンス ダッシュボードを表示する
-基本的なセキュリティ イベントに基づいて脅威インテリジェンス マップを表示するには、この手順に従います。 このマップには、既知のボットネットの IP アドレスなど、危険と見なされる IP アドレスを含むイベントのみが表示されます。
-
-1. **[Security Center]** ダッシュボードを開きます。
-
-1. 左側のウィンドウの **[脅威の防止]** で、 **[セキュリティ アラート マップ]** を選択します。 マップが開きます。
-2. 右上隅の **[セキュリティ イベント マップに移動]** をクリックします。
-3. ダッシュボードを表示するワークスペースを選択します。
-4. マップの上部で、 **[View classic threat intelligence]\(従来の脅威インテリジェンスを表示する)** を選択します。 **[脅威インテリジェンス]** ダッシュボードが開きます。
-
-   > [!NOTE]
-   > 右端の列に **[アップグレード プラン]** と表示されている場合、このワークスペースでは無料のサブスクリプションが使用されています。 この機能を使用するには、Standard にアップグレードしてください。 右端の列に **[REQUIRES UPDATE]\(更新が必要\)** と表示されている場合は、この機能を使用するために [Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)を更新してください。 料金プランの詳細については、「Azure Security Center の価格」を参照してください。
-   >
-5. 調査するワークスペースが複数ある場合は、 **[悪意のある IP]** 列に従って調査に優先順位を付けます。 ここには、このワークスペースに含まれている悪意のある IP の現在の数が表示されます。 使用するワークスペースを選択すると、 **[脅威インテリジェンス]** ダッシュボードが表示されます。
-
-    ![脅威インテリジェンス情報](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
-
-6. このダッシュボードは、4 つのタイルに分かれています。
-
-    a.  **[脅威の種類]** 。 選択したワークスペースで検出された脅威の種類が示されます。
-
-    b.  **[発信元の国]** 。 ソースの場所に基づいてトラフィックの量を集計します。
-
-    c.  **[脅威の場所]** 。 使用中の環境と通信する、世界の現在の場所を特定するために役立ちます。 表示されているマップでは、オレンジ色 (受信) と赤 (送信) の矢印でトラフィックの方向を示します。 これらの矢印のいずれかを選択すると、脅威の種類とトラフィックの方向が表示されます。
-
-    d.  **[脅威の詳細]** 。 マップで選択した脅威に関する詳細が表示されます。
-
-選択するオプション タイルにかかわらず、表示されるダッシュボードはログ検索クエリに基づいています。 唯一の違いは、クエリの種類と結果です。
-
-### <a name="threat-types"></a>脅威の種類
-**[脅威の種類]** タイルを選択すると、 **[ログ検索]** ダッシュボードが開きます。 左側にフィルター オプション、右側にクエリ結果が表示されます。
-
-![ログ検索](./media/security-center-threat-intel/security-center-threat-intel-fig3.png)
-
-クエリ結果には、脅威が名前ごとに表示されます。 左側のウィンドウを使用して、フィルター処理する属性を選択できます。 たとえば、マシンに現在接続されている脅威のみを表示するには、 **[SESSIONSTATE]\(セッションの状態\)** で **[接続済み]**  >  **[適用]** の順に選択します。
-
-![セッションの状態](./media/security-center-threat-intel/security-center-threat-intel-fig4.png)
-
-Azure VM の場合、エージェントを通じて送信されるネットワーク データだけが **[脅威インテリジェンス]** ダッシュボードに表示されます。 次のデータ型は、脅威インテリジェンスでも使用されます。
-
-- CEF データ (種類 = CommonSecurityLog)
-- WireData (種類 = WireData)
-- IIS ログ (種類 = W3CIISLog)
-- Windows ファイアウォール (種類 = WindowsFirewall)
-- DNS イベント (種類 = DnsEvents)
 
 
 ## <a name="see-also"></a>関連項目

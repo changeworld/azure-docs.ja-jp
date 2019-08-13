@@ -1,6 +1,6 @@
 ---
-title: 予測スコア
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 予測スコア - LUIS
+titleSuffix: Azure Cognitive Services
 description: 予測スコアは、LUIS API サービスがユーザーの発話に基づいて予測結果に対して持つ信頼度を示します。
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 383ce4c4248f7e21f745f503c74a29cb613983e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 34ec5588a510574f4ea9f01bd23c6f6487e288da
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813993"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638364"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>意図とエンティティの予測精度を示す予測スコア
 
@@ -69,7 +69,7 @@ ms.locfileid: "60813993"
 
 ## <a name="punctuation"></a>句読点
 
-句読点は、LUIS 内の個別のトークンです。 末尾にピリオドを含む発話と末尾にピリオドを含まない発話は 2 つの個別の発話であり、2 つの異なる予測が得られる可能性があります。 モデルが[発話の例](luis-concept-utterance.md) (句読点がある場合とない場合) か、または[パターン](luis-concept-patterns.md) (特殊な構文 `I am applying for the {Job} position[.]` を使用して句読点を簡単に無視できる場合) のどちらかで句読点を処理することを確認してください。
+句読点を使用する方法または無視する方法の[詳細を確認](luis-concept-utterance.md#punctuation-marks)してください。 
 
 ## <a name="next-steps"></a>次の手順
 

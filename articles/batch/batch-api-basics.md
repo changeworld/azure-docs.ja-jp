@@ -16,10 +16,10 @@ ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: bead5f0bec6d57c0f4aaddc6537e00c466d987f1
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323902"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
@@ -234,7 +234,7 @@ Batch でプール内のすべてのノードにタスクを均等に配分す�
     Batch サービスは、タスクの " *ない* " ジョブを考慮して、そのすべてのタスクを完了させます。 したがって、このオプションは、 [ジョブ マネージャー タスク](#job-manager-task)で最も一般的に使用されます。 ジョブ マネージャーを使用せずにジョブの自動終了を使用するには、最初に新しいジョブの **onAllTasksComplete** プロパティを *noaction* に設定し、ジョブにタスクを追加し終えた後でのみ *terminatejob* に設定する必要があります。
 
 ### <a name="job-priority"></a>ジョブの優先順位
-Batch で作成するジョブには、優先順位を割り当てることができます。 Batch サービスは、ジョブの優先順位値を使用して、アカウント内のジョブ スケジューリングの順序を決定します ([スケジュールされたジョブ](#scheduled-jobs)と混同しないでください)。 優先順位として、-1000 ～ 1000 の値を使用します。-1000 は最も低い優先順位を示し、1000 は最も高い優先順位を示します。 ジョブの優先順位を更新するには、[ジョブのプロパティの更新][rest_update_job] 操作を呼び出すか、operation (Batch REST), or modify the [CloudJob.Priority][net_cloudjob_priority] プロパティ (Batch .NET) を変更します。
+Batch で作成するジョブには、優先順位を割り当てることができます。 Batch サービスは、ジョブの優先順位値を使用して、アカウント内のジョブ スケジューリングの順序を決定します ([スケジュールされたジョブ](#scheduled-jobs)と混同しないでください)。 優先順位として、-1000 ～ 1000 の値を使用します。-1000 は最も低い優先順位を示し、1000 は最も高い優先順位を示します。 ジョブの優先順位を更新するには、[ジョブのプロパティの更新][rest_update_job]操作 (Batch REST) を呼び出すか、[CloudJob.Priority][net_cloudjob_priority] プロパティ (Batch .NET) を変更します。
 
 同じアカウント内で、優先順位の高いジョブは優先順位の低いジョブよりも優先的にスケジュールされます。 あるアカウントの優先順位値が高いジョブが、異なるアカウントの優先順位値が低い別のジョブよりも優先的にスケジュールされることはありません。
 
@@ -335,14 +335,14 @@ Batch .NET ライブラリを使用して MPI ジョブを Batch で実行する
 * *taskC* は *taskA* と *taskB* の両方に依存。
 * *taskD* が、実行されるまで特定の範囲のタスク (タスク *1* ～ *10* など) に依存する。
 
-この機能の詳細については、[Azure Batch におけるタスクの依存関係](batch-task-dependencies.md)に関するページと、GitHub リポジトリ azure-batch-samples の [TaskDependencies コード サンプル][github_sample_taskdeps]code sample in the [azure-batch-samples][github_samples] を参照してください。
+この機能の詳細については、[Azure Batch におけるタスクの依存関係](batch-task-dependencies.md)に関するページと、[azure-batch-samples][github_samples] GitHub リポジトリの [TaskDependencies][github_sample_taskdeps] コード サンプルを参照してください。
 
 ## <a name="environment-settings-for-tasks"></a>タスクの環境設定
 Batch サービスによって実行されるすべてのタスクは、コンピューティング ノード上に設定されている環境変数を利用することができます。 これには、Batch サービスによって定義された ([サービス定義][msdn_env_vars]) 環境変数のほか、ユーザーがタスクに対して定義するカスタム環境変数が含まれます。 これらの環境変数は、タスクによって実行されるアプリケーションやスクリプトから実行中に利用することができます。
 
-カスタム環境変数は、タスクまたはジョブの *環境設定* プロパティを設定することで、タスク レベルまたはジョブ レベルで設定できます。 例については、[ジョブにタスクを追加する][rest_add_task]操作 (Batch REST API) に関するページ、または Batch .NET の operation (Batch REST API), or the [CloudTask.EnvironmentSettings][net_cloudtask_env] プロパティと [CloudJob.CommonEnvironmentSettings][net_job_env] プロパティを参照してください。
+カスタム環境変数は、タスクまたはジョブの *環境設定* プロパティを設定することで、タスク レベルまたはジョブ レベルで設定できます。 その例については、[ジョブへのタスクの追加][rest_add_task]操作 (Batch REST API) に関するページ、または [CloudTask.EnvironmentSettings][net_cloudtask_env] プロパティと [CloudJob.CommonEnvironmentSettings][net_job_env] プロパティ (Batch .NET) に関するページを参照してください。
 
-クライアント アプリケーションまたはサービスからタスクのサービス定義またはカスタムの環境変数を取得するには、[タスクに関する情報の取得操作 (Batch REST) を使用するか、][rest_get_task_info]operation (Batch REST) or by accessing the [CloudTask.EnvironmentSettings][net_cloudtask_env] プロパティ (Batch .NET) にアクセスします。 コンピューティング ノードで実行されるプロセスは、たとえば `%VARIABLE_NAME%` (Windows) や `$VARIABLE_NAME` (Linux) という一般的な構文を使用して、ノード上のこうしたさまざまな環境変数を利用することができます。
+クライアント アプリケーションまたはサービスからタスクのサービス定義またはカスタムの環境変数を取得するには、[タスクに関する情報の取得][rest_get_task_info]操作 (Batch REST) を使用するか、[CloudTask.EnvironmentSettings][net_cloudtask_env] プロパティ (Batch .NET) にアクセスします。 コンピューティング ノードで実行されるプロセスは、たとえば `%VARIABLE_NAME%` (Windows) や `$VARIABLE_NAME` (Linux) という一般的な構文を使用して、ノード上のこうしたさまざまな環境変数を利用することができます。
 
 サービス定義の環境変数をすべて網羅した一覧を、[コンピューティング ノードの環境変数][msdn_env_vars]に関するページで確認できます。
 
@@ -425,7 +425,7 @@ VNet で Batch プールを設定する方法の詳細については、[仮想�
 ## <a name="security-with-certificates"></a>証明書によるセキュリティ
 証明書を使用する必要があるのは、通常、[Azure Storage アカウント][azure_storage]のキーなど、タスクの機密情報を暗号化または復号化するときです。 このようなときは、ノードに証明書をインストールすることで対応できます。 暗号化された機密情報は、コマンド ライン パラメーターを通じてタスクに渡されるか、タスク リソースの 1 つに埋め込まれます。インストールされた証明書を使用して、機密情報を復号化できます。
 
-[証明書の追加][rest_add_cert]操作 (Batch REST) または operation (Batch REST) or [CertificateOperations.CreateCertificate][net_create_cert] メソッド (Batch .NET) を使用して、証明書を Batch アカウントに追加します。 次に、新規または既存のプールに証明書を関連付けることができます。 証明書がプールに関連付けられると、Batch サービスは、プール内の各ノードに証明書をインストールします。 Batch サービスは、ノードの起動時に、いずれかのタスク (開始タスク、ジョブ マネージャー タスクも含まれます) を起動する前に、適切な証明書をインストールします。
+[証明書の追加][rest_add_cert]操作 (Batch REST) または [CertificateOperations.CreateCertificate][net_create_cert] メソッド (Batch .NET) を使用して、Batch アカウントに証明書を追加できます。 次に、新規または既存のプールに証明書を関連付けることができます。 証明書がプールに関連付けられると、Batch サービスは、プール内の各ノードに証明書をインストールします。 Batch サービスは、ノードの起動時に、いずれかのタスク (開始タスク、ジョブ マネージャー タスクも含まれます) を起動する前に、適切な証明書をインストールします。
 
 証明書を " *既存* " のプールに追加した場合は、そのコンピューティング ノードを再起動して、証明書をノードに適用する必要があります。
 
@@ -462,7 +462,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 ### <a name="debugging-application-failures"></a>アプリケーション エラーのデバッグ
 * `stderr` と `stdout`
 
-    アプリケーションの実行中に、問題のトラブルシューティングに利用できる診断情報が生成される場合があります。 前述の「[ファイルとディレクトリ](#files-and-directories)」セクションで説明したように、Batch サービスは、コンピューティング ノードのタスク ディレクトリにある `stdout.txt` ファイルと `stderr.txt` ファイルに標準出力と標準エラー出力を書き込みます。 これらのファイルは Azure Portal またはいずれかの Batch SDK を使用してダウンロードすることができます。 たとえば、Batch .NET ライブラリの [ComputeNode.GetNodeFile][net_getfile_node] や and [CloudTask.GetNodeFile][net_getfile_task] を使用することで、これらのファイルを取得してトラブルシューティングに利用できます。
+    アプリケーションの実行中に、問題のトラブルシューティングに利用できる診断情報が生成される場合があります。 前述の「[ファイルとディレクトリ](#files-and-directories)」セクションで説明したように、Batch サービスは、コンピューティング ノードのタスク ディレクトリにある `stdout.txt` ファイルと `stderr.txt` ファイルに標準出力と標準エラー出力を書き込みます。 これらのファイルは Azure Portal またはいずれかの Batch SDK を使用してダウンロードすることができます。 たとえば、Batch .NET ライブラリの [ComputeNode.GetNodeFile][net_getfile_node] や [CloudTask.GetNodeFile][net_getfile_task] でこれらのファイルを取得して、トラブルシューティングに利用できます。
 
 * **タスクの終了コード**
 
@@ -477,7 +477,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。 Azure Portal を使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。 このような操作は、Batch API ([Batch .NET][net_rdpfile] や [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) など) で実行することもできます。
 
 > [!IMPORTANT]
-> RDP や SSH を通じてノードに接続するには、まず、ノード上にユーザーを作成する必要があります。 これを行うには、Azure Portal から、Batch REST API を使用して[ユーザー アカウントをノードに追加][rest_create_user]し、Batch .NET のby using the Batch REST API, call the [ComputeNode.CreateComputeNodeUser][net_create_user]メソッドを呼び出すか、Batch Python モジュールの [add_user][py_add_user] メソッドを呼び出してください。
+> RDP や SSH を通じてノードに接続するには、まず、ノード上にユーザーを作成する必要があります。 Azure portal から Batch REST API を使用して[ユーザー アカウントをノードに追加][rest_create_user]し、Batch .NET の [ComputeNode.CreateComputeNodeUser][net_create_user] メソッドを呼び出すか、Batch Python モジュールの [add_user][py_add_user] メソッドを呼び出してください。
 >
 >
 
@@ -497,7 +497,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
     場合によっては、プールからノードを完全に削除する必要があります。
 * **ノードでタスク スケジュールを無効にする** ([REST][rest_offline] | [.NET][net_offline])
 
-    この操作では、ノードが実質的にオフラインになります。そのため、これ以上タスクが割り当てられなくなりますが、ノードをプール内で稼働したままにできます。 これにより、失敗したタスクのデータが失われず、これ以上ノードでタスクが失敗することもなくなり、エラーの原因を詳しく調査できます。 たとえば、ノードでタスク スケジュールを無効にした後、[リモートでサインイン](#connecting-to-compute-nodes)して、ノードのイベント ログを確認したり、他のトラブルシューティングを実行したりできます。 調査が完了したら、タスク スケジュールを有効にする ([REST][rest_online] | [.NET][net_online]) ことで、ノードをオンラインに戻すことができます。または、前述した他のいずれかのアクションを実行することもできます。
+    この操作では、ノードが実質的にオフラインになります。そのため、これ以上タスクが割り当てられなくなりますが、ノードをプール内で稼働したままにできます。 これにより、失敗したタスクのデータが失われず、これ以上ノードでタスクが失敗することもなくなり、エラーの原因を詳しく調査できます。 たとえば、ノードでタスク スケジュールを無効にした後、[リモートでサインイン](#connecting-to-compute-nodes)して、ノードのイベント ログを確認したり、他のトラブルシューティングを実行したりできます。 調査が完了したら、タスク スケジュールを有効にする ([REST][rest_online] | [.NET][net_online]) ことで、ノードをオンラインに戻すことができます。また、前述した他のいずれかのアクションを実行することもできます。
 
 > [!IMPORTANT]
 > このセクションで説明した各アクション (再起動、再イメージ化、削除、タスク スケジュールの無効化) では、アクションを実行するときに、ノードで現在実行中のタスクの処理方法を指定できます。 たとえば、Batch .NET クライアント ライブラリを使用してノードでタスク スケジュールを無効にするときに、[DisableComputeNodeSchedulingOption][net_offline_option] 列挙値を指定して、実行中のタスクを終了するか (**Terminate**)、他のノードでスケジュールするためにキューに再登録するか (**Requeue**)、実行中のタスクが完了してからアクションを実行するか (**TaskCompletion**) を指定できます。

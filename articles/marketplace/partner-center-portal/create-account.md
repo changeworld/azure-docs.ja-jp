@@ -5,14 +5,14 @@ author: mattwojo
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
-ms.topic: how-to
+ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 24ed03cde967f0fef7abdc4c2df1f8e5d6bdb6ab
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68327127"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668340"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>商業マーケットプレース アカウントをパートナー センターに作成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "68327127"
 
 #### <a name="agree-to-terms-and-conditions"></a>使用条件に同意する
 
-[マイクロソフト オンライン サブスクリプション契約](https://go.microsoft.com/fwlink/?LinkId=870457)と [Microsoft Marketplace Publisher Agreement](https://go.microsoft.com/fwlink/?linkid=843476) (Microsoft Marketplace 発行元契約) の 2 セットの使用条件に同意する必要があります。
+[Microsoft Marketplace Publisher Agreement](http://go.microsoft.com/fwlink/?LinkID=699560) の使用条件に同意していただく必要があります。
 
 #### <a name="provide-your-publisher-profile"></a>発行元プロファイルを提供する
 

@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 07/31/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c60cb78c01d7e18801cbe43c8b767f622ef4b39
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473020"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694283"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
@@ -83,8 +83,8 @@ IP アドレスは、テレメトリ データの一部として Application Ins
 
     ![スクリーンショットでは、"IbizaAIExtension" の後にコンマが追加され、その下の新しい行に "DisableIpMasking": true が追加されています](media/ip-collection/save.png)
 
-    > [!NOTE]
-    > 次のようなエラーが発生した場合:"_リソース グループは、テンプレート内の 1 つ以上のリソースがサポートしていない場所にあります。別のリソース グループを選択してください。_ " 一時的にドロップダウンから別のリソース グループを選択してから、元のリソース グループを再選択してエラーを解決します。
+    > [!WARNING]
+    > 次のようなエラーが発生した場合:" **_リソース グループは、テンプレート内の 1 つ以上のリソースがサポートしていない場所にあります。別のリソース グループを選択してください。_** " 一時的にドロップダウンから別のリソース グループを選択してから、元のリソース グループを再選択してエラーを解決します。
 
 5. **[同意する]**  >  **[購入]** の順に選択します。 
 
@@ -130,10 +130,11 @@ Content-Length: 54
 
 最初の 3 つのオクテットだけでなく IP アドレス全体を記録する必要がある場合は、[テレメトリ初期化子](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer)を使用して、マスクされないカスタム フィールドに IP アドレスをコピーできます。
 
-### <a name="aspnetaspnet-core"></a>ASP.NET/ASP.NET Core
+### <a name="aspnet--aspnet-core"></a>ASP.NET または ASP.NET Core
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
 namespace MyWebApp
@@ -142,15 +143,20 @@ namespace MyWebApp
     {
         public void Initialize(ITelemetry telemetry)
         {
-            if(!string.IsNullOrEmpty(telemetry.Context.Location.Ip))
+            ISupportProperties propTelemetry = telemetry as ISupportProperties;
+
+            if (propTelemetry !=null && !propTelemetry.Properties.ContainsKey("client-ip"))
             {
-                telemetry.Context.Properties["client-ip"] = telemetry.Context.Location.Ip;
+                string clientIPValue = telemetry.Context.Location.Ip;
+                propTelemetry.Properties.Add("client-ip", clientIPValue);
             }
         }
-    }
-
+    } 
 }
 ```
+
+> [!NOTE]
+> `ISupportProperties` にアクセスできない場合は、Application Insights SDK の最新の安定版リリースを実行していることを確認してください。 `ISupportProperties` は、大きなカーディナリティ値を対象としています。一方、`GlobalProperties` は、リージョン名、環境名などの小さなカーディナリティ値に適しています。 
 
 ### <a name="enable-telemetry-initializer-for-aspnet"></a>ASP.NET のテレメトリ初期化子を有効にする
 

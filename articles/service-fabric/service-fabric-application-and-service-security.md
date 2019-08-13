@@ -3,7 +3,7 @@ title: Azure Service Fabric のアプリケーション セキュリティにつ
 description: Service Fabric でマイクロサービス アプリケーションを安全に実行する方法の概要。 別のセキュリティ アカウントでサービスとスタートアップ スクリプトを実行する方法、ユーザーを認証および承認する方法、アプリケーション シークレットを管理する方法、サービス通信を保護する方法、API ゲートウェイを使用する方法、アプリケーション データを安全に保護する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
-ms.author: aljo
-ms.openlocfilehash: cb0f750f4049a1ce652c829f43928a95f30e6973
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: atsenthi
+ms.openlocfilehash: 75a82a0915414d24ab9c58ea15d3fdc9c1922c63
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66302237"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600078"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric のアプリケーションとサービスのセキュリティ
 マイクロサービス アーキテクチャには、[多くの利点](service-fabric-overview-microservices.md)があります。 しかし、マイクロサービスのセキュリティの管理は困難であり、従来のモノリシックなアプリケーション セキュリティの管理とは異なります。 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/17/2019
 ms.author: danlep
 ms.openlocfilehash: 9cd62c378270da31079a38f89b040985105a4218
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68326030"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>コンテナー インスタンスで環境変数を設定する
@@ -33,7 +33,7 @@ Container Instances で環境変数を設定すると、コンテナーによっ
 
 ## <a name="azure-cli-example"></a>Azure CLI の例
 
-[aci-wordcount][aci-wordcount] コンテナーの既定の出力を表示するには、まず、この container, run it first with this [az container create][az-container-create] コマンド (環境変数を指定しない) を実行します。
+[aci-wordcount][aci-wordcount] コンテナーの既定の出力を表示するには、まず、この [az container create][az-container-create] コマンドを (環境変数を指定しないで) 実行します。
 
 ```azurecli-interactive
 az container create \
@@ -54,7 +54,7 @@ az container create \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 ```
 
-両方のコンテナーの状態が *Terminated* と表示されたら ([az container show][az-container-show] を使用)、to check state), display their logs with [az container logs][az-container-logs] で出力を確認します。
+両方のコンテナーの状態が *Terminated* と表示されたら ([az container show][az-container-show] を使用して状態を確認)、[az container logs][az-container-logs] を使用してログを表示し、出力を確認します。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1
@@ -88,7 +88,7 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 PowerShell での環境変数の設定は CLI と似ていますが、`-EnvironmentVariable` コマンド ライン引数を使用します。
 
-まず、この New-AzContainerGroup コマンドを使用して、既定の構成で [aci-wordcount][aci-wordcount] コンテナーを起動します。container in its default configuration with this [New-AzContainerGroup][new-Azcontainergroup]
+まず、この [New-AzContainerGroup][new-Azcontainergroup] コマンドを使用して、既定の構成で [aci-wordcount][aci-wordcount] コンテナーを起動します。
 
 ```azurepowershell-interactive
 New-AzContainerGroup `

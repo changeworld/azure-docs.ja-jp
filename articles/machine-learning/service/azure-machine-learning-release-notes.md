@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f39c914bce3fbc47775a76f1c3a1fb64de560505
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ade107f51fabb133e8e4046bf645f4dff284102b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498332"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565119"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
@@ -28,7 +28,7 @@ ms.locfileid: "68498332"
 ### <a name="azure-machine-learning-sdk-for-python-v1053"></a>Azure Machine Learning SDK for Python v1.0.53
 
 + **新機能**
-    + 自動化された機械学習で、リモート コンピューティング ターゲットでの ONNX モデルのトレーニングがサポートされるようになりました
+  + 自動化された機械学習で、リモート コンピューティング ターゲットでの ONNX モデルのトレーニングがサポートされるようになりました
   + Azure Machine Learning で、以前の実行、チェックポイント、またはモデル ファイルからトレーニングを再開できるようになりました。
     + [推定器を使用して前回の実行からトレーニングを再開する](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-tensorflow-resume-training/train-tensorflow-resume-training.ipynb)方法を確認してください
 
@@ -72,7 +72,7 @@ ms.locfileid: "68498332"
     + 登録後にモデルの説明を更新できるようになりました
     + バグの修正:モデルとイメージの削除の際、アップストリームの依存関係が原因で削除が失敗した場合に、それらに依存しているアップストリーム オブジェクトの取得に関する詳細情報が提供されるようになりました。
     + 一部の環境でワークスペースの作成時に発生する、デプロイの空白の期間が出力されたバグを修正しました。
-    + ワークスペースの作成エラーの例外が改善されました。 そのようなユーザーには、メッセージとして "ワークスペースを作成できません。 検索できません..." は表示されず、代わりに実際の作成エラーが表示されます。
+    + ワークスペースの作成エラーの例外が改善されました。 そのようなユーザーには、メッセージとして "ワークスペースを作成できません。 ...が見つかりません" は表示されず、代わりに実際の作成エラーが表示されます。
     + AKS Web サービスのトークン認証のサポートが追加されました。 
     + `Webservice` オブジェクトに `get_token()` メソッドを追加します。
     + 機械学習データセットを管理するための CLI サポートを追加しました。
@@ -80,9 +80,6 @@ ms.locfileid: "68498332"
     + 登録後にモデルの説明を適切に更新できるようになりました
     + モデルとイメージの削除の際、削除に失敗する原因となるアップストリーム オブジェクトに依存依存しているアップストリーム オブジェクトの取得に関する詳細情報が提供されるようになりました
     + azureml.mlflow を使用するリモート実行のリソース使用率を向上させます。
-  + **azureml-dataprep**
-    + データフロー オブジェクトを反復処理して、一連のレコードを生成できるようになりました。
-    + 実験的な機能として `_summarize_each` を `azureml.dataprep.Dataflow` に追加します。
   + **azureml-explain-model**
     + azureml-contrib-explain-model パッケージの生の特徴の重要度のための LIME Explainer の変換引数を修正しました
     + LimeExplainer の scipy sparse のサポートを追加します
@@ -115,6 +112,15 @@ ms.locfileid: "68498332"
   + **azureml-train-core**
     + 自動化されたハイパーパラメーター チューニングのコンピューティング ターゲットとして、文字列が受け入れられるようになりました
     + 使用されていない RunConfiguration 設定、auto_prepare_environment は非推奨としてマークされるようになっています。
+
+### <a name="azure-machine-learning-data-prep-sdk-v119"></a>Azure Machine Learning Data Prep SDK v1.1.9
+
++ **新機能**
+  + http または https の url からファイルを直接読み取るためのサポートが追加されました。
+
++ **バグの修正と機能強化**
+  + リモート ソースから Parquet データセットを読み取ろうとしたとき (現時点ではサポートされていません) に表示されるエラー メッセージが改善されました。
+  + ADLS Gen 2 で Parquet ファイル形式に書き込むとき、およびパスの ADLS Gen 2 コンテナー名を更新するときのバグが修正されました。
 
 ## <a name="2019-07-09"></a>2019-07-09
 

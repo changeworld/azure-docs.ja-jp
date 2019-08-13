@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
 ms.openlocfilehash: 05c227e7de078c6bb371049f16e191598b9ca4e5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68310373"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Classic コンテナー レジストリのアップグレード
@@ -53,7 +53,7 @@ Classic レジストリを管理対象のレジストリにアップグレード
 
 ## <a name="how-to-upgrade"></a>アップグレードする方法
 
-管理対象外の Classic レジストリをいずかれの管理対象 SKU にアップグレードする方法は、いくつかあります。 次のセクションで、[Azure CLI][azure-cli] および and the [Azure portal][azure-portal] を使用するプロセスをご説明します。
+管理対象外の Classic レジストリをいずかれの管理対象 SKU にアップグレードする方法は、いくつかあります。 以降のセクションでは、[Azure CLI][azure-cli] と [Azure portal][azure-portal] を使用するプロセスについて説明します。
 
 ## <a name="upgrade-in-azure-cli"></a>Azure CLI でのアップグレード
 

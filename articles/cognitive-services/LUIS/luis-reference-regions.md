@@ -1,5 +1,5 @@
 ---
-title: 公開リージョンとエンドポイント
+title: 公開リージョンとエンドポイント - LUIS
 titleSuffix: Azure Cognitive Services
 description: 3 つのオーサリング リージョンとそのポータルが多数の公開リージョンをすべてサポートしています。 LUIS アプリを公開するリージョンは、Azure LUIS エンドポイント キーを作成するときに Azure portal で指定するリージョンまたは場所に対応します。 アプリを公開するとき、キーに関連付けられているリージョンに対して、エンドポイント URL が LUIS によって自動的に生成されます。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 07/31/2019
 ms.author: diberry
-ms.openlocfilehash: 20ea2eb632a6d685351178691cc3d0f58a567902
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 115489621865767ebe35a9adc1a9e53db5a3204c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60599276"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698128"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>作成と公開のリージョンと関連付けられているキー
 
@@ -82,6 +82,7 @@ ms.locfileid: "60599276"
 
  グローバル リージョン | オーサリング API リージョンとオーサリング Web サイト| 公開およびクエリ実行リージョン<br>`API region name`   |  エンドポイント URL 形式   |
 |-----|------|------|------|
+| アフリカ | `westus`<br>[www.luis.ai][www.luis.ai]| 南アフリカ北部<br>`southafricanorth` |  https://southafricanorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | アジア | `westus`<br>[www.luis.ai][www.luis.ai]| インド中部<br>`centralindia` |  https://centralindia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 東アジア<br>`eastasia`     |  https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 東日本<br>`japaneast`     |   https://japaneast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
@@ -90,7 +91,7 @@ ms.locfileid: "60599276"
 | アジア | `westus`<br>[www.luis.ai][www.luis.ai]| 東南アジア<br>`southeastasia`     |   https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | カナダ中部<br>`canadacentral`     |   https://canadacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国中部<br>`centralus`     |   https://centralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | 米国東部<br>`eastus`      |  https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| 北米 |`westus`<br>[www.luis.ai][www.luis.ai] | East US<br>`eastus`      |  https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国東部 2<br>`eastus2`     |  https://eastus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国中北部<br>`northcentralus`  |  https://northcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | 北米 | `westus`<br>[www.luis.ai][www.luis.ai] | 米国中南部<br>`southcentralus`  |  https://southcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 

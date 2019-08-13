@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-manager: craigg
 ms.date: 07/18/2019
-ms.openlocfilehash: cdd5e29fcc01639c03da70614f53ac648ee6620c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 6b1b706e68b090090ed4268b70b7c9d254f8b629
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68318580"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596700"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure Key Vault のユーザー管理キーを使用した Azure SQL Transparent Data Encryption:Bring Your Own Key のサポート
 
@@ -74,7 +73,7 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
 - Azure Active Directory (Azure AD) ID を使用して、SQL Database サーバーにキー コンテナーへのアクセス権を付与します。  ポータル UI を使用すると、Azure AD ID が自動的に作成され、キー コンテナーのアクセス許可がサーバーに付与されます。  PowerShell を使用して BYOK 対応 TDE を構成する場合は、Azure AD ID を作成し、完了を確認する必要があります。 PowerShell を使用するときの詳細な手順については、[BYOK 対応 TDE の構成](transparent-data-encryption-byok-azure-sql-configure.md)と [Managed Instance 用 BYOK 対応 TDE の構成](https://aka.ms/sqlmibyoktdepowershell)に関する記事を参照してください。
 
    > [!NOTE]
-   > Azure AD の ID **が誤って削除されたか、または Key Vault のアクセス ポリシーを使用するかあるいはサーバーを誤って別のテナントに移動することによってサーバーのアクセス許可が取り消された場合**、サーバーは Key Vault にアクセスできなくなり、TDE 暗号化データベースにはアクセスできなくなり、論理サーバーの Azure AD の ID とアクセス許可が復元されるまでログオンは拒否されます。  
+   > Azure AD の ID **が誤って削除されたか、または Key Vault のアクセス ポリシーを使用するかあるいはサーバーを誤って別のテナントに移動することによってサーバーのアクセス許可が取り消された場合**、サーバーは Key Vault へのアクセス権を失うため、TDE 暗号化データベースにアクセスできなくなり、論理サーバーの Azure AD の ID とアクセス許可が復元されるまでログオンは拒否されます。  
 
 - Azure Key Vault でファイアウォールと仮想ネットワークを使用するときは、信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する必要があります。 [はい] を選択します。
 
@@ -87,14 +86,14 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
 
 ### <a name="guidelines-for-configuring-the-tde-protector-asymmetric-key"></a>TDE 保護機能 (非対称キー) の構成に関するガイドライン
 
-- ローカル HSM デバイス上で暗号化キーをローカルに作成します。 Azure Key Vault に格納できるように、非対称の RSA 2048 キーであることを確認します。
+- ローカル HSM デバイス上で暗号化キーをローカルに作成します。 Azure Key Vault に格納できるように、非対称の RSA 2048 または RSA HSM 2048 キーであることを確認します。
 - キー エスクロー システムにキーをエスクローします。  
 - 暗号化キー ファイル (.pfx、.byok、または .backup) を Azure Key Vault にインポートします。
 
    > [!NOTE]
    > テストのために、Azure Key Vault を使用してキーを作成することは可能ですが、秘密キーはキー コンテナーの外部に移動できないため、このキーをエスクローすることはできません。  キーを失うと (キー コンテナーでの誤削除、期限切れなど)、データが完全に失われるので、実稼働データの暗号化に使用するキーを常にバックアップし、エスクローしてください。
 
-- 有効期限があるキーを使用する場合 – 有効期限が切れる前にキーを交換するために、有効期限警告システムを実装します。**キーの有効期限が切れると、暗号化されたデータベースは TDE 保護機能へのアクセス権を失ってアクセスできなくなり**、キーが新しいキーに交換されるまで、すべてのログオンは拒否されます。
+- 有効期限があるキーを使用する場合 – 有効期限が切れる前にキーを交換するために、有効期限警告システムを実装します。**キーの有効期限が切れると、暗号化されたデータベースは TDE 保護機能へのアクセス権を失ってアクセスできなくなり**、キーが新しいキーに交換され、論理 SQL サーバーの新しいキーおよび既定の TDE 保護機能として選択されるまですべてのログオンは拒否されます。
 - キーが有効であり、"*取得*"、"*キーのラップ*"、"*キーのラップ解除*" の各操作を実行するためのアクセス許可があることを確認します。
 - Azure Key Vault のキーを初めて使用する前に、Azure Key Vault キーのバックアップを作成します。 [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) コマンドの詳細については、こちらをご覧ください。
 - キーに変更を加えるたびに (ACL の追加、タグの追加、キー属性の追加など) 新しいバックアップを作成します。
@@ -107,7 +106,7 @@ Key Vault の TDE 保護機能を使用するように TDE が最初に構成さ
 
 論理 SQL サーバーが Azure Key Vault のユーザーが管理する TDE 保護機能にアクセスできなくなると、データベースはすべての接続を拒否し、Azure portal ではアクセスできないように見えます。  これに対する最も一般的な原因を次に示します。
 - キー コンテナーが誤って削除されたか、ファイアウォールの内側にある
-- キー コンテナー キーが誤って削除されたか、期限切れになっている
+- キー コンテナー キーが誤って削除または無効化されたか、期限切れになっている
 - 論理 SQL Server インスタンス AppId が誤って削除されました
 - 論理 SQL Server インスタンス AppId のキー固有のアクセス許可が取り消された
 

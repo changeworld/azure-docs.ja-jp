@@ -6,14 +6,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 07/31/2019
 ms.author: normesta
-ms.openlocfilehash: fc2d7e4f611e1eee9c369ef26aa7bf66feb7c888
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 910e23814b627233395a2f7a646513d9cb6874d8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385688"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699031"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -100,7 +100,7 @@ Data Lake Storage のマルチプロトコル アクセスのパブリック プ
 | **Blobfuse** |まだサポートされていません|
 | **カスタム ドメイン** |まだサポートされていません|
 | **ファイル システム エクスプローラー** | 制限付きサポート |
-| **診断ログ** |[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のプレビューに登録している場合にのみサポートされます。|
+| **診断ログ** |診断ログは、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のプレビューに登録している場合にのみサポートされます。 <br><br>Azure portal でのログの有効化は現在サポートされていません。 PowerShell を使用してログを有効にする方法の例を次に示します。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzureStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>` <br><br>この例に示すように、`-ServiceType` パラメーターの値として `Blob` を指定してください。 
 | **不変ストレージ** |まだサポートされていません <br><br>不変ストレージでは、[WORM (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) 状態でデータを格納できます。|
 | **オブジェクト レベルの階層** |クール レベルとアーカイブ レベルは、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のプレビューに登録している場合にのみサポートされます。 <br><br> その他のすべてのアクセス層は、まだサポートされていません。|
 | **Powershell と CLI のサポート** | 機能の制限あり <br><br>アカウントの作成などの管理操作がサポートされています。 ファイルのアップロードやダウンロードなどのデータ プレーン操作は、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)の一部として、パブリック プレビュー段階にあります。 ディレクトリの操作とアクセス制御リスト (ACL) の設定は、まだサポートされていません。 |

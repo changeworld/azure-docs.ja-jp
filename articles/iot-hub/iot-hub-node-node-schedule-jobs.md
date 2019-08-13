@@ -9,14 +9,14 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.openlocfilehash: a3a07f54d77577085951b2bccfa1213adef5b20d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 243f4e63cc04bca018c2bf69492dccf163e92b73
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68403921"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780851"
 ---
-# <a name="schedule-and-broadcast-jobs-node"></a>ジョブのスケジュールとブロードキャスト (Node)
+# <a name="schedule-and-broadcast-jobs-nodejs"></a>ジョブのスケジュールとブロードキャスト (Node.js)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
@@ -57,6 +57,8 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 

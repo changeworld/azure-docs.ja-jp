@@ -6,28 +6,32 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 06/25/2019
+ms.date: 07/23/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 2d190edfac71705590135988b64ed043784125ec
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 39b8485ac3f98cb7ca6739fe31378726bea3452b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305557"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565347"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
 ビジネス ロジックを Azure IoT Edge のモジュールにすることができます。 この記事では、主なツールとして Visual Studio Code を使用してモジュールを開発およびデバッグする方法を説明します。
 
+C#、Node.js、または Java で記述されたモジュールの場合、Visual Studio Code でモジュールをデバッグする方法は 2 つあります。モジュール コンテナー内にプロセスをアタッチするか、モジュール コードをデバッグ モードで起動することができます。 Python または C で記述されたモジュールの場合は、それらをデバッグできるのは、Linux amd64 コンテナー内のプロセスにアタッチする方法だけです。
+
+Visual Studio Code のデバッグ機能をよく知らない場合は、[デバッグ](https://code.visualstudio.com/Docs/editor/debugging)に関するページを確認してください。
+
+この記事では、複数のアーキテクチャ用に複数の言語でモジュールを開発およびデバッグする手順について説明します。 現時点では、Visual Studio Code は、C#、C、Python、Node.js、および Java で記述されたモジュールをサポートしています。 サポートされているデバイス アーキテクチャは X64 と ARM32 です。 サポートされているオペレーティング システム、言語、およびアーキテクチャの詳細については、「[言語とアーキテクチャのサポート](module-development.md#language-and-architecture-support)」を参照してください。
+
+>[!NOTE]
+>Linux ARM64 デバイスの開発とデバッグのサポートは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)にあります。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
 Windows、macOS、または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用できます。 IoT Edge デバイスとして、別の物理デバイスを使用できます。
-
-C#、Node.js、または Java で記述されたモジュールの場合、Visual Studio Code でモジュールをデバッグする方法は 2 つあります。モジュール コンテナー内にプロセスをアタッチするか、モジュール コードをデバッグ モードで起動することができます。 Python または C で記述されたモジュールの場合は、それらをデバッグできるのは、Linux amd64 コンテナー内のプロセスにアタッチする方法だけです。
-
-> [!TIP]
-> Visual Studio Code のデバッグ機能をよく知らない場合は、[デバッグ](https://code.visualstudio.com/Docs/editor/debugging)に関するページを確認してください。
 
 まず [Visual Studio Code](https://code.visualstudio.com/) をインストールしてから、次の拡張機能を追加します。
 
@@ -66,8 +70,7 @@ C でモジュールを開発している場合を除き、IoT Edge ソリュー
 > [!NOTE]
 > 事前インストール済みの python 2.7 など、複数の Python をお持ちの場合 (たとえば、Ubuntu や macOS で)、正しい `pip` または `pip3` を使用して **iotedgehubdev** をインストールしています
 
-> [!NOTE]
-> デバイス上でモジュールをテストするには、1 つ以上の IoT Edge デバイスがあるアクティブな IoT ハブが必要です。 お使いのコンピューターを IoT Edge デバイスとして使用するには、[Linux](quickstart-linux.md) または [Windows](quickstart.md) 用のクイック スタートの手順に従ってください。 開発用マシン上で IoT Edge デーモンを実行している場合は、次の手順に進む前に EdgeHub と EdgeAgent を停止することが必要になる可能性があります。
+デバイス上でモジュールをテストするには、1 つ以上の IoT Edge デバイスがあるアクティブな IoT ハブが必要です。 お使いのコンピューターを IoT Edge デバイスとして使用するには、[Linux](quickstart-linux.md) または [Windows](quickstart.md) 用のクイック スタートの手順に従ってください。 開発用マシン上で IoT Edge デーモンを実行している場合は、次の手順に進む前に EdgeHub と EdgeAgent を停止することが必要になる可能性があります。
 
 ## <a name="create-a-new-solution-template"></a>新しいソリューション テンプレートを作成する
 
@@ -97,7 +100,7 @@ Visual Studio Code は、指定された情報を取得し、IoT Edge ソリュ�
 
 - **.vscode** フォルダーにはデバッグ構成が含まれています。
 
-- **modules** フォルダーにはモジュールごとのサブフォルダーが含まれています。  各モジュールのフォルダー内には **module.json** というファイルがあります。これは、モジュールのビルドとデプロイを制御します。  ローカルホストからリモート レジストリにモジュール デプロイメント コンテナー レジストリを変更する目的で、このファイルを修正しなければならないことがあります。 この時点ではモジュールは 1 つだけです。  ただし、コマンド パレットでコマンド **Azure IoT Edge:Add IoT Edge Module** を実行することで追加できます。
+- **modules** フォルダーにはモジュールごとのサブフォルダーが含まれています。  各モジュールのフォルダー内には **module.json** というファイルがあります。これは、モジュールのビルドとデプロイを制御します。  ローカル ホストからリモート レジストリにモジュール デプロイメント コンテナー レジストリを変更する目的で、このファイルを修正しなければならないことがあります。 この時点ではモジュールは 1 つだけです。  ただし、コマンド パレットでコマンド **Azure IoT Edge:Add IoT Edge Module** を実行することで追加できます。
 
 - **.env** ファイルには環境変数の一覧が表示されます。 レジストリが Azure Container Registry の場合、Azure Container Registry のユーザー名とパスワードがあります。
 

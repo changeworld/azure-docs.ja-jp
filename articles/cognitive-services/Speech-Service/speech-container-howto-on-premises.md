@@ -1,5 +1,5 @@
 ---
-title: オンプレミスの Kubernetes を使用する
+title: Kubernetes と Helm での使用 - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Kubernetes と Helm を使って音声テキスト変換とテキスト読み上げのコンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。
 services: cognitive-services
@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 7/10/2019
+ms.date: 7/16/2019
 ms.author: dapine
-ms.openlocfilehash: 33d9de956a6d43145fc68f4ec46b09b8e8bf0188
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786253"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559145"
 ---
-# <a name="use-kubernetes-on-premises"></a>オンプレミスの Kubernetes を使用する
+# <a name="use-with-kubernetes-and-helm"></a>Kubernetes と Helm での使用
 
-Kubernetes と Helm を使って音声テキスト変換とテキスト読み上げのコンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。 最後に、展開されたサービスをテストする方法と、さまざまな構成オプションについて調べます。
+オンプレミスの音声コンテナーを管理するための 1 つの方法は、Kubernetes と Helm を使用することです。 Kubernetes と Helm を使って音声テキスト変換とテキスト読み上げのコンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。 最後に、展開されたサービスをテストする方法と、さまざまな構成オプションについて調べます。 Kubernetes オーケストレーションを使用せずに Docker コンテナーを実行する方法の詳細については、「[Speech Service コンテナーをインストールして実行する](speech-container-howto.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-オンプレミスの Speech コンテナーを使用する前に、次の前提条件を満たす必要があります。
+オンプレミスの Speech コンテナーを使用する前の前提条件は次のとおりです。
 
 |必須|目的|
 |--|--|
 | Azure アカウント | Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][free-azure-account] を作成してください。 |
 | コンテナー レジストリのアクセス | Kubernetes でクラスターに Docker イメージをプルするには、コンテナー レジストリにアクセスする必要があります。 最初に、[コンテナー レジストリへのアクセスを要求する][speech-preview-access]必要があります。 |
 | Kubernetes CLI | コンテナー レジストリからの共有資格情報を管理するには、[Kubernetes CLI][kubernetes-cli] が必要です。 また、Kubernetes は、Kubernetes のパッケージ マネージャーである Helm の前に必要です。 |
-| Helm CLI | [Helm CLI][helm-install] の一部として、install, you'll also need to initialize Helm which will install [Tiller][tiller-install]。 |
+| Helm CLI | [Helm CLI][helm-install] のインストールの一環として、Helm を初期化する必要もあります。これにより、[Tiller][tiller-install] がインストールされます。 |
 |Speech リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている課金キーと課金エンドポイント URI を取得するための _Speech_ Azure リソース。 これらの値は、どちらも Azure portal の **Speech** の [概要] ページと [キー] ページで入手でき、コンテナーを起動するために必要です。<br><br>**{API_KEY}** : リソース キー<br><br>**{ENDPOINT_URI}** : エンドポイント URI の例: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>推奨されるホスト コンピューターの構成

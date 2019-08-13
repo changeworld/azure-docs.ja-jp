@@ -4,7 +4,7 @@ description: Azure Batch コンピューティング ノード間のデータ転
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
 ms.service: batch
@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 517ac0f612b9e5fc5909a7f0fe2ce088c9b367d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a85ced787529db7e6d607665d81632ab1c450dfe
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60776212"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68466967"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Batch コンピューティング ノードでのジョブ準備タスクとジョブ解放タスクの実行
 
@@ -73,6 +73,8 @@ Batch ジョブでは、ジョブのタスクに対する入力として共通�
 
 > [!NOTE]
 > ジョブを削除した場合もジョブ解放タスクが実行されます。 ただし、ジョブが既に終了している場合は、その後でジョブを削除しても解放タスクが再度実行されることはありません。
+
+ジョブの解放タスクは、Batch サービスによって終了されるまでに最大 15 分間実行できます。 詳細については、[REST API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask)に関する記事を参照してください。
 > 
 > 
 
@@ -191,7 +193,7 @@ Sample complete, hit ENTER to exit...
 ### <a name="installing-applications-and-staging-data"></a>アプリケーションとステージング データのインストール
 この MSDN フォーラムの投稿では、タスクの実行に使用するノードの準備方法の概要をいくつか示しています。
 
-[Installing Applications and staging data on Batch compute nodes (Batch コンピューティング ノードでのアプリケーションとステージング データのインストール)][forum_post]
+[Batch コンピューティング ノードでのアプリケーションとステージング データのインストール][forum_post]
 
 Azure Batch チームのメンバーによって投稿されたもので、コンピューティング ノードへのアプリケーションとデータのデプロイに使用できるいくつかの手法について説明しています。
 

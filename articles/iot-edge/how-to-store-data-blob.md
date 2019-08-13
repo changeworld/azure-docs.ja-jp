@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c5a27a8016202f7f8c9e256eaf6b3077fbef295b
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5932d51ecaca3c827ae6de268711c7f4d1b28d0a
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414519"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640658"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)
 
@@ -87,7 +87,7 @@ Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-port
 | ----- | ----- | ---- | ---- |
 | uploadOn | true、false | 既定では `false` に設定されています。 この機能をオンにする場合は、このフィールドを `true` に設定します。 | `deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst、OldestFirst | データを Azure にコピーする順序を選択できます。 既定では `OldestFirst` に設定されています。 順序は Blob の最終更新時刻によって決定されます | `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` は、データのアップロード先の Azure Storage アカウントを選択するための接続文字列です。 `Azure Storage Account Name`、`Azure Storage Account Key`、`End point suffix` を指定します。 データのアップロード先の Azure の適切な EndpointSuffix を追加します。これはグローバル Azure、政府機関向け Azure、および Microsoft Azure Stack ごとに異なります。 | `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` は、データのアップロード先のストレージ アカウントを選択するための接続文字列です。 `Azure Storage Account Name`、`Azure Storage Account Key`、`End point suffix` を指定します。 データのアップロード先の Azure の適切な EndpointSuffix を追加します。これはグローバル Azure、政府機関向け Azure、および Microsoft Azure Stack ごとに異なります。 <br><br> ここで Azure Storage SAS 接続文字列を指定できます。 ただし、有効期限が切れた場合は、このプロパティを更新する必要があります。  | `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Azure にアップロードするコンテナーの名前を指定できます。 このモジュールでは、ソースとターゲットの両方のコンテナー名を指定できます。 ターゲット コンテナー名を指定しない場合、コンテナー名は自動的に `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` として割り当てられます。 ターゲット コンテナー名のテンプレート文字列を作成して、使用可能な値の列をチェックアウトできます。 <br>* %h -> IoT Hub 名 (3 ～ 50 文字)。 <br>* %d -> IoT Edge デバイス ID (1 ～ 129 文字)。 <br>* %m -> モジュール名 (1 ～ 64 文字)。 <br>* %c -> ソース コンテナー名 (3 ～ 63 文字)。 <br><br>コンテナー名の最大サイズは 63 文字です。ターゲット コンテナー名を自動的に割り当てる場合は、コンテナーのサイズが 63 文字を超えると、各セクション (IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName) が 15 文字まで削除されます。 | `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target: <targetName>` |
 | deleteAfterUpload | true、false | 既定では `false` に設定されています。 `true` に設定すると、クラウド ストレージへのアップロードが完了したときにデータが自動的に削除されます | `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` |
 
@@ -101,6 +101,23 @@ Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-port
 | deleteOn | true、false | 既定では `false` に設定されています。 この機能をオンにする場合は、このフィールドを `true` に設定します。 | `deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | 時間を分単位で指定します。 この値が期限切れになると、モジュールが自動的にローカル ストレージから BLOB を削除します | `deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
 | retainWhileUploading | true、false | 既定では `true` に設定されていて、deleteAfterMinutes が期限切れになった場合に、クラウド ストレージへのアップロード中は BLOB が保持されます。 `false` に設定することができ、その場合は deleteAfterMinutes が期限切れになるとすぐにデータが削除されます。 注:このプロパティを機能させるには、UploadOn が true に設定されている必要があります| `deviceAutoDeleteProperties__retainWhileUploading={false,true}` |
+
+## <a name="using-smb-share-as-your-local-storage"></a>ローカル ストレージとして SMB 共有を使用する
+Windows ホストにこのモジュールの Windows コンテナーをデプロイするときに、ローカル ストレージ パスとして SMB 共有を指定できます。
+`New-SmbGlobalMapping` PowerShell コマンドを実行して、Windows を実行している IoT デバイス上でローカルに SMB 共有をマップすることができます。 IoT デバイスがリモート SMB 共有に対して読み取りおよび書き込みできることを確認します。
+
+構成手順は次のとおりです。
+```PowerShell
+$creds = Get-Credential
+New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
+```
+例: <br>
+`$creds = Get-Credentials` <br>
+`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: `
+
+このコマンドは、資格情報を使用してリモート SMB サーバーで認証を行います。 次に、リモート共有パスを G: ドライブ文字にマップします (他の使用可能なドライブ文字を指定できます)。 これで、IoT デバイスのデータ ボリュームが G: ドライブのパスにマップされました。 
+
+実際のデプロイでは、`<storage directory bind>` の値として **G:/ContainerData:C:/BlobRoot** を指定できます。
 
 ## <a name="configure-log-files"></a>ログ ファイルを構成する
 
@@ -221,4 +238,4 @@ absiotfeedback@microsoft.com までお寄せください
 
 ## <a name="next-steps"></a>次の手順
 
-[IoT Edge のAzure Blob Storage デプロイ](how-to-deploy-blob.md)の詳細を確認する
+[Azure Blob Storage を IoT Edge にデプロイする](how-to-deploy-blob.md)方法を学習する

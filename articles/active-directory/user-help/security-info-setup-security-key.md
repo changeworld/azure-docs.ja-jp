@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d2f06b054e433c0320019548c56539d102beaad
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68386728"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717382"
 ---
 # <a name="set-up-security-info-to-use-a-security-key-preview"></a>セキュリティ キーを使用するようにセキュリティ情報を設定する (プレビュー)
 
@@ -30,26 +30,26 @@ ms.locfileid: "68386728"
 
 ## <a name="what-is-a-security-key"></a>セキュリティ キーとは
 
-現在、[Fast Identity Online (FIDO)](https://fidoalliance.org/fido2/) (FIDO2) というパスワードなしの認証方法を使用するセキュリティ キーの設計とプロバイダーが複数サポートされています。 この方法では、職場または学校アカウントに一度サインインするだけで、組織のすべてのクラウドベース リソースとサポート対象ブラウザーにアクセスできます。
+現在、[Fast Identity Online (FIDO)](https://fidoalliance.org/fido2/) (FIDO2) というパスワードなしの認証プロトコルを使用するセキュリティ キーの設計とプロバイダーが複数サポートされています。 これらのキーを使用すると、サポートされているデバイスと Web ブラウザーで職場または学校アカウントにサインインして、組織のクラウドベースのリソースにアクセスできます。
 
 職場または学校アカウントにセキュリティ キーが必要な場合は、管理者または組織から提供されます。 使用できるセキュリティ キーには、デバイスに差し込む USB キーや NFC リーダーでタップする NFC キーなど、さまざまな種類があります。 ご使用のセキュリティ キーの詳細 (種類など) については、製造元のドキュメントを参照してください。
 
 > [!Note]
-> FIDO2 セキュリティ キーを使用できない場合は、他のパスワードなしの認証方法として、Microsoft Authenticator アプリや Windows Hello などを使用できます。 Microsoft Authenticator アプリの詳細については、「[Microsoft Authenticator アプリとは](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview)」を参照してください Windows Hello の詳細については、[Windows Hello の概要](https://www.microsoft.com/windows/windows-hello)に関するページを参照してください。
+> FIDO2 セキュリティ キーを使用できない場合は、他のパスワードなしの認証方法として、Microsoft Authenticator アプリや Windows Hello などを使用できます。 Microsoft Authenticator アプリの詳細については、「[Microsoft Authenticator アプリとは](user-help-auth-app-overview.md)」を参照してください Windows Hello の詳細については、[Windows Hello の概要](https://www.microsoft.com/windows/windows-hello)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-セキュリティ キーの登録を開始する前に、次の点を再度確認してください。
+セキュリティ キーを登録する前に、次の条件を満たす必要があります。
 
 - 管理者がこの機能を組織内で使用できる状態にしている。
 
-- ご使用のデバイスが、Windows 10 バージョン 1903 以降を実行し、Microsoft Edge ブラウザーを使用している。
+- Windows 10 2019 年 5 月の更新プログラムを実行しているデバイスで、サポートされているブラウザーを使用している。
 
-- 管理者または組織から物理的なセキュリティ キーを受け取っている。 このセキュリティ キーは FIDO2 と Microsoft の両方に準拠している必要があります。 セキュリティ キーやその互換性について不明な点がある場合は、所属組織のヘルプ デスクにお問い合わせください。
+- 管理者または組織によって承認された物理的なセキュリティ キーがある。 このセキュリティ キーは FIDO2 と Microsoft の両方に準拠している必要があります。 セキュリティ キーやその互換性について不明な点がある場合は、所属組織のヘルプ デスクにお問い合わせください。
 
 ## <a name="register-your-security-key"></a>セキュリティ キーの登録
 
-セキュリティ キーを使用して職場または学校アカウントにサインインするには、セキュリティ キーが Windows および一意の PIN と連動するように準備する必要があります。
+セキュリティ キーを使用して職場または学校アカウントにサインインするには、事前にセキュリティ キーを作成し、一意の PIN を与える必要があります。 お使いのアカウントには、最大で 10 個のキーを登録できます。 
 
 1. https://myprofile.microsoft.com で **[マイ プロファイル]** ページにアクセスし、まだサインインしていない場合はサインインします。
 
@@ -96,7 +96,7 @@ ms.locfileid: "68386728"
 
 ## <a name="delete-a-security-key-from-your-security-info"></a>セキュリティ情報からのセキュリティ キーの削除
 
-不要となったセキュリティ キーは、セキュリティ情報から削除できます。 これにより職場または学校アカウントでセキュリティ キーが使用されなくなりますが、セキュリティ キーには自分のデータと資格情報が格納されたままとなります。 セキュリティ キー自体から自分のデータと資格情報を削除するには、この記事の [Microsoft と互換性のあるセキュリティ キーのリセット](#reset-your-security-key)に関するセクションの手順に従う必要があります。
+紛失したセキュリティ キーや、不要となったセキュリティ キーは、セキュリティ情報から削除できます。 これにより職場または学校アカウントでセキュリティ キーが使用されなくなりますが、セキュリティ キーには自分のデータと資格情報が格納されたままとなります。 セキュリティ キー自体から自分のデータと資格情報を削除するには、この記事の [Microsoft と互換性のあるセキュリティ キーのリセット](#reset-your-security-key)に関するセクションの手順に従う必要があります。
 
 1. 削除するセキュリティ キーの **[削除]** リンクを選択します。
 
@@ -105,7 +105,7 @@ ms.locfileid: "68386728"
     セキュリティ キーが削除され、職場または学校アカウントへのサインインに使用できなくなります。
 
 >[!Important]
->このセキュリティ キーを誤って削除した場合は、この記事の[セキュリティ キーの登録方法](#register-your-security-key)に関するセクションの手順に従って、もう一度登録する必要があります。
+>セキュリティ キーを誤って削除した場合は、この記事の[セキュリティ キーの登録方法](#register-your-security-key)に関するセクションの手順に従って、もう一度登録できます。
 
 ## <a name="manage-your-security-key-settings-from-windows-settings"></a>Windows 設定からのセキュリティ キー設定の管理
 
@@ -141,26 +141,16 @@ ms.locfileid: "68386728"
 2. セキュリティ キーを USB ポートに挿入するか、NFC リーダーをタップして本人確認を行います。
 3. **[Security Key PIN]\(セキュリティ キー PIN\)** 領域で **[追加]** を選択し、新しいセキュリティ キー PIN を入力して確認してから **[OK]** を選択します。
 
-    セキュリティ キーが新しいセキュリティ キー PIN で更新されて、職場または学校アカウントで使用できるようになります。 PIN を再度変更する場合は、 **[変更]** ボタンを選択します。
+     セキュリティ キーが新しいセキュリティ キー PIN で更新されて、職場または学校アカウントで使用できるようになります。 PIN を再度変更する場合は、 **[変更]** を選択します。
 4. **[閉じる]** を選択して **[管理]** 画面を閉じます。
 
 ## <a name="additional-security-info-methods"></a>追加のセキュリティ情報メソッド
 
-操作内容に基づき、本人確認のために組織から連絡が届きますが、その方法には追加の選択肢があります。 選択肢は次のようになっています。
-
-- **認証アプリ。** 認証アプリをダウンロードして使用する場合、2 段階認証やパスワード リセットのために承認通知かランダムに生成された承認コードを取得できます。 Microsoft Authenticator アプリの設定方法と使用方法に関する段階的な説明が必要な場合は、「[Set up security info to use an authenticator app](security-info-setup-auth-app.md)」(認証アプリを使用するようにセキュリティ情報を設定する) を参照してください。
-
-- **モバイル デバイスのテキスト。** モバイル デバイスの番号を入力し、2 段階認証やパスワード リセットに使用するテキスト コードを取得します。 テキスト メッセージ (SMS) による本人確認方法に関する段階的な説明が必要な場合は、「[Set up security info to use text messaging (SMS)](security-info-setup-text-msg.md)」(テキスト メッセージ (SMS) を使用するようにセキュリティ情報を設定する) を参照してください。
-
-- **モバイル デバイスまたは職場の電話の呼び出し。** モバイル デバイスの番号を入力し、電話の呼び出しで 2 段階認証やパスワード リセットを行います。 電話番号による本人確認方法に関する段階的説明が必要な場合、「[電話を使用するようにセキュリティ情報を設定する](security-info-setup-phone-number.md)」を参照してください。
-
-- **メール アドレス。** 職場または学校のメール アドレスを入力して、パスワードをリセットするためのメールを受け取ります。 このオプションは、2 段階認証用には使用できません。 メールの設定方法に関する段階的説明が必要な場合、「[Set up security info to use email (メールを使用するようにセキュリティ情報を設定する)](security-info-setup-email.md)」を参照してください。
-
-- **セキュリティの質問。** 管理者が組織のために作成したいくつかのセキュリティの質問に答えます。 この選択肢はパスワード リセットの場合にのみ選択できます。2 段階認証には選択できません。 セキュリティの質問の設定方法に関する段階的な説明が必要な場合は、「[Set up security info to use security questions ](security-info-setup-questions.md)」(セキュリティの質問を使用するようにセキュリティ情報を設定する) を参照してください。
+セキュリティ キーを登録するには、少なくとも 1 つの追加のセキュリティ検証方法を登録しておく必要があります。 詳細については、[概要](security-info-add-update-methods-overview.md)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 
-- ブログ「[Microsoft の Azure AD が FIDO2 セキュリティ キーの公開プレビューを開始、パスワードなしのログインが可能に](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins)」や、「[Microsoft Authenticator アプリとは](https://docs.microsoft.com/azure/active-directory/user-help8user-help-auth-app-overview)」と [Windows Hello の概要](https://www.microsoft.com/windows/windows-hello)に関する記事を読んで、パスワードなしの認証方法について詳しく確認する。
+- ブログ「[Microsoft の Azure AD が FIDO2 セキュリティ キーの公開プレビューを開始、パスワードなしのログインが可能に](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins)」や、「[Microsoft Authenticator アプリとは](user-help-auth-app-overview.md)」と [Windows Hello の概要](https://www.microsoft.com/windows/windows-hello)に関する記事を読んで、パスワードなしの認証方法について詳しく確認する。
 
 - [Microsoft と互換性のあるセキュリティ キー](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)に関する詳細情報を確認する。
 

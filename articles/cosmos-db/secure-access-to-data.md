@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 6ccb9afb528edf67b29c781217ca1de97b81e017
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e321091f2abcff4c385b442ac6474c0592845e2e
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969205"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602037"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 

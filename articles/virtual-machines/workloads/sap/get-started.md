@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 07/29/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f4352a1f6a065d1e9be78f01bde95c8f00593a3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 60474148d1eac6ca9d85fbc1d103ad612787aeae
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479772"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68607872"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -43,7 +43,7 @@ Azure for SAP HANA の独自性は、Azure を一線を画すものにしてい�
 - [SAP HANA (L インスタンス) ネットワーク アーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)の HANA L インスタンス向けに ExpressRoute Fast Path と Global Reach および関連するドキュメントを導入
 - [Azure portal を介した Azure HANA Large Instances の制御](hana-li-portal.md)のリリース
 - [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server にある Azure VM 上の SAP NetWeaver の高可用性](high-availability-guide-suse-netapp-files.md)のリリース
-
+- 「[Azure NetAppFiles (ANF) BETA への SAP NetWeaver ASCS for SAP HANA のインストール](lama-installation.md)」のリリース
 
 
 

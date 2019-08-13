@@ -1,5 +1,5 @@
 ---
-title: Speech コンテナーをインストールする
+title: Speech コンテナーをインストールする - Speech Service
 titleSuffix: Azure Cognitive Services
 description: Speech コンテナーをインストールして実行します。 音声テキスト変換では、オーディオ ストリームからテキストへの文字起こしがリアルタイムで行われます。結果のテキストを、アプリケーション、ツール、またはデバイスで使用したり表示したりできます。 テキスト読み上げでは、入力テキストが人間のような合成音声に変換されます。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 089b9030debc7489e123d49b5c78052f597ca469
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 0778814d4a228afe3a986426684c7d1f2080b517
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348401"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553232"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
 

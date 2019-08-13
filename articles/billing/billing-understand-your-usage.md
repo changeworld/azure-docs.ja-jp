@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 66b54c027cde6341b23aef2c10b43fa21bf357da
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1afd78a0525be523f677cf0146c8a120155130ea
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383469"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554693"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure の利用状況と請求金額ファイル内の用語について
 
@@ -28,7 +28,7 @@ ms.locfileid: "68383469"
 --- | --- | --- | --- | ---
 Enterprise Agreement (EA) | はい | はい | はい | いいえ
 Microsoft 顧客契約 (MCA) | はい | はい | はい | はい
-従量課金制 (PAYG) | はい | いいえ | いいえ | いいえ
+従量課金制 (PAYG) | はい | はい | いいえ | いいえ
 
 Marketplace 注文 (外部サービスとしても知られています) について詳しくは、「[外部サービスの課金に対する Azure での請求について](billing-understand-your-azure-marketplace-charges.md)」をご覧ください。
 
@@ -65,8 +65,6 @@ EffectivePrice | All | 期間のブレンド単価。 ブレンド価格では�
 ExchangeRateDate | MCA | 為替レートが確立された日付。
 ExchangeRatePricingToBilling | MCA | 価格通貨でのコストを請求通貨に変換するために使用される為替レート。
 頻度 | All | 料金が繰り返される予定かどうかを示す。 課金は、1 回限り (**OneTime**) か、月ごとまたは年ごとの繰り返し (**Recurring**) か、または利用状況に基づいて (**UsageBased**) 行われる場合があります。
-IncludedQuantity | PAYG | 現在の請求期間内に無料で含まれるメーターの量。
-InstanceId | PAGY | ResourceId を参照。
 InvoiceId | PAYG、MCA | 請求書の PDF に記載されている一意のドキュメント ID。
 InvoiceSection | MCA | InvoiceSectionName を参照。
 InvoiceSectionId | EA、MCA | EA 部門または MCA 請求書セクションの一意識別子。
@@ -105,6 +103,7 @@ ServicePeriodStartDate | MCA | 消費または購入したサービスに対し�
 SubscriptionId | All | Azure サブスクリプションの一意識別子。
 SubscriptionName | All | Azure サブスクリプションの名前。
 Tags | All | リソースに割り当てられたタグ。 リソース グループのタグは含みません。 内部チャージバックのコストをグループ化または分散するために使用できます。 詳細については、[タグを使用した Azure リソースの整理](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)に関するページを参照してください。
+期間 | All | プランの有効期間を表示します。 例: 予約インスタンスの場合は、期間として 12 か月が表示されます。 1 回限りの購入または定期的な購入の場合、期間は 1 か月です (SaaS、Marketplace サポート)。 これは、Azure の消費には適用されません。
 UnitOfMeasure | All | サービス課金の測定単位。 たとえば、コンピューティング サービスは時間単位で課金されます。
 UnitPrice | EA、PAYG | 請求金額の単位あたりの価格。
 

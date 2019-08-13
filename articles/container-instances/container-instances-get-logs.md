@@ -10,15 +10,15 @@ ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 8ae7ab3f53f480f46165800504fbb1eb6649c3e2
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325963"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Azure Container Instances でコンテナーのログとイベントを取得する
 
-コンテナーが正常に動作しない場合、[az container logs][az-container-logs] でそのログを確認することから始めます。, and streaming its standard out and standard error with [az container attach][az-container-attach]
+コンテナーが正常に動作しない場合、[az container logs][az-container-logs] でそのログを確認し、[az container attach][az-container-attach] でその標準出力と標準エラーをストリーム配信することから始めます。
 
 ## <a name="view-logs"></a>ログを表示する。
 
