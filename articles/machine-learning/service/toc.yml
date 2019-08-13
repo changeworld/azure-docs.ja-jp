@@ -6,7 +6,7 @@
     - name: Azure Machine Learning サービスの概要
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: サービスのしくみ
+    - name: アーキテクチャと用語
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: チュートリアル
@@ -216,6 +216,8 @@
         - name: デプロイする場所と方法
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: ノートブック VM
+          href: how-to-deploy-local-container-notebook-vm.md
         - name: Azure Container Instances
           href: how-to-deploy-azure-container-instance.md
         - name: Azure Kubernetes Service
@@ -256,9 +258,9 @@
     - name: 再利用可能なワークフローを作成する
       displayName: pipelines
       items:
-        - name: ML パイプラインを作成する
+        - name: ML パイプライン
           href: how-to-create-your-first-pipeline.md
-        - name: Azure Pipelines を使用した ML ワークフローの CI/CD
+        - name: CI/CD 用の Azure パイプライン
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: リソース クォータを管理する

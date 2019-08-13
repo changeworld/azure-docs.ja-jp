@@ -107,25 +107,25 @@
       href: Tutorials/storage-lab-tutorial.md
 - name: 概念
   items:
-    - name: イメージへのタグ付け
+    - name: コンテンツ タグ
       href: concept-tagging-images.md
     - name: オブジェクトの検出
       href: concept-object-detection.md
-    - name: ブランドの検出
+    - name: ブランド検出
       href: concept-brand-detection.md
-    - name: イメージの分類
+    - name: 画像の分類
       href: concept-categorizing-images.md
-    - name: イメージの説明
+    - name: 画像の説明
       href: concept-describing-images.md
-    - name: 顔の検出
+    - name: 顔検出
       href: concept-detecting-faces.md
-    - name: イメージの種類の検出
+    - name: 画像の種類の検出
       href: concept-detecting-image-types.md
-    - name: ドメイン固有のコンテンツの検出
+    - name: ドメイン固有のコンテンツ
       href: concept-detecting-domain-content.md
     - name: 配色の検出
       href: concept-detecting-color-schemes.md
-    - name: サムネイルの生成
+    - name: スマート トリミングされたサムネイル
       href: concept-generating-thumbnails.md
     - name: 印刷されたテキストと手書きのテキストの認識
       href: concept-recognizing-text.md

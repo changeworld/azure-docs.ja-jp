@@ -21,11 +21,11 @@
       href: azure-netapp-files-metrics.md
     - name: パフォーマンス
       items:
-        - name: Azure NetApp Files のパフォーマンス ベンチマーク
-          href: azure-netapp-files-performance-benchmarks.md
         - name: Azure NetApp Files のパフォーマンスに関する考慮事項
           href: azure-netapp-files-performance-considerations.md
-        - name: Azure NetApp Files を使用する際のボリュームのパフォーマンスとメトリックのベンチマーク テスト
+        - name: Azure NetApp Files のパフォーマンス ベンチマークのテスト結果
+          href: azure-netapp-files-performance-benchmarks.md
+        - name: Azure NetApp Files のパフォーマンス ベンチマークのテスト レコメンデーション
           href: azure-netapp-files-performance-metrics-volumes.md
     - name: Azure NetApp Files のコスト モデル
       href: azure-netapp-files-cost-model.md

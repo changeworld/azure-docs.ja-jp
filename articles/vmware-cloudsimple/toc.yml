@@ -60,8 +60,10 @@
           href: access-cloudsimple-portal.md
         - name: ノードを管理する
           items:
-            - name: ノードのプロビジョニング
+            - name: ノードをプロビジョニングする
               href: create-nodes.md
+            - name: ノードを削除する
+              href: delete-nodes.md
         - name: プライベート クラウドのリソースを管理する
           items:
             - name: プライベート クラウドを作成する
@@ -76,6 +78,8 @@
               href: azure-subscription-mapping.md
             - name: 権限をエスカレートする
               href: escalate-private-cloud-privileges.md
+            - name: プライベート クラウドを削除する
+              href: delete-private-cloud.md
         - name: CloudSimple アクティビティを監視する
           href: 'https://docs.azure.cloudsimple.com/activity/'
         - name: プライベート クラウドのネットワークを設定する

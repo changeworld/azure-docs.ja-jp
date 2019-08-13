@@ -1,28 +1,33 @@
 - name: アプリケーション管理のドキュメント
   href: index.yml
-- name: アプリケーション管理とシングル サインオン
+- name: 概要
   expanded: true
   items:
-    - name: 概要
-      expanded: true
-      items:
-        - name: アプリケーション管理とは
-          href: what-is-application-management.md
-    - name: クイック スタート
-      items:
-        - name: ギャラリー アプリケーションの追加 - ポータル
-          href: add-application-portal.md
-        - name: テナント アプリの表示 - ポータル
-          href: view-applications-portal.md
-    - name: チュートリアル
-      items:
-        - name: Saas アプリケーションのチュートリアル
-          href: /azure/active-directory/saas-apps/
-    - name: 概念
+    - name: クラウド アプリの管理とシングル サインオンとは
+      href: what-is-application-management.md
+    - name: 自動ユーザー プロビジョニングとは
+      href: user-provisioning.md
+    - name: オンプレミス アプリ用のアプリケーション プロキシとは
+      href: what-is-application-proxy.md
+- name: クイック スタート
+  items:
+    - name: ギャラリーからのクラウド アプリの追加
+      href: add-application-portal.md
+    - name: エンタープライズ アプリケーションの表示
+      href: view-applications-portal.md
+- name: チュートリアル
+  items:
+    - name: SaaS アプリのチュートリアル
+      href: /azure/active-directory/saas-apps/
+    - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
+      href: application-proxy-add-on-premises-application.md
+- name: 概念
+  items:
+    - name: クラウド アプリとシングル サインオン
       items:
         - name: クラウド アプリの統合の計画
           items:
-            - name: アプリを追加する際の作業内容
+            - name: アプリ統合の概要
               href: plan-an-application-integration.md
             - name: 開発者向けのガイダンス
               href: developer-guidance-for-integrating-applications.md
@@ -56,9 +61,34 @@
               href: tenant-restrictions.md
             - name: SAML トークン暗号化 (プレビュー) の構成
               href: howto-saml-token-encryption.md
-        - name: エンドユーザーのポータル
-          href: end-user-experiences.md
-    - name: ハウツー ガイド
+            - name: エンドユーザーのポータル
+              href: end-user-experiences.md
+    - name: 自動ユーザー プロビジョニング
+      items:
+        - name: SCIM 対応アプリに対する自動プロビジョニング
+          href: use-scim-to-provision-users-and-groups.md
+    - name: オンプレミス アプリ用のアプリケーション プロキシ
+      items:
+        - name: アプリケーション プロキシ
+          href: application-proxy.md
+        - name: アプリケーション プロキシのデプロイ計画
+          href: application-proxy-deployment-plan.md
+        - name: Connectors
+          href: application-proxy-connectors.md
+        - name: コネクタ グループ
+          href: application-proxy-connector-groups.md
+        - name: セキュリティ
+          href: application-proxy-security.md
+        - name: ネットワーク トポロジ
+          href: application-proxy-network-topology.md
+        - name: 高可用性と負荷分散
+          href: application-proxy-high-availability-load-balancing.md
+        - name: リモート アクセス ソリューションの比較
+          href: application-proxy-migration.md
+- name: ハウツー ガイド
+  expanded: true
+  items:
+    - name: クラウド アプリとシングル サインオン
       items:
         - name: クラウド アプリの追加
           items:
@@ -182,36 +212,7 @@
                   href: access-panel-extension-problem-installing.md
                 - name: セルフサービス アプリ アクセスの使用時のエラー
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: リソース
-      items:
-        - name: Azure フィードバック フォーラム
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN フォーラム
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: 価格
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: サービスの更新情報
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: スタック オーバーフロー
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: ビデオ
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: 自動ユーザー プロビジョニング
-  items:
-    - name: 概要
-      expanded: true
-      items:
-        - name: プロビジョニングとは
-          href: user-provisioning.md
-    - name: チュートリアル
-      items:
-        - name: Saas アプリケーションのチュートリアル
-          href: /azure/active-directory/saas-apps/
-    - name: 概念
-      items:
-        - name: SCIM 対応アプリに対する自動プロビジョニング
-          href: use-scim-to-provision-users-and-groups.md
-    - name: ハウツー ガイド
+    - name: 自動ユーザー プロビジョニング
       items:
         - name: '[ユーザー プロビジョニングの構成]'
           items:
@@ -223,8 +224,6 @@
               href: configure-automatic-user-provisioning-portal.md
             - name: アプリケーション属性のカスタマイズ
               href: Customize-application-attributes.md
-            - name: 属性マッピングの式の書き方
-              href: functions-for-customizing-application-data.md
             - name: スコープ フィルター
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: プロビジョニング状態の確認
@@ -245,50 +244,7 @@
               href: application-provisioning-config-problem-no-users-provisioned.md
             - name: 間違ったユーザーがプロビジョニングされている - ギャラリー アプリ
               href: application-provisioning-config-problem-wrong-users-provisioned.md
-    - name: リソース
-      items:
-        - name: Azure フィードバック フォーラム
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN フォーラム
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: 価格
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: サービスの更新情報
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: スタック オーバーフロー
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: ビデオ
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
-- name: オンプレミス アプリ用のアプリケーション プロキシ
-  items:
-    - name: 概要
-      expanded: true
-      items:
-        - name: アプリケーション プロキシとは
-          href: what-is-application-proxy.md
-    - name: チュートリアル
-      items:
-        - name: オンプレミス アプリの追加 - ポータル
-          href: application-proxy-add-on-premises-application.md
-    - name: 概念
-      items:
-        - name: アプリケーション プロキシ
-          href: application-proxy.md
-        - name: アプリケーション プロキシのデプロイ計画
-          href: application-proxy-deployment-plan.md
-        - name: Connectors
-          href: application-proxy-connectors.md
-        - name: コネクタ グループ
-          href: application-proxy-connector-groups.md
-        - name: セキュリティ
-          href: application-proxy-security.md
-        - name: ネットワーク トポロジ
-          href: application-proxy-network-topology.md
-        - name: 高可用性と負荷分散
-          href: application-proxy-high-availability-load-balancing.md
-        - name: リモート アクセス ソリューションの比較
-          href: application-proxy-migration.md
-    - name: ハウツー ガイド
+    - name: オンプレミス アプリ用のアプリケーション プロキシ
       items:
         - name: コネクタの構成
           items:
@@ -376,21 +332,27 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: アプリケーション プロキシでの CORS の問題
               href: application-proxy-understand-cors-issues.md
-    - name: リファレンス
+- name: リファレンス
+  items:
+    - name: 自動ユーザー プロビジョニング
+      items:
+        - name: 属性マッピングの式の書き方
+          href: functions-for-customizing-application-data.md
+    - name: オンプレミス アプリ用のアプリケーション プロキシ
       items:
         - name: アプリケーション プロキシのバージョン履歴
           href: application-proxy-release-version-history.md
-    - name: リソース
-      items:
-        - name: Azure フィードバック フォーラム
-          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-        - name: MSDN フォーラム
-          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
-        - name: 価格
-          href: 'https://azure.microsoft.com/pricing/details/active-directory'
-        - name: サービスの更新情報
-          href: 'https://azure.microsoft.com/updates/?product=active-directory'
-        - name: スタック オーバーフロー
-          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
-        - name: ビデオ
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'
+- name: リソース
+  items:
+    - name: Azure フィードバック フォーラム
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

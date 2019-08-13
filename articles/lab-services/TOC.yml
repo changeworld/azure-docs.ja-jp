@@ -247,11 +247,11 @@
               href: devtest-lab-mandatory-artifacts.md
         - name: CI/CD との統合
           items:
-            - name: ラボを Azure DevOps CI/CD パイプラインに統合する
-              href: devtest-lab-integrate-ci-cd-vsts.md
-            - name: 環境を Azure DevOps CI/CD パイプラインに統合する
+            - name: ラボを Azure Pipelines CI/CD パイプラインに統合する
+              href: devtest-lab-integrate-ci-cd.md
+            - name: 環境を Azure Pipelines CI/CD パイプラインに統合する
               href: integrate-environments-devops-pipeline.md
-            - name: Azure DevOps のビルドとリリースのパイプライン内で DevTest Labs を使用する
+            - name: Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する
               href: use-devtest-labs-build-release-pipelines.md
         - name: ラボの使用状況のレポート
           href: report-usage-across-multiple-labs-subscriptions.md

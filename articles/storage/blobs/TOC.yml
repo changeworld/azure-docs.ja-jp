@@ -137,6 +137,8 @@
           items:
             - name: アクセス層
               href: storage-blob-storage-tiers.md
+            - name: Archive Storage からのデータのリハイドレート
+              href: storage-blob-rehydration.md
             - name: Azure Blob Storage のライフサイクルの管理
               href: storage-lifecycle-management-concepts.md
         - name: パフォーマンスとスケーリング

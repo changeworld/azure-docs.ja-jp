@@ -25,14 +25,6 @@
       href: ../hdinsight-component-versioning.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: HDInsight 4.0
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
-    - name: トラブルシューティング
-      items:
-        - name: Apache HBase REST が応答しない
-          href: ./hbase-troubleshoot-rest-not-spending.md
-        - name: リージョン サーバー上の固定 CPU
-          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
-        - name: '"hbase hbck" コマンドの使用時のタイムアウト'
-          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
 - name: 方法
   items:
     - name: クラスター ストレージの使用
@@ -167,8 +159,25 @@
         - name: HDInsight クラスター用の OS の修正プログラム
           href: ../hdinsight-os-patching.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
     - name: トラブルシューティング
-      href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
       items:
+        - name: リソースのトラブルシューティング
+          href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: Apache Phoenix のビューにデータがない
+          href: ./hbase-troubleshoot-phoenix-no-data.md
+        - name: BindException - 使用中のアドレス
+          href: ./hbase-troubleshoot-bindexception-address-use.md
+        - name: Apache HBase を起動できない
+          href: ./hbase-troubleshoot-start-fails.md
+        - name: リージョン サーバーに関する問題
+          href: ./hbase-troubleshoot-unassigned-regions.md
+        - name: Apache Phoenix の接続に関する問題
+          href: ./hbase-troubleshoot-phoenix-connectivity.md
+        - name: Apache HBase REST が応答しない
+          href: ./hbase-troubleshoot-rest-not-spending.md
+        - name: リージョン サーバー上の固定 CPU
+          href: ./hbase-troubleshoot-pegged-cpu-region-server.md
+        - name: '"hbase hbck" コマンドの使用時のタイムアウト'
+          href: ./hbase-troubleshoot-timeouts-hbase-hbck.md
         - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
         - name: Apache Hadoop HDFS のトラブルシューティング

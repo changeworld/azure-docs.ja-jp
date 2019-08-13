@@ -9,10 +9,14 @@
   items:
     - name: 'C# の使用'
       href: Quickstart.md
+    - name: Swift の使用 (iOS)
+      href: ios-quickstart.md
 - name: チュートリアル
   items:
     - name: Immersive Reader の起動 (Node.js)
       href: tutorial.md
+    - name: Immersive Reader への画像 (Swift)
+      href: ios-picture-immersive-reader-tutorial.md
 - name: 操作方法
   items:
     - name: Azure Active Directory 認証
@@ -21,6 +25,8 @@
   items:
     - name: SDK リファレンス
       href: reference.md
+    - name: iOS SDK のリファレンス
+      href: ios-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ
