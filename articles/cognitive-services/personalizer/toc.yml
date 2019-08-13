@@ -8,9 +8,12 @@
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
 - name: クイック スタート
   items:
-    - name: フィードバック ループを作成して使用する
+    - name: 'C# の使用'
       href: csharp-quickstart-commandline-feedback-loop.md
       displayName: 'code, sample, quickstart, c#'
+    - name: Python の使用
+      href: python-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, python'
 - name: 概念
   items:
     - name: Personalizer のしくみ

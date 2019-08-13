@@ -320,20 +320,20 @@ Salesforce からデータをコピーするとき、次の Salesforce のデー
 | Checkbox |Boolean |
 | Currency |Decimal |
 | Date |DateTime |
-| Date/Time |DateTime |
+| 日付/時刻 |DateTime |
 | Email |String |
 | Id |String |
-| Lookup Relationship |String |
-| Multi-Select Picklist |String |
+| 参照リレーションシップ |String |
+| 複数選択の候補リスト |String |
 | Number |Decimal |
 | Percent |Decimal |
-| Phone |String |
-| Picklist |String |
+| 電話 |String |
+| 候補リスト |String |
 | Text |String |
-| Text Area |String |
-| Text Area (Long) |String |
-| Text Area (Rich) |String |
-| Text (Encrypted) |String |
+| テキスト領域 |String |
+| テキスト領域 (ロング) |String |
+| テキスト領域 (リッチ) |String |
+| テキスト (暗号化) |String |
 | URL |String |
 
 ## <a name="next-steps"></a>次の手順

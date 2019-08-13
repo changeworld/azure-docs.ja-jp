@@ -63,8 +63,6 @@
       href: samples-resource-manager-templates.md
 - name: 概念
   items:
-    - name: App Service の特長
-      href: app-service-how-works-readme.md
     - name: App Service プラン
       href: overview-hosting-plans.md
     - name: OS 機能
