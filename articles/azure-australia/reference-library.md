@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: grgale
-ms.openlocfilehash: 0c575076439e3405d34fe0ef3beff0242a53a8c5
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 48b4b71d80bcef1eaf3bf89c0b14c8033748684e
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601811"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779342"
 ---
 # <a name="additional-documentation-and-resources-by-focus-area"></a>追加のドキュメントとリソース (対象領域別)
 
@@ -22,7 +22,7 @@ ms.locfileid: "68601811"
 * [Microsoft Service Trust Portal のオーストラリアに関するページ](https://aka.ms/au-irap)
 * [Microsoft セキュリティ センターの CCSL に関するページ](https://www.microsoft.com/trustcenter/compliance/ccsl)
 * [PROTECTED に関する Azure のセキュリティとコンプライアンスのブループリント](https://aka.ms/au-protected)
-* [Microsoft Azure でのテナントの分離](https://docs.microsoft.com/azure/security/azure-isolation)
+* [Microsoft Azure でのテナントの分離](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices)
 * [オーストラリアの Information Security Manual](https://www.cyber.gov.au/ism)
 * [Australian Cyber Security Centre (ACSC) の認定クラウ ドリスト](https://www.cyber.gov.au/irap/asd-certified-cloud-services)
 
@@ -32,7 +32,7 @@ ms.locfileid: "68601811"
 * [キー、シークレット、証明書について](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates)
 * [Azure Key Vault のファイアウォールと仮想ネットワークを構成する](https://docs.microsoft.com/azure/key-vault/key-vault-network-security)
 * [キー コンテナーへのアクセスをセキュリティで保護する](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)
-* [保存時の Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+* [保存時の Azure Disk Encryption](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 * [.NET で Azure Windows 仮想マシンを使用して Azure Key Vault を使用する方法](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [Azure Key Vault のマネージド ストレージ アカウント - PowerShell](https://docs.microsoft.com/azure/key-vault/tutorial-net-windows-virtual-machine)
 * [キー ローテーションと監査を設定する](https://docs.microsoft.com/azure/key-vault/key-vault-key-rotation-log-monitoring)
@@ -68,7 +68,7 @@ ms.locfileid: "68601811"
 * [Azure RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Azure Privileged Identify Management の概要](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure)
 * [Azure 管理グループの概要](https://docs.microsoft.com/azure/governance/management-groups/)
-* [Azure の ID とアクセス制御のベスト プラクティス](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices)
+* [Azure の ID とアクセス制御のベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
 * [Azure AD グループの管理](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 * [ハイブリッド ID](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
 * [RBAC カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)

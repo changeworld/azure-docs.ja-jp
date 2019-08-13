@@ -53,7 +53,7 @@ Dynamics CE オファーまたは Dynamics Ops オファーを既に発行して
 > [!NOTE]
 > このステップで法的契約に署名するには、パートナー センターでアカウントに対する "*所有者*" または "*マネージャー*" のロールが必要です。 前のステップで[パートナー センター アカウントをアクティブ化する](#set-up-your-microsoft-partner-center-account)ことによって Cloud パートナー ポータル アカウントの移行を完了した場合、アクセス許可もパートナー センターに移行されています。
 
-1. https://partner.microsoft.com/dashboard/account/agreements に移動します (メッセージが表示されたらパートナー センターにサインインします)。
+1. [https://partner.microsoft.com/dashboard/account/agreements](https://partner.microsoft.com/dashboard/account/agreements ) に移動します (メッセージが表示されたらパートナー センターにサインインします)。
 
 2. **[商業マーケットプレース]** という見出しの下で、**Microsoft Business Applications ISV 補遺**を見つけます。
 
