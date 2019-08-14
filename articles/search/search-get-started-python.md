@@ -1,5 +1,5 @@
 ---
-title: 'Python のクイック スタート: Azure Search REST API を使用したインデックスの作成、読み込み、クエリの実行 - Azure Search'
+title: 'Python のクイック スタート: REST API を使用してインデックスの作成、読み込み、クエリの実行を行う - Azure Search'
 description: Python、Jupyter Notebook、Azure Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 ms.date: 07/11/2019
 author: heidisteen
@@ -8,14 +8,13 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 1c570549514ff5a5e7e598aa54d8e2ac4b5a5341
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.topic: quickstart
+ms.openlocfilehash: 9e12133179ca02c3474e768305feb8ae19a6178e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849778"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840753"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]

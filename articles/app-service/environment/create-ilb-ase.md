@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 05/28/2019
+ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5b05755502ad5836a21080a122d2e1721825f10c
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 4b41772a4e904603309f45244cf4df22af876a32
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734679"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68812745"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
 
@@ -109,7 +109,7 @@ DNS を構成するには、次の手順に従います。
 
 - " *&lt;ASE 名&gt;.appserviceenvironment.net*" 用のゾーンを作成する
 - そのゾーンに、ILB の IP アドレスに * を指定する A レコードを作成する 
-- " *&lt;ASE 名&gt;.scm.appserviceenvironment.net*" に scm という名前のゾーンを作成する
+- " *&lt;ASE 名&gt;.appserviceenvironment.net*" に scm という名前のゾーンを作成する
 - ILB の IP アドレスを指す A レコードを scm ゾーンに作成する
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE で発行する

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
-ms.date: 04/26/2019
+ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce18b0060fe0bd0f9d5a8308fe1358e300c04441
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c0c65f364e9e72d87d6618944ab296354e03a1fc
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165621"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736190"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights とは
 
@@ -33,7 +33,7 @@ Time Series Insights には 4 つの主要な仕事があります。
 
 社内使用向け、または外部の顧客が使用するアプリケーションをビルドする場合は、バック エンドとして Time Series Insights を使用できます。 これを使用して、時系列データのインデックス作成、格納、集計を行うことができます。 ここでカスタムの視覚化機能やユーザー エクスペリエンスを構築するには、[クライアント SDK](tutorial-explore-js-client-lib.md) を使用します。 Time Series Insights にはまた、これらのカスタマイズされたシナリオを可能にするための[クエリ API](how-to-shape-query-json.md) もいくつか用意されています。
 
-時系列データは、資産やプロセスの経時的な変化を表します。 時系列データにはタイムスタンプでインデックスが付けられ、最も重要な軸である時間に沿ってデータが整理されます。 一般に時系列データは時間順に到着するので、通常はデータベースに対する更新ではなく挿入として扱われます。
+時系列データは、資産やプロセスの経時的な変化を表します。 時系列データにはタイムスタンプでインデックスが付けられ、最も重要な軸である時間に沿ってデータが整理されます。 一般に時系列データは時間順に到着するので、データベースに対する更新ではなく挿入として扱われます。
 
 大量の時系列データの格納、インデックス作成、クエリ、分析、視覚化は困難な可能性があります。
 Azure Time Series Insights では、すべての新しいイベントが行としてキャプチャおよび格納され、変更が時間とともに効率的に測定されます。 これにより、時間をさかのぼって過去から分析情報を導き出し、将来の変更を予測することができます。

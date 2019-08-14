@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: 18f54e64498c7809e662ceb71d1e497a0f275ad6
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 545f679b11295485567a817d144225b361a262ce
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480453"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815210"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>クイック スタート:Python と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
 
@@ -173,13 +173,13 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>サンプル データの確認と追加
 
-今度はデータ エクスプローラーに戻って、グラフに追加された頂点を確認し、さらにデータ ポイントを追加してみましょう。
+頂点とエッジが挿入されたら、データ エクスプローラーに戻り、グラフに追加された頂点を確認して、データ ポイントを追加することができます。
 
 1. **[データ エクスプローラー]** をクリックし、**sample-graph** を展開して、 **[グラフ]** 、 **[フィルターの適用]** の順にクリックします。 
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
 
-2. **[結果]** リストを見ると、新しいユーザーがグラフに追加されていることがわかります。 **ben** を選択すると、彼が robin に接続されていることがわかります。 ドラッグ アンド ドロップで頂点を移動したり、マウスのホイールを回して拡大および縮小したり、双方向矢印でグラフのサイズを大きくしたりできます。 
+2. **[結果]** リストを見ると、3 人の新しいユーザーがグラフに追加されていることがわかります。 ドラッグ アンド ドロップで頂点を移動したり、マウスのホイールを回して拡大および縮小したり、双方向矢印でグラフのサイズを大きくしたりできます。 
 
    ![Azure Portal のデータ エクスプローラーにおけるグラフの新しい頂点](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
 
@@ -193,6 +193,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     key|value|メモ
     ----|----|----
+    pk|/pk| 
     id|ashley|頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     gender|female| 
     tech | java | 
@@ -210,6 +211,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     key|value|メモ
     ----|----|----
+    pk|/pk| 
     id|rakesh|頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     gender|male| 
     school|MIT| 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8babf2a6a4f4a15c6d2979ea0d5ce558dfb0cd6a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6c9de4a9b72e446a7d2b6687af380ee910b58980
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052137"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741287"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル:ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する
 
@@ -83,7 +83,7 @@ Windows 10 1803 以降では、フェデレーション ドメイン内のデバ
 | サービス接続ポイントの構成 | ![○][1] | ![○][1] | ![○][1] |
 | 要求の発行の設定 |     | ![○][1] | ![○][1] |
 | 非 Windows 10 デバイスの有効化 |       |        | ![○][1] |
-| 参加済みデバイスの確認 | ![○][1] | ![○][1] | [○][1] |
+| 参加済みデバイスの確認 | ![○][1] | ![○][1] | [確認事項][1] |
 
 ## <a name="configure-a-service-connection-point"></a>サービス接続ポイントの構成
 
@@ -174,10 +174,19 @@ Azure AD のフェデレーション構成では、Azure AD に対するデバ�
 
 最新の Windows デバイスは、統合 Windows 認証を使用して、オンプレミス フェデレーション サービスによってホストされているアクティブな WS-Trust エンドポイント (1.3 または 2005 バージョン) に対する認証を行います。
 
+AD FS を使用している場合は、次の WS-Trust エンドポイントを有効にする必要があります。
+- `/adfs/services/trust/2005/windowstransport`
+- `/adfs/services/trust/13/windowstransport`
+- `/adfs/services/trust/2005/usernamemixed`
+- `/adfs/services/trust/13/usernamemixed`
+- `/adfs/services/trust/2005/certificatemixed`
+- `/adfs/services/trust/13/certificatemixed`
+
+> [!WARNING]
+> **adfs/services/trust/2005/windowstransport** と **adfs/services/trust/13/windowstransport** はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとして公開することはできません。 WS-Trust WIndows エンドポイントを無効にする方法の詳細については、「[プロキシの WS-TRUST Windows エンドポイントを無効にする](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)」を参照してください。 どのエンドポイントが有効になっているかは、AD FS 管理コンソールの **[サービス]**  >  **[エンドポイント]** で確認できます。
+
 > [!NOTE]
-> AD FS を使用する場合は、**adfs/services/trust/13/windowstransport** または **adfs/services/trust/2005/windowstransport** が有効になっている必要があります。 Web 認証プロキシを使用している場合は、このエンドポイントがプロキシ経由で公開されていることも確認します。 どのエンドポイントが有効になっているかは、AD FS 管理コンソールの **[サービス]**  >  **[エンドポイント]** で確認できます。
->
-> オンプレミス フェデレーション サービスとして AD FS を使用していない場合は、ベンダーの指示に従って、WS-Trust 1.3 または 2005 のエンドポイントがサポートされていることと、それらが Metadata Exchange ファイル (MEX) を通じて公開されていることを確認してください。
+>オンプレミス フェデレーション サービスとして AD FS を使用していない場合は、ベンダーの指示に従って、WS-Trust 1.3 または 2005 のエンドポイントがサポートされていることと、それらが Metadata Exchange ファイル (MEX) を通じて公開されていることを確認してください。
 
 デバイス登録を完了するには、Azure DRS で受信されるトークンに次の要求が存在する必要があります。 Azure DRS は、この情報の一部を使用して Azure AD にデバイス オブジェクトを作成します。 その後、この情報は、新たに作成されたデバイス オブジェクトをオンプレミスのコンピューター アカウントに関連付けるために、Azure AD Connect によって使用されます。
 

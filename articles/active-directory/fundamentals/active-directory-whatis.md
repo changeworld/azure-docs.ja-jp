@@ -10,12 +10,12 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3087f0ac69126c6d509eee77abe15cc35319dfb
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: eda457747a6a3e374e7fdea571f64446e15ded21
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693918"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774169"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 
@@ -33,7 +33,7 @@ Azure AD は、次の方を対象としています。
 
 - **IT 管理者。** IT 管理者は Azure AD を使用して、ビジネス要件に基づいて自社のアプリやアプリ リソースへのアクセスを制御できます。 たとえば、Azure AD を使用して、重要な組織リソースへのアクセス時に多要素認証を必須にすることができます。 さらに、Azure AD を使用して、既存の Windows Server AD と クラウド アプリ (Office 365 など) の間のユーザー プロビジョニングを自動化できます。 最後に、Azure AD は、ユーザー ID と資格情報を自動的に保護し、アクセス ガバナンス要件を満たすうえで強力なツールとなります。 使用を開始するには、[Azure Active Directory Premium の 30 日間無料試用版](https://azure.microsoft.com/trial/get-started-active-directory/)にサインアップしてください。
 
-- **アプリ開発者。** Azure AD は、アプリにシングル サインオン (SSO) を追加して、アプリがユーザーの既存の資格情報で動作できるようにするための標準ベースのアプローチをアプリ開発者に提供します。 また Azure AD は、既存の組織データを使用したアプリ エクスペリエンスのパーソナライズに役立つ API も提供します。 使用を開始するには、[Azure Active Directory Premium の 30 日間無料試用版](https://azure.microsoft.com/trial/get-started-active-directory/)にサインアップしてください。 詳細については、[開発者向け Azure Active Directory](../develop/index.yml) に関するページも参照してください。
+- **アプリ開発者。** アプリ開発者は、アプリにシングル サインオン (SSO) を追加するための標準ベースのアプローチとして Azure AD を使用して、ユーザーの既存の資格情報を使用できるようにすることができます。 また Azure AD は、既存の組織データを使用したアプリ エクスペリエンスのパーソナライズに役立つ API も提供します。 使用を開始するには、[Azure Active Directory Premium の 30 日間無料試用版](https://azure.microsoft.com/trial/get-started-active-directory/)にサインアップしてください。 詳細については、[開発者向け Azure Active Directory](../develop/index.yml) に関するページも参照してください。
 
 - **Microsoft 365、Office 365、Azure、または Dynamics CRM Online のサブスクライバー。** サブスクライバーの方であれば、Azure AD を既にお使いです。 Microsoft 365、Office 365、Azure、および Dynamics CRM Online の各テナントは、自動的に Azure AD テナントになります。 統合されたクラウド アプリへのアクセスの管理をすぐに始めることができます。
 

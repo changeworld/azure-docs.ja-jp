@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/25/2019
 ms.author: rkarlin
-ms.openlocfilehash: cdfe22b67585221e2d7e17f47c6a09ba929d68ef
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cd3288e308308729cf9b97e3c699d489857840a8
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599017"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780375"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>チュートリアル:Azure Sentinel プレビューで脅威への自動対応を設定する
 
@@ -90,7 +90,7 @@ Azure Sentinel に新しいセキュリティ プレイブックを作成する�
 
 プレイブックをオンデマンドで実行するには:
 
-1. **[ケース]** ページで、ケースを選択して **[View full details]\(完全な詳細を表示\)** をクリックします。
+1. **[インシデント]** ページで、インシデントを選択して **[View full details]\(完全な詳細を表示\)** をクリックします。
 
 2. **[アラート]** タブで、プレイブックを実行するアラートをクリックし、右側にスクロールして **[プレイブックの表示]** をクリックし、サブスクリプションで使用可能なプレイブックの一覧から、**実行**するプレイブックを選択します。 
 

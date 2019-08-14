@@ -4,14 +4,14 @@ description: Azure Cosmos DB で競合を管理する方法について
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 06/25/2019
+ms.date: 08/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 96171d4729187ca03f1e9529551a7fb6a26c6976
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 77fb0e195cee03405c4a601fe8c57d4a2690a4b2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360361"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815077"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB での競合解決ポリシーの管理
 
@@ -19,7 +19,7 @@ ms.locfileid: "68360361"
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>最終書き込み者優先競合解決ポリシーを作成する
 
-以下のサンプルでは、最終書き込み者優先競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 最終書き込み者優先の既定のパスは、タイムスタンプ フィールドまたは `_ts` プロパティです。 また、これは数値型のユーザー定義パスに設定することもできます。 競合した場合には、最大値が優先されます。 このパスが設定されていない場合または無効な場合は、`_ts` が既定値になります。 このポリシーを使用して解決された競合は、競合フィードに表示されません。 このポリシーはすべての API で使用できます。
+以下のサンプルでは、最終書き込み者優先競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 最終書き込み者優先の既定のパスは、タイムスタンプ フィールドまたは `_ts` プロパティです。 SQL API の場合は、これを数値型のユーザー定義パスに設定することもできます。 競合した場合には、最大値が優先されます。 このパスが設定されていない場合または無効な場合は、`_ts` が既定値になります。 このポリシーを使用して解決された競合は、競合フィードに表示されません。 このポリシーはすべての API で使用できます。
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
@@ -114,7 +114,6 @@ udp_collection = self.try_create_document_collection(
 
 > [!IMPORTANT]
 > ストアド プロシージャと同様、カスタム競合解決プロシージャは、同じパーティション キーを使用してすべてのデータにアクセスすることも、挿入、更新、または削除操作を実行して競合を解決することもできます。
-
 
 このストアド プロシージャの例では、`/myCustomId` パスから最小値を選択することで競合を解決します。
 
@@ -273,7 +272,6 @@ udp_collection = self.try_create_document_collection(
 
 コンテナーが作成されたら、`resolver` ストアド プロシージャを作成する必要があります。
 
-
 ## <a name="create-a-custom-conflict-resolution-policy"></a>カスタム競合解決ポリシーを作成する
 
 以下のサンプルでは、カスタム競合解決ポリシーを使用してコンテナーを設定する方法について説明します。 これらの競合は競合フィードに表示されます。
@@ -428,10 +426,10 @@ while conflict:
 
 Azure Cosmos DB の次の概念について学習しましょう。
 
-* [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
-* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
-* [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-multiple-write-regions)
-* [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
-* [パーティション分割とデータ分散](partition-data.md)
-* [Azure Cosmos DB のインデックス作成](indexing-policies.md)
+- [グローバル分散 - 内部のしくみ](global-dist-under-the-hood.md)
+- [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
+- [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-multiple-write-regions)
+- [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+- [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
+- [パーティション分割とデータ分散](partition-data.md)
+- [Azure Cosmos DB のインデックス作成](indexing-policies.md)
