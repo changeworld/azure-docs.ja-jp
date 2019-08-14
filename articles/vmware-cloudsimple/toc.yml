@@ -58,6 +58,8 @@
           href: create-cloudsimple-service.md
         - name: CloudSimple ポータルにアクセスする
           href: access-cloudsimple-portal.md
+        - name: オンプレミスのファイアウォールの構成
+          href: on-premises-firewall-configuration.md
         - name: ノードを管理する
           items:
             - name: ノードをプロビジョニングする
@@ -81,7 +83,7 @@
             - name: プライベート クラウドを削除する
               href: delete-private-cloud.md
         - name: CloudSimple アクティビティを監視する
-          href: 'https://docs.azure.cloudsimple.com/activity/'
+          href: monitor-activity.md
         - name: プライベート クラウドのネットワークを設定する
           items:
             - name: VLAN とサブネットを作成して管理する
