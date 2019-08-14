@@ -1,29 +1,22 @@
 ---
-title: Azure Application Gateway Azure CLI サンプル | Microsoft Docs
-description: Azure Application Gateway CLI サンプル
+title: Azure Application Gateway のための Azure CLI の例
+description: Azure Application Gateway のための Azure CLI の例
 services: application-gateway
-documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-ms.date: 01/30/2018
+ms.topic: sample
+ms.date: 08/07/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 90e5c52c9efae7538308371a157b552d4e4d12ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eac8569f16c84211c1e881a9cb8daab9d7e602b5
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831131"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824504"
 ---
-# <a name="azure-application-gateway-azure-cli-samples"></a>Azure Application Gateway CLI Azure サンプル
+# <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure Application Gateway のための Azure CLI の例
 
-次の表には、アプリケーション ゲートウェイを作成する Azure CLI スクリプトのサンプルへのリンクが含まれています。
+次の表には、Azure Application Gateway のための Azure CLI スクリプトの例へのリンクが含まれています。
 
 | | |
 |---|---|

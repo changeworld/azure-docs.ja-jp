@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/04/2019
+ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e556ce95107e820dc04d34c05bea3a2840aab7e8
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: d4f5004571c849d90b7d811906684e66c10ee487
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798555"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825291"
 ---
 # <a name="tutorial-integrate-wandera-with-azure-active-directory"></a>チュートリアル:Wandera と Azure Active Directory の統合
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Wandera でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -66,9 +66,9 @@ Wandera に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
 2. **[Wandera SSO の構成](#configure-wandera-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Wandera のテスト ユーザーの作成](#create-wandera-test-user)** - Wandera で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Wandera のテスト ユーザーの作成](#create-wandera-test-user)** - Wandera で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -88,7 +88,7 @@ Wandera に対する Azure AD SSO を構成してテストするには、次の�
     > [!NOTE]
     > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Wandera クライアント サポート チーム](https://www.wandera.com/about-wandera/contact/#supportsection)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードしてコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -106,7 +106,27 @@ Wandera に対する Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="configure-wandera-sso"></a>Wandera の SSO を構成する
 
-**Wandera** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と Azure portal からコピーした適切な URL を [Wandera サポート チーム](https://www.wandera.com/about-wandera/contact/#supportsection)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. Wandera 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Wandera のセットアップ]** をクリックすると、Wandera アプリケーションに移動します。 そこから、管理者の資格情報を入力して Wandera にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 4 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Wandera を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Wandera 企業サイトにサインインして、次の手順を実行します。
+
+4. ページの右上隅で、 **[設定]**  >  **[管理]**  >  **[シングル サインオン]** の順にクリックし、 **[Enable SAML 2.0]\(SAML 2.0 の有効化\)** オプションをオンにして、次の手順を実行します。
+
+    ![Wandera の構成](./media/wandera-tutorial/config01.png)
+
+    a. **[Or manually enter the required fields]\(または必須フィールドを手動で入力する\)** をクリックします。
+
+    b. **[IdP EntityId]** テキストボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
+
+    c. フェデレーション メタデータ XML をメモ帳で開き、その内容をコピーして **[IdP Public X.509 Certificate]\(IdP パブリック X.509 証明書\)** ボックスに貼り付けます。
+
+    d. **[Save]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -140,7 +160,7 @@ Wandera に対する Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="create-wandera-test-user"></a>Wandera のテスト ユーザーを作成する
 
-このセクションでは、Wandera で Britta Simon というユーザーを作成します。  [Wandera サポート チーム](https://www.wandera.com/about-wandera/contact/#supportsection)と連携して、Wandera プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Wandera で B.Simon というユーザーを作成します。  [Wandera サポート チーム](https://www.wandera.com/about-wandera/contact/#supportsection)と連携して、Wandera プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト
 

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 8b89f5572ae94986590fe76096daeb0ad088fe59
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668579"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828548"
 ---
 # <a name="tutorial-train-your-first-model"></a>チュートリアル:最初のモデルをトレーニングする
 
@@ -111,7 +111,7 @@ for alpha in alphas:
 experiment
 ```
 
-<table style="width:100%"><tr><th>EnableAdfsAuthentication</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td><a href="" target="_blank" rel="noopener">Azure portal へのリンク</a></td><td><a href="" target="_blank" rel="noopener">ドキュメントへのリンク</a></td></tr></table>
+<table style="width:100%"><tr><th>EnableAdfsAuthentication</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>ポータルでトレーニング結果を表示する
 
@@ -181,7 +181,7 @@ Azure Machine Learning service の他のチュートリアルを実行する予�
 
 1. ワークスペースで、 **[ノートブック VM]** を選択します。
 
-   ![VM サーバーを停止する](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![VM サーバーを停止する](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. 一覧から VM を選択します。
 

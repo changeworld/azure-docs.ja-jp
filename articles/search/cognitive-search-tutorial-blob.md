@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:インデックス パイプラインで Cognitive Services の REST API を呼び出す - Azure Search
+title: REST チュートリアル:AI エンリッチメント パイプラインで Cognitive Services を呼び出す - Azure Search
 description: JSON BLOB を介したデータの抽出と変換のために Azure Search のインデックス作成で行われる、データ抽出、自然言語、画像の AI 処理の例を、Postman と REST API を使用して段階的に説明していきます。
 manager: pablocas
 author: luiscabrer
@@ -9,13 +9,13 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: cedcc1be5525cc6932ff168e6549de84fa02a4ca
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.subservice: cognitive-search
+ms.openlocfilehash: d431f0ced5b417e178e064dca347ae8d78f14e5d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669105"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840877"
 ---
 # <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>REST チュートリアル:Azure Search のインデックス パイプラインで Cognitive Services API を呼び出す
 

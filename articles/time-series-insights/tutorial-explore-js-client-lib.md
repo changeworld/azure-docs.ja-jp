@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 2c1013829a7e6e94712e22ae235a47490c8c5eaa
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3e56792673c33ac641ce23213f2b3662b889ec2a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677658"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725660"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>チュートリアル:Azure Time Series Insights JavaScript クライアント ライブラリを調べる
 
@@ -40,14 +40,14 @@ JavaScript D3 ベースの Azure Time Series Insights クライアント ライ�
 
 * このチュートリアルでは、ブラウザーの**開発者ツール**機能を使用します。 最新の Web ブラウザー ([Microsoft Edge](/microsoft-edge/devtools-guide)、[Chrome](https://developers.google.com/web/tools/chrome-devtools/)、[FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools)、[Safari](https://developer.apple.com/safari/tools/)、その他) では、通常、キーボード上の F12 ホット キーを使用して **Web インスペクター ビュー**にアクセスできます。 ビューにアクセスする別の方法として、Web ページを右クリックして **[要素の検査]** を選択します。
 
-## <a name="video"></a>ビデオ
+## <a name="review-video"></a>ビデオの視聴
 
 このビデオでは、オープン ソースの Time Series Insights JavaScript SDK を紹介しています。
 <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
 
-## <a name="time-series-insights-sample-application"></a>Time Series Insights のサンプル アプリケーション
+## <a name="sample-application"></a>サンプル アプリケーション
 
 このチュートリアルでは、ホストされている無料の Time Series Insights サンプル アプリを使用して、アプリケーションの背後にあるソース コードと Time Series Insights JavaScript クライアント ライブラリを調べます。 サンプル アプリを使用して、JavaScript で Time Series Insights を操作する方法と、チャートやグラフを使ってデータを視覚化する方法を学習します。
 
@@ -100,7 +100,7 @@ JavaScript D3 ベースの Azure Time Series Insights クライアント ライ�
 
    [![本文のスクリプト](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png)](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-script.png#lightbox)
 
-## <a name="time-series-insights-javascript-client-library-concepts"></a>Time Series Insights JavaScript クライアント ライブラリの概念
+## <a name="javascript-client-library"></a>JavaScript クライアント ライブラリ
 
 Time Series Insights クライアント ライブラリ (*tsiclient.js*) は、2 つの重要な JavaScript 機能用の抽象化を提供します。
 
@@ -231,7 +231,7 @@ JavaScript コードの次のセクションでは、前述のパターンを使
 
 [![同じデータから作成される複数の種類のグラフ](media/tutorial-explore-js-client-lib/tcs-multiple-chart-types-from-the-same-data.png)](media/tutorial-explore-js-client-lib/tcs-multiple-chart-types-from-the-same-data.png#lightbox)
 
-## <a name="advanced-features"></a>高度な機能
+## <a name="learn-about-advanced-features"></a>高度な機能の学習
 
 Time Series Insights クライアント ライブラリには、データ視覚化を独創的に実装するために使用できるいくつかの追加機能があります。
 
