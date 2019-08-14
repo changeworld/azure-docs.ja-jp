@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - このシリーズの最初のチュートリアルを[完了](tutorial-prepare-vmware.md)します。 そうしないと、このチュートリアルの手順はうまくいきません。
 - 最初のチュートリアルでは、以下のことを行ったはずです。
     - Azure Migrate の [Azure アクセス許可を設定](tutorial-prepare-vmware.md#prepare-azure)する。
-    - 評価用に [VMware を準備する](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)。 VMware の設定を確認する必要があります。OVA テンプレートで VMware VM を作成するためのアクセス許可を持っている必要があります。 また、VM 検出用にアカウントが設定されている必要があります。 必要なポートが使用できる必要があり、Azure にアクセスするために必要な URL がわかっている必要があります。
+    - 評価用に [VMware を準備する](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)。 VMware の設定を確認する必要があります。OVA テンプレートで VMware VM を作成するためのアクセス許可を持っている必要があります。 また、VM 検出用にアカウントが設定されている必要があります。 必要なポートが使用可能であり、Azure にアクセスするための URL がわかっている必要があります。
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する
