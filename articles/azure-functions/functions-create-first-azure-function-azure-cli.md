@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 625fcda4b612fdeda940f9219238ac79354dd056
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4e65abdb500d61aa72b142f598a17e4cb8fb05f8
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444658"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949982"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>コマンド ラインから最初の関数を作成する
 
@@ -37,33 +37,7 @@ ms.locfileid: "67444658"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>ローカルの関数アプリ プロジェクトを作成する
-
-コマンド ラインから次のコマンドを実行し、現在のローカル ディレクトリの `MyFunctionProj` フォルダー内に関数アプリ プロジェクトを作成します。 GitHub リポジトリも `MyFunctionProj` 内に作成されます。
-
-```bash
-func init MyFunctionProj
-```
-
-メッセージが表示されたら、次の言語からワーカー ランタイムを選択します。
-
-+ `dotnet`: .NET クラス ライブラリ プロジェクト (.csproj) を作成します。
-+ `node`: JavaScript プロジェクトを作成します。
-
-コマンドを実行すると、次のような出力が表示されます。
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
-```
-
-次のコマンドを使用して、新しい `MyFunctionProj` プロジェクト フォルダーに移動します。
-
-```bash
-cd MyFunctionProj
-```
+[!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>拡張バンドルを有効にする
 

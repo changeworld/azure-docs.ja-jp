@@ -9,12 +9,12 @@ ms.date: 06/20/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7c83b382f8aca3d8fda1c0de4785c51f3f3b1fc5
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 0f73871d8248b2f52bab5934eef03d883c72ed79
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302525"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985399"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
@@ -145,5 +145,4 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 * [開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)
 * [Azure ストレージ エクスプローラー](storage-explorers.md)
-* [Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)
-
+* [Shared Access Signatures (SAS) の使用](storage-sas-overview.md)

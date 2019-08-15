@@ -1,19 +1,19 @@
 ---
 title: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する | Microsoft Docs
 description: Azure portal、Azure PowerShell、または Azure CLI を使用して、Data Lake Storage Gen2 にアクセスできる新しいストレージ アカウントを作成する方法をすばやく学習します。
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: normesta
-ms.openlocfilehash: 297ab5971fdf60ce260808cb4864621ec1188b5e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.reviewer: stewu
+ms.openlocfilehash: f7c83e67c2162561aa579d38116f8ce01fceda9a
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360769"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014372"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
 
@@ -125,7 +125,7 @@ PowerShell を使用して Data Lake Storage Gen2 を操作するには、モジ
 Az.Storage モジュールのインストール
 
 ```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインする

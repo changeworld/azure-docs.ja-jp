@@ -11,10 +11,10 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.openlocfilehash: 768646522c2589c302fd7a58031d4ebdb7fcdc12
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68425878"
 ---
 # <a name="geo-restore-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の geo 復元
@@ -29,7 +29,7 @@ ms.locfileid: "68425878"
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>PowerShell を使用して Azure 地理的リージョンから復元する
 
-Geo バックアップから復元するには、[Get-AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup] and [Restore-AzSqlDatabase][Restore-AzSqlDatabase] コマンドレットを使用します。
+Geo バックアップから復元するには、[Get-AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup] および [Restore-AzSqlDatabase][Restore-AzSqlDatabase] コマンドレットを使用します。
 
 > [!NOTE]
 > Gen2 への geo リストアを行うことができます。 そのためには、省略可能なパラメーターとして Gen2 の ServiceObjectiveName (例: DW1000**c**) を指定します。
@@ -79,7 +79,7 @@ Azure SQL Data Warehouse を geo バックアップから復元するには、�
 1. **[+ Create a resource]\(+ リソースの作成\)** をクリックし、SQL Data Warehouse を検索して、 **[作成]** をクリックします。
 
     ![新しい DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. **[基本]** タブで必要な情報を入力し、 **[Next: Additional settings]\(次へ:追加設定\)** をクリックします。
+1. **[基本]** タブで要求された情報を入力し、 **[次へ: 追加設定]** をクリックします。
 
     ![基本](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 1. **[既存のデータを使用します]** パラメーターで、 **[バックアップ]** を選択し、スクロール ダウン オプションから適切なバックアップを選択します。 **[Review + Create]\(レビュー + 作成\)** をクリックします。

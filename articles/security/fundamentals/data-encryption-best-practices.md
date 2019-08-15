@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 4df024f9ff37121df4d9be51ae1fa540028ddd3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727429"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934740"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure のデータ セキュリティと暗号化のベスト プラクティス
 この記事では、データ セキュリティと暗号化のベスト プラクティスについて説明します。
@@ -97,7 +97,7 @@ Azure Storage と Azure SQL Database では、保存データは既定で暗号�
 
 転送中のデータの保護は、データ保護戦略に欠かせない要素です。 データはさまざまな場所を経由して転送されるため、一般的には常時 SSL/TLS プロトコルを使用してデータをやり取りすることが推奨されています。 状況によっては、オンプレミスとクラウド インフラストラクチャ間の通信チャネル全体を、VPN を使用して隔離する必要があります。
 
-オンプレミス インフラストラクチャと Azure 間のデータ移動に対して、HTTPS や VPN などの適切なセキュリティ対策を検討してください。 暗号化されたトラフィックを Azure 仮想ネットワークとオンプレミスの場所の間でパブリック インターネット上で送信する場合は、[Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/) を使用してください。
+オンプレミス インフラストラクチャと Azure 間のデータ移動に対して、HTTPS や VPN などの適切なセキュリティ対策を検討してください。 暗号化されたトラフィックを Azure 仮想ネットワークとオンプレミスの場所の間でパブリック インターネット上で送信する場合は、[Azure VPN Gateway](../../vpn-gateway/index.yml) を使用してください。
 
 Azure VPN Gateway、SSL/TLS、および HTTPS の使用に固有のベスト プラクティスを次に示します。
 

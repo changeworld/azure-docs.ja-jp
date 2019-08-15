@@ -8,12 +8,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c9951a5fcfb30ed229b2bc7286b6d274649e6136
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a759a7638f5c960fd69ce86896cfdf53615241c9
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722074"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985510"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -50,7 +50,7 @@ Azure Portal に戻り、ストレージ アカウントを選択します。 �
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>Shared Access Signature を作成する
-Shared Access Signature (SAS) は、ブラウザーで実行されているコードによって、BLOB ストレージへの要求を承認するために使用されます。 SAS を使用すると、クライアントはアカウント アクセス キーまたは接続文字列がなくても、ストレージ リソースへのアクセスを承認することができます。 SAS の詳細については、「[Shared Access Signatures (SAS) の使用](../common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+Shared Access Signature (SAS) は、ブラウザーで実行されているコードによって、BLOB ストレージへの要求を承認するために使用されます。 SAS を使用すると、クライアントはアカウント アクセス キーまたは接続文字列がなくても、ストレージ リソースへのアクセスを承認することができます。 SAS の詳細については、「[Shared Access Signatures (SAS) の使用](../common/storage-sas-overview.md)」を参照してください。
 
 Azure Cloud Shell を介して Azure CLI を使用するか、Azure Storage Explorer を使用して、SAS を作成することができます。 次の表は、CLI を使用して SAS を生成するために値を指定する必要があるパラメーターを示しています。
 

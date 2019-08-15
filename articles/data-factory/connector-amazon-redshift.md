@@ -210,17 +210,17 @@ Amazon Redshift からデータをコピーするとき、Amazon Redshift のデ
 | Amazon Redshift のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | BIGINT |Int64 |
-| BOOLEAN |String |
-| CHAR |String |
+| BOOLEAN |string |
+| CHAR |string |
 | DATE |DateTime |
 | DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
 | REAL |Single |
 | SMALLINT |Int16 |
-| TEXT |String |
+| TEXT |string |
 | TIMESTAMP |DateTime |
-| VARCHAR |String |
+| VARCHAR |string |
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

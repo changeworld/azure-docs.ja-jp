@@ -1,6 +1,6 @@
 ---
-title: 複合エンティティ型
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 複合エンティティ型 - LUIS
+titleSuffix: Azure Cognitive Services
 description: 複合エンティティは、事前構築済みエンティティ、シンプル、正規表現、リスト エンティティなどの他のエンティティで構成されます。 個別のエンティティが、エンティティ全体を形成します。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: 55dcc5666e63b8a87ddcb13696991fe02843fbbd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: ea258275cf954bc6e06da03324c2ae93de0e7fde
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480111"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563247"
 ---
 # <a name="composite-entity"></a>複合エンティティ 
 

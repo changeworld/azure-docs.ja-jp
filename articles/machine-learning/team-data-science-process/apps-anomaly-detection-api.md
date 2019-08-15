@@ -12,10 +12,10 @@ ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "64926182"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
@@ -137,7 +137,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 | 出力 | 説明 |
 | --- | --- |
 | Time |生データのタイムスタンプ。または、集計/欠損データ補完が適用された場合は集計/補完データのタイムスタンプ。 |
-| データ |生データの値。または、集計/欠損データ補完が適用された場合は集計/補完データの値。 |
+| Data |生データの値。または、集計/欠損データ補完が適用された場合は集計/補完データの値。 |
 | TSpike |T スパイク検出機能によってスパイクが検出されたかどうかを示す 2 進値のインジケーター |
 | ZSpike |Z スパイク検出機能によってスパイクが検出されたかどうかを示す 2 進値のインジケーター |
 | rpscore |双方向のレベルの変化に関する異常スコアを表す浮動小数点数 |

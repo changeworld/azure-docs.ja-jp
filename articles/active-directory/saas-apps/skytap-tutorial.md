@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb4ce8cbbfec58d9c7980954691fd6c71266d23
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 7eae1c9a42547c73cc42868bac1f1f484b6354fa
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588035"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717411"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skytap"></a>チュートリアル:Azure Active Directory と Skytap の統合
 
@@ -191,7 +191,7 @@ Skytap で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-skytap-test-user"></a>Skytap のテスト ユーザーの作成
 
-このセクションでは、Skytap で Britta Simon というユーザーを作成します。  [Skytap サポート チーム](mailto:support@skytap.com)と協力して、Skytap プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Skytap で Britta Simon というユーザーを作成します。 Skytap アカウント内のすべての管理者またはユーザー マネージャーは、ユーザーを作成できます。 そうする方法の詳細については、Skytap のヘルプ ファイル (https://help.skytap.com/users-create.html ) を参照してください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

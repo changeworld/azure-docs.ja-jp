@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d27fd9460685c08a2b13936415935f5aaf893797
-ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
+ms.openlocfilehash: ede7167d570c7bd2ba7e04c3a9a703555efb35cd
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622410"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698517"
 ---
 # <a name="set-up-a-device-template"></a>デバイス テンプレートを設定する
 
@@ -63,7 +63,8 @@ ms.locfileid: "67622410"
 
 > [!NOTE]
 > 実デバイスが接続されたときにテレメトリ測定がアプリケーションに表示されるようにするには、デバイス テンプレート内のフィールド名が、対応するデバイス コード内のプロパティ名と一致する必要があります。 下記のセクションでデバイス テンプレートの定義を続行する際には、設定、デバイス プロパティ、およびコマンドの構成時に同じことを行ってください。
-.png たとえば、新しい温度テレメトリ測定を追加できます。
+
+たとえば、新しい温度テレメトリ測定を追加できます。
 
 | 表示名        | フィールド名    |  Units    | Min   |max|
 | --------------------| ------------- |-----------|-------|---|
@@ -109,7 +110,7 @@ ms.locfileid: "67622410"
 
 たとえば、デバイスが送信できる **Operating** (動作中) と **Stopped** (停止) という 2 つの値がある新しい "**Fan Mode**" (ファン モード) 状態を追加できます。
 
-| 表示名 | フィールド名    |  値 1   | 表示名 | 値 2    |表示名  | 
+| 表示名 | フィールド名    |  値 1   | 表示名 | 値 2    |表示名  |
 | -------------| ------------- |----------- | -------------| -----------| -------------|
 | Fan Mode     | fanmode       |  1         | 運転中    |     0      | 停止済み      |
 
@@ -147,6 +148,8 @@ assetloc: {
   alt?: floating point number
 }
 ```
+
+実デバイスが接続されると、測定として追加した場所が、デバイスから送信された値で更新されます。 場所の測定を構成したら、[デバイス ダッシュボードでマップを追加して場所を視覚化](#add-a-location-measurement-in-the-dashboard)できます。
 
 ## <a name="settings"></a>設定
 
@@ -244,7 +247,7 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 
    ![場所の詳細が表示された [Configure Device Properties]\(デバイス プロパティの構成\) フォーム](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-実デバイスが接続されると、デバイス プロパティとして追加した場所が、デバイスから送信された値で更新されます。 場所プロパティを構成すると、[デバイス ダッシュボードでマップを追加して場所を視覚化](#add-a-location-in-the-dashboard)できます。
+実デバイスが接続されると、デバイス プロパティとして追加した場所が、デバイスから送信された値で更新されます。 場所プロパティを構成すると、[デバイス ダッシュボードでマップを追加して場所を視覚化](#add-a-location-property-in-the-dashboard)できます。
 
 ## <a name="commands"></a>command
 
@@ -252,9 +255,9 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 
 コマンドと設定の違いは次のとおりです。
 
-* **設定**:設定は、デバイスに適用する構成です。 変更するまで、構成はデバイスで保持されます。 たとえば、フリーザーの温度を設定して、フリーザーを再起動してもその設定を維持する場合があります。
+- **設定**:設定は、デバイスに適用する構成です。 変更するまで、構成はデバイスで保持されます。 たとえば、フリーザーの温度を設定して、フリーザーを再起動してもその設定を維持する場合があります。
 
-* **コマンド**:コマンドは、IoT Central からリモートでデバイスに対してすぐにコマンドを実行する場合に使用します。 デバイスが接続されていない場合、コマンドはタイムアウトして失敗します。 たとえば、デバイスを再起動するとします。
+- **コマンド**:コマンドは、IoT Central からリモートでデバイスに対してすぐにコマンドを実行する場合に使用します。 デバイスが接続されていない場合、コマンドはタイムアウトして失敗します。 たとえば、デバイスを再起動するとします。
 
 たとえば、 **[コマンド]** タブを選択し、 **[+ 新しいコマンド]** を選択して、新しいコマンドの詳細を入力することで、新しい **Echo** コマンドを追加できます。
 
@@ -265,6 +268,8 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 ![Echo の詳細が表示された [Configure Command]\(コマンドの構成\) フォーム](./media/howto-set-up-template/commandsecho1.png)
 
 **[保存]** を選択すると、**Echo** コマンドがタイルとして表示されて、実デバイスを接続すると **Device Explorer** から使用できる状態になります。 コマンドを正常に実行するには、コマンドのフィールド名が、対応するデバイス コード内のプロパティ名と一致する必要があります。
+
+[サンプル C デバイス コードのリンクはこちらです。](https://github.com/Azure/iot-central-firmware/blob/ad40358906aeb8f2040a822ba5292df866692c16/MXCHIP/mxchip_advanced/src/AzureIOTClient.cpp#L34)
 
 ## <a name="rules"></a>ルール
 
@@ -282,9 +287,9 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 
 **Device Explorer** でダッシュボードを表示すると、タイルを表示できるようになります。
 
-### <a name="add-a-location-in-the-dashboard"></a>ダッシュボードで場所を追加する
+### <a name="add-a-location-measurement-in-the-dashboard"></a>ダッシュボードで場所の測定を追加する
 
-場所の測定を構成した場合、デバイス ダッシュボードのマップを使用して場所を視覚化することができます。
+場所の測定を構成した場合、デバイス ダッシュボードのマップを使用して場所を視覚化することができます。 場所の測定には、場所の履歴をプロットするオプションがあります。
 
 1. **[ダッシュボード]** タブに移動します。
 
@@ -298,13 +303,28 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 
 マップ タイルのサイズを変更することができます。 オペレーターが **Device Explorer** でダッシュボードを表示すると、場所マップを含め、構成したすべてのダッシュボード タイルを見ることができます。
 
+### <a name="add-a-location-property-in-the-dashboard"></a>ダッシュボードで場所のプロパティを追加する
+
+場所のプロパティを構成した場合は、デバイス ダッシュボードのマップを使用して場所を視覚化できます。
+
+1. **[ダッシュボード]** タブに移動します。
+
+1. デバイス ダッシュボードでライブラリから **[Map]\(マップ\)** を選択します。
+
+1. マップのタイトルを設定します。 次の例には、**Device Current Location** (デバイスの現在位置) というタイトルが付けられています。 次に、前に **[プロパティ]** タブで構成した場所プロパティを選択します。次の例では、**デバイスの場所**の測定が選択されています。
+
+   ![タイトルとプロパティの詳細が表示された [Configure Map]\(マップの構成\) フォーム](./media/howto-set-up-template/locationcloudproperty6map.png)
+
+1. **[保存]** を選択します。 [Map]\(マップ\) タイルに選択した場所が表示されるようになりました。
+
+マップ タイルのサイズを変更することができます。 オペレーターが **Device Explorer** でダッシュボードを表示すると、場所マップを含め、構成したすべてのダッシュボード タイルを見ることができます。
+
 Azure IoT Central でタイルを使用する方法の詳細については、「[ダッシュボード タイルの使用](howto-use-tiles.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 ここでは、Azure IoT Central アプリケーションでデバイス テンプレートを設定する方法について説明しました。次の手順に進むことができます。
 
-> [!div class="nextstepaction"]
-> [デバイス テンプレートの新しいバージョンを作成する](howto-version-device-template.md)
-> [MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](howto-connect-devkit.md)
-> [汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)](howto-connect-nodejs.md)
+- [デバイス テンプレートの新しいバージョンを作成する](howto-version-device-template.md)
+- [MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](howto-connect-devkit.md)
+- [汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)](howto-connect-nodejs.md)

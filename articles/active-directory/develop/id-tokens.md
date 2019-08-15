@@ -14,25 +14,25 @@ ms.topic: conceptual
 ms.date: 04/13/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25408b2120a9ac9f38e7959ef8e9dbbb34df7c2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85145d4a81eb4d12910758e01dda675ea378a46b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962573"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853175"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
 `id_tokens` は、[OpenID Connect](v1-protocols-openid-connect-code.md) フローの中でクライアント アプリケーションに送信されます。 これは、アクセス トークンと一緒に、またはアクセス トークンのかわりに送信することができ、ユーザーを認証するためにクライアントによって使用されます。
 
-## <a name="using-the-idtoken"></a>id_token を使用する
+## <a name="using-the-id_token"></a>id_token を使用する
 
 ID トークンは、ユーザーが本人の主張どおりの人物であることを検証し、ユーザーについてその他の役に立つ情報を取得するために使用されます。[アクセス トークン](access-tokens.md)の代わりに、承認のために使用してはなりません。 これによって提供される要求は、アプリケーション内の UX、データベースのキー設定、およびクライアント アプリケーションへのアクセス提供のために使用できます。
 
-## <a name="claims-in-an-idtoken"></a>id_token の要求
+## <a name="claims-in-an-id_token"></a>id_token の要求
 
 Microsoft Identity の`id_tokens` は [JWT](https://tools.ietf.org/html/rfc7519) です。つまり、ヘッダー、ペイロードおよび署名の部分から構成されます。 ヘッダーと署名を使用して、トークンの信頼性を確認できます。ペイロードには、クライアントによって要求されたユーザーの情報が含まれます。 特に明記しない限り、ここに示すすべての要求は v1.0 と v2.0 両方のトークンに出現します。
 
@@ -89,7 +89,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`uti` | 非透過的な文字列 | Azure がトークンの再検証に使用する内部の要求。 無視してください。 |
 |`ver` | 文字列、1.0 または 2.0 | id_token のバージョンを示します。 |
 
-## <a name="validating-an-idtoken"></a>id_token の検証
+## <a name="validating-an-id_token"></a>id_token の検証
 
 `id_token` の検証は、[アクセス トークンの検証](access-tokens.md#validating-tokens)の最初の手順と似ています。クライアントは、正しい発行者がトークンを返送したことと、改ざんされていないことを検証する必要があります。 `id_tokens` は常に JWT であるため、トークンを検証する多くのライブラリが存在しています。みずから検証するのではなく、これらのライブラリのいずれかを使用することをお勧めします。
 

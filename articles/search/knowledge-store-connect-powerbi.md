@@ -4,16 +4,17 @@ description: Azure portal で [データのインポート] ウィザードを�
 author: heidisteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: heidist
-ms.openlocfilehash: 04b04e8080590aa6e9fe1c17369e83fa5bb6b894
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 518a96ae8ace5c9630d594fe70487635b6ec1d2c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668230"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840850"
 ---
 # <a name="create-an-azure-search-knowledge-store-and-connect-using-power-bi"></a>Azure Search のナレッジ ストアを作成し、Power BI を使用して接続する
 
@@ -156,7 +157,7 @@ ms.locfileid: "68668230"
 
 1. Power Query のコマンド バーの左端にある **[Close and Apply]\(終了して適用\)** をクリックします。
 
-1. ナレッジ ストアによりデータ内に作成されたリレーションシップを Power BI が認識できているかどうかを確認します。 左側のナビゲーション ウィンドウにあるリレーションシップ タイルをクリックします。 テーブルが 3 つとも関連付けられている必要があります。
+1. ナレッジ ストアによりデータ内に作成されたリレーションシップを Power BI が認識できているかどうかを確認します。 左側のナビゲーション ウィンドウにあるリレーションシップ タイルをクリックします。 テーブルが 3 つとも関連付けられている必要があります。 リレーションシップを編集し、"クロスフィルターの方向" が両方に設定されていることを確認します。これにより、フィルターが適用されると、すべてのビジュアルが更新されます。
 
    ![リレーションシップの検証](media/knowledge-store-howto-powerbi/powerbi-relationships.png "リレーションシップの検証")
 

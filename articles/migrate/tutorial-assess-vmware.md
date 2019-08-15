@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: 5f70037b1e6ce284b55ff5ff0ae38eb50c320122
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 7b27637ca63ec69d7f4c33f05e7c037d67676b2d
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868669"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828305"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Azure Migrate: Server Assessment を使用して VMware VM を評価する
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - このシリーズの最初のチュートリアルを[完了](tutorial-prepare-vmware.md)します。 そうしないと、このチュートリアルの手順はうまくいきません。
 - 最初のチュートリアルでは、以下のことを行ったはずです。
     - Azure Migrate の [Azure アクセス許可を設定](tutorial-prepare-vmware.md#prepare-azure)する。
-    - 評価用に [VMware を準備する](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)。 VMware の設定を確認する必要があります。OVA テンプレートで VMware VM を作成するためのアクセス許可を持っている必要があります。 また、VM 検出用にアカウントが設定されている必要があります。 必要なポートを使用できる必要があり、Azure にアクセスするために必要な URL がわかっている必要があります。
+    - 評価用に [VMware を準備する](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)。 VMware の設定を確認する必要があります。OVA テンプレートで VMware VM を作成するためのアクセス許可を持っている必要があります。 また、VM 検出用にアカウントが設定されている必要があります。 必要なポートが使用可能であり、Azure にアクセスするための URL がわかっている必要があります。
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する
@@ -83,13 +83,13 @@ Azure Migrate: Server Assessment では、軽量の VMware VM アプライアン
 - このアプライアンスでは、VM の検出が実行されて、VM のメタデータとパフォーマンス データが Azure Migrate Server Assessment に送信されます。
 - アプライアンスを設定するには:
     - OVA テンプレート ファイルをダウンロードし、それを vCenter Server にインポートします。
-    - アプライアンスを作成し、Azure Migrate Server Assessment に接続できることを確認します。
+    - アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。
     - アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
 - 1 つの Azure Migrate プロジェクトに対して、複数のアプライアンスを設定できます。 すべてのアプライアンスで、最大 35,000 個の VM の検出がサポートされます。 アプライアンスごとに最大で 10,000 台のサーバーを検出できます。
 
 ### <a name="download-the-ova-template"></a>OVA テンプレートをダウンロードする
 
-1. **[移行の目標]**  >  **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[Discover]\(検出\)** をクリックします。
+1. **[移行の目標]**  >  **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[検出]** をクリックします。
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。VMware vSphere Hypervisor を使用します]** をクリックします。
 3. **[ダウンロード]** をクリックして、.OVA テンプレート ファイルをダウンロードします。
 
@@ -98,21 +98,21 @@ Azure Migrate: Server Assessment では、軽量の VMware VM アプライアン
 
 ### <a name="verify-security"></a>セキュリティを確認する
 
-.OVA ファイルをデプロイする前に、それが安全であることを確認します。
+OVA ファイルをデプロイする前に、それが安全であることを確認します。
 
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. バージョン 1.19.06.27 の場合、生成されたハッシュは次の値と一致する必要があります。 
+3. バージョン 2.19.07.30 の場合、生成されたハッシュは次の値と一致する必要があります。 
 
   **アルゴリズム** | **ハッシュ値**
   --- | ---
-  MD5 | 605d208ac5f4173383f616913441144e
-  SHA256 | 447d16bd55f20f945164a1189381ef6e98475b573d6d1c694f3e5c172cfc30d4
+  MD5 | 27230f3b012187860281b912ee661709
+  SHA256 | c0a5b5998b7f38ac6e57ea9a808ecc4295795e18f9ca99c367585068883f06e7
 
 
-### <a name="create-the-appliance-vm"></a>アプライアンスの VM を作成する
+### <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する
 
 ダウンロードしたファイルをインポートし、VM を作成します。
 
@@ -139,13 +139,13 @@ Azure Migrate: Server Assessment では、軽量の VMware VM アプライアン
 次の手順に従って、アプライアンスを設定します。
 
 1. vSphere Client コンソールで、[VM] を右クリックして **[Open Console]\(コンソールを開く\)** を選択します。
-2. アプライアンスの言語、タイム ゾーン、およびパスワードを指定します。
-3. VM に接続できる任意のマシン上でブラウザーを開き、アプライアンスの Web アプリの URL を開きます (**https://<*アプライアンス名または IP アドレス*>: 44368**)。
+2. アプライアンスの言語、タイム ゾーン、パスワードを指定します。
+3. VM に接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
 
    または、アプリ ショートカットをクリックして、アプライアンス デスクトップからアプリを開くこともできます。
 4. Web アプリの **[前提条件のセットアップ]** で、以下を実行します。
-    - **[ライセンス]** : ライセンス条項に同意し、サード パーティの情報を確認します。
-    - **[接続]** : VM がインターネットにアクセスできることが、アプリによってチェックされます。 VM でプロキシを使用する場合:
+    - **ライセンス**:ライセンス条項に同意し、サード パーティの情報を確認します。
+    - **接続**:VM でインターネットにアクセスできることが、アプリによって確認されます。 VM でプロキシを使用する場合:
         - **[プロキシの設定]** をクリックし、 http://ProxyIPAddress または http://ProxyFQDN の形式で、プロキシ アドレスとリスニング ポートを指定します。
         - プロキシで認証が必要な場合は、資格情報を指定します。
         - サポートされるのは HTTP プロキシのみです。
@@ -171,12 +171,12 @@ Azure Migrate: Server Assessment では、軽量の VMware VM アプライアン
 
 次に、アプライアンスから vCenter Server に接続し、VM の検出を開始します。
 
-1. **[vCenter Server の詳細を指定する]** で、vCenter Server の名前 (FQDN) または IP アドレスを指定します。 既定のポートをそのまま使用することも、vCenter Server がリッスンするカスタム ポートを指定することもできます。
-2. **[ユーザー名]** と **[パスワード]** で、アプライアンスによる vCenter Server の VM の検出に使用される読み取り専用の資格情報を指定します。 [検出に必要なアクセス許可](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)がアカウントにあることを確認します。 必要に応じて、vCenter アカウントへのアクセスを制限することで、検出のスコープを絞り込むことができます。検出のスコープ設定について詳しくは、[こちら](tutorial-assess-vmware.md#scoping-discovery)をご覧ください。
+1. **[vCenter Server の詳細を指定する]** で、vCenter Server の名前 (FQDN) または IP アドレスを指定します。 既定のポートをそのまま使用することも、vCenter Server でリッスンするカスタム ポートを指定することもできます。
+2. **[ユーザー名]** と **[パスワード]** で、アプライアンスで vCenter Server の VM の検出に使用される読み取り専用の資格情報を指定します。 [検出に必要なアクセス許可](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)がアカウントにあることを確認します。 必要に応じて、vCenter アカウントへのアクセスを制限することで、検出のスコープを絞り込むことができます。検出のスコープ設定について詳しくは、[こちら](tutorial-assess-vmware.md#scoping-discovery)をご覧ください。
 3. **[接続の検証]** をクリックし、アプライアンスが vCenter Server に接続できることを確認します。
 4. 接続が確立された後、 **[保存して検出を開始]** をクリックします。
 
-これで、検出が開始されます。 検出された VM のメタデータがポータルに表示されるまでに、約 15 分かかります。
+これで検出が開始されます。 検出された VM のメタデータがポータルに表示されるまでに、約 15 分かかります。
 
 ### <a name="scoping-discovery"></a>検出のスコープ設定
 
@@ -200,7 +200,7 @@ Azure Migrate: Server Assessment では、軽量の VMware VM アプライアン
 
 ## <a name="set-up-an-assessment"></a>評価を設定する
 
-Azure Migrate: Server Assessment を使用して作成できる評価には、2 つの種類があります。
+Azure Migrate: Server Assessment を使用して作成できる評価には、次の2種類があります。
 
 **評価** | **詳細** | **データ**
 --- | --- | ---
@@ -228,7 +228,7 @@ Azure Migrate: Server Assessment を使用して作成できる評価には、2 
 
     ![評価を作成する](./media/tutorial-assess-vmware/assessment-create.png)
 
-6. 評価が作成されたら、それを表示します (**サーバー** > **Azure Migrate: Server Assessment** > **評価**)。
+6. 評価が作成されたら、それを表示します ( **[サーバー]**  >  **[Azure Migrate: Server Assessment]**  >  **[評価]** )。
 7. **[評価のエクスポート]** をクリックし、Excel ファイルとしてダウンロードします。
 
 

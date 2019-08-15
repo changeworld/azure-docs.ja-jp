@@ -1,18 +1,19 @@
 ---
 title: Azure Key Vault - PowerShell で論理的な削除を使用する方法
 description: PowerShell コード スニペットを使用した論理的な削除のユース ケースの例
+services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 03/19/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ecc87e03a80ce10bedbe26b3ebb452ec704eefcb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6a24f2dd52c3ac3c51df54bf5c01c7b31ca16147
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60461367"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985749"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
 
@@ -49,6 +50,9 @@ Key Vault の操作は、次のようにロールベースのアクセス制御 
 ## <a name="enabling-soft-delete"></a>論理的な削除を有効にする
 
 "論理的な削除" を有効にすると、削除されたキー コンテナーや、キー コンテナーに格納されているオブジェクトを復旧できるようになります。
+
+> [!IMPORTANT]
+> キー コンテナーに対して '論理的な削除' を有効にした場合、それを取り消すことはできません。 論理的な削除のプロパティを "true" に設定すると、それを変更したり削除することはできなくなります。  
 
 ### <a name="existing-key-vault"></a>既存のキー コンテナー
 

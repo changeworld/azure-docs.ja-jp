@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 9966164ec1b6a37538a24d2ef8cb80007e6f6d29
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 659c4cb3a6f0d50176875b76eeb2784c711eafd1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698228"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967142"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する
 
@@ -150,7 +150,7 @@ SSL バインドの手順については、「[How to Set Up SSL on IIS 7](https
 
 ### <a name="nginx"></a>NGINX
 
-次の構成は、SSL 構成での [NGINX サーバー ブロック](http://nginx.org/docs/http/configuring_https_servers.html)の例です。
+次の構成は、SSL 構成での [NGINX サーバー ブロック](https://nginx.org/docs/http/configuring_https_servers.html)の例です。
 
 ![SSL での NGINX](media/self-signed-certificates/nginx-ssl.png)
 

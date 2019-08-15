@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 5e8c29e033d895e24047754e686420fb4db86142
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236645"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934453"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>クイック スタート:Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う 
 
@@ -24,7 +24,7 @@ ms.locfileid: "65236645"
 * キー コンテナーにシークレットを格納する。
 * キー コンテナーからシークレットを取得する。
 * Azure AD Web アプリケーションを作成する。
-* Web アプリの[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) を有効にする
+* Web アプリの[マネージド ID](../active-directory/managed-service-identity/overview.md) を有効にする
 * Web アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
 
 先に進む前に、[Key Vault の基本的な概念](key-vault-whatis.md#basic-concepts)について理解しておいてください。
@@ -36,7 +36,7 @@ ms.locfileid: "65236645"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Node.js](https://nodejs.org/en/)
+* [Node.JS](https://nodejs.org/en/)
 * [Git](https://www.git-scm.com/)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 以降。 このクイック スタートでは、Azure CLI をローカルで実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest)」を参照してください。
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。

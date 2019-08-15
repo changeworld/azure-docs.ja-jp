@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4df8ff8abfeb7a6ba96ec3344407e95e0a9a3b3d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728714"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934864"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Azure での安全な開発のベスト プラクティス
 この一連の記事では、クラウド向けのアプリケーションを開発するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft セキュリティ開発ライフサイクル (SDL) と、ライフサイクルの各フェーズで考慮すべきセキュリティの質問と概念について説明します。 目標は、ライフサイクルの各フェーズでより安全なアプリケーションの設計、開発、デプロイに使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -69,7 +69,7 @@ SDL フェーズは次のとおりです。
 
 [Pushing Left, Like a Boss](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca) – 開発者がより安全なコードを作成するために実行する必要のあるさまざまな種類のアプリケーションのセキュリティ アクティビティの概要を説明する、一連のオンライン記事です。
 
-[Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop/) – Microsoft ID プラットフォームは、Azure ADD サービスおよび開発者プラットフォームの進化版です。 これは多彩な機能を備えたプラットフォームであり、認証サービス、オープン ソース ライブラリ、アプリケーションの登録と構成、完全な開発者向けドキュメント、サンプル コード、およびその他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
+[Microsoft ID プラットフォーム](../../active-directory/develop/index.yml) – Microsoft ID プラットフォームは、Azure ADD サービスおよび開発者プラットフォームの進化版です。 これは多彩な機能を備えたプラットフォームであり、認証サービス、オープン ソース ライブラリ、アプリケーションの登録と構成、完全な開発者向けドキュメント、サンプル コード、およびその他の開発者向けコンテンツによって構成されています。 Microsoft ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 
 [Azure ソリューションのセキュリティに関するベスト プラクティス](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/) – Azure を利用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスのコレクション。 このドキュメントは、IT プロフェッショナル向けに用意されています。 これには、セキュリティで保護された Azure ソリューションの構築とデプロイを行う設計者、アーキテクト、開発者、テスト担当者が含まれます。
 

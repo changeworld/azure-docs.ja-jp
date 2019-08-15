@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: dd800c0eeb18fe45b44a72aeb58b500623b2b366
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 99f14b14e9149f79ae992834ae75bcb8fdc3c74b
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705093"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68601991"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問
 
@@ -88,7 +88,7 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 キャッシュ フォルダーのサイズによって、バックアップするデータ量が決まります。
 - キャッシュ フォルダー ボリュームには、バックアップ データの合計サイズの少なくとも 5 から 10% に相当する空き領域が必要になります。
 - ボリュームの空き領域が 5% 未満の場合は、ボリューム サイズを増やすか、十分な容量があるボリュームにキャッシュ フォルダーを移動します。
-- Windows のシステム状態をバックアップする場合は、キャッシュ フォルダーを含むボリューム内に 30 - 35 GB の追加の空き領域が必要になります。
+- Windows のシステム状態をバックアップする場合は、キャッシュ フォルダーを含むボリューム内に 30 から 35 GB の追加の空き領域が必要になります。
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>スクラッチ フォルダーが有効でアクセス可能かどうかを確認する方法
 
@@ -106,19 +106,22 @@ MARS エージェントは NTFS に依存しており、ファイルの名前/�
 
     ```PS C:\> Net stop obengine```
 
-2. ファイルを移動しないでください。 代わりに、十分な容量がある別のドライブにキャッシュ領域フォルダーをコピーします。
-3. 新しいキャッシュ フォルダーのパスを使って、次のレジストリ エントリを更新します。<br/>
+2. システム状態のバックアップを構成している場合は、[ディスクの管理] を開き、`"CBSSBVol_<ID>"` という形式の名前を持つディスクをマウント解除します。
+3. ファイルを移動しないでください。 代わりに、十分な容量がある別のドライブにキャッシュ領域フォルダーをコピーします。
+4. 新しいキャッシュ フォルダーのパスを使って、次のレジストリ エントリを更新します。<br/>
 
     | レジストリ パス | レジストリ キー | 値 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新しいキャッシュ フォルダーの場所* |
 
-4. 管理者特権のコマンド プロンプトで、Backup エンジンを再開します。
+5. 管理者特権のコマンド プロンプトで、Backup エンジンを再開します。
+
+    ```PS C:\> Net stop obengine```
 
     ```PS C:\> Net start obengine```
 
-5. 新しい場所を使ってバックアップが正常に終了した後は、元のキャッシュ フォルダーを削除できます。
+6. アドホック バックアップの実行。 新しい場所を使ってバックアップが正常に終了した後は、元のキャッシュ フォルダーを削除できます。
 
 
 ### <a name="where-should-the-cache-folder-be-located"></a>キャッシュ フォルダーはどこに配置する必要がありますか。

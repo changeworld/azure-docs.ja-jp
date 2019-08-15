@@ -1,6 +1,6 @@
 ---
-title: Pattern.any エンティティ型
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Pattern.any エンティティ型 - LUIS
+titleSuffix: Azure Cognitive Services
 description: Pattern.any は、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される、可変長プレースホルダーです。
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/24/2019
 ms.author: diberry
-ms.openlocfilehash: f3e5bd068b5df99bdfabff0bfe18ccebff980fc6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: cda6c724a36a73dc34c2bf8e7158e3e3ec92d46b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480115"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563229"
 ---
 # <a name="patternany-entity"></a>Pattern.any エンティティ 
 

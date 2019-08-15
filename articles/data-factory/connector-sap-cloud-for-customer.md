@@ -43,7 +43,7 @@ SAP Cloud for Customer のリンクされたサービスでは、次のプロパ
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomer**。 | はい |
 | url | SAP C4C OData サービスの URL。 | はい |
-| userName | SAP C4C に接続するためのユーザー名を指定します。 | はい |
+| username | SAP C4C に接続するためのユーザー名を指定します。 | はい |
 | password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
 

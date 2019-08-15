@@ -7,16 +7,16 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 11/28/2018
-ms.openlocfilehash: 3fed332846c835106cbd2b8876d93aff1a97b0a3
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 08/01/2019
+ms.openlocfilehash: 99f85abe0c8f08bedb3e9808d2b740d4b7842257
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275011"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720356"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーの監視とスケーリングを行う
-このサンプル CLI スクリプトでは、単一の Azure Database for MariaDB サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングします。
+このサンプル CLI スクリプトは、メトリックの照会後、単一の Azure Database for MariaDB サーバーのコンピューティングとストレージをスケーリングします。
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -37,10 +37,11 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | データベースのホストとなる MariaDB サーバーを作成します。 |
+| [az mariadb server update](/cli/azure/mariadb/server#az-mariadb-server-update) | MariaDB サーバーのプロパティを更新します。 |
 | [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) | リソースのメトリック値を一覧表示します。 |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
-- Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
+- [Azure Database for MariaDB のコンピューティングとストレージ](../concepts-pricing-tiers.md)の詳細について学習します
 - さらに他のスクリプトも試す: [Azure Database for MariaDB 用の Azure CLI サンプル](../sample-scripts-azure-cli.md)
-- スケーリングの詳細については、[価格の詳細]\(../concepts-pricing-tiers.md)に関するページを参照してください。
+- [Azure CLI](/cli/azure) の詳細について学習します

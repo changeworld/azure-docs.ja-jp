@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d5d10562a70b7d37908bc272bf555fd967831009
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5def34b4e3e7227daf96d952457869658bbce61e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076990"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855265"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項
 
@@ -66,7 +66,7 @@ SQL Server 仮想マシンを作成するときに、マシンと SQL Server へ
 
 プロビジョニングした後に、これを構成するには、次の 2 つのオプションがあります。
 
-- Resource Manager VM の場合、[SQL 仮想マシン リソース](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)から **[セキュリティ]** を選択できます。 ここには、ポートを変更するオプションがあります。
+- Resource Manager VM の場合、[SQL 仮想マシン リソース](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)から **[セキュリティ]** を選択できます。 ここには、ポートを変更するオプションがあります。
 
   ![ポータルの TCP ポートの変更](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 

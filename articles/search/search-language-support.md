@@ -6,15 +6,14 @@ manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: 403febfcb54194602051aaebe2952265c0675e9d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5383ad44f665ce809772143e23817932c3e2b7e6
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854423"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883883"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Azure Search で複数の言語のインデックスを作成する方法
 
@@ -35,7 +34,7 @@ Azure Search では、多彩な言語アナライザーが Lucene と Microsoft 
 
 ![フィールド定義中に言語アナライザーを割り当てる](media/search-language-support/select-analyzer.png "フィールド定義中に言語アナライザーを割り当てる")
 
-既定では、検索可能なすべてのフィールドで、言語に依存しない [標準の Lucene アナライザー](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を使用します。 サポートされているアナライザーの詳細な一覧を参照するには、「[Azure Search のインデックスに言語アナライザーを追加する](index-add-language-analyzers.md)」を参照してください。
+既定では、検索可能なすべてのフィールドで、言語に依存しない [標準の Lucene アナライザー](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を使用します。 サポートされているアナライザーの詳細な一覧を参照するには、「[Azure Search のインデックスに言語アナライザーを追加する](index-add-language-analyzers.md)」を参照してください。
 
 ポータルでは、アナライザーはそのままで使用することが意図されています。 カスタマイズや、フィルターとトークナイザーの特定の構成が必要な場合は、コードで[カスタム アナライザーを作成する](index-add-custom-analyzers.md)必要があります。 ポータルでは、カスタム アナライザーの選択や構成はサポートされていません。
 

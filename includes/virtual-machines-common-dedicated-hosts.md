@@ -8,26 +8,13 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 438f450efe207999947795878a9815fca64f45ca
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68702962"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976609"
 ---
-Azure 専用ホストは、1 つの Azure サブスクリプションに対して専用の物理サーバーを提供するサービスであり、1 つ以上の仮想マシンをホストできます。 専用ホストは、データ センターで使用されるものと同じ物理サーバーであり、リソースとして提供されます。 リージョン、可用性ゾーン、障害ドメイン内に専用ホストをプロビジョニングできます。 次に、プロビジョニングされたホストに VM を直接配置し、ニーズに最も合った構成にすることができます。
-
-> [!IMPORTANT]
-> 現在、専用ホストはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
-> **プレビューに関する既知の制限事項**
-> - 仮想マシン スケール セットは、現在、専用ホストではサポートされていません。
-> - プレビューの初期リリースでは、次の VM シリーズがサポートされています: DSv3 と ESv3。 
-> - プレビュー期間中は、専用ホストに展開される仮想マシンのサイズを変更することはできません。
-> - メンテナンス機能の制御は限定プレビューです。 まず、この[候補調査](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)で試してみてください。  
-> プレビュー期間中は、予約容量のオプションは提供されません。 
-
 ## <a name="benefits"></a>メリット 
 
 ホスト全体を予約すると、次のような利点があります。

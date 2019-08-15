@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 561c4458f942dc524f7de8df5b4385a1eaa1f6a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80eb3d60eb4c40e726d53d5fb876a6a118d119cb
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106278"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-betterworks"></a>チュートリアル:Azure Active Directory と BetterWorks の統合
 
@@ -119,13 +119,13 @@ BetterWorks で Azure AD シングル サインオンを構成するには、次
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[BetterWorks クライアント サポート チーム](mailto:support@betterworks.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. BetterWorks アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
+6. BetterWorks アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
 7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。 
 
-    | Name | ソース属性|
+    | EnableAdfsAuthentication | ソース属性|
     | ----- |  ------------ |
     | saml_token | bd189cf6-1701-11e6-8f90-d26992eca2a5 |
 
@@ -217,7 +217,7 @@ BetterWorks で Azure AD シングル サインオンを構成するには、次
 
 ### <a name="create-betterworks-test-user"></a>BetterWorks テスト ユーザーの作成
 
-このセクションでは、BetterWorks で Britta Simon というユーザーを作成します。  [BetterWorks サポート チーム](mailto:support@betterworks.com)と協力して、BetterWorks プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、BetterWorks で Britta Simon というユーザーを作成します。 [BetterWorks サポート チーム](mailto:support@betterworks.com)と協力して、BetterWorks プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

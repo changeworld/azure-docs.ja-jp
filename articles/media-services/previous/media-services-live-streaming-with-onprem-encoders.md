@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: cenkd;juliako
-ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: a299c050be37d53acd01ddc2db580c4881eeae07
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463798"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "69015478"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
 
@@ -231,7 +231,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 ## <a name="related-topics"></a>関連トピック
 [推奨されるオンプレミス エンコーダー](media-services-recommended-encoders.md)
 
-[Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](media-services-fmp4-live-ingest-overview.md)
+[Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](../media-services-fmp4-live-ingest-overview.md)
 
 [Azure Media Services の概要と一般的なシナリオ](media-services-overview.md)
 

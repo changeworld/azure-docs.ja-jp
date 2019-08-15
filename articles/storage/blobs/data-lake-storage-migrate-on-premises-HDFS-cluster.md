@@ -1,19 +1,19 @@
 ---
 title: Azure Data Box を使用してオンプレミス HDFS ストアから Azure Storage にデータを移行する
 description: オンプレミス HDFS ストアから Azure Storage にデータを移行する
-services: storage
 author: normesta
 ms.service: storage
 ms.date: 06/11/2019
 ms.author: normesta
-ms.topic: article
+ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 4445a8566c04d30cfb8743cbd33623f2e23f0dde
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.reviewer: jamesbak
+ms.openlocfilehash: ff23b27b73918734e10a481cbe9b1f77519b8764
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595396"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847262"
 ---
 # <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Azure Data Box を使用してオンプレミス HDFS ストアから Azure Storage にデータを移行する
 
@@ -73,7 +73,7 @@ Data Box デバイスを使用することにより、Hadoop クラスターの�
 
 4. シェル変数 `azjars` を、`hadoop-azure` および `azure-storage` jar ファイルの場所に設定します。 これらのファイルは Hadoop インストール ディレクトリ以下にあります。
 
-    これらのファイルが存在するかどうかを確認するには、次のコマンドを使用します。`ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`。 `<hadoop_install_dir>` プレースホルダーは、Hadoop をインストールしたディレクトリのパスに置き換えます。 必ず完全修飾パスを使用します。
+    これらのファイルが存在するかどうかを確認するには、次のコマンドを使用します`ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`。 `<hadoop_install_dir>` プレースホルダーは、Hadoop をインストールしたディレクトリのパスに置き換えます。 必ず完全修飾パスを使用します。
 
     次に例を示します。
 

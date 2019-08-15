@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: d11dd72c65ea32fb5a262f325bdcad0b5a8ab863
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6cf688750ac73763c7f0da4eea152cf6bf0c8285
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566656"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935024"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>チュートリアル:フェールオーバー グループに Azure SQL Database の単一データベースを追加する
 
@@ -29,20 +29,20 @@ Azure portal、PowerShell、または Azure CLI のいずれかを使用して�
 
 ## <a name="prerequisites"></a>前提条件
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 このチュートリアルを完了するには、以下のものが必要です。 
 
 - Azure サブスクリプション。 [無料のアカウントを作成](https://azure.microsoft.com/free/)します (まだお持ちでない場合)。
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 このチュートリアルを完了するには、次のものが必要です。
 
 - Azure サブスクリプション。 [無料のアカウントを作成](https://azure.microsoft.com/free/)します (まだお持ちでない場合)。
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 このチュートリアルを完了するには、次のものが必要です。
 
 - Azure サブスクリプション。 [無料のアカウントを作成](https://azure.microsoft.com/free/)します (まだお持ちでない場合)。
@@ -57,7 +57,7 @@ Azure portal、PowerShell、または Azure CLI のいずれかを使用して�
 ## <a name="2---create-the-failover-group"></a>2 - フェールオーバー グループを作成する 
 この手順では、既存の Azure SQL サーバーと別のリージョンの新しい Azure SQL サーバーの間に[フェールオーバー グループ](sql-database-auto-failover-group.md)を作成します。 その後、そのフェールオーバー グループにサンプル データベースを追加します。 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 フェールオーバー グループを作成し、Azure portal を使用して単一データベースを追加します。 
 
 
@@ -76,7 +76,7 @@ Azure portal、PowerShell、または Azure CLI のいずれかを使用して�
     - **フェールオーバー グループ名**:一意のフェールオーバー グループ名 (`failovergrouptutorial` など) を入力します。 
     - **セカンダリ サーバー**:*必要な設定を構成*するオプションを選択してから、 **[新しいサーバーの作成]** を選択します。 または、既に存在しているサーバーをセカンダリ サーバーとして選択することもできます。 次の値を入力したら、 **[選択]** を選択します。 
         - **サーバー名**: セカンダリ サーバーの一意の名前 (`mysqlsecondary` など) を入力します。 
-        - **サーバー管理者ログイン**:`azureuser` を入力します。
+        - **サーバー管理者ログイン**:「`azureuser`」と入力します
         - **Password**:パスワードの要件を満たす複雑なパスワードを入力します。
         - **[場所]** :ドロップダウンから場所 (米国東部 2 など) を選択します。 この場所をプライマリ サーバーと同じ場所にすることはできません。
 
@@ -90,7 +90,7 @@ Azure portal、PowerShell、または Azure CLI のいずれかを使用して�
     ![フェールオーバー グループへの SQL DB の追加](media/sql-database-single-database-create-failover-group-tutorial/add-sqldb-to-failover-group.png)
         
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 フェールオーバー グループを作成し、PowerShell を使用して単一データベースを追加します。 
 
    > [!NOTE]
@@ -146,7 +146,7 @@ Azure portal、PowerShell、または Azure CLI のいずれかを使用して�
    Write-host "Successfully added the database to the failover group..." 
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 フェールオーバー グループを作成し、AZ CLI を使用して単一データベースを追加します。 
 
    > [!NOTE]
@@ -182,6 +182,7 @@ Azure portal、PowerShell、または Azure CLI のいずれかを使用して�
       --partner-server $drServerName \
       --resource-group $resourceGroupName \
       --server $serverName \
+      --add-db $databaseName
       --failover-policy Automatic
    ```
 
@@ -190,7 +191,7 @@ Azure portal、PowerShell、または Azure CLI のいずれかを使用して�
 ## <a name="3---test-failover"></a>3 - フェールオーバーをテストする 
 この手順では、フェールオーバー グループをセカンダリ サーバーにフェールオーバーしてから、Azure portal を使用してフェールバックします。 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 Azure portal を使用してフェールオーバーをテストします。 
 
 1. [Azure portal](https://portal.azure.com) 内でご利用の **SQL サーバー**に移動します。 
@@ -207,7 +208,7 @@ Azure portal を使用してフェールオーバーをテストします。
 1. 現在、どのサーバーがプライマリで、どのサーバーがセカンダリかを確認します。 フェールオーバーが成功すると、2 つのサーバー ロールがスワップされているはずです。 
 1. サーバーを元のロールにフェールバックするには、もう一度 **[フェールオーバー]** を選択します。 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell を使用してフェールオーバーをテストします。 
 
 
@@ -262,7 +263,7 @@ PowerShell を使用してフェールオーバーをテストします。
    Write-host "Failed failover group to successfully to back to" $serverName
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 AZ CLI を使用してフェールオーバーをテストします。 
 
 
@@ -319,7 +320,7 @@ AZ CLI を使用してフェールオーバーをテストします。
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 リソース グループを削除して、リソースをクリーンアップします。 
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 Azure portal を使用してリソース グループを削除します。 
 
 
@@ -327,7 +328,7 @@ Azure portal を使用してリソース グループを削除します。
 1. グループ内のすべてのリソースと、リソース グループ自体を削除するには、 **[リソースグループの削除]** を選択します。 
 1. リソース グループの名前 (`myResourceGroup`) をテキストボックスに入力し、 **[削除]** を選択してリソース グループを削除します。  
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell を使用してリソース グループを削除します。 
 
 
@@ -341,7 +342,7 @@ PowerShell を使用してリソース グループを削除します。
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 AZ CLI を使用してリソース グループを削除します。 
 
 
@@ -361,15 +362,15 @@ AZ CLI を使用してリソース グループを削除します。
 
 ## <a name="full-scripts"></a>完全なスクリプト
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-ps.ps1 "Add single database to a failover group")]
 
-# <a name="az-clitabbash"></a>[AZ CLI](#tab/bash)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!code-azurecli-interactive[main](../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Create SQL Database")]
 
-# <a name="azure-portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 Azure portal に使用できるスクリプトはありません。
  
 ---

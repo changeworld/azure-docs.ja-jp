@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 15d312ff4dfdb789cb0d9ee85941ea8760ddb08f
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66480602"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736643"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>クイック スタート:PHP と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
 
@@ -113,7 +113,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     ```php
     $db = new Connection([
-        'host' => 'testgraphacct.graphs.azure.com',
+        'host' => 'testgraphacct.gremlin.cosmosdb.azure.com',
         'username' => '/dbs/<db>/colls/<coll>',
         'password' => 'your_primary_key'
         ,'port' => '443'
@@ -123,9 +123,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     ]);
     ```
 
-3. 2017 年 12 月 20 日以降に作成したグラフ データベース アカウントの場合は、ホスト名の `graphs.azure.com` を `gremlin.cosmosdb.azure.com` に変更します。
-
-4. 接続オブジェクトの `username` パラメーターを、お使いのデータベースとグラフの名前で変更します。 `sample-database` と `sample-graph` の推奨値を使った場合は、次のコードのようになります。
+3. 接続オブジェクトの `username` パラメーターを、お使いのデータベースとグラフの名前で変更します。 `sample-database` と `sample-graph` の推奨値を使った場合は、次のコードのようになります。
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
@@ -133,7 +131,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     ```php
     $db = new Connection([
-        'host' => 'testgraphacct.graphs.azure.com',
+        'host' => 'testgraphacct.gremlin.cosmosdb.azure.com',
         'username' => '/dbs/sample-database/colls/sample-graph',
         'password' => 'your_primary_key',
         'port' => '443'
@@ -143,7 +141,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     ]);
     ```
 
-5. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、パスワード パラメーターの `your_primary_key` に貼り付けます。
+4. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、パスワード パラメーターの `your_primary_key` に貼り付けます。
 
     接続オブジェクトの初期化は、次のコードのようになります。
 
@@ -159,7 +157,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     ]);
     ```
 
-6. `connect.php` ファイルを保存します。
+5. `connect.php` ファイルを保存します。
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 
@@ -206,13 +204,13 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 4. 「*person*」というラベルを入力します。
 
-5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
+5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは **id** のみです。
 
-    key|value|メモ
+    キー | 値 | メモ
     ----|----|----
-    id|ashley|頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
-    gender|female| 
-    tech | java | 
+    **id** | ashley | 頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
+    **gender** | female | 
+    **tech** | java | 
 
     > [!NOTE]
     > このクイック スタートでは、パーティション分割されていないコレクションを作成します。 ただし、コレクションの作成段階でパーティション キーを指定することによって、パーティション分割されたコレクションを作成した場合は、新たに作成する各頂点のキーとして、パーティション キーを追加する必要があります。 
@@ -224,12 +222,12 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 8. 「*person*」というラベルを入力します。
 
 9. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。
-
-    key|value|メモ
+    
+    キー | 値 | メモ
     ----|----|----
-    id|rakesh|頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
-    gender|male| 
-    school|MIT| 
+    **id** | rakesh | 頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
+    **gender** | male | 
+    **school** | MIT | 
 
 10. Click **OK**. 
 

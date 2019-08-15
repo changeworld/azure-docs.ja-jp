@@ -35,7 +35,7 @@ ms.locfileid: "68560881"
 
    |設定名| 値 | 目的|
    |--|--|--|
-   |EnableAdfsAuthentication|`myEnglishApp`|LUIS アプリの一意の名前<br>必須|
+   |名前|`myEnglishApp`|LUIS アプリの一意の名前<br>必須|
    |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>必須|
    |説明|`App made with LUIS Portal`|アプリの説明<br>省略可能|
    | | | |

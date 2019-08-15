@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 110dcb1531390b207ae741af07fe0ad18964aae1
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521922"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816122"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイック スタート:Linux コンピューターでの Azure Security Center の利用開始
-Azure サブスクリプションの利用を開始した後で、Linux エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。
+Azure サブスクリプションの利用を開始した後で、エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。 このエージェントは Microsoft Monitoring Agent (MMA) と呼ばれていますが、OMS エージェントとも呼ばれます。
 
-このクイックスタートでは、Linux コンピューターに Linux エージェントをインストールする方法を示します。
+このクイックスタートでは、Linux コンピューターにエージェントをインストールする方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
@@ -46,7 +46,7 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 
     ![Azure 以外のコンピューターの追加](./media/quick-onboard-linux-computer/non-azure.png)
 
-6. **[直接エージェント]** ページの **[Linux 用エージェントのインストールとオンボード]** で、**[コピー]** を選択して *wget*コマンドをコピーします。
+6. **[直接エージェント]** ページの **[Linux 用エージェントのインストールとオンボード]** で、 **[コピー]** を選択して *wget*コマンドをコピーします。
 
 7. メモ帳を開き、このコマンドを貼り付けます。 このファイルを、Linux コンピューターからアクセスできる場所に保存します。
 
@@ -57,7 +57,7 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 
    ![エージェントをインストールする][5]
 
-Linux 用の Security Center エージェントのログは */var/opt/microsoft/omsagent/\<ワークスペース ID>/log/* にあります
+エージェントのログは */var/opt/microsoft/omsagent/\<ワークスペース ID>/log/* にあります
 
   ![エージェントのログ][6]
 

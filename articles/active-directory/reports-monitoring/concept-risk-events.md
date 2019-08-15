@@ -3,7 +3,7 @@ title: Azure Active Directory リスク イベント | Microsoft Docs
 description: この記事では、リスク イベントの詳細な概要を示します。
 services: active-directory
 keywords: azure active directory identity protection, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e50cc4ca9c98cb6a8e0f19cfcf6c1f86f1949beb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5711d900653ae7786899ce1c53f22cf181f5b8bf
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107691"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988267"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
@@ -153,7 +153,7 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
 あり得ない移動は通常、ハッカーがサインインに成功したことのよいインジケーターとなります。 ただし、ユーザーが新しい手段を使用して移動している場合、または組織内の他のユーザーが通常使用しない VPN を使用している場合、誤検知が発生する可能性があります。 誤検知のもう 1 つの原因は、クライアント IP として誤ってサーバー IP を渡すアプリケーションです。その場合、そのアプリケーションのバックエンドがホストされているデータセンターからサインインが行われたように見えます (多くの場合、それは Microsoft のデータセンターであり、Microsoft 所有の IP アドレスからサインインが行われたように見えます)。 このような誤検知のため、このリスク イベントのリスク レベルは "**中**" です。
 
 > [!TIP]
-> [名前付きの場所](../active-directory-named-locations.md)を構成することで、このリスク イベントの種類で報告される誤検知の数を減らすことができます。 
+> [ネームド ロケーション](../active-directory-named-locations.md)を構成することで、このリスク イベントの種類で報告される誤検知の数を減らすことができます。 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>未知の場所からのサインイン
 

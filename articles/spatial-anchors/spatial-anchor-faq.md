@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 435ad986a9f0b96d42c88d450f40e5900ad33b7c
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 06936a196813dacfc1fc9d02945bee4119b7eea8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653246"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927508"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors についてよく寄せられる質問
 
@@ -121,10 +121,6 @@ Azure Spatial Anchors は、[Azure サービス契約条件](https://go.microsof
 **Q:Unreal で動作しますか?**
 
 **A:** 今後、Unreal での対応を検討予定です。
-
-**Q:Xamarin で動作しますか?**
-
-**A:** 今後、Xamarin での対応を検討予定です。
 
 **Q:Azure Spatial Anchors ではどのポートとプロトコルが使用されますか?**
 

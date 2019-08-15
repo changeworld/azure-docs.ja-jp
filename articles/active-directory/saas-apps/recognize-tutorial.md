@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 82d231eff4690dc060c01d41356933693d08c443
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0a513ad8fe772839813615d065616f2c911a031
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093252"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943333"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>チュートリアル:Azure Active Directory と Recognize の統合
 
@@ -101,7 +101,7 @@ Recognize で Azure AD シングル サインオンを構成するには、次�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4.  **[基本的な SAML 構成]**  セクションで、 **サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
 
     >[!NOTE]
     >チュートリアルの「**Recognize シングルサインオンの構成**」セクションで、**サービス プロバイダー メタデータ ファイル**を取得します。

@@ -6,21 +6,24 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 076c3318a68a50e6bd1b4f9f2a4a4b9a034533c6
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 8f1fa6f7823c643278e52ffd0faa1c0ce4972ef8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346575"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640242"
 ---
-# <a name="azure-data-factory-mapping-data-flows-column-patterns"></a>Azure Data Factory の Mapping Data Flow の列パターン
+# <a name="mapping-data-flows-column-patterns"></a>マッピング データ フローの列パターンの
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 Azure Data Factory のデータ フロー変換によっては、"列パターン" の概念がサポートされる場合があります。この場合は、ハードコーディングされた列名ではなく、パターンに基づいて、テンプレートの列を作成できます。 式ビルダー内でこの機能を使用すると、変換する列に一致するパターンを定義できます。特定の正確なフィールド名は不要です。 パターンが便利なのは、受信ソース フィールドが頻繁に変更されるときです。特に、テキスト ファイルや NoSQL データベースの列が変更される場合に便利です。 この状態は、"スキーマの誤差" と呼ばれることがあります。
 
+この "柔軟なスキーマ" 処理は、現在、派生列と集計の変換に加えて、"ルール ベースのマッピング" として選択とシンクの変換にもあります。
+
 ![列パターン](media/data-flow/columnpattern2.png "列パターン")
 
+## <a name="column-patterns"></a>列パターン
 列パターンは、スキーマの誤差シナリオと一般的なシナリオの両方を扱う場合に便利です。 各列名が完全にわからない状況で役立ちます。 列名と列のデータ型に対してパターン マッチングを行い、`name`  &  `type` パターンに一致するデータ ストリーム内の任意のフィールドに対してその操作を実行する変換の式を作成できます。
 
 パターンを受け入れる変換に式を追加するときは、[Add Column Pattern]\(列パターンの追加\) を選択します。 列パターンを使用すると、スキーマの誤差の列のパターンの一致が可能です。
@@ -38,5 +41,11 @@ Azure Data Factory のデータ フロー変換によっては、"列パター�
 
 ![列の位置](media/data-flow/position.png "列の位置")
 
+## <a name="rule-based-mapping"></a>ルール ベースのマッピング
+ソースと選択の変換内の列をマッピングする場合、[Fixed mapping]\(固定マッピング\) または [Rule-based mapping]\(ルール ベースのマッピング\) を選択できます。 データのスキーマがわかっていて、ソース データセットの特定の列が常に特定の静的な名前と一致することが予想される場合は、固定マッピングを使用できます。 ただし、柔軟性の高いスキーマを操作する場合は、ルール ベースのマッピングを使用します。 上記のルールを使用して、パターン マッチを作成できます。
+
+![ルール ベースのマッピング](media/data-flow/rule2.png "ルール ベースのマッピング")
+
 ## <a name="next-steps"></a>次の手順
-ADF Mapping Data Flow の[式言語](https://aka.ms/dataflowexpressions)に関する記事で、データ変換の詳細を確認します。
+* ADF Mapping Data Flow の[式言語](http://aka.ms/dataflowexpressions)に関する記事で、データ変換の詳細を確認します。
+* [シンク変換](data-flow-sink.md)と[選択変換](data-flow-select.md)の列パターンをルール ベースのマッピングで使用します

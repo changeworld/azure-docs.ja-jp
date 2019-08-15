@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b80be0db41ea8bd3996a7b8843c80f510289545f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 12e433a146d8dd8a6fb7e1d7c40acc72e023047b
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570057"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736210"
 ---
-# <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>CLI を使用し、SQL エラスティック プールの Azure SQL データベースを移動する
+# <a name="use-cli-to-add-an-azure-sql-database-single-database-into-a-failover-group"></a>CLI を使用して Azure SQL Database の単一データベースをフェールオーバー グループに追加する
 
 この PowerShell スクリプト例では、単一のデータベースを作成し、フェールオーバー グループを作成してそれにデータベースを追加し、フェールオーバーをテストします。 
 

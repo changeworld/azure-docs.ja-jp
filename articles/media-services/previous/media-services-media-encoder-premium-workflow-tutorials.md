@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: d227e3618c138e6661cc4be7caa2b9a3ba1af3f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: christoc
+ms.reviewer: xpouyat; juliako
+ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61241553"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69016725"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高度なメディア エンコーダー プレミアム ワークフローのチュートリアル
 ## <a name="overview"></a>概要
@@ -123,9 +124,9 @@ ms.locfileid: "61241553"
 実際に行われるエンコードは、そのプロパティによって決まります。 重要な設定をいくつか見てみましょう。
 
 * 出力の幅 と 出力の高さ: エンコード後のビデオの解像度を決定します。 ここでは 640x360 が適切です。
-* [フレーム レート]: [パススルー] に設定した場合、ソース フレーム レートがそのまま採用されます。この設定はオーバーライドすることもできます。 そのようなフレームレート変換には動き補正が適用されません。
+* [フレーム レート]\: [パススルー] に設定した場合、ソース フレーム レートがそのまま採用されます。この設定はオーバーライドすることもできます。 そのようなフレームレート変換には動き補正が適用されません。
 * プロファイルとレベル: AVC のプロファイルとレベルを決定します。 各種のレベルとプロファイルについてさらに詳しい情報が必要な場合は、AVC ビデオ エンコーダー コンポーネントで疑問符アイコンをクリックしてください。個々のレベルについて詳しく説明したヘルプ ページが表示されます。 この例では、メイン プロファイルとレベル 3.2 (既定値) を使用します。
-* [レート コントロール モード] と [ビットレート (kbps)]: このシナリオでは、1200 kbps での固定ビットレート (CBR) 出力を選択します
+* [レート コントロール モード] と [ビットレート (kbps)]\: このシナリオでは、1200 kbps での固定ビットレート (CBR) 出力を選択します
 * ビデオ形式: H.264 ストリームに書き込まれる VUI (Video Usability Information) に関する情報を提供します (画質を高めるためにデコーダーによって使用されるサイド情報であり、正確なデコードに必須というわけではありません)。
 * NTSC (主に米国と日本で使用、30 fps)
 * PAL (主にヨーロッパで使用、25 fps)

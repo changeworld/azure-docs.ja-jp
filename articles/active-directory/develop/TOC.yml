@@ -295,6 +295,8 @@
               href: v2-oauth2-device-code.md
             - name: OAuth 2.0 リソース所有者パスワード資格情報の付与
               href: v2-oauth-ropc.md
+            - name: OAuth 2.0 SAML ベアラー アサーション フロー
+              href: v2-saml-bearer-assertion.md
             - name: 署名キーのロールオーバー
               href: active-directory-signing-key-rollover.md
             - name: ID トークン

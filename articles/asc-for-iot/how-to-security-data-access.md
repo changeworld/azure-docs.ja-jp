@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT (プレビュー) を使用してデータにアクセスする | Microsoft Docs
+title: Azure Security Center for IoT を使用してデータにアクセスする | Microsoft Docs
 description: Azure Security Center for IoT を使用する場合に、セキュリティのアラートと推奨事項のデータにアクセスする方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,41 +13,37 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 2d3f3c6ad194ff8c9582f0c9e71a29b37ba5d967
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ddd9b2c8373746a65cd78f0a81b60d097cd9f38
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616752"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597181"
 ---
 # <a name="access-your-security-data"></a>セキュリティ データにアクセスする 
 
-> [!IMPORTANT]
-> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-Azure Security Center (ASC) for IoT は、Log Analytics ワークスペースにセキュリティのアラート、推奨事項、および未加工のセキュリティ データ (保存する場合) を格納します。
+Azure Security Center for IoT は、Log Analytics ワークスペースにセキュリティのアラート、推奨事項、および未加工のセキュリティ データ (保存する場合) を格納します。
 
 ## <a name="log-analytics"></a>Log Analytics
 
 使用する Log Analytics ワークスペースを構成するには:
 
 1. IoT ハブを開きます。
-1. **[セキュリティ]** をクリックします。
+1. **[セキュリティ]** セクションの下の **[概要]** ブレードをクリックします
 2. **[設定]** をクリックし、Log Analytics ワークスペースの構成を変更します。
 
-構成後の Log Analytics ワークスペースにアクセスするには:
+構成後に Log Analytics ワークスペース内でアラートと推奨事項にアクセスするには:
 
-1. ASC for IoT でアラートまたは推奨事項を選択します。 
+1. Azure Security Center for IoT でアラートまたは推奨事項を選択します。 
 2. **[Further investigation]** \(さらに調査\) をクリックし、 **[To see which devices have this alert click here and view the DeviceId column]** \(このアラートがどのデバイスのものかを確認するには、ここをクリックして DeviceId 列を見てください\) をクリックします。
 
 Log Analytics からデータのクエリを実行する方法の詳細については、「[Log Analytics のクエリの概要](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries)」を参照してください。
 
 ## <a name="security-alerts"></a>セキュリティのアラート
 
-セキュリティ アラートは、ASC for IoT に対して構成されている Log Analytics ワークスペース内の _AzureSecurityOfThings.SecurityAlert_ テーブルに格納されます。
+セキュリティ アラートは、Azure Security Center for IoT ソリューションに対して構成されている Log Analytics ワークスペース内の _AzureSecurityOfThings.SecurityAlert_ テーブルに格納されます。
 
 セキュリティ アラートの調査を始めるときに役立つ便利なクエリがいくつか用意されています。
 
@@ -78,10 +74,10 @@ SecurityAlert
 
 ### <a name="device-summary"></a>デバイスの概要
 
-IoT Hub、デバイス、アラートの重要度、アラートの種類で、先週検出された個々のセキュリティ アラートの数を選択します。
+先週検出された個別のセキュリティ アラートの数を取得して、IoT ハブ、デバイス、アラートの重大度、アラートの種類ごとにグループ化します。
 
 ```
-// Select number of distinct security alerts detected last week by 
+// Get the number of distinct security alerts detected in the last week, grouped by 
 //   IoT hub, device, alert severity, alert type
 //
 SecurityAlert
@@ -126,7 +122,7 @@ SecurityAlert
 
 ## <a name="security-recommendations"></a>セキュリティに関する推奨事項
 
-セキュリティに関する推奨事項は、ASC for IoT に対して構成されている Log Analytics ワークスペース内の _AzureSecurityOfThings.SecurityRecommendation_ テーブルに格納されます。
+セキュリティに関する推奨事項は、Azure Security Center for IoT ソリューションに対して構成されている Log Analytics ワークスペース内の _AzureSecurityOfThings.SecurityRecommendation_ テーブルに格納されます。
 
 セキュリティに関する推奨事項の調査を始めるときに役立つ便利なクエリがいくつか用意されています。
 
@@ -157,10 +153,10 @@ SecurityRecommendation
 
 ### <a name="device-summary"></a>デバイスの概要
 
-IoT Hub、デバイス、推奨事項の重大度、および種類で、個別のアクティブなセキュリティに関する推奨事項の数を選択します。
+個別のアクティブなセキュリティに関する推奨事項の数を取得して、IoT Hub、デバイス、推奨事項の重大度、および種類ごとにグループ化します。
 
 ```
-// Select number of distinct active security recommendations by 
+// Get the number of distinct active security recommendations, grouped by by 
 //   IoT hub, device, recommendation severity and type
 //
 SecurityRecommendation
@@ -180,7 +176,7 @@ SecurityRecommendation
 
 ## <a name="next-steps"></a>次の手順
 
-- ASC for IoT の[概要](overview.md)を参照してください
-- ASC for IoT の[アーキテクチャ](architecture.md)を参照してください
-- [ASC for IoT アラート](concept-security-alerts.md)について参照し、理解を深めます
-- [ASC for IoT の推奨事項](concept-recommendations.md)について参照し、理解を深めます
+- Microsoft Azure Security Center for IoT の[概要](overview.md)を読みます
+- Azure Security Center for IoT の[アーキテクチャ](architecture.md)を確認します
+- [Azure Security Center for IoT のアラート](concept-security-alerts.md)を理解し、探索します
+- [Azure Security Center for IoT の推奨事項](concept-recommendations.md)を理解し、探索します

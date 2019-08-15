@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2030365cd78480c25e224edfea9e395aafa6661c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 55722c35dddcbf8a20f4f51958170938225e87e5
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227910"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668401"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>MLflow と Azure Machine Learning service を使用してメトリックを追跡し、モデルをデプロイする (プレビュー)
 
@@ -36,8 +36,9 @@ ms.locfileid: "68227910"
 
  MLflow Tracking は、メトリックのログ機能と成果物の保存機能を提供します。他の方法では、[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用している場合にのみこれらの機能を利用できます。
 
-| | MLflow Tracking & Deployment | Azure Machine Learning <br> Python SDK |  Azure Machine Learning <br> CLI | Azure ポータル|
-|-|-|-|-|-|-|
+
+| | MLflow Tracking & Deployment | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure ポータル|
+|---|---|---|---|---|
 | ワークスペースの管理 |   | ✓ | ✓ | ✓ |
 | データ ストアの使用  |   | ✓ | ✓ | |
 | メトリックのログ記録      | ✓ | ✓ |   | |

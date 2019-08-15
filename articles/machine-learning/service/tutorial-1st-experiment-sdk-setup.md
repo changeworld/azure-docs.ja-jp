@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:環境とワークスペースを設定します。
 titleSuffix: Azure Machine Learning service
-description: このチュートリアルでは、Jupyter ノートブックで実行されている Azure Machine Learning Python SDK の使用を開始するためのエンドツーエンドの手順を完了します。
+description: このチュートリアル シリーズでは、Jupyter ノートブックで実行されている Azure Machine Learning Python SDK の使用を開始するためのエンドツーエンドの手順を完了します。  パート 1 では、クラウド ノートブック サーバー環境の作成のほか、実験と機械学習モデルを管理するためのワークスペースの作成について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: e17d9286453aeb5c7eac688555177c2c42faad21
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668599"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828637"
 ---
 # <a name="tutorial-setup-environment-and-workspace"></a>チュートリアル:環境とワークスペースを設定する
 
@@ -25,7 +25,7 @@ ms.locfileid: "68668599"
 
 > [!div class="checklist"]
 > * 次のチュートリアルで使用する機械学習ワークスペースを作成します。
-> * クラウド ノートブック サーバー環境を作成します。
+> * ノートブック VM (Azure Machine Learning Python SDK のプレインストールと事前構成が済んだクラウドベースの Jupyter Notebook サーバー) を作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,14 +49,12 @@ ms.locfileid: "68668599"
 
 1. **[+ 新規]** を選択して、ノートブック VM を作成します。
 
-     ![新しい VM を選択する](./media/quickstart-run-cloud-notebook/add-workstation.png)
+     ![新しい VM を選択する](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
 1. VM の名前を指定します。 **[作成]** を選択します。
 
     > [!NOTE]
     > Notebook VM 名は 2 文字から 16 文字にする必要があります。 英字、数字、- の文字が有効です。  名前は、Azure サブスクリプション内で一意である必要もあります。
-
-    ![新しい仮想マシンを作成する](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
 1. 状態が **[実行中]** に変わるまで待機します。
 
@@ -66,7 +64,7 @@ VM が実行中になった後、 **[ノートブック VM]** セクションを
 
 1. VM の **[URI]** 列で、 **[Jupyter]** を選択します。
 
-    ![Jupyter ノートブック サーバーを開始する](./media/quickstart-run-cloud-notebook/start-server.png)
+    ![Jupyter ノートブック サーバーを開始する](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
     リンクから、ノートブック サーバーが起動され、新しいブラウザー タブで Jupyter ノートブックの Web ページが開かれます。このリンクは、VM を作成するユーザーに対してのみ動作します。 ワークスペースの各ユーザーは、独自の VM を作成する必要があります。
 
@@ -87,7 +85,7 @@ VM が実行中になった後、 **[ノートブック VM]** セクションを
 
 1. ワークスペースで、 **[ノートブック VM]** を選択します。
 
-   ![VM サーバーを停止する](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![VM サーバーを停止する](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. 一覧から VM を選択します。
 

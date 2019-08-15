@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: be3f68a00647840801e7c205d7abb34b718bd61c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60630882"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965262"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブル接続
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>概要
 ご使用の Microsoft Azure StorSimple 8600 はデュアル エンクロージャ デバイスで、主エンクロージャと EBOD エンクロージャで構成されています。 このチュートリアルでは、StorSimple ソフトウェアを構成する前に、StorSimple 8600 デバイス ハードウェアの開梱、ラック取り付け、およびケーブル接続の方法について説明します。
 

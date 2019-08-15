@@ -408,7 +408,7 @@ Azure AD Connect バージョン 1.1.654.0 (以降) が強化され、Azure AD C
 *   SELF に固有の ACE を除き、特定のオブジェクトのすべての ACE を削除します。 SELF については、既定のアクセス許可を維持します。
 *   以下の特定のアクセス許可を割り当てます。
 
-Type     | EnableAdfsAuthentication                          | Access               | 適用対象
+Type     | 名前                          | Access               | 適用対象
 ---------|-------------------------------|----------------------|--------------|
 ALLOW    | SYSTEM                        | フル コントロール         | このオブジェクト  |
 ALLOW    | Enterprise Admins             | フル コントロール         | このオブジェクト  |

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 7/25/2019
-ms.openlocfilehash: 3d4bab4558ebfd0f6031ef00a0b67bb0d5b61120
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.date: 08/09/2019
+ms.openlocfilehash: 28d635dc5042799790d032ef4b46bf28118cb326
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501446"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947163"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>サポートされている Azure Database for MySQL サーバー バージョン
 
@@ -38,8 +38,8 @@ MySQL 5.7.24 の機能強化と修正については、MySQL の[リリース �
 
 ## <a name="mysql-version-80"></a>MySQL バージョン 8.0
 
-> [!NOTE]
-> MySQL 8.0 は現在プレビューの段階です。 Azure portal に MySQL 8.0 が表示されない場合は、リージョンでのデプロイが完了していない可能性があります。 
+> [!IMPORTANT]
+> MySQL 8.0 は現在プレビューの段階です。
 
 バグ修正プログラムのリリース:8.0.15
 

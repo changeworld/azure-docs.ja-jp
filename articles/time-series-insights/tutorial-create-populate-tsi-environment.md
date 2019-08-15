@@ -9,12 +9,12 @@ ms.date: 07/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 921528c50bae03b67800bf3ccab8b5cd9bb704f6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4c81daa1f55167fa868c69f3bff388dbaa4887cd
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677743"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725736"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル:Azure Time Series Insights 環境を作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "68677743"
 
 * また、Azure のサインイン アカウントは、サブスクリプションの**所有者**ロールのメンバーである必要があります。 詳細については、[ロールベースのアクセス制御と Azure portal を使用したアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
-## <a name="video"></a>ビデオ
+## <a name="review-video"></a>ビデオの視聴
 
 ### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-time-series-insights-br"></a>Azure IoT ソリューション アクセラレータを使用して、データを生成し、Time Series Insights の使用を開始する方法について説明します。 </br>
 
@@ -116,7 +116,7 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
    [![Time Series Insights 環境のデプロイ成功](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
 
-## <a name="run-device-simulation-to-stream-data"></a>デバイス シミュレーションを実行してデータをストリーミングする
+## <a name="run-device-simulation"></a>デバイスのシミュレーションの実行
 
 これでデプロイおよび初期構成が完了しました。次は、[アクセラレータによって作成されたシミュレートされたデバイス](#create-a-device-simulation)からのサンプル データを Time Series Insights 環境に入力します。
 

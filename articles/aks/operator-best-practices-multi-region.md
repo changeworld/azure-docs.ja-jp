@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
-ms.openlocfilehash: 4d4535af1814ab1250bbd56c989b4849013adff6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5a0a7e59e71e51a109af0f89cbb7ba580b2b97e6
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614840"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967185"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -107,7 +107,7 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 
 アプリケーションには、ポッドが削除された後も、永続的ストレージが必要な場合があります。 Kubernetes では、永続ボリュームを使用してデータ ストレージを保持することができます。 永続ボリュームはノード VM にマウントされてから、ポッドに公開されます。 永続ボリュームは、ポッドが同じクラスター内の別のノードに移動されても、ポッドに従います。
 
-使用するレプリケーションの方法は、お使いのストレージ ソリューションによって決まります。 [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、[Ceph](http://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[Rook](https://rook.io/docs/rook/master/disaster-recovery.html)、[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) などの一般的なストレージ ソリューションには、ディザスター リカバリーとレプリケーションに関する独自のガイダンスがあります。
+使用するレプリケーションの方法は、お使いのストレージ ソリューションによって決まります。 [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、[Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[Rook](https://rook.io/docs/rook/master/disaster-recovery.html)、[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) などの一般的なストレージ ソリューションには、ディザスター リカバリーとレプリケーションに関する独自のガイダンスがあります。
 
 一般的な方法は、アプリケーションがデータを書き込める共通のストレージ ポイントを提供するというものです。 これらのデータは、その後リージョン間でレプリケートされ、ローカルにアクセスされます。
 

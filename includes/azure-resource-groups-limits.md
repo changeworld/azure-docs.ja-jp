@@ -2,18 +2,18 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/12/2019
+ms.date: 07/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5e251402a89f84a0aa67eee676c1794207dd24fb
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: f027f5b295d75c105e81360a10718239e5b08e4d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869891"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698264"
 ---
 | Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
-| リソースの種類ごとの、[リソース グループ](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)あたりのリソース数 |800 |リソースの種類ごとに異なる |
+| リソースの種類ごとの、[リソース グループ](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)あたりのリソース数 |800 |リソースの種類によっては、800 の制限を超えることがあります。 「[リソース グループあたり 800 インスタンスに制限されないリソース](../articles/azure-resource-manager/resources-without-rg-limit.md)」を参照してください。 |
 | デプロイ履歴でのリソース グループあたりのデプロイ数 |800<sup>1</sup> |800 |
 | デプロイあたりのリソース数 |800 |800 |
 | 一意のスコープあたりの管理ロック数 |20 |20 |

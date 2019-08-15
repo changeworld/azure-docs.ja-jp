@@ -1,20 +1,19 @@
 ---
-title: 'Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のデータを管理する '
+title: Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のデータを管理する
 description: このクイック スタートでは、Azure Storage Explorer を使用して、Azure Data Lake Storage Gen2 アカウントでファイル システムだけでなく、ディレクトリとファイルを作成する方法について説明します。 次に、ローカル コンピューターにファイルをダウンロードする方法と、ディレクトリ内のすべてのファイルを表示する方法について説明します。
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
-ms.custom: mvc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: normesta
-ms.openlocfilehash: 38cc0533d3e993dd90a037ee6a504c2dcd575e6f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.reviewer: stewu
+ms.openlocfilehash: 3450de26c12d91f4be00fe39bd5703564c786190
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360861"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855608"
 ---
 # <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 アカウントのデータを管理する
 

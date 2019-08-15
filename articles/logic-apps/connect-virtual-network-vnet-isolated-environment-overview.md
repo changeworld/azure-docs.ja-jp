@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 07/19/2019
-ms.openlocfilehash: 3e14604955a64c7a146a947c5c320b42ea3ebcba
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 07/26/2019
+ms.openlocfilehash: 831a1457d865429fd53af1887a14c363b806300c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325408"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516601"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
@@ -80,7 +80,22 @@ ISE を作成するときは、Developer SKU または Premium SKU を選択で�
 
   運用環境で使用できる ISE が提供され、SLA のサポート、組み込みのトリガーとアクション、標準コネクタ、エンタープライズ コネクタ、単一の [Standard レベル](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)の統合アカウント、容量スケールアップ オプション、固定月額料金のリサイクル中の冗長性などが含まれます。
 
+> [!IMPORTANT]
+> この SKU オプションは、ISE 作成時にのみ使用できます。後で変更することはできません。
+
 価格については、[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)に関する記事を参照してください。 ISE の価格と課金のしくみについては、「[固定価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)」を参照してください。
+
+<a name="endpoint-access"></a>
+
+## <a name="ise-endpoint-access"></a>ISE エンドポイントへのアクセス
+
+ISE を作成するときに、内部アクセス エンドポイントと外部アクセス エンドポイントのどちらを使用するかを選択できます。 これらのエンドポイントにより、ISE 内のロジック アプリ上で要求または Webhook トリガーが仮想ネットワークの外からの呼び出しを受信できるかどうかが決まります。 これらのエンドポイントは、ロジック アプリの実行履歴の入力と出力へのアクセスにも影響します。
+
+* **内部**:ISE 内のロジック アプリへの呼び出しに加え、"*仮想ネットワーク内から*" のみ実行履歴の入力と出力へのアクセスを許可するプライベート エンドポイント
+* **外部**:ISE 内のロジック アプリへの呼び出しに加え、"*仮想ネットワーク外からの*" 実行履歴の入力と出力へのアクセスを許可するパブリック エンドポイント
+
+> [!IMPORTANT]
+> このアクセス エンドポイント オプションは、ISE 作成時にのみ使用できます。後で変更することはできません。
 
 <a name="on-premises"></a>
 
@@ -106,6 +121,8 @@ Azure 仮想ネットワークに接続されているオンプレミス シス�
 
 ## <a name="next-steps"></a>次の手順
 
-* [分離されたロジック アプリから Azure Virtual Network に接続する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)方法を理解する
+* [分離されたロジック アプリから Azure 仮想ネットワークに接続する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+* [成果物を統合サービス環境に追加する](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [統合サービス環境を管理する](../logic-apps/ise-manage-integration-service-environment.md)
 * [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) の詳細を理解する
 * [Azure サービスの仮想ネットワーク統合](../virtual-network/virtual-network-for-azure-services.md)について理解する

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 55bcce3c5a4b0dd00d9217d6cb3cc2cfbe6d5828
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: da7e41ae77226c2a18b92329507855ac30891058
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753812"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816098"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド ネイティブ アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Service Fabric は、コンテナーで実行するこれらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代プラットフォームの代表例です。
@@ -67,7 +67,7 @@ Service Fabric では、コンテナーを含むクラウド アプリケーシ�
 
 Service Fabric ライフサイクル管理機能を使用すると、アプリケーション管理者および IT オペレーターは単純なロータッチ ワークフローを使用して、アプリケーションをプロビジョニング、デプロイ、修正、および監視することができます。 これらの組み込みワークフローにより、アプリケーションを継続的に使用可能に保つために IT オペレーターにかかる負担が大幅に軽減されます。
 
-ほとんどのアプリケーションは、ステートレスとステートフルのマイクロサービス、コンテナー、および一緒にデプロイされる他の実行可能ファイルの組み合わせで構成されます。 Service Fabric は、アプリケーションの厳密な型を備えており、複数のアプリケーション インスタンスのデプロイが可能です。 インスタンスは個別に管理およびアップグレードできます。 重要なのは、Service Fabric はコンテナーまたは任意の実行可能ファイルをデプロイし、それらを信頼性の高いものにすることができる点です。 たとえば、Service Fabric は、.NET、ASP.NET Core、node.js、Windows コンテナー、Linux コンテナー、Java 仮想マシン、スクリプト、Angular、またはアプリケーションを構成する文字通りすべてのものをデプロイできます。
+ほとんどのアプリケーションは、ステートレスとステートフルのマイクロサービス、コンテナー、および一緒にデプロイされる他の実行可能ファイルの組み合わせで構成されます。 Service Fabric は、アプリケーションの厳密な型を備えており、複数のアプリケーション インスタンスのデプロイが可能です。 インスタンスは個別に管理およびアップグレードできます。 重要なのは、Service Fabric はコンテナーまたは任意の実行可能ファイルをデプロイし、それらを信頼性の高いものにすることができる点です。 たとえば、Service Fabric は、.NET、ASP.NET Core、Python、Node.js、Windows コンテナー、Linux コンテナー、Java 仮想マシン、スクリプト、Angular、またはアプリケーションを構成する文字通りすべてのものをデプロイできます。
 
 Service Fabric は、[Azure Pipelines](https://www.visualstudio.com/team-services/)、[Jenkins](https://jenkins.io/index.html)、[Octopus Deploy](https://octopus.com/) などの CI/CD ツールと統合し、他のすべての一般的な CI/CD ツールで使うことができます。
 

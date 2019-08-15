@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: 8b2a9561a0933e435649c81334706481531c9ce9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bfefefc365f2725f9f3feacf1e6159d09cc43ba9
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67836946"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68736228"
 ---
 ## <a name="use-azure-cloud-shell"></a>Azure Cloud Shell を使用する
 
@@ -20,7 +20,7 @@ Azure Cloud Shell を起動するには:
 | オプション | 例とリンク |
 |-----------------------------------------------|---|
 | コード ブロックの右上隅にある **[使ってみる]** を選択します。 **[試してみる]** を選択しても、コードは Cloud Shell に自動的にコピーされません。 | ![Azure Cloud Shell の [使ってみる] の例](./media/cloud-shell-try-it/cli-try-it.png) |
-| [https://shell.azure.com](https://shell.azure.com) に移動するか、 **[Cloud Shell を起動する]** ボタンを選択して、ブラウザーで Cloud Shell を開きます。 | <a href="https://shell.azure.com" title="Azure Cloud Shell を起動する"><img name="launch-cloud-shell" src="https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/launchcloudshell.png" /></a> |
+| [https://shell.azure.com](https://shell.azure.com) に移動するか、 **[Cloud Shell を起動する]** ボタンを選択して、ブラウザーで Cloud Shell を開きます。 | [![新しいウィンドウで Cloud Shell を起動する](media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com) |
 | [Azure portal](https://portal.azure.com) の右上にあるメニュー バーの **[Cloud Shell]** ボタンを選択します。 | ![Azure Portal の [Cloud Shell] ボタン](./media/cloud-shell-try-it/cloud-shell-menu.png) |
 
 Azure Cloud Shell でこの記事のコードを実行するには:

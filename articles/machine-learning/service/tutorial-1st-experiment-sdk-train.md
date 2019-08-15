@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 8b89f5572ae94986590fe76096daeb0ad088fe59
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668579"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934234"
 ---
 # <a name="tutorial-train-your-first-model"></a>チュートリアル:最初のモデルをトレーニングする
 
@@ -23,6 +23,7 @@ ms.locfileid: "68668579"
 
 このチュートリアルでは、以下のタスクについて学習します。
 
+> [!div class="checklist"]
 > * 自分のワークスペースを接続し、実験を作成する
 > * データを読み込み、scikit-learn モデルをトレーニングする
 > * ポータルでトレーニング結果を表示する
@@ -111,7 +112,7 @@ for alpha in alphas:
 experiment
 ```
 
-<table style="width:100%"><tr><th>名前</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td><a href="" target="_blank" rel="noopener">Azure portal へのリンク</a></td><td><a href="" target="_blank" rel="noopener">ドキュメントへのリンク</a></td></tr></table>
+<table style="width:100%"><tr><th>名前</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>ポータルでトレーニング結果を表示する
 
@@ -181,7 +182,7 @@ Azure Machine Learning service の他のチュートリアルを実行する予�
 
 1. ワークスペースで、 **[ノートブック VM]** を選択します。
 
-   ![VM サーバーを停止する](./media/quickstart-run-cloud-notebook/stop-server.png)
+   ![VM サーバーを停止する](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
 1. 一覧から VM を選択します。
 

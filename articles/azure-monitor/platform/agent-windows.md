@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 7f562959ac6022539ccf7137f352a2e9507758dc
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: 8ca87f18a91af3937f8b4dd1148ecad8507e0dd5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67146347"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68849058"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows コンピューターを Azure Monitor に接続する
 
@@ -34,7 +34,7 @@ Azure Monitor を使用して、ローカル データ センターやその他�
 * Azure Stack 内のオンプレミスで Windows を実行している仮想マシン用の、Resource Manager テンプレート。 
 
 >[!NOTE]
->Azure Security Center (ASC) は、Microsoft Monitoring Agent (Log Analytics Windows エージェントとも呼ばれます) に依存しており、そのデプロイの一環で Log Analytics ワークスペースに報告するようにインストールおよび構成します。 ASC には自動プロビジョニング オプションがあります。このオプションを使用すると、サブスクリプション内のすべての VM に Log Analytics Windows エージェントを自動的にインストールし、特定のワークスペースに報告するように構成することができます。 このオプションの詳細については、[Log Analytics エージェントの自動プロビジョニングの有効化](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-)に関するページを参照してください。
+>Azure Security Center (ASC) は、Microsoft Monitoring Agent (Log Analytics Windows エージェントとも呼ばれます) に依存しており、そのデプロイの一環で Log Analytics ワークスペースに報告するようにインストールおよび構成します。 ASC には自動プロビジョニング オプションがあります。このオプションを使用すると、サブスクリプション内のすべての VM に Log Analytics Windows エージェントを自動的にインストールし、特定のワークスペースに報告するように構成することができます。 このオプションの詳細については、[Log Analytics エージェントの自動プロビジョニングの有効化](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-the-log-analytics-agent-)に関するページを参照してください。
 >
 
 複数のワークスペースに報告するようにエージェントを構成する必要がある場合、この構成は初期設定時には実行できません。「[ワークスペースの追加または削除](agent-manage.md#adding-or-removing-a-workspace)」で説明されているように、後からコントロール パネルまたは PowerShell から更新することでのみ実行できます。  

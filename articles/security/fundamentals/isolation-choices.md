@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 0c07cbd9fef865f3fc7b782210ef44094df9f629
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 9ab09c7215827369b3e1fc449af68be307881f51
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779826"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928009"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -54,7 +54,7 @@ Microsoft Azure を使用すると、共有物理インフラストラクチャ�
 各 Azure AD ディレクトリは、他の Azure AD ディレクトリと区別され分離されています。 会社のオフィス ビルが組織に固有のセキュリティで保護された資産であるのと同様に、Azure AD ディレクトリも特定の組織だけが使用するセキュリティで保護された資産として設計されています。 Azure AD アーキテクチャは、顧客のデータや ID 情報が混合しないよう分離します。 これは、Azure AD ディレクトリのユーザーや管理者が、別のディレクトリのデータに誤ってまたは悪意をもってアクセスすることはできないことを意味します。
 
 ### <a name="azure-tenancy"></a>Azure テナント
-Azure テナント (Azure サブスクリプション) とは、"顧客/課金" の関係と、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)での一意の[テナント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) を意味します。 Microsoft Azure でのテナント レベルの分離は、Azure Active Directory と、それによって提供される[ロールベースのコントロール](https://docs.microsoft.com/azure/role-based-access-control/overview)を使用して実現します。 各 Azure サブスクリプションは、1 つの Azure Active Directory (AD) ディレクトリと関連付けられます。
+Azure テナント (Azure サブスクリプション) とは、"顧客/課金" の関係と、[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)での一意の[テナント](../../active-directory/develop/quickstart-create-new-tenant.md) を意味します。 Microsoft Azure でのテナント レベルの分離は、Azure Active Directory と、それによって提供される[ロールベースのコントロール](../../role-based-access-control/overview.md)を使用して実現します。 各 Azure サブスクリプションは、1 つの Azure Active Directory (AD) ディレクトリと関連付けられます。
 
 そのディレクトリに登録されたユーザー、グループ、およびアプリケーションのみが、Azure サブスクリプションでリソースを管理できます。 このためのアクセス権は、Azure ポータル、Azure コマンドライン ツール、および Azure 管理 API を使用して割り当てることができます。 Azure AD テナントはセキュリティ境界を使用して論理的に分離されるため、悪意があるか偶発的にかにかかわらず、顧客が他のテナントにアクセスしたり侵入したりすることはできません。 Azure AD は、隔離されたネットワーク セグメント上の分離された "ベア メタル" サーバーで実行します。ここでは、ホストレベルのパケット フィルタリングと Windows Firewall によって、望ましくない接続やトラフィックがブロックされます。
 
@@ -71,7 +71,7 @@ Azure テナント (Azure サブスクリプション) とは、"顧客/課金" 
 
 - Azure AD ユーザーには、物理的な資産または場所へのアクセス権はありません。したがって、後で説明する論理 RBAC ポリシー チェックを回避することはできません。
 
-診断と保守のニーズのため、Just-In-Time 特権昇格システムを採用している運用モデルを使用する必要があります。 Azure AD Privileged Identity Management (PIM) では、管理者候補という概念が導入されています。[管理者候補](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)とは、常にではなく時折特権アクセスを必要とするユーザーのことです。 このロールは、このユーザーがアクセス権を必要とするまで非アクティブ化されています。そして、ユーザーがアクティブ化プロセスを完了すると、所定の時間の間だけ有効な管理者になります。
+診断と保守のニーズのため、Just-In-Time 特権昇格システムを採用している運用モデルを使用する必要があります。 Azure AD Privileged Identity Management (PIM) では、管理者候補という概念が導入されています。[管理者候補](../../active-directory/privileged-identity-management/pim-configure.md)とは、常にではなく時折特権アクセスを必要とするユーザーのことです。 このロールは、このユーザーがアクセス権を必要とするまで非アクティブ化されています。そして、ユーザーがアクティブ化プロセスを完了すると、所定の時間の間だけ有効な管理者になります。
 
 ![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 
@@ -82,7 +82,7 @@ Azure Active Directory は、保護された専用コンテナーで各コンテ
 複数の Azure Active Directory テナントのメタデータが同じ物理ディスクに格納されている場合でも、コンテナー間に関係はありません (ディレクトリ サービスによる定義を除きます。これは後でテナント管理者によって指示されます)。
 
 ### <a name="azure-role-based-access-control-rbac"></a>Azure ロールベースのアクセス制御 (RBAC)
-[Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) では、Azure のきめ細かいアクセス管理が提供され、Azure サブスクリプションで使用可能なさまざまなコンポーネントの共有に役立ちます。 Azure RBAC を使用すると、組織内での仕事を切り分けて、ユーザーが業務を遂行するために必要な操作に基づいてアクセス権を付与できます。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。
+[Azure ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) では、Azure のきめ細かいアクセス管理が提供され、Azure サブスクリプションで使用可能なさまざまなコンポーネントの共有に役立ちます。 Azure RBAC を使用すると、組織内での仕事を切り分けて、ユーザーが業務を遂行するために必要な操作に基づいてアクセス権を付与できます。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。
 
 Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロールがあります。
 
@@ -96,16 +96,16 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 
 残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの作成協力者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する Azure Virtual Network またはサブネットへのアクセス権は付与されません。
 
-「[RBAC: 組み込みのロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)を作成する方法を参照してください。
+「[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](../../role-based-access-control/custom-roles.md)を作成する方法を参照してください。
 
 Azure Active Directory のその他の機能を次に示します。
 - Azure AD では、どこでホストされているかにかかわらず、SaaS アプリケーションへの SSO が可能です。 一部のアプリケーションは Azure AD とフェデレーションされ、他のアプリケーションはパスワード SSO を使用します。 フェデレーション アプリケーションでは、ユーザー プロビジョニングと[パスワード保管](https://www.techopedia.com/definition/31415/password-vault)もサポートできます。
 
-- [Azure Storage](https://azure.microsoft.com/services/storage/) のデータへのアクセスは、認証によって制御されます。 各ストレージ アカウントには、プライマリ キー ([ストレージ アカウント キー](https://docs.microsoft.com/azure/storage/storage-create-storage-account) (SAK)) とセカンダリ秘密キー (Shared Access Signature (SAS)) があります。
+- [Azure Storage](https://azure.microsoft.com/services/storage/) のデータへのアクセスは、認証によって制御されます。 各ストレージ アカウントには、プライマリ キー ([ストレージ アカウント キー](../../storage/common/storage-create-storage-account.md) (SAK)) とセカンダリ秘密キー (Shared Access Signature (SAS)) があります。
 
-- Azure AD は、オンプレミス ディレクトリとの [Active Directory フェデレーション サービス (AD FS)](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-azure-adfs)、同期、およびレプリケーションを使用し、フェデレーションを通じて ID をサービスとして提供します。
+- Azure AD は、オンプレミス ディレクトリとの [Active Directory フェデレーション サービス (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)、同期、およびレプリケーションを使用し、フェデレーションを通じて ID をサービスとして提供します。
 
-- [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication) は、モバイル アプリケーション、電話、またはテキスト メッセージを使用したサインインの検証をユーザーに要求する多要素認証サービスです。 Azure AD と併用して Azure Multi-Factor Authentication サーバーでオンプレミス リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
+- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) は、モバイル アプリケーション、電話、またはテキスト メッセージを使用したサインインの検証をユーザーに要求する多要素認証サービスです。 Azure AD と併用して Azure Multi-Factor Authentication サーバーでオンプレミス リソースをセキュリティで保護したり、SDK を使用するカスタム アプリケーションおよびディレクトリに使用したりすることができます。
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/)を使用すると、ドメイン コントローラーをデプロイしなくても、Azure Virtual Machines を Active Directory ドメインに参加させることができます。 ユーザーは会社の Active Directory 資格情報を使用してこれらの仮想マシンにサインインし、グループ ポリシーによってすべての Azure 仮想マシンにセキュリティ基準を適用することで、ドメインに参加している仮想マシンを管理できます。
 
@@ -140,7 +140,7 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 * Standard_D15_v2
 * Standard_F72s_v2
 
-利用可能な分離されたサイズごとの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)を参照してください。
+利用可能な分離されたサイズごとの詳細については、[こちら](../../virtual-machines/windows/sizes-memory.md)を参照してください。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>ルート VM とゲスト VM の間での Hyper-V とルート OS の分離
 Azure のコンピューティング プラットフォームは、コンピューターの仮想化に基づいています。つまり、顧客のすべてのコードは Hyper-V 仮想マシンで実行します。 各 Azure ノード (またはネットワーク エンドポイント) にはハイパーバイザーがあり、ハードウェア上で直接実行して、ノードをいくつものゲスト仮想マシン (VM) に分割します。
@@ -215,12 +215,12 @@ Microsoft Azure では、基本設計において VM ベースのコンピュー
 
 ![記憶域アクセス制御を使用する分離](./media/isolation-choices/azure-isolation-fig9.png)
 
-**Azure Storage データ (テーブルを含む) へのアクセス**は、スコープ アクセスを付与する [SAS (Shared Access Signature)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) トークンを介して制御できます。 SAS は、クエリ テンプレート (URL) を使用して作成され、[SAK (ストレージ アカウント キー)](https://msdn.microsoft.com/library/azure/ee460785.aspx) で署名されます。 この[署名付き URL](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) は他のプロセスに与えることができます (委任)。そのプロセスがクエリの詳細を設定し、記憶域サービスの要求を作成できます。 SAS を使用すると、ストレージ アカウントの秘密キーを公開せずに、時間ベースのアクセス権をクライアントに付与することができます。
+**Azure Storage データ (テーブルを含む) へのアクセス**は、スコープ アクセスを付与する [SAS (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) トークンを介して制御できます。 SAS は、クエリ テンプレート (URL) を使用して作成され、[SAK (ストレージ アカウント キー)](https://msdn.microsoft.com/library/azure/ee460785.aspx) で署名されます。 この[署名付き URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) は他のプロセスに与えることができます (委任)。そのプロセスがクエリの詳細を設定し、記憶域サービスの要求を作成できます。 SAS を使用すると、ストレージ アカウントの秘密キーを公開せずに、時間ベースのアクセス権をクライアントに付与することができます。
 
 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
 
 ### <a name="ip-level-storage-isolation"></a>IP レベルでの記憶域の分離
-ファイアウォールを設定し、信頼されたクライアントの IP アドレス範囲を定義できます。 IP アドレス範囲が定義されていると、IP アドレスがその範囲に該当するクライアントだけが [Azure Storage](https://docs.microsoft.com/azure/storage/storage-security-guide) に接続できます。
+ファイアウォールを設定し、信頼されたクライアントの IP アドレス範囲を定義できます。 IP アドレス範囲が定義されていると、IP アドレスがその範囲に該当するクライアントだけが [Azure Storage](../../storage/common/storage-security-guide.md) に接続できます。
 
 IP 記憶域データは、トラフィックの専用トンネルを IP 記憶域に割り当てるネットワーキング メカニズムによって未許可のユーザーから保護することができます。
 
@@ -233,23 +233,23 @@ Azure では、データを保護するために次の種類の暗号化が提�
 #### <a name="encryption-in-transit"></a>転送中の暗号化
 転送中の暗号化は、ネットワーク間でデータを転送するときにデータを保護するメカニズムです。 Azure Storage では、以下を使用してデータをセキュリティ保護できます。
 
--   [トランスポートレベルの暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
+-   [トランスポートレベルの暗号化](../../storage/common/storage-security-guide.md)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
 
 -   [ワイヤ暗号化](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (Azure ファイル共有の SMB 3.0 暗号化など)。
 
--   [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
+-   [クライアント側の暗号化](../../storage/common/storage-security-guide.md)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
 
 #### <a name="encryption-at-rest"></a>保存時の暗号化
-多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
+多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](isolation-choices.md) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
 
--   [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
+-   [Storage Service Encryption](../../storage/common/storage-security-guide.md) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
 
--   [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption) には、保存時の暗号化機能もあります。
+-   [クライアント側の暗号化](../../storage/common/storage-security-guide.md) には、保存時の暗号化機能もあります。
 
--   [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
+-   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
-仮想マシン (VM) 向けの [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) で管理するキーとポリシーを使用して VM ディスク (ブート ディスクとデータ ディスクを含む) を暗号化するソリューションです。組織のセキュリティとコンプライアンスの要件に対処する際に大きな効果を発揮します。
+仮想マシン (VM) 向けの [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) で管理するキーとポリシーを使用して VM ディスク (ブート ディスクとデータ ディスクを含む) を暗号化するソリューションです。組織のセキュリティとコンプライアンスの要件に対処する際に大きな効果を発揮します。
 
 Windows 向けの Disk Encryption ソリューションのベースは [Microsoft BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)であり、Linux 向けソリューションは [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) がベースになっています。
 
@@ -293,7 +293,7 @@ SQL Database は、市場をリードする Microsoft SQL Server エンジンと
 
 ### <a name="sql-azure-application-model"></a>SQL Azure アプリケーション モデル
 
-[Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) Database は、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。 マイクロソフトによってホストされる、スケーラブルな高可用性マルチテナント データベース サービスをクラウドで提供します。
+[Microsoft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) Database は、SQL Server テクノロジに基づいて構築されたクラウドベースのリレーショナル データベース サービスです。 マイクロソフトによってホストされる、スケーラブルな高可用性マルチテナント データベース サービスをクラウドで提供します。
 
 アプリケーションの観点では、SQL Azure によって次の階層が提供されます。各レベルは下位レベルを 1 対多で包含します。
 
@@ -344,9 +344,9 @@ Azure デプロイでは、複数の層でネットワークの分離を行う�
 
 ![ネットワークの分離](./media/isolation-choices/azure-isolation-fig13.png)
 
-**トラフィックの分離**: [仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)は、Azure プラットフォームでのトラフィックの分離境界となります。 ある仮想ネットワーク内の仮想マシン (VM) と別の仮想ネットワーク内の VM は、両方の仮想ネットワークを同じ顧客が作成した場合でも、直接通信することはできません。 分離は、顧客の VM と通信が仮想ネットワーク内でプライベートであることを保証する重要な特性です。
+**トラフィックの分離**: [仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)は、Azure プラットフォームでのトラフィックの分離境界となります。 ある仮想ネットワーク内の仮想マシン (VM) と別の仮想ネットワーク内の VM は、両方の仮想ネットワークを同じ顧客が作成した場合でも、直接通信することはできません。 分離は、顧客の VM と通信が仮想ネットワーク内でプライベートであることを保証する重要な特性です。
 
-[サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)によって、IP 範囲に基づいて仮想ネットワーク内に分離の層がさらに提供されます。 仮想ネットワーク内の IP アドレスを使用して、仮想ネットワークを組織とセキュリティ用に複数のサブネットに分割することができます。 VNet 内の (同じまたは異なる) サブネットにデプロイした VM と PaaS ロール インスタンスは、追加の構成をしなくても互いに通信できます。 また、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) を構成し、NSG のアクセス制御リスト (ACL) に構成した規則に基づいて VM インスタンスに対するネットワーク トラフィックを許可または禁止することもできます。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。
+[サブネット](../../virtual-network/virtual-networks-overview.md)によって、IP 範囲に基づいて仮想ネットワーク内に分離の層がさらに提供されます。 仮想ネットワーク内の IP アドレスを使用して、仮想ネットワークを組織とセキュリティ用に複数のサブネットに分割することができます。 VNet 内の (同じまたは異なる) サブネットにデプロイした VM と PaaS ロール インスタンスは、追加の構成をしなくても互いに通信できます。 また、[ネットワーク セキュリティ グループ (NSG)](../../virtual-network/virtual-networks-overview.md) を構成し、NSG のアクセス制御リスト (ACL) に構成した規則に基づいて VM インスタンスに対するネットワーク トラフィックを許可または禁止することもできます。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。
 
 ## <a name="next-steps"></a>次の手順
 

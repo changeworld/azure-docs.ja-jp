@@ -15,13 +15,13 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
-ms.custom: aaddev
-ms.openlocfilehash: 0acef783b4877b5b1787f142aec6cc3588293f83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: aaddev, identityplatformtop40
+ms.openlocfilehash: 33128cbece3b217778182b3831b02e2f3f654f3b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67111470"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853210"
 ---
 # <a name="microsoft-identity-platform-integration-checklist"></a>Microsoft ID プラットフォーム統合チェックリスト
 

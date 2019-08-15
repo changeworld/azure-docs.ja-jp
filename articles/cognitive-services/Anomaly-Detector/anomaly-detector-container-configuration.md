@@ -59,7 +59,7 @@ ms.locfileid: "68321449"
 
 * Azure portal:**Anomaly Detector の** [概要] (ラベルが `Endpoint`)
 
-|必須| EnableAdfsAuthentication | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus2.api.cognitive.microsoft.com` |
 
@@ -88,7 +88,7 @@ Anomaly Detector コンテナーでは、トレーニングやサービスのデ
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](anomaly-detector-container-howto.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
 
-|省略可能| EnableAdfsAuthentication | データ型 | 説明 |
+|省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |禁止| `Input` | string | Anomaly Detector コンテナーでは、これは使用されません。|
 |省略可能| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|

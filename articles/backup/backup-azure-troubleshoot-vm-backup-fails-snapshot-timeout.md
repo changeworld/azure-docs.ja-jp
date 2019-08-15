@@ -1,19 +1,20 @@
 ---
 title: Azure Backup の失敗のトラブルシューティング:ゲスト エージェントの状態を確認できない
 description: エージェント、拡張機能、ディスクに関する Azure Backup のエラーの症状、原因、解決策。
-author: saurabhsensharma
-manager: saurabhsensharma
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 keywords: Azure Backup; VM エージェント; ネットワーク接続;
 ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.author: saurse
-ms.openlocfilehash: e4337c9c89ca239bb664cbb7fb953ab9eedd3ac5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.author: dacurwin
+ms.openlocfilehash: 7fc288ad9e33088b1b5248c1b61ed439ac95a9c4
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68465331"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688979"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -77,9 +78,9 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **原因 2:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
 **原因 3:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
 
-## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - VMSnapshot の拡張操作に失敗しました。
+## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks - VMSnapshot の拡張操作に失敗しました
 
-**エラー コード**:ExtentionOperationFailedForManagedDisks <br>
+**エラー コード**:ExtensionOperationFailedForManagedDisks <br>
 **エラー メッセージ**:VMSnapshot 拡張機能の操作に失敗した<br>
 
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。  
@@ -106,7 +107,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **エラー コード**:UserErrorUnsupportedDiskSize <br>
 **エラー メッセージ**:現在、Azure Backup では 4095 GB を超えるディスク サイズはサポートされていません <br>
 
-VM をバックアップするときディスク サイズが 4095 GB よりも大きい場合、バックアップ操作が失敗することがあります。 大容量ディスクのサポートは近日対応予定です。  
+VM をバックアップするときディスク サイズが 4095 GB よりも大きい場合、バックアップ操作が失敗することがあります。 4 TB 超から最大 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートのプライベート プレビューにサインアップするには、AskAzureBackupTeam@microsoft.com までご連絡ください。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 別のバックアップ操作が進行中であるためバックアップを開始できません
 

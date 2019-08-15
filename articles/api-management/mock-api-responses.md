@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8840c85e35a371b8c7a0a76dbee6353a20b212be
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205319"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881127"
 ---
 # <a name="mock-api-responses"></a>API の応答の模擬テストを実行する
 
@@ -79,7 +79,7 @@ ms.locfileid: "67205319"
 5. 一覧から **[200 OK]** を選択します。
 6. 右側の **[表現]** 見出しで、 **[+ 表現の追加]** を選択します。
 7. 検索ボックスに「*application/json*」と入力し、コンテンツの種類として **application/json** を選択します。
-8. **[サンプル]** テキスト ボックスに「`{ 'sampleField' : 'test' }`」と入力します。
+8. **[サンプル]** テキスト ボックスに「`{ "sampleField" : "test" }`」と入力します。
 9. **作成** を選択します。
 
 ## <a name="enable-response-mocking"></a>応答のモック作成を有効にする

@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1b2e6e0aa74c06afea09a67dbdf65ca47727b72e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780555"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928072"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -89,7 +89,7 @@ Server、X-Powered-By、X-AspNet-Version などのヘッダーによって、サ
 
 ブルート フォース攻撃や辞書ベース推測を防ぐには、ユーザーが必ず複雑なパスワード (例: 12 文字以上、英数字と特殊文字) を設定するように、強力なパスワード ポリシーを実装する必要があります。
 
-ID フレームワークを使用して、パスワード ポリシーを作成し、適用できます。 Azure AD B2C では、[組み込みポリシー](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows#create-a-password-reset-user-flow)、[パスワード リセットのセルフサービス](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-sspr)、その他が提供されて、パスワード管理に役立ちます。
+ID フレームワークを使用して、パスワード ポリシーを作成し、適用できます。 Azure AD B2C では、[組み込みポリシー](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow)、[パスワード リセットのセルフサービス](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)、その他が提供されて、パスワード管理に役立ちます。
 
 既定のアカウントへの攻撃を防ぐには、すべてのキーやパスワードが置換可能で、リソースをインストールした後で生成または置換されたことを確認します。
 
@@ -99,9 +99,9 @@ ID フレームワークを使用して、パスワード ポリシーを作成�
 
 アプリケーションで[ファイルのアップロード](https://www.owasp.org/index.php/Unrestricted_File_Upload)を許可する場合は、この危険なアクティビティのために実行できる予防策を検討してください。 多くの攻撃において最初のステップになるのは、攻撃対象のシステムに悪意のあるコードを取り込むことです。 ファイル アップロードを使用すると、攻撃者がこれを達成しやすくなります。 OWASP では、ファイルを検証し、アップロードされているファイルが安全であることを確認するするためのソリューションが提供されます。
 
-マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および[System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) をインストールします。
+マルウェア対策保護は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するのに役立ちます。 [Microsoft Antimalware](../fundamentals/antimalware.md) または Microsoft パートナーのエンドポイント保護ソリューション ([Trend Micro](https://www.trendmicro.com/azure/)、[Symantec](https://www.symantec.com/products)、[McAfee](https://www.mcafee.com/us/products.aspx)、[Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)、および[System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) をインストールします。
 
-[Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) と統合できます。
+[Microsoft Antimalware](../fundamentals/antimalware.md) には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](../../security-center/security-center-partner-integration.md) と統合できます。
 
 ### <a name="dont-cache-sensitive-content"></a>機密性の高いコンテンツをキャッシュしない
 
@@ -117,7 +117,7 @@ ID フレームワークを使用して、パスワード ポリシーを作成�
 Azure App Service Web Apps では、[Tinfoil Security](https://www.tinfoilsecurity.com/) を利用する脆弱性スキャンを使用できます。 [Tinfoil Security の App Service 向けスキャン機能](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用すると、開発者や管理者はコスト効率に優れた統合型の手法で迅速に脆弱性の問題を発見し、攻撃者から悪用される前に対処することができます。
 
 > [!NOTE]
-> また、[Tinfoil Security と Azure AD を統合する](https://docs.microsoft.com/azure/active-directory/saas-apps/tinfoil-security-tutorial)こともできます。 Tinfoil Security と Azure AD の統合には、次の利点があります。
+> また、[Tinfoil Security と Azure AD を統合する](../../active-directory/saas-apps/tinfoil-security-tutorial.md)こともできます。 Tinfoil Security と Azure AD の統合には、次の利点があります。
 >  - Azure AD で、Tinfoil Security にアクセスできるユーザーを制御できます。
 >  - ユーザーは、自分の Azure AD アカウントを使用して Tinfoil Security に自動的にサインインできます (シングル サインオン)。
 >  - 単一の中央サイト (Azure portal) でアカウントを管理できます。
@@ -128,7 +128,7 @@ Azure App Service Web Apps では、[Tinfoil Security](https://www.tinfoilsecuri
 
 DAST は、静的アプリケーション セキュリティ テスト (SAST) とは異なるものです。 SAST ツールでは、セキュリティ上の欠陥を見つけるため、コードが実行されていないときに、ソース コードまたはコンパイル済みバージョンのコードが分析されます。
 
-できればセキュリティ専門家 ([侵入テスト担当者](https://docs.microsoft.com/azure/security/fundamentals/pen-testing)または脆弱性の審査機関) の支援を得て、DAST を実行してください。 セキュリティの専門家を手配できない場合は、Web プロキシ スキャナーを使用し、トレーニングした後、自分で DAST を実行してもかまいません。 早い段階で DAST スキャナーに接続し、コードに明らかなセキュリティの問題が発生しないことを確認します。 Web アプリケーション脆弱性スキャナーの一覧については、[OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) のサイトをご覧ください。
+できればセキュリティ専門家 ([侵入テスト担当者](../fundamentals/pen-testing.md)または脆弱性の審査機関) の支援を得て、DAST を実行してください。 セキュリティの専門家を手配できない場合は、Web プロキシ スキャナーを使用し、トレーニングした後、自分で DAST を実行してもかまいません。 早い段階で DAST スキャナーに接続し、コードに明らかなセキュリティの問題が発生しないことを確認します。 Web アプリケーション脆弱性スキャナーの一覧については、[OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) のサイトをご覧ください。
 
 ### <a name="perform-fuzz-testing"></a>ファジー テストを実行する
 
@@ -144,7 +144,7 @@ DAST は、静的アプリケーション セキュリティ テスト (SAST) �
 
 ### <a name="perform-security-penetration-testing"></a>セキュリティ侵入テストを実施する
 
-アプリケーションのセキュリティを確保することは、他の機能をテストすることと同じくらい大切です。 [侵入テスト](https://docs.microsoft.com/azure/security/fundamentals/pen-testing)を、標準的なビルドおよびデプロイ プロセスの一環として実施してください。 デプロイしたアプリケーションに対して定期的なセキュリティ テストと脆弱性スキャンをスケジュールし、開放ポート、エンドポイント、攻撃を監視します。
+アプリケーションのセキュリティを確保することは、他の機能をテストすることと同じくらい大切です。 [侵入テスト](../fundamentals/pen-testing.md)を、標準的なビルドおよびデプロイ プロセスの一環として実施してください。 デプロイしたアプリケーションに対して定期的なセキュリティ テストと脆弱性スキャンをスケジュールし、開放ポート、エンドポイント、攻撃を監視します。
 
 ### <a name="run-security-verification-tests"></a>セキュリティ確認テストを実行する
 

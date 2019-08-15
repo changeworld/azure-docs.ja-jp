@@ -2,20 +2,19 @@
 title: インデクサーのスケジュールを設定する方法 - Azure Search
 description: Azure Search インデクサーのスケジュールを設定して、定期的に、または特定の時間にコンテンツのインデックスを作成します。
 ms.date: 05/31/2019
-author: RobDixon22
+author: HeidiSteen
 manager: HeidiSteen
-ms.author: v-rodixo
+ms.author: heidist
 services: search
 ms.service: search
-ms.devlang: rest-api
+ms.devlang: ''
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 4bf931b19b7490a94f30afde49038cdc7573fab3
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 245a2139aae0910ea1415811234667f2c06500ec
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302246"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855799"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Azure Search のインデクサーのスケジュールを設定する方法
 インデクサーは通常、その作成直後に 1 回実行されます。 必要に応じて、ポータル、REST API、または .NET SDK を使用してもう一度実行できます。 スケジュールに従って定期的に実行するようにインデクサーを構成することもできます。

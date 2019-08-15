@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell のクイック スタート: Azure Search REST API を使用したインデックスの作成、読み込み、クエリの実行 - Azure Search'
+title: 'PowerShell のクイック スタート: REST API を使用してインデックスの作成、読み込み、クエリの実行を行う - Azure Search'
 description: PowerShell の Invoke-RestMethod と Azure Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 ms.date: 07/11/2019
 author: heidisteen
@@ -8,14 +8,13 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
-ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 6bff2c84a4bfd81b94054b85744c17a1cd217756
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.topic: quickstart
+ms.openlocfilehash: 3c47a9a809357d1ad09d8a2dd2ef5a7f1a31a02d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847065"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840726"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>クイック スタート:REST API を使用して PowerShell に Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -174,7 +173,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
     ```
 
 > [!Tip]
-> 検証のため、ポータルでインデックスのリストを確認することもできます。
+> 検証のため、ポータルでインデックスの一覧を確認することもできます。
 
 <a name="load-documents"></a>
 
@@ -320,11 +319,11 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 この手順では、[Search Documents API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用してインデックスのクエリを実行する方法を示します。
 
-$url の検索では、必ず単一引用符を使用してください。 クエリ文字列には **$** 文字が含まれ、文字列全体が単一引用符で囲まれた場合は、それらをエスケープしなければならない状態を省略できます。
+$url の検索では、必ず単一引用符を使用してください。 クエリ文字列に **$** 文字が含まれているときに、文字列全体を単一引用符で囲むと、それらをエスケープする必要がなくなります。
 
 1. *hotels-quickstart* ドキュメント コレクションへのエンドポイントを設定し、**search** パラメーターを追加してクエリ文字列を渡します。 
   
-   この文字列では、空の検索が実行され (search=*)、任意のドキュメントのランクなしのリスト (search score = 1.0) が返されます。 既定では、Azure Search によって一度に 50 件の結果が返されます。 構造化されているので、このクエリではドキュメント全体の構造と値が返されます。 **$count=true** を追加して、結果に含まれるすべてのドキュメントの数を取得します。
+   この文字列では、空の検索が実行され (search=*)、任意のドキュメントのランクなしの一覧 (search score = 1.0) が返されます。 既定では、Azure Search によって一度に 50 件の結果が返されます。 構造化されているので、このクエリではドキュメント全体の構造と値が返されます。 **$count=true** を追加して、結果に含まれるすべてのドキュメントの数を取得します。
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'

@@ -8,12 +8,12 @@ ms.date: 06/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: bd50fb4a28aa0ab71c1fb0aeba772a2bd7d1df9d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677723"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68720864"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>チュートリアル:Azure Time Series Insights シングルページ Web アプリの作成
 
@@ -38,7 +38,7 @@ ms.locfileid: "68677723"
 
 * Visual Studio 用の IIS Express、Web 配置、および Azure Cloud Services コア ツール コンポーネント。 これらのコンポーネントは、Visual Studio のインストールを変更することで追加してください。
 
-## <a name="application-design"></a>アプリケーションの設計
+## <a name="understand-application-design"></a>アプリケーションの設計について
 
 Time Series Insights サンプル SPA は、このチュートリアルで使用される設計とコードのベースになります。 このコードでは、Time Series Insights JavaScript クライアント ライブラリを使用します。 Time Series Insights クライアント ライブラリによって、2 つの主な API カテゴリの抽象化が提供されます。
 
@@ -48,11 +48,11 @@ Time Series Insights サンプル SPA は、このチュートリアルで使用
 
 このチュートリアルでは、サンプル アプリケーションの Time Series Insights 環境からのデータも使用します。 Time Series Insights サンプル アプリケーションの構造と Time Series Insights クライアント ライブラリの使用方法の詳細については、チュートリアル「[Azure Time Series Insights JavaScript クライアント ライブラリを調べる](tutorial-explore-js-client-lib.md)」を参照してください。
 
-## <a name="register-the-application-with-azure-ad"></a>Azure AD へのアプリケーションの登録
+## <a name="register-with-azure-ad"></a>Azure AD への登録
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
-## <a name="build-and-publish-the-web-application"></a>Web アプリケーションのビルドと発行
+## <a name="build-and-publish"></a>ビルドして発行する
 
 1. アプリケーションのプロジェクト ファイルを格納するディレクトリを作成します。 次に、以下の各 URL にアクセスします。 ページの右上隅にある **[Raw]** リンクを右クリックしてから、 **[名前を付けて保存]** を選択してプロジェクト ディレクトリにファイルを保存します。
 
@@ -101,7 +101,7 @@ Time Series Insights サンプル SPA は、このチュートリアルで使用
       <link rel="stylesheet" type="text/css" href="../../dist/tsiclient.css"> -->
       ```
 
-   1. Azure AD アプリの登録 ID を使用するようにアプリを構成するには、「[Azure AD へのアプリケーションの登録](#register-the-application-with-azure-ad)」の**手順 3** でコピーした **[アプリケーション ID]** の値を使用するように `clientID` の値を変更します。 Azure AD で **[ログアウト URL]** を作成している場合は、その値を `postLogoutRedirectUri` の値として設定します。
+   1. Azure AD アプリの登録 ID を使用するようにアプリを構成するには、「[Azure AD へのアプリケーションの登録](#register-with-azure-ad)」の**手順 3** でコピーした **[アプリケーション ID]** の値を使用するように `clientID` の値を変更します。 Azure AD で **[ログアウト URL]** を作成している場合は、その値を `postLogoutRedirectUri` の値として設定します。
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
@@ -141,9 +141,9 @@ Time Series Insights サンプル SPA は、このチュートリアルで使用
 
 エラー コード/状態 | 説明
 ---------------------| -----------
-"*AADSTS50011: アプリケーションの応答アドレスが登録されていません。* " | Azure AD 登録に **[応答 URL]** プロパティがありません。 Azure AD アプリケーション登録の **[設定]**  >  **[応答 URL]** に移動します。 「[Azure AD へのアプリケーションの登録](#register-the-application-with-azure-ad)」の **手順 2** で指定するためのオプションがあった **[リダイレクト URI]** が存在することを確認します。
-"*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: '\<Application ID GUID>'. (要求で指定されている応答 URL が、アプリケーションに関して構成されている応答 URL と一致しません: "<アプリケーション ID GUID>")* " | 「[Web アプリケーションのビルドと発行](#build-and-publish-the-web-application)」の**手順 6** で指定された `postLogoutRedirectUri` が、Azure AD アプリケーション登録の **[設定]**  >  **[応答 URL]** で指定されている値に一致する必要があります。 また、 **[宛先 URL]** の値も、「[Web アプリケーションのビルドと発行](#build-and-publish-the-web-application)」の**手順 5** で指定した *https* を使用するように変更してください。
-Web アプリケーションによって読み込みが行われますが、背景が白く、スタイルが適用されていないテキストのみのサインイン ページが表示されます。 | 「[Web アプリケーションのビルドと発行](#build-and-publish-the-web-application)」の**手順 4** で説明されているパスが正しいことを確認します。 Web アプリケーションが .css ファイルを検出できない場合、スタイルがページに正しく適用されません。
+"*AADSTS50011: アプリケーションの応答アドレスが登録されていません。* " | Azure AD 登録に **[応答 URL]** プロパティがありません。 Azure AD アプリケーション登録の **[設定]**  >  **[応答 URL]** に移動します。 **Azure AD を使用するためにアプリケーションを登録した**ときに、**手順 2.** または[手順 4.](#register-with-azure-ad) で指定するためのオプションがあった **[リダイレクト URI]** が存在することを確認します。
+"*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: '\<Application ID GUID>'. (要求で指定されている応答 URL が、アプリケーションに関して構成されている応答 URL と一致しません: "<アプリケーション ID GUID>")* " | 「[Web アプリケーションのビルドと発行](#build-and-publish)」の**手順 6.b** で指定された `postLogoutRedirectUri` が、Azure AD アプリケーション登録の **[設定]**  >  **[応答 URL]** で指定されている値に一致する必要があります。 |
+Web アプリケーションによって読み込みが行われますが、背景が白く、スタイルが適用されていないテキストのみのサインイン ページが表示されます。 | 「[Web アプリケーションのビルドと発行](#build-and-publish)」の**手順 6.** で説明されているパスが正しいことを確認します。 Web アプリケーションが .css ファイルを検出できない場合、スタイルがページに正しく適用されません。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

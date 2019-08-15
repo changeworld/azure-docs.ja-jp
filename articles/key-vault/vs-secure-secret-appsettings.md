@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 9763a14e84d88be1d6f09fb9f16b6b7c9eeffd2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f5196c81550446221a4524330e355c595b65c6a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506422"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934364"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 
@@ -41,7 +41,7 @@ ms.locfileid: "65506422"
 
     ![Azure Key Vault を作成する](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. 自分とチーム メンバーに Key Vault へのアクセス権を付与します。 チームが大規模な場合は、[Azure Active Directory グループ](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal)を作成し、そのセキュリティ グループに Key Vault へのアクセス権を追加します。 *[シークレットのアクセス許可]* ボックスで、 *[シークレットの管理操作]* の下の *[取得]* と *[リスト]* を選択します。
+2. 自分とチーム メンバーに Key Vault へのアクセス権を付与します。 チームが大規模な場合は、[Azure Active Directory グループ](../active-directory/active-directory-groups-create-azure-portal.md)を作成し、そのセキュリティ グループに Key Vault へのアクセス権を追加します。 *[シークレットのアクセス許可]* ボックスで、 *[シークレットの管理操作]* の下の *[取得]* と *[リスト]* を選択します。
 
     ![Key Vault アクセス ポリシーを追加する](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 

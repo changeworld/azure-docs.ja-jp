@@ -7,15 +7,15 @@ ms.date: 06/10/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: a06504438340f62d5b338165cb8b159459ae35dc
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: e63ad75effb03cf9dd5eb5c66b142cce629ea290
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467073"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736232"
 ---
-# <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
-この記事では、Azure Portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を行う方法について説明します。
+# <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure portal での Azure ファイル共有のバックアップ
+このチュートリアルでは、Azure portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)をバックアップする方法について説明します。
 
 このガイドでは、以下の方法について説明します。
 > [!div class="checklist"]

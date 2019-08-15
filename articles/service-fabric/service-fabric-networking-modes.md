@@ -202,10 +202,10 @@ ms.locfileid: "68599394"
 
    |Setting |値 | |
    | --- | --- | --- |
-   |優先度 |2000 | |
-   |EnableAdfsAuthentication |Custom_Dns  | |
-   |source |VirtualNetwork | |
-   |宛先 | VirtualNetwork | |
+   |Priority |2000 | |
+   |Name |Custom_Dns  | |
+   |Source |VirtualNetwork | |
+   |Destination | VirtualNetwork | |
    |Service | DNS (UDP/53) | |
    |Action | Allow  | |
    | | |

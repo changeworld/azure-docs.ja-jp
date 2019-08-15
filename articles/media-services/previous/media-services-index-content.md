@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: adsolank;juliako;johndeu
-ms.openlocfilehash: a11ae0414d6737f1588515ec19524bcf499f0c74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.reviewer: johndeu
+ms.openlocfilehash: a51774a1db76086440742abd5aedce3fbd26c270
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61215807"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69016099"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer によるメディア ファイルのインデックス作成
 Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。 バッチ内の 1 つのメディア ファイルまたは複数のメディア ファイルを処理できます。  
@@ -247,7 +248,7 @@ Azure Media Indexer を使用すると、メディア ファイルのコンテ�
 ### <a id="preset"></a> Azure Media Indexer 用のタスク プリセット
 Azure Media Indexer からの処理は、オプションのタスク プリセットをタスクと共に指定することでカスタマイズできます。  次の表は、この configuration xml の形式の説明です。
 
-| Name | 必須 | 説明 |
+| EnableAdfsAuthentication | 必須 | 説明 |
 | --- | --- | --- |
 | **input** |false |インデックスの対象となるアセット ファイル。</p><p>Azure Media Indexer は、メディア ファイル形式としてMP4、WMV、MP3、M4A、WMA、AAC、WAV をサポートしています。</p><p>ファイル名は、**input** 要素の **name** 属性または **list** 属性に指定できます (以下の例を参照)。インデックスの対象となるアセット ファイルを指定しなかった場合は、プライマリ ファイルが選択されます。 プライマリ資産ファイルが設定されていない場合は、入力資産の 1 つ目のファイルのインデックスが作成されます。</p><p>資産ファイル名を明示的に指定するには、次を実行します。<br/>`<input name="TestFile.wmv">`<br/><br/>複数の資産ファイルのインデックスを一度に作成することもできます (最大 10 ファイル)。 これを行うには、次の手順を実行します。<br/><br/><ol class="ordered"><li><p>テキスト ファイル (マニフェスト ファイル) を作成し、.lst という拡張子を指定します。 </p></li><li><p>入力資産に含まれるすべての資産ファイルの名前をこのマニフェスト ファイルに追加します。 </p></li><li><p>マニフェスト ファイルを資産に追加 (アップロード) します。  </p></li><li><p>マニフェスト ファイルの名前を input の list 属性に指定します。<br/>`<input list="input.lst">`</li></ol><br/><br/>注:マニフェスト ファイルに 10 を超えるファイルを追加すると、インデックス作成ジョブが 2006 エラー コードで失敗します。 |
 | **metadata** |false |語彙アダプテーション用に指定する資産ファイルのメタデータ。  標準的ではない語彙 (固有名詞など) をインデクサーに認識させる必要があるときに使用します。<br/>`<metadata key="..." value="..."/>` <br/><br/>事前定義済みの**キー**に対して**値**を指定できます。 現在サポートされているキーは<br/><br/>"title" と "description" です。これは、語彙アダプテーションで対象ジョブの言語モデルを微調整し、音声認識の精度を高める目的で使用します。  インターネット検索機能は、これらの値を足掛かりとしてコンテキストに合ったテキスト ドキュメントを検索し、そのコンテンツを使って、インデックス作成タスクの過程で用いられる内部辞書を補強します。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
@@ -256,7 +257,7 @@ Azure Media Indexer からの処理は、オプションのタスク プリセ�
 ### <a id="error_codes"></a>エラー コード
 エラーが発生した場合、Azure Media Indexer は、次のいずれかのエラー コードを返します。
 
-| コード | Name | 考えられる原因 |
+| コード | EnableAdfsAuthentication | 考えられる原因 |
 | --- | --- | --- |
 | 2000 |構成が無効です |構成が無効です |
 | 2001 |無効な入力資産 |入力資産、または空の資産がありません。 |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 2639d47a6c9d8da53c9d6bccde0d317698d5d9fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f242018abfb15cea1b76cbcaad00942ec25d78d
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61127858"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69015080"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する  
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ Azure Portal のコンテンツ プレーヤーでビデオをテストできま
 いくつかの考慮事項が適用されます。
 
 * ビデオが発行されたことを確認します。
-* Azure Portal のメディア プレーヤーは、既定のストリーミング エンドポイントから再生を行います。 既定以外のストリーミング エンドポイントから再生する場合は、URL を選択してコピーし、別のプレーヤーに貼り付けます。 たとえば、[Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) でビデオをテストすることができます。
+* Azure Portal のメディア プレーヤーは、既定のストリーミング エンドポイントから再生を行います。 既定以外のストリーミング エンドポイントから再生する場合は、URL を選択してコピーし、別のプレーヤーに貼り付けます。 たとえば、[Azure Media Player](https://aka.ms/azuremediaplayer) でビデオをテストすることができます。
 * ストリーミング元となるストリーミング エンドポイントが実行されている必要があります。  
 
 ## <a name="provide-feedback"></a>フィードバックの提供

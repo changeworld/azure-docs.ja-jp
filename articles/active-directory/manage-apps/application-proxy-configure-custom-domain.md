@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d721e750ddb77ba293643ad978cecf4bd2dbac0
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618815"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851725"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでのカスタム ドメインの使用
 
@@ -87,7 +87,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 ## <a name="next-steps"></a>次の手順
 * Azure AD 認証を使用して発行されたアプリに対する[シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)。
-* 発行されたアプリに対する[条件付きアクセスを有効にする](application-proxy-integrate-with-sharepoint-server.md)。
+* 発行されたアプリに対する[条件付きアクセスを有効にする](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/technical-reference#cloud-apps-assignments)。
 * [Azure AD にカスタム ドメイン名を追加する](../fundamentals/add-custom-domain.md)
 
 

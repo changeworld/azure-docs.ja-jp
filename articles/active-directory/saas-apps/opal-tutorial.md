@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d0f7eb1f5662ce0b901af2fd82a75556cacbca62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b95c6defcef7fdc112487988fc9bdd1ea3bb59c2
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095585"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943906"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opal"></a>チュートリアル:Azure Active Directory と Opal の統合
 
@@ -112,13 +112,13 @@ Opal で Azure AD シングル サインオンを構成するには、次の手�
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Opal クライアント サポート チーム](mailto:support@workwithopal.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. Opal アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
+5. Opal アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
 6. その他に、Opal アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | Name | ソース属性|
+    | EnableAdfsAuthentication | ソース属性|
     | ---------------| --------------- |
     | firstname           | User.givenname |
     | lastname        | User.surname |
@@ -212,7 +212,7 @@ Opal で Azure AD シングル サインオンを構成するには、次の手�
 
 ### <a name="create-opal-test-user"></a>Opal のテスト ユーザーの作成
 
-このセクションでは、Opal で Britta Simon というユーザーを作成します。  [Opal サポート チーム](mailto:support@workwithopal.com)と連携して、Opal プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Opal で Britta Simon というユーザーを作成します。 [Opal サポート チーム](mailto:support@workwithopal.com)と連携し、Opal プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

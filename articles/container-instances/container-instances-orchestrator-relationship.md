@@ -10,10 +10,10 @@ ms.date: 04/15/2019
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: c83648124f616670423b2ef459530c191d7e17e4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68325760"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances とコンテナー オーケストレーター
@@ -61,7 +61,7 @@ Azure Container Instances 専用の環境は、すばやく起動し、秒単位
 
 仮想ノードでは、現在、Linux コンテナー インスタンスがサポートされています。 仮想ノードを使い始めるには、[Azure CLI](https://go.microsoft.com/fwlink/?linkid=2047538) または [Azure portal](https://go.microsoft.com/fwlink/?linkid=2047545) を使用します。
 
-仮想ノードでは、オープン ソースの [Virtual Kubelet][aci-connector-k8s] を使用し、容量無制限のノードとして登録することで Kubernetes の kubelet を模倣します。to mimic the Kubernetes [kubelet][kubelet-doc] Virtual Kubelet は、[ポッド][pod-doc] の作成を Azure Container Instances 内のコンテナー グループとしてディスパッチします。
+仮想ノードでは、オープン ソースの [Virtual Kubelet][aci-connector-k8s] を使用し、容量無制限のノードとして登録することで、Kubernetes の [kubelet][kubelet-doc] を模倣します。 Virtual Kubelet は、[ポッド][pod-doc]の作成を Azure Container Instances 内のコンテナー グループとしてディスパッチします。
 
 Kubernetes API をサーバーレス コンテナー プラットフォーム内に拡張する追加のサンプルについては、[Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) プロジェクトを参照してください。
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
 ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 857646bb1b9b317f1e51218d258616e775056b43
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 84e05b7afa2746587f2ea5008d493730ccbfad7e
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442267"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950030"
 ---
 # <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Core Tools と Azure CLI を使用して Linux でホストされる初めての関数を作成する (プレビュー)
 
@@ -38,34 +38,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-local-function-app-project"></a>ローカルの関数アプリ プロジェクトを作成する
-
-コマンド ラインから次のコマンドを実行し、現在のローカル ディレクトリの `MyFunctionProj` フォルダー内に関数アプリ プロジェクトを作成します。 GitHub リポジトリも `MyFunctionProj` 内に作成されます。
-
-```bash
-func init MyFunctionProj
-```
-
-指示されたら、方向キーを使用して、次の言語の選択肢から worker ランタイムを選択します。
-
-+ `dotnet`: .NET クラス ライブラリ プロジェクト (.csproj) を作成します。
-+ `node`: JavaScript または TypeScript プロジェクトを作成します。 メッセージが表示されたら、`JavaScript` を選択します。
-+ `python`: Python プロジェクトを作成します。 Python 関数については、[Python クイック スタート](functions-create-first-function-python.md)を参照してください。
-
-コマンドを実行すると、次のような出力が表示されます。
-
-```output
-Writing .gitignore
-Writing host.json
-Writing local.settings.json
-Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
-```
-
-次のコマンドを使用して、新しい `MyFunctionProj` プロジェクト フォルダーに移動します。
-
-```bash
-cd MyFunctionProj
-```
+[!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>拡張バンドルを有効にする
 

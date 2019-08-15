@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: bfe11a8cbb6dd2de77bbac9d14c294c3f93438f3
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 484a7344185efa17731f5c35c7c4dec109608b67
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490418"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933079"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>無効な Azure サブスクリプションを再度有効にする
 
@@ -61,5 +61,5 @@ Azure の課金アクティビティの監視および管理については、�
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
-# <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 - [Azure の課金アクティビティを監視および管理する](billing-getting-started.md)方法を確認します。

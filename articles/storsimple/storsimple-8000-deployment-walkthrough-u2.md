@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a4f9d9a7fe368ec4ffaceff80ce42d42a318c68d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1f44690de1f38e3d337072cc7c974887eb0e31cc
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61489115"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965899"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>オンプレミスの StorSimple デバイス (Update 3 以降) のデプロイ
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概要
 Microsoft Azure StorSimple デバイスのデプロイへようこそ。 これらのデプロイのチュートリアルは、StorSimple 8000 シリーズ Update 3 以降を対象としています。 このチュートリアル シリーズには、構成チェック リスト、構成の前提条件、および StorSimple デバイスを構成するための詳細な手順が含まれています。

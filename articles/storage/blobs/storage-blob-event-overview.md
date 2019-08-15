@@ -1,19 +1,19 @@
 ---
 title: Azure Blob Storage イベントへの対応 | Microsoft Docs
 description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。
-services: storage,event-grid
-author: cbrooksmsft
-ms.author: cbrooks
+author: normesta
+ms.author: normesta
 ms.date: 01/30/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: c0655d02fd5d0d64c22db286236b2a26f9e70619
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.reviewer: cbrooks
+ms.openlocfilehash: 13eef9beb6c86683c56efc744dc42b4614b84fe9
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444683"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946481"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -30,8 +30,8 @@ Blob Storage イベントの一般的なシナリオとしては、画像やビ�
 |使うツール:    |参照する記事: |
 |--|-|
 |Azure Portal    |[クイック スタート:Azure portal で Blob Storage のイベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/event-grid/blob-event-quickstart-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Azure CLI    |[クイック スタート:PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Powershell    |[クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|PowerShell    |[クイック スタート:PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure CLI    |[クイック スタート:Azure CLI を使用してストレージ イベントを Web エンドポイントにルーティングする](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="the-event-model"></a>イベント モデル
 

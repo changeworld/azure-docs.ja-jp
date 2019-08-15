@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: dbe3526444bc35815dd4323a3a5290696619e3f9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 986bed758229d639bb40d0803f7be4a89a0f6e49
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728343"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934809"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
 | 製品/サービス | 記事 |
@@ -563,7 +563,7 @@ public void ConfigureServices(IServiceCollection services)
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | ゲートウェイの選択 - Azure IoT Hub |
-| **参照**              | [IoT Hub を使用したデバイス管理の概要](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[デバイス ファームウェアの更新方法](https://docs.microsoft.com/azure/iot-hub/tutorial-firmware-update) |
+| **参照**              | [IoT Hub を使用したデバイス管理の概要](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/)、[デバイス ファームウェアの更新方法](../../iot-hub/tutorial-firmware-update.md) |
 | **手順** | LWM2M は、IoT デバイス管理の Open Mobile Alliance のプロトコルです。 Azure の IoT デバイス管理では、デバイスのジョブを使用して物理デバイスと対話することができます。 Azure IoT Hub デバイス管理を使用して、デバイスおよびその他の構成データを定期的に最新の状態に保つためのプロセスが、クラウド ゲートウェイで実装されていることを確認します。 |
 
 ## <a id="controls-policies"></a>デバイスのエンドポイント セキュリティ制御が組織ポリシーに従って構成されていることを確認する

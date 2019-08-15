@@ -316,25 +316,25 @@ Salesforce からデータをコピーするとき、次の Salesforce のデー
 
 | Salesforce のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
-| オート ナンバー |string |
-| チェックボックス |Boolean |
-| 通貨 |Decimal |
-| Date |Datetime |
-| 日付/時刻 |Datetime |
-| Email |string |
-| Id |string |
-| 参照リレーションシップ |string |
-| 複数選択の候補リスト |string |
+| Auto Number |String |
+| Checkbox |Boolean |
+| Currency |Decimal |
+| Date |DateTime |
+| 日付/時刻 |DateTime |
+| Email |String |
+| Id |String |
+| 参照リレーションシップ |String |
+| 複数選択の候補リスト |String |
 | Number |Decimal |
 | Percent |Decimal |
-| 電話 |string |
-| 候補リスト |string |
-| Text |string |
-| テキスト領域 |string |
-| テキスト領域 (ロング) |string |
-| テキスト領域 (リッチ) |string |
-| テキスト (暗号化) |string |
-| URL |string |
+| 電話 |String |
+| 候補リスト |String |
+| Text |String |
+| テキスト領域 |String |
+| テキスト領域 (ロング) |String |
+| テキスト領域 (リッチ) |String |
+| テキスト (暗号化) |String |
+| URL |String |
 
 ## <a name="next-steps"></a>次の手順
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

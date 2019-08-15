@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 26301e9a8aef29f1ff786f4fcd28b806eb10b8df
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318349"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846770"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法
 
@@ -194,7 +194,7 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 2. PerfInsights.zip ファイルのブロックを解除します。 これを行うには、PerfInsights.zip ファイルを右クリックし、 **[プロパティ]** を選択します。 **[全般]** タブで **[ブロックの解除]** を選択し、 **[OK]** を選択します。 これにより、追加のセキュリティ プロンプトは表示されずに、確実にツールが実行されます。  
 
-    ![[ブロックの解除] が強調表示された PerfInsights プロパティのスクリーンショット](media/how-to-use-perfInsights/unlock-file.png)
+    ![[ブロックの解除] が強調表示された PerfInsights プロパティのスクリーンショット](media/how-to-use-perfInsights/pi-unlock-file.png)
 
 3.  圧縮された PerfInsights.zip ファイルを一時ドライブ (既定では通常、D ドライブ) に展開します。 
 
@@ -204,7 +204,7 @@ PerfInsights ツールを実行するには、次の手順に従います。
     cd <the path of PerfInsights folder>
     PerfInsights
     ```
-    ![PerfInsights コマンド ラインの出力のスクリーンショット](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
+    ![PerfInsights コマンド ラインの出力のスクリーンショット](media/how-to-use-perfInsights/pi-commandline.png)
     
     PerfInsights シナリオを実行する基本構文は次のとおりです。
     
@@ -253,8 +253,8 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 **[検索結果]** タブを選択します。
 
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/findingtab.png)
-![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/findings.PNG)
+![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/pi-finding-tab.png)
+![PerfInsights レポートのスクリーンショット](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > [高] と分類された結果は、パフォーマンスの問題の原因となる可能性のある既知の問題です。 [中] と分類された結果は、最適ではないが、必ずしもパフォーマンス問題の原因とはならない構成です。 [低] と分類された結果は、単なる情報提供のためのステートメントです。
@@ -269,17 +269,17 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 物理ディスクの観点 ([ディスク マップ]) では、このテーブルはディスク上で実行されているすべての論理ボリュームを示しています。 次の例では、**PhysicalDrive2** は複数のパーティション上に作成された 2 つの論理ボリューム (J および H) を実行しています。
 
-![ディスク タブのスクリーンショット](media/how-to-use-perfInsights/disktab.png)
+![ディスク タブのスクリーンショット](media/how-to-use-perfInsights/pi-disk-tab.png)
 
 ボリュームの観点 ([ボリューム マップ]) では、このテーブルは各論理ボリュームにあるすべての物理ディスクを示しています。 RAID/動的ディスクの場合は、1 つの論理ボリュームを複数の物理ディスク上で実行する可能性があることに注意してください。 次の例では、*C:\\mount* は、物理ディスク 2 および 3 上で *SpannedDisk* として構成されたマウント ポイントです。
 
-![ボリューム タブのスクリーンショット](media/how-to-use-perfInsights/volumetab.png)
+![ボリューム タブのスクリーンショット](media/how-to-use-perfInsights/pi-volume-tab.png)
 
 ### <a name="sql-tab"></a>[SQL Server] タブ
 
 ターゲット VM が SQL Server インスタンスをホストしている場合は、レポートに **SQL** という名前の追加のタブが表示されます。
 
-![SQL タブのスクリーンショット](media/how-to-use-perfInsights/sqltab.png)
+![SQL タブのスクリーンショット](media/how-to-use-perfInsights/pi-sql-tab.png)
 
 このセクションには、 **[検索結果]** タブと、VM 上でホストされている SQL Server インスタンスごとの追加のタブが含まれています。
 
@@ -287,7 +287,7 @@ PerfInsights ツールを実行するには、次の手順に従います。
 
 次の例では、**PhysicalDrive0** (C ドライブを実行しています) が表示されます。 これは、**modeldev** と **modellog** の両方のファイルが C ドライブに配置され、それらが別の種類 (それぞれ、データ ファイルとトランザクション ログなど) であるためです。
 
-![ログ情報のスクリーンショット](media/how-to-use-perfInsights/loginfo.png)
+![ログ情報のスクリーンショット](media/how-to-use-perfInsights/pi-log-info.png)
 
 SQL Server の特定のインスタンスのタブには、選択されたインスタンスに関する基本的な情報を表示する一般的なセクションが含まれています。 これらのタブにはまた、高度な情報 (設定、構成、ユーザー オプションなど) のための追加のセクションも含まれています。
 
@@ -310,7 +310,7 @@ Xperf は、Windows パフォーマンス ツールキットからのトレー�
 
 次のスクリーンショットは、受信する可能性があるものと同様のメッセージを示しています。
 
-![Microsoft サポートからのサンプル メッセージのスクリーンショット](media/how-to-use-perfInsights/supportemail.png)
+![Microsoft サポートからのサンプル メッセージのスクリーンショット](media/how-to-use-perfInsights/pi-support-email.png)
 
 メッセージ内の指示に従って、ファイル転送ワークスペースにアクセスします。 セキュリティを強化するために、最初の使用時にパスワードを変更する必要があります。
 

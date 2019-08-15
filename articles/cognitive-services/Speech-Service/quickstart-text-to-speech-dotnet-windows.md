@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: 3c925e0160a4c57f7e43c3463fc1db7098a6e606
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 65db847c5df1a05671e3b1c0ac4541f00506c8fd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553598"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854692"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>クイック スタート:.NET Framework (Windows) 用 Speech SDK を使用して音声を合成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "68553598"
 
 このプロジェクトを完了するには、以下が必要になります。
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * 音声サービス用のサブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 * スピーカー (またはヘッドセット)。
 

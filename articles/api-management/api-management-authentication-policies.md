@@ -49,13 +49,13 @@ ms.locfileid: "68442399"
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |authentication-basic|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |userName|基本認証の資格情報のユーザー名を指定します。|はい|該当なし|
 |password|基本認証の資格情報のパスワードを指定します。|はい|該当なし|
@@ -89,13 +89,13 @@ ms.locfileid: "68442399"
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |authentication-certificate|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |thumbprint|クライアント証明書のサムプリント。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|
 |証明書 ID|証明書リソースの名前。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|
@@ -124,13 +124,13 @@ ms.locfileid: "68442399"
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |authentication-managed-identity |ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |resource|文字列 をオンにします。 Azure Active Directory におけるターゲット Web API のアプリ ID の URI (セキュリティで保護されたリソース)。|はい|該当なし|
 |output-token-variable-name|文字列 をオンにします。 オブジェクトの種類 `string` としてトークン値を受け取るコンテキスト変数の名前。|いいえ|該当なし|

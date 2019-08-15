@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT の認証方法 (プレビュー) | Microsoft Docs
+title: Azure Security Center for IoT の認証方法 | Microsoft Docs
 description: Azure Security Center for IoT サービスの使用時に使用できるさまざまな認証方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,39 +13,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d5701ae37d64e25fba981cd85deed2c4e4d87a15
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 16f7f91e02d118d9f9a295ebb79a6cd0187dd9fd
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618338"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596473"
 ---
 # <a name="security-agent-authentication-methods"></a>セキュリティ エージェントの認証方法 
 
-> [!IMPORTANT]
-> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 この記事では、IoT Hub で認証するために AzureIoTSecurity エージェントで使用できるさまざまな認証方法について説明します。
 
-IoT Hub で Azure Security Center (ASC) for IoT にオンボードされているデバイスごとにセキュリティ モジュールが必要です。 デバイスを認証するために、ASC for IoT では 2 つの方法のいずれかを使用できます。 既存の IoT ソリューションにとって最適な方法を選択してください。 
+IoT Hub で Azure Security Center for IoT にオンボードされているデバイスごとにセキュリティ モジュールが必要です。 デバイスを認証するために、Azure Security Center for IoT では 2 つの方法のいずれかを使用できます。 既存の IoT ソリューションにとって最適な方法を選択してください。 
 
 > [!div class="checklist"]
-> * セキュリティ モジュール オプション
+> * SecurityModule オプション
 > * デバイス オプション
 
 ## <a name="authentication-methods"></a>認証方法
 
 AzureIoTSecurity エージェントで認証を実行するための 2 つの方法:
 
- - **モジュール**認証モード<br>
-   モジュールは、デバイス ツインとは別に認証されます。
+ - **SecurityModule** 認証モード<br>
+   エージェントは、デバイス ID とは無関係にセキュリティモジュール ID を使用して認証されます。
    この認証の種類は、セキュリティ エージェントでセキュリティ モジュールを通して専用の認証方法 (対称キーのみ) を使用する場合に使用します。
         
  - **デバイス**認証モード<br>
-    この方法では、セキュリティ エージェントは最初にデバイス ID に対して認証します。 初期の認証の後、ASC for IoT エージェントは、REST API をデバイスの認証データと共に使用して IoT Hub への **REST** 呼び出しを実行します。 その後、ASC for IoT エージェントによって IoT Hub からセキュリティ モジュールの認証方法とデータが要求されます。 最後の手順では、ASC for IoT エージェントにより、ASC for IoT モジュールに対して認証が実行されます。
+    この方法では、セキュリティ エージェントは最初にデバイス ID に対して認証します。 初期の認証の後、Azure Security Center for IoT エージェントは、REST API をデバイスの認証データと共に使用して IoT Hub への **REST** 呼び出しを実行します。 その後、Azure Security Center for IoT エージェントによって IoT Hub からセキュリティ モジュールの認証方法とデータが要求されます。 最後の手順では、Azure Security Center for IoT エージェントにより、Azure Security Center for IoT モジュールに対して認証が実行されます。
     
     この認証の種類は、セキュリティ エージェントで既存のデバイス認証方法 (自己署名証明書または対称キー) を再利用する場合に使用します。 
 
@@ -53,7 +49,7 @@ AzureIoTSecurity エージェントで認証を実行するための 2 つの方
                                 
 ## <a name="authentication-methods-known-limitations"></a>認証方法の既知の制限
 
-- **モジュール**認証モードでは、対称キーの認証のみがサポートされています。
+- **SecurityModule** 認証モードでは、対称キーの認証のみがサポートされています。
 - **デバイス**認証モードでは、証明機関署名付き証明書はサポートされていません。  
 
 ## <a name="security-agent-installation-parameters"></a>セキュリティ エージェントのインストール パラメーター
@@ -62,19 +58,18 @@ AzureIoTSecurity エージェントで認証を実行するための 2 つの方
 これらの引数を次の表に示します。
 
 
-|パラメーター|説明|オプション|
-|---------|---------------|---------------|
-|**identity**|認証モード| **Module** または **Device**|
-|**type**|認証の種類|**SymmetricKey** または **SelfSignedCertificate**|
-|**filePath**|証明書または対称キーを含むファイルの完全な絶対パス| |
-|**gatewayHostname**|IoT Hub の FQDN|例:ContosoIotHub.azure-devices.net|
-|**deviceId**|Device ID|例:MyDevice1|
-|**certificateLocationKind**|証明書ストレージの場所|**LocalFile** または **Store**|
+|Linux のパラメーター名 | Windows のパラメーター名 | 短縮形のパラメーター |説明|オプション|
+|---------------------|---------------|---------|---------------|---------------|
+|authentication-identity|AuthenticationIdentity|aui|認証 ID| **SecurityModule** または **Device**|
+|authentication-method|AuthenticationMethod|aum|認証方法|**SymmetricKey** または **SelfSignedCertificate**|
+|file-path|FilePath|f|証明書または対称キーを含むファイルの完全な絶対パス| |
+|host-name|HostName|hn|IoT Hub の FQDN|例:ContosoIotHub.azure-devices.net|
+|device-id|deviceId|di|Device ID|例:MyDevice1|
+|certificate-location-kind|CertificateLocationKind|cl|証明書ストレージの場所|**LocalFile** または **Store**|
+|
 
 
-セキュリティ エージェントのインストール スクリプトを使用すると、次の構成が自動的に実行されます。
-
-セキュリティ エージェントの認証を手動で編集するには、構成ファイルを編集します。 
+セキュリティ エージェントのインストール スクリプトを使用すると、次の構成が自動的に実行されます。 セキュリティ エージェントの認証を手動で編集するには、構成ファイルを編集します。 
 
 ## <a name="change-authentication-method-after-deployment"></a>デプロイ後に認証方法を変更する
 

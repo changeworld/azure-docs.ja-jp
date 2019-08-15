@@ -3,7 +3,7 @@ title: Azure Active Directory ポータルの監査アクティビティ レポ�
 description: Azure Active Directory ポータルの監査アクティビティ レポートの概要
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
+ms.date: 07/17/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f716ccd7b2e02c9064f13cf1ffd6e8180858c9
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: a0a31fab8dd1490b58e743c149e4a54cae11bed1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827912"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988337"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの監査アクティビティ レポート 
 
@@ -48,7 +48,7 @@ ms.locfileid: "67827912"
 
 Azure AD の監査ログは、コンプライアンスのためにシステム アクティビティのレコードを提供します。 監査レポートにアクセスするには、**Azure Active Directory** の **[アクティビティ]** セクションで **[監査ログ]** を選択します。 監査ログでは最大 1 時間の待ち時間が生じる可能性があることに注意してください。そのため、タスクが完了した後、監査アクティビティ データがポータルに表示されるまでにそれだけ長い時間がかかる場合があります。
 
-![監査ログ](./media/concept-audit-logs/61.png "監査ログ")
+
 
 監査ログには、次のものを示す既定のリスト ビューがあります。
 
@@ -88,7 +88,7 @@ Azure AD の監査ログは、コンプライアンスのためにシステム �
 
 ![監査ログ](./media/concept-audit-logs/filter.png "監査ログ")
 
-**[サービス]** フィルターでは、次のサービスのドロップダウンから選択することができます。
+**[サービス]** フィルターでは、次のサービスのドロップダウン リストから選択できます。
 
 - All
 - アクセス レビュー
@@ -103,7 +103,7 @@ Azure AD の監査ログは、コンプライアンスのためにシステム �
 - 招待されたユーザー
 - PIM
 - セルフサービスによるグループ管理
-- セルフサービスによるパスワード管理
+- Self-service Password Management \(セルフサービスによるパスワード管理)
 - 使用条件
 
 **[カテゴリ]** フィルターでは、次のフィルターのいずれかを選択できます。
@@ -127,7 +127,7 @@ Azure AD の監査ログは、コンプライアンスのためにシステム �
 
 **[アクティビティ]** フィルターは、カテゴリとアクティビティ リソースの種類の選択に基づいたものです。 参照する特定のアクティビティを選択することも、すべてを選択することもできます。 
 
-Graph API https://graph.windows.net/ $tenantdomain/activities/auditActivityTypes?api-version=beta を使用して全監査アクティビティのリストを取得できます ($tenantdomain は実際のドメイン名)。または、[監査レポートのイベント](reference-audit-activities.md)に関する記事を参照してください。
+Graph API を使用して、すべての監査アクティビティの一覧を取得できます。`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 **[状態]** フィルターでは、監査操作の状態に基づいてフィルターに掛けることができます。 状態は、次のいずれかになります。
 
@@ -149,7 +149,7 @@ Graph API https://graph.windows.net/ $tenantdomain/activities/auditActivityTypes
 
 カスタムの期間を選択すると、開始時刻と終了時刻を構成できます。
 
-また、 **[ダウンロード]** ボタンを選択して、フィルターされたデータ (最大 250,000 個のレコード) をダウンロードすることもできます。 CSV 形式または JSON 形式でログをダウンロードすることができます。 ダウンロードできるレコードの数は、[Azure Active Directory レポートの保持ポリシー](reference-reports-data-retention.md)によって制限されます。
+また、 **[ダウンロード]** ボタンを選択して、フィルターされたデータ (最大 250,000 個のレコード) をダウンロードすることもできます。 CSV 形式または JSON 形式でログをダウンロードできます。 ダウンロードできるレコードの数は、[Azure Active Directory レポートの保持ポリシー](reference-reports-data-retention.md)によって制限されます。
 
 ![監査ログ](./media/concept-audit-logs/download.png "監査ログ")
 
@@ -206,7 +206,7 @@ Graph API https://graph.windows.net/ $tenantdomain/activities/auditActivityTypes
 
 Office 365 のアクティビティ ログは、[Microsoft 365 管理センター](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Office 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Office 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターのみです。 
 
-[Office 365 Management API シリーズ](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
+[Office 365 Management API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Office 365 のアクティビティ ログにプログラムでアクセスすることもできます。
 
 ## <a name="next-steps"></a>次の手順
 

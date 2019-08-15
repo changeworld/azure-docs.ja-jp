@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
 ms.openlocfilehash: 290105b4e5e3ac3337b0be1b7d437601223bdf68
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67708745"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンにタグを付ける方法
@@ -57,8 +57,8 @@ az vm update --resource-group MyResourceGroup --name MyTestVM --remove tags.myNe
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 
 ## <a name="next-steps"></a>次の手順
-* Azure リソースの詳細については、「[Azure Resource Manager の概要][Azure Resource Manager Overview]」and [Using Tags to organize your Azure Resources][Using Tags to organize your Azure Resources]を参照してください。
-* Azure リソースの使用を管理するときにタグを役立てる方法については、「[Azure の課金内容の確認][Understanding your Azure Bill]」and [Gain insights into your Microsoft Azure resource consumption][Gain insights into your Microsoft Azure resource consumption]を参照してください。
+* Azure リソースへのタグ付けの詳細については、「[Azure Resource Manager の概要][Azure Resource Manager Overview]」と「[タグを使用した Azure リソースの整理][Using Tags to organize your Azure Resources]」を参照してください。
+* タグが Azure リソースの使用の管理にどのように役立つかを確認するには、[Azure の課金内容の確認][Understanding your Azure Bill]に関するページと「[Microsoft Azure リソースの消費を把握する][Gain insights into your Microsoft Azure resource consumption]」を参照してください。
 
 [Azure CLI environment]: ../../azure-resource-manager/xplat-cli-azure-resource-manager.md
 [Azure Resource Manager Overview]: ../../azure-resource-manager/resource-group-overview.md

@@ -7,12 +7,12 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 164fc4d8ad567c75ed5029aaf26af260398f80ba
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722701"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698684"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>更新:Windows イメージを作成して共有イメージ ギャラリーに配布する 
 
@@ -100,12 +100,11 @@ az role assignment create \
 ```
 
 
-
-
-
 ## <a name="create-an-image-definition-and-gallery"></a>イメージ定義およびギャラリーの作成
 
-イメージ ギャラリーを作成します。 
+共有イメージ ギャラリーで Image Builder を使用するには、既存のイメージ ギャラリーとイメージ定義が必要です。 Image Builder では、イメージ ギャラリーとイメージ定義は自動的には作成されません。
+
+使用するギャラリーとイメージ定義がまだない場合は、最初に作成します。 最初に、イメージ ギャラリーを作成します。
 
 ```azurecli-interactive
 az sig create \
@@ -113,7 +112,7 @@ az sig create \
     --gallery-name $sigName
 ```
 
-イメージ定義を作成します。
+次に、イメージ定義を作成します。
 
 ```azurecli-interactive
 az sig image-definition create \

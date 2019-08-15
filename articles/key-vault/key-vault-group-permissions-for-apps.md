@@ -3,18 +3,18 @@ title: さまざまなアプリケーションに Azure のキー コンテナ�
 description: さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する方法を説明します。
 services: key-vault
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 01/07/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: b1d0b0948e089d41f460ac2a54150ee51333f87c
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 07ee544057ffeb0a5859cc771b124523ec79c9c0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64721982"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976402"
 ---
 # <a name="grant-several-applications-access-to-a-key-vault"></a>複数のアプリケーションにキー コンテナーへのアクセスを許可する
 

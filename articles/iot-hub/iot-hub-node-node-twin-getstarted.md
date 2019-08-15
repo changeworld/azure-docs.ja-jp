@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: elioda
-ms.openlocfilehash: 8dd5269532e9eb6139d8debb0ee9b503cd2e4354
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: edbeffebd1f4ee41d8a2bdaddcdc7d84cbe1affe
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404023"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780932"
 ---
-# <a name="get-started-with-device-twins-node"></a>デバイス ツインの使用 (Node)
+# <a name="get-started-with-device-twins-nodejs"></a>デバイス ツインの使用 (Node.js)
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
@@ -38,6 +38,8 @@ ms.locfileid: "68404023"
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>IoT ハブに新しいデバイスを登録する
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 

@@ -9,77 +9,17 @@
     - name: クイック スタート
       items:
         - name: テキストを翻訳する
-          items:
-            - name: 'C# (REST)'
-              href: quickstart-csharp-translate.md
-            - name: Go (REST)
-              href: quickstart-go-translate.md
-            - name: Java (REST)
-              href: quickstart-java-translate.md
-            - name: Node.js (REST)
-              href: quickstart-nodejs-translate.md
-            - name: Python (REST)
-              href: quickstart-python-translate.md
+          href: quickstart-translate.md
         - name: テキストを表記変換する
-          items:
-            - name: 'C# (REST)'
-              href: quickstart-csharp-transliterate.md
-            - name: Go (REST)
-              href: quickstart-go-transliterate.md
-            - name: Java (REST)
-              href: quickstart-java-transliterate.md
-            - name: Node.js (REST)
-              href: quickstart-nodejs-transliterate.md
-            - name: Python (REST)
-              href: quickstart-python-transliterate.md
-        - name: 言語を特定する
-          items:
-            - name: 'C# (REST)'
-              href: quickstart-csharp-detect.md
-            - name: Go (REST)
-              href: quickstart-go-detect.md
-            - name: Java (REST)
-              href: quickstart-java-detect.md
-            - name: Node.js (REST)
-              href: quickstart-nodejs-detect.md
-            - name: Python (REST)
-              href: quickstart-python-detect.md
+          href: quickstart-transliterate.md
+        - name: 言語を検出する
+          href: quickstart-detect.md
         - name: 単語の訳を検索する
-          items:
-            - name: 'C# (REST)'
-              href: quickstart-csharp-dictionary.md
-            - name: Go (REST)
-              href: quickstart-go-dictionary.md
-            - name: Java (REST)
-              href: quickstart-java-dictionary.md
-            - name: Node.js (REST)
-              href: quickstart-nodejs-dictionary.md
-            - name: Python (REST)
-              href: quickstart-python-dictionary.md
+          href: quickstart-dictionary.md
         - name: サポートされている言語を取得する
-          items:
-            - name: 'C# (REST)'
-              href: quickstart-csharp-languages.md
-            - name: Go (REST)
-              href: quickstart-go-languages.md
-            - name: Java (REST)
-              href: quickstart-java-languages.md
-            - name: Node.js (REST)
-              href: quickstart-nodejs-languages.md
-            - name: Python (REST)
-              href: quickstart-python-languages.md
+          href: quickstart-languages.md
         - name: 文の長さを決定する
-          items:
-            - name: 'C# (REST)'
-              href: quickstart-csharp-sentences.md
-            - name: Go (REST)
-              href: quickstart-go-sentences.md
-            - name: Java (REST)
-              href: quickstart-java-sentences.md
-            - name: Node.js (REST)
-              href: quickstart-nodejs-sentences.md
-            - name: Python (REST)
-              href: quickstart-python-sentences.md
+          href: quickstart-sentences.md
     - name: チュートリアル
       items:
         - name: 'Translator Text の WPF アプリの作成 (C#)'

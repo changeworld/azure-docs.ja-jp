@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 497134b7f3cc535f7b3f180db13cd04ef56787db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ef9fc121b16d81eed932d1ab55ca38d2a2f1057
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080171"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852496"
 ---
 # <a name="scenario-web-api-that-calls-web-apis"></a>シナリオ: Web API を呼び出す Web API
 

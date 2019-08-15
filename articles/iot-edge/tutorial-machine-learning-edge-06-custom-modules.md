@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16c32fc14805ac8ae1412671b2bb400456b4ab7d
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 4d03e5ee5faf39425e1bf927a3c0557b0ad01b82
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603639"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840111"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ
 
@@ -92,11 +92,11 @@ IoT Edge デバイスで 4 つのことを達成できるようにします。
        }
        ```
 
-     * **モジュール:** このセクションには、このソリューションに対応するユーザー定義モジュールのセットが含まれています。 このセクションには現在、tempSensor と turbofanRulClassifier の 2 つのモジュールが含まれていることがわかります。 tempSensor は Visual Studio Code テンプレートによってインストールされましたが、このソリューションには必要ありません。 tempSensor モジュール定義は modules セクションから削除できます。 turbofanRulClassifier モジュール定義は、コンテナー レジストリ内のイメージをポイントすることに注意してください。 ソリューションにモジュールを追加していくと、このセクションに表示されます。
+     * **モジュール:** このセクションには、このソリューションに対応するユーザー定義モジュールのセットが含まれています。 このセクションには現在、2 つのモジュールが含まれていることがわかります (SimulatedTemperatureSensor および turbofanRulClassifier)。 SimulatedTemperatureSensor は Visual Studio Code テンプレートによってインストールされましたが、このソリューションには必要ありません。 SimulatedTemperatureSensor モジュール定義は modules セクションから削除できます。 turbofanRulClassifier モジュール定義は、コンテナー レジストリ内のイメージをポイントすることに注意してください。 ソリューションにモジュールを追加していくと、このセクションに表示されます。
 
        ```json
        "modules": {
-         "tempSensor": {
+         "SimulatedTemperatureSensor": {
            "version": "1.0",
            "type": "docker",
            "status": "running",
@@ -119,7 +119,7 @@ IoT Edge デバイスで 4 つのことを達成できるようにします。
        }
        ```
 
-     * **ルート**: このチュートリアルでは、ルートをかなり多く扱います。 ルートは、モジュール間の通信方法を定義します。 テンプレートによって定義される 2 つのルートは、必要としているルーティングに一致しません。 最初のルートは、分類器のあらゆる出力からのすべてのデータを IoT Hub ($upstream) に送信します。 もう 1 つは tempSensor 用のルートで、これは削除したばかりです。 2 つの既定のルートを削除します。
+     * **ルート**: このチュートリアルでは、ルートをかなり多く扱います。 ルートは、モジュール間の通信方法を定義します。 テンプレートによって定義される 2 つのルートは、必要としているルーティングに一致しません。 最初のルートは、分類器のあらゆる出力からのすべてのデータを IoT Hub ($upstream) に送信します。 もう 1 つは SimulatedTemperatureSensor 用のルートで、これは削除したばかりです。 2 つの既定のルートを削除します。
 
        ```json
        "$edgeHub": {
@@ -127,7 +127,7 @@ IoT Edge デバイスで 4 つのことを達成できるようにします。
            "schemaVersion": "1.0",
            "routes": {
              "turbofanRulClassifierToIoTHub": "FROM /messages/modules/turbofanRulClassifier/outputs/\* INTO $upstream",
-             "sensorToturbofanRulClassifier": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\\"/modules/turbofanRulClassifier/inputs/input1\\")"
+             "sensorToturbofanRulClassifier": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\\"/modules/turbofanRulClassifier/inputs/input1\\")"
            },
            "storeAndForwardConfiguration": {
              "timeToLiveSecs": 7200
@@ -314,7 +314,7 @@ Avro Writer モジュールには、ソリューションにおいて、メッ�
 
 ### <a name="create-module-and-copy-files"></a>モジュールを作成してファイルをコピーする
 
-1. コマンド パレットで、「**Python: Select Interpreter**」を検索し、選択します。
+1. コマンド パレットで、「Python: Select Interpreter」を検索し、選択します。**Select Interpreter**」と入力します。
 
 1. C:\\Python37 に見つかったインタープリターを選択します。
 

@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 54cb9f604e9d1b817947990e657390387df6c881
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 34e6fc0d4e6e0817f9312a6565a2dd5dd99fdab9
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556594"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035245"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Service Fabric の名前でプロパティを格納およびクエリします。

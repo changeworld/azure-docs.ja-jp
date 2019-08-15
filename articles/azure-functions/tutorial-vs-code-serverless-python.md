@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 587d8040039080e15c61292279c5e5637d296b08
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68349245"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639092"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions に Python をデプロイする
 
@@ -253,7 +253,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 1. 拡張機能により次のアクションが実行されますが、それらは Visual Studio Code のポップアップ メッセージと **[出力]** ウィンドウで確認できます (処理には数分かかります)。
 
     - 与えた名前でリソース グループを作成します (ハイフンを除きます)。
-    - そのリソース グループで、ストレージ アカウント、ホスティング プラン、関数アプリを作成します。 既定では、[従量課金プラン](functions-scale.md#consumption-plan)が作成されます。 専用プランで関数を実行するには、[拡張作成オプションを使用して発行を有効にする](functions-develop-vs-code.md#enabled-publishing-with-advanced-create-options)必要があります。
+    - そのリソース グループで、ストレージ アカウント、ホスティング プラン、関数アプリを作成します。 既定では、[従量課金プラン](functions-scale.md#consumption-plan)が作成されます。 専用プランで関数を実行するには、[拡張作成オプションを使用して発行を有効にする](functions-develop-vs-code.md)必要があります。
     - 関数アプリにコードをデプロイします。
 
     **[Azure:Functions]** エクスプローラーには進捗状況も表示されます。

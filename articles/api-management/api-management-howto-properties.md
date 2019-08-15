@@ -37,7 +37,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 名前付きの値には、リテラル文字列と[ポリシー式](/azure/api-management/api-management-policy-expressions)を含めることができます。 たとえば、`Expression` の値は、現在の日時を含む文字列を返すポリシー式です。 名前付きの値 `Credential` はシークレットとしてマークされているので、既定では、その値は表示されません。
 
-| EnableAdfsAuthentication       | Value                      | Secret | Tags          |
+| Name       | Value                      | Secret | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
 | 値      | 42                         | False  | vital-numbers |
 | 資格情報 | ••••••••••••••••••••••     | True   | security      |

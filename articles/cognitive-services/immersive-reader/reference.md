@@ -35,7 +35,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 #### <a name="parameters"></a>parameters
 
-| EnableAdfsAuthentication | Type | 説明 |
+| 名前 | Type | 説明 |
 | ---- | ---- |------------ |
 | `token` | string | Azure AD 認証トークン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |
 | `subdomain` | string | Azure 内のイマーシブ リーダー リソースのカスタム サブドメイン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |

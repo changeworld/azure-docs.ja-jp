@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight のリリース ノート
+title: Azure HDInsight のリリース ノート (アーカイブ)
 description: Azure HDInsight の最新のリリース ノート。 Hadoop、Spark、Microsoft R Server、Hive などの開発に関するヒントや詳細を紹介します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 95a530ea57237453a3b0d7d8dd42963f4b9c3dde
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf985f08f13198a9041b1d50f2c6c7f0fec70911
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713045"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945035"
 ---
-# <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート
+# <a name="archived-release-notes"></a>アーカイブされたリリース ノート
 
 > [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md)に関するページを参照してください。

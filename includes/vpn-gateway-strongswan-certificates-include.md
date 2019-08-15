@@ -8,38 +8,13 @@ ms.topic: include
 ms.date: 01/16/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c6f9065786879749eee6187e93283f4c026b7fff
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 98172c2c487488a72bbfdd3a8205ac7d8668db60
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181048"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035742"
 ---
-以下の手順では、次のコンピューターの構成を使用しました。
-
-  | | |
-  |---|---|
-  |Computer| Ubuntu Server 16.04<br>ID_LIKE=debian<br>PRETTY_NAME="Ubuntu 16.04.4 LTS"<br>VERSION_ID="16.04" |
-  |依存関係| strongSwan |
-
-#### <a name="1-install-strongswan"></a>1.strongSwan のインストール
-
-次のコマンドを使用して、必要な strongSwan 構成をインストールします。
-
-```
-apt-get install strongswan-ikev2 strongswan-plugin-eap-tls
-```
-
-```
-apt-get install libstrongswan-standard-plugins
-```
-
-```
-apt-get install strongswan-pki
-```
-
-#### <a name="2-generate-keys-and-certificate"></a>2.キーと証明書を生成する
-
 キーと証明書を生成します。
 
   ```

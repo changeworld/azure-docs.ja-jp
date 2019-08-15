@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
 ms.openlocfilehash: 4eef31a050072c0413421a5490b35b765cb9557d
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68381837"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する
@@ -20,7 +20,7 @@ ms.locfileid: "68381837"
 GPU (Graphical processing units) は、多くの場合に、グラフィックや視覚化ワークロードなど、コンピューティングを集中的に使用するワークロードに使用とされます。 AKS では、Kubernetes でこれらのコンピューティングを集中的に使用するワークロードを実行する GPU 対応ノード プールの作成をサポートしています。 使用可能な GPU 対応 VM の詳細については、[Azure での GPU 最適化済み VM サイズ][gpu-skus]に関する記事を参照してください。 AKS ノードには、最小サイズの *Standard_NC6* をお勧めします。
 
 > [!NOTE]
-> GPU 対応 VM には、より高い価格が適用され、利用可能なリージョンが限られる特殊なハードウェアが含まれます。 詳細については、[価格][azure-pricing]tool and [region availability][azure-availability]に関するページを参照してください。
+> GPU 対応 VM には、より高い価格が適用され、利用可能なリージョンが限られる特殊なハードウェアが含まれます。 詳細については、[価格][azure-pricing]ツールと[利用可能なリージョン][azure-availability]を参照してください。
 
 現在、GPU 対応ノード プールの使用は Linux ノード プールでのみ使用できます。
 

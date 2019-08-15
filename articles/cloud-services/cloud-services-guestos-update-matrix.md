@@ -7,18 +7,17 @@ author: raiye
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/18/2019
+ms.date: 7/26/2019
 ms.author: raiye
-ms.openlocfilehash: 2dac76ef0d0d71c11291e63fdb3a7ce307638b50
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 63c0502cb7b5abf6b6005683cc97d3229ec90e47
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405544"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945424"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 ロールを構成して、「 *Azure ゲスト OS の更新設定* 」に説明されているゲスト OS の [自動][Azure Guest OS Update Settings]更新を使用する場合、このページを読むことは必須ではありません。
@@ -42,6 +41,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ゲスト OS の更新方法については、 [こちら][cloud updates]を確認してください。
 
 ## <a name="news-updates"></a>最新情報
+
+###### <a name="july-26-2019"></a>**2019 年 7 月 26 日**
+7 月のゲスト OS がリリースされました。
 
 ###### <a name="july-8-2019"></a>**2019 年 7 月 8 日**
 6 月のゲスト OS がリリースされました。
@@ -98,8 +100,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+| WA-GUEST-OS-6.9_201907-01 |2019 年 7 月 26 日 |Post 6.11 |
 | WA-GUEST-OS-6.8_201906-01 |2019 年 7 月 8 日 |Post 6.10 |
-| WA-GUEST-OS-6.7_201905-01 |2019 年 6 月 6 日 |Post 6.9 |
+|~~WA-GUEST-OS-6.7_201905-01~~ |2019 年 6 月 6 日 |2019 年 7 月 26 日 |
 |~~WA-GUEST-OS-6.6_201904-01~~ |2019 年 5 月 7 日 |2019 年 7 月 8 日 |
 |~~WA-GUEST-OS-6.5_201903-01~~ |2019 年 3 月 26 日 |2019 年 6 月 6 日 |
 |~~WA-GUEST-OS-6.4_201902-01~~ |2019 年 3 月 12 日 |2019 年 5 月 7 日 |
@@ -119,8 +122,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+| WA-GUEST-OS-5.33_201907-01 |2019 年 7 月 26 日 |Post 5.35 |  
 | WA-GUEST-OS-5.32_201906-01 |2019 年 7 月 8 日 |Post 5.34 |
-| WA-GUEST-OS-5.31_201905-01 |2019 年 6 月 6 日 |Post 5.33 |
+|~~WA-GUEST-OS-5.31_201905-01~~ |2019 年 6 月 6 日 |2019 年 7 月 26 日 |
 |~~WA-GUEST-OS-5.30_201904-01~~ |2019 年 5 月 7 日 |2019 年 7 月 8 日 |
 |~~WA-GUEST-OS-5.29_201903-01~~ |2019 年 3 月 26 日 |2019 年 6 月 6 日 |
 |~~WA-GUEST-OS-5.28_201902-01~~ |2019 年 3 月 12 日 |2019 年 5 月 7 日 |
@@ -137,8 +141,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+| WA-GUEST-OS-4.68_201907-01 | 2019 年 7 月 26 日  |Post 4.70 |
 | WA-GUEST-OS-4.67_201906-01 |2019 年 7 月 8 日 |Post 4.69 |
-| WA-GUEST-OS-4.66_201905-01 |2019 年 6 月 6 日 |Post 4.68 |
+|~~WA-GUEST-OS-4.66_201905-01~~ |2019 年 6 月 6 日 |2019 年 7 月 26 日 |
 |~~WA-GUEST-OS-4.65_201904-01~~ |2019 年 5 月 7 日 |2019 年 7 月 8 日 |
 |~~WA-GUEST-OS-4.64_201903-01~~ |2019 年 3 月 26 日 |2019 年 6 月 6 日 |
 |~~WA-GUEST-OS-4.63_201902-01~~ |2019 年 3 月 12 日 |2019 年 5 月 7 日 |
@@ -155,8 +160,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+| WA-GUEST-OS-3.75_201907-01 | 2019 年 7 月 26 日 |Post 3.77 |
 | WA-GUEST-OS-3.74_201906-01 |2019 年 7 月 8 日 |Post 3.76 |
-| WA-GUEST-OS-3.73_201905-01 |2019 年 6 月 6 日 |Post 3.75 |
+|~~WA-GUEST-OS-3.73_201905-01~~ |2019 年 6 月 6 日 |2019 年 7 月 26 日 |
 |~~WA-GUEST-OS-3.72_201904-01~~ |2019 年 5 月 7 日 |2019 年 7 月 8 日 |
 |~~WA-GUEST-OS-3.71_201903-01~~ |2019 年 3 月 26 日 |2019 年 6 月 6 日 |
 |~~WA-GUEST-OS-3.70_201902-01~~ |2019 年 3 月 12 日 |2019 年 5 月 7 日 |
@@ -173,8 +179,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 |
 | --- | --- | --- |
+| WA-GUEST-OS-2.88_201907-01 | 2019 年 7 月 26 日 |Post 2.90 |
 | WA-GUEST-OS-2.87_201906-01 |2019 年 7 月 8 日 |Post 2.89 |
-| WA-GUEST-OS-2.86_201905-01 |2019 年 6 月 6 日 |Post 2.88 |
+|~~WA-GUEST-OS-2.86_201905-01~~ |2019 年 6 月 6 日 |2019 年 7 月 26 日 |
 |~~WA-GUEST-OS-2.85_201904-01~~ |2019 年 5 月 7 日 |2019 年 7 月 8 日 |
 |~~WA-GUEST-OS-2.84_201903-01~~ |2019 年 3 月 26 日 |2019 年 6 月 6 日 |
 |~~WA-GUEST-OS-2.83_201902-01~~ |2019 年 3 月 12 日 |2019 年 5 月 7 日 |

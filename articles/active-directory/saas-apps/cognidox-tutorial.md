@@ -101,7 +101,7 @@ Cognidox で Azure AD SSO を構成してテストするには、次の構成要
 
 6. その他に、Cognidox アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 [ユーザー属性] ダイアログの [ユーザー要求] セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。 
 
-    | EnableAdfsAuthentication | 名前空間  |  変換 | パラメーター 1 |
+    | Name | 名前空間  |  変換 | パラメーター 1 |
     | ---------------| --------------- | --------- |
     | wanshort | http://appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
 

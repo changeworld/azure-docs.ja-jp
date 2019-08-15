@@ -10,17 +10,17 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cmacdo
-ms.custom: seodec2018
-ms.openlocfilehash: 0268a16ecc07d578e1e3dc2b15ad9208509c2a8c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.subservice: cognitive-search
+ms.openlocfilehash: 1f4ba923cb9698a00c8c7c8be6e1b34f09ea1b72
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68349240"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840944"
 ---
-#   <a name="text-translation-cognitive-skill-preview"></a>テキスト翻訳コグニティブ スキル (プレビュー)
+#   <a name="text-translation-cognitive-skill"></a>テキスト翻訳コグニティブ スキル
 
-**テキスト翻訳**スキルでは、テキストが評価され、レコードごとに、指定した対象言語に翻訳されたテキストが返されます。 このスキルでは、Cognitive Services で使用可能な [Translator Text API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) が使用されます。  現在、最新の Azure Search 一般提供 API バージョンで利用できますが、プレビュー段階であると見なされ、一般提供が発表されるまで、プレビュー段階として扱う必要があります。
+**テキスト翻訳**スキルでは、テキストが評価され、レコードごとに、指定した対象言語に翻訳されたテキストが返されます。 このスキルでは、Cognitive Services で使用可能な [Translator Text API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) が使用されます。
 
 この機能は、ドキュメント全体が 1 つの言語ではないことが予想される場合に役に立ち、そのような場合、翻訳して検索用のインデックスを作成する前に、テキストを 1 つの言語に正規化することができます。  また、同じテキストのコピーを複数の言語で使用できるようにしたいローカライズのユース ケースにも役立ちます。
 

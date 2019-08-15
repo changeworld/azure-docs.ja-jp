@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: b462f0c427020b1422b91fbd7ac34e3023e546b8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 998471d99a785eeff39ef7c99e60e1d9b49e0d7a
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677880"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725827"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
 
@@ -62,7 +62,7 @@ ms.locfileid: "68677880"
 
     [![[ソリューションの作成 Device Simulation] ページ](media/v2-update-provision/device-two-create.png)](media/v2-update-provision/device-two-create.png#lightbox)
 
-## <a name="create-a-time-series-insights-preview-payg-environment"></a>Time Series Insights プレビューの PAYG 環境を作成する
+## <a name="create-a-preview-payg-environment"></a>プレビュー PAYG 環境を作成する
 
 このセクションでは、Azure Time Series Insights プレビュー環境を作成し、[Azure portal](https://portal.azure.com/) を使用して、IoT ソリューション アクセラレータによって作成された IoT ハブにこれを接続する方法について説明します。
 
@@ -130,7 +130,9 @@ ms.locfileid: "68677880"
 
    ご自分の資格情報が表示されない場合は、環境にアクセスするためのアクセス許可を自分自身に付与する必要があります。 アクセス許可の設定について詳しくは、「[データ アクセスの許可](./time-series-insights-data-access.md)」を参照してください。
 
-## <a name="stream-data-into-your-environment"></a>環境にデータをストリーム配信する
+## <a name="stream-data"></a>データをストリーム配信する
+
+Time Series Insights 環境をデプロイできたので、分析のために、そこへデータをストリーム配信します。
 
 1. [Azure IoT ソリューション アクセラレータのページ](https://www.azureiotsolutions.com/Accelerators)に戻ります。 ソリューション アクセラレータ ダッシュボードで、対象のソリューションを見つけます。 次に **[起動]** を選択します。
 
@@ -158,7 +160,7 @@ ms.locfileid: "68677880"
 
     [![Azure IoT シミュレーション ダッシュボード](media/v2-update-provision/device-seven-dashboard.png)](media/v2-update-provision/device-seven-dashboard.png#lightbox)
 
-## <a name="analyze-data-in-your-environment"></a>環境内でデータを分析する
+## <a name="analyze-data"></a>データを分析する
 
 このセクションでは、[Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)を使用して、時系列データの基本的な分析を実行します。
 

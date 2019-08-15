@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b77b44856e9623235051470bc087885765ee12c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 872c6f0af9695628f2821c8859d0b582534efd45
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080431"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840076"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
 
@@ -219,7 +219,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 6. ソリューション フォルダー内の **deployment.template.json** ファイルを開きます。 
 
-7. **modules** セクションを探します。 3 つのモジュールが見つかります。 モジュール *tempSensor* は、既定で新しいソリューションに含まれ、他のモジュールで使用するテスト データを提供します。 モジュール *sqlFunction* は、最初に作成して新しいコードで更新したモジュールです。 最後のモジュール *sql* は、Azure Marketplace からインポートしたモジュールです。 
+7. **modules** セクションを探します。 3 つのモジュールが見つかります。 モジュール *SimulatedTemperatureSensor* は、既定で新しいソリューションに含まれ、他のモジュールで使用するテスト データを提供します。 モジュール *sqlFunction* は、最初に作成して新しいコードで更新したモジュールです。 最後のモジュール *sql* は、Azure Marketplace からインポートしたモジュールです。 
 
    >[!Tip]
    >SQL Server モジュールでは、配置マニフェストの環境変数に既定のパスワードが付いています。 運用環境で SQL Server コンテナーを作成するときに、[既定のシステム管理者パスワードを変更](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker)する必要があります。
@@ -244,7 +244,7 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、**config** という名前の新しいフォルダーに deployment.json ファイルが生成されます。次に、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 これらの 2 つのコマンドによって、コードがビルドされ、モジュールがコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにコードがプッシュされます。 
 
-sqlFunction モジュールがコンテナー レジストリに正常にプッシュされたことを確認できます。 Azure ポータルで、自分のコンテナー レジストリに移動します。 **[リポジトリ]** を選択し、**sqlFunction** を検索します。 他の 2 つのモジュール tempSensor と sql は、既に Microsoft レジストリ内でそれらのリポジトリがポイントされているため、コンテナーのレジストリにプッシュされません。
+sqlFunction モジュールがコンテナー レジストリに正常にプッシュされたことを確認できます。 Azure ポータルで、自分のコンテナー レジストリに移動します。 **[リポジトリ]** を選択し、**sqlFunction** を検索します。 他の 2 つのモジュール SimulatedTemperatureSensor と sql は、既に Microsoft レジストリ内でそれらのリポジトリがポイントされているため、コンテナーのレジストリにプッシュされません。
 
 ## <a name="deploy-the-solution-to-a-device"></a>デバイスへのソリューションの配置
 
@@ -268,7 +268,7 @@ VS Code の Azure IoT Hub Devices セクションのデバイスの状態を更�
 
 ## <a name="create-the-sql-database"></a>SQL データベースの作成
 
-配置マニフェストをデバイスに適用すると、3 つのモジュールが実行されます。 tempSensor モジュールによって、シミュレートされた環境データが生成されます。 sqlFunction モジュールによってデータが取得され、データベース用にその書式が設定されます。 このセクションでは、温度データを格納するように SQL データベースを設定する手順を説明します。 
+配置マニフェストをデバイスに適用すると、3 つのモジュールが実行されます。 SimulatedTemperatureSensor モジュールによって、シミュレートされた環境データが生成されます。 sqlFunction モジュールによってデータが取得され、データベース用にその書式が設定されます。 このセクションでは、温度データを格納するように SQL データベースを設定する手順を説明します。 
 
 IoT Edge デバイスで次のコマンドを実行します。 これらのコマンドによって、デバイス上で実行されている **sql** モジュールに接続され、送信された温度データを保持するデータベースとテーブルが作成されます。 
 

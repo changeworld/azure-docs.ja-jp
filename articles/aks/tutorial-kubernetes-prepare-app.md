@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 2b4ba646a037b2f5561dabf97dee14454c07c573
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614220"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68740950"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) 用のアプリケーションの準備
 
@@ -34,7 +34,7 @@ ms.locfileid: "67614220"
 
 このチュートリアルの前提として、コンテナー、コンテナー イメージ、`docker` コマンドなど、Docker のコア概念を基本的に理解している必要があります。 [Docker の入門][docker-get-started]に関するドキュメントでコンテナーの基礎についての入門情報を参照してください。
 
-このチュートリアルを完了するには、Linux コンテナーを実行するローカルの Docker 開発環境が必要です。 Docker では、[Mac][docker-for-mac], [Windows][docker-for-windows] または [Linux][docker-for-linux] システムで Docker を構成できるパッケージが提供されています。
+このチュートリアルを完了するには、Linux コンテナーを実行するローカルの Docker 開発環境が必要です。 Docker では、[Mac][docker-for-mac]、[Windows][docker-for-windows]、または [Linux][docker-for-linux] システム上に Docker を構成するパッケージが提供されています。
 
 Azure Cloud Shell には、これらのチュートリアルのすべてのステップを完了するために必要な Docker コンポーネントが含まれているわけではありません。 そのため、完全な Docker 開発環境の使用をお勧めします。
 
@@ -103,7 +103,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 docker-compose down
 ```
 
-ローカル アプリケーションが削除されると、Azure Vote アプリケーション *azure-front-front* を含む Docker イメージが作成され、次のチュートリアルで使用できます。
+ローカル アプリケーションが削除されると、Azure Vote アプリケーション *azure-vote-front* を含む Docker イメージが作成され、次のチュートリアルで使用できます。
 
 ## <a name="next-steps"></a>次の手順
 

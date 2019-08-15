@@ -84,7 +84,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 要求には次のクエリ パラメーターを含めることができます。 必須のパラメーターについては、必須の列を参照してください。 クエリ パラメーターは URL エンコードする必要があります。  
   
   
-|EnableAdfsAuthentication|値|Type|必須|  
+|名前|値|Type|必須|  
 |----------|-----------|----------|--------------|  
 |<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 URL Preview API でサポートされるのは en-us の市場と言語のみです。<br /><br />|string|はい|  
 |<a name="query" />q|プレビューする URL|string|はい|  
@@ -120,7 +120,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="errorresponse"></a>ErrorResponse  
 要求が失敗したときの応答に含まれている最上位レベルのオブジェクト。  
   
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。|string|  
 |<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[Error](#error)|  
@@ -130,7 +130,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="license"></a>ライセンス  
 テキストまたは写真の使用が許可されるライセンスを定義します。  
   
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |----------|-----------|----------|  
 |名前|ライセンスの名前。|string|  
 |url|ライセンスに関する詳しい情報を取得できる Web サイトへの URL。<br /><br /> 名前と URL を使用してハイパーリンクを作成します。|string|  
@@ -139,7 +139,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="licenseattribution"></a>LicenseAttribution  
 ライセンス属性の契約規則を定義します。  
   
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。これは LicenseAttribution に設定されます。|string|  
 |license|コンテンツの使用が許可されるライセンス。|[ライセンス](#license)|  
@@ -151,7 +151,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="link"></a>Link  
 ハイパーリンクのコンポーネントを定義します。  
   
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。|string|  
 |text|表示テキスト。|string|  
@@ -161,7 +161,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="linkattribution"></a>LinkAttribution  
 リンク属性の契約規則を定義します。  
   
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。これは LinkAttribution に設定されます。|string|  
 |mustBeCloseToContent|規則の内容が、その規則の適用されるフィールドのすぐ近くに配置される必要があるかどうかを決定するブール値。 **true** の場合、内容はすぐ近くに配置される必要があります。 **false** の場合、またはこのフィールドが存在しない場合、内容は呼び出し元の裁量で配置できます。|Boolean|  
@@ -173,7 +173,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="mediaattribution"></a>MediaAttribution  
 メディア属性の契約規則を定義します。  
   
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。これは MediaAttribution に設定されます。|string|  
 |mustBeCloseToContent|規則の内容が、その規則の適用されるフィールドのすぐ近くに配置される必要があるかどうかを決定するブール値。 **true** の場合、内容はすぐ近くに配置される必要があります。 **false** の場合、またはこのフィールドが存在しない場合、内容は呼び出し元の裁量で配置できます。|Boolean|  
@@ -187,7 +187,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
   
 公開元は、名前、Web サイト、またはその両方を提供する場合があることに注意してください。  
   
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |----------|-----------|----------|  
 |名前|公開元の名前。|string|  
 |url|公開元の Web サイトへの URL。<br /><br /> 公開元が Web サイトを提供しない場合があることに注意してください。|string|  
@@ -197,7 +197,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="webpage"></a>WebPage  
 プレビューの Web ページに関する情報を定義します。  
   
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |----------|-----------|----------|
 |名前|ページ タイトル (必ずしも HTML タイトルではありません)|string|
 |url|実際にクロールされた URL (要求はリダイレクトされた可能性があります)|string|  
@@ -219,21 +219,21 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
 
 ### <a name="identifiable"></a>Identifiable
 
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |-------------|-----------------|----------|
 |id|リソース識別子|string|
  
 ### <a name="rankinggroup"></a>RankingGroup
 検索結果グループ (メインラインなど) を定義します。
 
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |-------------|-----------------|----------|
 |items|グループで表示される検索結果の一覧。|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 表示される検索結果項目を定義します。
 
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |-------------|-----------------|----------|
 |resultIndex|表示される回答内の項目のゼロベース インデックス。 このフィールドが項目に含まれていない場合、回答のすべての項目が表示されます。 たとえば、News 回答ではすべてのニュース記事が表示されます。|整数|
 |answerType|表示される項目が含まれている回答。 たとえば、News などです。<br /><br />種類を使用して SearchResponse オブジェクト内の回答を探します。 種類は SearchResponse フィールドの名前です。<br /><br /> ただし、このオブジェクトに value フィールドが含まれている場合にのみ回答の種類を使用し、そうでない場合は無視します。|string|
@@ -243,7 +243,7 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
 ### <a name="rankingresponse"></a>RankingResponse  
 検索結果ページでコンテンツが配置される場所と順序を定義します。  
   
-|EnableAdfsAuthentication|値|  
+|名前|値|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|メインラインに表示される検索結果。|  
 |<a name="ranking-pole" />pole|最も目立つ処理を受ける検索結果 (たとえば、メインラインとサイドバーの上に表示されます)。|  
@@ -255,7 +255,7 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
   
 サービスによってサービス拒否攻撃が疑われている場合、要求は成功する (HTTP 状態コードは 200 OK) ものの、応答の本文は空になることに注意してください。  
   
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。これは SearchResponse に設定されます。|string|  
 |WebPage|プレビューを定義する JSON オブジェクト|string|  
@@ -264,7 +264,7 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
 ### <a name="textattribution"></a>TextAttribution  
 プレーンテキスト属性の契約規則を定義します。  
   
-|EnableAdfsAuthentication|値|Type|  
+|名前|値|Type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。これは TextAttribution に設定されます。|string|  
 |text|属性のテキスト。<br /><br /> テキスト属性はエンティティ全体に適用されます。また、エンティティの表示のすぐ後に表示される必要があります。 ターゲットが指定されていないテキスト属性またはリンク属性の規則が複数ある場合、"Data from: " ラベルを使ってそれらを連結して表示する必要があります。|string| 
