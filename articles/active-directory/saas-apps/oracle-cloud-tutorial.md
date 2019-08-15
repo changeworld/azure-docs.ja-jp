@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0725988ff88baea2458f0a5e459440874e66088
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 579a553f151cf34215af3188cfddada6da42e691
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596426"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943624"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>チュートリアル:Oracle Cloud Infrastructure Console と Azure Active Directory を統合する
 
@@ -101,11 +101,11 @@ Oracle Cloud Infrastructure Consoleで Azure AD の SSO を構成してテスト
 
    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-1. Oracle Cloud Infrastructure Console アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+1. Oracle Cloud Infrastructure Console アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
    ![image](common/edit-attribute.png)
 
-1. その他に、Oracle Cloud Infrastructure Console アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。  **[グループ要求 (プレビュー)]**   ダイアログの  **[ユーザー属性とクレーム]**   セクションで、次の手順を実行します。
+1. その他に、Oracle Cloud Infrastructure Console アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
    1. **[名前識別子の値]** の横にある**ペン**をクリックします。
 
