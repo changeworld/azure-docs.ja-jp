@@ -22,7 +22,7 @@ ms.locfileid: "68705111"
 
 <sub> *次の属性は、所属エンティティに固有です。(Ty = '5') </sub>
 
-EnableAdfsAuthentication    |説明                            |Type       | Operations
+名前    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 AfN     |所属の標準化名        |string     |等しい
@@ -32,6 +32,6 @@ ECC     |所属の引用の推定総数 |Int32      |なし
 
 ## <a name="extended-metadata-attributes"></a>拡張メタデータの属性 ##
 
-EnableAdfsAuthentication    | 説明               
+名前    | 説明               
 --------|---------------------------    
 PC      |所属の論文数

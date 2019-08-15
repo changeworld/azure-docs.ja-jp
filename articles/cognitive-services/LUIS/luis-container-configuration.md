@@ -67,7 +67,7 @@ ms.locfileid: "68360538"
 次の表に示したように、URL には、忘れずに `luis/v2.0` ルーティングを含めてください。
 
 
-|必須| EnableAdfsAuthentication | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
@@ -97,7 +97,7 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 
 次の表で、サポートされる設定について説明します。
 
-|必須| EnableAdfsAuthentication | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |はい| `Input` | string | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
 |いいえ| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 LUIS のクエリ ログやコンテナー ログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|

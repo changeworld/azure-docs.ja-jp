@@ -40,10 +40,10 @@ LUIS アプリがクライアント アプリケーション (チャット ボ�
 
    |Setting|値|目的|
    |--|--|--|
-   |EnableAdfsAuthentication|`my-cognitive-service-resource`|Azure リソースの名前。 LUIS ポータル内でアプリにリソースを割り当てるときに、この名前が必要です。|
+   |Name|`my-cognitive-service-resource`|Azure リソースの名前。 LUIS ポータル内でアプリにリソースを割り当てるときに、この名前が必要です。|
    |Subscription|該当するサブスクリプション|ご自分のアカウントに関連付けられているサブスクリプションの 1 つを選択します。|
    |Location|**[米国西部]**|このリソースの Azure リージョン。|
-   |価格レベル|**S0**|このリソースの既定の価格レベル。|
+   |Pricing tier|**S0**|このリソースの既定の価格レベル。|
    |Resource group|`my-cognitive-service-resource-group`|お使いのすべての Cognitive Services リソース向けに新しいリソース グループを作成します。 リソースの作業が完了したら、リソース グループを削除して、サブスクリプションをクリーンアップできます。 |
    | | | |
 
