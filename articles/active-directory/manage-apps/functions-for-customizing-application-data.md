@@ -48,7 +48,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
 | **suffix** |必須 |string |source 値の末尾に追加する文字列。 |
@@ -61,7 +61,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
 | **inputFormat** |必須 |string |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
@@ -77,7 +77,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **separator** |必須 |string |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
 | **source1  … sourceN** |必須、回数は可変 |string |結合する文字列値。 |
@@ -90,7 +90,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常、属性の名前。 |
 | **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
@@ -104,7 +104,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string | 通常は、名または姓の属性です。 |
 
@@ -116,7 +116,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
@@ -146,7 +146,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常は、**source** オブジェクトの属性の名前。 |
 | **oldValue** |省略可能 |string |**source** または **template** に含まれる置換前の値。 |
@@ -169,7 +169,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |2 つ以上必要であり、上限はありません |string | 評価する一意値生成ルールの一覧。 |
 
@@ -182,7 +182,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |必須 |string |**[appRoleAssignments]** オブジェクト |
 
@@ -194,7 +194,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |**source** 値。 |
 | **delimiter** |必須 |string |文字列の分割に使用される文字を指定します (例: ",") |
@@ -207,7 +207,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |**source セクション セクション** 値。 |
 
@@ -219,7 +219,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |**Source** 値。 |
 | **defaultValue** |省略可能 |string |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
@@ -234,7 +234,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
 | **culture** |省略可能 |string |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
@@ -247,7 +247,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| EnableAdfsAuthentication | 必須/繰り返し | Type | メモ |
+| 名前 | 必須/繰り返し | Type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |string |通常は、source オブジェクトの属性の名前。 |
 | **culture** |省略可能 |string |RFC 4646 に基づくカルチャ名の形式は、*languagecode2-country/regioncode2* です。ここで、*languagecode2* は 2 文字の言語コードで、*country/regioncode2* は 2 文字のサブカルチャ コードです。 例には、日本語 (日本) の場合の ja-JP と英語 (米国) の場合の en-US が含まれています。 2 文字の言語コードが使用できない場合は、ISO 639-2 から派生した 3 文字のコードが使用されます。|
