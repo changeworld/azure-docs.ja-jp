@@ -91,23 +91,27 @@
               href: choose-map-style.md
             - name: マップにコントロールを追加する
               href: map-add-controls.md
+            - name: データ ソースを作成する
+              href: create-data-source-web-sdk.md
             - name: シンボル レイヤーを追加する
               href: map-add-pin.md
-            - name: ポップアップを追加する
-              href: map-add-popup.md
             - name: バブル レイヤーを追加する
               href: map-add-bubble-layer.md
-            - name: 図形を追加する
+            - name: 線レイヤーを追加する
+              href: map-add-line-layer.md
+            - name: 多角形レイヤーを追加する
               href: map-add-shape.md
             - name: ヒート マップ レイヤーを追加する
               href: map-add-heat-map-layer.md
+            - name: ポップアップを追加する
+              href: map-add-popup.md
             - name: ポイント データのクラスタリング
               href: clustering-point-data-web-sdk.md
             - name: データドリブンのスタイルの式を使用する
               href: data-driven-style-expressions-web-sdk.md
             - name: イメージ テンプレートの使用方法
               href: how-to-use-image-templates-web-sdk.md
-            - name: イメージをオーバーレイする
+            - name: イメージ レイヤーを追加する
               href: map-add-image-layer.md
             - name: タイル レイヤーを追加する
               href: map-add-tile-layer.md
@@ -139,6 +143,8 @@
           href: how-to-add-symbol-to-android-map.md
         - name: 図形を追加する
           href: how-to-add-shapes-to-android-map.md
+        - name: 機能情報を表示する
+          href: display-feature-information-android.md
         - name: タイル レイヤーを追加する
           href: how-to-add-tile-layer-android-map.md
 - name: リファレンス

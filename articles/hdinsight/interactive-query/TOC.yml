@@ -191,6 +191,12 @@
     - name: トラブルシューティング
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/interactive-query/toc.json&bc=/azure/hdinsight/interactive-query/breadcrumb/toc.json
       items:
+        - name: Apache Tez アプリケーションがハングする
+          href: ./interactive-query-troubleshoot-tez-hangs.md
+        - name: Apache Hive LLAP クエリのパフォーマンス
+          href: ./interactive-query-troubleshoot-query-performance.md
+        - name: レジューサーの速度が遅い
+          href: ./interactive-query-troubleshoot-slow-reducer.md
         - name: Apache Hive ビューのタイム アウト
           href: ./interactive-query-troubleshoot-view-time-out.md
         - name: テーブル作成中のアクセス許可エラー

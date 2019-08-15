@@ -310,6 +310,8 @@
           href: ./apache-ambari-troubleshoot-fivezerotwo-error.md
         - name: Apache Ambari でダウンしたホストとサービスが表示される
           href: ./apache-ambari-troubleshoot-down-hosts-services.md
+        - name: Data Lake ファイルにアクセスできない
+          href: ./hdinsight-troubleshoot-data-lake-files.md
         - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Apache Hadoop HDFS のトラブルシューティング

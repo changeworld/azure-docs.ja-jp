@@ -98,9 +98,6 @@
     - name: モデルの解釈可能性
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: FPGA と CPU、GPU、ASIC
-      displayName: 'field, programmable, arrays'
-      href: concept-accelerate-with-fpgas.md
     - name: ONNX
       href: concept-onnx.md
     - name: セキュリティ
@@ -260,7 +257,7 @@
       items:
         - name: ML パイプライン
           href: how-to-create-your-first-pipeline.md
-        - name: CI/CD 用の Azure パイプライン
+        - name: CI/CD 用の Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: リソース クォータを管理する

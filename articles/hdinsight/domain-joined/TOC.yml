@@ -58,6 +58,12 @@
   items:
     - name: ESP クラスターの作成およびオンプレミスとの同期
       href: apache-domain-joined-create-configure-enterprise-security-cluster.md
+    - name: トラブルシューティング
+      items:
+        - name: 認証の問題
+          href: ./domain-joined-authentication-issues.md
+        - name: Zeppelin にサインインできない
+          href: ./domain-joined-zeppelin-signin.md
 - name: リファレンス
   items:
     - name: コード サンプル

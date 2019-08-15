@@ -60,34 +60,48 @@ sections:
               src: media/index/logo_go.svg
             title: Go
         rows:
-          - title: 1 つの言語から別の言語にテキストを翻訳する
+          - title: テキストを翻訳する
             values:
-              - href: quickstart-csharp-translate
-              - href: quickstart-java-translate
-              - href: quickstart-nodejs-translate
-              - href: quickstart-python-translate
-              - href: quickstart-go-translate
+              - href: quickstart-translate?pivots=programming-language-csharp
+              - href: quickstart-translate?pivots=programming-language-java
+              - href: quickstart-translate?pivots=programming-language-nodejs
+              - href: quickstart-translate?pivots=programming-language-python
+              - href: quickstart-translate?pivots=programming-language-go
           - title: 1 つのスクリプトから別のスクリプトにテキストを変換する
             values:
-              - href: quickstart-csharp-transliterate
-              - href: quickstart-java-transliterate
-              - href: quickstart-nodejs-transliterate
-              - href: quickstart-python-transliterate
-              - href: quickstart-go-transliterate
-          - title: テキストの言語を特定する
+              - href: quickstart-transliterate?pivots=programming-language-csharp
+              - href: quickstart-transliterate?pivots=programming-language-java
+              - href: quickstart-transliterate?pivots=programming-language-nodejs
+              - href: quickstart-transliterate?pivots=programming-language-python
+              - href: quickstart-transliterate?pivots=programming-language-go
+          - title: テキスト言語を検出する
             values:
-              - href: quickstart-csharp-detect
-              - href: quickstart-java-detect
-              - href: quickstart-nodejs-detect
-              - href: quickstart-python-detect
-              - href: quickstart-go-detect
+              - href: quickstart-detect?pivots=programming-language-csharp
+              - href: quickstart-detect?pivots=programming-language-java
+              - href: quickstart-detect?pivots=programming-language-nodejs
+              - href: quickstart-detect?pivots=programming-language-python
+              - href: quickstart-detect?pivots=programming-language-go
           - title: 別の翻訳と用法を取得する
             values:
-              - href: quickstart-csharp-dictionary
-              - href: quickstart-java-dictionary
-              - href: quickstart-nodejs-dictionary
-              - href: quickstart-python-dictionary
-              - href: quickstart-go-dictionary
+              - href: quickstart-dictionary?pivots=programming-language-csharp
+              - href: quickstart-dictionary?pivots=programming-language-java
+              - href: quickstart-dictionary?pivots=programming-language-nodejs
+              - href: quickstart-dictionary?pivots=programming-language-python
+              - href: quickstart-dictionary?pivots=programming-language-go
+          - title: 文の長さを決定する
+            values:
+              - href: quickstart-sentences?pivots=programming-language-csharp
+              - href: quickstart-sentences?pivots=programming-language-java
+              - href: quickstart-sentences?pivots=programming-language-nodejs
+              - href: quickstart-sentences?pivots=programming-language-python
+              - href: quickstart-sentences?pivots=programming-language-go
+          - title: サポートされている言語の全一覧を取得する
+            values:
+              - href: quickstart-languages?pivots=programming-language-csharp
+              - href: quickstart-languages?pivots=programming-language-java
+              - href: quickstart-languages?pivots=programming-language-nodejs
+              - href: quickstart-languages?pivots=programming-language-python
+              - href: quickstart-languages?pivots=programming-language-go
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph

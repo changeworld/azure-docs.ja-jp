@@ -162,6 +162,8 @@
       items:
         - name: リソースのトラブルシューティング
           href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hbase/toc.json&bc=/azure/hdinsight/hbase/breadcrumb/toc.json
+        - name: hbase hbck によって不一致が返される
+          href: ./hbase-troubleshoot-hbase-hbck-inconsistencies.md
         - name: 接続リセット後のストレージ例外
           href: ./hbase-troubleshoot-storage-exception-reset.md
         - name: Apache Phoenix のビューにデータがない

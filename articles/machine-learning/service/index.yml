@@ -44,9 +44,9 @@ sections:
         style: unordered
         items:
           - html: <a href="tutorial-1st-experiment-sdk-setup">環境を設定して、最初の ML 実験をトレーニングする。</a>
-          - html: <a href="tutorial-train-models-with-aml">画像分類モデルをトレーニングしてデプロイする</a>。
-          - html: <a href="tutorial-data-prep">データを準備し、自動化された ML を使用してタクシー料金を予測する</b>。</a>
-          - html: <a href="how-to-run-batch-predictions">ML パイプラインを使用する大規模なデータ セットでバッチ予測を実行する</b>。</a>
+          - html: <a href="tutorial-train-models-with-aml">画像分類モデルをトレーニングしてデプロイする。</a>
+          - html: <a href="tutorial-data-prep">データを準備し、自動化された ML を使用してタクシー料金を予測する。</b></a>
+          - html: <a href="how-to-run-batch-predictions">ML パイプラインを使用する大規模なデータ セットでバッチ予測を実行する。</b></a>
   - title: サンプル
     items:
       - type: paragraph
@@ -56,10 +56,10 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: '<a href="https://aka.ms/aml-sdk">メインの Python SDK</a>: コア機能や自動化された機械学習、パイプラインなど'
-          - html: '<a href="https://aka.ms/aml-monitoring-sdk">Monitoring</a> Python SDK: デプロイされた Web サービスでのデータ収集'
-          - html: ビジュアル インターフェイスの<a href="../algorithm-module-reference/module-reference.md">アルゴリズムとモジュールのリファレンス</a>
-          - html: '<a href="https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest">Azure ML CLI</a>: Machine Learning のコマンド ライン インターフェイスの拡張機能'
+          - html: '<a href="https://aka.ms/aml-sdk">メインの Python SDK</a> に関するドキュメント: コア機能、自動化された ML、パイプラインなどの詳細を学習します。'
+          - html: '<a href="https://aka.ms/aml-monitoring-sdk">Monitoring</a> Python SDK に関するドキュメント: デプロイされた Web サービスでデータを収集する方法について学習します。'
+          - html: ビジュアル インターフェイス モジュールの<a href="../algorithm-module-reference/module-reference.md">アルゴリズムとモジュールのリファレンス</a>に関するドキュメント。
+          - html: '<a href="https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest">Azure ML CLI</a>: ML のコマンドライン インターフェイスの拡張機能について学習します。'
   - title: その他の Azure Machine Learning テクノロジ
     items:
       - type: list

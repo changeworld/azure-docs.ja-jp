@@ -22,7 +22,7 @@ sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: 矢印リンクを選択すると、Azure API for FHIR プレビューでヘルスケア相互作用性を強化する方法を確認できます <img src="media/index/link.jpg" height="15" width="15"></img>。
+        text: 矢印リンクを選択すると、Azure API for FHIR プレビューで Azure のヘルスケア相互運用性を強化する方法を確認できます <img src="media/index/link.jpg" height="15" width="15"></img>。
       - type: table
         style: dataMatrix
         columns:

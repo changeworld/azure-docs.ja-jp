@@ -14,9 +14,11 @@
 - name: チュートリアル
   items:
     - name: Immersive Reader の起動 (Node.js)
-      href: tutorial.md
+      href: tutorial-nodejs.md
+    - name: イマーシブ リーダーの起動 (Python)
+      href: tutorial-python.md
     - name: Immersive Reader への画像 (Swift)
-      href: ios-picture-immersive-reader-tutorial.md
+      href: tutorial-ios-picture-immersive-reader.md
 - name: 操作方法
   items:
     - name: Azure Active Directory 認証

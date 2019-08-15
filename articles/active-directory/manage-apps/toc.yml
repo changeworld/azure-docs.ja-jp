@@ -284,6 +284,8 @@
                   href: application-proxy-configure-single-sign-on-on-premises-apps.md
             - name: 発行に関するチュートリアル
               items:
+                - name: Power BI との統合
+                  href: application-proxy-integrate-with-power-bi.md
                 - name: Cloud App Security との統合
                   href: application-proxy-integrate-with-microsoft-cloud-application-security.md
                 - name: リモート デスクトップとの統合
