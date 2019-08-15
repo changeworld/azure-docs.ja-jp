@@ -1,7 +1,7 @@
 ---
 title: コグニティブ検索と AI 強化の概要 - Azure Search
 description: 認知スキルと AI アルゴリズムを使用したコンテンツ抽出、自然言語処理 (NLP) および画像処理を実行することにより、Azure Search インデックスで検索可能なコンテンツを作成します。
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/28/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d1cb0b687b97ce83d47aa0635f8999ced8594226
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 524ab33fc1d6a88620077a28ec70f09d55b06106
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841311"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69015792"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Azure Search での "コグニティブ検索" とは?
 

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 13d698cfbc0241248a77fd5f3b148a9393320c64
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7de54f7da8cef5942a8d8f41031eaf3e2565580
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076000"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846235"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines 上の SQL Server 向け Azure Key Vault 統合の構成 (Resource Manager)
 
@@ -56,7 +56,7 @@ AKV 統合はプロビジョニング時に有効にできます。または、�
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-既存の SQL Server 仮想マシンの場合、[[SQL 仮想マシン リソース]](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) を開き、 **[設定]** の **[セキュリティ]** を選択します。 **[有効にする]** を選択し、Azure Key Vault の統合を有効にします。 
+既存の SQL Server 仮想マシンの場合、[[SQL 仮想マシン リソース]](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) を開き、 **[設定]** の **[セキュリティ]** を選択します。 **[有効にする]** を選択し、Azure Key Vault の統合を有効にします。 
 
 ![既存の VM 用の SQL AKV 統合](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-rm-akv-existing-vms.png)
 

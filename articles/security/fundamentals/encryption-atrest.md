@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: bc305938801a4edcf32e36ce57f76079f33c5bf8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c91c8de35dcf3f1bc8fd5f41bd2356336c3fe450
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727394"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927962"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -161,7 +161,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 保存データの暗号化または復号化で使用するキーを取得するには、Resource Manager サービス インスタンスとして実行されるサービス ID は UnwrapKey (複合化のためのキーを取得するため) と WrapKey (新しいキーの作成時にキー コンテナーにキーを挿入するため) を取得する必要があります。
 
 >[!NOTE]
->Key Vault の承認の詳細については、[Azure Key Vault ドキュメント](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)のキー コンテナーのセキュリティ保護に関するページを参照してください。
+>Key Vault の承認の詳細については、[Azure Key Vault ドキュメント](../../key-vault/key-vault-secure-your-key-vault.md)のキー コンテナーのセキュリティ保護に関するページを参照してください。
 
 **長所**
 
@@ -237,14 +237,14 @@ IaaS アプリケーションでは、可能な限り、Azure Disk Encryption �
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-サービスとしての Azure インフラストラクチャ (IaaS) 機能を使用しているお客様は、Azure Disk Encryption を通して IaaS 仮想マシンの保存時の暗号化を実行できます。 Azure Disk Encryption の詳細については、[Azure Disk Encryption のドキュメント](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)を参照してください。
+サービスとしての Azure インフラストラクチャ (IaaS) 機能を使用しているお客様は、Azure Disk Encryption を通して IaaS 仮想マシンの保存時の暗号化を実行できます。 Azure Disk Encryption の詳細については、[Azure Disk Encryption のドキュメント](../azure-security-disk-encryption-overview.md)を参照してください。
 
 #### <a name="azure-storage"></a>Azure Storage
 
 すべての Azure Storage サービス (Blob Storage、Queue Storage、Table Storage、Azure Files) では、サーバー側の保存データの暗号化がサポートされます。一部のサービスではさらにユーザー管理キーとクライアント側の暗号化がサポートされます。 
 
-- サーバー側:すべての Azure Storage Services は、既定でサービス管理キーを使用してサーバー側の暗号化を有効にしています。この処理はアプリケーションに対して透過的です。 詳細については、「[保存データ向け Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption)」をご覧ください。 Azure Blob Storage と Azure Files は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーもサポートしています。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)」を参照してください。
-- クライアント側:Azure BLOB、Azure テーブル、および Azure キューは、クライアント側の暗号化をサポートしています。 クライアント側の暗号化を使用した場合、お客様は暗号化された BLOB としてデータをアップロードします。 キー管理は、ユーザーによって行われます。 詳しくは、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://docs.microsoft.com/azure/storage/storage-client-side-encryption)」をご覧ください。
+- サーバー側:すべての Azure Storage Services は、既定でサービス管理キーを使用してサーバー側の暗号化を有効にしています。この処理はアプリケーションに対して透過的です。 詳細については、「[保存データ向け Azure Storage Service Encryption](../../storage/common/storage-service-encryption.md)」をご覧ください。 Azure Blob Storage と Azure Files は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーもサポートしています。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](../../storage/common/storage-encryption-keys-portal.md)」を参照してください。
+- クライアント側:Azure BLOB、Azure テーブル、および Azure キューは、クライアント側の暗号化をサポートしています。 クライアント側の暗号化を使用した場合、お客様は暗号化された BLOB としてデータをアップロードします。 キー管理は、ユーザーによって行われます。 詳しくは、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](../../storage/common/storage-client-side-encryption.md)」をご覧ください。
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 

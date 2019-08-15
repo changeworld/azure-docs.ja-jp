@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53b315b87200b37cda215a29a65be9babaf54f43
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3c5975b57b6f960badf747e33deb238adf260199
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795195"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967209"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>マルチテナント アプリケーションに適切なフェデレーション プロトコルを選択する
 
@@ -72,7 +72,7 @@ OAuth 2.0 は、認可用の[業界標準](https://oauth.net/2/)プロトコル�
 
 Security Assertion Markup Language (SAML) は、通常、Web アプリケーションに使用します。 概要については、[Azure での SAML プロトコルの使用方法](../develop/active-directory-saml-protocol-reference.md)に関するページをご覧ください。 
 
-Web Services Federation (WSFed) は、一般に、.Net プラットフォームを使用して開発された Web アプリケーションに使用される[業界標準](http://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html)です。
+Web Services Federation (WSFed) は、一般に、.Net プラットフォームを使用して開発された Web アプリケーションに使用される[業界標準](https://docs.oasis-open.org/wsfed/federation/v1.2/ws-federation.html)です。
 
 ### <a name="benefits"></a>メリット
 

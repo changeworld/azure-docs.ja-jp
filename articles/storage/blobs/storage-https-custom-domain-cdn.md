@@ -1,20 +1,19 @@
 ---
 title: Azure CDN を使用して HTTPS 経由でカスタム ドメインを使用した BLOB にアクセスする
 description: Azure CDN と Blob ストレージを統合することで､カスタム ドメインを使用した BLOB に HTTPS 経由でアクセスする方法について説明します
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: normesta
-ms.reviewer: seguler
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: da3a6dcb0d125ac4666bc375e843c57cf12fb2fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3386d04cd3316b38a094524d0d5d4f3c5ab36bb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148403"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986852"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Azure CDN を使用して HTTPS 経由でカスタム ドメインを使用した BLOB にアクセスする
 
@@ -41,7 +40,7 @@ Azure CDN は、転送中の Web アプリケーション データのプライ�
 
 ## <a name="shared-access-signatures"></a>共有アクセス署名
 
-既定では､Blob ストレージ エンドポイントは匿名の読み取りアクセスを許可しません｡ 匿名の読み取りアクセスを許可しないよう Blob ストレージ エンドポイントを設定している場合は、ご利用のカスタム ドメインに対するそれぞれの要求で [Shared Access Signature](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) トークンを提供する必要があります｡ 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
+既定では､Blob ストレージ エンドポイントは匿名の読み取りアクセスを許可しません｡ 匿名の読み取りアクセスを許可しないよう Blob ストレージ エンドポイントを設定している場合は、ご利用のカスタム ドメインに対するそれぞれの要求で [Shared Access Signature](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) トークンを提供する必要があります｡ 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
 
 Azure CDN では、Shared Access Signature トークンに追加されたすべての制限が考慮されません。 たとえば、すべての Shared Access Signature トークンが期限切れになります。 それでも期限切れの Shared Access Signature 付きのコンテンツには、Azure CDN エッジ ノードからそのコンテンツが消去されるまで引き続きアクセスできます。 Azure CDN 上でデータがキャッシュされる期間は、キャッシュ応答ヘッダーを設定することで制御できます｡ この方法については､[Azure CDN での Azure Storage BLOB の有効期限の管理](../../cdn/cdn-manage-expiration-of-blob-content.md)に関するページを参照してください｡
 

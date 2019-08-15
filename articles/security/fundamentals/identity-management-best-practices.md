@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 46850ad430aa5fb8ad25a71515bdd640855350c2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727257"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934687"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 この記事では、Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスについて説明します。 このベスト プラクティスは、[Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -84,8 +84,8 @@ Active Directory フェデレーション サービス (AD FS) または他の I
 **詳細**: 適切な機能を使用して認証をサポートします。
 
   - 従業員に対しては Azure AD
-  - ゲスト ユーザーと外部のパートナーに対しては [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/)
-  - 顧客がアプリケーションを使用するときにサインアップ、サインイン、プロファイル管理を行う方法を制御するには [Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/)
+  - ゲスト ユーザーと外部のパートナーに対しては [Azure AD B2B](../../active-directory/b2b/index.yml)
+  - 顧客がアプリケーションを使用するときにサインアップ、サインイン、プロファイル管理を行う方法を制御するには [Azure AD B2C](../../active-directory-b2c/index.yml)
 
 オンプレミスの ID とクラウドの ID を統合していない組織では、アカウント管理の際により多くのオーバーヘッドが発生する可能性があります。 このオーバーヘッドによって、ミスやセキュリティ違反の可能性が高まります。
 

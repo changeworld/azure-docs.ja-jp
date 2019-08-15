@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 97e3fcb732e85f8c190a0d6607d85a6ffc8d36a7
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 6725bbc1978109d2b690a98e2cf98cc8c8c25141
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370746"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033014"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>チュートリアル:Azure Machine Learning で MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする
 
@@ -100,7 +100,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```python
 # load workspace configuration from the config.json file in the current folder.
 ws = Workspace.from_config()
-print(ws.name, ws.location, ws.resource_group, ws.location, sep='\t')
+print(ws.name, ws.location, ws.resource_group, sep='\t')
 ```
 
 ### <a name="create-an-experiment"></a>実験の作成

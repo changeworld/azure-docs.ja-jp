@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 05/17/2019
-ms.openlocfilehash: 0721542811709e9b938fea3f31bc2a0a28ecdc74
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 08/08/2019
+ms.openlocfilehash: 7c6b85bd1f5935fb3722f82efcdfc921fc9cb2ec
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358777"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990553"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 
@@ -25,7 +25,7 @@ Azure Machine Learning service で使用される Azure ストレージ アカ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](setup-create-workspace.md)を参照してください。
+* Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
 
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
@@ -84,17 +84,13 @@ for name, ds in datastores.items():
         az login
         ```
 
-    1. Azure Machine Learning 拡張機能をインストールするには、次のコマンドを使用します。
-
-        ```azurecli-interactive
-        az extension add -n azure-cli-ml 
-        ```
-
     1. 新しいキーを使用するようにワークスペースを更新するには、次のコマンドを使用します。 `myworkspace` をお使いの Azure Machine Learning ワークスペース名に置き換え、`myresourcegroup` を、そのワークスペースを含む Azure リソース グループの名前に置き換えます。
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
         ```
+
+        [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
 
         このコマンドにより、ワークスペースで使用する Azure ストレージ アカウントの新しいキーが自動的に同期されます。
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 63b64df457af5b7d3d2bd5901f73d89ccd3c913a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82e40f756e0d8e0b5627b7c8856bd25fa98adbcb
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65506970"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932298"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 
 REST 呼び出しをサポートしているプログラミング言語を使用すれば、Azure Analysis Services 表形式モデルでの非同期データ更新操作を実行できます。 これには、クエリのスケールアウトのための読み取り専用レプリカの同期が含まれます。 
 
-データ更新操作は、データ ボリュームや、パーティションを使用した最適化のレベルなどの数多くの要因によって、ある程度時間がかかる場合があります。これらの操作は、従来は [TOM](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (表形式オブジェクト モデル)、[PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) コマンドレット、または [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) (表形式モデル スクリプト言語) などの既存の方法を使用して呼び出されていました。 しかし、多くの場合、これらの方法は信頼性が低く実行時間が長い HTTP 接続を必要とします。
+データ更新操作は、データ ボリュームや、パーティションを使用した最適化のレベルなどの数多くの要因によって、ある程度時間がかかる場合があります。これらの操作は、従来は [TOM](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabular Object Model)、[PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) コマンドレット、または [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (Tabular Model Scripting Language) などの既存のメソッドを使用して呼び出していました。 しかし、多くの場合、これらの方法は信頼性が低く実行時間が長い HTTP 接続を必要とします。
 
 Azure Analysis Services 用の REST API なら、データ更新操作を非同期で実行できます。 REST API を使用すれば、クライアント アプリケーションからの実行時間の長い HTTP 接続は不要になります。 他にも、自動の再試行やバッチ処理されたコミットなどの信頼性を高める組み込み機能もあります。
 
@@ -100,9 +100,9 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 
 | Name             | Type  | 説明  |既定値  |
 |------------------|-------|--------------|---------|
-| `Type`           | 列挙型  | 実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、defragment) と一致します。 add 型はサポートされていません。      |   automatic      |
+| `Type`           | 列挙型  | 実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、defragment) と一致します。 add 型はサポートされていません。      |   automatic      |
 | `CommitMode`     | 列挙型  | オブジェクトがバッチでコミットされるかどうか、または完了する時間のみを決定します。 Mode には default、transactional、partialBatch が含まれています。  |  transactional       |
-| `MaxParallelism` | int   | この値は、複数の処理コマンドを並列に実行するスレッドの最大数を決定します。 この値は、TMSL の [Sequence コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl)やその他のメソッドで設定できる MaxParallelism プロパティと一致します。       | 10        |
+| `MaxParallelism` | int   | この値は、複数の処理コマンドを並列に実行するスレッドの最大数を決定します。 この値は、TMSL の [Sequence コマンド](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl)やその他のメソッドで設定できる MaxParallelism プロパティと一致します。       | 10        |
 | `RetryCount`     | int   | 失敗前の操作の再試行回数を示します。      |     0    |
 | `Objects`        | Array | 処理されるオブジェクトの配列です。 各オブジェクトには、テーブル全体を処理する時には "table" が、またはパーティションを処理する時には "table" と "partition" が含まれます。 オブジェクトが指定されていない場合は、モデル全体が更新されます。 |   モデル全体を処理      |
 

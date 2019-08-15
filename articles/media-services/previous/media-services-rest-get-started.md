@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 76eae5fa049ed1fbf7195277613867aca63c1082
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0f9b2c974c0a095719973b1c6173d682718dbbf
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64867633"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69014870"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要  
 
@@ -911,7 +911,7 @@ MPEG DASH をストリーミングするには、"/manifest" の後に (format=m
 
 
 ## <a id="play"></a>コンテンツの再生
-ビデオをストリーミングするには、 [Azure Media Services Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html)を使用します。
+ビデオをストリーミングするには、 [Azure Media Services Player](https://aka.ms/azuremediaplayer)を使用します。
 
 プログレッシブ ダウンロードをテストするには、ブラウザー (IE、Chrome、Safari など) に URL を貼り付けます。
 

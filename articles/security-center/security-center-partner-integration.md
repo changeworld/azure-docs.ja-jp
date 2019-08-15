@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 14bf7dc62bb97cb14232660db6d0649e3d77d4fa
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 2c43a3c046243c4802fb433f3b755cee158002b6
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662933"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950558"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -56,7 +56,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
    ![Security Center の概要](./media/security-center-partner-integration/overview.png)
 
-**[セキュリティ ソリューション]** では、統合された Azure セキュリティ ソリューションの正常性に関する情報を表示し、基本的な管理タスクを実行することができます。 また、共通イベント形式 (CEF) の Azure Active Directory Identity Protection のアラートやファイアウォール ログなど、他の種類のセキュリティ データ ソースを接続することもできます。
+**[セキュリティ ソリューション]** では、統合された Azure セキュリティ ソリューションの正常性に関する情報を表示し、基本的な管理タスクを実行することができます。
 
 ### <a name="connected-solutions"></a>接続済みソリューション
 
@@ -97,8 +97,6 @@ Security Center は、Azure で実行されていても Security Center に接�
 ソリューションの下の **[接続]** を選択して、Security Center と統合し、セキュリティのアラートが通知されるようにします。
 
 ![検出されたソリューション](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
-
-Security Center は、共通イベント形式 (CEF) のログを転送することができる、サブスクリプションにデプロイされたソリューションも検出します。 Security Center に、CEF ログを使用する[セキュリティ ソリューションを接続](quick-security-solutions.md)する方法を参照してください。
 
 ### <a name="add-data-sources"></a>データ ソースの追加
 

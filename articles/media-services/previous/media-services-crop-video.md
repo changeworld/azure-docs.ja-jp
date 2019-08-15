@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: anilmur;juliako;
-ms.openlocfilehash: 9a81050fca935f688f2ff58cb04a148bf676f04b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: anilmur
+ms.reviewer: juliako
+ms.openlocfilehash: 03d68cc3a60abba8b7189a9d03fbc21d7606f736
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61217175"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69016626"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Media Encoder Standard を使用してビデオをトリミングする  
 

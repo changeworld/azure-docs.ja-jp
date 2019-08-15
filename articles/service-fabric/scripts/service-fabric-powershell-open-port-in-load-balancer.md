@@ -10,17 +10,16 @@ tags: azure-service-management
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 05/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: acf26a9ed3c2f2f569c453d5a6d01c913e63fa2e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 8e6a0b7f273df96cff5cc9ce1081ddc59eb49382
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597538"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035539"
 ---
 # <a name="open-an-application-port-in-the-azure-load-balancer"></a>Azure ロード バランサーのアプリケーション ポートを開く
 

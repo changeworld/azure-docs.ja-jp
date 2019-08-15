@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2d30d044a26e6a092eba267f223be9b10c3a238b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c9d2acf3e58d233bd789e335c585f61511b975d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075859"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846205"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 Virtual Machines の自動バックアップ (Resource Manager)
 
@@ -85,7 +85,7 @@ Resource Manager デプロイ モデルで新しい SQL Server 2014 Virtual Mach
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-既存の SQL Server 仮想マシンの場合、[[SQL 仮想マシン リソース]](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) に移動し、 **[バックアップ]** を選択します。 
+既存の SQL Server 仮想マシンの場合、[[SQL 仮想マシン リソース]](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) に移動し、 **[バックアップ]** を選択します。 
 
 ![既存の VM の SQL 自動バックアップ](./media/virtual-machines-windows-sql-automated-backup/azure-sql-rm-autobackup-existing-vms.png)
 

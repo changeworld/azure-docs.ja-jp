@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: 7fbe36d9ee15ffbdaa2ba978aabf3cc4f5db3889
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82dd77e8ea36610244b97c1701209d5aa3be2869
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694073"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69017782"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Azure REST API を使用した Azure Network Watcher との接続のトラブルシューティング
 
@@ -50,7 +50,7 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>仮想マシンの取得
 
-次のスクリプトを実行して、仮想マシンを取得します。 この情報は、接続を実行するために必要となります。 
+次のスクリプトを実行して、仮想マシンを取得します。 この情報は、接続を実行するために必要となります。
 
 次のコードには、次の変数の値が必要です。
 
@@ -90,7 +90,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/Database0"
+$destinationResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/Database0"
 $destinationPort = "0"
 $requestBody = @"
 {
@@ -99,7 +99,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'resourceId': '${destinationAddress}',
+    'resourceId': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -206,7 +206,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "13.107.21.200"
+$destinationResourceId = "13.107.21.200"
 $destinationPort = "80"
 $requestBody = @"
 {
@@ -215,7 +215,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'address': '${destinationAddress}',
+    'address': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -302,7 +302,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "https://bing.com"
+$destinationResourceId = "https://bing.com"
 $destinationPort = "0"
 $requestBody = @"
 {
@@ -311,7 +311,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'address': '${destinationAddress}',
+    'address': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -389,7 +389,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "https://build2017nwdiag360.blob.core.windows.net/"
+$destinationResourceId = "https://build2017nwdiag360.blob.core.windows.net/"
 $destinationPort = "0"
 $requestBody = @"
 {
@@ -398,7 +398,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'address': '${destinationAddress}',
+    'address': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -470,17 +470,3 @@ null
 [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認します。
 
 [IP フロー検証の確認](diagnose-vm-network-traffic-filtering-problem.md)に関する記事を参照して、VM で送受信される特定のトラフィックが許可されているかどうかを調べます。
-
-
-
-
-
-
-
-
-
-
-
-
-
-

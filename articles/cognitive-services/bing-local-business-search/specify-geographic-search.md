@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: e47a2ab8db17089773fd9a439b6dff225d6a8a29
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: aec50155089b12122f0c438aecaf8efd737e59f7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423302"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881687"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>地理的境界を使用して Bing Local Business Search API からの結果をフィルター処理する
 

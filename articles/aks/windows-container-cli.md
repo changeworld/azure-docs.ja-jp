@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: 305901007180cfb197cf5c0dfb338800449560a1
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: b96d933385c67600c9d553cc8755c4e734427a67
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68382029"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018864"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>プレビュー - Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -134,7 +134,7 @@ az aks create \
     --name myAKSCluster \
     --node-count 1 \
     --enable-addons monitoring \
-    --kubernetes-version 1.14.1 \
+    --kubernetes-version 1.14.5 \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
@@ -159,7 +159,7 @@ az aks nodepool add \
     --os-type Windows \
     --name npwin \
     --node-count 1 \
-    --kubernetes-version 1.14.1
+    --kubernetes-version 1.14.5
 ```
 
 上記のコマンドでは、*npwin* という名前の新しいノード プールが作成され、それが *myAKSCluster* に追加されます。 Windows Server コンテナーを実行するノード プールを作成する場合、*node-vm-size* の既定値は *Standard_D2s_v3* となります。 *node-vm-size* パラメーターを設定することを選択した場合は、[制限された VM サイズ][restricted-vm-sizes]の一覧を確認してください。 推奨される最小サイズは、*Standard_D2s_v3* です。 上記のコマンドではまた、`az aks create` の実行時に作成された既定の VNET 内の既定のサブネットが使用されます。
@@ -188,8 +188,8 @@ kubectl get nodes
 
 ```
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
-aksnpwin987654                      Ready    agent   108s   v1.14.1
+aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.5
+aksnpwin987654                      Ready    agent   108s   v1.14.5
 ```
 
 ## <a name="run-the-application"></a>アプリケーションの実行

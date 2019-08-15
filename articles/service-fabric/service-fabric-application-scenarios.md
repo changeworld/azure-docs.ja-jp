@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 4/24/2019
 ms.author: atsenthi
 ms.openlocfilehash: 6563d6e7c454f44e1a70d725191e56d3f90315c2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67052606"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric アプリケーションのシナリオ

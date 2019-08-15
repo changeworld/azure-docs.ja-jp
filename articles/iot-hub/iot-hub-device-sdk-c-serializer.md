@@ -1,19 +1,19 @@
 ---
 title: C 用 Azure IoT device SDK – シリアライザー | Microsoft Docs
 description: C 用 Azure IoT device SDK でシリアライザー ライブラリを使用し、IoT Hub と通信するデバイス アプリを作成する方法。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 09/06/2016
-ms.author: yizhon
-ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: robinsh
+ms.openlocfilehash: a18f52f0d0979477ff8d6de6745694676f4b4d0e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399234"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883164"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー
 

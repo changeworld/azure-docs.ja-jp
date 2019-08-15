@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e0955ef2a52a6313f0449b956229e03f0a5b5e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6819bb32eecf8477e2c0727b50641858db21c784
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038450"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035919"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 アプリケーション リソース内にあるレプリカの詳細を取得し、指定されたサービスのレプリカを一覧表示します。

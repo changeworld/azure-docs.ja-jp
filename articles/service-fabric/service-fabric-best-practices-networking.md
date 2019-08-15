@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "66237322"
 ---
 # <a name="networking"></a>ネットワーク

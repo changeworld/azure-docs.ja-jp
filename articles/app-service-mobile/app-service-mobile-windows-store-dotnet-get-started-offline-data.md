@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
 ms.openlocfilehash: 4970a80b911a1efbc308d48ac4b8a50f774b4d04
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67551927"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Windows アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**の各サービスを使用して、継続的インテグレーション/継続的デリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**サービスを使用してアプリの状態と使用状況を監視し、**プッシュ** サービスを使用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-offline-data) を今すぐチェックしてください。
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-offline-data) を今すぐチェックしてください。
 >
 
 ## <a name="overview"></a>概要

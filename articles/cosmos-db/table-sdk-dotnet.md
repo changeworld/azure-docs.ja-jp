@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: db7cc556525ab57f14984232bf1797764865fca3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cbab92c85e5791e43e9d7f60de975c27a77c62d3
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606264"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013805"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API:ダウンロードおよびリリース ノート
 
@@ -27,7 +27,7 @@ ms.locfileid: "65606264"
 |   |   |
 |---|---|
 |**SDK のダウンロード**|[NuGet](https://aka.ms/acdbtablenuget)|
-|**API ドキュメント**|[.NET API リファレンス ドキュメント](https://aka.ms/acdbtableapiref)|
+|**API ドキュメント**|[.NET API リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table?view=azure-dotnet)|
 |**クイックスタート**|[Azure Cosmos DB:.NET と Table API を使用したアプリのビルド](create-table-dotnet.md)|
 |**チュートリアル**|[Azure Cosmos DB:.NET での Table API を使用した開発](tutorial-develop-table-dotnet.md)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=40779)|
@@ -84,7 +84,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 提供終了になった SDK を使用した Azure Cosmos DB への要求は、サービスによって拒否されます。
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
 | [2.1.0](#2.1.0) |2019 年 1 月 22 日|2020 年 4 月 1 日 |
 | [2.0.0](#2.0.0) |2018 年 9 月 26 日|2020 年 3 月 1 日 |

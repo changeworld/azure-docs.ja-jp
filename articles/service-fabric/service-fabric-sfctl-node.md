@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e5b5876fa6277d1bad0989c543de667f75a066c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9d41f978dd6a87287d8743e321acf35ff4909544
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258724"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034980"
 ---
 # <a name="sfctl-node"></a>sfctl node
 クラスターを形成するノードを管理します。

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67181115"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>テンプレートを使用して仮想マシンにタグを付ける

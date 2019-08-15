@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8d1f974b7fea72bede2ead2e9d971419d5e83cb2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4267b75be72c1d162b4abaf7184afcdd02c38720
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087525"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68943105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>チュートリアル:Azure Active Directory と Vibe HCM の統合
 
@@ -101,7 +101,7 @@ Vibe HCM で Azure AD シングル サインオンを構成するには、次の
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4.  **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
+4. **IDP** 開始モードでアプリケーションを構成する場合は、アプリケーションが Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
 
     ![[Vibe HCM のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
@@ -174,7 +174,7 @@ Vibe HCM で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-vibe-hcm-test-user"></a>Vibe HCM のテスト ユーザーの作成
 
-このセクションでは、Vibe HCM で Britta Simon というユーザーを作成します。  [Vibe HCM サポート チーム](mailto:support@vibehcm.com)と連携して、Vibe HCM プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Vibe HCM で Britta Simon というユーザーを作成します。 [Vibe HCM サポート チーム](mailto:support@vibehcm.com)と連携して、Vibe HCM プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

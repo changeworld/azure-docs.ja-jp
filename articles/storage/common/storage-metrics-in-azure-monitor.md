@@ -1,20 +1,19 @@
 ---
 title: Azure Monitor の Azure Storage メトリック | Microsoft Docs
 description: Azure Monitor から提供される新しいメトリックについて説明します。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 8b091ecce98a626f18fe6547445d898b6710e1a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e31ad78e24f329eb46cd85ba4a5962442a216779
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510545"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844832"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 

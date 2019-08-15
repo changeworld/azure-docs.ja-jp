@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 6714beae690e23c686fc08b88e93044ae3901c89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: willzhan
+ms.reviewer: Mingfeiy;rajputam;Juliako
+ms.openlocfilehash: 4d4823e8dcce0d1296ebe39a0b7a7c4bbc180317
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61245028"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015429"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Axinom を使用して Azure Media Services に Widevine ライセンスを配信する 
 > [!div class="op_single_selector"]

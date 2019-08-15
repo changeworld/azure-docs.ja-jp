@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: asgang
-ms.openlocfilehash: 4a262a3a0c32516988890a6afc6eef34d8655c89
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 068464b8a3919d833418c8f3916ccf5c54835c6f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671873"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934541"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure VM に追加されたディスクのレプリケーションを有効にする
 
@@ -50,6 +50,6 @@ VM に追加したディスクのレプリケーションの有効化は、マ�
 
 
 
-# <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 
 テスト フェールオーバーの実行に関する[詳細を確認](site-recovery-test-failover-to-azure.md)する。

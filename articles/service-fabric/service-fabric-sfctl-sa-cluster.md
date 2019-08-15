@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: a652439729e538b3ce2545ab3b09284e6645ce9d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 902ebab5dc12d7649edd0ed6e594e663e5332ce3
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556391"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035240"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 スタンドアロンの Service Fabric クラスターを管理します。

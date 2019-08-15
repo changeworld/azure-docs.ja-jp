@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a2c186fab28c96fa743e7bbf1701dba9de3f742d
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 69b25f22d448436db5e906a3b56b5e50ec412b40
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726930"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934674"
 ---
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
 ## <a name="introduction"></a>はじめに
@@ -41,17 +41,17 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
 
 このホワイト ペーパーでは、Microsoft Azure クラウド プラットフォーム内での Azure で運用可能なセキュリティに対する Microsoft の取り組みと、次のサービスについて説明します。
-1.  [Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
+1.  [Azure Monitor](../../azure-monitor/index.yml)
 
-2.  [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+2.  [Azure Security Center](../../security-center/security-center-intro.md)
 
-3.  [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
+3.  [Azure Monitor](../../azure-monitor/overview.md)
 
-4.  [Azure Network watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+4.  [Azure Network watcher](../../network-watcher/network-watcher-monitoring-overview.md)
 
 5.  [Azure Storage analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
-6.  [Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
+6.  [Azure Active directory](../../active-directory/fundamentals/active-directory-whatis.md)
 
 
 ## <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure Monitor ログ
@@ -100,21 +100,21 @@ Azure Monitor スイートの製品およびサービスの一部である [Azur
 Azure Backup で保護されるデータは、特定の地域リージョンにあるバックアップ コンテナーに格納されます。 データは同じリージョン内でレプリケートされます。コンテナーのタイプによっては、回復性を高めるために別のリージョンにレプリケートされることもあります。
 
 ### <a name="management-solutions"></a>管理ソリューション
-[Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft のクラウド ベースの IT 管理ソリューションです。
+[Azure Monitor](../../security-center/security-center-intro.md) は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft のクラウド ベースの IT 管理ソリューションです。
 
 
-[管理ソリューション](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)は、1 つ以上の Azure Monitor サービスを使用する特定の管理シナリオが実装された、事前にパッケージ化された一連のロジックです。 さまざまなソリューションが Microsoft とパートナーによって提供されており、Azure サブスクリプションに簡単に追加して、Azure Monitor への投資の価値を高めることができます。 パートナーは、アプリケーションとサービスをサポートする独自のソリューションを作成し、Azure Marketplace またはクイック スタート テンプレートを使用してユーザーに提供できます。
+[管理ソリューション](../../monitoring/monitoring-solutions.md)は、1 つ以上の Azure Monitor サービスを使用する特定の管理シナリオが実装された、事前にパッケージ化された一連のロジックです。 さまざまなソリューションが Microsoft とパートナーによって提供されており、Azure サブスクリプションに簡単に追加して、Azure Monitor への投資の価値を高めることができます。 パートナーは、アプリケーションとサービスをサポートする独自のソリューションを作成し、Azure Marketplace またはクイック スタート テンプレートを使用してユーザーに提供できます。
 
 
 ![管理ソリューション](./media/operational-security/azure-operational-security-fig4.png)
 
-複数のサービスを使用して追加の機能を提供するソリューションの良い例は、[更新管理ソリューション](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management)です。 このソリューションでは、Windows と Linux 用の [Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) エージェントを使用して、各エージェントから必要な更新プログラムの情報を収集します。 このデータは、付属のダッシュボードを使ってデータを分析できる Azure Monitor ログ リポジトリに書き込まれます。
+複数のサービスを使用して追加の機能を提供するソリューションの良い例は、[更新管理ソリューション](../../automation/automation-update-management.md)です。 このソリューションでは、Windows と Linux 用の [Azure Monitor ログ](../../log-analytics/log-analytics-queries.md) エージェントを使用して、各エージェントから必要な更新プログラムの情報を収集します。 このデータは、付属のダッシュボードを使ってデータを分析できる Azure Monitor ログ リポジトリに書き込まれます。
 
-必要な更新プログラムをインストールするために、デプロイ作成時に [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) の Runbook が使用されます。 このプロセスはすべてポータルで管理するため、根底にある詳細について配慮する必要はありません。
+必要な更新プログラムをインストールするために、デプロイ作成時に [Azure Automation](../../automation/automation-intro.md) の Runbook が使用されます。 このプロセスはすべてポータルで管理するため、根底にある詳細について配慮する必要はありません。
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 サービス内では、Azure サブスクリプションに対してだけでなく[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)に対してもポリシーを定義できるので、より細かい定義が行えます。
+Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 サービス内では、Azure サブスクリプションに対してだけでなく[リソース グループ](../../azure-resource-manager/resource-group-overview.md#resource-groups)に対してもポリシーを定義できるので、より細かい定義が行えます。
 
 ### <a name="security-policies-and-recommendations"></a>セキュリティ ポリシーと推奨事項
 
@@ -165,7 +165,7 @@ Azure Security Center は、クラッシュ ダンプ ファイルの一時的�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-[Azure Monitor ログのセキュリティ](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)と監査ソリューションによって、IT 管理者はすべてのリソースを能動的に監視できるようになるため、セキュリティ インシデントの影響を最小限に抑えることができます。 Azure Monitor ログ Security and Audit には、リソースを監視するために利用できるセキュリティ ドメインがあります。 セキュリティ ドメインによって各オプションへの速やかなアクセスが可能になるほか、セキュリティを監視するうえで、次に示すドメインの監視対象がさらに詳細になります。
+[Azure Monitor ログのセキュリティ](../../security-center/security-center-monitoring.md)と監査ソリューションによって、IT 管理者はすべてのリソースを能動的に監視できるようになるため、セキュリティ インシデントの影響を最小限に抑えることができます。 Azure Monitor ログ Security and Audit には、リソースを監視するために利用できるセキュリティ ドメインがあります。 セキュリティ ドメインによって各オプションへの速やかなアクセスが可能になるほか、セキュリティを監視するうえで、次に示すドメインの監視対象がさらに詳細になります。
 
 -   マルウェアの評価
 -   [Update Assessment] \(更新の評価)
@@ -195,11 +195,11 @@ Azure 診断ログは、リソースによって出力され、そのリソー�
 
 たとえば、Windows イベント システム ログは、VM、BLOB、テーブルの診断ログのカテゴリの 1 つであり、キューのログは、ストレージ アカウントの診断ログのカテゴリです。
 
-診断ログは、[アクティビティ ログ (以前は監査ログまたは操作ログと呼ばれていたもの)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) とは異なります。 アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作を調査できます。 診断ログでは、リソース自体が実行した操作を調査できます。
+診断ログは、[アクティビティ ログ (以前は監査ログまたは操作ログと呼ばれていたもの)](../../azure-monitor/platform/activity-logs-overview.md) とは異なります。 アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作を調査できます。 診断ログでは、リソース自体が実行した操作を調査できます。
 
 ### <a name="metrics"></a>メトリック
 
-Azure Monitor では、テレメトリを使用して、Azure のワークロードのパフォーマンスと正常性を視覚的に確認できます。 Azure テレメトリ データの種類の中でも最も重要なのは、Azure リソースのほとんどから出力されるメトリックであり、これはパフォーマンス カウンターとも呼ばれます。 Azure Monitor では、この[メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)を複数の方法で構成して使用することで、監視やトラブルシューティングを実行できます。 テレメトリの重要なソースであるメトリックを使用すると、次の作業を行うことができます。
+Azure Monitor では、テレメトリを使用して、Azure のワークロードのパフォーマンスと正常性を視覚的に確認できます。 Azure テレメトリ データの種類の中でも最も重要なのは、Azure リソースのほとんどから出力されるメトリックであり、これはパフォーマンス カウンターとも呼ばれます。 Azure Monitor では、この[メトリック](../../monitoring/monitoring-data-collection.md)を複数の方法で構成して使用することで、監視やトラブルシューティングを実行できます。 テレメトリの重要なソースであるメトリックを使用すると、次の作業を行うことができます。
 
 -   **パフォーマンスを追跡する**: VM、Web サイト、ロジック アプリなどのリソースのメトリックをポータルのグラフにプロットし、そのグラフをダッシュボードに固定することで、リソースのパフォーマンスを追跡できます。
 
@@ -213,13 +213,13 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスの Web ロールおよび Worker ロール](https://docs.microsoft.com/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/overview)、および [Service Fabric](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) となっています。 その他の Azure サービスには、独自の独立した診断があります。
+デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、[Azure クラウド サービスの Web ロールおよび Worker ロール](/visualstudio/azure/vs-azure-tools-configure-roles-for-cloud-service)、Microsoft Windows を実行している [Azure Virtual Machines](../../virtual-machines/windows/overview.md)、および [Service Fabric](../../azure-monitor/platform/diagnostics-extension-overview.md) となっています。 その他の Azure サービスには、独自の独立した診断があります。
 
 ## <a name="azure-network-watcher"></a>Azure Network Watcher
 
 ネットワークの脆弱性を検出し、IT セキュリティおよび規制ガバナンス モデルへのコンプライアンスを確保するためには、ネットワーク セキュリティの監査が不可欠です。 セキュリティ グループ ビューでは、構成したネットワーク セキュリティ グループとセキュリティ ルール、および有効なセキュリティ ルールを取得できます。 適用済みのルール一覧に基づいて、開いているポートを特定し、ネットワークの脆弱性を評価できます。
 
-[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) は地域サービスであり、ネットワーク レベルで Azure 内と Azure 間の状態を監視して診断できます。 Network Watcher に搭載されているネットワークの診断および監視ツールを使用して、Azure 内のネットワークを把握および診断し、洞察を得ることができます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
+[Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) は地域サービスであり、ネットワーク レベルで Azure 内と Azure 間の状態を監視して診断できます。 Network Watcher に搭載されているネットワークの診断および監視ツールを使用して、Azure 内のネットワークを把握および診断し、洞察を得ることができます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
 
 ![Azure Network Watcher](./media/operational-security/azure-operational-security-fig8.png)
 
@@ -240,15 +240,15 @@ Azure Monitor では、テレメトリを使用して、Azure のワークロー
 
 [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) では、ストレージ サービスへの要求に関して集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。 トランザクションは、API 操作レベルとストレージ サービス レベルの両方でレポートされます。容量は、ストレージ サービス レベルでレポートされます。 メトリック データは、ストレージ サービスの使用状況の分析、ストレージ サービスに対する要求に関する問題の診断、サービスを使用するアプリケーションのパフォーマンスの向上に利用できます。
 
-[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) では、ログが記録され、ストレージ アカウントのメトリック データを得ることができます。 このデータを使用して、要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断を行うことができます。 Storage Analytics Logging は、[BLOB、Queue、Table の各サービス](https://docs.microsoft.com/azure/storage/storage-introduction)で使用できます。 Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。
+[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) では、ログが記録され、ストレージ アカウントのメトリック データを得ることができます。 このデータを使用して、要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断を行うことができます。 Storage Analytics Logging は、[BLOB、Queue、Table の各サービス](../../storage/common/storage-introduction.md)で使用できます。 Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。
 
 この情報を使って個々の要求を監視したり、ストレージ サービスに関する問題を診断したりできます。 要求は、ベスト エフォートでログに記録されます。 ログ エントリが作成されるのは、サービス エンドポイントに対して行われた要求がある場合に限られます。 たとえば、ストレージ アカウントの BLOB エンドポイントにはアクティビティが存在するが、Table エンドポイントや Queue エンドポイントには存在しない場合、Blob service に関連したログだけが作成されます。
 
-Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。 Storage Analytics は [Azure Portal](https://portal.azure.com/) で有効にできます。詳細については、「[Azure Portal でのストレージ アカウントの監視](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account)」を参照してください。 また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。 サービスごとに Storage Analytics を個別に有効にするには、Set Service Properties 操作を使用します。
+Storage Analytics を使用するには、監視するサービスごとに Storage Analytics を個別に有効にする必要があります。 Storage Analytics は [Azure Portal](https://portal.azure.com/) で有効にできます。詳細については、「[Azure Portal でのストレージ アカウントの監視](../../storage/common/storage-monitor-storage-account.md)」を参照してください。 また、プログラムから REST API またはクライアント ライブラリを使用して有効にすることもできます。 サービスごとに Storage Analytics を個別に有効にするには、Set Service Properties 操作を使用します。
 
 集計データは、既知の BLOB (ログの場合) と既知のテーブル (メトリックの場合) に格納されます。集計データには、Blob service と Table service の API を使用してアクセスできます。
 
-ストレージ アカウントの合計の制限とは別に、Storage Analytics には、格納されたデータの量に関して 20 TB (テラバイト) の制限があります。 すべてのログは、Storage Analytics をストレージ アカウントに対して有効にしたときに自動的に作成される $logs という名前のコンテナー内の[ブロック BLOB](https://docs.microsoft.com/azure/storage/storage-analytics) に格納されます。
+ストレージ アカウントの合計の制限とは別に、Storage Analytics には、格納されたデータの量に関して 20 TB (テラバイト) の制限があります。 すべてのログは、Storage Analytics をストレージ アカウントに対して有効にしたときに自動的に作成される $logs という名前のコンテナー内の[ブロック BLOB](../../storage/common/storage-analytics.md) に格納されます。
 
 Storage Analytics によって実行される次の操作には料金が発生します。
 
@@ -260,7 +260,7 @@ Storage Analytics によって実行される次の操作には料金が発生�
 > パフォーマンスを最適化するには、仮想マシンに接続する使用率が高いディスク数を制限して、スロットルを回避するようにします。 すべてのディスクの使用率が同時に高くならなければ、ストレージ アカウントは多数のディスクをサポートできます。
 
 > [!Note]
-> ストレージ アカウントの制限の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](https://docs.microsoft.com/azure/storage/storage-scalability-targets)」を参照してください。
+> ストレージ アカウントの制限の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../storage/common/storage-scalability-targets.md)」を参照してください。
 
 
 次のタイプの認証済み要求と匿名要求が記録されます。
@@ -281,9 +281,9 @@ Azure AD には、多要素認証、デバイスの登録、セルフサービ�
 
 -   セキュリティのレポート作成と監視機能により、アプリケーションの使用状況を監視し、高度な脅威からビジネスを保護します。
 
-Azure Active Directory (Azure AD) には、ディレクトリに関するセキュリティ レポート、アクティビティ レポート、および監査レポートが含まれています。 [Azure Active Directory 監査レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)を利用すると、Azure Active Directory で発生した特権アクションを識別できます。 特権アクションとしては、昇格の変更 (例: ロールの作成、パスワードのリセット)、ポリシー構成の変更 (例: パスワード ポリシー)、ディレクトリ構成の変更 (例: ドメインのフェデレーション設定の変更) などがあります。
+Azure Active Directory (Azure AD) には、ディレクトリに関するセキュリティ レポート、アクティビティ レポート、および監査レポートが含まれています。 [Azure Active Directory 監査レポート](../../active-directory/active-directory-reporting-azure-portal.md)を利用すると、Azure Active Directory で発生した特権アクションを識別できます。 特権アクションとしては、昇格の変更 (例: ロールの作成、パスワードのリセット)、ポリシー構成の変更 (例: パスワード ポリシー)、ディレクトリ構成の変更 (例: ドメインのフェデレーション設定の変更) などがあります。
 
-レポートでは、イベント名、アクションを実行したアクター、変更によって影響を受けた対象リソース、日時 (UTC) に関する監査レコードが提供されます。 [監査ログの表示](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)に関するページに説明されているように、[Azure Portal](https://portal.azure.com/) を使用して Azure Active Directory に対する監査イベントのリストを取得できます。 含まれているレポートの一覧を次に示します。
+レポートでは、イベント名、アクションを実行したアクター、変更によって影響を受けた対象リソース、日時 (UTC) に関する監査レコードが提供されます。 [監査ログの表示](../../active-directory/reports-monitoring/overview-reports.md)に関するページに説明されているように、[Azure Portal](https://portal.azure.com/) を使用して Azure Active Directory に対する監査イベントのリストを取得できます。 含まれているレポートの一覧を次に示します。
 
 | セキュリティ レポート  | アクティビティ レポート| 監査レポート |
 | :------------- | :-------------| :-------------|
@@ -299,14 +299,14 @@ Azure Active Directory (Azure AD) には、ディレクトリに関するセキ�
 
 
 
-これらのレポートのデータは、SIEM システム、監査、ビジネス インテリジェンス ツールなどのアプリケーションに役立ちます。 Azure AD Reporting [API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started) は、一連の REST ベースの API を使用して、プログラムによってデータにアクセスできるようにします。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。
+これらのレポートのデータは、SIEM システム、監査、ビジネス インテリジェンス ツールなどのアプリケーションに役立ちます。 Azure AD Reporting [API](../../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) は、一連の REST ベースの API を使用して、プログラムによってデータにアクセスできるようにします。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。
 
 Azure AD の監査レポートのイベントは、180 日間保持されます。
 
 > [!Note]
-> レポートの保持の詳細については、「 [Azure Active Directory Report Retention Policies (Azure Active Directory レポートの保持ポリシー)](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-retention)」をご覧ください。
+> レポートの保持の詳細については、「 [Azure Active Directory Report Retention Policies (Azure Active Directory レポートの保持ポリシー)](../../active-directory/reports-monitoring/reference-reports-data-retention.md)」をご覧ください。
 
-[監査イベント](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-audit-events)を長期間保存する場合は、Reporting API を使用して監査イベントを定期的に別のデータ ストアにプルできます。
+[監査イベント](../../active-directory/active-directory-reporting-activity-audit-logs.md)を長期間保存する場合は、Reporting API を使用して監査イベントを定期的に別のデータ ストアにプルできます。
 
 ## <a name="summary"></a>まとめ
 
@@ -341,5 +341,5 @@ Microsoft は、攻撃に強く、回復力のあるクラウド インフラス
 
 Microsoft のセキュリティ データと分析を使用することにより、よりインテリジェントで効果的な脅威の検出を実行できます。
 
-- [Azure Security Center の計画および運用](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide) 組織のセキュリティ要件とクラウド管理モデルに応じて Security Center の利用を最適化できる、一連の手順とタスクについて説明します。
+- [Azure Security Center の計画および運用](../../security-center/security-center-planning-and-operations-guide.md) 組織のセキュリティ要件とクラウド管理モデルに応じて Security Center の利用を最適化できる、一連の手順とタスクについて説明します。
 

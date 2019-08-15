@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: e43b8c951d8c7d5d60904fe49d8639efaba5c89f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775895"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012182"
 ---
 共有イメージ ギャラリーは、マネージド イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -73,7 +73,7 @@ ms.locfileid: "68775895"
 
 ## <a name="regional-support"></a>リージョン サポート
 
-ソース リージョンを次の表に示します。 すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションがホワイトリストに登録されている必要があります。 ホワイトリストへの登録を申請するには、 https://azure.microsoft.com/en-au/global-infrastructure/australia/contact/ にアクセスしてください。
+ソース リージョンを次の表に示します。 すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションがホワイトリストに登録されている必要があります。 ホワイトリストへの登録を申請するには、 https://azure.microsoft.com/global-infrastructure/australia/contact/ にアクセスしてください。
 
 
 | ソース リージョン |
@@ -179,7 +179,7 @@ ms.locfileid: "68775895"
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 - [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Go](https://docs.microsoft.com/go/azure/)
+- [Go](https://docs.microsoft.com/azure/go/)
 
 ## <a name="templates"></a>テンプレート
 

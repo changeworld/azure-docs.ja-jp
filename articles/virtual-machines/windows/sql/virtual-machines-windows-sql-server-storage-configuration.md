@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: 360ffb3d2c682d6bd2344cb3ae95447ff3df278d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d197bbf464038918dd083d14a1befa740c8ce0e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076859"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846106"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 
@@ -69,7 +69,7 @@ Azure によるストレージ設定の構成方法の詳細については、�
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-既存の SQL Server VM については、Azure ポータルで一部のストレージ設定を変更できます。 [SQL 仮想マシン リソース](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource)を開き、 **[概要]** を選択します。 SQL Server の概要ページに、VM の現在のストレージ使用量が表示されます。 このグラフには、VM 上のすべてのドライブが示されており、 ドライブごとに、次の 4 つのセクションの記憶域スペースが表示されます。
+既存の SQL Server VM については、Azure ポータルで一部のストレージ設定を変更できます。 [SQL 仮想マシン リソース](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)を開き、 **[概要]** を選択します。 SQL Server の概要ページに、VM の現在のストレージ使用量が表示されます。 このグラフには、VM 上のすべてのドライブが示されており、 ドライブごとに、次の 4 つのセクションの記憶域スペースが表示されます。
 
 * SQL データ
 * SQL ログ

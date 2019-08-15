@@ -18,10 +18,10 @@ ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d6ed5c80d5c3241a9a328a2427ed8b920790635
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67482483"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>認証と承認エラー コード

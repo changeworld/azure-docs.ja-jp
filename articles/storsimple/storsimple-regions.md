@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: e290feb278a1cddf1cfecfcb66458d8290ec122a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b41f738c2419f806aef60374a545ff004a6f19e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943604"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965134"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple に使用できるリージョン
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概要
 

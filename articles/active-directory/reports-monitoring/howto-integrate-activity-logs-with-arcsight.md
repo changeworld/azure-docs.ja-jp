@@ -3,7 +3,7 @@ title: Azure Monitor を使用して Azure Active Directory のログを ArcSigh
 description: Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: b37bef0d-982e-4e28-86b2-6c61ca524ae1
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/19/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a265637274f396497da37706391bf44e0c9107
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e4f0f81c5f135e885fe06d4fb4fa67514e8781b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437024"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988154"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する
 

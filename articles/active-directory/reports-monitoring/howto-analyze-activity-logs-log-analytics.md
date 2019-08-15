@@ -3,7 +3,7 @@ title: Azure Monitor ログを使用して Azure Active Directory アクティ�
 description: Azure Monitor ログを使用して Azure Active Directory アクティビティ ログを分析する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4145ea2162cdd56deb8bbdcfa81d5a90a2ed9382
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 77eb03089d956d0fb32ef0463b3d1cdb49ff0dbb
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67611568"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989827"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Monitor ログを使用して Azure AD アクティビティ ログを分析する
 

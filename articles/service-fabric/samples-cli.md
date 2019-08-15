@@ -9,19 +9,18 @@ editor: ''
 tags: ''
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.service: service-fabric
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
 ms.date: 04/09/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: ef24e6313682aaf6bc88a63e404690168435f926
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7057b4c06dfb69cdcc52e0dda7a2f746be263d56
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664898"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035386"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Azure CLI (az) と Azure Service Fabric CLI (sfctl) のサンプル
 

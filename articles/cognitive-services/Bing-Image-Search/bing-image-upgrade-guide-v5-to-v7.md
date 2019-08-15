@@ -8,15 +8,15 @@ manager: nitinme
 ms.assetid: 7F78B91F-F13B-40A4-B8A7-770FDB793F0F
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: e014910bc34d2c6aaf9904c5a3670e7d7b496e84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4c6b95996206cfb38ea3f77b89c3ebe3c2c0026
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384390"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883504"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Bing Image Search API v7 のアップグレード ガイド
 

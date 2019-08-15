@@ -8,16 +8,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 680f0268e85d41f8061dc96db1779ab6c22b944a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310542"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967578"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>定義したスケジュールで ACR タスクを実行する
 
-この記事では、スケジュールに従って [ACR タスク](container-registry-tasks-overview.md)を実行する方法を示します。 1 つ以上の "*タイマー トリガー*" を設定することによってタスクをスケジュールします。 
+この記事では、スケジュールに従って [ACR タスク](container-registry-tasks-overview.md)を実行する方法を示します。 1 つ以上の "*タイマー トリガー*" を設定することによってタスクをスケジュールします。
 
 タスクのスケジュールは、次のようなシナリオで役に立ちます。
 
@@ -29,18 +29,18 @@ Azure Cloud Shell または Azure CLI のローカル インストールを使�
 
 ## <a name="about-scheduling-a-task"></a>タスクのスケジュールについて
 
-* **Cron 式でのトリガー** - タスクのタイマー トリガーでは、"*Cron 式*" を使います。 式は、タスクをトリガーする分、時、日、月、曜日を指定する 5 つのフィールドを含む文字列です。 最大で 1 分ごとに 1 回の頻度までサポートされます。 
+* **Cron 式でのトリガー** - タスクのタイマー トリガーでは、"*Cron 式*" を使います。 式は、タスクをトリガーする分、時、日、月、曜日を指定する 5 つのフィールドを含む文字列です。 最大で 1 分ごとに 1 回の頻度までサポートされます。
 
   たとえば、式 `"0 12 * * Mon-Fri"` では、各平日の UTC で正午にタスクがトリガーされます。 この記事の後半で[詳細](#cron-expressions)をご確認ください。
-* **複数のタイマー トリガー** - スケジュールが異なる限り、1 つのタスクに複数のタイマーを追加できます。 
+* **複数のタイマー トリガー** - スケジュールが異なる限り、1 つのタスクに複数のタイマーを追加できます。
     * タスクを作成するときに複数のタイマー トリガーを指定するか、または後で追加します。
     * 必要に応じて、管理しやすいようにトリガーの名前を指定します。指定しないと、ACR タスクによって既定のトリガー名が提供されます。
-    * 一度に複数のタイマー スケジュールが重なっている場合、ACR タスクでは各タイマーのスケジュールされた時刻にタスクがトリガーされます。 
+    * 一度に複数のタイマー スケジュールが重なっている場合、ACR タスクでは各タイマーのスケジュールされた時刻にタスクがトリガーされます。
 * **その他のタスク トリガー** - タイマーによってトリガーされるタスクでは、[ソース コードのコミット](container-registry-tutorial-build-task.md)または[基本イメージの更新](container-registry-tutorial-base-image-update.md)に基づいてトリガーを有効にすることもできます。 他の ACR タスクと同様に、スケジュールされたタスクを[手動でトリガー][az-acr-task-run]することもできます。
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>タイマー トリガーを含むタスクを作成する
 
-[az acr task create][az-acr-task-create] コマンドでタスクを作成するときに、必要に応じて、タイマー トリガーを追加することができます。 `--schedule` パラメーターを追加し、タイマーの Cron 式を渡します。 
+[az acr task create][az-acr-task-create] コマンドでタスクを作成するときに、必要に応じて、タイマー トリガーを追加することができます。 `--schedule` パラメーターを追加し、タイマーの Cron 式を渡します。
 
 簡単な例として、次のコマンドでは、毎日 21:00 UTC に Docker Hub からの `hello-world` イメージの実行がトリガーされます。 そのタスクは、ソース コードのコンテキストなしで実行されます。
 
@@ -86,8 +86,8 @@ This message shows that your installation appears to be working correctly.
 スケジュールされた時刻の後で、想定どおりにタイマーでタスクがトリガーされたことを確認するには、[az acr task list-runs][az-acr-task-list-runs] コマンドを実行します。
 
 ```azurecli
-az acr task list runs --name mytask --registry myregistry --output table
-``` 
+az acr task list-runs --name mytask --registry myregistry --output table
+```
 
 タイマーが成功している場合、次のような出力が表示されます。
 
@@ -98,7 +98,7 @@ RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURAT
 cf2b      mytask   linux       Succeeded  Timer      2019-06-28T21:00:23Z  00:00:06
 cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00:06
 ```
-            
+
 ## <a name="manage-timer-triggers"></a>タイマー トリガーを管理する
 
 ACR タスクのタイマー トリガーを管理するには、[az acr task timer][az-acr-task-timer] コマンドを使います。
@@ -150,7 +150,7 @@ az acr task timer list --name mytask --registry myregistry
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>タイマー トリガーを削除する 
+### <a name="remove-a-timer-trigger"></a>タイマー トリガーを削除する
 
 タスクからタイマー トリガーを削除するには、[az acr task timer remove][az-acr-task-timer-remove] コマンドを使います。 次の例では、*mytask* から *timer2* トリガーが削除されます。
 
@@ -178,7 +178,7 @@ Cron 式で使われるタイム ゾーンは、協定世界時 (UTC) です。 
 |---------|---------|---------|
 |特定の値 |<nobr>"5 * * * *"</nobr>|毎時、正時から 5 分後|
 |すべての値 (`*`)|<nobr>"* 5 * * *"</nobr>|5:00 UTC からの 1 時間の毎分 (1 日に 60 回 )|
-|範囲 (`-` 演算子)|<nobr>"0 1-3 * * *"</nobr>|1 日 3 回、1:00、2:00、3:00 UTC|  
+|範囲 (`-` 演算子)|<nobr>"0 1-3 * * *"</nobr>|1 日 3 回、1:00、2:00、3:00 UTC|
 |値のセット (`,` 演算子)|<nobr>"20,30,40 * * * *"</nobr>|1 時間に 3 回、各時の 20 分、30 分、40 分|
 |間隔値 (`/` 演算子)|<nobr>"*/10 * * * *"</nobr>|1 時間に 6 回、各時の 10 分、20 分など
 

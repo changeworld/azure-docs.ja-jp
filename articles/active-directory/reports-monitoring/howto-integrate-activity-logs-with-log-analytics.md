@@ -3,7 +3,7 @@ title: Azure Active Directory のログを Azure Monitor ログにストリー�
 description: Azure Active Directory のログを Azure Monitor ログと統合する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213fb6e73ae2fc4314320d0e3e593632d8eb7f85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bffe16d604ac6b86b489092f50fbdc0b856867b3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437315"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989768"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD ログを Azure Monitor ログと統合する
 

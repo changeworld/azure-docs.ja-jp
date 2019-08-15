@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d7ff28d65c68c25613d1f61c00a6132ae93fdf6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 703976e328eabb891e76459785484d929e2c5d3b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65962505"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853151"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>クイック スタート:開発環境の設定
 
@@ -55,7 +55,7 @@ Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分�
 > [!TIP]
 > テナント ID を調べる必要がある場合は、次の操作を実行できます。
 > * アカウント名をポイントして、ディレクトリ/テナント ID を取得します。または、
-> * Azure portal で、**[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します
+> * Azure portal で、 **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します
 
 アカウントに関連付けられた既存のテナントがない場合は、アカウント名の下に GUID が表示されます。次のセクションの手順に従うまで、アプリの登録などのアクションは実行できません。
 

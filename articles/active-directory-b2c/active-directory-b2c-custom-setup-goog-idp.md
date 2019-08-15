@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 498fe63964e44de8f9e1bc06c1740f1a9ef9b392
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: a5b0d236424803056530eed81d9821fbafa14309
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67654164"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952841"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Google アカウントによるサインインを設定する
 
@@ -81,7 +81,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
             <Item Key="authorization_endpoint">https://accounts.google.com/o/oauth2/auth</Item>
             <Item Key="AccessTokenEndpoint">https://accounts.google.com/o/oauth2/token</Item>
             <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
-            <Item Key="scope">email</Item>
+            <Item Key="scope">email profile</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="UsePolicyInRedirectUri">0</Item>
             <Item Key="client_id">Your Google application ID</Item>

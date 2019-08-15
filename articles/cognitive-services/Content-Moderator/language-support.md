@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: cf1dc352068747ab2f77beec8802407d15699d17
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2692dc5fea1b9ec60d930a9fdf9e54f624b31bdc
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607162"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881085"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Content Moderator API の言語サポート
 

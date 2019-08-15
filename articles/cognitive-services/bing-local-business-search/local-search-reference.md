@@ -6,15 +6,15 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 36d87ee9db68c47ee96519cb6b04ff24478427d6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9030d85ff5bc83bb54f4a67a9f319a1670a6c2ad
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423408"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881857"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing Local Business Search API v7 リファレンス
 

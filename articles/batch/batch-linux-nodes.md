@@ -16,10 +16,10 @@ ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b4b381ff1f68935084e3dd30865cf539d4abbd16
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68323527"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング

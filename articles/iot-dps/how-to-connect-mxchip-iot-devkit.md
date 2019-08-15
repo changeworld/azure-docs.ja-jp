@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: c809077b0ec14240d231e9b281285080f68596b3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b1aac19885e2b640063e4840f047916ad51e9656
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439501"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855747"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録します
 
@@ -79,7 +79,7 @@ UDS を DevKit に保存するには、次の手順を実行します。
 1. Azure portal で、Device Provisioning Service の **[概要]** ウィンドウを選び、 **[グローバル デバイス エンドポイント]** と **[ID スコープ]** の値を書き留めます。
   ![Device Provisioning Service のグローバル エンドポイントと ID スコープ](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
-1. **DeKitDPS.ino** を開きます。 `[Global Device Endpoint]` と `[ID Scope]` を探して、書き留めた値に置き換えます。
+1. **DevKitDPS.ino** を開きます。 `[Global Device Endpoint]` と `[ID Scope]` を探して、書き留めた値に置き換えます。
   ![デバイス プロビジョニング サービスのエンドポイント](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
 
 1. コードの `registrationId` 変数を入力します。 最大 128 文字で、英数字、小文字、ハイフンの組み合わせが許可されています。 また、値を書き留めます。

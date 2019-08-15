@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 5a883fcb3533374afbbf946281b6a4a1e9a2912e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e9a71e1e826569930cf593a7e264020617bdc3a
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61431363"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883387"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Bing Search API とは
 

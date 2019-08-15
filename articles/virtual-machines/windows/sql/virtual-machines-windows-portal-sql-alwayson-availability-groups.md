@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9751ae97f96d2041a4106a41bb782a80dd9c8ba9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62129555"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884396"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure Virtual Machines の Always On 可用性グループを自動的に構成するリソース マネージャー
 
@@ -44,10 +44,10 @@ ms.locfileid: "62129555"
 
 * Azure アカウントを既に所有している。 お持ちでない場合は、 [試用版アカウントにサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。
 * GUI を使用して、仮想マシン ギャラリーから SQL Server 仮想マシンをプロビジョニングする方法を知っている。 詳細については、「[Azure ポータルでの SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
-* 可用性グループについて十分に理解している。 詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
+* 可用性グループについて十分に理解している。 詳細については、「 [AlwaysOn 可用性グループ (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)」をご覧ください。
 
 > [!NOTE]
-> SharePoint での SQL Server 可用性グループの使用に関心がある場合は、「 [SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](https://technet.microsoft.com/library/jj715261.aspx)」をご覧ください。
+> SharePoint での SQL Server 可用性グループの使用に関心がある場合は、「 [SQL Server 2012 の AlwaysOn 可用性グループを SharePoint 2013 用に構成する](/SharePoint/administration/configure-an-alwayson-availability-group)」をご覧ください。
 >
 >
 

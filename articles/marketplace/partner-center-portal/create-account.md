@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: 16ed52aa2b56a97469ae8fc47299f09593b19c45
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: d6a0fec6e2efbd943a9b240df0db2c270a1b7e45
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668340"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955583"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>商業マーケットプレース アカウントをパートナー センターに作成する
 
@@ -71,7 +71,7 @@ ms.locfileid: "68668340"
 
 お使いのアカウントが [Cloud パートナー ポータル (CPP)](https://cloudpartner.azure.com) から移行されたものである場合は、新しいパートナー センター アカウントを作成する必要はありませんが、新しいパートナー センター アカウントへのカスタマイズされたリンクをメールで受け取り、既存の CPP アカウントにログインすると、バナー通知にリンクが表示されます。
 
-このカスタマイズされたリンクにアクセスして、新しいパートナー センター アカウントを有効にした後は、パートナー センターで [Commercial Marketplace ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/)にアクセスして、アカウントに戻ることができます。
+このカスタマイズされたリンクにアクセスして、新しいパートナー センター アカウントを有効にした後は、パートナー センターで [Commercial Marketplace ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)にアクセスして、アカウントに戻ることができます。
 
 発行への同意と会社のプロファイル情報は、以前に設定したとアカウント支払いプロファイル情報、ユーザー アカウントとアクセス許可、CPP アカウントに関連付けられているアクティブなオファーと共に、新しいパートナー センター アカウントに移行されます。 
 

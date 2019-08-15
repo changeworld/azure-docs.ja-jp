@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 47e14ff87a6197ccc97231835da545207545a328
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 234fe28cb8bd9dcb97e307836961e2f587e15181
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460795"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846639"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する
 
@@ -89,7 +89,7 @@ ms.locfileid: "67460795"
        | プロパティ | 説明 |
        | --- | --- |
        | サブスクリプション ID | この IoT Hub が作成されたサブスクリプションです。
-       | リソース グループ | この IoT Hub が作成されたリソース グループ名です。
+       | Resource group | この IoT Hub が作成されたリソース グループ名です。
        | IoT Hub 名 | IoT Hub の名前です。 IoT Hub を作成したときに、IoT Hub の名前を入力しました。
        | IoT Hub ポリシー名 | 共有アクセス ポリシーです。 共有アクセス ポリシーは [IoT Hub の設定] タブで作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。
        | IoT Hub ポリシー キー | Azure Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 ここにプライマリ キーまたはセカンダリ キーを入力します。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c38b11ceda010c122e17a7fad3df1684e0a1cf42
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2a6c63c4ae58079c79a9d344f1e2550e4768088f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696287"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932253"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -26,7 +26,7 @@ model データベース レベルでは、すべてのユーザーがロール�
 *  **Process (プロセス)** - ユーザーは、データベースに接続し、データベースでのプロセス操作を実行し、model データベースのデータを分析できます。
 *  **Read (読み取り)** - ユーザーは、クライアント アプリケーションを使用して model データベースに接続し、このデータを分析できます。
 
-表形式のモデル プロジェクトを作成する場合、SQL Server Data Tools (SSDT) のロール マネージャーを使用してロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SQL Server Management Studio (SSMS)、[Analysis Services PowerShell コマンドレット](/sql/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
+表形式のモデル プロジェクトを作成する場合、SQL Server Data Tools (SSDT) のロール マネージャーを使用してロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SQL Server Management Studio (SSMS)、[Analysis Services PowerShell コマンドレット](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
 
 **セキュリティ グループ**は、`MailEnabled` プロパティが `True` に設定された[メール対応](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)である必要があります。 メール アドレスでグループを指定する場合は、`obj:groupid@tenantid` を使用します。
 
@@ -86,7 +86,7 @@ model データベース レベルでは、すべてのユーザーがロール�
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>TMSL スクリプトを使用して、ロールとユーザーを追加する方法
 
-SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL スクリプトを実行できます。 [CreateOrReplace](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/createorreplace-command-tmsl) コマンドおよび [Roles(ロール)](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-objects/roles-object-tmsl) オブジェクトを使用します。
+SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL スクリプトを実行できます。 [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) コマンドおよび [Roles(ロール)](https://docs.microsoft.com/bi-reference/tmsl/roles-object-tmsl) オブジェクトを使用します。
 
 **TMSL のサンプル スクリプト**
 
@@ -120,13 +120,13 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>PowerShell を使用してロールとユーザーを追加する方法
 
-[SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) モジュールには、タスク固有のデータベース管理コマンドレットと、Tabular Model Scripting Language (TMSL) クエリまたはスクリプトを受け入れる汎用 Invoke-ASCmd コマンドレットが用意されています。 次のコマンドレットは、データベース ロールとユーザーを管理するために使用されます。
+[SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) モジュールには、タスク固有のデータベース管理コマンドレットと、Tabular Model Scripting Language (TMSL) クエリまたはスクリプトを受け入れる汎用 Invoke-ASCmd コマンドレットが用意されています。 次のコマンドレットは、データベース ロールとユーザーを管理するために使用されます。
   
 |コマンドレット|説明|
 |------------|-----------------| 
-|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|データベース ロールにメンバーを追加します。| 
-|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|データベース ロールからメンバーを削除します。|   
-|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|TMSL スクリプトを実行します。|
+|[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|データベース ロールにメンバーを追加します。| 
+|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|データベース ロールからメンバーを削除します。|   
+|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL スクリプトを実行します。|
 
 ## <a name="row-filters"></a>行フィルター  
 
@@ -152,5 +152,5 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
 
   [サーバー管理者の管理](analysis-services-server-admins.md)   
   [PowerShell で Azure Analysis Services を管理する](analysis-services-powershell.md)  
-  [Tabular Model Scripting Language (TMSL) のリファレンス](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
+  [Tabular Model Scripting Language (TMSL) のリファレンス](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
 

@@ -15,14 +15,16 @@ ms.workload: TBD
 ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0053f950b36351b06d08630cbf9977f53f2ed47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70f2d9542082ddf7ecf1d1e7361b0ecdb14c5ef8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721700"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963384"
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>StorSimple 8000 シリーズのシステム制限とは
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概要
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: f4c620bbb0e17abfacb504866230786a971ff409
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e682a5c768ed4b3f35382c87528c1b0d11a3c3d
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393201"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019712"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
@@ -51,7 +51,7 @@ Application Insights ポータルの機能についてさらに調べるには�
 
 ### <a name="configuring-application-insights-with-eventflow"></a>EventFlow を使用した Application Insights の構成
 
-EventFlow を使用してイベントを集計する場合は、必ず `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights`NuGet パッケージをインポートしてください。 *eventFlowConfig.json* の *outputs* セクションには、次のコードが必要です。
+EventFlow を使用してイベントを集計する場合は、必ず `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`NuGet パッケージをインポートしてください。 *eventFlowConfig.json* の *outputs* セクションには、次のコードが必要です。
 
 ```json
 "outputs": [

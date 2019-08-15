@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: dc2126276e3e8e0d35ce8ed1f835544386659eff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60736185"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL 書き換え (カスタム転送パス)

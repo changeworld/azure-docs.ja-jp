@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: de2e848bd587f3b9bf2efe3fa8df3710e24243e4
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 11eae0e3bae501cdf39d7fe1d5d39524c1f83e6c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241382"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035997"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>チュートリアル:リンクされた Azure Resource Manager テンプレートの作成
 
@@ -227,7 +227,7 @@ echo "Linked template URI with SAS token: $templateURI"
 4. Shell ウィンドウの端にある 2 つの値をメモします (リソース グループ名とリンク済みテンプレート URI)。 値は、このチュートリアルの後の方で必要になります。
 5. **[フォーカス モードの終了]** を選択し、Shell ウィンドウを閉じます。
 
-実際には、メイン テンプレートをデプロイするときに SAS トークンを生成します。また、安全性を高める目的で、SAS トークンの有効期限を短くします。 詳細については、「[デプロイ時に SAS トークンを指定する](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment)」を参照してください。
+実際には、メイン テンプレートをデプロイするときに SAS トークンを生成します。また、安全性を高める目的で、SAS トークンの有効期限を短くします。 詳細については、「[デプロイ時に SAS トークンを指定する](./secure-template-with-sas-token.md#provide-sas-token-during-deployment)」を参照してください。
 
 ## <a name="call-the-linked-template"></a>リンクされたテンプレートを呼び出す
 
@@ -327,7 +327,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 プロジェクトを改善する目的で、完成したプロジェクトに次の追加変更を行います。
 
 1. リンクされたテンプレートの URI 値がパラメーターから取得されるようにメイン テンプレート (azuredeploy.json) を変更します。
-2. リンクされたテンプレートをアップロードするときに SAS トークンを生成する代わりに、メイン テンプレートをデプロイするときにこのトークンを生成します。 詳細については、「[デプロイ時に SAS トークンを指定する](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment)」を参照してください。
+2. リンクされたテンプレートをアップロードするときに SAS トークンを生成する代わりに、メイン テンプレートをデプロイするときにこのトークンを生成します。 詳細については、「[デプロイ時に SAS トークンを指定する](./secure-template-with-sas-token.md#provide-sas-token-during-deployment)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

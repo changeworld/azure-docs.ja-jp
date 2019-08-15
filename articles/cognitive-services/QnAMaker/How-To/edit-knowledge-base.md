@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 006170b2030b6511ba732a1b12aa5b5b811d8900
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1342616a0d32d8ac68965bc04f1fd3ca60146369
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447488"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966769"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>QnA Maker のナレッジ ベースを編集する
 

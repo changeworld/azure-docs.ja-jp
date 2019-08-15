@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7011025a1d94a5c99bf2338d9f80c683c2fd7b35
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 12fd08fa301cb22857470e3c81d7f4f7c1f04de9
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514980"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68948886"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -389,8 +389,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 >[!IMPORTANT]
 >アカウントまたはデバイスが侵害された場合、信頼済みデバイスに対する Multi-Factor Authentication の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[Multi-Factor Authentication をすべてのデバイスで復元](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)する必要があります。
 >
->復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは 2 段階認証を再度実行する必要があります。 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)」の手順で各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
->
+>復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは 2 段階認証を再度実行する必要があります。 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)」の手順で各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
 
 ### <a name="how-the-feature-works"></a>機能のしくみ
 

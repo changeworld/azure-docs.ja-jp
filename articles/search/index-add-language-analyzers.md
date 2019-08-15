@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: deea16b8670623acd2ae92ba62f579f5474d12ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88d229d33f549755479d7e1c7cf012d0391bccbb
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65790894"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881506"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Azure Search のインデックスに言語アナライザーを追加する
 
@@ -118,7 +118,7 @@ Azure Search では、Lucene によって提供される 35 個のアナライ�
 |ウルドゥー語|ur.microsoft||  
 |ベトナム語|vi.microsoft||  
 
- 名前に **Lucene** が含まれるすべてのアナライザーでは、[Apache Lucene の言語アナライザー](https://lucene.apache.org/core/4_9_0/core/overview-summary.html )が利用されています。
+ 名前に **Lucene** が含まれるすべてのアナライザーでは、[Apache Lucene の言語アナライザー](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )が利用されています。
 
 ## <a name="see-also"></a>関連項目  
  [インデックスを作成する &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

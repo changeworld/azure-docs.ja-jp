@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f9a50b0e5dd4e96c9235348bbfaae1d8a6e54d53
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60307906"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846624"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -99,7 +99,7 @@ Windows 仮想マシンにこの拡張機能をインストールするには、
 4. **[Azure Performance Diagnostics]\(Azure パフォーマンス診断\)** を選択し、使用条件を確認して、 **[作成]** を選択します。
 
     ![[Azure Performance Diagnostics]\(Azure パフォーマンス診断\) が強調表示されている [新しいリソース] 画面のスクリーンショット](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
-5. インストールのパラメーター値を指定し、 **[OK]** をクリックして拡張機能をインストールします。 サポートされるシナリオの詳細については、「[PerfInsights を使用する方法](how-to-use-perfInsights.md#supported-troubleshooting-scenarios)」を参照してください。 
+5. インストールのパラメーター値を指定し、 **[OK]** をクリックして拡張機能をインストールします。 サポートされるシナリオの詳細については、「[PerfInsights を使用する方法](how-to-use-perfinsights.md#supported-troubleshooting-scenarios)」を参照してください。 
 
     ![[拡張機能のインストール] ダイアログ ボックスのスクリーンショット](media/performance-diagnostics-vm-extension/install-the-extension.png)
 6. 正常にインストールされると、次の状態を示すメッセージが表示されます。

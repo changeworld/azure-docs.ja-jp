@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4f0d681c93ab7ac7fef941892a95282a2fd59b89
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 91637ea26244dde8f1ce53c9cc3a614f13e45d1a
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075705"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855293"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -91,7 +91,7 @@ Resource Manager デプロイ モデルで新しい SQL Server 仮想マシン�
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-既存の SQL Server 仮想マシンの場合、[[SQL 仮想マシン リソース]](virtual-machines-windows-sql-manage-portal.md#access-sql-virtual-machine-resource) を開き、 **[設定]** の **[ファイルの部分置換中]** を選択します。 
+既存の SQL Server 仮想マシンの場合、[[SQL 仮想マシン リソース]](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) を開き、 **[設定]** の **[ファイルの部分置換中]** を選択します。 
 
 ![既存の VM の SQL 自動修正](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-existing-vms.png)
 

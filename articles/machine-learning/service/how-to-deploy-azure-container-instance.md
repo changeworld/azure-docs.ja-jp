@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 1bf8c22c2c7c8e8aaab35a4663652300a341c99c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 04c77a82d08e2559d4ce29d49d56d6b7a5edfca5
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571071"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856145"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances にモデルをデプロイする
 
@@ -28,25 +28,25 @@ ACI の利用可能なクォータとリージョンについては、[Azure Con
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning service ワークスペースの作成](setup-create-workspace.md) に関する記事を参照してください。
+- Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning service ワークスペースの作成](how-to-manage-workspace.md) に関する記事を参照してください。
 
-- ワークスペースに登録されている機械学習モデル。 モデルが登録されていない場合は、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」をご覧ください。
+- ワークスペースに登録されている機械学習モデル。 モデルが登録されていない場合は、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 - [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](https://aka.ms/aml-sdk)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-vscode-tools.md)。
 
-- この記事の __Python__ コード スニペットでは、次の変数が設定されていることを前提としています。
+- この記事の __Python__ コード スニペットは、次の変数が設定されていることを前提としています。
 
-    * `ws` - お使いのワークスペースに設定します。
-    * `model` - 登録済みのモデルに設定します。
-    * `inference_config` - モデルの推論構成に設定します。
+    * `ws` - 使用しているワークスペースに設定されている。
+    * `model` - 登録済みのモデルに設定されている。
+    * `inference_config` - モデルの推論構成に設定されている。
 
-    これらの変数の設定の詳細については、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」をご覧ください。
+    これらの変数の設定について詳しくは、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
-- この記事の __CLI__ スニペットでは、`inferenceconfig.json` ドキュメントを作成済みであることを前提としています。 このドキュメントの作成について詳しくは、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」をご覧ください。
+- この記事の __CLI__ スニペットは、`inferenceconfig.json` ドキュメントを作成済みであることを前提としています。 このドキュメントの作成について詳しくは、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」をご覧ください。
 
 ## <a name="deploy-to-aci"></a>ACI にデプロイする
 
-Azure Container Instances にモデルをデプロイするには、必要なコンピューティング リソースが記述されている__デプロイ構成__を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスをホストするために必要な環境が記述されている__推論構成__も必要です。 推論構成の作成について詳しくは、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」をご覧ください。
+Azure Container Instances にモデルをデプロイするには、必要なコンピューティング リソースが記述されている__デプロイ構成__を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した__推論構成__も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="using-the-sdk"></a>SDK を使用する
 

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 422e9209609eac19b7952557674c99789d9f6088
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c2d40865857bc3ea8367199ed29e0220a0e7c557
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485189"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882594"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search でクエリを構成する方法
 
@@ -96,7 +96,7 @@ Azure Search ではインデックスの設計とクエリの設計は密接に�
 
 Azure Search は、Apache Lucene を基盤としており、一般的なクエリと特殊なクエリの処理用に 2 つのクエリ パーサーが用意されています。 単純なパーサーを使用する要求は、[単純なクエリ構文](query-simple-syntax.md)を使用して形成されます。これは自由な形式のテキスト クエリにおける処理速度と有効性のために既定として選択されます。 この構文では、AND、OR、NOT、フレーズ、サフィックス、優先順位の演算子など、一般的な各種検索演算子がサポートされています。
 
-[完全な Lucene クエリ構文](query-Lucene-syntax.md#bkmk_syntax)は、要求に `queryType=full` を追加することで有効になります。これは、[Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) の一部として開発されたもので、広く採用されている表現性の高いクエリ言語です。 完全な構文は、単純な構文を拡張したものです。 単純な構文で記述するすべてのクエリは、完全な Lucene パーサーで実行できます。 
+[完全な Lucene クエリ構文](query-Lucene-syntax.md#bkmk_syntax)は、要求に `queryType=full` を追加することで有効になります。これは、[Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) の一部として開発されたもので、広く採用されている表現性の高いクエリ言語です。 完全な構文は、単純な構文を拡張したものです。 単純な構文で記述するすべてのクエリは、完全な Lucene パーサーで実行できます。 
 
 次の例で示すのは、同じクエリでも、queryType 設定が異なると、異なる結果が生成されるということです。 最初のクエリでは、`^3` が検索語句の一部として扱われます。
 
@@ -118,7 +118,7 @@ Azure Search では幅広いクエリの種類がサポートされます。
 
 | クエリの種類 | 使用法 | 例と詳細 |
 |------------|--------|-------------------------------|
-| 自由形式のテキスト検索 | search パラメーターといずれかのパーサー| フルテキスト検索は、インデックスのすべての "*検索可能*" フィールドで 1 つ以上の語句をスキャンし、Google や Bing などの検索エンジンに期待するのと同様に機能します。 最初の例はフルテキスト検索です。<br/><br/>フルテキスト検索では、標準の Lucene アナライザーを使用したテキスト分析が行われ (既定)、すべての語句を小文字に変換し、"the" のようなストップワードを除去します。 テキスト分析を変更する[英語以外のアナライザー](index-add-language-analyzers.md#language-analyzer-list)や[言語に関係なく使える特別なアナライザー](index-add-custom-analyzers.md#AnalyzerTable)を使用して、既定値をオーバーライドできます。 たとえば、フィールドの内容全体を 1 つのトークンとして扱う [keyword](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) です。 これは、郵便番号、ID、製品名などのデータで役立ちます。 | 
+| 自由形式のテキスト検索 | search パラメーターといずれかのパーサー| フルテキスト検索は、インデックスのすべての "*検索可能*" フィールドで 1 つ以上の語句をスキャンし、Google や Bing などの検索エンジンに期待するのと同様に機能します。 最初の例はフルテキスト検索です。<br/><br/>フルテキスト検索では、標準の Lucene アナライザーを使用したテキスト分析が行われ (既定)、すべての語句を小文字に変換し、"the" のようなストップワードを除去します。 テキスト分析を変更する[英語以外のアナライザー](index-add-language-analyzers.md#language-analyzer-list)や[言語に関係なく使える特別なアナライザー](index-add-custom-analyzers.md#AnalyzerTable)を使用して、既定値をオーバーライドできます。 たとえば、フィールドの内容全体を 1 つのトークンとして扱う [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) です。 これは、郵便番号、ID、製品名などのデータで役立ちます。 | 
 | フィルター検索 | [OData フィルター式](query-odata-filter-orderby-syntax.md)といずれかのパーサー | フィルター クエリは、インデックスのすべての "*フィルター処理可能*" フィールドでブール式を評価します。 検索クエリと異なり、フィルター クエリはフィールドの内容を厳密に照合します。たとえば、文字列フィールドでは大文字と小文字が区別されます。 もう 1 つの違いは、フィルター クエリは OData 構文で表されることです。 <br/>[フィルター式の例](search-query-simple-examples.md#example-3-filter-queries) |
 | 地理空間検索 | フィールドの [Edm.GeographyPoint 型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)、フィルター式、いずれかのパーサー | Edm.GeographyPoint 型のフィールドに格納された座標が、"近くを探す" つまりマップに基づいた検索コントロールで使用されます。 <br/>[地理空間検索の例](search-query-simple-examples.md#example-5-geo-search)|
 | 範囲検索 | フィルター式と単純なパーサー | Azure Search では範囲クエリは filter パラメーターを使用して作成されます。 <br/>[範囲フィルターの例](search-query-simple-examples.md#example-4-range-filters) | 

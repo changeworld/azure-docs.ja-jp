@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/26/2019
-ms.openlocfilehash: d940cfa91890d26a48b682a6eb09410b3b7de045
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5fccf1ffc76c824c81f8b8b826f90bf8314ff1e3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568082"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883340"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database 用語集
 
@@ -49,6 +49,6 @@ ms.locfileid: "68568082"
 ||ストレージ容量|単一データベース、エラスティック プール、またはマネージド インスタンスに使用可能なストレージの量|
 ||コンピューティング世代|サービス レベル内でのプロセッサの世代|
 |データベース サーバー IP ファイアウォール規則|IP ファイアウォール規則|[IP ファイアウォール規則](sql-database-firewall-configure.md)|
-||サーバーレベルの IP ファイアウォール規則|[サーバーレベルの IP ファイアウォール規則](sql-database-firewall-configure.md#overview)|
-|| データベース レベルの IP ファイアウォール規則|[データベース レベルの IP ファイアウォール規則](sql-database-firewall-configure.md#overview)|
+||サーバーレベルの IP ファイアウォール規則|[サーバーレベルの IP ファイアウォール規則](sql-database-firewall-configure.md)|
+|| データベース レベルの IP ファイアウォール規則|[データベース レベルの IP ファイアウォール規則](sql-database-firewall-configure.md)|
 ||仮想ネットワーク エンドポイントと規則|[仮想ネットワーク エンドポイントと規則](sql-database-vnet-service-endpoint-rule-overview.md)|

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/23/2019
-ms.openlocfilehash: 31a367fcde909f393efa4fea65b25716f95c56ee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: dbdd088e5a78a4f78eec27b5ee74856c6aecc209
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828438"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847904"
 ---
 # <a name="explore-and-prepare-data-with-the-dataset-class-preview"></a>Dataset クラス (プレビュー) でデータを探索して準備する
 
@@ -31,7 +31,7 @@ ms.locfileid: "68828438"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
-* Azure Machine Learning ワークスペース。 「[Create an Azure Machine Learning service workspace](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)」(Azure Machine Learning service ワークスペースを作成する) を参照してください。
+* Azure Machine Learning ワークスペース。 「[Create an Azure Machine Learning service workspace](how-to-manage-workspace.md)」(Azure Machine Learning service ワークスペースを作成する) を参照してください。
 
 * Azure Machine Learning SDK for Python (バージョン 1.0.21 以降)。azureml-datasets パッケージが含まれています。 SDK の最新バージョンのインストールまたは最新バージョンへの更新を行うには、[SDK のインストールまたは更新](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に関する記事を参照してください。
 

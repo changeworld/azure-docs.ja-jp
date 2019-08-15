@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 428756588152ff2c2deb2e3a123bcffc1cb605d7
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: cee4f68b734f0c2bec9fd629986ba7f6559f207e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517029"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882440"
 ---
 # <a name="suggesting-query-terms"></a>検索語句の提案
 

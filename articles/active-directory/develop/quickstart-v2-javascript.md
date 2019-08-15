@@ -8,7 +8,7 @@ manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca7e7f282d63160cd1f729fba00f6d7d7704270
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 59b5ddbff646104b3d4a35c26c1ecf3968dea31d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334136"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852907"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>クイック スタート:ユーザーをサインインさせて、JavaScript のシングルページ アプリケーションからアクセス トークンを取得する
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ce534c6eeecba220fd829be829caa679df52055
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95aeeacfd85dd79453bff4e365e5b050039f77b9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833098"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852463"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>シナリオ: ユーザーをサインインさせる Web アプリ
 

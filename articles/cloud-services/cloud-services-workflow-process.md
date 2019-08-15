@@ -9,18 +9,17 @@ editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: e7b3146ffa0f4b828f1a28d3bc51b26db194244c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 383f4d26d44871936ccc910f15575db5aec3ec8c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249499"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945337"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure クラシック VM のアーキテクチャのワークフロー 
 この記事では、仮想マシンなどの Azure リソースをデプロイまたは更新するときに発生するワークフロー プロセスの概要を示します。 

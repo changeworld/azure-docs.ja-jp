@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: c96710d6dcca9f5ef99b3a02a0bc875d433f814d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0da8ce396ce07b7c9859fcfccb5cb524c0ce21c1
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463394"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "69015288"
 ---
 # <a name="playing-your-content-with-existing-players"></a>既存のプレーヤーによるコンテンツの再生
 Azure Media Services は、スムーズ ストリーミング、HTTP ライブ ストリーミング、Mpeg-dash など、人気のある多くのストリーミング形式をサポートします。 このトピックでは、ストリームのテストに使用できる既存のプレーヤーを示します。
@@ -31,12 +31,13 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 
 いくつかの考慮事項が適用されます。
 
-* **Media Services コンテンツ プレーヤー**を既定のストリーミング エンドポイントから再生します。 既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します たとえば、[Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用します。
+* **Media Services コンテンツ プレーヤー**を既定のストリーミング エンドポイントから再生します。 既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します たとえば、[Azure Media Player](https://aka.ms/azuremediaplayer) を使用します。
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
-[Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、次のいずれかの形式でコンテンツ (平文のコンテンツまたは保護されたコンテンツ) を再生します。
+
+[Azure Media Player](https://aka.ms/azuremediaplayer) を使用して、次のいずれかの形式でコンテンツ (平文のコンテンツまたは保護されたコンテンツ) を再生します。
 
 * スムーズ ストリーミング
 * MPEG DASH
@@ -44,15 +45,17 @@ Azure Media Services は、スムーズ ストリーミング、HTTP ライブ �
 * Progressive MP4
 
 ### <a name="flash-player"></a>Flash Player
+
 #### <a name="aes-encrypted-with-token"></a>トークンを使用した AES 暗号化
+
 [https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
-### <a name="silverlight-players"></a>Silverlight Players
-
 #### <a name="playready-with-token"></a>トークンを使用した PlayReady
+
 [https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
 ### <a name="dash-players"></a>DASH Players
+
 [https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)

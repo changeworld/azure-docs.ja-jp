@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: bd0910fedc9fd27af198f6a2b94b34daf57c050f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf8b2551390fa36736f678c756093a55d6ceb0c2
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563684"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932869"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
 

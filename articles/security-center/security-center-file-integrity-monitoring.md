@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: v-mohabe
 ms.openlocfilehash: cc0c319357b39ddb3e88d515613273a6f7dc0867
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "65968802"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視

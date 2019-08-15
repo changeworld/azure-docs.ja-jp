@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: a821ce5d9e545db2dee2adbe942eab5edcfdb01f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 09caffcfdad4b132858b6ec52b36fe037f488b3a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726945"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934708"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure のネットワーク セキュリティのベスト プラクティス
 この記事では、お使いのネットワーク セキュリティを強化するための Azure のベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のネットワークに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -35,7 +35,7 @@ ms.locfileid: "68726945"
 これらのベスト プラクティスは、この記事の執筆時点における共通認識と、Azure プラットフォームの能力と機能に基づいています。 共通認識とテクノロジは時間が経つにつれて変化するため、そのような変化に対応するために、この記事は定期的に更新されます。
 
 ## <a name="use-strong-network-controls"></a>強力なネットワーク制御を使用する
-[Azure Virtual Machines (VM)](https://azure.microsoft.com/services/virtual-machines/) およびアプライアンスを [Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/) に配置することで、他のネットワーク デバイスに接続することができます。 つまり、仮想ネットワーク インターフェイス カードを仮想ネットワークに接続することで、ネットワーク対応デバイス間で TCP/IP ベースの通信を実行できるようになります。 Azure Virtual Network に接続された仮想マシンは、同じ仮想ネットワーク上、異なる仮想ネットワーク上、インターネット上、または独自のオンプレミス ネットワーク上のデバイスに接続できます。
+[Azure Virtual Machines (VM)](https://azure.microsoft.com/services/virtual-machines/) およびアプライアンスを [Azure Virtual Networks](../../virtual-network/index.yml) に配置することで、他のネットワーク デバイスに接続することができます。 つまり、仮想ネットワーク インターフェイス カードを仮想ネットワークに接続することで、ネットワーク対応デバイス間で TCP/IP ベースの通信を実行できるようになります。 Azure Virtual Network に接続された仮想マシンは、同じ仮想ネットワーク上、異なる仮想ネットワーク上、インターネット上、または独自のオンプレミス ネットワーク上のデバイスに接続できます。
 
 ネットワークとネットワークのセキュリティを計画するときは、以下を一元管理することをお勧めします。
 
@@ -114,7 +114,7 @@ Azure ネットワーク セキュリティ アプライアンスを使用する
 利用可能な Azure Virtual Network セキュリティ アプライアンスを見つける場合は、[Azure Marketplace](https://azure.microsoft.com/marketplace/) に移動し、"security" や "network security" で検索してください。
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>セキュリティ ゾーン用の境界ネットワークをデプロイする
-[境界ネットワーク](https://docs.microsoft.com/azure/best-practices-network-security) (DMZ ともいう) は、資産とインターネットの間に追加のセキュリティ層を提供する物理的または論理的なネットワーク セグメントです。 境界ネットワークの端にある特殊なネットワーク アクセス制御デバイスでは、ご利用の仮想ネットワークへの必要なトラフィックのみが許可されます。
+[境界ネットワーク](./https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (DMZ ともいう) は、資産とインターネットの間に追加のセキュリティ層を提供する物理的または論理的なネットワーク セグメントです。 境界ネットワークの端にある特殊なネットワーク アクセス制御デバイスでは、ご利用の仮想ネットワークへの必要なトラフィックのみが許可されます。
 
 境界ネットワークは、Azure Virtual Network の端にあるデバイスでのネットワーク アクセス制御の管理、監視、ログ記録、レポート作成に集中できるため便利です。 境界ネットワークは、通常は分散型サービス拒否 (DDoS) 防止、侵入検出/侵入防止システム (IDS/IPS)、ファイアウォール ルールとポリシー、Web フィルタリング、ネットワーク マルウェア対策などを有効にする場所です。 ネットワーク セキュリティ デバイスは、インターネットと Azure Virtual Network の間に配置され、両方のネットワークに対するインターフェイスが備わっています。
 

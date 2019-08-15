@@ -15,10 +15,10 @@ ms.date: 06/14/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 4484269194aa3d637101a6a0b83eacb268d4c16e
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "67147277"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>ハイブリッド環境の Linux コンピューターを対象とした Log Analytics エージェントの構成

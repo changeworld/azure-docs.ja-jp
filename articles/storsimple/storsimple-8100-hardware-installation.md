@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b367b6e7126a442dc68646ff52a29c955f50b798
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631171"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963583"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブル接続
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>概要
 Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンクロージャ デバイスです。 このチュートリアルでは、StorSimple デバイスを構成してデプロイする前に、StorSimple 8100 デバイスのハードウェアの開梱、ラック取り付け、およびケーブル接続の方法について説明します。
 

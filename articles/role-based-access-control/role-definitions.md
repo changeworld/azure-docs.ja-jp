@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 9f5f9b3595074c26c80c824052727e962b01162a
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: ece5d8f9733dde57c2990bfbb6bb90305d8bc37d
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275045"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977187"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Azure リソースのロール定義の概要
 
@@ -158,12 +158,12 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者](buil
 
 データ操作を表示し、操作するには、正しいバージョンのツールまたは SDK が必要です。
 
-| ツール  | バージョン  |
+| ツール  | Version  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 以降 |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 以降 |
 | [Azure for .NET](/dotnet/azure/) | 2.8.0 プレビュー以降 |
-| [Azure SDK for Go](/go/azure/azure-sdk-go-install) | 15.0.0 以降 |
+| [Azure SDK for Go](/azure/go/azure-sdk-go-install) | 15.0.0 以降 |
 | [Azure for Java](/java/azure/) | 1.9.0 以降 |
 | [Azure for Python](/python/azure) | 0.40.0 以降 |
 | [Azure SDK for Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 以降 |

@@ -12,10 +12,10 @@ ms.author: arib
 ms.reviewer: vanto
 ms.date: 04/16/2019
 ms.openlocfilehash: 69fe3287083523a3a47975a3db51d7241681f5c4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "68569516"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用

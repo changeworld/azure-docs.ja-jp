@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: rkarlin
 ms.openlocfilehash: 0a889de79b6a5921007614dac8d610c1be0222d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "60704556"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center と Azure SQL Database サービス

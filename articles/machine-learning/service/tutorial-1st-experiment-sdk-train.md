@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 66a0c625d300a74787e3640992675d5a3f31610c
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a3db70925d59f9d0e2793b04824b2e8606719dd4
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828548"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934234"
 ---
 # <a name="tutorial-train-your-first-model"></a>チュートリアル:最初のモデルをトレーニングする
 
@@ -23,6 +23,7 @@ ms.locfileid: "68828548"
 
 このチュートリアルでは、以下のタスクについて学習します。
 
+> [!div class="checklist"]
 > * 自分のワークスペースを接続し、実験を作成する
 > * データを読み込み、scikit-learn モデルをトレーニングする
 > * ポータルでトレーニング結果を表示する

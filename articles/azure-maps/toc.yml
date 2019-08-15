@@ -25,6 +25,8 @@
       items:
         - name: ジオフェンスを設定する
           href: tutorial-geofence.md
+        - name: 空間分析
+          href: tutorial-iot-hub-maps.md
 - name: 概念
   items:
     - name: Azure Maps による認証

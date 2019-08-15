@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
+ms.date: 08/08/2019
 ms.author: jonbeck
-ms.openlocfilehash: 47b651d9fa3134a5fec7e42cc17c8612cd8f98c3
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 283786706747b1ceebdc1618861f8c8eaa4380b2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708856"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881627"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>汎用仮想マシンのサイズ
 

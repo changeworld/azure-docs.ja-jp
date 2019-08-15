@@ -11,12 +11,12 @@ ms.date: 01/09/2019
 author: sharonlo101
 ms.author: shlo
 manager: craigg
-ms.openlocfilehash: 96ea8142e2f7794d3c15c6efb436eafa585bc8fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e4d204e9bcf601bf968f06b5d9df3f36414bd5a5
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780932"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884189"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Azure Data Factory のデータ ファクトリをコピーまたは複製する
 
@@ -36,7 +36,7 @@ ms.locfileid: "60780932"
 
 1. 前提条件として、Azure portal からターゲット データ ファクトリを作成する必要があります。
 
-1. ご自分のソース ファクトリ内にセルフホステッド統合ランタイムがある場合は、ターゲット ファクトリ内に同じ名前を使用してそれを事前に作成する必要があります。 異なるファクトリでセルフホステッド IR を共有する場合は、[こちら](author-visually.md#best-practices-for-git-integration)で公開されているパターンを使用できます。
+1. ご自分のソース ファクトリ内にセルフホステッド統合ランタイムがある場合は、ターゲット ファクトリ内に同じ名前を使用してそれを事前に作成する必要があります。 異なるファクトリでセルフホステッド IR を共有する場合は、[こちら](source-control.md#best-practices-for-git-integration)で公開されているパターンを使用できます。
 
 1. GIT モードを使用している場合は、ポータルから発行するたびに、ファクトリの Resource Manager テンプレートが、GIT のリポジトリの adf_publish ブランチに保存されます。
 

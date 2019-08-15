@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: ef5d812b1e55713f30928582d9aa9e61bba7c7a6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 893317b8f46415b1df540d67ebf28b65c5ba6d32
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423546"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883445"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Bing Spell Check API への要求の送信
 

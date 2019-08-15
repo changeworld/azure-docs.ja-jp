@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: f3fa646fcca99d5762f480b3fd12c5e249eabaf8
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0eda9fe0e16a945dcb9f9a1b686afcd2aebe6306
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710572"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854379"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux 用 Azure シリアル コンソール
 
@@ -102,7 +102,7 @@ Oracle Linux        | シリアル コンソール アクセスが既定で有�
 
 さらに、ttys0 をシリアル出力の宛先として追加することができます。 シリアル コンソールと連動するようにカスタム イメージを構成する方法の詳細については、「[Azure 上での Linux VHD の作成とアップロード](https://aka.ms/createuploadvhd#general-linux-system-requirements)」で一般的なシステム要件を参照してください。
 
-カスタム カーネルを構築する場合は、`CONFIG_SERIAL_8250=y` と `CONFIG_MAGIC_SYSRQ_SERIAL=y` のカーネル フラグを有効にすることを考慮してください。 構成ファイルは、通常は */boot/* パスにあります。 |
+カスタム カーネルを構築する場合は、`CONFIG_SERIAL_8250=y` と `CONFIG_MAGIC_SYSRQ_SERIAL=y` のカーネル フラグを有効にすることを考慮してください。 構成ファイルは、通常は */boot/* パスにあります。
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>シリアル コンソールにアクセスする一般的なシナリオ
 

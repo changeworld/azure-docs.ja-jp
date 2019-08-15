@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: cd46e99b89b4081dcf0d67509edaabf168da4ba0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cb783630b32b4cc28d4e4f1cfb33027da3b8d2e0
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387886"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966562"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for MariaDB からデータをコピーする 
 
@@ -43,7 +43,7 @@ Azure Database for MariaDB のリンクされたサービスでは、次のプ�
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります。**MariaDB** | はい |
 | connectionString | Azure Database for MariaDB に接続するための接続文字列。 Azure portal で、お使いの Azure Database for MariaDB から [接続文字列] に移動すると、ADO.NET の接続文字列のところに記載されています。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワードを Azure Key Vault に格納して、接続文字列から `pwd` 構成をプルすることもできます。 詳細については、次のサンプルと「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
 

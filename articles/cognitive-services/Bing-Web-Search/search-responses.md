@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 5380713af17a751ab695fee90895b4f6b0d2369b
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: f19454868ad7be21777d725f61e09a84f6c7a313
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542811"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854725"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 
@@ -123,7 +123,7 @@ images 回答と image について詳しくは、[Image Search API](../bing-ima
 
 関連クエリに対する Bing の検索結果ページにユーザーを誘導するハイパーリンクを作成するには、`displayText` クエリ文字列と `webSearchUrl` URL を使用します。 独自の Web Search API クエリの中で `text` クエリ文字列を使用し、独自にその結果を表示することもできます。
 
-`displayText` で検索結果を強調表示するためのマーカーの使い方については、[検索結果の強調表示](./hit-highlighting.md)に関するページを参照してください。
+`displayText` で検索結果を強調表示するためのマーカーの使い方については、[検索結果の強調表示](../bing-web-search/hit-highlighting.md)に関するページを参照してください。
 
 次に示したのは、Bing.com での関連するクエリの使用例です。
 

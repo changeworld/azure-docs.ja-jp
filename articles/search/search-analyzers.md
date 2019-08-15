@@ -4,17 +4,16 @@ description: インデックスの検索可能なテキスト フィールドに
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/08/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.custom: seodec2018
-ms.openlocfilehash: f76d944f614f07a4428d4e4100f6a08a375d96dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da1d39c23106b2218700e7a2707b824e240448d3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65795792"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883037"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Azure Search でのテキスト処理のためのアナライザー
 
@@ -31,7 +30,7 @@ ms.locfileid: "65795792"
 
 ## <a name="default-analyzer"></a>既定のアナライザー  
 
-Azure Search では、["Unicode テキストのセグメント化"](https://unicode.org/reports/tr29/) の規則に従ってテキストを要素に分割する [Apache Lucene 標準アナライザー (標準 Lucene)](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を既定として使用します。 さらに、標準アナライザーはすべての文字を小文字形式に変換します。 インデックス付きドキュメントと検索語句の両方について、インデックス作成とクエリ処理の間に分析が行われます。  
+Azure Search では、["Unicode テキストのセグメント化"](https://unicode.org/reports/tr29/) の規則に従ってテキストを要素に分割する [Apache Lucene 標準アナライザー (標準 Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) を既定として使用します。 さらに、標準アナライザーはすべての文字を小文字形式に変換します。 インデックス付きドキュメントと検索語句の両方について、インデックス作成とクエリ処理の間に分析が行われます。  
 
 すべての検索可能フィールドで自動的に使用されます。 フィールド単位で既定値をオーバーライドすることができます。 代わりのアナライザーとしては、[言語アナライザー](index-add-language-analyzers.md)、[カスタム アナライザー](index-add-custom-analyzers.md)、または[使用可能なアナライザーの一覧](index-add-custom-analyzers.md#AnalyzerTable)の定義済みアナライザーを使用できます。
 
@@ -42,7 +41,7 @@ Azure Search では、["Unicode テキストのセグメント化"](https://unic
 
 | Category | 説明 |
 |----------|-------------|
-| [標準 Lucene のアナライザー](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | [既定]。 指定や構成は必要ありません。 この汎用アナライザーは、ほとんどの言語とシナリオで適切に実行されます。|
+| [標準 Lucene のアナライザー](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | [既定]。 指定や構成は必要ありません。 この汎用アナライザーは、ほとんどの言語とシナリオで適切に実行されます。|
 | 定義済みアナライザー | そのまま使用するように完成した製品として提供されます。 <br/>特殊と言語という 2 種類があります。 "定義済み" とは、カスタマイズまたは構成なしで、名前で参照するためです。 <br/><br/>[特殊 (言語を選ばない) アナライザー](index-add-custom-analyzers.md#AnalyzerTable)は、特殊な処理または最小限の処理が必要なテキスト入力に使用します。 非言語の定義済みアナライザーには、**Asciifolding**、**Keyword**、**Pattern**、**Simple**、**Stop**、**Whitespace** などがあります。<br/><br/>[言語アナライザー](index-add-language-analyzers.md)は、各言語に合わせて高度の言語サポートが必要な場合に使用されます。 Azure Search は、35 個の Lucene 言語アナライザーと 50 個の Microsoft 自然言語処理アナライザーをサポートしています。 |
 |[カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 1 つのトークナイザー (必須) と省略可能なフィルター (文字またはトークン) から構成される既存の要素を組み合わせたユーザー定義の構成のことです。|
 

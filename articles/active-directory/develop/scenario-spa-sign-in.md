@@ -17,12 +17,12 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc9c46ae28960387e6f8efc1ade20afa1c77ef55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bf614a5523e78fc72918db973ef8d738a171fff
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138800"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031787"
 ---
 # <a name="single-page-application---sign-in"></a>シングルページ アプリケーション - サインイン
 
@@ -52,7 +52,7 @@ ms.locfileid: "65138800"
 
 ```javascript
 const loginRequest = {
-    scopes: ["user.read", "user.write"]
+    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
 }
 
 userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
@@ -86,7 +86,7 @@ MSAL Angular ラッパーを使用すると、ルート定義に `MsalGuard` を
   imports: [ MsalModule.forRoot({
                 clientID: 'your_app_id',
                 popUp: true,
-                consentScopes: ["user.read", "user.write"]
+                consentScopes: ["https://graph.microsoft.com/User.ReadWrite"]
             })]
          })
 ```
@@ -105,7 +105,7 @@ function authCallback(error, response) {
 userAgentApplication.handleRedirectCallback(authCallback);
 
 const loginRequest = {
-    scopes: ["user.read", "user.write"]
+    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
 }
 
 userAgentApplication.loginRedirect(loginRequest);

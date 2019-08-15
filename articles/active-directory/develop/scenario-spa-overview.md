@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07a21e83f304f3e1acc0ed4033d832dd8e901ac9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3c4e671473ff6c6fecdc13fe61dbde1d3fb3809
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080299"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852514"
 ---
 # <a name="scenario-single-page-application"></a>シナリオ: シングルページ アプリ
 

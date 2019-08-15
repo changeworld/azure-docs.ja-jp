@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 69180e17714b7d7004e63dce0de82a50e1f0b3af
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4455d499ab4c52a27a7d9cf878e8130ff38b1c62
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164624"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68846952"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 

@@ -3,20 +3,20 @@ title: Project Acoustics プラグインに関する既知の問題
 titlesuffix: Azure Cognitive Services
 description: Project Acoustics の Designer Preview の使用時に、以下で説明する既知の問題が発生する場合があります。
 services: cognitive-services
-author: kylestorck
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kylsto
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: df5a4ce62af0405ffab8f711fb40b3d92083a3a4
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 37084480423de90f50beced187eda202b39f8bf1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706663"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933063"
 ---
 # <a name="project-acoustics-known-issues"></a>Project Acoustics の既知の問題
 Project Acoustics の Designer Preview の使用時に、以下で説明する既知の問題が発生する場合があります。
@@ -24,10 +24,6 @@ Project Acoustics の Designer Preview の使用時に、以下で説明する�
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>シーンの名前を変更すると音響パラメーターが失われる
 
 シーンの名前を変更する場合、そのシーンに属するすべての音響パラメーターが自動的に新しいシーンに移動するわけではありません。 ただし、古いアセット ファイルにはまだ存在します。 シーン ファイルに隣接する **Editor** ディレクトリ内の **SceneName_AcousticParameters.asset** ファイルを探します。 新しいシーン名を反映するようにファイルの名前を変更します。
-
-## <a name="unity-crashes-when-closing-project"></a>プロジェクトを閉じると Unity がクラッシュする
-
-Unity の最新バージョン (2018.2 以降) には、プロジェクトを閉じると Unity がクラッシュするという既知のバグがあります。 この件は [Unity の問題](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project)として調査中です。
 
 ## <a name="deploying-to-android-from-some-unity-versions"></a>Unity の一部のバージョンから Android へのデプロイ
 
