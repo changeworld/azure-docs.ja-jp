@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/07/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a4889d82ac1c837581771860f2aba86faf7650ee
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 4b9680b00905126d261562d7bec64bb931c1cda3
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399441"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845717"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック
 

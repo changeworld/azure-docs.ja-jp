@@ -2,25 +2,24 @@
 title: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法 - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。
 services: key-vault
-author: barclayn
-manager: barbkess
-editor: ''
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 05/24/2019
-ms.author: barclayn
-ms.openlocfilehash: dba1fe91a635f467f4a3aeeaa048897065822869
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: tutorial
+ms.date: 08/12/2019
+ms.author: mbaldwin
+ms.openlocfilehash: c0fed80f4ba9815cee49bc9968d542f168570986
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236635"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976362"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 
 Azure Key Vault には複数層の冗長性が備わっています。そのため、サービスの個々のコンポーネントで障害が発生した場合でも、アプリケーションでは引き続きキーとシークレットを使用することができます。
 
-Key Vault のコンテンツは、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 これにより、キーとシークレットの高い持続性が保たれます。 特定のリージョン ペアの詳細については、「[Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」ドキュメントを参照してください。
+Key Vault のコンテンツは、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 これにより、キーとシークレットの高い持続性が保たれます。 特定のリージョン ペアの詳細については、「[Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」ドキュメントを参照してください。
 
 Key Vault サービス内の個々のコンポーネントで障害が発生した場合、リージョン内の代替コンポーネントが要求を処理し、機能が低下しないようにします。 この処理をトリガーするために、何かの措置を講じる必要はありません。 ユーザーからは見えないところで自動的に実行されます。
 
