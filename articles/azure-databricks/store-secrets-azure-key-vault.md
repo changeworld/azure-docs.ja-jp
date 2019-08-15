@@ -76,7 +76,7 @@ ms.locfileid: "68976527"
 
    |プロパティ|Description|
    |--------|-----------|
-   |EnableAdfsAuthentication|自分のキー コンテナーの一意の名前。|
+   |Name|自分のキー コンテナーの一意の名前。|
    |Subscription|サブスクリプションを選択します。|
    |Resource group|リソース グループを選択するか、新しく作成します。|
    |Location|場所を選択します。|
@@ -93,9 +93,9 @@ ms.locfileid: "68976527"
 
    |プロパティ|値|
    |--------|-----------|
-   |アップロード オプション|マニュアル|
-   |EnableAdfsAuthentication|自分のストレージ アカウント キーのフレンドリ名。|
-   |値|自分のストレージ アカウントからのキー 1。|
+   |Upload options|マニュアル|
+   |Name|自分のストレージ アカウント キーのフレンドリ名。|
+   |Value|自分のストレージ アカウントからのキー 1。|
 
    ![新しいキー コンテナー シークレットのプロパティ](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
