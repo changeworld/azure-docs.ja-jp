@@ -133,7 +133,7 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 
 ### <a name="property-values"></a>プロパティ値
 
-| EnableAdfsAuthentication | 値/例 |
+| 名前 | 値/例 |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |

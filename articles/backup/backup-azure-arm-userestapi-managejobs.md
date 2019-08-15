@@ -51,7 +51,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="response"></a>Response
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

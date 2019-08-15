@@ -47,7 +47,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |204 No Content     |         |  OK で、返されたコンテンツはありません      |
 |202 Accepted     |         |     承認済み    |
@@ -110,7 +110,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ##### <a name="responses-1"></a>応答
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -186,7 +186,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 保護された項目を作成する場合、要求本文のコンポーネントは次のようになります。
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem リソースのプロパティ         |
 
@@ -214,7 +214,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 Accepted     |         |     承認済み    |
@@ -300,7 +300,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 オンデマンド バックアップをトリガーする場合、要求本文のコンポーネントは次のようになります。
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource プロパティ         |
 
@@ -325,7 +325,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
@@ -445,7 +445,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、次にその操作が完了したときは 204 (NoContent)。
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 Accepted     |         |     承認済み    |

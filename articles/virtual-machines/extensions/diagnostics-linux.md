@@ -127,7 +127,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 }
 ```
 
-EnableAdfsAuthentication | 値
+名前 | 値
 ---- | -----
 storageAccountName | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。
 storageAccountEndPoint | (省略可能) ストレージ アカウントが存在するクラウドを識別するエンドポイント。 この設定がない場合、LAD の既定値は Azure パブリック クラウド `https://core.windows.net` になります。 Azure Germany、Azure Government、Azure China でストレージ アカウントを使用するには、この値を適切に設定します。

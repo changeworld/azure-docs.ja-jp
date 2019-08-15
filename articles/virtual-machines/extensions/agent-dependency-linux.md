@@ -74,7 +74,7 @@ Linux 用 Azure VM Dependency Agent 拡張機能は、Azure Monitor for VMs の�
 
 ### <a name="property-values"></a>プロパティ値
 
-| EnableAdfsAuthentication | 値/例 |
+| 名前 | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |

@@ -37,7 +37,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Responses
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -137,7 +137,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 Azure VM バックアップからのディスクの復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -171,7 +171,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
