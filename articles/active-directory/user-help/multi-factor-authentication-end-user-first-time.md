@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df72d03bae8987de4998276a0be0f3ce1ec0333
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75bc067bfe8a98ef2337f368243b3221be1677d6
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230053"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949909"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>アカウントへの 2 段階認証の設定
 2 段階認証とは、他のユーザーの侵入を困難にすることでアカウントの保護に役立つ追加のセキュリティ手順です。 あなたがこの記事を読んでいるということは、おそらく会社や学校の管理者から Multi-Factor Authentication に関するメールを受け取ったと考えられます。 または、サインインしようとして、追加のセキュリティ確認を設定するように求めるメッセージが表示されたのかもしれません。 その場合は、**自動登録プロセスが完了するまでサインインできません**。
@@ -34,7 +34,7 @@ ms.locfileid: "65230053"
 
 開始するには、 **[今すぐセットアップ]** を選択します。
 
-サインインした際にこのような画面が表示されない場合は、「[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)」の手順に従って、認証オプションを管理できる設定ページを探してください。
+サインインした際にこのような画面が表示されない場合は、「[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md#using-the-additional-security-verification-page)」の手順に従って、認証オプションを管理できる設定ページを探してください。
 
 ## <a name="decide-how-you-want-to-verify-your-sign-ins"></a>サインインの認証方法の決定
 

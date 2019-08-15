@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ba09496ed8c110e3bf0e431da20f09c82d5ea0b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114903"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985587"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -280,7 +280,7 @@ Azure CLI をご利用いただけます。
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **SAS トークン**:SAS トークンを使用してエンドポイントからデータにアクセスします。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+    - **SAS トークン**:SAS トークンを使用してエンドポイントからデータにアクセスします。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」を参照してください。
 
 **ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" を "https:\//www.contoso.com/images/image.gif" と表示するにはどうすればよいですか?**
 
@@ -291,7 +291,7 @@ Azure CLI をご利用いただけます。
 
 FTP を使用してストレージ アカウントに直接アクセスする方法はありません。 ただし、Azure 仮想マシンをセットアップし、仮想マシンに FTP サーバーをインストールできます。 FTP サーバーを使用して、Azure Files 共有上、または仮想マシンで使用できるデータ ディスク上にファイルを保存できます。
 
-Storage Explorer などのアプリケーションを使用せずに、データのダウンロードのみ実行する場合は、SAS トークンを使用できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+Storage Explorer などのアプリケーションを使用せずに、データのダウンロードのみ実行する場合は、SAS トークンを使用できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」を参照してください。
 
 **2 つのストレージ アカウント間で BLOB を移行するにはどうすればよいですか?**
 

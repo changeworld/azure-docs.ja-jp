@@ -6,15 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 708c62971a20a7071accf7591a4e2914f7dbd9f3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736351"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950259"
 ---
-# <a name="how-to-annotate-data-sources"></a>データ ソースに注釈を付ける方法
+# <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースに注釈を付ける方法
+
 ## <a name="introduction"></a>はじめに
+
 **Microsoft Azure Data Catalog** は、フル マネージドのクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。 つまり、Data Catalog を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。 データ ソースが Data Catalog に登録されると、そのメタデータはサービスによってコピーされてインデックスが付けられます。ただし、これで終わりではありません。 Data Catalog を使用することで、データ ソースから抽出されたメタデータを補完するために独自の説明用メタデータ (説明やタグ) を提供し、より多くの人に対してデータ ソースをわかりやすくすることができます。
 
 ## <a name="annotation-and-crowdsourcing"></a>注釈とクラウドソーシング

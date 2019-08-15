@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
-ms.openlocfilehash: 9d0c8c01ae0d87c944922dece74e13f00879b02f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4622a8575d7b6a38226ee3a980c05f143c128356
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629232"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963535"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple デバイスを安全にインストールして操作する
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ![警告のアイコン](./media/storsimple-safety/IC740879.png)
 ![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png) **安全衛生に関する情報を確認してください**
 
@@ -35,7 +38,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 | ![危険のアイコン](./media/storsimple-safety/IC740879.png) **危険!** |回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。 この記号の文字は、最も重大な状況の場合にのみ使用されます。 |
 | ![警告のアイコン](./media/storsimple-safety/IC740879.png) **警告!** |回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。 |
 | ![警告のアイコン](./media/storsimple-safety/IC740879.png) **注意!** |回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。 |
-| ![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:** |重要だが、危険に関連するものではない情報を示します。 |
+| ![通告のアイコン](./media/storsimple-safety/IC740881.png) **通告:** |重要だが、危険に関連するものではない情報を示します。 |
 | ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **感電の危険** |高電圧 |
 | ![ヘビー ウェイト アイコン](./media/storsimple-safety/IC740883.png) **ヘビー ウェイト** | |
 | ![ユーザーによる保守不可能な部品のアイコン](./media/storsimple-safety/IC740879.png) **ユーザーによる保守不可能な部品** |適切な訓練を受けている場合を除き、触らないでください。 |
@@ -99,7 +102,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * 配電システムの設計では、すべてのエンクロージャ内のすべての電源からの合計漏電電流を考慮する必要があります。 各エンクロージャ内の各電源装置には、60 Hz、264 ボルトで最大 1.0 mA の漏電電流があることに気を付けてください。 ラックに「高漏電。 電源に接続する前に、必ず接地してください」というラベルを貼る必要がある場合があります。
 * エンクロージャで構成する場合、ラックは UL 60950-1 および IEC 60950-1/EN 60950-1 の安全要件を満たす必要があります。
 
-![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
+![通告のアイコン](./media/storsimple-safety/IC740881.png) **通告:**
 
 ラック システムを適切に冷却する方法
 
@@ -123,7 +126,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * 交換品をすぐに取り付けることができない場合、PCM を取り外さないでください。 すべてのモジュールが適切に配置されていなければ、エンクロージャを動作させてはなりません。
 
 ## <a name="electrostatic-discharge-esd-precautions"></a>静電気 (ESD) に関する注意事項
-![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
+![通告のアイコン](./media/storsimple-safety/IC740881.png) **通告:**
 
 次の ESD に関する注意事項を守ってください。
 
@@ -143,7 +146,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 * 分解、破砕、または摂氏 60 度 (華氏 140 度) 以上に熱したり、焼却したりしないでください。 PCM のバッテリを交換するときは、指定されたバッテリのみを使用してください。 別のバッテリを使用すると、火災または爆発の危険があります。
 * 電源からバッテリを取り外す場合は、バッテリの保護エンド キャップを使用してください。
 
-![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
+![通告のアイコン](./media/storsimple-safety/IC740881.png) **通告:**
 
 バッテリを船舶または飛行機で輸送する場合は、[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) にある IATA Lithium Battery Guidance のドキュメントに従ってください
 

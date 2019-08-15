@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: fa0a88ce3f74c20ab36931a6a78f8265bdb9d8be
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 98d33dd1aad726d4da8499006166dfd2c043378f
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876234"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977148"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -123,7 +123,7 @@ Azure CLI を使用して GUID を追加するときは、**AZURE_HTTP_USER_AGEN
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-詳細については、[Azure SDK for Go](https://docs.microsoft.com/go/azure/) に関するページを参照してください。
+詳細については、[Azure SDK for Go](https://docs.microsoft.com/azure/go/) に関するページを参照してください。
 
 ## <a name="use-terraform"></a>Terraform を使用する
 

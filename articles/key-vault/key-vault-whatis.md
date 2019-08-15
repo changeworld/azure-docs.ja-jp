@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 43794b8ef4e0272362c7695eda75f5af36a77d1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2786ec387d528e1593e2687d906060f8a2673a8c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683462"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934472"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -56,7 +56,7 @@ Azure Key Vault は、シークレットを安全に保管し、それにアク�
 ## <a name="authentication"></a>Authentication
 Key Vault で操作を行うには、まず、それを認証する必要があります。 次の 3 つの方法で Key Vault を認証します。
 
-- [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview):Azure の仮想マシンにアプリをデプロイするときに、Key Vault にアクセスできる仮想マシンに ID を割り当てることができます。 [他の Azure リソース](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)にも ID を割り当てることができます。 この手法の利点は、最初のシークレットのローテーションがアプリやサービスで管理されないことにあります。 Azure では、ID が自動的にローテーションされます。 ベスト プラクティスとして、この手法をお勧めします。 
+- [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md):Azure の仮想マシンにアプリをデプロイするときに、Key Vault にアクセスできる仮想マシンに ID を割り当てることができます。 [他の Azure リソース](../active-directory/managed-identities-azure-resources/overview.md)にも ID を割り当てることができます。 この手法の利点は、最初のシークレットのローテーションがアプリやサービスで管理されないことにあります。 Azure では、ID が自動的にローテーションされます。 ベスト プラクティスとして、この手法をお勧めします。 
 - **サービス プリンシパルと証明書**:サービス プリンシパルと、Key Vault にアクセスできる関連証明書を使用することができます。 アプリケーションの所有者または開発者が証明書をローテーションする必要があるため、この手法はお勧めできません。
 - **サービス プリンシパルとシークレット:** サービス プリンシパルとシークレットを使用して Key Vault に対する認証を行うことはできますが、これはお勧めできません。 Key Vault に対する認証で使用されるブートストラップ シークレットを自動的にローテーションするのは困難です。
 

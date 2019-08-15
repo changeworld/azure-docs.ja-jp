@@ -7,15 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: bc183cb8ac2155b8dd31dc603d70506ad3d5e20a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e54bc91ff60ce4f3c2340282410923225601df4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65797479"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883905"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 
@@ -351,7 +350,7 @@ search=Spacious, air-condition* +"Ocean view"
 }
 ~~~~
 
-文書 1 は、クエリに対して最も高い関連度で一致しています。なぜなら、*spacious* という単語と *ocean view* という必須のフレーズの両方が description フィールドに出現するためです。 その他の 2 つの文書は、*ocean view* しか一致していません。 しかし文書 2 と文書 3 は、クエリに対して同じように一致しているにもかかわらず、関連度スコアが異なるのはなぜでしょうか。 これは、スコア付けの式の構成要素が TF/IDF だけではないためです。 この場合、文書 3 の方が、description が短いために、少しだけ高いスコアが割り当てられています。 フィールドの長さやその他の要因が関連度スコアに与える影響については、[Lucene の実際に役立つスコア付けの式](https://lucene.apache.org/core/4_0_0/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html)に関するページを参照してください。
+文書 1 は、クエリに対して最も高い関連度で一致しています。なぜなら、*spacious* という単語と *ocean view* という必須のフレーズの両方が description フィールドに出現するためです。 その他の 2 つの文書は、*ocean view* しか一致していません。 しかし文書 2 と文書 3 は、クエリに対して同じように一致しているにもかかわらず、関連度スコアが異なるのはなぜでしょうか。 これは、スコア付けの式の構成要素が TF/IDF だけではないためです。 この場合、文書 3 の方が、description が短いために、少しだけ高いスコアが割り当てられています。 フィールドの長さやその他の要因が関連度スコアに与える影響については、[Lucene の実際に役立つスコア付けの式](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html)に関するページを参照してください。
 
 一部の検索の種類 (ワイルドカード、プレフィックス、正規表現) は、文書全体のスコアに対して常に一定のスコアをもたらします。 これによって、ランクには影響を与えずに、クエリ拡張によって見つかった一致を結果に反映することができます。 
 

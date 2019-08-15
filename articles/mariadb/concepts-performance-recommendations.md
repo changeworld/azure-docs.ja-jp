@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a2f9b7597022822272692d20976e1da654b9d524
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: b363a994024b4a53703b6107ef4190129e900547
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462047"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950649"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のパフォーマンスの推奨事項
 
 **適用対象:** Azure Database for MariaDB 10.2
 
-> [!NOTE]
+> [!IMPORTANT]
 > パフォーマンスの推奨事項はプレビュー段階にあります。
 
 パフォーマンスの推奨事項機能では、データベースを分析して、パフォーマンスの向上に役立つカスタマイズされた提案が作成されます。 推奨事項を生成するために、分析ではスキーマなどのさまざまなデータベースの特性に注目します。 パフォーマンスに関する推奨事項機能をフル活用するには、サーバー上で[クエリ ストア](concepts-query-store.md)を有効にしてください。 パフォーマンス スキーマがオフの場合、クエリ ストアをオンにすると、この機能に必要な performance_schema とパフォーマンス スキーマ インストルメントのサブセットが有効になります。 パフォーマンスに関する推奨事項を実装した後は、パフォーマンスをテストし、変更の影響を評価する必要があります。
@@ -52,4 +52,4 @@ Azure portal の MariaDB サーバーに関するページで、メニュー バ
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Database for MariaDB での[監視とチューニング](concepts-monitoring.md)の詳細を確認する。
+- Azure Database for MariaDB での[監視およびチューニング](concepts-monitoring.md)についてさらに学習する。

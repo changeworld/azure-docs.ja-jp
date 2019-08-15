@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e31db74807b850b3d8cb8fc057e94e98db18fca2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 87acc6e8c561349b734bd9cd98300b65e730abe7
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780621"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928086"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -36,7 +36,7 @@ ms.locfileid: "68780621"
 
   - [Azure の開発者ガイド](https://azure.microsoft.com/campaigns/developer-guide/)では、Azure の使用を開始する方法を説明しています。 このガイドでは、アプリケーションの実行、データの格納、インテリジェンスの組み込み、IoT アプリの構築、およびソリューションのデプロイを、より効率的かつ安全な方法で行うために使用できるサービスについて説明しています。
 
-  - [Azure 開発者向けファースト ステップ ガイド](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide)では、開発のニーズに対応するために Azure プラットフォームの使用を検討している開発者に必要不可欠な情報を提供しています。
+  - [Azure 開発者向けファースト ステップ ガイド](../../guides/developer/azure-developer-guide.md)では、開発のニーズに対応するために Azure プラットフォームの使用を検討している開発者に必要不可欠な情報を提供しています。
 
   - [SDK/ツール](https://docs.microsoft.com/azure/index#pivot=sdkstools)では、Azure で使用できるツールについて説明しています。
 
@@ -66,7 +66,7 @@ ms.locfileid: "68780621"
 
   - アプリケーションには機密データが含まれているか?
 
-  - アプリケーションで収集または格納するデータは、[米国連邦金融機関検査協議会 (FFIEC)](https://docs.microsoft.com/azure/security/blueprints/ffiec-analytics-overview) や [Payment Card IndustryData Security Standards (PCI DSS)](https://docs.microsoft.com/azure/security/blueprints/pcidss-analytics-overview) などの業界標準およびコンプライアンス プログラムに準拠する必要があるデータか?
+  - アプリケーションで収集または格納するデータは、[米国連邦金融機関検査協議会 (FFIEC)](../blueprints/ffiec-analytics-overview.md) や [Payment Card IndustryData Security Standards (PCI DSS)](../blueprints/pcidss-analytics-overview.md) などの業界標準およびコンプライアンス プログラムに準拠する必要があるデータか?
 
   - アプリケーションで収集または含まれている個人や顧客の機密データは、そのままで、または他の情報と共に使用することで、個人を特定したり、接触したり、探し当てたりできる機密データか?
 
@@ -129,13 +129,13 @@ OWASP の上位 10 件は、Web アプリケーションに対する重大なセ
 Microsoft は、Azure でのアプリケーションの開発に使用できるさまざまな[言語、フレームワーク、およびツール](https://docs.microsoft.com/azure/index#pivot=sdkstools&panel=sdkstools-all)を提供しています。 たとえば、[.NET および .NET Core 開発者向けの Azure](https://docs.microsoft.com/dotnet/azure/) です。 提供されている言語とフレームワークごとに、すぐに使用を開始するのに役立つクイック スタート、チュートリアル、および API リファレンスがあります。
 
 Azure は、Web サイトと Web アプリケーションのホストに使用できるさまざまなサービスを提供しています。 これらのサービスにより、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、使い慣れた言語で開発を行うことができます。
-[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (Web Apps) はこれらのサービスの 1 つです。
+[Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) はこれらのサービスの 1 つです。
 
 Web Apps は、アプリケーションに Microsoft Azure の機能を追加します。 これには、セキュリティ、負荷分散、自動スケール、および自動管理が含まれます。 また、パッケージ管理、ステージング環境、カスタム ドメイン、SSL 証明書、および Azure DevOps、GitHub、Docker Hub およびその他のソースからの継続的デプロイなど、Web Apps の DevOps 機能を利用することもできます。
 
 Azure は、Web サイトと Web アプリケーションのホストに使用できるその他のサービスを提供しています。 ほとんどの場合は、Web Apps が最適な方法になります。 マイクロサービス アーキテクチャの場合は、[Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric) を検討してください。
 また、コードの実行に使用する VM をより細かく制御する必要がある場合は、[Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) の利用をご検討ください。
-これらの Azure サービスから適切なサービスを選択する方法の詳細については、「[Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)」を参照してください。
+これらの Azure サービスから適切なサービスを選択する方法の詳細については、「[Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較](/azure/architecture/guide/technology-choices/compute-decision-tree)」を参照してください。
 
 ### <a name="apply-updates-to-components"></a>コンポーネントに更新を適用する
 
@@ -147,18 +147,18 @@ Azure は、Web サイトと Web アプリケーションのホストに使用�
 
 脅威モデリングは、ビジネスやアプリケーションに対する潜在的なセキュリティ上の脅威を特定して、確実に適切な軽減策を用意するプロセスです。 SDL には、潜在的な問題の解決が比較的容易でコスト効率に優れている場合は、設計フェーズでチームが脅威モデリングに参加すべきと規定されています。 設計フェーズで脅威モデリングを使用すれば、開発の総コストを大幅に削減できます。
 
-脅威モデリングのプロセスの促進を支援するために、Microsoft では、セキュリティのエキスパートではない人を念頭に置いて [SDL Threat Modeling Tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) を設計しました。 このツールは、脅威モデルの作成と分析の方法についての明確なガイダンスを提供することで、すべての開発者がより簡単に脅威モデリングを行えるようにします。
+脅威モデリングのプロセスの促進を支援するために、Microsoft では、セキュリティのエキスパートではない人を念頭に置いて [SDL Threat Modeling Tool](threat-modeling-tool.md) を設計しました。 このツールは、脅威モデルの作成と分析の方法についての明確なガイダンスを提供することで、すべての開発者がより簡単に脅威モデリングを行えるようにします。
 
 アプリケーションの設計をモデリングし、すべての信頼境界を超える [STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy) 脅威 (スプーフィング、改ざん、否認、情報漏えい、サービス拒否、および特権の昇格) を列挙することは、早い段階で設計エラーを検出するための効果的な方法であると証明されています。 次の表は STRIDE 脅威の一覧と Azure が提供する機能を使用した軽減策の例です。 これらの軽減策はあらゆる状況で機能するわけではありません。
 
 | Threat | セキュリティ プロパティ | 潜在的な Azure プラットフォームの軽減策 |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | なりすまし               | Authentication        | [HTTPS 接続を要求する](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
-| 改ざん              | 整合性             | SSL/TLS 証明書を検証する。 SSL/TLS を使用するアプリケーションは、接続先エンティティの X.509 証明書を完全に検証する必要があります。 [x509 証明書を管理](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)するには、Azure Key Vault 証明書を使用します。 |
+| 改ざん              | 整合性             | SSL/TLS 証明書を検証する。 SSL/TLS を使用するアプリケーションは、接続先エンティティの X.509 証明書を完全に検証する必要があります。 [x509 証明書を管理](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)するには、Azure Key Vault 証明書を使用します。 |
 | 否認            | 否認防止       | Azure の[監視と診断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)を有効にする。|
-| 情報漏えい | 機密情報       | [保存中](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)と[転送中](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit)の機密データを暗号化する。 |
-| サービス拒否      | 可用性          | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 [Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview#next-steps) をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
-| 特権の昇格 | Authorization         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) を使用します。|
+| 情報漏えい | 機密情報       | [保存中](../fundamentals/encryption-atrest.md)と[転送中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)の機密データを暗号化する。 |
+| サービス拒否      | 可用性          | 潜在的なサービス拒否状態のパフォーマンス メトリックを監視する。 接続のフィルターを実装する。 [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps) をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。|
+| 特権の昇格 | Authorization         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) を使用します。|
 
 ### <a name="reduce-your-attack-surface"></a>攻撃の対象となる領域を減らす
 
@@ -203,21 +203,21 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 #### <a name="enforce-multi-factor-authentication-for-users"></a>多要素認証をユーザーに適用する
 
-2 要素認証を使用します。 2 要素認証はユーザー名や認証パスワードの種類に固有のセキュリティ脆弱性が回避されるため、認証と承認において現在標準になっています。 Azure 管理インターフェイス (Azure portal/リモート PowerShell) と、顧客に提供されるサービスへのアクセスは、[Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication) を使用するように設計、構成する必要があります。
+2 要素認証を使用します。 2 要素認証はユーザー名や認証パスワードの種類に固有のセキュリティ脆弱性が回避されるため、認証と承認において現在標準になっています。 Azure 管理インターフェイス (Azure portal/リモート PowerShell) と、顧客に提供されるサービスへのアクセスは、[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) を使用するように設計、構成する必要があります。
 
 #### <a name="use-strong-authentication-and-authorization-platforms"></a>強力な認証と承認のプラットフォームを使用する
 
-カスタム コードではなく、プラットフォームが提供する認証と承認のメカニズムを使用するようにします。 これは、カスタム認証コードの開発ではエラーが生じやすいためです。 商用コード (たとえば Microsoft のコード) は、通常はセキュリティが徹底的にレビューされています。 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は ID とアクセスを管理するための Azure ソリューションです。 安全な開発には、Azure AD の以下のツールとサービスが役立ちます。
+カスタム コードではなく、プラットフォームが提供する認証と承認のメカニズムを使用するようにします。 これは、カスタム認証コードの開発ではエラーが生じやすいためです。 商用コード (たとえば Microsoft のコード) は、通常はセキュリティが徹底的にレビューされています。 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) は ID とアクセスを管理するための Azure ソリューションです。 安全な開発には、Azure AD の以下のツールとサービスが役立ちます。
 
-- [Azure AD ID プラットフォーム (開発者向けの Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) は、開発者がユーザーを安全にサインインさせるアプリのビルドに使用する、クラウドの ID サービスです。 Azure AD は、シングル テナント アプリと基幹業務 (LOB) アプリを構築する開発者、およびマルチテナント アプリの開発を目指す開発者を支援します。 Azure AD を使用してビルドされるアプリでは、基本的なサインイン機能が得られることに加え、Microsoft の API と Azure AD プラットフォーム上に構築されたカスタム API を呼び出すことができます。 Azure AD ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
+- [Azure AD ID プラットフォーム (開発者向けの Azure AD)](../../active-directory/develop/about-microsoft-identity-platform.md) は、開発者がユーザーを安全にサインインさせるアプリのビルドに使用する、クラウドの ID サービスです。 Azure AD は、シングル テナント アプリと基幹業務 (LOB) アプリを構築する開発者、およびマルチテナント アプリの開発を目指す開発者を支援します。 Azure AD を使用してビルドされるアプリでは、基本的なサインイン機能が得られることに加え、Microsoft の API と Azure AD プラットフォーム上に構築されたカスタム API を呼び出すことができます。 Azure AD ID プラットフォームでは、OAuth 2.0 や OpenID Connect など業界標準のプロトコルがサポートされています。
 
-- [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/) は、アプリケーション使用時に顧客がサインアップ、サインイン、プロファイル管理の方法をカスタマイズして制御するために使用できる ID 管理サービスです。 ここでは、特に iOS、Android、.NET 用に開発されたアプリケーションが対象です。 Azure AD B2C は、これらのアクションを可能にする一方で、顧客 ID を保護します。
+- [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) は、アプリケーション使用時に顧客がサインアップ、サインイン、プロファイル管理の方法をカスタマイズして制御するために使用できる ID 管理サービスです。 ここでは、特に iOS、Android、.NET 用に開発されたアプリケーションが対象です。 Azure AD B2C は、これらのアクションを可能にする一方で、顧客 ID を保護します。
 
 #### <a name="apply-the-principle-of-least-privilege"></a>最小特権の原則を適用する
 
 [最小特権](https://en.wikipedia.org/wiki/Principle_of_least_privilege)の概念は、ユーザーに、自分のジョブ以上のことを実行しないために必要な正確なアクセス権と制御を提供することを意味します。
 
-ソフトウェア開発者にドメイン管理者権限は必要でしょうか。 管理アシスタントに、自分のパーソナル コンピューターに対する管理制御へのアクセス権は必要でしょうか。 ソフトウェアへのアクセス権を評価することもまったく同様です。 [ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) を使用してユーザーにアプリケーションのさまざまな機能と権限を付与する場合、すべてのユーザーがすべてにアクセスできるようにするわけではありません。 アクセスをロールごとに必要なものに制限することで、セキュリティの問題が発生するリスクを制限します。
+ソフトウェア開発者にドメイン管理者権限は必要でしょうか。 管理アシスタントに、自分のパーソナル コンピューターに対する管理制御へのアクセス権は必要でしょうか。 ソフトウェアへのアクセス権を評価することもまったく同様です。 [ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を使用してユーザーにアプリケーションのさまざまな機能と権限を付与する場合、すべてのユーザーがすべてにアクセスできるようにするわけではありません。 アクセスをロールごとに必要なものに制限することで、セキュリティの問題が発生するリスクを制限します。
 
 アプリケーションがそのアクセス パターン全体を通して[最小特権](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications)を適用するようにしてください。
 
@@ -226,7 +226,7 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 #### <a name="implement-just-in-time-access"></a>Just-In-Time アクセスを実装する
 
-*Just-In-Time* (JIT) アクセスを実装して、権限が公開される時間をさらに短縮します。 以下のことを実行するには、[Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#stage-3-build-visibility-and-take-full-control-of-admin-activity) を使用します。
+*Just-In-Time* (JIT) アクセスを実装して、権限が公開される時間をさらに短縮します。 以下のことを実行するには、[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity) を使用します。
 
 - ユーザーに JIT のみを必要とするアクセス許可を付与します。
 - 権限が自動的に取り消される、短縮された期間のロールを割り当てます。
@@ -242,7 +242,7 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 キーや資格情報の紛失は、よくある問題です。 資格情報やその他のシークレットを紛失するよりも悪い唯一のことは、権限のない第三者がキーや資格情報にアクセスすることです。 攻撃者は、自動化された方法や手動の方法を利用して、GitHub などのコード レポジトリに格納されているキーやシークレットを見つける可能性があります。 これらのパブリックなコード レポジトリやその他のサーバーには、キーやシークレットを格納しないでください。
 
-キー、証明書、シークレット、および接続文字列は、常にキー管理ソリューションに格納してください。 キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用できます。 Azure では、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) によりクラウドで HSM を提供しています。
+キー、証明書、シークレット、および接続文字列は、常にキー管理ソリューションに格納してください。 キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用できます。 Azure では、[Azure Key Vault](../../key-vault/key-vault-whatis.md) によりクラウドで HSM を提供しています。
 
 Azure Key Vault は*シークレット ストア*であり、アプリケーション シークレットを格納するための一元的なクラウド サービスです。 Key Vault は、アプリケーションのシークレットを中央の 1 か所に保存し、アクセスをセキュリティで保護し、アクセス許可を制御し、アクセスをログに記録することで、機密データを保護します。
 
@@ -267,7 +267,7 @@ Azure Key Vault は*シークレット ストア*であり、アプリケーシ�
 #### <a name="use-encryption"></a>暗号化を使用する
 
 データの保護は、セキュリティ戦略の重要な部分である必要があります。
-データがデータベースに格納されている場合、または異なる場所の間で行き来する場合は、[保存データ](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)の暗号化 (データベース内にある場合) と[転送中のデータ](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices#protect-data-in-transit)の暗号化 (ユーザー、データベース、API、またはサービス エンドポイントの間で転送中の場合) を使用します。 データの交換には、常に SSL/TLS プロトコルを使うことをお勧めします。 暗号化には必ず最新バージョンの TLS (現時点ではバージョン 1.2) を使用してください 。
+データがデータベースに格納されている場合、または異なる場所の間で行き来する場合は、[保存データ](../fundamentals/encryption-atrest.md)の暗号化 (データベース内にある場合) と[転送中のデータ](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)の暗号化 (ユーザー、データベース、API、またはサービス エンドポイントの間で転送中の場合) を使用します。 データの交換には、常に SSL/TLS プロトコルを使うことをお勧めします。 暗号化には必ず最新バージョンの TLS (現時点ではバージョン 1.2) を使用してください 。
 
 #### <a name="avoid-hard-coding"></a>ハード コーディングしない
 
@@ -277,7 +277,7 @@ Azure Key Vault は*シークレット ストア*であり、アプリケーシ�
 
 基本的には、開発プロジェクトに含まれるものはすべて、デプロイ時に公開されると考えてください。 プロジェクトにはいかなる機密データも含めないでください。
 
-[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) については既に説明しました。 Key Vault を使用すれば、キーやパスワードなどのシークレットをハードコーディングするのではなく、格納することができます。 Key Vault を Azure リソースのマネージド ID と組み合わせて使用すると、Azure の Web アプリで、ソース管理や構成にシークレットを格納することなく、シークレットの構成値に簡単かつ安全にアクセスすることができます。 詳細については、「[Azure Key Vault を使用してサーバー アプリでシークレットを管理する](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)」を参照してください。
+[Azure Key Vault](../../key-vault/key-vault-whatis.md) については既に説明しました。 Key Vault を使用すれば、キーやパスワードなどのシークレットをハードコーディングするのではなく、格納することができます。 Key Vault を Azure リソースのマネージド ID と組み合わせて使用すると、Azure の Web アプリで、ソース管理や構成にシークレットを格納することなく、シークレットの構成値に簡単かつ安全にアクセスすることができます。 詳細については、「[Azure Key Vault を使用してサーバー アプリでシークレットを管理する](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)」を参照してください。
 
 ### <a name="implement-fail-safe-measures"></a>フェールセーフ対策を実装する
 
@@ -299,7 +299,7 @@ Azure Key Vault は*シークレット ストア*であり、アプリケーシ�
 
 - 例外はログに記録され、フォレンジクスやインシデント対応チームが調査するのに十分な情報を提供するようにします。
 
-[Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) は、依存システムが原因となる[エラーと例外の処理](https://docs.microsoft.com/azure/logic-apps/logic-apps-exception-handling)のための最上級のエクスペリエンスを提供します。 Logic Apps を使用すると、企業や組織の全体でアプリ、データ、システム、サービスを統合するタスクとプロセスを自動化するワークフローを作成することができます。
+[Azure Logic Apps](../../logic-apps/logic-apps-overview.md) は、依存システムが原因となる[エラーと例外の処理](../../logic-apps/logic-apps-exception-handling.md)のための最上級のエクスペリエンスを提供します。 Logic Apps を使用すると、企業や組織の全体でアプリ、データ、システム、サービスを統合するタスクとプロセスを自動化するワークフローを作成することができます。
 
 ### <a name="use-logging-and-alerting"></a>ログ記録と警告機能を使用する
 

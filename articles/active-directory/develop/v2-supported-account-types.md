@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c4c9b2470960a3d0b2fa337f2d8d3542c1242d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ad3cd612200dc33fe37036146b00f52073403ecc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834654"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852040"
 ---
 # <a name="supported-account-types"></a>サポートされているアカウントの種類
 

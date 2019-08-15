@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: asgang
-ms.openlocfilehash: 19a1e13815f1d83f13392892dd9c87b84a40a1c1
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: 7559bfd3d97f7b430b92578473501b519eb0a07f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551689"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934556"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure VM を別の Azure リージョンにレプリケートする
 
@@ -123,6 +123,6 @@ Site Recovery によって使用される既定のターゲット設定を変更
 >初期レプリケーションの間は、状態の更新に少し時間がかかり、進捗が見られない場合があります。 **[更新]** ボタンをクリックして、最新の状態を取得します。
 >
 
-# <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 
 テスト フェールオーバーの実行に関する[詳細を確認](site-recovery-test-failover-to-azure.md)する。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ab633ca47f684688019b1313de61571252760a20
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60497422"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967750"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -34,7 +34,7 @@ ms.locfileid: "60497422"
 - [Azure DevOps Projects](../devops-project/overview.md) により、お客様の既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
 - [お客様の DevOps リリース パイプラインに継続的監視](../azure-monitor/app/continuous-monitoring.md)を取り入れると、監視データに基づいてお客様のデプロイをゲート管理したりロールバックしたりできます。
 - [Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) では、Azure Application Insights を使用して Windows 上のライブ .NET アプリをインストルメント化できます。お客様のコードに変更を加えたり、再デプロイしたりする必要はありません。
-- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](../azure-monitor/learn/quick-monitor-portal.md) 向け、[Java](../azure-monitor/learn/java-quick-start.md) 向け、[Node.js](../azure-monitor/learn/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](../azure-monitor/app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](../azure-monitor/app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
+- お客様のアプリケーションのコードにアクセスできる場合は、[.NET](../azure-monitor/learn/quick-monitor-portal.md) 向け、[Java](../azure-monitor/app/java-get-started.md) 向け、[Node.js](../azure-monitor/learn/nodejs-quick-start.md) 向け、または[その他のプログラミング言語](../azure-monitor/app/platforms.md)向けの Azure Monitor Application Insights SDK をインストールして、[Application Insights](../azure-monitor/app/app-insights-overview.md) を使用した完全な監視を有効にします。 これにより、お客様のアプリケーションとビジネスに適したカスタム イベント、メトリック、ページ ビューを指定できます。
 
 
 

@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e4ed781544d3cd11e8494e40589676adf57a9c75
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 1827bfdbebaf1ffa17c7c631a94aa8fc6471d13b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405125"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854098"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Custom Search エクスペリエンスを構成する
 
@@ -159,5 +159,5 @@ Web ページを一番上にピン留めする方法は 2 つあります。
 
 - [カスタム検索の呼び出し](./search-your-custom-view.md)
 - [ホストされている UI エクスペリエンスの構成](./hosted-ui.md)
-- [装飾マーカーを使用してテキストを強調表示する](./hit-highlighting.md)
+- [装飾マーカーを使用してテキストを強調表示する](../bing-web-search/hit-highlighting.md)
 - [Web ページのページング](./page-webpages.md)
