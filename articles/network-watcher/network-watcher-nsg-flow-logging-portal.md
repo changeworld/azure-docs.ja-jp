@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     |Setting|値|
     |---|---|
-    |EnableAdfsAuthentication|myVm|
+    |Name|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     |Subscription| サブスクリプションを選択します。|
@@ -88,7 +88,7 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 
     | Setting        | 値                                                        |
     | ---            | ---   |
-    | EnableAdfsAuthentication           | 3 ～ 24 文字の長さで、小文字の英数字のみを含めることができ、すべての Azure Storage アカウントで一意である必要があります。                                                               |
+    | Name           | 3 ～ 24 文字の長さで、小文字の英数字のみを含めることができ、すべての Azure Storage アカウントで一意である必要があります。                                                               |
     | Location       | **[米国東部]** を選択します。                                           |
     | Resource group | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します |
 
