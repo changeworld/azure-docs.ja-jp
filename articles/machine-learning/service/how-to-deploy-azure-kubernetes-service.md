@@ -22,8 +22,8 @@ ms.locfileid: "68694399"
 Azure Machine Learning service を使って Azure Kubernetes Service (AKS) 上の Web サービスとしてモデルをデプロイする方法について説明します。 Azure Kubernetes Service は高スケールの運用デプロイに適してします。 次のいずれかの機能が必要な場合は、Azure Kubernetes Service を使用します。
 
 - __高速の応答時間__。
-- デプロイされたサービスの__自動スケール__。
-- GPU や Field Programmable Gate Array (FPGA) などの__ハードウェア アクセラレーション__ オプション。
+- デプロイされたサービスの __自動スケール__。
+- GPU や Field Programmable Gate Array (FPGA) などの __ハードウェア アクセラレーション__ オプション。
 
 > [!IMPORTANT]
 > クラスターのスケーリングは Azure Machine Learning SDK では提供されません。 AKS クラスターでのノードのスケーリングの詳細については、「[Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする](../../aks/scale-cluster.md)」をご覧ください。
@@ -60,7 +60,7 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 
 AKS クラスターの作成またはアタッチは、お使いのワークスペースでの 1 回限りのプロセスです。 複数のデプロイでこのクラスターを再利用できます。 クラスターまたはそれを含むリソース グループを削除した場合、次回デプロイする必要があるときに、新しいクラスターを作成する必要があります。 複数の AKS クラスターをワークスペースに接続できます。
 
-運用のためではなく__開発__、__検証__、__テスト__のための AKS クラスターを作成する場合は、__クラスターの目的__として__開発テスト__を指定できます。
+運用のためではなく __開発__、__検証__、__テスト__ のための AKS クラスターを作成する場合は、__クラスターの目的__ として __開発テスト__ を指定できます。
 
 次の例では、SDK と CLI を使って新しい AKS クラスターを作成する方法を示します。
 
@@ -174,7 +174,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ## <a name="deploy-to-aks"></a>AKS にデプロイする
 
-Azure Kubernetes Service にモデルをデプロイするには、必要なコンピューティング リソースを記述した__デプロイ構成__を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した__推論構成__も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+Azure Kubernetes Service にモデルをデプロイするには、必要なコンピューティング リソースを記述した __デプロイ構成__ を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した __推論構成__ も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="using-the-sdk"></a>SDK を使用する
 
