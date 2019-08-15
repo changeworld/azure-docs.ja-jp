@@ -74,7 +74,7 @@ q - プレビューされる URL を特定するクエリ
 ## <a name="query-parameters"></a>クエリ パラメーター
 要求には次のクエリ パラメーターを含めることができます。 必須のパラメーターについては、必須の列を参照してください。 クエリ パラメーターは URL エンコードする必要があります。 クエリは、HTTP または HTTPS スキームを備えた絶対 URL である必要があります。Microsoft は相対 URL や他のスキーム (ftp:// など) をサポートしません。
 
-|EnableAdfsAuthentication|値|Type|必須|
+|名前|値|Type|必須|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 URL Preview API でサポートされるのは米国地域および英語のみです。<br /><br />|string|はい|
 |<a name="query" />q|プレビューする URL|string|はい|
@@ -103,7 +103,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="errorresponse"></a>ErrorResponse
 要求が失敗したときの応答に含まれている最上位レベルのオブジェクト。
 
-|EnableAdfsAuthentication|値|Type|
+|名前|値|Type|
 |----------|-----------|----------|
 |_type|種類のヒント。|string|
 |<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[エラー](#error)[]|
@@ -111,7 +111,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 ### <a name="webpage"></a>WebPage
 プレビューの Web ページに関する情報を定義します。
 
-|EnableAdfsAuthentication|値|Type|
+|名前|値|Type|
 |----------|-----------|----------|
 |名前|ページ タイトル (必ずしも HTML タイトルではありません)|string|
 |url|実際にクロールされた URL (要求はリダイレクトされた可能性があります)|string|
@@ -120,7 +120,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 |primaryImageOfPage/contentUrl|プレビューに含まれる代表的な画像への URL|string|
 
 ### <a name="identifiable"></a>Identifiable
-|EnableAdfsAuthentication|値|Type|
+|名前|値|Type|
 |-------------|-----------------|----------|
 |id|リソース識別子|string|
 

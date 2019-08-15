@@ -34,7 +34,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 
 
 ## <a name="methods"></a>メソッド
-| EnableAdfsAuthentication |    説明|
+| 名前 |    説明|
 |:---|:---|
 | GetUserTranslationCounts メソッド | ユーザーによって作成される翻訳の数を取得します。 |
 | GetUserTranslations メソッド | ユーザーによって作成される翻訳を取得します。 |

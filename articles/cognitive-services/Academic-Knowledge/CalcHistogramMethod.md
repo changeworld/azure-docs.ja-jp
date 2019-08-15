@@ -31,7 +31,7 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 ## <a name="request-parameters"></a>要求パラメーター
 
-EnableAdfsAuthentication  |値 | 必須  |説明
+名前  |値 | 必須  |説明
 -----------|----------|--------|----------
 **expr**    |テキスト文字列 | はい  |ヒストグラムの計算の対象となるエンティティを指定するクエリ式。
 **model** |テキスト文字列 | いいえ |クエリを実行するモデルの名前を選択します。  現時点では、既定値は *latest* です。
@@ -42,7 +42,7 @@ EnableAdfsAuthentication  |値 | 必須  |説明
 
 ## <a name="response-json"></a>応答 (JSON)
 
-EnableAdfsAuthentication | 説明
+名前 | 説明
 --------|---------
 **expr**  |要求からの expr パラメーター。
 **num_entities** | 一致するエンティティの総数。

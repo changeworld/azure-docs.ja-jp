@@ -45,7 +45,7 @@ Form Recognizer コンテナーのランタイム環境は、`docker run` コマ
 
 この設定は、Azure portal で、**Form Recognizer の [概要]** の **[エンドポイント]** で確認できます。
 
-|必須| EnableAdfsAuthentication | データ型 | 説明 |
+|必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
 |はい| `Billing` | string | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus2.api.cognitive.microsoft.com/` |
 
@@ -74,7 +74,7 @@ Form Recognizer コンテナーには、入力マウントと出力マウント�
 
 ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントのアクセス許可とホストのマウント場所のアクセス許可が競合するために、[ホスト コンピューター](form-recognizer-container-howto.md#the-host-computer)のマウント場所にアクセスできない場合があります。
 
-|省略可能| EnableAdfsAuthentication | データ型 | 説明 |
+|省略可能| 名前 | データ型 | 説明 |
 |-------|------|-----------|-------------|
 |必須| `Input` | string | 入力マウントのターゲット。 既定値は `/input` です。    <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
 |必須| `Output` | string | 出力マウントのターゲット。 既定値は `/output` です。  <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|

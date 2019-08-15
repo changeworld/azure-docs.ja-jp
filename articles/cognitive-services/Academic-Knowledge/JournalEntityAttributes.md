@@ -22,7 +22,7 @@ ms.locfileid: "68704964"
 
 <sub> *次の属性は、定期刊行物エンティティに固有です。(Ty = '2') </sub>
 
-EnableAdfsAuthentication    |説明                            |Type       | Operations
+名前    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 DJN     |定期刊行物の標準化名                |string     |なし
