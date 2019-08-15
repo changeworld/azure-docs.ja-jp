@@ -7,16 +7,16 @@ author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 04/30/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 24ef94b702d11977df4e1ca2dab181f5c14a00df
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df2aef9a6401d0a3a1807fb7e869f03f9b7bcd36
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564573"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881231"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-javascript"></a>REST API と JavaScript を使用して Computer Vision 機能を使用する
 

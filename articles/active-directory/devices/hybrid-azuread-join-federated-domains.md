@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05c81b5cde9e9c64d2d69bea1d14a18394f31e2a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: de9b50267e0b5c453a8f2a3df607ad7730acd277
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774598"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879454"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -91,6 +91,8 @@ WPAD を使用せずに自分のコンピューター上でプロキシ設定を
 > WinHTTP 設定を使用して自分のコンピューター上でプロキシ設定を構成すると、構成されたプロキシに接続できないコンピューターは、インターネットに接続できなくなります。
 
 組織が認証された送信プロキシ経由でのインターネットへのアクセスを必要とする場合、お使いの Windows 10 コンピューターが送信プロキシに対して正常に認証されることを確認する必要があります。 Windows 10 コンピューターではマシン コンテキストを使用してデバイス登録が実行されるため、マシン コンテキストを使用して送信プロキシ認証を構成する必要があります。 構成要件については、送信プロキシ プロバイダーに確認してください。
+
+デバイスがシステム アカウントで上記の Microsoft リソースにアクセスできるかどうかを確認するには、「[デバイス登録接続のテスト](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0)」スクリプトを使用できます。
 
 ## <a name="configure-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成
 
