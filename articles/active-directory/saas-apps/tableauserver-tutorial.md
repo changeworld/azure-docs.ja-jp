@@ -120,7 +120,7 @@ Tableau Server で Azure AD シングル サインオンを構成するには、
 
 6. **[ユーザー属性と要求]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    | EnableAdfsAuthentication | ソース属性 | 名前空間 |
+    | Name | ソース属性 | 名前空間 |
     | ---------------| --------------- | ----------- |
     | userName | user.userprincipalname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | | |

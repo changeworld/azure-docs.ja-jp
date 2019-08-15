@@ -111,7 +111,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 7. その他に、アマゾン ウェブ サービス (AWS) アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | EnableAdfsAuthentication  | ソース属性  | 名前空間 |
+    | Name  | ソース属性  | 名前空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
