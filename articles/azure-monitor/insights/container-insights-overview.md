@@ -30,7 +30,7 @@ ms.locfileid: "68414136"
  
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>コンテナーに対する Azure Monitor の機能
 
-コンテナーに対する Azure Monitor では、お使いの Kubernetes クラスターやコンテナー ワークロードのパフォーマンスと正常性を把握できる Azure Monnitor のさまざまな機能を利用した、包括的な監視エクスペリエンスを提供しています。 コンテナーに対する Azure Monitor を利用すると、次のことが可能です。
+コンテナーに対する Azure Monitor では、お使いの Kubernetes クラスターやコンテナー ワークロードのパフォーマンスと正常性を把握できる Azure Monitor のさまざまな機能を利用した、包括的な監視エクスペリエンスを提供しています。 コンテナーに対する Azure Monitor を利用すると、次のことが可能です。
 
 * ノードで実行されている AKS コンテナーと、そのプロセッサおよびメモリの平均使用率を特定します。 この知識は、リソースのボトルネックを特定するのに役立ちます。
 * Azure Container Instances でホストされているコンテナー グループとそのコンテナーのプロセッサおよびメモリ使用率を特定します。  
