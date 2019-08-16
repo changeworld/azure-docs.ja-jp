@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 730f39bf0b05ef33bbbca150532f96f1e495a9ed
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302344"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815725"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルのハイパーパラメーターを調整する
 
@@ -45,7 +45,7 @@ Azure Machine Learning では、ハイパーパラメーター探索を効率的
 
 ### <a name="types-of-hyperparameters"></a>ハイパーパラメーターの種類
 
-各ハイパーパラメーターは、不連続または連続のいずれかです。
+各ハイパーパラメーターは、不連続値でも連続値でもよく、[パラメーター式](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py)で記述された値の分布になります。
 
 #### <a name="discrete-hyperparameters"></a>不連続ハイパーパラメーター 
 
@@ -129,7 +129,7 @@ param_sampling = GridParameterSampling( {
 
 ベイジアン サンプリングを使用する場合、同時実行数は調整プロセスの有効性に影響を与えます。 通常、同時実行数が少ないほど、サンプリングの収束が向上します。これは、並列処理の次数が小さいほど、以前に完了した実行の恩恵を受ける実行数が増えるためです。
 
-ベイジアン サンプリングは、検索空間に対して `choice` および `uniform` 分布のみをサポートしています。 
+ベイジアン サンプリングでは、検索空間に対して `choice`、`uniform`、`quniform` 分布のみがサポートされています。
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
@@ -179,7 +179,7 @@ run_logger.log("accuracy", float(val_accuracy))
 
 ## <a name="specify-early-termination-policy"></a>早期終了ポリシーを指定する
 
-パフォーマンスの良くない実行は早期終了ポリシーで自動的に終了します。 終了により、リソースの無駄がなくなり、このようなリソースは代わりに他のパラメーター構成の探索に使用されます。
+早期終了ポリシーを使用して、パフォーマンスの低い実行を自動的に終了します。 終了により、リソースの無駄がなくなり、このようなリソースは代わりに他のパラメーター構成の探索に使用されます。
 
 早期終了ポリシーを使用すると、ユーザーはポリシーの適用時期を制御する次のパラメーターを構成できます。
 
@@ -246,7 +246,7 @@ policy=None
 
 ### <a name="default-policy"></a>既定のポリシー
 
-ポリシーを指定していない場合、ハイパーパラメーター調整サービスは、すべてのトレーニング実行を完了まで実行します。
+ポリシーを指定しないと、ハイパーパラメーター調整サービスでは、すべてのトレーニング実行が完了まで実行されます。
 
 >[!NOTE] 
 >先のジョブまで終了せずに節約する保守的なポリシーが望ましい場合は、`evaluation_interval` 1 および `delay_evaluation` 5 を指定して中央値の停止ポリシーを使用できます。 これらは保守的な設定であり、(評価データに基づいて) 主要メトリックに関する損失なしで約 25% から 35% の節約を実現できます。

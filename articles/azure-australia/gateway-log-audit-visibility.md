@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 5971fe53f52725a88c484edcc9a5a672fceceb07
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 153b9d503dfece404455fbb7e8cb51c51686ec57
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571091"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824301"
 ---
 # <a name="gateway-logging-auditing-and-visibility-in-azure-australia"></a>Azure Australia でのゲートウェイのログ記録、監査、可視性
 
@@ -149,7 +149,7 @@ Azure Application Gateway は Azure 環境への有効なエントリ ポイン�
 |リソース|Link|
 |---|---|
 |VPN Gateway のドキュメント|[https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway)|
-|オーストラリア政府固有の VPN Gateway ガイダンス|[https://aka.ms/AzGovAUSecurity](https://aka.ms/AzGovAUSecurity)|
+|オーストラリア政府固有の VPN Gateway ガイダンス|[Azure VPN Gateway の構成](vpn-gateway.md)|
 |
 
 ### <a name="azure-firewall"></a>Azure Firewall

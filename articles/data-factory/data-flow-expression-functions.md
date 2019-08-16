@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 0850fb5995902ce82132e813ecb7d4126aff03af
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 03bcde2049178aa5e9c347a3c60aa7be328adbc3
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516749"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716900"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Mapping Data Flow のデータ変換式 
 
@@ -106,6 +106,16 @@ AND 論理演算子。 && と同じです * ``and(true, false) -> false``
 ### <code>ceil</code>
 <code><b>ceil(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
 特定の数値以上の最小の整数を返します * ``ceil(-0.1) -> 0``
+---
+### <code>coalesce</code>
+<code><b>coalesce(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
+一連の入力から、最初の null でない値を返します。 すべての入力は同じ型である必要があります。 * ``coalesce(10, 20) -> 10``
+* ``coalesce(toString(null), toString(null), 'dumbo', 'bo', 'go') -> 'dumbo'``
+---
+### <code>compare</code>
+<code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code><br/><br/>
+同じ型の 2 つの値を比較します。 value1 < value2 の場合は負の整数、value1 == value2 の場合は 0、value1 > value2 の場合は正の値を返します。 * ``(compare(12, 24) < 1) -> true``
+* ``(compare('dumbo', 'dum') > 0) -> true``
 ---
 ### <code>concat</code>
 <code><b>concat(<i>&lt;this&gt;</i> : string, <i>&lt;that&gt;</i> : string, ...) => string</b></code><br/><br/>
@@ -433,6 +443,11 @@ UTC からタイムスタンプに変換します。 必要に応じて、タイ
 ### <code>meanIf</code>
 <code><b>meanIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => number</b></code><br/><br/>
 条件に基づいて、列の値の平均を取得します。 avgIf と同じです * ``meanIf(region == 'West', sales) -> 7523420.234``
+---
+### <code>millisecond</code>
+<code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
+日付のミリ秒の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。
+* ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``
 ---
 ### <code>min</code>
 <code><b>min(<i>&lt;value1&gt;</i> : any) => any</b></code><br/><br/>

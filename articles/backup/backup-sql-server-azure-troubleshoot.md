@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 849065460acda36426f8a594a984ad1cc8590c34
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688835"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827604"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -119,6 +119,19 @@ ms.locfileid: "68688835"
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
 | 自動保護の意図が削除されたか、有効でなくなりました。 | SQL Server インスタンスで自動保護を有効にすると、そのインスタンス内のすべてのデータベースに対して **[バックアップの構成]** のジョブが実行されます。 ジョブの実行中に自動保護を無効にした場合、 **[In-Progress]\(進行中\)** のジョブはこのエラー コードでキャンセルされます。 | 残りすべてのデータベースを保護するために、自動保護をもう一度有効にしてください。 |
+
+### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
+
+| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+|---|---|---|
+24 時間に許容されている操作数の上限に達したため、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 <br> 例: 1 日にトリガーできるバックアップ ジョブの構成数の上限に達した場合、新しい項目に対してバックアップを構成しようとすると、このエラーが表示されます。 | 通常、24 時間経過してから操作を再試行すると、この問題は解決します。 ただし、問題が解決しない場合は、Microsoft サポートにお問い合わせください。
+
+### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
+
+| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+|---|---|---|
+コンテナーが 24 時間の範囲で許可されているこのような操作数の上限に達すると、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 通常、このエラーが発生するのは、ポリシーの変更や自動保護などの大規模な操作が発生した場合です。 CloudDosAbsoluteLimitReached の場合とは異なり、この状態を解決することはできません。実際、Azure Backup サービスでは、対象のすべての項目について内部的に操作が再試行されます。<br> 例: ポリシーで保護されているデータソースが多数あり、そのポリシーを変更しようとすると、保護されている各項目に対して保護ジョブの構成がトリガーされ、そのような操作に対して 1 日に許容されている上限を超えることがあります。| Azure Backup サービスでは、24 時間後にこの操作が自動的に再試行されます。 
+
 
 ## <a name="re-registration-failures"></a>再登録エラー
 

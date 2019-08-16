@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 99bfab5a5f80fc0a49c7cc6405154394391f43e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3a55de2d5f47274ea112e52ddbcc0d946db56470
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60908222"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68775329"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Azure Security Center を活用したインシデント対応
 多くの組織は、攻撃を受けた後にのみセキュリティ インシデントに対応する方法を学習します。 コストを削減し、被害を抑えるためには、攻撃を受ける前にインシデント対応計画を整えておくことが重要です。 Azure Security Center は、インシデント対応のさまざまな段階で利用できます。
@@ -51,12 +51,12 @@ Contoso は最近、いくつかの仮想マシンベースの基幹業務ワー
 
 ![Incident response lifecycle](./media/security-center-incident-response/security-center-incident-response-fig2.png)
 
-Judy はセキュリティ運用担当者です。 彼女の役割には次のものが含まれています。
+Judy はセキュリティ運用担当者です。 その役割には次のものが含まれています。
 
 * 24 時間体制でセキュリティの脅威に対する監視と対応を行う。
 * 必要に応じて、クラウド ワークロード所有者またはセキュリティ アナリストに報告する。
 
-Sam はセキュリティ アナリストです。彼の役割には次のものが含まれています。
+Sam はセキュリティ アナリストです。その役割には次のものが含まれています。
 
 * 攻撃を調査する。
 * 警告を修正する。
@@ -65,7 +65,7 @@ Sam はセキュリティ アナリストです。彼の役割には次のもの
 ご覧のとおり、Judy と Sam は異なる役割を担っており、Security Center の情報を共有して互いに協力する必要があります。
 
 ## <a name="recommended-solution"></a>推奨される解決策
-Judy と Sam は異なる役割を担っているため、自分たちの日々の業務に関連する情報を入手するために Security Center の異なる領域を使用することになります。 Judy は、毎日の監視の一環として**セキュリティの警告**を使用します。
+Judy と Sam は異なる役割を担っているため、自分たちの日々の業務に関連する情報を入手するために Security Center の異なる領域を使用することになります。 Judy は、毎日の監視の一環として**セキュリティのアラート**を使用します。
 
 ![セキュリティのアラート](./media/security-center-incident-response/security-center-incident-response-fig3.png)
 
@@ -75,7 +75,7 @@ Judy は、検出と評価の段階でセキュリティの警告を使用しま
 インシデント対応シナリオで Azure Security Center を利用する方法を説明するために、検出と評価の段階における Judy の手順を確認してから、この問題を診断するために Sam が行う手順を見ていきます。
 
 ### <a name="detect-and-assess-incident-response-stages"></a>インシデント対応の検出と評価の段階
-Judy は Azure Portal にサインインし、Security Center コンソールで作業しています。 日々の監視業務の一環として、優先度の高いセキュリティの警告の確認を開始するために、次の手順を実行しました。
+Judy は Azure Portal にサインインし、Security Center コンソールで作業しています。 日々の監視業務の一環として、優先度の高いセキュリティ アラートの確認を開始するために、次の手順を実行しました。
 
 1. **[セキュリティ通知]** タイルをクリックし、 **[セキュリティ通知]** ブレードにアクセスします。
     ![[セキュリティ通知] ブレード](./media/security-center-incident-response/security-center-incident-response-fig4.png)

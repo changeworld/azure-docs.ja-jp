@@ -9,14 +9,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0130dde483db4563926076f9bf9e641c14b1c117
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 126e33d4bedb56eb479361f16c02e7e167e49392
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688758"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736688"
 ---
-# <a name="restore-azure-vms"></a>Azure VM の復元
+# <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
 この記事では、[Azure Backup](backup-overview.md) Recovery Services コンテナーに格納されている復旧ポイントから Azure VM データを復元する方法について説明します。
 
@@ -112,7 +112,8 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 4. **[復元の構成]** で、 **[OK]** をクリックします。 **[復元]** で **[復元]** をクリックして、復元操作を開始します。
 
-VM の復元中、Azure Backup はストレージ アカウントを使用しません。 ただし、**ディスクの復元**や**インスタント リストア**の場合は、テンプレートを格納するためにストレージ アカウントが使用されます。
+仮想マシンでマネージド ディスクを使用しているときに **[仮想マシンの作成]** オプションを選択した場合、Azure Backup では、指定されたストレージ アカウントは使用されません。 ただし、 **[ディスクの復元]** と **[インスタント リストア]** の場合、ストレージ アカウントはテンプレートを格納するためにのみ使用されます。 指定したリソース グループ内にマネージド ディスクが作成されます。
+仮想マシンでアンマネージド ディスクを使用した場合、それらはストレージ アカウントに対して BLOB として復元されます。
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>テンプレートを使用して復元 VM をカスタマイズする
 
@@ -163,7 +164,7 @@ VM の復元が必要になることがある、一般的なシナリオはい�
 **ゾーンにピン留めされた VM** | Azure Backup は、ゾーンにピン留めされた VM のバックアップと復元をサポートしています。 [詳細情報](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>復元操作を追跡する
-復元操作をトリガーすると、追跡用のジョブがバックアップ サービスによって作成されます。 Azure Backup は、ジョブに関する通知をポータルに表示します。 表示されていない場合、**通知**シンボルをクリックして表示します。
+復元操作をトリガーすると、追跡用のジョブがバックアップ サービスによって作成されます。 Azure Backup は、ジョブに関する通知をポータルに表示します。 表示されない場合は、 **[通知]** シンボルを選択し、 **[すべてのジョブの表示]** を選択して、復元プロセスの状態を確認します。
 
 ![Restore triggered](./media/backup-azure-arm-restore-vms/restore-notification1.png)
 

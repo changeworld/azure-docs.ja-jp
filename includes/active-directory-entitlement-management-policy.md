@@ -5,21 +5,23 @@ services: active-directory
 author: rolyon
 ms.service: active-directory
 ms.topic: include
-ms.date: 05/16/2019
+ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: da4bc51cdd8cdfad8212ee5a288f03874f673c2c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678182"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68817229"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>ポリシー:ディレクトリ内のユーザーの場合
 
 このアクセス パッケージを要求できるディレクトリ内のユーザーを対象としたポリシーが必要な場合は、以下の手順のようにします。  **ディレクトリ内のユーザー**には、内部ユーザーと、別のアクセス パッケージでのエンタイトルメント管理要求または Azure AD B2B での招待によってそのディレクトリに以前に招待された外部ユーザーの両方が含まれます。 ポリシーを定義するときは、個々のユーザーでも、より一般的なユーザー グループでも指定できます。 たとえば、組織には**すべての従業員**のようなグループが既に存在している場合があります。  アクセスを要求できるユーザーに対するポリシーにそのグループが追加されている場合、そのグループのすべてのメンバーがアクセスを要求できます。
 
 1. **[Users who can request access]\(アクセスを要求できるユーザー\)** セクションで、 **[For users in your directory]\(ディレクトリ内のユーザー\)** を選択します。
+
+    **[For users in your directory]\(ディレクトリ内のユーザー\)** 設定には、ディレクトリに追加されたメンバー ユーザーとゲスト ユーザーの両方が含まれていることに注意してください。 ゲスト ユーザーではなくメンバー ユーザーのみを含める場合は、 **[For users in your directory]\(ディレクトリ内のユーザー\)** を選択し、メンバー ユーザーのグループを選択します。 必要に応じて、メンバー ユーザーの動的なグループを作成できます (user.userType -eq "Member")。 詳細については、「[Azure Active Directory の動的グループ メンバーシップ ルール](../articles/active-directory/users-groups-roles/groups-dynamic-membership.md)」を参照してください。
 
 1. **[ユーザーとグループの選択]** セクションで、 **[ユーザーとグループの追加]** をクリックします。
 

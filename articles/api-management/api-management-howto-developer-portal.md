@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: d902a65c4e36ff698e486e2af899d055de1afca0
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638541"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68837907"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Azure API Management での新しい開発者ポータルへのアクセスとそのカスタマイズ
 
@@ -77,6 +77,10 @@ ms.locfileid: "68638541"
 一般公開の目標は、以前のポータルとのシナリオベースの機能パリティを提供することです。 それまでは、プレビュー バージョンでは一部の機能が実装されていない可能性があります。
 
 例外は、古いポータルの "*アプリケーション*" と "*問題*" であり、新しいポータルでは使用できません。 以前のポータルで "*問題*" を使用していて、新しいポータルでも必要な場合は、[専用の GitHub の問題](https://github.com/Azure/api-management-developer-portal/issues/122)にコメントを投稿してください。
+
+### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>バグを見つけました。または機能のリクエストがあります。
+
+これでセットアップは終了です。 [GitHub リポジトリの [Issues]\(問題\) セクション](https://github.com/Azure/api-management-developer-portal/issues)で、フィードバックの提供、機能のリクエストの送信、バグ報告の提出を行うことができます。 ここでは、`community` ラベルでマークされている問題についてフィードバックもぜひお寄せください。
 
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>新しいポータルのコンテンツを環境間で移動する必要があります。 どのようにすればよいですか。またセルフホステッド バージョンを使用する必要がありますか。
 

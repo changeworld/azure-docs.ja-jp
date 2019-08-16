@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: cd377e78abe328814795bb1f75465b090a13e456
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 551f140c22677bea363ad5d8f43bf9670f783a1d
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228364"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725616"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -398,6 +398,28 @@ o- / ...........................................................................
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
+   >[!IMPORTANT]
+   > SUSE Linux Enterprise Server for SAP 15 を使用する場合は、追加のモジュールをアクティブ化し、追加のコンポーネント (Azure Fence Agent を使用するための前提条件) をインストールする必要があることに注意してください。 SUSE のモジュールと拡張機能の詳細については、[説明されているモジュールと拡張機能](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html)のセクションを参照してください。 Azure Python SDK をインストールするには、以下の手順に従います。 
+
+   以降に示した Azure Python SDK のインストール手順は、Suse Enterprise Server for SAP **15** のみを対象としています。  
+
+    - Bring-Your-Own-Subscription を使用している場合は、次の手順に従います。  
+
+    <pre><code>
+    #Activate module PackageHub/15/x86_64
+    sudo SUSEConnect -p PackageHub/15/x86_64
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
+     - 従量課金制サブスクリプションを使用している場合は、次の手順に従います。  
+
+    <pre><code>#Activate module PackageHub/15/x86_64
+    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
 1. **[A]** ホスト名解決を設定します
 
    DNS サーバーを使用するか、すべてのノードの /etc/hosts を変更します。 この例では、/etc/hosts ファイルを使用する方法を示しています。
@@ -443,12 +465,12 @@ o- / ...........................................................................
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]** 他のトランスポートを使用したり、ノードリストを追加したりするために corosync を構成します。 これを構成しないと、クラスターは機能しません。
+1. **[A]** 他のトランスポートを使用したり、ノードリストを追加したりするために corosync を構成します。 そうしないと、クラスターは機能しません。
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   値が無いか、異なる場合は、次の太字の内容をファイルに追加します。 トークンを 30000 に変更してメモリ保持メンテナンスを可能にします。 詳細については、[Linux のこの記事][virtual-machines-linux-maintenance] or [Windows][virtual-machines-windows-maintenance] を参照してください。 また、必ずパラメーター mcastaddr を削除してください。
+   値が無いか、異なる場合は、次の太字の内容をファイルに追加します。 トークンを 30000 に変更してメモリ保持メンテナンスを可能にします。 詳細については、[Linux の場合はこちらの記事][virtual-machines-linux-maintenance]、[Windows の場合はこちらの記事][virtual-machines-windows-maintenance]を参照してください。 また、必ずパラメーター mcastaddr を削除してください。
 
    <pre><code>[...]
      <b>token:          30000

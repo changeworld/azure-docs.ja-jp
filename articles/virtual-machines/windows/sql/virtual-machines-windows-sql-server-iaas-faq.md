@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/12/2018
+ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7f6ec1ee65727fb8c3c7d98f696c288e95ec880a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 4b50b4acf6ea655c40821e7c49824af11aeeb9ab
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876192"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816308"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -121,6 +121,11 @@ ms.locfileid: "67876192"
 1. **SQL VM リソース プロバイダーに自己デプロイ済みの SQL Server VM を登録することはできますか。**
 
     はい。 独自のメディアから SQL Server をデプロイし、SQL IaaS 拡張機能をインストールした場合は、SQL IaaS 拡張機能によって提供される管理の容易性の利点を得るため、リソース プロバイダーに SQL Server VM を登録できます。 ただし、自己デプロイ済みの SQL VM を従量課金に変換することはできません。
+
+1. **クラシック モデルを使用してデプロイされた SQL Server VM でライセンス モデルを切り替えることはできますか。**
+
+   いいえ。 クラシック VM では、ライセンス モデルの変更はサポートされていません。 VM を Resource Manager モデル (ARM) に移行し、SQL VM リソース プロバイダーに登録することができます。 VM を SQL VM リソース プロバイダーに登録した後は、VM のライセンス モデルを変更できるようになります。 
+   
 
 ## <a name="administration"></a>管理
 

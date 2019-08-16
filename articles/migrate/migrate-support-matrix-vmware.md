@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: bbbec680cd2575cc63761c9fbe1335d548ec4d3b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640796"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828285"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware の評価と移行のサポート マトリックス
 
@@ -42,8 +42,12 @@ ms.locfileid: "68640796"
 **地理的な場所** | **メタデータ ストレージの場所**
 --- | ---
 Azure Government | 米国政府バージニア州
-アジア太平洋 | 東南アジアまたは東アジア
-ヨーロッパ | 南ヨーロッパまたは西ヨーロッパ
+アジア太平洋 | 東アジアまたは東南アジア
+オーストラリア | オーストラリア東部またはオーストラリア南東部
+カナダ | カナダ中部またはカナダ東部
+ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+インド | インド中部またはインド南部
+日本 |  東日本または西日本
 イギリス | 英国南部または英国西部
 米国 | 米国中部または米国西部 2
 
@@ -70,7 +74,7 @@ VMware 用 Azure Migrate アプライアンスは、vCenter Server にインポ�
 
 **サポート** | **詳細**
 --- | ---
-**vCenter Server** | 32 GB のメモリ、4 つの vCPU、および外部仮想スイッチを備えた VM を割り当てるには、vCenter Server に十分なリソースが必要です。<br/><br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。
+**vCenter Server** | 32 GB の RAM、8 つの vCPU、および外部仮想スイッチを備えた VM を割り当てるには、vCenter Server に十分なリソースが必要です。<br/><br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。
 **ESXi** | バージョン 5.5 以降が実行されている ESXi ホストにアプライアンス VM をデプロイする必要があります。
 **Azure Migrate プロジェクト** | 1 つのプロジェクトにアプライアンスを関連付けることができます。
 **vCenter Server** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 10,000 台検出できます。<br/> 1 つのアプライアンスは 1 つの vCenter Server に接続できます。
@@ -78,7 +82,7 @@ VMware 用 Azure Migrate アプライアンスは、vCenter Server にインポ�
 
 ## <a name="assessment-url-access-requirements"></a>評価 - URL アクセス要件
 
-Azure Migrate アプライアンスには、インターネット接続が必要です。
+Azure Migrate アプライアンスには、インターネットへの接続が必要です。
 
 - アプライアンスをデプロイすると、下の表にまとめた URL への接続チェックが Azure Migrate によって実行されます。
 - URL ベースのプロキシを使用してインターネットに接続している場合は、それらの URL へのアクセスを許可して、URL の探索中に受信されたすべての CNAME レコードがプロキシによって解決されるようにします。

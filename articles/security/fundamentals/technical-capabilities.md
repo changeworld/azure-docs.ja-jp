@@ -8,18 +8,19 @@ manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
+ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 8d1018f307948ea3ed5551b610c299aaa13e8116
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: fbce475e1f783595fb67e62e15d5a503a4c687ed
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68611382"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780594"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つセキュリティ サービスの概要を提供します。
@@ -330,7 +331,7 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 - [ハイブリッド接続を使用して、アプリをプライベート ネットワーク内のリソースに安全に接続する](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
-Azure App Service では、Azure の Cloud Services および Virtual Machines で使用されるのと同じマルウェア対策ソリューションを使用します。 詳しくは、[マルウェア対策についてのドキュメント](https://docs.microsoft.com/azure/security/azure-security-antimalware)をご覧ください。
+Azure App Service では、Azure の Cloud Services および Virtual Machines で使用されるのと同じマルウェア対策ソリューションを使用します。 詳しくは、[マルウェア対策についてのドキュメント](https://docs.microsoft.com/azure/security/fundamentals/antimalware)をご覧ください。
 
 ## <a name="secure-your-network"></a>ネットワークをセキュリティで保護する
 Microsoft Azure には、アプリケーションとサービスの接続要件をサポートする堅牢なネットワーク インフラストラクチャが組み込まれています。 ネットワーク接続は、Azure に配置されているリソース間、オンプレミスのリソースと Azure でホストされているリソース間、インターネットと Azure 間で可能です。
@@ -351,7 +352,7 @@ Azure は [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressro
 
 [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/) を使用すると、さまざまなコンピューティング ソリューションを俊敏にデプロイできます。 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP、Azure BizTalk Services に対応しており、ほぼすべてのオペレーティング システムですべてのワークロード、すべての言語をデプロイできます。
 
-Azure では、Microsoft、Symantec、Trend Micro、Kaspersky などのセキュリティ ベンダーが提供する[マルウェア対策ソフトウェア](https://docs.microsoft.com/azure/security/azure-security-antimalware)を利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。
+Azure では、Microsoft、Symantec、Trend Micro、Kaspersky などのセキュリティ ベンダーが提供する[マルウェア対策ソフトウェア](https://docs.microsoft.com/azure/security/fundamentals/antimalware)を利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。
 
 Azure Cloud Services および 仮想マシン に対する Microsoft マルウェア対策は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つリアルタイムの保護機能です。 Microsoft Antimalware は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。
 
@@ -381,7 +382,7 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 ## <a name="azure-infrastructure-and-application-security-validation"></a>Azure インフラストラクチャとアプリケーションのセキュリティの検証
 
-[Azure で運用可能なセキュリティ](https://docs.microsoft.com/azure/security/azure-operational-security)とは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。
+[Azure で運用可能なセキュリティ](https://docs.microsoft.com/azure/security/fundamentals/operational-security )とは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。
 
 ![セキュリティの検証 (検出)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 

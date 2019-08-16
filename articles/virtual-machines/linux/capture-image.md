@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 96169f8f52ea9d45d8804a7d4fc08827a4f1ea03
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ed9eb990fff3a0901f3fa26526b30e8cb8a2fe66
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668409"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779401"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のイメージを作成する方法
 
@@ -63,13 +63,15 @@ ms.locfileid: "67668409"
 ## <a name="step-2-create-vm-image"></a>手順 2:VM イメージを作成する
 Azure CLI を使用し、一般化されたものとして VM を設定し、イメージをキャプチャします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM*といったパラメーター名にします。
 
-1. [az vm deallocate](/cli/azure/vm) で、プロビジョニングを解除した VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。
+1. [az vm deallocate](/cli/azure/vm) で、プロビジョニングを解除した VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。  
    
     ```azurecli
     az vm deallocate \
       --resource-group myResourceGroup \
       --name myVM
     ```
+    
+    先に進む前に、VM の割り当てが完全に解除されるまで待ちます。 これは完了するまでに数分かかる場合があります。
 
 2. [az vm generalize](/cli/azure/vm) を使用して VM の状態を一般化に設定します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を一般化として設定します。
    

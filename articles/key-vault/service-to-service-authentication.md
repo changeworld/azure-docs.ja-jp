@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: d34c94ccca47d29afc4f3d83bec58db737be270c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840422"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934334"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -270,21 +270,21 @@ Azure CLI を使用して、既定のサブスクリプションを、使用す�
 
 #### <a name="unauthorized-access-access-denied-forbidden-etc-error"></a>未承認のアクセス、アクセスの拒否や禁止などのエラー
  
-使用されているプリンシパルに、アクセスしようとしているリソースへのアクセス権がありません。 サンプルをローカル開発用マシン上で実行しているか、Azure 内で App Service にデプロイしたかに応じて、ユーザー アカウントまたは App Service の MSI に、目的のリソースへの "共同作成者" アクセス権を付与します。 キー コンテナーなどの一部のリソースには、プリンシパル (ユーザー、アプリ、グループなど) へのアクセス権の付与に使用する独自の[アクセス ポリシー](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)もあります。
+使用されているプリンシパルに、アクセスしようとしているリソースへのアクセス権がありません。 サンプルをローカル開発用マシン上で実行しているか、Azure 内で App Service にデプロイしたかに応じて、ユーザー アカウントまたは App Service の MSI に、目的のリソースへの "共同作成者" アクセス権を付与します。 キー コンテナーなどの一部のリソースには、プリンシパル (ユーザー、アプリ、グループなど) へのアクセス権の付与に使用する独自の[アクセス ポリシー](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)もあります。
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Azure App Service にデプロイするときの一般的な問題
 
 #### <a name="managed-identity-is-not-setup-on-the-app-service"></a>App Service に対してマネージド ID が設定されていない
  
-[Kudu デバッグ コンソール](https://azure.microsoft.com/en-us/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)を使用して、環境変数 MSI_ENDPOINT および MSI_SECRET が存在することを確認します。 これらの環境変数が存在しない場合は、App Service に対してマネージド ID が有効になりません。 
+[Kudu デバッグ コンソール](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)を使用して、環境変数 MSI_ENDPOINT および MSI_SECRET が存在することを確認します。 これらの環境変数が存在しない場合は、App Service に対してマネージド ID が有効になりません。 
  
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>IIS を使用してローカルにデプロイするときの一般的な問題
 
 #### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>IIS 内でアプリをデバッグするときにトークンを取得できない
 
 既定では、AppAuth は IIS 内で別のユーザー コンテキストで実行されるため、開発者 ID を使用してアクセス トークンを取得するためのアクセス権はありません。 次の 2 つの手順に従って、ユーザー コンテキストで実行するように IIS を構成できます。
-- 現在のユーザー アカウントとして実行するように Web アプリのアプリケーション プールを構成します。 詳細については、[こちら](https://docs.microsoft.com/en-us/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities)をご覧ください。
-- "SetProfileEnvironment" を "True" に構成します。 詳細については、[こちら](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)をご覧ください。 
+- 現在のユーザー アカウントとして実行するように Web アプリのアプリケーション プールを構成します。 詳細については、[こちら](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities)をご覧ください。
+- "SetProfileEnvironment" を "True" に構成します。 詳細については、[こちら](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)をご覧ください。 
 
     - %windir%\System32\inetsrv\config\applicationHost.config にアクセスします
     - "setProfileEnvironment" を検索します。 "False" に設定されている場合は、"True" に変更します。 これが存在しない場合は、processModel 要素 (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) に属性として追加し、それを "True" に設定します。
