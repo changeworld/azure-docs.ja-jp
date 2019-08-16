@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45b28b4d88c670a8b2ec34b93a342f06b80e02d7
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: efe5829ffbe4db304f9ffab0a259ab9d10279b27
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668477"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772701"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -72,11 +72,11 @@ Azure Machine Learning ワークスペース。 ワークスペースを作成�
 
   コードを書く場合、VM にはチュートリアルやサンプルが含まれているため、Azure Machine Learning service を使用する方法について調べて学習することができます。 サンプル ノートブックはワークスペースの Azure Blob Storage アカウントに保存されており、VM 間で共有することができます。 実行されると、データ ストアと、ワークスペースのコンピューティング リソースにもアクセスできます。
 
-+ **設定が簡単**:Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[クイックスタート:クラウドベースのノートブック サーバーを使用して Azure Machine Learning の利用を開始する](quickstart-run-cloud-notebook.md)」を参照してください。
++ **設定が簡単**:Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。
 
 + **カスタマイズ可能**。 セキュリティで保護されたマネージド VM オファリングであるにも関わらず、ハードウェアの機能へのフル アクセスが維持されており、望みどおりにカスタマイズできます。 たとえば、最新の NVidia V100 を使用する VM をすばやく作成し、新しいニューラル ネットワーク アーキテクチャをステップバイステップでデバッグできます。
 
-ノートブック VM の課金を停止するには、[ノートブック VM を停止します](quickstart-run-cloud-notebook.md#stop-the-notebook-vm)。
+ノートブック VM の課金を停止するには、[ノートブック VM を停止します](tutorial-1st-experiment-sdk-setup.md#stop-the-notebook-vm)。 
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 

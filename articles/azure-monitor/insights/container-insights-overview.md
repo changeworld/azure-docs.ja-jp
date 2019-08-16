@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 08/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 96a312630c92048f36f79e3bec18f83ed5a445ff
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: e1fca1532352c4955f478df70f818ee3151053c1
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414136"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742207"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>コンテナーに対する Azure Monitor の概要
 
@@ -40,9 +40,11 @@ Azure Monitor for containers では、お使いの Kubernetes クラスターや
 * ノードまたはコンテナーの CPU やメモリの使用量がしきい値を超えた場合に、事前に通知したりそのことを記録したりするように、アラートを構成します。
 * [Prometheus](https://prometheus.io/docs/introduction/overview/) と統合して、[クエリ](container-insights-log-search.md)を使用してノードと Kubernetes から収集したアプリケーションとワークロードのメトリックを表示し、カスタム アラート、ダッシュボード、詳細な分析を作成します。
 
->[!NOTE]
->現時点では、Prometheus のサポートはパブリック プレビューの機能です。
->
+    >[!NOTE]
+    >現時点では、Prometheus のサポートはパブリック プレビューの機能です。
+    >
+
+* [AKS エンジンにデプロイされた](https://github.com/microsoft/OMS-docker/tree/aks-engine)コンテナー ワークロードを監視します。
 
 Azure Monitor for containers を使用して AKS クラスターを監視する方法について、中間レベルの詳細情報を紹介した次の動画をご覧ください。
 

@@ -1,5 +1,5 @@
 ---
-title: Recovery Services コンテナーを Azure サブスクリプションをまたいで移動するか、別のリソース グループに移動します。
+title: Recovery Services コンテナーを Azure サブスクリプションまたはリソース グループをまたいで移動する - Azure Backup
 description: Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動するための手順。
 ms.reviewer: sogup
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 83c1c19490470ba88837af4c1ced6352c62e36f4
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: c78a0a001e617b4db50f717fdf58f91a53d7fe10
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689159"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735522"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services コンテナーを Azure サブスクリプションおよびリソース グループをまたいで移動する
 

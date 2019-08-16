@@ -1,5 +1,5 @@
 ---
-title: Azure Backup によってバックアップされる Azure VM 上の SQL Server データベースを管理および監視する | Microsoft Docs
+title: Azure Backup を使用した Azure VM 上で SQL Server データベースを管理および監視する
 description: この記事では、Azure VM 上で実行されている SQL Server データベースを管理し、監視する方法について説明します。
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: c5f61c778849a57d9143580e0e1041c7fe992d52
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639585"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827562"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -120,7 +120,7 @@ SQL Database の保護を再開するには:
 * 差分バックアップ
 * ログ バックアップ
 
-コピーのみの完全バックアップにはリテンション期間を指定する必要がありますが、その他のバックアップの種類のリテンション範囲は、自動的に現在の時刻から 30 日間に設定されます。 <br/>
+コピーのみの完全バックアップのリテンション期間を指定する必要がありますが、アドホック完全バックアップのリテンション範囲は、自動的に現在の時間から 45 日間に設定されます。 <br/>
 詳細については、[SQL Server バックアップの種類](backup-architecture.md#sql-server-backup-types)に関するページをご覧ください。
 
 ## <a name="unregister-a-sql-server-instance"></a>SQL Server インスタンスを登録解除する

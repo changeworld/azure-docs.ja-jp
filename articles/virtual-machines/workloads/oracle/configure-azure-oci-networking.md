@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/24/2019
+ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 671d7c8eb9f10e346b49056e1cc117c9882bb6e8
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3b901f7aba40f3548a259d36b83fedca0ff2a5c2
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707631"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781286"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure と Oracle Cloud Infrastructure 間の直接相互接続をセットアップする  
 
 [統合されたマルチクラウド エクスペリエンス](oracle-oci-overview.md) (プレビュー) を作成するために、Microsoft と Oracle では、[ExpressRoute](../../../expressroute/expressroute-introduction.md) と [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) を介して　Azure と Oracle Cloud Infrastructure (OCI) 間の直接相互接続を提供しています。 ExpressRoute と FastConnect の相互接続により、お客様は、短い待機時間、高いスループット、2 つのクラウド間の専用直接接続を体験することができます。
 
 > [!IMPORTANT]
-> Microsoft Azure と OCI 間の接続はプレビュー段階です。 Azure と OCI の間で低待機時間の接続を有効にするには、この機能について Azure サブスクリプションと OCI テナントを最初にホワイトリストに登録する必要があります。
+> Microsoft Azure と OCI 間の接続はプレビュー段階です。 Azure と OCI の間で低待機時間の接続を有効にするには、この機能について Azure サブスクリプションを最初にホワイトリストに登録する必要があります。
 
 次の図は、相互接続の概要を示しています。
 
@@ -39,8 +39,6 @@ ms.locfileid: "67707631"
 * 接続は、Azure ExpressRoute のピアリング場所が OCI FastConnect のピアリング場所に近接しているか、同じ場所にある場合にのみ可能です。 「[プレビューの制限事項](oracle-oci-overview.md#preview-limitations)」を参照してください。
 
 * このプレビュー機能について、Azure サブスクリプションをホワイトリストに登録する必要があります。 サブスクリプションでこの機能を有効にするには、Microsoft の担当者にお問い合わせください。
-
-* この機能について、OCI テナントをホワイトリストに登録する必要があります。 詳細については、Oracle の担当者にお問い合わせください。
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>ExpressRoute と FastConnect 間の直接接続を構成する
 
