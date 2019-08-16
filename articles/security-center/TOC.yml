@@ -181,10 +181,6 @@
           href: security-center-search.md
         - name: 計画と運用
           href: security-center-planning-and-operations-guide.md
-        - name: セキュリティ アラートについて
-          href: security-center-alerts-type.md
-        - name: Azure リソースおよびユーザーに対する UEBA
-          href: security-center-ueba-mcas.md
         - name: セキュリティ構成のカスタマイズ
           href: security-center-customize-os-security-config.md
 - name: リファレンス
