@@ -9,12 +9,12 @@ ms.topic: article
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: fde2b6d1d298e89227951c376d584452fbff2679
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f65882cb851f8e35bb1d6c319d52fcfadb36ae91
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707062"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772707"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 
@@ -33,9 +33,9 @@ Azure Machine Learning の実験で TensorBoard を起動する方法は、実�
 
 * この記事のコードは、次のいずれの環境でも実行できます。 
 
-    * Azure Machine Learning Notebook VM - ダウンロードとインストールが不要
+    * Azure Machine Learning Notebook VM - ダウンロードやインストールは必要なし
 
-        * [クラウドベースのノートブックによるクイックスタート](quickstart-run-cloud-notebook.md#create-notebook)を完了して、SDK とサンプル リポジトリが事前に読み込まれている専用のノートブック サーバーを作成します。
+        * 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
 
         * ノートブック サーバー上の samples フォルダーで、**how-to-use-azureml > training-with-deep-learning** の順にディレクトリを移動して、次の完成したノートブックと展開されたノートブックの 2 つを見つけます。
         * export-run-history-to-run-history.ipynb

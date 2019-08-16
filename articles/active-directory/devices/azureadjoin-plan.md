@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e58762bd5bf4342804767a200c94b432dd152a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5dc1c3fb7ae12c36a8c1fe383290435c03ee0c4
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562218"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741378"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -68,7 +68,11 @@ Azure AD 参加は、マネージド環境とフェデレーション環境の�
 フェデレーション環境には、WS-Trust と Ws-Fed の両方のプロトコルをサポートしている ID プロバイダーが必要です。
 
 - **WS-Fed:** このプロトコルは、デバイスを Azure AD に参加させるために必要です。
-- **WS-Trust:** このプロトコルは、Azure AD 参加済みデバイスにサインインするために必要です。 
+- **WS-Trust:** このプロトコルは、Azure AD 参加済みデバイスにサインインするために必要です。
+AD FS を使用している場合は、次の WS-Trust エンドポイントを有効にする必要があります。`/adfs/services/trust/2005/usernamemixed`
+ `/adfs/services/trust/13/usernamemixed`
+ `/adfs/services/trust/2005/certificatemixed`
+ `/adfs/services/trust/13/certificatemixed`
 
 ID プロバイダーによってこれらのプロトコルがサポートされていない場合、Azure AD 参加はネイティブには機能しません。 Windows 10 1809 以降、ユーザーは、[Windows 10 への Web サインイン](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)によって SAML ベースの ID プロバイダーを使用して Azure AD 参加済みデバイスにサインインできます。 現時点では Web サインインはプレビュー機能であり、運用環境デプロイには推奨されません。
 

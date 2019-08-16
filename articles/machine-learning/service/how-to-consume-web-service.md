@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 070dd07aa6705e97a532bdc5f53a08a9abe0f83d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a007e3adb72148cfde1590e996f7df9082159445
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361016"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840502"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -30,6 +30,9 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
 1. モデルで使用される要求データの種類を決定します。
 1. Web サービスを呼び出すアプリケーションを作成します。
 
+> [!TIP]
+> このドキュメントの例は、OpenAPI (Swagger) 仕様を使用せずに手動で作成されています。 デプロイに対して OpenAPI 仕様を有効にした場合は、[swagger-codegen](https://github.com/swagger-api/swagger-codegen) などのツールを使用して、サービスのクライアント ライブラリを作成できます。
+
 ## <a name="connection-information"></a>接続情報
 
 > [!NOTE]
@@ -37,8 +40,10 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
 
 [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) クラスでは、クライアントを作成するために必要な情報が提供されます。 クライアント アプリケーションを作成するときに役立つ `Webservice` プロパティを以下に示します。
 
-* `auth_enabled` - 認証が有効になっている場合は `True`、それ以外の場合は `False` です。
+* `auth_enabled` - キー認証が有効になっている場合は `True`、それ以外の場合は `False` です。
+* `token_auth_enabled` - トークン認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `scoring_uri` - REST API のアドレス。
+
 
 デプロイされた Web サービスについてこの情報を取得する場合、次の 3 つの方法があります。
 
@@ -67,7 +72,15 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
     print(service.scoring_uri)
     ```
 
-### <a name="authentication-key"></a>認証キー
+### <a name="authentication-for-services"></a>サービスの認証
+
+Azure Machine Learning には、Web サービスへのアクセスを制御する 2 つの方法が用意されています。 
+
+|認証方法|ACI|AKS|
+|---|---|---|
+|キー|既定で無効| 既定で有効|
+|トークン| 利用不可| 既定で無効 |
+#### <a name="authentication-with-keys"></a>キーによる認証
 
 デプロイに対して認証を有効にした場合、認証キーが自動的に作成されます。
 
@@ -85,6 +98,26 @@ print(primary)
 
 > [!IMPORTANT]
 > キーを再生成する必要がある場合は、[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) を使用します。
+
+
+#### <a name="authentication-with-tokens"></a>トークンによる認証
+
+Web サービスのトークン認証を有効にする場合、ユーザーは、Web サービスにアクセスするために Azure Machine Learning JWT トークンを提供する必要があります。 
+
+* Azure Kubernetes Service にデプロイする場合、トークン認証は既定で無効になります。
+* Azure Container Instances にデプロイする場合、トークン認証はサポートされません。
+
+トークン認証を制御するには、デプロイの作成や更新時に `token_auth_enabled` パラメーターを使用します。
+
+トークン認証が有効になっている場合は、`get_token` メソッドを使用して、ベアラー トークンとそのトークンの有効期限を取得できます。
+
+```python
+token, refresh_by = service.get_tokens()
+print(token)
+```
+
+> [!IMPORTANT]
+> トークンの `refresh_by` 時刻の後に新しいトークンを要求する必要があります。 
 
 ## <a name="request-data"></a>要求データ
 

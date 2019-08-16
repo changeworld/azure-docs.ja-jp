@@ -9,12 +9,12 @@ ms.date: 07/22/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c9fd286fd28d55318221177f69948c20ed1b935
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 0ed7d65601465a197cb4d7f92f500e1bf29ad8c2
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414471"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839661"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio 2019 を使用して Azure IoT Edge 用のモジュールを開発してデバッグする
 
@@ -105,13 +105,13 @@ Visual Studio の Azure IoT Edge プロジェクト テンプレートでは、A
 
 1. **[OK]** を選択して、C# または C を使用したモジュールを含む Azure IoT Edge ソリューションを作成します。
 
-これで、**AzureIoTEdgeApp1.Linux.Amd64** プロジェクトまたは **AzureIoTEdgeApp1.Windows.Amd64** プロジェクト、および **IoTEdgeModule1** プロジェクトもソリューション内に作成されました。 各 **AzureIoTEdgeApp1** プロジェクトには `deployment.template.json` ファイルが存在します。このファイルでは、IoT Edge ソリューション用にビルドしてデプロイするモジュールのほか、モジュール間のルートも定義されています。 既定のソリューションには、**tempSensor** モジュールと **IoTEdgeModule1** モジュールが含まれます。 **tempSensor** モジュールでは、**IoTEdgeModule1** モジュールに対するシミュレートされたデータが生成されるのに対し、**IoTEdgeModule1** モジュールの既定のコードでは、受信したメッセージが Azure IoT Hub に直接パイプされます。
+これで、**AzureIoTEdgeApp1.Linux.Amd64** プロジェクトまたは **AzureIoTEdgeApp1.Windows.Amd64** プロジェクト、および **IoTEdgeModule1** プロジェクトもソリューション内に作成されました。 各 **AzureIoTEdgeApp1** プロジェクトには `deployment.template.json` ファイルが存在します。このファイルでは、IoT Edge ソリューション用にビルドしてデプロイするモジュールのほか、モジュール間のルートも定義されています。 既定のソリューションには、**SimulatedTemperatureSensor** モジュールと **IoTEdgeModule1** モジュールが含まれます。 **SimulatedTemperatureSensor** モジュールでは、**IoTEdgeModule1** モジュールに対するシミュレートされたデータが生成されるのに対し、**IoTEdgeModule1** モジュールの既定のコードでは、受信したメッセージが Azure IoT Hub に直接パイプされます。
 
 C# モジュールの場合、**IoTEdgeModule1** プロジェクトは .NET Core 2.1 のコンソール アプリケーションです。 IoT Edge デバイスが Windows コンテナーまたは Linux コンテナーで実行されるために必要な Docker ファイルが含まれています。 `module.json` ファイルでは、モジュールのメタデータが記述されています。 依存関係として Azure IoT Device SDK を取得する実際のモジュール コードは、`Program.cs` または `main.c` ファイル内に含まれています。
 
 ## <a name="develop-your-module"></a>モジュールの開発
 
-ソリューションに付属する既定のモジュール コードは、**IoTEdgeModule1** > **Program.cs** (C# の場合) または **main.c** (C の場合) にあります。 モジュールと `deployment.template.json` ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスにデプロイすることで、コードを操作することなくテストを開始できます。 モジュールはソース (この場合は、データをシミュレートする **tempSensor** モジュール) から入力を取得して IoT Hub に送信するように作成されています。
+ソリューションに付属する既定のモジュール コードは、**IoTEdgeModule1** > **Program.cs** (C# の場合) または **main.c** (C の場合) にあります。 モジュールと `deployment.template.json` ファイルが設定されます。これでソリューションをビルドし、それをコンテナー レジストリにプッシュして、デバイスにデプロイすることで、コードを操作することなくテストを開始できます。 モジュールはソース (この場合は、データをシミュレートする **SimulatedTemperatureSensor** モジュール) から入力を取得して Azure IoT Hub に送信するように作成されています。
 
 モジュール テンプレートを独自のコードでカスタマイズする準備ができたら、[Azure IoT Hub SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して、セキュリティ、デバイス管理、信頼性など、IoT ソリューションの主なニーズに対処するモジュールをビルドします。
 
@@ -172,9 +172,9 @@ C# モジュールの場合、**IoTEdgeModule1** プロジェクトは .NET Core
     ```json
         "routes": {
           "IoTEdgeModule1ToIoTHub": "FROM /messages/modules/IoTEdgeModule1/outputs/* INTO $upstream",
-          "sensorToIoTEdgeModule1": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule1/inputs/input1\")",
+          "sensorToIoTEdgeModule1": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule1/inputs/input1\")",
           "IoTEdgeModule2ToIoTHub": "FROM /messages/modules/IoTEdgeModule2/outputs/* INTO $upstream",
-          "sensorToIoTEdgeModule2": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule2/inputs/input1\")"
+          "sensorToIoTEdgeModule2": "FROM /messages/modules/SimulatedTemperatureSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/IoTEdgeModule2/inputs/input1\")"
         },
     ```
 
@@ -232,7 +232,7 @@ IoT Edge デバイスの設定に使用したクイック スタートの記事�
    > [!NOTE]
    > `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json` は選択しないでください
 
-1. 更新ボタンをクリックすると、新しいモジュールが、**TempSensor** モジュールのほか **$edgeAgent** および **$edgeHub** と一緒に実行されていることが表示されます。
+1. 更新ボタンをクリックすると、新しいモジュールが、**SimulatedTemperatureSensor** モジュール、 **$edgeAgent** および **$edgeHub** と一緒に実行されていることが表示されます。
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
