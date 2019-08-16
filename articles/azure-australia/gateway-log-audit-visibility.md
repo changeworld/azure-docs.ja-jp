@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 153b9d503dfece404455fbb7e8cb51c51686ec57
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: b7a9f28d06b5e921b5f1b8defa151641bb039940
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824301"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990218"
 ---
 # <a name="gateway-logging-auditing-and-visibility-in-azure-australia"></a>Azure Australia でのゲートウェイのログ記録、監査、可視性
 
@@ -81,7 +81,7 @@ Azure 環境に出入りするネットワーク トラフィックを確実に�
 
 この記事に記載されているコンポーネントを導入するにあたっては、次の一般的なガイダンスが適用されます。
 
-* サービスが利用できるリージョンを確認し、すべてのデータが承認された場所内に維持されるようにします。また、保護されたワークロードについては、オーストラリア中部またはオーストラリア中部 2 を最優先のデプロイ先にします
+* サービスが利用できるリージョンを確認し、すべてのデータが承認された場所内に維持されるようにします。また、保護されたワークロードについては、オーストラリア中部またはオーストラリア中部 2 を最優先のデプロイ先にします。
 
 * 個々のサービスの認定状況については、ドキュメント『*Azure - ACSC 認定レポート - Protected 2018*』を参照してください。このレポートに記載のない関連コンポーネントについては、『*ACSC コンシューマー ガイド - Microsoft Azure at PROTECTED*』に従って自己評価を実施します
 
@@ -113,7 +113,7 @@ Azure 環境に出入りするネットワーク トラフィックを確実に�
 |---|---|
 |オーストラリアの規制とポリシーのコンプライアンス ドキュメント|[https://aka.ms/au-irap](https://aka.ms/au-irap)|
 |Azure 製品 - オーストラリアのリージョンと非リージョン|[https://azure.microsoft.com/global-infrastructure/services/?regions=non-regional,australia-central,australia-central-2,australia-east,australia-southeast](https://azure.microsoft.com/global-infrastructure/services/?regions=non-regional,australia-central,australia-central-2,australia-east,australia-southeast)|
-|Microsoft Azure Security and Audit ログの管理ホワイトペーパー|[https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf](http://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)|
+|Microsoft Azure Security and Audit ログの管理ホワイトペーパー|[https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf](https://download.microsoft.com/download/B/6/C/B6C0A98B-D34A-417C-826E-3EA28CDFC9DD/AzureSecurityandAuditLogManagement_11132014.pdf)|
 |Microsoft Monitoring Agent の構成|[https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)|
 |
 

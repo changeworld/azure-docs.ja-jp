@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 2756444db010e23f7114e99f474de9ce6614aaee
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 27d5dcc99db040036ba296911aa33d8a312bb23f
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837907"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851508"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Azure API Management での新しい開発者ポータルへのアクセスとそのカスタマイズ
 
@@ -95,10 +95,6 @@ ms.locfileid: "68837907"
 ### <a name="why-doesnt-the-interactive-developer-console-work"></a>対話型の開発者コンソールが動作しないのはなぜですか。
 
 CORS に関連している可能性があります。 対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS)を追加して、CORS の問題を解決することができます。 すべてのパラメーターを手動で指定したり (たとえば、配信元 https://contoso.com) 、またはワイルドカード値 `*` を使用したりできます。
-
-### <a name="where-can-i-file-bugs"></a>バグをどこに登録できますか。
-
-[GitHub リポジトリ内](http://aka.ms/apimdevportal)です。
 
 ## <a name="next-steps"></a>次の手順
 

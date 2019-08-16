@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 323470adfe56ee20fe0fb64aeba38b6af4330351
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827604"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018978"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -163,7 +163,7 @@ ms.locfileid: "68827604"
 
 ファイルの文字列の合計サイズは、ファイル数のみでなく、それらの名前とパスによっても決まります。 データベース ファイルごとに、論理ファイル名と物理パスを取得します。 この SQL クエリを使用できます。
 
-```
+```sql
 SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files mf
                INNER JOIN sys.databases db ON db.database_id = mf.database_id
                WHERE db.name = N'<Database Name>'"
@@ -171,13 +171,13 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 次に、それらを次の形式に調整します。
 
-```
+```json
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
 次に例を示します。
 
-```
+```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
 ```
 
@@ -188,7 +188,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 復元操作時に、データベース ファイルと、ターゲット復元のパスとのマッピングが含まれる JSON ファイルを配置することで、ターゲット復元ファイルのパスをオーバーライドできます。 `database_name.json` ファイルを作成し、*C:\Program Files\Azure Workload Backup\bin\plugins\SQL* の場所に配置します。
 
 このファイルの内容は、次の形式である必要があります。
-```
+```json
 [
   {
     "Path": "<Restore_Path>",
@@ -205,7 +205,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 次に例を示します。
 
-```
+```json
 [
   {
    "Path": "F:\\Data\\testdb2_1546408741449456.mdf",
@@ -222,7 +222,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 
 前の内容で、次の SQL クエリを使用してデータベース ファイルの論理名を取得できます。
 
-```
+```sql
 SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"
