@@ -218,7 +218,7 @@
                       href: app/nodejs.md
                 - name: Web ページ
                   items:
-                    - name: クライアント側 JavaScript
+                    - name: クライアント側の JavaScript
                       href: app/javascript.md
                 - name: Application Insights API の概要
                   displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'

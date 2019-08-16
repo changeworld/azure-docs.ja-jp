@@ -54,7 +54,7 @@ Azure App Service によって提供される機能の詳細については、[A
 
 ## <a name="use-the-web-app"></a>Web アプリを使用する
 
-[Azure portal](https://portal.azure.com) で、前のステップで作成した Web アプリを選択します。 __[概要]__ セクションで、 __[URL]__ をコピーします。 この値は サービスの__ベース URL__ です。
+[Azure portal](https://portal.azure.com) で、前のステップで作成した Web アプリを選択します。 __[概要]__ セクションで、 __[URL]__ をコピーします。 この値は サービスの __ベース URL__ です。
 
 ![Web アプリの概要のスクリーンショット](media/how-to-deploy-app-service/web-app-overview.png)
 
