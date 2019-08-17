@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: jegeib
-ms.openlocfilehash: 3f857fd50fcaf926486b6ea480f87bcc4c690f45
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d9c91752a599debcd8fda6c8396141e6a92e0f06
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727966"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928099"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 1/29/2019
 
@@ -66,7 +66,7 @@ Windows 10 Enterprise LTSB (バージョン 1507) など、.NET 4.7.1 以降を�
 
 ## <a name="documentation-and-feedback"></a>ドキュメントとフィードバック
 
-- Threat Modeling Tool のドキュメントは [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) にあり、[ツールの使用について](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)の情報が含まれます。
+- Threat Modeling Tool のドキュメントは [docs.microsoft.com](threat-modeling-tool.md) にあり、[ツールの使用について](threat-modeling-tool-getting-started.md)の情報が含まれます。
 
 ## <a name="next-steps"></a>次の手順
 

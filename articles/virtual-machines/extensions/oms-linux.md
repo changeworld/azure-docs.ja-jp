@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 08/06/2019
 ms.author: roiyz
-ms.openlocfilehash: 7d8192a3b6ff732481a4d48f6e188b4bb3989cda
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a0c4b6333cc8348959a679a81343f2479078694b
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705931"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828161"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Linux 用の Azure Monitor 仮想マシン拡張機能
 
@@ -37,43 +37,14 @@ Azure Monitor ログは、クラウドとオンプレミスの資産全体にま
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Log Analytics Agent 拡張機能は、次の Linux ディストリビューションに対して実行することができます。
-
-| ディストリビューション | Version |
-|---|---|
-| CentOS Linux | 6 (x86/x64) および 7 (x64) |
-| Amazon Linux | 2017.09 (x64) | 
-| Oracle Linux | 6 および 7 (x86/x64) |
-| Red Hat Enterprise Linux Server | 6 (x86/x64) および 7 (x64) |
-| Debian GNU/Linux | 8 および 9 (x86/x64) |
-| Ubuntu | 14.04 LTS (x86/x64)、16.04 LTS (x86/x64)、および 18.04 LTS (x64) |
-| SUSE Linux Enterprise Server | 12 (x64) および 15 (x64) |
-
->[!NOTE]
->1\.x より前のバージョンの OpenSSL はどのプラットフォームでもサポートされていません。x86_64 プラットフォーム (64 ビット) でサポートされているバージョンは 1.10 のみです。  
->
-
-### <a name="agent-prerequisites"></a>エージェントの前提条件
-
-次の表には、エージェントがインストールされるサポートされている Linux ディストリビューションに必要なパッケージが明記されています。
-
-|必須パッケージ |説明 |最小バージョン |
-|-----------------|------------|----------------|
-|Glibc |    GNU C ライブラリ | 2.5-12 
-|Openssl    | OpenSSL ライブラリ | 1.0.x または 1.1.x |
-|Curl | cURL Web クライアント | 7.15.5 |
-|Python-ctypes | | 
-|PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) | | 
-
->[!NOTE]
->syslog メッセージを収集するには、rsyslog または syslog-ng が必要となります。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、rsyslog デーモンをインストールし、sysklog を置き換えるように構成する必要があります。
+サポートされている Linux ディストリビューションの詳細については、[Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)の記事を参照してください。
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
 次の表は、Azure Monitor VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
 
 | Azure Monitor Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
-| 1.11.9 | [1.11.0-7](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-7) |
+| 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
@@ -145,9 +116,9 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成 (Azure Monitor ログへのオンボードなど) が必要な仮想マシンを 1 つ以上デプロイするときに最適です。 Log Analytics Agent VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)にあります。 
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成 (Azure Monitor ログへのオンボードなど) が必要な仮想マシンを 1 つ以上デプロイするときに最適です。 Log Analytics エージェント VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)にあります。 
 
-仮想マシン拡張機能の JSON 構成は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON 構成の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)に関する記事を参照してください。 
+仮想マシン拡張機能の JSON 構成は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON 構成の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/child-resource-name-type.md)に関する記事を参照してください。 
 
 次の例では、VM 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
 
@@ -209,8 +180,8 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.7 --protected-settings '{"workspaceKey": "omskey"}' \
-  --settings '{"workspaceId": "omsid"}'
+  --version 1.10.1 --protected-settings '{"workspaceKey":"omskey"}' \
+  --settings '{"workspaceId":"omsid"}'
 ```
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート

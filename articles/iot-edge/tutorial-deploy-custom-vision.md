@@ -9,12 +9,12 @@ ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 629b484d27d863727d180bb3e2d01b605ca539a6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 63485a41016033b00f787fc8c938b8da7135d657
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850135"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840137"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル: Custom Vision Service を使用してエッジで画像の分類を実行する
 
@@ -369,9 +369,9 @@ Visual Studio Code 用の IoT Edge 拡張機能では、各 IoT Edge ソリュ�
 
 1. ソリューション フォルダー内の **deployment.template.json** ファイルを開きます。 
 
-2. **modules** セクションを見つけます。このセクションには 3 つのモジュールが含まれています。2 つは自分で作成した classifier と cameraCapture であり、3 つ目は既定で含まれている tempSensor です。 
+2. **modules** セクションを見つけます。このセクションには 3 つのモジュールが含まれています。2 つは自分で作成した classifier と cameraCapture であり、3 つ目は既定で含まれている SimulatedTemperatureSensor です。 
 
-3. **tempSensor** モジュールとそのすべてのパラメーターを削除します。 このモジュールはテスト シナリオ用のサンプル データを提供するために用意されていますが、このデプロイでは必要ありません。 
+3. **SimulatedTemperatureSensor** モジュールとそのすべてのパラメーターを削除します。 このモジュールはテスト シナリオ用のサンプル データを提供するために用意されていますが、このデプロイでは必要ありません。 
 
 4. 画像分類モジュールに **classifier** 以外の名前を付けた場合は、ここで名前の文字がすべて小文字であることを確認してください。 cameraCapture モジュールは、要求ライブラリを使用して classifier モジュールを呼び出します。このライブラリではすべての要求が小文字で書式設定され、IoT Edge では大文字と小文字が区別されます。 
 

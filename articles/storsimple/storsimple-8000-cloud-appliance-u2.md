@@ -14,14 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: df7866d4f87f55523e8139232e48d81cb17c80e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117335"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965731"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>概要
 
@@ -62,7 +64,7 @@ StorSimple Cloud Appliance と StorSimple 物理デバイスの主な相違点�
 
 |  | 物理デバイス | クラウド アプライアンス |
 | --- | --- | --- |
-| **場所** |データ センター内に存在します。 |Azure で実行されます。 |
+| **Location** |データ センター内に存在します。 |Azure で実行されます。 |
 | **ネットワーク インターフェイス** |6 つのネットワーク インターフェイスがあります (DATA 0 から DATA 5)。 |ネットワーク インターフェイスは 1 つのみです (DATA 0)。 |
 | **登録** |初期構成手順の中で登録を行います。 |登録は別の作業です。 |
 | **サービス データ暗号化キー** |物理デバイスで再生成し、新しいキーでクラウド アプライアンスを更新します。 |クラウド アプライアンスから再生成することはできません。 |

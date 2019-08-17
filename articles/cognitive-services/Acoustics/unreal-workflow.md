@@ -3,20 +3,20 @@ title: Project Acoustics Unreal のデザイン チュートリアル
 titlesuffix: Azure Cognitive Services
 description: このチュートリアルでは、Unreal と Wwiseにおける Project Acoustics のデザイン ワークフローについて説明します。
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
+ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5061370f43947341bb05bc30fa596604bc27ce74
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 817a11171c5b4b4ef205e5fbb04f9b6d6d85b248
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706565"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854258"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Project Acoustics Unreal/Wwise のデザイン チュートリアル
 このチュートリアルでは、Unreal と Wwiseにおける Project Acoustics のデザイン セットアップとワークフローについて説明します。

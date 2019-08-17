@@ -1,6 +1,6 @@
 ---
 title: Cognitive Services と機械学習
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services が機械学習用の他の Azure サービスに適合する部分について説明します。
 services: cognitive-services
 author: diberry
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: diberry
-ms.openlocfilehash: 15faacccfa1e0f7dd759f719c02e106918d735bb
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414692"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697921"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -105,11 +105,11 @@ Cognitive Services は次の場合に使用します。
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
 |[Speaker Recognizer](./speaker-recognition/home.md)||x||
 |[Speech のテキスト読み上げ (TTS)](speech-service/text-to-speech.md)|x|x||
-|[Speech の音声テキスト変換 (STT)](/speech-service/speech-to-text.md)|x|x||
+|[Speech の音声テキスト変換 (STT)](speech-service/speech-to-text.md)|x|x||
 |[音声翻訳](speech-service/speech-translation.md)|x|||
 |[Text Analytics](./text-analytics/overview.md)|x|||
 |[Translator Text](./translator/translator-info-overview.md)|x|||
-|[Translator Text - カスタム翻訳ツール]()||x||
+|[Translator Text - カスタム翻訳ツール](./translator/custom-translator/overview.md)||x||
 
 *Personalizer は、(リアルタイムで動作するため) サービスが収集したトレーニング データだけでユーザーのポリシーとデータを評価します。 Personalizer の事前トレーニングやバッチ トレーニングには、大量の履歴データセットが必要ありません。 
 

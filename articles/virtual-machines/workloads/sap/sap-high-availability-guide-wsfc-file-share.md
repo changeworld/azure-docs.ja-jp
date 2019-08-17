@@ -18,10 +18,10 @@ ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f9264357ca1a0c1a612481f4254e86f05e41d8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68479189"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -312,11 +312,11 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 * Azure Premium ディスクを使う必要があります。
 * Azure Managed Disks を使うことをお勧めします。
 * Resilient File System (ReFS) を使ってボリュームをフォーマットすることをお勧めします。
-    * 詳しくは、「[SAP Note 1869038 - SAP support for ReFs filesystem][1869038]」 (SAP Note 1869038 - SAP による ReFs ファイル システムのサポート) および「記憶域スペース ダイレクトのボリュームの計画」記事の「and the [Choosing the file system][planning-volumes-s2d-choosing-filesystem]ファイル システムの選択」をご覧ください。
+    * 詳しくは、「[SAP Note 1869038 - SAP による ReFs ファイル システムのサポート][1869038]」および「記憶域スペース ダイレクトのボリュームの計画」記事の「[ファイル システムの選択][planning-volumes-s2d-choosing-filesystem]」をご覧ください。
     * [Microsoft KB4025334 の累積的な更新プログラム][kb4025334]を必ずインストールします。
 * DS シリーズまたは DSv2 シリーズの Azure VM サイズを使うことができます。
 * 記憶域スペース ダイレクトのディスク同期に必要な VM 間の高いネットワーク パフォーマンスを得るには、少なくとも "高" ネットワーク帯域幅の VM タイプを使う必要があります。
-    詳しくは、[DSv2 シリーズ][dv2-series]and [DS-Series][ds-series]の仕様をご覧ください。
+    詳しくは、[DSv2 シリーズ][dv2-series]および [DS シリーズ][ds-series]の仕様をご覧ください。
 * 記憶域プールに未割り当ての容量を若干確保しておくことをお勧めします。 記憶域プールに未割り当て容量を残しておくと、ドライブで障害が発生した場合に "その場で" 修復するためのボリューム領域が用意されます。 これにより、データの安全性とパフォーマンスが向上します。  詳しくは、「[ボリュームのサイズの選択][choosing-the-size-of-volumes-s2d]」をご覧ください。
 * スケールアウト ファイル共有のネットワーク名 (\<SAP グローバル ホスト\> など) に対して、Azure 内部ロード バランサーを構成する必要はありません。 これは、SAP ASCS/SCS インスタンスの \<ASCS/SCS 仮想ホスト名\> または DBMS に対して行われます。 スケールアウト ファイル共有は、すべてのクラスター ノード間に負荷をスケールアウトします。 \<SAP グローバル ホスト\> は、すべてのクラスター ノードのローカル IP アドレスを使います。
 

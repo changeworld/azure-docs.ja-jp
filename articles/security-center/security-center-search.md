@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 90dbb33fa516d3a831d4e60969ac6b6c8312d539
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c88e2025444aa2fd83e05fdff97ea640ceefaa04
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574144"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662927"
 ---
-# <a name="azure-security-center-search"></a>Azure Security Center の検索機能
+# <a name="azure-security-center-search-retired"></a>Azure Security Center の検索機能 (廃止)
 
 > [!NOTE]
-> Security Center の検索ダッシュボードは 2019 年 7 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_search)」を参照してください。
+> Security Center の検索ダッシュボードは 2019 年 7 月 31 日に廃止されました。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_search)」を参照してください。
 
 Azure Security Center では、[Azure Monitor ログ検索](../log-analytics/log-analytics-log-searches.md)を使用してセキュリティ データが取得され、分析されます。 Azure Monitor ログには、データをすばやく取得して統合するためのクエリ言語が用意されています。 Security Center から Azure Monitor ログ検索を活用してクエリを作成し、収集したデータを分析できます。
 

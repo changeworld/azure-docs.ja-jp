@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: ba2c8b01861c0ecbc9adeebfcb184cff1b81e816
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b53d3d6ad5471cfe4ce105a3aace3bc55390a610
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181793"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843253"
 ---
-* 「[Quickstart:Use a cloud-based notebook server to get started with Azure Machine Learning (クイック スタート: クラウドベース ノートブック サーバーを使用して、Azure Machine Learning を始める)](../articles/machine-learning/service/quickstart-run-cloud-notebook.md)」を完了し、ワークスペースを作成して、ノートブック Web ページを起動します。 
+* 「[チュートリアル: 環境とワークスペースを設定する](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md)」に従って、ワークスペースを作成し、ノートブックの Web ページを起動します。 
 

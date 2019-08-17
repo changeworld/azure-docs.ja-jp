@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
-ms.openlocfilehash: c55e2f8b1685893ecc813c0d5d94e894f66fb186
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be622c5636c253c48bec4d67fba58319262c2603
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390451"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883557"
 ---
 # <a name="web-search-endpoint"></a>Web Search エンドポイント
 

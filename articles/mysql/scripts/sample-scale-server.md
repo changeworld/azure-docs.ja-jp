@@ -7,16 +7,16 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 04/05/2018
-ms.openlocfilehash: 63bd92aeea0ad85872c1165eab374e90de078d44
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 08/01/2019
+ms.openlocfilehash: 7a88686666d399d37229dd75897e0b926b655131
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67275128"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68728876"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI での Azure Database for MySQL サーバーの監視とスケーリング
-このサンプル CLI スクリプトは、単一の Azure Database for MySQL サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングするものです。
+このサンプル CLI スクリプトは、メトリックのクエリ後、単一の Azure Database for MySQL サーバーのコンピューティングとストレージをスケーリングします。
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -37,10 +37,11 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | データベースのホストとなる MySQL サーバーを作成します。 |
+| [az mysql server update](/cli/azure/mysql/server#az-mysql-server-update) | MySQL サーバーのプロパティを更新します。 |
 | [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) | リソースのメトリック値を一覧表示します。 |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
-- Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
+- [Azure Database for MySQL コンピューティングとストレージ](../concepts-pricing-tiers.md)についての詳細情報
 - さらに他のスクリプトも試す: [Azure Database for MySQL 用 Azure CLI サンプル](../sample-scripts-azure-cli.md)
-- スケーリングの詳細については、[サービス プラン](../concepts-service-tiers.md)に関するページおよび[コンピューティング ユニットとストレージ ユニット](../concepts-compute-unit-and-storage.md)に関するページを参照してください。
+- [Azure CLI](/cli/azure) の詳細

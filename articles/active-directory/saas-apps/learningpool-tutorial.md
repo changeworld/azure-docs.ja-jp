@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104c208c1e651f67679327fa8c7a56b65c33fd24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2735656226210e14b2d6f6a08bbe2c5ccb550dd6
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098166"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68944234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>チュートリアル:Azure Active Directory と Learningpool Act の統合
 
@@ -118,7 +118,7 @@ Learningpool Act で Azure AD シングル サインオンを構成するには�
     > [!NOTE]
     > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[Learningpool Act クライアント サポート チーム](https://www.learningpool.com/support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. Learningpool Act アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+5. Learningpool Act アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 

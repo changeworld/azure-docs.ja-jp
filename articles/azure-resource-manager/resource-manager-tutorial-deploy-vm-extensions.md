@@ -4,8 +4,6 @@ description: Azure Resource Manager テンプレートを使用して仮想マ�
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
@@ -13,12 +11,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5657ebb2a5b29e4ec5360480c1fef6cb92dad9c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a6d0c3e9daba6f4f37778fabde161751944e174a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388534"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774872"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする
 
@@ -62,10 +60,10 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このチュートリアルで使用するテンプレートは、「[Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)」(単純な Windows VM をデプロイする) と呼ばれます。
 
-1. Visual Studio Code の **[ファイル]** > **[ファイルを開く]** を選択します。
+1. Visual Studio Code の **[ファイル]**  >  **[ファイルを開く]** を選択します。
 1. **[ファイル名]** ボックスに https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json という URL を貼り付けます。
 
-1. ファイルを開くには、**[開く]** を選択します。  
+1. ファイルを開くには、 **[開く]** を選択します。  
     このテンプレートには、次の 5 つのリソースが定義されています。
 
    * **Microsoft.Storage/storageAccounts**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
@@ -76,7 +74,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
      カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 
-1. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを *azuredeploy.json* という名前でローカル コンピューターに保存します。
+1. **[ファイル]**  >  **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを *azuredeploy.json* という名前でローカル コンピューターに保存します。
 
 ## <a name="edit-the-template"></a>テンプレートの編集
 
@@ -108,7 +106,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 このリソース定義の詳細については、[拡張機能のリファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions)を参照してください。 以下にいくつかの重要な要素を示します。
 
-* **name**:拡張機能リソースが仮想マシン オブジェクトの子リソースであるため、名前には仮想マシン名のプレフィックスが含まれている必要があります。 「[子リソース](./resource-group-authoring-templates.md#child-resources)」を参照してください。
+* **name**:拡張機能リソースが仮想マシン オブジェクトの子リソースであるため、名前には仮想マシン名のプレフィックスが含まれている必要があります。 [子リソースの名前と種類の設定](child-resource-name-type.md)に関する記事を参照してください。
 * **dependsOn**:仮想マシンの作成後に拡張機能リソースを作成します。
 * **fileUris**: スクリプト ファイルが格納される場所です。 提供された場所を使用しない場合は、値を更新する必要があります。
 * **commandToExecute**: このコマンドによってスクリプトが呼び出されます。  
@@ -120,7 +118,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 ## <a name="verify-the-deployment"></a>デプロイを検証する
 
 1. Azure portal で VM を選択します。
-1. VM の概要で、**[クリックしてコピー]** を選択して IP アドレスをコピーし、ブラウザーのタブに貼り付けます。  
+1. VM の概要で、 **[クリックしてコピー]** を選択して IP アドレスをコピーし、ブラウザーのタブに貼り付けます。  
    インターネット インフォメーション サービス (IIS) の既定のウェルカム ページ (下記) が表示されます。
 
 ![インターネット インフォメーション サービスのウェルカム ページ](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
@@ -129,11 +127,11 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 デプロイした Azure リソースが不要になったら、リソース グループを削除してそれらをクリーンアップしてください。
 
-1. Azure portal の左側のウィンドウで、**[リソース グループ]** を選択します。
+1. Azure portal の左側のウィンドウで、 **[リソース グループ]** を選択します。
 2. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。
 3. リソース グループ名を選択します。  
     リソース グループには 6 つのリソースが表示されます。
-4. 一番上のメニューで、**[リソース グループの削除]** を選択します。
+4. 一番上のメニューで、 **[リソース グループの削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

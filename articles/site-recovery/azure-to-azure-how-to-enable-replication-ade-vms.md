@@ -8,24 +8,24 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b000610b5cba6f768a629ad797500a57597f2569
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5e5ae11a00b2a3656deceeeaf928536238a325fc
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335700"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840638"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption 対応仮想マシンを別の Azure リージョンにレプリケートする
 
 この記事では、Azure Disk Encryption 対応 VM を Azure リージョン間でレプリケートする方法について説明します。
 
 >[!NOTE]
->現在、Azure Site Recovery でサポートされる Azure VM は、Windows OS を稼動しており、なおかつ [Azure Active Directory (Azure AD) を使用した暗号化に対応](https://aka.ms/ade-aad-app)しているものに限られています。
+>現在、Azure Site Recovery では、Windows OS を実行する Azure VM のみがサポートされています。
 
 ## <a id="required-user-permissions"></a>必要なユーザー アクセス許可
-Site Recovery では、ユーザーが、ターゲット リージョン内にキー コンテナーを作成し、そのリージョンにキーをコピーするアクセス許可を持っていることが必要です。
+Site Recovery では、ユーザーが、ターゲット リージョン内にキー コンテナーを作成し、ソース リージョンのキー コンテナーからターゲット リージョンのキー コンテナーにキーをコピーするアクセス許可を持っていることが必要です。
 
-Azure portal から Disk Encryption 対応 VM のレプリケーションを有効にするには、ユーザーに次のアクセス許可が必要です。
+Azure portal から Disk Encryption 対応 VM のレプリケーションを有効にするには、ユーザーは、**ソース リージョンとターゲット リージョン**の両方のキー コンテナーに対して次のアクセス許可を必要とします。
 
 - Key Vault のアクセス許可
     - List、Create、Get

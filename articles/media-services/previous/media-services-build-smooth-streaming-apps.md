@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: b8c1513838fb848388946e18698a0410aa7a0332
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ff961638aa170948d51793a21e86d18dd7e1d80
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949627"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69016786"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法  
 
@@ -38,7 +38,7 @@ Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマン�
 
 * Windows 8 32 ビットまたは 64 ビット。
 * Visual Studio バージョン 2012 から 2015。
-* [Windows 8 用 Microsoft Smooth Streaming Client SDK](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)。
+* [Windows 8 用 Microsoft Smooth Streaming Client SDK](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)。
 
 各レッスンの完成したソリューションは、MSDN デベロッパー サンプル コード集 (コード ギャラリー) からダウンロードできます: 
 

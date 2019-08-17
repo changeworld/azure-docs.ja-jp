@@ -61,7 +61,7 @@ Teradata のリンクされたサービスでは、次のプロパティがサ�
 |:--- |:--- |:--- |
 | type | type プロパティは **Teradata** に設定する必要があります。 | はい |
 | connectionString | Teradata Database インスタンスに接続するために必要な情報を指定します。 以下のサンプルを参照してください。<br/>パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 | はい |
-| userName | Teradata データベースに接続するユーザー名を指定します。 Windows 認証の使用時に適用されます。 | いいえ |
+| username | Teradata データベースに接続するユーザー名を指定します。 Windows 認証の使用時に適用されます。 | いいえ |
 | password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)ことも選択できます。 <br>Windows 認証の使用時、または基本認証で Key Vault のパスワードを参照するときに適用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 

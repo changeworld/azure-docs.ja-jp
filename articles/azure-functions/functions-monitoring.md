@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 15fd8593f950e0f553d1b7ca34ee785692043cad
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: cfdc28486cf254c4dd808824ab167489818376ab
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304354"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619596"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -152,9 +152,9 @@ Application Insights はカスタム構成なしで使用できます。 既定�
 
 Azure Functions のロガーでは、すべてのログに*カテゴリ*があります。 カテゴリは、ランタイム コードや関数コードのどの部分にログが記述されているかを示します。 
 
-Functions のランタイムでは、先頭が "Host" のカテゴリを持つログが作成されます。 "Function started"、"Function executed"、"Function completed" のログのカテゴリは "Host.Executor" になります。 
+Functions のランタイムでは、先頭が "Host" のカテゴリを持つログが作成されます。 バージョン 1.x では、`function started`、`function executed`、および `function completed` のログのカテゴリは `Host.Executor` になります。 バージョン 2.x 以降、これらのログのカテゴリは `Function.<YOUR_FUNCTION_NAME>` になります。
 
-ご使用の関数コードでログを記述する場合、カテゴリは "Function" になります。
+関数コードでログを作成する場合、Functions ランタイムのバージョン 1.x でのカテゴリは `Function` になります。 バージョン 2.x では、カテゴリは `Function.<YOUR_FUNCTION_NAME>.User` になります。
 
 ### <a name="log-levels"></a>ログ レベル
 

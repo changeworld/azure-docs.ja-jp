@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c20256fb712d9381ba2adc90e2e68ce4fdc8911a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: d4ca21ecf7ad0707ad33220a8e8c2700638f8e25
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382779"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824822"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>サインイン ページのプロンプトからセキュリティ情報 (プレビュー) を設定する
 
@@ -75,7 +75,7 @@ ms.locfileid: "68382779"
 
 8. Microsoft Authenticator アプリで通知を承認し、 **[次へ]** を選択します。
 
-    ![アプリとアカウントの接続の成功通知](media/security-info/securityinfo-prompt-auth-app-success.png)。
+    ![アプリとアカウントの接続の成功通知](media/security-info/securityinfo-prompt-auth-app-success.png)
 
     2 段階認証またはパスワードのリセットを使用するときに、既定で Microsoft Authenticator アプリを使用して本人確認をするようにセキュリティ情報が更新されます。
 
@@ -98,6 +98,40 @@ ms.locfileid: "68382779"
 12. **[成功]** ページで、セキュリティ情報に Microsoft Authenticator アプリと電話番号 (テキスト メッセージまたは電話呼び出し) の両方のメソッドが正しく設定されたことを確認した後、 **[完了]** を選択します。
 
     ![ウィザードの正常完了ページ](media/security-info/securityinfo-prompt-setup-success.png)
+
+    >[!Note]
+    >組織でアプリ パスワードを使用するように要求されている場合は、このウィザードに追加のセクションが表示され、そこで設定することができます。 **アプリ パスワード**と呼ばれる 3 番目のセクションが表示された場合は、ウィザードを完了する前に、これを入力する必要があります。 アプリ パスワードを追加する手順については、この記事の「[アプリ パスワードを管理する](#manage-your-app-passwords)」セクションを参照してください。
+
+### <a name="manage-your-app-passwords"></a>アプリ パスワードを管理する
+
+Outlook 2010 などの特定のアプリでは、2 段階認証はサポートされていません。 このサポートの欠如は、組織で 2 段階認証を使用している場合、アプリが動作しないことを意味します。 この問題を回避するために、通常のパスワードとは別に、各非ブラウザー アプリで使用する自動生成パスワードを作成できます。
+
+>[!Note]
+>ウィザードにこのオプションが表示されない場合は、管理者が設定していないことを意味します。 これが設定されていないが、アプリ パスワードを使用する必要があることがわかっている場合は、「[セキュリティ情報 (プレビュー) ページからアプリ パスワードを管理する](security-info-app-passwords.md)」の手順に従ってください。
+
+アプリ パスワードを使用する場合は、次の点に注意してください。
+
+- アプリ パスワードは自動生成され、アプリごとに 1 回しか入力されない。
+
+- ユーザー 1 人あたりのパスワード数の上限は 40 個である。 この上限を超えて作成を試行すると、新しいパスワードの作成が許可されるように、事前に既存のパスワードを削除するよう求められます。
+
+- アプリ パスワードは、アプリごとではなく、デバイスごとに 1 つ使用します。 たとえば、ラップトップ上のすべてのアプリに対して単一のパスワードを作成してから、デスクトップ上のすべてのアプリに対してもう 1 つの別のパスワードを作成します。
+
+#### <a name="to-add-app-passwords-in-the-sign-in-wizard"></a>サインイン ウィザードでアプリ パスワードを追加するには
+
+1. ウィザードの前のセクションを完了したら、 **[次へ]** を選択し、 **[アプリ パスワード]** セクションを完了します。
+
+2. パスワードを必要とするアプリの名前 (例: `Outlook 2010`) を入力し、 **[次へ]** を選択します。
+
+    ![ウィザードでアプリ パスワード名を追加する](media/security-info/app-password-app-password.png)
+
+3. **[アプリ パスワード]** 画面からパスワード コードをコピーし、アプリの **[パスワード]** 領域 (この例では Outlook 2010) に貼り付けます。
+
+    ![コピーのためのパスワードが表示されたアプリ パスワード ページ](media/security-info/app-password-copy-password.png)
+
+4. パスワードをコピーしてアプリに貼り付けたら、このウィザードに戻り、すべてのサインイン方法の情報が正確であることを確認してから、 **[完了]** を選択します。
+
+    ![完了通知が表示されたアプリ パスワード ページ](media/security-info/app-password-complete.png)
 
 ## <a name="next-steps"></a>次の手順
 

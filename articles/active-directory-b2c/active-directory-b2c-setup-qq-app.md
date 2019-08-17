@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7744d99bb97d11b7702c8ee388cf27bc0cc087cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9679e3216184c0dc5b8dee241c30fc69d5423aeb
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508340"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963753"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ ア�
 ### <a name="register-for-the-qq-developer-program"></a>QQ 開発者プログラムに登録する
 
 1. QQ アカウントの資格情報を使用して、[QQ 開発者ポータル](http://open.qq.com)にサインインします。
-2. サインインしたら、[http://open.qq.com/reg](http://open.qq.com/reg) に移動して開発者として登録します。
+2. サインインしたら、[https://open.qq.com/reg](https://open.qq.com/reg) に移動して開発者として登録します。
 3. **[个人 (個人開発者)]** を選択します。
 4. 必要な情報を入力し、 **[下一步 (次のステップ)]** を選択します。
 5. 電子メールによる確認プロセスを完了します。 開発者として登録したら、承認されるまで数日待つ必要があります。 

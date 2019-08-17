@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15d2d0a043271da18d7884b684ffe8cf5c1f4dc8
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 2e751d45e4b76852426d454f8d29196c01396504
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619209"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932474"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
@@ -72,7 +72,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 
 ### <a name="powershell"></a>PowerShell
-[Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) コマンドレットを使用します。
+[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) コマンドレットを使用します。
 
 ## <a name="restore"></a>復元
 復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)か、[AzCopy](../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
@@ -99,7 +99,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 ### <a name="powershell"></a>PowerShell
 
-[Restore-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/restore-asdatabase-cmdlet) コマンドレットを使用します。
+[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) コマンドレットを使用します。
 
 
 ## <a name="related-information"></a>関連情報

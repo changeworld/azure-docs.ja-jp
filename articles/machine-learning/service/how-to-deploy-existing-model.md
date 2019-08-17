@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: 4534f7e5bba2e34316be3376e2627c15c20ba81f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694380"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847992"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Azure Machine Learning service で既存のモデルを使用する
 
@@ -32,14 +32,14 @@ Azure Machine Learning service の外部でトレーニングされた機械学�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](setup-create-workspace.md)」を参照してください。
+* Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)」を参照してください。
 
     > [!TIP]
     > この記事の Python の例では、`ws` 変数がお使いの Azure Machine Learning service のワークスペースに設定されていることを前提としています。
     >
     > CLI の例では、`myworkspace` と `myresourcegroup` のプレースホルダーを使用しています。 これらは、ワークスペースと、それを含むリソース グループの名前に置き換えてください。
 
-* Azure Machine Learning SDK。 詳細については、「[ワークスペースの作成](setup-create-workspace.md#sdk)」の Python SDK のセクションを参照してください。
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) と [Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 

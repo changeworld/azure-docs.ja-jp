@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 0be56bbd421bcd12e3c494a671db2f322e07c575
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 58c9399b3701e2d8f0737b48c00336159e9688a8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594928"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931997"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
 
@@ -165,11 +165,9 @@ JSON 応答の例を次に示します。
 
 次の例では、2 つの日本語文字列をローマ字化された日本語に変換する方法を示します。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
 この例の要求に対する JSON ペイロードを次に示します。
 
-```
+```json
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 
@@ -178,5 +176,3 @@ Unicode 文字をサポートしていないコマンドライン ウィンド�
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d @request.txt
 ```
-
----

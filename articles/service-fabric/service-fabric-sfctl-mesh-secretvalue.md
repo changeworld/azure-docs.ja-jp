@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 3f8e46f063d3e725e2174fd907169f3e0167586a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5200c40afe62ce3a236a3a16b59b64deb8d24ced
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836949"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035928"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 メッシュ secretvalue リソースを取得および削除します。

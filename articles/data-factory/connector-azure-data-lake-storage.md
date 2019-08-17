@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: 9f60c6258da77c0aaa99d16e178f4b3531ce90d9
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: a0a7a413d6c3344ccf5c3f7e4d14dd3d82715034
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509255"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840315"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする
 
@@ -204,12 +204,12 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
 
 データセットの定義に使用できるセクションとプロパティの一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。
 
-- Parquet 形式と区切りテキスト形式については、「[Parquet 形式と区切りテキスト形式のデータセット](#parquet-and-delimited-text-format-dataset)」をご覧ください。
-- ORC、Avro、JSON、バイナリ形式などの他の形式については、「[他の形式のデータセット](#other-format-dataset)」をご覧ください。
+- **Parquet 形式、区切りテキスト形式およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
+- **ORC/Avro/JSON 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
 
-### <a name="parquet-and-delimited-text-format-dataset"></a>Parquet 形式と区切りテキスト形式のデータセット
+### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のデータセット
 
-Data Lake Storage Gen2 との間で、Parquet 形式または区切りテキスト形式のデータをコピーするには、[Parquet 形式](format-parquet.md)および[区切りテキスト形式](format-delimited-text.md)に関する記事で、形式ベースのデータセットとサポートされる設定について確認してください。 Data Lake Storage Gen2 では、形式ベースのデータセットの `location` 設定で次のプロパティがサポートされています。
+コピー先またはコピー元との間で **Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 Data Lake Storage Gen2 では、形式ベースのデータセットの `location` 設定で次のプロパティがサポートされています。
 
 | プロパティ   | 説明                                                  | 必須 |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -250,7 +250,7 @@ Data Lake Storage Gen2 との間で、Parquet 形式または区切りテキス�
 
 ### <a name="other-format-dataset"></a>他の形式のデータセット
 
-Data Lake Storage Gen2 との間で、ORC、Avro、JSON、またはバイナリ形式のデータをコピーする場合は、次のプロパティがサポートされます。
+Data Lake Storage Gen2 をコピー先またはコピー元として **ORC/Avro/JSON 形式**のデータをコピーする場合、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -301,12 +301,12 @@ Data Lake Storage Gen2 との間で、ORC、Avro、JSON、またはバイナリ�
 
 ### <a name="azure-data-lake-storage-gen2-as-a-source-type"></a>ソースの種類としての Azure Data Lake Storage Gen2
 
-- Parquet 形式または区切りテキスト形式からコピーする場合は、「[Parquet 形式と区切りテキスト形式のソース](#parquet-and-delimited-text-format-source)」をご覧ください。
-- ORC、Avro、JSON、バイナリ形式などの他の形式からコピーする場合は、「[他の形式のソース](#other-format-source)」をご覧ください。
+- コピー元から **Parquet 形式、区切りテキスト形式およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
+- コピー元から **ORC/Avro/JSON 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
 
-#### <a name="parquet-and-delimited-text-format-source"></a>Parquet 形式と区切りテキスト形式のソース
+#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のソース
 
-Data Lake Storage Gen2 から、Parquet 形式または区切りテキスト形式のデータをコピーするには、[Parquet 形式](format-parquet.md)および[区切りテキスト形式](format-delimited-text.md)に関する記事で、形式ベースのコピー アクティビティ ソースとサポートされる設定について確認してください。 Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeSettings` 設定で次のプロパティがサポートされています。
+**Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeSettings` 設定で次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -364,7 +364,7 @@ Data Lake Storage Gen2 から、Parquet 形式または区切りテキスト形�
 
 #### <a name="other-format-source"></a>他の形式のソース
 
-Data Lake Storage Gen2 から、ORC、Avro、JSON、またはバイナリ形式のデータをコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
+**ORC/Avro/JSON 形式**のデータを Data Lake Storage Gen2 からコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -406,12 +406,12 @@ Data Lake Storage Gen2 から、ORC、Avro、JSON、またはバイナリ形式�
 
 ### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>シンクの種類としての Azure Data Lake Storage Gen2
 
-- Parquet 形式または区切りテキスト形式にコピーする場合は、「[Parquet 形式と区切りテキスト形式のシンク](#parquet-and-delimited-text-format-sink)」をご覧ください。
-- ORC、Avro、JSON、バイナリ形式などの他の形式にコピーする場合は、「[他の形式のシンク](#other-format-sink)」をご覧ください。
+- コピー先に **Parquet 形式、区切りテキスト形式およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のシンク](#format-based-sink)」セクションを参照してください。
+- コピー先に **ORC/Avro/JSON 形式**などの他の形式でコピーするには、「[他の形式のシンク](#other-format-sink)」セクションを参照してください。
 
-#### <a name="parquet-and-delimited-text-format-sink"></a>Parquet 形式と区切りテキスト形式のシンク
+#### <a name="format-based-sink"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のシンク
 
-Data Lake Storage Gen2 に、Parquet 形式または区切りテキスト形式のデータをコピーするには、[Parquet 形式](format-parquet.md)および[区切りテキスト形式](format-delimited-text.md)に関する記事で、形式ベースのコピー アクティビティ シンクとサポートされる設定について確認してください。 Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeSettings` 設定で次のプロパティがサポートされます。
+コピー先にデータを **Parquet 形式、区切りテキスト形式およびバイナリ形式**でコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのシンクと、サポートされる設定について参照してください。 Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeSettings` 設定で次のプロパティがサポートされます。
 
 | プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -459,7 +459,7 @@ Data Lake Storage Gen2 に、Parquet 形式または区切りテキスト形式�
 
 #### <a name="other-format-sink"></a>他の形式のシンク
 
-Data Lake Storage Gen2 に、ORC、Avro、JSON、またはバイナリ形式のデータをコピーする場合は、**sink** セクションで次のプロパティがサポートされます。
+**ORC/Avro/JSON 形式**のデータを Data Lake Storage Gen2 にコピーする場合、**sink** セクションで次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |

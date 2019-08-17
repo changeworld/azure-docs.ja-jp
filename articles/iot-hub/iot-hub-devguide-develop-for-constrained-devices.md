@@ -1,18 +1,18 @@
 ---
 title: IoT Hub C SDK を使用した Azure IoT Hub の制約のあるデバイス向けの開発 | Microsoft Docs
 description: 開発者ガイド - Azure IoT SDK を使用して制約のあるデバイス向けの開発を行う方法に関するガイダンス。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.author: yizhon
-ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: robinsh
+ms.openlocfilehash: d69fe6b845d3af04e42ee91daa9359dcb9a88fc5
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61320938"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880959"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Azure IoT C SDK を使用した制約のあるデバイス向けの開発
 
@@ -73,7 +73,7 @@ strip -s <Path_to_executable>
 
 C SDK にはオプションとして [C SDK シリアライザー](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer)があります。このオプションでは、宣言型マッピング テーブルを使用して、メソッドとデバイス ツイン プロパティを定義することができます。 シリアライザーは開発の簡略化を目的として設計されていますが、オーバーヘッドが追加されるため、制約のあるデバイスに最適ではありません。 この場合は、プリミティブ クライアント API の使用を検討し、さらに [parson](https://github.com/kgabis/parson) などの軽量のパーサーを使用して JSON を解析します。
 
-### <a name="use-the-lower-layer-ll"></a>下位のレイヤーを使用する (_LL_)
+### <a name="use-the-lower-layer-_ll_"></a>下位のレイヤーを使用する (_LL_)
 
 C SDK では 2 つのプログラミング モデルがサポートされています。 一方のセットには、下位レイヤーを意味する挿入辞 _LL_ を伴った API が含まれています。 この API セットは軽量であり、ワーカー スレッドを起動しません。このことは、ユーザーがスケジュール設定を手動で制御する必要があることを意味します。 たとえば、デバイス クライアント用の _LL_ API はこちらの[ヘッダー ファイル](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h)で確認することができます。 
 

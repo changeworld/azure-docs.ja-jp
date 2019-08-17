@@ -1,19 +1,19 @@
 ---
 title: AzCopy v10 を使用して Azure Blob Storage をコピー先またはコピー元としてデータを転送する | Microsoft Docs
 description: この記事には、コンテナーの作成、ファイルのコピー、ローカル ファイル システムとコンテナー間のディレクトリの同期に役立つ一連の AzCopy サンプル コマンドが含まれています。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 2ab561c387467086a40aa6676af347a107c2c452
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.reviewer: dineshm
+ms.openlocfilehash: 62859dde7cd4f2335b696eedb2cdfbd1daad9456
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641109"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934949"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy と Blob Storage でデータを転送する
 
@@ -151,7 +151,7 @@ AzCopy を使用し、BLOB を他のストレージ アカウントにコピー�
 > [!NOTE]
 > 現在のところ、このシナリオは、階層型名前空間のないアカウントでのみサポートされています。 
 
-AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [API](https://docs.microsoft.com/en-us/rest/api/storageservices/put-page-from-url) が使用されます。そのため、データはストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。
+AzCopy では、[サーバー間](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url) が使用されます。そのため、データはストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。
 
 このセクションには、次の例が含まれています。
 

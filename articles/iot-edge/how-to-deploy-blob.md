@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 4511510dec6f488e1a6ea9a6842b771d2a298fec
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 86040020c8f9163a327b2029008e3648723b14ec
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640665"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839687"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
 
@@ -168,7 +168,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
 
 1. 新しいソリューション ワークスペースで *deployment.template.json* を開いて、**modules** セクションを見つけます。 次の構成の変更を行います。
 
-   1. このデプロイに必要ないときは、**tempSensor** モジュールを削除します。
+   1. このデプロイに必要ないときは、**SimulatedTemperatureSensor** モジュールを削除します。
 
    1. 次のコードをコピーして、`createOptions` フィールドに貼り付けます。
 

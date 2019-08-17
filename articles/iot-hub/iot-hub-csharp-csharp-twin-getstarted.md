@@ -9,14 +9,14 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: robinsh
-ms.openlocfilehash: c1b8f60fd155cf9bce0b999da7459299b6f3c7aa
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 9bf34fd48c3a4a9a9672ac162f63dcce118b2c0a
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404530"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68668168"
 ---
-# <a name="get-started-with-device-twins-netnet"></a>デバイス ツインの概要 (.NET/.NET)
+# <a name="get-started-with-device-twins-net"></a>デバイス ツインの使用 (.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 このチュートリアルの最後には、次の .NET コンソール アプリが完成します。

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 21e054aefab0ee5535376ac86ebbaf1316e671b5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8403c8fbc4faf35e0ccd3c87347e88a46f0769ff
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165698"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854477"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する
 
@@ -90,7 +90,7 @@ ms.locfileid: "67165698"
       | プロパティ | 説明 |
       | --- | --- |
       | サブスクリプション ID | このイベント ハブが作成されたサブスクリプション。
-      | リソース グループ | このイベント ハブが作成されたリソース グループ。
+      | Resource group | このイベント ハブが作成されたリソース グループ。
       | Service Bus 名前空間 | Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成したとき、Service Bus 名前空間も作成されました。
       | イベント ハブ名 | イベント ハブの名前。 イベント ハブを作成したときに、固有の名前を設定しています。
       | イベント ハブ ポリシー名 | 共有アクセス ポリシー。 イベント ハブの **[構成]** タブで共有アクセス ポリシーを作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**読み取り**アクセス許可の設定が "*必須*" です。

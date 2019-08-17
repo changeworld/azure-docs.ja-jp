@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: eb49649e9c92416fc674c032b9dc6a613a34dd77
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569657"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019678"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Azure Active Directory 認証を使用して SQL を認証する
 
@@ -98,7 +98,7 @@ Azure SQL Database、マネージド インスタンス、または SQL Data War
   - `SUSER_ID(<admin name>)`
   - `SUSER_SID(<admin name>)`
 
-### <a name="manage-instances"></a>インスタンスを管理する
+### <a name="managed-instances"></a>Managed Instance
 
 - Azure AD のサーバー プリンシパル (ログイン) とユーザーは、[Managed Instance](sql-database-managed-instance.md) のプレビュー機能としてサポートされています。
 - Azure AD グループにマップされた Azure AD サーバー プリンシパル (ログイン) をデータベース所有者として設定することは、[Managed Instance](sql-database-managed-instance.md) ではサポートされていません。

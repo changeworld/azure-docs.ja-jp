@@ -54,7 +54,7 @@ ms.locfileid: "68442311"
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |cross-domain|ルート要素。 子要素は、[Adobe cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)に従う必要があります。|はい|
 
@@ -123,7 +123,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |cors|ルート要素。|はい|該当なし|
 |allowed-origins|クロス ドメイン要求で許可される配信元を示す `origin` 要素を含みます。 `allowed-origins` に含めることができるのは、すべての配信元を許可する `*`を含む 1 つの `origin` 要素か、URI を含む 1 つ以上の `origin` 要素です。|はい|該当なし|
@@ -136,7 +136,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 
 ### <a name="attributes"></a>属性
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|事前応答内の `Access-Control-Allow-Credentials` ヘッダーが、この属性の値に設定されます。これは、クライアントがクロス ドメイン要求で資格情報を送信できるかどうかに影響します。|いいえ|false|
 |preflight-result-max-age|事前応答内の `Access-Control-Max-Age` ヘッダーが、この属性の値に設定されます。これは、ユーザー エージェントが事前応答をキャッシュできるかどうかに影響します。|いいえ|0|
@@ -168,13 +168,13 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |jsonp|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |callback-parameter-name|関数が含まれる完全修飾ドメイン名をプレフィックスとするクロスドメイン JavaScript 関数呼び出し。|はい|該当なし|
 

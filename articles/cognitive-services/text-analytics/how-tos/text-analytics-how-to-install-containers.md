@@ -1,6 +1,6 @@
 ---
-title: コンテナーのインストールと実行
-titleSuffix: Text Analytics -  Azure Cognitive Services
+title: コンテナーをインストールして実行する - Text Analytics
+titleSuffix: Azure Cognitive Services
 description: このチュートリアルでの Text Analytics のコンテナーのダウンロード、インストール、および実行方法。
 services: cognitive-services
 author: IEvangelist
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: 39f15cf8d1374ca95b10ccbddb8a59ec3e98f4f8
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: ddbe586c03d9f722d844d06968aa25e4b4a5aac0
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488796"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815303"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
-Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 エンティティ リンク設定は現在コンテナーでサポートされていません。
+コンテナーを使用すると、独自の環境で Text Analytic API を実行でき、セキュリティとデータ ガバナンスの固有の要件に対応できます。 Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 エンティティ リンク設定は現在コンテナーでサポートされていません。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -36,7 +36,7 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 |--|--|
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
-|Text Analytics リソース |コンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure [Text Analytics](text-analytics-how-to-access-key.md) リソース。 どちらの値も、Azure portal の [Text Analytics Overview]\(Text Analytics の概要\) ページと [キー] ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つのリソース キーのうちのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント|
+|Text Analytics リソース |コンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure [Text Analytics](../../cognitive-services-apis-create-account.md) リソース。 どちらの値も、Azure portal の [Text Analytics Overview]\(Text Analytics の概要\) ページと [キー] ページで使用でき、コンテナーを開始するために必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページで提供されるエンドポイント|
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -61,13 +61,13 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 
 ## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
 
-Text Analytics のコンテナー イメージは Microsoft コンテナー レジストリから入手できます。 
+Text Analytics のコンテナー イメージは Microsoft コンテナー レジストリから入手できます。
 
 | コンテナー | リポジトリ |
 |-----------|------------|
 |キー フレーズ抽出 | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 |言語検出 | `mcr.microsoft.com/azure-cognitive-services/language` |
-|感情分析 | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+|感情分析| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して Microsoft Container Registry からコンテナー イメージをダウンロードします。
 
@@ -99,17 +99,20 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-
 ## <a name="how-to-use-the-container"></a>コンテナーを使用する方法
 
 コンテナーを[ホスト コンピューター](#the-host-computer)上に用意できたら、次の手順を使用してコンテナーを操作します。
 
-1. 必要な課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](../text-analytics-resource-container-config.md#example-docker-run-commands)もご覧いただけます。 
-1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。 
+1. 必要な課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](../text-analytics-resource-container-config.md#example-docker-run-commands)もご覧いただけます。
+1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
 
 3 つのコンテナーのいずれかを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{Endpoint_URI}` と `{API_Key}` の値を取得する方法について詳しくは、[必要なパラメーターの収集](#gathering-required-parameters)に関するページを参照してください。
+
+`docker run` コマンドの[例](../text-analytics-resource-container-config.md#example-docker-run-commands)を利用できます。
+
+### <a name="run-container-example-of-docker-run-command"></a>docker run コマンドのコンテナー実行の例
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -124,9 +127,8 @@ ApiKey={API_KEY}
 * コンテナー イメージからキー フレーズ コンテナーを実行します
 * 1 つの CPU コアと 4 ギガバイト (GB) のメモリを割り当てます
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます
-* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。 
+* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
-`docker run` コマンドの他の[例](../text-analytics-resource-container-config.md#example-docker-run-commands)もご覧いただけます。 
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
@@ -135,7 +137,7 @@ ApiKey={API_KEY}
 
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
-コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
+コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。
 
 コンテナーの API のホストとしては `https://localhost:5000` を使用します。
 
@@ -149,7 +151,7 @@ ApiKey={API_KEY}
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-出力[マウント](../text-analytics-resource-container-config.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。 
+出力[マウント](../text-analytics-resource-container-config.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。
 
 ## <a name="billing"></a>課金
 

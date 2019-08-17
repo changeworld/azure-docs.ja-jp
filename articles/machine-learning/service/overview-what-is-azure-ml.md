@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 05/02/2019
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1ec9db2b026dd1853eceb1f110878d6b2beb4d4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5323c996b8d974c9db11a508503f767cfee80301
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678013"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828109"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
 
@@ -29,7 +29,7 @@ Azure Machine Learning service とは、機械学習モデルのトレーニン�
 
 ## <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
 
-Azure Machine Learning service には、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、および追跡に使用できるクラウドベースの環境が用意されています。 ローカル コンピューターでトレーニングを開始し、その後、クラウドにスケールアウトします。 このサービスは、PyTorch、TensorFlow、scikit-learn などのオープンソース テクノロジを完全にサポートしており、古典的な ml からディープ ラーニング、教師あり学習および教師なし学習まで、あらゆる種類の機械学習に使用できます。 
+Azure Machine Learning service には、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、および追跡に使用できるクラウドベースの環境が用意されています。 ローカル コンピューターでトレーニングを開始し、その後、クラウドにスケールアウトします。 このサービスは、PyTorch、TensorFlow、scikit-learn などのオープンソース テクノロジを完全にサポートしており、古典的な ml からディープ ラーニング、教師あり学習および教師なし学習まで、あらゆる種類の機械学習に使用できます。
 
 データの調査と準備、モデルのトレーニングとテストを行い、以下のような豊富なツールを使用してそれらをデプロイします。
 + モジュールをドラッグ アンド ドロップして実験を構築し、その後でモデルをデプロイできる[ビジュアル インターフェイス](ui-tutorial-automobile-price-train-score.md)
@@ -55,20 +55,25 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 コーディング不要のトレーニングの場合は、以下を試してください。
 
 + ドラッグ アンド ドロップの実験およびデプロイ用のビジュアル インターフェイス
-    
+
     ![Azure Machine Learning service 用のビジュアル インターフェイス](media/overview-what-is-azure-ml/visual-interface.png)
 
 + 自動化された ML 実験用の Azure portal オプション
 
 ### <a name="operationalization-mlops"></a>運用化 (MLOps)
 
-適切なモデルがあれば、Web サービス、IoT デバイス、または Power BI で簡単に使用できます。 詳細については、[デプロイする方法と場所](how-to-deploy-and-where.md)に関する記事を参照してください。 
+適切なモデルがあれば、Web サービス、IoT デバイス、または Power BI で簡単に使用できます。 詳細については、[デプロイする方法と場所](how-to-deploy-and-where.md)に関する記事を参照してください。
 
-デプロイされたモデルは、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) または [Azure portal](https://portal.azure.com/) を使用して管理できます。 
+デプロイされたモデルは、[Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) または [Azure portal](https://portal.azure.com/) を使用して管理できます。
 
 これらのモデルを使用して、[リアルタイム](how-to-consume-web-service.md)で予測を返したり、データが大量の場合は[非同期で](how-to-run-batch-predictions.md)予測を返したりすることができます。
 
-さらに、高度な[機械学習パイプライン](concept-ml-pipelines.md)を使用して、データの準備、モデルのトレーニングと評価、およびデプロイの各手順で共同で作業することができます。
+さらに、高度な[機械学習パイプライン](concept-ml-pipelines.md)を使用して、データの準備、モデルのトレーニングと評価、およびデプロイの各手順で共同で作業することができます。 パイプラインを使用すると、次のことができます。
+
+* クラウドでエンドツーエンドの機械学習プロセスを自動化する
+* コンポーネントを再利用し、必要なときにのみステップを再実行する
+* ステップごとに異なるコンピューティング リソースを使用する
+* バッチ スコアリング タスクを実行する
 
 Azure Machine Learning service の基本的な使い方については、「[次の手順](#next-steps)」を参照してください。
 
@@ -86,7 +91,7 @@ Azure Machine Learning service には、機械学習モデルのデータ準備�
 |インターフェイスのモジュール| 多数 | 人気のあるモジュールの初期セット|
 |コンピューティング ターゲットのトレーニング| 独自のコンピューティング ターゲット、CPU のサポートのみ| Azure Machine Learning コンピューティング、GPU または CPU をサポート。<br/>(他のコンピューティングは、SDK でサポート)|
 |デプロイのコンピューティング ターゲット| 独自の Web サービス形式 (カスタマイズ不可) | Enterprise セキュリティ オプションおよび Azure Kubernetes Service。 <br/>([他のコンピューティング](how-to-deploy-and-where.md)は SDK でサポート) |
-|自動化されたモデル トレーニングとハイパーパラメーター調整 | いいえ | ビジュアル インターフェイスではまだサポート対象外。 <br/> (SDK と Azure portal でサポート)。 | 
+|自動化されたモデル トレーニングとハイパーパラメーター調整 | いいえ | ビジュアル インターフェイスではまだサポート対象外。 <br/> (SDK と Azure portal でサポート)。 |
 
 ビジュアル インターフェイス (プレビュー) をお試しください ([チュートリアル: ビジュアル インターフェイスで自動車価格を予測する](ui-tutorial-automobile-price-train-score.md)」を参照してください。
 
@@ -103,8 +108,8 @@ Azure サービスを使用するクレジットを取得できます。 この�
 
 - [Machine Learning service ワークスペースを作成](setup-create-workspace.md)します。
 
-- 詳細なチュートリアルに従ってください。 
-  + [Azure Machine Learning service でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md) 
+- 詳細なチュートリアルに従ってください。
+  + [Azure Machine Learning service でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
   + [データを準備し、自動化された機械学習を使用して、回帰モデルを自動トレーニングする](tutorial-data-prep.md)
 
 - 機械学習シナリオを構築、最適化、および管理する[機械学習パイプライン](/azure/machine-learning/service/concept-ml-pipelines)について学習します。

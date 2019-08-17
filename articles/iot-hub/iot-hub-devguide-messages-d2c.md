@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 094641baaa1472b481140072cd5d3d35d27d5ed7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2d4d39cc7b330794094745851856365ef54b42f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66390519"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828184"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -42,6 +42,8 @@ IoT ハブには、Event Hubs との互換性がある、既定の組み込み�
 IoT Hub では、[Apache Avro](https://avro.apache.org/) 形式と JSON 形式での Azure Blob Storage へのデータの書き込みをサポートしています。 JSON 形式にエンコードする機能は一般に、IoT Hub が提供されているすべてのリージョンで使用できます。 既定値は AVRO です。 エンコード形式は、Blob Storage エンドポイントが構成されている場合にのみ設定できます。 既存のエンドポイントに対して形式を編集することはできません。 JSON エンコードを使用する場合は、メッセージの[システム プロパティ](iot-hub-devguide-routing-query-syntax.md#system-properties)で contentType を JSON に設定し、contentEncoding を UTF-8 に設定する必要があります。 これが設定されていない場合、IoT Hub は Base 64 エンコード形式でメッセージを書き込みます。 エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、Azure portal、[Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)、または [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0) を使用して選択できます。 次の図は、Azure portal でエンコード形式を選択する方法を示しています。
 
 ![Blob Storage エンドポイントのエンコード](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
+
+IoT Hub は、ADLS Gen2 アカウントへのメッセージのルーティングもサポートしています。これは、BLOB ストレージ上に構築された[階層的な名前空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)対応のストレージ アカウントです。 この機能はパブリック プレビュー段階であり、米国西部 2 と米国中西部で新しい ADLS Gen2 アカウントに使用できます。 この機能は、近日中にすべてのクラウド リージョンにデプロイする予定です。
 
 IoT Hub は、バッチが特定のサイズに達するか、一定の時間が経過した時点で、メッセージを一括処理して BLOB にデータを書き込みます。 IoT Hub の既定のファイル名前付け規則は次のとおりです。
 

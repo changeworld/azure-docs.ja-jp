@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 0b5af9a2f244f64aa77252a5cef4cb3eb9b64a25
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0a6ddfe1337575f4f61f4bba4638a16e54b0cde6
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565492"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735266"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
 
@@ -27,7 +27,7 @@ ms.locfileid: "68565492"
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
-このクイック スタートでは、Azure portal を使用して Azure Cosmos DB [Gremlin API](graph-introduction.md) アカウント、データベース、グラフ (コンテナー) を作成してから、[Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) で [Gremlin コンソール](https://tinkerpop.apache.org)を使用して Gremlin API データを操作する方法を説明します。 このチュートリアルでは、頂点プロパティを更新しながら頂点と辺を作成およびクエリし、頂点をクエリし、グラフを走査し、頂点を削除します。
+このクイックスタートでは、Azure portal を使用して Azure Cosmos DB [Gremlin API](graph-introduction.md) アカウント、データベース、グラフ (コンテナー) を作成してから、[Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) で [Gremlin コンソール](https://tinkerpop.apache.org)を使用して Gremlin API データを操作する方法を説明します。 このチュートリアルでは、頂点プロパティを更新しながら頂点と辺を作成およびクエリし、頂点をクエリし、グラフを走査し、頂点を削除します。
 
 ![Apache Gremlin コンソールからの Azure Cosmos DB](./media/create-graph-gremlin-console/gremlin-console.png)
 
@@ -76,7 +76,7 @@ password: your_primary_key
 connectionPool: {
   enableSsl: true
 }
-serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV1d0, config: { serializeResultToString: true }}
+serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV2d0, config: { serializeResultToString: true }}
 ```
 
 hosts パラメーターの値は、必ず角かっこ ([]) で囲んでください。 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9f64497cdf27729cebc243deca1def9ff1e5c680
-ms.sourcegitcommit: 80aaf27e3ad2cc4a6599a3b6af0196c6239e6918
+ms.openlocfilehash: 4928657aa9052b50faf1f326cc09797c5aaf69bb
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673855"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780515"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 

@@ -13,10 +13,10 @@ ms.workload: big-compute
 ms.date: 04/23/2019
 ms.author: lahugh
 ms.openlocfilehash: 2b9d6832422b98c1064a4e9e99774c4788e801e5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68323655"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch ランタイム環境変数
@@ -67,9 +67,9 @@ Batch での環境変数の使用に関する詳細については、[「タス�
 | AZ_BATCH_POOL_ID                | タスクが実行されているプールの ID。 | すべてのタスク。 | batchpool001 |
 | AZ_BATCH_TASK_DIR               | ノード上の[タスク ディレクトリ][files_dirs]の完全パス。 このディレクトリには、タスクの `stdout.txt` と `stderr.txt`、および AZ_BATCH_TASK_WORKING_DIR が含まれます。 | すべてのタスク。 | C:\user\tasks\workitems\batchjob001\job-1\task001 |
 | AZ_BATCH_TASK_ID                | 現在のタスクの ID。 | 開始タスクを除くすべてのタスク。 | task001 |
-| AZ_BATCH_TASK_SHARED_DIR | プライマリ タスクと、[マルチ インスタンス タスク][multi_instance]のすべてのサブタスクで同一なディレクトリ パス。. The path exists on every node on which the multi-instance task runs, and is read/write accessible to the task commands running on that node (both the [coordination command][coord_cmd] および[アプリケーション コマンド][app_cmd])。 サブタスクや他のノードで実行されるプライマリ タスクにはこのディレクトリに対するリモート アクセス権がありません (「共有」ネットワーク ディレクトリではありません)。 マルチ インスタンスのプライマリおよびサブタスク。 | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask | AZ_BATCH_TASK_WORKING_DIR |
-| ノード上の[タスク作業ディレクトリ][files_dirs]の完全パス。       | 現在実行中のタスクにはこのディレクトリに対する読み取り/書き込みアクセス権があります。 すべてのタスク。 | C:\user\tasks\workitems\batchjob001\job-1\task001\wd | CCP_NODES |
-| ノードのリストと、[マルチインスタンス タスク][multi_instance]に割り当てられているノードあたりのコア数。                       | ノードとコアが `numNodes<space>node1IP<space>node1Cores<space>` の形式で一覧表示されます `node2IP<space>node2Cores<space> ...`、ノードの番号の後に 1 つまたは複数のノード IP アドレスと、それぞれのコア数が続きます。<br/>マルチ インスタンスのプライマリおよびサブタスク。 |  Multi-instance primary and subtasks. |`2 10.0.0.4 1 10.0.0.5 1` |
+| AZ_BATCH_TASK_SHARED_DIR | プライマリ タスクと、[マルチインスタンス タスク][multi_instance]のすべてのサブタスクで同一なディレクトリ パス。 パスは、マルチインスタンス タスクが実行されるすべてのノードで存在し、そのノードで実行されるタスク コマンド ([調整コマンド][coord_cmd]と[アプリケーション コマンド][app_cmd]の両方) に対して読み取りおよび書き込みアクセス可能です。 サブタスクや他のノードで実行されるプライマリ タスクにはこのディレクトリに対するリモート アクセス権がありません (「共有」ネットワーク ディレクトリではありません)。 | マルチ インスタンスのプライマリおよびサブタスク。 | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
+| AZ_BATCH_TASK_WORKING_DIR       | ノード上の[タスク作業ディレクトリ][files_dirs]の完全パス。 現在実行中のタスクにはこのディレクトリに対する読み取り/書き込みアクセス権があります。 | すべてのタスク。 | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| CCP_NODES                       | ノードのリストと、[マルチインスタンス タスク][multi_instance]に割り当てられているノードあたりのコア数。 ノードとコアが `numNodes<space>node1IP<space>node1Cores<space>` の形式で一覧表示されます<br/>`node2IP<space>node2Cores<space> ...`、ノードの番号の後に 1 つまたは複数のノード IP アドレスと、それぞれのコア数が続きます。 |  マルチ インスタンスのプライマリおよびサブタスク。 |`2 10.0.0.4 1 10.0.0.5 1` |
 
 [files_dirs]: https://azure.microsoft.com/documentation/articles/batch-api-basics/#files-and-directories
 [multi_instance]: https://azure.microsoft.com/documentation/articles/batch-mpi/

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 02281a1cad9c7e6f9680441a699fa5d34558b890
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 0504da45cbbd60629954d3e3ca3230e05761c1d6
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501589"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640377"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB の Advanced Threat Protection
 
@@ -23,7 +23,7 @@ Azure Cosmos DB の Advanced Threat Protection は、通常と異なる潜在的
 > [!NOTE]
 >
 > * Azure Cosmos DB の Advanced Threat Protection は、現時点では SQL API でのみ使用できます。
-> * Azure Cosmos DB の Advanced Threat Protection は、現在、Azure Government およびソブリン クラウド リージョンで使用できます。
+> * Azure Cosmos DB の Advanced Threat Protection は、現在、Azure Government およびソブリン クラウド リージョンで使用できません。
 
 セキュリティ アラートの完全な調査エクスペリエンスでは、[Azure Cosmos DB の診断ログ](https://docs.microsoft.com/azure/cosmos-db/logging)を有効にすることをお勧めします。これにより、データベース自体に対する操作 (すべてのドキュメント、コンテナー、データベースに対する CRUD 操作を含む) がログに記録されます。
 

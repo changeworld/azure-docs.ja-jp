@@ -1,5 +1,5 @@
 ---
-title: Azure Backup の FAQ
+title: Azure Backup の機能についての共通の質問への回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c60b2bfae0d974d454c03b7eba655cbdacab5943
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: c41381dd3e53c80e74da3dc0d0a08e1ac83daec6
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466686"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827634"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
@@ -24,6 +24,13 @@ ms.locfileid: "68466686"
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>各コンテナーに登録できるサーバーやマシンの数に制限はありますか。
 コンテナーあたり最大 1000 の Azure 仮想マシンを登録できます。 Microsoft Azure Backup エージェントを使用している場合は、コンテナーあたり最大 50 の MAB エージェントを登録できます。 1 つのコンテナーには、50 の MAB サーバー/DPM サーバーを登録できます。
+
+### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>コンテナーで保護できるデータソース/項目の数はいくつですか。 
+すべてのワークロード (IaaS VM、SQL、AFS など) にわたる最大 2000 のデータソース/項目をコンテナーで保護することができます。<br>  
+たとえば、既に 500 の VM と 400 の Azure Files 共有をコンテナーで保護している場合、そこで保護できる SQL データベースは最大 1100 に限られます。 
+
+### <a name="how-many-policies-can-i-create-per-vault"></a>コンテナーごとに作成できるポリシーはいくつですか。 
+作成できるポリシーはコンテナーあたり最大 200 に限られます。
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>組織で所有しているコンテナーが 1 つの場合、データを復元する際にコンテナー内の他のサーバーのデータを分離するには、どうすればよいですか。
 まとめて復旧するサーバー データには、バックアップをセットアップするときに、同じパスフレーズを使用してください。 1 つ以上の特定のサーバーを分離して復旧する場合は、該当するサーバー専用のパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで 2 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。

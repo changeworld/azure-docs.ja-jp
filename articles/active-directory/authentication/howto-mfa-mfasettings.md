@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6260a619ad3dfda65fcdfc1180cba4002dd23d0
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 12fd08fa301cb22857470e3c81d7f4f7c1f04de9
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499890"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68948886"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -35,7 +35,7 @@ Azure portal で Azure Multi-Factor Authentication に関連する設定にア�
 | アカウントのロックアウト | 連続して拒否された認証試行が多すぎる場合に、Multi-Factor Authentication サービス内でアカウントを一時的にロックします。 この機能は、認証のために PIN を入力するユーザーにのみ適用されます。 (MFA サーバー) |
 | [ユーザーのブロック/ブロック解除](#block-and-unblock-users) | 特定のユーザーが Multi-Factor Authentication 要求を受信できないようにするために使用されます。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 |
 | [不正アクセスのアラート](#fraud-alert) | ユーザーが不正な確認要求をレポートできるかどうかに関する設定を構成します |
-| 通知 | MFA サーバーからのイベントの通知を有効にします。 |
+| [Notifications](#notifications) | MFA サーバーからのイベントの通知を有効にします。 |
 | [OATH トークン](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | クラウドベースの Azure MFA 環境で、ユーザーの OATH トークンを管理するために使用されます。 |
 | [電話の設定](#phone-call-settings) | クラウド環境とオンプレミス環境の電話と案内メッセージに関連する設定を構成します。 |
 | プロバイダー | アカウントに関連付けた可能性がある既存の認証プロバイダーを表示します。 2018 年 9 月 1 日時点では、新しい認証プロバイダーは作成できません |
@@ -99,6 +99,12 @@ Azure portal で Azure Multi-Factor Authentication に関連する設定にア�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]**  >  **[サインイン]** の順に選択します。これで、不正アクセスの通報が標準の Azure AD サインイン レポートの一部になります。
+
+## <a name="notifications"></a>通知
+
+ここで、不正アクセスのアラート メールを受信するユーザーのメール アドレスを構成します。
+
+![不正アクセスのアラート メールのサンプル](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
 ## <a name="phone-call-settings"></a>電話の設定
 
@@ -383,8 +389,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 >[!IMPORTANT]
 >アカウントまたはデバイスが侵害された場合、信頼済みデバイスに対する Multi-Factor Authentication の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[Multi-Factor Authentication をすべてのデバイスで復元](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user)する必要があります。
 >
->復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは 2 段階認証を再度実行する必要があります。 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted)」の手順で各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
->
+>復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは 2 段階認証を再度実行する必要があります。 「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)」の手順で各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
 
 ### <a name="how-the-feature-works"></a>機能のしくみ
 

@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: af3c4482b1ce9e521d14a0e0c63de40625c25c73
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 87942ae8132c89c502bd6e0f4c8d5b5c81a0a14c
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461788"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950380"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Azure Database for MySQL のパフォーマンスの推奨事項
 
 **適用対象:** Azure Database for MySQL 5.7
 
-> [!NOTE]
+> [!IMPORTANT]
 > パフォーマンスの推奨事項はプレビュー段階にあります。
 
 パフォーマンスの推奨事項機能では、データベースを分析して、パフォーマンスの向上に役立つカスタマイズされた提案が作成されます。 推奨事項を生成するために、分析ではスキーマなどのさまざまなデータベースの特性に注目します。 パフォーマンスに関する推奨事項機能をフル活用するには、サーバー上で[クエリ ストア](concepts-query-store.md)を有効にしてください。 パフォーマンス スキーマがオフの場合、クエリ ストアをオンにすると、この機能に必要な performance_schema とパフォーマンス スキーマ インストルメントのサブセットが有効になります。 パフォーマンスに関する推奨事項を実装した後は、パフォーマンスをテストし、変更の影響を評価する必要があります。

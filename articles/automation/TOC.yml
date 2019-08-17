@@ -20,10 +20,14 @@
       displayName: RBAC
     - name: Automation アカウントを別のサブスクリプションに移動する
       href: how-to/move-account.md
+    - name: Automation サービスのオンボードを自動化する
+      href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
 - name: プロセスの自動化
   items:
     - name: Hybrid Runbook Worker の概要
       href: automation-hybrid-runbook-worker.md
+    - name: Runbook ギャラリー
+      href: automation-runbook-gallery.md
     - name: 概念
       items:
         - name: Runbook の種類
@@ -297,8 +301,6 @@
   items:
     - name: SendGrid を使用して Runbook からメールを送信する
       href: automation-send-email.md
-    - name: Runbook ギャラリー
-      href: automation-runbook-gallery.md
     - name: メトリック アラートによる Runbook の監視
       href: automation-alert-metric.md
     - name: Azure アラートから Runbook を開始する

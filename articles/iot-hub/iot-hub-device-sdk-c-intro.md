@@ -1,19 +1,19 @@
 ---
 title: C 用 Azure IoT device SDK | Microsoft Docs
 description: C 用 Azure IoT device SDK を使用し、IoT Hub と通信するデバイス アプリを作成する方法について説明します。
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.author: yizhon
-ms.openlocfilehash: d758d761e560642de76e149c83fc6898aa78bafb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: robinsh
+ms.openlocfilehash: 1c1921391048fc59f03070d4753f422d9cfc5237
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65910329"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883475"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 

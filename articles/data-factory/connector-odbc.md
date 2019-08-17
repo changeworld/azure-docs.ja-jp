@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: f14c8f8ef9f0e59ac35dd7346bf37cc07f2cfb19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ee0f4ccfcd75504be6bb636e7ee54a845a10280
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711460"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966914"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -231,80 +231,6 @@ ODBC 対応データ ストアにデータをコピーするには、コピー �
     }
 ]
 ```
-
-## <a name="ibm-informix-source"></a>IBM Informix ソース
-
-汎用 ODBC コネクタを使用して、IBM Informix データベースからデータをコピーできます。
-
-セルフホステッド統合ラインタイムを、データ ストアへのアクセス権付きでコンピューターに設定します。 Integration Runtime は、Informix 用の ODBC ドライバーを使用してデータ ストアに接続します。 そのため、ドライバーが同じコンピューターにまだインストールされていない場合は、インストールしてください。 たとえば、ドライバー "IBM INFORMIX ODBC DRIVER (64 ビット)" を使用できます。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
-
-Data Factory ソリューションで Informix ソースを使用する前に、「[接続の問題のトラブルシューティング](#troubleshoot-connectivity-issues)」セクションの手順を使用して、Integration Runtime がデータ ストアに接続できるかどうかを確認します。
-
-次の例に示すように、IBM Informix データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
-
-```json
-{
-    "name": "InformixLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<Informix connection string or DSN>"
-            },
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-コピー操作で ODBC データ ストアをソース/シンク データ ストアとして使用する方法の詳細については、記事を最初からお読みください。
-
-## <a name="microsoft-access-source"></a>Microsoft Access ソース
-
-汎用 ODBC コネクタを使用して、Microsoft Access データベースからデータをコピーできます。
-
-セルフホステッド統合ラインタイムを、データ ストアへのアクセス権付きでコンピューターに設定します。 Integration Runtime は、Microsoft Access 用の ODBC ドライバーを使用してデータ ストアに接続します。 そのため、ドライバーが同じコンピューターにまだインストールされていない場合は、インストールしてください。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
-
-Data Factory ソリューションで Microsoft Access ソースを使用する前に、「[接続の問題のトラブルシューティング](#troubleshoot-connectivity-issues)」セクションの手順を使用して、Integration Runtime がデータ ストアに接続できるかどうかを確認します。
-
-次の例に示すように、Microsoft Access データベースを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
-
-```json
-{
-    "name": "MicrosoftAccessLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;"
-            },
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-コピー操作で ODBC データ ストアをソース/シンク データ ストアとして使用する方法の詳細については、記事を最初からお読みください。
 
 ## <a name="sap-hana-sink"></a>SAP HANA シンク
 

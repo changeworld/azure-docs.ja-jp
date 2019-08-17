@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b9740d74a25964286ea92b4238684db81a64c9e2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2811685df678730b90f2fdb28d472f8fa268ec6a
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60497479"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932450"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Visual Studio からモデルをデプロイする
 
@@ -24,7 +24,7 @@ Azure サブスクリプションにサーバーを作成した後は、表形�
 開始するには、以下が必要です。
 
 * Azure の **Analysis Services サーバー**。 詳しくは、「[Azure Analysis Services サーバーを作成する](analysis-services-create-server.md)」をご覧ください。
-* SSDT の**表形式モデル プロジェクト**または 1200 以上の互換性レベルの既存の表形式モデル。 作成していない場合は、 [Adventure Works Internet Sales の表形式モデルのチュートリアル](/sql/analysis-services/tabular-modeling-adventure-works-tutorial)を参照して作成してください。
+* SSDT の**表形式モデル プロジェクト**または 1200 以上の互換性レベルの既存の表形式モデル。 作成していない場合は、 [Adventure Works Internet Sales の表形式モデルのチュートリアル](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)を参照して作成してください。
 * **オンプレミス ゲートウェイ** - 組織のネットワークにオンプレミスのデータ ソースがある場合は、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をインストールする必要があります。 ゲートウェイは、クラウドのサーバーがオンプレミスのデータ ソースに接続してモデルのデータを処理および更新するために必要です。
 
 > [!TIP]

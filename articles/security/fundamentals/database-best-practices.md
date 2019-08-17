@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: dd703420f6a02dba589d8e5ace20cbd1e384adfb
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 72b15d77baedae318d4503f2d481b08202730459
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727437"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68928003"
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
 この記事では、データベース セキュリティに関するベスト プラクティスについて説明します。
@@ -28,7 +28,7 @@ ms.locfileid: "68727437"
 これらのベスト プラクティスは、集約された意見に基づくものであり、Azure プラットフォームの最新の機能に対応しています。 人の考えやテクノロジは時間の経過と共に変化するため、この記事は、それらの変化が反映されるように定期的に更新されます。
 
 ## <a name="secure-databases"></a>データベースをセキュリティで保護する
-データベースを管理するうえでセキュリティは最大の懸念事項であり、[Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) では常に優先事項として扱われてきました。 データベースは、大部分の規制要件やセキュリティ要件 (HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft セキュリティ センターのサイト](https://azure.microsoft.com/support/trust-center/services/)で確認できます。 規制の要件に基づいて特定の Azure データセンターにデータベースを配置することも選択できます。
+データベースを管理するうえでセキュリティは最大の懸念事項であり、[Azure SQL Database](../../sql-database/index.yml) では常に優先事項として扱われてきました。 データベースは、大部分の規制要件やセキュリティ要件 (HIPAA、ISO 27001/27002、PCI DSS レベル 1 など) を満たすように厳密なセキュリティで保護することができます。 現在のセキュリティ コンプライアンス認定のリストは、[Microsoft セキュリティ センターのサイト](https://azure.microsoft.com/support/trust-center/services/)で確認できます。 規制の要件に基づいて特定の Azure データセンターにデータベースを配置することも選択できます。
 
 ## <a name="use-firewall-rules-to-restrict-database-access"></a>ファイアウォール規則を使用してデータベースへのアクセスを制限する
 Microsoft Azure SQL Database は、Azure およびその他のインターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 アクセス セキュリティを提供するために、SQL Database は以下を使用してアクセスを制御します。

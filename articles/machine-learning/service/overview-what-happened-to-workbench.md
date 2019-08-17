@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 05/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: a164276d41d182c5b439efc691d80693f1ac831e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 2bc036fcde7ac541dbf7d8511f82080e52135777
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360134"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68772633"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
@@ -40,7 +40,7 @@ Azure Machine Learning service の最終リリースには、次の機能が含�
 + 新しい、より包括的な Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。
 + 機械学習のための拡張された新しい [Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
-[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-workspace.md)だけです。 ワークスペースは、[Azure portal]((setup-create-workspace.md#portal) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやデプロイのコンピューティング先、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
+[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-workspace.md)だけです。 ワークスペースは、[Azure portal]\(setup-create-workspace.md#portal) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやデプロイのコンピューティング先、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
 
 現在のリリースには新しい強化された CLI と SDK クライアントがありますが、デスクトップ ワークベンチ アプリケーション自体は廃止されました。 実験は、[Azure portal のワークスペース ダッシュボード](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)で管理できます。 ダッシュボードを使用して、実験履歴の取得、ワークスペースに接続されているコンピューティング ターゲットの管理、モデルと Docker イメージの管理、さらには Web サービスのデプロイも行います。
 
@@ -122,6 +122,6 @@ run = exp.submit(source_directory=script_folder,
 
 サービスの概要については、「[Azure Machine Learning service の概要](overview-what-is-azure-ml.md)」を参照してください。
 
-スクリプトの実行および最新のバージョンの Azure Machine Learning サービスを使用したスクリプトの実行履歴の調査を行う方法を示すクイック スタートとして、[Azure Machine Learning サービスを開始](quickstart-run-cloud-notebook.md)してみてください。
+2 部構成のチュートリアルを使用して最初の実験を作成し、[環境とワークスペースを設定](tutorial-1st-experiment-sdk-setup.md)して[最初のモデルをトレーニング](tutorial-1st-experiment-sdk-train.md)する
 
 このワークフローをさらに詳しく体験するには、Azure Machine Learning service を使用してモデルをトレーニングおよびデプロイするための詳細な手順が記載されている、[完全版のチュートリアル](tutorial-train-models-with-aml.md)に従ってください。 

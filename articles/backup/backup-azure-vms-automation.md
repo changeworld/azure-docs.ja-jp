@@ -1,18 +1,18 @@
 ---
 title: PowerShell を使用した Azure Backup による Azure VM のバックアップおよび復旧
 description: PowerShell を使用して Azure Backup によって Azure VM をバックアップおよび復旧する方法について説明します。
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
-ms.author: raynew
-ms.openlocfilehash: 85e7b40778305395bb0f4a9403b4aeafc4607654
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.date: 07/31/2019
+ms.author: dacurwin
+ms.openlocfilehash: 1cbd0f649bd5e89c1ed424604697afa179964175
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565699"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68689015"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -194,6 +194,9 @@ $UtcTime = $UtcTime.ToUniversalTime()
 $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
+> [!IMPORTANT]
+> 開始時刻は 30 分単位のみで指定する必要があります。 上の例では、"01:00:00" または "02:30:00" のみを指定できます。 開始時刻を "01:15:00" にすることはできません。
+
 次の例では、スケジュール ポリシーとアイテム保持ポリシーを変数に格納します。 次の例では、これらの変数を使用して、保護ポリシー *NewPolicy* の作成時にパラメーターを定義します。
 
 ```powershell
@@ -212,6 +215,9 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 ### <a name="enable-protection"></a>保護を有効にする
 
 保護ポリシーを定義したら、アイテムのポリシーも有効にする必要があります。 [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) を使用して、保護を有効にします。 保護を有効にするには、アイテムとポリシーの 2 つのオブジェクトが必要です。 ポリシーがコンテナーに関連付けられると、ポリシーのスケジュールで定義された時刻にバックアップのワークフローが開始されます。
+
+> [!IMPORTANT]
+> PS を使用して一度に複数の VM のバックアップを有効にするときは、1 つのポリシーに 100 を超える VM が関連付けられていないことを確認します。 これは、[推奨されるベスト プラクティス](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy)です。 現時点では、100 を超える VM がある場合に PS クライアントは明示的にブロックしませんが、このチェックは将来追加される予定です。
 
 以下の例では、ポリシー NewPolicy を使用してアイテム V2VM の保護を有効にします。 例は、VM が暗号化されるかどうか、暗号化の種類によって異なります。
 

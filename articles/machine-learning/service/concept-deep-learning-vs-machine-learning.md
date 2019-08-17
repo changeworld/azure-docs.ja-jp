@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 07/30/2019
-ms.openlocfilehash: d97c3d47a277ecd8b1de635e3d835f9ee1f42057
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.date: 08/07/2019
+ms.openlocfilehash: 4b66d015e8a182e305a36dacaa2e082288a3e19e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700155"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840528"
 ---
 # <a name="introduction-to-deep-learning-vs-machine-learning"></a>ディープ ラーニングと機械学習の比較の概要
 
@@ -43,9 +43,9 @@ ms.locfileid: "68700155"
 
 次の表は、2 つの手法の詳細を比較したものです。
 
-| |機械学習 |ディープ ラーニング|
+| |すべて機械学習 |ディープ ラーニングのみ|
 |---|---|---|
-|  **データポイントの数** | ユーザーによって提供される少量のデータを使用できます | 簡潔な結論を得るため、ラベルのない大量のトレーニング データが必要です |
+|  **データポイントの数** | ユーザーによって提供される少量のデータを使用できます | 簡潔な結論を得るため、大量のトレーニング データが必要です |
 |  **ハードウェアの依存関係** | ローエンドのコンピューターで動作できます。 大量の計算能力は必要ありません | ハイエンドのマシンに依存します。 それは本質的に、多数の行列乗算演算を実行します。 これらの演算は、GPU を使用して効率的に最適化できます |
 |  **特徴付けプロセス** | ユーザーが特徴を正確に識別して作成する必要があります | データから高度な特徴を学習し、それ自体で新しい特徴を作成します |
 |  **学習方法** | タスクを小さな部分に分割した後、受け取った結果を 1 つの結論に結合します | 問題をエンドツーエンドで解決します |

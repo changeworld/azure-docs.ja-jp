@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68335931"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure バックエンド接続機能の相互運用性: テスト構成の詳細
@@ -188,22 +188,21 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 異なるリージョンにあるブランチ VNet と、オンプレミス ネットワークを、ハブ VNet を介して相互に通信させたい場合があります。 この構成に対する Azure のネイティブ ソリューションは、VPN を使用したサイト間 VPN 接続です。 その他に、ネットワーク仮想アプライアンス (NVA) をハブでのルーティングに使用する方法もあります。
 
-詳細については、「[VPN ゲートウェイとは][VPN]」と
+詳細については、「[VPN ゲートウェイとは][VPN]」および[高可用性 NVA のデプロイ][Deploy-NVA]に関するページを参照してください。
 
-## <a name="next-steps"></a>and [Deploy a highly available NVA][Deploy-NVA]
-
-次の手順
+## <a name="next-steps"></a>次の手順
 
 テスト セットアップの[コントロール プレーン分析][Control-Analysis]と、トポロジ内のさまざまな VNet や VLAN のビューを確認します。
 
 テスト セットアップの[データ プレーン分析][Data-Analysis]と Azure ネットワーク監視機能のビューを確認します。
--   「[ExpressRoute の FAQ][ExR-FAQ]」を参照して以下を行います。
+
+「[ExpressRoute の FAQ][ExR-FAQ]」を参照して以下を行います。
 -   ExpressRoute ゲートウェイに接続できる ExpressRoute 回線の数について学習する。
 -   ExpressRoute 回線に接続できる ExpressRoute ゲートウェイの数について学習する。
+-   ExpressRoute のその他のスケールの制限について学習する。
 
 
 <!--Image References-->
-ExpressRoute のその他のスケールの制限について学習する。
 [1]: ./media/backend-interoperability/SpokeVNet_peering.png "スポーク VNet の VNet ピアリング"
 [2]: ./media/backend-interoperability/HubVNet-peering.png "ハブ VNet の VNet ピアリング"
 [3]: ./media/backend-interoperability/BranchVNet-VPNGW.png "ブランチ VNet の VPN Gateway の構成"
@@ -211,6 +210,7 @@ ExpressRoute のその他のスケールの制限について学習する。
 [5]: ./media/backend-interoperability/ExR1-Hub-Connection.png "ExpressRoute 1 からハブ VNet ExR ゲートウェイへの接続の構成"
 [6]: ./media/backend-interoperability/ExR2.png "ExpressRoute 2 の構成"
 [7]: ./media/backend-interoperability/ExR2-Hub-Connection.png "ExpressRoute 2 からハブ VNet ExR ゲートウェイへの接続の構成"
+[8]: ./media/backend-interoperability/ExR2-Remote-Connection.png "ExpressRoute 2 からリモート VNet ExR ゲートウェイへの接続の構成"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

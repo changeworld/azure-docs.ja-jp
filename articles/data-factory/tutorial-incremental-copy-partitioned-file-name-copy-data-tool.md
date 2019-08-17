@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: c89764d746f07e6100b1f250d4c107bb700fe014
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8081d7112d67e3bb4e72c6f6e88d765a159e047f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61099076"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933912"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>データのコピー ツールを使用することにより、パーティション分割されたファイル名に基づく新しいファイルを増分コピーする
 
@@ -52,19 +52,17 @@ ms.locfileid: "61099076"
 
 2. **destination** という名前のコンテナーを作成します。 この作業は、[Azure Storage Explorer](https://storageexplorer.com/) をはじめとするさまざまなツールを使用して実行できます。
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。 
    
-   ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 2. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
-      
-    ![新しいデータ ファクトリ](./media/tutorial-copy-data-tool/new-azure-data-factory.png)
     
     データ ファクトリの名前は "_グローバルに一意_" にする必要があります。 次のエラー メッセージが表示される場合があります。
    
-   ![[新しいデータ ファクトリ] のエラー メッセージ](./media/tutorial-copy-data-tool/name-not-available-error.png)
+   ![[新しいデータ ファクトリ] のエラー メッセージ](./media/doc-common-process/name-not-available-error.png)
    
    データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
 3. 新しいデータ ファクトリの作成先となる Azure **サブスクリプション**を選択します。 
@@ -85,14 +83,14 @@ ms.locfileid: "61099076"
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-copy-data-tool/deploying-data-factory.png)
 10. 作成が完了すると、 **[Data Factory]** ホーム ページが表示されます。
    
-    ![データ ファクトリのホーム ページ](./media/tutorial-copy-data-tool/data-factory-home-page.png)
+    ![データ ファクトリのホーム ページ](./media/doc-common-process/data-factory-home-page.png)
 11. 別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動するには、 **[Author & Monitor]\(作成と監視\)** タイルを選択します。 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>データのコピー ツールを使用してパイプラインを作成する
 
 1. **[Let's get started]\(始めましょう\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。 
 
-   ![データのコピー ツールのタイル](./media/tutorial-copy-data-tool/copy-data-tool-tile.png)
+   ![データのコピー ツールのタイル](./media/doc-common-process/get-started-page.png)
    
 2. **[プロパティ]** ページで、次の手順を行います。
 

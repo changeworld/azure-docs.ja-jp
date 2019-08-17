@@ -3,25 +3,22 @@ title: Azure CLI のサンプル スクリプト - 負荷分散された仮想�
 description: カスタム スクリプト拡張機能を使用して、LAMP スタックを Azure の負荷分散された仮想マシン スケール セットにデプロイします。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: allclark
-manager: douge
-editor: tysonn
+author: cynthn
+ms.author: cynthn
 tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/05/2017
-ms.author: douge
 ms.custom: mvc
-ms.openlocfilehash: d5506d9e9e6b3d9410944a83723d7b718ea061ae
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.date: 04/05/2017
+ms.openlocfilehash: ffbece620ae038307d30ae3b330854280f09bd28
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871848"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68963240"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>負荷分散された仮想マシン スケール セットでの LAMP スタックのデプロイ
 

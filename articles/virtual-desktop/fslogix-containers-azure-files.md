@@ -2,17 +2,17 @@
 title: Windows Virtual Desktop での FSLogix プロファイル コンテナーと Azure Files - Azure
 description: この記事では、Windows Virtual Desktop での FSLogix プロファイル コンテナーと Azure のファイルについて説明します。
 services: virtual-desktop
-author: ChJenk
+author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.author: v-chjenk
-ms.openlocfilehash: b3032aa796b3c79572bbf8b2beb85efc252ff73b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: helohr
+ms.openlocfilehash: c01e138c8afcdd59fcb0c87f189d98bec10e16d7
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66497530"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828146"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
@@ -59,7 +59,7 @@ UPD では、パフォーマンス要件に対応するために[記憶域スペ
 
 #### <a name="cost"></a>コスト
 
-S2D クラスターを使用すれば必要なパフォーマンスを実現できますが、その一方で、企業顧客にとってはこれは高価なものとなり、特に中小企業 (SMB) の顧客には高価です。 このソリューションの場合、企業は、Premium Storage ディスクに対する支払いに加えて、共有用のディスクを使用する VM のコストを負担します。
+S2D クラスターを使用すれば必要なパフォーマンスを実現できますが、その一方で、企業顧客にとってはこれは高価なものとなり、特に中小企業 (SMB) の顧客には高価です。 このソリューションの場合、企業は、ストレージ ディスクに対する支払いに加えて、共有用のディスクを使用する VM のコストを負担します。
 
 #### <a name="administrative-overhead"></a>管理オーバーヘッド
 

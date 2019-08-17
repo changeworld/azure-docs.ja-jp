@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a0717785f4f9c1c21a18d081d157a6cdc8c12f18
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 3cdbb6587871b970c0188c0b8f510cc9f1f4fe07
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371189"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985178"
 ---
 # <a name="authorizing-access-to-azure-storage"></a>Azure Storage へのアクセスを承認する
 
@@ -24,11 +24,11 @@ ms.locfileid: "68371189"
 
 |  |共有キー (ストレージ アカウント キー)  |Shared Access Signature (SAS)  |Azure Active Directory (Azure AD)  |匿名のパブリック読み取りアクセス  |
 |---------|---------|---------|---------|---------|
-|Azure BLOB     |[サポートされています](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[サポートされています](storage-dotnet-shared-access-signature-part-1.md)         |[サポートされています](storage-auth-aad.md)         |[サポートされています](../blobs/storage-manage-access-to-resources.md)         |
+|Azure BLOB     |[サポートされています](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |[サポートされています](storage-auth-aad.md)         |[サポートされています](../blobs/storage-manage-access-to-resources.md)         |
 |Azure Files (SMB)     |[サポートされています](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |サポートされていません         |[AAD ドメイン サービスでのみサポートされています](../files/storage-files-active-directory-overview.md)         |サポートされていません         |
-|Azure Files (REST)     |[サポートされています](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[サポートされています](storage-dotnet-shared-access-signature-part-1.md)         |サポートされていません         |サポートされていません         |
-|Azure キュー     |[サポートされています](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[サポートされています](storage-dotnet-shared-access-signature-part-1.md)         |[サポートされています](storage-auth-aad.md)         |サポートされていません         |
-|Azure テーブル     |[サポートされています](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[サポートされています](storage-dotnet-shared-access-signature-part-1.md)         |サポートされていません         |サポートされていません         |
+|Azure Files (REST)     |[サポートされています](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |サポートされていません         |サポートされていません         |
+|Azure キュー     |[サポートされています](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |[サポートされています](storage-auth-aad.md)         |サポートされていません         |
+|Azure テーブル     |[サポートされています](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)         |[サポートされています](storage-sas-overview.md)         |サポートされていません         |サポートされていません         |
 
 ここでは、各認証オプションについて簡単に説明します。
 
@@ -37,7 +37,7 @@ ms.locfileid: "68371189"
 - ファイルの **Azure AD Domain Services (DS) 統合 (プレビュー)** 。 Azure Files は、Azure AD DS を介したサーバー メッセージ ブロック (SMB) を介した ID ベースの認証をサポートしています。 これには、ストレージ アカウント内のリソースへのクライアントのアクセスを細かく制御できる RBAC が用意されています。 ドメイン サービスを使用したファイルに対する Azure AD 統合の詳細については、「[Azure Files での SMB アクセスに対する Azure Active Directory Domain Services (AAD DS) 認証の概要 (プレビュー)](../files/storage-files-active-directory-overview.md)」を参照してください。
 
 - BLOB、ファイル、キュー、およびテーブル用の**共有キー認証**。 共有キーを使用するクライアントは、ストレージ アカウントのアクセス キーを使用して署名されたすべての要求にヘッダーを渡します。 詳細については、[共有キーによる承認](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-shared-key/)に関するページを参照してください。
-- BLOB、ファイル、キュー、およびテーブル用の**共有アクセス署名**。 共有アクセス署名 (SAS) には、ストレージ アカウント内のリソースに対する制限付きの委任アクセス機能があります。 署名が有効な期間、または付与するアクセス許可に制約を追加すると、柔軟にアクセスを管理できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+- BLOB、ファイル、キュー、およびテーブル用の**共有アクセス署名**。 共有アクセス署名 (SAS) には、ストレージ アカウント内のリソースに対する制限付きの委任アクセス機能があります。 署名が有効な期間、または付与するアクセス許可に制約を追加すると、柔軟にアクセスを管理できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。
 - コンテナーと BLOB 用の**匿名パブリック読み取りアクセス** 承認は必要ありません。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)」を参照してください。  
 
 既定では、Azure Storage のすべてのリソースはセキュリティで保護され、アカウント所有者だけが使用できます。 前述の承認戦略のいずれかを使用して、ストレージ アカウントのリソースに対するアクセスをクライアントに許可することはできますが、セキュリティと使いやすさを最大限に高めるには Azure AD を使用することをお勧めします。 

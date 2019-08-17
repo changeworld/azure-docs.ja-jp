@@ -156,7 +156,7 @@ ms.locfileid: "68498535"
 |System.Security.Cryptography.SymmetricAlgorithm|All|
 |System.Security.Cryptography.X509Certificates.PublicKey|All|
 |System.Security.Cryptography.X509Certificates.RSACertificateExtensions|All|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|EnableAdfsAuthentication|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name|
 |System.Security.Cryptography.X509Certificates.X509Certificate|All|
 |System.Security.Cryptography.X509Certificates.X509Certificate2|All|
 |System.Security.Cryptography.X509Certificates.X509ContentType|All|

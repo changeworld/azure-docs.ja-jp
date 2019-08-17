@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05596365dfa011675f38beda2435fdda1a53a5a3
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 6e952b011eb760ebc9dcf5fe7250cf56ec67465f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488858"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562332"
 ---
 # <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ - トークンの取得
 
@@ -126,7 +126,7 @@ WithParentActivityOrWindow(object parent).
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-この修飾子は、複数のリソースに対するユーザーの事前の同意を求める (通常は MSAL.NET/Microsoft ID プラットフォーム v2.0 で使用されるインクリメンタルな同意を使用しない) 高度なシナリオで使用されます。 詳細については、「[複数のリソースでユーザーの同意を事前に取得する方法](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)」を参照してください。
+この修飾子は、複数のリソースに対するユーザーの事前の同意を求める (通常は MSAL.NET または Microsoft ID プラットフォームで使用されるインクリメンタルな同意を使用しない) 高度なシナリオで使用されます。 詳細については、「[複数のリソースでユーザーの同意を事前に取得する方法](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources)」を参照してください。
 
 ```CSharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -198,7 +198,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 
 - このフローは、.NET デスクトップ、.NET Core、および Windows ユニバーサル (UWP) の各アプリに対して有効です。 .NET Core では、ユーザー名を受け取るオーバーロードだけを使用できます。これは、.NET Core プラットフォームで OS に対してユーザー名を問い合わせることができないためです。
   
-同意の詳細については、[v2.0 のアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)に関するページを参照してください。
+同意の詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)に関するページを参照してください
 
 ### <a name="how-to-use-it"></a>使用方法
 

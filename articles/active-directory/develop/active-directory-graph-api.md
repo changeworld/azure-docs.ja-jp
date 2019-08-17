@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 03/01/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f2e3d73b336d41210d80d15b57462dd144b8e45
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c0b677e9a8faf55f121d80f5a6112fbdaf78e6c0
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835401"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853327"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 

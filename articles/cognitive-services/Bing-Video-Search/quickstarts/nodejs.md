@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: ab3d1e71515df80b5bdba1edf8cd16ba3ed6b0a9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 786302b882fbd59932af17ccc6a390fa41b30ac9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500113"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932954"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>クイック スタート:Bing Video Search REST API と Node.js を使用して動画を検索する
 
@@ -75,7 +75,7 @@ ms.locfileid: "68500113"
        });
        ```
 
-# <a name="create-and-send-the-search-request"></a>検索要求を作成して送信する
+## <a name="create-and-send-the-search-request"></a>検索要求を作成して送信する
 
 1. `bing_video_search()` という関数を作成します。 ホスト名やヘッダーなど、実際の要求のパラメーターを追加してください。 検索語句はエンコードし、`?q=` パラメーターを使用して path パラメーターに追加します。 その後、`req.end()` を使用して要求を送信します。
 

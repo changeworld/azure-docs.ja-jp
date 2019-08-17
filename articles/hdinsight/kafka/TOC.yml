@@ -159,6 +159,8 @@
     - name: トラブルシューティング
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
       items:
+        - name: 障害ドメインの不足
+          href: ./kafka-troubleshoot-insufficient-domains.md
         - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
         - name: Apache Hadoop HDFS のトラブルシューティング
@@ -198,6 +200,8 @@
       href: /azure/templates/microsoft.hdinsight/allversions
 - name: リソース
   items:
+    - name: FAQ
+      href: kafka-faq.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: フォーラムで質問する

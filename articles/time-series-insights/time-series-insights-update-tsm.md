@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3e6e8ae76c0ae6f688dd4a039b34c52af16b6e0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a740d8ee0eb50cfa01f36bd8f5590a58e1e6627
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244019"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68931927"
 ---
 # <a name="time-series-model"></a>タイム シリーズ モデル
 

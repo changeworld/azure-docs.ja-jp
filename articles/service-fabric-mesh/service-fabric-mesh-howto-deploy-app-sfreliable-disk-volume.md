@@ -8,19 +8,18 @@ manager: raunakpandya
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9f760e7e693334475fb61ba9e5d44df019e78604
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25bd298c412db38ec4d3b7859580d58ac9b151fb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66147490"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036151"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで高可用な Service Fabric Reliable Disk ベースのボリュームをマウントする 
 コンテナー アプリで状態を保持する一般的な方法は、Azure File Storage などのリモート ストレージ、または Azure Cosmos DB などのデータベースを使用することです。 これにより、リモート ストアに対する読み取りおよび書き込みのネットワーク待機時間が大幅に増えます。

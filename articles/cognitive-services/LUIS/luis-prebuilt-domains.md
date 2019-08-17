@@ -8,15 +8,15 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7028c3bee549603dc29bfcdeb386bcabc52ff03c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e5d5de6a6f348fa3708b1e39fe2bdd3aa8693dee
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637872"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932650"
 ---
 # <a name="add-prebuilt-domains-for-common-usage-scenarios"></a>一般的な使用シナリオの事前構築済みドメインを追加する 
 

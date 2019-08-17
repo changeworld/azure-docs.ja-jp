@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: a5e4c7acd407cef1bb5fc43d7e40014a6b088a0a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448884"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941686"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは
 
@@ -90,7 +90,7 @@ HDInsight でスコア付けを行うには、モデルを呼び出して、ス�
 
 ### <a name="score-in-azure-machine-learning-aml"></a>Azure Machine Learning (AML) でのスコア付け
 
-Azure Machine Learning を使ってスコア付けを行うには、[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) と呼ばれるオープン ソースの Azure Machine Learning R パッケージを使って、モデルを Azure Web サービスとして発行します。 便宜上、このパッケージはエッジ ノードにあらかじめインストールされています。 次に、Azure Machine Learning の機能を使って Web サービスのユーザー インターフェイスを作成し、スコア付けが必要なときに Web サービスを呼び出します。
+Azure Machine Learning を使ってスコア付けを行うには、[AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) と呼ばれるオープン ソースの Azure Machine Learning R パッケージを使って、モデルを Azure Web サービスとして発行します。 便宜上、このパッケージはエッジ ノードにあらかじめインストールされています。 次に、Azure Machine Learning の機能を使って Web サービスのユーザー インターフェイスを作成し、スコア付けが必要なときに Web サービスを呼び出します。
 
 この方法を選んだ場合、ScaleR モデル オブジェクトを、Web サービスで使う同等のオープン ソース モデル オブジェクトに変換する必要があります。 この変換には、ScaleR 強制型変換関数 (アンサンブルベースのモデルの `as.randomForest()` など) を使用できます。
 

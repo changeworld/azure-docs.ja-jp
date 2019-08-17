@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: cc0ba80f7aef53568e048b8285800982c818b004
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3a49681c5c5fa081157e1264f3e9f757c3ee0e6c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334588"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516960"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -348,19 +348,20 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 **[信頼された Microsoft サービスによる ... を許可します]** の例外を有効にすると、(サブスクリプションに登録されている場合は) 次のサービスにストレージ アカウントへのアクセスが許可されます。
 
-|Service|リソース プロバイダー名|目的|
-|:------|:---------------------|:------|
-|Azure Backup|Microsoft.RecoveryServices|IAAS 仮想マシンの管理対象外のディスクのバックアップとリストアを実行します。 (マネージド ディスクの場合は必須ではありません)。 [詳細情報](/azure/backup/backup-introduction-to-azure-backup)。|
-|Azure Data Box|Microsoft.DataBox|Data Box を使用して Azure にデータをインポートできるようにします。 [詳細情報](/azure/databox/data-box-overview)。|
-|Azure DevTest Labs|Microsoft.DevTestLab|カスタム イメージの作成とアーティファクトのインストール [詳細情報](/azure/devtest-lab/devtest-lab-overview)。|
-|Azure Event Grid|Microsoft.EventGrid|Blob Storage のイベント発行を有効にし、ストレージ キューへの発行を Event Grid に許可します。 [Blob Storage イベント](/azure/event-grid/event-sources)と[キューへの発行](/azure/event-grid/event-handlers)について確認してください。|
-|Azure Event Hubs|Microsoft.EventHub|Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細情報](/azure/event-hubs/event-hubs-capture-overview)|
-| Azure File Sync| Microsoft.StorageSync| オンプレミスのファイル サーバーを Azure ファイル共有のキャッシュに変換できます。 マルチサイト同期、迅速なディザスターリカバリー、クラウド側バックアップが可能となります。 [詳細情報](../files/storage-sync-files-planning.md)|
-|Azure HDInsight|Microsoft.HDInsight|新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細情報](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。|
-|Azure Monitor|Microsoft.Insights|セキュリティで保護されたストレージ アカウントに監視データを書き込めるようにします。[詳細情報](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。|
-|Azure のネットワーク|Microsoft.Network|ネットワーク トラフィック ログの保存および分析 [詳細情報](/azure/network-watcher/network-watcher-packet-capture-overview)。|
-|Azure Site Recovery|Microsoft.SiteRecovery |Azure IaaS 仮想マシンのレプリケーションを有効にすることで、ディザスター リカバリーを構成します。 これは、ファイアウォールが有効なキャッシュ ストレージ アカウントまたはソース ストレージ アカウントまたはターゲット ストレージ アカウントを使用している場合に必要です。  [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。|
-|Azure SQL Data Warehouse|Microsoft.Sql|PolyBase を使用した特定の SQL データベース インスタンスからのインポートおよびエクスポート シナリオを許可します。 [詳細情報](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。|
+| Service                  | リソース プロバイダー名     | 目的                                                                                                                                                                                                                                                                                                                      |
+|:-------------------------|:---------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure Backup             | Microsoft.RecoveryServices | IAAS 仮想マシンの管理対象外のディスクのバックアップとリストアを実行します。 (マネージド ディスクの場合は必須ではありません)。 [詳細情報](/azure/backup/backup-introduction-to-azure-backup)。                                                                                                                                                     |
+| Azure Data Box           | Microsoft.DataBox          | Data Box を使用して Azure にデータをインポートできるようにします。 [詳細情報](/azure/databox/data-box-overview)。                                                                                                                                                                                                                              |
+| Azure DevTest Labs       | Microsoft.DevTestLab       | カスタム イメージの作成とアーティファクトのインストール [詳細情報](/azure/devtest-lab/devtest-lab-overview)。                                                                                                                                                                                                                      |
+| Azure Event Grid         | Microsoft.EventGrid        | Blob Storage のイベント発行を有効にし、ストレージ キューへの発行を Event Grid に許可します。 [Blob Storage イベント](/azure/event-grid/event-sources)と[キューへの発行](/azure/event-grid/event-handlers)について確認してください。                                                                                                     |
+| Azure Event Hubs         | Microsoft.EventHub         | Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細情報](/azure/event-hubs/event-hubs-capture-overview)                                                                                                                                                                                                                           |
+| Azure File Sync          | Microsoft.StorageSync      | オンプレミスのファイル サーバーを Azure ファイル共有のキャッシュに変換できます。 マルチサイト同期、迅速なディザスターリカバリー、クラウド側バックアップが可能となります。 [詳細情報](../files/storage-sync-files-planning.md)                                                                                                       |
+| Azure HDInsight          | Microsoft.HDInsight        | 新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細情報](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)。                                                                                                                                    |
+| Azure Monitor            | Microsoft.Insights         | セキュリティで保護されたストレージ アカウントに監視データを書き込めるようにします。[詳細情報](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。                                                                                                                                                                        |
+| Azure のネットワーク         | Microsoft.Network          | ネットワーク トラフィック ログの保存および分析 [詳細情報](/azure/network-watcher/network-watcher-packet-capture-overview)。                                                                                                                                                                                                        |
+| Azure Site Recovery      | Microsoft.SiteRecovery     | Azure IaaS 仮想マシンのレプリケーションを有効にすることで、ディザスター リカバリーを構成します。 これは、ファイアウォールが有効なキャッシュ ストレージ アカウントまたはソース ストレージ アカウントまたはターゲット ストレージ アカウントを使用している場合に必要です。  [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
+| Azure SQL Data Warehouse | Microsoft.Sql              | PolyBase を使用した特定の SQL データベース インスタンスからのインポートおよびエクスポート シナリオを許可します。 [詳細情報](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。                                                                                                                                                 |
+| Azure Stream Analytics   | Microsoft.StreamAnalytics  | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 この機能はプレビュー段階にあることに注意してください。 [詳細情報](../../stream-analytics/blob-output-managed-identity.md)。                                                                                                                                        |
 
 ### <a name="storage-analytics-data-access"></a>ストレージ分析データ アクセス
 

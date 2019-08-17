@@ -155,6 +155,8 @@
           items:
             - name: Azure VM のディザスター リカバリーのネットワークを準備する
               href: azure-to-azure-about-networking.md
+            - name: ターゲット Azure VM のネットワーク構成をカスタマイズする
+              href: azure-to-azure-customize-networking.md
             - name: ネットワーク マッピングを設定し、フェールオーバー後に IP アドレスを保持する
               href: azure-to-azure-network-mapping.md
             - name: フェールオーバー後に IP アドレスを保持する例

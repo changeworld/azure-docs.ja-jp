@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
+ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 6b9ebb2f7ef46fd2900d036f178201863ecbc8d4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7e88b99cf0ecede64d75b36eafdcc88798e2e4a4
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358826"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840451"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -57,7 +57,7 @@ Web サービスとして Azure クラウドに、または IoT Edge デバイ�
 + **CLI を使用する**
 
   ```azurecli-interactive
-  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
+  az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid
   ```
 
   > [!TIP]
@@ -142,7 +142,7 @@ Web サービスとしてデプロイするには、推論構成 (`InferenceConf
 model_path = Model.get_model_path('sklearn_mnist')
 ```
 
-#### <a name="optional-automatic-swagger-schema-generation"></a>(任意) Automatic Swagger スキーマ生成
+#### <a name="optional-automatic-schema-generation"></a>(省略可能) スキーマの自動生成
 
 Web サービスのスキーマを自動生成するには、定義された型オブジェクトのいずれかのコンストラクターに入力や出力のサンプルを指定します。型とサンプルはスキーマを自動生成するために使用されます。 その後、Azure Machine Learning サービスによって、デプロイ中に、Web サービスの [OpenAPI](https://swagger.io/docs/specification/about/) (Swagger) 仕様が作成されます。
 
@@ -153,9 +153,10 @@ Web サービスのスキーマを自動生成するには、定義された型�
 * `pyspark`
 * 標準的な Python オブジェクト
 
-スキーマ生成を使用するには、Conda 環境ファイルに `inference-schema` パッケージを追加します。 エントリ スクリプトで numpy というパラメーターの型が使用されているため、次の例では `[numpy-support]` が使用されています。 
+スキーマ生成を使用するには、Conda 環境ファイルに `inference-schema` パッケージを追加します。
 
-#### <a name="example-dependencies-file"></a>依存関係ファイルの例
+##### <a name="example-dependencies-file"></a>依存関係ファイルの例
+
 次の YAML は、推論のための Conda 依存関係ファイルの例です。
 
 ```YAML
@@ -168,14 +169,11 @@ dependencies:
     - inference-schema[numpy-support]
 ```
 
-自動スキーマ生成を使用する場合、エントリ スクリプトで `inference-schema` パッケージをインポートする**必要があります**。 
+自動スキーマ生成を使用する場合、エントリ スクリプトで `inference-schema` パッケージをインポートする**必要があります**。
 
 変数 `input_sample` と `output_sample` で入力と出力のサンプル形式を定義します。これは Web サービスの要求と応答の形式を表します。 これらのサンプルを、`run()` 関数の入力と出力の関数デコレーターで使用します。 下の scikit-learn の例では、スキーマ生成が使用されています。
 
-> [!TIP]
-> サービスのデプロイ後、`swagger_uri` プロパティを使用し、スキーマ JSON ドキュメントを取得します。
-
-#### <a name="example-entry-script"></a>エントリ スクリプトの例
+##### <a name="example-entry-script"></a>エントリ スクリプトの例
 
 次の例では、JSON データを受け取り、返す方法が示されています。
 
@@ -216,9 +214,7 @@ def run(data):
         return error
 ```
 
-#### <a name="example-script-with-dictionary-input-support-consumption-from-power-bi"></a>ディクショナリ入力を使用したスクリプト例 (Power BI からの従量課金のサポート)
-
-次の例では、Dataframe を使用して、<キー: 値> ディクショナリとして入力データを定義する方法を示しています。 この方法は、Power BI からのデプロイされた Web サービスの使用でサポートされています ([Power BI から Web サービスを使用する方法について](https://docs.microsoft.com/power-bi/service-machine-learning-integration))。
+次の例では、Dataframe を使用して、`<key: value>` ディクショナリとして入力データを定義する方法を示しています。 この方法は、Power BI からのデプロイされた Web サービスの使用でサポートされています ([Power BI から Web サービスを使用する方法について](https://docs.microsoft.com/power-bi/service-machine-learning-integration))。
 
 ```python
 import json
@@ -266,6 +262,7 @@ def run(data):
         error = str(e)
         return error
 ```
+
 他にもスクリプトの例が必要であれば、次のサンプルをご覧ください。
 
 * Pytorch: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
@@ -290,7 +287,7 @@ inference_config = InferenceConfig(runtime="python",
 
 ### <a name="cli-example-of-inferenceconfig"></a>InferenceConfig の CLI の例
 
-[!INCLUDE [inferenceconfig](../../../includes/machine-learning-service-inference-config.md)]
+[!INCLUDE [inference config](../../../includes/machine-learning-service-inference-config.md)]
 
 次のコマンドでは、CLI を使用してモデルをデプロイする方法を示します。
 
@@ -308,7 +305,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 ### <a name="3-define-your-deployment-configuration"></a>手順 3.デプロイ構成を定義する
 
-デプロイの前にデプロイ構成を定義する必要があります。 デプロイ構成は、Web サービスがホストされるコンピューティング ターゲットに固有となります。 たとえば、ローカルでデプロイするとき、サービスにより要求が受け取られるポートを指定する必要があります。
+デプロイの前にデプロイ構成を定義する必要があります。 __デプロイ構成は、Web サービスがホストされるコンピューティング ターゲットに固有となります__。 たとえば、ローカルでデプロイするとき、サービスにより要求が受け取られるポートを指定する必要があります。
 
 また、コンピューティング リソースを作成する必要があります。 たとえば、Azure Kubernetes Service を自分のワークスペースにまだ関連付けていない場合です。
 
@@ -320,191 +317,57 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-次のセクションでは、デプロイ構成を作成し、それを利用して Web サービスをデプロイする方法が紹介されています。
-
-### <a name="optional-profile-your-model"></a>省略可能:モデルをプロファイリングする
-
-モデルをサービスとしてデプロイする前に、SDK または CLI を利用し、最適な CPU とメモリの要件を判断するためにプロファイリングを実行できます。  モデルのプロファイル結果は、`Run` オブジェクトとして出力されます。 [モデル プロファイル スキーマについては、API ドキュメントに](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)詳しい記述があります
-
-SDK を使用してモデルをプロファイリングする方法については、[こちら](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)のページを参照してください。
-
-CLI を使用してモデルをプロファイリングするには、[az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) を使用します。
+> [!TIP]
+> モデルをサービスとしてデプロイする前に、最適な CPU とメモリの要件を判断するためにプロファイリングを実行できます。 SDK または CLI を使用して、ご自分のモデルをプロファイリングできます。 詳細については、[profile()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) および [az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) のリファレンスを参照してください。
+>
+> モデルのプロファイル結果は、`Run` オブジェクトとして出力されます。 詳細については、[ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py) クラスのリファレンスを参照してください。
 
 ## <a name="deploy-to-target"></a>ターゲットにデプロイする
+
+デプロイでは、推論構成のデプロイ構成を使用して、モデルをデプロイします。 デプロイ プロセスは、コンピューティング ターゲットに関係なく類似しています。 AKS へのデプロイは、AKS クラスターへの参照を指定する必要があるため、少し異なります。
 
 ### <a id="local"></a> ローカル デプロイ
 
 ローカルにデプロイするには、お使いのローカル コンピューターに **Docker がインストールされている**必要があります。
 
-+ **SDK を使用する**
+#### <a name="using-the-sdk"></a>SDK を使用する
 
-  ```python
-  deployment_config = LocalWebservice.deploy_configuration(port=8890)
-  service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
-  service.wait_for_deployment(show_output = True)
-  print(service.state)
-  ```
+```python
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
 
-+ **CLI を使用する**
+詳細については、[LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py)、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)、および [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) のリファレンス ドキュメントを参照してください。
 
-    CLI を使用してデプロイするには、次のコマンドを使用します。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。
+#### <a name="using-the-cli"></a>CLI の使用
 
-  ```azurecli-interactive
-  az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
+CLI を使用してデプロイするには、次のコマンドを使用します。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。
 
-    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-local-deploy-config.md)]
+```azurecli-interactive
+az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.json
+```
+
+[!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
+
+詳細については、[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。
 
 ### <a id="aci"></a> Azure Container Instances (DEVTEST)
 
-以下の条件が 1 つ以上満たされている場合は、Azure Container Instances を使用してお客様のモデルを Web サービスとしてデプロイします。
-- モデルを迅速にデプロイおよび検証する必要があります。
-- 開発中のモデルをテストします。 
-
-ACI の利用可能なクォータとリージョンを確認するには、[Azure Container Instances のクォータとリージョンの可用性](https://docs.microsoft.com/azure/container-instances/container-instances-quotas)に関する記事を参照してください。
-
-+ **SDK を使用する**
-
-  ```python
-  deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
-  service = Model.deploy(ws, "aciservice", [model], inference_config, deployment_config)
-  service.wait_for_deployment(show_output = True)
-  print(service.state)
-  ```
-
-+ **CLI を使用する**
-
-    CLI を使用してデプロイするには、次のコマンドを使用します。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。 このサービスに付ける名前に `myservice` を置き換えます。
-
-    ```azurecli-interactive
-    az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
-    ```
-
-    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aci-deploy-config.md)]
-
-+ **VS コードを使用する**
-
-  [VS コードを使用してモデルをデプロイする](how-to-vscode-tools.md#deploy-and-manage-models)には、事前に ACI コンテナーを作成してテストする必要はありません。ACI コンテナーはその場で作成されるからです。
-
-詳細については、[AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) クラスと [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) クラスのリファレンス ドキュメントを参照してください。
+[Azure Container Instances へのデプロイ](how-to-deploy-azure-container-instance.md)に関する記事を参照してください。
 
 ### <a id="aks"></a>Azure Kubernetes Service (DEVTEST & PRODUCTION)
 
-既存の AKS クラスターを使用するか、Azure Machine Learning SDK、CLI、または Azure portal を使用して新しいクラスターを作成できます。
-
-<a id="deploy-aks"></a>
-
-AKS クラスターが既にアタッチされている場合は、それにデプロイできます。 AKS クラスターを作成またはアタッチしていない場合は <a href="#create-attach-aks">新規 AKS クラスターを作成する</a>プロセスに従ってください。
-
-+ **SDK を使用する**
-
-  ```python
-  aks_target = AksCompute(ws,"myaks")
-  # If deploying to a cluster configured for dev/test, ensure that it was created with enough
-  # cores and memory to handle this deployment configuration. Note that memory is also used by
-  # things such as dependencies and AML components.
-  deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
-  service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
-  service.wait_for_deployment(show_output = True)
-  print(service.state)
-  print(service.get_logs())
-  ```
-
-+ **CLI を使用する**
-
-    CLI を使用してデプロイするには、次のコマンドを使用します。 AKS コンピューティング先の名前に `myaks` を置き換えます。 登録されているモデルの名前とバージョンに `mymodel:1` を置き換えます。 このサービスに付ける名前に `myservice` を置き換えます。
-
-  ```azurecli-interactive
-  az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
-  ```
-
-    [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
-
-+ **VS コードを使用する**
-
-  また、[VS コード拡張機能を介して AKS にデプロイする](how-to-vscode-tools.md#deploy-and-manage-models)こともできますが、事前に AKS クラスターを構成しておく必要があります。
-
-AKS デプロイおよびオートスケーリングの詳細情報については、[AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice) のリファレンスをご覧ください。
-
-#### 新しい AKS クラスターを作成する<a id="create-attach-aks"></a>
-**推定所要時間**: 約 20 分です。
-
-AKS クラスターの作成またはアタッチは、お使いのワークスペースでの 1 回限りのプロセスです。 複数のデプロイでこのクラスターを再利用できます。 クラスターまたはそれを含むリソース グループを削除した場合、次回デプロイする必要があるときに、新しいクラスターを作成する必要があります。 複数の AKS クラスターをワークスペースに接続できます。
-
-開発、検証、およびテスト用に AKS クラスターを作成する場合、[`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) を使用するときに `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定します。 この設定で作成されたクラスターにはノードは 1 つだけになります。
-
-> [!IMPORTANT]
-> `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定すると、運用トラフィックの処理には適していない AKS クラスターが作成されます。 推論時間は、実稼働用に作成されたクラスターよりも長くなることがあります。 フォールト トレランスも開発/テスト クラスターでは保証されません。
->
-> 開発/テスト用に作成されたクラスターでは、少なくとも 2 つの仮想 CPU を使用することをお勧めします。
-
-次の例では、新しい Azure Kubernetes Service クラスターを作成する方法が紹介されています。
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-
-# Use the default configuration (you can also provide parameters to customize this).
-# For example, to create a dev/test cluster, use:
-# prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksComputee.ClusterPurpose.DEV_TEST)
-prov_config = AksCompute.provisioning_configuration()
-
-aks_name = 'myaks'
-# Create the cluster
-aks_target = ComputeTarget.create(workspace=ws,
-                                  name=aks_name,
-                                  provisioning_configuration=prov_config)
-
-# Wait for the create process to complete
-aks_target.wait_for_completion(show_output=True)
-```
-
-Azure Machine Learning SDK の外部で AKS クラスターを作成する方法の詳細については、次の記事を参照してください。
-* [AKS クラスターの作成](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [AKS クラスターの作成 (ポータル)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
-
-`cluster_purpose` パラメーターの詳細については、[AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) のリファレンスを参照してください。
-
-> [!IMPORTANT]
-> [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) で、agent_count と vm_size にカスタム値を使用する場合は、agent_count と vm_size の積が 12 仮想 CPU 以上である必要があります。 たとえば、vm_size に "Standard_D3_v2" (4 仮想 CPU) を使用する場合、agent_count は 3 以上にする必要があります。
->
-> Azure Machine Learning SDK では、AKS クラスターのスケーリングのサポートは提供されません。 クラスター内のノードをスケーリングするには、Azure portal 内でご自分の AKS クラスターの UI を使用します。 クラスターの VM サイズではなく、ノード数のみを変更できます。
-
-#### <a name="attach-an-existing-aks-cluster"></a>既存の AKS クラスターをアタッチする
-**推定所要時間:** 約 5 分です。
-
-お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.12.## である場合は、それを使用してお客様のイメージをデプロイできます。
-
-> [!WARNING]
-> AKS クラスターをワークスペースに接続するときに、`cluster_purpose` パラメーターを設定することにより、クラスターを使用する方法を定義できます。
->
-> `cluster_purpose` パラメーターを設定しない場合、または `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD` を設定した場合は、クラスターでは最低 12 の仮想 CPU が利用できる必要があります。
->
-> `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定した場合、クラスターには 12 の仮想 CPU は必要ありません。 ただし、開発/テスト用に構成されたクラスターは、運用レベルのトラフィックには適しておらず、推論時間が増えることがあります。
-
-次のコードは、既存の AKS 1.12.## クラスターをお客様のワークスペースにアタッチする方法を示しています。
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-# Set the resource group that contains the AKS cluster and the cluster name
-resource_group = 'myresourcegroup'
-cluster_name = 'mycluster'
-
-# Attach the cluster to your workgroup. If the cluster has less than 12 virtual CPUs, use the following instead:
-# attach_config = AksCompute.attach_configuration(resource_group = resource_group,
-#                                         cluster_name = cluster_name,
-#                                         cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
-attach_config = AksCompute.attach_configuration(resource_group=resource_group,
-                                                cluster_name=cluster_name)
-aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
-```
-
-`attack_configuration()` の詳細については、[AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) のリファレンスを参照してください。
-
-`cluster_purpose` パラメーターの詳細については、[AksCompute.ClusterPurpose](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.akscompute.clusterpurpose?view=azure-ml-py) のリファレンスを参照してください。
+[Azure Kubernetes Service へのデプロイ](how-to-deploy-azure-kubernetes-service.md)に関する記事を参照してください。
 
 ## <a name="consume-web-services"></a>Web サービスを使用する
 
-デプロイされた Web サービスはすべて、REST API を提供します。そのため、さまざまなプログラミング言語でクライアント アプリケーションを作成できます。 サービスに対して認証を有効にしている場合、要求ヘッダーにトークンとしてサービス キーを指定する必要があります。
+デプロイされた Web サービスはすべて、REST API を提供します。そのため、さまざまなプログラミング言語でクライアント アプリケーションを作成できます。 サービスに対してキー認証を有効にしている場合、要求ヘッダーでトークンとしてサービス キーを指定する必要があります。
+サービスに対してトークン認証を有効にしている場合、要求ヘッダーでベアラー トークンとして Azure Machine Learning JWT トークンを指定する必要があります。
+
+> [!TIP]
+> サービスをデプロイした後、スキーマ JSON ドキュメントを取得できます。 ローカル Web サービスの Swagger ファイルへの URI を取得するには、デプロイされた Web サービスの [swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)を使用します (例: `service.swagger_uri`)。
 
 ### <a name="request-response-consumption"></a>要求 - 応答の使用量
 
@@ -517,6 +380,8 @@ headers = {'Content-Type': 'application/json'}
 
 if service.auth_enabled:
     headers['Authorization'] = 'Bearer '+service.get_keys()[0]
+elif service.token_auth_enabled:
+    headers['Authorization'] = 'Bearer '+service.get_token()[0]
 
 print(headers)
 
@@ -534,6 +399,147 @@ print(response.json())
 
 詳細については、[Web サービスを使用するクライアント アプリケーションの作成](how-to-consume-web-service.md)に関するページを参照してください。
 
+### <a name="web-service-schema-openapi-specification"></a>Web サービスのスキーマ (OpenAPI 仕様)
+
+デプロイで自動スキーマ生成を使用した場合は、[swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)を使用して、サービスに対する OpenAPI 仕様のアドレスを取得できます。 たとえば、「 `print(service.swagger_uri)` 」のように入力します。 仕様を取得するには、GET 要求を使用します (または、ブラウザーで URI を開きます)。
+
+次の JSON ドキュメントは、デプロイに対して生成されるスキーマ (OpenAPI 仕様) の例です。
+
+```json
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "myservice",
+        "description": "API specification for the Azure Machine Learning service myservice",
+        "version": "1.0"
+    },
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "For example: Bearer abc123"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "ServiceHealthCheck",
+                "description": "Simple health check endpoint to ensure the service is up at any given point.",
+                "responses": {
+                    "200": {
+                        "description": "If service is up and running, this response will be returned with the content 'Healthy'",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "application/json": "Healthy"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/score": {
+            "post": {
+                "operationId": "RunMLService",
+                "description": "Run web service's model and get the prediction output",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "serviceInputPayload",
+                        "in": "body",
+                        "description": "The input payload for executing the real-time machine learning service.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The service processed the input correctly and provided a result prediction, if applicable.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceInput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "data": [
+                    [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+                ]
+            }
+        },
+        "ServiceOutput": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "format": "double"
+            },
+            "example": [
+                3726.995
+            ]
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "status_code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+```
+
+仕様の詳細については、「[Open API 仕様](https://swagger.io/specification/)」を参照してください。
+
+仕様からクライアント ライブラリを作成できるユーティリティについては、[swagger-codegen](https://github.com/swagger-api/swagger-codegen) を参照してください。
 
 ### <a id="azuremlcompute"></a> バッチ推論
 Azure Machine Learning のコンピューティング ターゲットは、Azure Machine Learning service によって作成され、管理されます。 これは Azure Machine Learning パイプラインからのバッチ予測に使用できます。
@@ -546,28 +552,7 @@ Azure Machine Learning コンピューティングを使用したバッチ推論
 
 ## <a id="update"></a> Web サービスを更新する
 
-新しいモデルを作成する場合、新しいモデルを使用する各サービスを手動で更新する必要があります。 Web サービスを更新するには、`update` メソッドを使用します。 次のコードでは、Web サービスを更新して新しいモデルを使用する方法が示されています。
-
-```python
-from azureml.core.webservice import Webservice
-from azureml.core.model import Model
-
-# register new model
-new_model = Model.register(model_path="outputs/sklearn_mnist_model.pkl",
-                           model_name="sklearn_mnist",
-                           tags={"key": "0.1"},
-                           description="test",
-                           workspace=ws)
-
-service_name = 'myservice'
-# Retrieve existing service
-service = Webservice(name=service_name, workspace=ws)
-
-# Update to new model(s)
-service.update(models=[new_model])
-print(service.state)
-print(service.get_logs())
-```
+[!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 
 ## <a name="continuous-model-deployment"></a>継続的なモデル デプロイ 
 

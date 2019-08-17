@@ -1,22 +1,22 @@
 ---
-title: Azure Application Gateway PowerShell のサンプル
-description: Azure Application Gateway PowerShell のサンプル
+title: Azure Application Gateway のための Azure PowerShell の例
+description: Azure Application Gateway のための Azure PowerShell の例
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 6/18/2019
+ms.topic: sample
+ms.date: 08/07/2019
 ms.author: victorh
-ms.openlocfilehash: ce86a97f8f565c7917c8f71b8910acf8ceffbede
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2fb809026e8b604ddf25a8160774972eae99411a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164650"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824350"
 ---
-# <a name="azure-application-gateway-powershell-samples"></a>Azure Application Gateway PowerShell のサンプル
+# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure Application Gateway のための Azure PowerShell の例
 
-次の表には、アプリケーション ゲートウェイを作成する Azure PowerShell スクリプトのサンプルへのリンクが含まれています。
+次の表には、Azure Application Gateway のための Azure PowerShell スクリプトの例へのリンクが含まれています。
 
 | | |
 |---|---|

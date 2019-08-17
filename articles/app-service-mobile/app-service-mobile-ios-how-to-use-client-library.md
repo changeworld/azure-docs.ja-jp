@@ -13,19 +13,19 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 38d992e55a8e1f0a057a96f3e13c93c9dbd0c4a9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 898bf082874a1e9bf26dd094a6a0fe55417c9d8e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440383"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851076"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け iOS クライアント ライブラリの使用方法
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーとかかわることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=/app-service-mobile-ios-how-to-use-client-library) を今すぐチェックしてください。
+> Visual Studio App Center では、モバイル アプリ開発の中心となる新しい統合サービスに投資しています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。 [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=/app-service-mobile-ios-how-to-use-client-library) を今すぐチェックしてください。
 >
 
 ## <a name="overview"></a>概要
@@ -438,7 +438,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 ## <a name="customapi"></a>方法:カスタム API の呼び出し
 
-カスタム API を使用して、任意のバックエンド機能を公開できます。 テーブル操作にマップする必要はありません。 メッセージングを詳細に制御できるだけでなく、ヘッダーの読み取り/設定や応答本文の形式の変更も可能です。 バックエンドでカスタム API を作成する方法については、「 [カスタム API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
+カスタム API を使用して、任意のバックエンド機能を公開できます。 テーブル操作にマップする必要はありません。 メッセージングを詳細に制御できるだけでなく、ヘッダーの読み取り/設定や応答本文の形式の変更も可能です。
 
 カスタム API を呼び出すには、 `MSClient.invokeAPI`を呼び出します。 要求と応答のコンテンツは、JSON として扱われます。 他のメディアの種類を使用するには、[`invokeAPI` の他のオーバーロードを使用します][5]。  `POST` 要求の代わりに `GET` 要求を行うには、パラメーター `HTTPMethod` を `"GET"` に設定し、パラメーター `body` を `nil` に設定します (GET 要求にはメッセージ本文がないため)。カスタム API で、他の HTTP 動詞をサポートする場合は、それに応じて `HTTPMethod` を変更します。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 157a421ce2cb4442597bfb0f75ae042a10a8ee03
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2adb2928772f97c2dc14b8ebe9eb2072cbc4a36d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443750"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985363"
 ---
 # <a name="azure-storage-account-overview"></a>Azure ストレージ アカウントの概要
 
@@ -143,7 +143,7 @@ BLOB 用のカスタム ドメインを使用するようにストレージ ア�
 
 - **Azure Active Directory:** Azure Active Directory (Azure AD) の資格情報を使用して、ユーザー、グループ、またはその他の ID による BLOB データとキュー データへのアクセスを認証します。 ID の認証が成功した場合、Azure AD は、Azure Blob Storage または Queue Storage に対する要求の承認で使用されるトークンを返します。 詳細については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](storage-auth-aad.md)」を参照してください。
 - **共有キーによる承認:** ストレージ アカウント アクセス キーを使用して、アプリケーションが実行時に Azure Storage にアクセスするために使用する接続文字列を構成します。 接続文字列内の値を使用して、Azure Storage に渡される "*承認*" ヘッダーが作成されます。 詳細については、「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」を参照してください。
-- **共有アクセス署名:** 共有アクセス署名を使用して、ストレージ アカウント内のリソースにアクセス権を委任します (Azure AD 認証を使用していない場合)。 共有アクセス署名は、URL 上の Azure Storage への要求を承認するために必要なすべての情報をカプセル化するトークンです。 ストレージ リソース、与えられるアクセス許可、そのアクセス許可が共有アクセス署名の一部として有効である期間を指定できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+- **共有アクセス署名:** 共有アクセス署名を使用して、ストレージ アカウント内のリソースにアクセス権を委任します (Azure AD 認証を使用していない場合)。 共有アクセス署名は、URL 上の Azure Storage への要求を承認するために必要なすべての情報をカプセル化するトークンです。 ストレージ リソース、与えられるアクセス許可、そのアクセス許可が共有アクセス署名の一部として有効である期間を指定できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。
 
 > [!NOTE]
 > Azure AD の資格情報を使用したユーザーまたはアプリケーションの認証は、セキュリティと使いやすさで他の承認手段よりも優れています。 アプリケーションで共有キー承認を引き続き使うことはできますが、Azure AD を使うと、コードでアカウント アクセス キーを保存する必要がなくなります。 Shared Access Signature (SAS) を使ってストレージ アカウント内のリソースに対するきめ細かいアクセスの許可を続けることもできますが、Azure AD は、SAS トークンを管理したり侵害された SAS の取り消しを心配したりする必要なしに、同様の機能を提供します。 

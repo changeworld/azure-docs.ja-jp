@@ -41,11 +41,11 @@ Application Insights でサポートされているよく知られているい�
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | 作業中... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | 平均要求実行時間
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | 作業中... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | キューで処理を待っている要求の数
 
-## <a name="name"></a>EnableAdfsAuthentication
+## <a name="name"></a>Name
 
 Application Insights ポータルと UI に表示するメトリックの名前。 
 
-## <a name="value"></a>値
+## <a name="value"></a>Value
 
 測定の単一の値。 集計での個別の測定値の合計。
 
@@ -57,7 +57,7 @@ Application Insights ポータルと UI に表示するメトリックの名前�
 
 集計メトリックの最小値。 測定には設定しないでください。
 
-## <a name="max"></a>max
+## <a name="max"></a>Max
 
 集計メトリックの最大値。 測定には設定しないでください。
 

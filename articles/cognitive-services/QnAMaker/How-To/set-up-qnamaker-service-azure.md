@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 4bc40c0d4d44ea4dd809f59965ec5d1107be8541
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f30b55eda4a02cfb3e961c0019128e4fe686cf53
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439778"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967666"
 ---
 # <a name="create-a-qna-maker-service"></a>QnA Maker サービスを作成する
 

@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: bc0fd83bd45e7c5c671b387d124cdddc75244ade
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 389aaee621251890cd3f75744a94b9c9b29c5695
+ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64573511"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68662394"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Azure Security Center でのセキュリティ イベントの監視と処理
 イベント ダッシュ ボードは、時間の経過とともに収集されたセキュリティ イベントの数と、注意を払う必要がある重要なイベントの一覧の概要を示します。  
 
 > [!NOTE]
-> セキュリティ イベント ダッシュボードは 2019 年 7 月 31 日に廃止されます。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_events)」を参照してください。
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+> セキュリティ イベント ダッシュボードは 2019 年 7 月 31 日に廃止されました。 詳細および代替サービスについては、「[Security Center の機能の廃止 (2019 年 7 月)](security-center-features-retirement-july2019.md#menu_events)」を参照してください。
 
 ## <a name="what-is-a-security-event"></a>セキュリティ イベントとは何ですか。
 Security Center は、Microsoft Monitoring Agent を使用して、さまざまなセキュリティ関連の構成とイベントをマシンから収集し、ワークスペースにこれらのイベントを格納します。 このようなデータの例には、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、および Security Center と統合されたセキュリティ ソリューションからのイベントなどがあります。 またワークスペースには、Microsoft Monitoring Agent によってクラッシュ ダンプ ファイルがコピーされます。

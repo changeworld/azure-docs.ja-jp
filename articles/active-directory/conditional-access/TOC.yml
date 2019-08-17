@@ -19,10 +19,6 @@
 - name: 概念
   expanded: false
   items:
-    - name: 条件付きアクセスの導入
-      href: howto-conditional-access-adoption-kit.md
-    - name: ベースライン保護ポリシー
-      href: concept-baseline-protection.md
     - name: 条件
       href: conditions.md
     - name: 場所の条件
@@ -33,6 +29,8 @@
       href: service-dependencies.md
     - name: What if ツール
       href: what-if-tool.md
+    - name: ベースライン保護ポリシー
+      href: concept-baseline-protection.md
 - name: ハウツー ガイド
   expanded: true
   items:
@@ -40,16 +38,6 @@
       href: plan-conditional-access.md
     - name: ベスト プラクティス
       href: best-practices.md
-    - name: ベースライン ポリシー
-      items:
-        - name: Require MFA for admins \(管理者に MFA を要求する\)
-          href: howto-baseline-protect-administrators.md
-        - name: エンドユーザーの保護
-          href: howto-baseline-protect-end-users.md
-        - name: レガシ認証をブロックする
-          href: howto-baseline-protect-legacy-auth.md
-        - name: サービス管理のために MFA を要求する
-          href: howto-baseline-protect-azure.md
     - name: レガシ認証をブロックする
       href: block-legacy-authentication.md
     - name: MFA 登録の条件付きアクセス
@@ -68,6 +56,18 @@
       href: howto-conditional-access-session-lifetime.md
     - name: クラシック ポリシーを移行する
       href: policy-migration.md
+    - name: ベースライン ポリシー
+      items:
+        - name: Require MFA for admins \(管理者に MFA を要求する\)
+          href: howto-baseline-protect-administrators.md
+        - name: エンドユーザーの保護
+          href: howto-baseline-protect-end-users.md
+        - name: レガシ認証をブロックする
+          href: howto-baseline-protect-legacy-auth.md
+        - name: サービス管理のために MFA を要求する
+          href: howto-baseline-protect-azure.md
+    - name: 条件付きアクセスの導入
+      href: howto-conditional-access-adoption-kit.md
     - name: トラブルシューティング
       items:
         - name: What If ツールを使用したトラブルシューティング

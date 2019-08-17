@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/28/2018
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: bdb6ba0b4aa2f0014fc2189bdd3605a72a30d757
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4e32599076b284eac15d394b08035c557a3489b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754511"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012189"
 ---
 次の例では、`YOUR_MANAGEMENT_API_URL` は Digital Twins API の URI を参照しています。
 

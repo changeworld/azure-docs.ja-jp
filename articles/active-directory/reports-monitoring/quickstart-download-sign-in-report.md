@@ -3,7 +3,7 @@ title: 'クイック スタート: Azure portal を使用してサインイン �
 description: Azure portal を使用してサインイン レポートをダウンロードする方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 9131f208-1f90-4cc1-9c29-085cacd69317
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86bc72f69903134afa3750ad6b72486a713b6cc0
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7cbd71696c3508a464b1343d552cba4a3391066f
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438124"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989668"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してサインイン レポートをダウンロードする
 
@@ -38,9 +38,9 @@ ms.locfileid: "58438124"
 ## <a name="quickstart-download-a-sign-in-report"></a>クイック スタート:サインイン レポートのダウンロード
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
-2. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択し、**[ディレクトリの切り替え]** ボタンを使用して目的の Active Directory を選択します。
-3. ダッシュボードから **[Azure Active Directory]** を選択し、**[サインイン]** を選択します。 
-4. **[日付]** フィルター ドロップダウンで **[過去 24 時間]** を選択し、**[適用]** を選択して過去 24 時間のサインインを表示します。 
+2. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択し、 **[ディレクトリの切り替え]** ボタンを使用して目的の Active Directory を選択します。
+3. ダッシュボードから **[Azure Active Directory]** を選択し、 **[サインイン]** を選択します。 
+4. **[日付]** フィルター ドロップダウンで **[過去 24 時間]** を選択し、 **[適用]** を選択して過去 24 時間のサインインを表示します。 
 5. **[ダウンロード]** ボタンを選択して、ファイル形式として **CSV** を選択し、ファイル名を指定して、フィルター処理したレコードを含む CSV ファイルをダウンロードします。 
 
 ![レポート](./media/quickstart-download-sign-in-report/download-sign-ins.png)

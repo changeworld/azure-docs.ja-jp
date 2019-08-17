@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: dcba2b40bdcf4558f7a06f7e14d0ce654a9c1ec1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 35134d828098af0cff3d585dee600ee1808b00c4
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876078"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013631"
 ---
 # <a name="private-offers"></a>プライベート オファー
 
@@ -49,9 +49,6 @@ ms.locfileid: "67876078"
 ![[プライベート オファー]](./media/marketplace-publishers-guide/private-offer.png)
 
 プライベート オファーは検索結果内にも表示されます。 [プライベート] バッジを見つけてください。
-
-> [!Note]
-> プライベートオファーは、クラウド ソリューション プロバイダー プログラム (CSP) のリセラーを通じて確立されたサブスクリプションではサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

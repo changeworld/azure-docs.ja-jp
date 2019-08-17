@@ -1,7 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 の MapReduce パフォーマンス チューニング ガイドライン | Microsoft Docs
 description: Azure Data Lake Storage Gen2 の MapReduce パフォーマンス チューニング ガイドライン
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 7d20f1b398c50a3b98ee862332338dbf3aaece59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3bd73b62b8859ffc5a71f610ebbdb55705284a76
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939380"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855509"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight の MapReduce と Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス
 

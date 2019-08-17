@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b16d928e2e4fc4b5376d30b81eb39e5a46e54b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b7cb8d6ab34a632e36ea2fd1c87005a038bc523
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098043"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68823716"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>チュートリアル:Azure Active Directory と LinkedIn Elevate の統合
 
@@ -120,11 +120,11 @@ LinkedIn Elevate で Azure AD シングル サインオンを構成するには�
 
     **[サインオン URL]** ボックスに、`https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>` という形式で URL を入力します。
 
-6. LinkedIn Elevate アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをSAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier**  は  **user.userprincipalname** にマップされています。 LinkedIn Elevate アプリケーションでは、nameidentifier が  **user.mail** にマップされると想定されているため、[編集] アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+6. LinkedIn Elevate アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングをSAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 LinkedIn Elevate アプリケーションでは、nameidentifier が **user.mail** にマップされると想定されているため、[編集] アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
-7. その他に、LinkedIn Elevate アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。  **[ユーザー属性]**   ダイアログの [ユーザー要求] セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
+7. その他に、LinkedIn Elevate アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの [ユーザー要求] セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
     | Name | ソース属性|
     | -------| -------------|

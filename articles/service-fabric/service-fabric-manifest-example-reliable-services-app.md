@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 6c4c8f0ee6aa12c58e02f71b42312cd6872076aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5678b4c4c0f7a9d8d3f3cf6e838580de2059a8f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60719164"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035638"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services のアプリケーション マニフェストとサービス マニフェストの例
 ASP.NET Core Web フロント エンドとステートフルなバックエンドを持つ Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Service Fabric .NET クイック スタート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) のマニフェストに基づいています。

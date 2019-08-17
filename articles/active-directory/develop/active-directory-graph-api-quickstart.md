@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: sureshja
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2ae83b655bfe607b1061168649ec74f02ab4064
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 85c3a1953ce34ab6bf60111715d9d8972a4682ba
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483174"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853381"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>方法:Azure AD Graph API を使用する
 

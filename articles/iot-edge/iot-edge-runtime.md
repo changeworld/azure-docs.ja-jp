@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 423825540c02d2788de7a6148ddcec3c654fd450
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b5f44471187f4031642fd674381e672453b7197
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754792"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884256"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -60,7 +60,7 @@ IoT Edge ハブを使用することで、モジュール間の通信が容易�
 データを IoT Edge ハブに送信するために、モジュールは、SendEventAsync メソッドを呼び出します。 最初の引数は、どの出力にメッセージを送信するかを指定します。 次の疑似コードは、**output1** にメッセージを送信します。
 
    ```csharp
-   ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
+   ModuleClient client = await ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
    await client.OpenAsync(); 
    await client.SendEventAsync(“output1”, message); 
    ```

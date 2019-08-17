@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/06/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 28e85f2e9caacc0cc30dcc1a073414c34bc2ab0e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7bd18ab0cedf94f0ecc08c3523a608a8d554e6b2
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064330"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827924"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -34,7 +34,7 @@ Azure Security Center は、3 つの緊急性が高いセキュリティの課�
 
 -   **ますます高度になる攻撃** : ワークロードをどこで実行する場合でも、攻撃はますます高度になっています。 パブリック クラウドのワークロードを保護する必要があります。これは実質的にインターネットに接続しているワークロードであり、セキュリティのベスト プラクティスに従わないと、さらに脆弱になる可能性があります。
 
--   **セキュリティ スキルの不足** : セキュリティ アラートとアラート システムの数は、環境が保護されているかどうかを確認するために必要な経歴と経験を持つ管理者の数をはるかに上回っています。 最近の攻撃の最新情報を把握し続けることは常に課題であり、セキュリティの世界が絶え間なく変化する最前線に立ち続けることは不可能です。
+-   **セキュリティ スキルの不足** : セキュリティ アラートとアラート システムの数は、環境が保護されているかどうかを確認するために必要な経歴と経験を持つ管理者の数を上回っています。 最近の攻撃の最新情報を把握し続けることは常に課題であり、セキュリティの世界が絶え間なく変化する最前線に立ち続けることは不可能です。
 
 このような課題からお客様自身を保護できるように、Security Center には次のツールが用意されています。
 
@@ -126,9 +126,9 @@ Security Center は、ブルートフォース攻撃への露出を制限する�
 
 Security Center には、Azure SQL 内のデータの自動分類を実行するために役立つ機能が含まれています。 また、Azure SQL と Storage サービス全体の潜在的な脆弱性の評価と、それらを緩和する方法の推奨事項を取得することもできます。
 
-### <a name="protect-iot-and-hybrid-cloud-workloads-preview"></a>IoT およびハイブリッド クラウド ワークロードを保護する (プレビュー)
+### <a name="protect-iot-and-hybrid-cloud-workloads"></a>IoT およびハイブリッド クラウド ワークロードを保護する
 
-Azure Security Center for IoT (モノのインターネット) は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、およびインテリジェントな脅威の検出と対応を提供することによって、ハイブリッド ワークロード保護を簡素化します。 詳細については、[Azure Security Center for IoT (プレビュー)](https://docs.microsoft.com/azure/asc-for-iot/) に関するページを参照してください。
+Azure Security Center for IoT (モノのインターネット) は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、およびインテリジェントな脅威の検出と対応を提供することによって、ハイブリッド ワークロード保護を簡素化します。 詳細については、[Azure Security Center for IoT](https://docs.microsoft.com/azure/asc-for-iot/) に関するページを参照してください。
 
 ## <a name="get-secure-faster"></a>より迅速にセキュリティ保護
 

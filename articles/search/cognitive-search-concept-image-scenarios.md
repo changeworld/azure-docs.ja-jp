@@ -5,18 +5,19 @@ services: search
 manager: pablocas
 author: luiscabrer
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 589f8c8f11138b4fb5c3c3096229e28c633efb0d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e60eeb601a0a5796609b9c38b7394c2de0610cdf
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423012"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841283"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
 
@@ -72,7 +73,8 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
 | originalWidth      | 正規化する前の、画像の元の幅。 |
 | originalHeight      | 正規化する前の、画像の元の高さ。 |
 | rotationFromOriginal |  正規化された画像の作成時に発生した、反時計回りの回転角度。 0 ～ 360 度の値になります。 このステップでは、カメラやスキャナーで生成された画像からのメタデータが読み取られます。 通常は、90 度の倍数になります。 |
-| contentOffset |画像が抽出された位置の、content フィールド内での文字オフセット。 このフィールドは、埋め込み画像があるファイルにのみ適用されます。 |
+| contentOffset | 画像が抽出された位置の、content フィールド内での文字オフセット。 このフィールドは、埋め込み画像があるファイルにのみ適用されます。 |
+| pageNumber | 画像が PDF から抽出またはレンダリングされた場合、このフィールドには、抽出元またはレンダリング元の PDF のページ番号 (1 から始まる) が含まれます。  画像が PDF からのものではない場合、このフィールドは 0 になります。  |
 
  *normalized_images* のサンプル値:
 ```json
@@ -84,7 +86,8 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
     "originalWidth": 5000,  
     "originalHeight": 3000,
     "rotationFromOriginal": 90,
-    "contentOffset": 500  
+    "contentOffset": 500,
+    "pageNumber": 2
   }
 ]
 ```

@@ -6,15 +6,15 @@ keywords: エンコード;エンコーダー;メディア
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/16/2019
+ms.date: 08/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 1f152f7f94c12beecf015d9389ed85cb310573bd
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6b9cb325f2bb7419e32efd5bde4705786c5dbeb5
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297736"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934928"
 ---
 # <a name="recommended-live-streaming-encoders"></a>おすすめのライブ ストリーミング エンコーダー
 

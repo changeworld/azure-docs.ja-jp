@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2019
-ms.openlocfilehash: 11e8b26c81d3a8f672abbeafc153df73d063cb6e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 84de9d53b19f5aa9b73570aa0d115d204e8b6596
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610662"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68848214"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
 
@@ -34,7 +34,7 @@ Azure App Service によって提供される機能の詳細については、[A
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](setup-create-workspace.md)を参照してください。
+* Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
 * ワークスペースに登録されているトレーニング済みの機械学習モデル。 モデルがない場合は、[イメージ分類のチュートリアル: モデルのトレーニング](tutorial-train-models-with-aml.md)を使用して、トレーニングと登録を行います。
 * モデルから作成された Docker イメージ。 イメージがない場合は、[イメージ分類: デプロイ モデル](tutorial-deploy-models-with-aml.md)を使用して作成します。
 

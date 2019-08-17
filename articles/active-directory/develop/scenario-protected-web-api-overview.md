@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5bc0075e6604bd1f94531040f2e4a0628e70667
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02bd4b84cc7542714f6db45c12c4b5b13a7fb449
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080103"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852589"
 ---
 # <a name="scenario-protected-web-api"></a>シナリオ: 保護された Web API
 

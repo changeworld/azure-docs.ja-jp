@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 206a8d9ba45dcb948dfffff86bab17b58a33e464
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7d1bce7575272b7df185c4e261685d989f49436c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358618"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68716534"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
 
@@ -151,3 +151,9 @@ Azure Machine Learning の使用時に扱うことがあるリソース クォ�
 ```
 
 たとえば、リモート実行のために送信される ML パイプラインからコンピューティング ターゲットを作成またはアタッチしようとすると、エラーが発生します。
+
+## <a name="overloaded-azurefile-storage"></a>オーバーロードされた AzureFile ストレージ
+
+"Unable to upload project files to working directory in AzureFile because the storage is overloaded (ストレージが過負荷になっているため、プロジェクト ファイルを AzureFile 内の作業ディレクトリにアップロードできません)" というエラーが表示される場合は、次の回避策を適用してください。
+
+データ転送などの他のワークロードにファイル共有を使用している場合は、BLOB を使用して、ファイル共有を実行の送信のために自由に使用できるようにすることをお勧めします。 2 つの異なるワークスペース間でワークロードを分割することもできます。

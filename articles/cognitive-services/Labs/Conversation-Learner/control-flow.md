@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3ec839c1a930ffbe73989149360f1b02866a3c50
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f28b60d67e84e3e2e39cc647045a6dfca473b810
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705310"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932085"
 ---
-## <a name="control-flow"></a>制御フロー
+# <a name="control-flow"></a>制御フロー
 
 このドキュメントでは、次の図に示すように Conversation Learner (CL) の制御フローについて説明します。
 

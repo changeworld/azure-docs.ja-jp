@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 61f0b42731f98dc772a588e5840af6e8535af118
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 7b07fee46bce4c7b80346eb0b4c0fccd5245d87f
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781095"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946884"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure のセキュリティとコンプライアンスのブループリント:FedRAMP 用の分析
 
@@ -44,7 +44,7 @@ Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由�
 ![FedRAMP に対する分析の参照アーキテクチャの図](images/fedramp-analytics-reference-architecture.png?raw=true "FedRAMP に対する分析の参照アーキテクチャの図")
 
 ### <a name="roles"></a>ロール
-分析のブループリントは、操作ユーザー、SQL/データ管理者、およびシステム エンジニエアという 3 種類の汎用ユーザーによるシナリオの枠組みを示します。 Azure Role-based Access Control (RBAC) は、組み込みのカスタム ロールを利用した厳密なアクセス管理の実装を可能にします。 リソースは、[Role-based Access Control](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) の構成および[事前定義済みロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)の枠組みの提示と実装に利用できます。
+分析のブループリントは、操作ユーザー、SQL/データ管理者、およびシステム エンジニエアという 3 種類の汎用ユーザーによるシナリオの枠組みを示します。 Azure Role-based Access Control (RBAC) は、組み込みのカスタム ロールを利用した厳密なアクセス管理の実装を可能にします。 リソースは、[Role-based Access Control](../../role-based-access-control/role-assignments-portal.md) の構成および[事前定義済みロール](../../role-based-access-control/built-in-roles.md)の枠組みの提示と実装に利用できます。
 
 #### <a name="systems-engineer"></a>システム エンジニア
 システム エンジニアは、Azure のお客様のサブスクリプションを所有し、Azure Portal を使用してソリューションのデプロイを構成します。
@@ -80,11 +80,11 @@ SQL/データ管理者は、Azure SQL データベースにアップロードす
 **Power BI**: [Power BI](https://docs.microsoft.com/power-bi/service-azure-and-power-bi) は、データ処理作業によってさらに優れた分析情報を導き出そうとするお客様に対して、分析とレポート作成の機能を提供します。
 
 ### <a name="networking"></a>ネットワーク
-**ネットワーク セキュリティ グループ**:[NSG](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) は、デプロイされたリソースやサービスに送信されるトラフィックを管理するために設定されます。 ネットワーク セキュリティ グループは、既定で拒否のスキームに設定され、事前構成された Access Control List (ACL) に含まれるトラフィックのみを許可します。
+**ネットワーク セキュリティ グループ**:[NSG](../../virtual-network/virtual-network-vnet-plan-design-arm.md) は、デプロイされたリソースやサービスに送信されるトラフィックを管理するために設定されます。 ネットワーク セキュリティ グループは、既定で拒否のスキームに設定され、事前構成された Access Control List (ACL) に含まれるトラフィックのみを許可します。
 
 各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各 NSG で次の構成が有効になります。
   - [診断ログとイベント](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)が有効化され、ストレージ アカウントに格納される
-  - Azure Monitor ログが [NSG の診断](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)ログに接続される。
+  - Azure Monitor ログが [NSG の診断](../../azure-monitor/insights/azure-networking-analytics.md)ログに接続される。
 
 ### <a name="data-at-rest"></a>保存データ
 このアーキテクチャでは、暗号化、データベース監査などの手段によって保存データを保護します。
@@ -93,38 +93,38 @@ SQL/データ管理者は、Azure SQL データベースにアップロードす
  - データ レプリケーションの既定の設定は **geo 冗長ストレージ (GRS)** であり、プライマリ リージョン以外にある別のデータ センターにお客様のデータを非同期で格納します。 これにより、プライマリ データ センターが完全に失われた場合のデータの復旧を保証します。
  - もう 1 つの**ローカル冗長ストレージ (LRS)** は、Azure Storage アカウント経由で構成できます。 LRS は、ストレージ スケール ユニット内でデータをレプリケートし、お客様が自身のアカウントを作成する同じリージョンでホストされます。 プライマリ ストレージのスケール ユニットの障害時にバックアップ データが失われることがないように、すべてのデータが同時にレプリケートされます。
 
-**Azure Storage** 暗号化された保存データの要件を満たすために、この参照アーキテクチャにデプロイされたすべてのサービスが [Azure Storage](https://azure.microsoft.com/services/storage/) を活用し、[Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-service-encryption) を使ってデータを格納します。
+**Azure Storage** 暗号化された保存データの要件を満たすために、この参照アーキテクチャにデプロイされたすべてのサービスが [Azure Storage](https://azure.microsoft.com/services/storage/) を活用し、[Storage Service Encryption](../../storage/common/storage-service-encryption.md) を使ってデータを格納します。
 
 **Azure Disk Encryption**
-[Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、Windows の BitLocker 機能を活用して、OS とデータ ディスクのボリュームを暗号化します。 このソリューションは、ディスクの暗号化キーを制御および管理できるように、Azure Key Vault と統合されています。
+[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) は、Windows の BitLocker 機能を活用して、OS とデータ ディスクのボリュームを暗号化します。 このソリューションは、ディスクの暗号化キーを制御および管理できるように、Azure Key Vault と統合されています。
 
 **Azure SQL Database** Azure SQL データベース インスタンスは、次のデータベース セキュリティ対策を使用します。
 -   [AD 認証と承認](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)を使用すると、データベース ユーザーの ID 管理と他の Microsoft サービスを一元管理できます。
--   [SQL Database の監査](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
+-   [SQL Database の監査](../../sql-database/sql-database-auditing.md)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
 -   SQL Database は、[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) を使用するように構成されます。TDE は、データとログ ファイルのリアルタイムの暗号化と暗号化解除を実行して保存情報を保護します。 TDE は、保存されているデータが未承認のアクセスの対象になっていないことを保証します。
 -   [ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)は、適切なアクセス許可が付与されていない限り、データベース サーバーへのすべてのアクセスを阻止します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
--   [SQL の脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)は、不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンに対するセキュリティの警告を提供することで、潜在的な脅威の検出とそれらの脅威への対応を可能にします。
+-   [SQL の脅威検出](../../sql-database/sql-database-threat-detection.md)は、不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンに対するセキュリティの警告を提供することで、潜在的な脅威の検出とそれらの脅威への対応を可能にします。
 -   [Always Encrypted の列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)により、データベース システム内で機密データがプレーンテキストとして表示されることはありません。 データ暗号化を有効にした後は、キーへのアクセス権を持つクライアント アプリケーションまたはアプリケーション サーバーのみが、プレーンテキスト データにアクセスできます。
 -   [SQL Database 動的データ マスク](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)は、参照アーキテクチャがデプロイされた後に実行できます。 お客様は、お使いのデータベース スキーマに準拠するように動的データ マスクの設定を調整する必要があります。
 
 ### <a name="logging-and-audit"></a>ログ記録と監査
-[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) は、アクティビティ ログ、メトリック、および診断データなどのデータを監視する総合的な表示画面を生成し、お客様によるシステム正常性の全体像の作成を可能にします。  
-[Azure Monitor ログ](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)は、システムの正常性だけではなく、システムとユーザーのアクティビティを詳細に記録します。 これは Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
-- **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)は、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。
-- **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログと、Azure Blob Storage、テーブル、キューのログが含まれます。
+[Azure Monitor](../../azure-monitor/overview.md) は、アクティビティ ログ、メトリック、および診断データなどのデータを監視する総合的な表示画面を生成し、お客様によるシステム正常性の全体像の作成を可能にします。  
+[Azure Monitor ログ](../azure-security-disk-encryption-overview.md)は、システムの正常性だけではなく、システムとユーザーのアクティビティを詳細に記録します。 これは Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
+- **アクティビティ ログ**: [アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)は、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。
+- **診断ログ**: [診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログと、Azure Blob Storage、テーブル、キューのログが含まれます。
 - **ファイアウォール ログ**: Application Gateway は、完全な診断ログとアクセス ログを提供します。 ファイアウォール ログは、WAF が有効になっている Application Gateway リソースで使用できます。
 - **ログ アーカイブ**: すべての診断ログは、暗号化された集中型の Azure ストレージ アカウントに書き込まれ、定義済みのリテンション期間である 2 日間にわたってアーカイブされるように構成されます。 これらのログは、処理、格納、およびダッシュボードでのレポート表示を行うために、Azure Monitor ログに接続されます。
 
 さらに、このアーキテクチャの一部として、次の監視ソリューションが含まれます。
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker):Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。
--   [Security and Audit](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started):Security and Audit ダッシュボードでは、セキュリティ ドメイン、注意が必要な問題、検出、脅威に関する知識、および一般的なセキュリティの照会に関するメトリックを提供することで、リソースのセキュリティ ステータスに対する高度な分析情報を提供します。
--   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment):SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧をお客様に提供します。
--   [Azure Activity Logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity):Activity Log Analytics ソリューションは、顧客向けのすべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
+-   [Security and Audit](../../security-center/security-center-intro.md):Security and Audit ダッシュボードでは、セキュリティ ドメイン、注意が必要な問題、検出、脅威に関する知識、および一般的なセキュリティの照会に関するメトリックを提供することで、リソースのセキュリティ ステータスに対する高度な分析情報を提供します。
+-   [SQL Assessment](../../azure-monitor/insights/sql-assessment.md):SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧をお客様に提供します。
+-   [Azure Activity Logs](../../azure-monitor/platform/collect-activity-logs.md):Activity Log Analytics ソリューションは、顧客向けのすべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
 
 ### <a name="identity-management"></a>ID 管理
--   アプリケーションに対する認証は Azure AD を使用して行われます。 詳細については、「[Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)」をご覧ください。 さらに、データベース列の暗号化では、アプリケーションを Azure SQL Database に対して認証するために Azure AD が使用されます。 詳細については、[SQL Database で機密データを保護する](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)方法に関するページを参照してください。
--   [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) は、組織の ID に影響を及ぼす可能性のある脆弱性を検出し、組織の ID に関連する検出された不審なアクションに対する自動応答を構成します。さらに、不審なインシデントを調査し、適切なアクションを実行してそれらを解決します。
--   [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) は、Azure の対象を絞ったアクセス管理を実現します。 サブスクリプションへのアクセスは、サブスクリプションの管理者に制限されます。
+-   アプリケーションに対する認証は Azure AD を使用して行われます。 詳細については、「[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)」をご覧ください。 さらに、データベース列の暗号化では、アプリケーションを Azure SQL Database に対して認証するために Azure AD が使用されます。 詳細については、[SQL Database で機密データを保護する](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)方法に関するページを参照してください。
+-   [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) は、組織の ID に影響を及ぼす可能性のある脆弱性を検出し、組織の ID に関連する検出された不審なアクションに対する自動応答を構成します。さらに、不審なインシデントを調査し、適切なアクションを実行してそれらを解決します。
+-   [Azure のロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) は、Azure の対象を絞ったアクセス管理を実現します。 サブスクリプションへのアクセスは、サブスクリプションの管理者に制限されます。
 
 Azure SQL Database のセキュリティ機能の使用方法の詳細については、「[Contoso Clinic デモ アプリケーション](https://github.com/Microsoft/azure-sql-security-sample)」サンプルをご覧ください。
 
@@ -137,7 +137,7 @@ Azure SQL Database のセキュリティ機能の使用方法の詳細につい�
 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) またはセキュリティ保護された VPN トンネルは、デプロイされるリソースへの接続を安全に確立するために、この Data Analytics 参照アーキテクチャの一部として構成される必要があります。 ExpressRoute 接続はインターネットを経由しないため、これらの接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 ExpressRoute または VPN を適切に設定することで、お客様は転送中のデータに対して保護のレイヤーを追加できます。
 
 ### <a name="azure-active-directory-setup"></a>Azure Active Directory の設定
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、デプロイの管理と環境を操作する担当者へのアクセスのプロビジョニングを行うために不可欠です。 既存の Windows Server Active Directory は、[4 回のクリック](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)で AAD と統合できます。 また、デプロイされた Active Directory インフラストラクチャを AAD フォレストのサブドメインにすることで、デプロイされた Active Directory インフラストラクチャ (ドメイン コントローラー) を既存の AAD に連結できます。
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) は、デプロイの管理と環境を操作する担当者へのアクセスのプロビジョニングを行うために不可欠です。 既存の Windows Server Active Directory は、[4 回のクリック](../../active-directory/hybrid/how-to-connect-install-express.md)で AAD と統合できます。 また、デプロイされた Active Directory インフラストラクチャを AAD フォレストのサブドメインにすることで、デプロイされた Active Directory インフラストラクチャ (ドメイン コントローラー) を既存の AAD に連結できます。
 
 ### <a name="additional-services"></a>その他のサービス
 #### <a name="iaas---vm-considerations"></a>IaaS - VM に関する考慮事項
@@ -149,11 +149,11 @@ Azure SQL Database のセキュリティ機能の使用方法の詳細につい�
 - **Recovery Services コンテナー**: [Recovery Services コンテナー](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)にはバックアップ データが保管され、このアーキテクチャ内の Azure 仮想マシンのすべての構成が保護されます。 Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。
 
 ##### <a name="monitoring-solutions"></a>監視ソリューション
--   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment):この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
--   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware):このマルウェア対策ソリューションでは、マルウェア、脅威、および保護の状態に関する報告を行います。
--   [Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management):Update Management ソリューションでは、利用可能な更新プログラムのステータスや必要な更新プログラムのインストール プロセスなど、オペレーティング システムのセキュリティ更新プログラムをお客様が管理できるようにします。
--   [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth):Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
--   [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking):Change Tracking ソリューションでは、お客様が環境の変更を簡単に識別できるようにします。
+-   [AD Assessment](../../azure-monitor/insights/ad-assessment.md):この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
+-   [Antimalware Assessment](../../security-center/security-center-install-endpoint-protection.md):このマルウェア対策ソリューションでは、マルウェア、脅威、および保護の状態に関する報告を行います。
+-   [Update Management](../../automation/automation-update-management.md):Update Management ソリューションでは、利用可能な更新プログラムのステータスや必要な更新プログラムのインストール プロセスなど、オペレーティング システムのセキュリティ更新プログラムをお客様が管理できるようにします。
+-   [Agent Health](../../monitoring/monitoring-solution-agenthealth.md):Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
+-   [Change Tracking](../../automation/change-tracking.md):Change Tracking ソリューションでは、お客様が環境の変更を簡単に識別できるようにします。
 
 ##### <a name="security"></a>セキュリティ
 - **マルウェア対策**: 仮想マシン向けの [Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware) は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するリアルタイム保護機能を提供し、既知のマルウェアや不要なソフトウェアが保護されている仮想マシンへのインストールまたは実行を試みた場合に警告する構成可能なアラートを備えています。

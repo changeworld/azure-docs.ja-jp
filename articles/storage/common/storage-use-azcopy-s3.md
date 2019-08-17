@@ -4,16 +4,16 @@ description: AzCopy と Amazon S3 バケットでデータを転送する
 services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 414573a90e5a7b7de845b65e6e88715a26024f10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3c0943ceeadd725ac0e0fb2624d37bc9fb8c3bf
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67125783"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68844779"
 ---
 # <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>AzCopy を使用して Amazon S3 バケットからデータをコピーする
 

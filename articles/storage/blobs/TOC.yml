@@ -106,12 +106,12 @@
             - name: Authorization
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:
-                - name: Azure AD による認証
+                - name: Azure AD による承認
                   href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 共有キーによる承認
                   href: /rest/api/storageservices/authorize-with-shared-key
-                - name: SAS による承認
-                  href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Shared Access Signature (SAS) によるアクセスの委任
+                  href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: BLOB への匿名アクセス
                   href: storage-manage-access-to-resources.md
             - name: 不変 BLOB
@@ -129,6 +129,8 @@
               href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: geo 冗長ストレージ
               href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: geo ゾーン冗長ストレージ
+              href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ディザスター リカバリーとフェールオーバー
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: RA-GRS を使用した HA アプリの設計
@@ -137,6 +139,8 @@
           items:
             - name: アクセス層
               href: storage-blob-storage-tiers.md
+            - name: Archive Storage からのデータのリハイドレート
+              href: storage-blob-rehydration.md
             - name: Azure Blob Storage のライフサイクルの管理
               href: storage-lifecycle-management-concepts.md
         - name: パフォーマンスとスケーリング
@@ -320,11 +324,11 @@
                       href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Azure CLI
                       href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure AD による認証
+                - name: Azure AD を使用した認証と承認
                   items:
-                    - name: マネージド ID による認証
+                    - name: マネージド ID を使用した承認
                       href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: アプリケーションからの認証
+                    - name: アプリケーションからの承認
                       href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 共有キーによる承認
                   items:
@@ -332,6 +336,22 @@
                       href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Azure Storage REST API の使用
                       href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Shared Access Signature (SAS) によるアクセスの委任
+                  items:
+                    - name: ユーザーの委任 SAS の作成
+                      items:
+                        - name: PowerShell
+                          href: storage-blob-user-delegation-sas-create-powershell.md
+                        - name: Azure CLI
+                          href: storage-blob-user-delegation-sas-create-cli.md
+                        - name: .NET
+                          href: storage-blob-user-delegation-sas-create-dotnet.md
+                    - name: サービス SAS の作成 (.NET)
+                      href: storage-blob-service-sas-create-dotnet.md
+                    - name: アカウント SAS の作成 (.NET)
+                      href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: 保存されているアクセス ポリシーの定義
+                      href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: サービスの暗号化用に顧客管理キーを構成する
               items:
                 - name: ポータル

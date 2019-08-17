@@ -45,7 +45,7 @@ sections:
     items:
       - type: paragraph
         text: |
-          Speech SDK (<a href="releasenotes.md">リリース ノート</a>) を使うと、以下をはじめとする機能をアプリに追加できます。 
+          Speech SDK (<a href="releasenotes.md">リリース ノート</a>) を使うと、以下をはじめとする機能をアプリに追加できます。&colon;
           <div class="row"><div class="column"><ul>
           <li><b><a href="speech-to-text.md">音声テキスト変換</a></b> (音声認識/SR)</li>
           <li><b><a href="speech-devices-sdk-create-kws.md">カスタム ウェイクワード</a></b> (キーワード認識/KWS)</li>
@@ -253,10 +253,9 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="speech-to-text-sample.md">音声テキスト変換 (SR)</a><br/>
-          - html: <a href="intent.md">意図認識</a><br/>
-          - html: <a href="translation.md">翻訳</a>
-          - html: <a href="quickstart-text-to-speech-dotnet-windows.md">テキスト読み上げ</a><br/>
+          - html: '<a href="how-to-recognize-intents-from-speech-csharp.md">LUIS を使用して音声から意図を認識する (C#)</a><br/>'
+          - html: '<a href="tutorial-voice-enable-your-bot-speech-sdk.md">Speech SDK を使用して音声でボットを有効にする (C#)</a><br/>'
+          - html: <a href="../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json">テキストの翻訳と音声の合成を行う Flask アプリを作成する (REST)</a><br/>
   - title: サンプル
     items:
       - type: paragraph

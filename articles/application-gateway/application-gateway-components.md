@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 49b6b49d908a7426e7cfd1bae5260ff399d9953b
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273220"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597367"
 ---
 # <a name="application-gateway-components"></a>アプリケーション ゲートウェイのコンポーネント
 
@@ -28,7 +28,7 @@ ms.locfileid: "67273220"
 
 Azure Application Gateway V2 SKU は、静的内部 IP アドレスと静的パブリック IP アドレスの両方をサポートするよう構成することも、静的パブリック IP アドレスのみをサポートするよう構成することもできます。 静的内部 IP アドレスのみをサポートするよう構成することはできません。
 
-V1 SKU は、静的内部 IP アドレスと動的パブリック IP アドレスをサポートする、静的内部 IP アドレスのみをサポートする、または動的パブリック IP アドレスをサポートするように構成できます。 Application Gateway の動的 IP アドレスは、実行中のゲートウェイでは変化しません。 ゲートウェイの停止時または起動時にのみ変化する可能性があります。 システム障害、更新、Azure ホストの更新などでは変化しません。 
+V1 SKU は、静的内部 IP アドレスと動的パブリック IP アドレスをサポートする、静的内部 IP アドレスのみをサポートする、または動的パブリック IP アドレスか動的プライベース IP アドレスのみをサポートする、あるいは動的パブリック IP アドレスと動的プライベート IP アドレスをサポートするように構成できます。 Application Gateway の動的 IP アドレスは、実行中のゲートウェイでは変化しません。 ゲートウェイの停止時または起動時にのみ変化する可能性があります。 システム障害、更新、Azure ホストの更新などでは変化しません。 
 
 アプリケーション ゲートウェイに関連付けられた DNS 名は、そのゲートウェイのライフサイクル全体を通して変更されません。 そのため、CNAME エイリアスを使用し、アプリケーション ゲートウェイの DNS アドレスを参照してください。
 

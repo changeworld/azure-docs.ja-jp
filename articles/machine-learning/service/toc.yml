@@ -6,7 +6,7 @@
     - name: Azure Machine Learning サービスの概要
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: サービスのしくみ
+    - name: アーキテクチャと用語
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: チュートリアル
@@ -98,15 +98,12 @@
     - name: モデルの解釈可能性
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
-    - name: FPGA と CPU、GPU、ASIC
-      displayName: 'field, programmable, arrays'
-      href: concept-accelerate-with-fpgas.md
     - name: ONNX
       href: concept-onnx.md
     - name: セキュリティ
       items:
         - name: エンタープライズ セキュリティの概要
-          displayName: authorization authentication encryption
+          displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
         - name: ユーザーとロールを管理する
           href: how-to-assign-roles.md
@@ -216,9 +213,13 @@
         - name: デプロイする場所と方法
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
+        - name: ノートブック VM
+          href: how-to-deploy-local-container-notebook-vm.md
         - name: Azure Container Instances
+          displayName: aci
           href: how-to-deploy-azure-container-instance.md
         - name: Azure Kubernetes Service
+          displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
         - name: GPU 推論
           href: how-to-deploy-inferencing-gpus.md
@@ -256,9 +257,9 @@
     - name: 再利用可能なワークフローを作成する
       displayName: pipelines
       items:
-        - name: ML パイプラインを作成する
+        - name: ML パイプライン
           href: how-to-create-your-first-pipeline.md
-        - name: Azure Pipelines を使用した ML ワークフローの CI/CD
+        - name: CI/CD 用の Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: リソース クォータを管理する

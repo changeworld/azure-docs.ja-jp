@@ -1,20 +1,21 @@
 ---
-title: ナレッジ ストアの紹介と概要 (プレビュー) - Azure Search
+title: ナレッジ ストア (プレビュー) の概要 - Azure Search
 description: Azure ストレージにエンリッチメントされたドキュメントを送信し、そこで Azure Search および他のアプリケーション内のエンリッチメントされたドキュメントを表示、整形、および使用することができます。
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
+ms.subservice: cognitive-search
 ms.devlang: NA
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 6cbf8dfe51e8b553fd84e9eb81a2ea37a65c387e
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8605a2c954eec2a57925557f8823a3614ebdc266
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668274"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013394"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Azure Search 内のナレッジ ストアとは
 

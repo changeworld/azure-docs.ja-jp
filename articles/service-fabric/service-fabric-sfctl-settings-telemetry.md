@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 42a82ab0be37f260a48a1da6cecab5120c24d293
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf5ebbeb4d9b4757e0c55eeb1a9268065efb2c7c
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60556340"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035207"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
 sfctl のこのインスタンスに対してローカルなテレメトリ設定を構成します。

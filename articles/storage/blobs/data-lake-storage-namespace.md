@@ -1,7 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 の階層型名前空間
 description: Azure Data Lake Storage Gen2 の階層型名前空間の概念について説明します
-services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,12 +8,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e0d888db5f8de137783a3f9282ca7f85d8a30fc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b98892bd31b097e3dc217d54f52f12550599d32
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939456"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847150"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 の階層型名前空間
 

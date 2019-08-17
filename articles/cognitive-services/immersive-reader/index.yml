@@ -51,7 +51,9 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="tutorial.md">Node.js を使用して Immersive Reader を起動する</a>
+          - html: <a href="tutorial-nodejs.md">Node.js を使用して Immersive Reader を起動する</a>
+          - html: <a href="tutorial-python.md">Python を使用してイマーシブ リーダーを起動する</a>
+          - html: <a href="tutorial-ios-picture-immersive-reader.md">Swift を使用してイマーシブ リーダーを起動する</a>
   - title: リファレンス
     items:
       - type: list

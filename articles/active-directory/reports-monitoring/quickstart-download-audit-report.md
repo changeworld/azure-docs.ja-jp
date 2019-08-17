@@ -3,7 +3,7 @@ title: 'クイック スタート: Azure portal を使用して監査レポー�
 description: Azure portal を使用して監査レポートをダウンロードする方法を説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4de121ea-f4aa-4c8a-aae4-700c2c5e97a2
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 2f3e5dd1c42537ce6ff419d7d81d69d824242ec4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436678"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989690"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して監査レポートをダウンロードする
 
@@ -38,9 +38,9 @@ ms.locfileid: "58436678"
 ## <a name="quickstart-download-an-audit-report"></a>クイック スタート:監査レポートのダウンロード
 
 1. [Azure Portal](https://portal.azure.com) に移動します。
-2. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択し、**[ディレクトリの切り替え]** ボタンを使用して目的の Active Directory を選択します。
-3. ダッシュボードから **[Azure Active Directory]** を選択し、**[監査ログ]** を選択します。 
-4. **[日付の範囲]** フィルター ドロップダウンで **[過去 24 時間]** を選択し、**[適用]** を選択して過去 24 時間の監査ログを表示します。 
+2. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択し、 **[ディレクトリの切り替え]** ボタンを使用して目的の Active Directory を選択します。
+3. ダッシュボードから **[Azure Active Directory]** を選択し、 **[監査ログ]** を選択します。 
+4. **[日付の範囲]** フィルター ドロップダウンで **[過去 24 時間]** を選択し、 **[適用]** を選択して過去 24 時間の監査ログを表示します。 
 5. **[ダウンロード]** ボタンを選択して、ファイル形式として **[CSV]** を選択し、ファイル名を指定して、フィルター処理したレコードを含む CSV ファイルをダウンロードします。 
 
 ![レポート](./media/quickstart-download-audit-report/download-audit-logs.png)

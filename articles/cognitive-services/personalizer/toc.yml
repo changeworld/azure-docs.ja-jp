@@ -8,9 +8,15 @@
       displayName: 'loop, context, feature, action, rank, reward, developer, use case'
 - name: クイック スタート
   items:
-    - name: フィードバック ループを作成して使用する
+    - name: 'C# の使用'
       href: csharp-quickstart-commandline-feedback-loop.md
       displayName: 'code, sample, quickstart, c#'
+    - name: Node.js の使用
+      href: quickstart-command-line-feedback-loop-nodejs-sdk.md
+      displayName: 'code, sample, quickstart, node, npm, sdk'
+    - name: Python の使用
+      href: python-quickstart-commandline-feedback-loop.md
+      displayName: 'code, sample, quickstart, python'
 - name: 概念
   items:
     - name: Personalizer のしくみ
@@ -26,7 +32,7 @@
       items:
         - name: '特徴: アクションとコンテキスト'
           href: concepts-features.md
-          displayName: 'action, context, feature, namespace, JSON, best practice, set'
+          displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
         - name: アクティブ ラーニング
           href: concept-active-learning.md
           displayName: 'active, inactive'
@@ -47,6 +53,14 @@
           href: concept-feature-evaluation.md
     - name: スケーラビリティとパフォーマンス
       href: concepts-scalability-performance.md
+- name: デモンストレーション
+  items:
+    - name: ニュース コンテンツ Web サイト
+      href: 'https://personalizerdemo-staging.azurewebsites.net/'
+    - name: ショッピング コンテンツ Web サイト
+      href: 'http://personalizer-traveldemo.azurewebsites.net/'
+    - name: デモンストレーション用のサンプル コード
+      href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/demos'
 - name: ハウツー ガイド
   items:
     - name: Personalizer の作成と構成

@@ -7,15 +7,15 @@ author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: 70bc2c9f457aba09f3d3220061b2fd31d0923906
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5e12806aca7c53c254cc43c8ff5bb8d314f9993e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565660"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882729"
 ---
 # <a name="configure-the-review-tool"></a>レビュー ツールの構成
 

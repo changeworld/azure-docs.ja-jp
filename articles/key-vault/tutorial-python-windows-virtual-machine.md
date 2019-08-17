@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: cdc540f2f6fa834a97c4c405276414f29672e5c7
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: ae9aaea91f62a7e79835e65a5a9f9c76017afdb1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876666"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934385"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>チュートリアル:Python で Windows 仮想マシンを使用して Azure Key Vault を使用する
 
@@ -103,9 +103,9 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 次のいずれかの方法を使用して、仮想マシンを作成できます。
 
-* [Azure CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)
-* [PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
-* [Azure ポータル](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+* [Azure CLI](../virtual-machines/windows/quick-create-cli.md)
+* [PowerShell](../virtual-machines/windows/quick-create-powershell.md)
+* [Azure ポータル](../virtual-machines/windows/quick-create-portal.md)
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
 この手順では、Azure CLI で次のコマンドを実行して、仮想マシンに対するシステム割り当て ID を作成します。
@@ -132,7 +132,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="log-on-to-the-virtual-machine"></a>仮想マシンへのログオン
 
-仮想マシンにログオンするには、[Windows が実行されている Azure 仮想マシンへの接続とサインオン](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)に関する記事の手順に従ってください。
+仮想マシンにログオンするには、[Windows が実行されている Azure 仮想マシンへの接続とサインオン](../virtual-machines/windows/connect-logon.md)に関する記事の手順に従ってください。
 
 ## <a name="create-and-run-a-sample-python-app"></a>サンプルの Python アプリを作成して実行する
 

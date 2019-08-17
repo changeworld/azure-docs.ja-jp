@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: e6ba429d3e94f43cf21e6b76b7ef3644ca28fb19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e154b830df6b49855414563be8c740bfe513c85a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66136038"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967885"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する
 
@@ -117,7 +117,6 @@ CipherSuites:
 
 > [!IMPORTANT]
 > カスタム SSL ポリシーを構成するときは、次の一覧から少なくとも 1 つの暗号スイートを選択する必要があります。 アプリケーション ゲートウェイでは、バックエンドの管理に RSA SHA256 暗号スイートを使用します。
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 > * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 > * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 > * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256

@@ -4,14 +4,14 @@ description: Azure Resource Manager テンプレートで、文字列を操作�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 04/08/2019
+ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 979474ea6b5b61935742591f8fba87d200d618e4
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1db1eb9be3586f76a8d3abc48a78a1e691da9924
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206353"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698186"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
 
@@ -407,7 +407,7 @@ base64 形式を文字列に変換します。
 
 | Name | Type | 値 |
 | ---- | ---- | ----- |
-| stringTrue | ブール値 | True |
+| stringTrue | Bool | True |
 | stringFalse | Bool | False |
 | objectTrue | Bool | True |
 | objectFalse | Bool | False |
@@ -1013,13 +1013,13 @@ base64 形式を文字列に変換します。
 
 `length(string)`
 
-文字列の文字数、または配列の要素の数を返します。
+文字列内の文字、配列内の要素、またはオブジェクト内のルート レベル プロパティの数を返します。
 
 ### <a name="parameters"></a>parameters
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |配列または文字列 |要素の数を取得するために使用する配列、または文字の数を取得するために使用する文字列。 |
+| arg1 |はい |array、string、または object |要素の数を取得するために使用する配列、文字の数を取得するために使用する文字列、またはルート レベル プロパティの数を取得するために使用するオブジェクト。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -1045,6 +1045,18 @@ base64 形式を文字列に変換します。
         "stringToTest": {
             "type": "string",
             "defaultValue": "One Two Three"
+        },
+        "objectToTest": {
+            "type": "object",
+            "defaultValue": {
+                "propA": "one",
+                "propB": "two",
+                "propC": "three",
+                "propD": {
+                    "propD-1": "sub",
+                    "propD-2": "sub"
+                }
+            }
         }
     },
     "resources": [],
@@ -1056,6 +1068,10 @@ base64 形式を文字列に変換します。
         "stringLength": {
             "type": "int",
             "value": "[length(parameters('stringToTest'))]"
+        },
+        "objectLength": {
+            "type": "int",
+            "value": "[length(parameters('objectToTest'))]"
         }
     }
 }
@@ -1067,6 +1083,7 @@ base64 形式を文字列に変換します。
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
+| objectLength | int | 4 |
 
 ## <a name="newguid"></a>newGuid
 
@@ -1471,7 +1488,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 | パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |はい | 任意 |文字列に変換する値。 オブジェクトと配列を含む、あらゆる種類の値を変換できます。 |
+| valueToConvert |はい | Any |文字列に変換する値。 オブジェクトと配列を含む、あらゆる種類の値を変換できます。 |
 
 ### <a name="return-value"></a>戻り値
 

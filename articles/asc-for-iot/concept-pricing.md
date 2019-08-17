@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT のコストを理解する (プレビュー) | Microsoft Docs
+title: Azure Security Center for IoT のコストを理解する | Microsoft Docs
 description: Azure Security Center for IoT に関連するコストとその管理方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,26 +13,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: dd041cdb1608eab60fa2a5fa756f381656a13a46
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 603df1def011232ad2120c37ad1ba256f2a30526
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67618450"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596515"
 ---
 # <a name="pricing-and-associated-costs"></a>価格と関連コスト
 
-> [!IMPORTANT]
-> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-この記事では、Azure Security Center (ASC) for IoT の価格モデルについて説明し、すべての関連コストをまとめたものを示して、それらを管理する方法を説明します。
+この記事では、Azure Security Center for IoT の価格モデルについて説明し、すべての関連コストの概要を示して、それらを管理する方法を説明します。
 
 ## <a name="pricing"></a>価格
 
-ASC for IoT の価格モデルは 2 つの部分で構成され、ASC for IoT で IoT Hub が[有効になる](quickstart-onboard-iot-hub.md)と請求されます。
+Azure Security Center for IoT の価格モデルは 2 つの部分で構成され、Azure Security Center for IoT で IoT Hub が[有効になる](quickstart-onboard-iot-hub.md)と請求されます。
 
 - デバイスごとのコスト - IoT Hub ログの分析に基づく組み込みのセキュリティ機能。
 
@@ -45,7 +41,7 @@ ASC for IoT の価格モデルは 2 つの部分で構成され、ASC for IoT �
 
 ## <a name="associated-costs"></a>関連コスト
 
-ASC for IoT には、直接的な価格には含まれない 2 種類の関連コストがあります。
+Azure Security Center for IoT には、直接的な価格には含まれない 2 種類の関連コストがあります。
 
 - IoT Hub のクォータ消費額
 
@@ -81,6 +77,7 @@ ASC for IoT には、直接的な価格には含まれない 2 種類の関連�
 | | デバイス ID に基づく推奨事項とアラートが無効になります |
 | "_生デバイス セキュリティ イベントの保存_" | デバイス OS ベースラインの推奨事項の詳細を利用できなくなります |
 | | [アラート](concept-security-alerts.md)と[推奨事項](concept-recommendations.md)の調査についての詳細を利用できなくなります |
+|
 
 
 ## <a name="see-also"></a>関連項目

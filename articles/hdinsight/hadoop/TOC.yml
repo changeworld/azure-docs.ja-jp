@@ -41,30 +41,6 @@
       href: ../hdinsight-hadoop-compare-storage-options.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
     - name: マネージド ID とは
       href: ../hdinsight-managed-identities.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
-    - name: トラブルシューティング
-      items:
-        - name: クラスターの作成エラー
-          href: ./hdinsight-troubleshoot-cluster-creation-fails.md
-        - name: ディスク領域の不足
-          href: ./hdinsight-troubleshoot-out-disk-space.md
-        - name: ソフトのロックアップ - CPU
-          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
-        - name: InvalidNetworkConfigurationErrorCode - クラスターの作成が失敗する
-          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
-        - name: InvalidNetworkSecurityGroupSecurityRules - クラスターの作成が失敗する
-          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
-        - name: HDInsight クラスターにログインできない
-          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
-        - name: ノードを HDInsight クラスターに追加できない
-          href: ./hdinsight-troubleshoot-unable-add-nodes.md
-        - name: サービス プリンシパルの証明書の変換
-          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
-        - name: ローカルの HDFS がセーフ モードでスタックする
-          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
-        - name: Apache Ambari のハートビートの問題
-          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
-        - name: Apache Ambari でダウンしたホストとサービスが表示される
-          href: ./apache-ambari-troubleshoot-down-hosts-services.md
 - name: 方法
   items:
     - name: Apache Hadoop サンドボックスの使用
@@ -310,6 +286,32 @@
     - name: トラブルシューティング
       href: ../hdinsight-troubleshoot-guide.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
       items:
+        - name: クラスターの作成エラー
+          href: ./hdinsight-troubleshoot-cluster-creation-fails.md
+        - name: ディスク領域の不足
+          href: ./hdinsight-troubleshoot-out-disk-space.md
+        - name: ソフトのロックアップ - CPU
+          href: ./hdinsight-troubleshoot-soft-lockup-cpu.md
+        - name: InvalidNetworkConfigurationErrorCode - クラスターの作成が失敗する
+          href: ./troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+        - name: InvalidNetworkSecurityGroupSecurityRules - クラスターの作成が失敗する
+          href: ./hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+        - name: HDInsight クラスターにログインできない
+          href: ./hdinsight-troubleshoot-unable-log-in-cluster.md
+        - name: ノードを HDInsight クラスターに追加できない
+          href: ./hdinsight-troubleshoot-unable-add-nodes.md
+        - name: サービス プリンシパルの証明書の変換
+          href: ./hdinsight-troubleshoot-converting-service-principal-certificate.md
+        - name: ローカルの HDFS がセーフ モードでスタックする
+          href: ./hdinsight-hdfs-troubleshoot-safe-mode.md
+        - name: Apache Ambari のハートビートの問題
+          href: ./apache-ambari-troubleshoot-heartbeat-issues.md
+        - name: Apache Ambari UI の 502 エラー
+          href: ./apache-ambari-troubleshoot-fivezerotwo-error.md
+        - name: Apache Ambari でダウンしたホストとサービスが表示される
+          href: ./apache-ambari-troubleshoot-down-hosts-services.md
+        - name: Data Lake ファイルにアクセスできない
+          href: ./hdinsight-troubleshoot-data-lake-files.md
         - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
           href: ../hdinsight-troubleshoot-failed-cluster.md?toc=/azure/hdinsight/hadoop/toc.json&bc=/azure/hdinsight/hadoop/breadcrumb/toc.json
         - name: Apache Hadoop HDFS のトラブルシューティング

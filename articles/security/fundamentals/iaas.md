@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: barclayn
-ms.openlocfilehash: 5e449ae33b19b27c3ea50d982ed84f681a0beb8f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727266"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927928"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
@@ -79,7 +79,7 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 
 Microsoft Antimalware には、リアルタイム保護、スケジュールされたスキャン、マルウェアの駆除、シグネチャの更新、エンジンの更新、サンプルのレポート、および除外イベントの収集などの機能が含まれます。 運用環境とは別にホストされている環境では、マルウェア対策拡張機能を使用して、VM とクラウド サービスを保護できます。
 
-デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](https://docs.microsoft.com/azure/security-center/) と統合できます。
+デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](../../security-center/index.yml) と統合できます。
 
 **ベスト プラクティス**:マルウェアから保護するためにマルウェア対策ソリューションをインストールする。   
 **詳細**:[Microsoft パートナーのソリューションまたは Microsoft Antimalware をインストール](../../security-center/security-center-install-endpoint-protection.md)します。

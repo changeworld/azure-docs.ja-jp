@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: 393441e7ff620f3795e42c2cb376f99f8763f25b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59044863"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "60193182"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>チュートリアル:Azure Firewall のログとメトリックを監視する
 
@@ -51,17 +51,17 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
    * AzureFirewallApplicationRule
    * AzureFirewallNetworkRule
 
-3. データの収集を開始するには、**[診断を有効にする]** をクリックします。
+3. データの収集を開始するには、 **[診断を有効にする]** をクリックします。
 4. **[診断設定]** ページに、診断ログの設定が表示されます。 
 5. この例では、Azure Monitor ログにログを保存するため、名前として「**Firewall log analytics**」と入力します。
 6. **[Send to Log Analytics]\(Log Analytics に送信\)** をクリックして、ワークスペースを構成します。 イベント ハブとストレージ アカウントを使用して診断ログを保存することもできます。
-7. **[Log Analytics]** で、**[構成]** をクリックします。
-8. [Log Analytics ワークスペース] ページで、**[新しいワークスペースの作成]** をクリックします。
+7. **[Log Analytics]** で、 **[構成]** をクリックします。
+8. [Log Analytics ワークスペース] ページで、 **[新しいワークスペースの作成]** をクリックします。
 9. **[Log Analytics ワークスペース]** ページで、新しい **Log Analytics ワークスペース**の名前として「**firewall-oms**」と入力します。
-10. サブスクリプションを選択し、既存のファイアウォール リソース グループ (**Test-FW-RG**) を使用します。場所として **[米国東部]** を選択し、**[Free]** 価格レベルを選択します。
+10. サブスクリプションを選択し、既存のファイアウォール リソース グループ (**Test-FW-RG**) を使用します。場所として **[米国東部]** を選択し、 **[Free]** 価格レベルを選択します。
 11. Click **OK**.
    ![構成プロセスの開始][1] OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。  
-12. アプリケーション ルールとネットワーク ルールのログを収集するために、**[ログ]** で **[AzureFirewallApplicationRule]** と **[AzureFirewallNetworkRule]** をクリックします。
+12. アプリケーション ルールとネットワーク ルールのログを収集するために、 **[ログ]** で **[AzureFirewallApplicationRule]** と **[AzureFirewallNetworkRule]** をクリックします。
    ![診断設定を保存する][2]
 13. **[Save]** をクリックします。
 
@@ -71,11 +71,11 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 
 診断ログを有効にするには、次の手順を使用します。
 
-1. ログ データを保存するストレージ アカウントのリソース ID をメモしておきます。 この値の形式は、*/subscriptions/\<サブスクリプション ID\>/resourceGroups/\<リソース グループ名\>/providers/Microsoft.Storage/storageAccounts/\<ストレージ アカウント名\>* です。
+1. ログ データを保存するストレージ アカウントのリソース ID をメモしておきます。 この値の形式は、 */subscriptions/\<サブスクリプション ID\>/resourceGroups/\<リソース グループ名\>/providers/Microsoft.Storage/storageAccounts/\<ストレージ アカウント名\>* です。
 
    サブスクリプション内の任意のストレージ アカウントを使用できます。 この情報は、Azure Portal で確認できます。 情報はリソースの**プロパティ** ページにあります。
 
-2. ログが有効になっているファイアウォールのリソース ID に注意してください。 この値の形式は、*/subscriptions/\<サブスクリプション ID\>/resourceGroups/\<リソース グループ名\>/providers/Microsoft.Network/azureFirewalls/\<ファイアウォール名\>* です。
+2. ログが有効になっているファイアウォールのリソース ID に注意してください。 この値の形式は、 */subscriptions/\<サブスクリプション ID\>/resourceGroups/\<リソース グループ名\>/providers/Microsoft.Network/azureFirewalls/\<ファイアウォール名\>* です。
 
    この情報は、ポータルで確認できます。
 
@@ -109,7 +109,7 @@ Azure Firewall のログ分析のサンプル クエリについては、「[Azu
 > Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、GitHub から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
 
 ## <a name="view-metrics"></a>メトリックを表示する
-Azure Firewall に移動し、**[監視]** の **[メトリック]** をクリックします。 利用できる値を表示するには、**[メトリック]** ドロップダウン リストを選択します。
+Azure Firewall に移動し、 **[監視]** の **[メトリック]** をクリックします。 利用できる値を表示するには、 **[メトリック]** ドロップダウン リストを選択します。
 
 ## <a name="next-steps"></a>次の手順
 

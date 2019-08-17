@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: iainfou
-ms.openlocfilehash: 0f99386aa9eeb75a990507e383c32412fb39eceb
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 52df1438913983a80ece487b49d0d6bd7821b636
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67840459"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019448"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>プレビュー - 可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -34,7 +34,7 @@ Azure CLI バージョン 2.0.66 以降がインストールされて構成さ�
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-可用性ゾーンを使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] command, then check for any available updates using the [az extension update][az-extension-update] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールします。
+可用性ゾーンを使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -124,7 +124,6 @@ az group create --name myResourceGroup --location eastus2
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --kubernetes-version 1.13.5 \
     --generate-ssh-keys \
     --enable-vmss \
     --load-balancer-sku standard \

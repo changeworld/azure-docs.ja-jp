@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 4c9a8c866a157757121e6a9dd07a0a8559937c5e
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 110bd975de1d865c2aa3d3b088c98cdc8b9e45ad
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490813"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019556"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>他のアカウントから Azure サブスクリプションの課金所有権を取得する
 
@@ -29,7 +29,7 @@ ms.locfileid: "67490813"
 
 ## <a name="request-billing-ownership"></a>課金所有権を要求する
 
-1. Microsoft 顧客契約の課金アカウントの請求書セクション所有者または共同作成者として [Azure portal](http://portal.azure.com) にサインインします。
+1. Microsoft 顧客契約の課金アカウントの請求書セクション所有者または共同作成者として [Azure portal](https://portal.azure.com) にサインインします。
 
 2. "**コスト管理 + 請求**" を検索します。
 

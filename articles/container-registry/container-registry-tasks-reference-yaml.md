@@ -3,16 +3,17 @@ title: Azure Container Registry タスクの参照 - YAML
 description: YAML で ACR タスク用のタスクを定義するための参照 (タスクのプロパティ、ステップの種類、ステップのプロパティ、およびビルトイン変数など)。
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: bdf88657c11bdb5ab5bcde97c155780328065c7e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27c38f51104dfb170c59860c96a8e3a86973bb1e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65954476"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638919"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
 
@@ -96,7 +97,7 @@ az configure --defaults acr=myregistry
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | string | いいえ | シークレットの識別子。 | なし |
 | `keyvault` | string | はい | Azure Key Vault のシークレット URL。 | なし |
-| `clientID` | string | はい | Azure リソース用のユーザー割り当てのマネージド ID のクライアント ID。 | なし |
+| `clientID` | string | はい | Azure リソース用の[ユーザー割り当てのマネージド ID](container-registry-tasks-authentication-managed-identity.md) のクライアント ID。 | なし |
 
 ### <a name="network"></a>ネットワーク
 
@@ -380,7 +381,7 @@ steps:
 | `repeat` | int | はい | コンテナーの実行を繰り返すための再試行回数。 | 0 |
 | `retries` | int | はい | コンテナーの実行に失敗した場合の再試行回数。 再試行は、コンテナーの終了コードがゼロ以外の場合にのみ行われます。 | 0 |
 | `retryDelay` | int (秒) | はい | コンテナーの実行の再試行間の遅延 (秒)。 | 0 |
-| `secret` | object | はい | Azure Key Vault シークレットまたは Azure リソースのマネージド ID を識別します。 | なし |
+| `secret` | object | はい | Azure Key Vault シークレットまたは [Azure リソースのマネージド ID](container-registry-tasks-authentication-managed-identity.md) を識別します。 | なし |
 | `startDelay` | int (秒) | はい | コンテナーの実行を遅らせる秒数。 | 0 |
 | `timeout` | int (秒) | はい | ステップが終了されるまでに実行できる最大秒数。 | 600 |
 | [`when`](#example-when) | [string, string, ...] | はい | タスク内で 1 つ以上のその他のステップに対するステップの依存関係を構成します。 | なし |

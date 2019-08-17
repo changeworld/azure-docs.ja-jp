@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 0683c065285a6ddf8d966bbd3d22e88c39b34d5c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728799"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934910"
 ---
 # <a name="develop-a-secure-web-app"></a>セキュリティで保護された Web アプリを開発する
 
@@ -52,16 +52,16 @@ ms.locfileid: "68728799"
 
 このアーキテクチャは、次のコンポーネントで構成されています。
 
-- [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/)。 アプリケーション アーキテクチャにゲートウェイとファイアウォールを提供します。
-- [Azure Web Apps on Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)。 Linux 環境で Python アプリを実行するコンテナー ランタイムを提供します。
-- [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)。 アプリのシークレットを格納して暗号化し、それらに関連するアクセス ポリシーの作成を管理します。
+- [Azure Application Gateway](../../application-gateway/index.yml)。 アプリケーション アーキテクチャにゲートウェイとファイアウォールを提供します。
+- [Azure Web Apps on Linux](../../app-service/containers/app-service-linux-intro.md)。 Linux 環境で Python アプリを実行するコンテナー ランタイムを提供します。
+- [Azure Key Vault](../../key-vault/index.yml)。 アプリのシークレットを格納して暗号化し、それらに関連するアクセス ポリシーの作成を管理します。
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/)。 アプリのデータを安全に格納します。
-- [Azure Security Center](https://docs.microsoft.com/azure/security-center/) と [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。 アプリの操作に関する監視とアラートを提供します。
+- [Azure Security Center](../../security-center/index.yml) と [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)。 アプリの操作に関する監視とアラートを提供します。
 
 ## <a name="threat-model"></a>脅威モデル
 脅威モデリングは、ビジネスとアプリケーションに対する潜在的なセキュリティ上の脅威を特定して、適切な軽減計画を確保するプロセスです。
 
-このサンプルでは、[Microsoft Threat Modeling Tool](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) を使用して、セキュリティで保護されたサンプル アプリに対する脅威モデリングを実装しています。 コンポーネントとデータ フローを図式化することで、開発プロセスの早い段階で問題と脅威を特定できます。 これは後々、時間やコストに節約にもつながります。
+このサンプルでは、[Microsoft Threat Modeling Tool](threat-modeling-tool.md) を使用して、セキュリティで保護されたサンプル アプリに対する脅威モデリングを実装しています。 コンポーネントとデータ フローを図式化することで、開発プロセスの早い段階で問題と脅威を特定できます。 これは後々、時間やコストに節約にもつながります。
 
 次に示すのは、サンプル アプリの脅威モデルです。
 
@@ -349,19 +349,19 @@ $$ LANGUAGE PLPGSQL;
 ```
 
 
-PostgreSQL の SSL および証明機関 (CA) 検証を設定する方法の詳細については、[Azure Database for PostgreSQL での SSL 接続の構成](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
+PostgreSQL の SSL および証明機関 (CA) 検証を設定する方法の詳細については、[Azure Database for PostgreSQL での SSL 接続の構成](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
 
 ルート証明書はコンテナーに含まれています。 証明書を取得するには、次の手順を実行します。
 
 1. [証明機関](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt)から証明書ファイルをダウンロードします。
-2. [マシンに OpenSSL をダウンロードしてインストールします](https://docs.microsoft.com/en-us/azure/postgresql/concepts-ssl-connection-security)。
+2. [マシンに OpenSSL をダウンロードしてインストールします](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)。
 3. 次のコマンドを実行して、証明書ファイルをデコードします。
 
    ```powershell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-PostgreSQL に SSL のセキュリティを構成する方法の詳細については、[SSL 接続のセキュリティの構成](https://docs.microsoft.com/en-gb/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
+PostgreSQL に SSL のセキュリティを構成する方法の詳細については、[SSL 接続のセキュリティの構成](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)に関するページをご覧ください。
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Azure Web Apps on Linux をデプロイする
 Azure では、Python、Ruby、C#、Java など、広く使用されている言語用に一連の事前構築済みコンテナーとイメージが用意されているため、Azure App Service 上に Linux サービスを簡単に構築できます。 Azure ではカスタム コンテナーもサポートしているため、事実上すべてのプログラミング言語を Azure App Service プラットフォームで実行できます。

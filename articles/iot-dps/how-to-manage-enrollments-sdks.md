@@ -1,19 +1,18 @@
 ---
 title: Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する | Microsoft Docs
 description: IoT Hub Device Provisioning Service と Service SDK でデバイス登録を管理する方法
-author: yzhong94
-ms.author: yizhon
+author: robinsh
+ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
-ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 438cb579180458fcdeb75516a7c98b3ab2886366
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627271"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883380"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法
 "*デバイス登録*" では、ある時点でデバイス プロビジョニング サービスに登録できる、1 つのデバイスまたはデバイス グループのレコードが作成されます。 登録レコードには、必要な IoT ハブを含む、目的のデバイス初期構成がその登録の一部として含まれます。 この記事では、Azure IoT プロビジョニング サービス SDK を使ってプログラムでプロビジョニング サービスのデバイス登録を管理する方法を示します。  この SDK は、GitHub の Azure IoT SDK と同じリポジトリにあります。

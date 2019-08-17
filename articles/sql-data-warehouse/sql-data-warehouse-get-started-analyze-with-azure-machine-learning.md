@@ -11,10 +11,10 @@ ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: cae2acf98f39030f4ff340d32f1911bb2b5763ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 08/12/2019
 ms.locfileid: "65860843"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
@@ -36,12 +36,12 @@ ms.locfileid: "65860843"
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを進めるには、次が必要です。
 
-* AdventureWorksDW サンプル データが事前に読み込まれた SQL Data Warehouse。 これをプロビジョニングするには、[SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照し、サンプル データを読み込んでください。 データ ウェアハウスは既にあるもののサンプル データがない場合は、[サンプル データを手動で読み込む][load sample data manually]ことができます。
+* AdventureWorksDW サンプル データが事前に読み込まれた SQL Data Warehouse。 これをプロビジョニングするには、 [SQL Data Warehouse の作成][Create a SQL Data Warehouse] に関するページを参照し、サンプル データの読み込みを選択してください。 データ ウェアハウスは既にあってもサンプル データがない場合は、 [サンプル データを手動で読み込む][load sample data manually]ことができます。
 
 ## <a name="1-get-the-data"></a>1.データを取得する
 このデータは、AdventureWorksDW データベースの dbo.vTargetMail ビューにあります。 このデータを読み取るには、次の手順を実行します。
 
-1. [Azure Machine Learning Studio][Azure Machine Learning studio] にサインインし、実験をクリックします。
+1. [Azure Machine Learning Studio][Azure Machine Learning studio] にサインインし、[実験] をクリックします。
 2. 画面の左下にある **[+ 新規]** をクリックし、 **[Blank Experiment]\(空白の実験\)** を選択します。
 3. 実験の名前を入力します: Targeted Marketing。
 4. **[Data Input and output]\(データの入力と出力\)** の **[データのインポート]** モジュールを、モジュール ウィンドウからキャンバスにドラッグします。
@@ -119,7 +119,7 @@ FROM [dbo].[vTargetMail]
 [BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較すると、モデルのパフォーマンスがどの程度優れていたかを評価できます。 次のステップとして、このモデルを使用して新規顧客の予測を行い、Web サービスとしてこのモデルを発行したり、SQL Data Warehouse に結果を書き戻したりできます。
 
 ## <a name="next-steps"></a>次の手順
-予測機械学習モデルの構築の詳細については、[Azure での機械学習の概要][Introduction to Machine Learning on Azure]に関するページを参照してください。
+予測機械学習モデルの構築の詳細については、 [Azure での機械学習の概要][Introduction to Machine Learning on Azure]に関するページを参照してください。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1-reader-new.png

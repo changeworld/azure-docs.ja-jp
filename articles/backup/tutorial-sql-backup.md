@@ -1,5 +1,5 @@
 ---
-title: Azure への SQL Server データベースのバックアップ | Microsoft Docs
+title: チュートリアル - Azure への SQL Server データベースのバックアップ
 description: このチュートリアルでは、SQL Server を Azure に バックアップする方法について説明します。
 author: dcurwin
 manager: carmonm
@@ -7,18 +7,18 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 99e1e8194594d204a5080287794362dbe028a1f5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 729eb0d77cee85356e359dc475f4e439b8236ebb
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688416"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736564"
 ---
-# <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
+# <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Azure VM での SQL Server データベースのバックアップ
 
 
 
-この記事では、Azure VM 上で稼働している SQL Server データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について説明します。 この記事では、次のことについて説明します。
+このチュートリアルでは、Azure VM 上で稼働している SQL Server データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について説明します。 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * コンテナーの作成と構成。
@@ -209,7 +209,7 @@ VM 上で稼働しているデータベースを検出します。
 9. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
 
 10. トランザクション ログ バックアップ ポリシーを追加するには、 **[ログ バックアップ]** を選択します。
-11. **[ログ バックアップ]** で、 **[有効]** を選択して、頻度とリテンション期間の制御を設定します。 ログ バックアップは、毎 15 分の頻度で実行でき、最大 35 日間保持することが可能です。
+11. **[ログ バックアップ]** で、 **[有効]** を選択して、頻度とリテンション期間の制御を設定します。 ログ バックアップは、15 分毎の頻度で実行でき、最大 35 日間保持することが可能です。
 12. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
 
     ![ログ バックアップ ポリシーを編集する](./media/backup-azure-sql-database/log-backup-policy-editor.png)

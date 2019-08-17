@@ -8,15 +8,15 @@ manager: nitinme
 ms.assetid: 05A08B01-89FF-4781-AFE7-08DA92F25047
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
-ms.openlocfilehash: 6a5b2dada254a0bfc7fa60172f56221ba67ad279
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: ecc6eb86e7115143fa63b44f9191b1fe8d3703b8
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868049"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881794"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>サムネイル画像のサイズ変更とトリミング
 

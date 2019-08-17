@@ -1,6 +1,6 @@
 ---
-title: Kubernetes Service の実行
-titleSuffix: Text Analytics - Azure Cognitive Services
+title: Kubernetes Service を実行する - Text Analytics
+titleSuffix: Azure Cognitive Services
 description: 実行するサンプルを使って言語検出コンテナーを Azure Kubernetes Service にデプロイし、Web ブラウザーでテストします。
 services: cognitive-services
 author: IEvangelist
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: dapine
-ms.openlocfilehash: ba6fde66b6173bdbff8e9acc08b16f47c5bf7ea4
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 7b6621273b04d019791f604ca0db26a73c289f2b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377102"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562602"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に言語検出コンテナーをデプロイする
 

@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 18b124ca7f6f270488fa8e010d2b1c0404f8e9e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66384775"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882686"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web Search API の言語と地域のサポート
 
@@ -42,7 +42,7 @@ Bing Web Search API では 30 を超える国または地域がサポートさ�
 |ドイツ|DE|
 |香港特別行政区|HK|
 |インド|IN|
-|インドネシア|ID|
+|インドネシア|id|
 |イタリア|IT|
 |日本|JP|
 |韓国|KR|

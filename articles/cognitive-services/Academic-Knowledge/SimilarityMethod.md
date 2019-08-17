@@ -40,7 +40,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 
 ## <a name="response"></a>Response
 
-EnableAdfsAuthentication | 説明
+名前 | 説明
 --------|---------
 **SimilarityScore**        |s1 と s2 のコサイン類似度を表す浮動小数点数値で、値が 1.0 に近いほど類似度が高く、値が -1.0 に近いほど類似度が低くなります
 

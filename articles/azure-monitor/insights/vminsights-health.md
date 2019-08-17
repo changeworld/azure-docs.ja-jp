@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/22/2019
+ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 2bf891f8cfecbb9e78e511dcee7ed1c61c170016
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
+ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340136"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68602056"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure 仮想マシンの正常性を把握する
 
@@ -92,11 +92,13 @@ Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有�
 
 Azure VM の正常性を表示するには、VM の左側のウィンドウにある **[Insights (プレビュー)]** を選択します。 VM Insights ページでは、 **[正常性]** タブが既定で開き、VM の正常性ビューが表示されます。
 
-![選択した Azure 仮想マシン正常性の概要が表示されている VM の Azure Monitor](./media/vminsights-health/vminsights-directvm-health.png)
+![選択した Azure 仮想マシン正常性の概要が表示されている VM の Azure Monitor](./media/vminsights-health/vminsights-directvm-health-01.png)
 
-**[正常性]** タブの **[ゲスト VM の正常性]** では、VM の正常性状態と異常なコンポーネントによって生成された VM 正常性アラートの総数がテーブルに表示されます。
+**[ゲスト VM の正常性]** セクションのテーブルには、VM の正常性基準によって監視されるパフォーマンス コンポーネントの正常性ロールアップと、異常なコンポーネントで発生した VM の正常性アラートの総数が表示されます。 これらのコンポーネントには、**CPU**、**メモリ**、**ディスク**、および**ネットワーク**が含まれます。 [ゲスト VM の正常性] の横にあるシェブロンを展開して、そのコンポーネントの正常性を確認します。
 
-詳細については、「[アラート](#alerts)」を参照してください。
+![選択した Azure 仮想マシンにおける Azure Monitor for VMs コンポーネントの正常性状態](./media/vminsights-health/vminsights-directvm-health-02.png)
+
+コンポーネントの横にある状態を選択すると、選択したコンポーネントのコンテキストで正常性の診断エクスペリエンスが開きます。 そのコンポーネントの状態の構成が示され、その正常性の計算に使用されている正常性基準が記載されています。 詳細については、[正常性の診断および正常性基準の操作](#health-diagnostics)に関する説明を参照してください。 アラートの詳細については、「[アラート](#alerts)」をご覧ください。
 
 VM に対して定義されている正常性状態の説明をまとめたものが次の表です。
 
@@ -156,13 +158,19 @@ Windows を実行する Azure VM から正常性にアクセスすると、上�
 
 ![Red Hat Linux VM のロールアップの例](./media/vminsights-health/vminsights-rollup-vm-rehl-01.png)
 
+**[Show Health]\(正常性の表示\)** チェック ボックスをクリックすると、テーブル内のフィルターに掛けられた結果の正常性状態が返されます。  
+
+![Red Hat Linux VM の正常性状態の例](./media/vminsights-health/vminsights-rollup-vm-rehl-02.png)
+
+リスト内のいずれかの項目について、対応する正常性状態をクリックすると正常性の診断が起動し、選択した VM の正常性の評価が示されます。 
+
 **[Virtual Machines]** ページで、 **[VM 名]** 列の VM の名前を選択すると、 **[VM instance] (VM インスタンス)** ページが表示されます。 このページには、選択された VM に影響を与えているアラートと正常性基準の問題の詳細が表示されます。 どのコンポーネントが異常かを確認するには、ページの左上隅にある **[正常性の状態]** アイコンを選択して正常性状態の詳細をフィルター処理します。 また、異常なコンポーネントによって生成された VM 正常性アラートを、アラートの重大度で分類して表示することもできます。
 
 **[VM list] (VM リスト)** ビューから VM の名前を選択すると、VM から直接 **[Insights (プレビュー)]** を選択した場合と同じように、その VM の **[正常性]** ページが開きます。
 
 ![選択した Azure 仮想マシンの VM 分析情報](./media/vminsights-health/vminsights-directvm-health.png)
 
-**[Insights (プレビュー)]** ページには、VM とアラートのロールアップ正常性状態が表示されます。 この正常性状態は、重大度で分類されます。これは、基準に基づいて、正常性状態が正常から異常に変化したときに生成された VM 正常性アラートを表します。 **[VMs in critical condition] (重大な状態にある VM)** を選択すると、重大な正常性状態にある 1 つ以上の VM の一覧を含むページが開きます。
+**Azure Monitor ページの Virtual Machines (プレビュー)** には、VM およびアラートのロールアップ正常性状態が表示されます。 この正常性状態は、重大度で分類されます。これは、基準に基づいて、正常性状態が正常から異常に変化したときに生成された VM 正常性アラートを表します。 **[VMs in critical condition] (重大な状態にある VM)** を選択すると、重大な正常性状態にある 1 つ以上の VM の一覧を含むページが開きます。
 
 いずれかの VM の正常性状態を選択すると、その VM の **[正常性の診断]** ビューが表示されます。 このビューでは、正常性状態の問題がどの正常性基準に反映されているかを確認できます。 **[正常性の診断]** ページが開くと、すべての VM コンポーネントとそれらに関連付けられている正常性基準が、現在の正常性状態と共に表示されます。
 
@@ -293,7 +301,7 @@ Azure Monitor for VMs の正常性は、[Azure アラート](../../azure-monitor
 
 |列 |説明 |
 |-------|------------|
-|サブスクリプション |Azure サブスクリプションを選択します。 このビューには、選択したサブスクリプション内のアラートのみが含まれます。 |
+|Subscription |Azure サブスクリプションを選択します。 このビューには、選択したサブスクリプション内のアラートのみが含まれます。 |
 |リソース グループ |1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 |
 |リソースの種類 |1 つ以上のリソースの種類を選択します。 既定では、ターゲットが**仮想マシン**のアラートのみが選択されて、このビューに表示されます。 この列は、リソース グループを指定した後でのみ使用できます。 |
 |Resource |リソースを選択します。 このビューには、そのリソースをターゲットとして含むアラートのみが含まれます。 この列は、リソースの種類が指定された後でのみ使用できます。 |

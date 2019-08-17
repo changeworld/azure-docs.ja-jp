@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/23/2019
+ms.date: 07/24/2019
 ms.author: jhakulin
-ms.openlocfilehash: 06831fa933c04827c966e8f6e12aa817f5008b88
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b6e60edd86cff2d657b562f05351e20571c0909
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554142"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815441"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>クイック スタート:Unity 用 Speech SDK (ベータ版) を使用して音声を認識する
 
@@ -24,8 +24,8 @@ ms.locfileid: "68554142"
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 このガイドでは、[Unity](https://unity3d.com/) と Unity 用 Speech SDK (ベータ版) を使用して音声テキスト変換アプリケーションを作成します。
-完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
-Unity に慣れていない場合は、アプリケーションの開発を始める前に [Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/UnityManual.html)を確認することをお勧めします。
+完了すると、お使いのデバイスに話しかけて、リアルタイムに文字起こし (音声テキスト変換) することができます。
+Unity を初めて使用する場合は、アプリケーションを開発する前に [Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/UnityManual.html)を調べることをお勧めします。
 
 > [!NOTE]
 > Unity 用 Speech SDK は、現在ベータ版です。
@@ -35,60 +35,77 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 このプロジェクトを完了するには、以下が必要になります。
 
-* [Unity 2018.3 以降](https://store.unity.com/)および [UWP ARM64 のサポートを追加する Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-     * ARM64 をサポートするために、[ARM64 用のオプションのビルド ツール、および ARM64 用の Windows10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) をインストールします
-* 音声サービス用のサブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
-* お使いのコンピューターに備わっているマイクへのアクセス。
+- [Unity 2018.3 以降](https://store.unity.com/)および [UWP ARM64 のサポートを追加する Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)。
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。 Visual Studio 2017 バージョン 15.9 以降も許容されます。
+  - ARM64 をサポートするため、[ARM64 用のオプションのビルド ツール、および ARM64 用の Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) をインストールします。
+- 音声サービス用のサブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+- お使いのコンピューターに備わっているマイクへのアクセス。
 
 ## <a name="create-a-unity-project"></a>Unity プロジェクトを作成する
 
-* Unity を起動し、 **[Projects]\(プロジェクト\)** タブの **[New]\(新規\)** を選択します。
-* **[Project name]\(プロジェクト名\)** を **csharp-unity** に、 **[Template]\(テンプレート\)** を **[3D]** に指定して、場所を選択します。
-  **[Create project]\(プロジェクトの作成\)** を選択します。
-* 少し時間が経つと、Unity エディターのウィンドウがポップアップします。
+1. Unity を開きます。 Unity を初めて使用する場合は、 **[Unity Hub]** *<version number>* ウィンドウが表示されます (Unity Hub を直接開いてもこのウィンドウにアクセスできます)。
+
+   [![[Unity Hub] ウィンドウ](media/sdk/qs-csharp-unity-hub.png)](media/sdk/qs-csharp-unity-hub.png#lightbox)
+1. **[新規]** を選択します。 **[Create a new project with Unity]\(Unity を使用して新しいプロジェクトを作成する\)** *<version number>* ウィンドウが表示されます。
+
+   [![Unity Hub で新しいプロジェクトを作成する](media/sdk/qs-csharp-unity-create-a-new-project.png)](media/sdk/qs-csharp-unity-create-a-new-project.png#lightbox)
+1. **[Project Name]\(プロジェクト名\)** に「**csharp-unity**」と入力します。
+1. **[Templates]\(テンプレート\)** で **[3D]** がまだ選択されていない場合は、それを選択します。
+1. **[Location]\(場所\)** で、プロジェクトを保存するフォルダーを選択するか作成します。
+1. **作成** を選択します。
+
+少し時間が経つと、Unity エディターのウィンドウが表示されます。
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
+Unity 用 Speech SDK をインストールするには、次の手順を実行します。
+
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-* Unity 用 Speech SDK (ベータ版) は、Unity のアセット パッケージとしてパッケージ化されています (.unitypackage)。
-  これは、[こちら](https://aka.ms/csspeech/unitypackage)からダウンロードできます。
-* **[Assets]\(アセット\)**  >  **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package]\(カスタム パッケージ\)** の順に選択して、Speech SDK をインポートします。
-  詳細については、[Unity のドキュメント](https://docs.unity3d.com/Manual/AssetPackages.html)を参照してください。
-* ファイル ピッカーで、先ほどダウンロードした Speech SDK の .unitypackage ファイルを選択します。
-* すべてのファイルが選択されていることを確認したら、 **[Import]\(インポート\)** をクリックします。
+1. Unity のアセット パッケージ (.unitypackage) としてパッケージ化された [Unity 用 Speech SDK (ベータ版)](https://aka.ms/csspeech/unitypackage) をダウンロードして開きます。 アセット パッケージを開くと、 **[Import Unity Package]\(Unity パッケージのインポート\)** ダイアログ ボックスが表示されます。
 
-  ![Speech SDK Unity アセット パッケージをインポートするときの Unity エディターのスクリーンショット](media/sdk/qs-csharp-unity-01-import.png)
+   [![Unity エディターの [Import Unity Package]\(Unity パッケージのインポート\) ダイアログ ボックス](media/sdk/qs-csharp-unity-01-import.png)](media/sdk/qs-csharp-unity-01-import.png#lightbox)
+1. すべてのファイルが選択されていることを確認したら、 **[Import]\(インポート\)** を選択します。 しばらくすると、Unity アセット パッケージがプロジェクトにインポートされます。
+
+Unity にアセット パッケージをインポートする方法の詳細については、[Unity のドキュメント](https://docs.unity3d.com/Manual/AssetPackages.html)を参照してください。
 
 ## <a name="add-ui"></a>UI を追加する
 
-音声認識をトリガーするためのボタンと結果を表示するテキスト フィールドから成る最小限の UI をシーンに追加します。
+ここで、最小の UI をシーンに追加してみましょう。 この UI は、音声認識をトリガーするためのボタンと結果を表示するテキスト フィールドで構成されています。 [ **[Hierarchy]\(階層\)** ウィンドウ](https://docs.unity3d.com/Manual/Hierarchy.html)に、Unity によって新しいプロジェクトで作成されたサンプル シーンが表示されます。
 
-* [[Hierarchy]\(ヒエラルキー\) ウィンドウ](https://docs.unity3d.com/Manual/Hierarchy.html) (既定では左側) に、Unity の新しいプロジェクトで作成されたサンプルのシーンが表示されます。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの上部にある **[Create]\(作成\)** をクリックし、 **[UI]**  >  **[Button]\(ボタン\)** の順に選択します。
-* これで、3 つのゲーム オブジェクトが作成され、[Hierarchy]\(ヒエラルキー\) ウィンドウに表示されます。 **[Canvas]\(キャンバス\)** オブジェクト、その中で入れ子になった **[Button]\(ボタン\)** オブジェクト、 **[EventSystem]** オブジェクトです。
-* [[Scene]\(シーン\) ビューに移動](https://docs.unity3d.com/Manual/SceneViewNavigation.html)して、[[Scene]\(シーン\) ビュー](https://docs.unity3d.com/Manual/UsingTheSceneView.html)内でキャンバスとボタンが適切に表示されていることを確認します。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの **[Button]\(ボタン\)** オブジェクトをクリックして、その設定を [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html)に表示します (既定では右側)。
-* **[Pos X]\(座標 X\)** プロパティと **[Pos Y]\(座標 Y\)** プロパティを **0** に設定して、ボタンがキャンバスの中央に配置されるようにします。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの上部にある **[Create]\(作成\)** を再度クリックし、 **[UI]**  >  **[Text]\(テキスト\)** の順に選択して、テキスト フィールドを作成します。
-* [Hierarchy]\(ヒエラルキー\) ウィンドウの **[Text]\(テキスト\)** オブジェクトをクリックして、その設定を [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html)に表示します (既定では右側)。
-* **[Pos X]\(座標 X\)** プロパティと **[Pos Y]\(座標 Y\)** プロパティを **0** と **120** に設定し、 **[Width]\(幅\)** プロパティと **[Height]\(高さ\)** プロパティを **240** と **120** に設定して、テキスト フィールドとボタンが重ならないようにします。
+1. **[Hierarchy]\(階層\)** ウィンドウの上部で、 **[Create]\(作成\)**  >  **[UI]**  >  **[Button]\(ボタン\)** の順に選択します。
 
-完了したら、次のスクリーンショットのような UI になります。
+   この操作により、**ボタン** オブジェクト、ボタンを含む **キャンバス** オブジェクト、**EventSystem** オブジェクトの 3 つのゲーム オブジェクトが作成され、 **[Hierarchy]\(階層\)** ウィンドウに表示されます。
 
-[![Unity エディターにおけるクイック スタートのユーザー インターフェイスを示すスクリーンショット](media/sdk/qs-csharp-unity-02-ui-inline.png)](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
+   [![Unity エディター環境](media/sdk/qs-csharp-unity-editor-window.png)](media/sdk/qs-csharp-unity-editor-window.png#lightbox)
+
+1. [ **[Scene]\(シーン\)** ビュー](https://docs.unity3d.com/Manual/SceneViewNavigation.html)に移動して、[ **[Scene]\(シーン\)** ビュー](https://docs.unity3d.com/Manual/UsingTheSceneView.html)内でキャンバスとボタンが適切に表示されていることを確認します。
+
+1. [ **[Inspector]\(インスペクター\)** ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html) (既定では右側) で、 **[Pos X]\(座標 X\)** プロパティと **[Pos Y]\(座標 Y\)** プロパティを **0** に設定して、ボタンがキャンバスの中央に配置されるようにします。
+
+1. **[Hierarchy]\(階層\)** ウィンドウで、 **[Create]\(作成\)**  >  **[UI]**  >  **[Text]\(テキスト\)** の順に選択して、**テキスト** オブジェクトを作成します。
+
+1. **[インスペクター]** ウィンドウで、 **[Pos X]\(座標 X\)** プロパティと **[Pos Y]\(座標 Y\)** プロパティを **0** と **120** に設定して、 **[Width]\(幅\)** プロパティと **[Height]\(高さ\)** プロパティを **240** と **120** に設定します。 これらの値により、テキスト フィールドとボタンが重ならないようにします。
+
+完了すると、 **[Scene]\(シーン\)** ビューは次のスクリーンショットのようになります。
+
+[![Unity エディターの [Scene]\(シーン\) ビュー](media/sdk/qs-csharp-unity-02-ui-inline.png)](media/sdk/qs-csharp-unity-02-ui-inline.png#lightbox)
 
 ## <a name="add-the-sample-code"></a>サンプル コードを追加する
 
-1. [[Project]\(プロジェクト\) ウィンドウ](https://docs.unity3d.com/Manual/ProjectView.html) (既定では左下) で **[Create]\(作成\)** をクリックし、 **[C# script]\(C# スクリプト\)** を選択します。 スクリプトに `HelloWorld` という名前を付けます。
+Unity プロジェクトにサンプル スクリプト コードを追加するには、次の手順に従います。
 
-1. ダブルクリックしてスクリプトを編集します。
+1. [プロジェクト ウィンドウ](https://docs.unity3d.com/Manual/ProjectView.html)で、 **[Create]\(作成\)**  >  **[C# script]\(C# スクリプト\)** を選択して、新しい C# スクリプトを追加します。
+
+   [![Unity エディターのプロジェクト ウィンドウ](media/sdk/qs-csharp-unity-project-window.png)](media/sdk/qs-csharp-unity-project-window.png#lightbox)
+1. スクリプトに `HelloWorld` という名前を付けます。
+
+1. `HelloWorld` をダブルクリックして、新しく作成したスクリプトを編集します。
 
    > [!NOTE]
-   > **[Edit]\(編集\)**  >  **[Preferences]\(設定\)** で、起動するコード エディターを構成できます。[Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/Preferences.html)を参照してください。
+   > コード エディターを Unity で編集のために使用するように構成するには、 **[編集]**  >  **[ユーザー設定]** を選択して、 **[外部ツール]** 設定にアクセスします。 詳細については、[Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/Preferences.html)を参照してください。
 
-1. すべてのコードを次のものに置き換えます。
+1. 既存のスクリプトを次のコードに置き換えます。
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-unity/Assets/Scripts/HelloWorld.cs#code)]
 
@@ -98,32 +115,43 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 1. スクリプトへの変更を保存します。
 
-1. Unity エディターに戻ってから、スクリプトをコンポーネントとしてゲーム オブジェクトのいずれかに追加する必要があります。
+Unity エディターに戻り、ゲーム オブジェクトの 1 つにコンポーネントとしてスクリプトを追加します。
 
-   * [Hierarchy]\(ヒエラルキー\) ウィンドウの **[Canvas]\(キャンバス\)** オブジェクトをクリックします。 [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html) (既定では右側) でその設定が開きます。
-   * [Inspector]\(インスペクター\) ウィンドウの **[Add Component]\(コンポーネントの追加\)** をクリックし、上で作成した HelloWorld スクリプトを検索して、追加します。
-   * Hello World コンポーネントには、初期化されていない 2 つのプロパティ、**Output Text** と **Start Reco Button** が含まれていることに注意してください。これらは `HelloWorld` クラスのパブリック プロパティに一致します。
-     これらを接続するには、オブジェクト ピッカー (プロパティの右側にある小さな円アイコン) をクリックして、先ほど作成したテキスト オブジェクトとボタン オブジェクトを選択します。
+1. **[Hierarchy]\(階層\)** ウィンドウで **[Canvas]\(キャンバス\)** オブジェクトを選択します。
 
-     > [!NOTE]
-     > このボタンには、入れ子になったテキスト オブジェクトも含まれています。 テキスト出力用として、誤ってこれを選択しないようにしてください (このような混乱を避けるために、[Inspector]\(インスペクター\) ウィンドウの [Name]\(名前\) フィールドを使用していずれかのテキスト オブジェクトの名前を変更してもかまいません)。
+1. **[Inspector]\(インスペクター\)** ウィンドウで、 **[Add Component]\(コンポーネントの追加\)** ボタンを選択します。
+
+   [![Unity エディターの [Inspector]\(インスペクター\) ウィンドウ](media/sdk/qs-csharp-unity-inspector-window.png)](media/sdk/qs-csharp-unity-inspector-window.png#lightbox)
+
+1. ドロップダウン リストで、上記で作成した `HelloWorld` スクリプトを検索して追加します。 **[Inspector]\(インスペクター\)** ウィンドウに **[Hello World (Script)]** セクションが表示され、初期化されていない 2 つのプロパティ (**Output Text** と **Start Reco Button**) が一覧表示されます。 これらの Unity コンポーネント プロパティは、`HelloWorld` クラスのパブリック プロパティと一致します。
+
+1. **Start Reco Button** プロパティのオブジェクト ピッカー (プロパティの右側にある小さな円アイコン) を選択し、先ほど作成した**ボタン** オブジェクトを選択します。
+
+1. **Output Text** プロパティのオブジェクト ピッカーを選択し、先ほど作成した**テキスト** オブジェクトを選択します。
+
+   > [!NOTE]
+   > このボタンには、入れ子になったテキスト オブジェクトも含まれています。 テキスト出力用として、誤ってこれを選択しないようにしてください (混乱を避けるために、 **[Inspector]\(インスペクター\)** ウィンドウの **[Name]\(名前\)** フィールドを使用していずれかのテキスト オブジェクトの名前を変更してもかまいません)。
 
 ## <a name="run-the-application-in-the-unity-editor"></a>Unity エディターでアプリケーションを実行する
 
-* Unity エディターのツール バー (メニュー バーの下) の **[Play]\(再生\)** を押します。
+これで、Unity エディター内でアプリケーションを実行する準備ができました。
 
-* アプリが起動したら、ボタンをクリックし、コンピューターのマイクに向かって英語のフレーズや文章を話します。 音声が Speech Services に送信されてテキストに変換され、ウィンドウに表示されます。
+1. Unity エディターのツールバー (メニュー バーの下) で、 **[Play]\(再生\)** ボタン (右向きの三角形) を選択します。
 
-  [![Unity のゲーム ウィンドウで実行中のクイック スタートのスクリーンショット](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
+1. [ **[Game]\(ゲーム\)** ビュー](https://docs.unity3d.com/Manual/GameView.html)にアクセスし、**テキスト** オブジェクトに **[Click button to recognize speech]\(ボタンをクリックして音声を認識する\)** が表示されるまで待機します (アプリケーションが開始されていないか、応答する準備ができていない場合は、**新しいテキスト**が表示されます)。
 
-* [[Console]\(コンソール\) ウィンドウ](https://docs.unity3d.com/Manual/Console.html)でデバッグ メッセージを確認します。
+1. ボタンを選択し、コンピューターのマイクに向かって英語のフレーズや文章を話します。 音声が Speech Services に送信されてテキストに変換され、 **[Game]\(ゲーム\)** ビューに表示されます。
 
-* 音声の認識が完了したら、Unity エディターのツール バーにある **[Play]\(再生\)** をクリックしてアプリを停止します。
+   [![Unity エディターの [Game]\(ゲーム\) ビュー](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
+
+1. [ **[Console]\(コンソール\)** ウィンドウ](https://docs.unity3d.com/Manual/Console.html)でデバッグ メッセージを確認します。 **[Console]\(コンソール\)** ウィンドウが表示されていない場合は、メニュー バーにアクセスし、 **[Window]\(ウィンドウ\)**  >  **[General]\(全般\)**  >  **[Console]\(コンソール\)** の順に選択して表示します。
+
+1. 音声の認識が完了したら、Unity エディターのツール バーにある **[Play]\(再生\)** ボタンを選択してアプリケーションを停止します。
 
 ## <a name="additional-options-to-run-this-application"></a>このアプリケーションを実行するための追加のオプション
 
-このアプリケーションは、Windows のスタンドアロン アプリまたは UWP アプリケーションとして Android にもデプロイできます。
-これらの追加のターゲットの構成について説明している、quickstart/csharp-unity フォルダー内の[サンプル リポジトリ](https://aka.ms/csspeech/samples)を参照してください。
+このアプリケーションは、Android アプリ、Windows スタンドアロン アプリ、または UWP アプリケーションとしてデプロイすることもできます。
+詳細については、Microsoft の[サンプル リポジトリ](https://aka.ms/csspeech/samples)を参照してください。 `quickstart/csharp-unity` フォルダーには、これらの追加のターゲットの構成が記述されています。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -132,5 +160,4 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 ## <a name="see-also"></a>関連項目
 
-- [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
-- [言語モデルをカスタマイズする](how-to-customize-language-model.md)
+- [Custom Speech 用のモデルをトレーニングする](how-to-custom-speech-train-model.md)

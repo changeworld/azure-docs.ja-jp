@@ -14,10 +14,10 @@ ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: c113521a1828a27ce9454ea142cb1708b7c5a1b6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 07/26/2019
 ms.locfileid: "68322833"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
@@ -178,7 +178,7 @@ C# 以外の言語で開発している場合は、自分でファイル規則�
 
 ## <a name="code-sample"></a>サンプル コード
 
-[PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub の Azure Batch コード サンプルの 1 つです。sample project is one of the [Azure Batch code samples][github_samples] この Visual Studio ソリューションは、.NET 用の Batch クライアント ライブラリを使用して持続性のあるストレージにタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
+[PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio ソリューションは、.NET 用の Batch クライアント ライブラリを使用して持続性のあるストレージにタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
 
 1. **Visual Studio 2019** でプロジェクトを開きます。
 2. Microsoft.Azure.Batch.Samples.Common プロジェクトの **AccountSettings.settings** に、Batch と Storage の**アカウント資格情報**を追加します。

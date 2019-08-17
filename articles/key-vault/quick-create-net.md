@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4f9fff41e4b9043c271d656583fb8b9a11ff3a7a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9ddb1db9b39ac942a3476f50aad39c98198b2a18
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052789"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68958605"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>クイック スタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -187,4 +187,4 @@ az keyvault delete --name
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Key Vault についての詳細情報](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
+> [Key Vault についての詳細情報](key-vault-whatis.md)

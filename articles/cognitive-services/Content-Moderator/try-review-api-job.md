@@ -7,15 +7,15 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: c6f3d9c1605dc97b315550d8b7e3fdf08144c1bc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: af636deaafc05238c287d095e644588ed8c5f26d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561229"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880045"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>モデレーション ジョブ (REST) を定義して使用する
 

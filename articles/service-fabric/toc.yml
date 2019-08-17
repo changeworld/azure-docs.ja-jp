@@ -197,6 +197,8 @@
       items:
         - name: アプリケーション モデル
           href: service-fabric-application-model.md
+        - name: アプリケーション モデルのテンプレートを作成する
+          href: service-fabric-concept-resource-model.md
         - name: アプリケーション マニフェストとサービス マニフェスト
           href: service-fabric-application-and-service-manifests.md
         - name: アプリケーション マニフェストとサービス マニフェストの例
@@ -350,6 +352,10 @@
           href: service-fabric-diagnostics-partners.md
     - name: API Management との統合
       href: service-fabric-api-management-overview.md
+    - name: アプリ リソース モデル
+      href: service-fabric-concept-resource-model.md
+    - name: マネージド ID
+      href: concepts-managed-identity.md
 - name: ハウツー ガイド
   items:
     - name: 開発環境を設定する
@@ -741,6 +747,26 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: ローカル クラスターのトラブルシューティング
           href: service-fabric-troubleshoot-local-cluster-setup.md
+    - name: Service Fabric アプリのマネージド ID を使用する
+      items:
+        - name: クラスターのセットアップ
+          items:
+            - name: マネージド ID を使用して既存のクラスターを構成する
+              href: configure-existing-cluster-enable-managed-identity-token-service.md
+            - name: マネージド ID を使用して新しい Azure Service Fabric クラスターを構成する
+              href: configure-new-azure-service-fabric-enable-managed-identity.md
+        - name: アプリケーションのセットアップ
+          items:
+            - name: マネージド ID を持つアプリケーションのデプロイ方法
+              items:
+                - name: システム割り当てのマネージド ID を持つアプリケーションのデプロイ方法
+                  href: how-to-deploy-service-fabric-application-system-assigned-managed-identity.md
+                - name: ユーザー割り当てのマネージド ID を持つアプリケーションのデプロイ方法
+                  href: how-to-deploy-service-fabric-application-user-assigned-managed-identity.md
+        - name: Service Fabric アプリケーション コードで MITS を使用する
+          href: how-to-managed-identity-service-fabric-app-code.md
+        - name: 他の Azure リソースへのアクセス権を付与する
+          href: how-to-grant-access-other-resources.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

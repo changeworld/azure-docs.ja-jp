@@ -3,17 +3,17 @@ title: Azure Maps にマップ コントロールを追加する | Microsoft Doc
 description: Azure Maps でズーム コントロール、ピッチ コントロール、回転コントロール、およびスタイルの選択ツールをマップに追加する方法。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/08/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c1f5dd329f34d64478d605c21d229d8c75a99300
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a504b8df199a3a461d5eb4e5b7238462b4c438f
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62108721"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638763"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Azure Maps にマップ コントロールを追加する
 
@@ -24,7 +24,7 @@ ms.locfileid: "62108721"
 <iframe height='500' scrolling='no' title='ズーム コントロールの追加' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/WKOQyN/'>Adding a zoom control (ズーム コントロールの追加)</a>」を参照してください。
 </iframe>
 
-最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
+最初のコード ブロックでは、匿名認証メカニズムを使用してマップ オブジェクトを作成します。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
 
 ズーム コントロールは、マップをズームイン/ズームアウトする機能を追加します。 2 番目のコード ブロックでは、atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) を使用してズーム コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、ズーム コントロールはマップ **イベント リスナー**内にあります。
 
@@ -33,7 +33,7 @@ ms.locfileid: "62108721"
 <iframe height='500' scrolling='no' title='ピッチ コントロールの追加' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/xJrwaP/'>Adding a pitch control (ピッチ コントロールの追加)</a>」を参照してください。
 </iframe>
 
-最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
+最初のコード ブロックでは、匿名認証メカニズムを使用してマップ オブジェクトを作成します。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
 
 ピッチ コントロールは、マップのピッチを変更する機能を追加します。 コードの 2 番目のブロックでは、atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) を使用してピッチ コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、ピッチ コントロールはマップ **イベント リスナー**内にあります。
 
@@ -42,7 +42,7 @@ ms.locfileid: "62108721"
 <iframe height='500' scrolling='no' title='回転コントロールの追加' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/GBEoRb/'>Adding a rotate control (回転コントロールの追加)</a>」を参照してください。
 </iframe>
 
-最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
+最初のコード ブロックでは、匿名認証メカニズムを使用してマップ オブジェクトを作成します。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
 
 コードの 2 番目のブロックでは、atlas [Compass Control](/javascript/api/azure-maps-control/atlas.control.compasscontrol) を使用してコンパス コントロール オブジェクトを作成しています。 さらに、マップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用して、コンパス コントロールをマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、コンパス コントロールはマップ **イベント リスナー**内にあります。
 
@@ -51,7 +51,7 @@ ms.locfileid: "62108721"
 <iframe height='500' scrolling='no' title='すべてのコントロールを含むマップ' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/qyjbOM/'>A map with all the controls (すべてのコントロールを含むマップ)</a>」を参照してください。
 </iframe>
 
-最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
+最初のコード ブロックでは、匿名認証メカニズムを使用してマップ オブジェクトを作成します。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
 
 2 番目のコード ブロックでは、atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) を使用してコンパス コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。
 

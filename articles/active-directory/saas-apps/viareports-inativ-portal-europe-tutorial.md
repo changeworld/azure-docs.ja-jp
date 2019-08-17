@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory と Viareport の Inativ Portal (ヨーロッパ) の統合 | Microsoft Docs
-description: Azure Active Directory と Viareport の Inativ Portal (ヨーロッパ) の間のシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と Viareport (ヨーロッパ) の統合 | Microsoft Docs
+description: Azure Active Directory と Viareport (ヨーロッパ) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/19/2019
+ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4a7e8359d3c4b80a4dc29a4845749ea690b57fc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e7589875356c3d40248c798e753a0e95d900c5b4
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480285"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68825499"
 ---
-# <a name="tutorial-integrate-viareports-inativ-portal-europe-with-azure-active-directory"></a>チュートリアル:Viareport の Inativ Portal (ヨーロッパ) を Azure Active Directory と統合する
+# <a name="tutorial-integrate-viareport-europe-with-azure-active-directory"></a>チュートリアル:Viareport (ヨーロッパ) を Azure Active Directory と統合する
 
-このチュートリアルでは、Viareport の Inativ Portal (ヨーロッパ) と Azure Active Directory (Azure AD) を統合する方法について説明します。 Viareport の Inativ Portal (ヨーロッパ) を Azure AD と統合すると、以下のことができます。
+このチュートリアルでは、Viareport (ヨーロッパ) と Azure Active Directory (Azure AD) を統合する方法について説明します。 Viareport (ヨーロッパ) を Azure AD と統合すると、以下のことができます。
 
-* Viareport の Inativ Portal (ヨーロッパ) にアクセスできるユーザーを Azure AD で制御する。
-* ユーザーが自分の Azure AD アカウントを使用して Viareport の Inativ Portal (ヨーロッパ) に自動的にサインインできるようにすることができる。
+* Viareport (ヨーロッパ) にアクセスできるユーザーを Azure AD で制御します。
+* ユーザーが自分の Azure AD アカウントを使用して Viareport (ヨーロッパ) に自動的にサインインできるようにします。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -38,44 +38,44 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* Viareport の Inativ Portal (ヨーロッパ) でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Viareport (ヨーロッパ) のシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Viareport の Inativ Portal (ヨーロッパ) では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Viareport (ヨーロッパ) では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
-## <a name="adding-viareports-inativ-portal-europe-from-the-gallery"></a>ギャラリーからの Viareport の Inativ Portal (ヨーロッパ) の追加
+## <a name="adding-viareport-europe-from-the-gallery"></a>ギャラリーからの Viareport (ヨーロッパ) の追加
 
-Azure AD への Viareport の Inativ Portal (ヨーロッパ) の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Viareport の Inativ Portal (ヨーロッパ) を追加する必要があります。
+Azure AD への Viareport (ヨーロッパ) の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Viareport (ヨーロッパ) を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Viareport の Inativ Portal (ヨーロッパ)** 」と入力します。
-1. 結果ウィンドウで **[Viareport の Inativ Portal (ヨーロッパ)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Viareport (ヨーロッパ)** 」と入力します。
+1. 結果ウィンドウで **[Viareport (ヨーロッパ)]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、Viareport の Inativ Portal (ヨーロッパ) に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと Viareport の Inativ Portal (ヨーロッパ) の関連ユーザーとの間にリンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、Viareport (ヨーロッパ) に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Viareport (ヨーロッパ) の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Viareport の Inativ Portal (ヨーロッパ) に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+Viareport (ヨーロッパ) に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-2. **[Viareport の Inativ Portal (ヨーロッパ) SSO の構成](#configure-viareports-inativ-portal-europe-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+2. **[Viareport (ヨーロッパ) の SSO の構成](#configure-viareport-europe-sso)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Viareport の Inativ Portal (ヨーロッパ) テスト ユーザーの作成](#create-viareports-inativ-portal-europe-test-user)** - Viareport の Inativ Portal (ヨーロッパ) で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+5. **[Viareport (ヨーロッパ) のテスト ユーザーの作成](#create-viareport-europe-test-user)** - Viareport (ヨーロッパ) で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Viareport の Inativ Portal (ヨーロッパ)** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Viareport (ヨーロッパ)** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
 
@@ -90,15 +90,15 @@ Viareport の Inativ Portal (ヨーロッパ) に対する Azure AD SSO を構�
     **[サインオン URL]** ボックスに、`https://inativ.viareport.com/SSO/<tenant_id>/login` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Viareport の Inativ Portal (ヨーロッパ) クライアント サポート チーム](mailto:ycezard@viareport.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Viareport (ヨーロッパ) クライアント サポート チーム](mailto:ycezard@viareport.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
-### <a name="configure-viareports-inativ-portal-europe-sso"></a>Viareport の Inativ Portal (ヨーロッパ) SSO の構成
+### <a name="configure-viareport-europe-sso"></a>Viareport (ヨーロッパ) の SSO の構成
 
-**Viareport の Inativ Portal (ヨーロッパ)** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Viareport の Inativ Portal (ヨーロッパ) サポート チーム](mailto:ycezard@viareport.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Viareport (ヨーロッパ)** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Viareport (ヨーロッパ) サポート チーム](mailto:ycezard@viareport.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -113,10 +113,10 @@ Viareport の Inativ Portal (ヨーロッパ) に対する Azure AD SSO を構�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon に Viareport の Inativ Portal (ヨーロッパ) へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Viareport (ヨーロッパ) へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[Viareport の Inativ Portal (ヨーロッパ)]** を選択します。
+1. アプリケーションの一覧で **[Viareport (ヨーロッパ)]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
@@ -129,15 +129,15 @@ Viareport の Inativ Portal (ヨーロッパ) に対する Azure AD SSO を構�
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="create-viareports-inativ-portal-europe-test-user"></a>Viareport の Inativ Portal (ヨーロッパ) テスト ユーザーの作成
+### <a name="create-viareport-europe-test-user"></a>Viareport (ヨーロッパ) のテスト ユーザーの作成
 
-このセクションでは、Viareport の Inativ Portal (ヨーロッパ) で B.Simon というユーザーを作成します。  [Viareport の Inativ Portal (ヨーロッパ) サポート チーム](mailto:ycezard@viareport.com)と連携して、ユーザーを Viareport の Inativ Portal (ヨーロッパ) プラットフォームに追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Viareport (ヨーロッパ) で B.Simon というユーザーを作成します。  [Viareport (ヨーロッパ) サポート チーム](mailto:ycezard@viareport.com)と連携して、ユーザーを Viareport (ヨーロッパ) プラットフォームに追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Viareport の Inativ Portal (ヨーロッパ)] タイルをクリックすると、SSO を設定した Viareport の Inativ Portal (ヨーロッパ) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Viareport (ヨーロッパ)] タイルをクリックすると、SSO を設定した Viareport (ヨーロッパ) に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

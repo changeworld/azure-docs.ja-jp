@@ -3,9 +3,8 @@ title: Azure Service Fabric クラスターのデプロイを計画する | Micr
 description: Azure への運用環境 Service Fabric クラスターのデプロイの計画と準備について説明します。
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
-editor: aljo
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2019
-ms.author: aljo
-ms.openlocfilehash: 0f3a9010805ec1a18490f6f530f60d7a3c763398
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387861"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600005"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>クラスターのデプロイを計画および準備する
 

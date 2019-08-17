@@ -23,13 +23,13 @@ ms.locfileid: "68705033"
 Academic Graph は、7 種類のエンティティで構成されます。 すべてのエンティティにエンティティ ID とエンティティ型があります。
 
 ## <a name="common-entity-attributes"></a>共通のエンティティ属性
-EnableAdfsAuthentication    |説明                |Type       | Operations
+名前    |説明                |Type       | Operations
 ------- | ------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                  |Int64      |等しい
 Ty      |エンティティの種類                |enum   |等しい
 
 ## <a name="entity-type-enum"></a>エンティティ型の列挙
-EnableAdfsAuthentication                                                            |value
+名前                                                            |value
 ----------------------------------------------------------------|-----
 [論文](PaperEntityAttributes.md)                               |0
 [著者](AuthorEntityAttributes.md)                             |1

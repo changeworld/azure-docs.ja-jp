@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center for IoT エージェント プレビューの Windows インストール | Microsoft Docs
+title: Azure Security Center for IoT エージェントの Windows インストール | Microsoft Docs
 description: Azure Security Center for IoT エージェントを 32 ビットまたは 64 ビットの Windows デバイスにインストールする方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -13,22 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: b22faa6ea02a1a3d093aee1dec84ca1680da54d2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: acc99f260931de7fd8c7566a3ff6daf43f34c5ef
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616755"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597219"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Windows 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
 
-> [!IMPORTANT]
-> Azure Security Center for IoT は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-このガイドでは、Azure Security Center (ASC) for IoT の C# ベースのセキュリティ エージェントを Windows にインストールする方法について説明します。
+このガイドでは、Azure Security Center for IoT の C# ベースのセキュリティ エージェントを Windows にインストールする方法について説明します。
 
 このガイドでは、以下の方法について説明します。 
 > [!div class="checklist"]
@@ -47,16 +43,19 @@ ms.locfileid: "67616755"
 
 ## <a name="installation"></a>インストール 
 
-セキュリティ エージェントをインストールするには、次の操作を行います。
+セキュリティ エージェントをインストールするには、次のワークフローを使用してください。
 
-1. ASC for IoT Windows C# エージェントをデバイスにインストールするには、ASC for IoT [GitHub リポジトリ](https://github.com/Azure/Azure-IoT-Security-Agent-CS)から最新バージョンを自分のマシンにダウンロードします。
+1. Azure Security Center for IoT Windows C# エージェントをデバイスにインストールします。 Azure Security Center for IoT [GitHub リポジトリ](https://github.com/Azure/Azure-IoT-Security-Agent-CS)から最新バージョンを自分のマシンにダウンロードします。
 
-2. パッケージの内容を展開し、/Install フォルダーに移動します。
+1. パッケージの内容を展開し、/Install フォルダーに移動します。
 
-3. Windows PowerShell を管理者として開きます。 
-    1. ```Unblock-File .\InstallSecurityAgent.ps1``` を実行して、InstallSecurityAgent スクリプトに実行アクセス許可を追加します。
+1. Windows PowerShell を管理者として開きます。 
+1. 以下を実行して、InstallSecurityAgent スクリプトに実行アクセス許可を追加します。<br>
+    ```
+    Unblock-File .\InstallSecurityAgent.ps1
+    ```
     
-        次に、以下を実行します。
+    次に、以下を実行します。
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
@@ -70,11 +69,11 @@ ms.locfileid: "67616755"
     
     認証パラメーターの詳細については、[認証を構成する方法](concept-security-agent-authentication-methods.md)に関するページを参照してください。
 
-このスクリプトでは、次の処理が実行されます。
+このスクリプトでは、次のアクションを実行します。
 
 - 前提条件のインストール。
 
-- サービス ユーザーを追加する (対話型ログインは無効)。
+- サービス ユーザーを追加する (対話型サインインは無効)。
 
 - **システム サービス**としてエージェントをインストールする。
 
@@ -140,8 +139,8 @@ ms.locfileid: "67616755"
 
 
 ## <a name="next-steps"></a>次の手順
-- ASC for IoT サービスの[概要](overview.md)を読みます
-- ASC for IoT の[アーキテクチャ](architecture.md)についてさらに学習します
+- Azure Security Center for IoT サービスの[概要](overview.md)を読みます
+- Azure Security Center for IoT の[アーキテクチャ](architecture.md)の詳細を確認します
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします
 - [FAQ](resources-frequently-asked-questions.md) を読みます
 - [アラート](concept-security-alerts.md)について理解します

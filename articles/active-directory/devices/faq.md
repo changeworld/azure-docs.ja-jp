@@ -11,14 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbba3f1b753738de57aa311387e522bae1b7b523
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499794"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706314"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
+
+## <a name="general-faq"></a>一般的な FAQ
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Q:最近、デバイスを登録しました。 Azure portal のユーザー情報にデバイスが表示されないのはなぜですか? または、ハイブリッド Azure Active Directory (Azure AD) 参加済みデバイスのデバイス所有者が N/A とマークされるのはなぜですか?
 
@@ -39,6 +41,11 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 - Windows 10 および Windows Server 2016 以降のデバイスの場合は、`dsregcmd.exe /status` を実行します。
 - ダウンレベルの OS バージョンの場合は、`%programFiles%\Microsoft Workplace Join\autoworkplace.exe` を実行します。
+
+**A:** トラブルシューティング情報については、次の記事をご覧ください。
+- [dsregcmd コマンドを使用したデバイスのトラブルシューティング](troubleshoot-device-dsregcmd.md)
+- [Windows 10 と Windows Server 2016 のハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
+- [ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
 
 ---
 
@@ -65,6 +72,8 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 **A:** この操作は設計によるものです。 この場合、デバイスは、クラウドのリソースにアクセスできません。 管理者は、不正なアクセスを防ぐため、古いデバイス、紛失したデバイス、または盗難されたデバイスに対してこのアクションを実行できます。 このアクションを意図せずに実行した場合は、次に示すように、デバイスを再度有効にするか再登録する必要があります
 
 - デバイスが Azure AD で無効になっている場合は、十分な特権を持つ管理者が Azure AD ポータルからデバイスを有効にすることができます  
+  > [!NOTE]
+  > Azure AD Connect を使用してデバイスを同期している場合、Hybrid Azure AD 参加済みデバイスは、次の同期サイクル中に自動的に再度有効になります。 そのため、Hybrid Azure AD 参加済みデバイスを無効にする必要がある場合は、オンプレミスの AD から無効にする必要があります
 
  - デバイスが Azure AD で削除された場合は、デバイスを再登録する必要があります。 再登録するには、デバイスで手動操作を実行する必要があります。 デバイスの状態に基づいて再登録する手順については、以下を参照してください。 
 
@@ -83,7 +92,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
       Azure AD 参加済み Windows 10 デバイスの場合、次の手順を実行します。
 
       1. 管理者としてコマンド プロンプトを開きます。
-      1. `dsregcmd /forcerecovery` と入力します (注: このアクションを実行できるのは管理者だけです)。
+      1. 「`dsregcmd /forcerecovery`」と入力します (注: このアクションを実行するには、管理者である必要があります)。
       1. 開いたダイアログで "サインイン" をクリックし、サインイン プロセスを続行します。
       1. サインアウトし、デバイスにサインインし直して、復旧を完了します。
 
@@ -114,20 +123,30 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 **Q:Azure portal で無効にしたデバイスからユーザーがリソースに引き続きアクセスできるのはなぜですか?**
 
-**A:** 取り消しが適用されるまで最大 1 時間かかります。
+**A:** Azure AD デバイスが無効とマークされた時点から取り消しが適用されるまで、最大で 1 時間かかります。
 
 >[!NOTE] 
 >登録済みデバイスの場合は、ユーザーがリソースにアクセスできないように、デバイスのワイプを実行することをお勧めします。 詳細については、「[デバイス登録とは](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)」を参照してください。 
 
 ---
 
+### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>Q:Azure portal の [登録済み] 列の下に "保留中" とマークされているデバイスがあるのはなぜですか?
+
+**A**: "保留中" は、デバイスが登録されていないことを示します。 この状態は、デバイスがオンプレミスの AD からの Azure AD Connect を使用して同期され、デバイスの登録の準備ができていることを示します。 これらのデバイスでは、参加の種類が "Hybrid Azure AD 参加済み" に設定されています。 詳細については、[ハイブリッド Azure Active Directory 参加の実装を計画する方法](hybrid-azuread-join-plan.md)に関するページを参照してください。
+
+>[!NOTE]
+>デバイスは、登録済みの状態から "保留中" に変更されることもあります。
+>* デバイスが最初に Azure AD から削除され、オンプレミスの AD から再同期された場合。
+>* デバイスが Azure AD Connect の同期スコープから削除され、再び追加された場合。
+>
+>どちらの場合も、これらの各デバイス上でデバイスを手動で再登録する必要があります。 デバイスが以前に登録されているかどうかを確認するには、[dsregcmd コマンドを使用してデバイスのトラブルシューティングを行います](troubleshoot-device-dsregcmd.md)。
+
+---
 ## <a name="azure-ad-join-faq"></a>Azure AD Join の FAQ
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>Q:デバイス上の Azure AD 参加済みデバイスをローカルで参加解除するにはどうすればよいですか?
 
-**A:** 
-- ハイブリッド Azure AD 参加済みデバイスの場合は、必ず自動登録をオフにしてください。 その後、スケジュールされたタスクはデバイスを再登録しません。 次に、管理者としてコマンド プロンプトを開き、「`dsregcmd.exe /debug /leave`」と入力します。 または、このコマンドを複数のデバイスに対するスクリプトとして実行し、一括で参加を解除します。
-- 純粋な Azure AD 参加済みデバイスの場合、オフラインのローカル管理者アカウントを持っているか、作成する必要があります。 Azure AD ユーザーの資格情報ではサインインできません。 次に、 **[設定]**  >  **[アカウント]**  >  **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、 **[切断]** を選択します。 画面の指示に従い、入力を求められたらローカル管理者の資格情報を入力します。 デバイスを再起動して、参加の解除プロセスを完了します。
+**A:** 純粋な Azure AD 参加済みデバイスの場合、オフラインのローカル管理者アカウントを持っているか、作成する必要があります。 Azure AD ユーザーの資格情報ではサインインできません。 次に、 **[設定]**  >  **[アカウント]**  >  **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、 **[切断]** を選択します。 画面の指示に従い、入力を求められたらローカル管理者の資格情報を入力します。 デバイスを再起動して、参加の解除プロセスを完了します。
 
 ---
 
@@ -223,6 +242,10 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 ## <a name="hybrid-azure-ad-join-faq"></a>Hybrid Azure AD Join の FAQ
 
+### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>Q:デバイス上の Hybrid Azure AD 参加済みデバイスをローカルで参加解除するにはどうすればよいですか?
+
+**A:** ハイブリッド Azure AD 参加済みデバイスの場合は、必ず自動登録をオフにしてください。 その後、スケジュールされたタスクはデバイスを再登録しません。 次に、管理者としてコマンド プロンプトを開き、「`dsregcmd.exe /debug /leave`」と入力します。 または、このコマンドを複数のデバイスに対するスクリプトとして実行し、一括で参加を解除します。
+
 ### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>Q:Hybrid Azure AD Join のエラーの診断に関するトラブルシューティング情報はどこにありますか?
 
 **A:** トラブルシューティング情報については、次の記事をご覧ください。
@@ -234,7 +257,7 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 **A:** ユーザーがドメイン参加済みデバイス上のアプリに各自のアカウントを追加すると、 **[Add account to Windows?]\(アカウントを Windows に追加しますか?\)** というプロンプトが表示されることがあります。 このプロンプトで **[はい]** と入力すると、デバイスが Azure AD に登録されます。 信頼の種類は Azure AD 登録済みとしてマークされます。 ご自身の組織で Hybrid Azure AD Join を有効にすると、デバイスは、ハイブリッド Azure AD 参加済みになります。 それにより、同じデバイスに対して、2 つのデバイスの状態が表示されます。 
 
-Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されます。 したがって、すべての認証と条件付きアクセス評価では、デバイスはハイブリッド Azure AD 参加済みと見なされます。 Azure AD ポータルから Azure AD 登録済みデバイスのレコードを安全に削除できます。 [Windows 10 コンピューターでこの二重状態を回避またはクリーンアップする](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know)方法を確認してください。 
+Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されます。 したがって、すべての認証と条件付きアクセス評価では、デバイスはハイブリッド Azure AD 参加済みと見なされます。 Azure AD ポータルから Azure AD 登録済みデバイスのレコードを安全に削除できます。 [Windows 10 コンピューターでこの二重状態を回避またはクリーンアップする](hybrid-azuread-join-plan.md#review-things-you-should-know)方法を確認してください。 
 
 ---
 
@@ -258,10 +281,19 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 
 ## <a name="azure-ad-register-faq"></a>Azure AD の登録の FAQ
 
+### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>Q:デバイス上の Azure AD 登録済みデバイスをローカルで削除するにはどうすればよいですか?
+
+**A:** 
+- Windows 10 Azure AD 登録済みデバイスの場合、 **[設定]**  >  **[アカウント]**  >  **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、 **[切断]** を選択します。 デバイスの登録は、Windows 10 のユーザー プロファイルごとに行います。
+- iOS および Android の場合は、Microsoft Authenticator アプリケーションの **[設定]**  >  **[デバイスの登録]** で、 **[デバイスの登録を解除する]** を選択します。
+- macOS の場合は、Microsoft Intune ポータル サイト アプリケーションを使用すると、管理対象からデバイスを登録解除して、登録を削除することができます。 
+
+---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>Q:Android デバイスや iOS BYOD デバイスを登録できますか?
 
 **A:** はい。ただし、ハイブリッドのお客様が Azure デバイス登録サービスを利用してのみ可能となります。 Active Directory フェデレーション サービス (AD FS) のオンプレミス デバイス登録サービスではサポートされていません。
 
+---
 ### <a name="q-how-can-i-register-a-macos-device"></a>Q:macOS デバイスを登録するにはどうしたらよいですか?
 
 **A:** 次の手順を実行します。
@@ -274,6 +306,7 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 - 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](../conditional-access/technical-reference.md#client-apps-condition) が必要です。 
 - 最初のアクセス試行中に、ユーザーは、会社のポータルを使用してデバイスを登録するよう求められます。
 
+---
 ## <a name="next-steps"></a>次の手順
 
 - [Azure AD 登録済みデバイス](concept-azure-ad-register.md)について学習する

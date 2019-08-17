@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2600989273d6ebfe4319a048cc65c8c3ff9ecdbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e462197bac854004aaf2d2f0f96e121ed081581a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096313"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967237"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>チュートリアル:Azure Active Directory と NetSuite の統合
 
@@ -122,7 +122,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
     `https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs`
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[NetSuite クライアント サポート チーム](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[NetSuite クライアント サポート チーム](https://www.netsuite.com/portal/services/support-services/suitesupport.shtml)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. NetSuite アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 

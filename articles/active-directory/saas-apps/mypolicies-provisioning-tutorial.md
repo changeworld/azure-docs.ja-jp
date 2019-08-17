@@ -107,10 +107,10 @@ Azure AD で自動ユーザー プロビジョニング用に myPolicies を構�
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<myPoliciesCustomDomain>.mypolicies.com/scim`」と入力します。`<myPoliciesCustomDomain>` には、myPolicies のカスタム ドメインを入力してください。 myPolicies のカスタム ドメインは URL から取得できます
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<myPoliciesCustomDomain>.mypolicies.com/scim`」と入力します。`<myPoliciesCustomDomain>` は自分の myPolicies のカスタム ドメインです。 myPolicies のカスタム ドメインは URL から取得できます
 (例: `<demo0-qa>`.mypolicies.com)。
 
-6. **[シークレット トークン]** に、先ほど取得したトークン値を入力します。 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD から myPolicies に接続できることを確認します。 接続できない場合は、使用中の myPolicies アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+6. **[シークレット トークン]** に、先ほど取得したトークン値を入力します。 **[Test Connection]\(テスト接続\)** をクリックして、Azure AD から myPolicies に接続できることを確認します。 接続できない場合は、自分の myPolicies アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

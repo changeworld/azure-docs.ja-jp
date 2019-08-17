@@ -36,7 +36,7 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 |Authorization |B2C リソースにアクセスするユーザー (例: B2C ポリシーの一覧にアクセスする管理者) の承認に関するアクティビティ         |
 |Directory |管理者が Azure portal を使用してサインインするときに取得されるディレクトリ属性に関連するアクティビティ |
 |Application | B2C アプリケーションに対する CRUD 操作 |
-|キー |B2C キー コンテナーに格納されたキーに対する CRUD 操作 |
+|Key |B2C キー コンテナーに格納されたキーに対する CRUD 操作 |
 |Resource |B2C リソース (例: ポリシーや ID プロバイダー) に対する CRUD 操作
 |Authentication |ユーザー資格情報とトークン発行の検証|
 
@@ -50,10 +50,10 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 
 |Section|フィールド|説明|
 |-------|-----|-----------|
-| アクティビティ | EnableAdfsAuthentication | 実行されたアクティビティ。 たとえば、"Issue an id_token to the application" です (これで実際のユーザー サインインが終了します)。 |
-| 開始者 (アクター) | オブジェクト ID | ユーザーがサインインする B2C アプリケーションの**オブジェクト ID** (この識別子は Azure portal には表示されませんが、Graph API などを使用してアクセスすることができます)。 |
+| アクティビティ | Name | 実行されたアクティビティ。 たとえば、"Issue an id_token to the application" です (これで実際のユーザー サインインが終了します)。 |
+| 開始者 (アクター) | ObjectId | ユーザーがサインインする B2C アプリケーションの**オブジェクト ID** (この識別子は Azure portal には表示されませんが、Graph API などを使用してアクセスすることができます)。 |
 | 開始者 (アクター) | Spn | ユーザーがサインインする B2C アプリケーションの**アプリケーション ID**。 |
-| ターゲット | オブジェクト ID | サインインするユーザーの**オブジェクト ID**。 |
+| ターゲット | ObjectId | サインインするユーザーの**オブジェクト ID**。 |
 | 追加情報 | TenantId | Azure AD B2C テナントの**テナント ID**。 |
 | 追加情報 | PolicyId | ユーザーのサインインに使用されるユーザー フロー (ポリシー) の **ポリシー ID**。 |
 | 追加情報 | ApplicationId | ユーザーがサインインする B2C アプリケーションの**アプリケーション ID**。 |

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 50056d4d05d2426ff644518aea04a2c9f4d817f3
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3aa3176b1d6d9e5665fd3a8988b71159a4fc20c0
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667165"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68735708"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -115,6 +115,15 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |キー|値の例|
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
+
+## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
+
+言語ワーカー プロセスの最大数を指定します。既定値は `1` です。 許容される最大値は `10` です。 関数呼び出しは、言語ワーカー プロセス間で均等に分散されます。 言語ワーカー プロセスは、FUNCTIONS\_WORKER\_PROCESS\_COUNT によって設定されたカウントに達するまで、10 秒ごとに生成されます。 複数の言語ワーカー プロセスの使用は、[スケーリング](functions-scale.md)と同じではありません。 CPU にバインドされた呼び出しと I/O にバインドされた呼び出しがワークロードに混在している場合は、この設定を使用することを検討してください。 この設定はすべての非 .NET 言語に適用されます。
+
+|キー|値の例|
+|---|------------|
+|FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
+
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 

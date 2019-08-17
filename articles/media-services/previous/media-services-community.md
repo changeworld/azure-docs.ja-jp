@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1347e28fe36ffe9595516252aea102d817a705a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8070d0cc302e0c0745216cdd40c9cbbf34e2bf58
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61245123"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "69016631"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services コミュニティ  
 
@@ -56,16 +56,8 @@ Twitter ハンドル [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) を�
 
 ## <a name="contact-the-team"></a>チームへのお問い合わせ
 
-Azure Media Services の主要なサポート メール アドレスは **amshelp\@microsoft.com** です。
+Azure Media Services の主要なサポート メール アドレスは **amshelp@microsoft.com** です。
 
-次の表は、機能のサブチームの電子メール アドレス一覧です。
+## <a name="next-steps"></a>次の手順
 
-| 機能 | Email |
-| --- | --- |
-| Azure Media Analytics |amsanalytics@microsoft.com |
-| Azure Media Player |ampinfo@microsoft.com |
-| Azure Media Explorer |amse@microsoft.com |
-| ワークフロー デザイナー |mepd@microsoft.com |
-| ファイル ストリーミングとパッケージング |amsstreaming@microsoft.com |
-| ファイル ストリーミングとパッケージング |amslived@microsoft.com |
-
+[概要](media-services-overview.md)

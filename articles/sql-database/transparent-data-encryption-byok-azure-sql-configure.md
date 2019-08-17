@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: c42c6175512105de38a29be260c370851e152137
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f191a9f589f54bdd657c017060f501b176a8647d
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330875"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596723"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 
@@ -33,10 +32,10 @@ ms.locfileid: "60330875"
 - [推奨されますが、必須ではありません] TDE 保護機能のキー マテリアルのローカル コピーを作成するためのハードウェア セキュリティ モジュール (HSM) またはローカル キー ストアを用意します。
 - Azure PowerShell がインストールされ、実行されている必要があります。 
 - TDE に使用する Azure Key Vault とキーを作成します。
-  - [PowerShell を使用した Key Vault の操作](../key-vault/key-vault-overview.md)
+  - [PowerShell を使用した Key Vault の操作](../key-vault/quick-create-powershell.md)
   - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](../key-vault/key-vault-hsm-protected-keys.md)
     - TDE に使用するには、キー コンテナーに次のプロパティが必要です。
-  - [論理的な削除](../key-vault/key-vault-ovw-soft-delete.md)
+  - [論理的な削除](../key-vault/key-vault-ovw-soft-delete.md)と消去保護
   - [PowerShell で Key Vault の論理的な削除を使用する方法](../key-vault/key-vault-soft-delete-powershell.md) 
 - TDE に使用するには、キーに次の属性が必要です。
    - 有効期限がない
@@ -79,6 +78,8 @@ ms.locfileid: "60330875"
 
 ## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>手順 3. Key Vault キーをサーバーに追加し、TDE 保護機能を設定する
 
+
+- [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey?view=azps-2.4.0) コマンドレットを使用して、Key Vault からキー ID を取得します。
 - [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) コマンドレットを使用して、Key Vault のキーをサーバーに追加します。
 - [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) コマンドレットを使用して、キーをすべてのサーバー リソースの TDE 保護機能として設定します。
 - [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) コマンドレットを使用して、TDE 保護機能が意図したとおりに構成されていることを確認します。

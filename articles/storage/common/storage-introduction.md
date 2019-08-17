@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 51255bc4a93fbe3719eec96f00940a765644bbfe
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 04c49b78d948884a9bcccfa949518d25a3dac9c1
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312870"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986566"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -103,7 +103,7 @@ Azure Storage に対するすべての要求が承認される必要がありま
 - **BLOB とキュー データ用の Azure Active Directory (Azure AD) 統合。** Azure Storage では、ロールベースのアクセス制御 (RBAC) を使用した BLOB サービスと Queue サービスに対する Azure AD の認証と承認をサポートされています。 優れたセキュリティと使いやすさのため、Azure AD による要求の承認をお勧めします。 詳細については、[Azure Active Directory を使用した Azure BLOB およびキューへのアクセスの承認](storage-auth-aad.md)に関するページを参照してください。
 - **SMB を使用した Azure Files の Azure Active Directory 認証 (プレビュー)。** Azure Files は、Azure Active Directory Domain Services を使用した、SMB (Server Message Block) 経由の ID ベースの認証をサポートします。 ドメインに参加している Windows 仮想マシン (VM) は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。 詳細については、「[SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー)](../files/storage-files-active-directory-overview.md)」を参照してください。
 - **共有キーによる承認。** Azure Storage Blob、Queue、および Table サービスと Azure Files では、共有キーによる承認がサポートされています。共有キー承認を使用するクライアントは、ストレージ アカウントのアクセス キーを使用して署名されたすべての要求でヘッダーを渡します。 詳細については、[共有キーによる承認](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)に関するページを参照してください。
-- **Shared Access Signature (SAS) を使用した承認。** Shared Access Signature (SAS) は、ストレージ リソースの URI に追加できるセキュリティ トークンを含む文字列です。 セキュリティ トークンには、アクセスの許可や間隔などの制約をカプセル化します。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+- **Shared Access Signature (SAS) を使用した承認。** Shared Access Signature (SAS) は、ストレージ リソースの URI に追加できるセキュリティ トークンを含む文字列です。 セキュリティ トークンには、アクセスの許可や間隔などの制約をカプセル化します。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」を参照してください。
 - **コンテナーおよび BLOB への匿名アクセス。** コンテナーとその BLOB は一般公開されることがあります。 コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。 詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)」を参照してください。
 
 ## <a name="encryption"></a>暗号化

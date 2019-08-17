@@ -9,15 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-manager: craigg
 ms.date: 07/07/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c9b481e63ecf7a92af679c0f32d4b3ab71486021
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: fd029c1e7b67d308e3e1fdbedbdc90ea430b4f5b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360798"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567243"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -382,8 +381,9 @@ In-Database R および In-Database Python 外部ライブラリはまだサポ�
 
 マネージド インスタンスのリンク サーバーがサポートするターゲットの数は限られています。
 
-- サポートされるターゲットは SQL Server と SQL Database です。
-- サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。
+- サポートされているターゲットは、Managed Instance、Single Database、および SQL Server インスタンスです。 
+- リンク サーバーは、分散型の書き込み可能なトランザクション (MS DTC) をサポートしていません。
+- サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。 ファイルのインポートの代わりに、`BULK INSERT` または `OPENROWSET` を使用して、Azure Blob Storage からネイティブ CSV インポートを使用してください。
 
 Operations
 
@@ -391,6 +391,7 @@ Operations
 - リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 例: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
+- リンク サーバーを使用してネットワーク共有からファイル (Excel、CSV) を読み取ることはできません。 Azure Blob Storage から CSV ファイルを読み取る [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) または [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) を使用してください。 この要求は、[Managed Instance フィードバック項目](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|で追跡します
 
 ### <a name="polybase"></a>PolyBase
 

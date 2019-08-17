@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Hub Device Provisioning サービス SDK に付属するツールを使用して開発を簡略化する
 description: このドキュメントでは、開発用に Azure IoT Hub Device Provisioning サービス SDK に付属するツールを確認します。
-author: yzhong94
-ms.author: yizhon
+author: robinsh
+ms.author: robinsh
 ms.date: 04/09/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
-ms.openlocfilehash: dc8c29b1c7d4e5056cb6aeee6335e32687fd547f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4fd4913776a7d21405f62a28d452bd50cd22f046
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627323"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883000"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>SDK に付属するツールを使用してプロビジョニング用の開発を簡略化する方法
 IoT Hub Device Provisioning サービスは、セキュリティで保護されたスケーラブルな方法で、ゼロタッチの Just-In-Time [自動プロビジョニング](concepts-auto-provisioning.md)によってプロビジョニング プロセスを簡略化します。  X.509 証明書またはトラステッド プラットフォーム モジュール (TPM) の形式でのセキュリティの構成証明が必要です。  さらに Microsoft は[他のセキュリティ ハードウェア パートナー](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)と提携することで、IoT デプロイのセキュリティ保護における信頼性を高めています。 ハードウェアのセキュリティ要件を理解することは、開発者にとってきわめて困難な場合があります。 開発者がプロビジョニング サービスと通信するクライアントを作成するために便利なレイヤーを使用できるように、一連の Azure IoT Provisioning サービス SDK が提供されています。 この SDK では、一般的なシナリオのサンプルのほか、開発でのセキュリティ構成証明を簡略化するための一連のツールも提供しています。
@@ -35,7 +34,7 @@ TPM シミュレーターを使用する手順は次のとおりです。
 * 運用環境の場合、公的なルート証明機関から X.509 CA 証明書を購入することをお勧めします。
 * テスト環境の場合、次を使用して、X.509 ルート証明書または X.509 証明書チェーンを生成できます。
     * OpenSSL:証明書を生成するスクリプトを使用できます。
-        * [Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)
+        * [Node.JS](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)
         * [PowerShell または Bash](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
         
     * Device Identity Composition Engine (DICE) エミュレーター:DICE は TLS プロトコルと X.509 クライアント証明書に基づいた暗号化デバイス ID と構成証明に使用できます。  [DICE とデバイス ID に関する詳細](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/)を参照してください。

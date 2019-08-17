@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 6ac054bc9750e4297080c4ab64030c9c6a5fb55a
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 7ba85d74f9126f4586313dc4e2b365d1e11f3798
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312847"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934188"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Azure Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する 
 
@@ -31,7 +31,7 @@ Azure Key Vault は、Azure Storage アカウントと従来のストレージ �
 
 > [!NOTE]
 > Azure Storage と Azure Active Directory (Azure AD) の統合は、Microsoft のクラウドベースの ID およびアクセス管理サービスです。
-> Azure AD の統合は、[Azure BLOB とキュー](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)で使用できます。
+> Azure AD の統合は、[Azure BLOB とキュー](../storage/common/storage-auth-aad.md)で使用できます。
 > 認証および承認には Azure AD を使用します。
 > Azure AD は、Azure Key Vault と同様に、Azure Storage に OAuth2 トークン ベースのアクセスを提供します。
 >
@@ -49,7 +49,7 @@ Key Vault は、すべての Azure AD テナントに事前登録されている
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure Public | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| その他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| その他  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 <!-- Add closing sentences to summarize what the user accomplished in this section. -->
 
@@ -58,7 +58,7 @@ Key Vault は、すべての Azure AD テナントに事前登録されている
 Key Vault を使用してストレージ アカウント キーを管理する前に、前提条件を確認してください。
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をインストールします。
-- [Azure ストレージ アカウント](https://azure.microsoft.com/services/storage/)を作成します。 [これらの手順](https://docs.microsoft.com/azure/storage/)に従います。
+- [Azure ストレージ アカウント](https://azure.microsoft.com/services/storage/)を作成します。 [これらの手順](../storage/index.yml)に従います。
 - ストレージ アカウント名には小文字と数字のみを使用する必要があります。 名前の長さは 3 文字から 24 文字でなければなりません。        
       
 ## <a name="manage-storage-account-keys"></a>ストレージ アカウント キーを管理する
@@ -150,7 +150,7 @@ Shared Access Signature トークンを生成するように Key Vault に指示
 
 ## <a name="fetch-tokens-in-code"></a>コードでトークンをフェッチする
 
-Key Vault から [Shared Access Signature トークン](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)をフェッチして、ストレージ アカウントに対する操作を実行します。
+Key Vault から [Shared Access Signature トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md)をフェッチして、ストレージ アカウントに対する操作を実行します。
 
 次の 3 つの方法で Key Vault を認証します。
 

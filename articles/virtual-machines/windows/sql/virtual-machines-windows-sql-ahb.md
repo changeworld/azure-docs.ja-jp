@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 02/13/2019
+ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 78ad784a45d2b0063932791daedc9b1ec1aafd72
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 37457d8ce1189f9282f4763633e944e3c2d639c9
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786761"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816724"
 ---
 # <a name="how-to-change-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure での SQL Server 仮想マシンのライセンス モデルを変更する方法
 このアーティクルでは、新しい SQL VM リソース プロバイダーである、**Microsoft.SqlVirtualMachine** を使用して Azure での SQL Server 仮想マシンのライセンス モデルを変更する方法を説明します。
@@ -140,7 +140,7 @@ SQL VM を SQL VM リソース プロバイダーに登録した場合、SQL Ser
 
  - ライセンス モデルの変更は、ソフトウェア アシュアランスをお持ちのお客様のみご利用いただけます。
  - ライセンス モデルの変更は、SQL Server の Standard Edition および Enterprise Edition でのみサポートされています。 Express、Web、および Developer でのライセンスの変更はサポートされていません。 
- - ライセンス モデルの変更は、Resource Manager モデルを使用してデプロイされた仮想マシンについてのみサポートされます。 クラシック モデルを使用してデプロイされた VM はサポートされません。 
+ - ライセンス モデルの変更は、Resource Manager モデルを使用してデプロイされた仮想マシンについてのみサポートされます。 クラシック モデルを使用してデプロイされた VM はサポートされません。 VM をクラシック モデルから Resource Manager モデル (ARM) に移行し、SQL VM リソース プロバイダーに登録することができます。 VM を SQL VM リソース プロバイダーに登録すると、VM のライセンス モデルを変更できるようになります。 
  - ライセンス モデルの変更は、パブリック クラウドのインストールでのみ有効です。
  - ライセンス モデルの変更は、1 つの NIC (ネットワーク インターフェイス) を持つ仮想マシンでのみサポートされます。 複数の NIC を持つ仮想マシンでは、手順を実行する前に、まず (Azure portal を使用して) NIC の 1 つを削除する必要があります。 そうしないと、次のようなエラーが発生します。`The virtual machine '\<vmname\>' has more than one NIC associated.` ライセンス モードを変更した後に NIC を再び VM に追加できる可能性はありますが、Azure portal の SQL 構成ページを介して実行された操作は、自動パッチや自動バックアップと同様に、もうサポートされていると見なされなくなります。
 

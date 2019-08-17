@@ -11,12 +11,12 @@ ms.date: 05/30/2019
 ms.author: martinle
 ms.reviewer: igorstan
 mscustom: sqlfreshmay19
-ms.openlocfilehash: d20a600951a0fe586e981adf12127072df1b744c
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: 282fab70e3b6d1fcf81814b2dd599259e2396fb3
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428013"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036055"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
 
@@ -58,8 +58,8 @@ WITH
 
 --Gen2
 CREATE DATABASE myComputeSQLDW
-WITH
-(    SERVICE_OBJECTIVE = 'DW1000c'
+(Edition = 'Datawarehouse'
+ ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```

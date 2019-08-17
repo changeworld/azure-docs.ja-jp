@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 738b4f47054081f0fb1b1a530bdf21cbf07a7726
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: de9b50267e0b5c453a8f2a3df607ad7730acd277
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204697"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879454"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -28,10 +28,21 @@ ms.locfileid: "67204697"
 
 Azure AD に自分のデバイスを取り込んで、クラウドとオンプレミスのリソースでのシングル サインオン (SSO) を実現することで、ユーザーの生産性を最大化できます。 同時に、[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)を使用して、クラウドとオンプレミスのリソースへのアクセスを保護できます。
 
-このチュートリアルでは、Active Directory フェデレーション サービス (AD FS) を使用して、フェデレーション環境で Active Directory ドメイン参加済みコンピューター デバイスの Hybrid Azure AD Join を構成する方法について説明します。
+フェデレーション環境には、以下の要件をサポートする ID プロバイダーが必要です。 Active Directory フェデレーション サービス (AD FS) を使用しているフェデレーション環境がある場合は、以下の要件は既にサポートされています。
 
-> [!NOTE]
-> フェデレーション環境で AD FS 以外の ID プロバイダーを使用する場合、その ID プロバイダーで WS-Trust プロトコルがサポートされていることを確認する必要があります。 WS-Trust は、現在のハイブリッド Azure AD 参加済み Windows デバイスを Azure AD で認証するために必要です。 ハイブリッド Azure AD 参加が必要なダウンレベルの Windows デバイスがある場合、ID プロバイダーで WIAORMULTIAUTHN 要求がサポートされている必要があります。 
+- **WIAORMULTIAUTHN 要求:** この要求は、Windows ダウンレベル デバイスに対してハイブリッド Azure AD 参加を行うために必要です。
+- **WS-Trust プロトコル:** このプロトコルは、Windows の現在のハイブリッド Azure AD 参加デバイスを Azure AD で認証するために必要です。
+  AD FS を使用している場合は、次の WS-Trust エンドポイントを有効にする必要があります。`/adfs/services/trust/2005/windowstransport`
+   `/adfs/services/trust/13/windowstransport`
+   `/adfs/services/trust/2005/usernamemixed`
+   `/adfs/services/trust/13/usernamemixed`
+   `/adfs/services/trust/2005/certificatemixed`
+   `/adfs/services/trust/13/certificatemixed` 
+
+> [!WARNING] 
+> **adfs/services/trust/2005/windowstransport** と **adfs/services/trust/13/windowstransport** はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとして公開することはできません。 WS-Trust WIndows エンドポイントを無効にする方法の詳細については、「[プロキシの WS-TRUST Windows エンドポイントを無効にする](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)」を参照してください。 どのエンドポイントが有効になっているかは、AD FS 管理コンソールの **[サービス]**  >  **[エンドポイント]** で確認できます。
+
+このチュートリアルでは、AD FS を使用してフェデレーション環境で Active Directory ドメイン参加済みコンピューター デバイスのハイブリッド Azure AD 参加を構成する方法について説明します。
 
 学習内容は次のとおりです。
 
@@ -80,6 +91,8 @@ WPAD を使用せずに自分のコンピューター上でプロキシ設定を
 > WinHTTP 設定を使用して自分のコンピューター上でプロキシ設定を構成すると、構成されたプロキシに接続できないコンピューターは、インターネットに接続できなくなります。
 
 組織が認証された送信プロキシ経由でのインターネットへのアクセスを必要とする場合、お使いの Windows 10 コンピューターが送信プロキシに対して正常に認証されることを確認する必要があります。 Windows 10 コンピューターではマシン コンテキストを使用してデバイス登録が実行されるため、マシン コンテキストを使用して送信プロキシ認証を構成する必要があります。 構成要件については、送信プロキシ プロバイダーに確認してください。
+
+デバイスがシステム アカウントで上記の Microsoft リソースにアクセスできるかどうかを確認するには、「[デバイス登録接続のテスト](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0)」スクリプトを使用できます。
 
 ## <a name="configure-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成
 

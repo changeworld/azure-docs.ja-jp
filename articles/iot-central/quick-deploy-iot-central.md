@@ -3,18 +3,18 @@ title: Azure IoT Central アプリケーションを作成する | Microsoft Doc
 description: 新しい Azure IoT Central アプリケーションを作成します。 アプリケーション テンプレートを使用して、試用版や従量課金制のアプリケーションを作成します。
 author: viv-liu
 ms.author: viviali
-ms.date: 06/07/2019
+ms.date: 08/02/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: 07b062bd39177f283bd38ed6b687b590c5c4fb46
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+manager: corywink
+ms.openlocfilehash: 4ce0606558cad981b183282bee026bdcef6b0cdd
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066034"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815794"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central アプリケーションの作成
 
@@ -39,8 +39,6 @@ Azure IoT Central の [[Application Manager]\(アプリケーション マネー
 
       価格の詳細については、[Azure IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)を参照してください。
 
-1. わかりやすいアプリケーション名を選びます (**Contoso IoT** など)。 Azure IoT Central によって、一意の URL プレフィックスが自動的に生成されます。 この URL プレフィックスは、もっと覚えやすいものに変更することができます。
-
 1. アプリケーション テンプレートを選択します。 アプリケーション テンプレートには、使用開始に役立つデバイス テンプレートやダッシュボードなどの事前に定義された項目を含めることができます。
 
     | アプリケーション テンプレート | 説明 |
@@ -49,7 +47,9 @@ Azure IoT Central の [[Application Manager]\(アプリケーション マネー
     | サンプル Devkit       | MXChip または Raspberry Pi デバイスを接続するための準備ができたデバイス テンプレートを含むアプリケーションを作成します。 このテンプレートは、これらのいずれかのデバイスで実験しているデバイス開発者が使用します。 |
     | カスタム アプリケーション   | 独自のデバイス テンプレートおよびデバイスにデータを入力するための空のアプリケーションを作成します。 |
 
-1. **作成** を選択します。
+1. わかりやすいアプリケーション名を入力します (**Contoso IoT** など)。 Azure IoT Central によって、一意の URL プレフィックスが自動的に生成されます。 この URL プレフィックスは、もっと覚えやすいものに変更することができます。
+
+1. **Create** をクリックしてください。
 
 ## <a name="next-steps"></a>次の手順
 
