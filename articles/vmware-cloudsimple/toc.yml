@@ -101,11 +101,9 @@
         - name: CloudSimple ポータル アカウントを管理する
           items:
             - name: アカウントの概要を表示する
-              href: 'https://docs.azure.cloudsimple.com/account/'
+              href: account.md
             - name: ユーザーの一覧を表示する
-              href: 'https://docs.azure.cloudsimple.com/users/'
-            - name: 使用状況ログを表示する
-              href: 'https://docs.azure.cloudsimple.com/usage/'
+              href: users.md
             - name: プライベート クラウドへの仮想ネットワーク接続を設定する
               href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
             - name: ユーザー プロファイルを編集する
@@ -129,7 +127,7 @@
             - name: オンプレミスとプライベート クラウドの間の VPN 接続
               href: set-up-vpn.md
             - name: ExpressRoute を使用したオンプレミス ネットワーク接続
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: ExpressRoute を使用した Azure 仮想ネットワーク接続
               href: azure-expressroute-connection.md
         - name: VMware プラットフォーム

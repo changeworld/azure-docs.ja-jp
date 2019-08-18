@@ -238,7 +238,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL'
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMySQL'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: ビデオ
