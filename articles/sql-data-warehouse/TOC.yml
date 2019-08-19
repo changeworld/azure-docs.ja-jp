@@ -22,20 +22,6 @@
       href: release-notes-10-0-10106-0.md
     - name: Gen2 のリージョンのアップグレード スケジュール
       href: gen2-migration-schedule.md
-    - name: アーカイブされたリリース ノート
-      items:
-        - name: 2018 年 9 月
-          href: release-notes-september-2018.md
-        - name: 2018 年 8 月
-          href: release-notes-august-2018.md
-        - name: 2018 年 7 月
-          href: release-notes-july-2018.md
-        - name: 2018 年 6 月
-          href: release-notes-june-2018.md
-        - name: 2018 年 5 月
-          href: release-notes-may-2018.md
-        - name: 2018 年 4 月
-          href: release-notes-april-2018.md
 - name: クイック スタート
   expanded: true
   items:

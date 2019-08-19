@@ -19,9 +19,7 @@
       href: dsvm-ubuntu-intro.md
     - name: CentOS DSVM の作成
       href: linux-dsvm-intro.md
-    - name: ディープ ラーニング VM の作成
-      href: provision-deep-learning-dsvm.md
-    - name: Geo AI DSVM の作成
+    - name: geo AI データ サイエンス VM の作成
       href: provision-geo-ai-dsvm.md
 - name: 概念
   items:
