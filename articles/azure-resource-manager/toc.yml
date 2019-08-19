@@ -120,12 +120,8 @@
         - name: デプロイ - REST API
           displayName: 'deployment,rollback on error,redeploy'
           href: resource-group-template-deploy-rest.md
-        - name: SAS トークンを使用してテンプレートをセキュリティ保護する
-          items:
-            - name: Azure CLI の使用
-              href: resource-manager-cli-sas-token.md
-            - name: Azure PowerShell の使用
-              href: resource-manager-powershell-sas-token.md
+        - name: SAS トークンによるテンプレートのセキュリティ保護
+          href: secure-template-with-sas-token.md
         - name: 複数のリソース グループまたはサブスクリプションへのデプロイ
           href: resource-manager-cross-resource-group-deployment.md
     - name: CI/CD

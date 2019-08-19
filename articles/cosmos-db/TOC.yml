@@ -199,7 +199,7 @@
               href: index-policy.md
         - name: データの種類
           items:
-            - name: Datetime
+            - name: DateTime
               href: working-with-dates.md
             - name: GeoSpatial
               href: geospatial.md
@@ -648,6 +648,8 @@
           href: how-to-create-multiple-cosmos-db-triggers.md
         - name: Azure Cosmos DB トリガーのトラブルシューティング
           href: troubleshoot-changefeed-functions.md
+        - name: 変更フィード プロセッサの開始時刻
+          href: how-to-configure-change-feed-start-time.md
     - name: Apache Spark による組み込みの分析
       items:
         - name: Azure Databricks の Spark コネクタ

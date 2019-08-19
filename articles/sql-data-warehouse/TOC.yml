@@ -267,14 +267,14 @@
           href: sql-data-warehouse-connect-overview.md
         - name: Connection strings
           href: sql-data-warehouse-connection-strings.md
-        - name: sqlcmd
-          href: sql-data-warehouse-get-started-connect-sqlcmd.md
+        - name: Visual Studio SSDT のインストール
+          href: sql-data-warehouse-install-visual-studio.md
+        - name: Visual Studio SSDT を使用したクエリ
+          href: sql-data-warehouse-query-visual-studio.md
         - name: SSMS を使用したクエリ
           href: sql-data-warehouse-query-ssms.md
-        - name: Visual Studio を使用したクエリ
-          href: sql-data-warehouse-query-visual-studio.md
-        - name: Visual Studio のインストール
-          href: sql-data-warehouse-install-visual-studio.md
+        - name: sqlcmd を使用した接続とクエリ
+          href: sql-data-warehouse-get-started-connect-sqlcmd.md
     - name: ワークロード管理
       items:
         - name: ワークロードの分析

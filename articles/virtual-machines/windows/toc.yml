@@ -388,7 +388,7 @@
           items:
             - name: 書き込みアクセラレータを有効にする
               href: how-to-enable-write-accelerator.md
-            - name: ウルトラ SSD を有効にする
+            - name: ウルトラ ディスクの使用
               href: disks-enable-ultra-ssd.md
             - name: ディスクのベンチマークの実行
               href: disks-benchmarks.md

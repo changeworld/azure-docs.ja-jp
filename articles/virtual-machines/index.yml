@@ -3,7 +3,7 @@ documentType: LandingData
 title: Virtual Machines のドキュメント
 metadata:
   document_id: na
-  title: Azure Linux 仮想マシンのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  title: Azure 仮想マシンのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
   author: georgewallace
