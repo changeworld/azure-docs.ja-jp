@@ -22,11 +22,11 @@ ms.locfileid: "66494306"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK を使用してフィルターを作成する
 
-コンテンツを顧客に配信 (ライブ イベントやビデオ オン デマンドをストリーム配信) する際、資産の既定のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツの資産フィルターを定義することができます。 
+コンテンツを顧客に配信 (ライブ イベントやビデオ オン デマンドをストリーム配信) する際、アセットの既定のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツのアセットフィルターを定義することができます。 
 
 この機能と、この機能が使用されているシナリオの詳細については、[動的マニフェスト](filters-dynamic-manifest-overview.md)と[フィルター](filters-concept.md)に関する記事を参照してください。
 
-このトピックでは、Media Services .NET SDK を使用してビデオ オン デマンド資産にフィルターを定義し、[アカウント フィルター](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)と[資産 フィルター](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)を作成する方法について説明します。 
+このトピックでは、Media Services .NET SDK を使用してビデオ オン デマンド アセットにフィルターを定義し、[アカウント フィルター](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)と[アセット フィルター](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)を作成する方法について説明します。 
 
 > [!NOTE]
 > [presentationTimeRange](filters-concept.md#presentationtimerange) を必ず確認してください。
@@ -73,9 +73,9 @@ AccountFilter accountFilterParams = new AccountFilter(tracks: includedTracks);
 client.AccountFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, "accountFilterName1", accountFilter);
 ```
 
-## <a name="create-asset-filters"></a>資産フィルターの作成
+## <a name="create-asset-filters"></a>アセットフィルターの作成
 
-次のコードは、.NET を使用して、[上記で定義](#define-a-filter)した全トラックの選択を含む資産フィルターを作成する方法を示しています。 
+次のコードは、.NET を使用して、[上記で定義](#define-a-filter)した全トラックの選択を含むアセットフィルターを作成する方法を示しています。 
 
 ```csharp
 AssetFilter assetFilterParams = new AssetFilter(tracks: includedTracks);
