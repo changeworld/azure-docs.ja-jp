@@ -26,7 +26,7 @@ ms.locfileid: "66299162"
 
 **ストリーミング ロケーター**を作成するときに、**アセット**名と**ストリーミング ポリシー**名を指定する必要があります。 詳細については、次のトピックを参照してください。
 
-* [資産](assets-concept.md)
+* [アセット](assets-concept.md)
 * [ストリーミング ポリシー](streaming-policy-concept.md)
 * [コンテンツ キー ポリシー](content-key-policy-concept.md)
 
