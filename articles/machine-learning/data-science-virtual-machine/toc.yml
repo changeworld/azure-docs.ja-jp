@@ -6,8 +6,6 @@
   items:
     - name: データ サイエンス VM とは
       href: overview.md
-    - name: ディープ ラーニング VM とは
-      href: deep-learning-dsvm-overview.md
     - name: geo AI データ サイエンス VM とは
       href: geo-ai-dsvm-overview.md
 - name: クイック スタート
@@ -23,8 +21,6 @@
       href: provision-geo-ai-dsvm.md
 - name: 概念
   items:
-    - name: DSVM の検出
-      href: dsvm-tools-overview.md
     - name: ディープ ラーニングと AI のフレームワーク
       href: dsvm-deep-learning-ai-frameworks.md
     - name: プログラミング言語
@@ -49,8 +45,6 @@
       href: vm-do-ten-things.md
     - name: Linux DSVM の使用
       href: linux-dsvm-walkthrough.md
-    - name: ディープ ラーニング VM の使用
-      href: use-deep-learning-dsvm.md
     - name: Geo AI DSVM の使用
       href: use-geo-ai-dsvm.md
     - name: 自動スケーリングされた DSVM プールの作成
