@@ -82,9 +82,9 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 [Azure AD PowerShell](/powershell/azure/overview) を使用してユーザーの状態を変更するには、`$st.State` を変更します。 状態は 3 つあります。
 
-* Enabled
-* 適用
-* Disabled  
+* 有効
+* 強制
+* 無効  
 
 ユーザーを直接 "*適用*" の状態に移さないでください。 "適用" 状態に移行しても、ユーザーが MFA の登録を終えておらず、[アプリのパスワード](howto-mfa-mfasettings.md#app-passwords)を取得していないため、ブラウザーベースでないアプリが動作を停止します。
 
