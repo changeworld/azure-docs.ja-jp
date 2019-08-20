@@ -170,7 +170,7 @@
     - name: アプリのスケール
       items:
         - name: サーバー容量のスケールアップ
-          href: web-sites-scale.md
+          href: manage-scale-up.md
         - name: PremiumV2 レベルの構成
           href: app-service-configure-premium-tier.md
         - name: 複数のインスタンスへのスケールアウト

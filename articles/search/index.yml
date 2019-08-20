@@ -7,9 +7,8 @@ metadata:
   description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。
   services: search
   author: HeidiSteen
-  manager: cgronlun
+  manager: nitinme
   ms.service: search
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/12/2019
   ms.author: heidist

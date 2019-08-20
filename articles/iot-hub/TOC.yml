@@ -332,8 +332,6 @@
               href: iot-hub-raspberry-pi-kit-c-get-started.md
             - name: Arduino での MXChip IoT DevKit
               href: iot-hub-arduino-iot-devkit-az3166-get-started.md
-            - name: Arduino での Adafruit Feather HUZZAH ESP8266
-              href: iot-hub-arduino-huzzah-esp8266-get-started.md
         - name: MXChip IoT DevKit の使用
           items:
             - name: Azure Cognitive Services を使用して音声メッセージを翻訳する

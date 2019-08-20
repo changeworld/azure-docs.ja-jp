@@ -146,12 +146,12 @@
               href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
             - name: 従来のデプロイ
               href: ./move-limitations/classic-model-move-limitations.md
+            - name: ネットワーク
+              href: ./move-limitations/networking-move-limitations.md
             - name: 復旧サービス
               href: ../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
             - name: Virtual Machines
               href: ./move-limitations/virtual-machines-move-limitations.md
-            - name: 仮想ネットワーク
-              href: ./move-limitations/virtual-network-move-limitations.md
     - name: Tags
       items:
         - name: リソースへのタグ付け

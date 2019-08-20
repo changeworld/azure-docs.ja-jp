@@ -216,9 +216,6 @@
         - name: VM に対する変更のトラブルシューティング
           href: automation-tutorial-troubleshoot-changes.md
           displayName: inventory
-        - name: インベントリ コレクションでの VM の管理
-          href: automation-vm-inventory.md
-          displayName: inventory
     - name: トラブルシューティング
       items:
         - name: オンボード
