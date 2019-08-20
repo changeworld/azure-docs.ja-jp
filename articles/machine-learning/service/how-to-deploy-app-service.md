@@ -44,7 +44,7 @@ Azure App Service によって提供される機能の詳細については、[A
 
     ![ワークスペースの概要のスクリーンショット](media/how-to-deploy-app-service/workspace-overview.png)
 
-2. Azure Container Registry で、 __[リポジトリ]__ を選択し、デプロイする__イメージ名__を選択します。 デプロイするバージョンについて、 __[...]__ エントリを選択し、 __[Web アプリにデプロイ]__ を選択します。
+2. Azure Container Registry で、 __[リポジトリ]__ を選択し、デプロイする __イメージ名__ を選択します。 デプロイするバージョンについて、 __[...]__ エントリを選択し、 __[Web アプリにデプロイ]__ を選択します。
 
     ![ACR から Web アプリへのデプロイのスクリーンショット](media/how-to-deploy-app-service/deploy-to-web-app.png)
 
