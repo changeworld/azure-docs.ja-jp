@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7356541ed6288603a66d5caa43138284d8d4d918
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1609931cd5fcab0977ff64f680fbb1f253f3caaf
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320485"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782191"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2.0 プレビュー (Azure Functions)
 
@@ -242,6 +242,16 @@ public static async Task AddValueClient(
 ```
 
 前の例では、`proxy` パラメーターは動的に生成された `ICounter` のインスタンスであり、`Add` への呼び出しを、`SignalEntityAsync` への同等の (型指定されていない) 呼び出しに内部的に変換します。
+
+`SignalEntityAsync<T>` の型パラメーターには、次の制限があります。
+
+* 型パラメーターはインターフェイス型であることが必要です。
+* インターフェイスで定義できるのはメソッドのみです。 プロパティはサポートされていません。
+* メソッドごとに 1 つまたは 0 個のパラメーターを定義する必要があります。
+* それぞれのメソッドは、`void`、`Task`、または `Task<T>` のいずれかを返す必要があります。ただし `T` は、JSON にシリアル化できる型です。
+* インターフェイスは、インターフェイスのアセンブリ内の型 1 つだけで実装される必要があります。
+
+ほとんどの場合、これらの要件を満たしていないインターフェイスでは、ランタイム例外が発生します。
 
 > [!NOTE]
 > `IDurableOrchestrationClient` の `ReadEntityStateAsync` メソッドと `SignalEntityAsync` メソッドでは、整合性よりもパフォーマンスが優先されることに注意することが重要です。 `ReadEntityStateAsync` では古い値を返すことができ、`SignalEntityAsync` は操作が完了する前に戻ることができます。

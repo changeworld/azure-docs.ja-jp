@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18d8f2a974fb192578163f71a57d00824ae6b0fa
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60904977"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839462"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -43,6 +43,7 @@ Azure Maps Web SDK では、単独で、または他の式と組み合わせて�
 
 | 式の種類 | 説明 |
 |---------------------|-------------|
+| [集計式](#aggregate-expression) | データのセットに対して処理され、`DataSource` の `clusterProperties` オプションと共に使用できる計算を定義する式です。 |
 | [ブール式](#boolean-expressions) | ブール式により、ブール値の比較を評価するためにブール演算子式のセットが提供されます。 |
 | [色の式](#color-expressions) | 色の式を使用すると、色の値の作成と操作が容易になります。 |
 | [条件式](#conditional-expressions) | 条件式では、if ステートメントのようなロジック操作が提供されます。 |
@@ -165,6 +166,27 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 | `['sin', number]` | number | 指定された数値のサインが計算されます。 |
 | `['sqrt', number]` | number | 指定された数値の平方根が計算されます。 |
 | `['tan', number]` | number | 指定された数値のタンジェントが計算されます。 |
+
+## <a name="aggregate-expression"></a>集計式
+
+集計式では、データのセットに対して処理され、`DataSource` の `clusterProperties` オプションと共に使用できる計算を定義します。 これらの式の出力は、数値またはブール値である必要があります。 
+
+集計式には 3 つの値があります。演算子の値と初期値、そして集計操作を適用するためにデータ内の各機能からプロパティを取得する式です。 この式の書式は次のとおりです。
+
+```javascript
+[operator: string, initialValue: boolean | number, mapExpression: Expression]
+```
+
+- 演算子:クラスター内の各ポイントについて `mapExpression` によって計算されるすべての値に適用される式関数。 サポートされている演算子: 
+    - 数値の場合: `+`、`*`、`max`、`min`
+    - ブール値の場合: `all`、`any`
+- initialValue:最初の計算値が集計される初期値。
+- mapExpression:データ セット内の各ポイントに適用される式。
+
+**例**
+
+データ セット内のすべての機能に、数値である `revenue` プロパティがある場合。 データ セットから作成されたクラスター内のすべてのポイントの合計収益は、次の集計式を使用して計算できます: `['+', 0, ['get', 'revenue']]`
+
 ## <a name="boolean-expressions"></a>ブール式
 
 ブール式により、ブール値の比較を評価するためにブール演算子式のセットが提供されます。

@@ -7,14 +7,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7a470674fa9ccdde2b33bb33bfb52bead1822895
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07faf03ee9b12d1bf4a200de47d6df714c2248d9
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639734"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68737160"
 ---
-# <a name="about-azure-vm-backup"></a>Azure VM バックアップについて
+# <a name="an-overview-of-azure-vm-backup"></a>Azure VM バックアップの概要
 
 この記事では、[Azure Backup サービス](backup-introduction-to-azure-backup.md)によって Azure 仮想マシン (VM) がどのようにバックアップされるかについて説明します。
 

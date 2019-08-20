@@ -10,7 +10,7 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: ユーザーへのライセンスの割り当て
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: ロールへのリソース スコープの割り当て
+    - name: 無制限のアプリの登録用のアクセス許可の付与
       href: roles-quickstart-app-registration-limits.md
     - name: グループの有効期限の設定
       href: groups-quickstart-expiration.md

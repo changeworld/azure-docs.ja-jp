@@ -22,7 +22,7 @@ ms.locfileid: "68704991"
 
 <sub> *次の属性は、研究分野エンティティに固有です。(Ty = '6') </sub>
 
-EnableAdfsAuthentication    |説明                            |Type       | Operations
+名前    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 FN      |研究分野の標準化名         |string     |等しい

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1845107998bfefde4c604744c3c09f5356010f7b
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 287902c149fd3a8732ce9ce95b05b0d9fa36147b
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699703"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816610"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -205,12 +205,16 @@ GRS が有効なストレージ アカウントでは、すべてのデータが
 
 Standard ファイル共有は、すべてのリージョンで 5 TiB まで利用できます。 一部のリージョンでは、100 TiB の上限まで利用できます。これらのリージョンについては次の表を参照してください。
 
-|リージョン  |サポートされる冗長性  |既存のストレージ アカウントをサポートする  |
-|---------|---------|---------|
-|オーストラリア東部     |LRS|いいえ         |
-|東南アジア     |LRS|いいえ         |
-|西ヨーロッパ     |LRS、ZRS|いいえ         |
-|米国西部 2     |LRS、ZRS|いいえ         |
+|リージョン |サポートされる冗長性 |既存のストレージ アカウントをサポートする |ポータルのサポート*   |
+|-------|---------|---------|---------|
+|オーストラリア東部  |LRS     |いいえ    |はい|
+|フランス中部  |LRS     |いいえ    |まだ、いいえ|
+|フランス南部    |LRS     |いいえ    |まだ、いいえ|
+|東南アジア  |LRS、ZRS|いいえ    |はい|
+|西ヨーロッパ     |LRS、ZRS|いいえ    |はい|
+|米国西部 2       |LRS、ZRS|いいえ    |はい|
+
+\* ポータルがサポートされていないリージョンでも、PowerShell または Azure コマンド ライン インターフェイス (CLI) を使用して、5 TiB を超える共有を作成できます。 代わりに、クォータを指定せずに、ポータルを使用して新しい共有を作成します。 これにより、既定のサイズ 100 TiB の共有が作成され、後で PowerShell または Azure CLI を使用して更新できます。
 
 この[アンケート](https://aka.ms/azurefilesatscalesurvey)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
 

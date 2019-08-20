@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: barclayn
-ms.openlocfilehash: c91c8de35dcf3f1bc8fd5f41bd2356336c3fe450
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 89acc86526d1017e97efbf1812e02cfb6a240953
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927962"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035424"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -298,7 +298,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | Event Grid                       | はい                | -                  | -                  |
 | API Management                   | はい                | -                  | -                  |
 | **IoT サービス**                 |                    |                    |                    |
-| IoT Hub                          | -                  | -                  | はい                |
+| IoT Hub                          | はい                | -                  | はい                |
 | **管理とガバナンス**    |                    |                    |                    |
 | Azure Site Recovery              | はい                | はい、RSA 2048 ビット  | はい                |
 | **メディア**                        |                    |                    |                    |

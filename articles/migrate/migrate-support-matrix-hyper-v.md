@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 787bcf28a64c98f82deb0725e2362bf8144d6c4e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: da68c0ae1dc92f5b854c30c90b93856248c43281
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640854"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828352"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V の評価と移行のサポート マトリックス
 
@@ -36,14 +36,18 @@ ms.locfileid: "68640854"
 **サポート** | **詳細**
 --- | ---
 Azure のアクセス許可 | Azure Migrate プロジェクトを作成するには、サブスクリプションの共同作成者または所有者のアクセス許可が必要です。
-Hyper-V VM | 1 つのプロジェクトで最大 10,000 の Hyper-V VM を評価します。 1 つの Azure サブスクリプションに複数のプロジェクトを含めることができます。 評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
+Hyper-V VM | 1 つのプロジェクトで最大 35,000 の Hyper-V VM を評価します。 1 つの Azure サブスクリプションに複数のプロジェクトを含めることができます。 評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
 [地理的な場所] | Azure Migrate プロジェクトは、いくつかの地域で作成できます。 プロジェクトを作成できるのは特定の地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
 
   **地理的な場所** | **メタデータ ストレージの場所**
   --- | ---
   Azure Government | 米国政府バージニア州
-  アジア太平洋 | 東南アジアまたは東アジア
-  ヨーロッパ | 南ヨーロッパまたは西ヨーロッパ
+  アジア太平洋 | 東アジアまたは東南アジア
+  オーストラリア | オーストラリア東部またはオーストラリア南東部
+  カナダ | カナダ中部またはカナダ東部
+  ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+  インド | インド中部またはインド南部
+  日本 |  東日本または西日本
   イギリス | 英国南部または英国西部
   米国 | 米国中部または米国西部 2
 
@@ -84,7 +88,7 @@ Azure Migrate では評価のために軽量アプライアンスを実行して
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
 | **Azure Migrate プロジェクト**  |  単一のプロジェクトにアプライアンスを関連付けることができます。<br/> 単一のアプライアンスで最大 5,000 個の Hyper-V VM を検出できます。
-| **Hyper-V**    |  アプライアンスを Hyper-V VM としてデプロイします。<br/> 提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/> VM ホストで Windows Server 2012 R2 以降が実行されている必要があります。<br/> アプライアンス VM に 16 GB RAM、4 つの仮想プロセッサ、および 1 つの外部スイッチを割り当てるのに十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
+| **Hyper-V**    |  アプライアンスを Hyper-V VM としてデプロイします。<br/> 提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/> VM ホストで Windows Server 2012 R2 以降が実行されている必要があります。<br/> アプライアンス VM に 16 GB の RAM、8 つの vCPU、および 1 つの外部スイッチを割り当てるのに十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
 
 
 ## <a name="assessment-appliance-url-access"></a>評価 - アプライアンスの URL アクセス

@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 07/31/2019
-ms.openlocfilehash: 7be5b0dbe4bbfba30ea469eec662877c1ef56c7c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: e571c65e64fad73c646aa05366cab685aa745caa
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689615"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968895"
 ---
 1. 使用する Azure サブスクリプションの資格情報を使って、[Azure portal](https://portal.azure.com/) にサインインします。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "68689615"
 
     ![ワークスペースの作成](./media/aml-create-in-portal/workspace-create-main-tab.png)
 
-   フィールド|説明
+   フィールド|説明 
    ---|---
    ワークスペース名 |ワークスペースを識別する一意名を入力します。 この例では、**docs-ws** を使用します。 名前は、リソース グループ全体で一意である必要があります。 覚えやすく、他のユーザーが作成したワークスペースと区別しやすい名前を使用します。  
    Subscription |使用する Azure サブスクリプションを選択します。
@@ -44,3 +44,14 @@ ms.locfileid: "68689615"
    プロセスが完了すると、デプロイ成功メッセージが表示されます。 このメッセージは、通知セクションにも表示されます。 新しいワークスペースを表示するには、 **[Go to resource]\(リソースに移動\)** を選択します。
 
    ![ワークスペースの作成の状態](./media/aml-create-in-portal/notifications.png)
+
+1. ビジュアル インターフェイスや自動 ML 実験など、ポータルからコーディング不要のオプションを使用する場合は、これで完了です。 [Notebook VM](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md#azure) を作成する場合も、これで完了です。 
+
+1. このワークスペースを参照するローカル環境でコードを使用する場合は、ワークスペースの **[概要]** セクションから **[config. json をダウンロード]** を選択します。  
+
+   ![config.json をダウンロードする](./media/aml-create-in-portal/configure.png)
+   
+   このファイルは、Python スクリプトまたは Jupyter Notebook を含むディレクトリ構造内に置きます。 それは、同じディレクトリ内、 *.azureml* という名前のサブディレクトリ内、または親ディレクトリ内に置くことができます。 Notebook VM を作成するとき、このファイルは VM 上の正しいディレクトリに自動的に追加されます。
+
+    
+

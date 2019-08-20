@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 9eb03be5cd9704c3b124bfb16fd30c5c3466890d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326139"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736254"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
 
@@ -40,17 +40,19 @@ Azure API Management サービス インスタンスを作成すると、Azure �
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Azure ポータルを使用してカスタム ドメイン名を設定する
 
 1. [Azure portal](https://portal.azure.com/) で API Management インスタンスに移動します。
-1. **[カスタム ドメインと SSL]** をクリックします。
+1. **[カスタム ドメイン]** をクリックします。
 
     カスタム ドメイン名を割り当てることができるエンドポイントは多数あります。 現時点では、次のエンドポイントを利用できます。
 
-    - **プロキシ** (既定値: `<apim-service-name>.azure-api.net`)
+    - **ゲートウェイ** (既定値: `<apim-service-name>.azure-api.net`)
     - **ポータル** (既定値: `<apim-service-name>.portal.azure-api.net`)
     - **Management** (既定値: `<apim-service-name>.management.azure-api.net`)
     - **SCM** (既定値: `<apim-service-name>.scm.azure-api.net`)
 
     > [!NOTE]
-    > すべてのエンドポイントまたは一部を更新できます。 一般的には、**プロキシ**(この URL は API Management を通じて公開される API を呼び出すために使用されます) と**ポータル**(開発者ポータルの URL) を更新します。 **Management** エンドポイントと **SCM** エンドポイントは、API Management インスタンス所有者だけが内部的に使用するため、カスタム ドメイン名が割り当てられることはほとんどありません。 ほとんどの場合、特定のエンドポイントに設定できるカスタム ドメイン名は 1 つに限られます。 ただし、**Premium** レベルでは、**プロキシ** エンドポイントの複数のホスト名の設定がサポートされています。
+    > 従量課金レベルの構成で利用できるのは、 **[ゲートウェイ]** エンドポイントだけです。
+    > すべてのエンドポイントまたは一部を更新できます。 通常、お客様は、**ゲートウェイ** (この URL を使用して API Management を通じて公開される API が呼び出されます) と**ポータル** (開発者ポータルの URL) を更新します。
+    > **Management** エンドポイントと **SCM** エンドポイントは、API Management インスタンス所有者だけが内部的に使用するため、カスタム ドメイン名が割り当てられることはほとんどありません。 **Premium** レベルでは、**ゲートウェイ** エンドポイントに対する複数のホスト名の設定がサポートされます。
 
 1. 更新するエンドポイントを選択します。
 1. 右側のウィンドウで **[カスタム]** をクリックします。

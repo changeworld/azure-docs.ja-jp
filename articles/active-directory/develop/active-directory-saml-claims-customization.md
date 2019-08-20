@@ -73,7 +73,7 @@ NameIDPolicy 属性について詳しくは、「[シングル サインオン�
 
 `NameIdentifier` (または NameID) 要求の必要なソースを選択します。 次のオプションから選択できます。
 
-| EnableAdfsAuthentication | 説明 |
+| 名前 | 説明 |
 |------|-------------|
 | Email | ユーザーの電子メール アドレス |
 | userprincipalName | ユーザーのユーザー プリンシパル名 (UPN) |

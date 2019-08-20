@@ -22,20 +22,6 @@
       href: release-notes-10-0-10106-0.md
     - name: Gen2 のリージョンのアップグレード スケジュール
       href: gen2-migration-schedule.md
-    - name: アーカイブされたリリース ノート
-      items:
-        - name: 2018 年 9 月
-          href: release-notes-september-2018.md
-        - name: 2018 年 8 月
-          href: release-notes-august-2018.md
-        - name: 2018 年 7 月
-          href: release-notes-july-2018.md
-        - name: 2018 年 6 月
-          href: release-notes-june-2018.md
-        - name: 2018 年 5 月
-          href: release-notes-may-2018.md
-        - name: 2018 年 4 月
-          href: release-notes-april-2018.md
 - name: クイック スタート
   expanded: true
   items:
@@ -267,14 +253,14 @@
           href: sql-data-warehouse-connect-overview.md
         - name: Connection strings
           href: sql-data-warehouse-connection-strings.md
-        - name: sqlcmd
-          href: sql-data-warehouse-get-started-connect-sqlcmd.md
+        - name: Visual Studio SSDT のインストール
+          href: sql-data-warehouse-install-visual-studio.md
+        - name: Visual Studio SSDT を使用したクエリ
+          href: sql-data-warehouse-query-visual-studio.md
         - name: SSMS を使用したクエリ
           href: sql-data-warehouse-query-ssms.md
-        - name: Visual Studio を使用したクエリ
-          href: sql-data-warehouse-query-visual-studio.md
-        - name: Visual Studio のインストール
-          href: sql-data-warehouse-install-visual-studio.md
+        - name: sqlcmd を使用した接続とクエリ
+          href: sql-data-warehouse-get-started-connect-sqlcmd.md
     - name: ワークロード管理
       items:
         - name: ワークロードの分析

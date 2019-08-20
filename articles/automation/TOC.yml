@@ -276,6 +276,22 @@
         - name: State Configuration (DSC) のトラブルシューティング
           href: troubleshoot/desired-state-configuration.md
           displayName: 'Desired State Configuration, troubleshoot'
+    - name: リファレンス
+      items:
+        - name: コミュニティ ソリューション
+          items:
+            - name: スケーリング対応の構成データ
+              href: automation-dsc-config-data-at-scale.md
+              displayName: 'DSC, Configuration Data, ConfigData'
+            - name: サーバーから構成を作成する
+              href: automation-dsc-config-from-server.md
+              displayName: 'DSC, ReverseDSC'
+            - name: STIG に基づく構成
+              href: automation-dsc-configuration-based-on-stig.md
+              displayName: 'DSC, Configuration'
+            - name: 構成を複合リソースに変換する
+              href: automation-dsc-create-composite.md
+              displayName: 'DSC, composite'
 - name: 共有リソースの管理
   items:
     - name: 証明書

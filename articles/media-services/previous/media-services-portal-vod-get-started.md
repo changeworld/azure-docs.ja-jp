@@ -80,7 +80,7 @@ Media Services を使用してビデオをストリーミングするには、�
 ## <a name="encode-assets"></a>Encode assets
 ダイナミック パッケージを利用するには、ソース ファイルを一連のマルチビットレート MP4 ファイルにエンコードする必要があります。 このセクションでは、エンコードの手順が示されています。
 
-### <a name="encode-assets-in-the-portal"></a>ポータルでの資産のエンコード
+### <a name="encode-assets-in-the-portal"></a>ポータルでのアセットのエンコード
 Azure Portal で Media Encoder Standard を使用してコンテンツをエンコードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。

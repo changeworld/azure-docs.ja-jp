@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d385f1e8c883453b4153ca4c9119d3be0a608bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cef0014fb47aeddcad785fb3f938ab928964a942
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66495555"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68725694"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Azure IoT Central の UI をカスタマイズする 
 
-*この記事は管理者向けです。*
+この記事では、管理者としてカスタム テーマを適用したり、独自のカスタム ヘルプ リソースを指すようにヘルプのリンクを変更したりして、アプリケーションの UI をカスタマイズする方法について説明します。 
 
-IoT Central では、アプリケーションの UI をカスタマイズできます。カスタム テーマを適用したり、独自のカスタム ヘルプ リソースを指すようにヘルプのリンクを変更したりすることができます。 次のスクリーンショットは、標準テーマを使用したページを示しています。
+次のスクリーンショットは、標準テーマを使用したページを示しています。
 
 ![標準 IoT Central テーマ](./media/howto-customize-ui/standard-ui.png)
 
@@ -39,7 +39,7 @@ IoT Central では、アプリケーションの UI をカスタマイズでき�
 
 1 MB 以下で、透明な背景の PNG イメージ。 このロゴは、IoT Central アプリケーションのタイトル バーの左側に表示されます。
 
-ロゴのイメージにアプリケーションの名前が含まれている場合は、アプリケーション名のテキストを非表示にすることができます。 詳細については、「[アプリケーション設定の管理](./howto-administer.md#manage-application-settings)」を参照してください。
+ロゴのイメージにアプリケーションの名前が含まれている場合は、アプリケーション名のテキストを非表示にすることができます。 詳細については、「[アプリケーションの管理](./howto-administer.md#change-application-name-and-url)」を参照してください。
 
 ### <a name="browser-icon-favicon"></a>ブラウザー アイコン (favicon)
 

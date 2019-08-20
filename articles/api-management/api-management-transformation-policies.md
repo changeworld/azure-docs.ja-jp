@@ -70,13 +70,13 @@ ms.locfileid: "68442246"
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |json-to-xml|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換を適用します。<br />-   content-type-json - 応答の Content-Type ヘッダーに JSON の存在が示されている場合のみ変換を行います。|はい|該当なし|
 |consider-accept-header|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   true - 要求の Accept ヘッダーで JSON が要求されている場合に変換を適用します。<br />-   false - 常に変換を適用します。|いいえ|true|
@@ -114,13 +114,13 @@ ms.locfileid: "68442246"
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |xml-to-json|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |kind|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   javascript-friendly - 変換後の JSON が JavaScript 開発者にとってわかりやすい形になります。<br />-   direct - 変換後の JSON に元の XML ドキュメントの構造が反映されます。|はい|該当なし|
 |apply|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   always - 常に変換します。<br />-   content-type-xml - 応答の Content-Type ヘッダーに XML の存在が示されている場合のみ変換を行います。|はい|該当なし|
@@ -150,13 +150,13 @@ ms.locfileid: "68442246"
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |find-and-replace|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |from|検索する文字列。|はい|該当なし|
 |to|置換する文字列。 長さゼロの置換文字列を指定すると、検索文字列を削除できます。|はい|該当なし|
@@ -188,7 +188,7 @@ ms.locfileid: "68442246"
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |redirect-content-urls|ルート要素。|はい|
 
@@ -261,13 +261,13 @@ or
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |set-backend-service|ルート要素。|はい|
 
 ### <a name="attributes"></a>属性
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |base-url|バックエンド サービスの新しいベース URL。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
 |backend-id|ルーティング先のバックエンドの識別子。 (バックエンド エンティティは、[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます)。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
@@ -397,13 +397,13 @@ or
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |set-body|ルート要素。 本文のテキストか、または本文を返す式を記載します。|はい|
 
 ### <a name="properties"></a>properties
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |template|本文の設定ポリシーが実行されるテンプレート作成モードの変更に使用されます。 現在サポートされている値:<br /><br />- liquid - 本文の設定ポリシーでは、liquid テンプレート作成エンジンが使用されます |いいえ||
 
@@ -504,14 +504,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |set-header|ルート要素。|はい|
 |value|設定するヘッダーの値を指定します。 同じ名前のヘッダーが複数ある場合は、`value` 要素をさらに追加します。|はい|
 
 ### <a name="properties"></a>properties
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ|override|
 |名前|設定するヘッダーの名前を指定します。|はい|該当なし|
@@ -564,14 +564,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |set-query-parameter|ルート要素。|はい|
 |value|設定するクエリ パラメーターの値を指定します。 同じ名前のクエリ パラメーターが複数ある場合は、`value` 要素をさらに追加します。|はい|
 
 ### <a name="properties"></a>properties
 
-|EnableAdfsAuthentication|説明|必須|既定値|
+|名前|説明|必須|既定値|
 |----------|-----------------|--------------|-------------|
 |exists-action|対象のクエリ パラメーターが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のパラメーターの値を置き換えます。<br />-   skip - 既存のクエリ パラメーターの値を置き換えません。<br />-   append - 既存のクエリ パラメーターの値に値を追加します。<br />-   delete - 要求からクエリ パラメーターを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってクエリ パラメーターが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ|override|
 |名前|設定するクエリ パラメーターの名前を指定します。|はい|該当なし|
@@ -643,7 +643,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |rewrite-uri|ルート要素。|はい|
 
@@ -712,7 +712,7 @@ OriginalUrl.
 
 ### <a name="elements"></a>要素
 
-|EnableAdfsAuthentication|説明|必須|
+|名前|説明|必須|
 |----------|-----------------|--------------|
 |xsl-transform|ルート要素。|はい|
 |パラメーター|変換で使用する変数の定義に使用します。|いいえ|

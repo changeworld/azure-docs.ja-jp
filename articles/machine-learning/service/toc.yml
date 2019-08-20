@@ -213,29 +213,29 @@
         - name: デプロイする場所と方法
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: ノートブック VM
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: Azure Container Instances
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: Azure Kubernetes Service
+        - name: Azure Kubernetes Service にデプロイする
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: GPU 推論
+        - name: GPU 推論のためにデプロイする
           href: how-to-deploy-inferencing-gpus.md
-        - name: FPGA 推論
-          href: how-to-deploy-fpga-web-service.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: Azure App Service
+        - name: Azure App Service にデプロイする
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: カスタム Docker イメージ
+        - name: Azure Container Instances へのデプロイ
+          displayName: aci
+          href: how-to-deploy-azure-container-instance.md
+        - name: Notebook VM にデプロイする
+          href: how-to-deploy-local-container-notebook-vm.md
+        - name: カスタム Docker イメージを使用する
           href: how-to-deploy-custom-docker-image.md
         - name: 既存のモデルをデプロイする
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: トラブルシューティングとデバッグ
+        - name: IoT Edge にデプロイする
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: FPGA 推論のためにデプロイする
+          href: how-to-deploy-fpga-web-service.md
+        - name: デプロイのトラブルシューティングとデバッグ
           href: how-to-troubleshoot-deployment.md
     - name: Web サービスを使用する
       items:

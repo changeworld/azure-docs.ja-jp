@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: db3f5aca0240c19f67d5d0775148d5eec76daa03
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3c4bdb3d46e4630257c2567cf2003ebede00b71e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726982"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934784"
 ---
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 
@@ -55,9 +55,9 @@ Microsoft Azure には、アプリケーションとサービスの接続要件�
 
 ![Azure のネットワークの全体像](./media/network-security/azure-network-security-fig-1.png)
 
-[Azure のネットワーク インフラストラクチャ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-networking-guidelines)では、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 特定のサブスクリプション専用に Azure クラウド ネットワークが論理的に分離されています。 VNet は、オンプレミス ネットワークに接続できます。
+[Azure のネットワーク インフラストラクチャ](../../virtual-machines/windows/infrastructure-example.md)では、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 特定のサブスクリプション専用に Azure クラウド ネットワークが論理的に分離されています。 VNet は、オンプレミス ネットワークに接続できます。
 
-Azure は [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) を使用してオンプレミス ネットワークおよび Azure Virtual Network への専用の WAN リンクの接続をサポートします。 Azure とユーザー サイト間のリンクは、パブリック インターネットを経由しない専用接続を使用します。 Azure アプリケーションが複数のデータセンターで実行されている場合は、[Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) を使用して、アプリケーションのインスタンスにユーザーからの要求をインテリジェントにルーティングできます。 また、サービスがインターネットからアクセス可能な場合、Azure 内で実行されていないサービスへトラフィックをルーティングすることもできます。
+Azure は [ExpressRoute](../../expressroute/expressroute-introduction.md) を使用してオンプレミス ネットワークおよび Azure Virtual Network への専用の WAN リンクの接続をサポートします。 Azure とユーザー サイト間のリンクは、パブリック インターネットを経由しない専用接続を使用します。 Azure アプリケーションが複数のデータセンターで実行されている場合は、[Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) を使用して、アプリケーションのインスタンスにユーザーからの要求をインテリジェントにルーティングできます。 また、サービスがインターネットからアクセス可能な場合、Azure 内で実行されていないサービスへトラフィックをルーティングすることもできます。
 
 ## <a name="enterprise-view-of-azure-networking-components"></a>Azure のネットワーク コンポーネントのエンタープライズ ビュー
 Azure には、ネットワーク セキュリティについて議論する上で関連性の高い数多くのネットワーク コンポーネントが用意されています。 これらのネットワーク コンポーネントについて、関連するセキュリティの問題に注目しつつ説明します。
@@ -77,11 +77,11 @@ Azure には、ネットワーク セキュリティについて議論する上�
 
 ### <a name="basic-network-connectivity"></a>基本的なネットワーク接続
 
-[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) サービスでは、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 VNet はサブスクリプション専用に Azure ネットワーク インフラストラクチャが論理的に分離されています。 サイト間 VPN や専用の [WAN リンク](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)を使用して、VNet 同士を接続したり、オンプレミスのネットワークと接続したりできます。
+[Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) サービスでは、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 VNet はサブスクリプション専用に Azure ネットワーク インフラストラクチャが論理的に分離されています。 サイト間 VPN や専用の [WAN リンク](../../expressroute/expressroute-introduction.md)を使用して、VNet 同士を接続したり、オンプレミスのネットワークと接続したりできます。
 
 ![基本的なネットワーク接続](./media/network-security/azure-network-security-fig-2.png)
 
-Azure でサーバーをホストするには VM を使用しますが、それらの VM をどのようにしてネットワークに接続するかが問題です。 その答えは、VM は [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) に接続されます。
+Azure でサーバーをホストするには VM を使用しますが、それらの VM をどのようにしてネットワークに接続するかが問題です。 その答えは、VM は [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) に接続されます。
 
 Azure Virtual Network は、独自の仮想化プラットフォーム ソリューション (Microsoft Hyper-V や VMware など) でオンプレミスで使用する仮想ネットワークのようなものです。
 
@@ -89,7 +89,7 @@ Azure Virtual Network は、独自の仮想化プラットフォーム ソリュ
 
 VNet を相互に接続できるため、一方の VNet に接続されているリソースは、VNet をまたいで相互に通信できます。 次のオプションのいずれかまたは両方を使用して、複数の VNet を相互に接続できます。
 
-- **ピアリング:** 同じ Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を可能にします。 複数の VNet の間での帯域幅と待ち時間は、リソースが同じ VNet に接続されている場合と同じです。 ピアリングについて詳しくは、「[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)」をご覧ください。
+- **ピアリング:** 同じ Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を可能にします。 複数の VNet の間での帯域幅と待ち時間は、リソースが同じ VNet に接続されている場合と同じです。 ピアリングについて詳しくは、「[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)」をご覧ください。
 
   ![ピアリング](./media/network-security/azure-network-security-fig-3.png)
 
@@ -120,7 +120,7 @@ Azure Virtual Network にはネットワークに接続するための仮想マ�
 
 **分離**
 
-VNet は相互に[分離](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)されています。 同じ [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) アドレス ブロックを使用する開発、テスト、運用環境に個別の VNet を作成できます。 逆に、異なる CIDR アドレス ブロックを使用する複数の VNet を作成し、ネットワークをまとめて接続することもできます。 VNet は、複数のサブネットに分割することができます。
+VNet は相互に[分離](../../virtual-network/virtual-networks-overview.md)されています。 同じ [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) アドレス ブロックを使用する開発、テスト、運用環境に個別の VNet を作成できます。 逆に、異なる CIDR アドレス ブロックを使用する複数の VNet を作成し、ネットワークをまとめて接続することもできます。 VNet は、複数のサブネットに分割することができます。
 
 Azure では、VNet に接続されている VM ロール インスタンスと [Cloud Services](https://azure.microsoft.com/services/cloud-services/) ロール インスタンス用に内部名前解決が用意されています。 必要に応じて、Azure の内部名前解決を使用する代わりに、独自の DNS サーバーを使用するよう VNet を構成できます。
 
@@ -130,35 +130,35 @@ Azure では、VNet に接続されている VM ロール インスタンスと 
 
 -   VNet を 1 つ以上のサブネットに分割し、各サブネットに VNet のアドレス空間の一部を割り当てる。
 
--   Azure で提供される名前解決を使用するか、VNet に接続されたリソースで使用するために独自の DNS サーバーを指定する。 VNet での名前解決について詳しくは、[VM と Cloud Services の名前解決](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)に関する記事をご覧ください。
+-   Azure で提供される名前解決を使用するか、VNet に接続されたリソースで使用するために独自の DNS サーバーを指定する。 VNet での名前解決について詳しくは、[VM と Cloud Services の名前解決](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事をご覧ください。
 
 **インターネット接続**
 
-VNet に接続されているすべての [Azure Virtual Machines (VM)](https://docs.microsoft.com/azure/virtual-machines/windows/) ロール インスタンスと Cloud Services ロール インスタンスは、既定でインターネットにアクセスできます。 また、必要に応じて、特定のリソースへの着信アクセスを有効にすることもできます。VNet に接続されている (VM および) Cloud Services ロール インスタンスは既定でインターネットにアクセスできます。 また、必要に応じて、特定のリソースへの着信アクセスを有効にすることもできます。
+VNet に接続されているすべての [Azure Virtual Machines (VM)](../../virtual-machines/windows/index.yml) ロール インスタンスと Cloud Services ロール インスタンスは、既定でインターネットにアクセスできます。 また、必要に応じて、特定のリソースへの着信アクセスを有効にすることもできます。VNet に接続されている (VM および) Cloud Services ロール インスタンスは既定でインターネットにアクセスできます。 また、必要に応じて、特定のリソースへの着信アクセスを有効にすることもできます。
 
 VNet に接続されているすべてのリソースは、既定で、インターネットに送信接続されています。 リソースのプライベート IP アドレスは、Azure インフラストラクチャによりプライベート IP アドレスへの送信元ネットワーク アドレス変換 (SNAT) が行われています。 カスタム ルーティングとトラフィック フィルタリングを実装することで、既定の接続を変更できます。 インターネットへの送信接続について詳しくは、「[Azure の送信用接続の詳細](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
-インターネットから Azure リソースへの着信接続、または SNAT なしでインターネットへの送信接続を行うには、リソースにパブリック IP アドレスを割り当てる必要があります。 パブリック IP アドレスについて詳しくは、「[パブリック IP アドレス](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)」をご覧ください。
+インターネットから Azure リソースへの着信接続、または SNAT なしでインターネットへの送信接続を行うには、リソースにパブリック IP アドレスを割り当てる必要があります。 パブリック IP アドレスについて詳しくは、「[パブリック IP アドレス](../../virtual-network/virtual-network-public-ip-address.md)」をご覧ください。
 
 **Azure リソースの接続**
 
-Cloud Services や VM などの [Azure リソース](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)を同じ VNet に接続できます。 リソースは、異なるサブネットに存在する場合でも、プライベート IP アドレスを使用して相互に接続できます。 Azure では、サブネット、VNet、オンプレミス ネットワークの間に既定のルーティングを提供しているため、ルートの構成と管理は必要ありません。
+Cloud Services や VM などの [Azure リソース](../../virtual-network/virtual-networks-overview.md)を同じ VNet に接続できます。 リソースは、異なるサブネットに存在する場合でも、プライベート IP アドレスを使用して相互に接続できます。 Azure では、サブネット、VNet、オンプレミス ネットワークの間に既定のルーティングを提供しているため、ルートの構成と管理は必要ありません。
 
-VNet には、仮想マシン (VM)、クラウド サービス、App Service 環境、仮想マシン スケール セットなど、複数の Azure リソースを接続できます。 VM は、ネットワーク インターフェイス (NIC) を経由して VNet 内のサブネットに接続します。 NIC について詳しくは、「[ネットワーク インターフェイス](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface)」をご覧ください。
+VNet には、仮想マシン (VM)、クラウド サービス、App Service 環境、仮想マシン スケール セットなど、複数の Azure リソースを接続できます。 VM は、ネットワーク インターフェイス (NIC) を経由して VNet 内のサブネットに接続します。 NIC について詳しくは、「[ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md)」をご覧ください。
 
 **VNet の接続**
 
-[VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) は相互接続が可能なため、任意の VNet に接続されているリソースは他の VNet 上の任意のリソースと通信できます。
+[VNet](../../virtual-network/virtual-networks-overview.md) は相互接続が可能なため、任意の VNet に接続されているリソースは他の VNet 上の任意のリソースと通信できます。
 
 VNet を相互に接続できるため、一方の VNet に接続されているリソースは、VNet をまたいで相互に通信できます。 次のオプションのいずれかまたは両方を使用して、複数の VNet を相互に接続できます。
 
-- **ピアリング:** 同じ Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を可能にします。 複数の VNet の間での帯域幅と待ち時間は、リソースが同じ VNet に接続されている場合と同じです。ピアリングについて詳しくは、「[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)」をご覧ください。
+- **ピアリング:** 同じ Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を可能にします。 複数の VNet の間での帯域幅と待ち時間は、リソースが同じ VNet に接続されている場合と同じです。ピアリングについて詳しくは、「[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)」をご覧ください。
 
 - **VNet 間接続:** 同じまたは異なる Azure の場所内の別の Azure VNet に接続されているリソースの相互接続を有効にします。 ピアリングとは異なり、VNet 間での帯域幅は制限されます。これは、トラフィックが Azure VPN ゲートウェイを通過する必要があるためです。 VNet 間接続を使用して VNet を接続する方法について詳しくは、 [VNet 間の接続の構成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
 **オンプレミスの接続**
 
-VNet は、自身のネットワークと Azure の間のプライベート ネットワーク接続、またはインターネットを介したサイト間 VPN 接続を使用して、[オンプレミス](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) ネットワークに接続できます。
+VNet は、自身のネットワークと Azure の間のプライベート ネットワーク接続、またはインターネットを介したサイト間 VPN 接続を使用して、[オンプレミス](../../virtual-network/virtual-networks-overview.md) ネットワークに接続できます。
 
 オンプレミス ネットワークを VNet に接続するには、次のオプションを組み合わせて使用します。
 
@@ -166,15 +166,15 @@ VNet は、自身のネットワークと Azure の間のプライベート ネ�
 
 - **サイト間 VPN**:VPN デバイスと Azure VPN Gateway の間で確立されます。 この接続の種類を使用すると、承認した任意のオンプレミス リソースが VNet にアクセスできます。 この接続は IPsec/IKE VPN で、オンプレミスのデバイスと Azure VPN ゲートウェイの間にインターケット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、サイト間接続の待ち時間は予測できません。
 
-- **Azure ExpressRoute:** ExpressRoute のパートナーを介して、ネットワークと Azure の間で確立されます。 この接続はプライベート接続です。 トラフィックはインターネットを経由しません。 トラフィックがインターネットを経由しないため、ExpressRoute 接続の待ち時間は予測可能です。 ここまでに説明したすべての接続オプションについて詳しくは、「[接続トポロジの図](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
+- **Azure ExpressRoute:** ExpressRoute のパートナーを介して、ネットワークと Azure の間で確立されます。 この接続はプライベート接続です。 トラフィックはインターネットを経由しません。 トラフィックがインターネットを経由しないため、ExpressRoute 接続の待ち時間は予測可能です。 ここまでに説明したすべての接続オプションについて詳しくは、「[接続トポロジの図](../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
 **トラフィックのフィルター処理**
 
-VM ロール インスタンスと Cloud Services ロール インスタンスの[ネットワーク トラフィック](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)は、着信、送信方向ともに、送信元の IP アドレスとポート、送信先の IP アドレスとポート、およびプロトコルでフィルター処理できます。
+VM ロール インスタンスと Cloud Services ロール インスタンスの[ネットワーク トラフィック](../../virtual-network/virtual-networks-overview.md)は、着信、送信方向ともに、送信元の IP アドレスとポート、送信先の IP アドレスとポート、およびプロトコルでフィルター処理できます。
 
 次のオプションのいずれかまたは両方を使用して、サブネット間のネットワーク トラフィックをフィルター処理できます。
 
-- **ネットワーク セキュリティ グループ (NSG):** 各 NSG には、送信元と送信先の IP アドレス、ポート、およびプロトコルでトラフィックをフィルター処理できるようにする受信と送信のセキュリティ規則を複数含めることができます。 NSG は VM の各 NIC に適用できます。 NSG は、NIC または他の Azure リソースが接続されているサブネットに適用することもできます。 NSG について詳しくは、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)に関する記事をご覧ください。
+- **ネットワーク セキュリティ グループ (NSG):** 各 NSG には、送信元と送信先の IP アドレス、ポート、およびプロトコルでトラフィックをフィルター処理できるようにする受信と送信のセキュリティ規則を複数含めることができます。 NSG は VM の各 NIC に適用できます。 NSG は、NIC または他の Azure リソースが接続されているサブネットに適用することもできます。 NSG について詳しくは、[ネットワーク セキュリティ グループ](../../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事をご覧ください。
 
 - **Virtual Network アプライアンス:** Virtual Network アプライアンスとは、ファイアウォールなどのネットワーク機能を実行するソフトウェアが動作している VM です。 入手可能な NVA の一覧については、Azure Marketplace をご覧ください。 WAN の最適化やその他のネットワーク トラフィック機能を提供する NVA も入手できます。 通常、NVA はユーザー定義ルートまたは BGP ルートで使用されます。 また、NVA を使用して、VNet 間のトラフィックをフィルター処理することもできます。
 
@@ -184,7 +184,7 @@ VM ロール インスタンスと Cloud Services ロール インスタンス�
 
 Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートをオーバーライドできます。
 
-- **ユーザー定義のルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含む、カスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)に関する記事をご覧ください。
+- **ユーザー定義のルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含む、カスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](../../virtual-network/virtual-networks-udr-overview.md)に関する記事をご覧ください。
 
 - **BGP のルート:** Azure VPN ゲートウェイまたは ExpressRoute 接続を使用して VNet をオンプレミス ネットワークに接続する場合、BGP ルートを VNet に伝達できます。
 
@@ -201,12 +201,12 @@ Azure では、VNet 内の任意のサブネットに接続されている複数
 
 #### <a name="internet-connectivity"></a>インターネット接続
 
-その名前からわかるように、インターネット接続により、別のパブリック エンドポイントを仮想ネットワークの内部のワークロードに公開することで、インターネットからワークロードに接続できるようになります。 これらのワークロードは、[インターネットに接続するロード バランサー](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)を使用または単にパブリック IP アドレスを VM に割り当てることで公開できます。 この方法により、ホストのファイアウォール、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)、および[ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)を使用して、インターネット上にあるすべてがその仮想マシンに到達できるようになります。
+その名前からわかるように、インターネット接続により、別のパブリック エンドポイントを仮想ネットワークの内部のワークロードに公開することで、インターネットからワークロードに接続できるようになります。 これらのワークロードは、[インターネットに接続するロード バランサー](../../load-balancer/load-balancer-overview.md#publicloadbalancer)を使用または単にパブリック IP アドレスを VM に割り当てることで公開できます。 この方法により、ホストのファイアウォール、[ネットワーク セキュリティ グループ (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)、および[ユーザー定義ルート](../../virtual-network/virtual-networks-udr-overview.md)を使用して、インターネット上にあるすべてがその仮想マシンに到達できるようになります。
 
 このシナリオでは、アプリケーションをインターネットに公開して、どこからでもまたは特定の場所から (ワークロードの構成による) 接続できます。
 
 #### <a name="point-to-site-vpn-or-site-to-site-vpn"></a>ポイント対サイト VPN またはサイト対サイト VPN
-これら 2 つは同じカテゴリーに属します。 両方とも VNet に VPN Gateway が必要であり、ワークステーションの VPN クライアントを[ポイント対サイト構成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)の一部として使用するか、サイト対サイト VPN を終了できるようにオンプレミスの [VPN デバイス](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)を構成できます。 この方法により、オンプレミスのデバイスが VNet 内のリソースに接続できます。
+これら 2 つは同じカテゴリーに属します。 両方とも VNet に VPN Gateway が必要であり、ワークステーションの VPN クライアントを[ポイント対サイト構成](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)の一部として使用するか、サイト対サイト VPN を終了できるようにオンプレミスの [VPN デバイス](../../vpn-gateway/vpn-gateway-about-vpn-devices.md)を構成できます。 この方法により、オンプレミスのデバイスが VNet 内のリソースに接続できます。
 
 ポイント対サイト (P2S) 構成では、個々のクライアント コンピューターから仮想ネットワークへのセキュリティで保護された接続を作成することができます。 P2S は、SSTP (Secure Socket トンネリング プロトコル) 経由の VPN 接続です。
 
@@ -219,7 +219,7 @@ P2S 接続に VPN デバイスや公開 IP アドレスは必要ありません�
 ![サイト対サイト VPN](./media/network-security/azure-network-security-fig-6.png)
 
 > [!Note]
-> ポイント対サイト接続について詳しくは、[ポイント対サイトに関してよく寄せられる質問](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal)に関する記事をご覧ください。
+> ポイント対サイト接続について詳しくは、[ポイント対サイトに関してよく寄せられる質問](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)に関する記事をご覧ください。
 
 サイト間 VPN Gateway 接続は、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介してオンプレミス ネットワークを Azure 仮想ネットワークに接続するために使用します。
 
@@ -230,7 +230,7 @@ P2S 接続に VPN デバイスや公開 IP アドレスは必要ありません�
 クロスプレミス接続できわめて高いレベルのセキュリティやパフォーマンスが必要な場合は、クロスプレミス接続に Azure ExpressRoute を使用することをお勧めします。 ExpressRoute は、オンプレミスの場所または Exchange ホスティング プロバイダーとの間に確立する専用 WAN リンクです。 これは電話会社の接続であるため、データはインターネットを経由せずに送信され、インターネット通信に付随する潜在的なリスクにさらされることがありません。
 
 > [!Note]
-> VPN Gateway について詳しくは、「[VPN Gateway について](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)」をご覧ください。
+> VPN Gateway について詳しくは、「[VPN Gateway について](../../vpn-gateway/vpn-gateway-about-vpngateways.md)」をご覧ください。
 
 #### <a name="dedicated-wan-link"></a>専用の WAN リンク
 Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Azure に拡張できます。
@@ -240,9 +240,9 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 ![ 専用の WAN リンク](./media/network-security/azure-network-security-fig-7.png)
 
 > [!Note]
-> ExpressRoute を使用してネットワークを Microsoft に接続する方法について詳しくは、[ExpressRoute 接続モデル](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)および [ExpressRoute の技術的概要](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)に関する記事をご覧ください。
+> ExpressRoute を使用してネットワークを Microsoft に接続する方法について詳しくは、[ExpressRoute 接続モデル](../../vpn-gateway/vpn-gateway-about-vpngateways.md)および [ExpressRoute の技術的概要](../../expressroute/expressroute-introduction.md)に関する記事をご覧ください。
 
-また、サイト対サイトの VPN オプションでは、ExpressRoute を使用すると複数の VNet 内のリソースに接続できます。 実際、SKU によっては 10 の VNet に接続できます。 [プレミアム アドオン](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)をお持ちの場合、帯域幅によっては 100 の VNet に接続できます。 これらの種類の接続の外観について詳しくは、「[接続トポロジの図](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
+また、サイト対サイトの VPN オプションでは、ExpressRoute を使用すると複数の VNet 内のリソースに接続できます。 実際、SKU によっては 10 の VNet に接続できます。 [プレミアム アドオン](../../expressroute/expressroute-faqs.md)をお持ちの場合、帯域幅によっては 100 の VNet に接続できます。 これらの種類の接続の外観について詳しくは、「[接続トポロジの図](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
 ### <a name="security-controls"></a>セキュリティ コントロール
 Azure Virtual Network は他の仮想ネットワークから分離された安全かつ論理的なネットワークを提供し、オンプレミスのネットワークで使用する多数のセキュリティ コントロールをサポートします。 お客様はサブネットを使用して独自の構造を作成します。独自の IP アドレス範囲を使用し、ルート テーブル、ネットワーク セキュリティ グループ、アクセス制御リスト (ACL)、ゲートウェイ、および仮想アプライアンスを構成してクラウドでワークロードを実行します。
@@ -309,11 +309,11 @@ VM からパブリック インターネットへの通信も同様であり、A
 
 -   VNet から VPN Gateway を通して別の VNet に。
 
--   VNet ピアリングを通して VNet から別の VNet に ([サービス チェイニング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview))。
+-   VNet ピアリングを通して VNet から別の VNet に ([サービス チェイニング](../../virtual-network/virtual-network-peering-overview.md))。
 
 -   VNet から VPN Gateway を通してオンプレミスのネットワークに。
 
-多くの企業にはセキュリティおよびコンプライアンスに関する厳密な要件があり、すべてのネットワーク パケットをオンプレミスで検査して特定のポリシーを適用する必要があります。 Azure には[強制トンネリング](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling)と呼ばれるメカニズムが用意されており、カスタム ルートを作成するか、ExpressRoute または VPN を介した[境界ゲートウェイ プロトコル (BGP)](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) のアドバタイズにより、VM からのトラフィックをオンプレミスにルーティングします。
+多くの企業にはセキュリティおよびコンプライアンスに関する厳密な要件があり、すべてのネットワーク パケットをオンプレミスで検査して特定のポリシーを適用する必要があります。 Azure には[強制トンネリング](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md)と呼ばれるメカニズムが用意されており、カスタム ルートを作成するか、ExpressRoute または VPN を介した[境界ゲートウェイ プロトコル (BGP)](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) のアドバタイズにより、VM からのトラフィックをオンプレミスにルーティングします。
 
 Azure では、強制トンネリングは仮想ネットワークのユーザー定義ルート (UDR) を使用して構成されます。 オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN Gateway への既定のルートとして表されます。
 
@@ -369,7 +369,7 @@ Azure ネットワークのセキュリティ アプライアンスは VNet の�
 
 #### <a name="application-gateway"></a>Application gateway
 
-[Microsoft Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) は専用の仮想アプライアンスで、サービスとしてアプリケーション配信コントローラー (ADC) を提供します。
+[Microsoft Azure Application Gateway](../../application-gateway/overview.md) は専用の仮想アプライアンスで、サービスとしてアプリケーション配信コントローラー (ADC) を提供します。
 
  ![Application Gateway](./media/network-security/azure-network-security-fig-11.png)
 
@@ -384,13 +384,13 @@ Application Gateway を使用すると、CPU に負担をかける SSL ターミ
 -   1 つの Application Gateway の背後に複数の Web サイトをホスト可能
 
 
-アプリケーション ゲートウェイの一部として、[Web アプリケーション ファイアウォール (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) も提供されています。 一般的な Web の脆弱性や悪用から Web アプリケーションを保護します。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。
+アプリケーション ゲートウェイの一部として、[Web アプリケーション ファイアウォール (WAF)](../../application-gateway/waf-overview.md) も提供されています。 一般的な Web の脆弱性や悪用から Web アプリケーションを保護します。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。
 
 Application Gateway の WAF は検出モードや保護モードで実行できます。 管理者が検出モードで実行する一般的な用途は、悪意のあるパターンがないかどうかトラフィックを監視することです。 潜在的な悪用が検出されたら、保護モードに切り替えて疑わしい着信トラフィックをブロックします。
 
  ![Application Gateway](./media/network-security/azure-network-security-fig-12.png)
 
-さらに、Application Gateway の WAF により [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) と [Azure Security Center](https://azure.microsoft.com/services/security-center/) に統合されたリアルタイムの WAF ログを使用して攻撃に対して Web アプリケーションを監視し、WAF アラートを追跡してトレンドを簡単に監視できます。
+さらに、Application Gateway の WAF により [Azure Monitor](../../azure-monitor/overview.md) と [Azure Security Center](https://azure.microsoft.com/services/security-center/) に統合されたリアルタイムの WAF ログを使用して攻撃に対して Web アプリケーションを監視し、WAF アラートを追跡してトレンドを簡単に監視できます。
 
 JSON 形式のログはお客様のストレージ アカウントに直接入ります。 これらのログは完全に制御可能で、独自のアイテム保持ポリシーを適用できます。
 
@@ -402,7 +402,7 @@ Web アプリケーションは以前にも増して、SQL インジェクショ
 
  ![Azure Web アプリケーション ファイアウォール (WAF)](./media/network-security/azure-network-security-fig-13.png)
 
-集中管理された [Web アプリケーション ファイアウォール (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) は Web を攻撃から保護し、アプリケーションを変更することなくセキュリティを簡単に管理できます。
+集中管理された [Web アプリケーション ファイアウォール (WAF)](../../application-gateway/waf-overview.md) は Web を攻撃から保護し、アプリケーションを変更することなくセキュリティを簡単に管理できます。
 
 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールに対応したアプリケーション ゲートウェイに簡単に変換できます。
 
@@ -427,9 +427,9 @@ Microsoft Azure を使用してネットワーク トラフィックを分散す
 
 Azure Load Balancer は次のように構成できます。
 
--   仮想マシンへの着信インターネット トラフィックを負荷分散します。 この構成は、 [インターネットに接続する負荷分散](https://docs.microsoft.com/azure/load-balancer/load-balancer-internet-overview)と呼ばれます。
+-   仮想マシンへの着信インターネット トラフィックを負荷分散します。 この構成は、 [インターネットに接続する負荷分散](../../load-balancer/load-balancer-overview.md#publicloadbalancer)と呼ばれます。
 
--   仮想ネットワーク内の仮想マシン間、クラウド サービス内の仮想マシン間、クロスプレミスの仮想ネットワーク内のオンプレミスのコンピューターと仮想マシン間で、トラフィックを負荷分散します。 この構成は、 [内部負荷分散](https://docs.microsoft.com/azure/load-balancer/load-balancer-internal-overview)と呼ばれます。
+-   仮想ネットワーク内の仮想マシン間、クラウド サービス内の仮想マシン間、クロスプレミスの仮想ネットワーク内のオンプレミスのコンピューターと仮想マシン間で、トラフィックを負荷分散します。 この構成は、 [内部負荷分散](../../load-balancer/load-balancer-overview.md#internalloadbalancer)と呼ばれます。
 
 -   外部トラフィックを特定の仮想マシンに転送します。
 
@@ -443,15 +443,15 @@ Azure Load Balancer は次のように構成できます。
 
 Microsoft Azure Traffic Manager では、さまざまなデータセンターのサービス エンドポイントへのユーザー トラフィックの分散を制御できます。 Traffic Manager でサポートされるサービス エンドポイントには、Azure VM、Web Apps、およびクラウド サービスが含まれます。 Azure 以外の外部エンドポイントで Traffic Manager を使用することもできます。
 
-Traffic Manager では、ドメイン ネーム システム (DNS) を使用して、[トラフィック ルーティング方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods)とエンドポイントの正常性に基づいて最適なエンドポイントにクライアント要求を送信します。 Traffic Manager には、さまざまなアプリケーション ニーズ、エンドポイントの正常性、[監視](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)、自動フェールオーバーに対応する、さまざまなトラフィック ルーティング方法が備わっています。 Traffic Manager は Azure リージョン全体の障害などの障害に対応します。
+Traffic Manager では、ドメイン ネーム システム (DNS) を使用して、[トラフィック ルーティング方法](../../traffic-manager/traffic-manager-routing-methods.md)とエンドポイントの正常性に基づいて最適なエンドポイントにクライアント要求を送信します。 Traffic Manager には、さまざまなアプリケーション ニーズ、エンドポイントの正常性、[監視](../../traffic-manager/traffic-manager-monitoring.md)、自動フェールオーバーに対応する、さまざまなトラフィック ルーティング方法が備わっています。 Traffic Manager は Azure リージョン全体の障害などの障害に対応します。
 
 Azure Traffic Manager を使用すると、アプリケーション エンドポイント全体でトラフィックの分散を制御できます。 エンドポイントは、Azure の内部または外部でホストされている、インターネットに公開されたサービスです。
 
 Traffic Manager の 2 つのメリットを次に示します。
 
--   複数の[トラフィック ルーティング方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods)のいずれか 1 つを使用してトラフィックを分散する。
+-   複数の[トラフィック ルーティング方法](../../traffic-manager/traffic-manager-routing-methods.md)のいずれか 1 つを使用してトラフィックを分散する。
 
--   [エンドポイントの正常性を継続的に監視](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring) し、エンドポイントで障害が発生したときに自動フェールオーバーを行う。
+-   [エンドポイントの正常性を継続的に監視](../../traffic-manager/traffic-manager-monitoring.md) し、エンドポイントで障害が発生したときに自動フェールオーバーを行う。
 
 クライアントからサービスへの接続を試みようとするときは、最初にサービスの DNS 名を IP アドレスに解決する必要があります。 その後、クライアントは、その IP アドレスに接続してサービスにアクセスします。 Traffic Manager は、DNS を使用して、トラフィックのルーティング メソッドのルールに基づいてクライアントを特定のサービス エンドポイントに転送します。 選択されたエンドポイントに、クライアントが直接接続します。 Traffic Manager は、プロキシでもゲートウェイでもありません。 Traffic Manager は、クライアントとサービスの間を通過するトラフィックを認識することはありません。
 
@@ -461,11 +461,11 @@ Azure ネットワークの検証は、Azure ネットワークが構成され�
 
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
 
--   [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+-   [Azure Security Center](../../security-center/security-center-intro.md)
 
--   [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
+-   [Azure Monitor](../../azure-monitor/overview.md)
 
--   [Azure Network watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+-   [Azure Network watcher](../../network-watcher/network-watcher-monitoring-overview.md)
 
 -   [Azure Storage analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
@@ -498,7 +498,7 @@ Microsoft Azure を運用するユーザーやプロセスは、おそらくプ�
 -   タグを共有するリソース グループのコストを表示することで、組織の課金をわかりやすくすることができます。
 
 > [!Note]
-> リソース マネージャーには、ソリューションをデプロイして管理するための新しい方法が用意されています。 以前のデプロイメント モデルを使用していて、変更の詳細を確認する場合は、「 [Resource Manager デプロイと従来のデプロイの理解](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) 」を参照してください。
+> リソース マネージャーには、ソリューションをデプロイして管理するための新しい方法が用意されています。 以前のデプロイメント モデルを使用していて、変更の詳細を確認する場合は、「 [Resource Manager デプロイと従来のデプロイの理解](../../azure-resource-manager/resource-manager-deployment-model.md) 」を参照してください。
 
 ## <a name="azure-network-logging-and-monitoring"></a>Azure ネットワークのログ記録と監視
 
@@ -512,7 +512,7 @@ Azure にはネットワーク セキュリティのイベントを監視、保�
 
 ### <a name="network-watcher"></a>Network Watcher
 
-[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) - シナリオベースの監視は、Network Watcher の機能を使用して実現できます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
+[Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) - シナリオベースの監視は、Network Watcher の機能を使用して実現できます。 このサービスには、パケット キャプチャ、次のホップ、IP フロー検証、セキュリティ グループ ビュー、NSG フロー ログなどが搭載されています。 シナリオ レベルの監視では、個別のネットワーク リソースの監視とは対照的に、ネットワーク リソースを隅から隅まで確認できます。
 
  ![Network Watcher](./media/network-security/azure-network-security-fig-15.png)
 
@@ -522,7 +522,7 @@ Network Watcher は地域サービスであり、ネットワーク シナリオ
 
 #### <a name="topology"></a>トポロジ
 
-[トポロジ](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview)は、仮想ネットワーク内のネットワーク リソースの図式を返します。 図式は、エンド ツー エンドのネットワーク接続を表すリソース間の相互接続を示します。 ポータルで、トポロジは仮想ネットワークごとにリソース オブジェクトを返します。 リレーションシップがリソース間の線で表されています。Network Watcher リージョンの外部のリソースは、リソース グループに含まれていても表示されません。 ポータルのビューに返されるリソースは、図式化されたネットワーク コンポーネントのサブセットです。 すべてのネットワーク リソースの一覧を表示するには、[PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-powershell) または [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-rest) を使用します。
+[トポロジ](../../network-watcher/view-network-topology.md)は、仮想ネットワーク内のネットワーク リソースの図式を返します。 図式は、エンド ツー エンドのネットワーク接続を表すリソース間の相互接続を示します。 ポータルで、トポロジは仮想ネットワークごとにリソース オブジェクトを返します。 リレーションシップがリソース間の線で表されています。Network Watcher リージョンの外部のリソースは、リソース グループに含まれていても表示されません。 ポータルのビューに返されるリソースは、図式化されたネットワーク コンポーネントのサブセットです。 すべてのネットワーク リソースの一覧を表示するには、[PowerShell](../../network-watcher/view-network-topology.md) または [REST](../../network-watcher/view-network-topology.md) を使用します。
 
 リソースが返されるときに、2 つのリレーションシップに基づいてリソース間の接続がモデル化されます。
 
@@ -532,49 +532,49 @@ Network Watcher は地域サービスであり、ネットワーク シナリオ
 
 #### <a name="variable-packet-capture"></a>可変パケット キャプチャ
 
-Network Watcher の[可変パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)を使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するパケット キャプチャ セッションを作成できます。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報を取得などがあり、クライアント サーバー間の通信のデバッグなどに役立ちます。
+Network Watcher の[可変パケット キャプチャ](../../network-watcher/network-watcher-packet-capture-overview.md)を使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するパケット キャプチャ セッションを作成できます。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報を取得などがあり、クライアント サーバー間の通信のデバッグなどに役立ちます。
 
 パケット キャプチャは、Network Watcher によりリモートで開始される、仮想マシン拡張機能です。 この機能により、目的の仮想マシンでパケット キャプチャを手動で実行する負担が軽減され、貴重な時間の節約になります。 パケット キャプチャは、ポータル、PowerShell、CLI、REST API を介してトリガーできます。 パケット キャプチャをトリガーできる方法の一例は、仮想マシンのアラートの使用です。
 
 #### <a name="ip-flow-verify"></a>IP フロー検証
 
-[IP フロー検証](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview)を使用すると、仮想マシンから送受信されるパケットの許可または拒否の状況を 5 タプルの情報に基づいて検証できます。 この情報は、方向、プロトコル、ローカル IP、リモート IP、ローカル ポート、リモート ポートで構成されます。 パケットがセキュリティ グループにより拒否された場合、そのパケットを拒否した規則の名前が返されます。 管理者は、任意の送信元または送信先の IP を選択でき、IP フロー検証機能を使用してインターネットまたはオンプレミス環境との接続の問題をすばやく診断できます。
+[IP フロー検証](../../network-watcher/network-watcher-ip-flow-verify-overview.md)を使用すると、仮想マシンから送受信されるパケットの許可または拒否の状況を 5 タプルの情報に基づいて検証できます。 この情報は、方向、プロトコル、ローカル IP、リモート IP、ローカル ポート、リモート ポートで構成されます。 パケットがセキュリティ グループにより拒否された場合、そのパケットを拒否した規則の名前が返されます。 管理者は、任意の送信元または送信先の IP を選択でき、IP フロー検証機能を使用してインターネットまたはオンプレミス環境との接続の問題をすばやく診断できます。
 
 IP フロー検証では、仮想マシンのネットワーク インターフェイスが対象になります。 次に、そのネットワーク インターフェイスに関する構成済みの設定に基づいてトラフィック フローが検証されます。 この機能は、仮想マシンとの間のイングレスまたはエグレス トラフィックがネットワーク セキュリティ グループ内の規則によってブロックされているかどうかを確認するのに役立ちます。
 
 #### <a name="next-hop"></a>次のホップ
 
-Azure Network Fabric におけるルーティング対象パケットの[次ホップ](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)を特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。 VM からのトラフィックは、NIC に関連付けられた有効なルートをもとに、送信先に送信されます。 次ホップは、特定の仮想マシンと NIC から次ホップの種類とパケットの IP アドレスを取得します。 これにより、パケットが送信先に向かっているのか、またはトラフィックが失われているのかを判断するのに役立ちます。
+Azure Network Fabric におけるルーティング対象パケットの[次ホップ](../../network-watcher/network-watcher-next-hop-overview.md)を特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。 VM からのトラフィックは、NIC に関連付けられた有効なルートをもとに、送信先に送信されます。 次ホップは、特定の仮想マシンと NIC から次ホップの種類とパケットの IP アドレスを取得します。 これにより、パケットが送信先に向かっているのか、またはトラフィックが失われているのかを判断するのに役立ちます。
 
 また、次ホップは関連するルート テーブルを返します。 ルートがユーザー定義のルートとして定義されている場合に次ホップをクエリすると、そのルートが返されます。 それ以外の場合、次ホップは "システム ルート" を返します。
 
 #### <a name="security-group-view"></a>セキュリティ グループ ビュー
 
-VM に適用されている有効な適用セキュリティ規則を確認できます。 ネットワーク セキュリティ グループは、サブネット レベルまたは NIC レベルで関連付けられています。 サブネット レベルに関連付けた場合、サブネット内のすべての VM インスタンスに適用されます。 ネットワーク [セキュリティ グループ ビュー](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)は、仮想マシン用に NIC レベルまたはサブネット レベルで関連付けられた、すべての構成済み NSG と規則を返して、構成に対する洞察を提供します。 さらに、有効なセキュリティ規則を VM の各 NIC に返します。 ネットワーク セキュリティ グループ ビューを使用することで、開いているポートなどのネットワークの脆弱性について VM を評価できます。 また、[構成されたセキュリティ規則と有効なセキュリティ規則とを比較](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-auditing-powershell)することで、ネットワーク セキュリティ グループが想定どおりに機能しているかどうかを確認できます。
+VM に適用されている有効な適用セキュリティ規則を確認できます。 ネットワーク セキュリティ グループは、サブネット レベルまたは NIC レベルで関連付けられています。 サブネット レベルに関連付けた場合、サブネット内のすべての VM インスタンスに適用されます。 ネットワーク [セキュリティ グループ ビュー](../../network-watcher/network-watcher-security-group-view-overview.md)は、仮想マシン用に NIC レベルまたはサブネット レベルで関連付けられた、すべての構成済み NSG と規則を返して、構成に対する洞察を提供します。 さらに、有効なセキュリティ規則を VM の各 NIC に返します。 ネットワーク セキュリティ グループ ビューを使用することで、開いているポートなどのネットワークの脆弱性について VM を評価できます。 また、[構成されたセキュリティ規則と有効なセキュリティ規則とを比較](../../network-watcher/network-watcher-nsg-auditing-powershell.md)することで、ネットワーク セキュリティ グループが想定どおりに機能しているかどうかを確認できます。
 
 #### <a name="nsg-flow-logging"></a>NSG フロー ログの記録
 
  ネットワーク セキュリティ グループのフロー ログにより、そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (送信元 IP、宛先 IP送信元ポート、宛先ポート、プロトコル) で定義されます。
 
-[ネットワーク セキュリティ グループのフローのログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)は、ネットワーク セキュリティ グループを使用した受信および送信 IP トラフィックに関する情報を表示できる Network Watcher の機能です。
+[ネットワーク セキュリティ グループのフローのログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)は、ネットワーク セキュリティ グループを使用した受信および送信 IP トラフィックに関する情報を表示できる Network Watcher の機能です。
 
 #### <a name="virtual-network-gateway-and-connection-troubleshooting"></a>Virtual Network ゲートウェイと接続のトラブルシューティング
 
-Network Watcher は、Azure 内のネットワーク リソースの把握に関する多くの機能を提供します。 これらの機能の 1 つが、リソースのトラブルシューティングです。 [リソースのトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)は、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を検査し、その結果を返します。
+Network Watcher は、Azure 内のネットワーク リソースの把握に関する多くの機能を提供します。 これらの機能の 1 つが、リソースのトラブルシューティングです。 [リソースのトラブルシューティング](../../network-watcher/network-watcher-troubleshoot-manage-rest.md)は、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を検査し、その結果を返します。
 
 このセクションでは、リソースのトラブルシューティングで現在利用できるさまざまな管理タスクについて説明します。
 
--   [Virtual Network ゲートウェイのトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)
+-   [Virtual Network ゲートウェイのトラブルシューティング](../../network-watcher/network-watcher-troubleshoot-manage-rest.md)
 
--   [接続のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)
+-   [接続のトラブルシューティング](../../network-watcher/network-watcher-troubleshoot-manage-rest.md)
 
 #### <a name="network-subscription-limits"></a>ネットワーク サブスクリプションの制限
 
-[ネットワーク サブスクリプションの制限](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)では、リージョン内のサブスクリプションに含まれる各ネットワーク リソースの使用状況の詳細を、利用可能なリソースの最大数と照らし合わせて確認できます。
+[ネットワーク サブスクリプションの制限](../../network-watcher/network-watcher-monitoring-overview.md)では、リージョン内のサブスクリプションに含まれる各ネットワーク リソースの使用状況の詳細を、利用可能なリソースの最大数と照らし合わせて確認できます。
 
 #### <a name="configuring-diagnostics-log"></a>診断ログの構成
 
-Network Watcher には[診断ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) ビューが用意されています。 このビューには、診断ログをサポートするすべてのネットワーク リソースが表示されます。 このビューから、ネットワーク リソースの有効化および無効化を手軽に素早く行うことができます。
+Network Watcher には[診断ログ](../../network-watcher/network-watcher-monitoring-overview.md) ビューが用意されています。 このビューには、診断ログをサポートするすべてのネットワーク リソースが表示されます。 このビューから、ネットワーク リソースの有効化および無効化を手軽に素早く行うことができます。
 
 ### <a name="network-resource-level-monitoring"></a>ネットワーク リソース レベルの監視
 
@@ -585,7 +585,7 @@ Network Watcher には[診断ログ](https://docs.microsoft.com/azure/network-wa
 ネットワークの構成の一環として実行された操作が記録されます。 これらの監査ログは各種コンプライアンスを確立するために必須です。 これらのログは、Azure Portal で確認することも、Power BI などの Microsoft ツールやサードパーティ ツールを使用して取得することもできます。 監査ログは、ポータル、PowerShell、CLI、Rest API で利用できます。
 
 > [!Note]
-> 監査ログについて詳しくは、[Resource Manager の監査操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)に関するページをご覧ください。
+> 監査ログについて詳しくは、[Resource Manager の監査操作](../../azure-resource-manager/resource-group-audit.md)に関するページをご覧ください。
 監査ログは、すべてのネットワーク リソースに対して実行された操作について用意されています。
 
 
@@ -594,19 +594,19 @@ Network Watcher には[診断ログ](https://docs.microsoft.com/azure/network-wa
 メトリックとは、一定期間にわたり収集されたパフォーマンスの測定値とカウンターのことです。 現時点では、メトリックは Application Gateway で利用できます。 メトリックを使用すると、しきい値に基づいてアラートをトリガーすることができます。 既定では、Azure Application Gateway はバック エンド プールにあるすべてのリソースの状態を監視して、異常とみなしたリソースをプールから自動的に削除します。 Application Gateway は異常なインスタンスを継続的に監視し、このインスタンスが利用可能になり正常性プローブに応答するようになると、正常バック エンド プールに戻します。 Application Gateway は、バックエンドの HTTP 設定で定義されているポートを使用して正常性プローブを送信します。 この構成により、顧客がバックエンドへの接続に使用しているポートをプローブで確実にテストできます。
 
 > [!Note]
-> メトリックを使用してアラートを作成する方法については、[Application Gateway の診断機能](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview)に関するページを参照してください。
+> メトリックを使用してアラートを作成する方法については、[Application Gateway の診断機能](../../application-gateway/application-gateway-probe-overview.md)に関するページを参照してください。
 
 #### <a name="diagnostic-logs"></a>診断ログ
 
-定期イベントおよび自然発生イベントがネットワーク リソースにより作成され、ストレージ アカウント内に記録されるか、イベント ハブまたは Azure Monitor ログへ送信されます。 こうしたログから、リソースの正常性に関する詳細が得られます。 これらのログは、Power BI や Azure Monitor ログなどのツールで確認できます。 診断ログを確認する方法については、[Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)に関するページを参照してください。
+定期イベントおよび自然発生イベントがネットワーク リソースにより作成され、ストレージ アカウント内に記録されるか、イベント ハブまたは Azure Monitor ログへ送信されます。 こうしたログから、リソースの正常性に関する詳細が得られます。 これらのログは、Power BI や Azure Monitor ログなどのツールで確認できます。 診断ログを確認する方法については、[Azure Monitor ログ](../../azure-monitor/insights/azure-networking-analytics.md)に関するページを参照してください。
 
-診断ログは、[ロード バランサー](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)、ルーティング、および [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics) で利用できます。
+診断ログは、[ロード バランサー](../../load-balancer/load-balancer-monitor-log.md)、[ネットワーク セキュリティ グループ](../../virtual-network/virtual-network-nsg-manage-log.md)、ルーティング、および [Application Gateway](../../application-gateway/application-gateway-diagnostics.md) で利用できます。
 
 Network Watcher には診断ログ ビューが用意されています。 このビューには、診断ログをサポートするすべてのネットワーク リソースが表示されます。 このビューから、ネットワーク リソースの有効化および無効化を手軽に素早く行うことができます。
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)は、可用性やパフォーマンスの維持を目的としてクラウド環境とオンプレミス環境を監視する Azure のサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
+[Azure Monitor ログ](../../log-analytics/log-analytics-queries.md)は、可用性やパフォーマンスの維持を目的としてクラウド環境とオンプレミス環境を監視する Azure のサービスです。 Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。
 
 Azure Monitor ログには、ネットワークを監視することを目的とした次のソリューションが用意されています。
 
@@ -617,7 +617,7 @@ Azure Monitor ログには、ネットワークを監視することを目的と
 -   Azure Network Security Group 分析
 
 #### <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)
-[Network Performance Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor) 管理ソリューションは、ネットワークの正常性、可用性、到達の可能性を監視するネットワーク監視ソリューションです。
+[Network Performance Monitor](../../azure-monitor/insights/network-performance-monitor.md) 管理ソリューションは、ネットワークの正常性、可用性、到達の可能性を監視するネットワーク監視ソリューションです。
 
 次の 2 点間の接続を監視する目的で使用します。
 
@@ -644,7 +644,7 @@ Application Gateway に関しては、次のメトリックがサポートされ
 
 #### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Azure Monitor ログの Azure ネットワーク セキュリティ グループ分析
 
-[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)に関しては、次のログがサポートされます。
+[ネットワーク セキュリティ グループ](../../virtual-network/virtual-network-nsg-manage-log.md)に関しては、次のログがサポートされます。
 
 - **NetworkSecurityGroupEvent:** MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
 
@@ -653,7 +653,7 @@ Application Gateway に関しては、次のメトリックがサポートされ
 ## <a name="next-steps"></a>次の手順
 セキュリティについて詳しくは、セキュリティについて掘り下げた次のトピックをご覧ください。
 
--   [ネットワーク セキュリティ グループ (NSG) の Azure Monitor ログ](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [ネットワーク セキュリティ グループ (NSG) の Azure Monitor ログ](../../virtual-network/virtual-network-nsg-manage-log.md)
 
 -   [クラウドの分断を促進するネットワークの革新](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/)
 

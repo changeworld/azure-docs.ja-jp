@@ -97,8 +97,8 @@ curl -X PUT \
 |name - (一意)「[名前付け規則](media-services-apis-overview.md#naming-conventions)」を参照してください ||
 |alternateId|AlternateId|
 |assetId|Id - (一意) 値は `nb:cid:UUID:` プレフィックスで始まります。|
-|created|作成されました|
-|description|EnableAdfsAuthentication|
+|created|Created|
+|description|Name|
 |lastModified|LastModified|
 |storageAccountName|StorageAccountName|
 |storageEncryptionFormat| Options (作成オプション)|

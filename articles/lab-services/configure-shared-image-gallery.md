@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: de857498aeb51c9b3711c90338d983e85b61cb70
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80610168e0d293b65626da71ee349f25e456576b
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065430"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774567"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs での共有イメージ ギャラリーの構成
 DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows/shared-image-galleries.md)機能がサポートされるようになりました。 ラボ ユーザーは、ラボ リソースの作成中に共有の場所からイメージにアクセスできます。 また、カスタム マネージド VM イメージに関連する構造および組織を構築できます。 共有イメージ ギャラリー機能では、次がサポートされています。
@@ -51,7 +51,9 @@ DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows
 1. **[Attach]\(アタッチ\)** ボタンをクリックしてドロップダウンからギャラリーを選択することによって、既存の共有イメージ ギャラリーをラボにアタッチします。
 
     ![Attach](./media/configure-shared-image-gallery/attach-options.png)
-1. アタッチ済みギャラリーに移動し、VM 作成用に共有イメージを**有効化または無効化**するようギャラリーを構成します。
+1. アタッチ済みギャラリーに移動し、VM 作成用に共有イメージを**有効化または無効化**するようギャラリーを構成します。 リストからイメージ ギャラリーを選択して構成します。 
+
+    既定では、 **[すべてのイメージを仮想マシン ベースとして使用できるようにする]** が **[はい]** に設定されています。 つまり、アタッチされた共有イメージ ギャラリーにあるすべてのイメージは、ラボ ユーザーが新しいラボ VM を作成する際に使用できるということです。 特定のイメージへのアクセスを制限する必要がある場合は、 **[すべてのイメージを仮想マシン ベースとして使用できるようにする]** を **[いいえ]** に変更し、VM の作成時に許可したいイメージを選択したうえで、 **[保存]** ボタンを選択してください。
 
     ![有効化または無効化](./media/configure-shared-image-gallery/enable-disable.png)
 1. 以後、ラボ ユーザーは、 **[+ 追加]** をクリックすることで、有効化されたイメージを使用して仮想マシンを作成できます。また、 **[choose your base]\(ベースの選択\)** ページでイメージを検索できます。
@@ -67,92 +69,48 @@ Azure Resource Manager テンプレートを使用して共有イメージ ギ�
 {
     "apiVersion": "2018-10-15-preview",
     "type": "Microsoft.DevTestLab/labs",
-    "name": "[parameters('newLabName')]",
-    "location": "[resourceGroup (). location]",
+    "name": "mylab",
+    "location": "eastus",
     "resources": [
-    {
-        "apiVersion": "2018-10-15-preview",
-        "name": "[variables('labVirtualNetworkName')]",
-        "type": "virtualNetworks",
-        "dependsOn": [
-            "[resourceId('Microsoft.DevTestLab/labs', parameters('newLabName'))]"
-        ]
-    },
     {
         "apiVersion":"2018-10-15-preview",
         "name":"myGallery",
         "type":"sharedGalleries",
         "properties": {
-            "galleryId":"[parameters('existingSharedGalleryId')]",
+            "galleryId":"/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/mySharedGalleryRg/providers/Microsoft.Compute/galleries/mySharedGallery",
             "allowAllImages": "Enabled"
-        },
-        "dependsOn":[
-            "[resourceId('Microsoft.DevTestLab/labs', parameters('newLabName'))]"
-        ]
+        }
     }
     ]
-} 
-
+}
 ```
 
 完全な Resource Manager テンプレートの例については、パブリックの GitHub リポジトリにある次の Resource Manager テンプレート サンプルを参照してください。[Configure a shared image gallery while creating a lab\(ラボの作成中に共有イメージ ギャラリーを構成する\)](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured)。
 
-### <a name="create-a-vm-using-an-image-from-the-shared-image-gallery"></a>共有イメージ ギャラリーのイメージを使用して VM を作成する
-Azure Resource Manager テンプレートと、共有イメージ ギャラリーのイメージを使用して仮想マシンを作成する場合は、次のサンプルを使用します。
+## <a name="use-api"></a>API を使用する
 
-```json
+### <a name="shared-image-galleries---create-or-update"></a>共有イメージ ギャラリー - 作成または更新
 
-"resources": [
+```rest
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}?api-version= 2018-10-15-preview
+Body: 
 {
-    "apiVersion": "2018-10-15-preview",
-    "type": "Microsoft.DevTestLab/labs/virtualMachines",
-    "name": "[variables('resourceName')]",
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "sharedImageId": "[parameters('existingSharedImageId')]",
-        "size": "[parameters('newVMSize')]",
-        "isAuthenticationWithSshKey": false,
-        "userName": "[parameters('userName')]",
-        "sshKey": "",
-        "password": "[parameters('password')]",
-        "labVirtualNetworkId": "[variables('labVirtualNetworkId')]",
-        "labSubnetName": "[variables('labSubnetName')]"
+    "properties":{
+        "galleryId": "[Shared Image Gallery resource Id]",
+        "allowAllImages": "Enabled"
     }
 }
-],
 
 ```
 
-詳細については、パブリックの GitHub にある次の Resource Manager テンプレート サンプルを参照してください。
-[Create a virtual machine using a shared image gallery image\(共有イメージ ギャラリーのイメージを使用して仮想マシンを作成する\)](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-sharedimage)。
+### <a name="shared-image-galleries-images---list"></a>共有イメージ ギャラリーのイメージ - リスト 
 
-## <a name="use-api"></a>API を使用する
+```rest
+GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}/sharedimages?api-version= 2018-10-15-preview
+```
 
-- API バージョン 2018-10-15-preview を使用します。
-- ギャラリーをアタッチするには、次のスニペットで示しているように要求を送信します。
-    
-    ``` 
-    PUT [Lab Resource Id]/SharedGalleries/[newGalleryName]
-    Body: 
-    {
-        “properties”:{
-            “galleryId”: “[Shared Image Gallery resource Id]”,
-            “allowAllImages”:”Enabled”
-        }
-    }
-    ```
-- 共有イメージ ギャラリーのすべてのイメージを表示するために、次のようにして、すべての共有イメージをそのリソース ID と共に一覧表示できます
 
-    ```
-    GET [Lab Resource Id]/SharedGalleries/mySharedGallery/SharedImages
-    ````
-- 共有イメージを使用して VM を作成するために、仮想マシン上で PUT を実行し、仮想マシンのプロパティで、以前の呼び出しで取得した共有イメージの ID を渡すことができます。 properties.SharedImageId に
 
 
 ## <a name="next-steps"></a>次の手順
-成果物に関する次の記事をご覧ください。
-
-- [ラボに必須の成果物の指定](devtest-lab-mandatory-artifacts.md)
-- [カスタム アーティファクトの作成](devtest-lab-artifact-author.md)
-- [ラボへの成果物リポジトリの追加](devtest-lab-artifact-author.md)
-- [アーティファクトの失敗の診断](devtest-lab-troubleshoot-artifact-failure.md)
+アタッチされた共有イメージ ギャラリーのイメージを使用した VM の作成に関する記事 ([ギャラリーの共有イメージを使用して VM を作成する](add-vm-use-shared-image.md)方法に関するページ) を参照してください。

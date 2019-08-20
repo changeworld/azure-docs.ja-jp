@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9d19441b2f2202573086a711c202d4b36bbee5fa
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b1fa24f919888e4454096e1ef84d2ba2948b865a
+ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846148"
+ms.lasthandoff: 08/03/2019
+ms.locfileid: "68774288"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -143,7 +143,7 @@ SQL Server 仮想マシンを構成するタブが複数あります。 この�
 
 **[監視]** タブで、監視と自動シャットダウンを構成します。 
 
-* **ブートの監視**は、既定では VM に指定されているものと同じストレージ アカウントで有効になります。 ここでは、これらの設定を変更し、 **[OS のゲスト診断]** を有効にすることができます。 
+* **[ブート診断]** は、既定では VM に指定されているものと同じストレージ アカウントで有効になります。 ここでは、これらの設定を変更し、 **[OS のゲスト診断]** を有効にすることができます。 
 * このタブでは、 **[システム割り当てマネージド ID]** と**自動シャットダウン**を有効にすることもできます。 
 
 ![SQL VM の管理設定](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
