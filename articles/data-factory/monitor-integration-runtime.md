@@ -44,11 +44,11 @@ Azure 統合ランタイムのコンピューティング リソースは、Azur
 | プロパティ | 説明 |
 -------- | ------------- | 
 | Name | Azure 統合ランタイムの名前です。 |  
-| 状態 | Azure 統合ランタイムの状態です。 | 
+| State | Azure 統合ランタイムの状態です。 | 
 | Location | Azure 統合ランタイムの場所です。 Azure 統合ランタイムの場所について詳しくは、[統合ランタイムの概要](concepts-integration-runtime.md)に関する記事をご覧ください。 |
 | DataFactoryName | Azure 統合ランタイムが属しているデータ ファクトリの名前です。 | 
 | ResourceGroupName | データ ファクトリが属しているリソース グループの名前です。  |
-| 説明 | 統合ランタイムの説明です。  |
+| Description | 統合ランタイムの説明です。  |
 
 ### <a name="status"></a>Status
 次の表では、Azure 統合ランタイムの状態を示します。
