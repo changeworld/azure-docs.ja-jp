@@ -85,7 +85,7 @@ Windows 用の Log Analytics エージェント拡張機能では、ターゲッ
 ```
 ### <a name="property-values"></a>プロパティ値
 
-| EnableAdfsAuthentication | 値/例 |
+| 名前 | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |

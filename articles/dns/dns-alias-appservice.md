@@ -43,7 +43,7 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 次の表で示す構成情報を使用して、リソース グループに 2 つの Web App Service プランを作成します。 App Service プランの作成の詳細については、「[Azure で App Service プランを管理する](../app-service/app-service-plan-manage.md)」をご覧ください。
 
 
-|EnableAdfsAuthentication  |オペレーティング システム  |Location  |価格レベル  |
+|名前  |オペレーティング システム  |Location  |価格レベル  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|East US|Dev/Test D1-Shared|
 |ASP-02     |Windows|米国中部|Dev/Test D1-Shared|
@@ -58,7 +58,7 @@ App Service プランごとに 1 つずつ、2 つの Web アプリを作成し�
 4. **Create** をクリックしてください。
 5. 既定値のままにし、次の表を使用して 2 つの Web アプリを構成します。
 
-   |EnableAdfsAuthentication<br>(.azurewebsites.net 内で一意になっている必要があります)|リソース グループ |App Service プラン/場所
+   |名前<br>(.azurewebsites.net 内で一意になっている必要があります)|リソース グループ |App Service プラン/場所
    |---------|---------|---------|
    |App-01|既存のものを使用します<br>リソース グループを選択します|ASP-01(米国東部)|
    |App-02|既存のものを使用します<br>リソース グループを選択します|ASP-02(米国中部)|
@@ -87,7 +87,7 @@ Traffic Manager プロファイルの作成方法の詳細については、[Web
 3. **[追加]** をクリックします。
 4. 次の表を使用して、エンドポイントを構成します。
 
-   |Type  |EnableAdfsAuthentication  |ターゲット  |Location  |カスタム ヘッダーの設定|
+   |Type  |名前  |ターゲット  |Location  |カスタム ヘッダーの設定|
    |---------|---------|---------|---------|---------|
    |外部エンドポイント     |End-01|App-01 について記録した IP アドレス|East US|host:\<App-01 について記録した URL\><br>例: **host:app-01.azurewebsites.net**|
    |外部エンドポイント     |End-02|App-02 について記録した IP アドレス|米国中部|host:\<App-02 について記録した URL\><br>例: **host:app-02.azurewebsites.net**
@@ -104,7 +104,7 @@ DNS ゾーンの準備ができたら、ゾーンの頂点に対するエイリ�
 2. **[レコード セット]** をクリックします。
 3. 次の表を使用して、レコード セットを追加します。
 
-   |EnableAdfsAuthentication  |Type  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
+   |名前  |Type  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
    |---------|---------|---------|---------|-----|
    |@     |A|はい|Azure リソース|Traffic Manager - お使いのプロファイル|
 

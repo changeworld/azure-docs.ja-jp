@@ -766,7 +766,7 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| EnableAdfsAuthentication | Type | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | sameRGOutput | string | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | string | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

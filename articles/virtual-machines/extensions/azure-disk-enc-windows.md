@@ -141,7 +141,7 @@ V1.1 スキーマは推奨されており、Azure Active Directory のプロパ�
 
 ### <a name="property-values"></a>プロパティ値
 
-| EnableAdfsAuthentication | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |

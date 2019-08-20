@@ -102,7 +102,7 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | EnableAdfsAuthentication  | 置換後の文字列 | 例 |
+    | 名前  | 置換後の文字列 | 例 |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | ポータルで見つかった Management REST API ドキュメントの URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 

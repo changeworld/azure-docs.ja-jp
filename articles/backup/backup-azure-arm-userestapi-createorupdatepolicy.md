@@ -50,7 +50,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 たとえば、Azure VM のバックアップに対するポリシーを作成する場合、要求本文のコンポーネントは次のとおりです。
 
-|EnableAdfsAuthentication  |必須  |Type  |説明  |
+|名前  |必須  |Type  |説明  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource のプロパティ        |
 |tags     |         | Object        |  リソース タグ       |
@@ -158,7 +158,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|EnableAdfsAuthentication  |Type  |説明  |
+|名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |    [ProtectionPolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 Accepted     |         |     承認済み    |
