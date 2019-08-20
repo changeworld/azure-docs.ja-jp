@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 7a69fc7c9077fa10ddf808f1cd953f6739eabe20
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 701972c32f3e80682e2a20d04b02bcd555532e08
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688725"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954978"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -393,7 +393,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="changing-the-policy-of-protection"></a>保護のポリシーの変更
 
-VM の保護に使用されているポリシーを変更するために、[保護を有効にする](#enabling-protection-for-the-azure-vm)のと同じ形式を使用できます。 [要求本文](#example-request-body)で新しいポリシー ID を指定し、要求を送信するだけです。 例:testVM のポリシーを 'DefaultPolicy' から 'ProdPolicy' に変更するには、要求本文で ID 'ProdPolicy' を指定します。
+VM の保護に使用されているポリシーを変更するために、[保護を有効にする](#enabling-protection-for-the-azure-vm)のと同じ形式を使用できます。 [要求本文](#example-request-body)で新しいポリシー ID を指定し、要求を送信するだけです。 例: testVM のポリシーを 'DefaultPolicy' から 'ProdPolicy' に変更するには、要求本文で ID 'ProdPolicy' を指定します。
 
 ```http
 {

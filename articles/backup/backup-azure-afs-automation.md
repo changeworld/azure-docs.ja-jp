@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: 5f62bd0456bfbf5882d6d8c3ee822433fbb58302
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f933b926aa0e277976416ae1b3b2eb684d9fcc85
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688774"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68955081"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>PowerShell を使用して Azure Files をバックアップおよび復元する
 

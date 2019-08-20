@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4e21fdef5be09148f001ab6f66f87dd270ccf54
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4430e2115e4282ba7bb618184139a845547a06ed
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618269"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967087"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でのタスクの委任
 
@@ -86,7 +86,7 @@ ms.locfileid: "68618269"
 | [カタログ所有者またはアクセス パッケージ マネージャーをカタログに追加する](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
 | [新しいアクセス パッケージをカタログに作成する](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
 | [アクセス パッケージ内のリソースのロールを管理する](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージを要求できるユーザーを指定する](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
+| [ポリシーの作成と編集](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [アクセス パッケージにユーザーを直接割り当てる](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [アクセス パッケージに割り当てられているユーザーを表示する](entitlement-management-access-package-edit.md#view-who-has-an-assignment) |  | :heavy_check_mark: | :heavy_check_mark: |  |
 | [アクセス パッケージの要求を表示する](entitlement-management-access-package-edit.md#view-requests) |  | :heavy_check_mark: | :heavy_check_mark: |  |

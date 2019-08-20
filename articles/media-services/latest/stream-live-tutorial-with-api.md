@@ -115,15 +115,15 @@ previewEndpoint を使用して、エンコーダーからの入力が実際に�
 
 ストリームがライブ イベントに流れ始めると、アセット、ライブ出力、ストリーミング ロケーターを作成することにより、ストリーミング イベントを開始できます。 これにより、ストリームがアーカイブされ、ストリーミング エンドポイントを介して視聴者がストリームを使用できるようになります。 
 
-#### <a name="create-an-asset"></a>アセットを作成する
+#### <a name="create-an-asset"></a>資産を作成する
 
-ライブ出力が使用するアセットを作成します。
+ライブ出力が使用する資産を作成します。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateAsset)]
 
 #### <a name="create-a-live-output"></a>ライブ出力を作成する
 
-ライブ出力は作成すると開始され、削除されると停止します。 ライブ出力を削除しても、基になるアセットとアセットのコンテンツは削除されません。
+ライブ出力は作成すると開始され、削除されると停止します。 ライブ出力を削除しても、基になる資産と資産のコンテンツは削除されません。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveOutput)]
 
@@ -132,7 +132,7 @@ previewEndpoint を使用して、エンコーダーからの入力が実際に�
 > [!NOTE]
 > Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、[ダイナミック パッケージ](dynamic-packaging-overview.md)と動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
 
-ストリーミング ロケーターを使用してライブ出力アセットを発行した場合、ライブ イベント (DVR ウィンドウの長さまで) は、ストリーミング ロケーターの有効期限まで、または削除するまで、どちらか早い方のタイミングまで引き続き表示できます。
+ストリーミング ロケーターを使用してライブ出力資産を発行した場合、ライブ イベント (DVR ウィンドウの長さまで) は、ストリーミング ロケーターの有効期限まで、または削除するまで、どちらか早い方のタイミングまで引き続き表示できます。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateStreamingLocator)]
 
