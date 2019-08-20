@@ -53,9 +53,9 @@ Azure Machine Learning service は、コンピューティング リソースの
     ```
 
 > [!IMPORTANT]
-> Azure Machine Learning service 用の__既定のストレージ アカウント__は、__実験を行っている間だけ__、仮想ネットワークに配置できます。
+> Azure Machine Learning service 用の __既定のストレージ アカウント__ は、__実験を行っている間だけ__、仮想ネットワークに配置できます。
 >
-> __実験用の既定以外のストレージ アカウント__の場合、または__推論__用にストレージ アカウントを使っている場合は、__ストレージ アカウントに対する無制限のアクセス__が必要です.
+> __実験用の既定以外のストレージ アカウント__ の場合、または __推論__ 用にストレージ アカウントを使っている場合は、__ストレージ アカウントに対する無制限のアクセス__ が必要です.
 >
 > これらの設定を変更済みかどうかわからない場合は、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](https://docs.microsoft.com/azure/storage/common/storage-network-security)」の「__既定のネットワーク アクセス ルールの変更__」をご覧ください。 推論時、つまりモデルのスコア付け時に、すべてのネットワークからのアクセスを許可する手順を使用します。
 
@@ -130,7 +130,7 @@ Batch によって構成された NSG のインバウンド規則またはアウ
 
 - NSG 規則を使用して、送信インターネット接続を拒否する
 
-- Azure Storage (__Storage.Region_Name__ (例: Storage.EastUS) の__サービス タグ__を使用)、 Azure Container Registry (__AzureContainerRegistry.Region_Name__ (例: AzureContainerRegistry.EastUS) の__サービス タグ__を使用)、 および Azure Machine Learning service (__AzureMachineLearning__ の__サービス タグ__を使用) への送信トラフィックを制限する
+- Azure Storage (__Storage.Region_Name__ (例: Storage.EastUS) の __サービス タグ__ を使用)、 Azure Container Registry (__AzureContainerRegistry.Region_Name__ (例: AzureContainerRegistry.EastUS) の __サービス タグ__ を使用)、 および Azure Machine Learning service (__AzureMachineLearning__ の __サービス タグ__ を使用) への送信トラフィックを制限する
 
 次のスクリーンショットは、NSG 規則の構成が Azure portal にどのように表示されるかを示しています。
 

@@ -564,11 +564,11 @@ Azure Machine Learning コンピューティングを使用したバッチ推論
 
 1. [Azure Pipelines 用の Machine Learning 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList)をインストールします。 
 
-1. ご自分のすべての成果物にアクセスするために、__サービス接続__を使用して、ご自分の Azure Machine Learning service ワークスペースへのサービス プリンシパル接続を設定します。 プロジェクト設定に移動し、[サービス接続] をクリックして、[Azure Resource Manager] を選択します。
+1. ご自分のすべての成果物にアクセスするために、 __サービス接続__ を使用して、ご自分の Azure Machine Learning service ワークスペースへのサービス プリンシパル接続を設定します。 プロジェクト設定に移動し、[サービス接続] をクリックして、[Azure Resource Manager] を選択します。
 
     ![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png) 
 
-1. __スコープ レベル__として AzureMLWorkspace を定義し、以降のパラメーターを入力します。
+1. __スコープ レベル__ として AzureMLWorkspace を定義し、以降のパラメーターを入力します。
 
     ![view-azure-resource-manager](media/how-to-deploy-and-where/resource-manager-connection.png)
 

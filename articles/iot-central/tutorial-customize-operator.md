@@ -56,7 +56,7 @@ ms.locfileid: "67850177"
 
     | Setting     | 値 |
     | ----------- | ----- |
-    | EnableAdfsAuthentication        | Maximum temperature |
+    | 名前        | Maximum temperature |
     | 時間範囲  | Past 1 week |
     | 測定タイプ | テレメトリ |
     | Measurement | 温度 |
