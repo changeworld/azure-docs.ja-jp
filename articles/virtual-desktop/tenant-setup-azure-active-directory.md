@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 3d418d9f18c98e1b6fdf39924ab41dae77fba291
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 062b815315d7bcdd5d55a86c2447a0b21295e8b6
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204746"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69014086"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop プレビューでテナントを作成する
 
@@ -42,17 +42,25 @@ Windows Virtual Desktop サービスにアクセス許可を付与すると、Az
 
 サービスにアクセス許可を付与するには:
 
-1. ブラウザーを開いて、[Windows Virtual Desktop の同意ページ](https://rdweb.wvd.microsoft.com)にアクセスします。
-2. **[Consent Option]\(同意オプション\)**  >  **[サーバー アプリ]** で、Azure Active Directory テナント名またはディレクトリ ID を入力して、 **[送信]** を選択します。
-        
-   クラウド ソリューション プロバイダーのお客様の場合、ID は、パートナー ポータルから取得したお客様の Microsoft ID です。 エンタープライズのお客様の場合、ID は、 **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** の下にあります。
-3. グローバル管理者アカウントを使用して Windows Virtual Desktop の同意ページにサインインします。 たとえば、Contoso 組織に属しているとしたら、アカウントは admin@contoso.com や admin@contoso.onmicrosoft.com になるでしょう。  
-4. **[Accept]\(承認\)** を選択します。
-5. 1 分間待機します。
-6. [Windows Virtual Desktop の同意ページ](https://rdweb.wvd.microsoft.com)に戻ります。
-7. **[Consent Option]\(同意オプション\)**  >  **[クライアント アプリ]** に移動して、同じ Azure Active Directory テナント名またはディレクトリ ID を入力し、 **[送信]** を選択します。
-8. 手順 3 で行ったように、グローバル管理者として Windows Virtual Desktop の同意ページにサインインします。
-9. **[Accept]\(承認\)** を選択します。
+1. ブラウザーを開き、[Windows Virtual Desktop サーバー アプリ](https://login.microsoftonline.com/common/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)に対する管理者の同意フローを開始します。
+   > [!NOTE]
+   > 顧客を管理していて、顧客のディレクトリに管理者の同意を付与する必要がある場合は、ブラウザーに次の URL を入力し、{tenant} を顧客の Azure AD ドメイン名に置き換えます。 たとえば、顧客の組織が Azure AD のドメイン名 contoso.onmicrosoft.com を登録している場合は、{tenant} を contoso.onmicrosoft.com に置き換えます。
+   >```
+   >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
+   >```
+
+2. グローバル管理者アカウントを使用して Windows Virtual Desktop の同意ページにサインインします。 たとえば、Contoso 組織に属しているとしたら、アカウントは admin@contoso.com や admin@contoso.onmicrosoft.com になるでしょう。  
+3. **[Accept]\(承認\)** を選択します。
+4. Azure AD が同意を記録できるように 1 分間待ちます。
+5. ブラウザーを開き、[Windows Virtual Desktop クライアント アプリ](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)に対する管理者の同意フローを開始します。
+   >[!NOTE]
+   > 顧客を管理していて、顧客のディレクトリに管理者の同意を付与する必要がある場合は、ブラウザーに次の URL を入力し、{tenant} を顧客の Azure AD ドメイン名に置き換えます。 たとえば、顧客の組織が Azure AD のドメイン名 contoso.onmicrosoft.com を登録している場合は、{tenant} を contoso.onmicrosoft.com に置き換えます。
+   >```
+   > https://login.microsoftonline.com/{tenant}/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
+   >```
+
+6. 手順 2 で行ったように、グローバル管理者として Windows Virtual Desktop の同意ページにサインインします。
+7. **[Accept]\(承認\)** を選択します。
 
 ## <a name="assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナント内のユーザーに TenantCreator アプリケーション ロールを割り当てる
 
@@ -65,7 +73,7 @@ TenantCreator アプリケーション ロールを割り当てるには:
    複数の Azure Active Directory テナントを操作する場合は、プライベート ブラウザー セッションを開き、URL をコピーしてアドレス バーに貼り付けるのがベスト プラクティスです。
 2. Azure portal の検索バーで「**エンタープライズ アプリケーション**」を検索し、 **[サービス]** カテゴリの下に表示されるエントリを選択します。
 3. **[エンタープライズ アプリケーション]** 内で「**Windows Virtual Desktop**」を検索します。 前のセクションで同意した 2 つのアプリケーションが表示されます。 これらの 2 つのアプリについて、 **[Windows Virtual Desktop]** を選択します。
-   ![[エンタープライズ アプリケーション] で "Windows Virtual Desktop" を検索したときの検索結果を示すスクリーンショット。 "Windows Virtual Desktop" という名前のアプリが強調表示されています。](media/tenant-enterprise-app.png)
+   ![「エンタープライズ アプリケーション」で "Windows Virtual Desktop" を検索したときの検索結果を示すスクリーンショット。 "Windows Virtual Desktop" という名前のアプリが強調表示されています。](media/tenant-enterprise-app.png)
 4. **[ユーザーとグループ]** を選択します。 アプリケーションへの同意を付与した管理者が、**既定のアクセス** ロールを割り当てられた状態で既に表示されている場合があります。 これだけでは Windows Virtual Desktop テナントを作成するのに不十分です。 以降の手順に従って、**TenantCreator** ロールをユーザーに付加します。
    !["Windows Virtual Desktop" エンタープライズ アプリケーションを管理するために割り当てられたユーザーとグループのスクリーンショット。 このスクリーンショットには、"既定のアクセス" の割り当てのみが示されています。](media/tenant-default-access.png)
 5. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ブレードで **[ユーザーとグループ]** を選択します。
