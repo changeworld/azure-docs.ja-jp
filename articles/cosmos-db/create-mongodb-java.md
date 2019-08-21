@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API と Java SDK を使用してコンソール アプリを構築する
+title: クイック スタート:Mongo DB 用 Azure API と Java SDK を使用して Web アプリを構築する - Azure Cosmos DB
 description: Azure Cosmos DB の MongoDB 用 API を使用して接続とクエリを行うことができる Java のコード サンプルについて説明します。
 author: rimman
 ms.service: cosmos-db
@@ -8,12 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.openlocfilehash: 1e1cfe7f0e3af72de819ed09dcd0a6d190f239ab
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.custom: seo-java-august2019
+ms.openlocfilehash: 701e6f0e93fe853a3703f9923af4dffd16090c80
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839809"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036793"
 ---
 # <a name="quickstart-build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-java-sdk"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API と Java SDK を使用して Web アプリを構築する
 

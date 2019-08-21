@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 978b56f5c38a154c79544c7deb5d49396b1deff9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 0d67385975db13539c28745eede4fb288a0daedd
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688859"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989137"
 ---
 # <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>クイック スタート:イマーシブ リーダーを起動する Web アプリを作成する (C#)
 
@@ -223,5 +223,7 @@ namespace QuickstartSampleWebApp.Controllers
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル](./tutorial.md)を見て、Immersive Reader SDK で他にできることを確認する
+* [Node.js チュートリアル](./tutorial-nodejs.md)を見て、Node.js と Immersive Reader SDK を使用して他にできることを確認する
+* [Python チュートリアル](./tutorial-python.md)を見て、Python と Immersive Reader SDK を使用して他にできることを確認する
+* [iOS チュートリアル](./tutorial-ios-picture-immersive-reader.md)を見て、Swift と Immersive Reader SDK を使用して他にできることを確認する
 * [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) と [Immersive Reader SDK リファレンス](./reference.md)を探索する

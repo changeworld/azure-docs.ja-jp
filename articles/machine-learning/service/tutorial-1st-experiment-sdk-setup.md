@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:環境とワークスペースを設定します。
+title: チュートリアル:環境変数とワークスペースを設定する。
 titleSuffix: Azure Machine Learning service
 description: このチュートリアル シリーズでは、Jupyter ノートブックで実行されている Azure Machine Learning Python SDK の使用を開始するためのエンドツーエンドの手順を完了します。  パート 1 では、クラウド ノートブック サーバー環境の作成のほか、実験と機械学習モデルを管理するためのワークスペースの作成について説明します。
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: b3fdcfbb9869c0199c91f5bbc6ca1f02fec996cf
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 70fee90fb82618a409d2566a3235ad8ca42e1760
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828637"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934429"
 ---
-# <a name="tutorial-setup-environment-and-workspace"></a>チュートリアル:環境とワークスペースを設定する
+# <a name="tutorial-set-up-environment-and-workspace"></a>チュートリアル:環境変数とワークスペースを設定する
 
 このチュートリアルでは、Jupyter ノートブックで実行されている Azure Machine Learning Python SDK の使用を開始するためのエンドツーエンドの手順を完了します。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1** です。Python 環境の設定と構成のほか、実験と機械学習モデルを管理するためのワークスペースの作成について説明します。 [**パート 2**](tutorial-1st-experiment-sdk-train.md) では、これを基に、複数の機械学習モデルをトレーニングし、Azure portal と SDK の両方を使用したモデル管理プロセスを紹介します。
 
@@ -25,7 +25,7 @@ ms.locfileid: "68828637"
 
 > [!div class="checklist"]
 > * 次のチュートリアルで使用する機械学習ワークスペースを作成します。
-> * ノートブック VM (Azure Machine Learning Python SDK のプレインストールと事前構成が済んだクラウドベースの Jupyter Notebook サーバー) を作成します。
+> * Azure Machine Learning Python SDK のインストールと事前構成が済んだクラウドベースの Jupyter Notebook VM を作成します。
 
 ## <a name="prerequisites"></a>前提条件
 

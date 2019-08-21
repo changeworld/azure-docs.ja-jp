@@ -1,33 +1,44 @@
 ---
 title: Azure Search の概要 - Azure Search
-description: Azure Search は、Microsoft が提供するフルマネージド ホストのクラウド検索サービスです。 機能の説明、開発ワークフロー、Azure Search と Microsoft の他の検索製品との比較、および開始する方法を確認します。
-manager: cgronlun
+description: Azure Search は、Microsoft が提供するフルマネージド ホストのクラウド検索サービスです。 機能の説明、開発ワークフロー、Microsoft の他の検索製品との比較、および開始する方法を確認します。
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 05/02/2019
+ms.date: 08/13/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7a12c9153332e9d6fc70512bc55fe0a53f7c78fc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: eefa0eb5d1e15df34089d7baa3241cbbed4724c2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827159"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034835"
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
-Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。 クエリはユーザー定義インデックスを介して実行されます。
 
-+ 複数のコンテンツ タイプとプラットフォームをソースとして、お客様のデータのみが含まれた検索インデックスを構築します。 
+Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。 カスタム コードを使用して、データ インジェスト (インデックス作成) を呼び出し、クエリ要求を発行し、応答を処理します。 検索エクスペリエンスは、Azure Search の機能を使用してクライアント コード内で定義します。クエリは、自分で作成および所有し、Azure Search 上に保存する永続化されたインデックスに対して実行します。
 
-+ AI エンリッチメントを利用して、画像ファイルからテキストと特徴を抽出したり、未加工のテキストからエンティティとキー フレーズを抽出したりします。
+![Azure Search のアーキテクチャ](media/search-what-is-azure-search/azure-search-diagram.png "Azure Search のアーキテクチャ")
 
-+ ファセット ナビゲーションおよびファセット フィルター、シノニム、オートコンプリートのほか、"もしかして" で自動修正される検索語句のテキスト分析を備えた、直感的な検索エクスペリエンスを作成します。 関数とブースト ロジックを通じて関連性のチューニングを行います。
-
-+ 特定のユースケース用の検索アプリを作成します。 地理空間検索では、"近くを検索" エクスペリエンスがサポートされます。 多言語検索は、英語以外のフルテキスト検索用の言語アナライザーを通じてサポートされます。
+<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
++ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
++ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
++ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
 
 機能は、情報の検索に固有の複雑さを感じさせないシンプルな [REST API](/rest/api/searchservice/) または [.NET SDK](search-howto-dotnet-sdk.md) を使って公開されます。 API だけでなく、Azure Portal では、管理とコンテンツ管理のサポートおよびプロトタイプの作成とインデックスのクエリのためのツールも提供されます。 サービスはクラウドで実行されるため、インフラストラクチャと可用性は Microsoft によって管理されます。
+
+## <a name="when-to-use-azure-search"></a>Azure Search を使用する局面
+
+Azure Search は、次のアプリケーション シナリオに適しています。
+
++ 異種のコンテンツ タイプのプライベートな単一の検索可能なインデックスへの統合。 クエリは、常に自分で作成してドキュメントと共に読み込むインデックスに対して実行されます。インデックスは、常にお使いの Azure Search サービスのクラウドに配置されます。 任意のソースまたはプラットフォームの JSON ドキュメントのストリームからインデックスを作成できます。 または、Azure をソースとするコンテンツの場合、"*インデクサー*" を使用してデータをインデックスにプルできます。 インデックスの定義と管理および所有権が、Azure Search を使用する主な理由です。
+
++ 検索に関連する機能の簡単な実装。 Azure Search API シリーズを使用すると、クエリの構築、ファセット ナビゲーション、フィルター (地理空間検索を含む)、シノニム マッピング、先行入力クエリ、および関連性チューニングを簡素化できます。 組み込みの機能を使用して、商用 Web 検索エンジンと同様の検索体験に対するエンドユーザーの期待に応えることができます。
+
++ 非構造化テキストのインデックス作成、または画像ファイルからのテキストと情報の抽出。 Azure Search のコグニティブ検索機能により、インデックス作成パイプラインに AI 処理が追加されます。 一般的なユースケースには、スキャンされたドキュメントに対する OCR、大きなドキュメントに対するエンティティ認識とキー フレーズ抽出、言語検出とテキスト翻訳、センチメント分析などがあります。
+
++ Azure Search のカスタムおよび言語アナライザーを使用して満たされる言語要件。 英語以外のコンテンツがある場合、Azure Search では、Lucene アナライザーと Microsoft の自然言語プロセッサの両方がサポートされます。 また、特定の生コンテンツ (分音記号のフィルター処理など) の特殊な処理を実現するようにアナライザーを構成することもできます。
 
 <a name="feature-drilldown"></a>
 
@@ -101,6 +112,7 @@ Azure Search は、Web、モバイル、およびエンタープライズ アプ
 + インデックス層での Azure データ統合 (クローラー)
 + 中央管理のための Azure Portal
 + Azure のスケール、信頼性、世界クラスの可用性
++ 画像からのテキストや非構造化コンテンツ内でのパターンの検索など、より検索しやすくするための生データの AI 処理。
 + 56 の言語での堅実なフルテキスト検索を実現するアナライザーによる言語分析とカスタム分析
 + [検索中心のアプリに共通のコア機能](#feature-drilldown): スコアリング、ファセット、検索候補、シノニム、地理空間検索など。
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 267872f2036a0e697f4b2da65064805a0cfbd2b7
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 72155e072acb8006b48f6951fc60081126c80691
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358740"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990459"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する 
 
@@ -47,7 +47,7 @@ Azure Machine Learning service では、異なるコンピューティング先�
 
 トレーニングのときは、ローカル コンピューターで開始し、後で別のコンピューティング先でそのトレーニング スクリプトを実行するのが一般的です。 Azure Machine Learning service では、スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。 
 
-必要なのは、**実行構成**で各コンピューティング先の環境を定義することだけです。  その後、異なるコンピューティング先でトレーニング実験を実行するときは、そのコンピューティングの実行構成を指定します。 
+必要なのは、**実行構成**で各コンピューティング先の環境を定義することだけです。  その後、異なるコンピューティング先でトレーニング実験を実行するときは、そのコンピューティングの実行構成を指定します。
 
 詳しくは、この記事の最後にある[実験の送信](#submit)に関する説明をご覧ください。
 
@@ -74,7 +74,26 @@ Python 環境とスクリプトの依存関係を [Conda](https://conda.io/docs/
 次のコードでは、ユーザー管理環境用のトレーニング実行構成の例を示します。
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
-  
+
+## <a name="whats-an-estimator"></a>Estimator とは
+
+一般的なフレームワークを使用したモデルのトレーニングを容易にするために、Azure Machine Learning の Python SDK には、代替の高度な抽象化である Estimator クラスが用意されています。 このクラスを使用すると、実行構成を簡単に作成できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。
+
+PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning には、これらのフレームワークを簡単に使用するための [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、および [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) Estimator が用意されています。
+
+詳細については、「[Estimator を使用して ML モデルをトレーニングする](how-to-train-ml-models.md)」を参照してください。
+
+## <a name="whats-an-ml-pipeline"></a>ML パイプラインとは
+
+ML パイプラインを使用すると、シンプルさ、速度、移植性、再利用によってワークフローを最適化できます。 Azure Machine Learning を使用してパイプラインを構築すると、インフラストラクチャとオートメーションではなく、自分の専門知識と機械学習に焦点を絞ることができます。
+
+ML パイプラインは、パイプライン内の個別のコンピューティング単位である複数の**ステップ**から構成されます。 各ステップは個別に実行でき、分離されたコンピューティング リソースを使用できます。 これにより、複数のデータ サイエンティストが、コンピューティング リソースを過剰に使用することなく、同じパイプラインで同時に作業を行うことができます。また、各ステップに対して異なるコンピューティングの種類/サイズを簡単に使用できるようになります。
+
+> [!TIP]
+> ML パイプラインでは、モデルのトレーニング時に実行構成または Estimator を使用できます。
+
+ML パイプラインではモデルをトレーニングできますが、トレーニング前にデータを準備し、トレーニング後にモデルをデプロイすることもできます。 パイプラインの主なユースケースの 1 つは、バッチ スコアリングです。 詳細については、「[パイプライン: 機械学習ワークフローの最適化](concept-ml-pipelines.md)」を参照してください。
+
 ## <a name="set-up-in-python"></a>Python での設定
 
 以下のセクションでは、次のコンピューティング先を構成する方法を示します。

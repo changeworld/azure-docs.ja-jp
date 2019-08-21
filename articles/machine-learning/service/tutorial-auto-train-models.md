@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: trbye
-ms.date: 04/11/2019
+ms.date: 08/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: bbb9653173925e1443504aa3f2e9c5e6edbfc486
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 060257ef144309e37208db80c7731ed96b995b2c
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371039"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990474"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下のいずれかのセクションから、これらすべての前提条件を入手します。
 
-* [ワークスペース内のクラウド ノートブック サーバー](#azure)を使用する 
+* [ワークスペース内のクラウド ノートブック サーバー](#azure)を使用する
 * [独自のノートブック サーバー](#server)を使用する
 
 ### <a name="azure"></a>ワークスペース内のクラウド ノートブックサーバーを使用する
@@ -688,6 +688,9 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    **automl_settings)
 ```
 
+> [!NOTE]
+> 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
+
 ### <a name="train-the-automatic-regression-model"></a>自動回帰モデルをトレーニングする
 
 ローカルで実験の実行を開始します。 定義済みの `automated_ml_config` オブジェクトを実験に渡します。 出力を `True` に設定して実験中の進行状況を表示します。
@@ -764,7 +767,7 @@ RunDetails(local_run).show()
 ```
 local_run.get_portal_url()
 ```
-  
+
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>オプション 2:Python ですべての実行イテレーションを取得して調査する
 

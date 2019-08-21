@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 79302fc0f9addc70461d21c03b02416d15a6fa6c
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814930"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965108"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB SQL API リソースを管理する
 
@@ -116,16 +116,15 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 * 領域を追加または削除する
 * 既定の一貫性ポリシーを変更する
-* フェールオーバー ポリシーを変更する
 * IP 範囲フィルターを変更する
 * 仮想ネットワーク構成を変更する
 * マルチマスターを有効にする
 
 > [!NOTE]
-> このコマンドでは、リージョンの追加および削除が可能ですが、フェールオーバー優先度を変更することはできません。 フェールオーバー優先度を変更するには、[Azure Cosmos アカウントのフェールオーバー優先度の変更](#modify-failover-priority)を参照してください。
+> このコマンドでは、リージョンの追加および削除が可能ですが、`failoverPriority=0` でフェールオーバー優先度を変更したりリージョンを変更したりすることはできません。 フェールオーバー優先度を変更するには、[Azure Cosmos アカウントのフェールオーバー優先度の変更](#modify-failover-priority)を参照してください。
 
 ```azurepowershell-interactive
-# Update an Azure Cosmos Account and set Consistency level to Session
+# Get an Azure Cosmos Account (assume it has two regions currently West US 2 and East US 2) and add a third region
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "myaccountname"
@@ -133,9 +132,13 @@ $accountName = "myaccountname"
 $account = Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName -Name $accountName
 
-$consistencyPolicy = @{ "defaultConsistencyLevel"="Session" }
+$locations = @(
+    @{ "locationName"="West US 2"; "failoverPriority"=0 },
+    @{ "locationName"="East US 2"; "failoverPriority"=1 },
+    @{ "locationName"="South Central US"; "failoverPriority"=2 }
+)
 
-$account.Properties.consistencyPolicy = $consistencyPolicy
+$account.Properties.locations = $locations
 $CosmosDBProperties = $account.Properties
 
 Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
@@ -235,9 +238,9 @@ Select-Object $keys
 
 ### <a id="modify-failover-priority"></a> フェールオーバー優先度を変更する
 
-複数リージョンのデータベース アカウントでは、プライマリ書き込みレプリカでリージョン間フェールオーバーを行う必要があるときに、Cosmos アカウントでセカンダリ読み取りレプリカを昇格させる順序を変更できます。 `failoverPriority=0` のリージョンを変更するときは、このコマンドを使ってディザスター リカバリーの訓練を開始し、ディザスター リカバリー計画をテストすることもできます。
+複数リージョンのデータベース アカウントでは、プライマリ書き込みレプリカでリージョン間フェールオーバーを行う必要があるときに、Cosmos アカウントでセカンダリ読み取りレプリカを昇格させる順序を変更できます。 `failoverPriority=0` の変更は、ディザスター リカバリーの訓練を開始し、ディザスター リカバリー計画をテストする際にも使用できます。
 
-以下の例では、アカウントの現在のフェールオーバー優先度が westus=0 および eastus=1 であるものとして、リージョンを反転させます。
+以下の例では、アカウントの現在のフェールオーバー優先度が `West US 2 = 0` および `East US 2 = 1` であるものとして、リージョンを反転させます。
 
 > [!CAUTION]
 > `failoverPriority=0` に対する `locationName` を変更すると、Azure Cosmos アカウントの手動フェールオーバーがトリガーされます。 他の優先度を変更しても、フェールオーバーはトリガーされません。
@@ -248,10 +251,14 @@ Select-Object $keys
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 
-$failoverPolicies = @(
-    @{ "locationName"="East US"; "failoverPriority"=0 },
-    @{ "locationName"="West US"; "failoverPriority"=1 }
+$failoverRegions = @(
+    @{ "locationName"="East US 2"; "failoverPriority"=0 },
+    @{ "locationName"="West US 2"; "failoverPriority"=1 }
 )
+
+$failoverPolicies = @{
+    "failoverPolicies"= $failoverRegions
+}
 
 Invoke-AzResourceAction -Action failoverPriorityChange `
     -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
