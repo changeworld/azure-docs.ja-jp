@@ -128,6 +128,9 @@
         - name: 開発環境を構成する
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
+        - name: ソフトウェア環境を管理する
+          displayName: 'pip, Conda'
+          href: how-to-use-environments.md
         - name: ログの有効化
           displayName: 'troubleshoot, log, files, tracing'
           href: how-to-enable-logging.md

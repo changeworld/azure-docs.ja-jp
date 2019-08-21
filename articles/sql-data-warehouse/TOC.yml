@@ -273,6 +273,8 @@
       items:
         - name: Gen2 へのアップグレード
           href: upgrade-to-latest-generation.md
+        - name: コンピューティングの管理
+          href: manage-compute-with-azure-functions.md
         - name: ワークロードの監視 - ポータル
           href: sql-data-warehouse-monitor-workload-portal.md
         - name: ワークロードの監視 - DMV

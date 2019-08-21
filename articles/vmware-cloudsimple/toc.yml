@@ -111,15 +111,19 @@
         - name: VMware 仮想マシンをプライベート クラウド用に設定する
           items:
             - name: Azure で VM を作成する
-              href: 'https://docs.azure.cloudsimple.com/azure-create-vm/'
+              href: azure-create-vm.md
+            - name: Azure で VM を管理する
+              href: azure-manage-vm.md
     - name: ハウツー ガイド
       items:
         - name: 環境のセキュリティ保護
           href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
         - name: プライベート クラウドの管理
           items:
+            - name: プライベート クラウドの権限のエスカレート
+              href: escalate-privileges.md
             - name: ワークロードの DNS と DHCP の設定
-              href: 'https://docs.azure.cloudsimple.com/dns-dhcp-setup/'
+              href: dns-dhcp-setup.md
             - name: 移行のための NSX レイヤー 2 VPN
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
         - name: プライベート クラウド ネットワーク
@@ -133,11 +137,11 @@
         - name: VMware プラットフォーム
           items:
             - name: プライベート クラウドのアクセス許可モデルについて
-              href: 'https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/'
+              href: learn-private-cloud-permissions.md
             - name: vCenter の ID ソース
               href: set-vcenter-identity.md
             - name: Azure Application Gateway と VMware VM
-              href: 'https://docs.azure.cloudsimple.com/azure-application-gateway/'
+              href: azure-application-gateway.md
             - name: プライベート クラウドの vCenter サーバーを vRealize Automation エンドポイントとして構成する
               href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
             - name: プライベート クラウドへのワークロード VM の移行
@@ -147,7 +151,7 @@
         - name: VMware のエコシステム
           items:
             - name: ワークロード仮想マシンのバックアップ
-              href: 'https://docs.azure.cloudsimple.com/backup-workloads-veeam/'
+              href: backup-workloads-veeam.md
             - name: VMware Horizon ソリューションのガイド
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: プライベート クラウドの vSAN 暗号化の構成
