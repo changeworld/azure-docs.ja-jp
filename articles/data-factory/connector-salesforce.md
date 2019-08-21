@@ -333,7 +333,7 @@ Salesforce からデータをコピーするとき、次の Salesforce のデー
 | テキスト領域 |String |
 | テキスト領域 (ロング) |String |
 | テキスト領域 (リッチ) |String |
-| テキスト (暗号化) |String |
+| Text (Encrypted) |String |
 | URL |String |
 
 ## <a name="next-steps"></a>次の手順

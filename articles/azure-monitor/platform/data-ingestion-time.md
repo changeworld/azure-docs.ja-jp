@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: cdd1c8348acac37acbe8ad15199f3953bfe95a8e
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: e07a436ee18a216bab569d299e534e729996db19
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370661"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990153"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -90,7 +90,7 @@ Azure Monitor の最優先事項は、顧客データが失われることがな
 ### <a name="ingestion-latency-delays"></a>インジェストの待ち時間
 特定のレコードの待ち時間は、[ingestion_time()](/azure/kusto/query/ingestiontimefunction) 関数の結果を _TimeGenerated_ プロパティと比較することによって測定することができます。 このデータを、さまざまな集計と組み合わせて使用すれば、取り込みの待ち時間の動作を突き止めることができます。 インジェスト時間のパーセンタイルを観察すれば、大量のデータの分析情報が得られます。 
 
-たとえば、次のクエリを実行すると、その日インジェスト時間が最小であったコンピューターを表示できます。 
+たとえば、次のクエリを実行すると、過去 8 時間でインジェスト時間が最も長かったコンピューターを表示できます。 
 
 ``` Kusto
 Heartbeat
@@ -101,7 +101,7 @@ Heartbeat
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
  
-一定の期間にわたる特定のコンピューターのインジェスト時間をドリルダウンしたい場合は、次のクエリを使用します。ここではさらに、データをグラフで視覚化しています。 
+一定の期間にわたる特定のコンピューターのインジェスト時間をドリルダウンする場合は、次のクエリを使用すると、昨日のデータもグラフに視覚化されます。 
 
 ``` Kusto
 Heartbeat 

@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 38a120747734cbe4af8804a3e7596fc11a2c2eb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2149bfb68697129680c45f15c6cce359863fbc59
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306658"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989940"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Azure Storage REST API の使用
 
@@ -79,11 +79,11 @@ REST API リファレンスの [ListContainers](/rest/api/storageservices/List-C
 
 [要求ヘッダー](/rest/api/storageservices/List-Containers2#request-headers) **:** このセクションには、必須および省略可能な要求ヘッダーの一覧が示されています。 必須のヘッダーは、*Authorization* ヘッダー、*x-ms-date* (要求の UTC 時刻を含みます)、*x-ms-version* (使う REST API のバージョンを指定します) の 3 つです。 ヘッダーに *x-ms-client-request-id* を含めるかどうかは自由です。このフィールドには任意の値を設定できます。ログが有効になっていると、この値がストレージ分析ログに書き込まれます。
 
-[要求本文](/rest/api/storageservices/List-Containers2#request-body) **:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+[要求本文](/rest/api/storageservices/List-Containers2#request-body) **:** ListContainers には要求本文はありません。 要求本文は、BLOB をアップロードするときにすべての PUT 操作で使われます。また、SetContainerAccessPolicy では、保存されているアクセス ポリシーの XML リストを送信して適用できます。 保存されているアクセス ポリシーについては、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。
 
 [応答の状態コード](/rest/api/storageservices/List-Containers2#status-code) **:** 知っておく必要があるすべての状態コードについて説明されています。 この例では、HTTP 状態コード 200 は正常です。 HTTP 状態コードの完全な一覧については、「[Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)」(状態コードの定義) をご覧ください。 ストレージ REST API に固有のエラー コードについては、「[REST API の一般的なエラー コード](/rest/api/storageservices/common-rest-api-error-codes)」をご覧ください。
 
-[応答ヘッダー](/rest/api/storageservices/List-Containers2#response-headers) **:** *コンテンツ タイプ*、*x-ms-request-id* (渡した要求 ID)、*x-ms-version* (使われた Blob service のバージョン)、*Date* (UTC、要求が行われた日時) などがあります。
+[応答ヘッダー](/rest/api/storageservices/List-Containers2#response-headers) **:** *コンテンツ タイプ*、*x-ms-request-id* (渡した要求 ID)、*x-ms-version* (使われた Blob service のバージョン)、*Date* (UTC、要求が行われた日時) が含まれます。
 
 [応答本文](/rest/api/storageservices/List-Containers2#response-body):このフィールドは、要求されたデータを提供する XML 構造体です。 この例では、応答はコンテナーのリストとそのプロパティです。
 

@@ -71,7 +71,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="組み込みのアイコン テンプレートを使用した線レイヤー" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>組み込みのアイコン テンプレートを使用した線レイヤー</a>」を参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>Line layer with built-in icon template (組み込みのアイコン テンプレートを使用した線レイヤー)</a>」を参照してください。
 </iframe>
 
 > [!TIP]
@@ -86,7 +86,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="組み込みのアイコン テンプレートを使用して多角形を塗りつぶす" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>組み込みのアイコン テンプレートを使用してポリゴンを塗りつぶす</a>」を参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>Fill polygon with built-in icon template (組み込みのアイコン テンプレートを使用してポリゴンを塗りつぶす)</a>」を参照してください。
 </iframe>
 
 > [!TIP]
@@ -101,7 +101,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="組み込みのアイコン テンプレートを使用した HTML マーカー" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>組み込みのアイコン テンプレートを使用した HTML マーカー</a>」を参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML Marker with built-in icon template (組み込みのアイコン テンプレートを使用した HTML マーカー)</a>」を参照してください。
 </iframe>
 
 ## <a name="create-custom-reusable-templates"></a>再利用可能なカスタム テンプレートを作成する
@@ -128,7 +128,7 @@ SVG 画像テンプレートでは、次のプレースホルダー値がサポ�
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="カスタム アイコン テンプレートを atlas 名前空間に追加する" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>カスタム アイコン テンプレートを atlas 名前空間に追加する</a>」を参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Add custom icon template to atlas namespace (カスタム アイコン テンプレートを atlas 名前空間に追加する)</a>」を参照してください。
 </iframe>
 
 ## <a name="list-of-image-templates"></a>画像テンプレートの一覧
@@ -183,7 +183,7 @@ SVG 画像テンプレートでは、次のプレースホルダー値がサポ�
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="アイコン テンプレートのオプション" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>アイコン テンプレート オプション</a>」を参照してください。
+<a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen「<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>Icon template options (アイコン テンプレート オプション)</a>」を参照してください。
 </iframe>
 
 ## <a name="next-steps"></a>次の手順

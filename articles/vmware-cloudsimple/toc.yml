@@ -117,7 +117,7 @@
     - name: ハウツー ガイド
       items:
         - name: 環境のセキュリティ保護
-          href: 'https://docs.azure.cloudsimple.com/private-cloud-secure/'
+          href: private-cloud-secure.md
         - name: プライベート クラウドの管理
           items:
             - name: プライベート クラウドの権限のエスカレート
@@ -143,7 +143,7 @@
             - name: Azure Application Gateway と VMware VM
               href: azure-application-gateway.md
             - name: プライベート クラウドの vCenter サーバーを vRealize Automation エンドポイントとして構成する
-              href: 'https://docs.azure.cloudsimple.com/configure-server-vra-endpoint/'
+              href: configure-server-vrealize-automation-endpoint.md
             - name: プライベート クラウドへのワークロード VM の移行
               href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
             - name: Azure 上の VMware におけるアプリケーション高可用性の確保

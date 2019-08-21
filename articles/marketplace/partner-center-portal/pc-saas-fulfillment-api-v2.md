@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: a8196370a93a6ce8eed83002397c2f09efbc777f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358582"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016042"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
 
@@ -282,7 +282,7 @@ Response Body:
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
             "endDate": "2019-06-29",
-            "termUnit": "P1M"
+            "termUnit": "P1M" //where P1M: Monthly, P1Y: Yearly 
         },
 }
 ```
@@ -789,6 +789,8 @@ Response body:
 ## <a name="implementing-a-webhook-on-the-saas-service"></a>SaaS サービスでの Webhook の実装
 
 パブリッシャーは、この SaaS サービスでの変更内容についてユーザーに事前に通知するように、Webhook を実装する必要があります。 SaaS サービスは、Webhook 通知のアクションを実行する前に、検証および承認するために API を呼び出すことが期待されます。
+
+セキュリティで保護された通信を確保するために、Microsoft では、呼び出しの一部として、認証ヘッダー内に Azure Active Directory JWT トークンを含めています。 SaaS プロバイダーは、「[Microsoft ID プラットフォーム アクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)」記事で説明されているように JWT トークンを検証して、有効な呼び出しのみが確実に受け入れられるようにすることが推奨されています。
 
 ```json
 {
