@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 079e8677febfe6683d4f0e60a0e7ba6b06ea549d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: a713ed69dc9c35e16b1cc5d9ad9819d53e2e1efe
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835832"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68986164"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB のクエリのパフォーマンスをトラブルシューティングする
 この記事では、Azure Cosmos DB の SQL クエリに関する問題を特定、診断、およびトラブルシューティングする方法について説明します。 Azure Cosmos DB のクエリのパフォーマンスを最適化するには、次のトラブルシューティング手順に従います。 
@@ -23,6 +23,10 @@ ms.locfileid: "67835832"
 
 ## <a name="check-consistency-level"></a>整合性レベルを確認する
 [整合性レベル](consistency-levels.md)は、パフォーマンスと料金に影響する可能性があります。 整合性レベルが特定のシナリオに適していることを確認します。 詳細については、[整合性レベルの選択](consistency-levels-choosing.md)に関する記事をご覧ください。
+
+## <a name="log-sql-query-in-storage-account"></a>Sql クエリをストレージ アカウントに記録する
+[診断ログを使用した Sql API クエリ ログ](logging.md#turn-on-logging-in-the-azure-portal)を使用すると、難読化されたクエリを任意のストレージ アカウントに記録できます。 これにより、診断ログを確認し、より多くの RU を使用するクエリの検索を実行して、アクティビティ ID を使用して QueryRuntimeStatistics で照合することができます。 
+
 
 ## <a name="log-query-metrics"></a>ログ クエリ メトリック
 低速または高コストのクエリをトラブルシューティングするために、`QueryMetrics` を使用します。 

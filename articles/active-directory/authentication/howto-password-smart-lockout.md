@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd03e2b98b1fd1a2a45b5feecc963bcfc7bfe83c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 489ff1824c4bc45ee7ed31e9c96377975a32baa4
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499877"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879240"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -31,7 +31,7 @@ ms.locfileid: "68499877"
 
 AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイでは、[AD FS エクストラネット ロックアウトとエクストラネット スマート ロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)を使用して同様の効果を実現できます。
 
-スマート ロックアウトは、すべての Azure AD 顧客に既定として設定され、常に有効で、セキュリティとユーザビリティを適切な割合で提供します。 スマート ロックアウト設定を組織固有の値にカスタマイズするには、ユーザーに Azure AD Basic 以上のライセンスが必要です。
+スマート ロックアウトは、すべての Azure AD 顧客に既定として設定され、常に有効で、セキュリティとユーザビリティを適切な割合で提供します。 組織固有の値でスマート ロックアウト設定をカスタマイズするには、ユーザーに有料の Azure AD ライセンスが必要です。
 
 スマート ロックアウトを使用しても、正規のユーザーが決してロックアウトされないことは保証されません。スマート ロックアウトによってユーザー アカウントがロックされた場合、マイクロソフトでは可能な限り正規ユーザーをロックアウトしないよう試みます。 ロックアウト サービスでは、悪意のあるアクターが正規のユーザー アカウントへのアクセス権を取得できないよう試みます。  
 
@@ -63,7 +63,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Azure AD スマート ロックアウトの値を管理する
 
-組織の要件によっては、スマート ロックアウトの値をカスタマイズする必要があります。 スマート ロックアウト設定を組織固有の値にカスタマイズするには、ユーザーに Azure AD Basic 以上のライセンスが必要です。
+組織の要件によっては、スマート ロックアウトの値をカスタマイズする必要があります。 組織固有の値でスマート ロックアウト設定をカスタマイズするには、ユーザーに有料の Azure AD ライセンスが必要です。
 
 組織のスマート ロックアウト値を確認または編集するには、次の手順を実行します。
 
