@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 80610168e0d293b65626da71ee349f25e456576b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 93b3c7671a5beb4b3a451fe0efd13b9f48e00436
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774567"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941818"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs での共有イメージ ギャラリーの構成
 DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows/shared-image-galleries.md)機能がサポートされるようになりました。 ラボ ユーザーは、ラボ リソースの作成中に共有の場所からイメージにアクセスできます。 また、カスタム マネージド VM イメージに関連する構造および組織を構築できます。 共有イメージ ギャラリー機能では、次がサポートされています。
@@ -36,7 +36,7 @@ DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows
 ## <a name="considerations"></a>考慮事項
 - ラボにアタッチできる共有イメージ ギャラリーは一度に 1 つだけです。 別のギャラリーをアタッチする場合は、既存のものをデタッチして別のものをアタッチする必要があります。 
 - DevTest Labs は現在、ラボを介したギャラリーへのイメージのアップロードをサポートしていません。 
-- 共有イメージ ギャラリーのイメージを使用して仮想マシンを作成している間、DevTest Labs は常に、このイメージの最も新しく公開されたバージョンを使用します。
+- 共有イメージ ギャラリーのイメージを使用して仮想マシンを作成している間、DevTest Labs は常に、このイメージの最も新しく公開されたバージョンを使用します。 ただし、イメージに複数のバージョンがある場合、ユーザーは、仮想マシンの作成時に [詳細設定] タブに移動して、以前のバージョンからコンピューターを作成することもできます。  
 - ラボが存在するリージョンに共有イメージ ギャラリーがイメージをレプリケートすることを確実にするために、DevTest Labs は自動的に最善の試みをしますが、それが常に可能とは限りません。 これらのイメージから VM を作成するときにユーザーが問題に遭遇しないよう、イメージがラボのリージョンにレプリケート済みであることを確認してください。
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用
@@ -113,4 +113,4 @@ GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 
 ## <a name="next-steps"></a>次の手順
-アタッチされた共有イメージ ギャラリーのイメージを使用した VM の作成に関する記事 ([ギャラリーの共有イメージを使用して VM を作成する](add-vm-use-shared-image.md)方法に関するページ) を参照してください。
+アタッチされている共有イメージ ギャラリーのイメージを使用して VM を作成する方法については、次の記事を参照してください。[ギャラリーから共有イメージを使用して VM を作成する](add-vm-use-shared-image.md)

@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 376620459a0ab2f0f170b0743c0ab51a51bca9c4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2f6be256801983924cc794d6c8b8fa31e39959e1
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698947"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967850"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の価格レベル
 
@@ -107,6 +107,9 @@ Basic レベルでは、IOPS 保証は提供されません。 汎用および�
 ## <a name="scale-resources"></a>リソースのスケール
 
 サーバーの作成後に、仮想コア数、ハードウェアの世代、価格レベル (Basic への変更、および Basic からの変更を除く)、ストレージ量、およびバックアップのリテンション期間を個別に変更できます。 バックアップ ストレージの種類は、サーバーの作成後に変更することはできません。 仮想コアの数は増やしたり減らしたりできます。 バックアップのリテンション期間は、7 日から 35 日の間でスケールアップまたはスケールダウンできます。 ストレージ サイズは増やすことのみ可能です。 ポータルまたは Azure CLI を使用して、リソースのスケーリングを実行できます。 Azure CLI を使用したスケーリングの例については、「[Azure CLI での Azure Database for PostgreSQL サーバーの監視とスケーリング](scripts/sample-scale-server-up-or-down.md)」を参照してください。
+
+> [!NOTE] 
+> ストレージ サイズは増やすことのみ可能です。 増加後に、より小さなストレージ サイズに戻すことはできません。
 
 仮想コア数、ハードウェアの世代、または価格レベルを変更すると、新しいコンピューティング割り当てを使用して元のサーバーのコピーが作成されます。 新しいサーバーが実行されると、接続が新しいサーバーに切り替わります。 システムが新しいサーバーに切り替わるほんの短時間、新しい接続を確立できず、コミットされていないすべてのトランザクションがロールバックされます。 この時間の長さは変動しますが、ほとんどの場合 1 分未満です。
 

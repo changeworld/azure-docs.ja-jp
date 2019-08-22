@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: bed95c070649785a701f9d08a98faf29c8ee1413
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990591"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900427"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>.NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する (プレビュー)
 
@@ -44,7 +44,7 @@ Azure ID クライアント ライブラリ経由で Azure AD の資格情報を
 
 Azure CLI を使用してサービス プリンシパルを作成し、RBAC ロールを割り当てるには、[az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを呼び出します。 新しいサービス プリンシパルに割り当てる Azure Storage データ アクセス ロールを指定します。 ロールには、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションが含まれている必要があります。 Azure Storage 用に提供されている組み込みロールの詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
-さらに、ロール割り当て用のスコープを指定します。 サービス プリンシパルでは、ストレージ アカウント レベルで実行される操作であるユーザー委任キーが作成されるため、ロールの割り当てには、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルでスコープを設定する必要があります。 ユーザー委任 SAS を作成するための RBAC アクセス許可の詳細については、「[ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)」の「**RBAC によるアクセス許可の割り当て**」セクションを参照してください。
+さらに、ロール割り当て用のスコープを指定します。 サービス プリンシパルでは、ストレージ アカウント レベルで実行される操作であるユーザー委任キーが作成されるため、ロールの割り当てには、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルでスコープを設定する必要があります。 ユーザー委任 SAS を作成するための RBAC アクセス許可の詳細については、「[ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-user-delegation-sas)」の「**RBAC によるアクセス許可の割り当て**」セクションを参照してください。
 
 サービス プリンシパルにロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者にロールの割り当ての実行を依頼しなければならない可能性があります。
 
@@ -276,4 +276,4 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 ## <a name="see-also"></a>関連項目
 
 - [ユーザー委任キー取得操作](/rest/api/storageservices/get-user-delegation-key)
-- [ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
+- [ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-user-delegation-sas)

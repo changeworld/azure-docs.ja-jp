@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: c41381dd3e53c80e74da3dc0d0a08e1ac83daec6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 415a25dbe63b8942509827cd8434cc0f50fde87a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827634"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954810"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
@@ -27,7 +27,7 @@ ms.locfileid: "68827634"
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>コンテナーで保護できるデータソース/項目の数はいくつですか。 
 すべてのワークロード (IaaS VM、SQL、AFS など) にわたる最大 2000 のデータソース/項目をコンテナーで保護することができます。<br>  
-たとえば、既に 500 の VM と 400 の Azure Files 共有をコンテナーで保護している場合、そこで保護できる SQL データベースは最大 1100 に限られます。 
+たとえば、既に 500 個の VM と 400 個の Azure Files 共有がコンテナーで保護されている場合、そこで保護できる SQL データベースの数は最大 1100 個だけです。 
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>コンテナーごとに作成できるポリシーはいくつですか。 
 作成できるポリシーはコンテナーあたり最大 200 に限られます。
@@ -54,7 +54,7 @@ ms.locfileid: "68827634"
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Azure VM のバックアップに使用される Azure Backup エージェントについてよく寄せられる質問は、どこで確認できますか。
 
 - Azure VM 上で実行されるエージェントについては、この [FAQ](backup-azure-vm-backup-faq.md) をご覧ください。
-- Azure ファイル フォルダーのバックアップに使用されるエージェントについては、この [FAQ](backup-azure-file-folder-backup-faq.md) をご覧ください。
+- Azure ファイル フォルダーのバックアップに使用されるエージェントについては、こちらの [FAQ](backup-azure-file-folder-backup-faq.md) をご覧ください。
 
 
 ## <a name="general-backup"></a>一般的なバックアップ

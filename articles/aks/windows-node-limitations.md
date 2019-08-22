@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 0d79b4d76249bd4a79f8adbd5df0cfa1ae133760
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 501aeb60eba1d94b4c5882a7c6cbfa8d0359e44d
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613731"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033909"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -21,7 +21,7 @@ Azure Kubernetes Service (AKS) では、Windows Server をゲスト OS として
 この記事では、AKS 内の Windows Server ノードの制限事項および OS の概念について説明します。 Windows Server 用のノード プールは現在プレビューの段階です。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
+> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマーサポートによってベスト エフォート方式で部分的に対象となります。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
 >
 > * [AKS のサポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: b3ebd8b6f65ec86d338932579f5d4ccec6a90be3
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: e92c2e58122556f90b25f070fff9e6e6616b0257
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704732"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976843"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -31,8 +31,13 @@ ms.locfileid: "68704732"
 |**クイックスタート**|[クイックスタート](create-table-dotnet.md)|
 |**チュートリアル**|[チュートリアル](tutorial-develop-table-dotnet.md)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
+|**問題の報告**|[問題を報告する](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
+* バグの修正
+* RestExecutorConfiguration に対して HttpClientTimeout オプションが提供されます。
 
 ### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4-preview
 * バグの修正
@@ -71,6 +76,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.0.4](#1.0.4) |2019 年 8 月 12 日 |--- |
 | [1.0.4-preview](#1.0.4-preview) |2019 年 7 月 26 日 |--- |
 | 1.0.2-preview |2019 年 5 月 2 日 |--- |
 | [1.0.1](#1.0.1) |2019 年 4 月 19 日 |--- |
@@ -86,4 +92,4 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>関連項目
-Azure Cosmos DB Table API の詳細については、「[Introduction to Azure Cosmos DB Table API (Azure Cosmos DB Table API の概要)](table-introduction.md)」を参照してください。 
+Azure Cosmos DB Table API の詳細については、「[Introduction to Azure Cosmos DB Table API (Azure Cosmos DB Table API の概要)](table-introduction.md)」を参照してください。

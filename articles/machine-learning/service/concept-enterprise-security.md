@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
-ms.openlocfilehash: f0fb6f0d2b2579679ee8a6ec43b3241377701d48
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/07/2019
+ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780900"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946401"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Machine Learning service のエンタープライズ セキュリティ
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) が同じように構成されている場合�
 
 * クライアントは、Azure AD にログインし、Azure Resource Manager トークンを取得します。  ユーザーとサービス プリンシパルは完全にサポートされています。
 * クライアントは、Azure Resource Manager とすべての Azure Machine Learning service にトークンを示します
-* Azure Machine Learning service では、ユーザーのコンピューティングに Azure Machine Learning トークンが提供されます。 たとえば、Machine Learning コンピューティングなどです。 Azure Machine Learning トークンは、実行が完了した後で Azure Machine Learning service にコールバックする (ワークスペースにスコープを制限する) ために、ユーザー コンピューティングによって使用されます。
+* Azure Machine Learning service では、ユーザーのコンピューティングに Azure Machine Learning トークンが提供されます。 たとえば、Machine Learning コンピューティングなどです。 このトークンは、実行が完了した後で Azure Machine Learning service にコールバックする (ワークスペースにスコープを制限する) ために、ユーザー コンピューティングによって使用されます。
 
 ![Azure Machine Learning service での認証のしくみを示すスクリーンショット](./media/enterprise-readiness/authentication.png)
 
@@ -159,7 +159,7 @@ Azure Machine Learning service では、Azure Machine Learning service によっ
 
 #### <a name="machine-learning-compute"></a>Machine Learning コンピューティング
 
-各コンピューティング ノードの OS ディスクは、Azure Storage に格納され、Azure Machine Learning service ストレージ アカウント内の Microsoft によって管理されたキーを使用して暗号化されます。 このコンピューティングは一時的なもので、通常、キューに実行がないときはクラスターはスケールダウンされます。 基になる仮想マシンはプロビジョニング解除され、OS ディスクは削除されます。 Azure Disk Encryption は、OS ディスクに対してはサポートされません。
+各コンピューティング ノードの OS ディスクは、Azure Storage に格納され、Azure Machine Learning service ストレージ アカウント内の Microsoft によって管理されたキーを使用して暗号化されます。 このコンピューティング先は一時的なもので、通常、キューに実行がないときはクラスターはスケールダウンされます。 基になる仮想マシンはプロビジョニング解除され、OS ディスクは削除されます。 Azure Disk Encryption は、OS ディスクに対してはサポートされません。
 各仮想マシンにも、OS 操作用にローカルな一時ディスクがあります。 必要に応じて、トレーニング データのステージング用にこのディスクも使用できます。 このディスクは暗号化されません。
 Azure での保存時の暗号化のしくみについて詳しくは、「[Azure Data Encryption-at-Rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)」をご覧ください。
 
@@ -176,18 +176,35 @@ Azure Machine Learning service では、さまざまな種類の資格情報を�
 * Azure コンテナー リポジトリ インスタンスへのパスワード
 * データ ストアへの接続文字列。
 
-HDI HDInsight や VM などのコンピューティング先に対する SSH パスワードとキーは、Microsoft サブスクリプションに関連付けられた別の Key Vault に格納されます。 Azure Machine Learning service では、実験の実行を目的として VM/HDInsight に接続するために、独自の SSH キーを生成、認可、格納する代わりに、ユーザーによって提供されたパスワードまたはキーを格納します。
+HDI HDInsight や VM などのコンピューティング先に対する SSH パスワードとキーは、Microsoft サブスクリプションに関連付けられた別の Key Vault に格納されます。 Azure Machine Learning service では、実験の実行を目的として VM/HDInsight に接続するために、独自の SSH キーを生成、認可、格納する代わりに、ユーザーによって提供されたパスワードまたはキーは格納されません。
 各ワークスペースには、Key Vault 内のすべてのキー、シークレット、証明書へのアクセス権を持つ、システムによって割り当てられた (ワークスペースと同じ名前を持つ) マネージド ID が関連付けられています。
 
 ## <a name="monitoring"></a>監視
 
-ユーザーは、ワークスペース下のアクティビティ ログを見て、ワークスペースで実行されたさまざまな操作を確認し、操作名、イベント開始者、タイムスタンプなどの基本的な情報を取得できます。
+### <a name="metrics"></a>メトリック
+
+Azure Monitor メトリックは、Azure Machine Learning service ワークスペースのメトリックを表示および監視するために使用できます。 [Azure portal](https://portal.azure.com) からワークスペースを選択し、 __[メトリック]__ リンクを使用します。
+
+![ワークスペースのメトリックの例を示すスクリーンショット](./media/enterprise-readiness/workspace-metrics.png)
+
+メトリックには、実行、デプロイ、および登録に関する情報が含まれます。
+
+詳しくは、「[Metrics in Azure Monitor (Azure Monitor のメトリック)](/azure/azure-monitor/platform/data-platform-metrics)」をご覧ください。
+
+### <a name="activity-log"></a>アクティビティ ログ
+
+ワークスペース下のアクティビティ ログを見て、ワークスペースで実行されたさまざまな操作を確認し、操作名、イベント開始者、タイムスタンプなどの基本的な情報を取得できます。
 
 次のスクリーンショットでは、ワークスペースのアクティビティ ログを示します。
 
 ![ワークスペース下のアクティビティ ログを示すスクリーンショット](./media/enterprise-readiness/workspace-activity-log.png)
 
-スコアリング要求の詳細は、ワークスペース作成時にユーザーのサブスクリプションに作成される AppInsights に格納されます。 これには、HTTPMethod、UserAgent、ComputeType、RequestUrl、StatusCode、RequestId、Duration などのフィールドが含まれます。
+スコアリング要求の詳細は、ワークスペース作成時にユーザーのサブスクリプションに作成される Application Insight に格納されます。 ログに記録される情報には、HTTPMethod、UserAgent、ComputeType、RequestUrl、StatusCode、RequestId、Duration などのフィールドが含まれます。
+
+> [!IMPORTANT]
+> Azure Machine Learning ワークスペース内の一部の操作では、情報はアクティビティ ログに記録されません。 たとえば、トレーニングの開始やモデルの登録などです。
+>
+> これらの操作の一部はワークスペースの __[アクティビティ]__ 領域に表示されますが、アクティビティを開始したユーザーは示されません。
 
 ## <a name="data-flow-diagram"></a>データ フロー図
 
@@ -208,7 +225,7 @@ HDI HDInsight や VM などのコンピューティング先に対する SSH パ
 ### <a name="save-source-code-training-scripts"></a>ソース コードを保存する (トレーニング スクリプト)
 
 次の図は、コード スナップショットのワークフローを示したものです。
-Azure Machine Learning service ワークスペースに関連付けられているディレクトリ (実験) には、ソース コード (トレーニング スクリプト) が含まれます。  これらは、お客様のローカル コンピューターとクラウド (お客様のサブスクリプションの Azure Blob Storage) に格納されます。 これらのコード スナップショットは、履歴監査の実行または検査に使用されます。
+Azure Machine Learning service ワークスペースに関連付けられているディレクトリ (実験) には、ソース コード (トレーニング スクリプト) が含まれます。  これらのスクリプトは、お客様のローカル コンピューターとクラウド (お客様のサブスクリプションの Azure Blob Storage) に格納されます。 このコード スナップショットは、履歴監査の実行または検査に使用されます。
 
 ![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/code-snapshot.png)
 
@@ -221,12 +238,12 @@ Azure Machine Learning service ワークスペースに関連付けられてい�
 * マネージド コンピューティング (例: Machine Learning コンピューティング) またはアンマネージド コンピューティング (例: VM) を選択して、トレーニング ジョブを実行できます。 両方のシナリオのデータ フローについては下で説明します。
 * (VM/HDInsight – Microsoft サブスクリプションの Key Vault 内の SSH 資格情報を使用してアクセスされる) Azure Machine Learning service はコンピューティング先で管理コードを実行し、次のことを行います。
 
-   1. 環境を準備します (注: Docker も VM およびローカルに対するオプションです。 Docker コンテナーで実験を実行する方法については、以下の Machine Learning コンピューティングに対する手順を参照してください)。
+   1. 環境を準備します (Docker も VM と ローカルに対するオプションです。 Docker コンテナーで実験を実行する方法については、以下の Machine Learning コンピューティングに対する手順を参照してください)。
    1. コードをダウンロードします。
    1. 環境変数と構成を設定します。
    1. ユーザー スクリプトを実行します (上記のコード スナップショット)。
 
-* (Machine Learning コンピューティング – ワークスペースのマネージド ID を使用してアクセスされる) Machine Learning コンピューティングはマネージド コンピューティングであり、Microsoft によって管理されるので、結果として Microsoft サブスクリプションで実行されることに注意してください。
+* (Machine Learning コンピューティング – ワークスペースのマネージド ID を使用してアクセスされる) Machine Learning コンピューティングはマネージド コンピューティングであり、Microsoft によって管理されるので、結果として Microsoft サブスクリプションで実行されます。
 
    1. 必要な場合は、リモートの Docker の構築が開始されます。
    1. ユーザーの Azure FileShare に管理コードが書き込まれます。
@@ -247,7 +264,7 @@ Azure Machine Learning service ワークスペースに関連付けられてい�
 * ユーザーは、モデル、スコア ファイル、その他のモデルの依存関係を使用して、イメージを作成します
 * Docker イメージが作成されて、ACR に格納されます
 * 上で作成されたイメージを使用して、Web サービスがコンピューティング先 (ACI/AKS) にデプロイされます
-* スコアリング要求の詳細は、ユーザーのサブスクリプション内の AppInsights に格納されます
+* スコアリング要求の詳細は、ユーザーのサブスクリプション内の Application Insight に格納されます
 * テレメトリも Microsoft/Azure サブスクリプションにプッシュされます
 
 ![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/inferencing.png)

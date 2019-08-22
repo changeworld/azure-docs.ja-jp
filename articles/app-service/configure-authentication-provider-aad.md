@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a77a41500a9c22aa25d3de396e73a5b2e4c0c419
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60851377"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033898"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Azure Active Directory サインインを使用するように App Service アプリを構成する
 
@@ -41,6 +41,10 @@ ms.locfileid: "60851377"
    アプリの登録をクリックして選択し、 **[OK]** をクリックします。 Azure Active Directory 設定ページで **[OK]** をクリックします。
    App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。
 5. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。 この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
+
+> [!CAUTION]
+> この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホームページを必要とするアプリには適切でない場合があります。 このようなアプリケーションの場合は、[ここ](overview-authentication-authorization.md#authentication-flow)で説明しているように、アプリが手動で自身のログインを開始する、 **[匿名要求を許可する (操作不要)]** が望ましいと考えられます。
+
 6. **[Save]** をクリックします。
 
 ## <a name="advanced"> </a>詳細設定を構成する

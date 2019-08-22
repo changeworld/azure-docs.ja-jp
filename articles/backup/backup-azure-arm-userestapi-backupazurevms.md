@@ -23,7 +23,7 @@ ms.locfileid: "68954978"
 
 新しいコンテナーやポリシーを作成する場合は、[コンテナーの作成](backup-azure-arm-userestapi-createorupdatevault.md)と[ポリシーの作成する](backup-azure-arm-userestapi-createorupdatepolicy.md)に関する REST API のチュートリアルを参照してください。
 
-既定のポリシー (名前は "DefaultPolicy") を使用して、リソース グループ "testVaultRG" 内に存在する Recovery Services コンテナー "testVault" に対して、"testRG" リソース グループの "testVM" という VM を保護すると仮定します。
+既定のポリシー (名前は "DefaultPolicy") を使用し、リソース グループ "testVaultRG" 内に存在する Recovery Services コンテナー "testVault" に対して、リソース グループ "testRG" の "testVM" という VM を保護すると仮定します。
 
 ## <a name="configure-backup-for-an-unprotected-azure-vm-using-rest-api"></a>REST API を使用して保護されていない Azure VM のバックアップを構成する
 
@@ -47,7 +47,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |204 No Content     |         |  OK で、返されたコンテンツはありません      |
 |202 Accepted     |         |     承認済み    |
@@ -110,7 +110,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ##### <a name="responses-1"></a>応答
 
-|名前  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -186,7 +186,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 保護された項目を作成する場合、要求本文のコンポーネントは次のようになります。
 
-|名前  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem リソースのプロパティ         |
 
@@ -214,7 +214,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 Accepted     |         |     承認済み    |
@@ -300,7 +300,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 オンデマンド バックアップをトリガーする場合、要求本文のコンポーネントは次のようになります。
 
-|名前  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource プロパティ         |
 
@@ -325,7 +325,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
@@ -445,7 +445,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、次にその操作が完了したときは 204 (NoContent)。
 
-|名前  |Type  |説明  |
+|EnableAdfsAuthentication  |Type  |説明  |
 |---------|---------|---------|
 |204 NoContent     |         |  NoContent       |
 |202 Accepted     |         |     承認済み    |

@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5ce8abd08f82a2a8b69cc996bfd8f7f060bb8c23
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8a7268ebae80df5a0004e824641e24b979b9c79f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205047"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637710"
 ---
 # <a name="app-service-overview"></a>App Service の概要
 
@@ -36,7 +36,7 @@ App Service の主な機能として、次のようなものがあります。
 
 * **複数の言語とフレームワーク** - App Service では、ASP.NET、ASP.NET Core、Java、Ruby、Node.js、PHP、および Python が最高レベルでサポートされています。 また、[PowerShell などのスクリプトや実行可能ファイル](webjobs-create.md)をバックグラウンド サービスとして実行することもできます。
 * **DevOps の最適化** - [継続的インテグレーションと継続的デプロイ](deploy-continuous-deployment.md)を、Azure DevOps、GitHub、BitBucket、Docker Hub、または Azure Container Registry で設定できます。 [テスト環境やステージング環境](deploy-staging-slots.md)を介して更新を反映できます。 App Service でのアプリの管理には、[Azure PowerShell](/powershell/azureps-cmdlets-docs) または[クロスプラットフォーム コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用します。
-* **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](web-sites-scale.md)または[スケールアウト](../monitoring-and-diagnostics/insights-how-to-scale.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
+* **高可用性を備えたグローバルなスケール** - 手動または自動で[スケールアップ](manage-scale-up.md)または[スケールアウト](../monitoring-and-diagnostics/insights-how-to-scale.md)を実行できます。 Microsoft のグローバルなデータセンター インフラストラクチャのどこででもアプリをホストでき、App Service の [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) によって高可用性が保証されます。
 * **SaaS プラットフォームおよびオンプレミス データへの接続** - エンタープライズ システム (SAP など)、SaaS サービス (Salesforce など)、インターネット サービス (Facebook など) 向けに用意された 50 を超える[コネクタ](../connectors/apis-list.md)から選択できます。 また、[ハイブリッド接続](app-service-hybrid-connections.md)と [Azure Virtual Networks](web-sites-integrate-with-vnet.md) を利用して、オンプレミスのデータにアクセスできます。
 * **セキュリティとコンプライアンス** - App Service は [ISO、SOC、および PCI に準拠](https://www.microsoft.com/en-us/trustcenter)しています。 [Azure Active Directory](configure-authentication-provider-aad.md) またはソーシャル ログイン ([Google](configure-authentication-provider-google.md)、[Facebook](configure-authentication-provider-facebook.md)、[Twitter](configure-authentication-provider-twitter.md)、および[Microsoft](configure-authentication-provider-microsoft.md)) でユーザーを認証します。 [IP アドレス制限](app-service-ip-restrictions.md)を作成し、[サービス ID を管理](overview-managed-identity.md)します。
 * **アプリケーション テンプレート** - WordPress、Joomla、Drupal など、[Azure Marketplace](https://azure.microsoft.com/marketplace/) にある詳細な一覧からアプリケーション テンプレートを選択します。

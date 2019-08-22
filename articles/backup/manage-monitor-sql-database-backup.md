@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7cd916c8e52b40dee3ce2d63d43dc88f09001b32
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827562"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019032"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -92,9 +92,9 @@ Azure Backup では、 **[バックアップ ジョブ]** ポータルに、手�
 
 > [!NOTE]
 >
-データ削除オプションの詳細については、次の FAQ を参照してください。
-* [自動保護されたインスタンスからデータベースを削除した場合、バックアップはどうなりますか?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
-* [自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>データ削除オプションの詳細については、以下の FAQ を参照してください。
+>* [自動保護されたインスタンスからデータベースを削除した場合、バックアップはどうなりますか?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>* [自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
 
@@ -145,7 +145,7 @@ SQL Database の保護を再開するには:
 
 VM のワークロード拡張が何らかの理由で影響を受けることがあります。 そのような場合、VM 上でトリガーされるすべての操作が失敗するようになります。 そこで、場合によっては、VM で拡張を再登録する必要があります。 **再登録**操作によって、操作を続行させるために、VM にワークロード バックアップ拡張が再インストールされます。  <br>
 
-このオプションは慎重に使用することをお勧めします。正常な拡張の VM 上でこの操作がトリガーされると、拡張が再起動します。 その結果、進行中のジョブがすべて失敗することがあります。 再登録操作をトリガーする前に、[こちらの兆候](backup-sql-server-azure-troubleshoot.md#re-registration-failures)がないか確認してください。
+このオプションは慎重に使用する必要があります。正常な拡張の VM 上でこの操作がトリガーされると、拡張が再起動します。 その結果、進行中のジョブがすべて失敗することがあります。 再登録操作をトリガーする前に、[こちらの兆候](backup-sql-server-azure-troubleshoot.md#re-registration-failures)がないか確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

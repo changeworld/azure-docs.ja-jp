@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 07/23/2019
-ms.openlocfilehash: 1d2a0c9e1531ace16335ea57acaccedfe2c1a3c8
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 7ef19db472b30d82f14a5dd650cb8f4cb1f3ed3a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815899"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990071"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-train-and-deploy-your-first-classification-model-preview"></a>チュートリアル:自動化された機械学習を使用して最初の分類モデルのトレーニングとデプロイを行う (プレビュー)
 
@@ -27,7 +27,7 @@ ms.locfileid: "68815899"
 
 > [!div class="checklist"]
 > * Azure Machine Learning service ワークスペースを構成する。
-> * 実験を作成する。
+> * 実験を作成します。
 > * 分類モデルを自動トレーニングする。
 > * トレーニングの実行の詳細を表示する。
 > * モデルをデプロイします。
@@ -95,7 +95,7 @@ ms.locfileid: "68815899"
     コンカレンシー| 同時実行反復処理の最大数に **5** を選択します。
 
    >[!NOTE]
-   > この実験では、メトリックまたは最大イテレーションのしきい値は設定しません。 また、アルゴリズムのテストをブロックしません。
+   > この実験では、メトリックまたはイテレーションあたりの最大コア数のしきい値は設定しません。 また、アルゴリズムのテストをブロックしません。
 
 1. **[開始]** を選択して、実験を実行します。
 

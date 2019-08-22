@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: bfe7f975539c76c1d369d111729820f4d0ada470
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775080"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966813"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Azure Machine Learning service で Keras 分類モデルをトレーニングして登録する
 
@@ -39,8 +39,8 @@ Keras モデルを最初から開発しているか、または既存のモデ�
 
  - 独自の Jupyter Notebook サーバー
 
-     - [Azure Machine Learning SDK for Python をインストールする](setup-create-workspace.md#sdk)
-    - [ワークスペース構成ファイルを作成する](setup-create-workspace.md#write-a-configuration-file)
+    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
     - [サンプル スクリプト ファイル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras) `mnist-keras.py` および `utils.py` をダウンロードする
 
     このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb)は、GitHub サンプル ページにもあります。 このノートブックには、インテリジェントなハイパーパラメーター調整、モデル デプロイ、およびノートブックのウィジェットを示す展開済みセクションが含まれています。
@@ -207,3 +207,7 @@ for f in run.get_file_names():
 
 > [!div class="nextstepaction"]
 > [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)
+* [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
+* [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
+* [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
+* [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

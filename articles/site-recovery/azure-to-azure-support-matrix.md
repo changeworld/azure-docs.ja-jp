@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: d0e24d7621218ccac23842072a5f08be94c80d9d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 92bd53fd0426f896eff8dc63b690167db3ee700b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840589"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68884116"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>リージョン間の Azure VM のレプリケートに関するサポート マトリックス
 
@@ -197,7 +197,7 @@ Standard SSD | サポートされています |
 クールおよびホット ストレージ | サポートされていません | VM ディスクは、クールおよびホット ストレージではサポートされません
 記憶域スペース | サポートされています |
 保存時の暗号化 (SSE) | サポートされています | SSE はストレージ アカウントでの既定の設定です。   
-Windows OS 用 Azure Disk Encryption (ADE) | サポートされています |
+Windows OS 用 Azure Disk Encryption (ADE) | マネージド ディスクを使用する VM の場合にサポートされます。 アンマネージド ディスクを使用する VM はサポートされていません。 |
 Linux OS 用 Azure Disk Encryption (ADE) | サポートされていません |
 ホット アド | サポートされています | マネージド ディスクを使用する VM では、レプリケートされた Azure VM に追加するデータ ディスクのレプリケーションの有効化がサポートされています。
 ディスクのホット リムーブ | サポートされていません | VM 上でデータ ディスクを削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。

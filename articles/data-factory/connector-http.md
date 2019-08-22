@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 8d6cc131c0c2baf7cc0a6600946870615d99e030
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a6fa08596f5778b2c188fe3402801cf487b32ae4
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839809"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966982"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP エンドポイントからデータをコピーする
 
@@ -46,6 +46,10 @@ HTTP ソースから、サポートされている任意のシンク データ �
 > [!TIP]
 > Data Factory で HTTP コネクタを構成する前に、データ取得のために HTTP 要求をテストするには、ヘッダーおよび本文の要件に関する API 仕様を確認してください。 Postman や Web ブラウザーのようなツールを使用して検証することができます。
 
+## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 ## <a name="get-started"></a>作業開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -62,7 +66,7 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 | url | Web サーバーへのベース URL | はい |
 | enableServerCertificateValidation | HTTP エンドポイントに接続するときに、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーが自己署名証明書を使用している場合は、このプロパティを **false** に設定します。 | いいえ<br /> (既定値は **true** です)。 |
 | authenticationType | 認証の種類を指定します。 使用できる値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> このような認証の種類のその他のプロパティと JSON サンプルについては、この表の後のセクションを参照してください。 | はい |
-| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>基本、ダイジェスト、または Windows 認証の使用
 

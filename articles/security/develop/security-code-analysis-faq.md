@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1fc5e83c2c46a7da2a4b56879a2d596405fd8bee
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 8038b7bd60ac771c798a1a8645022b0bf9e142a9
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718178"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934849"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 ご不明な点がある場合は、 詳細を以下の FAQ でご確認ください。
@@ -137,12 +137,12 @@ BinSkim など、ビルド後の成果物を分析するその他のツールで
 
 #### <a name="what-are-recommended-secrets-management-guidelines"></a>推奨されるシークレット管理のガイドラインはどのようなものですか? 
 ハード コーディングされたシークレットを早期に発見してリスクを軽減することは有益ですが、シークレットのチェックインを完全に防止できればさらに良いでしょう。 こうした観点から、Microsoft では、Visual Studio 向けの [Microsoft DevLabs 拡張機能](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio)の一部として、CredScan コード アナライザーをリリースしています。 早期プレビュー段階ではありますが、開発者はこのツールを使用すると、コード内のシークレット候補をインラインで検出し、これらの問題をリアルタイムで修復する機会を得られます。 詳細については、クラウドでのシークレットの安全な管理方法に関する[こちら](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)のブログを参照してください。 その他、シークレットの管理や、アプリケーション内から安全な方法で機密情報にアクセスするのに役立つリソースをいくつか以下に示します。 
- - [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)
- - [Azure Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+ - [Azure Key Vault](../../key-vault/index.yml)
+ - [Azure Active Directory](../../sql-database/sql-database-aad-authentication.md)
  - [Azure AD マネージド サービス ID](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
- - [Azure リソースの管理対象サービス ID (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
- - [Azure マネージド サービス ID](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
- - [AppAuthentication ライブラリ](https://docs.microsoft.com/azure/key-vault/service-to-service-authentication)
+ - [Azure リソースの管理対象サービス ID (MSI)](../../active-directory/managed-identities-azure-resources/overview.md)
+ - [Azure マネージド サービス ID](../../app-service/overview-managed-identity.md)
+ - [AppAuthentication ライブラリ](../../key-vault/service-to-service-authentication.md)
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>カスタムの検索ツールを作成することはできますか?
 
@@ -153,7 +153,7 @@ Credential Scanner では、通常は **buildsearchers.xml** ファイルで定�
 - **Name** – Credential Scanner の出力ファイルで使用される、検索ツールのわかりやすい名前。 検索ツールの名前にはキャメル ケースの名前付け規則を使うことをお勧めします。 
 - **RuleId** – 不変的で不明瞭な検索ツールの ID。 
     - Credential Scanner の既定の検索ツールには、CSCAN0010、CSCAN0020、CSCAN0030 といったぐあいに RuleId が割り当てられています。最後の桁は、検索ツールについて正規表現でグループ化またはグループ分けする場合に備えて予約されています。
-    - カスタマイズされた検索ツールの RuleId には、CSCAN-{Namespace}0010、CSCAN-{Namespace}0020、CSCAN-{Namespace}0030 といった形式で、独自の名前空間を設定する必要があります。
+    - 独自の検索ツールの RuleId には次の形式で独自の名前空間を設定する必要があります。CSCAN-{Namespace}0010、CSCAN-{Namespace}0020、CSCAN-{Namespace}0030 などです。
     - 検索ツールの完全修飾名は、RuleId と検索ツール名を組み合わせたものになります。 例: CSCAN0010.KeyStoreFiles、CSCAN0020.Base64EncodedCertificate など
 - **ResourceMatchPattern** – 検索ツールと照合するファイル拡張子の正規表現
 - **ContentSearchPatterns** – 照合する正規表現文を含む文字列の配列。 検索パターンを定義しない場合、リソースの照合パターンに一致するすべてのファイルが返されます。

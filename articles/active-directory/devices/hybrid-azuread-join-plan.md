@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49f8d0e418f43648665b95f5bf1f672e9f9dae28
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: cad2568702909274030d3c7c6469a7e4cbf670c4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779453"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989258"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -101,7 +101,7 @@ Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azur
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>ID インフラストラクチャに基づいてシナリオを選択する
 
-ハイブリッド Azure AD 参加は、マネージド環境とフェデレーション環境の両方で動作します。  
+Hybrid Azure AD 参加は、UPN がルーティング可能かどうかに応じて、マネージド環境とフェデレーション環境の両方で動作します。 サポートされるシナリオについては、ページ下部の表を参照してください。  
 
 ### <a name="managed-environment"></a>マネージド環境
 

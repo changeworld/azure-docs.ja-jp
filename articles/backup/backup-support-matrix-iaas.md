@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dacurwin
-ms.openlocfilehash: 369be73e2884594171419a66b94db64184582e58
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9b0cbe8126a01a64e35b2fcfeca400aed5aef0cc
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813814"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952027"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 [Azure Backup サービス](backup-overview.md)を使用すると、オンプレミスのコンピューターとワークロード、および Azure 仮想マシン (VM) をバックアップできます。 この記事では、Azure Backup を使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
@@ -157,8 +157,8 @@ Azure に移行済みの VM をバックアップする  | サポートされて
 
 **コンポーネント** | **サポート**
 --- | ---
-Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを備えた VM をバックアップします。 <br/><br/> 最大 4 TB のディスク サイズがサポートされます。
-データ ディスク サイズ | ディスクごとに最大で 4,095 GB。<br/><br/>4 TB 超から最大 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートのプライベート プレビューにサインアップするには、AskAzureBackupTeam@microsoft.com までご連絡ください。  
+Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを備えた VM をバックアップします。 <br/><br/> 最大 4 TB のディスク サイズがサポートされます。<br/><br/>4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、[Azure VM Backup の概要](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)に関するページを参照してください。
+データ ディスク サイズ | ディスクごとに最大で 4,095 GB。<br/><br/>4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、[こちらの記事](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)を参照してください。
 ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。
 マネージド ディスク | サポートされています。
 暗号化されたディスク | サポートされています。<br/><br/> Azure Disk Encryption が有効になっている Azure VM を (Azure AD アプリを使用して、または使用せずに) バックアップできます。<br/><br/> 暗号化された VM は、ファイル/フォルダー レベルでは復旧できません。 VM 全体を復旧する必要があります。<br/><br/> Azure Backup によって既に保護されている VM で暗号化を有効にできます。

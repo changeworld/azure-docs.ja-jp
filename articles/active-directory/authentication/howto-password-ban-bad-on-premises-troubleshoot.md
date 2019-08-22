@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07c035f4823ea8c8eaa96ca9bda22450246811cd
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cb4d3e35ae743dbae4c049f515d61b3042e7efe
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779626"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952799"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD パスワード保護のトラブルシューティング
 
@@ -41,6 +41,8 @@ Azure AD パスワード保護をデプロイした後、トラブルシュー�
 1. プロキシ ホスト コンピューターがプロキシ サービスによってリッスンされる RPC エンドポイント (動的または静的) へのアクセスをブロックしている
 
    Azure AD パスワード保護プロキシのインストーラーでは、Azure AD パスワード保護プロキシ サービスによってリッスンされる受信ポートへのアクセスを許可する Windows ファイアウォールの受信規則が、自動的に作成されます。 このルールを後で削除したり無効にしたりすると、DC エージェントはプロキシ サービスと通信できなくなります。 別のファイアウォール製品ではなく組み込みの Windows ファイアウォールを無効にしている場合は、そのファイアウォールを、Azure AD パスワード保護プロキシ サービスによってリッスンされる受信ポートへのアクセスを許可するように構成する必要があります。 この構成は、より具体的には、(`Set-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用して) プロキシ サービスが特定の静的な RPC ポートをリッスンするように構成されている場合に行われることがあります。
+
+1. プロキシ ホスト コンピューターは、ドメイン コントローラーがコンピューターにログオンする機能を許可するようには構成されていません。 この動作は、"ネットワーク経由でコンピューターへアクセス" ユーザー特権の割り当てによって制御されます。 フォレスト内のすべてのドメインのすべてのドメイン コントローラーに、この特権を付与する必要があります。 多くの場合、この設定は、より大きなネットワーク強化作業の一部として制約されます。
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>プロキシ サービスが Azure と通信できない
 

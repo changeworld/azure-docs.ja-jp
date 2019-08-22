@@ -7,34 +7,32 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 08/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 6978b83e66f58e468d9f98394904861c8a4d8bd0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49422d73a63f1bcde267aac3a9b75e9977970cc9
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66152737"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68951932"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
-以下のシナリオでは、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワークに参加させます。 
+Azure Data Factory (ADF) で SQL Server Integration Services (SSIS) を使用する場合、次のシナリオでは、Azure-SSIS Integration Runtime (IR) を Azure 仮想ネットワークに参加させる必要があります。 
 
-- Azure-SSIS 統合ランタイム上で実行される SSIS パッケージからオンプレミス データ ストアに接続する必要がある。 
+- セルフホステッド IR をプロキシとして構成/管理することなく、Azure-SSIS IR 上で実行される SSIS パッケージからオンプレミス データ ストアに接続する必要がある。 
 
-- Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance で SQL Server Integration Services (SSIS) のカタログ データベースをホストしている。 
+- 仮想ネットワーク サービス エンドポイントがあるか､または仮想ネットワーク内にマネージ インスタンスがある Azure SQL Database で SSIS カタログ データベース (SSISDB) をホストしている｡ 
 
-  Azure Data Factory では、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルで作成された仮想ネットワークに Azure-SSIS 統合ランタイムを参加させることができます。 
+ADF では、クラシック デプロイ モデルまたは Azure Resource Manager デプロイ モデルで作成された仮想ネットワークに Azure-SSIS IR を参加させることができます。 
 
 > [!IMPORTANT]
 > クラシック仮想ネットワークは現在非推奨とされているため、代わりに Azure Resource Manager 仮想ネットワークを使用してください。  既にクラシック仮想ネットワークを使っている場合は、できるだけ早期に Azure Resource Manager 仮想ネットワークを使用するよう切り替えてください。
 
 ## <a name="access-to-on-premises-data-stores"></a>オンプレミスのデータ ストアにアクセスする
-SSIS パッケージがパブリック クラウドのデータ ストアだけにアクセスする場合は、仮想ネットワークに Azure-SSIS IR を参加させる必要はありません。 SSIS パッケージがオンプレミスのデータ ストアにアクセスする場合は、オンプレミスのネットワークに接続されている仮想ネットワークに Azure-SSIS IR を参加させる必要があります。 
-
-注意すべき重要な点がいくつかあります。 
+SSIS パッケージがパブリック クラウドのデータ ストアだけにアクセスする場合は、仮想ネットワークに Azure-SSIS IR を参加させる必要はありません。 SSIS パッケージがオンプレミスのデータ ストアにアクセスする場合、オンプレミス ネットワークに接続されている仮想ネットワークに Azure-SSIS IR を参加させるか、Azure-SSIS IR のプロキシとしてセルフホステッド IR を構成/管理することができます。[セルフホステッド IR を Azure-SSIS IR のプロキシとして構成する](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)方法に関する記事を参照してください。 Azure-SSIS IR を仮想ネットワークに参加させる場合、注意すべき重要な点がいくつかあります。 
 
 - オンプレミスのネットワークに接続された既存の仮想ネットワークがない場合は、最初に、Azure-SSIS 統合ランタイムを参加させるための [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md#create-a-virtual-network)または[クラシック仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)を作成します。 次に、その仮想ネットワークからオンプレミス ネットワークへのサイト間 [VPN ゲートウェイ接続](../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)または[ExpressRoute](../expressroute/expressroute-howto-linkvnet-classic.md) 接続を構成します。 
 
@@ -45,7 +43,7 @@ SSIS パッケージがパブリック クラウドのデータ ストアだけ�
 - Azure-SSIS IR とは異なる場所にオンプレミス ネットワークに接続された既存の Azure Resource Manager 仮想ネットワークがある場合は、最初に、Azure-SSIS IR を参加させるための [Azure Resource Manager 仮想ネットワーク](../virtual-network/quick-create-portal.md##create-a-virtual-network)を作成します。 次に、Azure Resource Manager 間の仮想ネットワーク接続を構成します。 または、Azure-SSIS IR を参加させるための[クラシック仮想ネットワーク](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)を作成します。 次に、[クラシックと Azure Resource Manager の間の仮想ネットワーク](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)接続を構成します。 
 
 ## <a name="host-the-ssis-catalog-database-in-azure-sql-database-with-virtual-network-service-endpointsmanaged-instance"></a>Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance で SSIS のカタログ データベースをホストする
-SSIS カタログが Azure SQL Database と仮想ネットワーク サービス エンドポイントまたは Managed Instance でホストされている場合は、次のものに Azure-SSIS IR を参加させることができます。 
+SSIS カタログが Azure SQL Database と仮想ネットワーク サービス エンドポイントまたは仮想ネットワーク内の Managed Instance でホストされている場合は、次のものに Azure-SSIS IR を参加させることができます。 
 
 - 同じ仮想ネットワーク 
 - Managed Instance のために使用される仮想ネットワークとの間にネットワーク間接続がある、別の仮想ネットワーク 
@@ -73,6 +71,8 @@ Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加さ
 
 -   仮想ネットワークのリソース グループが、特定の Azure ネットワーク リソースを作成および削除できることを確認します。 「[リソース グループの要件](#resource-group)」をご覧ください。 
 
+-   [Azure-SSIS IR のカスタム設定](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)に関する記事で説明しているように Azure-SSIS IR をカスタマイズする場合、Azure-SSIS IR ノードには、172.16.0.0 ～ 172.31.255.255 の事前定義された範囲のプライベート IP アドレスが割り当てられます。したがって、仮想/オンプレミス ネットワークのプライベート IP アドレス範囲がこの範囲と競合しないようにしてください。
+
 Azure-SSIS IR に必要な接続を示す図を次に示します。
 
 ![Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
@@ -97,7 +97,7 @@ Azure-SSIS 統合ランタイムを作成するユーザーは、次のアクセ
 -   (SQL Database Managed Instance、App Service など) 他の Azure サービスによって排他的に専有されているサブネットを使用しないでください。 
 
 ### <a name="dns_server"></a> ドメイン ネーム サービス サーバー 
-Azure-SSIS 統合ランタイムによって参加した仮想ネットワークで、独自のドメイン ネーム サービス (DNS) サーバーを使用する必要がある場合、そのサーバーが、(Azure Storage BLOB 名、`<your storage account>.blob.core.windows.net` などの) パブリック Azure ホスト名を解決できることを確認してください。 
+Azure-SSIS 統合ランタイムによって参加した仮想ネットワークで、独自のドメイン ネーム サービス (DNS) サーバーを使用する必要がある場合、そのサーバーが、(Azure Storage BLOB 名、`<your storage account>.blob.core.windows.net` などの) グローバル Azure ホスト名を解決できることを確認してください。 
 
 次の手順が推奨されます。 
 
@@ -112,10 +112,10 @@ Azure-SSIS 統合ランタイムが使用するサブネットにネットワー
 
 | Direction | トランスポート プロトコル | source | 送信元ポート範囲 | 宛先 | 送信先ポート範囲 | 説明 |
 |---|---|---|---|---|---|---|
-| 受信 | TCP | AzureCloud<br/>(またはインターネットなどのより大きなスコープ) | * | VirtualNetwork | 29876、29877 (IR を Azure Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS 統合ランタイムのノードと通信します。 <br/><br/> サブネットレベルの NSG を作成するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスから指定したポートで受信したトラフィックのみが、その NIC レベルの NSG によって許可されます。 サブネット レベルでインターネット トラフィックに対してこれらのポートを開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
+| 受信 | TCP | BatchNodeManagement | * | VirtualNetwork | 29876、29877 (IR を Azure Resource Manager 仮想ネットワークに参加させる場合) <br/><br/>10100、20100、30100 (IR をクラシック仮想ネットワークに参加させる場合)| Data Factory サービスはこれらのポートを使って、仮想ネットワークの Azure-SSIS 統合ランタイムのノードと通信します。 <br/><br/> サブネットレベルの NSG を作成するかどうかにかかわらず、Azure-SSIS IR をホストする仮想マシンにアタッチされているネットワーク インターフェイス カード (NIC) のレベルで、Data Factory は NSG を常に構成します。 Data Factory の IP アドレスから指定したポートで受信したトラフィックのみが、その NIC レベルの NSG によって許可されます。 サブネット レベルでインターネット トラフィックに対してこれらのポートを開いている場合でも、Data Factory の IP アドレスではない IP アドレスからのトラフィックは NIC レベルでブロックされます。 |
 | 送信 | TCP | VirtualNetwork | * | AzureCloud<br/>(またはインターネットなどのより大きなスコープ) | 443 | 仮想ネットワークの Azure-SSIS 統合ランタイムのノードはこのポートを使って、Azure Storage や Azure Event Hubs などの Azure サービスにアクセスします。 |
 | 送信 | TCP | VirtualNetwork | * | インターネット | 80 | 仮想ネットワーク内の Azure-SSIS 統合ランタイムのノードはこのポートを使用して、インターネットから証明書失効リストをダウンロードします。 |
-| 送信 | TCP | VirtualNetwork | * | SQL<br/>(またはインターネットなどのより大きなスコープ) | 1433、11000 ～ 11999、14000 ～ 14999 | 仮想ネットワークの Azure-SSIS 統合ランタイムのノードはこれらのポートを使って、Azure SQL Database サーバーによってホストされている SSISDB にアクセスします。Managed Instance によってホストされている SSISDB には該当しません。 |
+| 送信 | TCP | VirtualNetwork | * | SQL<br/>(またはインターネットなどのより大きなスコープ) | 1433、11000 ～ 11999 | 仮想ネットワークの Azure-SSIS 統合ランタイムのノードはこれらのポートを使って、Azure SQL Database サーバーによってホストされている SSISDB にアクセスします。 Azure SQL Database のサーバー接続ポリシーが **[リダイレクト]** ではなく **[プロキシ]** に設定されている場合、ポート 1433 のみが必要です。 この送信セキュリティ規則は、仮想ネットワーク内の Managed Instance によってホストされる SSISDB には適用されません。 |
 ||||||||
 
 ### <a name="route"></a> Azure ExpressRoute またはユーザー定義ルートを使用する
@@ -254,29 +254,27 @@ Azure-SSIS IR を仮想ネットワークに参加させる前に、仮想ネッ
 
    ![統合ランタイムを編集する](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtime-edit.png)
 
-1. **[Integration Runtime Setup]\(Integration Runtime のセットアップ\)** ウィンドウの **[全般設定]** ページで、 **[次へ]** を選択します。 
-
-   ![IR セットアップの全般設定](media/join-azure-ssis-integration-runtime-virtual-network/ir-setup-general-settings.png)
-
-1. **[SQL 設定]** ページで管理者のパスワードを入力し、 **[次へ]** を選びます。 
-
-   ![IR セットアップの SQL Server 設定](media/join-azure-ssis-integration-runtime-virtual-network/ir-setup-sql-settings.png)
+1. **[Integration Runtime Setup]\(Integration Runtime 設定\)** パネルで、 **[General Settings]\(全般設定\)** ページと **[SQL 設定]** ページの **[次へ]** ボタンをクリックして先に進みます。 
 
 1. **[詳細設定]** ページで、次の操作を実行します。 
 
-   a. **[Select a VNet for your Azure-SSIS Integration Runtime to join and allow Azure services to configure VNet permissions/settings]\(参加させる Azure-SSIS 統合ランタイム用の VNet を選択し、Azure サービスが VNet の権限/設定を構成することを許可する\)** チェック ボックスをオンにします。 
+   a. **[Select a VNet...]\(VNet を選択...\)** チェック ボックスをオンにします。 
 
-   b. **[種類]** で、仮想ネットワークがクラシック仮想ネットワークか、Azure Resource Manager 仮想ネットワークかを選択します。 
-
+   b. **[サブスクリプション]** で、ご利用の Azure サブスクリプションを選択すると、続けて既存の仮想ネットワークを選択できます。 
+  
    c. **[VNET 名]** で仮想ネットワークを選びます。 
 
    d. **[サブネット名]** で、仮想ネットワークのサブネットを選びます。 
 
-   e. **[VNet Validation]\(VNet の検証\)** をクリックし、成功した場合は、 **[更新]** をクリックします。 
+   e. セルフホステッド IR を Azure-SSIS IR のプロキシとして構成/管理する場合は、 **[Set up Self-Hosted...]\(セルフホステッドとして設定...\)** チェック ボックスをオンにして、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)」の記事を参照してください。
+
+   f. **[VNet Validation]\(VNet の検証\)** ボタンをクリックし、成功した場合は **[次へ]** ボタンをクリックします。 
 
    ![IR セットアップの詳細設定](media/join-azure-ssis-integration-runtime-virtual-network/ir-setup-advanced-settings.png)
 
-1. これで、Azure-SSIS IR の **[アクション]** 列の **[開始]** ボタンを使って IR を開始できます。 Azure-SSIS IR の開始には約 20 ～ 30 分かかります。 
+1. **[Summary]\(概要\)** ページで、Azure-SSIS IR のすべての設定を確認して **[更新]** ボタンをクリックします。
+
+1. これで、Azure-SSIS IR の **[アクション]** 列の **[開始]** ボタンをクリックして Azure-SSIS IR を開始できます。 仮想ネットワークに参加する Azure-SSIS IR を開始するには、約 20 ～ 30 分かかります。 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -383,7 +381,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 ## <a name="next-steps"></a>次の手順
 Azure-SSIS 統合ランタイムについて詳しくは、以下のトピックをご覧ください。 
 - [Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime): この記事では、Azure-SSIS IR など、統合ランタイムの一般的な概念について説明されています。 
-- [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md): この記事では、Azure-SSIS IR の作成手順が示されています。 Azure SQL Database を使って SSIS カタログをホストします。 
-- [Azure-SSIS 統合ランタイムを作成](create-azure-ssis-integration-runtime.md)します。 この記事では、チュートリアルを基に、Azure SQL Database と仮想ネットワーク サービス エンドポイント/Managed Instance を使って SSIS カタログをホストする方法と、IR を仮想ネットワークに参加させる方法が説明されています。 
-- [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime): この記事では、Azure-SSIS IR に関する情報を取得する方法と、返された情報での状態が説明されています。 
-- [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md): この記事では、Azure-SSIS IR を停止、開始、削除する方法が説明されています。 また、ノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。 
+- [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md): このチュートリアルでは、Azure-SSIS IR の作成手順を示しています。 Azure SQL Database を使って SSIS カタログをホストします。 
+- [Azure-SSIS 統合ランタイムを作成](create-azure-ssis-integration-runtime.md)します。 この記事では、チュートリアルを基に、Azure SQL Database と仮想ネットワーク サービス エンドポイント/仮想ネットワーク内の Managed Instance を使って SSIS カタログをホストする方法と、Azure-SSIS IR を仮想ネットワークに参加させる方法が説明されています。 
+- [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime): この記事では、Azure-SSIS IR に関する情報を取得する方法を示し、返された情報に含まれる状態について説明しています。 
+- [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md): この記事では、Azure-SSIS IR を停止、開始、または削除する方法を示しています。 また、ノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。

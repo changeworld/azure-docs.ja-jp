@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 064fd0e2bf503d917c809aa576bbc332b5b18a77
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3fb4d953f575dcf6582f9f1c8c2a725971134159
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742354"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856253"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
@@ -66,6 +66,9 @@ ms.locfileid: "68742354"
 ## <a name="preprocessing"></a>前処理
 
 自動化されたすべての機械学習実験において、データは既定の手法で前処理されます。任意で高度な前処理を利用されることもあります。
+
+> [!NOTE]
+> 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
 
 ### <a name="automatic-preprocessing-standard"></a>自動の前処理 (標準)
 

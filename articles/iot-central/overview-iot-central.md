@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 84fa7aa006a6bc5365527dbf8043797617543590
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: ff212e77b6fcaaa057c22c420cce82e7ea6c82e6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704537"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877291"
 ---
 <!---
 Purpose of an Overview article: 
@@ -24,6 +24,8 @@ Purpose of an Overview article:
 -->
 
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Azure IoT Central は、物理的な世界とデジタルの世界とを結ぶ製品が簡単に作成できるフル マネージドの IoT SaaS (サービスとしてのソフトウェア) ソリューションです。 コネクテッド製品の構想を次の手段で実現することができます。
 

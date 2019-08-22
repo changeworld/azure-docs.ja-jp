@@ -8,18 +8,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: a0a7a413d6c3344ccf5c3f7e4d14dd3d82715034
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1882e994c5d062d3ca841025edb61965f7eb0aa0
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840315"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967054"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする
 
-Azure Data Lake Storage Gen2 は、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) に組み込まれているビッグ データ分析専用の一連の機能です。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
+Azure Data Lake Storage Gen2 (ADLS Gen2) は、ビッグ データ分析専用の機能セットであり、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) に組み込まれています。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
 
 この記事では、Azure Data Lake Storage Gen2 をコピー先またはコピー元としてデータをコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 
@@ -73,6 +73,9 @@ Azure Data Lake Storage Gen2 コネクタでは、次の認証の種類がサポ
 | url | Data Lake Storage Gen2 のエンドポイントのパターンは `https://<accountname>.dfs.core.windows.net` です。 | はい |
 | accountKey | Data Lake Storage Gen2 のアカウント キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
+
+>[!NOTE]
+>アカウント キー認証を使用する場合、セカンダリ ADLS ファイル システム エンドポイントはサポートされません。 ほかの認証の種類を使用できます。
 
 **例:**
 

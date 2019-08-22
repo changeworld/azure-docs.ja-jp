@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 18d8f2a974fb192578163f71a57d00824ae6b0fa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 507af54b8b4c2e7c67538a1a25a040c7ee5fdfd5
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839462"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976311"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -65,7 +65,8 @@ Azure Maps Web SDK では、単独で、または他の式と組み合わせて�
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": {     
+    "properties": { 
+        "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
@@ -310,6 +311,28 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
         //Specify a default value to return if no match is found.
         'black'
+    ]
+});
+```
+
+次の例では、match 式を使用して "配列内" または "配列に含まれる" タイプのフィルター処理を実行します。この場合、許可される ID のリストに含まれる ID 値を持つデータがフィルター処理されます。 フィルターを含む式を使用するときは、結果がブール値である必要があります。
+
+```javascript
+var layer = new atlas.layer.BubbleLayer(datasource, null, {
+    filter: [
+        'match',  
+
+        //Get the property to match.
+        ['get', 'id'],  
+
+         //List of values to match.
+        [24, 53, 98], 
+
+        //If there is a match, return true.
+        true,
+    
+        //Otherwise return false.
+        false
     ]
 });
 ```
@@ -634,7 +657,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[実際に操作できる例をご覧ください](map-add-shape.md#line-stroke-gradient)
+[実際に操作できる例をご覧ください](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>テキスト フィールドの書式指定式
 
@@ -816,8 +839,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [!div class="nextstepaction"] 
 > [バブル レイヤーを追加する](map-add-bubble-layer.md)
 
-> [!div class="nextstepaction"] 
-> [図形を追加する](map-add-shape.md)
+> [!div class="nextstepaction"]
+> [線レイヤーを追加する](map-add-line-layer.md)
+
+> [!div class="nextstepaction"]
+> [多角形レイヤーを追加する](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
 > [ヒート マップ レイヤーを追加する](map-add-heat-map-layer.md)

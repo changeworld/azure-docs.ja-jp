@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: cgronlun
+ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: eb6ae11bb4ffb39d9e9bcc692f17559fa2cde674
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720235"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990583"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>自動化された機械学習の実験を Azure portal で作成、参照、デプロイする (プレビュー)
 
@@ -28,7 +28,7 @@ ms.locfileid: "68720235"
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
-* Azure Machine Learning ワークスペース。 「[Create an Azure Machine Learning service workspace](https://docs.microsoft.com/azure/machine-learning/service/setup-create-workspace)」(Azure Machine Learning service ワークスペースを作成する) を参照してください。
+* Azure Machine Learning ワークスペース。 「[Create an Azure Machine Learning service workspace](how-to-manage-workspace.md)」(Azure Machine Learning service ワークスペースを作成する) を参照してください。
 
 ## <a name="get-started"></a>作業開始
 
@@ -66,6 +66,10 @@ ms.locfileid: "68720235"
 1. ストレージ コンテナーを選択します。
 
 1. ストレージ コンテナーからデータ ファイルを選択します。または、ローカル コンピューターからコンテナーにファイルをアップロードします。 パブリック プレビューでは、ローカル ファイルのアップロードと Azure Blob Storage アカウントのみがサポートされています。
+    >[!Important]
+    > トレーニング データの要件:
+    >* データは表形式である必要があります。
+    >* 予測する値 (ターゲット列) は、データ内に存在する必要があります。
 
     [![データ ファイルの選択](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
 

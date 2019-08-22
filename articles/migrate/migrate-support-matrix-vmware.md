@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: ed7e53570127f12dbe41932481a3286a78865dde
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 70107311b189e1692b902812c4ccbbd91c3695a1
+ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828285"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952114"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware の評価と移行のサポート マトリックス
 
@@ -90,8 +90,8 @@ Azure Migrate アプライアンスには、インターネットへの接続が
 **URL** | **詳細**  
 --- | --- |
 *.portal.azure.com  | Azure portal で Azure Migrate に移動します。
-*.windows.net | Azure サブスクリプションにログインします。
-*.microsoftonline.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure サブスクリプションにログインします。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
 management.azure.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
 dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
 *.vault.azure.net | Azure Key Vault でシークレットを管理します。
@@ -104,7 +104,7 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 
 **デバイス** | **Connection**
 --- | ---
-アプライアンス | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ```https://<appliance-ip-or-name>:44368``` <br/><br/>ポート 443 で、検出とパフォーマンスのメタデータを Azure Migrate に送信するための送信接続。
+アプライアンス | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ```https://<appliance-ip-or-name>:44368``` <br/><br/>ポート 443、5671、5672 で、検出とパフォーマンスのメタデータを Azure Migrate に送信するための送信接続。
 vCenter サーバー | TCP ポート 443 で、アプライアンスが評価用に構成およびパフォーマンスのメタデータを収集できるようにするインバウンド接続。 <br/><br/> 既定では、アプライアンスはポート 443 で vCenter に接続します。 vCenter Server が別のポートでリッスンする場合、検出の設定時にポートを変更できます。
 
 
@@ -175,8 +175,8 @@ Azure Migrate アプライアンスには、インターネット接続が必要
 **URL** | **詳細**  
 --- | ---
 *.portal.azure.com | Azure portal で Azure Migrate に移動します。
-*.windows.net | Azure サブスクリプションにログインします。
-*.microsoftonline.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com  | Azure サブスクリプションにログインします。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
 management.azure.com | アプライアンスが Azure Migrate サービスと通信するための Active Directory アプリを作成します。
 dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
 *.vault.azure.net | Azure Key Vault でシークレットを管理します。

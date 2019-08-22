@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 99217106c456adcc338138190be2060b0c9a195b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772670"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966782"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする
 
@@ -39,8 +39,8 @@ PyTorch のディープ ラーニング モデルを一からトレーニング�
  
  - 独自の Jupyter Notebook サーバー
 
-    - [Azure Machine Learning SDK for Python をインストールする](setup-create-workspace.md#sdk)
-    - [ワークスペース構成ファイルを作成する](setup-create-workspace.md#write-a-configuration-file)
+    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
     - [サンプル スクリプト ファイル `pytorch_train.py` をダウンロードする](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
      
     このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch/train-hyperparameter-tune-deploy-with-pytorch.ipynb)は、GitHub サンプル ページにもあります。 このノートブックには、インテリジェントなハイパーパラメーター調整、モデル デプロイ、およびノートブックのウィジェットを示す展開済みセクションが含まれています。
@@ -229,3 +229,4 @@ import horovod
 * [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 * [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
+* [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

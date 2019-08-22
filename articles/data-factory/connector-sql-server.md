@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 5dcbb2c25511277eaf46d6c9f4afc007a180f8a6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: f5ddd9928194c477d8f8b6f4c9569a8fe58f39d3
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827863"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967381"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して SQL Server をコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Azure Data Factory のバージョンを選択してください。"]
@@ -44,7 +44,7 @@ SQL Server データベースから、サポートされている任意のシン
 
 ## <a name="prerequisites"></a>前提条件
 
-パブリックにアクセスできない SQL Server データベースからコピーしたデータを使用するには、セルフホステッド統合ランタイムを設定する必要があります。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関するセクションを参照してください。 統合ランタイムには、組み込みの SQL Server データベース ドライバーがあります。 SQL Server データベースをコピー元またはコピー先としてデータをコピーするときに、ドライバーを手動でインストールする必要はありません。
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>作業開始
 
@@ -62,7 +62,7 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
 | connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な **connectionString** 情報を指定します。 以下のサンプルを参照してください。<br/>このフィールドは、Azure Data Factory で安全に格納するために **SecureString** としてマークします。 また、Azure Key Vault にパスワードを格納することもできます。 それが SQL 認証である場合は、接続文字列から `password` 構成を取得します。 詳細については、この表の後にある JSON の例および「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
 | userName |Windows 認証を使用しする場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドは、Azure Data Factory で安全に格納するために **SecureString** としてマークします。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 |いいえ |
-| connectVia | この[統合ランタイム](concepts-integration-runtime.md)は、データ ストアに接続するために使用されます。 セルフホステッド統合ランタイムまたは Azure Integration Runtime (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
+| connectVia | この[統合ランタイム](concepts-integration-runtime.md)は、データ ストアに接続するために使用されます。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 >[!TIP]
 >エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached" (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。

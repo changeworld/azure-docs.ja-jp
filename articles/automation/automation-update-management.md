@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1bb437511ed89de626489516ce5b06664ace6fba
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 51ef55247d3262d8707403ed09cc8643403dda23
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741853"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68952985"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -84,6 +84,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 > [!NOTE]
 > Azure 仮想マシン スケール セットは、Update Management で管理できます。 Update Management は、基本イメージではなくインスタンス自体で動作します。 一度にすべての VM インスタンスを更新しない場合、段階的に更新をスケジュールする必要があります。
+> 「[Azure 以外のマシンの配布準備](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)」の手順に従って、VMSS ノードを追加することができます。
 
 ### <a name="unsupported-client-types"></a>サポートされていないクライアントの種類
 
@@ -93,6 +94,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 |---------|---------|
 |Windows クライアント     | クライアント オペレーティング システム (Windows 7 や Windows 10 など) はサポートされません。        |
 |Windows Server 2016 Nano Server     | サポートされていません。       |
+|Azure Kubernetes Service ノード | サポートされていません。 「[Azure Kubernetes Service (AKS) の Linux ノードにセキュリティとカーネルの更新を適用します](../aks/node-updates-kured.md)」で詳しく説明されている修正プログラム適用プロセスを使用します。|
 
 ### <a name="client-requirements"></a>クライアントの要件
 
@@ -359,6 +361,10 @@ Update Management には次のアドレスが明示的に必要です。 この�
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*.azure-automation.us|
+
+Windows コンピューターの場合は、Windows Update で必要なすべてのエンドポイントへのトラフィックも許可する必要があります。  必要なエンドポイントの更新された一覧は、「[HTTP/プロキシに関連する問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)」で確認できます。 ローカル環境に [Windows Update サーバー](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)がある場合は、[WSUS キー](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)で指定されているサーバーへのトラフィックも許可する必要があります。
+
+Red Hat Linux コンピューターで必要なエンドポイントについては、「[RHUI コンテンツ配信サーバーの IP アドレス](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers)」をご覧ください。 他の Linux ディストリビューションについては、プロバイダーのドキュメントをご覧ください。
 
 Hybrid Runbook Worker で必要なポートの詳細については、[ハイブリッド worker ロールのポート](automation-hybrid-runbook-worker.md#hybrid-worker-role)に関するページをご覧ください。
 

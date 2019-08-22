@@ -3,19 +3,19 @@ title: インデクサーを使用した自動インデックス作成用のフ�
 description: フィールド名とデータ表現の間の違いを調整するよう Azure Search インデクサー フィールド マッピングを構成する。
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 771a6e413cd08a338da41c09cd6a0da35e28e5e4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b64f6dcecb26e35689ad6f569ade6c7862f06f1a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840653"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648131"
 ---
 # <a name="field-mappings-and-transformations-using-azure-search-indexers"></a>Azure Search インデクサーを使用したフィールドのマッピングと変換
 

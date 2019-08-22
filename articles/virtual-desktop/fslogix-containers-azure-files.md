@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: c01e138c8afcdd59fcb0c87f189d98bec10e16d7
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828146"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947217"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
@@ -75,13 +75,13 @@ S2D クラスターでは、オペレーティング システムが、修正プ
 
 買収以降、Microsoft は、UPD などの既存のユーザー プロファイル ソリューションから FSLogix プロファイル コンテナーへの置き換えを開始しました。
 
-## <a name="azure-files-integration-with-azure-active-directory"></a>Azure Files と Azure Active Directory の統合
+## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files と Azure Active Directory ドメイン サービスの統合
 
-FSLogix プロファイル コンテナーのパフォーマンスおよび機能にはクラウドが活用されます。 2018 年 9 月 24 日、Microsoft Azure Files から、[Azure Active Directory 認証をサポートする Azure Files](https://azure.microsoft.com/blog/azure-active-directory-integration-for-smb-access-now-in-public-preview/) のパブリック プレビューが発表されました。 コストと管理オーバーヘッドの両方に対処することで、Azure Active Directory 認証を使用する Azure Files は、新しい Windows Virtual Desktop サービスでのユーザー プロファイルに対する優れたソリューションになります。
+FSLogix プロファイル コンテナーのパフォーマンスおよび機能にはクラウドが活用されます。 2019 年 8 月 7 日、Microsoft Azure Files は [Azure Active Directory ドメイン サービス (AD DS) による Azure Files 認証](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview)の一般提供を発表しました。 コストと管理オーバーヘッドの 両方に対処することで、Azure AD DS 認証を使用する Azure Files は、Windows Virtual Desktop サービスでのユーザー プロファイルに対する優れたソリューションになります。
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Windows Virtual Desktop のベスト プラクティス
 
-Windows Virtual Desktop では、顧客が使用している VM のサイズ、種類、および数を完全に制御できます。 詳細については、「[Windows Virtual Desktop プレビューとは](https://docs.microsoft.com/azure/virtual-desktop/overview)」を参照してください。
+Windows Virtual Desktop では、顧客が使用している VM のサイズ、種類、および数を完全に制御できます。 詳細については、「[Windows Virtual Desktop プレビューとは](overview.md)」を参照してください。
 
 ご利用の Windows Virtual Desktop がベスト プラクティスに確実に従うようにするには:
 
@@ -94,11 +94,11 @@ Windows Virtual Desktop では、顧客が使用している VM のサイズ、�
 
 ## <a name="next-steps"></a>次の手順
 
-次の手順を使用して、Windows Virtual Desktop 環境を設定します。
+次のガイドを使用して、Windows Virtual Desktop 環境を設定します。
 
-- デスクトップ仮想化ソリューションの構築を開始するには、[Windows Virtual Desktop でのテナントの作成](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)に関するページを参照してください。
-- ご利用の Windows Virtual Desktop テナント内にホスト プールを作成するには、「[Azure Marketplace を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)」を参照してください。
-- クラウド内でフル マネージドファイル共有を設定するには、[Azure Files 共有の設定](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable)に関するページを参照してください。
-- FSLogix プロファイル コンテナーを構成するには、「[ホスト プールのユーザー プロファイル共有を設定する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-user-profile)」を参照してください。
-- ユーザーをホスト プールに割り当てるには、[Windows Virtual Desktop のアプリ グループの管理](https://docs.microsoft.com/azure/virtual-desktop/manage-app-groups)に関するページを参照してください。
-- Web ブラウザーからご利用の Windows Virtual Desktop にアクセスするには、[Windows Virtual Desktop への接続](https://docs.microsoft.com/azure/virtual-desktop/connect-web)に関するページを参照してください。
+- デスクトップ仮想化ソリューションの構築を開始するには、[Windows Virtual Desktop でのテナントの作成](tenant-setup-azure-active-directory.md)に関するページを参照してください。
+- ご利用の Windows Virtual Desktop テナント内にホスト プールを作成するには、「[Azure Marketplace を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」を参照してください。
+- クラウド内でフル マネージドファイル共有を設定するには、[Azure Files 共有の設定](/articles/storage/files/storage-files-active-directory-enable.md)に関するページを参照してください。
+- FSLogix プロファイル コンテナーを構成するには、「[ホスト プールのユーザー プロファイル共有を設定する](create-host-pools-user-profile.md)」を参照してください。
+- ユーザーをホスト プールに割り当てるには、[Windows Virtual Desktop のアプリ グループの管理](manage-app-groups.md)に関するページを参照してください。
+- Web ブラウザーからご利用の Windows Virtual Desktop にアクセスするには、[Windows Virtual Desktop への接続](connect-web.md)に関するページを参照してください。

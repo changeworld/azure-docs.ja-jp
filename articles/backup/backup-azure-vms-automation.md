@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1cbd0f649bd5e89c1ed424604697afa179964175
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 23492133035f27aa3e1217269022565e0ff217a9
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689015"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69018768"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -653,7 +653,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 
    * **管理対象の Azure AD を使用して暗号化された VM (BEK および KEK)** - 管理対象の Azure AD を使用して暗号化された VM (BEK および KEK を使用して暗号化) では、復元されたマネージド ディスクをアタッチします。 詳細については、[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)に関する記事を参照してください。
 
-   * **管理対象の Azure AD を使用して暗号化された VM (BEK のみ)** - 管理対象の Azure AD を使用して暗号化された VM (BEK のみを使用して暗号化) では、元の **keyVault/シークレットを使用できない**場合、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事にある手順に従って、シークレットをキー コンテナーに復元します。次のスクリプトを実行して、復元された OS ディスクに暗号化の詳細を設定します (この手順はデータ ディスクには必要ありません)。 復元された keyVault から $dekurl をフェッチすることができます。
+   * **管理対象の Azure AD を使用して暗号化された VM (BEK のみ)** - 管理対象の Azure AD を使用して暗号化された VM (BEK のみを使用して暗号化) では、元の **keyVault/シークレットを使用できない**場合、[Azure Backup 復旧ポイントから暗号化された仮想マシンの復元](backup-azure-restore-key-secret.md)に関する記事にある手順に従って、シークレットをキー コンテナーに復元します。 次のスクリプトを実行して、復元された OS ディスクに暗号化の詳細を設定します (この手順はデータディスクには必要ありません)。 復元された keyVault から $dekurl をフェッチすることができます。
 
      次のスクリプトは、元の keyVault/シークレットを利用できない場合にのみ実行する必要があります。  
 
@@ -720,7 +720,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleR
 
    * **Azure AD を使用しない VM の場合** -データ ディスクの暗号化を手動で有効にするには、次のコマンドを使用します。
 
-     コマンドの実行中に、AADClientID の入力を求められたら、Azure PowerShell を更新する必要があります。
+     コマンドの実行中に AADClientID の入力を求められた場合、Azure PowerShell を更新する必要があります。
 
      **BEK のみ**
 

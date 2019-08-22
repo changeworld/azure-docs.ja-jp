@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 59ce6719c117db53b02ed6594de219010ee08ee6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ea5e476680b07a6a7ba2b57e94f1f0b99cc10987
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828235"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990099"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
 
@@ -49,12 +49,16 @@ Azure Machine Learning 用のこれらのツールを使用します。
 + [Azure Machine Learning VS Code 拡張機能](how-to-vscode-tools.md)を使用して、Visual Studio Code でコードを書き込みます
 + [Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md) を使用して、コードを記述せずにワークフローの手順を行います。
 
-## <a name="glossary-of-concepts"></a>概念の用語集
+> [!NOTE]
+> この記事では、Azure Machine Learning service で使用される用語と概念を定義しますが、Azure プラットフォームに関する用語と概念は定義しません。 Azure プラットフォームの用語について詳しくは、[Microsoft Azure 用語集](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)に関するページを参照してください。
+
+## <a name="glossary"></a>用語集
 
 + <a href="#workspaces">ワークスペース</a>
 + <a href="#experiments">実験</a>
 + <a href="#models">モデル</a>
 + <a href="#run-configurations">実行構成</a>
++ [Estimator](#estimators)
 + <a href="#datasets-and-datastores">データセットとデータストア</a>
 + <a href="#compute-targets">コンピューティング先</a>
 + <a href="#training-scripts">トレーニング スクリプト</a>
@@ -69,19 +73,9 @@ Azure Machine Learning 用のこれらのツールを使用します。
 + <a href="#ml-pipelines">ML パイプライン</a>
 + <a href="#logging">Logging</a>
 
-> [!NOTE]
-> この記事では、Azure Machine Learning service で使用される用語と概念を定義しますが、Azure プラットフォームに関する用語と概念は定義しません。 Azure プラットフォームの用語について詳しくは、[Microsoft Azure 用語集](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)に関するページを参照してください。
-
-
 ### <a name="workspaces"></a>Workspaces
 
-[ワークスペース](concept-workspace.md)は、Azure Machine Learning service の最上位のリソースです。 Azure Machine Learning service を使用するときに作成する、すべての成果物を操作するための一元的な場所が提供されます。
-
-ワークスペースの分類を次の図に示します。
-
-[![ワークスペースの分類](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
-
-ワークスペースの詳細については、「[Azure Machine Learning ワークスペースの管理](concept-workspace.md)」をご覧ください。
+[ワークスペース](concept-workspace.md)は、Azure Machine Learning service の最上位のリソースです。 Azure Machine Learning service を使用するときに作成する、すべての成果物を操作するための一元的な場所が提供されます。 他のユーザーとワークスペースを共有できます。 ワークスペースの詳細については、「[Azure Machine Learning ワークスペースとは](concept-workspace.md)」をご覧ください。
 
 ### <a name="experiments"></a>実験
 
@@ -97,7 +91,7 @@ Azure Machine Learning 用のこれらのツールを使用します。
 
 Azure Machine Learning service はフレームワークに依存しません。 モデルを作成するときは、Scikit-learn、XGBoost、PyTorch、TensorFlow、Chainer などの任意の人気のある機械学習フレームワークを使用できます。
 
-モデルのトレーニング例については、[チュートリアル: Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。
+Scikit-learn と Estimator を使用したモデルのトレーニングの例については、「[チュートリアル: Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。
 
 **モデル レジストリ**により、Azure Machine Learning service ワークスペース内のすべてのモデルが追跡されます。
 
@@ -120,11 +114,24 @@ Azure Machine Learning service はフレームワークに依存しません。 
 
 実行構成の例については、[モデルをトレーニングするためのコンピューティング先の選択と使用](how-to-set-up-training-targets.md)に関するページを参照してください。
 
+### <a name="estimators"></a>Estimator
+
+一般的なフレームワークでのモデルのトレーニングを容易にするため、Estimator クラスを使用すると実行構成を簡単に構築できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。
+
+PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning には、これらのフレームワークを簡単に使用するための [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、および [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) Estimator が用意されています。
+
+詳細については、次の記事を参照してください。
+
+* [Estimator を使用して ML モデルをトレーニングする](how-to-train-ml-models.md)。
+* [Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする](how-to-train-pytorch.md)。
+* [Azure Machine Learning service を使用して TensorFlow モデルを大規模にトレーニングおよび登録する](how-to-train-tensorflow.md)。
+* [Azure Machine Learning service を使用して Chainer モデルを大規模にトレーニングし、登録する](how-to-train-chainer.md)。
+
 ### <a name="datasets-and-datastores"></a>データセットとデータストア
 
 **Azure Machine Learning Datasets (プレビュー)** によって、データへのアクセスと操作がより容易になります。 データセットは、モデルのトレーニングやパイプラインの作成など、さまざまなシナリオでデータを管理します。 Azure Machine Learning SDK を使用すると、基礎となるストレージへのアクセス、データの探索と準備、異なるデータセット定義のライフ サイクルの管理、トレーニングと運用環境で使用されるデータセット間の比較が可能になります。
 
-Datasets には、`from_delimited_files()` や `to_pandas_dataframe()` を使用するなど、一般的なフォーマットでデータを操作する方法が用意されています。
+データセットには、`from_delimited_files()` や `to_pandas_dataframe()` を使用するなど、一般的な形式のデータを操作するメソッドが用意されています。
 
 詳細については、[Azure Machine Learning Datasets の作成と登録](how-to-create-register-datasets.md)に関するページを参照してください。  データセットのその他の使用例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/work-with-data/datasets)を参照してください。
 
@@ -132,7 +139,7 @@ Datasets には、`from_delimited_files()` や `to_pandas_dataframe()` を使用
 
 ### <a name="compute-targets"></a>コンピューティング ターゲット
 
-[コンピューティング ターゲット](concept-compute-target.md)では、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする場所であるコンピューティング リソースを指定します。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。 コンピューティング ターゲットを使用すれば、コードを変更しなくてもコンピューティング環境を簡単に変更できます。
+[コンピューティング先](concept-compute-target.md)では、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする場所であるコンピューティング リソースを指定できます。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。 コンピューティング ターゲットを使用すれば、コードを変更しなくてもコンピューティング環境を簡単に変更できます。
 
 詳細については、[トレーニングおよびデプロイ用の利用可能なコンピューティング先](concept-compute-target.md)に関するページを参照してください。
 
@@ -152,7 +159,6 @@ Datasets には、`from_delimited_files()` や `to_pandas_dataframe()` を使用
 * 実行前の、スクリプトを含むディレクトリのスナップショット
 
 モデルをトレーニングするためにスクリプトを送信するときに実行を生成します。 実行は、0 個以上の子実行を持つことができます。 たとえば、最上位レベルの実行は 2 つの子実行を持つ可能性があり、それぞれが独自の子実行を持つ場合があります。
-
 
 ### <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
 
@@ -236,5 +242,5 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 Azure Machine Learning service の利用を開始する場合は、以下を参照してください。
 
 * [Azure Machine Learning service とは](overview-what-is-azure-ml.md)
-* [Azure Machine Learning service のワークスペースを作成する](setup-create-workspace.md)
+* [Azure Machine Learning service のワークスペースを作成する](how-to-manage-workspace.md)
 * [チュートリアル (パート 1): モデルをトレーニングする](tutorial-train-models-with-aml.md)

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0512facbdf5f2222aee1e9bb5d2be64e22bf1a69
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 00e37030417da97d2c57b0fb5872422e7048a2bc
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774657"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954454"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 
@@ -63,7 +63,7 @@ ms.locfileid: "68774657"
 
 HANA 用の単一コンテナー データベース (SDC) を別の SDC マシンに復元するときは、入力に注意してください。 データベース名は小文字で指定し、かっこで囲んだ "sdc" を後に付ける必要があります。 HANA インスタンスは大文字で表示されます。
 
-SDC HANA インスタンス "H21" がバックアップされているとします。 バックアップ項目のページに、バックアップ項目名が **"h21(sdc)"** と表示されます。 このデータベースを別のターゲット SDC (たとえば H11) に復元しようとすると、次のように入力を指定する必要があります。
+SDC HANA インスタンス "H21" がバックアップされているとします。 バックアップ項目のページに、バックアップ項目名が **"h21(sdc)"** と表示されます。 このデータベースを別のターゲット SDC (たとえば H11) に復元する場合は、次の入力を指定する必要があります。
 
 ![SDC 復元の入力](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 

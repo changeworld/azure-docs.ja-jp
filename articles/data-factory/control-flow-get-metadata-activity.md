@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b819a990b9f607aaf70bf2e16a5857de3f7306cc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 320e92e45f319e394b5a38b3f1e8ef3f314920b8
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827498"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966343"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory の GetMetadata アクティビティ
 
@@ -138,8 +138,8 @@ GetMetadata アクティビティのフィールド リストで、次のメタ�
 -------- | ----------- | --------
 fieldList | 必要なメタデータ情報のタイプを一覧表示します。 サポートされているメタデータに関する詳細は、[メタデータ オプション](#metadata-options) セクションをご覧ください。 | はい 
 dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 サポートされているコネクタに関する詳細は、[サポートされる機能](#supported-capabilities)セクションをご覧になり、データセット構文の詳細に関するコネクタ トピックを参照してください。 | はい
-formatSettings | 書式の種類のデータセット (Parquet、DelimitedText) を使用するときに適用します。 | いいえ
-storeSettings | 書式の種類のデータセット (Parquet、DelimitedText) を使用するときに適用します。 | いいえ
+formatSettings | 書式の種類のデータセットを使用するときに適用します。 | いいえ
+storeSettings | 書式の種類のデータセットを使用するときに適用します。 | いいえ
 
 ## <a name="sample-output"></a>サンプル出力
 

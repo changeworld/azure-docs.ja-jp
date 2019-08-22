@@ -5,16 +5,16 @@ description: TensorBoard を起動して実験の実行履歴を視覚化し、�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: f65882cb851f8e35bb1d6c319d52fcfadb36ae91
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2e4527ba167076935505b668a7879e5f1446b25e
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772707"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68856070"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 
@@ -42,9 +42,9 @@ Azure Machine Learning の実験で TensorBoard を起動する方法は、実�
         * tensorboard.ipynb
 
     * 独自の Jupyter Notebook サーバー
-      * [ワークスペースの作成に関する記事](setup-create-workspace.md)に従って以下を行います
           * `tensorboard` extra を使用して [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) をインストールする
-          * ワークスペースと構成ファイル (config.json) を作成する
+          * [Azure Machine Learning service ワークスペースを作成する](how-to-manage-workspace.md)  
+          * [ワークスペース構成ファイルを作成する](how-to-configure-environment.md#workspace)。
   
 <a name="direct"></a>
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>オプション 1:実行履歴を TensorBoard で直接表示する

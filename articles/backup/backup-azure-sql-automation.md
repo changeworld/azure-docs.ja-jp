@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 6e1d1852660b598b8d780f3240edb3468010fb58
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: e078c75911a332c7e70f3a578723735729b9e6b6
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735483"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954497"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>PowerShell を使用して Azure VM 内の SQL Database をバックアップおよび復元する
 
@@ -247,7 +247,7 @@ Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDat
 
 ユーザーは、特定のポリシーを使用して、将来追加されるすべての DB を自動的に保護するようにバックアップを構成できます。 自動保護を有効にするには、[Enable-AzRecoveryServicesBackupAutoProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupAutoProtection?view=azps-1.5.0) PS コマンドレットを使用します。
 
-この命令は将来のすべての DB をバックアップするため、処理は SQLInstance レベルで行われます。
+この命令では将来のすべての DB がバックアップされるため、処理は SQLInstance レベルで行われます。
 
 ```powershell
 $SQLInstance = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLInstance -VaultId $targetVault.ID -Name "<Protectable Item name>" -ServerName "<Server Name>"
@@ -302,7 +302,7 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 
 #### <a name="fetch-point-in-time-recovery-point"></a>特定の時点の復旧ポイントをフェッチする
 
-特定の時点に DB を復元したい場合は、[Get-AzRecoveryServicesBackupRecoveryLogChain](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryLogChain?view=azps-1.5.0) PS コマンドレットを使用します。 このコマンドレットは、SQL バックアップ項目の途切れずに続いているログ チェーンの開始時刻と終了時刻を表す日付の一覧を返します。 必要な時点はこの範囲内にあります。
+特定の時点に DB を復元したい場合は、[Get-AzRecoveryServicesBackupRecoveryLogChain](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupRecoveryLogChain?view=azps-1.5.0) PS コマンドレットを使用します。 このコマンドレットでは、SQL バックアップ項目の途切れずに続いているログ チェーンの開始時刻と終了時刻を表す日付の一覧が返されます。 必要な時点はこの範囲内にあります。
 
 ```powershell
 Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID

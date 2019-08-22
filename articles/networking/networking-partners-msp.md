@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 62f73f17d598cb2a22ef57d3ec0bcf91b8852298
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 77f04b9688be2a7b7343bac05b24a3fcd4e0fcde
+ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728790"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69019697"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ネットワーク MSP パートナーについて
 
@@ -24,9 +24,11 @@ Azure ネットワーク MSP は、クラウドおよびハイブリッド ネ�
 
 お客様は、MSP のマネージド サービス オファーを、Azure Marketplace で購入することも、MSP から直接購入することもできます。 MSP は、Azure Lighthouse を使用して、お客様のサブスクリプションとリソース グループに Azure のネットワーク リソースをデプロイおよび管理できます。
 
-## <a name="msp"></a>MSP パートナー
+## <a name="msp"></a>Azure ネットワーク MSP パートナー
 
 Azure ネットワーク MSP パートナーによって提供されるマネージド クラウド ネットワーク サービスの詳細については、このセクションのリンクを使用してください。 お客様のクラウド ネットワーク サービス パートナーが下のセクションに記載されていない場合は、プロバイダーから Microsoft に問い合わせるようお伝えください。 パートナーは ManagedVirtualWAN@microsoft.com にメールを送信して Microsoft に問い合わせることができます。 
+
+[ANS Group UK](https://www.ans.co.uk/)
 
 [Aryaka Networks](https://www.aryaka.com/)
 
@@ -43,6 +45,8 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 [ixreach](https://www.ixreach.com/)
 
 [Megaport](https://www.megaport.com/)
+
+[Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)
 
 [Tata Communications](https://www.tatacommunications.com/)
 

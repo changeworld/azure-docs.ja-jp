@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/05/2019
+ms.date: 08/07/2019
 ms.author: magoedte
-ms.openlocfilehash: d2fadf6d0bf9b7422b6dbf7597a024d22b5d733f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 1c2416d9fb1d45116bb6594b29863c1fe8f524a3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839331"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883215"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -127,6 +127,8 @@ Azure Monitor では、ログ検索の実行コンテキストに応じて適切
 
     > [!NOTE]
     > ワークスペースへのリソース アクセス許可のみを持つユーザーは、ワークスペース アクセス モードが **[リソースまたはワークスペースのアクセス許可を使用]** に設定されていることを前提として、リソース コンテキスト モードを使用してワークスペースにアクセスすることのみできます。
+
+ポータル、PowerShell、または Resource Manager テンプレートを使用してアクセス制御モードを変更する方法については、[アクセス制御モードの定義](manage-access.md#define-access-control-mode)に関する記事を参照してください。
 
 ## <a name="recommendations"></a>Recommendations
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 4ebc48f8bd35487275f797ffc8e2b5b4d8101a71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 37bdcb48dcd37bf81aac8f5c2e1213d7f0deb327
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839789"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966451"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーからデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -39,6 +39,10 @@ ms.locfileid: "68839789"
 - **Basic** または **SshPublicKey** 認証を使用したファイルのコピー。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用したファイルの解析。
 
+## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 ## <a name="get-started"></a>作業開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -57,7 +61,7 @@ SFTP のリンクされたサービスでは、次のプロパティがサポー
 | skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。<br/>使用可能な値: **true**、**false** (既定値)。  | いいえ |
 | hostKeyFingerprint | ホスト キーの指紋を指定します。 | はい ("SkipHostKeyValidation" が false に設定されている場合)。  |
 | authenticationType | 認証の種類を指定します。<br/>使用できる値は、以下のとおりです。**Basic**、**SshPublicKey**。 プロパティと JSON サンプルの詳細については、「[基本認証を使用する](#using-basic-authentication)」および「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」をそれぞれ参照してください。 |はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 ### <a name="using-basic-authentication"></a>基本認証を使用する
 

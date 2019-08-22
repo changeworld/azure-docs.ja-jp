@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/31/2019
 ms.author: rolyon
 ms.custom: include file
-ms.openlocfilehash: db16a2f122da1bf6c767e0a47c93c22f1882c406
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 154d71c9cbc109834a5854b46c3e6584dcefa7eb
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817229"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68968896"
 ---
 ### <a name="policy-for-users-in-your-directory"></a>ポリシー:ディレクトリ内のユーザーの場合
 
@@ -35,7 +35,7 @@ ms.locfileid: "68817229"
 
 ### <a name="policy-for-users-not-in-your-directory"></a>ポリシー:ディレクトリ内にいないユーザーの場合
 
-このアクセス パッケージを要求できる、ディレクトリ内にいないユーザーを対象としたポリシーが必要な場合は、以下の手順を実行します。 **ディレクトリ内にいないユーザー**とは、別の Azure AD ディレクトリ内のユーザーのことであり、ディレクトリにまだ招待されていない可能性があります。  ディレクトリは、 **[Organizational relationships collaboration restrictions]\(組織関係コラボレーション制限\)** 設定で許可するように構成する必要があります。
+このアクセス パッケージを要求できる、ディレクトリ内にいないユーザーを対象としたポリシーが必要な場合は、以下の手順を実行します。 **ディレクトリ内にいないユーザー**とは、別の Azure AD ディレクトリ内のユーザーのことであり、ディレクトリにまだ招待されていない可能性があります。 現時点では、Azure AD を使用している組織のユーザーのみを追加できます。 ディレクトリは、 **[Organizational relationships collaboration restrictions]\(組織関係コラボレーション制限\)** 設定で許可するように構成する必要があります。
 
 > [!NOTE]
 > 要求が承認されるか自動承認される、ディレクトリ内にまだ存在しないユーザーに対しては、ゲスト外部ユーザー アカウントが作成されます。 ゲストは招待されますが、招待メールは届きません。 その代わりに、自分のアクセス パッケージの割り当てが配信されるときに電子メールを受け取ります。 既定では、最後の割り当てが期限切れになったかキャンセルされたことが原因でそのゲスト ユーザーにアクセス パッケージの割り当てがなくなった場合、そのゲスト ユーザー アカウントはサインインがブロックされ、その後で削除されます。 アクセス パッケージの割り当てがない場合でも、ゲスト ユーザーがディレクトリ内に無期限に残るようにしたい場合は、エンタイトルメント管理構成の設定を変更できます。

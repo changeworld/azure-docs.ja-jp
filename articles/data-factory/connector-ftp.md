@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: e07d976ba1d4fbb77a995056b3596967b686200b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 912a063a5a831f2eade4678719723a56548b57ee
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839838"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967523"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -40,6 +40,10 @@ ms.locfileid: "68839838"
 - **基本**または**匿名**認証を使用したファイルのコピー。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用したファイルの解析。
 
+## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 ## <a name="get-started"></a>作業開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -60,7 +64,7 @@ FTP のリンクされたサービスでは、次のプロパティがサポー�
 | authenticationType | 認証の種類を指定します。<br/>使用できる値は、以下のとおりです。**Basic** **Anonymous** | はい |
 | userName | FTP サーバーへのアクセスを持つユーザーを指定します。 | いいえ |
 | password | ユーザー (username) のパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 >[!NOTE]
 >FTP コネクタでは、暗号化なしまたは明示的な SSL/TLS 暗号化での FTP サーバーへのアクセスがサポートされています。暗黙的な SSL/TLS 暗号化はサポートされていません。

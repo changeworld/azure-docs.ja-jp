@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98c04c50bc4a52e9b2e4e267895fdd94888885f5
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 5c44f4ed5cd6488520bf6dd99f502f33049b9b17
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775160"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68962999"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して Scikit-learn モデルを大規模に構築する
 
@@ -35,8 +35,8 @@ scikit-learn の機械学習モデルを一からトレーニングする場合�
 
  - 独自の Jupyter Notebook サーバー
 
-    - [Azure Machine Learning SDK for Python をインストールする](setup-create-workspace.md#sdk)
-    - [ワークスペース構成ファイルを作成する](setup-create-workspace.md#write-a-configuration-file)
+    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
     - データセットとサンプル スクリプト ファイルをダウンロードする 
         - [アイリス データセット](https://archive.ics.uci.edu/ml/datasets/iris)
         - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
@@ -133,7 +133,7 @@ except ComputeTargetException:
 
 ## <a name="create-a-scikit-learn-estimator"></a>scikit-learn の見積もりツールを作成する
 
-[scikit-learn 見積もりツール](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py)では、コンピューティング先で scikit-learn トレーニング ジョブを開始する簡単な方法が提供されます。 それは [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) クラスによって実装されます。このクラスを使って、単一ノードの CPU トレーニングをサポートできます。
+[scikit-learn 見積もりツール](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py)では、コンピューティング先で scikit-learn トレーニング ジョブを開始する簡単な方法が提供されます。 それは [`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) クラスによって実装されます。このクラスを使って、単一ノードの CPU トレーニングをサポートできます。
 
 トレーニング スクリプトを実行するために追加の pip パッケージまたは conda パッケージが必要な場合は、`pip_packages` および `conda_packages` 引数に名前を渡すことで、パッケージを結果の docker イメージにインストールできます。
 
@@ -192,12 +192,12 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Machine Learning service で、scikit-learn を使用して機械学習分類モデルをトレーニングして登録しました。
 
-* モデルをデプロイする方法を学習するには、[モデル デプロイ](how-to-deploy-and-where.md)の記事に進んでください。
+この記事では、Azure Machine Learning service で Keras モデルをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
 
+> [!div class="nextstepaction"]
+> [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)
+* [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
-
-* [トレーニング中に実行メトリックを追跡する](how-to-track-experiments.md)
-
-* [ディープ ラーニングと機械学習の比較](concept-deep-learning-vs-machine-learning.md)の詳細を確認してください。
+* [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
+* [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

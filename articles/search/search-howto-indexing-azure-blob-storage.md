@@ -3,19 +3,19 @@ title: フルテキスト検索用に Azure Blob Storage コンテンツのイ�
 description: Azure Search で Azure Blob Storage のインデックスを作成し、ドキュメントからテキストを抽出する方法について説明します。
 ms.date: 05/02/2019
 author: mgottein
-manager: cgronlun
+manager: nitinme
 ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 832be20f78d1e88a3bb6d1c25c7aaf5d7354e857
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: c72a60dfb19c71ee039e2fcdb278581e41117b93
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753984"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656665"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。

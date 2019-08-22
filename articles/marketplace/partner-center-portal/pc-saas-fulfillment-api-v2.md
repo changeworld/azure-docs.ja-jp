@@ -2,17 +2,17 @@
 title: SaaS Fulfillment API v2 | Azure Marketplace
 description: この記事では、関連付けられている Fulfillment v2 API を使用して、AppSource と Azure Marketplace 上に SaaS オファーを作成して管理する方法について説明します。
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: qianw211
 ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: 276699b9316a0c4fd428038f2c967bdf934f449c
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a2041aefcfdcb1746e64f50c7cb53b3bfaec3299
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016042"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872807"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API バージョン 2 
 
@@ -790,7 +790,6 @@ Response body:
 
 パブリッシャーは、この SaaS サービスでの変更内容についてユーザーに事前に通知するように、Webhook を実装する必要があります。 SaaS サービスは、Webhook 通知のアクションを実行する前に、検証および承認するために API を呼び出すことが期待されます。
 
-セキュリティで保護された通信を確保するために、Microsoft では、呼び出しの一部として、認証ヘッダー内に Azure Active Directory JWT トークンを含めています。 SaaS プロバイダーは、「[Microsoft ID プラットフォーム アクセス トークン](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)」記事で説明されているように JWT トークンを検証して、有効な呼び出しのみが確実に受け入れられるようにすることが推奨されています。
 
 ```json
 {

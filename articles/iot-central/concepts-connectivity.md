@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 533327ca1d202f15376e580d20317ddaf0b1d302
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07de717865399f45a153f2a273c30d81c41944e3
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693193"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877474"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 この記事では、Microsoft Azure IoT Central のデバイス接続機能に関連する主な概念を紹介します。
 
@@ -87,7 +89,7 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 - [RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases) のサンプル実装。
 
-- [C のサンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)。
+- [C のサンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)。
 
 ### <a name="for-testing-purposes-only"></a>テスト目的のみ
 

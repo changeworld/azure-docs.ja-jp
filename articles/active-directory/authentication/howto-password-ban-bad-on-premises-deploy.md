@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596020952fd02a414c050ac7fe7ab37d7137c391
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779658"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68953012"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -60,6 +60,7 @@ ms.locfileid: "68779658"
     |`https://login.microsoftonline.com`|認証要求|
     |`https://enterpriseregistration.windows.net`|Azure AD パスワード保護機能|
 
+* パスワード保護用のプロキシ サービスがホストされているすべてのコンピューターを、プロキシ サービスにログオンする機能をドメイン コントローラーに許可するように、構成する必要があります。 これは、"ネットワーク経由でコンピューターへアクセス" 特権の割り当てによって制御されます。
 * パスワード保護用プロキシ サービスがホストされているすべてのマシンで、送信 TLS 1.2 HTTP トラフィックを許可するように構成する必要があります。
 * Azure AD でパスワード保護用プロキシ サービスとフォレストを登録するグローバル管理者アカウント。
 * Azure AD で Windows Server Active Directory フォレストを登録するために、フォレスト ルート ドメインの Active Directory ドメイン管理者特権を持つアカウント。
@@ -290,7 +291,9 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
 ## <a name="upgrading-the-proxy-agent"></a>プロキシ エージェントのアップグレード
 
-新しいバージョンの Azure AD パスワード保護プロキシ ソフトウェアを使用できるようになったら、最新バージョンの `AzureADPasswordProtectionProxySetup.exe` ソフトウェア インストーラーを実行してアップグレードを行います。 現在のバージョンのプロキシ ソフトウェアをアンインストールする必要はありません。インストーラーによってインプレース アップグレードが実行されます。 プロキシ ソフトウェアをアップグレードするときに、再起動は必要ありません。 ソフトウェアのアップグレードは、標準 MSI プロシージャを使用して自動化できます。次はその例です: `AzureADPasswordProtectionProxySetup.exe /quiet`。
+新しいバージョンの Azure AD パスワード保護プロキシ ソフトウェアを使用できるようになったら、最新バージョンの `AzureADPasswordProtectionProxySetup.exe` ソフトウェア インストーラーを実行してアップグレードを行います。 最新バージョンのソフトウェアは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)で入手できます。
+
+現在のバージョンのプロキシ ソフトウェアをアンインストールする必要はありません。インストーラーによってインプレース アップグレードが実行されます。 プロキシ ソフトウェアをアップグレードするときに、再起動は必要ありません。 ソフトウェアのアップグレードは、標準 MSI プロシージャを使用して自動化できます。次はその例です: `AzureADPasswordProtectionProxySetup.exe /quiet`。
 
 プロキシ エージェントでは、自動アップグレードがサポートされています。 自動アップグレードでは、プロキシ サービスと並んでインストールされる Microsoft Azure AD Connect Agent Updater サービスが使用されます。 自動アップグレードは既定では有効であり、Set-AzureADPasswordProtectionProxyConfiguration コマンドレットを使用して有効または無効にすることができます。 現在の設定のクエリは、Get-AzureADPasswordProtectionProxyConfiguration コマンドレットを使用して実行できます。 自動アップグレードを有効のままにしておくことをお勧めします。
 
@@ -298,7 +301,9 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
 ## <a name="upgrading-the-dc-agent"></a>DC エージェントのアップグレード
 
-新しいバージョンの Azure AD パスワード保護 DC エージェント ソフトウェアを使用できるようになったら、最新バージョンの `AzureADPasswordProtectionDCAgentSetup.msi` ソフトウェア パッケージを実行してアップグレードを行います。 現在のバージョンの DC エージェント ソフトウェアをアンインストールする必要はありません。インストーラーによってインプレース アップグレードが実行されます。 DC エージェント ソフトウェアをアップグレードするときは、再起動が常に必要になります。これは、Windows のコア動作によるものです。 
+新しいバージョンの Azure AD パスワード保護 DC エージェント ソフトウェアを使用できるようになったら、最新バージョンの `AzureADPasswordProtectionDCAgentSetup.msi` ソフトウェア パッケージを実行してアップグレードを行います。 最新バージョンのソフトウェアは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)で入手できます。
+
+現在のバージョンの DC エージェント ソフトウェアをアンインストールする必要はありません。インストーラーによってインプレース アップグレードが実行されます。 DC エージェント ソフトウェアをアップグレードするときは、再起動が常に必要になります。これは、Windows のコア動作によるものです。 
 
 ソフトウェアのアップグレードは、標準 MSI プロシージャを使用して自動化できます。次はその例です: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`。
 

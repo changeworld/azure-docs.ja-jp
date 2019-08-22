@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ccefec9e548b7981f696712bb4a983f4b577a9b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779643"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879258"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
 
@@ -33,6 +33,8 @@ ms.locfileid: "68779643"
 **Q:オンプレミスの Azure AD パスワード保護はパブリックでないクラウドでサポートされますか?**
 
 いいえ。オンプレミスの Azure AD パスワード保護は、パブリック クラウドでのみサポートされます。 パブリックでないクラウドの提供開始についての日付は発表されていません。
+
+Azure AD ポータルでは、パブリック クラウド以外の場合でもオンプレミス固有の [Windows Server Active Directory のパスワード保護] 構成を変更できます。このような変更は保存されますが、そうでなければ実行されません。 パブリック クラウド以外の資格情報が使用されたときのオンプレミスのプロキシ エージェントまたはフォレストの登録はサポートされていません。また、そのような登録の試行は常に失敗します。
 
 **Q:どのようにして Azure AD パスワード保護の利点を自分のオンプレミスのユーザーのサブセットに適用できますか?**
 
@@ -64,7 +66,7 @@ Active Directory では、パスワードをテストして、ドメインの現
 
 **Q:Active Directory レベルでポリシーの内容を変更するにはどうすればよいですか?**
 
-サポートされていません。 ポリシーは、Azure AD 管理ポータルを使用してのみ管理できます。 前の質問も参照してください。
+サポートされていません。 ポリシーを管理するには、Azure AD ポータルを使用する必要があります。 前の質問も参照してください。
 
 **Q:sysvol レプリケーションに DFSR が必要なのはなぜですか?**
 
@@ -118,15 +120,15 @@ Azure AD パスワード保護 DC エージェント サービスは、既存の
 
 **Q:オンプレミスの Active Directory 環境にエージェントをインストールした後でも、カスタム スマート ロックアウトが機能しないのはなぜですか?**
 
-カスタム スマート ロックアウトは Azure でのみサポートされています。 エージェントがインストールされていても、オンプレミスの Active Directory 環境では、Azure 管理ポータルでカスタム スマート ロックアウトの設定を変更しても環境への影響はありません。
+カスタム スマート ロックアウトは Azure AD でのみサポートされています。 エージェントがインストールされていても、オンプレミスの Active Directory 環境では、Azure AD ポータルでカスタム スマート ロックアウトの設定を変更しても環境への影響はありません。
 
 **Q:Azure AD パスワード保護で、System Center Operations Manager 管理パックは使用できますか?**
 
 いいえ。
 
-**Q:ポリシーが監査モードになるよう構成した場合でも Azure が依然として脆弱なパスワードを拒否しているのはなぜですか?**
+**Q:ポリシーが監査モードになるよう構成した場合でも Azure AD が依然として脆弱なパスワードを拒否しているのはなぜですか?**
 
-監査モードがサポートされるのは、オンプレミスの Active Directory 環境でのみです。 Azure は、パスワードを評価する際、暗黙的に常に "強制" モードになります。
+監査モードがサポートされるのは、オンプレミスの Active Directory 環境でのみです。 Azure AD は、パスワードを評価する際、暗黙的に常に "強制" モードになります。
 
 ## <a name="additional-content"></a>追加コンテンツ
 

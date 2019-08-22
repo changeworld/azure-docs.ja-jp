@@ -6,18 +6,18 @@ author: JasonWHowell
 ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: cdf90029d02680de4ce55e33b3ed0fe810d70b4c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775242"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950152"
 ---
 # <a name="azure-data-catalog-developer-samples"></a>Azure Data Catalog 開発者向けサンプル
 
 Data Catalog REST API を使用して Azure Data Catalog アプリの開発を開始します。 Data Catalog REST API は、データ資産をプログラムで登録、注釈付けおよび検索するために Data Catalog のリソースにプログラムでアクセスできるようにする、REST ベースの API です。
 
-GitHub に以下のサンプルがあります。
+## <a name="samples-available-on-githubcom"></a>GitHub.com で入手できるサンプル
 
 * [Azure Data Catalog の概要](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/)
   

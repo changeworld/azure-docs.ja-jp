@@ -1,29 +1,29 @@
 ---
-title: TensorFlow モデルのトレーニングと登録
+title: TensorFlow でディープ ラーニング ニューラル ネットワークをトレーニングする
 titleSuffix: Azure Machine Learning service
-description: この記事では、Azure Machine Learning service を使用して TensorFlow モデルをトレーニングおよび登録する方法について説明します。
+description: Azure Machine Learning service を使用して、大規模な TensorFlow トレーニング スクリプトを実行する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 06/10/2019
+ms.date: 08/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1f6aaa4f1b8f58f7cd6c1f02f424614d33863fc5
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 41ebca7bd4ea299bda7e2d7a95edced583866527
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815877"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966805"
 ---
-# <a name="train-and-register-tensorflow-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して TensorFlow モデルを大規模にトレーニングおよび登録する
+# <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow ディープ ラーニング モデルを構築する
 
-この記事では、Azure Machine Learning service を使用して TensorFlow モデルをトレーニングおよび登録する方法について説明します。 よく使用される [MNIST データセット](http://yann.lecun.com/exdb/mnist/)を使用して、[TensorFlow Python ライブラリ](https://www.tensorflow.org/overview)を使用して構築されたディープ ニューラル ネットワークを使用して、手書きの数字を分類します。
+この記事では、Azure Machine Learning の [TensorFlow エスティメーター](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) クラスを使用して、大規模な [TensorFlow](https://www.tensorflow.org/overview) トレーニング スクリプトを実行する方法について説明します。 この例では、ディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類するための TensorFlow モデルをトレーニングして登録します。
 
-TensorFlow は、ディープ ニューラル ネットワーク (DNN) の作成に一般的に使用されている、オープン ソースのコンピューティング フレームワークです。 Azure Machine Learning service を利用すると、エラスティック クラウド コンピューティング リソースを使用して、オープン ソースのトレーニング ジョブを迅速にスケールアウトできます。 トレーニングの実行、モデルのバージョン管理、モデルのデプロイなどを追跡することもできます。
+TensorFlow モデルを一から開発する場合でも、[既存のモデル](how-to-deploy-existing-model.md)をクラウドに取り込む場合でも、Azure Machine Learning を使用してオープンソースのトレーニング ジョブをスケールアウトし、運用グレードのモデルの構築、デプロイ、バージョン管理、監視を行うことができます。
 
-TensorFlow モデルをゼロから開発する場合でも、[既存のモデル](how-to-deploy-existing-model.md)をクラウドに導入する場合でも、Azure Machine Learning service は運用環境対応モデルの構築に役立ちます。
+[ディープ ラーニングと機械学習の比較](concept-deep-learning-vs-machine-learning.md)の詳細を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,12 +32,12 @@ TensorFlow モデルをゼロから開発する場合でも、[既存のモデ�
  - Azure Machine Learning Notebook VM - ダウンロードやインストールは必要なし
 
      - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
-    - Notebook サーバー上の samples フォルダーで、**how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-tensorflow** の順に移動して、次の完了および展開済みノートブックを見つけます。 
+    - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、**how-to-use-azureml > training-with-deep-learning > train-hyperparameter-tune-deploy-with-tensorflow** フォルダーの順に移動して、次の完了および展開済みノートブックを見つけます。 
  
  - 独自の Jupyter Notebook サーバー
 
-     - [Azure Machine Learning SDK for Python をインストールする](setup-create-workspace.md#sdk)
-    - [ワークスペース構成ファイルを作成する](setup-create-workspace.md#write-a-configuration-file)
+    - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
     - [サンプル スクリプト ファイル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` および `utils.py` をダウンロードする
      
     このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb)は、GitHub サンプル ページにもあります。 このノートブックには、インテリジェントなハイパーパラメーター調整、モデル デプロイ、およびノートブックのウィジェットを示す展開済みセクションが含まれています。
@@ -73,7 +73,7 @@ from azureml.core.compute_target import ComputeTargetException
 ws = Workspace.from_config()
 ```
 
-### <a name="create-an-experiment"></a>実験の作成
+### <a name="create-a-deep-learning-experiment"></a>ディープ ラーニングの実験を作成する
 
 トレーニング スクリプトを保存するための実験とフォルダーを作成します。 この例では、"tf-mnist" という実験を作成します。
 
@@ -292,5 +292,9 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 この記事では、TensorFlow モデルのトレーニングと登録を行いました。 モデルを GPU 対応クラスターにデプロイする方法については、GPU モデル デプロイの記事に進んでください。
 
-[GPU を使用した推論のためにデプロイする方法](how-to-deploy-inferencing-gpus.md)
-[Tensorboard を使用して監視する方法](how-to-monitor-tensorboard.md)
+> [!div class="nextstepaction"]
+> [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)
+* [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
+* [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
+* [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
+* [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

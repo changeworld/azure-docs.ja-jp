@@ -11,21 +11,21 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7e88b99cf0ecede64d75b36eafdcc88798e2e4a4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840451"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990556"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
-Web サービスとして Azure クラウドに、または IoT Edge デバイスに機械学習モデルをデプロイする方法を説明します。 
+Web サービスとして Azure クラウドに、または IoT Edge デバイスに機械学習モデルをデプロイする方法を説明します。
 
 モデルを[どこにデプロイするか](#target)に関係なく、ワークフローは同様です。
 
 1. モデルを登録します。
-1. デプロイの準備をします (アセット、使用、コンピューティング ターゲットを指定する)
+1. デプロイの準備をします (アセット、使用、コンピューティング ターゲットを指定する)。
 1. コンピューティング ターゲットにモデルをデプロイします。
 1. デプロイしたモデル (Web サービスとも呼ばれる) をテストします。
 
@@ -33,26 +33,57 @@ Web サービスとして Azure クラウドに、または IoT Edge デバイ�
 
 ## <a name="prerequisites"></a>前提条件
 
+- Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning service ワークスペースの作成](how-to-manage-workspace.md) に関する記事を参照してください。
+
 - モデル。 トレーニング済みのモデルがない場合、[こちらのチュートリアル](https://aka.ms/azml-deploy-cloud)で与えられたモデルと依存関係のファイルを使用できます。
 
 - [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](https://aka.ms/aml-sdk)、または [Azure Machine Learning Visual Studio Code 拡張機能](how-to-vscode-tools.md)。
+
+## <a name="connect-to-your-workspace"></a>ワークスペースに接続する
+
+次のコードでは、ローカル開発環境にキャッシュされた情報を使用して Azure Machine Learning service ワークスペースに接続する方法を示します。
+
+**SDK を使用する**
+
+```python
+from azureml.core import Workspace
+ws = Workspace.from_config(path=".file-path/ws_config.json")
+```
+
+SDK を使用してワークスペースに接続する方法について詳しくは、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) に関する記事をご覧ください。
+
+**CLI を使用する**
+
+CLI を使用するときは、`-w` パラメーターまたは `--workspace-name` パラメーターを使用して、コマンドのワークスペースを指定します。
+
+**VS コードを使用する**
+
+VS Code を使用するときは、グラフィカル インターフェイスを使用してワークスペースを選択します。 詳しくは、VS Code 拡張機能のドキュメントの「[モデルを展開して管理する](how-to-vscode-tools.md#deploy-and-manage-models)」をご覧ください。
 
 ## <a id="registermodel"></a> モデルを登録する
 
 登録済みモデルは、モデルを構成する 1 つまたは複数のファイルの論理コンテナーです。 たとえば、複数のファイルに格納されているモデルがある場合は、ワークスペースに単一モデルとしてそれらを登録できます。 登録後は、その登録済みモデルをダウンロードするかデプロイし、登録されたすべてのファイルを受信できます。
 
-機械学習モデルをご使用の Azure Machine Learning ワークスペースに登録します。 これらのモデルは、Azure Machine Learning から取得することも、どこか他の場所から取得することもできます。 次の例では、ファイルからモデルを登録する方法が示されています。
+> [!TIP]
+> モデルを登録するときは、(トレーニングの実行から) クラウドの場所またはローカル ディレクトリのパスを指定します。 このパスは、登録プロセスの一部としてアップロードするファイルを見つけるためだけのものです。エントリ スクリプトで使用されるパスと一致する必要はありません。 詳しくは、「[Get_model_path とは何か](#what-is-get_model_path)」をご覧ください。
+
+機械学習モデルをご使用の Azure Machine Learning ワークスペースに登録します。 これらのモデルは、Azure Machine Learning から取得することも、どこか他の場所から取得することもできます。 次の例では、モデルを登録する方法を示します。
 
 ### <a name="register-a-model-from-an-experiment-run"></a>実験の実行からモデルを登録する
 
-+ **SDK を使用した Scikit-Learn の例**
+このセクションのコード スニペットでは、トレーニング実行からモデルを登録する方法が示されています。
+
+> [!IMPORTANT]
+> これらのスニペットでは、以前にトレーニング実行を行ったことがあり、`run` オブジェクト (SDK の例) または実行 ID の値 (CLI の例) にアクセスできるものと想定されています。 トレーニング モデルについて詳しくは、[モデルのトレーニング用のコンピューティング先の作成と使用](how-to-set-up-training-targets.md)に関する記事をご覧ください。
+
++ **SDK を使用する**
+
   ```python
   model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
   print(model.name, model.id, model.version, sep='\t')
   ```
 
-  > [!TIP]
-  > モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているディレクトリに設定します。
+  `model_path` では、クラウドでのモデルの場所が示されています。 この例では、1 つのファイルへのパスが使用されます。 モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているディレクトリに設定します。
 
 + **CLI を使用する**
 
@@ -60,42 +91,47 @@ Web サービスとして Azure クラウドに、または IoT Edge デバイ�
   az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --run-id myrunid
   ```
 
-  > [!TIP]
-  > モデルの登録に複数のファイルを含めるには、`--asset-path` を、それらのファイルが含まれているディレクトリに設定します。
+  [!INCLUDE [install extension](../../../includes/machine-learning-service-install-extension.md)]
+
+  `--asset-path` では、クラウドでのモデルの場所が示されています。 この例では、1 つのファイルへのパスが使用されます。 モデルの登録に複数のファイルを含めるには、`--asset-path` を、それらのファイルが含まれているディレクトリに設定します。
 
 + **VS コードを使用する**
 
   [VS コード](how-to-vscode-tools.md#deploy-and-manage-models)拡張機能により、任意のモデル ファイルまたはフォルダーを使用してモデルを登録します。
 
-### <a name="register-an-externally-created-model"></a>外部で作成されたモデルを登録する
+### <a name="register-a-model-from-a-local-file"></a>ローカル ファイルからモデルを登録する
+
+モデルへの**ローカル パス**を指定することで、モデルを登録できます。 フォルダーまたは 1 個のファイルを提供できます。 この方法を使用すると、Azure Machine Learning service でトレーニングされてからダウンロードされたモデルと、Azure Machine Learning の外部でトレーニングされたモデルの両方を登録できます。
 
 [!INCLUDE [trusted models](../../../includes/machine-learning-service-trusted-model.md)]
 
-モデルの**ローカル パス**を指定することで、外部で作成されたモデルを登録できます。 フォルダーまたは 1 個のファイルを提供できます。
-
 + **Python SDK による ONNX の例:**
-  ```python
-  onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
-  urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
-  !tar xvzf mnist.tar.gz
-  
-  model = Model.register(workspace = ws,
-                         model_path ="mnist/model.onnx",
-                         model_name = "onnx_mnist",
-                         tags = {"onnx": "demo"},
-                         description = "MNIST image classification CNN from ONNX Model Zoo",)
-  ```
 
-  > [!TIP]
-  > モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているディレクトリに設定します。
+    ```python
+    import os
+    import urllib.request
+    from azureml.core import Model
+    # Download model
+    onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
+    urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
+    os.system('tar xvzf mnist.tar.gz')
+    # Register model
+    model = Model.register(workspace = ws,
+                            model_path ="mnist/model.onnx",
+                            model_name = "onnx_mnist",
+                            tags = {"onnx": "demo"},
+                            description = "MNIST image classification CNN from ONNX Model Zoo",)
+    ```
+
+  モデルの登録に複数のファイルを含めるには、`model_path` を、それらのファイルが含まれているディレクトリに設定します。
 
 + **CLI を使用する**
+
   ```azurecli-interactive
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
 
-  > [!TIP]
-  > モデルの登録に複数のファイルを含めるには、`-p` を、それらのファイルが含まれているディレクトリに設定します。
+  モデルの登録に複数のファイルを含めるには、`-p` を、それらのファイルが含まれているディレクトリに設定します。
 
 **推定所要時間**: 約 10 秒。
 
@@ -214,7 +250,7 @@ def run(data):
         return error
 ```
 
-次の例では、Dataframe を使用して、`<key: value>` ディクショナリとして入力データを定義する方法を示しています。 この方法は、Power BI からのデプロイされた Web サービスの使用でサポートされています ([Power BI から Web サービスを使用する方法について](https://docs.microsoft.com/power-bi/service-machine-learning-integration))。
+次の例では、Dataframe を使用して、`<key: value>` ディクショナリとして入力データを定義する方法を示しています。 この方法は、Power BI からデプロイされた Web サービスを使用する場合にサポートされています ([Power BI から Web サービスを使用する方法について](https://docs.microsoft.com/power-bi/service-machine-learning-integration))。
 
 ```python
 import json
@@ -269,7 +305,97 @@ def run(data):
 * TensorFlow: [https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
 * Keras: [https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * ONNX: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
-* バイナリ データに対するスコアリング:[Web サービスを使用する方法](how-to-consume-web-service.md)
+
+<a id="binary"></a>
+
+#### <a name="binary-data"></a>バイナリ データ
+
+モデルがバイナリ データ (画像など) を受け付ける場合は、デプロイで使用される `score.py` ファイルを生の HTTP 要求を受け付けるように変更する必要があります。 生データを受け入れるには、エントリ スクリプトで `AMLRequest` クラスを使用して、`@rawhttp` デコレーターを `run()` 関数に追加します。
+
+バイナリ データを受け付ける `score.py` の例を次に示します。
+
+```python
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+
+def init():
+    print("This is init()")
+
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real world solution, you would load the data from reqBody
+        # and send to the model. Then return the response.
+
+        # For demonstration purposes, this example just returns the posted data as the response.
+        return AMLResponse(reqBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `AMLRequest` クラスは `azureml.contrib` 名前空間にあります。 この名前空間内のものは、このサービスが改善されるに従って頻繁に変更されます。 そのため、この名前空間内のものはすべて Microsoft によって完全にサポートされているものではなく、プレビューとして見なされる必要があります。
+>
+> これをローカルの開発環境でテストする必要がある場合は、次のコマンドを使用して、コンポーネントをインストールできます。
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
+<a id="cors"></a>
+
+#### <a name="cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS)
+
+クロスオリジン リソース共有を使用すると、Web ページ上のリソースを他のドメインから要求することができます。 CORS は、クライアント要求で送信され、サービス応答で返される HTTP ヘッダーに基づいて機能します。 CORS と有効なヘッダーについて詳しくは、Wikipedia の[クロスオリジン リソース共有](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)に関する説明を参照してください。
+
+CORS をサポートするようにモデル デプロイを構成するには、エントリ スクリプトで `AMLResponse` クラスを使用します。 このクラスを使用すると、応答オブジェクトにヘッダーを設定できます。
+
+次の例では、エントリ スクリプトから応答に対して `Access-Control-Allow-Origin` ヘッダーを設定しています。
+
+```python
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real world solution, you would load the data from reqBody
+        # and send to the model. Then return the response.
+
+        # For demonstration purposes, this example
+        # adds a header and returns the request body
+        resp = AMLResponse(reqBody, 200)
+        resp.headers['Access-Control-Allow-Origin'] = "http://www.example.com"
+        return resp
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `AMLResponse` クラスは `azureml.contrib` 名前空間にあります。 この名前空間内のものは、このサービスが改善されるに従って頻繁に変更されます。 そのため、この名前空間内のものはすべて Microsoft によって完全にサポートされているものではなく、プレビューとして見なされる必要があります。
+>
+> これをローカルの開発環境でテストする必要がある場合は、次のコマンドを使用して、コンポーネントをインストールできます。
+>
+> ```shell
+> pip install azureml-contrib-services
+> ```
 
 ### <a name="2-define-your-inferenceconfig"></a>2.InferenceConfig を定義する
 
@@ -328,7 +454,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 ### <a id="local"></a> ローカル デプロイ
 
-ローカルにデプロイするには、お使いのローカル コンピューターに **Docker がインストールされている**必要があります。
+ローカルにデプロイするには、お使いのローカル コンピューターに Docker がインストールされている必要があります。
 
 #### <a name="using-the-sdk"></a>SDK を使用する
 
@@ -352,6 +478,10 @@ az ml model deploy -m mymodel:1 -ic inferenceconfig.json -dc deploymentconfig.js
 [!INCLUDE [aml-local-deploy-config](../../../includes/machine-learning-service-local-deploy-config.md)]
 
 詳細については、[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。
+
+### <a id="notebookvm"></a> NotebookVM Web サービス (DEVTEST)
+
+「[ノートブック VM にモデルをデプロイする](how-to-deploy-local-container-notebook-vm.md)」をご覧ください。
 
 ### <a id="aci"></a> Azure Container Instances (DEVTEST)
 
@@ -564,11 +694,11 @@ Azure Machine Learning コンピューティングを使用したバッチ推論
 
 1. [Azure Pipelines 用の Machine Learning 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-air-aiagility.vss-services-azureml&targetId=6756afbe-7032-4a36-9cb6-2771710cadc2&utm_source=vstsproduct&utm_medium=ExtHubManageList)をインストールします。 
 
-1. ご自分のすべての成果物にアクセスするために、 __サービス接続__ を使用して、ご自分の Azure Machine Learning service ワークスペースへのサービス プリンシパル接続を設定します。 プロジェクト設定に移動し、[サービス接続] をクリックして、[Azure Resource Manager] を選択します。
+1. ご自分のすべての成果物にアクセスするために、__サービス接続__を使用して、ご自分の Azure Machine Learning service ワークスペースへのサービス プリンシパル接続を設定します。 プロジェクト設定に移動し、[サービス接続] をクリックして、[Azure Resource Manager] を選択します。
 
     ![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png) 
 
-1. __スコープ レベル__ として AzureMLWorkspace を定義し、以降のパラメーターを入力します。
+1. __スコープ レベル__として AzureMLWorkspace を定義し、以降のパラメーターを入力します。
 
     ![view-azure-resource-manager](media/how-to-deploy-and-where/resource-manager-connection.png)
 
@@ -580,7 +710,10 @@ Azure Machine Learning コンピューティングを使用したバッチ推論
 
     ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
 
-サンプル プロジェクトと例については、[MLOps リポジトリ](https://github.com/Microsoft/MLOps)をご確認ください。
+他のサンプル プロジェクトと例については、次のサンプル リポジトリを参照してください。
+
+* [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
+* [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 デプロイされた Web サービスを削除するには、`service.delete()` を使用します。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1e14e9819f4b3344d0f0155ac5c15337a45952dc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c739a6e79cab14ecc8e5a4be23c551d2774cbbd8
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828055"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933972"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB Cassandra API アカウントにデータを移行する
 

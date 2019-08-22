@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7b9a24161c76f9fbb0993ffb6719c1ea1b51dc55
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 846b4d95c7eb32af7c1c0ff42c2526612075a033
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775823"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882410"
 ---
 # <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>Azure Site Recovery サービスを使用して Azure 内の別のリージョンに SQL Server VM を移動する
 
@@ -114,7 +114,7 @@ SQL Server VM を別のリージョンに移動するには、次の手順を実
    ![フェールオーバー テストの進行状況を監視する](media/virtual-machines-windows-sql-move-to-new-region/monitor-failover-test-job.png)
 
 1. テストが完了したら、ポータルで**仮想マシン**に移動して、新しく作成された仮想マシンを確認します。 SQL Server VM が実行中で、適切なサイズであることと、適切なネットワークに接続されていることを確認してください。 
-1. フェールオーバー テストのリソースがクリーンアップされるまで**フェールオーバー** オプションは淡色表示されるので、テストの一部として作成された VM を削除します。 コンテナーに戻り、 **[レプリケートされたアイテム]** を選択し、SQL Server VM を選択して、 **[テストフェールオーバーのクリーンアップ]** を選択します。 **[メモ]** セクションに、テストに関連する観測を記録して保存し、 **[Testing is complete. Delete test failover virtual machines]\(テストが完了しました。テスト フェールオーバー仮想マシンを削除してください\)** の横のチェックボックスを選択します。 **[OK]** を選択して、テスト後にリソースをクリーンアップします。 
+1. フェールオーバー テストのリソースがクリーンアップされるまで**フェールオーバー** オプションは淡色表示されるので、テストの一部として作成された VM を削除します。 コンテナーに戻り、 **[レプリケートされたアイテム]** を選択し、SQL Server VM を選択して、 **[テストフェールオーバーのクリーンアップ]** を選択します。 **[メモ]** セクションに、テストに関連する観測を記録して保存し、 **[Testing is complete. Delete test failover virtual machines]\(テストが完了しました。テスト フェールオーバー仮想マシンを削除してください\)** の横のチェックボックスをオンにします。 **[OK]** を選択して、テスト後にリソースをクリーンアップします。 
 
    ![フェールオーバー テスト後にアイテムをクリーンアップする](media/virtual-machines-windows-sql-move-to-new-region/cleanup-test-items.png)
 

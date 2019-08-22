@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ae8b2bb7cce545ab9c0aa0c9d4d682089cc482ab
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a8265496c475566ec7a87a19eab6d975838e9da4
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827454"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966388"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -33,7 +33,7 @@ Azure Data Factory では、コピー アクティビティを使用して、オ
 
 コピー アクティビティは、[統合ランタイム](concepts-integration-runtime.md)で実行されます。 異なるデータ コピーのシナリオでは、別の種類の統合ランタイムを利用できます。
 
-* どちらもパブリックにアクセス可能なデータ ストア間でデータをコピーする場合は、セキュリティ保護され、信頼性が高く、スケーラブルで、かつ[グローバルに使用可能な](concepts-integration-runtime.md#integration-runtime-location) **Azure 統合ランタイム**でコピー アクティビティを機能強化できます。
+* どちらも任意の IP アドレスからインターネット経由でパブリックにアクセス可能なデータ ストア間でデータをコピーする場合は、セキュリティ保護され、信頼性が高く、スケーラブルで、かつ[グローバルに使用可能な](concepts-integration-runtime.md#integration-runtime-location) **Azure Integration Runtime** で、コピー アクティビティを機能強化できます。
 * オンプレミスにあるデータ ストアや、アクセス制御が設定されたネットワーク (Azure Virtual Network など) 内のデータ ストアの間でデータをコピーする場合は、データ コピーを機能強化するために**自己ホスト型統合ランタイム**を設定する必要があります。
 
 統合ランタイムを各ソースおよびシンク データ ストアに関連付ける必要があります。 コピー アクティビティが、[使用する IR を決定する](concepts-integration-runtime.md#determining-which-ir-to-use)方法について詳細を学習してください。
@@ -193,7 +193,7 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 | usedDataIntegrationUnits | コピーの間に有効なデータ統合単位。 | Int32 値 |
 | usedParallelCopies | コピー中の効率的な parallelCopies。 | Int32 値 |
 | redirectRowPath | "redirectIncompatibleRowSettings" で構成した、BLOB ストレージ内のスキップされた互換性のない行のログのパス。 下の例を参照してください。 | Text (文字列) |
-| executionDetails | コピー アクティビティが処理される際の段階の詳細、対応するステップ、期間、使用される構成など。このセクションは変更される場合があるため、解析はお勧めしません。<br/><br/>ADF は、それぞれの手順で費やされた詳細な時間 (秒) も `detailedDurations` の下に報告します。<br/>- **キュー時間** (`queuingDuration`):コピー アクティビティが統合ランタイムで実際に開始されるまでの時間。 セルフホステッド IR を使用していて、この値が大きい場合は、IR の容量と使用量を確認し、ワークロードに応じてスケールアップ/スケールアウトすることをお勧めします。 <br/>- **コピー前スクリプト時間** (`preCopyScriptDuration`):シンク データ ストアでコピー前スクリプトの実行に費やされた時間。 コピー前スクリプトを構成したときに適用されます。 <br/>- **最初のバイトまでの時間** (`timeToFirstByte`):統合ランタイムがソース データ ストアから最初のバイトを受け取るまでの時間。 ファイル ベース以外のソースに適用されます。 この値が大きい場合は、クエリまたはサーバーを確認して最適化することをお勧めします。<br/>- **転送時間** (`transferDuration`):最初のバイトを取得した後に、統合ランタイムがすべてのデータをソースからシンクに転送するための時間。 | Array |
+| executionDetails | コピー アクティビティが処理される際の段階の詳細、対応するステップ、期間、使用される構成など。このセクションは変更される場合があるため、解析はお勧めしません。<br/><br/>ADF の `detailedDurations` では、それぞれの手順で費やされた詳細な時間 (秒) も報告されます。 これらの手順の継続時間は限定的であり、特定のコピー アクティビティの実行に適用された時間だけが表示されます。<br/>- **キュー時間** (`queuingDuration`):コピー アクティビティが統合ランタイムで実際に開始されるまでの経過時間。 セルフホステッド IR を使用していて、この値が大きい場合は、IR の容量と使用量を確認し、ワークロードに応じてスケールアップ/スケールアウトすることをお勧めします。 <br/>- **コピー前スクリプト時間** (`preCopyScriptDuration`):コピー アクティビティが IR で開始してから、コピー アクティビティによるシンク データ ストアでのコピー前スクリプトの実行が終了するまでの経過時間。 コピー前スクリプトを構成したときに適用されます。 <br/>- **最初のバイトまでの時間** (`timeToFirstByte`):前のステップが終了してから、IR がソース データ ストアから最初のバイトを受信するまでの経過時間。 ファイル ベース以外のソースに適用されます。 この値が大きい場合は、クエリまたはサーバーを確認して最適化することをお勧めします。<br/>- **転送時間** (`transferDuration`):前のステップが終了してから、IR がソースからシンクにすべてのデータを転送するまでの経過時間。 | Array |
 | perfRecommendation | コピー パフォーマンスのチューニングのヒント。 詳しくは、「[パフォーマンスとチューニング](#performance-and-tuning)」のセクションを参照してください。 | Array |
 
 ```json
