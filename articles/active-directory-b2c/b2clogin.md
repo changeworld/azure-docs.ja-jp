@@ -10,23 +10,26 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d70fe3f3f19723cd37080ae09dce97bfd8f3d34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 080c1933f88d9e824969a42212de2eacd0f62e14
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511686"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68927282"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
 Azure Active Directory (Azure AD) B2C アプリケーションへのサインアップおよびサインイン用に ID プロバイダーを設定する場合は、リダイレクト URL を指定する必要があります。 以前は login.microsoftonline.com が使用されていましたが、現在は b2clogin.com を使用する必要があります。
+
+> [!NOTE]
+> b2clogin.com では、JavaScript クライアント側コード (現在プレビュー段階) を使用できます。 login.microsoftonline.com を使用すると、JavaScript コードはカスタム ページから削除されます。 login.microsoftonline.com には、カスタム ページから HTML の form 要素を削除するなど、追加のセキュリティ制限も適用されます。 
 
 b2clogin.com を使用すると、次のような利点が加わります。
 
 - Microsoft サービスによって Cookie ヘッダーで使用される領域が減ります。
 - お使いの URL に、Microsoft への参照が含まれなくなりました。 たとえば、「 `https://your-tenant-name.b2clogin.com/tenant-id/oauth2/authresp` 」のように入力します。
 
->[!NOTE]
+> [!NOTE]
 > 次のように、テナント名とテナントの GUID の両方を使用できます。
 > * `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` (引き続き `onmicrosoft.com` を参照します)
 > * `https://your-tenant-name.b2clogin.com/your-tenant-guid` (この場合、Microsoft への参照は存在しません)

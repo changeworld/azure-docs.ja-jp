@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: jingwang
-ms.openlocfilehash: face3719f32ccb44e7479150e94417496141f90b
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: d8ce0a4f6bacdd1c8c858d474e6f3957a23c6357
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509568"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967356"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 > [!div class="op_single_selector" title1="使用している Azure Data Factory のバージョンを選択してください:"]
@@ -163,7 +163,7 @@ Azure からは、一連の大企業規模のデータ ストレージとデー�
 **注意する点:**
 
 * ファイル ベースのストア間でデータをコピーする場合は、**parallelCopies** によってファイル レベルでの並列処理が決まります。 単一ファイル内でのチャンク化は裏で自動的かつ透過的に行われます。 指定されたソース データ ストアの種類に最適なチャンク サイズを使用し、**parallelCopies** とは独立に並行してデータを読み込むよう設計されています。 実行時にコピー操作でデータ移動サービスに使用される並列コピーの実際の数は、存在するファイルの数以下となります。 コピー動作が **mergeFile** の場合、コピー アクティビティはファイル レベルでの並列処理を活用できません。
-* (Oracle データベースをコピー元とし、データ パーティショニングを有効にする場合を除き) ファイル ベース以外のストアからファイル ベースのストアにデータをコピーする場合、データ移動サービスは **parallelCopies** プロパティを無視します。 並列処理が指定されても、この場合は適用されません。
+* ([Oracle](connector-oracle.md#oracle-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source)、および [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) コネクタをコピー元とし、データ パーティショニングを有効にする場合を除き) ファイル ベース以外のストアからファイル ベースのストアにデータをコピーする場合、データ移動サービスは **parallelCopies** プロパティを無視します。 並列処理が指定されても、この場合は適用されません。
 * **parallelCopies** プロパティは **dataIntegrationUnits** と無関係です。 前者はすべてのデータ統合単位全体でカウントされます。
 * **parallelCopies** プロパティに値を指定するとき、コピー元データ ストアとシンク データ ストアの負荷増加を考慮してください。 また、ハイブリッド コピーなどで、セルフホステッド統合ランタイムによってコピー アクティビティが支援される場合、セルフホステッド統合ランタイムの負荷増加を考慮してください。 この負荷増加は、特に複数のアクティビティがある場合や、同じデータ ストアに対して実行される同じアクティビティの同時実行がある場合に発生します。 データ ストアまたはセルフホステッド統合ランタイムの負荷の上限に達したことがわかった場合は、**parallelCopies** の値を減らし、負荷を軽減してください。
 

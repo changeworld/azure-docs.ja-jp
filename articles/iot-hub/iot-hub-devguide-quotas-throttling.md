@@ -2,18 +2,17 @@
 title: Azure IoT Hub クォータと調整について | Microsoft Docs
 description: 開発者ガイド - IoT Hub に適用されるクォータと予想される調整動作の説明。
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/17/2019
-ms.openlocfilehash: 1c19696b10584bc55989b9270978486d7f5aa157
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 08/08/2019
+ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326741"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950522"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -96,7 +95,8 @@ IoT Hub により、その他の運用上の制限が適用されます。
 | ファイルのアップロード | デバイスごとに 10 個の同時ファイル アップロード。 |
 | ジョブ<sup>1</sup> | コンカレント ジョブの最大数は 1 (Free および S1)、5 (S2)、10 (S3) です。 ただし、コンカレント [デバイス インポート/エクスポート ジョブ](iot-hub-bulk-identity-mgmt.md)の最大数は、すべてのレベルで 1 です。 <br/>ジョブ履歴は、最大で 30 日間保持されます。 |
 | エンドポイントの追加 | 有料の SKU ハブには、エンドポイントを 10 個追加できます。 無料の SKU ハブには、エンドポイントを 1 個追加できます。 |
-| メッセージ ルーティング ルール | 有料の SKU ハブには、100 個のルーティング ルールを設定できます。 無料の SKU ハブには、5 個のルーティング ルールを設定できます。 |
+| メッセージ ルーティング クエリ | 有料の SKU ハブには、100 個のルーティング クエリを設定できます。 無料の SKU ハブには、5 個のルーティング クエリを設定できます。 |
+| メッセージ エンリッチメント | 有料の SKU ハブには、最大 10 個のメッセージ エンリッチメントを設定できます。 無料の SKU ハブには、最大 2 個のメッセージ エンリッチメントを設定できます。|
 | デバイスからクラウドへのメッセージ | 最大メッセージ サイズは 256 KB |
 | cloud-to-device のメッセージング<sup>1</sup> | 最大メッセージ サイズは 64 KB。 デバイスあたりの配信の保留中のメッセージの最大数は 50。 |
 | ダイレクト メソッド<sup>1</sup> | ダイレクト メソッドの最大ペイロード サイズは 128 KB。 |
