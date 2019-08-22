@@ -930,6 +930,8 @@
               href: platform/alerts-understand-migration.md
             - name: 移行ツールの使用
               href: platform/alerts-using-migration-tool.md
+            - name: 自動移行プロセス
+              href: platform/alerts-automatic-migration.md
             - name: クラシック メトリック アラートの管理
               href: platform/alerts-classic-portal.md
             - name: Resource Manager テンプレートを使用したクラシック メトリック アラート
