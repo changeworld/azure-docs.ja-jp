@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 05b022be3bd460809de77945710ed0bdcd275648
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839316"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881425"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースを管理する
 
@@ -32,7 +32,17 @@ Azure Monitor の[ログ](data-platform-logs.md) データは、Log Analytics �
 
 * Azure RBAC を使用して、ワークスペース内の特定のテーブルのログ データにアクセスする必要があるユーザーにアクセス権を付与する方法。
 
-## <a name="define-access-control-mode-in-azure-portal"></a>Azure portal でアクセス制御モードを定義する
+## <a name="define-access-control-mode"></a>アクセス制御モードの定義
+
+Azure portal から、あるいは Azure PowerShell を利用し、ワークスペース上で構成されたアクセス制御モードを表示できます。  この設定は、サポートされている次のいずれかの方法で変更できます。
+
+* Azure ポータル
+
+* Azure PowerShell
+
+* Azure Resource Manager テンプレート
+
+### <a name="configure-from-the-azure-portal"></a>Azure portal から構成する
 
 現在のワークスペース アクセス制御モードは、 **[Log Analytics ワークスペース]** メニューのワークスペースの **[概要]** ページで確認できます。 
 
@@ -45,7 +55,7 @@ Azure Monitor の[ログ](data-platform-logs.md) データは、Log Analytics �
 
 ![ワークスペースのアクセス モードの変更](media/manage-access/change-access-control-mode.png)
 
-## <a name="define-access-control-mode-using-powershell"></a>PowerShell を使用してアクセス制御モードを定義する
+### <a name="configure-using-powershell"></a>PowerShell を使用した構成
 
 次のコマンドを使用して、サブスクリプション内のすべてのワークスペースのアクセス制御モードを調べます。
 
@@ -89,7 +99,7 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-## <a name="define-access-mode-using-resource-manager-template"></a>Resource Manager テンプレートを使用してアクセス モードを定義する
+### <a name="configure-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用した構成
 
 Azure Resource Manager テンプレートでアクセス モードを構成するには、ワークスペースに対する**enableLogAccessUsingOnlyResourcePermissions** 機能フラグを次のいずれかの値に設定します。
 

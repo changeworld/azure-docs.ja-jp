@@ -10,20 +10,20 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: deb6482c0419a5872ccf86f0014adbecc7be6c9d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 6949f46345a5520ec3e09508b6d81994f9a7deb5
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694399"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036202"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
 Azure Machine Learning service を使って Azure Kubernetes Service (AKS) 上の Web サービスとしてモデルをデプロイする方法について説明します。 Azure Kubernetes Service は高スケールの運用デプロイに適してします。 次のいずれかの機能が必要な場合は、Azure Kubernetes Service を使用します。
 
 - __高速の応答時間__。
-- デプロイされたサービスの __自動スケール__。
-- GPU や Field Programmable Gate Array (FPGA) などの __ハードウェア アクセラレーション__ オプション。
+- デプロイされたサービスの__自動スケール__。
+- GPU や Field Programmable Gate Array (FPGA) などの__ハードウェア アクセラレーション__ オプション。
 
 > [!IMPORTANT]
 > クラスターのスケーリングは Azure Machine Learning SDK では提供されません。 AKS クラスターでのノードのスケーリングの詳細については、「[Azure Kubernetes Service (AKS) クラスターでノードの数をスケーリングする](../../aks/scale-cluster.md)」をご覧ください。
@@ -38,7 +38,7 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Machine Learning ワークスペース。 詳細については、「[Azure Machine Learning service ワークスペースを作成する](setup-create-workspace.md)」を参照してください。
+- Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning service ワークスペースの作成](how-to-manage-workspace.md) に関する記事を参照してください。
 
 - ワークスペースに登録されている機械学習モデル。 モデルが登録されていない場合は、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
@@ -60,7 +60,10 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 
 AKS クラスターの作成またはアタッチは、お使いのワークスペースでの 1 回限りのプロセスです。 複数のデプロイでこのクラスターを再利用できます。 クラスターまたはそれを含むリソース グループを削除した場合、次回デプロイする必要があるときに、新しいクラスターを作成する必要があります。 複数の AKS クラスターをワークスペースに接続できます。
 
-運用のためではなく __開発__、__検証__、__テスト__ のための AKS クラスターを作成する場合は、__クラスターの目的__ として __開発テスト__ を指定できます。
+運用のためではなく__開発__、__検証__、__テスト__のための AKS クラスターを作成する場合は、__クラスターの目的__として__開発テスト__を指定できます。
+
+> [!WARNING]
+> `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定した場合、作成されるクラスターは、運用レベルのトラフィックには適しておらず、推論時間が増えることがあります。 開発/テスト クラスターでは、フォールト トレランスも保証されません。 開発/テスト クラスターには、少なくとも 2 つの仮想 CPU を使用することをお勧めします。
 
 次の例では、SDK と CLI を使って新しい AKS クラスターを作成する方法を示します。
 
@@ -85,7 +88,7 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) で、agent_count と vm_size にカスタム値を使用する場合は、agent_count と vm_size の積が 12 仮想 CPU 以上である必要があります。 たとえば、vm_size に "Standard_D3_v2" (4 仮想 CPU) を使用する場合、agent_count は 3 以上にする必要があります。
+> [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) の場合、`agent_count` と `vm_size` のカスタム値を選択し、`cluster_purpose` が `DEV_TEST` ではない場合は、`agent_count` と `vm_size` の積が 12 仮想 CPU 以上である必要があります。 たとえば、`vm_size` に "Standard_D3_v2" (4 仮想 CPU) を使用する場合、`agent_count` は 3 以上にする必要があります。
 >
 > Azure Machine Learning SDK では、AKS クラスターのスケーリングのサポートは提供されません。 クラスター内のノードをスケーリングするには、Azure portal 内でご自分の AKS クラスターの UI を使用します。 クラスターの VM サイズではなく、ノード数のみを変更できます。
 
@@ -118,7 +121,7 @@ az ml computetarget create aks -n myaks
 >
 > `cluster_purpose` パラメーターを設定しない場合、または `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD` を設定した場合は、クラスターでは最低 12 の仮想 CPU が利用できる必要があります。
 >
-> `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定した場合、クラスターには 12 の仮想 CPU は必要ありません。 ただし、開発/テスト用に構成されたクラスターは、運用レベルのトラフィックには適しておらず、推論時間が増えることがあります。
+> `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` を設定した場合、クラスターには 12 の仮想 CPU は必要ありません。 開発/テストには、少なくとも 2 つの仮想 CPU を使用することをお勧めします。 ただし、開発/テスト用に構成されたクラスターは、運用レベルのトラフィックには適しておらず、推論時間が増えることがあります。 開発/テスト クラスターでは、フォールト トレランスも保証されません。
 
 Azure CLI または portal を使用した AKS クラスターの作成の詳細については、次の記事をご覧ください。
 
@@ -174,7 +177,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ## <a name="deploy-to-aks"></a>AKS にデプロイする
 
-Azure Kubernetes Service にモデルをデプロイするには、必要なコンピューティング リソースを記述した __デプロイ構成__ を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した __推論構成__ も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+Azure Kubernetes Service にモデルをデプロイするには、必要なコンピューティング リソースを記述した__デプロイ構成__を作成します。 たとえば、コアの数やメモリなどです。 また、モデルと Web サービスのホストに必要な環境を記述した__推論構成__も必要です。 推論構成の作成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="using-the-sdk"></a>SDK を使用する
 
@@ -209,12 +212,56 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 詳細については、[az ml model deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。 
 
-## <a name="using-vs-code"></a>VS コードを使用する
+### <a name="using-vs-code"></a>VS コードを使用する
 
 VS Code の使用については、「[モデルを展開して管理する](how-to-vscode-tools.md#deploy-and-manage-models)」を参照してください。
 
 > [!IMPORTANT] 
 > VS Code を使ってデプロイするには、事前にワークスペースに AKS クラスターを作成するかアタッチしておく必要があります。
+
+## <a name="web-service-authentication"></a>Web サービス認証
+
+Azure Kubernetes Service にデプロイする場合、__キーベース__の認証は既定で有効になります。 __トークン__認証を有効にすることもできます。 トークン認証では、クライアントが Azure Active Directory アカウントを使用して認証トークンを要求する必要があります。これは、展開されたサービスへの要求を行うために使用されます。
+
+認証を__無効__にするには、デプロイ構成の作成時に `auth_enabled=False` パラメーターを設定します。 次の例では、SDK を使用して認証を無効にします。
+
+```python
+deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
+```
+
+クライアント アプリケーションからの認証の詳細については、「[Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する](how-to-consume-web-service.md)」を参照してください。
+
+### <a name="authentication-with-keys"></a>キーによる認証
+
+キー認証が有効になっている場合は、`get_keys` メソッドを使用して、プライマリおよびセカンダリ認証キーを取得できます。
+
+```python
+primary, secondary = service.get_keys()
+print(primary)
+```
+
+> [!IMPORTANT]
+> キーを再生成する必要がある場合は、[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) を使用します
+
+### <a name="authentication-with-tokens"></a>トークンによる認証
+
+トークン認証を有効にするには、デプロイの作成時や更新時に `token_auth_enabled=True` パラメーターを設定します。 次の例では、SDK を使用してトークン認証を有効にします。
+
+```python
+deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
+```
+
+トークン認証が有効になっている場合は、`get_token` メソッドを使用して、JWT トークンとそのトークンの有効期限を取得できます。
+
+```python
+token, refresh_by = service.get_token()
+print(token)
+```
+
+> [!IMPORTANT]
+> トークンの `refresh_by` 時刻の後に新しいトークンを要求する必要があります。
+>
+> Azure Machine Learning ワークスペースは、ご利用の Azure Kubernetes Service クラスターと同じリージョンに作成することを強くお勧めします。 トークンを使用して認証するために、Web サービスは、Azure Machine Learning ワークスペースの作成先のリージョンに対して呼び出しを行います。 ワークスペースのリージョンが利用不可になった場合、ワークスペースとは異なるリージョンにクラスターがあったとしても、Web サービスのトークンがフェッチできなくなります。 その場合、ワークスペースのリージョンが利用可能な状態に戻るまで、事実上、Azure AD Authentication が利用できない状態となります。 また、クラスターのリージョンとワークスペースのリージョンとの間の距離が長くなるほど、トークンのフェッチにかかる時間も長くなります。
 
 ## <a name="update-the-web-service"></a>Web サービスを更新する
 

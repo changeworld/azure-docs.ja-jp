@@ -9,14 +9,14 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/01/2019
+ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b3513ab2583939943ff188b582f57f49530e5ded
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736254"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68975733"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
 
@@ -34,7 +34,8 @@ Azure API Management サービス インスタンスを作成すると、Azure �
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 -   API Management インスタンス。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
--   自己所有しているカスタム ドメイン名。 使用するカスタム ドメイン名は別途入手して DNS サーバーでホストしている必要があります。 このトピックでは、カスタム ドメイン名をホストする方法の手順は説明しません。
+-   自分または自分の所属する組織が所有しているカスタム ドメイン名。 このトピックでは、カスタム ドメイン名を取得する手順は説明しません。
+-   DNS サーバーでホストしている CNAME レコード。カスタム ドメイン名を API Management インスタンスの既定のドメイン名にマップするものです。 このトピックでは、CNAME レコードをホストする手順は説明しません。
 -   パブリックおよびプライベート キー (.PFX) 付きの有効な証明書。 サブジェクトまたはサブジェクト代替名 (SAN) はドメイン名と一致している必要があります (これにより、API Management インスタンスは SSL 経由で URL を安全に公開できます)。
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Azure ポータルを使用してカスタム ドメイン名を設定する
@@ -52,13 +53,17 @@ Azure API Management サービス インスタンスを作成すると、Azure �
     > [!NOTE]
     > 従量課金レベルの構成で利用できるのは、 **[ゲートウェイ]** エンドポイントだけです。
     > すべてのエンドポイントまたは一部を更新できます。 通常、お客様は、**ゲートウェイ** (この URL を使用して API Management を通じて公開される API が呼び出されます) と**ポータル** (開発者ポータルの URL) を更新します。
-    > **Management** エンドポイントと **SCM** エンドポイントは、API Management インスタンス所有者だけが内部的に使用するため、カスタム ドメイン名が割り当てられることはほとんどありません。 **Premium** レベルでは、**ゲートウェイ** エンドポイントに対する複数のホスト名の設定がサポートされます。
+    > **Management** エンドポイントと **SCM** エンドポイントは、API Management インスタンス所有者だけが内部的に使用するため、カスタム ドメイン名が割り当てられることはほとんどありません。
+    > **Premium** レベルでは、**ゲートウェイ** エンドポイントに対する複数のホスト名の設定がサポートされます。
 
 1. 更新するエンドポイントを選択します。
 1. 右側のウィンドウで **[カスタム]** をクリックします。
 
-    - **[カスタム ドメイン名]** に、使用する名前を指定します。 たとえば、「 `api.contoso.com` 」のように入力します。 ワイルドカード ドメイン名 (例: \*.domain.com) もサポートされています。
+    - **[カスタム ドメイン名]** に、使用する名前を指定します。 たとえば、「 `api.contoso.com` 」のように入力します。
     - **[証明書]** で、Key Vault から証明書を選択します。 証明書がパスワードで保護されている場合は、有効な .PFX ファイルをアップロードし、その**パスワード**を指定することもできます。
+
+    > [!NOTE]
+    > ワイルドカードを使用したドメイン名 (`*.contoso.com` など) は、従量課金レベル以外のあらゆるレベルでサポートされています。
 
     > [!TIP]
     > 証明書を管理し、それらをオートローテーションに設定する場合は、Azure Key Vault を使用することをお勧めします。
@@ -71,7 +76,7 @@ Azure API Management サービス インスタンスを作成すると、Azure �
 1. [適用] をクリックします。
 
     > [!NOTE]
-    > 証明書を割り当てる処理は、デプロイのサイズによっては、15 分以上かかる場合があります。 Developer SKU にはダウンタイムがありますが、Basic SKU と上位の SKU にはダウンタイムはありません。
+    > 証明書を割り当てる処理は、デプロイのサイズによっては、15 分以上かかる場合があります。 Developer SKU にはダウンタイムがありますが、Basic 以上の SKU にはダウンタイムがありません。
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 
@@ -79,8 +84,8 @@ Azure API Management サービス インスタンスを作成すると、Azure �
 
 カスタム ドメイン名の DNS を構成するときは、次の 2 つのオプションがあります。
 
-- 構成したカスタム ドメイン名のエンドポイントを指す CNAME レコードを構成する。
-- API Management ゲートウェイの IP アドレスを指す A レコードを構成する。
+-   構成したカスタム ドメイン名のエンドポイントを指す CNAME レコードを構成する。
+-   API Management ゲートウェイの IP アドレスを指す A レコードを構成する。
 
 > [!NOTE]
 > API Management インスタンスの IP アドレスは静的ですが、いくつかのシナリオで変更される可能性があります。 このため、カスタム ドメインを構成するときは CNAME を使用することをお勧めします。 DNS 構成方法を選択するときは、このことを考慮してください。 詳細については、「[API Mananagement の FAQ](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)」を参照してください。

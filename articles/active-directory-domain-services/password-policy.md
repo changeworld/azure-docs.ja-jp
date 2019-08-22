@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2019
 ms.author: iainfou
-ms.openlocfilehash: ecf38543b2c4e5187aa5c6593c3bccf6668b8a8a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 30f4558339bbfddd2296cd1cb918c6ef8999b67e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472758"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879190"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー
 この記事では、マネージド ドメインに関する既定のパスワード ポリシーについて説明します。 また、これらのポリシーの構成方法についても説明します。
@@ -38,7 +38,8 @@ FGPP を使用して、次のパスワード設定を構成できます。
     * アカウントのロックアウト期間
     * 許可される失敗したログオン試行回数
     * 失敗したログオン試行回数のカウントがリセットされるまでの時間
-
+    
+FGPP は、Azure AD DS で直接作成されたユーザーにのみ影響します。 Azure AD から Azure AD DS マネージド ドメインに同期されたクラウド ユーザーとドメイン ユーザーは、パスワードの複雑さの設定の影響を受けません。 FGPP は、Azure AD DS マネージド ドメイン内のグループの関連付けを通じて配布されます。すべての変更が、次回のユーザーのサインイン時に適用されます。 ポリシーを変更しても、既にロックアウトされているユーザー アカウントのロックが解除されることはありません。
 
 ## <a name="default-fine-grained-password-policy-settings-on-a-managed-domain"></a>マネージド ドメインに関する既定の細かい設定が可能なパスワード ポリシー設定
 次のスクリーンショットは、Azure Active Directory Domain Services のマネージド ドメインに構成されている既定の細かい設定が可能なパスワード ポリシーを示しています。
@@ -80,7 +81,7 @@ FGPP を使用して、次のパスワード設定を構成できます。
 * マネージド ドメインの既定のパスワード有効期間設定を構成する場合。
 
 マネージド ドメインに関するカスタム FGPP を作成する場合:
-1. マネージド ドメインの管理に使用する Windows VM にサインインします。 マネージド ドメインがない場合は、「[Azure AD Domain Services ドメインを管理する](manage-domain.md)」に記載されている手順を実行します。
+1. マネージド ドメインの管理に使用する Windows VM にサインインします (少なくとも Windows Server 2012 R2 以降である必要があります)。 マネージド ドメインがない場合は、「[Azure AD Domain Services ドメインを管理する](manage-domain.md)」に記載されている手順を実行します。
 2. VM 上で **Active Directory 管理センター**を起動します。
 3. ドメイン名 ('contoso100.com' など) をクリックします。
 4. **[システム]** をダブルクリックしてシステム コンテナーを開きます。

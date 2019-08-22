@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9cf3db3a15fab5a2f067a146950e02923a20379
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 1dcf08f4fefb53ed46038c82e0ce8f9d3dd94de2
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476802"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69032243"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
@@ -22,7 +22,7 @@ Azure Load Balancer は、*Basic* と *Standard* の 2 つの SKU で使用で�
 
 この記事では、Azure Kubernetes Service (AKS) で *Standard* SKU を使用する Azure Load Balancer を作成し、使用する方法について説明します。
 
-この記事は、Kubernetes および Azure Load Balancer の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」and [What is Azure Load Balancer?][azure-lb]をご覧ください。
+この記事は、Kubernetes および Azure Load Balancer の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」と「[Azure Load Balancer の概要][azure-lb]」を参照してください。
 
 現在、この機能はプレビュー段階にあります。
 
@@ -39,14 +39,14 @@ CLI をローカルにインストールして使用する場合、この記事�
 ロード バランサーの SKU を既定の *Basic* ではなく *Standard* に設定する AKS クラスターを作成する必要があります。 AKS クラスターの作成については後の手順で説明します。最初に、プレビュー機能をいくつか有効にする必要があります。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
+> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
 >
 > * [AKS のサポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-Azure Load Balancer Standard SKU を使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールしてから、az extension update コマンドを使用して使用可能な更新プログラムを確認します。
+Azure Load Balancer Standard SKU を使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -61,7 +61,7 @@ az extension update --name aks-preview
 *Standard* SKU を使用するロード バランサーを使用できる AKS クラスターを作成するには、サブスクリプションで *AKSAzureStandardLoadBalancer* 機能フラグを有効にする必要があります。 *AKSAzureStandardLoadBalancer* 機能は、仮想マシン スケール セットを使用してクラスターを作成するときに *VMSSPreview* も使用します。 この機能は、クラスターを構成するときに、最新のサービス拡張機能のセットを提供します。 必須ではありませんが、*VMSSPreview* 機能フラグも有効にすることをお勧めします。
 
 > [!CAUTION]
-> サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にすると、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成される場合があります。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
+> サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 次の例に示されているように、[az feature register][az-feature-register] コマンドを使用して *VMSSPreview* および *AKSAzureStandardLoadBalancer* 機能フラグを登録します。
 
@@ -92,6 +92,7 @@ az provider register --namespace Microsoft.ContainerService
 
 * ロード バランサーに対して *Standard* SKU を使用する場合、パブリック アドレスを許可する必要があり、IP 作成を禁止する Azure Policy は作成しないようにする必要があります。 AKS クラスターは、AKS クラスター用に作成されたのと同じリソース グループ (通常、名前の先頭が *MC_* ) に *Standard* SKU パブリック IP を自動的に作成します。 AKS により、パブリック IP が *Standard* SKU ロード バランサーに割り当てられます。 AKS クラスターからのエグレス トラフィックを許可するために、このパブリック IP が必要です。 また、このパブリック IP は、コントロール プレーンとエージェント ノードの間の接続を維持するため、および前のバージョンの AKS との互換性を維持するためにも必要です。
 * ロード バランサーに対して *Standard* SKU を使用する場合、Kubernetes バージョン 1.13.5 以降を使用する必要があります。
+* Standard ロード バランサーで[ノード パブリック IP 機能](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool)を使用している場合は、SLB アウトバウンド規則またはノードのパブリック IP のいずれかを設定できます。 1 つの VM を SLB アウトバウンド規則とパブリック IP の両方に同時に接続することはできないため、どちらか一方を選択する必要があります。
 
 この機能がプレビュー段階にある間は、追加で次の制限もあります。
 
@@ -135,7 +136,6 @@ az aks create \
     --name myAKSCluster \
     --enable-vmss \
     --node-count 1 \
-    --kubernetes-version 1.14.0 \
     --load-balancer-sku standard \
     --generate-ssh-keys
 ```
@@ -166,7 +166,7 @@ kubectl get nodes
 
 ```
 NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.14.0
+aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.9
 ```
 
 ## <a name="verify-your-cluster-uses-the-standard-sku"></a>クラスターで *Standard* SKU が使用されているか確認する

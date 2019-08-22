@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5c156e30f4fa0270082cd1108958c3472130a460
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 1401e378daa0c0a9258858840653899e76c9421c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640820"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881788"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -57,7 +57,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
             * **flows** - フローのコレクション
                 * **mac** - フローが収集された VM の NIC の MAC アドレス
                 * **flowTuples** - コンマで区切る形式で表現されたフローの組に対して複数のプロパティを含む文字列
-                    * **Time Stamp** - UNIX EPOCH 形式でフローが発生した際のタイム スタンプ
+                    * **Time Stamp** - UNIX epoch 形式でフローが発生した際のタイム スタンプ
                     * **Source IP** - 発信元 IP
                     * **Destination IP** - 宛先 IP
                     * **Source Port** - 発信ポート

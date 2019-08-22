@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 6cbddfc5e529bc48e08407796024e5232d1a22e8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966351"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557871"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -327,7 +327,7 @@ Teradata からデータをコピーするときには、次のマッピング�
 | VarByte |Byte[] |
 | VarChar |string |
 | VarGraphic |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
-| Xml |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
+| xml |サポートされていません。 ソース クエリで明示的なキャストを適用します。 |
 
 
 ## <a name="next-steps"></a>次の手順

@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2f6be256801983924cc794d6c8b8fa31e39959e1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f65bc0a9969ac713c2fb9f8629b97fbe522e9fe0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967850"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624840"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の価格レベル
 
@@ -67,7 +67,7 @@ Basic レベルでは、IOPS 保証は提供されません。 汎用および�
 |              | **汎用** | **メモリ最適化** |
 |:-------------|:--------------------|:---------------------|
 | ストレージの種類 | Azure Premium Storage | Azure Premium Storage |
-| ストレージ サイズ | 32 GB ～ 16 TB| 32 ～ 16 TB |
+| ストレージ サイズ | 32 GB ～ 16 TB| 32 GB ～ 16 TB |
 | ストレージの増分サイズ | 1 GB | 1 GB |
 | IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
 

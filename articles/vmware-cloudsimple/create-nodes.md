@@ -8,18 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9eb02f04b5873e5906782a27ce833a724ceecfe3
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 898b07d05abf3bfad644fb590d90c7a90c5a1c0d
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812368"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883220"
 ---
 # <a name="provision-nodes-for-vmware-solution-by-cloudsimple---azure"></a>CloudSimple による VMware ソリューション用のノードをプロビジョニングする - Azure
 
 Azure portal における VM のプロビジョニング 次に、CloudSimple プライベート クラウド環境に従量課金の容量をセットアップできます。
 
-## <a name="add-a-provisioned-node-to-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドにプロビジョニングしたノードを追加する
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+
+
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドにノードを追加する
 
 1. **[すべてのサービス]** を選択します。
 2. **CloudSimple ノード** を検索します。
@@ -44,4 +49,4 @@ Azure portal における VM のプロビジョニング 次に、CloudSimple �
 
 ## <a name="next-steps"></a>次の手順
 
-* [プライベート クラウドの作成](https://docs.azure.cloudsimple.com/create-private-cloud/)
+* [プライベート クラウドの作成](create-private-cloud.md)

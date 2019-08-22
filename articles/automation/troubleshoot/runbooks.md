@@ -8,14 +8,30 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f732ab6ceb17dcd013c6d032ef3943f6ad9bef71
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782329"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850319"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
+
+この記事では、Runbook に関する一般的な問題とその解決方法について詳しく説明します。
+
+## <a name="steps-to-troubleshoot-runbooks"></a>Runbook のトラブルシューティング手順
+
+Azure Automation で Runbook を実行しているときにエラーが発生した場合は、次の手順を使用すると、問題が診断しやすくなります。
+
+1. **ローカル コンピューターで Runbook スクリプトが正常に実行されることを確認する:** 言語リファレンスと学習モジュールについては、[PowerShell のドキュメント](/powershell/scripting/overview)または [Python のドキュメント](https://docs.python.org/3/)を参照してください。
+
+   次のような一般的なエラーは、スクリプトをローカルで実行することによって検出し、解決することができます。
+
+   - **モジュールの不足**
+   - **構文エラー**
+   - **論理エラー**
+
+2. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** ご使用の Runbook でなんらかのモジュールをインポートする場合は、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」に記載された手順に従い、それらのモジュールを Automation アカウントに取り込む必要があります。 詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Azure Automation Runbook の使用時に発生する認証エラー
 

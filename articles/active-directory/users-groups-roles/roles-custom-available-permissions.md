@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5ff6755f1391ff19e65df669fb51967a904f4f
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 99f31c5928273973a9089ae9ef1fd184cdb78bbb
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707436"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69033350"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory でのアプリケーション登録のサブタイプとアクセス許可
 
@@ -46,12 +46,12 @@ ms.locfileid: "68707436"
 
 ### <a name="create-and-delete"></a>作成と削除
 
-アプリの登録を作成する権限を付与するために使用できるアクセス許可には、次の 2 つがあります。
+アプリケーションの登録を作成する機能を許可するために使用できるアクセス許可は 2 つあり、それぞれ動作が異なります。
 
-- **microsoft.directory/applications/createAsOwner**
-- **microsoft.directory/applications/create**
+- **microsoft.directory/applications/createAsOwner**: このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者として追加され、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になります。
+- **microsoft.directory/applicationPolicies/create**: このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者としては追加されず、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になりません。 担当者がディレクトリ レベルのクォータに達するまでアプリの登録を作成できないようにするものはないため、このアクセス許可は慎重に使用してください。 両方のアクセス許可が割り当てられている場合は、このアクセス許可が優先されます。
 
-両方のアクセス許可が割り当てられている場合、作成のアクセス許可が優先されます。 createAsOwner アクセス許可は作成者を最初の所有者として自動的に追加しませんが、Graph API または PowerShell コマンドレットを使用する場合は、アプリ登録の作成時に所有者を指定できます。
+両方のアクセス許可が割り当てられている場合、/create アクセス許可が優先されます。 /createAsOwner アクセス許可では作成者を最初の所有者として自動的に追加しませんが、Graph API または PowerShell コマンドレットを使用する場合は、アプリの登録の作成時に所有者を指定できます。
 
 作成のアクセス許可は、 **[New registration]\(新規登録\)** コマンドへのアクセス権を付与します。
 

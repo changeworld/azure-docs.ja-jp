@@ -1,20 +1,20 @@
 ---
 title: イマーシブ リーダー iOS SDK リファレンス
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: イマーシブ リーダー iOS SDK のリファレンス
 services: cognitive-services
-author: MeganRoach
+author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
-ms.author: t-meroa
-ms.openlocfilehash: acdaaf0bf08644053e86343ae4b002002fee6a84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.author: metan
+ms.openlocfilehash: 615c09dd8a7287918bb009ce11854278b21554c1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966593"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899410"
 ---
 # <a name="immersive-reader-sdk-reference"></a>イマーシブ リーダー SDK リファレンス
 
@@ -34,7 +34,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 
 #### <a name="parameters"></a>parameters
 
-| EnableAdfsAuthentication | Type | 説明 |
+| Name | Type | 説明 |
 | ---- | ---- |------------ |
 | `navController` | UINavigationController | 関数が呼び出されている iOS アプリケーションの Navigation Controller。 |
 | `token` | string | Azure AD 認証トークン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |

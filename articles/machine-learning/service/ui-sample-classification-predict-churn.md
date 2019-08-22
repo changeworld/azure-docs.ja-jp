@@ -1,21 +1,21 @@
 ---
-title: '分類: 顧客離れ + 強い欲求 + アップセルを予測する'
+title: 'ビジュアル インターフェイスの例 #5: 顧客離れ + 強い欲求 + アップセルを予測するための分類'
 titleSuffix: Azure Machine Learning service
 description: このビジュアル インターフェイス サンプルの実験では、カスタマー リレーションシップ マネジメント (CRM) の一般的なタスクである顧客離れのバイナリ分類器予測を示します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 05/10/2019
-ms.openlocfilehash: 172089d5371d8c3e38a2a22b3285b5eb180baf00
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: a2eabdd601fcf350d2076d33882e3d90255fee92
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742296"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016461"
 ---
 # <a name="sample-5---classification-predict-churn-appetency-and-up-selling"></a>サンプル 5 - 分類: 顧客離れ、強い欲求、アップセルを予測する 
 

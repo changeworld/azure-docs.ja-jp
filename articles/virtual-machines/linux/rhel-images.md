@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: f7ae82b0376489e21b35e4e94dce32805bea69c6
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7d34e480dd3cf90f1948e83ea1d18c04f1dcdce2
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708377"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854438"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure の Red Hat Enterprise Linux イメージ
 この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace 内で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します。
@@ -132,6 +132,12 @@ RHEL-SAP-HANA | 6.7      | RAW    | Linux エージェント | RHEL 6.7 for SAP 
 |             | 7.3      | LVM    | Linux エージェント | RHEL 7.3 for SAP HANA
 RHEL-SAP-APPS | 6.8      | RAW    | Linux エージェント | RHEL 6.8 for SAP Business Applications
 |             | 7.3      | LVM    | Linux エージェント | RHEL 7.3 for SAP Business Applications
+RHEL-HA       | 7.4      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.4
+|             | 7.5      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.5
+|             | 7.6      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.6
+RHEL-SAP-HA   | 7.4      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.4 for SAP
+|             | 7.5      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.5 for SAP
+|             | 7.6      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.6 for SAP
 
 ### <a name="old-naming-convention"></a>以前の名前付け規則
 RHEL 7 イメージ ファミリと RHEL 6 イメージ ファミリでは、前述の名前付け規則の変更が行われるまで、SKU の特定のバージョンが使用されていました。

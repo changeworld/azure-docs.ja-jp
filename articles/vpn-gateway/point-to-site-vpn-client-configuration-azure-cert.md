@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b590dabbe4b2c6526f2c602aeed64667348eefa9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 624c1648bc709e1ca6ee9c4120350a606df67df5
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66114045"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035779"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -114,23 +114,15 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)
 
-### <a name="extract-the-key-and-certificate"></a>キーと証明書を抽出する
+### <a name="installstrongswan"></a>strongSwan のインストール
 
-strongSwan の場合、キーと証明書をクライアント証明書 (.pfx ファイル) から抽出し、個別の .pem ファイルに保存する必要があります。
-次の手順に従ってください。
+[!INCLUDE [install strongSwan](../../includes/vpn-gateway-strongswan-install-include.md)]
 
-1. [OpenSSL](https://www.openssl.org/source/) から OpenSSL をダウンロードしてインストールします。
-2. コマンド ライン ウィンドウを開き、OpenSSL をインストールしたディレクトリに移動します (例: 'c:\OpenSLL-Win64\bin\')。
-3. 次のコマンドを実行して秘密キーを抽出し、クライアント証明書からの "privatekey.pem" という名前の新しいファイルに保存します。
+### <a name="genlinuxcerts"></a>証明書の生成
 
-   ```
-   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nocerts -out privatekey.pem -nodes
-   ```
-4. 次のコマンドを実行して公開証明書を抽出し、新しいファイルに保存します。
+まだ証明書を生成していない場合は、次の手順を使用します。
 
-   ```
-   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nokeys -out publiccert.pem -nodes
-   ```
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
 ### <a name="install"></a>インストールと構成
 
@@ -163,10 +155,13 @@ strongSwan の場合、キーと証明書をクライアント証明書 (.pfx �
 
 ### <a name="install-strongswan"></a>strongSwan のインストール
 
-次の CLI コマンドを使用するか、[GUI](#install) の strongSwan の手順を使用して、strongSwan をインストールします。
+[!INCLUDE [install strongSwan](../../includes/vpn-gateway-strongswan-install-include.md)]
 
-1. `apt-get install strongswan-ikev2 strongswan-plugin-eap-tls`
-2. `apt-get install libstrongswan-standard-plugins`
+### <a name="generate-certificates"></a>証明書の生成
+
+まだ証明書を生成していない場合は、次の手順を使用します。
+
+[!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
 ### <a name="install-and-configure"></a>インストールと構成
 

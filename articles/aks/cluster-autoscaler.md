@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 09610782f211b4cfb80a1291b73ab543328376a3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dc5e862109a766f708338ebddb91a75ffc550306
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68424179"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031913"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリングする
 
@@ -21,7 +21,7 @@ Azure Kubernetes Service (AKS) のアプリケーションの需要に対応す�
 この記事では、AKS クラスターでクラスター オートスケーラーを有効にして管理する方法について説明します。 クラスター オートスケーラーはプレビューで AKS クラスターでのみテストする必要があります。
 
 > [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 これらは、コミュニティからフィードバックやバグを収集するために提供されています。 これらの機能はプレビュー段階であり、運用環境での使用を意図していません。 パブリック プレビュー段階の機能は、"ベスト エフォート" のサポートに該当します。 AKS テクニカル サポート チームによるサポートは、太平洋タイム ゾーン (PST) での営業時間内のみで利用できます。 詳細については、次のサポートに関する記事を参照してください。
+> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
 >
 > * [AKS のサポート ポリシー][aks-support-policies]
 > * [Azure サポートに関する FAQ][aks-faq]
@@ -102,7 +102,7 @@ AKS クラスターを作成する必要がある場合は、[az aks create][az-
 > [!IMPORTANT]
 > クラスター オートスケーラーは、Kubernetes のコンポーネントです。 AKS クラスターは、ノードに仮想マシン スケール セットを使用しますが、Azure portal で、または Azure CLI を使用して、スケール セットの自動スケーリングの設定を手動で有効にしたり編集したりしないでください。 必要なスケール設定の管理は、Kubernetes クラスター オートスケーラーが行います。 詳細については、[ノード リソース グループ内の AKS リソースを変更可能かどうか](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group)に関するセクションを参照してください。
 
-次の例では、仮想マシンのスケール セットを使用して AKS クラスターを作成します。 また、クラスターのノードプール上でクラスター オートスケーラーを有効にし、最小値を *1* ノード、最大値を *3* ノードに設定します。
+次の例では、仮想マシンのスケール セットによって戻された 1 つのノード プールを使用して、AKS クラスターを作成します。 また、クラスターのノードプール上でクラスター オートスケーラーを有効にし、最小値を *1* ノード、最大値を *3* ノードに設定します。
 
 ```azurecli-interactive
 # First create a resource group
@@ -124,9 +124,24 @@ az aks create \
 
 このクラスターを作成して、クラスター オートスケーラーの設定を構成するには数分かかります。
 
-### <a name="enable-the-cluster-autoscaler-on-an-existing-node-pool-in-an-aks-cluster"></a>AKS クラスター内の既存のノード プールでのクラスター オートスケーラーの有効化
+### <a name="update-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-a-single-node-pool"></a>1 つのノード プールを使用してクラスター内の既存のノード プールでクラスター オートスケーラーを更新する
 
-前述の「[開始する前に](#before-you-begin)」セクションで概説されている要件を満たす、AKS クラスター内のノード プール上でクラスター オートスケーラーを有効にすることができます。 ノード プール上でクラスター オートスケーラーを有効にするには、[az aks nodepool update][az-aks-nodepool-update] コマンドを使用します。
+前述の「[開始する前に](#before-you-begin)」セクションで概説されている要件を満たすクラスターで、前のクラスター オートスケーラーの設定を更新することができます。 *1 つ*のノード プールを持つクラスター上でクラスター オートスケーラーを有効にするには、[az aks update][az-aks-update] コマンドを使用します。
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --update-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 5
+```
+
+クラスター オートスケーラーは、後で `az aks update --enable-cluster-autoscaler` コマンドまたは `az aks update --disable-cluster-autoscaler` コマンドを使用して有効または無効にすることができます。
+
+### <a name="enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools"></a>複数のノード プールを持つクラスター内の既存のノード プールでクラスター オートスケーラーを有効にする
+
+クラスター オートスケーラーは、[複数のノード プールのプレビュー機能](use-multiple-node-pools.md)を有効にして使用することもできます。 複数のノード プールを保持し、前述の「[開始する前に](#before-you-begin)」セクションで概説されている要件を満たす、AKS クラスター内の個々のノード プール上でクラスター オートスケーラーを有効にすることができます。 個々のノード プール上でクラスター オートスケーラーを有効にするには、[az aks nodepool update][az-aks-nodepool-update] コマンドを使用します。
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -138,7 +153,7 @@ az aks nodepool update \
   --max-count 3
 ```
 
-上の例では *myAKSCluster* 内の *mynodepool* ノード プールのクラスター オートスケーラーを有効にし、最小値を *1* ノード、最大値を *3* ノードに設定しています。 最小ノード数がノード プール内の既存ノード数を超えている場合は、追加ノードを作成するために数分かかります。
+クラスター オートスケーラーは、後で `az aks nodepool update --enable-cluster-autoscaler` コマンドまたは `az aks nodepool update --disable-cluster-autoscaler` コマンドを使用して有効または無効にすることができます。
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>クラスター オートスケーラーの設定の変更
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 8/14/2019
 ms.author: rkarlin
-ms.openlocfilehash: b5aae5f8e7195cfea7817b9e40e6f28d47fc3eff
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 138efd7cba80e288c4f8831b45272f4e46c8ee3f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780400"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036238"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Azure Sentinel プレビューの使用に便利なリソース| Preview
 
@@ -41,8 +41,12 @@ Azure Logic Apps コネクタ: <https://docs.microsoft.com/connectors/>
 | PaloAlto| CEF を構成| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kusto クエリ言語コース| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
+## <a name="blogs-and-forums"></a>ブログとフォーラム
+
+ご質問は、Azure Sentinel の [TechCommunity スペース](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)に投稿してください。
+
+[TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) と [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/) から Azure Sentinel のブログ投稿を表示します。
+
 
 ## <a name="next-steps"></a>次の手順
-このドキュメントでは、Azure Sentinel の使用時に役立つリソースの一覧を示します。 Azure Sentinel の詳細については、以下を参照してください。
-
-* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)。 Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+このドキュメントでは、Azure Sentinel の使用時に役立つリソースの一覧を示します。 Azure のセキュリティとコンプライアンスに関する追加情報については、[Microsoft Azure Security とコンプライアンスに関するブログ](https://blogs.msdn.com/b/azuresecurity/)を参照してください。

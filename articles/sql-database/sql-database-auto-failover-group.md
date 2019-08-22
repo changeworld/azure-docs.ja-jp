@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/18/2019
-ms.openlocfilehash: 5d79edc4db07a2c5916725efc312d9f94fe985dc
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 05e16a67e6b01ce3bd1f03f0649baa1358414ea7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640096"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035072"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -133,9 +133,13 @@ ms.locfileid: "68640096"
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>単一データベースとエラスティック プールでフェールオーバー グループを使用する場合のベスト プラクティス
 
-自動フェールオーバー グループはプライマリ SQL Database サーバーに構成する必要があり、それを別の Azure リージョンのセカンダリ SQL Database サーバーに接続します。  グループには、これらのサーバーのすべてまたは一部のデータベースを含めることができます。 次の図に、複数のデータベースと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
+自動フェールオーバー グループはプライマリ SQL Database サーバーに構成する必要があり、それを別の Azure リージョンのセカンダリ SQL Database サーバーに接続します。 グループには、これらのサーバーのすべてまたは一部のデータベースを含めることができます。 次の図に、複数のデータベースと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
 
 ![自動フェールオーバー](./media/sql-database-auto-failover-group/auto-failover-group.png)
+
+> [!NOTE]
+> フェールオーバー グループに単一データベースを追加する詳細な手順については、[単一データベースをフェールオーバー グループに追加する](sql-database-single-database-failover-group-tutorial.md)方法のページを参照してください。 
+
 
 ビジネス継続性を考慮してサービスを設計する場合は、次の一般的なガイドラインに従います。
 
@@ -167,12 +171,17 @@ ms.locfileid: "68640096"
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>マネージド インスタンスでフェールオーバー グループを使用する場合のベスト プラクティス
 
-自動フェールオーバー グループはプライマリ インスタンスに構成する必要があり、それを別の Azure リージョンのセカンダリ インスタンスに接続します。  インスタンス内のすべてのデータベースは、セカンダリ インスタンスにレプリケートされます。 次の図に、マネージド インスタンスと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
+> [!IMPORTANT]
+> マネージド インスタンスの自動フェールオーバー グループは、パブリック プレビュー段階です。
+
+自動フェールオーバー グループはプライマリ インスタンスに構成する必要があり、それを別の Azure リージョンのセカンダリ インスタンスに接続します。  インスタンス内のすべてのデータベースは、セカンダリ インスタンスにレプリケートされます。 
+
+次の図に、マネージド インスタンスと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
 
 ![自動フェールオーバー](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
-> [!IMPORTANT]
-> マネージド インスタンスの自動フェールオーバー グループは、パブリック プレビュー段階です。
+> [!NOTE]
+> マネージド インスタンスを追加してフェールオーバー グループを使用する詳細な手順については、[フェールオーバー グループにマネージド インスタンスを追加する](sql-database-managed-instance-failover-group-tutorial.md)方法のページを参照してください。 
 
 アプリケーションでデータ層としてマネージド インスタンスを使用する場合は、ビジネス継続性を考慮して設計する際に以下の一般的なガイドラインに従います。
 
@@ -367,6 +376,10 @@ ms.locfileid: "68640096"
 
 ## <a name="next-steps"></a>次の手順
 
+- 詳細なチュートリアルについては、以下を参照してください
+    - [フェールオーバー グループへの単一データベースの追加](sql-database-single-database-failover-group-tutorial.md)
+    - [エラスティック プールをフェールオーバー グループに追加する](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [マネージド インスタンスをフェールオーバー グループに追加する](sql-database-managed-instance-failover-group-tutorial.md)
 - サンプル スクリプトは、以下を参照してください。
   - [PowerShell を使用して、Azure SQL Database の単一のデータベースに対してアクティブ geo レプリケーションを構成する](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
   - [PowerShell を使用して、Azure SQL Database のプールされたデータベースに対してアクティブ geo レプリケーションを構成する](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)

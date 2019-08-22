@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: eca421697081310b1bf245172b3ff125e11c8728
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234167"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69031039"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。
@@ -34,7 +34,7 @@ Azure AD アプリケーション プロキシを初めて使用する場合は�
 
 1. 有効な **Azure サブスクリプション**。
 2. **Azure AD ディレクトリ** - オンプレミスのディレクトリと同期されているか、クラウドのみのディレクトリ。
-3. Azure AD アプリケーション プロキシを使用するには、**Azure AD Basic または Premium のライセンス**が必要です。
+3. Azure AD アプリケーション プロキシを使用するには、**Azure AD Premium のライセンス**が必要です。
 4. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](create-instance.md)に記載されているすべてのタスクを実行してください。
 
 <br>
@@ -46,13 +46,10 @@ AD ディレクトリの Azure AD アプリケーション プロキシを有効
 
 2. **[Azure Active Directory]** をクリックして、ディレクトリの概要を表示します。 **[エンタープライズ アプリケーション]** をクリックします。
 
-    ![Azure AD ディレクトリの選択](./media/app-proxy/app-proxy-enable-start.png)
-3. **[アプリケーション プロキシ]** をクリックします。 Azure AD Basic または Azure AD Premium サブスクリプションがない場合は、試用版を有効にするためのオプションが表示されます。 **[Enable Application Proxy? (アプリケーション プロキシの有効化)]** を **[Enable (有効化)]** に切り替え、 **[保存]** をクリックします。
+3. **[アプリケーション プロキシ]** をクリックします。
 
-    ![アプリケーション プロキシを有効にする](./media/app-proxy/app-proxy-enable-proxy-blade.png)
 4. コネクタをダウンロードするには、 **[コネクタ]** ボタンをクリックします。
 
-    ![コネクタのダウンロード](./media/app-proxy/app-proxy-enabled-download-connector.png)
 5. ダウンロード ページでライセンス条項とプライバシー アグリーメントに同意し、 **[ダウンロード]** ボタンをクリックします。
 
     ![ダウンロードの確認](./media/app-proxy/app-proxy-enabled-confirm-download.png)
@@ -75,7 +72,7 @@ Azure AD Domain Services のマネージド ドメインを有効化済みの同
 
     ![インストールの条項に同意する](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. インストール時に、Azure AD ディレクトリのアプリケーション プロキシにコネクタを登録するように求められます。
-   * **Azure AD グローバル管理者の資格情報**を指定します。 グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なる場合があります。
+   * **Azure AD アプリケーション管理者の資格情報**を指定します。 アプリケーション管理者のテナントは、Microsoft Azure の資格情報とは異なる場合があります。
    * コネクタの登録に使用する管理者アカウントは、アプリケーション プロキシ サービスを有効にしたディレクトリと同じディレクトリに属している必要があります。 たとえば、テナントのドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他の有効なエイリアスであることが必要です。
    * コネクタをインストールするサーバーで [IE セキュリティ強化の構成] がオンになっていると、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージに示された指示に従ってください。 Internet Explorer セキュリティ強化の構成が無効になっていることを確認します。
    * コネクタの登録が成功しない場合は、「 [アプリケーション プロキシのトラブルシューティング](../active-directory/manage-apps/application-proxy-troubleshoot.md)」をご覧ください。

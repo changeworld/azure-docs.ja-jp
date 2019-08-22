@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e87fc74b3fa989471f9074a33fc66d8cb8250aa0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 8e8b4ed3e101a13d369fff7b47ecbb00f8c04a52
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927850"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899803"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -387,7 +387,7 @@ Microsoft では、複数のセキュリティ上の方法およびテクノロ�
 - [Azure Active Directory アプリケーション プロキシ](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/)は、オンプレミスでホストされた Web アプリケーションに対する SSO およびセキュリティ保護されたリモート アクセスを提供します。
 
 ## <a name="next-steps"></a>次の手順
-- [Microsoft Azure セキュリティの概要](./https://docs.microsoft.com/azure/security)
+- [Microsoft Azure セキュリティの概要](https://docs.microsoft.com/azure/security)
 
 Azure 内でデータとサービスを保護するために使用できる、Azure のサービスと機能
 

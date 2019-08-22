@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 5aa5ea2a39a0fb9f969e965fed14063522197cda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4a37345cf33cbb02a6bd9a70b0253a55ee4c9478
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303792"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035590"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps でチャンクを使用して大きいサイズのメッセージを処理する
 
@@ -144,7 +144,13 @@ HTTP アクションからチャンクされたコンテンツをアップロー
      | **Content-Length** | <*content-length*> | string | 現在のチャンクのサイズ (バイト単位) |
      |||||
 
-4. PATCH 要求後に、エンドポイントは、状態コード "200" で応答することで、各チャンクの受信を確認します。
+4. 各 PATCH 要求の後、エンドポイントでは、"200" 状態コードと次の応答ヘッダーで応答することによって、各チャンクの受信を確認します。
+
+   | エンドポイントの応答ヘッダー フィールド | Type | 必須 | 説明 |
+   |--------------------------------|------|----------|-------------|
+   | **Range** | string | はい | エンドポイントで受信されたコンテンツのバイト範囲。例: "bytes=0-1023" |   
+   | **x-ms-chunk-size** | 整数 | いいえ | 推奨されたチャンク サイズ (バイト単位) |
+   ||||
 
 たとえば、次のアクション定義は、チャンクされたコンテンツをエンドポイントにアップロードするための HTTP POST 要求を示しています。 アクションの `runTimeConfiguration` プロパティの中で、`contentTransfer` プロパティが `transferMode` を `chunked` に設定しています。
 
