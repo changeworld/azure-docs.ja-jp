@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 1c60c4b868854952771ba297107904762a2357d8
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ef51a1b130323a8799d5334d8d043fda08fcc7ef
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032991"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69896962"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Azure CLI を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する (プレビュー)
 
@@ -49,7 +49,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含む組み込みロールの詳細については、「[Azure リソースの組み込みロール](/role-based-access-control/built-in-roles)」を参照してください。
+**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含む組み込みロールの詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Azure AD の資格情報を使用して SAS をセキュリティ保護する
 
@@ -63,7 +63,7 @@ Azure CLI を使用してユーザー委任 SAS を作成すると、SAS への�
 
 Azure CLI でコンテナー用にユーザー委任 SAS を作成するには、[az storage container generate-sas](/cli/azure/storage/container#az-storage-container-generate-sas) コマンドを呼び出します。
 
-コンテナーでユーザー委任 SAS に対してサポートされているアクセス許可には、追加、作成、削除、一覧表示、読み取り、書き込みがあります。 アクセス許可は、単独で指定することも、組み合わせて指定することもできます。 これらのアクセス許可の詳細については、「[ユーザー委任 SAS を作成する](/rest/api/storageservices/create-a-user-delegation-sas)」を参照してください。
+コンテナーでユーザー委任 SAS に対してサポートされているアクセス許可には、追加、作成、削除、一覧表示、読み取り、書き込みがあります。 アクセス許可は、単独で指定することも、組み合わせて指定することもできます。 これらのアクセス許可の詳細については、「[ユーザー委任 SAS を作成する](/rest/api/storageservices/create-user-delegation-sas)」を参照してください。
 
 次の例では、コンテナー用のユーザー委任 SAS トークンが返されます。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
@@ -87,7 +87,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 Azure CLI で BLOB 用にユーザー委任 SAS を作成するには、[az storage blob generate-sas](/cli/azure/storage/blob#az-storage-blob-generate-sas) コマンドを呼び出します。
 
-BLOB でユーザー委任 SAS に対してサポートされているアクセス許可には、追加、作成、削除、読み取り、書き込みがあります。 アクセス許可は、単独で指定することも、組み合わせて指定することもできます。 これらのアクセス許可の詳細については、「[ユーザー委任 SAS を作成する](/rest/api/storageservices/create-a-user-delegation-sas)」を参照してください。
+BLOB でユーザー委任 SAS に対してサポートされているアクセス許可には、追加、作成、削除、読み取り、書き込みがあります。 アクセス許可は、単独で指定することも、組み合わせて指定することもできます。 これらのアクセス許可の詳細については、「[ユーザー委任 SAS を作成する](/rest/api/storageservices/create-user-delegation-sas)」を参照してください。
 
 次の構文では、BLOB 用のユーザー委任 SAS が返されます。 この例では、`--full-uri` パラメーターを指定しており、これにより SAS トークンを追加した BLOB URI が返されます。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
@@ -115,5 +115,5 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 ## <a name="next-steps"></a>次の手順
 
-- [ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-a-user-delegation-sas)
+- [ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-user-delegation-sas)
 - [Get User Delegation Key 操作](/rest/api/storageservices/get-user-delegation-key)

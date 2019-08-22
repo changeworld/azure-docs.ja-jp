@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ea983255463080592181cda321ef6b6d1ff147f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: be391f2aa9ee5d94ffc36a6e03d3af8881346520
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932353"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636551"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要
 
@@ -100,7 +100,7 @@ App Service プランは、いつでもスケールアップまたはスケー�
 
 逆も同じように動作します。 上位レベルの能力や機能が不要になったと感じる場合は、下位レベルにスケールダウンして、コストを節約できます。
 
-App Service プランのスケールアップについては、「[Azure でのアプリのスケールアップ](web-sites-scale.md)」をご覧ください。
+App Service プランのスケールアップについては、「[Azure でのアプリのスケールアップ](manage-scale-up.md)」をご覧ください。
 
 アプリが他のアプリと同じ App Service プランにある場合は、コンピューティング リソースを分離すると、アプリのパフォーマンスが向上します。 これを行うには、アプリを別の App Service プランに移動します。 詳しくは、「[Move an app to another App Service plan (アプリを別の App Service プランに移動する)](app-service-plan-manage.md#move)」をご覧ください。
 

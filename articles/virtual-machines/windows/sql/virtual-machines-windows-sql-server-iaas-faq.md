@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 80c90ceb0e2edac47d67b99e7fb7f03c1ab82fb1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5b3c65361f45c8ad5bdf3adf89dc3002c229d0d0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882354"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650406"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -87,7 +87,7 @@ ms.locfileid: "68882354"
 
    スタンバイ セカンダリ可用性グループまたはフェールオーバー クラスター化されたインスタンスの無料パッシブ ライセンスを得るには、[ライセンス ガイド PDF](https://download.microsoft.com/download/7/8/C/78CDF005-97C1-4129-926B-CE4A6FE92CF5/SQL_Server_2017_Licensing_guide.pdf) に概要が記載されている次の条件をすべて満たす必要があります。
 
-   1. [ライセンス モビリティ](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)は[ソフトウェア アシュアランス](https://www.microsoft.comlicensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)から与えられます。 
+   1. [ライセンス モビリティ](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)は[ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)から与えられます。 
    1. パッシブ SQL Server インスタンスでは、クライアントに SQL Server データを提供することや、アクティブな SQL Server ワークロードを実行することがありません。 プライマリ サーバーと同期を取ること、それ以外では、パッシブ データベースをウォーム スタンバイの状態で維持することにのみ使用されます。 アクティブ SQL Server ワークロードを実行している、またはセカンダリ サーバーから追加でバックアップするなど、何らかの "作業" をしているクライアントへの報告としてデータを提供している場合、有料ライセンスの SQL Server インスタンスにする必要があります。 
    1. アクティブ SQL Server ライセンスはソフトウェア アシュアランスの対象となり、パッシブ セカンダリ SQL Server インスタンスが **1 つ**だけ許可され、その計算処理量はライセンスのあるアクティブ サーバーの計算処理量までになります。 
    1. セカンダリ SQL Server VM では、ライセンス持ち込み (BYOL) または Azure ハイブリッド特典 (AHB) [ライセンスモデル](virtual-machines-windows-sql-ahb.md)が利用されます。 

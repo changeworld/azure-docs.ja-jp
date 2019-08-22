@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: magoedte
-ms.openlocfilehash: c6fa4df1fb2fc7559f706d81621ea198f5ca7cdc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881425"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624336"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースを管理する
 
@@ -44,12 +44,12 @@ Azure portal から、あるいは Azure PowerShell を利用し、ワークス�
 
 ### <a name="configure-from-the-azure-portal"></a>Azure portal から構成する
 
-現在のワークスペース アクセス制御モードは、 **[Log Analytics ワークスペース]** メニューのワークスペースの **[概要]** ページで確認できます。 
+現在のワークスペース アクセス制御モードは、 **[Log Analytics ワークスペース]** メニューのワークスペースの **[概要]** ページで確認できます。
 
 ![ワークスペースのアクセス制御モードの表示](media/manage-access/view-access-control-mode.png)
 
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
-1. Azure portal で、[Log Analytics ワークスペース]、目的のワークスペース の順に選択します。  
+1. Azure portal で、[Log Analytics ワークスペース]、目的のワークスペース の順に選択します。
 
 ワークスペースの **[プロパティ]** ページからこの設定を変更できます。 ワークスペースを構成するアクセス許可を持たない場合、設定の変更は無効になります。
 
@@ -60,7 +60,7 @@ Azure portal から、あるいは Azure PowerShell を利用し、ワークス�
 次のコマンドを使用して、サブスクリプション内のすべてのワークスペースのアクセス制御モードを調べます。
 
 ```powershell
-Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions}
 ```
 
 出力は次のようになります。
@@ -70,10 +70,10 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-値が `False` の場合、ワークスペースは、ワークスペースコンテキスト アクセス モードで構成されていることを意味します。  値が `True` の場合、ワークスペースは、リソースコンテキスト アクセス モードで構成されていることを意味します。 
+値が `False` の場合、ワークスペースは、ワークスペースコンテキスト アクセス モードで構成されていることを意味します。  値が `True` の場合、ワークスペースは、リソースコンテキスト アクセス モードで構成されていることを意味します。
 
->[!NOTE]
->ブール値のないワークスペースが返され、空白の場合は、`False` 値の結果とも一致します。
+> [!NOTE]
+> ブール値のないワークスペースが返され、空白の場合は、`False` 値の結果とも一致します。
 >
 
 特定のワークスペースのアクセス制御モードをリソースコンテキストのアクセス許可に設定するには、次のスクリプトを使用します。
@@ -81,9 +81,9 @@ DefaultWorkspace21532: False
 ```powershell
 $WSName = "my-workspace"
 $Workspace = Get-AzResource -Name $WSName -ExpandProperties
-if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $Workspace.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properties -Force
 ```
@@ -92,9 +92,9 @@ Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properti
 
 ```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
-if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null)
     { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
-else 
+else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
@@ -159,10 +159,10 @@ Log Analytics 閲覧者ロールには、次の Azure アクションが含ま�
 * 管理ソリューションの追加と削除
 
     > [!NOTE]
-    > 最後の 2 つのアクションを正常に実行するには、このアクセス許可をリソース グループまたはサブスクリプション レベルで付与する必要があります。  
+    > 最後の 2 つのアクションを正常に実行するには、このアクセス許可をリソース グループまたはサブスクリプション レベルで付与する必要があります。
 
 * ストレージ アカウント キーの読み取り
-* Azure Storage からのログの収集の構成  
+* Azure Storage からのログの収集の構成
 * 次のような、Azure リソースの監視設定の編集
   * VM への VM 拡張機能の追加
   * すべての Azure リソースに対する Azure Diagnostics の構成
@@ -202,7 +202,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 | アクセス許可 | 説明 |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>次に例を示します。<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | リソースのすべてのログ データを表示可能。  |
-| `Microsoft.Insights/diagnosticSettings/write ` | 診断設定を構成し、このリソースに設定を許可する機能。 |
+| `Microsoft.Insights/diagnosticSettings/write` | 診断設定を構成し、このリソースに設定を許可する機能。 |
 
 通常、`/read` のアクセス許可は、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールまたは[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールなど、 _\*/read or_ _\*_ アクセス許可を含むロールによって付与されます。 特定の操作を含むカスタム ロールまたは専用の組み込みロールには、このアクセス許可が含まれないことがあります。
 

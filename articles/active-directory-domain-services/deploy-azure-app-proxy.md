@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 35211d6f832033a2bb16c495ebab839b7f740445
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 21693926bae681cf15d31dca06344dfa5d865e3b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031039"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69613023"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。
@@ -35,7 +35,7 @@ Azure AD アプリケーション プロキシを初めて使用する場合は�
 1. 有効な **Azure サブスクリプション**。
 2. **Azure AD ディレクトリ** - オンプレミスのディレクトリと同期されているか、クラウドのみのディレクトリ。
 3. Azure AD アプリケーション プロキシを使用するには、**Azure AD Premium のライセンス**が必要です。
-4. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](create-instance.md)に記載されているすべてのタスクを実行してください。
+4. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](tutorial-create-instance.md)に記載されているすべてのタスクを実行してください。
 
 <br>
 
@@ -114,18 +114,18 @@ Azure アプリケーション プロキシ コネクタで Kerberos の制約�
 
 Get-ADComputer PowerShell コマンドレットを使用して、Azure AD アプリケーション プロキシ コネクタがインストールされているコンピューターの設定を取得します。
 ```powershell
-$ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
+$ConnectorComputerAccount = Get-ADComputer -Identity contoso-proxy.contoso.com
 ```
 
 その後、Set-ADComputer コマンドレットを使用して、リソース サーバーにリソースベースの KCD を設定します。
 ```powershell
-Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
+Set-ADComputer contoso-resource.contoso.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 
 マネージド ドメインに複数のアプリケーション プロキシ コネクタをデプロイした場合は、そのコネクタ インスタンスごとにリソースベースの KCD を構成する必要があります。
 
 
 ## <a name="related-content"></a>関連コンテンツ
-* [Azure AD ドメイン サービス - 作業開始ガイド](create-instance.md)
+* [Azure AD ドメイン サービス - 作業開始ガイド](tutorial-create-instance.md)
 * [マネージド ドメインで Kerberos の制約付き委任を構成する](deploy-kcd.md)
 * [Kerberos の制約付き委任の概要](https://technet.microsoft.com/library/jj553400.aspx)
