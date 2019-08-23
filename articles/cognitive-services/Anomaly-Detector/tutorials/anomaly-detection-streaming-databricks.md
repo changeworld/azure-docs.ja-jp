@@ -168,7 +168,7 @@ Twitter アプリケーションについて取得した値を保存します。
     |Name     | Anomaly Detector リソースの名前。        |
     |Subscription     | リソースが関連付けられる Azure サブスクリプション。        |
     |Location     | Azure の場所。        |
-    |Pricing tier     | サービスの価格レベル。 Anomaly Detector の価格の詳細については、[料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)を参照してください。        |
+    |価格レベル     | サービスの価格レベル。 Anomaly Detector の価格の詳細については、[料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)を参照してください。        |
     |Resource group     | 新しいリソース グループを作成するか、既存のリソース グループを選択するかを指定します。        |
 
 

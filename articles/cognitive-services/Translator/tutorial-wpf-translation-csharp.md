@@ -114,7 +114,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 
 このユーザー インターフェイスには、次のコンポーネントが含まれています。
 
-| EnableAdfsAuthentication | Type | 説明 |
+| 名前 | Type | 説明 |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Microsoft Translator でサポートされているテキスト翻訳の言語の一覧を表示します。 ユーザーは、翻訳前の言語を選択します。 |
 | `ToLanguageComboBox` | ComboBox | `FromComboBox` と同じ言語の一覧を表示しますが、ユーザーの翻訳先の言語を選択するために使用されます。 |

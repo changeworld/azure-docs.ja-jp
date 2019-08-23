@@ -22,7 +22,7 @@ ms.locfileid: "68705038"
 
 <sub> *次の属性は、会議 (シリーズ) エンティティに固有です。(Ty = '3') </sub>
 
-名前    |説明                            |Type       | Operations
+EnableAdfsAuthentication    |説明                            |Type       | Operations
 ------- | ------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                              |Int64      |等しい
 CN      |会議 (シリーズ) の標準化名      |string     |等しい

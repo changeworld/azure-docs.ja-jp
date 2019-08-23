@@ -30,7 +30,7 @@ ms.locfileid: "67593200"
 
 「Always (常に)」一致条件では、一連の既定の機能がすべての要求に適用されます。
 
-名前 | 目的
+EnableAdfsAuthentication | 目的
 -----|--------
 [Always (常に)](#always) | 一連の既定の機能をすべての要求に適用します。
 
@@ -38,7 +38,7 @@ ms.locfileid: "67593200"
 
 この「Device (デバイス)」一致条件では、モバイル デバイスからの要求をそのプロパティに基づいて識別します。  
 
-名前 | 目的
+EnableAdfsAuthentication | 目的
 -----|--------
 [デバイス](#device) | モバイル デバイスからの要求をそのプロパティに基づいて識別します。
 
@@ -46,7 +46,7 @@ ms.locfileid: "67593200"
 
 「Location (場所)」一致条件では、要求者の位置情報に基づいて要求を識別します。
 
-名前 | 目的
+EnableAdfsAuthentication | 目的
 -----|--------
 [AS Number (AS 番号)](#as-number) | 特定のネットワークから送信される要求を識別します。
 [Country (国)](#country) | 指定した国/地域から送信される要求を識別します。
@@ -55,7 +55,7 @@ ms.locfileid: "67593200"
 
 「配信元 (Origin)」一致条件では、Content Delivery Network ストレージまたは顧客の配信元サーバーを参照する要求を識別します。
 
-名前 | 目的
+EnableAdfsAuthentication | 目的
 -----|--------
 [CDN Origin (CDN 配信元)](#cdn-origin) | Content Delivery Network ストレージに格納されたコンテンツの要求を識別します。
 [Customer Origin (顧客配信元)](#customer-origin) | 特定の顧客の配信元サーバーに格納されているコンテンツの要求を識別します。
@@ -64,7 +64,7 @@ ms.locfileid: "67593200"
 
 「要求 (Request)」一致条件では、プロパティに基づいて要求が識別されます。
 
-名前 | 目的
+EnableAdfsAuthentication | 目的
 -----|--------
 [Client IP Address (クライアント IP アドレス)](#client-ip-address) | 特定の IP アドレスから送信される要求を識別します。
 [Cookie Parameter (Cookie パラメーター)](#cookie-parameter) | 指定した値の各要求に関連付けられている Cookie を確認します。
@@ -81,7 +81,7 @@ ms.locfileid: "67593200"
 
 「URL」一致条件では、URL に基づいて要求が識別されます。
 
-名前 | 目的
+EnableAdfsAuthentication | 目的
 -----|--------
 [URL Path Directory (URL パス ディレクトリ)](#url-path-directory) | 相対パスで要求を識別します。
 [URL Path Extension (URL パス拡張子)](#url-path-extension) | ファイル名の拡張子で要求を識別します。
@@ -953,7 +953,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 
 次の例は、このオプションが特定の状況でどのように機能するかを示しています。
 
-名前  | 値 |  結果
+EnableAdfsAuthentication  | 値 |  結果
 ------|-------|--------
 User  | Joe   | 要求された URL のクエリ文字列が "?user=joe" の場合、このパターンに一致します。
 User  | *     | 要求された URL のクエリ文字列に User パラメーターが含まれている場合、このパターンに一致します。
@@ -1053,7 +1053,7 @@ Email | Joe\* | 要求された URL のクエリ文字列に、"Joe" で始ま�
 
 次の例は、このオプションが特定の状況でどのように機能するかを示しています。
 
- 名前                 | 説明
+ EnableAdfsAuthentication                 | 説明
  ---------------------|------------
 user=joe              | 要求された URL のクエリ文字列が "?user=joe" の場合、このパターンに一致します。
 \*user=\* \*optout=\* | CDN URL クエリに user または optout パラメーターが含まれている場合、このパターンに一致します。

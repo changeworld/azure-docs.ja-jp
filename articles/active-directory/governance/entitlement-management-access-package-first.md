@@ -71,7 +71,7 @@ Azure AD Premium P2 または Enterprise Mobility + Security E5 ライセンス�
 
 1. 次の 2 人のユーザーを作成または構成します。 以下の名前を使用することも、別の名前を使用することもできます。 **Admin1** は、現在サインイン済みのユーザーで構いません。
 
-    | EnableAdfsAuthentication | ディレクトリ ロール | 説明 |
+    | 名前 | ディレクトリ ロール | 説明 |
     | --- | --- | --- |
     | **Admin1** | 全体管理者<br/>または<br/>制限付き管理者 (ユーザー管理者) | 管理者かつ承認者 |
     | **Requestor1** | User | 内部要求者 |

@@ -144,7 +144,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| EnableAdfsAuthentication | 1 |
+| Name | 1 |
 | Type | REG_SZ (文字列) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
@@ -153,7 +153,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 |    |    |
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| EnableAdfsAuthentication | 1 |
+| Name | 1 |
 | Type | REG_SZ (文字列) |
 | Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 

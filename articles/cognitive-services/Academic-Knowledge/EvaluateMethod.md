@@ -31,7 +31,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 
 ## <a name="request-parameters"></a>要求パラメーター  
 
-名前     | 値 | 必須  | 説明
+EnableAdfsAuthentication     | 値 | 必須  | 説明
 -----------|-----------|---------|--------
 **expr**       | テキスト文字列 | はい | エンティティが返す必要のあるエンティティを指定するクエリ式。
 **model**      | テキスト文字列 | いいえ  | クエリを実行するモデルの名前。  現時点では、既定値は *latest* です。        
@@ -44,7 +44,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 
 ## <a name="response-json"></a>応答 (JSON)
 
-名前 | 説明
+EnableAdfsAuthentication | 説明
 -------|-----   
 **expr** |  要求からの *expr* パラメーター。
 **entities** |  クエリ式に一致する 0 個以上のエンティティの配列。 各エンティティには、自然対数確率値と、要求されたその他の属性の値が含まれています。

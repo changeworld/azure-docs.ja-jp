@@ -150,7 +150,7 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>サポートされる通貨
 Azure Site Recovery Deployment Planner は、次のいずれかの通貨でコスト レポートを生成できます。
 
-|通貨|名前||通貨|名前||通貨|名前|
+|通貨|EnableAdfsAuthentication||通貨|EnableAdfsAuthentication||通貨|EnableAdfsAuthentication|
 |---|---|---|---|---|---|---|---|
 |ARS|アルゼンチン ペソ ($)||AUD|オーストラリア ドル ($)||BRL|ブラジル レアル (R$)|
 |CAD|カナダ ドル ($)||CHF|スイス フラン (chf)||DKK|デンマーク クローネ (kr)|

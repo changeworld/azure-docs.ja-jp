@@ -23,7 +23,7 @@ ms.locfileid: "68704932"
 <sub> *次の属性は、論文エンティティに固有です。(Ty = '0') </sub>
 
 
-名前    |説明                                        |Type       | Operations
+EnableAdfsAuthentication    |説明                                        |Type       | Operations
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Id      |エンティティ ID                                          |Int64      |等しい
 Ti      |論文のタイトル                                        |string     |Equals、<br/>StartsWith
@@ -51,7 +51,7 @@ E       |拡張メタデータ (次の表を参照)                |string     |
 
 ## <a name="extended-metadata-attributes"></a>拡張メタデータの属性 ##
 
-名前    | 説明               
+EnableAdfsAuthentication    | 説明               
 --------|---------------------------    
 DN      | 論文の表示名 
 S       | ソース - 静的ランク順になった論文の Web ソースの一覧

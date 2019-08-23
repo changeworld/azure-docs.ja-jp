@@ -30,7 +30,7 @@ ms.locfileid: "68706672"
 
 ## <a name="request-parameters"></a>要求パラメーター
 
-名前     | 値 | 必須  | 説明
+EnableAdfsAuthentication     | 値 | 必須  | 説明
 ---------|---------|---------|---------
 **query**    | テキスト文字列 | はい | ユーザーが入力したクエリ。  complete が 1 に設定されている場合、クエリは、クエリのオートコンプリートの候補を生成するためのプレフィックスとして解釈されます。        
 **model**    | テキスト文字列 | いいえ  | クエリを実行するモデルの名前。  現時点では、既定値は *latest* です。        
@@ -43,7 +43,7 @@ ms.locfileid: "68706672"
   
 ## <a name="response-json"></a>応答 (JSON)
 
-名前     | 説明
+EnableAdfsAuthentication     | 説明
 ---------|---------
 **query** |要求からの *query* パラメーター。
 **interpretations** |ユーザー入力を文法と照合する 0 以上の異なる方法の配列。

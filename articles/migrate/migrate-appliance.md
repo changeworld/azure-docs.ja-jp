@@ -109,7 +109,7 @@ IPv6 アドレス | vm.Guest.Net
 読み取りのスループット (MB/秒) | net.received.average
 書き込みのスループット (MB/秒) | net.transmitted.average
 **インベントリ パスの詳細** | 
-名前 | container.GetType().Name
+EnableAdfsAuthentication | container.GetType().Name
 子オブジェクトの型 | container.ChildType
 参照の詳細 | container.MoRef
 親の詳細 | Container.Parent
