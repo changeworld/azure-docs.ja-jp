@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: alkohli
   ms.author: alkohli
-  ms.date: 08/14/2019
-  ms.openlocfilehash: 03de9ceffe4495b1c3a39dad6617cc72d022fbbd
-  ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+  ms.date: 08/16/2019
+  ms.openlocfilehash: 2c42ee93804eb1e0e24b0b67925a092cc8517ceb
+  ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69557840"
+  ms.lasthandoff: 08/20/2019
+  ms.locfileid: "69650367"
 landingContent:
 - title: Data Box ファミリについて
   linkLists:
@@ -53,75 +53,43 @@ landingContent:
     links:
     - text: Data Box の場合
       url: data-box-system-requirements.md
-    - text: Data Box Blob ストレージの場合
-      url: data-box-system-requirements-rest.md
     - text: Data Box Disk の場合
       url: data-box-disk-system-requirements.md
     - text: Data Box Heavy
       url: data-box-heavy-system-requirements.md
-- title: Data Box をデプロイする
+- title: 注文、設定、コピー、返送
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 順序
+    - text: Data Box
       url: data-box-deploy-ordered.md
-    - text: ケーブル
-      url: data-box-deploy-set-up.md
-    - text: SMB を使ってデータに接続し、コピーする
-      url: data-box-deploy-copy-data.md
-    - text: Azure データを返却、アップロード、検証する
-      url: data-box-deploy-picked-up.md
-- title: Data Box Disk をデプロイする
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 順序
+    - text: Data Box Disk
       url: data-box-disk-deploy-ordered.md
-    - text: ロックを解除して接続する
-      url: data-box-disk-deploy-set-up.md
-    - text: データをコピーし、検証する
-      url: data-box-disk-deploy-copy-data.md
-    - text: Azure データを返却、アップロード、検証する
-      url: data-box-disk-deploy-picked-up.md
-- title: Data Box Heavy をデプロイする
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 順序
+    - text: Data Box Heavy
       url: data-box-heavy-deploy-ordered.md
-    - text: ケーブル
-      url: data-box-heavy-deploy-set-up.md
-    - text: SMB を使ってデータに接続し、コピーする
-      url: data-box-heavy-deploy-copy-data.md
-    - text: Azure データを返却、アップロード、検証する
-      url: data-box-heavy-deploy-picked-up.md
 - title: デバイスを管理する
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box、Data Box Heavy (Azure 内)
+    - text: Data Box (Azure 内)
       url: data-box-portal-admin.md
-    - text: Data Box、Data Box Heavy (ローカル UI)
-      url: data-box-local-web-ui-admin.md
     - text: Data Box Disk (Azure 内)
       url: data-box-portal-ui-admin.md
-- title: FAQ
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: FAQ - Data Box
-      url: data-box-faq.md
-    - text: FAQ - Data Box Disk
-      url: data-box-disk-faq.md
+    - text: Data Box Heavy (Azure 内)
+      url: data-box-portal-admin.md
 - title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Data Box、Data Box Heavy
+    - text: Data Box
       url: data-box-troubleshoot.md
-    - text: Data Box BLOB ストレージ
-      url: data-box-troubleshoot-rest.md
     - text: Data Box Disk
       url: data-box-disk-troubleshoot.md
+    - text: Data Box Heavy
+      url: data-box-troubleshoot.md
+    - text: Data Box の FAQ を使用
+      url: data-box-faq.md
+    - text: Data Box Disk の FAQ を使用
+      url: data-box-disk-faq.md
     - text: サポート チケットを開く
       url: data-box-disk-contact-microsoft-support.md

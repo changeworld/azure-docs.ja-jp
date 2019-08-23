@@ -356,6 +356,8 @@
       href: service-fabric-concept-resource-model.md
     - name: マネージド ID (プレビュー)
       href: concepts-managed-identity.md
+    - name: コンテナー リポジトリの資格情報の構成
+      href: configure-container-repository-credentials.md
 - name: ハウツー ガイド
   items:
     - name: 開発環境を設定する

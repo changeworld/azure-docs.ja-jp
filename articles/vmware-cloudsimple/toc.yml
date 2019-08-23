@@ -72,7 +72,7 @@
               href: create-private-cloud.md
             - name: プライベート クラウドを管理する
               href: manage-private-cloud.md
-            - name: プライベート クラウドを拡大する
+            - name: プライベート クラウドを拡張する
               href: expand-private-cloud.md
             - name: プライベート クラウドを縮小する
               href: shrink-private-cloud.md
@@ -105,7 +105,7 @@
             - name: ユーザーの一覧を表示する
               href: users.md
             - name: プライベート クラウドへの仮想ネットワーク接続を設定する
-              href: 'https://docs.azure.cloudsimple.com/virtual-network-connection/'
+              href: virtual-network-connection.md
             - name: ユーザー プロファイルを編集する
               href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: VMware 仮想マシンをプライベート クラウド用に設定する
@@ -124,8 +124,8 @@
               href: escalate-privileges.md
             - name: ワークロードの DNS と DHCP の設定
               href: dns-dhcp-setup.md
-            - name: 移行のための NSX レイヤー 2 VPN
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/#migrating-vms-using-nsx-layer-2-vpn'
+            - name: レイヤー 2 拡張済みネットワークを使用したワークロードの移行
+              href: migration-layer-2-vpn.md
         - name: プライベート クラウド ネットワーク
           items:
             - name: オンプレミスとプライベート クラウドの間の VPN 接続
@@ -142,27 +142,31 @@
               href: set-vcenter-identity.md
             - name: Azure Application Gateway と VMware VM
               href: azure-application-gateway.md
-            - name: プライベート クラウドの vCenter サーバーを vRealize Automation エンドポイントとして構成する
+            - name: vRealize Automation エンドポイントとしてのプライベート クラウドの vCenter サーバーの構成
               href: configure-server-vrealize-automation-endpoint.md
             - name: プライベート クラウドへのワークロード VM の移行
-              href: 'https://docs.azure.cloudsimple.com/migrate-workloads/'
+              href: migrate-workloads.md
             - name: Azure 上の VMware におけるアプリケーション高可用性の確保
               href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+            - name: 負荷分散ソリューションの選択
+              href: load-balancers.md
         - name: VMware のエコシステム
           items:
             - name: ワークロード仮想マシンのバックアップ
               href: backup-workloads-veeam.md
+            - name: Zerto を使用したディザスター リカバリー サイトとしてのプライベート クラウドの構成
+              href: disaster-recovery-zerto.md
             - name: VMware Horizon ソリューションのガイド
               href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
             - name: プライベート クラウドの vSAN 暗号化の構成
               href: vsan-encryption.md
-            - name: CloudSimple プライベート クラウドでの Oracle RAC のデプロイ
-              href: 'https://docs.azure.cloudsimple.com/oracle-rac/'
+            - name: プライベート クラウドの Oracle RAC 向けの最適化
+              href: oracle-real-application-clusters.md
         - name: Azure コア統合
           items:
             - name: プライベート クラウド vCenter の Azure AD ID ソース
               href: azure-ad.md
             - name: ExpressRoute を使用したオンプレミス ネットワーク接続
-              href: 'https://docs.azure.cloudsimple.com/on-premises-connection/'
+              href: on-premises-connection.md
             - name: ExpressRoute を使用した Azure 仮想ネットワーク接続
-              href: 'https://docs.azure.cloudsimple.com/azure-expressroute-connection/'
+              href: azure-expressroute-connection.md

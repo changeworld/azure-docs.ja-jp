@@ -82,7 +82,7 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-        - name: クラスルーム ラボを作成して構成する (教師)
+        - name: クラスルーム ラボを作成して構成する (講師)
           items:
             - name: クラスルーム ラボを作成して管理する
               href: classroom-labs/how-to-manage-classroom-labs.md
@@ -104,6 +104,10 @@
           items:
             - name: クラスルーム ラボへのアクセス
               href: classroom-labs/how-to-use-classroom-lab.md
+            - name: Linux VM にリモート デスクトップ接続を使用する
+              href: classroom-labs/how-to-use-remote-desktop-linux-student.md
+            - name: 仮想マシンのパスワードを設定またはリセットする
+              href: classroom-labs/how-to-set-virtual-machine-passwords-student.md
     - name: DevTest Labs
       items:
         - name: ラボの構成

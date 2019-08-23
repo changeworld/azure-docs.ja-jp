@@ -44,6 +44,8 @@
               href: ./appsource-offer-publishing-guide.md
             - name: Azure Active Directory を使用して AppSource と Marketplace のリストを有効にする
               href: ./enable-appsource-marketplace-using-azure-ad.md
+            - name: 統合されたソリューション
+              href: ./integrated-solutions-for-publishers.md
         - name: マーケティングのベスト プラクティス
           href: ./gtm-marketing-best-practices.md
           items:

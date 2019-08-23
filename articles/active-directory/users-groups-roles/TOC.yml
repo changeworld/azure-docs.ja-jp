@@ -102,7 +102,9 @@
           items:
             - name: 動的グループの作成
               href: groups-create-rule.md
-            - name: 動的グループの規則
+            - name: メンバーシップ ルールの更新
+              href: groups-update-rule.md
+            - name: 動的グループの規則と構文
               href: groups-dynamic-membership.md
             - name: グループ メンバーシップの種類の変更
               href: groups-change-type.md

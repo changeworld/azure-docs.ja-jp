@@ -97,9 +97,6 @@
         - name: テンプレートをモジュール化する
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
-        - name: シークレットを管理する
-          displayname: key vault
-          href: resource-manager-keyvault-parameter.md
         - name: 複数のインスタンスの作成
           href: resource-group-create-multiple.md
         - name: テンプレートの拡張機能を使用する
@@ -124,6 +121,13 @@
           href: secure-template-with-sas-token.md
         - name: 複数のリソース グループまたはサブスクリプションへのデプロイ
           href: resource-manager-cross-resource-group-deployment.md
+    - name: パラメーターを指定する
+      items:
+        - name: パラメーター ファイルを作成する
+          href: resource-manager-parameter-files.md
+        - name: 機密性の高い値を渡す
+          displayname: key vault
+          href: resource-manager-keyvault-parameter.md
     - name: CI/CD
       items:
         - name: パイプラインを使用した VS プロジェクト
