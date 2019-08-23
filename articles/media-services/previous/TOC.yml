@@ -72,7 +72,7 @@
             - name: ストレージ アクセス キーをローリングした後に Media Services を更新する
               href: media-services-roll-storage-access-keys.md
             - name: 複数のストレージ アカウントにわたって資産を管理する
-              href: meda-services-managing-multiple-storage-accounts.md
+              href: media-services-managing-multiple-storage-accounts.md
         - name: クォータと制限
           href: media-services-quotas-and-limitations.md
     - name: Postman を構成する
@@ -94,8 +94,6 @@
               href: media-services-dotnet-upload-files.md
             - name: REST
               href: media-services-rest-upload-files.md
-        - name: Aspera を使用した大きなファイルのアップロード
-          href: media-services-upload-files-with-aspera.md
         - name: StorSimple を使用したファイルのアップロード
           href: media-services-upload-files-from-storsimple.md
         - name: 既存の BLOB をコピーする

@@ -331,6 +331,8 @@
       href: automation-deploy-template-runbook.md
     - name: Azure Automation を Event Grid および Microsoft Teams と統合する
       href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
+    - name: Azure-SSIS IR を開始/停止する Azure Automation Runbook を作成してスケジュールする
+      href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
 - name: 監視
   items:
     - name: Log Analytics に Azure Automation のジョブ データを転送する

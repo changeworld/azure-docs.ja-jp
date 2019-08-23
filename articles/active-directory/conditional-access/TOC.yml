@@ -42,7 +42,7 @@
       href: plan-conditional-access.md
     - name: ベスト プラクティス
       href: best-practices.md
-    - name: 一般的なポリシー テンプレート
+    - name: 一般的な条件付きアクセス ポリシー
       items:
         - name: 管理者に対して MFA を必須にする
           href: howto-conditional-access-policy-admin-mfa.md

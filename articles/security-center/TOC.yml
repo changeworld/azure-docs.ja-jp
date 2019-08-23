@@ -133,24 +133,8 @@
           href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
         - name: 脆弱性評価がインストールされていない
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: Web アプリケーション ファイアウォールの追加
-          href: security-center-add-web-application-firewall.md
-        - name: アプリケーション保護を完了する
-          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
-        - name: 次世代ファイアウォールを追加する
-          href: security-center-add-next-generation-firewall.md
         - name: Enable Network Security Groups
           href: security-center-enable-network-security-groups.md
-        - name: インターネット接続エンドポイント経由のアクセスを制限する
-          href: security-center-restrict-access-through-internet-facing-endpoints.md
-        - name: NGFW 経由に限定したトラフィックのルーティング
-          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
-        - name: SQL データベースの監査と脅威検出を有効にする
-          href: security-center-enable-auditing-on-sql-databases.md
-        - name: SQL サーバーの監査と脅威検出を有効にする
-          href: security-center-enable-auditing-on-sql-servers.md
-        - name: Transparent Data Encryption の有効化
-          href: security-center-enable-transparent-data-encryption.md
         - name: 脅威レポート
           href: security-center-threat-report.md
         - name: カスタム アラート
