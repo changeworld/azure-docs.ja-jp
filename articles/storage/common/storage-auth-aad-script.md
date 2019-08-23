@@ -9,12 +9,12 @@ ms.date: 07/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d6a85d0f9480418bd840786e17ee258dbdb90c48
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 32b3f113658a20790e0f149739a882004f12fe21
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985210"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640829"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Azure AD 資格情報で Azure CLI または PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする
 
@@ -26,7 +26,7 @@ BLOB とキューのデータへのアクセス許可をロールベースのア
 
 拡張機能は、コンテナーとキューの操作でサポートされています。 呼び出す操作は、Azure CLI または PowerShell にサインインする Azure AD セキュリティ プリンシパルに与えられているアクセス許可に依存します。 Azure Storage のコンテナーまたはキューのアクセス許可は、ロールベースのアクセス制御 (RBAC) を介して割り当てられます。 たとえば、**BLOB データ閲覧者**ロールが割り当てられている場合、コンテナーまたはキューからデータを読み取るスクリプト コマンドを実行できます。 **BLOB データ共同作成者**ロールが割り当てられている場合、コンテナー、キュー、またはそれらに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。 
 
-コンテナーまたはキューでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[Call storage operations with OAuth tokens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」 (OAuth トークンを使用してストレージ操作を呼び出す) を参照してください。  
+コンテナーまたはキューでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[Call storage operations with OAuth tokens](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」 (OAuth トークンを使用してストレージ操作を呼び出す) を参照してください。  
 
 ## <a name="call-cli-commands-using-azure-ad-credentials"></a>Azure AD サインイン情報を使用して CLI コマンドを呼び出す
 

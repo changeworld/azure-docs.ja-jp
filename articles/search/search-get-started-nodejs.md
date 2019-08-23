@@ -2,7 +2,7 @@
 title: 'Node.js のクイック スタート: Azure Search REST API を使用したインデックスの作成、読み込み、クエリの実行 - Azure Search'
 description: JavaScript で作成、データの読み込み、クエリを実行する方法を説明する Azure Search 用 Node.js サンプル。
 author: lobrien
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 07/30/2019
 ms.author: laobri
-ms.openlocfilehash: 41ad5aed975f30250d53d746e7590f88e375b6e9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: b22a6371522674895465afac88e68f556ab09bcb
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977203"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656302"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-nodejs"></a>クイック スタート:Node.js で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]

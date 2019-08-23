@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c749f090cbb0aeb036a53a01e6cd516617c3186d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 77d5e4ace14fb0071b6e01a01edbad0128382303
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953873"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639733"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
@@ -97,7 +97,7 @@ ms.locfileid: "68953873"
 
 ## <a name="scale-an-app-service-plan"></a>App Service プランのスケーリング
 
-App Service プランの価格レベルをスケールアップする方法については、「[Azure でのアプリのスケールアップ](web-sites-scale.md)」を参照してください。
+App Service プランの価格レベルをスケールアップする方法については、「[Azure でのアプリのスケールアップ](manage-scale-up.md)」を参照してください。
 
 アプリのインスタンスの数をスケールアウトする方法については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)」をご覧ください。
 
@@ -113,7 +113,7 @@ App Service プランの価格レベルをスケールアップする方法に�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure でのアプリのスケールアップ](web-sites-scale.md)
+> [Azure でのアプリのスケールアップ](manage-scale-up.md)
 
 [change]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/change-appserviceplan.png
 [createASP]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-appserviceplan.png

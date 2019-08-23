@@ -1,20 +1,20 @@
 ---
 title: クイック スタート:イマーシブ リーダーを起動する iOS アプリを作成する (Swift)
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、iOS アプリを一から作成してイマーシブ リーダー機能を追加します。
 services: cognitive-services
-author: MeganRoach
+author: metanMSFT
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 08/01/2019
-ms.author: t-meroa
-ms.openlocfilehash: 64b3cab857a541d0bede88e7fdf21c00526b9a43
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.author: metan
+ms.openlocfilehash: 64fd7508244f2123cc10ee96ec4f805050aedfaa
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965155"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899526"
 ---
 # <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>クイック スタート:イマーシブ リーダーを起動する iOS アプリを作成する (Swift)
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb4ac9953bcadd9e49cee5b7b99e853705b6567c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9609a886bdcbf093cffaf888f9aeaff0d61acec1
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990282"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636660"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -167,7 +167,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 
 ![全般設定](./media/configure-common/open-general.png)
 
-ここでは、アプリのいくつかの一般的な設定を構成できます。 一部の設定では、[より高い価格レベルにスケールアップする](web-sites-scale.md)必要があります。
+ここでは、アプリのいくつかの一般的な設定を構成できます。 一部の設定では、[より高い価格レベルにスケールアップする](manage-scale-up.md)必要があります。
 
 - **[Stack settings] (スタックの設定)** : アプリを実行するためのソフトウェア スタック (言語や SDK バージョンを含む)。 Linux アプリやカスタム コンテナー アプリの場合は、オプションのスタートアップ コマンドまたはファイルを設定することもできます。
 - **[プラットフォームの設定]** : ホスティング プラットフォームの設定を構成できます。次のものが含まれます。
@@ -268,4 +268,4 @@ Linux アプリについては、次を参照してください。
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Azure App Service での監視の基本]: ./web-sites-monitor.md
 [パイプライン モード]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Azure App Service でのアプリのスケーリング]: ./web-sites-scale.md
+[Azure App Service でのアプリのスケーリング]: ./manage-scale-up.md

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934831"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899953"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory でのパスワードなしの環境
 
@@ -226,7 +226,7 @@ FIDO2 準拠のフォーム ファクターには、USB、NFC、および Blueto
 
 #### <a name="user-sets-up-fido2-security-key"></a>ユーザーが FIDO2 セキュリティ キーを設定する
 
-管理者は[手動でキーをプロビジョニング](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)し、エンド ユーザーに配布することができますが、Windows 10 のロック画面で FIDO2 資格情報プロバイダーをプロビジョニングして有効にすることは、[Intune](https://docs.microsoft.com/intune/windows-enrollment-methods) を介してサポートされます。 管理者は、パスワードなしの認証方法としてハードウェア トークン デバイスを有効にするには、[Azure portal](https://portal.azure.com/) も使用する必要があります。
+管理者は[手動でキーをプロビジョニング](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)し、エンド ユーザーに配布することができますが、Windows 10 のロック画面で FIDO2 資格情報プロバイダーをプロビジョニングして有効にすることは、[Intune](https://docs.microsoft.com/intune/windows-enrollment-methods) を介してサポートされます。 管理者は、パスワードなしの認証方法としてハードウェア トークン デバイスを有効にするには、[Azure portal](https://portal.azure.com/) も使用する必要があります。
 
 FIDO2 セキュリティ キーを展開するには、ユーザーが[統合された登録](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)を使用して自分のキーを登録する必要もあります。 統合された登録では、ユーザーは一度登録するだけで、Azure Multi-Factor Authentication とシングル サインオン パスワード リセット (SSPR) の両方のメリットを受けられます。
 
@@ -343,4 +343,4 @@ Microsoft のパスワードなしテクノロジを選択する際には、考�
 ## <a name="next-steps"></a>次の手順
 
 * 「[what is passwordless? (パスワードなしとは)](../../active-directory/authentication/concept-authentication-passwordless.md)」の概要
-* [Azure AD でパスワードなしを有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)
+* [Azure AD でパスワードなしを有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

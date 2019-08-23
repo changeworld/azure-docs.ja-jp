@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e8d4ab46c598580a3a87f4344202f2700926bf5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dca0146cc16ea63e0621eff8f508f15e0046b63b
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510320"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877383"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 この記事では、デバイス開発者として、Windows IoT Core デバイスを Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
 
@@ -100,9 +102,9 @@ Azure IoT Central アプリケーションでは、**Device Explorer** ページ
 
 | Display name | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
-| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1,000    | 0       |
+| ファン速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
 | Type            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |

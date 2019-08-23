@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 55b66237cfbd2db9254362b7fa7efe7da7c624d4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b4c7524415865f7db5d4514c14f8e45030620330
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617593"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636672"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service のベスト プラクティス
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)を使用するためのベスト プラクティスを概説します。 
@@ -39,7 +39,7 @@ Web アプリ、データベース、コンテンツやデータを保持する�
 ## <a name="CPUresources"></a>アプリが予想よりも多くの CPU リソースを消費している場合
 監視またはサービスの推奨事項の説明を基に、アプリが予想よりも多くの CPU リソースを消費していること、または CPU スパイクが繰り返し発生していることに気が付いた場合は、App Service プランのスケール アップまたはスケール アウトを検討してください。 アプリケーションがステートフルである場合は、スケール アップが唯一のオプションとなります。一方、アプリケーションがステートレスである場合、スケール アウトにより、柔軟性と拡張性を高めることができます。 
 
-"ステートフル" アプリケーション対 "ステートレス" アプリケーションについて詳しくは、次のビデオをご覧ください:「[Planning a Scalable End-to-End Multi-Tier Application on Azure App Service (Azure App Service でスケーラブルなエンド ツー エンドの多層アプリケーションを計画する)](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)」。 App Service のスケール オプションおよび自動スケール オプションについて詳しくは、[Azure App Service での Web アプリのスケーリング](web-sites-scale.md)に関する記事をご覧ください。  
+"ステートフル" アプリケーション対 "ステートレス" アプリケーションについて詳しくは、次のビデオをご覧ください:「[Planning a Scalable End-to-End Multi-Tier Application on Azure App Service (Azure App Service でスケーラブルなエンド ツー エンドの多層アプリケーションを計画する)](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)」。 App Service のスケール オプションおよび自動スケール オプションについて詳しくは、[Azure App Service での Web アプリのスケーリング](manage-scale-up.md)に関する記事をご覧ください。  
 
 ## <a name="socketresources"></a>ソケット リソースを使い果たした場合
 送信 TCP 接続を使い果たしてしまう理由としては、一般的には、使っているライブラリが TCP 接続を再利用するように実装されていないことや、HTTP - Keep-Alive などの上位レベルのプロトコルが使われていないことなどが挙げられます。 App Service プランでアプリによって参照される各ライブラリのドキュメントを再確認し、送信接続が効率的に再利用されるようにコード内でライブラリが構成またはアクセスされるようにしてください。 また、ライブラリのドキュメントのガイダンスに従って適切に作成しリリースするか、接続のリークを防ぐためにクリーンアップを行ってください。 このようなクライアント ライブラリの調査中は、複数のインスタンスにスケール アウトすることで影響を軽減することができます。

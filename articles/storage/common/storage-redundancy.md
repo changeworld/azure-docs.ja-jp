@@ -9,12 +9,12 @@ ms.date: 07/10/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a4c624cf06a0e56b30b71c80a6b4a5ad48cb31a9
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 17d1bd95067c15bd67f80f3713f0e497bff8a68d
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016403"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516114"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -44,7 +44,7 @@ Azure Storage では、巡回冗長検査 (CRCs) を使用して、格納デー�
 | リージョン全体の停止                                                                                     | いいえ                              | いいえ                               | 可能                                  | はい                                  |
 | リージョン全体が使用できなくなった場合に (リモートの geo 冗長化されたリージョンの) データへの読み取りアクセス | いいえ                              | いいえ                               | はい (RA-GRS を使用)                                   | はい (RA-GZRS を使用)                                 |
 | 指定された 1 年間にわたって \_\_ オブジェクトの持続性を提供するように設計                                          | 99.999999999% (イレブン ナイン) 以上 | 99.9999999999% (トゥエルブ ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 |
-| サポートされるストレージ アカウントの種類                                                                   | GPv2、GPv1、BLOB                | GPv2                             | GPv2、GPv1、BLOB                     | GPv2、GPv1、BLOB                     |
+| サポートされるストレージ アカウントの種類                                                                   | GPv2、GPv1、BLOB                | GPv2                             | GPv2、GPv1、BLOB                     | GPv2                     |
 | 読み取り要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.99% 以上 (クール アクセス層の場合、99.9%) |
 | 書き込み要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) |
 

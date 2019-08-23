@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d40b11538d5aee20b54ddd6d3ca112f30238b512
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60833069"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69636535"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service での HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
 "502 無効なゲートウェイ" と "503 サービス利用不可" は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でホストされているアプリで発生する一般的なエラーです。 この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
@@ -102,7 +102,7 @@ Kudu で利用できる機能の詳細については、 [知っておくべき 
 #### <a name="scale-the-app"></a>アプリをスケーリングする
 Azure App Service では、アプリケーションが実行されるスケールを調整することによって、パフォーマンスとスループットを高めることができます。 アプリのスケール アップには、2 つの関連する措置が伴います。1 つは、App Service プランの価格レベルを引き上げること、もう 1 つは、価格レベルを引き上げた後に特定の設定を構成することです。
 
-スケーリングの詳細については、[Azure App Service でのアプリのスケール](web-sites-scale.md)に関する記事を参照してください。
+スケーリングの詳細については、[Azure App Service でのアプリのスケール](manage-scale-up.md)に関する記事を参照してください。
 
 加えて、アプリケーションを複数のインスタンスで実行することもできます。 処理能力がアップするだけでなく、ある程度の耐障害性を確保することができます。 この場合、1 つのインスタンスでプロセスがダウンしても、他のインスタンスが要求の処理を続行します。
 

@@ -13,12 +13,12 @@ ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
 ms.custom: mvc, devcenter, seo-java-july2019
-ms.openlocfilehash: 1bb370009ce76b1962204907689d85b4f89c26c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 116d211e366e17ba667baf1e1deae719b56dc3ee
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932158"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542748"
 ---
 # <a name="create-your-first-function-with-java-and-maven"></a>Java と Maven を使用して初めての関数を作成する
 
@@ -202,13 +202,13 @@ Hello AzureFunctions!
 関数アプリから返されるテキストに変更を加えるために、生成されたプロジェクトの `src/main.../Function.java` ソース ファイルを編集します。 変更するのは次の行です。
 
 ```java
-return request.createResponse(200, "Hello, " + name);
+return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
 ```
 
 これを次のように変更してください。
 
 ```java
-return request.createResponse(200, "Hi, " + name);
+return request.createResponseBuilder(HttpStatus.OK).body("Hi, " + name).build();
 ```
 
 変更を保存します。 mvn クリーン パッケージを実行し、前と同様にターミナルから `azure-functions:deploy` を実行して再デプロイします。 関数アプリが更新されます。次の要求を実行してみましょう。

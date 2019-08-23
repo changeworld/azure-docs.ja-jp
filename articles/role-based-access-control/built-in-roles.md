@@ -15,12 +15,12 @@ ms.date: 08/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 4ea0ceed80875018ee4f6e4bbcdc2548a232e9e0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 09551eb2620349fa2445c1da3a7e0d66062ebaf0
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989955"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899729"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -139,7 +139,7 @@ ms.locfileid: "68989955"
 | [ストレージ BLOB データ共同作成者](#storage-blob-data-contributor) | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 | [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
 | [ストレージ BLOB データ閲覧者](#storage-blob-data-reader) | Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
-| [Storage Blob デリゲータ](#storage-blob-delegator) | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-a-user-delegation-sas)」を参照してください。 |
+| [Storage Blob デリゲータ](#storage-blob-delegator) | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 |
 | [記憶域ファイル データの SMB 共有の共同作成者](#storage-file-data-smb-share-contributor) | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します。 |
 | [記憶域ファイル データの SMB 共有の管理者特権共同作成者](#storage-file-data-smb-share-elevated-contributor) | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセス、NTFS アクセス許可の変更アクセスを許可します。 |
 | [ストレージ ファイル データの SMB 共有の閲覧者](#storage-file-data-smb-share-reader) | SMB 経由の Azure ファイル共有に対する読み取りアクセスを許可します。 |
@@ -2655,7 +2655,7 @@ ms.locfileid: "68989955"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-a-user-delegation-sas)」を参照してください。 |
+> | **説明** | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 |
 > | **Id** | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Blob service 用のユーザー委任キーを返します。 |
