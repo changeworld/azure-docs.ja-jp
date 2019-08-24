@@ -39,8 +39,6 @@
       href: security-center-managing-and-responding-alerts.md
     - name: セキュリティ インシデント
       href: security-center-incident.md
-    - name: インシデント対応
-      href: security-center-incident-response.md
     - name: テナント間の管理
       href: security-center-cross-tenant-management.md
     - name: 脅威検出アラート
@@ -129,8 +127,6 @@
           href: security-center-apply-system-updates.md
         - name: Endpoint Protection をインストールします
           href: security-center-install-endpoint-protection.md
-        - name: システムの更新後に再起動する
-          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
         - name: 脆弱性評価がインストールされていない
           href: security-center-vulnerability-assessment-recommendations.md
         - name: Enable Network Security Groups
