@@ -17,12 +17,16 @@
       href: tutorial-create-management-vm.md
     - name: Secure LDAP の構成
       href: tutorial-configure-ldaps.md
+    - name: パスワード ハッシュ同期の構成
+      href: tutorial-configure-password-hash-sync.md
 - name: サンプル
   items:
     - name: Azure PowerShell を使用して Azure AD DS インスタンスを作成する
       href: powershell-create-instance.md
 - name: 概念
   items:
+    - name: 一般的なデプロイ シナリオ
+      href: scenarios.md
     - name: Azure AD DS の同期のしくみ
       href: synchronization.md
     - name: パスワード ハッシュ同期のしくみ
@@ -37,8 +41,6 @@
   items:
     - name: 共通設定の構成
       items:
-        - name: パスワード ハッシュ同期を有効にする
-          href: active-directory-ds-getting-started-password-sync-synced-tenant.md
         - name: Azure AD から範囲指定された同期を構成する
           href: scoped-synchronization.md
         - name: 組織単位 (OU) の作成
@@ -47,8 +49,6 @@
           href: create-gmsa.md
     - name: Azure AD DS を計画する
       items:
-        - name: 一般的なシナリオ
-          href: scenarios.md
         - name: 仮想ネットワークに関する考慮事項
           href: network-considerations.md
     - name: Azure AD DS を管理する

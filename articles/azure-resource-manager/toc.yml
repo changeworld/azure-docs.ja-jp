@@ -67,8 +67,6 @@
       href: templates-cloud-consistency.md
     - name: デプロイ モード
       href: deployment-modes.md
-    - name: リソースの削除
-      href: resource-group-delete.md
     - name: Deployment Manager
       items:
         - name: 概要
@@ -186,6 +184,8 @@
             - name: Azure PowerShell の使用
               displayName: 'open,delete,deploy,move,lock,tag'
               href: manage-resources-powershell.md
+        - name: リソース グループとリソースの削除
+          href: resource-group-delete.md
         - name: リソースのロック
           href: resource-group-lock-resources.md
         - name: サブスクリプションにアクセスするための認証 API

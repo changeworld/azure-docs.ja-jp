@@ -263,6 +263,10 @@
               href: integrate-environments-devops-pipeline.md
             - name: Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する
               href: use-devtest-labs-build-release-pipelines.md
+        - name: DevTest Labs の拡張
+          items:
+            - name: Azure Functions を使用した DevTest Labs の拡張
+              href: extend-devtest-labs-azure-functions.md
         - name: ラボの使用状況のレポート
           href: report-usage-across-multiple-labs-subscriptions.md
         - name: 企業内での DevTest Labs
