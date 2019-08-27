@@ -49,6 +49,15 @@
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
 - name: 方法
   items:
+    - name: レガシ コンポーネント
+      href: legacy-components.md
+      items:
+        - name: Azure Media Encoder から移行する
+          href: migrate-azure-media-encoder.md
+          displayName: AME
+        - name: Windows Azure Media Encoder から移行する
+          href: migrate-windows-azure-media-encoder.md
+          displayName: WAME
     - name: 管理
       items:
         - name: アカウント

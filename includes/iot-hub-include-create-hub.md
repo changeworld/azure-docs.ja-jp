@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 795e805e4629a4f4674c296e555ece6230cf66f1
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bf63a9fb552b2a41ce7b9945faeda362592d8efb
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883127"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558837"
 ---
 ここでは、[Azure portal](https://portal.azure.com) を使用して IoT ハブを作成する方法について説明します。
 

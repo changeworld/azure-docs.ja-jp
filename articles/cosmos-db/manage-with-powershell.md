@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 45f5e21e05cf627d418cb66418cf305833a73891
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965108"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616827"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB SQL API リソースを管理する
 
@@ -46,7 +46,7 @@ Azure Cosmos DB のクロスプラットフォーム管理には、[Azure CLI](m
 
 ### <a id="create-account"></a> Azure Cosmos アカウントを作成する
 
-このコマンドでは、[複数リージョン][distribute-data-globally]および有界整合性制約の[一貫性ポリシー](consistency-levels.md)を使って、Azure Cosmos DB データベース アカウントが作成されます。
+このコマンドでは、[複数リージョン][distribute-data-globally]および有界整合性制約の[一貫性ポリシー](consistency-levels.md)を使って、Azure Cosmos データベース アカウントが作成されます。
 
 ```azurepowershell-interactive
 # Create an Azure Cosmos Account for Core (SQL) API
@@ -112,7 +112,7 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="update-account"></a> Azure Cosmos アカウントを更新する
 
-このコマンドでは、Azure Cosmos DB データベース アカウントのプロパティを更新できます。 更新できるプロパティは次のとおりです。
+このコマンドでは、Azure Cosmos データベース アカウントのプロパティを更新できます。 更新できるプロパティは次のとおりです。
 
 * 領域を追加または削除する
 * 既定の一貫性ポリシーを変更する
@@ -247,6 +247,7 @@ Select-Object $keys
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"

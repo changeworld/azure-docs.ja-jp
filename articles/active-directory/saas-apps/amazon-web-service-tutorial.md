@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f346c995cbc8be6e609020db799959d873ce89b3
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 672a3571202b92232bd45a42254a43019f6a9796
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68944951"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617347"
 ---
 # <a name="tutorial-integrate-amazon-web-services-aws-with-azure-active-directory"></a>チュートリアル:Azure Active Directory とアマゾン ウェブ サービス (AWS) の統合
 
@@ -111,7 +111,7 @@ AWS で Azure AD SSO を構成してテストするには、次の構成要素�
 
 7. 上記の属性に加えて、AWS アプリケーションでは、その他にいくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログ ボックスの **[ユーザー要求]** セクションで、次の手順に従って SAML トークン属性を追加します。
 
-    | EnableAdfsAuthentication  | ソース属性  | 名前空間 |
+    | Name  | ソース属性  | 名前空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
@@ -369,6 +369,12 @@ AWS で Azure AD SSO を構成してテストするには、次の構成要素�
    プロビジョニングのために複数の AWS テナント (`servicePrincipals` によって表される) をギャラリーから Azure AD に追加できます。 ただし、プロビジョニングに使用される複数の AWS `servicePrincipals` からインポートされたすべてのロールを、SSO に使用される単一の `servicePrincipal` に自動的に書き込むことができないという既知の問題があります。 
    
    回避策として、[Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) を使用して、プロビジョニングが構成されている各 AWS `servicePrincipal` にインポートされたすべての `appRoles` を抽出できます。 その後、これらのロール文字列を、SSO が構成されている AWS `servicePrincipal` に追加できます。
+ 
+* AWS から Azure AD へのインポート対象となるロールは、次の要件を満たす必要があります。
+
+  * ロールには、AWS で SAML プロバイダーが 1 つだけ定義されている必要があります。
+
+  * ロールの ARN とインポートされるロールの SAML プロバイダーの ARN とを組み合わせた長さが 119 文字以下であることが必要です。
 
 ## <a name="additional-resources"></a>その他のリソース
 
