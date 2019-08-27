@@ -6,25 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/13/2019
+ms.date: 08/21/2019
 ms.author: heidist
-ms.openlocfilehash: eefa0eb5d1e15df34089d7baa3241cbbed4724c2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034835"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899679"
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
 
-Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。 カスタム コードを使用して、データ インジェスト (インデックス作成) を呼び出し、クエリ要求を発行し、応答を処理します。 検索エクスペリエンスは、Azure Search の機能を使用してクライアント コード内で定義します。クエリは、自分で作成および所有し、Azure Search 上に保存する永続化されたインデックスに対して実行します。
+Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションのプライベートな異種コンテンツに対するリッチな検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。 カスタム コードを使用して、データ インジェスト (インデックス作成) を呼び出し、インデックスを作成して読み込みます。 一方で、アプリケーション コードを使用して、クエリ要求を発行し、応答を処理します。 検索エクスペリエンスは、Azure Search の機能を使用してクライアント内で定義します。クエリは、自分で作成および所有し、Azure Search 上に保存する永続化されたインデックスに対して実行します。
 
-![Azure Search のアーキテクチャ](media/search-what-is-azure-search/azure-search-diagram.png "Azure Search のアーキテクチャ")
-
-<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
-+ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
-+ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
-+ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
+![Azure Search のアーキテクチャ](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Search のアーキテクチャ")
 
 機能は、情報の検索に固有の複雑さを感じさせないシンプルな [REST API](/rest/api/searchservice/) または [.NET SDK](search-howto-dotnet-sdk.md) を使って公開されます。 API だけでなく、Azure Portal では、管理とコンテンツ管理のサポートおよびプロトタイプの作成とインデックスのクエリのためのツールも提供されます。 サービスはクラウドで実行されるため、インフラストラクチャと可用性は Microsoft によって管理されます。
 
@@ -36,7 +31,7 @@ Azure Search は、次のアプリケーション シナリオに適していま
 
 + 検索に関連する機能の簡単な実装。 Azure Search API シリーズを使用すると、クエリの構築、ファセット ナビゲーション、フィルター (地理空間検索を含む)、シノニム マッピング、先行入力クエリ、および関連性チューニングを簡素化できます。 組み込みの機能を使用して、商用 Web 検索エンジンと同様の検索体験に対するエンドユーザーの期待に応えることができます。
 
-+ 非構造化テキストのインデックス作成、または画像ファイルからのテキストと情報の抽出。 Azure Search のコグニティブ検索機能により、インデックス作成パイプラインに AI 処理が追加されます。 一般的なユースケースには、スキャンされたドキュメントに対する OCR、大きなドキュメントに対するエンティティ認識とキー フレーズ抽出、言語検出とテキスト翻訳、センチメント分析などがあります。
++ 非構造化テキストのインデックス作成、または画像ファイルからのテキストと情報の抽出。 Azure Search の[コグニティブ検索](cognitive-search-concept-intro.md)機能により、インデックス作成パイプラインに AI 処理が追加されます。 一般的なユースケースには、スキャンされたドキュメントに対する OCR、大きなドキュメントに対するエンティティ認識とキー フレーズ抽出、言語検出とテキスト翻訳、センチメント分析などがあります。
 
 + Azure Search のカスタムおよび言語アナライザーを使用して満たされる言語要件。 英語以外のコンテンツがある場合、Azure Search では、Lucene アナライザーと Microsoft の自然言語プロセッサの両方がサポートされます。 また、特定の生コンテンツ (分音記号のフィルター処理など) の特殊な処理を実現するようにアナライザーを構成することもできます。
 
@@ -93,7 +88,9 @@ Azure Search は、次のアプリケーション シナリオに適していま
 プッシュ モデルは SDK または REST API によって提供され、更新したドキュメントをインデックスに送信するために使用されます。 JSON 形式を使用して、事実上すべてのデータセットからデータをプッシュできます。 データの読み込み方法については、「[ドキュメントの追加、更新、削除](/rest/api/searchservice/addupdate-or-delete-documents)」または「[.NET SDK の使用方法](search-howto-dotnet-sdk.md)」を参照してください。
 
 ### <a name="step-4-search"></a>手順 4:Search
-インデックスを入力したら、REST API または .NET SDK によって簡単な HTTP 要求を使用して、サービス エンドポイントに[検索クエリを発行](/rest/api/searchservice/Search-Documents)できます。
+インデックスを入力したら、[REST API](/rest/api/searchservice/Search-Documents) または [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations) によって簡単な HTTP 要求を使用して、サービス エンドポイントに[検索クエリを発行](search-query-overview.md)できます。
+
+[初めての検索アプリの作成](tutorial-csharp-create-first-app.md)を行うことで、ユーザー入力を収集して結果を処理する Web ページをビルドして拡張します。 [対話型 REST 向けの Postman](search-get-started-postman.md) 呼び出しや Azure portal の組み込みの[検索エクスプローラー](search-explorer.md)を使用して、既存のインデックスに対するクエリを実行することもできます。
 
 ## <a name="how-it-compares"></a>他のソリューションとの比較
 

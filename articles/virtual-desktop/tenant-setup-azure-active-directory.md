@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 062b815315d7bcdd5d55a86c2447a0b21295e8b6
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: cd80ed3c3db2453a333c87ed706dd358ba248b47
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014086"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516187"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop プレビューでテナントを作成する
 
@@ -34,7 +34,7 @@ Windows Virtual Desktop プレビューでのテナントの作成は、デス�
    * 管理者アカウントは、職場または学校アカウントである必要があります。
 * Azure サブスクリプション。
 
-## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>Azure Active Directory のアクセス許可を Windows Virtual Desktop プレビュー サービスに付与する
+## <a name="grant-permissions-to-windows-virtual-desktop"></a>Windows Virtual Desktop へのアクセス許可を付与する
 
 この Azure Active Directory インスタンスのアクセス許可を Windows Virtual Desktop に既に付与している場合、このセクションはスキップしてください。
 
@@ -62,7 +62,7 @@ Windows Virtual Desktop サービスにアクセス許可を付与すると、Az
 6. 手順 2 で行ったように、グローバル管理者として Windows Virtual Desktop の同意ページにサインインします。
 7. **[Accept]\(承認\)** を選択します。
 
-## <a name="assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナント内のユーザーに TenantCreator アプリケーション ロールを割り当てる
+## <a name="assign-the-tenantcreator-application-role"></a>TenantCreator アプリケーション ロールを割り当てる
 
 Azure Active Directory ユーザーに TenantCreator アプリケーション ロールを割り当てると、そのユーザーは、Azure Active Directory インスタンスに関連付けられた Windows Virtual Desktop テナントを作成できます。 TenantCreator ロールを割り当てるには、グローバル管理者アカウントを使用する必要があります。
 

@@ -18,7 +18,7 @@ ms.locfileid: "68881010"
 ---
 > [!TIP]
 > Azure portal でキーとエンドポイントを見つけるには、次のように操作します。
-> 1. https://portal.azure.com/ で Azure リソースに移動します。
+> 1. [https://portal.azure.com/](https://portal.azure.com/ ) で Azure リソースに移動します。
 > 2. **[リソース管理]** の下にある **[クイック スタート]** をクリックします。
 >
 > エンドポイントに `/text/analytics/<version>` サフィックスが含まれている場合は、そのサフィックスを削除してください。 このサフィックスは、クライアント ライブラリでは使用する必要がありません。

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 853d7f7bf9950640a824eee4ae3e044265b518f7
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017226"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898333"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Azure Maps を使用した IoT 空間分析の実装
 
@@ -290,6 +290,10 @@ Azure 関数が起動したら、テレメトリ データを IoT Hub に送信�
 Azure Maps REST API シリーズの完全な一覧については、次を参照してください。
 
 * [Azure Maps REST API シリーズ](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
+
+IoT プラグ アンド プレイの詳細については、次を参照してください。
+
+* [IoT プラグ アンド プレイ](https://docs.microsoft.com/azure/iot-pnp)
 
 Azure で IoT の認定を受けたデバイスの一覧を取得するには、次のページにアクセスします。
 

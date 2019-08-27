@@ -50,7 +50,7 @@ Azure Active Directory B2C (Azure AD B2C) は、B2C リソース、発行され�
 
 |Section|フィールド|説明|
 |-------|-----|-----------|
-| アクティビティ | EnableAdfsAuthentication | 実行されたアクティビティ。 たとえば、"Issue an id_token to the application" です (これで実際のユーザー サインインが終了します)。 |
+| アクティビティ | Name | 実行されたアクティビティ。 たとえば、"Issue an id_token to the application" です (これで実際のユーザー サインインが終了します)。 |
 | 開始者 (アクター) | ObjectId | ユーザーがサインインする B2C アプリケーションの**オブジェクト ID** (この識別子は Azure portal には表示されませんが、Graph API などを使用してアクセスすることができます)。 |
 | 開始者 (アクター) | Spn | ユーザーがサインインする B2C アプリケーションの**アプリケーション ID**。 |
 | ターゲット | ObjectId | サインインするユーザーの**オブジェクト ID**。 |
