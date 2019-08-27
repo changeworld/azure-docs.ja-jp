@@ -49,6 +49,8 @@
       href: ../hdinsight-version-release.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
     - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
       href: ../hdinsight-cluster-availability.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
+    - name: ストレージ オプションの比較
+      href: ../hdinsight-hadoop-compare-storage-options.md
 - name: 方法
   items:
     - name: クラスター ストレージの使用
