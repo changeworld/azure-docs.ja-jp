@@ -9,12 +9,12 @@ ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f33193e3102afca73344fcd640d14d9af9c1d46e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2607e09e6b8428c2aacc8ee7c6be42f54284a1ce
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775353"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641094"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認します
 
@@ -54,7 +54,7 @@ Azure Storage の組み込みロールの定義方法については、「[ロ�
 
 ### <a name="access-permissions-for-data-operations"></a>データ操作用のアクセス許可
 
-特定の BLOB サービスまたは Queue サービスの操作を呼び出すために必要なアクセス許可の詳細については、「[Permissions for calling blob and queue data operations](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」 (BLOB とキューのデータ操作を呼び出すためのアクセス許可) を参照してください。
+特定の BLOB サービスまたは Queue サービスの操作を呼び出すために必要なアクセス許可の詳細については、「[Permissions for calling blob and queue data operations](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」 (BLOB とキューのデータ操作を呼び出すためのアクセス許可) を参照してください。
 
 ## <a name="resource-scope"></a>リソースのスコープ
 
@@ -85,5 +85,5 @@ Azure Files はドメイン参加 VM に関してのみ SMB 経由の Azure AD �
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB およびキューへのアクセスを承認する](storage-auth-aad-msi.md)
-- [BLOB やキューにアクセスするためにアプリケーションから Azure Active Directory で認証を行う](storage-auth-aad-app.md)
+- [BLOB やキューにアクセスするためにアプリケーションから Azure Active Directory を使用して承認を行う](storage-auth-aad-app.md)
 - [Azure Active Directory ベースのアクセス制御の Azure Storage によるサポートの一般提供](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 3d3fc1541fb99d8d1219392158c3b87cd6ff99aa
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033559"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900134"
 ---
 # <a name="create-a-new-saas-offer"></a>新しい SaaS オファーを作成する
 
@@ -153,23 +153,9 @@ SaaS オファーが Azure でホストされている場合、公開元は Azur
 
 ## <a name="connect-lead-management"></a>リード管理の接続
 
-マーケットプレースでオファーをリスト登録して顧客関係管理 (CRM) システムに接続することで、顧客と直接つながります。これにより、顧客がお客様の製品に興味を示した直後、またはそれをデプロイした直後に、顧客の連絡先情報を受け取ることができます。
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-- **リードのターゲットの選択** (ドロップダウン メニュー): Microsoft に顧客リードを送信してもらいたい CRM システムに接続の詳細を入力します。 
-
-パートナー センターでは、リード管理について以下の CRM システムをサポートしています。 セットアップ手順を確認するには、リンクを選択してください。
-
-- Azure BLOB - 連絡先のメール アドレス、コンテナー名、ストレージ アカウントの接続文字列を入力します。 
-- [Azure テーブル](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) - 連絡先のメール アドレスとストレージ アカウントの接続文字列を入力します。 
-- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) -連絡先のメール アドレス、URL、および認証モード (Office 365 または Azure Active Directory) を入力します。
-- [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) - 連絡先のメール アドレスと HTTPS エンドポイントの URL を入力します。 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) - 連絡先のメール アドレス、フォーム ID、Munchkin アカウント ID、サーバー ID を入力します。
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -連絡先のメール アドレスと組織 ID を入力します。 
-
-#### <a name="additional-lead-management-resources"></a>リード管理に関するその他のリソース
-- [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [1 ページにまとめたリード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+詳しくは、[リード管理の概要](./commercial-marketplace-get-customer-leads.md)に関する記事をご覧ください。
 
 次のセクションに進む前に、必ず**保存**してください。
 
@@ -302,12 +288,7 @@ Azure Marketplace の発行元は、カスタムの使用条件を作成する�
 
     これは次のように表示されます。
 
-    <h1>これは見出し 1 です</h1> 
-    <h2>これは見出し 2 です</h2> 
-    <h3>これは見出し 3 です</h3> 
-    <h4>これは見出し 4 です</h4> 
-    <h5>これは見出し 5 です</h5> 
-    <h6>これは見出し 6 です</h6> 
+    ![見出しのサンプル](./media/heading.png)
 
 #### <a name="links"></a>リンク
 

@@ -33,18 +33,16 @@
       href: security-center-data-security.md
     - name: 推奨事項を使用してセキュリティを強化する
       href: security-center-using-recommendations.md
-    - name: 脅威を検出する
-      href: security-center-detection-capabilities.md
-    - name: セキュリティ アラートを管理する
-      href: security-center-managing-and-responding-alerts.md
-    - name: セキュリティ インシデント
-      href: security-center-incident.md
     - name: テナント間の管理
       href: security-center-cross-tenant-management.md
-    - name: 脅威検出アラート
+    - name: 脅威検出アラートとインシデント
       items:
         - name: セキュリティ アラートの概要
           href: security-center-alerts-overview.md
+        - name: セキュリティ アラートの管理
+          href: security-center-managing-and-responding-alerts.md
+        - name: セキュリティ インシデントを管理する
+          href: security-center-incident.md
         - name: VM とサーバーの脅威検出
           href: security-center-alerts-iaas.md
         - name: クラウド ネイティブ コンピューティングの脅威検出
@@ -89,7 +87,7 @@
       href: security-center-policy-definitions.md
     - name: 電子メール通知
       href: security-center-provide-security-contact-details.md
-    - name: 価格レベル
+    - name: Pricing tier
       href: security-center-pricing.md
     - name: テナント全体の可視性
       href: security-center-management-groups.md

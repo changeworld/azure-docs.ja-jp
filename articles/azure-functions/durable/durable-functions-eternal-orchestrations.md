@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 99eabf3bc91887ff19b3a0bc9cf6647d32fa6750
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a93a0cf5dad83ae3c69b15fda9ba6f4268b9a91f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65787560"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624169"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions での永続的オーケストレーション (Azure Functions)
 
@@ -45,7 +45,7 @@ ms.locfileid: "65787560"
 public static async Task Run(
     [OrchestrationTrigger] DurableOrchestrationContext context)
 {
-    await context.CallActivityAsync("DoCleanup");
+    await context.CallActivityAsync("DoCleanup", null);
 
     // sleep for one hour between cleanups
     DateTime nextCleanup = context.CurrentUtcDateTime.AddHours(1);
@@ -73,6 +73,25 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 この例と、タイマーによってトリガーされる関数の違いは、クリーンアップ トリガーのタイミングです。この例のタイミングはスケジュールに基づいていません。 たとえば、1 時間ごとに関数を実行する CRON スケジュールでは、1:00、2:00、3:00 といったタイミングで関数が実行され、重複の問題が発生する可能性があります。 この例では、クリーンアップ所要時間が 30 分の場合は、1:00、2:30、4:00 にスケジュールされるため、重複することはありません。
+
+## <a name="starting-an-eternal-orchestration"></a>永続的オーケストレーションの開始
+[StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) メソッドを使用して、永続的オーケストレーションを開始します。 これは、他のオーケストレーション関数のトリガーと変わりません。  
+
+> [!NOTE]
+> 単一の永続的オーケストレーションを確実に実行するには、オーケストレーションの開始時に同じインスタンス `id` を維持することが重要です。 詳しくは、[インスタンス管理](durable-functions-instance-management.md)に関する記事をご覧ください。
+
+```csharp
+[FunctionName("Trigger_Eternal_Orchestration")]
+public static async Task<HttpResponseMessage> OrchestrationTrigger(
+    [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequestMessage request,
+    [OrchestrationClient] DurableOrchestrationClientBase client)
+{
+    string instanceId = "StaticId";
+    // Null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
+    await client.StartNewAsync("Periodic_Cleanup_Loop"), instanceId, null); 
+    return client.CreateCheckStatusResponse(request, instanceId);
+}
+```
 
 ## <a name="exit-from-an-eternal-orchestration"></a>永続的オーケストレーションの終了
 

@@ -28,10 +28,7 @@
               href: tutorial-deploy-models-with-aml.md
         - name: 回帰 (ニューヨーク市のタクシー データ)
           items:
-            - name: 1. モデリング用にデータを準備する
-              displayName: data prep
-              href: tutorial-data-prep.md
-            - name: 2. ML モデルを自動トレーニングする
+            - name: ML モデルを自動トレーニングする
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
     - name: ビジュアル インターフェイス
@@ -260,7 +257,7 @@
     - name: 再利用可能なワークフローを作成する
       displayName: pipelines
       items:
-        - name: ML パイプライン
+        - name: Python で ML パイプラインを作成する
           href: how-to-create-your-first-pipeline.md
         - name: CI/CD 用の Azure Pipelines
           displayName: 'continuous, integration, delivery'

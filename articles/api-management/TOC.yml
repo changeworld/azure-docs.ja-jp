@@ -207,6 +207,8 @@
           href: api-management-configuration-repository-git.md
         - name: ロールベースのアクセス制御を使用する
           href: api-management-role-based-access-control.md
+        - name: API Management インスタンスを移行する
+          href: api-management-howto-migrate.md
         - name: Azure リソースのマネージド ID を使用する
           href: api-management-howto-use-managed-service-identity.md
         - name: Service Fabric と統合する

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 3637676a330b324d5620885f0cbe50d4aa68ed51
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 2efeb37f8b98f4cf9a29ec8a6976146b81aab26b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779047"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69641070"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 
@@ -36,8 +36,7 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 ## <a name="where-can-i-find-known-issues-and-bugs"></a>既知の問題やバグはどこで確認できますか?
 
-バグと既知の問題については、「[動作の変更](sql-database-managed-instance-transact-sql-information.md#Changes)」と[既知の問題](sql-database-managed-instance-transact-sql-information.md#Issues)に関するページを参照してください。
-
+バグや既知の問題については、「[既知の問題](sql-database-managed-instance-transact-sql-information.md#Issues)」をご覧ください。
 
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>マネージド インスタンスにオンプレミスの SQL Server と同じ名前を付けることはできますか?
 

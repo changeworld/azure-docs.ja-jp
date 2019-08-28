@@ -3,16 +3,16 @@ title: Azure ストレージ エミュレーターを使用した開発とテス
 description: Azure ストレージ エミュレーターは、Azure Storage アプリケーションを開発およびテストするのための無料のローカル開発環境を提供します。 要求の承認方法、アプリケーションからエミュレーターへの接続方法、コマンド ライン ツールの使用方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/10/2018
+ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 9e0e024a5bd3c9cf16879bb9ea93727a338ddbf4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: a50b397ffe1cfc44d4234dcfbee1618e9fb2506c
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986403"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900341"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
@@ -221,9 +221,21 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 ## <a name="storage-emulator-release-notes"></a>ストレージ エミュレーター リリース ノート
 
+### <a name="version-510"></a>バージョン 5.10
+
+* ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2019-07-07 は拒否されなくなります。
+
+### <a name="version-59"></a>バージョン 5.9
+
+* ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2019-02-02 は拒否されなくなります。
+
+### <a name="version-58"></a>バージョン 5.8
+
+* ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2018-11-09 は拒否されなくなります。
+
 ### <a name="version-57"></a>バージョン 5.7
 
-ログが無効になっている場合にクラッシュが発生するバグを修正しました。
+* ログが無効になっている場合にクラッシュが発生するバグを修正しました。
 
 ### <a name="version-56"></a>バージョン 5.6
 
@@ -236,11 +248,11 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 ### <a name="version-54"></a>バージョン 5.4
 
-インストールの安定性を向上させるために、エミュレーターでインストール時にポートの予約を試行しなくなりました。 ポートの予約が必要な場合は、**init** コマンドの *-reserveports* オプションを使用して指定します。
+* インストールの安定性を向上させるために、エミュレーターでインストール時にポートの予約を試行しなくなりました。 ポートの予約が必要な場合は、**init** コマンドの *-reserveports* オプションを使用して指定します。
 
 ### <a name="version-53"></a>バージョン 5.3
 
-ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2017-07-29 がサポートされるようになりました。
+* ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2017-07-29 がサポートされるようになりました。
 
 ### <a name="version-52"></a>バージョン 5.2
 
@@ -249,7 +261,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 ### <a name="version-51"></a>バージョン 5.1
 
-一部の応答でサービスが返していなかった `DataServiceVersion` ヘッダーをストレージ エミュレーターが返していたバグを修正しました。
+* 一部の応答でサービスが返していなかった `DataServiceVersion` ヘッダーをストレージ エミュレーターが返していたバグを修正しました。
 
 ### <a name="version-50"></a>バージョン 5.0
 

@@ -11,6 +11,9 @@
     - name: ブループリントの作成 - ポータル
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-portal.md
+    - name: ブループリントの作成 - PowerShell
+      displayName: 'publish, assign, track, unassign, delete'
+      href: create-blueprint-powershell.md
     - name: ブループリントの作成 - REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md

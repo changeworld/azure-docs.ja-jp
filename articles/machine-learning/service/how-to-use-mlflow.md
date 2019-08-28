@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd451f4c7ada3c062862098d4cda5314152be0c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882012"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900201"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>MLflow と Azure Machine Learning service を使用してメトリックを追跡し、モデルをデプロイする (プレビュー)
 
@@ -27,6 +27,8 @@ ms.locfileid: "68882012"
 + MLflow の実験を Azure Machine Learning Web サービスとしてデプロイします。 Web サービスとしてデプロイすることで、Azure Machine Learning の監視機能とデータ誤差検出機能を実稼働モデルに適用できます。 
 
 [MLflow](https://www.mlflow.org) は、機械学習の実験のライフ サイクルを管理するためのオープンソース ライブラリです。 MLFlow Tracking は MLflow のコンポーネントです。実験の環境がローカル、仮想マシン、リモート コンピューティング クラスター、または Azure Databricks 上のいずれであるかに関わらず、トレーニング実行のメトリックとモデル成果物をログに記録し、追跡します。
+
+次の図は、MLflow Tracking を使用して、仮想マシン上のリモート コンピューティング ターゲット上か、コンピューター上でローカルか、または Azure Databricks クラスター上かを問わず、任意の実験を行えることを示しています。また、その実行のメトリックを追跡し、Azure Machine Learning ワークスペース内にモデル成果物を保存できることも示しています。
 
 ![Azure Machine Learning での MLflow](media/how-to-use-mlflow/mlflow-diagram-track.png)
 
@@ -139,9 +141,11 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>Azure Databricks の実行を追跡する
 
-Azure Machine Learning service で MLflow Tracking を使用すると、Databrick 実行からログに記録されたメトリックと成果物を Azure Machine Learning ワークスペースに格納できます。
+Azure Machine Learning service と共に MLflow Tracking を使用すると、Databricks 実行からログに記録されたメトリックと成果物を Azure Machine Learning ワークスペースに格納できます。
 
-MLflow の実験を Azure Databricks で実行するには、[Azure Databricks ワークスペースとクラスター](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を最初に作成する必要があります。 クラスターでは、PyPi から *azureml-mlflow* ライブラリを必ずインストールして、必要な関数とクラスにクラスターがアクセスできるようにします。
+MLflow の実験を Azure Databricks で実行するには、[Azure Databricks ワークスペースとクラスター](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を最初に作成する必要があります
+
+クラスターでは、PyPi から *azureml-mlflow* ライブラリを必ずインストールして、必要な関数とクラスにクラスターがアクセスできるようにします。
 
 ### <a name="install-libraries"></a>ライブラリのインストール
 
@@ -210,9 +214,12 @@ ws.get_details()
 
 MLflow の実験を Azure Machine Learning Web サービスとしてデプロイすると、Azure Machine Learning のモデル管理機能とデータ誤差検出機能を活用し、それらを実稼働モデルに適用することができます。
 
+次の図は、MLflow デプロイ API を使用して、フレームワーク (PyTorch、Tensorflow、scikit-learn、ONNX など) にかかわらず既存の MLflow モデルを Azure Machine Learning Web サービスとしてデプロイでき、ワークスペース内で実稼働モデルを管理できることを示しています。
+
 ![Azure Machine Learning での MLflow](media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
 ### <a name="log-your-model"></a>モデルをログに記録する
+
 デプロイする前に、モデルとそのデプロイ用のパスの場所を参照できるように、必ずモデルを保存します。 トレーニング スクリプトには、指定された出力ディレクトリにモデルを保存する、次の [mlflow.sklearn.log_model()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) メソッドと同様のコードがあるはずです。 
 
 ```python
