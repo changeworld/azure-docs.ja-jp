@@ -238,7 +238,7 @@
     - name: サービスとしてのプラットフォーム
       items:
         - name: サービスとしてのプラットフォームのドキュメント
-          href: sql-database-paas.yml
+          href: sql-database-paas-index.yml
         - name: ビジネス継続性
           href: sql-database-business-continuity.md
         - name: 高可用性
