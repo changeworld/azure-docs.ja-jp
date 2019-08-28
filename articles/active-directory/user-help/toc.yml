@@ -1,5 +1,5 @@
 - name: ユーザー ヘルプのドキュメント
-  href: index.md
+  href: index.yml
 - name: 2 段階認証のヘルプ
   items:
     - name: 概要
