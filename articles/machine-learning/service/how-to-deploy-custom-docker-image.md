@@ -192,7 +192,7 @@ Microsoft は、一般公開されているリポジトリにいくつかの doc
 > CUDA または TensorRT を使用する Microsoft イメージを使用できるのは Microsoft Azure サービスのみです。
 
 > [!TIP]
->__モデルを Azure Machine Learning コンピューティングでトレーニングする場合__、__バージョン 1.0.22 以降__の Azure Machine Learning SDK を使用して、トレーニング時にイメージが作成されます。 このイメージの名前を見つけるには、`run.properties["AzureML.DerivedImageName"]` を使用します。 次の例は、このイメージを使用する方法を示しています。
+>__モデルを Azure Machine Learning コンピューティングでトレーニングする場合__、__バージョン 1.0.22 以降__ の Azure Machine Learning SDK を使用して、トレーニング時にイメージが作成されます。 このイメージの名前を見つけるには、`run.properties["AzureML.DerivedImageName"]` を使用します。 次の例は、このイメージを使用する方法を示しています。
 >
 > ```python
 > # Use an image built during training with SDK 1.0.22 or greater
