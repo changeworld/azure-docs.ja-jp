@@ -13,12 +13,12 @@ ms.date: 08/05/2019
 ms.author: lizross
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6145ccc67eedfdae8e9e1aa9245ff8d34101d387
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: f10f3b272978ea24b515e39a8a8cc1fd0bea73a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949562"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615998"
 ---
 # <a name="overview-for-two-factor-verification-and-your-work-or-school-account"></a>2 要素認証と職場または学校アカウントの概要
 
@@ -29,7 +29,15 @@ ms.locfileid: "68949562"
 >[!Important]
 >このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 >
->また、このコンテンツが対象としているのは、職場または学校アカウント、つまり勤務先から支給されるアカウント (alain@contoso.com など) での使用のみです。 ご自身のために自分で設定するアカウント (danielle@outlook.com など) である個人用 Microsoft アカウントと 2 要素認証に関して問題がある場合は、[Microsoft アカウントの 2 要素認証を有効または無効にする方法](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページを参照してください。
+>また、このコンテンツが対象としているのは、職場または学校アカウント、つまり勤務先から支給されるアカウント (alain@contoso.com など) での使用のみです。 ご自身のために自分で設定するアカウント (danielle@outlook.com など) である個人用 Microsoft アカウントと 2 要素認証に関して問題がある場合は、[Microsoft アカウントの 2 要素認証を有効または無効にする方法](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページを参照してください。
+
+## <a name="who-decides-if-you-use-this-feature"></a>この機能の使用を決定するユーザー
+
+アカウントの種類に応じて、2 要素認証を使用しなければならないことをお客様の組織が決定する場合、またはお客様が自分で決定できる場合があります。
+
+- **職場または学校のアカウント。** 職場または学校アカウント (例: alain@contoso.com) を使用している場合、お客様が 2 要素認証を使用しなければならないかどうかは、特定の認証方法と共にお客様の組織が決定します。 この機能は、お客様の組織で使用する必要があると判断されたため、個人で無効にすることはできません。
+
+- **個人の Microsoft アカウント。** 個人の Microsoft アカウント (例: alain@outlook.com) の場合、2 要素認証の設定を選択できます。 2 要素認証とご自分の個人の Microsoft アカウントで問題が発生する場合は、「[Microsoft アカウントの 2 段階認証を有効または無効にする](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)」を参照してください。 この機能の使用はユーザーが選択するので、ユーザーは必要に応じていつでもこれをオンまたはオフにできます。
 
 ## <a name="two-factor-verification-related-articles"></a>2 要素認証に関連した記事
 

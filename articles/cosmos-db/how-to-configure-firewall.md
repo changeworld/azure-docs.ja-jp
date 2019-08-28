@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB アカウントに IP ファイアウォールを構成する
-description: Azure Cosmos DB データベース アカウント上でファイアウォールをサポートするために IP アクセス制御ポリシーを構成する方法について説明します。
+description: Azure Cosmos アカウントでファイアウォールをサポートするために IP アクセス制御ポリシーを構成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0b8ad6c5addbff293e9f7e9b8af6ed34d4dd274b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: ee9a686060fd712e9a1f14058ce7db325aaedffd
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494888"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615371"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
 
