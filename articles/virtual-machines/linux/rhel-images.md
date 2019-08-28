@@ -3,22 +3,22 @@ title: Azure の Red Hat Enterprise Linux イメージ | Microsoft Docs
 description: Microsoft Azure の Red Hat Enterprise Linux イメージについて説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 6/6/2019
+ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: 7d34e480dd3cf90f1948e83ea1d18c04f1dcdce2
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 25b0ccfa5ed2b7b9ff031565fe7f14b1477769c4
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854438"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543851"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure の Red Hat Enterprise Linux イメージ
 この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace 内で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します。
@@ -99,13 +99,15 @@ RedHat:RHEL:7.4:7.4.2019041718
 
 >[!NOTE]
 > この記事の執筆時点で EUS をサポートしているのは、RHEL 7.4 以降のマイナー バージョンのみです。 EUS は、RHEL 7.3 以前ではサポートされなくなりました。
+>
+> RHEL EUS の可用性の詳細については、[こちら](https://access.redhat.com/support/policy/updates/errata)を参照してください。
 
 マイナー バージョン |EUS イメージの例              |EUS の状態                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7.4      |RedHat:RHEL:7.4:7.4.2019041718 | 2019 年 4 月以降に発行されたイメージは、既定で EUS になります|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | 2019 年 6 月以降に発行されたイメージは、既定で EUS になります |
 RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | 2019 年 5 月以降に発行されたイメージは、既定で EUS になります  |
-RHEL 8.0      |該当なし                            | EUS イメージは現在使用できません                 |
+RHEL 8.0      |該当なし                            | Red Hat から使用可能な EUS はありません                               |
 
 
 ## <a name="list-of-rhel-images-available"></a>利用可能な RHEL イメージの一覧

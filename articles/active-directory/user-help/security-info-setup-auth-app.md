@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fff27094881ffbada2bda7937fa714ffc07133
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0e1be41c854e212a7b673d8c2dff42d7b9981fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954349"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616132"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>認証アプリを使用するようにセキュリティ情報 (プレビュー) を設定する
 
@@ -145,6 +145,8 @@ ms.locfileid: "68954349"
     >一部の選択肢が表示されない場合、おそらく、組織がその方法を許可していません。 その場合、選択できる方法を選択するか、管理者に支援を要請する必要があります。
 
 ## <a name="next-steps"></a>次の手順
+
+- 「[2 段階認証またはセキュリティ情報を使ったサインイン方法](security-info-setup-signin.md)」の手順に従って、Microsoft Authenticator アプリを使用してサインインします。
 
 - [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)を使用するか、「[職場または学校のパスワードをリセットする](user-help-reset-password.md)」の手順に従って、パスワードをリセットする (パスワードをなくしたか忘れた場合)。
 

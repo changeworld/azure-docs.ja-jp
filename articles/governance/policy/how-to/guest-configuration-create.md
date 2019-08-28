@@ -7,16 +7,18 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7dd053e3a9824ac0817db528b8b053666e1ded04
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881810"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543514"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>ゲスト構成ポリシーを作成する方法
 
 ゲスト構成では [Desired State Configuration](/powershell/dsc) (DSC) リソース モジュールを使って、Azure 仮想マシンの監査用の構成を作成します。 DSC 構成では、仮想マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **audit** がトリガーされて、仮想マシンは**非準拠**と見なされます。
+
+[Azure Policy のゲスト構成](/azure/governance/policy/concepts/guest-configuration)は、仮想マシン内の設定を監査するためにのみ使用できます。 仮想マシン内の設定の修復はまだ利用できません。
 
 Azure 仮想マシンの状態を検証するための独自の構成を作成するには、次のアクションを使用します。
 

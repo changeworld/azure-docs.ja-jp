@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 8f180308133ffba12cc3bffb19130aa7a129da9f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 48c6d6ed60045d906fcb711bd07ab492b6bbf488
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952898"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543674"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -80,6 +80,7 @@ BLOB はアーカイブ ストレージ内にありますが、BLOB データは
 ### <a name="blob-rehydration"></a>BLOB のリハイドレート
 
 [!INCLUDE [storage-blob-rehydrate-include](../../../includes/storage-blob-rehydrate-include.md)]
+「[アーカイブ層から BLOB データをリハイドレートする](storage-blob-rehydration.md)」で詳細を確認してください。  
 
 ## <a name="account-level-tiering"></a>アカウント レベルの階層制御
 
@@ -164,11 +165,13 @@ GB 単位の月額料金に加え、クール層 (GPv2 アカウントのみ) �
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. ストレージ アカウントの BLOB に移動するには、 **[すべてのリソース]** 、ストレージ アカウント、コンテナー、BLOB を順に選択します。
+1. ストレージ アカウントの BLOB に移動するには、[すべてのリソース]、ストレージ アカウント、コンテナー、BLOB を順に選択します。
 
-1. **BLOB のプロパティ** ブレードで、 **[アクセス レベル]** ドロップダウン メニューを選択し、 **[ホット]** 、 **[クール]** 、または **[アーカイブ]** アクセス層を選択します。
+1. **[Blob のプロパティ]** ブレードで、 **[レベルの変更]** ボタンを選択して [レベル] ブレードを開きます。
 
-1. ブレードの上部にある **[保存]** をクリックします。
+1. **[ホット]** 、 **[クール]** 、または **[アーカイブ]** アクセス層を選択します。 BLOB が現在アーカイブ内にあるときに、オンライン層にリハイドレートする場合は、リハイドレート優先度として **[標準]** または **[高]** を選択することもできます。
+
+1. ブレードの下部にある **[OK]** をクリックします。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 
@@ -245,6 +248,8 @@ BLOB レベルの階層制御とアーカイブ ストレージは、Azure Porta
 [ホット、クール、アーカイブのリージョンごとの提供状況を確認する](https://azure.microsoft.com/regions/#services)
 
 [Azure Blob Storage のライフサイクルの管理](storage-lifecycle-management-concepts.md)
+
+[アーカイブ層から BLOB データをリハイドレートする方法を確認する](storage-blob-rehydration.md)
 
 [Azure Storage のメトリックを有効にして現在のストレージ アカウントの使用状況を評価する](../common/storage-enable-and-view-metrics.md)
 

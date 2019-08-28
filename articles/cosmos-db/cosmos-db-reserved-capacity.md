@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ab42c600b975adac9f13e8e75da9696e51e7e94d
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e4d33756f1e09abedbf828deb447fbf14c6bfed7
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779859"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616919"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB の予約容量でコストを最適化する
 
@@ -57,7 +57,7 @@ Azure Cosmos DB の予約容量は、[Azure portal](https://portal.azure.com) �
    | リソース グループ | 予約容量割引が適用されるリソース グループ。 |
    |期間  |   1 年間または 3 年間。   |
    |スループットの種類   |  スループットは、要求ユニットとしてプロビジョニングされます。 両方の設定 (1 つのリージョンの書き込みと複数のリージョンの書き込み) のプロビジョニング済みスループットの予約を購入できます。 スループットの種類は、2 つの値から選択できます。1 時間あたり 100 RU/秒と 1 時間あたり 100 マルチマスター RU/秒です。|
-   | 予約容量ユニット| 予約するスループットの量です。 リージョンごとのすべての Cosmos DB リソース (データベースやコンテナーなど) に必要なスループットを決定することで、この値を計算できます。 次に、Cosmos DB データベースに関連付けるリージョンの数を掛け合わせます。 例: 5 つのリージョンがあり、すべてのリージョンが 100万 RU/秒である場合は、予約容量の購入に 500万 RU/秒を選択します。 |
+   | 予約容量ユニット| 予約するスループットの量です。 リージョンごとのすべての Cosmos DB リソース (データベースやコンテナーなど) に必要なスループットを決定することで、この値を計算できます。 次に、Cosmos データベースに関連付けるリージョンの数を掛け合わせます。 例: 5 つのリージョンがあり、すべてのリージョンが 100万 RU/秒である場合は、予約容量の購入に 500万 RU/秒を選択します。 |
 
 
 5. フォームに入力すると、予約容量の購入に必要な価格が計算されます。 出力には、選択したオプションで受けられる割引率も表示されます。 次に **[選択]** をクリックします

@@ -1,5 +1,5 @@
 ---
-title: Azure マネージド アプリケーションの作成エクスペリエンスのための CreateUiDefitinion.json | Microsoft Docs
+title: Azure マネージド アプリケーションの作成エクスペリエンスのための CreateUiDefinition.json | Microsoft Docs
 description: Azure マネージド アプリケーションに使う UI 定義の作成方法について説明します。
 services: managed-applications
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 292f2995e7ff1f56c306b8c9859bdb323f21762d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 783c4f5b1f5a7f2be748bc7173da2d068e1425f4
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847610"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575657"
 ---
-# <a name="createuidefitinionjson-for-azure-managed-applications-create-experience"></a>Azure マネージド アプリケーションの作成エクスペリエンスのための CreateUiDefitinion.json
+# <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure マネージド アプリケーションの作成エクスペリエンスのための CreateUiDefinition.json
 
 このドキュメントでは、Azure portal がマネージド アプリケーションを作成するときにユーザー インターフェイスを定義するために使用する **createUiDefinition.json** ファイルの中心概念を紹介します。
 
@@ -52,13 +52,11 @@ parameters プロパティのスキーマは、指定した handler と version 
 
 `$schema` は、指定することが推奨されますが、必須ではありません。 指定する場合は、`$schema` の URI 内のバージョンと `version` の値とを一致させる必要があります。
 
-JSON エディターを使用して UI 定義を作成し、次に [UI 定義サンドボックス](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)でそれをテストしてプレビューすることができます。 このサンドボックスの詳細については、[Azure Managed Applications のポータル インターフェイスのテスト](test-createuidefinition.md)に関するページを参照してください。
+JSON エディターを使用して createUiDefinition 定義を作成した後、[createUiDefinition 定義サンドボックス](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)でテストしてそれをプレビューできます。 このサンドボックスの詳細については、[Azure Managed Applications のポータル インターフェイスのテスト](test-createuidefinition.md)に関するページを参照してください。
 
 ## <a name="basics"></a>基本
 
 Basics は、Azure portal がファイルを解析するときに生成される最初のステップです。 Azure Portal は、`basics` に指定された要素を表示することに加え、デプロイに使用するサブスクリプション、リソース グループ、場所をユーザーが選択するための要素を挿入します。 可能な場合、デプロイ全体のパラメーター (クラスターの名前、管理者の資格情報など) のクエリを実行する要素は、このステップに追加する必要があります。
-
-ユーザーのサブスクリプション、リソース グループ、または場所によって動作が異なるような要素は、basics では使用できません。 たとえば **Microsoft.Compute.SizeSelector** で利用可能な一連のサイズは、ユーザーのサブスクリプションや場所に応じて決まります。 そのため、**Microsoft.Compute.SizeSelector** は steps の中でしか使うことができません。 一般に、basics で使うことができるのは、**Microsoft.Common** 名前空間の要素だけです。 ただし、それ以外の名前空間 (**Microsoft.Compute.Credentials** など) にあっても、ユーザーのコンテキストに依存しない一部の要素については使うことができます。
 
 ## <a name="steps"></a>手順
 

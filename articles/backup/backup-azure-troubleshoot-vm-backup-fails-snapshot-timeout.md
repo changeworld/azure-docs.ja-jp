@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: f47afd450350226aa944287e756b73f61b15b32d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 54b83df4c0ad68c9bd6b39d39926657395c48f3e
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952042"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615875"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -106,7 +106,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **エラー コード**:UserErrorUnsupportedDiskSize <br>
 **エラー メッセージ**:現在、Azure Backup では 4095 GB を超えるディスク サイズはサポートされていません <br>
 
-VM をバックアップする際にディスク サイズが 4,095 GB よりも大きいと、バックアップ操作が失敗することがあります。 4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、「[Azure VM バックアップの概要](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)」を参照してください。
+VM をバックアップする際にディスク サイズが 4,095 GB よりも大きいと、バックアップ操作が失敗することがあります。 4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、[こちらの記事](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)を参照してください。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 別のバックアップ操作が進行中であるためバックアップを開始できません
 

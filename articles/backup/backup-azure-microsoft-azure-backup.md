@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: eb9908fc7b2d4ecd8af8c2b4a65ab43352035ec5
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 18eacc914a30dc6004bef71e9d3910e170c43d9b
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018896"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575146"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 > [!div class="op_single_selector"]
@@ -176,11 +176,10 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
     SQL 2017 の独自のインスタンスを使用するときは、手動で SSRS を構成する必要があります。 SSRS の構成の後で、SSRS の *IsInitialized* プロパティが *True* に設定されていることを確認します。 これが True に設定されていると、MABS は SSRS が既に構成されていると見なして SSRS 構成をスキップします。
 
     SSRS 構成では次の値を使用します。 
-
-        - Service Account: ‘Use built-in account’ should be Network Service
-        - Web Service URL: ‘Virtual Directory’ should be ReportServer_<SQLInstanceName>
-        - Database: DatabaseName should be ReportServer$<SQLInstanceName>
-        - Web Portal URL: ‘Virtual Directory’ should be Reports_<SQLInstanceName>
+    - サービス アカウント:‘組み込みアカウントの使用’ はネットワーク サービスにする必要があります
+    - Web サービスの URL:‘仮想ディレクトリ’ は ReportServer_<SQLInstanceName> にする必要があります
+    - データベース: DatabaseName は ReportServer$<SQLInstanceName> にする必要があります
+    - Web ポータルの URL:‘仮想ディレクトリ’ は ReportServer_<SQLInstanceName> にする必要があります
 
     SSRS の構成について詳しくは、[こちら](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017)をご覧ください。
 

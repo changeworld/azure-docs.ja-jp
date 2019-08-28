@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 3d44937c977ba264d671f2053d387470651af68a
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030876"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612885"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services:よく寄せられる質問 (FAQ)
 このページでは、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -31,6 +31,9 @@ Azure ADドメイン サービスを 構成するか、または管理する際�
 ## <a name="configuration"></a>構成
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>1 つの Azure AD ディレクトリに対して複数のマネージド ドメインを作成することはできますか。
 いいえ。 1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応されるマネージド ドメインは 1 つだけ作成できます。  
+
+### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>クラシック仮想ネットワークで Azure AD Domain Services を有効にすることができますか。
+新しいデプロイでは、クラシック仮想ネットワークはサポートされません。 クラシック仮想ネットワークにデプロイされている既存のマネージド ドメインは、引き続きサポートされます。
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Azure Resource Manager 仮想ネットワークで Azure AD Domain Services を有効にすることはできますか。
 はい。 Azure AD Domain Services は Azure Resource Manager 仮想ネットワークで有効にすることができます。 クラシックの Azure 仮想ネットワークは、マネージド ドメインの新規作成のサポートをまもなく終了します。
