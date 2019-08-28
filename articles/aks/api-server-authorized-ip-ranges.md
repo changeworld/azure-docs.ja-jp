@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 5049a35b943c68d1a05d1435113226d83dc5ecf4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: fe0c9d7e870b56bf83b70845af9159ea0703c4ab
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031765"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533619"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -108,6 +108,14 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 > [!WARNING]
 > Azure Firewall を使用すると、毎月の請求サイクルで大きなコストが発生する場合があります。 Azure Firewall を使用するという要件は、この初期のプレビュー期間でのみ必要になります。 詳細およびコスト計画については、「[Azure Firewall の価格][azure-firewall-costs]」を参照してください。
+>
+> または、クラスターで [Standard SKU ロード バランサー][standard-sku-lb]を使用している場合は、Azure Firewall を送信ゲートウェイとして構成する必要はありません。 [az network public-ip list][az-network-public-ip-list] を使用して、AKS クラスターのリソース グループを指定します。このリソース グループは、通常、*MC_* で始まります。 これにより、クラスターのパブリック IP が表示され、それをホワイトリストに登録することができます。 例:
+>
+> ```azurecli-interactive
+> RG=$(az aks show --resource-group myResourceGroup --name myAKSClusterSLB --query nodeResourceGroup -o tsv)
+> SLB_PublicIP=$(az network public-ip list --resource-group $RG --query [].ipAddress -o tsv)
+> az aks update --api-server-authorized-ip-ranges $SLB_PublicIP --resource-group myResourceGroup --name myAKSClusterSLB
+> ```
 
 まず、AKS クラスターと仮想ネットワークのための *MC_* リソース グループ名を取得します。 次に、[az network vnet subnet create][az-network-vnet-subnet-create] コマンドを使用してサブネットを作成します。 次の例では、*10.200.0.0/16* の CIDR 範囲を持つ *AzureFirewallSubnet* という名前のサブネットを作成します。
 
@@ -259,11 +267,13 @@ az aks update \
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [create-aks-sp]: kubernetes-service-principal.md#manually-create-a-service-principal
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-network-firewall-create]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-create
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [az-network-firewall-ip-config-create]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-create
 [az-network-firewall-network-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az-network-route-table-route-create
@@ -271,3 +281,4 @@ az aks update \
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[standard-sku-lb]: load-balancer-standard.md

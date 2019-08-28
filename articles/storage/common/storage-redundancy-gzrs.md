@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2e97a734a4730e4341614019e3ca1ecaa81420a7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035986"
+ms.locfileid: "69516138"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>geo ゾーン冗長ストレージ (GZRS) (プレビュー) を使用して高可用性 Azure Storage アプリケーションを構築する
 
-geo ゾーン冗長ストレージ (GZRS) (プレビュー) では、[ゾーン冗長ストレージ (ZRS)](storage-redundancy-zrs.md) の高可用性と、[geo 冗長ストレージ (GRS)](storage-redundancy-grs.md) によって提供されるリージョン障害からの保護を融合させます。 GZRS ストレージ アカウント内のデータは、プライマリ リージョンの 3 つの [Azure 可用性ゾーン](../../availability-zones/az-overview.md)間でレプリケートされ、リージョンの災害から保護するためにセカンダリ リージョンにもレプリケートされます。
+geo ゾーン冗長ストレージ (GZRS) (プレビュー) では、[ゾーン冗長ストレージ (ZRS)](storage-redundancy-zrs.md) の高可用性と、[geo 冗長ストレージ (GRS)](storage-redundancy-grs.md) によって提供されるリージョン障害からの保護を融合させます。 GZRS ストレージ アカウント内のデータは、プライマリ リージョンの 3 つの [Azure 可用性ゾーン](../../availability-zones/az-overview.md)間でレプリケートされ、リージョンの災害から保護するためにセカンダリ リージョンにもレプリケートされます。 各 Azure リージョンは、同じ geo 内の別のリージョンと組み合わせて、リージョン ペアにして使用します。 詳細と例外については、[ドキュメント](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)をご覧ください。
 
 GZRS ストレージ アカウントを使用すると、可用性ゾーンが使用できなくなったり、回復できなくなった場合に、引き続きデータの読み取りと書き込みを行うことができます。 さらに、リージョン全体の障害が発生した場合や、プライマリ リージョンを回復できない災害が発生した場合にも、データは保持されます。 GZRS は、指定された 1 年間にわたって、オブジェクトの 99.99999999999999% (シックスティーン ナイン) 以上の持続性を提供するように設計されています。 GZRS では、LRS、ZRS、GRS、または RA-GRS と同じ [スケーラビリティ ターゲット](storage-scalability-targets.md)も提供されます。 プライマリ リージョンで災害が発生した場合にアプリケーションでデータを読み取れるようにする必要がある場合は、読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) を使用して、必要に応じてセカンダリ リージョンのデータに対する読み取りアクセスを有効にすることができます。
 

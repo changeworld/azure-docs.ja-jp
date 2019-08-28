@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 51ef55247d3262d8707403ed09cc8643403dda23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 393c66f57cd4a7621ad660774a95502c0f5ad8c4
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952985"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534709"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -250,6 +250,15 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 | 再起動制御| 再起動の処理方法を決定します。 使用できるオプションは次のとおりです。</br>必要に応じて再起動 (既定値)</br>常に再起動</br>再起動しない</br>Only reboot - will not install updates (再起動のみ - 更新プログラムをインストールしない)|
 
 更新プログラムのデプロイはプログラムで作成することもできます。 REST API を使用して更新プログラムのデプロイを作成する方法については、「[Software Update Configurations - Create](/rest/api/automation/softwareupdateconfigurations/create)」(ソフトウェア更新プログラムの構成 - 作成) をご覧ください。 週単位の更新プログラムのデプロイを作成するために使用できるサンプル Runbook もあります。 この Runbook について詳しくは、「[Create a weekly update deployment for one or more VMs in a resource group](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)」(リソース グループ内の VM に対して週単位の更新プログラムのデプロイを作成する) をご覧ください。
+
+### <a name="maintenance-windows"></a>メンテナンス期間
+
+メンテナンス期間によって、更新プログラムをインストールするために許容される時間を制御します。 メンテナンス期間を指定するときは、次の点を考慮してください。
+
+* メンテナンス期間によって、インストールを試みる更新プログラムの数が制御されます。
+* メンテナンス期間の終了が近づいている場合でも、Update Management では、新しい更新プログラムのインストールは停止されません。
+* メンテナンス期間を超過した場合でも、Update Management では、進行中の更新は終了されません。
+* Windows でメンテナンス期間が超過する理由は、多くの場合、Service Pack の更新プログラムのインストールに時間がかかるためです。
 
 ### <a name="multi-tenant"></a>テナント間の更新プログラムのデプロイ
 

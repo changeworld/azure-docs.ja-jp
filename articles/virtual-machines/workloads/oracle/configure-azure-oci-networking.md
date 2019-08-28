@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: 18dbc60c1a29fbc26f4bbc73faa58aeafc66c32f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2cab129556dcd0407793512f41f91311804abd0f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880099"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510220"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure と Oracle Cloud Infrastructure 間の直接相互接続をセットアップする  
 
 [統合されたマルチクラウド エクスペリエンス](oracle-oci-overview.md) (プレビュー) を作成するために、Microsoft と Oracle では、[ExpressRoute](../../../expressroute/expressroute-introduction.md) と [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) を介して　Azure と Oracle Cloud Infrastructure (OCI) 間の直接相互接続を提供しています。 ExpressRoute と FastConnect の相互接続により、お客様は、短い待機時間、高いスループット、2 つのクラウド間の専用直接接続を体験することができます。
 
 > [!IMPORTANT]
-> Microsoft Azure と OCI 間の接続はプレビュー段階です。 Azure と OCI の間で低待機時間の接続を有効にするには、この機能について Azure サブスクリプションを最初にホワイトリストに登録する必要があります。 サブスクリプション ID を使用して oracleconnect@microsoft.com にメールを送信してプレビューに登録する必要があります。 サブスクリプションが登録されると、メールが届きます。 確認メールを受信するまで、この機能を使用することはできません。 Microsoft の担当者に問い合わせて、このプレビューを有効にすることもできます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+> Microsoft Azure と OCI 間の接続はプレビュー段階です。 Azure と OCI の間で低待機時間の接続を有効にするには、最初にお使いの Azure サブスクリプションをこの機能用のホワイトリストに登録する必要があります。 この簡単な[アンケート フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)を完了することで、プレビューに登録する必要があります。 サブスクリプションが登録されると、メールが届きます。 確認メールを受信するまで、この機能を使用することはできません。 Microsoft の担当者に問い合わせて、このプレビューを有効にすることもできます。 プレビュー機能へのアクセスは可用性の対象であり、Microsoft の独自の判断によって制限されます。 アンケートを完了しても、アクセスが保証されるわけではありません。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 次の図は、相互接続の概要を示しています。
 

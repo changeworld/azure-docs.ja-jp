@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 9409beea3f22fd7ff09fe49838a37d9ff0b485f6
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 3cd60f390f0233e2923660fc39675b5a307d8d8f
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975911"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515419"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -59,6 +59,18 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
     |    セキュリティで保護された LDAP        |    636       |    TCP           |
     |    セキュリティで保護された LDAP        |    3269      |    TCP           |
     |    w32time            |    123       |    UDP           |
+
+* ターゲットの Active Directory Domain Services のサイト トポロジについて、特に Azure NetApp Files がデプロイされる Azure VNet ではベスト プラクティスに従う必要があります。  
+
+    (Azure NetApp Files によって到達可能なドメイン コントローラーが存在する) 新規または既存の Active Directory サイト に、Azure NetApp Files がデプロイされる仮想ネットワークのアドレス空間を追加する必要があります。 
+
+* Azure NetApp Files の[委任されたサブネット](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)から、指定された DNS サーバーに到達可能である必要があります。  
+
+    サポートされるネットワーク トポロジについては、「[Azure NetApp Files のネットワーク計画のガイドライン](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)」を参照してください。
+
+    ネットワーク セキュリティ グループ (NSG) とファイアウォールに、Active Directory と DNS トラフィック要求を許可するように適切に構成された規則が必要です。
+
+    AD サイトとサービスに関する「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。 
 
 ## <a name="create-an-active-directory-connection"></a>Active Directory 接続を作成する
 
@@ -117,9 +129,9 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
         **[使用可能なクォータ]** フィールドには、選択した容量プール内の未使用の領域のうち、新しいボリュームの作成に使用できる領域の量が示されます。 新しいボリュームのサイズが、使用可能なクォータを超えてはいけません。  
 
     * **Virtual Network**  
-        ボリュームへのアクセス元となる Azure Virtual Network (Vnet) を指定します。  
+        ボリュームへのアクセス元となる Azure 仮想ネットワーク (VNet) を指定します。  
 
-        指定する Vnet には、Azure NetApp Files に委任されているサブネットがある必要があります。 Azure NetApp Files サービスにアクセスできるのは、同じ Vnet から、またはボリュームと同じリージョンにある Vnet から Vnet ピアリングを経由する場合のみです。 ボリュームには、オンプレミス ネットワークから Express Route 経由でアクセスすることもできます。   
+        指定する VNet には、Azure NetApp Files に委任されているサブネットが存在する必要があります。 Azure NetApp Files サービスにアクセスできるのは、同じ VNet から、またはボリュームと同じリージョンにある VNet から VNet ピアリングを経由する場合のみです。 ボリュームには、オンプレミス ネットワークから Express Route 経由でアクセスすることもできます。   
 
     * **サブネット**  
         ボリュームで使用するサブネットを指定します。  

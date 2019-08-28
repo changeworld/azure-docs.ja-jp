@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 8fecc00a970f0e706dc6240eaec593fd54968ff8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934226"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535181"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy の追跡とイベントのログ記録
 
@@ -64,7 +64,7 @@ Azure Data Box サービスに対して定義できる 2 つのロールは次�
 
 - Data Box は、お客様のオンプレミスにロックされた状態で届きます。 ご注文には Azure portal で使用可能なデバイスの資格情報を使用できます。  
 
-    Data Box が設定されている場合は、デバイスの資格情報にアクセスしたすべてのユーザーがわかっている必要がある場合があります。 **[デバイスの資格情報]** ブレードにアクセスしたユーザーを調べるには、アクティビティ ログに対してクエリを実行することができます。   **[デバイスの詳細] > [資格情報]** ブレードへのアクセスに関連するアクションは、`ListCredentials` アクションとしてとしてアクティビティ ログに記録されます。
+    Data Box が設定されている場合は、デバイスの資格情報にアクセスしたすべてのユーザーがわかっている必要がある場合があります。 **[デバイスの資格情報]** ブレードにアクセスしたユーザーを調べるには、アクティビティ ログに対してクエリを実行することができます。  **[デバイスの詳細] > [資格情報]** ブレードへのアクセスに関連するアクションは、`ListCredentials` アクションとしてとしてアクティビティ ログに記録されます。
 
     ![アクティビティ ログのクエリ](media/data-box-logs/query-activity-log-1.png)
 
@@ -76,7 +76,7 @@ Data Box または Azure Data Box Heavy へのデータのコピー中に、コ�
 
 ### <a name="errorxml-file"></a>Error.xml ファイル
 
-コピー ジョブがエラーなしで完了したことを確認してください。 コピー プロセス中にエラーがある場合は、 **[接続とコピー]**   ページからログをダウンロードします。
+コピー ジョブがエラーなしで完了したことを確認してください。 コピー プロセス中にエラーがある場合は、 **[接続とコピー]** ページからログをダウンロードします。
 
 - 512 バイトにアラインされていないファイルを Data Box のマネージド ディスク フォルダーにコピーした場合、そのファイルはステージング用のストレージ アカウントにページ BLOB としてアップロードされません。 ログにエラーが表示されます。 そのファイルを削除し、512 バイトにアラインされているファイルをコピーします。
 - VHDX、動的 VHD、または差分 VHD (これらのファイルはサポートされていません) をコピーした場合は、ログにエラーが表示されます。
@@ -203,7 +203,7 @@ Data Box サービスでは、処理される注文ごとに、関連付けら�
 
 巡回冗長検査 (CRC) の計算は、Azure へのアップロード中に行われます。 データのコピーからの CRC とデータのアップロード後の CRC が比較されます。 CRC の不一致は、対応するファイルがアップロードに失敗したことを示します。
 
-既定では、ログは  `copylog` という名前のコンテナーに書き込まれます。 ログは、次の命名規則を使用して保存されます。
+既定では、ログは `copylog` という名前のコンテナーに書き込まれます。 ログは、次の命名規則を使用して保存されます。
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`
 
@@ -354,7 +354,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>注文履歴のダウンロード
 
-注文履歴は Azure portal で利用できます。 注文が完了し、デバイスのクリーンアップ (ディスクからのデータ消去) が完了したら、デバイスの注文に移動し、次に **[注文の詳細]** に移動します。 **[注文履歴のダウンロード]**   オプションが使用可能になっています。 詳細については、「[注文履歴のダウンロード](data-box-portal-admin.md#download-order-history)」を参照してください。
+注文履歴は Azure portal で利用できます。 注文が完了し、デバイスのクリーンアップ (ディスクからのデータ消去) が完了したら、デバイスの注文に移動し、次に **[注文の詳細]** に移動します。 **[注文履歴のダウンロード]** オプションが使用可能になっています。 詳細については、「[注文履歴のダウンロード](data-box-portal-admin.md#download-order-history)」を参照してください。
 
 注文履歴をスクロールすると、以下の内容が表示されます。
 
