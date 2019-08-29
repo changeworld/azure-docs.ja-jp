@@ -127,8 +127,6 @@
           href: security-center-install-endpoint-protection.md
         - name: 脆弱性評価がインストールされていない
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: Enable Network Security Groups
-          href: security-center-enable-network-security-groups.md
         - name: 脅威レポート
           href: security-center-threat-report.md
         - name: カスタム アラート
@@ -143,8 +141,6 @@
           href: security-center-investigation-user-data.md
         - name: Logic Apps のプレイブック
           href: security-center-playbooks.md
-        - name: イベントの表示
-          href: security-center-events-dashboard.md
         - name: Search
           href: security-center-search.md
         - name: 計画と運用
