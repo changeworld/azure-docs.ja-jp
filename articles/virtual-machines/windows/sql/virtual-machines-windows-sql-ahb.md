@@ -8,19 +8,18 @@ manager: jroth
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb13cd65142214ccf852c591ae081e7e633e1a4d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2cce369f6a0670790ede7367609f87c18672ddd5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935323"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100615"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure での SQL Server 仮想マシンのライセンス モデルを変更する
 この記事では、新しい SQL VM リソース プロバイダーである **Microsoft.SqlVirtualMachine** を使用して Azure 内の SQL Server 仮想マシン (VM) のライセンス モデルを変更する方法について説明します。
@@ -183,7 +182,7 @@ Azure PowerShell のバージョンを確認するには、次のコードを使
 
 * [Windows VM における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)
 * [Windows VM 上の SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Windows VM 上の SQL Server の料金ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Windows VM 上の SQL Server のリリースノート](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Windows VM 上の SQL Server の価格ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Windows VM 上の SQL Server のリリース ノート](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

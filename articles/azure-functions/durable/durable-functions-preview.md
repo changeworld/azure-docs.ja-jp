@@ -6,16 +6,15 @@ author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1609931cd5fcab0977ff64f680fbb1f253f3caaf
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 94784ee9a72d11e168828f1543cbe62219ac4a74
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782191"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097952"
 ---
 # <a name="durable-functions-20-preview-azure-functions"></a>Durable Functions 2.0 プレビュー (Azure Functions)
 

@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: ec976257-396b-42a0-8ea1-01c97f820fa6
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4e107da9d8e5019ba51769d283f3faa34839380
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 63a2a3a68adaa2e389cc2af173c8f75a18fbc36d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67709256"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078706"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -525,7 +524,7 @@ SAP ASCS または SCS インスタンスに別の番号を使う場合は、そ
 1. Azure Portal で、 **\<[\>** SID > -lb-ascs ロード バランサー] **[負荷分散規則]** の順に選びます。
 2. SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
-   * EnableAdfsAuthentication
+   * 名前
    * Port
    * バックエンド ポート
 

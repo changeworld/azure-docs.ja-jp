@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: b1f794b833d228d5903859f8cc75a51fc6ef2fe0
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1ed753e9fe24b729f2efeb32bd99f5a721a57083
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967953"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906613"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>クイック スタート:Translator Text API を使用してテキストの表記を変換する
 
 このクイックスタートでは、Translator Text REST API を使用して、テキストの表記変換 (スクリプトの変換) を実行する方法について説明します。 ここに記載されているサンプルでは、ラテン アルファベットを使用した表記に日本語を変換します。
 
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+
+[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

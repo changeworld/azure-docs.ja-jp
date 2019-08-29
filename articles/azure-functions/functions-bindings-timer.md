@@ -8,17 +8,16 @@ manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 962c28c8b081980c2715d4d78739662e86748bd1
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 77fa97cd339b6498263e12eae9cea50187493a89
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814455"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097111"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 

@@ -12,17 +12,16 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 02a214c10c5b111070127e4a823682989f24b20b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 3f7389022eaee4268d5d4fc5439b64d7f7f1bf07
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637721"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066535"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。

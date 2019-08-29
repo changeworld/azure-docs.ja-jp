@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: c9bf2c2c459999813c7fc30f95be653168d270ad
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1339fe66a4925104d459c0491caccdd7db5998a7
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67613961"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114459"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護
 
@@ -89,7 +89,6 @@ AKS クラスターでネットワーク ポリシーを使用するには、[Az
 独自の安全な *SP_PASSWORD* を指定してください。 *RESOURCE_GROUP_NAME* および *CLUSTER_NAME* 変数を置き換えることができます。
 
 ```azurecli-interactive
-SP_PASSWORD=mySecurePassword
 RESOURCE_GROUP_NAME=myResourceGroup-NP
 CLUSTER_NAME=myAKSCluster
 LOCATION=canadaeast
@@ -106,7 +105,9 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 
 # Create a service principal and read in the application ID
-SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+SP=$(az ad sp create-for-rbac --output json)
+SP_ID=$(echo $SP | jq -r .appId)
+SP_PASSWORD=$(echo $SP | jq -r .password)
 
 # Wait 15 seconds to make sure that service principal has propagated
 echo "Waiting for service principal to propagate..."

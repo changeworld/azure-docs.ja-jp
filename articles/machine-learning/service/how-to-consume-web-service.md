@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4aa948a785153dd0d70a9af41ae0ed25036827f8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 03579d75ad9cbaceca1a5d42913ff546088f6cfe
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656265"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982793"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -81,7 +81,7 @@ Azure Machine Learning には、Web サービスへのアクセスを制御す�
 
 |認証方法|ACI|AKS|
 |---|---|---|
-|キー|既定で無効| 既定で有効|
+|Key|既定で無効| 既定で有効|
 |トークン| 利用不可| 既定で無効 |
 
 キーまたはトークンで保護されているサービスに要求を送信する場合は、__Authorization__ ヘッダーを使用してキーまたはトークンを渡します。 キーまたはトークンは `Bearer <key-or-token>` の形式にする必要があります。ここで、`<key-or-token>` はキーまたはトークンの値です。
@@ -497,7 +497,7 @@ print(resp.text)
 
 Power BI では、予測によって Power BI のデータを拡充できるように、Azure Machine Learning Web サービスの使用がサポートされています。 
 
-Power BI での使用がサポートされている Web サービスを生成するには、Power BI で必要とされる形式をスキーマがサポートしている必要があります。 [Power BI でサポートされているスキーマの作成方法をご確認ください](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-script-with-dictionary-input-support-consumption-from-power-bi)。
+Power BI での使用がサポートされている Web サービスを生成するには、Power BI で必要とされる形式をスキーマがサポートしている必要があります。 [Power BI でサポートされているスキーマの作成方法をご確認ください](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where#example-entry-script)。
 
 デプロイした Web サービスは、Power BI データフローから使用できます。 [Power BI から Azure Machine Learning Web サービスを使用する方法をご確認ください](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
 

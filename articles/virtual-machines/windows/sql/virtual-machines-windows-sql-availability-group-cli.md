@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5bfbf995b67ac49cf169565046daa2887a57e476
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 58174704051709a720950ac51591a1d53b9d01bb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846154"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100566"
 ---
 # <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure CLI を使用して Azure VM で SQL Server の Always On 可用性グループを構成する
 この記事では、[Azure CLI](/cli/azure/sql/vm?view=azure-cli-latest/) を使用して、Windows フェールオーバー クラスターをデプロイしたり、クラスターに SQL Server VM を追加したり、Always On 可用性グループの内部ロード バランサーおよびリスナーを作成したりする方法について説明します。 Always On 可用性グループのデプロイは、引き続き SQL Server Management Studio (SSMS) を使用して手動で実行されます。 

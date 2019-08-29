@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 481e6c5f2271651627577af3d03f9dd4da725146
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949923"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096152"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 

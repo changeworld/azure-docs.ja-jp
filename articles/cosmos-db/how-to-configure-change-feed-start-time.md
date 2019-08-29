@@ -3,15 +3,15 @@ title: 変更フィード プロセッサの開始時刻の構成方法 - Azure 
 description: 特定の日時から読み取りを開始するよう変更フィード プロセッサを構成する方法を説明します
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 3ad9aff10b3bae36a173f776f55a434fd8b38b98
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574275"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093645"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>変更フィード プロセッサの開始時刻の構成方法
 
@@ -46,7 +46,7 @@ ms.locfileid: "69574275"
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [GitHub の使用例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/usage/changefeed)
+* [GitHub の使用例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [GitHub のその他のサンプル](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>次の手順

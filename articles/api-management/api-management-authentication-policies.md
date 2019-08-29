@@ -10,16 +10,15 @@ ms.assetid: 061702a7-3a78-472b-a54a-f3b1e332490d
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: bd31d711c58a63b5c15712c1774d48433c62f18d
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 69584b434ac0442df48dcdea2a7d9f2aca9c1ccd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774972"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073732"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -55,9 +54,9 @@ ms.locfileid: "68774972"
 
 ### <a name="attributes"></a>属性
 
-|名前|説明|必須|既定値|
+|名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
-|userName|基本認証の資格情報のユーザー名を指定します。|はい|該当なし|
+|username|基本認証の資格情報のユーザー名を指定します。|はい|該当なし|
 |password|基本認証の資格情報のパスワードを指定します。|はい|該当なし|
 
 ### <a name="usage"></a>使用法
@@ -95,7 +94,7 @@ ms.locfileid: "68774972"
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
+|名前|説明|必須|Default|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|クライアント証明書のサムプリント。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
 |証明書 ID|証明書リソースの名前。|`thumbprint` または `certificate-id` のいずれかが存在しなければなりません。|該当なし|  
@@ -139,7 +138,7 @@ ms.locfileid: "68774972"
   
 ### <a name="attributes"></a>属性  
   
-|名前|説明|必須|既定値|  
+|名前|説明|必須|Default|  
 |----------|-----------------|--------------|-------------|  
 |resource|文字列 をオンにします。 Azure Active Directory におけるターゲット Web API のアプリ ID の URI (セキュリティで保護されたリソース)。|はい|該当なし|  
 |output-token-variable-name|文字列 をオンにします。 オブジェクトの種類 `string` としてトークン値を受け取るコンテキスト変数の名前。 |いいえ|該当なし|  

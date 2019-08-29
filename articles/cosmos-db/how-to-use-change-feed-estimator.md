@@ -3,15 +3,15 @@ title: 変更フィード推定機能を使用する - Azure Cosmos DB
 description: 変更フィード推定機能を使用して、お使いの変更フィード プロセッサの進行状況を分析する方法について説明します。
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: f72a3bfcfd6b4f480977510963f49f73a7207e1f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615278"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092947"
 ---
 # <a name="use-the-change-feed-estimator"></a>変更フィード推定機能を使用する
 
@@ -55,7 +55,7 @@ ms.locfileid: "69615278"
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [GitHub の使用例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/usage/changefeed)
+* [GitHub の使用例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [GitHub のその他のサンプル](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>次の手順

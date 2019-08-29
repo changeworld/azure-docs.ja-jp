@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: dapine
-ms.openlocfilehash: ddbe586c03d9f722d844d06968aa25e4b4a5aac0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8664d0f727c47da1b70b8060f879a49fbbd8c7c5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815303"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051323"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
@@ -48,54 +48,38 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 
 次の表に、各 Text Analytics コンテナーに割り当てる CPU コア (2.6 GHz (ギガヘルツ) 以上) とメモリ (GB 単位) の最小値と推奨値を示します。
 
-| コンテナー | 最小値 | 推奨 | TPS<br>(最小、最大)|
-|-----------|---------|-------------|--|
-|キー フレーズ抽出 | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |15、30|
-|言語検出 | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |15、30|
-|感情分析 | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |15、30|
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[キー フレーズ抽出](#tab/keyphrase)
+
+[!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
+
+#### <a name="language-detectiontablanguage"></a>[言語検出](#tab/language)
+
+[!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
+
+#### <a name="sentiment-analysistabsentiment"></a>[感情分析](#tab/sentiment)
+
+[!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
+
+***
 
 * 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
 * TPS - 1 秒あたりのトランザクション数
 
 コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
 
-## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[キー フレーズ抽出](#tab/keyphrase)
 
-Text Analytics のコンテナー イメージは Microsoft コンテナー レジストリから入手できます。
+[!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-| コンテナー | リポジトリ |
-|-----------|------------|
-|キー フレーズ抽出 | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
-|言語検出 | `mcr.microsoft.com/azure-cognitive-services/language` |
-|感情分析| `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+#### <a name="language-detectiontablanguage"></a>[言語検出](#tab/language)
 
-[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して Microsoft Container Registry からコンテナー イメージをダウンロードします。
+[!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-Text Analytics コンテナーで使用可能なタグの詳しい説明については、Docker Hub の次のコンテナーを参照してください。
+#### <a name="sentiment-analysistabsentiment"></a>[感情分析](#tab/sentiment)
 
-* [キー フレーズ抽出](https://go.microsoft.com/fwlink/?linkid=2018757)
-* [言語検出](https://go.microsoft.com/fwlink/?linkid=2018759)
-* [感情分析](https://go.microsoft.com/fwlink/?linkid=2018654)
+[!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
-[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
-
-### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>キー フレーズ抽出コンテナー用の docker pull
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
-```
-
-### <a name="docker-pull-for-the-language-detection-container"></a>言語検出コンテナー用の docker pull
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
-```
-
-### <a name="docker-pull-for-the-sentiment-container"></a>感情コンテナー用の docker pull
-
-```
-docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
-```
+***
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -112,23 +96,19 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 
 `docker run` コマンドの[例](../text-analytics-resource-container-config.md#example-docker-run-commands)を利用できます。
 
-### <a name="run-container-example-of-docker-run-command"></a>docker run コマンドのコンテナー実行の例
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[キー フレーズ抽出](#tab/keyphrase)
 
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/keyphrase \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
+[!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-このコマンドは、次の操作を行います。
+#### <a name="language-detectiontablanguage"></a>[言語検出](#tab/language)
 
-* コンテナー イメージからキー フレーズ コンテナーを実行します
-* 1 つの CPU コアと 4 ギガバイト (GB) のメモリを割り当てます
-* TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます
-* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
+[!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
+#### <a name="sentiment-analysistabsentiment"></a>[感情分析](#tab/sentiment)
+
+[!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
+
+***
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
@@ -139,7 +119,7 @@ ApiKey={API_KEY}
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。
 
-コンテナーの API のホストとしては `https://localhost:5000` を使用します。
+コンテナーの API のホストとしては `http://localhost:5000` を使用します。
 
 <!--  ## Validate container is running -->
 

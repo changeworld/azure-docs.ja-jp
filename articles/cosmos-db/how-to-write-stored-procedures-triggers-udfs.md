@@ -3,15 +3,15 @@ title: Azure Cosmos DB でストアド プロシージャ、トリガー、お�
 description: Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を定義する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mjbrown
-ms.openlocfilehash: cf73b6e0477e46f0a2eac43d7fa6bccc6845db92
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615249"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092839"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 

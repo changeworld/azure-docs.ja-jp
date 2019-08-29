@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: abaf96b11abee0bf519a276f825b9c47cd333c1b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 240e0dadaebde6725974604b578328ede0b20652
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816309"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129052"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>更新:Azure Image Builder テンプレートを作成する 
 
@@ -190,6 +190,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 `imageVersionId` は、イメージ バージョンの ResourceId にする必要があります。 イメージ バージョンの一覧を表示するには、[az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list) を使います。
 
 ## <a name="properties-buildtimeoutinminutes"></a>プロパティ: buildTimeoutInMinutes
+
 既定では、Image Builder は 240 分間実行されます。 その後、イメージのビルドが完了しているかどうかにかかわらず、タイムアウトして停止します。 タイムアウトに達した場合は、次のようなエラーが表示されます。
 
 ```text
@@ -203,7 +204,6 @@ buildTimeoutInMinutes の値を指定しなかった場合、または 0 に設�
 
 
 ## <a name="properties-customize"></a>プロパティ: customize
-
 
 Image Builder では、複数の "カスタマイザー" がサポートされています。 カスタマイザーは、スクリプトの実行やサーバーの再起動など、イメージのカスタマイズに使われる機能です。 
 

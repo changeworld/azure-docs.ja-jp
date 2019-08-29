@@ -4,12 +4,12 @@ ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
 ms.author: sttramer
-ms.openlocfilehash: f443b11207f6844bcffc1c7963209bc315f725b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 75860e5f53c8a8539632d27dd6202c7fa53ad76a
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623882"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047979"
 ---
 ## <a name="use-azure-cloud-shell"></a>Azure Cloud Shell を使用する
 
@@ -25,8 +25,10 @@ Azure Cloud Shell を起動するには:
 
 Azure Cloud Shell でこの記事のコードを実行するには:
 
-1. Cloud Shell を開きます。
-1. **[コピー]** ボタンを選択して、コード ブロックをコードにコピーします。 
-1. Windows と Linux では **Ctrl** + **Shift** + **V** キー、macOS では **Cmd** + **Shift** + **V** キーを使用して、コードを Cloud Shell セッションに貼り付けます。 
-1. **Enter** キーを押して、コードを実行します。
+1. Cloud Shell を起動します。
 
+1. **[コピー]** ボタンを選択して、コード ブロックをコードにコピーします。
+
+1. Windows と Linux では **Ctrl** + **Shift** + **V** キー、macOS では **Cmd** + **Shift** + **V** キーを使用して、コードを Cloud Shell セッションに貼り付けます。
+
+1. **Enter** キーを押して、コードを実行します。

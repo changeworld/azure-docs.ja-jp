@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: 41e357ee53d4c2fbc6683be3446ba2527dd9253f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c6c4d1d4da3679eaefacb5aa0c91fcf64afc2a6b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623973"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128278"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) にデプロイされたモデルのデータの誤差 (プレビュー) を検出する
 
@@ -178,16 +178,7 @@ datadrift.disable_schedule()
 
 ## <a name="retrain-your-model-after-drift"></a>誤差の後にモデルを再トレーニングする
 
-データの誤差がデプロイされたモデルのパフォーマンスに悪影響を与える場合は、そのモデルを再トレーニングする必要があります。 次の [`diff()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#diff-rhs-dataset--compute-target-none--columns-none-
-) メソッドは、古いトレーニング データ セットと新しいトレーニング データ セットの間で変更された内容の概要を示します。 
-
-```python
-from azureml.core import Dataset
-
-old_training_dataset.diff(new_training_dataset)
-```
-
-前のコードの出力に基づいて、モデルの再トレーニングが必要になることがあります。 それを行うには、次の手順に進みます。
+データの誤差がデプロイされたモデルのパフォーマンスに悪影響を与える場合は、そのモデルを再トレーニングする必要があります。 それを行うには、次の手順に進みます。
 
 * 収集されたデータを調査し、新しいモデルをトレーニングするためのデータを準備します。
 * それをトレーニング/テスト データに分割します。

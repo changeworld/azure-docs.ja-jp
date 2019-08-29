@@ -5,18 +5,17 @@ services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: a7de2ba66ccfb5e3f3bce688e68698d90fe2eaf6
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c8fc8e7d5888f9a0b080c0ca1d24e53068b543be
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941334"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095171"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 

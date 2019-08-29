@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 7d4f36be51591d6be2b4c42eb8a8950ab52a0258
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 2a88e778458da3c5faace401863998dda746ac75
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782576"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051494"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage
 
@@ -111,7 +111,7 @@ Rest API のコマンドを使用して、特定のストレージ アカウン�
 
 ![Azure Storage Advanced Threat Protection のアラート メール](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
 
-Azure Security Center の [[セキュリティ アラート]](../../security-center/security-center-managing-and-responding-alerts.md#managing-security-alerts) タイルから、現在のセキュリティ アラートを確認して管理することができます。 特定のアラートをクリックすると、詳細な情報と、現在の脅威を調査し、今後の脅威に対処するためのアクションが表示されます。
+Azure Security Center の [[セキュリティ アラート]](../../security-center/security-center-managing-and-responding-alerts.md) タイルから、現在のセキュリティ アラートを確認して管理することができます。 特定のアラートをクリックすると、詳細な情報と、現在の脅威を調査し、今後の脅威に対処するためのアクションが表示されます。
 
 ![Azure Storage Advanced Threat Protection のアラート メール](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 

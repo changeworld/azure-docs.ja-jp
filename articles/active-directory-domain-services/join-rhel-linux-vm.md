@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 0e3803edd47c3589652b3fedecd12125e3ff40b7
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: b59bd7c7196ceb87da087967498eca6dda7c212b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612807"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990599"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 仮想マシンのマネージド ドメインへの参加
 この記事では、Red Hat Enterprise Linux (RHEL) 7 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
@@ -84,7 +84,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 1. AAD ドメイン サービスのマネージド ドメインを探します。 SSH ターミナルで、次のコマンドを入力します。
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -100,7 +100,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     > * kinit のエラーを防ぐため、ドメイン名は必ず大文字で指定します。
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. コンピューターをドメインに参加させます。 SSH ターミナルで、次のコマンドを入力します。
@@ -111,7 +111,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     > VM がドメインに参加できない場合は、VM のネットワーク セキュリティ グループで、Azure AD DS マネージド ドメインの仮想ネットワーク サブネットに対して、TCP + UDP ポート 464 の送信 Kerberos トラフィックが許可されていることを確認します。
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM'
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM'
     ```
 
 コンピューターのマネージド ドメインへの参加が完了すると、「Successfully enrolled machine in realm (コンピューターは領域に正常に登録されました)」という旨のメッセージが表示されます。
@@ -120,10 +120,10 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 ## <a name="verify-domain-join"></a>ドメイン参加の確認
 マシンがマネージド ドメインに正常に参加したかどうかを確認してみましょう。 異なる SSH 接続を使用して、ドメイン参加 RHEL VM に接続してください。 ドメイン ユーザー アカウントを使用して、ユーザー アカウントが正しく解決されているかどうかを確認します。
 
-1. SSH ターミナルで次のコマンドを入力し、ドメインに参加した RHEL 仮想マシンに、SSH を使用して接続します。 マネージド ドメインに属するドメイン アカウントを使用します (例: ここでは 'bob@contoso.COM')。
+1. SSH ターミナルで次のコマンドを入力し、ドメインに参加した RHEL 仮想マシンに、SSH を使用して接続します。 マネージド ドメインに属するドメイン アカウントを使用します (例: ここでは 'bob@CONTOSO.COM')。
     
     ```console
-    ssh -l bob@contoso.COM contoso-rhel.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-rhel.contoso.com
     ```
 
 2. SSH ターミナルで次のコマンドを入力し、ホーム ディレクトリが正しく初期化されているかどうかを確認します。

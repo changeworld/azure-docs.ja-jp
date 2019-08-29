@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: cbasoglu
-ms.openlocfilehash: c1407e8a133013054ef33d4fe55fb8ecb46de654
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 64f02a33a3aeecddf751b8293542776bf5819574
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035727"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061900"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>クイック スタート:macOS 上で Swift と Speech SDK を使用して音声を認識する
 
@@ -65,16 +65,22 @@ Xcode を起動し、 **[File]**  >  **[New]**  >  **[Project]** の順にクリ
 
 ## <a name="add-the-sample-code"></a>サンプル コードを追加する
 
-1. `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` という名前の新しいヘッダー ファイルを、helloworld プロジェクト内の `helloworld` ディレクトリに配置し、次のコードをその中に貼り付けます。[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
+1. `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` という名前の新しいヘッダー ファイルを、helloworld プロジェクト内の `helloworld` ディレクトリに配置し、次のコードをその中に貼り付けます。
+
+   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
 1. ![[ヘッダーのプロパティ]](media/sdk/qs-swift-macos-bridging-header.png) で、helloworld ターゲット用の Swift プロジェクトの設定に対するブリッジ ヘッダーの相対パス `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` を *[Objective-C ブリッジ ヘッダー]* フィールドに追加します。
-1. 自動生成された `AppDelegate.swift` ファイルの内容を次のように置き換えます。[!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/AppDelegate.swift#code)]
+1. 次の操作によって、自動生成された `AppDelegate.swift` ファイルの内容を置き換えます。
+
+   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/AppDelegate.swift#code)]
 1. `AppDelegate.swift` で、文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられたリージョン (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>SDK を CocoaPod としてインストールする
 
 1. CocoaPod 依存関係マネージャーをその[インストールの手順](https://guides.cocoapods.org/using/getting-started.html)に従ってインストールします。
-1. サンプル アプリのディレクトリに移動します (`helloworld`)。 そのディレクトリに、次の内容を含んだ `Podfile` という名前のテキスト ファイルを配置します。[!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/Podfile)]
+1. サンプル アプリのディレクトリに移動します (`helloworld`)。 そのディレクトリに、次の内容を含んだ `Podfile` という名前のテキスト ファイルを配置します。
+
+   [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/Podfile)]
 1. ターミナルで `helloworld` ディレクトリに移動して、`pod install` コマンドを実行します。 これにより、サンプル アプリと依存関係としての Speech SDK の両方を含んだ、`helloworld.xcworkspace` という Xcode ワークスペースが生成されます。 以降、このワークスペースを使用します。
 
 ## <a name="build-and-run-the-sample"></a>サンプルのビルドと実行

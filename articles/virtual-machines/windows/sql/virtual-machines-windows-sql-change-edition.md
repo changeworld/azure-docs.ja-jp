@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 04e447b7d8da1c8769239aee7650fe3bc5585590
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: eec2e588b1c2b03e9880dad0848b8213bf5fa449
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855228"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100509"
 ---
 # <a name="perform-an-in-place-upgrade-of-a-sql-server-edition-on-an-azure-vm"></a>Azure VM で SQL Server のエディションのインプレース アップグレードを実行する
 
@@ -96,7 +95,7 @@ SQL Server のエディションをダウングレードした後、前に示し
 
 * [Windows VM における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)
 * [Windows VM 上の SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Windows VM 上の SQL Server の料金ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Windows VM 上の SQL Server のリリースノート](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Windows VM 上の SQL Server の価格ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Windows VM 上の SQL Server のリリース ノート](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

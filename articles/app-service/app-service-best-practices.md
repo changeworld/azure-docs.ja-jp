@@ -10,17 +10,16 @@ ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: b4c7524415865f7db5d4514c14f8e45030620330
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c40191c8682d6ff93f70e0853e767c89248ae887
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636672"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071615"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service のベスト プラクティス
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)を使用するためのベスト プラクティスを概説します。 

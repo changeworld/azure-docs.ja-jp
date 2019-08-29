@@ -3,15 +3,15 @@ title: Azure Cosmos DB で Javascript クエリ API を使用してストアド 
 description: Azure Cosmos DB で Javascript クエリ API を使用してストアド プロシージャおよびトリガーを記述する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 20a9ca8e28961a6dc49947a22f745424961b4a3f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 96ecd77cb955d5e63cdcae8657e3096bbbadba89
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615268"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092877"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Javascript クエリ API を使用して Azure Cosmos DB でストアド プロシージャおよびトリガーを記述する方法
 

@@ -9,25 +9,24 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 8/20/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: feaefef23b433a296d25cc11b5cd89d86acd280f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 0c05eb59c42700394f755f226405f16a47edc73c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650186"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091546"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Linux 仮想マシンを作成する
 
 Azure 仮想マシン (VM) は、Azure portal で作成できます。 Azure portal は、Azure リソースを作成するためのブラウザーベースのユーザー インターフェイスです。 このクイックスタートでは、Azure portal を使用して、Ubuntu 18.04 LTS を実行する Linux 仮想マシン (VM) をデプロイする方法を示します。 また、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [ 無料アカウント ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="create-ssh-key-pair"></a>SSH キー ペアの作成
 
@@ -67,7 +66,7 @@ Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使�
 
     ![[Administrator account] (管理者アカウント)](./media/quick-create-portal/administrator-account.png)
 
-1. **[受信ポートの規則]**  >  **[Public inbound ports] (パブリック受信ポート)** で、 **[Allow selected ports] (選択されたポートを許可する)** を選択してから、ドロップ ダウンから **[SSH (22)]** と **[HTTP (80)]** を選択します。 
+1. **[受信ポートの規則]**  >  **[Public inbound ports] (パブリック受信ポート)** で、 **[Allow selected ports] (選択されたポートを許可する)** を選択してから、ドロップダウンから **[SSH (22)]** と **[HTTP (80)]** を選択します。 
 
     ![RDP と HTTP のポートを開く](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -110,7 +109,7 @@ sudo apt-get -y install nginx
 
 任意の Web ブラウザーを使用して、NGINX の既定のウェルカム ページを表示します。 Web アドレスとして、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、VM の概要ページで確認できるほか、先ほど使用した SSH 接続文字列にも含まれています。
 
-![NGINX の既定のサイト](./media/quick-create-cli/nginx.png)
+![NGINX の既定のサイト](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -121,4 +120,4 @@ sudo apt-get -y install nginx
 このクイック スタートでは、単純な仮想マシンをデプロイし、ネットワーク セキュリティ グループと規則を作成し、基本的な Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Linux VM のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Linux 仮想マシンのチュートリアル ](./tutorial-manage-vm.md)
+> [Azure Linux 仮想マシンのチュートリアル](./tutorial-manage-vm.md)

@@ -6,7 +6,6 @@ documentationcenter: ''
 author: juliako
 manager: femila
 editor: ''
-ms.assetid: e6bfc068-fa46-4d68-b1ce-9092c8f3a3c9
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,16 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: 7e8c49815ed5e9294739a840dd0314d1c8c6c174
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5c55b419b88a66d2e1acf1687478ab35d9f0a059
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "69015819"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019027"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの概要 
-
-## <a name="encoding-overview"></a>エンコードの概要
 
 > [!NOTE]
 > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
@@ -35,10 +32,7 @@ Media Services を使い始める場合、コーデックとファイル形式�
 
 Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはSmooth Streamingでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
 
-AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。
-
-> [!Note]
-> ストリーミング エンドポイントの課金は、エンドポイントが**実行中**状態のときに発生します。
+Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 ストリーミング エンドポイントの課金は、エンドポイントが**実行中**状態のときに発生します。
 
 Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
 
@@ -50,6 +44,7 @@ Media Services は次のオンデマンド エンコーダーをサポートし�
 既定では、1 つの Media Services アカウントにつき、同時に 1 つのアクティブなエンコーディング タスクを実行できます。 エンコード ユニットを予約して、複数のエンコード タスク (購入したエンコード予約ユニットごとに 1 つ) を同時に実行できます。 詳細については、「 [エンコード ユニットの拡大/縮小](media-services-scale-media-processing-overview.md)」を参照してください。
 
 ## <a name="media-encoder-standard"></a>メディア エンコーダー スタンダード
+
 ### <a name="how-to-use"></a>使用方法
 [メディア エンコーダー スタンダードを使用したエンコード方法](media-services-dotnet-encode-with-media-encoder-standard.md)
 

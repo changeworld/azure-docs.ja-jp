@@ -7,16 +7,15 @@ manager: jeconnoc
 keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 582e4d81851d570f99d25d626a1db8a9f5e98231
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 7220c72625697490d9c42dab7e18ca4bf64d3f43
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881327"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085626"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 

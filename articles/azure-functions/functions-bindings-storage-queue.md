@@ -7,17 +7,16 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: bf5219f8e147baba0e89a8c0e1fa6cb7b371473c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6c708bfd0f8e49e9a857b9f77fab6224354ff06a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774748"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097183"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 
@@ -676,7 +675,7 @@ JavaScript 関数の場合は、`context.bindings.<name>` を使用して出力�
 ```
 
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |maxPollingInterval|00:00:01|キューのポーリングの最大間隔。 最小は 00:00:00.100 (100 ミリ秒) であり、最大 00:01:00 (1 分) まで増分されます。 |
 |visibilityTimeout|00:00:00|メッセージの処理が失敗したときの再試行間隔。 |
