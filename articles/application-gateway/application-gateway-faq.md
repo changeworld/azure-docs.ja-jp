@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 6/1/2019
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: 5bfb3a093cd101f30daf4439dc8f58b5b4f693ca
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740882"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891722"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -361,6 +360,13 @@ PowerShell コマンドレット `Get-AzApplicationGatewayBackendHealth` とポ�
 ### <a name="what-could-cause-backend-health-to-return-an-unknown-status"></a>バックエンドの正常性として不明な状態が返されるのですが、どのような原因が考えられますか?
 
 不明な状態が返されるのは通常、アプリケーション ゲートウェイ サブネット上でネットワーク セキュリティ グループ (NSG)、カスタム DNS、またはユーザー定義ルーティング (UDR) により、バックエンドに対するアクセスがブロックされているときです。 詳細については、[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)に関するページを参照してください。
+
+### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>許可されているトラフィックが NSG フロー ログに表示されない場合がありますか?
+
+はい。 構成が次のシナリオに一致する場合は、許可されているトラフィックが NSG フロー ログに表示されません。
+- Application Gateway v2 をデプロイした
+- アプリケーション ゲートウェイ サブネットに NSG がある
+- その NSG 上で NSG フロー ログを有効にした
 
 ## <a name="next-steps"></a>次の手順
 

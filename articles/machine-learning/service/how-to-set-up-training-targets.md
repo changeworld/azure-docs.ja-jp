@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72155e072acb8006b48f6951fc60081126c80691
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990459"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872434"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する 
 
@@ -317,7 +317,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 1. [Azure portal](https://portal.azure.com) に移動し、ワークスペースを開きます。 
 1. __[アプリケーション]__ で __[Compute]__ を選択します。
 
-    ![[計算] タブを表示する](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
+    [![[計算] タブを表示する](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>コンピューティング先を作成する
 
@@ -336,8 +336,6 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 1. フォームに入力します。 必須のプロパティの値を指定します。特に、コンピューティングの起動に使用する **[VM ファミリ]** と **[最大ノード数]** を指定します。  
 
-    ![フォームに入力する](./media/how-to-set-up-training-targets/add-compute-form.png) 
-
 1. __作成__ を選択します。
 
 
@@ -348,8 +346,6 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 1. コンピューティング先の詳細が表示されます。 
 
     ![コンピューティング先の詳細を表示する](./media/how-to-set-up-training-targets/compute-target-details.png) 
-
-
 
 ### <a id="portal-reuse"></a>コンピューティング ターゲットにアタッチする
 

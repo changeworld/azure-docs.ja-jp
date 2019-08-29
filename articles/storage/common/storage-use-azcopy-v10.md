@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b127738d4be79c30d1791d7313c0f8f7eacaf36
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 6b5be5271e2ff579d93cb70f7c8da93d861d4dc0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985150"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648725"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -65,9 +65,9 @@ AzCopy ディレクトリをご自分のパスに追加しないことを選択�
 |**BLOB ストレージ (階層的名前空間)** | Azure AD および SAS |
 |**File Storage** | SAS のみ |
 
-### <a name="option-1-use-azure-ad"></a>オプション 1:Azure AD の使用
+### <a name="option-1-use-azure-active-directory"></a>オプション 1:Azure Active Directory を使用する
 
-Azure AD を使用すると、各コマンドに SAS トークンを追加する代わりに、資格情報を 1 回入力するだけで済みます。  
+Azure Active Directory を使用すると、各コマンドに SAS トークンを追加する代わりに、資格情報を 1 回入力するだけで済みます。  
 
 > [!NOTE]
 > 現在のリリースでは、ストレージ アカウント間で BLOB をコピーする場合は、各ソース URL に SAS トークンを追加する必要があります。 コピー先 URL からのみ、SAS トークンを省略できます。 例については、「[ストレージ アカウント間で BLOB をコピーする](storage-use-azcopy-blobs.md)」をご覧ください。
@@ -149,7 +149,7 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 ```
 
 > [!NOTE]
-> この例で示すように、プロンプトを使用することを検討してください。 そうすると、クライアント シークレットがご使用のコンソールのコマンド履歴に表示されません。 
+> この例で示すように、プロンプトを使用することを検討してください。 そうすると、ご自分のパスワードがご使用のコンソールのコマンド履歴に表示されません。  
 
 次に、次のコマンドを入力し、Enter キーを押します。
 
@@ -170,7 +170,7 @@ azcopy login --service-principal --application-id <application-id>
 > [!NOTE]
 > この値は、必ず、ご使用のオペレーティング システムの環境変数の設定ではなく、ご使用のコマンド プロンプトから設定します。 そうすることで、この値を現在のセッションでのみ使用できるようになります。
 
-この例では、これを PowerShell で実行する方法を示しています。
+この例では、このタスクを PowerShell で実行する方法を示しています。
 
 ```azcopy
 $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
@@ -238,7 +238,7 @@ AzCopy コマンドで使用する各コピー元または各コピー先の URL
 この例のコマンドでは、ローカル ディレクトリから BLOB コンテナーにデータが繰り返しコピーされます。 架空の SAS トークンがコンテナー URL の末尾に追加されます。
 
 ```azcopy
-azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
+azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
 SAS トークンの詳細とその取得方法については、「[Shared Access Signatures (SAS) の使用](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)」を参照してください。

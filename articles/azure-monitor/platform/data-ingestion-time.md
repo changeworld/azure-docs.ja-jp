@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: bwren
-ms.openlocfilehash: e07a436ee18a216bab569d299e534e729996db19
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5947c4c28736f8488ea0e48941214df42c6af72a
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990153"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639498"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -100,8 +100,11 @@ Heartbeat
 | summarize percentiles(E2EIngestionLatency,50,95), percentiles(AgentLatency,50,95) by Computer 
 | top 20 by percentile_E2EIngestionLatency_95 desc
 ```
- 
+
+前出のパーセンタイル チェックは、待ち時間の一般的な傾向を見つけるのに適しています。 待ち時間の短期間のスパイクを識別するのであれば、最大値 (`max()`) を使用した方が効果的である場合があります。
+
 一定の期間にわたる特定のコンピューターのインジェスト時間をドリルダウンする場合は、次のクエリを使用すると、昨日のデータもグラフに視覚化されます。 
+
 
 ``` Kusto
 Heartbeat 

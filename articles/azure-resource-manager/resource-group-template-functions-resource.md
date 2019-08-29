@@ -4,14 +4,14 @@ description: Azure Resource Manager テンプレートで、リソースに関�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 08/06/2019
+ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2ec6e58438e7be953e1f672fb815ff3f68a7f252
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2cd37405176eefa8f4445942b9fbf1afc2a7404a
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839254"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650431"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -634,7 +634,7 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
+`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
 
 リソースの一意の識別子を返します。 リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。 
 
@@ -646,43 +646,46 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 | resourceGroupName |いいえ |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
 | resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
 | resourceName1 |はい |string |リソースの名前。 |
-| resourceName2 |いいえ |string |リソースが入れ子になっている場合、次のリソース名セグメント。 |
+| resourceName2 |いいえ |string |次のリソース名セグメント (必要な場合)。 |
+
+さらに他のセグメントがリソースの種類に含まれる場合は、続けてリソース名をパラメーターとして追加します。
 
 ### <a name="return-value"></a>戻り値
 
 識別子は、次の形式で返されます。
 
-```json
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-```
+**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+
 
 ### <a name="remarks"></a>解説
 
-`resourceId()` 関数を[サブスクリプション レベルのデプロイ](deploy-to-subscription.md)で使用した場合、そのレベルでデプロイされたリソースの ID のみを取得できます。 たとえば、ポリシー定義またはロール定義の ID は取得できますが、ストレージ アカウントの ID は取得できません。 リソース グループへのデプロイの場合は、その逆になります。 サブスクリプション レベルでデプロイされたリソースのリソース ID を取得することはできません。
+指定するパラメーターの数は、リソースが親であるか子であるか、また、リソースが同じサブスクリプション (またはリソース グループ) にあるかどうかで異なります。
 
-指定するパラメーター値は、リソースが現在のデプロイと同じサブスクリプションおよびリソース グループに含まれるかどうかによって異なります。 同じサブスクリプションとリソース グループ内にあるストレージ アカウントのリソース ID を取得するには、次のようにします。
-
-```json
-"[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-サブスクリプションは同じでもリソース グループが異なるストレージ アカウントのリソース ID を取得するには、次のようにします。
+同じサブスクリプションおよび同じリソース グループに存在する親リソースの ID を取得するには、リソースの種類と名前を指定します。
 
 ```json
-"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
+"[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-サブスクリプションとリソース グループが異なるストレージ アカウントのリソース ID を取得するには、次のようにします。
+子リソースのリソース ID を取得するには、リソースの種類に含まれるセグメント数に注目します。 リソースの種類を構成するセグメントごとにリソース名を指定してください。 セグメントの名前は、その階層部分に存在するリソースと対応関係にあります。
+
+```json
+"[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
+```
+
+同じサブスクリプションで、リソース グループが異なるリソースの ID を取得するには、リソース グループの名前を指定します。
+
+```json
+"[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
+```
+
+サブスクリプションもリソース グループも異なるリソースの ID を取得するには、サブスクリプション ID とリソース グループ名を指定します。
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-異なるリソース グループ内のデータベースのリソース ID を取得するには、次のようにします。
-
-```json
-"[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
-```
+`resourceId()` 関数を[サブスクリプション レベルのデプロイ](deploy-to-subscription.md)で使用した場合、そのレベルでデプロイされたリソースの ID のみを取得できます。 たとえば、ポリシー定義またはロール定義の ID は取得できますが、ストレージ アカウントの ID は取得できません。 リソース グループへのデプロイの場合は、その逆になります。 サブスクリプション レベルでデプロイされたリソースのリソース ID を取得することはできません。
 
 サブスクリプション スコープでデプロイするときにサブスクリプション レベルのリソースのリソース ID を取得するには、次のようにします。
 
@@ -766,7 +769,7 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | sameRGOutput | string | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | string | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

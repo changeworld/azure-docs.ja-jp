@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b1fd31a758501620129fdbbc532b8defcf927045
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ed9e4aced7983cce10a577b38c1c170474cf83d
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60648501"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876859"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions でのチェックポイントと再生 - (Azure Functions)
 
@@ -145,7 +145,7 @@ Durable Task Framework は、`await` (C#) または `yield` (JavaScript) ステ�
 
   オーケストレーターに遅延が必要な場合は、[CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) または `createTimer` (JavaScript) API を使用できます。
 
-* オーケストレーター コードで**非同期操作を開始しないでください** ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API または `context.df` オブジェクトの APIを使用する場合を除く)。 たとえば、.NET では `Task.Run`、`Task.Delay`、または `HttpClient.SendAsync` を開始せず、JavaScript では `setTimeout()` および `setInterval()` を開始しません。 Durable Task Framework は、オーケストレーター コードを 1 つのスレッドで実行しており、他の非同期 API でスケジュールされている他のスレッドとは対話できません。
+* オーケストレーター コードで**非同期操作を開始しないでください** ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API または `context.df` オブジェクトの APIを使用する場合を除く)。 たとえば、.NET では `Task.Run`、`Task.Delay`、または `HttpClient.SendAsync` を開始せず、JavaScript では `setTimeout()` および `setInterval()` を開始しません。 Durable Task Framework は、オーケストレーター コードを 1 つのスレッドで実行しており、他の非同期 API でスケジュールされている他のスレッドとは対話できません。 これが発生すると、`InvalidOperationException` 例外がスローされます。
 
 * オーケストレーター コードでは**無限ループが発生しないようにしてください**。 Durable Task Framework では、オーケストレーション関数の進行状況に応じて実行履歴が保存されるため、無限ループが発生すると、オーケストレーター インスタンスによってメモリが不足する可能性があります。 無限ループ シナリオでは、[ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) または `continueAsNew` (JavaScript) などの API を使用して、関数の実行を再開して、前の実行履歴を破棄してください。
 

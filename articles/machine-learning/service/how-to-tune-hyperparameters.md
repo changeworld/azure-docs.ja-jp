@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb4378047f34f3f635b2f1dd2425bbee28f91178
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815725"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873068"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルのハイパーパラメーターを調整する
 
@@ -325,11 +325,9 @@ RunDetails(hyperdrive_run).show()
 
 さらに、並行座標プロットを使用して、個々のハイパーパラメーターのパフォーマンスと値の間の相関関係を視覚的に特定することができます。 
 
-![ハイパーパラメーター調整の並行座標](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
+[![ハイパーパラメーター調整の並行座標](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 Azure Web ポータルですべてのハイパーパラメーター調整実行を視覚化できます。 Web ポータルで実験を表示する方法について詳しくは、[実験の追跡方法](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)に関するページをご覧ください。
-
-![ハイパーパラメーター調整ポータル](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
 
 ## <a name="find-the-best-model"></a>最高のモデルを見つける
 

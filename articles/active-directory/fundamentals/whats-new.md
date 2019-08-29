@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45a7477fa312a172579c6b4717e9f679ac253e1b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 50f2f1f7f5d8509a28557e9704bc178be465b1ee
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823818"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648654"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -36,6 +36,20 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 - 変更の計画
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。 6 か月以上前の項目を探す場合は、「[新着情報のアーカイブ - Azure Active Directory](whats-new-archive.md)」をご覧ください。
+
+---
+
+## <a name="august-2019"></a>2019 年 8 月
+
+### <a name="adalnet-ignores-the-msalnet-shared-cache-for-on-behalf-of-scenarios"></a>ADAL.NET が on-behalf-of シナリオで MSAL.NET 共有キャッシュを無視する
+
+**種類:** 固定  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+
+Azure AD Authentication ライブラリ (ADAL.NET) バージョン 5.0.0-preview 以降では、アプリの開発者が、[Web アプリおよび Web API のアカウントごとに 1 つのキャッシュをシリアル化](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization#custom-token-cache-serialization-in-web-applications--web-api)する必要があります。 そうしないと、`UserAssertion` の特定のユース ケースと共に [on-behalf-of フロー](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-api-call-api-app-configuration#on-behalf-of-flow)を使用する一部のシナリオで、特権の昇格が生じることがあります。 この脆弱性を回避するために、on-behalf-of のシナリオでは、.NET 用 Microsoft 認証ライブラリ (MSAL.NET) の共有キャッシュが ADAL.NET で無視されるようになりました。
+
+この問題の詳細については、[Azure Active Directory 認証ライブラリの特権の昇格の脆弱性](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1258)に関するページを参照してください。
 
 ---
 
@@ -568,13 +582,13 @@ Azure AD アクティビティ ログで Microsoft Graph API エンドポイン�
 
 ## <a name="april-2019"></a>2019 年 4 月
 
-### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-in-refreshed-azure-ad-identity-protection"></a>新しい Azure AD 脅威インテリジェンス検出が、更新後の Azure AD Identity Protection で利用可能
+### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-as-part-of-azure-ad-identity-protection"></a>新しい Azure AD 脅威インテリジェンス検出が、Azure AD Identity Protection で利用可能
 
 **種類:** 新機能  
 **サービス カテゴリ:** Azure AD Identity Protection  
 **製品の機能:** ID のセキュリティ & 保護
 
-Azure AD 脅威インテリジェンス検出が、更新後の Azure AD Identity Protection で利用可能になりました。 この新しい機能は、Microsoft の内部および外部の脅威インテリジェンスに基づいて、特定のユーザーにとって異常であったり、既知の攻撃パターンに一致したりするユーザー アクティビティを示す場合に役立ちます。
+Azure AD 脅威インテリジェンス検出が、Azure AD Identity Protection 機能の一部として利用できるようになりました。 この新しい機能は、Microsoft の内部および外部の脅威インテリジェンス ソースに基づいて、特定のユーザーにとって異常なユーザー アクティビティや、既知の攻撃パターンに一致するアクティビティを示す場合に役立ちます。
 
 更新されたバージョンの Azure AD Identity Protection の詳細については、[Azure AD Identity Protection の 4 つの主要な機能強化がパブリック ビューに示されるようになった](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935)ことに関するブログと「[Azure Active Directory Identity Protection (更新版) とは](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2)」 の記事を参照してください。 Azure AD 脅威インテリジェンス検出の詳細については、[Azure Active Directory Identity Protection のリスク イベント](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence)に関する記事を参照してください。
 

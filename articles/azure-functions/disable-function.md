@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: glenga
-ms.openlocfilehash: 183056d01146194b2854a70df790802e1a0bb839
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 498bb8c0f1e7bb674605d4a98f0be0f3e0b9a7c9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782235"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650493"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
@@ -29,7 +29,7 @@ ms.locfileid: "68782235"
 
 ## <a name="functions-2x---all-languages"></a>Functions 2.x - すべての言語
 
-Functions 2.x で関数を無効にするには、`AzureWebJobs.<FUNCTION_NAME>.Disabled` の形式でアプリの設定を使用します。 Azure CLI を使用して、プログラムでこの設定を作成および変更できます。 [Azure portal](https://portal.azure.com) の関数の **[管理]** タブから、これを行うこともできます。 
+Functions 2.x で関数を無効にするには、`AzureWebJobs.<FUNCTION_NAME>.Disabled` の形式でアプリの設定を使用します。 このアプリケーション設定は、[Azure CLI](/cli/azure/) を使用したり、[Azure portal](https://portal.azure.com) で関数の **[管理]** タブを使用したりするなど、さまざまな方法で作成または編集できます。 
 
 ### <a name="azure-cli"></a>Azure CLI
 

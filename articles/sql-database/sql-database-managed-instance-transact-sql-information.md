@@ -11,28 +11,30 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1581a62f0999cf502feaad31d2c884f4d171e770
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019669"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644893"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
+# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>マネージド インスタンスの T-SQL の相違点、制限、既知の問題
 
-この記事では、Azure SQL Database マネージド インスタンスとオンプレミスの SQL Server データベース エンジンの構文および動作の相違点について簡単に説明します。 次の内容について説明します。<a name="Differences"></a>
+この記事では、Azure SQL Database マネージド インスタンスとオンプレミスの SQL Server データベース エンジンの構文および動作の相違点について簡単に説明します。 マネージド インスタンスのデプロイ オプションは、オンプレミスの SQL Server データベース エンジンとの高い互換性を備えています。 SQL Server データベース エンジンのほとんどの機能がマネージド インスタンスでサポートされています。
+
+![移行](./media/sql-database-managed-instance/migration.png)
+
+マネージド インスタンスには、SQL Server と比べて PaaS の制限と動作の違いがいくつかあります。 それらの相違点は、次のカテゴリに分けることができます。<a name="Differences"></a>
 
 - [可用性](#availability)には、[Always On](#always-on-availability) と[バックアップ](#backup)の相違点が含まれます。
 - [セキュリティ](#security)には、[監査](#auditing)、[証明書](#certificates)、[資格情報](#credential)、[暗号化プロバイダー](#cryptographic-providers)、[ログイン/ユーザー](#logins-and-users)、[サービス キーとサービス マスター キー](#service-key-and-service-master-key)の相違点が含まれます。
 - [構成](#configuration)には、[バッファー プール拡張機能](#buffer-pool-extension)、[照合順序](#collation)、[互換性レベル](#compatibility-levels)、[データベース ミラーリング](#database-mirroring)、[データベース オプション](#database-options)、[SQL Server エージェント](#sql-server-agent)、[テーブル オプション](#tables)の相違点が含まれます。
 - [機能](#functionalities)には、[BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、[CLR](#clr)、[DBCC](#dbcc)、[分散トランザクション](#distributed-transactions)、[拡張イベント](#extended-events)、[外部ライブラリ](#external-libraries)、[filestream と FileTable](#filestream-and-filetable)、[フルテキスト セマンティック検索](#full-text-semantic-search)、[リンク サーバー](#linked-servers)、[PolyBase](#polybase)、[レプリケーション](#replication)、[RESTORE](#restore-statement)、[Service Broker](#service-broker)、[ストアド プロシージャ、関数、およびトリガー](#stored-procedures-functions-and-triggers)が含まれます。
 - VNet やサブネット構成などの[環境設定](#Environment)。
-- [Managed Instance で動作が異なる機能](#Changes)。
-- [一時的な制限事項と既知の問題](#Issues)。
 
-マネージド インスタンスのデプロイ オプションは、オンプレミスの SQL Server データベース エンジンとの高い互換性を備えています。 SQL Server データベース エンジンのほとんどの機能がマネージド インスタンスでサポートされています。
+これらの機能の大半はアーキテクチャ上の制約であり、サービスの機能を表します。
 
-![移行](./media/sql-database-managed-instance/migration.png)
+このページでは、マネージド インスタンスに見つかった[一時的な既知の問題](#Issues)についても説明しています。これらの問題は、将来解決される予定です。
 
 ## <a name="availability"></a>可用性
 
@@ -62,6 +64,7 @@ Managed Instance には自動バックアップがあるので、ユーザーは
 制限事項: 
 
 - Managed Instance では、最大 32 個のストライプを使用するバックアップにインスタンス データベースをバックアップできます。バックアップの圧縮を使用した場合、このバックアップで最大 4 TB のデータベースに十分対応できます。
+- サービス管理 Transparent Data Encryption (TDE) を使用して暗号化されたデータベースでは、`BACKUP DATABASE ... WITH COPY_ONLY` は実行できません。 サービス管理 TDE では、バックアップを内部の TDE のキーで暗号化するように強制します。 キーはエクスポートできないので、バックアップを復元することはできません。 自動バックアップとポイントインタイム リストアを使用するか、代わりに[顧客管理 (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) を使用します。 また、データベースで暗号化を無効にすることができます。
 - `BACKUP` コマンドを使用した場合の最大バックアップ ストライプ サイズは、最大 BLOB サイズである 195 GB です。 バックアップ コマンドのストライプ数を増やして、個々のストライプ サイズを小さくし、この制限を超えないようにします。
 
     > [!TIP]
@@ -339,9 +342,9 @@ Managed Instance　はファイル共有と Windows フォルダーにはアク�
 
 SQL Server で有効になっている、ドキュメントに記載されていない DBCC ステートメントは、Managed Instance ではサポートされていません。
 
-- `Trace flags` はサポートされていません。 [トレース フラグ](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)に関する記事をご覧ください。
-- `DBCC TRACEOFF` はサポートされていません。 [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) に関する記事をご覧ください。
-- `DBCC TRACEON` はサポートされていません。 [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) に関する記事をご覧ください。
+- サポートされるグローバル `Trace flags` の数が限られています。 セッションレベルの `Trace flags` はサポートされません。 [トレース フラグ](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)に関する記事をご覧ください。
+- [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) と [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) で使用できるトレースフラグの数が限られています。
+- [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) とオプション REPAIR_ALLOW_DATA_LOSS、REPAIR_FAST、REPAIR_REBUILD の組み合わせは使用できません。これは、データベースを `SINGLE_USER` モードで設定することはできないためです。[ALTER DATABASE の相違点](#alter-database-statement)を参照してください。 データベースが破損した場合は Azure サポート チームが対応します。 データベースに修正すべき破損が見つかった場合は、Azure サポートにお問い合わせください。
 
 ### <a name="distributed-transactions"></a>分散トランザクション
 
@@ -381,7 +384,7 @@ In-Database R および In-Database Python 外部ライブラリはまだサポ�
 
 マネージド インスタンスのリンク サーバーがサポートするターゲットの数は限られています。
 
-- サポートされているターゲットは、マネージド インスタンス、Single Database、および SQL Server インスタンスです。 
+- サポートされているターゲットは、Managed Instance、Single Database、および SQL Server インスタンスです。 
 - リンク サーバーは、分散型の書き込み可能なトランザクション (MS DTC) をサポートしていません。
 - サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。 ファイルのインポートの代わりに、`BULK INSERT` または `OPENROWSET` を使用して、Azure Blob Storage からネイティブ CSV インポートを使用してください。
 
@@ -399,7 +402,7 @@ HDFS または Azure BLOB ストレージ内のファイルを参照する外部
 
 ### <a name="replication"></a>レプリケーション
 
-- スナップショット、および双方向のレプリケーションの種類がサポートされています。 マージ レプリケーション、ピア ツー ピア レプリケーション、および更新可能サブスクリプションはサポートされていません。
+- スナップショットおよび双方向のレプリケーションの種類がサポートされています。 マージ レプリケーション、ピア ツー ピア レプリケーション、および更新可能サブスクリプションはサポートされていません。
 - [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)はマネージド インスタンスのパブリック プレビューで使用できますが、制約がいくつかあります。
     - すべての種類のレプリケーション参加者 (パブリッシャー、ディストリビューター、プル サブスクライバー、プッシュ サブスクライバー) をマネージド インスタンスに配置できますが、パブリッシャーとディストリビューターを異なるインスタンスに配置することはできません。
     - マネージド インスタンスは、最新バージョンの SQL Server と通信できます。 サポートされているバージョンについては、[こちら](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)をご覧ください。
@@ -498,6 +501,18 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 - `Extended stored procedures` はサポートされておらず、これには `sp_addextendedproc`  および `sp_dropextendedproc` が含まれます。 [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
 - `sp_attach_db`、`sp_attach_single_file_db`、`sp_detach_db` はサポートされていません。 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)、[sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql) に関する各記事をご覧ください。
 
+### <a name="system-functions-and-variables"></a>システム関数とシステム変数
+
+次の変数、関数、ビューは異なる結果を返します。
+
+- `SERVERPROPERTY('EngineEdition')` は値 8 を返します。 このプロパティは、マネージド インスタンスを一意に識別します。 [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する記事をご覧ください。
+- `SERVERPROPERTY('InstanceName')` は NULL を返します。これは SQL Server に関して存在するインスタンスの概念が、Managed Instance には該当しないためです。 [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する説明をご覧ください。
+- `@@SERVERNAME` は、"接続可能な" 完全 DNS 名を返します (例: my-managed-instance.wcus17662feb9ce98.database.windows.net)。 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql) に関する記事をご覧ください。 
+- `SYS.SERVERS` は、"name" プロパティと "data_source" プロパティを表す `myinstance.domain.database.windows.net` のような、"接続可能な" 完全 DNS 名を返します。 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql) に関する記事をご覧ください。
+- `@@SERVICENAME` は NULL を返します。これは SQL Server に関して存在するサービスの概念が、Managed Instance には該当しないためです。 [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql) に関する記事をご覧ください。
+- `SUSER_ID` がサポートされています。 Azure AD ログインが sys.syslogins に含まれていない場合は、NULL を返します。 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql) に関する記事をご覧ください。 
+- `SUSER_SID` はサポートされていません。 正しくないデータが返されます。これは既知の一時的な問題です。 [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql) に関する記事をご覧ください。 
+
 ## <a name="Environment"></a>環境の制約
 
 ### <a name="subnet"></a>Subnet
@@ -512,27 +527,55 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 - マネージド インスタンスを作成した後は、マネージド インスタンスまたは VNet を別のリソース グループまたはサブスクリプションに移動することはできません。
 - VNet が[グローバル ピアリング](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)を使用して接続されている場合、App Service Environment、ロジック アプリ、マネージド インスタンス (geo レプリケーション、トランザクション レプリケーション、またはリンクされたサーバー経由で使用) など、一部のサービスでは、さまざまなリージョンにあるマネージド インスタンスにアクセスできません。 ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
 
-## <a name="Changes"></a>動作の変更
+### <a name="tempdb"></a>TEMPDB
 
-次の変数、関数、ビューは異なる結果を返します。
+`tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズはインスタンス ストレージ サイズによって制限されます。 `Tempdb` ログ ファイルのサイズは、General Purpose レベルでも Business Critical レベルでも 120 GB に制限されています。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログ データが生成される場合は、一部のクエリでエラーが返されます。
 
-- `SERVERPROPERTY('EngineEdition')` は値 8 を返します。 このプロパティは、マネージド インスタンスを一意に識別します。 [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する記事をご覧ください。
-- `SERVERPROPERTY('InstanceName')` は NULL を返します。これは SQL Server に関して存在するインスタンスの概念が、Managed Instance には該当しないためです。 [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql) に関する説明をご覧ください。
-- `@@SERVERNAME` は、"接続可能な" 完全 DNS 名を返します (例: my-managed-instance.wcus17662feb9ce98.database.windows.net)。 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql) に関する記事をご覧ください。 
-- `SYS.SERVERS` は、"name" プロパティと "data_source" プロパティを表す `myinstance.domain.database.windows.net` のような、"接続可能な" 完全 DNS 名を返します。 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql) に関する記事をご覧ください。
-- `@@SERVICENAME` は NULL を返します。これは SQL Server に関して存在するサービスの概念が、Managed Instance には該当しないためです。 [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql) に関する記事をご覧ください。
-- `SUSER_ID` がサポートされています。 Azure AD ログインが sys.syslogins に含まれていない場合は、NULL を返します。 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql) に関する記事をご覧ください。 
-- `SUSER_SID` はサポートされていません。 正しくないデータが返されます。これは既知の一時的な問題です。 [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql) に関する記事をご覧ください。 
+### <a name="error-logs"></a>エラー ログ
 
-## <a name="Issues"></a>既知の問題と制限事項
+マネージド インスタンスでは、エラー ログに詳細情報が書き込まれます。 エラー ログに記録される内部システム イベントが数多く存在します。 カスタムの手順を使用して、関連のない項目をフィルターで除外するエラー ログを読み取ります。 詳細については、[マネージド インスタンス - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) に関する記事を参照してください。
 
-### <a name="tempdb-size"></a>TEMPDB のサイズ
+## <a name="Issues"></a> 既知の問題
 
-`tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズはインスタンス ストレージ サイズによって制限されます。 `Tempdb` ログ ファイルのサイズは、General Purpose レベルでも Business Critical レベルでも 120 GB に制限されています。 `tempdb` は常に 12 個のデータ ファイルに分割されます。 ファイルあたりのこの最大サイズは変更できず、`tempdb` に新しいファイルを追加することはできません。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログ データが生成される場合は、一部のクエリでエラーが返されます。 `Tempdb` は、インスタンスが開始またはフェールオーバーしたときに、常に空のデータベースとして再作成され、`tempdb` で行われたどの変更も保持されません。 
+### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要があります。
 
-### <a name="cant-restore-contained-database"></a>包含データベースを復元できない
+**日付:** 2019 年 8 月
 
-マネージド インスタンスは[包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)を復元できません。 既存のデータベースのポイントインタイム リストアは、マネージド インスタンスでは機能しません。 その間、マネージド インスタンスに配置されるデータベースから、包含オプションを削除することをお勧めします。 運用データベースの包含オプションを使用しないでください。 
+サービス レベルの変更操作の後、複数データベースにまたがる Service Broker のダイアログで、他のデータベースのサービスにメッセージが配信されなくなります。 メッセージは**失われたわけではなく**、センダーのキューに存在します。 マネージド インスタンスの仮想コアやインスタンスのストレージ サイズを変更すると、すべてのデータベースについて、[sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) ビューの `service_broke_guid` 値が変更されます。 [BEGIN DIALOG](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) ステートメントを使用して作成された、他のデータベースの Service Broker を参照する `DIALOG` から、ターゲット サービスにメッセージが配信されなくなります。
+
+**対処法:** 複数データベースにまたがる Service Broker ダイアログのメッセージ交換を使用するアクティビティはすべて、サービス レベルを更新する前に停止し、後から再初期化してください。 サービス レベルの変更後、未配信のままのメッセージがあった場合は、それらのメッセージをソース キューから読み取って、ターゲット キューに再送信します。
+
+### <a name="impersonification-of-aad-login-types-is-not-supported"></a>AAD ログイン タイプの偽装はサポートされない
+
+**日付:** 2019 年 7 月
+
+`EXECUTE AS USER` または `EXECUTE AS LOGIN` を使用した次の AAD プリンシパルの偽装はサポートされません。
+-   別名が付けられた AAD ユーザー。 この場合は `15517` エラーが返されます。
+- AAD アプリケーションまたはサービス プリンシパルに基づく AAD のログインおよびユーザー。 この場合は `15517` および `15406` エラーが返されます。
+
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>sp_send_db_mail の @query パラメーターはサポートされない
+
+**日付:** 2019 年 4 月
+
+[sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) プロシージャの `@query` パラメーターは機能しません。
+
+### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>geo フェールオーバー後、トランザクション レプリケーションを再構成する必要がある
+
+**日付:** 2019 年 3 月
+
+自動フェールオーバー グループ内のデータベースでトランザクション レプリケーションが有効な場合、マネージド インスタンス管理者は、別のリージョンへのフェールオーバーが発生した後で、古いプライマリ上のすべてのパブリケーションをクリーンアップしてから、新しいプライマリ上でそれらを再構成する必要があります。 詳細については、「[レプリケーション](#replication)」を参照してください。
+
+### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>ツール内では AAD のログインとユーザーがサポートされない
+
+**日付:** 2019 年 1 月
+
+SQL Server Management Studio および SQL Server Data Tools では、Azure Active Directory のログインとユーザーが完全にはサポートされません。
+- 現在のところ、SQL Server Data Tools で Azure AD サーバー プリンシパル (ログイン) とユーザー (パブリック プレビュー) を使用することはできません。
+- Azure AD サーバー プリンシパル (ログイン) とユーザー (パブリック プレビュー) のスクリプトは、SQL Server Management Studio ではサポートされていません。
+
+### <a name="tempdb-structure-and-content-is-re-created"></a>TEMPDB の構造と内容は再作成される
+
+`tempdb` は常に 12 個のデータ ファイルに分割され、ファイルの構造は変更できません。 ファイルあたりの最大サイズは変更できず、`tempdb` に新しいファイルを追加することはできません。 `Tempdb` は、インスタンスが開始またはフェールオーバーしたときに、常に空のデータベースとして再作成され、`tempdb` で行われたどの変更も保持されません。
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小さなデータベース ファイルによる記憶域の超過
 
@@ -551,34 +594,13 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 
 システム ビューを使用して、[残りのファイルの数を特定](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)できます。 この制限に達した場合は、[DBCC SHRINKFILE ステートメントを使用して、より小さなファイルをいくつか空にして削除](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)してみるか、[この制限のない Business Critical レベル](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)に切り替えてください。
 
-### <a name="tooling"></a>ツール
-
-SQL Server Management Studio と SQL Server Data Tools には、Managed Instance にアクセスする際に問題がある可能性があります。
-
-- 現在のところ、SQL Server Data Tools で Azure AD サーバー プリンシパル (ログイン) とユーザー (パブリック プレビュー) を使用することはできません。
-- Azure AD サーバー プリンシパル (ログイン) とユーザー (パブリック プレビュー) のスクリプトは、SQL Server Management Studio ではサポートされていません。
-
-### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>一部のビュー、ログ、およびメッセージでの不正なデータベース名
+### <a name="guid-values-shown-instead-of-database-names"></a>データベース名の代わりに GUID 値が表示される
 
 複数のシステム ビュー、パフォーマンス カウンター、エラー メッセージ、XEvent、およびエラー ログ エントリで、実際のデータベース名ではなく GUID データベース識別子が表示されています。 将来、実際のデータベース名に置き換えられるため、これらの GUID 識別子には依存しないでください。
 
-### <a name="database-mail"></a>データベース メール
-
-[sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) プロシージャの `@query` パラメーターは機能しません。
-
-### <a name="database-mail-profile"></a>データベース メール プロファイル
-
-SQL Server エージェントによって使用されるデータベース メールプロファイルは、`AzureManagedInstance_dbmail_profile` という名前である必要があります。 その他のデータベース メール プロファイルの名前に関する制限はありません。
-
 ### <a name="error-logs-arent-persisted"></a>エラー ログが非永続的である
 
-マネージド インスタンスで利用可能なエラー ログは永続的ではなく、このログのサイズは、最大ストレージ上限には含まれません。 フェールオーバーが発生した場合、エラー ログは自動的に消去される可能性があります。
-
-### <a name="error-logs-are-verbose"></a>エラー ログが詳細である
-
-Managed Instance では、エラー ログに詳細情報が書き込まれ、その多くは関連のない内容です。 
-
-**対処法:** カスタムの手順を使用して、関連のない項目をフィルターで除外するエラー ログを読み取ります。 詳細については、[マネージド インスタンス - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) に関する記事を参照してください。
+マネージド インスタンスで利用可能なエラー ログは永続的ではなく、このログのサイズは、最大ストレージ上限には含まれません。 フェールオーバーが発生した場合、エラー ログは自動的に消去される可能性があります。 マネージド インスタンスが複数の仮想マシンで複数回移動されたことが原因で、エラー ログの履歴に欠落部分が生じる可能性があります。
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない
 
@@ -616,12 +638,6 @@ using (var scope = new TransactionScope())
 Managed Instance に配置された CLR モジュールと、現在のインスタンスを参照しているリンク サーバーまたは分散クエリでは、ローカル インスタンスの IP を解決できないことがあります。 このエラーは一時的な問題です。
 
 **対処法:** 可能であれば、CLR モジュールでコンテキスト接続を使用します。
-
-### <a name="tde-encrypted-databases-with-a-service-managed-key-dont-support-user-initiated-backups"></a>サービス管理キーを使用して TDE で暗号化されたデータベースでは、ユーザーが開始したバックアップはサポートされない
-
-サービス管理 Transparent Data Encryption (TDE) を使用して暗号化されたデータベースでは、`BACKUP DATABASE ... WITH COPY_ONLY` は実行できません。 サービス管理 TDE では、バックアップを内部の TDE のキーで暗号化するように強制します。 キーはエクスポートできないので、バックアップを復元することはできません。
-
-**対処法:** 自動バックアップとポイントインタイム リストアを使用するか、代わりに[顧客管理 (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) を使用します。 また、データベースで暗号化を無効にすることができます。
 
 ## <a name="next-steps"></a>次の手順
 
