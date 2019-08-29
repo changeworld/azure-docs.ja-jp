@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4b381ff1f68935084e3dd30865cf539d4abbd16
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: af67fb2d35344ec6134a107a553fa48661dc0770
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "68323527"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095088"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
 

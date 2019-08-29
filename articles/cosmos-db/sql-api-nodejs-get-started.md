@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 213794828b838010b526026ae15f24122748e141
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5de0fe47d8ca6372c35cc4f148f97b366a1a742c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989424"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971393"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
 
@@ -138,7 +138,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 1. データベース ID およびコンテナー ID を設定するために、以下のコードをコピーして貼り付けます。 Azure Cosmos DB クライアントは、これらの ID を通じて適切なデータベースとコンテナーを検出します。
 
    ```javascript
-   const client = new CosmosClient({ endpoint, key } });
+   const client = new CosmosClient({ endpoint, key });
 
    // ADD THIS PART TO YOUR CODE
    const HttpStatusCodes = { NOTFOUND: 404 };

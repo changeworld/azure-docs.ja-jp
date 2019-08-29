@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: rimman
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: dba29ea2d4d0ad18f021e0271c6131f9473cbe8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 27961413d0dddc165f90ebde1c5e1aee6b8d9fd3
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827800"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981837"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB SQL API アカウントにデータを移行する
  

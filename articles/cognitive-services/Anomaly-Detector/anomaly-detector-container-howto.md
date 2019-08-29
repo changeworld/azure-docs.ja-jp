@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: e3f6ad4338863fcbb35bad4f286b71993cf6fa2a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0c2ff2c745ebed8385df0d351c6d43faf5ab1b9d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854835"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050063"
 ---
 # <a name="install-and-run-anomaly-detector-containers"></a>Anomaly Detector コンテナーのインストールと実行
 
@@ -156,7 +156,7 @@ ApiKey={API_KEY}
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
-コンテナーの API のホストとしては https://localhost:5000 を使用します。
+コンテナーの API のホストとしては http://localhost:5000 を使用します。
 
 <!--  ## Validate container is running -->
 

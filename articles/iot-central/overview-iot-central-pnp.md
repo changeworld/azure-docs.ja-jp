@@ -9,19 +9,19 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 0675be988e7e9560560dd07338563c9fa22fcb4c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881651"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997740"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Azure IoT Central (プレビュー機能) とは?
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 > [!WARNING]
-> Azure IoT Central の [IoT プラグ アンド プレイ](https://aka.ms/iot-pnp-docs)機能は、現在パブリック プレビューの段階にあります。 運用環境のワークロードに、IoT プラグ アンド プレイ対応の IoT Central アプリケーションを使用しないでください。 運用環境向けには、現在一般公開されているアプリケーション テンプレートから作成された IoT Central アプリケーションを使用してください。
+> Azure IoT Central の [IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)機能は、現在パブリック プレビューの段階にあります。 運用環境のワークロードに、IoT プラグ アンド プレイ対応の IoT Central アプリケーションを使用しないでください。 運用環境向けには、現在一般公開されているアプリケーション テンプレートから作成された IoT Central アプリケーションを使用してください。
 
 Azure IoT Central は、物理的な世界とデジタルの世界とを結ぶ製品が簡単に作成できるフル マネージドの IoT SaaS (サービスとしてのソフトウェア) ソリューションです。 コネクテッド製品の構想を次の手段で実現することができます。
 
@@ -95,7 +95,7 @@ Azure IoT Central は、物理的な世界とデジタルの世界とを結ぶ�
 
 ### <a name="create-device-templates"></a>デバイス テンプレートを作成する
 
-[IoT プラグ アンド プレイ](https://aka.ms/iot-pnp-docs)を使用すれば、IoT Central では埋め込みデバイスコードを記述することなく、デバイスを統合できます。 IoT プラグ アンド プレイの中核となるのは、デバイスの機能を記述するデバイス機能モデル スキーマです。 IoT Central プレビュー アプリケーション内のデバイス テンプレートでは、これらの IoT プラグ アンド プレイ デバイス機能モデルが使用されます。
+[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)を使用すれば、IoT Central では埋め込みデバイスコードを記述することなく、デバイスを統合できます。 IoT プラグ アンド プレイの中核となるのは、デバイスの機能を記述するデバイス機能モデル スキーマです。 IoT Central プレビュー アプリケーション内のデバイス テンプレートでは、これらの IoT プラグ アンド プレイ デバイス機能モデルが使用されます。
 
 ビルダーは、デバイス テンプレートを作成する場合、次に示すいくつかのオプションを利用できます。
 
@@ -151,4 +151,4 @@ Azure IoT Central ソリューションのデバイスは、オペレーター�
   - [ビルダーとして、ソリューションを自動化するためのルールを追加する](tutorial-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
   - [オペレーターとしてデバイスを監視する](tutorial-monitor-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
   - [オペレーターとして、デバイスをソリューションに追加する](tutorial-add-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
-- [IoT プラグ アンド プレイ](https://aka.ms/iot-pnp-docs)について詳細を学習する
+- [IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)について詳細を学習する

@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 8b701a48a4508957b59c5100e6c2cfa3c1019f9d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ba30e66151024c52e5433a82204812b102b46bf3
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968081"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907086"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>クイック スタート:2 か国語辞書で単語を検索する
 
 このクイックスタートでは、Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+
+[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

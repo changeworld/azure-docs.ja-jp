@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 10452590c9415291cb2a5913aeef5c8a00cdfe12
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: fa7b6a02ba287c7f51284a28ce41b2291317f99c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562999"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066899"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 

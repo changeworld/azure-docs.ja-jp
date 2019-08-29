@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: a37df18d91f77dbeb306fd8b028cb14eded812e7
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7cd0533dcbc9b367fa9a1e138b1aa1257989a3d7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975749"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072424"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
 

@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: b78bea88149d05067cf849000fef48f7b4dc5815
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 416b0c89105f97514efdfcc859a630d78f7ba7f5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774403"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084829"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux 用 Azure Monitor Dependency 仮想マシン拡張機能
 

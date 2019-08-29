@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 6865bd9db7a963cc8e391bf8fb24b30d9b497137
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: c48e6912c907fe16343aac457c2171e96af90e8f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968057"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906884"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>クイック スタート:Translator Text API を使用して文の長さを調べる
 
 このクイック スタートでは、Translator Text API を使用して文の長さを調べる方法について説明します。
 
 このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+
+[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

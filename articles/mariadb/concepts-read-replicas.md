@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.openlocfilehash: a01f6cbb20d084864d3a7f64aa8c90d2bc3405f2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 08/21/2019
+ms.openlocfilehash: 8cfda202e57dcee4f7a783de893fb712501dfd26
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977072"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992186"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の読み取りレプリカ
 
@@ -50,7 +50,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 
 ### <a name="paired-regions"></a>ペアになっているリージョン
-ユニバーサル レプリカ リージョンに加えて、マスター サーバーの Azure のペアになっているリージョンに読み取りレプリカを作成できます。 リージョンのペアがわからない場合は、[Azure のペアになっているリージョンに関する記事](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)を参照してください。
+ユニバーサル レプリカ リージョンに加えて、マスター サーバーの Azure のペアになっているリージョンに読み取りレプリカを作成できます。 リージョンのペアがわからない場合は、[Azure のペアになっているリージョンに関する記事](../best-practices-availability-paired-regions.md)を参照してください。
 
 ディザスター リカバリー計画にリージョン間レプリカを使用している場合、レプリカの作成場所は別のリージョンのいずれか 1 つではなく、ペアになっているリージョンにすることをお勧めします。 ペアになっているリージョンでは、同時更新を避け、物理的な分離とデータの保存に優先順位を付けます。  
 

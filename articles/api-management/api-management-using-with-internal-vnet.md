@@ -10,16 +10,15 @@ ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: a23572642df99f00e278b6ba74367a30b0604640
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 29c86363842299870179b35a0466d2e44d2e56e0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851463"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072199"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
 Azure Virtual Networksでは、Azure API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して接続できます。 API Management は、次の 2 つの主要モードで仮想ネットワークの内部にデプロイできます。

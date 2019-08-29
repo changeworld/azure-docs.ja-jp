@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 16f841ebfac68fb6e02d624105e83517cba1fb56
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7500fde43f89b0a5578f816265127af5a5ed29a7
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968249"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906949"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>クイック スタート:Translator Text API を使用してサポートされている言語の一覧を取得する
 
 このクイック スタートでは、Translator Text API を使用して、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得します。
+
+[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

@@ -8,20 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8a47968ec252f628da8a1a36570fb06eb4bb10bf
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886558"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972807"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの削除
 
-CloudSimple は、プライベート クラウドを削除する柔軟性を提供します。  プライベート クラウドは、1 つ以上の vSphere クラスターで構成されます。 各クラスターには、3 から 16 個のノードを含めることができます。 プライベート クラウドを削除すると、すべてのクラスターが削除されます。 
+CloudSimple は、プライベート クラウドを削除する柔軟性を提供します。  プライベート クラウドは、1 つ以上の vSphere クラスターで構成されます。 各クラスターには、3 から 16 個のノードを含めることができます。 プライベート クラウドを削除すると、すべてのクラスターが削除されます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-プライベート クラウドを削除すると、プライベート クラウド全体が削除されます。  プライベート クラウドのすべてのコンポーネントが削除されます。  データを保持する場合は、オンプレミスのストレージまたは Azure ストレージにデータをバックアップしていることを確認してください。 
+プライベート クラウドを削除すると、プライベート クラウド全体が削除されます。  プライベート クラウドのすべてのコンポーネントが削除されます。  データを保持する場合は、オンプレミスのストレージまたは Azure ストレージにデータをバックアップしていることを確認してください。
 
 プライベート クラウドのコンポーネントには、次のものがあります。
 
@@ -31,12 +31,11 @@ CloudSimple は、プライベート クラウドを削除する柔軟性を提�
 * プライベート クラウドに格納されているすべてのユーザー データ
 * VLAN またはサブネットへのすべてのファイアウォール規則の添付
 
-
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
-## <a name="delete-a-private-cloud"></a>プライベート クラウドの削除 
+## <a name="delete-a-private-cloud"></a>プライベート クラウドの削除
 
 1. [CloudSimple ポータルにアクセスします](access-cloudsimple-portal.md)。
 
@@ -52,12 +51,10 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     ![プライベート クラウドを削除する - 確認](media/delete-private-cloud-confirm.png)
 
-
 プライベート クラウドが削除対象としてマークされます。  削除プロセスが 3 時間後に開始され、プライベート クラウドが削除されます。
 
 > [!CAUTION]
 > プライベート クラウドを削除した後にノードを削除する必要があります。  ノードの従量制課金は、サブスクリプションからノードが削除されるまで続行されます。
-
 
 ## <a name="next-steps"></a>次の手順
 

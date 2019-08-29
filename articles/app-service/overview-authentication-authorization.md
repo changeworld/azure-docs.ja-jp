@@ -10,18 +10,17 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d01994dc4d01baed71bb3de56e069fac5597dc77
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e308b44fffff451daa92cbf19209a1bcbfd4bff6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030847"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087978"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および認可
 
