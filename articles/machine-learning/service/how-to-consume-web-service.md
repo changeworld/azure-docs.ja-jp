@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/10/2019
+ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 873f45a6cce85669581037c4c398a52b1ebd6d68
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 4aa948a785153dd0d70a9af41ae0ed25036827f8
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966852"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656265"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
 Web サービスとして Azure Machine Learning モデルをデプロイすると、REST API が作成されます。 この API にデータを送信し、モデルによって返される予測を受信できます。 このドキュメントでは、C#、Go、Java、Python を使用して Web サービス用のクライアントを作成する方法について説明します。
 
-Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPGA (field-programmable gate array) にイメージをデプロイするときに作成されます。 イメージを登録済みのモデルとスコアリング ファイルから作成します。 [Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して、Web サービスにアクセスするために使用される URI を取得します。 認証が有効になっている場合は、SDK を使用して認証キーを取得することもできます。
+Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPGA (field-programmable gate array) にイメージをデプロイするときに作成されます。 イメージを登録済みのモデルとスコアリング ファイルから作成します。 [Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して、Web サービスにアクセスするために使用される URI を取得します。 認証が有効になっている場合は、SDK を使用して認証キーまたはトークンを取得することもできます。
 
 機械学習 Web サービスを使用するクライアントを作成するための一般的なワークフローは、次のとおりです。
 
@@ -43,7 +43,7 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
 * `auth_enabled` - キー認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `token_auth_enabled` - トークン認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `scoring_uri` - REST API のアドレス。
-
+* `swagger_uri` - OpenAPI 仕様のアドレス。 この URI は、スキーマの自動生成を有効にした場合に使用できます。 詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md#schema)」を参照してください。
 
 デプロイされた Web サービスについてこの情報を取得する場合、次の 3 つの方法があります。
 
@@ -56,6 +56,7 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
                                            image_config=image_config,
                                            workspace=ws)
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 * `Webservice.list` を使用して、ワークスペース内のモデル用にデプロイされた Web サービスのリストを取得することができます。 フィルターを追加して、返される情報のリストを絞り込むことができます。 フィルター処理できる内容の詳細については、[Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) のリファレンス ドキュメントを参照してください。
@@ -63,6 +64,7 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
+    print(services[0].swagger_uri)
     ```
 
 * デプロイされたサービスの名前がわかっている場合は、`Webservice` の新しいインスタンスを作成し、ワークスペースとサービスの名前をパラメーターとして指定できます。 新しいオブジェクトには、デプロイされたサービスに関する情報が含まれます。
@@ -70,16 +72,19 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
     ```python
     service = Webservice(workspace=ws, name='myservice')
     print(service.scoring_uri)
+    print(service.swagger_uri)
     ```
 
 ### <a name="authentication-for-services"></a>サービスの認証
 
-Azure Machine Learning には、Web サービスへのアクセスを制御する 2 つの方法が用意されています。 
+Azure Machine Learning には、Web サービスへのアクセスを制御する 2 つの方法が用意されています。
 
 |認証方法|ACI|AKS|
 |---|---|---|
 |キー|既定で無効| 既定で有効|
 |トークン| 利用不可| 既定で無効 |
+
+キーまたはトークンで保護されているサービスに要求を送信する場合は、__Authorization__ ヘッダーを使用してキーまたはトークンを渡します。 キーまたはトークンは `Bearer <key-or-token>` の形式にする必要があります。ここで、`<key-or-token>` はキーまたはトークンの値です。
 
 #### <a name="authentication-with-keys"></a>キーによる認証
 
@@ -112,7 +117,7 @@ Web サービスのトークン認証を有効にする場合、ユーザーは�
 トークン認証が有効になっている場合は、`get_token` メソッドを使用して、ベアラー トークンとそのトークンの有効期限を取得できます。
 
 ```python
-token, refresh_by = service.get_tokens()
+token, refresh_by = service.get_token()
 print(token)
 ```
 
@@ -193,9 +198,9 @@ namespace MLWebServiceClient
     {
         static void Main(string[] args)
         {
-            // Set the scoring URI and authentication key
+            // Set the scoring URI and authentication key or token
             string scoringUri = "<your web service URI>";
-            string authKey = "<your key>";
+            string authKey = "<your key or token>";
 
             // Set the data to be sent to the service.
             // In this case, we are sending two sets of data to be scored.
@@ -309,8 +314,8 @@ var exampleData = []Features{
 
 // Set to the URI for your service
 var serviceUri string = "<your web service URI>"
-// Set to the authentication key (if any) for your service
-var authKey string = "<your key>"
+// Set to the authentication key or token (if any) for your service
+var authKey string = "<your key or token>"
 
 func main() {
     // Create the input data from example data
@@ -364,8 +369,8 @@ public class App {
     public static void sendRequest(String data) {
         // Replace with the scoring_uri of your service
         String uri = "<your web service URI>";
-        // If using authentication, replace with the auth key
-        String key = "<your key>";
+        // If using authentication, replace with the auth key or token
+        String key = "<your key or token>";
         try {
             // Create the request
             Content content = Request.Post(uri)
@@ -438,8 +443,8 @@ import json
 
 # URL for the web service
 scoring_uri = '<your web service URI>'
-# If the service is authenticated, set the key
-key = '<your key>'
+# If the service is authenticated, set the key or token
+key = '<your key or token>'
 
 # Two sets of data to score, so we get two results back
 data = {"data":

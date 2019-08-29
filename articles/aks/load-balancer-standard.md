@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1dcf08f4fefb53ed46038c82e0ce8f9d3dd94de2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 422189952096ef25b69e62aa2708c59385b0637a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032243"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898954"
 ---
 # <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
@@ -92,11 +92,11 @@ az provider register --namespace Microsoft.ContainerService
 
 * ロード バランサーに対して *Standard* SKU を使用する場合、パブリック アドレスを許可する必要があり、IP 作成を禁止する Azure Policy は作成しないようにする必要があります。 AKS クラスターは、AKS クラスター用に作成されたのと同じリソース グループ (通常、名前の先頭が *MC_* ) に *Standard* SKU パブリック IP を自動的に作成します。 AKS により、パブリック IP が *Standard* SKU ロード バランサーに割り当てられます。 AKS クラスターからのエグレス トラフィックを許可するために、このパブリック IP が必要です。 また、このパブリック IP は、コントロール プレーンとエージェント ノードの間の接続を維持するため、および前のバージョンの AKS との互換性を維持するためにも必要です。
 * ロード バランサーに対して *Standard* SKU を使用する場合、Kubernetes バージョン 1.13.5 以降を使用する必要があります。
-* Standard ロード バランサーで[ノード パブリック IP 機能](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool)を使用している場合は、SLB アウトバウンド規則またはノードのパブリック IP のいずれかを設定できます。 1 つの VM を SLB アウトバウンド規則とパブリック IP の両方に同時に接続することはできないため、どちらか一方を選択する必要があります。
 
 この機能がプレビュー段階にある間は、追加で次の制限もあります。
 
 * AKS でロード バランサーに対して *Standard* SKU を使用する場合、ロード バランサーのエグレスに独自のパブリック IP アドレスを設定することはできません。 AKS がロード バランサーに割り当てる IP アドレスを使用する必要があります。
+* これは、[ノード パブリック IP 機能](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool)では使用できません。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -166,7 +166,7 @@ kubectl get nodes
 
 ```
 NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.9
+aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.10
 ```
 
 ## <a name="verify-your-cluster-uses-the-standard-sku"></a>クラスターで *Standard* SKU が使用されているか確認する

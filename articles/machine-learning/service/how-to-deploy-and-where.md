@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: a92cb0f3da5058e7ffeee6f47e8cfa26ae291005
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990556"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897680"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Azure Machine Learning service を使用してモデルをデプロイする
 
@@ -149,12 +149,25 @@ Azure Machine Learning service 以外でトレーニングされたモデルの�
 
 ## <a name="prepare-to-deploy"></a>デプロイを準備する
 
-Web サービスとしてデプロイするには、推論構成 (`InferenceConfig`) とデプロイ構成を作成する必要があります。 推論、つまりモデル スコアリングとは、最も一般的には運用環境のデータについて、デプロイしたモデルを使用して予測を行うフェーズです。 推論構成には、モデルにサービスを提供するために必要なスクリプトと依存関係を指定します。 デプロイ構成には、コンピューティング ターゲットのモデルにサービスを提供する方法を詳しく指定します。
+モデルをデプロイするには、次のものが必要です。
 
-> [!IMPORTANT]
-> Azure Machine Learning SDK には、データストアまたはデータセットにアクセスするための Web サービスまたは IoT Edge のデプロイの手段は用意されていません。 デプロイの外部に格納されているデータにアクセスするためにデプロイされたモデルが必要な場合 (Azure Storage アカウントの場合など)、関連する SDK を使用してカスタム コード ソリューションを開発する必要があります。 たとえば、[Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) です。
->
-> シナリオに適したもう 1 つの方法として[バッチ予測](how-to-run-batch-predictions.md)があります。これにより、スコアリング時にデータストアにアクセスすることができます。
+* __エントリ スクリプト__。 このスクリプトは、要求を受け入れ、モデルを使用してその要求にスコアを付け、その結果を返します。
+
+    > [!IMPORTANT]
+    > エントリ スクリプトは、モデルに固有のもので、受信要求データの形式、モデルで想定されるデータの形式、およびクライアントに返されるデータの形式を理解する必要があります。
+    >
+    > 要求データがモデルで使用できない形式になっている場合、スクリプトはそれを受け入れ可能な形式に変換できます。 また、応答をクライアントに返す前に変換することもできます。
+
+    > [!IMPORTANT]
+    > Azure Machine Learning SDK には、データストアまたはデータセットにアクセスするための Web サービスまたは IoT Edge のデプロイの手段は用意されていません。 デプロイの外部に格納されているデータにアクセスするためにデプロイされたモデルが必要な場合 (Azure Storage アカウントの場合など)、関連する SDK を使用してカスタム コード ソリューションを開発する必要があります。 たとえば、[Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) です。
+    >
+    > シナリオに適したもう 1 つの方法として[バッチ予測](how-to-run-batch-predictions.md)があります。これにより、スコアリング時にデータストアにアクセスすることができます。
+
+* エントリ スクリプトやモデルの実行に必要なヘルパー スクリプトや Python/Conda パッケージなどの**依存関係**
+
+* デプロイされたモデルをホストするコンピューティング先の__デプロイ構成__。 この構成には、モデルの実行に必要なメモリと CPU の要件などが記述されます。
+
+これらのエンティティは、__推論の構成__、および__デプロイ構成__にカプセル化されます。 推論の構成では、エントリ スクリプトとその他の依存関係が参照されます。 これらの構成は、SDK を使用する場合はプログラムで定義され、CLI を使用してデプロイを実行する場合は JSON ファイルとして定義されます。
 
 ### <a id="script"></a> 1.エントリ スクリプトと依存関係を定義する
 
@@ -177,6 +190,8 @@ Web サービスとしてデプロイするには、推論構成 (`InferenceConf
 ```python
 model_path = Model.get_model_path('sklearn_mnist')
 ```
+
+<a id="schema"></a>
 
 #### <a name="optional-automatic-schema-generation"></a>(省略可能) スキーマの自動生成
 
@@ -399,9 +414,13 @@ def run(request):
 
 ### <a name="2-define-your-inferenceconfig"></a>2.InferenceConfig を定義する
 
-推論構成では、予測するモデルを構成する方法が説明されます。 次の例では、推論構成を作成する方法が示されています。 この構成では、ランタイム、エントリ スクリプト、および (必要に応じて) Conda 環境ファイルを指定します。
+推論構成では、予測するモデルを構成する方法が説明されます。 この構成は、エントリ スクリプトの一部ではありません。これは、エントリ スクリプトを参照し、デプロイに必要なすべてのリソースを検索するために使用されます。 これは、後でモデルを実際にデプロイするときに使用します。
+
+次の例では、推論構成を作成する方法が示されています。 この構成では、ランタイム、エントリ スクリプト、および (必要に応じて) Conda 環境ファイルを指定します。
 
 ```python
+from azureml.core.model import InferenceConfig
+
 inference_config = InferenceConfig(runtime="python",
                                    entry_script="x/y/score.py",
                                    conda_file="env/myenv.yml")
@@ -431,7 +450,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 ### <a name="3-define-your-deployment-configuration"></a>手順 3.デプロイ構成を定義する
 
-デプロイの前にデプロイ構成を定義する必要があります。 __デプロイ構成は、Web サービスがホストされるコンピューティング ターゲットに固有となります__。 たとえば、ローカルでデプロイするとき、サービスにより要求が受け取られるポートを指定する必要があります。
+デプロイの前にデプロイ構成を定義する必要があります。 __デプロイ構成は、Web サービスがホストされるコンピューティング ターゲットに固有となります__。 たとえば、ローカルでデプロイするとき、サービスにより要求が受け取られるポートを指定する必要があります。 デプロイ構成は、エントリ スクリプトの一部ではありません。 これは、モデルとエントリ スクリプトをホストするコンピューティング先の特性を定義するために使用されます。
 
 また、コンピューティング リソースを作成する必要があります。 たとえば、Azure Kubernetes Service を自分のワークスペースにまだ関連付けていない場合です。
 
@@ -442,6 +461,12 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 | ローカル | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+
+これらのローカル、ACI、および AKS Web サービスの各クラスは、`azureml.core.webservice` からインポートできます。
+
+```python
+from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
+```
 
 > [!TIP]
 > モデルをサービスとしてデプロイする前に、最適な CPU とメモリの要件を判断するためにプロファイリングを実行できます。 SDK または CLI を使用して、ご自分のモデルをプロファイリングできます。 詳細については、[profile()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) および [az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) のリファレンスを参照してください。
@@ -459,6 +484,8 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 #### <a name="using-the-sdk"></a>SDK を使用する
 
 ```python
+from azureml.core.webservice import LocalWebservice, Webservice
+
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
 service.wait_for_deployment(show_output = True)
@@ -696,7 +723,7 @@ Azure Machine Learning コンピューティングを使用したバッチ推論
 
 1. ご自分のすべての成果物にアクセスするために、__サービス接続__を使用して、ご自分の Azure Machine Learning service ワークスペースへのサービス プリンシパル接続を設定します。 プロジェクト設定に移動し、[サービス接続] をクリックして、[Azure Resource Manager] を選択します。
 
-    ![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png) 
+    [![view-service-connection](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png) 
 
 1. __スコープ レベル__として AzureMLWorkspace を定義し、以降のパラメーターを入力します。
 
@@ -704,11 +731,11 @@ Azure Machine Learning コンピューティングを使用したバッチ推論
 
 1. 次に、Azure Pipelines を使用してご自分の機械学習モデルを継続的にデプロイするために、パイプラインの下で __[リリース]__ を選択します。 新しい成果物を追加し、AzureML Model 成果物と前の手順で作成したサービス接続を選択します。 デプロイをトリガーするモデルとバージョンを選択します。 
 
-    ![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)
+    [![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
 1. ご自分のモデル成果物に対してモデル トリガーを有効にします。 トリガーをオンにすると、そのモデルの指定したバージョン (つまり 最新バージョン) がご自分のワークスペースに登録されるたびに、Azure DevOps のリリース パイプラインがトリガーされます。 
 
-    ![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)
+    [![enable-model-trigger](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
 他のサンプル プロジェクトと例については、次のサンプル リポジトリを参照してください。
 

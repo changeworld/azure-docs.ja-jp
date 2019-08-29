@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/09/2019
-ms.openlocfilehash: 1e5eb1e363ac9e282a72a9c1430c3f80c825bb91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945075"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623840"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -201,7 +201,7 @@ Azure portal を使用して、HDInsight クラスター オペレーター ロ�
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>操作を行わない場合、どうなりますか?
 
-`GET /configurations` と `POST /configurations/gateway` によって、情報が返されなくなります。また、`GET /configurations/{configurationName}` 呼び出しでは、ストレージ アカウント キーやクラスター パスワードなどの機密性の高いパラメーターは返されなくなります。 これは、対応する SDK メソッドと PowerShell コマンドレットにも当てはまります。
+`GET /configurations` と `POST /configurations/gateway` の呼び出しによって、情報が返されなくなります。また、`GET /configurations/{configurationName}` 呼び出しでは、ストレージ アカウント キーやクラスター パスワードなどの機密性の高いパラメーターは返されなくなります。 これは、対応する SDK メソッドと PowerShell コマンドレットにも当てはまります。
 
 上記の Visual Studio、VSCode、IntelliJ または Eclipse 用のいずれかのツールで以前のバージョンを使用している場合は、更新するまで機能しなくなります。
 

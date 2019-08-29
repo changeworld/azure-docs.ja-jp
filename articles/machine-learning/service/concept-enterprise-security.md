@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 510f58cc0b71fb75ac6f5e15fc883c3caf4a8f9a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946401"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897973"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Machine Learning service のエンタープライズ セキュリティ
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) が同じように構成されている場合�
 * クライアントは、Azure Resource Manager とすべての Azure Machine Learning service にトークンを示します
 * Azure Machine Learning service では、ユーザーのコンピューティングに Azure Machine Learning トークンが提供されます。 たとえば、Machine Learning コンピューティングなどです。 このトークンは、実行が完了した後で Azure Machine Learning service にコールバックする (ワークスペースにスコープを制限する) ために、ユーザー コンピューティングによって使用されます。
 
-![Azure Machine Learning service での認証のしくみを示すスクリーンショット](./media/enterprise-readiness/authentication.png)
+[![Azure Machine Learning service での認証のしくみを示すスクリーンショット](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Web サービスのデプロイ用の認証
 
@@ -185,7 +185,7 @@ HDI HDInsight や VM などのコンピューティング先に対する SSH パ
 
 Azure Monitor メトリックは、Azure Machine Learning service ワークスペースのメトリックを表示および監視するために使用できます。 [Azure portal](https://portal.azure.com) からワークスペースを選択し、 __[メトリック]__ リンクを使用します。
 
-![ワークスペースのメトリックの例を示すスクリーンショット](./media/enterprise-readiness/workspace-metrics.png)
+[![ワークスペースのメトリックの例を示すスクリーンショット](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 メトリックには、実行、デプロイ、および登録に関する情報が含まれます。
 
@@ -197,7 +197,7 @@ Azure Monitor メトリックは、Azure Machine Learning service ワークス�
 
 次のスクリーンショットでは、ワークスペースのアクティビティ ログを示します。
 
-![ワークスペース下のアクティビティ ログを示すスクリーンショット](./media/enterprise-readiness/workspace-activity-log.png)
+[![ワークスペース下のアクティビティ ログを示すスクリーンショット](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 スコアリング要求の詳細は、ワークスペース作成時にユーザーのサブスクリプションに作成される Application Insight に格納されます。 ログに記録される情報には、HTTPMethod、UserAgent、ComputeType、RequestUrl、StatusCode、RequestId、Duration などのフィールドが含まれます。
 
@@ -220,14 +220,14 @@ Azure Monitor メトリックは、Azure Machine Learning service ワークス�
 
 お客様は、必要に応じて、ワークスペースにアタッチされているその他のコンピューティング (Azure Kubernetes Service、VM など) もプロビジョニングできます。
 
-![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/create-workspace.png)
+[![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>ソース コードを保存する (トレーニング スクリプト)
 
 次の図は、コード スナップショットのワークフローを示したものです。
 Azure Machine Learning service ワークスペースに関連付けられているディレクトリ (実験) には、ソース コード (トレーニング スクリプト) が含まれます。  これらのスクリプトは、お客様のローカル コンピューターとクラウド (お客様のサブスクリプションの Azure Blob Storage) に格納されます。 このコード スナップショットは、履歴監査の実行または検査に使用されます。
 
-![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/code-snapshot.png)
+[![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>トレーニング
 
@@ -253,7 +253,7 @@ Azure Machine Learning service ワークスペースに関連付けられてい�
 
 このステップは、"*実行メトリック*" がトレーニング コンピューティングによって Azure Machine Learning service に書き込まれ、そこから Cosmos DB に格納されるフローで示されます。 クライアントは Azure Machine Learning service を呼び出すことができ、Azure Machine Learning service は Cosmos DB からメトリックを取得してクライアントに戻します。
 
-![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/training-and-metrics.png)
+[![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Web サービスを作成する
 
@@ -267,7 +267,7 @@ Azure Machine Learning service ワークスペースに関連付けられてい�
 * スコアリング要求の詳細は、ユーザーのサブスクリプション内の Application Insight に格納されます
 * テレメトリも Microsoft/Azure サブスクリプションにプッシュされます
 
-![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/inferencing.png)
+[![ワークスペース作成のワークフローを示すスクリーンショット](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>次の手順
 

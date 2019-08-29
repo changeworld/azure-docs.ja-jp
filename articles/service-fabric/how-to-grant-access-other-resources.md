@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: atsenthi
-ms.openlocfilehash: b6e1108ffee13f1583d920947404963a69616788
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 07b26fb86392b26ef45c4370741a32efc7dc436b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68957572"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640930"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Service Fabric アプリケーションのマネージド ID に Azure リソースへのアクセス権を付与する
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Service Fabric アプリケーションのマネージド ID に Azure リソースへのアクセス権を付与する (プレビュー)
 
 アプリケーションがマネージド ID を使用して他のリソースにアクセスするためには、アクセスする保護された Azure リソースに対するアクセス許可がその ID に付与されている必要があります。 通常、アクセス許可の付与は、Azure Resource Manager 経由でルーティングされる保護されたリソースを所有している Azure サービスの "コントロール プレーン" に対する管理アクションです。これにより、適用可能なすべてのロールベースのアクセス チェックが実施されます。
 
@@ -73,15 +73,3 @@ Service Fabric のシステム割り当てのマネージド ID のサポート�
 * [システム割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 
 * [ユーザー割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-
-## <a name="related-articles"></a>関連記事
-
-* Azure Service Fabric での[マネージド ID のサポート](./concepts-managed-identity.md)を確認します
-
-* マネージド ID サポートを備えた[新しい Azure Service Fabric クラスターをデプロイする](./configure-new-azure-service-fabric-enable-managed-identity.md) 
-
-* 既存の Azure Service Fabric クラスターで[マネージド ID を有効にする](./configure-existing-cluster-enable-managed-identity-token-service.md)
-
-* [ソース コードから Service Fabric アプリケーションのマネージド ID](./how-to-managed-identity-service-fabric-app-code.md) を活用する
-
-* [Azure AD 認証をサポートする Azure サービス](../active-directory/managed-identities-azure-resources/services-support-msi.md)の一覧を参照してください。

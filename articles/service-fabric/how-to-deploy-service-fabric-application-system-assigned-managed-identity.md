@@ -7,14 +7,14 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: f9d7f87e9d7b1761c165e08e37cd6a3237c8212a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9f6f3d43f80b3c69b0c1106b8e395b4d8f5d32ab
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965526"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640701"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>システム割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>システム割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする (プレビュー)
 
 Azure Service Fabric アプリケーションのマネージド ID 機能にアクセスするには、まずクラスターでマネージド ID トークン サービスを有効にする必要があります。 このサービスは、マネージド ID を使用して Service Fabric アプリケーションの認証を実行し、アクセス トークンを代理で取得します。 サービスが有効になると、Service Fabric Explorer の左側のウィンドウの **[システム]** セクションに表示され、他のシステム サービスの横で **fabric:/System/ManagedIdentityTokenService** という名前で実行されます。
 
@@ -92,7 +92,7 @@ Azure Service Fabric アプリケーションのマネージド ID 機能にア�
     ```
     これは、前述の ID からサービスへのマッピングと同等ですが、サービス定義の観点からのものになります。 ID は、アプリケーション マニフェストで宣言されているように、ここではフレンドリ名 (`WebAdmin`) で参照されます。
 
-## <a name="related-articles"></a>関連記事
+## <a name="next-steps"></a>次の手順
 
 * Azure Service Fabric での[マネージド ID のサポート](./concepts-managed-identity.md)を確認します
 

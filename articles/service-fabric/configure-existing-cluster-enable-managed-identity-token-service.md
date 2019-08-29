@@ -7,14 +7,14 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: dc9d7ba9499f2c98370b14fd88d38dffc65480e5
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: adc21358011454c8687998dc5d257052959b933b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68964028"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640731"
 ---
-# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support"></a>既存の Azure Service Fabric クラスターを構成してマネージド ID のサポートを有効にする
+# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>既存の Azure Service Fabric クラスターを構成してマネージド ID のサポートを有効にする (プレビュー)
 Azure Service Fabric アプリケーションのマネージド ID 機能にアクセスするには、まずクラスターで**マネージド ID トークン サービス**を有効にする必要があります。 このサービスは、マネージド ID を使用して Service Fabric アプリケーションの認証を実行し、アクセス トークンを代理で取得します。 サービスが有効になると、Service Fabric Explorer の左側のウィンドウの **[システム]** セクションに表示され、**fabric:/System/ManagedIdentityTokenService** という名前で実行されます。
 
 > [!NOTE]
@@ -71,12 +71,7 @@ Azure Service Fabric アプリケーションのマネージド ID 機能にア�
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [システム割り当ての ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [システム割り当てのマネージド ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [ユーザー割り当てのマネージド ID を持つアプリケーションのデプロイ方法](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [サービス コードから Service Fabric アプリケーションのマネージド ID を活用する](./how-to-managed-identity-service-fabric-app-code.md)
 * [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセスを許可する](./how-to-grant-access-other-resources.md)
-
-## <a name="related-articles"></a>関連記事
-* Azure Service Fabric で[マネージド ID のサポート](./concepts-managed-identity.md)を確認します
-
-* [既存の Azure Service Fabric クラスターでマネージド ID のサポートを有効にする](./configure-existing-cluster-enable-managed-identity-token-service.md)

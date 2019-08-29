@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 23492133035f27aa3e1217269022565e0ff217a9
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5176fc36b62fc1e970bd51f6386191ea34c5170c
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018768"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872671"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -120,7 +120,7 @@ Get-AzRecoveryServicesVault
 
 出力は次のサンプルのようなものになります。関連する ResourceGroupName と Location が指定されていることに注目してください。
 
-```
+```output
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -140,7 +140,21 @@ Recovery Services コンテナーを使用して仮想マシンを保護しま�
 VM 上の保護を有効にする前に、[Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0) を使用してコンテナーのコンテキストを設定します。 コンテナーのコンテキストを設定すると、後続のすべてのコマンドレットに適用されます。 次の例は、コンテナー *testvault* のコンテナーのコンテキストを設定します。
 
 ```powershell
-Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
+Get-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "Contoso-docs-rg" | Set-AzRecoveryServicesVaultContext
+```
+
+### <a name="fetch-the-vault-id"></a>コンテナー ID をフェッチする
+
+コンテナーのコンテキストの設定は、Azure PowerShell のガイドラインに従って廃止される予定です。 代わりに、次のようにコンテナー ID を格納またはフェッチし、関連するコマンドに渡すことができます。 そのため、コンテナーのコンテキストを設定していない場合や、特定のコンテナーに対して実行するコマンドを指定する場合は、次のように関連するすべてのコマンドにコンテナー ID を "-vaultID" として渡します。
+
+```powershell
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault"
+$targetVault.ID
+```
+または
+
+```powershell
+$targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
 ```
 
 ### <a name="modifying-storage-replication-settings"></a>ストレージ レプリケーションの設定を変更する
@@ -148,8 +162,7 @@ Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultConte
 LRS/GRS に対するコンテナーのストレージ レプリケーションの構成を設定するには、[Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty) コマンドを使用します。
 
 ```powershell
-$vault= Get-AzRecoveryServicesVault -name "testvault"
-Set-AzRecoveryServicesBackupProperty -Vault $vault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
+Set-AzRecoveryServicesBackupProperty -Vault $targetVault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
 ```
 
 > [!NOTE]
@@ -167,7 +180,7 @@ Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 
 出力は次の例のようになります。
 
-```
+```output
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
 ----                 ------------       -------------------- ----------                ----------
 DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 PM
@@ -206,7 +219,7 @@ New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "Az
 
 出力は次の例のようになります。
 
-```
+```output
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
 ----                 ------------       -------------------- ----------                ----------
 NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
@@ -259,7 +272,7 @@ $joblist[0]
 
 出力は次の例のようになります。
 
-```
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   ----------
 V2VM             Backup               InProgress            4/23/2016                5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -307,9 +320,9 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 > Az PS バージョン 1.6.0 以降では、PowerShell を使用して、ポリシーのインスタント リストアのスナップショット保持期間を更新できます
 
 ````powershell
-PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=7
-PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ````
 
 既定値は 2 で、ユーザーが最小 1 から最大 5 の範囲で設定できます。 毎週のバックアップ ポリシーの場合は、期間は 5 に設定されていて、変更することはできません。
@@ -327,7 +340,7 @@ $job = Backup-AzRecoveryServicesBackupItem -Item $item -VaultId $targetVault.ID 
 
 出力は次の例のようになります。
 
-```
+```output
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   ----------
 V2VM              Backup              InProgress          4/23/2016                  5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -421,7 +434,7 @@ $rp[0]
 
 出力は次の例のようになります。
 
-```powershell
+```output
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -469,7 +482,7 @@ $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -Storag
 
 出力は次の例のようになります。
 
-```powershell
+```output
 WorkloadName     Operation          Status               StartTime                 EndTime            JobID
 ------------     ---------          ------               ---------                 -------          ----------
 V2VM              Restore           InProgress           4/23/2016 5:00:30 PM                        cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
@@ -771,7 +784,7 @@ $rp[0]
 
 出力は次の例のようになります。
 
-```powershell
+```output
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -800,7 +813,7 @@ Get-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 出力は次の例のようになります。
 
-```powershell
+```output
 OsType  Password        Filename
 ------  --------        --------
 Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: ae397c077ac87618b646883f9125c9da2df81bfd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: be3917d7943f808292e5ed15978a3d6aefd3afb5
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036584"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891844"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -188,7 +188,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 ## <a name="c1partners"></a>その他のサービス プロバイダー経由の接続
 | **Location** | **Exchange** | **接続プロバイダー** |
 | --- | --- | --- |
-| **アムステルダム** | Equinix、Interxion、Level 3 Communications、Telecity | BICS、CloudXpress、Eurofiber、Fastweb S.p.A、Gulf Bridge International、Kalaam Telecom Bahrain B.S.C、MainOne、Nianet、Post、Proximus、TDC Erhverv、Telecom Italia Sparkle、Telekom Deutschland GmbH、Telia |
+| **アムステルダム** | Equinix、Interxion、Level 3 Communications、Telecity | BICS、CloudXpress、Eurofiber、Fastweb S.p.A、Gulf Bridge International、Kalaam Telecom Bahrain B.S.C、MainOne、Nianet、POST Telecom Luxembourg、Proximus、TDC Erhverv、Telecom Italia Sparkle、Telekom Deutschland GmbH、Telia |
 | **アトランタ** | Equinix| Crown Castle
 | **ケープタウン** | Teraco | MTN |
 | **シカゴ** | Equinix| Crown Castle、Spectrum Enterprise、Windstream |
@@ -207,7 +207,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **サンパウロ** | Equinix | Venha Pra Nuvem |
 | **シアトル** |Equinix | Alaska Communications |
 | **シリコン バレー** |Coresite、Equinix | Cox Business、Spectrum Enterprise、Windstream、X2nsat Inc. |
-| **シンガポール** |Equinix |1CLOUDSTAR、BICS、Epsilon Telecommunications Limited、LGA Telecom、United Information Highway (UIH) |
+| **シンガポール** |Equinix |1CLOUDSTAR、BICS、CMC Telecom、Epsilon Telecommunications Limited、LGA Telecom、United Information Highway (UIH) |
 | **スラウ** | Equinix | HSO|
 | **シドニー** | Megaport | Macquarie Telecom Group|
 | **東京** | Equinix | アルテリア・ネットワークス株式会社、株式会社ブロードバンドタワー |

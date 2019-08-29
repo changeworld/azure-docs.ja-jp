@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 624c1648bc709e1ca6ee9c4120350a606df67df5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 07d48ed195f74c9aef5d34de1925ab8fc2a3ae21
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035779"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899834"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -126,20 +126,20 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 ### <a name="install"></a>インストールと構成
 
-次の手順は、Ubuntu 17.0.4 上で strongSwan 5.5.1 を使用して作成されました。 Ubuntu 16.0.10 は、strongSwan GUI をサポートしていません。 Ubuntu 16.0.10 を使う場合は、[コマンド ライン](#linuxinstallcli)を使う必要があります。 Linux および strongSwan のバージョンによっては、次に示す例が実際に表示される画面と一致しない可能性があります。
+次の手順は、Ubuntu 18.0.4 上で作成されました。 Ubuntu 16.0.10 は、strongSwan GUI をサポートしていません。 Ubuntu 16.0.10 を使う場合は、[コマンド ライン](#linuxinstallcli)を使う必要があります。 Linux および strongSwan のバージョンによっては、次に示す例が実際に表示される画面と一致しない可能性があります。
 
-1. **[端末]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。 *libcharon-extra-plugins* に関連するエラーが表示される場合は、"strongswan-plugin-eap-mschapv2" に置き換えます。
+1. **[端末]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。
 
    ```
-   sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan
+   sudo apt install network-manager-strongswan
    ```
-2. **ネットワーク マネージャー** アイコン (上矢印/下矢印) を選んで、 **[接続の編集]** を選びます。
+2. **[Settings]\(設定\)** 、 **[Network]\(ネットワーク\)** の順に選択します。
 
    ![接続を編集する](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
-3. 新しい接続を作成するには、 **[追加]** ボタンをクリックします。
+3. **+** ボタンをクリックして、新しい接続を作成します。
 
    ![接続を追加する](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
-4. ドロップダウン メニューから **[IPsec/IKEv2 (strongswan)]** を選び、 **[作成]** をクリックします。 この手順で使用する接続の名前を変更できます。
+4. メニューから **[IPsec/IKEv2 (strongswan)]** を選び、ダブルクリックします。 この手順で使用する接続の名前を変更できます。
 
    ![接続の種類を選ぶ](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)
 5. ダウンロード クライアント構成ファイルに含まれる **Generic** フォルダーから **VpnSettings.xml** ファイルを開きます。 **VpnServer** というタグを検索して、"azuregateway" で始まり ".cloudapp.net" で終わる名前をコピーします。
@@ -148,8 +148,8 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 6. この名前を、 **[ゲートウェイ]** セクションの、新しい VPN 接続の **[アドレス]** フィールドに貼り付けます。 次に、 **[証明書]** フィールドの最後のフォルダー アイコンを選択して、**Generic** フォルダーに移動し、**VpnServerRoot** ファイルを選択します。
 7. 接続の **[クライアント]** セクションの **[認証]** で、 **[Certificate/private key]\(証明書/秘密キー\)** を選びます。 **[証明書]** と **[秘密キー]** で、前に作成した証明書および秘密キーを選びます。 **[オプション]** で、 **[Request an inner IP address]\(内部 IP アドレスを要求する\)** をオンにします。 **[追加]** をクリックします。
 
-   ![内部 IP アドレスを要求する](./media/point-to-site-vpn-client-configuration-azure-cert/inneripreq.png)
-8. **[Network Manager]** アイコン (上矢印/下矢印) をクリックして、 **[VPN 接続]** にポインターを合わせます。 作成した VPN 接続が表示されます。 クリックして接続を開始します。
+   ![内部 IP アドレスを要求する](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
+8. 接続を **[On]\(オン\)** にします。
 
 ## <a name="linuxinstallcli"></a>Linux (strongSwan CLI)
 

@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 184cdaddc638461d50f322292d5cfaf28ab93093
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 0e60607d50722a4496dc8f4ad7d609cdf9fd5792
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950522"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877164"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -25,6 +25,10 @@ ms.locfileid: "68950522"
 各 IoT Hub は、特定のレベルのユニット数でプロビジョニングされます。 レベルとユニット数により、送信できるメッセージの1 日あたりの最大クォータが決定されます。 1 日あたりのクォータを計算するために使用されるメッセージ サイズは、無料レベルのハブでは 0.5 KB、他のすべてのレベルでは 4 KB です。 詳細については、「[Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
 また、レベルでは、IoT Hub がすべての操作に適用するスロットル制限も決まります。
+
+### <a name="iot-plug-and-play"></a>IoT プラグ アンド プレイ
+
+パブリック プレビュー中、IoT プラグ アンド プレイ デバイスでは、インターフェイスごとに個別のメッセージが送信されます。これにより、ご利用のメッセージ クォータに対してカウントされるメッセージ数が増加する可能性があります。
 
 ## <a name="operation-throttles"></a>操作のスロットル
 

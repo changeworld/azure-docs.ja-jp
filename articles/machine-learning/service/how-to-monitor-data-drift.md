@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 07/08/2019
-ms.openlocfilehash: b9593a5802300da8baa1e518f14885637db2068f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 41e357ee53d4c2fbc6683be3446ba2527dd9253f
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036183"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623973"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) にデプロイされたモデルのデータの誤差 (プレビュー) を検出する
 
@@ -40,7 +40,7 @@ Azure Machine Learning service では、AKS にデプロイされたモデルへ
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Azure Machine Learning service でデータの誤差が監視される仕組み
 
-Azure Machine Learning service を使用すると、データの誤差はデータセットまたはデプロイを通して監視されます。 データの誤差を監視するには、基準データセット (通常は、モデルのトレーニング データセット) を指定します。 基準データセットに対して 2 番目のデータセット (通常はデプロイから収集されたモデル入力データ) がテストされます。 両方のデータセットが[プロファイリング](how-to-explore-prepare-data.md#explore-with-summary-statistics)され、データの誤差の監視サービスに入力されます。 2 つのデータセット間の違いを検出するために、機械学習モデルがトレーニングされます。 モデルのパフォーマンスは、2 つのデータセット間の誤差の大きさを測定するドリフト係数に変換されます。 [モデルの解釈可能性](machine-learning-interpretability-explainability.md)を使用して、ドリフト係数に寄与するフィーチャーが計算されます。 データセットのプロファイルから、各フィーチャーに関する統計情報が追跡されます。 
+Azure Machine Learning service を使用すると、データの誤差はデータセットまたはデプロイを通して監視されます。 データの誤差を監視するには、基準データセット (通常は、モデルのトレーニング データセット) を指定します。 基準データセットに対して 2 番目のデータセット (通常はデプロイから収集されたモデル入力データ) がテストされます。 両方のデータセットがプロファイリングされ、データの誤差の監視サービスに入力されます。 2 つのデータセット間の違いを検出するために、機械学習モデルがトレーニングされます。 モデルのパフォーマンスは、2 つのデータセット間の誤差の大きさを測定するドリフト係数に変換されます。 [モデルの解釈可能性](machine-learning-interpretability-explainability.md)を使用して、ドリフト係数に寄与するフィーチャーが計算されます。 データセットのプロファイルから、各フィーチャーに関する統計情報が追跡されます。 
 
 ## <a name="prerequisites"></a>前提条件
 

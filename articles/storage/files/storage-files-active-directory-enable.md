@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: rogarana
-ms.openlocfilehash: 2b5ebc9f35dd207e8e530b7d74acc5517125fbf4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 23e8c82bad60675338a0482155ed8a92cdad3d3d
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934996"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617682"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>SMB を使用して Azure Files への Azure Active Directory Domain Services 認証を有効にする
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -46,9 +46,11 @@ Azure Files への SMB 経由の Azure AD を有効にする前に、次の前�
 
 2.  **Azure AD テナントで Azure AD Domain Services を有効にします。**
 
-    Azure AD 資格情報を使用した認証をサポートするには、Azure AD テナントの Azure AD DS を有効にする必要があります。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](../../active-directory-domain-services/create-instance.md)に関する記事に書かれている手順を実行します。
+<<<<<<< HEAD Azure AD 資格情報を使用した認証をサポートするには、Azure AD テナントの Azure AD Domain Services を有効にする必要があります。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](../../active-directory-domain-services/tutorial-create-instance.md)に関する記事に書かれている手順を実行します。
+======= Azure AD 資格情報を使用した認証をサポートするには、Azure AD テナントの Azure AD DS を有効にする必要があります。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](../../active-directory-domain-services/create-instance.md)に関する記事に書かれている手順を実行します。
+>>>>>>> 5f049740fef320adb172d59f68bd161bdc4318e1
 
-    通常、Azure AD DS のデプロイが完了するまでには 15 分ほどかかります。 次の手順に進む前に、Azure AD DS の正常性状態が**実行中**と表示されており、パスワード ハッシュ同期が有効になっていることを確認します。
+    It typically takes about 15 minutes for an Azure AD DS deployment to complete. Verify that the health status of Azure AD DS shows **Running**, with password hash synchronization enabled, before proceeding to the next step.
 
 3.  **Azure AD DS を使用している Azure VM ドメインに参加します。**
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: dd45c68fb7d7a7226d18dd1afc508b3dbf7b770b
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950450"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69872481"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -49,14 +49,15 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 
 ## <a name="system-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT Hub メッセージのシステム プロパティ
 
-| プロパティ | 説明  |ユーザーが設定可能|ルーティング クエリのキーワード|
+| プロパティ | 説明  |ユーザーが設定可能|クエリをルーティング </br>するためのキーワード|
 | --- | --- | --- | --- |
-| message-id |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式:ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。  | はい | MessageId |
-| iothub-enqueuedtime |IoT Hub が [Device-to-Cloud](iot-hub-devguide-d2c-guidance.md) メッセージを受信した日時。 | いいえ | EnqueuedTime |
-| user-id |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 | はい | UserId |
-| iothub-connection-device-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **deviceId** が含まれます。 | いいえ | deviceId |
-| iothub-connection-auth-generation-id |IoT Hub で D2C メッセージに対して設定される ID。 ( **デバイス ID のプロパティ** に従って) メッセージを送信したデバイスの [generationId](iot-hub-devguide-identity-registry.md#device-identity-properties)が含まれています。 | いいえ |DeviceGenerationId |
-| iothub-connection-auth-method |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。| いいえ | AuthMethod |
+| message-id |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式:ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。  | はい | messageId |
+| iothub-enqueuedtime |IoT Hub が [Device-to-Cloud](iot-hub-devguide-d2c-guidance.md) メッセージを受信した日時。 | いいえ | enqueuedTime |
+| user-id |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 | はい | userId |
+| iothub-connection-device-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **deviceId** が含まれます。 | いいえ | connectionDeviceId |
+| iothub-connection-module-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **moduleId** が含まれます。 | いいえ | connectionModuleId |
+| iothub-connection-auth-generation-id |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **connectionDeviceGenerationId** (「[デバイス ID のプロパティ](iot-hub-devguide-identity-registry.md#device-identity-properties)」を参照) が含まれています。 | いいえ |connectionDeviceGenerationId |
+| iothub-connection-auth-method |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。| いいえ | connectionAuthMethod |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT Hub メッセージのシステム プロパティ
 
@@ -72,7 +73,7 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 
 ## <a name="message-size"></a>メッセージ サイズ
 
-IoT Hub では、メッセージのサイズは、プロトコルに関係なく実際のペイロードのみを考慮して測定されます。 バイト単位のサイズは次の和として計算されます。
+IoT Hub では、メッセージのサイズは、プロトコルに関係なく実際のペイロードのみを考慮して測定されます。 サイズ (バイト単位) は次の値の和として計算されます。
 
 * 本文のサイズ (バイト単位)
 * メッセージ システム プロパティの全値のサイズ (バイト単位)。

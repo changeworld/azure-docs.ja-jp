@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 6949f46345a5520ec3e09508b6d81994f9a7deb5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 490085da1e8f6b8e151168433836d59329887c6e
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036202"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623960"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
@@ -59,6 +59,9 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 **推定所要時間**: 約 20 分です。
 
 AKS クラスターの作成またはアタッチは、お使いのワークスペースでの 1 回限りのプロセスです。 複数のデプロイでこのクラスターを再利用できます。 クラスターまたはそれを含むリソース グループを削除した場合、次回デプロイする必要があるときに、新しいクラスターを作成する必要があります。 複数の AKS クラスターをワークスペースに接続できます。
+
+> [!TIP]
+> Azure Virtual Network を使用して AKS クラスターをセキュリティで保護する場合は、まず仮想ネットワークを作成する必要があります。 詳細については、[Azure Virtual Network での実験と推論の安全な実行](how-to-enable-virtual-network.md#aksvnet)に関するページを参照してください。
 
 運用のためではなく__開発__、__検証__、__テスト__のための AKS クラスターを作成する場合は、__クラスターの目的__として__開発テスト__を指定できます。
 
@@ -115,6 +118,8 @@ az ml computetarget create aks -n myaks
 
 > [!TIP]
 > 既存の AKS クラスターは、Azure Machine Learning service ワークスペースと異なる Azure リージョンに存在してもかまいません。
+>
+> Azure Virtual Network を使用して AKS クラスターをセキュリティで保護する場合は、まず仮想ネットワークを作成する必要があります。 詳細については、[Azure Virtual Network での実験と推論の安全な実行](how-to-enable-virtual-network.md#aksvnet)に関するページを参照してください。
 
 > [!WARNING]
 > AKS クラスターをワークスペースに接続するときに、`cluster_purpose` パラメーターを設定することにより、クラスターを使用する方法を定義できます。
@@ -182,6 +187,9 @@ Azure Kubernetes Service にモデルをデプロイするには、必要なコ�
 ### <a name="using-the-sdk"></a>SDK を使用する
 
 ```python
+from azureml.core.webservice import AksWebservice, Webservice
+from azureml.core.model import Model
+
 aks_target = AksCompute(ws,"myaks")
 # If deploying to a cluster configured for dev/test, ensure that it was created with enough
 # cores and memory to handle this deployment configuration. Note that memory is also used by
@@ -269,6 +277,7 @@ print(token)
 
 ## <a name="next-steps"></a>次の手順
 
+* [仮想ネットワーク内で実験と推論を安全に実行する](how-to-enable-virtual-network.md)
 * [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
 * [デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
 * [SSL を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)

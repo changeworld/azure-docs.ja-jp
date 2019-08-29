@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ebb9028aab8626554d0f5fede15129c141d441cb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035342"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69892021"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -29,9 +29,11 @@ Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自
 
 VNet を使用して次のことが行えます。
 
-* プライベート クラウドのみの専用 VNet を作成します。ソリューションがクロスプレミス構成が必要ない場合もあります。 VNet を作成するとき、ご使用のサービスと VNet 内の VMが、クラウド内で互いに直接かつ安全に通信することができます。 VM と、ソリューションの一部としてインターネット通信を必要とするサービスとのエンドポイント接続を構成することができます。
-* データ センターを安全に拡張します。VNet を使用すると、従来のサイト間 (S2S) VPN を構築して、データセンターの容量を安全に拡張できます。 S2S VPN は、IPSEC を使用して、社内の VPN ゲートウェイと Azure 間の安全な接続を提供します。
-* ハイブリッド クラウドのシナリオを有効にします。VNet は、さまざまなハイブリッド クラウド シナリオをサポートする柔軟性を提供します。 メインフレームなどのオンプレミス システムと Unix システムの任意の型へのクラウド ベースのアプリケーションを安全に接続することができます。
+* 専用プライベート クラウドのみの VNet を作成します。 場合によって、ソリューションの、クロスプレミス構成は必要ありません。 VNet を作成するとき、ご使用のサービスと VNet 内の VMが、クラウド内で互いに直接かつ安全に通信することができます。 VM と、ソリューションの一部としてインターネット通信を必要とするサービスとのエンドポイント接続を構成することができます。
+
+* データ センターを安全に拡張します。 VNet については、データ センターの容量を安全にスケールできるよう従来のサイト間 (S2S) VPN を構築できます。 S2S VPN は、IPSEC を使用して、社内の VPN ゲートウェイと Azure 間の安全な接続を提供します。
+
+* ハイブリッド クラウドのシナリオを有効にします。 VNet は、さまざまなハイブリッド クラウド シナリオをサポートする柔軟性を提供します。 メインフレームなどのオンプレミス システムと Unix システムの任意の型へのクラウド ベースのアプリケーションを安全に接続することができます。
 
 ### <a name="how-do-i-get-started"></a>開始するには?
 「[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)」にアクセスし、開始します。 このコンテンツには、すべての VNet 機能の概要とデプロイに関する情報が示されています。

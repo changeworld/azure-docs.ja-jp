@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: e6ba6aeaeadb2359c4b30efa35471ca62dcc6b41
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 656934f00879b47669fac4deaac5156cb100e159
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033974"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898746"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>プレビュー: Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -90,7 +90,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
-まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。 次の手順では、*1.13.9* の *--kubernetes-version* を使用してノード プールの更新方法を示しています。 [Kubernetes のサポートされている任意のバージョン][supported-versions]を指定できます。
+まず、1 つのノード プールで AKS クラスターを作成開始します。 次の例では、[az group create][az-group-create] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* リージョンに作成しています。 次いで、*myAKSCluster* という名前の AKS クラスターを [az aks create][az-aks-create] コマンドを使用して作成しています。 次の手順では、*1.13.10* の *--kubernetes-version* を使用してノード プールを更新する方法を示しています。 [Kubernetes のサポートされている任意のバージョン][supported-versions]を指定できます。
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -103,7 +103,7 @@ az aks create \
     --enable-vmss \
     --node-count 1 \
     --generate-ssh-keys \
-    --kubernetes-version 1.13.9
+    --kubernetes-version 1.13.10
 ```
 
 クラスターの作成には数分かかります。
@@ -154,7 +154,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
     "count": 1,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.9",
+    "orchestratorVersion": "1.13.10",
     ...
     "vmSize": "Standard_DS2_v2",
     ...
@@ -163,27 +163,30 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ```
 
 > [!TIP]
-> ノード プールを追加したとき、*OrchestratorVersion* または *VmSize* を指定していない場合、それらのノードは AKS クラスターの既定を使用して作成されます。 この例のそれは、Kubernetes バージョン *1.13.9* とノード サイズ *Standard_DS2_v2* です。
+> ノード プールを追加したとき、*OrchestratorVersion* または *VmSize* を指定していない場合、それらのノードは AKS クラスターの既定を使用して作成されます。 この例のそれは、Kubernetes バージョン *1.13.10* とノード サイズ *Standard_DS2_v2* です。
 
 ## <a name="upgrade-a-node-pool"></a>ノード プールのアップグレード
 
-最初の手順でご自分の AKS クラスターを作成したとき、`--kubernetes-version` として *1.13.9* を指定しました。 これにより、コントロール プレーンと初期ノード プールの両方の Kubernetes バージョンが設定されます。 コントロール プレーンとノード プールの Kubernetes バージョンをアップグレードするためのさまざまなコマンドがあります。 `az aks upgrade` コマンドは、`az aks nodepool upgrade` を使用して個々のノード プールをアップグレードする際に、コントロール プレーンをアップグレードするために使用します。
+> [!NOTE]
+> クラスターまたはノード プールでのアップグレードおよびスケール操作は相互に排他的です。 クラスターまたはノード プールのアップグレードとスケーリングを同時に行うことはできません。 代わりに、同じターゲット リソースに対する次の要求を行う前に、各種の操作をそのリソースで完了する必要があります。 詳細については、[トラブルシューティング ガイド](https://aka.ms/aks-pending-upgrade)を参照してください。
 
-*mynodepool* を Kubernetes *1.13.9* にアップグレードしましょう。 次の例のように、[az aks node pool upgrade][az-aks-nodepool-upgrade] コマンドを使用してノード プールをアップグレードします。
+最初の手順で AKS クラスターを作成したときに、`--kubernetes-version` として *1.13.10* を指定しました。 これにより、コントロール プレーンと初期ノード プールの両方の Kubernetes バージョンが設定されます。 コントロール プレーンとノード プールの Kubernetes バージョンをアップグレードするためのさまざまなコマンドがあります。 `az aks upgrade` コマンドは、`az aks nodepool upgrade` を使用して個々のノード プールをアップグレードする際に、コントロール プレーンをアップグレードするために使用します。
+
+*mynodepool* を Kubernetes *1.13.10* にアップグレードしましょう。 次の例のように、[az aks node pool upgrade][az-aks-nodepool-upgrade] コマンドを使用してノード プールをアップグレードします。
 
 ```azurecli-interactive
 az aks nodepool upgrade \
     --resource-group myResourceGroup \
     --cluster-name myAKSCluster \
     --name mynodepool \
-    --kubernetes-version 1.13.9 \
+    --kubernetes-version 1.13.10 \
     --no-wait
 ```
 
 > [!Tip]
-> コントロール プレーンを *1.14.5* にアップグレードするには、`az aks upgrade -k 1.14.5` を実行します。
+> コントロール プレーンを *1.14.6* にアップグレードするには、`az aks upgrade -k 1.14.6` を実行します。
 
-[az aks node pool list][az-aks-nodepool-list] コマンドを使用し、再度お使いのノード プールの状態を一覧表示します。 次の例では、*mynodepool* が *1.13.9* への *Upgrading* 状態であることを示しています。
+[az aks node pool list][az-aks-nodepool-list] コマンドを使用し、再度お使いのノード プールの状態を一覧表示します。 次の例では、*mynodepool* が *1.13.10* への *Upgrading* 状態であることを示しています。
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -194,7 +197,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 3,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.9",
+    "orchestratorVersion": "1.13.10",
     ...
     "provisioningState": "Upgrading",
     ...
@@ -206,7 +209,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 1,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.9",
+    "orchestratorVersion": "1.13.10",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -257,7 +260,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
     "count": 5,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.9",
+    "orchestratorVersion": "1.13.10",
     ...
     "provisioningState": "Scaling",
     ...
@@ -269,7 +272,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
     "count": 1,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.9",
+    "orchestratorVersion": "1.13.10",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -283,7 +286,7 @@ $ az aks nodepool list -g myResourceGroupPools --cluster-name myAKSCluster
 
 ## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>クラスター オートスケーラーを有効にすることで特定のノード プールを自動的にスケーリングする
 
-AKS では、[クラスター オートスケーラー](cluster-autoscaler.md)と呼ばれるコンポーネントを使用してノード プールを自動的にスケーリングするための独立した機能がプレビューとして提供されます。 このコンポーネントは、ノード プールごとに有効化できる AKS アドオンであり、ノード プールごとに一意の最小および最大スケール カウントを設定できます。 [ノード プールごとのクラスター オートスケーラーを使用](cluster-autoscaler.md#enable-the-cluster-autoscaler-on-an-existing-node-pool-in-a-cluster-with-multiple-node-pools)する方法を参照してください。
+AKS では、[クラスター オートスケーラー](cluster-autoscaler.md)と呼ばれる機能を使用してノード プールを自動的にスケーリングするための独立した機能がプレビューとして提供されます。 この機能は、ノード プールごとに有効化できる AKS アドオンであり、ノード プールごとに一意の最小および最大スケール カウントを設定できます。 [ノード プールごとのクラスター オートスケーラーを使用](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)する方法を参照してください。
 
 ## <a name="delete-a-node-pool"></a>ノード プールの削除
 
@@ -307,7 +310,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 5,
     ...
     "name": "mynodepool",
-    "orchestratorVersion": "1.13.9",
+    "orchestratorVersion": "1.13.10",
     ...
     "provisioningState": "Deleting",
     ...
@@ -319,7 +322,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 1,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.9",
+    "orchestratorVersion": "1.13.10",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -360,7 +363,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 1,
     ...
     "name": "gpunodepool",
-    "orchestratorVersion": "1.13.9",
+    "orchestratorVersion": "1.13.10",
     ...
     "provisioningState": "Creating",
     ...
@@ -372,7 +375,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
     "count": 1,
     ...
     "name": "nodepool1",
-    "orchestratorVersion": "1.13.9",
+    "orchestratorVersion": "1.13.10",
     ...
     "provisioningState": "Succeeded",
     ...
@@ -392,8 +395,8 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 $ kubectl get nodes
 
 NAME                                 STATUS   ROLES   AGE     VERSION
-aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.13.9
-aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.9
+aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.13.10
+aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.13.10
 ```
 
 Kubernetes スケジューラでは、テイントと容認を使用して、ノードで実行できるワークロードを制限できます。
@@ -470,7 +473,7 @@ Events:
 `aks-agentpools.json` などのテンプレートを作成し、次のマニフェスト例を貼り付けます。 このテンプレートの例は、次の設定を構成します。
 
 * 3 つのノードを実行するように、*myagentpool* という *Linux* エージェント プールを更新します。
-* Kubernetes バージョン *1.13.9* を実行するように、ノード プール内のノードを設定します。
+* Kubernetes バージョン *1.13.10* を実行するように、ノード プール内のノードを設定します。
 * *Standard_DS2_v2* とノード サイズを定義します。
 
 必要に応じてこれらの値を編集し、ノード プールを更新、追加、または削除します。
@@ -535,7 +538,7 @@ Events:
             "storageProfile": "ManagedDisks",
       "type": "VirtualMachineScaleSets",
             "vnetSubnetID": "[variables('agentPoolProfiles').vnetSubnetId]",
-            "orchestratorVersion": "1.13.9"
+            "orchestratorVersion": "1.13.10"
       }
     }
   ]
@@ -553,6 +556,9 @@ az group deployment create \
 Resource Manager テンプレートで定義するノード プール設定および操作に応じて、AKS クラスターの更新には数分かかる場合があります。
 
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>ノード プール内のノードごとにパブリック IP を割り当てる
+
+> [!NOTE]
+> プレビュー期間中は、VM プロビジョニングと競合する可能性のあるロード バランサー規則により、この機能を *AKS の Standard Load Balancer SKU (プレビュー)* と併用することには制限が設けられています。 プレビューの間、ノードごとにパブリック IP を割り当てる必要がある場合は、*Basic Load Balancer SKU* を使用します。
 
 AKS ノードは、通信用に独自のパブリック IP アドレスを必要としません。 ただし、一部のシナリオでは、ノード プール内のノードが独自のパブリック IP アドレスを備えることが必要な場合があります。 たとえば、ゲームで、ホップを最小限にするためにクラウド仮想マシンにコンソールが直接接続する必要がある場合です。 これは、別のプレビュー機能であるノード パブリック IP (プレビュー) に登録することで実現できます。
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 6bb3be3805243bba4d11037b180e7f8418a84014
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: fe45adc3eb65631c0b127872240f8d76400f9102
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947217"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899662"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
@@ -86,7 +86,7 @@ Windows Virtual Desktop では、顧客が使用している VM のサイズ、�
 ご利用の Windows Virtual Desktop がベスト プラクティスに確実に従うようにするには:
 
 - Azure Files ストレージ アカウントをセッション ホスト VM と同じリージョンにする必要があります。
-- Azure Files のアクセス許可を、「[Requirements - Profile Containers](https://docs.fslogix.com/display/20170529/Requirements+-+Profile+Containers)」 (要件 - プロファイル コンテナー) に記載されているアクセス許可と一致させる必要があります。
+- Azure Files のアクセス許可を、「[Requirements - Profile Containers](https://docs.microsoft.com/fslogix/overview#requirements)」 (要件 - プロファイル コンテナー) に記載されているアクセス許可と一致させる必要があります。
 - 各ホストプールを、同じマスター イメージに基づいて同じ種類および同じサイズの VM で構築する必要があります。
 - 管理、スケーリング、および更新を容易にするために各ホスト プール VM を同じリソースグループに含める必要があります。
 - 最適なパフォーマンスを得るには、ストレージ ソリューションと FSLogix プロファイル コンテナーを同じデータ センターの場所に置く必要があります。
@@ -98,7 +98,7 @@ Windows Virtual Desktop では、顧客が使用している VM のサイズ、�
 
 - デスクトップ仮想化ソリューションの構築を開始するには、[Windows Virtual Desktop でのテナントの作成](tenant-setup-azure-active-directory.md)に関するページを参照してください。
 - ご利用の Windows Virtual Desktop テナント内にホスト プールを作成するには、「[Azure Marketplace を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」を参照してください。
-- クラウド内でフル マネージドファイル共有を設定するには、[Azure Files 共有の設定](/articles/storage/files/storage-files-active-directory-enable.md)に関するページを参照してください。
-- FSLogix プロファイル コンテナーを構成するには、「[ホスト プールのユーザー プロファイル共有を設定する](create-host-pools-user-profile.md)」を参照してください。
+- クラウド内でフル マネージドファイル共有を設定するには、[Azure Files 共有の設定](/azure/storage/files/storage-files-active-directory-enable)に関するページを参照してください。
+- FSLogix プロファイル コンテナーを構成するには、「[ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する](create-host-pools-user-profile.md)」を参照してください。
 - ユーザーをホスト プールに割り当てるには、[Windows Virtual Desktop のアプリ グループの管理](manage-app-groups.md)に関するページを参照してください。
 - Web ブラウザーからご利用の Windows Virtual Desktop にアクセスするには、[Windows Virtual Desktop への接続](connect-web.md)に関するページを参照してください。

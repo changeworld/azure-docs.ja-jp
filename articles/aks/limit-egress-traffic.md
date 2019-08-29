@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: cf9dc304efea8874d16953f74bf88a4317760819
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031838"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639778"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でクラスター ノードのエグレス トラフィックを制限し、必要なポートとサービスへのアクセスを制御する
 
@@ -58,6 +58,10 @@ az provider register --namespace Microsoft.ContainerService
 AKS クラスターのセキュリティを強化するために、エグレス トラフィックを制限する場合があります。 クラスターは、MCR または ACR からベース システム コンテナー イメージをプルするように構成されています。 この方法でエグレス トラフィックをロック ダウンする場合は、AKS ノードが必要な外部サービスと正しく通信できるように、特定のポートと FQDN を定義する必要があります。 このような承認済みのポートと FQDN がない場合、AKS ノードは API サーバーと通信できず、コア コンポーネントをインストールできません。
 
 [Azure Firewall][azure-firewall] またはサードパーティ製ファイアウォール アプライアンスを使用して、エグレス トラフィックをセキュリティで保護し、これらの必要なポートとアドレスを定義することができます。 AKS では、これらの規則は自動的に作成されません。 次のポートとアドレスは参照用であり、お使いのネットワーク ファイアウォールで適切な規則を作成する必要があります。
+
+> [!IMPORTANT]
+> Azure Firewall を使用してエグレス トラフィックを制限し、すべてのエグレス トラフィックを強制するユーザー定義ルート (UDR) を作成するときは、イグレス トラフィックを正しく許可するために、ファイアウォールで適切な DNAT 規則を作成する必要があります。 UDR で Azure Firewall を使用すると、非対称ルーティングによってイングレス設定が機能しなくなります (AKS サブネットにはファイアウォールのプライベート IP アドレスに送信される既定のルートがありますが、種類が LoadBalancer のイングレスまたは Kubernetes サービスのパブリック ロード バランサーを使用しているため、この問題が発生します)。 この場合、ロード バランサーの受信トラフィックはパブリック IP アドレス経由で受信されますが、復路のパスはファイアウォールのプライベート IP アドレスを通過します。 ファイアウォールはステートフルであり、確立済みのセッションを認識しないため、返されるパケットは破棄されます。 Azure Firewall をイングレスまたはサービスのロード バランサーと統合する方法については、「[Azure Firewall と Azure Standard Load Balancer を統合する](https://docs.microsoft.com/en-us/azure/firewall/integrate-lb)」を参照してください。
+>
 
 AKS には、2 組のポートとアドレスがあります。
 

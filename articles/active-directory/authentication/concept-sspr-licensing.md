@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 08/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7463b86ea20a712937b8ccba7997c2551aae5be6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879110"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622714"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) には、いくつかのエディションが�
 * クラウド ユーザーに対するセルフサービスのパスワード リセット
    * 私は**クラウド限定ユーザー**で、自分のパスワードを忘れてしまいました。
       * 自分が把握しているパスワードに**リセット**したいと考えています。
-   * この機能は、Azure AD の Premium P1 または Premium P2、あるいは Microsoft 365 Business に備わっています。
+   * この機能は、Azure AD の Premium P1 または Premium P2、Microsoft 365 Business、Office 365 に備わっています。
 
 * セルフサービスによるパスワードのリセット/変更/ロック解除 (**オンプレミスの書き戻しが可能**)
    * 私は**ハイブリッド ユーザー**です。オンプレミスの Active Directory ユーザー アカウントは、Azure AD Connect を使用して Azure AD アカウントと同期されています。 パスワードを変更したいと思っています/パスワードを忘れてしまいました/ロック アウトされてしまいました。

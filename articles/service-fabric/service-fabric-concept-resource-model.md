@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7795612d8aa4974bc640571d49ad1520e2a0f94c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8e39318dcaa31a111908c6be1ae7a51d73eb7478
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963837"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69623826"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデルとは
 Azure Resource Manager を使用して、Service Fabric クラスターに Service Fabric アプリケーションをデプロイすることをお勧めします。 この方法を使用すると、アプリケーションとサービスを JSON で記述し、クラスターと同じ Resource Manager テンプレートにデプロイすることができます。 PowerShell または Azure CLI を使用してアプリケーションをデプロイおよび管理する場合とは異なり、クラスターの準備が整うまで待つ必要はありません。 アプリケーションの登録、プロビジョニング、デプロイのプロセスを、すべて 1 ステップで実行できます。 これは、クラスターでアプリケーションのライフサイクルを管理するためのベスト プラクティスです。 詳細については、[ベスト プラクティス](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources)に関する項目を参照してください。
@@ -33,7 +33,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターに Servi
 ## <a name="deploy-application-resources-using-azure-resource-manager"></a>Azure Resource Manager を使用したアプリケーション リソースのデプロイ  
 Azure Resource Manager アプリケーション リソースモデルを使用してアプリケーションとそのサービスをデプロイするには、アプリケーション コードをパッケージ化し、パッケージをアップロードしてから、Azure Resource Manager テンプレートでアプリケーション リソースとしてパッケージの場所を参照する必要があります。 詳細については、[アプリケーションのパッケージ化](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg)に関する項目を参照してください。
           
-次に、Azure Resource Manager テンプレートを作成し、アプリケーションの詳細でパラメーター ファイルを更新して、Service Fabric クラスターにデプロイします。 こちらのサンプルを参照してください
+次に、Azure Resource Manager テンプレートを作成し、アプリケーションの詳細でパラメーター ファイルを更新して、Service Fabric クラスターにデプロイします。 [こちら](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)のサンプルを参照してください。
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 Resource Manager テンプレートからアプリケーションをデプロイするには、アプリケーション イメージをステージングするためのストレージ アカウントが必要です。 既存のストレージ アカウントを再利用するか、新しいストレージ アカウントを作成してアプリケーションをステージングすることができます。 既存のストレージ アカウントを使用する場合は、このステップを省略できます。 

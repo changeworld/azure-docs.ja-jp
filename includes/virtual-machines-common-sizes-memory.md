@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3d45defa9ff8e7b2e03d550b76c0e18192c58c4a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881620"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69626363"
 ---
 メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
 * Ev3 シリーズは、ハイパー スレッド構成の E5-2673 v4 2.3 GHz (Broadwell) プロセッサを備えることで、大半の汎用ワークロード向けに付加価値を高め、他の多くのクラウドの汎用 VM と一線化されています。  メモリが増設 (7 GiB/vCPU から 8 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。  Ev3 は、D/Dv2 ファミリーのハイ メモリ VM サイズのフォローアップです。
 
-* Eav3 シリーズと Easv3 シリーズでは、最大 256 GB の L3 キャッシュを備えたマルチスレッド構成で AMD の 2.35Ghz EPYC<sup>TM</sup> 7452V プロセッサを利用しており、ほとんどのメモリ最適化されたワークロードを実行するためのオプションが増えています。  Eav3 シリーズと Easv3 シリーズは、Ev3 および Esv3 シリーズと同じメモリおよびディスク構成を備えています。
+* Eav3 シリーズと Easv3 シリーズでは、最大 256 MB の L3 キャッシュを備えたマルチスレッド構成で AMD の 2.35Ghz EPYC<sup>TM</sup> 7452V プロセッサを利用しており、ほとんどのメモリ最適化されたワークロードを実行するためのオプションが増えています。  Eav3 シリーズと Easv3 シリーズは、Ev3 および Esv3 シリーズと同じメモリおよびディスク構成を備えています。
 
 * Mv2 シリーズは、クラウドの VM で最大の vCPU 数 (最大 208 個の vCPU) と最大のメモリ (最大 5.7 TiB) を提供します。 非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用することができます。
 
