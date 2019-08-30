@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: f7fbfbe5ae5d2ba4148d94768a1109f566151170
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489432"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69513799"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -154,7 +154,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>URL 書き換え規則を追加する方法を教えてください。
 
-URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot**　フォルダーに作成します。 詳細については、「[Azure App Services:URL 書き換えについて](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)」を参照してください。
+URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot**　フォルダーに作成します。 詳細については、「[Azure App Services: URL 書き換えについて](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)」を参照してください。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>App Service への受信トラフィックを制御するにはどうすればいいですか?
 
@@ -251,7 +251,7 @@ Web ジョブのスケジュールの詳細については、「[Create a schedu
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>App Service アプリの侵入テストを実行する方法は?
 
-侵入テストを実行するには、[要求を送信](https://portal.msrc.microsoft.com/en-us/engage/pentest)します。
+侵入テストを実行するには、[要求を送信](https://portal.msrc.microsoft.com/engage/pentest)します。
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Traffic Manager を使用する App Service Web アプリのカスタム ドメイン名を構成するにはどうすればいいですか?
 

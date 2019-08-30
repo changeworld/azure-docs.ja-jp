@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 73785422a7c45a12671e6cd53da89609190a8352
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 338ceef8ce94e97f7569f85b0079f75aed033612
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243297"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558641"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -53,6 +53,8 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
     ![API Management の [仮想ネットワーク] メニュー][api-management-using-vnet-menu]
 4. 目的のアクセスの種類を選択します。
 
+   * **オフ**: これは既定値です。 API Management は仮想ネットワークにデプロイされません。
+
    * **外部**: API Management のゲートウェイと開発者ポータルには、パブリック インターネットから外部ロード バランサーを使用してアクセスできます。 ゲートウェイは、仮想ネットワーク内のリソースにアクセスできます。
 
      ![パブリック ピアリング][api-management-vnet-public]
@@ -62,11 +64,6 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
      ![プライベート ピアリング][api-management-vnet-private]
 
      API Management サービスがプロビジョニングされているすべてのリージョンの一覧が表示されます。 すべてのリージョンについて、VNET とサブネットを選択します。 この一覧には、構成しているリージョンで設定された Azure サブスクリプションで使用できる従来型および Resource Manager の仮想ネットワークが含まれます。
-
-     > [!NOTE]
-     > 上の図の**サービス エンドポイント**には、ゲートウェイ/プロキシ、Azure Portal、開発者ポータル、GIT、およびダイレクト管理エンドポイントが含まれています。
-     > 上の図の**管理エンドポイント**は、Azure Portal と Powershell を使用して構成を管理するためにサービスでホストされるエンドポイントです。
-     > さらに、図にはさまざまなエンドポイントの IP アドレスが示されていますが、API Management サービスは、構成済みのホスト名で**のみ**で応答することに注意してください。
 
      > [!IMPORTANT]
      > Azure API Management インスタンスを Resource Manager VNET にデプロイする場合、サービスは Azure API Management インスタンス以外のリソースを含まない専用サブネットにある必要があります。 他のリソースが含まれる Resource Manager VNET サブネットに Azure API Management インスタンスをデプロイしようとすると、そのデプロイは失敗します。

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: diberry
-ms.openlocfilehash: dbfa7aaccd513ffcf8ba3907911d8c49275b2ea6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 18b901b429ee675726ef0e36535f1f97f4cdd076
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967657"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543004"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -228,6 +228,18 @@ GenerateAnswer への応答には、一致した質問と回答のセットの�
   "RankerType":"QuestionOnly"
 }
 ```
+
+## <a name="common-http-errors"></a>一般的な HTTP エラー
+
+|コード|説明|
+|:--|--|
+|2xx|Success|
+|400|"要求のパラメーターが正しくない" とは、必須パラメーターが見つからない、形式が正しくない、または大きすぎることを意味します|
+|400|"要求の本文が正しくない" とは、JSON が見つからない、形式が正しくない、または大きすぎることを意味します|
+|401|無効なキー|
+|403|禁止されています - アカウントに適切なアクセス許可がありません|
+|404|KB が存在しません|
+|410|この API は非推奨であり、現在は利用できません|
 
 ## <a name="next-steps"></a>次の手順
 

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 2ea17a4363218351eb6e5ba0678435f3707e4ab9
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663731"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543052"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -65,12 +65,12 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 >[!NOTE]
 >Azure API の最近の変更により、初めて管理グループと Azure Monitor 間の統合を構成する場合、正常に構成できなくなります。 管理グループを既にサービスに統合しているお客様は、既存の接続を再構成する必要がない限り、影響を受けることはありません。  
 >Operations Manager の次のバージョン用に新しい管理パックがリリースされました。
->  
->* System Center Operations Manager 1801 の場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=57173)から管理パックをダウンロードします  
->* System Center 2016 - Operations Manager の場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=57172)から管理パックをダウンロードします  
->* System Center Operations Manager 2012 R2 の場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=57171)から管理パックをダウンロードします  
->
->この管理パックの更新プログラムは、System Center Operations Manager 1807 には適用されません。これはバージョン 1801 からの更新プログラムのリリースであり、この製品の完全なビルドではありません。   
+> - System Center Operations Manager 2019 の場合、Operations Manager ビルドで管理パックが提供されます。
+>- Operations Manager 1801 管理パックは Operations Manager 1807 にも適用できます。
+>- System Center Operations Manager 1801 の管理パックは[こちら](https://www.microsoft.com/download/details.aspx?id=57173)からダウンロードできます。
+>- System Center 2016 - Operations Manager の管理パックは[こちら](https://www.microsoft.com/download/details.aspx?id=57172)からダウンロードできます。  
+>- System Center Operations Manager 2012 R2 の管理パックは[こちら](https://www.microsoft.com/download/details.aspx?id=57171)からダウンロードできます。  
+
 
 ### <a name="network"></a>ネットワーク
 

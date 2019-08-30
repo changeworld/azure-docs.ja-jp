@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: a0da13e82811d500dee50c2231500245c7e011a6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3b242ff8ee3e635493cd501cf37ffc7c78a57d91
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383438"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563324"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 
@@ -270,6 +270,9 @@ Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions
 | 最大バッチ カウント  |Azure Functions に送信される各バッチのイベントの最大数を指定できるプロパティです。 既定値は 100 です。 |
 
 Azure Stream Analytics は、Azure 関数から 413 ("http の要求したエンティティが大きすぎる") 例外を受け取ると、Azure Functions に送信するバッチのサイズを縮小します。 Azure 関数コードで、この例外を使用して、Azure Stream Analytics がサイズの大きいバッチを送信しないようにします。 また、関数で使用する最大バッチ カウントおよび最大バッチ サイズの値が Stream Analytics ポータルに入力した値と矛盾しないことを確認します。
+
+> [!NOTE]
+> テスト接続中、Stream Analytics から Azure Functions に空のバッチが送信され、この 2 つの間の接続が機能するかどうかがテストされます。 テスト接続に合格するように、Functions アプリで空のバッチ要求が処理されるようにします。
 
 また、時間枠内に開始するイベントがない場合も、出力は生成されません。 その結果、**computeResult** 関数は呼び出されません。 この動作は、組み込みのウィンドウ集計関数と一致します。
 

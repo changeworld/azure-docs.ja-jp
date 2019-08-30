@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 6ddd8922f1830b2f57c8ecb4ff62871961b09fec
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a1c4575ec2ecc65d863ad80f73e64b7a4efdf96f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228323"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563256"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -39,10 +39,10 @@ Azure Instance Metadata Service は、[Azure Resource Manager](https://docs.micr
 
 リージョン                                        | 提供状況                                 | サポートされているバージョン
 -----------------------------------------------|-----------------------------------------------|-----------------
-[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11 
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11
-[Azure China](https://www.azure.cn/)                                                     | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11
+[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11、2019-04-30、2019-06-01、2019-06-04
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11、2019-04-30
+[Azure China](https://www.azure.cn/)                                                     | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11、2019-04-30
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11、2019-04-30
 
 この表は、サービスが更新された場合や、バージョンが新しくサポートされた場合に更新されます。
 
@@ -342,7 +342,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 #### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>次の API は、メタデータ エンドポイントを介して使用できます。
 
-データ | Description | 導入されたバージョン
+Data | Description | 導入されたバージョン
 -----|-------------|-----------------------
 attested | 「[構成証明済みデータ](#attested-data)」をご覧ください | 2018 年 10 月 1 日
 identity | Azure リソースのマネージド ID。 「[アクセス トークンの取得](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)」を参照してください | 2018-02-01
@@ -355,7 +355,7 @@ scheduledevents | [スケジュールされたイベント](scheduled-events.md)
 > [!NOTE]
 > 次のカテゴリは、メタデータ エンドポイントを通じて、インスタンス/コンピューティングを介してアクセスされます。
 
-データ | Description | 導入されたバージョン
+Data | Description | 導入されたバージョン
 -----|-------------|-----------------------
 azEnvironment | VM が実行されている Azure 環境 | 2018 年 10 月 1 日
 customData | 「[カスタム データ](#custom-data)」を参照してください | 2019-02-01
@@ -375,6 +375,7 @@ resourceId | リソースの[完全修飾](https://docs.microsoft.com/rest/api/r
 sku | VM イメージの特定の SKU | 2017-04-02
 subscriptionId | 仮想マシンの Azure サブスクリプション | 2017-08-01
 tags | お使いの仮想マシンの[タグ](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
+tagsList | プログラムによる解析を簡単にするために JSON 配列として書式設定されたタグ  | 2019-06-04
 version | VM イメージのバージョン | 2017-04-02
 vmId | VM の[一意の識別子](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | お使いの仮想マシン スケール セットの[仮想マシン スケール セット名](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
@@ -386,7 +387,7 @@ vmSize | [VM サイズ](sizes.md) | 2017-04-02
 > [!NOTE]
 > 次のカテゴリは、メタデータ エンドポイント経由で、インスタンス/ネットワーク/インターフェイスを介してアクセスされます。
 
-データ | Description | 導入されたバージョン
+Data | Description | 導入されたバージョン
 -----|-------------|-----------------------
 ipv4/privateIpAddress | VM のローカル IPv4 アドレス | 2017-04-02
 ipv4/publicIpAddress | VM のパブリック IPv4 アドレス | 2017-04-02
@@ -425,7 +426,7 @@ nonce は、提供される省略可能な 10 桁の文字列です。 nonce を
 }
 ```
 
-> signature BLOB は、ドキュメントの [pkcs7](https://aka.ms/pkcs7) で署名されたバージョンです。 署名に使用される証明書と共に、ドキュメントの作成と有効期限のための vmId、nonce、timeStamp のような VM の詳細、およびイメージに関するプラン情報が含まれています。 プラン情報は Azure Marketplace のイメージにのみ設定されます。 証明書は、応答から抽出でき、応答が有効で Azure から送られたものであることを検証するために使用できます。
+> signature BLOB は、ドキュメントの [pkcs7](https://aka.ms/pkcs7) で署名されたバージョンです。 署名に使用される証明書と共に、ドキュメントの作成と有効期限のための vmId、nonce、subscriptionId、timeStamp のような VM の詳細とイメージに関するプラン情報が含まれています。 プラン情報は Azure Marketplace のイメージにのみ設定されます。 証明書は、応答から抽出でき、応答が有効で Azure から送られたものであることを検証するために使用できます。
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Windows 仮想マシンでの構成証明済みメタデータの取得
 
@@ -457,7 +458,7 @@ nonce は、提供される省略可能な 10 桁の文字列です。 nonce を
 }
 ```
 
-> signature BLOB は、ドキュメントの [pkcs7](https://aka.ms/pkcs7) で署名されたバージョンです。 署名に使用される証明書と共に、ドキュメントの作成と有効期限のための vmId、nonce、timeStamp のような VM の詳細、およびイメージに関するプラン情報が含まれています。 プラン情報は Azure Marketplace のイメージにのみ設定されます。 証明書は、応答から抽出でき、応答が有効で Azure から送られたものであることを検証するために使用できます。
+> signature BLOB は、ドキュメントの [pkcs7](https://aka.ms/pkcs7) で署名されたバージョンです。 署名に使用される証明書と共に、ドキュメントの作成と有効期限のための vmId、nonce、subscriptionId、timeStamp のような VM の詳細とイメージに関するプラン情報が含まれています。 プラン情報は Azure Marketplace のイメージにのみ設定されます。 証明書は、応答から抽出でき、応答が有効で Azure から送られたものであることを検証するために使用できます。
 
 
 ## <a name="example-scenarios-for-usage"></a>使用に関するシナリオ例  
@@ -568,8 +569,32 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-> [!NOTE]
-> タグはセミコロンで区切られます。 プログラムでタグを抽出するために、パーサーを書き込む場合、パーサーが正常に動作するために、タグ名と値にセミコロンを含めることはできません。
+`tags` フィールドは、セミコロンで区切られたタグを含む文字列です。 これは、タグ自体でセミコロンが使用されている場合に問題になることがあります。 プログラムでタグを抽出するようにパーサーが記述されている場合、`tagsList` フィールドに依存してください。これは区切り記号のない JSON 配列であり、結果的に解析が楽になります。
+
+**要求**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+```
+
+**応答**
+
+```json
+[
+  {
+    "name": "Department",
+    "value": "IT"
+  },
+  {
+    "name": "Environment",
+    "value": "Test"
+  },
+  {
+    "name": "Role",
+    "value": "WebRole"
+  }
+]
+```
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>VM が Azure で実行されていることの検証
 
@@ -612,21 +637,23 @@ Verification successful
     "createdOn":"11/28/18 00:16:17 -0000",
     "expiresOn":"11/28/18 06:16:17 -0000"
   },
-"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34"
+"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
+"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
 }
 ```
 
-データ | 説明
+Data | 説明
 -----|------------
 nonce | 要求でのユーザー提供の省略可能な文字列。 要求で nonce が提供されなかった場合は、現在の UTC タイムスタンプが返されます
 プラン | VM の Azure Marketplace イメージの[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています
 timestamp/createdOn | 最初の署名付きドキュメントが作成されたタイムスタンプ
 timestamp/expiresOn | 署名付きドキュメントの有効期限が切れるタイムスタンプ
 vmId |  VM の[一意の識別子](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
+subscriptionId | `2019-04-30` で導入された、仮想マシンの Azure サブスクリプション
 
 #### <a name="verifying-the-signature"></a>署名の検証
 
-上記の署名を取得した後は、署名が Microsoft からのものであることを確認できます。 また、中間証明書と証明書チェーンも確認できます。
+上記の署名を取得した後は、署名が Microsoft からのものであることを確認できます。 また、中間証明書と証明書チェーンも確認できます。 最後に、サブスクリプション ID が正しいことを確認できます。
 
 > [!NOTE]
 > パブリック クラウド用の証明書とソブリン クラウド用の証明書は異なります。

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2019
+ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cdec216187050a449f23f72474e0265acce14c5f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67867389"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542989"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -150,6 +150,8 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 ## <a name="variables"></a>変数
 
 [変数](resource-group-authoring-templates.md#variables)を使用する場合は、次の情報を活用してください。
+
+* 変数名にはキャメル ケースを使用します。
 
 * テンプレート内で複数回使用する必要のある値には、変数を使用してください。 1 回しか使用しない値は、ハードコーディングすることでテンプレートが読みやすくなります。
 

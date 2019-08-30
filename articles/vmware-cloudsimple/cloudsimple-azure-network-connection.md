@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 90e3121c3f036d1abc8ca372ee349aef3485d07b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69625030"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972945"
 ---
 # <a name="azure-network-connections-overview"></a>Azure ネットワーク接続の概要
 
@@ -44,7 +44,6 @@ ExpressRoute を使用して、プライベート クラウドを Azure リソ�
 CloudSimple リージョンに、既存の Azure ExpressRoute 回線を接続できます。 ExpressRoute Global Reach 機能により、2 つの回線を相互に接続します。  オンプレミスと CloudSimple ExpressRoute 回線の間に接続が確立されます。  この接続により、オンプレミス ネットワークをプライベート クラウド ネットワークに拡張できます。 CloudSimple ネットワークからのルートは、BGP 経由でオンプレミス ネットワークと交換されます。
 
 ![オンプレミスの ExpressRoute 接続 - Global Reach](media/cloudsimple-global-reach-connection.png)
-
 
 ## <a name="connection-to-on-premises-network-and-azure-virtual-network"></a>オンプレミス ネットワークと Azure 仮想ネットワークへの接続
 

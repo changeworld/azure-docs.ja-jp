@@ -14,12 +14,12 @@ ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a9d997f9ced0fbd921abfb13cda5a4845eb3763
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: fc6f6f7b02db664ca6cd62dc7aad61baf5f132fa
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616269"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088405"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>2 段階認証のアプリ パスワードを管理する
 
@@ -47,7 +47,7 @@ ms.locfileid: "69616269"
 
 - **組織で 2 要素認証と [追加のセキュリティ確認] ページを使用する。** 組織で 2 要素認証と共に職場または学校のアカウント (alain@contoso.com など) を使用している場合、[[追加のセキュリティ確認] ページ](https://account.activedirectory.windowsazure.com/Proofup.aspx)からアプリ パスワードを管理できます。 詳細な手順については、この記事の「[[追加のセキュリティ確認] ページを使用してアプリ パスワードを作成および削除する](#create-and-delete-app-passwords-from-the-additional-security-verification-page)」を参照してください。
 
-- **組織で 2 要素認証と Office 365 ポータルを使用する。** 組織で職場または学校のアカウント (alain@contoso.com など)、2 要素認証、Office 365 アプリを使用している場合、[Office 365 ポータル ページ](https://office.portal.com)からアプリ パスワードを管理できます。 詳細な手順については、この記事の「[Office 365 ポータル ページを使用してアプリ パスワードを作成および削除する](#create-and-delete-app-passwords-using-the-office-365-portal)」を参照してください。
+- **組織で 2 要素認証と Office 365 ポータルを使用する。** 組織で職場または学校のアカウント (alain@contoso.com など)、2 要素認証、Office 365 アプリを使用している場合、[Office 365 ポータル ページ](https://www.office.com)からアプリ パスワードを管理できます。 詳細な手順については、この記事の「[Office 365 ポータル ページを使用してアプリ パスワードを作成および削除する](#create-and-delete-app-passwords-using-the-office-365-portal)」を参照してください。
 
 - **個人の Microsoft アカウントで 2 要素認証を使用している。** 2 要素認証と共に個人の Microsoft アカウント (alain@outlook.com など) を使用している場合、[[セキュリティの基本] ページ](https://account.microsoft.com/security/)からアプリ パスワードを管理できます。 詳細な手順については、[2 段階認証をサポートしていないアプリでのアプリ パスワードの使用](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)に関するページをご覧ください。
 

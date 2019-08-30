@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 80137023643630e8472a70fcca6cb656aeba7123
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5dabbb6458d0d0d4af51490bea0c3f38a7c5c41d
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616383"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542896"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -174,6 +174,9 @@ az aks create \
 AKS クラスターの作成には数分かかります。
 
 ## <a name="create-an-rbac-binding"></a>RBAC のバインドを作成する
+
+> [!NOTE]
+> クラスター ロールのバインド名では、大文字と小文字が区別されます。
 
 Azure Active Directory アカウントを AKS クラスターで使う前に、ロールのバインドまたはクラスター ロールのバインドを作成する必要があります。 付与するアクセス許可をロールによって定義し、それらをバインドによって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[RBAC 承認の使用][rbac-authorization]に関するページを参照してください。
 

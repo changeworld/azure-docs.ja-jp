@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: c41ab1c3309243fa3a96d907f620ffeff10376a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6ad7f32704d8cb73999a6e3cf60cb2a238268242
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626120"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034545"
 ---
 # <a name="move-guidance-for-networking-resources"></a>ネットワーク リソースの移動ガイダンス
 
@@ -22,10 +22,6 @@ ms.locfileid: "69626120"
 仮想ネットワークを移動するときは、その依存リソースも移動する必要があります。 VPN ゲートウェイでは、IP アドレス、仮想ネットワーク ゲートウェイ、および関連付けられているすべての接続リソースを移動する必要があります。 各ローカル ネットワーク ゲートウェイは、異なるリソース グループ内に配置することができます。
 
 ネットワーク インターフェイス カードで仮想マシンを移動するには、すべての依存リソースを移動する必要があります。 ネットワーク インターフェイス カードに対応した仮想ネットワーク、仮想ネットワークに対応した他のすべてのネットワーク インターフェイス カード、および VPN ゲートウェイを移動します。
-
-## <a name="state-of-dependent-resources"></a>依存リソースの状態
-
-ソースまたはターゲットのリソース グループに仮想ネットワークが含まれている場合は、移動中に仮想ネットワークのすべての依存リソースの状態が確認されます。 これらのリソースのいずれかがエラー状態の場合、移動はブロックされます。 たとえば、仮想ネットワークを使用する仮想マシンで障害が発生した場合、移動はブロックされます。 移動は、仮想マシンが移動するリソースの 1 つではなく、移動用のリソース グループのいずれにも存在しない場合でもブロックされます。 この問題を回避するには、仮想ネットワークのないリソース グループにリソースを移動します。
 
 ## <a name="peered-virtual-network"></a>ピアリングされた仮想ネットワーク
 

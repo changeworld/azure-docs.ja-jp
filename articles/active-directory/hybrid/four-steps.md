@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0630e62a08314612cb08b5cb26b5a1563de4f40b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 8d4eb5b4c634fe495a0ed149016d862defc2eb45
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779694"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532449"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -75,7 +75,7 @@ Azure AD アプリケーション プロキシには、次のような利点が�
 * VPN や従来のリバース プロキシ ソリューションなどの境界ネットワーク内にコンポーネントがない
 * 受信接続は不要
 * クラウドとオンプレミスのデバイス、リソース、アプリ全体でのシングル サインオン (SSO)
-* 場所や時間を問わず生産性を維持できるようにするための、エンド ユーザーへの権限付与
+* 場所や時間を問わず、エンド ユーザーが生産性を高められるようにする
 
 ### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Microsoft Cloud App Security を使ってシャドウ IT を検出する
 

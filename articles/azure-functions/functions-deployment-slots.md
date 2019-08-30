@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure Functions, 関数
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: a75299906098a0149df5417835569a30a4e585ff
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626096"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085666"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット
 

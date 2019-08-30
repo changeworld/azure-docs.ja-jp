@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: dcfcd4b55f848e1725e286e6ef2a87a2c36e5a71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d94716600305d3d2a567068fc719a83ce94c83d
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684928"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557797"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive で Apache Beeline クライアントを使用する
 
@@ -46,7 +46,7 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster"></a>HDInsight Enterprise セキュリティ パッケージ (ESP) クラスターへ
 
-Azure Active Directory (AAD) に参加している Enterprise セキュリティ パッケージ (ESP) クラスターにクライアントから接続するときは、ドメイン名 `<AAD-Domain>` と、クラスター `<username>` へのアクセス許可を付与されているドメイン ユーザー アカウントの名前も指定する必要があります:
+同じクラスター領域にあるコンピューターで、Azure Active Directory (AAD) に参加している Enterprise セキュリティ パッケージ (ESP) クラスターにクライアントから接続するとき、ドメイン名 `<AAD-Domain>` と、クラスター `<username>` へのアクセス許可を付与されているドメイン ユーザー アカウントの名前も指定する必要があります。
 
 ```bash
 kinit <username>
@@ -59,7 +59,7 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 
 ### <a name="over-public-internet"></a>パブリック インターネット経由
 
-パブリック インターネット経由で接続するときは、クラスター ログイン アカウント名 (既定は `admin`) とパスワードを指定する必要があります。 たとえば、Beeline を使用してクライアント システムから `<clustername>.azurehdinsight.net` のアドレスに接続する場合です。 この接続は、ポート `443` を経由し、SSL を使用して暗号化されます。
+ESP 以外のクラスターまたは Azure Active Directory (AAD) 参加に参加している ESP クラスターにパブリック インターネット経由で接続するときは、クラスター ログイン アカウント名 (既定は `admin`) とパスワードを指定する必要があります。 たとえば、Beeline を使用してクライアント システムから `<clustername>.azurehdinsight.net` のアドレスに接続する場合です。 この接続は、ポート `443` を経由し、SSL を使用して暗号化されます。
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password

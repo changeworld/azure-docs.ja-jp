@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 9e48114d0d4159d40006710f9c8194dea0d775f8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c2adf9bff4c3d91305e71a7688740fa0268ad7b9
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295631"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69531486"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure Security Center で Azure データと記憶域サービスを保護する
 このトピックでは、データと記憶域リソースのセキュリティに関する推奨事項を表示および実装する方法を示します。 Azure Security Center は、Azure リソースのセキュリティ状態を分析する際に、セキュリティに関する推奨事項を検出します。
@@ -40,7 +40,7 @@ ms.locfileid: "68295631"
 * 各タブをクリックし、リソースの種類ごとに推奨事項を表示します。
 
     > [!NOTE]
-    > ストレージの暗号化の詳細については、「[Enable encryption for Azure storage account in Azure Security Center (Azure Security Center における Azure ストレージ アカウントの暗号化の有効化)](security-center-enable-encryption-for-storage-account.md)」を参照してください。
+    > ストレージの暗号化の詳細については、「[保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)」を参照してください。
 
 
 ## <a name="remediate-a-recommendation-on-a-data-resource"></a>データ リソースの推奨事項を修復する

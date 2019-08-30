@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a8a75601daf36ca21ea56a5930219d7d467f0c85
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663873"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69557827"
 ---
 # <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>オフライン評価で学習ループを分析する方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "68663873"
 ## <a name="prerequisites"></a>前提条件
 
 1. Personalizer ループが構成されている必要があります。
-1. 意味のある評価結果を得るには、Personalizer ループのログに少なくとも 50,000 のイベントが含まれている必要があります。
+1. Personalizer ループには代表的な量のデータを与える必要があります。意味のある評価結果を得るには、だいたい、そのログに少なくとも 50,000 件のイベントが含まれることが推奨されます。
 
 必要に応じて、同じ評価で比較およびテストできる以前にエクスポートした_学習ポリシー_ ファイルを使用することもできます。
 

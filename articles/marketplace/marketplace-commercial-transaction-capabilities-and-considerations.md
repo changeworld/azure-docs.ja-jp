@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: c58a36988e3aee9b122446e3ee3c4878a582b8ad
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6991ebfa58099a42b09e482d11c0d3c3983decce
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871024"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535059"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商用マーケットプレース トランザクションの機能と考慮事項
 
@@ -144,7 +144,7 @@ Microsoft は、顧客が公開元のソフトウェアを注文し、ライセ�
 |Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 90% を支払います   |   1 か月あたり $80.00 <br> \* 1 か月あたり $90.00    |
 |Microsoft は、ライセンス コストの 20% を受け取ります <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 10% を受け取ります。  |  1 か月あたり $20.00 <br> \* $10.00     |
 
-* **Marketplace サービス料金の減額:** 自身の Commercial Marketplace で公開する特定の SaaS 製品の場合、Microsoft は、Marketplace サービス料金を 20% から 10% に減額します (Microsoft 発行元契約の説明に従う)。  製品が対象となるには、少なくとも 1 つの製品を、IP 共同販売準備完了または IP 共同販売優先のどちらかとして、マイクロソフトが指定する必要があります。 その月の Marketplace サービス料金の減額を受け取るには、そのカレンダー月の月末までに少なくとも 5 営業日適格性を満たす必要があります。 Marketplace サービス料金の減額は、VM、マネージド アプリ、または Commercial Marketplace から入手できる他の製品には適用されません。  Marketplace サービス料金の減額は、対象となるオファーと、2019 年 5 月 1日から 2020 年 6 月 30日までにマイクロソフトが収集したライセンス料金に利用できます。  その後は、Marketplace サービス料金は通常の金額に戻ります。
+* **Marketplace サービス料金の減額:** 自身の Commercial Marketplace で公開する特定の SaaS 製品の場合、Microsoft は、Marketplace サービス料金を 20% から 10% に減額します (Microsoft 発行元契約の説明に従う)。  製品が対象となるには、少なくとも 1 つの製品を、IP 共同販売準備完了または IP 共同販売優先のどちらかとして、マイクロソフトが指定する必要があります。 その月の Marketplace サービス料金の減額を受け取るには、前のカレンダー月の月末までに少なくとも 5 営業日適格性を満たす必要があります。 Marketplace サービス料金の減額は、VM、マネージド アプリ、または Commercial Marketplace から入手できる他の製品には適用されません。  Marketplace サービス料金の減額は、対象となるオファーと、2019 年 5 月 1日から 2020 年 6 月 30日までにマイクロソフトが収集したライセンス料金に利用できます。  その後は、Marketplace サービス料金は通常の金額に戻ります。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>顧客の請求、支払い、課金、回収
 

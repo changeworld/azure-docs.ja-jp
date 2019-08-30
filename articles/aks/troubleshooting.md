@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1668e0b3b155804496b190f2ba66d220ba0dd219
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 00fadd8a98ec4f58783ed8b407e2621a7c107149
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381952"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533525"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -86,10 +86,12 @@ AKS クラスター内のエージェント ノードのタグを変更したこ
 
 *このトラブルシューティングの支援は、 https://aka.ms/aks-pending-upgrade に基づいています。*
 
-アクティブなアップグレード操作の実行中、またはアップグレードが試行されたが失敗した場合、クラスターの操作は制限されます。 問題を診断するには、`az aks show -g myResourceGroup -n myAKSCluster -o table` を実行してクラスターの詳細な状態を取得します。 結果に基づいて、次のことを行います。
+1 つのノード プールを持つクラスターまたは[複数のノード プール](use-multiple-node-pools.md)を持つクラスターでのアップグレード操作とスケール操作は、相互に排他的です。 クラスターまたはノード プールを同時にアップグレードやスケーリングすることはできません。 代わりに、ターゲット リソースに対する次の要求を行う前に、各操作の種類をその同じリソースで完了する必要があります。 その結果、アクティブなアップグレード操作またはスケール操作の実行中、または操作が試行されたが失敗した場合、操作は制限されます。 
 
-* クラスターのアップグレードを実行中の場合は、操作が終了するまで待ちます。 アップグレードに成功した場合は、以前に失敗した操作をもう一度試します。
-* クラスターのアップグレードに失敗した場合は、上記の手順に従います。
+問題の診断に役立てるには、`az aks show -g myResourceGroup -n myAKSCluster -o table` を実行してクラスターの詳細な状態を取得します。 結果に基づいて、次のことを行います。
+
+* クラスターのアップグレードを実行中の場合は、操作が終了するまで待ちます。 成功した場合は、もう一度、以前に失敗した操作を再試行します。
+* クラスターのアップグレードに失敗した場合は、上記のセクションで概説された手順に従います。
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>自分のクラスターを別のサブスクリプションに移したり、自分のクラスターが含まれる自分のサブスクリプションを新しいテナントに移したりできますか?
 
