@@ -3,17 +3,17 @@ title: CloudSimple による Azure VMware ソリューション - プライベ�
 description: VMware コンポーネントをプライベート クラウド上にインストールする方法について説明します。
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 89bc9c07ae74da1a4269a505627a7626e478ef99
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 26f58a38ac3abe9c6e2a3c6254190dffc4a51eb9
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812186"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543715"
 ---
 # <a name="private-cloud-vmware-components"></a>プライベート クラウド VMware コンポーネント
 
@@ -47,11 +47,11 @@ vCenter サーバー アプライアンス (VCSA) は、CloudSimple による VM
 
 ### <a name="vcenter-single-sign-on"></a>vCenter シングル サインオン
 
-VCSA に組み込まれた Platform Services Controller は、**vCenter シングル サインオン ドメイン**に関連付けられています。  ドメイン名は、**cloudsimple.local** です。  vCenter にアクセスするために既定のユーザー **CloudOwner@cloudsimple.com** が作成されます。  vCenter 用のオンプレミス/Azure Active Directory [ID ソース](https://docs.azure.cloudsimple.com/set-vcenter-identity/)を追加できます。
+VCSA に組み込まれた Platform Services Controller は、**vCenter シングル サインオン ドメイン**に関連付けられています。  ドメイン名は、**cloudsimple.local** です。  vCenter にアクセスするために既定のユーザー **CloudOwner@cloudsimple.com** が作成されます。  vCenter 用のオンプレミス/Azure Active Directory [ID ソース](set-vcenter-identity.md)を追加できます。
 
 ## <a name="vsan-storage"></a>vSAN ストレージ
 
-プライベート クラウドは、完全に構成されたオール フラッシュ vSAN ストレージを使用して、クラスター ローカルで作成されます。  vSAN データストアを含む vSphere クラスターを作成するには、同じ SKU のノードが 3 つ以上必要です。  vSAN データストア上では、重複除去と圧縮が既定で有効になっています。  vSphere クラスターの各ノード上には、2 つのディスク グループが作成されます。 各ディスク グループには、1 つのキャッシュ ディスクと 3 つのキャパシティ ディスクが含まれています。
+プライベート クラウドは、完全に構成されたオール フラッシュ vSAN ストレージを使用して、クラスター ローカルで作成されます。  vSAN データストアを含む vSphere クラスターを作成するには、同じ SKU のノードが 3 つ以上必要です。  既定では、vSAN データストア上では重複除去と圧縮が有効になっています。  vSphere クラスターの各ノード上には、2 つのディスク グループが作成されます。 各ディスク グループには、1 つのキャッシュ ディスクと 3 つのキャパシティ ディスクが含まれています。
 
 既定の vSAN ストレージ ポリシーが vSphere クラスター上に作成され、vSAN データストアに適用されます。  必要なサービス レベルを保証するため、このポリシーでは、VM ストレージ オブジェクトをデータ ストア内でプロビジョニングおよび割り当てする方法が決定されます。  ストレージ ポリシーでは、**許容エラー (FTT)** と **エラー許容メソッド**が定義されます。  新規のストレージ ポリシーを作成して VM に適用することが可能です。 SLA を維持するため、vSAN データストア上では、25% のキャパシティを予備として確保しておく必要があります。  
 

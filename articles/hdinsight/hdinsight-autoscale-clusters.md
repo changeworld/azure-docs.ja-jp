@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6ec981164de0ff61b0e83d54255d046a1418ed96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 333eecb11f0bd20c747bc44419fea26765f886c5
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66000098"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509105"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Azure HDInsight クラスターを自動的にスケーリングする (プレビュー)
 
@@ -26,7 +26,7 @@ Azure HDInsight のクラスター自動スケーリング機能では、クラ�
 
 次の表では、自動スケーリング機能と互換性のあるクラスターの種類とバージョンについて説明します。
 
-| バージョン | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
+| Version | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
 | HDInsight 3.6 (ESP なし) | はい | はい | いいえ | いいえ | いいえ | いいえ | いいえ |
 | HDInsight 4.0 (ESP なし) | はい | はい | いいえ | いいえ | いいえ | いいえ | いいえ |
@@ -186,9 +186,25 @@ Resource Manager テンプレートを使用してクラスターを作成する
 
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>実行中のクラスターの自動スケーリングの有効化および無効化
 
+#### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 実行中のクラスターで自動スケーリングを有効にするには、 **[設定]** の **[クラスター サイズ]** を選択します。 **[自動スケーリングの有効化]** をクリックします。 使用する自動スケーリングの種類を選択し、負荷ベースまたはスケジュール ベースのスケーリングのオプションを入力します。 最後に、 **[保存]** をクリックします。
 
 ![ワーカー ノードのスケジュール ベースの自動スケーリング オプションを有効にする](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+
+#### <a name="using-the-rest-api"></a>REST API の使用
+REST API を使用して、実行中のクラスターでの自動スケーリングを有効または無効にするには、下のコード スニペットに示すように、自動スケーリング エンドポイントへの POST 要求を作成します。
+
+```
+https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
+```
+
+要求ペイロードでは適切なパラメーターを使用します。 自動スケーリングを有効にするには、下の json ペイロードを使用できます。 自動スケーリングを無効にするには、ペイロード `{autoscale: null}` を使用します。
+
+```json
+{ autoscale: { capacity: { minInstanceCount: 1, maxInstanceCount: 2 } } }
+```
+
+すべてのペイロード パラメーターの完全な説明については、前のセクションの[負荷ベースの自動スケーリングの有効化](#load-based-autoscaling)を参照してください。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

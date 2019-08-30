@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: iainfou
-ms.openlocfilehash: f4252fcd70ff5aa9c2056b72add7c79283ce7fcf
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: f234eaea0d4df3859ef9458ea334f1b7616add34
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473450"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612934"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>マネージド ドメインで Kerberos の制約付き委任 (KCD) を構成する
 多くのアプリケーションは、ユーザーのコンテキストでリソースにアクセスする必要があります。 Active Directory では、このユース ケースを可能にする、Kerberos の委任というメカニズムをサポートしています。 さらに、特定のリソースのみにユーザーのコンテキストでアクセスできるように、委任を制限できます。 Azure AD Domain Services のマネージド ドメインは、従来の Active Directory ドメインとは異なっており、より安全にロックダウンされています。
@@ -47,15 +47,15 @@ Windows Server 2012 以降では、サービス管理者はサービスに制約
 リソースベースの KCD は PowerShell を使用して構成します。 偽装する側のアカウントがコンピューター アカウントであるか、ユーザー アカウント/サービス アカウントであるかによって、`Set-ADComputer` コマンドレットまたは `Set-ADUser` コマンドレットを使います。
 
 ### <a name="configure-resource-based-kcd-for-a-computer-account-on-a-managed-domain"></a>マネージド ドメインでコンピューター アカウントにリソースベースの KCD を構成する
-コンピューター "contoso100-webapp.contoso100.com" で実行されている Web アプリがあるとします。 この Web アプリは、ドメイン ユーザーのコンテキストでリソース ("contoso100-api.contoso100.com" で実行されている Web API) にアクセスする必要があります。 このシナリオでリソースベースの KCD を設定する方法を次に示します。
+コンピューター "contoso-webapp.contoso.com" 上で実行されている Web アプリがあるとします。 この Web アプリは、ドメイン ユーザーのコンテキストでリソース ("contoso-api.contoso.com" で実行されている Web API) にアクセスする必要があります。 このシナリオでリソースベースの KCD を設定する方法を次に示します。
 
 1. [カスタム OU を作成します](create-ou.md)。 このカスタム OU を管理する権限を、マネージド ドメイン内のユーザーに委任できます。
 2. 両方の仮想マシン (Web アプリを実行しているものと、Web API を実行しているもの) をマネージド ドメインに参加させます。 カスタム OU 内にこれらのコンピューター アカウントを作成します。
 3. ここで、次の PowerShell コマンドを使用して、リソースベースの KCD を構成します。
 
 ```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity contoso100-webapp.contoso100.com
-Set-ADComputer contoso100-api.contoso100.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+$ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.contoso.com
+Set-ADComputer contoso-api.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
 > [!NOTE]
@@ -80,5 +80,5 @@ Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccoun
 >
 
 ## <a name="related-content"></a>関連コンテンツ
-* [Azure AD ドメイン サービス - 作業開始ガイド](create-instance.md)
+* [Azure AD ドメイン サービス - 作業開始ガイド](tutorial-create-instance.md)
 * [Kerberos の制約付き委任の概要](https://technet.microsoft.com/library/jj553400.aspx)

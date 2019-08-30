@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 961c0de6856a9791f76be1ec609f176f1fbbf8fb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e5dc449dc51faccdd8c0e69337cc5f8ac19fa296
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567337"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874394"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database マネージド インスタンスのリソース制限の概要
 
@@ -42,7 +42,7 @@ Azure SQL Database マネージド インスタンスは、2 つのハードウ�
 | インスタンスの予約済み最大ストレージ |  汎用: 8 TB<br/>Business Critical:1 TB | 汎用:8 TB<br/> Business Critical: コアの数に応じて 1 TB、2 TB、または 4 TB |
 
 > [!IMPORTANT]
-> 新しい Gen4 データベースは、AustraliaEast リージョンでサポートされなくなりました。
+> 新しい Gen4 データベースは、オーストラリア東部とブラジル南部リージョンでサポートされなくなりました。
 
 ### <a name="service-tier-characteristics"></a>サービス レベルの特性
 
@@ -56,11 +56,13 @@ Azure SQL Database マネージド インスタンスは、2 つのハードウ�
 | 最大データベース サイズ | インスタンスごとの最大ストレージ サイズによって決まります | インスタンスごとの最大ストレージ サイズによって決まります |
 | インスタンスごとの最大データベース数 | 100 | 100 |
 | インスタンスごとの最大データベース ファイル数 | 最大 280 | データベースあたり 32,767 ファイル |
+| 最大ファイル サイズ | 8 TB | 4 TB |
 | データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7,500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K (1,375/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
 | ログ書き込みスループット制限 | 仮想コアあたり 3 MB/秒<br/>インスタンスあたり最大 22 MB/秒 | 仮想コアあたり 4 MB/秒<br/>インスタンスあたり最大 48 MB/秒|
 | データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[IO パフォーマンスを向上させるには、ファイル サイズを増やします](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 該当なし |
 | ストレージ IO 待機時間 (概算) | 5 ～ 10 ms | 1 ～ 2 ms |
 | 最大 tempDB サイズ | 192 ～ 1,920 GB (仮想コアあたり 24 GB)<br/>tempdb 領域を増やすには、仮想コアを追加します。 | インスタンスの最大ストレージ サイズによって制限されます。 現在、termdb ログ ファイルのサイズは、仮想コアあたり 24 GB に制限されています。 |
+| インメモリ OLTP | サポートされていません | 使用可能 |
 | 最大セッション数 | 30000 | 30000 |
 
 > [!NOTE]

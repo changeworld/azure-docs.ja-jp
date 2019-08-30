@@ -171,6 +171,8 @@
               href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md?toc=/azure/hdinsight/storm/toc.json&bc=/azure/hdinsight/storm/breadcrumb/toc.json
 - name: リファレンス
   items:
+    - name: サポートされているノード構成
+      href: ../hdinsight-supported-node-configuration.md
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Azure PowerShell

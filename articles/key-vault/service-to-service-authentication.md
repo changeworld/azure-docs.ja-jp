@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 07/06/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: f6a95f56b7b617b42c1cec9f64aae73b88b813da
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 30c99ae4150e0bd4645488b5bf75b8bbac0ee66f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934334"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562451"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -132,7 +132,7 @@ Azure にサインインした後、`AzureServiceTokenProvider` はサービス 
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>マネージド ID またはユーザー割り当て ID を使用してアプリケーションを実行する 
 
-Azure App Service 上またはマネージド ID が有効な Azure VM 上でコードを実行すると、ライブラリは自動的にマネージド ID を使用します。 
+Azure App Service 上またはマネージド ID が有効な Azure VM 上でコードを実行すると、ライブラリは自動的にマネージド ID を使用します。 コードの変更は必要ありませんが、マネージド ID にはキー コンテナーに対する *get* アクセス許可が必要です。 キー コンテナーの*アクセス ポリシー*を通して、マネージド ID に *get* アクセス許可を付与できます。
 
 また、ユーザー割り当て ID を使用して認証することもできます。 ユーザー割り当て ID の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)」を参照してください。 ユーザー割り当て ID を使用して認証するには、接続文字列内でユーザー割り当て ID のクライアント ID を指定する必要があります。 接続文字列については、後述する「[接続文字列のサポート](#connection-string-support)」セクションを参照してください。
 

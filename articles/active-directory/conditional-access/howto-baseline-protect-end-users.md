@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afcd9c9d3191caeabe182f499b5fd80cd8e1d8dd
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608140"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532927"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>ベースライン ポリシー:エンド ユーザーの保護 (プレビュー)
 
@@ -64,11 +64,11 @@ Azure AD Premium ライセンスが割り当てられているユーザーは、
 
 このポリシーを有効にしてご自分のユーザーを保護するには:
 
-1.  **Azure portal**  にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
+1. グローバル管理者、セキュリティ管理者、または条件付きアクセス管理者として **Azure portal** にサインインします。
 1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
 1. ポリシーの一覧で、 **[ベースライン ポリシー: エンド ユーザーの保護 (プレビュー)]** を選択します。
 1. **[ポリシーを有効にする]** を **[ポリシーをすぐに使用する]** に設定します。
-1.  **[保存]** をクリックします。
+1. **[Save]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

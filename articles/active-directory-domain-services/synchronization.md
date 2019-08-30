@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 475817985885cdd6023e72f20ecf35a3ca582924
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 1c52ac967d241f31d96988fa5ead8b4e049f6f4c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472436"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617099"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでの同期
 次の図は、Azure AD Domain Services のマネージド ドメインにおける同期のしくみを示しています。
@@ -60,7 +60,7 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>特定の属性がマネージド ドメインに同期される方法
 次の表では、一般的な属性の一部を示し、これらがマネージド ドメインに同期される方法を説明します。
 
-| マネージド ドメイン内の属性 | source | メモ |
+| マネージド ドメイン内の属性 | Source | メモ |
 |:--- |:--- |:--- |
 | UPN |Azure AD テナントのユーザーの UPN 属性 |Azure AD テナントの UPN 属性は、そのままマネージド ドメインに同期されます。 そのため、UPN を使用することが、マネージド ドメインにサインインする最も確実な方法になります。 |
 | SAMAccountName |Azure AD テナントのユーザーに設定、または自動生成された mailNickname 属性 |SAMAccountName 属性は、Azure AD テナントの mailNickname 属性を同期元とします。 複数のユーザー アカウントで mailNickname 属性が同じ場合は、SAMAccountName が自動生成されます。 ユーザーの mailNickname または UPN プレフィックスが 20 文字を超える場合は、SAMAccountName 属性の 20 文字以下の制限を満たすために SAMAccountName が自動生成されます。 |
@@ -69,7 +69,7 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 | ユーザーとグループの SID 履歴 |オンプレミスのプライマリ ユーザーおよびグループの SID |マネージド ドメインのユーザーおよびグループの SidHistory 属性は、オンプレミス ドメインの対応するプライマリ ユーザーまたはグループの SID と一致するように設定されています。 この機能により、リソースを再度 ACL 処理する必要がなくなるため、オンプレミスのアプリケーションをリフト アンド シフト方式でマネージド ドメインに簡単に移行することができます。 |
 
 > [!NOTE]
-> **UPN 形式を使用したマネージド ドメインへのサインイン:** マネージド ドメインの一部ユーザー アカウントの SAMAccountName 属性が自動生成される場合があります。 複数のユーザーで mailNickname 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーのSAMAccountName が自動生成されることがあります。 そのため SAMAccountName 形式 (例: "CONTOSO100\joeuser") は、ドメインにサインインするうえで常に確実な方法というわけではありません。 ユーザーの自動生成された SAMAccountName が、UPN プレフィックスとは異なる場合があります。 マネージド ドメインに確実にサインインするには、UPN 形式 (例: 「joeuser@contoso100.com」) を使用します。
+> **UPN 形式を使用したマネージド ドメインへのサインイン:** マネージド ドメインの一部ユーザー アカウントの SAMAccountName 属性が自動生成される場合があります。 複数のユーザーで mailNickname 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーのSAMAccountName が自動生成されることがあります。 そのため、SAMAccountName 形式 ('CONTOSO\dee' など) が、必ずしもドメインにサインインするための信頼性の高い方法であるとは限りません。 ユーザーの自動生成された SAMAccountName が、UPN プレフィックスとは異なる場合があります。 マネージド ドメインに確実にサインインするには、UPN 形式 (例: 「dee@contoso.com」) を使用します。
 
 ### <a name="attribute-mapping-for-user-accounts"></a>ユーザー アカウントの属性のマッピング
 次の表は、Azure AD テナントのユーザー オブジェクトの特定の属性が、マネージド ドメインの対応する属性にどのように同期されるかを示しています。
@@ -116,7 +116,7 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 ## <a name="password-hash-synchronization-and-security-considerations"></a>パスワード ハッシュの同期とセキュリティに関する考慮事項
 Azure AD Domain Services を有効にすると、Azure AD ディレクトリによってパスワード ハッシュが生成され、NTLM および Kerberos 互換の形式で保存されます。 
 
-既存のクラウド ユーザー アカウントの場合、Azure AD ではクリア テキストのパスワードは保存されないので、これらのハッシュを自動的に生成することはできません。 そのため、Microsoft では、パスワード ハッシュを生成して Azure AD に保存するために、[クラウド ユーザーにパスワードをリセットまたは変更](active-directory-ds-getting-started-password-sync.md)するよう求めています。 Azure AD Domain Services を有効にした後に Azure AD で作成されたクラウド ユーザー アカウントの場合、パスワード ハッシュが生成され、NTLM および Kerberos 互換の形式で保存されます。 
+既存のクラウド ユーザー アカウントの場合、Azure AD ではクリア テキストのパスワードは保存されないので、これらのハッシュを自動的に生成することはできません。 そのため、Microsoft では、パスワード ハッシュを生成して Azure AD に保存するために、[クラウド ユーザーにパスワードをリセットまたは変更](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)するよう求めています。 Azure AD Domain Services を有効にした後に Azure AD で作成されたクラウド ユーザー アカウントの場合、パスワード ハッシュが生成され、NTLM および Kerberos 互換の形式で保存されます。 
 
 Azure AD Connect 同期を使用してオンプレミスの AD から同期されたユーザー アカウントの場合、[NTLM および Kerberos 互換の形式でパスワード ハッシュを同期するように Azure AD Connect を構成](active-directory-ds-getting-started-password-sync-synced-tenant.md)する必要があります。
 
@@ -126,7 +126,6 @@ NTLM および Kerberos 互換のパスワード ハッシュは、常に暗号�
 この記事の前のセクションで説明したとおり、マネージド ドメインから Azure AD テナントへの同期はありません。 ただし、マネージド ドメイン内に[カスタムの組織単位 (OU) を作成](create-ou.md)することができます。 これらのカスタム OU 内には、ほかの OU、ユーザー、グループ、またはサービス アカウントを作成することもできます。 カスタム OU 内に作成されたオブジェクトは、いずれも Azure AD テナントに同期されません。 これらのオブジェクトはマネージド ドメイン内でのみ使用することができます。 そのため、Azure AD PowerShell コマンドレット、Azure AD Graph API、または Azure AD の管理 UI を使用しても、これらのオブジェクトは表示されません。
 
 ## <a name="related-content"></a>関連コンテンツ
-* [機能 - Azure AD Domain Services](active-directory-ds-features.md)
 * [デプロイ シナリオ - Azure AD Domain Services](scenarios.md)
 * [Azure AD Domain Services のネットワークに関する考慮事項](network-considerations.md)
-* [Azure AD ドメイン サービスの使用開始](create-instance.md)
+* [Azure AD ドメイン サービスの使用開始](tutorial-create-instance.md)

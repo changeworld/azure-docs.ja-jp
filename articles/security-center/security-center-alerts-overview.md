@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 91dd397095718b3b43e41767af422801fd50b7f1
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 25fb94afdfe68510c66cff130a3abc8b74d7311d
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295695"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647320"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラート
 
@@ -50,7 +50,7 @@ ASC は、Azure にデプロイされているか、他のオンプレミス環�
 
 ## <a name="what-are-alert-incidents"></a>アラートのインシデントとは
 
-セキュリティ インシデントは、各アラートの個別の一覧ではなく、関連するアラートのコレクションです。 Security Center は、フュージョンを使用して、さまざまなアラートと忠実度が低いシグナルをセキュリティ インシデントに関連付けます。
+セキュリティ インシデントは、各アラートの個別の一覧ではなく、関連するアラートのコレクションです。 Security Center では、[クラウドのスマート アラートの関連付け](security-center-alerts-cloud-smart.md)を使用して、さまざまなアラートと忠実度が低いシグナルをセキュリティ インシデントに関連付けます。
 
 Security Center はインシデントを使用して、攻撃活動とすべての関連するアラートを単一のビューに表示します。 このビューにより、攻撃者がどのようなアクションを実行し、どのリソースが影響を受けたかを迅速に把握できます。 詳細については、[クラウドのスマート アラートの関連付け](security-center-alerts-cloud-smart.md)に関する記事を参照してください。
 

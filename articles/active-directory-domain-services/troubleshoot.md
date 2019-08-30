@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: acb001417b85b8ff45b2617e148e8b1961f3cbfa
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c5ec80e81381423bdfdee07b1c020343d14ed559
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772990"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617070"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
@@ -32,7 +32,7 @@ ms.locfileid: "68772990"
 
 | **エラー メッセージ** | **解決策** |
 | --- |:--- |
-| "*名前 contoso100.com はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。* " |[仮想ネットワーク内のドメイン名の競合](troubleshoot.md#domain-name-conflict) |
+| *名前 contoso.com はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。* " |[仮想ネットワーク内のドメイン名の競合](troubleshoot.md#domain-name-conflict) |
 | *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The service does not have adequate permissions to the application called 'Azure AD Domain Services Sync'. (アプリケーション "Azure AD Domain Services Sync" への適切なアクセス許可がサービスにありません。)Delete the application called 'Azure AD Domain Services Sync' and then try to enable Domain Services for your Azure AD tenant. (アプリケーション "Azure AD Domain Services Sync" を削除してから、Azure AD テナントの Domain Services を有効にしてください。)* ) |[Azure AD Domain Services Sync アプリケーションへの適切な権限が Domain Services サービスにない](troubleshoot.md#inadequate-permissions) |
 | *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The Domain Services application in your Azure AD tenant does not have the required permissions to enable Domain Services. (Domain Services を有効にするために必要なアクセス許可が Azure AD テナントの Domain Services アプリケーションにありません。)Delete the application with the application identifier d87dcbc6-a371-462e-88e3-28ad15ec4e64 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が d87dcbc6-a371-462e-88e3-28ad15ec4e64 のアプリケーションを削除してから、Azure AD テナントの Domain Services を有効にしてください。)* |[テナント内で Domain Services アプリケーションが適切に構成されていない](troubleshoot.md#invalid-configuration) |
 | *Domain Services could not be enabled in this Azure AD tenant. (この Azure AD テナントでは Domain Services を有効にできませんでした。)The Microsoft Azure AD application is disabled in your Azure AD tenant. (Azure AD テナントで Microsoft Azure AD アプリケーションが無効になっています。)Enable the application with the application identifier 00000002-0000-0000-c000-000000000000 and then try to enable Domain Services for your Azure AD tenant. (アプリケーション識別子が 00000002-0000-0000-c000-000000000000 のアプリケーションを有効にしてから、Azure AD テナントの Domain Services を有効にしてください。)* |[Azure AD テナントで Microsoft Graph アプリケーションが無効になっている](troubleshoot.md#microsoft-graph-disabled) |
@@ -40,7 +40,7 @@ ms.locfileid: "68772990"
 ### <a name="domain-name-conflict"></a>ドメイン名の競合
 **エラー メッセージ:**
 
-"*名前 contoso100.com はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。* "
+*名前 contoso.com はこのネットワーク上で既に使用されています。使用されていない名前を指定してください。* "
 
 **解決策:**
 
@@ -135,12 +135,12 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
 >
 >
 
-* ファースト ステップ ガイドで説明されている手順に従って [パスワード同期が有効になっている](active-directory-ds-getting-started-password-sync.md) ことを確認します。
+* ファースト ステップ ガイドで説明されている手順に従って [パスワード同期が有効になっている](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) ことを確認します。
 * **外部アカウント:** 影響を受けているユーザーのアカウントが Azure AD テナントの外部アカウントでないことを確認します。 外部アカウントには、Microsoft アカウント ('joe@live.com' など) や外部の Azure AD ディレクトリのユーザー アカウントが含まれます。 Azure AD ドメイン サービスにはこのようなユーザー アカウントの資格情報がないため、これらのユーザーはマネージド ドメインにサインインできません。
 * **同期されるアカウント:** 影響を受けているユーザー アカウントがオンプレミスのディレクトリから同期されている場合は、次について確認します。
 
   * [Azure AD Connect の最新の推奨リリース](https://www.microsoft.com/download/details.aspx?id=47594)をデプロイまたは更新している。
-  * [完全同期を実行](active-directory-ds-getting-started-password-sync.md)するように Azure AD Connect を構成している。
+  * [完全同期を実行](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)するように Azure AD Connect を構成している。
   * ディレクトリのサイズによっては、ユーザー アカウントと資格情報のハッシュを Azure AD ドメイン サービスで使用できるまで時間がかかる可能性があります。 十分に時間を空けてから認証を再試行してください。
   * 上記の手順を確認しても問題が解決しない場合は、Microsoft Azure AD 同期サービスを再起動してみてください。 同期コンピューターから、コマンド プロンプトを起動し、次のコマンドを実行します。
 

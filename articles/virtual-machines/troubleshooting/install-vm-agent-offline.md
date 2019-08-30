@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c282a739ad55d6f2c5fcbe3b3a1a69541a7350cd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 78be50d234605775bcef4ece2e6ff7c01ec0437f
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705781"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874230"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>オフライン モードでの Azure 仮想マシン エージェントのインストール 
 
@@ -36,27 +36,17 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 オフライン モードで VM エージェントをインストールするには、次の手順に従います。
 
-> [!NOTE]
-> オフライン モードで VM エージェントをインストールするプロセスを自動化できます。
-> これを行うには、[Azure VM の復旧スクリプト](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md)を使用します。 Azure VM 復旧スクリプトを使用することを選択した場合は、次のプロセスを使用できます。
-> 1. スクリプトを使用して影響を受ける VM の OS ディスクを復旧 VM にアタッチすることで、手順 1 をスキップします。
-> 2. 手順 2 ～ 10 に従って軽減策を適用します。
-> 3. スクリプトを使用して VM を再構築することで、手順 11 をスキップします。
-> 4. 手順 12 に従います。
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>手順 1: VM の OS ディスクをデータ ディスクとして別の VM に接続する
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>手順 1:VM の OS ディスクをデータ ディスクとして別の VM に接続する
+1. 影響のあった VM の OS ディスクのスナップショットを取得し、スナップショットからディスクを作成し、そのディスクをトラブルシューティング用 VM にアタッチします。 詳細については、「[Azure portal で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う](troubleshoot-recovery-disks-portal-windows.md)」を参照してください。 クラシック VM の場合は、VM を削除して OS ディスクを保持し、OS ディスクをトラブルシューティング用 VM に接続します。
 
-1.  VM を削除します。 VM を削除するときは、必ず**ディスクを保持する**オプションを選択します。
-
-2.  OS ディスクをデータ ディスクとして別の VM ("_トラブルシューティング ツール_" VM と呼ばれます) に接続します。 詳細については、[Azure Portal での Windows VM へのデータ ディスクの接続](../windows/attach-managed-disk-portal.md)に関するページをご覧ください。
-
-3.  トラブルシューティング ツール VM に接続します。 **[コンピューターの管理]**  >  **[ディスクの管理]** の順に開きます。 OS ディスクがオンラインであることと、ドライブ文字がディスク パーティションに割り当てられていることを確認します。
+2.  トラブルシューティング ツール VM に接続します。 **[コンピューターの管理]**  >  **[ディスクの管理]** の順に開きます。 OS ディスクがオンラインであることと、ドライブ文字がディスク パーティションに割り当てられていることを確認します。
 
 ### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>手順 2: Azure VM エージェントをインストールするように OS ディスクを変更する
 
 1.  トラブルシューティング ツール VM へのリモート デスクトップ接続を作成します。
 
-2.  接続した OS ディスクで、\windows\system32\config フォルダーを参照します。 ロールバックが必要な場合に備えて、このフォルダーのすべてのファイルをバックアップとしてコピーします。
+2.  トラブルシューティング ツール VM で、接続した OS ディスクを参照し、\windows\system32\config フォルダーを開きます。 ロールバックが必要な場合に備えて、このフォルダーのすべてのファイルをバックアップとしてコピーします。
 
 3.  **レジストリ エディター** (regedit.exe) を起動します。
 
@@ -109,7 +99,7 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 10.  **[BROKENSOFTWARE]** を選択します。 メニューから、 **[ファイル]**  >  **[ハイブのアンロード]** を選択します。
 
-11.  OS ディスクの接続を解除してから、OS ディスクを使用して VM を再作成します。
+11.  OS ディスクをデタッチした後、[影響のあった VM 用の OS ディスクを変更します](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。 クラシック VM の場合は、修復された OS ディスクを使用して新しい VM を作成します。
 
 12.  VM にアクセスします。 RdAgent が実行されていて、ログが生成されていることがわかります。
 

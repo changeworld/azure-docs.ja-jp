@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/16/2019
 ms.author: yoafr
-ms.openlocfilehash: 8e7456eff3062ef6667e7b0022ea9740c397a493
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5ffa77a05e6019ee6b5e29c5af5ed0130e027cae
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679246"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876513"
 ---
 > [!NOTE]
 > このドキュメントでは、2019 年 7 月 31 日に Azure Security Center から廃止された機能を一覧に示して詳しく説明します。
@@ -160,7 +160,7 @@ Security Center を使用すると、[Azure で統合されたセキュリティ
 - [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
 - [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-廃止後は、UI と API のどちらからも、前出の一覧に記載されているソリューション タイプの追加または変更はできなくなります。
+廃止後は、UI と API のどちらからも、前出の一覧に記載されているソリューション タイプの追加または変更はできなくなります。 Azure Security Center で、前述のパートナー ソリューションの新しいインスタンスは検出されなくなります。
 
 既存の接続済みソリューションがある場合は、Azure Sentinel に移行することをお勧めします。
 

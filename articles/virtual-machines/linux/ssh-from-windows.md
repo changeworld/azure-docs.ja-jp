@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: bd5eeb3bc3864dc0203c558228dce2f54dbaa79d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 157cc706da34281ec7bb36a9b9e16a4192b3bd96
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708814"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543865"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
@@ -48,7 +48,7 @@ Windows コンピューターでは、それに相当する SSH コマンドが�
 * [Azure Account 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)をインストールすることにより、Visual Studio Code 内からターミナルとして Cloud Shell にアクセスします。
 
 ## <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
-以下のセクションでは、Windows で SSH キー ペアを作成する 2 つのオプションについて説明します。 シェル コマンド (`ssh-keygen`) または GUI ツール (PuTTYgen) を使用できます。
+以下のセクションでは、Windows で SSH キー ペアを作成する 2 つのオプションについて説明します。 シェル コマンド (`ssh-keygen`) または GUI ツール (PuTTYgen) を使用できます。 また、Powershell を使用してキーを作成している場合は、公開キーを ssh.com(SECSH) 形式でアップロードすることにも注意してください。 CLI を使用している場合は、アップロードの前にキーを OpenSSH 形式に変換します。 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>ssh-keygen で SSH キーを作成する
 

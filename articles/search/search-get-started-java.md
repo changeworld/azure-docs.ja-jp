@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018, seo-java-july2019
-ms.openlocfilehash: 7172cd01ca881ec3027854444107b0744b65feb3
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 7deb9d2cf16aa82de7ce4ea163652c2936819063
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489783"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533244"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-java"></a>クイック スタート:Java で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ ms.locfileid: "68489783"
 Azure Search へのすべての REST API 呼び出しで、サービスの URL と `api-key` を指定する必要があります。 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ジャンプ バーで、 **[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
+2. ジャンプ バーで、 **[Search サービス]** を選択して、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスを一覧表示します。
 3. 使用するサービスを選択します。
 4. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
    
@@ -69,20 +69,20 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 
 ## <a name="download-the-sample-files"></a>サンプル ファイルのダウンロード
 1. GitHub の [search-java-indexer-demo](https://github.com/Azure-Samples/search-java-indexer-demo) に移動します。
-2. **[Download ZIP]** をクリックして .zip ファイルをディスクに保存した後、すべてのファイルをコンテナーに抽出します。 後でプロジェクトを探しやすいように、Java ワークスペースにファイルを抽出してください。
+2. **[Download ZIP] (ZIP のダウンロード)** を選択して .zip ファイルをディスクに保存した後、そこに含まれているすべてのファイルを抽出します。 後でプロジェクトを探しやすいように、Java ワークスペースにファイルを抽出してください。
 3. サンプル ファイルは読み取り専用です。 フォルダーのプロパティを右クリックし、読み取り専用の属性をオフにします。
 
 以降のすべてのファイル変更および実行ステートメントは、このフォルダー内のファイルに対して行われます。  
 
 ## <a name="import-project"></a>プロジェクトのインポート
-1. Eclipse で、 **[File (ファイル)]**  >  **[Import (インポート)]**  >  **[General (全般)]**  >  **[Existing Projects into Workspace (既存のプロジェクトからワークスペースへ)]** の順に選択します。
+1. Eclipse で、 **[ファイル]**  >  **[インポート]**  >  **[全般]**  >  **[Existing Projects into Workspace] (既存のプロジェクトからワークスペースへ)** の順に選択します。
    
     ![既存のプロジェクトをインポートする方法を示すスクリーンショット][4]
 2. **[Select root directory]** で、サンプル ファイルを含むフォルダーを参照します。 .project フォルダーが含まれるフォルダーを選択します。 プロジェクトが選択項目として **[Projects]** の一覧に表示されます。
    
     ![[Import Projects]\(プロジェクトのインポート\) ウィンドウのプロジェクト一覧を示すスクリーンショット][12]
-3. **[完了]** をクリックします。
-4. **Project Explorer** を使用して、ファイルを表示および編集します。 まだ開いていない場合は、 **[Window (ウィンドウ)]**  >  **[Show View (ビューを表示)]**  >  **[Project Explorer]** の順にクリックするか、またはショートカットを使用して開きます。
+3. **[完了]** を選択します。
+4. **Project Explorer** を使用して、ファイルを表示および編集します。 まだ開いていない場合は、 **[ウィンドウ]**  >  **[Show View] (ビューの表示)**  >  **[Project Explorer] (プロジェクト エクスプローラー)** の順に選択するか、またはショートカットを使用して開きます。
 
 ## <a name="configure-the-service-url-and-api-key"></a>サービスの URL と `api-key` の構成
 1. **Project Explorer** で、**config.properties** をダブルクリックして、サーバー名と `api-key` を含む構成設定を編集します。
@@ -96,19 +96,19 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 2. **[Dynamic Web Module (動的 Web モジュール)]** 、 **[Java]** 、 **[JavaScript]** を選択します。
    
     ![プロジェクトのプロジェクト ファセットを選択する方法を示すスクリーンショット][6]
-3. **[Apply]** をクリックします。
+3. **[適用]** を選択します。
 4. **[Window (ウィンドウ)]**  >  **[Preferences (設定)]**  >  **[Server (サーバー)]**  >  **[Runtime Environments (ランタイム環境)]**  >  **[Add... (追加...)]** の順に選択します。
 5. Apache を展開し、前にインストールした Apache Tomcat サーバーのバージョンを選択します。 この例では、バージョン 8 をインストールしました。
    
     ![[Runtime Environment] ウィンドウのどこで Apache Tomcat のバージョンを選択できるかを示すスクリーンショット][7]
 6. 次のページでは、Tomcat のインストール ディレクトリを指定します。 Windows コンピューターでは、通常、C:\Program Files\Apache Software Foundation\Tomcat *version* です。
-7. **[完了]** をクリックします。
+7. **[完了]** を選択します。
 8. **[Window (ウィンドウ)]**  >  **[Preferences (設定)]**  >  **[Java]**  >  **[Installed JREs (インストール済み JRE)]**  >  **[Add (追加)]** の順に選択します。
 9. **[Add JRE (JRE の追加)]** で、 **[Standard VM (標準 VM)]** を選択します。
-10. **[次へ]** をクリックします。
-11. [JRE Definition] の [JRE home] で、 **[Directory]** をクリックします。
+10. **[次へ]** を選択します。
+11. [JRE Definition] (JRE の定義) の [JRE home] (JRE ホーム) で、 **[ディレクトリ]** を選択します。
 12. **[Program Files (プログラム ファイル)]**  >  **[Java]** の順に移動し、先にインストールした JDK を選択します。 JRE として JDK を選択することが重要です。
-13. [Installed JREs] で、 **[JDK]** を選択します。 設定は次のスクリーン ショットのようになります。
+13. [Installed JREs] (インストールされている JRE) で、 **[JDK]** を選択します。 設定は次のスクリーン ショットのようになります。
     
     ![インストールされている JRE として JDK を選択する方法を示すスクリーンショット][9]
 14. 必要に応じて、 **[Window (ウィンドウ)]**  >  **[Web Browser (Web ブラウザー)]**  >  **[Internet Explorer]** の順に選択し、外部のブラウザー ウィンドウでアプリケーションを開きます。 外部のブラウザーを使用すると、Web アプリケーションのエクスペリエンスがよくなります。
@@ -118,10 +118,10 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 構成タスクが完了しました。 次に、プロジェクトをビルドして実行します。
 
 ## <a name="build-the-project"></a>プロジェクトのビルド
-1. Project Explorer で、プロジェクト名を右クリックし、 **[Run As (実行)]**  >  **[Maven build... (Maven ビルド)]** の順に選択してプロジェクトを構成します。
+1. プロジェクト エクスプローラーで、プロジェクト名を右クリックし、 **[別のユーザーとして実行]**  >  **[Maven ビルド]** の順に選択してプロジェクトを構成します。
    
-    ![[Project Explorer] ウィンドウで Maven ビルドを選択する方法を示すスクリーンショット][10]
-2. [Edit Configuration] の [Goals] に「clean install」と入力し、 **[Run]** をクリックします。
+    ![[プロジェクト エクスプローラー] ウィンドウで [Maven ビルド] を選択する方法を示すスクリーンショット][10]
+2. [Edit Configuration] (構成の編集) で、[目標] に「クリーン インストール」と入力してから、 **[実行]** を選択します。
 
 ステータス メッセージがコンソール ウィンドウに出力されます。 [BUILD SUCCESS] と表示されれば、プロジェクトはエラーなしでビルドされています。
 
@@ -131,19 +131,19 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 まだ Eclipse でサーバーのランタイム環境を指定していない場合は、最初に行う必要があります。
 
 1. Project Explorer で **[WebContent]** を展開します。
-2. **Search.jsp を右クリックし、**  >  **[Run As (実行)]**  >  **[Run on Server (サーバーで実行)]** の順に選択します。 Apache Tomcat サーバーを選択し、 **[Run]** をクリックします。
+2. **Search.jsp を右クリックし、**  >  **[Run As (実行)]**  >  **[Run on Server (サーバーで実行)]** の順に選択します。 Apache Tomcat サーバーを選択してから、 **[実行]** を選択します。
 
 > [!TIP]
-> 既定以外のワークスペースを使用してプロジェクトを保存した場合は、サーバー起動エラーを防ぐために、プロジェクトの場所を指し示すように **[Run Configuration]** を変更する必要があります。 Project Explorer で、**Search.jsp を右クリック** >  **[Run As (実行)]**  >  **[Run Configurations (構成を実行)]** の順に選択します。 Apache Tomcat サーバーを選択します。 **[Arguments]** をクリックします。 **[Workspace (ワークスペース)]** または **[File System (ファイル システム)]** をクリックして、プロジェクトを含むフォルダーを設定します。
+> 既定以外のワークスペースを使用してプロジェクトを保存した場合は、サーバー起動エラーを防ぐために、プロジェクトの場所を指し示すように **[Run Configuration]** を変更する必要があります。 Project Explorer で、**Search.jsp を右クリック** >  **[Run As (実行)]**  >  **[Run Configurations (構成を実行)]** の順に選択します。 Apache Tomcat サーバーを選択します。 **[引数]** を選択します。 **[ワークスペース]** または **[ファイル システム]** を選択して、プロジェクトを含むフォルダーを設定します。
 > 
 > 
 
 アプリケーションを実行すると、ブラウザー ウィンドウが開き、語句を入力するための検索ボックスが表示されます。
 
-サービスがインデックスを作成して読み込めるように、1 分程度待ってから **[Search]** をクリックします。 HTTP 404 エラーが発生する場合は、もう少し長く待ってから再び試すだけで十分です。
+サービスにインデックスを作成して読み込む時間を与えるために、 **[検索]** を選択する前に約 1 分待ちます。 HTTP 404 エラーが発生する場合は、もう少し長く待ってから再び試すだけで十分です。
 
 ## <a name="search-on-usgs-data"></a>USGS データの検索
-USGS データ セットには、ロードアイランド州に関連するレコードが含まれています。 検索ボックスが空の状態で **[Search]** をクリックすると、既定で、上位 50 のエントリが取得されます。
+USGS データ セットには、ロードアイランド州に関連するレコードが含まれています。 空の検索ボックスで **[検索]** を選択した場合、既定では、上位の 50 エントリが表示されます。
 
 検索語句を入力すると、検索エンジンに処理するものが提供されます。 地域の名前を入力してみてください。 "Roger Williams" はロードアイランド州の最初の州知事でした。 多数の公園、建造物、および学校に彼の名前が付けられています。
 

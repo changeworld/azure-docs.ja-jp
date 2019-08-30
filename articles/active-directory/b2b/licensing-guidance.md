@@ -5,22 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 08/15/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df98966b69250d31f2a741411aea6e5554f9ed6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 081061eae07fa3765d032ad155e59ebf5aa3cbc9
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112865"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69512548"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス
 
-Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション機能を使用すると、有料の Azure AD サービスを使用できるように、外部ユーザー (つまり "ゲスト ユーザー") を招待できます。 ユーザーに割り当てる有料の Azure AD ライセンスごとに、外部ユーザー無料利用分に従って最大 5 人までのゲスト ユーザーを招待できます。
+Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション機能を使用すると、有料の Azure AD サービスを使用できるように、外部ユーザー (つまり "ゲスト ユーザー") を招待できます。 一部の機能は無料ですが、有料の Azure AD 機能の場合は、テナント内の従業員または非ゲスト ユーザー用に所有している Azure AD エディション ライセンスごとに最大 5 人のゲスト ユーザーを招待できます。
+
+> [!NOTE]
+> Azure AD の価格と B2B コラボレーション機能の詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
 
 B2B ユーザーのライセンスは、1:5 の割合に基づいて自動的に計算され、報告されます。 現在のところ、B2B ゲスト ユーザー ライセンスをゲスト ユーザーに直接割り当てることはできません。
 

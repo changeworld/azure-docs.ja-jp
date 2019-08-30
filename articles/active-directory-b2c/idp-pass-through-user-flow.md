@@ -1,35 +1,32 @@
 ---
-title: ユーザー フローを通じてアクセス トークンをご自身のアプリケーションに渡す - Azure Active Directory B2C | Microsoft Docs
-description: Azure Active Directory B2C のユーザー フローを通じて、OAuth2.0 ID プロバイダーのアクセス トークンを要求として渡す方法について学習します。
+title: アクセス トークンをユーザー フローを通してアプリケーションに渡す - Azure Active Directory B2C
+description: OAuth 2.0 ID プロバイダーのアクセス トークンを Azure Active Directory B2C のユーザー フローで要求として渡す方法について説明します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8e9019699d8a81d31d2b20f674fd76fcb70021d6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 66b3dc4aba5d1b29cc0c6190877fbd6b26a11f0c
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846818"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510097"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローを通じてアクセス トークンをご自身のアプリケーションに渡す
 
-> [!NOTE]
-> 現在、この機能はパブリック プレビュー段階にあります。
-
-Azure Active Directory (Azure AD) B2C の[ユーザー フロー](active-directory-b2c-reference-policies.md)は、ご自身のアプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 ジャーニーが開始されると、Azure AD B2C は ID プロバイダーから[アクセス トークン](active-directory-b2c-reference-tokens.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 ユーザー フローで要求を有効にして、Azure AD B2C に登録するアプリケーションにそのトークンを渡します。
+Azure Active Directory B2C (Azure AD B2C) の[ユーザー フロー](active-directory-b2c-reference-policies.md)は、アプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 ジャーニーが開始されると、Azure AD B2C は ID プロバイダーから[アクセス トークン](active-directory-b2c-reference-tokens.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 ユーザー フローで要求を有効にして、Azure AD B2C に登録するアプリケーションにそのトークンを渡します。
 
 Azure AD B2C は現在、[Facebook](active-directory-b2c-setup-fb-app.md) や [Google](active-directory-b2c-setup-goog-app.md) などの [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) ID プロバイダーのアクセス トークンのみを渡すことができます。 その他すべての ID プロバイダーについては、要求が空で返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- 対象のアプリケーションが [v2 のユーザー フロー](user-flow-versions.md) を使用している。
-- 対象のユーザー フローが OAuth 2.0 ID プロバイダーを使用して構成されている。
+* 対象のアプリケーションが [v2 のユーザー フロー](user-flow-versions.md) を使用している。
+* 対象のユーザー フローが OAuth 2.0 ID プロバイダーを使用して構成されている。
 
 ## <a name="enable-the-claim"></a>要求を有効にする
 

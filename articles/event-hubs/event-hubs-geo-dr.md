@@ -14,18 +14,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 460ea15b0827ea307d64d1bd92d9bd14d5919d73
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 22cf2be8eaed47a9440c6798acfb4383bd84c916
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704373"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611704"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
 Azure リージョン全体または ([可用性ゾーン](../availability-zones/az-overview.md)が使用されていない) データ センター全体にダウンタイムが発生した場合に、別の地域またはデータ センターでデータ処理が続行されることが重要です。 そのため、*geo ディザスター リカバリー*と *geo レプリケーション*は、どの企業にとっても重要な機能です。 Azure Event Hubs では、geo ディザスター リカバリーと geo レプリケーションの両方が名前空間レベルでサポートされています。 
 
-geo ディザスター リカバリー機能は、Event Hubs Standard と専用 SKU の両方でグローバルに使用できます。 名前空間は同じレベルの SKU にまたがってのみ geo ペアリングできることに注意してください。 たとえば、専用 SKU でのみ提供されているクラスター内に名前空間がある場合、その名前空間はもう 1 つのクラスター内の名前空間とのみペアリングできます。 
+> [!NOTE]
+> geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](https://azure.microsoft.com/pricing/details/event-hubs/) にのみ使用できます。  
 
 ## <a name="outages-and-disasters"></a>故障と災害
 
@@ -37,7 +38,9 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 
 ## <a name="basic-concepts-and-terms"></a>基本的な概念と用語
 
-ディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。 geo ディザスター リカバリー機能は、[Standard SKU](https://azure.microsoft.com/pricing/details/event-hubs/) でのみ使用可能です。 別名を使用して接続を確立するので、接続文字列に変更を加える必要はありません。
+ディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。 
+
+geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](https://azure.microsoft.com/pricing/details/event-hubs/) にのみ使用できます。 別名を使用して接続を確立するので、接続文字列に変更を加える必要はありません。
 
 この記事では、次の用語を使用します。
 
@@ -48,6 +51,19 @@ Azure Event Hubs の geo ディザスター リカバリー機能はディザス
 -  *メタデータ*: 名前空間に関連付けられているサービスのエンティティ (イベント ハブ、コンシューマー グループなど) とそのプロパティです。 自動的にレプリケートされるのはエンティティとその設定だけであることに注意してください。 メッセージやイベントはレプリケートされません。 
 
 -  *フェールオーバー*: セカンダリの名前空間をアクティブ化するプロセスです。
+
+## <a name="supported-namespace-pairs"></a>サポートされている名前空間のペア
+プライマリ名前空間とセカンダリ名前空間の次の組み合わせがサポートされています。  
+
+| プライマリ名前空間 | セカンダリ名前空間 | サポート対象 | 
+| ----------------- | -------------------- | ---------- |
+| Standard | Standard | はい | 
+| Standard | 専用 | はい | 
+| 専用 | 専用 | はい | 
+| 専用 | Standard | いいえ | 
+
+> [!NOTE]
+> 同じ専用クラスター内にある名前空間を組み合わせることはできません。 別々のクラスター内にある名前空間を組み合わせることができます。 
 
 ## <a name="setup-and-failover-flow"></a>セットアップとフェールオーバーの流れ
 

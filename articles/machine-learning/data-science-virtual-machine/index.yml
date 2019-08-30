@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure データ サイエンス仮想マシンのドキュメント
+title: Azure Data Science Virtual Machine のドキュメント
 metadata:
-  title: データ サイエンス仮想マシンのドキュメント - Azure
-  description: データ サイエンス用に構築された Azure クラウド内の実験環境、Data Science Virtual Machine を使用する方法について説明します。 高度な分析を行うためのインテリジェントなアプリケーションの構築をすぐに始められるよう、よく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されています。
+  title: Data Science Virtual Machine のドキュメント - Azure
+  description: データ サイエンス用に構築された Azure クラウド内の実験環境、Data Science Virtual Machine を使用する方法について説明します。 データ サイエンスと機械学習の一般的なツールがプレインストールされ、事前に構成されています。 この設計により、高度な分析用のインテリジェントなアプリケーションをすばやく構築することができます。
   services: machine-learning
   author: vijetajo
   ms.service: machine-learning
@@ -14,12 +14,12 @@ metadata:
   ms.date: 08/19/2019
   ms.author: vijetaj
 abstract:
-  description: Azure Data Science Virtual Machine (DSVM) はカスタマイズされた VM イメージであり、データ サイエンスおよび機械学習のツールを備えています。 この VM を使用して、インテリジェントで高度な分析アプリケーションを構築できます。 <a href="overview.md">詳細情報</a>
+  description: Azure Data Science Virtual Machine (DSVM) はカスタマイズされた VM イメージであり、データ サイエンスおよび機械学習のツールを備えています。 この VM を使用して、高度な分析用のインテリジェントなアプリケーションを構築できます。 <a href="overview.md">詳細情報</a>。
 sections:
-  - title: 5 分間のクイック スタート
+  - title: 5 分間のクイックスタート
     items:
       - type: paragraph
-        text: Windows または Linux ベースのデータ サイエンス VM を設定する方法を学習します。
+        text: Windows または Linux ベースの Data Science Virtual Machine を設定する方法を学習します。
       - type: paragraph
         text: <b>Windows DSVM</b>
       - type: list

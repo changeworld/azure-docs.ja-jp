@@ -66,6 +66,8 @@
           href: ./domain-joined-zeppelin-signin.md
 - name: リファレンス
   items:
+    - name: サポートされているノード構成
+      href: ../hdinsight-supported-node-configuration.md
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Azure PowerShell

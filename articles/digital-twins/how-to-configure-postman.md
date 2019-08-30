@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 08/20/2019
 ms.author: v-adgera
-ms.openlocfilehash: 7ceb36d818c84642461372f0df70c8088908550c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965805"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69873649"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure Digital Twins 用に Postman を構成する方法
 
@@ -53,7 +53,9 @@ OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Di
 
 ## <a name="obtain-an-oauth-20-token"></a>OAuth 2.0 トークンを取得する
 
-次に、Postman をセットアップし、Azure Active Directory トークンを取得するように構成します。 その後、取得したトークンを使用し、Azure Digital Twins に対して認証済みの HTTP 要求を行います。
+[!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
+
+Postman をセットアップし、Azure Active Directory トークンを取得するように構成します。 その後、取得したトークンを使用し、Azure Digital Twins に対して認証済みの HTTP 要求を行います。
 
 1. [www.getpostman.com](https://www.getpostman.com/) に移動してアプリをダウンロードします。
 1. **[承認 URL]** が正しいことを検証します。 次のような形式になっている必要があります。
@@ -75,7 +77,7 @@ OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Di
     | 認証 URL | ステップ 2 の**承認 URL** を使用します |
     | クライアント ID | 前のセクションで作成または別の用途のために作り変えた Azure Active Directory アプリの**アプリケーション ID** を使用します |
     | Scope (スコープ) | 空白 |
-    | 状態 | 空白 |
+    | State | 空白 |
     | クライアント認証 | `Send as Basic Auth header` |
 
 1. クライアントは次のようになります。

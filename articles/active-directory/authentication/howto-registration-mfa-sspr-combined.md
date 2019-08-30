@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d006bd36cc8f8c84fb13bae43702a3e472f8876a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9fc30c3273528b8cbc08681950e0bd5f03ec7890
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113290"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69561278"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録の有効化 (プレビュー)
 
@@ -28,6 +28,11 @@ ms.locfileid: "67113290"
 | --- |
 | Azure Multi-Factor Authentication と Azure Active Directory (Azure AD) セルフサービスのパスワード リセットのための統合されたセキュリティ情報の登録は、Azure AD のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
+
+> [!NOTE]
+> セキュリティ情報の登録と管理のための以前のプレビューを有効にしている組織は、強化されたプレビュー エクスペリエンスを有効にするために、下の手順を完了する必要があります。 この切り替えを行わない組織については、2019 年 9 月 25 日に Microsoft が、セキュリティ情報の登録と管理のための以前のプレビューのユーザーを強化されたエクスペリエンスに切り替えます。 
+> 
+> どのバージョンのプレビューも有効にしていない場合、組織は影響を受けません。
 
 ## <a name="enable-combined-registration"></a>統合された登録の有効化
 
