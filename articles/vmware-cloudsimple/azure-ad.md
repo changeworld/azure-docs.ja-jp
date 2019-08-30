@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b9060ecbb9ca9e77d994a8f20378e2c53927586a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 8e8ea11da0339103375009709be8795cdede2448
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617372"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972925"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple Private Cloud 上で vCenter の ID プロバイダーとして Azure AD を使用する
 
@@ -98,4 +98,4 @@ vCenter で ID ソースとして Azure AD を使用するには、Azure AD と 
 
 3. 特権が昇格されたら、Private Cloud vCenter にサインインします。
 4. 前の手順の値を使用して、「[vCenter にで ID ソースとして追加する](set-vcenter-identity.md#add-an-identity-source-on-vcenter)」の手順に従って、ID ソースとして Azure Active Directory を設定します。
-5. VMware のトピック「<a href="https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html" target="_blank">Add Members to a vCenter Single Sign-On Group (vCenter のシングル サインオン グループにメンバーを追加する)</a>」の説明に従って、Azure AD から vCenter グループにユーザーまたはグループを追加します。
+5. VMware のトピック「[Add Members to a vCenter Single Sign-On Group (vCenter のシングル サインオン グループにメンバーを追加する)](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)」の説明に従って、Azure AD から vCenter グループにユーザーまたはグループを追加します。

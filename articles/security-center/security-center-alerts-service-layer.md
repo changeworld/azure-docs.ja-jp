@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: f795822d76def4a6695a4746fba7e8566041cb2b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295550"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624783"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Azure Security Center での Azure サービス レイヤーの脅威検出
 
@@ -47,6 +47,7 @@ Security Center のネットワーク レイヤー分析は、サンプルの [I
 |**疑わしい着信 SSH ネットワーク アクティビティ**|サンプリングされたネットワーク トラフィックの分析で、デプロイ内のリソースへの異常な着信 SSH 通信が検出されました。 リソースへの比較的多数の着信接続は、この環境では異常と考えられます。 このアクティビティは、SSH インターフェイスに対するブルート フォース攻撃の試行を示す可能性があります。
 |**複数のソースからの疑わしい着信 RDP ネットワーク アクティビティ**|サンプリングされたネットワーク トラフィックの分析で、複数のソースからデプロイ内のリソースへの異常な着信 RDP 通信が検出されました。 リソースへのさまざまな一意の IP の接続は、この環境では異常と考えられます。 このアクティビティは、複数のホスト (ボットネット) からの RDP インターフェイスに対するブルート フォース攻撃の試行を示す可能性があります。|
 |**疑わしい着信 RDP ネットワーク アクティビティ**|サンプリングされたネットワーク トラフィックの分析で、デプロイ内のリソースへの異常な着信 RDP 通信が検出されました。 リソースへの比較的多数の着信接続は、この環境では異常と考えられます。 このアクティビティは、SSH インターフェイスに対するブルート フォース攻撃の試行を示す可能性があります。|
+|**悪意のあるアドレスとのネットワーク通信が検出されました**|サンプリングされたネットワーク トラフィック分析で、考えられるコマンド アンド コントロール (C&C) サーバーとのデプロイ内のリソースからの通信が検出されました。 この種の活動によって、自分の IP が外部のエンティティによって悪意のある IP とフラグが付けられる可能性があることに注意してください。|
 
 Security Center でネットワーク関連のシグナルを使用して脅威の防止を適用する方法を理解するには、「[Heuristic DNS detections in Azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)」 (Azure Security Center でのヒューリスティック DNS 検出) を参照してください。
 ## Azure 管理レイヤー (Azure Resource Manager) (プレビュー)<a name ="management-layer"></a>
@@ -77,4 +78,4 @@ Security Center では、Azure のコントロール プレーンと見なされ
 > 3. **[Enable integrations]\(統合の有効化\)** で、 **[Allow Microsoft Cloud App Security]\(Microsoft Cloud App Security が自分のデータにアクセスすることを許可する\)** チェック ボックスをオフにし、 **[保存]** をクリックします。
 
 >[!NOTE]
->Azure Security Center では、そのリソースと同じ地域でセキュリティ関連の顧客データが格納されます。 Microsoft によってまだリソースの地域に Azure Security Center がデプロイされていない場合、米国でデータが格納されます。 Microsoft Cloud App Security (MCAS) が有効になっている場合、この情報は、MCAS の地域の場所のルールに従って格納されます。 詳細については、「[Data storage for non-regional services](http://azuredatacentermap.azurewebsites.net/)」 (非リージョン サービスのデータ ストレージ) を参照してください。
+>Azure Security Center では、そのリソースと同じ地域でセキュリティ関連の顧客データが格納されます。 Microsoft によってまだリソースの地域に Azure Security Center がデプロイされていない場合、米国でデータが格納されます。 Microsoft Cloud App Security (MCAS) が有効になっている場合、この情報は、MCAS の地域の場所のルールに従って格納されます。 詳細については、「[Data storage for non-regional services](https://azuredatacentermap.azurewebsites.net/)」 (非リージョン サービスのデータ ストレージ) を参照してください。

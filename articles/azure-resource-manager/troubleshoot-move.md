@@ -4,14 +4,14 @@ description: Azure Resource Manager を使用して、リソースを新しい�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: e23d7c571a010e5bfb42e5f15368e0194272ed53
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 445ee2784a74a366089a49a0e2f2f17d51ef93bf
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723343"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624299"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング
 
@@ -33,13 +33,17 @@ ms.locfileid: "67723343"
 * [App Services](./move-limitations/app-service-move-limitations.md)
 * [Azure DevOps Services](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
 * [クラシック デプロイ モデル](./move-limitations/classic-model-move-limitations.md)
+* [ネットワーク](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
 * [Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
-* [仮想ネットワーク](./move-limitations/virtual-network-move-limitations.md)
 
 ## <a name="large-requests"></a>大規模な要求
 
 可能であれば、大規模な移動は個別の移動操作に分けます。 1 回の操作に含まれるリソースが 800 を超えると、Resource Manager から直ちにエラーが返されます。 ただし、800 未満のリソースの移動でも、タイムアウトで失敗になることがあります。
+
+## <a name="resource-not-in-succeeded-state"></a>正常な状態にないリソース
+
+リソースが正常な状態にないために移動できないことを示すエラー メッセージが表示された場合、実際に移動をブロックしているのは依存リソースであることがあります。 [依存リソースの状態](./move-limitations/networking-move-limitations.md#state-of-dependent-resources)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

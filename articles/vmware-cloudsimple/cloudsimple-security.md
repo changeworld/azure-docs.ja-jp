@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f7afd3d4b03c55c6cd9878b7d22106eee371ba99
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1a33e20ec540a05885eb13a3828d28ffc9923fff
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877919"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972859"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple のセキュリティの概要
 
@@ -77,7 +77,7 @@ CloudSimple サービスは、Azure によって提供されるベース ネッ�
 
 CloudSimple サービスには、お客様が所有するプライベート クラウド環境内のプライベート ネットワークへのアクセスを制限する論理的に分離されたレイヤー 2 ネットワークが使用されています。 ファイアウォールを使用することで、プライベート クラウド ネットワークの保護をさらに強固なものにすることができます。 CloudSimple ポータルでは、プライベート クラウド内のトラフィック、プライベート クラウド間のトラフィック、インターネットへの一般的なトラフィック、IPsec VPN または ExpressRoute 接続を介したオンプレミスへのネットワーク トラフィックを含め、すべてのネットワーク トラフィックを対象に、EW および NS のネットワーク トラフィック制御ルールを定義できます。
 
-## <a name="vulnerability-and-patch-management"></a>脆弱性とパッチの管理
+## <a name="vulnerability-and-patch-management"></a>脆弱性と修正プログラムの管理
 
 マネージド VMware ソフトウェア (ESXi、vCenter、NSX) の定期的なセキュリティ パッチは、CloudSimple が担います。
 

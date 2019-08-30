@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e82a39b049c39cb4facfbc38b5e9020bb46de99b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61271805"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637964"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
-[Azure App Service](overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。 
+[Azure App Service](overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。  バックアップは、無期限に保持されるように構成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。
 
 アプリをバックアップから復元する方法については、 [Azure でのアプリの復元](web-sites-restore.md)に関するページを参照してください。
 
@@ -50,7 +50,7 @@ App Service によって、アプリで使用するようにユーザーが構�
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>要件および制限
-* バックアップと復元の機能には、**Standard** レベルまたは **Premium** レベル以上のレベルにある App Service プランが必要です。 上位レベルを使用するための App Service プランの拡張の詳細については、 [Azure でのアプリのスケールアップ](web-sites-scale.md)に関するページを参照してください。  
+* バックアップと復元の機能には、**Standard** レベルまたは **Premium** レベル以上のレベルにある App Service プランが必要です。 上位レベルを使用するための App Service プランの拡張の詳細については、 [Azure でのアプリのスケールアップ](manage-scale-up.md)に関するページを参照してください。  
   **Premium** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
 * バックアップするアプリと同じサブスクリプション内に Azure ストレージ アカウントとコンテナーが必要です。 Azure ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」をご覧ください。
 * 最大 10 GB のアプリとデータベースのコンテンツをバックアップできます。 バックアップのサイズがこの制限を超えた場合、エラーが発生します。
@@ -69,7 +69,7 @@ App Service によって、アプリで使用するようにユーザーが構�
    
    > [!NOTE]
    > 次のメッセージが表示された場合は、メッセージをクリックして App Service プランをアップグレードした後、バックアップに進むことができます。
-   > 詳細については、 [Azure でのアプリのスケールアップ](web-sites-scale.md) に関するページを参照してください。  
+   > 詳細については、 [Azure でのアプリのスケールアップ](manage-scale-up.md) に関するページを参照してください。  
    > ![ストレージ アカウントの選択](./media/web-sites-backup/01UpgradePlan1.png)
    > 
    > 

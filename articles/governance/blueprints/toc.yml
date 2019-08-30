@@ -30,6 +30,11 @@
     - name: Index
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: カナダ連邦の PBMM
+      items:
+        - name: コントロール マッピング
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/control-mapping.md
     - name: CIS Microsoft Azure Foundations Benchmark
       items:
         - name: 概要

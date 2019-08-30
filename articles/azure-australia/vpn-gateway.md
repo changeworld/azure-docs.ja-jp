@@ -6,79 +6,79 @@ ms.service: azure-australia
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: 442ad6334a1775033018005d4a85875dbcb08ada
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 00588042fa11ace51eef40cdedbae14c1bd99801
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571239"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575424"
 ---
 # <a name="azure-vpn-gateway-in-azure-australia"></a>Azure Australia の Azure VPN Gateway
 
-パブリック クラウドにおける重要なサービスは、クラウド リソースおよびサービスから既存のオンプレミス システムへのセキュリティで保護された接続です。  Azure でこの機能を提供するサービスは、Azure VPN Gateway (VPN Gateway) です。 この記事では、VPN Gateway を構成する際に、オーストラリア通信電子局 (ASD) の [Information Security Manual Controls](https://acsc.gov.au/infosec/ism/) (ISM) に準拠するための主要な考慮事項について概説します。
+パブリック クラウドにおける重要なサービスは、クラウド リソースおよびサービスから既存のオンプレミス システムへのセキュリティで保護された接続です。 Azure でこの機能を提供するサービスは、Azure VPN Gateway です。 この記事では、オーストラリア通信電子局 (ASD) の [Information Security Manual (ISM) 統制](https://acsc.gov.au/infosec/ism/)に準拠するように、VPN ゲートウェイを構成する際に考慮する必要がある重要な点について概説します。
 
-VPN Gateway は、Azure 内の仮想ネットワークと別のネットワークとの間で暗号化されたトラフィックを送信するために使用されます。  VPN ゲートウェイでは、次の 3 つのシナリオに対応しています。
+VPN ゲートウェイは、Azure 内の仮想ネットワークと別のネットワークとの間で暗号化されたトラフィックを送信するために使用されます。 VPN ゲートウェイでは、次の 3 つのシナリオに対応しています。
 
-- **サイト間** (S2S)
-- **ポイント対サイト** (P2S)
-- **VNet 間**
+- サイト間 (S2S)
+- ポイント対サイト (P2S)
+- ネットワーク間
 
-この記事では、S2S VPN ゲートウェイに焦点を当てます。 図 1 は、サイト間 VPN ゲートウェイの構成例を示しています。
+この記事では、S2S VPN ゲートウェイに焦点を当てます。 図 1 は、S2S VPN ゲートウェイの構成例を示しています。
 
-![複数サイト接続を使用した VPN Gateway](media/vpngateway-multisite-connection-diagram.png)
+![複数サイト接続を使用した VPN ゲートウェイ](media/vpngateway-multisite-connection-diagram.png)
 
-*図 1 - Azure サイト間 VPN Gateway*
+*図 1 – Azure S2S VPN Gateway*
 
 ## <a name="key-design-considerations"></a>設計上の主な考慮事項
 
 オーストラリア政府のお客様に Azure を接続するには、次の 3 つのネットワーク オプションがあります。
 
-- **ICON**
-- **ExpressRoute**
-- **パブリック インターネット**
+- ICON
+- Azure ExpressRoute
+- パブリック インターネット
 
-Australian Cyber Security Centre の『[Azure のコンシューマー ガイド](https://servicetrust.microsoft.com/viewpage/Australia)』では、接続が暗号化と整合性についての ISM 統制に準拠するようにするために、VPN Gateway (または同等の保護された認定サードパーティ サービス) を 3 つのネットワーク オプションと組み合わせて使用することが推奨されています。
+Australian Cyber Security Centre の [Azure のコンシューマー ガイド](https://servicetrust.microsoft.com/viewpage/Australia)では、VPN Gateway (または同等の PROTECTED 認定サードパーティ サービス) を 3 つのネットワーク オプションと組み合わせて使用することが推奨されています。 この推奨事項は、接続が、暗号化と整合性についての ISM 統制に準拠していることを確認することです。
 
 ### <a name="encryption-and-integrity"></a>暗号化と整合性
 
-既定では、VPN は IKE ハンドシェイクの一部として接続の確立中に、暗号化と整合性のアルゴリズムとパラメーターをネゴシエートします。  IKE ハンドシェイク中、VPN Gateway がイニシエーターまたはレスポンダーのどちらであるかによって、構成と優先度が決まります (これは VPN デバイスを介して制御されます)。  接続の最終的な構成は、VPN デバイスの構成によって制御されます。  検証された VPN デバイスとその構成の詳細については、[VPN デバイスの概要](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)に関するページを参照してください。
+既定では、VPN は IKE ハンドシェイクの一部として接続の確立中に、暗号化と整合性のアルゴリズムとパラメーターをネゴシエートします。 IKE ハンドシェイク中、VPN ゲートウェイがイニシエーターまたはレスポンダーのどちらであるかによって、構成と優先度が決まります。 この指定は、VPN デバイスを介して制御されます。 接続の最終的な構成は、VPN デバイスの構成によって制御されます。 確認された VPN デバイスとその構成の詳細については、[VPN サービス](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)に関するページを参照してください。
 
-VPN ゲートウェイは、接続のカスタム IPsec/IKE ポリシーを構成することによって、暗号化と整合性を制御できます。
+VPN ゲートウェイでは、接続のカスタム IPsec/IKE ポリシーを構成して、暗号化と整合性を制御できます。
 
 ### <a name="resource-operations"></a>リソース操作
 
-VPN Gateway は、パブリック インターネット経由で Azure と Azure 以外の環境の間の接続を作成します。  ISM には、接続の明示的な承認に関連する統制があります。  既定では、VPN ゲートウェイを使用して、セキュリティで保護された環境に承認されていないトンネルを作成することができます。  そのため、組織は Azure ロール ベースのアクセス制御 (RBAC) を使用して、VPN Gateway とその接続を作成および変更できるユーザーを制御することが重要です。  Azure には VPN Gateway を管理するための "組み込み" ロールはありません。そのため、カスタム ロールが必要になります。
+VPN ゲートウェイでは、パブリック インターネット経由で Azure と Azure 以外の環境の間の接続を作成します。 ISM には、接続の明示的な承認に関連する統制があります。 既定では、VPN ゲートウェイを使用して、承認されていないトンネルをセキュリティで保護された環境に作成することができます。 組織では Azure ロールベースのアクセス制御 (RBAC) を使用して、VPN ゲートウェイとその接続を作成および変更できるユーザーを制御することが重要です。 Azure には VPN ゲートウェイを管理するための組み込みロールがないため、カスタム ロールが必要です。
 
-"所有者"、"共同作成者"、"ネットワーク共同作成者" の各ロールへのアクセスは厳密に制御されています。  また、より詳細なアクセス制御には Azure AD Privileged Identity Management を使用することをお勧めします。
+所有者、共同作成者、ネットワーク共同作成者の各ロールへのアクセスは厳密に制御されます。 また、より詳細なアクセス制御には Azure AD Privileged Identity Management を使用することをお勧めします。
 
 ### <a name="high-availability"></a>高可用性
 
-Azure VPN Gateway では、複数の接続 (図1を参照) を使用して、同じオンプレミス環境に対して複数のオンプレミス VPN デバイスをサポートできます。  
+Azure VPN ゲートウェイでは、複数の接続を使用して、同じオンプレミス環境に対して複数のオンプレミス VPN デバイスをサポートできます。 図 1 を参照してください。
 
-Azure の仮想ネットワークには、独立構成、アクティブ/パッシブ構成、またはアクティブ/アクティブ構成でデプロイできる複数の VPN Gateway を含めることができます。
+Azure の仮想ネットワークには、独立構成、アクティブ/パッシブ構成、またはアクティブ/アクティブ構成でデプロイできる複数の VPN ゲートウェイを含めることができます。
 
-すべての VPN ゲートウェイを[高可用性構成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)で展開することをお勧めします。たとえば、2 つのオンプレミス VPN デバイスを、アクティブ/パッシブ モードまたはアクティブ/アクティブ モードのいずれかで 2 つの VPN ゲートウェイに接続します (図 2 を参照)。
+[高可用性構成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)ですべての VPN ゲートウェイをデプロイすることをお勧めします。 例として、アクティブ/パッシブ モードまたはアクティブ/アクティブ モードの 2 つの VPN ゲートウェイに接続された 2 つのオンプレミス VPN デバイスがあります。 図 2 を参照してください。
 
-![VPN Gateway の冗長接続](media/dual-redundancy.png)
+![VPN ゲートウェイの冗長接続](media/dual-redundancy.png)
 
-*図 2 - アクティブ/アクティブ VPN ゲートウェイと 2 つの VPN デバイス*
+*図 2 – アクティブ/アクティブ VPN ゲートウェイと 2 つの VPN デバイス*
 
 ### <a name="forced-tunneling"></a>強制トンネリング
 
-強制トンネリングは、検査および監査の目的で、インターネットへのすべてのトラフィックを VPN Gateway 経由でオンプレミスの環境に "強制的に" リダイレクトします。 強制トンネリングを使用しない場合、Azure の VM からインターネットへのトラフィックは、トラフィックを検査または監査できるオプションを使用せずに、Azure ネットワーク インフラストラクチャからパブリック インターネットへ直接トラバースします。  これは、組織が環境に Secure Internet Gateway (SIG) を使用する必要がある場合に重要です。
+強制トンネリングでは、検査および監査のために、インターネットへのすべてのトラフィックを VPN ゲートウェイ経由でオンプレミス環境にリダイレクトします (つまり、強制的に戻します)。 強制トンネリングを使用しない場合、Azure の VM からインターネットへのトラフィックは、トラフィックを検査または監査できるオプションを使用せずに、Azure ネットワーク インフラストラクチャからパブリック インターネットへ直接トラバースします。 強制トンネリングは、組織で環境に Secure Internet Gateway (SIG) を使用する必要がある場合に重要です。
 
 ## <a name="detailed-configuration"></a>詳細な構成
 
 ### <a name="service-attributes"></a>サービス属性
 
-オーストラリア政府向けに構成されたサイト間接続用の VPN ゲートウェイには、次の属性が必要です。
+オーストラリア政府向けに構成された S2S 接続用の VPN ゲートウェイには、次の属性が必要です。
 
 |Attribute | 必須|
 |--- | --- |
 |gatewayType | "VPN"|
 |
 
-ISM 統制に準拠して保護するために必要な属性設定は、次のとおりです。
+PROTECTED のために ISM 統制に準拠するのに必要な属性設定は、次のとおりです。
 
 |Attribute | 必須|
 |--- |---|
@@ -86,12 +86,12 @@ ISM 統制に準拠して保護するために必要な属性設定は、次の�
 |vpnClientConfiguration/vpnClientProtocols | "IkeV2"|
 |
 
-Azure VPN Gateway では、IPsec および IKE 標準プロトコルを使用した幅広い暗号アルゴリズムがサポートされています。  既定のポリシー セットでは、幅広いサード パーティ製 VPN デバイスとの相互運用性が最大化できます。  その結果、IKE ハンドシェイク中に非対応の構成がネゴシエートされる可能性があります。  したがって、[カスタムの IPsec/IKE ポリシー](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell) パラメーターを VPN Gateway の vpnClientConfiguration に適用して、接続が Azure へのオンプレミス環境接続の ISM 統制に対応するようにすることを強くお勧めします。  主な属性は次のとおりです。
+Azure VPN ゲートウェイでは、IPsec および IKE プロトコル標準のさまざまな暗号アルゴリズムがサポートされています。 既定のポリシーでは、さまざまなサードパーティ VPN デバイスとの相互運用性が最大に設定されます。 その結果、IKE ハンドシェイク中に非準拠の構成がネゴシエートされる可能性があります。 [カスタムの IPsec/IKE ポリシー](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell) パラメーターを VPN ゲートウェイの vpnClientConfiguration に適用し、接続が、Azure へのオンプレミス環境接続の ISM 統制を満たすようにすることを強くお勧めします。 主な属性を次の表に示します。
 
 |Attribute|推奨|必須|
 |---|---|---|
-|saLifeTimeSeconds|< 14400 秒|> 300 秒|
-|saDataSizeKilobytes| |> 1024 KB|
+|saLifeTimeSeconds|< 14,400 秒|> 300 秒|
+|saDataSizeKilobytes| |> 1,024 KB|
 |ipsecEncryption| |AES256-GCMAES256|
 |ipsecIntegrity| |SHA256-GCMAES256|
 |ikeEncryption| |AES256-GCMAES256|
@@ -100,24 +100,24 @@ Azure VPN Gateway では、IPsec および IKE 標準プロトコルを使用し
 |pfsGroup|PFS2048、PFS24、ECP256、ECP384||
 |
 
-*上記の表の dhGroup と pfsGroup では、他の設定を使用できる場合でも、ECP256 と ECP384 が優先されます。*
+前の表の dhGroup と pfsGroup では、他の設定を使用できる場合でも、ECP256 と ECP384 が優先されます。
 
 ### <a name="related-services"></a>関連サービス
 
-Azure VPN Gateway の設計と構成を行う場合、いくつかの関連サービスも存在している必要があり、かつ構成する必要があります。
+Azure VPN ゲートウェイを設計して構成する場合は、いくつかの関連サービスが存在し、それらを構成する必要もあります。
 
 |Service | 必要な操作|
 |--- | ---|
-|Virtual Network | VPN Gateway は仮想ネットワークに接続されます。  新しい VPN Gateway を作成する前に、仮想ネットワークを作成する必要があります。|
-|パブリック IP アドレス | S2S VPN Gateway は、オンプレミスの VPN デバイスと VPN Gateway 間の接続を確立するためのパブリック IP アドレスを必要とします。  S2S VPN Gateway を作成する前に、パブリック IP アドレスを作成する必要があります。|
-|Subnet | VPN Gateway には、仮想ネットワークのサブネットを作成する必要があります。|
+|仮想ネットワーク | VPN ゲートウェイは仮想ネットワークに接続されます。 新しい VPN ゲートウェイを作成する前に、仮想ネットワークを作成します。|
+|パブリック IP アドレス | S2S VPN ゲートウェイでは、オンプレミスの VPN デバイスと VPN ゲートウェイ間の接続を確立するためのパブリック IP アドレスが必要です。 S2S VPN ゲートウェイを作成する前に、パブリック IP アドレスを作成します。|
+|Subnet | VPN ゲートウェイ用の仮想ネットワークのサブネットを作成します。|
 |
 
 ## <a name="implementation-steps-using-powershell"></a>PowerShell を使用した実装手順
 
-### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
+### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-1. カスタム ロール (たとえば、virtualNetworkGateway 共同作成者) を作成します。  VPN Gateway の作成と変更が許可されるユーザーに割り当てられるロールを作成します。 カスタム ロールでは、次の操作を許可する必要があります。
+1. カスタム ロールを作成します。 たとえば、virtualNetworkGateway 共同作成者です。 VPN ゲートウェイの作成と変更が許可されるユーザーに割り当てられるロールを作成します。 カスタム ロールでは、次の操作を許可する必要があります。
 
    Microsoft.Network/virtualNetworkGateways/*  
    Microsoft.Network/connections/*  
@@ -127,43 +127,43 @@ Azure VPN Gateway の設計と構成を行う場合、いくつかの関連サ�
    Microsoft.Network/publicIPPrefixes/*  
    Microsoft.Network/routeTables/*  
 
-2. VPN Gateway とオンプレミス環境への接続を作成および管理することが許可されているユーザーに、カスタム ロールを追加します。
+2. VPN ゲートウェイとオンプレミス環境への接続を作成および管理することが許可されているユーザーに、カスタム ロールを追加します。
 
-### <a name="create-vpn-gateway"></a>VPN Gateway を作成する
+### <a name="create-a-vpn-gateway"></a>VPN ゲートウェイの作成
 
-*これらの手順は、仮想ネットワークが既に作成されていることを前提としています*
+これらの手順は、仮想ネットワークが既に作成されていることを前提としています。
 
-1. 新しいパブリック IP アドレスを作成する
-2. VPN Gateway サブネットを作成する
-3. VPN Gateway IP 構成を作成する
-4. VPN Gateway を作成する
-5. オンプレミス VPN デバイス用のローカル ネットワーク ゲートウェイを作成する
-6. IPsec ポリシーを作成する (カスタム IPsec/IKE ポリシーの使用が前提)
-7. IPsec ポリシーを使用して VPN Gateway とローカル ネットワーク ゲートウェイの間に接続を作成する
+1. 新しいパブリック IP アドレスを作成します。
+2. VPN ゲートウェイのサブネットを作成します。
+3. VPN ゲートウェイの IP 構成ファイルを作成します。
+4. VPN ゲートウェイを作成します。
+5. オンプレミス VPN デバイス用のローカル ネットワーク ゲートウェイを作成します。
+6. IPsec ポリシーを作成します。 この手順は、カスタム IPsec/IKE ポリシーを使用していることを前提としています。
+7. IPsec ポリシーを使用して、VPN ゲートウェイとローカル ネットワーク ゲートウェイの間に接続を作成します。
 
 ### <a name="enforce-tunneling"></a>トンネリングを強制する
 
-強制トンネリングが必要な場合は、VPN Gateway を作成する前に、次の手順を実行します。
+強制トンネリングが必要な場合は、VPN ゲートウェイを作成する前に、次のようにします。
 
-1. ルート テーブルおよびルート規則を作成する
-2. ルートテーブルを適切なサブネットに関連付ける
+1. ルート テーブルとルート規則を作成します。
+2. ルート テーブルを適切なサブネットに関連付けます。
 
-VPN Gateway を作成した後、次の手順を実行します。
+VPN ゲートウェイを作成した後、次のようにします。
 
-1. GatewayDefaultSite を VPN Gateway のオンプレミス環境に設定する
+- GatewayDefaultSite を VPN ゲートウェイのオンプレミス環境に設定します。
 
 ### <a name="example-powershell-script"></a>PowerShell サンプル スクリプト
 
-オーストラリアの PROTECTED セキュリティ分類のための ISM 統制に準拠するカスタム IPSEC/IKE ポリシーを作成するための PowerShell スクリプトの例を示します。
+カスタム IPsec/IKE ポリシーを作成するために使用される PowerShell スクリプトの例では、オーストラリアの PROTECTED セキュリティ分類のための ISM 統制に準拠します。
 
-仮想ネットワーク、VPN Gateway、およびローカル ゲートウェイが存在することを前提としています。
+仮想ネットワーク、VPN ゲートウェイ、およびローカル ゲートウェイが存在することを前提としています。
 
 #### <a name="create-an-ipsecike-policy"></a>IPsec/IKE ポリシーの作成
 
 次のサンプル スクリプトは、次のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーを作成します。
 
 - IKEv2:AES256、SHA256、DHGroup ECP256
-- IPsec:AES256、SHA256、PFS ECP256、SA の有効期間 14,400 秒および 102400000 KB
+- IPsec:AES256、SHA256、PFS ECP256、SA の有効期間 14,400 秒、102,400,000 KB
 
 ```powershell
 $custompolicy = New-AzIpsecPolicy `
@@ -200,9 +200,9 @@ New-AzVirtualNetworkGatewayConnection `
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、オーストラリア政府の PROTECTED データを送信中にセキュリティ保護するために、Information Security Manual (ISM) に指定されている要件を満たすための VPN Gateway の具体的な構成について説明しました。 VPN Gateway を構成するための詳細な手順については、次のとおりです。
+この記事では、オーストラリア政府の PROTECTED データを送信中にセキュリティ保護するために、Information Security Manual に指定されている要件を満たすための VPN Gateway の具体的な構成について説明しました。 VPN ゲートウェイを構成する手順については、以下を参照してください。
 
 - [Azure Virtual Network Gateway の概要](https://docs.microsoft.com/azure/vpn-gateway/)  
 - [VPN Gateway とは](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)  
-- [PowerShell を使用してサイト間 VPN 接続を持つ VNet を作成する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)  
+- [PowerShell を使用したサイト間 VPN 接続を備えた仮想ネットワークの作成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)  
 - [VPN ゲートウェイを作成して管理する](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-tutorial-create-gateway-powershell)

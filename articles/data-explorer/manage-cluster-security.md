@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/22/2019
-ms.openlocfilehash: 86350f21f5c530a00560c92cc0ae2fd58c9a2c57
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/20/2019
+ms.openlocfilehash: ad08bb19f96aadad42e973eebb8adce6875e07b1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780049"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876593"
 ---
 # <a name="secure-your-cluster-in-azure-data-explorer"></a>Azure Data Explorer でのクラスターのセキュリティ保護
 
@@ -29,6 +29,9 @@ ms.locfileid: "68780049"
 1. **[セキュリティ]** ウィンドウで、 **[ディスクの暗号化]** セキュリティ設定に対して **[オン]** を選択します。 
 
 1. **[保存]** を選択します。
+ 
+> [!NOTE]
+> 暗号化は、アクティブにした後に無効にできます。
 
 ## <a name="next-steps"></a>次の手順
 

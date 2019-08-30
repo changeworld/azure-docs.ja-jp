@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: 2af65dbae59774ed718d58f055158e61f15e2198
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557487"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575097"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -54,7 +54,7 @@ Windows データ サイエンス仮想マシン (DSVM) は、データの探索
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1.Microsoft ML Server または Python を使用してデータを探索し、モデルを開発する
+## <a name="1-explore-data--develop-models-with-microsoft-ml-server"></a>1.Microsoft Machine Learning Server を使用してデータを探索し、モデルを開発する
 R や Python などの言語を使用して、DSVM 上で直接データ分析を実行できます。
 
 R に関しては、スタート メニュー、デスクトップ、または R Tools for Visual Studio で見つけられる RStudio などの IDE を使用できます。 マイクロソフトでは、並列チャンク分析を実行することによってメモリ サイズを超える大きなデータの分析とスケーラブルな分析に対応した特別なライブラリを、オープン ソース R や CRAN R に追加する形で提供してきました。 
@@ -73,7 +73,7 @@ Python 環境の作成方法の詳細については、 [PTVS のドキュメン
 
 これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]**  ->  **[新規作成]**  ->  **[プロジェクト]**  ->  **[Python]** の順に移動し、作成している Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Python 2.7 または 3.6) に設定できます。これには、 **[Python 環境]** を右クリックして、 **[Python 環境の追加/削除]** を選択し、目的の環境を選択します。 PTVS の操作方法の詳細については、製品の[ドキュメント](https://aka.ms/ptvsdocs)を参照してください。
 
-## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2.Jupyter Notebook から Python または R を使用してデータの探索とモデリングを行う
+## <a name="2-use-jupyter-notebooks"></a>2.Jupyter Notebook を使用する
 Jupyter Notebook は、ブラウザー ベースの "IDE" でデータの探索とモデリングを行うことができる強力な環境です。 Jupyter Notebook では Python 2 と Python 3 のほか R (オープン ソース R と Microsoft R Server の両方に対応) を使用できます。
 
 Jupyter Notebook を起動するには、[スタート] メニューまたはデスクトップにある **[Jupyter Notebook]** というアイコンをクリックします。 また、DSVM コマンド プロンプトで既存の Notebook が配置されているディレクトリ、または新しい Notebook を作成するディレクトリから、コマンド ```jupyter notebook``` を実行することもできます。  
@@ -92,7 +92,7 @@ Jupyter が開始されたら、DSVM に同梱されているいくつかのサ�
 
 Notebook から、任意のライブラリを使って、データの探索、モデルの構築、モデルのテストを実行することができます。
 
-## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>手順 3.R または Python を使ってモデルを構築し、Azure Machine Learning を使って運用可能な状態にする
+## <a name="3-train--deploy-models-with-azure-machine-learning"></a>手順 3.Azure Machine Learning を使用してモデルをトレーニングおよびデプロイする
 モデルを構築して検証したら、次にそれを運用環境にデプロイすることになります。 クライアント アプリケーションは、運用環境にデプロイされたモデルを通じて、リアルタイムまたはバッチ モードでそのモデルの予測を呼び出すことができます。 R または Python で構築されたモデルを運用可能な状態にするためのメカニズムは、Azure Machine Learning によって提供されます。
 
 Azure Machine Learning でモデルを運用可能な状態にすると、REST 形式の Web サービスが公開されます。クライアントは、この Web サービスに入力パラメーターを渡し、モデルに基づく予測を出力として受け取ることが可能です。   
@@ -210,19 +210,19 @@ ans = consume(ep, sleepstudy)$ans
 
 Azure Machine Learning R ライブラリの詳細については、 [こちら](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf)をご覧ください。
 
-## <a name="4-administer-your-azure-resources-using-azure-portal-or-powershell"></a>4.Azure ポータルまたは PowerShell を使用して Azure リソースを管理する
+## <a name="4-manage-azure-resources"></a>4.Azure のリソースを管理する
 DSVM を使用すると、仮想マシンに対してローカルに分析ソリューションを構築できるだけでなく、Microsoft Azure クラウド上のさまざまなサービスを利用することができます。 Azure には、コンピューティング サービス、ストレージ サービス、データ分析サービスなど、DSVM から管理してアクセスできるさまざまなサービスが用意されています。
 
-Azure サブスクリプションとクラウド リソースは、ブラウザーから [Azure ポータル](https://portal.azure.com)にアクセスして管理できます。 Azure PowerShell スクリプトを使って、Azure サブスクリプションとリソースを管理することもできます。
-Azure PowerShell は、デスクトップ上のショートカットから実行できるほか、"Microsoft Azure Powershell" というスタート メニューから実行できます。 Windows PowerShell スクリプトを使って Azure サブスクリプションとリソースを管理する方法の詳細については、 [Microsoft Azure PowerShell のドキュメント](../../powershell-azure-resource-manager.md) をご覧ください。
+Azure サブスクリプションとクラウド リソースを管理するには、次の 2 つの方法があります。
++ **Azure portal**: ブラウザーを使用し、[Azure portal](https://portal.azure.com) にアクセスします。
 
-## <a name="5-extend-your-storage-space-with-a-shared-file-system"></a>5.共有ファイル システムで記憶域を拡張する
++ **Azure PowerShell**: Windows PowerShell スクリプトを使用します。 Azure PowerShell は、デスクトップ上のショートカットから実行できるほか、"Microsoft Azure Powershell" というスタート メニューから実行します。 詳細については、[Microsoft Azure PowerShell のドキュメント](../../powershell-azure-resource-manager.md)を参照してください。 
+
+## <a name="5-extend-storage-with-shared-file-systems"></a>5.共有ファイル システムを使用して記憶域を拡張する
 データ サイエンティストは、大きなデータセットやコードなどのリソースをチーム内で共有することができます。 DSVM 自体は、約 45 GB の領域が利用できます。 記憶域を拡張するには、Azure File Service を使用して、記憶域を 1 つまたは複数の DSVM インスタンスにマウントするか、REST API 経由で記憶域にアクセスします。  また、[Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) を使用するか、または [Azure Powershell](../../virtual-machines/windows/attach-disk-ps.md) を使用して、専用の追加データ ディスクを追加することも可能です。 
 
 > [!NOTE]
 > Azure ファイル サービス共有の最大領域は 5 TB です。個々のファイル サイズの上限は 1 TB となります。 
-> 
-> 
 
 Azure File Service の共有場所は、Azure PowerShell を使用して作成することができます。 Azure ファイル サービスの共有場所を作成するには、Azure PowerShell で次のスクリプトを実行します。
 
@@ -258,7 +258,7 @@ net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 
 これで、このドライブには、VM 上の通常のドライブとしてアクセスすることができます。
 
-## <a name="6-share-code-with-your-team-using-github"></a>6.GitHub を使ってチームでコードを共有する
+## <a name="6-share-code-in-github"></a>6.GitHub でコードを共有する
 GitHub は、開発者コミュニティが共有するコードのリポジトリです。さまざまなテクノロジを利用した各種ツール用のサンプル コードとソースが豊富に格納されています。 GitHub には、コード ファイルのバージョンを追跡して保存する技術として Git が使用されています。 GitHub は、独自のリポジトリを作成するためのプラットフォームとしても利用できます。チームで共有されるコードやドキュメントを保存したり、バージョン管理を導入したり、コードを閲覧できるユーザーとコードを投稿できるユーザーを制御したりすることができます。 Git の使用の詳細については、[GitHub のヘルプ ページ](https://help.github.com/)をご覧ください。 GitHub は、チームで協業したり、コミュニティによって開発されたコードを利用したり、逆にコードをコミュニティに投稿したりするための一つの方法として活用できます。
 
 DSVM には、GitHub リポジトリにアクセスするためのクライアント ツールとして、コマンド ライン版と GUI 版が付属しています。 Git と GitHub を扱うためのコマンド ライン ツールは、Git Bash と呼ばれています。 DSVM にインストールされている Visual Studio には、Git 拡張機能が備わっています。 これらのツールを起動するためのアイコンは、[スタート] メニューとデスクトップにあります。
@@ -273,7 +273,7 @@ Visual Studio から同じクローン操作を行うこともできます。 �
 
 Git を使った GitHub リポジトリの操作の詳細については、github.com で公開されているさまざまなリソースをご覧ください。 [チート シート](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) を参照すると便利です。
 
-## <a name="7-access-various-azure-data-and-analytics-services"></a>7.Azure のさまざまなデータ サービスと分析サービスにアクセスする
+## <a name="7-access-many-azure-data--analytics-services"></a>7.多数の Azure データと分析サービスにアクセスする
 ### <a name="azure-blob"></a>Azure BLOB
 Azure BLOB は、大規模データにも小規模データにも対応する信頼性と経済性に優れたクラウド ストレージです。 このセクションでは、データを Azure BLOB に移動し、Azure BLOB に格納されたデータにアクセスする方法について説明します。
 
@@ -851,8 +851,8 @@ Azure Cosmos DB は、クラウドにおける NoSQL データベースです。
 
 データのインポート後、Jupyter にアクセスして、*DocumentDBSample* というタイトルの Notebook を開くことができます。この Notebook には、Azure Cosmos DB にアクセスして基本的なクエリを実行する Python コードが含まれています。 Cosmos DB の詳細については、サービスの[ドキュメント ページ](https://docs.microsoft.com/azure/cosmos-db/)をご覧ください。
 
-## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.Power BI Desktop を使ってレポートとダッシュボードを作成する
-先ほどの例の Cosmos DB からの Volcano JSON ファイルを Power BI で視覚化して、データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../../cosmos-db/powerbi-visualize.md)を参照してください。 手順の概要は次のとおりです。
+## <a name="8-power-bi-reports--dashboards"></a>8.Power BI レポートとダッシュボード 
+先ほどの例の Cosmos DB からの Volcano JSON ファイルを Power BI デスクトップで視覚化して、データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../../cosmos-db/powerbi-visualize.md)を参照してください。 手順の概要は次のとおりです。
 
 1. Power BI Desktop を開いて "データを取得" します。 URL に https://cahandson.blob.core.windows.net/samples/volcano.json を指定します。
 2. リストとしてインポートされた JSON レコードが表示されます。
@@ -884,7 +884,7 @@ in
 
 ![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
-## <a name="9-dynamically-scale-your-dsvm-to-meet-your-project-needs"></a>9.DSVM を動的に拡張してプロジェクトのニーズを満たす
+## <a name="9-dynamic-dsvm-scaling"></a>9.動的 DSVM スケーリング 
 プロジェクトのニーズを満たすために、DSVM はスケールアップしたりスケールダウンしたりすることができます。 夜間や週末に VM を使用する必要がない場合は、 [Azure ポータル](https://portal.azure.com)から VM をシャットダウンします。
 
 > [!NOTE]
@@ -898,10 +898,23 @@ in
 
 ![VM インスタンスの設定](./media/vm-do-ten-things/VMScaling.PNG)
 
-## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10.仮想マシンに追加のツールをインストールする
+## <a name="10-add-more-tools"></a>10.ツールをさらに追加する
 多くの一般的なデータ分析のニーズに対応できる、DSVM に事前に組み込まれた複数のツールがあります。 これにより、1 つずつインストールして環境を構成しなくてもよいため、時間を節約できると共に、使用するリソースのみに対して支払いを行うことで、コストを節約できます。
 
 この記事の中で取り上げた他の Azure データ サービスと Azure 分析サービスを利用して、分析環境を強化することができます。 場合によっては、サード パーティが独自に開発したツールなど、特別なツールが必要になることもあります。 新しいツールが必要となった場合、インストールには、仮想マシンに対するフル管理者アクセス権が必要です。 プレインストールされない、Python と R の追加パッケージをインストールすることもできます。 Python の場合、```conda``` または ```pip``` を使用できます。 R の場合は、R コンソールで ```install.packages()``` を使用するか、IDE で **[Packages (パッケージ)]**  ->  **[Install Packages (パッケージのインストール)]** を選択できます。
+
+## <a name="deep-learning"></a>ディープ ラーニング
+
+フレームワーク ベースのサンプルに加えて、DLVM で検証済みの包括的なチュートリアルのセットも提供しています。 これらのチュートリアルは、イメージやテキスト/言語の理解などの分野でディープ ラーニング アプリケーションの開発をすぐに開始するのに役立ちます。 さまざまな分野とテクノロジのエンド ツー エンドのチュートリアルが引き続き追加される予定です。   
+
+
+- [さまざまなフレームワークでのニューラル ネットワークの実行](https://github.com/ilkarman/DeepLearningFrameworks): あるフレームワークから別のフレームワークにコードを移行する方法を示す包括的なチュートリアルです。 フレームワーク間でモデルと実行時のパフォーマンスを比較する方法も示します。 
+
+- [イメージ内で製品を検出するエンド ツー エンド ソリューションを構築するための攻略ガイド](https://github.com/Azure/cortana-intelligence-product-detection-from-images): イメージ検出は、イメージ内のオブジェクトを特定して分類する手法です。 このテクノロジには、多くの実際のビジネス ドメインに大きなメリットをもたらす可能性があります。 たとえば、小売り業者は、この手法を使用して、顧客が棚から選ぶ製品を判断できます。 この情報は、店舗が製品在庫を管理するのに役立ちます。 
+
+- [音声の深層学習](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) このチュートリアルでは、[都市音声データセット](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)で発生する音声イベントを検出するための深層学習モデルの教育方法と、音声データの操作方法の概要について説明します。
+
+- [テキスト ドキュメントの分類](https://github.com/anargyri/lstm_han): このチュートリアルでは、2 つの異なるニューラル ネットワーク アーキテクチャを構築してトレーニングする方法を示します。Hierarchical Attention Network と Long Short Term Memory (LSTM) ネットワークです。 これらのニューラル ネットワークでは、ディープ ラーニング用の Keras API を使用して、テキスト ドキュメントを分類します。 Keras は、最も普及している 3 つのディープ ラーニング フレームワーク (Microsoft Cognitive Toolkit、TensorFlow、および Theano) のフロントエンドです。
 
 ## <a name="summary"></a>まとめ
 ここで紹介したのは、Microsoft データ サイエンス仮想マシンでできることの一例にすぎません。 他にもさまざまな手段で分析環境を強化することができます。

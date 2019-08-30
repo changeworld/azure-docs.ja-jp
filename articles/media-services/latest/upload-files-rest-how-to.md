@@ -39,7 +39,7 @@ Media Services で、デジタル ファイルをアセットに関連付けら�
 
 このセクションでは、新しいアセットを作成する方法を示します。
 
-1. **[Assets]\(資産\)**  ->  **[Create or update an Asset]\(資産を作成または更新する\)** を選択します。
+1. **[Assets]\(アセット\)**  ->  **[Create or update an Asset]\(アセットを作成または更新する\)** を選択します。
 2. **[送信]** をクリックします。
 
     ![アセットを作成する](./media/upload-files/postman-create-asset.png)
@@ -50,7 +50,7 @@ Media Services で、デジタル ファイルをアセットに関連付けら�
 
 このセクションでは、作成されたアセットに対して生成された SAS URL を取得する方法を示します。 作成された SAS URL には読み取り/書き込みアクセス許可が設定されており、アセット コンテナーにデジタル ファイルをアップロードするために使用できます。
 
-1. **[Assets]\(資産\)**  ->  **[List the Asset URLs]\(資産 URL の一覧表示\)** を選択します。
+1. **[Assets]\(アセット\)**  ->  **[List the Asset URLs]\(アセット URL の一覧表示\)** を選択します。
 2. **[送信]** をクリックします。
 
     ![ファイルをアップロードする](./media/upload-files/postman-create-sas-locator.png)

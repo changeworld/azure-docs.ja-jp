@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 59b5138950e0fb94ea0051fa9cfe9aa75cd7d770
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f4dd529481a6216e43d35c76ecee734543d487f3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877805"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100476"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して Azure 仮想マシン上で管理タスクを自動化する
 > [!div class="op_single_selector"]
@@ -147,10 +146,10 @@ SQL Server IaaS 拡張機能は、SQL Server VM を [SQL VM リソース プロ�
 PowerShell を使用して、SQL Server IaaS エージェントをフル モードでインストールします。
 
   ```powershell-interactive
-     #Get the existing compute VM
+     # Get the existing compute VM
      $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
           
-     #Register the SQL Server VM with 'Full' SQL Server IaaS agent
+     # Install 'Full' SQL Server IaaS agent extension
      New-AzResource -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
         -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines `
         -Properties @{virtualMachineResourceId=$vm.Id;sqlServerLicenseType='AHUB';sqlManagement='Full'}  

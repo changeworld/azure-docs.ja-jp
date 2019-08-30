@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 1e85cb5c06f36e0f8c105ece2c012cfe7cb77bf4
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c2dbfa5f6c9d679582a1834f2ff645c5ff79c51e
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226023"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515692"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 ブループリント サンプルのコントロール マッピング
 
@@ -35,7 +35,7 @@ ms.locfileid: "68226023"
 - Function App には HTTPS 経由でのみアクセスできるようにする
 - Web アプリケーションには HTTPS を介してのみアクセスできるようにする
 - API アプリには HTTPS を介してのみアクセスできるようにする
-- 暗号化されていない SQL データベースの Azure Security Center での監視
+- SQL データベースで Transparent Data Encryption を有効にする必要がある
 - 仮想マシンでディスク暗号化を適用する必要がある
 - Automation アカウント変数は、暗号化する必要がある
 - Redis Cache に対してセキュリティで保護された接続のみを有効にする必要がある
@@ -98,8 +98,8 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 このブループリントでは、最低限の強度や他のパスワード要件が適用されていない Windows VM を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、強力なパスワードの適用を支援します。 パスワード強度のポリシーに違反している VM を把握できるようになるので、適切な是正措置を実施し、すべての VM ユーザー アカウントに対して、パスワード ポリシーへの準拠を徹底させることができます。
 
-- \[プレビュー\]:パスワードの有効期間が最大の 70 日になっていない Windows VM を監査する
-- \[プレビュー\]:パスワードの有効期間が最大の 70 日になっていない Windows VM を監査する要件をデプロイする
+- \[プレビュー\]:パスワードの有効期間が 70 日になっていない Windows VM を監査する
+- \[プレビュー\]:パスワードの有効期間が 70 日になっていない Windows VM を監査する要件をデプロイする
 - \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する
 - \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する要件をデプロイする
 - \[プレビュー\]:以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する
@@ -110,7 +110,7 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 このブループリントでは、Azure リソースのログ設定を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、システム イベントのログ記録の徹底を支援します。
 診断ログは、Azure リソース内で実行された操作の分析情報を提供します。 Azure のログでは、リソース全体にまたがるイベントの時間相関レコードを作成するために、同期された内部時計が使用されます。
 
-- 未監査の SQL サーバーを Azure Security Center で監視する
+- SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 - 診断設定の監査
 - SQL サーバー レベルの監査設定の監査
 - SQL Server での監査のデプロイ

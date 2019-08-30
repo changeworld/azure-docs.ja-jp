@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 757366f1d1f94d11438be4df0772ce1155f71cee
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: 3758766b1051acb9321ec67727eecef249971065
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310583"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615102"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>キー値ストアとしての Azure Cosmos DB - コストの概要
 
@@ -24,7 +24,7 @@ Azure Cosmos DB は、高可用性で大規模なアプリケーションを簡�
 
 Azure Cosmos DB のパフォーマンスは、パーティションにプロビジョニングされた[要求ユニット](request-units.md) (RU) の量に基づいています。 このプロビジョニングの粒度は 1 秒で、RU/秒の単位で購入されます ([時間単位での課金と混同しないでください](https://azure.microsoft.com/pricing/details/cosmos-db/))。 RU は、アプリケーションに必要とされるスループットのプロビジョニングを簡略化するための通貨と考えるべきです。 お客様は読み取り容量ユニットと書き込み容量ユニットの間の違いを考慮する必要はありません。 RU の単一通貨モデルにより、プロビジョニングされた容量を読み取りと書き込みの間で共有する際の効率が上がります。 容量がプロビジョニングされるというモデルによって、予測可能で一貫性のあるスループットをサービスが提供でき、待機時間が短くなり、可用性が高くなります。 最後に、RU を使用してスループットをモデル化しながらも、プロビジョニングされる各 RU には定義された量のリソース (メモリ、コア) があります。 RU/秒は、単なる IOPS ではありません。
 
-グローバル分散データベース システムである Cosmos DB は、高可用性に加えて、待機時間、スループット、整合性に関する SLA を提供している唯一の Azure サービスです。 お客様がプロビジョニングするスループットは、ご利用の Cosmos DB データベース アカウントに関連付けられている各リージョンに適用されます。 読み取りに関しては、Cosmos DB では明確に定義された複数の[整合性レベル](consistency-levels.md)が用意されており、その中から選択できます。 
+グローバル分散データベース システムである Cosmos DB は、高可用性に加えて、待機時間、スループット、整合性に関する SLA を提供している唯一の Azure サービスです。 お客様がプロビジョニングするスループットは、ご利用の Cosmos データベース アカウントに関連付けられている各リージョンに適用されます。 読み取りに関しては、Cosmos DB では明確に定義された複数の[整合性レベル](consistency-levels.md)が用意されており、その中から選択できます。 
 
 次の表では、ドキュメント サイズ (1 KB と 100 KB) に基づいて、読み取りおよび書き込みトランザクションを実行するのに必要な RU 数を示しています。
 

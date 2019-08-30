@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 3d16a4240b7a30a483b70b068ab7d91ca7bdcb17
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 599d474b7c45274c87878c622149a86bc93af318
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67473035"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612276"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Windows Server 仮想マシンをマネージド ドメインに参加させます。
 この記事では、Resource Manager テンプレートを使用して Windows Server 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法を示します。
@@ -31,9 +31,9 @@ ms.locfileid: "67473035"
 この記事に記載されているタスクを実行するには、次が必要です。
 1. 有効な **Azure サブスクリプション**。
 2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
-3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](create-instance.md)に記載されているすべてのタスクを実行してください。
-4. マネージド ドメインの IP アドレスを、必ず仮想ネットワークの DNS サーバーとして構成します。 詳しくは、[Azure 仮想ネットワークの DNS 設定を更新する方法](active-directory-ds-getting-started-dns.md)に関するページをご覧ください。
-5. [Azure AD Domain Services のマネージド ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
+3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](tutorial-create-instance.md)に記載されているすべてのタスクを実行してください。
+4. マネージド ドメインの IP アドレスを、必ず仮想ネットワークの DNS サーバーとして構成します。 詳しくは、[Azure 仮想ネットワークの DNS 設定を更新する方法](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)に関するページをご覧ください。
+5. [Azure AD Domain Services のマネージド ドメインとのパスワードの同期](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)に必要な手順をすべて実行します。
 
 
 ## <a name="install-and-configure-required-tools"></a>必要なツールをインストールして構成する
@@ -43,10 +43,10 @@ ms.locfileid: "67473035"
 
 
 ## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>オプション 1:新しい Windows Server VM をプロビジョニングしてマネージド ドメインに参加させる
-**クイック スタート テンプレート名**:[201-vm-domain-join](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+**クイックスタート テンプレート名**:[201-vm-domain-join](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 
 Windows Server 仮想マシンをデプロイしてマネージド ドメインに参加させるには、次の手順を実行します。
-1. [クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)に移動します。
+1. [クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)に移動します。
 2. **[Azure へのデプロイ]** をクリックします。
 3. **[カスタム デプロイ]** ページで、仮想マシンのプロビジョニングに必要な情報を入力します。
 4. 仮想マシンをプロビジョニングする **Azure サブスクリプション**を選択します。 Azure AD Domain Services を有効にしたのと同じ Azure サブスクリプションを選択してください。
@@ -74,10 +74,10 @@ Windows Server 仮想マシンをデプロイしてマネージド ドメイン�
 
 
 ## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>オプション 2:既存の Windows Server VM をマネージド ドメインに参加させる
-**クイック スタート テンプレート**:[201-vm-domain-join-existing](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
+**クイックスタート テンプレート**:[201-vm-domain-join-existing](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 
 既存の Windows Server 仮想マシンをマネージド ドメインに参加させるには、次の手順を実行します。
-1. [クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)に移動します。
+1. [クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)に移動します。
 2. **[Azure へのデプロイ]** をクリックします。
 3. **[カスタム デプロイ]** ページで、仮想マシンのプロビジョニングに必要な情報を入力します。
 4. 仮想マシンをプロビジョニングする **Azure サブスクリプション**を選択します。 Azure AD Domain Services を有効にしたのと同じ Azure サブスクリプションを選択してください。
@@ -101,6 +101,6 @@ Windows Server 仮想マシンをデプロイしてマネージド ドメイン�
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure PowerShell の概要](/powershell/azure/overview)
-* [Azure クイック スタート テンプレート - 新しい VM をドメインに参加させる](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
-* [Azure クイック スタート テンプレート - 既存の VM をドメインに参加させる](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
+* [Azure クイックスタート テンプレート - 新しい VM をドメインに参加させる](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+* [Azure クイックスタート テンプレート - 既存の VM をドメインに参加させる](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)

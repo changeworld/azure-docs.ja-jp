@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: e4e26b658bd29e4589be40e4d29935059836c909
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 0eca458c344e5c44ad62121db14e6b286dc19a86
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343278"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614447"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL クエリの実行
 
 HTTP/HTTPS 要求機能を持つ任意の言語で Cosmos DB REST API を呼び出すことができます。 さらに、.NET、Node.js、JavaScript、Python プログラミング言語用のプログラミング ライブラリも Cosmos DB に用意されています。 REST API とライブラリはすべて SQL 経由のクエリをサポートしており、NET SDK は [LINQ クエリ](sql-query-linq-to-sql.md)もサポートしています。
 
-以下の例では、クエリを作成して Cosmos DB データベース アカウントに送信する方法について説明します。
+次の例では、クエリを作成し、それを Cosmos データベース アカウントに対して送信する方法を示します。
 
 ## <a id="REST-API"></a>REST API
 

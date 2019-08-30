@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/13/2019
+ms.date: 08/19/2019
 ms.author: dalek
-ms.openlocfilehash: abf23eda2474ecbcfcaf0dadb26327225213a9a6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989225"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624387"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -92,7 +92,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 データ ボリュームを減らすために、以下のことを実行できます。
 
 * [サンプリング](../../azure-monitor/app/sampling.md)の使用。 このテクノロジは、メトリックがゆがめずにデータ速度を低下させます。 Search では、関連項目間を移動する機能は失われません。 サーバー アプリケーションでは、サンプリングは自動的に動作します。
-* [報告できる AJAX 呼び出しの数を制限する](../../azure-monitor/app/javascript.md#detailed-configuration) か、AJAX レポートを無効にします。
+* [報告できる AJAX 呼び出しの数を制限する](../../azure-monitor/app/javascript.md#configuration) か、AJAX レポートを無効にします。
 * [ApplicationInsights.config を編集](../../azure-monitor/app/configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。 たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
 * 異なるインストルメンテーション キー間でテレメトリを分割します。 
 * 事前集計メトリック。 TrackMetric への呼び出しをアプリに配置した場合、平均計算と測定のバッチの標準偏差を受け入れるオーバーロードを使用して、トラフィックを減らすことができます。 または、[事前集計パッケージ](https://www.myget.org/gallery/applicationinsights-sdk-labs)を使用することもできます。
@@ -103,7 +103,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 日次ボリューム上限を使用する代わりに、[サンプリング](../../azure-monitor/app/sampling.md)を使用して、データ ボリュームを目的のレベルに調整してください。 その後、アプリケーションが予期せず大量のテレメトリの送信を開始した場合に、"最後の手段" としてのみ日次上限を使用します。
 
-日次上限を変更するには、Application Insights リソースの **[構成]** セクションで、 **[使用量と推定コスト]** ウィンドウから **[日次上限]** を選択します。
+日次上限を変更するには、Application Insights リソースの **[構成]** セクションで、 **[使用量と推定コスト]** ページから **[日次上限]** を選択します。
 
 ![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-003.png)
 
@@ -135,11 +135,13 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 
-現在、Application Insights では、限られた数の Application Insights のお客様に対して、可変の保持期間のプレビューを提供しています。 このプレビュー プログラムへの参加方法については、[こちら](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)を参照してください。
+Application Insights リソースの既定の保持期間は 90 日です。 Application Insights リソースごとに異なる保持期間を選択できます。 使用可能な保持期間の完全なセットは、30 日、60 日、90 日、120 日、180 日、270 日、365 日、550 日、または 730 日です。 
 
-Application Insights リソースの既定の保持期間は 90 日です。 Application Insights リソースごとに異なる保持期間を選択できます。 使用可能な保持期間の完全なセットは、30 日、60 日、120 日、180 日、270 日、365 日、550 日、または 730 日です。 
+保持期間を変更するには、ご利用の Application Insights リソースから **[使用量と推定コスト]** ページに移動し、 **[データ保持期間]** オプションを選択します。
 
-長期の保持期間に対する課金が有効になっている場合、90 日を超えて保持されているデータには、Azure Log Analytics のデータ保持期間に対して現在請求されているのと同じ料金で課金されます。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。  [この提案に投票する](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ことによって、可変の保持期間の進捗に関する最新情報を把握してください。 
+![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-005.png)
+
+長期の保持期間に対する課金が有効になっている場合、90 日を超えて保持されているデータには、Azure Log Analytics のデータ保持期間に対して現在請求されているのと同じ料金で課金されます。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。 [この提案に投票する](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ことによって、可変の保持期間の進捗に関する最新情報を把握してください。 
 
 ## <a name="limits-summary"></a>制限の概要
 

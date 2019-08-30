@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: ddbec882675dba4724406ad1ea8079df377c34fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8829c2534184bc14e82dfbf30d2170a7a1b8add0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967306"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614998"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 
@@ -29,7 +29,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 プロビジョニング済みスループットの戦略の決定に関するガイドラインを次に示します。
 
-**次の場合は、(コンテナーのセットを含む) Azure Cosmos DB データベースでのスループットのプロビジョニングを検討します**
+**次の場合は、(コンテナーのセットを含む) Azure Cosmos データベースでのスループットのプロビジョニングを検討します**
 
 1. 数十個の Azure Cosmos コンテナーがあり、それらの一部または全部の間でスループットを共有したい場合。 
 
