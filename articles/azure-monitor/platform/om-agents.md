@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543052"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035615"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -47,8 +47,8 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 * Azure Monitor では、System Center Operations Manager 2016 以降、Operations Manager 2012 SP1 UR6 以降、Operations Manager 2012 R2 UR2 以降のみがサポートされています。 プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。
 * System Center Operations Manager 2016 と US Government クラウドの統合には、Update Rollup 2 以降に含まれる更新された Advisor 管理パックが必要です。 System Center Operations Manager 2012 R2 には、Update Rollup 3 以降に含まれる更新された Advisor 管理パックが必要です。
 * すべての Operations Manager エージェントが最小サポート要件を満たす必要があります。 エージェントに最小限の更新プログラムが適用されていることを確認してください。そうしないと、Windows エージェントの通信が失敗し、Operations Manager イベント ログにエラーが生成される可能性があります。
-* Log Analytics ワークスペース。 詳しくは、[Log Analytics ワークスペースの概要](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json)に関する記事をご覧ください。   
-* [Log Analytics Contributor ロール](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users)のメンバーであるアカウントを使用して Azure の認証を受けます。
+* Log Analytics ワークスペース。 詳しくは、[Log Analytics ワークスペースの概要](design-logs-deployment.md)に関する記事をご覧ください。 
+* [Log Analytics Contributor ロール](manage-access.md#manage-access-using-azure-permissions)のメンバーであるアカウントを使用して Azure の認証を受けます。
 
 * サポートされているリージョン - Log Analytics ワークスペースに接続するために、System Center Operations Manager では次の Azure リージョンのみがサポートされています。
     - 米国中西部

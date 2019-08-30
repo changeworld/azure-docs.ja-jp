@@ -8,19 +8,18 @@ manager: harijayms
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: a1c4575ec2ecc65d863ad80f73e64b7a4efdf96f
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: bffe6436678a055ac6d861587f048542f15c5f22
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563256"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079316"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -607,7 +606,7 @@ Marketplace ベンダーは、自分たちのソフトウェアが Azure での�
 
  ```bash
   # Get the signature
-   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2018-10-01 | jq -r '.["signature"]' > signature
+   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2019-04-30 | jq -r '.["signature"]' > signature
   # Decode the signature
   base64 -d signature > decodedsignature
   #Get PKCS7 format

@@ -60,7 +60,7 @@ Azure Media Services は、DRM 保護を適用したオフラインでのダウ�
 * Azure Media Services の PlayReady ライセンス配信サービス。
 * 任意の場所でホストされる PlayReady ライセンス サーバー。
 
-以下に、2 セットのテスト用資産を示します。1 つ目は AMS で PlayReady ライセンス配信を使用しており、2 つ目は Azure VM でホストされた PlayReady ライセンス サーバーを使用しています。
+以下に、2 セットのテスト用アセットを示します。1 つ目は AMS で PlayReady ライセンス配信を使用しており、2 つ目は Azure VM でホストされた PlayReady ライセンス サーバーを使用しています。
 
 アセット 1:
 

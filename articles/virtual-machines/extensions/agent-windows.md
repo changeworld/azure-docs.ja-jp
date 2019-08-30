@@ -9,18 +9,17 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/30/2018
+ms.date: 07/20/2019
 ms.author: roiyz
-ms.openlocfilehash: 3de0e7ac20296544f7ca02030056aa60542cb0b0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ba82b026fe69bd22b3afa89ddb73373dfd194472
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706158"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092691"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
@@ -60,7 +59,7 @@ VM を起動するには、VM に PA がインストールされている必要�
 エージェントがインストールされていない場合、Azure Backup や Azure Security など、Azure の一部のサービスを使用できません。 これらのサービスでは、拡張機能をインストールする必要があります。 WinGA なしで VM をデプロイした場合は、最新バージョンのエージェントを後からインストールできます。
 
 ### <a name="manual-installation"></a>手動のインストール
-Windows インストーラー パッケージを使用して、手動で Windows VM エージェントをインストールできます。 Azure にデプロイされるカスタム VM イメージを作成するときには、手動でのインストールが必要な場合があります。 手動で Windows VM エージェントをインストールするには、[VM エージェント インストーラーをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=394789)。
+Windows インストーラー パッケージを使用して、手動で Windows VM エージェントをインストールできます。 Azure にデプロイされるカスタム VM イメージを作成するときには、手動でのインストールが必要な場合があります。 手動で Windows VM エージェントをインストールするには、[VM エージェント インストーラーをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=394789)。 VM エージェントは、Windows Server 2008 R2 以降でサポートされます。
 
 Windows インストーラー ファイルをダブルクリックすると、VM エージェントをインストールできます。 VM エージェントを自動 (無人) インストールするには、次のコマンドを実行します。
 

@@ -7,17 +7,16 @@ manager: cfowler
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a2b8a4e496094c6275710328e70a09376ce0e5fc
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563029"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098470"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -305,7 +304,7 @@ Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName
 
 **MSI_ENDPOINT** は、アプリがトークンを要求できるローカル URL です。 リソースのトークンを取得するには、次のパラメーターを指定して、このエンドポイントに HTTP GET 要求を行います。
 
-> |パラメーター名|イン|説明|
+> |パラメーター名|場所|説明|
 > |-----|-----|-----|
 > |resource|Query|トークンを取得する必要のあるリソースの AAD リソース URI。 これは [Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の 1 つか、その他のリソース URI になります。|
 > |api-version|Query|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|

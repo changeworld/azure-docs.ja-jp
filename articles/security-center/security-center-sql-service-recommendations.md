@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: c2adf9bff4c3d91305e71a7688740fa0268ad7b9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 5f34f5e0c622ff107da880d9a4a77c63568b63b0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69531486"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100933"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure Security Center で Azure データと記憶域サービスを保護する
 このトピックでは、データと記憶域リソースのセキュリティに関する推奨事項を表示および実装する方法を示します。 Azure Security Center は、Azure リソースのセキュリティ状態を分析する際に、セキュリティに関する推奨事項を検出します。
@@ -77,8 +77,7 @@ ms.locfileid: "69531486"
 ## <a name="see-also"></a>関連項目
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次のトピックをご覧ください。
 
-* [Azure Security Center での仮想マシンの保護](security-center-virtual-machine-recommendations.md)
-* [Azure Security Center でのアプリケーションの保護](security-center-application-recommendations.md)
+* [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 * [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
 
 Security Center の詳細については、次のトピックを参照してください。
