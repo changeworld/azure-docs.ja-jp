@@ -133,12 +133,6 @@
       href: concept-detecting-adult-content.md
 - name: ハウツー ガイド
   items:
-    - name: Computer Vision の使用
-      items:
-        - name: Java
-          href: Tutorials/java-tutorial.md
-        - name: JavaScript
-          href: Tutorials/javascript-tutorial.md
     - name: Computer Vision API を呼び出す
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: コンテナーの使用
