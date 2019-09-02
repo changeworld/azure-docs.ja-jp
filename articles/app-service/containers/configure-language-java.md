@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 825379c04c22b3f13e651455c490a58ad47169d8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f0cbb8d19d2a7d60fdfd3c10a8c9914ffa79e0a3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967156"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034903"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service 向けの Linux Java アプリを構成する
 
@@ -139,7 +139,7 @@ App Service プランで 1 つのデプロイ スロットを使用して 1 つ�
 
 アプリケーション ヒープ設定をチューニングする際には、App Service プランの詳細を確認し、複数のアプリケーションおよびデプロイ スロットのニーズを考慮して、メモリの最適な割り当てを特定する必要があります。
 
-JAR アプリケーションをデプロイする場合、組み込みのイメージによりアプリが正しく識別されるよう、名前を *app.jar* にしてください。 (Maven プラグインでは、名前がこのように自動的に変更されます。)JAR の名前を *app.jar* に変更しない場合、JAR を実行するコマンドが含まれるシェル スクリプトをアップロードできます。 その後、ポータルの構成セクションで [[スタートアップ ファイル]](app-service-linux-faq.md#built-in-images) テキストボックスにこのスクリプトの完全なパスを貼り付けます。
+JAR アプリケーションをデプロイする場合、組み込みのイメージによりアプリが正しく識別されるよう、名前を *app.jar* にしてください。 (Maven プラグインでは、名前がこのように自動的に変更されます。)JAR の名前を *app.jar* に変更しない場合、JAR を実行するコマンドが含まれるシェル スクリプトをアップロードできます。 その後、ポータルの構成セクションで [[スタートアップ ファイル]](app-service-linux-faq.md#built-in-images) テキストボックスにこのスクリプトの完全なパスを貼り付けます。 スタートアップ スクリプトは、配置先のディレクトリからは実行されません。 そのため、スタートアップ スクリプトでファイルを参照するには、常に絶対パスを使用します (例: `java -jar /home/myapp/myapp.jar`)。
 
 ### <a name="turn-on-web-sockets"></a>Web ソケットを有効にする
 
@@ -402,7 +402,7 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
     あるいは、FTP クライアントを使用して JDBC ドライバーをアップロードできます。 [FTP 資格情報を取得するための手順](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に従ってください。
 
-2. サーバー レベルのデータ ソースを作成した場合は、App Service Linux アプリケーションを再起動します。 Tomcat が `CATALINA_HOME` を `/home/tomcat/conf` にリセットし、更新された構成を使用します。
+2. サーバー レベルのデータ ソースを作成した場合は、App Service Linux アプリケーションを再起動します。 Tomcat が `CATALINA_BASE` を `/home/tomcat` にリセットし、更新された構成を使用します。
 
 ### <a name="spring-boot"></a>Spring Boot
 
@@ -423,7 +423,7 @@ Spring Boot アプリケーション内のデータ ソースに接続するに�
 ## <a name="configure-java-ee-wildfly"></a>Java EE (WildFly) の構成
 
 > [!NOTE]
-> App Service Linux 上の Java Enterprise エディションは現在プレビュー段階です。 このスタックを運用環境向けの作業に使用することは**お勧めできません**。 Java SE と Tomcat のスタックについての情報。
+> App Service Linux 上の Java Enterprise エディションは現在プレビュー段階です。 このスタックを運用環境向けの作業に使用することは**お勧めできません**。
 
 Azure App Service on Linux を使用すると、Java 開発者は、完全に管理された Linux ベースのサービス上で Java Enterprise (Java EE) アプリケーションをビルド、デプロイ、およびスケーリングすることができます。  基になる Java Enterprise ランタイム環境は、オープン ソース [WildFly](https://wildfly.org/) アプリケーション サーバーです。
 
@@ -434,13 +434,12 @@ Azure App Service on Linux を使用すると、Java 開発者は、完全に管
 - [モジュールと依存関係のインストール](#install-modules-and-dependencies)
 - [データ ソースの構成](#configure-data-sources)
 - [メッセージング プロバイダーを有効にする](#enable-messaging-providers)
-- [セッション管理キャッシュの構成](#configure-session-management-caching)
 
 ### <a name="scale-with-app-service"></a>App Service によるスケーリング
 
 App Service on Linux で実行されている WildFly アプリケーション サーバーは、ドメイン構成ではなく、スタンドアロン モードで実行されます。 App Service プランをスケールアウトすると、各 WildFly インスタンスがスタンドアロン サーバーとして構成されます。
 
-[スケール ルール](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md)および[インスタンス数の増加](../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)によって、アプリケーションを垂直方向または水平方向にスケーリングします。
+[スケール ルール](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md)および[インスタンス数の増加](../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)によって、アプリケーションを垂直方向または水平方向にスケーリングします。
 
 ### <a name="customize-application-server-configuration"></a>アプリケーション サーバー構成のカスタマイズ
 
@@ -652,14 +651,121 @@ WildFly でのデータベース接続の構成について詳しくは、[Postg
 
 4. モジュール XML 記述子、.jar 依存関係、JBoss CLI コマンド、および JMS プロバイダーのスタートアップ スクリプトを使用して、モジュールと依存関係のインストールのセクションで説明されている手順に従います。 4 つのファイルに加えて、JMS キューおよびトピックの JNDI 名を定義する XML ファイルを作成する必要もあります。 参照構成ファイルについては、[このリポジトリ](https://github.com/JasonFreeberg/widlfly-server-configs/tree/master/appconfig)を参照してください。
 
-### <a name="configure-session-management-caching"></a>セッション管理キャッシュの構成
+## <a name="use-redis-as-a-session-cache-with-tomcat"></a>Tomcat を使用してセッション キャッシュとして Redis を使用する
 
-既定で App Service on Linux では、セッション アフィニティ Cookie を使用して、既存のセッションによるクライアント要求がアプリケーションの同じインスタンスにルーティングされるようにしています。 この既定の動作には、構成は必要ありませんが、いくつかの制限があります。
+[Azure Cache for Redis](/azure/azure-cache-for-redis/) などの外部セッション ストアを使用するように Tomcat を構成できます。 これにより、自動スケール、再起動、フェールオーバーが発生した場合など、ユーザーがアプリの別のインスタンスに転送されるときに、ユーザーのセッション状態 (ショッピング カート データなど) を保持できます。
 
-- アプリケーション インスタンスが再起動されるか、またはスケール ダウンされると、アプリケーション サーバーのユーザー セッションの状態が失われます。
-- アプリケーションに長いセッション タイムアウト設定または固定数のユーザーがある場合、新しいセッションだけが新しく起動されたインスタンスにルーティングされるため、自動スケーリングされた新しいインスタンスが、負荷を受け取るまでにしばらく時間がかかることがあります。
+Redis で Tomcat を使用するには、[PersistentManager](http://tomcat.apache.org/tomcat-8.5-doc/config/manager.html) の実装を使用するようにアプリを構成する必要があります。 次の手順では、例として [Pivotal Session Manager: redis-store](https://github.com/pivotalsoftware/session-managers/tree/master/redis-store) を使用してこのプロセスを説明します。
 
-[Azure Cache for Redis](/azure/azure-cache-for-redis/) などの外部セッション ストアを使用するように WildFly を構成できます。 [既存の ARR インスタンス アフィニティ構成を無効にして](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)、セッション Cookie ベースのルーティングをオフにし、構成済みの WildFly セッション ストアが干渉せずに動作できるようにする必要があります。
+1. Bash ターミナルを開き、`export <variable>=<value>` を使用して次の各環境変数を設定します。
+
+    | 変数                 | 値                                                                      |
+    |--------------------------|----------------------------------------------------------------------------|
+    | RESOURCEGROUP_NAME       | App Service インスタンスを含むリソース グループの名前。       |
+    | WEBAPP_NAME              | App Service インスタンスの名前。                                     |
+    | WEBAPP_PLAN_NAME         | App Service プランの名前                                          |
+    | リージョン                   | アプリがホストされているリージョンの名前。                           |
+    | REDIS_CACHE_NAME         | Azure Cache for Redis インスタンスの名前。                           |
+    | REDIS_PORT               | Redis キャッシュがリッスンする SSL ポート。                             |
+    | REDIS_PASSWORD           | インスタンスのプライマリ アクセス キー。                                  |
+    | REDIS_SESSION_KEY_PREFIX | アプリから取得されたセッション キーを識別するために指定する値。 |
+
+    Azure portal で サービス インスタンスの **[プロパティ]** セクションまたは **[アクセス キー]** セクションを探して、名前、ポート、およびアクセス キーの情報を確認できます。
+
+2. 次の内容を使用して、アプリの *src/main/webapp/META-INF/context.xml* ファイルを作成または更新します。
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Context path="">
+        <!-- Specify Redis Store -->
+        <Valve className="com.gopivotal.manager.SessionFlushValve" />
+        <Manager className="org.apache.catalina.session.PersistentManager">
+            <Store className="com.gopivotal.manager.redis.RedisStore"
+                   connectionPoolSize="20"
+                   host="${REDIS_CACHE_NAME}.redis.cache.windows.net"
+                   port="${REDIS_PORT}"
+                   password="${REDIS_PASSWORD}"
+                   sessionKeyPrefix="${REDIS_SESSION_KEY_PREFIX}"
+                   timeout="2000"
+            />
+        </Manager>
+    </Context>
+    ```
+
+    このファイルで、アプリのセッション マネージャーの実装を指定して構成します。 前の手順で設定した環境変数を使用して、ソース ファイルからアカウント情報を保持します。
+
+3. FTP を使用して、セッション マネージャーの JAR ファイルを App Service インスタンスにアップロードし、 */home/tomcat/lib* ディレクトリに配置します。 詳しくは、「[FTP/S を使用した Azure App Service へのアプリのデプロイ](https://docs.microsoft.com/azure/app-service/deploy-ftp)」をご覧ください。
+
+4. App Service インスタンスの[セッション アフィニティ Cookie](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) を無効にします。 Azure portal からこれを実行するには、アプリに移動し、 **[構成] > [全般設定] > [ARR アフィニティ]** を **[オフ]** に設定します。 または、次のコマンドを使用できます。
+
+    ```azurecli
+    az webapp update -g <resource group> -n <webapp name> --client-affinity-enabled false
+    ```
+
+    App Service の既定では、セッション アフィニティ Cookie を使用して、既存のセッションによるクライアント要求がアプリケーションの同じインスタンスにルーティングされるようにしています。 この既定の動作の構成は必須ではありませんが、アプリ インスタンスが再起動されたときや、トラフィックが別のインスタンスに再ルーティングされたときに、ユーザーのセッション状態が保持されません。 [既存の ARR インスタンス アフィニティ構成を無効にして](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/)セッション Cookie ベースのルーティングをオフにする場合は、操作なしで構成済みのセッション ストアが動作するようにします。
+
+5. App Service インスタンスの **[プロパティ]** セクションに移動し、 **[追加の送信 IP アドレス]** を見つけます。 これらは、アプリに使用できるすべての送信 IP アドレスを表します。 次の手順で使用するためにコピーします。
+
+6. 各 IP アドレスについて、Azure Cache for Redis インスタンスにファイアウォール規則を作成します。 この操作は、Azure portal の Redis インスタンスの **[ファイアウォール]** セクションから実行できます。 各規則に一意の名前を指定し、 **[開始 IP アドレス]** と **[終了 IP アドレス]** の値を同じ IP アドレスに設定します。
+
+7. Redis インスタンスの **[詳細設定]** セクションに移動し、 **[SSL によるアクセスのみ許可する]** を **[いいえ]** に設定します。 これで、App Service インスタンスは Azure インフラストラクチャを介して Redis キャッシュと通信できるようになります。
+
+8. Redis アカウント情報を参照するように、アプリの *pom.xml* ファイルの `azure-webapp-maven-plugin` の構成を更新します。 このファイルには、以前に設定した環境変数を使用して、ソース ファイルのアカウント情報を保持します。
+
+    必要に応じて、`1.7.0` を [Azure App Service 用 Maven プラグイン](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)の最新バージョンに変更します。
+
+    ```xml
+    <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.7.0</version>
+        <configuration>
+
+            <!-- Web App information -->
+            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+            <appServicePlanName>${WEBAPP_PLAN_NAME}-${REGION}</appServicePlanName>
+            <appName>${WEBAPP_NAME}-${REGION}</appName>
+            <region>${REGION}</region>
+            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+
+            <appSettings>
+                <property>
+                    <name>REDIS_CACHE_NAME</name>
+                    <value>${REDIS_CACHE_NAME}</value>
+                </property>
+                <property>
+                    <name>REDIS_PORT</name>
+                    <value>${REDIS_PORT}</value>
+                </property>
+                <property>
+                    <name>REDIS_PASSWORD</name>
+                    <value>${REDIS_PASSWORD}</value>
+                </property>
+                <property>
+                    <name>REDIS_SESSION_KEY_PREFIX</name>
+                    <value>${REDIS_SESSION_KEY_PREFIX}</value>
+                </property>
+                <property>
+                    <name>JAVA_OPTS</name>
+                    <value>-Xms2048m -Xmx2048m -DREDIS_CACHE_NAME=${REDIS_CACHE_NAME} -DREDIS_PORT=${REDIS_PORT} -DREDIS_PASSWORD=${REDIS_PASSWORD} IS_SESSION_KEY_PREFIX=${REDIS_SESSION_KEY_PREFIX}</value>
+                </property>
+
+            </appSettings>
+
+        </configuration>
+    </plugin>
+    ```
+
+9. アプリをリビルドして再デプロイします。
+
+    ```bash
+    mvn package
+    mvn azure-webapp:deploy
+    ```
+
+これで、アプリのセッション管理に Redis キャッシュが使用されるようになります。
+
+これらの手順をテストするために使用できるサンプルについては、GitHub の [scaling-stateful-java-web-app-on-azure](https://github.com/Azure-Samples/scaling-stateful-java-web-app-on-azure) リポジトリを参照してください。
 
 ## <a name="docker-containers"></a>Docker コンテナー
 

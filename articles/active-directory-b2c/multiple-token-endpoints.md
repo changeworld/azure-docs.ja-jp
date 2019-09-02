@@ -87,7 +87,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 このセクションでは、コードを更新し、両方のトークン発行者エンドポイントが有効であることを指定します。
 
 1. Visual Studio で **B2C-WebAPI-DotNet.sln** ソリューションを開きます
-1. **TaskService** プロジェクトの *TaskService\\App_Start\\**Startup.Auth.cs*** ファイルをエディターで開きます。
+1. **TaskService** プロジェクトの *TaskService\\App_Start\\ **Startup.Auth.cs*** ファイルをエディターで開きます。
 1. 次の `using` ディレクティブをファイルの先頭に追加します。
 
     `using System.Collections.Generic;`

@@ -4,28 +4,27 @@ services: cloud-services
 description: Visual Studio プロファイラーを使用して、クラウド サービスのパフォーマンスの問題を調査します。
 documentationcenter: ''
 author: mikejo
-manager: douge
+manager: jillfra
 editor: ''
 tags: ''
 ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 21270d3c7143ce063ffe30d939368b9813e9072e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128568"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094105"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
 クラウド サービスのパフォーマンスのテストには、さまざまなツールや手法を使用できます。
-Azure にクラウド サービスを発行するときは、[Azure アプリケーションのプロファイル][1]に関するページで説明されているように、Visual Studio によってプロファイル データを収集してローカルで分析できます。
-また、[Azure でのパフォーマンス カウンターの使用][2]に関するページで説明されているように、診断機能を使用してさまざまなパフォーマンス カウンターを追跡することもできます。
+Azure にクラウド サービスを発行する場合は、[Azure アプリケーションのプロファイリング][1]に関するページで説明されているように、Visual Studio でプロファイリング データを収集してから、それをローカルで分析することができます。
+また、[Azure でのパフォーマンス カウンターの使用][2]に関するページで説明されているように、診断を使用してさまざまなパフォーマンス カウンターを追跡することもできます。
 アプリケーションをクラウドにデプロイする前に、コンピューティング エミュレーターでローカルにプロファイルすることもできます。
 
 この記事では、エミュレーターでローカルに実行できるプロファイル手法である CPU サンプリングについて説明します。 CPU サンプリングは、あまり侵入的でないプロファイル手法です。 プロファイラーは、指定されたサンプリング間隔でコール スタックのスナップショットを取得します。 データはある期間にわたって収集され、レポートに示されます。 このプロファイル手法では、コンピューティング処理が集中するアプリケーションで大部分の CPU 処理が行われる箇所が示されます。  これによって、アプリケーションが多くの時間を費やしている "ホット パス" に焦点を合わせる機会が与えられます。

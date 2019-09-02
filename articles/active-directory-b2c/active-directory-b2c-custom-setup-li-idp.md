@@ -76,7 +76,7 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 
 LinkedIn アカウントをクレーム プロバイダーとして定義するには、それをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
-1. エディターで *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml*** ファイルを開きます。 このファイルは、前提条件の 1 つの一部としてダウンロードした[カスタム ポリシー スターター パック][starter-pack]に含まれています。
+1. エディターで *SocialAndLocalAccounts/ **TrustFrameworkExtensions.xml*** ファイルを開きます。 このファイルは、前提条件の 1 つの一部としてダウンロードした[カスタム ポリシー スターター パック][starter-pack]に含まれています。
 1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
 1. 新しい **ClaimsProvider** を次のように追加します。
 

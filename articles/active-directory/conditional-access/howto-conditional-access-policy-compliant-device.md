@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 255d1be1c8cfaec366aee6964e41537f6b6c50d8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: da1a5f54e5e989f661770d518a6753b831b59bd4
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575994"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990509"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>条件付きアクセス:Require compliant devices (準拠しているデバイスが必須)
 
@@ -55,4 +55,4 @@ Microsoft Intune をデプロイした組織では、デバイスから返され
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)
 
-[デバイス コンプライアンス ポリシーと Azure AD の連携](/intune/device-compliance-get-started.md#device-compliance-policies-work-with-azure-ad)
+[デバイス コンプライアンス ポリシーと Azure AD の連携](https://docs.microsoft.com/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)
