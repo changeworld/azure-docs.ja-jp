@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
-ms.openlocfilehash: 3c4dbd38edaf36461578e087010d978a25450d06
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: bdf81eb447596c8f580809eed99004186a81eacf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614919"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70065917"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -21,7 +21,7 @@ ms.locfileid: "69614919"
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 Azure Cosmos DB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しを 1 回行うだけの簡単なものです。 詳細については、[コンテナーのスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)または[データベースのスループットをプロビジョニングする方法](how-to-provision-database-throughput.md)に関するページを参照してください。 ただし、Azure Cosmos DB にはネットワーク呼び出しによってアクセスするため、[SQL .NET SDK](documentdb-sdk-dotnet.md) を使うと、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
+Azure Cosmos DB は、高速で柔軟性に優れた分散データベースです。待機時間とスループットが保証されており、シームレスにスケーリングできます。 Azure Cosmos DB でデータベースをスケーリングするために、アーキテクチャを大きく変更したり、複雑なコードを記述したりする必要はありません。 スケールアップとスケールダウンは、API 呼び出しを 1 回行うだけの簡単なものです。 詳細については、[コンテナーのスループットをプロビジョニングする方法](how-to-provision-container-throughput.md)または[データベースのスループットをプロビジョニングする方法](how-to-provision-database-throughput.md)に関するページを参照してください。 ただし、Azure Cosmos DB にはネットワーク呼び出しによってアクセスするため、[SQL .NET SDK](sql-api-sdk-dotnet-standard.md) を使うと、最高のパフォーマンスを実現するためにクライアント側の最適化を行うことができます。
 
 データベースのパフォーマンスを向上させる場合は、 以下のオプションを検討してください。
 
@@ -94,7 +94,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 ## <a name="sdk-usage"></a>SDK の使用例
 1. **最新の SDK をインストールする**
 
-    Azure Cosmos DB SDK は、最適なパフォーマンスを提供するために頻繁に改善されています。 [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) のページを参照して、最新の SDK を確認し、改善点を確認してください。
+    Azure Cosmos DB SDK は、最適なパフォーマンスを提供するために頻繁に改善されています。 [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) のページを参照して、最新の SDK を確認し、改善点を確認してください。
 2. **アプリケーションの有効期間中はシングルトン Azure Cosmos DB クライアントを使用する**
 
     各 DocumentClient インスタンスはスレッド セーフであり、直接モードで動作しているときには効率的な接続管理とアドレスのキャッシュが実行されます。 DocumentClient による効率的な接続管理とパフォーマンスの向上を実現するために、アプリケーションの有効期間中は、AppDomain ごとに DocumentClient の単一のインスタンスを使用することをお勧めします。
