@@ -66,6 +66,8 @@
       href: fslogix-containers-azure-files.md
     - name: パートナー統合
       href: partners.md
+    - name: Windows 10 Enterprise マルチセッションに関する FAQ
+      href: windows-10-multisession-faq.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート

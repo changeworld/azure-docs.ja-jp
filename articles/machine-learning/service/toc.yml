@@ -145,17 +145,6 @@
         - name: データセットを追加および登録する
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
-        - name: azureml.dataprep で準備する
-          items:
-            - name: データを読み込む
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-load-data.md
-            - name: データを変換する
-              displayName: 'data, etl, dataprep, data prep'
-              href: how-to-transform-data.md
-            - name: データを書き込む
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-write-data.md
     - name: モデルをトレーニングする
       items:
         - name: トレーニング環境をセットアップする
@@ -347,6 +336,8 @@
               href: ../algorithm-module-reference/multiclass-neural-network.md
             - name: 多クラス デシジョン フォレスト
               href: ../algorithm-module-reference/multiclass-decision-forest.md
+            - name: 多クラスの増幅デシジョン ツリー
+              href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
             - name: 2 クラス平均化パーセプトロン
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: 2 クラス デシジョン フォレスト

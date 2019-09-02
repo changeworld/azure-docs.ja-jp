@@ -156,6 +156,9 @@
     - name: ポータルからの既存の割り当ての更新
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md
+    - name: ブループリント オペレーター用の環境を構成する
+      displayName: 'rbac, user-assigned, managed, identity, management group'
+      href: ./how-to/configure-for-blueprint-operator.md
     - name: ブループリントをコードとして管理する (コミュニティ)
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
 - name: トラブルシューティング

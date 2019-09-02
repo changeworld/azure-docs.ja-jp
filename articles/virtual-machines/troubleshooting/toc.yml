@@ -96,20 +96,27 @@
   href: reset-network-interface.md
 - name: VM の再起動またはサイズ変更
   href: restart-resize-error-troubleshooting.md
-- name: シリアル コンソールの使用
+- name: シリアル コンソール
+  href: serial-console-overview.md
   items:
-    - name: Linux VM
+    - name: Linux 用シリアル コンソール
       href: serial-console-linux.md
       items:
         - name: シリアル コンソール GRUB/シングル ユーザー モード
           href: serial-console-grub-single-user-mode.md
         - name: シリアル コンソール NMI/SysRq
           href: serial-console-nmi-sysrq.md
-    - name: Windows VM
+    - name: Windows 用シリアル コンソール
       href: serial-console-windows.md
       items:
         - name: CMD と PowerShell コマンド
           href: serial-console-cmd-ps-commands.md
+    - name: シリアル コンソールの有効化と無効化
+      href: serial-console-enable-disable.md
+    - name: シリアル コンソール内の電源オプション
+      href: serial-console-power-options.md
+    - name: シリアル コンソールに関する一般的なエラー
+      href: serial-console-errors.md
 - name: ストレージ リソースの削除時のエラー
   href: storage-resource-deletion-errors.md
 - name: クラシック ストレージ リソースの削除時のエラー
@@ -153,6 +160,8 @@
 - name: ブート エラー
   href: boot-error-troubleshoot.md
   items:
+    - name: Azure 仮想マシンの起動エラー
+      href: troubleshoot-vm-boot-error.md
     - name: ブート診断
       href: boot-diagnostics.md
     - name: BitLocker のエラー

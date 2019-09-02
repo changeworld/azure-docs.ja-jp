@@ -187,6 +187,8 @@
           href: iterative-development-debugging.md
     - name: Connectors
       items:
+        - name: コネクタの概要
+          href: connector-overview.md
         - name: Amazon Marketplace Web Service
           href: connector-amazon-marketplace-web-service.md
         - name: Amazon Redshift
@@ -306,7 +308,7 @@
           href: connector-oracle-service-cloud.md
         - name: Parquet 形式
           href: format-parquet.md
-        - name: Paypal
+        - name: PayPal
           href: connector-paypal.md
         - name: Phoenix
           href: connector-phoenix.md
@@ -382,40 +384,40 @@
     - name: データを変換する
       href: transform-data.md
       items:
+        - name: Azure 関数アクティビティ
+          href: control-flow-azure-function-activity.md
+        - name: カスタム アクティビティ
+          href: transform-data-using-dotnet-custom-activity.md
+        - name: Databricks Jar アクティビティ
+          href: transform-data-databricks-jar.md
+        - name: Databricks ノートブック アクティビティ
+          href: transform-data-databricks-notebook.md
+        - name: Databricks Python アクティビティ
+          href: transform-data-databricks-python.md
+        - name: Data Lake U-SQL アクティビティ
+          href: transform-data-using-data-lake-analytics.md
         - name: HDInsight Hive アクティビティ
           href: transform-data-using-hadoop-hive.md
-        - name: HDInsight Pig アクティビティ
-          href: transform-data-using-hadoop-pig.md
         - name: HDInsight MapReduce アクティビティ
           href: transform-data-using-hadoop-map-reduce.md
-        - name: HDInsight Streaming アクティビティ
-          href: transform-data-using-hadoop-streaming.md
+        - name: HDInsight Pig アクティビティ
+          href: transform-data-using-hadoop-pig.md
         - name: HDInsight Spark アクティビティ
           href: transform-data-using-spark.md
+        - name: HDInsight Streaming アクティビティ
+          href: transform-data-using-hadoop-streaming.md
         - name: ML バッチ実行アクティビティ
           href: transform-data-using-machine-learning.md
         - name: ML 更新リソース アクティビティ
           href: update-machine-learning-models.md
         - name: ストアド プロシージャ アクティビティ
           href: transform-data-using-stored-procedure.md
-        - name: Data Lake U-SQL アクティビティ
-          href: transform-data-using-data-lake-analytics.md
-        - name: Databricks ノートブック アクティビティ
-          href: transform-data-databricks-notebook.md
-        - name: Databricks Jar アクティビティ
-          href: transform-data-databricks-jar.md
-        - name: Databricks Python アクティビティ
-          href: transform-data-databricks-python.md
-        - name: カスタム アクティビティ
-          href: transform-data-using-dotnet-custom-activity.md
         - name: コンピューティングのリンクされたサービス
           href: compute-linked-services.md
     - name: 制御フロー
       items:
         - name: 変数アクティビティの追加
           href: control-flow-append-variable-activity.md
-        - name: Azure 関数アクティビティ
-          href: control-flow-azure-function-activity.md
         - name: データ フローの実行アクティビティ
           href: control-flow-execute-data-flow-activity.md
         - name: パイプラインの実行アクティビティ
@@ -470,7 +472,7 @@
           href: data-flow-sink.md
         - name: 並べ替え
           href: data-flow-sort.md
-        - name: Source
+        - name: source
           href: data-flow-source.md
         - name: 代理キー
           href: data-flow-surrogate-key.md
@@ -584,6 +586,8 @@
       items:
         - name: アクティビティのトラブルシューティング
           href: data-factory-troubleshoot-guide.md
+        - name: コネクタのトラブルシューティング
+          href: connector-troubleshoot-guide.md
         - name: Azure SSIS IR の管理に関するトラブルシューティング
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング

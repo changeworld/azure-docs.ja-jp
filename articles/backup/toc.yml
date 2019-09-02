@@ -70,6 +70,8 @@
       href: backup-architecture.md
     - name: ロールベースのアクセス制御
       href: backup-rbac-rs-vault.md
+    - name: クラウド ワークロードのセキュリティ
+      href: backup-azure-security-feature-cloud.md
     - name: ハイブリッド バックアップのセキュリティ
       href: backup-azure-security-feature.md
     - name: オフライン バックアップの構成
