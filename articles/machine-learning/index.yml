@@ -41,7 +41,7 @@ sections:
       - items:
           - html: <a href="service/tutorial-1st-experiment-sdk-setup">環境を設定して、最初の ML 実験をトレーニングする</a>
           - html: <a href="service/tutorial-train-models-with-aml">画像分類モデルをトレーニングしてデプロイする</a>
-          - html: <a href="service/tutorial-data-prep">データを準備し、自動化された ML を使用してタクシー料金を予測する</a>
+          - html: <a href="service/tutorial-auto-train-models">自動化された ML を使用してタクシー料金を予測する</a>
         style: unordered
         type: list
       - text: 自分のモデルを使用します。

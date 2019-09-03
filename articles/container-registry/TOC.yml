@@ -59,6 +59,8 @@
       items:
         - name: イメージのプッシュとプル
           href: container-registry-get-started-docker-cli.md
+        - name: OCI 成果物のプッシュとプル
+          href: container-registry-oci-artifacts.md
         - name: リポジトリの表示
           href: container-registry-repositories.md
         - name: コンテナー イメージのインポート

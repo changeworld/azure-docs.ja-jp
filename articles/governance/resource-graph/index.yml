@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: resource-graph
   ms.topic: landing-page
-  ms.date: 05/06/2019
+  ms.date: 08/25/2019
   ms.author: dacoulte
 abstract:
   description: Azure Resource Graph のドキュメントは、リソースを大規模に検索し検証するためのクエリ言語を構成および習得するのに役立ちます。
@@ -20,6 +20,11 @@ sections:
       - type: list
         style: icon48
         items:
+          - image:
+              alt: Azure Resource Graph エクスプローラー
+              src: ./media/arg_explorer.svg
+            text: Resource Graph エクスプローラー
+            href: first-query-portal.md
           - image:
               alt: Azure CLI
               src: ./media/cli.svg

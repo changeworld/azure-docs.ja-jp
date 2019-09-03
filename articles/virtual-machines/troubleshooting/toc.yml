@@ -97,8 +97,9 @@
 - name: VM の再起動またはサイズ変更
   href: restart-resize-error-troubleshooting.md
 - name: シリアル コンソール
-  href: serial-console-overview.md
   items:
+    - name: シリアル コンソールの概要
+      href: serial-console-overview.md
     - name: Linux 用シリアル コンソール
       href: serial-console-linux.md
       items:

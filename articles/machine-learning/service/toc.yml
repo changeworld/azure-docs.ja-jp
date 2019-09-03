@@ -33,10 +33,10 @@
               href: tutorial-auto-train-models.md
     - name: ビジュアル インターフェイス
       items:
-        - name: 回帰モデルをトレーニングする
+        - name: 1. 回帰モデルをトレーニングする
           displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
-        - name: 回帰モデルをデプロイする
+        - name: 2. 回帰モデルをデプロイする
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: 自動化された機械学習

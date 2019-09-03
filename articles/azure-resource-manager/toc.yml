@@ -58,6 +58,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: 概念
   items:
+    - name: テンプレートのデプロイ
+      href: template-deployment-overview.md
     - name: テンプレート ファイルの構造
       displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
@@ -83,6 +85,8 @@
   items:
     - name: テンプレートの作成
       items:
+        - name: 開発ツール - VS Code
+          href: resource-manager-tools-vs-code.md
         - name: テンプレートの作成
           href: how-to-create-template.md
         - name: 子リソースの名前と種類

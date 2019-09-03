@@ -44,8 +44,12 @@
           href: ingest-data-event-hub.md
         - name: Event Grid
           href: ingest-data-event-grid.md
+        - name: IoT Hub
+          href: ingest-data-iot-hub.md
         - name: ワンクリックでのインジェスト
           href: ingest-data-one-click.md
+        - name: ストリーミング インジェスト
+          href: ingest-data-streaming.md
         - name: Kafka
           href: ingest-data-kafka.md
         - name: Python
@@ -90,6 +94,12 @@
               href: power-bi-imported-query.md
             - name: SQL クエリ
               href: power-bi-sql-query.md
+        - name: Excel
+          items:
+            - name: コネクタ
+              href: excel-connector.md
+            - name: 空のクエリ
+              href: excel-blank-query.md
         - name: Grafana
           href: grafana.md
         - name: ODBC コネクタ
