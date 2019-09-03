@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 656bc8329d6273695e4da24a7e7d13c9df6a1080
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1bd850fe2cac7194d78005f4c0a57523bc8323c6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846595"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124485"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする
 GRUB とは GRand Unified Bootloader です。これは、VM を起動したときにおそらく最初に表示されるものです。 オペレーティング システムが起動する前に表示されるため、SSH からはアクセスできません。 GRUB からは、特にシングル ユーザー モードで起動するようにブート構成を変更することができます。
@@ -59,9 +58,24 @@ VM を起動できない場合、ディストリビューションは多くの�
 正常に起動できない場合、RHEL は自動的にシングル ユーザー モードに切り替わります。 ただし、シングル ユーザー モード用に root アクセス権を設定していない場合は、root パスワードがないため、ログインできません。 これには回避策があります (後述の「RHEL のシングル ユーザー モードを手動で開始する」を参照してください) が、最初は root アクセス権を設定することをお勧めします。
 
 ### <a name="grub-access-in-rhel"></a>RHEL での GRUB アクセス
-RHEL には GRUB が付属しており、すぐに使用できます。 GRUB を開始するには、`sudo reboot` を使用して VM を再起動し、いずれかのキーを押します。 GRUB 画面が表示されます。
+RHEL には GRUB が付属しており、すぐに使用できます。 GRUB を開始するには、`sudo reboot` を使用して VM を再起動し、いずれかのキーを押します。 GRUB 画面が表示されます。 表示されない場合は、次の行が GRUB ファイル (`/etc/default/grub`) にあることを確認します。
 
-> 注:Red Hat には、再起動してレスキュー モード、緊急モード、デバッグ モード、およびルート パスワードのリセットを実行するためのドキュメントも用意されています。 アクセスするには、[こちら](https://aka.ms/rhel7grubterminal)をクリックしてください。
+#### <a name="rhel-8"></a>RHEL 8:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
+```
+
+#### <a name="rhel-7"></a>RHEL 7:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL_OUTPUT="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 net.ifnames=0"
+```
+
+> [!NOTE]
+> Red Hat には、再起動してレスキュー モード、緊急モード、デバッグ モード、およびルート パスワードのリセットを実行するためのドキュメントも用意されています。 アクセスするには、[こちら](https://aka.ms/rhel7grubterminal)をクリックしてください。
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>RHEL でシングル ユーザー モードの root アクセス権を設定する
 RHEL のシングル ユーザー モードを使用するには、root ユーザーを有効にする必要があります。root ユーザーは既定では無効になっています。 シングル ユーザー モードを有効にする必要がある場合は、次の手順のようにします。
@@ -194,7 +208,7 @@ SLES が正常に起動できない場合は、自動的に緊急シェルが開
 Red Hat Enterprise Linux と同様に、Oracle Linux のシングル ユーザー モードを使用するには、GRUB が必要であり、root ユーザーを有効にする必要があります。
 
 ### <a name="grub-access-in-oracle-linux"></a>Oracle Linux での GRUB アクセス
-Oracle Linux には GRUB が付属しており、すぐに使用できます。 GRUB を開始するには、`sudo reboot` を使用して VM を再起動し、Esc キーを押します。 GRUB 画面が表示されます。 GRUB が表示されない場合は、`GRUB_TERMINAL` 行の値に "serial console" が含まれることを確認してください (例: `GRUB_TERMINAL="serial console"`)。
+Oracle Linux には GRUB が付属しており、すぐに使用できます。 GRUB を開始するには、`sudo reboot` を使用して VM を再起動し、Esc キーを押します。 GRUB 画面が表示されます。 GRUB が表示されない場合は、`GRUB_TERMINAL` 行の値に "serial console" が含まれることを確認してください (例: `GRUB_TERMINAL="serial console"`)。 `grub2-mkconfig -o /boot/grub/grub.cfg` を使用して GRUB を再構築します。
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Oracle Linux でのシングル ユーザー モード
 Oracle Linux でシングル ユーザー モードを有効にするには、前述の RHEL の手順を実行します。

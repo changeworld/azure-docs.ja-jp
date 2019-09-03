@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 776a73f8a20a3f5ad4e97a08ff3871e805a61eb3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4b555ecdf8bbd3d29e440675599041f40ac3c9d0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879130"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125029"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画
 
@@ -76,7 +76,7 @@ Azure Multi-Factor Authentication は、条件付きアクセスでポリシー�
 * 感染しているデバイスからのサインイン
 * 不審なアクティビティのある IP アドレスからのサインイン
 
-Azure Active Directory Identity Protection によって検出されるリスク イベントには、リアルタイムで発生するものや、オフライン処理が必要なものがあります。 管理者は、危険な動作を見せるユーザーをブロックして手動で修復したり、パスワード変更を要求したり、条件付きアクセス ポリシーの一部として多要素認証を要求したりすることを選択できます。
+Azure Active Directory Identity Protection によって検出されるリスク検出には、リアルタイムで発生するものや、オフライン処理が必要なものがあります。 管理者は、危険な動作を見せるユーザーをブロックして手動で修復したり、パスワード変更を要求したり、条件付きアクセス ポリシーの一部として多要素認証を要求したりすることを選択できます。
 
 ## <a name="define-network-locations"></a>ネットワークの場所を定義する
 
@@ -297,7 +297,7 @@ NPS 拡張機能は、RADIUS とクラウドベースの Azure MFA の間のア�
 
 MFA に登録されていないユーザーが認証を試みたときの処理を選択します。 レジストリ パス `HKLM\Software\Microsoft\AzureMFA` のレジストリ設定 `REQUIRE_USER_MATCH` を使用して、機能の動作を制御します。 この設定の構成オプションは 1 つだけです。
 
-| キー | 値 | 既定値 |
+| Key | 値 | Default |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | TRUE / FALSE | 未設定 (TRUE に相当) |
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612885"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124672"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services:よく寄せられる質問 (FAQ)
 このページでは、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -61,6 +61,9 @@ Azure ADドメイン サービスを 構成するか、または管理する際�
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。
 いいえ。 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 招待プロセスを使用して Azure AD ディレクトリに招待されたゲスト ユーザーは、Azure AD Domain Services の管理対象ドメインに同期されます。 ただし、これらのユーザーのパスワードは Azure AD ディレクトリに保存されません。 そのため、Azure AD Domain Services で、これらのユーザーの NTLM と Kerberos のハッシュをマネージド ドメインに同期できません。 その結果、当該ユーザーは、管理対象ドメインにログインすることや、コンピューターを管理対象ドメインに参加させることができません。
+
+### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>既存の Azure AD Domain Services マネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、または仮想ネットワークに移動できますか。
+いいえ。 Azure AD Domain Services マネージド ドメインを作成した後は、そのインスタンスを別のリソース グループ、仮想ネットワーク、サブスクリプションなどに移動することはできません。Azure AD DS インスタンスをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、および仮想ネットワークを慎重に選択してください。
 
 ## <a name="administration-and-operations"></a>管理と操作
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>リモート デスクトップを使用してマネージド ドメインのドメイン コントローラーに接続できますか。
