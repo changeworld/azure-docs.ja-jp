@@ -476,8 +476,6 @@
               items:
                 - name: SharePoint サイト
                   href: app/sharepoint.md
-                - name: Dynamics CRM
-                  href: app/sample-mscrm.md
                 - name: Windows デスクトップ
                   href: app/windows-desktop.md
         - name: Containers

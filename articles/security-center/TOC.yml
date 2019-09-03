@@ -4,8 +4,10 @@
   items:
     - name: Security Center について
       href: security-center-intro.md
-    - name: Security Center でサポートされているプラットフォームと機能
+    - name: サポートされるプラットフォーム
       href: security-center-os-coverage.md
+    - name: サポートされる機能
+      href: security-center-services.md
 - name: クイック スタート
   expanded: true
   items:
