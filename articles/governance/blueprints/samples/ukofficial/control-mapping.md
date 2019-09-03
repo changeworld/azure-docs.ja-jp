@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 945898105aab7261ee494a86aeff10337599feb3
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 7da31e09157b8877db4d36d0f061f29433d02d11
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226005"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515631"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング
 
@@ -33,11 +33,11 @@ ms.locfileid: "68226005"
 このブループリントでは、特定の暗号化コントロールを適用し、脆弱な暗号化設定の使用を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、暗号化コントロールの使用に関するポリシーの適用を支援します。
 最適でない暗号化構成が Azure リソースのどこに存在しているかを把握することにより、適切な是正措置を実施し、リソースの構成を情報セキュリティ ポリシーに準拠させることができます。 具体的には、このブループリントによって割り当てられるポリシーでは、データ レイク ストレージ アカウントの暗号化の要求、SQL データベースでの Transparent Data Encryption の要求、ストレージ アカウント、SQL データベース、仮想マシン ディスク、および自動化アカウント変数での暗号化の不足の監査、ストレージ アカウントおよび Redis Cache へのセキュリティで保護されていない接続の監査、仮想マシンの脆弱なパスワード暗号化の監査、暗号化されていない Service Fabric 通信の監査を行います。
 
-- 暗号化されていない SQL データベースを Azure Security Center で監視する
+- SQL データベースで Transparent Data Encryption を有効にする必要がある
 - 仮想マシンでディスク暗号化を適用する必要がある
 - Automation アカウント変数は、暗号化する必要がある
 - ストレージ アカウントへの安全な転送を有効にする必要がある
-- Service Fabric クラスターで ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある
+- Service Fabric クラスターでは、ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある
 - SQL データベースで Transparent Data Encryption を有効にする必要がある
 - SQL DB Transparent Data Encryption をデプロイする
 - Data Lake Store アカウントの暗号化を要求する
@@ -151,7 +151,7 @@ Azure では、Azure のリソースにアクセスできるユーザーの管�
 
 このブループリントでは、Azure リソースのログ設定を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、システム イベントのログ記録の徹底を支援します。 割り当てられたポリシーでは、指定された Log Analytics ワークスペースにログを送信していない仮想マシンがないかどうかも監査されます。
 
-- 未監査の SQL サーバーの Azure Security Center での監視
+- SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 - 診断設定の監査
 - SQL サーバー レベルの監査設定の監査
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ

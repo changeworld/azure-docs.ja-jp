@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: barclayn
-ms.openlocfilehash: 784a6821502a0e02a74d619047604ffe47df7e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf55761bb58e309f919e08530fe047a137756323
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60914179"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656535"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure Dedicated HSM の高可用性
 
@@ -25,7 +25,7 @@ Azure Dedicated HSM は、Microsoft の高可用データセンターによっ�
 
 ## <a name="high-availability-example"></a>高可用性の例
 
-ソフトウェア レベルで高可用性を実現するための HSM デバイスの構成方法については、「Gemalto Luna Network HSM Administration Guide」(Gemalto Luna Network HSM 管理ガイド) を参照してください。 このドキュメントは、[Gemalto カスタマー サポート ポータル](https://supportportal.gemalto.com/csm/)で入手できます。
+ソフトウェア レベルで高可用性を実現するための HSM デバイスの構成方法については、「Gemalto Luna Network HSM Administration Guide」(Gemalto Luna Network HSM 管理ガイド) を参照してください。 このドキュメントは、[Gemalto HSM](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) ページから入手できます。
 
 次の図は、高可用アーキテクチャを示しています。 リージョン内の複数のデバイスと、別のリージョン内のペアリングされた複数のデバイスを使用しています。 このアーキテクチャは、4 つ以上の HSM デバイスと仮想ネットワーク コンポーネントを使用しています。
 

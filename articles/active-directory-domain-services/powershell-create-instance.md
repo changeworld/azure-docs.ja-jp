@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: iainfou
-ms.openlocfilehash: daddb2d13aee08fe7294ab2d7f0892bab761562b
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: c6572ab8bc2a10039f327233f983c2e822fba3b0
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472682"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617215"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell を使用した Azure Active Directory Domain Services の有効化
 この記事では、PowerShell を使用して Azure Active Directory (AD) Domain Services を有効にする方法について説明します。
@@ -62,7 +62,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso100.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -124,7 +124,7 @@ $Vnet=New-AzVirtualNetwork `
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso100.com"
+$ManagedDomainName = "contoso.com"
 $ResourceGroupName = "ContosoAaddsRg"
 $VnetName = "DomainServicesVNet_WUS"
 $AzureLocation = "westus"
@@ -140,9 +140,9 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > [!WARNING]
 > **マネージド ドメインをプロビジョニングした後、必ず追加の構成手順を実行してください。**
 > マネージド ドメインがプロビジョニングされた後、次のタスクを実行する必要があります。
-> * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの **[DNS 設定を更新](active-directory-ds-getting-started-dns.md)** します。
-> * **[Azure AD Domain Services とのパスワード同期を有効](active-directory-ds-getting-started-password-sync.md)** にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
-
+> * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。 DNS を構成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
+> * 必要なネットワーク セキュリティ グループ規則を作成して、マネージド ドメインに対する受信トラフィックを制限します。 ネットワーク セキュリティ グループ規則を作成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、適切なネットワーク セキュリティ グループ規則を自動的に作成するように求められます。
+> * **[Azure AD Domain Services とのパスワード同期を有効](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)** にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="powershell-script"></a>PowerShell スクリプト
 この記事に記載されたすべてのタスクを実行するために使用する PowerShell スクリプトを以下に示します。 スクリプトをコピーし、'.ps1' 拡張子付きのファイルに保存します。 PowerShell または PowerShell Integrated Scripting Environment (ISE) を使用して、スクリプトを実行します。
@@ -153,9 +153,9 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 ```powershell
 # Change the following values to match your deployment.
-$AaddsAdminUserUpn = "admin@contoso100.onmicrosoft.com"
+$AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-$ManagedDomainName = "contoso100.com"
+$ManagedDomainName = "contoso.com"
 $ResourceGroupName = "ContosoAaddsRg"
 $VnetName = "DomainServicesVNet_WUS"
 $AzureLocation = "westus"
@@ -224,11 +224,12 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > [!WARNING]
 > **マネージド ドメインをプロビジョニングした後、必ず追加の構成手順を実行してください。**
 > マネージド ドメインがプロビジョニングされた後、次のタスクを実行する必要があります。
-> * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
-> * Azure AD Domain Services とのパスワード同期を有効にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
+> * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。 DNS を構成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
+> * 必要なネットワーク セキュリティ グループ規則を作成して、マネージド ドメインに対する受信トラフィックを制限します。 ネットワーク セキュリティ グループ規則を作成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、適切なネットワーク セキュリティ グループ規則を自動的に作成するように求められます。
+> * **[Azure AD Domain Services とのパスワード同期を有効](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)** にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="next-steps"></a>次の手順
 マネージド ドメインを作成した後は、マネージド ドメインを使用できるように、次の構成タスクを実行します。
 
-* [仮想ネットワークの DNS サーバー設定をマネージド ドメインを指定するように更新する](active-directory-ds-getting-started-dns.md)
-* [マネージド ドメインとのパスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
+* [仮想ネットワークの DNS サーバー設定をマネージド ドメインを指定するように更新する](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)
+* [マネージド ドメインとのパスワード同期を有効にする](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)
