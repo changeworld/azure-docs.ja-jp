@@ -72,7 +72,7 @@ VM で JIT ポリシーを構成するには、3 つの方法があります。
 ASC から JIT ポリシーを構成し、JIT のポリシー使用して VM へのアクセスを要求できます。
 
 
-### <a name="jit-asc">ASC で VM の JIT アクセスを構成する</a>
+### ASC で VM の JIT アクセスを構成する <a name="jit-asc"></a>
 
 1. **[Security Center]** ダッシュボードを開きます。
 
