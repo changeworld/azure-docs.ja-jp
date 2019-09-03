@@ -147,6 +147,8 @@
           href: concepts-data-flow-overview.md
         - name: デバッグ モード
           href: concepts-data-flow-debug-mode.md
+        - name: JSON の処理
+          href: concepts-data-flow-json.md
         - name: スキーマの誤差
           href: concepts-data-flow-schema-drift.md
         - name: '[検査] ウィンドウ'
@@ -446,6 +448,8 @@
           href: control-flow-webhook-activity.md
     - name: データ フローの変換
       items:
+        - name: 固定幅ファイル
+          href: how-to-fixed-width.md
         - name: 集約
           href: data-flow-aggregate.md
         - name: 行の変更
@@ -600,6 +604,8 @@
           href: data-migration-guidance-overview.md
         - name: データを AWS S3 から Azure に移行する
           href: data-migration-guidance-s3-azure-storage.md
+        - name: オンプレミスの Hadoop クラスターから Azure へのデータの移行
+          href: data-migration-guidance-hdfs-azure-storage.md
 - name: リファレンス
   items:
     - name: .NET

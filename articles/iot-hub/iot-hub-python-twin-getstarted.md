@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 62385f4bd07f4b80dc3d571d409e16c7e0dca205
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: c720dfe7aeaa39a1717362b040b5548e116cc246
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667855"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062077"
 ---
 # <a name="get-started-with-device-twins-python"></a>デバイス ツインの概要 (Python)
 
@@ -49,11 +49,15 @@ ms.locfileid: "68667855"
 
 このセクションでは、 **{Device ID}** に関連付けられたデバイス ツインに場所のメタデータを追加する Python コンソール アプリを作成します。 その後、レドモンドにあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT ハブに格納されているデバイス ツインに対してクエリを実行します。
 
-1. コマンド プロンプトを開き、**Azure IoT Hub Service SDK for Python** をインストールします。 SDK をインストールしたら、コマンド プロンプトを閉じます。
+1. 作業ディレクトリでコマンド プロンプトを開き、**Azure IoT Hub Service SDK for Python** をインストールします。
 
-   ```
+   ```cmd/sh
    pip install azure-iothub-service-client
    ```
+
+   > [!NOTE]
+   > azure-iothub-service-client と azure-iothub-device-client の pip パッケージは、現在 Windows OS でのみ利用できます。 Linux/Mac OS については、[Python 用の開発環境の準備](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に関する記事で、Linux と Mac OS の各セクションを参照してください。
+   >
 
 2. テキスト エディターを使用して、新しい **AddTagsAndQuery.py** ファイルを作成します。
 
@@ -66,7 +70,7 @@ ms.locfileid: "68667855"
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. 次のコードを追加し、`[IoTHub Connection String]` および `[Device Id]` のプレースホルダーを、前のセクションで作成した IoT ハブとデバイス ID の接続文字列に置き換えます。
+4. 次のコードを追加します。 `[IoTHub Connection String]` を、「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えます。 `[Device Id]` を、「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」で登録したデバイス ID に置き換えます。
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -80,7 +84,7 @@ ms.locfileid: "68667855"
 
 5. 次のコードを **AddTagsAndQuery.py** ファイルに追加します。
 
-     ```python
+    ```python
     def iothub_service_sample_run():
         try:
             iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
@@ -143,7 +147,7 @@ ms.locfileid: "68667855"
 
     **Redmond43** にあるすべてのデバイスを照会するクエリの結果には、1 件のデバイスが表示され、携帯ネットワークを使用するデバイスに絞り込んだ結果には 0 件のデバイスが表示されます。
 
-    ![Redmond にあるすべてのデバイスを表示する最初のクエリ](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
+    ![Redmond にあるすべてのデバイスを表示する最初のクエリ](./media/iot-hub-python-twin-getstarted/service-1.png)
 
 次のセクションでは、接続情報を報告し、前のセクションのクエリの結果を変更するデバイス アプリを作成します。
 
@@ -151,11 +155,15 @@ ms.locfileid: "68667855"
 
 このセクションでは、 **{Device ID}** としてハブに接続し、デバイス ツインのレポートされるプロパティに携帯ネットワークを使用しているという情報を含めるよう更新する Python コンソール アプリを作成します。
 
-1. コマンド プロンプトを開き、**Azure IoT Hub Service SDK for Python** をインストールします。 SDK をインストールしたら、コマンド プロンプトを閉じます。
+1. 作業ディレクトリのコマンド プロンプトから、**Azure IoT Hub Service SDK for Python** をインストールします。
 
-    ```
+    ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > azure-iothub-service-client と azure-iothub-device-client の pip パッケージは、現在 Windows OS でのみ利用できます。 Linux/Mac OS については、[Python 用の開発環境の準備](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に関する記事で、Linux と Mac OS の各セクションを参照してください。
+   >
 
 2. テキスト エディターを使用して、新しい **ReportConnectivity.py** ファイルを作成します。
 
@@ -167,7 +175,7 @@ ms.locfileid: "68667855"
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
     ```
 
-4. 次のコードを追加し、`[IoTHub Device Connection String]` プレースホルダーを、前のセクションで作成した IoT ハブ デバイスの接続文字列に置き換えます。
+4. 次のコードを追加します。 `[IoTHub Device Connection String]` プレースホルダーの値を、「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」でコピーしておいたデバイス接続文字列に置き換えます。
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -227,7 +235,7 @@ ms.locfileid: "68667855"
             return
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
-     ```
+    ```
 
     **Client** オブジェクトに、デバイスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、**Client** オブジェクトを初期化した後、デバイスのデバイス ツインを取得して、報告されるプロパティに接続情報を含めるよう更新します。
 
@@ -248,7 +256,7 @@ ms.locfileid: "68667855"
 
     デバイス ツインが更新されたこと示す確認メッセージが表示されます。
 
-    ![ツインの更新](./media/iot-hub-python-twin-getstarted/2-python-client-sample.png)
+    ![ツインの更新](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. これで、デバイスが接続情報を報告したため、両方のクエリで表示されるようになります。 戻って、クエリをもう一度実行します。
 
@@ -258,7 +266,7 @@ ms.locfileid: "68667855"
 
     今回は、 **{Device ID}** が両方のクエリ結果に表示されるはずです。
 
-    ![2 番目のクエリ](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
+    ![2 番目のクエリ](./media/iot-hub-python-twin-getstarted/service-2.png)
 
 ## <a name="next-steps"></a>次の手順
 

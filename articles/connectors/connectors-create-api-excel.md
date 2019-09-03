@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-tags: connectors
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/23/2018
-ms.openlocfilehash: 28739ad65462acc9f2d2ed7db1e9ed14d19f032c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+tags: connectors
+ms.openlocfilehash: 5d0d276096441c780dee4f8b1e95442a1d7e7b25
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311966"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050915"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Azure Logic Apps を使用して Excel Online データを管理する
 
@@ -34,7 +35,7 @@ Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * 職場アカウントまたは個人の Microsoft アカウント用の [Office 365 アカウント](https://www.office.com/)。
 
@@ -53,7 +54,7 @@ Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for
 
 1. 検索ボックスに、フィルターとして「excel」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
-1. Office 365 アカウントへのサインインを求められたら、 **[サインイン]** を選択します。
+1. メッセージに従って、Office 365 アカウントにサインインします。
 
    Excel Online への接続を作成してデータにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
 
@@ -65,11 +66,6 @@ Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for
 
 * [Excel Online for Business](/connectors/excelonlinebusiness/)
 * [Excel Online for OneDrive](/connectors/excelonline/)
-
-## <a name="get-support"></a>サポートを受ける
-
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: dd639ae7e05309ab4528eb460ce38550db4cffe1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: e06d6473a47dcff3506843150375c70ed2bd8cea
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670775"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061825"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -21,6 +21,8 @@ Azure Data Lake Storage Gen2 は、ビッグ データ分析専用のクラウ�
 ## <a name="data-lake-storage-gen2-availability"></a>Data Lake Storage Gen2 の可用性
 
 Data Lake Storage Gen2 は、ほぼすべての Azure HDInsight クラスターの種類のストレージ オプションとして、既定のストレージ アカウントと追加のストレージ アカウントの両方で使用できます。 ただし、HBase が持てる Data Lake Storage Gen2 アカウントは 1 つのみです。
+
+Data Lake Storage Gen2 を使用したクラスター作成オプションの詳細な比較については、「[Azure HDInsight クラスターで使用するストレージ オプションを比較する](hdinsight-hadoop-compare-storage-options.md)」を参照してください。
 
 > [!Note]  
 > Data Lake Storage Gen2 を**プライマリ ストレージの種類**として選択すると、追加のストレージとして Data Lake Storage Gen1 アカウントを選択できなくなります。

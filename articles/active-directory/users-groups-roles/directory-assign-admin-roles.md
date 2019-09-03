@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/04/2019
+ms.date: 08/23/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4d692110a304cbfbbfda69bb2b10e3a065b2450
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a228c0d349fd45f34923a64ef99dcfba50c4c548
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851524"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034984"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -29,9 +29,7 @@ Azure Active Directory (Azure AD) を使用して、特権が低いロールで 
 
 グローバル管理者ロールに割り当てられているユーザーは、Azure AD 組織内のすべての管理設定の読み取りと変更を行うことができます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、Azure AD 組織のグローバル管理者ロールが割り当てられます。 管理者ロールを委任できるのはグローバル管理者と特権ロール管理者だけです。 ビジネスに対するリスクを軽減するには、このロールを割り当てる組織内のユーザーの数をできる限り少なくすることをお勧めします。
 
-## <a name="best-practices"></a>ベスト プラクティス
-
-ベスト プラクティスとして、組織内でこのロールを割り当てるユーザーは 5 人未満にすることをお勧めします。 組織内でグローバル管理者ロールを割り当てるユーザーが 5 人以上になる場合は、次の方法で数を減らすことができます。
+ベスト プラクティスとして、組織内でこのロールを割り当てるユーザーは 5 人未満にすることをお勧めします。 組織内でグローバル管理者ロールを割り当てるユーザーが 5 人以上になる場合は、次の方法でその利用を減らすことができます。
 
 ### <a name="find-the-role-you-need"></a>必要なロールを調べる
 
@@ -94,9 +92,9 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[クラウド デバイス管理者](#cloud-device-administrator)** :このロールのユーザーは、Azure AD でデバイスを有効化、無効化、および削除することができ、Azure portal で Windows 10 の BitLocker キーを読み取る (ある場合) ことができます。 このロールでは、デバイス上の他のプロパティを管理するアクセス許可の付与は行いません。
 
-* **[コンプライアンス管理者](#compliance-administrator)** :このロールのユーザーには、Microsoft 365 コンプライアンス センター、Microsoft 365 管理センター、Azure、および Office 365 セキュリティ/コンプライアンス センターのコンプライアンス関連の機能を管理する権限があります。 また、ユーザーは、Exchange 管理センター、Teams および Skype for Business の管理センター内のすべての機能を管理したり、Azure および Microsoft 365 のサポート チケットを作成したりすることもできます。 詳しくは、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+* **[コンプライアンス管理者](#compliance-administrator)** :このロールのユーザーには、Microsoft 365 コンプライアンス センター、Microsoft 365 管理センター、Azure、および Office 365 セキュリティ/コンプライアンス センターのコンプライアンス関連の機能を管理する権限があります。 割り当て先は、Exchange 管理センター、Teams および Skype for Business の管理センター内のすべての機能を管理したり、Azure および Microsoft 365 のサポート チケットを作成したりすることもできます。 詳しくは、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
-  イン | できること
+  場所 | できること
   ----- | ----------
   [Microsoft 365 コンプライアンス センター](https://protection.office.com) | Microsoft 365 サービス全体での組織のデータの保護および管理<br>コンプライアンス アラートの管理
   [コンプライアンス マネージャー](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 組織の法令遵守活動の追跡、割り当て、確認
@@ -104,9 +102,9 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Intune のすべての監査データの表示
   [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる<br>ファイル ポリシーの作成と変更、ファイル ガバナンス アクションの許可<br> データ管理下のすべての組み込みレポートの表示
 
-* **[コンプライアンス データ管理者](#compliance-data-administrator)** :このロールのユーザーには、Microsoft 365 コンプライアンス センター、Microsoft 365 管理センター、および Azure のデータを保護および追跡するための権限があります。 また、ユーザーは、Exchange 管理センター、Compliance Manager 、Teams および Skype for Business の管理センター内のすべての機能を管理したり、Azure および Microsoft 365 のサポート チケットを作成したりすることもできます。
+* **[コンプライアンス データ管理者](#compliance-data-administrator)** :このロールが割り当てられたユーザーには、Microsoft 365 コンプライアンス センター、Microsoft 365 管理センター、および Azure のデータを追跡するための権限があります。 ユーザーは、Exchange 管理センター、Compliance Manager、Teams および Skype for Business の管理センター内のコンプライアンス データを追跡したり、Azure および Microsoft 365 のサポート チケットを作成したりすることもできます。
 
-  イン | できること
+  場所 | できること
   ----- | ----------
   [Microsoft 365 コンプライアンス センター](https://protection.office.com) | Microsoft 365 サービス全体のコンプライアンス関連ポリシーの監視<br>コンプライアンス アラートの管理
   [コンプライアンス マネージャー](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | 組織の法令遵守活動の追跡、割り当て、確認
@@ -249,7 +247,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   Identity Protection Center | 各セキュリティ機能の全セキュリティ レポートと設定情報の閲覧<br><ul><li>スパム対策<li>暗号化<li>データ損失の防止<li>マルウェア対策<li>高度な脅威保護<li>フィッシング詐欺対策<li>メールフロー ルール
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Azure AD PIM に表示される、Azure AD ロール割り当てに関するポリシーとレポート、セキュリティ レビューのすべての情報に対する読み取り専用アクセス権を持ちます。また、将来的には、Azure AD ロール割り当て以外のシナリオのポリシー データとレポートに対する読み取りアクセス権も付与される予定です。<br>Azure AD PIM へのサインアップおよび Azure AD PIM の変更を行うことは**できません**。 このロールのユーザーは、追加のロール (グローバル管理者や特権ロール管理者など) の資格がある場合、PIM ポータルまたは PowerShell からそれらのロールを有効化することができます。
   [Office 365 セキュリティ/コンプライアンス センター](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | セキュリティ ポリシーの表示<br>セキュリティの脅威の表示および調査<br>レポートを表示する
-  Windows Defender ATP および EDR | アラートの表示と調査
+  Windows Defender ATP および EDR | アラートを表示して調査します。 Windows Defender ATP でロールベースのアクセス制御を有効にすると、Azure AD セキュリティ閲覧者ロールなどの読み取り専用アクセス許可を持つユーザーは、Windows Defender ATP ロールが割り当てられるまで、アクセス権を失います。
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | ユーザー、デバイス、登録、構成、アプリケーション情報の表示。 Intune に変更を加えることはできません。
   [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | 読み取り専用アクセス許可があり、アラートを管理できる
   [Azure Security Center](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) | 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません
