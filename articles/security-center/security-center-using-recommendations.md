@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 13d6eb64b2089cf93f08c294cc9b6a2034b64fa0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640873"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990558"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
 セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。 
@@ -75,6 +75,6 @@ Security Center の推奨事項を監視することにより、攻撃が行わ�
 ## <a name="next-steps"></a>次の手順
 時間が経ってもリソースを保護し続けられるように、Security Center の推奨事項を定期的にチェックできる、適切な監視プロセスが備わっていることを確かめます。
 
-このシナリオでは、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明しました。 攻撃を受ける前にインシデント対応計画を策定する方法については、[インシデント対応シナリオ](security-center-incident-response.md)を参照してください。
+このシナリオでは、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明しました。
 
-[インシデント対応](security-center-incident-response.md)で脅威に対応する方法を確認してください。
+[セキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)を行うことで、脅威に対応する方法を確認します。

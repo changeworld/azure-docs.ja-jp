@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: bf9bb7adfa25ea16498a32b57d4927de7e81c007
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 98b97abf9fe0d8e71f93022dcbfeff0a5339d5a1
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826920"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983082"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -51,7 +51,7 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 
         ![Spark2 Ambari の構成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-    1. `spark.hadoop.hive.llap.daemon.service.hosts` を、**Advanced hive-interactive-env** のプロパティ **LLAP app name** と同じ値に設定します。 たとえば、`llap0` のように指定します。
+    1. `spark.hadoop.hive.llap.daemon.service.hosts` を、** Advanced hive-interactive-site** の **hive.llap.daemon.service.hosts** プロパティと同じ値に設定します。 たとえば、`@llap0` のように指定します。
 
     1. `spark.sql.hive.hiveserver2.jdbc.url` を JDBC 接続文字列に設定します。これにより、対話型クエリ クラスター上の Hiveserver2 に接続されます。 クラスターの接続文字列は、次の URI のようになります。 `CLUSTERNAME` は自分の Spark クラスターの名前であり、`user` および `password` パラメーターは自分のクラスターに対して適切な値に設定されます。
 

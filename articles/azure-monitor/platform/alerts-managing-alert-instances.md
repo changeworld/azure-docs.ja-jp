@@ -8,15 +8,18 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: cb93f38c05156d7ab5acb89ffff810949583e507
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dbc7d37ce311d203ee051b5a23632d2bf401e27a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551874"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034841"
 ---
 # <a name="manage-alert-instances"></a>アラート インスタンスを管理する
 Azure Monitor の[統合アラート エクスペリエンス](https://aka.ms/azure-alerts-overview)では、1 つのウィンドウで、複数のサブスクリプションにまたがる Azure 全体のさまざまな種類のアラートをすべて表示できます。 この記事では、アラート インスタンスを表示する方法と特定のアラート インスタンスのトラブルシューティングを見つけるためにポータルで詳細を確認する方法を説明します。
+
+> [!NOTE]
+   >  UX または REST API では、過去 30 日間に生成されたアラートのみにアクセスできます。
 
 1. [アラート] ページには、3 つの方法が示されています
 
