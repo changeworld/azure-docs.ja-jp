@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7cf87c3a146f51666a2c24c7cd0d6e9425159225
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228406"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905218"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
@@ -21,7 +21,7 @@ ms.locfileid: "68228406"
 
 Azure Migrate サービスには次の 2 つのバージョンがあります。
 
-- **最新バージョン**:Azure Migrate プロジェクトの作成、オンプレミス マシンの検出、評価と移行の調整を行う場合はこちらのバージョンを使用します。 このバージョンの新機能については[こちらをご覧ください](whats-new.md)。
+- **最新バージョン**:Azure Migrate プロジェクトの作成、オンプレミス マシンの検出、評価と移行の調整を行う場合はこちらのバージョンを使用します。 このバージョンの新機能については[こちらを参照してください](whats-new.md)。
 - **旧バージョン**:旧バージョンの Azure Migrate (オンプレミスの VMware VM の評価のみサポート) を使用している場合、今後は最新バージョンを使用してください。 旧バージョンで作成した Azure Migrate プロジェクトを今後も使用する必要がある場合にできることとできないことは、以下のとおりです。
     - 移行プロジェクトは作成できなくなります。
     - 新しく検出を行わないことをお勧めします。
@@ -246,7 +246,6 @@ MMA でサポートされる Linux オペレーティング システムの一�
 
 System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 必要な依存関係データを収集するために、Service Map が Operations Manager の MMA と統合されています。 [詳細情報](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)。 依存関係エージェントはインストールする必要があります。
 
-
 ### <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 
 1. Windows マシンに依存関係エージェントをインストールするには、セットアップ ファイルをダブルクリックし、ウィザードに従います。
@@ -254,9 +253,11 @@ System Center Operations Manager 2012 R2 以降によって監視されている
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) および [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) オペレーティング システムの依存関係エージェントのサポートに関する詳細を確認してください。
-- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)をご覧ください。
+- Windows および Linux オペレーティング システムの[依存関係エージェントのサポート](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)に関する詳細を確認してください。
+- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)をご覧ください。
 
+>[!NOTE]
+> システムの前提条件や Dependency Agent のデプロイ方法についての概要を紹介するために引用されている Azure Monitor for VMs の記事は、Service Map ソリューションにも当てはまります。
 
 ### <a name="create-a-group-with-dependency-mapping"></a>依存関係マッピングを使用してグループを作成する
 

@@ -1,5 +1,5 @@
 ---
-title: Azure IoT プラグ アンド プレイ プレビュー デバイスを作成し、テストする | Microsoft Docs
+title: IoT プラグ アンド プレイ プレビュー デバイスを作成し、テストする | Microsoft Docs
 description: デバイス開発者向けに、VS Code を使用して IoT プラグ アンド プレイ プレビュー デバイス用の新しいデバイス機能モデルを作成し、テストする方法について説明します。
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 5a03eea84d0d68f06b432014fc4374e799914d67
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 10eb9655371177a52d1c1a5a9118665015076b35
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878723"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047980"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>チュートリアル:Visual Studio Code を使用してデバイス機能モデルを作成し、テストする
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb9281af16dc8e4b4544cb18a2aae51aa3d9be27
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: e506259b980c0aaf0300c0bb0a1aa0803171643a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575890"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098953"
 ---
 # <a name="create-and-manage-environments-for-training-and-deployment"></a>トレーニングとデプロイのための環境の作成と管理
 
@@ -95,7 +95,7 @@ myenv = Environment.from_existing_conda_environment(name = "myenv",
 
 ### <a name="automatically-create-environments"></a>環境を自動的に作成する
 
-[submit()]() メソッドを使用してトレーニング実行を送信することによって、環境を自動的に作成します。 トレーニング実行を送信すると、必要な依存関係のサイズによっては、新しい環境の構築に数分かかる場合があります。 
+submit() メソッドを使用してトレーニング実行を送信することによって、環境を自動的に作成します。 トレーニング実行を送信すると、必要な依存関係のサイズによっては、新しい環境の構築に数分かかる場合があります。 
 
 実行を送信する前に実行構成で環境を指定しなかった場合は、既定の環境が作成されます。
 

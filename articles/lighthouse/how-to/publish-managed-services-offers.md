@@ -4,26 +4,26 @@ description: Azure の委任されたリソース管理に顧客をオンボー�
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: bb2f26a170bbd60eb927bd00f6def7d033fafee9
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f9d3fad2a98647bcd10d54c03a76e95bc3e05227
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810836"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011861"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
-この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)を使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行し、そのオファーを購入した顧客を Azure の委任されたリソース管理にオンボードできるようにする方法について説明します。 
+この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)を使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行し、そのオファーを購入した顧客を Azure の委任されたリソース管理にオンボードできるようにする方法について説明します。
 
 > [!NOTE]
 > これらのオファーを作成して発行するには、[パートナー センターの有効なアカウント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)が必要です。 まだアカウントをお持ちでない場合は、[サインアップ プロセス](https://aka.ms/joinmarketplace)に従って、パートナー センターのアカウントを作成し、商業マーケットプレース プログラムに登録する手順を進めてください。 顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)。
 >
 > オファーを Azure Marketplace に発行しない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure の委任されたリソース管理に顧客をオンボードする](onboard-customer.md)」を参照してください。
 
-マネージド サービス オファーの発行は、他の種類のオファーを Azure Marketplace に発行する場合と同様です。 そのプロセスについては、「[Azure Marketplace と AppSource の公開ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)」および「[Azure Marketplace と AppSource Marketplace のオファーを管理する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers)」を参照してください。
+マネージド サービス オファーの発行は、他の種類のオファーを Azure Marketplace に発行する場合と同様です。 そのプロセスについては、「[Azure Marketplace と AppSource の公開ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)」および「[Azure Marketplace と AppSource Marketplace のオファーを管理する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers)」を参照してください。 さらに、「[商業マーケットプレースの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)」(特に「[マネージド サービス](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)」セクション) も確認してください。
 
 > [!IMPORTANT]
 > マネージド サービス オファー内の各プランには、 **[Manifest Details]\(マニフェストの詳細\)** セクションが含まれています。そこでは、そのプランを購入した顧客に代わり、委任されたリソース グループやサブスクリプションへのアクセス権を持つ Azure Active Directory (Azure AD) エンティティをお客様のテナント内に定義します。 ここに含めたグループ (またはユーザーまたはサービス プリンシパル) は、そのプランを購入したすべての顧客に対して同じアクセス許可を持つことに注意する必要があります。 顧客ごとに異なる担当グループを割り当てるには、各顧客に限定された個別のプライベート プランを発行する必要があります。
@@ -56,7 +56,7 @@ ms.locfileid: "67810836"
 
 |フィールド  |説明  |
 |---------|---------|
-|**タイトル**     | 表示されるプランのフレンドリ名。 最大長は 50 文字です。        |
+|**Title**     | 表示されるプランのフレンドリ名。 最大長は 50 文字です。        |
 |**まとめ**     | タイトルの下に表示されるプランの簡潔な説明。 最大長は 100 文字です。        |
 |**説明**     | プランについてのより詳しい説明を提供する説明テキスト。         |
 |**課金モデル**     | ここには課金モデルが 2 つ表示されますが、マネージド サービス オファーの場合は **[ライセンス持ち込み]** を選択する必要があります。 これは、このオファーに関連するコストはお客様が顧客に直接請求し、Microsoft はお客様に料金を一切請求しないことを意味します。   |
@@ -86,10 +86,10 @@ ms.locfileid: "67810836"
 
 |フィールド  |説明  |
 |---------|---------|
-|**タイトル**     |  プランのタイトル。通常は長い正式な名前。 このタイトルは、マーケットプレースで目立つように表示されます。 最大長は 50 文字です。 ほとんどの場合、これは **[プランの設定]** セクションで入力した**名前**と同じにします。       |
+|**Title**     |  プランのタイトル。通常は長い正式な名前。 このタイトルは、マーケットプレースで目立つように表示されます。 最大長は 50 文字です。 ほとんどの場合、これは **[プランの設定]** セクションで入力した**名前**と同じにします。       |
 |**まとめ**     | 実際のオファーの簡潔な目的または機能。 通常、これはタイトルの下に表示されます。 最大長は 100 文字です。        |
 |**Long Summary (長い要約)**     | 実際のオファーの目的または機能のより長い概要。 最大長は 256 文字です。        |
-|**説明**     | 実際のオファーの詳細情報。 このフィールドは、最大長が 3,000 文字で、単純な HTML 書式がサポートされています。        |
+|**説明**     | 実際のオファーの詳細情報。 このフィールドは、最大長が 3,000 文字で、単純な HTML 書式がサポートされています。 説明のどこかに、"マネージド サービス" という語を含める必要があります。       |
 |**Marketing Identifier (マーケティング識別子)**     | 一意の URL フレンドリ識別子。 これはこのオファーの Marketplace URL で使用されます。 たとえば、お客様の発行元 ID が *contoso* で、お客様のマーケティング識別子が *sampleApp* の場合、Azure Marketplace 内では、実際のオファーの URL は *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* になります。        |
 |**Preview Subscription IDs (プレビュー サブスクリプション ID)**     | 1 から 100 個のサブスクリプション識別子を追加します。 これらのサブスクリプションに関連付けられている顧客は、オファーの一般公開前に、Azure Marketplace 内でそのオファーを表示することができるようになります。 実際のオファーを顧客が購入できるようにする前に、そのオファーが Azure Marketplace 内でどのように表示されるかをプレビューできるように、ここでお客様自身のサブスクリプションを含めることをお勧めします  (Microsoft のサポートとエンジニアリング チームも、このプレビュー期間中にお客様のオファーを表示することができるようになります)。   |
 |**役に立つリンク**     | ドキュメント、リリース ノート、FAQ など、実際のオファーに関連する URL。        |
@@ -112,7 +112,7 @@ ms.locfileid: "67810836"
 - お客様のヒーロー ロゴの背景を黒、白、または透明にすることはできません。 埋め込まれるテキストは白で表示されるため、背景色が明るすぎないことを確認してください。
 - ヒーロー アイコンを含めて発行したプランは削除できません (ただし、必要に応じて別のバージョンを使用して更新することはできます)。
 
-**[Lead Management]\(リード管理\)** セクションでは、必要に応じて、お客様のリードを保存する CRM システムを選択できます。 
+**[Lead Management]\(リード管理\)** セクションでは、お客様のリードを保存する CRM システムを選択できます。 [マネージド サービスの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)上、 **[Lead Destination]\(リードのターゲット\)** は必須であることに注意してください。
 
 最後に、 **[Legal]\(リーガル\)** セクションにお客様の**プライバシー ポリシーの URL** と**利用規約**を入力します。 また、このオファーに[標準契約](https://docs.microsoft.com/azure/marketplace/standard-contract)を使用するかどうかを指定することもできます。
 

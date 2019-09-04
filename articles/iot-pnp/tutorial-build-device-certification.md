@@ -1,5 +1,5 @@
 ---
-title: 認定の準備が整った Azure IoT プラグ アンド プレイ プレビュー デバイスの構築 | Microsoft Docs
+title: 認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスの構築 | Microsoft Docs
 description: デバイス開発者として、認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスを構築する方法について学習します。
 author: tbhagwat3
 ms.author: tanmayb
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: bfa611eba8e7a990626fbace8b930962615e0594
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878753"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047909"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスの構築
 
@@ -124,7 +124,7 @@ VS Code で**デバイス情報**インターフェイスを表示するには:
 
 #### <a name="implement-the-model-information-and-sdk-information-interfaces"></a>モデル情報と SDK 情報のインターフェイスを実装する
 
-Azure IoT device SDK は、モデル情報と SDK 情報のインターフェイスを実装します。 VS Code のコード生成関数を使用すると、デバイス コードで Azure IoT プラグ アンド プレイ デバイス SDK が使用されます。
+Azure IoT device SDK は、モデル情報と SDK 情報のインターフェイスを実装します。 VS Code のコード生成関数を使用すると、デバイス コードで IoT プラグ アンド プレイ デバイス SDK が使用されます。
 
 Azure IoT device SDK を使用しないことを選択した場合は、SDK のソース コードを独自の実装の参照用に使用できます。
 

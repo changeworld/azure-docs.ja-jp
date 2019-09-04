@@ -290,12 +290,18 @@
               href: ../algorithm-module-reference/edit-metadata.md
             - name: 見つからないデータのクリーンアップ
               href: ../algorithm-module-reference/clean-missing-data.md
+            - name: 特徴ハッシュ
+              href: ../algorithm-module-reference/feature-hashing.md
+            - name: テキストからの N-gram 特徴抽出
+              href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: 列の追加
               href: ../algorithm-module-reference/add-columns.md
             - name: 行の追加
               href: ../algorithm-module-reference/add-rows.md
             - name: 重複する行の削除
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: Preprocess Text (テキストの前処理)
+              href: ../algorithm-module-reference/preprocess-text.md
             - name: データの結合
               href: ../algorithm-module-reference/join-data.md
             - name: データの分割

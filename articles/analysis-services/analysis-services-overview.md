@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 260d2774eecb42d0234c33e40b4f10680a4fbfbd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ebb6c05645a991d22ac30ee013e5a51007994eb6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932232"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073862"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -67,6 +67,8 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 |S4    |    400     |    100     |
 |S8*    |    320     |    200     |
 |S9*    |    640    |    400     |
+|S8v2*    |    640     |    200     |
+|S9v2*    |    1280    |    400     |
 
 \* すべてのリージョンで利用できるわけではありません。  
 
@@ -76,40 +78,41 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 
 ### <a name="americas"></a>アメリカ
 
-|リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
+|Region  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |ブラジル南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |East US     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |米国東部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
-|米国東部 2     |     S8、S9   |    1    |
+|米国東部 2     |     S8、S9、S8v2、S9v2   |    1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |米国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
-|米国西部     |    S8、S9   |    2  |
+|米国西部     |    S8、S9、S8v2、S9v2   |    2  |
 |米国西部 2    |    B1、B2、S0、S1、S2、S4、D1    |    3   |
-|米国西部 2    |    S8、S9  |    1     |
+|米国西部 2    |    S8、S9、S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>ヨーロッパ
 
-|リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
+|Region  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |北ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1      |    7     |
+|北ヨーロッパ     |    S8v2、S9v2      |    3     |
 |英国南部     |    B1、B2、S0、S1、S2、S4、D1      |     1    |
 |西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1   |    7    |
-|西ヨーロッパ    |   S8、S9  |  1  |
+|西ヨーロッパ    |   S8、S9、S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>アジア太平洋 
 
-|リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
+|Region  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |オーストラリア東部     |    B1、B2、S0、S1、S2、S4     |    3     |
-|オーストラリア東部     |    S8、S9    |    1     |
+|オーストラリア東部     |    S8、S9、S8v2、S9v2    |    1     |
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東日本     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |   1      |
+|東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>ニーズに合わせてスケール可能
@@ -246,7 +249,7 @@ Azure Analysis Services のドキュメントでは、[GitHub Issues](https://do
 
 ## <a name="blogs"></a>ブログ
 
-内容は急速に変化しています。 [Analysis Services チーム ブログ](https://blogs.msdn.microsoft.com/analysisservices/)と [Azure ブログ](https://azure.microsoft.com/blog/)で最新情報を入手できます。
+内容は急速に変化しています。 [Power BI ブログ](https://powerbi.microsoft.com/blog/category/analysis-services/)と [Azure ブログ](https://azure.microsoft.com/blog/)で最新情報を入手できます。
 
 ## <a name="community"></a>コミュニティ
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 6/21/2019
+ms.date: 08/29/2019
 ms.author: victorh
-ms.openlocfilehash: 933b4167f25db5a01cf1160f5e781a1fe31afc6b
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 119f28bcc4f88f0b4dc0ce65584dbce326087eba
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304596"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114775"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -150,3 +150,15 @@ Azure Firewall には、インターネットへの直接接続が必要です�
 ## <a name="what-does-provisioning-state-failed-mean"></a>"*プロビジョニング状態: 失敗*" はどのような意味ですか。
 
 構成の変更が適用されるたびに、Azure Firewall は、その基になるすべてのバックエンド インスタンスを更新しようとします。 まれに、これらのバックエンド インスタンスの 1 つが新しい構成での更新に失敗し、更新プロセスが停止して、失敗したプロビジョニングの状態になることがあります。 Azure Firewall はまだ操作可能ですが、適用された構成は矛盾した状態になっている可能性があります。この場合、一部のインスタンスは以前の構成であり、他のインスタンスはルール セットが更新されています。 このような場合は、操作が成功してファイアウォールが "*成功*" プロビジョニング状態になるまで、もう一度構成を更新してみてください。
+
+## <a name="is-there-a-character-limit-for-a-firewall-name"></a>ファイアウォール名に文字制限はありますか。
+
+はい。 ファイアウォール名には 50 文字の制限があります。
+
+## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>Azure Firewall に /26 サブネット サイズが必要なのはなぜですか。
+
+Azure Firewall では、スケールの際により多くの仮想マシン インスタンスをプロビジョニングする必要があります。 /26 アドレス空間を使用すると、スケールに対応できる十分な数の IP アドレスをファイアウォールに使用できるようになります。
+
+## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>サービスのスケールに応じてファイアウォール サブネットのサイズを変更する必要はありますか。
+
+いいえ。 Azure Firewall には、/26 よりも大きなサブネットは必要ありません。

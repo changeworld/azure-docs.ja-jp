@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6229e78958fdc4995153d99ad02a15804330f1b
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544006"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972649"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Active Directory を使用するための vCenter ID ソースの設定
 
@@ -55,15 +55,15 @@ Active Directory ドメインを設定するときは、次の表の情報を使
 | **Domain alias** (ドメイン エイリアス) | ドメインの NetBIOS 名。 SSPI 認証を使用している場合は、Active Directory ドメインの NetBIOS 名を ID ソースのエイリアスとして追加します。 |
 | **Base DN for groups** (グループのベース DN) | グループの基本識別名。 |
 | **Primary Server URL** (プライマリ サーバー URL) | ドメインのプライマリ ドメイン コントローラー LDAP サーバー。<br><br> `ldap://hostname:port`  または  `ldaps://hostname:port` の形式を使用します。 このポートは通常、LDAP 接続の場合は 389、LDAPS 接続の場合は 636 です。 Active Directory マルチドメイン コントローラー デプロイでは、ポートは通常、LDAP の場合は 3268、LDAPS の場合は 3269 です。<br><br>プライマリまたはセカンダリの LDAP URL で  `ldaps://`  を使用するときは、Active Directory サーバーの LDAPS エンドポイントに対して信頼を確立する証明書が必要です。 |
-| **Secondary server URL** (セカンダリ サーバー URL) | フェールオーバーに使用するセカンダリ ドメイン コントローラー LDAP サーバーのアドレス。 |
-| **Choose certificate** (証明書の選択) | Active Directory LDAP サーバーまたは OpenLDAP サーバーの ID ソースで LDAPS を使用する場合は、URL テキストボックスに「 `ldaps://` 」と入力した後に [証明書の選択] ボタンが表示されます。 セカンダリ URL は必要ありません。 |
+| **Secondary server URL** (セカンダリ サーバーの URL) | フェールオーバーに使用するセカンダリ ドメイン コントローラー LDAP サーバーのアドレス。 |
+| **Choose certificate** (証明書の選択) | Active Directory LDAP サーバーまたは OpenLDAP サーバーの ID ソースで LDAPS を使用する場合は、URL テキスト ボックスに「 `ldaps://` 」と入力した後に [証明書の選択] ボタンが表示されます。 セカンダリの URL は必須ではありません。 |
 | **ユーザー名** | ユーザーおよびグループのベース DN への最小限の読み取り専用アクセス権を持つドメイン内のユーザーの ID。 |
 | **パスワード** | Username で指定したユーザーのパスワード。 |
 
 前の表の情報がそろったら、vCenter でオンプレミスの Active Directory をシングル サインオンの ID ソースとして追加することができます。
 
 > [!TIP]
-> シングル サインオンの ID ソースの詳細については、<a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html" target="_blank">VMware のドキュメント ページ</a>を参照してください。
+> シングル サインオンの ID ソースの詳細については、[VMware のドキュメント ページ](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)を参照してください。
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>プライベート クラウド上で新しい Active Directory を設定する
 

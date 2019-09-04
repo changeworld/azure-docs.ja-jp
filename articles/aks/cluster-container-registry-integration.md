@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: ec017901e36a01042485e9aeca2431c8a6838ab8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 1f07581be8fc416f8aae5eec1460ca3d33bda8f9
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536247"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114244"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>プレビュー - Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
@@ -46,16 +46,20 @@ az extension add -y --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>ACR 統合を使用して新しい AKS クラスターを作成する
 
-AKS クラスターの初期作成中に AKS と ACR の統合を設定できます。  AKS クラスターが ACR と対話できるようにするために、Azure Active Directory の**サービス プリンシパル**が使用されます。 次の CLI コマンドは、指定されたリソース グループ内に ACR を作成し、サービス プリンシパル用の適切な **ACRPull** ロールを構成します。 *acr-name* が存在しない場合は、`aks<resource-group>acr` の既定の ACR 名が自動的に作成されます。  下のパラメーターの有効な値を指定してください。  かっこ内のパラメーターは省略可能です。
+AKS クラスターの初期作成中に AKS と ACR の統合を設定できます。  AKS クラスターが ACR と対話できるようにするために、Azure Active Directory の**サービス プリンシパル**が使用されます。 次の CLI コマンドは、指定されたリソース グループ内に ACR を作成し、サービス プリンシパル用の適切な **ACRPull** ロールを構成します。 指定したリソース グループに *acr-name* が存在しない場合は、`aks<resource-group>acr` の既定の ACR 名が自動的に作成されます。  下のパラメーターの有効な値を指定してください。  かっこ内のパラメーターは省略可能です。
 ```azurecli
 az login
 az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-or-resource-id>]
 ```
+** ACR リソース ID の形式は次のとおりです。 
+
+/subscriptions/<subscription-d>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<name> 
+  
 この手順は、完了するまでに数分かかることがあります。
 
 ## <a name="create-acr-integration-for-existing-aks-clusters"></a>既存の AKS クラスターに対する ACR 統合を作成する
 
-下の **acr-name** と **acr-resource-id** の有効な値を指定することによって、ACR と既存の ACR クラスターを統合します。
+下の **acr-name** または **acr-resource-id** に有効な値を指定することによって、既存の ACR と既存の AKS クラスターを統合します。
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acrName>

@@ -16,18 +16,18 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 43c070513f23564bd4679531e20b411f178920ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2d9b9512df294b25fa73b890a646f29dfd0c3d88
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136756"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113634"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>CLI を使用して GitHub からの継続的なデプロイで App Service アプリを作成する
 
 このサンプル スクリプトでは、App Service でアプリを関連リソースと合わせて作成し、GitHub リポジトリからの継続的デプロイを設定します。 継続的なデプロイを使用しない GitHub でのデプロイについては、[アプリの作成と GitHub からのコードのデプロイ](cli-deploy-github.md)に関するページを参照してください。 このサンプルでは、以下が必要です。
 
-* 管理アクセス許可のある、アプリケーション コードを含む GitHub リポジトリ。
+* 管理アクセス許可のある、アプリケーション コードを含む GitHub リポジトリ。 自動ビルドを取得するには、「[リポジトリを準備する](../deploy-continuous-deployment.md#prepare-your-repository)」の表に従ってリポジトリを構築します。
 * GitHub アカウントの[個人用アクセス トークン (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

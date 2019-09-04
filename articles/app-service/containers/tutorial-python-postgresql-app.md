@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1cb9cd72908dc88ef2890764bc8d3fad88a82707
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951903"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020184"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>PostgreSQL を使用した Python (Django) Web アプリを Azure App Service で作成する
 
@@ -142,7 +142,7 @@ Quit the server with CONTROL-C.
 
 ブラウザーで `http://localhost:8000` にアクセスします。 `No polls are available.` というメッセージが表示されます。 
 
-`http://localhost:8000/admin` に移動し、前の手順で作成した管理者ユーザーを使用してサインインします。 **[質問]** の横の **[追加]** をクリックし、いくつかの選択肢があるポーリングの質問を作成します。
+`http://localhost:8000/admin` に移動し、前の手順で作成した管理者ユーザーを使用してサインインします。 **[質問]** の横の **[追加]** を選択し、いくつかの選択肢があるポーリングの質問を作成します。
 
 ![ローカルで実行される Python Django アプリケーション](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
@@ -400,7 +400,7 @@ http://<app-name>.azurewebsites.net
 
 [Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを表示します。
 
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+左側のメニューで、 **[App Services]** を選択し、お客様の Azure アプリの名前を選択します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/tutorial-python-postgresql-app/app-resource.png)
 

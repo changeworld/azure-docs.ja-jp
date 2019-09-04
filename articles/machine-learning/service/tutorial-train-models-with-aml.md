@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/08/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 90f745d3ef5fd4442a184a51d82cd61b12828e15
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534800"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036189"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>チュートリアル:Azure Machine Learning で MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする
 
@@ -96,11 +96,11 @@ experiment_name = 'sklearn-mnist'
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-compute-resource"></a>コンピューティング リソースの作成または既存のもののアタッチ
+### <a name="create-or-attach-an-existing-compute-target"></a>コンピューティング先の作成または既存のコンピューティング先のアタッチ
 
 マネージド サービスである Azure Machine Learning コンピューティングを使用することにより、データ サイエンティストは Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできます。 たとえば、GPU がサポートされている VM などです。 このチュートリアルでは、トレーニング環境として Azure Machine Learning コンピューティングを作成します。 以下のコードでは、まだワークスペース内にコンピューティング クラスターがない場合、それらが作成されます。
 
- **コンピューティングの作成には約 5 分かかります。** ワークスペース内にコンピューティングが既にある場合は、それが使用され、作成プロセスはスキップされます。
+ **コンピューティング先の作成には約 5 分かかります。** ワークスペース内にコンピューティング リソースが既にある場合は、それが使用され、作成プロセスはスキップされます。
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -211,9 +211,9 @@ plt.show()
 
 ### <a name="upload-data-to-the-cloud"></a>クラウドへのデータのアップロード
 
-次に、ローカル コンピューターから Azure にデータをアップロードして、データをリモートから利用できるようにします。 これにより、リモート トレーニング用にアクセスできるようになります。 データストアは、データをアップロードまたはダウンロードするためにワークスペースに関連付けられている便利なコンストラクトです。 リモート コンピューティング先から対話することもできます。 それは Azure Blob Storage アカウントによってサポートされます。
+ここまでは、ノートブックが実行されているコンピューターにトレーニング データをダウンロードし、使用する方法について見てきました。  次のセクションでは、リモート Azure Machine Learning コンピューティングでモデルをトレーニングします。  リモートのコンピューティング リソースも、データへのアクセスが必要となります。 アクセスを提供するためには、ワークスペースに関連付けられた中央のデータストアにデータをアップロードします。 このデータストアは Azure データ センターにあるため、クラウド上のリモート コンピューティング先を使用しているときは、このデータストアを通じてデータに高速アクセスすることができます。
 
-MNIST ファイルは、データストアのルートにある `mnist` という名前のディレクトリ内にアップロードされます。
+MNIST ファイルは、データストアのルートにある `mnist` という名前のディレクトリにアップロードします。 詳細については、[データストアからデータにアクセスする](how-to-access-data.md)方法に関する記事を参照してください。
 
 ```python
 ds = ws.get_default_datastore()

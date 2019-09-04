@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 2b28c38d2444f227d26df1f9ca2d70876ff41064
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 016d004a538a1313ca31f36b46e961098051785c
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260607"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051716"
 ---
 # <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Azure Logic Apps でメーリング リスト要求を管理する
 
@@ -37,7 +38,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 ![完成したロジック アプリの概観](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-overview.png)
 
-Azure サブスクリプションがない場合は、始める前に<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+Azure サブスクリプションがない場合は、始める前に[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +48,7 @@ Azure サブスクリプションがない場合は、始める前に<a href="ht
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
-Azure アカウントの資格情報で <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
+Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
@@ -196,7 +197,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **リスト ID** | test-members-ML | MailChimp メーリング リストの名前 | 
-   | **状態** | subscribed | 新しいメンバーの登録ステータス。 詳細については、「<a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Manage subscribers with the MailChimp API (MailChimp API を使った購読者管理)</a>」を参照してください。 | 
+   | **状態** | subscribed | 新しいメンバーの登録ステータス。 詳細については、「[Manage subscribers with the MailChimp API (MailChimp API を使った購読者管理)](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/)」を参照してください。 | 
    | **メール アドレス** | <*new-member-email-address*> | パラメーター リストまたは動的コンテンツ リストから、 **[新しい電子メールが届いたとき]** の **[差出人]** を選択します。ここから、新しいメンバーのメール アドレスが渡されます。 
    |  |  |  | 
 

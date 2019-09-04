@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 05b761dbf9f58f6afca6459e28d2fecca9aa7b06
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0ae82f8980b995edab3419374e27a2cb905935d5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881671"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099491"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Azure IoT Central アプリケーションを作成する (プレビュー機能)
 
@@ -27,7 +27,7 @@ ms.locfileid: "69881671"
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
-Azure IoT Central の [[Application Manager]\(アプリケーション マネージャー\)](https://aka.ms/iotcentral) ページに移動します。 次に、Microsoft 個人アカウントか、職場または学校アカウントを使用してサインインします。
+[Azure IoT Central のアプリケーション マネージャー](https://aka.ms/iotcentral) Web サイトに移動します。 次に、Microsoft 個人アカウントか、職場または学校アカウントを使用してサインインします。
 
 新しい Azure IoT Central アプリケーションの作成を開始するには、 **[New Application]\(新しいアプリケーション\)** を選択します。 このリンクをクリックすると、 **[アプリケーションの作成]** ページが表示されます。
 
@@ -55,4 +55,4 @@ IoT プラグ アンド プレイなどのプレビュー機能を備えた新�
 このクイックスタートでは、プレビュー機能を使用する IoT Central アプリケーションを作成しました。 お勧めする次の手順は、次のとおりです。
 
 > [!div class="nextstepaction"]
-> [IoT Central のツアー](overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Azure IoT Central アプリケーションで新しいデバイスの種類を定義する](./tutorial-define-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

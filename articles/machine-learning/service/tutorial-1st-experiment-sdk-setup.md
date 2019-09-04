@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: cc16f3c8ea287e78d7b7b4d9a56f5a2e82c26f01
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 7ed81375912613995d573b110607e7913adfd10f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515329"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051667"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>チュートリアル:初めての ML 実験の作成を開始する
 
@@ -73,7 +73,12 @@ VM が実行中になった後、 **[ノートブック VM]** セクションを
     > [!TIP]
     > このフォルダーは、ノートブック VM 自体ではなく、ワークスペース内の[ストレージ コンテナー](concept-workspace.md#resources)上にあります。  ノートブック VM を削除しても、すべての作業を続けることができます。  後で新しいノートブック VM を作成すると、この同じフォルダーが読み込まれます。 他のユーザーとワークスペースを共有すると、互いのフォルダーが表示されます。
 
-1. チュートリアルの**パート 2** を実行するために、`samples-*` サブディレクトリを開き、次に `tutorials/tutorial-1st-experiment-sdk-train.ipynb` を開きます。
+1. `samples-*` サブディレクトリを開き、次に `tutorials/tutorial-1st-experiment-sdk-train.ipynb` を開きます
+
+> [!Warning]
+> 開いているのが同じ名前の `.yml` ファイル**ではなく**、`tutorial-1st-experiment-sdk-train.ipynb` ファイルであることを確認してください。 
+
+チュートリアルの**パート 2** では、`tutorial-1st-experiment-sdk-train.ipynb` のコードを実行して機械学習モデルをトレーニングします。
 
 ## <a name="end"></a>リソースのクリーンアップ
 

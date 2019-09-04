@@ -11,44 +11,44 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/29/2019
+ms.date: 08/22/2019
 ms.author: juliako
-ms.openlocfilehash: 5979e34e7c186a0484c8db2d432a3c57a5ed1d15
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 352b42099bcd832792aad2fa24dca3e14525dc06
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679150"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990616"
 ---
 # <a name="dynamic-packaging"></a>動的パッケージ
 
-Microsoft Azure Media Services を使用して、多数のメディア ソース ファイルの形式、メディア ストリーミング形式、およびコンテンツ保護形式をさまざまなクライアント テクノロジ (iOS、XBOX など) に配信できます。 これらのクライアントは異なるプロトコルを認識します。たとえば、iOS では HTTP ライブ ストリーミング (HLS) 形式が必要で、Xbox ではスムーズ ストリーミングが必要です。 HLS、MPEG DASH、または Smooth Streaming を認識するクライアントに提供する、一連のアダプティブ ビットレート (マルチビット レート) MP4 (ISO Base Media 14496-12) ファイルまたは一連のアダプティブ ビットレート Smooth Streaming ファイルがある場合は、"*ダイナミック パッケージ*" を活用できます。 このパッケージには、ビデオの解像度の指定がなく、SD、HD、UHD-4K をサポートしています。
+Microsoft Azure Media Services を使用すると、さまざまなメディア ソース ファイル形式をエンコードし、コンテンツ保護を有効または無効にして、あらゆる主要デバイス (iOS、Android デバイスなど) に向け、各種のストリーミング プロトコルを介してそれらを配信することができます。 これらのクライアントは各種プロトコルを認識します。たとえば、iOS では、HTTP ライブ ストリーミング (HLS) 形式でストリームを配信する必要があります。また、Android デバイスは、HLS と MPEG DASH をサポートします。 アダプティブ ビットレート ストリーミングで配信するようにソース ファイルを準備するには、一連のマルチ ビットレート ("アダプティブ ビットレート" ともいいます) MP4 (ISO Base Media 14496-12) ファイルにソース ファイルを[エンコード](encoding-concept.md)する必要があります。 この一連の MP4 ファイルから、**ダイナミック パッケージ**を使用し、HLS、MPEG-DASH、または Smooth Streaming プロトコルでビデオを配信することができます。
 
 Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md)は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリケーションに直接配信できます。 ダイナミック パッケージは、すべての**ストリーミング エンドポイント** (Standard または Premium) に標準で付属する機能です。 
 
-ダイナミック パッケージを利用するには、アダプティブ ビットレート MP4 ファイルのセットを持つ[資産](assets-concept.md)と、ストリーミング構成ファイル (.ism、.ismc、.mpi など) が必要です。 これらのファイルを取得する方法の 1 つは、Media Services を使用してお使いの中間 (ソース) ファイルをエンコードすることです。 エンコードされた資産内のビデオをクライアントが再生できるようにするには、[ストリーミング ロケーター](streaming-locators-concept.md)を作成し、ストリーミング URL をビルドする必要があります。 その後、ストリーミング クライアント マニフェスト (HLS、DASH、または Smooth) で指定した形式に基づいて、選択したプロトコルでストリームを受信します。
+**ダイナミック パッケージ**を利用するには、Media Services ダイナミック パッケージで必要とされるアダプティブ ビットレート MP4 ファイルのセットを持つ**アセット**と、ストリーミング構成ファイルが必要です。 これらのファイルを取得する方法の 1 つは、Media Services を使用してお使いの中間 (ソース) ファイルをエンコードすることです。 エンコードされたアセット内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター**を作成し、ストリーミング URL をビルドする必要があります。 その後、ストリーミング クライアント マニフェスト (HLS、MPEG DASH、または Smooth Streaming) で指定した形式に基づいて、選択したプロトコルでストリームを受信します。
 
 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。 
 
-Media Services でダイナミック パッケージは、ストリーミング配信がライブであってもオンデマンドであっても使用されます。 
+Media Services でダイナミック パッケージは、ストリーミング配信がライブ ビデオであってもオンデマンド ビデオであっても使用されます。 
 
 > [!NOTE]
 > 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、またはサポートされている [SDK](media-services-apis-overview.md#sdks) のいずれかを使用してください。
 
 ## <a name="on-demand-streaming-workflow"></a>オンデマンド ストリーミングのワークフロー
 
-ダイナミック パッケージを使用した Media Services オンデマンド ストリーミングの一般的なワークフローは次のとおりです。
+次に、Azure Media Services の標準エンコーダーとダイナミック パッケージを併用した一般的な Media Services でのストリーミング ワークフローを示します。
 
-1. 入力またはソース ファイル (*mezzanine* ファイルと呼ばれます) をアップロードします。 たとえば、MP4、MOV、MXF ファイルなどです。 
-1. Mezzanine ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードします。 
+1. QuickTime (MOV) や MXF ファイルなどの入力ファイルをアップロードします (サポートされる形式の一覧については、[Media Encoder Standard でサポートされる形式](media-encoder-standard-formats.md)に関するページを参照してください)。 これは、中間ファイルやソース ファイルとも呼ばれます。
+1. 中間ファイルを H.264/AAC MP4 アダプティブ ビットレート セットに[エンコード](#encode-to-adaptive-bitrate-mp4s)します。 
 1. アダプティブ ビットレート MP4 セットが含まれる出力資産を発行します。 ストリーミング ロケーターを作成して発行します。
-1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 さまざまな形式の正しいマニフェストおよび要求の処理は、ストリーミング エンドポイントが行います。
+1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 これらのさまざまな形式の正しいマニフェストおよび要求の処理は、**ストリーミング エンドポイント**が行います。
 
-次の図は、ダイナミック パッケージを使用したオンデマンド ストリーミングのワークフローを示しています。
+次の図は、ダイナミック パッケージのワークフローを使用したオンデマンド ストリーミングを示しています。
 
 ![ダイナミック パッケージを使用したオンデマンド ストリーミングのワークフローの図](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
-### <a name="encoding-to-adaptive-bitrate-mp4s"></a>アダプティブ ビットレート MP4 へのエンコード
+### <a name="encode-to-adaptive-bitrate-mp4s"></a>アダプティブ ビットレート MP4 へのエンコード
 
 [Media Services を使用してビデオをエンコードする方法](encoding-concept.md)の例については、以下の記事を参照してください。
 
@@ -93,14 +93,15 @@ Media Services のダイナミック パッケージのコンテンツには、�
 |MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |スムーズ ストリーミング| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
-## <a name="delivery-codecs-support"></a>デリバリー コーデックのサポート 
-
-### <a name="video-codecs"></a>ビデオ コーデック
+## <a name="video-codecs-supported-by-dynamic-packaging"></a>ダイナミック パッケージでサポートされているビデオ コーデック
 
 ダイナミック パッケージでは、以下のビデオ コーデックがサポートされています。
 * [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC または AVC1) または [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC、hev1、または hvc1) でエンコードされたビデオの MP4 ファイル。
 
-### <a name="audio-codecs"></a>オーディオ コーデック
+> [!NOTE]
+> ダイナミック パッケージでは、最大 4K の解像度および最大 60 フレーム/秒のフレーム レートをテスト済みです。 [Premium エンコーダー](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)では、従来の v2 API を使用した H.265 へのエンコードがサポートされます。 この点についてご質問がありましたら、amshelp@microsoft.com までお問い合わせください。 
+
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>ダイナミック パッケージによってサポートされているオーディオ コーデック
 
 ダイナミック パッケージでは、以下に説明するオーディオ プロトコルがサポートされています。
 
@@ -109,7 +110,10 @@ Media Services のダイナミック パッケージのコンテンツには、�
 
 ダイナミック パッケージでは、[Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) オーディオ (古いコーデック) を含むファイルはサポートされていません。
 
-#### <a name="mp4-files"></a>MP4 ファイル
+> [!NOTE]
+> [Premium エンコーダー](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)では、従来の v2 API を使用した Dolby Digital Plus へのエンコードがサポートされます。 この点についてご質問がありましたら、amshelp@microsoft.com までお問い合わせください。 
+
+### <a name="mp4-files"></a>MP4 ファイル
 
 ダイナミック パッケージでは、以下のプロトコルでエンコードされたオーディオが含まれている MP4 ファイルがサポートされています。 
 
@@ -126,7 +130,7 @@ Media Services のダイナミック パッケージのコンテンツには、�
     * DTS Express (dtse)
     * DTS-HD Lossless (コアなし) (dtsl)
 
-#### <a name="multiple-audio-tracks"></a>複数のオーディオ トラック
+### <a name="multiple-audio-tracks"></a>複数のオーディオ トラック
 
 ダイナミック パッケージでは、複数のコーデックと言語を使用する複数のオーディオ トラックを持つ資産をストリーミングするとき、HLS 出力 (バージョン 4 以降) 用の複数のオーディオ トラックがサポートされます。
 

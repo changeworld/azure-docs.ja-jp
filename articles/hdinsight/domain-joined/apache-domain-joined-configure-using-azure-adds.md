@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614203"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125584"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する
 
@@ -22,7 +22,7 @@ Enterprise セキュリティ パッケージ (ESP) のクラスターでは、A
 この記事では、Azure Active Directory Domain Services (Azure AD-DS) を使って、ESP の HDInsight クラスターを構成する方法について説明します。
 
 > [!NOTE]  
-> ESP は、HDInsight 3.6 および 4.0 で一般提供となっています。対象となるクラスターの種類は、Apache Spark、Interactive、Apache Hadoop、HBase です。 Apache Kafka クラスター タイプ用の ESP はプレビュー段階です。
+> ESP は、HDInsight 3.6 および 4.0 で一般提供となっています。対象となるクラスターの種類は、Apache Spark、Interactive、Hadoop、HBase です。 Apache Kafka クラスター タイプ用の ESP はプレビュー段階で、ベスト エフォート サポートのみを提供します。 ESP GA の日付 (2018 年 10 月 1 日) より前に作成された ESP クラスターはサポートされません。
 
 ## <a name="enable-azure-ad-ds"></a>Azure AD-DS を有効にする
 

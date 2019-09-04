@@ -6,16 +6,28 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 7/08/2019
+ms.date: 8/27/2019
 ms.author: alkohli
-ms.openlocfilehash: db0f0ac3073687b7c1cd8ca60e459e4bb3aa03f4
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 368439d6e15d6c94bbb96d67fcb48ab006234c95
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626352"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098855"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box の返送と Azure へのデータ アップロードの確認
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="return-data-box-and-verify-data-upload-to-azure"></a>Data Box の返送と Azure へのデータ アップロードの確認
+
+::: zone-end
+
+::: zone target="docs"
 
 このチュートリアルでは、Azure Data Box を返送し、Azure にアップロードされたデータを確認する方法について説明します。
 
@@ -39,12 +51,32 @@ ms.locfileid: "67626352"
 
 [!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
+::: zone-end
+
+::: zone target="chromeless"
+
+データのコピーが完了したら、デバイスを準備して発送します。 デバイスが Azure データセンターに到着すると、データが自動的に Azure にアップロードされます。
+
+## <a name="prepare-to-ship"></a>発送の準備をする
+
+発送を準備する前に、コピー ジョブが完了していることを確認します。
+
+1. ローカル Web UI の **[出荷準備]** ページに移動し、出荷準備を開始します。 
+2. ローカル Web UI からデバイスをオフにします。 ケーブルをデバイスから取り外します。 
+
+次の手順は、デバイスを返送する場所によって決まります。
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="ship-data-box-back"></a>Data Box を返送する
 
 デバイスへのデータ コピーを確実に完了しさせ、 **[発送の準備をする]** の実行を正常終了させます。 デバイスを発送する地域によっては、手順が異なります。
 
+::: zone-end
 
-### <a name="ship-in-us-canada-europe"></a>米国、カナダ、ヨーロッパでの発送
+## <a name="ship-in-us-canada-europe"></a>米国、カナダ、ヨーロッパでの発送
 
 米国、カナダ、またはヨーロッパでデバイスを返送する場合は、次の手順を行います。
 
@@ -60,9 +92,8 @@ ms.locfileid: "67626352"
     集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box を持ち込むこともできます。
 4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は "**集荷されました**" に更新されます。 追跡 ID も表示されます。
 
-### <a name="ship-in-asia-pacific-region"></a>アジア太平洋地域での発送
 
-#### <a name="ship-in-australia"></a>オーストラリアでの発送
+## <a name="ship-in-australia"></a>オーストラリアでの発送
 
 オーストラリアの Azure データセンターには、追加のセキュリティ通知があります。 すべての国内配送には事前通知が必要です。 オーストラリアで発送するには、次の手順を行います。
 
@@ -89,13 +120,12 @@ ms.locfileid: "67626352"
 
 必要に応じて、Quantium Solutions のサポート (Azure@quantiumsolutions.com) にメールまたは電話でお問い合わせいただくことができます。
 
-
 電話でご注文についてお問い合わせする場合:
 
 - 最初に集荷に関するメールを送信します。
 - 電話で注文の名前を伝えます。
 
-#### <a name="ship-in-japan"></a>日本で発送する 
+## <a name="ship-in-japan"></a>日本で発送する 
 
 1. 返品対象のデバイスを発送する場合に使用する元の箱を保管しておきます。
 2. デバイスの電源をオフにして、ケーブルを取り外します。
@@ -125,6 +155,7 @@ ms.locfileid: "67626352"
 - メール: Customerservice.JP@quantiumsolutions.com 
 - 電話: 03-5755-0150 
 
+::: zone target="docs"
 
 ## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
 
@@ -155,9 +186,21 @@ Microsoft がディスクを受け取ってスキャンすると、注文の状�
 
     - VHDX または動的/差分 VHD をコピーした場合、VHDX/VHD はページ BLOB としてステージング ストレージ アカウントにアップロードされますが、VHD からマネージド ディスクへの変換は失敗します。 ステージング環境の **[ストレージ アカウント] > [BLOB]** に移動し、適切なコンテナー (Standard SSD、Standard HDD、または Premium SSD) を選択します。 VHD は、ステージング ストレージ アカウントにページ BLOB としてアップロードされます。
 
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+::: zone-end
+
 ## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
  
 Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>次の手順
 
@@ -174,5 +217,7 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 
 > [!div class="nextstepaction"]
 > [ローカル Web UI を使用して Azure Data Box を管理する](./data-box-local-web-ui-admin.md)
+
+::: zone-end
 
 

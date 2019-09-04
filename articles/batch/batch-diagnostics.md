@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5f5e023d8014a780fa21e2c3ba18050c4e1a5771
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323621"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095246"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -48,6 +47,7 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 1. ポータルで、 **[すべてのサービス]**  >  **[Batch アカウント]** をクリックし、Batch アカウントの名前をクリックします。
 2. **[監視]** で **[メトリック]** をクリックします。
 3. 1 つまたは複数のメトリックを選択します。 必要に応じて、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リソースの種類]** 、および **[リソース]** のドロップダウンを使用して、追加のリソース メトリックを選択します。
+    * カウントベースのメトリック ([Dedicated Core Count]\(専用コア数\) や [Low-Priority Node Count]\(優先順位の低いノードの数\) など) の場合は、[平均] 集計を使用します。 イベントベースのメトリック ([Pool Resize Complete Events]\(プール サイズの変更完了イベント\) など) の場合は、[カウント] 集計を使用します。
 
     ![Batch メトリック](media/batch-diagnostics/metrics-portal.png)
 
@@ -119,7 +119,7 @@ Batch 診断ログをストレージ アカウント内にアーカイブする�
 ```
 insights-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/
 RESOURCEGROUPS/{resource group name}/PROVIDERS/MICROSOFT.BATCH/
-BATCHACCOUNTS/{batch account name}/y={four-digit numeric year}/
+BATCHACCOUNTS/{Batch account name}/y={four-digit numeric year}/
 m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
@@ -130,12 +130,15 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-各 PT1H.json BLOB ファイルには、BLOB の URL で指定された時間 (例: h = 12) 内に発生した JSON 形式のイベントが含まれます。 現在の時間内にイベントが発生すると、PT1H.json ファイルにイベントが追加されます。 分の値 (m = 00) は常に 00 です。診断ログ イベントが個々の BLOB に 1 時間ごとに分類されるためです。 (時刻はすべて UTC 形式です)。
+各 `PT1H.json` BLOB ファイルには、BLOB の URL で指定された時間 (たとえば `h=12`) 内に発生した JSON 形式のイベントが含まれます。 現在の時間内にイベントが発生すると、`PT1H.json` ファイルにイベントが追加されます。 分の値 (`m=00`) は常に `00` です。診断ログ イベントが個々の BLOB に 1 時間ごとに分類されるためです。 (時刻はすべて UTC 形式です)。
 
+`PT1H.json` ログ ファイル内の `PoolResizeCompleteEvent` エントリの例を次に示します。 これには、専用ノードと優先順位の低いノードの現在の数と目標の数に関する情報に加え、操作の開始時刻と終了時刻が含まれます。
 
-ストレージ アカウント内の診断ログのスキーマの詳細については、[Azure 診断ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account)に関する記事を参照してください。
+```
+{ "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
+```
 
-ストレージ アカウント内のログにプログラムでアクセスするには、Storage API を使用します。 
+ストレージ アカウント内の診断ログのスキーマの詳細については、[Azure 診断ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account)に関する記事を参照してください。 ストレージ アカウント内のログにプログラムでアクセスするには、Storage API を使用します。 
 
 ### <a name="service-log-events"></a>サービス ログ イベント
 Azure Batch サービス ログが収集される場合、そのログには、プールやタスクなどの個々の Batch リソースの存続期間中に Azure Batch サービスによって生成されたイベントが含まれます。 Batch によって生成された各イベントが、JSON 形式で記録されます。 たとえば、次に示すのはサンプルの**プール作成イベント**の本文です。

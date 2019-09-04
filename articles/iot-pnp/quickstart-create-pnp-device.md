@@ -1,5 +1,5 @@
 ---
-title: Azure IoT プラグ アンド プレイ プレビュー デバイスを作成する | Microsoft Docs
+title: IoT プラグ アンド プレイ プレビュー デバイスを作成する | Microsoft Docs
 description: デバイス機能モデルを使用してデバイス コードを作成します。 次に、デバイス コードを実行して、デバイスがご利用の IoT Hub に接続されることを確認します。
 author: miagdp
 ms.author: miag
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 7cfa6e63f74233e9a3fab8f235584fdbe01e67d9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881541"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050138"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "69881541"
 
 VS Code で Azure IoT Device Workbench 拡張機能をインストールするには、次の手順に従ってください。
 
-1. VS Code で **[拡張機能]** タブを選択します。
+1. VS Code で、 **[拡張機能]** タブを選択します。
 1. **Azure IoT Device Workbench** を検索します。
 1. **[インストール]** を選択します。
 
@@ -219,7 +219,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. **[コマンド]** ページを選択して、デバイスでサポートされているコマンドをすべて表示します。
 
-1. **点滅**コマンドを展開し、点滅時間間隔を新たに設定します。 **[コマンドの送信]** を選択して、デバイス上でコマンドを呼び出します。
+1. **点滅**コマンドを展開し、新しい点滅時間間隔を設定します。 **[コマンドの送信]** を選択して、デバイス上でコマンドを呼び出します。
 
 1. シミュレートするデバイスにアクセスして、コマンドが想定どおりに実行されたことを確認します。
 

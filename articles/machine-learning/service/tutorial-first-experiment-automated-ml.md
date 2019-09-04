@@ -10,39 +10,38 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 08/14/2019
-ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 01228dc01b8006a0a2476ddbbd6fa8ff430e280a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534394"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982756"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>チュートリアル:自動化された機械学習を使用して最初の分類モデルを作成する
 
 このチュートリアルでは、コード行を 1 つも記述せず、Azure portal (プレビュー) で初めての自動機械学習実験を作成する方法について説明します。 この例では、クライアントが金融機関に定期預金を申し込むかどうかを予測する分類モデルを作成します。
 
-Azure Machine Learning service の自動機械学習機能と Azure portal を使用して、自動機械学習プロセスを開始します。 アルゴリズムの選択とハイパーパラメーターのチューニングが自動的に行われます。 自動化された機械学習の手法では、アルゴリズムとハイパーパラメーターの組み合わせを多数イテレーションして、お客様の条件に基づき最高のモデルを見つけます。
+自動機械学習を使用することで、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
 
-このチュートリアルでは、以下のタスクについて学習します。
+このチュートリアルでは、次のタスクを実施する方法について説明します。
 
 > [!div class="checklist"]
-> * Azure Machine Learning service ワークスペースを構成する。
-> * 実験を作成します。
-> * 分類モデルを自動トレーニングする。
-> * トレーニングの実行の詳細を表示する。
+> * Azure Machine Learning service ワークスペースを作成します。
+> * 自動機械学習の実験を実行します。
+> * 実験の詳細を表示します。
 > * モデルをデプロイします。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://aka.ms/AMLFree)を作成してください。
 
-* [**bankmarketing_train.csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) データ ファイルをダウンロードします。 **[y]** 列では、このチュートリアルの予測対象列として後で識別される定期預金に顧客が申し込んだかどうかが示されます。 
+* [**bankmarketing_train.csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) データ ファイルをダウンロードします。 **[y]** 列では、このチュートリアルの予測対象列として後で識別される定期預金に顧客が申し込んだかどうかが示されます。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-an-experiment"></a>実験の作成
+## <a name="create-and-run-the-experiment"></a>実験を作成して実行する
 
 次の手順では、データの選択から主要なメトリックとモデルの種類の選択まで、実験の設定を段階的に進めます。 
 
@@ -50,8 +49,6 @@ Azure Machine Learning service の自動機械学習機能と Azure portal を�
 これは、自動機械学習を使用する最初の実験であるため、 **[Welcome to Automated Machine Learning]\(自動 Machine Learning へようこそ\)** の画面が表示されます。
 
     ![Azure portal ナビゲーション ウィンドウ](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
-
-
 
 1. **[Create experiment]\(実験の作成\)** を選択します。 次に、実験名として「**my-1st-automl-experiment**」と入力します。
 
@@ -72,14 +69,11 @@ Azure Machine Learning service の自動機械学習機能と Azure portal を�
 
 1. **[アップロード]** を選択し、ローカル コンピューターから **bankmarketing_train.csv** ファイルを選択して、既定のコンテナーにアップロードします。 パブリック プレビューでは、ローカル ファイルのアップロードと Azure Blob Storage アカウントのみがサポートされています。 アップロードが完了したら、一覧からファイルを選択します。 
 
-    [![データ ファイルの選択](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
-
 1. **[プレビュー]** タブでは、この実験用にデータをさらに構成することができます。
 
     **[プレビュー]** タブに、データにヘッダーが含まれていることが示されます。 サービスには既定でトレーニング用のすべての機能 (列) が含まれます。 この例では、右にスクロールして、**day_of_week** 機能を **無視**にします。
 
     ![[プレビュー] タブの構成](media/tutorial-1st-experiment-automated-ml/preview-tab-config.gif)
-
 
     >[!NOTE]
     > 最小ノード数が 0 の計算では、データ プロファイルは使用できません。
@@ -103,9 +97,7 @@ Azure Machine Learning service の自動機械学習機能と Azure portal を�
 
 1. **[開始]** を選択して、実験を実行します。
 
-   実験が開始されると、空の **[実行の詳細]** 画面が表示され、上部に次のステータスが示されます。 
-
-      ![実行の準備中](media/tutorial-1st-experiment-automated-ml/run-preparing.png)
+   実験が開始されると、空の **[実行の詳細]** 画面が表示され、上部に次のステータスが示されます。
       
 実験の準備プロセスは数分かかります。 プロセスが完了すると、ステータス メッセージが **[Run is Running]\(実行が実行中\)** に変わります。
 
@@ -137,11 +129,9 @@ Azure portal で自動機械学習を使用すると、最良のモデルを Web
     
 1. **[デプロイ]** を選択します。
 
-    デプロイが正常に完了すると、次のメッセージが表示されます。
-
-    ![デプロイ完了](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
+    デプロイが正常に完了すると、デプロイ完了メッセージが表示されます。
     
-    これで、予測を生成するための実稼働 Web サービスが作成されました。
+これで、予測を生成するための実稼働 Web サービスが作成されました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -167,7 +157,6 @@ Azure portal で自動機械学習を使用すると、最良のモデルを Web
 
 > [!div class="nextstepaction"]
 > [Web サービスを使用する](how-to-consume-web-service.md)
-
 
 + [前処理](how-to-create-portal-experiments.md#preprocess)についてさらに理解を深める。
 + [データ プロファイル](how-to-create-portal-experiments.md#profile)についてさらに理解を深める。

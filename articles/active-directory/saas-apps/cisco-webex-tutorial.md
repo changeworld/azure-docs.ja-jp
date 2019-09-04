@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6aab04826a3c06b595859c0f41f658b6e5d3432
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1adda943676eb4918369d3cb8027f559d5dd0f6e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562305"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050020"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex Meetings の統合
 
@@ -118,7 +118,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
     d. [ソース] として **[属性]** を選択します。
 
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
+    e. **[ソース属性]** の一覧から、その行に表示される属性値をドロップダウン リストから選択します。
 
     f. **[Save]** をクリックします。
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aefa6d21488b617b26ddefe5fa4fc61cdd203f96
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e13ab3378857bd0254d7cb2fb98249ccc24b1cb7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032525"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125623"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) のアプリケーション プロキシ サ�
 
 オンプレミスのアプリケーションを Azure AD に追加するには、次が必要です。
 
-* [Microsoft Azure AD の Basic または Premium サブスクリプション](https://azure.microsoft.com/pricing/details/active-directory)
+* [Microsoft Azure AD の Premium サブスクリプション](https://azure.microsoft.com/pricing/details/active-directory)
 * アプリケーション管理者アカウント
 * ユーザー ID をオンプレミス ディレクトリから同期するか、Azure AD テナント内に直接作成する必要があります。 ID 同期によって、Azure AD が、アプリケーション プロキシが発行したアプリケーションへのアクセス権をユーザーに付与する前にユーザーを事前に認証でき、シングル サインオン (SSO) を実行するために必要なユーザー ID 情報を得ることができます。
 

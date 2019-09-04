@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 78fb48d2584e94e5c38a4648f1ae41e566637601
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0d5f04d9c0cc6dcd8a784ae7a816d93e2aab30aa
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875578"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099479"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central アプリケーションの作成
 
@@ -24,7 +24,7 @@ ms.locfileid: "69875578"
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
-Azure IoT Central の [[Application Manager]\(アプリケーション マネージャー\)](https://aka.ms/iotcentral) ページに移動します。 Microsoft 個人アカウントか、職場または学校のアカウントを使用してサインインする必要があります。
+[Azure IoT Central のアプリケーション マネージャー](https://aka.ms/iotcentral) Web サイトに移動します。 Microsoft 個人アカウントか、職場または学校のアカウントを使用してサインインする必要があります。
 
 新しい Azure IoT Central アプリケーションの作成を開始するには、 **[New Application]\(新しいアプリケーション\)** を選択します。 これで、 **[アプリケーションの作成]** ページに移動します。
 
@@ -58,4 +58,4 @@ Azure IoT Central の [[Application Manager]\(アプリケーション マネー
 このクイック スタートでは、IoT Central アプリケーションを作成しました。 推奨される次の手順は、以下のとおりです。
 
 > [!div class="nextstepaction"]
-> [IoT Central のツアー](overview-iot-central-tour.md)
+> [Azure IoT Central アプリケーションで新しいデバイスの種類を定義する](./tutorial-define-device-type.md)

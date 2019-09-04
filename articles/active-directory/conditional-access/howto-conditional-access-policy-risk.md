@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64d1b3e2f36256164420ae6b2e699f0ef48e2e78
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 3cf3281e00560a289fbb4adfe57083644e1a86e3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575974"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125441"
 ---
 # <a name="conditional-access-risk-based-conditional-access"></a>条件付きアクセス:リスクベースの条件付きアクセス
 
-Azure AD Premium P2 のライセンスを所持する組織では、Azure AD Identity Protection のリスク イベントを組み込んだ条件付きアクセス ポリシーを作成できます。 最初から有効にできる 3 つの既定のポリシーがあります。 
+Azure AD Premium P2 のライセンスを所持する組織では、Azure AD Identity Protection の検出を組み込んだ条件付きアクセス ポリシーを作成できます。 最初から有効にできる 3 つの既定のポリシーがあります。 
 
 * すべてのユーザーに対して Azure Multi-Factor Authentication への登録を必須にする。
 * リスクの高いユーザーに対してパスワードの変更を必須にする。

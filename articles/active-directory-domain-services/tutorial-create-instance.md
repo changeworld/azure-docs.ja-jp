@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: cc062f830facb0d617dc649ecd17acfff0a740af
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69618932"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125217"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>チュートリアル:Azure Active Directory Domain Services インスタンスを作成して構成する
 
@@ -43,6 +43,9 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 * Azure AD DS を有効にするには、Azure AD テナントに "*全体管理者*" 特権が必要です。
 * 必要な Azure AD DS リソースを作成するためには、ご利用の Azure サブスクリプションに "*共同作成者*" 特権が必要です。
 * この Azure AD テナントは、[パスワード リセットのセルフサービス用に構成][configure-sspr]されている必要があります。
+
+> [!IMPORTANT]
+> Azure AD DS マネージド ドメインを作成した後は、そのインスタンスを別のリソース グループ、仮想ネットワーク、サブスクリプションなどに移動することはできません。Azure AD DS インスタンスをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、および仮想ネットワークを慎重に選択してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
@@ -222,6 +225,6 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 [network-considerations]: network-considerations.md
 [create-dedicated-subnet]: ../virtual-network/virtual-network-manage-subnet.md#add-a-subnet
 [scoped-sync]: scoped-synchronization.md
-[on-prem-sync]: active-directory-ds-getting-started-password-sync-synced-tenant.md
+[on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services

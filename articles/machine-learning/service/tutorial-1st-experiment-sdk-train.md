@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516232"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051638"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
@@ -31,14 +31,18 @@ ms.locfileid: "69516232"
 
 ## <a name="prerequisites"></a>前提条件
 
-唯一の前提条件は、前のチュートリアル「[環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を行うことです。
+唯一の前提条件は、このチュートリアルのパート 1 に従って[環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)ことです。
+
+チュートリアルのこのパートでは、パート 1 の最後で開いたサンプル Jupyter ノートブック `tutorials/tutorial-1st-experiment-sdk-train.ipynb` のコードを実行します。 この記事では、ノートブック内の同じコードについて説明します。
 
 ## <a name="connect-workspace-and-create-experiment"></a>ワークスペースを接続し、実験を作成する
 
-`Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 このノートブックを自分のワークスペース内のクラウド ノートブック サーバーで実行している場合、ファイルは自動的にルート ディレクトリに配置されます。
+`Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 クラウド ノートブック サーバーでは、ファイルは自動的にルート ディレクトリに配置されます。
 
 次のコードで追加の認証が求められる場合は、単にリンクをブラウザーに貼り付け、認証トークンを入力します。
 
+> [!TIP]
+> Jupyter ノートブックを初めて使用する場合、コード セルをクリックし、**Shift + Enter** キーを押すことで、セルを 1 つずつ実行してコードを実行します。 または、ノートブック全体を一度に実行するには、上部のメニュー バーの **[Cell]\(セル\)** をクリックしてから、 **[Run All]\(すべて実行\)** をクリックします。
 
 ```python
 from azureml.core import Workspace
@@ -112,7 +116,7 @@ for alpha in alphas:
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
+<table style="width:100%"><tr><th>名前</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>ポータルでトレーニング結果を表示する
 

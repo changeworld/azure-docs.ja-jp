@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 02/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477794"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126013"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "67477794"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Azure portal を使用して Azure Data Box Disk の使用を開始する
+## <a name="get-started-with-azure-data-box-disk"></a>Azure Data Box Disk を使ってみる 
 
 ::: zone-end
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ::: zone target="chromeless"
 
-このクイック スタートでは、Azure portal を使用して Azure Data Box Disk をデプロイする方法について説明します。 この手順には、Azure へのアップロードのための前提条件の確認、ディスクのロック解除、データの接続とディスクへのコピーが含まれます。
+このガイドでは、Azure portal で Azure Data Box Disk をデプロイする方法について説明します。 この手順には、前提条件の確認、ディスクのロック解除、Azure へのアップロードのためのデータへの接続とディスクへのコピーが含まれます。
 
 ::: zone-end
 
@@ -60,10 +60,11 @@ Azure Portal ([https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredata
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>前提条件
+### <a name="prerequisites"></a>前提条件
 
 - Data Box Disk を注文済みであること。「[チュートリアル:Azure Data Box Disk を注文する](data-box-disk-deploy-ordered.md)」を参照してください。
 - ディスクの受け取りが済んでいて、ポータルでジョブの状態が **[配信済み]** に更新されていること。
+- 受け取ったディスクの数と、ディスクごとに 1 つの接続ケーブルがあることを確認しました。
 - データのコピー元として使用できるクライアント コンピューターがあること。 クライアント コンピューターの要件は以下のとおりです。
 
     - [サポート対象のオペレーティング システム](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)が実行されていること。

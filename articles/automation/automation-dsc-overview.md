@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dd898397b4aaec2e62558d12a3547f7b61d6d3fd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533457"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061391"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
@@ -62,12 +62,7 @@ Windows を実行しているノードの場合は、次のバージョンがサ
 
 Linux を実行しているノードの場合は、次のディストリビューション/バージョンがサポートされます。
 
-DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Linux ディストリビューションがすべてサポートされます。
-
-ディストリビューション | Version
--|-
-Debian  | すべてのバージョン
-Ubuntu  | 18.04
+DSC Linux 拡張機能では、「[サポートされている Linux ディストリビューション](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)」に一覧表示されている Linux ディストリビューションがすべてサポートされます。
 
 ### <a name="dsc-requirements"></a>DSC 要件
 

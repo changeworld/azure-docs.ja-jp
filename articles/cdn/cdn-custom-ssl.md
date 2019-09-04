@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f22273a28d5e4207712bdba71ef788629d51916e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321662"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114491"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -130,7 +130,7 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
     ![アクセス ポリシーの設定](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. **[シークレットのアクセス許可]** で、 **[取得]** を選択して、CDN がこれらのアクセス許可を実行して証明書を取得し、一覧表示できるようにします。 
+3. **[Get Secret permissions]\(シークレットのアクセス許可を取得\)** を選択し、**証明書のアクセス許可**を取得して一覧表示します。これによって、CDN がこれらのアクセス許可を実行して証明書を取得および一覧表示できるようにします。 
 
 4. **[OK]** を選択します。 
 
@@ -312,6 +312,9 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     Microsoft の分析の結果、アプリケーションに対する要求が SNI クライアント要求だけであることがわかった場合、既にあるドメインは今後数か月内に単一の証明書へと徐々に移行されます。 アプリケーションに対する非 SNI クライアント要求が Microsoft によって検出された場合、ご利用のドメインは、IP ベースの TLS/SSL による SAN 証明書のまま維持されます。 どちらの場合でも、クライアントの要求に対するサービスやサポートは、それらの要求が SNI か非 SNI かにかかわらず中断されません。
 
+7. *証明書の更新では、独自の証明書の持ち込みをどのように処理しますか。*
+
+    より新しい証明書が PoP インフラストラクチャにデプロイされるようにするには、単に新しい証明書を Azure KeyVault にアップロードします。その後、Azure CDN の SSL 設定で最新の証明書バージョンを選択し、保存します。 そのようにすると、Azure CDN によって、新しい更新された証明書が反映されます。 
 
 ## <a name="next-steps"></a>次の手順
 

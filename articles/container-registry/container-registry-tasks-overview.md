@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1459b6fc45bb3d875b4869d1dcb4302dec21eb96
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68311881"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114799"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -56,7 +56,7 @@ ACR タスクは、コンテナー ライフサイクル プリミティブと�
 
 ## <a name="automatic-build-on-source-code-commit"></a>ソース コードのコミット時の自動ビルド
 
-ACR タスクを使用して、コードが Git リポジトリにコミットされたときにコンテナー イメージのビルドを自動的にトリガーします。 Azure CLI コマンド [az acr task][az-acr-task] を使用して構成できるビルド タスクにより、Git リポジトリと、必要に応じて分岐および Dockerfile を指定できます。 チームがコードをリポジトリにコミットすると、ACR タスクで作成された webhook が、リポジトリで定義されているコンテナー イメージのビルドをトリガーします。
+ACR タスクを使用して、コードが GitHub の Git リポジトリまたは Azure DevOps にコミットされたときにコンテナー イメージのビルドを自動的にトリガーします。 Azure CLI コマンド [az acr task][az-acr-task] を使用して構成できるビルド タスクにより、Git リポジトリと、必要に応じて分岐および Dockerfile を指定できます。 チームがコードをリポジトリにコミットすると、ACR タスクで作成された webhook が、リポジトリで定義されているコンテナー イメージのビルドをトリガーします。
 
 > [!IMPORTANT]
 > 以前、プレビュー期間中に `az acr build-task` コマンドを使用してタスクを作成した場合、それらのタスクは [az acr task][az-acr-task] コマンドを使用して再作成する必要があります。
@@ -73,10 +73,14 @@ ACR タスクがコンテナー ビルド ワークフローを真に強化す�
 
 ACR タスクはコンテナー イメージをビルドするときに基本イメージの依存関係を動的に検出するため、アプリケーション イメージの基本イメージが更新されるとそれを検出することができます。 事前に構成された 1 つの[ビルド タスク](container-registry-tutorial-base-image-update.md#create-a-task)により、ACR タスクは**すべてのアプリケーション イメージを自動的にリビルド**します。 ACR タスクはこの自動検出とリビルドによって、更新された基本イメージを参照しているすべてのアプリケーション イメージを手動で追跡し、更新するために通常は必要となる時間と労力を削減しています。
 
-OS とフレームワークの修正プログラムの適用については、[Azure Container Registry タスクを使用して基本イメージ更新時のイメージ ビルドを自動化する](container-registry-tutorial-base-image-update.md)ことに関する ACR タスクの 3 つ目のチュートリアルを参照してください。
+ACR タスクでは、基本イメージが次のいずれかの場所にある場合に基本イメージの更新が追跡されます。
 
-> [!NOTE]
-> 現在、基本イメージの更新では、基本イメージとアプリケーション イメージの両方が同じ Azure コンテナー レジストリにある場合、または基本イメージがパブリック環境の Docker Hub リポジトリまたは Microsoft Container Registry リポジトリにある場合にのみ、ビルドがトリガーされます。
+* タスクが実行されるのと同じ Azure コンテナー レジストリ
+* 同じリージョン内の別の Azure コンテナー レジストリ 
+* Docker Hub 内のパブリック リポジトリ
+* Microsoft Container Registry 内のパブリック リポジトリ
+
+OS とフレームワークの修正プログラムの適用については、[Azure Container Registry タスクを使用して基本イメージ更新時のイメージ ビルドを自動化する](container-registry-tutorial-base-image-update.md)ことに関する ACR タスクの 3 つ目のチュートリアルを参照してください。
 
 ## <a name="multi-step-tasks"></a>複数ステップのタスク
 
