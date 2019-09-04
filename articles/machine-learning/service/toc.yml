@@ -1,5 +1,5 @@
 - name: Azure Machine Learning service のドキュメント
-  href: index.yml
+  href: ../index.yml
 - name: 概要
   expanded: true
   items:

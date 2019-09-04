@@ -9,7 +9,7 @@ metadata:
   ms.author: sngun
   ms.service: cosmos-db
   ms.topic: landing-page
-  ms.date: 05/20/2019
+  ms.date: 09/01/2019
 abstract:
   description: Azure Cosmos DB は、すぐに利用可能なグローバル分散と透過的なマルチマスター レプリケーションを備えた、フル マネージド データベース サービスです。 データベース内のトランザクション データに対して、グローバルに分散された低遅延の運用および分析ワークロードと AI を実行できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Cosmos DB の使用方法を確認してください。
   aside:

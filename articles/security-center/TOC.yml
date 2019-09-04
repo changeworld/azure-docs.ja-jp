@@ -131,24 +131,16 @@
           href: security-center-vulnerability-assessment-recommendations.md
         - name: 脅威レポート
           href: security-center-threat-report.md
-        - name: カスタム アラート
-          href: security-center-custom-alert.md
         - name: アラート信頼度スコア
           href: security-center-confidence-score.md
-        - name: セキュリティ アラート マップと脅威インテリジェンス
-          href: security-center-threat-intel.md
         - name: 調査
           href: security-center-investigation.md
         - name: 調査で得られたユーザー データの管理
           href: security-center-investigation-user-data.md
         - name: Logic Apps のプレイブック
           href: security-center-playbooks.md
-        - name: Search
-          href: security-center-search.md
         - name: 計画と運用
           href: security-center-planning-and-operations-guide.md
-        - name: セキュリティ構成のカスタマイズ
-          href: security-center-customize-os-security-config.md
 - name: リファレンス
   items:
     - name: REST API
