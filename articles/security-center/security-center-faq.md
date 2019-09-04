@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center のよく寄せられる質問 (FAQ) | Microsoft Docs
-description: この FAQ は、Azure セキュリティ センターについて寄せられる質問とその回答です。
+description: この FAQ は、Azure Security Center について寄せられる質問とその回答です。
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -21,7 +21,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/12/2019
 ms.locfileid: "68779072"
 ---
-# <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
+# <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center のよく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
 
 > [!NOTE]
@@ -31,13 +31,13 @@ ms.locfileid: "68779072"
 
 ## <a name="general-questions"></a>一般的な質問
 ### <a name="what-is-azure-security-center"></a>Azure Security Center とは
-Azure セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+Azure Security Center は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-### <a name="how-do-i-get-azure-security-center"></a>Azure セキュリティ センターはどうしたら取得できますか。
+### <a name="how-do-i-get-azure-security-center"></a>Azure Security Center はどうしたら取得できますか。
 Azure Security Center は、Microsoft Azure サブスクリプションで有効化し、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) からアクセスします ([ポータルにサインイン](https://portal.azure.com)して、 **[参照]** を選択し、 **[セキュリティ センター]** までスクロールします)。  
 
 ## <a name="billing"></a>課金
-### <a name="how-does-billing-work-for-azure-security-center"></a>Azure セキュリティ センターの課金のしくみを教えてください。
+### <a name="how-does-billing-work-for-azure-security-center"></a>Azure Security Center の課金のしくみを教えてください。
 Azure Security Center は 2 つのレベルで提供されます。
 
 **Free レベル**では、Azure リソースのセキュリティ状態の表示、基本的なセキュリティ ポリシー、セキュリティに関する推奨事項、パートナーのセキュリティ製品やサービスとの統合が提供されます。
@@ -253,19 +253,19 @@ Security Center で VM に Microsoft Monitoring Agent がインストールさ�
 ### <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>ワークスペースにはセキュリティ ソリューションが既にあります。 課金にどのような影響がありますか?
 Security & Audit ソリューションは、Azure VM で Security Center Standard レベルの機能を有効にするために使用されます。 Security & Audit ソリューションがワークスペースに既にインストールされている場合、Security Center は既存のソリューションを使用します。 課金額の変更はありません。
 
-## <a name="using-azure-security-center"></a>Azure セキュリティ センターの使用
+## <a name="using-azure-security-center"></a>Azure Security Center の使用
 ### <a name="what-is-a-security-policy"></a>セキュリティ ポリシーとは何ですか。
 セキュリティ ポリシーは、指定されたサブスクリプション内のリソースに対して推奨されるコントロールのセットを定義します。 Azure Security Center では、セキュリティに関する会社の要件、各サブスクリプションでのアプリケーションの種類やデータの機密度に合わせて Azure サブスクリプションのポリシーを定義します。
 
-Azure Security Center で有効になっているセキュリティ ポリシーが、セキュリティに関する推奨事項と監視を促進します。 セキュリティ ポリシーの詳細については、「 [Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」を参照してください。
+Azure Security Center で有効になっているセキュリティ ポリシーが、セキュリティに関する推奨事項と監視を促進します。 セキュリティ ポリシーの詳細については、「 [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」を参照してください。
 
 ### <a name="who-can-modify-a-security-policy"></a>セキュリティ ポリシーを変更できるのは誰ですか。
 セキュリティ ポリシーを変更するには、セキュリティ管理者であるか、そのサブスクリプションの所有者または共同作成者である必要があります。
 
-セキュリティ ポリシーを構成する方法については、「 [Azure セキュリティ センターでのセキュリティ ポリシーの設定](tutorial-security-policy.md)」を参照してください。
+セキュリティ ポリシーを構成する方法については、「 [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md)」を参照してください。
 
 ### <a name="what-is-a-security-recommendation"></a>セキュリティに関する推奨事項とは
-Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性が識別されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。 次に例をいくつか示します。
+Azure Security Center は、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性が識別されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。 次に例をいくつか示します。
 
 * 悪意のあるソフトウェアを識別して削除するためのマルウェア対策をプロビジョニングする
 * 仮想マシンへのトラフィックを制御するための[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)とルール
